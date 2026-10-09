@@ -1,0 +1,55 @@
+{
+  "audit_id": "GENESIS_GEN_AUD_023_024_20261009",
+  "batch_status": "FAILED_REPAIR_REQUIRED",
+  "external_custodian": false,
+  "external_lean": false,
+  "findings": [
+    {
+      "after": "CheckError via verified_subset before solver",
+      "before": "False Z=S Z marked solved after public store.lemmas mutation; LemmaStore.verify rejects same mutation",
+      "id": "GEN-AUD-023",
+      "severity": "CRITICAL",
+      "title": "Mutable public lemma bypasses proof-store trust in downstream world solver"
+    },
+    {
+      "after": "CheckError via assert_theory_matches",
+      "before": "Modified world.theory changes false plus Z Z=S Z task to solved while store replay_all passes",
+      "id": "GEN-AUD-024",
+      "severity": "CRITICAL",
+      "title": "Detached world theory bypasses pinned proof-store theory identity"
+    }
+  ],
+  "historical_raw_missing": 11,
+  "independent_reaudit": false,
+  "new_adversarial_tests": 9,
+  "new_sealed_jobs": 0,
+  "promotion_allowed": false,
+  "repro_after": {
+    "baseline": [
+      0
+    ],
+    "detached_theory": {
+      "blocked": "CheckError",
+      "reason": "solver theory differs from kernel-pinned theory"
+    },
+    "forged_public_lemma": {
+      "blocked": "CheckError",
+      "reason": "public lemma registry differs from verified snapshots"
+    }
+  },
+  "repro_before": {
+    "baseline": [
+      0
+    ],
+    "detached_theory": [
+      1
+    ],
+    "forged_public_lemma": [
+      1
+    ]
+  },
+  "review_type": "LOCAL_ADVERSARIAL_SOURCE_REVIEW_NOT_EXTERNAL_INDEPENDENT_AUDIT",
+  "source_rev14_sha256": "b1972eb03f298722aacfc46b94ce0b50fb439c0056d7ebdb1083492c8fdbf2f5",
+  "source_revision": 14,
+  "target_revision": 15
+}

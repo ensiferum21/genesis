@@ -1,0 +1,1095 @@
+{
+  "schema": "genesis-c4-resource-benchmark-dev-v1",
+  "status": "PUBLIC_DEV_ONLY",
+  "query_budget_per_arm": 60,
+  "records": [
+    {
+      "id": "public-dev-000",
+      "family": "random",
+      "n": 6,
+      "host_edges": 12,
+      "optimum": 7,
+      "arm_order": [
+        "multistart",
+        "cycle_aware"
+      ],
+      "multistart": {
+        "size": 7,
+        "queries": 60,
+        "cpu_ns": 879952,
+        "wall_ns": 873115,
+        "peak_traced_bytes": 8840,
+        "witness_sha256": "f5bef1520ff080910287b3fa44aa6e42b3924cb3fcc032d547908a699b4f2ed9"
+      },
+      "cycle_aware": {
+        "size": 7,
+        "queries": 60,
+        "cpu_ns": 1078341,
+        "wall_ns": 1074458,
+        "peak_traced_bytes": 6952,
+        "witness_sha256": "64966751abd66efed6f42cbe3ad50b16dd4896c13baad92371f1f7f3fc55ac14"
+      }
+    },
+    {
+      "id": "public-dev-001",
+      "family": "bipartite",
+      "n": 7,
+      "host_edges": 12,
+      "optimum": 7,
+      "arm_order": [
+        "cycle_aware",
+        "multistart"
+      ],
+      "cycle_aware": {
+        "size": 7,
+        "queries": 60,
+        "cpu_ns": 1539449,
+        "wall_ns": 1535871,
+        "peak_traced_bytes": 8776,
+        "witness_sha256": "16c8f99b333831c848b6ba55c0a1277d0f059a00747fbf4b53168a5b1fd66be5"
+      },
+      "multistart": {
+        "size": 7,
+        "queries": 60,
+        "cpu_ns": 1237397,
+        "wall_ns": 1234786,
+        "peak_traced_bytes": 6776,
+        "witness_sha256": "490284e69510dd84a5d657ac0b1590b89d232d9ec54654069f3302809d94cc2b"
+      }
+    },
+    {
+      "id": "public-dev-002",
+      "family": "random",
+      "n": 8,
+      "host_edges": 14,
+      "optimum": 11,
+      "arm_order": [
+        "multistart",
+        "cycle_aware"
+      ],
+      "multistart": {
+        "size": 11,
+        "queries": 60,
+        "cpu_ns": 2368241,
+        "wall_ns": 2365048,
+        "peak_traced_bytes": 9740,
+        "witness_sha256": "fbea4a8a97d013346d17476c866d06f0465dc64b4a781cdd1aababccd3730027"
+      },
+      "cycle_aware": {
+        "size": 11,
+        "queries": 60,
+        "cpu_ns": 1913524,
+        "wall_ns": 1911019,
+        "peak_traced_bytes": 6772,
+        "witness_sha256": "fbea4a8a97d013346d17476c866d06f0465dc64b4a781cdd1aababccd3730027"
+      }
+    },
+    {
+      "id": "public-dev-003",
+      "family": "bipartite",
+      "n": 6,
+      "host_edges": 9,
+      "optimum": 6,
+      "arm_order": [
+        "cycle_aware",
+        "multistart"
+      ],
+      "cycle_aware": {
+        "size": 5,
+        "queries": 60,
+        "cpu_ns": 821576,
+        "wall_ns": 817776,
+        "peak_traced_bytes": 7112,
+        "witness_sha256": "69dab26344403fae7bf19f5e51d1a79da3d0dc0df067170259ef078848d5f456"
+      },
+      "multistart": {
+        "size": 6,
+        "queries": 60,
+        "cpu_ns": 622406,
+        "wall_ns": 620189,
+        "peak_traced_bytes": 6576,
+        "witness_sha256": "5f337471cabcd850f62ce9053171a7527a0b14d9b97c285c984423a897c9ef61"
+      }
+    },
+    {
+      "id": "public-dev-004",
+      "family": "random",
+      "n": 7,
+      "host_edges": 16,
+      "optimum": 9,
+      "arm_order": [
+        "multistart",
+        "cycle_aware"
+      ],
+      "multistart": {
+        "size": 9,
+        "queries": 60,
+        "cpu_ns": 1486125,
+        "wall_ns": 1483746,
+        "peak_traced_bytes": 10664,
+        "witness_sha256": "658df7f9bd90feba80a689ade12bd3852d6c59b08822907913553cf96da67a28"
+      },
+      "cycle_aware": {
+        "size": 9,
+        "queries": 60,
+        "cpu_ns": 1497977,
+        "wall_ns": 1495622,
+        "peak_traced_bytes": 7720,
+        "witness_sha256": "5fb0c5f421ca21016e29b9c2adca8aa526e7fa85b0bd456969aa41884871c781"
+      }
+    },
+    {
+      "id": "public-dev-005",
+      "family": "bipartite",
+      "n": 8,
+      "host_edges": 16,
+      "optimum": 9,
+      "arm_order": [
+        "cycle_aware",
+        "multistart"
+      ],
+      "cycle_aware": {
+        "size": 9,
+        "queries": 60,
+        "cpu_ns": 2160667,
+        "wall_ns": 2157426,
+        "peak_traced_bytes": 7720,
+        "witness_sha256": "17683f39a5cf0dd3ffd807934ece18ae44973e363f7f0b7da662c79f7ed47b97"
+      },
+      "multistart": {
+        "size": 8,
+        "queries": 60,
+        "cpu_ns": 1897937,
+        "wall_ns": 1895515,
+        "peak_traced_bytes": 7648,
+        "witness_sha256": "045f84d050c589729bca20801ef52b8097c8f9afb4796148711d1d63f5af8e22"
+      }
+    },
+    {
+      "id": "public-dev-006",
+      "family": "random",
+      "n": 6,
+      "host_edges": 15,
+      "optimum": 7,
+      "arm_order": [
+        "multistart",
+        "cycle_aware"
+      ],
+      "multistart": {
+        "size": 7,
+        "queries": 60,
+        "cpu_ns": 907803,
+        "wall_ns": 904639,
+        "peak_traced_bytes": 8368,
+        "witness_sha256": "6a0a59b0ccfad7f742ab882975194f22ffda7cdf2a6da9993aa32eebe3fdf4e1"
+      },
+      "cycle_aware": {
+        "size": 7,
+        "queries": 60,
+        "cpu_ns": 1185872,
+        "wall_ns": 1183517,
+        "peak_traced_bytes": 8112,
+        "witness_sha256": "a85a6b438b56922a2ef1822ca73ae0d122cea28ffc2bac99c6e96e36adf9ec95"
+      }
+    },
+    {
+      "id": "public-dev-007",
+      "family": "bipartite",
+      "n": 7,
+      "host_edges": 12,
+      "optimum": 7,
+      "arm_order": [
+        "cycle_aware",
+        "multistart"
+      ],
+      "cycle_aware": {
+        "size": 7,
+        "queries": 60,
+        "cpu_ns": 1457616,
+        "wall_ns": 1452388,
+        "peak_traced_bytes": 8408,
+        "witness_sha256": "d44f3d1fa9a189edd9d98d7ff5bd5ac0d8c2e26bd7a7ef0a75d25887cc754ee5"
+      },
+      "multistart": {
+        "size": 7,
+        "queries": 60,
+        "cpu_ns": 1130685,
+        "wall_ns": 1128181,
+        "peak_traced_bytes": 6776,
+        "witness_sha256": "c406e8da568eb89fdb8ad8f1f1d9595ad83697039b15732c1d662abcc35bff27"
+      }
+    },
+    {
+      "id": "public-dev-008",
+      "family": "random",
+      "n": 8,
+      "host_edges": 20,
+      "optimum": 11,
+      "arm_order": [
+        "multistart",
+        "cycle_aware"
+      ],
+      "multistart": {
+        "size": 11,
+        "queries": 60,
+        "cpu_ns": 2539229,
+        "wall_ns": 2536517,
+        "peak_traced_bytes": 13212,
+        "witness_sha256": "035445856f0a1097f2ec49dcaf4becd54d23ecc9ad91adb86cfce33f5fc5d056"
+      },
+      "cycle_aware": {
+        "size": 11,
+        "queries": 60,
+        "cpu_ns": 2368829,
+        "wall_ns": 2366359,
+        "peak_traced_bytes": 9860,
+        "witness_sha256": "01d02420028795a195fbaebdef63539a2b634c8ae69f6e1a94a0b6698fdf1487"
+      }
+    },
+    {
+      "id": "public-dev-009",
+      "family": "bipartite",
+      "n": 6,
+      "host_edges": 9,
+      "optimum": 6,
+      "arm_order": [
+        "cycle_aware",
+        "multistart"
+      ],
+      "cycle_aware": {
+        "size": 6,
+        "queries": 60,
+        "cpu_ns": 819607,
+        "wall_ns": 813472,
+        "peak_traced_bytes": 7632,
+        "witness_sha256": "2aeeadd3dfb9b190d2de00bb614fcfa237b21fddd5f023b067b8475396984e46"
+      },
+      "multistart": {
+        "size": 6,
+        "queries": 60,
+        "cpu_ns": 652614,
+        "wall_ns": 650259,
+        "peak_traced_bytes": 6776,
+        "witness_sha256": "2aeeadd3dfb9b190d2de00bb614fcfa237b21fddd5f023b067b8475396984e46"
+      }
+    },
+    {
+      "id": "public-dev-010",
+      "family": "random",
+      "n": 7,
+      "host_edges": 13,
+      "optimum": 9,
+      "arm_order": [
+        "multistart",
+        "cycle_aware"
+      ],
+      "multistart": {
+        "size": 9,
+        "queries": 60,
+        "cpu_ns": 1244396,
+        "wall_ns": 1241770,
+        "peak_traced_bytes": 9316,
+        "witness_sha256": "177b6a8f1793912ad3694daec6b6795ad4ce04591e3b4f7b5af213c914ca52cb"
+      },
+      "cycle_aware": {
+        "size": 9,
+        "queries": 60,
+        "cpu_ns": 1207615,
+        "wall_ns": 1205510,
+        "peak_traced_bytes": 6948,
+        "witness_sha256": "fae025a18e047e8768b52ae714a49c190c021bbe1ee91cce46a31ff3dfc4c082"
+      }
+    },
+    {
+      "id": "public-dev-011",
+      "family": "bipartite",
+      "n": 8,
+      "host_edges": 14,
+      "optimum": 9,
+      "arm_order": [
+        "cycle_aware",
+        "multistart"
+      ],
+      "cycle_aware": {
+        "size": 9,
+        "queries": 60,
+        "cpu_ns": 2434865,
+        "wall_ns": 2432062,
+        "peak_traced_bytes": 8520,
+        "witness_sha256": "fddd6864b7ccd59d7f76584180fd437aa7e767ece775c2583507b32685e6c7b5"
+      },
+      "multistart": {
+        "size": 9,
+        "queries": 60,
+        "cpu_ns": 1758134,
+        "wall_ns": 1755747,
+        "peak_traced_bytes": 7088,
+        "witness_sha256": "8d17436e850bf0a0f4cac3f79a666331e4a46e2ec956ce71be33194874b99dcd"
+      }
+    },
+    {
+      "id": "public-dev-012",
+      "family": "random",
+      "n": 6,
+      "host_edges": 15,
+      "optimum": 7,
+      "arm_order": [
+        "multistart",
+        "cycle_aware"
+      ],
+      "multistart": {
+        "size": 7,
+        "queries": 60,
+        "cpu_ns": 936329,
+        "wall_ns": 933335,
+        "peak_traced_bytes": 8160,
+        "witness_sha256": "6a0a59b0ccfad7f742ab882975194f22ffda7cdf2a6da9993aa32eebe3fdf4e1"
+      },
+      "cycle_aware": {
+        "size": 7,
+        "queries": 60,
+        "cpu_ns": 1197155,
+        "wall_ns": 1194869,
+        "peak_traced_bytes": 8160,
+        "witness_sha256": "de75df835e2cb318d700383adc90a9efb3f57e91414fd65df981fa032af735ba"
+      }
+    },
+    {
+      "id": "public-dev-013",
+      "family": "bipartite",
+      "n": 7,
+      "host_edges": 12,
+      "optimum": 7,
+      "arm_order": [
+        "cycle_aware",
+        "multistart"
+      ],
+      "cycle_aware": {
+        "size": 7,
+        "queries": 60,
+        "cpu_ns": 1531154,
+        "wall_ns": 1526208,
+        "peak_traced_bytes": 8472,
+        "witness_sha256": "31da788996aced655068cea71451d62dc6ad6d7d640be03105c840550e3919b6"
+      },
+      "multistart": {
+        "size": 7,
+        "queries": 60,
+        "cpu_ns": 1362953,
+        "wall_ns": 1359953,
+        "peak_traced_bytes": 6944,
+        "witness_sha256": "50e9dca5900e795417dded194728d12c73e36edab62537bd19fc160cfec30415"
+      }
+    },
+    {
+      "id": "public-dev-014",
+      "family": "random",
+      "n": 8,
+      "host_edges": 17,
+      "optimum": 11,
+      "arm_order": [
+        "multistart",
+        "cycle_aware"
+      ],
+      "multistart": {
+        "size": 11,
+        "queries": 60,
+        "cpu_ns": 2378207,
+        "wall_ns": 2375045,
+        "peak_traced_bytes": 10244,
+        "witness_sha256": "c3c30e7f4e613c7dff0ae5ca089c93b745dba059eb6879a938f9cf328de435a3"
+      },
+      "cycle_aware": {
+        "size": 11,
+        "queries": 60,
+        "cpu_ns": 2121189,
+        "wall_ns": 2118627,
+        "peak_traced_bytes": 7580,
+        "witness_sha256": "9306fdee0a800f5eb8d4b372950917c88cd1680c3e21448ad3f37a25614d50e3"
+      }
+    },
+    {
+      "id": "public-dev-015",
+      "family": "bipartite",
+      "n": 6,
+      "host_edges": 9,
+      "optimum": 6,
+      "arm_order": [
+        "cycle_aware",
+        "multistart"
+      ],
+      "cycle_aware": {
+        "size": 6,
+        "queries": 60,
+        "cpu_ns": 720626,
+        "wall_ns": 717638,
+        "peak_traced_bytes": 6528,
+        "witness_sha256": "a84aed1e57e63265e2923f557b9fa28fbf96fbd8faa3437716e8f50e5a6a91fe"
+      },
+      "multistart": {
+        "size": 6,
+        "queries": 60,
+        "cpu_ns": 594595,
+        "wall_ns": 592377,
+        "peak_traced_bytes": 6744,
+        "witness_sha256": "5f337471cabcd850f62ce9053171a7527a0b14d9b97c285c984423a897c9ef61"
+      }
+    },
+    {
+      "id": "public-dev-016",
+      "family": "random",
+      "n": 7,
+      "host_edges": 19,
+      "optimum": 9,
+      "arm_order": [
+        "multistart",
+        "cycle_aware"
+      ],
+      "multistart": {
+        "size": 9,
+        "queries": 60,
+        "cpu_ns": 1723233,
+        "wall_ns": 1720611,
+        "peak_traced_bytes": 12328,
+        "witness_sha256": "2ff2bbee6e52472f0d71b6a1cc4404fbb5f2c027cbe2d52c6d98cc912555c2cc"
+      },
+      "cycle_aware": {
+        "size": 9,
+        "queries": 60,
+        "cpu_ns": 1947558,
+        "wall_ns": 1945294,
+        "peak_traced_bytes": 10680,
+        "witness_sha256": "bfdc340f6f5ae88a61bd07c3b7ccfbfd008f48fa22fe5d4cf681489f43af13fd"
+      }
+    },
+    {
+      "id": "public-dev-017",
+      "family": "bipartite",
+      "n": 8,
+      "host_edges": 16,
+      "optimum": 9,
+      "arm_order": [
+        "cycle_aware",
+        "multistart"
+      ],
+      "cycle_aware": {
+        "size": 9,
+        "queries": 60,
+        "cpu_ns": 2382907,
+        "wall_ns": 2376903,
+        "peak_traced_bytes": 7720,
+        "witness_sha256": "7eceaffa774a649e4d544a855819372d3313994e04bfd976013b2952ea22bfd8"
+      },
+      "multistart": {
+        "size": 9,
+        "queries": 60,
+        "cpu_ns": 2112293,
+        "wall_ns": 2109510,
+        "peak_traced_bytes": 7768,
+        "witness_sha256": "c822bfbb165e7105c9f5e0df4540e7a5a971a3d3fee7f94ec8fec9c286256c68"
+      }
+    },
+    {
+      "id": "public-dev-018",
+      "family": "random",
+      "n": 6,
+      "host_edges": 12,
+      "optimum": 7,
+      "arm_order": [
+        "multistart",
+        "cycle_aware"
+      ],
+      "multistart": {
+        "size": 7,
+        "queries": 60,
+        "cpu_ns": 732292,
+        "wall_ns": 729017,
+        "peak_traced_bytes": 7028,
+        "witness_sha256": "6a0a59b0ccfad7f742ab882975194f22ffda7cdf2a6da9993aa32eebe3fdf4e1"
+      },
+      "cycle_aware": {
+        "size": 7,
+        "queries": 60,
+        "cpu_ns": 897438,
+        "wall_ns": 895165,
+        "peak_traced_bytes": 6924,
+        "witness_sha256": "b683623d3a4f035de79974c95b57914eff55979315378fcd2eef4e9edfdc0cb8"
+      }
+    },
+    {
+      "id": "public-dev-019",
+      "family": "bipartite",
+      "n": 7,
+      "host_edges": 12,
+      "optimum": 7,
+      "arm_order": [
+        "cycle_aware",
+        "multistart"
+      ],
+      "cycle_aware": {
+        "size": 7,
+        "queries": 60,
+        "cpu_ns": 1241638,
+        "wall_ns": 1238523,
+        "peak_traced_bytes": 6840,
+        "witness_sha256": "5cb611c818771886d01fd6165bb0fa764bd40acd4f6823b47f240a8c8a9e601d"
+      },
+      "multistart": {
+        "size": 7,
+        "queries": 60,
+        "cpu_ns": 1074635,
+        "wall_ns": 1072388,
+        "peak_traced_bytes": 6944,
+        "witness_sha256": "fd0b13f97db64f5dfd231584cab0999ac5d5639ed4110f5aafe16f86c2b12a66"
+      }
+    },
+    {
+      "id": "public-dev-020",
+      "family": "random",
+      "n": 8,
+      "host_edges": 14,
+      "optimum": 10,
+      "arm_order": [
+        "multistart",
+        "cycle_aware"
+      ],
+      "multistart": {
+        "size": 10,
+        "queries": 60,
+        "cpu_ns": 1684627,
+        "wall_ns": 1682306,
+        "peak_traced_bytes": 7056,
+        "witness_sha256": "da9ab2a58715d85876555c2f80e9b7631550d6cf29c3c30eedf8dd0be873c0a0"
+      },
+      "cycle_aware": {
+        "size": 10,
+        "queries": 60,
+        "cpu_ns": 2005537,
+        "wall_ns": 2214207,
+        "peak_traced_bytes": 6616,
+        "witness_sha256": "38fad76f6bce4b9b78cd3c4ff84c1d9ed3989517fb0654fbaf81c4586643175e"
+      }
+    },
+    {
+      "id": "public-dev-021",
+      "family": "bipartite",
+      "n": 6,
+      "host_edges": 9,
+      "optimum": 6,
+      "arm_order": [
+        "cycle_aware",
+        "multistart"
+      ],
+      "cycle_aware": {
+        "size": 6,
+        "queries": 60,
+        "cpu_ns": 797155,
+        "wall_ns": 794082,
+        "peak_traced_bytes": 6656,
+        "witness_sha256": "5f337471cabcd850f62ce9053171a7527a0b14d9b97c285c984423a897c9ef61"
+      },
+      "multistart": {
+        "size": 6,
+        "queries": 60,
+        "cpu_ns": 618667,
+        "wall_ns": 616347,
+        "peak_traced_bytes": 6744,
+        "witness_sha256": "2aeeadd3dfb9b190d2de00bb614fcfa237b21fddd5f023b067b8475396984e46"
+      }
+    },
+    {
+      "id": "public-dev-022",
+      "family": "random",
+      "n": 7,
+      "host_edges": 16,
+      "optimum": 9,
+      "arm_order": [
+        "multistart",
+        "cycle_aware"
+      ],
+      "multistart": {
+        "size": 9,
+        "queries": 60,
+        "cpu_ns": 1253218,
+        "wall_ns": 1250769,
+        "peak_traced_bytes": 7772,
+        "witness_sha256": "af633c1b3e16d2f3aaa81eb70e5e0a65218a02712a3ecf5d9a3746ab782d88d8"
+      },
+      "cycle_aware": {
+        "size": 9,
+        "queries": 60,
+        "cpu_ns": 1441575,
+        "wall_ns": 1439386,
+        "peak_traced_bytes": 7660,
+        "witness_sha256": "5114b04356e09a8b7029efa3ae314560f0c33e7d3903bd9ff1f0ebc95183d39a"
+      }
+    },
+    {
+      "id": "public-dev-023",
+      "family": "bipartite",
+      "n": 8,
+      "host_edges": 16,
+      "optimum": 9,
+      "arm_order": [
+        "cycle_aware",
+        "multistart"
+      ],
+      "cycle_aware": {
+        "size": 9,
+        "queries": 60,
+        "cpu_ns": 2119801,
+        "wall_ns": 2115935,
+        "peak_traced_bytes": 7720,
+        "witness_sha256": "5c462c6d0be09dcdaac08406deac490fcd3ddb278ada0242236c50beac233e78"
+      },
+      "multistart": {
+        "size": 9,
+        "queries": 60,
+        "cpu_ns": 1831122,
+        "wall_ns": 1828774,
+        "peak_traced_bytes": 7768,
+        "witness_sha256": "8f9be2dde58dc095452b534d7b417d3add98142a4753a53ea6f329251975fda3"
+      }
+    },
+    {
+      "id": "public-dev-024",
+      "family": "random",
+      "n": 6,
+      "host_edges": 15,
+      "optimum": 7,
+      "arm_order": [
+        "multistart",
+        "cycle_aware"
+      ],
+      "multistart": {
+        "size": 7,
+        "queries": 60,
+        "cpu_ns": 914699,
+        "wall_ns": 911567,
+        "peak_traced_bytes": 8160,
+        "witness_sha256": "6a0a59b0ccfad7f742ab882975194f22ffda7cdf2a6da9993aa32eebe3fdf4e1"
+      },
+      "cycle_aware": {
+        "size": 7,
+        "queries": 60,
+        "cpu_ns": 1174559,
+        "wall_ns": 1172080,
+        "peak_traced_bytes": 8112,
+        "witness_sha256": "eb101be6bbb9303eb57c551a0aa6cff8e5bbf0386f12327d2b0229953538374a"
+      }
+    },
+    {
+      "id": "public-dev-025",
+      "family": "bipartite",
+      "n": 7,
+      "host_edges": 12,
+      "optimum": 7,
+      "arm_order": [
+        "cycle_aware",
+        "multistart"
+      ],
+      "cycle_aware": {
+        "size": 7,
+        "queries": 60,
+        "cpu_ns": 2259394,
+        "wall_ns": 2253990,
+        "peak_traced_bytes": 6840,
+        "witness_sha256": "5cd1906d020932a585e6739aa48062598043a2f2c08bc3f989a3c8bb4ef17640"
+      },
+      "multistart": {
+        "size": 7,
+        "queries": 60,
+        "cpu_ns": 1075986,
+        "wall_ns": 1073576,
+        "peak_traced_bytes": 6944,
+        "witness_sha256": "045c41d44fae16ef687b8273bd363a450baf7ff0a75be65da654bdc1e7d96915"
+      }
+    },
+    {
+      "id": "public-dev-026",
+      "family": "random",
+      "n": 8,
+      "host_edges": 20,
+      "optimum": 11,
+      "arm_order": [
+        "multistart",
+        "cycle_aware"
+      ],
+      "multistart": {
+        "size": 10,
+        "queries": 60,
+        "cpu_ns": 2057352,
+        "wall_ns": 2054236,
+        "peak_traced_bytes": 10080,
+        "witness_sha256": "9aa5fc892d777881af717bb86a9621719ca3a4f45b0c5fb3488522b7344f3bf8"
+      },
+      "cycle_aware": {
+        "size": 11,
+        "queries": 60,
+        "cpu_ns": 2408692,
+        "wall_ns": 2406385,
+        "peak_traced_bytes": 10088,
+        "witness_sha256": "7e251999ade724d48f009289f06a64f3934918ef259471181d2d51bdc09e3e6e"
+      }
+    },
+    {
+      "id": "public-dev-027",
+      "family": "bipartite",
+      "n": 6,
+      "host_edges": 9,
+      "optimum": 6,
+      "arm_order": [
+        "cycle_aware",
+        "multistart"
+      ],
+      "cycle_aware": {
+        "size": 6,
+        "queries": 60,
+        "cpu_ns": 906461,
+        "wall_ns": 900652,
+        "peak_traced_bytes": 7008,
+        "witness_sha256": "b3be64ed2a6be80ec0617795a1d6bc756d9f1d3aaf56dd873ccc94f441620853"
+      },
+      "multistart": {
+        "size": 6,
+        "queries": 60,
+        "cpu_ns": 641423,
+        "wall_ns": 639086,
+        "peak_traced_bytes": 6808,
+        "witness_sha256": "a84aed1e57e63265e2923f557b9fa28fbf96fbd8faa3437716e8f50e5a6a91fe"
+      }
+    },
+    {
+      "id": "public-dev-028",
+      "family": "random",
+      "n": 7,
+      "host_edges": 13,
+      "optimum": 9,
+      "arm_order": [
+        "multistart",
+        "cycle_aware"
+      ],
+      "multistart": {
+        "size": 9,
+        "queries": 60,
+        "cpu_ns": 1329481,
+        "wall_ns": 1326903,
+        "peak_traced_bytes": 9148,
+        "witness_sha256": "90b5ded46f3e8877c623dc32c0b327260cbc848f16798bb684abcd3f3541135f"
+      },
+      "cycle_aware": {
+        "size": 9,
+        "queries": 60,
+        "cpu_ns": 1346031,
+        "wall_ns": 1343708,
+        "peak_traced_bytes": 6756,
+        "witness_sha256": "22e03314ed24b35954848dd3b4d62f6e49a8bff2d4f1f143cca519e83dca6e85"
+      }
+    },
+    {
+      "id": "public-dev-029",
+      "family": "bipartite",
+      "n": 8,
+      "host_edges": 14,
+      "optimum": 9,
+      "arm_order": [
+        "cycle_aware",
+        "multistart"
+      ],
+      "cycle_aware": {
+        "size": 9,
+        "queries": 60,
+        "cpu_ns": 2208050,
+        "wall_ns": 2205828,
+        "peak_traced_bytes": 8204,
+        "witness_sha256": "14370ea13e9f878ce2a0cc8d519603be1e7d55b4bb750f449e42f12c91d1c297"
+      },
+      "multistart": {
+        "size": 9,
+        "queries": 60,
+        "cpu_ns": 1756735,
+        "wall_ns": 1754449,
+        "peak_traced_bytes": 7100,
+        "witness_sha256": "db923e4abf243559e85e2f5164618dfefa9481590512825ead4ab67868f8eebe"
+      }
+    },
+    {
+      "id": "public-dev-030",
+      "family": "random",
+      "n": 6,
+      "host_edges": 15,
+      "optimum": 7,
+      "arm_order": [
+        "multistart",
+        "cycle_aware"
+      ],
+      "multistart": {
+        "size": 7,
+        "queries": 60,
+        "cpu_ns": 962816,
+        "wall_ns": 960155,
+        "peak_traced_bytes": 9736,
+        "witness_sha256": "6a0a59b0ccfad7f742ab882975194f22ffda7cdf2a6da9993aa32eebe3fdf4e1"
+      },
+      "cycle_aware": {
+        "size": 7,
+        "queries": 60,
+        "cpu_ns": 1132478,
+        "wall_ns": 1130370,
+        "peak_traced_bytes": 8112,
+        "witness_sha256": "6fbe185cc76a00193497fbefd4ff87b37972d3579a66ccad471552ccaddaa7fb"
+      }
+    },
+    {
+      "id": "public-dev-031",
+      "family": "bipartite",
+      "n": 7,
+      "host_edges": 12,
+      "optimum": 7,
+      "arm_order": [
+        "cycle_aware",
+        "multistart"
+      ],
+      "cycle_aware": {
+        "size": 7,
+        "queries": 60,
+        "cpu_ns": 1386472,
+        "wall_ns": 1382580,
+        "peak_traced_bytes": 6840,
+        "witness_sha256": "3787901e02d397018fd39b4530e5cf104567e8fa07da036abbbf7051bdcbfa88"
+      },
+      "multistart": {
+        "size": 7,
+        "queries": 60,
+        "cpu_ns": 1073255,
+        "wall_ns": 1070751,
+        "peak_traced_bytes": 6776,
+        "witness_sha256": "aece96bfcbb75d270613d50792bb27f206dcd997135b22dbe0af11e786961883"
+      }
+    },
+    {
+      "id": "public-dev-032",
+      "family": "random",
+      "n": 8,
+      "host_edges": 17,
+      "optimum": 11,
+      "arm_order": [
+        "multistart",
+        "cycle_aware"
+      ],
+      "multistart": {
+        "size": 11,
+        "queries": 60,
+        "cpu_ns": 1954073,
+        "wall_ns": 1951551,
+        "peak_traced_bytes": 7900,
+        "witness_sha256": "2a6ff0e1c74d1102ce0b3851d21526ee1b89236d59ae0066978734635699dc19"
+      },
+      "cycle_aware": {
+        "size": 11,
+        "queries": 60,
+        "cpu_ns": 2188741,
+        "wall_ns": 2353005,
+        "peak_traced_bytes": 7556,
+        "witness_sha256": "2a6ff0e1c74d1102ce0b3851d21526ee1b89236d59ae0066978734635699dc19"
+      }
+    },
+    {
+      "id": "public-dev-033",
+      "family": "bipartite",
+      "n": 6,
+      "host_edges": 9,
+      "optimum": 6,
+      "arm_order": [
+        "cycle_aware",
+        "multistart"
+      ],
+      "cycle_aware": {
+        "size": 6,
+        "queries": 60,
+        "cpu_ns": 719475,
+        "wall_ns": 716006,
+        "peak_traced_bytes": 6592,
+        "witness_sha256": "5f337471cabcd850f62ce9053171a7527a0b14d9b97c285c984423a897c9ef61"
+      },
+      "multistart": {
+        "size": 6,
+        "queries": 60,
+        "cpu_ns": 647780,
+        "wall_ns": 645503,
+        "peak_traced_bytes": 6528,
+        "witness_sha256": "a84aed1e57e63265e2923f557b9fa28fbf96fbd8faa3437716e8f50e5a6a91fe"
+      }
+    },
+    {
+      "id": "public-dev-034",
+      "family": "random",
+      "n": 7,
+      "host_edges": 19,
+      "optimum": 9,
+      "arm_order": [
+        "multistart",
+        "cycle_aware"
+      ],
+      "multistart": {
+        "size": 9,
+        "queries": 60,
+        "cpu_ns": 1586567,
+        "wall_ns": 1583444,
+        "peak_traced_bytes": 10488,
+        "witness_sha256": "d780e1176e30fed29cf512ecd69fc6702cd56ff60de1d994a2f725a75528e114"
+      },
+      "cycle_aware": {
+        "size": 9,
+        "queries": 60,
+        "cpu_ns": 2000586,
+        "wall_ns": 1997815,
+        "peak_traced_bytes": 10584,
+        "witness_sha256": "1b9707b20ad1170bccd88134552d9f0fd35f36ad173461444786aabc00c8e053"
+      }
+    },
+    {
+      "id": "public-dev-035",
+      "family": "bipartite",
+      "n": 8,
+      "host_edges": 16,
+      "optimum": 9,
+      "arm_order": [
+        "cycle_aware",
+        "multistart"
+      ],
+      "cycle_aware": {
+        "size": 8,
+        "queries": 60,
+        "cpu_ns": 2234661,
+        "wall_ns": 2228923,
+        "peak_traced_bytes": 7712,
+        "witness_sha256": "2bcf665b929f12d061c0c316a4fda3bd06550d58c005e581cc042b66801ad4b8"
+      },
+      "multistart": {
+        "size": 8,
+        "queries": 60,
+        "cpu_ns": 1933057,
+        "wall_ns": 1930383,
+        "peak_traced_bytes": 7648,
+        "witness_sha256": "1fef9835c2feca433930898c0f6df6eed5989322bd987c5bdd2ce5cccef8ef69"
+      }
+    },
+    {
+      "id": "public-dev-036",
+      "family": "random",
+      "n": 6,
+      "host_edges": 12,
+      "optimum": 7,
+      "arm_order": [
+        "multistart",
+        "cycle_aware"
+      ],
+      "multistart": {
+        "size": 7,
+        "queries": 60,
+        "cpu_ns": 705333,
+        "wall_ns": 701314,
+        "peak_traced_bytes": 6804,
+        "witness_sha256": "62656ede0405d677fc016b8d364975b5befa5e439614518245ad3ed60ed20203"
+      },
+      "cycle_aware": {
+        "size": 7,
+        "queries": 60,
+        "cpu_ns": 813701,
+        "wall_ns": 811415,
+        "peak_traced_bytes": 6868,
+        "witness_sha256": "89ce42bbd94b0dfd733770ff7210671934427ef40e54a2234c193d5f22630092"
+      }
+    },
+    {
+      "id": "public-dev-037",
+      "family": "bipartite",
+      "n": 7,
+      "host_edges": 12,
+      "optimum": 7,
+      "arm_order": [
+        "cycle_aware",
+        "multistart"
+      ],
+      "cycle_aware": {
+        "size": 7,
+        "queries": 60,
+        "cpu_ns": 1256808,
+        "wall_ns": 1253972,
+        "peak_traced_bytes": 6840,
+        "witness_sha256": "15899bd71a999878c5aea76a572dac867e49adf329d8c7c42fc749c394228fcf"
+      },
+      "multistart": {
+        "size": 7,
+        "queries": 60,
+        "cpu_ns": 1302225,
+        "wall_ns": 1299497,
+        "peak_traced_bytes": 6776,
+        "witness_sha256": "ed55380ab6691ee8ecc4607f1ac8f4ceb8804ab604c236cd8582643d1dc8ce81"
+      }
+    },
+    {
+      "id": "public-dev-038",
+      "family": "random",
+      "n": 8,
+      "host_edges": 14,
+      "optimum": 10,
+      "arm_order": [
+        "multistart",
+        "cycle_aware"
+      ],
+      "multistart": {
+        "size": 10,
+        "queries": 60,
+        "cpu_ns": 1830219,
+        "wall_ns": 1827243,
+        "peak_traced_bytes": 7000,
+        "witness_sha256": "00df319d6e047e3f98d399d234a02c47e6604cdff3c09f6e49123c4bcd3bac7c"
+      },
+      "cycle_aware": {
+        "size": 10,
+        "queries": 60,
+        "cpu_ns": 1910228,
+        "wall_ns": 1907970,
+        "peak_traced_bytes": 6640,
+        "witness_sha256": "f6a8565561994ac32da0db895d1d1f5cb51798f34e322b25cc74f735f5217033"
+      }
+    },
+    {
+      "id": "public-dev-039",
+      "family": "bipartite",
+      "n": 6,
+      "host_edges": 9,
+      "optimum": 6,
+      "arm_order": [
+        "cycle_aware",
+        "multistart"
+      ],
+      "cycle_aware": {
+        "size": 6,
+        "queries": 60,
+        "cpu_ns": 714729,
+        "wall_ns": 711341,
+        "peak_traced_bytes": 6496,
+        "witness_sha256": "2aeeadd3dfb9b190d2de00bb614fcfa237b21fddd5f023b067b8475396984e46"
+      },
+      "multistart": {
+        "size": 6,
+        "queries": 60,
+        "cpu_ns": 667709,
+        "wall_ns": 665011,
+        "peak_traced_bytes": 6528,
+        "witness_sha256": "2e15d6af4e8379b31eb8b46e1895a9475baaa4c8d704081a3662a413e16ffbd3"
+      }
+    }
+  ],
+  "cycle_wins": 2,
+  "baseline_wins": 1,
+  "ties": 37,
+  "timing_method": "process_time_ns",
+  "memory_method": "tracemalloc_peak_python_allocations",
+  "cpu_budget_matched": false,
+  "sealed": false,
+  "promotion_allowed": false
+}

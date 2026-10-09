@@ -1,0 +1,39 @@
+{
+  "finding_id": "GEN-AUD-027",
+  "severity": "CRITICAL",
+  "classification": "LOCAL_DEV_REPRO_AND_PATCH_INDEPENDENT_REAUDIT_PENDING",
+  "affected": "custody_reference/evaluator.py evaluate_frozen",
+  "prepatch_reproductions": [
+    {
+      "case": "reservation_dir omitted",
+      "result": "same synthetic pool/prereg evaluated twice; 0 reservation files"
+    },
+    {
+      "case": "changed prereg campaign_id",
+      "result": "same synthetic pool evaluated twice with reservation_dir; 2 .reserved files"
+    }
+  ],
+  "repair": {
+    "mandatory_reservation_dir": true,
+    "owner_only_directory": true,
+    "atomic_sqlite_task_content_reservations": true,
+    "commit_before_predictions": true,
+    "duplicate_task_content_rejected": true,
+    "task_id_rename_and_pool_reorder_replay_blocked": true,
+    "partial_pool_overlap_blocked": true
+  },
+  "limitations": [
+    "no externally controlled evaluator/key/DB",
+    "not an immutable external timestamp",
+    "cannot block semantic near duplicates",
+    "task budget is not measured CPU/operation budget",
+    "local same-process checks only"
+  ],
+  "new_test_file": "tests/test_gen_aud_027.py",
+  "new_test_count": 12,
+  "real_sealed_jobs_run": 0,
+  "external_lean_run": false,
+  "independent_custody_proven": false,
+  "promotion_allowed": false,
+  "latest_independent_audit": "REV11 BLOCK_PROMOTION"
+}

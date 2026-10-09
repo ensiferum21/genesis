@@ -1,0 +1,553 @@
+{
+  "schema": "genesis-c4-cycle-aware-dev-v1",
+  "status": "PUBLIC_DEV_ONLY",
+  "budget": 60,
+  "records": [
+    {
+      "id": "public-dev-000",
+      "family": "random",
+      "baseline": 7,
+      "cycle_aware": 7,
+      "optimum": 7,
+      "baseline_queries": 60,
+      "cycle_queries": 60
+    },
+    {
+      "id": "public-dev-001",
+      "family": "bipartite",
+      "baseline": 7,
+      "cycle_aware": 7,
+      "optimum": 7,
+      "baseline_queries": 60,
+      "cycle_queries": 60
+    },
+    {
+      "id": "public-dev-002",
+      "family": "random",
+      "baseline": 11,
+      "cycle_aware": 11,
+      "optimum": 11,
+      "baseline_queries": 60,
+      "cycle_queries": 60
+    },
+    {
+      "id": "public-dev-003",
+      "family": "bipartite",
+      "baseline": 6,
+      "cycle_aware": 6,
+      "optimum": 6,
+      "baseline_queries": 60,
+      "cycle_queries": 60
+    },
+    {
+      "id": "public-dev-004",
+      "family": "random",
+      "baseline": 9,
+      "cycle_aware": 9,
+      "optimum": 9,
+      "baseline_queries": 60,
+      "cycle_queries": 60
+    },
+    {
+      "id": "public-dev-005",
+      "family": "bipartite",
+      "baseline": 8,
+      "cycle_aware": 9,
+      "optimum": 9,
+      "baseline_queries": 60,
+      "cycle_queries": 60
+    },
+    {
+      "id": "public-dev-006",
+      "family": "random",
+      "baseline": 7,
+      "cycle_aware": 7,
+      "optimum": 7,
+      "baseline_queries": 60,
+      "cycle_queries": 60
+    },
+    {
+      "id": "public-dev-007",
+      "family": "bipartite",
+      "baseline": 7,
+      "cycle_aware": 7,
+      "optimum": 7,
+      "baseline_queries": 60,
+      "cycle_queries": 60
+    },
+    {
+      "id": "public-dev-008",
+      "family": "random",
+      "baseline": 11,
+      "cycle_aware": 11,
+      "optimum": 11,
+      "baseline_queries": 60,
+      "cycle_queries": 60
+    },
+    {
+      "id": "public-dev-009",
+      "family": "bipartite",
+      "baseline": 6,
+      "cycle_aware": 6,
+      "optimum": 6,
+      "baseline_queries": 60,
+      "cycle_queries": 60
+    },
+    {
+      "id": "public-dev-010",
+      "family": "random",
+      "baseline": 8,
+      "cycle_aware": 9,
+      "optimum": 9,
+      "baseline_queries": 60,
+      "cycle_queries": 60
+    },
+    {
+      "id": "public-dev-011",
+      "family": "bipartite",
+      "baseline": 9,
+      "cycle_aware": 8,
+      "optimum": 9,
+      "baseline_queries": 60,
+      "cycle_queries": 60
+    },
+    {
+      "id": "public-dev-012",
+      "family": "random",
+      "baseline": 7,
+      "cycle_aware": 7,
+      "optimum": 7,
+      "baseline_queries": 60,
+      "cycle_queries": 60
+    },
+    {
+      "id": "public-dev-013",
+      "family": "bipartite",
+      "baseline": 7,
+      "cycle_aware": 7,
+      "optimum": 7,
+      "baseline_queries": 60,
+      "cycle_queries": 60
+    },
+    {
+      "id": "public-dev-014",
+      "family": "random",
+      "baseline": 10,
+      "cycle_aware": 11,
+      "optimum": 11,
+      "baseline_queries": 60,
+      "cycle_queries": 60
+    },
+    {
+      "id": "public-dev-015",
+      "family": "bipartite",
+      "baseline": 6,
+      "cycle_aware": 6,
+      "optimum": 6,
+      "baseline_queries": 60,
+      "cycle_queries": 60
+    },
+    {
+      "id": "public-dev-016",
+      "family": "random",
+      "baseline": 9,
+      "cycle_aware": 9,
+      "optimum": 9,
+      "baseline_queries": 60,
+      "cycle_queries": 60
+    },
+    {
+      "id": "public-dev-017",
+      "family": "bipartite",
+      "baseline": 8,
+      "cycle_aware": 8,
+      "optimum": 9,
+      "baseline_queries": 60,
+      "cycle_queries": 60
+    },
+    {
+      "id": "public-dev-018",
+      "family": "random",
+      "baseline": 7,
+      "cycle_aware": 7,
+      "optimum": 7,
+      "baseline_queries": 60,
+      "cycle_queries": 60
+    },
+    {
+      "id": "public-dev-019",
+      "family": "bipartite",
+      "baseline": 7,
+      "cycle_aware": 7,
+      "optimum": 7,
+      "baseline_queries": 60,
+      "cycle_queries": 60
+    },
+    {
+      "id": "public-dev-020",
+      "family": "random",
+      "baseline": 10,
+      "cycle_aware": 10,
+      "optimum": 10,
+      "baseline_queries": 60,
+      "cycle_queries": 60
+    },
+    {
+      "id": "public-dev-021",
+      "family": "bipartite",
+      "baseline": 6,
+      "cycle_aware": 6,
+      "optimum": 6,
+      "baseline_queries": 60,
+      "cycle_queries": 60
+    },
+    {
+      "id": "public-dev-022",
+      "family": "random",
+      "baseline": 9,
+      "cycle_aware": 9,
+      "optimum": 9,
+      "baseline_queries": 60,
+      "cycle_queries": 60
+    },
+    {
+      "id": "public-dev-023",
+      "family": "bipartite",
+      "baseline": 9,
+      "cycle_aware": 9,
+      "optimum": 9,
+      "baseline_queries": 60,
+      "cycle_queries": 60
+    },
+    {
+      "id": "public-dev-024",
+      "family": "random",
+      "baseline": 7,
+      "cycle_aware": 7,
+      "optimum": 7,
+      "baseline_queries": 60,
+      "cycle_queries": 60
+    },
+    {
+      "id": "public-dev-025",
+      "family": "bipartite",
+      "baseline": 7,
+      "cycle_aware": 7,
+      "optimum": 7,
+      "baseline_queries": 60,
+      "cycle_queries": 60
+    },
+    {
+      "id": "public-dev-026",
+      "family": "random",
+      "baseline": 11,
+      "cycle_aware": 11,
+      "optimum": 11,
+      "baseline_queries": 60,
+      "cycle_queries": 60
+    },
+    {
+      "id": "public-dev-027",
+      "family": "bipartite",
+      "baseline": 6,
+      "cycle_aware": 6,
+      "optimum": 6,
+      "baseline_queries": 60,
+      "cycle_queries": 60
+    },
+    {
+      "id": "public-dev-028",
+      "family": "random",
+      "baseline": 9,
+      "cycle_aware": 9,
+      "optimum": 9,
+      "baseline_queries": 60,
+      "cycle_queries": 60
+    },
+    {
+      "id": "public-dev-029",
+      "family": "bipartite",
+      "baseline": 8,
+      "cycle_aware": 9,
+      "optimum": 9,
+      "baseline_queries": 60,
+      "cycle_queries": 60
+    },
+    {
+      "id": "public-dev-030",
+      "family": "random",
+      "baseline": 7,
+      "cycle_aware": 7,
+      "optimum": 7,
+      "baseline_queries": 60,
+      "cycle_queries": 60
+    },
+    {
+      "id": "public-dev-031",
+      "family": "bipartite",
+      "baseline": 7,
+      "cycle_aware": 7,
+      "optimum": 7,
+      "baseline_queries": 60,
+      "cycle_queries": 60
+    },
+    {
+      "id": "public-dev-032",
+      "family": "random",
+      "baseline": 10,
+      "cycle_aware": 11,
+      "optimum": 11,
+      "baseline_queries": 60,
+      "cycle_queries": 60
+    },
+    {
+      "id": "public-dev-033",
+      "family": "bipartite",
+      "baseline": 6,
+      "cycle_aware": 6,
+      "optimum": 6,
+      "baseline_queries": 60,
+      "cycle_queries": 60
+    },
+    {
+      "id": "public-dev-034",
+      "family": "random",
+      "baseline": 9,
+      "cycle_aware": 9,
+      "optimum": 9,
+      "baseline_queries": 60,
+      "cycle_queries": 60
+    },
+    {
+      "id": "public-dev-035",
+      "family": "bipartite",
+      "baseline": 8,
+      "cycle_aware": 9,
+      "optimum": 9,
+      "baseline_queries": 60,
+      "cycle_queries": 60
+    },
+    {
+      "id": "public-dev-036",
+      "family": "random",
+      "baseline": 7,
+      "cycle_aware": 7,
+      "optimum": 7,
+      "baseline_queries": 60,
+      "cycle_queries": 60
+    },
+    {
+      "id": "public-dev-037",
+      "family": "bipartite",
+      "baseline": 7,
+      "cycle_aware": 7,
+      "optimum": 7,
+      "baseline_queries": 60,
+      "cycle_queries": 60
+    },
+    {
+      "id": "public-dev-038",
+      "family": "random",
+      "baseline": 9,
+      "cycle_aware": 10,
+      "optimum": 10,
+      "baseline_queries": 60,
+      "cycle_queries": 60
+    },
+    {
+      "id": "public-dev-039",
+      "family": "bipartite",
+      "baseline": 6,
+      "cycle_aware": 6,
+      "optimum": 6,
+      "baseline_queries": 60,
+      "cycle_queries": 60
+    },
+    {
+      "id": "public-dev-040",
+      "family": "random",
+      "baseline": 9,
+      "cycle_aware": 9,
+      "optimum": 9,
+      "baseline_queries": 60,
+      "cycle_queries": 60
+    },
+    {
+      "id": "public-dev-041",
+      "family": "bipartite",
+      "baseline": 9,
+      "cycle_aware": 9,
+      "optimum": 9,
+      "baseline_queries": 60,
+      "cycle_queries": 60
+    },
+    {
+      "id": "public-dev-042",
+      "family": "random",
+      "baseline": 7,
+      "cycle_aware": 7,
+      "optimum": 7,
+      "baseline_queries": 60,
+      "cycle_queries": 60
+    },
+    {
+      "id": "public-dev-043",
+      "family": "bipartite",
+      "baseline": 7,
+      "cycle_aware": 7,
+      "optimum": 7,
+      "baseline_queries": 60,
+      "cycle_queries": 60
+    },
+    {
+      "id": "public-dev-044",
+      "family": "random",
+      "baseline": 11,
+      "cycle_aware": 11,
+      "optimum": 11,
+      "baseline_queries": 60,
+      "cycle_queries": 60
+    },
+    {
+      "id": "public-dev-045",
+      "family": "bipartite",
+      "baseline": 6,
+      "cycle_aware": 6,
+      "optimum": 6,
+      "baseline_queries": 60,
+      "cycle_queries": 60
+    },
+    {
+      "id": "public-dev-046",
+      "family": "random",
+      "baseline": 8,
+      "cycle_aware": 8,
+      "optimum": 8,
+      "baseline_queries": 60,
+      "cycle_queries": 60
+    },
+    {
+      "id": "public-dev-047",
+      "family": "bipartite",
+      "baseline": 8,
+      "cycle_aware": 9,
+      "optimum": 9,
+      "baseline_queries": 60,
+      "cycle_queries": 60
+    },
+    {
+      "id": "public-dev-048",
+      "family": "random",
+      "baseline": 7,
+      "cycle_aware": 7,
+      "optimum": 7,
+      "baseline_queries": 60,
+      "cycle_queries": 60
+    },
+    {
+      "id": "public-dev-049",
+      "family": "bipartite",
+      "baseline": 7,
+      "cycle_aware": 7,
+      "optimum": 7,
+      "baseline_queries": 60,
+      "cycle_queries": 60
+    },
+    {
+      "id": "public-dev-050",
+      "family": "random",
+      "baseline": 11,
+      "cycle_aware": 11,
+      "optimum": 11,
+      "baseline_queries": 60,
+      "cycle_queries": 60
+    },
+    {
+      "id": "public-dev-051",
+      "family": "bipartite",
+      "baseline": 6,
+      "cycle_aware": 6,
+      "optimum": 6,
+      "baseline_queries": 60,
+      "cycle_queries": 60
+    },
+    {
+      "id": "public-dev-052",
+      "family": "random",
+      "baseline": 9,
+      "cycle_aware": 9,
+      "optimum": 9,
+      "baseline_queries": 60,
+      "cycle_queries": 60
+    },
+    {
+      "id": "public-dev-053",
+      "family": "bipartite",
+      "baseline": 9,
+      "cycle_aware": 9,
+      "optimum": 9,
+      "baseline_queries": 60,
+      "cycle_queries": 60
+    },
+    {
+      "id": "public-dev-054",
+      "family": "random",
+      "baseline": 7,
+      "cycle_aware": 7,
+      "optimum": 7,
+      "baseline_queries": 60,
+      "cycle_queries": 60
+    },
+    {
+      "id": "public-dev-055",
+      "family": "bipartite",
+      "baseline": 7,
+      "cycle_aware": 7,
+      "optimum": 7,
+      "baseline_queries": 60,
+      "cycle_queries": 60
+    },
+    {
+      "id": "public-dev-056",
+      "family": "random",
+      "baseline": 11,
+      "cycle_aware": 11,
+      "optimum": 11,
+      "baseline_queries": 60,
+      "cycle_queries": 60
+    },
+    {
+      "id": "public-dev-057",
+      "family": "bipartite",
+      "baseline": 6,
+      "cycle_aware": 6,
+      "optimum": 6,
+      "baseline_queries": 60,
+      "cycle_queries": 60
+    },
+    {
+      "id": "public-dev-058",
+      "family": "random",
+      "baseline": 9,
+      "cycle_aware": 9,
+      "optimum": 9,
+      "baseline_queries": 60,
+      "cycle_queries": 60
+    },
+    {
+      "id": "public-dev-059",
+      "family": "bipartite",
+      "baseline": 9,
+      "cycle_aware": 9,
+      "optimum": 9,
+      "baseline_queries": 60,
+      "cycle_queries": 60
+    }
+  ],
+  "cycle_wins": 8,
+  "baseline_wins": 1,
+  "ties": 51,
+  "cpu_matched": false,
+  "sealed": false,
+  "promotion_allowed": false
+}

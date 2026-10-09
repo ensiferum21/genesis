@@ -1,0 +1,14 @@
+{
+  "date_sgt": "2026-10-09",
+  "audit_kind": "LOCAL_ADVERSARIAL_DEV_NOT_INDEPENDENT",
+  "findings": [
+    {"id": "GEN-AUD-015", "severity": "CRITICAL", "prepatch": "locally generated self-signed fake evidence yielded promotion_allowed_by_this_preflight=true", "postpatch": "prerequisites_present=true but promotion_allowed_by_this_preflight=false; CLI nonzero", "independent_reaudit": false},
+    {"id": "GEN-AUD-016", "severity": "HIGH", "prepatch": "untracked symlink after manifest creation produced zero verification issues", "postpatch": "symlink/special evidence entries fail closed", "independent_reaudit": false}
+  ],
+  "regression": {"run": 211, "passed": 210, "skipped": 1},
+  "new_sealed_jobs": 0,
+  "external_lean": false,
+  "accepted_base_changed": false,
+  "promotion": false,
+  "batch1": "FAILED_REPAIR_REQUIRED"
+}

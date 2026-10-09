@@ -1,0 +1,49 @@
+{
+  "after": {
+    "attack": "GEN-AUD-025 partial run + campaign/custodian swap",
+    "postpatch_verdict": {
+      "blocked": true,
+      "exception": "ValueError",
+      "reason": "aggregate campaign ID differs from independently expected campaign"
+    },
+    "real_pool_tasks": 2,
+    "reported_campaign": "unrelated-campaign",
+    "reported_custodian": "unrelated-custodian",
+    "signed_reported_tasks": 1
+  },
+  "before": {
+    "attack": "GEN-AUD-025 partial run + campaign/custodian swap",
+    "prepatch_verdict": {
+      "bundle_hashes_valid": true,
+      "independent_custody_proven": false,
+      "signature_valid": true
+    },
+    "real_pool_tasks": 2,
+    "reported_campaign": "unrelated-campaign",
+    "reported_custodian": "unrelated-custodian",
+    "signed_reported_tasks": 1
+  },
+  "classification": "SIGNED_PARTIAL_RUN_AND_IDENTITY_SCOPE_ACKNOWLEDGEMENT",
+  "external_custody_proven": false,
+  "finding_id": "GEN-AUD-025",
+  "full_suite": {
+    "exit_code": 0,
+    "failed": 0,
+    "passed": 251,
+    "run": 252,
+    "skipped": 1
+  },
+  "independent_external_reaudit": false,
+  "limitations": [
+    "same-process test signer",
+    "expected counts and identity require out-of-band authority",
+    "signature cannot prove actual task execution",
+    "no independent proof kernel"
+  ],
+  "new_sealed_jobs_run": 0,
+  "new_tests": 6,
+  "real_lean_executed": false,
+  "schema": "genesis-local-adversarial-audit-v1",
+  "scientific_promotion": false,
+  "severity": "HIGH"
+}

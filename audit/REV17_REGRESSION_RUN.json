@@ -1,0 +1,9 @@
+{
+  "command": "PYTHONDONTWRITEBYTECODE=1 PYTHONPATH=src:. python -m unittest discover -s tests -q",
+  "tests_run": 270,
+  "passed": 269,
+  "skipped": 1,
+  "failed": 0,
+  "external_lean": false,
+  "sealed_jobs": 0
+}

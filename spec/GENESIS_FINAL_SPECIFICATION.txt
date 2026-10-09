@@ -1,0 +1,3309 @@
+                                        GENESIS
+           Verified Self-Evolving Discovery OS
+
+                   Final Architecture & Implementation Specification
+
+                            Design Freeze v3.0 | 7 October 2026
+
+
+
+
+Document status: normative implementation specification and research protocol. It is not an
+implementation, not evidence of autonomous scientific success, and not a claim of general
+intelligence.
+
+The design is frozen around a small immutable evidence microkernel, an evolvable cognitive kernel expressed
+as typed Research IR, and task-specific generated phenotypes. New permanent primitives are admitted only
+when an observed failure cannot be efficiently expressed by the current basis and a prospectively tested
+addition closes that gap.
+
+
+
+
+                                                    1
+GENESIS - Final Architecture & Implementation Specification                                                        Final statement
+
+
+
+
+ Contents
+
+ 1. Executive definition and design freeze                                                                                     8
+
+    1.1 One-sentence principle . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 8
+
+
+    1.2 The non-negotiable scientific claim boundary      . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .8
+
+
+    1.3 What Genesis is not . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 9
+
+
+    1.4 Design objectives . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 9
+
+
+ 2. Formal model                                                                                                               9
+
+    2.1 System version . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 9
+
+
+    2.2 Research state . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 9
+
+
+    2.3 Capability, reachability and improver quality . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 10
+
+
+    2.4 Authority invariant . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 10
+
+
+    2.5 Research as typed program synthesis . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 10
+
+
+ 3. Immutable Evidence Microkernel                                                                                           10
+
+    3.1 Responsibilities   . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 11
+
+
+    3.2 Trust root and reflective limits . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 11
+
+
+    3.3 Why a small kernel matters . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 11
+
+
+ 4. Evolvable Cognitive Kernel and Research IR                                                                               11
+
+    4.1 Initial operator basis . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 12
+
+
+    4.2 Core Research IR node types . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 12
+
+
+    4.3 Epistemic type and effect system . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 13
+
+
+    4.4 MRDL: minimal representation description language . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 13
+
+
+ 5. The complete discovery loop                                                                                              14
+
+    5.1 Stage A - contract and faithful formalization   . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 14
+
+
+    5.2 Stage B - identifiability and ignorance analysis . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 14
+
+
+    5.3 Stage C - gap diagnosis before brute force . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 14
+
+
+    5.4 Stage D - competing mathematical/scientific worlds      . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 15
+
+
+    5.5 Stage E - construction and obstruction in parallel . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 15
+
+
+    5.6 Stage F - certificate-first obligation graph . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 15
+
+
+    5.7 Stage G - prospective evaluation and retention . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 15
+
+
+
+
+                                                                2
+GENESIS - Final Architecture & Implementation Specification                                                         Final statement
+
+
+
+
+ 6. Major macro-engines generated from the kernel                                                                             15
+
+    6.1 Search-space and representation transformation . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 16
+
+
+    6.2 Counterexamples, barriers and ignorance . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 16
+
+
+    6.3 Local/global, structural and algebraic reasoning      . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 16
+
+
+    6.4 Causal science of improvement . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 17
+
+
+    6.5 Learning, development and model formation . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 17
+
+
+    6.6 Cumulative intelligence and compression . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 17
+
+
+    6.7 Robustness, fault tolerance and evidence discipline      . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 17
+
+
+    6.8 Open-ended research and option preservation . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 18
+
+
+    6.9 Verification, reflection and trust . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 18
+
+
+    6.10 Collective intelligence and research institutions . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 18
+
+
+ 7. Evidence semantics and promotion rules                                                                                    19
+
+    7.1 Orthogonal evidence axes . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 19
+
+
+    7.2 Ghost semantics . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 19
+
+
+    7.3 BoundState semantics . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 19
+
+
+    7.4 Evidence wording gate     . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 20
+
+
+ 8. Mathematical discovery wedge: concrete reference domains                                                                  20
+
+    8.1 c4_host_v2 . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 20
+
+
+    8.2 triangle_free_host_v1 transfer domain     . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 20
+
+
+    8.3 Why these domains . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 20
+
+
+ 9. Counterfactual worlds, ecology and option preservation                                                                    21
+
+    9.1 World definition . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 21
+
+
+    9.2 Branch promotion and retirement . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 21
+
+
+    9.3 Irreversibility rule . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 21
+
+
+ 10. Local-to-global, continuation and tractability                                                                           22
+
+    10.1 Learned covers and gluing . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 22
+
+
+    10.2 Continuation . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 22
+
+
+    10.3 Parameterized tractability and kernels . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 22
+
+
+    10.4 Approximation hierarchy . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 22
+
+
+
+
+                                                                 3
+GENESIS - Final Architecture & Implementation Specification                                                         Final statement
+
+
+
+
+ 11. Fault-tolerant cognition                                                                                                 22
+
+    11.1 Heterogeneous redundancy . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 22
+
+
+    11.2 Semantic parity checks      . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 22
+
+
+    11.3 Adaptive verification strength . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 22
+
+
+ 12. Causal self-improvement                                                                                                  23
+
+    12.1 Improvement hypothesis . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 23
+
+
+    12.2 Intervention hierarchy . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 23
+
+
+    12.3 Self-science protocol . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 23
+
+
+    12.4 Better-improver test . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 23
+
+
+ 13. Experience synthesis and developmental programs                                                                          24
+
+    13.1 Minimal teaching sets     . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 24
+
+
+    13.2 Critical periods and ordering . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 24
+
+
+    13.3 Teach, unteach, repair . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 24
+
+
+ 14. Cognitive crystallization and compilation                                                                                24
+
+    14.1 Compilation ladder . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 24
+
+
+    14.2 Law ladder . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 24
+
+
+    14.3 Generative kernel objective . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 24
+
+
+ 15. Reflective trust, foundations and formal limits                                                                          24
+
+    15.1 Trust tower . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 25
+
+
+    15.2 Foundation lifting . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 25
+
+
+    15.3 No self-certification escape hatch . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 25
+
+
+ 16. Software architecture and repository specification                                                                       25
+
+    16.1 Fixed engineering decisions . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 26
+
+
+    16.2 Reference repository layout . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 26
+
+
+    16.3 Campaign directory       . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 26
+
+
+    16.4 Core relational tables    . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 27
+
+
+    16.5 Event envelope . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 27
+
+
+    16.6 Single-writer rule . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 27
+
+
+ 17. Execution, containment and resource accounting                                                                           28
+
+
+
+
+                                                                 4
+GENESIS - Final Architecture & Implementation Specification                                                        Final statement
+
+
+
+
+    17.1 Default limits . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 28
+
+
+    17.2 Profiles . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 28
+
+
+    17.3 Resource fairness    . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 28
+
+
+ 18. Evaluation integrity and leak prevention                                                                                29
+
+    18.1 Split classes   . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 29
+
+
+    18.2 Leak-screening pipeline     . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 29
+
+
+    18.3 Current project evidence note . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 29
+
+
+    18.4 Claim ladder . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 30
+
+
+ 19. Clean experimental program                                                                                              30
+
+    19.1 Experiment A - microkernel and replay      . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 30
+
+
+    19.2 Experiment B - Ghost Census kill gate . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 30
+
+
+    19.3 Experiment C - clean prospective Lean study . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 30
+
+
+    19.4 Experiment D - transfer     . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 31
+
+
+    19.5 Experiment E - better improver     . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 31
+
+
+    19.6 Experiment F - multi-generation . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 31
+
+
+ 20. Baselines and ablations                                                                                                 31
+
+ 21. Reporting and scientific honesty                                                                                        31
+
+    21.1 Required report structure    . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 31
+
+
+    21.2 Forbidden report transformations     . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 32
+
+
+ 22. Failure modes and red-team catalogue                                                                                    32
+
+ 23. Implementation roadmap and acceptance gates                                                                             33
+
+    23.1 Checkpoint policy    . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 33
+
+
+ 24. Current status and what remains unproven                                                                                33
+
+    24.1 Explicitly unproven claims . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 34
+
+
+    24.2 What would change the assessment . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 34
+
+
+ 25. Design-freeze rules for future “pushes”                                                                                 34
+
+ 26. Reference APIs and pseudocode                                                                                           34
+
+    26.1 Trial execution contract    . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 34
+
+
+    26.2 Evidence promotion     . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 35
+
+
+
+
+                                                                5
+GENESIS - Final Architecture & Implementation Specification                                                       Final statement
+
+
+
+
+    26.3 World step . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 35
+
+
+    26.4 Modification contract . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 35
+
+
+ 27. Verification adapters                                                                                                  35
+
+ 28. Scientific literature and external knowledge compiler                                                                  35
+
+ 29. Domain expansion beyond mathematics                                                                                    36
+
+    29.1 Software research . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 36
+
+
+    29.2 Empirical science . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 36
+
+
+    29.3 Machine-learning research . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 36
+
+
+ 30. Security and operational boundary                                                                                      36
+
+ 31. Acceptance checklist for an implementation handoff                                                                     36
+
+ 32. Cognitive primitive implementation contracts                                                                           37
+
+ 33. Coordinator and campaign state machine                                                                                 37
+
+    33.1 Transaction boundary     . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 37
+
+
+    33.2 Recovery after crash . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 38
+
+
+ 34. Research market and scheduling algorithm                                                                               38
+
+    34.1 Stop-thinking rule   . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 38
+
+
+ 35. Leak scanner and contamination firewall                                                                                38
+
+    35.1 Canonicalization requirements . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 38
+
+
+ 36. Domain adapter contract and worked C4 flow                                                                             39
+
+    36.1 Required DomainAdapter interface       . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 39
+
+
+    36.2 Worked C4 research trace . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 39
+
+
+    36.3 Required fixtures . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 39
+
+
+ 37. Lean integration contract                                                                                              39
+
+    37.1 Lean worker responsibilities . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 39
+
+
+    37.2 Formal checker responsibilities    . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 39
+
+
+    37.3 Theorem-memory rule . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 40
+
+
+ 38. Test and CI matrix                                                                                                     40
+
+    38.1 Property-test examples     . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 40
+
+
+
+
+                                                               6
+GENESIS - Final Architecture & Implementation Specification                                                       Final statement
+
+
+
+
+ 39. Configuration and CLI contract                                                                                         40
+
+    39.1 Resolved configuration example . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 40
+
+
+    39.2 CLI surface . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 41
+
+
+ 40. End-to-end campaign walkthrough                                                                                        41
+
+ 41. Meta-gap discovery: how Genesis finds improvement #61                                                                  41
+
+    41.1 What counts as evidence that a primitive is genuinely new . . . . . . . . . . . . . . . . . . . . . . . . . . . 42
+
+
+ 42. Cognitive-kernel minimization experiment                                                                               42
+
+ 43. Replication bundle and release artifact                                                                                42
+
+ 44. Human and expert interaction contract                                                                                  42
+
+    44.1 Optimal expert query     . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 43
+
+
+ 45. Threat model                                                                                                           43
+
+ 46. Practical deployment and compute sizing                                                                                43
+
+ 47. Empirical-science adapter requirements                                                                                 43
+
+ 48. Definition of implementation completion                                                                                44
+
+ Appendix A. Engine registry and kernel mapping                                                                             44
+
+ Appendix B. Default research policy                                                                                        47
+
+ Appendix C. Representative strict schemas                                                                                  47
+
+ Appendix D. Selected research anchors and references                                                                       48
+
+ Appendix E. Glossary                                                                                                       48
+
+ Final statement                                                                                                            49
+
+
+
+
+                                                               7
+GENESIS - Final Architecture & Implementation Specification                                                            Final statement
+
+
+
+
+ 1. Executive definition and design freeze
+ Genesis is a proof-gated, causally self-studying, representation-inventing, tool-building and
+ development-designing discovery system. Its purpose is not to maximize the apparent intelligence of a single
+ language-model session. Its purpose is to increase the set of problems for which a system can produce
+ independently checkable results, while learning reusable mechanisms that make future verified discovery
+ cheaper and more reliable.
+ The central object is a research program expressed in typed Research IR. Generative models, symbolic
+ solvers, theorem provers, simulators, numerical methods and human input are untrusted proposal sources.
+ They may suggest candidate artifacts, but only protected checkers and prospective evaluation can promote
+ those artifacts into trusted evidence.
+
+ Genesis is deliberately split into three strata. The Evidence Microkernel is small and externally governed. The
+ Cognitive Kernel contains the provisional minimal instruction set used to construct research programs. The
+ Generated Phenotype contains almost everything domain-specific: temporary agents, specialist solvers,
+ memories, representations, curricula, experiments and compiled operators. The design goal is to make the
+ core smaller while the closure of what it can generate becomes larger.
+
+ The design is now frozen. New named engines are treated as macros unless a measured failure demonstrates
+ that the existing primitive basis cannot express the needed behavior within acceptable cost. This prevents the
+ architecture from becoming a catalogue of overlapping metaphors.
+
+
+
+
+           Figure 1. Final three-stratum architecture. The trusted root is intentionally smaller than the evolvable system.
+
+
+ 1.1 One-sentence principle
+ Creative generator -> typed executable proposal -> bounded execution -> independent
+ checker/proof replay -> immutable evidence -> fresh prospective evaluation -> retain, reject,
+ compress, or branch.
+
+ 1.2 The non-negotiable scientific claim boundary
+ Genesis may generate ambitious conjectures, architectures and self-modifications. None of these count as
+ improvement because a model says they are good, because a source file exists, because a unit test passes, or
+ because a retrospective benchmark improves after tuning. A claim is released only at the strongest evidence
+ level actually supported by execution records. Unsupported, broken, rejected and unsettled outcomes remain
+ distinct.
+
+
+
+
+                                                                  8
+GENESIS - Final Architecture & Implementation Specification                                  1. Executive definition and design freeze
+
+
+
+ The deepest target claim is not “the system can modify itself.” The target is stronger and harder: a successor
+ should become measurably better at producing future independently verified improvements on tasks that
+ were not available when that successor was constructed. That requires multi-generation, prospective,
+ leak-free evaluation.
+
+ 1.3 What Genesis is not
+   • Not a claim that open mathematical problems will be solved automatically.
+   • Not a single monolithic model. Models are replaceable proposal sources and specialist components.
+   • Not an unrestricted autonomous actor. Capability growth and authority growth are separated.
+   • Not a self-certifying loop. Candidate verifiers, objectives and evaluators cannot promote themselves.
+   • Not an architecture that assumes one representation, one proof system, one model family, or one research
+      strategy is universally best.
+   • Not an excuse to treat synthetic benchmarks as evidence of mathematical discovery.
+
+ 1.4 Design objectives
+  Objective                  Meaning                                              Failure if ignored
+
+  Verified reach             Increase problems for which a result can be          High benchmark scores with no trustworthy
+                             independently checked                                certificate
+
+  Adaptation speed           Acquire new verified capabilities faster over time   Static competence with no compounding learning
+
+  Causal knowledge           Know why improvements work and when they fail        Cargo-cult self-modification
+
+  Future option value        Preserve promising alternative lineages and          Premature lock-in
+                             capabilities
+
+  Capability density         Generate more useful machinery from fewer core       Architectural bloat
+                             principles
+
+  Bounded authority          Do not let capability upgrades silently expand       Self-amplifying operational risk
+                             permissions
+
+
+
+
+ 2. Formal model
+ 2.1 System version
+ A system version is an immutable identity over all components that can influence a comparison:
+   SystemVersion = (
+     solver, tool_library, memory_snapshot, curriculum_policy,
+     research_policy, model_configuration, cognitive_kernel,
+     verifier_set, resolved_config, dependency_lock, environment_digest
+   )
+
+ A version identifier is content-derived. A comparison is invalid if the actual execution environment differs
+ materially from the registered version without an explicit deviation record.
+
+ 2.2 Research state
+ Let the mutable research state at time t be:
+   X_t = (B_t, H_t, R_t, C_t, E_t, W_t, L_t, A_t)
+
+   B_t : epistemic belief state / uncertainty
+   H_t : hypothesis and theory population
+   R_t : representations and ontologies
+   C_t : capabilities and compiled operators
+   E_t : immutable evidence references
+   W_t : active counterfactual worlds / lineages
+   L_t : resource and epistemic-debt ledger
+   A_t : active authority / permission envelope
+
+ Actions are typed interventions u_t. The system learns a causal dynamics model X_{t+1} = f(X_t, u_t,
+ epsilon_t), but this model is advisory: it predicts interventions; it does not certify outcomes.
+
+
+
+
+                                                                  9
+GENESIS - Final Architecture & Implementation Specification                                                       2. Formal model
+
+
+
+
+ 2.3 Capability, reachability and improver quality
+ Current performance is insufficient as the sole target. Genesis tracks at least three conceptually different
+ quantities: verified capability V(S), future verified reachability R_H(S), and improvement productivity A(S).
+   V(S)   = verified capability on current/fresh tasks
+   R_H(S) = set/value of useful states reachable within horizon H
+   A(S)   = new independently verified capabilities acquired per unit cost/time
+
+ A multi-generation better-improver claim requires evidence that the process creating successors improves,
+ not merely that one descendant scores better. The project should prefer Pareto frontiers over a single grand
+ scalar. Any scalar objective is a convenience for local scheduling, not the final truth standard.
+
+ 2.4 Authority invariant
+   Capability_{t+1} > Capability_t       is allowed and desired.
+   Authority_{t+1} <= Authority_t          unless an external controller explicitly changes it.
+
+ Forking, branching or creating many descendants must not duplicate permissions, budgets, credentials, or
+ release authority. External resources are leased by the microkernel and accounted to a parent campaign.
+
+ 2.5 Research as typed program synthesis
+ A research program is a directed acyclic or cyclicly-controlled graph of typed operators. The target is not
+ “generate a good answer” but “construct an artifact of a required evidence type.” Planning can therefore
+ work backward from the target type, much like type inhabitation or program synthesis.
+
+
+ 3. Immutable Evidence Microkernel
+ The microkernel is the highest-trust and smallest code base in Genesis. It does not contain creative reasoning.
+ It exists to make creative components disposable without losing scientific integrity.
+
+
+
+
+   Figure 2. Trust zones. Proposal generation and code are untrusted; evidence promotion occurs only through protected checkers
+                                                      and private evaluation.
+
+
+
+
+                                                               10
+GENESIS - Final Architecture & Implementation Specification                                        3. Immutable Evidence Microkernel
+
+
+
+
+ 3.1 Responsibilities
+  Microkernel service            Required behavior
+
+  Identity                       Canonical IDs for campaigns, versions, trials, attempts, claims, artifacts and lineage edges.
+
+  Content addressing             Immutable object store keyed by SHA-256 or a configured collision-resistant hash; never overwrite
+                                 an accepted object.
+
+  Event ledger                   Append-only JSONL plus relational index; every attempt, retry, timeout, cancellation and intervention
+                                 is retained.
+
+  Resource receipts              Record wall time, CPU, memory limits, token/API usage, solver budgets, exit status and truncation.
+
+  Policy/authority               Issue bounded execution grants. Generated code cannot create credentials, expand network access,
+                                 or alter the private evaluator.
+
+  Certificate replay             Dispatch proof/certificate objects to independently implemented or isolated checkers.
+
+  Evaluator isolation            Keep sealed tasks and release logic outside research-visible storage and process namespaces.
+
+  Release gate                   Map execution evidence to allowed claim level; reject unsupported promotions.
+
+  Rollback                       Every mutable operational change must have a known predecessor and reversible activation path
+                                 where technically feasible.
+
+
+
+
+ 3.2 Trust root and reflective limits
+ Genesis must never justify unlimited trust by circular self-assertion. A trust-dependency graph records which
+ verifier checked which artifact and which assumptions/verifier implementation each result depends on. Cycles
+ that contain no externally anchored edge are labeled CIRCULAR_JUSTIFICATION and cannot support high-trust
+ promotion.
+
+ The root may be upgraded, but a root upgrade is a new release operation requiring external authorization and
+ independent replay. A candidate verifier may be generated and adversarially tested by Genesis; it cannot
+ make itself authoritative.
+
+ 3.3 Why a small kernel matters
+ The broader the mutable architecture becomes, the more important it is that correctness depend on a small,
+ boring substrate. This follows the same general principle as proof-carrying code: complex or untrusted
+ producers may supply artifacts, while a smaller trusted checker enforces the contract [R6]. Lean is attractive
+ for formal mathematical evidence because its small kernel checks proof terms independently of the tactics or
+ models that produced them [R5].
+
+
+ 4. Evolvable Cognitive Kernel and Research IR
+ The initial cognitive kernel is not asserted to be minimal. It is a provisional basis selected because most
+ mechanisms in this specification can be written compactly as compositions of these primitives. The
+ Generative Kernel later attempts to prove redundancy, fuse macros and discover genuinely missing
+ primitives.
+
+
+
+
+                                                                 11
+GENESIS - Final Architecture & Implementation Specification                                 4. Evolvable Cognitive Kernel and Research IR
+
+
+
+
+                         Figure 3. Higher-level engines are macros compiled from a smaller operator basis.
+
+
+ 4.1 Initial operator basis
+  Operator               Type-level intent                                      Representative uses
+
+  FORMALIZE              Natural/partial goal -> typed goal + ambiguity set     Problem statements, paper claims, software requirements
+
+  REPRESENT              Object -> alternative typed representation             Graphs, algebraic forms, latent concepts, quotient spaces
+
+  DISTINGUISH            Competing states -> discriminating                     Counterexamples, evaluator attacks, identifiability
+                         witness/experiment
+
+  FACTOR                 Object -> interacting subobjects + interfaces          Decomposition, separators, local-to-global, causal factors
+
+  TRANSFORM              Object -> semantics-preserving or explicitly related   Reductions, continuation, relaxations, gauge fixing
+                         object
+
+  PROPOSE                Context -> candidate                                   LLM creativity, program synthesis, world generation
+                         hypothesis/program/modification
+
+  EXECUTE                Executable artifact + grant -> receipt                 Programs, solvers, experiments, proof attempts
+
+  OBSERVE                Execution/world -> typed observation                   Measurements, traces, profiler output, proof states
+
+  INTERVENE              Model/system + controlled change -> outcome            Causal attribution, curriculum tests, ablations
+
+  VERIFY                 Artifact + contract -> certificate/status              Lean, SAT, exact checking, differential verification
+
+  TRANSPORT              Artifact + checked map -> artifact in target domain    Proof lifting, causal transport, domain equivalence
+
+  COMPOSE                Compatible artifacts -> larger artifact                Contracts, local-to-global gluing, solver assembly
+
+  BRANCH                 State -> option-preserving descendants                 World ecology, alternative theories, architecture lineages
+
+  COMPRESS               Artifact/system -> smaller equivalent/adequate form    Cognitive compilation, crystallization, kernelization
+
+  SYNTHESIZE             Specification -> implementation satisfying             Architecture synthesis, tools, verifiers, curricula
+                         constraints
+
+  REFLECT                System/history -> claims about system/history          Self-model, meta-gap discovery, reflective trust
+
+
+
+
+ 4.2 Core Research IR node types
+   • Goal: target proposition, optimization objective, experimental question or capability requirement.
+   • AssumptionSet: explicit axioms, data conditions, permissions and environmental preconditions.
+   • Representation: executable or formal mapping plus semantics bridge.
+   • Hypothesis/Theory: predictive object with scope, assumptions and falsifiers.
+   • Witness: constructive object supporting a lower bound/existence result.
+
+
+
+
+                                                                      12
+GENESIS - Final Architecture & Implementation Specification                 4. Evolvable Cognitive Kernel and Research IR
+
+
+
+   • Countermodel/Ghost: independently checked model satisfying visible assumptions while falsifying a target.
+   • Experiment: controlled intervention, expected outcomes under competing hypotheses, cost and stopping
+      rule.
+   • Observation: typed measurement with provenance, uncertainty and instrument state.
+   • ProofObligation: proposition plus allowed assumptions, target checker and budget.
+   • Certificate: proof term, SAT/PB certificate, exact witness, numerical enclosure or replayable evidence.
+   • BoundState: lower witness L, upper certificate U and gap; exact optimum iff gap = 0.
+   • Capability: operation with preconditions, postconditions, measured scope and cost profile.
+   • Modification: change specification, predicted consequences, rollback, affected invariants and evidence
+     obligations.
+   • SystemVersion: immutable complete identity of a candidate research system.
+   • Claim: statement whose allowed wording is mechanically constrained by the evidence ledger.
+
+ 4.3 Epistemic type and effect system
+ Each artifact carries a value, epistemic type, effects and provenance. The type checker prevents evidence
+ inflation. A hypothesis plus a theorem about its consequences produces a conditional claim, not a proved
+ unconditional claim.
+   Artifact[T] = {
+     value,
+     epistemic_type,
+     effects,
+     assumptions,
+     scope,
+     uncertainty_model,
+     provenance_refs,
+     certificate_refs
+   }
+
+   Example effects:
+     USES_DEV_DATA, TOUCHED_SEALED_SET, APPROXIMATE,
+     SELF_JUDGED, NONDETERMINISTIC, HUMAN_INTERVENTION, EXTERNAL_SOURCE
+
+ Effects propagate through derivations. A result depending on a contaminated artifact cannot silently become
+ a clean confirmation result. Unknown types are permitted inside speculative branches, but they taint
+ downstream artifacts until resolved.
+
+ 4.4 MRDL: minimal representation description language
+ The initial representation language is deliberately typed and bounded. It should be expressive enough for
+ graph/math wedges while remaining auditable. Initial core types include Nat, Int, Rat, Bool, Vertex, Edge,
+ VertexSet, EdgeSet, IntVector[n], BoolVector[n], IntMatrix, BoolMatrix, Partition, Relation, Graph, PBModel and
+ FeatureRecord. Core primitives include Allowed, Adj, Degree, Codegree, Neighbors, EdgeOrbitId,
+ VertexOrbitId, Induced, ComplementOnHost, CommonNeighborTable, DegreeSequence, MotifCount,
+ TracePower (k <= 8), PartitionByFeature, QuotientLabels and PBEncode.
+
+ Default syntactic limits: AST <= 256 nodes, depth <= 16, <= 12 parameters with domains <= 32,
+ composition depth <= 6, integer bit length <= 1024, matrix footprint <= 64x64 unless the campaign
+ explicitly raises limits. Floating eigenvalues are not proof-bearing core objects; exact or certified substitutes
+ are required for promotion.
+
+
+
+
+                                                              13
+GENESIS - Final Architecture & Implementation Specification                         4. Evolvable Cognitive Kernel and Research IR
+
+
+
+
+ 5. The complete discovery loop
+
+
+
+
+                                    Figure 4. End-to-end loop from goal to meta-gap discovery.
+
+
+ 5.1 Stage A - contract and faithful formalization
+ Before solving, Genesis converts the request into a typed contract: inputs, assumptions, guarantee, verifier,
+ budget and authority. Ambiguity is represented rather than silently guessed. If two plausible formalizations
+ imply materially different outputs, the ambiguity becomes an obligation to resolve or an explicit branch.
+
+ Formalization correctness is a separate problem from proof correctness. A proof assistant can certify a
+ theorem that faithfully formalizes the wrong human statement. Therefore the formalization compiler retains
+ natural-language anchors, units, domain constraints, quantifier mappings and counterexample tests that
+ attempt to falsify the intended equivalence.
+
+ 5.2 Stage B - identifiability and ignorance analysis
+ Given evidence E, define the space of admissible worlds W(E). If two admissible worlds produce different
+ target values, the answer is not identified. Genesis returns UNIDENTIFIED, not a fabricated precise conclusion.
+ It then searches for the cheapest experiment, measurement, assumption or capability that separates the
+ worlds.
+ Unknown states are classified: DATA_LIMITED, MEASUREMENT_LIMITED, MODEL_AMBIGUOUS,
+ CAPABILITY_LIMITED, COMPUTE_LIMITED, NONIDENTIFIABLE, FORMALLY_INDEPENDENT, STOCHASTIC or
+ CHECKER_LIMITED. Each diagnosis maps to a different response policy.
+
+ 5.3 Stage C - gap diagnosis before brute force
+ The Gap Engine treats failure as a diagnosis problem. It asks which element of the current search process is
+ limiting: representation, missing concept, missing theorem, missing capability, verifier weakness, experiment
+ design, insufficient resource, unidentifiability, or a search class whose performance is already near a certified
+ barrier.
+
+ The central operational rule is: when progress stalls, change what is being searched before merely increasing
+ the amount of search.
+
+
+
+
+                                                               14
+GENESIS - Final Architecture & Implementation Specification                                             5. The complete discovery loop
+
+
+
+
+ 5.4 Stage D - competing mathematical/scientific worlds
+ Maintain a bounded ecology of incompatible hypotheses and representations. Worlds are born, tested,
+ hybridized and retired under explicit limits. The default reference policy is max 8 active worlds, <= 4 births
+ per epoch, <= 1 hybrid birth per epoch, two development panels per world unless invalid, lineage depth <=
+ 8, <= 4 root actions per world per epoch and <= 8 shared experiments per epoch. These are starting
+ engineering limits, not scientific constants.
+
+ 5.5 Stage E - construction and obstruction in parallel
+
+
+
+
+                              Figure 5. Construction and obstruction meet at a certified bound state.
+
+ For optimization or extremal mathematics, every campaign should attempt both constructive lower bounds
+ and obstructive upper bounds. A Ghost is an independently checked structure that satisfies the visible axioms
+ while falsifying the goal. A validated ghost is evidence that the proposed theorem/assumption set is
+ insufficient; failure to find a ghost is not proof.
+
+ 5.6 Stage F - certificate-first obligation graph
+ Large goals are decomposed into obligations whose leaf nodes have cheap, explicit checkers: Lean kernel,
+ SAT/PB/MaxSAT certificate, exact computation, property test, interval enclosure, or hash/replay check.
+ Delegation is allowed only when child guarantees compose into the parent guarantee. Budgets and
+ permissions attenuate downward; delegation cannot expand authority.
+
+ 5.7 Stage G - prospective evaluation and retention
+ Useful-looking artifacts remain DEV_ONLY until a frozen candidate is evaluated on fresh confirmation data.
+ Confirmation data cannot tune the candidate, choose among candidates for the same claim, or repair the
+ candidate after inspection. Every attempt and manual intervention is charged. The judge recomputes
+ outcomes from execution evidence rather than trusting worker summaries.
+
+
+ 6. Major macro-engines generated from the kernel
+ The following are not intended as 80 permanent microservices. They are reusable research programs/macros
+ expressed through Research IR and cognitive primitives. The registry exists so implementers do not omit
+ concepts that were part of the design.
+
+
+
+
+                                                                15
+GENESIS - Final Architecture & Implementation Specification                                 6. Major macro-engines generated from the kernel
+
+
+
+
+ 6.1 Search-space and representation transformation
+  Macro                                       Purpose
+
+  Gap Engine                                  Diagnose why current search fails; change representation/search object before scaling brute force.
+
+  Representation Compiler / Ontology Forge    Invent executable representations and concepts; validate by compression, causal usefulness and
+                                              transfer.
+
+  Gauge-Quotient Engine                       Discover transformations that preserve relevant semantics, canonicalize equivalence classes and
+                                              remove fake degrees of freedom.
+
+  Parameterized Tractability Engine           Discover small parameters controlling effective complexity and tractable slices.
+
+  Kernelization Compiler                      Reduce large instances to small equivalent kernels with solution/certificate lifting.
+
+  Reduction Compiler                          Synthesize checked reductions to domains with better solvers or known barriers.
+
+  Continuation & Bifurcation Engine           Construct paths from solved problems to targets, transport certificates, detect phase transitions and
+                                              branch at bifurcations.
+
+  Variational / Duality Compiler              Search equivalent optimization, energy, primal/dual or convex formulations with checkable bridges.
+
+  Renormalization / Effective-Theory Engine   Learn scale-dependent variables and effective models that preserve selected observables.
+
+  Topological Search-Space Mapper             Detect disconnected solution components, barriers and homotopy classes that change reachability.
+
+
+
+
+ 6.2 Counterexamples, barriers and ignorance
+  Macro                                       Purpose
+
+  Ghost Census                                Find checked countermodels to visible assumptions; distinguish PROVED, GHOST_FOUND,
+                                              UNSETTLED and HARNESS_ERROR.
+
+  Certified Barrier & Escape                  Attempt upper bounds/impossibility over a search class, then deliberately escape the minimal
+                                              blocking assumption.
+
+  Identifiability & Ignorance Engine          Prove when present evidence cannot determine the target and design the minimal separating
+                                              intervention.
+
+  Evaluator Attack Synthesizer                Find artifacts that score well while violating the intended goal; convert exploits into permanent
+                                              regression tests.
+
+  Unknown-Unknown Hunter                      Search high-confidence regions where independent perspectives predict anomalies.
+
+  Rare-Event & Tail Engine                    Target low-probability counterexamples and failure tails rather than average behavior.
+
+
+
+
+ 6.3 Local/global, structural and algebraic reasoning
+  Macro                                       Purpose
+
+  Local-to-Global Consistency Engine          Solve overlapping local patches in heterogeneous languages and glue only when interfaces agree.
+
+  Structural Separator Discovery              Find small interfaces/cutsets that turn one difficult problem into coupled easier subproblems.
+
+  Reasoning Algebra Compiler                  Discover typed operators, composition laws, rewrite rules and a compact generative basis.
+
+  Universal-Structure Engine                  Discover structure-preserving maps, equivalences, dualities and canonical constructions across
+                                              domains.
+
+  Fixed-Point Discovery Engine                Recast iterative tasks as fixed-point problems and exploit monotonicity/contraction/lattice structure.
+
+  Symmetry/Conservation Compiler              Search symmetry -> invariant/conserved quantity and invariant -> symmetry directions.
+
+  Proof-Reuse Geometry                        Retrieve and transport proof topology rather than only semantic text similarity.
+
+
+
+
+                                                                        16
+GENESIS - Final Architecture & Implementation Specification                                6. Major macro-engines generated from the kernel
+
+
+
+
+ 6.4 Causal science of improvement
+  Macro                                      Purpose
+
+  Mechanistic Self-Editing                   Localize model mechanisms and choose the least invasive intervention: routing, steering, adapter,
+                                             fine-tune, edit, retrain.
+
+  Causal Self-Model / Improvement World      Predict intervention effects, interactions and missing variables; evaluate predictions prospectively.
+  Model
+
+  Intervention Scheduler                     Choose maximum-information causal experiments per unit cost.
+
+  Placebo Generator                          Create changes predicted to have no effect; detect spurious improvement attribution.
+
+  Mediator Analyzer                          Recover pathways by which a modification affects downstream capability.
+
+  Counterfactual Patch Replay                Replay matched histories with one intervention substituted.
+
+  Cross-Scale Causal Abstraction             Construct macro variables whose interventions correspond consistently to micro-level changes.
+
+  Causal Transportability                    Determine whether causal claims survive domain/environment changes.
+
+
+
+
+ 6.5 Learning, development and model formation
+  Macro                                      Purpose
+
+  Verified Experience Synthesis              Design experiences that causally create a missing capability rather than merely adding more data.
+
+  Curriculum Inverse Design                  Find minimal/cost-effective teaching sets for target mechanisms.
+
+  Teacher Compiler                           Compile successful developmental histories into adaptive teacher policies.
+
+  Plasticity Scheduler                       Control which components remain mutable at which developmental stage.
+
+  Capability Interference Matrix             Measure positive and negative interactions among capabilities.
+
+  Stress-Inoculation Curriculum              Generate adversarial situations specifically designed to break newly acquired capabilities.
+
+  Retention Controller                       Schedule replay only when measured capability decay threatens required competence.
+
+  Data-Mechanism Provenance                  Trace examples -> updates -> mechanisms -> capabilities.
+
+  Training-Objective Synthesizer             Search auxiliary objectives while leaving external success criteria protected.
+
+
+
+
+ 6.6 Cumulative intelligence and compression
+  Macro                                      Purpose
+
+  Cognitive Compilation Engine               Promote recurring reasoning from trace -> memory -> procedure -> operator -> small
+                                             model/program/native kernel.
+
+  Verified Cognitive Crystallization         Extract explicit algorithms, laws and invariants from opaque learned capabilities; replace black
+                                             boxes when equivalence is established.
+
+  Generative Kernel / Cognitive ISA          Compress the architecture into a small basis and invent a primitive only when closure is insufficient.
+  Evolution
+
+  Proof-Carrying Compression                 Attach preservation obligations to pruning, distillation, quantization and symbolic replacement.
+
+  Architecture Entropy / Complexity Tax      Penalize unnecessary independent machinery and track capability per description complexity.
+
+  Scientific/Explanatory Compression         Replace large fact sets or heuristic collections with shorter theories that preserve prediction and
+                                             falsifiability.
+
+
+
+
+ 6.7 Robustness, fault tolerance and evidence discipline
+  Macro                                      Purpose
+
+  Error-Correcting Cognition                 Use heterogeneous redundant reasoning, semantic parity checks, fault localization and local repair.
+
+  Epistemic Type System                      Prevent conclusions from becoming stronger than their legal evidence composition permits.
+
+  Epistemic Debt Ledger                      Track unresolved approximations, weak checks and provisional assumptions until discharged.
+
+  Meta-Uncertainty Engine                    Represent uncertainty about calibration/uncertainty estimates themselves.
+
+  Anytime-Correct Reasoning                  Maintain certified bounds/partial results at interruption points.
+
+  Semantic Adversarial Randomization         Change irrelevant details while preserving semantics to expose shortcut dependence.
+
+  Distributionally Robust Improvement Gate   Characterize where gains reverse under plausible shifts.
+
+  Knowledge Half-Life / Temporal             Revalidate empirical dependencies as models, data and environments change.
+  Consistency
+
+
+
+
+                                                                       17
+GENESIS - Final Architecture & Implementation Specification                                6. Major macro-engines generated from the kernel
+
+
+
+
+ 6.8 Open-ended research and option preservation
+  Macro                                     Purpose
+
+  Option-Preserving Recursive Development   Maintain reversible branches and price future option value rather than selecting a single lineage too
+                                            early.
+
+  Autocatalytic Capability Growth           Search prerequisite hypergraphs and small seeds that unlock many future capabilities.
+
+  Quality-Diversity / Open-Ended Search     Preserve high-quality behavioral niches and stepping stones when the objective is deceptive.
+
+  Counterfactual Universe Laboratory        Stress mechanisms across deliberately altered worlds to distinguish structural laws from
+                                            benchmark-specific tricks.
+
+  Niche Construction / Exaptation /         Reshape environments, repurpose existing capabilities and integrate verified external specialists.
+  Symbiogenesis
+
+  Shadow-Successor Evaluation               Run descendants beside incumbents on future workload before activation.
+
+  Research-Regret Controller                Track regret against plausible alternative research policies and preserve strategy diversity.
+
+
+
+
+ 6.9 Verification, reflection and trust
+  Macro                                     Purpose
+
+  Reflective Trust Tower                    Track meta-level trust, prohibit circular justification and escalate obligations beyond the object being
+                                            modified.
+
+  Foundation-Lifting Engine                 Change formal foundations or assumptions with checked translation when the current theory is
+                                            insufficient.
+
+  Specification-to-Architecture Synthesis   Construct the smallest architecture change satisfying explicit capability and preservation contracts.
+
+  Recursive Contract Synthesis              Decompose work into contracts whose guarantees compose and whose leaves have cheap checkers.
+
+  Certificate-Centric Meta-Compiler         Search jointly over representation, transformation, solver, verifier and certificate route.
+
+  Metrology & Instrument Validity           Track calibration, systematic error, detection limits and measurement traceability.
+
+  Information-Open Learning Governor        Ensure self-generated training receives genuinely new information from environments, verifiers or
+                                            external evidence.
+
+
+
+
+ 6.10 Collective intelligence and research institutions
+  Macro                                     Purpose
+
+  Epistemic Parliament                      Maintain competing theories, first disagreement points and discriminating experiments.
+
+  Calibrated Expertise Routing              Route obligations by measured specialist success and cost.
+
+  Rotating Adversarial Roles                Rotate builder, critic, replicator and auditor roles to reduce institutional blind spots.
+
+  Dependency-Aware Belief Fusion            Weight agreement by independence and correlated-failure estimates.
+
+  Verified Merge Synthesizer                Merge promising branches through typed interfaces and checked guarantee composition.
+
+  Institution Compiler                      Search team organization, communication topology, budgets and competition/collaboration rules
+                                            prospectively.
+
+  Epistemic Transport Compiler              Optimize what information moves between components, with semantic checksums and typed
+                                            artifacts.
+
+
+
+
+                                                                       18
+GENESIS - Final Architecture & Implementation Specification                         6. Major macro-engines generated from the kernel
+
+
+
+
+ 7. Evidence semantics and promotion rules
+
+
+
+
+                   Figure 6. Mathematical evidence states. Negative/uncertain/checker failure states are not collapsed.
+
+
+ 7.1 Orthogonal evidence axes
+ A single status is not sufficient. At minimum, track MathStatus, UtilityStatus, CausalityStatus and
+ ImproverStatus independently, with Novelty and Replication metadata separate.
+
+  Axis                              Initial states
+
+  MathStatus                        UNCHECKED; EXECUTABLE; WITNESS_VALID; FINITE_CERTIFIED; THEOREM_CHECKED;
+                                    OPTIMALITY_CHECKED; REJECTED; UNSETTLED; CHECKER_ERROR
+
+  UtilityStatus                     NOT_TESTED; DEV_ONLY; CONFIRMED_SAME_DOMAIN; CONFIRMED_TRANSFER
+
+  CausalityStatus                   NOT_TESTED; CORRELATED; ABLATION_SUPPORTED; PLACEBO_CONTROLLED
+
+  ImproverStatus                    NOT_TESTED; SAME_DOMAIN_CONFIRMED; CROSS_DOMAIN_CONFIRMED; MULTIGEN_CONFIRMED
+
+  Novelty                           UNKNOWN; REDISCOVERY; VARIANT; CANDIDATE_NOVEL; EXTERNALLY_CHECKED_NOVEL
+
+  Replication                       NONE; INTERNAL_INDEPENDENT; EXTERNAL_REPRODUCTION
+
+
+
+
+ 7.2 Ghost semantics
+ A Ghost is stored only after independent validation that the object satisfies all visible assumptions and
+ falsifies the goal. An unvalidated candidate is never stored as a Ghost. no_ghost_found is metadata, not proof.
+ If the visible theory is inconsistent, deriving the goal is not useful mathematical success; the inconsistency
+ receives a separate status.
+
+ 7.3 BoundState semantics
+   BoundState = {
+     lower_value, lower_witness_ref, lower_check_ref,
+     upper_value, upper_certificate_ref, upper_check_ref,
+     gap = upper_value - lower_value
+   }
+
+   exact_optimum := (gap == 0) AND both certificates independently valid
+
+
+
+
+                                                                   19
+GENESIS - Final Architecture & Implementation Specification                 7. Evidence semantics and promotion rules
+
+
+
+
+ 7.4 Evidence wording gate
+ Reports should be generated from evidence records. The reporting layer does not infer stronger prose than
+ the ledger permits. For example, WITNESS_VALID can support “we constructed an object with value L”; it
+ cannot support “L is optimal.” DEV_ONLY can support “improved on development tasks”; it cannot support
+ “generalizes.”
+
+
+ 8. Mathematical discovery wedge: concrete
+ reference domains
+ Genesis should not begin with unrestricted mathematics. It needs domains with explicit objects, exact
+ checkers, strong baselines and a path from finite certificates to formal theorems. The current reference
+ wedge uses extremal graph problems.
+
+ 8.1 c4_host_v2
+   • Input: simple undirected host graph H with n <= 63.
+   • Target: largest subgraph of H containing no non-induced 4-cycle C4.
+   • Maintain dual independently implemented C4 checkers.
+   • Fixtures include K1 through K6 and known simple constructions.
+   • Lower channel: constructive edge subsets, symmetry-aware constructions, friendship-like families where
+      applicable.
+   • Upper channel: universal quadratic bounds, certified optimization and exact enumeration for bounded
+      instances.
+   • A claimed optimum is accepted only when the lower witness and upper certificate meet.
+
+ 8.2 triangle_free_host_v1 transfer domain
+   • Same general host-graph interface with n <= 63.
+   • For small hosts, exact enumeration is allowed up to a configured edge threshold (initially <= 24 allowed
+      host edges).
+   • Mantel-style universal upper bounds are valid for complete hosts; arbitrary hosts require host-aware
+     certified bounds.
+   • The domain is used to test whether a discovered representation, procedure or research macro transfers
+      rather than merely overfits C4 structure.
+
+ 8.3 Why these domains
+ They allow construction, obstruction, exact small-instance checking, solver integration and theorem-level
+ reasoning to coexist. They are sufficiently structured to make representation changes meaningful but
+ sufficiently bounded that the evidence kernel can independently recompute claims. They are an experimental
+ substrate, not evidence that the system can solve broad open mathematics.
+
+
+
+
+                                                              20
+GENESIS - Final Architecture & Implementation Specification          8. Mathematical discovery wedge: concrete reference domains
+
+
+
+
+ 9. Counterfactual worlds, ecology and option
+ preservation
+
+
+
+
+      Figure 7. Option-preserving lineage DAG. A weak branch may survive because it opens a distinct future capability region.
+
+
+ 9.1 World definition
+   World = (
+     assumptions, representation, ontology, solver_policy,
+     toolset, memory, curriculum, research_policy,
+     model_config, active_hypotheses, lineage_metadata
+   )
+
+ Worlds compete on a Pareto frontier rather than a single score. Suggested dimensions include verified solver
+ score, gap closed, calibration, causal concept gain, transfer, unique failure coverage, compression gain and
+ negative total cost.
+
+ 9.2 Branch promotion and retirement
+ A branch can remain alive even when its current task score is inferior if it provides unique capabilities,
+ diversity, explanatory structure or future option value. Retirement is an explicit operation: compress lessons,
+ record the failure reason, record conditions that would justify resurrection, then release active resources.
+ Dormant branch summaries remain immutable.
+
+ 9.3 Irreversibility rule
+ Evidence required for a modification should grow with irreversibility and blast radius. Temporary
+ prompt/routing changes can be explored cheaply. Base-model overwrites, destructive data operations or
+ changes touching verification infrastructure require stronger evidence, explicit rollback and higher-level
+ authorization.
+
+
+
+
+                                                                21
+GENESIS - Final Architecture & Implementation Specification        9. Counterfactual worlds, ecology and option preservation
+
+
+
+
+ 10. Local-to-global, continuation and tractability
+ 10.1 Learned covers and gluing
+ Genesis may cover a large problem X by overlapping regions U_i, solve each region in its best representation,
+ translate onto overlaps and attempt to glue the local solutions. Pairwise and higher-order inconsistencies
+ become explicit obstruction artifacts rather than being averaged away. The cover itself is searched to balance
+ local solvability against interface cost.
+
+ 10.2 Continuation
+ When a target is distant from known solved instances, synthesize a path P(lambda), lambda in [0,1], from an
+ easy problem to the target. Carry solution structure and certificates along the path using predictor/corrector
+ updates. Bifurcation, hysteresis or path failure becomes a diagnostic signal for missing capability or regime
+ change. Certified numerical homotopy tracking demonstrates that path-following can be combined with
+ rigorous guarantees in narrower numerical settings [R8].
+
+ 10.3 Parameterized tractability and kernels
+ Search for hidden parameters k(P) such that the apparent global complexity is governed by a small effective
+ parameter. If a sound reduction produces a kernel K(P) whose size is bounded by f(k), solve K exactly and lift
+ the certificate. The system must distinguish empirically predictive parameters from formally established
+ fixed-parameter tractability; it may not label the latter without proof.
+
+ 10.4 Approximation hierarchy
+ Cheap approximations are allowed to guide search if their epistemic type remains approximate. A preferred
+ pattern is approximate proposal -> certified neighborhood/bound -> exact or formal completion. This avoids
+ both extremes: expensive exact search everywhere and unprincipled approximate answers at the trust
+ boundary.
+
+
+ 11. Fault-tolerant cognition
+ Genesis assumes that models, solvers, heuristics and even checkers can fail. Global reliability should not
+ require every component to be nearly perfect.
+
+ 11.1 Heterogeneous redundancy
+ For critical claims, construct structurally different witnesses: formal proof, independent exact computation,
+ alternate derivation, adversarial counterexample search, or second checker implementation. Agreement from
+ components that share the same failure source is discounted by dependency-aware evidence fusion.
+
+ 11.2 Semantic parity checks
+ Reasoning DAGs contain redundant implications and invariants that act like parity constraints. When a check
+ fails, the pattern of violated constraints is used as a syndrome to localize the earliest likely corrupted region.
+ Only the affected subtree is resynthesized, then downstream artifacts are replayed.
+
+ 11.3 Adaptive verification strength
+ Use weak inexpensive checks broadly and reserve expensive strong verification for high-criticality or
+ uncertain nodes. Criticality is a function of downstream dependence, impact if false, irreversibility and
+ correlated-failure risk.
+
+
+
+
+                                                              22
+GENESIS - Final Architecture & Implementation Specification                                            11. Fault-tolerant cognition
+
+
+
+
+ 12. Causal self-improvement
+
+
+
+
+       Figure 8. Fast, medium and slow loops. Recursive improvement is the slowest loop and receives the strongest evidence
+                                                          requirements.
+
+
+ 12.1 Improvement hypothesis
+   ImprovementHypothesis = {
+     target_failure_signature,
+     proposed_intervention,
+     predicted_mechanism,
+     predicted_metric_changes,
+     protected_invariants,
+     cost_prediction,
+     falsifiers,
+     rollback_plan
+   }
+
+
+ 12.2 Intervention hierarchy
+ Prefer the least invasive mechanism likely to close the diagnosed gap: routing/prompt -> memory/tool ->
+ representation/operator -> adapter -> targeted fine-tune -> parameter edit -> architectural retraining.
+ Stronger interventions require stronger evidence and larger regression suites.
+
+ 12.3 Self-science protocol
+ Each retained improvement should ideally move through hypothesis -> intervention -> prediction -> matched
+ execution -> causal analysis -> prospective confirmation -> mechanism crystallization. Correlated gains
+ remain labeled CORRELATED. Ablation upgrades the claim to ABLATION_SUPPORTED; placebo and
+ discriminating controls can upgrade to PLACEBO_CONTROLLED.
+
+ 12.4 Better-improver test
+ To claim that a successor is a better improver, compare two frozen research policies on the same future
+ improvement opportunities. Measure not only the quality of the immediate solver but the quality, transfer and
+ cost of the improvements each policy creates. This is a meta-level prospective experiment, not an
+ extrapolation from one successful self-edit.
+
+
+
+
+                                                               23
+GENESIS - Final Architecture & Implementation Specification                                12. Causal self-improvement
+
+
+
+
+ 13. Experience synthesis and developmental
+ programs
+ Genesis treats training data and curricula as causal interventions on capability formation. A developmental
+ program maps student state to the next experience, tool exposure, representation challenge or feedback
+ regime. The objective is durable, transferable capability and future learnability, not short-term training loss.
+
+ 13.1 Minimal teaching sets
+ Search for small sets of experiences that reliably induce a target mechanism. Paired counterfactual examples
+ should break shortcuts while preserving the intended latent structure. The causal chain experience ->
+ mechanism -> capability should be tested rather than assumed.
+
+ 13.2 Critical periods and ordering
+ Learning order matters. Genesis estimates which prerequisites must exist before an experience becomes
+ productive and whether some mechanisms are easier to install at particular stages. This creates a
+ developmental partial order rather than a shuffled curriculum.
+
+ 13.3 Teach, unteach, repair
+ When a shortcut or harmful mechanism is identified, the controller may remove its source data, introduce
+ counterexamples, isolate the mechanism, or train an antidataset designed to suppress it while preserving
+ useful capabilities. These are candidate interventions subject to sealed regression testing.
+
+
+ 14. Cognitive crystallization and compilation
+ Repeatedly useful intelligence should not remain trapped inside expensive opaque inference if it can be
+ extracted into a smaller verified form.
+
+ 14.1 Compilation ladder
+   reasoning trace
+     -> causal memory
+     -> reusable procedure
+     -> typed operator
+     -> specialized small model
+     -> symbolic program / solver rule
+     -> optimized native kernel / cache / index
+
+ Promotion is evidence-gated. A compiled artifact must preserve designated behavior over fresh tasks, reduce
+ cost or increase reliability, and expose rollback. If a symbolic replacement cannot faithfully capture the
+ learned capability, a hybrid or neural representation remains valid.
+
+ 14.2 Law ladder
+   CORRELATION -> PREDICTIVE_RULE -> CAUSAL_MECHANISM -> SYMBOLIC_LAW -> DERIVED_THEOREM
+
+ The ladder separates interpretability from proof. A compact equation fitted to neural behavior is not a
+ theorem. Each promotion requires stronger interventions, invariance tests, derivation or formal checking.
+
+ 14.3 Generative kernel objective
+ Let K be the candidate primitive basis and M_i the macro capabilities. Search for a compact K plus short
+ compiler programs C_i such that C_i(K) reconstructs all required macros. Remove a primitive if it can be
+ efficiently synthesized from the remainder. Retain a derivable primitive when it offers substantial
+ computational advantage as a compiled instruction.
+
+
+ 15. Reflective trust, foundations and formal limits
+ Genesis must be capable of concluding that its current formal system or verifier hierarchy is insufficient. This
+ is not failure; it is a typed result that triggers foundation lifting or external meta-level checking.
+
+
+
+
+                                                              24
+GENESIS - Final Architecture & Implementation Specification                       15. Reflective trust, foundations and formal limits
+
+
+
+
+ 15.1 Trust tower
+ Object-level systems produce candidate proofs and modifications. Meta-level checkers reason about the
+ object-level artifacts. The system records trust height and exact verifier identity. Claims do not silently inherit
+ new trust because a verifier version changed.
+
+ 15.2 Foundation lifting
+ When T cannot settle a target, Genesis may search for a minimal extension T + A, a different formal
+ foundation, or a checked translation into another theory. It should prefer conservative definitional extensions
+ where possible. Independence candidates require models or metatheory strong enough to establish both
+ sides, not merely repeated proof-search failure.
+
+ 15.3 No self-certification escape hatch
+ There is intentionally no “ultimate internal verifier.” The system can improve how it constructs and checks
+ evidence, but the accepted root of trust remains externally governed. This is a design invariant, not a
+ temporary limitation.
+
+
+ 16. Software architecture and repository
+ specification
+
+
+
+
+   Figure 9. Reference software topology. The evaluator and credential-bearing provider broker are isolated from generated code.
+
+
+
+
+                                                                25
+GENESIS - Final Architecture & Implementation Specification                        16. Software architecture and repository specification
+
+
+
+
+ 16.1 Fixed engineering decisions
+  Decision                      Specification
+
+  Language                      Python 3.12 for orchestration and schemas; Lean 4 for theorem checking/domain formalization where
+                                used.
+
+  Schemas                       Pydantic v2 strict models; reject unknown fields at trust boundaries unless explicitly versioned.
+
+  Relational store              SQLite with foreign keys, transactions, WAL when supported, single persistent writer.
+
+  Immutable artifacts           Content-addressed files under objects/sha256 plus append-only JSONL event stream.
+
+  Execution                     Docker/Linux sandbox; Windows development through WSL2 Docker Desktop where needed.
+
+  Testing                       pytest plus property tests and deterministic fixtures; differential tests for duplicate checkers.
+
+  Version control               Git + CI; dependency lock, container digests, model identifiers, tool builds and dataset revisions recorded.
+
+  Generated code                Untrusted, network-disabled by default; cannot write active runner, evaluator, original dataset or
+                                accepted release.
+
+  Credentials                   Only provider broker possesses external credentials. Workers receive scoped capabilities, not secrets.
+
+  Scale                         No Kubernetes/distributed queue/graph DB until measured need justifies them. Start simple and
+                                reproducible.
+
+
+
+
+ 16.2 Reference repository layout
+   genesis/
+     pyproject.toml
+     src/genesis/
+       kernel/            # ids, CAS, events, authority, receipts, release gate
+       ir/                # typed nodes, epistemic effects, contracts, schemas
+       storage/           # sqlite, jsonl, snapshots
+       execution/         # broker, sandboxes, runners, resource accounting
+       verification/      # lean, sat_pb, exact, differential, numeric certs
+       operators/         # cognitive primitive implementations
+       macros/            # Gap Engine, Ghost Census, continuation, etc.
+       research/          # coordinator, world ecology, experiment designer
+       compilation/       # skill/cognitive/kernel compilation
+       evaluation/        # splits, leak scan, private judge interface, claims
+       domains/           # c4_host_v2, triangle_free_host_v1, future adapters
+       reporting/         # evidence-derived reports only
+       api/                # stable programmatic interface
+       cli/                # campaign commands
+     tests/
+     formal/              # Lean sources and proof fixtures
+     spec/
+     containers/
+     scripts/
+
+
+ 16.3 Campaign directory
+   campaign_root/
+     resolved_config.json
+     campaign.sqlite3
+     events.jsonl
+     objects/sha256/<digest>
+     work/<trial_id>/<attempt_id>/
+     snapshots/
+     reports/
+     exports/
+
+   private_evaluator_root/      # physically/logically separate
+     sealed_tasks/
+     evaluator_code/
+     preregistration/
+     release_records/
+
+
+
+
+                                                                   26
+GENESIS - Final Architecture & Implementation Specification                           16. Software architecture and repository specification
+
+
+
+
+ 16.4 Core relational tables
+  Table                        Key fields / purpose
+
+  campaigns                    campaign_id, created_at, root_config_hash, research_profile, status
+
+  system_versions              version_id, parent_ids, config_hash, model IDs, code commit, tool manifests
+
+  artifacts                    artifact_id, content_hash, media_type, producer_attempt, epistemic metadata
+
+  events                       event_id, timestamp, actor, type, payload_hash; indexed copy of JSONL event
+
+  tasks                        task_id, family, split_class, visibility, canonical_statement_hash
+
+  trials                       trial_id, system_version, task_id, preregistered budget, seed
+
+  attempts                     attempt_id, trial_id, tool, start/end, status, resource receipt, stdout/stderr refs
+
+  claims                       claim_id, text/template, scope, requested claim level, current allowed level
+
+  evidence                     claim_id, artifact_id, evidence axis/status, checker receipt
+
+  worlds                       world_id, parent_ids, representation, policy, status, option metrics
+
+  modifications                mod_id, source_version, target_version, hypothesis, rollback, predicted effects
+
+  evaluations                  eval_id, version_id, sealed_panel_id, metrics, judge_receipt
+
+  lineage_edges                parent_version, child_version, mod_id, activation/deactivation status
+
+
+
+
+ 16.5 Event envelope
+   class EventEnvelope(BaseModel):
+       model_config = ConfigDict(extra="forbid", strict=True)
+       event_id: UUID
+       campaign_id: UUID
+       timestamp_utc: datetime
+       actor_id: str
+       event_type: Literal[...]
+       system_version_id: str | None
+       trial_id: UUID | None
+       attempt_id: UUID | None
+       payload_sha256: str
+       prev_event_hash: str | None
+       schema_version: str
+
+
+ 16.6 Single-writer rule
+ Workers never write authoritative relational state directly. They return typed result envelopes plus immutable
+ artifact references to the Coordinator, which performs validation and commits a transaction. This sharply
+ reduces race conditions, inconsistent evidence promotion and provenance gaps.
+
+
+
+
+                                                                      27
+GENESIS - Final Architecture & Implementation Specification                    16. Software architecture and repository specification
+
+
+
+
+ 17. Execution, containment and resource
+ accounting
+ 17.1 Default limits
+  Parameter                                           Initial default
+
+  Concurrency                                         1
+
+  Active candidate cap                                8
+
+  Proposals per epoch                                 8
+
+  Selected confirmation candidates                    1
+
+  Tool actions per task                               24
+
+  Response repair calls                               1 separate call
+
+  Worker memory                                       2 GiB
+
+  Worker CPU                                          1 CPU
+
+  Attempt wall time                                   120 s
+
+  stdout/stderr cap                                   8 MiB
+
+  Paid API budget                                     0 until configured
+
+  Smoke-test cap                                      600 s
+
+  Seed                                                campaign seed + stable trial identity
+
+
+
+
+ 17.2 Profiles
+   • offline_engineering: no paid APIs, no network in generated-code containers, public/local fixtures only.
+   • live_research: provider broker enabled under explicit budget; evaluator still isolated.
+   • external_replication: frozen release package, fresh environment, independent judge, no research tuning.
+   • trainable_extension: optional, only when model training is deliberately part of the experiment; training
+      data and objective become versioned evidence dependencies.
+
+ 17.3 Resource fairness
+ Candidate and baseline systems receive the same permissible information and registered resource envelope
+ for a comparison unless the experimental question explicitly studies resource scaling. Every failed attempt,
+ timeout, retry, cancellation and manual rescue is charged. Hidden human effort is a resource and must be
+ declared.
+
+
+
+
+                                                                28
+GENESIS - Final Architecture & Implementation Specification                    17. Execution, containment and resource accounting
+
+
+
+
+ 18. Evaluation integrity and leak prevention
+
+
+
+
+                                         Figure 10. Clean prospective evaluation protocol.
+
+
+ 18.1 Split classes
+ Use physically and logically separate DEV, SELECT, CONFIRM and SEALED/EVALUATOR assets. Research
+ workers can use DEV. SELECT may be used only according to the preregistered selection protocol.
+ CONFIRM/SEALED data must not influence candidate construction for the claim being evaluated.
+
+ 18.2 Leak-screening pipeline
+   • Exact content hashes across all visible and sealed statements.
+   • Canonicalized statement hashes after alpha-renaming, whitespace normalization and benign syntactic
+      normalization.
+   • Near-duplicate screening using structural AST features, theorem-name removal and
+      representation-independent fingerprints.
+   • Manual adjudication for high-similarity pairs before the freeze, with decisions stored in the private
+     evaluator ledger.
+   • Generated lemmas/tools are screened before entering visible memory when their content could reveal
+     sealed targets.
+   • After freeze, a discovered leak invalidates the affected claim; the correct action is rerun after repair, not
+      statistical adjustment.
+
+ 18.3 Current project evidence note
+ The existing round-2 Lean evidence must be treated as contaminated: six sealed theorems or near-duplicates
+ appeared in research-visible splits, and one procedure path admitted a sealed theorem without screening.
+ Passing engineering tests does not repair that scientific contamination. Those results may be retained as
+ debugging evidence but not as confirmation. A clean rerun with pre-execution screening is required before
+ claiming prospective theorem-learning gains.
+
+
+
+
+                                                                29
+GENESIS - Final Architecture & Implementation Specification                            18. Evaluation integrity and leak prevention
+
+
+
+
+ 18.4 Claim ladder
+
+
+
+
+                  Figure 11. Increasingly ambitious claims require increasingly independent prospective evidence.
+
+
+
+ 19. Clean experimental program
+ 19.1 Experiment A - microkernel and replay
+ Goal: establish L0. Every execution is reproducible from version/config/artifact hashes; checker outputs can
+ be replayed; intentional corruption is detected; evaluator files remain inaccessible to research workers;
+ resource receipts reconcile with actual process limits. No intelligence claim is made.
+
+ 19.2 Experiment B - Ghost Census kill gate
+ Use a preregistered formal problem family in which countermodels are meaningful and exact. Compare
+ ghost-driven lemma/assumption selection against the strongest conventional baseline available under
+ matched budgets and randomized order. States are PROVED, GHOST_FOUND, UNSETTLED and
+ HARNESS_ERROR. A finite failure to find a model is never reinterpreted as consistency proof.
+
+ 19.3 Experiment C - clean prospective Lean study
+ Target: a substantial sealed panel on the order of ~700 theorems that the evaluated system has not seen,
+ stratified by theorem family/difficulty and screened against all research-visible material. Freeze code,
+ memory, prompts, tool versions, model identifiers, theorem library revision and evaluator before exposure.
+ The exact panel construction should be finalized by the independent evaluator and preregistered, not tuned
+ to achieve significance.
+ Primary comparison: base system versus Genesis research policy under a fixed resource envelope. Primary
+ metric should be paired exact theorem success or another preregistered binary/ordinal outcome with a test
+ appropriate to clustering by theorem family. Secondary metrics include proof-check success, total cost, wall
+ time, retries, calibration, new tool usage, failure taxonomy and sensitivity to project clustering. Report every
+ exclusion and deviation.
+
+
+
+
+                                                                30
+GENESIS - Final Architecture & Implementation Specification                                             19. Clean experimental program
+
+
+
+
+ 19.4 Experiment D - transfer
+ Take retained mechanisms from one domain and evaluate them on a frozen new theorem family or the
+ triangle-free host domain. Transfer means the mechanism was not selected using the target confirmation
+ panel. Merely re-running the same search code on a new input is not sufficient if all hyperparameters/policies
+ were tuned after inspecting the target.
+
+ 19.5 Experiment E - better improver
+ Create two research systems differing in improvement policy. Give both the same sequence of future
+ improvement opportunities, budgets and permissible evidence. Measure the quality/cost/transfer of the
+ modifications they produce. A better-improver claim requires the successor policy to outperform on the
+ production of future improvements, not just on the tasks used to create it.
+
+ 19.6 Experiment F - multi-generation
+ Require at least three clean generations with fresh confirmation material per generation and a preregistered
+ trend analysis. Freeze and archive every ancestor. A generation that fails does not disappear from the cost
+ ledger. If the trend collapses after compute matching or independent replication, the recursive-improvement
+ claim is rejected or narrowed.
+
+
+ 20. Baselines and ablations
+ Genesis should be compared to strong, boring alternatives. Weak baselines make ambitious systems look
+ better than they are.
+
+  Baseline / ablation                      Purpose
+
+  Base model + direct prompting            Measures value beyond model capability.
+
+  Base model + conventional tool use       Separates architecture from basic agent scaffolding.
+
+  Caching/memory baseline                  Tests whether “learning” is merely retrieval.
+
+  Specialist solver baseline               SAT/SMT/Lean/search engine tuned conventionally for the domain.
+
+  Pair-testing / local search baseline     Important for synergy-search claims.
+
+  No ontology/representation mutation      Measures benefit of changing the search language.
+
+  No countermodel channel                  Measures Ghost/obstruction value.
+
+  No causal self-model                     Tests whether improvement policy needs causal attribution.
+
+  No compilation/crystallization           Measures cumulative cost savings and reuse.
+
+  No option archive                        Measures whether preserved weak lineages later contribute.
+
+  No typed evidence/effects                Measures error/claim contamination but should only run in sandboxed research, never replace
+                                           the release gate.
+
+
+
+
+ 21. Reporting and scientific honesty
+ 21.1 Required report structure
+   • Exact claim and evidence level.
+   • Frozen system/version identifiers and environment.
+   • Permissible information and resource budgets.
+   • Dataset/split construction and leak-scan results.
+   • All baselines and ablations, including unsuccessful candidates.
+   • Primary and secondary metrics with preregistered analysis.
+   • Failures, timeouts, manual interventions and checker errors.
+   • Certificate/replay references.
+   • Limitations and domains where the claim is not supported.
+   • Novelty status separated from correctness and utility.
+
+
+
+
+                                                                  31
+GENESIS - Final Architecture & Implementation Specification                                                   21. Reporting and scientific honesty
+
+
+
+
+ 21.2 Forbidden report transformations
+   • Do not turn “no ghost found” into “proved.”
+   • Do not turn a source file or theorem-shaped string into a checked theorem.
+   • Do not discard failed attempts from resource accounting.
+   • Do not change the evaluation target after seeing confirmation results.
+   • Do not label synthetic synergy recovery as mathematical discovery.
+   • Do not call a change causal when only correlated.
+   • Do not call a one-generation gain recursive self-improvement.
+   • Do not call an internally generated idea externally novel without literature/priority checking.
+
+
+ 22. Failure modes and red-team catalogue
+  Failure                               Detection                                             Required response
+
+  Sealed-data leak                      hash/canonical/near-duplicate scan; provenance        invalidate affected claim; repair and rerun
+                                        audit
+
+  Verifier self-promotion               trust graph shows candidate verifier authorizing      quarantine; require external checker
+                                        itself
+
+  Benchmark exploitation                evaluator attack, semantic randomization,             expand evaluator; add regression case
+                                        distribution shift
+
+  Correlated consensus                  dependency graph / shared training/evidence           downweight votes; add heterogeneous checker
+
+  Architectural bloat                   description complexity and ablation redundancy        compile/merge/delete macros
+
+  Catastrophic forgetting               protected capability regression panel                 rollback or isolate capability
+
+  False novelty                         external literature/priority search                   reclassify as rediscovery/variant
+
+  Formalization mismatch                counterexamples to NL<->formal semantics; expert      repair specification; invalidate proof claim about
+                                        review                                                intended statement
+
+  Hidden human effort                   event ledger/manual intervention records              charge cost; disclose
+
+  Model/provider drift                  model version mismatch or API behavior change         new SystemVersion; repeat affected evaluation
+
+  Non-deterministic irreproducibility   seeded replay + environment digest                    narrow claim or collect repeated evidence
+
+  Checker bug                           differential checker disagreement / fixture failure   CHECKER_ERROR; quarantine checker
+
+  Research-policy lock-in               regret/diversity metrics                              preserve alternative policies and rerun discriminating
+                                                                                              trials
+
+  Self-generated data closure           information-open governor detects no external         inject fresh environment/checker/human evidence
+                                        novelty                                               before claiming learning
+
+
+
+
+                                                                              32
+GENESIS - Final Architecture & Implementation Specification                                         22. Failure modes and red-team catalogue
+
+
+
+
+ 23. Implementation roadmap and acceptance gates
+
+
+
+
+          Figure 12. Build the evidence substrate first; recursive self-improvement is a late research milestone, not phase one.
+
+  Phase                         Build                                                             Exit gate
+
+  P0 - Evidence kernel          Implement CAS, events, SQLite single writer, receipts, sandbox,   All corruption/replay/leak fixtures pass; no worker
+                                claim schema, replay, private evaluator API.                      can access private root.
+
+  P1 - Mathematical wedge       Implement c4_host_v2, triangle transfer domain, dual checkers,    Fixtures and property tests pass; every result
+                                BoundState, Ghost Census, exact small-instance baseline.          reproducible; conventional baselines match
+                                                                                                  expected results.
+
+  P2 - Research IR and          Implement typed nodes/operators, world manager, Pareto            Macros can be replayed from IR; every promotion
+  ecology                       archive, capability library, macro execution.                     has evidence dependencies.
+
+  P3 - Clean prospective Lean   Repair screening; freeze and run sealed theorem study.            L1 claim only if preregistered fresh-task result
+                                                                                                  passes; otherwise diagnose and stop claim
+                                                                                                  escalation.
+
+  P4 - Causal improvement +     Ablation/placebo controls, mechanistic attribution, skill         At least one improvement survives causal checks
+  compilation                   compilation/crystallization.                                      and fresh transfer.
+
+  P5 - Better improver          Head-to-head research policies on future improvement              L5 only with clean prospective meta-level
+                                production.                                                       superiority.
+
+  P6 - Multigeneration /        At least three generations and independent domain                 L6/L7 only if trend, transfer and replication survive.
+  cross-domain                  transfer/replication.
+
+
+
+
+ 23.1 Checkpoint policy
+ Each phase produces a tagged checkpoint containing source commit, resolved config, database snapshot,
+ object hashes, test report, known deviations and an explicit claim ceiling. Implementation agents should
+ continue through routine reversible work without repeated approval, but should stop claim escalation when
+ an evidence gate fails.
+
+
+ 24. Current status and what remains unproven
+ The architecture is much further developed than its scientific evidence. The synthetic Gap Engine
+ experiments are useful evidence about interaction-search mechanisms, not about mathematical
+ self-improvement. At small candidate counts, random-subset interaction discovery performed strongly; at
+ larger counts it collapsed until likely-partner activation was introduced. That supports the design decision not
+ to kill individually weak ideas too early, but it does not prove that the same mechanism discovers useful
+ mathematical research procedures.
+
+
+
+
+                                                                           33
+GENESIS - Final Architecture & Implementation Specification                               24. Current status and what remains unproven
+
+
+
+ The recent Lean round cannot be used as clean confirmation because of sealed-set contamination. Therefore
+ the decisive near-term work is not another conceptual engine. It is the clean prospective experiment plus a
+ fully replayable evidence kernel.
+
+ 24.1 Explicitly unproven claims
+   • That Genesis can repeatedly invent genuinely useful new mathematical concepts.
+   • That learned research procedures improve the production of future improvements after compute
+      matching.
+   • That the system can sustain improvement over multiple clean generations.
+   • That the minimal cognitive basis can be discovered rather than merely hand-designed.
+   • That mechanism crystallization can routinely extract faithful symbolic laws from large learned models.
+   • That automated foundation lifting or ontology invention will be broadly useful outside narrow domains.
+   • That any observed gains generalize across mathematics, software and empirical science without
+      domain-specific engineering.
+
+ 24.2 What would change the assessment
+ The most important evidence would be a clean sequence in which Genesis itself diagnoses a capability gap
+ not explicitly encoded by its designers, synthesizes a new operator or procedure, passes independent
+ verification, improves performance on fresh sealed problems, transfers the mechanism to a new family, and
+ then uses the retained mechanism to produce another useful improvement. That is substantially more
+ informative than a large static architecture diagram.
+
+
+ 25. Design-freeze rules for future “pushes”
+ After this specification, a new idea is not automatically a new permanent subsystem. It enters through the
+ following novelty gate.
+
+  Question                           Pass condition
+
+  Observed need?                     A reproducible frontier failure exists; not merely conceptual elegance.
+
+  Expressible already?               Existing cognitive primitives/macros cannot express an adequate solution within the registered cost
+                                     bound.
+
+  Distinct evidence?                 The proposed mechanism creates a prediction or capability not reducible to existing macros.
+
+  Implementable?                     There is a typed interface, execution path, checker/evaluator and rollback.
+
+  Prospective value?                 Frozen addition improves fresh tasks or reduces verified cost in a preregistered comparison.
+
+  Ablation-essential?                Removing it removes the gain or imposes a clearly measured compilation penalty.
+
+  Compressible later?                If it becomes redundant, the Generative Kernel may demote it from primitive to macro.
+
+
+ This rule makes “improvement #61” an empirical discovery problem. The architecture is intentionally
+ designed to become smaller in its core while increasing the closure of capabilities it can generate.
+
+
+ 26. Reference APIs and pseudocode
+ 26.1 Trial execution contract
+   def run_trial(task: TaskRef, version: SystemVersionRef, budget: Budget) -> TrialReceipt:
+       assert evaluator_policy.permits(task, version)
+       grant = authority.issue_execution_grant(version, budget)
+       attempt = sandbox.execute(version.runner, task.visible_payload, grant)
+       receipt = resources.finalize(attempt)
+       objects = cas.commit_untrusted_outputs(attempt.outputs)
+       return coordinator.commit_trial_receipt(task, version, receipt, objects)
+
+
+
+
+                                                                   34
+GENESIS - Final Architecture & Implementation Specification                                                 26. Reference APIs and pseudocode
+
+
+
+
+ 26.2 Evidence promotion
+   def promote_claim(claim_id: ClaimId, requested: EvidenceLevel) -> PromotionResult:
+       deps = evidence.collect_transitive_dependencies(claim_id)
+       effects = epistemic_effects.union(deps)
+       if effects.contains("TOUCHED_SEALED_SET") and requested.is_confirmation_level():
+           return reject("contaminated dependency")
+       if not checkers.required_for(requested).all_valid(deps):
+           return reject("missing independent certificate")
+       if requested.requires_prospective_eval() and not evaluator.has_clean_receipt(claim_id):
+           return reject("no clean prospective evidence")
+       return release_gate.promote(claim_id, requested)
+
+
+ 26.3 World step
+   for epoch in campaign:
+       gaps = diagnose_failures(active_worlds, evidence)
+       proposals = propose_world_actions(gaps, cap=resolved.proposals_per_epoch)
+       selected = research_market.allocate(proposals, budget)
+       receipts = execute_bounded(selected)
+       checked = checker_service.verify(receipts)
+       update_causal_models(checked)
+       update_pareto_ecology(checked)
+       retire_and_compress_low_value_worlds()
+       if meta_gap_detected(): synthesize_candidate_operator_class()
+
+
+ 26.4 Modification contract
+   Modification = {
+     source_version, patch_or_training_recipe,
+     hypothesis, predicted_effects, affected_components,
+     protected_invariants, required_regression_panels,
+     max_resource_delta, authority_delta = 0,
+     rollback_ref, causal_test_plan
+   }
+
+
+
+ 27. Verification adapters
+  Adapter                          Trust model                                           Typical artifacts
+
+  Lean                             Kernel replay of proof terms under pinned             Theorems, logical reductions, formal definitions
+                                   environment
+
+  SAT/PB/MaxSAT                    Replay solver certificate or independently verify     Finite combinatorics, optimization upper/lower bounds
+                                   assignment/bound
+
+  Exact enumerator                 Independent implementation + fixtures +               Small graphs, exhaustive countermodels
+                                   deterministic enumeration
+
+  Interval/numerical certificate   Rigorous enclosure with explicit precision/error      Continuous/numerical claims
+                                   bounds
+
+  Differential checker             Two independent implementations agree on              Graph predicates, parsers, transformations
+                                   canonicalized artifact
+
+  Property/test harness            Appropriate only for scoped executable behavior;      Software tools, compiled operators
+                                   never upgraded into theorem proof
+
+  Human/external expert            Versioned signed adjudication for semantics/novelty   Faithful formalization, scientific priority
+                                   where machine check is unavailable
+
+
+
+
+ 28. Scientific literature and external knowledge
+ compiler
+ Retrieval alone is insufficient. Genesis should compile literature into typed claims: statement, assumptions,
+ method, evidence class, dataset, replication status, dependencies, contradictory findings and priority date.
+ External papers are evidence sources, not ground truth. Their claims retain their published scope and
+ uncertainty.
+
+ Novelty is orthogonal to correctness. A theorem may be correct but already known; an idea may be novel but
+ wrong. Priority checking therefore occurs after internal validity checks and before public novelty claims.
+
+
+
+
+                                                                         35
+GENESIS - Final Architecture & Implementation Specification                      28. Scientific literature and external knowledge compiler
+
+
+
+
+ 29. Domain expansion beyond mathematics
+ 29.1 Software research
+ Use executable specifications, tests, formal contracts, fuzzing, static analysis and performance counters. The
+ system can synthesize patches, but code that modifies protected evaluator/runner paths is rejected.
+ Performance improvements require matched hardware/environment and regression coverage.
+
+ 29.2 Empirical science
+ Add instrument models, calibration chains, missingness/selection bias, multi-fidelity simulation and real
+ experimental interfaces. The evidence microkernel must preserve which conclusions are simulation-only
+ versus measured. Physical-world execution should remain brokered and approval-gated.
+
+ 29.3 Machine-learning research
+ Treat data, objectives, training recipes, model versions and hardware as first-class evidence dependencies.
+ Synthetic self-training is not assumed to add information unless an external signal such as verifier feedback,
+ environment interaction or new data actually constrains the learner.
+
+
+ 30. Security and operational boundary
+ Genesis is a capability architecture, not an authority-escalation architecture. Generated code runs with no
+ network by default. It may not acquire credentials, money, cloud accounts, persistent external infrastructure
+ or hidden communication channels. External actions are performed only through registered brokers that
+ enforce the campaign grant and produce receipts.
+
+ If recursive cross-domain improvement ever becomes empirically strong, the correct response is not
+ automatic scaling. Freeze the release, reproduce on independent infrastructure, audit the causal chain and
+ failure modes, then deliberately decide whether to increase resources.
+
+
+ 31. Acceptance checklist for an implementation
+ handoff
+  Area                        Acceptance condition
+
+  Architecture                Microkernel, cognitive kernel and phenotype boundaries are explicit in code; mutable workers cannot write
+                              protected evaluator state.
+
+  Provenance                  Every artifact and claim resolves to content hashes, producer attempt and environment/version identity.
+
+  Execution                   Sandbox enforces declared wall/CPU/RAM/output/network constraints; failures are retained.
+
+  Evidence                    All evidence axes are represented separately; no-ghost-found is not proof; checker errors are not mathematical
+                              outcomes.
+
+  Formalization               Ambiguity and NL<->formal mappings are versioned and testable.
+
+  World ecology               Bounded world creation, retirement, lineage and option archive are implemented.
+
+  Construction/obstruction    Both lower and upper channels exist in the math wedge; exactness requires gap zero.
+
+  Evaluation                  Sealed evaluator is isolated; exact and near-duplicate screening occurs before exposure.
+
+  Baselines                   Strong conventional baselines run under matched information/budget.
+
+  Self-improvement            Modifications have hypotheses, predicted effects, invariants, rollback and causal test plans.
+
+  Compilation                 Reusable procedures can be promoted and later demoted/invalidated based on evidence.
+
+  Reporting                   Released prose is generated from evidence status and includes limitations/deviations.
+
+  Reproduction                A frozen release can be rerun on an independent machine without hidden state.
+
+  Design freeze               New primitives require observed closure failure and prospective evidence; otherwise they remain macros.
+
+
+
+
+                                                                    36
+GENESIS - Final Architecture & Implementation Specification                                  31. Acceptance checklist for an implementation handoff
+
+
+
+
+ 32. Cognitive primitive implementation contracts
+ Each primitive is an interface with explicit preconditions, outputs and failure semantics. Implementations may
+ vary, but replacing an implementation must preserve the contract or create a new versioned operator.
+  Primitive         Input                                Output                                           Invariant                                    Failure states
+
+  FORMALIZE         Natural/partial specification +      Typed Goal, AssumptionSet, ambiguity             No silent choice among materially            AMBIGUOUS;
+                    context                              branches, semantic anchors                       different interpretations                    UNSUPPORTED_DOMAIN;
+                                                                                                                                                       INVALID_SPEC
+
+  REPRESENT         Typed object + representation        Representation + forward/backward                Do not treat a lossy representation as       LOSSY; NONINVERTIBLE;
+                    objective                            semantics bridges where available                equivalent unless the loss is typed          CHECK_FAILED
+
+  DISTINGUISH       Competing hypotheses/worlds +        Witness, counterexample, or experiment           Must identify which hypotheses are           NO_SEPARATING_ACTION;
+                    allowed actions                      maximizing separation per cost                   separated and under what assumptions         BUDGET_EXHAUSTED
+
+  FACTOR            Object/system + interface            Subobjects, overlap/interface contracts,         Parent guarantee must be reconstructible     NONCOMPOSABLE;
+                    language                             composition rule                                 from child contracts or remain speculative   INTERFACE_TOO_COSTLY
+
+  TRANSFORM         Artifact + target relation           Transformed artifact + proof/metadata of         Semantic-preserving vs approximate           UNPROVED_BRIDGE;
+                                                         relation                                         transformations must be different types      LOSS_EXCEEDS_BOUND
+
+  PROPOSE           Context + proposal schema +          Untrusted typed candidates                       No proposal receives evidence status from    SCHEMA_FAIL;
+                    budget                                                                                generation alone                             EMPTY_PROPOSAL
+
+  EXECUTE           Executable artifact + execution      Attempt receipt + immutable outputs              All side effects must be within grant;       TIMEOUT; OOM;
+                    grant                                                                                 every attempt is charged                     POLICY_DENIED; CRASH
+
+  OBSERVE           Execution/world + instrument         Observation + uncertainty +                      Observation cannot silently exceed           MISSING_CALIBRATION;
+                                                         calibration/provenance                           instrument validity                          SENSOR_ERROR
+
+  INTERVENE         System/world + intervention          Post-intervention observation set                Intervention must specify changed and        CONFOUNDED;
+                    contract                                                                              held-fixed variables as far as possible      PARTIAL_COMPLIANCE
+
+  VERIFY            Artifact + verifier contract         Checker receipt + evidence-state transition      Checker must be narrower than producer       CHECKER_ERROR;
+                                                                                                          and version-pinned                           REJECTED; UNSETTLED
+
+  TRANSPORT         Artifact + source/target domains +   Target-domain artifact + transport certificate   Scope and assumptions of map are             MAP_NOT_APPLICABLE;
+                    map                                                                                   explicit and inherited                       ROUNDTRIP_FAIL
+
+  COMPOSE           Compatible typed artifacts           Composite artifact + guarantee derivation        Interfaces and assumptions must unify        TYPE_MISMATCH; GUARA
+                                                                                                          explicitly                                   NTEE_NOT_DERIVED
+
+  BRANCH            State + branch policy                Immutable child versions/worlds + lineage        Authority/resources are leased, not          BRANCH_CAP_REACHED;
+                                                         edges                                            duplicated                                   INVALID_PARENT
+
+  COMPRESS          Artifact/system + preservation       Smaller representation +                         Compression claim must state exactly         REGRESSION;
+                    contract                             equivalence/adequacy evidence                    what is preserved                            EQUIVALENCE_UNPROVEN
+
+  SYNTHESIZE        Specification + search grammar +     Candidate implementation/program + proof         Synthesis success is not verification        NO_CANDIDATE;
+                    budget                               obligations                                      success                                      UNSAT_SPEC;
+                                                                                                                                                       BUDGET_EXHAUSTED
+
+  REFLECT           Evidence/history/system metadata     Hypotheses about system, gaps, dynamics or       Self-model outputs remain hypotheses         CIRCULAR_JUSTIFICATION;
+                                                         missing operators                                until experimentally tested                  LOW_IDENTIFIABILITY
+
+
+
+
+ 33. Coordinator and campaign state machine
+ The Coordinator is the only persistent writer to authoritative campaign state. Workers are ephemeral. The
+ state machine below should be explicit in code so a crashed process cannot skip an evidence gate.
+   CREATED
+     -> VALIDATED_CONFIG
+     -> DEV_RUNNING
+     -> CANDIDATE_FROZEN
+     -> LEAK_SCAN_PASSED
+     -> SEALED_RUNNING
+     -> JUDGED
+     -> RELEASED | REJECTED | INVALIDATED
+
+   Any state -> ABORTED on policy/resource/operator failure.
+   Any post-freeze state -> INVALIDATED if contamination or unauthorized mutation is discovered.
+
+
+ 33.1 Transaction boundary
+ A worker response is never authoritative on arrival. The Coordinator validates its schema, checks referenced
+ artifacts exist and match hashes, validates the worker grant, stores immutable outputs, inserts
+ attempt/resource records, then performs evidence transitions inside one SQLite transaction. If any step fails,
+ the transaction rolls back while the raw untrusted work directory remains available for forensic inspection.
+
+
+
+
+                                                                              37
+GENESIS - Final Architecture & Implementation Specification                  33. Coordinator and campaign state machine
+
+
+
+
+ 33.2 Recovery after crash
+   • On startup, verify the append-only event hash chain and reconcile every running attempt against
+     OS/container state.
+   • Attempts with no live process and no terminal receipt become INTERRUPTED, never silently SUCCESS.
+   • Rebuild derived SQLite indexes from immutable events when integrity is uncertain.
+   • Never resume a sealed run under a changed SystemVersion; create a new evaluation attempt with an
+      explicit deviation.
+
+
+ 34. Research market and scheduling algorithm
+ Scheduling is a value-of-computation problem. Each proposal declares expected immediate progress,
+ information gain, future capability value, cost, verifier demand and irreversibility. The scheduler does not
+ need a perfect utility model; it needs calibrated comparisons and explicit exploration budget.
+   score(a) = E[verified_progress(a)]
+            + lambda_info * E[information_gain(a)]
+            + lambda_cap * E[future_capability_value(a)]
+            + lambda_opt * option_value(a)
+            - lambda_cost * expected_cost(a)
+            - lambda_risk * irreversibility(a)
+
+   Selection = Pareto prefilter + budgeted portfolio optimization + reserved diversity quota
+
+ At least one slot in a nontrivial epoch should remain available for a structurally different hypothesis or
+ research policy when the archive indicates premature convergence. The exact exploration quota is tunable on
+ DEV, but it must be frozen before confirmation.
+
+ 34.1 Stop-thinking rule
+ For an active obligation, estimate the best remaining value of computation. If every legal action has predicted
+ marginal value below its resource price and there is no unresolved high-criticality verification obligation,
+ terminate as UNSETTLED or return the current anytime-correct bound. “Keep thinking” is not the default.
+
+
+ 35. Leak scanner and contamination firewall
+ Because the strongest current project failure was sealed-theorem leakage, the leak scanner is part of the
+ scientific kernel rather than a convenience script.
+   def screen(candidate_artifact, sealed_index):
+       exact = sha256(canonical_bytes(candidate_artifact))
+       if sealed_index.exact.contains(exact): return BLOCK(EXACT_MATCH)
+
+        ast = parse_and_alpha_normalize(candidate_artifact)
+        structural = structural_fingerprint(ast)
+        if sealed_index.structural.contains(structural): return BLOCK(STRUCTURAL_MATCH)
+
+        features = near_duplicate_features(ast)
+        neighbors = sealed_index.ann.query(features, k=K)
+        if max_similarity(neighbors) >= HARD_THRESHOLD: return BLOCK(NEAR_DUPLICATE)
+        if max_similarity(neighbors) >= REVIEW_THRESHOLD: return QUARANTINE_FOR_ADJUDICATION
+        return ALLOW
+
+ The scanner is applied not only to initial datasets but also to generated lemmas, memorized examples,
+ procedure libraries, retrieved documents and automatically synthesized curricula before those artifacts
+ become visible to research workers. Screening decisions and thresholds are part of the evaluator version.
+
+ 35.1 Canonicalization requirements
+   • Remove theorem names, comments and nonsemantic whitespace.
+   • Alpha-rename local variables and normalize binder names.
+   • Normalize commutative argument order only when semantics are proven equivalent.
+   • Record both source-text and parsed-structure fingerprints.
+   • For Lean, use elaborated expression structure when feasible, but never expose sealed elaborated terms to
+      research workers.
+
+
+
+                                                              38
+GENESIS - Final Architecture & Implementation Specification                   35. Leak scanner and contamination firewall
+
+
+
+   • Near-duplicate similarity is a screening heuristic; final adjudication is stored as an immutable evaluator
+      decision.
+
+
+ 36. Domain adapter contract and worked C4 flow
+ 36.1 Required DomainAdapter interface
+   class DomainAdapter(Protocol):
+       domain_id: str
+       schema_version: str
+
+        def parse_task(self, raw: bytes) -> DomainTask: ...
+        def canonicalize(self, task: DomainTask) -> bytes: ...
+        def visible_features(self, task: DomainTask) -> FeatureRecord: ...
+        def check_witness(self, task, witness) -> CheckerReceipt: ...
+        def check_countermodel(self, task, countermodel) -> CheckerReceipt: ...
+        def baseline_solvers(self) -> tuple[Baseline, ...]: ...
+        def proof_obligations(self, artifact) -> tuple[ProofObligation, ...]: ...
+        def leakage_fingerprint(self, task) -> LeakFingerprint: ...
+
+
+ 36.2 Worked C4 research trace
+ A typical c4_host_v2 campaign begins with a host graph H. The Builder proposes a C4-free edge subset and
+ the independent witness checker validates every edge is allowed and that no 4-cycle occurs. The obstruction
+ channel constructs an upper certificate using exact optimization or a proved bound. BoundState is updated
+ only after both receipts validate. If the gap remains wide, the representation worker may propose orbit
+ partitions, codegree tables or PB encodings. Each transformation must preserve the original optimum under a
+ checked bridge. A discovered general pattern is not promoted to theorem until formalized and checked in
+ Lean or another accepted proof system.
+
+ 36.3 Required fixtures
+   • K1-K6 and manually auditable small host graphs.
+   • Positive fixtures containing known C4s and negative fixtures with none.
+   • Adversarial edge-order/random-label permutations for semantic invariance.
+   • Cases where universal complete-host bounds are invalid for arbitrary hosts, to prevent unsound transfer.
+   • At least two independently implemented C4 predicates with differential property tests.
+
+
+ 37. Lean integration contract
+ Lean is a proof checker and programming environment, not an oracle. The integration isolates proof
+ generation from proof acceptance.
+
+ 37.1 Lean worker responsibilities
+   • Receive only research-visible theorem statements and allowed library revision.
+   • Generate candidate Lean source in a disposable work directory.
+   • Record imports, theorem statement, tactic/proof term, elapsed time and diagnostics.
+   • Never modify the pinned mathlib checkout or evaluator data.
+   • Return source plus compiler/checker receipts to the Coordinator.
+
+ 37.2 Formal checker responsibilities
+   • Invoke a pinned Lean build in a clean environment.
+   • Reject use of disallowed axioms or imports according to campaign policy.
+   • Record the elaborated theorem identity and proof-check result.
+   • Hash the complete Lean environment/toolchain metadata required for replay.
+   • Distinguish elaboration error, timeout, kernel rejection and successful theorem check.
+
+
+
+
+                                                              39
+GENESIS - Final Architecture & Implementation Specification                                                  37. Lean integration contract
+
+
+
+
+ 37.3 Theorem-memory rule
+ A proved lemma can enter reusable memory only after leak screening against current/future sealed indices
+ permitted to the evaluator. The research-visible library stores the lemma statement, proof artifact,
+ dependencies and scope. If a later audit finds that a lemma exposed a sealed target, every dependent
+ confirmation claim is invalidated transitively.
+
+
+ 38. Test and CI matrix
+  Test class             Examples                                                   Runs when                Release consequence
+
+  Unit                   hashing, schemas, bound ordering, status transitions       every commit             must pass
+
+  Property               graph invariance, canonicalization, checker equivalence    every commit / nightly   must pass
+
+  Differential           dual C4 checker, parser/checker implementations            nightly                  disagreement blocks affected adapter
+
+  Mutation               intentionally corrupt certificate/event/resource receipt   nightly / release        kernel must detect corruption
+
+  Sandbox escape         network/filesystem/credential denial fixtures              release                  failure blocks release
+
+  Replay                 reconstruct selected historical trials from hashes         nightly                  failure marks reproducibility defect
+
+  Leak firewall          known exact/alpha/near duplicates                          every evaluator change   failure blocks sealed use
+
+  Baseline regression    exact enumerators and conventional solvers                 release                  unexpected change requires adjudication
+
+  Evidence wording       attempt illegal status/claim promotions                    every commit             must reject all fixtures
+
+  Load/resource          timeouts, output caps, OOM, concurrent worker returns      release                  must retain truthful receipts
+
+  End-to-end smoke       one complete campaign through report                       release                  must pass under 600 s default smoke cap
+
+
+
+
+ 38.1 Property-test examples
+   @given(graph, permutation)
+   def test_c4_invariant_under_relabel(graph, permutation):
+       assert c4_check_a(graph) == c4_check_a(relabel(graph, permutation))
+       assert c4_check_b(graph) == c4_check_b(relabel(graph, permutation))
+
+   @given(event_sequence)
+   def test_rebuild_equals_online_state(event_sequence):
+       online = apply_events_online(event_sequence)
+       rebuilt = rebuild_from_append_only_log(event_sequence)
+       assert canonical_state(online) == canonical_state(rebuilt)
+
+
+
+ 39. Configuration and CLI contract
+ 39.1 Resolved configuration example
+   campaign:
+     profile: offline_engineering
+     seed: 20261007
+     domain: c4_host_v2
+   research:
+     max_active_worlds: 8
+     proposals_per_epoch: 8
+     selected_confirmation: 1
+   execution:
+     concurrency: 1
+     cpu: 1
+     memory_mib: 2048
+     wall_seconds: 120
+     output_mib: 8
+     network: false
+   models:
+     provider_budget_usd: 0
+   verification:
+     require_dual_c4_check: true
+     lean_toolchain: <pinned-by-release>
+   evaluation:
+     private_root: /private/evaluator
+     leak_scan_version: <content-hash>
+     preregistration_ref: <content-hash>
+
+
+
+
+                                                                              40
+GENESIS - Final Architecture & Implementation Specification                                                            39. Configuration and CLI contract
+
+
+
+
+ 39.2 CLI surface
+      genesis init --config campaign.yaml
+      genesis doctor
+      genesis smoke
+      genesis campaign run <campaign_id>
+      genesis campaign status <campaign_id>
+      genesis world list <campaign_id>
+      genesis trial replay <trial_id>
+      genesis artifact verify <artifact_id>
+      genesis evidence show <claim_id>
+      genesis freeze candidate <version_id>
+      genesis evaluator request-leak-scan <version_id>
+      genesis report build <campaign_id>
+      genesis export replication-bundle <release_id>
+
+ Commands that touch sealed evaluation should communicate with the private evaluator through a narrow
+ request/receipt interface. The research CLI should never accept a path that directly reads sealed task content.
+
+
+ 40. End-to-end campaign walkthrough
+ The walkthrough below is intended to remove ambiguity about how the pieces compose. It is illustrative;
+ exact domain decisions remain campaign-specific.
+  Step       Action                                      Produced artifacts                                            Trust/evidence effect
+
+  1          Initialize campaign and validate resolved   Campaign, SystemVersion G0, policy grant                      L0 only
+             config
+
+  2          Load DEV task P and formal contract         Goal, AssumptionSet, domain fingerprints                      No mathematical evidence yet
+
+  3          Run baselines                               Attempt receipts, witnesses/certificates                      Baseline evidence
+
+  4          Diagnose gap                                FailureSignature, candidate explanations                      Hypotheses only
+
+  5          Spawn bounded worlds                        World lineage nodes with different representations/policies   Option archive grows
+
+  6          Builder/Barrier execute                     Witness candidates, ghosts, bound certificates                Unchecked until checker receipts
+
+  7          Independent check                           Checker receipts; BoundState updates                          MathStatus may promote
+
+  8          Causal comparison                           Matched interventions/ablations                               CausalityStatus may promote
+
+  9          Compile useful mechanism                    Capability/operator candidate + preservation tests            Utility still DEV_ONLY
+
+  10         Freeze selected successor                   SystemVersion G1; immutable memory/tool snapshot              No more tuning for this claim
+
+  11         Leak scan                                   Evaluator receipt                                             Required before sealed run
+
+  12         Execute sealed panel                        Complete trial/attempt receipts                               Research components cannot tune
+
+  13         Independent judge                           EvaluationResult + certificate replay                         Utility may promote
+
+  14         Release or reject                           Claim wording, release bundle, limitations                    Claim level fixed by evidence
+
+  15         Meta-analysis                               ImprovementHypothesis update, operator                        Feeds next DEV cycle only
+                                                         compression/meta-gap
+
+
+
+
+ 41. Meta-gap discovery: how Genesis finds
+ improvement #61
+ Meta-gap discovery is the mechanism that converts architectural saturation into an empirical research
+ problem. It does not start by inventing a fancy module name. It starts from repeated residual failure after the
+ existing closure has been exercised.
+      1. Collect frontier failures F that survive strong baselines and ordinary macro search.
+      2. Cluster failures by invariant signature: what remains unsolved across representations/worlds?
+      3. Enumerate/synthesize Research IR programs from current primitive basis K under cost bound B.
+      4. If a program solves the cluster prospectively, no new primitive is needed; compile the program as a macro.
+      5. If no adequate program exists, produce an expressivity/cost witness: current closure(K,B) misses capability C*.
+      6. Synthesize candidate primitive p with explicit semantics, type signature, failure states and checker obligations.
+      7. Add p only to sandboxed descendant K+p.
+      8. Compare K and K+p on fresh tasks plus ablations and complexity accounting.
+      9. Promote p to primitive only if it creates non-redundant prospective value; otherwise retain as macro or reject.
+      10. Periodically retry deriving p from the enlarged basis; primitives may later be demoted.
+
+
+
+
+                                                                               41
+GENESIS - Final Architecture & Implementation Specification              41. Meta-gap discovery: how Genesis finds improvement #61
+
+
+
+
+ 41.1 What counts as evidence that a primitive is genuinely new
+   • A stable task/failure family lies outside the cost-bounded closure of current operators under the registered
+      grammar/search budget.
+   • The candidate primitive supplies a concise semantics, not merely a memorized task solution.
+   • It transfers to fresh instances or a second family predicted by its semantics.
+   • Ablating the primitive removes the gain or causes a clearly measured and reproducible compilation-cost
+      explosion.
+   • Its addition does not require weakening the evaluator or changing the target definition.
+
+
+ 42. Cognitive-kernel minimization experiment
+ The initial 16 primitives are hypotheses. Genesis should experimentally search for a smaller basis while
+ retaining verified reach.
+   for primitive p in K:
+       K_minus = K - {p}
+       try:
+            macro = synthesize_equivalent(p, grammar=K_minus, budget=B)
+            measure = prospective_cost_and_capability(K_minus + {macro})
+            if preservation_passes(measure) and cost_penalty <= threshold:
+                demote p from primitive to macro
+       except NoAdequateProgram:
+            keep p
+
+   Then search operator fusion/splitting candidates and rerun the same prospective test.
+
+ This is not only software refactoring. If apparently different capabilities collapse to a common operator such
+ as DISTINGUISH, QUOTIENT or TRANSPORT, Genesis has discovered a deeper structural regularity about its
+ own problem-solving process.
+
+
+ 43. Replication bundle and release artifact
+ Every scientific release should be reproducible without access to hidden conversational context or mutable
+ cloud state.
+   release_<id>/
+     MANIFEST.json
+     CLAIMS.json
+     resolved_config.json
+     system_version.json
+     dependency_lock/
+     container_digests.json
+     model_identifiers.json
+     events.jsonl
+     campaign.sqlite3.snapshot
+     objects/sha256/...
+     certificates/...
+     checker_receipts/...
+     resource_receipts/...
+     preregistration.pdf|json
+     analysis_code/
+     report.pdf
+     REPRODUCE.md
+     LIMITATIONS.md
+
+ If provider-hosted model behavior cannot be perfectly frozen, the bundle must say so explicitly and record the
+ strongest available identifier, date, provider settings and replay variance. Do not pretend a hosted model is
+ immutable when the provider does not guarantee it.
+
+
+ 44. Human and expert interaction contract
+ Humans are expensive information sources and potential leakage channels. Their role should be typed rather
+ than invisible.
+
+  Human action                         Recorded as                              Allowed effect
+
+  Clarify intended problem semantics   FORMALIZATION_ADJUDICATION               May change specification before freeze; creates new spec version
+
+
+
+
+                                                                    42
+GENESIS - Final Architecture & Implementation Specification                                                    44. Human and expert interaction contract
+
+
+
+
+  Human action                                  Recorded as                                      Allowed effect
+
+  Provide domain fact/reference                 EXTERNAL_SOURCE                                  Adds evidence dependency; source stored
+
+  Manually repair candidate code/proof          MANUAL_INTERVENTION                              Charged to candidate; may invalidate autonomy claim
+
+  Approve risky external action                 AUTHORITY_GRANT                                  Changes permission envelope but not evidence status
+
+  Judge novelty/semantic faithfulness           EXPERT_ADJUDICATION                              Can support novelty/faithfulness metadata, not replace formal proof
+
+  Inspect sealed task during evaluation         EVALUATOR_ROLE                                   Must be isolated from research workers and candidate tuning
+
+
+
+
+ 44.1 Optimal expert query
+ When expert access is available, Genesis should ask the question with highest expected decision value per
+ unit expert cost. The query should expose the current competing interpretations or hypotheses and the
+ decision that the answer will change; generic “please review” requests are lower-value and harder to audit.
+
+
+ 45. Threat model
+  Threat                                            Protected asset                         Primary controls
+
+  Generated code escapes sandbox                    host/evaluator/credentials              network disabled, mounts allowlist, seccomp/container limits where available,
+                                                                                            brokered tools
+
+  Worker tampers with evidence                      event/artifact integrity                CAS hashes, append-only log, single writer, replay
+
+  Research worker learns sealed task                evaluation integrity                    separate root/process/account where possible, leak firewall, narrow evaluator API
+
+  Candidate changes evaluator                       claim integrity                         protected paths, evaluator version outside candidate SystemVersion mutation
+                                                                                            authority
+
+  Prompt/tool injection through literature          research policy / credentials           external text is data, not instructions; typed tool calls; broker enforces policy
+
+  Credential exfiltration                           external authority                      credentials exist only in provider broker; no plaintext exposure to workers
+
+  Resource denial / runaway loop                    budget and availability                 hard wall/CPU/RAM/output/action/API caps
+
+  Correlated checker bug                            mathematical correctness                independent implementations, fixtures, differential checks, formal kernels
+
+  Lineage authority multiplication                  permissions/budget                      leased parent grants; no descendant may mint authority
+
+  Report overclaim                                  scientific integrity                    evidence-derived wording gate and claim ladder
+
+
+
+
+ 46. Practical deployment and compute sizing
+ The reference architecture should remain runnable on one development workstation for engineering and
+ small-domain research. Scale should be earned by profiling, not assumed.
+
+  Stage                                 Suggested environment                                               What it is for
+
+  Local smoke                           4-8 CPU cores, 16 GB RAM, Docker/WSL2, no paid model required       schemas, storage, sandbox, small graph fixtures, replay
+
+  Serious math wedge                    8-32 CPU cores, 32-128 GB RAM depending on exact solvers;           enumeration, SAT/PB, many controlled trials
+                                        optional GPU only for model inference
+
+  Lean prospective evaluation           parallel CPU capacity sized to theorem timeout policy; model        hundreds of sealed theorem attempts under fixed per-task
+                                        inference via registered provider or local GPU                      budgets
+
+  Training extension                    separate explicitly budgeted GPU environment                        adapters/small-model training only after data/provenance
+                                                                                                            controls exist
+
+  External replication                  independent machine/account/environment                             detect hidden state and infrastructure-specific gains
+
+
+ Do not begin by building distributed orchestration. The primary early bottleneck is trustworthy experimental
+ semantics, not cluster scheduling.
+
+
+ 47. Empirical-science adapter requirements
+ For physical or observational science, the DomainAdapter must extend the mathematical contract with
+ instrument, uncertainty and intervention semantics.
+
+   • Measurement unit and dimensional type for every numeric quantity.
+   • Instrument identity, calibration state, detection limit, saturation regime and systematic-error model.
+   • Distinction between measured, simulated, imputed and derived values.
+   • Selection/missingness process and whether missing-at-random assumptions are justified.
+
+
+
+
+                                                                                    43
+GENESIS - Final Architecture & Implementation Specification                                  47. Empirical-science adapter requirements
+
+
+
+   • Experimental action space, authority/approval requirements and safety interlocks.
+   • Multi-fidelity bridges between surrogate, simulator, numerical solver and real experiment.
+   • Stopping rules and statistical/coverage guarantees appropriate to the domain.
+   • Replication requirements across instrument/operator/site where correlated errors are plausible.
+
+
+ 48. Definition of implementation completion
+ A coding agent should not call Genesis “implemented” because the repository contains stubs for every named
+ engine. Completion is staged and claim-specific.
+
+  Completion label                               Minimum meaning
+
+  ENGINEERING_COMPLETE_P0                        Microkernel, schemas, storage, sandbox, replay and evaluator isolation meet tests.
+
+  DOMAIN_COMPLETE_P1                             At least one reference domain runs end-to-end with strong conventional baselines and exact checking.
+
+  RESEARCH_IR_COMPLETE_P2                        Typed operator/macro execution, world ecology and evidence promotion work in real campaigns.
+
+  CLEAN_SOLVER_EVIDENCE_P3                       Fresh prospective study supports a preregistered better-solver claim.
+
+  CAUSAL_IMPROVEMENT_EVIDENCE_P4                 At least one retained improvement has prospective utility plus causal support.
+
+  BETTER_IMPROVER_EVIDENCE_P5                    Successor research policy prospectively produces better future improvements.
+
+  MULTIGEN_EVIDENCE_P6                           At least three clean confirmed generations with trend and replication.
+
+  CROSS_DOMAIN_EVIDENCE_P7                       Improvement machinery transfers across genuinely different domains.
+
+
+ The word “fully” must always be accompanied by one of these scopes. A full engineering implementation is
+ not the same thing as full scientific validation.
+
+
+ Appendix A. Engine registry and kernel mapping
+ This registry preserves the long-form design history while preventing module sprawl. “Composition” is the
+ initial implementation hypothesis; the Generative Kernel may later discover a better factorization.
+  Engine                                                  Initial kernel composition
+
+  Gap Engine                                              FORMALIZE + DISTINGUISH + TRANSFORM + REFLECT
+
+  Ghost Census                                            DISTINGUISH + EXECUTE + VERIFY
+
+  Theory-Centered Discovery                               REPRESENT + PROPOSE + VERIFY + COMPOSE
+
+  TCSR / concept recovery                                 REPRESENT + COMPRESS + TRANSFORM + VERIFY
+
+  Frontier Engine                                         OBSERVE + DISTINGUISH + SYNTHESIZE
+
+  Morphogenetic Solver                                    FACTOR + BRANCH + SYNTHESIZE + COMPOSE
+
+  Immune selection                                        DISTINGUISH + BRANCH + VERIFY
+
+  Wound response                                          OBSERVE + REFLECT + BRANCH + SYNTHESIZE
+
+  Apoptosis/autophagy                                     COMPRESS + VERIFY
+
+  Stigmergic coordination                                 COMPOSE + OBSERVE + TRANSPORT
+
+  Niche construction                                      INTERVENE + TRANSFORM + OBSERVE
+
+  Exaptation                                              TRANSPORT + SYNTHESIZE + VERIFY
+
+  Symbiogenesis                                           TRANSPORT + COMPOSE + VERIFY
+
+  Verified Epistemic Closure                              VERIFY + SYNTHESIZE + REFLECT
+
+  Instrument Compiler                                     SYNTHESIZE + INTERVENE + VERIFY
+
+  World Compiler                                          SYNTHESIZE + EXECUTE + OBSERVE
+
+  Self-science                                            REFLECT + INTERVENE + VERIFY + COMPRESS
+
+  Reachability/optionality                                BRANCH + REFLECT + COMPRESS
+
+  Frame Escape                                            DISTINGUISH + REPRESENT + TRANSFORM
+
+  Foundation Lifting                                      TRANSFORM + TRANSPORT + VERIFY
+
+  Certificate Meta-Compiler                               SYNTHESIZE + VERIFY + TRANSPORT
+
+  Cognitive Compilation                                   COMPRESS + SYNTHESIZE + VERIFY
+
+  Epistemic Transport                                     TRANSPORT + COMPOSE + VERIFY
+
+  Research IR Supercompiler                               COMPRESS + COMPOSE + TRANSFORM
+
+  Compute-Fabric Compiler                                 SYNTHESIZE + EXECUTE + COMPRESS
+
+  Autocatalytic Capability Growth                         BRANCH + COMPOSE + REFLECT
+
+
+
+
+                                                                 44
+GENESIS - Final Architecture & Implementation Specification                            Appendix A. Engine registry and kernel mapping
+
+
+
+  Engine                                                 Initial kernel composition
+
+  Control-theoretic self-improvement                     OBSERVE + INTERVENE + REFLECT
+
+  Objective Compiler                                     REFLECT + SYNTHESIZE + VERIFY
+
+  Reasoning Algebra                                      COMPOSE + COMPRESS + REFLECT
+
+  Value-of-Computation Controller                        OBSERVE + REFLECT + EXECUTE
+
+  Recursive Contract Synthesis                           FACTOR + COMPOSE + VERIFY
+
+  Mechanistic Self-Editing                               OBSERVE + INTERVENE + VERIFY
+
+  Cognitive ISA Evolution                                COMPRESS + SYNTHESIZE + REFLECT
+
+  Universal-Structure Engine                             REPRESENT + TRANSPORT + COMPOSE
+
+  Prior Compiler                                         OBSERVE + COMPRESS + PROPOSE
+
+  Causal-State Compression                               COMPRESS + INTERVENE + VERIFY
+
+  Barrier & Escape                                       DISTINGUISH + VERIFY + TRANSFORM
+
+  Counterfactual Universe Laboratory                     SYNTHESIZE + INTERVENE + DISTINGUISH
+
+  Specification-to-Architecture                          FORMALIZE + SYNTHESIZE + VERIFY
+
+  Option-Preserving Development                          BRANCH + REFLECT + COMPRESS
+
+  Gauge-Quotient Engine                                  REPRESENT + TRANSFORM + COMPRESS
+
+  Local-to-Global Engine                                 FACTOR + TRANSPORT + COMPOSE + VERIFY
+
+  Continuation Engine                                    TRANSFORM + EXECUTE + VERIFY
+
+  Error-Correcting Cognition                             DISTINGUISH + VERIFY + COMPOSE
+
+  Epistemic Typing                                       FORMALIZE + VERIFY + COMPOSE
+
+  Cognitive Crystallization                              COMPRESS + VERIFY + TRANSPORT
+
+  Experience Synthesis                                   SYNTHESIZE + INTERVENE + OBSERVE
+
+  Identifiability Engine                                 DISTINGUISH + INTERVENE + VERIFY
+
+  Epistemic Debt                                         REFLECT + VERIFY
+
+  Meta-Uncertainty                                       OBSERVE + REFLECT
+
+  Capability Interference                                INTERVENE + OBSERVE + REFLECT
+
+  Anytime-Correct Reasoning                              VERIFY + COMPOSE
+
+  Research Regret                                        OBSERVE + BRANCH + REFLECT
+
+  Semantic Randomization                                 TRANSFORM + VERIFY
+
+  Knowledge Half-Life                                    OBSERVE + REFLECT
+
+  Shadow Successor                                       BRANCH + EXECUTE + VERIFY
+
+  Resource Theory                                        FORMALIZE + VERIFY + REFLECT
+
+  Distributionally Robust Gate                           TRANSFORM + VERIFY
+
+  Parameterized Tractability                             REPRESENT + FACTOR + VERIFY
+
+  Kernelization                                          TRANSFORM + COMPRESS + VERIFY
+
+  Structural Separators                                  FACTOR + VERIFY
+
+  Relaxation Ladder                                      TRANSFORM + VERIFY
+
+  Approximation-to-Exact                                 TRANSFORM + VERIFY + COMPOSE
+
+  Reduction Compiler                                     TRANSFORM + TRANSPORT + VERIFY
+
+  Extremal Boundary Miner                                DISTINGUISH + EXECUTE + OBSERVE
+
+  Family Solver Compiler                                 COMPRESS + SYNTHESIZE + VERIFY
+
+  Fixed-Point Discovery                                  REPRESENT + TRANSFORM + VERIFY
+
+  Proof-Reuse Geometry                                   REPRESENT + TRANSPORT + VERIFY
+
+  Intervention Scheduler                                 INTERVENE + REFLECT
+
+  Hidden Confounder Detector                             DISTINGUISH + INTERVENE + REFLECT
+
+  Mechanism Bottleneck                                   INTERVENE + OBSERVE + REFLECT
+
+  Patch Replay                                           EXECUTE + INTERVENE + VERIFY
+
+  Causal Transport                                       TRANSPORT + VERIFY
+
+  Multiscale Causality                                   FACTOR + REPRESENT + INTERVENE
+
+  Placebo Generator                                      SYNTHESIZE + INTERVENE + VERIFY
+
+  Sequential Evidence                                    OBSERVE + VERIFY + REFLECT
+
+  Replication Portfolio                                  BRANCH + VERIFY + REFLECT
+
+  Mediator Analyzer                                      INTERVENE + FACTOR + REFLECT
+
+  Curriculum Inverse Design                              SYNTHESIZE + INTERVENE + VERIFY
+
+
+
+
+                                                               45
+GENESIS - Final Architecture & Implementation Specification                           Appendix A. Engine registry and kernel mapping
+
+
+
+  Engine                                                 Initial kernel composition
+
+  Plasticity Scheduler                                   INTERVENE + REFLECT
+
+  Capability Disentangler                                FACTOR + TRANSFORM + VERIFY
+
+  Stress Inoculation                                     SYNTHESIZE + EXECUTE + VERIFY
+
+  Retention Controller                                   OBSERVE + INTERVENE
+
+  Teacher Compiler                                       COMPRESS + SYNTHESIZE
+
+  Adaptive Model Growth                                  OBSERVE + SYNTHESIZE + VERIFY
+
+  Semantic Pruning                                       COMPRESS + VERIFY
+
+  Data-Mechanism Provenance                              OBSERVE + REFLECT
+
+  Training-Objective Synthesizer                         SYNTHESIZE + INTERVENE + VERIFY
+
+  Dependency-Aware Fusion                                COMPOSE + VERIFY
+
+  Epistemic Parliament                                   BRANCH + DISTINGUISH + INTERVENE
+
+  Rotating Roles                                         BRANCH + TRANSFORM
+
+  Expertise Routing                                      OBSERVE + EXECUTE + REFLECT
+
+  Cross-Examination                                      DISTINGUISH + VERIFY
+
+  Distributed Proof Ledger                               COMPOSE + VERIFY
+
+  Institution Compiler                                   SYNTHESIZE + EXECUTE + VERIFY
+
+  Diversity-Constrained Search                           BRANCH + REFLECT
+
+  Verified Merge                                         COMPOSE + VERIFY
+
+  Specification Ambiguity Lattice                        FORMALIZE + BRANCH + DISTINGUISH
+
+  Operator-Completeness Adversary                        REFLECT + DISTINGUISH + SYNTHESIZE
+
+  Evaluator Attack                                       DISTINGUISH + SYNTHESIZE + VERIFY
+
+  Proof-Carrying Compression                             COMPRESS + VERIFY
+
+  Algorithmic Complexity Tax                             COMPRESS + REFLECT
+
+  Adversarial Test Synthesis                             SYNTHESIZE + DISTINGUISH
+
+  Reproducibility Compiler                               COMPRESS + VERIFY
+
+  Temporal Consistency                                   OBSERVE + VERIFY + REFLECT
+
+  Unknown-Unknown Hunter                                 DISTINGUISH + BRANCH
+
+  Meta-Gap Discoverer                                    REFLECT + DISTINGUISH + SYNTHESIZE
+
+  Faithful Formalization                                 FORMALIZE + DISTINGUISH + VERIFY
+
+  Certified Continuum                                    TRANSFORM + VERIFY
+
+  Probabilistic Semantics                                FORMALIZE + VERIFY
+
+  Rare-Event Discovery                                   DISTINGUISH + EXECUTE
+
+  Dimensional Intelligence                               REPRESENT + VERIFY
+
+  Variational Compiler                                   TRANSFORM + VERIFY
+
+  Convexification/Duality                                TRANSFORM + VERIFY
+
+  Renormalization                                        FACTOR + TRANSFORM + COMPRESS
+
+  Symmetry-Conservation                                  REPRESENT + TRANSFORM + VERIFY
+
+  Topological Mapper                                     REPRESENT + DISTINGUISH
+
+  Cross-Scale Causal Abstraction                         FACTOR + TRANSPORT + INTERVENE
+
+  Multi-Fidelity Bridge                                  TRANSPORT + VERIFY
+
+  Selection/Missingness/Bias                             FORMALIZE + DISTINGUISH + INTERVENE
+
+  Coverage Guarantee                                     VERIFY + REFLECT
+
+  Scientific Literature Compiler                         FORMALIZE + COMPRESS + VERIFY
+
+  Semantic Grounding                                     REPRESENT + OBSERVE + VERIFY
+
+  Temporal Logic Verification                            FORMALIZE + VERIFY
+
+  Strategic-Agent Engine                                 REPRESENT + INTERVENE + REFLECT
+
+  Information-Open Governor                              OBSERVE + VERIFY + REFLECT
+
+  Open-Ended Quality-Diversity                           BRANCH + EXECUTE + REFLECT
+
+  Universal Search Fallback                              PROPOSE + EXECUTE + VERIFY
+
+  Meta-Generalization Guarantees                         FORMALIZE + VERIFY + REFLECT
+
+  Scaling-Wall Detector                                  OBSERVE + COMPRESS + REFLECT
+
+  Optimal Expert Query                                   DISTINGUISH + INTERVENE
+
+  Regime-Change Engine                                   OBSERVE + DISTINGUISH + REFLECT
+
+
+
+
+                                                               46
+GENESIS - Final Architecture & Implementation Specification                           Appendix A. Engine registry and kernel mapping
+
+
+
+  Engine                                                 Initial kernel composition
+
+  Hybrid Discrete-Continuous                             REPRESENT + TRANSFORM + VERIFY
+
+  External Novelty/Priority                              DISTINGUISH + VERIFY
+
+  Metrology/Instrument Validity                          OBSERVE + VERIFY + REFLECT
+
+  Reflective Trust Tower                                 REFLECT + VERIFY
+
+  Verified Generative Kernel                             COMPRESS + SYNTHESIZE + VERIFY + REFLECT
+
+
+
+
+ Appendix B. Default research policy
+   worlds.max_active = 8
+   worlds.births_per_epoch = 4
+   worlds.hybrid_births_per_epoch = 1
+   worlds.development_panels_per_life = 2
+   worlds.max_lineage_depth = 8
+   worlds.root_actions_per_epoch = 4
+   worlds.shared_experiments_per_epoch = 8
+
+   execution.concurrency = 1
+   research.active_candidate_cap = 8
+   research.proposals_per_epoch = 8
+   research.selected_confirmation = 1
+   execution.tool_actions_per_task = 24
+   execution.response_repairs = 1
+   execution.memory_bytes = 2 * GiB
+   execution.cpu_count = 1
+   execution.wall_seconds = 120
+   execution.output_bytes = 8 * MiB
+   execution.paid_api_budget = 0
+   smoke.wall_seconds = 600
+
+ Defaults exist for reproducibility and to prevent invisible resource inflation. Campaigns may override them
+ only through resolved configuration, before the comparison whose claim depends on the setting.
+
+
+ Appendix C. Representative strict schemas
+   class BoundState(BaseModel):
+       model_config = ConfigDict(extra="forbid", strict=True)
+       lower_value: int | Fraction
+       lower_witness: ArtifactRef
+       lower_check: CheckerReceiptRef
+       upper_value: int | Fraction
+       upper_certificate: ArtifactRef
+       upper_check: CheckerReceiptRef
+
+         @model_validator(mode="after")
+         def valid_gap(self):
+             if self.lower_value > self.upper_value:
+                 raise ValueError("invalid bound ordering")
+             return self
+
+   class EvidenceEnvelope(BaseModel):
+       claim_id: UUID
+       math_status: MathStatus
+       utility_status: UtilityStatus
+       causality_status: CausalityStatus
+       improver_status: ImproverStatus
+       novelty_status: NoveltyStatus
+       replication_status: ReplicationStatus
+       effects: frozenset[EpistemicEffect]
+       assumptions: tuple[ArtifactRef, ...]
+       certificate_refs: tuple[ArtifactRef, ...]
+       checker_receipts: tuple[CheckerReceiptRef, ...]
+
+
+
+
+                                                               47
+GENESIS - Final Architecture & Implementation Specification                                                              Appendix C. Representative strict schemas
+
+
+
+
+ Appendix D. Selected research anchors and
+ references
+ The references below are anchors for specific implementation ideas. Genesis combines and extends these
+ directions; citing them does not imply they support the full architecture or the recursive-improvement claims.
+  ID            Reference / relevance                                                                                                 URL
+
+  [R1]          Google DeepMind. “AlphaEvolve: A Gemini-powered coding agent for designing advanced algorithms.” 14 May               https://deepmind.google/blog/alphaevolve
+                2025. Demonstrates LLM-generated algorithm proposals coupled to automated evaluators and evolutionary                 -a-gemini-powered-coding-agent-for-desig
+                search, including deployed infrastructure improvements.                                                               ning-advanced-algorithms/
+
+  [R2]          Google DeepMind. “AlphaEvolve: How our Gemini-powered coding agent is scaling impact across fields.” 7 May            https://deepmind.google/blog/alphaevolve
+                2026. Follow-up on expanded scientific and engineering applications.                                                  -impact/
+
+  [R3]          Lu, C. et al. “Towards end-to-end automation of AI research.” Nature 651, 914-919 (2026). AI Scientist                https://www.nature.com/articles/s41586-0
+                research lifecycle automation.                                                                                        26-10265-5
+
+  [R4]          Google Research. “Accelerating scientific breakthroughs with an AI co-scientist.” 19 Feb 2025. Multi-agent            https://research.google/blog/accelerating-
+                hypothesis generation and scientific collaboration.                                                                   scientific-breakthroughs-with-an-ai-co-scie
+                                                                                                                                      ntist/
+
+  [R5]          de Moura, L.; Ullrich, S. Lean 4 theorem prover documentation and Lean Language Reference. Minimal kernel             https://lean-lang.org/doc/reference/latest/
+                checks proof terms; tactics/automation remain outside the trusted core.
+
+  [R6]          Necula, G. C. Proof-Carrying Code / “Compiling with Proofs.” 1998. Untrusted producers provide proofs checked         https://www.cs.cmu.edu/~fox/pcc.html
+                against safety/correctness requirements.
+
+  [R7]          Lean community. mathlib4 repository and documentation. Community-maintained formal mathematics library                https://github.com/leanprover-community/
+                used as a prospective theorem domain.                                                                                 mathlib4
+
+  [R8]          Beltrán, C.; Leykin, A. “Certified Numerical Homotopy Tracking.” Experimental Mathematics 21(1), 2012; and            https://www.tandfonline.com/doi/full/10.10
+                Hauenstein & Liddell, certified predictor-corrector tracking, 2016. Rigorous continuation exemplars.                  80/10586458.2011.606184
+
+  [R9]          Ng, I. et al. “Causal Representation Learning from General Environments under Nonparametric Mixing.”                  https://proceedings.mlr.press/v258/ng25a.
+                AISTATS 2025. Multiple environments as information about latent causal structure.                                     html
+
+  [R10]         Google DeepMind. AlphaProof / AlphaGeometry mathematical reasoning program, summarized in “AlphaGo at                 https://deepmind.google/blog/10-years-of-
+                10” (2026). Example of formal proof search combined with learned search methods.                                      alphago/
+
+  [R11]         Quality-diversity / MAP-Elites literature. Used as inspiration for maintaining diverse high-quality lineages rather   https://arxiv.org/abs/2003.04407
+                than one scalar optimum.
+
+  [R12]         Sakana AI. AI Scientist publication update, 26 Mar 2026. Provides system-level context for end-to-end                 https://sakana.ai/ai-scientist-nature/
+                automated research and its evaluation limitations.
+
+
+
+
+ Appendix E. Glossary
+  Term                                   Definition
+
+  Artifact                               Immutable content-addressed object produced or consumed by a research action.
+
+  Attempt                                One bounded execution of a tool/model/program; retries are separate attempts.
+
+  Capability                             Typed operation with measured preconditions, postconditions, scope, cost and evidence.
+
+  Certificate                            Replayable object sufficient for a registered checker to validate a claim under explicit assumptions.
+
+  Checker                                Narrow program that validates a property; checker failure is distinct from claim failure.
+
+  Claim                                  Human-facing proposition whose wording is gated by evidence status.
+
+  Ghost                                  Validated countermodel satisfying visible assumptions and falsifying a target.
+
+  Kernel                                 Either the immutable evidence microkernel or the evolvable cognitive primitive basis; context must
+                                         disambiguate.
+
+  Macro engine                           Reusable Research IR program compiled from primitives; not necessarily a permanent service.
+
+  Phenotype                              Task-specific generated research machinery grown from the cognitive kernel and campaign context.
+
+  Prospective                            Evaluation performed after candidate freeze on information not used to build/select the candidate.
+
+  Research IR                            Typed executable intermediate representation for reasoning/research workflows.
+
+  Sealed                                 Unavailable to proposal/search components until the preregistered evaluation phase.
+
+  SystemVersion                          Complete immutable identity of all components that can affect comparison.
+
+  World                                  A bounded alternative combination of representation, hypotheses, policies and capabilities maintained in the
+                                         research ecology.
+
+
+
+
+                                                                                       48
+GENESIS - Final Architecture & Implementation Specification                                      Appendix E. Glossary
+
+
+
+
+ Final statement
+ Genesis should be judged by what it can independently establish, not by the sophistication of this
+ specification. The architecture is intentionally ambitious, but its epistemic contract is conservative. The next
+ decisive milestone is a clean, replayable prospective result. The final meta-capability is not another
+ hand-designed engine; it is the ability to detect a reproducible failure outside the closure of the current
+ cognitive basis, synthesize a genuinely new primitive or research program, and demonstrate on fresh
+ evidence that the addition improves future verified discovery.
+
+ If that happens repeatedly across generations and domains, the project will have evidence
+ for the deepest Genesis claim. Until then, the correct description is: a comprehensive,
+ implementable experimental architecture for proof-gated adaptive discovery and
+ scientifically testable self-improvement.
+
+
+
+
+                                                              49
+

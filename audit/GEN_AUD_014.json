@@ -1,0 +1,30 @@
+{
+  "accepted_base_changed": false,
+  "external_custodian_proven": false,
+  "external_lean_executed": false,
+  "finding": "GEN-AUD-014",
+  "finding_type": "unverified_candidate_strings_promoted_to_prereg_readiness",
+  "postpatch": {
+    "fresh_count": 0,
+    "invalid_or_trivial_rejected": 300,
+    "preregistration_allowed": false,
+    "status": "INSUFFICIENT_FRESH_TASKS"
+  },
+  "prepatch": {
+    "fresh_count": 300,
+    "input": "300 unique unparseable strings",
+    "status": "READY_FOR_PREREG"
+  },
+  "regression": {
+    "passed": 206,
+    "run": 207,
+    "skipped": 1
+  },
+  "reviewer_independent_of_builder": false,
+  "scientific_promotion": false,
+  "sealed_jobs_run": 0,
+  "severity": "CRITICAL",
+  "source_rev9_sha256": "0d60d67d4ece1ad99b4870cbace0c16ff4b509f36a8c183004d9123e6aae667a",
+  "status": "DEV_MITIGATION_LOCAL_TEST_PASS_INDEPENDENT_REAUDIT_PENDING",
+  "timestamp_utc": "2026-10-08T17:38:17.016271+00:00"
+}

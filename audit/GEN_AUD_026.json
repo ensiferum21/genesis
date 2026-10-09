@@ -1,0 +1,23 @@
+{
+  "after_expected": {
+    "mismatch_blocked": true,
+    "requires_canonical_frozen_prereg_bytes": true
+  },
+  "before": {
+    "actual_prereg_budget": 1,
+    "expected_budget_claim": 999,
+    "mismatch_blocked": false,
+    "promotion_allowed": false,
+    "signature_valid": true
+  },
+  "external_custody": false,
+  "finding": "GEN-AUD-026",
+  "historical_sealed_jobs_reused": 0,
+  "independent_reaudit": false,
+  "new_sealed_jobs": 0,
+  "real_lean": false,
+  "scientific_promotion": false,
+  "scope": "synthetic reference evaluator",
+  "severity": "HIGH",
+  "status": "DEV_PATCH_LOCAL_REPRO_ONLY"
+}

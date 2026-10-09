@@ -1,0 +1,614 @@
+{
+  "schema": "genesis-c4-budgeted-comparison-dev-v1",
+  "status": "PUBLIC_DEV_ONLY",
+  "budget_per_arm": 256,
+  "records": [
+    {
+      "id": "public-dev-000",
+      "family": "random",
+      "host_edges": 12,
+      "optimum": 7,
+      "multistart": 7,
+      "exchange": 7,
+      "multistart_checks": 252,
+      "exchange_checks": 82
+    },
+    {
+      "id": "public-dev-001",
+      "family": "bipartite",
+      "host_edges": 12,
+      "optimum": 7,
+      "multistart": 7,
+      "exchange": 7,
+      "multistart_checks": 252,
+      "exchange_checks": 148
+    },
+    {
+      "id": "public-dev-002",
+      "family": "random",
+      "host_edges": 14,
+      "optimum": 11,
+      "multistart": 11,
+      "exchange": 10,
+      "multistart_checks": 252,
+      "exchange_checks": 116
+    },
+    {
+      "id": "public-dev-003",
+      "family": "bipartite",
+      "host_edges": 9,
+      "optimum": 6,
+      "multistart": 6,
+      "exchange": 6,
+      "multistart_checks": 252,
+      "exchange_checks": 32
+    },
+    {
+      "id": "public-dev-004",
+      "family": "random",
+      "host_edges": 16,
+      "optimum": 9,
+      "multistart": 9,
+      "exchange": 9,
+      "multistart_checks": 256,
+      "exchange_checks": 256
+    },
+    {
+      "id": "public-dev-005",
+      "family": "bipartite",
+      "host_edges": 16,
+      "optimum": 9,
+      "multistart": 9,
+      "exchange": 9,
+      "multistart_checks": 256,
+      "exchange_checks": 256
+    },
+    {
+      "id": "public-dev-006",
+      "family": "random",
+      "host_edges": 15,
+      "optimum": 7,
+      "multistart": 7,
+      "exchange": 7,
+      "multistart_checks": 255,
+      "exchange_checks": 211
+    },
+    {
+      "id": "public-dev-007",
+      "family": "bipartite",
+      "host_edges": 12,
+      "optimum": 7,
+      "multistart": 7,
+      "exchange": 7,
+      "multistart_checks": 252,
+      "exchange_checks": 88
+    },
+    {
+      "id": "public-dev-008",
+      "family": "random",
+      "host_edges": 20,
+      "optimum": 11,
+      "multistart": 11,
+      "exchange": 11,
+      "multistart_checks": 240,
+      "exchange_checks": 256
+    },
+    {
+      "id": "public-dev-009",
+      "family": "bipartite",
+      "host_edges": 9,
+      "optimum": 6,
+      "multistart": 6,
+      "exchange": 6,
+      "multistart_checks": 252,
+      "exchange_checks": 32
+    },
+    {
+      "id": "public-dev-010",
+      "family": "random",
+      "host_edges": 13,
+      "optimum": 9,
+      "multistart": 9,
+      "exchange": 9,
+      "multistart_checks": 247,
+      "exchange_checks": 116
+    },
+    {
+      "id": "public-dev-011",
+      "family": "bipartite",
+      "host_edges": 14,
+      "optimum": 9,
+      "multistart": 9,
+      "exchange": 9,
+      "multistart_checks": 252,
+      "exchange_checks": 112
+    },
+    {
+      "id": "public-dev-012",
+      "family": "random",
+      "host_edges": 15,
+      "optimum": 7,
+      "multistart": 7,
+      "exchange": 7,
+      "multistart_checks": 255,
+      "exchange_checks": 211
+    },
+    {
+      "id": "public-dev-013",
+      "family": "bipartite",
+      "host_edges": 12,
+      "optimum": 7,
+      "multistart": 7,
+      "exchange": 7,
+      "multistart_checks": 252,
+      "exchange_checks": 88
+    },
+    {
+      "id": "public-dev-014",
+      "family": "random",
+      "host_edges": 17,
+      "optimum": 11,
+      "multistart": 11,
+      "exchange": 11,
+      "multistart_checks": 255,
+      "exchange_checks": 256
+    },
+    {
+      "id": "public-dev-015",
+      "family": "bipartite",
+      "host_edges": 9,
+      "optimum": 6,
+      "multistart": 6,
+      "exchange": 6,
+      "multistart_checks": 252,
+      "exchange_checks": 33
+    },
+    {
+      "id": "public-dev-016",
+      "family": "random",
+      "host_edges": 19,
+      "optimum": 9,
+      "multistart": 9,
+      "exchange": 9,
+      "multistart_checks": 247,
+      "exchange_checks": 256
+    },
+    {
+      "id": "public-dev-017",
+      "family": "bipartite",
+      "host_edges": 16,
+      "optimum": 9,
+      "multistart": 9,
+      "exchange": 9,
+      "multistart_checks": 256,
+      "exchange_checks": 256
+    },
+    {
+      "id": "public-dev-018",
+      "family": "random",
+      "host_edges": 12,
+      "optimum": 7,
+      "multistart": 7,
+      "exchange": 7,
+      "multistart_checks": 252,
+      "exchange_checks": 82
+    },
+    {
+      "id": "public-dev-019",
+      "family": "bipartite",
+      "host_edges": 12,
+      "optimum": 7,
+      "multistart": 7,
+      "exchange": 7,
+      "multistart_checks": 252,
+      "exchange_checks": 133
+    },
+    {
+      "id": "public-dev-020",
+      "family": "random",
+      "host_edges": 14,
+      "optimum": 10,
+      "multistart": 10,
+      "exchange": 10,
+      "multistart_checks": 252,
+      "exchange_checks": 74
+    },
+    {
+      "id": "public-dev-021",
+      "family": "bipartite",
+      "host_edges": 9,
+      "optimum": 6,
+      "multistart": 6,
+      "exchange": 6,
+      "multistart_checks": 252,
+      "exchange_checks": 50
+    },
+    {
+      "id": "public-dev-022",
+      "family": "random",
+      "host_edges": 16,
+      "optimum": 9,
+      "multistart": 9,
+      "exchange": 9,
+      "multistart_checks": 256,
+      "exchange_checks": 256
+    },
+    {
+      "id": "public-dev-023",
+      "family": "bipartite",
+      "host_edges": 16,
+      "optimum": 9,
+      "multistart": 9,
+      "exchange": 9,
+      "multistart_checks": 256,
+      "exchange_checks": 250
+    },
+    {
+      "id": "public-dev-024",
+      "family": "random",
+      "host_edges": 15,
+      "optimum": 7,
+      "multistart": 7,
+      "exchange": 7,
+      "multistart_checks": 255,
+      "exchange_checks": 211
+    },
+    {
+      "id": "public-dev-025",
+      "family": "bipartite",
+      "host_edges": 12,
+      "optimum": 7,
+      "multistart": 7,
+      "exchange": 7,
+      "multistart_checks": 252,
+      "exchange_checks": 163
+    },
+    {
+      "id": "public-dev-026",
+      "family": "random",
+      "host_edges": 20,
+      "optimum": 11,
+      "multistart": 11,
+      "exchange": 11,
+      "multistart_checks": 240,
+      "exchange_checks": 256
+    },
+    {
+      "id": "public-dev-027",
+      "family": "bipartite",
+      "host_edges": 9,
+      "optimum": 6,
+      "multistart": 6,
+      "exchange": 6,
+      "multistart_checks": 252,
+      "exchange_checks": 57
+    },
+    {
+      "id": "public-dev-028",
+      "family": "random",
+      "host_edges": 13,
+      "optimum": 9,
+      "multistart": 9,
+      "exchange": 8,
+      "multistart_checks": 247,
+      "exchange_checks": 109
+    },
+    {
+      "id": "public-dev-029",
+      "family": "bipartite",
+      "host_edges": 14,
+      "optimum": 9,
+      "multistart": 9,
+      "exchange": 9,
+      "multistart_checks": 252,
+      "exchange_checks": 223
+    },
+    {
+      "id": "public-dev-030",
+      "family": "random",
+      "host_edges": 15,
+      "optimum": 7,
+      "multistart": 7,
+      "exchange": 7,
+      "multistart_checks": 255,
+      "exchange_checks": 211
+    },
+    {
+      "id": "public-dev-031",
+      "family": "bipartite",
+      "host_edges": 12,
+      "optimum": 7,
+      "multistart": 7,
+      "exchange": 7,
+      "multistart_checks": 252,
+      "exchange_checks": 150
+    },
+    {
+      "id": "public-dev-032",
+      "family": "random",
+      "host_edges": 17,
+      "optimum": 11,
+      "multistart": 11,
+      "exchange": 10,
+      "multistart_checks": 255,
+      "exchange_checks": 227
+    },
+    {
+      "id": "public-dev-033",
+      "family": "bipartite",
+      "host_edges": 9,
+      "optimum": 6,
+      "multistart": 6,
+      "exchange": 6,
+      "multistart_checks": 252,
+      "exchange_checks": 50
+    },
+    {
+      "id": "public-dev-034",
+      "family": "random",
+      "host_edges": 19,
+      "optimum": 9,
+      "multistart": 9,
+      "exchange": 9,
+      "multistart_checks": 247,
+      "exchange_checks": 256
+    },
+    {
+      "id": "public-dev-035",
+      "family": "bipartite",
+      "host_edges": 16,
+      "optimum": 9,
+      "multistart": 9,
+      "exchange": 9,
+      "multistart_checks": 256,
+      "exchange_checks": 214
+    },
+    {
+      "id": "public-dev-036",
+      "family": "random",
+      "host_edges": 12,
+      "optimum": 7,
+      "multistart": 7,
+      "exchange": 7,
+      "multistart_checks": 252,
+      "exchange_checks": 82
+    },
+    {
+      "id": "public-dev-037",
+      "family": "bipartite",
+      "host_edges": 12,
+      "optimum": 7,
+      "multistart": 7,
+      "exchange": 7,
+      "multistart_checks": 252,
+      "exchange_checks": 165
+    },
+    {
+      "id": "public-dev-038",
+      "family": "random",
+      "host_edges": 14,
+      "optimum": 10,
+      "multistart": 10,
+      "exchange": 9,
+      "multistart_checks": 252,
+      "exchange_checks": 104
+    },
+    {
+      "id": "public-dev-039",
+      "family": "bipartite",
+      "host_edges": 9,
+      "optimum": 6,
+      "multistart": 6,
+      "exchange": 6,
+      "multistart_checks": 252,
+      "exchange_checks": 31
+    },
+    {
+      "id": "public-dev-040",
+      "family": "random",
+      "host_edges": 16,
+      "optimum": 9,
+      "multistart": 9,
+      "exchange": 9,
+      "multistart_checks": 256,
+      "exchange_checks": 256
+    },
+    {
+      "id": "public-dev-041",
+      "family": "bipartite",
+      "host_edges": 16,
+      "optimum": 9,
+      "multistart": 9,
+      "exchange": 9,
+      "multistart_checks": 256,
+      "exchange_checks": 256
+    },
+    {
+      "id": "public-dev-042",
+      "family": "random",
+      "host_edges": 15,
+      "optimum": 7,
+      "multistart": 7,
+      "exchange": 7,
+      "multistart_checks": 255,
+      "exchange_checks": 211
+    },
+    {
+      "id": "public-dev-043",
+      "family": "bipartite",
+      "host_edges": 12,
+      "optimum": 7,
+      "multistart": 7,
+      "exchange": 7,
+      "multistart_checks": 252,
+      "exchange_checks": 104
+    },
+    {
+      "id": "public-dev-044",
+      "family": "random",
+      "host_edges": 20,
+      "optimum": 11,
+      "multistart": 11,
+      "exchange": 11,
+      "multistart_checks": 240,
+      "exchange_checks": 256
+    },
+    {
+      "id": "public-dev-045",
+      "family": "bipartite",
+      "host_edges": 9,
+      "optimum": 6,
+      "multistart": 6,
+      "exchange": 6,
+      "multistart_checks": 252,
+      "exchange_checks": 32
+    },
+    {
+      "id": "public-dev-046",
+      "family": "random",
+      "host_edges": 13,
+      "optimum": 8,
+      "multistart": 8,
+      "exchange": 8,
+      "multistart_checks": 247,
+      "exchange_checks": 93
+    },
+    {
+      "id": "public-dev-047",
+      "family": "bipartite",
+      "host_edges": 14,
+      "optimum": 9,
+      "multistart": 9,
+      "exchange": 9,
+      "multistart_checks": 252,
+      "exchange_checks": 237
+    },
+    {
+      "id": "public-dev-048",
+      "family": "random",
+      "host_edges": 15,
+      "optimum": 7,
+      "multistart": 7,
+      "exchange": 7,
+      "multistart_checks": 255,
+      "exchange_checks": 211
+    },
+    {
+      "id": "public-dev-049",
+      "family": "bipartite",
+      "host_edges": 12,
+      "optimum": 7,
+      "multistart": 7,
+      "exchange": 7,
+      "multistart_checks": 252,
+      "exchange_checks": 163
+    },
+    {
+      "id": "public-dev-050",
+      "family": "random",
+      "host_edges": 17,
+      "optimum": 11,
+      "multistart": 11,
+      "exchange": 11,
+      "multistart_checks": 255,
+      "exchange_checks": 182
+    },
+    {
+      "id": "public-dev-051",
+      "family": "bipartite",
+      "host_edges": 9,
+      "optimum": 6,
+      "multistart": 6,
+      "exchange": 6,
+      "multistart_checks": 252,
+      "exchange_checks": 32
+    },
+    {
+      "id": "public-dev-052",
+      "family": "random",
+      "host_edges": 19,
+      "optimum": 9,
+      "multistart": 9,
+      "exchange": 9,
+      "multistart_checks": 247,
+      "exchange_checks": 256
+    },
+    {
+      "id": "public-dev-053",
+      "family": "bipartite",
+      "host_edges": 16,
+      "optimum": 9,
+      "multistart": 9,
+      "exchange": 9,
+      "multistart_checks": 256,
+      "exchange_checks": 256
+    },
+    {
+      "id": "public-dev-054",
+      "family": "random",
+      "host_edges": 12,
+      "optimum": 7,
+      "multistart": 7,
+      "exchange": 7,
+      "multistart_checks": 252,
+      "exchange_checks": 82
+    },
+    {
+      "id": "public-dev-055",
+      "family": "bipartite",
+      "host_edges": 12,
+      "optimum": 7,
+      "multistart": 7,
+      "exchange": 7,
+      "multistart_checks": 252,
+      "exchange_checks": 149
+    },
+    {
+      "id": "public-dev-056",
+      "family": "random",
+      "host_edges": 14,
+      "optimum": 11,
+      "multistart": 11,
+      "exchange": 11,
+      "multistart_checks": 252,
+      "exchange_checks": 47
+    },
+    {
+      "id": "public-dev-057",
+      "family": "bipartite",
+      "host_edges": 9,
+      "optimum": 6,
+      "multistart": 6,
+      "exchange": 6,
+      "multistart_checks": 252,
+      "exchange_checks": 43
+    },
+    {
+      "id": "public-dev-058",
+      "family": "random",
+      "host_edges": 16,
+      "optimum": 9,
+      "multistart": 9,
+      "exchange": 9,
+      "multistart_checks": 256,
+      "exchange_checks": 205
+    },
+    {
+      "id": "public-dev-059",
+      "family": "bipartite",
+      "host_edges": 16,
+      "optimum": 9,
+      "multistart": 9,
+      "exchange": 9,
+      "multistart_checks": 256,
+      "exchange_checks": 256
+    }
+  ],
+  "exchange_wins": 0,
+  "multistart_wins": 4,
+  "ties": 56,
+  "matched_feasibility_check_cap": true,
+  "matched_wall_time": false,
+  "sealed": false,
+  "promotion_allowed": false
+}

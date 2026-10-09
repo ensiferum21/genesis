@@ -1,0 +1,83 @@
+{
+  "schema": "genesis-dev-attempt-ledger-v1",
+  "revision": 18,
+  "attempts": [
+    {
+      "kind": "prepatch_attack",
+      "result": "REPRODUCED",
+      "case": "no reservation_dir: same pool twice"
+    },
+    {
+      "kind": "prepatch_attack",
+      "result": "REPRODUCED",
+      "case": "changed prereg campaign: same pool twice"
+    },
+    {
+      "kind": "targeted_regression",
+      "result": "PASS",
+      "cases": "initial 9 tests"
+    },
+    {
+      "kind": "full_regression",
+      "result": "INTERRUPTED_NO_VERDICT",
+      "log": "REV18_BUILDER_FULL.stderr",
+      "note": "foreground tool execution limit; do not count as pass"
+    },
+    {
+      "kind": "full_regression",
+      "result": "PASS_279_RUN_278_PASS_1_SKIP",
+      "log": "REV18_BUILDER_FULL_2.stderr",
+      "note": "preceded stricter owner-only directory change"
+    },
+    {
+      "kind": "targeted_regression",
+      "result": "FAIL_12_RUN_4_PASS_1_FAIL_7_ERROR",
+      "note": "stricter POSIX owner-only dir check exposed non-private test fixture dirs; fixed fixture permissions"
+    },
+    {
+      "kind": "targeted_regression",
+      "result": "PASS_54_RUN_54_PASS",
+      "note": "owner-only fixture repair"
+    },
+    {
+      "kind": "full_regression",
+      "result": "INTERRUPTED_NO_VERDICT",
+      "log": "REV18_BUILDER_FINAL.stderr",
+      "note": "foreground tool execution limit"
+    },
+    {
+      "kind": "full_regression",
+      "result": "PASS_282_RUN_281_PASS_1_SKIP_WITH_RESOURCE_WARNING",
+      "log": "REV18_BUILDER_FINAL_2.stderr",
+      "note": "before test sqlite contextmanager cleanup; warning preserved"
+    },
+    {
+      "kind": "synthetic_smoke",
+      "result": "PASS",
+      "log": "REV18_SYNTHETIC_SMOKE.json"
+    },
+    {
+      "kind": "targeted_regression",
+      "result": "PASS_13_RUN_13_PASS",
+      "note": "sqlite connection fixture cleanup"
+    },
+    {
+      "kind": "manifest_build",
+      "result": "FAIL_FORBIDDEN_CACHE_FILE",
+      "note": "invoking Python manifest tool created __pycache__ in stage; removed before packaging; not silently ignored"
+    },
+    {
+      "kind": "manifest_build",
+      "result": "PASS",
+      "note": "PYTHONDONTWRITEBYTECODE=1 and explicit cache removal; 186 entries"
+    },
+    {
+      "kind": "fresh_extracted_regression",
+      "result": "PENDING",
+      "log": "REV18_FRESH_REPLAY.stderr"
+    }
+  ],
+  "sealed_jobs_run": 0,
+  "accepted_base_mutated": false,
+  "negative_evidence_discarded": false
+}

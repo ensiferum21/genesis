@@ -1,0 +1,30 @@
+{
+  "schema": "genesis-local-adversarial-v1",
+  "status": "DEV_FIX_LOCAL_TEST_PASS_INDEPENDENT_REAUDIT_PENDING",
+  "accepted_base_changed": false,
+  "promotion_allowed": false,
+  "new_sealed_jobs_run": 0,
+  "historical_sealed_jobs_reused": false,
+  "external_lean_executed": false,
+  "independent_custody_proven": false,
+  "findings": [
+    {
+      "id": "GEN-AUD-020",
+      "severity": "CRITICAL",
+      "title": "Unrelated signed receipt plus self-asserted audit boolean passed custody preflight",
+      "before": "CUSTODY_PREREQUISITES_PRESENT_NOT_PROMOTION for unrelated synthetic receipt",
+      "after": "BLOCK with externally expected six digests, pinned custodian identity, and explicit unauthenticated-isolation blocker",
+      "independent_reaudit": false
+    },
+    {
+      "id": "GEN-AUD-021",
+      "severity": "HIGH",
+      "title": "Signed aggregate with 999 correct out of 1 task passed bundle verifier",
+      "before": "signature_valid=true; bundle_hashes_valid=true for locally re-signed impossible synthetic score",
+      "after": "ValueError impossible per-arm score; validates exact arm schemas and resource counts",
+      "limitation": "Internal arithmetic validation cannot prove a signer's reported results are true",
+      "independent_reaudit": false
+    }
+  ],
+  "prior_findings_remain_open": ["GEN-AUD-001", "GEN-AUD-002", "GEN-AUD-003", "GEN-AUD-008", "GEN-AUD-009", "GEN-AUD-011", "GEN-AUD-012", "GEN-AUD-013", "GEN-AUD-014", "GEN-AUD-015", "GEN-AUD-016", "GEN-AUD-017", "GEN-AUD-018", "GEN-AUD-019"]
+}

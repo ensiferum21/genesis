@@ -1,0 +1,17 @@
+{
+  "command": "PYTHONDONTWRITEBYTECODE=1 PYTHONPATH=src:. python -m unittest discover -s tests -q",
+  "environment": {
+    "PYTHONDONTWRITEBYTECODE": "1",
+    "PYTHONPATH": "src:."
+  },
+  "evidence_scope": "DEV_ONLY_NO_EXTERNAL_LEAN_NO_SEALED_JOBS",
+  "exit_code": 0,
+  "failed": 0,
+  "passed": 245,
+  "python": "3.13.5",
+  "run": 246,
+  "skipped": 1,
+  "stderr_sha256": "8b23b63e5f3cfe50ae139fd913a71599aae637c7ef3554f14ffd984bfe980cd4",
+  "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "utc_completed_at": "2026-10-08T22:40:38.804565+00:00"
+}

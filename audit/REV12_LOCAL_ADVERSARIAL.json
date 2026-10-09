@@ -1,0 +1,53 @@
+{
+  "accepted_base_changed": false,
+  "external_custodian_present": false,
+  "external_lean_verified": false,
+  "findings": [
+    {
+      "after": "reject forbidden cache file in evidence tree",
+      "before": "hidden __pycache__/hidden.json accepted",
+      "evidence": "synthetic negative repro and tests",
+      "id": "GEN-AUD-017",
+      "issue": "untracked regular files under cache directories invisible to manifest",
+      "severity": "WARN"
+    },
+    {
+      "after": "default callback invocation rejected before execution; explicit unsafe DEV opt-in still available and untrusted",
+      "before": "synthetic marker copied to external list",
+      "id": "GEN-AUD-018",
+      "issue": "in-process sealed evaluator passes protected payload into arbitrary research callback",
+      "limitation": "same-process _items and screening oracle remain accessible; NOT independent custody",
+      "severity": "CRITICAL"
+    },
+    {
+      "after": "new strict signed anchor verifier rejects mismatched externally expected prereg hash",
+      "before": "rewrite A->B and lock accepted by legacy load_verified",
+      "id": "GEN-AUD-019",
+      "issue": "local prereg and lock can be jointly rewritten without external timestamped anchor",
+      "limitation": "no external signer/key/timestamp authority provisioned; legacy DEV load_verified unchanged",
+      "severity": "CRITICAL"
+    }
+  ],
+  "historical_sealed_jobs_reused": false,
+  "independent_reaudit": false,
+  "new_sealed_jobs_run": 0,
+  "schema": "genesis-rev12-local-adversarial-v1",
+  "scientific_promotion": false,
+  "status": "DEV_FIX_LOCAL_TEST_PASS_INDEPENDENT_REAUDIT_REQUIRED",
+  "test_run": {
+    "command": "PYTHONDONTWRITEBYTECODE=1 PYTHONPATH=src:. python -m unittest discover -s tests -q",
+    "external_lean_executed": false,
+    "failed": 0,
+    "independent_audit_of_rev12": false,
+    "passed": 219,
+    "prior_rev11_sha256": "386eeeec1a1d1cae3f8e41f1f59a1a9e5ce08e5ed3265e052dba958b24f56e9d",
+    "python_version": "3.13.5 (main, Jul 15 2026, 20:25:40) [GCC 14.2.0]",
+    "run": 220,
+    "schema": "genesis-local-regression-v1",
+    "sealed_jobs_run": 0,
+    "skipped": 1,
+    "status": "DEV_ONLY_NOT_EXTERNAL",
+    "stderr_sha256": "9ebe43f46b4cc2457c0856170524ed141ffd5a8a47e53e48ef4b93e11193efa4",
+    "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  }
+}

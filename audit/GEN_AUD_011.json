@@ -1,0 +1,23 @@
+{
+  "affected": [
+    "build_world",
+    "build_world_from_suite"
+  ],
+  "external_lean": false,
+  "id": "GEN-AUD-011",
+  "independent_custody": false,
+  "legacy_cache_remediation": "QUARANTINE_AND_TREAT_SEALED_AS_POTENTIALLY_EXPOSED",
+  "new_sealed_jobs_run": 0,
+  "old_sealed_jobs_run": 0,
+  "original_checkpoint_sha256": "3b29a70d963e03e53a91612e2e1f0c27adcc222ef81d65a74e1b87844ed0950c",
+  "post_patch": "DEV_MITIGATION_REPRO_PASS_INDEPENDENT_REAUDIT_PENDING",
+  "pre_patch": "CONFIRMED_BENIGN_MARKER_CODE_EXECUTION",
+  "promotion_allowed": false,
+  "root_cause": "pickle.load from research-writable cache_dir; pickle.dump serializes sealed world",
+  "severity": "CRITICAL",
+  "tests": {
+    "passed": 144,
+    "run": 145,
+    "skipped": 1
+  }
+}

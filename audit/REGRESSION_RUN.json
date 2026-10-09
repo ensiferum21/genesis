@@ -1,0 +1,19 @@
+{
+  "command": "PYTHONDONTWRITEBYTECODE=1 PYTHONPATH=src:. python -m unittest discover -s tests -q",
+  "exit_code": 0,
+  "external_lean_executed": false,
+  "failed": 0,
+  "independent_reaudit": false,
+  "new_sealed_jobs_run": 0,
+  "passed": 236,
+  "platform": "Linux-6.18.44-x86_64-with-glibc2.41",
+  "previous_dev_checkpoint_sha256": "562b44161308e4a563e3d0839d1d299e1edca7acb3b2670a417349c1c3d3fd76",
+  "python_version": "3.13.5 (main, Jul 15 2026, 20:25:40) [GCC 14.2.0]",
+  "recorded_at_utc": "2026-10-08T21:40:55Z",
+  "run": 237,
+  "schema": "genesis-local-regression-v1",
+  "skipped": 1,
+  "status": "DEV_ONLY_NOT_EXTERNAL",
+  "stderr_sha256": "ccae14e98abf3cb830bf7813a87f46ac0224a3a179436530ee204821f3e46de0",
+  "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+}

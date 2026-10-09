@@ -1,0 +1,46 @@
+{
+  "attempts": [
+    {
+      "command": "PYTHONDONTWRITEBYTECODE=1 PYTHONPATH=src:. python -m unittest discover -s tests -q",
+      "id": "REV16-FULL-1",
+      "notes": "Initial foreground tool call timed out; do not infer pass/fail. Output files may have been truncated or replaced by second run.",
+      "operation": "full unittest suite",
+      "result": "TOOL_TIMEOUT_NO_FINAL_EXIT_RECEIPT"
+    },
+    {
+      "command": "PYTHONDONTWRITEBYTECODE=1 PYTHONPATH=src:. python -m unittest discover -s tests -q",
+      "elapsed_seconds_reported": 54.588,
+      "exit_code_file": "audit/REV16_EXIT_CODE",
+      "failed": 0,
+      "id": "REV16-FULL-2",
+      "operation": "full unittest suite",
+      "passed": 251,
+      "result": "EXIT_0",
+      "run": 252,
+      "skipped": 1,
+      "stderr": "audit/REV16_REGRESSION.stderr",
+      "stdout": "audit/REV16_REGRESSION.stdout"
+    },
+    {
+      "id": "REV16-REDTEAM-BEFORE",
+      "operation": "synthetic signed partial/identity swap on REV15",
+      "receipt": "audit/REV16_GEN_AUD_025_BEFORE.json",
+      "result": "FALSE_POSITIVE_SIGNATURE_AND_HASH_CONSISTENT"
+    },
+    {
+      "id": "REV16-REDTEAM-AFTER",
+      "operation": "same synthetic attack on REV16",
+      "receipt": "audit/REV16_GEN_AUD_025_AFTER.json",
+      "result": "BLOCKED_VALUE_ERROR"
+    }
+  ],
+  "environment": {
+    "platform": "Linux-6.18.44-x86_64-with-glibc2.41",
+    "python": "3.13.5 (main, Jul 15 2026, 20:25:40) [GCC 14.2.0]"
+  },
+  "external_lean": false,
+  "independent_custody": false,
+  "new_sealed_jobs": 0,
+  "schema": "genesis-dev-attempt-ledger-v1",
+  "scientific_claim": false
+}

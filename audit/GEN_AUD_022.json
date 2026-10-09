@@ -1,0 +1,31 @@
+{
+  "after": {
+    "legacy_missing_private_digest": "requires replay_legacy",
+    "tests_added": 6,
+    "verify_existing_id": "CheckError",
+    "verify_new_id": "CheckError"
+  },
+  "audit_id": "GEN-AUD-022",
+  "before": {
+    "admitted_proof": "reflexive empty rewrite",
+    "admitted_statement": "Z = Z",
+    "false_theorem_proven": false,
+    "replay_all_result": "CheckError",
+    "tamper": "Replace store.proofs[valid] with a rewrite citing nonexistent lemma and replace public proof_digests[valid] with hash of forged proof",
+    "verify_existing_id_returned": true
+  },
+  "created_at_utc": "2026-10-08T21:40:55Z",
+  "limitations": [
+    "No proof of malicious access to a separately isolated checker",
+    "Private in-process Python snapshots are not secure against hostile code in same process",
+    "Not independently re-audited or accepted into base",
+    "No Lean execution or new sealed outcomes"
+  ],
+  "promotion_allowed": false,
+  "review_type": "LOCAL_ADVERSARIAL_SOURCE_REVIEW_NOT_EXTERNAL_INDEPENDENT_AUDIT",
+  "severity": "HIGH",
+  "source_checkpoint_sha256": "562b44161308e4a563e3d0839d1d299e1edca7acb3b2670a417349c1c3d3fd76",
+  "source_revision": 13,
+  "status": "DEV_PATCH_LOCAL_TEST_PASS_INDEPENDENT_REAUDIT_PENDING",
+  "title": "Mutable public proof and digest can be jointly substituted to obtain a false proof acknowledgement"
+}

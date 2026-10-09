@@ -1,0 +1,29 @@
+{
+  "attempts": [
+    {
+      "kind": "initial_suite_attempt",
+      "result": "TRANSPORT_TIMEOUT",
+      "note": "Initial full suite process exceeded tool transport timeout; not claimed as pass"
+    },
+    {
+      "kind": "interrupted_background_attempt",
+      "result": "CANCELLED_BEFORE_PATCH_COMPLETE",
+      "note": "Cancelled when detached-theory finding required integration; no result counted"
+    },
+    {
+      "kind": "targeted_negative_tests",
+      "result": "PASS",
+      "count": 9
+    },
+    {
+      "kind": "full_integrated_suite",
+      "result": "PASS",
+      "count": 246,
+      "skipped": 1,
+      "receipt": "audit/REV15_REGRESSION_RUN.json"
+    }
+  ],
+  "historical_missing_raw_jobs": 11,
+  "new_sealed_jobs": 0,
+  "resource_accounting_note": "DEV local tests only; no scientific matched-budget experiment"
+}

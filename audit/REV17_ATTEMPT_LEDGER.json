@@ -1,0 +1,23 @@
+{
+  "attempts": [
+    {
+      "step": "full_suite",
+      "status": "SUMMARY_OK",
+      "run": 270,
+      "skipped": 1,
+      "raw_log": "audit/REV17_BUILDER_FULL.stderr"
+    },
+    {
+      "step": "first_packaging",
+      "status": "FAILED_CACHE_CONTAMINATION",
+      "error": "forbidden cache file custody_reference/__pycache__/__init__.cpython-313.pyc",
+      "action": "quarantined all compiled cache files outside source, no source deletion"
+    },
+    {
+      "step": "repackaging",
+      "status": "PENDING"
+    }
+  ],
+  "quarantined_cache_files": 4,
+  "no_sealed_jobs": true
+}

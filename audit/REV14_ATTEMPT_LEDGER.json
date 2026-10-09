@@ -1,0 +1,48 @@
+{
+  "attempts": [
+    {
+      "attempt": "rev14-initial-unittest-q",
+      "note": "No completed suite result; not counted as passing",
+      "raw_log_available": false,
+      "result": "TRANSPORT_TIMEOUT_OR_INTERRUPTED"
+    },
+    {
+      "attempt": "rev14-first-full-suite-v",
+      "cause": "existing regression expected legacy registry error text",
+      "failures": 1,
+      "raw_stderr": "audit/REV14_FIRST_FULL_SUITE_FAILURE.stderr",
+      "result": "FAILED",
+      "run": 237,
+      "skipped": 1
+    },
+    {
+      "attempt": "rev14-first-targeted-after-message-edit",
+      "failures": 1,
+      "note": "second existing test expected prior error wording; raw output in builder execution, not independently exported",
+      "result": "FAILED",
+      "run": 16
+    },
+    {
+      "attempt": "rev14-targeted-after-compatible-message",
+      "failures": 0,
+      "result": "PASS",
+      "run": 43,
+      "skipped": 0
+    },
+    {
+      "attempt": "rev14-full-suite-after-fix",
+      "failures": 0,
+      "passed": 236,
+      "raw_stderr": "audit/REGRESSION.stderr",
+      "raw_stdout": "audit/REGRESSION.stdout",
+      "result": "PASS",
+      "run": 237,
+      "skipped": 1
+    }
+  ],
+  "historical_11_of_20_raw_sealed_jobs_missing": true,
+  "historical_sealed_jobs_rerun": 0,
+  "new_sealed_jobs": 0,
+  "schema": "genesis-dev-attempt-ledger-v1",
+  "updated_at_utc": "2026-10-08T21:40:55Z"
+}

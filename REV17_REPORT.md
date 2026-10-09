@@ -1,0 +1,11 @@
+# Genesis REV17 — frozen preregistration budget binding (DEV only)
+
+**Finding GEN-AUD-026 (HIGH, local adversarial reproduction):** The REV16 `custody_reference.evaluator.verify_bundle` accepted a correctly signed synthetic one-task bundle with an actual preregistered per-arm budget of 1 while the caller independently asserted a per-arm budget of 999. The `expected_prereg_budget_per_arm` argument was checked only to be at least the task count, and was never compared against the hash-pinned preregistration document. This falsely acknowledged consistency of the budget expectation; it did **not** authorize promotion, demonstrate score falsification, or compromise a real sealed pool.
+
+**Before:** `actual_prereg_budget=1, independently_claimed_budget=999, signature_valid=true, budget_mismatch_blocked=false, promotion_allowed=false`.
+
+**DEV repair:** `verify_bundle` now requires canonical bytes of the independently hash-pinned preregistration document (`expected_prereg_bytes`), checks their SHA256 against `expected_prereg_sha256`, validates all frozen candidate/pool/protocol fields, and checks the exact campaign and per-arm budget against externally supplied expectations. Missing bytes, modified bytes, noncanonical encoding, mismatched budget and mismatched campaign fail closed. All existing reference evaluator tests and synthetic smoke calls were updated. Six new negative/positive test cases added; no private data or signing keys are included.
+
+**Scope:** Local reference protocol and its tests, not operational external custody. A caller passing a locally controlled preregistration document cannot prove its timing or independence. External evaluator/key ownership, independent timestamp anchor, Lean proof/axiom replay, >=300 independently checked fresh theorems and new preregistered equal-budget D/U/V2n/V2p evaluation remain absent. Historical 11 missing sealed raw jobs must never be rerun or reused. Batch1 remains FAILED_REPAIR_REQUIRED; zero completed batches; no scientific promotion.
+
+**Evidence policy:** Full regression and extracted-ZIP replay results, raw commands, exact SHA256 and manifest checks are recorded separately. All interrupted/time-limited attempts are retained and not counted as passes. Independent re-audit pending.
