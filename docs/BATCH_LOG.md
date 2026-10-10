@@ -15,3 +15,26 @@
 
 ## Batch 2 — custodian trust holes (GI6-10, GI6-11)
 See `docs/AUDIT_REMEDIATION.md` (GI6 section).
+
+## Batch 3 — legacy trust paths (GI6-01/02/03/08)
+- The current tree already carries the REV18 fixes for reused lemma IDs and
+  pickle loading; the vulnerable code is in the old accepted archive. New
+  tests reproduce each audit attack against this tree and fail closed.
+- `eligibility.py`: only registered routes can feed confirmation-level claims.
+  Legacy `gap_engine`, `legacy_batch42`, `custody_reference`, public campaigns
+  and the ladder are ineligible; the accepted-base archive hash is revoked.
+
+## Batch 4 — evidence kernel
+- `genesis/kernel/evidence.py`: immutable evidence DAG; typed effects (unknown
+  names refused); speculative taint resolved only by passing checks;
+  promotion per axis requires the right kinds of checked artifacts (two
+  distinct exact checkers for FINITE_CERTIFIED, gap-0 BoundState for
+  OPTIMALITY_CHECKED, externally signed sealed evaluations for any
+  confirmation); contamination, approximation, self-judgement and manual
+  rescue block the levels they must; transitive revocation invalidates
+  dependent claims; trust graph labels self- or mutually-validated verifiers
+  CIRCULAR_JUSTIFICATION.
+- `genesis/kernel/wording.py`: report linter for §21.2 forbidden
+  transformations; campaign and ladder reports must pass it to be written.
+- `genesis/kernel/signing.py`; architecture boundary test (kernel imports no
+  research/campaign/DSL/IR code).

@@ -288,7 +288,11 @@ class Campaign:
             lines.append('| '+str(g['generation'])+' | '+' | '.join(cells)+' |')
         lines+=['',f"Executed attempts, including exact-check attempts: {summary['total_attempts']}.",'',
                 '## Limitations','']+['- '+x for x in summary['limitations']]
-        (self.root/'reports/report.md').write_text('\n'.join(lines)+'\n')
+        from .kernel.wording import require_clean
+        text='\n'.join(lines)+'\n'
+        require_clean(text,{'math':'FINITE_CERTIFIED','utility':'DEV_ONLY','causality':'NOT_TESTED',
+                            'improver':'NOT_TESTED','novelty':'UNKNOWN','replication':'NONE'})
+        (self.root/'reports/report.md').write_text(text)
         (self.root/'reports/results.json').write_bytes(canonical(summary))
 
     def replay(self,limit=10):

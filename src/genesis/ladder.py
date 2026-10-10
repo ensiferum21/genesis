@@ -246,7 +246,7 @@ def summarize(prereg, prereg_id, rows):
                      'effects': ['EXTERNAL_SOURCE'] if prereg.domain == 'c4_host_v2' else []},
         'limitations': [
             'Public calibration: complete hosts and their optima are published; not a sealed evaluation.',
-            'Optimality of matched values rests on the cited source, not on a certificate produced here.',
+            'Matched values are known optima only according to the cited source; no optimality certificate is produced here.',
             'Realized CPU includes interpreter start-up for every invocation; the final invocation may overshoot.',
             'A frontier candidate is not a discovery until independently re-checked and priority-checked.',
         ],
@@ -257,7 +257,7 @@ def summarize(prereg, prereg_id, rows):
 def render(results):
     lines = [f"# Known-answer ladder: {results['domain']}", '',
              f"Preregistration `{results['preregistration']}` · status **{results['status']}** · "
-             f"answer key `{results['answer_key']['sha256'][:16]}…` ({results['answer_key']['source']['reference']})", '',
+             f"answer key `{results['answer_key']['sha256'][:16]}…` [cited: {results['answer_key']['source']['reference']}]", '',
              '## Test rungs', '', '| Arm | Matched | Unbroken height | Total shortfall | Max CPU/budget |',
              '|---|---:|---:|---:|---:|']
     for name, a in results['per_arm_test_summary'].items():
@@ -276,4 +276,6 @@ def render(results):
         lines.append(f"- {pair}: {p['wins']}/{p['losses']}/{p['ties']} W/L/T, sign p = {p['exploratory_sign_p']:.3g}")
     lines += ['', '## Limitations', ''] + [f'- {x}' for x in results['limitations']]
     lines += ['', 'Promotion allowed: **no**.', '']
-    return '\n'.join(lines)
+    from .kernel.wording import require_clean
+    return require_clean('\n'.join(lines), {'math': 'WITNESS_VALID', 'utility': 'DEV_ONLY', 'causality': 'NOT_TESTED',
+                                              'improver': 'NOT_TESTED', 'novelty': 'REDISCOVERY', 'replication': 'NONE'})

@@ -4,17 +4,21 @@
   "base_commit": "c2d53a9",
   "completed": [
     1,
-    2
+    2,
+    3,
+    4
   ],
   "in_progress": null,
-  "next": 3,
+  "next": 5,
   "suites": [
     "tests_genesis",
     "tests"
   ],
   "notes": {
     "1": "Incremental solver (output-identical to v1 oracle), O(1)-per-commit event export, known-answer ladder benchmark + CLI, toolchain pins.",
-    "2": "Custodian-built exposure registry (GI6-10) and externally rooted role registry (GI6-11); request schema v2."
+    "2": "Custodian-built exposure registry (GI6-10) and externally rooted role registry (GI6-11); request schema v2.",
+    "3": "Legacy trust paths fail closed; promotion eligibility registry.",
+    "4": "Evidence kernel: DAG, typed effects, promotion, revocation, trust graph, wording gate."
   },
   "pending_evidence": {
     "ladder_c4_b1": "running from frozen worktree at commit 94c249c; results to be added under evidence/ladder/"

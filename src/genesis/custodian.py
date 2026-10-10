@@ -3,15 +3,12 @@
 This module implements the service, not the fact of independent operation. No
 production keys are created by the research CLI. Private panels stay in this service.
 """
-import base64
 import json
 import os
 from pathlib import Path
 import random
 import sqlite3
 import time
-from cryptography.hazmat.primitives.asymmetric.ed25519 import Ed25519PrivateKey,Ed25519PublicKey
-from cryptography.hazmat.primitives import serialization
 from .common import canonical,bytes_hash,digest,load_json,utcnow,code_identity
 from .models import GraphTask,SolverProgram,Limits
 from .graphs import canonical_graph,certified_optimum,check_witness,SearchLimit
@@ -20,17 +17,7 @@ from .store import Store
 from .evaluation import paired,sign_test
 
 
-def sign(payload,key_path):
-    key=serialization.load_pem_private_key(Path(key_path).read_bytes(),password=None)
-    if not isinstance(key,Ed25519PrivateKey):raise ValueError('Ed25519 private key required')
-    return {'payload':payload,'signature':base64.b64encode(key.sign(canonical(payload))).decode()}
-
-
-def verify(envelope,public_key_b64):
-    if not isinstance(envelope,dict) or set(envelope)!={'payload','signature'}:raise ValueError('signed envelope schema')
-    key=Ed25519PublicKey.from_public_bytes(base64.b64decode(public_key_b64,validate=True))
-    key.verify(base64.b64decode(envelope['signature'],validate=True),canonical(envelope['payload']))
-    return envelope['payload']
+from .kernel.signing import sign,verify  # re-exported for existing callers
 
 
 REQUEST_FIELDS={'schema','campaign_id','candidate_version','source_hash','programs','limits','seed',
