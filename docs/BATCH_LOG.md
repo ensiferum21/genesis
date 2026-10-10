@@ -65,3 +65,29 @@ See `docs/AUDIT_REMEDIATION.md` (GI6 section).
 - `kernel/index.py` + `genesis store index`: derived read-only §16.4 tables.
 - Property test: 25 random histories rebuild to the exact online state.
 - Ladder baseline evidence: `evidence/ladder_c4_b1/`.
+
+## Batch 6 — container sandbox and authority
+- `sandbox.py`: runc/OCI backend for arbitrary generated code — new
+  pid/net/ipc/uts/mount/cgroup namespaces (no network), read-only root from
+  host /usr + generated /etc, size-limited tmpfs /tmp and /work, UID 65534,
+  no capabilities, no_new_privs, seccomp denying mount/namespace/module/
+  ptrace/bpf/keyring/reboot calls, cgroup memory/pids/CPU limits, rlimits,
+  wall kill, scrubbed environment, symlink-safe capped output collection.
+  RLIMIT_AS is applied by an in-container shim because applying it to runc's
+  Go init crashes libseccomp (found while testing).
+- `tests_sandbox/test_escape.py` (13 tests, all executed here): outbound
+  network, DNS, host proxy and metadata unreachable; root/usr/etc/proc not
+  writable; host secrets, home, evaluator paths and docker socket invisible;
+  environment scrubbed; uid 65534, CapEff 0, seccomp mode 2; setuid, mount,
+  unshare, chroot, ptrace, keyctl, bpf, init_module, mknod, reboot denied;
+  only the container's own PIDs visible; fork bomb, memory hog, CPU spin,
+  sleep, output flood and disk fill contained with truthful receipts. The test
+  matrix treats a skip in this suite as release-blocking.
+- `kernel/authority.py`: grant ledger. Children lease from a parent's
+  remaining budget and cannot gain permissions; network/release/provider
+  permissions need an external authorization record; charges (including
+  overshoot) are recorded as events; the sandbox requires a grant with
+  `execute_sandboxed_code` when a ledger is supplied.
+- Container image pinning: the sandbox root is the host's read-only /usr.
+  Pinning by registry digest was not possible here (Docker Hub blocked); the
+  receipt records the policy and config hashes instead.

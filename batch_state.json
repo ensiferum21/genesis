@@ -7,20 +7,23 @@
     2,
     3,
     4,
-    5
+    5,
+    6
   ],
   "in_progress": null,
-  "next": 6,
+  "next": 7,
   "suites": [
     "tests_genesis",
-    "tests"
+    "tests",
+    "tests_sandbox"
   ],
   "notes": {
     "1": "Incremental solver (output-identical to v1 oracle), O(1)-per-commit event export, known-answer ladder benchmark + CLI, toolchain pins.",
     "2": "Custodian-built exposure registry (GI6-10) and externally rooted role registry (GI6-11); request schema v2.",
     "3": "Legacy trust paths fail closed; promotion eligibility registry.",
     "4": "Evidence kernel: DAG, typed effects, promotion, revocation, trust graph, wording gate.",
-    "5": "Signed phase machine, rebuild-from-export recovery, full SystemVersion, relational index."
+    "5": "Signed phase machine, rebuild-from-export recovery, full SystemVersion, relational index.",
+    "6": "runc/OCI sandbox with executed escape suite; grant ledger for the authority invariant."
   },
   "pending_evidence": {},
   "evidence": {

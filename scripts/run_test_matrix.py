@@ -71,6 +71,10 @@ def main(argv=None):
     for name, (directory, consequence) in suites.items():
         result = run_suite(name, directory, args.timeout)
         result['release_consequence'] = consequence
+        if consequence == 'failure blocks release' and result['skipped']:
+            # A skipped containment test is not a pass: the property was not demonstrated.
+            result['ok'] = False
+            result['tail'] = result['tail'] + ['skips are release-blocking for this suite']
         results.append(result)
         status = 'OK' if result['ok'] else 'FAIL'
         print(f"{name:20s} {status:4s} ran={result['ran']} skipped={result['skipped']} "
