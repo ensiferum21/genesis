@@ -152,6 +152,7 @@ class EvidenceKernel:
         self.anchors = dict(anchors or {})
         self._trust_root = trust_root
         self._fixture = None
+        self._nodes = {}  # immutable entity cache
 
     @classmethod
     def with_fixture_registry(cls, store, registry, *, anchors=None):
@@ -170,7 +171,7 @@ class EvidenceKernel:
                verifier=None, scope=None):
         """Record an immutable artifact node. Returns its content-derived id."""
         for p in parents:
-            if self.s.state(f'evnode:{p}') is None:
+            if not self._has_node(p):
                 raise ValueError(f'unknown parent artifact {p}')
         node = {'schema': 'genesis-evidence-node-v1', 'kind': kind, 'payload_hash': self.s.put(payload),
                 'parents': sorted(set(parents)), 'effects': sorted(e.value for e in _norm_effects(effects)),
@@ -190,10 +191,26 @@ class EvidenceKernel:
                            effects=effects)
 
     def node(self, nid):
-        node = self.s.state(f'evnode:{nid}')
+        """Read from the immutable entity record, never from mutable state (a forged
+        STATE_UPDATED event cannot change what a node says)."""
+        node = self._nodes.get(nid)
         if node is None:
-            raise KeyError(nid)
+            row = self.s.db.execute("SELECT object_hash FROM entities WHERE kind='evidence_node' AND id=?",
+                                    (nid,)).fetchone()
+            if row is None:
+                raise KeyError(nid)
+            node = self.s.get(row[0])
+            if digest(node) != nid:
+                raise RuntimeError(f'evidence node {nid[:12]} does not hash to its identity')
+            self._nodes[nid] = node
         return node
+
+    def _has_node(self, nid):
+        try:
+            self.node(nid)
+            return True
+        except KeyError:
+            return False
 
     def payload(self, nid):
         return self.s.get(self.node(nid)['payload_hash'])
@@ -246,11 +263,27 @@ class EvidenceKernel:
             raise ValueError('revocation needs a reason')
         record = {'target_type': target_type, 'artifact': target, 'reason': reason, 'actor': actor, 'at': utcnow()}
         self.s.save('evidence_revocation', digest(record), record)
+        # Convenience mirror only; the immutable revocation entities are authoritative.
         key = {'node': 'evrevoked', 'key': 'evrevoked_keys', 'evaluation': 'evrevoked_evaluations'}[target_type]
-        revoked = set(self.s.state(key, []))
-        revoked.add(target)
-        self.s.set_state(key, sorted(revoked))
+        self.s.set_state(key, sorted(self._revoked(target_type)))
         return record
+
+    def _revoked(self, target_type):
+        return {r['artifact'] for r in self.revocations() if r.get('target_type', 'node') == target_type}
+
+    def apply_revocations(self, records):
+        """Apply revocation records from a later feed (REVOCATIONS.json). Unknown nodes are skipped."""
+        applied, skipped = [], []
+        have = {(r.get('target_type', 'node'), r['artifact']) for r in self.revocations()}
+        for r in records:
+            target_type = r.get('target_type', 'node')
+            if (target_type, r['artifact']) in have:
+                continue
+            if target_type == 'node' and not self._has_node(r['artifact']):
+                skipped.append(r); continue
+            self._revocation(target_type, r['artifact'], f"later feed: {r['reason']}", r.get('actor', 'unknown'))
+            applied.append(r)
+        return {'applied': applied, 'skipped_unknown': skipped}
 
     def revoke(self, nid, reason, actor):
         """Revoke an artifact node (a dependency, an ancestor, a verifier registration, an imported capability)."""
@@ -268,28 +301,36 @@ class EvidenceKernel:
         return self._revocation('evaluation', identity, reason, actor)
 
     def revoked_keys(self):
-        return set(self.s.state('evrevoked_keys', []))
+        return self._revoked('key')
+
+    def _entities_of(self, kind):
+        """All (id, object) of an immutable entity kind, cached until the count changes."""
+        n = self.s.db.execute('SELECT count(*) FROM entities WHERE kind=?', (kind,)).fetchone()[0]
+        cache = getattr(self, '_kind_cache', None)
+        if cache is None:
+            cache = self._kind_cache = {}
+        if kind not in cache or cache[kind][0] != n:
+            rows = self.s.db.execute('SELECT id, object_hash FROM entities WHERE kind=? ORDER BY id', (kind,)).fetchall()
+            cache[kind] = (n, [(i, self.s.get(h)) for i, h in rows])
+        return cache[kind][1]
 
     def revocations(self):
-        out = []
-        for (h,) in self.s.db.execute("SELECT object_hash FROM entities WHERE kind='evidence_revocation' ORDER BY id"):
-            out.append(self.s.get(h))
+        out = [r for _, r in self._entities_of('evidence_revocation')]
         return sorted(out, key=lambda r: (r['at'], r['artifact']))
 
     def revocation_head(self):
-        return digest({'nodes': self.s.state('evrevoked', []), 'keys': self.s.state('evrevoked_keys', []),
-                       'evaluations': self.s.state('evrevoked_evaluations', [])})
+        return digest({'nodes': sorted(self._revoked('node')), 'keys': sorted(self._revoked('key')),
+                       'evaluations': sorted(self._revoked('evaluation'))})
 
     def revoked_ancestors(self, nid):
-        revoked = set(self.s.state('evrevoked', []))
-        return sorted(self.closure([nid]) & revoked)
+        return sorted(self.closure([nid]) & self._revoked('node'))
 
     def _registrations(self, identity):
         return [nid for nid in self._all_nodes() if self.node(nid)['kind'] == 'verifier'
                 and self.node(nid)['verifier'] == identity]
 
     def revoked_verifiers(self):
-        revoked = set(self.s.state('evrevoked', []))
+        revoked = self._revoked('node')
         by_identity = {}
         for nid in self._all_nodes():
             n = self.node(nid)
@@ -299,7 +340,7 @@ class EvidenceKernel:
 
     def verifier_trust(self, verifier_identity):
         """ANCHORED, CIRCULAR_JUSTIFICATION, UNANCHORED, REVOKED or UNREGISTERED (§3.2)."""
-        revoked = set(self.s.state('evrevoked', []))
+        revoked = self._revoked('node')
         regs = self._registrations(verifier_identity)
         if not regs:
             return 'UNREGISTERED'
@@ -373,20 +414,23 @@ class EvidenceKernel:
             raise KeyError(f'{kind}:{key}')
         return row[0]
 
-    def recorded_levels(self, claim_id):
-        """Historical: levels as granted, ignoring later revocation or trust changes."""
-        levels = self.s.state(f'claimlevels:{claim_id}')
-        if levels is None:
-            raise KeyError(claim_id)
-        return levels
-
     def promotion_history(self, claim_id):
-        hist = self.s.state(f'claimpromotions:{claim_id}')
-        if hist is None:  # stores written before B14: fall back to the recorded levels
-            rec = self.recorded_levels(claim_id)
-            hist = [{'axis': a, 'level': lvl, 'decision': None} for a, lvl in rec.items()
-                    if a in AXES and lvl != FLOOR[a]]
-        return hist
+        """Granted promotions for one claim, from the immutable decision records."""
+        self._entity('claim', claim_id)
+        out = []
+        for did, d in self._entities_of('promotion'):
+            if d.get('claim') == claim_id and d.get('axis') in AXES and d.get('level') in AXES[d['axis']]:
+                out.append({'axis': d['axis'], 'level': d['level'], 'decision': did, 'at': d.get('at'),
+                            'registry': d.get('registry')})
+        return sorted(out, key=lambda x: (x['at'] or '', x['decision']))
+
+    def recorded_levels(self, claim_id):
+        """Historical: the highest level ever granted per axis, ignoring later revocation or trust changes."""
+        out = dict(FLOOR)
+        for h in self.promotion_history(claim_id):
+            if AXES[h['axis']].index(h['level']) > AXES[h['axis']].index(out[h['axis']]):
+                out[h['axis']] = h['level']
+        return out
 
     def levels(self, claim_id, _ctx=None):
         """Effective levels, re-derived now. Revoked dependencies, revoked verifiers,
@@ -407,10 +451,9 @@ class EvidenceKernel:
         """Whole-claim invalidations: revoked ancestors, revoked verifiers, revoked evaluations."""
         claim = self.claim(claim_id)
         deps = self.closure(claim['dependencies'])
-        revoked = set(self.s.state('evrevoked', []))
-        hits = set(deps & revoked)
+        hits = set(deps & self._revoked('node'))
         dead_verifiers = self.revoked_verifiers()
-        dead_evaluations = set(self.s.state('evrevoked_evaluations', []))
+        dead_evaluations = self._revoked('evaluation')
         for d in deps:
             n = self.node(d)
             if n['verifier'] in dead_verifiers and n['kind'] != 'verifier':
@@ -453,12 +496,8 @@ class EvidenceKernel:
                     'revocation_context': self.revocation_head(), 'at': utcnow()}
         did = digest(decision)
         self.s.save('promotion', did, decision)
-        history = list(self.s.state(f'claimpromotions:{claim_id}') or [])
-        history.append({'axis': axis, 'level': level, 'decision': did})
-        self.s.set_state(f'claimpromotions:{claim_id}', history)
-        recorded = dict(self.recorded_levels(claim_id))
-        recorded[axis] = level
-        self.s.set_state(f'claimlevels:{claim_id}', recorded)
+        # Convenience mirror of granted levels (not authoritative; see recorded_levels / levels).
+        self.s.set_state(f'claimlevels:{claim_id}', self.recorded_levels(claim_id))
         return decision
 
     # ---------- licensing (pure: no writes) ----------
@@ -575,7 +614,7 @@ class EvidenceKernel:
                 p, why, env = ctx.opened(d, 'preregistration_anchor')
                 if p is not None:
                     anchors[digest(env)] = (p, env)
-        dead = set(self.s.state('evrevoked_evaluations', []))
+        dead = self._revoked('evaluation')
         good = {}
         for d in candidates:
             n = self.node(d)

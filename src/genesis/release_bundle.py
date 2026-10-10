@@ -9,7 +9,18 @@
 
 `verify_bundle` re-derives everything a reproducer needs without trusting the
 bundle's own claims: every file hash, the event hash chain rebuilt from
-events.jsonl + objects, and the code identity of the shipped source.
+events.jsonl + objects, the code identity of the shipped source, and (R-02)
+every claim's effective level, recomputed from the rebuilt evidence graph with
+the verifier's own trust root and pinned anchors and compared with CLAIMS.json.
+
+CLAIMS.json separates history from current status: `historical` holds the
+promotions as granted; `effective_levels` holds what the evidence licenses at
+export time after every revocation. REVOCATIONS.json is the revocation feed.
+A verifier reviewing an older release passes a later bundle's REVOCATIONS.json
+as `later_revocations`; the bundle is still checked as released, and claims
+downgraded since then are reported separately (`downgraded_since_release`).
+A producer can omit events from a self-consistent chain; only an external
+chronology or a later feed from another party can expose that.
 """
 import hashlib
 import io
@@ -23,7 +34,30 @@ import tempfile
 import zipfile
 
 from .common import canonical, code_identity, digest, utcnow
+from .kernel.anchors import pinned_tool_anchors
+from .kernel.evidence import AXES, FLOOR, EvidenceKernel
+from .kernel.wording import lint
 from .store import Store, rebuild_from_export
+
+CLAIMS_SCHEMA = 'genesis-claims-v2'
+
+
+def effective_claims(store, *, trust_root=None):
+    """Current, revocation-aware status of every claim in `store` (R-02)."""
+    k = EvidenceKernel(store, anchors=pinned_tool_anchors(), trust_root=trust_root)
+    registry, problems, source = k._registry()
+    claims = [k.effective_report(cid) for cid in k.claim_ids()]
+    ceiling = dict(FLOOR)
+    for c in claims:
+        for axis, levels in AXES.items():
+            if levels.index(c['effective_levels'][axis]) > levels.index(ceiling[axis]):
+                ceiling[axis] = c['effective_levels'][axis]
+    return {'schema': CLAIMS_SCHEMA, 'evaluated_at': utcnow(), 'revocation_head': k.revocation_head(),
+            'registry': {'root_key_sha256': source if registry else None,
+                         'available': registry is not None, 'problems': problems},
+            'claims': claims, 'ceiling': ceiling, 'promotion_allowed': False,
+            'note': 'effective_levels are re-derived from the evidence graph at export; '
+                    'historical.recorded_levels are as originally granted'}, k.revocations()
 
 REPO = Path(__file__).resolve().parents[2]
 PACKAGES = ('pydantic', 'pydantic-core', 'numpy', 'scipy', 'cryptography', 'networkx', 'scikit-learn',
@@ -50,7 +84,7 @@ def _entities(s, kind):
         yield key, h, s.get(h)
 
 
-def build_bundle(campaign_root, destination, *, report=None, limitations=()):
+def build_bundle(campaign_root, destination, *, report=None, limitations=(), trust_root=None):
     campaign_root = Path(campaign_root); destination = Path(destination)
     if destination.exists():
         raise FileExistsError(destination)
@@ -69,11 +103,16 @@ def build_bundle(campaign_root, destination, *, report=None, limitations=()):
         files['resolved_config.json'] = canonical(cfg)
         versions = sorted((v.get('generation', -1), k, v) for k, _, v in _entities(s, 'system_version'))
         files['system_version.json'] = canonical(versions[-1][2] if versions else {'source': s.state('source_hash')})
-        claims = []
-        for cid, _, claim in _entities(s, 'claim'):
-            claims.append({**claim, 'levels': s.state(f'claimlevels:{cid}')})
-        files['CLAIMS.json'] = canonical({'claims': claims, 'promotion_allowed': False,
-                                          'note': 'levels are as granted by the evidence kernel at build time'})
+        claims, revocations = effective_claims(s, trust_root=trust_root)
+        claims['event_head'] = integrity['head']
+        text = report.decode() if isinstance(report, bytes) else (report or '')
+        problems = lint(text, claims['ceiling'])
+        if problems:
+            # A cached report that outruns the current evidence is invalidated, not shipped.
+            raise ValueError('report exceeds the current effective evidence: ' +
+                             '; '.join(f"{p['phrase']!r} ({p['why']})" for p in problems[:5]))
+        files['CLAIMS.json'] = canonical(claims)
+        files['REVOCATIONS.json'] = canonical({'schema': 'genesis-revocations-v1', 'records': revocations})
         prereg = {kind: [v for _, _, v in _entities(s, kind)]
                   for kind in ('ladder_preregistration', 'experiment_b_prereg', 'frozen_request')}
         files['preregistration.json'] = canonical(prereg)
@@ -123,8 +162,33 @@ def build_bundle(campaign_root, destination, *, report=None, limitations=()):
             'event_head': integrity['head']}
 
 
-def verify_bundle(path):
-    """Independent check of an extracted bundle directory or a bundle zip."""
+def _compare_claims(bundled, recomputed):
+    problems = []
+    if bundled.get('schema') != CLAIMS_SCHEMA:
+        return ['CLAIMS.json predates effective-level export (R-02); its levels cannot be trusted']
+    want = {c['claim_id']: c['effective_levels'] for c in recomputed['claims']}
+    have = {c.get('claim_id'): c.get('effective_levels') for c in bundled.get('claims', [])}
+    if set(want) != set(have):
+        problems.append(f'claim set differs: missing {sorted(set(want) - set(have))[:3]}, '
+                        f'extra {sorted(set(have) - set(want))[:3]}')
+    for cid in sorted(set(want) & set(have)):
+        if have[cid] != want[cid]:
+            diff = {a: (have[cid].get(a) if isinstance(have[cid], dict) else None, want[cid].get(a))
+                    for a in set(want[cid]) | set(have[cid] or {}) if (have[cid] or {}).get(a) != want[cid].get(a)}
+            problems.append(f'CLAIMS.json asserts levels the evidence graph does not license for {cid}: '
+                            + ', '.join(f'{a} bundled={b} recomputed={r}' for a, (b, r) in sorted(diff.items())))
+    if bundled.get('revocation_head') != recomputed['revocation_head']:
+        problems.append('bundled revocation head differs from the rebuilt evidence graph')
+    return problems
+
+
+def verify_bundle(path, *, trust_root=None, later_revocations=None):
+    """Independent check of an extracted bundle directory or a bundle zip.
+
+    `trust_root`: the verifier's own externally controlled role registry; without
+    it, confirmation-level claims cannot be re-derived and a bundle asserting
+    them is rejected. `later_revocations`: path to a later REVOCATIONS.json.
+    """
     path = Path(path)
     tmp = None
     if path.is_file():
@@ -136,6 +200,7 @@ def verify_bundle(path):
             raise ValueError('bundle must contain exactly one release_* directory')
         path = roots[0]
     problems = []
+    current = None
     try:
         manifest = json.loads((path / 'MANIFEST.json').read_bytes())
         present = {str(p.relative_to(path)) for p in path.rglob('*') if p.is_file() and p.name != 'MANIFEST.json'}
@@ -146,7 +211,8 @@ def verify_bundle(path):
             p = path / rel
             if p.is_file() and hashlib.sha256(p.read_bytes()).hexdigest() != h:
                 problems.append(f'hash mismatch: {rel}')
-        # Rebuild the event store from the append-only export and objects.
+        # Rebuild the event store from the append-only export and objects, then
+        # re-derive every claim from the rebuilt evidence graph.
         with tempfile.TemporaryDirectory(prefix='genesis-rebuild-') as d:
             shutil.copy(path / 'events.jsonl', Path(d) / 'events.jsonl')
             shutil.copytree(path / 'objects', Path(d) / 'objects')
@@ -154,20 +220,43 @@ def verify_bundle(path):
                 record = rebuild_from_export(d)
                 if record['head'] != manifest['event_head'] or record['events'] != manifest['events']:
                     problems.append('rebuilt event head differs from manifest')
+                with Store(d) as s:
+                    recomputed, revocations = effective_claims(s, trust_root=trust_root)
+                    bundled = json.loads((path / 'CLAIMS.json').read_bytes())
+                    problems += _compare_claims(bundled, recomputed)
+                    feed = (path / 'REVOCATIONS.json')
+                    if not feed.is_file() or json.loads(feed.read_bytes()).get('records') != \
+                            json.loads(canonical(revocations)):
+                        problems.append('REVOCATIONS.json differs from the revocations in the evidence graph')
+                    if later_revocations is not None:
+                        records = json.loads(Path(later_revocations).read_bytes())['records']
+                        k = EvidenceKernel(s, anchors=pinned_tool_anchors(), trust_root=trust_root)
+                        applied = k.apply_revocations(records)
+                        now, _ = effective_claims(s, trust_root=trust_root)
+                        before = {c['claim_id']: c['effective_levels'] for c in recomputed['claims']}
+                        current = {'applied': len(applied['applied']),
+                                   'skipped_unknown': len(applied['skipped_unknown']),
+                                   'downgraded_since_release': sorted(
+                                       c['claim_id'] for c in now['claims']
+                                       if c['effective_levels'] != before[c['claim_id']]),
+                                   'claims': now['claims']}
             except Exception as exc:
-                problems.append(f'event rebuild failed: {type(exc).__name__}: {exc}')
+                problems.append(f'event rebuild or claim recomputation failed: {type(exc).__name__}: {exc}')
         identity = json.loads((path / 'analysis_code' / 'CODE_IDENTITY.json').read_bytes())
-        recomputed = {}
+        recomputed_code = {}
         for rel in identity['files']:
             p = path / 'analysis_code' / rel
-            recomputed[rel] = hashlib.sha256(p.read_bytes()).hexdigest() if p.exists() else None
-        if digest(recomputed) != manifest['shipped_code_identity'] or recomputed != identity['files']:
+            recomputed_code[rel] = hashlib.sha256(p.read_bytes()).hexdigest() if p.exists() else None
+        if digest(recomputed_code) != manifest['shipped_code_identity'] or recomputed_code != identity['files']:
             problems.append('shipped analysis code does not match its code identity')
         if manifest['source_hash'] != manifest['shipped_code_identity']:
             problems.append('campaign was produced by different source than the shipped analysis code '
                             '(acceptable only with a recorded deviation)')
-        return {'ok': not problems, 'problems': problems, 'release_id': manifest['release_id'],
-                'event_head': manifest['event_head']}
+        out = {'ok': not problems, 'problems': problems, 'release_id': manifest['release_id'],
+               'event_head': manifest['event_head']}
+        if current is not None:
+            out['current'] = current
+        return out
     finally:
         if tmp:
             shutil.rmtree(tmp, ignore_errors=True)

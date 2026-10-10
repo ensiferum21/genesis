@@ -35,7 +35,7 @@ CREATE TABLE lineage_edges(parent_version TEXT, child_version TEXT, mod_id TEXT,
 PUBLIC_SPLITS = {'DEV', 'SELECT', 'FUTURE'}
 
 
-def build_index(store, destination):
+def build_index(store, destination, *, trust_root=None):
     destination = Path(destination)
     if destination.exists():
         raise FileExistsError(destination)
@@ -44,6 +44,9 @@ def build_index(store, destination):
     try:
         db.executescript(TABLES)
         get = store.get
+        from .anchors import pinned_tool_anchors
+        from .evidence import EvidenceKernel
+        kernel = EvidenceKernel(store, anchors=pinned_tool_anchors(), trust_root=trust_root)
 
         def entities(kind):
             for key, h in store.db.execute('SELECT id, object_hash FROM entities WHERE kind=? ORDER BY id', (kind,)):
@@ -94,9 +97,9 @@ def build_index(store, destination):
                        (tid, task.get('family'), split, 'RESEARCH_VISIBLE' if split in PUBLIC_SPLITS else 'SEALED',
                         digest({'n': task['n'], 'edges': task['edges'], 'domain': task.get('domain')})))
         for claim_id, h, claim in entities('claim'):
+            # Effective (revocation-aware, re-derived) levels, never the stored grant (R-02).
             db.execute('INSERT INTO claims VALUES (?,?,?,?)',
-                       (claim_id, claim['statement'], claim['scope'],
-                        json.dumps(store.state(f'claimlevels:{claim_id}'))))
+                       (claim_id, claim['statement'], claim['scope'], json.dumps(kernel.levels(claim_id))))
         for pid, h, decision in entities('promotion'):
             for dep in decision['dependencies']:
                 db.execute('INSERT INTO evidence VALUES (?,?,?,?,?)',

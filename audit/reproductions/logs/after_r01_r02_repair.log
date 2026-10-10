@@ -1,0 +1,3 @@
+{"attack": "R-01a unrelated auditor-signed failed note -> CONFIRMED_SAME_DOMAIN", "result": "ATTACK_BLOCKED (PromotionRejected)"}
+{"attack": "R-01b one envelope in three wrapper nodes -> MULTIGEN_CONFIRMED", "result": "ATTACK_BLOCKED (PromotionRejected)"}
+{"attack": "R-02 revoked claim exported with a valid level and accepted by verify_bundle", "exported_math_level": "UNCHECKED", "verify_ok": true, "verify_problems": [], "result": "ATTACK_BLOCKED"}
