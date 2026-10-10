@@ -105,6 +105,9 @@ def main(argv=None):
     p=subs.add_parser('research');p.add_argument('action',choices=['loop']);p.add_argument('root',type=Path)
     p.add_argument('--tasks',type=int,default=6);p.add_argument('--epochs',type=int,default=3)
     p.add_argument('--cpu-per-epoch',type=float,default=60.0);p.add_argument('--seed',type=int,default=20261013)
+    p=subs.add_parser('experiment');p.add_argument('name',choices=['ghost-census']);p.add_argument('root',type=Path)
+    p.add_argument('--problems',type=int,default=16);p.add_argument('--budget',type=float,default=12.0)
+    p.add_argument('--seed',type=int,default=20261014)
     p=subs.add_parser('registry');p.add_argument('action',choices=['show','summary'])
     p=subs.add_parser('store');p.add_argument('action',choices=['verify','rebuild','index']);p.add_argument('root',type=Path)
     p.add_argument('--out',type=Path,help='index destination (store index)')
@@ -120,6 +123,11 @@ def main(argv=None):
         from .worldstep import ResearchLoop,LoopConfig
         cfg=LoopConfig(seed=args.seed,tasks=args.tasks,epochs=args.epochs,cpu_budget_per_epoch=args.cpu_per_epoch)
         with ResearchLoop(args.root,cfg) as loop:result=loop.run()
+    elif args.command=='experiment':
+        from .experiment_b import ExperimentBPrereg,run_experiment
+        result=run_experiment(args.root,ExperimentBPrereg(seed=args.seed,problems=args.problems,
+                                                          budget_seconds=args.budget))
+        result={k:result[k] for k in ('counts','gate','contradictions','scope','promotion_allowed')}
     elif args.command=='registry':
         from .registry import registry,summary
         result=summary() if args.action=='summary' else registry()

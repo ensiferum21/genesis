@@ -191,3 +191,24 @@ See `docs/AUDIT_REMEDIATION.md` (GI6 section).
 - `registry.py`: all 137 Appendix A engines as data — 5 IMPLEMENTED_BOUNDED,
   16 INFRASTRUCTURE_BOUNDED, 116 EXPRESSIBLE_NOT_INSTANTIATED (composition
   hypotheses, no stubs). `genesis registry summary`, `genesis research loop`.
+
+## Batch 11 — Experiment B (Ghost Census kill gate)
+- `fol.py`: TPTP-FOF subset parser, signature checks, TPTP printer and an
+  independent recursive finite-model evaluator.
+- `modelfind.py`: Mace-style SAT model finder (one-hot function tables,
+  memoized ground-term value variables, Tseitin, constant symmetry breaking)
+  using pinned CaDiCaL; every model is re-checked by the independent
+  evaluator; "no model up to size d" is never a proof.
+- `verification/eprover.py`: pinned E prover; THEOREM is a prover claim with
+  the proof object recorded but not replayed (THEOREM_CHECKED needs Lean).
+- `experiment_b.py`: preregistered algebra family (group, monoid, band, loop;
+  goals and candidate lemmas, some false), three arms with equal per-problem
+  CPU budgets in randomized order — portfolio (countermodel search + E),
+  lemmas_unfiltered, ghost_lemmas (drop lemmas with validated ghosts first).
+  States PROVED / GHOST_FOUND / UNSETTLED / HARNESS_ERROR; cross-arm
+  contradiction check; preregistered gate.
+- DEV run (12 problems, 8 s each; `evidence/experiment_b_dev/`): ghost_lemmas
+  settled 12, portfolio 12, lemmas_unfiltered 8; ghost_lemmas used 2.4× the
+  portfolio's CPU. Gate (margin 1): KILL on this family. The family is too
+  easy for lemma selection to matter; a meaningful run needs harder problems.
+- `genesis experiment ghost-census <dir>`.

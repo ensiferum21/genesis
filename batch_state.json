@@ -12,10 +12,11 @@
     7,
     8,
     9,
-    10
+    10,
+    11
   ],
   "in_progress": null,
-  "next": 11,
+  "next": 12,
   "suites": [
     "tests_genesis",
     "tests",
@@ -33,7 +34,8 @@
     "7": "SAT/DRAT upper certificates, hard panels, SAT-backed evaluator optima.",
     "8": "Pinned Lean 4.34.1, three-stage sandboxed comparator checker, canaries.",
     "9": "Leak firewall: text/structural/elaborated/near-dup screening, oracle, theorem memory rule.",
-    "10": "IR overloads + replay, 5 macros, research market, world-step loop, Appendix A registry."
+    "10": "IR overloads + replay, 5 macros, research market, world-step loop, Appendix A registry.",
+    "11": "Experiment B harness: FOF parser, SAT model finder, independent evaluator, E prover, kill gate (DEV: KILL)."
   },
   "pending_evidence": {},
   "evidence": {
