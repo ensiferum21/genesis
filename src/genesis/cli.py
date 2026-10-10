@@ -55,6 +55,29 @@ def export_replication(root,destination):
     return {'path':str(destination.resolve()),'files':len(files),'root':digest(manifest)}
 
 
+def _rungs(text):
+    out=[]
+    for part in text.split(','):
+        if '-' in part:
+            a,b=part.split('-');out.extend(range(int(a),int(b)+1))
+        elif part:out.append(int(part))
+    return tuple(out)
+
+
+def run_benchmark(args):
+    from .ladder import default_preregistration,run_ladder
+    candidate=None
+    if args.candidate:
+        with Store(args.candidate) as s:
+            if s.state('phase')!='CANDIDATE_FROZEN':raise ValueError('candidate campaign is not frozen')
+            candidate=SolverProgram.model_validate_json(canonical(s.state('latest_program')))
+    prereg=default_preregistration(args.domain,_rungs(args.dev),_rungs(args.test),args.cpu_seconds,args.seed,candidate)
+    results=run_ladder(args.root,prereg,progress=lambda r:print(json.dumps({k:r[k] for k in ('split','n','arm','best_value')}|
+        {'status':r['classification']['status']}),flush=True))
+    return {'report':str(Path(args.root)/'reports/ladder_report.md'),'status':results['status'],
+            'per_arm_test_summary':results['per_arm_test_summary'],'promotion_allowed':False}
+
+
 def main(argv=None):
     ap=argparse.ArgumentParser(prog='genesis');subs=ap.add_subparsers(dest='command',required=True)
     p=subs.add_parser('init');p.add_argument('root',type=Path);p.add_argument('--config',type=Path)
@@ -69,8 +92,14 @@ def main(argv=None):
     p=subs.add_parser('report');p.add_argument('action',choices=['build']);p.add_argument('root',type=Path)
     p=subs.add_parser('export');p.add_argument('action',choices=['replication-bundle']);p.add_argument('root',type=Path);p.add_argument('destination',type=Path)
     p=subs.add_parser('formal');p.add_argument('task',type=Path);p.add_argument('witness',type=Path);p.add_argument('destination',type=Path)
+    p=subs.add_parser('benchmark');p.add_argument('action',choices=['ladder']);p.add_argument('root',type=Path)
+    p.add_argument('--domain',choices=['c4_host_v2','triangle_free_host_v1'],default='c4_host_v2')
+    p.add_argument('--dev',default='4-20',help='development rungs, e.g. 4-20');p.add_argument('--test',default='21-40')
+    p.add_argument('--cpu-seconds',type=float,default=20.0);p.add_argument('--seed',type=int,default=20261010)
+    p.add_argument('--candidate',type=Path,help='frozen campaign whose candidate program joins as an arm')
     args=ap.parse_args(argv)
     if args.command=='doctor':result=doctor()
+    elif args.command=='benchmark':result=run_benchmark(args)
     elif args.command=='init':
         cfg=Config.model_validate_json(args.config.read_bytes()) if args.config else Config()
         result={'root':str(Campaign.initialize(args.root,cfg).resolve())}

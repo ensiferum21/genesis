@@ -1,0 +1,12 @@
+{
+  "schema": "genesis-batch-state-v1",
+  "branch": "completion-p0-p2",
+  "base_commit": "c2d53a9",
+  "completed": [],
+  "in_progress": 1,
+  "next": 1,
+  "suites": ["tests_genesis", "tests"],
+  "notes": {
+    "1": "Incremental solver (output-identical to v1 oracle), O(1)-per-commit event export, known-answer ladder benchmark + CLI, toolchain pins."
+  }
+}

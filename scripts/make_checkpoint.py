@@ -1,0 +1,108 @@
+#!/usr/bin/env python3
+"""Create a batch checkpoint ZIP from the committed tree.
+
+Contents: `git archive HEAD`, a full git bundle, the test-matrix report, a
+checkpoint record and a SHA-256 manifest of every member. Refuses to run on a
+dirty tree so the checkpoint always corresponds to one commit.
+"""
+import argparse
+import hashlib
+import json
+from datetime import datetime, timezone
+from importlib import metadata
+from pathlib import Path
+import platform
+import subprocess
+import sys
+import tempfile
+import zipfile
+
+ROOT = Path(__file__).resolve().parents[1]
+
+
+def git(*args, **kw):
+    return subprocess.run(['git', *args], cwd=ROOT, check=True, capture_output=True, **kw).stdout
+
+
+def sha256(data):
+    return hashlib.sha256(data).hexdigest()
+
+
+def environment():
+    packages = {}
+    for name in ('pydantic', 'pydantic-core', 'numpy', 'scipy', 'cryptography', 'scikit-learn', 'networkx'):
+        try:
+            packages[name] = metadata.version(name)
+        except metadata.PackageNotFoundError:
+            packages[name] = None
+    pins = ROOT / 'toolchain' / 'PINS.json'
+    return {
+        'python': sys.version.split()[0],
+        'platform': platform.platform(),
+        'packages': packages,
+        'toolchain_pins': json.loads(pins.read_text()) if pins.exists() else None,
+        'deviation': ('requirements.lock pins Python 3.12; this checkpoint was tested on the '
+                      'interpreter above because the pinned wheels were not downloadable here')
+        if not sys.version.startswith('3.12') else None,
+    }
+
+
+def main(argv=None):
+    parser = argparse.ArgumentParser()
+    parser.add_argument('--batch', type=int, required=True)
+    parser.add_argument('--out', default=str(ROOT.parent / 'checkpoints'))
+    parser.add_argument('--quick', action='store_true')
+    args = parser.parse_args(argv)
+    if git('status', '--porcelain').strip():
+        raise SystemExit('working tree is dirty; commit before making a checkpoint')
+    commit = git('rev-parse', 'HEAD').decode().strip()
+    out = Path(args.out)
+    out.mkdir(parents=True, exist_ok=True)
+    with tempfile.TemporaryDirectory() as tmp:
+        tmp = Path(tmp)
+        report = tmp / 'test_report.json'
+        cmd = [sys.executable, str(ROOT / 'scripts' / 'run_test_matrix.py'), '--report', str(report)]
+        if args.quick:
+            cmd.append('--quick')
+        tests = subprocess.run(cmd, cwd=ROOT)
+        if tests.returncode != 0:
+            raise SystemExit('test matrix failed; no checkpoint written')
+        bundle = tmp / 'source-history.bundle'
+        git('bundle', 'create', str(bundle), '--all')
+        archive = tmp / 'tree.tar'
+        git('archive', '--format=tar', '-o', str(archive), 'HEAD')
+        state = json.loads((ROOT / 'batch_state.json').read_text())
+        record = {
+            'schema': 'genesis-completion-checkpoint-v1',
+            'batch': args.batch,
+            'created_utc': datetime.now(timezone.utc).isoformat(),
+            'commit': commit,
+            'tree': git('rev-parse', 'HEAD^{tree}').decode().strip(),
+            'environment': environment(),
+            'batch_state': state,
+            'test_report': json.loads(report.read_text()),
+            'claim_ceiling': ('Engineering checkpoint only. No sealed evaluation, independent custody, '
+                              'scientific promotion, novelty or self-improvement claim.'),
+        }
+        name = f'GENESIS_COMPLETION_CHECKPOINT_B{args.batch:02d}'
+        dest = out / f'{name}.zip'
+        import tarfile
+        members = {}
+        with tarfile.open(archive) as tar:
+            for info in tar.getmembers():
+                if info.isfile():
+                    members[f'genesis/{info.name}'] = tar.extractfile(info).read()
+        members['genesis/source-history.bundle'] = bundle.read_bytes()
+        members['genesis/CHECKPOINT_RECORD.json'] = (json.dumps(record, indent=2) + '\n').encode()
+        manifest = {path: {'sha256': sha256(data), 'bytes': len(data)} for path, data in sorted(members.items())}
+        members['genesis/CHECKPOINT_MANIFEST.json'] = (json.dumps(manifest, indent=2) + '\n').encode()
+        with zipfile.ZipFile(dest, 'w', zipfile.ZIP_DEFLATED) as z:
+            for path, data in sorted(members.items()):
+                z.writestr(path, data)
+    digest = sha256(dest.read_bytes())
+    (out / f'{name}.sha256').write_text(f'{digest}  {dest.name}\n')
+    print(json.dumps({'checkpoint': str(dest), 'sha256': digest, 'commit': commit}))
+
+
+if __name__ == '__main__':
+    main()

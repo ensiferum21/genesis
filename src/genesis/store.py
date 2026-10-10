@@ -23,6 +23,7 @@ class Store:
             raise RuntimeError('campaign already has a writer')
         for name in ('objects/sha256','work','snapshots','reports','exports'):
             (self.root/name).mkdir(parents=True,exist_ok=True)
+        self._export_seq = None; self._export_size = None
         self.db = sqlite3.connect(self.root/'campaign.sqlite3', isolation_level=None)
         self.db.execute('PRAGMA foreign_keys=ON')
         # A campaign has exactly one writer. Rollback journaling keeps durable
@@ -145,10 +146,27 @@ class Store:
             self.db.execute('INSERT OR REPLACE INTO state VALUES (?,?)',(key,canonical(value)))
             self._event('STATE_UPDATED',{'key':key,'value':value})
 
-    def recover_export(self):
-        rows=self.db.execute('SELECT hash,body FROM events ORDER BY seq').fetchall()
-        lines=[canonical({'hash':h,'event':json.loads(b)})+b'\n' for h,b in rows]
+    def recover_export(self, full=False):
+        """Keep events.jsonl an exact, append-only rendering of the event table.
+
+        On open (or if the file size differs from what this writer last wrote)
+        the whole file is checked to be a prefix of the journal; otherwise only
+        new events are appended. History is never truncated or rewritten.
+        """
         path=self.root/'events.jsonl'
+        if not full and self._export_seq is not None:
+            size=path.stat().st_size if path.exists() else 0
+            if size==self._export_size:
+                rows=self.db.execute('SELECT seq,hash,body FROM events WHERE seq>? ORDER BY seq',
+                                     (self._export_seq,)).fetchall()
+                if rows:
+                    data=b''.join(canonical({'hash':h,'event':json.loads(b)})+b'\n' for _,h,b in rows)
+                    with path.open('ab') as f:
+                        f.write(data); f.flush(); os.fsync(f.fileno())
+                    self._export_seq=rows[-1][0]; self._export_size=size+len(data)
+                return
+        rows=self.db.execute('SELECT seq,hash,body FROM events ORDER BY seq').fetchall()
+        lines=[canonical({'hash':h,'event':json.loads(b)})+b'\n' for _,h,b in rows]
         existing=path.read_bytes() if path.exists() else b''
         wanted=b''.join(lines)
         if not wanted.startswith(existing): raise RuntimeError('event export corruption')
@@ -156,6 +174,7 @@ class Store:
             # Append even a partially written final line; never truncate or rewrite history.
             with path.open('ab') as f:
                 f.write(wanted[len(existing):]); f.flush(); os.fsync(f.fileno())
+        self._export_seq=rows[-1][0] if rows else 0; self._export_size=len(wanted)
 
     def verify(self):
         if self.db.execute('PRAGMA quick_check').fetchall()!=[('ok',)]:
@@ -190,6 +209,7 @@ class Store:
         actual_attempts={aid:(t,status,req,receipt) for aid,t,status,req,receipt in self.db.execute('SELECT * FROM attempts')}
         if actual_state!=derived_state or actual_entities!=derived_entities or actual_attempts!=derived_attempts:
             raise RuntimeError('derived SQLite state differs from immutable event history')
+        self.recover_export(full=True)
         return {'events':count,'head':prev,'integrity':'LOCAL_HASH_CHECKED'}
 
     def snapshot(self,name):
