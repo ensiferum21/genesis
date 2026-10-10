@@ -1,0 +1,33 @@
+{
+ "campaign": {
+  "ceiling": {
+   "causality": "NOT_TESTED",
+   "improver": "NOT_TESTED",
+   "math": "UNCHECKED",
+   "novelty": "UNKNOWN",
+   "replication": "NONE",
+   "utility": "NOT_TESTED"
+  },
+  "claims": 0,
+  "event_head": "e141909608f187c1b95dd9524fd5e885386d45183c5e4f0ca69b3a2d75d80e3d",
+  "math_levels": {},
+  "revocation_head": "bb007b5b5b335b3efc387f45bb9c8050ebfdd55206ab64bae7614413eac63206"
+ },
+ "world_loop": {
+  "ceiling": {
+   "causality": "NOT_TESTED",
+   "improver": "NOT_TESTED",
+   "math": "OPTIMALITY_CHECKED",
+   "novelty": "UNKNOWN",
+   "replication": "NONE",
+   "utility": "NOT_TESTED"
+  },
+  "claims": 10,
+  "event_head": "022689cfd61d46b6dce186bf139b2ea1870bca40cdd571dac724234f41e20330",
+  "math_levels": {
+   "OPTIMALITY_CHECKED": 4,
+   "WITNESS_VALID": 6
+  },
+  "revocation_head": "bb007b5b5b335b3efc387f45bb9c8050ebfdd55206ab64bae7614413eac63206"
+ }
+}

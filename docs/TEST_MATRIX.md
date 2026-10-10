@@ -14,8 +14,16 @@
 | Load/resource | single writer, concurrent worker returns, CPU/output/OOM receipts (`test_matrix_classes.py`, `tests_sandbox/`) | commit / release | must retain truthful receipts |
 | End-to-end smoke | one campaign through report under 600 s (`test_matrix_classes.py`) | commit | must pass under the cap |
 | Formal | Lean canaries and defence in depth (`tests_formal/`) | nightly | failure blocks formal claims |
+| Acceptance regressions (B14) | R-01 reproduced attacks + every forged-receipt case (`test_acceptance_regressions.py`), R-02 export revocation (`test_export_revocation.py`), R-03 checker-only replay (`tests_certificates/test_certificate_custody.py`), internal red-team F1–F11 (`test_redteam_b14.py`) | commit / nightly | any failure re-opens GV0 |
+| Requirements ledger | every spec section, roadmap item and catalogue entry has a disposition with resolvable tests (`test_ledger.py`) | commit | must pass |
 
 Run: `python3 scripts/run_test_matrix.py --profile commit|nightly|release --report out.json`.
 pytest/Hypothesis are not used because they were not installable in the build
 environment; property tests use seeded random generation and run under
 `unittest`. Both remain compatible with a pytest runner.
+
+Skips: release-blocking suites (sandbox, certificates, formal) accept no skips.
+In every other suite a skip fails the matrix unless it is declared, with a
+reason, in `docs/NONMANDATORY_SKIPS.json` (currently one legacy test that needs
+cached historical worlds). Missing tools therefore surface as failures, never
+as silent passes.

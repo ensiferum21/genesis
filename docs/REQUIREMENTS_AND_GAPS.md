@@ -1,7 +1,11 @@
-# Requirements and honest scope (completion branch, batch 13)
+# Requirements and honest scope (section summary; updated in batch 14)
 
-The previous version of this map (10 October checkpoint) is in git history at
-`c2d53a9`. Status words:
+**Superseded for row-level status by `docs/REQUIREMENTS_LEDGER.md` (W01),**
+which gives every specification section, roadmap item and catalogue entry one
+disposition with resolvable tests and separates implementation, local
+execution, independent verification and efficacy. This page keeps the
+section-level summary. The previous version (10 October checkpoint) is in git
+history at `c2d53a9`. Status words:
 
 - **DONE_BOUNDED** — implemented, tested in this repository's test matrix, narrow scope stated.
 - **PARTIAL** — real implementation with a stated missing piece.
@@ -75,15 +79,19 @@ The previous version of this map (10 October checkpoint) is in git history at
 
 ## §48 completion labels (builder's assessment, not an accepted release)
 
-- **ENGINEERING_COMPLETE_P0** — the code meets every P0 test here, including
-  the sandbox escape suite and evaluator-isolation tests run with a real UID
-  drop. Acceptance requires an independent audit.
-- **DOMAIN_COMPLETE_P1** — c4_host_v2 runs end to end with strong
-  conventional baselines (including a specialist SAT solver under equal CPU)
-  and exact checking (dual exhaustive + SAT/DRAT). Triangle-free hosts need
-  larger parameters to be informative.
-- **RESEARCH_IR_COMPLETE_P2** — typed operator/macro execution, world ecology
-  and evidence promotion run in real (public DEV) campaigns with replayable IR;
-  only 5 of 137 named engines are concrete macros.
+The reviewer reproduced two evidence-integrity defects (R-01, R-02) against
+B13 and raised R-03 and R-04. B14 repaired R-01..R-03 (and eleven further
+internal red-team findings), but **every label below is pending independent
+acceptance**, and P0 cannot be accepted while R-04 (supported deployment) is open.
+
+- **ENGINEERING_COMPLETE_P0** — builder's assessment only. Blocked on R-04 and
+  on independent review of the B14 repairs (gate GV0).
+- **DOMAIN_COMPLETE_P1** — c4_host_v2 runs end to end with strong conventional
+  baselines and exact checking; optimality now needs a custody-held certificate
+  replayed with the solver disabled. Pending audit.
+- **RESEARCH_IR_COMPLETE_P2** — typed IR execution, world ecology and evidence
+  promotion run in public DEV campaigns; only 5 of 137 engines are concrete
+  macros (15 more are shared mechanisms, 117 not implemented; see the ledger).
+  Pending audit.
 - **P3–P7** — not claimed. They need independent custody, fresh sealed panels,
-  external timestamps, independent audit and replication.
+  external timestamps, independent audit and replication (gates GV2–GV7).

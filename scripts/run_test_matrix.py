@@ -33,7 +33,7 @@ OPTIONAL = {
 def run_suite(name, directory, timeout):
     start = time.monotonic()
     env = dict(os.environ, PYTHONPATH=str(ROOT / 'src'), PYTHONHASHSEED='0')
-    proc = subprocess.run([sys.executable, '-W', 'ignore', '-m', 'unittest', 'discover',
+    proc = subprocess.run([sys.executable, '-W', 'ignore', '-m', 'unittest', 'discover', '-v',
                            '-s', directory, '-t', '.'], cwd=ROOT, env=env,
                           capture_output=True, text=True, timeout=timeout)
     tail = proc.stderr.strip().splitlines()[-6:]
@@ -42,8 +42,10 @@ def run_suite(name, directory, timeout):
     skipped = re.search(r'skipped=(\d+)', text)
     failures = re.search(r'failures=(\d+)', text)
     errors = re.search(r'errors=(\d+)', text)
+    skips = [{'test': m.group(1), 'reason': m.group(2)}
+             for m in re.finditer(r'^(\S+) \([^)]*\) \.\.\. skipped [\'"](.*)[\'"]$', text, re.M)]
     return {
-        'suite': name, 'directory': directory, 'returncode': proc.returncode,
+        'suite': name, 'directory': directory, 'returncode': proc.returncode, 'skips': skips,
         'ran': int(ran.group(1)) if ran else 0,
         'skipped': int(skipped.group(1)) if skipped else 0,
         'failures': int(failures.group(1)) if failures else 0,
@@ -82,6 +84,15 @@ def main(argv=None):
             # A skipped containment test is not a pass: the property was not demonstrated.
             result['ok'] = False
             result['tail'] = result['tail'] + ['skips are release-blocking for this suite']
+        # Elsewhere a skip is blocking unless it is declared non-mandatory (with a reason) in
+        # docs/NONMANDATORY_SKIPS.json; an undeclared skip never counts as a pass.
+        allowed = json.loads((ROOT / 'docs' / 'NONMANDATORY_SKIPS.json').read_text())['skips']
+        undeclared = [s for s in result['skips'] if not any(re.search(a['pattern'], s['test'] + ' ' + s['reason'])
+                                                            for a in allowed)]
+        result['undeclared_skips'] = undeclared
+        if undeclared or len(result['skips']) != result['skipped']:
+            result['ok'] = False
+            result['tail'] = result['tail'] + [f'undeclared or unparsed skips: {undeclared[:3]}']
         results.append(result)
         status = 'OK' if result['ok'] else 'FAIL'
         print(f"{name:20s} {status:4s} ran={result['ran']} skipped={result['skipped']} "

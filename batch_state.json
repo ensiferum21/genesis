@@ -1,6 +1,6 @@
 {
   "schema": "genesis-batch-state-v1",
-  "branch": "completion-p0-p2",
+  "branch": "continuation-b14",
   "base_commit": "c2d53a9",
   "completed": [
     1,
@@ -15,10 +15,11 @@
     10,
     11,
     12,
-    13
+    13,
+    14
   ],
   "in_progress": null,
-  "next": null,
+  "next": 15,
   "suites": [
     "tests_genesis",
     "tests",
@@ -39,7 +40,8 @@
     "10": "IR overloads + replay, 5 macros, research market, world-step loop, Appendix A registry.",
     "11": "Experiment B harness: FOF parser, SAT model finder, independent evaluator, E prover, kill gate (DEV: KILL).",
     "12": "Release bundle + verifier, \u00a738 classes (mutation, load, golden baselines, smoke cap), CI, container recipe, env lock.",
-    "13": "SAT baseline arm, e2e walkthrough, requirements map, final matrix."
+    "13": "SAT baseline arm, e2e walkthrough, requirements map, final matrix.",
+    "14": "R-01 shared receipt semantics; R-02 effective levels and bundle re-derivation; R-03 certificate custody + checker-only replay; internal red-team F1-F11 closed; W01 ledger (343 rows); undeclared skips fail the matrix."
   },
   "pending_evidence": {},
   "evidence": {
@@ -47,14 +49,27 @@
     "ladder_c4_sat": "evidence/ladder_c4_sat",
     "hard_panel_calibration": "evidence/hard_panel_calibration",
     "experiment_b_dev": "evidence/experiment_b_dev",
-    "e2e_walkthrough": "evidence/e2e_walkthrough"
+    "e2e_walkthrough": "evidence/e2e_walkthrough",
+    "e2e_walkthrough_b14": "evidence/e2e_walkthrough_b14"
   },
   "remaining_external": [
+    "external release authority",
+    "external timestamp of preregistration",
+    "fresh sealed panels for P3-P7",
     "independent audit of this branch",
     "independent custodian operator with own keys and private pool",
-    "external timestamp of preregistration",
-    "external release authority",
     "independent replication",
-    "fresh sealed panels for P3-P7"
+    "independent source review of B14 repairs (GV0)",
+    "second supported machine (R-04)"
+  ],
+  "phase_plan": {
+    "14": "Repair acceptance (W01-W03; R-01/R-02 regressions; certificate custody)",
+    "15": "Independent execution (W04, R-04 deployment)",
+    "16": "Evaluator readiness (W05-W07)"
+  },
+  "open_defects": [
+    "R-04 deployment",
+    "B14-OPEN-1 custodian request facts vs export",
+    "GV0 independent review"
   ]
 }

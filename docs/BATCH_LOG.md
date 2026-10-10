@@ -248,3 +248,37 @@ See `docs/AUDIT_REMEDIATION.md` (GI6 section).
 - `docs/REQUIREMENTS_AND_GAPS.md` rewritten section by section, with the §31
   checklist and the builder's §48 assessment (P0–P2 engineering; P3–P7 not
   claimed).
+
+## Batch 14 — repair acceptance (reviewer roadmap B14)
+- Started from tag `b13-baseline` (`82aa557`) on branch `continuation-b14`;
+  B13 itself is unchanged.
+- **Reproduced** R-01 (two attacks) and R-02 on B13 before touching code
+  (`audit/reproductions/logs/b13_baseline_82aa557.log`).
+- **R-01**: `kernel/receipts.py` is the one place that interprets signed
+  scientific records (trusted kind→role map, exact schemas, signed outcome
+  re-derived from signed counts, claim binding, evaluation-identity counting,
+  consecutive program-linked generation chains, salted panel commitments in
+  anchors, one registration per claim slot). The kernel, phase machine,
+  preflight and custodian all use it. Request schema v3 and receipt v2.
+- **R-02**: the kernel reads only immutable records; `levels()` re-derives
+  effective levels (node, verifier, key and evaluation revocations). Bundles
+  carry historical vs effective status and REVOCATIONS.json; `verify_bundle`
+  rebuilds the store and regenerates every derived file byte-for-byte, checks
+  the snapshot, lints report and statements, and can apply a later revocation
+  feed to an older release.
+- **R-03**: `verification/certificates.py` CertificateBundle keeps the original
+  CNF, DRAT proof and witness; IR traces reference them; bound_state v2 links
+  its lower witness check and certificate; the kernel replays the certificate
+  (solver disabled) before granting OPTIMALITY_CHECKED; a real world-loop
+  export verifies with only drat-trim installed.
+- **Internal red team** (fresh agent): 11 findings on the first repair, 4
+  critical; all closed with regression tests (`audit/redteam_b14/`).
+- **W01**: `scripts/build_ledger.py` → `ledger/requirements_ledger.json` and
+  `docs/REQUIREMENTS_LEDGER.md` (157 spec sections, R-01..R-04, GV0..GV8,
+  W01..W28, E0..E7, 137 engines; every test reference resolved; nothing
+  accepted).
+- Matrix: undeclared skips now fail; `networkx` declared in `pyproject.toml`.
+- e2e walkthrough re-run with the new schemas (`evidence/e2e_walkthrough_b14/`):
+  fixture sealed panel 0 wins / 0 losses / 3 ties → signed NOT_SUPPORTED;
+  preflight BLOCKED; release refused for a non-supported outcome.
+- Open: R-04, B14-OPEN-1, independent review for GV0.

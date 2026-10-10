@@ -166,4 +166,8 @@ def main(out_dir):
 
 
 if __name__ == '__main__':
-    main(sys.argv[1] if len(sys.argv) > 1 else tempfile.mkdtemp(prefix='genesis-e2e-'))
+    if len(sys.argv) > 1:
+        main(sys.argv[1])
+    else:
+        parent = Path(tempfile.mkdtemp(prefix='genesis-e2e-')); parent.chmod(0o755)  # the research UID must traverse it
+        main(str(parent / 'run'))

@@ -1,0 +1,9 @@
+{
+  "schema": "genesis-nonmandatory-skips-v1",
+  "note": "Skips listed here are explicitly non-mandatory for a release, each with its reason. Any other skip fails the matrix. Release-blocking suites (sandbox, certificates, formal) accept no skips at all.",
+  "skips": [
+    {"pattern": "test_u_admission_replay_identical_across_hash_seeds .*GAP_SLOW_TESTS",
+     "suite": "legacy_regression",
+     "reason": "legacy round-2b determinism check needs cached historical worlds that are not part of the Genesis evidence path; historical result unchanged"}
+  ]
+}

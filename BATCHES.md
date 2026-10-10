@@ -29,6 +29,17 @@ session can resume from the latest checkpoint (see `RESUME.md`).
 | 12 | Reproducibility: environment digest, container build, CI workflow, §38 test matrix runner, §43 replication bundle | §38, §43, W07 | Matrix runner green; bundle verifies |
 | 13 | End-to-end integration, smoke under 600 s, honest requirements map, final checkpoint | §31, §40, §48 | Full matrix green |
 
+## Continuation phases (reviewer roadmap, B14 onward)
+
+| # | Phase | Roadmap | Exit |
+|---|---|---|---|
+| 14 | Repair acceptance | W01–W03; R-01/R-02 regressions; certificate custody | Unsupported labels and stale exports rejected (internal red team included); independent review pending |
+| 15 | Independent execution | W04, R-04 | Supported host and mandatory matrix verified on a second machine |
+| 16 | Evaluator readiness | W05–W07 | Custody, fairness and study design independently reviewed |
+
+Later phases (B17–B23+) follow the roadmap and its gates; numbers are labels,
+not estimates.
+
 ## Never done by these batches
 
 - Acting as the independent custodian, auditor or release authority.
