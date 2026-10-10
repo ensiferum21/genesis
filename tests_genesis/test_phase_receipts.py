@@ -152,6 +152,7 @@ class SignedPhases(unittest.TestCase):
                          'decision': 'RELEASE', 'receipt_hash': digest(receipt)}, self.keys['release'][0])
         root = Path(self.tmp.name) / 'fixture_campaign'
         with Store(root) as s:
+            s.save('frozen_request', digest(request), request)
             s.set_state('phase', 'CANDIDATE_FROZEN'); s.set_state('frozen_request_hash', digest(request))
         for dirpath, _, files in os.walk(root):
             os.chown(dirpath, NOBODY, NOBODY)

@@ -12,7 +12,9 @@ from .dsl import baseline_programs
 
 
 def request_bundle(campaign,task_count=300,*,claim_id=None,evidence_kind='sealed_evaluation',
-                   generation_transition=None,transfer_source_domain=None):
+                   generation_transition=None,transfer_source_domain=None,statement=None,scope=None):
+    """Freeze the evaluation request. The claim statement and scope are committed here,
+    before any sealed outcome exists; a claim later bound to this request must use them verbatim."""
     campaign._check_frozen_environment()
     s=campaign.store;program=s.state('latest_program')
     if program is None or s.state('phase')!='CANDIDATE_FROZEN':raise ValueError('completed frozen candidate required')
@@ -24,8 +26,12 @@ def request_bundle(campaign,task_count=300,*,claim_id=None,evidence_kind='sealed
     if not export.exists():export_replication(campaign.root,export,store=s)
     from .common import bytes_hash
     candidate_version=digest(version)
+    statement=statement or (f'frozen candidate {candidate_version[:12]} has a higher paired edge count than the '
+                            f'frozen {strongest_name} baseline on the sealed {campaign.config.domain} panel')
+    scope=scope or f'{campaign.config.domain} hosts in one sealed panel of {task_count} tasks'
     request={'schema':'genesis-evaluation-request-v3','campaign_id':s.state('campaign_id'),
         'claim_id':claim_id or f'utility:{candidate_version[:16]}','evidence_kind':evidence_kind,
+        'statement_hash':digest(statement),'scope':scope,
         'generation_transition':generation_transition,'transfer_source_domain':transfer_source_domain,
         'campaign_export_sha256':bytes_hash(export.read_bytes()),
         'candidate_version':candidate_version,'source_hash':source,
@@ -40,6 +46,7 @@ def request_bundle(campaign,task_count=300,*,claim_id=None,evidence_kind='sealed
     from .custodian import validate_request
     validate_request(request)
     s.save('frozen_request',digest(request),request)
+    s.save('frozen_claim_statement',digest(request),{'claim_id':request['claim_id'],'statement':statement,'scope':scope})
     if s.state('frozen_request_hash') not in (None,digest(request)):raise FileExistsError('a different request is already frozen')
     s.set_state('frozen_request_hash',digest(request))
     path=campaign.root/'exports/evaluation_request.json'
@@ -178,6 +185,8 @@ def main(argv=None):
     elif args.command=='verify-bundle':
         from .release_bundle import verify_bundle
         result=verify_bundle(args.bundle,trust_root=args.trust_root,later_revocations=args.later_revocations)
+        print(json.dumps(result,indent=2,default=str))
+        raise SystemExit(0 if result['ok'] else 1)  # a rejected bundle must fail any exit-code gate
     elif args.command in ('world','artifact','evidence'):
         with Store(args.root) as s:
             if args.command=='world':result=[s.get(h) for (h,) in s.db.execute("SELECT object_hash FROM entities WHERE kind='world'")]

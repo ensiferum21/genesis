@@ -36,6 +36,16 @@ def load_role_registry(trust_root=None):
     for p in (trust_root,trust_root/'root.pub',trust_root/'roles.json'):
         ok,why=_externally_controlled(p,euid)
         if not ok:reasons.append(why)
+    # Every ancestor must also be outside the research account's control, or the trust
+    # directory could be swapped between this check and the read (sticky dirs are fine
+    # because entries owned by another account cannot be renamed there).
+    for parent in Path(os.path.abspath(trust_root)).parents:
+        try:st=parent.stat()
+        except OSError:reasons.append(f'cannot stat trust-root ancestor {parent}');break
+        if parent.is_symlink() or st.st_uid==euid:
+            reasons.append(f'trust-root ancestor {parent} is controlled by the research account');break
+        if os.access(parent,os.W_OK) and not st.st_mode&0o1000:
+            reasons.append(f'trust-root ancestor {parent} is writable by the research account');break
     if reasons:return None,reasons
     root_key=(trust_root/'root.pub').read_text().strip()
     try:

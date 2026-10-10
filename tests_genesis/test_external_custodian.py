@@ -31,6 +31,7 @@ class CustodianTests(unittest.TestCase):
         self.manifest.write_text(json.dumps({'schema':'genesis-exposure-manifest-v1','sources':[]}));self.manifest.chmod(0o600)
         self.request={'schema':'genesis-evaluation-request-v3','campaign_id':'a'*64,'candidate_version':'b'*64,
                       'claim_id':'utility-fixture','evidence_kind':'sealed_evaluation','generation_transition':None,
+                      'statement_hash':'5'*64,'scope':'fixture panel',
                       'transfer_source_domain':None,
                       'campaign_export_sha256':bytes_hash(self.export.read_bytes()),
                       'source_hash':source,'programs':{'baseline':SolverProgram().model_dump(mode='json'),
@@ -61,7 +62,8 @@ class CustodianTests(unittest.TestCase):
         register(self.root,self.request,self.key,'fixture',**self.reg());evaluate(self.root,digest(self.request),self.pool,self.key,'fixture')
         changed=[relabel(t,tuple(reversed(range(t.n)))) for t in self.tasks]
         self.pool.write_bytes(canonical([t.model_dump(mode='json') for t in changed]))
-        self.request['campaign_id']='c'*64;register(self.root,self.request,self.key,'fixture',**self.reg())
+        self.request['campaign_id']='c'*64;self.request['claim_id']='utility-relabelled'
+        register(self.root,self.request,self.key,'fixture',**self.reg())
         with self.assertRaises(Exception):evaluate(self.root,digest(self.request),self.pool,self.key,'fixture')
 
     def test_visible_graph_exposure_blocks_panel(self):
@@ -79,9 +81,15 @@ class CustodianTests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError,'committed at registration'):
             evaluate(self.root,digest(self.request),swapped,self.key,'fixture')
 
+    def test_one_registration_per_claim_slot(self):
+        register(self.root,self.request,self.key,'fixture',**self.reg())
+        again=dict(self.request,seed=43)  # same claim, kind, domain: a second draw for the same claim
+        with self.assertRaisesRegex(ValueError,'already registered'):
+            register(self.root,again,self.key,'fixture',**self.reg())
+
     def test_v2_request_without_claim_binding_refused(self):
         legacy={k:v for k,v in self.request.items() if k not in ('claim_id','evidence_kind','generation_transition',
-                                                               'transfer_source_domain')}
+                                                               'transfer_source_domain','statement_hash','scope')}
         legacy['schema']='genesis-evaluation-request-v2'
         with self.assertRaisesRegex(ValueError,'schema'):register(self.root,legacy,self.key,'fixture',**self.reg())
 

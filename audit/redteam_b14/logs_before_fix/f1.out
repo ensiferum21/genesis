@@ -1,0 +1,8 @@
+honest bundle verify: False ['campaign was produced by different source than the shipped analysis code (acceptable only with a recorded deviation)']
+lying bundle verify ok: True problems: []
+first CLAIMS.json entry for "w": Our solver beats every known solver on every graph family {'causality': 'PLACEBO_CONTROLLED', 'improver': 'MULTIGEN_CONFIRMED', 'math': 'OPTIMALITY_CHECKED', 'novelty': 'EXTERNALLY_CHECKED_NOVEL', 'replication': 'EXTERNAL_REPRODUCTION', 'utility': 'CONFIRMED_TRANSFER'}
+bundled ceiling: {'causality': 'PLACEBO_CONTROLLED', 'improver': 'MULTIGEN_CONFIRMED', 'math': 'OPTIMALITY_CHECKED', 'novelty': 'EXTERNALLY_CHECKED_NOVEL', 'replication': 'EXTERNAL_REPRODUCTION', 'utility': 'CONFIRMED_TRANSFER'}
+report.md lint against bundled ceiling: []
+report.md lint against real ceiling   : 8 violations
+certificates/*.json value now: [999]
+ATTACK_SUCCEEDED

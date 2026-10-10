@@ -1,0 +1,6 @@
+custodian.register accepted request seed=1 for claim_id claim-1
+custodian.register accepted request seed=2 for claim_id claim-1
+same store holds a NOT_SUPPORTED receipt for claim-1 and a SUPPORTED one
+levels: CONFIRMED_SAME_DOMAIN
+exported: CONFIRMED_SAME_DOMAIN | verify ok: True []
+ATTACK_SUCCEEDED

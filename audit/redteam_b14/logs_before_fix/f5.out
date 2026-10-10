@@ -1,0 +1,6 @@
+promote + levels: {'optimum-K5-A': 'OPTIMALITY_CHECKED', 'optimum-K5-B': 'OPTIMALITY_CHECKED'}
+build_index claims table: {'optimum-K5-A': 'OPTIMALITY_CHECKED', 'optimum-K5-B': 'OPTIMALITY_CHECKED'}
+build_bundle shipped (report "This construction is optimal." passed the gate): {'optimum-K5-A': 'OPTIMALITY_CHECKED', 'optimum-K5-B': 'OPTIMALITY_CHECKED'}
+verify_bundle(replay_proofs=False): True
+verify_bundle(replay_proofs=True): ok False ['optimum-K5-A: certificate replay REJECTED: recorded OPTIMALITY_CHECKED does not replay (re', 'optimum-K5-B: certificate replay REJECTED: proof checker verdict REJECTED; recorded OPTIMA']
+ATTACK_SUCCEEDED (producer-side entry points)

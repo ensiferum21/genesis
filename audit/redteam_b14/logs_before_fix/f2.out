@@ -1,0 +1,5 @@
+A after revocation      : UNCHECKED ['verifier:revocable-checker']
+A after re-registration : WITNESS_VALID [] revocation still recorded: ['verifier bug: accepts a 4-cycle']
+A exported effective math: {'c': 'WITNESS_VALID'} | verify ok: True []
+B later feed applied: 1 | downgraded_since_release: [] | current math: {'c': 'WITNESS_VALID'} | ok: True
+ATTACK_SUCCEEDED

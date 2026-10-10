@@ -13,7 +13,7 @@ from cryptography.hazmat.primitives import serialization
 
 from genesis.kernel.evidence import EvidenceKernel, PromotionRejected
 from genesis.kernel.receipts import binding_from_requests
-from tests_genesis.signed_fixtures import SignedFixture, record_evaluation
+from tests_genesis.signed_fixtures import SignedFixture, chain_requests, record_evaluation
 from genesis.kernel.wording import lint, require_clean
 from genesis.store import Store
 
@@ -63,52 +63,66 @@ class MathPromotion(Base):
         self.k.create_claim('two', 'opt 7', 'H', [a, b])
         self.k.promote('two', 'math', 'FINITE_CERTIFIED')
 
-    def bound(self, *, lower=3, upper=3, bundle=None, payload=None, witness_value=None):
+    PATH4 = None
+
+    def path4(self):
         from genesis.common import digest
         from genesis.models import GraphTask
-        from genesis.verification.certificates import build, persist
         task = GraphTask(task_id='path4', n=4, edges=((0, 1), (1, 2), (2, 3)), family='path')
-        sha = digest(task.model_dump(mode='json'))
+        return task, digest(task.model_dump(mode='json'))
+
+    def bound(self, *, lower=3, upper=3, bundle=None, payload=None, sha=None):
+        from genesis.verification.certificates import build, persist
+        task, task_sha = self.path4()
+        sha = sha or task_sha
         if bundle is None:
             b, blobs = build(task, {'lower': 3, 'witness': task.edges, 'upper': 3,
                                     'upper_certificate': {'method': 'HOST_EDGE_COUNT', 'upper': 3}})
             bundle = persist(self.store, b, blobs)
-        w = self.check('witness_check', [self.run], payload={'task_sha256': sha, 'value': witness_value or lower})
+        w = self.check('witness_check', [self.run], payload={'task_sha256': sha, 'value': lower})
         body = payload or {'schema': 'genesis-bound-state-v2', 'task': 'path4', 'task_sha256': sha, 'lower': lower,
                            'upper': upper, 'gap': upper - lower, 'lower_evidence': w, 'certificate_bundle': bundle}
         return self.check('bound_state', [w], payload=body)
 
+    def opt_claim(self, cid, node, value=3, sha=None):
+        self.k.create_claim(cid, 'opt', 'H', [node],
+                            problem={'task_sha256': sha or self.path4()[1], 'value': value})
+
     def test_optimality_needs_gap_zero_and_certificate_custody(self):
-        self.k.create_claim('c', 'opt', 'H', [self.bound(lower=2, upper=3)])
+        self.opt_claim('c', self.bound(lower=2, upper=3))
         self.rejects('c', 'math', 'OPTIMALITY_CHECKED', 'gap is not 0')
-        self.k.create_claim('d', 'opt', 'H', [self.bound()])
+        self.opt_claim('d', self.bound())
         self.k.promote('d', 'math', 'OPTIMALITY_CHECKED')
+        self.k.create_claim('noproblem', 'opt', 'H', [self.bound()])
+        self.rejects('noproblem', 'math', 'OPTIMALITY_CHECKED', 'must name its exact problem')
         # B13-style bound state: numbers and a verifier name, no references.
-        self.k.create_claim('e', 'opt', 'H', [self.check('bound_state', [self.run],
-                                                         payload={'lower': 8, 'upper': 8, 'gap': 0})])
+        self.opt_claim('e', self.check('bound_state', [self.run], payload={'lower': 8, 'upper': 8, 'gap': 0}))
         self.rejects('e', 'math', 'OPTIMALITY_CHECKED', 'lacks certificate custody')
         # A SAT_DRAT bundle whose proof objects are not in the store.
         from genesis.common import digest
+        task, sha = self.path4()
         fake = self.store.put({'schema': 'genesis-certificate-bundle-v1',
-                               'problem': {'domain': 'c4_host_v2', 'task': {'x': 1}, 'task_sha256': digest({'x': 1})},
-                               'lower': {'value': 3, 'witness': []},
+                               'problem': {'domain': 'c4_host_v2', 'task': task.model_dump(mode='json'),
+                                           'task_sha256': sha},
+                               'lower': {'value': 3, 'witness': [list(e) for e in task.edges]},
                                'upper': {'method': 'SAT_DRAT', 'value': 3, 'cnf_sha256': '1' * 64,
                                          'proof_sha256': '2' * 64, 'checker_verdict': 'VALID'},
                                'gap': 0, 'status': 'OPTIMALITY_CHECKED'})
-        self.k.create_claim('f', 'opt', 'H', [self.bound(bundle=fake)])
+        self.opt_claim('f', self.bound(bundle=fake))
         self.rejects('f', 'math', 'OPTIMALITY_CHECKED', 'object missing or altered')
         # A theorem-based bound is recorded but cannot certify optimality.
         from genesis.models import GraphTask
         from genesis.verification.certificates import build, persist
-        task = GraphTask(task_id='path4', n=4, edges=((0, 1), (1, 2), (2, 3)), family='path')
         b, blobs = build(task, {'lower': 3, 'witness': task.edges, 'upper': 3,
                                 'upper_certificate': {'method': 'reiman', 'upper': 3}})
         self.assertEqual(b['upper']['method'], 'HOST_EDGE_COUNT')  # 3 == edge count: trivial bound wins
-        b, blobs = build(GraphTask(task_id='k4', n=4, edges=((0, 1), (0, 2), (0, 3), (1, 2), (1, 3), (2, 3)),
-                                   family='k'), {'lower': 4, 'witness': ((0, 1), (0, 2), (0, 3), (1, 2)), 'upper': 4,
-                                                 'upper_certificate': {'method': 'reiman', 'upper': 4}})
+        k4 = GraphTask(task_id='k4', n=4, edges=((0, 1), (0, 2), (0, 3), (1, 2), (1, 3), (2, 3)), family='k')
+        b, blobs = build(k4, {'lower': 4, 'witness': ((0, 1), (0, 2), (0, 3), (1, 2)), 'upper': 4,
+                              'upper_certificate': {'method': 'reiman', 'upper': 4}})
         self.assertEqual((b['upper']['method'], b['status']), ('THEOREM', 'OPTIMALITY_BY_THEOREM_UNCHECKED'))
-        self.k.create_claim('g', 'opt', 'H', [self.bound(bundle=persist(self.store, b, blobs), lower=4, upper=4)])
+        k4sha = digest(k4.model_dump(mode='json'))
+        self.opt_claim('g', self.bound(bundle=persist(self.store, b, blobs), lower=4, upper=4, sha=k4sha),
+                       value=4, sha=k4sha)
         self.rejects('g', 'math', 'OPTIMALITY_CHECKED', 'not independently certified')
 
     def test_approximate_and_self_judged_dependencies_rejected(self):
@@ -152,7 +166,7 @@ class Confirmation(Base):
     def test_no_external_role_registry_means_no_confirmation(self):
         node, request = self.sealed()
         production = EvidenceKernel(self.store)  # trust root absent / research account is root here
-        production.create_claim('claim-1', 'better solver', 'graph wedge', [node],
+        production.create_claim('claim-1', SignedFixture.STATEMENT, SignedFixture.SCOPE, [node],
                                 binding=binding_from_requests([request]))
         with self.assertRaises(PromotionRejected) as ctx:
             production.promote('claim-1', 'utility', 'CONFIRMED_SAME_DOMAIN')
@@ -160,7 +174,7 @@ class Confirmation(Base):
 
     def test_externally_signed_eligible_evaluation_confirms(self):
         node, request = self.sealed()
-        self.k.create_claim('claim-1', 'better solver', 'graph wedge', [node], binding=binding_from_requests([request]))
+        self.k.create_claim('claim-1', SignedFixture.STATEMENT, SignedFixture.SCOPE, [node], binding=binding_from_requests([request]))
         decision = self.k.promote('claim-1', 'utility', 'CONFIRMED_SAME_DOMAIN')
         self.assertEqual(decision['registry'], 'FIXTURE')
         self.assertEqual(len(decision['evaluations']), 1)
@@ -170,7 +184,7 @@ class Confirmation(Base):
                                       ('legacy', 'legacy_batch42.sealed_benchmark', 'ineligible')):
             request = self.fx.request(claim_id=name)
             node, _ = self.sealed(request, route=route)
-            self.k.create_claim(name, 'x', 's', [node], binding=binding_from_requests([request]))
+            self.k.create_claim(name, SignedFixture.STATEMENT, SignedFixture.SCOPE, [node], binding=binding_from_requests([request]))
             self.rejects(name, 'utility', 'CONFIRMED_SAME_DOMAIN', fragment)
         request = self.fx.request(claim_id='nobinding')
         node, _ = self.sealed(request)
@@ -182,24 +196,20 @@ class Confirmation(Base):
                              effects=['TOUCHED_SEALED_SET'])
         request = self.fx.request(claim_id='leak')
         _, node = record_evaluation(self.k, self.fx, request, [self.run, leak])
-        self.k.create_claim('leak', 'x', 's', [node], binding=binding_from_requests([request]))
+        self.k.create_claim('leak', SignedFixture.STATEMENT, SignedFixture.SCOPE, [node], binding=binding_from_requests([request]))
         self.rejects('leak', 'utility', 'CONFIRMED_SAME_DOMAIN', 'contaminated')
 
     def test_multigeneration_needs_three_signed_generations_and_no_manual_rescue(self):
-        versions = ['1' * 64, '2' * 64, '3' * 64, '4' * 64]
-        requests = [self.fx.request(claim_id='multigen', kind='sealed_generation_evaluation', candidate=versions[i + 1],
-                                    transition={'index': i + 1, 'from_version': versions[i],
-                                                'to_version': versions[i + 1]}, seed=i)
-                    for i in range(3)]
+        requests = chain_requests(self.fx, 'multigen', 3)
         nodes = [record_evaluation(self.k, self.fx, r, [self.run])[1] for r in requests]
         binding = binding_from_requests(requests)
-        self.k.create_claim('multigen', 'multigen', 's', nodes, binding=binding)
+        self.k.create_claim('multigen', SignedFixture.STATEMENT, SignedFixture.SCOPE, nodes, binding=binding)
         self.k.promote('multigen', 'improver', 'MULTIGEN_CONFIRMED')
         manual = self.k.record('note', {'rescue': True}, route='genesis.campaign', source_hash=SRC,
                                effects=['MANUAL_INTERVENTION'])
-        self.k.create_claim('rescued', 'multigen', 's', nodes + [manual], binding=binding)
+        self.k.create_claim('rescued', SignedFixture.STATEMENT, SignedFixture.SCOPE, nodes + [manual], binding=binding)
         self.rejects('rescued', 'improver', 'MULTIGEN_CONFIRMED', 'manual intervention')
-        self.k.create_claim('two', 'multigen', 's', nodes[:2], binding=binding_from_requests(requests[:2]))
+        self.k.create_claim('two', SignedFixture.STATEMENT, SignedFixture.SCOPE, nodes[:2], binding=binding_from_requests(requests[:2]))
         self.rejects('two', 'improver', 'MULTIGEN_CONFIRMED', 'needs 3 consecutive')
 
 

@@ -1,0 +1,6 @@
+kernel levels: {'revoked': 'UNCHECKED', 'forged': 'NOT_TESTED'}
+index claims  : {'forged': ('UNCHECKED', 'NOT_TESTED'), 'revoked': ('UNCHECKED', 'NOT_TESTED')}
+index evidence: [('revoked', 'math', 'WITNESS_VALID'), ('revoked', 'math', 'WITNESS_VALID'), ('forged', 'utility', 'CONFIRMED_TRANSFER')]
+index campaigns: [('campaign-1', 'RELEASED')]
+CLAIMS.json forged historical: CONFIRMED_TRANSFER [{'at': '2026-10-10T11:33:16.617384+00:00', 'axis': 'utility', 'decision': 'ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff', 'level': 'CONFIRMED_TRANSFER', 'registry': 'external-board'}]
+verify ok: True []

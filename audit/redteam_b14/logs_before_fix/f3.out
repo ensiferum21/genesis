@@ -1,0 +1,5 @@
+promoted with registry root 07a61943ae28 evaluations ['70b2aa5c9c244456d2c2325316b9745dd3c0d40e11731ee74d66dd6b7d86af40']
+after revoke_evaluation: levels EXTERNALLY_CHECKED_NOVEL | invalidation [] | revocations [('evaluation', '70b2aa5c9c24')]
+exported after revocation: EXTERNALLY_CHECKED_NOVEL | verify ok: True []
+older release + later feed: applied 1 | downgraded_since_release [] | current novelty EXTERNALLY_CHECKED_NOVEL
+ATTACK_SUCCEEDED

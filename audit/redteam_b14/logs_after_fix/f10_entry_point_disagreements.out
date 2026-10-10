@@ -1,0 +1,13 @@
+Traceback (most recent call last):
+  File "/home/claude/genesis/audit/redteam_b14/f10_entry_point_disagreements.py", line 109, in <module>
+    parent()
+    ~~~~~~^^
+  File "/home/claude/genesis/audit/redteam_b14/f10_entry_point_disagreements.py", line 68, in parent
+    'revoked_source': bundle(keys, 'claim-a', 'sealed_evaluation', REVOKED, 'custodian'),
+                      ~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/claude/genesis/audit/redteam_b14/f10_entry_point_disagreements.py", line 40, in bundle
+    validate_request(req)
+    ~~~~~~~~~~~~~~~~^^^^^
+  File "/home/claude/genesis/src/genesis/custodian.py", line 42, in validate_request
+    raise ValueError('evaluation request schema')
+ValueError: evaluation request schema

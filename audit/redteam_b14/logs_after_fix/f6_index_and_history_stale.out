@@ -1,0 +1,11 @@
+kernel levels: {'revoked': 'UNCHECKED', 'forged': 'NOT_TESTED'}
+index claims  : {'forged': ('UNCHECKED', 'NOT_TESTED'), 'revoked': ('UNCHECKED', 'NOT_TESTED')}
+index evidence: []
+index campaigns: [('campaign-1', 'UNVERIFIED(recorded=RELEASED, verified=CREATED)')]
+Traceback (most recent call last):
+  File "/home/claude/genesis/audit/redteam_b14/f6_index_and_history_stale.py", line 55, in <module>
+    build_bundle(root, d / 'release.zip')
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/claude/genesis/src/genesis/release_bundle.py", line 155, in build_bundle
+    raise ValueError('report exceeds the current effective evidence: ' + '; '.join(problems[:5]))
+ValueError: report exceeds the current effective evidence: claim forged statement: 'transfers' (generalisation/transfer needs confirmed transfer)

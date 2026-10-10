@@ -1,0 +1,7 @@
+Traceback (most recent call last):
+  File "/home/claude/genesis/audit/redteam_b14/f9_optimality_problem_unbound.py", line 47, in <module>
+    k.promote('optimum:K6:3', 'math', 'OPTIMALITY_CHECKED')
+    ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/claude/genesis/src/genesis/kernel/evidence.py", line 511, in promote
+    raise PromotionRejected(reasons)
+genesis.kernel.evidence.PromotionRejected: ['bound_state ce5233e82d6e: lower evidence is not a passing witness check of this value on this problem', 'an optimality claim must name its exact problem (create_claim(..., problem=...))']

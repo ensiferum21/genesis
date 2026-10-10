@@ -1,0 +1,10 @@
+Traceback (most recent call last):
+  File "/home/claude/genesis/audit/redteam_b14/f5_optimality_on_custody_only.py", line 70, in <module>
+    claims = [certify(s, k, v) for v in ('A', 'B')]
+              ~~~~~~~^^^^^^^^^
+  File "/home/claude/genesis/audit/redteam_b14/f5_optimality_on_custody_only.py", line 61, in certify
+    k.promote(claim, 'math', 'OPTIMALITY_CHECKED')
+    ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/claude/genesis/src/genesis/kernel/evidence.py", line 511, in promote
+    raise PromotionRejected(reasons)
+genesis.kernel.evidence.PromotionRejected: ['bound_state 12210d3013ac: certificate does not replay (REJECTED: recorded OPTIMALITY_CHECKED does not replay (replayed REJECTED))', 'an optimality claim must name its exact problem (create_claim(..., problem=...))']

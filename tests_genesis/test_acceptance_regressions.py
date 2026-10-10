@@ -16,7 +16,7 @@ from genesis.common import digest
 from genesis.kernel import receipts as R
 from genesis.kernel.evidence import FLOOR, EvidenceKernel, PromotionRejected
 from genesis.store import Store
-from tests_genesis.signed_fixtures import SignedFixture, record_evaluation
+from tests_genesis.signed_fixtures import SignedFixture, chain_requests, record_evaluation
 
 SRC = 'c' * 64
 
@@ -30,8 +30,8 @@ class Base(unittest.TestCase):
         self.run = self.k.record('execution_receipt', {'status': 'SUCCESS'}, route='genesis.campaign',
                                  source_hash=SRC, verdict='VALID', effects=['UNCHECKED_PROPOSAL'])
 
-    def claim(self, claim_id, nodes, requests, statement='candidate beats baseline'):
-        self.k.create_claim(claim_id, statement, 'c4_host_v2 sealed panel', nodes,
+    def claim(self, claim_id, nodes, requests):
+        self.k.create_claim(claim_id, SignedFixture.STATEMENT, SignedFixture.SCOPE, nodes,
                             binding=R.binding_from_requests(requests))
 
     def rejects(self, claim_id, fragment, axis='utility', level='CONFIRMED_SAME_DOMAIN'):
@@ -63,12 +63,11 @@ class ReproducedAttacks(Base):
         # Current wrapper shape: the trusted role map demands the custodian key.
         wrapped = self.k.record_signed('sealed_evaluation', note, parents=[self.run, a],
                                        route='genesis.custodian.evaluate', source_hash=SRC)
-        self.k.create_claim('claim-1b', 'x', 's', [wrapped], binding=R.binding_from_requests([request]))
+        self.k.create_claim('claim-1b', SignedFixture.STATEMENT, SignedFixture.SCOPE, [wrapped], binding=R.binding_from_requests([request]))
         self.rejects('claim-1b', 'signature does not verify under the pinned custodian_key')
 
     def test_r01b_one_envelope_in_three_wrapper_nodes_is_one_generation(self):
-        request = self.fx.request(claim_id='multigen', kind='sealed_generation_evaluation', candidate='2' * 64,
-                                  transition={'index': 1, 'from_version': '1' * 64, 'to_version': '2' * 64})
+        request = chain_requests(self.fx, 'multigen', 1)[0]
         anchor = self.fx.anchor(request)
         receipt = self.fx.receipt(request, anchor)
         a = self.k.record_signed('preregistration_anchor', anchor, route='genesis.custodian.evaluate', source_hash=SRC)
@@ -121,7 +120,7 @@ class AuthenticAndForged(Base):
         self.claim('claim-A', [node], [request])
         self.k.promote('claim-A', 'utility', 'CONFIRMED_SAME_DOMAIN')
         other = self.fx.request(claim_id='claim-B')
-        self.k.create_claim('claim-B', 'another claim', 's', [node], binding=R.binding_from_requests([other]))
+        self.k.create_claim('claim-B', SignedFixture.STATEMENT, SignedFixture.SCOPE, [node], binding=R.binding_from_requests([other]))
         joined = self.rejects('claim-B', 'different claim')
         self.assertIn('not for a preregistered request', joined)
 
@@ -139,24 +138,18 @@ class AuthenticAndForged(Base):
                                            route='genesis.custodian.evaluate', source_hash=SRC)
         transfer_request = self.fx.request(kind='sealed_transfer_evaluation', domain='triangle_free_host_v1',
                                            transfer='c4_host_v2')
-        self.k.create_claim('claim-1', 'x', 's', [as_transfer], binding=R.binding_from_requests([transfer_request]))
+        self.k.create_claim('claim-1', SignedFixture.STATEMENT, SignedFixture.SCOPE, [as_transfer], binding=R.binding_from_requests([transfer_request]))
         self.rejects('claim-1', "evidence kind 'sealed_evaluation'", level='CONFIRMED_TRANSFER')
 
     def test_duplicate_generation_transitions(self):
-        v = ['1' * 64, '2' * 64, '3' * 64, '4' * 64]
-        reqs = [self.fx.request(claim_id='mg', kind='sealed_generation_evaluation', candidate=v[i + 1], seed=i,
-                                transition={'index': i + 1, 'from_version': v[i], 'to_version': v[i + 1]})
-                for i in range(3)]
+        reqs = chain_requests(self.fx, 'mg', 3)
         # A second, different evaluation of transition 2 makes the chain ambiguous.
-        dup = self.fx.request(claim_id='mg', kind='sealed_generation_evaluation', candidate=v[2], seed=99,
-                              transition={'index': 2, 'from_version': v[1], 'to_version': v[2]})
+        dup = dict(reqs[1], seed=99)
         nodes = [record_evaluation(self.k, self.fx, r, [self.run])[1] for r in reqs + [dup]]
         self.claim('mg', nodes, reqs + [dup])
         self.rejects('mg', 'consecutive', axis='improver', level='MULTIGEN_CONFIRMED')
         # Out-of-order indices do not form a chain either.
-        bad = [self.fx.request(claim_id='mg2', kind='sealed_generation_evaluation', candidate=v[i + 1], seed=10 + i,
-                               transition={'index': [1, 3, 2][i], 'from_version': v[i], 'to_version': v[i + 1]})
-               for i in range(3)]
+        bad = chain_requests(self.fx, 'mg2', 3, seed=10, index_order=[1, 3, 2])
         nodes = [record_evaluation(self.k, self.fx, r, [self.run])[1] for r in bad]
         self.claim('mg2', nodes, bad)
         self.rejects('mg2', 'consecutive', axis='improver', level='MULTIGEN_CONFIRMED')
@@ -298,9 +291,9 @@ class SharedSemantics(unittest.TestCase):
         import inspect
         from genesis import custodian
         from genesis.kernel import phases
-        for module, names in ((phases, ('check_receipt', 'check_anchor', 'anchor_mismatches')),
-                              (custodian, ('open_signed', 'anchor_mismatches', 'derive_outcome', 'check_receipt',
-                                           'check_anchor'))):
+        for module, names in ((phases, ('accept_receipt', 'anchor_mismatches', 'registration_slot')),
+                              (custodian, ('accept_receipt', 'anchor_mismatches', 'derive_outcome', 'check_receipt',
+                                           'check_anchor', 'registration_slot'))):
             src = inspect.getsource(module)
             for name in names:
                 self.assertIn(f'R.{name}(', src, (module.__name__, name))

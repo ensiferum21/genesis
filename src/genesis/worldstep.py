@@ -265,7 +265,7 @@ class ResearchLoop:
                                   verifier='dual-predicates')
             claim = f'lower:{task.task_id}:{lower}'
             self.k.create_claim(claim, f'host {task.task_id} has a valid subgraph with {lower} edges',
-                                'this finite host only', [check])
+                                'this finite host only', [check], problem={'task_sha256': task_sha, 'value': lower})
             self.k.promote(claim, 'math', 'WITNESS_VALID')
             state.update(lower=lower, witness_node=check); improved = True
         if certified and (upper < state['upper'] or (upper == lower and state['status'] != 'OPTIMALITY_CHECKED')):
@@ -287,7 +287,8 @@ class ResearchLoop:
                 if upper == state['lower']:
                     claim = f'optimum:{task.task_id}:{upper}'
                     self.k.create_claim(claim, f'the optimum for host {task.task_id} is {upper}',
-                                        'this finite host only', [bound])
+                                        'this finite host only', [bound],
+                                        problem={'task_sha256': task_sha, 'value': upper})
                     try:
                         self.k.promote(claim, 'math', 'OPTIMALITY_CHECKED')
                         state['status'] = 'OPTIMALITY_CHECKED'

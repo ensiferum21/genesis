@@ -1,0 +1,3 @@
+revoked_source: preflight=EXTERNAL_RELEASE_REVIEW_READY [] | kernel CONFIRMED_SAME_DOMAIN: REJECTED: sealed_evaluation e84ffc2b7d33 does not support claim claim-a: revoked source: accepted checkpoint archive gap
+custodian_reproduction: preflight=BLOCKED ['signature does not verify under the pinned replicator_key (InvalidSignature)'] | kernel EXTERNAL_REPRODUCTION: REJECTED: external_reproduction a5345ffb1bb3 rejected: signature does not verify under the pinned replicator_key (Invali
+phases with a custodian-signed external_reproduction receipt reached: RELEASED

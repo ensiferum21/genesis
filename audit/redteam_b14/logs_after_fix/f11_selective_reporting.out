@@ -1,0 +1,13 @@
+Traceback (most recent call last):
+  File "/home/claude/genesis/audit/redteam_b14/f11_selective_reporting.py", line 116, in <module>
+    parent()
+    ~~~~~~^^
+  File "/home/claude/genesis/audit/redteam_b14/f11_selective_reporting.py", line 63, in parent
+    anchor = register(private, req, keys['prereg'][0], 'custodian-op', exposure_manifest=manifest,
+                      campaign_export=export, pool=pool_path)               # the real custodian call
+  File "/home/claude/genesis/src/genesis/custodian.py", line 117, in register
+    root=_private_root(private_root);validate_request(request);rid=digest(request)
+                                     ~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "/home/claude/genesis/src/genesis/custodian.py", line 42, in validate_request
+    raise ValueError('evaluation request schema')
+ValueError: evaluation request schema

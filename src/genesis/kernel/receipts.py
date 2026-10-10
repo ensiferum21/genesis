@@ -26,6 +26,9 @@ an independent operator is outside what code can establish.
 """
 from datetime import datetime
 
+import base64
+
+from .. import eligibility
 from ..common import digest
 from .stats import sign_test
 from .signing import verify
@@ -65,22 +68,23 @@ DOMAINS = {
 ANALYSIS_V1 = {'primary': 'paired-edge-count', 'alpha': 0.05, 'family_sensitivity': True, 'hypotheses': 1}
 
 RECEIPT_FIELDS = frozenset({
-    'schema', 'evidence_kind', 'claim_id', 'campaign_id', 'request_hash', 'anchor_hash',
-    'candidate_version', 'baseline_version', 'source_hash', 'evaluator_hash', 'analysis',
+    'schema', 'evidence_kind', 'claim_id', 'statement_hash', 'scope', 'campaign_id', 'request_hash', 'anchor_hash',
+    'candidate_version', 'candidate_program_hash', 'baseline_version', 'source_hash', 'evaluator_hash', 'analysis',
     'domain', 'domain_contract_hash', 'transfer_source_domain', 'generation_transition',
     'panel_commitment', 'task_count', 'raw_evidence_root', 'raw_evidence_complete',
     'expected_rows', 'completed_rows', 'execution_failures', 'wins', 'losses', 'ties',
     'paired_p', 'family_p', 'outcome', 'operator_id', 'registered_at', 'completed_at',
     'screen', 'independence'})
 ANCHOR_FIELDS = frozenset({
-    'schema', 'request_hash', 'claim_id', 'evidence_kind', 'registered_at', 'operator_id',
-    'exposure_registry_root', 'exposure_graphs', 'declaration_unscreenable_graphs', 'panel_commitment'})
+    'schema', 'request_hash', 'claim_id', 'statement_hash', 'scope', 'evidence_kind', 'registration_slot',
+    'registered_at', 'operator_id', 'exposure_registry_root', 'exposure_graphs', 'declaration_unscreenable_graphs',
+    'panel_commitment'})
 PRIORITY_FIELDS = frozenset({
     'schema', 'evidence_kind', 'claim_id', 'statement_hash', 'scope', 'reviewer_id',
     'search_record_root', 'decided_at', 'outcome'})
 BINDING_FIELDS = frozenset({
-    'schema', 'campaign_id', 'candidate_version', 'baseline_versions', 'domains', 'request_hashes',
-    'evaluator_hash', 'source_hashes'})
+    'schema', 'campaign_id', 'statement_hash', 'scope', 'candidate_version', 'baseline_versions', 'domains',
+    'request_hashes', 'evaluator_hash', 'source_hashes'})
 
 
 def hex64(h):
@@ -101,6 +105,23 @@ def _time(x):
     except (TypeError, ValueError):
         return None
     return t if t.tzinfo is not None else None
+
+
+def normalize_key(public_key_b64):
+    """Canonical base64 of a raw Ed25519 public key (revocation compares keys, not strings)."""
+    try:
+        raw = base64.b64decode(public_key_b64, validate=True)
+    except Exception:
+        return None
+    return base64.b64encode(raw).decode() if len(raw) == 32 else None
+
+
+def registration_slot(request):
+    """One preregistration per slot: a claim cannot be evaluated again until a lucky result appears."""
+    t = request.get('generation_transition')
+    return digest({'claim_id': request['claim_id'], 'evidence_kind': request['evidence_kind'],
+                   'domain': request['domain'], 'transfer_source_domain': request.get('transfer_source_domain'),
+                   'generation_index': t.get('index') if isinstance(t, dict) else None})
 
 
 def domain_contract_hash(domain):
@@ -165,10 +186,11 @@ def check_receipt(p, kind):
     out = []
     if p['evidence_kind'] != kind or kind not in EVALUATION_KINDS:
         out.append(f'receipt is for evidence kind {p["evidence_kind"]!r}, not {kind!r}')
-    if not _claim_id_ok(p['claim_id']):
-        out.append('claim_id')
-    for k in ('campaign_id', 'request_hash', 'anchor_hash', 'candidate_version', 'baseline_version', 'source_hash',
-              'evaluator_hash', 'domain_contract_hash', 'panel_commitment', 'raw_evidence_root'):
+    if not _claim_id_ok(p['claim_id']) or not isinstance(p['scope'], str) or not p['scope']:
+        out.append('claim_id/scope')
+    for k in ('campaign_id', 'request_hash', 'anchor_hash', 'candidate_version', 'candidate_program_hash',
+              'baseline_version', 'source_hash', 'statement_hash', 'evaluator_hash', 'domain_contract_hash',
+              'panel_commitment', 'raw_evidence_root'):
         if not hex64(p[k]):
             out.append(f'{k} is not a sha256 identity')
     if p['domain'] not in DOMAINS:
@@ -179,6 +201,8 @@ def check_receipt(p, kind):
         out.append('unregistered analysis')
     out += _kind_extras(kind, p['domain'], p['transfer_source_domain'], p['generation_transition'],
                         p['candidate_version'])
+    if p['candidate_program_hash'] == p['baseline_version']:
+        out.append('candidate and baseline are the same program')
     if not all(_nat(p[k]) for k in ('task_count', 'expected_rows', 'completed_rows', 'execution_failures',
                                     'wins', 'losses', 'ties')) or p['task_count'] < 1:
         out.append('malformed counts')
@@ -206,10 +230,11 @@ def check_anchor(p):
     if set(p) != ANCHOR_FIELDS:
         return ['anchor fields differ']
     out = []
-    for k in ('request_hash', 'exposure_registry_root', 'panel_commitment'):
+    for k in ('request_hash', 'exposure_registry_root', 'panel_commitment', 'statement_hash', 'registration_slot'):
         if not hex64(p[k]):
             out.append(f'anchor {k}')
-    if not _claim_id_ok(p['claim_id']) or p['evidence_kind'] not in EVALUATION_KINDS:
+    if not _claim_id_ok(p['claim_id']) or p['evidence_kind'] not in EVALUATION_KINDS \
+            or not isinstance(p['scope'], str) or not p['scope']:
         out.append('anchor claim binding')
     if _time(p['registered_at']) is None:
         out.append('anchor time')
@@ -237,10 +262,16 @@ def check_priority(p):
 
 
 def check_request(r):
-    """Kind-related part of a v3 evaluation request (the custodian checks the rest)."""
+    """Claim/kind part of a v3 evaluation request (the custodian checks the rest)."""
     out = []
     if not _claim_id_ok(r.get('claim_id')):
         out.append('claim_id')
+    if not hex64(r.get('statement_hash')) or not isinstance(r.get('scope'), str) or not r.get('scope'):
+        out.append('a request must commit to the claim statement (statement_hash) and scope before evaluation')
+    programs = r.get('programs')
+    if isinstance(programs, dict) and 'candidate' in programs and 'baseline' in programs \
+            and digest(programs['candidate']) == digest(programs['baseline']):
+        out.append('candidate and baseline are the same program')
     if r.get('evidence_kind') not in EVALUATION_KINDS:
         out.append('evidence_kind')
     else:
@@ -250,9 +281,14 @@ def check_request(r):
 
 
 def evaluation_identity(p):
-    if p.get('schema') == PRIORITY_ADJUDICATION:
+    """Identity of one evaluation or adjudication; None if the payload has neither shape."""
+    if not isinstance(p, dict):
+        return None
+    if p.get('schema') == PRIORITY_ADJUDICATION and 'search_record_root' in p and 'claim_id' in p:
         return digest({'priority': p['search_record_root'], 'claim': p['claim_id']})
-    return digest({'panel': p['panel_commitment'], 'raw': p['raw_evidence_root']})
+    if 'panel_commitment' in p and 'raw_evidence_root' in p:
+        return digest({'panel': p['panel_commitment'], 'raw': p['raw_evidence_root']})
+    return None
 
 
 def wrap(envelope):
@@ -284,8 +320,8 @@ def open_signed(node_payload, kind, pins, *, revoked_keys=()):
     key = (pins or {}).get(role)
     if not key:
         return None, [f'role {role} is not pinned in the trust registry']
-    if key in set(revoked_keys):
-        return None, [f'the pinned {role} key is revoked']
+    if normalize_key(key) is None or normalize_key(key) in {normalize_key(k) for k in revoked_keys}:
+        return None, [f'the pinned {role} key is revoked or malformed']
     try:
         payload = verify(node_payload['envelope'], key)
     except Exception as exc:
@@ -296,6 +332,10 @@ def open_signed(node_payload, kind, pins, *, revoked_keys=()):
         problems = check_priority(payload)
     else:
         problems = check_receipt(payload, kind)
+        if not problems:
+            ok, why = eligibility.source_status(payload['source_hash'])
+            if not ok:
+                problems = [why]
     return (payload if not problems else None), problems
 
 
@@ -305,9 +345,11 @@ def check_binding(b):
     if not isinstance(b, dict) or b.get('schema') != CLAIM_BINDING or set(b) != BINDING_FIELDS:
         return ['claim binding schema']
     out = []
-    for k in ('campaign_id', 'candidate_version', 'evaluator_hash'):
+    for k in ('campaign_id', 'candidate_version', 'evaluator_hash', 'statement_hash'):
         if not hex64(b[k]):
             out.append(f'binding {k}')
+    if not isinstance(b['scope'], str) or not b['scope']:
+        out.append('binding scope')
     for k in ('baseline_versions', 'request_hashes', 'source_hashes'):
         v = b[k]
         if not isinstance(v, list) or not v or v != sorted(set(v)) or not all(hex64(h) for h in v):
@@ -330,10 +372,10 @@ def binding_from_requests(requests):
         problems = check_request(r)
         if problems:
             raise ValueError('request binding: ' + '; '.join(problems))
-    claims = {r['claim_id'] for r in requests}
-    if len(claims) != 1 or len({r['campaign_id'] for r in requests}) != 1 \
-            or len({r['expected_evaluator_hash'] for r in requests}) != 1:
-        raise ValueError('requests disagree on claim, campaign or evaluator')
+    keys = {(r['claim_id'], r['campaign_id'], r['expected_evaluator_hash'], r['statement_hash'], r['scope'])
+            for r in requests}
+    if len(keys) != 1:
+        raise ValueError('requests disagree on claim, statement, scope, campaign or evaluator')
     chain = [r for r in requests if r['evidence_kind'] == 'sealed_generation_evaluation']
     if chain:
         final = max(chain, key=lambda r: r['generation_transition']['index'])['candidate_version']
@@ -347,7 +389,8 @@ def binding_from_requests(requests):
         for d in (r['domain'], r.get('transfer_source_domain')):
             if d is not None:
                 domains[d] = domain_contract_hash(d)
-    b = {'schema': CLAIM_BINDING, 'campaign_id': requests[0]['campaign_id'], 'candidate_version': final,
+    b = {'schema': CLAIM_BINDING, 'campaign_id': requests[0]['campaign_id'],
+         'statement_hash': requests[0]['statement_hash'], 'scope': requests[0]['scope'], 'candidate_version': final,
          'baseline_versions': sorted({digest(r['programs']['baseline']) for r in requests}),
          'domains': domains, 'request_hashes': sorted({digest(r) for r in requests}),
          'evaluator_hash': requests[0]['expected_evaluator_hash'],
@@ -363,6 +406,8 @@ def binding_mismatches(p, claim_id, binding, kind):
     out = []
     if p['claim_id'] != claim_id:
         out.append('receipt is bound to a different claim')
+    if p['statement_hash'] != binding['statement_hash'] or p['scope'] != binding['scope']:
+        out.append('receipt was registered for a different claim statement or scope')
     if p['campaign_id'] != binding['campaign_id']:
         out.append('receipt is bound to a different campaign')
     if p['evaluator_hash'] != binding['evaluator_hash']:
@@ -390,32 +435,47 @@ def anchor_mismatches(receipt, anchor_payload, anchor_envelope):
         out.append('anchor registers a different request')
     if anchor_payload['panel_commitment'] != receipt['panel_commitment']:
         out.append('receipt panel differs from the preregistered panel commitment')
-    if anchor_payload['claim_id'] != receipt['claim_id'] or anchor_payload['evidence_kind'] != receipt['evidence_kind']:
-        out.append('anchor registers a different claim or evidence kind')
+    if any(anchor_payload[k] != receipt[k] for k in ('claim_id', 'evidence_kind', 'statement_hash', 'scope')):
+        out.append('anchor registers a different claim, statement, scope or evidence kind')
     if anchor_payload['registered_at'] != receipt['registered_at']:
         out.append('receipt chronology does not match the anchor')
     return out
 
 
 def generation_chain(receipts, final_version):
-    """Longest chain of consecutive transitions ending at `final_version`.
+    """Longest valid chain of successor transitions ending at `final_version`.
 
-    Each link is (from_version -> to_version, index); index decreases by one
-    walking backwards and every link uses a distinct evaluation.
+    Walking backwards from the final version, each earlier link must have the
+    index one lower, end where the later link starts, and its candidate program
+    must be the later link's baseline (each successor beat its predecessor).
+    Versions and programs may not repeat (no cycles), and an ambiguous step
+    (two different receipts for the same transition) ends the chain.
     """
     by_to = {}
     for p in receipts:
-        t = p['generation_transition']
-        by_to.setdefault(t['to_version'], []).append(p)
-    chain, version, seen = [], final_version, set()
+        by_to.setdefault(p['generation_transition']['to_version'], []).append(p)
+    chain, version = [], final_version
+    seen_versions, seen_programs = {final_version}, set()
     while version in by_to:
-        options = [p for p in by_to[version] if evaluation_identity(p) not in seen
-                   and (not chain or p['generation_transition']['index'] == chain[-1]['generation_transition']['index'] - 1)]
+        later = chain[-1] if chain else None
+        options = [p for p in by_to[version]
+                   if (later is None or (p['generation_transition']['index'] == later['generation_transition']['index'] - 1
+                                         and p['candidate_program_hash'] == later['baseline_version']))]
         if len(options) != 1:
-            break  # zero, or ambiguous duplicates for the same transition
-        p = options[0]
-        chain.append(p); seen.add(evaluation_identity(p))
-        version = p['generation_transition']['from_version']
-        if version == final_version:
             break
+        p = options[0]
+        start = p['generation_transition']['from_version']
+        if start in seen_versions or p['candidate_program_hash'] in seen_programs \
+                or p['baseline_version'] in seen_programs | {p['candidate_program_hash']}:
+            break  # a cycle in versions or programs is not a lineage
+        chain.append(p)
+        seen_versions.add(start); seen_programs.add(p['candidate_program_hash'])
+        version = start
     return chain
+
+
+def accept_receipt(envelope, kind, pins, *, revoked_keys=()):
+    """Single acceptance function for entry points that hold a bare envelope
+    (phase machine, preflight): trusted role for the kind, strict schema,
+    signed-outcome consistency and source eligibility. Returns (payload|None, problems)."""
+    return open_signed(wrap(envelope), kind, pins, revoked_keys=revoked_keys)

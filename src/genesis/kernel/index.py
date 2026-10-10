@@ -45,7 +45,7 @@ def build_index(store, destination, *, trust_root=None):
         db.executescript(TABLES)
         get = store.get
         from .anchors import pinned_tool_anchors
-        from .evidence import EvidenceKernel
+        from .evidence import FLOOR, EvidenceKernel, _Context
         kernel = EvidenceKernel(store, anchors=pinned_tool_anchors(), trust_root=trust_root)
 
         def entities(kind):
@@ -55,8 +55,12 @@ def build_index(store, destination, *, trust_root=None):
         config = next((v for k, h, v in entities('config')), None)
         cid = store.state('campaign_id')
         if cid:
+            from .phases import verified_phase
+            phase = verified_phase(store, trust_root=trust_root)  # never the mutable phase state alone
+            status = phase['phase'] if phase['consistent'] else f"UNVERIFIED(recorded={phase['recorded_phase']}, " \
+                                                                f"verified={phase['phase']})"
             db.execute('INSERT INTO campaigns VALUES (?,?,?,?)',
-                       (cid, digest(config) if config else None, (config or {}).get('profile'), store.state('phase')))
+                       (cid, digest(config) if config else None, (config or {}).get('profile'), status))
         for vid, h, v in entities('system_version'):
             db.execute('INSERT INTO system_versions VALUES (?,?,?,?,?,?,?)',
                        (vid, json.dumps([v.get('parent')] if v.get('parent') else []),
@@ -100,10 +104,18 @@ def build_index(store, destination, *, trust_root=None):
             # Effective (revocation-aware, re-derived) levels, never the stored grant (R-02).
             db.execute('INSERT INTO claims VALUES (?,?,?,?)',
                        (claim_id, claim['statement'], claim['scope'], json.dumps(kernel.levels(claim_id))))
-        for pid, h, decision in entities('promotion'):
-            for dep in decision['dependencies']:
-                db.execute('INSERT INTO evidence VALUES (?,?,?,?,?)',
-                           (decision['claim'], dep, decision['axis'], decision['level'], pid))
+        # Evidence rows describe what currently licenses each effective level, re-derived now;
+        # producer-recorded promotion decisions are not copied in as if they were current.
+        for claim_id, h, claim in entities('claim'):
+            levels = kernel.levels(claim_id)
+            if levels.get('invalidated'):
+                continue
+            for axis, level in levels.items():
+                if axis == 'invalidated' or level == FLOOR[axis]:
+                    continue
+                _, used = kernel._licensing(claim, axis, level, _Context(kernel))
+                for dep in sorted(used['nodes']):
+                    db.execute('INSERT INTO evidence VALUES (?,?,?,?,?)', (claim_id, dep, axis, level, 'EFFECTIVE'))
         for wid, h, world in entities('world'):
             db.execute('INSERT INTO worlds VALUES (?,?,?,?,?,?)',
                        (wid, json.dumps(world.get('parents', [])), json.dumps(world.get('representation')),

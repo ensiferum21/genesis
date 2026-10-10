@@ -216,7 +216,13 @@ class EvidenceKernel:
         return self.s.get(self.node(nid)['payload_hash'])
 
     def register_verifier(self, identity, implementation_hash, *, validated_by=(), generated=False):
-        """A verifier is itself an artifact; `validated_by` are receipts from other verifiers."""
+        """A verifier is itself an artifact; `validated_by` are receipts from other verifiers.
+
+        A revoked identity stays revoked: checks name verifiers by identity, so
+        re-registering the name would silently restore every check it made.
+        """
+        if identity in self.revoked_verifiers():
+            raise PermissionError(f'verifier identity {identity!r} is revoked and cannot be registered again')
         return self.record('verifier', {'identity': identity, 'implementation_hash': implementation_hash,
                                         'generated': generated},
                            parents=validated_by, route='genesis.kernel', source_hash=implementation_hash,
@@ -292,7 +298,10 @@ class EvidenceKernel:
 
     def revoke_key(self, public_key_b64, reason, actor):
         """Signing-key compromise: receipts that verify only under this key stop counting."""
-        return self._revocation('key', public_key_b64, reason, actor)
+        key = R.normalize_key(public_key_b64)
+        if key is None:
+            raise ValueError('not a base64 Ed25519 public key')
+        return self._revocation('key', key, reason, actor)
 
     def revoke_evaluation(self, identity, reason, actor):
         """Retire one evaluation (panel commitment + raw root) wherever its receipt appears."""
@@ -315,8 +324,9 @@ class EvidenceKernel:
         return cache[kind][1]
 
     def revocations(self):
-        out = [r for _, r in self._entities_of('evidence_revocation')]
-        return sorted(out, key=lambda r: (r['at'], r['artifact']))
+        out = [r for _, r in self._entities_of('evidence_revocation')
+               if isinstance(r, dict) and isinstance(r.get('artifact'), str)]
+        return sorted(out, key=lambda r: (str(r.get('at', '')), r['artifact']))
 
     def revocation_head(self):
         return digest({'nodes': sorted(self._revoked('node')), 'keys': sorted(self._revoked('key')),
@@ -330,13 +340,10 @@ class EvidenceKernel:
                 and self.node(nid)['verifier'] == identity]
 
     def revoked_verifiers(self):
+        """Identities with ANY revoked registration: revoking one registration retires the name."""
         revoked = self._revoked('node')
-        by_identity = {}
-        for nid in self._all_nodes():
-            n = self.node(nid)
-            if n['kind'] == 'verifier':
-                by_identity.setdefault(n['verifier'], []).append(nid)
-        return {i for i, regs in by_identity.items() if regs and all(r in revoked for r in regs)}
+        return {self.node(nid)['verifier'] for nid in revoked
+                if self._has_node(nid) and self.node(nid)['kind'] == 'verifier'}
 
     def verifier_trust(self, verifier_identity):
         """ANCHORED, CIRCULAR_JUSTIFICATION, UNANCHORED, REVOKED or UNREGISTERED (§3.2)."""
@@ -344,13 +351,17 @@ class EvidenceKernel:
         regs = self._registrations(verifier_identity)
         if not regs:
             return 'UNREGISTERED'
-        if all(r in revoked for r in regs):
+        if any(r in revoked for r in regs):
             return 'REVOKED'
         visiting, done = set(), {}
+        dead = self.revoked_verifiers()
 
         def walk(identity):
             if identity in done:
                 return done[identity]
+            if identity in dead:
+                done[identity] = 'REVOKED'
+                return 'REVOKED'
             if identity in visiting:
                 return 'CIRCULAR_JUSTIFICATION'
             visiting.add(identity)
@@ -386,9 +397,15 @@ class EvidenceKernel:
         return [key for (key,) in self.s.db.execute("SELECT id FROM entities WHERE kind='evidence_node'")]
 
     # ---------- claims ----------
-    def create_claim(self, claim_id, statement, scope, dependencies, *, binding=None):
-        """Immutable claim. `binding` (kernel.receipts.CLAIM_BINDING) is required for
-        any confirmation-level promotion; build it with receipts.binding_from_requests."""
+    def create_claim(self, claim_id, statement, scope, dependencies, *, binding=None, problem=None):
+        """Immutable claim.
+
+        `binding` (kernel.receipts.CLAIM_BINDING) is required for any confirmation-level
+        promotion; build it with receipts.binding_from_requests. The statement and scope
+        must be the ones committed in the preregistered request.
+        `problem` = {'task_sha256', 'value'} names the exact finite problem a mathematical
+        claim is about; OPTIMALITY_CHECKED requires it.
+        """
         for d in dependencies:
             self.node(d)
         claim = {'claim_id': claim_id, 'statement': statement, 'scope': scope, 'dependencies': sorted(dependencies)}
@@ -396,7 +413,14 @@ class EvidenceKernel:
             problems = R.check_binding(binding)
             if problems:
                 raise ValueError('claim binding: ' + '; '.join(problems))
+            if digest(statement) != binding['statement_hash'] or scope != binding['scope']:
+                raise ValueError('claim statement/scope differ from the ones committed before evaluation')
             claim['binding'] = binding
+        if problem is not None:
+            if not isinstance(problem, dict) or set(problem) != {'task_sha256', 'value'} \
+                    or not R.hex64(problem['task_sha256']) or type(problem['value']) is not int:
+                raise ValueError('problem must be {task_sha256, value}')
+            claim['problem'] = problem
         self.s.save('claim', claim_id, claim)  # raises if the identity is reused with other content
         if self.s.state(f'claimlevels:{claim_id}') is None:
             self.s.set_state(f'claimlevels:{claim_id}', dict(FLOOR))
@@ -419,6 +443,8 @@ class EvidenceKernel:
         self._entity('claim', claim_id)
         out = []
         for did, d in self._entities_of('promotion'):
+            if did != digest(d):
+                continue  # not a content-addressed decision record
             if d.get('claim') == claim_id and d.get('axis') in AXES and d.get('level') in AXES[d['axis']]:
                 out.append({'axis': d['axis'], 'level': d['level'], 'decision': did, 'at': d.get('at'),
                             'registry': d.get('registry')})
@@ -459,11 +485,10 @@ class EvidenceKernel:
             if n['verifier'] in dead_verifiers and n['kind'] != 'verifier':
                 hits.add(f'verifier:{n["verifier"]}')
             if n['kind'] in SIGNED_KINDS and dead_evaluations:
-                inner = R.unwrap_unverified(self.s.get(n['payload_hash']))
-                if inner and inner.get('panel_commitment') is not None and 'raw_evidence_root' in inner:
-                    ident = R.evaluation_identity(inner)
-                    if ident in dead_evaluations:
-                        hits.add(f'evaluation:{ident}')
+                # Every signed schema (evaluation receipts and priority adjudications alike).
+                ident = R.evaluation_identity(R.unwrap_unverified(self.s.get(n['payload_hash'])))
+                if ident is not None and ident in dead_evaluations:
+                    hits.add(f'evaluation:{ident}')
         return sorted(hits)
 
     def promote(self, claim_id, axis, level):
@@ -537,9 +562,15 @@ class EvidenceKernel:
                         reasons.append(f'{kind} {d[:12]} checker {n["verifier"]} is {trust}')
                         continue
                 if kind == 'bound_state':
-                    why = self._bound_state_problems(d)
+                    why = self._bound_state_problems(d, claim.get('problem'))
                     if why:
                         reasons.append(f'bound_state {d[:12]}: {why}')
+                        continue
+                if kind == 'witness_check' and claim.get('problem') is not None:
+                    wp = self.payload(d)
+                    if not isinstance(wp, dict) or wp.get('task_sha256') != claim['problem']['task_sha256'] \
+                            or wp.get('value') != claim['problem']['value']:
+                        reasons.append(f'witness_check {d[:12]} is for a different problem or value than the claim')
                         continue
                 usable.append((d, n))
             if kind == 'exact_check':
@@ -547,7 +578,9 @@ class EvidenceKernel:
                 if len(distinct) < count:
                     reasons.append(f'needs {count} independent exact checkers, found {len(distinct)}')
             elif kind == 'bound_state':
-                if not usable:
+                if claim.get('problem') is None:
+                    reasons.append('an optimality claim must name its exact problem (create_claim(..., problem=...))')
+                elif not usable:
                     reasons.append('optimality needs a checked BoundState with gap 0 and custody of its certificate')
             elif len(usable) < count:
                 reasons.append(f'needs {count} valid {kind} artifact(s), found {len(usable)}')
@@ -573,27 +606,32 @@ class EvidenceKernel:
     BOUND_FIELDS = frozenset({'schema', 'task', 'task_sha256', 'lower', 'upper', 'gap', 'lower_evidence',
                               'certificate_bundle'})
 
-    def _bound_state_problems(self, nid):
-        """Certificate custody for a BoundState (R-03). Returns a reason string or None.
+    def _bound_state_problems(self, nid, problem=None):
+        """Certificate custody AND checker replay for a BoundState (R-03). Returns a reason or None.
 
-        A bound state must reference its lower evidence (a passing witness check of
-        the same value, as a parent) and a certificate bundle whose proof objects
-        are present in the store. Numbers and a verifier name alone are not enough.
-        Proof replay itself is done by the bundle verifier, with the producer disabled.
+        The bound state must reference its lower evidence (a passing witness check
+        of the same value on the same problem, as a parent) and a certificate bundle
+        for that problem. The bundle is replayed here with the producing solver
+        disabled (pinned proof checker on the stored CNF/proof; trivial bounds
+        against the host's edge count; the witness by the dual predicates), so no
+        entry point grants OPTIMALITY_CHECKED on custody alone. Replays are cached
+        per bundle identity (immutable content). No checker means no status.
         """
-        from ..verification.certificates import custody_problems
+        from ..verification.certificates import checker_only, custody_problems, replay
         p = self.payload(nid)
         if not isinstance(p, dict) or p.get('schema') != 'genesis-bound-state-v2' or set(p) != self.BOUND_FIELDS:
             return 'bound state lacks certificate custody (genesis-bound-state-v2 with lower and upper evidence)'
         if p['gap'] != 0 or p['upper'] != p['lower']:
             return 'gap is not 0'
+        if problem is not None and (p['task_sha256'] != problem['task_sha256'] or p['upper'] != problem['value']):
+            return 'bound state is for a different problem or value than the claim'
         if p['lower_evidence'] not in self.node(nid)['parents'] or not self._has_node(p['lower_evidence']):
             return 'lower evidence is not a parent of the bound state'
         lower_node = self.node(p['lower_evidence'])
         lower_payload = self.payload(p['lower_evidence'])
         if lower_node['kind'] != 'witness_check' or lower_node['verdict'] not in PASSING \
-                or lower_payload.get('value') != p['lower'] \
-                or lower_payload.get('task_sha256', p['task_sha256']) != p['task_sha256']:
+                or not isinstance(lower_payload, dict) or lower_payload.get('value') != p['lower'] \
+                or lower_payload.get('task_sha256') != p['task_sha256']:
             return 'lower evidence is not a passing witness check of this value on this problem'
         try:
             bundle = self.s.get(p['certificate_bundle'])
@@ -613,6 +651,17 @@ class EvidenceKernel:
         if bundle['problem']['task_sha256'] != p['task_sha256'] or bundle['lower']['value'] != p['lower'] \
                 or bundle['upper']['value'] != p['upper']:
             return 'certificate bundle certifies a different problem or bound'
+        cache = self.__dict__.setdefault('_replays', {})
+        ref = p['certificate_bundle']
+        if ref not in cache:
+            try:
+                with checker_only():
+                    cache[ref] = replay(bundle, self.s.get_bytes)
+            except Exception as exc:
+                cache[ref] = {'status': 'CHECKER_ERROR', 'problems': [f'{type(exc).__name__}: {exc}']}
+        r = cache[ref]
+        if r['status'] != 'OPTIMALITY_CHECKED' or r.get('problems'):
+            return f'certificate does not replay ({r["status"]}: ' + '; '.join(r.get('problems', []))[:160] + ')'
         return None
 
     def _signed_support(self, claim, kind, count, level, candidates, deps, ctx):
@@ -637,6 +686,9 @@ class EvidenceKernel:
                     continue
                 if p['outcome'] != 'NOVEL_IN_SCOPE':
                     reasons.append(f'{kind} {d[:12]} outcome {p["outcome"]} is not support for novelty')
+                    continue
+                if R.evaluation_identity(p) in self._revoked('evaluation'):
+                    reasons.append(f'{kind} {d[:12]} adjudication revoked')
                     continue
                 good[R.evaluation_identity(p)] = p; nodes.add(d)
             if len(good) < count:
@@ -719,8 +771,12 @@ class EvidenceKernel:
         revoked = {r['artifact']: r for r in self.revocations()}
         return {'claim_id': claim_id, 'statement': claim['statement'], 'scope': claim['scope'],
                 'dependencies': claim['dependencies'], 'binding': claim.get('binding'),
+                'problem': claim.get('problem'),
+                # Producer-recorded history: what was granted, by whom (registry), when. It is
+                # not evidence; effective_levels are re-derived from the evidence graph.
                 'historical': {'recorded_levels': self.recorded_levels(claim_id),
-                               'promotions': self.promotion_history(claim_id)},
+                               'promotions': self.promotion_history(claim_id),
+                               'status': 'PRODUCER_RECORDED_NOT_AUTHORITATIVE'},
                 'effective_levels': self.levels(claim_id),
                 'invalidated_by': [{'target': h, **({k: revoked[h][k] for k in ('reason', 'actor', 'at')}
                                                     if h in revoked else {})} for h in hits]}

@@ -23,7 +23,8 @@ from .kernel import receipts as R
 
 REQUEST_FIELDS={'schema','campaign_id','candidate_version','source_hash','programs','limits','seed',
                 'task_count','domain','analysis','exposed_graph_fingerprints','expected_evaluator_hash',
-                'campaign_export_sha256','claim_id','evidence_kind','generation_transition','transfer_source_domain'}
+                'campaign_export_sha256','claim_id','statement_hash','scope','evidence_kind','generation_transition',
+                'transfer_source_domain'}
 
 
 def _hex64(h):
@@ -76,7 +77,8 @@ CREATE TABLE IF NOT EXISTS reservations(id INTEGER PRIMARY KEY, n INTEGER NOT NU
 CREATE TABLE IF NOT EXISTS adjudications(graph TEXT PRIMARY KEY, decision TEXT NOT NULL, record BLOB NOT NULL);
 CREATE TABLE IF NOT EXISTS exposure_digests(graph_hash TEXT PRIMARY KEY, request_id TEXT NOT NULL);
 CREATE TABLE IF NOT EXISTS panels(request_id TEXT PRIMARY KEY, pool_hash TEXT NOT NULL, salt TEXT NOT NULL,
-                                  commitment TEXT NOT NULL);'''
+                                  commitment TEXT NOT NULL);
+CREATE TABLE IF NOT EXISTS slots(slot TEXT PRIMARY KEY, request_id TEXT NOT NULL);'''
 
 
 def _open_custody(root):
@@ -139,8 +141,10 @@ def register(private_root,request,key_path,operator_id,*,exposure_manifest,campa
         raise ValueError(f'exposure declaration omits {omitted} host graphs present in the campaign export')
     db=_open_custody(root)
     try:
+        slot=R.registration_slot(request)
         payload={'schema':R.PREREG_ANCHOR,'request_hash':rid,'claim_id':request['claim_id'],
-                 'evidence_kind':request['evidence_kind'],'registered_at':utcnow(),
+                 'statement_hash':request['statement_hash'],'scope':request['scope'],
+                 'evidence_kind':request['evidence_kind'],'registration_slot':slot,'registered_at':utcnow(),
                  'operator_id':operator_id,'exposure_registry_root':record['root'],
                  'exposure_graphs':record['graphs'],'declaration_unscreenable_graphs':unscreenable,
                  'panel_commitment':commitment}
@@ -149,6 +153,12 @@ def register(private_root,request,key_path,operator_id,*,exposure_manifest,campa
         anchor=sign(payload,key_path)
         with db:
             db.execute('BEGIN IMMEDIATE')
+            taken=db.execute('SELECT request_id FROM slots WHERE slot=?',(slot,)).fetchone()
+            if taken:
+                # One preregistration per claim slot: re-running until a favourable draw is selective reporting.
+                raise ValueError('this claim slot (claim, kind, domain, generation) is already registered by '
+                                 f'request {taken[0][:12]}; a new claim needs a new claim_id')
+            db.execute('INSERT INTO slots VALUES (?,?)',(slot,rid))
             db.execute('INSERT INTO requests VALUES (?,?,?,?)',(rid,canonical(request),canonical(anchor),'REGISTERED'))
             db.execute('INSERT INTO registry_builds VALUES (?,?)',(rid,canonical(record)))
             db.execute('INSERT INTO panels VALUES (?,?,?,?)',(rid,pool_hash,salt,commitment))
@@ -317,8 +327,10 @@ def evaluate(private_root,request_id,pool_path,key_path,operator_id):
                 evidence.event('EVALUATION_FAILED',{'exception':type(exc).__name__,'message':str(exc)})
                 evidence.interrupt_running();raise
         payload={'schema':R.SCIENTIFIC_RECEIPT,'evidence_kind':request['evidence_kind'],
-                 'claim_id':request['claim_id'],'campaign_id':request['campaign_id'],'request_hash':request_id,
+                 'claim_id':request['claim_id'],'statement_hash':request['statement_hash'],'scope':request['scope'],
+                 'campaign_id':request['campaign_id'],'request_hash':request_id,
                  'anchor_hash':digest(anchor),'candidate_version':request['candidate_version'],
+                 'candidate_program_hash':digest(request['programs']['candidate']),
                  'baseline_version':digest(request['programs']['baseline']),'source_hash':request['source_hash'],
                  'evaluator_hash':identity,'analysis':request['analysis'],'domain':request['domain'],
                  'domain_contract_hash':R.domain_contract_hash(request['domain']),
@@ -358,16 +370,19 @@ def release_preflight(request,anchor,receipt,audit,*,trust_root=None):
     try:
         validate_request(request)
         rid=digest(request);kind=request['evidence_kind']
-        a,why=R.open_signed(R.wrap(anchor),'preregistration_anchor',pins)
+        a,why=R.accept_receipt(anchor,'preregistration_anchor',pins)
         reasons+=why
-        r,why=R.open_signed(R.wrap(receipt),kind,pins)
+        r,why=R.accept_receipt(receipt,kind,pins)  # trusted role, schema, outcome, source eligibility
         reasons+=why
         review=verify(audit,pins['auditor_key'])
         if a is not None and r is not None:
             reasons+=R.anchor_mismatches(r,a,anchor)
             if a['request_hash']!=rid or r['request_hash']!=rid:reasons.append('unbound preregistration')
             expected_rows=request['task_count']*len(request['programs'])
+            if a['registration_slot']!=R.registration_slot(request):reasons.append('anchor registers a different slot')
             for field,want in (('claim_id',request['claim_id']),('campaign_id',request['campaign_id']),
+                               ('statement_hash',request['statement_hash']),('scope',request['scope']),
+                               ('candidate_program_hash',digest(request['programs']['candidate'])),
                                ('candidate_version',request['candidate_version']),
                                ('evaluator_hash',request['expected_evaluator_hash']),
                                ('source_hash',request['source_hash']),('domain',request['domain']),

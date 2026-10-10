@@ -38,6 +38,21 @@ def _sha(data):
     return hashlib.sha256(data).hexdigest()
 
 
+class checker_only:
+    """Context: the producing solver refuses to run (sat.solve checks GENESIS_CHECKER_ONLY)."""
+
+    def __enter__(self):
+        self.previous = os.environ.get('GENESIS_CHECKER_ONLY')
+        os.environ['GENESIS_CHECKER_ONLY'] = '1'
+        return self
+
+    def __exit__(self, *exc):
+        if self.previous is None:
+            os.environ.pop('GENESIS_CHECKER_ONLY', None)
+        else:
+            os.environ['GENESIS_CHECKER_ONLY'] = self.previous
+
+
 def build(task, bounds):
     """CertificateBundle + raw objects {sha256: bytes} from a `certified_bounds` result."""
     from .sat import ENCODING, encode

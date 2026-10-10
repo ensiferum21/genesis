@@ -1,0 +1,8 @@
+A after revocation      : UNCHECKED ['verifier:revocable-checker']
+Traceback (most recent call last):
+  File "/home/claude/genesis/audit/redteam_b14/f2_verifier_revocation_undone.py", line 56, in <module>
+    k.register_verifier('revocable-checker', 'e' * 64, generated=True)   # research re-registers
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/claude/genesis/src/genesis/kernel/evidence.py", line 225, in register_verifier
+    raise PermissionError(f'verifier identity {identity!r} is revoked and cannot be registered again')
+PermissionError: verifier identity 'revocable-checker' is revoked and cannot be registered again

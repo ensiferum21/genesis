@@ -42,13 +42,19 @@ class SignedFixture:
     def sign(self, payload, role):
         return sign(payload, self.keys[role][0])
 
+    STATEMENT = 'the frozen candidate has a higher paired edge count than the frozen baseline on the sealed panel'
+    SCOPE = 'c4_host_v2 sealed panel'
+
     def request(self, claim_id='claim-1', kind='sealed_evaluation', *, candidate='b' * 64, campaign='a' * 64,
-                domain='c4_host_v2', transition=None, transfer=None, task_count=40, seed=1, baseline_rounds=1):
+                domain='c4_host_v2', transition=None, transfer=None, task_count=40, seed=1, baseline_rounds=1,
+                candidate_program=None, baseline_program=None, statement=None, scope=None):
+        programs = {'baseline': baseline_program or SolverProgram(rounds=baseline_rounds).model_dump(mode='json'),
+                    'candidate': candidate_program or SolverProgram(weights=(0, 0, 0, 1)).model_dump(mode='json')}
         return {'schema': R.REQUEST, 'campaign_id': campaign, 'claim_id': claim_id, 'evidence_kind': kind,
+                'statement_hash': digest(statement or self.STATEMENT), 'scope': scope or self.SCOPE,
                 'generation_transition': transition, 'transfer_source_domain': transfer,
                 'candidate_version': candidate, 'campaign_export_sha256': 'e' * 64, 'source_hash': 'c' * 64,
-                'programs': {'baseline': SolverProgram(rounds=baseline_rounds).model_dump(mode='json'),
-                             'candidate': SolverProgram(weights=(0, 0, 0, 1)).model_dump(mode='json')},
+                'programs': programs,
                 'limits': Limits().model_dump(mode='json'), 'seed': seed, 'task_count': task_count,
                 'domain': domain, 'analysis': dict(R.ANALYSIS_V1), 'exposed_graph_fingerprints': [],
                 'expected_evaluator_hash': 'c' * 64}
@@ -59,7 +65,9 @@ class SignedFixture:
 
     def anchor(self, request, *, panel=None, role='prereg', **overrides):
         payload = {'schema': R.PREREG_ANCHOR, 'request_hash': digest(request), 'claim_id': request['claim_id'],
-                   'evidence_kind': request['evidence_kind'], 'registered_at': self._time(),
+                   'statement_hash': request['statement_hash'], 'scope': request['scope'],
+                   'evidence_kind': request['evidence_kind'], 'registration_slot': R.registration_slot(request),
+                   'registered_at': self._time(),
                    'operator_id': 'FIXTURE_OPERATOR_NOT_INDEPENDENT', 'exposure_registry_root': 'd' * 64,
                    'exposure_graphs': 10, 'declaration_unscreenable_graphs': 0,
                    'panel_commitment': panel or digest({'panel': digest(request)})}
@@ -68,8 +76,10 @@ class SignedFixture:
 
     def receipt_payload(self, request, anchor, *, wins=30, losses=5, ties=5, raw=None, family_p=0.01, **overrides):
         p = {'schema': R.SCIENTIFIC_RECEIPT, 'evidence_kind': request['evidence_kind'],
-             'claim_id': request['claim_id'], 'campaign_id': request['campaign_id'], 'request_hash': digest(request),
+             'claim_id': request['claim_id'], 'statement_hash': request['statement_hash'], 'scope': request['scope'],
+             'campaign_id': request['campaign_id'], 'request_hash': digest(request),
              'anchor_hash': digest(anchor), 'candidate_version': request['candidate_version'],
+             'candidate_program_hash': digest(request['programs']['candidate']),
              'baseline_version': digest(request['programs']['baseline']), 'source_hash': request['source_hash'],
              'evaluator_hash': request['expected_evaluator_hash'], 'analysis': dict(request['analysis']),
              'domain': request['domain'], 'domain_contract_hash': R.domain_contract_hash(request['domain']),
@@ -99,3 +109,14 @@ def record_evaluation(kernel, fixture, request, parents=(), *, anchor=None, rece
     r = kernel.record_signed(request['evidence_kind'], receipt, parents=list(parents) + [a], route=route,
                              source_hash=source)
     return a, r
+
+
+def chain_requests(fx, claim_id, n, *, versions=None, seed=0, index_order=None):
+    """n consecutive successor transitions: link i compares program P(i+1) against its predecessor P(i)."""
+    v = versions or [f'{i + 1}' * 64 for i in range(n + 1)]
+    progs = [SolverProgram(rounds=i + 1).model_dump(mode='json') for i in range(n + 1)]
+    idx = index_order or list(range(1, n + 1))
+    return [fx.request(claim_id=claim_id, kind='sealed_generation_evaluation', candidate=v[i + 1], seed=seed + i,
+                       transition={'index': idx[i], 'from_version': v[i], 'to_version': v[i + 1]},
+                       baseline_program=progs[i], candidate_program=progs[i + 1])
+            for i in range(n)]

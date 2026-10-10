@@ -84,6 +84,54 @@ def _entities(s, kind):
         yield key, h, s.get(h)
 
 
+def derived_files(s, *, trust_root=None, head=None):
+    """Every bundle file that is a function of the evidence store. The verifier
+    regenerates these from the rebuilt store and requires byte equality (except
+    the export timestamp in CLAIMS.json), so no derived file can be edited."""
+    files = {}
+    cfg = next((v for _, _, v in _entities(s, 'config')), None) or \
+        next((v for _, _, v in _entities(s, 'loop_config')), None)
+    files['resolved_config.json'] = canonical(cfg)
+    versions = sorted((v.get('generation', -1), k, v) for k, _, v in _entities(s, 'system_version'))
+    files['system_version.json'] = canonical(versions[-1][2] if versions else {'source': s.state('source_hash')})
+    claims, revocations = effective_claims(s, trust_root=trust_root)
+    claims['event_head'] = head
+    files['CLAIMS.json'] = claims  # serialized by the caller (carries the export timestamp)
+    files['REVOCATIONS.json'] = canonical({'schema': 'genesis-revocations-v1', 'records': revocations})
+    prereg = {kind: [v for _, _, v in _entities(s, kind)]
+              for kind in ('ladder_preregistration', 'experiment_b_prereg', 'frozen_request')}
+    files['preregistration.json'] = canonical(prereg)
+    for aid, trial, status, req, rec in s.db.execute('SELECT * FROM attempts ORDER BY id'):
+        receipt = s.get(rec) if rec else None
+        request = s.get(req)
+        kind = request.get('kind') if isinstance(request, dict) else None
+        target = 'checker_receipts' if kind in ('exact-check', 'formal-check') else 'resource_receipts'
+        files[f'{target}/{aid}.json'] = canonical({'attempt': aid, 'trial': trial, 'status': status,
+                                                   'request': req, 'receipt': receipt})
+    for nid, _, node in _entities(s, 'evidence_node'):
+        if node['kind'] in ('bound_state', 'formal_check', 'exact_check', 'witness_check'):
+            payload = s.get(node['payload_hash'])
+            files[f'certificates/{nid}.json'] = canonical({'node': node, 'payload': payload})
+            ref = payload.get('certificate_bundle') if isinstance(payload, dict) else None
+            if ref:  # the full CertificateBundle; its CNF/proof objects are under objects/sha256/
+                files[f'certificates/bundle_{ref}.json'] = s.get_bytes(ref)
+    return files
+
+
+def wording_problems(text, claims):
+    """Report prose against the effective ceiling; each claim statement against its own levels."""
+    out = [f"report.md: {p['phrase']!r} ({p['why']})" for p in lint(text, claims['ceiling'])]
+    for c in claims['claims']:
+        levels = {a: v for a, v in c['effective_levels'].items() if a != 'invalidated'}
+        out += [f"claim {c['claim_id']} statement: {p['phrase']!r} ({p['why']})" for p in lint(c['statement'], levels)]
+        out += [f"claim {c['claim_id']} scope: {p['phrase']!r} ({p['why']})" for p in lint(c['scope'], levels)]
+    return out
+
+
+MANDATORY_LIMITATIONS = ('- Built by the research operator; no independent custody or release authority.\n',
+                         '- Container image not pinned by registry digest.\n')
+
+
 def build_bundle(campaign_root, destination, *, report=None, limitations=(), trust_root=None):
     campaign_root = Path(campaign_root); destination = Path(destination)
     if destination.exists():
@@ -98,38 +146,15 @@ def build_bundle(campaign_root, destination, *, report=None, limitations=(), tru
         files['campaign.sqlite3.snapshot'] = snap.read_bytes()
         for p in sorted((campaign_root / 'objects' / 'sha256').iterdir()):
             files[f'objects/sha256/{p.name}'] = p.read_bytes()
-        cfg = next((v for _, _, v in _entities(s, 'config')), None) or \
-            next((v for _, _, v in _entities(s, 'loop_config')), None)
-        files['resolved_config.json'] = canonical(cfg)
-        versions = sorted((v.get('generation', -1), k, v) for k, _, v in _entities(s, 'system_version'))
-        files['system_version.json'] = canonical(versions[-1][2] if versions else {'source': s.state('source_hash')})
-        claims, revocations = effective_claims(s, trust_root=trust_root)
-        claims['event_head'] = integrity['head']
+        derived = derived_files(s, trust_root=trust_root, head=integrity['head'])
+        claims = derived.pop('CLAIMS.json')
         text = report.decode() if isinstance(report, bytes) else (report or '')
-        problems = lint(text, claims['ceiling'])
+        problems = wording_problems(text, claims)
         if problems:
-            # A cached report that outruns the current evidence is invalidated, not shipped.
-            raise ValueError('report exceeds the current effective evidence: ' +
-                             '; '.join(f"{p['phrase']!r} ({p['why']})" for p in problems[:5]))
+            # A cached report or claim statement that outruns the current evidence is invalidated, not shipped.
+            raise ValueError('report exceeds the current effective evidence: ' + '; '.join(problems[:5]))
         files['CLAIMS.json'] = canonical(claims)
-        files['REVOCATIONS.json'] = canonical({'schema': 'genesis-revocations-v1', 'records': revocations})
-        prereg = {kind: [v for _, _, v in _entities(s, kind)]
-                  for kind in ('ladder_preregistration', 'experiment_b_prereg', 'frozen_request')}
-        files['preregistration.json'] = canonical(prereg)
-        for aid, trial, status, req, rec in s.db.execute('SELECT * FROM attempts ORDER BY id'):
-            receipt = s.get(rec) if rec else None
-            request = s.get(req)
-            kind = request.get('kind') if isinstance(request, dict) else None
-            target = 'checker_receipts' if kind in ('exact-check', 'formal-check') else 'resource_receipts'
-            files[f'{target}/{aid}.json'] = canonical({'attempt': aid, 'trial': trial, 'status': status,
-                                                       'request': req, 'receipt': receipt})
-        for nid, _, node in _entities(s, 'evidence_node'):
-            if node['kind'] in ('bound_state', 'formal_check', 'exact_check', 'witness_check'):
-                payload = s.get(node['payload_hash'])
-                files[f'certificates/{nid}.json'] = canonical({'node': node, 'payload': payload})
-                ref = payload.get('certificate_bundle') if isinstance(payload, dict) else None
-                if ref:  # the full CertificateBundle; its CNF/proof objects are under objects/sha256/
-                    files[f'certificates/bundle_{ref}.json'] = s.get_bytes(ref)
+        files.update(derived)
         source_hash = s.state('source_hash')
     files['dependency_lock/requirements.lock'] = (REPO / 'requirements.lock').read_bytes()
     files['dependency_lock/observed_environment.json'] = canonical(observed_environment())
@@ -153,8 +178,7 @@ def build_bundle(campaign_root, destination, *, report=None, limitations=(), tru
         '`genesis trial replay` against a copy; results must match the recorded witnesses, values, queries and '
         'traces (timings excluded).\n').encode()
     files['LIMITATIONS.md'] = ('# Limitations\n\n' + ''.join(f'- {x}\n' for x in limitations) +
-                               '- Built by the research operator; no independent custody or release authority.\n'
-                               '- Container image not pinned by registry digest.\n').encode()
+                               ''.join(MANDATORY_LIMITATIONS)).encode()
     manifest = {'release_id': release_id, 'event_head': integrity['head'], 'events': integrity['events'],
                 'source_hash': source_hash, 'shipped_code_identity': identity['sha256'],
                 'files': {k: hashlib.sha256(v).hexdigest() for k, v in sorted(files.items())}}
@@ -203,27 +227,70 @@ def replay_certificates(store, claims, *, trust_root=None):
 
 
 def _compare_claims(bundled, recomputed):
+    """Whole-object comparison of CLAIMS.json with the re-derived one (only the export
+    time and the exporter's registry description may differ)."""
     problems = []
     if bundled.get('schema') != CLAIMS_SCHEMA:
         return ['CLAIMS.json predates effective-level export (R-02); its levels cannot be trusted']
+    ids = [c.get('claim_id') for c in bundled.get('claims', [])]
+    if len(ids) != len(set(ids)):
+        problems.append('CLAIMS.json lists a claim more than once')
     want = {c['claim_id']: c['effective_levels'] for c in recomputed['claims']}
     have = {c.get('claim_id'): c.get('effective_levels') for c in bundled.get('claims', [])}
-    if set(want) != set(have):
-        problems.append(f'claim set differs: missing {sorted(set(want) - set(have))[:3]}, '
-                        f'extra {sorted(set(have) - set(want))[:3]}')
     for cid in sorted(set(want) & set(have)):
         if have[cid] != want[cid]:
-            diff = {a: (have[cid].get(a) if isinstance(have[cid], dict) else None, want[cid].get(a))
+            diff = {a: ((have[cid] or {}).get(a), want[cid].get(a))
                     for a in set(want[cid]) | set(have[cid] or {}) if (have[cid] or {}).get(a) != want[cid].get(a)}
             problems.append(f'CLAIMS.json asserts levels the evidence graph does not license for {cid}: '
                             + ', '.join(f'{a} bundled={b} recomputed={r}' for a, (b, r) in sorted(diff.items())))
+    if set(want) != set(have):
+        problems.append(f'claim set differs: missing {sorted(set(want) - set(have))[:3]}, '
+                        f'extra {sorted(set(have) - set(want))[:3]}')
     if bundled.get('revocation_head') != recomputed['revocation_head']:
         problems.append('bundled revocation head differs from the rebuilt evidence graph')
+    strip = lambda c: {k: v for k, v in c.items() if k not in ('evaluated_at', 'registry')}
+    if not problems and canonical(strip(bundled)) != canonical(strip(recomputed)):
+        fields = sorted(k for k in set(strip(bundled)) | set(strip(recomputed))
+                        if canonical(strip(bundled).get(k)) != canonical(strip(recomputed).get(k)))
+        problems.append(f'CLAIMS.json differs from the re-derived claims in: {fields}')
     return problems
+
+
+def _snapshot_problems(snapshot, store):
+    """The shipped SQLite snapshot must hold exactly the rebuilt journal, entities, attempts and state."""
+    import sqlite3
+    with tempfile.TemporaryDirectory(prefix='genesis-snap-') as d:
+        copy = Path(d) / 'snap.sqlite3'
+        shutil.copy(snapshot, copy)
+        db = sqlite3.connect(f'file:{copy}?mode=ro', uri=True)
+        try:
+            out = []
+            for table, order in (('events', 'seq'), ('entities', 'kind, id'), ('attempts', 'id'), ('state', 'key')):
+                a = db.execute(f'SELECT * FROM {table} ORDER BY {order}').fetchall()
+                b = store.db.execute(f'SELECT * FROM {table} ORDER BY {order}').fetchall()
+                if a != b:
+                    out.append(f'campaign.sqlite3.snapshot table {table} differs from the rebuilt store')
+            return out
+        except Exception as exc:
+            return [f'campaign.sqlite3.snapshot unreadable: {type(exc).__name__}']
+        finally:
+            db.close()
+
+
+def _safe_rel(rel):
+    p = Path(rel)
+    return not p.is_absolute() and '..' not in p.parts and rel == p.as_posix()
 
 
 def verify_bundle(path, *, trust_root=None, later_revocations=None, replay_proofs=True):
     """Independent check of an extracted bundle directory or a bundle zip.
+
+    Rebuilds the store from events.jsonl + objects, then regenerates every
+    store-derived file (claims, revocations, preregistration, receipts,
+    certificates, config, version) and requires byte equality; checks the
+    SQLite snapshot against the rebuilt store; lints the report and every claim
+    statement against the re-derived levels; replays every certificate behind an
+    optimality claim with the solver disabled; checks the shipped code identity.
 
     `trust_root`: the verifier's own externally controlled role registry; without
     it, confirmation-level claims cannot be re-derived and a bundle asserting
@@ -234,6 +301,9 @@ def verify_bundle(path, *, trust_root=None, later_revocations=None, replay_proof
     if path.is_file():
         tmp = tempfile.mkdtemp(prefix='genesis-bundle-')
         with zipfile.ZipFile(path) as z:
+            for name in z.namelist():
+                if not _safe_rel(name):
+                    raise ValueError(f'unsafe path in bundle: {name!r}')
             z.extractall(tmp)
         roots = list(Path(tmp).glob('release_*'))
         if len(roots) != 1:
@@ -252,8 +322,11 @@ def verify_bundle(path, *, trust_root=None, later_revocations=None, replay_proof
             p = path / rel
             if p.is_file() and hashlib.sha256(p.read_bytes()).hexdigest() != h:
                 problems.append(f'hash mismatch: {rel}')
+        limitations = (path / 'LIMITATIONS.md').read_text() if (path / 'LIMITATIONS.md').is_file() else ''
+        if any(line not in limitations for line in MANDATORY_LIMITATIONS):
+            problems.append('LIMITATIONS.md omits a mandatory limitation')
         # Rebuild the event store from the append-only export and objects, then
-        # re-derive every claim from the rebuilt evidence graph.
+        # re-derive every store-derived file from the rebuilt evidence graph.
         with tempfile.TemporaryDirectory(prefix='genesis-rebuild-') as d:
             shutil.copy(path / 'events.jsonl', Path(d) / 'events.jsonl')
             shutil.copytree(path / 'objects', Path(d) / 'objects')
@@ -262,16 +335,26 @@ def verify_bundle(path, *, trust_root=None, later_revocations=None, replay_proof
                 if record['head'] != manifest['event_head'] or record['events'] != manifest['events']:
                     problems.append('rebuilt event head differs from manifest')
                 with Store(d) as s:
-                    recomputed, revocations = effective_claims(s, trust_root=trust_root)
+                    if s.state('source_hash') != manifest['source_hash']:
+                        problems.append('MANIFEST source_hash differs from the source recorded in the evidence store')
+                    derived = derived_files(s, trust_root=trust_root, head=record['head'])
+                    recomputed = derived.pop('CLAIMS.json')
                     bundled = json.loads((path / 'CLAIMS.json').read_bytes())
                     problems += _compare_claims(bundled, recomputed)
+                    for rel, data in derived.items():
+                        f = path / rel
+                        if not f.is_file() or f.read_bytes() != data:
+                            problems.append(f'{rel} differs from the file re-derived from the evidence store')
+                    stray = {r for r in present if r.split('/')[0] in ('checker_receipts', 'resource_receipts',
+                                                                          'certificates')} - set(derived)
+                    if stray:
+                        problems.append(f'files not derivable from the evidence store: {sorted(stray)[:3]}')
+                    problems += _snapshot_problems(path / 'campaign.sqlite3.snapshot', s)
+                    report = (path / 'report.md').read_text() if (path / 'report.md').is_file() else ''
+                    problems += wording_problems(report, recomputed)
                     if replay_proofs:
                         replayed, why = replay_certificates(s, recomputed['claims'], trust_root=trust_root)
                         problems += why
-                    feed = (path / 'REVOCATIONS.json')
-                    if not feed.is_file() or json.loads(feed.read_bytes()).get('records') != \
-                            json.loads(canonical(revocations)):
-                        problems.append('REVOCATIONS.json differs from the revocations in the evidence graph')
                     if later_revocations is not None:
                         records = json.loads(Path(later_revocations).read_bytes())['records']
                         k = EvidenceKernel(s, anchors=pinned_tool_anchors(), trust_root=trust_root)
@@ -289,6 +372,9 @@ def verify_bundle(path, *, trust_root=None, later_revocations=None, replay_proof
         identity = json.loads((path / 'analysis_code' / 'CODE_IDENTITY.json').read_bytes())
         recomputed_code = {}
         for rel in identity['files']:
+            if not _safe_rel(rel):
+                problems.append(f'code identity lists an unsafe path {rel!r}')
+                continue
             p = path / 'analysis_code' / rel
             recomputed_code[rel] = hashlib.sha256(p.read_bytes()).hexdigest() if p.exists() else None
         if digest(recomputed_code) != manifest['shipped_code_identity'] or recomputed_code != identity['files']:

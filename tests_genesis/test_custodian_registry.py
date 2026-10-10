@@ -69,6 +69,7 @@ class Fixture(unittest.TestCase):
         source = code_identity(REPO)['sha256']
         return {'schema': 'genesis-evaluation-request-v3', 'campaign_id': campaign * 64, 'candidate_version': 'b' * 64,
                 'claim_id': f'utility-{campaign}', 'evidence_kind': 'sealed_evaluation',
+                'statement_hash': '5' * 64, 'scope': 'fixture panel',
                 'generation_transition': None, 'transfer_source_domain': None,
                 'campaign_export_sha256': bytes_hash(export.read_bytes()),
                 'source_hash': source, 'programs': {'baseline': SolverProgram().model_dump(mode='json'),

@@ -50,6 +50,7 @@ class HardPanels(unittest.TestCase):
             source = code_identity(REPO)['sha256']
             request = {'schema': 'genesis-evaluation-request-v3', 'campaign_id': 'a' * 64, 'candidate_version': 'b' * 64,
                        'claim_id': 'hard-panel-fixture', 'evidence_kind': 'sealed_evaluation',
+                       'statement_hash': '5' * 64, 'scope': 'fixture panel',
                        'generation_transition': None, 'transfer_source_domain': None,
                        'campaign_export_sha256': bytes_hash(export.read_bytes()), 'source_hash': source,
                        'programs': {'baseline': SolverProgram(rounds=8).model_dump(mode='json'),

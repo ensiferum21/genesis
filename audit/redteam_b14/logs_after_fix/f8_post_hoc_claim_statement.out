@@ -1,0 +1,10 @@
+Traceback (most recent call last):
+  File "/home/claude/genesis/audit/redteam_b14/f8_post_hoc_claim_statement.py", line 91, in <module>
+    parent()
+    ~~~~~~^^
+  File "/home/claude/genesis/audit/redteam_b14/f8_post_hoc_claim_statement.py", line 39, in parent
+    validate_request(req)
+    ~~~~~~~~~~~~~~~~^^^^^
+  File "/home/claude/genesis/src/genesis/custodian.py", line 42, in validate_request
+    raise ValueError('evaluation request schema')
+ValueError: evaluation request schema
