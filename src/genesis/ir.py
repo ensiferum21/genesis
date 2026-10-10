@@ -108,9 +108,11 @@ def stable(kind,data):
 
 
 class Interpreter:
-    def __init__(self,limits=None,max_actions=24,seed=0):
+    def __init__(self,limits=None,max_actions=24,seed=0,custody=None):
+        """`custody`: a Store whose CAS receives certificate bundles and proof objects (R-03).
+        Without it, bundles and objects are kept in memory (self.certificates / self.objects)."""
         self.limits=limits or Limits();self.max_actions=max_actions;self.seed=seed;self.actions=0
-        self.trace=[]
+        self.trace=[];self.custody=custody;self.certificates={};self.objects={}
 
     # Parameter that selects an overload when a primitive has several with the same input kinds.
     DISCRIMINATOR={('TRANSFORM','permutation'):'relabel',('TRANSFORM','induced'):'induced-subgraph',
@@ -192,6 +194,15 @@ class Interpreter:
             data={k:bounds.get(k) for k in ('status','lower','upper','gap','witness')}
             data['upper_method']=(bounds.get('upper_certificate') or {}).get('method')
             data['upper_checker']=(bounds.get('upper_certificate') or {}).get('checker')
+            data['certificate']=None
+            if bounds.get('status')!='CHECKER_ERROR' and bounds.get('upper_certificate') is not None:
+                # Keep the original proof artifacts, not just their summary (R-03).
+                from .verification.certificates import build,persist
+                bundle,blobs=build(xs[0],bounds)
+                if self.custody is not None:data['certificate']=persist(self.custody,bundle,blobs)
+                else:
+                    data['certificate']=digest(bundle);self.certificates[data['certificate']]=bundle
+                    self.objects.update(blobs)
         elif op=='VERIFY':data=check_witness(xs[0],xs[1])
         elif op=='TRANSPORT' and tag=='relabel':
             check_witness(xs[0],xs[1]);order=params['permutation'];target=relabel(xs[0],order)
@@ -223,6 +234,8 @@ class Interpreter:
         self.trace.append({'id':node_id or f'n{len(self.trace)}','op':op,'overload':tag,
                            'inputs':list(input_ids),'params':to_json(params),'kind':kind,
                            'output_digest':digest(stable(kind,data)),'effects':list(effects)})
+        if kind=='Certificate' and isinstance(data,dict) and data.get('certificate'):
+            self.trace[-1]['artifacts']=[data['certificate']]
         return out
 
     def run(self,nodes,inputs):
@@ -241,7 +254,8 @@ def program_record(name,inputs,trace,seed,limits):
     return {'schema':'genesis-ir-program-v1','macro':name,'seed':seed,'limits':limits.model_dump(mode='json'),
             'inputs':{k:{'kind':v.kind,'data':to_json(v.data),'effects':list(v.effects),
                          'provenance':list(v.provenance)} for k,v in inputs.items()},
-            'nodes':[{k:n[k] for k in ('id','op','inputs','params','output_digest')} for n in trace]}
+            'nodes':[{**{k:n[k] for k in ('id','op','inputs','params','output_digest')},
+                      **({'artifacts':n['artifacts']} if n.get('artifacts') else {})} for n in trace]}
 
 
 def replay(record,max_actions=64):

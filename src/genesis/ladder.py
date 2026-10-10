@@ -236,8 +236,12 @@ def _run_specialist(s, prereg, prereg_id, split, n, task, name, budget_ns, key):
     spent = _cpu_ns() - c0
     witness = bounds.get('witness') or ()
     value = check_witness(task, witness)['value'] if witness else None
+    certificate = None
+    if status == 'SUCCESS' and bounds.get('upper_certificate') is not None and 'lower' in bounds:
+        from .verification.certificates import build, persist
+        certificate = persist(s, *build(task, bounds))  # original CNF/proof kept, not just a summary (R-03)
     s.finish(aid, {'status': status, 'cpu_ns': spent, 'lower': bounds.get('lower'), 'upper': bounds.get('upper'),
-                   'reason': bounds.get('reason'),
+                   'reason': bounds.get('reason'), 'certificate_bundle': certificate,
                    'bound_status': bounds.get('status'), 'calls': bounds.get('calls'),
                    'upper_method': (bounds.get('upper_certificate') or {}).get('method')})
     witness_hash = s.put({'task_id': task.task_id, 'edges': [list(e) for e in witness]}) if witness else None

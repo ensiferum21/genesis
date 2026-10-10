@@ -80,6 +80,8 @@ def _limits(cpu_seconds, memory_mib):
 
 def solve(cnf, *, seconds=60, memory_mib=4096):
     """Run CaDiCaL. Returns {'status': SAT|UNSAT|UNKNOWN, 'model', 'proof', 'solver', 'seconds'}."""
+    if os.environ.get('GENESIS_CHECKER_ONLY') == '1':
+        raise ToolUnavailable('producer disabled: checker-only replay must not run the solver')
     solver = tool('cadical')
     with tempfile.TemporaryDirectory(prefix='genesis-sat-') as d:
         cnf_path = Path(d) / 'f.cnf'; proof_path = Path(d) / 'f.drat'

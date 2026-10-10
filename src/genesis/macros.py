@@ -21,9 +21,9 @@ GHOST_STATES = ('PROVED', 'GHOST_FOUND', 'UNSETTLED', 'HARNESS_ERROR')
 
 
 class _Run:
-    def __init__(self, name, seed, limits, max_actions):
+    def __init__(self, name, seed, limits, max_actions, custody=None):
         self.name = name
-        self.ir = Interpreter(limits or Limits(), max_actions=max_actions, seed=seed)
+        self.ir = Interpreter(limits or Limits(), max_actions=max_actions, seed=seed, custody=custody)
         self.inputs = {}
         self.n = 0
 
@@ -44,11 +44,11 @@ class _Run:
         return sorted({t['op'] for t in self.ir.trace})
 
 
-def ghost_census(task, bound, program, *, seeds=(0, 1, 2), verify_seconds=60, limits=None):
+def ghost_census(task, bound, program, *, seeds=(0, 1, 2), verify_seconds=60, limits=None, custody=None):
     """Is "optimum <= bound" true for this host? Search for a checked countermodel (ghost);
     if none is found, try an independently checked upper certificate. Failure to find a
     ghost is never reported as proof."""
-    r = _Run('ghost_census', seeds[0], limits, 8 + 4 * len(seeds))
+    r = _Run('ghost_census', seeds[0], limits, 8 + 4 * len(seeds), custody)
     try:
         raw = r.input('task', 'RawTask', task.model_dump(mode='json'), ('USES_DEV_DATA',))
         prog = r.input('program', 'Program', program)
@@ -83,11 +83,11 @@ def ghost_census(task, bound, program, *, seeds=(0, 1, 2), verify_seconds=60, li
         return {'status': 'HARNESS_ERROR', 'reason': f'{type(exc).__name__}: {exc}', 'program': r.record(), 'ops': r.ops()}
 
 
-def barrier_escape(task, program, *, seeds=(0, 1, 2, 3), verify_seconds=60, limits=None):
+def barrier_escape(task, program, *, seeds=(0, 1, 2, 3), verify_seconds=60, limits=None, custody=None):
     """Measure the best value a search class reaches (its empirical barrier), then try to
     certify the barrier as the true optimum; if certification instead yields a better witness,
     the class was escaped by moving to the exact (PB/SAT) representation."""
-    r = _Run('barrier_escape', seeds[0], limits, 6 + 3 * len(seeds))
+    r = _Run('barrier_escape', seeds[0], limits, 6 + 3 * len(seeds), custody)
     raw = r.input('task', 'RawTask', task.model_dump(mode='json'), ('USES_DEV_DATA',))
     prog = r.input('program', 'Program', program)
     goal = r('FORMALIZE', [raw])
@@ -111,7 +111,8 @@ def barrier_escape(task, program, *, seeds=(0, 1, 2, 3), verify_seconds=60, limi
     verdict = ('CLASS_OPTIMAL' if d['status'] == 'OPTIMALITY_CHECKED' and d['lower'] == barrier else
                'ESCAPED' if d['lower'] > barrier else 'BARRIER_UNSETTLED')
     return {'status': verdict, 'class_barrier': barrier, 'escape_value': d['lower'], 'upper': d['upper'],
-            'certified': d['status'] == 'OPTIMALITY_CHECKED', 'label_sensitivity': relabel_value != barrier,
+            'certified': d['status'] == 'OPTIMALITY_CHECKED', 'certificate': d.get('certificate'),
+            'witness': [list(e) for e in (d.get('witness') or ())], 'label_sensitivity': relabel_value != barrier,
             'plan': plan[1].data, 'program': r.record(), 'ops': r.ops()}
 
 

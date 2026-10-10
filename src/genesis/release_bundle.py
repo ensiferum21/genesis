@@ -125,7 +125,11 @@ def build_bundle(campaign_root, destination, *, report=None, limitations=(), tru
                                                        'request': req, 'receipt': receipt})
         for nid, _, node in _entities(s, 'evidence_node'):
             if node['kind'] in ('bound_state', 'formal_check', 'exact_check', 'witness_check'):
-                files[f'certificates/{nid}.json'] = canonical({'node': node, 'payload': s.get(node['payload_hash'])})
+                payload = s.get(node['payload_hash'])
+                files[f'certificates/{nid}.json'] = canonical({'node': node, 'payload': payload})
+                ref = payload.get('certificate_bundle') if isinstance(payload, dict) else None
+                if ref:  # the full CertificateBundle; its CNF/proof objects are under objects/sha256/
+                    files[f'certificates/bundle_{ref}.json'] = s.get_bytes(ref)
         source_hash = s.state('source_hash')
     files['dependency_lock/requirements.lock'] = (REPO / 'requirements.lock').read_bytes()
     files['dependency_lock/observed_environment.json'] = canonical(observed_environment())
@@ -162,6 +166,42 @@ def build_bundle(campaign_root, destination, *, report=None, limitations=(), tru
             'event_head': integrity['head']}
 
 
+def replay_certificates(store, claims, *, trust_root=None):
+    """Checker-only replay (producer disabled) of every certificate behind an
+    effective OPTIMALITY_CHECKED claim (R-03). Returns (records, problems)."""
+    import os
+    from .verification.certificates import replay
+    k = EvidenceKernel(store, anchors=pinned_tool_anchors(), trust_root=trust_root)
+    records, problems = [], []
+    previous = os.environ.get('GENESIS_CHECKER_ONLY')
+    os.environ['GENESIS_CHECKER_ONLY'] = '1'
+    try:
+        for c in claims:
+            if c['effective_levels'].get('math') != 'OPTIMALITY_CHECKED':
+                continue
+            bounds = [n for n in sorted(k.closure(c['dependencies'])) if k.node(n)['kind'] == 'bound_state'
+                      and k._bound_state_problems(n) is None]
+            if not bounds:
+                problems.append(f'{c["claim_id"]}: no custody-held certificate to replay')
+                continue
+            for n in bounds:
+                ref = k.payload(n)['certificate_bundle']
+                try:
+                    result = replay(store.get(ref), store.get_bytes)
+                except Exception as exc:
+                    result = {'status': 'CHECKER_ERROR', 'problems': [f'{type(exc).__name__}: {exc}']}
+                records.append({'claim': c['claim_id'], 'bound_state': n, 'certificate': ref, **result})
+                if result['status'] != 'OPTIMALITY_CHECKED' or result.get('problems'):
+                    problems.append(f'{c["claim_id"]}: certificate replay {result["status"]}: '
+                                    + '; '.join(result.get('problems', []))[:200])
+    finally:
+        if previous is None:
+            os.environ.pop('GENESIS_CHECKER_ONLY', None)
+        else:
+            os.environ['GENESIS_CHECKER_ONLY'] = previous
+    return records, problems
+
+
 def _compare_claims(bundled, recomputed):
     problems = []
     if bundled.get('schema') != CLAIMS_SCHEMA:
@@ -182,7 +222,7 @@ def _compare_claims(bundled, recomputed):
     return problems
 
 
-def verify_bundle(path, *, trust_root=None, later_revocations=None):
+def verify_bundle(path, *, trust_root=None, later_revocations=None, replay_proofs=True):
     """Independent check of an extracted bundle directory or a bundle zip.
 
     `trust_root`: the verifier's own externally controlled role registry; without
@@ -201,6 +241,7 @@ def verify_bundle(path, *, trust_root=None, later_revocations=None):
         path = roots[0]
     problems = []
     current = None
+    replayed = []
     try:
         manifest = json.loads((path / 'MANIFEST.json').read_bytes())
         present = {str(p.relative_to(path)) for p in path.rglob('*') if p.is_file() and p.name != 'MANIFEST.json'}
@@ -224,6 +265,9 @@ def verify_bundle(path, *, trust_root=None, later_revocations=None):
                     recomputed, revocations = effective_claims(s, trust_root=trust_root)
                     bundled = json.loads((path / 'CLAIMS.json').read_bytes())
                     problems += _compare_claims(bundled, recomputed)
+                    if replay_proofs:
+                        replayed, why = replay_certificates(s, recomputed['claims'], trust_root=trust_root)
+                        problems += why
                     feed = (path / 'REVOCATIONS.json')
                     if not feed.is_file() or json.loads(feed.read_bytes()).get('records') != \
                             json.loads(canonical(revocations)):
@@ -254,6 +298,8 @@ def verify_bundle(path, *, trust_root=None, later_revocations=None):
                             '(acceptable only with a recorded deviation)')
         out = {'ok': not problems, 'problems': problems, 'release_id': manifest['release_id'],
                'event_head': manifest['event_head']}
+        if replay_proofs:
+            out['certificate_replays'] = replayed
         if current is not None:
             out['current'] = current
         return out

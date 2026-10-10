@@ -221,6 +221,10 @@ def reference_optimum(task,evidence=None):
     cert=dict(bounds['upper_certificate'])
     if evidence is not None and bounds.get('proof'):
         cert['proof_object']=evidence.put_bytes(bounds['proof'])
+    if evidence is not None:
+        # Full certificate custody inside the private evidence store (R-03): CNF, proof, witness.
+        from .verification.certificates import build,persist
+        cert['certificate_bundle']=persist(evidence,*build(task,bounds))
     return {'status':'FINITE_CERTIFIED','value':bounds['upper'],'witness':[list(e) for e in bounds['witness']],
             'upper_certificate':cert,'scope':'this finite host only','formal_proof':False,'novelty':'UNKNOWN',
             'method':'SAT_DRAT_UPPER+CHECKED_WITNESS'}

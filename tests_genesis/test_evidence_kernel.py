@@ -63,13 +63,53 @@ class MathPromotion(Base):
         self.k.create_claim('two', 'opt 7', 'H', [a, b])
         self.k.promote('two', 'math', 'FINITE_CERTIFIED')
 
-    def test_optimality_needs_gap_zero(self):
-        bs = self.check('bound_state', [self.run], payload={'lower': 7, 'upper': 8, 'gap': 1})
-        self.k.create_claim('c', 'opt', 'H', [bs])
-        self.rejects('c', 'math', 'OPTIMALITY_CHECKED', 'gap 0')
-        bs0 = self.check('bound_state', [self.run], payload={'lower': 8, 'upper': 8, 'gap': 0})
-        self.k.create_claim('d', 'opt', 'H', [bs0])
+    def bound(self, *, lower=3, upper=3, bundle=None, payload=None, witness_value=None):
+        from genesis.common import digest
+        from genesis.models import GraphTask
+        from genesis.verification.certificates import build, persist
+        task = GraphTask(task_id='path4', n=4, edges=((0, 1), (1, 2), (2, 3)), family='path')
+        sha = digest(task.model_dump(mode='json'))
+        if bundle is None:
+            b, blobs = build(task, {'lower': 3, 'witness': task.edges, 'upper': 3,
+                                    'upper_certificate': {'method': 'HOST_EDGE_COUNT', 'upper': 3}})
+            bundle = persist(self.store, b, blobs)
+        w = self.check('witness_check', [self.run], payload={'task_sha256': sha, 'value': witness_value or lower})
+        body = payload or {'schema': 'genesis-bound-state-v2', 'task': 'path4', 'task_sha256': sha, 'lower': lower,
+                           'upper': upper, 'gap': upper - lower, 'lower_evidence': w, 'certificate_bundle': bundle}
+        return self.check('bound_state', [w], payload=body)
+
+    def test_optimality_needs_gap_zero_and_certificate_custody(self):
+        self.k.create_claim('c', 'opt', 'H', [self.bound(lower=2, upper=3)])
+        self.rejects('c', 'math', 'OPTIMALITY_CHECKED', 'gap is not 0')
+        self.k.create_claim('d', 'opt', 'H', [self.bound()])
         self.k.promote('d', 'math', 'OPTIMALITY_CHECKED')
+        # B13-style bound state: numbers and a verifier name, no references.
+        self.k.create_claim('e', 'opt', 'H', [self.check('bound_state', [self.run],
+                                                         payload={'lower': 8, 'upper': 8, 'gap': 0})])
+        self.rejects('e', 'math', 'OPTIMALITY_CHECKED', 'lacks certificate custody')
+        # A SAT_DRAT bundle whose proof objects are not in the store.
+        from genesis.common import digest
+        fake = self.store.put({'schema': 'genesis-certificate-bundle-v1',
+                               'problem': {'domain': 'c4_host_v2', 'task': {'x': 1}, 'task_sha256': digest({'x': 1})},
+                               'lower': {'value': 3, 'witness': []},
+                               'upper': {'method': 'SAT_DRAT', 'value': 3, 'cnf_sha256': '1' * 64,
+                                         'proof_sha256': '2' * 64, 'checker_verdict': 'VALID'},
+                               'gap': 0, 'status': 'OPTIMALITY_CHECKED'})
+        self.k.create_claim('f', 'opt', 'H', [self.bound(bundle=fake)])
+        self.rejects('f', 'math', 'OPTIMALITY_CHECKED', 'object missing or altered')
+        # A theorem-based bound is recorded but cannot certify optimality.
+        from genesis.models import GraphTask
+        from genesis.verification.certificates import build, persist
+        task = GraphTask(task_id='path4', n=4, edges=((0, 1), (1, 2), (2, 3)), family='path')
+        b, blobs = build(task, {'lower': 3, 'witness': task.edges, 'upper': 3,
+                                'upper_certificate': {'method': 'reiman', 'upper': 3}})
+        self.assertEqual(b['upper']['method'], 'HOST_EDGE_COUNT')  # 3 == edge count: trivial bound wins
+        b, blobs = build(GraphTask(task_id='k4', n=4, edges=((0, 1), (0, 2), (0, 3), (1, 2), (1, 3), (2, 3)),
+                                   family='k'), {'lower': 4, 'witness': ((0, 1), (0, 2), (0, 3), (1, 2)), 'upper': 4,
+                                                 'upper_certificate': {'method': 'reiman', 'upper': 4}})
+        self.assertEqual((b['upper']['method'], b['status']), ('THEOREM', 'OPTIMALITY_BY_THEOREM_UNCHECKED'))
+        self.k.create_claim('g', 'opt', 'H', [self.bound(bundle=persist(self.store, b, blobs), lower=4, upper=4)])
+        self.rejects('g', 'math', 'OPTIMALITY_CHECKED', 'not independently certified')
 
     def test_approximate_and_self_judged_dependencies_rejected(self):
         a = self.check('exact_check', [self.run], effects=['APPROXIMATE'])

@@ -570,11 +570,49 @@ class EvidenceKernel:
             reasons.append('manual intervention invalidates an autonomy/improver claim')
         return reasons, {'nodes': used_nodes, 'evaluations': evaluations, 'effects': effects}
 
+    BOUND_FIELDS = frozenset({'schema', 'task', 'task_sha256', 'lower', 'upper', 'gap', 'lower_evidence',
+                              'certificate_bundle'})
+
     def _bound_state_problems(self, nid):
-        """Hook for certificate custody (R-03); returns a reason string or None."""
-        payload = self.payload(nid)
-        if not isinstance(payload, dict) or payload.get('gap') != 0:
+        """Certificate custody for a BoundState (R-03). Returns a reason string or None.
+
+        A bound state must reference its lower evidence (a passing witness check of
+        the same value, as a parent) and a certificate bundle whose proof objects
+        are present in the store. Numbers and a verifier name alone are not enough.
+        Proof replay itself is done by the bundle verifier, with the producer disabled.
+        """
+        from ..verification.certificates import custody_problems
+        p = self.payload(nid)
+        if not isinstance(p, dict) or p.get('schema') != 'genesis-bound-state-v2' or set(p) != self.BOUND_FIELDS:
+            return 'bound state lacks certificate custody (genesis-bound-state-v2 with lower and upper evidence)'
+        if p['gap'] != 0 or p['upper'] != p['lower']:
             return 'gap is not 0'
+        if p['lower_evidence'] not in self.node(nid)['parents'] or not self._has_node(p['lower_evidence']):
+            return 'lower evidence is not a parent of the bound state'
+        lower_node = self.node(p['lower_evidence'])
+        lower_payload = self.payload(p['lower_evidence'])
+        if lower_node['kind'] != 'witness_check' or lower_node['verdict'] not in PASSING \
+                or lower_payload.get('value') != p['lower'] \
+                or lower_payload.get('task_sha256', p['task_sha256']) != p['task_sha256']:
+            return 'lower evidence is not a passing witness check of this value on this problem'
+        try:
+            bundle = self.s.get(p['certificate_bundle'])
+        except Exception:
+            return 'certificate bundle missing or altered'
+
+        def has_object(h):
+            try:
+                self.s.get_bytes(h)
+                return True
+            except Exception:
+                return False
+
+        problems = custody_problems(bundle, has_object)
+        if problems:
+            return '; '.join(problems)
+        if bundle['problem']['task_sha256'] != p['task_sha256'] or bundle['lower']['value'] != p['lower'] \
+                or bundle['upper']['value'] != p['upper']:
+            return 'certificate bundle certifies a different problem or bound'
         return None
 
     def _signed_support(self, claim, kind, count, level, candidates, deps, ctx):

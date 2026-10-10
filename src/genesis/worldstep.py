@@ -196,9 +196,8 @@ class ResearchLoop:
                 before = best[task.task_id]['lower'], best[task.task_id]['upper']
                 if p.kind == 'barrier_escape':
                     res = barrier_escape(task, w['program'], seeds=(epoch, epoch + 1),
-                                         verify_seconds=cfg.verify_seconds, limits=cfg.limits)
+                                         verify_seconds=cfg.verify_seconds, limits=cfg.limits, custody=self.s)
                     lower, upper = res['escape_value'], res['upper']
-                    witness = res['program']['nodes']
                     certified = res['certified']
                 elif p.kind == 'local_to_global':
                     res = local_to_global(task, w['program'], limits=cfg.limits)
@@ -213,7 +212,8 @@ class ResearchLoop:
                 used = max(0.0, _cpu() - c0)
                 self.g.charge(epoch_grant, digest(res.get('program', {})), cpu_seconds=round(used, 6), attempts=1)
                 pid = self._record_macro(p.kind, res) if 'schema' in res.get('program', {}) else None
-                self._update_evidence(task, lower, upper, certified, pid, p.kind)
+                self._update_evidence(task, lower, upper, certified, pid, p.kind,
+                                      certificate=res.get('certificate'), witness=res.get('witness'))
                 after = best[task.task_id]['lower'], best[task.task_id]['upper']
                 progress = (after[0] - before[0]) + (before[1] - after[1])
                 calibration.observe(p, max(0, progress), used)
@@ -249,14 +249,18 @@ class ResearchLoop:
         (self.s.root / 'reports' / 'world_loop.json').write_bytes(canonical(summary))
         return summary
 
-    def _update_evidence(self, task, lower, upper, certified, program_id, kind):
+    def _update_evidence(self, task, lower, upper, certified, program_id, kind, *, certificate=None, witness=None):
         state = dict(self.s.state(f'best:{task.task_id}'))
+        task_sha = digest(task.model_dump(mode='json'))
         improved = False
         if lower > state['lower']:
             run = self.k.record('execution_receipt', {'task': task.task_id, 'macro': kind, 'ir_program': program_id},
                                 route='genesis.campaign', source_hash=self.source, verdict='VALID',
                                 effects=['UNCHECKED_PROPOSAL', 'USES_DEV_DATA'])
-            check = self.k.record('witness_check', {'task': task.task_id, 'value': lower}, parents=[run],
+            payload = {'task': task.task_id, 'task_sha256': task_sha, 'value': lower}
+            if witness and len(witness) == lower:
+                payload['witness'] = witness
+            check = self.k.record('witness_check', payload, parents=[run],
                                   route='genesis.campaign', source_hash=self.source, verdict='VALID',
                                   verifier='dual-predicates')
             claim = f'lower:{task.task_id}:{lower}'
@@ -264,22 +268,31 @@ class ResearchLoop:
                                 'this finite host only', [check])
             self.k.promote(claim, 'math', 'WITNESS_VALID')
             state.update(lower=lower, witness_node=check); improved = True
-        if certified and upper < state['upper'] or (certified and upper == lower and state['status'] != 'OPTIMALITY_CHECKED'):
+        if certified and (upper < state['upper'] or (upper == lower and state['status'] != 'OPTIMALITY_CHECKED')):
             parent = state.get('witness_node')
-            bound = self.k.record('bound_state', {'task': task.task_id, 'lower': lower, 'upper': upper,
-                                                  'gap': upper - lower},
-                                  parents=[parent] if parent else [], route='genesis.verification.sat',
-                                  source_hash=self.source, verdict='VALID', verifier='drat-trim')
-            state['upper'] = upper
-            if upper == state['lower']:
-                claim = f'optimum:{task.task_id}:{upper}'
-                self.k.create_claim(claim, f'the optimum for host {task.task_id} is {upper}', 'this finite host only',
-                                    [bound])
-                try:
-                    self.k.promote(claim, 'math', 'OPTIMALITY_CHECKED')
-                    state['status'] = 'OPTIMALITY_CHECKED'
-                except PromotionRejected as exc:
-                    state['promotion_rejected'] = exc.args[0]
+            if certificate is None or parent is None or state['lower'] != lower:
+                # No certificate in custody: the bound is not recorded as evidence (R-03).
+                state['custody_gap'] = 'certified bound without a custody-held certificate; not recorded'
+            else:
+                method = self.s.get(certificate)['upper']['method']
+                bound = self.k.record('bound_state', {'schema': 'genesis-bound-state-v2', 'task': task.task_id,
+                                                      'task_sha256': task_sha, 'lower': lower, 'upper': upper,
+                                                      'gap': upper - lower, 'lower_evidence': parent,
+                                                      'certificate_bundle': certificate},
+                                      parents=[parent], route='genesis.verification.sat',
+                                      source_hash=self.source, verdict='VALID',
+                                      verifier='drat-trim' if method == 'SAT_DRAT' else 'host-edge-count')
+                state['upper'] = upper
+                state['certificate'] = certificate
+                if upper == state['lower']:
+                    claim = f'optimum:{task.task_id}:{upper}'
+                    self.k.create_claim(claim, f'the optimum for host {task.task_id} is {upper}',
+                                        'this finite host only', [bound])
+                    try:
+                        self.k.promote(claim, 'math', 'OPTIMALITY_CHECKED')
+                        state['status'] = 'OPTIMALITY_CHECKED'
+                    except PromotionRejected as exc:
+                        state['promotion_rejected'] = exc.args[0]
         self.s.set_state(f'best:{task.task_id}', state)
         return improved
 
