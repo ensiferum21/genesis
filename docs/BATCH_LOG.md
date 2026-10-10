@@ -296,11 +296,12 @@ See `docs/AUDIT_REMEDIATION.md` (GI6 section).
   slots keyed by candidate program. Regressions in
   `tests_genesis/test_redteam_b14_round2.py`; scripts and original logs in
   `audit/redteam_b14_round2/`.
-- Walkthrough re-run on the final code (`evidence/e2e_walkthrough_b14/final/`; earlier B14 runs in `run1_commit_9c71dbe/` and `run2_commit_439b764/`;
-  the first B14 run is kept in `run1_commit_9c71dbe/`).
+- Walkthrough re-run on the final code (`evidence/e2e_walkthrough_b14/final/`;
+  earlier B14 runs are kept in `run1_commit_9c71dbe/` and `run2_commit_439b764/`).
 - Open after B14: R-04; B14-OPEN-2 (multiplicity across candidates);
   B14-OPEN-3 (improver/generation lineage); B14-OPEN-4 (replay contracts for
-  the other evidence kinds); GV0 independent review.
+  the other evidence kinds); B14-OPEN-5 (per-claim report wording); GV0
+  independent review.
 - **Internal red team, round 3** (fresh agent, on `439b764`): 9 findings, 1
   critical — the custodian signed SUPPORTED for a labelled frozen candidate
   while evaluating a different program, and one claim could be registered
