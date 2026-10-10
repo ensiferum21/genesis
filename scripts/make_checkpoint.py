@@ -52,6 +52,8 @@ def main(argv=None):
     parser.add_argument('--batch', type=int, required=True)
     parser.add_argument('--out', default=str(ROOT.parent / 'checkpoints'))
     parser.add_argument('--quick', action='store_true')
+    parser.add_argument('--parent', default=None, help='parent checkpoint zip (its SHA-256 is recorded)')
+    parser.add_argument('--parent-ref', default=None, help='git ref of the parent checkpoint commit')
     args = parser.parse_args(argv)
     if git('status', '--porcelain').strip():
         raise SystemExit('working tree is dirty; commit before making a checkpoint')
@@ -84,6 +86,26 @@ def main(argv=None):
             'claim_ceiling': ('Engineering checkpoint only. No sealed evaluation, independent custody, '
                               'scientific promotion, novelty or self-improvement claim.'),
         }
+        # Roadmap §14.1 mandatory checkpoint contents.
+        if args.parent:
+            parent = Path(args.parent)
+            record['parent_checkpoint'] = {'name': parent.name, 'sha256': sha256(parent.read_bytes())}
+        if args.parent_ref:
+            record['changes_since_parent'] = git('log', '--oneline', f'{args.parent_ref}..HEAD').decode().splitlines()
+        ledger = ROOT / 'ledger' / 'requirements_ledger.json'
+        if ledger.exists():
+            from collections import Counter
+            rows = json.loads(ledger.read_text())['rows']
+            record['requirements_ledger'] = {
+                'rows': len(rows), 'dispositions': dict(Counter(r['disposition'] for r in rows)),
+                'accepted': sum(r['acceptance']['decision'] == 'IMPLEMENTED_AND_ACCEPTED' for r in rows)}
+        record['open_defects'] = state.get('open_defects', [])
+        record['failure_and_repair_logs'] = sorted(str(p.relative_to(ROOT)) for p in ROOT.glob('audit/**/logs*/*')
+                                                   if p.is_file())
+        record['model_identities'] = {'hosted_model': None, 'note': 'no language model is called by any campaign'}
+        notes = ROOT / 'docs' / 'checkpoints' / f'B{args.batch}_RECORD.md'
+        if notes.exists():
+            record['record_notes'] = notes.read_text()
         name = f'GENESIS_COMPLETION_CHECKPOINT_B{args.batch:02d}'
         dest = out / f'{name}.zip'
         import tarfile
