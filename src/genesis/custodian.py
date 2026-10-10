@@ -153,6 +153,24 @@ def adjudicate(private_root,task,decision,key_path,operator_id,reason):
     return record
 
 
+def reference_optimum(task,evidence=None):
+    """Evaluator's exact optimum: dual exhaustive solvers up to 24 edges, otherwise a
+    SAT/DRAT upper certificate (checked by drat-trim) meeting a checked witness."""
+    if len(task.edges)<=24:return certified_optimum(task)
+    from .verification.sat import certified_bounds
+    from .dsl import solve
+    start=solve(task,SolverProgram(rounds=8),100000,0)['selected']
+    bounds=certified_bounds(task,seconds=600,start_witness=start)
+    if bounds['status']!='OPTIMALITY_CHECKED':
+        raise RuntimeError('CHECKER_ERROR: evaluator could not certify the optimum; task unusable')
+    cert=dict(bounds['upper_certificate'])
+    if evidence is not None and bounds.get('proof'):
+        cert['proof_object']=evidence.put_bytes(bounds['proof'])
+    return {'status':'FINITE_CERTIFIED','value':bounds['upper'],'witness':[list(e) for e in bounds['witness']],
+            'upper_certificate':cert,'scope':'this finite host only','formal_proof':False,'novelty':'UNKNOWN',
+            'method':'SAT_DRAT_UPPER+CHECKED_WITNESS'}
+
+
 def evaluate(private_root,request_id,pool_path,key_path,operator_id):
     root=_private_root(private_root)
     db=_open_custody(root)
@@ -213,7 +231,7 @@ def evaluate(private_root,request_id,pool_path,key_path,operator_id):
                 for task in tasks:
                     opt_aid=evidence.start('optimum-'+task.task_id,{'kind':'exact-check','task':task.model_dump(mode='json')})
                     start=time.monotonic_ns()
-                    try:optimum=certified_optimum(task)
+                    try:optimum=reference_optimum(task,evidence)
                     except BaseException as exc:
                         evidence.finish(opt_aid,{'status':'CHECKER_ERROR','error':type(exc).__name__,'wall_ns':time.monotonic_ns()-start});raise
                     evidence.finish(opt_aid,{'status':'SUCCESS','result':optimum,'wall_ns':time.monotonic_ns()-start})

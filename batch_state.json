@@ -8,14 +8,16 @@
     3,
     4,
     5,
-    6
+    6,
+    7
   ],
   "in_progress": null,
-  "next": 7,
+  "next": 8,
   "suites": [
     "tests_genesis",
     "tests",
-    "tests_sandbox"
+    "tests_sandbox",
+    "tests_certificates"
   ],
   "notes": {
     "1": "Incremental solver (output-identical to v1 oracle), O(1)-per-commit event export, known-answer ladder benchmark + CLI, toolchain pins.",
@@ -23,7 +25,8 @@
     "3": "Legacy trust paths fail closed; promotion eligibility registry.",
     "4": "Evidence kernel: DAG, typed effects, promotion, revocation, trust graph, wording gate.",
     "5": "Signed phase machine, rebuild-from-export recovery, full SystemVersion, relational index.",
-    "6": "runc/OCI sandbox with executed escape suite; grant ledger for the authority invariant."
+    "6": "runc/OCI sandbox with executed escape suite; grant ledger for the authority invariant.",
+    "7": "SAT/DRAT upper certificates, hard panels, SAT-backed evaluator optima."
   },
   "pending_evidence": {},
   "evidence": {

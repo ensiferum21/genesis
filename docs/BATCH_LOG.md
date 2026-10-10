@@ -91,3 +91,30 @@ See `docs/AUDIT_REMEDIATION.md` (GI6 section).
 - Container image pinning: the sandbox root is the host's read-only /usr.
   Pinning by registry digest was not possible here (Docker Hub blocked); the
   receipt records the policy and config hashes instead.
+
+## Batch 7 — SAT/DRAT upper-bound certificates and harder panels
+- `verification/tools.py`: pinned tool resolution; a binary whose SHA-256
+  differs from `toolchain/PINS.json` is refused (checker identity = hash).
+- `verification/sat.py`: CNF encoding (motif clauses + Sinz counter), CaDiCaL
+  solve with DRAT proof, drat-trim check, certificate replay that re-encodes
+  from (host, U) and binds CNF and proof hashes, and an anytime
+  `certified_bounds` search (SAT models → checked witnesses; UNSAT → verified
+  upper certificate; theorem bounds upgraded to DRAT when time allows).
+- Tests: encoding agrees with brute force on 100+ (host, k) pairs; certified
+  optima equal the dual exhaustive solvers on 30 random hosts; truncated or
+  corrupted proofs, stronger-claim reuse, host swaps and empty proofs are
+  rejected; bogus solver models are rejected by the dual predicates; pin
+  mismatch refuses the tool.
+- `panels.make_hard_panel`: hosts with 30–64 edges, defined by parameters and
+  seed only (no per-task selection by solver outcome); the only filter is that
+  the evaluator can certify the optimum.
+- Custodian `reference_optimum`: dual exhaustive solvers up to 24 edges,
+  otherwise SAT/DRAT upper certificate + checked witness, proof stored in the
+  private evidence store.
+- Calibration (`evidence/hard_panel_calibration/`): on 12 C4 hard hosts the
+  baselines reach the certified optimum on 1 (multistart), 6 (exchange) and 2
+  (low_cycle); on triangle-free hosts at the same parameters exchange solves
+  12/12, so that domain needs larger hosts to be informative.
+- Complete hosts are much harder to certify (K10 timed out at 60 s) because of
+  symmetry; symmetry breaking is future work, and the ladder keeps using the
+  published values there.

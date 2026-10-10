@@ -1,0 +1,309 @@
+{
+ "schema": "genesis-hard-panel-calibration-v1",
+ "generator": "panels.make_hard_panel-v1",
+ "seed": 20261012,
+ "note": "DEV calibration of generator difficulty; tasks are not selected by solver outcome",
+ "summary": {
+  "c4_host_v2": {
+   "multistart": {
+    "hits": 1,
+    "tasks": 12,
+    "total_shortfall": 19
+   },
+   "exchange": {
+    "hits": 6,
+    "tasks": 12,
+    "total_shortfall": 7
+   },
+   "low_cycle": {
+    "hits": 2,
+    "tasks": 12,
+    "total_shortfall": 12
+   }
+  },
+  "triangle_free_host_v1": {
+   "multistart": {
+    "hits": 10,
+    "tasks": 12,
+    "total_shortfall": 2
+   },
+   "exchange": {
+    "hits": 12,
+    "tasks": 12,
+    "total_shortfall": 0
+   },
+   "low_cycle": {
+    "hits": 8,
+    "tasks": 12,
+    "total_shortfall": 6
+   }
+  }
+ },
+ "rows": [
+  {
+   "domain": "c4_host_v2",
+   "task": "dev-hard-20261012-0000",
+   "n": 18,
+   "edges": 51,
+   "family": "erdos-n18",
+   "optimum": 33,
+   "multistart": 31,
+   "exchange": 32,
+   "low_cycle": 32
+  },
+  {
+   "domain": "c4_host_v2",
+   "task": "dev-hard-20261012-0001",
+   "n": 16,
+   "edges": 38,
+   "family": "planted_dense-n16",
+   "optimum": 27,
+   "multistart": 25,
+   "exchange": 26,
+   "low_cycle": 26
+  },
+  {
+   "domain": "c4_host_v2",
+   "task": "dev-hard-20261012-0002",
+   "n": 18,
+   "edges": 43,
+   "family": "two_scale-n18",
+   "optimum": 31,
+   "multistart": 30,
+   "exchange": 31,
+   "low_cycle": 30
+  },
+  {
+   "domain": "c4_host_v2",
+   "task": "dev-hard-20261012-0003",
+   "n": 17,
+   "edges": 38,
+   "family": "planted_dense-n17",
+   "optimum": 26,
+   "multistart": 25,
+   "exchange": 26,
+   "low_cycle": 26
+  },
+  {
+   "domain": "c4_host_v2",
+   "task": "dev-hard-20261012-0004",
+   "n": 20,
+   "edges": 53,
+   "family": "two_scale-n20",
+   "optimum": 35,
+   "multistart": 32,
+   "exchange": 34,
+   "low_cycle": 34
+  },
+  {
+   "domain": "c4_host_v2",
+   "task": "dev-hard-20261012-0005",
+   "n": 18,
+   "edges": 45,
+   "family": "erdos-n18",
+   "optimum": 32,
+   "multistart": 30,
+   "exchange": 31,
+   "low_cycle": 31
+  },
+  {
+   "domain": "c4_host_v2",
+   "task": "dev-hard-20261012-0006",
+   "n": 18,
+   "edges": 39,
+   "family": "two_scale-n18",
+   "optimum": 28,
+   "multistart": 27,
+   "exchange": 28,
+   "low_cycle": 27
+  },
+  {
+   "domain": "c4_host_v2",
+   "task": "dev-hard-20261012-0007",
+   "n": 13,
+   "edges": 32,
+   "family": "planted_dense-n13",
+   "optimum": 21,
+   "multistart": 21,
+   "exchange": 21,
+   "low_cycle": 21
+  },
+  {
+   "domain": "c4_host_v2",
+   "task": "dev-hard-20261012-0008",
+   "n": 20,
+   "edges": 59,
+   "family": "two_scale-n20",
+   "optimum": 39,
+   "multistart": 36,
+   "exchange": 37,
+   "low_cycle": 37
+  },
+  {
+   "domain": "c4_host_v2",
+   "task": "dev-hard-20261012-0009",
+   "n": 16,
+   "edges": 43,
+   "family": "erdos-n16",
+   "optimum": 29,
+   "multistart": 27,
+   "exchange": 29,
+   "low_cycle": 28
+  },
+  {
+   "domain": "c4_host_v2",
+   "task": "dev-hard-20261012-0010",
+   "n": 12,
+   "edges": 30,
+   "family": "bipartite_noise-n12",
+   "optimum": 19,
+   "multistart": 18,
+   "exchange": 18,
+   "low_cycle": 17
+  },
+  {
+   "domain": "c4_host_v2",
+   "task": "dev-hard-20261012-0011",
+   "n": 14,
+   "edges": 39,
+   "family": "bipartite_noise-n14",
+   "optimum": 22,
+   "multistart": 21,
+   "exchange": 22,
+   "low_cycle": 21
+  },
+  {
+   "domain": "triangle_free_host_v1",
+   "task": "dev-hard-20261012-0000",
+   "n": 18,
+   "edges": 51,
+   "family": "erdos-n18",
+   "optimum": 40,
+   "multistart": 39,
+   "exchange": 40,
+   "low_cycle": 39
+  },
+  {
+   "domain": "triangle_free_host_v1",
+   "task": "dev-hard-20261012-0001",
+   "n": 16,
+   "edges": 38,
+   "family": "planted_dense-n16",
+   "optimum": 28,
+   "multistart": 28,
+   "exchange": 28,
+   "low_cycle": 28
+  },
+  {
+   "domain": "triangle_free_host_v1",
+   "task": "dev-hard-20261012-0002",
+   "n": 18,
+   "edges": 43,
+   "family": "two_scale-n18",
+   "optimum": 37,
+   "multistart": 37,
+   "exchange": 37,
+   "low_cycle": 37
+  },
+  {
+   "domain": "triangle_free_host_v1",
+   "task": "dev-hard-20261012-0003",
+   "n": 17,
+   "edges": 38,
+   "family": "planted_dense-n17",
+   "optimum": 29,
+   "multistart": 29,
+   "exchange": 29,
+   "low_cycle": 26
+  },
+  {
+   "domain": "triangle_free_host_v1",
+   "task": "dev-hard-20261012-0004",
+   "n": 20,
+   "edges": 53,
+   "family": "two_scale-n20",
+   "optimum": 43,
+   "multistart": 43,
+   "exchange": 43,
+   "low_cycle": 43
+  },
+  {
+   "domain": "triangle_free_host_v1",
+   "task": "dev-hard-20261012-0005",
+   "n": 18,
+   "edges": 45,
+   "family": "erdos-n18",
+   "optimum": 36,
+   "multistart": 36,
+   "exchange": 36,
+   "low_cycle": 36
+  },
+  {
+   "domain": "triangle_free_host_v1",
+   "task": "dev-hard-20261012-0006",
+   "n": 18,
+   "edges": 39,
+   "family": "two_scale-n18",
+   "optimum": 32,
+   "multistart": 32,
+   "exchange": 32,
+   "low_cycle": 32
+  },
+  {
+   "domain": "triangle_free_host_v1",
+   "task": "dev-hard-20261012-0007",
+   "n": 13,
+   "edges": 32,
+   "family": "planted_dense-n13",
+   "optimum": 23,
+   "multistart": 23,
+   "exchange": 23,
+   "low_cycle": 23
+  },
+  {
+   "domain": "triangle_free_host_v1",
+   "task": "dev-hard-20261012-0008",
+   "n": 20,
+   "edges": 59,
+   "family": "two_scale-n20",
+   "optimum": 43,
+   "multistart": 42,
+   "exchange": 43,
+   "low_cycle": 42
+  },
+  {
+   "domain": "triangle_free_host_v1",
+   "task": "dev-hard-20261012-0009",
+   "n": 16,
+   "edges": 43,
+   "family": "erdos-n16",
+   "optimum": 32,
+   "multistart": 32,
+   "exchange": 32,
+   "low_cycle": 31
+  },
+  {
+   "domain": "triangle_free_host_v1",
+   "task": "dev-hard-20261012-0010",
+   "n": 12,
+   "edges": 30,
+   "family": "bipartite_noise-n12",
+   "optimum": 25,
+   "multistart": 25,
+   "exchange": 25,
+   "low_cycle": 25
+  },
+  {
+   "domain": "triangle_free_host_v1",
+   "task": "dev-hard-20261012-0011",
+   "n": 14,
+   "edges": 39,
+   "family": "bipartite_noise-n14",
+   "optimum": 37,
+   "multistart": 37,
+   "exchange": 37,
+   "low_cycle": 37
+  }
+ ],
+ "seconds": 17.7
+}
