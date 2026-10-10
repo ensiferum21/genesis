@@ -138,6 +138,37 @@ def register(private_root,request,key_path,operator_id,*,exposure_manifest,campa
     finally:db.close()
 
 
+def sealed_index(private_root):
+    """Evaluator-side index of everything sealed: reserved/consumed pool graphs and
+    sealed statements in <private_root>/sealed_statements/*.json (lists of strings)."""
+    from .kernel.leakscan import SealedIndex
+    root=_private_root(private_root);index=SealedIndex()
+    db=_open_custody(root)
+    try:
+        for i,(n,edges) in enumerate(db.execute('SELECT n,edges FROM reservations')):
+            index.add_graph(f'reserved-{i}',n,json.loads(edges))
+    finally:db.close()
+    statements=root/'sealed_statements'
+    if statements.is_dir():
+        for f in sorted(statements.glob('*.json')):
+            for j,text in enumerate(load_json(f)):
+                index.add_statement(f'{f.stem}-{j}',text)
+    return index
+
+
+def screen_for_research(private_root,candidates,key_path,operator_id,*,query_budget=10000):
+    """Narrow screening endpoint: returns a signed list of decisions only."""
+    from .kernel.leakscan import OracleScreener
+    oracle=OracleScreener(sealed_index(private_root),query_budget=query_budget)
+    decisions=[oracle(c) for c in candidates]
+    root=_private_root(private_root)
+    ledger=root/'screening_ledger.jsonl'
+    with open(ledger,'ab') as f:
+        for entry in oracle.private_ledger():f.write(canonical(entry)+b'\n')
+    return sign({'schema':'genesis-screening-receipt-v1','decisions':decisions,'operator_id':operator_id,
+                 'candidates_sha256':digest(candidates),'issued_at':utcnow()},key_path)
+
+
 def adjudicate(private_root,task,decision,key_path,operator_id,reason):
     """Record a signed near-duplicate decision before freeze (spec §18.2)."""
     if decision not in ('ALLOW','BLOCK'):raise ValueError('decision')

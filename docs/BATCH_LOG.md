@@ -147,3 +147,23 @@ See `docs/AUDIT_REMEDIATION.md` (GI6 section).
   universal theorem is formalized; Mathlib is not used.
 - `genesis formal <task> <witness> <dir> --check`; `genesis doctor` reports
   pinned Lean, SAT tools and sandbox.
+
+## Batch 9 — leak firewall
+- `kernel/leakscan.py`: `screen()` returns BLOCK (EXACT / STRUCTURAL /
+  ELABORATED / NEAR_DUPLICATE), QUARANTINE_FOR_ADJUDICATION or ALLOW; unknown
+  candidate kinds fail closed. Statement canonicalization per §35.1 (comments,
+  names, attributes, whitespace removed; binders alpha-renamed including
+  generalized field notation; no commutative reordering). Graphs: exact,
+  isomorphic, one-edge neighbours. Scanner version binds rules and thresholds.
+- Elaborated layer (`verification/lean.elaborated_fingerprints`): sandboxed
+  Lean elaboration (core library, autoImplicit off) hashing the
+  binder-anonymized type; error-recovered types (containing sorry) get no
+  fingerprint. Catches ∀-form vs binder-form restatements the text layer misses.
+  Sealed and candidate statements are elaborated in separate sandbox runs.
+- `OracleScreener`: research receives only the decision and scanner version;
+  reasons/similarities stay in the evaluator's private ledger; query budget.
+- `kernel/memory.TheoremMemory`: only ALLOW enters visible memory; a later
+  audit that blocks an admitted item revokes its evidence node, invalidating
+  dependent claims (§37.3).
+- Custodian `sealed_index` / `screen_for_research`: signed decision receipts
+  against reserved pools and sealed statements; private ledger append.

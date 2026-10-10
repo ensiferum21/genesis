@@ -216,3 +216,25 @@ class EndToEndDeclaration(Fixture):
         anchor = register(self.root, request, self.key, 'fixture', exposure_manifest=self.manifest,
                           campaign_export=export)
         self.assertEqual(verify(anchor, self.public)['request_hash'], digest(request))
+
+
+class ResearchScreening(Fixture):
+    def test_research_visible_candidate_matching_a_sealed_graph_is_blocked(self):
+        tasks = self.fresh_tasks(2)
+        export = self.export_with([])
+        request = self.request(export)
+        register(self.root, request, self.key, 'fixture', exposure_manifest=self.manifest, campaign_export=export)
+        evaluate(self.root, digest(request), self.pool(tasks), self.key, 'fixture')
+        from genesis.custodian import screen_for_research
+        moved = relabel(tasks[0], tuple(reversed(range(tasks[0].n))))
+        (self.root / 'sealed_statements').mkdir()
+        (self.root / 'sealed_statements' / 'panel.json').write_text(json.dumps(
+            ['theorem s (x y : Nat) (h : x ≤ y) : x + 0 ≤ y := by omega']))
+        receipt = screen_for_research(self.root, [
+            {'kind': 'graph', 'n': moved.n, 'edges': [list(e) for e in moved.edges]},
+            {'kind': 'lemma', 'text': 'theorem mine (a b : Nat) (q : a ≤ b) : a + 0 ≤ b := by simp_all'},
+            {'kind': 'lemma', 'text': 'theorem other (l : List Nat) : l.length = l.length := rfl'}],
+            self.key, 'fixture')
+        decisions = [d['decision'] for d in verify(receipt, self.public)['decisions']]
+        self.assertEqual(decisions, ['BLOCK', 'BLOCK', 'ALLOW'])
+        self.assertTrue((self.root / 'screening_ledger.jsonl').read_text().count('\n') == 3)

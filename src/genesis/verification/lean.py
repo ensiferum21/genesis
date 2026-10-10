@@ -31,7 +31,7 @@ FORBIDDEN = [r'\bsorry\b', r'\badmit\b', r'(?m)^\s*(?:private\s+|protected\s+)?a
              r'\binitialize\b', r'(?m)^\s*elab\b', r'(?m)^\s*macro(?:_rules)?\b', r'(?m)^\s*syntax\b',
              r'\baddDecl\b', r'\bdebug\.', r'\bLean\.Elab\b', r'\bIO\b', r'@\[\s*init', r'\bbuiltin_\w+',
              r'\bregister_\w+', r'\bLean\.Meta\b', r'\bopen\s+Lean\b', r'\bSystem\.', r'\bunsafeCast\b',
-             r'\bcompile_inductive\b', r'\bdeclare_\w+', r'#print\b', r'#check_failure\b', r'\binclude_str\b']
+             r'\bcompile_inductive\b', r'\bdeclare_\w+', r'#print\b', r'\brun_tac\b', r'#check_failure\b', r'\binclude_str\b']
 LEAN_POLICY = sandbox.SandboxPolicy(wall_seconds=300, cpu_seconds=240, memory_mib=6144, pids=64, work_mib=256,
                                     tmp_mib=64, output_bytes=8 * 1024 * 1024, max_file_mib=128,
                                     open_files=16384, address_space_mib=262144)
@@ -228,3 +228,67 @@ def check_witness_formally(task, witness, proof_source=None):
     spec, meta = witness_spec(task, witness)
     receipt = check(spec, proof_source or default_proof())
     return dict(receipt, obligation=meta, task_sha256=digest(task.model_dump(mode='json')))
+
+
+_FP_HEADER = """import Lean
+set_option autoImplicit false
+set_option relaxedAutoImplicit false
+open Lean Meta
+partial def genesisAnon : Expr → Expr
+  | .forallE _ t b bi => .forallE `_ (genesisAnon t) (genesisAnon b) bi
+  | .lam _ t b bi => .lam `_ (genesisAnon t) (genesisAnon b) bi
+  | .letE _ t v b nd => .letE `_ (genesisAnon t) (genesisAnon v) (genesisAnon b) nd
+  | .app f a => .app (genesisAnon f) (genesisAnon a)
+  | .mdata _ e => genesisAnon e
+  | .proj s i e => .proj s i (genesisAnon e)
+  | e => e
+def genesisFp (tag : String) (n : Name) : MetaM Unit := do
+  let some c := (← getEnv).find? n | return
+  let t ← instantiateMVars c.type
+  -- A type that only elaborated through error recovery contains sorry: no fingerprint.
+  if t.hasSorry || t.hasMVar then return
+  IO.println s!"{tag} {toString (genesisAnon t)}"
+"""
+
+
+def elaborated_fingerprints(statements, *, policy=LEAN_POLICY):
+    """Elaborate statements with the pinned Lean (core library only) and return
+    {index: sha256 of the binder-anonymized elaborated type} for those that elaborate.
+
+    Statement text is untrusted: forbidden constructs are refused and elaboration
+    runs in the sandbox. Call separately for sealed and for candidate statements so
+    candidates never share a sandbox with sealed text.
+    """
+    import hashlib
+    from ..kernel.leakscan import _DECL_NAME
+    try:
+        env = environment()
+    except ToolUnavailable:
+        return {}
+    nonce = secrets.token_hex(12)
+    lines = [_FP_HEADER]
+    usable = {}
+    for i, text in enumerate(statements):
+        if any(re.search(p, text) for p in FORBIDDEN):
+            continue
+        head = re.split(r':=', _DECL_NAME.sub(lambda m: m.group(1) + ' __NAME__', text), maxsplit=1)[0]
+        if re.search(r'\bby\b|\brun_tac\b|\bdecide\b', head):
+            continue  # tactic code inside a statement head would run during elaboration
+        if '__NAME__' not in head:
+            head = 'theorem __NAME__ : ' + head
+        head = head.replace('lemma __NAME__', 'theorem __NAME__').replace('__NAME__', f'genesisS{i}', 1)
+        lines.append(f'{head} := sorry')
+        lines.append(f'#eval genesisFp "GENESIS-{nonce} {i}" `genesisS{i}')
+        usable[i] = True
+    receipt = sandbox.run({'Fp.lean': '\n'.join(lines).encode(),
+                           'fp.sh': b'cd /work/src && lean Fp.lean > /work/out/fp.log 2>&1; exit 0\n'},
+                          ['/bin/sh', '/work/src/fp.sh'], policy, ro_mounts={'/opt/lean': env['toolchain_root']},
+                          env={'PATH_PREFIX': ['/opt/lean/bin'], 'LEAN_PATH': '/opt/lean/lib/lean'})
+    log = receipt.get('_output_bytes', {}).get('fp.log', b'').decode(errors='replace')
+    out = {}
+    for line in log.splitlines():
+        if line.startswith(f'GENESIS-{nonce} '):
+            _, idx, expr = line.split(' ', 2)
+            if int(idx) in usable and int(idx) not in out:
+                out[int(idx)] = hashlib.sha256(expr.encode()).hexdigest()
+    return out
