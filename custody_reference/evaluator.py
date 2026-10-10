@@ -11,6 +11,7 @@ import json
 import os
 import sqlite3
 import stat
+import time
 from pathlib import Path
 from typing import Any
 
@@ -180,8 +181,8 @@ def evaluate_frozen(pool_path: Path, candidate_paths: dict[str,Path], prereg_pat
         raise ValueError('custodian reservation directory must be owner-controlled')
     # Contents are hashed only inside the custodian process; neither the raw
     # tasks nor these low-entropy fingerprints are exported to research.
-    fingerprints = [sha256(canonical({'features':task['features'], 'answer':task['answer']}))
-                    for task in pool]
+    from custody_reference.private_evidence import semantic_keys, append_raw, raw_commitment
+    fingerprints, semantic_hash = semantic_keys(reservation_dir, pool)
     if len(fingerprints) != len(set(fingerprints)):
         raise ValueError('duplicate sealed task contents in one pool')
     db_path = reservation_dir / 'sealed_attempts.sqlite3'
@@ -196,7 +197,12 @@ def evaluate_frozen(pool_path: Path, candidate_paths: dict[str,Path], prereg_pat
         db.execute('CREATE TABLE IF NOT EXISTS attempts ('
                    'prereg_sha256 TEXT PRIMARY KEY, pool_sha256 TEXT NOT NULL, '
                    'task_count INTEGER NOT NULL, state TEXT NOT NULL)')
+        db.execute('CREATE TABLE IF NOT EXISTS semantic_binding(hash TEXT PRIMARY KEY)')
         db.execute('BEGIN IMMEDIATE')
+        prior = db.execute('SELECT hash FROM semantic_binding').fetchall()
+        if prior and prior != [(semantic_hash,)]:
+            raise ValueError('custodian semantic contract changed; exposure cannot be reset')
+        db.execute('INSERT OR IGNORE INTO semantic_binding VALUES (?)',(semantic_hash,))
         db.execute('INSERT INTO attempts VALUES (?,?,?,?)',
                    (sha256(prereg_bytes), sha256(pool_bytes), len(pool),
                     'RESERVED_NO_AUTOMATIC_RETRY'))
@@ -218,14 +224,27 @@ def evaluate_frozen(pool_path: Path, candidate_paths: dict[str,Path], prereg_pat
     for arm in ARMS:
         correct, failures = 0, 0
         for task in pool:
+            start_wall, start_cpu = time.perf_counter_ns(), time.process_time_ns()
+            predicted = None
+            failed = False
+            correct_task = False
+            error = None
             try:
                 predicted = eval_expr(programs[arm], task['features'])
-                if type(predicted) is not int:
-                    failures += 1
-                elif predicted == task['answer']:
-                    correct += 1
-            except (ValueError, KeyError, OverflowError, TypeError):
-                failures += 1
+                failed = type(predicted) is not int
+                correct_task = not failed and predicted == task['answer']
+            except (ValueError, KeyError, OverflowError, TypeError) as exc:
+                failed = True
+                error = type(exc).__name__
+            correct += int(correct_task)
+            failures += int(failed)
+            append_raw(reservation_dir, sha256(prereg_bytes), {
+                'arm':arm,'task_id':task['id'],'features':task['features'],
+                'answer':task['answer'],'program':programs[arm],'predicted':predicted,
+                'correct':correct_task,'failed':failed,'error':error,
+                'wall_ns':time.perf_counter_ns()-start_wall,
+                'cpu_ns':time.process_time_ns()-start_cpu,'budget_charged':1,
+                'automatic_retries':0})
         aggregates[arm] = {'tasks':len(pool),'correct':correct,'execution_failures':failures,
                            'budget_charged':len(pool)}
     public = {'schema':SCHEMA,'campaign_id':prereg['campaign_id'],
@@ -237,6 +256,8 @@ def evaluate_frozen(pool_path: Path, candidate_paths: dict[str,Path], prereg_pat
     manifest = {'schema':SCHEMA,'prereg_sha256':sha256(prereg_bytes),
                 'pool_sha256':sha256(pool_bytes),'candidate_sha256':candidate_hashes,
                 'evaluator_sha256':evaluator_hash,'results_sha256':sha256(public_bytes),
+                'private_evidence_sha256':raw_commitment(reservation_dir,sha256(prereg_bytes)),
+                'semantic_contract_sha256':semantic_hash,
                 'independent_custody_proven':False}
     manifest_bytes = canonical(manifest)
     # Only a trusted custodian should possess this private key; no key is exported.
@@ -258,6 +279,8 @@ def evaluate_frozen(pool_path: Path, candidate_paths: dict[str,Path], prereg_pat
     (out_dir/'aggregate.json').write_bytes(public_bytes)
     (out_dir/'manifest.json').write_bytes(manifest_bytes)
     (out_dir/'receipt.json').write_bytes(canonical(receipt))
+    with sqlite3.connect(db_path) as terminal:
+        terminal.execute("UPDATE attempts SET state='COMPLETE' WHERE prereg_sha256=?",(sha256(prereg_bytes),))
     return {'aggregate':public,'manifest':manifest,'receipt':receipt}
 
 
@@ -298,7 +321,8 @@ def _validate_public_bundle(public: Any, manifest: Any) -> None:
         raise ValueError('unequal per-arm task counts')
     if not isinstance(manifest, dict) or set(manifest) != {
             'schema', 'prereg_sha256', 'pool_sha256', 'candidate_sha256',
-            'evaluator_sha256', 'results_sha256', 'independent_custody_proven'}:
+            'evaluator_sha256', 'results_sha256', 'independent_custody_proven',
+            'private_evidence_sha256', 'semantic_contract_sha256'}:
         raise ValueError('invalid results manifest schema')
     if manifest['schema'] != SCHEMA or manifest['independent_custody_proven'] is not False:
         raise ValueError('untrusted results manifest custody claim')

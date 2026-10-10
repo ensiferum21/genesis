@@ -1,0 +1,13 @@
+...........F......s.......................................................................................................................................................................................................................................................................
+======================================================================
+FAIL: test_research_uid_cannot_read_private_pool_or_key (tests.test_custody_reference.ReferenceCustodyTests.test_research_uid_cannot_read_private_pool_or_key)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/scratch/822c1a9908ef/genesis/tests/test_custody_reference.py", line 177, in test_research_uid_cannot_read_private_pool_or_key
+    self.assertIn('PermissionError',proc.stderr)
+AssertionError: 'PermissionError' not found in 'setpriv: setresuid failed: Invalid argument\n'
+
+----------------------------------------------------------------------
+Ran 282 tests in 58.529s
+
+FAILED (failures=1, skipped=1)

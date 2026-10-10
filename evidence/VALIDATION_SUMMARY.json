@@ -1,0 +1,93 @@
+{
+  "status": "DEVELOPMENT_CHECKPOINT_VERIFIED",
+  "scientific_release": false,
+  "source_sha256": "b996d16eef9be4a4e981b482a46fa018625d5be23edbe9246d2f32b22d958b60",
+  "test_suites": [
+    {
+      "name": "REV18",
+      "executed": 282,
+      "passed": 280,
+      "skipped": 2,
+      "exit_code": 0,
+      "log": "evidence/final-rev18.stderr"
+    },
+    {
+      "name": "Batch42",
+      "executed": 262,
+      "passed": 262,
+      "skipped": 0,
+      "exit_code": 0,
+      "log": "evidence/final-batch42.stderr"
+    },
+    {
+      "name": "new integration",
+      "executed": 74,
+      "passed": 72,
+      "skipped": 2,
+      "exit_code": 0,
+      "log": "evidence/final-new-tests.stderr"
+    }
+  ],
+  "counts_are_test_executions_not_unique_cases": true,
+  "campaign": "runs/dev_three_generations_v2",
+  "phase": "CANDIDATE_FROZEN",
+  "campaign_exit_code": 0,
+  "attempts_by_kind": {
+    "solver": 504,
+    "exact-check": 96,
+    "replay": 10
+  },
+  "attempts_by_status": {
+    "SUCCESS": 610
+  },
+  "original_campaign_attempts": 600,
+  "replayed_trials": 10,
+  "replay_all_matched": true,
+  "scientific_generations_confirmed": 0,
+  "solver_measurements": {
+    "queries": 23496,
+    "sum_process_cpu_ns": 142307500433,
+    "sum_wall_ns": 168792754456,
+    "speedup_claim": false
+  },
+  "integrity": {
+    "events": 1393,
+    "head": "7b0f0a70e0297c35832080b8c31b47a71f5bdc1ab88c34c1ab59052bf6dab8da",
+    "integrity": "LOCAL_HASH_CHECKED"
+  },
+  "database_checks": {
+    "runs/dev_three_generations_v2/campaign.sqlite3": [
+      [
+        "ok"
+      ]
+    ],
+    "runs/dev_three_generations_v2/snapshots/export-fbcad0e96b64878e.sqlite3": [
+      [
+        "ok"
+      ]
+    ],
+    "runs/dev_three_generations_v2/snapshots/g0.sqlite3": [
+      [
+        "ok"
+      ]
+    ],
+    "runs/dev_three_generations_v2/snapshots/g1.sqlite3": [
+      [
+        "ok"
+      ]
+    ],
+    "runs/dev_three_generations_v2/snapshots/g2.sqlite3": [
+      [
+        "ok"
+      ]
+    ]
+  },
+  "public_replication_export": {
+    "files": 2770,
+    "crc_and_hashes_verified": true
+  },
+  "remaining_storage_risk": "prior WAL live-database corruption root cause unresolved; mitigation and fresh-run verification passed",
+  "formal_verification": false,
+  "independent_custody": false,
+  "external_replication": false
+}

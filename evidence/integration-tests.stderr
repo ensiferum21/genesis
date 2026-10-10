@@ -1,0 +1,22 @@
+..E...........
+======================================================================
+ERROR: test_end_to_end_campaign_replay_request_and_no_promotion (tests_genesis.test_research_runtime.RuntimeTests.test_end_to_end_campaign_replay_request_and_no_promotion)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/scratch/822c1a9908ef/genesis/tests_genesis/test_research_runtime.py", line 81, in test_end_to_end_campaign_replay_request_and_no_promotion
+    summary=c.run()
+            ^^^^^^^
+  File "/workspace/scratch/822c1a9908ef/genesis/src/genesis/campaign.py", line 161, in run
+    child,summary,rows=self.improve(dev,parent,policy,generation,seed+2)
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/scratch/822c1a9908ef/genesis/src/genesis/campaign.py", line 133, in improve
+    self.store.save('world',wid,{**asdict(ecology.worlds[wid]),'program':candidate.model_dump(mode='json')})
+  File "/workspace/scratch/822c1a9908ef/genesis/src/genesis/store.py", line 108, in save
+    if existing and existing[0]!=h: raise ValueError('immutable entity identity reused')
+                                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: immutable entity identity reused
+
+----------------------------------------------------------------------
+Ran 14 tests in 6.708s
+
+FAILED (errors=1)

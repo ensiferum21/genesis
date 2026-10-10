@@ -1,0 +1,18 @@
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/workspace/scratch/822c1a9908ef/genesis/src/genesis/__main__.py", line 2, in <module>
+    main()
+  File "/workspace/scratch/822c1a9908ef/genesis/src/genesis/cli.py", line 90, in main
+    with Campaign(args.root) as c:
+         ^^^^^^^^^^^^^^^^^^^
+  File "/workspace/scratch/822c1a9908ef/genesis/src/genesis/campaign.py", line 34, in __init__
+    self.config=Config.model_validate_json((self.root/'resolved_config.json').read_bytes())
+                                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/pathlib.py", line 1019, in read_bytes
+    with self.open(mode='rb') as f:
+         ^^^^^^^^^^^^^^^^^^^^
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/pathlib.py", line 1013, in open
+    return io.open(self, mode, buffering, encoding, errors, newline)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: '/workspace/scratch/822c1a9908ef/genesis/runs/dev_three_generations/resolved_config.json'

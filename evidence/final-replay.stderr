@@ -1,0 +1,17 @@
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/workspace/scratch/822c1a9908ef/genesis/src/genesis/__main__.py", line 2, in <module>
+    main()
+  File "/workspace/scratch/822c1a9908ef/genesis/src/genesis/cli.py", line 90, in main
+    with Campaign(args.root) as c:
+         ^^^^^^^^^^^^^^^^^^^
+  File "/workspace/scratch/822c1a9908ef/genesis/src/genesis/campaign.py", line 33, in __init__
+    self.store=Store(root);self.root=self.store.root
+               ^^^^^^^^^^^
+  File "/workspace/scratch/822c1a9908ef/genesis/src/genesis/store.py", line 39, in __init__
+    self.verify()
+  File "/workspace/scratch/822c1a9908ef/genesis/src/genesis/store.py", line 183, in verify
+    actual_state={k:json.loads(v) for k,v in self.db.execute('SELECT key,value FROM state')}
+                                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+sqlite3.DatabaseError: database disk image is malformed

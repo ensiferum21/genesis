@@ -41,6 +41,8 @@ class ReferenceCustodyTests(unittest.TestCase):
                                           'campaign_id':'synthetic-dev-only'}))
         self.reservation_dir=self.root/'reservations'
         self.reservation_dir.mkdir(mode=0o700); self.reservation_dir.chmod(0o700)
+        from custody_reference.private_evidence import configure_semantics
+        configure_semantics(self.reservation_dir,domain='synthetic-linear-v1',required_features=['x'],ignored_features=['unused'])
         self.private=Ed25519PrivateKey.generate()
         self.key=self.root/'private_key.pem'
         self.key.write_bytes(self.private.private_bytes(serialization.Encoding.PEM,
@@ -165,6 +167,9 @@ class ReferenceCustodyTests(unittest.TestCase):
                          'requires Linux root and setpriv for real UID permission test')
     def test_research_uid_cannot_read_private_pool_or_key(self):
         # Test only a same-host DAC barrier; root/operator and side channels remain trusted.
+        probe=subprocess.run(['/usr/bin/setpriv','--reuid=65534','--regid=65534','--clear-groups','/usr/bin/true'],capture_output=True,text=True)
+        if probe.returncode and 'setresuid failed' in probe.stderr:
+            self.skipTest('environment cannot switch to research UID; isolation remains UNVERIFIED')
         self.root.chmod(0o700)
         self.pool.chmod(0o600)
         self.key.chmod(0o600)

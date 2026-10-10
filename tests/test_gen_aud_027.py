@@ -41,6 +41,8 @@ class TestCustodianTaskReservation(unittest.TestCase):
             serialization.NoEncryption()))
         self.reservation_dir=self.root/'reservations'
         self.reservation_dir.mkdir(mode=0o700); self.reservation_dir.chmod(0o700)
+        from custody_reference.private_evidence import configure_semantics
+        configure_semantics(self.reservation_dir,domain='synthetic-linear-v1',required_features=['x'],ignored_features=['unused'])
 
     def run_eval(self, name, *, pool=None, prereg=None, reservation_dir=None):
         x = self

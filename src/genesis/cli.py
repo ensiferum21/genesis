@@ -1,0 +1,98 @@
+"""One command line for the integrated offline runtime and reviewable exports."""
+import argparse
+import json
+from pathlib import Path
+import zipfile
+from .common import canonical,digest,code_identity,load_json
+from .models import Config,SolverProgram,GraphTask
+from .campaign import Campaign
+from .store import Store
+from .formal import doctor,export_witness
+from .dsl import baseline_programs
+
+
+def request_bundle(campaign,task_count=300):
+    campaign._check_frozen_environment()
+    s=campaign.store;program=s.state('latest_program')
+    if program is None or s.state('phase')!='CANDIDATE_FROZEN':raise ValueError('completed frozen candidate required')
+    source=s.state('source_hash')
+    version={'program':program,'source':source,'environment':__import__('genesis.campaign',fromlist=['environment']).environment(),
+             'config':campaign.config.model_dump(mode='json'),'library':s.state('summary')['retained_dev_capabilities']}
+    strongest_name=s.state('summary')['generations'][-1]['baseline']
+    request={'schema':'genesis-evaluation-request-v1','campaign_id':s.state('campaign_id'),
+        'candidate_version':digest(version),'source_hash':source,
+        'programs':{'baseline':baseline_programs()[strongest_name].model_dump(mode='json'),'candidate':program,
+                    'exchange':baseline_programs()['exchange'].model_dump(mode='json'),
+                    'low_cycle':baseline_programs()['low_cycle'].model_dump(mode='json')},
+        'limits':campaign.config.limits.model_dump(mode='json'),'seed':campaign.config.seed,
+        'task_count':task_count,'domain':campaign.config.domain,
+        'analysis':{'primary':'paired-edge-count','alpha':0.05,'family_sensitivity':True,'hypotheses':1},
+        'exposed_graph_fingerprints':s.state('exposure_fingerprints'),
+        'expected_evaluator_hash':source}
+    from .custodian import validate_request
+    validate_request(request)
+    s.save('frozen_request',digest(request),request)
+    path=campaign.root/'exports/evaluation_request.json'
+    if path.exists() and path.read_bytes()!=canonical(request):raise FileExistsError('request already exported with different scope')
+    path.write_bytes(canonical(request));return path
+
+
+def export_replication(root,destination):
+    root=Path(root);destination=Path(destination)
+    if destination.exists():raise FileExistsError(destination)
+    with Store(root) as s:
+        s.verify();snapshot=s.snapshot('export-'+digest({'events':s.verify()['head']})[:16]+'.sqlite3')
+        s.recover_export()
+    manifest={}
+    from .common import bytes_hash
+    files=[p for p in root.rglob('*') if p.is_file() and p.name not in ('writer.lock','campaign.sqlite3','campaign.sqlite3-wal','campaign.sqlite3-shm')]
+    for p in files:
+        if p.is_symlink():raise ValueError('symlink in replication data')
+        manifest[str(p.relative_to(root))]=bytes_hash(p.read_bytes())
+    with zipfile.ZipFile(destination,'x',zipfile.ZIP_DEFLATED) as z:
+        for p in files:z.write(p,str(p.relative_to(root)))
+        z.writestr('MANIFEST.json',canonical({'files':manifest,'root':digest(manifest),'scope':'public offline campaign'}))
+    return {'path':str(destination.resolve()),'files':len(files),'root':digest(manifest)}
+
+
+def main(argv=None):
+    ap=argparse.ArgumentParser(prog='genesis');subs=ap.add_subparsers(dest='command',required=True)
+    p=subs.add_parser('init');p.add_argument('root',type=Path);p.add_argument('--config',type=Path)
+    subs.add_parser('doctor')
+    p=subs.add_parser('smoke');p.add_argument('root',type=Path);p.add_argument('--seed',type=int,default=20261010)
+    p=subs.add_parser('campaign');p.add_argument('action',choices=['run','status']);p.add_argument('root',type=Path)
+    p=subs.add_parser('world');p.add_argument('action',choices=['list']);p.add_argument('root',type=Path)
+    p=subs.add_parser('trial');p.add_argument('action',choices=['replay']);p.add_argument('root',type=Path);p.add_argument('--limit',type=int,default=10)
+    p=subs.add_parser('artifact');p.add_argument('action',choices=['verify']);p.add_argument('root',type=Path);p.add_argument('hash')
+    p=subs.add_parser('evidence');p.add_argument('action',choices=['show']);p.add_argument('root',type=Path)
+    p=subs.add_parser('freeze');p.add_argument('action',choices=['candidate']);p.add_argument('root',type=Path);p.add_argument('--tasks',type=int,default=300)
+    p=subs.add_parser('report');p.add_argument('action',choices=['build']);p.add_argument('root',type=Path)
+    p=subs.add_parser('export');p.add_argument('action',choices=['replication-bundle']);p.add_argument('root',type=Path);p.add_argument('destination',type=Path)
+    p=subs.add_parser('formal');p.add_argument('task',type=Path);p.add_argument('witness',type=Path);p.add_argument('destination',type=Path)
+    args=ap.parse_args(argv)
+    if args.command=='doctor':result=doctor()
+    elif args.command=='init':
+        cfg=Config.model_validate_json(args.config.read_bytes()) if args.config else Config()
+        result={'root':str(Campaign.initialize(args.root,cfg).resolve())}
+    elif args.command=='smoke':
+        cfg=Config(seed=args.seed,generations=1,tasks_per_panel=3,proposals_per_epoch=2,research_trials=8)
+        Campaign.initialize(args.root,cfg)
+        with Campaign(args.root) as c:result=c.run()
+    elif args.command=='formal':
+        result=export_witness(GraphTask.model_validate_json(args.task.read_bytes()),load_json(args.witness),args.destination)
+    elif args.command=='export':result=export_replication(args.root,args.destination)
+    elif args.command in ('world','artifact','evidence'):
+        with Store(args.root) as s:
+            if args.command=='world':result=[s.get(h) for (h,) in s.db.execute("SELECT object_hash FROM entities WHERE kind='world'")]
+            elif args.command=='artifact':result={'sha256':args.hash,'bytes':len(s.get_bytes(args.hash)),'valid':True}
+            else:result={'integrity':s.verify(),'summary':s.state('summary'),'promotion_allowed':False}
+    else:
+        with Campaign(args.root) as c:
+            if args.command=='campaign':result=c.run() if args.action=='run' else {'phase':c.store.state('phase'),'summary':c.store.state('summary')}
+            elif args.command=='trial':result=c.replay(args.limit)
+            elif args.command=='freeze':result={'request_path':str(request_bundle(c,args.tasks)),'promotion_allowed':False}
+            elif args.command=='report':c.report();result={'report':str(c.root/'reports/report.md')}
+    print(json.dumps(result,indent=2,sort_keys=True))
+
+
+if __name__=='__main__':main()

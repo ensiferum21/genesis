@@ -43,6 +43,8 @@ class SignedPartialRunTests(unittest.TestCase):
         self.public = base64.b64encode(self.key.public_key().public_bytes(
             serialization.Encoding.Raw, serialization.PublicFormat.Raw)).decode()
         self.reservations = self.root/'reservations'; self.reservations.mkdir(mode=0o700); self.reservations.chmod(0o700)
+        from custody_reference.private_evidence import configure_semantics
+        configure_semantics(self.reservations,domain='synthetic-linear-v1',required_features=['x'],ignored_features=['unused'])
         self.out = self.root / 'out'
         evaluate_frozen(self.pool, self.candidates, self.prereg, keyfile, self.out,
                         custodian_id='expected-custodian', reservation_dir=self.reservations)

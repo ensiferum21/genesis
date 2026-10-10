@@ -44,6 +44,8 @@ def smoke(output: Path) -> dict:
         public=base64.b64encode(key.public_key().public_bytes(
             serialization.Encoding.Raw,serialization.PublicFormat.Raw)).decode()
         reservations=root/'reservations';reservations.mkdir(mode=0o700); reservations.chmod(0o700)
+        from custody_reference.private_evidence import configure_semantics
+        configure_semantics(reservations,domain='synthetic-linear-v1',required_features=['x'],ignored_features=['unused'])
         result=evaluate_frozen(pool,candidates,prereg,private_key,output,
             custodian_id='LOCAL_TEST_ONLY_NOT_INDEPENDENT',reservation_dir=reservations)
         verification=verify_bundle(output,public,

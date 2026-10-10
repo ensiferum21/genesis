@@ -26,11 +26,17 @@ def measure(fn, n, host, *, seed, budget):
         _,peak=tracemalloc.get_traced_memory()
     finally:
         tracemalloc.stop()
-    if not verify(n,host,result['selected']):
+    selected=normalize(n,result['selected'])
+    if type(result.get('size')) is not int or result['size'] != len(selected):
+        raise RuntimeError('claimed size differs from normalized witness')
+    if type(result.get('queries')) is not int or result['queries'] < 0:
+        raise RuntimeError('invalid nonnegative query charge')
+    if not verify(n,host,selected):
         raise RuntimeError('invalid solver witness')
     if result['queries']>budget:
         raise RuntimeError('query budget exceeded')
-    return {'size':result['size'],'queries':result['queries'],
+    return {'size':len(selected),'selected':selected,'queries':result['queries'],
+            'query_accounting':'LEGACY_SELF_REPORTED_NOT_PROMOTABLE',
             'cpu_ns':cpu,'wall_ns':wall,'peak_traced_bytes':peak,
             'witness_sha256':hashlib.sha256(json.dumps(result['selected']).encode()).hexdigest()}
 

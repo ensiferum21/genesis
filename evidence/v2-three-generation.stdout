@@ -1,0 +1,815 @@
+{
+  "claim_ceiling": "FINITE_INSTANCE_RESULTS_AND_DEV_DIAGNOSTICS",
+  "external_replication": false,
+  "generations": [
+    {
+      "baseline": "multistart",
+      "better_improver_diagnostic": {
+        "claim": "DEV_ONLY",
+        "confirmation_p_value": null,
+        "exploratory_sign_p": 1.0,
+        "family_deltas": {
+          "bipartite": 0,
+          "erdos_dense": 0
+        },
+        "family_sensitivity_p": 1.0,
+        "losses": 0,
+        "n": 8,
+        "ties": 8,
+        "wins": 0
+      },
+      "causal_controls": {
+        "ablation_loss": 0,
+        "candidate_gain": 0,
+        "causal_claim_supported": false,
+        "placebo_delta": 0,
+        "status": "DEV_INTERVENTION_DIAGNOSTIC"
+      },
+      "generation": 0,
+      "public_panel_freshness": "exact graph isomorphism disjoint within campaign",
+      "research": {
+        "adaptive": {
+          "all_candidate_ids": [
+            "4f4788bd3750ddc1a8b04b59a21a90cd08dc3cf5bb2b8b0eee707fa5196e031e",
+            "46596dbfeaaf97fbdd42ecbc6b9aa74b080114d431c187c33aa7999b39a853d8",
+            "da15acde3b9e8b301ec85fb90ddc651564808d7cc44ae9c9560cbee5aa00da05",
+            "e0643902f1ecdb18951dacfc185870c92c457834965ae492847564dc4105ae23"
+          ],
+          "all_costs_retained": true,
+          "candidate_programs": [
+            {
+              "componentwise": false,
+              "exchange": false,
+              "rounds": 32,
+              "schema_version": "graph-priority-v1",
+              "weights": [
+                0,
+                0,
+                0,
+                0
+              ]
+            },
+            {
+              "componentwise": false,
+              "exchange": true,
+              "rounds": 32,
+              "schema_version": "graph-priority-v1",
+              "weights": [
+                0,
+                0,
+                0,
+                0
+              ]
+            },
+            {
+              "componentwise": false,
+              "exchange": true,
+              "rounds": 32,
+              "schema_version": "graph-priority-v1",
+              "weights": [
+                0,
+                0,
+                0,
+                1
+              ]
+            },
+            {
+              "componentwise": false,
+              "exchange": false,
+              "rounds": 2,
+              "schema_version": "graph-priority-v1",
+              "weights": [
+                0,
+                3,
+                0,
+                0
+              ]
+            }
+          ],
+          "effects": [
+            "USES_DEV_DATA"
+          ],
+          "frontier": [
+            "03252eeace269a4167e601fbcb7a40ea3e972ec55db462552deffa9f1f7f79db"
+          ],
+          "generation": 0,
+          "mutation_weights": [
+            1,
+            1,
+            1,
+            1
+          ],
+          "outer_trial_cap": 32,
+          "policy": "adaptive",
+          "scores": [
+            [
+              58,
+              0,
+              -109
+            ],
+            [
+              59,
+              0,
+              -108
+            ],
+            [
+              60,
+              0,
+              -108
+            ],
+            [
+              60,
+              0,
+              -108
+            ]
+          ],
+          "seed": 20261012,
+          "trials": 32,
+          "winner": 2
+        },
+        "uniform": {
+          "all_candidate_ids": [
+            "4f4788bd3750ddc1a8b04b59a21a90cd08dc3cf5bb2b8b0eee707fa5196e031e",
+            "46596dbfeaaf97fbdd42ecbc6b9aa74b080114d431c187c33aa7999b39a853d8",
+            "b5b85d678680b6210c36f28abffc4482b4b182db0f23e815e74529502a8121cc",
+            "205e4208b14de0eac4151e0b503a46a65b639c856f31c9d81cdab36165892aec"
+          ],
+          "all_costs_retained": true,
+          "candidate_programs": [
+            {
+              "componentwise": false,
+              "exchange": false,
+              "rounds": 32,
+              "schema_version": "graph-priority-v1",
+              "weights": [
+                0,
+                0,
+                0,
+                0
+              ]
+            },
+            {
+              "componentwise": false,
+              "exchange": true,
+              "rounds": 32,
+              "schema_version": "graph-priority-v1",
+              "weights": [
+                0,
+                0,
+                0,
+                0
+              ]
+            },
+            {
+              "componentwise": false,
+              "exchange": false,
+              "rounds": 2,
+              "schema_version": "graph-priority-v1",
+              "weights": [
+                0,
+                -3,
+                3,
+                -3
+              ]
+            },
+            {
+              "componentwise": false,
+              "exchange": false,
+              "rounds": 4,
+              "schema_version": "graph-priority-v1",
+              "weights": [
+                -2,
+                0,
+                -3,
+                -2
+              ]
+            }
+          ],
+          "effects": [
+            "USES_DEV_DATA"
+          ],
+          "frontier": [
+            "73597f55204f23bf4724f1e6ae8d325328db0f0be7f1650af59ebb9b78769e7b",
+            "acdd0c33fd62a632b7c82cd742c3af09e24575d28fee076741f72f0559f475dc"
+          ],
+          "generation": 0,
+          "mutation_weights": [
+            1,
+            1,
+            1,
+            1
+          ],
+          "outer_trial_cap": 32,
+          "policy": "uniform",
+          "scores": [
+            [
+              58,
+              0,
+              -109
+            ],
+            [
+              59,
+              0,
+              -108
+            ],
+            [
+              56,
+              0,
+              -110
+            ],
+            [
+              56,
+              0,
+              -111
+            ]
+          ],
+          "seed": 20261012,
+          "trials": 32,
+          "winner": 1
+        }
+      },
+      "retained_in_dev": true,
+      "scientifically_confirmed": false,
+      "selected_policy": "uniform",
+      "solver_comparison": {
+        "claim": "DEV_ONLY",
+        "confirmation_p_value": null,
+        "exploratory_sign_p": 0.25,
+        "family_deltas": {
+          "bipartite": 0,
+          "erdos_dense": 2
+        },
+        "family_sensitivity_p": 0.5,
+        "losses": 0,
+        "n": 8,
+        "ties": 6,
+        "wins": 2
+      },
+      "transfer": {
+        "claim": "DEV_ONLY",
+        "confirmation_p_value": null,
+        "exploratory_sign_p": 1.0,
+        "family_deltas": {
+          "bipartite": 0,
+          "erdos_dense": 0,
+          "erdos_sparse": 0,
+          "planted_cluster": 0
+        },
+        "family_sensitivity_p": 1.0,
+        "losses": 0,
+        "n": 8,
+        "ties": 8,
+        "wins": 0
+      },
+      "version": "89ae868d4a2d6bc3eadcd46e231cb39dbc3a974aa8f3e6b79e7227fe862fe255"
+    },
+    {
+      "baseline": "multistart",
+      "better_improver_diagnostic": {
+        "claim": "DEV_ONLY",
+        "confirmation_p_value": null,
+        "exploratory_sign_p": 1.0,
+        "family_deltas": {
+          "bipartite": 0,
+          "erdos_dense": 0,
+          "erdos_sparse": 0,
+          "planted_cluster": 0
+        },
+        "family_sensitivity_p": 1.0,
+        "losses": 0,
+        "n": 8,
+        "ties": 8,
+        "wins": 0
+      },
+      "causal_controls": {
+        "ablation_loss": 0,
+        "candidate_gain": 0,
+        "causal_claim_supported": false,
+        "placebo_delta": 0,
+        "status": "DEV_INTERVENTION_DIAGNOSTIC"
+      },
+      "generation": 1,
+      "public_panel_freshness": "exact graph isomorphism disjoint within campaign",
+      "research": {
+        "adaptive": {
+          "all_candidate_ids": [
+            "46596dbfeaaf97fbdd42ecbc6b9aa74b080114d431c187c33aa7999b39a853d8",
+            "46596dbfeaaf97fbdd42ecbc6b9aa74b080114d431c187c33aa7999b39a853d8",
+            "da15acde3b9e8b301ec85fb90ddc651564808d7cc44ae9c9560cbee5aa00da05",
+            "f7642817f83f4a69269585c4f750651abd1f880e8a91d8f66f07d47d5701cce1"
+          ],
+          "all_costs_retained": true,
+          "candidate_programs": [
+            {
+              "componentwise": false,
+              "exchange": true,
+              "rounds": 32,
+              "schema_version": "graph-priority-v1",
+              "weights": [
+                0,
+                0,
+                0,
+                0
+              ]
+            },
+            {
+              "componentwise": false,
+              "exchange": true,
+              "rounds": 32,
+              "schema_version": "graph-priority-v1",
+              "weights": [
+                0,
+                0,
+                0,
+                0
+              ]
+            },
+            {
+              "componentwise": false,
+              "exchange": true,
+              "rounds": 32,
+              "schema_version": "graph-priority-v1",
+              "weights": [
+                0,
+                0,
+                0,
+                1
+              ]
+            },
+            {
+              "componentwise": false,
+              "exchange": false,
+              "rounds": 2,
+              "schema_version": "graph-priority-v1",
+              "weights": [
+                0,
+                1,
+                0,
+                0
+              ]
+            }
+          ],
+          "effects": [
+            "USES_DEV_DATA"
+          ],
+          "frontier": [
+            "a7431918bfbc840e969f2851ebdaf63251db3e5400a630dcc6087fa9f40a82f0"
+          ],
+          "generation": 1,
+          "mutation_weights": [
+            1,
+            2,
+            1,
+            2
+          ],
+          "outer_trial_cap": 32,
+          "policy": "adaptive",
+          "scores": [
+            [
+              54,
+              0,
+              -108
+            ],
+            [
+              54,
+              0,
+              -108
+            ],
+            [
+              54,
+              0,
+              -108
+            ],
+            [
+              54,
+              0,
+              -108
+            ]
+          ],
+          "seed": 20361012,
+          "trials": 32,
+          "winner": 0
+        },
+        "uniform": {
+          "all_candidate_ids": [
+            "46596dbfeaaf97fbdd42ecbc6b9aa74b080114d431c187c33aa7999b39a853d8",
+            "46596dbfeaaf97fbdd42ecbc6b9aa74b080114d431c187c33aa7999b39a853d8",
+            "a542eed25ee37f3559946ad5fe6b2a1cab9ce311dcc3f04c5679be77b4a60a83",
+            "4b5c60a0cf76fe0b7a8149e2fe33961d1f2b84138768e2c6bc265d3f29c7b7c0"
+          ],
+          "all_costs_retained": true,
+          "candidate_programs": [
+            {
+              "componentwise": false,
+              "exchange": true,
+              "rounds": 32,
+              "schema_version": "graph-priority-v1",
+              "weights": [
+                0,
+                0,
+                0,
+                0
+              ]
+            },
+            {
+              "componentwise": false,
+              "exchange": true,
+              "rounds": 32,
+              "schema_version": "graph-priority-v1",
+              "weights": [
+                0,
+                0,
+                0,
+                0
+              ]
+            },
+            {
+              "componentwise": true,
+              "exchange": false,
+              "rounds": 4,
+              "schema_version": "graph-priority-v1",
+              "weights": [
+                -1,
+                2,
+                1,
+                -3
+              ]
+            },
+            {
+              "componentwise": false,
+              "exchange": true,
+              "rounds": 2,
+              "schema_version": "graph-priority-v1",
+              "weights": [
+                -1,
+                2,
+                1,
+                1
+              ]
+            }
+          ],
+          "effects": [
+            "USES_DEV_DATA"
+          ],
+          "frontier": [
+            "a51f36b644525ea1ed844a3d5358a3459287efb284475ea9405494421850065c"
+          ],
+          "generation": 1,
+          "mutation_weights": [
+            1,
+            2,
+            1,
+            2
+          ],
+          "outer_trial_cap": 32,
+          "policy": "uniform",
+          "scores": [
+            [
+              54,
+              0,
+              -108
+            ],
+            [
+              54,
+              0,
+              -108
+            ],
+            [
+              54,
+              0,
+              -109
+            ],
+            [
+              54,
+              0,
+              -108
+            ]
+          ],
+          "seed": 20361012,
+          "trials": 32,
+          "winner": 0
+        }
+      },
+      "retained_in_dev": true,
+      "scientifically_confirmed": false,
+      "selected_policy": "uniform",
+      "solver_comparison": {
+        "claim": "DEV_ONLY",
+        "confirmation_p_value": null,
+        "exploratory_sign_p": 1.0,
+        "family_deltas": {
+          "bipartite": 0,
+          "erdos_dense": 0,
+          "erdos_sparse": 0,
+          "planted_cluster": 0
+        },
+        "family_sensitivity_p": 1.0,
+        "losses": 0,
+        "n": 8,
+        "ties": 8,
+        "wins": 0
+      },
+      "transfer": {
+        "claim": "DEV_ONLY",
+        "confirmation_p_value": null,
+        "exploratory_sign_p": 0.5,
+        "family_deltas": {
+          "bipartite": 0,
+          "erdos_dense": 1,
+          "erdos_sparse": 0,
+          "planted_cluster": 0
+        },
+        "family_sensitivity_p": 0.5,
+        "losses": 0,
+        "n": 8,
+        "ties": 7,
+        "wins": 1
+      },
+      "version": "fab46ed6ca03d306a3b67104de2cbb2d4dcab0630b0dcf22d97dcc2212f744be"
+    },
+    {
+      "baseline": "multistart",
+      "better_improver_diagnostic": {
+        "claim": "DEV_ONLY",
+        "confirmation_p_value": null,
+        "exploratory_sign_p": 1.0,
+        "family_deltas": {
+          "erdos_dense": 0,
+          "erdos_sparse": 0,
+          "planted_cluster": 0
+        },
+        "family_sensitivity_p": 1.0,
+        "losses": 0,
+        "n": 8,
+        "ties": 8,
+        "wins": 0
+      },
+      "causal_controls": {
+        "ablation_loss": 0,
+        "candidate_gain": 0,
+        "causal_claim_supported": false,
+        "placebo_delta": 0,
+        "status": "DEV_INTERVENTION_DIAGNOSTIC"
+      },
+      "generation": 2,
+      "public_panel_freshness": "exact graph isomorphism disjoint within campaign",
+      "research": {
+        "adaptive": {
+          "all_candidate_ids": [
+            "46596dbfeaaf97fbdd42ecbc6b9aa74b080114d431c187c33aa7999b39a853d8",
+            "46596dbfeaaf97fbdd42ecbc6b9aa74b080114d431c187c33aa7999b39a853d8",
+            "4acaac09ac88b1422a0a5c30bf7df6789d22efe3dbc2468ed15b721e91532037",
+            "d54172c3994cec15856719bf805aa34ab7a74ce0d3c69fae0190197a2bb74ff1"
+          ],
+          "all_costs_retained": true,
+          "candidate_programs": [
+            {
+              "componentwise": false,
+              "exchange": true,
+              "rounds": 32,
+              "schema_version": "graph-priority-v1",
+              "weights": [
+                0,
+                0,
+                0,
+                0
+              ]
+            },
+            {
+              "componentwise": false,
+              "exchange": true,
+              "rounds": 32,
+              "schema_version": "graph-priority-v1",
+              "weights": [
+                0,
+                0,
+                0,
+                0
+              ]
+            },
+            {
+              "componentwise": false,
+              "exchange": false,
+              "rounds": 32,
+              "schema_version": "graph-priority-v1",
+              "weights": [
+                1,
+                0,
+                0,
+                0
+              ]
+            },
+            {
+              "componentwise": true,
+              "exchange": true,
+              "rounds": 32,
+              "schema_version": "graph-priority-v1",
+              "weights": [
+                0,
+                0,
+                0,
+                1
+              ]
+            }
+          ],
+          "effects": [
+            "USES_DEV_DATA"
+          ],
+          "frontier": [
+            "81abbf946415144b49584f8f8f81599137b44cbf7b9830ea7e821cbe32e424d2",
+            "292853e63db42612151a52af72131639ef152f9249e613104193d4f10975b9b0"
+          ],
+          "generation": 2,
+          "mutation_weights": [
+            1,
+            2,
+            1,
+            2
+          ],
+          "outer_trial_cap": 32,
+          "policy": "adaptive",
+          "scores": [
+            [
+              57,
+              0,
+              -108
+            ],
+            [
+              57,
+              0,
+              -108
+            ],
+            [
+              56,
+              0,
+              -109
+            ],
+            [
+              58,
+              0,
+              -107
+            ]
+          ],
+          "seed": 20461012,
+          "trials": 32,
+          "winner": 3
+        },
+        "uniform": {
+          "all_candidate_ids": [
+            "46596dbfeaaf97fbdd42ecbc6b9aa74b080114d431c187c33aa7999b39a853d8",
+            "46596dbfeaaf97fbdd42ecbc6b9aa74b080114d431c187c33aa7999b39a853d8",
+            "d8f540ee1dea28bf97af824533138bd2ae1eaf0679a02223d2c449bbc8af8471",
+            "1c1d27b55b6ea1c46ded43f56d937d4e51399f099a90d130dca5b5d1f5eed7fd"
+          ],
+          "all_costs_retained": true,
+          "candidate_programs": [
+            {
+              "componentwise": false,
+              "exchange": true,
+              "rounds": 32,
+              "schema_version": "graph-priority-v1",
+              "weights": [
+                0,
+                0,
+                0,
+                0
+              ]
+            },
+            {
+              "componentwise": false,
+              "exchange": true,
+              "rounds": 32,
+              "schema_version": "graph-priority-v1",
+              "weights": [
+                0,
+                0,
+                0,
+                0
+              ]
+            },
+            {
+              "componentwise": false,
+              "exchange": false,
+              "rounds": 32,
+              "schema_version": "graph-priority-v1",
+              "weights": [
+                -2,
+                -2,
+                1,
+                1
+              ]
+            },
+            {
+              "componentwise": false,
+              "exchange": true,
+              "rounds": 32,
+              "schema_version": "graph-priority-v1",
+              "weights": [
+                3,
+                3,
+                1,
+                0
+              ]
+            }
+          ],
+          "effects": [
+            "USES_DEV_DATA"
+          ],
+          "frontier": [
+            "df7851da800f10e6dad9d932447d777a2e361bdd84d01e86e9fa799e3465abeb",
+            "da17b92aaf550e47e6938d0d8ccfd6e1a6c8ca3bf6522953920c3bcae82c8795"
+          ],
+          "generation": 2,
+          "mutation_weights": [
+            1,
+            2,
+            1,
+            2
+          ],
+          "outer_trial_cap": 32,
+          "policy": "uniform",
+          "scores": [
+            [
+              57,
+              0,
+              -108
+            ],
+            [
+              57,
+              0,
+              -108
+            ],
+            [
+              55,
+              0,
+              -111
+            ],
+            [
+              58,
+              0,
+              -108
+            ]
+          ],
+          "seed": 20461012,
+          "trials": 32,
+          "winner": 3
+        }
+      },
+      "retained_in_dev": true,
+      "scientifically_confirmed": false,
+      "selected_policy": "uniform",
+      "solver_comparison": {
+        "claim": "DEV_ONLY",
+        "confirmation_p_value": null,
+        "exploratory_sign_p": 1.0,
+        "family_deltas": {
+          "erdos_dense": 0,
+          "erdos_sparse": 0,
+          "planted_cluster": 0
+        },
+        "family_sensitivity_p": 1.0,
+        "losses": 0,
+        "n": 8,
+        "ties": 8,
+        "wins": 0
+      },
+      "transfer": {
+        "claim": "DEV_ONLY",
+        "confirmation_p_value": null,
+        "exploratory_sign_p": 0.875,
+        "family_deltas": {
+          "bipartite": 0,
+          "erdos_dense": -1,
+          "erdos_sparse": 0,
+          "planted_cluster": 0
+        },
+        "family_sensitivity_p": 1.0,
+        "losses": 2,
+        "n": 8,
+        "ties": 5,
+        "wins": 1
+      },
+      "version": "6362bd7b34ae506625d4017895c6ca1ac3910fcf3f384ce7235e5260e74e3139"
+    }
+  ],
+  "independent_custody": false,
+  "limitations": [
+    "All panels public and locally generated",
+    "Fixed bounded candidate grammar",
+    "Exact solver is an evaluation reference, not a matched heuristic competitor",
+    "CPU limits matched; observed wall/CPU costs may differ",
+    "Discovery and checking costs separately ledgered",
+    "No Lean executable or arbitrary-code sandbox required by this data-only route",
+    "No novelty or recursive-improvement claim"
+  ],
+  "promotion_allowed": false,
+  "retained_dev_capabilities": [
+    "ce33b8d813ec6af327a7fe0101c734bb60a1e7b0f4dea52a2a811f43bcef59ec",
+    "7cd6399557fd24275b6e3ca2a5da9d37900ea3bad20750763e5dc1d40f0856ff",
+    "3e8dcaa76144c96912b7e94e8e535f4e9a5cc7e08ecfe2c9cd816eaf86d1d360"
+  ],
+  "scientific_generations_confirmed": 0,
+  "status": "DEV_EXPERIMENT_COMPLETE",
+  "theorem_checked": false,
+  "total_attempts": 600
+}

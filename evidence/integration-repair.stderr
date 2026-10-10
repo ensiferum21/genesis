@@ -1,0 +1,15 @@
+..F.....
+======================================================================
+FAIL: test_end_to_end_campaign_replay_request_and_no_promotion (tests_genesis.test_research_runtime.RuntimeTests.test_end_to_end_campaign_replay_request_and_no_promotion)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/scratch/822c1a9908ef/genesis/tests_genesis/test_research_runtime.py", line 87, in test_end_to_end_campaign_replay_request_and_no_promotion
+    with Campaign(root) as c:self.assertEqual(c.run(),summary)
+                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: {'claim_ceiling': 'FINITE_INSTANCE_RESULTS_[3463 chars]: 42} != {'status': 'DEV_EXPERIMENT_COMPLETE', 'clai[3463 chars]im']}
+Diff is 9709 characters long. Set self.maxDiff to None to see it.
+
+----------------------------------------------------------------------
+Ran 8 tests in 9.635s
+
+FAILED (failures=1)
