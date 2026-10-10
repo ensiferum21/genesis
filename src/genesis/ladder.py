@@ -223,7 +223,13 @@ def _run_specialist(s, prereg, prereg_id, split, n, task, name, budget_ns, key):
     aid = s.start(f'ladder-{prereg_id[:12]}-{split}-K{n}-{name}', request)
     c0 = _cpu_ns()
     try:
-        bounds = certified_bounds(task, seconds=max(1, budget_ns / 1e9), per_call_seconds=max(1, int(budget_ns / 1e9)))
+        # Conventional practice: warm-start the exact solver from a quick heuristic witness,
+        # charged to the same CPU budget, then climb with SAT models.
+        from .dsl import solve
+        warm = solve(task, SolverProgram(rounds=2), 100000, 0)['selected']
+        remaining = max(1.0, (budget_ns - (_cpu_ns() - c0)) / 1e9)
+        bounds = certified_bounds(task, seconds=remaining, per_call_seconds=max(1, int(remaining)),
+                                  start_witness=warm)
         status = 'SUCCESS' if bounds.get('status') != 'CHECKER_ERROR' else 'CHECKER_ERROR'
     except Exception as exc:
         bounds, status = {'reason': f'{type(exc).__name__}: {exc}'}, 'HARNESS_ERROR'
