@@ -75,6 +75,8 @@ class LadderPreregistration(StrictModel):
     cpu_seconds_per_rung: float = Field(gt=0, le=3600)
     invocation_limits: Limits
     queries_per_invocation: int = Field(ge=1, le=100000)
+    # Conventional specialist baselines (spec §20) run under the same realized-CPU budget.
+    specialist_arms: tuple[Literal['sat_cadical'], ...] = ()
     seed: int
     answer_key_sha256: str = Field(min_length=64, max_length=64)
     primary_metric: Literal['test-rung paired best value vs known optimum'] = \
@@ -88,7 +90,7 @@ class LadderPreregistration(StrictModel):
             raise ValueError('development and test rungs must be disjoint and unique')
         if any(not 1 <= n <= 63 for n in rungs):
             raise ValueError('rung outside host bound')
-        names = [name for name, _ in self.arms]
+        names = [name for name, _ in self.arms] + list(self.specialist_arms)
         if len(names) != len(set(names)) or not 1 <= len(names) <= 8:
             raise ValueError('arm names must be unique, 1..8 arms')
         if self.answer_key_sha256 != answer_key_digest(self.domain):
@@ -97,14 +99,15 @@ class LadderPreregistration(StrictModel):
 
 
 def default_preregistration(domain='c4_host_v2', development=range(4, 21), test=range(21, 41),
-                            cpu_seconds=20.0, seed=20261010, candidate=None, notes=''):
+                            cpu_seconds=20.0, seed=20261010, candidate=None, notes='', specialists=(),
+                            dsl_arms=True):
     from .dsl import baseline_programs
-    arms = list(baseline_programs().items())
+    arms = list(baseline_programs().items()) if dsl_arms else []
     if candidate is not None:
         arms.append(('frozen_candidate', candidate))
     return LadderPreregistration(
         domain=domain, development_rungs=tuple(development), test_rungs=tuple(test),
-        arms=tuple(arms), cpu_seconds_per_rung=cpu_seconds,
+        arms=tuple(arms), specialist_arms=tuple(specialists), cpu_seconds_per_rung=cpu_seconds,
         invocation_limits=Limits(queries=100000, wall_seconds=120, cpu_seconds=30),
         queries_per_invocation=100000, seed=seed, answer_key_sha256=answer_key_digest(domain), notes=notes)
 
@@ -190,6 +193,11 @@ def run_ladder(root, prereg, progress=None):
                     rows.append(row)
                     if progress:
                         progress(row)
+                for name in prereg.specialist_arms:
+                    row = _run_specialist(s, prereg, prereg_id, split, n, task, name, budget_ns, key)
+                    rows.append(row)
+                    if progress:
+                        progress(row)
         if code_identity(Path(__file__).resolve().parents[2])['sha256'] != identity['sha256']:
             raise RuntimeError('source changed during the ladder run; results would not match one SystemVersion')
         results = summarize(prereg, prereg_id, rows)
@@ -201,8 +209,39 @@ def run_ladder(root, prereg, progress=None):
         return results
 
 
+def _cpu_ns():
+    import resource
+    me = resource.getrusage(resource.RUSAGE_SELF); ch = resource.getrusage(resource.RUSAGE_CHILDREN)
+    return int((me.ru_utime + me.ru_stime + ch.ru_utime + ch.ru_stime) * 1e9)
+
+
+def _run_specialist(s, prereg, prereg_id, split, n, task, name, budget_ns, key):
+    """SAT search (pinned CaDiCaL): climb the lower bound with SAT models within the CPU budget."""
+    from .verification.sat import certified_bounds
+    request = {'kind': 'ladder-specialist', 'prereg': prereg_id, 'split': split, 'n': n, 'arm': name,
+               'task': task.model_dump(mode='json'), 'cpu_budget_ns': budget_ns}
+    aid = s.start(f'ladder-{prereg_id[:12]}-{split}-K{n}-{name}', request)
+    c0 = _cpu_ns()
+    try:
+        bounds = certified_bounds(task, seconds=max(1, budget_ns / 1e9), per_call_seconds=max(1, int(budget_ns / 1e9)))
+        status = 'SUCCESS' if bounds.get('status') != 'CHECKER_ERROR' else 'CHECKER_ERROR'
+    except Exception as exc:
+        bounds, status = {'reason': f'{type(exc).__name__}: {exc}'}, 'HARNESS_ERROR'
+    spent = _cpu_ns() - c0
+    witness = bounds.get('witness') or ()
+    value = check_witness(task, witness)['value'] if witness else None
+    s.finish(aid, {'status': status, 'cpu_ns': spent, 'lower': bounds.get('lower'), 'upper': bounds.get('upper'),
+                   'bound_status': bounds.get('status'), 'calls': bounds.get('calls'),
+                   'upper_method': (bounds.get('upper_certificate') or {}).get('method')})
+    witness_hash = s.put({'task_id': task.task_id, 'edges': [list(e) for e in witness]}) if witness else None
+    return {'split': split, 'n': n, 'arm': name, 'best_value': value, 'witness': witness_hash, 'invocations': 1,
+            'realized_cpu_ns': spent, 'budget_cpu_ns': budget_ns, 'attempt_statuses': {status: 1},
+            'certified_upper': bounds.get('upper') if bounds.get('status') == 'OPTIMALITY_CHECKED' else None,
+            'classification': classify(value, n, key) if value is not None else {'status': 'NO_VALID_WITNESS'}}
+
+
 def summarize(prereg, prereg_id, rows):
-    arms = [name for name, _ in prereg.arms]
+    arms = [name for name, _ in prereg.arms] + list(prereg.specialist_arms)
     test = [r for r in rows if r['split'] == 'test']
     per_arm = {}
     for name in arms:

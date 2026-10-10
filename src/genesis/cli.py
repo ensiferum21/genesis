@@ -80,7 +80,8 @@ def run_benchmark(args):
         with Store(args.candidate) as s:
             if s.state('phase')!='CANDIDATE_FROZEN':raise ValueError('candidate campaign is not frozen')
             candidate=SolverProgram.model_validate_json(canonical(s.state('latest_program')))
-    prereg=default_preregistration(args.domain,_rungs(args.dev),_rungs(args.test),args.cpu_seconds,args.seed,candidate)
+    prereg=default_preregistration(args.domain,_rungs(args.dev),_rungs(args.test),args.cpu_seconds,args.seed,candidate,
+                                   specialists=('sat_cadical',) if args.sat_baseline else (),dsl_arms=not args.no_dsl_arms)
     results=run_ladder(args.root,prereg,progress=lambda r:print(json.dumps({k:r[k] for k in ('split','n','arm','best_value')}|
         {'status':r['classification']['status']}),flush=True))
     return {'report':str(Path(args.root)/'reports/ladder_report.md'),'status':results['status'],
@@ -117,6 +118,8 @@ def main(argv=None):
     p.add_argument('--dev',default='4-20',help='development rungs, e.g. 4-20');p.add_argument('--test',default='21-40')
     p.add_argument('--cpu-seconds',type=float,default=20.0);p.add_argument('--seed',type=int,default=20261010)
     p.add_argument('--candidate',type=Path,help='frozen campaign whose candidate program joins as an arm')
+    p.add_argument('--sat-baseline',action='store_true',help='add the CaDiCaL specialist baseline arm')
+    p.add_argument('--no-dsl-arms',action='store_true',help='run only the specialist/candidate arms')
     args=ap.parse_args(argv)
     if args.command=='doctor':result=doctor()
     elif args.command=='benchmark':result=run_benchmark(args)
