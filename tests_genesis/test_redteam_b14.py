@@ -21,8 +21,8 @@ from genesis.models import GraphTask
 from genesis.release_bundle import build_bundle, verify_bundle
 from genesis.store import Store
 from genesis.verification.certificates import build, persist
-from tests_genesis.signed_fixtures import (SignedFixture, chain_requests, fixture_campaign, record_evaluation,
-                                          witness_payload)
+from tests_genesis.signed_fixtures import (SignedFixture, chain_requests, fixture_campaign, math_claim,
+                                          record_evaluation, witness_payload)
 
 REPO = Path(__file__).resolve().parents[1]
 SRC = 'a' * 64
@@ -65,7 +65,7 @@ class F1BundleWholeObject(Base):
             run = k.record('execution_receipt', {'r': 1}, route='genesis.campaign', source_hash=SRC, verdict='VALID')
             w = k.record('witness_check', witness_payload(s), parents=[run], route='genesis.campaign', source_hash=SRC,
                          verdict='VALID', verifier='dual-predicates')
-            k.create_claim('w', 'host path4 has a valid subgraph with 3 edges', 'host path4', [w])
+            math_claim(k, 'w', [w])
             k.promote('w', 'math', 'WITNESS_VALID')
         self.bundle = self.d / 'b.zip'
         build_bundle(self.root, self.bundle, report='The returned witness passed the registered checks.')
@@ -128,8 +128,8 @@ class KernelFindings(Base):
     def setUp(self):
         super().setUp()
         self.store = Store(self.d / 's'); self.addCleanup(self.store.close)
-        self.store.set_state('campaign_id', 'a' * 64); self.store.set_state('source_hash', 'c' * 64)
         self.fx = SignedFixture(self.tmp.name)
+        self.fx.bind_store(self.store)
         self.k = EvidenceKernel.with_fixture_registry(self.store, self.fx.registry)
         self.run = self.k.record('execution_receipt', {'r': 1}, route='genesis.campaign', source_hash=SRC,
                                  verdict='VALID')
@@ -139,7 +139,7 @@ class KernelFindings(Base):
         self.k.register_verifier('checker-x', 'e' * 64, validated_by=[self.run])  # a second registration up front
         w = self.k.record('witness_check', witness_payload(self.store), parents=[self.run], route='genesis.campaign',
                           source_hash=SRC, verdict='VALID', verifier='checker-x')
-        self.k.create_claim('c', 'host path4 has a valid subgraph with 3 edges', 'host path4', [w])
+        math_claim(self.k, 'c', [w])
         self.k.promote('c', 'math', 'WITNESS_VALID')
         self.k.revoke(reg, 'verifier bug: accepts a 4-cycle', 'auditor')  # revoking ONE registration
         self.assertTrue(self.k.levels('c').get('invalidated'))
@@ -214,8 +214,7 @@ class KernelFindings(Base):
         b['upper'] = {'method': 'HOST_EDGE_COUNT', 'value': 4, 'justification': 'forged'}
         b['status'] = 'OPTIMALITY_CHECKED'
         ref = persist(self.store, b, blobs)
-        self.k.create_claim('k5', 'the optimum for host k5 is 4', 'host k5', [self.bound(k5, ref, 4, sha)],
-                            problem={'task_sha256': sha, 'value': 4})
+        math_claim(self.k, 'k5', [self.bound(k5, ref, 4, sha)], value=4, claim='optimum', task=k5)
         self.rejects(self.k, 'k5', 'math', 'OPTIMALITY_CHECKED', 'does not replay')
 
     def test_f9_certificate_for_another_problem(self):
@@ -225,16 +224,15 @@ class KernelFindings(Base):
         ref = persist(self.store, b, blobs)
         k6 = GraphTask(task_id='k6', n=6, edges=tuple((i, j) for i in range(6) for j in range(i + 1, 6)), family='k')
         node = self.bound(task, ref, 3, sha)
-        self.k.create_claim('k6', 'the optimum for host k6 is 3', 'host k6', [node],
-                            problem={'task_sha256': digest(k6.model_dump(mode='json')), 'value': 3})
+        math_claim(self.k, 'k6', [node], value=3, claim='optimum', task=k6)
         self.rejects(self.k, 'k6', 'math', 'OPTIMALITY_CHECKED', 'different problem')
-        self.k.create_claim('p', 'the optimum for host p is 3', 'host p', [node], problem={'task_sha256': sha, 'value': 3})
+        math_claim(self.k, 'p', [node], value=3, claim='optimum', task=task)
         self.k.promote('p', 'math', 'OPTIMALITY_CHECKED')  # the honest claim on the certified problem passes
 
     def test_f6_index_and_history_and_phase_are_not_taken_from_mutable_records(self):
         w = self.k.record('witness_check', witness_payload(self.store), parents=[self.run], route='genesis.campaign',
                           source_hash=SRC, verdict='VALID')
-        self.k.create_claim('forged', 'host path4 has a valid subgraph with 3 edges', 'host path4', [w])
+        math_claim(self.k, 'forged', [w])
         fake = {'claim': 'forged', 'axis': 'utility', 'level': 'CONFIRMED_TRANSFER', 'dependencies': [],
                 'effects': [], 'evidence_used': [], 'evaluations': [], 'registry': 'external-board',
                 'revocation_context': '0' * 64, 'at': '2026-10-10T00:00:00+00:00'}

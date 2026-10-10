@@ -22,7 +22,14 @@ def request_bundle(campaign,task_count=300,*,claim_id=None,evidence_kind='sealed
     version={'program':program,'source':source,'environment':__import__('genesis.campaign',fromlist=['environment']).environment(),
              'config':campaign.config.model_dump(mode='json'),'library':s.state('summary')['retained_dev_capabilities']}
     strongest_name=s.state('summary')['generations'][-1]['baseline']
+    # The frozen version document goes into the store BEFORE the export the request binds,
+    # so the custodian can check the requested candidate against the campaign (B14 round 3).
+    s.save('candidate_version',digest(version),version)
     export=campaign.root/'exports/campaign_export.zip'
+    if export.exists():
+        import zipfile as _z
+        with _z.ZipFile(export) as z:fresh=any(n.startswith('objects/sha256/'+s.put(version)) for n in z.namelist())
+        if not fresh:export.unlink()
     if not export.exists():export_replication(campaign.root,export,store=s)
     from .common import bytes_hash
     candidate_version=digest(version)

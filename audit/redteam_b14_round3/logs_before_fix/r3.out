@@ -1,0 +1,7 @@
+real Campaign.run(): phase CANDIDATE_FROZEN | task entities by (domain, split): {('triangle_free_host_v1', 'DEV'): 3, ('triangle_free_host_v1', 'FUTURE'): 3, ('c4_host_v2', 'FUTURE'): 3, ('triangle_free_host_v1', 'SELECT'): 3}
+custodian campaign_facts domain: c4_host_v2
+register: accepted transfer c4_host_v2 -> triangle_free_host_v1
+evaluate: SUPPORTED wins=8 losses=0 ties=16 family_p=0.0078
+child (uid 65534, real trust root): promoted CONFIRMED_TRANSFER
+exported: CONFIRMED_TRANSFER | verify_bundle ok: True []
+ATTACK_SUCCEEDED

@@ -44,16 +44,17 @@ class HardPanels(unittest.TestCase):
             manifest.chmod(0o600)
             from tests_genesis.signed_fixtures import campaign_export
             source = code_identity(REPO)['sha256']
-            export = campaign_export(base, campaign_id='a' * 64, source_hash=source)
+            export, frozen = campaign_export(base, campaign_id='a' * 64, source_hash=source,
+                                             candidate_program=SolverProgram(rounds=8, exchange=True).model_dump(mode='json'))
             tasks, _ = make_hard_panel(4401, 2, 'c4_host_v2', 'CONFIRM', certify_seconds=60)
             pool = base / 'pool.json'; pool.write_bytes(canonical([t.model_dump(mode='json') for t in tasks]))
-            request = {'schema': 'genesis-evaluation-request-v3', 'campaign_id': 'a' * 64, 'candidate_version': 'b' * 64,
+            request = {'schema': 'genesis-evaluation-request-v3', 'campaign_id': 'a' * 64,
+                       'candidate_version': frozen['candidate_version'],
                        'claim_id': 'hard-panel-fixture', 'evidence_kind': 'sealed_evaluation',
                        'statement_hash': '5' * 64, 'scope': 'fixture panel',
                        'generation_transition': None, 'transfer_source_domain': None,
                        'campaign_export_sha256': bytes_hash(export.read_bytes()), 'source_hash': source,
-                       'programs': {'baseline': SolverProgram(rounds=8).model_dump(mode='json'),
-                                    'candidate': SolverProgram(rounds=8, exchange=True).model_dump(mode='json')},
+                       'programs': frozen['programs'],
                        'limits': Limits(cpu_seconds=10).model_dump(mode='json'), 'seed': 1, 'task_count': 2,
                        'domain': 'c4_host_v2',
                        'analysis': {'primary': 'paired-edge-count', 'alpha': 0.05, 'family_sensitivity': True,

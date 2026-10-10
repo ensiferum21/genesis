@@ -1,0 +1,6 @@
+certified_bounds: OPTIMALITY_CHECKED lower 9 upper 9 method SAT_DRAT
+effective: OPTIMALITY_CHECKED
+true C4-free optimum of K6 (dual exact solvers): 7
+exported OPTIMALITY_CHECKED | the optimum for host k6-c4 is 9: the largest C4-free subgraph of K6 has exactly 9 edges
+verify_bundle ok: True [] | certificate replays: [('OPTIMALITY_CHECKED', 'VALID')]
+ATTACK_SUCCEEDED

@@ -1,0 +1,5 @@
+preflight before revocation: EXTERNAL_RELEASE_REVIEW_READY
+kernel after revocation: {'math': 'UNCHECKED', 'utility': 'NOT_TESTED', 'causality': 'NOT_TESTED', 'improver': 'NOT_TESTED', 'novelty': 'UNKNOWN', 'replication': 'NONE', 'invalidated': True} | revocations: ['evaluation', 'key', 'node']
+accept_receipt with the store's revoked keys: False ['the pinned custodian_key key is revoked or malformed']
+preflight after revocation: EXTERNAL_RELEASE_REVIEW_READY []
+ATTACK_SUCCEEDED

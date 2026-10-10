@@ -60,18 +60,21 @@ class Fixture(unittest.TestCase):
 
     def export_with(self, tasks, name='export.zip', campaign='a'):
         from tests_genesis.signed_fixtures import campaign_export
-        return campaign_export(self.base, campaign_id=campaign * 64, source_hash=code_identity(REPO)['sha256'],
-                               hosts=tasks, name=name)
+        path, frozen = campaign_export(self.base, campaign_id=campaign * 64, source_hash=code_identity(REPO)['sha256'],
+                                       hosts=tasks, name=name)
+        self.__dict__.setdefault('frozen', {})[str(path)] = frozen
+        return path
 
     def request(self, export, declared=(), task_count=2, campaign='a'):
         source = code_identity(REPO)['sha256']
-        return {'schema': 'genesis-evaluation-request-v3', 'campaign_id': campaign * 64, 'candidate_version': 'b' * 64,
+        frozen = self.frozen[str(export)]
+        return {'schema': 'genesis-evaluation-request-v3', 'campaign_id': campaign * 64,
+                'candidate_version': frozen['candidate_version'],
                 'claim_id': f'utility-{campaign}', 'evidence_kind': 'sealed_evaluation',
                 'statement_hash': '5' * 64, 'scope': 'fixture panel',
                 'generation_transition': None, 'transfer_source_domain': None,
                 'campaign_export_sha256': bytes_hash(export.read_bytes()),
-                'source_hash': source, 'programs': {'baseline': SolverProgram().model_dump(mode='json'),
-                                                    'candidate': SolverProgram(weights=(0, 0, 0, 1)).model_dump(mode='json')},
+                'source_hash': source, 'programs': frozen['programs'],
                 'limits': Limits().model_dump(mode='json'), 'seed': 42, 'task_count': task_count, 'domain': 'c4_host_v2',
                 'analysis': {'primary': 'paired-edge-count', 'alpha': .05, 'family_sensitivity': True, 'hypotheses': 1},
                 'exposed_graph_fingerprints': list(declared), 'expected_evaluator_hash': source}

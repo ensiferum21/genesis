@@ -1,0 +1,10 @@
+Traceback (most recent call last):
+  File "/home/claude/genesis/audit/redteam_b14_round3/r1b_reproduction_of_another_program.py", line 52, in <module>
+    main()
+    ~~~~^^
+  File "/home/claude/genesis/audit/redteam_b14_round3/r1b_reproduction_of_another_program.py", line 39, in main
+    binding=R.binding_from_requests([sealed, repro]))
+            ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "/home/claude/genesis/src/genesis/kernel/receipts.py", line 415, in binding_from_requests
+    raise ValueError('requests evaluate different candidates (version or program)')
+ValueError: requests evaluate different candidates (version or program)

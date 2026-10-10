@@ -1,0 +1,5 @@
+kernel: CONFIRMED_SAME_DOMAIN
+phase-machine binding refuses the same request: the export bound to the frozen request is not this campaign's export
+campaign_id history in events.jsonl: ['b0b0b0b0', 'aaaaaaaa']
+exported: CONFIRMED_SAME_DOMAIN | verify_bundle ok: True []
+ATTACK_SUCCEEDED

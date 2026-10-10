@@ -1,0 +1,10 @@
+Traceback (most recent call last):
+  File "/home/claude/genesis/audit/redteam_b14_round3/r3_transfer_domain_from_one_entity.py", line 107, in <module>
+    parent()
+    ~~~~~~^^
+  File "/home/claude/genesis/audit/redteam_b14_round3/r3_transfer_domain_from_one_entity.py", line 50, in parent
+    with Campaign(root) as c:
+         ~~~~~~~~^^^^^^
+  File "/home/claude/genesis/src/genesis/campaign.py", line 66, in __init__
+    raise RuntimeError('resolved_config.json differs from the configuration recorded at initialization')
+RuntimeError: resolved_config.json differs from the configuration recorded at initialization

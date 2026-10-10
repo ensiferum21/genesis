@@ -1,0 +1,11 @@
+Traceback (most recent call last):
+  File "/home/claude/genesis/audit/redteam_b14_round3/r1_candidate_not_bound_to_campaign.py", line 101, in <module>
+    parent()
+    ~~~~~~^^
+  File "/home/claude/genesis/audit/redteam_b14_round3/r1_candidate_not_bound_to_campaign.py", line 56, in parent
+    anchor = register(private, req, keys['prereg'][0], 'custodian-op', exposure_manifest=manifest,
+                      campaign_export=export, pool=pool)
+  File "/home/claude/genesis/src/genesis/custodian.py", line 216, in register
+    if problems:raise ValueError('request is not what the campaign export shows: '+'; '.join(problems))
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: request is not what the campaign export shows: campaign export is not of a frozen candidate (phase CREATED); candidate_version is not a frozen version recorded in the campaign export; the candidate program is not the campaign's frozen program; the baseline is not the campaign's strongest conventional baseline

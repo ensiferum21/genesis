@@ -1,0 +1,10 @@
+Traceback (most recent call last):
+  File "/home/claude/genesis/audit/redteam_b14_round3/r2_witness_valid_false_statements.py", line 83, in <module>
+    main()
+    ~~~~^^
+  File "/home/claude/genesis/audit/redteam_b14_round3/r2_witness_valid_false_statements.py", line 66, in main
+    k.promote(cid, 'math', 'WITNESS_VALID')
+    ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/claude/genesis/src/genesis/kernel/evidence.py", line 538, in promote
+    raise PromotionRejected(reasons)
+genesis.kernel.evidence.PromotionRejected: ['a mathematical claim must name its exact problem (create_claim(..., problem=...))']

@@ -18,7 +18,7 @@ from genesis.kernel.evidence import EvidenceKernel
 from genesis.kernel.index import build_index
 from genesis.release_bundle import build_bundle, verify_bundle
 from genesis.store import Store
-from tests_genesis.signed_fixtures import witness_payload
+from tests_genesis.signed_fixtures import math_claim, witness_payload
 
 REPO = Path(__file__).resolve().parents[1]
 SRC = 'a' * 64
@@ -60,7 +60,7 @@ class ExportRevocation(unittest.TestCase):
                 self.checks[name] = k.record('witness_check', witness_payload(s), parents=[run],
                                              route='genesis.campaign', source_hash=SRC, verdict='VALID',
                                              verifier=verifier)
-                k.create_claim(name, f'claim {name}: host path4 has a valid subgraph with 3 edges', 'host path4', [self.checks[name]])
+                math_claim(k, name, [self.checks[name]])
                 k.promote(name, 'math', 'WITNESS_VALID')
             self.capability = capability
         self.before = self.d / 'before.zip'

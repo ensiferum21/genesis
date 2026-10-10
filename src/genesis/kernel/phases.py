@@ -186,6 +186,15 @@ def verified_phase(store, *, trust_root=None):
                 if value == 'LEAK_SCAN_PASSED':
                     frozen_at_scan = frozen
             phase = value
+    # An accepted envelope that has since been revoked (its evaluation, or its anchor) means
+    # the campaign's scientific state no longer stands (B14 round 3, F7).
+    from .evidence import EvidenceKernel
+    dead = EvidenceKernel(store)._revoked('evaluation')
+    for target, env in accepted.items():
+        ident = R.evaluation_identity(env.get('payload') if isinstance(env, dict) else None)
+        if ident is not None and ident in dead:
+            problems.append(f'{target} envelope was revoked after acceptance')
+            phase = 'INVALIDATED'
     recorded = store.state('phase', 'CREATED')
     return {'phase': phase, 'recorded_phase': recorded, 'consistent': not problems and phase == recorded,
             'problems': problems}

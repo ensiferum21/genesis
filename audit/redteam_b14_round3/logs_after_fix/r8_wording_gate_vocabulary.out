@@ -1,0 +1,21 @@
+CAUGHT  This is an optimal solver.
+CAUGHT  The construction is provably optimal.
+CAUGHT  We found the optimum and the maximum for every host.
+CAUGHT  Its gains transferred to triangle-free hosts.
+CAUGHT  The result is generalizable and verified on sealed data.
+CAUGHT  The sealed evaluation confirms a real improvement.
+CAUGHT  The exchange step drives the improvement.
+CAUGHT  This is a previously unknown result, the first ever of its kind.
+CAUGHT  The system improves itself across generations.
+CAUGHT  Independently reproduced by a second lab.
+claim levels: all at floor
+Traceback (most recent call last):
+  File "/home/claude/genesis/audit/redteam_b14_round3/r8_wording_gate_vocabulary.py", line 53, in <module>
+    main()
+    ~~~~^^
+  File "/home/claude/genesis/audit/redteam_b14_round3/r8_wording_gate_vocabulary.py", line 46, in main
+    build_bundle(tmp / 'c', tmp / 'b.zip', report=' '.join(missed))
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/claude/genesis/src/genesis/release_bundle.py", line 170, in build_bundle
+    raise ValueError('report exceeds the current effective evidence: ' + '; '.join(problems[:5]))
+ValueError: report exceeds the current effective evidence: claim c1 statement: 'optimal' (optimality needs certified matching bounds); claim c1 statement: 'transferred' (generalisation/transfer needs confirmed transfer); claim c1 statement: 'confirms' (confirmation language needs a clean prospective evaluation)

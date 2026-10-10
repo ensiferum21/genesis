@@ -26,10 +26,11 @@ original log stays meaningful. Post-repair regression tests live in
   (`audit/reproductions/logs/after_r01_r02_repair.log`).
 - An internal red-team pass on the first repair found eleven further ways
   through (four critical); a second pass on the repaired tree found twelve more
-  (two critical). All are repaired with regression tests; see
-  `audit/redteam_b14/README.md` and `audit/redteam_b14_round2/README.md`. The
+  (two critical); a third pass found nine more (one critical). All are
+  repaired with regression tests; see `audit/redteam_b14/README.md`,
+  `audit/redteam_b14_round2/README.md` and `audit/redteam_b14_round3/README.md`. The
   reviewers were fresh agents under the same operator, so this is not the
-  independent source review GV0 requires — and two rounds that each found
+  independent source review GV0 requires — and three rounds that each found
   critical issues are a reason to expect more.
 - R-04 remains OPEN (main work in B15). B14 only fixed packaging consistency
   (networkx declared in `pyproject.toml`) and made undeclared test skips fail.
@@ -41,4 +42,5 @@ original log stays meaningful. Post-repair regression tests live in
 | B14-OPEN-2 | Selective reporting across different candidates or campaigns: one registration per candidate slot is enforced, but a custodian-published registration log with a multiplicity rule is not | W06/W07 |
 | B14-OPEN-3 | `sealed_improver_evaluation` and `sealed_generation_evaluation` are refused by the custodian until a research-lineage protocol can be checked from the export | W21 |
 | B14-OPEN-4 | FINITE_CERTIFIED, THEOREM_CHECKED, causal, internal-replication, DEV_ONLY and priority levels have no replay contract and are unreachable (fail closed) | W03/W05/W08 |
+| B14-OPEN-5 | Report prose is linted against the bundle-wide ceiling, not tied sentence by sentence to claim ids; ladder reports lint against fixed levels rather than kernel-derived ones | W02 |
 | GV0 | Independent source review of R-01..R-03 and the F1–F11 repairs | an auditor outside the research operator |

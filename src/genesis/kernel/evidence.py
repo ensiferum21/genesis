@@ -20,6 +20,7 @@ signing role are ignored for those kinds.
 """
 from collections import Counter
 from enum import Enum
+import json
 
 from .. import eligibility
 from ..common import digest, utcnow
@@ -427,14 +428,26 @@ class EvidenceKernel:
                 raise ValueError('claim statement/scope differ from the ones committed before evaluation')
             claim['binding'] = binding
         if problem is not None:
-            if not isinstance(problem, dict) or set(problem) != {'task_sha256', 'value'} \
-                    or not R.hex64(problem['task_sha256']) or type(problem['value']) is not int:
-                raise ValueError('problem must be {task_sha256, value}')
+            if not isinstance(problem, dict) or set(problem) != {'task_sha256', 'value', 'claim'} \
+                    or not R.hex64(problem['task_sha256']) or type(problem['value']) is not int \
+                    or problem['claim'] not in ('lower_bound', 'optimum'):
+                raise ValueError("problem must be {task_sha256, value, claim: 'lower_bound' | 'optimum'}")
+            if statement != self.math_statement(problem):
+                raise ValueError('a mathematical claim states exactly its problem: use EvidenceKernel.math_statement')
             claim['problem'] = problem
         self.s.save('claim', claim_id, claim)  # raises if the identity is reused with other content
         if self.s.state(f'claimlevels:{claim_id}') is None:
             self.s.set_state(f'claimlevels:{claim_id}', dict(FLOOR))
         return claim
+
+    def math_statement(self, problem):
+        """The only statement a mathematical claim may carry: generated from the stored problem,
+        so the text cannot say something about a different host, domain or value."""
+        task = self.s.get(problem['task_sha256'])  # the problem must be in the store
+        name = f"{task.get('domain')} host {task.get('task_id')} [{problem['task_sha256'][:16]}]"
+        if problem['claim'] == 'optimum':
+            return f"the optimum for {name} is {problem['value']} edges"
+        return f"{name} has a valid subgraph with {problem['value']} edges"
 
     def claim(self, claim_id):
         return self.s.get(self._entity('claim', claim_id))
@@ -542,6 +555,12 @@ class EvidenceKernel:
         deps = self.closure(claim['dependencies'])
         is_confirmation = (axis, level) in CONFIRMATION
         reasons, used_nodes, evaluations, resolved = [], set(), set(), set()
+        if axis == 'math' and AXES['math'].index(level) >= AXES['math'].index('WITNESS_VALID'):
+            problem = claim.get('problem')
+            if problem is None:
+                reasons.append('a mathematical claim must name its exact problem (create_claim(..., problem=...))')
+            elif level == 'OPTIMALITY_CHECKED' and problem['claim'] != 'optimum':
+                reasons.append('OPTIMALITY_CHECKED needs a claim of the optimum, not of a lower bound')
         for kind, count in REQUIRED_EVIDENCE.get((axis, level), []):
             candidates = sorted(d for d in deps if self.node(d)['kind'] == kind)
             if kind in EXTERNALLY_SIGNED:
@@ -603,7 +622,7 @@ class EvidenceKernel:
                     reasons.append(f'needs {count} independent exact checkers, found {len(distinct)}')
             elif kind == 'bound_state':
                 if claim.get('problem') is None:
-                    reasons.append('an optimality claim must name its exact problem (create_claim(..., problem=...))')
+                    pass  # reported above
                 elif not usable:
                     reasons.append('optimality needs a checked BoundState with gap 0 and custody of its certificate')
             elif len(usable) < count:
@@ -661,13 +680,35 @@ class EvidenceKernel:
             row = self.s.db.execute('SELECT status FROM attempts WHERE id=?', (p['attempt'],)).fetchone()
             return None if row and row[0] == 'SUCCESS' else 'referenced attempt did not finish successfully'
         if p.get('ir_program'):
-            row = self.s.db.execute("SELECT 1 FROM entities WHERE kind='ir_program' AND id=?",
+            row = self.s.db.execute("SELECT object_hash FROM entities WHERE kind='ir_program' AND id=?",
                                     (p['ir_program'],)).fetchone()
-            return None if row else 'referenced IR program is not in the store'
+            ok = row is not None and (self.s.get(row[0]) or {}).get('schema') == 'genesis-ir-program-v1' \
+                and bool(self.s.get(row[0]).get('nodes'))
+            return None if ok else 'referenced IR program is not a recorded, non-empty program'
         return 'no execution reference (attempt or ir_program)'
 
     BOUND_FIELDS = frozenset({'schema', 'task', 'task_sha256', 'lower', 'upper', 'gap', 'lower_evidence',
                               'certificate_bundle'})
+
+    def _campaign_history_problems(self, binding):
+        """Campaign and source identity are write-once, and every bound request is a frozen
+        request of THIS campaign whose export is a prefix of this store's history (B14 round 3)."""
+        from .phases import PhaseError, _frozen_request
+        written = {}
+        for (raw,) in self.s.db.execute('SELECT body FROM events ORDER BY seq'):
+            body = json.loads(raw)
+            if body['kind'] == 'STATE_UPDATED':
+                upd = self.s.get(body['payload'])
+                if upd['key'] in ('campaign_id', 'source_hash'):
+                    written.setdefault(upd['key'], set()).add(json.dumps(upd['value']))
+        if any(len(v) > 1 for v in written.values()):
+            return 'campaign identity or source was rewritten in this store'
+        for rh in binding['request_hashes']:
+            try:
+                _frozen_request(self.s, rh)
+            except PhaseError as exc:
+                return f'bound request {rh[:12]} is not a frozen request of this campaign: {exc}'
+        return None
 
     def _bound_state_problems(self, nid, problem=None):
         """Certificate custody AND checker replay for a BoundState (R-03). Returns a reason or None.
@@ -710,7 +751,10 @@ class EvidenceKernel:
             except Exception:
                 return False
 
-        problems = custody_problems(bundle, has_object)
+        try:
+            problems = custody_problems(bundle, has_object)
+        except Exception as exc:
+            return f'malformed certificate bundle ({type(exc).__name__})'
         if problems:
             return '; '.join(problems)
         if bundle['problem']['task_sha256'] != p['task_sha256'] or bundle['lower']['value'] != p['lower'] \
@@ -767,6 +811,9 @@ class EvidenceKernel:
                 binding['source_hashes']:
             # The receipts must be about THIS campaign's history (B14 red team C1).
             return ['claim binding names a different campaign or source than this evidence store'], set(), set()
+        history_problem = self._campaign_history_problems(binding)
+        if history_problem:
+            reasons.append(history_problem)
         anchors = {}
         for d in deps:
             if self.node(d)['kind'] == 'preregistration_anchor':
@@ -796,6 +843,8 @@ class EvidenceKernel:
                 bad.append('no verified preregistration anchor for this receipt in the evidence closure')
             else:
                 bad += R.anchor_mismatches(p, *anchor)
+                if R.evaluation_identity(anchor[0]) in dead:
+                    bad.append('preregistration anchor revoked')
             ident = R.evaluation_identity(p)
             if ident in dead:
                 bad.append('evaluation revoked')
@@ -810,6 +859,8 @@ class EvidenceKernel:
                 reasons.append(f'evaluation {ident[:12]} carries conflicting signed receipts')
                 continue
             good[ident] = p; nodes.add(d)
+        if history_problem:
+            good, nodes = {}, set()
         panels = Counter(p['panel_commitment'] for p in good.values())
         if any(c > 1 for c in panels.values()):
             reasons.append('one panel commitment supports more than one evaluation (exposed panels are retired)')

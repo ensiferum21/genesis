@@ -133,6 +133,20 @@ class CertificateCustody(unittest.TestCase):
         result = self.verify_without_solver(out)
         self.assertFalse(result['ok'])
 
+    def test_world_loop_summary_reflects_a_later_revocation(self):  # B14 round 3, F9
+        from genesis.kernel.evidence import EvidenceKernel
+        copy = self.d / 'loop_copy'
+        shutil.copytree(self.loop, copy)
+        with Store(copy) as s:
+            k = EvidenceKernel(s)
+            reg = next(n for n in k._all_nodes() if k.node(n)['kind'] == 'verifier' and k.node(n)['verifier'] == 'drat-trim')
+            k.revoke(reg, 'checker build found faulty', 'auditor')
+        with ResearchLoop(copy) as l:
+            summary = l.run()
+        self.assertEqual(summary['optimality_checked'], 0)
+        self.assertTrue(all(v['status'] != 'OPTIMALITY_CHECKED' for v in summary['tasks'].values()))
+        self.assertTrue(summary['invalidated_claims'])
+
     def test_checker_only_mode_refuses_to_run_the_producer(self):
         from genesis.verification.sat import solve
         from genesis.verification.tools import ToolUnavailable

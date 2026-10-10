@@ -1,0 +1,4 @@
+before revocation: phase RELEASED | claim CONFIRMED_SAME_DOMAIN
+after revocation: kernel invalidated | verified_phase RELEASED consistent True []
+index campaigns.status: RELEASED | index claims.current_levels: {"math": "UNCHECKED", "utility": "NOT_TESTED", "causality": 
+ATTACK_SUCCEEDED

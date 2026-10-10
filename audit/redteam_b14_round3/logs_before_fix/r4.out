@@ -1,0 +1,5 @@
+S1 after anchor revocation: invalidated | records: ['node']
+S2 anchor node d12752d8d907 != S1 anchor node 745d61f0e934 | S2 level CONFIRMED_SAME_DOMAIN
+verify_bundle(S2 bundle, later anchor revocation): ok True | applied 0 skipped 1 | downgraded [] | current CONFIRMED_SAME_DOMAIN
+control (receipt revocation feed): downgraded ['claim-1']
+ATTACK_SUCCEEDED

@@ -24,7 +24,8 @@ from genesis.kernel.phases import PhaseError, advance, verified_phase
 from genesis.kernel.wording import lint
 from genesis.release_bundle import build_bundle, verify_bundle
 from genesis.store import Store
-from tests_genesis.signed_fixtures import (SignedFixture, fixture_campaign, record_evaluation, witness_payload)
+from tests_genesis.signed_fixtures import (SignedFixture, fixture_campaign, math_claim, record_evaluation,
+                                          witness_payload)
 
 REPO = Path(__file__).resolve().parents[1]
 SRC = 'a' * 64
@@ -132,7 +133,7 @@ class BundleBytes(Base):
             run = k.record('execution_receipt', {'r': 1}, route='genesis.campaign', source_hash=SRC, verdict='VALID')
             w = k.record('witness_check', witness_payload(s), parents=[run], route='genesis.campaign',
                          source_hash=SRC, verdict='VALID')
-            k.create_claim('w', 'host path4 has a valid subgraph with 3 edges', 'host path4', [w])
+            math_claim(k, 'w', [w])
             k.promote('w', 'math', 'WITNESS_VALID')
         self.bundle = self.d / 'b.zip'
         build_bundle(self.root, self.bundle, report='The returned witness passed the registered checks.')
@@ -205,25 +206,32 @@ class M2Wording(unittest.TestCase):
 
 class SmallerFindings(Base):
     def test_l2_revoking_a_receipt_retires_its_envelope_everywhere(self):
-        request = self.fx.request()
-        anchor = self.fx.anchor(request); receipt = self.fx.receipt(request, anchor)
-        records = None
-        for name in ('first', 'second'):
-            with Store(self.d / name) as s:
-                s.set_state('campaign_id', 'a' * 64); s.set_state('source_hash', 'c' * 64)
-                k = EvidenceKernel.with_fixture_registry(s, self.fx.registry)
-                run = k.record('execution_receipt', {'store': name}, route='genesis.campaign', source_hash=SRC,
-                               verdict='VALID')
-                _, node = record_evaluation(k, self.fx, request, [run], anchor=anchor, receipt=receipt)
-                k.create_claim('claim-1', SignedFixture.STATEMENT, SignedFixture.SCOPE, [node],
-                               binding=R.binding_from_requests([request]))
-                k.promote('claim-1', 'utility', 'CONFIRMED_SAME_DOMAIN')
-                if name == 'first':
-                    k.revoke(node, 'receipt found faulty', 'auditor')
-                    records = k.revocations()
-                else:
-                    k.apply_revocations(records)  # the node id is unknown here; the evaluation is not
-                    self.assertTrue(k.levels('claim-1').get('invalidated'))
+        first = self.d / 'first'
+        with Store(first) as s:
+            self.fx.bind_store(s)
+            request = self.fx.request()
+            anchor = self.fx.anchor(request); receipt = self.fx.receipt(request, anchor)
+            k = EvidenceKernel.with_fixture_registry(s, self.fx.registry)
+            run = k.record('execution_receipt', {'store': 'first'}, route='genesis.campaign', source_hash=SRC,
+                           verdict='VALID')
+            _, node = record_evaluation(k, self.fx, request, [run], anchor=anchor, receipt=receipt)
+        second = self.d / 'second'
+        shutil.copytree(first, second)  # same campaign history, before the revocation
+        with Store(first) as s:
+            k = EvidenceKernel.with_fixture_registry(s, self.fx.registry)
+            k.revoke(node, 'receipt found faulty', 'auditor')
+            records = k.revocations()
+        with Store(second) as s:
+            k = EvidenceKernel.with_fixture_registry(s, self.fx.registry)
+            run2 = k.record('execution_receipt', {'store': 'second'}, route='genesis.campaign', source_hash=SRC,
+                            verdict='VALID')
+            _, node2 = record_evaluation(k, self.fx, request, [run2], anchor=anchor, receipt=receipt)
+            self.assertNotEqual(node, node2)  # the same envelope in a different wrapper node
+            k.create_claim('claim-1', SignedFixture.STATEMENT, SignedFixture.SCOPE, [node2],
+                           binding=R.binding_from_requests([request]))
+            k.promote('claim-1', 'utility', 'CONFIRMED_SAME_DOMAIN')
+            k.apply_revocations(records)
+            self.assertTrue(k.levels('claim-1').get('invalidated'))
 
     def test_l3_program_identity_ignores_encoding(self):
         from genesis.models import SolverProgram

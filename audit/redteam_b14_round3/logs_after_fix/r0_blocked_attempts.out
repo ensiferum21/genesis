@@ -1,0 +1,16 @@
+BLOCKED      task stored with non-canonical bytes: a mathematical claim must name its exact problem (create_claim(..., problem=...))
+BLOCKED      witness edge outside the host: a mathematical claim must name its exact problem (create_claim(..., problem=...))
+BLOCKED      witness containing a 4-cycle: a mathematical claim must name its exact problem (create_claim(..., problem=...))
+BLOCKED      recorded value larger than the witness: a mathematical claim must name its exact problem (create_claim(..., problem=...))
+BLOCKED      GraphTask with unsorted/duplicate edges or a self-loop: ValidationError: 1 validation error for GraphTask
+  Value error, edges must be ordered endpoints of a simple graph [type=value_
+Traceback (most recent call last):
+  File "/home/claude/genesis/audit/redteam_b14_round3/r0_blocked_attempts.py", line 77, in <module>
+    main()
+    ~~~~^^
+  File "/home/claude/genesis/audit/redteam_b14_round3/r0_blocked_attempts.py", line 64, in main
+    k.create_claim('o1', 'optimum of k4', 'this host', [b], problem={'task_sha256': sha, 'value': 4})
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/claude/genesis/src/genesis/kernel/evidence.py", line 434, in create_claim
+    raise ValueError("problem must be {task_sha256, value, claim: 'lower_bound' | 'optimum'}")
+ValueError: problem must be {task_sha256, value, claim: 'lower_bound' | 'optimum'}

@@ -27,16 +27,16 @@ class CustodianTests(unittest.TestCase):
         self.pool=self.root/'fixture-pool.json';self.pool.write_bytes(canonical([t.model_dump(mode='json') for t in self.tasks]))
         source=code_identity(Path(__file__).resolve().parents[1])['sha256']
         self.source=source
-        self.export=campaign_export(self.root,campaign_id='a'*64,source_hash=source)
+        self.export,self.frozen=campaign_export(self.root,campaign_id='a'*64,source_hash=source)
         self.manifest=self.root/'exposure_manifest.json'
         self.manifest.write_text(json.dumps({'schema':'genesis-exposure-manifest-v1','sources':[]}));self.manifest.chmod(0o600)
-        self.request={'schema':'genesis-evaluation-request-v3','campaign_id':'a'*64,'candidate_version':'b'*64,
+        self.request={'schema':'genesis-evaluation-request-v3','campaign_id':'a'*64,
+                      'candidate_version':self.frozen['candidate_version'],
                       'claim_id':'utility-fixture','evidence_kind':'sealed_evaluation','generation_transition':None,
                       'statement_hash':'5'*64,'scope':'fixture panel',
                       'transfer_source_domain':None,
                       'campaign_export_sha256':bytes_hash(self.export.read_bytes()),
-                      'source_hash':source,'programs':{'baseline':SolverProgram().model_dump(mode='json'),
-                      'candidate':SolverProgram(weights=(0,0,0,1)).model_dump(mode='json')},
+                      'source_hash':source,'programs':self.frozen['programs'],
                       'limits':Limits().model_dump(mode='json'),'seed':42,'task_count':2,'domain':'c4_host_v2',
                       'analysis':{'primary':'paired-edge-count','alpha':.05,'family_sensitivity':True,'hypotheses':1},
                       'exposed_graph_fingerprints':[],'expected_evaluator_hash':source}
@@ -64,8 +64,9 @@ class CustodianTests(unittest.TestCase):
         changed=[relabel(t,tuple(reversed(range(t.n)))) for t in self.tasks]
         self.pool.write_bytes(canonical([t.model_dump(mode='json') for t in changed]))
         self.request['campaign_id']='c'*64;self.request['claim_id']='utility-relabelled'
-        self.export=campaign_export(self.root,campaign_id='c'*64,source_hash=self.source,name='export-c.zip')
+        self.export,frozen_c=campaign_export(self.root,campaign_id='c'*64,source_hash=self.source,name='export-c.zip')
         self.request['campaign_export_sha256']=bytes_hash(self.export.read_bytes())
+        self.request['candidate_version']=frozen_c['candidate_version']
         register(self.root,self.request,self.key,'fixture',**self.reg())
         with self.assertRaises(Exception):evaluate(self.root,digest(self.request),self.pool,self.key,'fixture')
 
@@ -101,6 +102,17 @@ class CustodianTests(unittest.TestCase):
                                 ({'domain':'triangle_free_host_v1'},'domain')):
             with self.assertRaisesRegex(ValueError,fragment):
                 register(self.root,dict(self.request,**change),self.key,'fixture',**self.reg())
+        swapped=dict(self.request,claim_id='swapped',programs=dict(self.frozen['programs'],
+                     candidate=SolverProgram(weights=(1,0,0,0),rounds=32).model_dump(mode='json')))
+        with self.assertRaisesRegex(ValueError,'frozen program'):  # B14 round 3: candidate is not what was frozen
+            register(self.root,swapped,self.key,'fixture',**self.reg())
+        weak=dict(self.request,claim_id='weak',programs=dict(self.frozen['programs'],
+                  baseline=SolverProgram(rounds=1).model_dump(mode='json')))
+        with self.assertRaisesRegex(ValueError,'strongest'):
+            register(self.root,weak,self.key,'fixture',**self.reg())
+        label=dict(self.request,claim_id='relabel',candidate_version='9'*64)
+        with self.assertRaisesRegex(ValueError,'not a frozen version'):
+            register(self.root,label,self.key,'fixture',**self.reg())
         bare=self.root/'bare.zip'
         with zipfile.ZipFile(bare,'w') as z:z.writestr('MANIFEST.json','{}')
         with self.assertRaisesRegex(ValueError,'no event history'):

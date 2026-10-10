@@ -1,0 +1,11 @@
+a-unbound: effective math=WITNESS_VALID | problem=None | replayed witness value=3 on task path4
+b-mismatch: effective math=WITNESS_VALID | problem=3 | replayed witness value=3 on task k4
+c-optimum: effective math=WITNESS_VALID | problem=3 | replayed witness value=3 on task k4
+d-domain: effective math=WITNESS_VALID | problem=9 | replayed witness value=9 on task k6-c4
+true optimum of k4 (dual exact solvers): 4 | true C4-free optimum of K6: 7
+exported a-unbound WITNESS_VALID | host K63 (the complete graph on 63 vertices) has a C4-free subgraph with 1000 ed
+exported b-mismatch WITNESS_VALID | host k4 has a C4-free subgraph with 30 edges
+exported c-optimum WITNESS_VALID | the optimum for host k4 is 3: the maximum C4-free subgraph of k4 has exactly 3 e
+exported d-domain WITNESS_VALID | host k6-c4 (K6) has a C4-free subgraph with 9 edges
+verify_bundle ok: True []
+ATTACK_SUCCEEDED

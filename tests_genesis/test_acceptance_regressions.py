@@ -25,8 +25,8 @@ class Base(unittest.TestCase):
     def setUp(self):
         self.tmp = tempfile.TemporaryDirectory(); self.addCleanup(self.tmp.cleanup)
         self.store = Store(self.tmp.name + '/store'); self.addCleanup(self.store.close)
-        self.store.set_state('campaign_id', 'a' * 64); self.store.set_state('source_hash', 'c' * 64)
         self.fx = SignedFixture(self.tmp.name)
+        self.fx.bind_store(self.store)
         self.k = EvidenceKernel.with_fixture_registry(self.store, self.fx.registry)
         self.run = self.k.record('execution_receipt', {'status': 'SUCCESS'}, route='genesis.campaign',
                                  source_hash=SRC, verdict='VALID', effects=['UNCHECKED_PROPOSAL'])
@@ -72,6 +72,7 @@ class ReproducedAttacks(Base):
         anchor = self.fx.anchor(request)
         receipt = self.fx.receipt(request, anchor)
         a = self.k.record_signed('preregistration_anchor', anchor, route='genesis.custodian.evaluate', source_hash=SRC)
+        self.store.save('frozen_request', digest(request), request)
         extra = [self.k.record('note', {'i': i}, route='genesis.campaign', source_hash=SRC) for i in range(3)]
         nodes = [self.k.record_signed('sealed_generation_evaluation', receipt, parents=[self.run, a, extra[i]],
                                       route='genesis.custodian.evaluate', source_hash=SRC) for i in range(3)]

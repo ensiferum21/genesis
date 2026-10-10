@@ -59,6 +59,11 @@ class Campaign:
     def __init__(self,root):
         self.store=Store(root);self.root=self.store.root
         self.config=Config.model_validate_json((self.root/'resolved_config.json').read_bytes())
+        rows=self.store.db.execute("SELECT object_hash FROM entities WHERE kind='config'").fetchall()
+        if len(rows)!=1 or self.store.get(rows[0][0])!=self.config.model_dump(mode='json'):
+            # The editable file must never diverge from the recorded configuration (B14 round 3, F2).
+            self.store.close()
+            raise RuntimeError('resolved_config.json differs from the configuration recorded at initialization')
         self.optima={}
 
     def close(self):self.store.close()

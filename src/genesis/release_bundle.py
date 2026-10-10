@@ -122,7 +122,11 @@ def wording_problems(text, claims):
     """Report prose against the effective ceiling; each claim statement against its own levels."""
     out = [f"report.md: {p['phrase']!r} ({p['why']})" for p in lint(text, claims['ceiling'])]
     for c in claims['claims']:
-        levels = {a: v for a, v in c['effective_levels'].items() if a != 'invalidated'}
+        if c.get('problem') is not None:
+            continue  # kernel-generated statement of the stored problem (create_claim enforces it)
+        # A statement may say what was granted (it stays exportable after a later revocation, with the
+        # downgraded effective levels beside it) but never more than was ever granted.
+        levels = c['historical']['recorded_levels']
         out += [f"claim {c['claim_id']} statement: {p['phrase']!r} ({p['why']})" for p in lint(c['statement'], levels)]
         out += [f"claim {c['claim_id']} scope: {p['phrase']!r} ({p['why']})" for p in lint(c['scope'], levels)]
     return out

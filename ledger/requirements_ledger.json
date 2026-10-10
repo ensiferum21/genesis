@@ -1096,13 +1096,16 @@
    "independent_verification": "PENDING",
    "local_execution": "TESTS_EXECUTED_IN_MATRIX",
    "owner": "research implementer",
-   "remaining": [],
+   "remaining": [
+    "per-claim sentence binding (B14-OPEN-5)"
+   ],
    "scientific_efficacy": "N/A",
-   "scope": "wording gate on reports and on exported claim statements",
+   "scope": "wording gate on reports, prose files and claim statements; math statements generated from the problem",
    "source": "spec \u00a77.4 (p. 20)",
    "tests": [
     "tests_genesis/test_evidence_kernel.py::Wording",
-    "tests_genesis/test_redteam_b14.py::F1BundleWholeObject"
+    "tests_genesis/test_redteam_b14.py::F1BundleWholeObject",
+    "tests_genesis/test_redteam_b14_round3.py::F8Vocabulary"
    ],
    "title": "Evidence wording gate",
    "workstream": "W02"
@@ -2699,7 +2702,7 @@
    },
    "code": [
     "audit/reproductions/r01_r02_b13.py",
-    "audit/redteam_b14_round2/README.md"
+    "audit/redteam_b14_round3/README.md"
    ],
    "disposition": "IMPLEMENTED_BOUNDED_PENDING_AUDIT",
    "evidence": [],
@@ -2713,12 +2716,13 @@
    "owner": "research implementer",
    "remaining": [],
    "scientific_efficacy": "N/A",
-   "scope": "red-team catalogue: audit reproductions GI6-*, B14 R-01..R-03, two internal red-team rounds",
+   "scope": "red-team catalogue: audit reproductions GI6-*, B14 R-01..R-03, three internal red-team rounds",
    "source": "spec \u00a722 (p. 32)",
    "tests": [
     "tests_genesis/test_gi6_legacy_paths.py",
     "tests_genesis/test_redteam_b14.py",
-    "tests_genesis/test_redteam_b14_round2.py"
+    "tests_genesis/test_redteam_b14_round2.py",
+    "tests_genesis/test_redteam_b14_round3.py"
    ],
    "title": "Failure modes and red-team catalogue",
    "workstream": "W02"
@@ -4088,6 +4092,7 @@
     "tests_genesis/test_acceptance_regressions.py",
     "tests_genesis/test_redteam_b14.py",
     "tests_genesis/test_redteam_b14_round2.py",
+    "tests_genesis/test_redteam_b14_round3.py",
     "tests_genesis/test_external_custodian.py"
    ],
    "title": "signed evidence bound to the claim (kernel.receipts shared by all entry points); request facts checked against the campaign export",

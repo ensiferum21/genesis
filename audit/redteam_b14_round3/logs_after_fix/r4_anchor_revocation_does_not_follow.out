@@ -1,0 +1,14 @@
+CHILD FAILED:
+Traceback (most recent call last):
+  File "/home/claude/genesis/audit/redteam_b14_round3/r4_anchor_revocation_does_not_follow.py", line 89, in <module>
+    child(Path(sys.argv[2]), Path(sys.argv[3]))
+    ~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/claude/genesis/audit/redteam_b14_round3/r4_anchor_revocation_does_not_follow.py", line 57, in child
+    s1, k1, a1, r1 = store(EvidenceKernel, work / 's1', trust, e, '')
+                     ~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/claude/genesis/audit/redteam_b14_round3/r4_anchor_revocation_does_not_follow.py", line 48, in store
+    k.promote(CLAIM, 'utility', 'CONFIRMED_SAME_DOMAIN')
+    ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/claude/genesis/src/genesis/kernel/evidence.py", line 538, in promote
+    raise PromotionRejected(reasons)
+genesis.kernel.evidence.PromotionRejected: ['bound request 35da34ff79f1 is not a frozen request of this campaign: the frozen evaluation request is not recorded as an immutable entity', 'needs 1 distinct supporting sealed_evaluation evaluation(s), found 0']

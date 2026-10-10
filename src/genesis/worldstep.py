@@ -115,7 +115,7 @@ class ResearchLoop:
     def run(self):
         cfg = self.config
         if self.s.state('loop_phase') == 'COMPLETE':
-            return self.s.state('loop_summary')
+            return self.refreshed_summary()
         self._verifiers()
         root_grant = self.g.root_grant({'cpu_seconds': cfg.cpu_budget_per_epoch * cfg.epochs * 1.5,
                                         'wall_seconds': cfg.cpu_budget_per_epoch * cfg.epochs * 6,
@@ -267,8 +267,9 @@ class ResearchLoop:
                                   route='genesis.campaign', source_hash=self.source, verdict='VALID',
                                   verifier='dual-predicates')
             claim = f'lower:{task.task_id}:{lower}'
-            self.k.create_claim(claim, f'host {task.task_id} has a valid subgraph with {lower} edges',
-                                'this finite host only', [check], problem={'task_sha256': task_sha, 'value': lower})
+            problem = {'task_sha256': task_sha, 'value': lower, 'claim': 'lower_bound'}
+            self.k.create_claim(claim, self.k.math_statement(problem), 'this finite host only', [check],
+                                problem=problem)
             self.k.promote(claim, 'math', 'WITNESS_VALID')
             state.update(lower=lower, witness_node=check); improved = True
         if certified and (upper < state['upper'] or (upper == lower and state['status'] != 'OPTIMALITY_CHECKED')):
@@ -289,9 +290,9 @@ class ResearchLoop:
                 state['certificate'] = certificate
                 if upper == state['lower']:
                     claim = f'optimum:{task.task_id}:{upper}'
-                    self.k.create_claim(claim, f'the optimum for host {task.task_id} is {upper}',
-                                        'this finite host only', [bound],
-                                        problem={'task_sha256': task_sha, 'value': upper})
+                    problem = {'task_sha256': task_sha, 'value': upper, 'claim': 'optimum'}
+                    self.k.create_claim(claim, self.k.math_statement(problem), 'this finite host only', [bound],
+                                        problem=problem)
                     try:
                         self.k.promote(claim, 'math', 'OPTIMALITY_CHECKED')
                         state['status'] = 'OPTIMALITY_CHECKED'
@@ -299,6 +300,25 @@ class ResearchLoop:
                         state['promotion_rejected'] = exc.args[0]
         self.s.set_state(f'best:{task.task_id}', state)
         return improved
+
+    def refreshed_summary(self):
+        """The stored summary with every task status re-derived from the evidence kernel now,
+        so a revocation after the run is visible (B14 round 3, F9)."""
+        summary = dict(self.s.state('loop_summary'))
+        tasks = {}
+        for tid, v in summary['tasks'].items():
+            claim = f"optimum:{tid}:{v.get('upper')}"
+            try:
+                level = self.k.levels(claim)['math']
+            except KeyError:
+                level = None
+            status = v.get('status')
+            if status == 'OPTIMALITY_CHECKED' and level != 'OPTIMALITY_CHECKED':
+                status = 'OPTIMALITY_REVOKED_OR_UNVERIFIABLE'
+            tasks[tid] = dict(v, status=status)
+        summary.update(tasks=tasks, optimality_checked=sum(v['status'] == 'OPTIMALITY_CHECKED' for v in tasks.values()),
+                       invalidated_claims=self.k.invalidated_claims(), refreshed_utc=utcnow())
+        return summary
 
     def _summary(self, tasks, best, history, eco, calibration):
         final = {t.task_id: self.s.state(f'best:{t.task_id}') for t in tasks}

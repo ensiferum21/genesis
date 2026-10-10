@@ -85,7 +85,8 @@ class TheoremMemoryRule(unittest.TestCase):
             from tests_genesis.signed_fixtures import witness_payload
             check = k.record('witness_check', witness_payload(s), parents=[r1['node']], route='genesis.campaign',
                              source_hash='a' * 64, verdict='VALID')
-            k.create_claim('c', 'result using lemma-1', 'scope', [check])
+            from tests_genesis.signed_fixtures import math_claim
+            math_claim(k, 'c', [check])
             k.promote('c', 'math', 'WITNESS_VALID')
             # A new sealed panel is built later and contains the same theorem.
             later = SealedIndex(); later.add_statement('S-new', SEALED)

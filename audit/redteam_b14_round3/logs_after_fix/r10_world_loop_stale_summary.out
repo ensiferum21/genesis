@@ -1,0 +1,6 @@
+loop: optimality_checked = 2
+optimum claims before: {'optimum:dev-hard-20261013-0000:32': 'OPTIMALITY_CHECKED', 'optimum:dev-hard-20261013-0001:32': 'OPTIMALITY_CHECKED'}
+optimum claims after verifier revocation: {'optimum:dev-hard-20261013-0000:32': 'UNCHECKED', 'optimum:dev-hard-20261013-0001:32': 'UNCHECKED'}
+CLI `research loop` prints: optimality_checked = 0 | task statuses ['BOUNDS_ONLY', 'OPTIMALITY_REVOKED_OR_UNVERIFIABLE']
+reports/world_loop.md: Hosts with a certified optimum: 2 of 3.
+ATTACK_BLOCKED (no optimum reached or summary re-derived)

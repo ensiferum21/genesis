@@ -1,0 +1,8 @@
+BLOCKED      task stored with non-canonical bytes: witness_check f0e6abcfde8b: stored problem does not hash to task_sha256
+BLOCKED      witness edge outside the host: witness_check 0c0c62eff53c: witness replay failed (ValueError)
+BLOCKED      witness containing a 4-cycle: witness_check e3ed2f9b9af2: witness replay failed (ValueError)
+BLOCKED      recorded value larger than the witness: witness_check 691a8864b613: witness does not replay to the recorded value
+BLOCKED      GraphTask with unsorted/duplicate edges or a self-loop: ValidationError: 1 validation error for GraphTask
+  Value error, edges must be ordered endpoints of a simple graph [type=value_
+BLOCKED      certificate of the triangle-free K4 bound to the C4 K4 problem: bound_state 335c0c0f5d19: certificate bundle certifies a different problem or bound
+BLOCKED      campaign export with ../ path: ValueError: unsafe path in campaign export

@@ -30,6 +30,7 @@ def keypair(directory, name):
 
 
 class SignedFixture:
+    export_sha256 = 'e' * 64
     def __init__(self, directory):
         self.keys = {n: keypair(directory, n) for n in ROLES}
         self.registry = {'pins': {'custodian_key': self.keys['custodian'][1], 'prereg_key': self.keys['prereg'][1],
@@ -38,6 +39,17 @@ class SignedFixture:
                                   'priority_reviewer_key': self.keys['priority_reviewer'][1],
                                   'release_authority_id': 'FIXTURE_BOARD'}}
         self._tick = 0
+        self.export_sha256 = 'e' * 64
+
+    def bind_store(self, store):
+        """Make `store` a campaign the fixture requests belong to: identity, and an export the
+        requests bind (kernel and phase checks require bound requests to be this campaign's)."""
+        from genesis.cli import export_replication
+        from genesis.common import bytes_hash
+        store.set_state('campaign_id', 'a' * 64); store.set_state('source_hash', 'c' * 64)
+        export = store.root / 'exports' / 'campaign_export.zip'
+        export_replication(store.root, export, store=store)
+        self.export_sha256 = bytes_hash(export.read_bytes())
 
     def sign(self, payload, role):
         return sign(payload, self.keys[role][0])
@@ -47,13 +59,14 @@ class SignedFixture:
 
     def request(self, claim_id='claim-1', kind='sealed_evaluation', *, candidate='b' * 64, campaign='a' * 64,
                 domain='c4_host_v2', transition=None, transfer=None, task_count=40, seed=1, baseline_rounds=1,
-                candidate_program=None, baseline_program=None, statement=None, scope=None, export_sha256='e' * 64):
+                candidate_program=None, baseline_program=None, statement=None, scope=None, export_sha256=None):
         programs = {'baseline': baseline_program or SolverProgram(rounds=baseline_rounds).model_dump(mode='json'),
                     'candidate': candidate_program or SolverProgram(weights=(0, 0, 0, 1)).model_dump(mode='json')}
         return {'schema': R.REQUEST, 'campaign_id': campaign, 'claim_id': claim_id, 'evidence_kind': kind,
                 'statement_hash': digest(statement or self.STATEMENT), 'scope': scope or self.SCOPE,
                 'generation_transition': transition, 'transfer_source_domain': transfer,
-                'candidate_version': candidate, 'campaign_export_sha256': export_sha256, 'source_hash': 'c' * 64,
+                'candidate_version': candidate, 'campaign_export_sha256': export_sha256 or self.export_sha256,
+                'source_hash': 'c' * 64,
                 'programs': programs,
                 'limits': Limits().model_dump(mode='json'), 'seed': seed, 'task_count': task_count,
                 'domain': domain, 'analysis': dict(R.ANALYSIS_V1), 'exposed_graph_fingerprints': [],
@@ -105,6 +118,7 @@ def record_evaluation(kernel, fixture, request, parents=(), *, anchor=None, rece
     """Record anchor + receipt nodes the way a custodian hand-off would. Returns (anchor_node, receipt_node)."""
     anchor = anchor or fixture.anchor(request)
     receipt = receipt or fixture.receipt(request, anchor, **receipt_kw)
+    kernel.s.save('frozen_request', digest(request), request)  # the campaign froze this request
     a = kernel.record_signed('preregistration_anchor', anchor, route=route, source_hash=source)
     r = kernel.record_signed(request['evidence_kind'], receipt, parents=list(parents) + [a], route=route,
                              source_hash=source)
@@ -123,21 +137,33 @@ def chain_requests(fx, claim_id, n, *, versions=None, seed=0, index_order=None):
 
 
 def campaign_export(directory, *, campaign_id='a' * 64, source_hash='c' * 64, domain='c4_host_v2', hosts=(),
-                    name='export.zip'):
-    """A minimal but real campaign export: a hash-chained store with campaign identity,
-    source identity, a config naming the domain, and optional research-visible hosts."""
+                    name='export.zip', candidate_program=None, baseline_name='multistart'):
+    """A minimal but real frozen campaign export: hash-chained store with campaign identity, source,
+    one configuration, a frozen candidate (latest_program + candidate_version document), the
+    strongest-baseline record, and optional research-visible hosts. Returns (path, frozen) where
+    `frozen` gives the request fields that describe this candidate."""
     from genesis.cli import export_replication
+    from genesis.dsl import baseline_programs
     from genesis.store import Store
     root = Path(directory) / f'campaign-{name}'
+    program = candidate_program or SolverProgram(weights=(0, 0, 0, 1)).model_dump(mode='json')
+    version = {'program': program, 'source': source_hash, 'fixture': name}
     with Store(root) as s:
         s.set_state('campaign_id', campaign_id)
         s.set_state('source_hash', source_hash)
         s.save('config', 'resolved', {'domain': domain, 'profile': 'fixture'})
         for t in hosts:
             s.put({'kind': 'solver', 'task': t.model_dump(mode='json')})
+        s.set_state('latest_program', program)
+        s.set_state('summary', {'generations': [{'baseline': baseline_name}], 'retained_dev_capabilities': []})
+        s.save('candidate_version', digest(version), version)
+        s.set_state('phase', 'CANDIDATE_FROZEN')
     dest = Path(directory) / name
     export_replication(root, dest)
-    return dest
+    frozen = {'candidate_version': digest(version), 'source_hash': source_hash, 'campaign_id': campaign_id,
+              'programs': {'baseline': baseline_programs()[baseline_name].model_dump(mode='json'),
+                           'candidate': program}}
+    return dest, frozen
 
 
 def path4():
@@ -171,3 +197,11 @@ def fixture_campaign(directory, fx, **request_kw):
         s.save('frozen_request', digest(request), request)
         s.set_state('frozen_request_hash', digest(request))
     return root, request
+
+
+def math_claim(kernel, claim_id, deps, *, value=3, claim='lower_bound', task=None, scope='this finite host only'):
+    """A mathematical claim the way the kernel requires it: about a stored problem, with the
+    kernel-generated statement."""
+    task = task or path4()
+    problem = {'task_sha256': kernel.s.put(task.model_dump(mode='json')), 'value': value, 'claim': claim}
+    return kernel.create_claim(claim_id, kernel.math_statement(problem), scope, deps, problem=problem)

@@ -295,8 +295,8 @@ def summarize(prereg, prereg_id, rows):
         'evidence': {'math': 'WITNESS_VALID', 'utility': 'DEV_ONLY', 'novelty': 'REDISCOVERY',
                      'effects': ['EXTERNAL_SOURCE'] if prereg.domain == 'c4_host_v2' else []},
         'limitations': [
-            'Public calibration: complete hosts and their optima are published; not a sealed evaluation.',
-            'Matched values are known optima only according to the cited source; no optimality certificate is produced here.',
+            'Public calibration: the values for complete hosts are published; this is not a sealed evaluation.',
+            'A matched value agrees with the published value of the cited source; no optimality certificate is produced here.',
             'Realized CPU includes interpreter start-up for every invocation; the final invocation may overshoot.',
             'A frontier candidate is not a discovery until independently re-checked and priority-checked.',
         ],

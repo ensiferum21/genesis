@@ -83,8 +83,8 @@ PRIORITY_FIELDS = frozenset({
     'schema', 'evidence_kind', 'claim_id', 'statement_hash', 'scope', 'reviewer_id',
     'search_record_root', 'decided_at', 'outcome'})
 BINDING_FIELDS = frozenset({
-    'schema', 'campaign_id', 'statement_hash', 'scope', 'candidate_version', 'baseline_versions', 'domains',
-    'request_hashes', 'evaluator_hash', 'source_hashes'})
+    'schema', 'campaign_id', 'statement_hash', 'scope', 'candidate_version', 'candidate_program', 'baseline_versions',
+    'domains', 'request_hashes', 'evaluator_hash', 'source_hashes'})
 
 
 def hex64(h):
@@ -124,19 +124,26 @@ def program_identity(program):
     return digest(SolverProgram.model_validate_json(canonical(program)).model_dump(mode='json'))
 
 
-def registration_slot(request):
-    """One sealed evaluation per slot, whatever the claim is called.
+def registration_slots(request):
+    """Slots a registration occupies; each may be used once at a custodian.
 
-    The slot is the evaluated candidate program in its campaign, kind, domain and
-    generation position, so renaming the claim (new claim_id, statement or scope)
-    does not buy another draw for the same candidate. Selection across *different*
-    candidates is a multiplicity question for the custodian's registration log
-    (W07, recorded as an open item)."""
+    * the claim slot: one sealed draw per claim (claim id in its campaign, kind, domain,
+      generation position), so a claim cannot be re-run until a lucky draw appears;
+    * the candidate slot: one sealed draw per candidate program in the same position, so
+      renaming the claim does not buy another draw for the same candidate.
+    Selection across *different* candidates and campaigns is a multiplicity question for
+    a published registration log (W07; recorded as an open item)."""
     t = request.get('generation_transition')
-    return digest({'campaign_id': request['campaign_id'], 'candidate': program_identity(request['programs']['candidate']),
-                   'evidence_kind': request['evidence_kind'], 'domain': request['domain'],
-                   'transfer_source_domain': request.get('transfer_source_domain'),
-                   'generation_index': t.get('index') if isinstance(t, dict) else None})
+    position = {'campaign_id': request['campaign_id'], 'evidence_kind': request['evidence_kind'],
+                'domain': request['domain'], 'transfer_source_domain': request.get('transfer_source_domain'),
+                'generation_index': t.get('index') if isinstance(t, dict) else None}
+    return sorted({digest(dict(position, claim_id=request['claim_id'])),
+                   digest(dict(position, candidate=program_identity(request['programs']['candidate'])))})
+
+
+def registration_slot(request):
+    """The anchor's commitment to the slots it occupies."""
+    return digest({'slots': registration_slots(request)})
 
 
 def domain_contract_hash(domain):
@@ -302,6 +309,8 @@ def evaluation_identity(p):
     """Identity of one evaluation or adjudication; None if the payload has neither shape."""
     if not isinstance(p, dict):
         return None
+    if p.get('schema') == PREREG_ANCHOR and 'request_hash' in p and 'panel_commitment' in p:
+        return digest({'anchor': p['request_hash'], 'panel': p['panel_commitment']})
     if p.get('schema') == PRIORITY_ADJUDICATION and 'search_record_root' in p and 'claim_id' in p:
         return digest({'priority': p['search_record_root'], 'claim': p['claim_id']})
     if 'panel_commitment' in p and 'raw_evidence_root' in p:
@@ -366,6 +375,8 @@ def check_binding(b):
     for k in ('campaign_id', 'candidate_version', 'evaluator_hash', 'statement_hash'):
         if not hex64(b[k]):
             out.append(f'binding {k}')
+    if b['candidate_program'] is not None and not hex64(b['candidate_program']):
+        out.append('binding candidate_program')
     if not isinstance(b['scope'], str) or not b['scope']:
         out.append('binding scope')
     for k in ('baseline_versions', 'request_hashes', 'source_hashes'):
@@ -397,11 +408,12 @@ def binding_from_requests(requests):
     chain = [r for r in requests if r['evidence_kind'] == 'sealed_generation_evaluation']
     if chain:
         final = max(chain, key=lambda r: r['generation_transition']['index'])['candidate_version']
+        program = None  # each generation evaluates its own successor program
     else:
-        versions = {r['candidate_version'] for r in requests}
+        versions = {(r['candidate_version'], program_identity(r['programs']['candidate'])) for r in requests}
         if len(versions) != 1:
-            raise ValueError('requests evaluate different candidates')
-        final = versions.pop()
+            raise ValueError('requests evaluate different candidates (version or program)')
+        final, program = versions.pop()
     domains = {}
     for r in requests:
         for d in (r['domain'], r.get('transfer_source_domain')):
@@ -409,6 +421,7 @@ def binding_from_requests(requests):
                 domains[d] = domain_contract_hash(d)
     b = {'schema': CLAIM_BINDING, 'campaign_id': requests[0]['campaign_id'],
          'statement_hash': requests[0]['statement_hash'], 'scope': requests[0]['scope'], 'candidate_version': final,
+         'candidate_program': program,
          'baseline_versions': sorted({program_identity(r['programs']['baseline']) for r in requests}),
          'domains': domains, 'request_hashes': sorted({digest(r) for r in requests}),
          'evaluator_hash': requests[0]['expected_evaluator_hash'],
@@ -440,8 +453,9 @@ def binding_mismatches(p, claim_id, binding, kind):
         out.append('receipt domain is not bound to this claim')
     if p['transfer_source_domain'] is not None and p['transfer_source_domain'] not in binding['domains']:
         out.append('transfer source domain is not bound to this claim')
-    if kind != 'sealed_generation_evaluation' and p['candidate_version'] != binding['candidate_version']:
-        out.append('receipt evaluates a different candidate version')
+    if kind != 'sealed_generation_evaluation' and (p['candidate_version'] != binding['candidate_version']
+                                                   or p['candidate_program_hash'] != binding['candidate_program']):
+        out.append('receipt evaluates a different candidate version or program')
     return out
 
 

@@ -123,26 +123,65 @@ def campaign_facts(export):
         record=rebuild_from_export(d)
         if record.get('partial_tail_dropped'):raise ValueError('campaign export ends in a partial event')
         with Store(d) as s:
-            row=s.db.execute("SELECT object_hash FROM entities WHERE kind='config' ORDER BY id").fetchone()
-            config=s.get(row[0]) if row else {}
+            def entities(kind):
+                return [(i,s.get(h)) for i,h in s.db.execute('SELECT id,object_hash FROM entities WHERE kind=? ORDER BY id',(kind,))]
+            configs=entities('config')
+            written={}
+            for (raw,) in s.db.execute('SELECT body FROM events ORDER BY seq'):
+                body=json.loads(raw)
+                if body['kind']=='STATE_UPDATED':
+                    upd=s.get(body['payload'])
+                    if upd['key'] in ('campaign_id','source_hash'):written.setdefault(upd['key'],set()).add(canonical(upd['value']))
+            summary=s.state('summary') or {}
             facts={'campaign_id':s.state('campaign_id'),'source_hash':s.state('source_hash'),
-                   'domain':config.get('domain'),'event_head':record['head']}
+                   'domain':configs[0][1].get('domain') if len(configs)==1 else None,
+                   'config_entities':len(configs),
+                   'identity_rewritten':any(len(v)>1 for v in written.values()),
+                   'phase':s.state('phase'),'latest_program':s.state('latest_program'),
+                   'candidate_versions':dict(entities('candidate_version')),
+                   'strongest_baseline':(summary.get('generations') or [{}])[-1].get('baseline'),
+                   'research_domains':sorted({task.get('domain') for _,task in entities('task')
+                                              if task.get('split') in ('DEV','SELECT')}),
+                   'event_head':record['head']}
         shutil.rmtree(d,ignore_errors=True)
     return facts
 
 
 def check_request_against_export(request,facts):
+    """The request must describe the frozen candidate this campaign actually produced."""
+    from .dsl import baseline_programs
     problems=[]
     if request['evidence_kind'] in UNSUPPORTED_KINDS:
         problems.append(f"{request['evidence_kind']} {UNSUPPORTED_KINDS[request['evidence_kind']]}; refused")
+    if facts['identity_rewritten']:problems.append('campaign identity or source was rewritten in the export history')
+    if facts['config_entities']!=1:problems.append('campaign export must hold exactly one resolved configuration')
     if facts['campaign_id']!=request['campaign_id']:problems.append('request campaign_id differs from the campaign export')
     if facts['source_hash']!=request['source_hash']:problems.append('request source_hash differs from the campaign export')
+    if any(d!=facts['domain'] for d in facts['research_domains']):
+        problems.append('campaign research ran on a domain other than its configuration states')
     if request['evidence_kind']=='sealed_transfer_evaluation':
         if facts['domain']!=request['transfer_source_domain'] or request['domain']==facts['domain']:
             problems.append('a transfer must evaluate on a domain other than the one the campaign worked in, '
                             'and name that campaign domain as its source')
     elif facts['domain']!=request['domain']:
         problems.append('request domain differs from the campaign export domain')
+    if facts['phase']!='CANDIDATE_FROZEN':
+        problems.append(f"campaign export is not of a frozen candidate (phase {facts['phase']})")
+    try:
+        candidate=R.program_identity(request['programs']['candidate'])
+        doc=facts['candidate_versions'].get(request['candidate_version'])
+        if doc is None or digest(doc)!=request['candidate_version']:
+            problems.append('candidate_version is not a frozen version recorded in the campaign export')
+        elif R.program_identity(doc.get('program'))!=candidate or doc.get('source')!=request['source_hash']:
+            problems.append('candidate_version does not describe the requested candidate program and source')
+        if facts['latest_program'] is None or R.program_identity(facts['latest_program'])!=candidate:
+            problems.append("the candidate program is not the campaign's frozen program")
+        strongest=baseline_programs().get(facts['strongest_baseline'])
+        if strongest is None or R.program_identity(strongest.model_dump(mode='json'))!= \
+                R.program_identity(request['programs']['baseline']):
+            problems.append("the baseline is not the campaign's strongest conventional baseline")
+    except Exception as exc:
+        problems.append(f'candidate/baseline programs could not be checked ({type(exc).__name__})')
     return problems
 
 
@@ -194,7 +233,7 @@ def register(private_root,request,key_path,operator_id,*,exposure_manifest,campa
         raise ValueError(f'exposure declaration omits {omitted} host graphs present in the campaign export')
     db=_open_custody(root)
     try:
-        slot=R.registration_slot(request)
+        slot=R.registration_slot(request);slots=R.registration_slots(request)
         payload={'schema':R.PREREG_ANCHOR,'request_hash':rid,'claim_id':request['claim_id'],
                  'statement_hash':request['statement_hash'],'scope':request['scope'],
                  'evidence_kind':request['evidence_kind'],'registration_slot':slot,'registered_at':utcnow(),
@@ -206,12 +245,14 @@ def register(private_root,request,key_path,operator_id,*,exposure_manifest,campa
         anchor=sign(payload,key_path)
         with db:
             db.execute('BEGIN IMMEDIATE')
-            taken=db.execute('SELECT request_id FROM slots WHERE slot=?',(slot,)).fetchone()
-            if taken:
-                # One preregistration per claim slot: re-running until a favourable draw is selective reporting.
-                raise ValueError('this claim slot (claim, kind, domain, generation) is already registered by '
-                                 f'request {taken[0][:12]}; a new claim needs a new claim_id')
-            db.execute('INSERT INTO slots VALUES (?,?)',(slot,rid))
+            for one in slots:
+                taken=db.execute('SELECT request_id FROM slots WHERE slot=?',(one,)).fetchone()
+                if taken:
+                    # One sealed draw per claim and per candidate: re-running until a favourable draw is
+                    # selective reporting, whatever the claim is renamed to.
+                    raise ValueError('this claim or candidate slot (campaign, kind, domain, generation) is already '
+                                     f'registered by request {taken[0][:12]}')
+            db.executemany('INSERT INTO slots VALUES (?,?)',[(one,rid) for one in slots])
             db.execute('INSERT INTO requests VALUES (?,?,?,?)',(rid,canonical(request),canonical(anchor),'REGISTERED'))
             db.execute('INSERT INTO registry_builds VALUES (?,?)',(rid,canonical(record)))
             db.execute('INSERT INTO panels VALUES (?,?,?,?)',(rid,pool_hash,salt,commitment))
@@ -409,7 +450,7 @@ def evaluate(private_root,request_id,pool_path,key_path,operator_id):
 from .kernel.roles import TRUST_ROOT_ENV,DEFAULT_TRUST_ROOT,ROLE_FIELDS,load_role_registry  # re-exported
 
 
-def release_preflight(request,anchor,receipt,audit,*,trust_root=None):
+def release_preflight(request,anchor,receipt,audit,*,trust_root=None,revocations=()):
     """Check externally pinned roles. Never lets a builder-created key self-promote.
 
     Uses the same receipt semantics as the evidence kernel and phase machine
@@ -423,10 +464,16 @@ def release_preflight(request,anchor,receipt,audit,*,trust_root=None):
     try:
         validate_request(request)
         rid=digest(request);kind=request['evidence_kind']
-        a,why=R.accept_receipt(anchor,'preregistration_anchor',pins)
+        # `revocations`: the evidence store's revocation feed (REVOCATIONS.json records).
+        revoked_keys=[x['artifact'] for x in revocations if x.get('target_type')=='key']
+        revoked_evals={x['artifact'] for x in revocations if x.get('target_type')=='evaluation'}
+        a,why=R.accept_receipt(anchor,'preregistration_anchor',pins,revoked_keys=revoked_keys)
         reasons+=why
-        r,why=R.accept_receipt(receipt,kind,pins)  # trusted role, schema, outcome, source eligibility
+        r,why=R.accept_receipt(receipt,kind,pins,revoked_keys=revoked_keys)  # role, schema, outcome, source
         reasons+=why
+        for name,env in (('anchor',anchor),('receipt',receipt)):
+            if R.evaluation_identity(R.unwrap_unverified(R.wrap(env))) in revoked_evals:
+                reasons.append(f'the {name} is revoked in the supplied revocation feed')
         review=verify(audit,pins['auditor_key'])
         if a is not None and r is not None:
             reasons+=R.anchor_mismatches(r,a,anchor)

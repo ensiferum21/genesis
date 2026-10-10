@@ -1,0 +1,11 @@
+CHILD FAILED:
+Traceback (most recent call last):
+  File "/home/claude/genesis/audit/redteam_b14_round3/r7_campaign_binding_by_mutable_label.py", line 74, in <module>
+    child(Path(sys.argv[2]), Path(sys.argv[3]))
+    ~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/claude/genesis/audit/redteam_b14_round3/r7_campaign_binding_by_mutable_label.py", line 56, in child
+    print('kernel:', k.promote('claim-1', 'utility', 'CONFIRMED_SAME_DOMAIN')['level'])
+                     ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/claude/genesis/src/genesis/kernel/evidence.py", line 538, in promote
+    raise PromotionRejected(reasons)
+genesis.kernel.evidence.PromotionRejected: ['campaign identity or source was rewritten in this store', 'needs 1 distinct supporting sealed_evaluation evaluation(s), found 0']

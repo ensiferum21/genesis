@@ -1,0 +1,11 @@
+register A: accepted | claim utility:2d919be07ad5edae | candidate_version 2d919be07ad5 | candidate program 46596dbfeaaf | slot f82a82232b6e
+evaluate A: SUPPORTED wins=7 losses=0 ties=17 family_p=0.0156 | signed candidate_version 2d919be07ad5 candidate_program_hash 46596dbfeaaf
+register B: accepted | claim utility:2d919be07ad5edae | candidate_version 2d919be07ad5 | candidate program 1d9fd032d001 | slot 422f0fd365e4
+evaluate B: NOT_SUPPORTED wins=0 losses=16 ties=8 family_p=1.0000 | signed candidate_version 2d919be07ad5 candidate_program_hash 1d9fd032d001
+register C: accepted | claim utility:2d919be07ad5edae | candidate_version 2d919be07ad5 | candidate program b724160fab01 | slot b598b2e095b6
+evaluate C: SUPPORTED wins=10 losses=0 ties=14 family_p=0.0039 | signed candidate_version 2d919be07ad5 candidate_program_hash b724160fab01
+campaign latest_program identity 1d9fd032d001 | program evaluated in A 46596dbfeaaf
+child (uid 65534, real trust root): promoted CONFIRMED_SAME_DOMAIN | effective CONFIRMED_SAME_DOMAIN
+store latest_program identity 1d9fd032d001 != receipt candidate_program_hash 46596dbfeaaf
+exported: CONFIRMED_SAME_DOMAIN | verify_bundle ok: True []
+ATTACK_SUCCEEDED

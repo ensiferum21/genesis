@@ -13,7 +13,8 @@ from cryptography.hazmat.primitives import serialization
 
 from genesis.kernel.evidence import EvidenceKernel, PromotionRejected
 from genesis.kernel.receipts import binding_from_requests
-from tests_genesis.signed_fixtures import SignedFixture, chain_requests, record_evaluation, witness_payload
+from tests_genesis.signed_fixtures import (SignedFixture, chain_requests, math_claim, record_evaluation,
+                                          witness_payload)
 from genesis.kernel.wording import lint, require_clean
 from genesis.store import Store
 
@@ -47,15 +48,15 @@ class Base(unittest.TestCase):
 
 class MathPromotion(Base):
     def test_witness_valid_needs_a_passing_witness_check(self):
-        self.k.create_claim('c1', 'value 7 witnessed', 'host H', [self.run])
+        math_claim(self.k, 'c1', [self.run])
         self.rejects('c1', 'math', 'WITNESS_VALID', 'witness_check')
         w = self.check('witness_check', [self.run])
-        self.k.create_claim('c2', 'value 7 witnessed', 'host H', [w])
+        math_claim(self.k, 'c2', [w])
         self.k.promote('c2', 'math', 'WITNESS_VALID')
         self.assertEqual(self.k.levels('c2')['math'], 'WITNESS_VALID')
 
     def test_unchecked_proposal_taints_until_checked(self):
-        self.k.create_claim('c', 'x', 's', [self.run])
+        math_claim(self.k, 'c', [self.run])
         self.rejects('c', 'math', 'FINITE_CERTIFIED', 'speculative')
 
     def test_declared_verdicts_without_a_replay_contract_license_nothing(self):
@@ -63,20 +64,20 @@ class MathPromotion(Base):
         # until a replay contract exists, however many there are.
         a = self.check('exact_check', [self.run])
         b = self.check('exact_check', [self.run], verifier='exact-b')
-        self.k.create_claim('two', 'opt 7', 'H', [a, b])
+        math_claim(self.k, 'two', [a, b])
         self.rejects('two', 'math', 'FINITE_CERTIFIED', 'no replay contract for exact_check')
         for kind, axis, level in (('formal_check', 'math', 'THEOREM_CHECKED'), ('ablation', 'causality',
                                   'ABLATION_SUPPORTED'), ('internal_replication', 'replication', 'INTERNAL_INDEPENDENT'),
                                   ('dev_comparison', 'utility', 'DEV_ONLY'), ('priority_check', 'novelty', 'REDISCOVERY')):
             n = self.check(kind, [self.run], verdict='PASS')
-            self.k.create_claim(f'declared-{kind}', 'x', 'H', [n])
+            math_claim(self.k, f'declared-{kind}', [n])
             self.rejects(f'declared-{kind}', axis, level, f'no replay contract for {kind}')
         # A witness check is replayed: a wrong witness or a declared value does not pass.
         bad = self.check('witness_check', [self.run], payload=dict(witness_payload(self.store), value=4))
-        self.k.create_claim('badw', 'x', 'H', [bad])
+        math_claim(self.k, 'badw', [bad])
         self.rejects('badw', 'math', 'WITNESS_VALID', 'does not replay')
         v1 = self.check('witness_check', [self.run], payload={'value': 7})
-        self.k.create_claim('v1', 'x', 'H', [v1])
+        math_claim(self.k, 'v1', [v1])
         self.rejects('v1', 'math', 'WITNESS_VALID', 'not a replayable witness check')
 
     PATH4 = None
@@ -105,8 +106,9 @@ class MathPromotion(Base):
         return self.check('bound_state', [w], payload=body)
 
     def opt_claim(self, cid, node, value=3, sha=None):
-        self.k.create_claim(cid, 'opt', 'H', [node],
-                            problem={'task_sha256': sha or self.path4()[1], 'value': value})
+        problem = {'task_sha256': sha or self.store.put(self.path4()[0].model_dump(mode='json')), 'value': value,
+                   'claim': 'optimum'}
+        self.k.create_claim(cid, self.k.math_statement(problem), 'H', [node], problem=problem)
 
     def test_optimality_needs_gap_zero_and_certificate_custody(self):
         self.opt_claim('c', self.bound(lower=2, upper=3))
@@ -148,20 +150,20 @@ class MathPromotion(Base):
     def test_approximate_and_self_judged_dependencies_rejected(self):
         a = self.check('exact_check', [self.run], effects=['APPROXIMATE'])
         b = self.check('exact_check', [self.run], verifier='exact-b')
-        self.k.create_claim('approx', 'opt', 'H', [a, b])
+        math_claim(self.k, 'approx', [a, b])
         self.rejects('approx', 'math', 'FINITE_CERTIFIED', 'approximate')
         w = self.check('witness_check', [self.run], effects=['SELF_JUDGED'])
-        self.k.create_claim('self', 'w', 'H', [w])
+        math_claim(self.k, 'self', [w])
         self.rejects('self', 'math', 'WITNESS_VALID', 'self-judged')
 
     def test_failed_checker_receipt_never_licenses(self):
         w = self.check('witness_check', [self.run], verdict='CHECKER_ERROR')
-        self.k.create_claim('c', 'w', 'H', [w])
+        math_claim(self.k, 'c', [w])
         self.rejects('c', 'math', 'WITNESS_VALID', 'witness_check')
 
     def test_negative_states_are_not_promotion_targets(self):
         w = self.check('witness_check', [self.run])
-        self.k.create_claim('c', 'w', 'H', [w])
+        math_claim(self.k, 'c', [w])
         self.rejects('c', 'math', 'UNSETTLED', 'not a promotable')
 
     def test_unknown_effect_names_are_refused(self):
@@ -175,6 +177,7 @@ class Confirmation(Base):
     def setUp(self):
         super().setUp()
         self.fx = SignedFixture(self.tmp.name)
+        self.fx.bind_store(self.store)
         self.k = EvidenceKernel.with_fixture_registry(self.store, self.fx.registry,
                                                       anchors={ANCHOR_IMPL: 'pinned fixture checker'})
 
@@ -208,7 +211,7 @@ class Confirmation(Base):
             self.rejects(name, 'utility', 'CONFIRMED_SAME_DOMAIN', fragment)
         request = self.fx.request(claim_id='nobinding')
         node, _ = self.sealed(request)
-        self.k.create_claim('nobinding', 'x', 's', [node])
+        math_claim(self.k, 'nobinding', [node])
         self.rejects('nobinding', 'utility', 'CONFIRMED_SAME_DOMAIN', 'bound to its preregistered')
 
     def test_contaminated_dependency_rejected(self):
@@ -236,7 +239,7 @@ class Confirmation(Base):
 class Revocation(Base):
     def test_revoking_an_ancestor_invalidates_dependent_claims(self):
         w = self.check('witness_check', [self.run])
-        self.k.create_claim('c', 'w', 'H', [w])
+        math_claim(self.k, 'c', [w])
         self.k.promote('c', 'math', 'WITNESS_VALID')
         self.k.revoke(self.run, 'leak audit: lemma exposed a sealed target', 'auditor')
         levels = self.k.levels('c')
@@ -254,7 +257,7 @@ class TrustGraph(Base):
         self.k.register_verifier('gen-v', '1' * 64, validated_by=[receipt], generated=True)
         self.assertEqual(self.k.verifier_trust('gen-v'), 'CIRCULAR_JUSTIFICATION')
         w = self.check('witness_check', [self.run], verifier='gen-v')
-        self.k.create_claim('c', 'w', 'H', [w])
+        math_claim(self.k, 'c', [w])
         self.rejects('c', 'math', 'WITNESS_VALID', 'circularly justified')
 
     def test_mutual_validation_without_anchor_is_circular(self):

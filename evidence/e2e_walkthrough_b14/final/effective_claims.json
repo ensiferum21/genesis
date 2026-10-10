@@ -9,9 +9,9 @@
    "utility": "NOT_TESTED"
   },
   "claims": 0,
-  "event_head": "1b4de8c9a869f7772f736304f96c11bfe1aba60df24bd8a94a5a40bbc8c54f40",
+  "event_head": "119b2b2bd0f681ed6d6cd771d0c49d03fe62611f0847e71b2e2c7556bf34bab1",
   "math_levels": {},
-  "verified_phase_as_root": {
+  "verified_phase_as_root_without_trust_root": {
    "consistent": false,
    "phase": "CANDIDATE_FROZEN",
    "problems": [
@@ -30,12 +30,12 @@
    "utility": "NOT_TESTED"
   },
   "claims": 10,
-  "event_head": "bbdb20bcb5c7696a34ec2a0dd2577d68eea6cacb3097c4995cd8d93dae32191c",
+  "event_head": "f112c0f65c6464fbf7373d73bd656e6109383adb4d51ea5f9941443116c97e81",
   "math_levels": {
    "OPTIMALITY_CHECKED": 4,
    "WITNESS_VALID": 6
   },
-  "verified_phase_as_root": {
+  "verified_phase_as_root_without_trust_root": {
    "consistent": true,
    "phase": "CREATED",
    "problems": [],
