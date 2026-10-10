@@ -8,6 +8,7 @@ from cryptography.hazmat.primitives.asymmetric.ed25519 import Ed25519PrivateKey
 from cryptography.hazmat.primitives import serialization
 from genesis.custodian import register,evaluate,verify,release_preflight
 from genesis.kernel import receipts as R
+from tests_genesis.signed_fixtures import campaign_export
 from genesis.models import Limits,SolverProgram
 from genesis.common import canonical,digest,code_identity,bytes_hash
 from genesis.graphs import canonical_graph,relabel
@@ -25,8 +26,8 @@ class CustodianTests(unittest.TestCase):
         self.tasks,_=make_panel(781,2,'c4_host_v2','CONFIRM')
         self.pool=self.root/'fixture-pool.json';self.pool.write_bytes(canonical([t.model_dump(mode='json') for t in self.tasks]))
         source=code_identity(Path(__file__).resolve().parents[1])['sha256']
-        self.export=self.root/'export.zip'
-        with zipfile.ZipFile(self.export,'w') as z:z.writestr('MANIFEST.json','{}')
+        self.source=source
+        self.export=campaign_export(self.root,campaign_id='a'*64,source_hash=source)
         self.manifest=self.root/'exposure_manifest.json'
         self.manifest.write_text(json.dumps({'schema':'genesis-exposure-manifest-v1','sources':[]}));self.manifest.chmod(0o600)
         self.request={'schema':'genesis-evaluation-request-v3','campaign_id':'a'*64,'candidate_version':'b'*64,
@@ -63,6 +64,8 @@ class CustodianTests(unittest.TestCase):
         changed=[relabel(t,tuple(reversed(range(t.n)))) for t in self.tasks]
         self.pool.write_bytes(canonical([t.model_dump(mode='json') for t in changed]))
         self.request['campaign_id']='c'*64;self.request['claim_id']='utility-relabelled'
+        self.export=campaign_export(self.root,campaign_id='c'*64,source_hash=self.source,name='export-c.zip')
+        self.request['campaign_export_sha256']=bytes_hash(self.export.read_bytes())
         register(self.root,self.request,self.key,'fixture',**self.reg())
         with self.assertRaises(Exception):evaluate(self.root,digest(self.request),self.pool,self.key,'fixture')
 
@@ -83,9 +86,26 @@ class CustodianTests(unittest.TestCase):
 
     def test_one_registration_per_claim_slot(self):
         register(self.root,self.request,self.key,'fixture',**self.reg())
-        again=dict(self.request,seed=43)  # same claim, kind, domain: a second draw for the same claim
+        again=dict(self.request,seed=43)  # same candidate, kind, domain: a second draw
         with self.assertRaisesRegex(ValueError,'already registered'):
             register(self.root,again,self.key,'fixture',**self.reg())
+        renamed=dict(self.request,claim_id='utility-fixture (v2)',statement_hash='6'*64)  # B14 round-2 H2
+        with self.assertRaisesRegex(ValueError,'already registered'):
+            register(self.root,renamed,self.key,'fixture',**self.reg())
+
+    def test_request_facts_must_match_the_campaign_export(self):
+        for change,fragment in (({'campaign_id':'d'*64},'campaign_id'),({'source_hash':'d'*64},'source_hash'),
+                                ({'evidence_kind':'sealed_transfer_evaluation','transfer_source_domain':'triangle_free_host_v1'},
+                                 'transfer'),
+                                ({'evidence_kind':'sealed_improver_evaluation'},'lineage'),
+                                ({'domain':'triangle_free_host_v1'},'domain')):
+            with self.assertRaisesRegex(ValueError,fragment):
+                register(self.root,dict(self.request,**change),self.key,'fixture',**self.reg())
+        bare=self.root/'bare.zip'
+        with zipfile.ZipFile(bare,'w') as z:z.writestr('MANIFEST.json','{}')
+        with self.assertRaisesRegex(ValueError,'no event history'):
+            register(self.root,dict(self.request,campaign_export_sha256=bytes_hash(bare.read_bytes())),self.key,
+                     'fixture',exposure_manifest=self.manifest,campaign_export=bare,pool=self.pool)
 
     def test_v2_request_without_claim_binding_refused(self):
         legacy={k:v for k,v in self.request.items() if k not in ('claim_id','evidence_kind','generation_transition',

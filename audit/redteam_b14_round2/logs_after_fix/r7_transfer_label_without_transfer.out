@@ -1,0 +1,13 @@
+Traceback (most recent call last):
+  File "/home/claude/genesis/audit/redteam_b14_round2/r7_transfer_label_without_transfer.py", line 108, in <module>
+    parent()
+    ~~~~~~^^
+  File "/home/claude/genesis/audit/redteam_b14_round2/r7_transfer_label_without_transfer.py", line 64, in parent
+    anchor = register(private, req, keys['prereg'][0], 'custodian-op', exposure_manifest=manifest,
+                      campaign_export=export, pool=pool_path)
+  File "/home/claude/genesis/src/genesis/custodian.py", line 176, in register
+    problems=check_request_against_export(request,campaign_facts(export))
+                                                  ~~~~~~~~~~~~~~^^^^^^^^
+  File "/home/claude/genesis/src/genesis/custodian.py", line 119, in campaign_facts
+    raise ValueError('campaign export has no event history; the request cannot be checked against it')
+ValueError: campaign export has no event history; the request cannot be checked against it

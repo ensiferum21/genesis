@@ -21,7 +21,8 @@ from genesis.models import GraphTask
 from genesis.release_bundle import build_bundle, verify_bundle
 from genesis.store import Store
 from genesis.verification.certificates import build, persist
-from tests_genesis.signed_fixtures import SignedFixture, chain_requests, record_evaluation
+from tests_genesis.signed_fixtures import (SignedFixture, chain_requests, fixture_campaign, record_evaluation,
+                                          witness_payload)
 
 REPO = Path(__file__).resolve().parents[1]
 SRC = 'a' * 64
@@ -62,9 +63,9 @@ class F1BundleWholeObject(Base):
             s.set_state('source_hash', code_identity(REPO)['sha256'])
             k = EvidenceKernel(s)
             run = k.record('execution_receipt', {'r': 1}, route='genesis.campaign', source_hash=SRC, verdict='VALID')
-            w = k.record('witness_check', {'value': 7}, parents=[run], route='genesis.campaign', source_hash=SRC,
+            w = k.record('witness_check', witness_payload(s), parents=[run], route='genesis.campaign', source_hash=SRC,
                          verdict='VALID', verifier='dual-predicates')
-            k.create_claim('w', 'host H has a valid subgraph with 7 edges', 'host H', [w])
+            k.create_claim('w', 'host path4 has a valid subgraph with 3 edges', 'host path4', [w])
             k.promote('w', 'math', 'WITNESS_VALID')
         self.bundle = self.d / 'b.zip'
         build_bundle(self.root, self.bundle, report='The returned witness passed the registered checks.')
@@ -127,6 +128,7 @@ class KernelFindings(Base):
     def setUp(self):
         super().setUp()
         self.store = Store(self.d / 's'); self.addCleanup(self.store.close)
+        self.store.set_state('campaign_id', 'a' * 64); self.store.set_state('source_hash', 'c' * 64)
         self.fx = SignedFixture(self.tmp.name)
         self.k = EvidenceKernel.with_fixture_registry(self.store, self.fx.registry)
         self.run = self.k.record('execution_receipt', {'r': 1}, route='genesis.campaign', source_hash=SRC,
@@ -135,9 +137,9 @@ class KernelFindings(Base):
     def test_f2_revoked_verifier_identity_stays_revoked(self):
         reg = self.k.register_verifier('checker-x', 'e' * 64)
         self.k.register_verifier('checker-x', 'e' * 64, validated_by=[self.run])  # a second registration up front
-        w = self.k.record('witness_check', {'value': 7}, parents=[self.run], route='genesis.campaign',
+        w = self.k.record('witness_check', witness_payload(self.store), parents=[self.run], route='genesis.campaign',
                           source_hash=SRC, verdict='VALID', verifier='checker-x')
-        self.k.create_claim('c', 'host H has a valid subgraph with 7 edges', 'host H', [w])
+        self.k.create_claim('c', 'host path4 has a valid subgraph with 3 edges', 'host path4', [w])
         self.k.promote('c', 'math', 'WITNESS_VALID')
         self.k.revoke(reg, 'verifier bug: accepts a 4-cycle', 'auditor')  # revoking ONE registration
         self.assertTrue(self.k.levels('c').get('invalidated'))
@@ -195,7 +197,8 @@ class KernelFindings(Base):
         return task, digest(task.model_dump(mode='json'))
 
     def bound(self, task, bundle_ref, lower, sha):
-        w = self.k.record('witness_check', {'task_sha256': sha, 'value': lower}, parents=[self.run],
+        b = self.store.get(bundle_ref)
+        w = self.k.record('witness_check', witness_payload(self.store, task, b['lower']['witness']), parents=[self.run],
                           route='genesis.campaign', source_hash=SRC, verdict='VALID', verifier='dual-predicates')
         return self.k.record('bound_state', {'schema': 'genesis-bound-state-v2', 'task': task.task_id,
                                              'task_sha256': sha, 'lower': lower, 'upper': lower, 'gap': 0,
@@ -229,9 +232,9 @@ class KernelFindings(Base):
         self.k.promote('p', 'math', 'OPTIMALITY_CHECKED')  # the honest claim on the certified problem passes
 
     def test_f6_index_and_history_and_phase_are_not_taken_from_mutable_records(self):
-        w = self.k.record('witness_check', {'value': 7}, parents=[self.run], route='genesis.campaign',
+        w = self.k.record('witness_check', witness_payload(self.store), parents=[self.run], route='genesis.campaign',
                           source_hash=SRC, verdict='VALID')
-        self.k.create_claim('forged', 'host H has a valid subgraph with 7 edges', 'host H', [w])
+        self.k.create_claim('forged', 'host path4 has a valid subgraph with 3 edges', 'host path4', [w])
         fake = {'claim': 'forged', 'axis': 'utility', 'level': 'CONFIRMED_TRANSFER', 'dependencies': [],
                 'effects': [], 'evidence_used': [], 'evaluations': [], 'registry': 'external-board',
                 'revocation_context': '0' * 64, 'at': '2026-10-10T00:00:00+00:00'}
@@ -264,9 +267,10 @@ class F10SharedAcceptance(Base):
         custodian_signed = fx.receipt(repro, a, role='custodian')
         payload, problems = R.accept_receipt(custodian_signed, 'external_reproduction', fx.registry['pins'])
         self.assertIsNone(payload); self.assertIn('replicator_key', ' '.join(problems))
-        with Store(self.d / 'phase') as s:
-            s.save('frozen_request', digest(repro), repro)
-            s.set_state('frozen_request_hash', digest(repro))
+        root, repro = fixture_campaign(self.d, fx, kind='external_reproduction')
+        a = fx.anchor(repro)
+        custodian_signed = fx.receipt(repro, a, role='custodian')
+        with Store(root) as s:
             with self.assertRaises(PhaseError):
                 _open(s, 'SEALED_RUNNING', custodian_signed, fx.registry['pins'])
             self.assertEqual(_open(s, 'SEALED_RUNNING', fx.receipt(repro, a, role='replicator'),

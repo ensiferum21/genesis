@@ -92,6 +92,8 @@ REQUIRED_EVIDENCE = {
     ('replication', 'INTERNAL_INDEPENDENT'): [('internal_replication', 1)],
     ('replication', 'EXTERNAL_REPRODUCTION'): [('external_reproduction', 1)],
 }
+# Kinds the kernel can re-check itself; any other unsigned kind cannot license a level.
+REPLAYABLE = {'witness_check', 'bound_state', 'execution_receipt'}
 # Kinds whose meaning comes only from an envelope signed by a registry role (kernel.receipts).
 EXTERNALLY_SIGNED = set(R.KIND_ROLES) - {'preregistration_anchor'}
 SIGNED_KINDS = set(R.KIND_ROLES)
@@ -292,9 +294,17 @@ class EvidenceKernel:
         return {'applied': applied, 'skipped_unknown': skipped}
 
     def revoke(self, nid, reason, actor):
-        """Revoke an artifact node (a dependency, an ancestor, a verifier registration, an imported capability)."""
-        self.node(nid)
-        return self._revocation('node', nid, reason, actor)
+        """Revoke an artifact node (a dependency, an ancestor, a verifier registration, an imported capability).
+
+        Revoking a signed receipt also retires the evaluation it carries, so the same
+        envelope cannot come back in another wrapper node or store."""
+        node = self.node(nid)
+        record = self._revocation('node', nid, reason, actor)
+        if node['kind'] in SIGNED_KINDS:
+            ident = R.evaluation_identity(R.unwrap_unverified(self.s.get(node['payload_hash'])))
+            if ident is not None:
+                self._revocation('evaluation', ident, f'receipt node {nid[:12]} revoked: {reason}', actor)
+        return record
 
     def revoke_key(self, public_key_b64, reason, actor):
         """Signing-key compromise: receipts that verify only under this key stop counting."""
@@ -540,6 +550,11 @@ class EvidenceKernel:
                 used_nodes |= nodes; evaluations |= idents; resolved |= nodes
                 continue
             usable = []
+            if kind not in REPLAYABLE:
+                # A producer-written verdict is a claim, not evidence (B14 red team C2).
+                reasons.append(f'no replay contract for {kind}: producer-declared verdicts cannot license '
+                               f'{axis} {level} (roadmap W03/W05 will add contracts)')
+                continue
             for d in candidates:
                 n = self.node(d)
                 if n['verdict'] not in PASSING:
@@ -566,11 +581,20 @@ class EvidenceKernel:
                     if why:
                         reasons.append(f'bound_state {d[:12]}: {why}')
                         continue
-                if kind == 'witness_check' and claim.get('problem') is not None:
+                if kind == 'witness_check':
+                    why = self._witness_problems(d)
+                    if why:
+                        reasons.append(f'witness_check {d[:12]}: {why}')
+                        continue
                     wp = self.payload(d)
-                    if not isinstance(wp, dict) or wp.get('task_sha256') != claim['problem']['task_sha256'] \
-                            or wp.get('value') != claim['problem']['value']:
+                    if claim.get('problem') is not None and (wp['task_sha256'] != claim['problem']['task_sha256']
+                                                             or wp['value'] != claim['problem']['value']):
                         reasons.append(f'witness_check {d[:12]} is for a different problem or value than the claim')
+                        continue
+                if kind == 'execution_receipt':
+                    why = self._execution_problems(d)
+                    if why:
+                        reasons.append(f'execution_receipt {d[:12]}: {why}')
                         continue
                 usable.append((d, n))
             if kind == 'exact_check':
@@ -603,6 +627,45 @@ class EvidenceKernel:
             reasons.append('manual intervention invalidates an autonomy/improver claim')
         return reasons, {'nodes': used_nodes, 'evaluations': evaluations, 'effects': effects}
 
+    WITNESS_FIELDS = frozenset({'schema', 'task', 'task_sha256', 'witness', 'value'})
+
+    def _witness_problems(self, nid):
+        """Replay a witness check: the stored problem, the stored witness, the dual predicates."""
+        from ..graphs import check_witness
+        from ..models import GraphTask
+        cache = self.__dict__.setdefault('_witness_replays', {})
+        if nid in cache:
+            return cache[nid]
+        p = self.payload(nid)
+        why = None
+        if not isinstance(p, dict) or p.get('schema') != 'genesis-witness-check-v2' or set(p) != self.WITNESS_FIELDS:
+            why = 'not a replayable witness check (genesis-witness-check-v2 with the problem and the witness)'
+        else:
+            try:
+                task = GraphTask.model_validate_json(self.s.get_bytes(p['task_sha256']))
+                if digest(task.model_dump(mode='json')) != p['task_sha256']:
+                    why = 'stored problem does not hash to task_sha256'
+                elif check_witness(task, tuple(tuple(e) for e in p['witness']))['value'] != p['value']:
+                    why = 'witness does not replay to the recorded value'
+            except Exception as exc:
+                why = f'witness replay failed ({type(exc).__name__})'
+        cache[nid] = why
+        return why
+
+    def _execution_problems(self, nid):
+        """EXECUTABLE needs a reference to something that ran: a finished attempt or a stored IR program."""
+        p = self.payload(nid)
+        if not isinstance(p, dict):
+            return 'no execution reference'
+        if p.get('attempt'):
+            row = self.s.db.execute('SELECT status FROM attempts WHERE id=?', (p['attempt'],)).fetchone()
+            return None if row and row[0] == 'SUCCESS' else 'referenced attempt did not finish successfully'
+        if p.get('ir_program'):
+            row = self.s.db.execute("SELECT 1 FROM entities WHERE kind='ir_program' AND id=?",
+                                    (p['ir_program'],)).fetchone()
+            return None if row else 'referenced IR program is not in the store'
+        return 'no execution reference (attempt or ir_program)'
+
     BOUND_FIELDS = frozenset({'schema', 'task', 'task_sha256', 'lower', 'upper', 'gap', 'lower_evidence',
                               'certificate_bundle'})
 
@@ -629,6 +692,8 @@ class EvidenceKernel:
             return 'lower evidence is not a parent of the bound state'
         lower_node = self.node(p['lower_evidence'])
         lower_payload = self.payload(p['lower_evidence'])
+        if lower_node['kind'] == 'witness_check' and self._witness_problems(p['lower_evidence']):
+            return 'lower evidence does not replay: ' + self._witness_problems(p['lower_evidence'])
         if lower_node['kind'] != 'witness_check' or lower_node['verdict'] not in PASSING \
                 or not isinstance(lower_payload, dict) or lower_payload.get('value') != p['lower'] \
                 or lower_payload.get('task_sha256') != p['task_sha256']:
@@ -698,6 +763,10 @@ class EvidenceKernel:
         if binding is None:
             return ['confirmation needs a claim bound to its preregistered evaluations '
                     '(create_claim(..., binding=receipts.binding_from_requests(...)))'], set(), set()
+        if binding['campaign_id'] != self.s.state('campaign_id') or self.s.state('source_hash') not in \
+                binding['source_hashes']:
+            # The receipts must be about THIS campaign's history (B14 red team C1).
+            return ['claim binding names a different campaign or source than this evidence store'], set(), set()
         anchors = {}
         for d in deps:
             if self.node(d)['kind'] == 'preregistration_anchor':

@@ -1,0 +1,5 @@
+first    register('claim-1'): accepted -> evaluate: NOT_SUPPORTED | statement/scope/candidate/campaign identical to the first: True
+retry    register('claim-1'): REFUSED (this claim slot (claim, kind, domain, generation) is already...)
+renamed  register('claim-1 (v2)'): accepted -> evaluate: SUPPORTED | statement/scope/candidate/campaign identical to the first: True
+exported claims: [('claim-1 (v2)', 'CONFIRMED_SAME_DOMAIN')] | verify ok: True []
+ATTACK_SUCCEEDED

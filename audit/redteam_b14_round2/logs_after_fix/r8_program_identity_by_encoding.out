@@ -1,0 +1,8 @@
+Traceback (most recent call last):
+  File "/home/claude/genesis/audit/redteam_b14_round2/r8_program_identity_by_encoding.py", line 41, in <module>
+    '| validate_request ok:', bool(validate_request(req)))
+                                   ~~~~~~~~~~~~~~~~^^^^^
+  File "/home/claude/genesis/src/genesis/custodian.py", line 44, in validate_request
+    if problems:raise ValueError('evaluation request binding: '+'; '.join(problems))
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: evaluation request binding: candidate and baseline are the same program

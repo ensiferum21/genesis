@@ -25,6 +25,7 @@ class Base(unittest.TestCase):
     def setUp(self):
         self.tmp = tempfile.TemporaryDirectory(); self.addCleanup(self.tmp.cleanup)
         self.store = Store(self.tmp.name + '/store'); self.addCleanup(self.store.close)
+        self.store.set_state('campaign_id', 'a' * 64); self.store.set_state('source_hash', 'c' * 64)
         self.fx = SignedFixture(self.tmp.name)
         self.k = EvidenceKernel.with_fixture_registry(self.store, self.fx.registry)
         self.run = self.k.record('execution_receipt', {'status': 'SUCCESS'}, route='genesis.campaign',

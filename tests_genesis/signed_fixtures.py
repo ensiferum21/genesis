@@ -47,13 +47,13 @@ class SignedFixture:
 
     def request(self, claim_id='claim-1', kind='sealed_evaluation', *, candidate='b' * 64, campaign='a' * 64,
                 domain='c4_host_v2', transition=None, transfer=None, task_count=40, seed=1, baseline_rounds=1,
-                candidate_program=None, baseline_program=None, statement=None, scope=None):
+                candidate_program=None, baseline_program=None, statement=None, scope=None, export_sha256='e' * 64):
         programs = {'baseline': baseline_program or SolverProgram(rounds=baseline_rounds).model_dump(mode='json'),
                     'candidate': candidate_program or SolverProgram(weights=(0, 0, 0, 1)).model_dump(mode='json')}
         return {'schema': R.REQUEST, 'campaign_id': campaign, 'claim_id': claim_id, 'evidence_kind': kind,
                 'statement_hash': digest(statement or self.STATEMENT), 'scope': scope or self.SCOPE,
                 'generation_transition': transition, 'transfer_source_domain': transfer,
-                'candidate_version': candidate, 'campaign_export_sha256': 'e' * 64, 'source_hash': 'c' * 64,
+                'candidate_version': candidate, 'campaign_export_sha256': export_sha256, 'source_hash': 'c' * 64,
                 'programs': programs,
                 'limits': Limits().model_dump(mode='json'), 'seed': seed, 'task_count': task_count,
                 'domain': domain, 'analysis': dict(R.ANALYSIS_V1), 'exposed_graph_fingerprints': [],
@@ -79,8 +79,8 @@ class SignedFixture:
              'claim_id': request['claim_id'], 'statement_hash': request['statement_hash'], 'scope': request['scope'],
              'campaign_id': request['campaign_id'], 'request_hash': digest(request),
              'anchor_hash': digest(anchor), 'candidate_version': request['candidate_version'],
-             'candidate_program_hash': digest(request['programs']['candidate']),
-             'baseline_version': digest(request['programs']['baseline']), 'source_hash': request['source_hash'],
+             'candidate_program_hash': R.program_identity(request['programs']['candidate']),
+             'baseline_version': R.program_identity(request['programs']['baseline']), 'source_hash': request['source_hash'],
              'evaluator_hash': request['expected_evaluator_hash'], 'analysis': dict(request['analysis']),
              'domain': request['domain'], 'domain_contract_hash': R.domain_contract_hash(request['domain']),
              'transfer_source_domain': request['transfer_source_domain'],
@@ -120,3 +120,54 @@ def chain_requests(fx, claim_id, n, *, versions=None, seed=0, index_order=None):
                        transition={'index': idx[i], 'from_version': v[i], 'to_version': v[i + 1]},
                        baseline_program=progs[i], candidate_program=progs[i + 1])
             for i in range(n)]
+
+
+def campaign_export(directory, *, campaign_id='a' * 64, source_hash='c' * 64, domain='c4_host_v2', hosts=(),
+                    name='export.zip'):
+    """A minimal but real campaign export: a hash-chained store with campaign identity,
+    source identity, a config naming the domain, and optional research-visible hosts."""
+    from genesis.cli import export_replication
+    from genesis.store import Store
+    root = Path(directory) / f'campaign-{name}'
+    with Store(root) as s:
+        s.set_state('campaign_id', campaign_id)
+        s.set_state('source_hash', source_hash)
+        s.save('config', 'resolved', {'domain': domain, 'profile': 'fixture'})
+        for t in hosts:
+            s.put({'kind': 'solver', 'task': t.model_dump(mode='json')})
+    dest = Path(directory) / name
+    export_replication(root, dest)
+    return dest
+
+
+def path4():
+    from genesis.models import GraphTask
+    return GraphTask(task_id='path4', n=4, edges=((0, 1), (1, 2), (2, 3)), family='path')
+
+
+def witness_payload(store, task=None, witness=None):
+    """A replayable witness check (genesis-witness-check-v2): the problem is stored, the witness re-checked."""
+    from genesis.graphs import check_witness
+    task = task or path4()
+    witness = [list(e) for e in (witness if witness is not None else task.edges)]
+    sha = store.put(task.model_dump(mode='json'))
+    value = check_witness(task, tuple(tuple(e) for e in witness))['value']
+    return {'schema': 'genesis-witness-check-v2', 'task': task.task_id, 'task_sha256': sha, 'witness': witness,
+            'value': value}
+
+
+def fixture_campaign(directory, fx, **request_kw):
+    """A store that is a real (tiny) campaign: identity, export bound to the frozen request, frozen request."""
+    from genesis.cli import export_replication
+    from genesis.common import bytes_hash
+    from genesis.store import Store
+    root = Path(directory) / f'fixture-campaign-{len(list(Path(directory).glob("fixture-campaign-*")))}'
+    with Store(root) as s:
+        s.set_state('campaign_id', request_kw.get('campaign', 'a' * 64))
+        s.set_state('source_hash', 'c' * 64)
+    export_replication(root, root / 'exports' / 'campaign_export.zip')
+    request = fx.request(export_sha256=bytes_hash((root / 'exports' / 'campaign_export.zip').read_bytes()), **request_kw)
+    with Store(root) as s:
+        s.save('frozen_request', digest(request), request)
+        s.set_state('frozen_request_hash', digest(request))
+    return root, request

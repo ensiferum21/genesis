@@ -1,0 +1,17 @@
+control (plain overclaim) lint: ['is optimal', 'replicated']
+  lint=[]   'Not surprisingly, this construction is optimal.'
+  lint=[]   'The result was replicated, no doubt.'
+  lint=[]   'There is no doubt this is a novel discovery.'
+  lint=[]   'Zero caveats: the modification causes the gain.'
+  lint=[]   'Not only that: the solver generalises to every family.'
+  lint=[]   'It needs saying: we have proved the theorem, and the result is statistically significant.'
+  lint=[]   'The construction is opti\u200bmal.'
+  lint=[]   'The solver is recursively self-impro\xadving.'
+  lint=[]   '`Our solver is optimal, replicated and confirmed.`'
+  lint=[]   '[cited: our solver generalises to all domains and is a new discovery]'
+  lint=[]   'Its witness is optimal, no question, and the candidate generalises to every family, no doubt.'
+  lint=[]   'all hosts [cited: transfers to every domain]'
+build_bundle accepted; ceiling: {'math': 'WITNESS_VALID'}
+verify ok: True []
+plain overclaims in LIMITATIONS.md / REPRODUCE.md: verify ok: True []
+ATTACK_SUCCEEDED

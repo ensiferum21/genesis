@@ -1,0 +1,8 @@
+true C4-free optimum of K4: 4 | claimed: 7 (host has 6 edges)
+Traceback (most recent call last):
+  File "/home/claude/genesis/audit/redteam_b14_round2/r2_math_levels_from_declared_verdicts.py", line 55, in <module>
+    k.promote('k4', axis, level)
+    ~~~~~~~~~^^^^^^^^^^^^^^^^^^^
+  File "/home/claude/genesis/src/genesis/kernel/evidence.py", line 525, in promote
+    raise PromotionRejected(reasons)
+genesis.kernel.evidence.PromotionRejected: ['witness_check 66b038850b82: not a replayable witness check (genesis-witness-check-v2 with the problem and the witness)', 'needs 1 valid witness_check artifact(s), found 0']

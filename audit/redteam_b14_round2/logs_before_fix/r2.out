@@ -1,0 +1,6 @@
+true C4-free optimum of K4: 4 | claimed: 7 (host has 6 edges)
+kernel levels: {'math': 'THEOREM_CHECKED', 'causality': 'PLACEBO_CONTROLLED', 'replication': 'INTERNAL_INDEPENDENT'}
+exported effective levels: {'causality': 'PLACEBO_CONTROLLED', 'improver': 'NOT_TESTED', 'math': 'THEOREM_CHECKED', 'novelty': 'UNKNOWN', 'replication': 'INTERNAL_INDEPENDENT', 'utility': 'NOT_TESTED'}
+verify_bundle ok: True [] | certificate replays: []
+(b) after revoking the checker: current levels {'named': 'UNCHECKED', 'silent': 'WITNESS_VALID'} | downgraded_since_release ['named'] | release2 verify ok True
+ATTACK_SUCCEEDED

@@ -1,0 +1,45 @@
+{
+ "campaign": {
+  "ceiling": {
+   "causality": "NOT_TESTED",
+   "improver": "NOT_TESTED",
+   "math": "UNCHECKED",
+   "novelty": "UNKNOWN",
+   "replication": "NONE",
+   "utility": "NOT_TESTED"
+  },
+  "claims": 0,
+  "event_head": "1b4de8c9a869f7772f736304f96c11bfe1aba60df24bd8a94a5a40bbc8c54f40",
+  "math_levels": {},
+  "verified_phase_as_root": {
+   "consistent": false,
+   "phase": "CANDIDATE_FROZEN",
+   "problems": [
+    "LEAK_SCAN_PASSED cannot be verified without a trust root: research process runs as root; external control cannot be established; missing or symlinked trust file"
+   ],
+   "recorded_phase": "JUDGED"
+  }
+ },
+ "world_loop": {
+  "ceiling": {
+   "causality": "NOT_TESTED",
+   "improver": "NOT_TESTED",
+   "math": "OPTIMALITY_CHECKED",
+   "novelty": "UNKNOWN",
+   "replication": "NONE",
+   "utility": "NOT_TESTED"
+  },
+  "claims": 10,
+  "event_head": "bbdb20bcb5c7696a34ec2a0dd2577d68eea6cacb3097c4995cd8d93dae32191c",
+  "math_levels": {
+   "OPTIMALITY_CHECKED": 4,
+   "WITNESS_VALID": 6
+  },
+  "verified_phase_as_root": {
+   "consistent": true,
+   "phase": "CREATED",
+   "problems": [],
+   "recorded_phase": "CREATED"
+  }
+ }
+}

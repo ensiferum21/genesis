@@ -25,14 +25,20 @@ original log stays meaningful. Post-repair regression tests live in
 - After the repair the original script reports every attack blocked
   (`audit/reproductions/logs/after_r01_r02_repair.log`).
 - An internal red-team pass on the first repair found eleven further ways
-  through (four critical). All are repaired with regression tests; see
-  `audit/redteam_b14/README.md`. The reviewer was a fresh agent under the same
-  operator, so this is not the independent source review GV0 requires.
+  through (four critical); a second pass on the repaired tree found twelve more
+  (two critical). All are repaired with regression tests; see
+  `audit/redteam_b14/README.md` and `audit/redteam_b14_round2/README.md`. The
+  reviewers were fresh agents under the same operator, so this is not the
+  independent source review GV0 requires — and two rounds that each found
+  critical issues are a reason to expect more.
 - R-04 remains OPEN (main work in B15). B14 only fixed packaging consistency
   (networkx declared in `pyproject.toml`) and made undeclared test skips fail.
 
 | ID | Item still open | Needs |
 |---|---|---|
 | R-04 | Supported deployment: pinned image digest, one Python version across lock and runtime, containment on a supporting host, second-machine matrix | registry access, a second machine |
-| B14-OPEN-1 | Custodian does not yet verify a request's `campaign_id`, `source_hash` and transfer source domain against the campaign export it receives (it binds the export hash only) | B16 custody work |
+| B14-OPEN-1 | ~~Custodian did not verify request facts against the campaign export~~ — CLOSED in B14 (round-2 C1): the custodian rebuilds the export and checks campaign, source and domain | — |
+| B14-OPEN-2 | Selective reporting across different candidates or campaigns: one registration per candidate slot is enforced, but a custodian-published registration log with a multiplicity rule is not | W06/W07 |
+| B14-OPEN-3 | `sealed_improver_evaluation` and `sealed_generation_evaluation` are refused by the custodian until a research-lineage protocol can be checked from the export | W21 |
+| B14-OPEN-4 | FINITE_CERTIFIED, THEOREM_CHECKED, causal, internal-replication, DEV_ONLY and priority levels have no replay contract and are unreachable (fail closed) | W03/W05/W08 |
 | GV0 | Independent source review of R-01..R-03 and the F1–F11 repairs | an auditor outside the research operator |

@@ -140,7 +140,7 @@ def local_to_global(task, program, *, limits=None):
     glued = r('COMPOSE', [goal, *transported])
     checked = r('VERIFY', [goal, glued])
     return {'status': 'GLUED', 'value': checked[1].data['value'], 'components': len(parts[1].data['components']),
-            'program': r.record(), 'ops': r.ops()}
+            'witness': [list(e) for e in glued[1].data], 'program': r.record(), 'ops': r.ops()}
 
 
 def gap_engine(task, program, rows, *, limits=None):

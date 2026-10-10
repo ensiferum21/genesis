@@ -142,7 +142,14 @@ class SignedPhases(unittest.TestCase):
     def test_4_supported_fixture_receipt_reaches_released_and_tampering_is_refused(self):
         from tests_genesis.signed_fixtures import SignedFixture
         fx = SignedFixture.__new__(SignedFixture); fx.keys, fx._tick = self.keys, 0
-        request = fx.request(task_count=40)
+        root = Path(self.tmp.name) / 'fixture_campaign'
+        from genesis.cli import export_replication
+        from genesis.common import bytes_hash
+        with Store(root) as s:
+            s.set_state('campaign_id', 'a' * 64); s.set_state('source_hash', 'c' * 64)
+            s.set_state('phase', 'CANDIDATE_FROZEN')
+        export_replication(root, root / 'exports' / 'campaign_export.zip')
+        request = fx.request(task_count=40, export_sha256=bytes_hash((root / 'exports' / 'campaign_export.zip').read_bytes()))
         anchor = fx.anchor(request)
         receipt = fx.receipt(request, anchor, wins=30, losses=5, ties=5)
         lying = fx.sign(dict(fx.receipt_payload(request, anchor, wins=5, losses=30, ties=5), outcome='SUPPORTED'),
@@ -150,10 +157,9 @@ class SignedPhases(unittest.TestCase):
         other_panel = fx.receipt(request, anchor, panel_commitment='7' * 64)
         decision = sign({'schema': 'genesis-release-decision-v1', 'request_hash': digest(request),
                          'decision': 'RELEASE', 'receipt_hash': digest(receipt)}, self.keys['release'][0])
-        root = Path(self.tmp.name) / 'fixture_campaign'
         with Store(root) as s:
             s.save('frozen_request', digest(request), request)
-            s.set_state('phase', 'CANDIDATE_FROZEN'); s.set_state('frozen_request_hash', digest(request))
+            s.set_state('frozen_request_hash', digest(request))
         for dirpath, _, files in os.walk(root):
             os.chown(dirpath, NOBODY, NOBODY)
             for f in files:

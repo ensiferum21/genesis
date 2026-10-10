@@ -1,0 +1,6 @@
+custodian.register accepted: kind sealed_transfer_evaluation | domain c4_host_v2 | declared source triangle_free_host_v1 | export hosts: 0
+custodian.evaluate signed: SUPPORTED wins=7 losses=0 ties=5 | panel domain c4_host_v2 | tasks in source domain: 0
+promoted CONFIRMED_TRANSFER registry 66abdfe1491e | levels: CONFIRMED_TRANSFER
+store campaign_id some-other-campaign vs receipt 0123456789abcdef | store source_hash 4032e46f2149 vs receipt source_hash bf349576e7a3
+exported: CONFIRMED_TRANSFER | verify ok: True []
+ATTACK_SUCCEEDED

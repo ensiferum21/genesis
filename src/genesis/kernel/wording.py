@@ -56,17 +56,54 @@ def _licensed(levels, axis, minimum):
     return ORDER[axis].index(have) >= ORDER[axis].index(minimum)
 
 
+SELF_REFERENCE = re.compile(r'\b(?:we|our|us|genesis|this\s+(?:run|system|campaign|candidate|solver|work|report))\b',
+                            re.I)
+CLAUSE_BREAK = re.compile(r'[;:()\u2014\u2013]|\s-\s')
+# Idioms that contain a negation word but assert, not deny ("Not surprisingly, X is optimal").
+AFFIRMING_IDIOMS = re.compile(r'\b(?:not\s+surprisingly|unsurprisingly|no\s+doubt|without\s+(?:a\s+)?doubt|'
+                              r'not\s+only|no\s+question|not\s+least|no\s+less\s+than|nothing\s+less\s+than|'
+                              r'needless\s+to\s+say|not\s+to\s+mention)\b', re.I)
+
+
+def normalize(text):
+    """NFKC, drop invisible format characters (zero-width, soft hyphen), collapse spaces,
+    so an overclaim cannot hide behind characters a reader never sees."""
+    import unicodedata
+    text = unicodedata.normalize('NFKC', text)
+    text = ''.join(ch for ch in text if unicodedata.category(ch) != 'Cf' and ch != '\u00ad')
+    return re.sub(r'[ \t]+', ' ', text)
+
+
+def _strip_exempt(sentence):
+    # Status tokens are data. Code spans are exempt only when they are identifiers or paths
+    # (no spaces); a citation is exempt only when it does not speak for this run.
+    sentence = STATUS_TOKEN.sub(' ', sentence)
+    sentence = CODE.sub(lambda m: ' ' if ' ' not in m.group(0).strip('`').strip() else m.group(0).strip('`'),
+                        sentence)
+    return CITED.sub(lambda m: ' ' if not SELF_REFERENCE.search(m.group(0)) else m.group(0)[len('[cited:'):-1],
+                     sentence)
+
+
 def lint(text, levels):
-    """Return a list of violations; empty means the prose is within its evidence."""
+    """Return a list of violations; empty means the prose is within its evidence.
+
+    A rule match is excused only by a negation inside the same clause (not a
+    neighbouring one: "Not surprisingly, X is optimal" is still a claim)."""
     violations = []
+    text = normalize(text)
     if GHOST_AS_PROOF.search(text):
         violations.append({'phrase': GHOST_AS_PROOF.search(text).group(0), 'why': 'no ghost found is not proof'})
     for raw_sentence in re.split(r'(?<=[.!?])\s+(?![^\[]*\])|\n+', text):
-        sentence = CITED.sub(' ', CODE.sub(' ', STATUS_TOKEN.sub(' ', raw_sentence)))
+        sentence = AFFIRMING_IDIOMS.sub(lambda m: '_' * len(m.group(0)), _strip_exempt(raw_sentence))
         for pattern, axis, minimum, why in RULES:
             for m in re.finditer(pattern, sentence, re.I):
-                window = sentence[max(0, m.start() - 60):m.start()]
-                if NEGATIONS.search(window) or NEGATIONS.search(sentence[m.end():m.end() + 25]):
+                starts = [b.end() for b in CLAUSE_BREAK.finditer(sentence, 0, m.start())]
+                clause_start = max(starts) if starts else 0
+                nxt = CLAUSE_BREAK.search(sentence, m.end())
+                clause_end = nxt.start() if nxt else len(sentence)
+                window = sentence[max(clause_start, m.start() - 60):m.start()]
+                after = sentence[m.end():min(clause_end, m.end() + 25)]
+                if NEGATIONS.search(window) or NEGATIONS.search(after):
                     continue
                 if not _licensed(levels, axis, minimum):
                     violations.append({'phrase': m.group(0), 'sentence': raw_sentence.strip()[:200], 'why': why})

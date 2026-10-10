@@ -207,7 +207,8 @@ class ResearchLoop:
                     goal = ir.invoke('FORMALIZE', [Value('RawTask', task.model_dump(mode='json'))])
                     receipt = ir.invoke('EXECUTE', [goal, Value('Program', w['program'])])
                     value = receipt.data.get('result', {}).get('value', 0)
-                    res = {'status': receipt.data['status'], 'program': {'nodes': ir.trace}}
+                    res = {'status': receipt.data['status'], 'program': {'nodes': ir.trace},
+                           'witness': [list(e) for e in receipt.data.get('result', {}).get('selected', ())]}
                     lower, upper, certified = value, best[task.task_id]['upper'], False
                 used = max(0.0, _cpu() - c0)
                 self.g.charge(epoch_grant, digest(res.get('program', {})), cpu_seconds=round(used, 6), attempts=1)
@@ -251,15 +252,17 @@ class ResearchLoop:
 
     def _update_evidence(self, task, lower, upper, certified, program_id, kind, *, certificate=None, witness=None):
         state = dict(self.s.state(f'best:{task.task_id}'))
-        task_sha = digest(task.model_dump(mode='json'))
+        task_sha = self.s.put(task.model_dump(mode='json'))  # the problem itself, content-addressed
         improved = False
+        if lower > state['lower'] and not (witness and len(witness) == lower):
+            state['custody_gap'] = f'lower bound {lower} reported without its witness; not recorded'
+            lower = state['lower']
         if lower > state['lower']:
             run = self.k.record('execution_receipt', {'task': task.task_id, 'macro': kind, 'ir_program': program_id},
                                 route='genesis.campaign', source_hash=self.source, verdict='VALID',
                                 effects=['UNCHECKED_PROPOSAL', 'USES_DEV_DATA'])
-            payload = {'task': task.task_id, 'task_sha256': task_sha, 'value': lower}
-            if witness and len(witness) == lower:
-                payload['witness'] = witness
+            payload = {'schema': 'genesis-witness-check-v2', 'task': task.task_id, 'task_sha256': task_sha,
+                       'witness': witness, 'value': lower}
             check = self.k.record('witness_check', payload, parents=[run],
                                   route='genesis.campaign', source_hash=self.source, verdict='VALID',
                                   verifier='dual-predicates')

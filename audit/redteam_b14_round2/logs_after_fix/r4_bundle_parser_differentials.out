@@ -1,0 +1,7 @@
+Traceback (most recent call last):
+  File "/home/claude/genesis/audit/redteam_b14_round2/r4_bundle_parser_differentials.py", line 39, in <module>
+    k.promote('w', 'math', 'WITNESS_VALID')
+    ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/claude/genesis/src/genesis/kernel/evidence.py", line 525, in promote
+    raise PromotionRejected(reasons)
+genesis.kernel.evidence.PromotionRejected: ['witness_check 4d936e8a4013: not a replayable witness check (genesis-witness-check-v2 with the problem and the witness)', 'needs 1 valid witness_check artifact(s), found 0']

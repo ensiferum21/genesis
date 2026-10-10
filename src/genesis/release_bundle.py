@@ -128,6 +128,17 @@ def wording_problems(text, claims):
     return out
 
 
+REPRODUCE = (
+    '# Reproduce\n\n'
+    '1. Verify with your OWN trusted installation of genesis, never with code shipped in this bundle:\n'
+    '   `genesis verify-bundle <bundle.zip> --trust-root <your trust root>` (exit status 0 only if ok).\n'
+    '2. The verifier rebuilds the store from `events.jsonl` + `objects/`, regenerates every derived file, '
+    're-derives every claim and replays every bound certificate with the solver disabled.\n'
+    '3. `analysis_code/` is the producer\'s source, for diffing against your trusted copy; its identity is '
+    'checked, but do not execute it before that check passes.\n'
+    '4. Re-run attempts with `genesis trial replay` against a copy; results must match the recorded witnesses, '
+    'values, queries and traces (timings excluded).\n')
+
 MANDATORY_LIMITATIONS = ('- Built by the research operator; no independent custody or release authority.\n',
                          '- Container image not pinned by registry digest.\n')
 
@@ -171,12 +182,7 @@ def build_bundle(campaign_root, destination, *, report=None, limitations=(), tru
         files[f'analysis_code/{rel}'] = (REPO / rel).read_bytes()
     files['analysis_code/CODE_IDENTITY.json'] = canonical(identity)
     files['report.md'] = (report or b'') if isinstance(report, bytes) else (report or '').encode()
-    files['REPRODUCE.md'] = (
-        '# Reproduce\n\n1. Unzip; `cd release_*`.\n2. `python -c "from genesis.release_bundle import verify_bundle; '
-        'print(verify_bundle(\'.\'))"` with `PYTHONPATH=analysis_code/src`.\n3. Rebuild the store from '
-        '`events.jsonl` + `objects/` and compare the event head with MANIFEST.json.\n4. Re-run attempts with '
-        '`genesis trial replay` against a copy; results must match the recorded witnesses, values, queries and '
-        'traces (timings excluded).\n').encode()
+    files['REPRODUCE.md'] = REPRODUCE.encode()
     files['LIMITATIONS.md'] = ('# Limitations\n\n' + ''.join(f'- {x}\n' for x in limitations) +
                                ''.join(MANDATORY_LIMITATIONS)).encode()
     manifest = {'release_id': release_id, 'event_head': integrity['head'], 'events': integrity['events'],
@@ -224,6 +230,18 @@ def replay_certificates(store, claims, *, trust_root=None):
         else:
             os.environ['GENESIS_CHECKER_ONLY'] = previous
     return records, problems
+
+
+def _strict_json(data):
+    """JSON with duplicate keys and NaN/Infinity rejected (readers must not disagree)."""
+    def pairs(items):
+        out = {}
+        for key, value in items:
+            if key in out:
+                raise ValueError(f'duplicate JSON key {key!r}')
+            out[key] = value
+        return out
+    return json.loads(data, object_pairs_hook=pairs, parse_constant=lambda x: (_ for _ in ()).throw(ValueError(x)))
 
 
 def _compare_claims(bundled, recomputed):
@@ -301,20 +319,24 @@ def verify_bundle(path, *, trust_root=None, later_revocations=None, replay_proof
     if path.is_file():
         tmp = tempfile.mkdtemp(prefix='genesis-bundle-')
         with zipfile.ZipFile(path) as z:
-            for name in z.namelist():
-                if not _safe_rel(name):
+            names = z.namelist()
+            for name in names:
+                if not _safe_rel(name.rstrip('/')):
                     raise ValueError(f'unsafe path in bundle: {name!r}')
+            tops = {n.split('/')[0] for n in names}
+            if len(tops) != 1 or not next(iter(tops)).startswith('release_'):
+                raise ValueError('bundle must contain exactly one release_* directory and nothing else')
             z.extractall(tmp)
-        roots = list(Path(tmp).glob('release_*'))
-        if len(roots) != 1:
-            raise ValueError('bundle must contain exactly one release_* directory')
-        path = roots[0]
+        path = Path(tmp) / next(iter(tops))
     problems = []
     current = None
     replayed = []
     try:
-        manifest = json.loads((path / 'MANIFEST.json').read_bytes())
-        present = {str(p.relative_to(path)) for p in path.rglob('*') if p.is_file() and p.name != 'MANIFEST.json'}
+        manifest = _strict_json((path / 'MANIFEST.json').read_bytes())
+        for p in path.rglob('*'):
+            if p.is_symlink() or not (p.is_file() or p.is_dir()):
+                problems.append(f'not a regular file: {p.relative_to(path)}')
+        present = {str(p.relative_to(path)) for p in path.rglob('*') if p.is_file() and not p.is_symlink()} - {'MANIFEST.json'}
         if present != set(manifest['files']):
             problems.append(f'file set differs: missing {sorted(set(manifest["files"]) - present)[:3]}, '
                             f'extra {sorted(present - set(manifest["files"]))[:3]}')
@@ -332,6 +354,8 @@ def verify_bundle(path, *, trust_root=None, later_revocations=None, replay_proof
             shutil.copytree(path / 'objects', Path(d) / 'objects')
             try:
                 record = rebuild_from_export(d)
+                if record.get('partial_tail_dropped'):
+                    problems.append('events.jsonl ends in a partial line that the rebuild would drop')
                 if record['head'] != manifest['event_head'] or record['events'] != manifest['events']:
                     problems.append('rebuilt event head differs from manifest')
                 with Store(d) as s:
@@ -339,8 +363,12 @@ def verify_bundle(path, *, trust_root=None, later_revocations=None, replay_proof
                         problems.append('MANIFEST source_hash differs from the source recorded in the evidence store')
                     derived = derived_files(s, trust_root=trust_root, head=record['head'])
                     recomputed = derived.pop('CLAIMS.json')
-                    bundled = json.loads((path / 'CLAIMS.json').read_bytes())
+                    raw_claims = (path / 'CLAIMS.json').read_bytes()
+                    bundled = _strict_json(raw_claims)
                     problems += _compare_claims(bundled, recomputed)
+                    expected = dict(recomputed, evaluated_at=bundled.get('evaluated_at'), registry=bundled.get('registry'))
+                    if not problems and raw_claims != canonical(expected):
+                        problems.append('CLAIMS.json bytes are not the canonical re-derived claims')
                     for rel, data in derived.items():
                         f = path / rel
                         if not f.is_file() or f.read_bytes() != data:
@@ -352,6 +380,11 @@ def verify_bundle(path, *, trust_root=None, later_revocations=None, replay_proof
                     problems += _snapshot_problems(path / 'campaign.sqlite3.snapshot', s)
                     report = (path / 'report.md').read_text() if (path / 'report.md').is_file() else ''
                     problems += wording_problems(report, recomputed)
+                    for prose in ('LIMITATIONS.md', 'REPRODUCE.md'):
+                        text = (path / prose).read_text() if (path / prose).is_file() else ''
+                        problems += [f"{prose}: {p['phrase']!r} ({p['why']})" for p in lint(text, recomputed['ceiling'])]
+                    if (path / 'REPRODUCE.md').is_file() and (path / 'REPRODUCE.md').read_text() != REPRODUCE:
+                        problems.append('REPRODUCE.md is not the standard reproduction text')
                     if replay_proofs:
                         replayed, why = replay_certificates(s, recomputed['claims'], trust_root=trust_root)
                         problems += why
@@ -369,7 +402,11 @@ def verify_bundle(path, *, trust_root=None, later_revocations=None, replay_proof
                                    'claims': now['claims']}
             except Exception as exc:
                 problems.append(f'event rebuild or claim recomputation failed: {type(exc).__name__}: {exc}')
-        identity = json.loads((path / 'analysis_code' / 'CODE_IDENTITY.json').read_bytes())
+        identity = _strict_json((path / 'analysis_code' / 'CODE_IDENTITY.json').read_bytes())
+        shipped = {r[len('analysis_code/'):] for r in present if r.startswith('analysis_code/')} - {'CODE_IDENTITY.json'}
+        if shipped != set(identity['files']):
+            problems.append(f'analysis_code/ holds files outside its code identity: '
+                            f'{sorted(shipped - set(identity["files"]))[:3]}')
         recomputed_code = {}
         for rel in identity['files']:
             if not _safe_rel(rel):

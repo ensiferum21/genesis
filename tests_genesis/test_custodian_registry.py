@@ -58,12 +58,10 @@ class Fixture(unittest.TestCase):
         self.manifest.write_text(json.dumps({'schema': 'genesis-exposure-manifest-v1', 'sources': sources}))
         self.manifest.chmod(0o600)
 
-    def export_with(self, tasks, name='export.zip'):
-        path = self.base / name
-        with zipfile.ZipFile(path, 'w') as z:
-            for i, t in enumerate(tasks):
-                z.writestr(f'objects/sha256/obj{i}.json', canonical({'kind': 'solver', 'task': t.model_dump(mode='json')}))
-        return path
+    def export_with(self, tasks, name='export.zip', campaign='a'):
+        from tests_genesis.signed_fixtures import campaign_export
+        return campaign_export(self.base, campaign_id=campaign * 64, source_hash=code_identity(REPO)['sha256'],
+                               hosts=tasks, name=name)
 
     def request(self, export, declared=(), task_count=2, campaign='a'):
         source = code_identity(REPO)['sha256']
@@ -181,10 +179,11 @@ class PanelScreening(Fixture):
         register(self.root, first, self.key, 'fixture', exposure_manifest=self.manifest, campaign_export=export,
                  pool=pool)
         evaluate(self.root, digest(first), pool, self.key, 'fixture')
-        second = self.request(export, campaign='c')
+        export_c = self.export_with([], name='export-c.zip', campaign='c')
+        second = self.request(export_c, campaign='c')
         changed = [relabel(t, tuple(reversed(range(t.n)))) for t in tasks]
         pool2 = self.pool(changed, 'pool2.json')
-        register(self.root, second, self.key, 'fixture', exposure_manifest=self.manifest, campaign_export=export,
+        register(self.root, second, self.key, 'fixture', exposure_manifest=self.manifest, campaign_export=export_c,
                  pool=pool2)
         with self.assertRaisesRegex(ValueError, 'already consumed'):
             evaluate(self.root, digest(second), pool2, self.key, 'fixture')

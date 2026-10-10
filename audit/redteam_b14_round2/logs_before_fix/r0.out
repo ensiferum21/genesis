@@ -1,0 +1,9 @@
+  [malleated] wrapper nodes 2, distinct envelopes 2, counted evaluations 1
+blocked      receipt cites another request's anchor: sealed_evaluation 7011442c4b67 does not support claim swap: anchor registers a different request | needs 1 dis
+blocked      two signature spellings of one receipt for CROSS_DOMAIN: cross-domain confirmation needs supporting evaluations in at least two domains
+blocked      JSON number edge cases in signed counts/probabilities: all rejected: [('wins', True), ('ties', True), ('paired_p', True), ('task_count', True)]
+blocked      generation chain with an ambiguous fork: needs 3 consecutive confirmed generation transitions ending at the bound candidate, found 1
+blocked      later revocation feed with an unknown target_type: fails closed: event rebuild or claim recomputation failed: KeyError: 'claim'
+blocked      zip-slip entry name: unsafe path in bundle: 'release_x/../../../tmp/evil.txt'
+blocked      CLAIMS.json carrying NaN: rejected: event rebuild or claim recomputation failed: ValueError: Out of range float valu
+blocked      replay cache vs proof object altered after caching: cached replay not reused: OPTIMALITY_CHECKED -> UNCHECKED (SAT_DRAT)

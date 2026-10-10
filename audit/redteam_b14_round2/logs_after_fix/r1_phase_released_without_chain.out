@@ -1,0 +1,16 @@
+outcomes: own campaign NOT_SUPPORTED | other campaign SUPPORTED
+CHILD FAILED:
+Traceback (most recent call last):
+  File "/home/claude/genesis/audit/redteam_b14_round2/r1_phase_released_without_chain.py", line 113, in <module>
+    child(Path(sys.argv[2]), Path(sys.argv[3]))
+    ~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/claude/genesis/audit/redteam_b14_round2/r1_phase_released_without_chain.py", line 65, in child
+    advance(s, t, envelope=env, trust_root=trust)
+    ~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/claude/genesis/src/genesis/kernel/phases.py", line 137, in advance
+    payload = _open(store, target, envelope, registry['pins'])
+  File "/home/claude/genesis/src/genesis/kernel/phases.py", line 113, in _open
+    request = _frozen_request(store, request_hash)
+  File "/home/claude/genesis/src/genesis/kernel/phases.py", line 88, in _frozen_request
+    raise PhaseError('frozen request names another campaign')
+genesis.kernel.phases.PhaseError: frozen request names another campaign

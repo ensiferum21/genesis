@@ -194,7 +194,10 @@ def main(argv=None):
             else:result={'integrity':s.verify(),'summary':s.state('summary'),'promotion_allowed':False}
     else:
         with Campaign(args.root) as c:
-            if args.command=='campaign':result=c.run() if args.action=='run' else {'phase':c.store.state('phase'),'summary':c.store.state('summary')}
+            if args.command=='campaign':
+                from .kernel.phases import verified_phase
+                result=c.run() if args.action=='run' else {'phase':verified_phase(c.store),
+                                                          'summary':c.store.state('summary')}
             elif args.command=='trial':result=c.replay(args.limit)
             elif args.command=='freeze':result={'request_path':str(request_bundle(c,args.tasks)),'promotion_allowed':False}
             elif args.command=='report':c.report();result={'report':str(c.root/'reports/report.md')}

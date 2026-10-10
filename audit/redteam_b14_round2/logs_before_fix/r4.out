@@ -1,0 +1,8 @@
+honest verify ok: True
+(a) verify ok: True []
+    first-wins reader sees: OPTIMALITY_CHECKED | ceiling CONFIRMED_TRANSFER | genesis.common.load_json: rejected (duplicate JSON key)
+    grep: True True
+(b) unlisted, unhashed certificates/MANIFEST.json shipped; verify ok: True []
+(c) shipped events.jsonl lines: 10 | last line: ENTITY_COMMITTED evidence_revocation | verify ok: True | bundled math level still: WITNESS_VALID
+(d) top-level CLAIMS.json outside release_*; verify ok: True
+ATTACK_SUCCEEDED

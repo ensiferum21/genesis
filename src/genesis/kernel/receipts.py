@@ -116,11 +116,26 @@ def normalize_key(public_key_b64):
     return base64.b64encode(raw).decode() if len(raw) == 32 else None
 
 
+def program_identity(program):
+    """Identity of a solver program: the hash of its validated canonical form, so two
+    encodings of the same program (defaults omitted, key order) are the same program."""
+    from ..common import canonical
+    from ..models import SolverProgram
+    return digest(SolverProgram.model_validate_json(canonical(program)).model_dump(mode='json'))
+
+
 def registration_slot(request):
-    """One preregistration per slot: a claim cannot be evaluated again until a lucky result appears."""
+    """One sealed evaluation per slot, whatever the claim is called.
+
+    The slot is the evaluated candidate program in its campaign, kind, domain and
+    generation position, so renaming the claim (new claim_id, statement or scope)
+    does not buy another draw for the same candidate. Selection across *different*
+    candidates is a multiplicity question for the custodian's registration log
+    (W07, recorded as an open item)."""
     t = request.get('generation_transition')
-    return digest({'claim_id': request['claim_id'], 'evidence_kind': request['evidence_kind'],
-                   'domain': request['domain'], 'transfer_source_domain': request.get('transfer_source_domain'),
+    return digest({'campaign_id': request['campaign_id'], 'candidate': program_identity(request['programs']['candidate']),
+                   'evidence_kind': request['evidence_kind'], 'domain': request['domain'],
+                   'transfer_source_domain': request.get('transfer_source_domain'),
                    'generation_index': t.get('index') if isinstance(t, dict) else None})
 
 
@@ -269,9 +284,12 @@ def check_request(r):
     if not hex64(r.get('statement_hash')) or not isinstance(r.get('scope'), str) or not r.get('scope'):
         out.append('a request must commit to the claim statement (statement_hash) and scope before evaluation')
     programs = r.get('programs')
-    if isinstance(programs, dict) and 'candidate' in programs and 'baseline' in programs \
-            and digest(programs['candidate']) == digest(programs['baseline']):
-        out.append('candidate and baseline are the same program')
+    if isinstance(programs, dict) and 'candidate' in programs and 'baseline' in programs:
+        try:
+            if program_identity(programs['candidate']) == program_identity(programs['baseline']):
+                out.append('candidate and baseline are the same program')
+        except Exception:
+            out.append('candidate or baseline is not a valid program')
     if r.get('evidence_kind') not in EVALUATION_KINDS:
         out.append('evidence_kind')
     else:
@@ -391,7 +409,7 @@ def binding_from_requests(requests):
                 domains[d] = domain_contract_hash(d)
     b = {'schema': CLAIM_BINDING, 'campaign_id': requests[0]['campaign_id'],
          'statement_hash': requests[0]['statement_hash'], 'scope': requests[0]['scope'], 'candidate_version': final,
-         'baseline_versions': sorted({digest(r['programs']['baseline']) for r in requests}),
+         'baseline_versions': sorted({program_identity(r['programs']['baseline']) for r in requests}),
          'domains': domains, 'request_hashes': sorted({digest(r) for r in requests}),
          'evaluator_hash': requests[0]['expected_evaluator_hash'],
          'source_hashes': sorted({r['source_hash'] for r in requests})}

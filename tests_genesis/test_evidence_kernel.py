@@ -13,7 +13,7 @@ from cryptography.hazmat.primitives import serialization
 
 from genesis.kernel.evidence import EvidenceKernel, PromotionRejected
 from genesis.kernel.receipts import binding_from_requests
-from tests_genesis.signed_fixtures import SignedFixture, chain_requests, record_evaluation
+from tests_genesis.signed_fixtures import SignedFixture, chain_requests, record_evaluation, witness_payload
 from genesis.kernel.wording import lint, require_clean
 from genesis.store import Store
 
@@ -25,6 +25,7 @@ class Base(unittest.TestCase):
     def setUp(self):
         self.tmp = tempfile.TemporaryDirectory(); self.addCleanup(self.tmp.cleanup)
         self.store = Store(self.tmp.name); self.addCleanup(self.store.close)
+        self.store.set_state('campaign_id', 'a' * 64); self.store.set_state('source_hash', 'c' * 64)
         self.k = EvidenceKernel(self.store, anchors={ANCHOR_IMPL: 'pinned fixture checker'})
         self.k.register_verifier('dual-predicates', ANCHOR_IMPL)
         self.k.register_verifier('exact-b', 'e' * 64)
@@ -33,7 +34,9 @@ class Base(unittest.TestCase):
 
     def check(self, kind, parents, verifier='dual-predicates', verdict='VALID', payload=None, effects=(),
               route='genesis.campaign'):
-        return self.k.record(kind, payload or {'kind': kind, 'parents': parents}, parents=parents, route=route,
+        if payload is None:
+            payload = witness_payload(self.store) if kind == 'witness_check' else {'kind': kind, 'parents': parents}
+        return self.k.record(kind, payload, parents=parents, route=route,
                              source_hash=SRC, verdict=verdict, verifier=verifier, effects=effects)
 
     def rejects(self, claim, axis, level, fragment):
@@ -55,13 +58,26 @@ class MathPromotion(Base):
         self.k.create_claim('c', 'x', 's', [self.run])
         self.rejects('c', 'math', 'FINITE_CERTIFIED', 'speculative')
 
-    def test_finite_certified_needs_two_independent_exact_checkers(self):
+    def test_declared_verdicts_without_a_replay_contract_license_nothing(self):
+        # B14 red team round 2 (C2): exact/formal/causal/replication nodes are producer-written verdicts
+        # until a replay contract exists, however many there are.
         a = self.check('exact_check', [self.run])
-        self.k.create_claim('one', 'opt 7', 'H', [a])
-        self.rejects('one', 'math', 'FINITE_CERTIFIED', 'independent exact checkers')
         b = self.check('exact_check', [self.run], verifier='exact-b')
         self.k.create_claim('two', 'opt 7', 'H', [a, b])
-        self.k.promote('two', 'math', 'FINITE_CERTIFIED')
+        self.rejects('two', 'math', 'FINITE_CERTIFIED', 'no replay contract for exact_check')
+        for kind, axis, level in (('formal_check', 'math', 'THEOREM_CHECKED'), ('ablation', 'causality',
+                                  'ABLATION_SUPPORTED'), ('internal_replication', 'replication', 'INTERNAL_INDEPENDENT'),
+                                  ('dev_comparison', 'utility', 'DEV_ONLY'), ('priority_check', 'novelty', 'REDISCOVERY')):
+            n = self.check(kind, [self.run], verdict='PASS')
+            self.k.create_claim(f'declared-{kind}', 'x', 'H', [n])
+            self.rejects(f'declared-{kind}', axis, level, f'no replay contract for {kind}')
+        # A witness check is replayed: a wrong witness or a declared value does not pass.
+        bad = self.check('witness_check', [self.run], payload=dict(witness_payload(self.store), value=4))
+        self.k.create_claim('badw', 'x', 'H', [bad])
+        self.rejects('badw', 'math', 'WITNESS_VALID', 'does not replay')
+        v1 = self.check('witness_check', [self.run], payload={'value': 7})
+        self.k.create_claim('v1', 'x', 'H', [v1])
+        self.rejects('v1', 'math', 'WITNESS_VALID', 'not a replayable witness check')
 
     PATH4 = None
 
@@ -71,16 +87,20 @@ class MathPromotion(Base):
         task = GraphTask(task_id='path4', n=4, edges=((0, 1), (1, 2), (2, 3)), family='path')
         return task, digest(task.model_dump(mode='json'))
 
-    def bound(self, *, lower=3, upper=3, bundle=None, payload=None, sha=None):
+    def bound(self, *, lower=3, upper=3, bundle=None, payload=None, sha=None, task=None):
         from genesis.verification.certificates import build, persist
-        task, task_sha = self.path4()
-        sha = sha or task_sha
+        task = task or self.path4()[0]
         if bundle is None:
             b, blobs = build(task, {'lower': 3, 'witness': task.edges, 'upper': 3,
                                     'upper_certificate': {'method': 'HOST_EDGE_COUNT', 'upper': 3}})
             bundle = persist(self.store, b, blobs)
-        w = self.check('witness_check', [self.run], payload={'task_sha256': sha, 'value': lower})
-        body = payload or {'schema': 'genesis-bound-state-v2', 'task': 'path4', 'task_sha256': sha, 'lower': lower,
+        b = self.store.get(bundle)
+        wp = witness_payload(self.store, task, b['lower']['witness'])
+        if wp['value'] != lower:  # an inconsistent bound state on purpose: witness of another value
+            wp = witness_payload(self.store, task, task.edges[:lower])
+        w = self.check('witness_check', [self.run], payload=wp)
+        sha = sha or wp['task_sha256']
+        body = payload or {'schema': 'genesis-bound-state-v2', 'task': task.task_id, 'task_sha256': sha, 'lower': lower,
                            'upper': upper, 'gap': upper - lower, 'lower_evidence': w, 'certificate_bundle': bundle}
         return self.check('bound_state', [w], payload=body)
 
@@ -121,7 +141,7 @@ class MathPromotion(Base):
                               'upper_certificate': {'method': 'reiman', 'upper': 4}})
         self.assertEqual((b['upper']['method'], b['status']), ('THEOREM', 'OPTIMALITY_BY_THEOREM_UNCHECKED'))
         k4sha = digest(k4.model_dump(mode='json'))
-        self.opt_claim('g', self.bound(bundle=persist(self.store, b, blobs), lower=4, upper=4, sha=k4sha),
+        self.opt_claim('g', self.bound(bundle=persist(self.store, b, blobs), lower=4, upper=4, task=k4),
                        value=4, sha=k4sha)
         self.rejects('g', 'math', 'OPTIMALITY_CHECKED', 'not independently certified')
 

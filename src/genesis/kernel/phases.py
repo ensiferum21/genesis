@@ -35,9 +35,9 @@ class PhaseError(ValueError):
     pass
 
 
-def _check_payload(store, target, payload, envelope):
-    """Same receipt semantics as the evidence kernel and preflight (kernel.receipts)."""
-    request_hash = store.state('frozen_request_hash')
+def _check_payload(target, payload, envelope, *, request_hash, receipts):
+    """Phase-specific binding. `receipts` holds the envelopes recorded for earlier phases at
+    the time of this transition (live state in `advance`, replayed history in `verified_phase`)."""
     if not request_hash:
         raise PhaseError('no frozen evaluation request recorded for this campaign')
     if not isinstance(payload, dict) or payload.get('request_hash') != request_hash:
@@ -48,17 +48,21 @@ def _check_payload(store, target, payload, envelope):
             raise PhaseError('LEAK_SCAN_PASSED needs a custodian registration anchor with an exposure registry '
                              'root and a panel commitment: ' + '; '.join(problems))
     elif target == 'SEALED_RUNNING':
-        anchor = store.state('phase_receipt:LEAK_SCAN_PASSED')
+        anchor = receipts.get('LEAK_SCAN_PASSED')
+        if not isinstance(anchor, dict):
+            raise PhaseError('no registered anchor precedes the sealed run')
         problems = R.anchor_mismatches(payload, anchor['payload'], anchor)
         if problems:
             raise PhaseError('sealed receipt does not reference the registered anchor: ' + '; '.join(problems))
     elif target == 'JUDGED':
         if payload.get('raw_evidence_complete') is not True or payload.get('completed_rows') != payload.get('expected_rows'):
             raise PhaseError('judgement needs complete raw evidence')
-        if store.state('phase_receipt:SEALED_RUNNING') != envelope:
+        if receipts.get('SEALED_RUNNING') != envelope:
             raise PhaseError('judgement must use the same signed receipt as the sealed run')
     else:  # RELEASED / REJECTED
-        receipt = store.state('phase_receipt:JUDGED')
+        receipt = receipts.get('JUDGED')
+        if not isinstance(receipt, dict):
+            raise PhaseError('no judged receipt precedes the decision')
         decision = 'RELEASE' if target == 'RELEASED' else 'REJECT'
         if payload.get('schema') != 'genesis-release-decision-v1' or payload.get('decision') != decision:
             raise PhaseError(f'{target} needs a signed {decision} decision')
@@ -68,27 +72,47 @@ def _check_payload(store, target, payload, envelope):
             raise PhaseError('a release needs a judged receipt whose signed outcome is SUPPORTED')
 
 
-def _frozen_request(store):
-    rid = store.state('frozen_request_hash')
+def _frozen_request(store, request_hash=None):
+    """The frozen request, which must belong to THIS campaign: same campaign_id, and its bound
+    export must be a prefix of this store's own event history (no replay from another campaign)."""
+    import zipfile
+    from ..common import bytes_hash
+    rid = request_hash or store.state('frozen_request_hash')
     row = store.db.execute("SELECT object_hash FROM entities WHERE kind='frozen_request' AND id=?", (rid,)).fetchone()
     if row is None:
         raise PhaseError('the frozen evaluation request is not recorded as an immutable entity')
     request = store.get(row[0])
     if digest(request) != rid:
         raise PhaseError('frozen request does not hash to its recorded identity')
+    if request.get('campaign_id') != store.state('campaign_id'):
+        raise PhaseError('frozen request names another campaign')
+    export = store.root / 'exports' / 'campaign_export.zip'
+    if not export.is_file() or bytes_hash(export.read_bytes()) != request.get('campaign_export_sha256'):
+        raise PhaseError('the export bound to the frozen request is not this campaign\'s export')
+    with zipfile.ZipFile(export) as z:
+        exported = z.read('events.jsonl') if 'events.jsonl' in z.namelist() else None
+    if exported is None or not (store.root / 'events.jsonl').read_bytes().startswith(exported):
+        raise PhaseError('the bound export is not a prefix of this campaign\'s event history')
     return request
 
 
-def _open(store, target, envelope, pins):
+def _revoked_keys(store):
+    from .evidence import EvidenceKernel
+    return EvidenceKernel(store).revoked_keys()
+
+
+def _open(store, target, envelope, pins, *, request_hash=None):
     """Verify a phase envelope with the same acceptance function the kernel uses."""
     if target in ('RELEASED', 'REJECTED'):
+        if R.normalize_key(pins['release_key']) in {R.normalize_key(k) for k in _revoked_keys(store)}:
+            raise PhaseError('the pinned release_key is revoked')
         try:
             return verify(envelope, pins['release_key'])
         except Exception as exc:
             raise PhaseError(f'{target} decision is not signed by the pinned release_key: {type(exc).__name__}')
-    request = _frozen_request(store)
+    request = _frozen_request(store, request_hash)
     kind = 'preregistration_anchor' if target == 'LEAK_SCAN_PASSED' else request['evidence_kind']
-    payload, problems = R.accept_receipt(envelope, kind, pins)
+    payload, problems = R.accept_receipt(envelope, kind, pins, revoked_keys=_revoked_keys(store))
     if problems:
         raise PhaseError(f'{target} envelope rejected: ' + '; '.join(problems[:3]))
     if target == 'LEAK_SCAN_PASSED':
@@ -111,28 +135,39 @@ def advance(store, target, *, envelope=None, reason=None, trust_root=None):
         if registry is None:
             raise PermissionError('scientific phases need an externally controlled role registry: ' + '; '.join(problems))
         payload = _open(store, target, envelope, registry['pins'])
-        _check_payload(store, target, payload, envelope)
+        receipts = {k: store.state(f'phase_receipt:{k}') for k in SCIENTIFIC}
+        _check_payload(target, payload, envelope, request_hash=store.state('frozen_request_hash'), receipts=receipts)
         store.set_state(f'phase_receipt:{target}', envelope)  # persisted before the phase changes
     store.set_state('phase', target)
     return {'from': current, 'to': target}
 
 
 def verified_phase(store, *, trust_root=None):
-    """Re-derive the campaign phase from the event history instead of trusting the
-    mutable `phase` state: every transition must be legal, and every scientific
-    phase must have been preceded by its stored envelope, which must verify now.
-    Returns {'phase', 'recorded_phase', 'consistent', 'problems'}."""
+    """Re-derive the campaign phase from the event history instead of trusting the mutable
+    `phase` state. Every recorded transition must be legal; every scientific one must be
+    preceded by its envelope, which must verify now under the trust root (signature, role,
+    key revocations) AND pass the same binding checks `advance` applies, against the
+    envelopes and frozen request recorded before it. The frozen request may not change
+    once LEAK_SCAN_PASSED is reached. Returns {'phase', 'recorded_phase', 'consistent', 'problems'}."""
     registry, reg_problems = load_role_registry(trust_root)
-    phase, receipts, problems = 'CREATED', {}, []
+    phase, latest, accepted, problems = 'CREATED', {}, {}, []
+    frozen, frozen_at_scan = None, None
     for (raw,) in store.db.execute('SELECT body FROM events ORDER BY seq'):
         body = json.loads(raw)
         if body['kind'] != 'STATE_UPDATED':
             continue
         update = store.get(body['payload'])
         key, value = update['key'], update['value']
-        if key.startswith('phase_receipt:'):
-            receipts[key.split(':', 1)[1]] = value
+        if key == 'frozen_request_hash':
+            if frozen_at_scan is not None and value != frozen_at_scan:
+                problems.append('frozen request changed after LEAK_SCAN_PASSED')
+                break
+            frozen = value
+        elif key.startswith('phase_receipt:'):
+            latest[key.split(':', 1)[1]] = value
         elif key == 'phase':
+            if value == phase:
+                continue  # idempotent write (e.g. initialization writes CREATED)
             if value not in TRANSITIONS.get(phase, set()):
                 problems.append(f'illegal recorded transition {phase} -> {value}')
                 break
@@ -140,11 +175,16 @@ def verified_phase(store, *, trust_root=None):
                 if registry is None:
                     problems.append(f'{value} cannot be verified without a trust root: ' + '; '.join(reg_problems[:2]))
                     break
+                envelope = latest.get(value)
                 try:
-                    _open(store, value, receipts.get(value), registry['pins'])
+                    payload = _open(store, value, envelope, registry['pins'], request_hash=frozen)
+                    _check_payload(value, payload, envelope, request_hash=frozen, receipts=accepted)
                 except Exception as exc:
                     problems.append(f'{value} envelope does not verify: {exc}')
                     break
+                accepted[value] = envelope
+                if value == 'LEAK_SCAN_PASSED':
+                    frozen_at_scan = frozen
             phase = value
     recorded = store.state('phase', 'CREATED')
     return {'phase': phase, 'recorded_phase': recorded, 'consistent': not problems and phase == recorded,

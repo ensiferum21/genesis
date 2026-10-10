@@ -42,12 +42,11 @@ class HardPanels(unittest.TestCase):
             manifest = private / 'm.json'
             manifest.write_text(json.dumps({'schema': 'genesis-exposure-manifest-v1', 'sources': []}))
             manifest.chmod(0o600)
-            export = base / 'e.zip'
-            with zipfile.ZipFile(export, 'w') as z:
-                z.writestr('MANIFEST.json', '{}')
+            from tests_genesis.signed_fixtures import campaign_export
+            source = code_identity(REPO)['sha256']
+            export = campaign_export(base, campaign_id='a' * 64, source_hash=source)
             tasks, _ = make_hard_panel(4401, 2, 'c4_host_v2', 'CONFIRM', certify_seconds=60)
             pool = base / 'pool.json'; pool.write_bytes(canonical([t.model_dump(mode='json') for t in tasks]))
-            source = code_identity(REPO)['sha256']
             request = {'schema': 'genesis-evaluation-request-v3', 'campaign_id': 'a' * 64, 'candidate_version': 'b' * 64,
                        'claim_id': 'hard-panel-fixture', 'evidence_kind': 'sealed_evaluation',
                        'statement_hash': '5' * 64, 'scope': 'fixture panel',

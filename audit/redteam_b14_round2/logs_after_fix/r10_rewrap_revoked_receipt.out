@@ -1,0 +1,7 @@
+Traceback (most recent call last):
+  File "/home/claude/genesis/audit/redteam_b14_round2/r10_rewrap_revoked_receipt.py", line 37, in <module>
+    k.promote('c-1', 'utility', 'CONFIRMED_SAME_DOMAIN')
+    ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/claude/genesis/src/genesis/kernel/evidence.py", line 525, in promote
+    raise PromotionRejected(reasons)
+genesis.kernel.evidence.PromotionRejected: ['claim binding names a different campaign or source than this evidence store']

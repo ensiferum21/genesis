@@ -82,7 +82,8 @@ class TheoremMemoryRule(unittest.TestCase):
             r1 = mem.admit('lemma-1', 'lemma', ALPHA, parents=[], screener=empty, route='genesis.campaign',
                            source_hash='a' * 64)
             self.assertTrue(r1['visible'])
-            check = k.record('witness_check', {'uses': 'lemma-1'}, parents=[r1['node']], route='genesis.campaign',
+            from tests_genesis.signed_fixtures import witness_payload
+            check = k.record('witness_check', witness_payload(s), parents=[r1['node']], route='genesis.campaign',
                              source_hash='a' * 64, verdict='VALID')
             k.create_claim('c', 'result using lemma-1', 'scope', [check])
             k.promote('c', 'math', 'WITNESS_VALID')

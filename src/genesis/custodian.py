@@ -95,6 +95,57 @@ def _registry_from_db(db):
     return index
 
 
+# Kinds whose meaning needs evidence this custodian cannot yet check from the export
+# (a learned-vs-fixed research lineage, or frozen successor versions): refused, not trusted.
+UNSUPPORTED_KINDS={'sealed_improver_evaluation':'needs the research-lineage protocol (roadmap W21)',
+                   'sealed_generation_evaluation':'needs frozen successor versions in the export (roadmap W21)'}
+
+
+def campaign_facts(export):
+    """Rebuild the requesting campaign from its export and read what it really is.
+
+    The custodian must not take a request's campaign identity, source identity or
+    domain on trust (B14 red team C1): they are read from the campaign history
+    contained in the bound export (events.jsonl + objects, hash-chained)."""
+    import shutil,tempfile,zipfile
+    from .store import rebuild_from_export
+    with tempfile.TemporaryDirectory(prefix='genesis-custody-export-') as d:
+        with zipfile.ZipFile(export) as z:
+            names=z.namelist()
+            for n in names:
+                p=Path(n)
+                if p.is_absolute() or '..' in p.parts:raise ValueError('unsafe path in campaign export')
+            if 'events.jsonl' not in names:
+                raise ValueError('campaign export has no event history; the request cannot be checked against it')
+            z.extractall(d)
+        for junk in ('campaign.sqlite3','writer.lock'):
+            if (Path(d)/junk).exists():(Path(d)/junk).unlink()
+        record=rebuild_from_export(d)
+        if record.get('partial_tail_dropped'):raise ValueError('campaign export ends in a partial event')
+        with Store(d) as s:
+            row=s.db.execute("SELECT object_hash FROM entities WHERE kind='config' ORDER BY id").fetchone()
+            config=s.get(row[0]) if row else {}
+            facts={'campaign_id':s.state('campaign_id'),'source_hash':s.state('source_hash'),
+                   'domain':config.get('domain'),'event_head':record['head']}
+        shutil.rmtree(d,ignore_errors=True)
+    return facts
+
+
+def check_request_against_export(request,facts):
+    problems=[]
+    if request['evidence_kind'] in UNSUPPORTED_KINDS:
+        problems.append(f"{request['evidence_kind']} {UNSUPPORTED_KINDS[request['evidence_kind']]}; refused")
+    if facts['campaign_id']!=request['campaign_id']:problems.append('request campaign_id differs from the campaign export')
+    if facts['source_hash']!=request['source_hash']:problems.append('request source_hash differs from the campaign export')
+    if request['evidence_kind']=='sealed_transfer_evaluation':
+        if facts['domain']!=request['transfer_source_domain'] or request['domain']==facts['domain']:
+            problems.append('a transfer must evaluate on a domain other than the one the campaign worked in, '
+                            'and name that campaign domain as its source')
+    elif facts['domain']!=request['domain']:
+        problems.append('request domain differs from the campaign export domain')
+    return problems
+
+
 def _load_pool(pool_path):
     pool=load_json(pool_path)
     if not isinstance(pool,list) or not pool:raise ValueError('pool must be a non-empty task list')
@@ -122,6 +173,8 @@ def register(private_root,request,key_path,operator_id,*,exposure_manifest,campa
     export=Path(campaign_export)
     if bytes_hash(export.read_bytes())!=request['campaign_export_sha256']:
         raise ValueError('campaign export does not match the request binding')
+    problems=check_request_against_export(request,campaign_facts(export))
+    if problems:raise ValueError('request is not what the campaign export shows: '+'; '.join(problems))
     manifest_path=Path(exposure_manifest)
     st=manifest_path.stat()
     if manifest_path.is_symlink() or st.st_uid!=os.geteuid() or st.st_mode&0o022:
@@ -330,8 +383,8 @@ def evaluate(private_root,request_id,pool_path,key_path,operator_id):
                  'claim_id':request['claim_id'],'statement_hash':request['statement_hash'],'scope':request['scope'],
                  'campaign_id':request['campaign_id'],'request_hash':request_id,
                  'anchor_hash':digest(anchor),'candidate_version':request['candidate_version'],
-                 'candidate_program_hash':digest(request['programs']['candidate']),
-                 'baseline_version':digest(request['programs']['baseline']),'source_hash':request['source_hash'],
+                 'candidate_program_hash':R.program_identity(request['programs']['candidate']),
+                 'baseline_version':R.program_identity(request['programs']['baseline']),'source_hash':request['source_hash'],
                  'evaluator_hash':identity,'analysis':request['analysis'],'domain':request['domain'],
                  'domain_contract_hash':R.domain_contract_hash(request['domain']),
                  'transfer_source_domain':request['transfer_source_domain'],
@@ -382,11 +435,11 @@ def release_preflight(request,anchor,receipt,audit,*,trust_root=None):
             if a['registration_slot']!=R.registration_slot(request):reasons.append('anchor registers a different slot')
             for field,want in (('claim_id',request['claim_id']),('campaign_id',request['campaign_id']),
                                ('statement_hash',request['statement_hash']),('scope',request['scope']),
-                               ('candidate_program_hash',digest(request['programs']['candidate'])),
+                               ('candidate_program_hash',R.program_identity(request['programs']['candidate'])),
                                ('candidate_version',request['candidate_version']),
                                ('evaluator_hash',request['expected_evaluator_hash']),
                                ('source_hash',request['source_hash']),('domain',request['domain']),
-                               ('baseline_version',digest(request['programs']['baseline'])),
+                               ('baseline_version',R.program_identity(request['programs']['baseline'])),
                                ('task_count',request['task_count']),('expected_rows',expected_rows),
                                ('generation_transition',request['generation_transition']),
                                ('transfer_source_domain',request['transfer_source_domain'])):

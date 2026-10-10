@@ -1,0 +1,9 @@
+  [malleated] wrapper nodes 2, distinct envelopes 2, counted evaluations 0
+blocked      receipt cites another request's anchor: claim binding names a different campaign or source than this evidence store
+blocked      two signature spellings of one receipt for CROSS_DOMAIN: claim binding names a different campaign or source than this evidence store
+blocked      JSON number edge cases in signed counts/probabilities: all rejected: [('wins', True), ('ties', True), ('paired_p', True), ('task_count', True)]
+blocked      generation chain with an ambiguous fork: claim binding names a different campaign or source than this evidence store
+blocked      later revocation feed with an unknown target_type: fails closed: event rebuild or claim recomputation failed: KeyError: 'claim'
+blocked      zip-slip entry name: unsafe path in bundle: 'release_x/../../../tmp/evil.txt'
+blocked      CLAIMS.json carrying NaN: rejected: event rebuild or claim recomputation failed: ValueError: NaN
+blocked      replay cache vs proof object altered after caching: bound_state 3295c2ae3bdb: lower evidence does not replay: not a replayable witness check (genesis-witness-chec

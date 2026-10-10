@@ -28,6 +28,15 @@ def _externally_controlled(path,euid):
     return True,None
 
 
+def distinct_role_keys(pins,root_key):
+    """Every role key is a well-formed Ed25519 key, all differ from each other and from the
+    root key, compared as decoded keys (two base64 spellings of one key are one key)."""
+    from .receipts import normalize_key
+    keys=[normalize_key(pins[k]) if isinstance(pins[k],str) else None for k in sorted(pins) if k.endswith('_key')]
+    root=normalize_key(root_key)
+    return all(keys) and root is not None and len(set(keys))==len(keys) and root not in keys
+
+
 def load_role_registry(trust_root=None):
     """Return ({'pins', 'root_key_sha256', 'trust_root'}, []) or (None, reasons)."""
     trust_root=Path(trust_root or os.environ.get(TRUST_ROOT_ENV,DEFAULT_TRUST_ROOT))
@@ -59,9 +68,7 @@ def load_role_registry(trust_root=None):
             (roles.get('schema')=='genesis-role-registry-v2' and ROLE_FIELDS<=fields<=ROLE_FIELDS|OPTIONAL_ROLE_FIELDS)):
         return None,['role registry schema']
     pins=roles['roles']
-    keys=[pins[k] for k in sorted(fields) if k.endswith('_key')]
-    if not pins['release_authority_id'] or len(set(keys))<len(keys) or root_key in keys \
-            or not all(isinstance(k,str) and k for k in keys):
+    if not distinct_role_keys(pins,root_key) or not pins['release_authority_id']:
         return None,['independent role identities required (distinct keys, root key not a role key)']
     return {'pins':pins,'root_key_sha256':bytes_hash(root_key.encode()),'trust_root':str(trust_root)},[]
 

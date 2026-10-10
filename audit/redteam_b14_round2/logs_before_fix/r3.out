@@ -1,0 +1,6 @@
+honest bundle verify ok: True
+bundle with extra analysis_code/src/sitecustomize.py: trusted verify_bundle ok: True []
+trusted verify_bundle on the inflated extraction: False
+REPRODUCE.md step 2 stderr: ['[attacker sitecustomize loaded: this code is not in CODE_IDENTITY.json]']
+REPRODUCE.md step 2 stdout: {'ok': True, 'problems': []}
+ATTACK_SUCCEEDED

@@ -1,0 +1,5 @@
+after revoking receipt node 493516fcc44d -> c-1: INVALIDATED
+same envelope re-wrapped as d9ec33f716cc | same evaluation identity: True | node revoked: False
+claim 'c-1 ' (receipt names 'c-1'): rejected: ['sealed_evaluation d9ec33f716cc does not support claim c-1 : receipt is bound to a different claim', 'needs 1 distinct supporting sealed_evaluation evaluation(s), found 0']
+second store, same envelope (wrapper 0b4224168c9b); later feed revoking 493516fcc44d -> {'applied': 0, 'skipped_unknown': 1} | c-1 level: CONFIRMED_SAME_DOMAIN
+ATTACK_SUCCEEDED

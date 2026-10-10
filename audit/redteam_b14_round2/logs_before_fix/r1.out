@@ -1,0 +1,10 @@
+outcomes: own campaign NOT_SUPPORTED | other campaign SUPPORTED
+(a) advance RELEASED with REJECT: refused by advance(): RELEASED needs a signed RELEASE decision
+(a) verified_phase: {'phase': 'RELEASED', 'recorded_phase': 'RELEASED', 'consistent': True, 'problems': []}
+(a) index campaigns: [('campaign-A', 'RELEASED')]
+(b) advance() accepted for campaign-B: ['LEAK_SCAN_PASSED', 'SEALED_RUNNING', 'JUDGED', 'RELEASED'] | request campaign_id ffffffff
+(b) verified_phase: {'phase': 'RELEASED', 'recorded_phase': 'RELEASED', 'consistent': True, 'problems': []}
+(b) index campaigns: [('campaign-B', 'RELEASED')]
+(c) verified_phase: CREATED False ['illegal recorded transition CREATED -> CREATED']
+(c) `genesis campaign status` phase: RELEASED
+ATTACK_SUCCEEDED
