@@ -7,6 +7,7 @@ import zipfile
 from cryptography.hazmat.primitives.asymmetric.ed25519 import Ed25519PrivateKey
 from cryptography.hazmat.primitives import serialization
 from genesis.custodian import register,evaluate,verify,release_preflight
+from genesis.kernel import receipts as R
 from genesis.models import Limits,SolverProgram
 from genesis.common import canonical,digest,code_identity,bytes_hash
 from genesis.graphs import canonical_graph,relabel
@@ -28,7 +29,9 @@ class CustodianTests(unittest.TestCase):
         with zipfile.ZipFile(self.export,'w') as z:z.writestr('MANIFEST.json','{}')
         self.manifest=self.root/'exposure_manifest.json'
         self.manifest.write_text(json.dumps({'schema':'genesis-exposure-manifest-v1','sources':[]}));self.manifest.chmod(0o600)
-        self.request={'schema':'genesis-evaluation-request-v2','campaign_id':'a'*64,'candidate_version':'b'*64,
+        self.request={'schema':'genesis-evaluation-request-v3','campaign_id':'a'*64,'candidate_version':'b'*64,
+                      'claim_id':'utility-fixture','evidence_kind':'sealed_evaluation','generation_transition':None,
+                      'transfer_source_domain':None,
                       'campaign_export_sha256':bytes_hash(self.export.read_bytes()),
                       'source_hash':source,'programs':{'baseline':SolverProgram().model_dump(mode='json'),
                       'candidate':SolverProgram(weights=(0,0,0,1)).model_dump(mode='json')},
@@ -41,8 +44,12 @@ class CustodianTests(unittest.TestCase):
         rid=digest(self.request)
         receipt=evaluate(self.root,rid,self.pool,self.key,'TEST_FIXTURE_NOT_INDEPENDENT')
         payload=verify(receipt,self.public)
-        self.assertEqual(payload['completed_rows'],4);self.assertFalse(payload['promotion_allowed'])
+        self.assertEqual(payload['completed_rows'],4);self.assertNotIn('promotion_allowed',payload)
         self.assertEqual(payload['anchor_hash'],digest(anchor))
+        self.assertEqual(payload['panel_commitment'],anchor['payload']['panel_commitment'])
+        self.assertEqual(payload['claim_id'],'utility-fixture')
+        self.assertEqual(payload['outcome'],R.derive_outcome(payload))
+        self.assertEqual(R.check_receipt(payload,'sealed_evaluation'),[])
         public=canonical(receipt)
         self.assertNotIn(self.tasks[0].task_id.encode(),public)
         with self.assertRaises(FileExistsError):evaluate(self.root,rid,self.pool,self.key,'fixture')
@@ -63,7 +70,20 @@ class CustodianTests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError,'research-visible'):evaluate(self.root,digest(self.request),self.pool,self.key,'fixture')
 
     def reg(self):
-        return {'exposure_manifest':self.manifest,'campaign_export':self.export}
+        return {'exposure_manifest':self.manifest,'campaign_export':self.export,'pool':self.pool}
+
+    def test_pool_must_match_the_registered_commitment(self):
+        register(self.root,self.request,self.key,'fixture',**self.reg())
+        other,_=make_panel(9182,2,'c4_host_v2','CONFIRM')
+        swapped=self.root/'swapped.json';swapped.write_bytes(canonical([t.model_dump(mode='json') for t in other]))
+        with self.assertRaisesRegex(ValueError,'committed at registration'):
+            evaluate(self.root,digest(self.request),swapped,self.key,'fixture')
+
+    def test_v2_request_without_claim_binding_refused(self):
+        legacy={k:v for k,v in self.request.items() if k not in ('claim_id','evidence_kind','generation_transition',
+                                                               'transfer_source_domain')}
+        legacy['schema']='genesis-evaluation-request-v2'
+        with self.assertRaisesRegex(ValueError,'schema'):register(self.root,legacy,self.key,'fixture',**self.reg())
 
     def test_missing_external_trust_root_blocks(self):
         r=release_preflight(self.request,{}, {},{},trust_root=self.root/'absent')

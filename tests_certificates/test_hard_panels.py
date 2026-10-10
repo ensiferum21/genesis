@@ -48,7 +48,9 @@ class HardPanels(unittest.TestCase):
             tasks, _ = make_hard_panel(4401, 2, 'c4_host_v2', 'CONFIRM', certify_seconds=60)
             pool = base / 'pool.json'; pool.write_bytes(canonical([t.model_dump(mode='json') for t in tasks]))
             source = code_identity(REPO)['sha256']
-            request = {'schema': 'genesis-evaluation-request-v2', 'campaign_id': 'a' * 64, 'candidate_version': 'b' * 64,
+            request = {'schema': 'genesis-evaluation-request-v3', 'campaign_id': 'a' * 64, 'candidate_version': 'b' * 64,
+                       'claim_id': 'hard-panel-fixture', 'evidence_kind': 'sealed_evaluation',
+                       'generation_transition': None, 'transfer_source_domain': None,
                        'campaign_export_sha256': bytes_hash(export.read_bytes()), 'source_hash': source,
                        'programs': {'baseline': SolverProgram(rounds=8).model_dump(mode='json'),
                                     'candidate': SolverProgram(rounds=8, exchange=True).model_dump(mode='json')},
@@ -57,7 +59,7 @@ class HardPanels(unittest.TestCase):
                        'analysis': {'primary': 'paired-edge-count', 'alpha': 0.05, 'family_sensitivity': True,
                                     'hypotheses': 1},
                        'exposed_graph_fingerprints': [], 'expected_evaluator_hash': source}
-            register(private, request, key, 'fixture', exposure_manifest=manifest, campaign_export=export)
+            register(private, request, key, 'fixture', exposure_manifest=manifest, campaign_export=export, pool=pool)
             receipt = evaluate(private, digest(request), pool, key, 'fixture')
             self.assertEqual(receipt['payload']['completed_rows'], 4)
             with Store(private / 'evaluations' / digest(request)) as s:

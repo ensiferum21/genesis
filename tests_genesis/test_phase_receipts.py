@@ -69,13 +69,17 @@ class SignedPhases(unittest.TestCase):
         private = base / 'private'; private.mkdir(mode=0o700); private.chmod(0o700)
         manifest = private / 'manifest.json'
         manifest.write_text(json.dumps({'schema': 'genesis-exposure-manifest-v1', 'sources': []})); manifest.chmod(0o600)
-        cls.anchor = register(private, request, cls.keys['prereg'][0], 'fixture-operator',
-                              exposure_manifest=manifest, campaign_export=cls.campaign / 'exports/campaign_export.zip')
         pool = base / 'pool.json'
         pool.write_bytes(canonical([t.model_dump(mode='json') for t in fresh_pool()]))
+        cls.anchor = register(private, request, cls.keys['prereg'][0], 'fixture-operator',
+                              exposure_manifest=manifest, campaign_export=cls.campaign / 'exports/campaign_export.zip',
+                              pool=pool)
+        cls.request = request
         cls.receipt = evaluate(private, digest(request), pool, cls.keys['custodian'][0], 'fixture-operator')
         cls.decision = sign({'schema': 'genesis-release-decision-v1', 'request_hash': digest(request),
                              'decision': 'RELEASE', 'receipt_hash': digest(cls.receipt)}, cls.keys['release'][0])
+        cls.rejection = sign({'schema': 'genesis-release-decision-v1', 'request_hash': digest(request),
+                              'decision': 'REJECT', 'receipt_hash': digest(cls.receipt)}, cls.keys['release'][0])
         # External trust root, owned by root and read-only.
         trust = base / 'trust'; trust.mkdir()
         (trust / 'root.pub').write_text(cls.keys['root'][1])
@@ -97,11 +101,11 @@ class SignedPhases(unittest.TestCase):
     def tearDownClass(cls):
         cls.tmp.cleanup()
 
-    def research(self, steps):
+    def research(self, steps, campaign=None):
         """Run phase advances as the unprivileged research UID; return results per step."""
         code = ('import json,sys\nfrom genesis.store import Store\nfrom genesis.kernel.phases import advance\n'
                 'steps=json.loads(sys.stdin.read());out=[]\n'
-                f'with Store({str(self.campaign)!r}) as s:\n'
+                f'with Store({str(campaign or self.campaign)!r}) as s:\n'
                 '    for target,env in steps:\n'
                 '        try:out.append(["OK",advance(s,target,envelope=env,trust_root=' + repr(str(self.trust)) + ')])\n'
                 '        except Exception as e:out.append([type(e).__name__,str(e)])\n'
@@ -121,14 +125,46 @@ class SignedPhases(unittest.TestCase):
         self.assertEqual(out[2][0], 'PhaseError')            # cannot jump to RELEASED
         self.assertEqual(out[-1], ['PHASE', 'CANDIDATE_FROZEN'])
 
-    def test_2_full_signed_path_reaches_released(self):
+    def test_2_full_signed_path_is_judged_and_a_non_supported_outcome_cannot_be_released(self):
+        # Two sealed tasks cannot reach the preregistered alpha, so the custodian signs NOT_SUPPORTED.
+        self.assertEqual(self.receipt['payload']['outcome'], 'NOT_SUPPORTED')
         out = self.research([['LEAK_SCAN_PASSED', self.anchor], ['SEALED_RUNNING', self.receipt],
-                             ['JUDGED', self.receipt], ['RELEASED', self.decision]])
-        self.assertEqual([o[0] for o in out[:4]], ['OK'] * 4, out)
-        self.assertEqual(out[-1], ['PHASE', 'RELEASED'])
+                             ['JUDGED', self.receipt], ['RELEASED', self.decision], ['REJECTED', self.rejection]])
+        self.assertEqual([o[0] for o in out[:3]], ['OK'] * 3, out)
+        self.assertEqual(out[3][0], 'PhaseError', out)
+        self.assertIn('SUPPORTED', out[3][1])
+        self.assertEqual(out[4][0], 'OK', out)
+        self.assertEqual(out[-1], ['PHASE', 'REJECTED'])
         with Store(self.campaign) as s:
             s.verify()
             self.assertEqual(s.state('phase_receipt:JUDGED'), self.receipt)
+
+    def test_4_supported_fixture_receipt_reaches_released_and_tampering_is_refused(self):
+        from tests_genesis.signed_fixtures import SignedFixture
+        fx = SignedFixture.__new__(SignedFixture); fx.keys, fx._tick = self.keys, 0
+        request = fx.request(task_count=40)
+        anchor = fx.anchor(request)
+        receipt = fx.receipt(request, anchor, wins=30, losses=5, ties=5)
+        lying = fx.sign(dict(fx.receipt_payload(request, anchor, wins=5, losses=30, ties=5), outcome='SUPPORTED'),
+                        'custodian')
+        other_panel = fx.receipt(request, anchor, panel_commitment='7' * 64)
+        decision = sign({'schema': 'genesis-release-decision-v1', 'request_hash': digest(request),
+                         'decision': 'RELEASE', 'receipt_hash': digest(receipt)}, self.keys['release'][0])
+        root = Path(self.tmp.name) / 'fixture_campaign'
+        with Store(root) as s:
+            s.set_state('phase', 'CANDIDATE_FROZEN'); s.set_state('frozen_request_hash', digest(request))
+        for dirpath, _, files in os.walk(root):
+            os.chown(dirpath, NOBODY, NOBODY)
+            for f in files:
+                os.chown(os.path.join(dirpath, f), NOBODY, NOBODY)
+        out = self.research([['LEAK_SCAN_PASSED', anchor], ['SEALED_RUNNING', lying],
+                             ['SEALED_RUNNING', other_panel], ['SEALED_RUNNING', receipt], ['JUDGED', receipt],
+                             ['RELEASED', decision]], campaign=root)
+        self.assertEqual(out[0][0], 'OK', out)
+        self.assertEqual(out[1][0], 'PhaseError'); self.assertIn('contradicts', out[1][1])
+        self.assertEqual(out[2][0], 'PhaseError'); self.assertIn('panel', out[2][1])
+        self.assertEqual([o[0] for o in out[3:6]], ['OK'] * 3, out)
+        self.assertEqual(out[-1], ['PHASE', 'RELEASED'])
 
     def test_3_root_research_process_cannot_advance(self):
         root = Path(self.tmp.name) / 'copy'

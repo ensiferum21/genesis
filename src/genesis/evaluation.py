@@ -3,10 +3,7 @@ from collections import defaultdict
 from math import comb
 
 
-def sign_test(wins,losses):
-    if type(wins) is not int or type(losses) is not int or min(wins,losses)<0:raise ValueError('counts')
-    n=wins+losses
-    return sum(comb(n,k) for k in range(wins,n+1))/2**n if n else 1.0
+from .kernel.stats import sign_test  # noqa: E402,F401  (trusted copy lives in the kernel)
 
 
 def paired(rows):

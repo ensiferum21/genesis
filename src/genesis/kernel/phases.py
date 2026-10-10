@@ -11,6 +11,7 @@ cannot skip a gate. ABORTED and INVALIDATED only lower what may be claimed,
 so they need a recorded reason but no signature.
 """
 from ..common import digest
+from . import receipts as R
 from .roles import load_role_registry
 from .signing import verify
 
@@ -33,18 +34,25 @@ class PhaseError(ValueError):
 
 
 def _check_payload(store, target, payload, envelope):
+    """Same receipt semantics as the evidence kernel and preflight (kernel.receipts)."""
     request_hash = store.state('frozen_request_hash')
     if not request_hash:
         raise PhaseError('no frozen evaluation request recorded for this campaign')
-    if payload.get('request_hash') != request_hash:
+    if not isinstance(payload, dict) or payload.get('request_hash') != request_hash:
         raise PhaseError('receipt is bound to a different evaluation request')
     if target == 'LEAK_SCAN_PASSED':
-        if payload.get('schema') != 'genesis-prereg-anchor-v2' or not payload.get('exposure_registry_root'):
-            raise PhaseError('LEAK_SCAN_PASSED needs a custodian registration anchor with an exposure registry root')
+        problems = R.check_anchor(payload)
+        if problems:
+            raise PhaseError('LEAK_SCAN_PASSED needs a custodian registration anchor with an exposure registry '
+                             'root and a panel commitment: ' + '; '.join(problems))
     elif target == 'SEALED_RUNNING':
         anchor = store.state('phase_receipt:LEAK_SCAN_PASSED')
-        if payload.get('schema') != 'genesis-evaluation-receipt-v1' or payload.get('anchor_hash') != digest(anchor):
-            raise PhaseError('sealed receipt does not reference the registered anchor')
+        problems = R.check_receipt(payload, payload.get('evidence_kind'))
+        if problems:
+            raise PhaseError('sealed receipt schema: ' + '; '.join(problems[:3]))
+        problems = R.anchor_mismatches(payload, anchor['payload'], anchor)
+        if problems:
+            raise PhaseError('sealed receipt does not reference the registered anchor: ' + '; '.join(problems))
     elif target == 'JUDGED':
         if payload.get('raw_evidence_complete') is not True or payload.get('completed_rows') != payload.get('expected_rows'):
             raise PhaseError('judgement needs complete raw evidence')
@@ -57,6 +65,8 @@ def _check_payload(store, target, payload, envelope):
             raise PhaseError(f'{target} needs a signed {decision} decision')
         if payload.get('receipt_hash') != digest(receipt):
             raise PhaseError('release decision does not reference the judged receipt')
+        if target == 'RELEASED' and receipt['payload'].get('outcome') != 'SUPPORTED':
+            raise PhaseError('a release needs a judged receipt whose signed outcome is SUPPORTED')
 
 
 def advance(store, target, *, envelope=None, reason=None, trust_root=None):

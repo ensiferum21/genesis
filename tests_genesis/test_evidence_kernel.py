@@ -12,7 +12,8 @@ from cryptography.hazmat.primitives.asymmetric.ed25519 import Ed25519PrivateKey
 from cryptography.hazmat.primitives import serialization
 
 from genesis.kernel.evidence import EvidenceKernel, PromotionRejected
-from genesis.kernel.signing import sign
+from genesis.kernel.receipts import binding_from_requests
+from tests_genesis.signed_fixtures import SignedFixture, record_evaluation
 from genesis.kernel.wording import lint, require_clean
 from genesis.store import Store
 
@@ -95,58 +96,71 @@ class MathPromotion(Base):
 
 
 class Confirmation(Base):
+    """Confirmation levels need receipts signed by the role trusted code assigns (kernel.receipts)."""
+
     def setUp(self):
         super().setUp()
-        k = Ed25519PrivateKey.generate()
-        self.keyfile = Path(self.tmp.name) / 'custodian.pem'
-        self.keyfile.write_bytes(k.private_bytes(serialization.Encoding.PEM, serialization.PrivateFormat.PKCS8,
-                                                 serialization.NoEncryption()))
-        pub = base64.b64encode(k.public_key().public_bytes(serialization.Encoding.Raw,
-                                                           serialization.PublicFormat.Raw)).decode()
-        self.registry = {'pins': {'custodian_key': pub, 'prereg_key': 'p', 'auditor_key': 'q',
-                                  'release_authority_id': 'board'}}
+        self.fx = SignedFixture(self.tmp.name)
+        self.k = EvidenceKernel.with_fixture_registry(self.store, self.fx.registry,
+                                                      anchors={ANCHOR_IMPL: 'pinned fixture checker'})
 
-    def sealed(self, signed=True, route='genesis.custodian.evaluate', source=SRC, effects=()):
-        payload = {'signing_role': 'custodian_key',
-                   'signed_envelope': sign({'wins': 40, 'losses': 5}, self.keyfile) if signed else None}
-        return self.k.record('sealed_evaluation', payload, parents=[self.run], route=route, source_hash=source,
-                             verdict='SUPPORTED', verifier='dual-predicates', effects=effects)
+    def sealed(self, request=None, route='genesis.custodian.evaluate', effects=(), **kw):
+        request = request or self.fx.request()
+        _, node = record_evaluation(self.k, self.fx, request, [self.run], route=route, **kw)
+        return node, request
 
     def test_no_external_role_registry_means_no_confirmation(self):
-        node = self.sealed()
-        self.k.create_claim('c', 'better solver', 'graph wedge', [node])
-        self.rejects('c', 'utility', 'CONFIRMED_SAME_DOMAIN', 'externally pinned role')
+        node, request = self.sealed()
+        production = EvidenceKernel(self.store)  # trust root absent / research account is root here
+        production.create_claim('claim-1', 'better solver', 'graph wedge', [node],
+                                binding=binding_from_requests([request]))
+        with self.assertRaises(PromotionRejected) as ctx:
+            production.promote('claim-1', 'utility', 'CONFIRMED_SAME_DOMAIN')
+        self.assertTrue(any('role registry' in r for r in ctx.exception.args[0]))
 
     def test_externally_signed_eligible_evaluation_confirms(self):
-        self.k._load_roles = lambda: (self.registry, [])
-        node = self.sealed()
-        self.k.create_claim('c', 'better solver', 'graph wedge', [node])
-        self.k.promote('c', 'utility', 'CONFIRMED_SAME_DOMAIN')
+        node, request = self.sealed()
+        self.k.create_claim('claim-1', 'better solver', 'graph wedge', [node], binding=binding_from_requests([request]))
+        decision = self.k.promote('claim-1', 'utility', 'CONFIRMED_SAME_DOMAIN')
+        self.assertEqual(decision['registry'], 'FIXTURE')
+        self.assertEqual(len(decision['evaluations']), 1)
 
-    def test_ineligible_route_revoked_source_and_contamination_rejected(self):
-        self.k._load_roles = lambda: (self.registry, [])
-        for name, node, fragment in (
-                ('route', self.sealed(route='genesis.campaign'), 'ineligible'),
-                ('legacy', self.sealed(route='legacy_batch42.sealed_benchmark'), 'ineligible'),
-                ('revoked', self.sealed(source='fb81f1f00e2044a9c77e958c382f8bcdf4af44fb9e4f37050f5a1571732d43b8'),
-                 'revoked source'),
-                ('leak', self.sealed(effects=['TOUCHED_SEALED_SET']), 'contaminated'),
-                ('unsigned', self.sealed(signed=False), 'externally pinned role')):
-            self.k.create_claim(name, 'x', 's', [node])
+    def test_ineligible_route_revoked_source_and_unbound_claims_rejected(self):
+        for name, route, fragment in (('route', 'genesis.campaign', 'ineligible'),
+                                      ('legacy', 'legacy_batch42.sealed_benchmark', 'ineligible')):
+            request = self.fx.request(claim_id=name)
+            node, _ = self.sealed(request, route=route)
+            self.k.create_claim(name, 'x', 's', [node], binding=binding_from_requests([request]))
             self.rejects(name, 'utility', 'CONFIRMED_SAME_DOMAIN', fragment)
+        request = self.fx.request(claim_id='nobinding')
+        node, _ = self.sealed(request)
+        self.k.create_claim('nobinding', 'x', 's', [node])
+        self.rejects('nobinding', 'utility', 'CONFIRMED_SAME_DOMAIN', 'bound to its preregistered')
+
+    def test_contaminated_dependency_rejected(self):
+        leak = self.k.record('note', {'leak': True}, route='genesis.campaign', source_hash=SRC,
+                             effects=['TOUCHED_SEALED_SET'])
+        request = self.fx.request(claim_id='leak')
+        _, node = record_evaluation(self.k, self.fx, request, [self.run, leak])
+        self.k.create_claim('leak', 'x', 's', [node], binding=binding_from_requests([request]))
+        self.rejects('leak', 'utility', 'CONFIRMED_SAME_DOMAIN', 'contaminated')
 
     def test_multigeneration_needs_three_signed_generations_and_no_manual_rescue(self):
-        self.k._load_roles = lambda: (self.registry, [])
-        gens = [self.k.record('sealed_generation_evaluation',
-                              {'signing_role': 'custodian_key', 'signed_envelope': sign({'g': i}, self.keyfile)},
-                              parents=[self.run], route='genesis.custodian.evaluate', source_hash=SRC,
-                              verdict='SUPPORTED', verifier='dual-predicates') for i in range(2)]
-        self.k.create_claim('two', 'multigen', 's', gens)
-        self.rejects('two', 'improver', 'MULTIGEN_CONFIRMED', 'needs 3')
+        versions = ['1' * 64, '2' * 64, '3' * 64, '4' * 64]
+        requests = [self.fx.request(claim_id='multigen', kind='sealed_generation_evaluation', candidate=versions[i + 1],
+                                    transition={'index': i + 1, 'from_version': versions[i],
+                                                'to_version': versions[i + 1]}, seed=i)
+                    for i in range(3)]
+        nodes = [record_evaluation(self.k, self.fx, r, [self.run])[1] for r in requests]
+        binding = binding_from_requests(requests)
+        self.k.create_claim('multigen', 'multigen', 's', nodes, binding=binding)
+        self.k.promote('multigen', 'improver', 'MULTIGEN_CONFIRMED')
         manual = self.k.record('note', {'rescue': True}, route='genesis.campaign', source_hash=SRC,
                                effects=['MANUAL_INTERVENTION'])
-        self.k.create_claim('manual', 'multigen', 's', gens + [manual])
-        self.rejects('manual', 'improver', 'MULTIGEN_CONFIRMED', 'manual intervention')
+        self.k.create_claim('rescued', 'multigen', 's', nodes + [manual], binding=binding)
+        self.rejects('rescued', 'improver', 'MULTIGEN_CONFIRMED', 'manual intervention')
+        self.k.create_claim('two', 'multigen', 's', nodes[:2], binding=binding_from_requests(requests[:2]))
+        self.rejects('two', 'improver', 'MULTIGEN_CONFIRMED', 'needs 3 consecutive')
 
 
 class Revocation(Base):

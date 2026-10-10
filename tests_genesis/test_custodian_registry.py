@@ -67,13 +67,18 @@ class Fixture(unittest.TestCase):
 
     def request(self, export, declared=(), task_count=2, campaign='a'):
         source = code_identity(REPO)['sha256']
-        return {'schema': 'genesis-evaluation-request-v2', 'campaign_id': campaign * 64, 'candidate_version': 'b' * 64,
+        return {'schema': 'genesis-evaluation-request-v3', 'campaign_id': campaign * 64, 'candidate_version': 'b' * 64,
+                'claim_id': f'utility-{campaign}', 'evidence_kind': 'sealed_evaluation',
+                'generation_transition': None, 'transfer_source_domain': None,
                 'campaign_export_sha256': bytes_hash(export.read_bytes()),
                 'source_hash': source, 'programs': {'baseline': SolverProgram().model_dump(mode='json'),
                                                     'candidate': SolverProgram(weights=(0, 0, 0, 1)).model_dump(mode='json')},
                 'limits': Limits().model_dump(mode='json'), 'seed': 42, 'task_count': task_count, 'domain': 'c4_host_v2',
                 'analysis': {'primary': 'paired-edge-count', 'alpha': .05, 'family_sensitivity': True, 'hypotheses': 1},
                 'exposed_graph_fingerprints': list(declared), 'expected_evaluator_hash': source}
+
+    def default_pool(self):
+        return self.pool(self.fresh_tasks(2), 'default_pool.json')
 
     def pool(self, tasks, name='pool.json'):
         path = self.base / name
@@ -92,15 +97,15 @@ class ExposureDeclaration(Fixture):
         export = self.export_with([visible])
         with self.assertRaisesRegex(ValueError, 'omits 1 host'):
             register(self.root, self.request(export, declared=[]), self.key, 'fixture',
-                     exposure_manifest=self.manifest, campaign_export=export)
+                     exposure_manifest=self.manifest, campaign_export=export, pool=self.default_pool())
 
     def test_complete_declaration_is_accepted(self):
         visible = as_task(legacy_hosts()[3], 'dev-visible', split='DEV')
         export = self.export_with([visible])
         anchor = register(self.root, self.request(export, declared=[canonical_graph(visible)]), self.key, 'fixture',
-                          exposure_manifest=self.manifest, campaign_export=export)
+                          exposure_manifest=self.manifest, campaign_export=export, pool=self.default_pool())
         payload = verify(anchor, self.public)
-        self.assertEqual(payload['schema'], 'genesis-prereg-anchor-v2')
+        self.assertEqual(payload['schema'], 'genesis-prereg-anchor-v3')
         self.assertGreater(payload['exposure_graphs'], 0)
 
     def test_export_binding_mismatch_rejected(self):
@@ -108,7 +113,8 @@ class ExposureDeclaration(Fixture):
         request = self.request(export)
         other = self.export_with(self.fresh_tasks(1), name='other.zip')
         with self.assertRaisesRegex(ValueError, 'does not match'):
-            register(self.root, request, self.key, 'fixture', exposure_manifest=self.manifest, campaign_export=other)
+            register(self.root, request, self.key, 'fixture', exposure_manifest=self.manifest, campaign_export=other,
+                     pool=self.default_pool())
 
     def test_v1_request_refused(self):
         export = self.export_with([])
@@ -116,21 +122,22 @@ class ExposureDeclaration(Fixture):
         request['schema'] = 'genesis-evaluation-request-v1'
         del request['campaign_export_sha256']
         with self.assertRaisesRegex(ValueError, 'schema'):
-            register(self.root, request, self.key, 'fixture', exposure_manifest=self.manifest, campaign_export=export)
+            register(self.root, request, self.key, 'fixture', exposure_manifest=self.manifest, campaign_export=export,
+                     pool=self.default_pool())
 
     def test_missing_manifest_source_fails_closed(self):
         self.write_manifest([{'kind': 'campaign_store', 'path': 'public_runs/not_here'}])
         export = self.export_with([])
         with self.assertRaises((ValueError, FileNotFoundError)):
             register(self.root, self.request(export), self.key, 'fixture', exposure_manifest=self.manifest,
-                     campaign_export=export)
+                     campaign_export=export, pool=self.default_pool())
 
     def test_manifest_writable_by_others_rejected(self):
         self.manifest.chmod(0o666)
         export = self.export_with([])
         with self.assertRaisesRegex(ValueError, 'custodian-owned'):
             register(self.root, self.request(export), self.key, 'fixture', exposure_manifest=self.manifest,
-                     campaign_export=export)
+                     campaign_export=export, pool=self.default_pool())
 
 
 class PanelScreening(Fixture):
@@ -142,9 +149,11 @@ class PanelScreening(Fixture):
         tasks = [reused, self.fresh_tasks(1)[0]]
         export = self.export_with([])
         request = self.request(export)
-        register(self.root, request, self.key, 'fixture', exposure_manifest=self.manifest, campaign_export=export)
+        pool = self.pool(tasks)
+        register(self.root, request, self.key, 'fixture', exposure_manifest=self.manifest, campaign_export=export,
+                 pool=pool)
         with self.assertRaisesRegex(ValueError, 'research-visible exposure'):
-            evaluate(self.root, digest(request), self.pool(tasks), self.key, 'fixture')
+            evaluate(self.root, digest(request), pool, self.key, 'fixture')
 
     def test_near_duplicate_requires_adjudication(self):
         case = legacy_hosts()[7]
@@ -154,8 +163,9 @@ class PanelScreening(Fixture):
         tasks = [near, self.fresh_tasks(1)[0]]
         export = self.export_with([])
         request = self.request(export)
-        register(self.root, request, self.key, 'fixture', exposure_manifest=self.manifest, campaign_export=export)
         pool = self.pool(tasks)
+        register(self.root, request, self.key, 'fixture', exposure_manifest=self.manifest, campaign_export=export,
+                 pool=pool)
         with self.assertRaisesRegex(ValueError, 'requires adjudication'):
             evaluate(self.root, digest(request), pool, self.key, 'fixture')
         adjudicate(self.root, near, 'ALLOW', self.key, 'fixture', 'reviewed: distinct optimum structure')
@@ -166,22 +176,28 @@ class PanelScreening(Fixture):
         tasks = self.fresh_tasks(2)
         export = self.export_with([])
         first = self.request(export)
-        register(self.root, first, self.key, 'fixture', exposure_manifest=self.manifest, campaign_export=export)
-        evaluate(self.root, digest(first), self.pool(tasks), self.key, 'fixture')
+        pool = self.pool(tasks)
+        register(self.root, first, self.key, 'fixture', exposure_manifest=self.manifest, campaign_export=export,
+                 pool=pool)
+        evaluate(self.root, digest(first), pool, self.key, 'fixture')
         second = self.request(export, campaign='c')
-        register(self.root, second, self.key, 'fixture', exposure_manifest=self.manifest, campaign_export=export)
         changed = [relabel(t, tuple(reversed(range(t.n)))) for t in tasks]
+        pool2 = self.pool(changed, 'pool2.json')
+        register(self.root, second, self.key, 'fixture', exposure_manifest=self.manifest, campaign_export=export,
+                 pool=pool2)
         with self.assertRaisesRegex(ValueError, 'already consumed'):
-            evaluate(self.root, digest(second), self.pool(changed, 'pool2.json'), self.key, 'fixture')
+            evaluate(self.root, digest(second), pool2, self.key, 'fixture')
 
     def test_isomorphic_duplicates_inside_a_panel_rejected(self):
         t = self.fresh_tasks(1)[0]
         dup = relabel(t, tuple(reversed(range(t.n)))).model_copy(update={'task_id': 'confirm-dup'})
         export = self.export_with([])
         request = self.request(export)
-        register(self.root, request, self.key, 'fixture', exposure_manifest=self.manifest, campaign_export=export)
+        pool = self.pool([t, dup])
+        register(self.root, request, self.key, 'fixture', exposure_manifest=self.manifest, campaign_export=export,
+                 pool=pool)
         with self.assertRaisesRegex(ValueError, 'isomorphic duplicates'):
-            evaluate(self.root, digest(request), self.pool([t, dup]), self.key, 'fixture')
+            evaluate(self.root, digest(request), pool, self.key, 'fixture')
 
 
 class RegistryReproducesAudit(unittest.TestCase):
@@ -213,8 +229,9 @@ class EndToEndDeclaration(Fixture):
             path = request_bundle(c, 3)
         request = load_json(path)
         export = root / 'exports' / 'campaign_export.zip'
+        pool = self.pool(self.fresh_tasks(3), 'e2e_pool.json')
         anchor = register(self.root, request, self.key, 'fixture', exposure_manifest=self.manifest,
-                          campaign_export=export)
+                          campaign_export=export, pool=pool)
         self.assertEqual(verify(anchor, self.public)['request_hash'], digest(request))
 
 
@@ -223,8 +240,10 @@ class ResearchScreening(Fixture):
         tasks = self.fresh_tasks(2)
         export = self.export_with([])
         request = self.request(export)
-        register(self.root, request, self.key, 'fixture', exposure_manifest=self.manifest, campaign_export=export)
-        evaluate(self.root, digest(request), self.pool(tasks), self.key, 'fixture')
+        pool = self.pool(tasks)
+        register(self.root, request, self.key, 'fixture', exposure_manifest=self.manifest, campaign_export=export,
+                 pool=pool)
+        evaluate(self.root, digest(request), pool, self.key, 'fixture')
         from genesis.custodian import screen_for_research
         moved = relabel(tasks[0], tuple(reversed(range(tasks[0].n))))
         (self.root / 'sealed_statements').mkdir()

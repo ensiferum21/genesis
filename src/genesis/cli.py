@@ -11,7 +11,8 @@ from .formal import doctor,export_witness
 from .dsl import baseline_programs
 
 
-def request_bundle(campaign,task_count=300):
+def request_bundle(campaign,task_count=300,*,claim_id=None,evidence_kind='sealed_evaluation',
+                   generation_transition=None,transfer_source_domain=None):
     campaign._check_frozen_environment()
     s=campaign.store;program=s.state('latest_program')
     if program is None or s.state('phase')!='CANDIDATE_FROZEN':raise ValueError('completed frozen candidate required')
@@ -22,9 +23,12 @@ def request_bundle(campaign,task_count=300):
     export=campaign.root/'exports/campaign_export.zip'
     if not export.exists():export_replication(campaign.root,export,store=s)
     from .common import bytes_hash
-    request={'schema':'genesis-evaluation-request-v2','campaign_id':s.state('campaign_id'),
+    candidate_version=digest(version)
+    request={'schema':'genesis-evaluation-request-v3','campaign_id':s.state('campaign_id'),
+        'claim_id':claim_id or f'utility:{candidate_version[:16]}','evidence_kind':evidence_kind,
+        'generation_transition':generation_transition,'transfer_source_domain':transfer_source_domain,
         'campaign_export_sha256':bytes_hash(export.read_bytes()),
-        'candidate_version':digest(version),'source_hash':source,
+        'candidate_version':candidate_version,'source_hash':source,
         'programs':{'baseline':baseline_programs()[strongest_name].model_dump(mode='json'),'candidate':program,
                     'exchange':baseline_programs()['exchange'].model_dump(mode='json'),
                     'low_cycle':baseline_programs()['low_cycle'].model_dump(mode='json')},

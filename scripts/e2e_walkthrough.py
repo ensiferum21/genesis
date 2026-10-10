@@ -111,16 +111,17 @@ def main(out_dir):
     reference = json.loads((ROOT / 'custody_reference' / 'public_exposure_manifest.json').read_text())
     reference['sources'] = [s for s in reference['sources'] if s['kind'] != 'campaign_store']
     manifest.write_text(json.dumps(reference)); manifest.chmod(0o600)
-    anchor = register(private, request, keys['prereg'][0], 'FIXTURE_OPERATOR_NOT_INDEPENDENT',
-                      exposure_manifest=manifest, campaign_export=campaign / 'exports' / 'campaign_export.zip')
-    step(11, 'leak scan / registration (custodian-built exposure registry)',
-         exposure_graphs=anchor['payload']['exposure_graphs'], roles='FIXTURE')
     pool_tasks, _ = make_hard_panel(int.from_bytes(os.urandom(4), 'big'), 3, 'c4_host_v2', 'CONFIRM', certify_seconds=60)
     pool = private / 'pool.json'; pool.write_bytes(canonical([t.model_dump(mode='json') for t in pool_tasks]))
+    anchor = register(private, request, keys['prereg'][0], 'FIXTURE_OPERATOR_NOT_INDEPENDENT',
+                      exposure_manifest=manifest, campaign_export=campaign / 'exports' / 'campaign_export.zip',
+                      pool=pool)
+    step(11, 'leak scan / registration (custodian-built exposure registry, salted panel commitment)',
+         exposure_graphs=anchor['payload']['exposure_graphs'], roles='FIXTURE')
     receipt = evaluate(private, digest(request), pool, keys['custodian'][0], 'FIXTURE_OPERATOR_NOT_INDEPENDENT')
     p = receipt['payload']
     step(12, 'execute sealed panel (fixture operator, hard CONFIRM hosts, SAT-certified optima)',
-         rows=p['completed_rows'], wins=p['wins'], losses=p['losses'], ties=p['ties'])
+         rows=p['completed_rows'], wins=p['wins'], losses=p['losses'], ties=p['ties'], outcome=p['outcome'])
     trust = out / 'fixture_trust'; trust.mkdir()
     (trust / 'root.pub').write_text(keys['root'][1])
     roles = {'custodian_key': keys['custodian'][1], 'prereg_key': keys['prereg'][1], 'auditor_key': keys['auditor'][1],

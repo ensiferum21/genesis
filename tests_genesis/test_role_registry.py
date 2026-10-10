@@ -22,8 +22,7 @@ from cryptography.hazmat.primitives import serialization
 
 from genesis.common import canonical, digest
 from genesis.custodian import release_preflight, sign, load_role_registry
-from genesis.evaluation import sign_test
-from genesis.models import Limits, SolverProgram
+from tests_genesis.signed_fixtures import SignedFixture
 
 SRC = Path(__file__).resolve().parents[1] / 'src'
 NOBODY = 65534
@@ -40,23 +39,14 @@ def keypair(directory, name):
 
 
 def fabricated_release(keys):
-    """A fully self-consistent signed bundle, as the audit's attacker built."""
-    request = {'schema': 'genesis-evaluation-request-v2', 'campaign_id': 'a' * 64, 'candidate_version': 'b' * 64,
-               'campaign_export_sha256': 'e' * 64, 'source_hash': 'c' * 64,
-               'programs': {'baseline': SolverProgram().model_dump(mode='json'),
-                            'candidate': SolverProgram(weights=(0, 0, 0, 1)).model_dump(mode='json')},
-               'limits': Limits().model_dump(mode='json'), 'seed': 1, 'task_count': 300, 'domain': 'c4_host_v2',
-               'analysis': {'primary': 'paired-edge-count', 'alpha': 0.05, 'family_sensitivity': True, 'hypotheses': 1},
-               'exposed_graph_fingerprints': [], 'expected_evaluator_hash': 'c' * 64}
-    rid = digest(request)
-    anchor = sign({'request_hash': rid, 'registered_at': '2026-10-10T00:00:00+00:00'}, keys['prereg'][0])
-    receipt = sign({'request_hash': rid, 'anchor_hash': digest(anchor), 'candidate_version': 'b' * 64,
-                    'evaluator_hash': 'c' * 64, 'completed_rows': 600, 'expected_rows': 600,
-                    'raw_evidence_complete': True, 'wins': 300, 'losses': 0, 'ties': 0,
-                    'paired_p': sign_test(300, 0), 'family_p': 0.001,
-                    'completed_at': '2026-10-11T00:00:00+00:00', 'execution_failures': 0}, keys['custodian'][0])
-    audit = sign({'request_hash': rid, 'receipt_hash': digest(receipt), 'status': 'PASS', 'open_critical': 0,
-                  'independent_operation_verified': True, 'raw_replay_verified': True,
+    """A fully self-consistent signed bundle, as the audit's attacker built (current schemas)."""
+    fx = SignedFixture.__new__(SignedFixture)
+    fx.keys, fx._tick = keys, 0
+    request = fx.request(task_count=300)
+    anchor = fx.anchor(request)
+    receipt = fx.receipt(request, anchor, wins=300, losses=0, ties=0, family_p=0.001)
+    audit = sign({'request_hash': digest(request), 'receipt_hash': digest(receipt), 'status': 'PASS',
+                  'open_critical': 0, 'independent_operation_verified': True, 'raw_replay_verified': True,
                   'formal_replay_verified': True}, keys['auditor'][0])
     return request, anchor, receipt, audit
 

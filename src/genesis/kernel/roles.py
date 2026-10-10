@@ -13,6 +13,8 @@ from .signing import verify
 TRUST_ROOT_ENV='GENESIS_TRUST_ROOT'
 DEFAULT_TRUST_ROOT='/etc/genesis-trust'
 ROLE_FIELDS={'custodian_key','prereg_key','auditor_key','release_key','release_authority_id'}
+# Registry v2 may additionally pin these; a kind whose role is not pinned can never be accepted.
+OPTIONAL_ROLE_FIELDS={'replicator_key','priority_reviewer_key'}
 
 
 def _externally_controlled(path,euid):
@@ -40,11 +42,16 @@ def load_role_registry(trust_root=None):
         roles=verify(load_json(trust_root/'roles.json'),root_key)
     except Exception as exc:
         return None,['role registry signature invalid: '+type(exc).__name__]
-    if not isinstance(roles,dict) or roles.get('schema')!='genesis-role-registry-v1' or set(roles.get('roles',{}))!=ROLE_FIELDS:
+    if not isinstance(roles,dict) or not isinstance(roles.get('roles'),dict):
+        return None,['role registry schema']
+    fields=set(roles['roles'])
+    if not ((roles.get('schema')=='genesis-role-registry-v1' and fields==ROLE_FIELDS) or
+            (roles.get('schema')=='genesis-role-registry-v2' and ROLE_FIELDS<=fields<=ROLE_FIELDS|OPTIONAL_ROLE_FIELDS)):
         return None,['role registry schema']
     pins=roles['roles']
-    keys=[pins['custodian_key'],pins['prereg_key'],pins['auditor_key'],pins['release_key']]
-    if not pins['release_authority_id'] or len(set(keys))<4 or root_key in keys:
+    keys=[pins[k] for k in sorted(fields) if k.endswith('_key')]
+    if not pins['release_authority_id'] or len(set(keys))<len(keys) or root_key in keys \
+            or not all(isinstance(k,str) and k for k in keys):
         return None,['independent role identities required (distinct keys, root key not a role key)']
     return {'pins':pins,'root_key_sha256':bytes_hash(root_key.encode()),'trust_root':str(trust_root)},[]
 

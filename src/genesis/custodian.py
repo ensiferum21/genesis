@@ -18,11 +18,12 @@ from .evaluation import paired,sign_test
 
 
 from .kernel.signing import sign,verify  # re-exported for existing callers
+from .kernel import receipts as R
 
 
 REQUEST_FIELDS={'schema','campaign_id','candidate_version','source_hash','programs','limits','seed',
                 'task_count','domain','analysis','exposed_graph_fingerprints','expected_evaluator_hash',
-                'campaign_export_sha256'}
+                'campaign_export_sha256','claim_id','evidence_kind','generation_transition','transfer_source_domain'}
 
 
 def _hex64(h):
@@ -30,13 +31,16 @@ def _hex64(h):
 
 
 def validate_request(request):
-    """Schema v2 binds the request to the campaign's public export bundle.
+    """Schema v3 binds the request to the campaign's public export bundle and to
+    one claim and evidence kind (roadmap R-01).
 
-    v1 requests (no export binding) are refused: the custodian must be able to
-    derive the campaign's exposure from raw data rather than trust a list.
+    v1/v2 requests are refused: v1 had no export binding; v2 named no claim, so
+    its receipt could be presented as support for any claim.
     """
-    if not isinstance(request,dict) or set(request)!=REQUEST_FIELDS or request['schema']!='genesis-evaluation-request-v2':
+    if not isinstance(request,dict) or set(request)!=REQUEST_FIELDS or request['schema']!=R.REQUEST:
         raise ValueError('evaluation request schema')
+    problems=R.check_request(request)
+    if problems:raise ValueError('evaluation request binding: '+'; '.join(problems))
     for key in ('campaign_id','candidate_version','source_hash','expected_evaluator_hash','campaign_export_sha256'):
         if not _hex64(request[key]):raise ValueError('hash field')
     if not isinstance(request['programs'],dict) or not {'baseline','candidate'}<=set(request['programs']) or len(request['programs'])>5:
@@ -46,8 +50,8 @@ def validate_request(request):
     Limits.model_validate_json(canonical(request['limits']))
     if type(request['seed']) is not int or type(request['task_count']) is not int or not 1<=request['task_count']<=10000:
         raise ValueError('task count or seed')
-    if request['domain'] not in ('c4_host_v2','triangle_free_host_v1'):raise ValueError('domain')
-    if request['analysis']!={'primary':'paired-edge-count','alpha':0.05,'family_sensitivity':True,'hypotheses':1}:
+    if request['domain'] not in R.DOMAINS:raise ValueError('domain')
+    if request['analysis']!=R.ANALYSIS_V1:
         raise ValueError('unsupported preregistered analysis')
     if not isinstance(request['exposed_graph_fingerprints'],list):raise ValueError('exposure list')
     for h in request['exposed_graph_fingerprints']:
@@ -70,7 +74,9 @@ CREATE TABLE IF NOT EXISTS registry_builds(request_id TEXT PRIMARY KEY, record B
 CREATE TABLE IF NOT EXISTS reservations(id INTEGER PRIMARY KEY, n INTEGER NOT NULL, edges TEXT NOT NULL,
                                         request_id TEXT NOT NULL);
 CREATE TABLE IF NOT EXISTS adjudications(graph TEXT PRIMARY KEY, decision TEXT NOT NULL, record BLOB NOT NULL);
-CREATE TABLE IF NOT EXISTS exposure_digests(graph_hash TEXT PRIMARY KEY, request_id TEXT NOT NULL);'''
+CREATE TABLE IF NOT EXISTS exposure_digests(graph_hash TEXT PRIMARY KEY, request_id TEXT NOT NULL);
+CREATE TABLE IF NOT EXISTS panels(request_id TEXT PRIMARY KEY, pool_hash TEXT NOT NULL, salt TEXT NOT NULL,
+                                  commitment TEXT NOT NULL);'''
 
 
 def _open_custody(root):
@@ -87,17 +93,30 @@ def _registry_from_db(db):
     return index
 
 
-def register(private_root,request,key_path,operator_id,*,exposure_manifest,campaign_export):
+def _load_pool(pool_path):
+    pool=load_json(pool_path)
+    if not isinstance(pool,list) or not pool:raise ValueError('pool must be a non-empty task list')
+    tasks=[GraphTask.model_validate_json(canonical(t)) for t in pool]
+    return pool,tasks
+
+
+def register(private_root,request,key_path,operator_id,*,exposure_manifest,campaign_export,pool):
     """Run before outcome exposure. Signed time is an operator attestation,
     not an independent public timestamp service or proof of independence.
 
     The custodian rebuilds the exposure registry itself from its own manifest of
     public sources plus the requesting campaign's export bundle. A declaration
-    that omits any host present in that export is rejected.
+    that omits any host present in that export is rejected. The sealed panel is
+    fixed now: the anchor carries a salted commitment to it, and `evaluate`
+    refuses any other pool.
     """
     from .exposure import build_registry,campaign_hosts
     from .graphs import SearchLimit
     root=_private_root(private_root);validate_request(request);rid=digest(request)
+    pool_data,pool_tasks=_load_pool(pool)
+    if len(pool_tasks)!=request['task_count']:raise ValueError('pool size differs from the preregistered task count')
+    salt=os.urandom(32).hex();pool_hash=digest(pool_data)
+    commitment=digest({'schema':'genesis-panel-commitment-v1','pool':pool_hash,'salt':salt})
     export=Path(campaign_export)
     if bytes_hash(export.read_bytes())!=request['campaign_export_sha256']:
         raise ValueError('campaign export does not match the request binding')
@@ -120,14 +139,19 @@ def register(private_root,request,key_path,operator_id,*,exposure_manifest,campa
         raise ValueError(f'exposure declaration omits {omitted} host graphs present in the campaign export')
     db=_open_custody(root)
     try:
-        payload={'schema':'genesis-prereg-anchor-v2','request_hash':rid,'registered_at':utcnow(),
+        payload={'schema':R.PREREG_ANCHOR,'request_hash':rid,'claim_id':request['claim_id'],
+                 'evidence_kind':request['evidence_kind'],'registered_at':utcnow(),
                  'operator_id':operator_id,'exposure_registry_root':record['root'],
-                 'exposure_graphs':record['graphs'],'declaration_unscreenable_graphs':unscreenable}
+                 'exposure_graphs':record['graphs'],'declaration_unscreenable_graphs':unscreenable,
+                 'panel_commitment':commitment}
+        problems=R.check_anchor(payload)
+        if problems:raise RuntimeError('custodian built an invalid anchor: '+'; '.join(problems))
         anchor=sign(payload,key_path)
         with db:
             db.execute('BEGIN IMMEDIATE')
             db.execute('INSERT INTO requests VALUES (?,?,?,?)',(rid,canonical(request),canonical(anchor),'REGISTERED'))
             db.execute('INSERT INTO registry_builds VALUES (?,?)',(rid,canonical(record)))
+            db.execute('INSERT INTO panels VALUES (?,?,?,?)',(rid,pool_hash,salt,commitment))
             known=_registry_from_db(db)
             rows=[(k,json.dumps([list(e) for e in es]),source,rid) for k,es,source in index.items()
                   if known.find(k,es) is None]
@@ -212,9 +236,12 @@ def evaluate(private_root,request_id,pool_path,key_path,operator_id):
         if row[2]!='REGISTERED':raise FileExistsError('evaluation already consumed; no automatic retry')
         identity=code_identity(Path(__file__).resolve().parents[2])['sha256']
         if identity!=request['expected_evaluator_hash']:raise ValueError('pinned evaluator source mismatch')
-        pool=load_json(pool_path)
-        if not isinstance(pool,list) or len(pool)!=request['task_count']:raise ValueError('incomplete pool')
-        tasks=[GraphTask.model_validate_json(canonical(t)) for t in pool]
+        pool,tasks=_load_pool(pool_path)
+        if len(pool)!=request['task_count']:raise ValueError('incomplete pool')
+        committed=db.execute('SELECT pool_hash,commitment FROM panels WHERE request_id=?',(request_id,)).fetchone()
+        if committed is None or committed[0]!=digest(pool):
+            raise ValueError('pool does not match the panel committed at registration')
+        commitment=committed[1]
         if any(t.domain!=request['domain'] or t.split not in ('CONFIRM','FUTURE') for t in tasks):
             raise ValueError('wrong sealed pool domain/split')
         if len({t.task_id for t in tasks})!=len(tasks):raise ValueError('duplicate task identifiers')
@@ -285,15 +312,24 @@ def evaluate(private_root,request_id,pool_path,key_path,operator_id):
             except BaseException as exc:
                 evidence.event('EVALUATION_FAILED',{'exception':type(exc).__name__,'message':str(exc)})
                 evidence.interrupt_running();raise
-        payload={'schema':'genesis-evaluation-receipt-v1','request_hash':request_id,
-                 'candidate_version':request['candidate_version'],'pool_hash':digest(pool),
-                 'evaluator_hash':identity,'operator_id':operator_id,'completed_at':utcnow(),
-                 'anchor_hash':digest(anchor),'private_evidence_head':integrity['head'],
+        payload={'schema':R.SCIENTIFIC_RECEIPT,'evidence_kind':request['evidence_kind'],
+                 'claim_id':request['claim_id'],'campaign_id':request['campaign_id'],'request_hash':request_id,
+                 'anchor_hash':digest(anchor),'candidate_version':request['candidate_version'],
+                 'baseline_version':digest(request['programs']['baseline']),'source_hash':request['source_hash'],
+                 'evaluator_hash':identity,'analysis':request['analysis'],'domain':request['domain'],
+                 'domain_contract_hash':R.domain_contract_hash(request['domain']),
+                 'transfer_source_domain':request['transfer_source_domain'],
+                 'generation_transition':request['generation_transition'],'panel_commitment':commitment,
+                 'task_count':len(tasks),'raw_evidence_root':integrity['head'],'raw_evidence_complete':complete,
                  'expected_rows':len(tasks)*len(programs),'completed_rows':total_rows,'execution_failures':failures,
                  'wins':comparison['wins'],'losses':comparison['losses'],'ties':comparison['ties'],
                  'paired_p':comparison['exploratory_sign_p'],'family_p':comparison['family_sensitivity_p'],
-                 'screen':'CUSTODIAN_BUILT_REGISTRY_ISOMORPHISM_AND_NEAR_DUPLICATE','raw_evidence_complete':complete,
-                 'independence':'OPERATOR_ATTESTATION_REQUIRED','promotion_allowed':False}
+                 'outcome':None,'operator_id':operator_id,'registered_at':anchor['payload']['registered_at'],
+                 'completed_at':utcnow(),'screen':'CUSTODIAN_BUILT_REGISTRY_ISOMORPHISM_AND_NEAR_DUPLICATE',
+                 'independence':'OPERATOR_ATTESTATION_REQUIRED'}
+        payload['outcome']=R.derive_outcome(payload)
+        problems=R.check_receipt(payload,request['evidence_kind'])
+        if problems:raise RuntimeError('custodian built an invalid receipt: '+'; '.join(problems))
         receipt=sign(payload,key_path)
         (work/'public_receipt.json').write_bytes(canonical(receipt))
         db.execute("UPDATE requests SET state='COMPLETE' WHERE id=?",(request_id,))
@@ -305,43 +341,45 @@ from .kernel.roles import TRUST_ROOT_ENV,DEFAULT_TRUST_ROOT,ROLE_FIELDS,load_rol
 
 
 def release_preflight(request,anchor,receipt,audit,*,trust_root=None):
-    """Check externally pinned roles. Never lets a builder-created key self-promote."""
+    """Check externally pinned roles. Never lets a builder-created key self-promote.
+
+    Uses the same receipt semantics as the evidence kernel and phase machine
+    (kernel.receipts): exact schemas, role-to-kind authorization, request and
+    anchor binding, and the signed outcome re-derived from the signed counts.
+    """
     registry,reasons=load_role_registry(trust_root)
     if registry is None:
         return {'status':'BLOCKED','reasons':reasons,'promotion_allowed':False}
     pins=registry['pins']
     try:
         validate_request(request)
-        a=verify(anchor,pins['prereg_key']);r=verify(receipt,pins['custodian_key']);review=verify(audit,pins['auditor_key'])
-        rid=digest(request)
-        if a.get('request_hash')!=rid or r.get('request_hash')!=rid:reasons.append('unbound preregistration')
-        if r.get('anchor_hash')!=digest(anchor):reasons.append('anchor mismatch')
-        if r.get('candidate_version')!=request['candidate_version'] or r.get('evaluator_hash')!=request['expected_evaluator_hash']:
-            reasons.append('version mismatch')
-        expected=request['task_count']*len(request['programs'])
-        if r.get('completed_rows')!=expected or r.get('expected_rows')!=expected or r.get('raw_evidence_complete') is not True:
-            reasons.append('incomplete evidence')
-        if any(type(r.get(k)) is not int or r[k]<0 for k in ('wins','losses','ties')):
-            reasons.append('invalid outcome counts')
-        elif sum(r[k] for k in ('wins','losses','ties'))!=request['task_count']:
-            reasons.append('outcome counts do not cover the preregistered pool')
-        elif r.get('paired_p')!=sign_test(r['wins'],r['losses']):
-            reasons.append('statistics do not match signed counts')
-        from datetime import datetime
-        try:
-            before=datetime.fromisoformat(a['registered_at']);after=datetime.fromisoformat(r['completed_at'])
-            if before.tzinfo is None or after.tzinfo is None or before>=after:
-                reasons.append('invalid signed chronology')
-        except (KeyError,ValueError,TypeError):reasons.append('missing signed chronology')
-        if r.get('execution_failures')!=0:reasons.append('execution failures require adjudication')
+        rid=digest(request);kind=request['evidence_kind']
+        a,why=R.open_signed(R.wrap(anchor),'preregistration_anchor',pins)
+        reasons+=why
+        r,why=R.open_signed(R.wrap(receipt),kind,pins)
+        reasons+=why
+        review=verify(audit,pins['auditor_key'])
+        if a is not None and r is not None:
+            reasons+=R.anchor_mismatches(r,a,anchor)
+            if a['request_hash']!=rid or r['request_hash']!=rid:reasons.append('unbound preregistration')
+            expected_rows=request['task_count']*len(request['programs'])
+            for field,want in (('claim_id',request['claim_id']),('campaign_id',request['campaign_id']),
+                               ('candidate_version',request['candidate_version']),
+                               ('evaluator_hash',request['expected_evaluator_hash']),
+                               ('source_hash',request['source_hash']),('domain',request['domain']),
+                               ('baseline_version',digest(request['programs']['baseline'])),
+                               ('task_count',request['task_count']),('expected_rows',expected_rows),
+                               ('generation_transition',request['generation_transition']),
+                               ('transfer_source_domain',request['transfer_source_domain'])):
+                if r[field]!=want:reasons.append(f'receipt {field} differs from the preregistered request')
+            if r['outcome']=='INVALID':reasons.append('incomplete or inconsistent evidence (outcome INVALID)')
+            elif r['outcome']=='INCONCLUSIVE':reasons.append('execution failures require adjudication (outcome INCONCLUSIVE)')
+            elif r['outcome']!='SUPPORTED':reasons.append('preregistered superiority not supported (outcome NOT_SUPPORTED)')
         if review.get('request_hash')!=rid or review.get('receipt_hash')!=digest(receipt):reasons.append('audit scope mismatch')
         if review.get('status')!='PASS' or review.get('open_critical')!=0:reasons.append('independent audit not passing')
         if review.get('independent_operation_verified') is not True:reasons.append('custody independence not verified')
         if review.get('raw_replay_verified') is not True:reasons.append('private evidence replay not verified')
         if review.get('formal_replay_verified') is not True:reasons.append('formal replay not verified')
-        if any(type(r.get(k)) not in (float,int) or not 0<=r[k]<=1 for k in ('paired_p','family_p')):
-            reasons.append('invalid statistics')
-        elif max(r['paired_p'],r['family_p'])>request['analysis']['alpha']:reasons.append('preregistered superiority not supported')
     except Exception as exc:reasons.append('signature/schema verification failed: '+type(exc).__name__)
     return {'status':'EXTERNAL_RELEASE_REVIEW_READY' if not reasons else 'BLOCKED','reasons':reasons,
             'promotion_allowed':False,'next_authority':pins['release_authority_id'],
