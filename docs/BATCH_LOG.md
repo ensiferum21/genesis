@@ -167,3 +167,27 @@ See `docs/AUDIT_REMEDIATION.md` (GI6 section).
   dependent claims (§37.3).
 - Custodian `sealed_index` / `screen_for_research`: signed decision receipts
   against reserved pools and sealed statements; private ledger append.
+
+## Batch 10 — Research IR macros, research market, world loop, registry
+- `ir.py`: primitives keep their 16 names; typed overloads (e.g. VERIFY a
+  witness or an upper-bound contract; TRANSFORM relabel or induced subgraph;
+  TRANSPORT relabel or embedding; COMPOSE variadic), explicit discriminators,
+  every invocation traced with a digest of its deterministic output, and
+  `replay()` re-executes a recorded program and reports mismatching nodes.
+- `macros.py`: Ghost Census (PROVED / GHOST_FOUND / UNSETTLED / HARNESS_ERROR
+  kept distinct; "no ghost found" is never proof), Barrier & Escape,
+  Local-to-Global, Gap Engine, Cognitive Compilation — all driven only through
+  the primitives, all replay byte-identically from their IR records. Example:
+  a greedy search class stalls at 30 edges on a hard host; Barrier & Escape
+  moves to the exact representation and certifies 33.
+- `market.py` (§34): score formula, Pareto prefilter, budgeted portfolio,
+  diversity slot under premature convergence, per-kind calibration from
+  realized outcomes, stop-thinking rule.
+- `worldstep.py` (§26.3): diagnose → propose → allocate → execute macros under
+  leased grants → verify → recalibrate → Pareto ecology → retire → meta-gap
+  candidates; claims promoted only to WITNESS_VALID / OPTIMALITY_CHECKED.
+  Example run (4 hard hosts, 3 epochs): all 4 optima certified; calibration
+  error 4.04 → 0.74.
+- `registry.py`: all 137 Appendix A engines as data — 5 IMPLEMENTED_BOUNDED,
+  16 INFRASTRUCTURE_BOUNDED, 116 EXPRESSIBLE_NOT_INSTANTIATED (composition
+  hypotheses, no stubs). `genesis registry summary`, `genesis research loop`.

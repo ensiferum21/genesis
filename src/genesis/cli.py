@@ -102,6 +102,10 @@ def main(argv=None):
     p=subs.add_parser('export');p.add_argument('action',choices=['replication-bundle']);p.add_argument('root',type=Path);p.add_argument('destination',type=Path)
     p=subs.add_parser('formal');p.add_argument('task',type=Path);p.add_argument('witness',type=Path);p.add_argument('destination',type=Path)
     p.add_argument('--check',action='store_true',help='kernel-check the obligation with the pinned Lean in the sandbox')
+    p=subs.add_parser('research');p.add_argument('action',choices=['loop']);p.add_argument('root',type=Path)
+    p.add_argument('--tasks',type=int,default=6);p.add_argument('--epochs',type=int,default=3)
+    p.add_argument('--cpu-per-epoch',type=float,default=60.0);p.add_argument('--seed',type=int,default=20261013)
+    p=subs.add_parser('registry');p.add_argument('action',choices=['show','summary'])
     p=subs.add_parser('store');p.add_argument('action',choices=['verify','rebuild','index']);p.add_argument('root',type=Path)
     p.add_argument('--out',type=Path,help='index destination (store index)')
     p=subs.add_parser('benchmark');p.add_argument('action',choices=['ladder']);p.add_argument('root',type=Path)
@@ -112,6 +116,13 @@ def main(argv=None):
     args=ap.parse_args(argv)
     if args.command=='doctor':result=doctor()
     elif args.command=='benchmark':result=run_benchmark(args)
+    elif args.command=='research':
+        from .worldstep import ResearchLoop,LoopConfig
+        cfg=LoopConfig(seed=args.seed,tasks=args.tasks,epochs=args.epochs,cpu_budget_per_epoch=args.cpu_per_epoch)
+        with ResearchLoop(args.root,cfg) as loop:result=loop.run()
+    elif args.command=='registry':
+        from .registry import registry,summary
+        result=summary() if args.action=='summary' else registry()
     elif args.command=='store':
         if args.action=='rebuild':
             from .store import rebuild_from_export
