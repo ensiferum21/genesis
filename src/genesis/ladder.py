@@ -231,6 +231,7 @@ def _run_specialist(s, prereg, prereg_id, split, n, task, name, budget_ns, key):
     witness = bounds.get('witness') or ()
     value = check_witness(task, witness)['value'] if witness else None
     s.finish(aid, {'status': status, 'cpu_ns': spent, 'lower': bounds.get('lower'), 'upper': bounds.get('upper'),
+                   'reason': bounds.get('reason'),
                    'bound_status': bounds.get('status'), 'calls': bounds.get('calls'),
                    'upper_method': (bounds.get('upper_certificate') or {}).get('method')})
     witness_hash = s.put({'task_id': task.task_id, 'edges': [list(e) for e in witness]}) if witness else None
