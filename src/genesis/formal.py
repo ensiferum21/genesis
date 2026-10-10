@@ -46,11 +46,15 @@ def export_witness(task,edges,destination):
 
 
 def doctor():
-    lean=shutil.which('lean');docker=shutil.which('docker')
-    return {'lean_executable':lean,'docker_executable':docker,
-            'formal_verification':'BLOCKED_NO_LEAN' if not lean else 'REQUIRES_EXTERNAL_PINS_AND_REPLAY',
+    from .verification.tools import available
+    from . import sandbox
+    lean=available('lean');docker=shutil.which('docker')
+    sat=available('cadical') and available('drat-trim')
+    return {'lean_toolchain':'PINNED' if lean else 'MISSING','docker_executable':docker,
+            'formal_verification':('PINNED_LEAN_IN_SANDBOX (finite witness obligations; run tests_formal)'
+                                   if lean and sandbox.available() else 'BLOCKED_NO_PINNED_LEAN_OR_SANDBOX'),
+            'sat_certificates':'PINNED_CADICAL_DRAT_TRIM' if sat else 'MISSING',
             'arbitrary_code_execution':('OCI_RUNC_SANDBOX (run tests_sandbox before trusting it)'
-                                        if __import__('genesis.sandbox',fromlist=['available']).available()
-                                        else 'UNAVAILABLE_NEEDS_RUNC_AND_ROOT'),
+                                        if sandbox.available() else 'UNAVAILABLE_NEEDS_RUNC_AND_ROOT'),
             'data_only_graph_dsl':'AVAILABLE','independent_custody':'EXTERNAL_OPERATOR_REQUIRED',
             'formal_claim_allowed':False,'scientific_promotion_allowed':False}

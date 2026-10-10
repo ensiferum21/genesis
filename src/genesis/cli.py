@@ -101,6 +101,7 @@ def main(argv=None):
     p=subs.add_parser('report');p.add_argument('action',choices=['build']);p.add_argument('root',type=Path)
     p=subs.add_parser('export');p.add_argument('action',choices=['replication-bundle']);p.add_argument('root',type=Path);p.add_argument('destination',type=Path)
     p=subs.add_parser('formal');p.add_argument('task',type=Path);p.add_argument('witness',type=Path);p.add_argument('destination',type=Path)
+    p.add_argument('--check',action='store_true',help='kernel-check the obligation with the pinned Lean in the sandbox')
     p=subs.add_parser('store');p.add_argument('action',choices=['verify','rebuild','index']);p.add_argument('root',type=Path)
     p.add_argument('--out',type=Path,help='index destination (store index)')
     p=subs.add_parser('benchmark');p.add_argument('action',choices=['ladder']);p.add_argument('root',type=Path)
@@ -129,7 +130,14 @@ def main(argv=None):
         Campaign.initialize(args.root,cfg)
         with Campaign(args.root) as c:result=c.run()
     elif args.command=='formal':
-        result=export_witness(GraphTask.model_validate_json(args.task.read_bytes()),load_json(args.witness),args.destination)
+        task=GraphTask.model_validate_json(args.task.read_bytes());witness=load_json(args.witness)
+        result=export_witness(task,witness,args.destination)
+        if args.check:
+            from .verification.lean import check_witness_formally
+            receipt=check_witness_formally(task,witness)
+            (Path(args.destination)/'lean_receipt.json').write_bytes(canonical(receipt))
+            result={'obligation':result,'lean_status':receipt['status'],'axioms':receipt.get('axioms'),
+                    'scope':receipt.get('obligation',{}).get('scope')}
     elif args.command=='export':result=export_replication(args.root,args.destination)
     elif args.command in ('world','artifact','evidence'):
         with Store(args.root) as s:

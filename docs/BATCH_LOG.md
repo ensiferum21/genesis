@@ -118,3 +118,32 @@ See `docs/AUDIT_REMEDIATION.md` (GI6 section).
 - Complete hosts are much harder to certify (K10 timed out at 60 s) because of
   symmetry; symmetry breaking is future work, and the ladder keeps using the
   published values there.
+
+## Batch 8 — Lean checker
+- Pinned Lean 4.34.1 (GitHub release tarball, SHA-256 pinned; binary hash
+  pinned). `verification/lean.py` uses the comparator pattern: a TRUSTED
+  generated `GenesisSpec` (definitions + `Statement`), an UNTRUSTED
+  `GenesisProof`, and a TRUSTED `GenesisCheck` that type-checks
+  `GenesisProof.proof : GenesisSpec.Statement`, audits axioms (allowed:
+  propext, Classical.choice, Quot.sound) with per-run nonces, and replays the
+  proof module with `leanchecker`.
+- Lean elaboration can execute code, so checking runs in the OCI sandbox as
+  three separate runs (compile spec / compile untrusted proof / trusted check);
+  untrusted elaboration never shares writable state with trusted stages. This
+  closed a real hole found while writing tests (a proof's `#eval` could have
+  overwritten the compiled spec in a shared output directory).
+- Sandbox fixes found on the way: clone3 must return ENOSYS (not EPERM) so
+  libc falls back to clone; Lean needs a large address-space cap (mmapped
+  libraries) separate from the cgroup memory limit; many open files.
+- Distinct outcomes: CHECKED, ELABORATION_ERROR, KERNEL_REJECTED,
+  STATEMENT_MISMATCH, DISALLOWED_AXIOM, FORBIDDEN_CONSTRUCT, TIMEOUT,
+  RESOURCE_LIMIT, CHECKER_ERROR. Canaries: positive (C4 and triangle), false
+  statement, wrong statement, invalid witness, sorry/axiom/native_decide/
+  #eval/skipKernelTC/initialize/foreign imports; with the prescreen disabled
+  the axiom audit still catches native_decide (Lean 4.34 generates
+  `…native_decide.ax_*`), declared axioms and sorryAx, and elaboration-time
+  tampering cannot produce CHECKED.
+- Scope: finite witness obligations (validity + edge count). No optimality or
+  universal theorem is formalized; Mathlib is not used.
+- `genesis formal <task> <witness> <dir> --check`; `genesis doctor` reports
+  pinned Lean, SAT tools and sandbox.

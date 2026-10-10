@@ -37,7 +37,7 @@ RUNC = shutil.which('runc')
 PYTHON = os.path.realpath(__import__('sys').executable)
 SANDBOX_UID = 65534
 DENIED_SYSCALLS = sorted({
-    'mount', 'umount', 'umount2', 'pivot_root', 'chroot', 'unshare', 'setns', 'clone3',
+    'mount', 'umount', 'umount2', 'pivot_root', 'chroot', 'unshare', 'setns',
     'init_module', 'finit_module', 'delete_module', 'kexec_load', 'kexec_file_load',
     'ptrace', 'process_vm_readv', 'process_vm_writev', 'bpf', 'perf_event_open', 'userfaultfd',
     'keyctl', 'add_key', 'request_key', 'reboot', 'swapon', 'swapoff', 'acct', 'quotactl',
@@ -60,6 +60,9 @@ class SandboxPolicy(StrictModel):
     tmp_mib: int = Field(default=64, ge=1, le=4096)
     open_files: int = Field(default=256, ge=16, le=65536)
     max_file_mib: int = Field(default=32, ge=1, le=4096)
+    # Virtual address-space cap (ulimit -v). Defaults to memory_mib; tools that mmap large
+    # read-only libraries (Lean) need more address space than resident memory.
+    address_space_mib: int | None = Field(default=None, ge=32, le=1 << 20)
 
 
 def available():
@@ -67,16 +70,19 @@ def available():
 
 
 def policy_digest(policy):
-    return digest({'policy': policy.model_dump(mode='json'), 'denied_syscalls': DENIED_SYSCALLS,
+    return digest({'policy': policy.model_dump(mode='json'), 'denied_syscalls': DENIED_SYSCALLS, 'enosys': ['clone3'],
                    'masked': MASKED, 'readonly': READONLY})
 
 
 def _seccomp():
     return {'defaultAction': 'SCMP_ACT_ALLOW', 'architectures': ['SCMP_ARCH_X86_64', 'SCMP_ARCH_X86', 'SCMP_ARCH_X32'],
-            'syscalls': [{'names': DENIED_SYSCALLS, 'action': 'SCMP_ACT_ERRNO', 'errnoRet': 1}]}
+            'syscalls': [{'names': DENIED_SYSCALLS, 'action': 'SCMP_ACT_ERRNO', 'errnoRet': 1},
+                         # clone3 can create namespaces via its struct; answering ENOSYS makes libc fall
+                         # back to clone(2), whose namespace flags are covered by no capabilities + userns off.
+                         {'names': ['clone3'], 'action': 'SCMP_ACT_ERRNO', 'errnoRet': 38}]}
 
 
-def _config(policy, argv, cid):
+def _config(policy, argv, cid, ro_mounts=None, extra_env=None):
     mib = 1024 * 1024
     return {
         'ociVersion': '1.0.2',
@@ -84,11 +90,13 @@ def _config(policy, argv, cid):
             'terminal': False, 'user': {'uid': SANDBOX_UID, 'gid': SANDBOX_UID, 'additionalGids': []},
             # RLIMIT_AS is applied by a shell shim after runc init: applying it to runc's
             # own Go init crashes libseccomp. The cgroup memory limit is the backstop.
-            'args': ['/bin/sh', '-c', f'ulimit -v {policy.memory_mib * 1024} && exec "$@"', 'genesis-shim',
+            'args': ['/bin/sh', '-c', f'ulimit -v {(policy.address_space_mib or policy.memory_mib) * 1024} && exec "$@"',
+                     'genesis-shim',
                      *argv],
             'cwd': '/work',
-            'env': ['PATH=/usr/bin:/bin', 'HOME=/work', 'LANG=C.UTF-8', 'PYTHONDONTWRITEBYTECODE=1',
-                    'PYTHONHASHSEED=0', 'TMPDIR=/tmp'],
+            'env': ['PATH=' + ':'.join([*(extra_env or {}).get('PATH_PREFIX', []), '/usr/bin', '/bin']),
+                    'HOME=/work', 'LANG=C.UTF-8', 'PYTHONDONTWRITEBYTECODE=1', 'PYTHONHASHSEED=0', 'TMPDIR=/tmp',
+                    *[f'{k}={v}' for k, v in sorted((extra_env or {}).items()) if k != 'PATH_PREFIX']],
             'capabilities': {k: [] for k in ('bounding', 'effective', 'inheritable', 'permitted', 'ambient')},
             'rlimits': [
                 {'type': 'RLIMIT_CPU', 'hard': policy.cpu_seconds + 1, 'soft': policy.cpu_seconds},
@@ -110,6 +118,8 @@ def _config(policy, argv, cid):
             {'destination': '/usr', 'type': 'bind', 'source': '/usr', 'options': ['rbind', 'ro', 'nosuid', 'nodev']},
             {'destination': '/etc', 'type': 'bind', 'source': 'etc', 'options': ['bind', 'ro', 'nosuid', 'nodev']},
             {'destination': '/work', 'type': 'bind', 'source': 'work', 'options': ['bind', 'rw', 'nosuid', 'nodev']},
+            *[{'destination': dest, 'type': 'bind', 'source': src, 'options': ['rbind', 'ro', 'nosuid', 'nodev']}
+              for dest, src in sorted((ro_mounts or {}).items())],
         ],
         'linux': {
             'namespaces': [{'type': t} for t in ('pid', 'network', 'ipc', 'uts', 'mount', 'cgroup')],
@@ -163,7 +173,7 @@ def _collect(outdir, cap):
     return files, problems
 
 
-def run(files, argv, policy=None, *, grant=None, ledger=None):
+def run(files, argv, policy=None, *, grant=None, ledger=None, ro_mounts=None, env=None):
     """Execute untrusted code. `files` (name -> bytes) are placed read-only under /work/src.
 
     Returns a receipt dict with status in SUCCESS, EXIT_NONZERO, TIMEOUT, CPU_LIMIT,
@@ -182,7 +192,12 @@ def run(files, argv, policy=None, *, grant=None, ledger=None):
     work = bundle / 'work'
     mounted = False
     try:
-        for d in ('rootfs/usr', 'rootfs/etc', 'rootfs/proc', 'rootfs/dev', 'rootfs/tmp', 'rootfs/work', 'etc'):
+        ro_mounts = dict(ro_mounts or {})
+        for dest, src in ro_mounts.items():
+            if not dest.startswith('/opt/') or '..' in dest or not Path(src).is_dir():
+                raise ValueError('extra read-only mounts must target /opt/<name> and be existing directories')
+        for d in ('rootfs/usr', 'rootfs/etc', 'rootfs/proc', 'rootfs/dev', 'rootfs/tmp', 'rootfs/work', 'etc',
+                  *[f'rootfs{dest}' for dest in ro_mounts]):
             (bundle / d).mkdir(parents=True, exist_ok=True)
         for link, target in (('bin', 'usr/bin'), ('lib', 'usr/lib'), ('lib64', 'usr/lib64'), ('sbin', 'usr/sbin')):
             os.symlink(target, bundle / 'rootfs' / link)
@@ -201,7 +216,8 @@ def run(files, argv, policy=None, *, grant=None, ledger=None):
             (work / 'src' / name).chmod(0o444)
         os.chown(work / 'out', SANDBOX_UID, SANDBOX_UID)
         (work / 'src').chmod(0o555)
-        config = _config(policy, argv, cid)
+        config = _config(policy, argv, cid, ro_mounts, env)
+        base_receipt['ro_mounts'] = sorted(ro_mounts)
         (bundle / 'config.json').write_bytes(canonical(config))
         start = time.monotonic_ns(); deadline = time.monotonic() + policy.wall_seconds
         proc = subprocess.Popen([RUNC, 'run', '--keep', '--bundle', str(bundle), cid], stdin=subprocess.DEVNULL,

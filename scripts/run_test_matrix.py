@@ -25,8 +25,8 @@ SUITES = {
 OPTIONAL = {
     'kernel': ('tests_kernel', 'must pass'),
     'sandbox_escape': ('tests_sandbox', 'failure blocks release'),
-    'certificates': ('tests_certificates', 'must pass'),
-    'formal': ('tests_formal', 'must pass'),
+    'certificates': ('tests_certificates', 'failure blocks release'),
+    'formal': ('tests_formal', 'failure blocks release'),
 }
 
 
