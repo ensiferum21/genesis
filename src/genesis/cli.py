@@ -19,7 +19,11 @@ def request_bundle(campaign,task_count=300):
     version={'program':program,'source':source,'environment':__import__('genesis.campaign',fromlist=['environment']).environment(),
              'config':campaign.config.model_dump(mode='json'),'library':s.state('summary')['retained_dev_capabilities']}
     strongest_name=s.state('summary')['generations'][-1]['baseline']
-    request={'schema':'genesis-evaluation-request-v1','campaign_id':s.state('campaign_id'),
+    export=campaign.root/'exports/campaign_export.zip'
+    if not export.exists():export_replication(campaign.root,export,store=s)
+    from .common import bytes_hash
+    request={'schema':'genesis-evaluation-request-v2','campaign_id':s.state('campaign_id'),
+        'campaign_export_sha256':bytes_hash(export.read_bytes()),
         'candidate_version':digest(version),'source_hash':source,
         'programs':{'baseline':baseline_programs()[strongest_name].model_dump(mode='json'),'candidate':program,
                     'exchange':baseline_programs()['exchange'].model_dump(mode='json'),
@@ -37,15 +41,18 @@ def request_bundle(campaign,task_count=300):
     path.write_bytes(canonical(request));return path
 
 
-def export_replication(root,destination):
+def export_replication(root,destination,store=None):
     root=Path(root);destination=Path(destination)
     if destination.exists():raise FileExistsError(destination)
-    with Store(root) as s:
-        s.verify();snapshot=s.snapshot('export-'+digest({'events':s.verify()['head']})[:16]+'.sqlite3')
-        s.recover_export()
+    def snapshot(s):
+        s.verify();s.snapshot('export-'+digest({'events':s.verify()['head']})[:16]+'.sqlite3');s.recover_export()
+    if store is None:
+        with Store(root) as s:snapshot(s)
+    else:snapshot(store)
     manifest={}
     from .common import bytes_hash
-    files=[p for p in root.rglob('*') if p.is_file() and p.name not in ('writer.lock','campaign.sqlite3','campaign.sqlite3-wal','campaign.sqlite3-shm')]
+    skip=('writer.lock','campaign.sqlite3','campaign.sqlite3-wal','campaign.sqlite3-shm','campaign.sqlite3-journal')
+    files=[p for p in sorted(root.rglob('*')) if p.is_file() and p.name not in skip and p.resolve()!=destination.resolve()]
     for p in files:
         if p.is_symlink():raise ValueError('symlink in replication data')
         manifest[str(p.relative_to(root))]=bytes_hash(p.read_bytes())

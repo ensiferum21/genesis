@@ -1,0 +1,14 @@
+{
+  "schema": "genesis-exposure-manifest-v1",
+  "purpose": "Reference list of every public host-graph source known at 2026-10-10. The custodian copies this into its own private root, adds anything else it knows was public, and owns the copy. Paths are relative to the manifest's directory; a listed source that is missing makes registration fail.",
+  "sources": [
+    {"kind": "legacy_generator", "label": "legacy c4_hard_cases seed 20261009 (60, public DEV)", "module": "c4_hard_cases", "function": "sample_cases", "kwargs": {"seed": 20261009, "count": 60}},
+    {"kind": "legacy_generator", "label": "legacy c4_hard_cases seed 20261010 (60, public DEV)", "module": "c4_hard_cases", "function": "sample_cases", "kwargs": {"seed": 20261010, "count": 60}},
+    {"kind": "legacy_generator", "label": "legacy Batch42 sample_cases seed 20261011 (40)", "module": "c4_hard_cases", "function": "sample_cases", "kwargs": {"seed": 20261011, "count": 40}},
+    {"kind": "legacy_generator", "label": "legacy c4_benchmark fresh_suite seed 20261009 (24)", "module": "c4_benchmark", "function": "fresh_suite", "kwargs": {"seed": 20261009, "cases": 24}},
+    {"kind": "ladder", "label": "known-answer ladder complete hosts", "domains": ["c4_host_v2", "triangle_free_host_v1"], "max_n": 63},
+    {"kind": "campaign_store", "label": "dev_three_generations (failed WAL run)", "path": "public_runs/dev_three_generations_wal_reopen_failed"},
+    {"kind": "campaign_store", "label": "dev_three_generations", "path": "public_runs/dev_three_generations"},
+    {"kind": "campaign_store", "label": "dev_three_generations_v2 (10 Oct DEV evidence)", "path": "public_runs/dev_three_generations_v2"}
+  ]
+}

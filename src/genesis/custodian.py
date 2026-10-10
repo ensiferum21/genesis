@@ -14,7 +14,7 @@ from cryptography.hazmat.primitives.asymmetric.ed25519 import Ed25519PrivateKey,
 from cryptography.hazmat.primitives import serialization
 from .common import canonical,bytes_hash,digest,load_json,utcnow,code_identity
 from .models import GraphTask,SolverProgram,Limits
-from .graphs import canonical_graph,certified_optimum,check_witness
+from .graphs import canonical_graph,certified_optimum,check_witness,SearchLimit
 from .execution import execute
 from .store import Store
 from .evaluation import paired,sign_test
@@ -33,14 +33,25 @@ def verify(envelope,public_key_b64):
     return envelope['payload']
 
 
+REQUEST_FIELDS={'schema','campaign_id','candidate_version','source_hash','programs','limits','seed',
+                'task_count','domain','analysis','exposed_graph_fingerprints','expected_evaluator_hash',
+                'campaign_export_sha256'}
+
+
+def _hex64(h):
+    return isinstance(h,str) and len(h)==64 and all(c in '0123456789abcdef' for c in h)
+
+
 def validate_request(request):
-    fields={'schema','campaign_id','candidate_version','source_hash','programs','limits','seed',
-            'task_count','domain','analysis','exposed_graph_fingerprints','expected_evaluator_hash'}
-    if not isinstance(request,dict) or set(request)!=fields or request['schema']!='genesis-evaluation-request-v1':
+    """Schema v2 binds the request to the campaign's public export bundle.
+
+    v1 requests (no export binding) are refused: the custodian must be able to
+    derive the campaign's exposure from raw data rather than trust a list.
+    """
+    if not isinstance(request,dict) or set(request)!=REQUEST_FIELDS or request['schema']!='genesis-evaluation-request-v2':
         raise ValueError('evaluation request schema')
-    for key in ('campaign_id','candidate_version','source_hash','expected_evaluator_hash'):
-        h=request[key]
-        if not isinstance(h,str) or len(h)!=64 or any(c not in '0123456789abcdef' for c in h):raise ValueError('hash field')
+    for key in ('campaign_id','candidate_version','source_hash','expected_evaluator_hash','campaign_export_sha256'):
+        if not _hex64(request[key]):raise ValueError('hash field')
     if not isinstance(request['programs'],dict) or not {'baseline','candidate'}<=set(request['programs']) or len(request['programs'])>5:
         raise ValueError('comparison arms')
     programs={k:SolverProgram.model_validate_json(canonical(v)) for k,v in request['programs'].items()}
@@ -53,7 +64,7 @@ def validate_request(request):
         raise ValueError('unsupported preregistered analysis')
     if not isinstance(request['exposed_graph_fingerprints'],list):raise ValueError('exposure list')
     for h in request['exposed_graph_fingerprints']:
-        if not isinstance(h,str) or len(h)!=64 or any(c not in '0123456789abcdef' for c in h):raise ValueError('exposure hash')
+        if not _hex64(h):raise ValueError('exposure hash')
     return programs
 
 
@@ -65,31 +76,100 @@ def _private_root(path):
     return path.resolve()
 
 
-def register(private_root,request,key_path,operator_id):
+SCHEMA='''CREATE TABLE IF NOT EXISTS requests(id TEXT PRIMARY KEY, body BLOB, anchor BLOB, state TEXT);
+CREATE TABLE IF NOT EXISTS exposure_graphs(id INTEGER PRIMARY KEY, n INTEGER NOT NULL, edges TEXT NOT NULL,
+                                           source TEXT NOT NULL, request_id TEXT);
+CREATE TABLE IF NOT EXISTS registry_builds(request_id TEXT PRIMARY KEY, record BLOB NOT NULL);
+CREATE TABLE IF NOT EXISTS reservations(id INTEGER PRIMARY KEY, n INTEGER NOT NULL, edges TEXT NOT NULL,
+                                        request_id TEXT NOT NULL);
+CREATE TABLE IF NOT EXISTS adjudications(graph TEXT PRIMARY KEY, decision TEXT NOT NULL, record BLOB NOT NULL);
+CREATE TABLE IF NOT EXISTS exposure_digests(graph_hash TEXT PRIMARY KEY, request_id TEXT NOT NULL);'''
+
+
+def _open_custody(root):
+    db=sqlite3.connect(root/'custody.sqlite3',isolation_level=None)
+    db.execute('PRAGMA synchronous=FULL');db.executescript(SCHEMA)
+    return db
+
+
+def _registry_from_db(db):
+    from .exposure import GraphIndex
+    index=GraphIndex()
+    for n,edges,source in db.execute('SELECT n,edges,source FROM exposure_graphs ORDER BY id'):
+        index.add(n,tuple(tuple(e) for e in json.loads(edges)),source)
+    return index
+
+
+def register(private_root,request,key_path,operator_id,*,exposure_manifest,campaign_export):
     """Run before outcome exposure. Signed time is an operator attestation,
     not an independent public timestamp service or proof of independence.
+
+    The custodian rebuilds the exposure registry itself from its own manifest of
+    public sources plus the requesting campaign's export bundle. A declaration
+    that omits any host present in that export is rejected.
     """
+    from .exposure import build_registry,campaign_hosts
+    from .graphs import SearchLimit
     root=_private_root(private_root);validate_request(request);rid=digest(request)
-    db=sqlite3.connect(root/'custody.sqlite3')
+    export=Path(campaign_export)
+    if bytes_hash(export.read_bytes())!=request['campaign_export_sha256']:
+        raise ValueError('campaign export does not match the request binding')
+    manifest_path=Path(exposure_manifest)
+    st=manifest_path.stat()
+    if manifest_path.is_symlink() or st.st_uid!=os.geteuid() or st.st_mode&0o022:
+        raise ValueError('exposure manifest must be a custodian-owned, non-writable-by-others file')
+    manifest=load_json(manifest_path)
+    repo=Path(__file__).resolve().parents[2]
+    index,record=build_registry(manifest,manifest_path.parent,repo,
+                                extra_sources=[{'kind':'zip','path':str(export.resolve()),
+                                                'label':f'campaign-export:{request["campaign_id"][:16]}'}])
+    declared=set(request['exposed_graph_fingerprints']);omitted=0;unscreenable=0
+    for k,es in campaign_hosts(export):
+        task=GraphTask(task_id='exposure',n=k,edges=es,family='exposure')
+        try:
+            if canonical_graph(task) not in declared:omitted+=1
+        except SearchLimit:unscreenable+=1
+    if omitted:
+        raise ValueError(f'exposure declaration omits {omitted} host graphs present in the campaign export')
+    db=_open_custody(root)
     try:
-        db.execute('PRAGMA synchronous=FULL')
-        db.executescript('''CREATE TABLE IF NOT EXISTS requests(id TEXT PRIMARY KEY, body BLOB, anchor BLOB, state TEXT);
-                           CREATE TABLE IF NOT EXISTS exposure(graph_hash TEXT PRIMARY KEY, source TEXT NOT NULL);
-                           CREATE TABLE IF NOT EXISTS reservations(graph_hash TEXT PRIMARY KEY, request_id TEXT NOT NULL);''')
-        payload={'schema':'genesis-prereg-anchor-v1','request_hash':rid,'registered_at':utcnow(),'operator_id':operator_id}
+        payload={'schema':'genesis-prereg-anchor-v2','request_hash':rid,'registered_at':utcnow(),
+                 'operator_id':operator_id,'exposure_registry_root':record['root'],
+                 'exposure_graphs':record['graphs'],'declaration_unscreenable_graphs':unscreenable}
         anchor=sign(payload,key_path)
         with db:
+            db.execute('BEGIN IMMEDIATE')
             db.execute('INSERT INTO requests VALUES (?,?,?,?)',(rid,canonical(request),canonical(anchor),'REGISTERED'))
-            db.executemany('INSERT OR IGNORE INTO exposure VALUES (?,?)',[(h,'request-visible-exposure') for h in request['exposed_graph_fingerprints']])
+            db.execute('INSERT INTO registry_builds VALUES (?,?)',(rid,canonical(record)))
+            known=_registry_from_db(db)
+            rows=[(k,json.dumps([list(e) for e in es]),source,rid) for k,es,source in index.items()
+                  if known.find(k,es) is None]
+            db.executemany('INSERT INTO exposure_graphs(n,edges,source,request_id) VALUES (?,?,?,?)',rows)
+            # Declared fingerprints can only make screening stricter.
+            db.executemany('INSERT OR IGNORE INTO exposure_digests VALUES (?,?)',[(h,rid) for h in sorted(declared)])
         return anchor
     finally:db.close()
 
 
+def adjudicate(private_root,task,decision,key_path,operator_id,reason):
+    """Record a signed near-duplicate decision before freeze (spec §18.2)."""
+    if decision not in ('ALLOW','BLOCK'):raise ValueError('decision')
+    root=_private_root(private_root)
+    graph=json.dumps([task.n,[list(e) for e in task.edges]])
+    record=sign({'schema':'genesis-adjudication-v1','graph':graph,'decision':decision,'reason':reason,
+                 'operator_id':operator_id,'decided_at':utcnow()},key_path)
+    db=_open_custody(root)
+    try:
+        with db:
+            db.execute('INSERT INTO adjudications VALUES (?,?,?)',(graph,decision,canonical(record)))
+    finally:db.close()
+    return record
+
+
 def evaluate(private_root,request_id,pool_path,key_path,operator_id):
     root=_private_root(private_root)
-    db=sqlite3.connect(root/'custody.sqlite3',isolation_level=None)
+    db=_open_custody(root)
     try:
-        db.execute('PRAGMA synchronous=FULL')
         row=db.execute('SELECT body,anchor,state FROM requests WHERE id=?',(request_id,)).fetchone()
         if not row:raise ValueError('request not preregistered')
         request=json.loads(row[0]);anchor=json.loads(row[1]);programs=validate_request(request)
@@ -102,16 +182,34 @@ def evaluate(private_root,request_id,pool_path,key_path,operator_id):
         if any(t.domain!=request['domain'] or t.split not in ('CONFIRM','FUTURE') for t in tasks):
             raise ValueError('wrong sealed pool domain/split')
         if len({t.task_id for t in tasks})!=len(tasks):raise ValueError('duplicate task identifiers')
-        fingerprints=[canonical_graph(t) for t in tasks]
-        if len(set(fingerprints))!=len(tasks):raise ValueError('isomorphic duplicates in panel')
+        from .exposure import GraphIndex
+        panel=GraphIndex()
+        for t in tasks:
+            if not panel.add(t.n,t.edges,t.task_id):raise ValueError('isomorphic duplicates in panel')
         db.execute('BEGIN IMMEDIATE')
         try:
             if db.execute('SELECT state FROM requests WHERE id=?',(request_id,)).fetchone()[0]!='REGISTERED':
                 raise FileExistsError('concurrent evaluation reservation')
-            for h in fingerprints:
-                if db.execute('SELECT 1 FROM exposure WHERE graph_hash=?',(h,)).fetchone():
+            exposed=_registry_from_db(db)
+            reserved=GraphIndex()
+            for n,edges,rid in db.execute('SELECT n,edges,request_id FROM reservations'):
+                reserved.add(n,tuple(tuple(e) for e in json.loads(edges)),rid)
+            decisions={g:d for g,d in db.execute('SELECT graph,decision FROM adjudications')}
+            for t in tasks:
+                key=json.dumps([t.n,[list(e) for e in t.edges]])
+                if exposed.find(t.n,t.edges) is not None:
                     raise ValueError('panel overlaps research-visible exposure')
-                db.execute('INSERT INTO reservations VALUES (?,?)',(h,request_id))
+                try:fingerprint=canonical_graph(t)
+                except SearchLimit:fingerprint=None
+                if fingerprint and db.execute('SELECT 1 FROM exposure_digests WHERE graph_hash=?',(fingerprint,)).fetchone():
+                    raise ValueError('panel overlaps research-visible exposure (declared fingerprint)')
+                if reserved.find(t.n,t.edges) is not None:
+                    raise ValueError('panel task was already consumed by an earlier evaluation')
+                if decisions.get(key)=='BLOCK':raise ValueError('panel task blocked by adjudication')
+                if exposed.near(t.n,t.edges) and decisions.get(key)!='ALLOW':
+                    raise ValueError('near-duplicate of an exposed graph requires adjudication before use')
+                db.execute('INSERT INTO reservations(n,edges,request_id) VALUES (?,?,?)',
+                           (t.n,json.dumps([list(e) for e in t.edges]),request_id))
             db.execute("UPDATE requests SET state='CONSUMED_NO_RETRY' WHERE id=?",(request_id,))
             db.execute('COMMIT')
         except BaseException:
@@ -158,7 +256,7 @@ def evaluate(private_root,request_id,pool_path,key_path,operator_id):
                  'expected_rows':len(tasks)*len(programs),'completed_rows':total_rows,'execution_failures':failures,
                  'wins':comparison['wins'],'losses':comparison['losses'],'ties':comparison['ties'],
                  'paired_p':comparison['exploratory_sign_p'],'family_p':comparison['family_sensitivity_p'],
-                 'screen':'EXACT_ISOMORPHISM_WITH_EXPOSURE_LEDGER','raw_evidence_complete':complete,
+                 'screen':'CUSTODIAN_BUILT_REGISTRY_ISOMORPHISM_AND_NEAR_DUPLICATE','raw_evidence_complete':complete,
                  'independence':'OPERATOR_ATTESTATION_REQUIRED','promotion_allowed':False}
         receipt=sign(payload,key_path)
         (work/'public_receipt.json').write_bytes(canonical(receipt))
@@ -167,13 +265,57 @@ def evaluate(private_root,request_id,pool_path,key_path,operator_id):
     finally:db.close()
 
 
-def release_preflight(request,anchor,receipt,audit,*,pins):
+TRUST_ROOT_ENV='GENESIS_TRUST_ROOT'
+DEFAULT_TRUST_ROOT='/etc/genesis-trust'
+ROLE_FIELDS={'custodian_key','prereg_key','auditor_key','release_authority_id'}
+
+
+def _externally_controlled(path,euid):
+    """True only if the research process cannot modify `path` or its directory."""
+    path=Path(path)
+    if path.is_symlink() or not path.exists():return False,'missing or symlinked trust file'
+    st=path.stat()
+    if st.st_uid==euid:return False,f'{path.name} is owned by the research account'
+    if st.st_mode&0o022:return False,f'{path.name} is group/world writable'
+    if os.access(path,os.W_OK):return False,f'{path.name} is writable by the research account'
+    return True,None
+
+
+def load_role_registry(trust_root=None):
+    """Read role pins from an externally governed trust root (spec §3.2, §15.3).
+
+    Layout: <trust_root>/root.pub (base64 Ed25519 public key) and
+    <trust_root>/roles.json (envelope signed by that root key). The research
+    process must not be root and must not be able to write either file or the
+    directory. Pins are never accepted as function arguments.
+    """
+    trust_root=Path(trust_root or os.environ.get(TRUST_ROOT_ENV,DEFAULT_TRUST_ROOT))
+    euid=os.geteuid();reasons=[]
+    if euid==0:reasons.append('research process runs as root; external control cannot be established')
+    for p in (trust_root,trust_root/'root.pub',trust_root/'roles.json'):
+        ok,why=_externally_controlled(p,euid)
+        if not ok:reasons.append(why)
+    if reasons:return None,reasons
+    root_key=(trust_root/'root.pub').read_text().strip()
+    try:
+        roles=verify(load_json(trust_root/'roles.json'),root_key)
+    except Exception as exc:
+        return None,['role registry signature invalid: '+type(exc).__name__]
+    if not isinstance(roles,dict) or roles.get('schema')!='genesis-role-registry-v1' or set(roles.get('roles',{}))!=ROLE_FIELDS:
+        return None,['role registry schema']
+    pins=roles['roles']
+    keys=[pins['custodian_key'],pins['prereg_key'],pins['auditor_key']]
+    if not pins['release_authority_id'] or len(set(keys))<3 or root_key in keys:
+        return None,['independent role identities required (distinct keys, root key not a role key)']
+    return {'pins':pins,'root_key_sha256':bytes_hash(root_key.encode()),'trust_root':str(trust_root)},[]
+
+
+def release_preflight(request,anchor,receipt,audit,*,trust_root=None):
     """Check externally pinned roles. Never lets a builder-created key self-promote."""
-    reasons=[]
-    if set(pins)!={'custodian_key','prereg_key','auditor_key','release_authority_id'}:
-        return {'status':'BLOCKED','reasons':['independent role pins unavailable'],'promotion_allowed':False}
-    if not pins['release_authority_id'] or len({pins['custodian_key'],pins['prereg_key'],pins['auditor_key']})<3:
-        return {'status':'BLOCKED','reasons':['independent role identities required'],'promotion_allowed':False}
+    registry,reasons=load_role_registry(trust_root)
+    if registry is None:
+        return {'status':'BLOCKED','reasons':reasons,'promotion_allowed':False}
+    pins=registry['pins']
     try:
         validate_request(request)
         a=verify(anchor,pins['prereg_key']);r=verify(receipt,pins['custodian_key']);review=verify(audit,pins['auditor_key'])
@@ -209,4 +351,5 @@ def release_preflight(request,anchor,receipt,audit,*,pins):
     except Exception as exc:reasons.append('signature/schema verification failed: '+type(exc).__name__)
     return {'status':'EXTERNAL_RELEASE_REVIEW_READY' if not reasons else 'BLOCKED','reasons':reasons,
             'promotion_allowed':False,'next_authority':pins['release_authority_id'],
+            'trust_root':registry['trust_root'],'root_key_sha256':registry['root_key_sha256'],
             'note':'External release authority must record its decision; local preflight never activates a release.'}

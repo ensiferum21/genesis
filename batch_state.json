@@ -2,11 +2,21 @@
   "schema": "genesis-batch-state-v1",
   "branch": "completion-p0-p2",
   "base_commit": "c2d53a9",
-  "completed": [],
-  "in_progress": 1,
-  "next": 1,
-  "suites": ["tests_genesis", "tests"],
+  "completed": [
+    1,
+    2
+  ],
+  "in_progress": null,
+  "next": 3,
+  "suites": [
+    "tests_genesis",
+    "tests"
+  ],
   "notes": {
-    "1": "Incremental solver (output-identical to v1 oracle), O(1)-per-commit event export, known-answer ladder benchmark + CLI, toolchain pins."
+    "1": "Incremental solver (output-identical to v1 oracle), O(1)-per-commit event export, known-answer ladder benchmark + CLI, toolchain pins.",
+    "2": "Custodian-built exposure registry (GI6-10) and externally rooted role registry (GI6-11); request schema v2."
+  },
+  "pending_evidence": {
+    "ladder_c4_b1": "running from frozen worktree at commit 94c249c; results to be added under evidence/ladder/"
   }
 }
