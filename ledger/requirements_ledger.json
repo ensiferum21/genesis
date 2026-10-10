@@ -716,7 +716,8 @@
    "local_execution": "TESTS_EXECUTED_IN_MATRIX",
    "owner": "research implementer",
    "remaining": [
-    "retention policy after confirmation"
+    "retention policy after confirmation",
+    "registration log with multiplicity rule (B14-OPEN-2)"
    ],
    "scientific_efficacy": "NOT_TESTED",
    "scope": "sealed prospective evaluation protocol (request v3, anchor, custodian, receipts, preflight)",
@@ -1009,9 +1010,11 @@
    "independent_verification": "PENDING",
    "local_execution": "TESTS_EXECUTED_IN_MATRIX",
    "owner": "research implementer",
-   "remaining": [],
+   "remaining": [
+    "replay contracts for exact, formal, causal, replication, DEV and priority kinds (B14-OPEN-4)"
+   ],
    "scientific_efficacy": "N/A",
-   "scope": "six orthogonal axes; effective levels re-derived on every read",
+   "scope": "six orthogonal axes; effective levels re-derived on every read; only kernel-replayable evidence (re-run witness checks, replayed certificates, role-signed receipts) licenses a level",
    "source": "spec \u00a77.1 (p. 19)",
    "tests": [
     "tests_genesis/test_evidence_kernel.py",
@@ -1471,7 +1474,9 @@
    "independent_verification": "PENDING",
    "local_execution": "TESTS_EXECUTED_IN_MATRIX",
    "owner": "research implementer",
-   "remaining": [],
+   "remaining": [
+    "kernel replay contract for exact_check so FINITE_CERTIFIED is reachable (B14-OPEN-4)"
+   ],
    "scientific_efficacy": "N/A",
    "scope": "heterogeneous checks: dual predicates, SAT vs exhaustive, Lean comparator, model finder",
    "source": "spec \u00a711.1 (p. 22)",
@@ -1596,10 +1601,11 @@
    "local_execution": "TESTS_EXECUTED_IN_MATRIX",
    "owner": "research implementer",
    "remaining": [
-    "interventions on fresh tasks"
+    "interventions on fresh tasks",
+    "causal replay contract (B14-OPEN-4)"
    ],
    "scientific_efficacy": "NOT_TESTED",
-   "scope": "DEV ablation/placebo controls",
+   "scope": "DEV ablation/placebo controls (diagnostics only; causal levels unreachable without a replay contract)",
    "source": "spec \u00a712.2 (p. 23)",
    "tests": [
     "tests_genesis/test_research_runtime.py"
@@ -2537,10 +2543,11 @@
    "local_execution": "TESTS_EXECUTED_IN_MATRIX",
    "owner": "research implementer",
    "remaining": [
-    "E3"
+    "E3",
+    "lineage protocol (B14-OPEN-3)"
    ],
    "scientific_efficacy": "NOT_TESTED",
-   "scope": "harness only",
+   "scope": "kernel rules only; the custodian refuses improver evaluations until a lineage protocol exists",
    "source": "spec \u00a719.5 (p. 31)",
    "tests": [
     "tests_genesis/test_acceptance_regressions.py"
@@ -2570,7 +2577,7 @@
     "E4"
    ],
    "scientific_efficacy": "NOT_TESTED",
-   "scope": "harness only: consecutive, program-linked generation chains",
+   "scope": "kernel rules only (consecutive, program-linked chains); custodian refuses generation kinds (B14-OPEN-3)",
    "source": "spec \u00a719.6 (p. 31)",
    "tests": [
     "tests_genesis/test_evidence_kernel.py::Confirmation",
@@ -2691,7 +2698,8 @@
     "decision": "PENDING_INDEPENDENT_ACCEPTANCE"
    },
    "code": [
-    "audit/reproductions/r01_r02_b13.py"
+    "audit/reproductions/r01_r02_b13.py",
+    "audit/redteam_b14_round2/README.md"
    ],
    "disposition": "IMPLEMENTED_BOUNDED_PENDING_AUDIT",
    "evidence": [],
@@ -2705,11 +2713,12 @@
    "owner": "research implementer",
    "remaining": [],
    "scientific_efficacy": "N/A",
-   "scope": "red-team catalogue: audit reproductions GI6-*, B14 R-01..R-03 and F1-F11 regressions",
+   "scope": "red-team catalogue: audit reproductions GI6-*, B14 R-01..R-03, two internal red-team rounds",
    "source": "spec \u00a722 (p. 32)",
    "tests": [
     "tests_genesis/test_gi6_legacy_paths.py",
-    "tests_genesis/test_redteam_b14.py"
+    "tests_genesis/test_redteam_b14.py",
+    "tests_genesis/test_redteam_b14_round2.py"
    ],
    "title": "Failure modes and red-team catalogue",
    "workstream": "W02"
@@ -3262,11 +3271,12 @@
    "owner": "research implementer",
    "remaining": [],
    "scientific_efficacy": "N/A",
-   "scope": "signed scientific transitions; envelope persisted before the phase; phase re-derived from events",
+   "scope": "signed scientific transitions bound to this campaign; envelope persisted before the phase; verified phase re-derived from events with the same binding checks",
    "source": "spec \u00a733.1 (p. 37)",
    "tests": [
     "tests_genesis/test_phase_receipts.py",
-    "tests_genesis/test_redteam_b14.py::F10SharedAcceptance"
+    "tests_genesis/test_redteam_b14.py::F10SharedAcceptance",
+    "tests_genesis/test_redteam_b14_round2.py::H1PhaseChain"
    ],
    "title": "Transaction boundary",
    "workstream": "W04"
@@ -3460,7 +3470,7 @@
    },
    "code": [
     "scripts/e2e_walkthrough.py",
-    "evidence/e2e_walkthrough_b14/walkthrough.json"
+    "evidence/e2e_walkthrough_b14/final/walkthrough.json"
    ],
    "disposition": "IMPLEMENTED_BOUNDED_PENDING_AUDIT",
    "evidence": [],
@@ -3572,7 +3582,9 @@
    "independent_verification": "PENDING",
    "local_execution": "TESTS_EXECUTED_IN_MATRIX",
    "owner": "research implementer",
-   "remaining": [],
+   "remaining": [
+    "kernel replay contract so THEOREM_CHECKED is reachable (B14-OPEN-4)"
+   ],
    "scientific_efficacy": "N/A",
    "scope": "trusted spec / untrusted proof / trusted check; axiom audit; leanchecker",
    "source": "spec \u00a737.2 (p. 39)",
@@ -3748,7 +3760,7 @@
    },
    "code": [
     "scripts/e2e_walkthrough.py",
-    "evidence/e2e_walkthrough_b14/walkthrough.md"
+    "evidence/e2e_walkthrough_b14/final/walkthrough.md"
    ],
    "disposition": "IMPLEMENTED_BOUNDED_PENDING_AUDIT",
    "evidence": [],
@@ -4053,7 +4065,8 @@
     "decision": "PENDING_INDEPENDENT_ACCEPTANCE"
    },
    "code": [
-    "src/genesis/kernel/receipts.py"
+    "src/genesis/kernel/receipts.py",
+    "src/genesis/custodian.py"
    ],
    "disposition": "IMPLEMENTED_BOUNDED_PENDING_AUDIT",
    "evidence": [],
@@ -4065,15 +4078,19 @@
    "independent_verification": "PENDING",
    "local_execution": "TESTS_EXECUTED_IN_MATRIX",
    "owner": "research implementer",
-   "remaining": [],
+   "remaining": [
+    "multiplicity across candidates (B14-OPEN-2)"
+   ],
    "scientific_efficacy": "N/A",
-   "scope": "signed evidence bound to the claim (kernel.receipts shared by all entry points)",
+   "scope": "signed evidence bound to the claim (kernel.receipts shared by all entry points); request facts checked against the campaign export",
    "source": "roadmap \u00a73",
    "tests": [
     "tests_genesis/test_acceptance_regressions.py",
-    "tests_genesis/test_redteam_b14.py"
+    "tests_genesis/test_redteam_b14.py",
+    "tests_genesis/test_redteam_b14_round2.py",
+    "tests_genesis/test_external_custodian.py"
    ],
-   "title": "signed evidence bound to the claim (kernel.receipts shared by all entry points)",
+   "title": "signed evidence bound to the claim (kernel.receipts shared by all entry points); request facts checked against the campaign export",
    "workstream": "W02"
   },
   {

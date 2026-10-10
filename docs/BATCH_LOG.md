@@ -282,3 +282,22 @@ See `docs/AUDIT_REMEDIATION.md` (GI6 section).
   fixture sealed panel 0 wins / 0 losses / 3 ties → signed NOT_SUPPORTED;
   preflight BLOCKED; release refused for a non-supported outcome.
 - Open: R-04, B14-OPEN-1, independent review for GV0.
+- **Internal red team, round 2** (fresh agent, on `9c71dbe`): 12 findings, 2
+  critical — a transfer label for a candidate that never saw the source domain
+  (request facts were never checked against the campaign) and math/causal/
+  replication levels licensed by producer-written verdicts. Repairs: the
+  custodian rebuilds the campaign export and checks campaign, source and
+  domain, and refuses improver/generation kinds until a lineage protocol
+  exists; only kernel-replayable evidence licenses a level (witness checks are
+  re-run, certificates replayed, receipts role-signed; other kinds license
+  nothing); the verified phase re-applies every binding check and is bound to
+  the campaign's own export history; strict JSON and byte equality in bundle
+  verification; shipped code must match its identity; wording gate hardened;
+  slots keyed by candidate program. Regressions in
+  `tests_genesis/test_redteam_b14_round2.py`; scripts and original logs in
+  `audit/redteam_b14_round2/`.
+- Walkthrough re-run on the final code (`evidence/e2e_walkthrough_b14/final/`;
+  the first B14 run is kept in `run1_commit_9c71dbe/`).
+- Open after B14: R-04; B14-OPEN-2 (multiplicity across candidates);
+  B14-OPEN-3 (improver/generation lineage); B14-OPEN-4 (replay contracts for
+  the other evidence kinds); GV0 independent review.

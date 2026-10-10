@@ -41,7 +41,7 @@
     "11": "Experiment B harness: FOF parser, SAT model finder, independent evaluator, E prover, kill gate (DEV: KILL).",
     "12": "Release bundle + verifier, \u00a738 classes (mutation, load, golden baselines, smoke cap), CI, container recipe, env lock.",
     "13": "SAT baseline arm, e2e walkthrough, requirements map, final matrix.",
-    "14": "R-01 shared receipt semantics; R-02 effective levels and bundle re-derivation; R-03 certificate custody + checker-only replay; internal red-team F1-F11 closed; W01 ledger (343 rows); undeclared skips fail the matrix."
+    "14": "R-01 shared receipt semantics; R-02 effective levels and bundle re-derivation; R-03 certificate custody + checker-only replay; internal red-team F1-F11 closed; W01 ledger (343 rows); undeclared skips fail the matrix. Second internal red-team round (12 findings, 2 critical) closed; only replayable evidence licenses levels; custodian checks requests against the campaign export."
   },
   "pending_evidence": {},
   "evidence": {
@@ -50,7 +50,7 @@
     "hard_panel_calibration": "evidence/hard_panel_calibration",
     "experiment_b_dev": "evidence/experiment_b_dev",
     "e2e_walkthrough": "evidence/e2e_walkthrough",
-    "e2e_walkthrough_b14": "evidence/e2e_walkthrough_b14"
+    "e2e_walkthrough_b14": "evidence/e2e_walkthrough_b14/final"
   },
   "remaining_external": [
     "external release authority",
@@ -69,7 +69,9 @@
   },
   "open_defects": [
     "R-04 deployment",
-    "B14-OPEN-1 custodian request facts vs export",
+    "B14-OPEN-2 multiplicity across candidates (W06/W07)",
+    "B14-OPEN-3 improver/generation lineage protocol (W21)",
+    "B14-OPEN-4 replay contracts for other evidence kinds",
     "GV0 independent review"
   ]
 }
