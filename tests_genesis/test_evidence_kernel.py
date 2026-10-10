@@ -108,7 +108,7 @@ class MathPromotion(Base):
     def opt_claim(self, cid, node, value=3, sha=None):
         problem = {'task_sha256': sha or self.store.put(self.path4()[0].model_dump(mode='json')), 'value': value,
                    'claim': 'optimum'}
-        self.k.create_claim(cid, self.k.math_statement(problem), 'H', [node], problem=problem)
+        self.k.create_claim(cid, self.k.math_statement(problem), 'this finite host only', [node], problem=problem)
 
     def test_optimality_needs_gap_zero_and_certificate_custody(self):
         self.opt_claim('c', self.bound(lower=2, upper=3))

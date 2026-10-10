@@ -97,6 +97,7 @@ def derived_files(s, *, trust_root=None, head=None):
     claims, revocations = effective_claims(s, trust_root=trust_root)
     claims['event_head'] = head
     files['CLAIMS.json'] = claims  # serialized by the caller (carries the export timestamp)
+    files['report.md'] = render_report(claims).encode()
     files['REVOCATIONS.json'] = canonical({'schema': 'genesis-revocations-v1', 'records': revocations})
     prereg = {kind: [v for _, _, v in _entities(s, kind)]
               for kind in ('ladder_preregistration', 'experiment_b_prereg', 'frozen_request')}
@@ -118,17 +119,45 @@ def derived_files(s, *, trust_root=None, head=None):
     return files
 
 
-def wording_problems(text, claims):
-    """Report prose against the effective ceiling; each claim statement against its own levels."""
-    out = [f"report.md: {p['phrase']!r} ({p['why']})" for p in lint(text, claims['ceiling'])]
+def render_report(claims):
+    """report.md is DERIVED from the per-claim current wording, never free prose: every
+    sentence that asserts a result is one claim's own established statement, beside that
+    claim's effective levels. Requested-but-unproved propositions appear only as marked
+    conjectures. (B14-OPEN-5 and external review F-01.)"""
+    lines = ['# Claims as currently established', '',
+             'Generated from CLAIMS.json. Each statement below is asserted only at the levels shown beside it; '
+             'items marked NOT ESTABLISHED are requests or conjectures, not results.', '']
     for c in claims['claims']:
-        if c.get('problem') is not None:
-            continue  # kernel-generated statement of the stored problem (create_claim enforces it)
-        # A statement may say what was granted (it stays exportable after a later revocation, with the
-        # downgraded effective levels beside it) but never more than was ever granted.
-        levels = c['historical']['recorded_levels']
-        out += [f"claim {c['claim_id']} statement: {p['phrase']!r} ({p['why']})" for p in lint(c['statement'], levels)]
-        out += [f"claim {c['claim_id']} scope: {p['phrase']!r} ({p['why']})" for p in lint(c['scope'], levels)]
+        levels = ', '.join(f'{a} {v}' for a, v in sorted(c['effective_levels'].items()) if a != 'invalidated')
+        lines.append(f"## {c['claim_id']}")
+        lines.append('')
+        if c['current_statement'] is not None:
+            lines.append(f"- Established: {c['current_statement']}")
+        else:
+            lines.append('- Established: nothing.')
+        if c['conjecture'] is not None:
+            lines.append(f"- {c['conjecture']}")
+        lines.append(f"- Scope: {c['scope']}")
+        lines.append(f"- Levels: {levels}{' (invalidated by revocation)' if c['effective_levels'].get('invalidated') else ''}")
+        lines.append(f"- Wording contract: {c['statement_contract']}")
+        lines.append('')
+    return '\n'.join(lines) + '\n'
+
+
+def wording_problems(notes, claims):
+    """Per-claim, structural: each claim's current statement and scope are checked against
+    THAT claim's effective levels (another claim's stronger evidence never licenses them);
+    operator notes carry no claims at all and are checked at the floor."""
+    floor = dict(FLOOR)
+    out = [f"operator_notes.md: {p['phrase']!r} ({p['why']})" for p in lint(notes, floor)]
+    for c in claims['claims']:
+        own = {a: v for a, v in c['effective_levels'].items() if a in AXES}
+        if c['current_statement'] is not None:
+            out += [f"claim {c['claim_id']} current statement: {p['phrase']!r} ({p['why']})"
+                    for p in lint(c['current_statement'], own)]
+        out += [f"claim {c['claim_id']} scope: {p['phrase']!r} ({p['why']})" for p in lint(c['scope'], own)]
+        if c['conjecture'] is not None and not c['conjecture'].startswith('NOT ESTABLISHED (requested, unproved): '):
+            out.append(f"claim {c['claim_id']}: unmarked conjecture")
     return out
 
 
@@ -166,7 +195,7 @@ def build_bundle(campaign_root, destination, *, report=None, limitations=(), tru
         text = report.decode() if isinstance(report, bytes) else (report or '')
         problems = wording_problems(text, claims)
         if problems:
-            # A cached report or claim statement that outruns the current evidence is invalidated, not shipped.
+            # Notes or wording that outrun the current evidence are invalidated, not shipped.
             raise ValueError('report exceeds the current effective evidence: ' + '; '.join(problems[:5]))
         files['CLAIMS.json'] = canonical(claims)
         files.update(derived)
@@ -185,7 +214,8 @@ def build_bundle(campaign_root, destination, *, report=None, limitations=(), tru
     for rel in sorted(identity['files']):
         files[f'analysis_code/{rel}'] = (REPO / rel).read_bytes()
     files['analysis_code/CODE_IDENTITY.json'] = canonical(identity)
-    files['report.md'] = (report or b'') if isinstance(report, bytes) else (report or '').encode()
+    # Caller prose is kept only as operator notes, checked at the floor: it cannot carry a claim.
+    files['operator_notes.md'] = (report or b'') if isinstance(report, bytes) else (report or '').encode()
     files['REPRODUCE.md'] = REPRODUCE.encode()
     files['LIMITATIONS.md'] = ('# Limitations\n\n' + ''.join(f'- {x}\n' for x in limitations) +
                                ''.join(MANDATORY_LIMITATIONS)).encode()
@@ -382,8 +412,8 @@ def verify_bundle(path, *, trust_root=None, later_revocations=None, replay_proof
                     if stray:
                         problems.append(f'files not derivable from the evidence store: {sorted(stray)[:3]}')
                     problems += _snapshot_problems(path / 'campaign.sqlite3.snapshot', s)
-                    report = (path / 'report.md').read_text() if (path / 'report.md').is_file() else ''
-                    problems += wording_problems(report, recomputed)
+                    notes = (path / 'operator_notes.md').read_text() if (path / 'operator_notes.md').is_file() else ''
+                    problems += wording_problems(notes, recomputed)
                     for prose in ('LIMITATIONS.md', 'REPRODUCE.md'):
                         text = (path / prose).read_text() if (path / prose).is_file() else ''
                         problems += [f"{prose}: {p['phrase']!r} ({p['why']})" for p in lint(text, recomputed['ceiling'])]

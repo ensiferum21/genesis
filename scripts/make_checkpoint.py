@@ -54,6 +54,7 @@ def main(argv=None):
     parser.add_argument('--quick', action='store_true')
     parser.add_argument('--parent', default=None, help='parent checkpoint zip (its SHA-256 is recorded)')
     parser.add_argument('--parent-ref', default=None, help='git ref of the parent checkpoint commit')
+    parser.add_argument('--suffix', default='', help='name suffix for a follow-up checkpoint of the same batch')
     args = parser.parse_args(argv)
     if git('status', '--porcelain').strip():
         raise SystemExit('working tree is dirty; commit before making a checkpoint')
@@ -103,11 +104,13 @@ def main(argv=None):
         record['failure_and_repair_logs'] = sorted(str(p.relative_to(ROOT)) for p in ROOT.glob('audit/**/logs*/*')
                                                    if p.is_file())
         record['model_identities'] = {'hosted_model': None, 'note': 'no language model is called by any campaign'}
-        notes = ROOT / 'docs' / 'checkpoints' / f'B{args.batch}_RECORD.md'
+        notes = ROOT / 'docs' / 'checkpoints' / f'B{args.batch}{args.suffix}_RECORD.md'
         if notes.exists():
             record['record_notes'] = notes.read_text()
-        name = f'GENESIS_COMPLETION_CHECKPOINT_B{args.batch:02d}'
+        name = f'GENESIS_COMPLETION_CHECKPOINT_B{args.batch:02d}{args.suffix}'
         dest = out / f'{name}.zip'
+        if dest.exists():
+            raise SystemExit(f'{dest} exists; checkpoints are never overwritten (use --suffix)')
         import tarfile
         members = {}
         with tarfile.open(archive) as tar:

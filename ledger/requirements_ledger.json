@@ -1097,15 +1097,16 @@
    "local_execution": "TESTS_EXECUTED_IN_MATRIX",
    "owner": "research implementer",
    "remaining": [
-    "per-claim sentence binding (B14-OPEN-5)"
+    "semantic contracts beyond generated math and committed statements"
    ],
    "scientific_efficacy": "N/A",
-   "scope": "wording gate on reports, prose files and claim statements; math statements generated from the problem",
+   "scope": "asserted wording derived per claim from its own effective levels (requested vs established); report.md generated from it; free prose checked at the floor",
    "source": "spec \u00a77.4 (p. 20)",
    "tests": [
     "tests_genesis/test_evidence_kernel.py::Wording",
     "tests_genesis/test_redteam_b14.py::F1BundleWholeObject",
-    "tests_genesis/test_redteam_b14_round3.py::F8Vocabulary"
+    "tests_genesis/test_redteam_b14_round3.py::F8Vocabulary",
+    "tests_genesis/test_external_review_b14.py::F01"
    ],
    "title": "Evidence wording gate",
    "workstream": "W02"

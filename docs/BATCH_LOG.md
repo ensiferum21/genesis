@@ -315,3 +315,16 @@ See `docs/AUDIT_REMEDIATION.md` (GI6 section).
   revocations; wording vocabulary widened; the world-loop summary is re-derived.
   Regressions in `tests_genesis/test_redteam_b14_round3.py`
   (`audit/redteam_b14_round3/`).
+
+## Batch 14, review fix 1 (B14_R1)
+- External review of B14 (`audit/review_b14_external/GENESIS_B14_REVIEW.md`)
+  found F-01: a requested optimum ("is 0 edges", true optimum 3) was exported as
+  the claim's statement at WITNESS_VALID and the bundle verified. Reproduced on
+  `30a61fc` before any change.
+- Repair: the kernel separates the requested proposition from what the
+  evidence establishes (`current_wording`, per claim, from that claim's own
+  levels); CLAIMS.json exports current statement, marked conjecture, contract
+  and requested statement; `report.md` is generated from them; caller prose is
+  floor-checked operator notes; math scope is fixed; free text is never
+  asserted. B14-OPEN-5 closed. Regressions:
+  `tests_genesis/test_external_review_b14.py` (the review's six cases + 2).

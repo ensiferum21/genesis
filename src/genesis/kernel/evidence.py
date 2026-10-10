@@ -27,6 +27,8 @@ from ..common import digest, utcnow
 from . import receipts as R
 from .roles import load_role_registry
 
+MATH_SCOPE = 'this finite host only'
+
 
 class Effect(str, Enum):
     USES_DEV_DATA = 'USES_DEV_DATA'
@@ -434,20 +436,61 @@ class EvidenceKernel:
                 raise ValueError("problem must be {task_sha256, value, claim: 'lower_bound' | 'optimum'}")
             if statement != self.math_statement(problem):
                 raise ValueError('a mathematical claim states exactly its problem: use EvidenceKernel.math_statement')
+            if scope != MATH_SCOPE:
+                raise ValueError(f'a mathematical claim is confined to its checked problem: scope must be {MATH_SCOPE!r}')
             claim['problem'] = problem
         self.s.save('claim', claim_id, claim)  # raises if the identity is reused with other content
         if self.s.state(f'claimlevels:{claim_id}') is None:
             self.s.set_state(f'claimlevels:{claim_id}', dict(FLOOR))
         return claim
 
-    def math_statement(self, problem):
-        """The only statement a mathematical claim may carry: generated from the stored problem,
-        so the text cannot say something about a different host, domain or value."""
+    def _problem_name(self, problem):
         task = self.s.get(problem['task_sha256'])  # the problem must be in the store
-        name = f"{task.get('domain')} host {task.get('task_id')} [{problem['task_sha256'][:16]}]"
+        return f"{task.get('domain')} host {task.get('task_id')} [{problem['task_sha256'][:16]}]"
+
+    def math_statement(self, problem):
+        """The REQUESTED proposition of a mathematical claim, generated from the stored problem so
+        the text cannot name a different host, domain or value. Generating it does not establish
+        it: what may be asserted now is `current_wording` (external B14 review, F-01)."""
+        name = self._problem_name(problem)
         if problem['claim'] == 'optimum':
             return f"the optimum for {name} is {problem['value']} edges"
         return f"{name} has a valid subgraph with {problem['value']} edges"
+
+    def current_wording(self, claim_id, levels=None):
+        """What this claim may assert NOW, derived from its own effective levels and kept apart
+        from what was requested. Anything requested but not established is exported only as a
+        marked conjecture. Contracts:
+          GENERATED_FROM_PROBLEM       math claims: lower-bound text at WITNESS_VALID, optimum text
+                                       only at OPTIMALITY_CHECKED (matching checked bounds)
+          COMMITTED_BEFORE_EVALUATION  bound claims: the committed statement only while a
+                                       confirmation level is effective
+          FREE_TEXT_NOT_ASSERTED       anything else: never asserted (a keyword lint is not a
+                                       semantic contract); levels exported, text only as a request"""
+        claim = self.claim(claim_id)
+        levels = levels or self.levels(claim_id)
+        requested = claim['statement']
+        problem = claim.get('problem')
+        if problem is not None:
+            contract, math = 'GENERATED_FROM_PROBLEM', levels['math']
+            name = self._problem_name(problem)
+            if math == 'OPTIMALITY_CHECKED' and problem['claim'] == 'optimum':
+                current = f"the optimum for {name} is {problem['value']} edges"
+            elif AXES['math'].index(math) >= AXES['math'].index('WITNESS_VALID'):
+                current = f"{name} has a valid subgraph with {problem['value']} edges"
+            else:
+                current = None
+        elif claim.get('binding') is not None:
+            contract = 'COMMITTED_BEFORE_EVALUATION'
+            established = any((a, v) in CONFIRMATION for a, v in levels.items() if a in AXES)
+            current = requested if established else None
+        else:
+            # Free text has no semantic contract (a keyword lint is not one), so it is never asserted:
+            # its levels are exported, its words only as an unproved request.
+            contract = 'FREE_TEXT_NOT_ASSERTED'
+            current = None
+        conjecture = None if current == requested else f'NOT ESTABLISHED (requested, unproved): {requested}'
+        return {'contract': contract, 'current_statement': current, 'conjecture': conjecture}
 
     def claim(self, claim_id):
         return self.s.get(self._entity('claim', claim_id))
@@ -889,7 +932,11 @@ class EvidenceKernel:
         claim = self.claim(claim_id)
         hits = self.invalidation(claim_id)
         revoked = {r['artifact']: r for r in self.revocations()}
-        return {'claim_id': claim_id, 'statement': claim['statement'], 'scope': claim['scope'],
+        levels = self.levels(claim_id)
+        wording = self.current_wording(claim_id, levels)
+        return {'claim_id': claim_id, 'current_statement': wording['current_statement'],
+                'conjecture': wording['conjecture'], 'statement_contract': wording['contract'],
+                'requested_statement': claim['statement'], 'scope': claim['scope'],
                 'dependencies': claim['dependencies'], 'binding': claim.get('binding'),
                 'problem': claim.get('problem'),
                 # Producer-recorded history: what was granted, by whom (registry), when. It is
@@ -897,6 +944,6 @@ class EvidenceKernel:
                 'historical': {'recorded_levels': self.recorded_levels(claim_id),
                                'promotions': self.promotion_history(claim_id),
                                'status': 'PRODUCER_RECORDED_NOT_AUTHORITATIVE'},
-                'effective_levels': self.levels(claim_id),
+                'effective_levels': levels,
                 'invalidated_by': [{'target': h, **({k: revoked[h][k] for k in ('reason', 'actor', 'at')}
                                                     if h in revoked else {})} for h in hits]}

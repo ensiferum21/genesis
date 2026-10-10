@@ -102,8 +102,11 @@ def build_index(store, destination, *, trust_root=None):
                         digest({'n': task['n'], 'edges': task['edges'], 'domain': task.get('domain')})))
         for claim_id, h, claim in entities('claim'):
             # Effective (revocation-aware, re-derived) levels, never the stored grant (R-02).
+            levels = kernel.levels(claim_id)
+            wording = kernel.current_wording(claim_id, levels)  # never the requested text as if established
             db.execute('INSERT INTO claims VALUES (?,?,?,?)',
-                       (claim_id, claim['statement'], claim['scope'], json.dumps(kernel.levels(claim_id))))
+                       (claim_id, wording['current_statement'] or wording['conjecture'], claim['scope'],
+                        json.dumps(levels)))
         # Evidence rows describe what currently licenses each effective level, re-derived now;
         # producer-recorded promotion decisions are not copied in as if they were current.
         for claim_id, h, claim in entities('claim'):
