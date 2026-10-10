@@ -36,6 +36,8 @@ def request_bundle(campaign,task_count=300):
     from .custodian import validate_request
     validate_request(request)
     s.save('frozen_request',digest(request),request)
+    if s.state('frozen_request_hash') not in (None,digest(request)):raise FileExistsError('a different request is already frozen')
+    s.set_state('frozen_request_hash',digest(request))
     path=campaign.root/'exports/evaluation_request.json'
     if path.exists() and path.read_bytes()!=canonical(request):raise FileExistsError('request already exported with different scope')
     path.write_bytes(canonical(request));return path
@@ -99,6 +101,8 @@ def main(argv=None):
     p=subs.add_parser('report');p.add_argument('action',choices=['build']);p.add_argument('root',type=Path)
     p=subs.add_parser('export');p.add_argument('action',choices=['replication-bundle']);p.add_argument('root',type=Path);p.add_argument('destination',type=Path)
     p=subs.add_parser('formal');p.add_argument('task',type=Path);p.add_argument('witness',type=Path);p.add_argument('destination',type=Path)
+    p=subs.add_parser('store');p.add_argument('action',choices=['verify','rebuild','index']);p.add_argument('root',type=Path)
+    p.add_argument('--out',type=Path,help='index destination (store index)')
     p=subs.add_parser('benchmark');p.add_argument('action',choices=['ladder']);p.add_argument('root',type=Path)
     p.add_argument('--domain',choices=['c4_host_v2','triangle_free_host_v1'],default='c4_host_v2')
     p.add_argument('--dev',default='4-20',help='development rungs, e.g. 4-20');p.add_argument('--test',default='21-40')
@@ -107,6 +111,16 @@ def main(argv=None):
     args=ap.parse_args(argv)
     if args.command=='doctor':result=doctor()
     elif args.command=='benchmark':result=run_benchmark(args)
+    elif args.command=='store':
+        if args.action=='rebuild':
+            from .store import rebuild_from_export
+            result=rebuild_from_export(args.root)
+            with Store(args.root) as s:result['verify']=s.verify()
+        elif args.action=='index':
+            from .kernel.index import build_index
+            with Store(args.root) as s:result=build_index(s,args.out or args.root/'reports'/'index.sqlite3')
+        else:
+            with Store(args.root) as s:result=s.verify()
     elif args.command=='init':
         cfg=Config.model_validate_json(args.config.read_bytes()) if args.config else Config()
         result={'root':str(Campaign.initialize(args.root,cfg).resolve())}

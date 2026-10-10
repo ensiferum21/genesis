@@ -54,21 +54,17 @@ def evidence_wording(evidence):
     return text
 
 
-TRANSITIONS={
-    'CREATED':{'VALIDATED_CONFIG','ABORTED'},
-    'VALIDATED_CONFIG':{'DEV_RUNNING','ABORTED'},
-    'DEV_RUNNING':{'CANDIDATE_FROZEN','ABORTED'},
-    'CANDIDATE_FROZEN':{'LEAK_SCAN_PASSED','INVALIDATED','ABORTED'},
-    'LEAK_SCAN_PASSED':{'SEALED_RUNNING','INVALIDATED','ABORTED'},
-    'SEALED_RUNNING':{'JUDGED','INVALIDATED','ABORTED'},
-    'JUDGED':{'RELEASED','REJECTED','INVALIDATED','ABORTED'},
-    'RELEASED':{'INVALIDATED'},'REJECTED':set(),'INVALIDATED':set(),'ABORTED':set()}
+from .kernel.phases import TRANSITIONS, SCIENTIFIC, advance  # noqa: F401  (single state machine)
 
 
-def transition(store,target,*,external_receipt=None):
+def transition(store,target,*,external_receipt=None,reason=None):
+    """Engineering transitions for research code. Scientific phases go through
+    kernel.phases.advance with a signed envelope; research code cannot pass a
+    dict or boolean as authority."""
     current=store.state('phase','CREATED')
     if target not in TRANSITIONS[current]:raise ValueError(f'illegal phase transition {current} -> {target}')
-    if target in ('LEAK_SCAN_PASSED','SEALED_RUNNING','JUDGED','RELEASED'):
-        # Research code cannot use an arbitrary dict or boolean as external authority.
+    if target in SCIENTIFIC:
         raise PermissionError('scientific phases belong to the separately operated evaluator/release service')
-    store.set_state('phase',target)
+    if target in ('ABORTED','INVALIDATED') and reason is None:
+        reason='research runtime: '+target.lower()
+    return advance(store,target,reason=reason)

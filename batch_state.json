@@ -6,10 +6,11 @@
     1,
     2,
     3,
-    4
+    4,
+    5
   ],
   "in_progress": null,
-  "next": 5,
+  "next": 6,
   "suites": [
     "tests_genesis",
     "tests"
@@ -18,9 +19,11 @@
     "1": "Incremental solver (output-identical to v1 oracle), O(1)-per-commit event export, known-answer ladder benchmark + CLI, toolchain pins.",
     "2": "Custodian-built exposure registry (GI6-10) and externally rooted role registry (GI6-11); request schema v2.",
     "3": "Legacy trust paths fail closed; promotion eligibility registry.",
-    "4": "Evidence kernel: DAG, typed effects, promotion, revocation, trust graph, wording gate."
+    "4": "Evidence kernel: DAG, typed effects, promotion, revocation, trust graph, wording gate.",
+    "5": "Signed phase machine, rebuild-from-export recovery, full SystemVersion, relational index."
   },
-  "pending_evidence": {
-    "ladder_c4_b1": "running from frozen worktree at commit 94c249c; results to be added under evidence/ladder/"
+  "pending_evidence": {},
+  "evidence": {
+    "ladder_c4_b1": "evidence/ladder_c4_b1 (replication zip sha256 eca1ae95\u2026, shipped beside checkpoint)"
   }
 }

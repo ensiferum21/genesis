@@ -19,6 +19,33 @@ from .research import make_panel,propose,diagnose,Ecology,compile_trace
 from .evaluation import paired,causal_controls,transition,evidence_wording
 
 
+def _file_hash(path):
+    from .common import bytes_hash
+    path=Path(path)
+    return bytes_hash(path.read_bytes()) if path.exists() else None
+
+
+def version_components(config):
+    """Values for SystemVersion fields that do not change within a campaign."""
+    from .ir import CONTRACTS
+    from .mrdl import __file__ as mrdl_file
+    repo=Path(__file__).resolve().parents[2]
+    pins=repo/'toolchain'/'PINS.json'
+    return {
+        'cognitive_kernel':digest({'contracts':{k:[list(v[0]),v[1]] for k,v in CONTRACTS.items()},
+                                   'mrdl':_file_hash(mrdl_file)}),
+        'verifier_set':{'graph-dual-predicates':_file_hash(Path(__file__).with_name('graphs.py')),
+                        'exact-solvers':_file_hash(Path(__file__).with_name('graphs.py')),
+                        'toolchain-pins':_file_hash(pins) or 'absent'},
+        'dependency_lock':_file_hash(repo/'requirements.lock') or 'absent',
+        'environment_digest':digest(environment()),
+        'curriculum_policy':{'panel_generator':'research.make_panel','tasks_per_panel':config.tasks_per_panel,
+                             'max_exact_edges':config.max_exact_edges},
+        'model_configuration':None,
+        'resolved_config':config.model_dump(mode='json'),
+    }
+
+
 def environment():
     packages={}
     for name in ('pydantic','numpy','scipy','scikit-learn','cryptography'):
@@ -154,10 +181,12 @@ class Campaign:
         if phase!='VALIDATED_CONFIG':raise ValueError('campaign not ready')
         transition(self.store,'DEV_RUNNING')
         seen=set();parent=SolverProgram(rounds=32);history=[];library=[]
-        initial={'generation':-1,'parent':None,'program':parent.model_dump(mode='json'),
-                 'source':self.store.state('source_hash'),'environment':environment(),
-                 'config':self.config.model_dump(mode='json'),'research_policy':'uniform','library':[]}
-        parent_version=digest(initial);self.store.save('system_version',parent_version,initial)
+        from .kernel.version import SystemVersion
+        fixed=version_components(self.config)
+        initial=SystemVersion(generation=-1,parent=None,solver=parent.model_dump(mode='json'),tool_library=(),
+                              memory_snapshot=self.store.verify()['head'],research_policy={'policy':'uniform'},
+                              source=self.store.state('source_hash'),**fixed)
+        parent_version=initial.version_id();self.store.save('system_version',parent_version,initial.model_dump(mode='json'))
         try:
             for generation in range(self.config.generations):
                 seed=self.config.seed+100000*generation
@@ -180,11 +209,11 @@ class Campaign:
                 policy=max(children,key=lambda p:(sum(r['value'] for r in child_select[p]),p))
                 selected=children[policy]
                 # Frozen before the subsequently generated public future panels.
-                version={'generation':generation,'parent':parent_version,
-                         'program':selected.model_dump(mode='json'),'source':self.store.state('source_hash'),
-                         'environment':environment(),'research_policy':policy,
-                         'library':library.copy(),'config':self.config.model_dump(mode='json')}
-                vid=digest(version);self.store.save('system_version',vid,version)
+                version=SystemVersion(generation=generation,parent=parent_version,solver=selected.model_dump(mode='json'),
+                                      tool_library=tuple(library),memory_snapshot=self.store.verify()['head'],
+                                      research_policy={'policy':policy,'mutation_weights':self.store.state('mutation_weights',[1,1,1,1])},
+                                      source=self.store.state('source_hash'),**fixed)
+                vid=version.version_id();self.store.save('system_version',vid,version.model_dump(mode='json'))
                 self.store.event('DEV_SUCCESSOR_FROZEN',{'version':vid,'candidate':selected.model_dump(mode='json')})
                 future,seen=self._panel(seed+4,'FUTURE',seen)
                 # Deterministic arm order is alternated per generation, and paired

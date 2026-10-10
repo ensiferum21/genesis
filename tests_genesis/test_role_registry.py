@@ -65,7 +65,8 @@ def write_trust_root(path, keys, root_key, roles_override=None):
     path.mkdir()
     (path / 'root.pub').write_text(root_key[1])
     roles = roles_override or {'custodian_key': keys['custodian'][1], 'prereg_key': keys['prereg'][1],
-                               'auditor_key': keys['auditor'][1], 'release_authority_id': 'external-release-board'}
+                               'auditor_key': keys['auditor'][1], 'release_key': keys['release'][1],
+                               'release_authority_id': 'external-release-board'}
     (path / 'roles.json').write_bytes(canonical(sign({'schema': 'genesis-role-registry-v1', 'roles': roles}, root_key[0])))
 
 
@@ -74,7 +75,7 @@ class RoleRegistry(unittest.TestCase):
         self.tmp = tempfile.TemporaryDirectory(); self.addCleanup(self.tmp.cleanup)
         self.base = Path(self.tmp.name); self.base.chmod(0o755)
         self.secrets = self.base / 'secrets'; self.secrets.mkdir(mode=0o700)
-        self.keys = {name: keypair(self.secrets, name) for name in ('custodian', 'prereg', 'auditor')}
+        self.keys = {name: keypair(self.secrets, name) for name in ('custodian', 'prereg', 'auditor', 'release')}
         self.root_key = keypair(self.secrets, 'trust-root')
 
     def test_pins_are_no_longer_a_caller_argument(self):
@@ -137,7 +138,8 @@ class RoleRegistry(unittest.TestCase):
     def test_root_key_cannot_double_as_a_role_key(self):
         trust = self.base / 'trust'
         roles = {'custodian_key': self.root_key[1], 'prereg_key': self.keys['prereg'][1],
-                 'auditor_key': self.keys['auditor'][1], 'release_authority_id': 'board'}
+                 'auditor_key': self.keys['auditor'][1], 'release_key': self.keys['release'][1],
+                 'release_authority_id': 'board'}
         write_trust_root(trust, self.keys, self.root_key, roles_override=roles)
         self._externalize(trust)
         result = self._run_as_nobody(trust)

@@ -1,0 +1,82 @@
+"""Campaign state machine with externally verified scientific transitions (spec §33).
+
+    CREATED -> VALIDATED_CONFIG -> DEV_RUNNING -> CANDIDATE_FROZEN
+      -> LEAK_SCAN_PASSED -> SEALED_RUNNING -> JUDGED -> RELEASED | REJECTED
+    Any state -> ABORTED; any post-freeze state -> INVALIDATED.
+
+Engineering transitions are local. Every scientific transition needs a signed
+envelope from the role the registry assigns to it, bound to this campaign's
+frozen request; the envelope is stored before the phase changes, so a crash
+cannot skip a gate. ABORTED and INVALIDATED only lower what may be claimed,
+so they need a recorded reason but no signature.
+"""
+from ..common import digest
+from .roles import load_role_registry
+from .signing import verify
+
+TRANSITIONS = {
+    'CREATED': {'VALIDATED_CONFIG', 'ABORTED'},
+    'VALIDATED_CONFIG': {'DEV_RUNNING', 'ABORTED'},
+    'DEV_RUNNING': {'CANDIDATE_FROZEN', 'ABORTED'},
+    'CANDIDATE_FROZEN': {'LEAK_SCAN_PASSED', 'INVALIDATED', 'ABORTED'},
+    'LEAK_SCAN_PASSED': {'SEALED_RUNNING', 'INVALIDATED', 'ABORTED'},
+    'SEALED_RUNNING': {'JUDGED', 'INVALIDATED', 'ABORTED'},
+    'JUDGED': {'RELEASED', 'REJECTED', 'INVALIDATED', 'ABORTED'},
+    'RELEASED': {'INVALIDATED'}, 'REJECTED': set(), 'INVALIDATED': set(), 'ABORTED': set()}
+SCIENTIFIC = {'LEAK_SCAN_PASSED': 'prereg_key', 'SEALED_RUNNING': 'custodian_key', 'JUDGED': 'custodian_key',
+              'RELEASED': 'release_key', 'REJECTED': 'release_key'}
+LOWERING = {'ABORTED', 'INVALIDATED'}
+
+
+class PhaseError(ValueError):
+    pass
+
+
+def _check_payload(store, target, payload, envelope):
+    request_hash = store.state('frozen_request_hash')
+    if not request_hash:
+        raise PhaseError('no frozen evaluation request recorded for this campaign')
+    if payload.get('request_hash') != request_hash:
+        raise PhaseError('receipt is bound to a different evaluation request')
+    if target == 'LEAK_SCAN_PASSED':
+        if payload.get('schema') != 'genesis-prereg-anchor-v2' or not payload.get('exposure_registry_root'):
+            raise PhaseError('LEAK_SCAN_PASSED needs a custodian registration anchor with an exposure registry root')
+    elif target == 'SEALED_RUNNING':
+        anchor = store.state('phase_receipt:LEAK_SCAN_PASSED')
+        if payload.get('schema') != 'genesis-evaluation-receipt-v1' or payload.get('anchor_hash') != digest(anchor):
+            raise PhaseError('sealed receipt does not reference the registered anchor')
+    elif target == 'JUDGED':
+        if payload.get('raw_evidence_complete') is not True or payload.get('completed_rows') != payload.get('expected_rows'):
+            raise PhaseError('judgement needs complete raw evidence')
+        if store.state('phase_receipt:SEALED_RUNNING') != envelope:
+            raise PhaseError('judgement must use the same signed receipt as the sealed run')
+    else:  # RELEASED / REJECTED
+        receipt = store.state('phase_receipt:JUDGED')
+        decision = 'RELEASE' if target == 'RELEASED' else 'REJECT'
+        if payload.get('schema') != 'genesis-release-decision-v1' or payload.get('decision') != decision:
+            raise PhaseError(f'{target} needs a signed {decision} decision')
+        if payload.get('receipt_hash') != digest(receipt):
+            raise PhaseError('release decision does not reference the judged receipt')
+
+
+def advance(store, target, *, envelope=None, reason=None, trust_root=None):
+    current = store.state('phase', 'CREATED')
+    if target not in TRANSITIONS[current]:
+        raise PhaseError(f'illegal phase transition {current} -> {target}')
+    if target in LOWERING:
+        if not isinstance(reason, str) or not reason.strip():
+            raise PhaseError(f'{target} needs a recorded reason')
+        store.event('PHASE_LOWERED', {'from': current, 'to': target, 'reason': reason})
+    elif target in SCIENTIFIC:
+        registry, problems = load_role_registry(trust_root)
+        if registry is None:
+            raise PermissionError('scientific phases need an externally controlled role registry: ' + '; '.join(problems))
+        role = SCIENTIFIC[target]
+        try:
+            payload = verify(envelope, registry['pins'][role])
+        except Exception as exc:
+            raise PhaseError(f'{target} receipt is not signed by the pinned {role}: {type(exc).__name__}')
+        _check_payload(store, target, payload, envelope)
+        store.set_state(f'phase_receipt:{target}', envelope)  # persisted before the phase changes
+    store.set_state('phase', target)
+    return {'from': current, 'to': target}

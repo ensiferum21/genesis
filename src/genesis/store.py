@@ -24,6 +24,12 @@ class Store:
         for name in ('objects/sha256','work','snapshots','reports','exports'):
             (self.root/name).mkdir(parents=True,exist_ok=True)
         self._export_seq = None; self._export_size = None
+        if (self.root/'campaign.sqlite3-wal').exists() or (self.root/'campaign.sqlite3-shm').exists():
+            # This store never uses WAL. Sidecars mean a legacy or interrupted
+            # state; opening would let SQLite rewrite them and destroy evidence.
+            self.lock.close()
+            raise RuntimeError('WAL sidecar present; inspect it, then run `genesis store rebuild` '
+                               '(rebuilds from events.jsonl and quarantines the database files)')
         self.db = sqlite3.connect(self.root/'campaign.sqlite3', isolation_level=None)
         self.db.execute('PRAGMA foreign_keys=ON')
         # A campaign has exactly one writer. Rollback journaling keeps durable
@@ -31,14 +37,7 @@ class Store:
         # the workspace is checkpointed or transferred by the hosting runtime.
         self.db.execute('PRAGMA journal_mode=DELETE')
         self.db.execute('PRAGMA synchronous=FULL')
-        self.db.executescript('''
-            CREATE TABLE IF NOT EXISTS events(seq INTEGER PRIMARY KEY, hash TEXT UNIQUE NOT NULL, body BLOB NOT NULL);
-            CREATE TABLE IF NOT EXISTS attempts(id TEXT PRIMARY KEY, trial_id TEXT NOT NULL, status TEXT NOT NULL,
-                                               request TEXT NOT NULL, receipt TEXT);
-            CREATE TABLE IF NOT EXISTS entities(kind TEXT NOT NULL, id TEXT NOT NULL, object_hash TEXT NOT NULL,
-                                              PRIMARY KEY(kind,id));
-            CREATE TABLE IF NOT EXISTS state(key TEXT PRIMARY KEY, value BLOB NOT NULL);
-        ''')
+        self.db.executescript(SCHEMA)
         try:
             self.verify()
             self.recover_export()
@@ -179,26 +178,8 @@ class Store:
     def verify(self):
         if self.db.execute('PRAGMA quick_check').fetchall()!=[('ok',)]:
             raise RuntimeError('SQLite structural integrity failure')
-        prev=None; count=0; derived_state={};derived_entities={};derived_attempts={}
-        for seq,h,raw in self.db.execute('SELECT seq,hash,body FROM events ORDER BY seq'):
-            body=json.loads(raw); count+=1
-            if seq!=count or body['seq']!=seq or body['prev_hash']!=prev or bytes_hash(raw)!=h:
-                raise RuntimeError('journal corruption')
-            payload=self.get(body['payload']);prev=h
-            if body['kind']=='STATE_UPDATED':derived_state[payload['key']]=payload['value']
-            elif body['kind']=='ENTITY_COMMITTED':
-                key=(payload['kind'],payload['id']);value=payload['object_hash']
-                if key in derived_entities and derived_entities[key]!=value:raise RuntimeError('conflicting entity history')
-                derived_entities[key]=value
-            elif body['kind']=='ATTEMPT_STARTED':
-                aid=payload['attempt_id']
-                if aid in derived_attempts:raise RuntimeError('duplicate attempt start')
-                derived_attempts[aid]=(payload['trial_id'],'RUNNING',payload['request'],None)
-            elif body['kind']=='ATTEMPT_FINISHED':
-                aid=payload['attempt_id'];receipt=payload['receipt']
-                if aid not in derived_attempts or derived_attempts[aid][1]!='RUNNING':raise RuntimeError('invalid attempt history')
-                trial,_,request,_=derived_attempts[aid]
-                derived_attempts[aid]=(trial,self.get(receipt)['status'],request,receipt)
+        rows=self.db.execute('SELECT seq,hash,body FROM events ORDER BY seq').fetchall()
+        count,prev,derived_state,derived_entities,derived_attempts=derive(rows,self.get)
         for (h,) in self.db.execute('SELECT object_hash FROM entities'):
             self.get_bytes(h)
         for req,receipt in self.db.execute('SELECT request,receipt FROM attempts'):
@@ -222,3 +203,107 @@ class Store:
                 raise RuntimeError('snapshot structural integrity failure')
         finally:dest.close()
         return path
+
+
+def derive(rows,get):
+    """Check the hash chain and derive state/entities/attempts from (seq, hash, body) rows."""
+    prev=None; count=0; derived_state={};derived_entities={};derived_attempts={}
+    for seq,h,raw in rows:
+        body=json.loads(raw); count+=1
+        if seq!=count or body['seq']!=seq or body['prev_hash']!=prev or bytes_hash(raw)!=h:
+            raise RuntimeError('journal corruption')
+        payload=get(body['payload']);prev=h
+        if body['kind']=='STATE_UPDATED':derived_state[payload['key']]=payload['value']
+        elif body['kind']=='ENTITY_COMMITTED':
+            key=(payload['kind'],payload['id']);value=payload['object_hash']
+            if key in derived_entities and derived_entities[key]!=value:raise RuntimeError('conflicting entity history')
+            derived_entities[key]=value
+        elif body['kind']=='ATTEMPT_STARTED':
+            aid=payload['attempt_id']
+            if aid in derived_attempts:raise RuntimeError('duplicate attempt start')
+            derived_attempts[aid]=(payload['trial_id'],'RUNNING',payload['request'],None)
+        elif body['kind']=='ATTEMPT_FINISHED':
+            aid=payload['attempt_id'];receipt=payload['receipt']
+            if aid not in derived_attempts or derived_attempts[aid][1]!='RUNNING':raise RuntimeError('invalid attempt history')
+            trial,_,request,_=derived_attempts[aid]
+            derived_attempts[aid]=(trial,get(receipt)['status'],request,receipt)
+    return count,prev,derived_state,derived_entities,derived_attempts
+
+
+SCHEMA='''
+CREATE TABLE IF NOT EXISTS events(seq INTEGER PRIMARY KEY, hash TEXT UNIQUE NOT NULL, body BLOB NOT NULL);
+CREATE TABLE IF NOT EXISTS attempts(id TEXT PRIMARY KEY, trial_id TEXT NOT NULL, status TEXT NOT NULL,
+                                   request TEXT NOT NULL, receipt TEXT);
+CREATE TABLE IF NOT EXISTS entities(kind TEXT NOT NULL, id TEXT NOT NULL, object_hash TEXT NOT NULL,
+                                  PRIMARY KEY(kind,id));
+CREATE TABLE IF NOT EXISTS state(key TEXT PRIMARY KEY, value BLOB NOT NULL);
+'''
+
+
+def rebuild_from_export(root):
+    """Recover a campaign database from its append-only events.jsonl and CAS (spec §33.2).
+
+    Every exported line is re-hashed and chained; every referenced object must be
+    present and hash-correct. A partially written final line is dropped and
+    reported. The unreadable database files are moved, never deleted, to
+    quarantine/<UTC time>/ for forensic inspection. Returns a recovery record.
+    """
+    root=Path(root).resolve()
+    export=root/'events.jsonl'
+    if not export.is_file():raise FileNotFoundError('no event export to rebuild from')
+    lock=(root/'writer.lock').open('a+b')
+    try:fcntl.flock(lock,fcntl.LOCK_EX|fcntl.LOCK_NB)
+    except BlockingIOError:
+        lock.close();raise RuntimeError('campaign has an active writer; refusing to rebuild')
+    try:return _rebuild_locked(root,export)
+    finally:
+        fcntl.flock(lock,fcntl.LOCK_UN);lock.close()
+
+
+def _rebuild_locked(root,export):
+    def get(h):
+        p=root/'objects/sha256'/h
+        if p.is_symlink():raise RuntimeError('object symlink')
+        data=p.read_bytes()
+        if bytes_hash(data)!=h:raise RuntimeError('object corruption')
+        return json.loads(data)
+    raw_lines=export.read_bytes().split(b'\n')
+    partial=raw_lines[-1]!=b''
+    rows=[]
+    for line in raw_lines[:-1]:
+        record=json.loads(line)
+        if set(record)!={'hash','event'}:raise RuntimeError('event export schema')
+        body=canonical(record['event'])
+        rows.append((record['event']['seq'],record['hash'],body))
+    count,head,derived_state,derived_entities,derived_attempts=derive(rows,get)
+    for h in derived_entities.values():get(h)
+    for _,_,request,receipt in derived_attempts.values():
+        get(request)
+        if receipt:get(receipt)
+    stamp=utcnow().replace(':','').replace('+','Z')
+    quarantine=root/'quarantine'/stamp
+    moved=[]
+    for name in ('campaign.sqlite3','campaign.sqlite3-wal','campaign.sqlite3-shm','campaign.sqlite3-journal'):
+        if (root/name).exists():
+            quarantine.mkdir(parents=True,exist_ok=True)
+            os.replace(root/name,quarantine/name);moved.append(name)
+    db=sqlite3.connect(root/'campaign.sqlite3',isolation_level=None)
+    try:
+        db.execute('PRAGMA journal_mode=DELETE');db.execute('PRAGMA synchronous=FULL')
+        db.executescript(SCHEMA)
+        db.execute('BEGIN IMMEDIATE')
+        db.executemany('INSERT INTO events VALUES (?,?,?)',rows)
+        db.executemany('INSERT INTO entities VALUES (?,?,?)',[(k,i,h) for (k,i),h in derived_entities.items()])
+        db.executemany('INSERT INTO attempts VALUES (?,?,?,?,?)',[(a,*v) for a,v in derived_attempts.items()])
+        db.executemany('INSERT INTO state VALUES (?,?)',[(k,canonical(v)) for k,v in derived_state.items()])
+        db.execute('COMMIT')
+    finally:db.close()
+    if partial:
+        # Keep history append-only: the dropped fragment is preserved beside the quarantine.
+        quarantine.mkdir(parents=True,exist_ok=True)
+        (quarantine/'events.jsonl.partial-tail').write_bytes(raw_lines[-1])
+        full=b''.join(line+b'\n' for line in raw_lines[:-1])
+        os.replace(export,quarantine/'events.jsonl.before-rebuild')
+        export.write_bytes(full)
+    return {'events':count,'head':head,'quarantined':moved,'partial_tail_dropped':partial,
+            'quarantine':str(quarantine) if moved or partial else None}

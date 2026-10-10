@@ -38,3 +38,30 @@ See `docs/AUDIT_REMEDIATION.md` (GI6 section).
   transformations; campaign and ladder reports must pass it to be written.
 - `genesis/kernel/signing.py`; architecture boundary test (kernel imports no
   research/campaign/DSL/IR code).
+
+## Batch 5 — coordinator, recovery, storage, identity
+- `kernel/phases.py`: one state machine. Engineering phases are local;
+  LEAK_SCAN_PASSED / SEALED_RUNNING / JUDGED / RELEASED / REJECTED need an
+  envelope signed by the role the external registry assigns (prereg, custodian,
+  release), bound to the campaign's frozen request hash, stored before the
+  phase changes. ABORTED/INVALIDATED need only a recorded reason.
+  End-to-end test: real campaign → custodian register/evaluate → research
+  process as UID 65534 reaches RELEASED; wrong-role signatures, skipped gates
+  and root processes are refused.
+- Role registry now includes `release_key`; loader moved to `kernel/roles.py`.
+- `store.rebuild_from_export`: rebuilds the database from `events.jsonl` + CAS,
+  quarantining the old files. Recovered the 10 Oct run whose live database was
+  malformed (`dev_three_generations_wal_reopen_failed`): 1,372 events, head
+  `c69b1c99…`, phase CANDIDATE_FROZEN, 600/600 attempts. Opening a store with
+  WAL sidecars now refuses instead of letting SQLite rewrite them.
+- Root cause of that corruption remains unproven. Evidence: 0-byte WAL plus a
+  32 KiB SHM beside a malformed main file, written after the last export —
+  consistent with a WAL checkpoint/truncate interrupted by a non-atomic
+  workspace snapshot. Mitigations: rollback journal, full fsync, sidecar
+  refusal, and rebuild from the append-only export.
+- `kernel/version.py`: full §2.1 SystemVersion (solver, tool library, memory
+  snapshot, curriculum, research policy, model configuration, cognitive kernel
+  digest, verifier set, config, dependency lock, environment digest, source).
+- `kernel/index.py` + `genesis store index`: derived read-only §16.4 tables.
+- Property test: 25 random histories rebuild to the exact online state.
+- Ladder baseline evidence: `evidence/ladder_c4_b1/`.
