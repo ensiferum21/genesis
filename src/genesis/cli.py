@@ -99,7 +99,8 @@ def main(argv=None):
     p=subs.add_parser('evidence');p.add_argument('action',choices=['show']);p.add_argument('root',type=Path)
     p=subs.add_parser('freeze');p.add_argument('action',choices=['candidate']);p.add_argument('root',type=Path);p.add_argument('--tasks',type=int,default=300)
     p=subs.add_parser('report');p.add_argument('action',choices=['build']);p.add_argument('root',type=Path)
-    p=subs.add_parser('export');p.add_argument('action',choices=['replication-bundle']);p.add_argument('root',type=Path);p.add_argument('destination',type=Path)
+    p=subs.add_parser('export');p.add_argument('action',choices=['replication-bundle','release-bundle']);p.add_argument('root',type=Path);p.add_argument('destination',type=Path)
+    p=subs.add_parser('verify-bundle');p.add_argument('bundle',type=Path)
     p=subs.add_parser('formal');p.add_argument('task',type=Path);p.add_argument('witness',type=Path);p.add_argument('destination',type=Path)
     p.add_argument('--check',action='store_true',help='kernel-check the obligation with the pinned Lean in the sandbox')
     p=subs.add_parser('research');p.add_argument('action',choices=['loop']);p.add_argument('root',type=Path)
@@ -157,7 +158,15 @@ def main(argv=None):
             (Path(args.destination)/'lean_receipt.json').write_bytes(canonical(receipt))
             result={'obligation':result,'lean_status':receipt['status'],'axioms':receipt.get('axioms'),
                     'scope':receipt.get('obligation',{}).get('scope')}
-    elif args.command=='export':result=export_replication(args.root,args.destination)
+    elif args.command=='export':
+        if args.action=='release-bundle':
+            from .release_bundle import build_bundle
+            report=(Path(args.root)/'reports'/'report.md')
+            result=build_bundle(args.root,args.destination,report=report.read_text() if report.exists() else '')
+        else:result=export_replication(args.root,args.destination)
+    elif args.command=='verify-bundle':
+        from .release_bundle import verify_bundle
+        result=verify_bundle(args.bundle)
     elif args.command in ('world','artifact','evidence'):
         with Store(args.root) as s:
             if args.command=='world':result=[s.get(h) for (h,) in s.db.execute("SELECT object_hash FROM entities WHERE kind='world'")]

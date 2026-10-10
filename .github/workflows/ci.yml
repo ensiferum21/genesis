@@ -1,0 +1,52 @@
+# Spec §38 test matrix in CI. Commit-level suites run on every push; nightly
+# adds certificate, formal and legacy suites with the pinned toolchain; the
+# release profile (sandbox escape suite) needs a privileged self-hosted runner
+# with runc, because containment cannot be demonstrated on hosted runners.
+name: genesis-test-matrix
+on:
+  push:
+  pull_request:
+  schedule:
+    - cron: '17 3 * * *'
+  workflow_dispatch:
+    inputs:
+      profile:
+        description: commit | nightly | release
+        default: release
+
+jobs:
+  commit:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.12'}
+      - run: python -m pip install -r requirements.lock
+      - run: python scripts/run_test_matrix.py --profile commit --report commit_report.json
+      - uses: actions/upload-artifact@v4
+        with: {name: commit-report, path: commit_report.json}
+
+  nightly:
+    if: github.event_name == 'schedule' || github.event.inputs.profile == 'nightly'
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.12'}
+      - run: python -m pip install -r requirements.lock
+      - run: sudo apt-get install -y build-essential cmake
+      - run: GENESIS_TOOLCHAIN=$HOME/toolchain toolchain/install_tools.sh
+      - run: GENESIS_TOOLCHAIN=$HOME/toolchain python scripts/run_test_matrix.py --profile nightly --report nightly_report.json
+      - uses: actions/upload-artifact@v4
+        with: {name: nightly-report, path: nightly_report.json}
+
+  release:
+    if: github.event.inputs.profile == 'release'
+    runs-on: [self-hosted, linux, genesis-sandbox]   # root + runc required; skips are release-blocking
+    steps:
+      - uses: actions/checkout@v4
+      - run: python3 -m pip install -r requirements.lock
+      - run: GENESIS_TOOLCHAIN=$HOME/toolchain toolchain/install_tools.sh
+      - run: GENESIS_TOOLCHAIN=$HOME/toolchain python3 scripts/run_test_matrix.py --profile release --report release_report.json
+      - uses: actions/upload-artifact@v4
+        with: {name: release-report, path: release_report.json}

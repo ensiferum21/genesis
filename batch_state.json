@@ -13,10 +13,11 @@
     8,
     9,
     10,
-    11
+    11,
+    12
   ],
   "in_progress": null,
-  "next": 12,
+  "next": 13,
   "suites": [
     "tests_genesis",
     "tests",
@@ -35,7 +36,8 @@
     "8": "Pinned Lean 4.34.1, three-stage sandboxed comparator checker, canaries.",
     "9": "Leak firewall: text/structural/elaborated/near-dup screening, oracle, theorem memory rule.",
     "10": "IR overloads + replay, 5 macros, research market, world-step loop, Appendix A registry.",
-    "11": "Experiment B harness: FOF parser, SAT model finder, independent evaluator, E prover, kill gate (DEV: KILL)."
+    "11": "Experiment B harness: FOF parser, SAT model finder, independent evaluator, E prover, kill gate (DEV: KILL).",
+    "12": "Release bundle + verifier, \u00a738 classes (mutation, load, golden baselines, smoke cap), CI, container recipe, env lock."
   },
   "pending_evidence": {},
   "evidence": {

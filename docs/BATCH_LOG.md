@@ -212,3 +212,24 @@ See `docs/AUDIT_REMEDIATION.md` (GI6 section).
   portfolio's CPU. Gate (margin 1): KILL on this family. The family is too
   easy for lemma selection to matter; a meaningful run needs harder problems.
 - `genesis experiment ghost-census <dir>`.
+
+## Batch 12 — reproducibility, CI, test matrix
+- `release_bundle.py` (§43): `genesis export release-bundle` writes the full
+  release layout (claims, config, SystemVersion, dependency lock with observed
+  distributions + RECORD hashes, toolchain pins, events, snapshot, objects,
+  certificates, checker and resource receipts, preregistrations, shipped
+  analysis code with code identity, REPRODUCE/LIMITATIONS); `genesis
+  verify-bundle` independently checks file hashes, rebuilds the event chain
+  from the export and recomputes the shipped code identity. Tampered claims or
+  truncated events fail verification.
+- §38 classes added: mutation (receipt/object/event/derived-state corruption),
+  load/concurrency (single writer, concurrent worker returns, resource
+  receipts), baseline regression against `golden/baselines.json` (regenerated
+  only deliberately via `scripts/regenerate_golden.py`), end-to-end smoke
+  under the 600 s cap. Map in `docs/TEST_MATRIX.md`.
+- `run_test_matrix.py --profile commit|nightly|release`; CI workflow
+  `.github/workflows/ci.yml` (release profile requires a privileged
+  self-hosted runner with runc; skips there are release-blocking).
+- `containers/Containerfile` + `scripts/pin_container.sh` (base image digest
+  must be resolved where a registry is reachable — not possible here) and
+  `environment/observed_python313.json` via `scripts/environment_lock.py`.

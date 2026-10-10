@@ -59,12 +59,19 @@ def main(argv=None):
     parser = argparse.ArgumentParser()
     parser.add_argument('--report', default=None)
     parser.add_argument('--quick', action='store_true', help='skip the legacy regression suite')
+    parser.add_argument('--profile', choices=['commit', 'nightly', 'release'], default='release',
+                        help='spec §38 cadence: commit = integration; nightly adds legacy, certificates, formal; '
+                             'release adds the sandbox escape suite (all suites)')
     parser.add_argument('--timeout', type=int, default=3600)
     args = parser.parse_args(argv)
     suites = dict(SUITES)
     for name, spec in OPTIONAL.items():
         if (ROOT / spec[0]).is_dir():
             suites[name] = spec
+    keep = {'commit': {'integration'},
+            'nightly': {'integration', 'legacy_regression', 'certificates', 'formal'},
+            'release': set(suites)}[args.profile]
+    suites = {k: v for k, v in suites.items() if k in keep}
     if args.quick:
         suites.pop('legacy_regression', None)
     results = []
@@ -82,6 +89,7 @@ def main(argv=None):
         if not result['ok']:
             print('\n'.join(result['log'].strip().splitlines()[-40:]), file=sys.stderr)
     summary = {
+        'profile': args.profile,
         'python': sys.version.split()[0],
         'suites': [{k: v for k, v in r.items() if k != 'log'} for r in results],
         'total_ran': sum(r['ran'] for r in results),

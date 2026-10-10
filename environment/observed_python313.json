@@ -1,0 +1,55 @@
+{
+ "distributions": {
+  "annotated-types": {
+   "record_sha256": "8191d3aa1ac93480688819b4db2385606219a3f7a453b85e086646134ded4f96",
+   "version": "0.8.0"
+  },
+  "cffi": {
+   "record_sha256": "849d25a563c300019af69b83de85daa1dc4f89dbeedd1714869aab4705611e37",
+   "version": "2.1.1"
+  },
+  "cryptography": {
+   "record_sha256": "7ab1ead99ccb58584efc331dd9874e4845092e9c73c14791f85e8934dd9b7e08",
+   "version": "50.0.1"
+  },
+  "joblib": {
+   "record_sha256": "c1088eee5a30f2c8e5b1611ee43a7ccd8e8a9fcc53ebba0606692431d896a873",
+   "version": "1.6.0"
+  },
+  "networkx": {
+   "record_sha256": "f6833bb525b720a7809dd6280817601af3dbd78efef02d9e55d4b887ec1f52da",
+   "version": "3.6.1"
+  },
+  "numpy": {
+   "record_sha256": "8b21505d028571fd355a647ee4216afaa3d7ce443fdbcb6b0dc5fe995f56c468",
+   "version": "2.5.3"
+  },
+  "pydantic": {
+   "record_sha256": "93253f807bd8a0440d58d159ffeef610528e8a687b948095955114275c16881f",
+   "version": "2.13.5"
+  },
+  "pydantic-core": {
+   "record_sha256": "d0b86d3f3d21d5b23d2ec645ebf1a3404155ba880f9b814d360f60ae1e1cc42a",
+   "version": "2.46.5"
+  },
+  "scikit-learn": {
+   "record_sha256": "eb1119b84a0b87b3270b579008560d5f5baf2cccb94181d3e5686704bb8394a6",
+   "version": "1.9.1"
+  },
+  "scipy": {
+   "record_sha256": "5e7bb60777de0efcf02c27173e3ae35eecf69eb7f840ef803d427c02592722f4",
+   "version": "1.18.1"
+  },
+  "threadpoolctl": {
+   "record_sha256": "271378a6666651adc5c620731081b466a07024b75d7728b9d61b8335b45d7225",
+   "version": "3.7.0"
+  },
+  "typing-extensions": {
+   "record_sha256": "9e07fea845cac76293d927afa7157a14ecba39b318bc8af236b8de530b7656c1",
+   "version": "4.16.0"
+  }
+ },
+ "implementation": "CPython",
+ "platform": "Linux-6.18.44-fc-v114-x86_64-with-glibc2.39",
+ "python": "3.13.16 (main, Oct  1 2026, 15:40:24) [GCC 13.3.0]"
+}
