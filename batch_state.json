@@ -14,10 +14,11 @@
     9,
     10,
     11,
-    12
+    12,
+    13
   ],
   "in_progress": null,
-  "next": 13,
+  "next": null,
   "suites": [
     "tests_genesis",
     "tests",
@@ -37,10 +38,23 @@
     "9": "Leak firewall: text/structural/elaborated/near-dup screening, oracle, theorem memory rule.",
     "10": "IR overloads + replay, 5 macros, research market, world-step loop, Appendix A registry.",
     "11": "Experiment B harness: FOF parser, SAT model finder, independent evaluator, E prover, kill gate (DEV: KILL).",
-    "12": "Release bundle + verifier, \u00a738 classes (mutation, load, golden baselines, smoke cap), CI, container recipe, env lock."
+    "12": "Release bundle + verifier, \u00a738 classes (mutation, load, golden baselines, smoke cap), CI, container recipe, env lock.",
+    "13": "SAT baseline arm, e2e walkthrough, requirements map, final matrix."
   },
   "pending_evidence": {},
   "evidence": {
-    "ladder_c4_b1": "evidence/ladder_c4_b1 (replication zip sha256 eca1ae95\u2026, shipped beside checkpoint)"
-  }
+    "ladder_c4_b1": "evidence/ladder_c4_b1",
+    "ladder_c4_sat": "evidence/ladder_c4_sat",
+    "hard_panel_calibration": "evidence/hard_panel_calibration",
+    "experiment_b_dev": "evidence/experiment_b_dev",
+    "e2e_walkthrough": "evidence/e2e_walkthrough"
+  },
+  "remaining_external": [
+    "independent audit of this branch",
+    "independent custodian operator with own keys and private pool",
+    "external timestamp of preregistration",
+    "external release authority",
+    "independent replication",
+    "fresh sealed panels for P3-P7"
+  ]
 }

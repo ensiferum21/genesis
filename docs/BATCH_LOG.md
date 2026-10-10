@@ -233,3 +233,18 @@ See `docs/AUDIT_REMEDIATION.md` (GI6 section).
 - `containers/Containerfile` + `scripts/pin_container.sh` (base image digest
   must be resolved where a registry is reachable — not possible here) and
   `environment/observed_python313.json` via `scripts/environment_lock.py`.
+
+## Batch 13 — integration and verification
+- Ladder gains a specialist baseline arm (`--sat-baseline`): warm-started
+  CaDiCaL search under the same realized-CPU budget. Result on n = 21–40
+  (`evidence/ladder_c4_sat/`): shortfall 225 vs 194/194/232 for the greedy
+  arms — on complete hosts the greedy arms are the strongest baselines; on
+  random hard hosts SAT is. A receipt bug (failure reason dropped) was fixed.
+- `scripts/e2e_walkthrough.py` (§40): every step runs with real components;
+  steps 11–13 use fixture roles in a separate UID; step 14 not performed.
+  Fixture sealed panel (3 hard CONFIRM hosts): candidate 0 wins / 1 loss / 2
+  ties vs baseline; preflight BLOCKED with the expected reasons
+  (`evidence/e2e_walkthrough/`).
+- `docs/REQUIREMENTS_AND_GAPS.md` rewritten section by section, with the §31
+  checklist and the builder's §48 assessment (P0–P2 engineering; P3–P7 not
+  claimed).
