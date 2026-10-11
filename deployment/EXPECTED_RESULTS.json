@@ -1,0 +1,51 @@
+{
+ "campaign": {
+  "backup_restore_same_summary": true,
+  "generations_sha256": "a3ce7992259404bfd39eafd37cdce8c1cb4f6346f7bff3bdecec3f1a9d5f16c7",
+  "latest_program": {
+   "componentwise": false,
+   "exchange": true,
+   "rounds": 32,
+   "schema_version": "graph-priority-v1",
+   "weights": [
+    0,
+    0,
+    0,
+    0
+   ]
+  },
+  "replay_all_matched": true,
+  "restored_events": 335,
+  "total_attempts": 126
+ },
+ "certificate": {
+  "cnf_sha256": "10e60185880ae132ab9198894de8520c45cd53dbe09eaf4f1ac57554a808717e",
+  "lower": 7,
+  "method": "SAT_DRAT",
+  "replay": "OPTIMALITY_CHECKED",
+  "replay_problems": [],
+  "status": "OPTIMALITY_CHECKED",
+  "task_sha256": "52031b4b62883ccec7efac3bd89745136acf77bfd32ebe0248f3d72375040638",
+  "upper": 7
+ },
+ "known_answers": {
+  "cases": {
+   "cadical: SAT formula exits 10 with a model": true,
+   "cadical: UNSAT formula exits 20": true,
+   "drat-trim: rejects a bogus refutation of a SAT formula": true,
+   "drat-trim: verifies the CaDiCaL refutation": true,
+   "eprover: finds a non-theorem counter-satisfiable": true,
+   "eprover: proves a theorem": true,
+   "lean: accepts a true kernel-checked statement": true,
+   "lean: rejects a false statement": true,
+   "lean: reports the pinned version": true,
+   "zstd: round trip is lossless": true
+  },
+  "ok": true
+ },
+ "lean": {
+  "axioms": [],
+  "status": "CHECKED"
+ },
+ "schema": "genesis-reference-results-v1"
+}

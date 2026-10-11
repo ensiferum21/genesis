@@ -128,7 +128,9 @@ def main(argv=None):
         members['genesis/CHECKPOINT_RECORD.json'] = (json.dumps(record, indent=2) + '\n').encode()
         manifest = {path: {'sha256': sha256(data), 'bytes': len(data)} for path, data in sorted(members.items())}
         members['genesis/CHECKPOINT_MANIFEST.json'] = (json.dumps(manifest, indent=2) + '\n').encode()
-        with zipfile.ZipFile(dest, 'w', zipfile.ZIP_DEFLATED) as z:
+        sys.path.insert(0, str(ROOT / 'src'))
+        from genesis.common import atomic_zip
+        with atomic_zip(dest) as z:          # a crash never leaves a torn checkpoint under its final name
             for path, data in sorted(members.items()):
                 z.writestr(path, data)
     digest = sha256(dest.read_bytes())
