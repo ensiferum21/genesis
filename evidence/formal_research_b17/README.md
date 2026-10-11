@@ -26,8 +26,9 @@ There are 19 statements:
   - bound_card, bound_union and bound_mono. bound_union's proof uses the generated
     lemma down_closed.
   - Four gadget lemmas, a bound and a tightness lemma for each gadget.
-- **DISPROVED (7).** Each disproof is a kernel-checked counterexample. Three of the
-  seven are a corrected conjecture that was refuted again:
+- **DISPROVED (7).** Each disproof is a kernel-checked counterexample. Three
+  counterexamples broke the normal form and led to corrected hypotheses. Two of those
+  corrected conjectures (the `_simple` ones) were refuted again:
   - union_closed and union_closed_simple;
   - insert_closed and insert_closed_simple;
   - bound_insert;
