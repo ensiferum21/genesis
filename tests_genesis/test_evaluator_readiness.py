@@ -221,6 +221,14 @@ class CustodianV2Flow(unittest.TestCase):
         judged = recompute(self.root / 'evaluations' / rid, req, receipt, registration_log_entries=payload['entries'])
         self.assertTrue(judged['agrees'], judged['problems'])
         self.assertEqual(judged['recomputed_outcome'], p['outcome'])
+        # W07 resources: ground truth is accounted separately from both arms, and the arms were paired.
+        acct = judged['resource_account']
+        self.assertEqual(acct['ground_truth']['attempts'], 6)
+        self.assertFalse(acct['ground_truth']['charged_to_arm'])
+        self.assertEqual(sorted(acct['inference']['by_arm']), ['baseline', 'candidate'])
+        self.assertEqual({a: v['attempts'] for a, v in acct['inference']['by_arm'].items()},
+                         {'baseline': 6, 'candidate': 6})
+        self.assertEqual((judged['fairness']['problems'], judged['fairness']['paired_tasks']), ([], 6))
         # A judge is not fooled by an edited (unsigned) result.
         edited = copy.deepcopy(receipt); edited['payload']['analysis_result']['estimate'] = 99.0
         self.assertFalse(recompute(self.root / 'evaluations' / rid, req, edited,

@@ -2256,7 +2256,9 @@
     "decision": "PENDING_INDEPENDENT_ACCEPTANCE"
    },
    "code": [
-    "src/genesis/ladder.py"
+    "src/genesis/ladder.py",
+    "src/genesis/resources.py",
+    "src/genesis/judge.py"
    ],
    "disposition": "IMPLEMENTED_BOUNDED_PENDING_AUDIT",
    "evidence": [],
@@ -2267,13 +2269,14 @@
    "local_execution": "TESTS_EXECUTED_IN_MATRIX",
    "owner": "research implementer",
    "remaining": [
-    "audited resource fairness (W07)"
+    "independent audit of resource fairness (W07)"
    ],
    "scientific_efficacy": "N/A",
-   "scope": "realized-CPU matching in the ladder and specialist arm",
+   "scope": "realized-CPU matching in the ladder and specialist arm; per-category resource account (discovery, inference per arm, verification, ground truth, memory; human time declared) and arm-fairness check recorded in sealed evidence and recomputed by the judge",
    "source": "spec \u00a717.3 (p. 28)",
    "tests": [
-    "tests_genesis/test_ladder.py"
+    "tests_genesis/test_ladder.py",
+    "tests_genesis/test_resources.py"
    ],
    "title": "Resource fairness",
    "workstream": "W07"
@@ -4633,7 +4636,8 @@
    "code": [
     "src/genesis/kernel/analysis.py",
     "src/genesis/power.py",
-    "src/genesis/judge.py"
+    "src/genesis/judge.py",
+    "src/genesis/resources.py"
    ],
    "disposition": "IMPLEMENTED_BOUNDED_PENDING_AUDIT",
    "evidence": [],
@@ -4649,7 +4653,8 @@
    "source": "roadmap \u00a77-10",
    "tests": [
     "tests_genesis/test_analysis_v2.py",
-    "tests_genesis/test_evaluator_readiness.py"
+    "tests_genesis/test_evaluator_readiness.py",
+    "tests_genesis/test_resources.py"
    ],
    "title": "Statistics, fairness and decision rules",
    "workstream": "W07"

@@ -509,8 +509,14 @@ def _comparison(evidence,tasks,programs):
 def _seal(evidence,request_id,request,anchor,commitment,identity,operator_id,key_path,tasks,programs,*,complete,
           family_p_values=()):
     comparison,completed,failures=_comparison(evidence,tasks,programs)
-    integrity=evidence.verify()
     v2=_is_v2(request)
+    if v2:
+        # W07: what every arm and the ground truth cost, recorded inside the signed evidence
+        # root so the judge can recompute it (deterministic: a re-seal after recovery
+        # computes the same account from the same terminal attempts).
+        from .resources import account
+        evidence.save('resource_account',request_id,account(evidence))
+    integrity=evidence.verify()
     unsupported=evidence.db.execute("SELECT count(*) FROM entities WHERE kind='unsupported_task'").fetchone()[0]
     expected=(len(tasks)-unsupported)*len(programs) if v2 else len(tasks)*len(programs)
     payload={'schema':R.SCIENTIFIC_RECEIPT_V3 if v2 else R.SCIENTIFIC_RECEIPT,'evidence_kind':request['evidence_kind'],

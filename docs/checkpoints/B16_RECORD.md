@@ -10,6 +10,7 @@ Parent: `GENESIS_COMPLETION_CHECKPOINT_B15_R2.zip`
 | W05 domains | `genesis.domains` DomainAdapter for both graph domains; candidate views exclude identifiers, families, splits and references; explicit UNSUPPORTED outcomes; conformance suite. |
 | W05 calibration | `genesis.calibration` (DEV only, frozen rule). v1 panels: ceiling rate 1.0, headroom 0. Adopted c4 and triangle-free (round 2) families, pinned in `configs/dev_calibration.json`. |
 | W07 statistics | `kernel/analysis.py` plan v2 and receipt v3; `genesis.judge` recomputation from raw receipts; `genesis.power` (headroom-limited model, design floor, DEV pilots only). |
+| W07 resources | `genesis.resources`: per-category account (discovery, inference per arm, verification, ground truth, memory; human time declared only). Ground truth is not charged to an arm. The account is recorded in sealed evidence and recomputed by the judge, which also checks arm pairing. |
 | W06 custody | Signed registration log with custodian-assigned families and size limits; OUTSTANDING registrations visible; `genesis.decision_record`; control declarations; release preflight requires both for v3. |
 | Study design | DEV pilot (60 tasks) and power analysis: 30 sealed tasks (10 per family) reach power 0.946 at a design effect of 0.5. `evidence/study_design_b16/decision_record_DRAFT.json` is a DRAFT. |
 

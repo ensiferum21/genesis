@@ -461,6 +461,15 @@ after logs in `audit/review_b15_external/logs/`.
 - `genesis.judge` recomputes the analysis from the raw receipts.
 - `genesis.power` uses a headroom-limited power model with a design floor, and uses
   only DEV pilots.
+- `genesis.resources` keeps a resource account of every journal. It covers discovery,
+  inference per arm, verification, ground truth, retrieval, model calls and memory.
+  Human time is only ever declared, with the name of whoever declared it. Every
+  attempt is charged, including failures and interruptions.
+  - Ground truth is never charged to an arm.
+  - The custodian records the account inside the signed evidence root. The judge
+    recomputes it and checks the arms were paired, with the same task, limits and
+    seed.
+  - A test checks that no module imports a model client.
 - `genesis.decision_record` writes the Appendix B record. Its embedded plan core is
   named by hash from the plan.
 

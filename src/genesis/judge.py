@@ -14,6 +14,7 @@ import tempfile
 
 from .common import canonical, digest
 from .kernel import receipts as R
+from .resources import account, arm_fairness
 from .kernel.analysis import analyze
 from .models import GraphTask
 from .store import Store, rebuild_from_export
@@ -67,6 +68,16 @@ def recompute(evaluation_root, request, receipt, *, registration_log_entries=Non
                 return out
             tasks = [GraphTask.model_validate_json(canonical(t)) for t in pools[0]]
             rows = analysis_rows(s, tasks)
+            resources = account(s)
+            fairness = arm_fairness(s)
+            saved = s.db.execute("SELECT object_hash FROM entities WHERE kind='resource_account' AND id=?",
+                                 (digest(request),)).fetchone()
+            if saved is None:
+                out['problems'].append('the evidence store holds no resource account')
+            elif s.get(saved[0]) != resources:
+                out['problems'].append('the recorded resource account differs from the attempt journal')
+            out['problems'] += ['fairness: ' + p for p in fairness['problems']]
+    out.update(resource_account=resources, fairness=fairness)
     if registration_log_entries is not None:
         from .custody_records import family_of, published_p_values_before
         family_p = published_p_values_before(registration_log_entries, family_of(request), digest(request))
