@@ -1,0 +1,270 @@
+{
+ "by_family": {
+  "bipartite": {
+   "keep_all_valid": 6,
+   "tasks": 6,
+   "worlds_applicable": [
+    "W_bip",
+    "W_tf"
+   ]
+  },
+  "erdos": {
+   "keep_all_valid": 0,
+   "tasks": 6,
+   "worlds_applicable": [
+    "W_dense"
+   ]
+  }
+ },
+ "reading": "The worlds disagree about which solver is right. Where W_bip applies (every bipartite host), keep-all is valid and optimal: the trivial bound |H| certifies it. Where only W_dense applies (every erdos host here), keep-all is invalid and represent-and-repair is needed. The data pick the world, host by host.",
+ "rows": [
+  {
+   "applicable_worlds": [
+    "W_dense"
+   ],
+   "assumptions_hold": {
+    "bipartite": false,
+    "has_triangle": true,
+    "max_deg_1": false,
+    "triangle_free": false
+   },
+   "certified_optimal_by_trivial_bound": false,
+   "edges": 78,
+   "family": "erdos",
+   "keep_all": {
+    "status": "INVALID",
+    "value": null
+   },
+   "represent_and_repair": 58,
+   "task_id": "dev-erdos-80a647eb-20261020-0000"
+  },
+  {
+   "applicable_worlds": [
+    "W_dense"
+   ],
+   "assumptions_hold": {
+    "bipartite": false,
+    "has_triangle": true,
+    "max_deg_1": false,
+    "triangle_free": false
+   },
+   "certified_optimal_by_trivial_bound": false,
+   "edges": 76,
+   "family": "erdos",
+   "keep_all": {
+    "status": "INVALID",
+    "value": null
+   },
+   "represent_and_repair": 57,
+   "task_id": "dev-erdos-80a647eb-20261020-0001"
+  },
+  {
+   "applicable_worlds": [
+    "W_dense"
+   ],
+   "assumptions_hold": {
+    "bipartite": false,
+    "has_triangle": true,
+    "max_deg_1": false,
+    "triangle_free": false
+   },
+   "certified_optimal_by_trivial_bound": false,
+   "edges": 77,
+   "family": "erdos",
+   "keep_all": {
+    "status": "INVALID",
+    "value": null
+   },
+   "represent_and_repair": 58,
+   "task_id": "dev-erdos-80a647eb-20261020-0002"
+  },
+  {
+   "applicable_worlds": [
+    "W_dense"
+   ],
+   "assumptions_hold": {
+    "bipartite": false,
+    "has_triangle": true,
+    "max_deg_1": false,
+    "triangle_free": false
+   },
+   "certified_optimal_by_trivial_bound": false,
+   "edges": 68,
+   "family": "erdos",
+   "keep_all": {
+    "status": "INVALID",
+    "value": null
+   },
+   "represent_and_repair": 53,
+   "task_id": "dev-erdos-80a647eb-20261020-0003"
+  },
+  {
+   "applicable_worlds": [
+    "W_dense"
+   ],
+   "assumptions_hold": {
+    "bipartite": false,
+    "has_triangle": true,
+    "max_deg_1": false,
+    "triangle_free": false
+   },
+   "certified_optimal_by_trivial_bound": false,
+   "edges": 77,
+   "family": "erdos",
+   "keep_all": {
+    "status": "INVALID",
+    "value": null
+   },
+   "represent_and_repair": 58,
+   "task_id": "dev-erdos-80a647eb-20261020-0004"
+  },
+  {
+   "applicable_worlds": [
+    "W_dense"
+   ],
+   "assumptions_hold": {
+    "bipartite": false,
+    "has_triangle": true,
+    "max_deg_1": false,
+    "triangle_free": false
+   },
+   "certified_optimal_by_trivial_bound": false,
+   "edges": 69,
+   "family": "erdos",
+   "keep_all": {
+    "status": "INVALID",
+    "value": null
+   },
+   "represent_and_repair": 54,
+   "task_id": "dev-erdos-80a647eb-20261020-0005"
+  },
+  {
+   "applicable_worlds": [
+    "W_tf",
+    "W_bip"
+   ],
+   "assumptions_hold": {
+    "bipartite": true,
+    "has_triangle": false,
+    "max_deg_1": false,
+    "triangle_free": true
+   },
+   "certified_optimal_by_trivial_bound": true,
+   "edges": 44,
+   "family": "bipartite",
+   "keep_all": {
+    "status": "VALID",
+    "value": 44
+   },
+   "represent_and_repair": 44,
+   "task_id": "dev-bipartite-28e0bd0d-20261020-0000"
+  },
+  {
+   "applicable_worlds": [
+    "W_tf",
+    "W_bip"
+   ],
+   "assumptions_hold": {
+    "bipartite": true,
+    "has_triangle": false,
+    "max_deg_1": false,
+    "triangle_free": true
+   },
+   "certified_optimal_by_trivial_bound": true,
+   "edges": 42,
+   "family": "bipartite",
+   "keep_all": {
+    "status": "VALID",
+    "value": 42
+   },
+   "represent_and_repair": 42,
+   "task_id": "dev-bipartite-28e0bd0d-20261020-0001"
+  },
+  {
+   "applicable_worlds": [
+    "W_tf",
+    "W_bip"
+   ],
+   "assumptions_hold": {
+    "bipartite": true,
+    "has_triangle": false,
+    "max_deg_1": false,
+    "triangle_free": true
+   },
+   "certified_optimal_by_trivial_bound": true,
+   "edges": 36,
+   "family": "bipartite",
+   "keep_all": {
+    "status": "VALID",
+    "value": 36
+   },
+   "represent_and_repair": 36,
+   "task_id": "dev-bipartite-28e0bd0d-20261020-0002"
+  },
+  {
+   "applicable_worlds": [
+    "W_tf",
+    "W_bip"
+   ],
+   "assumptions_hold": {
+    "bipartite": true,
+    "has_triangle": false,
+    "max_deg_1": false,
+    "triangle_free": true
+   },
+   "certified_optimal_by_trivial_bound": true,
+   "edges": 33,
+   "family": "bipartite",
+   "keep_all": {
+    "status": "VALID",
+    "value": 33
+   },
+   "represent_and_repair": 33,
+   "task_id": "dev-bipartite-28e0bd0d-20261020-0003"
+  },
+  {
+   "applicable_worlds": [
+    "W_tf",
+    "W_bip"
+   ],
+   "assumptions_hold": {
+    "bipartite": true,
+    "has_triangle": false,
+    "max_deg_1": false,
+    "triangle_free": true
+   },
+   "certified_optimal_by_trivial_bound": true,
+   "edges": 43,
+   "family": "bipartite",
+   "keep_all": {
+    "status": "VALID",
+    "value": 43
+   },
+   "represent_and_repair": 43,
+   "task_id": "dev-bipartite-28e0bd0d-20261020-0004"
+  },
+  {
+   "applicable_worlds": [
+    "W_tf",
+    "W_bip"
+   ],
+   "assumptions_hold": {
+    "bipartite": true,
+    "has_triangle": false,
+    "max_deg_1": false,
+    "triangle_free": true
+   },
+   "certified_optimal_by_trivial_bound": true,
+   "edges": 44,
+   "family": "bipartite",
+   "keep_all": {
+    "status": "VALID",
+    "value": 44
+   },
+   "represent_and_repair": 44,
+   "task_id": "dev-bipartite-28e0bd0d-20261020-0005"
+  }
+ ],
+ "seed": 20261020,
+ "split": "DEV"
+}

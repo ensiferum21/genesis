@@ -1,0 +1,1818 @@
+{
+ "acceptance": {
+  "check_stage": {
+   "check_sha256": "7b9149d6dbee4194c176c685805d211ee4b54f685510f75edfb19d7f7afd2c9e",
+   "cpu_ns": 10189040505,
+   "exit_code": 0,
+   "exits": {
+    "WDP1": "0",
+    "WDP2": "0",
+    "WDP3": "0",
+    "WDP4": "0",
+    "WDP5": "0",
+    "WDP6": "0",
+    "WDP7": "0",
+    "WDP8": "0",
+    "check": "0"
+   },
+   "log": "",
+   "peak_memory_bytes": 219820032,
+   "status": "SUCCESS",
+   "wall_ns": 10455289365
+  },
+  "leanchecker": {
+   "WDP1": true,
+   "WDP2": true,
+   "WDP3": true,
+   "WDP4": true,
+   "WDP5": true,
+   "WDP6": true,
+   "WDP7": true,
+   "WDP8": true
+  },
+  "receipt_sha256": "5421672dcd7221542b849c3dc348e0a3c97400e7dfb1ff301a77d9455d11f7f4",
+  "status": "CHECKED"
+ },
+ "assumptions": {
+  "allowed_axioms": [
+   "Classical.choice",
+   "Quot.sound",
+   "propext"
+  ],
+  "axioms_used": [
+   "Classical.choice",
+   "Quot.sound",
+   "propext"
+  ],
+  "conventions": [
+   "WD.Bipartite fixes the vertex range {0..5} so that it is decidable; the Python model of a DEV host uses the host's own n"
+  ],
+  "lean": "lean@e8baaa71855a616d",
+  "workspace": {
+   "artifact_identity": "95a6ec9f1aadc0d8d1936c34bd0ce4e144b0e35c85df12543cdcafe9ebf36b41",
+   "import_roots": [
+    "Mathlib.Data.Finset.Powerset"
+   ],
+   "mathlib_rev": "d13f23b723b8a846827a245b89c10fc7d3f11612",
+   "source_identity": "a3a7569b6d7636a844c87c2b72ef2170eda0f712ff8d9a1b0f15b069e301c7ef"
+  }
+ },
+ "bindings": [
+  {
+   "proof": "WDP1.proof",
+   "spec": "WDConj.imp_bipartite__triangle_free"
+  },
+  {
+   "proof": "WDP2.proof",
+   "spec": "WDConj.imp_bipartite_has_triangle__triangle_free"
+  },
+  {
+   "proof": "WDP3.proof",
+   "spec": "WDConj.model_W_tf"
+  },
+  {
+   "proof": "WDP4.proof",
+   "spec": "WDConj.model_W_bip"
+  },
+  {
+   "proof": "WDP5.proof",
+   "spec": "WDConj.model_W_dense"
+  },
+  {
+   "proof": "WDP6.proof",
+   "spec": "WDConj.incons_W_conflict"
+  },
+  {
+   "proof": "WDP7.proof",
+   "spec": "WDConj.model_W_deg1"
+  },
+  {
+   "proof": "WDP8.proof",
+   "spec": "WDConj.imp_triangle_free__bipartite_negation"
+  }
+ ],
+ "costs": {
+  "acceptance_check_cpu_ns": 51796359497,
+  "acceptance_runs": 9,
+  "acceptances": [
+   {
+    "receipt_sha256": "076f45ab8f13c88cbb6be26fa1657f32d1b8f26fd83571003a9fd43ecf2a9cc9",
+    "statement": "imp_bipartite__triangle_free",
+    "stats": {
+     "check_sha256": "4f2505ad4ba94986a8633af71095e230be82995ff5d19a7aaecd0edddf490cf6",
+     "cpu_ns": 3039976670,
+     "exit_code": 0,
+     "exits": {
+      "WDP1": "0",
+      "check": "0"
+     },
+     "log": "",
+     "peak_memory_bytes": 222363648,
+     "status": "SUCCESS",
+     "wall_ns": 3134854918
+    },
+    "status": "CHECKED"
+   },
+   {
+    "receipt_sha256": "1656c3ddb1d1d7db135e4d460999edcd8057ddcb8727d44dc3e15b25f2a27407",
+    "statement": "imp_bipartite_has_triangle__triangle_free",
+    "stats": {
+     "check_sha256": "1512cd3782ef406ce3b3ade8134406608b7329c340dad21b237a4e7b8fe39e42",
+     "cpu_ns": 4245951770,
+     "exit_code": 0,
+     "exits": {
+      "WDP1": "0",
+      "WDP2": "0",
+      "check": "0"
+     },
+     "log": "",
+     "peak_memory_bytes": 219725824,
+     "status": "SUCCESS",
+     "wall_ns": 4356134215
+    },
+    "status": "CHECKED"
+   },
+   {
+    "receipt_sha256": "c238fb8befe460e5ffb0234755c86405859a66c81ec621c0272df7b9be44343f",
+    "statement": "model_W_tf",
+    "stats": {
+     "check_sha256": "c7968e9614ac05cc90a898c1a2146bcc7fb6bc2ef58d17427d93d4b4f5f240d3",
+     "cpu_ns": 4862830725,
+     "exit_code": 0,
+     "exits": {
+      "WDP1": "0",
+      "WDP2": "0",
+      "WDP3": "0",
+      "check": "0"
+     },
+     "log": "",
+     "peak_memory_bytes": 222171136,
+     "status": "SUCCESS",
+     "wall_ns": 4996344209
+    },
+    "status": "CHECKED"
+   },
+   {
+    "receipt_sha256": "283b67d0c75e84d6f8c447ec07a26482f37213871ef89372ce030ff258983040",
+    "statement": "model_W_bip",
+    "stats": {
+     "check_sha256": "50cb05bbb5343d48393b50c278c5fa1bf35fd2cf27ea5defec2e2d998be01c4e",
+     "cpu_ns": 5460289706,
+     "exit_code": 0,
+     "exits": {
+      "WDP1": "0",
+      "WDP2": "0",
+      "WDP3": "0",
+      "WDP4": "0",
+      "check": "0"
+     },
+     "log": "",
+     "peak_memory_bytes": 219795456,
+     "status": "SUCCESS",
+     "wall_ns": 5614283716
+    },
+    "status": "CHECKED"
+   },
+   {
+    "receipt_sha256": "82c14641f2123bfc8add13c7f9cd26e6f5f2349b7e9dd7e7a492c27ca44b27e4",
+    "statement": "model_W_dense",
+    "stats": {
+     "check_sha256": "e711910a84f8d26ff115fe11229fdff6c8a8fc7093991e79800b6d1d089dca7a",
+     "cpu_ns": 7101096485,
+     "exit_code": 0,
+     "exits": {
+      "WDP1": "0",
+      "WDP2": "0",
+      "WDP3": "0",
+      "WDP4": "0",
+      "WDP5": "0",
+      "check": "0"
+     },
+     "log": "",
+     "peak_memory_bytes": 222355456,
+     "status": "SUCCESS",
+     "wall_ns": 7268630129
+    },
+    "status": "CHECKED"
+   },
+   {
+    "receipt_sha256": "c2243fb9cd1ec3ecb62ceb8c92b354ed214cc36482b8c66772b7c45f14c3244d",
+    "statement": "incons_W_conflict",
+    "stats": {
+     "check_sha256": "d999745112178613de7c0e815d2784ba16f8f6f05908ab708091b161023f7e62",
+     "cpu_ns": 7720216733,
+     "exit_code": 0,
+     "exits": {
+      "WDP1": "0",
+      "WDP2": "0",
+      "WDP3": "0",
+      "WDP4": "0",
+      "WDP5": "0",
+      "WDP6": "0",
+      "check": "0"
+     },
+     "log": "",
+     "peak_memory_bytes": 222117888,
+     "status": "SUCCESS",
+     "wall_ns": 7842354359
+    },
+    "status": "CHECKED"
+   },
+   {
+    "receipt_sha256": "2ed3a97bae0162c7284cd04b9ca585d22e97064570084caed94752726c85f98c",
+    "statement": "model_W_deg1",
+    "stats": {
+     "check_sha256": "1d1283a715c8af72e76d7406fad6e7884c986a2e02842e05498ea84580716a9e",
+     "cpu_ns": 8701038160,
+     "exit_code": 0,
+     "exits": {
+      "WDP1": "0",
+      "WDP2": "0",
+      "WDP3": "0",
+      "WDP4": "0",
+      "WDP5": "0",
+      "WDP6": "0",
+      "WDP7": "0",
+      "check": "0"
+     },
+     "log": "",
+     "peak_memory_bytes": 222347264,
+     "status": "SUCCESS",
+     "wall_ns": 8888450772
+    },
+    "status": "CHECKED"
+   },
+   {
+    "receipt_sha256": "c8a983edb4f160181de87ba05f38a6bb029219844471501193178e257d29c1d7",
+    "statement": "imp_triangle_free__bipartite",
+    "stats": {
+     "check_sha256": "dc6633b3262be9591ddf00999d8f3303c83487fca16efbeb6dff97ac3aaf3145",
+     "cpu_ns": 10664959248,
+     "exit_code": 0,
+     "exits": {
+      "WDP1": "0",
+      "WDP2": "0",
+      "WDP3": "0",
+      "WDP4": "0",
+      "WDP5": "0",
+      "WDP6": "0",
+      "WDP7": "0",
+      "WDP8": "0",
+      "check": "0"
+     },
+     "log": "",
+     "peak_memory_bytes": 222691328,
+     "status": "SUCCESS",
+     "wall_ns": 10875400008
+    },
+    "status": "CHECKED"
+   }
+  ],
+  "attempts": [
+   {
+    "attempts": [
+     {
+      "compiled": true,
+      "recipe": "witness-destructure-tauto",
+      "tactic_sha256": "13e8762449fdb09fb7dd382278544c3dcf6884b50cead9a971e46e2c0b15f531",
+      "tier": 0
+     }
+    ],
+    "charged": {
+     "candidates": 1,
+     "cpu_ns": 1238718264,
+     "wall_ns": 1268544089
+    },
+    "result": "COMPILED",
+    "statement": "imp_bipartite__triangle_free",
+    "target": "WDConj.imp_bipartite__triangle_free"
+   },
+   {
+    "attempts": [
+     {
+      "compiled": false,
+      "recipe": "witness-destructure-tauto",
+      "tactic_sha256": "13e8762449fdb09fb7dd382278544c3dcf6884b50cead9a971e46e2c0b15f531",
+      "tier": 0
+     },
+     {
+      "compiled": false,
+      "recipe": "decide",
+      "tactic_sha256": "5589aa5863c2d85622d06d651add002416e5513afdbb455666cdde01bb3e257d",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "decide-kernel",
+      "tactic_sha256": "9ac77167f92e560c7b03653563b026543eb9e4c018ebd8e1d3c8be05b979ab88",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "unfold-simp",
+      "tactic_sha256": "9e2991db2014eb1f765b3f083485eab7da2a7cb566c0ac413922b165e54db892",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "unfold-aesop",
+      "tactic_sha256": "d74fc2cddde4d24950ac4bad9e1187925f7cfc9325a3f65f2918934aaf8bbb1d",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "unfold-omega",
+      "tactic_sha256": "f19a53c82a61e71485374be4ec64721f86d0337a431379e36416460e11b971b6",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "unfold-solve",
+      "tactic_sha256": "f3823291c2cdd95760b7a8c602f4dfadd10e388889d9a71c1e3626f067e5ab83",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "apply-hyp:h1",
+      "tactic_sha256": "2a6e449b62547e154cc94f07f6d15c478b0b5f521a03cbf2df2becd77e1941a2",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "specialize-omega:h1",
+      "tactic_sha256": "8030802cf12789f49caebf4a92615fdac73607a7b8195a8e52a3f61bf811d1c2",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "library-elim:WDP1.proof",
+      "tactic_sha256": "303218ddfbd267a4d129271f4ea7631a9ea8dcedeb6902216c2846c4fa2e97d6",
+      "tier": 1
+     }
+    ],
+    "charged": {
+     "candidates": 10,
+     "cpu_ns": 3549946576,
+     "wall_ns": 3582787768
+    },
+    "result": "ELABORATION_ERROR",
+    "statement": "imp_max_deg_1__triangle_free",
+    "target": "WDConj.imp_max_deg_1__triangle_free"
+   },
+   {
+    "attempts": [
+     {
+      "compiled": true,
+      "recipe": "witness-destructure-tauto",
+      "tactic_sha256": "47a2238f10d256da5c946edf39c4f5b5cf65f09c6552a94e2d01e85ebb63762d",
+      "tier": 0
+     }
+    ],
+    "charged": {
+     "candidates": 1,
+     "cpu_ns": 1274007760,
+     "wall_ns": 1341098742
+    },
+    "result": "COMPILED",
+    "statement": "imp_bipartite_has_triangle__triangle_free",
+    "target": "WDConj.imp_bipartite_has_triangle__triangle_free"
+   },
+   {
+    "attempts": [
+     {
+      "compiled": true,
+      "recipe": "witness-evaluation",
+      "tactic_sha256": "487a90840f3342ed232f24c01a3cbb88ff858b70a0616d4a642249991e2c6555",
+      "tier": 0
+     }
+    ],
+    "charged": {
+     "candidates": 1,
+     "cpu_ns": 1195021379,
+     "wall_ns": 1224828067
+    },
+    "result": "COMPILED",
+    "statement": "model_W_tf",
+    "target": "WDConj.model_W_tf"
+   },
+   {
+    "attempts": [
+     {
+      "compiled": true,
+      "recipe": "witness-evaluation",
+      "tactic_sha256": "487a90840f3342ed232f24c01a3cbb88ff858b70a0616d4a642249991e2c6555",
+      "tier": 0
+     }
+    ],
+    "charged": {
+     "candidates": 1,
+     "cpu_ns": 1116381470,
+     "wall_ns": 1146203538
+    },
+    "result": "COMPILED",
+    "statement": "model_W_bip",
+    "target": "WDConj.model_W_bip"
+   },
+   {
+    "attempts": [
+     {
+      "compiled": true,
+      "recipe": "witness-evaluation",
+      "tactic_sha256": "8f927344c41661402fdf1b66dd1847c104106893b36956a6597a4ddc5681934f",
+      "tier": 0
+     }
+    ],
+    "charged": {
+     "candidates": 1,
+     "cpu_ns": 1195858276,
+     "wall_ns": 1220717662
+    },
+    "result": "COMPILED",
+    "statement": "model_W_dense",
+    "target": "WDConj.model_W_dense"
+   },
+   {
+    "attempts": [
+     {
+      "compiled": false,
+      "recipe": "library-contradiction",
+      "tactic_sha256": "c51cba8ee9f3319f7bcb45b078b152e45d3e8b80696e1ee8c61233cf437b97c2",
+      "tier": 0
+     },
+     {
+      "compiled": true,
+      "recipe": "library-solve",
+      "tactic_sha256": "b7fce32c2b4f182892d3ad13119ed8df718bab8d171c631fd1a14e00e171b04d",
+      "tier": 0
+     }
+    ],
+    "charged": {
+     "candidates": 2,
+     "cpu_ns": 1192030385,
+     "wall_ns": 1224544207
+    },
+    "result": "ELABORATION_ERROR",
+    "statement": "incons_W_conflict",
+    "target": "WDConj.incons_W_conflict"
+   },
+   {
+    "attempts": [
+     {
+      "compiled": true,
+      "recipe": "witness-evaluation",
+      "tactic_sha256": "487a90840f3342ed232f24c01a3cbb88ff858b70a0616d4a642249991e2c6555",
+      "tier": 0
+     }
+    ],
+    "charged": {
+     "candidates": 1,
+     "cpu_ns": 1062809868,
+     "wall_ns": 1108812952
+    },
+    "result": "COMPILED",
+    "statement": "model_W_deg1",
+    "target": "WDConj.model_W_deg1"
+   },
+   {
+    "attempts": [
+     {
+      "compiled": true,
+      "recipe": "counterexample-evaluation",
+      "tactic_sha256": "3cb8b00ea1ef07f48e20f7a9ad574bcc8fb54d4a414f15b4d2a7a093ab46e4d5",
+      "tier": 0
+     }
+    ],
+    "charged": {
+     "candidates": 1,
+     "cpu_ns": 1513458255,
+     "wall_ns": 1548838959
+    },
+    "result": "COMPILED",
+    "statement": "imp_triangle_free__bipartite",
+    "target": "WDConj.imp_triangle_free__bipartite_negation"
+   }
+  ],
+  "search_candidates": 19,
+  "search_context_cpu_ns": 13861945990,
+  "search_cpu_ns": 13338232233,
+  "search_runs": 9
+ },
+ "counterexamples": [
+  {
+   "checked": true,
+   "statement": "imp_triangle_free__bipartite",
+   "values": {
+    "H": "({(0, 1), (0, 3), (1, 5), (3, 4), (4, 5)} : GT.Edges)"
+   }
+  }
+ ],
+ "declarations": [
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "GTDefs",
+   "name": "GT.TriangleFree",
+   "type_sha256": "c98548115419ec271dfd495799f10b35c81fad06e346ef970bd969a518c2a9f4"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "GTDefs",
+   "name": "GT.Edges",
+   "type_sha256": "baaddf70fb5d432b8bd948ef91d6f910124a6d138edae4d5f000c4610ddc8eae"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "GTDefs",
+   "name": "GT.instDecidableTriangleFree",
+   "type_sha256": "5f6ad93fcd86d217b85aa0d5ae9d8484d2f18f9af307b85f1d55bcb68ce406d1"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "WDDefs",
+   "name": "WD.deg",
+   "type_sha256": "2ffceed23af4ddc849c69553c52009556b3737d209078a824e8e4521ddca13e0"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "WDDefs",
+   "name": "WD.instDecidableMaxDegLe",
+   "type_sha256": "d3c6adb28bc12aa0cbd098074522915bd0369f91645bc57a3ff6754475b604a7"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "WDDefs",
+   "name": "WD.HasTriangle",
+   "type_sha256": "c98548115419ec271dfd495799f10b35c81fad06e346ef970bd969a518c2a9f4"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "WDDefs",
+   "name": "WD.Bipartite",
+   "type_sha256": "4f4e4caf5e7a060a828d4c12f5d8db88c5b9f2759d6ec75362cb5cca3696fd57"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "WDDefs",
+   "name": "WD.instDecidableHasTriangle",
+   "type_sha256": "3d903bb19fcb775bcafd24857ccfa1be8f47ef35e1717e74aec1fa881c9fa7d8"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "WDDefs",
+   "name": "WD.MaxDegLe",
+   "type_sha256": "4f4e4caf5e7a060a828d4c12f5d8db88c5b9f2759d6ec75362cb5cca3696fd57"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "WDDefs",
+   "name": "WD.instDecidableBipartite",
+   "type_sha256": "c24dcfa910355895d1a5f990d739b041bdace8b56f2f5a476e66ada2a83e7587"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "WDConj",
+   "name": "WDConj.model_W_bip",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "WDConj",
+   "name": "WDConj.model_W_dense",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "WDConj",
+   "name": "WDConj.model_W_tf",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "WDConj",
+   "name": "WDConj.imp_bipartite__triangle_free",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "WDConj",
+   "name": "WDConj.imp_bipartite_has_triangle__triangle_free",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "WDConj",
+   "name": "WDConj.incons_W_conflict",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "WDConj",
+   "name": "WDConj.imp_max_deg_1__triangle_free",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "WDConj",
+   "name": "WDConj.imp_triangle_free__bipartite",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "WDConj",
+   "name": "WDConj.imp_triangle_free__bipartite_negation",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "WDConj",
+   "name": "WDConj.model_W_deg1",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "theorem",
+   "module": "WDP1",
+   "name": "WDP1.proof",
+   "type_sha256": "547ffffbdef4f0b6c4831e3081f4242c786150f43c6fe3de02370f5a93e14b7a"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "theorem",
+   "module": "WDP2",
+   "name": "WDP2.proof",
+   "type_sha256": "7d18610b2500650f57fadf16dd419622dd9754e12766ffda6ececad6159f70b8"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "theorem",
+   "module": "WDP3",
+   "name": "WDP3.proof",
+   "type_sha256": "755554e85196fb18cd84f6f16701dde09b87b3951ea5518f53702016910c1587"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "theorem",
+   "module": "WDP4",
+   "name": "WDP4.proof",
+   "type_sha256": "1f3938400123a7dc38389dc3cdea85c30b6ff343adacfd1967339d2eb043ac1e"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "theorem",
+   "module": "WDP5",
+   "name": "WDP5.proof",
+   "type_sha256": "e6e5cbf37969697e100691fb4382386c0a4c9bfdc58a33f0e21eab42966856d3"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "theorem",
+   "module": "WDP6",
+   "name": "WDP6.proof",
+   "type_sha256": "10fbfe68d17eb4e37469c6f0c1ad7848da3ea762e2d10a2afaf5d9c4656d73f5"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "theorem",
+   "module": "WDP7",
+   "name": "WDP7.proof",
+   "type_sha256": "a02aa747d1a62c3977dc2072ac5cb71cada11e0b802865c83ea6d258aae20aa0"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "theorem",
+   "module": "WDP8",
+   "name": "WDP8.proof",
+   "type_sha256": "8c3d1a990b817926648f171e731495fd9b4acc8beca6da51ec030facf90a8d04"
+  }
+ ],
+ "definitions": [
+  {
+   "module": "GTDefs",
+   "name": "GT.TriangleFree",
+   "origin": "trusted-generated",
+   "type_sha256": "c98548115419ec271dfd495799f10b35c81fad06e346ef970bd969a518c2a9f4"
+  },
+  {
+   "module": "GTDefs",
+   "name": "GT.Edges",
+   "origin": "trusted-generated",
+   "type_sha256": "baaddf70fb5d432b8bd948ef91d6f910124a6d138edae4d5f000c4610ddc8eae"
+  },
+  {
+   "module": "GTDefs",
+   "name": "GT.instDecidableTriangleFree",
+   "origin": "trusted-generated",
+   "type_sha256": "5f6ad93fcd86d217b85aa0d5ae9d8484d2f18f9af307b85f1d55bcb68ce406d1"
+  },
+  {
+   "module": "WDDefs",
+   "name": "WD.deg",
+   "origin": "trusted-generated",
+   "type_sha256": "2ffceed23af4ddc849c69553c52009556b3737d209078a824e8e4521ddca13e0"
+  },
+  {
+   "module": "WDDefs",
+   "name": "WD.instDecidableMaxDegLe",
+   "origin": "trusted-generated",
+   "type_sha256": "d3c6adb28bc12aa0cbd098074522915bd0369f91645bc57a3ff6754475b604a7"
+  },
+  {
+   "module": "WDDefs",
+   "name": "WD.HasTriangle",
+   "origin": "trusted-generated",
+   "type_sha256": "c98548115419ec271dfd495799f10b35c81fad06e346ef970bd969a518c2a9f4"
+  },
+  {
+   "module": "WDDefs",
+   "name": "WD.Bipartite",
+   "origin": "trusted-generated",
+   "type_sha256": "4f4e4caf5e7a060a828d4c12f5d8db88c5b9f2759d6ec75362cb5cca3696fd57"
+  },
+  {
+   "module": "WDDefs",
+   "name": "WD.instDecidableHasTriangle",
+   "origin": "trusted-generated",
+   "type_sha256": "3d903bb19fcb775bcafd24857ccfa1be8f47ef35e1717e74aec1fa881c9fa7d8"
+  },
+  {
+   "module": "WDDefs",
+   "name": "WD.MaxDegLe",
+   "origin": "trusted-generated",
+   "type_sha256": "4f4e4caf5e7a060a828d4c12f5d8db88c5b9f2759d6ec75362cb5cca3696fd57"
+  },
+  {
+   "module": "WDDefs",
+   "name": "WD.instDecidableBipartite",
+   "origin": "trusted-generated",
+   "type_sha256": "c24dcfa910355895d1a5f990d739b041bdace8b56f2f5a476e66ada2a83e7587"
+  },
+  {
+   "module": "WDConj",
+   "name": "WDConj.model_W_bip",
+   "origin": "trusted-generated",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "module": "WDConj",
+   "name": "WDConj.model_W_dense",
+   "origin": "trusted-generated",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "module": "WDConj",
+   "name": "WDConj.model_W_tf",
+   "origin": "trusted-generated",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "module": "WDConj",
+   "name": "WDConj.imp_bipartite__triangle_free",
+   "origin": "trusted-generated",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "module": "WDConj",
+   "name": "WDConj.imp_bipartite_has_triangle__triangle_free",
+   "origin": "trusted-generated",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "module": "WDConj",
+   "name": "WDConj.incons_W_conflict",
+   "origin": "trusted-generated",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "module": "WDConj",
+   "name": "WDConj.imp_max_deg_1__triangle_free",
+   "origin": "trusted-generated",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "module": "WDConj",
+   "name": "WDConj.imp_triangle_free__bipartite",
+   "origin": "trusted-generated",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "module": "WDConj",
+   "name": "WDConj.imp_triangle_free__bipartite_negation",
+   "origin": "trusted-generated",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "module": "WDConj",
+   "name": "WDConj.model_W_deg1",
+   "origin": "trusted-generated",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  }
+ ],
+ "dependencies": {
+  "GT.Edges": {
+   "package": [],
+   "workspace_modules": [
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Defs"
+   ]
+  },
+  "GT.TriangleFree": {
+   "package": [
+    "GT.Edges"
+   ],
+   "workspace_modules": [
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Defs",
+    "Mathlib.Data.SetLike.Basic"
+   ]
+  },
+  "GT.instDecidableTriangleFree": {
+   "package": [
+    "GT.Edges",
+    "GT.TriangleFree"
+   ],
+   "workspace_modules": [
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Defs",
+    "Mathlib.Data.SetLike.Basic"
+   ]
+  },
+  "WD.Bipartite": {
+   "package": [
+    "GT.Edges"
+   ],
+   "workspace_modules": [
+    "Init.Core",
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Defs",
+    "Mathlib.Data.Finset.Powerset",
+    "Mathlib.Data.Finset.Range",
+    "Mathlib.Data.SetLike.Basic"
+   ]
+  },
+  "WD.HasTriangle": {
+   "package": [
+    "GT.Edges",
+    "GT.TriangleFree"
+   ],
+   "workspace_modules": [
+    "Init.Prelude"
+   ]
+  },
+  "WD.MaxDegLe": {
+   "package": [
+    "GT.Edges",
+    "WD.deg"
+   ],
+   "workspace_modules": [
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Defs",
+    "Mathlib.Data.SetLike.Basic"
+   ]
+  },
+  "WD.deg": {
+   "package": [
+    "GT.Edges"
+   ],
+   "workspace_modules": [
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Card",
+    "Mathlib.Data.Finset.Filter"
+   ]
+  },
+  "WD.instDecidableBipartite": {
+   "package": [
+    "GT.Edges",
+    "WD.Bipartite"
+   ],
+   "workspace_modules": [
+    "Init.Core",
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Defs",
+    "Mathlib.Data.Finset.Powerset",
+    "Mathlib.Data.Finset.Range",
+    "Mathlib.Data.SetLike.Basic"
+   ]
+  },
+  "WD.instDecidableHasTriangle": {
+   "package": [
+    "GT.Edges",
+    "GT.TriangleFree",
+    "GT.instDecidableTriangleFree",
+    "WD.HasTriangle"
+   ],
+   "workspace_modules": [
+    "Init.Prelude"
+   ]
+  },
+  "WD.instDecidableMaxDegLe": {
+   "package": [
+    "GT.Edges",
+    "WD.MaxDegLe",
+    "WD.deg"
+   ],
+   "workspace_modules": [
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Defs",
+    "Mathlib.Data.SetLike.Basic"
+   ]
+  },
+  "WDConj.imp_bipartite__triangle_free": {
+   "package": [
+    "GT.Edges",
+    "GT.TriangleFree",
+    "WD.Bipartite"
+   ],
+   "workspace_modules": [
+    "Init.Prelude"
+   ]
+  },
+  "WDConj.imp_bipartite_has_triangle__triangle_free": {
+   "package": [
+    "GT.Edges",
+    "GT.TriangleFree",
+    "WD.Bipartite",
+    "WD.HasTriangle"
+   ],
+   "workspace_modules": [
+    "Init.Prelude"
+   ]
+  },
+  "WDConj.imp_max_deg_1__triangle_free": {
+   "package": [
+    "GT.Edges",
+    "GT.TriangleFree",
+    "WD.MaxDegLe",
+    "WD.deg"
+   ],
+   "workspace_modules": [
+    "Init.Prelude"
+   ]
+  },
+  "WDConj.imp_triangle_free__bipartite": {
+   "package": [
+    "GT.Edges",
+    "GT.TriangleFree",
+    "WD.Bipartite"
+   ],
+   "workspace_modules": [
+    "Init.Prelude"
+   ]
+  },
+  "WDConj.imp_triangle_free__bipartite_negation": {
+   "package": [
+    "GT.Edges",
+    "GT.TriangleFree",
+    "WD.Bipartite",
+    "WDConj.imp_triangle_free__bipartite"
+   ],
+   "workspace_modules": [
+    "Init.Prelude"
+   ]
+  },
+  "WDConj.incons_W_conflict": {
+   "package": [
+    "GT.Edges",
+    "GT.TriangleFree",
+    "WD.Bipartite",
+    "WD.HasTriangle"
+   ],
+   "workspace_modules": [
+    "Init.Prelude"
+   ]
+  },
+  "WDConj.model_W_bip": {
+   "package": [
+    "GT.Edges",
+    "WD.Bipartite"
+   ],
+   "workspace_modules": [
+    "Init.Core",
+    "Init.Prelude"
+   ]
+  },
+  "WDConj.model_W_deg1": {
+   "package": [
+    "GT.Edges",
+    "WD.MaxDegLe",
+    "WD.deg"
+   ],
+   "workspace_modules": [
+    "Init.Core",
+    "Init.Prelude"
+   ]
+  },
+  "WDConj.model_W_dense": {
+   "package": [
+    "GT.Edges",
+    "GT.TriangleFree",
+    "WD.HasTriangle"
+   ],
+   "workspace_modules": [
+    "Init.Core"
+   ]
+  },
+  "WDConj.model_W_tf": {
+   "package": [
+    "GT.Edges",
+    "GT.TriangleFree"
+   ],
+   "workspace_modules": [
+    "Init.Core"
+   ]
+  },
+  "WDP1.proof": {
+   "package": [
+    "GT.Edges",
+    "GT.TriangleFree",
+    "WD.Bipartite",
+    "WDConj.imp_bipartite__triangle_free"
+   ],
+   "workspace_modules": [
+    "Init.Core",
+    "Init.Prelude",
+    "Init.PropLemmas",
+    "Mathlib.Data.Finset.Defs",
+    "Mathlib.Data.Finset.Powerset",
+    "Mathlib.Data.Finset.Range",
+    "Mathlib.Data.SetLike.Basic"
+   ]
+  },
+  "WDP2.proof": {
+   "package": [
+    "GT.Edges",
+    "GT.TriangleFree",
+    "WD.Bipartite",
+    "WD.HasTriangle",
+    "WDConj.imp_bipartite_has_triangle__triangle_free"
+   ],
+   "workspace_modules": [
+    "Init.Core",
+    "Init.Prelude",
+    "Init.PropLemmas",
+    "Mathlib.Data.Finset.Defs",
+    "Mathlib.Data.Finset.Powerset",
+    "Mathlib.Data.Finset.Range",
+    "Mathlib.Data.SetLike.Basic"
+   ]
+  },
+  "WDP3.proof": {
+   "package": [
+    "GT.Edges",
+    "GT.TriangleFree",
+    "GT.instDecidableTriangleFree",
+    "WDConj.model_W_tf"
+   ],
+   "workspace_modules": [
+    "Init.Core",
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Empty"
+   ]
+  },
+  "WDP4.proof": {
+   "package": [
+    "GT.Edges",
+    "WD.Bipartite",
+    "WD.instDecidableBipartite",
+    "WDConj.model_W_bip"
+   ],
+   "workspace_modules": [
+    "Init.Core",
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Empty"
+   ]
+  },
+  "WDP5.proof": {
+   "package": [
+    "GT.Edges",
+    "GT.TriangleFree",
+    "GT.instDecidableTriangleFree",
+    "WD.HasTriangle",
+    "WD.instDecidableHasTriangle",
+    "WDConj.model_W_dense"
+   ],
+   "workspace_modules": [
+    "Init.Core",
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Insert"
+   ]
+  },
+  "WDP6.proof": {
+   "package": [
+    "GT.Edges",
+    "GT.TriangleFree",
+    "WD.Bipartite",
+    "WD.HasTriangle",
+    "WDConj.imp_bipartite__triangle_free",
+    "WDConj.incons_W_conflict",
+    "WDP1.proof"
+   ],
+   "workspace_modules": [
+    "Init.Prelude"
+   ]
+  },
+  "WDP7.proof": {
+   "package": [
+    "GT.Edges",
+    "WD.MaxDegLe",
+    "WD.deg",
+    "WD.instDecidableMaxDegLe",
+    "WDConj.model_W_deg1"
+   ],
+   "workspace_modules": [
+    "Init.Core",
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Empty"
+   ]
+  },
+  "WDP8.proof": {
+   "package": [
+    "GT.Edges",
+    "GT.TriangleFree",
+    "GT.instDecidableTriangleFree",
+    "WD.Bipartite",
+    "WD.instDecidableBipartite",
+    "WDConj.imp_triangle_free__bipartite",
+    "WDConj.imp_triangle_free__bipartite_negation",
+    "WDP8.proof._proof_1_1",
+    "WDP8.proof._proof_1_2"
+   ],
+   "workspace_modules": [
+    "Init.Core",
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Insert"
+   ]
+  },
+  "WDP8.proof._proof_1_1": {
+   "package": [
+    "GT.Edges",
+    "GT.TriangleFree",
+    "GT.instDecidableTriangleFree"
+   ],
+   "workspace_modules": [
+    "Init.Core",
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Insert"
+   ]
+  },
+  "WDP8.proof._proof_1_2": {
+   "package": [
+    "GT.Edges",
+    "WD.Bipartite",
+    "WD.instDecidableBipartite"
+   ],
+   "workspace_modules": [
+    "Init.Core",
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Insert"
+   ]
+  }
+ },
+ "domain": "triangle_free_host_v1",
+ "modules": [
+  {
+   "name": "GTDefs",
+   "source": "import Mathlib.Data.Finset.Powerset\n\nnamespace GT\n\n/-- Edge sets: ordered pairs (u, v), read as the edge {u, v}. Hosts list each edge once, with u < v. -/\nabbrev Edges := Finset (ℕ × ℕ)\n\n/-- No three edges (a, b), (b, c), (a, c). -/\ndef TriangleFree (S : Edges) : Prop :=\n  ∀ e ∈ S, ∀ f ∈ S, ∀ g ∈ S, ¬ (e.1 = g.1 ∧ e.2 = f.1 ∧ f.2 = g.2)\n\ninstance (S : Edges) : Decidable (TriangleFree S) := by\n  unfold TriangleFree; infer_instance\n\nend GT\n",
+   "source_sha256": "34a84d4f227cbf5a95012a37a9f263f14ca419a4959be42c674d8abc47c9e3a7",
+   "trusted": true
+  },
+  {
+   "name": "WDDefs",
+   "source": "import GTDefs\n\nnamespace WD\n\n/-- Assumption: every pair lies inside {0, …, n-1} and the host is 2-colourable there. -/\ndef Bipartite (n : ℕ) (H : GT.Edges) : Prop :=\n  ∃ A ∈ (Finset.range n).powerset, ∀ e ∈ H, (e.1 ∈ A ↔ e.2 ∉ A)\n\ninstance (n : ℕ) (H : GT.Edges) : Decidable (Bipartite n H) := by\n  unfold Bipartite; infer_instance\n\n/-- Degree of v in H. -/\ndef deg (v : ℕ) (H : GT.Edges) : ℕ := (H.filter fun e => e.1 = v ∨ e.2 = v).card\n\n/-- Assumption: no vertex of an edge has degree above d. -/\ndef MaxDegLe (d : ℕ) (H : GT.Edges) : Prop := ∀ e ∈ H, deg e.1 H ≤ d ∧ deg e.2 H ≤ d\n\ninstance (d : ℕ) (H : GT.Edges) : Decidable (MaxDegLe d H) := by\n  unfold MaxDegLe; infer_instance\n\n/-- Assumption: the host contains a triangle. -/\ndef HasTriangle (H : GT.Edges) : Prop := ¬ GT.TriangleFree H\n\ninstance (H : GT.Edges) : Decidable (HasTriangle H) := by\n  unfold HasTriangle; infer_instance\n\nend WD\n",
+   "source_sha256": "37dc291c6d21e1bc2d6ca4a13bae2d9e377284a3351d3bca17e091d853df1add",
+   "trusted": true
+  },
+  {
+   "name": "WDConj",
+   "source": "import GTDefs\nimport WDDefs\nset_option linter.unusedVariables false\n\nnamespace WDConj\n/-- Generated conjecture `imp_bipartite__triangle_free` (generated:world-obligation). -/\ndef imp_bipartite__triangle_free : Prop := ∀ (H : GT.Edges) (h1 : WD.Bipartite 6 H), GT.TriangleFree H\n/-- Generated conjecture `imp_max_deg_1__triangle_free` (generated:world-obligation). -/\ndef imp_max_deg_1__triangle_free : Prop := ∀ (H : GT.Edges) (h1 : WD.MaxDegLe 1 H), GT.TriangleFree H\n/-- Generated conjecture `imp_bipartite_has_triangle__triangle_free` (generated:world-obligation). -/\ndef imp_bipartite_has_triangle__triangle_free : Prop := ∀ (H : GT.Edges) (h1 : WD.Bipartite 6 H) (h2 : WD.HasTriangle H), GT.TriangleFree H\n/-- Generated conjecture `model_W_tf` (generated:world-obligation). -/\ndef model_W_tf : Prop := ∃ H : GT.Edges, (GT.TriangleFree H)\n/-- Generated conjecture `model_W_bip` (generated:world-obligation). -/\ndef model_W_bip : Prop := ∃ H : GT.Edges, (WD.Bipartite 6 H)\n/-- Generated conjecture `model_W_dense` (generated:world-obligation). -/\ndef model_W_dense : Prop := ∃ H : GT.Edges, (WD.HasTriangle H)\n/-- Generated conjecture `incons_W_conflict` (generated:world-obligation). -/\ndef incons_W_conflict : Prop := ∀ (H : GT.Edges) (h1 : WD.Bipartite 6 H) (h2 : WD.HasTriangle H), False\n/-- Generated conjecture `model_W_deg1` (generated:world-obligation). -/\ndef model_W_deg1 : Prop := ∃ H : GT.Edges, (WD.MaxDegLe 1 H)\n/-- Generated conjecture `imp_triangle_free__bipartite` (generated:world-obligation). -/\ndef imp_triangle_free__bipartite : Prop := ∀ (H : GT.Edges) (h1 : GT.TriangleFree H), WD.Bipartite 6 H\ndef imp_triangle_free__bipartite_negation : Prop := ¬ imp_triangle_free__bipartite\nend WDConj\n",
+   "source_sha256": "d41b9ef0aae48e0cea408c42cf05d48391b17167a17fa6e976080b173bc7d716",
+   "trusted": true
+  },
+  {
+   "name": "WDP1",
+   "source": "import GTDefs\nimport WDDefs\nimport WDConj\nnamespace WDP1\ntheorem proof : WDConj.imp_bipartite__triangle_free := by\n  unfold WDConj.imp_bipartite__triangle_free\n  intro H h1\n  obtain ⟨A, _, hA⟩ := h1\n  unfold GT.TriangleFree\n  rintro ⟨a, b⟩ he ⟨b', d⟩ hf ⟨a', d'⟩ hg ⟨e1, e2, e3⟩\n  simp only at e1 e2 e3\n  subst e1 e2 e3\n  have x := hA _ he\n  have y := hA _ hf\n  have z := hA _ hg\n  simp only at x y z\n  tauto\nend WDP1\n",
+   "source_sha256": "ec420782ea3a2ea80e876b9d113bdb03db97eb275befbffd7045bcb487711194",
+   "trusted": false
+  },
+  {
+   "name": "WDP2",
+   "source": "import GTDefs\nimport WDDefs\nimport WDConj\nimport WDP1\nnamespace WDP2\ntheorem proof : WDConj.imp_bipartite_has_triangle__triangle_free := by\n  unfold WDConj.imp_bipartite_has_triangle__triangle_free\n  intro H h1 h2\n  obtain ⟨A, _, hA⟩ := h1\n  unfold GT.TriangleFree\n  rintro ⟨a, b⟩ he ⟨b', d⟩ hf ⟨a', d'⟩ hg ⟨e1, e2, e3⟩\n  simp only at e1 e2 e3\n  subst e1 e2 e3\n  have x := hA _ he\n  have y := hA _ hf\n  have z := hA _ hg\n  simp only at x y z\n  tauto\nend WDP2\n",
+   "source_sha256": "e15d1c21c3f38a4aecf1155b0433f0e3840c1add1bbb7888f3d0682a19fbd751",
+   "trusted": false
+  },
+  {
+   "name": "WDP3",
+   "source": "import GTDefs\nimport WDDefs\nimport WDConj\nimport WDP1\nimport WDP2\nnamespace WDP3\ntheorem proof : WDConj.model_W_tf := by\n  unfold WDConj.model_W_tf\n  exact ⟨(∅ : GT.Edges), by decide⟩\nend WDP3\n",
+   "source_sha256": "a7ac2e7559985bd47cc00ceea91e7e4a6948b487e99bdfbd7a76de7b3a1615ba",
+   "trusted": false
+  },
+  {
+   "name": "WDP4",
+   "source": "import GTDefs\nimport WDDefs\nimport WDConj\nimport WDP1\nimport WDP2\nimport WDP3\nnamespace WDP4\ntheorem proof : WDConj.model_W_bip := by\n  unfold WDConj.model_W_bip\n  exact ⟨(∅ : GT.Edges), by decide⟩\nend WDP4\n",
+   "source_sha256": "dfe3759fafc23f34cee3d2b5a277fd059520584f2470baf623f2684e647851ca",
+   "trusted": false
+  },
+  {
+   "name": "WDP5",
+   "source": "import GTDefs\nimport WDDefs\nimport WDConj\nimport WDP1\nimport WDP2\nimport WDP3\nimport WDP4\nnamespace WDP5\ntheorem proof : WDConj.model_W_dense := by\n  unfold WDConj.model_W_dense\n  exact ⟨({(1, 2), (1, 4), (2, 4)} : GT.Edges), by decide⟩\nend WDP5\n",
+   "source_sha256": "e402d9b067dbc1698a5e9000de70dceb7a28f00652b309616f97c7a876c3a8a2",
+   "trusted": false
+  },
+  {
+   "name": "WDP6",
+   "source": "import GTDefs\nimport WDDefs\nimport WDConj\nimport WDP1\nimport WDP2\nimport WDP3\nimport WDP4\nimport WDP5\nnamespace WDP6\ntheorem proof : WDConj.incons_W_conflict := by\n  unfold WDConj.incons_W_conflict\n  intro H h1 h2\n  unfold WD.HasTriangle at *\n  solve_by_elim [WDP1.proof, WDP2.proof, WDP3.proof, WDP4.proof, WDP5.proof]\nend WDP6\n",
+   "source_sha256": "e21375781c5324cd07c3d271ea3e8665902dff0c134a0acdd1818614173d8b17",
+   "trusted": false
+  },
+  {
+   "name": "WDP7",
+   "source": "import GTDefs\nimport WDDefs\nimport WDConj\nimport WDP1\nimport WDP2\nimport WDP3\nimport WDP4\nimport WDP5\nimport WDP6\nnamespace WDP7\ntheorem proof : WDConj.model_W_deg1 := by\n  unfold WDConj.model_W_deg1\n  exact ⟨(∅ : GT.Edges), by decide⟩\nend WDP7\n",
+   "source_sha256": "447423fd175b2b1a5a1f449408004acbcd4302f29675982c4aad91c161492dff",
+   "trusted": false
+  },
+  {
+   "name": "WDP8",
+   "source": "import GTDefs\nimport WDDefs\nimport WDConj\nimport WDP1\nimport WDP2\nimport WDP3\nimport WDP4\nimport WDP5\nimport WDP6\nimport WDP7\nnamespace WDP8\ntheorem proof : WDConj.imp_triangle_free__bipartite_negation := by\n  unfold WDConj.imp_triangle_free__bipartite_negation WDConj.imp_triangle_free__bipartite\n  intro h\n  exact absurd (h (({(0, 1), (0, 3), (1, 5), (3, 4), (4, 5)} : GT.Edges)) (by first | decide +kernel | (intro v; omega) | omega | (intros; omega))) (by decide +kernel)\nend WDP8\n",
+   "source_sha256": "f014eca808cd0b6ab5da76e57854f9bd5e8dcfa20c00c77eb07f587fb86f97b6",
+   "trusted": false
+  }
+ ],
+ "name": "worlds and transport (W12)",
+ "package_sha256": "9db816b69f2468760e795cbaa335d6bb3c47917b7c10e903c6887397c33d9f5f",
+ "proofs": [
+  {
+   "module": "WDP1",
+   "recipe": "witness-destructure-tauto",
+   "statement": "imp_bipartite__triangle_free"
+  },
+  {
+   "module": "WDP2",
+   "recipe": "witness-destructure-tauto",
+   "statement": "imp_bipartite_has_triangle__triangle_free"
+  },
+  {
+   "module": "WDP3",
+   "recipe": "witness-evaluation",
+   "statement": "model_W_tf"
+  },
+  {
+   "module": "WDP4",
+   "recipe": "witness-evaluation",
+   "statement": "model_W_bip"
+  },
+  {
+   "module": "WDP5",
+   "recipe": "witness-evaluation",
+   "statement": "model_W_dense"
+  },
+  {
+   "module": "WDP6",
+   "recipe": "library-solve",
+   "statement": "incons_W_conflict"
+  },
+  {
+   "module": "WDP7",
+   "recipe": "witness-evaluation",
+   "statement": "model_W_deg1"
+  },
+  {
+   "module": "WDP8",
+   "recipe": "counterexample-evaluation",
+   "statement": "imp_triangle_free__bipartite"
+  }
+ ],
+ "provenance": {
+  "acceptance": "genesis.formal_research.checker.accept",
+  "created_at": "2026-10-11T12:11:20.476976+00:00",
+  "loop": "genesis.formal_research.loop",
+  "search": "genesis.formal_research.search (builder-written recipes, named per proof)"
+ },
+ "schema": "genesis-theory-package-v1",
+ "scope": "Explicit assumption worlds over host graphs; checked consistency, implication, separation and transport. Claims keep their world's assumptions.",
+ "statements": [
+  {
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "counterexample": null,
+   "id": "imp_bipartite__triangle_free",
+   "lean": "∀ (H : GT.Edges) (h1 : WD.Bipartite 6 H), GT.TriangleFree H",
+   "origin": "generated:world-obligation",
+   "proof_const": "WDP1.proof",
+   "proof_module": "WDP1",
+   "recipe": "witness-destructure-tauto",
+   "role": "implication",
+   "screened_instances": 1725,
+   "spec_const": "WDConj.imp_bipartite__triangle_free",
+   "status": "CHECKED",
+   "subject": "W_bip=>W_tf:triangle_free"
+  },
+  {
+   "counterexample": null,
+   "id": "imp_max_deg_1__triangle_free",
+   "lean": "∀ (H : GT.Edges) (h1 : WD.MaxDegLe 1 H), GT.TriangleFree H",
+   "origin": "generated:world-obligation",
+   "reason": "no recipe compiled",
+   "role": "implication",
+   "screened_instances": 531,
+   "spec_const": "WDConj.imp_max_deg_1__triangle_free",
+   "status": "UNRESOLVED",
+   "subject": "W_deg1=>W_tf:triangle_free"
+  },
+  {
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "counterexample": null,
+   "id": "imp_bipartite_has_triangle__triangle_free",
+   "lean": "∀ (H : GT.Edges) (h1 : WD.Bipartite 6 H) (h2 : WD.HasTriangle H), GT.TriangleFree H",
+   "origin": "generated:world-obligation",
+   "proof_const": "WDP2.proof",
+   "proof_module": "WDP2",
+   "recipe": "witness-destructure-tauto",
+   "role": "implication",
+   "screened_instances": 0,
+   "spec_const": "WDConj.imp_bipartite_has_triangle__triangle_free",
+   "status": "CHECKED",
+   "subject": "W_conflict=>W_tf:triangle_free"
+  },
+  {
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "counterexample": null,
+   "id": "model_W_tf",
+   "lean": "∃ H : GT.Edges, (GT.TriangleFree H)",
+   "origin": "generated:world-obligation",
+   "proof_const": "WDP3.proof",
+   "proof_module": "WDP3",
+   "recipe": "witness-evaluation",
+   "role": "consistency",
+   "screened_instances": 0,
+   "spec_const": "WDConj.model_W_tf",
+   "status": "CHECKED",
+   "subject": "W_tf"
+  },
+  {
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "counterexample": null,
+   "id": "model_W_bip",
+   "lean": "∃ H : GT.Edges, (WD.Bipartite 6 H)",
+   "origin": "generated:world-obligation",
+   "proof_const": "WDP4.proof",
+   "proof_module": "WDP4",
+   "recipe": "witness-evaluation",
+   "role": "consistency",
+   "screened_instances": 0,
+   "spec_const": "WDConj.model_W_bip",
+   "status": "CHECKED",
+   "subject": "W_bip"
+  },
+  {
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "counterexample": null,
+   "id": "model_W_dense",
+   "lean": "∃ H : GT.Edges, (WD.HasTriangle H)",
+   "origin": "generated:world-obligation",
+   "proof_const": "WDP5.proof",
+   "proof_module": "WDP5",
+   "recipe": "witness-evaluation",
+   "role": "consistency",
+   "screened_instances": 0,
+   "spec_const": "WDConj.model_W_dense",
+   "status": "CHECKED",
+   "subject": "W_dense"
+  },
+  {
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "counterexample": null,
+   "id": "incons_W_conflict",
+   "lean": "∀ (H : GT.Edges) (h1 : WD.Bipartite 6 H) (h2 : WD.HasTriangle H), False",
+   "origin": "generated:world-obligation",
+   "proof_const": "WDP6.proof",
+   "proof_module": "WDP6",
+   "recipe": "library-solve",
+   "role": "inconsistency",
+   "screened_instances": 0,
+   "spec_const": "WDConj.incons_W_conflict",
+   "status": "CHECKED",
+   "subject": "W_conflict"
+  },
+  {
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "counterexample": null,
+   "id": "model_W_deg1",
+   "lean": "∃ H : GT.Edges, (WD.MaxDegLe 1 H)",
+   "origin": "generated:world-obligation",
+   "proof_const": "WDP7.proof",
+   "proof_module": "WDP7",
+   "recipe": "witness-evaluation",
+   "role": "consistency",
+   "screened_instances": 0,
+   "spec_const": "WDConj.model_W_deg1",
+   "status": "CHECKED",
+   "subject": "W_deg1"
+  },
+  {
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "counterexample": {
+    "values": {
+     "H": "({(0, 1), (0, 3), (1, 5), (3, 4), (4, 5)} : GT.Edges)"
+    }
+   },
+   "id": "imp_triangle_free__bipartite",
+   "lean": "∀ (H : GT.Edges) (h1 : GT.TriangleFree H), WD.Bipartite 6 H",
+   "origin": "generated:world-obligation",
+   "proof_const": "WDP8.proof",
+   "proof_module": "WDP8",
+   "recipe": "counterexample-evaluation",
+   "role": "equivalence",
+   "screened_instances": 1774,
+   "spec_const": "WDConj.imp_triangle_free__bipartite",
+   "status": "DISPROVED",
+   "subject": "W_bip=>W_tf"
+  }
+ ],
+ "verdict": {
+  "claims": [
+   {
+    "assumptions": [
+     "triangle_free"
+    ],
+    "id": "keep_all_is_valid",
+    "statement": "the keep-all solver returns a triangle-free witness",
+    "status": "WORLD_RELATIVE",
+    "world": "W_tf"
+   },
+   {
+    "assumptions": [
+     "triangle_free"
+    ],
+    "id": "keep_all_is_optimal",
+    "statement": "the keep-all witness has |H| edges, the trivial upper bound",
+    "status": "WORLD_RELATIVE",
+    "world": "W_tf"
+   },
+   {
+    "assumptions": [
+     "bipartite",
+     "has_triangle"
+    ],
+    "id": "keep_all_is_valid_bip",
+    "statement": "keep-all is valid (vacuous if the world is inconsistent)",
+    "status": "VACUOUS",
+    "world": "W_conflict"
+   }
+  ],
+  "equivalence": {
+   "W_tf~W_bip": "DISTINCT"
+  },
+  "transports": [
+   {
+    "claims": [
+     "keep_all_is_valid",
+     "keep_all_is_optimal"
+    ],
+    "conditions": [
+     "triangle_free"
+    ],
+    "from": "W_tf",
+    "implication_proofs": [
+     "WDP1.proof"
+    ],
+    "missing": [],
+    "to": "W_bip",
+    "transported_assumptions": [
+     "bipartite"
+    ],
+    "verdict": "TRANSPORTED"
+   },
+   {
+    "claims": [
+     "keep_all_is_valid",
+     "keep_all_is_optimal"
+    ],
+    "conditions": [
+     "triangle_free"
+    ],
+    "from": "W_tf",
+    "implication_proofs": [],
+    "missing": [
+     {
+      "assumption": "triangle_free",
+      "status": "UNRESOLVED"
+     }
+    ],
+    "to": "W_deg1",
+    "transported_assumptions": null,
+    "verdict": "REFUSED_UNPROVED_CONDITIONS"
+   },
+   {
+    "claims": [
+     "keep_all_is_valid",
+     "keep_all_is_optimal"
+    ],
+    "conditions": [
+     "triangle_free"
+    ],
+    "from": "W_tf",
+    "implication_proofs": [
+     "WDP2.proof"
+    ],
+    "missing": [],
+    "to": "W_conflict",
+    "transported_assumptions": null,
+    "verdict": "REFUSED_INCONSISTENT_TARGET"
+   }
+  ],
+  "worlds": {
+   "W_bip": {
+    "evidence": "WDP4.proof",
+    "status": "CONSISTENT"
+   },
+   "W_conflict": {
+    "evidence": "WDP6.proof",
+    "status": "INCONSISTENT"
+   },
+   "W_deg1": {
+    "evidence": "WDP7.proof",
+    "status": "CONSISTENT"
+   },
+   "W_dense": {
+    "evidence": "WDP5.proof",
+    "status": "CONSISTENT"
+   },
+   "W_tf": {
+    "evidence": "WDP3.proof",
+    "status": "CONSISTENT"
+   }
+  }
+ },
+ "worlds": [
+  {
+   "assumptions": [
+    "triangle_free"
+   ],
+   "id": "W_tf",
+   "lineage": {
+    "intervention": null,
+    "parent": null
+   },
+   "memory": [],
+   "ontology": [
+    "GT.Edges",
+    "GT.TriangleFree"
+   ],
+   "representation": null,
+   "research_policy": {
+    "proof_search": "recipes",
+    "screening_samples": 3000
+   },
+   "solver": "keep-all"
+  },
+  {
+   "assumptions": [
+    "bipartite"
+   ],
+   "id": "W_bip",
+   "lineage": {
+    "intervention": null,
+    "parent": null
+   },
+   "memory": [],
+   "ontology": [
+    "GT.Edges",
+    "GT.TriangleFree"
+   ],
+   "representation": null,
+   "research_policy": {
+    "proof_search": "recipes",
+    "screening_samples": 3000
+   },
+   "solver": "keep-all"
+  },
+  {
+   "assumptions": [
+    "has_triangle"
+   ],
+   "id": "W_dense",
+   "lineage": {
+    "intervention": null,
+    "parent": null
+   },
+   "memory": [],
+   "ontology": [
+    "GT.Edges",
+    "GT.TriangleFree"
+   ],
+   "representation": "cross_2",
+   "research_policy": {
+    "proof_search": "recipes",
+    "screening_samples": 3000
+   },
+   "solver": "represent-and-repair"
+  },
+  {
+   "assumptions": [
+    "bipartite",
+    "has_triangle"
+   ],
+   "id": "W_conflict",
+   "lineage": {
+    "intervention": {
+     "add": [
+      "has_triangle"
+     ],
+     "remove": []
+    },
+    "parent": "W_bip"
+   },
+   "memory": [],
+   "ontology": [
+    "GT.Edges",
+    "GT.TriangleFree"
+   ],
+   "representation": null,
+   "research_policy": {
+    "proof_search": "recipes",
+    "screening_samples": 3000
+   },
+   "solver": "keep-all"
+  },
+  {
+   "assumptions": [
+    "max_deg_1"
+   ],
+   "id": "W_deg1",
+   "lineage": {
+    "intervention": null,
+    "parent": null
+   },
+   "memory": [],
+   "ontology": [
+    "GT.Edges",
+    "GT.TriangleFree"
+   ],
+   "representation": null,
+   "research_policy": {
+    "proof_search": "recipes",
+    "screening_samples": 3000
+   },
+   "solver": "keep-all"
+  }
+ ]
+}

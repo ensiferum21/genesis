@@ -1,0 +1,249 @@
+{
+ "corrections": [
+  {
+   "field": "proof_nodes",
+   "reason": "theorem values were read as opaque (0 nodes); recomputed by re-acceptance with allowOpaque := true (scripts/b18_proof_sizes.py)"
+  }
+ ],
+ "recovery": {
+  "arms": {
+   "concept": {
+    "cache_hits": 0,
+    "disproved": 4,
+    "fresh_statements": 16,
+    "proof_nodes_fresh": 204,
+    "proved": 8,
+    "search_candidates": 126,
+    "search_cpu_s": 323.8,
+    "unresolved": 4
+   },
+   "manual": {
+    "cache_hits": 0,
+    "disproved": 4,
+    "fresh_statements": 16,
+    "proof_nodes_fresh": 204,
+    "proved": 8,
+    "search_candidates": 150,
+    "search_cpu_s": 333.9,
+    "unresolved": 4
+   },
+   "none": {
+    "cache_hits": 0,
+    "disproved": 4,
+    "fresh_statements": 16,
+    "proof_nodes_fresh": 6222,
+    "proved": 4,
+    "search_candidates": 150,
+    "search_cpu_s": 234.0,
+    "unresolved": 8
+   },
+   "retrieval": {
+    "cache_hits": 0,
+    "disproved": 4,
+    "fresh_statements": 16,
+    "proof_nodes_fresh": 6222,
+    "proved": 4,
+    "search_candidates": 210,
+    "search_cpu_s": 351.6,
+    "unresolved": 8
+   }
+  },
+  "concept_sha256": "01c93c4c3bec86fdde450d82ce902fa86e06f145cac31e0cc3ae13f5bba7641a",
+  "history_sha256": "6af7b894f44f0620ae47d7d576f08684c15584fa9832563d24b2cd1e4b17f1c8"
+ },
+ "replay": {
+  "recovery/arm_concept/package.json": "REPLAYED",
+  "recovery/arm_manual/package.json": "REPLAYED",
+  "recovery/arm_none/package.json": "REPLAYED",
+  "recovery/arm_retrieval/package.json": "REPLAYED",
+  "recovery/concept/package.json": "REPLAYED",
+  "recovery/history/package.json": "REPLAYED",
+  "representations/package.json": "REPLAYED",
+  "worlds/package.json": "REPLAYED"
+ },
+ "representations": {
+  "chosen": "adjacent_2",
+  "dev_evaluation": {
+   "all_witnesses_valid": true,
+   "certified_optimal_by_packing_bound": 0,
+   "losses_vs_strongest_baseline": 1,
+   "method_optimum_hits": 4,
+   "strongest_baseline_optimum_hits": 2,
+   "tasks": 12,
+   "ties": 5,
+   "wins_vs_strongest_baseline": 6
+  },
+  "package_sha256": "1b53b1b9926cbf27d3aff43a2b2000176a2c7a5210fc2059972d978e45b19c0e",
+  "statements": {
+   "adjacent_2_image": "CHECKED",
+   "adjacent_2_loses_tf": "CHECKED",
+   "adjacent_2_sound_c4": "DISPROVED",
+   "adjacent_2_sound_tf": "CHECKED",
+   "adjacent_2_within_cross_2": "CHECKED",
+   "adjacent_2_within_ordered_2": "DISPROVED",
+   "adjacent_3_image": "CHECKED",
+   "adjacent_3_sound_c4": "DISPROVED",
+   "adjacent_3_sound_tf": "CHECKED",
+   "cross_2_image": "CHECKED",
+   "cross_2_loses_tf": "CHECKED",
+   "cross_2_sound_c4": "DISPROVED",
+   "cross_2_sound_tf": "CHECKED",
+   "cross_2_within_adjacent_2": "CHECKED",
+   "cross_2_within_ordered_2": "DISPROVED",
+   "cross_3_image": "CHECKED",
+   "cross_3_sound_c4": "DISPROVED",
+   "cross_3_sound_tf": "DISPROVED",
+   "inside_2_image": "CHECKED",
+   "inside_2_sound_c4": "DISPROVED",
+   "inside_2_sound_tf": "DISPROVED",
+   "inside_3_image": "CHECKED",
+   "inside_3_sound_c4": "DISPROVED",
+   "inside_3_sound_tf": "DISPROVED",
+   "ordered_2_image": "CHECKED",
+   "ordered_2_loses_tf": "CHECKED",
+   "ordered_2_sound_c4": "DISPROVED",
+   "ordered_2_sound_tf": "CHECKED",
+   "ordered_2_within_adjacent_2": "CHECKED",
+   "ordered_2_within_cross_2": "CHECKED",
+   "ordered_3_image": "CHECKED",
+   "ordered_3_sound_c4": "DISPROVED",
+   "ordered_3_sound_tf": "DISPROVED"
+  }
+ },
+ "wall_seconds": 3907.0,
+ "worlds": {
+  "experiment": {
+   "bipartite": {
+    "keep_all_valid": 6,
+    "tasks": 6,
+    "worlds_applicable": [
+     "W_bip",
+     "W_tf"
+    ]
+   },
+   "erdos": {
+    "keep_all_valid": 0,
+    "tasks": 6,
+    "worlds_applicable": [
+     "W_dense"
+    ]
+   }
+  },
+  "package_sha256": "9db816b69f2468760e795cbaa335d6bb3c47917b7c10e903c6887397c33d9f5f",
+  "verdict": {
+   "claims": [
+    {
+     "assumptions": [
+      "triangle_free"
+     ],
+     "id": "keep_all_is_valid",
+     "statement": "the keep-all solver returns a triangle-free witness",
+     "status": "WORLD_RELATIVE",
+     "world": "W_tf"
+    },
+    {
+     "assumptions": [
+      "triangle_free"
+     ],
+     "id": "keep_all_is_optimal",
+     "statement": "the keep-all witness has |H| edges, the trivial upper bound",
+     "status": "WORLD_RELATIVE",
+     "world": "W_tf"
+    },
+    {
+     "assumptions": [
+      "bipartite",
+      "has_triangle"
+     ],
+     "id": "keep_all_is_valid_bip",
+     "statement": "keep-all is valid (vacuous if the world is inconsistent)",
+     "status": "VACUOUS",
+     "world": "W_conflict"
+    }
+   ],
+   "equivalence": {
+    "W_tf~W_bip": "DISTINCT"
+   },
+   "transports": [
+    {
+     "claims": [
+      "keep_all_is_valid",
+      "keep_all_is_optimal"
+     ],
+     "conditions": [
+      "triangle_free"
+     ],
+     "from": "W_tf",
+     "implication_proofs": [
+      "WDP1.proof"
+     ],
+     "missing": [],
+     "to": "W_bip",
+     "transported_assumptions": [
+      "bipartite"
+     ],
+     "verdict": "TRANSPORTED"
+    },
+    {
+     "claims": [
+      "keep_all_is_valid",
+      "keep_all_is_optimal"
+     ],
+     "conditions": [
+      "triangle_free"
+     ],
+     "from": "W_tf",
+     "implication_proofs": [],
+     "missing": [
+      {
+       "assumption": "triangle_free",
+       "status": "UNRESOLVED"
+      }
+     ],
+     "to": "W_deg1",
+     "transported_assumptions": null,
+     "verdict": "REFUSED_UNPROVED_CONDITIONS"
+    },
+    {
+     "claims": [
+      "keep_all_is_valid",
+      "keep_all_is_optimal"
+     ],
+     "conditions": [
+      "triangle_free"
+     ],
+     "from": "W_tf",
+     "implication_proofs": [
+      "WDP2.proof"
+     ],
+     "missing": [],
+     "to": "W_conflict",
+     "transported_assumptions": null,
+     "verdict": "REFUSED_INCONSISTENT_TARGET"
+    }
+   ],
+   "worlds": {
+    "W_bip": {
+     "evidence": "WDP4.proof",
+     "status": "CONSISTENT"
+    },
+    "W_conflict": {
+     "evidence": "WDP6.proof",
+     "status": "INCONSISTENT"
+    },
+    "W_deg1": {
+     "evidence": "WDP7.proof",
+     "status": "CONSISTENT"
+    },
+    "W_dense": {
+     "evidence": "WDP5.proof",
+     "status": "CONSISTENT"
+    },
+    "W_tf": {
+     "evidence": "WDP3.proof",
+     "status": "CONSISTENT"
+    }
+   }
+  }
+ }
+}

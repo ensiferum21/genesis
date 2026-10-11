@@ -116,9 +116,9 @@ def _closure(name, sources, names):
     return seen
 
 
-def compile_module(name, source, deps, env, policy=POLICY):
+def compile_module(name, source, deps, env, policy=POLICY, heartbeats=HEARTBEATS):
     """Compile one module; `deps` maps flat file names to compiled bytes of its imports."""
-    script = (f'set -u\ncd /work/src && lean -D maxHeartbeats={HEARTBEATS} --root=/work/src '
+    script = (f'set -u\ncd /work/src && lean -D maxHeartbeats={heartbeats} --root=/work/src '
               f'-o /work/out/{name}.olean {name}.lean > /work/out/{name}.log 2>&1 || exit 42\n')
     receipt, out = _run({**deps, f'{name}.lean': source.encode()}, script, env, policy)
     log = out.get(f'{name}.log', b'').decode(errors='replace')
@@ -161,7 +161,32 @@ def genesisModuleOf (env : Environment) (n : Name) : String :=
   match env.getModuleIdxFor? n with
   | some i => toString env.header.moduleNames[i.toNat]!
   | none => "_"
-def genesisDump (tag : String) (mods : List Name) : MetaM Unit := do
+partial def genesisSize (fuel : Nat) : Expr → Nat
+  | .app f a => if fuel == 0 then 0 else
+      let x := genesisSize fuel f; x + genesisSize (fuel - min fuel x) a + 1
+  | .lam _ t b _ => if fuel == 0 then 0 else
+      let x := genesisSize fuel t; x + genesisSize (fuel - min fuel x) b + 1
+  | .forallE _ t b _ => if fuel == 0 then 0 else
+      let x := genesisSize fuel t; x + genesisSize (fuel - min fuel x) b + 1
+  | .letE _ t v b _ => if fuel == 0 then 0 else
+      genesisSize fuel t + genesisSize fuel v + genesisSize fuel b + 1
+  | .mdata _ e => genesisSize fuel e
+  | .proj _ _ e => genesisSize fuel e + 1
+  | _ => 1
+partial def genesisTree : Expr → Json
+  | .bvar i => Json.arr #["bvar", toJson i]
+  | .const n _ => Json.arr #["const", toString n]
+  | .app f a => Json.arr #["app", genesisTree f, genesisTree a]
+  | .lam _ t b _ => Json.arr #["lam", genesisTree t, genesisTree b]
+  | .forallE _ t b _ => Json.arr #["pi", genesisTree t, genesisTree b]
+  | .letE _ t v b _ => Json.arr #["let", genesisTree t, genesisTree v, genesisTree b]
+  | .lit (.natVal n) => Json.arr #["nat", toJson n]
+  | .lit (.strVal s) => Json.arr #["str", s]
+  | .sort l => Json.arr #["sort", toString l]
+  | .mdata _ e => genesisTree e
+  | .proj s i e => Json.arr #["proj", toString s, toJson i, genesisTree e]
+  | _ => Json.arr #["other"]
+def genesisDump (tag : String) (mods : List Name) (trees : Bool := false) : MetaM Unit := do
   let env ← getEnv
   for m in mods do
     let some idx := env.getModuleIdx? m | IO.println s!"{tag} missing-module {m}"
@@ -170,9 +195,14 @@ def genesisDump (tag : String) (mods : List Name) : MetaM Unit := do
       let some ci := env.find? c | continue
       let axs ← Lean.collectAxioms c
       let used := ci.getUsedConstantsAsSet.toList.map fun u => Json.arr #[toString u, genesisModuleOf env u]
+      let size := match ci.value? (allowOpaque := true) with | some v => genesisSize 1000000 v | none => 0
+      let tree := match ci.value?, trees && !c.isInternal with
+        | some v, true => genesisTree v
+        | _, _ => Json.null
       let j := Json.mkObj [("module", toString m), ("name", toString c), ("kind", genesisKind ci),
         ("internal", Json.bool c.isInternal), ("type", toString (genesisAnon ci.type)),
-        ("uses", Json.arr used.toArray), ("axioms", Json.arr (axs.map (Json.str ∘ toString)))]
+        ("uses", Json.arr used.toArray), ("axioms", Json.arr (axs.map (Json.str ∘ toString))),
+        ("value_nodes", toJson size), ("value_tree", tree)]
       IO.println s!"{tag} decl {j.compress}"
 def genesisBind (tag : String) (i : Nat) (bind spec : Name) : MetaM Unit := do
   let env ← getEnv
@@ -185,8 +215,9 @@ def genesisBind (tag : String) (i : Nat) (bind spec : Name) : MetaM Unit := do
 '''
 
 
-def _check_source(imports, bindings, dump, nonce):
-    """The trusted check file and {line number: binding index} for its binding theorems."""
+def _check_source(imports, bindings, dump, nonce, trees=()):
+    """The trusted check file and {line number: binding index} for its binding theorems.
+    Modules in `trees` also get the expression tree of every declaration's value (W09)."""
     head = 'import Lean\n' + ''.join(f'import {m}\n' for m in imports)
     out = (head + _CHECK_HEADER.split('\n', 1)[1]).rstrip('\n').split('\n')
     lines = {}
@@ -196,12 +227,15 @@ def _check_source(imports, bindings, dump, nonce):
     out.append('#eval show MetaM Unit from do')
     for i, b in enumerate(bindings):
         out.append(f'  genesisBind "GENESIS-{nonce}" {i} `genesis_bind_{i} `{b["spec"]}')
-    out.append(f'  genesisDump "GENESIS-{nonce}" [{", ".join("`" + m for m in dump)}]')
+    plain = [m for m in dump if m not in trees]
+    out.append(f'  genesisDump "GENESIS-{nonce}" [{", ".join("`" + m for m in plain)}]')
+    if trees:
+        out.append(f'  genesisDump "GENESIS-{nonce}" [{", ".join("`" + m for m in trees)}] true')
     out.append(f'  IO.println "GENESIS-{nonce} done"')
     return '\n'.join(out) + '\n', lines
 
 
-def accept(modules, bindings, *, policy=POLICY, cache=None):
+def accept(modules, bindings, *, policy=POLICY, cache=None, trees=()):
     """Accept or reject `bindings` ({'spec': Mod.const, 'proof': Mod.const}) over `modules`.
 
     `modules`: ordered [{'name', 'source', 'trusted'}]. Returns a receipt with per-module
@@ -274,7 +308,7 @@ def accept(modules, bindings, *, policy=POLICY, cache=None):
         files.update(r['artifacts'])
     imports = [n for n in names if n in compiled]
     untrusted = [n for n in imports if n not in trusted]
-    check, bind_lines = _check_source(imports, usable, imports, nonce)
+    check, bind_lines = _check_source(imports, usable, imports, nonce, trees=[t for t in trees if t in imports])
     script = ('set -u\ncd /work/src\n'
               f'lean -D maxHeartbeats={HEARTBEATS} --root=/work/src GenesisCheck.lean > /work/out/check.log 2>&1\n'
               'echo "check-exit $?" > /work/out/exits.log\n' +

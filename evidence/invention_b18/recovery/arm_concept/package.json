@@ -1,0 +1,4562 @@
+{
+ "acceptance": {
+  "check_stage": {
+   "check_sha256": "5b55f8930dd728b05a15b5aef414f8908303ddc683206c27a6cfe10cdea9ca07",
+   "cpu_ns": 25162049141,
+   "exit_code": 0,
+   "exits": {
+    "FFCP1": "0",
+    "FFCP10": "0",
+    "FFCP11": "0",
+    "FFCP12": "0",
+    "FFCP13": "0",
+    "FFCP14": "0",
+    "FFCP15": "0",
+    "FFCP2": "0",
+    "FFCP3": "0",
+    "FFCP4": "0",
+    "FFCP5": "0",
+    "FFCP6": "0",
+    "FFCP7": "0",
+    "FFCP8": "0",
+    "FFCP9": "0",
+    "RCP1": "0",
+    "RCP2": "0",
+    "RCP3": "0",
+    "RCP4": "0",
+    "RCP5": "0",
+    "RCP6": "0",
+    "RCP7": "0",
+    "check": "0"
+   },
+   "log": "",
+   "peak_memory_bytes": 231346176,
+   "status": "SUCCESS",
+   "wall_ns": 25813230139
+  },
+  "leanchecker": {
+   "FFCP1": true,
+   "FFCP10": true,
+   "FFCP11": true,
+   "FFCP12": true,
+   "FFCP13": true,
+   "FFCP14": true,
+   "FFCP15": true,
+   "FFCP2": true,
+   "FFCP3": true,
+   "FFCP4": true,
+   "FFCP5": true,
+   "FFCP6": true,
+   "FFCP7": true,
+   "FFCP8": true,
+   "FFCP9": true,
+   "RCP1": true,
+   "RCP2": true,
+   "RCP3": true,
+   "RCP4": true,
+   "RCP5": true,
+   "RCP6": true,
+   "RCP7": true
+  },
+  "receipt_sha256": "572aa793ba2cab65f297baa54f74d0c44e65a816c9e48e7d2b3e42d9ff379f27",
+  "status": "CHECKED"
+ },
+ "assumptions": {
+  "allowed_axioms": [
+   "Classical.choice",
+   "Quot.sound",
+   "propext"
+  ],
+  "axioms_used": [
+   "Classical.choice",
+   "Quot.sound",
+   "propext"
+  ],
+  "conventions": [],
+  "lean": "lean@e8baaa71855a616d",
+  "workspace": {
+   "artifact_identity": "95a6ec9f1aadc0d8d1936c34bd0ce4e144b0e35c85df12543cdcafe9ebf36b41",
+   "import_roots": [
+    "Mathlib.Data.Finset.Powerset"
+   ],
+   "mathlib_rev": "d13f23b723b8a846827a245b89c10fc7d3f11612",
+   "source_identity": "a3a7569b6d7636a844c87c2b72ef2170eda0f712ff8d9a1b0f15b069e301c7ef"
+  }
+ },
+ "bindings": [
+  {
+   "proof": "FFCP1.proof",
+   "spec": "FFCConj.inst_concept_loopfree"
+  },
+  {
+   "proof": "FFCP2.proof",
+   "spec": "FFCConj.inst_concept_matching"
+  },
+  {
+   "proof": "FFCP3.proof",
+   "spec": "FFCConj.inst_concept_nonempty_negation"
+  },
+  {
+   "proof": "FFCP4.proof",
+   "spec": "FFCConj.concept_loopfree_inter"
+  },
+  {
+   "proof": "FFCP5.proof",
+   "spec": "FFCConj.concept_loopfree_sdiff"
+  },
+  {
+   "proof": "FFCP6.proof",
+   "spec": "FFCConj.concept_loopfree_filter"
+  },
+  {
+   "proof": "FFCP7.proof",
+   "spec": "FFCConj.concept_loopfree_erase"
+  },
+  {
+   "proof": "FFCP8.proof",
+   "spec": "FFCConj.concept_matching_inter"
+  },
+  {
+   "proof": "FFCP9.proof",
+   "spec": "FFCConj.concept_matching_sdiff"
+  },
+  {
+   "proof": "FFCP10.proof",
+   "spec": "FFCConj.concept_matching_filter"
+  },
+  {
+   "proof": "FFCP11.proof",
+   "spec": "FFCConj.concept_matching_erase"
+  },
+  {
+   "proof": "FFCP12.proof",
+   "spec": "FFCConj.concept_nonempty_inter_negation"
+  },
+  {
+   "proof": "FFCP13.proof",
+   "spec": "FFCConj.concept_nonempty_sdiff_negation"
+  },
+  {
+   "proof": "FFCP14.proof",
+   "spec": "FFCConj.concept_nonempty_filter_negation"
+  },
+  {
+   "proof": "FFCP15.proof",
+   "spec": "FFCConj.concept_nonempty_erase_negation"
+  }
+ ],
+ "costs": {
+  "acceptance_check_cpu_ns": 252395998782,
+  "acceptance_runs": 16,
+  "acceptances": [
+   {
+    "receipt_sha256": "1b7f61ce1d595beffe99331830273ef5195227262de8c6ecd14956c16ba27ebf",
+    "statement": "inst_concept_loopfree",
+    "stats": {
+     "check_sha256": "220501dcfc96c9ed88b68c6e03415a015ef3c5dcb20b687a4495ef793e4ca852",
+     "cpu_ns": 10337819235,
+     "exit_code": 0,
+     "exits": {
+      "FFCP1": "0",
+      "RCP1": "0",
+      "RCP2": "0",
+      "RCP3": "0",
+      "RCP4": "0",
+      "RCP5": "0",
+      "RCP6": "0",
+      "RCP7": "0",
+      "check": "0"
+     },
+     "log": "",
+     "peak_memory_bytes": 224231424,
+     "status": "SUCCESS",
+     "wall_ns": 10537609262
+    },
+    "status": "CHECKED"
+   },
+   {
+    "receipt_sha256": "31d62b9d408f1657d1286f93e253b17d6e66ed53d16f675d00e33e0990184754",
+    "statement": "inst_concept_matching",
+    "stats": {
+     "check_sha256": "9ffeee92c106b7cd716c551b35fa55598b41124963d6095bc08bb885c908c5e0",
+     "cpu_ns": 10830558664,
+     "exit_code": 0,
+     "exits": {
+      "FFCP1": "0",
+      "FFCP2": "0",
+      "RCP1": "0",
+      "RCP2": "0",
+      "RCP3": "0",
+      "RCP4": "0",
+      "RCP5": "0",
+      "RCP6": "0",
+      "RCP7": "0",
+      "check": "0"
+     },
+     "log": "",
+     "peak_memory_bytes": 224473088,
+     "status": "SUCCESS",
+     "wall_ns": 11089082004
+    },
+    "status": "CHECKED"
+   },
+   {
+    "receipt_sha256": "fa469e37324d82cc055f86cbf8aec385e90e7f9362bc6f8333c25a79081b9afc",
+    "statement": "inst_concept_nonempty",
+    "stats": {
+     "check_sha256": "4d7733c398682e8f59fa8ddcf7b9f7b5fefde1fe754db7b165953b93a0e07e43",
+     "cpu_ns": 11265348206,
+     "exit_code": 0,
+     "exits": {
+      "FFCP1": "0",
+      "FFCP2": "0",
+      "FFCP3": "0",
+      "RCP1": "0",
+      "RCP2": "0",
+      "RCP3": "0",
+      "RCP4": "0",
+      "RCP5": "0",
+      "RCP6": "0",
+      "RCP7": "0",
+      "check": "0"
+     },
+     "log": "",
+     "peak_memory_bytes": 223961088,
+     "status": "SUCCESS",
+     "wall_ns": 11478196817
+    },
+    "status": "CHECKED"
+   },
+   {
+    "receipt_sha256": "3ebb5db08a61c610f9fdb21adaaa159c0b4ba12450c3fce11295a03c26ce3383",
+    "statement": "concept_loopfree_inter",
+    "stats": {
+     "check_sha256": "8074b96a6d6619c368e318112ceeefc4b8fc78f8d7afd3de6ff1180eb0c14695",
+     "cpu_ns": 12065388568,
+     "exit_code": 0,
+     "exits": {
+      "FFCP1": "0",
+      "FFCP2": "0",
+      "FFCP3": "0",
+      "FFCP4": "0",
+      "RCP1": "0",
+      "RCP2": "0",
+      "RCP3": "0",
+      "RCP4": "0",
+      "RCP5": "0",
+      "RCP6": "0",
+      "RCP7": "0",
+      "check": "0"
+     },
+     "log": "",
+     "peak_memory_bytes": 223932416,
+     "status": "SUCCESS",
+     "wall_ns": 12369814505
+    },
+    "status": "CHECKED"
+   },
+   {
+    "receipt_sha256": "c1d229791063c6cff3544d8f764868e5a8611b217e7c8d3ee83e0408fe6dc708",
+    "statement": "concept_loopfree_sdiff",
+    "stats": {
+     "check_sha256": "f76c23f9bab5c9e6d384def89de69ed0b8043e5a9dc0cd14952aabb5eb3a39bc",
+     "cpu_ns": 13091865390,
+     "exit_code": 0,
+     "exits": {
+      "FFCP1": "0",
+      "FFCP2": "0",
+      "FFCP3": "0",
+      "FFCP4": "0",
+      "FFCP5": "0",
+      "RCP1": "0",
+      "RCP2": "0",
+      "RCP3": "0",
+      "RCP4": "0",
+      "RCP5": "0",
+      "RCP6": "0",
+      "RCP7": "0",
+      "check": "0"
+     },
+     "log": "",
+     "peak_memory_bytes": 223997952,
+     "status": "SUCCESS",
+     "wall_ns": 13336231748
+    },
+    "status": "CHECKED"
+   },
+   {
+    "receipt_sha256": "3914c03f864c4721239a85a399385b629245882ca782e61f0118a736c9188b31",
+    "statement": "concept_loopfree_filter",
+    "stats": {
+     "check_sha256": "f4a98742d331b54e1aab19efad08601ce01f0842442eb29a708fd8533ec9ea3a",
+     "cpu_ns": 14987112547,
+     "exit_code": 0,
+     "exits": {
+      "FFCP1": "0",
+      "FFCP2": "0",
+      "FFCP3": "0",
+      "FFCP4": "0",
+      "FFCP5": "0",
+      "FFCP6": "0",
+      "RCP1": "0",
+      "RCP2": "0",
+      "RCP3": "0",
+      "RCP4": "0",
+      "RCP5": "0",
+      "RCP6": "0",
+      "RCP7": "0",
+      "check": "0"
+     },
+     "log": "",
+     "peak_memory_bytes": 223879168,
+     "status": "SUCCESS",
+     "wall_ns": 15284507111
+    },
+    "status": "CHECKED"
+   },
+   {
+    "receipt_sha256": "3ee10556a11416c0d5aa1f9729fdd0fa20b3998c2e3b052f1635feefb290824f",
+    "statement": "concept_loopfree_erase",
+    "stats": {
+     "check_sha256": "2a5cf0f81e3bb6da16fcd5f61b2bf73a8758c9416a557b905df26ba1bef345d2",
+     "cpu_ns": 16193000925,
+     "exit_code": 0,
+     "exits": {
+      "FFCP1": "0",
+      "FFCP2": "0",
+      "FFCP3": "0",
+      "FFCP4": "0",
+      "FFCP5": "0",
+      "FFCP6": "0",
+      "FFCP7": "0",
+      "RCP1": "0",
+      "RCP2": "0",
+      "RCP3": "0",
+      "RCP4": "0",
+      "RCP5": "0",
+      "RCP6": "0",
+      "RCP7": "0",
+      "check": "0"
+     },
+     "log": "",
+     "peak_memory_bytes": 226017280,
+     "status": "SUCCESS",
+     "wall_ns": 16544204303
+    },
+    "status": "CHECKED"
+   },
+   {
+    "receipt_sha256": "e59ba9940f4e5489c54dfad69ea986c84b28b4aa8fb533c082da40c89dd1d796",
+    "statement": "concept_matching_inter",
+    "stats": {
+     "check_sha256": "0cc9941ddf77c96d0245a7777b2c2ae2012846b25da8d7941cb8f3aedd61f80c",
+     "cpu_ns": 16998500971,
+     "exit_code": 0,
+     "exits": {
+      "FFCP1": "0",
+      "FFCP2": "0",
+      "FFCP3": "0",
+      "FFCP4": "0",
+      "FFCP5": "0",
+      "FFCP6": "0",
+      "FFCP7": "0",
+      "FFCP8": "0",
+      "RCP1": "0",
+      "RCP2": "0",
+      "RCP3": "0",
+      "RCP4": "0",
+      "RCP5": "0",
+      "RCP6": "0",
+      "RCP7": "0",
+      "check": "0"
+     },
+     "log": "",
+     "peak_memory_bytes": 223952896,
+     "status": "SUCCESS",
+     "wall_ns": 17402374534
+    },
+    "status": "CHECKED"
+   },
+   {
+    "receipt_sha256": "adc09f2bd254d4614e52c9e4c029ace0dd68643852a8e5b62fa6d8305a2d3f1d",
+    "statement": "concept_matching_sdiff",
+    "stats": {
+     "check_sha256": "930f9b3b157541e35e915c67294f8c51df4f0aaa3e2898cc24bc0a7816f584e4",
+     "cpu_ns": 18037938529,
+     "exit_code": 0,
+     "exits": {
+      "FFCP1": "0",
+      "FFCP2": "0",
+      "FFCP3": "0",
+      "FFCP4": "0",
+      "FFCP5": "0",
+      "FFCP6": "0",
+      "FFCP7": "0",
+      "FFCP8": "0",
+      "FFCP9": "0",
+      "RCP1": "0",
+      "RCP2": "0",
+      "RCP3": "0",
+      "RCP4": "0",
+      "RCP5": "0",
+      "RCP6": "0",
+      "RCP7": "0",
+      "check": "0"
+     },
+     "log": "",
+     "peak_memory_bytes": 226037760,
+     "status": "SUCCESS",
+     "wall_ns": 18450484939
+    },
+    "status": "CHECKED"
+   },
+   {
+    "receipt_sha256": "486be1559efa099ce0a8aeb5bfe5a171381ba90337f38859ef8b18492a89028e",
+    "statement": "concept_matching_filter",
+    "stats": {
+     "check_sha256": "019d7313d8402157e7d3e8c2665e35593d327aa284193e41c65ca9de53f28e23",
+     "cpu_ns": 19255679490,
+     "exit_code": 0,
+     "exits": {
+      "FFCP1": "0",
+      "FFCP10": "0",
+      "FFCP2": "0",
+      "FFCP3": "0",
+      "FFCP4": "0",
+      "FFCP5": "0",
+      "FFCP6": "0",
+      "FFCP7": "0",
+      "FFCP8": "0",
+      "FFCP9": "0",
+      "RCP1": "0",
+      "RCP2": "0",
+      "RCP3": "0",
+      "RCP4": "0",
+      "RCP5": "0",
+      "RCP6": "0",
+      "RCP7": "0",
+      "check": "0"
+     },
+     "log": "",
+     "peak_memory_bytes": 224284672,
+     "status": "SUCCESS",
+     "wall_ns": 19733424392
+    },
+    "status": "CHECKED"
+   },
+   {
+    "receipt_sha256": "e9f4f9363cc825705a71a528188fb5d2fd8cd5b7de0df40d2546071de599d5ca",
+    "statement": "concept_matching_erase",
+    "stats": {
+     "check_sha256": "5a1e1c2365fb758b5f0c3b690764bbe1d696bd4ec49086b5911a7caaba96ef40",
+     "cpu_ns": 20126578215,
+     "exit_code": 0,
+     "exits": {
+      "FFCP1": "0",
+      "FFCP10": "0",
+      "FFCP11": "0",
+      "FFCP2": "0",
+      "FFCP3": "0",
+      "FFCP4": "0",
+      "FFCP5": "0",
+      "FFCP6": "0",
+      "FFCP7": "0",
+      "FFCP8": "0",
+      "FFCP9": "0",
+      "RCP1": "0",
+      "RCP2": "0",
+      "RCP3": "0",
+      "RCP4": "0",
+      "RCP5": "0",
+      "RCP6": "0",
+      "RCP7": "0",
+      "check": "0"
+     },
+     "log": "",
+     "peak_memory_bytes": 226000896,
+     "status": "SUCCESS",
+     "wall_ns": 20561393760
+    },
+    "status": "CHECKED"
+   },
+   {
+    "receipt_sha256": "89a771808b816853abd6d702f1e613351fa150a1e582d16c28ae25d4bddfbd3a",
+    "statement": "concept_nonempty_inter",
+    "stats": {
+     "check_sha256": "f26a3f6d33e36b8fc6f06c39421de1a32a4dfcf3246a3645b95108376e771e22",
+     "cpu_ns": 20281007615,
+     "exit_code": 0,
+     "exits": {
+      "FFCP1": "0",
+      "FFCP10": "0",
+      "FFCP11": "0",
+      "FFCP12": "0",
+      "FFCP2": "0",
+      "FFCP3": "0",
+      "FFCP4": "0",
+      "FFCP5": "0",
+      "FFCP6": "0",
+      "FFCP7": "0",
+      "FFCP8": "0",
+      "FFCP9": "0",
+      "RCP1": "0",
+      "RCP2": "0",
+      "RCP3": "0",
+      "RCP4": "0",
+      "RCP5": "0",
+      "RCP6": "0",
+      "RCP7": "0",
+      "check": "0"
+     },
+     "log": "",
+     "peak_memory_bytes": 226103296,
+     "status": "SUCCESS",
+     "wall_ns": 20638148610
+    },
+    "status": "CHECKED"
+   },
+   {
+    "receipt_sha256": "5fe589cf9b974710d874026d3e20d159929ccc8f7fb056de2f70170b0d0accf9",
+    "statement": "concept_nonempty_sdiff",
+    "stats": {
+     "check_sha256": "22963d2f0d2fdc285f6ad72a1788b946cf4fa718d4fda8c3ac818ee86c982b20",
+     "cpu_ns": 21720242957,
+     "exit_code": 0,
+     "exits": {
+      "FFCP1": "0",
+      "FFCP10": "0",
+      "FFCP11": "0",
+      "FFCP12": "0",
+      "FFCP13": "0",
+      "FFCP2": "0",
+      "FFCP3": "0",
+      "FFCP4": "0",
+      "FFCP5": "0",
+      "FFCP6": "0",
+      "FFCP7": "0",
+      "FFCP8": "0",
+      "FFCP9": "0",
+      "RCP1": "0",
+      "RCP2": "0",
+      "RCP3": "0",
+      "RCP4": "0",
+      "RCP5": "0",
+      "RCP6": "0",
+      "RCP7": "0",
+      "check": "0"
+     },
+     "log": "",
+     "peak_memory_bytes": 224206848,
+     "status": "SUCCESS",
+     "wall_ns": 22198504742
+    },
+    "status": "CHECKED"
+   },
+   {
+    "receipt_sha256": "1853517bd61680888fa6cb3408e36583febbc7d42b5c8553f4790b3e0db838bc",
+    "statement": "concept_nonempty_filter",
+    "stats": {
+     "check_sha256": "c5038570ee324871cb5c8a75f17bcbf75351aeff182c3a90e8dc0a235a0f38a1",
+     "cpu_ns": 23209027482,
+     "exit_code": 0,
+     "exits": {
+      "FFCP1": "0",
+      "FFCP10": "0",
+      "FFCP11": "0",
+      "FFCP12": "0",
+      "FFCP13": "0",
+      "FFCP14": "0",
+      "FFCP2": "0",
+      "FFCP3": "0",
+      "FFCP4": "0",
+      "FFCP5": "0",
+      "FFCP6": "0",
+      "FFCP7": "0",
+      "FFCP8": "0",
+      "FFCP9": "0",
+      "RCP1": "0",
+      "RCP2": "0",
+      "RCP3": "0",
+      "RCP4": "0",
+      "RCP5": "0",
+      "RCP6": "0",
+      "RCP7": "0",
+      "check": "0"
+     },
+     "log": "",
+     "peak_memory_bytes": 226054144,
+     "status": "SUCCESS",
+     "wall_ns": 23722253181
+    },
+    "status": "CHECKED"
+   },
+   {
+    "receipt_sha256": "abd6b789e31739906907440c225339666a210c41e10a164364fb987a41640c66",
+    "statement": "concept_nonempty_erase",
+    "stats": {
+     "check_sha256": "db072a23401d2328b51a3331fae00b508839c498c84e917df2d6ca1256fa5ecf",
+     "cpu_ns": 23995929988,
+     "exit_code": 0,
+     "exits": {
+      "FFCP1": "0",
+      "FFCP10": "0",
+      "FFCP11": "0",
+      "FFCP12": "0",
+      "FFCP13": "0",
+      "FFCP14": "0",
+      "FFCP15": "0",
+      "FFCP2": "0",
+      "FFCP3": "0",
+      "FFCP4": "0",
+      "FFCP5": "0",
+      "FFCP6": "0",
+      "FFCP7": "0",
+      "FFCP8": "0",
+      "FFCP9": "0",
+      "RCP1": "0",
+      "RCP2": "0",
+      "RCP3": "0",
+      "RCP4": "0",
+      "RCP5": "0",
+      "RCP6": "0",
+      "RCP7": "0",
+      "check": "0"
+     },
+     "log": "",
+     "peak_memory_bytes": 226816000,
+     "status": "SUCCESS",
+     "wall_ns": 24556695376
+    },
+    "status": "CHECKED"
+   }
+  ],
+  "attempts": [
+   {
+    "attempts": [
+     {
+      "compiled": false,
+      "recipe": "elim-with-library",
+      "tactic_sha256": "d1d5a49aa2abe70fe3e5acd9fe4c1c22916d639ddc2730aee0c4447a77b1fc6f",
+      "tier": 0
+     },
+     {
+      "compiled": true,
+      "recipe": "down-closure-unfold",
+      "tactic_sha256": "269040aee5305214c4baf67c770de8d11ea4118bf9aa066ea44ca12de0dafe44",
+      "tier": 0
+     },
+     {
+      "compiled": true,
+      "recipe": "down-closure-aesop",
+      "tactic_sha256": "614363ba296a188f7191b571bb89e4abce2fd2d42da3d9323effcdd431b927fe",
+      "tier": 0
+     }
+    ],
+    "charged": {
+     "candidates": 3,
+     "cpu_ns": 1465821265,
+     "wall_ns": 1495113374
+    },
+    "result": "ELABORATION_ERROR",
+    "statement": "inst_concept_loopfree",
+    "target": "FFCConj.inst_concept_loopfree"
+   },
+   {
+    "attempts": [
+     {
+      "compiled": false,
+      "recipe": "elim-with-library",
+      "tactic_sha256": "bbe60d2b8ef792c6638e0d2276a195a635c8ffe310a0ab910dbc53be7706688d",
+      "tier": 0
+     },
+     {
+      "compiled": true,
+      "recipe": "down-closure-unfold",
+      "tactic_sha256": "269040aee5305214c4baf67c770de8d11ea4118bf9aa066ea44ca12de0dafe44",
+      "tier": 0
+     },
+     {
+      "compiled": false,
+      "recipe": "down-closure-aesop",
+      "tactic_sha256": "614363ba296a188f7191b571bb89e4abce2fd2d42da3d9323effcdd431b927fe",
+      "tier": 0
+     }
+    ],
+    "charged": {
+     "candidates": 3,
+     "cpu_ns": 2505658385,
+     "wall_ns": 2553573849
+    },
+    "result": "ELABORATION_ERROR",
+    "statement": "inst_concept_matching",
+    "target": "FFCConj.inst_concept_matching"
+   },
+   {
+    "attempts": [
+     {
+      "compiled": false,
+      "recipe": "elim-with-library",
+      "tactic_sha256": "7a61eb9cd1f9a70e5ada964fd35efd724aa75dafc27c425c599286b2e90ad572",
+      "tier": 0
+     },
+     {
+      "compiled": false,
+      "recipe": "down-closure-unfold",
+      "tactic_sha256": "269040aee5305214c4baf67c770de8d11ea4118bf9aa066ea44ca12de0dafe44",
+      "tier": 0
+     },
+     {
+      "compiled": false,
+      "recipe": "down-closure-aesop",
+      "tactic_sha256": "614363ba296a188f7191b571bb89e4abce2fd2d42da3d9323effcdd431b927fe",
+      "tier": 0
+     },
+     {
+      "compiled": false,
+      "recipe": "decide",
+      "tactic_sha256": "5589aa5863c2d85622d06d651add002416e5513afdbb455666cdde01bb3e257d",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "decide-kernel",
+      "tactic_sha256": "9ac77167f92e560c7b03653563b026543eb9e4c018ebd8e1d3c8be05b979ab88",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "unfold-simp",
+      "tactic_sha256": "e971b1138cb7bb4357ae77453c900216b4562178667ae5ccb2ed89f7d6d72340",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "unfold-aesop",
+      "tactic_sha256": "bfa400ece9d1c9e5f66f2c8a401e26914940eb6562b11657e88f4b6aa7db07b9",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "unfold-omega",
+      "tactic_sha256": "dbe124e6415abe03afce89a392fa2ab2ad4a98cda43f42ad1ed124974f1a453e",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "unfold-solve",
+      "tactic_sha256": "62c059a9f6b2b5c9cb9e622af68d6ed0b6ed1fd2ffa55d28d8b58919dfdc1d73",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "library-elim:RCP4.proof",
+      "tactic_sha256": "d3619148ac3878e71cf1cde37df88ba343730aa1859a80fe600b670092d4c003",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "library-elim:RCP5.proof",
+      "tactic_sha256": "19398949810443fc0e0c331cdbfac04f4ac24bd9facf0e81b3792cfeb9662083",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "library-elim:RCP6.proof",
+      "tactic_sha256": "4189cf8de240f35edac63fbe1db463f23f9d82012d07cd586189f92bcc0ae387",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "library-elim:RCP7.proof",
+      "tactic_sha256": "08f9e0a81dfb4055e5430188cb95d4e32067cd1ea075ad9fe13ea5b6f35eba4b",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "library-elim:FFCP1.proof",
+      "tactic_sha256": "6e7b965098a413ee5ac6b92393761a7e89049d2496a12f6eb8cad38acc7e46bd",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "library-elim:FFCP2.proof",
+      "tactic_sha256": "456fbcdd2eca58423273ed5658c9cb5ce942609acad85fdb4e052fd9e4980bd0",
+      "tier": 1
+     }
+    ],
+    "charged": {
+     "candidates": 15,
+     "cpu_ns": 48777200606,
+     "wall_ns": 48905436638
+    },
+    "result": "RESOURCE_LIMIT",
+    "statement": "inst_concept_c4free",
+    "target": "FFCConj.inst_concept_c4free"
+   },
+   {
+    "attempts": [
+     {
+      "compiled": true,
+      "recipe": "counterexample-evaluation",
+      "tactic_sha256": "064868be9fdfc7aa1f4bbaec1625f0b57072f66b8167b6dce708d1ea6d2fc91b",
+      "tier": 0
+     }
+    ],
+    "charged": {
+     "candidates": 1,
+     "cpu_ns": 1100290524,
+     "wall_ns": 1125171674
+    },
+    "result": "COMPILED",
+    "statement": "inst_concept_nonempty",
+    "target": "FFCConj.inst_concept_nonempty_negation"
+   },
+   {
+    "attempts": [
+     {
+      "compiled": true,
+      "recipe": "elim-with-library",
+      "tactic_sha256": "3cdad380fa612214b5c9595cdca9deaf438cfdbe141b5a0a8e2d40a8f95287e7",
+      "tier": 0
+     }
+    ],
+    "charged": {
+     "candidates": 1,
+     "cpu_ns": 1057998687,
+     "wall_ns": 1096507679
+    },
+    "result": "COMPILED",
+    "statement": "concept_loopfree_inter",
+    "target": "FFCConj.concept_loopfree_inter"
+   },
+   {
+    "attempts": [
+     {
+      "compiled": true,
+      "recipe": "elim-with-library",
+      "tactic_sha256": "3e727d7eab7fd5c65244603ca31a2c9e660c9c6138f73a0b78bd3fd53424b66d",
+      "tier": 0
+     }
+    ],
+    "charged": {
+     "candidates": 1,
+     "cpu_ns": 1157291540,
+     "wall_ns": 1195794300
+    },
+    "result": "COMPILED",
+    "statement": "concept_loopfree_sdiff",
+    "target": "FFCConj.concept_loopfree_sdiff"
+   },
+   {
+    "attempts": [
+     {
+      "compiled": true,
+      "recipe": "elim-with-library",
+      "tactic_sha256": "784d592502c59b63f65a32c139f3118d67fe03e03fa2c1e33ef6f329a0aaa865",
+      "tier": 0
+     }
+    ],
+    "charged": {
+     "candidates": 1,
+     "cpu_ns": 1090031251,
+     "wall_ns": 1118133317
+    },
+    "result": "COMPILED",
+    "statement": "concept_loopfree_filter",
+    "target": "FFCConj.concept_loopfree_filter"
+   },
+   {
+    "attempts": [
+     {
+      "compiled": true,
+      "recipe": "elim-with-library",
+      "tactic_sha256": "fc3db9dd28ffaf8ff624b2e08bd9dbcfc732b8f2ef559aaedb7de3917c9a2ef6",
+      "tier": 0
+     }
+    ],
+    "charged": {
+     "candidates": 1,
+     "cpu_ns": 1289367963,
+     "wall_ns": 1353094443
+    },
+    "result": "COMPILED",
+    "statement": "concept_loopfree_erase",
+    "target": "FFCConj.concept_loopfree_erase"
+   },
+   {
+    "attempts": [
+     {
+      "compiled": true,
+      "recipe": "elim-with-library",
+      "tactic_sha256": "9f53de2267a611c2d2d8007be4e9c4edd1119cb159a75617bf418eda212335be",
+      "tier": 0
+     }
+    ],
+    "charged": {
+     "candidates": 1,
+     "cpu_ns": 1199882326,
+     "wall_ns": 1231842242
+    },
+    "result": "COMPILED",
+    "statement": "concept_matching_inter",
+    "target": "FFCConj.concept_matching_inter"
+   },
+   {
+    "attempts": [
+     {
+      "compiled": true,
+      "recipe": "elim-with-library",
+      "tactic_sha256": "b098b743f7b5ea9d9b4df9e3fb50613761254afa2452322e9a819e5d4896979c",
+      "tier": 0
+     }
+    ],
+    "charged": {
+     "candidates": 1,
+     "cpu_ns": 1368738733,
+     "wall_ns": 1470472910
+    },
+    "result": "COMPILED",
+    "statement": "concept_matching_sdiff",
+    "target": "FFCConj.concept_matching_sdiff"
+   },
+   {
+    "attempts": [
+     {
+      "compiled": true,
+      "recipe": "elim-with-library",
+      "tactic_sha256": "003804b72aaf056461361226a14da965b52fa83c40cd3851f6d47357147dd3f8",
+      "tier": 0
+     }
+    ],
+    "charged": {
+     "candidates": 1,
+     "cpu_ns": 1276831381,
+     "wall_ns": 1342058186
+    },
+    "result": "COMPILED",
+    "statement": "concept_matching_filter",
+    "target": "FFCConj.concept_matching_filter"
+   },
+   {
+    "attempts": [
+     {
+      "compiled": true,
+      "recipe": "elim-with-library",
+      "tactic_sha256": "9d23bbdea53df41a70256451c6d94ab93d31671db106fca1c6aaf2b4c6c1002d",
+      "tier": 0
+     }
+    ],
+    "charged": {
+     "candidates": 1,
+     "cpu_ns": 1186123998,
+     "wall_ns": 1203617938
+    },
+    "result": "COMPILED",
+    "statement": "concept_matching_erase",
+    "target": "FFCConj.concept_matching_erase"
+   },
+   {
+    "attempts": [
+     {
+      "compiled": false,
+      "recipe": "elim-with-library",
+      "tactic_sha256": "2f349cc0bb6f0b8cd74e1e0fa2dce6a13c9c801b69c0e3f5933b0645203bd626",
+      "tier": 0
+     },
+     {
+      "compiled": false,
+      "recipe": "decide",
+      "tactic_sha256": "5589aa5863c2d85622d06d651add002416e5513afdbb455666cdde01bb3e257d",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "decide-kernel",
+      "tactic_sha256": "9ac77167f92e560c7b03653563b026543eb9e4c018ebd8e1d3c8be05b979ab88",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "unfold-simp",
+      "tactic_sha256": "2fdb53dd37c5d4e387eab479cf353ebe00ef0c1fb43572953bf24c6264fc3f96",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "unfold-aesop",
+      "tactic_sha256": "745fb3090d6e4150a8979cc791516f8db8fa764f4ac1581cfd37377803a0670d",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "unfold-omega",
+      "tactic_sha256": "af42f82b697fce0e4dcd3aa3c89a59f9a10d3e2bc15dc44963dade357f1143cf",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "unfold-solve",
+      "tactic_sha256": "62c059a9f6b2b5c9cb9e622af68d6ed0b6ed1fd2ffa55d28d8b58919dfdc1d73",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "apply-hyp:h1",
+      "tactic_sha256": "cac35ae61c14f0f125197a56526e5412715cb2ccf31b9b5d398b24aa48d0b847",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "specialize-omega:h1",
+      "tactic_sha256": "c574d183f732de4913d1717da04b478c5459e230ae063c20528c15a6bd48e4da",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "library-elim:RCP4.proof",
+      "tactic_sha256": "ebea77dfe018f787eb590ac38f94a1123e79ab10fcc4b1943f7799e8268229b2",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "library-elim:RCP5.proof",
+      "tactic_sha256": "1ec5040d0bb12707caae333842cf200b7fea6e64765f0ac3aa710c299a853e78",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "library-elim:RCP6.proof",
+      "tactic_sha256": "a8e001fa07c651373e52e1ce7aa8e2ebe0d94b1d86c8a73379daeba4b4832b69",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "library-elim:RCP7.proof",
+      "tactic_sha256": "f26d9acd0f20b04a793545d2967cd81e19f7f9ed72f7cd38602780a0e8ef2da5",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "library-elim:FFCP1.proof",
+      "tactic_sha256": "a4a0ebc7c2a6976ef5f93a77744c50c5e84a846d8cead910e82e2e98a9ffc465",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "library-elim:FFCP2.proof",
+      "tactic_sha256": "4c1ab0eab23bb93f2a62659d6f5ae54f537d057b790ea3b93555697573e7929a",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "library-elim:FFCP4.proof",
+      "tactic_sha256": "85632f7176af6f2255e86d62c889583f6e7817d4da194cd1374ad5243942b886",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "library-elim:FFCP5.proof",
+      "tactic_sha256": "e1b808c8b215850fb342f815beaaf7bcdd4a204759fda927c178260d0618ba2b",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "library-elim:FFCP6.proof",
+      "tactic_sha256": "dc33004a9d4e9c0061c74b7a8475bda592bf1da4c52de417bcf9ba4db58fc4c8",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "library-elim:FFCP7.proof",
+      "tactic_sha256": "8b0a00386a6bf456e1248268827b5665f0ff4c5f5ade06be372b443bf57aec0b",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "library-elim:FFCP8.proof",
+      "tactic_sha256": "b8ed836d506a1315910b2120daac05d959aa09561d6b9acf38f551256ad3aaf1",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "library-elim:FFCP9.proof",
+      "tactic_sha256": "e30692c068dc487ed80f7e6939324708c7ef788ca03baba6061440aad05582c7",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "library-elim:FFCP10.proof",
+      "tactic_sha256": "f6a7a7aa7c92d1ea6e7fceecba2ac2ea4be8b648d449b7824a55577f9a502c4f",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "library-elim:FFCP11.proof",
+      "tactic_sha256": "7b57acd2def1c931699505fba8726b044ad0813a5c49e70efda777c226cc35a1",
+      "tier": 1
+     }
+    ],
+    "charged": {
+     "candidates": 23,
+     "cpu_ns": 63462383010,
+     "wall_ns": 63621647702
+    },
+    "result": "RESOURCE_LIMIT",
+    "statement": "concept_c4free_inter",
+    "target": "FFCConj.concept_c4free_inter"
+   },
+   {
+    "attempts": [
+     {
+      "compiled": false,
+      "recipe": "elim-with-library",
+      "tactic_sha256": "2f349cc0bb6f0b8cd74e1e0fa2dce6a13c9c801b69c0e3f5933b0645203bd626",
+      "tier": 0
+     },
+     {
+      "compiled": false,
+      "recipe": "decide",
+      "tactic_sha256": "5589aa5863c2d85622d06d651add002416e5513afdbb455666cdde01bb3e257d",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "decide-kernel",
+      "tactic_sha256": "9ac77167f92e560c7b03653563b026543eb9e4c018ebd8e1d3c8be05b979ab88",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "unfold-simp",
+      "tactic_sha256": "2fdb53dd37c5d4e387eab479cf353ebe00ef0c1fb43572953bf24c6264fc3f96",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "unfold-aesop",
+      "tactic_sha256": "745fb3090d6e4150a8979cc791516f8db8fa764f4ac1581cfd37377803a0670d",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "unfold-omega",
+      "tactic_sha256": "af42f82b697fce0e4dcd3aa3c89a59f9a10d3e2bc15dc44963dade357f1143cf",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "unfold-solve",
+      "tactic_sha256": "62c059a9f6b2b5c9cb9e622af68d6ed0b6ed1fd2ffa55d28d8b58919dfdc1d73",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "apply-hyp:h1",
+      "tactic_sha256": "cac35ae61c14f0f125197a56526e5412715cb2ccf31b9b5d398b24aa48d0b847",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "specialize-omega:h1",
+      "tactic_sha256": "c574d183f732de4913d1717da04b478c5459e230ae063c20528c15a6bd48e4da",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "library-elim:RCP4.proof",
+      "tactic_sha256": "ebea77dfe018f787eb590ac38f94a1123e79ab10fcc4b1943f7799e8268229b2",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "library-elim:RCP5.proof",
+      "tactic_sha256": "1ec5040d0bb12707caae333842cf200b7fea6e64765f0ac3aa710c299a853e78",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "library-elim:RCP6.proof",
+      "tactic_sha256": "a8e001fa07c651373e52e1ce7aa8e2ebe0d94b1d86c8a73379daeba4b4832b69",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "library-elim:RCP7.proof",
+      "tactic_sha256": "f26d9acd0f20b04a793545d2967cd81e19f7f9ed72f7cd38602780a0e8ef2da5",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "library-elim:FFCP1.proof",
+      "tactic_sha256": "a4a0ebc7c2a6976ef5f93a77744c50c5e84a846d8cead910e82e2e98a9ffc465",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "library-elim:FFCP2.proof",
+      "tactic_sha256": "4c1ab0eab23bb93f2a62659d6f5ae54f537d057b790ea3b93555697573e7929a",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "library-elim:FFCP4.proof",
+      "tactic_sha256": "85632f7176af6f2255e86d62c889583f6e7817d4da194cd1374ad5243942b886",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "library-elim:FFCP5.proof",
+      "tactic_sha256": "e1b808c8b215850fb342f815beaaf7bcdd4a204759fda927c178260d0618ba2b",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "library-elim:FFCP6.proof",
+      "tactic_sha256": "dc33004a9d4e9c0061c74b7a8475bda592bf1da4c52de417bcf9ba4db58fc4c8",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "library-elim:FFCP7.proof",
+      "tactic_sha256": "8b0a00386a6bf456e1248268827b5665f0ff4c5f5ade06be372b443bf57aec0b",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "library-elim:FFCP8.proof",
+      "tactic_sha256": "b8ed836d506a1315910b2120daac05d959aa09561d6b9acf38f551256ad3aaf1",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "library-elim:FFCP9.proof",
+      "tactic_sha256": "e30692c068dc487ed80f7e6939324708c7ef788ca03baba6061440aad05582c7",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "library-elim:FFCP10.proof",
+      "tactic_sha256": "f6a7a7aa7c92d1ea6e7fceecba2ac2ea4be8b648d449b7824a55577f9a502c4f",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "library-elim:FFCP11.proof",
+      "tactic_sha256": "7b57acd2def1c931699505fba8726b044ad0813a5c49e70efda777c226cc35a1",
+      "tier": 1
+     }
+    ],
+    "charged": {
+     "candidates": 23,
+     "cpu_ns": 66640077651,
+     "wall_ns": 66764382447
+    },
+    "result": "RESOURCE_LIMIT",
+    "statement": "concept_c4free_sdiff",
+    "target": "FFCConj.concept_c4free_sdiff"
+   },
+   {
+    "attempts": [
+     {
+      "compiled": false,
+      "recipe": "elim-with-library",
+      "tactic_sha256": "65002fd3f11679e6316b276b7b8a7598bef4765077f3c52c282ba6bc396ac9df",
+      "tier": 0
+     },
+     {
+      "compiled": false,
+      "recipe": "decide",
+      "tactic_sha256": "5589aa5863c2d85622d06d651add002416e5513afdbb455666cdde01bb3e257d",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "decide-kernel",
+      "tactic_sha256": "9ac77167f92e560c7b03653563b026543eb9e4c018ebd8e1d3c8be05b979ab88",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "unfold-simp",
+      "tactic_sha256": "227b9ca76b8892fd79455b9effe00f689b80793f42e413fecaf5296d8e21d025",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "unfold-aesop",
+      "tactic_sha256": "76442f9e165f28dade7cfb9f3a7976a3060e1b800918beb36be7db0ea20f1817",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "unfold-omega",
+      "tactic_sha256": "af5509267ee864951a5b72997feb2fee36eda1464a91cfe7304beca6d96ac8c2",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "unfold-solve",
+      "tactic_sha256": "62c059a9f6b2b5c9cb9e622af68d6ed0b6ed1fd2ffa55d28d8b58919dfdc1d73",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "apply-hyp:h1",
+      "tactic_sha256": "3cb680637586d7dbfc2f88cf98ab2c41e950ca47598ee98b4ab3f49161920c2a",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "specialize-omega:h1",
+      "tactic_sha256": "09a5e261ded9469c61972363cb52f71fb928d413bddc223ef9eb655dbd361a40",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "library-elim:RCP4.proof",
+      "tactic_sha256": "9e0cd13f0605777ee03bb53f94181609aa7fedff222a80752c07cadd2c0ab4c1",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "library-elim:RCP5.proof",
+      "tactic_sha256": "bc5e7a9baeded39e5b414e829d37837cd4e62f292d2684d92538e92186006b63",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "library-elim:RCP6.proof",
+      "tactic_sha256": "918ac0031af98faf25c69ed9155642afdbc27d2b1f2dd445d406a13f87c75ec4",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "library-elim:RCP7.proof",
+      "tactic_sha256": "0bed33a4ed48bb6a64f7066de0086bccc144d99fd45af68a028df50da62e9f39",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "library-elim:FFCP1.proof",
+      "tactic_sha256": "5149c72cdc814a8c60f249a27d714d3d129e17bcb118206df86af7fa353afcee",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "library-elim:FFCP2.proof",
+      "tactic_sha256": "7925a56a23af4f699e13884f1d57c9a6b073b99adc8cd3ec1bc642437ff37fde",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "library-elim:FFCP4.proof",
+      "tactic_sha256": "42c51c1ce940ec7cd50d628957cd6c725e15d19e427d613a722456c42f03a1b8",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "library-elim:FFCP5.proof",
+      "tactic_sha256": "1b4c81bf647bbd83c9a4e030074a86a8ecd967f46b6c7febe9ed57d28c56a43f",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "library-elim:FFCP6.proof",
+      "tactic_sha256": "ac3cbb1e735d22ced88acad743863ab7b08f9ab1c8efce44c7810645aa9aab4f",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "library-elim:FFCP7.proof",
+      "tactic_sha256": "6af3b014f6cb9d019022b1d86a87c32e62b558492585602c514f6e1fb9000418",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "library-elim:FFCP8.proof",
+      "tactic_sha256": "0e7f991aabac7ba18b44a2ca210934b30284a369eb2d78bb450151457abc3a76",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "library-elim:FFCP9.proof",
+      "tactic_sha256": "7e2d0a1eae9faf74ddb89b4a2c9dd14922ca83355e39b1ce34f4f0c0ba97c739",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "library-elim:FFCP10.proof",
+      "tactic_sha256": "fb75f23eacb5ed6d5c8b96a8977c167bdbb8c41678b9556b3ddc078a5457d478",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "library-elim:FFCP11.proof",
+      "tactic_sha256": "e4124db7e9d00dd839bd765c014b7d7735f6c44f080b1c8bcf32dabed27f54f2",
+      "tier": 1
+     }
+    ],
+    "charged": {
+     "candidates": 23,
+     "cpu_ns": 62324104346,
+     "wall_ns": 62473812744
+    },
+    "result": "RESOURCE_LIMIT",
+    "statement": "concept_c4free_filter",
+    "target": "FFCConj.concept_c4free_filter"
+   },
+   {
+    "attempts": [
+     {
+      "compiled": false,
+      "recipe": "elim-with-library",
+      "tactic_sha256": "e2ccca37f68c4f016124ded88de7cfc74223e07839c29a85cb58c3f299e0f756",
+      "tier": 0
+     },
+     {
+      "compiled": false,
+      "recipe": "decide",
+      "tactic_sha256": "5589aa5863c2d85622d06d651add002416e5513afdbb455666cdde01bb3e257d",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "decide-kernel",
+      "tactic_sha256": "9ac77167f92e560c7b03653563b026543eb9e4c018ebd8e1d3c8be05b979ab88",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "unfold-simp",
+      "tactic_sha256": "896e52eb22bacd944da549296bbfd2e953f0856d62f81bab5cc69ea7b4581915",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "unfold-aesop",
+      "tactic_sha256": "2d15fb56bc3435ed6ab6e20006fb63b71a5210470c406f70b1e1cef52913e440",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "unfold-omega",
+      "tactic_sha256": "cf123ec344bb096808c0acf65e7b2f131bb96be5758a40cb5c9ac4d6d206ddb8",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "unfold-solve",
+      "tactic_sha256": "62c059a9f6b2b5c9cb9e622af68d6ed0b6ed1fd2ffa55d28d8b58919dfdc1d73",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "apply-hyp:h1",
+      "tactic_sha256": "50454769f946dd8d7fde885bbb7bb4c320fad66e46bcba53e8e8c5117b5f17a1",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "specialize-omega:h1",
+      "tactic_sha256": "82d164998c38f5c5119709b6e4344278f95f5ebef6da9cfdf1d1bb7e4f5b1ea4",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "library-elim:RCP4.proof",
+      "tactic_sha256": "844caf0826c023487ceb16452e8133efd6befce9aa356beeeb46ebd000928677",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "library-elim:RCP5.proof",
+      "tactic_sha256": "0bd0e62437a2a37ac4d46c6c1441376015952a1bde5599042140307a1027b556",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "library-elim:RCP6.proof",
+      "tactic_sha256": "374bb874db6db519969b877abe84b49d4a64f760f5ec77a1c602f77f1568f709",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "library-elim:RCP7.proof",
+      "tactic_sha256": "1b6aed3b07037ddd967f3ff37d70dff1227ce8688940f54857537cff4825962a",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "library-elim:FFCP1.proof",
+      "tactic_sha256": "4f27e503db5ce8a1cfded7aba27dde078365cc7cd344d6cc2fb88f6f192fa5ef",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "library-elim:FFCP2.proof",
+      "tactic_sha256": "174abcf8673a5c6ebdbc23cf866511be3ac4d75278ed9260422adcac2cd1fa37",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "library-elim:FFCP4.proof",
+      "tactic_sha256": "a147072bee70cc39ca8488aa035bd8cfceca105c4174fd06798c4b933f467f20",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "library-elim:FFCP5.proof",
+      "tactic_sha256": "3a92a7a8691aab4b38ca90baadea6b2fa53d8aed164d24a82a2e981d3da593d6",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "library-elim:FFCP6.proof",
+      "tactic_sha256": "b04c1240b6460684c7285bd1bb41af2a4ecebf74e1537b2cda5cd84b44989b98",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "library-elim:FFCP7.proof",
+      "tactic_sha256": "093a7eb85858b18054d1e240422c17429f0c1965f66293880c5e99f76835a450",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "library-elim:FFCP8.proof",
+      "tactic_sha256": "9a909cc6869947565799d518c6a6143adc4ed9d235a031984ac7b5b1fe516f4b",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "library-elim:FFCP9.proof",
+      "tactic_sha256": "808c9c1db646159a023cb75b9b36191af73a4e03da21ce7a41d82fa5b8b57dea",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "library-elim:FFCP10.proof",
+      "tactic_sha256": "0a87dbf8400de94708be76c9db029c002e3503e1f26cd30499cd246be1203fce",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "library-elim:FFCP11.proof",
+      "tactic_sha256": "bacd23344ce42d5cf6356f48d29f6d67a44a7558c9ec9f2e8b0e186866ee5e51",
+      "tier": 1
+     }
+    ],
+    "charged": {
+     "candidates": 23,
+     "cpu_ns": 63046276734,
+     "wall_ns": 63219107265
+    },
+    "result": "RESOURCE_LIMIT",
+    "statement": "concept_c4free_erase",
+    "target": "FFCConj.concept_c4free_erase"
+   },
+   {
+    "attempts": [
+     {
+      "compiled": true,
+      "recipe": "counterexample-evaluation",
+      "tactic_sha256": "d901a577e01a360c9e29d913540e765eac2e1b7fe40a97dde00d045d9586ba8a",
+      "tier": 0
+     }
+    ],
+    "charged": {
+     "candidates": 1,
+     "cpu_ns": 1195249578,
+     "wall_ns": 1239008047
+    },
+    "result": "COMPILED",
+    "statement": "concept_nonempty_inter",
+    "target": "FFCConj.concept_nonempty_inter_negation"
+   },
+   {
+    "attempts": [
+     {
+      "compiled": true,
+      "recipe": "counterexample-evaluation",
+      "tactic_sha256": "a0b82948dddd2ac97ff208608eb086fc452125af2c495f8b168a78dac0ac17b2",
+      "tier": 0
+     }
+    ],
+    "charged": {
+     "candidates": 1,
+     "cpu_ns": 1257247864,
+     "wall_ns": 1300572045
+    },
+    "result": "COMPILED",
+    "statement": "concept_nonempty_sdiff",
+    "target": "FFCConj.concept_nonempty_sdiff_negation"
+   },
+   {
+    "attempts": [
+     {
+      "compiled": true,
+      "recipe": "counterexample-evaluation",
+      "tactic_sha256": "389ffdb7e78a870e0df1a50f242e9c5ed5ab5cba4152882fe184233a88153aa1",
+      "tier": 0
+     }
+    ],
+    "charged": {
+     "candidates": 1,
+     "cpu_ns": 1176767655,
+     "wall_ns": 1207434879
+    },
+    "result": "COMPILED",
+    "statement": "concept_nonempty_filter",
+    "target": "FFCConj.concept_nonempty_filter_negation"
+   },
+   {
+    "attempts": [
+     {
+      "compiled": true,
+      "recipe": "counterexample-evaluation",
+      "tactic_sha256": "2197db378cf88dbacb883786af1152cc06563ff3c519264ac210eb0dce74294d",
+      "tier": 0
+     }
+    ],
+    "charged": {
+     "candidates": 1,
+     "cpu_ns": 1248565064,
+     "wall_ns": 1268667025
+    },
+    "result": "COMPILED",
+    "statement": "concept_nonempty_erase",
+    "target": "FFCConj.concept_nonempty_erase_negation"
+   }
+  ],
+  "search_candidates": 126,
+  "search_context_cpu_ns": 35316947911,
+  "search_cpu_ns": 323825908561,
+  "search_runs": 20
+ },
+ "counterexamples": [
+  {
+   "checked": true,
+   "statement": "inst_concept_nonempty",
+   "values": {
+    "S": "({(0, 0), (3, 2)} : GT.Edges)",
+    "T": "(∅ : GT.Edges)"
+   }
+  },
+  {
+   "checked": true,
+   "statement": "concept_nonempty_inter",
+   "values": {
+    "S": "({(0, 2), (1, 3)} : GT.Edges)",
+    "T": "(∅ : GT.Edges)"
+   }
+  },
+  {
+   "checked": true,
+   "statement": "concept_nonempty_sdiff",
+   "values": {
+    "S": "({(3, 1)} : GT.Edges)",
+    "T": "({(1, 0), (3, 1)} : GT.Edges)"
+   }
+  },
+  {
+   "checked": true,
+   "statement": "concept_nonempty_filter",
+   "values": {
+    "S": "({(2, 3)} : GT.Edges)",
+    "q": "(fun e => decide (e ∈ ({(0, 2)} : GT.Edges)))"
+   }
+  },
+  {
+   "checked": true,
+   "statement": "concept_nonempty_erase",
+   "values": {
+    "S": "({(0, 1)} : GT.Edges)",
+    "e": "((0, 1) : ℕ × ℕ)"
+   }
+  }
+ ],
+ "declarations": [
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "GTDefs",
+   "name": "GT.TriangleFree",
+   "type_sha256": "c98548115419ec271dfd495799f10b35c81fad06e346ef970bd969a518c2a9f4"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "GTDefs",
+   "name": "GT.Edges",
+   "type_sha256": "baaddf70fb5d432b8bd948ef91d6f910124a6d138edae4d5f000c4610ddc8eae"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "GTDefs",
+   "name": "GT.instDecidableTriangleFree",
+   "type_sha256": "5f6ad93fcd86d217b85aa0d5ae9d8484d2f18f9af307b85f1d55bcb68ce406d1"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "HSDefs",
+   "name": "HS.instDecidableBounded8",
+   "type_sha256": "bb73792b7b918c05e489e5be220ab0e645e6d75f1b8616f9f4eb5c0dd437d9d2"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "HSDefs",
+   "name": "HS.Bounded8",
+   "type_sha256": "c98548115419ec271dfd495799f10b35c81fad06e346ef970bd969a518c2a9f4"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "HSDefs",
+   "name": "HS.instDecidableSimple",
+   "type_sha256": "7c27c71eaad7318747b484aa82461f70d01434b8c83c502b94d09613463fea20"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "HSDefs",
+   "name": "HS.Simple",
+   "type_sha256": "c98548115419ec271dfd495799f10b35c81fad06e346ef970bd969a518c2a9f4"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "HSConj",
+   "name": "HSConj.down_bounded",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "HSConj",
+   "name": "HSConj.down_simple",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "HSConj",
+   "name": "HSConj.down_tf",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "HSConj",
+   "name": "HSConj.inter_tf",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "HSConj",
+   "name": "HSConj.inter_simple",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "RCDefs",
+   "name": "RC.C0",
+   "type_sha256": "9e56932812f3736513e0f638114f0463ac36ec2d16bb971de8dbb8a8fc4c56bc"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "RCConj",
+   "name": "RCConj.instance_down_bounded",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "RCConj",
+   "name": "RCConj.instance_down_simple",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "RCConj",
+   "name": "RCConj.gen_concept_erase",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "RCConj",
+   "name": "RCConj.gen_concept_filter",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "RCConj",
+   "name": "RCConj.gen_concept_inter",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "RCConj",
+   "name": "RCConj.instance_down_tf",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "RCConj",
+   "name": "RCConj.gen_concept_sdiff",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "theorem",
+   "module": "RCP1",
+   "name": "RCP1.proof",
+   "type_sha256": "722eb26903971dcfa74e71e7b883b4b4d62595379c8f2bce6e11369fae33b99e"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "theorem",
+   "module": "RCP2",
+   "name": "RCP2.proof",
+   "type_sha256": "8bc4a1952b7105f95a7f47fb859bbd4f408429ee9beb630c216d60e1a80655d5"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "theorem",
+   "module": "RCP3",
+   "name": "RCP3.proof",
+   "type_sha256": "c4d9b903984c7c382d7270d9f5dce3cb0ba3c0b741177c281e9385fc5b68110f"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "theorem",
+   "module": "RCP4",
+   "name": "RCP4.proof",
+   "type_sha256": "7184f3e86c2b601638c2e881189d7120235457c4964629f68102863439675983"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "theorem",
+   "module": "RCP5",
+   "name": "RCP5.proof",
+   "type_sha256": "4e2b174d36a09c507430b6e7f5aa303d9b7abfbe8af798c9a4598f00f50e897a"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "theorem",
+   "module": "RCP6",
+   "name": "RCP6.proof",
+   "type_sha256": "49d30c152bc160b0ab78755c469af8fbb74f192eb72777bf924a39c4560c1197"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "theorem",
+   "module": "RCP7",
+   "name": "RCP7.proof",
+   "type_sha256": "909bd1fae13bfcefc9196bd85b0d1fcff3958966430f758733cbe3cb5a5cd2a8"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "G4Defs",
+   "name": "G4.verts",
+   "type_sha256": "7a1ef65cd458ebf10bcecd44c843b1710d493ee0d98e109b6abc53d948459791"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "G4Defs",
+   "name": "G4.adj",
+   "type_sha256": "af2cc6046b4db7f006731f612da96fe9072947a3524d785304d4acef542f9814"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "G4Defs",
+   "name": "G4.instDecidableAdj",
+   "type_sha256": "15bfca590acf8edebe32601b938585677ac6d2a4d3d45c318ce25da607e3af52"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "G4Defs",
+   "name": "G4.C4Free",
+   "type_sha256": "c98548115419ec271dfd495799f10b35c81fad06e346ef970bd969a518c2a9f4"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "G4Defs",
+   "name": "G4.instDecidableC4Free",
+   "type_sha256": "696d08db70be0d43900686ce88431e9640ecc9ab7d9c645364f85ffea376c365"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "FFDefs",
+   "name": "FF.LoopFree",
+   "type_sha256": "c98548115419ec271dfd495799f10b35c81fad06e346ef970bd969a518c2a9f4"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "FFDefs",
+   "name": "FF.Matching",
+   "type_sha256": "c98548115419ec271dfd495799f10b35c81fad06e346ef970bd969a518c2a9f4"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "FFDefs",
+   "name": "FF.instDecidableMatching",
+   "type_sha256": "f1eb605ce2edb6ef7bb1cf8da2ed3f4e9fa42c30ed97cb62b915a3a8ad23a2ff"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "FFDefs",
+   "name": "FF.instDecidableNonEmpty",
+   "type_sha256": "93046c8536d6d52cc5d00890d47f133c6eb453baf84cd131783aed6f38cfcb03"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "FFDefs",
+   "name": "FF.NonEmpty",
+   "type_sha256": "c98548115419ec271dfd495799f10b35c81fad06e346ef970bd969a518c2a9f4"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "FFDefs",
+   "name": "FF.instDecidableLoopFree",
+   "type_sha256": "b254270f9c7a70752543b6e8548e183942a64fd80cf9cbf1a76167625b0346cf"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "FFCConj",
+   "name": "FFCConj.inst_concept_nonempty_negation",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "FFCConj",
+   "name": "FFCConj.concept_nonempty_filter",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "FFCConj",
+   "name": "FFCConj.concept_loopfree_filter",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "FFCConj",
+   "name": "FFCConj.concept_c4free_filter",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "FFCConj",
+   "name": "FFCConj.concept_matching_erase",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "FFCConj",
+   "name": "FFCConj.concept_nonempty_inter",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "FFCConj",
+   "name": "FFCConj.concept_nonempty_sdiff_negation",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "FFCConj",
+   "name": "FFCConj.inst_concept_c4free",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "FFCConj",
+   "name": "FFCConj.concept_matching_filter",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "FFCConj",
+   "name": "FFCConj.concept_loopfree_sdiff",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "FFCConj",
+   "name": "FFCConj.concept_loopfree_erase",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "FFCConj",
+   "name": "FFCConj.concept_c4free_erase",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "FFCConj",
+   "name": "FFCConj.concept_nonempty_erase",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "FFCConj",
+   "name": "FFCConj.inst_concept_nonempty",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "FFCConj",
+   "name": "FFCConj.concept_nonempty_erase_negation",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "FFCConj",
+   "name": "FFCConj.concept_matching_sdiff",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "FFCConj",
+   "name": "FFCConj.concept_c4free_sdiff",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "FFCConj",
+   "name": "FFCConj.concept_nonempty_inter_negation",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "FFCConj",
+   "name": "FFCConj.concept_nonempty_sdiff",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "FFCConj",
+   "name": "FFCConj.concept_nonempty_filter_negation",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "FFCConj",
+   "name": "FFCConj.inst_concept_loopfree",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "FFCConj",
+   "name": "FFCConj.concept_c4free_inter",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "FFCConj",
+   "name": "FFCConj.inst_concept_matching",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "FFCConj",
+   "name": "FFCConj.concept_loopfree_inter",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "FFCConj",
+   "name": "FFCConj.concept_matching_inter",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "theorem",
+   "module": "FFCP1",
+   "name": "FFCP1.proof",
+   "type_sha256": "391ca754c4b194c92a8bc7350566ecf3a976d42acb64690bfc9deb9ee1c9f051"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "theorem",
+   "module": "FFCP2",
+   "name": "FFCP2.proof",
+   "type_sha256": "4e2059ebcc8969c041e7381917fad875b7a05e7b4380458c6a412dded3649c5d"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "theorem",
+   "module": "FFCP3",
+   "name": "FFCP3.proof",
+   "type_sha256": "a46342d8c4c73ebd1267d0a96cc2e37e4d225698c43671b996e50fd607f284ac"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "theorem",
+   "module": "FFCP4",
+   "name": "FFCP4.proof",
+   "type_sha256": "87040ed840f549454017d75731dc28441ac49e1a021003ba7314d2af80664568"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "theorem",
+   "module": "FFCP5",
+   "name": "FFCP5.proof",
+   "type_sha256": "ae03ce478ed31c5bbc94959f0b2e3b2ab239302cdc0e8acb99e0af635e516bf9"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "theorem",
+   "module": "FFCP6",
+   "name": "FFCP6.proof",
+   "type_sha256": "db569264d6aa2d3b958f1ee597cf1aa55f247f0c9ced2ca41e9663172718c86b"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "theorem",
+   "module": "FFCP7",
+   "name": "FFCP7.proof",
+   "type_sha256": "87d38431645c8094dc958c73c990c8bd2869d0f94c5d332596c0780018e9e497"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "theorem",
+   "module": "FFCP8",
+   "name": "FFCP8.proof",
+   "type_sha256": "255fa77bef9f0275732732ae3bc8b72d5e5feaa28d7a4b883d59af2fa7053729"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "theorem",
+   "module": "FFCP9",
+   "name": "FFCP9.proof",
+   "type_sha256": "a14b97c4e275f40b25c9c3d8ac6c0e1ee74221e01a30b37fe0d1208de66e1615"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "theorem",
+   "module": "FFCP10",
+   "name": "FFCP10.proof",
+   "type_sha256": "cf51a01265aad3eac3903fa1a7848a583608d3693332c804d3d79f82ed0c9932"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "theorem",
+   "module": "FFCP11",
+   "name": "FFCP11.proof",
+   "type_sha256": "bf886a720ce434d1d618a7ec5f5a2cf9d5562a20e0068ffcd9f3b61a39c5da4d"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "theorem",
+   "module": "FFCP12",
+   "name": "FFCP12.proof",
+   "type_sha256": "22de66962cd5bb5a391b490e4bfcc000fa461baecef50c5e6052210de84f512d"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "theorem",
+   "module": "FFCP13",
+   "name": "FFCP13.proof",
+   "type_sha256": "b5218ff8ff43b2b691ccbd4bb4d54ab0c3ee86569c9f0d3e88e401fd55b0ead2"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "theorem",
+   "module": "FFCP14",
+   "name": "FFCP14.proof",
+   "type_sha256": "8dd73c3f9b14f3b40da3b0ca6fad258ea9702493217a3460950fa707ba8e19f5"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "theorem",
+   "module": "FFCP15",
+   "name": "FFCP15.proof",
+   "type_sha256": "14972716e4cb200b7b021f25ed47fb8a8389d9c88535d5e69b43e25c7d72f57d"
+  }
+ ],
+ "definitions": [
+  {
+   "module": "GTDefs",
+   "name": "GT.TriangleFree",
+   "origin": "trusted-generated",
+   "type_sha256": "c98548115419ec271dfd495799f10b35c81fad06e346ef970bd969a518c2a9f4"
+  },
+  {
+   "module": "GTDefs",
+   "name": "GT.Edges",
+   "origin": "trusted-generated",
+   "type_sha256": "baaddf70fb5d432b8bd948ef91d6f910124a6d138edae4d5f000c4610ddc8eae"
+  },
+  {
+   "module": "GTDefs",
+   "name": "GT.instDecidableTriangleFree",
+   "origin": "trusted-generated",
+   "type_sha256": "5f6ad93fcd86d217b85aa0d5ae9d8484d2f18f9af307b85f1d55bcb68ce406d1"
+  },
+  {
+   "module": "HSDefs",
+   "name": "HS.instDecidableBounded8",
+   "origin": "trusted-generated",
+   "type_sha256": "bb73792b7b918c05e489e5be220ab0e645e6d75f1b8616f9f4eb5c0dd437d9d2"
+  },
+  {
+   "module": "HSDefs",
+   "name": "HS.Bounded8",
+   "origin": "trusted-generated",
+   "type_sha256": "c98548115419ec271dfd495799f10b35c81fad06e346ef970bd969a518c2a9f4"
+  },
+  {
+   "module": "HSDefs",
+   "name": "HS.instDecidableSimple",
+   "origin": "trusted-generated",
+   "type_sha256": "7c27c71eaad7318747b484aa82461f70d01434b8c83c502b94d09613463fea20"
+  },
+  {
+   "module": "HSDefs",
+   "name": "HS.Simple",
+   "origin": "trusted-generated",
+   "type_sha256": "c98548115419ec271dfd495799f10b35c81fad06e346ef970bd969a518c2a9f4"
+  },
+  {
+   "module": "HSConj",
+   "name": "HSConj.down_bounded",
+   "origin": "trusted-generated",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "module": "HSConj",
+   "name": "HSConj.down_simple",
+   "origin": "trusted-generated",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "module": "HSConj",
+   "name": "HSConj.down_tf",
+   "origin": "trusted-generated",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "module": "HSConj",
+   "name": "HSConj.inter_tf",
+   "origin": "trusted-generated",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "module": "HSConj",
+   "name": "HSConj.inter_simple",
+   "origin": "trusted-generated",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "module": "RCDefs",
+   "name": "RC.C0",
+   "origin": "trusted-generated",
+   "type_sha256": "9e56932812f3736513e0f638114f0463ac36ec2d16bb971de8dbb8a8fc4c56bc"
+  },
+  {
+   "module": "RCConj",
+   "name": "RCConj.instance_down_bounded",
+   "origin": "trusted-generated",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "module": "RCConj",
+   "name": "RCConj.instance_down_simple",
+   "origin": "trusted-generated",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "module": "RCConj",
+   "name": "RCConj.gen_concept_erase",
+   "origin": "trusted-generated",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "module": "RCConj",
+   "name": "RCConj.gen_concept_filter",
+   "origin": "trusted-generated",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "module": "RCConj",
+   "name": "RCConj.gen_concept_inter",
+   "origin": "trusted-generated",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "module": "RCConj",
+   "name": "RCConj.instance_down_tf",
+   "origin": "trusted-generated",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "module": "RCConj",
+   "name": "RCConj.gen_concept_sdiff",
+   "origin": "trusted-generated",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "module": "G4Defs",
+   "name": "G4.verts",
+   "origin": "trusted-generated",
+   "type_sha256": "7a1ef65cd458ebf10bcecd44c843b1710d493ee0d98e109b6abc53d948459791"
+  },
+  {
+   "module": "G4Defs",
+   "name": "G4.adj",
+   "origin": "trusted-generated",
+   "type_sha256": "af2cc6046b4db7f006731f612da96fe9072947a3524d785304d4acef542f9814"
+  },
+  {
+   "module": "G4Defs",
+   "name": "G4.instDecidableAdj",
+   "origin": "trusted-generated",
+   "type_sha256": "15bfca590acf8edebe32601b938585677ac6d2a4d3d45c318ce25da607e3af52"
+  },
+  {
+   "module": "G4Defs",
+   "name": "G4.C4Free",
+   "origin": "trusted-generated",
+   "type_sha256": "c98548115419ec271dfd495799f10b35c81fad06e346ef970bd969a518c2a9f4"
+  },
+  {
+   "module": "G4Defs",
+   "name": "G4.instDecidableC4Free",
+   "origin": "trusted-generated",
+   "type_sha256": "696d08db70be0d43900686ce88431e9640ecc9ab7d9c645364f85ffea376c365"
+  },
+  {
+   "module": "FFDefs",
+   "name": "FF.LoopFree",
+   "origin": "trusted-generated",
+   "type_sha256": "c98548115419ec271dfd495799f10b35c81fad06e346ef970bd969a518c2a9f4"
+  },
+  {
+   "module": "FFDefs",
+   "name": "FF.Matching",
+   "origin": "trusted-generated",
+   "type_sha256": "c98548115419ec271dfd495799f10b35c81fad06e346ef970bd969a518c2a9f4"
+  },
+  {
+   "module": "FFDefs",
+   "name": "FF.instDecidableMatching",
+   "origin": "trusted-generated",
+   "type_sha256": "f1eb605ce2edb6ef7bb1cf8da2ed3f4e9fa42c30ed97cb62b915a3a8ad23a2ff"
+  },
+  {
+   "module": "FFDefs",
+   "name": "FF.instDecidableNonEmpty",
+   "origin": "trusted-generated",
+   "type_sha256": "93046c8536d6d52cc5d00890d47f133c6eb453baf84cd131783aed6f38cfcb03"
+  },
+  {
+   "module": "FFDefs",
+   "name": "FF.NonEmpty",
+   "origin": "trusted-generated",
+   "type_sha256": "c98548115419ec271dfd495799f10b35c81fad06e346ef970bd969a518c2a9f4"
+  },
+  {
+   "module": "FFDefs",
+   "name": "FF.instDecidableLoopFree",
+   "origin": "trusted-generated",
+   "type_sha256": "b254270f9c7a70752543b6e8548e183942a64fd80cf9cbf1a76167625b0346cf"
+  },
+  {
+   "module": "FFCConj",
+   "name": "FFCConj.inst_concept_nonempty_negation",
+   "origin": "trusted-generated",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "module": "FFCConj",
+   "name": "FFCConj.concept_nonempty_filter",
+   "origin": "trusted-generated",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "module": "FFCConj",
+   "name": "FFCConj.concept_loopfree_filter",
+   "origin": "trusted-generated",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "module": "FFCConj",
+   "name": "FFCConj.concept_c4free_filter",
+   "origin": "trusted-generated",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "module": "FFCConj",
+   "name": "FFCConj.concept_matching_erase",
+   "origin": "trusted-generated",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "module": "FFCConj",
+   "name": "FFCConj.concept_nonempty_inter",
+   "origin": "trusted-generated",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "module": "FFCConj",
+   "name": "FFCConj.concept_nonempty_sdiff_negation",
+   "origin": "trusted-generated",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "module": "FFCConj",
+   "name": "FFCConj.inst_concept_c4free",
+   "origin": "trusted-generated",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "module": "FFCConj",
+   "name": "FFCConj.concept_matching_filter",
+   "origin": "trusted-generated",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "module": "FFCConj",
+   "name": "FFCConj.concept_loopfree_sdiff",
+   "origin": "trusted-generated",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "module": "FFCConj",
+   "name": "FFCConj.concept_loopfree_erase",
+   "origin": "trusted-generated",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "module": "FFCConj",
+   "name": "FFCConj.concept_c4free_erase",
+   "origin": "trusted-generated",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "module": "FFCConj",
+   "name": "FFCConj.concept_nonempty_erase",
+   "origin": "trusted-generated",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "module": "FFCConj",
+   "name": "FFCConj.inst_concept_nonempty",
+   "origin": "trusted-generated",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "module": "FFCConj",
+   "name": "FFCConj.concept_nonempty_erase_negation",
+   "origin": "trusted-generated",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "module": "FFCConj",
+   "name": "FFCConj.concept_matching_sdiff",
+   "origin": "trusted-generated",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "module": "FFCConj",
+   "name": "FFCConj.concept_c4free_sdiff",
+   "origin": "trusted-generated",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "module": "FFCConj",
+   "name": "FFCConj.concept_nonempty_inter_negation",
+   "origin": "trusted-generated",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "module": "FFCConj",
+   "name": "FFCConj.concept_nonempty_sdiff",
+   "origin": "trusted-generated",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "module": "FFCConj",
+   "name": "FFCConj.concept_nonempty_filter_negation",
+   "origin": "trusted-generated",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "module": "FFCConj",
+   "name": "FFCConj.inst_concept_loopfree",
+   "origin": "trusted-generated",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "module": "FFCConj",
+   "name": "FFCConj.concept_c4free_inter",
+   "origin": "trusted-generated",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "module": "FFCConj",
+   "name": "FFCConj.inst_concept_matching",
+   "origin": "trusted-generated",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "module": "FFCConj",
+   "name": "FFCConj.concept_loopfree_inter",
+   "origin": "trusted-generated",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "module": "FFCConj",
+   "name": "FFCConj.concept_matching_inter",
+   "origin": "trusted-generated",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  }
+ ],
+ "dependencies": {
+  "FF.LoopFree": {
+   "package": [
+    "GT.Edges"
+   ],
+   "workspace_modules": [
+    "Init.Core",
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Defs",
+    "Mathlib.Data.SetLike.Basic"
+   ]
+  },
+  "FF.Matching": {
+   "package": [
+    "GT.Edges"
+   ],
+   "workspace_modules": [
+    "Init.Core",
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Defs",
+    "Mathlib.Data.SetLike.Basic"
+   ]
+  },
+  "FF.NonEmpty": {
+   "package": [
+    "GT.Edges"
+   ],
+   "workspace_modules": [
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Empty"
+   ]
+  },
+  "FF.instDecidableLoopFree": {
+   "package": [
+    "FF.LoopFree",
+    "GT.Edges"
+   ],
+   "workspace_modules": [
+    "Init.Core",
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Defs",
+    "Mathlib.Data.SetLike.Basic"
+   ]
+  },
+  "FF.instDecidableMatching": {
+   "package": [
+    "FF.Matching",
+    "GT.Edges"
+   ],
+   "workspace_modules": [
+    "Init.Core",
+    "Init.Prelude",
+    "Init.PropLemmas",
+    "Mathlib.Data.Finset.Defs",
+    "Mathlib.Data.SetLike.Basic"
+   ]
+  },
+  "FF.instDecidableNonEmpty": {
+   "package": [
+    "FF.NonEmpty",
+    "GT.Edges"
+   ],
+   "workspace_modules": [
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Empty"
+   ]
+  },
+  "FFCConj.concept_c4free_erase": {
+   "package": [
+    "G4.C4Free",
+    "G4.adj",
+    "G4.verts",
+    "GT.Edges"
+   ],
+   "workspace_modules": [
+    "Init.Core",
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Erase"
+   ]
+  },
+  "FFCConj.concept_c4free_filter": {
+   "package": [
+    "G4.C4Free",
+    "G4.adj",
+    "G4.verts",
+    "GT.Edges"
+   ],
+   "workspace_modules": [
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Filter"
+   ]
+  },
+  "FFCConj.concept_c4free_inter": {
+   "package": [
+    "G4.C4Free",
+    "G4.adj",
+    "G4.verts",
+    "GT.Edges"
+   ],
+   "workspace_modules": [
+    "Init.Core",
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Lattice.Basic"
+   ]
+  },
+  "FFCConj.concept_c4free_sdiff": {
+   "package": [
+    "G4.C4Free",
+    "G4.adj",
+    "G4.verts",
+    "GT.Edges"
+   ],
+   "workspace_modules": [
+    "Init.Core",
+    "Init.Prelude",
+    "Mathlib.Data.Finset.SDiff"
+   ]
+  },
+  "FFCConj.concept_loopfree_erase": {
+   "package": [
+    "FF.LoopFree",
+    "GT.Edges"
+   ],
+   "workspace_modules": [
+    "Init.Core",
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Erase"
+   ]
+  },
+  "FFCConj.concept_loopfree_filter": {
+   "package": [
+    "FF.LoopFree",
+    "GT.Edges"
+   ],
+   "workspace_modules": [
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Filter"
+   ]
+  },
+  "FFCConj.concept_loopfree_inter": {
+   "package": [
+    "FF.LoopFree",
+    "GT.Edges"
+   ],
+   "workspace_modules": [
+    "Init.Core",
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Lattice.Basic"
+   ]
+  },
+  "FFCConj.concept_loopfree_sdiff": {
+   "package": [
+    "FF.LoopFree",
+    "GT.Edges"
+   ],
+   "workspace_modules": [
+    "Init.Core",
+    "Init.Prelude",
+    "Mathlib.Data.Finset.SDiff"
+   ]
+  },
+  "FFCConj.concept_matching_erase": {
+   "package": [
+    "FF.Matching",
+    "GT.Edges"
+   ],
+   "workspace_modules": [
+    "Init.Core",
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Erase"
+   ]
+  },
+  "FFCConj.concept_matching_filter": {
+   "package": [
+    "FF.Matching",
+    "GT.Edges"
+   ],
+   "workspace_modules": [
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Filter"
+   ]
+  },
+  "FFCConj.concept_matching_inter": {
+   "package": [
+    "FF.Matching",
+    "GT.Edges"
+   ],
+   "workspace_modules": [
+    "Init.Core",
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Lattice.Basic"
+   ]
+  },
+  "FFCConj.concept_matching_sdiff": {
+   "package": [
+    "FF.Matching",
+    "GT.Edges"
+   ],
+   "workspace_modules": [
+    "Init.Core",
+    "Init.Prelude",
+    "Mathlib.Data.Finset.SDiff"
+   ]
+  },
+  "FFCConj.concept_nonempty_erase": {
+   "package": [
+    "FF.NonEmpty",
+    "GT.Edges"
+   ],
+   "workspace_modules": [
+    "Init.Core",
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Erase"
+   ]
+  },
+  "FFCConj.concept_nonempty_erase_negation": {
+   "package": [
+    "FF.NonEmpty",
+    "FFCConj.concept_nonempty_erase",
+    "GT.Edges"
+   ],
+   "workspace_modules": [
+    "Init.Prelude"
+   ]
+  },
+  "FFCConj.concept_nonempty_filter": {
+   "package": [
+    "FF.NonEmpty",
+    "GT.Edges"
+   ],
+   "workspace_modules": [
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Filter"
+   ]
+  },
+  "FFCConj.concept_nonempty_filter_negation": {
+   "package": [
+    "FF.NonEmpty",
+    "FFCConj.concept_nonempty_filter",
+    "GT.Edges"
+   ],
+   "workspace_modules": [
+    "Init.Prelude"
+   ]
+  },
+  "FFCConj.concept_nonempty_inter": {
+   "package": [
+    "FF.NonEmpty",
+    "GT.Edges"
+   ],
+   "workspace_modules": [
+    "Init.Core",
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Lattice.Basic"
+   ]
+  },
+  "FFCConj.concept_nonempty_inter_negation": {
+   "package": [
+    "FF.NonEmpty",
+    "FFCConj.concept_nonempty_inter",
+    "GT.Edges"
+   ],
+   "workspace_modules": [
+    "Init.Prelude"
+   ]
+  },
+  "FFCConj.concept_nonempty_sdiff": {
+   "package": [
+    "FF.NonEmpty",
+    "GT.Edges"
+   ],
+   "workspace_modules": [
+    "Init.Core",
+    "Init.Prelude",
+    "Mathlib.Data.Finset.SDiff"
+   ]
+  },
+  "FFCConj.concept_nonempty_sdiff_negation": {
+   "package": [
+    "FF.NonEmpty",
+    "FFCConj.concept_nonempty_sdiff",
+    "GT.Edges"
+   ],
+   "workspace_modules": [
+    "Init.Prelude"
+   ]
+  },
+  "FFCConj.inst_concept_c4free": {
+   "package": [
+    "G4.C4Free",
+    "G4.adj",
+    "G4.verts",
+    "GT.Edges",
+    "RC.C0"
+   ],
+   "workspace_modules": []
+  },
+  "FFCConj.inst_concept_loopfree": {
+   "package": [
+    "FF.LoopFree",
+    "GT.Edges",
+    "RC.C0"
+   ],
+   "workspace_modules": []
+  },
+  "FFCConj.inst_concept_matching": {
+   "package": [
+    "FF.Matching",
+    "GT.Edges",
+    "RC.C0"
+   ],
+   "workspace_modules": []
+  },
+  "FFCConj.inst_concept_nonempty": {
+   "package": [
+    "FF.NonEmpty",
+    "GT.Edges",
+    "RC.C0"
+   ],
+   "workspace_modules": []
+  },
+  "FFCConj.inst_concept_nonempty_negation": {
+   "package": [
+    "FF.NonEmpty",
+    "FFCConj.inst_concept_nonempty",
+    "GT.Edges",
+    "RC.C0"
+   ],
+   "workspace_modules": [
+    "Init.Prelude"
+   ]
+  },
+  "FFCP1.proof": {
+   "package": [
+    "FF.LoopFree",
+    "FFCConj.inst_concept_loopfree",
+    "GT.Edges",
+    "RC.C0"
+   ],
+   "workspace_modules": [
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Defs",
+    "Mathlib.Data.SetLike.Basic",
+    "Mathlib.Order.Defs.PartialOrder"
+   ]
+  },
+  "FFCP10.proof": {
+   "package": [
+    "FF.Matching",
+    "FFCConj.concept_matching_filter",
+    "FFCConj.inst_concept_matching",
+    "FFCP2.proof",
+    "GT.Edges",
+    "RC.C0",
+    "RCConj.gen_concept_filter",
+    "RCP6.proof"
+   ],
+   "workspace_modules": [
+    "Init.Prelude"
+   ]
+  },
+  "FFCP11.proof": {
+   "package": [
+    "FF.Matching",
+    "FFCConj.concept_matching_erase",
+    "FFCConj.inst_concept_matching",
+    "FFCP2.proof",
+    "GT.Edges",
+    "RC.C0",
+    "RCConj.gen_concept_erase",
+    "RCP7.proof"
+   ],
+   "workspace_modules": [
+    "Init.Prelude"
+   ]
+  },
+  "FFCP12.proof": {
+   "package": [
+    "FF.NonEmpty",
+    "FF.instDecidableNonEmpty",
+    "FFCConj.concept_nonempty_inter",
+    "FFCConj.concept_nonempty_inter_negation",
+    "FFCP12.proof._proof_1_1",
+    "FFCP12.proof._proof_1_2",
+    "GT.Edges"
+   ],
+   "workspace_modules": [
+    "Init.Core",
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Empty",
+    "Mathlib.Data.Finset.Insert",
+    "Mathlib.Data.Finset.Lattice.Basic"
+   ]
+  },
+  "FFCP12.proof._proof_1_1": {
+   "package": [
+    "FF.NonEmpty",
+    "FF.instDecidableNonEmpty",
+    "GT.Edges"
+   ],
+   "workspace_modules": [
+    "Init.Core",
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Insert"
+   ]
+  },
+  "FFCP12.proof._proof_1_2": {
+   "package": [
+    "FF.NonEmpty",
+    "FF.instDecidableNonEmpty",
+    "GT.Edges"
+   ],
+   "workspace_modules": [
+    "Init.Core",
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Empty",
+    "Mathlib.Data.Finset.Insert",
+    "Mathlib.Data.Finset.Lattice.Basic"
+   ]
+  },
+  "FFCP13.proof": {
+   "package": [
+    "FF.NonEmpty",
+    "FF.instDecidableNonEmpty",
+    "FFCConj.concept_nonempty_sdiff",
+    "FFCConj.concept_nonempty_sdiff_negation",
+    "FFCP13.proof._proof_1_1",
+    "FFCP13.proof._proof_1_2",
+    "GT.Edges"
+   ],
+   "workspace_modules": [
+    "Init.Core",
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Insert",
+    "Mathlib.Data.Finset.SDiff"
+   ]
+  },
+  "FFCP13.proof._proof_1_1": {
+   "package": [
+    "FF.NonEmpty",
+    "FF.instDecidableNonEmpty",
+    "GT.Edges"
+   ],
+   "workspace_modules": [
+    "Init.Core",
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Insert"
+   ]
+  },
+  "FFCP13.proof._proof_1_2": {
+   "package": [
+    "FF.NonEmpty",
+    "FF.instDecidableNonEmpty",
+    "GT.Edges"
+   ],
+   "workspace_modules": [
+    "Init.Core",
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Insert",
+    "Mathlib.Data.Finset.SDiff"
+   ]
+  },
+  "FFCP14.proof": {
+   "package": [
+    "FF.NonEmpty",
+    "FF.instDecidableNonEmpty",
+    "FFCConj.concept_nonempty_filter",
+    "FFCConj.concept_nonempty_filter_negation",
+    "FFCP14.proof._proof_1_1",
+    "FFCP14.proof._proof_1_2",
+    "GT.Edges"
+   ],
+   "workspace_modules": [
+    "Init.Core",
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Defs",
+    "Mathlib.Data.Finset.Filter",
+    "Mathlib.Data.Finset.Insert",
+    "Mathlib.Data.SetLike.Basic"
+   ]
+  },
+  "FFCP14.proof._proof_1_1": {
+   "package": [
+    "FF.NonEmpty",
+    "FF.instDecidableNonEmpty",
+    "GT.Edges"
+   ],
+   "workspace_modules": [
+    "Init.Core",
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Insert"
+   ]
+  },
+  "FFCP14.proof._proof_1_2": {
+   "package": [
+    "FF.NonEmpty",
+    "FF.instDecidableNonEmpty",
+    "GT.Edges"
+   ],
+   "workspace_modules": [
+    "Init.Core",
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Defs",
+    "Mathlib.Data.Finset.Filter",
+    "Mathlib.Data.Finset.Insert",
+    "Mathlib.Data.SetLike.Basic"
+   ]
+  },
+  "FFCP15.proof": {
+   "package": [
+    "FF.NonEmpty",
+    "FF.instDecidableNonEmpty",
+    "FFCConj.concept_nonempty_erase",
+    "FFCConj.concept_nonempty_erase_negation",
+    "FFCP15.proof._proof_1_1",
+    "FFCP15.proof._proof_1_2",
+    "GT.Edges"
+   ],
+   "workspace_modules": [
+    "Init.Core",
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Erase",
+    "Mathlib.Data.Finset.Insert"
+   ]
+  },
+  "FFCP15.proof._proof_1_1": {
+   "package": [
+    "FF.NonEmpty",
+    "FF.instDecidableNonEmpty",
+    "GT.Edges"
+   ],
+   "workspace_modules": [
+    "Init.Core",
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Insert"
+   ]
+  },
+  "FFCP15.proof._proof_1_2": {
+   "package": [
+    "FF.NonEmpty",
+    "FF.instDecidableNonEmpty",
+    "GT.Edges"
+   ],
+   "workspace_modules": [
+    "Init.Core",
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Erase",
+    "Mathlib.Data.Finset.Insert"
+   ]
+  },
+  "FFCP2.proof": {
+   "package": [
+    "FF.Matching",
+    "FFCConj.inst_concept_matching",
+    "GT.Edges",
+    "RC.C0"
+   ],
+   "workspace_modules": [
+    "Init.Core",
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Defs",
+    "Mathlib.Data.SetLike.Basic",
+    "Mathlib.Order.Defs.PartialOrder"
+   ]
+  },
+  "FFCP3.proof": {
+   "package": [
+    "FF.NonEmpty",
+    "FF.instDecidableNonEmpty",
+    "FFCConj.inst_concept_nonempty",
+    "FFCConj.inst_concept_nonempty_negation",
+    "GT.Edges",
+    "RC.C0"
+   ],
+   "workspace_modules": [
+    "Init.Core",
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Defs",
+    "Mathlib.Data.Finset.Empty",
+    "Mathlib.Data.Finset.Insert",
+    "Mathlib.Order.Defs.PartialOrder"
+   ]
+  },
+  "FFCP4.proof": {
+   "package": [
+    "FF.LoopFree",
+    "FFCConj.concept_loopfree_inter",
+    "FFCConj.inst_concept_loopfree",
+    "FFCP1.proof",
+    "GT.Edges",
+    "RC.C0",
+    "RCConj.gen_concept_inter",
+    "RCP4.proof"
+   ],
+   "workspace_modules": [
+    "Init.Prelude"
+   ]
+  },
+  "FFCP5.proof": {
+   "package": [
+    "FF.LoopFree",
+    "FFCConj.concept_loopfree_sdiff",
+    "FFCConj.inst_concept_loopfree",
+    "FFCP1.proof",
+    "GT.Edges",
+    "RC.C0",
+    "RCConj.gen_concept_sdiff",
+    "RCP5.proof"
+   ],
+   "workspace_modules": [
+    "Init.Prelude"
+   ]
+  },
+  "FFCP6.proof": {
+   "package": [
+    "FF.LoopFree",
+    "FFCConj.concept_loopfree_filter",
+    "FFCConj.inst_concept_loopfree",
+    "FFCP1.proof",
+    "GT.Edges",
+    "RC.C0",
+    "RCConj.gen_concept_filter",
+    "RCP6.proof"
+   ],
+   "workspace_modules": [
+    "Init.Prelude"
+   ]
+  },
+  "FFCP7.proof": {
+   "package": [
+    "FF.LoopFree",
+    "FFCConj.concept_loopfree_erase",
+    "FFCConj.inst_concept_loopfree",
+    "FFCP1.proof",
+    "GT.Edges",
+    "RC.C0",
+    "RCConj.gen_concept_erase",
+    "RCP7.proof"
+   ],
+   "workspace_modules": [
+    "Init.Prelude"
+   ]
+  },
+  "FFCP8.proof": {
+   "package": [
+    "FF.Matching",
+    "FFCConj.concept_matching_inter",
+    "FFCConj.inst_concept_matching",
+    "FFCP2.proof",
+    "GT.Edges",
+    "RC.C0",
+    "RCConj.gen_concept_inter",
+    "RCP4.proof"
+   ],
+   "workspace_modules": [
+    "Init.Prelude"
+   ]
+  },
+  "FFCP9.proof": {
+   "package": [
+    "FF.Matching",
+    "FFCConj.concept_matching_sdiff",
+    "FFCConj.inst_concept_matching",
+    "FFCP2.proof",
+    "GT.Edges",
+    "RC.C0",
+    "RCConj.gen_concept_sdiff",
+    "RCP5.proof"
+   ],
+   "workspace_modules": [
+    "Init.Prelude"
+   ]
+  },
+  "G4.C4Free": {
+   "package": [
+    "G4.adj",
+    "G4.verts",
+    "GT.Edges"
+   ],
+   "workspace_modules": [
+    "Init.Core",
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Defs",
+    "Mathlib.Data.SetLike.Basic"
+   ]
+  },
+  "G4.adj": {
+   "package": [
+    "GT.Edges"
+   ],
+   "workspace_modules": [
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Defs",
+    "Mathlib.Data.SetLike.Basic"
+   ]
+  },
+  "G4.instDecidableAdj": {
+   "package": [
+    "G4.adj",
+    "GT.Edges"
+   ],
+   "workspace_modules": [
+    "Init.Core",
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Defs",
+    "Mathlib.Data.SetLike.Basic"
+   ]
+  },
+  "G4.instDecidableC4Free": {
+   "package": [
+    "G4.C4Free",
+    "G4.adj",
+    "G4.instDecidableAdj",
+    "G4.verts",
+    "GT.Edges"
+   ],
+   "workspace_modules": [
+    "Init.Core",
+    "Init.Prelude",
+    "Init.PropLemmas",
+    "Mathlib.Data.Finset.Defs",
+    "Mathlib.Data.SetLike.Basic"
+   ]
+  },
+  "G4.verts": {
+   "package": [
+    "GT.Edges"
+   ],
+   "workspace_modules": [
+    "Init.Core",
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Defs",
+    "Mathlib.Data.Finset.Image",
+    "Mathlib.Data.Finset.Lattice.Basic"
+   ]
+  },
+  "GT.Edges": {
+   "package": [],
+   "workspace_modules": [
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Defs"
+   ]
+  },
+  "GT.TriangleFree": {
+   "package": [
+    "GT.Edges"
+   ],
+   "workspace_modules": [
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Defs",
+    "Mathlib.Data.SetLike.Basic"
+   ]
+  },
+  "GT.instDecidableTriangleFree": {
+   "package": [
+    "GT.Edges",
+    "GT.TriangleFree"
+   ],
+   "workspace_modules": [
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Defs",
+    "Mathlib.Data.SetLike.Basic"
+   ]
+  },
+  "HS.Bounded8": {
+   "package": [
+    "GT.Edges"
+   ],
+   "workspace_modules": [
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Defs",
+    "Mathlib.Data.SetLike.Basic"
+   ]
+  },
+  "HS.Simple": {
+   "package": [
+    "GT.Edges"
+   ],
+   "workspace_modules": [
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Defs",
+    "Mathlib.Data.SetLike.Basic"
+   ]
+  },
+  "HS.instDecidableBounded8": {
+   "package": [
+    "GT.Edges",
+    "HS.Bounded8"
+   ],
+   "workspace_modules": [
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Defs",
+    "Mathlib.Data.SetLike.Basic"
+   ]
+  },
+  "HS.instDecidableSimple": {
+   "package": [
+    "GT.Edges",
+    "HS.Simple"
+   ],
+   "workspace_modules": [
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Defs",
+    "Mathlib.Data.SetLike.Basic"
+   ]
+  },
+  "HSConj.down_bounded": {
+   "package": [
+    "GT.Edges",
+    "HS.Bounded8"
+   ],
+   "workspace_modules": [
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Defs",
+    "Mathlib.Order.Defs.PartialOrder"
+   ]
+  },
+  "HSConj.down_simple": {
+   "package": [
+    "GT.Edges",
+    "HS.Simple"
+   ],
+   "workspace_modules": [
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Defs",
+    "Mathlib.Order.Defs.PartialOrder"
+   ]
+  },
+  "HSConj.down_tf": {
+   "package": [
+    "GT.Edges",
+    "GT.TriangleFree"
+   ],
+   "workspace_modules": [
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Defs",
+    "Mathlib.Order.Defs.PartialOrder"
+   ]
+  },
+  "HSConj.inter_simple": {
+   "package": [
+    "GT.Edges",
+    "HS.Simple"
+   ],
+   "workspace_modules": [
+    "Init.Core",
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Lattice.Basic"
+   ]
+  },
+  "HSConj.inter_tf": {
+   "package": [
+    "GT.Edges",
+    "GT.TriangleFree"
+   ],
+   "workspace_modules": [
+    "Init.Core",
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Lattice.Basic"
+   ]
+  },
+  "RC.C0": {
+   "package": [
+    "GT.Edges"
+   ],
+   "workspace_modules": [
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Defs",
+    "Mathlib.Order.Defs.PartialOrder"
+   ]
+  },
+  "RCConj.gen_concept_erase": {
+   "package": [
+    "GT.Edges",
+    "RC.C0"
+   ],
+   "workspace_modules": [
+    "Init.Core",
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Erase"
+   ]
+  },
+  "RCConj.gen_concept_filter": {
+   "package": [
+    "GT.Edges",
+    "RC.C0"
+   ],
+   "workspace_modules": [
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Filter"
+   ]
+  },
+  "RCConj.gen_concept_inter": {
+   "package": [
+    "GT.Edges",
+    "RC.C0"
+   ],
+   "workspace_modules": [
+    "Init.Core",
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Lattice.Basic"
+   ]
+  },
+  "RCConj.gen_concept_sdiff": {
+   "package": [
+    "GT.Edges",
+    "RC.C0"
+   ],
+   "workspace_modules": [
+    "Init.Core",
+    "Init.Prelude",
+    "Mathlib.Data.Finset.SDiff"
+   ]
+  },
+  "RCConj.instance_down_bounded": {
+   "package": [
+    "GT.Edges",
+    "HS.Bounded8",
+    "HSConj.down_bounded",
+    "RC.C0"
+   ],
+   "workspace_modules": [
+    "Init.Prelude"
+   ]
+  },
+  "RCConj.instance_down_simple": {
+   "package": [
+    "GT.Edges",
+    "HS.Simple",
+    "HSConj.down_simple",
+    "RC.C0"
+   ],
+   "workspace_modules": [
+    "Init.Prelude"
+   ]
+  },
+  "RCConj.instance_down_tf": {
+   "package": [
+    "GT.Edges",
+    "GT.TriangleFree",
+    "HSConj.down_tf",
+    "RC.C0"
+   ],
+   "workspace_modules": [
+    "Init.Prelude"
+   ]
+  },
+  "RCP1.proof": {
+   "package": [
+    "GT.Edges",
+    "HS.Bounded8",
+    "HSConj.down_bounded",
+    "RC.C0",
+    "RCConj.instance_down_bounded"
+   ],
+   "workspace_modules": [
+    "Init.Prelude"
+   ]
+  },
+  "RCP2.proof": {
+   "package": [
+    "GT.Edges",
+    "HS.Simple",
+    "HSConj.down_simple",
+    "RC.C0",
+    "RCConj.instance_down_simple"
+   ],
+   "workspace_modules": [
+    "Init.Prelude"
+   ]
+  },
+  "RCP3.proof": {
+   "package": [
+    "GT.Edges",
+    "GT.TriangleFree",
+    "HSConj.down_tf",
+    "RC.C0",
+    "RCConj.instance_down_tf"
+   ],
+   "workspace_modules": [
+    "Init.Prelude"
+   ]
+  },
+  "RCP4.proof": {
+   "package": [
+    "GT.Edges",
+    "RC.C0",
+    "RCConj.gen_concept_inter"
+   ],
+   "workspace_modules": [
+    "Init.Core",
+    "Init.Prelude",
+    "Init.SimpLemmas",
+    "Mathlib.Data.Finset.Defs",
+    "Mathlib.Data.Finset.Lattice.Basic",
+    "Mathlib.Order.Defs.PartialOrder"
+   ]
+  },
+  "RCP5.proof": {
+   "package": [
+    "GT.Edges",
+    "RC.C0",
+    "RCConj.gen_concept_sdiff"
+   ],
+   "workspace_modules": [
+    "Init.Core",
+    "Init.Prelude",
+    "Init.SimpLemmas",
+    "Mathlib.Data.Finset.Lattice.Basic",
+    "Mathlib.Data.Finset.SDiff",
+    "Mathlib.Order.BooleanAlgebra.Basic",
+    "Mathlib.Order.Defs.PartialOrder",
+    "Mathlib.Order.Heyting.Basic",
+    "Mathlib.Order.Lattice"
+   ]
+  },
+  "RCP6.proof": {
+   "package": [
+    "GT.Edges",
+    "RC.C0",
+    "RCConj.gen_concept_filter"
+   ],
+   "workspace_modules": [
+    "Init.Prelude",
+    "Init.SimpLemmas",
+    "Mathlib.Data.Finset.Defs",
+    "Mathlib.Data.Finset.Filter",
+    "Mathlib.Order.Defs.PartialOrder"
+   ]
+  },
+  "RCP7.proof": {
+   "package": [
+    "GT.Edges",
+    "RC.C0",
+    "RCConj.gen_concept_erase"
+   ],
+   "workspace_modules": [
+    "Init.Core",
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Defs",
+    "Mathlib.Data.Finset.Erase",
+    "Mathlib.Data.SetLike.Basic"
+   ]
+  }
+ },
+ "domain": "edge-set predicates",
+ "modules": [
+  {
+   "name": "GTDefs",
+   "source": "import Mathlib.Data.Finset.Powerset\n\nnamespace GT\n\n/-- Edge sets: ordered pairs (u, v), read as the edge {u, v}. Hosts list each edge once, with u < v. -/\nabbrev Edges := Finset (ℕ × ℕ)\n\n/-- No three edges (a, b), (b, c), (a, c). -/\ndef TriangleFree (S : Edges) : Prop :=\n  ∀ e ∈ S, ∀ f ∈ S, ∀ g ∈ S, ¬ (e.1 = g.1 ∧ e.2 = f.1 ∧ f.2 = g.2)\n\ninstance (S : Edges) : Decidable (TriangleFree S) := by\n  unfold TriangleFree; infer_instance\n\nend GT\n",
+   "source_sha256": "34a84d4f227cbf5a95012a37a9f263f14ca419a4959be42c674d8abc47c9e3a7",
+   "trusted": true
+  },
+  {
+   "name": "HSDefs",
+   "source": "import GTDefs\n\nnamespace HS\n\n/-- History predicate: every pair is listed as (u, v) with u < v. -/\ndef Simple (S : GT.Edges) : Prop := ∀ e ∈ S, e.1 < e.2\n\n/-- History predicate: every endpoint is below 8. -/\ndef Bounded8 (S : GT.Edges) : Prop := ∀ e ∈ S, e.1 < 8 ∧ e.2 < 8\n\ninstance (S : GT.Edges) : Decidable (Simple S) := by unfold Simple; infer_instance\ninstance (S : GT.Edges) : Decidable (Bounded8 S) := by unfold Bounded8; infer_instance\n\nend HS\n",
+   "source_sha256": "fda70a92d2893b0470ae39d2918fca1b195e1db384d6fedbbc1950b51e65d5db",
+   "trusted": true
+  },
+  {
+   "name": "HSConj",
+   "source": "import GTDefs\nimport HSDefs\nset_option linter.unusedVariables false\n\nnamespace HSConj\n/-- Generated conjecture `down_tf` (history). -/\ndef down_tf : Prop := ∀ (S : GT.Edges) (T : GT.Edges) (h1 : T ⊆ S) (h2 : GT.TriangleFree S), GT.TriangleFree T\n/-- Generated conjecture `down_simple` (history). -/\ndef down_simple : Prop := ∀ (S : GT.Edges) (T : GT.Edges) (h1 : T ⊆ S) (h2 : HS.Simple S), HS.Simple T\n/-- Generated conjecture `down_bounded` (history). -/\ndef down_bounded : Prop := ∀ (S : GT.Edges) (T : GT.Edges) (h1 : T ⊆ S) (h2 : HS.Bounded8 S), HS.Bounded8 T\n/-- Generated conjecture `inter_tf` (history). -/\ndef inter_tf : Prop := ∀ (S : GT.Edges) (T : GT.Edges) (h1 : GT.TriangleFree S), GT.TriangleFree (S ∩ T)\n/-- Generated conjecture `inter_simple` (history). -/\ndef inter_simple : Prop := ∀ (S : GT.Edges) (T : GT.Edges) (h1 : HS.Simple S), HS.Simple (S ∩ T)\nend HSConj\n",
+   "source_sha256": "b51522fc7800b90635c57f6e77ae907ef1f30cf3054ccf078472d4ad0d5b5040",
+   "trusted": true
+  },
+  {
+   "name": "RCDefs",
+   "source": "import GTDefs\nimport HSDefs\n\nnamespace RC\n\n/-- Recovered by typed anti-unification of HSConj.down_bounded, HSConj.down_simple, HSConj.down_tf. -/\ndef C0 (P0 : GT.Edges -> Prop) : Prop := (∀ (x0 : @GT.Edges), (∀ (x1 : @GT.Edges), (∀ (x2 : (@LE.le @GT.Edges (@Preorder.toLE @GT.Edges (@PartialOrder.toPreorder @GT.Edges (@Finset.instPartialOrder (@Prod @Nat @Nat)))) x1 x0)), (∀ (x3 : (P0 x0)), (P0 x1)))))\n\nend RC\n",
+   "source_sha256": "640f2b577f249cc93dd38a96935449b2cee5e8444b6040c263d712a4875931ae",
+   "trusted": true
+  },
+  {
+   "name": "RCConj",
+   "source": "import GTDefs\nimport HSDefs\nimport HSConj\nimport RCDefs\nset_option linter.unusedVariables false\n\nnamespace RCConj\n/-- Generated conjecture `instance_down_bounded` (generated:reification-check). -/\ndef instance_down_bounded : Prop := @HSConj.down_bounded = @RC.C0 @HS.Bounded8\n/-- Generated conjecture `instance_down_simple` (generated:reification-check). -/\ndef instance_down_simple : Prop := @HSConj.down_simple = @RC.C0 @HS.Simple\n/-- Generated conjecture `instance_down_tf` (generated:reification-check). -/\ndef instance_down_tf : Prop := @HSConj.down_tf = @RC.C0 @GT.TriangleFree\n/-- Generated conjecture `gen_concept_inter` (generated:generic-over-concept). -/\ndef gen_concept_inter : Prop := ∀ (P : GT.Edges → Prop) (h : RC.C0 P) (S : GT.Edges) (T : GT.Edges) (h1 : P S), P (S ∩ T)\n/-- Generated conjecture `gen_concept_sdiff` (generated:generic-over-concept). -/\ndef gen_concept_sdiff : Prop := ∀ (P : GT.Edges → Prop) (h : RC.C0 P) (S : GT.Edges) (T : GT.Edges) (h1 : P S), P (S \\ T)\n/-- Generated conjecture `gen_concept_filter` (generated:generic-over-concept). -/\ndef gen_concept_filter : Prop := ∀ (P : GT.Edges → Prop) (h : RC.C0 P) (S : GT.Edges) (q : ℕ × ℕ → Bool) (h1 : P S), P (S.filter fun e => q e)\n/-- Generated conjecture `gen_concept_erase` (generated:generic-over-concept). -/\ndef gen_concept_erase : Prop := ∀ (P : GT.Edges → Prop) (h : RC.C0 P) (S : GT.Edges) (e : ℕ × ℕ) (h1 : P S), P (S.erase e)\nend RCConj\n",
+   "source_sha256": "5487dc376e8ec689b148c6253649770d2c8647bd9ef9dd1ce0a21fbbed8c3b0f",
+   "trusted": true
+  },
+  {
+   "name": "RCP1",
+   "source": "import GTDefs\nimport HSDefs\nimport HSConj\nimport RCDefs\nimport RCConj\nnamespace RCP1\ntheorem proof : RCConj.instance_down_bounded := by\n  unfold RCConj.instance_down_bounded\n  rfl\nend RCP1\n",
+   "source_sha256": "a229acab6dac8cae85d20470b0938cc59b4cd93c4d6bc0b360dbe085f0fc8452",
+   "trusted": false
+  },
+  {
+   "name": "RCP2",
+   "source": "import GTDefs\nimport HSDefs\nimport HSConj\nimport RCDefs\nimport RCConj\nimport RCP1\nnamespace RCP2\ntheorem proof : RCConj.instance_down_simple := by\n  unfold RCConj.instance_down_simple\n  rfl\nend RCP2\n",
+   "source_sha256": "e902d4b426f0bb024ec8c9d8b543e61d6c349f1c47b4c7af618ccce7e5335149",
+   "trusted": false
+  },
+  {
+   "name": "RCP3",
+   "source": "import GTDefs\nimport HSDefs\nimport HSConj\nimport RCDefs\nimport RCConj\nimport RCP1\nimport RCP2\nnamespace RCP3\ntheorem proof : RCConj.instance_down_tf := by\n  unfold RCConj.instance_down_tf\n  rfl\nend RCP3\n",
+   "source_sha256": "ce9f1c61f1118c0bb7fdbd3faeaad2a30e81b60fd3c1fd5527c253980690d900",
+   "trusted": false
+  },
+  {
+   "name": "RCP4",
+   "source": "import GTDefs\nimport HSDefs\nimport HSConj\nimport RCDefs\nimport RCConj\nimport RCP1\nimport RCP2\nimport RCP3\nnamespace RCP4\ntheorem proof : RCConj.gen_concept_inter := by\n  unfold RCConj.gen_concept_inter\n  intro P h S T h1\n  exact h _ _ (by simp) h1\nend RCP4\n",
+   "source_sha256": "6a1e492dd5c39b5754901393e9d4d9cd308b65f633b5bc3d70cc2969f72f974d",
+   "trusted": false
+  },
+  {
+   "name": "RCP5",
+   "source": "import GTDefs\nimport HSDefs\nimport HSConj\nimport RCDefs\nimport RCConj\nimport RCP1\nimport RCP2\nimport RCP3\nimport RCP4\nnamespace RCP5\ntheorem proof : RCConj.gen_concept_sdiff := by\n  unfold RCConj.gen_concept_sdiff\n  intro P h S T h1\n  exact h _ _ (by simp) h1\nend RCP5\n",
+   "source_sha256": "acc37362f6f7d814cdf2cbc2cf18651305157f7f902dfb10ec851e1f0311d8b4",
+   "trusted": false
+  },
+  {
+   "name": "RCP6",
+   "source": "import GTDefs\nimport HSDefs\nimport HSConj\nimport RCDefs\nimport RCConj\nimport RCP1\nimport RCP2\nimport RCP3\nimport RCP4\nimport RCP5\nnamespace RCP6\ntheorem proof : RCConj.gen_concept_filter := by\n  unfold RCConj.gen_concept_filter\n  intro P h S q h1\n  exact h _ _ (by simp) h1\nend RCP6\n",
+   "source_sha256": "587d1b89b0a2ff6ae920246609733368377a7802211d6eb31b41049be714ef0f",
+   "trusted": false
+  },
+  {
+   "name": "RCP7",
+   "source": "import GTDefs\nimport HSDefs\nimport HSConj\nimport RCDefs\nimport RCConj\nimport RCP1\nimport RCP2\nimport RCP3\nimport RCP4\nimport RCP5\nimport RCP6\nnamespace RCP7\ntheorem proof : RCConj.gen_concept_erase := by\n  unfold RCConj.gen_concept_erase\n  intro P h S e h1\n  apply h _ _ _ h1\n  intro x hx\n  simp_all\nend RCP7\n",
+   "source_sha256": "ca06942cfe45b9ced7030cad9723ea27c895cdde84f095bca4117eba716aa72e",
+   "trusted": false
+  },
+  {
+   "name": "G4Defs",
+   "source": "import GTDefs\n\nnamespace G4\n\n/-- Domain contract (c4_host_v2): u and v are joined in S, in either orientation. -/\ndef adj (S : GT.Edges) (u v : ℕ) : Prop := (u, v) ∈ S ∨ (v, u) ∈ S\n\ninstance (S : GT.Edges) (u v : ℕ) : Decidable (adj S u v) := by\n  unfold adj; infer_instance\n\ndef verts (S : GT.Edges) : Finset ℕ := S.image Prod.fst ∪ S.image Prod.snd\n\n/-- No 4-cycle a-b-c-d-a with a ≠ c and b ≠ d. -/\ndef C4Free (S : GT.Edges) : Prop :=\n  ∀ a ∈ verts S, ∀ b ∈ verts S, ∀ c ∈ verts S, ∀ d ∈ verts S,\n    a ≠ c → b ≠ d → ¬ (adj S a b ∧ adj S b c ∧ adj S c d ∧ adj S d a)\n\ninstance (S : GT.Edges) : Decidable (C4Free S) := by\n  unfold C4Free; infer_instance\n\nend G4\n",
+   "source_sha256": "bf94fb5d73cc9d32e1e11167df93df0ca356b3f1a6de0b050a8efe53bae7987b",
+   "trusted": true
+  },
+  {
+   "name": "FFDefs",
+   "source": "import GTDefs\nimport G4Defs\n\nnamespace FF\n\n/-- Fresh predicate: no loops. -/\ndef LoopFree (S : GT.Edges) : Prop := ∀ e ∈ S, e.1 ≠ e.2\n\n/-- Fresh predicate: distinct pairs share no endpoint. -/\ndef Matching (S : GT.Edges) : Prop :=\n  ∀ e ∈ S, ∀ f ∈ S, e ≠ f → e.1 ≠ f.1 ∧ e.1 ≠ f.2 ∧ e.2 ≠ f.1 ∧ e.2 ≠ f.2\n\n/-- Fresh predicate that is not down-closed. -/\ndef NonEmpty (S : GT.Edges) : Prop := S.Nonempty\n\ninstance (S : GT.Edges) : Decidable (LoopFree S) := by unfold LoopFree; infer_instance\ninstance (S : GT.Edges) : Decidable (Matching S) := by unfold Matching; infer_instance\ninstance (S : GT.Edges) : Decidable (NonEmpty S) := by unfold NonEmpty; infer_instance\n\nend FF\n",
+   "source_sha256": "0c27f1d95779fd682934358911785dc66149d7cf0a39c57d16181aa088198785",
+   "trusted": true
+  },
+  {
+   "name": "FFCConj",
+   "source": "import GTDefs\nimport HSDefs\nimport HSConj\nimport RCDefs\nimport RCConj\nimport G4Defs\nimport FFDefs\nset_option linter.unusedVariables false\n\nnamespace FFCConj\n/-- Generated conjecture `inst_concept_loopfree` (generated:concept-instance). -/\ndef inst_concept_loopfree : Prop := RC.C0 FF.LoopFree\n/-- Generated conjecture `inst_concept_matching` (generated:concept-instance). -/\ndef inst_concept_matching : Prop := RC.C0 FF.Matching\n/-- Generated conjecture `inst_concept_c4free` (generated:concept-instance). -/\ndef inst_concept_c4free : Prop := RC.C0 G4.C4Free\n/-- Generated conjecture `inst_concept_nonempty` (generated:concept-instance). -/\ndef inst_concept_nonempty : Prop := RC.C0 FF.NonEmpty\ndef inst_concept_nonempty_negation : Prop := ¬ inst_concept_nonempty\n/-- Generated conjecture `concept_loopfree_inter` (fresh-family). -/\ndef concept_loopfree_inter : Prop := ∀ (S : GT.Edges) (T : GT.Edges) (h1 : FF.LoopFree S), FF.LoopFree (S ∩ T)\n/-- Generated conjecture `concept_loopfree_sdiff` (fresh-family). -/\ndef concept_loopfree_sdiff : Prop := ∀ (S : GT.Edges) (T : GT.Edges) (h1 : FF.LoopFree S), FF.LoopFree (S \\ T)\n/-- Generated conjecture `concept_loopfree_filter` (fresh-family). -/\ndef concept_loopfree_filter : Prop := ∀ (S : GT.Edges) (q : ℕ × ℕ → Bool) (h1 : FF.LoopFree S), FF.LoopFree (S.filter fun e => q e)\n/-- Generated conjecture `concept_loopfree_erase` (fresh-family). -/\ndef concept_loopfree_erase : Prop := ∀ (S : GT.Edges) (e : ℕ × ℕ) (h1 : FF.LoopFree S), FF.LoopFree (S.erase e)\n/-- Generated conjecture `concept_matching_inter` (fresh-family). -/\ndef concept_matching_inter : Prop := ∀ (S : GT.Edges) (T : GT.Edges) (h1 : FF.Matching S), FF.Matching (S ∩ T)\n/-- Generated conjecture `concept_matching_sdiff` (fresh-family). -/\ndef concept_matching_sdiff : Prop := ∀ (S : GT.Edges) (T : GT.Edges) (h1 : FF.Matching S), FF.Matching (S \\ T)\n/-- Generated conjecture `concept_matching_filter` (fresh-family). -/\ndef concept_matching_filter : Prop := ∀ (S : GT.Edges) (q : ℕ × ℕ → Bool) (h1 : FF.Matching S), FF.Matching (S.filter fun e => q e)\n/-- Generated conjecture `concept_matching_erase` (fresh-family). -/\ndef concept_matching_erase : Prop := ∀ (S : GT.Edges) (e : ℕ × ℕ) (h1 : FF.Matching S), FF.Matching (S.erase e)\n/-- Generated conjecture `concept_c4free_inter` (fresh-family). -/\ndef concept_c4free_inter : Prop := ∀ (S : GT.Edges) (T : GT.Edges) (h1 : G4.C4Free S), G4.C4Free (S ∩ T)\n/-- Generated conjecture `concept_c4free_sdiff` (fresh-family). -/\ndef concept_c4free_sdiff : Prop := ∀ (S : GT.Edges) (T : GT.Edges) (h1 : G4.C4Free S), G4.C4Free (S \\ T)\n/-- Generated conjecture `concept_c4free_filter` (fresh-family). -/\ndef concept_c4free_filter : Prop := ∀ (S : GT.Edges) (q : ℕ × ℕ → Bool) (h1 : G4.C4Free S), G4.C4Free (S.filter fun e => q e)\n/-- Generated conjecture `concept_c4free_erase` (fresh-family). -/\ndef concept_c4free_erase : Prop := ∀ (S : GT.Edges) (e : ℕ × ℕ) (h1 : G4.C4Free S), G4.C4Free (S.erase e)\n/-- Generated conjecture `concept_nonempty_inter` (fresh-family). -/\ndef concept_nonempty_inter : Prop := ∀ (S : GT.Edges) (T : GT.Edges) (h1 : FF.NonEmpty S), FF.NonEmpty (S ∩ T)\ndef concept_nonempty_inter_negation : Prop := ¬ concept_nonempty_inter\n/-- Generated conjecture `concept_nonempty_sdiff` (fresh-family). -/\ndef concept_nonempty_sdiff : Prop := ∀ (S : GT.Edges) (T : GT.Edges) (h1 : FF.NonEmpty S), FF.NonEmpty (S \\ T)\ndef concept_nonempty_sdiff_negation : Prop := ¬ concept_nonempty_sdiff\n/-- Generated conjecture `concept_nonempty_filter` (fresh-family). -/\ndef concept_nonempty_filter : Prop := ∀ (S : GT.Edges) (q : ℕ × ℕ → Bool) (h1 : FF.NonEmpty S), FF.NonEmpty (S.filter fun e => q e)\ndef concept_nonempty_filter_negation : Prop := ¬ concept_nonempty_filter\n/-- Generated conjecture `concept_nonempty_erase` (fresh-family). -/\ndef concept_nonempty_erase : Prop := ∀ (S : GT.Edges) (e : ℕ × ℕ) (h1 : FF.NonEmpty S), FF.NonEmpty (S.erase e)\ndef concept_nonempty_erase_negation : Prop := ¬ concept_nonempty_erase\nend FFCConj\n",
+   "source_sha256": "842d0f268c68365f87f47f1259d64d0375c9eb7b6a13db8ef1b4c0d79abb8af3",
+   "trusted": true
+  },
+  {
+   "name": "FFCP1",
+   "source": "import GTDefs\nimport HSDefs\nimport HSConj\nimport RCDefs\nimport RCConj\nimport RCP1\nimport RCP2\nimport RCP3\nimport RCP4\nimport RCP5\nimport RCP6\nimport RCP7\nimport G4Defs\nimport FFDefs\nimport FFCConj\nnamespace FFCP1\ntheorem proof : FFCConj.inst_concept_loopfree := by\n  unfold FFCConj.inst_concept_loopfree\n  unfold RC.C0\n  intro S T h1 h2\n  try unfold FF.LoopFree at *\n  try unfold FF.Matching at *\n  try unfold FF.NonEmpty at *\n  try unfold G4.C4Free at *\n  try unfold G4.adj at *\n  try unfold G4.verts at *\n  intros\n  apply h2 <;> solve_by_elim\nend FFCP1\n",
+   "source_sha256": "6bbd6e9842373b5442289d0d6a13f55fbff3579144917cbb643f18336c33a024",
+   "trusted": false
+  },
+  {
+   "name": "FFCP2",
+   "source": "import GTDefs\nimport HSDefs\nimport HSConj\nimport RCDefs\nimport RCConj\nimport RCP1\nimport RCP2\nimport RCP3\nimport RCP4\nimport RCP5\nimport RCP6\nimport RCP7\nimport G4Defs\nimport FFDefs\nimport FFCConj\nimport FFCP1\nnamespace FFCP2\ntheorem proof : FFCConj.inst_concept_matching := by\n  unfold FFCConj.inst_concept_matching\n  unfold RC.C0\n  intro S T h1 h2\n  try unfold FF.LoopFree at *\n  try unfold FF.Matching at *\n  try unfold FF.NonEmpty at *\n  try unfold G4.C4Free at *\n  try unfold G4.adj at *\n  try unfold G4.verts at *\n  intros\n  apply h2 <;> solve_by_elim\nend FFCP2\n",
+   "source_sha256": "862a94810e0a652d3a78487abd7f0fb920b5d829a6f8360a2c940070dccb39c3",
+   "trusted": false
+  },
+  {
+   "name": "FFCP3",
+   "source": "import GTDefs\nimport HSDefs\nimport HSConj\nimport RCDefs\nimport RCConj\nimport RCP1\nimport RCP2\nimport RCP3\nimport RCP4\nimport RCP5\nimport RCP6\nimport RCP7\nimport G4Defs\nimport FFDefs\nimport FFCConj\nimport FFCP1\nimport FFCP2\nnamespace FFCP3\ntheorem proof : FFCConj.inst_concept_nonempty_negation := by\n  unfold FFCConj.inst_concept_nonempty_negation FFCConj.inst_concept_nonempty\n  intro h\n  unfold RC.C0 at h\n  exact absurd (h ({(0, 0), (3, 2)} : GT.Edges) (∅ : GT.Edges) (by decide) (by decide)) (by decide)\nend FFCP3\n",
+   "source_sha256": "6c0e117ff5c960888f7d6c9efa69c99352c4e6adb7bac3326cef53ce827cc65f",
+   "trusted": false
+  },
+  {
+   "name": "FFCP4",
+   "source": "import GTDefs\nimport HSDefs\nimport HSConj\nimport RCDefs\nimport RCConj\nimport RCP1\nimport RCP2\nimport RCP3\nimport RCP4\nimport RCP5\nimport RCP6\nimport RCP7\nimport G4Defs\nimport FFDefs\nimport FFCConj\nimport FFCP1\nimport FFCP2\nimport FFCP3\nnamespace FFCP4\ntheorem proof : FFCConj.concept_loopfree_inter := by\n  unfold FFCConj.concept_loopfree_inter\n  intro S T h1\n  solve_by_elim [RCP4.proof, RCP5.proof, RCP6.proof, RCP7.proof, FFCP1.proof, FFCP2.proof]\nend FFCP4\n",
+   "source_sha256": "bdfc4b61bdc77df1625d22b02bd86eb0bb104cd8741db5e30852e2467a76bb1b",
+   "trusted": false
+  },
+  {
+   "name": "FFCP5",
+   "source": "import GTDefs\nimport HSDefs\nimport HSConj\nimport RCDefs\nimport RCConj\nimport RCP1\nimport RCP2\nimport RCP3\nimport RCP4\nimport RCP5\nimport RCP6\nimport RCP7\nimport G4Defs\nimport FFDefs\nimport FFCConj\nimport FFCP1\nimport FFCP2\nimport FFCP3\nimport FFCP4\nnamespace FFCP5\ntheorem proof : FFCConj.concept_loopfree_sdiff := by\n  unfold FFCConj.concept_loopfree_sdiff\n  intro S T h1\n  solve_by_elim [RCP4.proof, RCP5.proof, RCP6.proof, RCP7.proof, FFCP1.proof, FFCP2.proof, FFCP4.proof]\nend FFCP5\n",
+   "source_sha256": "7f21dfcc2927d12052fdf5d3ed807e8e2a2c2aa1d27be3d4fe8112a1cf01cf9d",
+   "trusted": false
+  },
+  {
+   "name": "FFCP6",
+   "source": "import GTDefs\nimport HSDefs\nimport HSConj\nimport RCDefs\nimport RCConj\nimport RCP1\nimport RCP2\nimport RCP3\nimport RCP4\nimport RCP5\nimport RCP6\nimport RCP7\nimport G4Defs\nimport FFDefs\nimport FFCConj\nimport FFCP1\nimport FFCP2\nimport FFCP3\nimport FFCP4\nimport FFCP5\nnamespace FFCP6\ntheorem proof : FFCConj.concept_loopfree_filter := by\n  unfold FFCConj.concept_loopfree_filter\n  intro S q h1\n  solve_by_elim [RCP4.proof, RCP5.proof, RCP6.proof, RCP7.proof, FFCP1.proof, FFCP2.proof, FFCP4.proof, FFCP5.proof]\nend FFCP6\n",
+   "source_sha256": "ed3476dbfa2a2041812da67ea59bfe7a749616e68aedc13a51a75caae62ef64c",
+   "trusted": false
+  },
+  {
+   "name": "FFCP7",
+   "source": "import GTDefs\nimport HSDefs\nimport HSConj\nimport RCDefs\nimport RCConj\nimport RCP1\nimport RCP2\nimport RCP3\nimport RCP4\nimport RCP5\nimport RCP6\nimport RCP7\nimport G4Defs\nimport FFDefs\nimport FFCConj\nimport FFCP1\nimport FFCP2\nimport FFCP3\nimport FFCP4\nimport FFCP5\nimport FFCP6\nnamespace FFCP7\ntheorem proof : FFCConj.concept_loopfree_erase := by\n  unfold FFCConj.concept_loopfree_erase\n  intro S e h1\n  solve_by_elim [RCP4.proof, RCP5.proof, RCP6.proof, RCP7.proof, FFCP1.proof, FFCP2.proof, FFCP4.proof, FFCP5.proof, FFCP6.proof]\nend FFCP7\n",
+   "source_sha256": "23f38a6d080bd0703cc40fff03697c14997785c6b3869c36625ce1696bb17ac5",
+   "trusted": false
+  },
+  {
+   "name": "FFCP8",
+   "source": "import GTDefs\nimport HSDefs\nimport HSConj\nimport RCDefs\nimport RCConj\nimport RCP1\nimport RCP2\nimport RCP3\nimport RCP4\nimport RCP5\nimport RCP6\nimport RCP7\nimport G4Defs\nimport FFDefs\nimport FFCConj\nimport FFCP1\nimport FFCP2\nimport FFCP3\nimport FFCP4\nimport FFCP5\nimport FFCP6\nimport FFCP7\nnamespace FFCP8\ntheorem proof : FFCConj.concept_matching_inter := by\n  unfold FFCConj.concept_matching_inter\n  intro S T h1\n  solve_by_elim [RCP4.proof, RCP5.proof, RCP6.proof, RCP7.proof, FFCP1.proof, FFCP2.proof, FFCP4.proof, FFCP5.proof, FFCP6.proof, FFCP7.proof]\nend FFCP8\n",
+   "source_sha256": "71fef0b0d6e13914b42b0d4bbe799ed2f1c6aac38b8157fca7721c8e086824be",
+   "trusted": false
+  },
+  {
+   "name": "FFCP9",
+   "source": "import GTDefs\nimport HSDefs\nimport HSConj\nimport RCDefs\nimport RCConj\nimport RCP1\nimport RCP2\nimport RCP3\nimport RCP4\nimport RCP5\nimport RCP6\nimport RCP7\nimport G4Defs\nimport FFDefs\nimport FFCConj\nimport FFCP1\nimport FFCP2\nimport FFCP3\nimport FFCP4\nimport FFCP5\nimport FFCP6\nimport FFCP7\nimport FFCP8\nnamespace FFCP9\ntheorem proof : FFCConj.concept_matching_sdiff := by\n  unfold FFCConj.concept_matching_sdiff\n  intro S T h1\n  solve_by_elim [RCP4.proof, RCP5.proof, RCP6.proof, RCP7.proof, FFCP1.proof, FFCP2.proof, FFCP4.proof, FFCP5.proof, FFCP6.proof, FFCP7.proof, FFCP8.proof]\nend FFCP9\n",
+   "source_sha256": "016687baeaa725b5374cec32444ace75edc982e8846e26f930da555d0af773e3",
+   "trusted": false
+  },
+  {
+   "name": "FFCP10",
+   "source": "import GTDefs\nimport HSDefs\nimport HSConj\nimport RCDefs\nimport RCConj\nimport RCP1\nimport RCP2\nimport RCP3\nimport RCP4\nimport RCP5\nimport RCP6\nimport RCP7\nimport G4Defs\nimport FFDefs\nimport FFCConj\nimport FFCP1\nimport FFCP2\nimport FFCP3\nimport FFCP4\nimport FFCP5\nimport FFCP6\nimport FFCP7\nimport FFCP8\nimport FFCP9\nnamespace FFCP10\ntheorem proof : FFCConj.concept_matching_filter := by\n  unfold FFCConj.concept_matching_filter\n  intro S q h1\n  solve_by_elim [RCP4.proof, RCP5.proof, RCP6.proof, RCP7.proof, FFCP1.proof, FFCP2.proof, FFCP4.proof, FFCP5.proof, FFCP6.proof, FFCP7.proof, FFCP8.proof, FFCP9.proof]\nend FFCP10\n",
+   "source_sha256": "d7e9ca53bd7eb301ab99e2bc3cddfb98ada85985fe48f1d99d906303f2031247",
+   "trusted": false
+  },
+  {
+   "name": "FFCP11",
+   "source": "import GTDefs\nimport HSDefs\nimport HSConj\nimport RCDefs\nimport RCConj\nimport RCP1\nimport RCP2\nimport RCP3\nimport RCP4\nimport RCP5\nimport RCP6\nimport RCP7\nimport G4Defs\nimport FFDefs\nimport FFCConj\nimport FFCP1\nimport FFCP2\nimport FFCP3\nimport FFCP4\nimport FFCP5\nimport FFCP6\nimport FFCP7\nimport FFCP8\nimport FFCP9\nimport FFCP10\nnamespace FFCP11\ntheorem proof : FFCConj.concept_matching_erase := by\n  unfold FFCConj.concept_matching_erase\n  intro S e h1\n  solve_by_elim [RCP4.proof, RCP5.proof, RCP6.proof, RCP7.proof, FFCP1.proof, FFCP2.proof, FFCP4.proof, FFCP5.proof, FFCP6.proof, FFCP7.proof, FFCP8.proof, FFCP9.proof, FFCP10.proof]\nend FFCP11\n",
+   "source_sha256": "94c1abf0201a5ff18723af1d5bdcaabbf44f255e7eb529d2fe1203971d026782",
+   "trusted": false
+  },
+  {
+   "name": "FFCP12",
+   "source": "import GTDefs\nimport HSDefs\nimport HSConj\nimport RCDefs\nimport RCConj\nimport RCP1\nimport RCP2\nimport RCP3\nimport RCP4\nimport RCP5\nimport RCP6\nimport RCP7\nimport G4Defs\nimport FFDefs\nimport FFCConj\nimport FFCP1\nimport FFCP2\nimport FFCP3\nimport FFCP4\nimport FFCP5\nimport FFCP6\nimport FFCP7\nimport FFCP8\nimport FFCP9\nimport FFCP10\nimport FFCP11\nnamespace FFCP12\ntheorem proof : FFCConj.concept_nonempty_inter_negation := by\n  unfold FFCConj.concept_nonempty_inter_negation FFCConj.concept_nonempty_inter\n  intro h\n  exact absurd (h (({(0, 2), (1, 3)} : GT.Edges)) ((∅ : GT.Edges)) (by first | decide +kernel | (intro v; omega) | omega | (intros; omega))) (by decide +kernel)\nend FFCP12\n",
+   "source_sha256": "f88e605fe4ec408e20f5f59c495d11a95f36b8b2bfd87e4a69f11c5bd10765b5",
+   "trusted": false
+  },
+  {
+   "name": "FFCP13",
+   "source": "import GTDefs\nimport HSDefs\nimport HSConj\nimport RCDefs\nimport RCConj\nimport RCP1\nimport RCP2\nimport RCP3\nimport RCP4\nimport RCP5\nimport RCP6\nimport RCP7\nimport G4Defs\nimport FFDefs\nimport FFCConj\nimport FFCP1\nimport FFCP2\nimport FFCP3\nimport FFCP4\nimport FFCP5\nimport FFCP6\nimport FFCP7\nimport FFCP8\nimport FFCP9\nimport FFCP10\nimport FFCP11\nimport FFCP12\nnamespace FFCP13\ntheorem proof : FFCConj.concept_nonempty_sdiff_negation := by\n  unfold FFCConj.concept_nonempty_sdiff_negation FFCConj.concept_nonempty_sdiff\n  intro h\n  exact absurd (h (({(3, 1)} : GT.Edges)) (({(1, 0), (3, 1)} : GT.Edges)) (by first | decide +kernel | (intro v; omega) | omega | (intros; omega))) (by decide +kernel)\nend FFCP13\n",
+   "source_sha256": "1d6e94644e6ce676d95a39462dd11f6b56c60c44d33d93b45fe8126088e60942",
+   "trusted": false
+  },
+  {
+   "name": "FFCP14",
+   "source": "import GTDefs\nimport HSDefs\nimport HSConj\nimport RCDefs\nimport RCConj\nimport RCP1\nimport RCP2\nimport RCP3\nimport RCP4\nimport RCP5\nimport RCP6\nimport RCP7\nimport G4Defs\nimport FFDefs\nimport FFCConj\nimport FFCP1\nimport FFCP2\nimport FFCP3\nimport FFCP4\nimport FFCP5\nimport FFCP6\nimport FFCP7\nimport FFCP8\nimport FFCP9\nimport FFCP10\nimport FFCP11\nimport FFCP12\nimport FFCP13\nnamespace FFCP14\ntheorem proof : FFCConj.concept_nonempty_filter_negation := by\n  unfold FFCConj.concept_nonempty_filter_negation FFCConj.concept_nonempty_filter\n  intro h\n  exact absurd (h (({(2, 3)} : GT.Edges)) ((fun e => decide (e ∈ ({(0, 2)} : GT.Edges)))) (by first | decide +kernel | (intro v; omega) | omega | (intros; omega))) (by decide +kernel)\nend FFCP14\n",
+   "source_sha256": "6b1007dc7138cf80a7735f54b87f491828ff9203883ef32fe2bcf7ab73b42ac4",
+   "trusted": false
+  },
+  {
+   "name": "FFCP15",
+   "source": "import GTDefs\nimport HSDefs\nimport HSConj\nimport RCDefs\nimport RCConj\nimport RCP1\nimport RCP2\nimport RCP3\nimport RCP4\nimport RCP5\nimport RCP6\nimport RCP7\nimport G4Defs\nimport FFDefs\nimport FFCConj\nimport FFCP1\nimport FFCP2\nimport FFCP3\nimport FFCP4\nimport FFCP5\nimport FFCP6\nimport FFCP7\nimport FFCP8\nimport FFCP9\nimport FFCP10\nimport FFCP11\nimport FFCP12\nimport FFCP13\nimport FFCP14\nnamespace FFCP15\ntheorem proof : FFCConj.concept_nonempty_erase_negation := by\n  unfold FFCConj.concept_nonempty_erase_negation FFCConj.concept_nonempty_erase\n  intro h\n  exact absurd (h (({(0, 1)} : GT.Edges)) (((0, 1) : ℕ × ℕ)) (by first | decide +kernel | (intro v; omega) | omega | (intros; omega))) (by decide +kernel)\nend FFCP15\n",
+   "source_sha256": "edc5bb8459ca6741c4c8e94da830e1075bb4cd835701e88b0157ff049e870f53",
+   "trusted": false
+  }
+ ],
+ "name": "fresh families, arm concept",
+ "package_sha256": "31c11992712bd599e95b186e29e7c02f4d8681051562fafa2b3692b335adc6dd",
+ "proofs": [
+  {
+   "module": "FFCP1",
+   "recipe": "down-closure-unfold",
+   "statement": "inst_concept_loopfree"
+  },
+  {
+   "module": "FFCP2",
+   "recipe": "down-closure-unfold",
+   "statement": "inst_concept_matching"
+  },
+  {
+   "module": "FFCP3",
+   "recipe": "counterexample-evaluation",
+   "statement": "inst_concept_nonempty"
+  },
+  {
+   "module": "FFCP4",
+   "recipe": "elim-with-library",
+   "statement": "concept_loopfree_inter"
+  },
+  {
+   "module": "FFCP5",
+   "recipe": "elim-with-library",
+   "statement": "concept_loopfree_sdiff"
+  },
+  {
+   "module": "FFCP6",
+   "recipe": "elim-with-library",
+   "statement": "concept_loopfree_filter"
+  },
+  {
+   "module": "FFCP7",
+   "recipe": "elim-with-library",
+   "statement": "concept_loopfree_erase"
+  },
+  {
+   "module": "FFCP8",
+   "recipe": "elim-with-library",
+   "statement": "concept_matching_inter"
+  },
+  {
+   "module": "FFCP9",
+   "recipe": "elim-with-library",
+   "statement": "concept_matching_sdiff"
+  },
+  {
+   "module": "FFCP10",
+   "recipe": "elim-with-library",
+   "statement": "concept_matching_filter"
+  },
+  {
+   "module": "FFCP11",
+   "recipe": "elim-with-library",
+   "statement": "concept_matching_erase"
+  },
+  {
+   "module": "FFCP12",
+   "recipe": "counterexample-evaluation",
+   "statement": "concept_nonempty_inter"
+  },
+  {
+   "module": "FFCP13",
+   "recipe": "counterexample-evaluation",
+   "statement": "concept_nonempty_sdiff"
+  },
+  {
+   "module": "FFCP14",
+   "recipe": "counterexample-evaluation",
+   "statement": "concept_nonempty_filter"
+  },
+  {
+   "module": "FFCP15",
+   "recipe": "counterexample-evaluation",
+   "statement": "concept_nonempty_erase"
+  }
+ ],
+ "provenance": {
+  "acceptance": "genesis.formal_research.checker.accept",
+  "created_at": "2026-10-11T12:41:37.564272+00:00",
+  "loop": "genesis.formal_research.loop",
+  "search": "genesis.formal_research.search (builder-written recipes, named per proof)"
+ },
+ "schema": "genesis-theory-package-v1",
+ "scope": "Fresh-family closure statements after the cutoff.",
+ "statements": [
+  {
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "counterexample": null,
+   "id": "inst_concept_loopfree",
+   "lean": "RC.C0 FF.LoopFree",
+   "origin": "generated:concept-instance",
+   "proof_const": "FFCP1.proof",
+   "proof_module": "FFCP1",
+   "recipe": "down-closure-unfold",
+   "role": "instance",
+   "screened_instances": 0,
+   "spec_const": "FFCConj.inst_concept_loopfree",
+   "status": "CHECKED",
+   "subject": "FF.LoopFree"
+  },
+  {
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "counterexample": null,
+   "id": "inst_concept_matching",
+   "lean": "RC.C0 FF.Matching",
+   "origin": "generated:concept-instance",
+   "proof_const": "FFCP2.proof",
+   "proof_module": "FFCP2",
+   "recipe": "down-closure-unfold",
+   "role": "instance",
+   "screened_instances": 0,
+   "spec_const": "FFCConj.inst_concept_matching",
+   "status": "CHECKED",
+   "subject": "FF.Matching"
+  },
+  {
+   "counterexample": null,
+   "id": "inst_concept_c4free",
+   "lean": "RC.C0 G4.C4Free",
+   "origin": "generated:concept-instance",
+   "reason": "no recipe compiled",
+   "role": "instance",
+   "screened_instances": 0,
+   "spec_const": "FFCConj.inst_concept_c4free",
+   "status": "UNRESOLVED",
+   "subject": "G4.C4Free"
+  },
+  {
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "counterexample": {
+    "values": {
+     "S": "({(0, 0), (3, 2)} : GT.Edges)",
+     "T": "(∅ : GT.Edges)"
+    }
+   },
+   "id": "inst_concept_nonempty",
+   "lean": "RC.C0 FF.NonEmpty",
+   "origin": "generated:concept-instance",
+   "proof_const": "FFCP3.proof",
+   "proof_module": "FFCP3",
+   "recipe": "counterexample-evaluation",
+   "role": "instance",
+   "screened_instances": null,
+   "spec_const": "FFCConj.inst_concept_nonempty",
+   "status": "DISPROVED",
+   "subject": "FF.NonEmpty"
+  },
+  {
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "counterexample": null,
+   "id": "concept_loopfree_inter",
+   "lean": "∀ (S : GT.Edges) (T : GT.Edges) (h1 : FF.LoopFree S), FF.LoopFree (S ∩ T)",
+   "origin": "fresh-family",
+   "proof_const": "FFCP4.proof",
+   "proof_module": "FFCP4",
+   "recipe": "elim-with-library",
+   "role": "fresh",
+   "screened_instances": 682,
+   "spec_const": "FFCConj.concept_loopfree_inter",
+   "status": "CHECKED",
+   "subject": "FF.LoopFree:inter"
+  },
+  {
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "counterexample": null,
+   "id": "concept_loopfree_sdiff",
+   "lean": "∀ (S : GT.Edges) (T : GT.Edges) (h1 : FF.LoopFree S), FF.LoopFree (S \\ T)",
+   "origin": "fresh-family",
+   "proof_const": "FFCP5.proof",
+   "proof_module": "FFCP5",
+   "recipe": "elim-with-library",
+   "role": "fresh",
+   "screened_instances": 712,
+   "spec_const": "FFCConj.concept_loopfree_sdiff",
+   "status": "CHECKED",
+   "subject": "FF.LoopFree:sdiff"
+  },
+  {
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "counterexample": null,
+   "id": "concept_loopfree_filter",
+   "lean": "∀ (S : GT.Edges) (q : ℕ × ℕ → Bool) (h1 : FF.LoopFree S), FF.LoopFree (S.filter fun e => q e)",
+   "origin": "fresh-family",
+   "proof_const": "FFCP6.proof",
+   "proof_module": "FFCP6",
+   "recipe": "elim-with-library",
+   "role": "fresh",
+   "screened_instances": 742,
+   "spec_const": "FFCConj.concept_loopfree_filter",
+   "status": "CHECKED",
+   "subject": "FF.LoopFree:filter"
+  },
+  {
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "counterexample": null,
+   "id": "concept_loopfree_erase",
+   "lean": "∀ (S : GT.Edges) (e : ℕ × ℕ) (h1 : FF.LoopFree S), FF.LoopFree (S.erase e)",
+   "origin": "fresh-family",
+   "proof_const": "FFCP7.proof",
+   "proof_module": "FFCP7",
+   "recipe": "elim-with-library",
+   "role": "fresh",
+   "screened_instances": 668,
+   "spec_const": "FFCConj.concept_loopfree_erase",
+   "status": "CHECKED",
+   "subject": "FF.LoopFree:erase"
+  },
+  {
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "counterexample": null,
+   "id": "concept_matching_inter",
+   "lean": "∀ (S : GT.Edges) (T : GT.Edges) (h1 : FF.Matching S), FF.Matching (S ∩ T)",
+   "origin": "fresh-family",
+   "proof_const": "FFCP8.proof",
+   "proof_module": "FFCP8",
+   "recipe": "elim-with-library",
+   "role": "fresh",
+   "screened_instances": 152,
+   "spec_const": "FFCConj.concept_matching_inter",
+   "status": "CHECKED",
+   "subject": "FF.Matching:inter"
+  },
+  {
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "counterexample": null,
+   "id": "concept_matching_sdiff",
+   "lean": "∀ (S : GT.Edges) (T : GT.Edges) (h1 : FF.Matching S), FF.Matching (S \\ T)",
+   "origin": "fresh-family",
+   "proof_const": "FFCP9.proof",
+   "proof_module": "FFCP9",
+   "recipe": "elim-with-library",
+   "role": "fresh",
+   "screened_instances": 161,
+   "spec_const": "FFCConj.concept_matching_sdiff",
+   "status": "CHECKED",
+   "subject": "FF.Matching:sdiff"
+  },
+  {
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "counterexample": null,
+   "id": "concept_matching_filter",
+   "lean": "∀ (S : GT.Edges) (q : ℕ × ℕ → Bool) (h1 : FF.Matching S), FF.Matching (S.filter fun e => q e)",
+   "origin": "fresh-family",
+   "proof_const": "FFCP10.proof",
+   "proof_module": "FFCP10",
+   "recipe": "elim-with-library",
+   "role": "fresh",
+   "screened_instances": 154,
+   "spec_const": "FFCConj.concept_matching_filter",
+   "status": "CHECKED",
+   "subject": "FF.Matching:filter"
+  },
+  {
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "counterexample": null,
+   "id": "concept_matching_erase",
+   "lean": "∀ (S : GT.Edges) (e : ℕ × ℕ) (h1 : FF.Matching S), FF.Matching (S.erase e)",
+   "origin": "fresh-family",
+   "proof_const": "FFCP11.proof",
+   "proof_module": "FFCP11",
+   "recipe": "elim-with-library",
+   "role": "fresh",
+   "screened_instances": 163,
+   "spec_const": "FFCConj.concept_matching_erase",
+   "status": "CHECKED",
+   "subject": "FF.Matching:erase"
+  },
+  {
+   "counterexample": null,
+   "id": "concept_c4free_inter",
+   "lean": "∀ (S : GT.Edges) (T : GT.Edges) (h1 : G4.C4Free S), G4.C4Free (S ∩ T)",
+   "origin": "fresh-family",
+   "reason": "no recipe compiled",
+   "role": "fresh",
+   "screened_instances": 1701,
+   "spec_const": "FFCConj.concept_c4free_inter",
+   "status": "UNRESOLVED",
+   "subject": "G4.C4Free:inter"
+  },
+  {
+   "counterexample": null,
+   "id": "concept_c4free_sdiff",
+   "lean": "∀ (S : GT.Edges) (T : GT.Edges) (h1 : G4.C4Free S), G4.C4Free (S \\ T)",
+   "origin": "fresh-family",
+   "reason": "no recipe compiled",
+   "role": "fresh",
+   "screened_instances": 1716,
+   "spec_const": "FFCConj.concept_c4free_sdiff",
+   "status": "UNRESOLVED",
+   "subject": "G4.C4Free:sdiff"
+  },
+  {
+   "counterexample": null,
+   "id": "concept_c4free_filter",
+   "lean": "∀ (S : GT.Edges) (q : ℕ × ℕ → Bool) (h1 : G4.C4Free S), G4.C4Free (S.filter fun e => q e)",
+   "origin": "fresh-family",
+   "reason": "no recipe compiled",
+   "role": "fresh",
+   "screened_instances": 1718,
+   "spec_const": "FFCConj.concept_c4free_filter",
+   "status": "UNRESOLVED",
+   "subject": "G4.C4Free:filter"
+  },
+  {
+   "counterexample": null,
+   "id": "concept_c4free_erase",
+   "lean": "∀ (S : GT.Edges) (e : ℕ × ℕ) (h1 : G4.C4Free S), G4.C4Free (S.erase e)",
+   "origin": "fresh-family",
+   "reason": "no recipe compiled",
+   "role": "fresh",
+   "screened_instances": 1734,
+   "spec_const": "FFCConj.concept_c4free_erase",
+   "status": "UNRESOLVED",
+   "subject": "G4.C4Free:erase"
+  },
+  {
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "counterexample": {
+    "values": {
+     "S": "({(0, 2), (1, 3)} : GT.Edges)",
+     "T": "(∅ : GT.Edges)"
+    }
+   },
+   "id": "concept_nonempty_inter",
+   "lean": "∀ (S : GT.Edges) (T : GT.Edges) (h1 : FF.NonEmpty S), FF.NonEmpty (S ∩ T)",
+   "origin": "fresh-family",
+   "proof_const": "FFCP12.proof",
+   "proof_module": "FFCP12",
+   "recipe": "counterexample-evaluation",
+   "role": "fresh",
+   "screened_instances": 2991,
+   "spec_const": "FFCConj.concept_nonempty_inter",
+   "status": "DISPROVED",
+   "subject": "FF.NonEmpty:inter"
+  },
+  {
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "counterexample": {
+    "values": {
+     "S": "({(3, 1)} : GT.Edges)",
+     "T": "({(1, 0), (3, 1)} : GT.Edges)"
+    }
+   },
+   "id": "concept_nonempty_sdiff",
+   "lean": "∀ (S : GT.Edges) (T : GT.Edges) (h1 : FF.NonEmpty S), FF.NonEmpty (S \\ T)",
+   "origin": "fresh-family",
+   "proof_const": "FFCP13.proof",
+   "proof_module": "FFCP13",
+   "recipe": "counterexample-evaluation",
+   "role": "fresh",
+   "screened_instances": 2988,
+   "spec_const": "FFCConj.concept_nonempty_sdiff",
+   "status": "DISPROVED",
+   "subject": "FF.NonEmpty:sdiff"
+  },
+  {
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "counterexample": {
+    "values": {
+     "S": "({(2, 3)} : GT.Edges)",
+     "q": "(fun e => decide (e ∈ ({(0, 2)} : GT.Edges)))"
+    }
+   },
+   "id": "concept_nonempty_filter",
+   "lean": "∀ (S : GT.Edges) (q : ℕ × ℕ → Bool) (h1 : FF.NonEmpty S), FF.NonEmpty (S.filter fun e => q e)",
+   "origin": "fresh-family",
+   "proof_const": "FFCP14.proof",
+   "proof_module": "FFCP14",
+   "recipe": "counterexample-evaluation",
+   "role": "fresh",
+   "screened_instances": 2985,
+   "spec_const": "FFCConj.concept_nonempty_filter",
+   "status": "DISPROVED",
+   "subject": "FF.NonEmpty:filter"
+  },
+  {
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "counterexample": {
+    "values": {
+     "S": "({(0, 1)} : GT.Edges)",
+     "e": "((0, 1) : ℕ × ℕ)"
+    }
+   },
+   "id": "concept_nonempty_erase",
+   "lean": "∀ (S : GT.Edges) (e : ℕ × ℕ) (h1 : FF.NonEmpty S), FF.NonEmpty (S.erase e)",
+   "origin": "fresh-family",
+   "proof_const": "FFCP15.proof",
+   "proof_module": "FFCP15",
+   "recipe": "counterexample-evaluation",
+   "role": "fresh",
+   "screened_instances": 2990,
+   "spec_const": "FFCConj.concept_nonempty_erase",
+   "status": "DISPROVED",
+   "subject": "FF.NonEmpty:erase"
+  }
+ ]
+}

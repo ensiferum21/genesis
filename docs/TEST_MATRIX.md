@@ -20,6 +20,7 @@
 | Toolchain behaviour (B15) | 10 known-answer cases on the installed pinned tools (`tests_certificates/test_known_answers.py`) | nightly | failure blocks release |
 | Evaluator readiness (B16) | domain adapter conformance (`test_domain_adapters.py`), DEV calibration (`test_calibration.py`), analysis plan v2 and power (`test_analysis_v2.py`), custody flow with v3 receipts, judge, registration log and preflight (`test_evaluator_readiness.py`), resource accounting and arm fairness (`test_resources.py`), red team (`test_redteam_b16.py`) | commit | failure blocks sealed use |
 | Formal research (B17) | workspace pins and artifact audit, adversarial proof modules (sorryAx, weakened statement, shadowed names, axioms, `Lean` imports, options), search never accepting, Lean statement adapter, committed package contract, tamper detection and replay from sources (`tests_formal/test_formal_research.py`) | nightly / release | failure **or skip** blocks release |
+| Concept invention (B18) | representation grammar typing and screening, loss witnesses, method validity, world judgement rules, typed anti-unification and leakage check, fresh-family screening, evidence contract and a replay (`tests_formal/test_invention.py`) | nightly / release | failure **or skip** blocks release |
 | Requirements ledger | every spec section, roadmap item and catalogue entry has a disposition with resolvable tests (`test_ledger.py`) | commit | must pass |
 
 Run: `python3 scripts/run_test_matrix.py --profile commit|nightly|release --report out.json`.

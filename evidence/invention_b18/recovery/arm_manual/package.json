@@ -1,0 +1,4744 @@
+{
+ "acceptance": {
+  "check_stage": {
+   "check_sha256": "bf91938fda1d4dc2c097ca8bc6e785ee136faaac04cf3b34ad466fb221370029",
+   "cpu_ns": 21403757437,
+   "exit_code": 0,
+   "exits": {
+    "FFMP1": "0",
+    "FFMP10": "0",
+    "FFMP11": "0",
+    "FFMP12": "0",
+    "FFMP13": "0",
+    "FFMP14": "0",
+    "FFMP15": "0",
+    "FFMP16": "0",
+    "FFMP17": "0",
+    "FFMP18": "0",
+    "FFMP19": "0",
+    "FFMP2": "0",
+    "FFMP3": "0",
+    "FFMP4": "0",
+    "FFMP5": "0",
+    "FFMP6": "0",
+    "FFMP7": "0",
+    "FFMP8": "0",
+    "FFMP9": "0",
+    "check": "0"
+   },
+   "log": "",
+   "peak_memory_bytes": 228655104,
+   "status": "SUCCESS",
+   "wall_ns": 21952392684
+  },
+  "leanchecker": {
+   "FFMP1": true,
+   "FFMP10": true,
+   "FFMP11": true,
+   "FFMP12": true,
+   "FFMP13": true,
+   "FFMP14": true,
+   "FFMP15": true,
+   "FFMP16": true,
+   "FFMP17": true,
+   "FFMP18": true,
+   "FFMP19": true,
+   "FFMP2": true,
+   "FFMP3": true,
+   "FFMP4": true,
+   "FFMP5": true,
+   "FFMP6": true,
+   "FFMP7": true,
+   "FFMP8": true,
+   "FFMP9": true
+  },
+  "receipt_sha256": "118a311abad888ab0b581e04726dfe589c616a08e36849368140393f20a8272a",
+  "status": "CHECKED"
+ },
+ "assumptions": {
+  "allowed_axioms": [
+   "Classical.choice",
+   "Quot.sound",
+   "propext"
+  ],
+  "axioms_used": [
+   "Classical.choice",
+   "Quot.sound",
+   "propext"
+  ],
+  "conventions": [],
+  "lean": "lean@e8baaa71855a616d",
+  "workspace": {
+   "artifact_identity": "95a6ec9f1aadc0d8d1936c34bd0ce4e144b0e35c85df12543cdcafe9ebf36b41",
+   "import_roots": [
+    "Mathlib.Data.Finset.Powerset"
+   ],
+   "mathlib_rev": "d13f23b723b8a846827a245b89c10fc7d3f11612",
+   "source_identity": "a3a7569b6d7636a844c87c2b72ef2170eda0f712ff8d9a1b0f15b069e301c7ef"
+  }
+ },
+ "bindings": [
+  {
+   "proof": "FFMP1.proof",
+   "spec": "FFMConj.gen_antitone_inter"
+  },
+  {
+   "proof": "FFMP2.proof",
+   "spec": "FFMConj.gen_antitone_sdiff"
+  },
+  {
+   "proof": "FFMP3.proof",
+   "spec": "FFMConj.gen_antitone_filter"
+  },
+  {
+   "proof": "FFMP4.proof",
+   "spec": "FFMConj.gen_antitone_erase"
+  },
+  {
+   "proof": "FFMP5.proof",
+   "spec": "FFMConj.inst_antitone_loopfree"
+  },
+  {
+   "proof": "FFMP6.proof",
+   "spec": "FFMConj.inst_antitone_matching"
+  },
+  {
+   "proof": "FFMP7.proof",
+   "spec": "FFMConj.inst_antitone_nonempty_negation"
+  },
+  {
+   "proof": "FFMP8.proof",
+   "spec": "FFMConj.manual_loopfree_inter"
+  },
+  {
+   "proof": "FFMP9.proof",
+   "spec": "FFMConj.manual_loopfree_sdiff"
+  },
+  {
+   "proof": "FFMP10.proof",
+   "spec": "FFMConj.manual_loopfree_filter"
+  },
+  {
+   "proof": "FFMP11.proof",
+   "spec": "FFMConj.manual_loopfree_erase"
+  },
+  {
+   "proof": "FFMP12.proof",
+   "spec": "FFMConj.manual_matching_inter"
+  },
+  {
+   "proof": "FFMP13.proof",
+   "spec": "FFMConj.manual_matching_sdiff"
+  },
+  {
+   "proof": "FFMP14.proof",
+   "spec": "FFMConj.manual_matching_filter"
+  },
+  {
+   "proof": "FFMP15.proof",
+   "spec": "FFMConj.manual_matching_erase"
+  },
+  {
+   "proof": "FFMP16.proof",
+   "spec": "FFMConj.manual_nonempty_inter_negation"
+  },
+  {
+   "proof": "FFMP17.proof",
+   "spec": "FFMConj.manual_nonempty_sdiff_negation"
+  },
+  {
+   "proof": "FFMP18.proof",
+   "spec": "FFMConj.manual_nonempty_filter_negation"
+  },
+  {
+   "proof": "FFMP19.proof",
+   "spec": "FFMConj.manual_nonempty_erase_negation"
+  }
+ ],
+ "costs": {
+  "acceptance_check_cpu_ns": 235906964227,
+  "acceptance_runs": 20,
+  "acceptances": [
+   {
+    "receipt_sha256": "128e78fe3f32ac60a60ea728cdf4bb183c0ca635356af14c9427d7f5eb68387a",
+    "statement": "gen_antitone_inter",
+    "stats": {
+     "check_sha256": "b4cc66c569bd00ed20497671601e1fea77e8651374b07bd4aeb679c71d3b668a",
+     "cpu_ns": 3164795551,
+     "exit_code": 0,
+     "exits": {
+      "FFMP1": "0",
+      "check": "0"
+     },
+     "log": "",
+     "peak_memory_bytes": 224481280,
+     "status": "SUCCESS",
+     "wall_ns": 3240640796
+    },
+    "status": "CHECKED"
+   },
+   {
+    "receipt_sha256": "f2b242b16e09590f07a3fd29f603e2a0d515ead8fc30ae7a9d1a00d82a02fcac",
+    "statement": "gen_antitone_sdiff",
+    "stats": {
+     "check_sha256": "3944edb4995dd762a817048aa664ae8aca9e85a1e76af6d0927e4898496cbfea",
+     "cpu_ns": 3958337654,
+     "exit_code": 0,
+     "exits": {
+      "FFMP1": "0",
+      "FFMP2": "0",
+      "check": "0"
+     },
+     "log": "",
+     "peak_memory_bytes": 221859840,
+     "status": "SUCCESS",
+     "wall_ns": 4053473353
+    },
+    "status": "CHECKED"
+   },
+   {
+    "receipt_sha256": "0fb4dad25af74d45cbb98733ff58ef33f0ad83adc551ed5376d03d3124d414ad",
+    "statement": "gen_antitone_filter",
+    "stats": {
+     "check_sha256": "b6b5824da27e6b8055b01a1d745a5892b5d4dfd7b23c707a323b2a5b4c251a16",
+     "cpu_ns": 5531669126,
+     "exit_code": 0,
+     "exits": {
+      "FFMP1": "0",
+      "FFMP2": "0",
+      "FFMP3": "0",
+      "check": "0"
+     },
+     "log": "",
+     "peak_memory_bytes": 224038912,
+     "status": "SUCCESS",
+     "wall_ns": 5669737415
+    },
+    "status": "CHECKED"
+   },
+   {
+    "receipt_sha256": "c1336dbfbe3d8a5928efcd44f14f0d0db1091534797bf2bfea70bd9d507dc428",
+    "statement": "gen_antitone_erase",
+    "stats": {
+     "check_sha256": "18cd955d23e811a9e5a1281dff2975d8734d793c16d278496938c4e99eaa611b",
+     "cpu_ns": 5930747076,
+     "exit_code": 0,
+     "exits": {
+      "FFMP1": "0",
+      "FFMP2": "0",
+      "FFMP3": "0",
+      "FFMP4": "0",
+      "check": "0"
+     },
+     "log": "",
+     "peak_memory_bytes": 221937664,
+     "status": "SUCCESS",
+     "wall_ns": 6051181389
+    },
+    "status": "CHECKED"
+   },
+   {
+    "receipt_sha256": "c3f4d85c2e66b8c977278055a13716afa4d502c7b36f2025850a6b5a8dec576f",
+    "statement": "inst_antitone_loopfree",
+    "stats": {
+     "check_sha256": "78e234436c30d401ee1d947676e92900b7f385be9a62cb3f9a2a52f844e48c79",
+     "cpu_ns": 7514892005,
+     "exit_code": 0,
+     "exits": {
+      "FFMP1": "0",
+      "FFMP2": "0",
+      "FFMP3": "0",
+      "FFMP4": "0",
+      "FFMP5": "0",
+      "check": "0"
+     },
+     "log": "",
+     "peak_memory_bytes": 222380032,
+     "status": "SUCCESS",
+     "wall_ns": 7723223798
+    },
+    "status": "CHECKED"
+   },
+   {
+    "receipt_sha256": "b1e03fa083853b5ddf8f3a5f5f3cd075c9fefb58d11ca7c81a3be4e01def4fcc",
+    "statement": "inst_antitone_matching",
+    "stats": {
+     "check_sha256": "9828bc7432d662e4d871292f524f648f36ee026292de991bed2272988885ede3",
+     "cpu_ns": 8646864387,
+     "exit_code": 0,
+     "exits": {
+      "FFMP1": "0",
+      "FFMP2": "0",
+      "FFMP3": "0",
+      "FFMP4": "0",
+      "FFMP5": "0",
+      "FFMP6": "0",
+      "check": "0"
+     },
+     "log": "",
+     "peak_memory_bytes": 219770880,
+     "status": "SUCCESS",
+     "wall_ns": 8830531800
+    },
+    "status": "CHECKED"
+   },
+   {
+    "receipt_sha256": "ba4291a7e8a5d971f77287f11e75bbf19b1a1a5fc625a84f64d4e2bbd431c345",
+    "statement": "inst_antitone_nonempty",
+    "stats": {
+     "check_sha256": "4eef811d032987c39b9c735291387dbd3fa5b1e80c87b3b93007d16b0f1d2456",
+     "cpu_ns": 9748671125,
+     "exit_code": 0,
+     "exits": {
+      "FFMP1": "0",
+      "FFMP2": "0",
+      "FFMP3": "0",
+      "FFMP4": "0",
+      "FFMP5": "0",
+      "FFMP6": "0",
+      "FFMP7": "0",
+      "check": "0"
+     },
+     "log": "",
+     "peak_memory_bytes": 219987968,
+     "status": "SUCCESS",
+     "wall_ns": 10055368730
+    },
+    "status": "CHECKED"
+   },
+   {
+    "receipt_sha256": "faff05763237bf050ef7c0c90f5fdfec6cd0642d7511a004cfa8cd4849e5db9c",
+    "statement": "manual_loopfree_inter",
+    "stats": {
+     "check_sha256": "dac264a0253bcd0860ee3eb3e0efee924c04dd0ba477169d3508fdbb49d465fd",
+     "cpu_ns": 10681393912,
+     "exit_code": 0,
+     "exits": {
+      "FFMP1": "0",
+      "FFMP2": "0",
+      "FFMP3": "0",
+      "FFMP4": "0",
+      "FFMP5": "0",
+      "FFMP6": "0",
+      "FFMP7": "0",
+      "FFMP8": "0",
+      "check": "0"
+     },
+     "log": "",
+     "peak_memory_bytes": 224022528,
+     "status": "SUCCESS",
+     "wall_ns": 10905356649
+    },
+    "status": "CHECKED"
+   },
+   {
+    "receipt_sha256": "4521af8e6fd8d5c9bacbc3770ff8ff1a594039cb18675ed3a00d1e800d774b81",
+    "statement": "manual_loopfree_sdiff",
+    "stats": {
+     "check_sha256": "4aa9d4b6b30f937ccc5d286ef82dae7cd7b1c978188ca293e94515f1e6af08dc",
+     "cpu_ns": 11264989047,
+     "exit_code": 0,
+     "exits": {
+      "FFMP1": "0",
+      "FFMP2": "0",
+      "FFMP3": "0",
+      "FFMP4": "0",
+      "FFMP5": "0",
+      "FFMP6": "0",
+      "FFMP7": "0",
+      "FFMP8": "0",
+      "FFMP9": "0",
+      "check": "0"
+     },
+     "log": "",
+     "peak_memory_bytes": 226312192,
+     "status": "SUCCESS",
+     "wall_ns": 11514982118
+    },
+    "status": "CHECKED"
+   },
+   {
+    "receipt_sha256": "fb597c3a8342ba347af217718121db4195107ecb37ced70371488e8802611cfd",
+    "statement": "manual_loopfree_filter",
+    "stats": {
+     "check_sha256": "641fe5f93eb9a9ff8e812e43db6d299939456babaaf41bfa385c73d692872d4c",
+     "cpu_ns": 12194884565,
+     "exit_code": 0,
+     "exits": {
+      "FFMP1": "0",
+      "FFMP10": "0",
+      "FFMP2": "0",
+      "FFMP3": "0",
+      "FFMP4": "0",
+      "FFMP5": "0",
+      "FFMP6": "0",
+      "FFMP7": "0",
+      "FFMP8": "0",
+      "FFMP9": "0",
+      "check": "0"
+     },
+     "log": "",
+     "peak_memory_bytes": 226111488,
+     "status": "SUCCESS",
+     "wall_ns": 12437994900
+    },
+    "status": "CHECKED"
+   },
+   {
+    "receipt_sha256": "aab57378e7ed2db12473087c291990d57beffb0a04d547854b1a27e3d5a1efe2",
+    "statement": "manual_loopfree_erase",
+    "stats": {
+     "check_sha256": "eae9803264276974aa1df5debd75570ab1fed42b43c88f09b02748630e8f9bb6",
+     "cpu_ns": 13524163688,
+     "exit_code": 0,
+     "exits": {
+      "FFMP1": "0",
+      "FFMP10": "0",
+      "FFMP11": "0",
+      "FFMP2": "0",
+      "FFMP3": "0",
+      "FFMP4": "0",
+      "FFMP5": "0",
+      "FFMP6": "0",
+      "FFMP7": "0",
+      "FFMP8": "0",
+      "FFMP9": "0",
+      "check": "0"
+     },
+     "log": "",
+     "peak_memory_bytes": 224198656,
+     "status": "SUCCESS",
+     "wall_ns": 13844632510
+    },
+    "status": "CHECKED"
+   },
+   {
+    "receipt_sha256": "f33343e8ae3c8eb8d2a28d9b74ee80f57f1c91da1d828c580aa67433a0ea869e",
+    "statement": "manual_matching_inter",
+    "stats": {
+     "check_sha256": "523e85063593dcc2055c56980f82e604b2791a48e23a18783b0523691532d300",
+     "cpu_ns": 14160723304,
+     "exit_code": 0,
+     "exits": {
+      "FFMP1": "0",
+      "FFMP10": "0",
+      "FFMP11": "0",
+      "FFMP12": "0",
+      "FFMP2": "0",
+      "FFMP3": "0",
+      "FFMP4": "0",
+      "FFMP5": "0",
+      "FFMP6": "0",
+      "FFMP7": "0",
+      "FFMP8": "0",
+      "FFMP9": "0",
+      "check": "0"
+     },
+     "log": "",
+     "peak_memory_bytes": 226045952,
+     "status": "SUCCESS",
+     "wall_ns": 14542595097
+    },
+    "status": "CHECKED"
+   },
+   {
+    "receipt_sha256": "144bdef1030a0151563f72c82ad1afb2b283a3e0c75fa652251d147c3682d134",
+    "statement": "manual_matching_sdiff",
+    "stats": {
+     "check_sha256": "a7a9a47a2adf4484666fd9acaa7737a4fe3be148e1136fb181c48d036e7a362b",
+     "cpu_ns": 15135135258,
+     "exit_code": 0,
+     "exits": {
+      "FFMP1": "0",
+      "FFMP10": "0",
+      "FFMP11": "0",
+      "FFMP12": "0",
+      "FFMP13": "0",
+      "FFMP2": "0",
+      "FFMP3": "0",
+      "FFMP4": "0",
+      "FFMP5": "0",
+      "FFMP6": "0",
+      "FFMP7": "0",
+      "FFMP8": "0",
+      "FFMP9": "0",
+      "check": "0"
+     },
+     "log": "",
+     "peak_memory_bytes": 226844672,
+     "status": "SUCCESS",
+     "wall_ns": 15444341112
+    },
+    "status": "CHECKED"
+   },
+   {
+    "receipt_sha256": "19f93ee2bb236c699cedb7016fa70aa0827ba43d2e4c2cbbf3da2935e4ef67f0",
+    "statement": "manual_matching_filter",
+    "stats": {
+     "check_sha256": "a4dafaf82c06460b70d53d35abcb3cae7879b6ac83d822cdfc09bd013fba9012",
+     "cpu_ns": 16720689164,
+     "exit_code": 0,
+     "exits": {
+      "FFMP1": "0",
+      "FFMP10": "0",
+      "FFMP11": "0",
+      "FFMP12": "0",
+      "FFMP13": "0",
+      "FFMP14": "0",
+      "FFMP2": "0",
+      "FFMP3": "0",
+      "FFMP4": "0",
+      "FFMP5": "0",
+      "FFMP6": "0",
+      "FFMP7": "0",
+      "FFMP8": "0",
+      "FFMP9": "0",
+      "check": "0"
+     },
+     "log": "",
+     "peak_memory_bytes": 224014336,
+     "status": "SUCCESS",
+     "wall_ns": 17111309704
+    },
+    "status": "CHECKED"
+   },
+   {
+    "receipt_sha256": "aa716e455ba7ed02b3191708c6bb66313671bc44df18d4f2fe615c65eab4e9dc",
+    "statement": "manual_matching_erase",
+    "stats": {
+     "check_sha256": "184ab93fbed398c2347aa23ac7383f03319cca30be4ccf259dc85105f779a6e0",
+     "cpu_ns": 16191953108,
+     "exit_code": 0,
+     "exits": {
+      "FFMP1": "0",
+      "FFMP10": "0",
+      "FFMP11": "0",
+      "FFMP12": "0",
+      "FFMP13": "0",
+      "FFMP14": "0",
+      "FFMP15": "0",
+      "FFMP2": "0",
+      "FFMP3": "0",
+      "FFMP4": "0",
+      "FFMP5": "0",
+      "FFMP6": "0",
+      "FFMP7": "0",
+      "FFMP8": "0",
+      "FFMP9": "0",
+      "check": "0"
+     },
+     "log": "",
+     "peak_memory_bytes": 223948800,
+     "status": "SUCCESS",
+     "wall_ns": 16511802252
+    },
+    "status": "CHECKED"
+   },
+   {
+    "receipt_sha256": "7fc9bf885432fbb6adfc5d498508cff454e1fc707d3b54474c8dc2cde8593727",
+    "statement": "manual_nonempty_inter",
+    "stats": {
+     "check_sha256": "cea832ecce5bf136263de4c4da4e01d0d21d69b44087ae724bbee4c04389302a",
+     "cpu_ns": 18313958334,
+     "exit_code": 0,
+     "exits": {
+      "FFMP1": "0",
+      "FFMP10": "0",
+      "FFMP11": "0",
+      "FFMP12": "0",
+      "FFMP13": "0",
+      "FFMP14": "0",
+      "FFMP15": "0",
+      "FFMP16": "0",
+      "FFMP2": "0",
+      "FFMP3": "0",
+      "FFMP4": "0",
+      "FFMP5": "0",
+      "FFMP6": "0",
+      "FFMP7": "0",
+      "FFMP8": "0",
+      "FFMP9": "0",
+      "check": "0"
+     },
+     "log": "",
+     "peak_memory_bytes": 226312192,
+     "status": "SUCCESS",
+     "wall_ns": 18689957300
+    },
+    "status": "CHECKED"
+   },
+   {
+    "receipt_sha256": "addfa86437082e7c37ab9d877f90eb440b994ca2451f1b52e5489a781d31e29a",
+    "statement": "manual_nonempty_sdiff",
+    "stats": {
+     "check_sha256": "bda441d4d3f5cd90f916da2090850d725f50be1c1481de411f27d48b1b17503e",
+     "cpu_ns": 19819700404,
+     "exit_code": 0,
+     "exits": {
+      "FFMP1": "0",
+      "FFMP10": "0",
+      "FFMP11": "0",
+      "FFMP12": "0",
+      "FFMP13": "0",
+      "FFMP14": "0",
+      "FFMP15": "0",
+      "FFMP16": "0",
+      "FFMP17": "0",
+      "FFMP2": "0",
+      "FFMP3": "0",
+      "FFMP4": "0",
+      "FFMP5": "0",
+      "FFMP6": "0",
+      "FFMP7": "0",
+      "FFMP8": "0",
+      "FFMP9": "0",
+      "check": "0"
+     },
+     "log": "",
+     "peak_memory_bytes": 226013184,
+     "status": "SUCCESS",
+     "wall_ns": 20330738651
+    },
+    "status": "CHECKED"
+   },
+   {
+    "receipt_sha256": "e8a6ff6e4ba15155462b66501110d07ec3fb53c6f7653c09e2fdada6a381d3be",
+    "statement": "manual_nonempty_filter",
+    "stats": {
+     "check_sha256": "5171286c07fd30bb4e76fe5efcbde14c600dccbf6531165ead38f00ba9cd2386",
+     "cpu_ns": 21218161924,
+     "exit_code": 0,
+     "exits": {
+      "FFMP1": "0",
+      "FFMP10": "0",
+      "FFMP11": "0",
+      "FFMP12": "0",
+      "FFMP13": "0",
+      "FFMP14": "0",
+      "FFMP15": "0",
+      "FFMP16": "0",
+      "FFMP17": "0",
+      "FFMP18": "0",
+      "FFMP2": "0",
+      "FFMP3": "0",
+      "FFMP4": "0",
+      "FFMP5": "0",
+      "FFMP6": "0",
+      "FFMP7": "0",
+      "FFMP8": "0",
+      "FFMP9": "0",
+      "check": "0"
+     },
+     "log": "",
+     "peak_memory_bytes": 226000896,
+     "status": "SUCCESS",
+     "wall_ns": 21721632421
+    },
+    "status": "CHECKED"
+   },
+   {
+    "receipt_sha256": "4d00053e11437c16ee193c4f3013c065b4461b1e2c9acab52d6fc6e1286e0767",
+    "statement": "manual_nonempty_erase",
+    "stats": {
+     "check_sha256": "67f9c01422fb406e0f68754f50fb153eb4e0593987bbfa85bb0d80fc17c44a63",
+     "cpu_ns": 22185234595,
+     "exit_code": 0,
+     "exits": {
+      "FFMP1": "0",
+      "FFMP10": "0",
+      "FFMP11": "0",
+      "FFMP12": "0",
+      "FFMP13": "0",
+      "FFMP14": "0",
+      "FFMP15": "0",
+      "FFMP16": "0",
+      "FFMP17": "0",
+      "FFMP18": "0",
+      "FFMP19": "0",
+      "FFMP2": "0",
+      "FFMP3": "0",
+      "FFMP4": "0",
+      "FFMP5": "0",
+      "FFMP6": "0",
+      "FFMP7": "0",
+      "FFMP8": "0",
+      "FFMP9": "0",
+      "check": "0"
+     },
+     "log": "",
+     "peak_memory_bytes": 226050048,
+     "status": "SUCCESS",
+     "wall_ns": 22590778859
+    },
+    "status": "CHECKED"
+   }
+  ],
+  "attempts": [
+   {
+    "attempts": [
+     {
+      "compiled": false,
+      "recipe": "elim-with-library",
+      "tactic_sha256": "e779d31ef0a4cb1e75d0960aee8c6f70686a385c5e86ecb9931c230d8030ea66",
+      "tier": 0
+     },
+     {
+      "compiled": true,
+      "recipe": "antitone-apply",
+      "tactic_sha256": "64e6505b0a01487287aa0e4d14b0136b5320ec76846d8571eb75b83508c295e3",
+      "tier": 0
+     },
+     {
+      "compiled": true,
+      "recipe": "antitone-apply-intro",
+      "tactic_sha256": "686262dc7893f16ff310b91da9ee17b2eaf012fdfec2d1cc259042de825d8c00",
+      "tier": 0
+     }
+    ],
+    "charged": {
+     "candidates": 3,
+     "cpu_ns": 1065788610,
+     "wall_ns": 1071793275
+    },
+    "result": "ELABORATION_ERROR",
+    "statement": "gen_antitone_inter",
+    "target": "FFMConj.gen_antitone_inter"
+   },
+   {
+    "attempts": [
+     {
+      "compiled": false,
+      "recipe": "elim-with-library",
+      "tactic_sha256": "70611e4c579b5811dca3cb5e7bca3019c359d5a5caf8fed939b72eb4e96ddc17",
+      "tier": 0
+     },
+     {
+      "compiled": true,
+      "recipe": "antitone-apply",
+      "tactic_sha256": "7576ba2c49e453f41b61197f9aede250de2edfbd4938534714a3720c46751d4f",
+      "tier": 0
+     },
+     {
+      "compiled": true,
+      "recipe": "antitone-apply-intro",
+      "tactic_sha256": "9e64893e57d1cde06aa378f98b3b67c4d0ea5c6ab8bafcbf21e0f6136fdfc580",
+      "tier": 0
+     }
+    ],
+    "charged": {
+     "candidates": 3,
+     "cpu_ns": 1307948840,
+     "wall_ns": 1344706259
+    },
+    "result": "ELABORATION_ERROR",
+    "statement": "gen_antitone_sdiff",
+    "target": "FFMConj.gen_antitone_sdiff"
+   },
+   {
+    "attempts": [
+     {
+      "compiled": false,
+      "recipe": "elim-with-library",
+      "tactic_sha256": "01c99f6870a4425350a2c2779b47d18f07c92c69bc30dba9dc666ed78fd67aca",
+      "tier": 0
+     },
+     {
+      "compiled": false,
+      "recipe": "antitone-apply",
+      "tactic_sha256": "e86f3d2ac6288677f300de5ff450b0bbb89412958e1fa43075b025efe09a14f2",
+      "tier": 0
+     },
+     {
+      "compiled": false,
+      "recipe": "antitone-apply-intro",
+      "tactic_sha256": "b28855a44a8442b8209174f0438af498482d6e67e53f806a0c99dcc123008e94",
+      "tier": 0
+     },
+     {
+      "compiled": false,
+      "recipe": "decide",
+      "tactic_sha256": "5589aa5863c2d85622d06d651add002416e5513afdbb455666cdde01bb3e257d",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "decide-kernel",
+      "tactic_sha256": "9ac77167f92e560c7b03653563b026543eb9e4c018ebd8e1d3c8be05b979ab88",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "unfold-simp",
+      "tactic_sha256": "8741b24cab0238a7472f08d29ade9179d2e3149d47ce3f624be51f55b0ce7b60",
+      "tier": 1
+     },
+     {
+      "compiled": true,
+      "recipe": "unfold-aesop",
+      "tactic_sha256": "a5bf5e01db426c6608391da3c5a68ba4e2e52d384332d3a68e9b88ee9879569b",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "unfold-omega",
+      "tactic_sha256": "88f2cd21a0d7f697bd73f6cc413148c418016557b71787d332c47353495d6220",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "unfold-solve",
+      "tactic_sha256": "62c059a9f6b2b5c9cb9e622af68d6ed0b6ed1fd2ffa55d28d8b58919dfdc1d73",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "apply-hyp:h",
+      "tactic_sha256": "e1153431068074a2f3b2a3154fbaab990c6356176beecb28c8a59b0313a426dd",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "specialize-omega:h",
+      "tactic_sha256": "73a378f8680e608f9c6bddce8bc2cbc3a792375df10ae0d7fa48de3de0f1ec09",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "apply-hyp:h1",
+      "tactic_sha256": "f258b79ae81adc76458befd9a07898db35bbf7e29604038691f38c1aa887b763",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "specialize-omega:h1",
+      "tactic_sha256": "81ac326c10e29b6e2c6f080b0948050fcabaf2f3adc8a47a7b164e3fb01726f5",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "library-elim:FFMP1.proof",
+      "tactic_sha256": "e9cf10e825374834e7d80c59b64be8f31f84ca3976293045472a513ad19fc467",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "library-elim:FFMP2.proof",
+      "tactic_sha256": "8aae8983f13eecb64e254ad1ec8e5baac9f562fe6131da675b982fc8bf8c39ba",
+      "tier": 1
+     }
+    ],
+    "charged": {
+     "candidates": 15,
+     "cpu_ns": 12917217406,
+     "wall_ns": 13048349266
+    },
+    "result": "ELABORATION_ERROR",
+    "statement": "gen_antitone_filter",
+    "target": "FFMConj.gen_antitone_filter"
+   },
+   {
+    "attempts": [
+     {
+      "compiled": false,
+      "recipe": "elim-with-library",
+      "tactic_sha256": "903c631d9a1fe66a2ef8a333f8941c29d2d526a68431a19d5200139b672937a7",
+      "tier": 0
+     },
+     {
+      "compiled": false,
+      "recipe": "antitone-apply",
+      "tactic_sha256": "a611c405f56ef2def7727589b1a72f8c444e674f4b3d30c568c2422ea575f800",
+      "tier": 0
+     },
+     {
+      "compiled": true,
+      "recipe": "antitone-apply-intro",
+      "tactic_sha256": "815a8d98d56bd91d93beebbc5e6e018a13c52805ee5cfd8ffb81f0e8d64d2896",
+      "tier": 0
+     }
+    ],
+    "charged": {
+     "candidates": 3,
+     "cpu_ns": 1262274113,
+     "wall_ns": 1313007591
+    },
+    "result": "ELABORATION_ERROR",
+    "statement": "gen_antitone_erase",
+    "target": "FFMConj.gen_antitone_erase"
+   },
+   {
+    "attempts": [
+     {
+      "compiled": false,
+      "recipe": "elim-with-library",
+      "tactic_sha256": "df99818ea7223b199758c86697fb1f4559dffae32f92be146dbf8a4e227473d7",
+      "tier": 0
+     },
+     {
+      "compiled": true,
+      "recipe": "down-closure-unfold",
+      "tactic_sha256": "4205b184bf591733981709559c4eb7ab4db9117d0a194f0774471e5769831f72",
+      "tier": 0
+     },
+     {
+      "compiled": true,
+      "recipe": "down-closure-aesop",
+      "tactic_sha256": "ce0c3716cd552949d1f58a0ea198aeb9662cbb8ae18358f601b19a7d62dff8e4",
+      "tier": 0
+     }
+    ],
+    "charged": {
+     "candidates": 3,
+     "cpu_ns": 1358546447,
+     "wall_ns": 1397804913
+    },
+    "result": "ELABORATION_ERROR",
+    "statement": "inst_antitone_loopfree",
+    "target": "FFMConj.inst_antitone_loopfree"
+   },
+   {
+    "attempts": [
+     {
+      "compiled": false,
+      "recipe": "elim-with-library",
+      "tactic_sha256": "1b43d019054cc53eb17f606fa65adc3f56bd1d6b43231df9a8ff758c692df904",
+      "tier": 0
+     },
+     {
+      "compiled": true,
+      "recipe": "down-closure-unfold",
+      "tactic_sha256": "4205b184bf591733981709559c4eb7ab4db9117d0a194f0774471e5769831f72",
+      "tier": 0
+     },
+     {
+      "compiled": false,
+      "recipe": "down-closure-aesop",
+      "tactic_sha256": "ce0c3716cd552949d1f58a0ea198aeb9662cbb8ae18358f601b19a7d62dff8e4",
+      "tier": 0
+     }
+    ],
+    "charged": {
+     "candidates": 3,
+     "cpu_ns": 2633120526,
+     "wall_ns": 2673214781
+    },
+    "result": "ELABORATION_ERROR",
+    "statement": "inst_antitone_matching",
+    "target": "FFMConj.inst_antitone_matching"
+   },
+   {
+    "attempts": [
+     {
+      "compiled": false,
+      "recipe": "elim-with-library",
+      "tactic_sha256": "1a78b3e4036ee5a8de13c643d6064978042cc22e9c06c7a5c8c326a30d811a29",
+      "tier": 0
+     },
+     {
+      "compiled": false,
+      "recipe": "down-closure-unfold",
+      "tactic_sha256": "4205b184bf591733981709559c4eb7ab4db9117d0a194f0774471e5769831f72",
+      "tier": 0
+     },
+     {
+      "compiled": false,
+      "recipe": "down-closure-aesop",
+      "tactic_sha256": "ce0c3716cd552949d1f58a0ea198aeb9662cbb8ae18358f601b19a7d62dff8e4",
+      "tier": 0
+     },
+     {
+      "compiled": false,
+      "recipe": "decide",
+      "tactic_sha256": "5589aa5863c2d85622d06d651add002416e5513afdbb455666cdde01bb3e257d",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "decide-kernel",
+      "tactic_sha256": "9ac77167f92e560c7b03653563b026543eb9e4c018ebd8e1d3c8be05b979ab88",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "unfold-simp",
+      "tactic_sha256": "e971b1138cb7bb4357ae77453c900216b4562178667ae5ccb2ed89f7d6d72340",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "unfold-aesop",
+      "tactic_sha256": "bfa400ece9d1c9e5f66f2c8a401e26914940eb6562b11657e88f4b6aa7db07b9",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "unfold-omega",
+      "tactic_sha256": "dbe124e6415abe03afce89a392fa2ab2ad4a98cda43f42ad1ed124974f1a453e",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "unfold-solve",
+      "tactic_sha256": "62c059a9f6b2b5c9cb9e622af68d6ed0b6ed1fd2ffa55d28d8b58919dfdc1d73",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "library-elim:FFMP1.proof",
+      "tactic_sha256": "be9f683eec61485c22b1b4c98205d9fef8090c0d04d422aec562ee9dc31d3de2",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "library-elim:FFMP2.proof",
+      "tactic_sha256": "42dd0bc93ceb2129baab02c1c6e5178ca873baa54045df21b7d1328b56a8a0b1",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "library-elim:FFMP3.proof",
+      "tactic_sha256": "ee5245ad81eee789ec3ee3f1699cd52431c55a50f13ad915a2d877ecdeed4753",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "library-elim:FFMP4.proof",
+      "tactic_sha256": "d6add4b20316a4eac21e7cb188301516f6ef2251e85e844577546951ea74132f",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "library-elim:FFMP5.proof",
+      "tactic_sha256": "789e950dfdce20b88decef16bdddaddab04cdfa363917ae1d43e823c87923e5e",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "library-elim:FFMP6.proof",
+      "tactic_sha256": "850138449c3520e062ba5ef482886f1ee30d835c65a9cbebf9a5fbbbe44c3603",
+      "tier": 1
+     }
+    ],
+    "charged": {
+     "candidates": 15,
+     "cpu_ns": 35021230099,
+     "wall_ns": 35143113474
+    },
+    "result": "ELABORATION_ERROR",
+    "statement": "inst_antitone_c4free",
+    "target": "FFMConj.inst_antitone_c4free"
+   },
+   {
+    "attempts": [
+     {
+      "compiled": true,
+      "recipe": "counterexample-evaluation",
+      "tactic_sha256": "bf7b1e836263a18401df12c779c36498677782fce7c32d9a972714a36ea3c465",
+      "tier": 0
+     }
+    ],
+    "charged": {
+     "candidates": 1,
+     "cpu_ns": 1150681764,
+     "wall_ns": 1173548187
+    },
+    "result": "COMPILED",
+    "statement": "inst_antitone_nonempty",
+    "target": "FFMConj.inst_antitone_nonempty_negation"
+   },
+   {
+    "attempts": [
+     {
+      "compiled": true,
+      "recipe": "elim-with-library",
+      "tactic_sha256": "d775155391f2a78312aee6fbb5da22e7b9f7a1df4b9331db4b13268f7e78b1e9",
+      "tier": 0
+     }
+    ],
+    "charged": {
+     "candidates": 1,
+     "cpu_ns": 1099251494,
+     "wall_ns": 1139417280
+    },
+    "result": "COMPILED",
+    "statement": "manual_loopfree_inter",
+    "target": "FFMConj.manual_loopfree_inter"
+   },
+   {
+    "attempts": [
+     {
+      "compiled": true,
+      "recipe": "elim-with-library",
+      "tactic_sha256": "5160d9d0daf1e012461d61e62b12e31bb0af852d87fc04249a5c2282278058cd",
+      "tier": 0
+     }
+    ],
+    "charged": {
+     "candidates": 1,
+     "cpu_ns": 1372504322,
+     "wall_ns": 1407131561
+    },
+    "result": "COMPILED",
+    "statement": "manual_loopfree_sdiff",
+    "target": "FFMConj.manual_loopfree_sdiff"
+   },
+   {
+    "attempts": [
+     {
+      "compiled": true,
+      "recipe": "elim-with-library",
+      "tactic_sha256": "3946f2d5d00d857f8ca0ad27dc87274209a2b1f254311d8f18ff884c202d9707",
+      "tier": 0
+     }
+    ],
+    "charged": {
+     "candidates": 1,
+     "cpu_ns": 1101262817,
+     "wall_ns": 1137487019
+    },
+    "result": "COMPILED",
+    "statement": "manual_loopfree_filter",
+    "target": "FFMConj.manual_loopfree_filter"
+   },
+   {
+    "attempts": [
+     {
+      "compiled": true,
+      "recipe": "elim-with-library",
+      "tactic_sha256": "12c7a795ced7c564ddae1b551737fcca661ebcb1aeaa56c68b3ae0fdd5e74593",
+      "tier": 0
+     }
+    ],
+    "charged": {
+     "candidates": 1,
+     "cpu_ns": 1141312266,
+     "wall_ns": 1178663568
+    },
+    "result": "COMPILED",
+    "statement": "manual_loopfree_erase",
+    "target": "FFMConj.manual_loopfree_erase"
+   },
+   {
+    "attempts": [
+     {
+      "compiled": true,
+      "recipe": "elim-with-library",
+      "tactic_sha256": "2d109e7176b9fdb2ad8524b747965989ed463594d0dde1ebc91603b8e262e51a",
+      "tier": 0
+     }
+    ],
+    "charged": {
+     "candidates": 1,
+     "cpu_ns": 1160258654,
+     "wall_ns": 1196387302
+    },
+    "result": "COMPILED",
+    "statement": "manual_matching_inter",
+    "target": "FFMConj.manual_matching_inter"
+   },
+   {
+    "attempts": [
+     {
+      "compiled": true,
+      "recipe": "elim-with-library",
+      "tactic_sha256": "87cfff5329ca996edd2f822cbb99e607ed5c8e4096d226e0852282b5e483cda6",
+      "tier": 0
+     }
+    ],
+    "charged": {
+     "candidates": 1,
+     "cpu_ns": 1154151569,
+     "wall_ns": 1190344897
+    },
+    "result": "COMPILED",
+    "statement": "manual_matching_sdiff",
+    "target": "FFMConj.manual_matching_sdiff"
+   },
+   {
+    "attempts": [
+     {
+      "compiled": true,
+      "recipe": "elim-with-library",
+      "tactic_sha256": "2b4e752fe8076d33ed2bf802d35e281244569c3956facc2bf9de0133061b7450",
+      "tier": 0
+     }
+    ],
+    "charged": {
+     "candidates": 1,
+     "cpu_ns": 1123405475,
+     "wall_ns": 1168776516
+    },
+    "result": "COMPILED",
+    "statement": "manual_matching_filter",
+    "target": "FFMConj.manual_matching_filter"
+   },
+   {
+    "attempts": [
+     {
+      "compiled": true,
+      "recipe": "elim-with-library",
+      "tactic_sha256": "7cb26ae129e17c39fe8b859a7eddc2f84428a1ddcfd129e7e8091fa89612a59f",
+      "tier": 0
+     }
+    ],
+    "charged": {
+     "candidates": 1,
+     "cpu_ns": 1451208477,
+     "wall_ns": 1516171988
+    },
+    "result": "COMPILED",
+    "statement": "manual_matching_erase",
+    "target": "FFMConj.manual_matching_erase"
+   },
+   {
+    "attempts": [
+     {
+      "compiled": false,
+      "recipe": "elim-with-library",
+      "tactic_sha256": "2fd8e4adf2cbd14405a0e09f78d74b487a43d34f39b6c69c20b2cf754d56d54e",
+      "tier": 0
+     },
+     {
+      "compiled": false,
+      "recipe": "decide",
+      "tactic_sha256": "5589aa5863c2d85622d06d651add002416e5513afdbb455666cdde01bb3e257d",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "decide-kernel",
+      "tactic_sha256": "9ac77167f92e560c7b03653563b026543eb9e4c018ebd8e1d3c8be05b979ab88",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "unfold-simp",
+      "tactic_sha256": "2fdb53dd37c5d4e387eab479cf353ebe00ef0c1fb43572953bf24c6264fc3f96",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "unfold-aesop",
+      "tactic_sha256": "745fb3090d6e4150a8979cc791516f8db8fa764f4ac1581cfd37377803a0670d",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "unfold-omega",
+      "tactic_sha256": "af42f82b697fce0e4dcd3aa3c89a59f9a10d3e2bc15dc44963dade357f1143cf",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "unfold-solve",
+      "tactic_sha256": "62c059a9f6b2b5c9cb9e622af68d6ed0b6ed1fd2ffa55d28d8b58919dfdc1d73",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "apply-hyp:h1",
+      "tactic_sha256": "cac35ae61c14f0f125197a56526e5412715cb2ccf31b9b5d398b24aa48d0b847",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "specialize-omega:h1",
+      "tactic_sha256": "c574d183f732de4913d1717da04b478c5459e230ae063c20528c15a6bd48e4da",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "library-elim:FFMP1.proof",
+      "tactic_sha256": "8d222f457e2e4e27b1d85aae498fb00fc4c197d4be155ba5433a22b3272c587e",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "library-elim:FFMP2.proof",
+      "tactic_sha256": "b8f482239d99fb9af7ee83ec225b562acbc5079ee0f6c072bed58ff66ec7f5c6",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "library-elim:FFMP3.proof",
+      "tactic_sha256": "ef0ba5d813c14810964560ceb573e48ad4b335aa80536598968dd41e0661500c",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "library-elim:FFMP4.proof",
+      "tactic_sha256": "078dd8e6b726be35f3920848ac5186e605f94083bb69ee769ee05d5a5797f104",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "library-elim:FFMP5.proof",
+      "tactic_sha256": "b61f513227a6024244ba98f85b1f730ab7a407e4f6d55ef71f5d362bdaa2a25c",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "library-elim:FFMP6.proof",
+      "tactic_sha256": "f3cb999c3e54d868ac93150c966bf76ea558fdc29fadd7f3986d2f3aa81a748d",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "library-elim:FFMP8.proof",
+      "tactic_sha256": "188de5f91323ab80aeca0cf92dda8b105d668a8446a1aa741d24d02e511c6879",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "library-elim:FFMP9.proof",
+      "tactic_sha256": "f3d33800547921d1862afb813fb12ea505bea1723d38456aae282db008fc9690",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "library-elim:FFMP10.proof",
+      "tactic_sha256": "d9ef3f588f08381a8dc896231e499878d1e1c1367c9fdc0fe9cabad612b3a329",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "library-elim:FFMP11.proof",
+      "tactic_sha256": "b5d35ff81c62b71fe0a753dac8236156355dd437cddf90ffac7888ea4ec99732",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "library-elim:FFMP12.proof",
+      "tactic_sha256": "427b962a54e292109d845254070e490626987cd79137d4f999d625f3d6d76a86",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "library-elim:FFMP13.proof",
+      "tactic_sha256": "d87f094b84f11ce4c83b5450c71364917637e83de13dc615f6838807164733b9",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "library-elim:FFMP14.proof",
+      "tactic_sha256": "d52594bf29a806ed0a9a1efa64e69bf20efd0bdbe0c9bc2af0a0ce2f700ac6f7",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "library-elim:FFMP15.proof",
+      "tactic_sha256": "8c24e1eb2e6badfbeae4328576763dd718ab990e2d27850a38643c6f3d07ac58",
+      "tier": 1
+     }
+    ],
+    "charged": {
+     "candidates": 23,
+     "cpu_ns": 67068721143,
+     "wall_ns": 67203771627
+    },
+    "result": "RESOURCE_LIMIT",
+    "statement": "manual_c4free_inter",
+    "target": "FFMConj.manual_c4free_inter"
+   },
+   {
+    "attempts": [
+     {
+      "compiled": false,
+      "recipe": "elim-with-library",
+      "tactic_sha256": "2fd8e4adf2cbd14405a0e09f78d74b487a43d34f39b6c69c20b2cf754d56d54e",
+      "tier": 0
+     },
+     {
+      "compiled": false,
+      "recipe": "decide",
+      "tactic_sha256": "5589aa5863c2d85622d06d651add002416e5513afdbb455666cdde01bb3e257d",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "decide-kernel",
+      "tactic_sha256": "9ac77167f92e560c7b03653563b026543eb9e4c018ebd8e1d3c8be05b979ab88",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "unfold-simp",
+      "tactic_sha256": "2fdb53dd37c5d4e387eab479cf353ebe00ef0c1fb43572953bf24c6264fc3f96",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "unfold-aesop",
+      "tactic_sha256": "745fb3090d6e4150a8979cc791516f8db8fa764f4ac1581cfd37377803a0670d",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "unfold-omega",
+      "tactic_sha256": "af42f82b697fce0e4dcd3aa3c89a59f9a10d3e2bc15dc44963dade357f1143cf",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "unfold-solve",
+      "tactic_sha256": "62c059a9f6b2b5c9cb9e622af68d6ed0b6ed1fd2ffa55d28d8b58919dfdc1d73",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "apply-hyp:h1",
+      "tactic_sha256": "cac35ae61c14f0f125197a56526e5412715cb2ccf31b9b5d398b24aa48d0b847",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "specialize-omega:h1",
+      "tactic_sha256": "c574d183f732de4913d1717da04b478c5459e230ae063c20528c15a6bd48e4da",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "library-elim:FFMP1.proof",
+      "tactic_sha256": "8d222f457e2e4e27b1d85aae498fb00fc4c197d4be155ba5433a22b3272c587e",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "library-elim:FFMP2.proof",
+      "tactic_sha256": "b8f482239d99fb9af7ee83ec225b562acbc5079ee0f6c072bed58ff66ec7f5c6",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "library-elim:FFMP3.proof",
+      "tactic_sha256": "ef0ba5d813c14810964560ceb573e48ad4b335aa80536598968dd41e0661500c",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "library-elim:FFMP4.proof",
+      "tactic_sha256": "078dd8e6b726be35f3920848ac5186e605f94083bb69ee769ee05d5a5797f104",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "library-elim:FFMP5.proof",
+      "tactic_sha256": "b61f513227a6024244ba98f85b1f730ab7a407e4f6d55ef71f5d362bdaa2a25c",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "library-elim:FFMP6.proof",
+      "tactic_sha256": "f3cb999c3e54d868ac93150c966bf76ea558fdc29fadd7f3986d2f3aa81a748d",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "library-elim:FFMP8.proof",
+      "tactic_sha256": "188de5f91323ab80aeca0cf92dda8b105d668a8446a1aa741d24d02e511c6879",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "library-elim:FFMP9.proof",
+      "tactic_sha256": "f3d33800547921d1862afb813fb12ea505bea1723d38456aae282db008fc9690",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "library-elim:FFMP10.proof",
+      "tactic_sha256": "d9ef3f588f08381a8dc896231e499878d1e1c1367c9fdc0fe9cabad612b3a329",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "library-elim:FFMP11.proof",
+      "tactic_sha256": "b5d35ff81c62b71fe0a753dac8236156355dd437cddf90ffac7888ea4ec99732",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "library-elim:FFMP12.proof",
+      "tactic_sha256": "427b962a54e292109d845254070e490626987cd79137d4f999d625f3d6d76a86",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "library-elim:FFMP13.proof",
+      "tactic_sha256": "d87f094b84f11ce4c83b5450c71364917637e83de13dc615f6838807164733b9",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "library-elim:FFMP14.proof",
+      "tactic_sha256": "d52594bf29a806ed0a9a1efa64e69bf20efd0bdbe0c9bc2af0a0ce2f700ac6f7",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "library-elim:FFMP15.proof",
+      "tactic_sha256": "8c24e1eb2e6badfbeae4328576763dd718ab990e2d27850a38643c6f3d07ac58",
+      "tier": 1
+     }
+    ],
+    "charged": {
+     "candidates": 23,
+     "cpu_ns": 68244776652,
+     "wall_ns": 68429292535
+    },
+    "result": "RESOURCE_LIMIT",
+    "statement": "manual_c4free_sdiff",
+    "target": "FFMConj.manual_c4free_sdiff"
+   },
+   {
+    "attempts": [
+     {
+      "compiled": false,
+      "recipe": "elim-with-library",
+      "tactic_sha256": "bd0efe9b226df8ee11d2d9577c1009f2aadf37fe46666035843c5226afdae26a",
+      "tier": 0
+     },
+     {
+      "compiled": false,
+      "recipe": "decide",
+      "tactic_sha256": "5589aa5863c2d85622d06d651add002416e5513afdbb455666cdde01bb3e257d",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "decide-kernel",
+      "tactic_sha256": "9ac77167f92e560c7b03653563b026543eb9e4c018ebd8e1d3c8be05b979ab88",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "unfold-simp",
+      "tactic_sha256": "227b9ca76b8892fd79455b9effe00f689b80793f42e413fecaf5296d8e21d025",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "unfold-aesop",
+      "tactic_sha256": "76442f9e165f28dade7cfb9f3a7976a3060e1b800918beb36be7db0ea20f1817",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "unfold-omega",
+      "tactic_sha256": "af5509267ee864951a5b72997feb2fee36eda1464a91cfe7304beca6d96ac8c2",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "unfold-solve",
+      "tactic_sha256": "62c059a9f6b2b5c9cb9e622af68d6ed0b6ed1fd2ffa55d28d8b58919dfdc1d73",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "apply-hyp:h1",
+      "tactic_sha256": "3cb680637586d7dbfc2f88cf98ab2c41e950ca47598ee98b4ab3f49161920c2a",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "specialize-omega:h1",
+      "tactic_sha256": "09a5e261ded9469c61972363cb52f71fb928d413bddc223ef9eb655dbd361a40",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "library-elim:FFMP1.proof",
+      "tactic_sha256": "136389bee22d0f47d184bff156e430ebf36a6d53a6ca0105174fe3717c45fc09",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "library-elim:FFMP2.proof",
+      "tactic_sha256": "2f55dd1d9c3f4a72de74ab5c77f616661f3b99171d63941bfe9f360033edd1fc",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "library-elim:FFMP3.proof",
+      "tactic_sha256": "c159ddda199907106a8782795dd8bd754e84b24d7b2934219df01b89b5cf343c",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "library-elim:FFMP4.proof",
+      "tactic_sha256": "230d28aa510994341074adaebbddf114695fa041cb2fe8640fcd52ffbccf230f",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "library-elim:FFMP5.proof",
+      "tactic_sha256": "da4eeeaa37aab488b892a46d4ab5e542e2fda66029e56f87f19e453e77a6a8b0",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "library-elim:FFMP6.proof",
+      "tactic_sha256": "4ef94ce0281e37fbc2bbd68271f46fde7c5327ea3c8b4a0d4c497987a8d6d92e",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "library-elim:FFMP8.proof",
+      "tactic_sha256": "43a62a4926bf65bfc9bdf578856ebd052985626886cc1e79f0823c90ea1149bf",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "library-elim:FFMP9.proof",
+      "tactic_sha256": "3e9ebec59ae1706385285c3a70cd05419833ff6ffefc300214169b20514f484f",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "library-elim:FFMP10.proof",
+      "tactic_sha256": "6c7804a2a66c764d2dcb37bfc8029da9f850c1ce24491c352f0f7bed35de894c",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "library-elim:FFMP11.proof",
+      "tactic_sha256": "53a046e2cd2a5508e79860a2b5176c9e5f7c632f34a3226bbdc3c206249f1ca4",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "library-elim:FFMP12.proof",
+      "tactic_sha256": "5b8e88a49391717aec10734f0d4b591d7c3035b764e4bcec74e2424abc39204b",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "library-elim:FFMP13.proof",
+      "tactic_sha256": "01eafd4e48c72b7c0d8ab43617453d4beb555792ef2fcf7a1a20b018abe85865",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "library-elim:FFMP14.proof",
+      "tactic_sha256": "78fb40da451170259008fde88fe203705342d97d0ec6e8da06d6ccdf31c6782f",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "library-elim:FFMP15.proof",
+      "tactic_sha256": "69e12e7b7b4ff17cef9f6a8a66a3069efc610d9ee8f677578064cbe4ef8b0390",
+      "tier": 1
+     }
+    ],
+    "charged": {
+     "candidates": 23,
+     "cpu_ns": 64180394628,
+     "wall_ns": 64488792467
+    },
+    "result": "RESOURCE_LIMIT",
+    "statement": "manual_c4free_filter",
+    "target": "FFMConj.manual_c4free_filter"
+   },
+   {
+    "attempts": [
+     {
+      "compiled": false,
+      "recipe": "elim-with-library",
+      "tactic_sha256": "081e0de31b74053a81c83fc5e36a0decd58affa891988020dbca59eabde71e62",
+      "tier": 0
+     },
+     {
+      "compiled": false,
+      "recipe": "decide",
+      "tactic_sha256": "5589aa5863c2d85622d06d651add002416e5513afdbb455666cdde01bb3e257d",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "decide-kernel",
+      "tactic_sha256": "9ac77167f92e560c7b03653563b026543eb9e4c018ebd8e1d3c8be05b979ab88",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "unfold-simp",
+      "tactic_sha256": "896e52eb22bacd944da549296bbfd2e953f0856d62f81bab5cc69ea7b4581915",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "unfold-aesop",
+      "tactic_sha256": "2d15fb56bc3435ed6ab6e20006fb63b71a5210470c406f70b1e1cef52913e440",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "unfold-omega",
+      "tactic_sha256": "cf123ec344bb096808c0acf65e7b2f131bb96be5758a40cb5c9ac4d6d206ddb8",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "unfold-solve",
+      "tactic_sha256": "62c059a9f6b2b5c9cb9e622af68d6ed0b6ed1fd2ffa55d28d8b58919dfdc1d73",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "apply-hyp:h1",
+      "tactic_sha256": "50454769f946dd8d7fde885bbb7bb4c320fad66e46bcba53e8e8c5117b5f17a1",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "specialize-omega:h1",
+      "tactic_sha256": "82d164998c38f5c5119709b6e4344278f95f5ebef6da9cfdf1d1bb7e4f5b1ea4",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "library-elim:FFMP1.proof",
+      "tactic_sha256": "0beac024beb6689be002d79f4f824e7708d4e2966f09332e832bcd168ca3e189",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "library-elim:FFMP2.proof",
+      "tactic_sha256": "22fc81290094fc388a9a53ca6bc45f09f3fd8032f35532be31a1ae48ec63278a",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "library-elim:FFMP3.proof",
+      "tactic_sha256": "2585edaa6c2ee27326b7a246353ee0444ca140e5819e11a169eeee6f768ff378",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "library-elim:FFMP4.proof",
+      "tactic_sha256": "c7330bbe4416e4adce3107bda998a0073b20be8c55a8f1f2935bd6382f5f25f3",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "library-elim:FFMP5.proof",
+      "tactic_sha256": "f540cff68b3c2c0bb1ff22907de818b442ccaa2e92af676dc15f9d0b26f1476b",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "library-elim:FFMP6.proof",
+      "tactic_sha256": "245c3713c1988448d108cd77615c78c52ca073ae58e03a89244d25e3da65e642",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "library-elim:FFMP8.proof",
+      "tactic_sha256": "e7d65000a5ff91b89f79a339948e8cba8be1436cd3765c89ac9da5fae80231c4",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "library-elim:FFMP9.proof",
+      "tactic_sha256": "d835dd30dba296c4732ec893c7e1e3e9f4d27697f3b2f0c5a816492c140bfd06",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "library-elim:FFMP10.proof",
+      "tactic_sha256": "1fefd05fb18bdd6c6efcb75e7f13d3457a51386180215d39eed0361db5bc6404",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "library-elim:FFMP11.proof",
+      "tactic_sha256": "f615415d81d12891f1cdbda5ea50e80decd91a4cd1c26c09d0d50ad2d9daefef",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "library-elim:FFMP12.proof",
+      "tactic_sha256": "d46e7b25e0a059dd23e7107a9ff1232b560ff26851d2c5822641984bfcfa74f2",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "library-elim:FFMP13.proof",
+      "tactic_sha256": "6e09c212760eea82fc289087bed5764edb2de89107052f5d94586d46831c9348",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "library-elim:FFMP14.proof",
+      "tactic_sha256": "96d9853daa0f4d7907e7247c2bcdd97531a0798b4da7dafbf6252654bc3bd640",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "library-elim:FFMP15.proof",
+      "tactic_sha256": "3dace4a897cbe001aa9d5d27d1b624f49b4d9ed13a428bb6e37b302e21adca1c",
+      "tier": 1
+     }
+    ],
+    "charged": {
+     "candidates": 23,
+     "cpu_ns": 63341421909,
+     "wall_ns": 63589568886
+    },
+    "result": "RESOURCE_LIMIT",
+    "statement": "manual_c4free_erase",
+    "target": "FFMConj.manual_c4free_erase"
+   },
+   {
+    "attempts": [
+     {
+      "compiled": true,
+      "recipe": "counterexample-evaluation",
+      "tactic_sha256": "0b1cc3ce044f0cc77b48e97fd0c887511204bd6291061ac33bd7bef4a98d25e0",
+      "tier": 0
+     }
+    ],
+    "charged": {
+     "candidates": 1,
+     "cpu_ns": 1060343060,
+     "wall_ns": 1098893591
+    },
+    "result": "COMPILED",
+    "statement": "manual_nonempty_inter",
+    "target": "FFMConj.manual_nonempty_inter_negation"
+   },
+   {
+    "attempts": [
+     {
+      "compiled": true,
+      "recipe": "counterexample-evaluation",
+      "tactic_sha256": "fbacc7389df18cdbdaf822c092d796f7939d1e0a0f16e1dd42b206b38f1bba9a",
+      "tier": 0
+     }
+    ],
+    "charged": {
+     "candidates": 1,
+     "cpu_ns": 1167638221,
+     "wall_ns": 1184069874
+    },
+    "result": "COMPILED",
+    "statement": "manual_nonempty_sdiff",
+    "target": "FFMConj.manual_nonempty_sdiff_negation"
+   },
+   {
+    "attempts": [
+     {
+      "compiled": true,
+      "recipe": "counterexample-evaluation",
+      "tactic_sha256": "1108bf3baee380beca15d1031c5b9ba3615fbabcbcd692b5dfdb74d6b56c9ccd",
+      "tier": 0
+     }
+    ],
+    "charged": {
+     "candidates": 1,
+     "cpu_ns": 1198323852,
+     "wall_ns": 1228007817
+    },
+    "result": "COMPILED",
+    "statement": "manual_nonempty_filter",
+    "target": "FFMConj.manual_nonempty_filter_negation"
+   },
+   {
+    "attempts": [
+     {
+      "compiled": true,
+      "recipe": "counterexample-evaluation",
+      "tactic_sha256": "e6cc2a7c5126050362d2a27d6728da84e1740b65c2f081316d245dc93132758d",
+      "tier": 0
+     }
+    ],
+    "charged": {
+     "candidates": 1,
+     "cpu_ns": 1359477021,
+     "wall_ns": 1386877464
+    },
+    "result": "COMPILED",
+    "statement": "manual_nonempty_erase",
+    "target": "FFMConj.manual_nonempty_erase_negation"
+   }
+  ],
+  "search_candidates": 150,
+  "search_context_cpu_ns": 32127298678,
+  "search_cpu_ns": 333941259365,
+  "search_runs": 24
+ },
+ "counterexamples": [
+  {
+   "checked": true,
+   "statement": "inst_antitone_nonempty",
+   "values": {
+    "S": "({(0, 0), (3, 2)} : GT.Edges)",
+    "T": "(∅ : GT.Edges)"
+   }
+  },
+  {
+   "checked": true,
+   "statement": "manual_nonempty_inter",
+   "values": {
+    "S": "({(3, 2)} : GT.Edges)",
+    "T": "({(1, 3)} : GT.Edges)"
+   }
+  },
+  {
+   "checked": true,
+   "statement": "manual_nonempty_sdiff",
+   "values": {
+    "S": "({(3, 1)} : GT.Edges)",
+    "T": "({(2, 2), (3, 1)} : GT.Edges)"
+   }
+  },
+  {
+   "checked": true,
+   "statement": "manual_nonempty_filter",
+   "values": {
+    "S": "({(0, 2)} : GT.Edges)",
+    "q": "(fun e => decide (e ∈ (∅ : GT.Edges)))"
+   }
+  },
+  {
+   "checked": true,
+   "statement": "manual_nonempty_erase",
+   "values": {
+    "S": "({(1, 2)} : GT.Edges)",
+    "e": "((1, 2) : ℕ × ℕ)"
+   }
+  }
+ ],
+ "declarations": [
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "GTDefs",
+   "name": "GT.TriangleFree",
+   "type_sha256": "c98548115419ec271dfd495799f10b35c81fad06e346ef970bd969a518c2a9f4"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "GTDefs",
+   "name": "GT.Edges",
+   "type_sha256": "baaddf70fb5d432b8bd948ef91d6f910124a6d138edae4d5f000c4610ddc8eae"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "GTDefs",
+   "name": "GT.instDecidableTriangleFree",
+   "type_sha256": "5f6ad93fcd86d217b85aa0d5ae9d8484d2f18f9af307b85f1d55bcb68ce406d1"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "HSDefs",
+   "name": "HS.instDecidableBounded8",
+   "type_sha256": "bb73792b7b918c05e489e5be220ab0e645e6d75f1b8616f9f4eb5c0dd437d9d2"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "HSDefs",
+   "name": "HS.Bounded8",
+   "type_sha256": "c98548115419ec271dfd495799f10b35c81fad06e346ef970bd969a518c2a9f4"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "HSDefs",
+   "name": "HS.instDecidableSimple",
+   "type_sha256": "7c27c71eaad7318747b484aa82461f70d01434b8c83c502b94d09613463fea20"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "HSDefs",
+   "name": "HS.Simple",
+   "type_sha256": "c98548115419ec271dfd495799f10b35c81fad06e346ef970bd969a518c2a9f4"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "HSConj",
+   "name": "HSConj.down_bounded",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "HSConj",
+   "name": "HSConj.down_simple",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "HSConj",
+   "name": "HSConj.down_tf",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "HSConj",
+   "name": "HSConj.inter_tf",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "HSConj",
+   "name": "HSConj.inter_simple",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "RCDefs",
+   "name": "RC.C0",
+   "type_sha256": "9e56932812f3736513e0f638114f0463ac36ec2d16bb971de8dbb8a8fc4c56bc"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "G4Defs",
+   "name": "G4.verts",
+   "type_sha256": "7a1ef65cd458ebf10bcecd44c843b1710d493ee0d98e109b6abc53d948459791"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "G4Defs",
+   "name": "G4.adj",
+   "type_sha256": "af2cc6046b4db7f006731f612da96fe9072947a3524d785304d4acef542f9814"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "G4Defs",
+   "name": "G4.instDecidableAdj",
+   "type_sha256": "15bfca590acf8edebe32601b938585677ac6d2a4d3d45c318ce25da607e3af52"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "G4Defs",
+   "name": "G4.C4Free",
+   "type_sha256": "c98548115419ec271dfd495799f10b35c81fad06e346ef970bd969a518c2a9f4"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "G4Defs",
+   "name": "G4.instDecidableC4Free",
+   "type_sha256": "696d08db70be0d43900686ce88431e9640ecc9ab7d9c645364f85ffea376c365"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "FFDefs",
+   "name": "FF.LoopFree",
+   "type_sha256": "c98548115419ec271dfd495799f10b35c81fad06e346ef970bd969a518c2a9f4"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "FFDefs",
+   "name": "FF.Matching",
+   "type_sha256": "c98548115419ec271dfd495799f10b35c81fad06e346ef970bd969a518c2a9f4"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "FFDefs",
+   "name": "FF.instDecidableMatching",
+   "type_sha256": "f1eb605ce2edb6ef7bb1cf8da2ed3f4e9fa42c30ed97cb62b915a3a8ad23a2ff"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "FFDefs",
+   "name": "FF.instDecidableNonEmpty",
+   "type_sha256": "93046c8536d6d52cc5d00890d47f133c6eb453baf84cd131783aed6f38cfcb03"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "FFDefs",
+   "name": "FF.NonEmpty",
+   "type_sha256": "c98548115419ec271dfd495799f10b35c81fad06e346ef970bd969a518c2a9f4"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "FFDefs",
+   "name": "FF.instDecidableLoopFree",
+   "type_sha256": "b254270f9c7a70752543b6e8548e183942a64fd80cf9cbf1a76167625b0346cf"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "FFMConj",
+   "name": "FFMConj.manual_loopfree_erase",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "FFMConj",
+   "name": "FFMConj.manual_nonempty_sdiff_negation",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "FFMConj",
+   "name": "FFMConj.manual_matching_inter",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "FFMConj",
+   "name": "FFMConj.manual_c4free_filter",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "FFMConj",
+   "name": "FFMConj.manual_loopfree_inter",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "FFMConj",
+   "name": "FFMConj.manual_nonempty_inter",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "FFMConj",
+   "name": "FFMConj.manual_nonempty_filter",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "FFMConj",
+   "name": "FFMConj.manual_matching_filter",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "FFMConj",
+   "name": "FFMConj.manual_matching_erase",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "FFMConj",
+   "name": "FFMConj.manual_nonempty_erase_negation",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "FFMConj",
+   "name": "FFMConj.manual_loopfree_filter",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "FFMConj",
+   "name": "FFMConj.inst_antitone_nonempty_negation",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "FFMConj",
+   "name": "FFMConj.manual_nonempty_inter_negation",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "FFMConj",
+   "name": "FFMConj.inst_antitone_c4free",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "FFMConj",
+   "name": "FFMConj.inst_antitone_matching",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "FFMConj",
+   "name": "FFMConj.inst_antitone_nonempty",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "FFMConj",
+   "name": "FFMConj.manual_c4free_sdiff",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "FFMConj",
+   "name": "FFMConj.inst_antitone_loopfree",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "FFMConj",
+   "name": "FFMConj.gen_antitone_inter",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "FFMConj",
+   "name": "FFMConj.manual_loopfree_sdiff",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "FFMConj",
+   "name": "FFMConj.gen_antitone_sdiff",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "FFMConj",
+   "name": "FFMConj.gen_antitone_erase",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "FFMConj",
+   "name": "FFMConj.gen_antitone_filter",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "FFMConj",
+   "name": "FFMConj.manual_nonempty_filter_negation",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "FFMConj",
+   "name": "FFMConj.manual_matching_sdiff",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "FFMConj",
+   "name": "FFMConj.manual_c4free_erase",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "FFMConj",
+   "name": "FFMConj.manual_c4free_inter",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "FFMConj",
+   "name": "FFMConj.manual_nonempty_sdiff",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "FFMConj",
+   "name": "FFMConj.manual_nonempty_erase",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "theorem",
+   "module": "FFMP1",
+   "name": "FFMP1.proof",
+   "type_sha256": "5b764c86e121e7fa6d1dcea2c91a67432818c5b5622cdf76cbe9a79b5abec9db"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "theorem",
+   "module": "FFMP2",
+   "name": "FFMP2.proof",
+   "type_sha256": "32007d60cc5ac00aaf6f2af66a9e52c1bb8e12904375dcb1e600c1ed12e7b6e6"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "theorem",
+   "module": "FFMP3",
+   "name": "FFMP3.proof",
+   "type_sha256": "952baa7215e32ef7816d15045ca436e5e3d6d57c1122a0250781dcaf04cd2489"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "theorem",
+   "module": "FFMP4",
+   "name": "FFMP4.proof",
+   "type_sha256": "991b587e63c2b1d3b08d0ca3dab9d0be971f37c50898b9c342e1c14366191d14"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "theorem",
+   "module": "FFMP5",
+   "name": "FFMP5.proof",
+   "type_sha256": "96745b3449ada89048ff38f50e021681ca0fabd642b03a1a81990bcd6bfa48a8"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "theorem",
+   "module": "FFMP6",
+   "name": "FFMP6.proof",
+   "type_sha256": "a29a15b639ecbff09f9da4d7ba31effd3ab4489f1af605788120fe673ebfa814"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "theorem",
+   "module": "FFMP7",
+   "name": "FFMP7.proof",
+   "type_sha256": "251da795d7789fed6afa2a61811b0a2661b7dbcbd4e889c275c3fb0d96f18e4f"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "theorem",
+   "module": "FFMP8",
+   "name": "FFMP8.proof",
+   "type_sha256": "7deb3384e924606b04e7033f5c3e1e06a487fc66cba754852c410fe667a8101c"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "theorem",
+   "module": "FFMP9",
+   "name": "FFMP9.proof",
+   "type_sha256": "7a843975bac74f234941a3e3c262efa618f6d527e630d541386b6fdf5a89d288"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "theorem",
+   "module": "FFMP10",
+   "name": "FFMP10.proof",
+   "type_sha256": "65635e540a7ab2ffc541d636e46508ea5821abac37b78a835923842bf7a6fe2a"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "theorem",
+   "module": "FFMP11",
+   "name": "FFMP11.proof",
+   "type_sha256": "141cb1d39bd4b7770f71db8bb8f0732b8f15683ab168eb7605a76b61fa29cc71"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "theorem",
+   "module": "FFMP12",
+   "name": "FFMP12.proof",
+   "type_sha256": "31522f1604cc7e595c580d875deb4b4fef5b150f6ef761cb761c66b7594cdffb"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "theorem",
+   "module": "FFMP13",
+   "name": "FFMP13.proof",
+   "type_sha256": "64f2dc4d54a49c1a3cbdb565e90780a4365694dcd1be7d986eb149eb99b6e77e"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "theorem",
+   "module": "FFMP14",
+   "name": "FFMP14.proof",
+   "type_sha256": "7cec4902a2a4051cbc72b124ba126bf9f23ac553b6cd27b27865667928f1a213"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "theorem",
+   "module": "FFMP15",
+   "name": "FFMP15.proof",
+   "type_sha256": "4b03f4b03a7867b7f7ae02607b4b07d0fdedfd204f5b0d9918f562e27bdab6fe"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "theorem",
+   "module": "FFMP16",
+   "name": "FFMP16.proof",
+   "type_sha256": "addfeba38fab5f4bb9345fc064b00345b1f9bea2756c847ca6a180f479372618"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "theorem",
+   "module": "FFMP17",
+   "name": "FFMP17.proof",
+   "type_sha256": "27a74383f44c077a60f282cf95ff554eb1ccac390c52c083c35c2badbf691cb5"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "theorem",
+   "module": "FFMP18",
+   "name": "FFMP18.proof",
+   "type_sha256": "84191ed3171f2f529d5fed6a795dd35d92d01e4eb046d83ed7bc5f1a4673a757"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "theorem",
+   "module": "FFMP19",
+   "name": "FFMP19.proof",
+   "type_sha256": "271262a15d93f1dc88707d28deb82224bcc8241fa6f4a99977d4e7e373db76b1"
+  }
+ ],
+ "definitions": [
+  {
+   "module": "GTDefs",
+   "name": "GT.TriangleFree",
+   "origin": "trusted-generated",
+   "type_sha256": "c98548115419ec271dfd495799f10b35c81fad06e346ef970bd969a518c2a9f4"
+  },
+  {
+   "module": "GTDefs",
+   "name": "GT.Edges",
+   "origin": "trusted-generated",
+   "type_sha256": "baaddf70fb5d432b8bd948ef91d6f910124a6d138edae4d5f000c4610ddc8eae"
+  },
+  {
+   "module": "GTDefs",
+   "name": "GT.instDecidableTriangleFree",
+   "origin": "trusted-generated",
+   "type_sha256": "5f6ad93fcd86d217b85aa0d5ae9d8484d2f18f9af307b85f1d55bcb68ce406d1"
+  },
+  {
+   "module": "HSDefs",
+   "name": "HS.instDecidableBounded8",
+   "origin": "trusted-generated",
+   "type_sha256": "bb73792b7b918c05e489e5be220ab0e645e6d75f1b8616f9f4eb5c0dd437d9d2"
+  },
+  {
+   "module": "HSDefs",
+   "name": "HS.Bounded8",
+   "origin": "trusted-generated",
+   "type_sha256": "c98548115419ec271dfd495799f10b35c81fad06e346ef970bd969a518c2a9f4"
+  },
+  {
+   "module": "HSDefs",
+   "name": "HS.instDecidableSimple",
+   "origin": "trusted-generated",
+   "type_sha256": "7c27c71eaad7318747b484aa82461f70d01434b8c83c502b94d09613463fea20"
+  },
+  {
+   "module": "HSDefs",
+   "name": "HS.Simple",
+   "origin": "trusted-generated",
+   "type_sha256": "c98548115419ec271dfd495799f10b35c81fad06e346ef970bd969a518c2a9f4"
+  },
+  {
+   "module": "HSConj",
+   "name": "HSConj.down_bounded",
+   "origin": "trusted-generated",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "module": "HSConj",
+   "name": "HSConj.down_simple",
+   "origin": "trusted-generated",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "module": "HSConj",
+   "name": "HSConj.down_tf",
+   "origin": "trusted-generated",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "module": "HSConj",
+   "name": "HSConj.inter_tf",
+   "origin": "trusted-generated",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "module": "HSConj",
+   "name": "HSConj.inter_simple",
+   "origin": "trusted-generated",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "module": "RCDefs",
+   "name": "RC.C0",
+   "origin": "trusted-generated",
+   "type_sha256": "9e56932812f3736513e0f638114f0463ac36ec2d16bb971de8dbb8a8fc4c56bc"
+  },
+  {
+   "module": "G4Defs",
+   "name": "G4.verts",
+   "origin": "trusted-generated",
+   "type_sha256": "7a1ef65cd458ebf10bcecd44c843b1710d493ee0d98e109b6abc53d948459791"
+  },
+  {
+   "module": "G4Defs",
+   "name": "G4.adj",
+   "origin": "trusted-generated",
+   "type_sha256": "af2cc6046b4db7f006731f612da96fe9072947a3524d785304d4acef542f9814"
+  },
+  {
+   "module": "G4Defs",
+   "name": "G4.instDecidableAdj",
+   "origin": "trusted-generated",
+   "type_sha256": "15bfca590acf8edebe32601b938585677ac6d2a4d3d45c318ce25da607e3af52"
+  },
+  {
+   "module": "G4Defs",
+   "name": "G4.C4Free",
+   "origin": "trusted-generated",
+   "type_sha256": "c98548115419ec271dfd495799f10b35c81fad06e346ef970bd969a518c2a9f4"
+  },
+  {
+   "module": "G4Defs",
+   "name": "G4.instDecidableC4Free",
+   "origin": "trusted-generated",
+   "type_sha256": "696d08db70be0d43900686ce88431e9640ecc9ab7d9c645364f85ffea376c365"
+  },
+  {
+   "module": "FFDefs",
+   "name": "FF.LoopFree",
+   "origin": "trusted-generated",
+   "type_sha256": "c98548115419ec271dfd495799f10b35c81fad06e346ef970bd969a518c2a9f4"
+  },
+  {
+   "module": "FFDefs",
+   "name": "FF.Matching",
+   "origin": "trusted-generated",
+   "type_sha256": "c98548115419ec271dfd495799f10b35c81fad06e346ef970bd969a518c2a9f4"
+  },
+  {
+   "module": "FFDefs",
+   "name": "FF.instDecidableMatching",
+   "origin": "trusted-generated",
+   "type_sha256": "f1eb605ce2edb6ef7bb1cf8da2ed3f4e9fa42c30ed97cb62b915a3a8ad23a2ff"
+  },
+  {
+   "module": "FFDefs",
+   "name": "FF.instDecidableNonEmpty",
+   "origin": "trusted-generated",
+   "type_sha256": "93046c8536d6d52cc5d00890d47f133c6eb453baf84cd131783aed6f38cfcb03"
+  },
+  {
+   "module": "FFDefs",
+   "name": "FF.NonEmpty",
+   "origin": "trusted-generated",
+   "type_sha256": "c98548115419ec271dfd495799f10b35c81fad06e346ef970bd969a518c2a9f4"
+  },
+  {
+   "module": "FFDefs",
+   "name": "FF.instDecidableLoopFree",
+   "origin": "trusted-generated",
+   "type_sha256": "b254270f9c7a70752543b6e8548e183942a64fd80cf9cbf1a76167625b0346cf"
+  },
+  {
+   "module": "FFMConj",
+   "name": "FFMConj.manual_loopfree_erase",
+   "origin": "trusted-generated",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "module": "FFMConj",
+   "name": "FFMConj.manual_nonempty_sdiff_negation",
+   "origin": "trusted-generated",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "module": "FFMConj",
+   "name": "FFMConj.manual_matching_inter",
+   "origin": "trusted-generated",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "module": "FFMConj",
+   "name": "FFMConj.manual_c4free_filter",
+   "origin": "trusted-generated",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "module": "FFMConj",
+   "name": "FFMConj.manual_loopfree_inter",
+   "origin": "trusted-generated",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "module": "FFMConj",
+   "name": "FFMConj.manual_nonempty_inter",
+   "origin": "trusted-generated",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "module": "FFMConj",
+   "name": "FFMConj.manual_nonempty_filter",
+   "origin": "trusted-generated",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "module": "FFMConj",
+   "name": "FFMConj.manual_matching_filter",
+   "origin": "trusted-generated",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "module": "FFMConj",
+   "name": "FFMConj.manual_matching_erase",
+   "origin": "trusted-generated",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "module": "FFMConj",
+   "name": "FFMConj.manual_nonempty_erase_negation",
+   "origin": "trusted-generated",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "module": "FFMConj",
+   "name": "FFMConj.manual_loopfree_filter",
+   "origin": "trusted-generated",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "module": "FFMConj",
+   "name": "FFMConj.inst_antitone_nonempty_negation",
+   "origin": "trusted-generated",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "module": "FFMConj",
+   "name": "FFMConj.manual_nonempty_inter_negation",
+   "origin": "trusted-generated",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "module": "FFMConj",
+   "name": "FFMConj.inst_antitone_c4free",
+   "origin": "trusted-generated",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "module": "FFMConj",
+   "name": "FFMConj.inst_antitone_matching",
+   "origin": "trusted-generated",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "module": "FFMConj",
+   "name": "FFMConj.inst_antitone_nonempty",
+   "origin": "trusted-generated",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "module": "FFMConj",
+   "name": "FFMConj.manual_c4free_sdiff",
+   "origin": "trusted-generated",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "module": "FFMConj",
+   "name": "FFMConj.inst_antitone_loopfree",
+   "origin": "trusted-generated",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "module": "FFMConj",
+   "name": "FFMConj.gen_antitone_inter",
+   "origin": "trusted-generated",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "module": "FFMConj",
+   "name": "FFMConj.manual_loopfree_sdiff",
+   "origin": "trusted-generated",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "module": "FFMConj",
+   "name": "FFMConj.gen_antitone_sdiff",
+   "origin": "trusted-generated",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "module": "FFMConj",
+   "name": "FFMConj.gen_antitone_erase",
+   "origin": "trusted-generated",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "module": "FFMConj",
+   "name": "FFMConj.gen_antitone_filter",
+   "origin": "trusted-generated",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "module": "FFMConj",
+   "name": "FFMConj.manual_nonempty_filter_negation",
+   "origin": "trusted-generated",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "module": "FFMConj",
+   "name": "FFMConj.manual_matching_sdiff",
+   "origin": "trusted-generated",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "module": "FFMConj",
+   "name": "FFMConj.manual_c4free_erase",
+   "origin": "trusted-generated",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "module": "FFMConj",
+   "name": "FFMConj.manual_c4free_inter",
+   "origin": "trusted-generated",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "module": "FFMConj",
+   "name": "FFMConj.manual_nonempty_sdiff",
+   "origin": "trusted-generated",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "module": "FFMConj",
+   "name": "FFMConj.manual_nonempty_erase",
+   "origin": "trusted-generated",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  }
+ ],
+ "dependencies": {
+  "FF.LoopFree": {
+   "package": [
+    "GT.Edges"
+   ],
+   "workspace_modules": [
+    "Init.Core",
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Defs",
+    "Mathlib.Data.SetLike.Basic"
+   ]
+  },
+  "FF.Matching": {
+   "package": [
+    "GT.Edges"
+   ],
+   "workspace_modules": [
+    "Init.Core",
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Defs",
+    "Mathlib.Data.SetLike.Basic"
+   ]
+  },
+  "FF.NonEmpty": {
+   "package": [
+    "GT.Edges"
+   ],
+   "workspace_modules": [
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Empty"
+   ]
+  },
+  "FF.instDecidableLoopFree": {
+   "package": [
+    "FF.LoopFree",
+    "GT.Edges"
+   ],
+   "workspace_modules": [
+    "Init.Core",
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Defs",
+    "Mathlib.Data.SetLike.Basic"
+   ]
+  },
+  "FF.instDecidableMatching": {
+   "package": [
+    "FF.Matching",
+    "GT.Edges"
+   ],
+   "workspace_modules": [
+    "Init.Core",
+    "Init.Prelude",
+    "Init.PropLemmas",
+    "Mathlib.Data.Finset.Defs",
+    "Mathlib.Data.SetLike.Basic"
+   ]
+  },
+  "FF.instDecidableNonEmpty": {
+   "package": [
+    "FF.NonEmpty",
+    "GT.Edges"
+   ],
+   "workspace_modules": [
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Empty"
+   ]
+  },
+  "FFMConj.gen_antitone_erase": {
+   "package": [
+    "GT.Edges"
+   ],
+   "workspace_modules": [
+    "Init.Core",
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Defs",
+    "Mathlib.Data.Finset.Erase",
+    "Mathlib.Order.Basic",
+    "Mathlib.Order.Defs.PartialOrder",
+    "Mathlib.Order.Monotone.Defs"
+   ]
+  },
+  "FFMConj.gen_antitone_filter": {
+   "package": [
+    "GT.Edges"
+   ],
+   "workspace_modules": [
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Defs",
+    "Mathlib.Data.Finset.Filter",
+    "Mathlib.Order.Basic",
+    "Mathlib.Order.Defs.PartialOrder",
+    "Mathlib.Order.Monotone.Defs"
+   ]
+  },
+  "FFMConj.gen_antitone_inter": {
+   "package": [
+    "GT.Edges"
+   ],
+   "workspace_modules": [
+    "Init.Core",
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Defs",
+    "Mathlib.Data.Finset.Lattice.Basic",
+    "Mathlib.Order.Basic",
+    "Mathlib.Order.Defs.PartialOrder",
+    "Mathlib.Order.Monotone.Defs"
+   ]
+  },
+  "FFMConj.gen_antitone_sdiff": {
+   "package": [
+    "GT.Edges"
+   ],
+   "workspace_modules": [
+    "Init.Core",
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Defs",
+    "Mathlib.Data.Finset.SDiff",
+    "Mathlib.Order.Basic",
+    "Mathlib.Order.Defs.PartialOrder",
+    "Mathlib.Order.Monotone.Defs"
+   ]
+  },
+  "FFMConj.inst_antitone_c4free": {
+   "package": [
+    "G4.C4Free",
+    "G4.adj",
+    "G4.verts",
+    "GT.Edges"
+   ],
+   "workspace_modules": [
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Defs",
+    "Mathlib.Order.Basic",
+    "Mathlib.Order.Defs.PartialOrder",
+    "Mathlib.Order.Monotone.Defs"
+   ]
+  },
+  "FFMConj.inst_antitone_loopfree": {
+   "package": [
+    "FF.LoopFree",
+    "GT.Edges"
+   ],
+   "workspace_modules": [
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Defs",
+    "Mathlib.Order.Basic",
+    "Mathlib.Order.Defs.PartialOrder",
+    "Mathlib.Order.Monotone.Defs"
+   ]
+  },
+  "FFMConj.inst_antitone_matching": {
+   "package": [
+    "FF.Matching",
+    "GT.Edges"
+   ],
+   "workspace_modules": [
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Defs",
+    "Mathlib.Order.Basic",
+    "Mathlib.Order.Defs.PartialOrder",
+    "Mathlib.Order.Monotone.Defs"
+   ]
+  },
+  "FFMConj.inst_antitone_nonempty": {
+   "package": [
+    "FF.NonEmpty",
+    "GT.Edges"
+   ],
+   "workspace_modules": [
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Defs",
+    "Mathlib.Order.Basic",
+    "Mathlib.Order.Defs.PartialOrder",
+    "Mathlib.Order.Monotone.Defs"
+   ]
+  },
+  "FFMConj.inst_antitone_nonempty_negation": {
+   "package": [
+    "FF.NonEmpty",
+    "FFMConj.inst_antitone_nonempty",
+    "GT.Edges"
+   ],
+   "workspace_modules": [
+    "Init.Prelude"
+   ]
+  },
+  "FFMConj.manual_c4free_erase": {
+   "package": [
+    "G4.C4Free",
+    "G4.adj",
+    "G4.verts",
+    "GT.Edges"
+   ],
+   "workspace_modules": [
+    "Init.Core",
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Erase"
+   ]
+  },
+  "FFMConj.manual_c4free_filter": {
+   "package": [
+    "G4.C4Free",
+    "G4.adj",
+    "G4.verts",
+    "GT.Edges"
+   ],
+   "workspace_modules": [
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Filter"
+   ]
+  },
+  "FFMConj.manual_c4free_inter": {
+   "package": [
+    "G4.C4Free",
+    "G4.adj",
+    "G4.verts",
+    "GT.Edges"
+   ],
+   "workspace_modules": [
+    "Init.Core",
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Lattice.Basic"
+   ]
+  },
+  "FFMConj.manual_c4free_sdiff": {
+   "package": [
+    "G4.C4Free",
+    "G4.adj",
+    "G4.verts",
+    "GT.Edges"
+   ],
+   "workspace_modules": [
+    "Init.Core",
+    "Init.Prelude",
+    "Mathlib.Data.Finset.SDiff"
+   ]
+  },
+  "FFMConj.manual_loopfree_erase": {
+   "package": [
+    "FF.LoopFree",
+    "GT.Edges"
+   ],
+   "workspace_modules": [
+    "Init.Core",
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Erase"
+   ]
+  },
+  "FFMConj.manual_loopfree_filter": {
+   "package": [
+    "FF.LoopFree",
+    "GT.Edges"
+   ],
+   "workspace_modules": [
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Filter"
+   ]
+  },
+  "FFMConj.manual_loopfree_inter": {
+   "package": [
+    "FF.LoopFree",
+    "GT.Edges"
+   ],
+   "workspace_modules": [
+    "Init.Core",
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Lattice.Basic"
+   ]
+  },
+  "FFMConj.manual_loopfree_sdiff": {
+   "package": [
+    "FF.LoopFree",
+    "GT.Edges"
+   ],
+   "workspace_modules": [
+    "Init.Core",
+    "Init.Prelude",
+    "Mathlib.Data.Finset.SDiff"
+   ]
+  },
+  "FFMConj.manual_matching_erase": {
+   "package": [
+    "FF.Matching",
+    "GT.Edges"
+   ],
+   "workspace_modules": [
+    "Init.Core",
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Erase"
+   ]
+  },
+  "FFMConj.manual_matching_filter": {
+   "package": [
+    "FF.Matching",
+    "GT.Edges"
+   ],
+   "workspace_modules": [
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Filter"
+   ]
+  },
+  "FFMConj.manual_matching_inter": {
+   "package": [
+    "FF.Matching",
+    "GT.Edges"
+   ],
+   "workspace_modules": [
+    "Init.Core",
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Lattice.Basic"
+   ]
+  },
+  "FFMConj.manual_matching_sdiff": {
+   "package": [
+    "FF.Matching",
+    "GT.Edges"
+   ],
+   "workspace_modules": [
+    "Init.Core",
+    "Init.Prelude",
+    "Mathlib.Data.Finset.SDiff"
+   ]
+  },
+  "FFMConj.manual_nonempty_erase": {
+   "package": [
+    "FF.NonEmpty",
+    "GT.Edges"
+   ],
+   "workspace_modules": [
+    "Init.Core",
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Erase"
+   ]
+  },
+  "FFMConj.manual_nonempty_erase_negation": {
+   "package": [
+    "FF.NonEmpty",
+    "FFMConj.manual_nonempty_erase",
+    "GT.Edges"
+   ],
+   "workspace_modules": [
+    "Init.Prelude"
+   ]
+  },
+  "FFMConj.manual_nonempty_filter": {
+   "package": [
+    "FF.NonEmpty",
+    "GT.Edges"
+   ],
+   "workspace_modules": [
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Filter"
+   ]
+  },
+  "FFMConj.manual_nonempty_filter_negation": {
+   "package": [
+    "FF.NonEmpty",
+    "FFMConj.manual_nonempty_filter",
+    "GT.Edges"
+   ],
+   "workspace_modules": [
+    "Init.Prelude"
+   ]
+  },
+  "FFMConj.manual_nonempty_inter": {
+   "package": [
+    "FF.NonEmpty",
+    "GT.Edges"
+   ],
+   "workspace_modules": [
+    "Init.Core",
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Lattice.Basic"
+   ]
+  },
+  "FFMConj.manual_nonempty_inter_negation": {
+   "package": [
+    "FF.NonEmpty",
+    "FFMConj.manual_nonempty_inter",
+    "GT.Edges"
+   ],
+   "workspace_modules": [
+    "Init.Prelude"
+   ]
+  },
+  "FFMConj.manual_nonempty_sdiff": {
+   "package": [
+    "FF.NonEmpty",
+    "GT.Edges"
+   ],
+   "workspace_modules": [
+    "Init.Core",
+    "Init.Prelude",
+    "Mathlib.Data.Finset.SDiff"
+   ]
+  },
+  "FFMConj.manual_nonempty_sdiff_negation": {
+   "package": [
+    "FF.NonEmpty",
+    "FFMConj.manual_nonempty_sdiff",
+    "GT.Edges"
+   ],
+   "workspace_modules": [
+    "Init.Prelude"
+   ]
+  },
+  "FFMP1.proof": {
+   "package": [
+    "FFMConj.gen_antitone_inter",
+    "GT.Edges"
+   ],
+   "workspace_modules": [
+    "Init.Core",
+    "Init.Prelude",
+    "Init.SimpLemmas",
+    "Mathlib.Data.Finset.Defs",
+    "Mathlib.Data.Finset.Lattice.Basic",
+    "Mathlib.Order.Basic",
+    "Mathlib.Order.Defs.PartialOrder",
+    "Mathlib.Order.Monotone.Defs"
+   ]
+  },
+  "FFMP10.proof": {
+   "package": [
+    "FF.LoopFree",
+    "FFMConj.gen_antitone_filter",
+    "FFMConj.inst_antitone_loopfree",
+    "FFMConj.manual_loopfree_filter",
+    "FFMP3.proof",
+    "FFMP5.proof",
+    "GT.Edges"
+   ],
+   "workspace_modules": [
+    "Init.Prelude"
+   ]
+  },
+  "FFMP11.proof": {
+   "package": [
+    "FF.LoopFree",
+    "FFMConj.gen_antitone_erase",
+    "FFMConj.inst_antitone_loopfree",
+    "FFMConj.manual_loopfree_erase",
+    "FFMP4.proof",
+    "FFMP5.proof",
+    "GT.Edges"
+   ],
+   "workspace_modules": [
+    "Init.Prelude"
+   ]
+  },
+  "FFMP12.proof": {
+   "package": [
+    "FF.Matching",
+    "FFMConj.gen_antitone_inter",
+    "FFMConj.inst_antitone_matching",
+    "FFMConj.manual_matching_inter",
+    "FFMP1.proof",
+    "FFMP6.proof",
+    "GT.Edges"
+   ],
+   "workspace_modules": [
+    "Init.Prelude"
+   ]
+  },
+  "FFMP13.proof": {
+   "package": [
+    "FF.Matching",
+    "FFMConj.gen_antitone_sdiff",
+    "FFMConj.inst_antitone_matching",
+    "FFMConj.manual_matching_sdiff",
+    "FFMP2.proof",
+    "FFMP6.proof",
+    "GT.Edges"
+   ],
+   "workspace_modules": [
+    "Init.Prelude"
+   ]
+  },
+  "FFMP14.proof": {
+   "package": [
+    "FF.Matching",
+    "FFMConj.gen_antitone_filter",
+    "FFMConj.inst_antitone_matching",
+    "FFMConj.manual_matching_filter",
+    "FFMP3.proof",
+    "FFMP6.proof",
+    "GT.Edges"
+   ],
+   "workspace_modules": [
+    "Init.Prelude"
+   ]
+  },
+  "FFMP15.proof": {
+   "package": [
+    "FF.Matching",
+    "FFMConj.gen_antitone_erase",
+    "FFMConj.inst_antitone_matching",
+    "FFMConj.manual_matching_erase",
+    "FFMP4.proof",
+    "FFMP6.proof",
+    "GT.Edges"
+   ],
+   "workspace_modules": [
+    "Init.Prelude"
+   ]
+  },
+  "FFMP16.proof": {
+   "package": [
+    "FF.NonEmpty",
+    "FF.instDecidableNonEmpty",
+    "FFMConj.manual_nonempty_inter",
+    "FFMConj.manual_nonempty_inter_negation",
+    "FFMP16.proof._proof_1_1",
+    "FFMP16.proof._proof_1_2",
+    "GT.Edges"
+   ],
+   "workspace_modules": [
+    "Init.Core",
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Insert",
+    "Mathlib.Data.Finset.Lattice.Basic"
+   ]
+  },
+  "FFMP16.proof._proof_1_1": {
+   "package": [
+    "FF.NonEmpty",
+    "FF.instDecidableNonEmpty",
+    "GT.Edges"
+   ],
+   "workspace_modules": [
+    "Init.Core",
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Insert"
+   ]
+  },
+  "FFMP16.proof._proof_1_2": {
+   "package": [
+    "FF.NonEmpty",
+    "FF.instDecidableNonEmpty",
+    "GT.Edges"
+   ],
+   "workspace_modules": [
+    "Init.Core",
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Insert",
+    "Mathlib.Data.Finset.Lattice.Basic"
+   ]
+  },
+  "FFMP17.proof": {
+   "package": [
+    "FF.NonEmpty",
+    "FF.instDecidableNonEmpty",
+    "FFMConj.manual_nonempty_sdiff",
+    "FFMConj.manual_nonempty_sdiff_negation",
+    "FFMP17.proof._proof_1_1",
+    "FFMP17.proof._proof_1_2",
+    "GT.Edges"
+   ],
+   "workspace_modules": [
+    "Init.Core",
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Insert",
+    "Mathlib.Data.Finset.SDiff"
+   ]
+  },
+  "FFMP17.proof._proof_1_1": {
+   "package": [
+    "FF.NonEmpty",
+    "FF.instDecidableNonEmpty",
+    "GT.Edges"
+   ],
+   "workspace_modules": [
+    "Init.Core",
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Insert"
+   ]
+  },
+  "FFMP17.proof._proof_1_2": {
+   "package": [
+    "FF.NonEmpty",
+    "FF.instDecidableNonEmpty",
+    "GT.Edges"
+   ],
+   "workspace_modules": [
+    "Init.Core",
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Insert",
+    "Mathlib.Data.Finset.SDiff"
+   ]
+  },
+  "FFMP18.proof": {
+   "package": [
+    "FF.NonEmpty",
+    "FF.instDecidableNonEmpty",
+    "FFMConj.manual_nonempty_filter",
+    "FFMConj.manual_nonempty_filter_negation",
+    "FFMP18.proof._proof_1_1",
+    "FFMP18.proof._proof_1_2",
+    "GT.Edges"
+   ],
+   "workspace_modules": [
+    "Init.Core",
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Defs",
+    "Mathlib.Data.Finset.Empty",
+    "Mathlib.Data.Finset.Filter",
+    "Mathlib.Data.Finset.Insert",
+    "Mathlib.Data.SetLike.Basic"
+   ]
+  },
+  "FFMP18.proof._proof_1_1": {
+   "package": [
+    "FF.NonEmpty",
+    "FF.instDecidableNonEmpty",
+    "GT.Edges"
+   ],
+   "workspace_modules": [
+    "Init.Core",
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Insert"
+   ]
+  },
+  "FFMP18.proof._proof_1_2": {
+   "package": [
+    "FF.NonEmpty",
+    "FF.instDecidableNonEmpty",
+    "GT.Edges"
+   ],
+   "workspace_modules": [
+    "Init.Core",
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Defs",
+    "Mathlib.Data.Finset.Empty",
+    "Mathlib.Data.Finset.Filter",
+    "Mathlib.Data.Finset.Insert",
+    "Mathlib.Data.SetLike.Basic"
+   ]
+  },
+  "FFMP19.proof": {
+   "package": [
+    "FF.NonEmpty",
+    "FF.instDecidableNonEmpty",
+    "FFMConj.manual_nonempty_erase",
+    "FFMConj.manual_nonempty_erase_negation",
+    "FFMP19.proof._proof_1_1",
+    "FFMP19.proof._proof_1_2",
+    "GT.Edges"
+   ],
+   "workspace_modules": [
+    "Init.Core",
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Erase",
+    "Mathlib.Data.Finset.Insert"
+   ]
+  },
+  "FFMP19.proof._proof_1_1": {
+   "package": [
+    "FF.NonEmpty",
+    "FF.instDecidableNonEmpty",
+    "GT.Edges"
+   ],
+   "workspace_modules": [
+    "Init.Core",
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Insert"
+   ]
+  },
+  "FFMP19.proof._proof_1_2": {
+   "package": [
+    "FF.NonEmpty",
+    "FF.instDecidableNonEmpty",
+    "GT.Edges"
+   ],
+   "workspace_modules": [
+    "Init.Core",
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Erase",
+    "Mathlib.Data.Finset.Insert"
+   ]
+  },
+  "FFMP2.proof": {
+   "package": [
+    "FFMConj.gen_antitone_sdiff",
+    "GT.Edges"
+   ],
+   "workspace_modules": [
+    "Init.Core",
+    "Init.Prelude",
+    "Init.SimpLemmas",
+    "Mathlib.Data.Finset.Defs",
+    "Mathlib.Data.Finset.Lattice.Basic",
+    "Mathlib.Data.Finset.SDiff",
+    "Mathlib.Order.Basic",
+    "Mathlib.Order.BooleanAlgebra.Basic",
+    "Mathlib.Order.Defs.PartialOrder",
+    "Mathlib.Order.Heyting.Basic",
+    "Mathlib.Order.Lattice",
+    "Mathlib.Order.Monotone.Defs"
+   ]
+  },
+  "FFMP3.proof": {
+   "package": [
+    "FFMConj.gen_antitone_filter",
+    "GT.Edges"
+   ],
+   "workspace_modules": [
+    "Init.Prelude",
+    "Init.SimpLemmas",
+    "Mathlib.Data.Finset.Defs",
+    "Mathlib.Data.Finset.Filter",
+    "Mathlib.Order.Basic",
+    "Mathlib.Order.Defs.PartialOrder",
+    "Mathlib.Order.Monotone.Defs"
+   ]
+  },
+  "FFMP4.proof": {
+   "package": [
+    "FFMConj.gen_antitone_erase",
+    "GT.Edges"
+   ],
+   "workspace_modules": [
+    "Init.Core",
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Defs",
+    "Mathlib.Data.Finset.Erase",
+    "Mathlib.Data.SetLike.Basic",
+    "Mathlib.Order.Basic",
+    "Mathlib.Order.Defs.PartialOrder",
+    "Mathlib.Order.Monotone.Defs"
+   ]
+  },
+  "FFMP5.proof": {
+   "package": [
+    "FF.LoopFree",
+    "FFMConj.inst_antitone_loopfree",
+    "GT.Edges"
+   ],
+   "workspace_modules": [
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Defs",
+    "Mathlib.Data.SetLike.Basic",
+    "Mathlib.Order.Defs.PartialOrder"
+   ]
+  },
+  "FFMP6.proof": {
+   "package": [
+    "FF.Matching",
+    "FFMConj.inst_antitone_matching",
+    "GT.Edges"
+   ],
+   "workspace_modules": [
+    "Init.Core",
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Defs",
+    "Mathlib.Data.SetLike.Basic",
+    "Mathlib.Order.Defs.PartialOrder"
+   ]
+  },
+  "FFMP7.proof": {
+   "package": [
+    "FF.NonEmpty",
+    "FF.instDecidableNonEmpty",
+    "FFMConj.inst_antitone_nonempty",
+    "FFMConj.inst_antitone_nonempty_negation",
+    "GT.Edges"
+   ],
+   "workspace_modules": [
+    "Init.Core",
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Defs",
+    "Mathlib.Data.Finset.Empty",
+    "Mathlib.Data.Finset.Insert",
+    "Mathlib.Order.Basic",
+    "Mathlib.Order.Defs.PartialOrder",
+    "Mathlib.Order.Monotone.Defs"
+   ]
+  },
+  "FFMP8.proof": {
+   "package": [
+    "FF.LoopFree",
+    "FFMConj.gen_antitone_inter",
+    "FFMConj.inst_antitone_loopfree",
+    "FFMConj.manual_loopfree_inter",
+    "FFMP1.proof",
+    "FFMP5.proof",
+    "GT.Edges"
+   ],
+   "workspace_modules": [
+    "Init.Prelude"
+   ]
+  },
+  "FFMP9.proof": {
+   "package": [
+    "FF.LoopFree",
+    "FFMConj.gen_antitone_sdiff",
+    "FFMConj.inst_antitone_loopfree",
+    "FFMConj.manual_loopfree_sdiff",
+    "FFMP2.proof",
+    "FFMP5.proof",
+    "GT.Edges"
+   ],
+   "workspace_modules": [
+    "Init.Prelude"
+   ]
+  },
+  "G4.C4Free": {
+   "package": [
+    "G4.adj",
+    "G4.verts",
+    "GT.Edges"
+   ],
+   "workspace_modules": [
+    "Init.Core",
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Defs",
+    "Mathlib.Data.SetLike.Basic"
+   ]
+  },
+  "G4.adj": {
+   "package": [
+    "GT.Edges"
+   ],
+   "workspace_modules": [
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Defs",
+    "Mathlib.Data.SetLike.Basic"
+   ]
+  },
+  "G4.instDecidableAdj": {
+   "package": [
+    "G4.adj",
+    "GT.Edges"
+   ],
+   "workspace_modules": [
+    "Init.Core",
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Defs",
+    "Mathlib.Data.SetLike.Basic"
+   ]
+  },
+  "G4.instDecidableC4Free": {
+   "package": [
+    "G4.C4Free",
+    "G4.adj",
+    "G4.instDecidableAdj",
+    "G4.verts",
+    "GT.Edges"
+   ],
+   "workspace_modules": [
+    "Init.Core",
+    "Init.Prelude",
+    "Init.PropLemmas",
+    "Mathlib.Data.Finset.Defs",
+    "Mathlib.Data.SetLike.Basic"
+   ]
+  },
+  "G4.verts": {
+   "package": [
+    "GT.Edges"
+   ],
+   "workspace_modules": [
+    "Init.Core",
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Defs",
+    "Mathlib.Data.Finset.Image",
+    "Mathlib.Data.Finset.Lattice.Basic"
+   ]
+  },
+  "GT.Edges": {
+   "package": [],
+   "workspace_modules": [
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Defs"
+   ]
+  },
+  "GT.TriangleFree": {
+   "package": [
+    "GT.Edges"
+   ],
+   "workspace_modules": [
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Defs",
+    "Mathlib.Data.SetLike.Basic"
+   ]
+  },
+  "GT.instDecidableTriangleFree": {
+   "package": [
+    "GT.Edges",
+    "GT.TriangleFree"
+   ],
+   "workspace_modules": [
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Defs",
+    "Mathlib.Data.SetLike.Basic"
+   ]
+  },
+  "HS.Bounded8": {
+   "package": [
+    "GT.Edges"
+   ],
+   "workspace_modules": [
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Defs",
+    "Mathlib.Data.SetLike.Basic"
+   ]
+  },
+  "HS.Simple": {
+   "package": [
+    "GT.Edges"
+   ],
+   "workspace_modules": [
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Defs",
+    "Mathlib.Data.SetLike.Basic"
+   ]
+  },
+  "HS.instDecidableBounded8": {
+   "package": [
+    "GT.Edges",
+    "HS.Bounded8"
+   ],
+   "workspace_modules": [
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Defs",
+    "Mathlib.Data.SetLike.Basic"
+   ]
+  },
+  "HS.instDecidableSimple": {
+   "package": [
+    "GT.Edges",
+    "HS.Simple"
+   ],
+   "workspace_modules": [
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Defs",
+    "Mathlib.Data.SetLike.Basic"
+   ]
+  },
+  "HSConj.down_bounded": {
+   "package": [
+    "GT.Edges",
+    "HS.Bounded8"
+   ],
+   "workspace_modules": [
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Defs",
+    "Mathlib.Order.Defs.PartialOrder"
+   ]
+  },
+  "HSConj.down_simple": {
+   "package": [
+    "GT.Edges",
+    "HS.Simple"
+   ],
+   "workspace_modules": [
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Defs",
+    "Mathlib.Order.Defs.PartialOrder"
+   ]
+  },
+  "HSConj.down_tf": {
+   "package": [
+    "GT.Edges",
+    "GT.TriangleFree"
+   ],
+   "workspace_modules": [
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Defs",
+    "Mathlib.Order.Defs.PartialOrder"
+   ]
+  },
+  "HSConj.inter_simple": {
+   "package": [
+    "GT.Edges",
+    "HS.Simple"
+   ],
+   "workspace_modules": [
+    "Init.Core",
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Lattice.Basic"
+   ]
+  },
+  "HSConj.inter_tf": {
+   "package": [
+    "GT.Edges",
+    "GT.TriangleFree"
+   ],
+   "workspace_modules": [
+    "Init.Core",
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Lattice.Basic"
+   ]
+  },
+  "RC.C0": {
+   "package": [
+    "GT.Edges"
+   ],
+   "workspace_modules": [
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Defs",
+    "Mathlib.Order.Defs.PartialOrder"
+   ]
+  }
+ },
+ "domain": "edge-set predicates",
+ "modules": [
+  {
+   "name": "GTDefs",
+   "source": "import Mathlib.Data.Finset.Powerset\n\nnamespace GT\n\n/-- Edge sets: ordered pairs (u, v), read as the edge {u, v}. Hosts list each edge once, with u < v. -/\nabbrev Edges := Finset (ℕ × ℕ)\n\n/-- No three edges (a, b), (b, c), (a, c). -/\ndef TriangleFree (S : Edges) : Prop :=\n  ∀ e ∈ S, ∀ f ∈ S, ∀ g ∈ S, ¬ (e.1 = g.1 ∧ e.2 = f.1 ∧ f.2 = g.2)\n\ninstance (S : Edges) : Decidable (TriangleFree S) := by\n  unfold TriangleFree; infer_instance\n\nend GT\n",
+   "source_sha256": "34a84d4f227cbf5a95012a37a9f263f14ca419a4959be42c674d8abc47c9e3a7",
+   "trusted": true
+  },
+  {
+   "name": "HSDefs",
+   "source": "import GTDefs\n\nnamespace HS\n\n/-- History predicate: every pair is listed as (u, v) with u < v. -/\ndef Simple (S : GT.Edges) : Prop := ∀ e ∈ S, e.1 < e.2\n\n/-- History predicate: every endpoint is below 8. -/\ndef Bounded8 (S : GT.Edges) : Prop := ∀ e ∈ S, e.1 < 8 ∧ e.2 < 8\n\ninstance (S : GT.Edges) : Decidable (Simple S) := by unfold Simple; infer_instance\ninstance (S : GT.Edges) : Decidable (Bounded8 S) := by unfold Bounded8; infer_instance\n\nend HS\n",
+   "source_sha256": "fda70a92d2893b0470ae39d2918fca1b195e1db384d6fedbbc1950b51e65d5db",
+   "trusted": true
+  },
+  {
+   "name": "HSConj",
+   "source": "import GTDefs\nimport HSDefs\nset_option linter.unusedVariables false\n\nnamespace HSConj\n/-- Generated conjecture `down_tf` (history). -/\ndef down_tf : Prop := ∀ (S : GT.Edges) (T : GT.Edges) (h1 : T ⊆ S) (h2 : GT.TriangleFree S), GT.TriangleFree T\n/-- Generated conjecture `down_simple` (history). -/\ndef down_simple : Prop := ∀ (S : GT.Edges) (T : GT.Edges) (h1 : T ⊆ S) (h2 : HS.Simple S), HS.Simple T\n/-- Generated conjecture `down_bounded` (history). -/\ndef down_bounded : Prop := ∀ (S : GT.Edges) (T : GT.Edges) (h1 : T ⊆ S) (h2 : HS.Bounded8 S), HS.Bounded8 T\n/-- Generated conjecture `inter_tf` (history). -/\ndef inter_tf : Prop := ∀ (S : GT.Edges) (T : GT.Edges) (h1 : GT.TriangleFree S), GT.TriangleFree (S ∩ T)\n/-- Generated conjecture `inter_simple` (history). -/\ndef inter_simple : Prop := ∀ (S : GT.Edges) (T : GT.Edges) (h1 : HS.Simple S), HS.Simple (S ∩ T)\nend HSConj\n",
+   "source_sha256": "b51522fc7800b90635c57f6e77ae907ef1f30cf3054ccf078472d4ad0d5b5040",
+   "trusted": true
+  },
+  {
+   "name": "RCDefs",
+   "source": "import GTDefs\nimport HSDefs\n\nnamespace RC\n\n/-- Recovered by typed anti-unification of HSConj.down_bounded, HSConj.down_simple, HSConj.down_tf. -/\ndef C0 (P0 : GT.Edges -> Prop) : Prop := (∀ (x0 : @GT.Edges), (∀ (x1 : @GT.Edges), (∀ (x2 : (@LE.le @GT.Edges (@Preorder.toLE @GT.Edges (@PartialOrder.toPreorder @GT.Edges (@Finset.instPartialOrder (@Prod @Nat @Nat)))) x1 x0)), (∀ (x3 : (P0 x0)), (P0 x1)))))\n\nend RC\n",
+   "source_sha256": "640f2b577f249cc93dd38a96935449b2cee5e8444b6040c263d712a4875931ae",
+   "trusted": true
+  },
+  {
+   "name": "G4Defs",
+   "source": "import GTDefs\n\nnamespace G4\n\n/-- Domain contract (c4_host_v2): u and v are joined in S, in either orientation. -/\ndef adj (S : GT.Edges) (u v : ℕ) : Prop := (u, v) ∈ S ∨ (v, u) ∈ S\n\ninstance (S : GT.Edges) (u v : ℕ) : Decidable (adj S u v) := by\n  unfold adj; infer_instance\n\ndef verts (S : GT.Edges) : Finset ℕ := S.image Prod.fst ∪ S.image Prod.snd\n\n/-- No 4-cycle a-b-c-d-a with a ≠ c and b ≠ d. -/\ndef C4Free (S : GT.Edges) : Prop :=\n  ∀ a ∈ verts S, ∀ b ∈ verts S, ∀ c ∈ verts S, ∀ d ∈ verts S,\n    a ≠ c → b ≠ d → ¬ (adj S a b ∧ adj S b c ∧ adj S c d ∧ adj S d a)\n\ninstance (S : GT.Edges) : Decidable (C4Free S) := by\n  unfold C4Free; infer_instance\n\nend G4\n",
+   "source_sha256": "bf94fb5d73cc9d32e1e11167df93df0ca356b3f1a6de0b050a8efe53bae7987b",
+   "trusted": true
+  },
+  {
+   "name": "FFDefs",
+   "source": "import GTDefs\nimport G4Defs\n\nnamespace FF\n\n/-- Fresh predicate: no loops. -/\ndef LoopFree (S : GT.Edges) : Prop := ∀ e ∈ S, e.1 ≠ e.2\n\n/-- Fresh predicate: distinct pairs share no endpoint. -/\ndef Matching (S : GT.Edges) : Prop :=\n  ∀ e ∈ S, ∀ f ∈ S, e ≠ f → e.1 ≠ f.1 ∧ e.1 ≠ f.2 ∧ e.2 ≠ f.1 ∧ e.2 ≠ f.2\n\n/-- Fresh predicate that is not down-closed. -/\ndef NonEmpty (S : GT.Edges) : Prop := S.Nonempty\n\ninstance (S : GT.Edges) : Decidable (LoopFree S) := by unfold LoopFree; infer_instance\ninstance (S : GT.Edges) : Decidable (Matching S) := by unfold Matching; infer_instance\ninstance (S : GT.Edges) : Decidable (NonEmpty S) := by unfold NonEmpty; infer_instance\n\nend FF\n",
+   "source_sha256": "0c27f1d95779fd682934358911785dc66149d7cf0a39c57d16181aa088198785",
+   "trusted": true
+  },
+  {
+   "name": "FFMConj",
+   "source": "import GTDefs\nimport HSDefs\nimport HSConj\nimport RCDefs\nimport G4Defs\nimport FFDefs\nset_option linter.unusedVariables false\n\nnamespace FFMConj\n/-- Generated conjecture `gen_antitone_inter` (generated:generic-over-antitone). -/\ndef gen_antitone_inter : Prop := ∀ (P : GT.Edges → Prop) (h : Antitone P) (S : GT.Edges) (T : GT.Edges) (h1 : P S), P (S ∩ T)\n/-- Generated conjecture `gen_antitone_sdiff` (generated:generic-over-antitone). -/\ndef gen_antitone_sdiff : Prop := ∀ (P : GT.Edges → Prop) (h : Antitone P) (S : GT.Edges) (T : GT.Edges) (h1 : P S), P (S \\ T)\n/-- Generated conjecture `gen_antitone_filter` (generated:generic-over-antitone). -/\ndef gen_antitone_filter : Prop := ∀ (P : GT.Edges → Prop) (h : Antitone P) (S : GT.Edges) (q : ℕ × ℕ → Bool) (h1 : P S), P (S.filter fun e => q e)\n/-- Generated conjecture `gen_antitone_erase` (generated:generic-over-antitone). -/\ndef gen_antitone_erase : Prop := ∀ (P : GT.Edges → Prop) (h : Antitone P) (S : GT.Edges) (e : ℕ × ℕ) (h1 : P S), P (S.erase e)\n/-- Generated conjecture `inst_antitone_loopfree` (generated:antitone-instance). -/\ndef inst_antitone_loopfree : Prop := Antitone FF.LoopFree\n/-- Generated conjecture `inst_antitone_matching` (generated:antitone-instance). -/\ndef inst_antitone_matching : Prop := Antitone FF.Matching\n/-- Generated conjecture `inst_antitone_c4free` (generated:antitone-instance). -/\ndef inst_antitone_c4free : Prop := Antitone G4.C4Free\n/-- Generated conjecture `inst_antitone_nonempty` (generated:antitone-instance). -/\ndef inst_antitone_nonempty : Prop := Antitone FF.NonEmpty\ndef inst_antitone_nonempty_negation : Prop := ¬ inst_antitone_nonempty\n/-- Generated conjecture `manual_loopfree_inter` (fresh-family). -/\ndef manual_loopfree_inter : Prop := ∀ (S : GT.Edges) (T : GT.Edges) (h1 : FF.LoopFree S), FF.LoopFree (S ∩ T)\n/-- Generated conjecture `manual_loopfree_sdiff` (fresh-family). -/\ndef manual_loopfree_sdiff : Prop := ∀ (S : GT.Edges) (T : GT.Edges) (h1 : FF.LoopFree S), FF.LoopFree (S \\ T)\n/-- Generated conjecture `manual_loopfree_filter` (fresh-family). -/\ndef manual_loopfree_filter : Prop := ∀ (S : GT.Edges) (q : ℕ × ℕ → Bool) (h1 : FF.LoopFree S), FF.LoopFree (S.filter fun e => q e)\n/-- Generated conjecture `manual_loopfree_erase` (fresh-family). -/\ndef manual_loopfree_erase : Prop := ∀ (S : GT.Edges) (e : ℕ × ℕ) (h1 : FF.LoopFree S), FF.LoopFree (S.erase e)\n/-- Generated conjecture `manual_matching_inter` (fresh-family). -/\ndef manual_matching_inter : Prop := ∀ (S : GT.Edges) (T : GT.Edges) (h1 : FF.Matching S), FF.Matching (S ∩ T)\n/-- Generated conjecture `manual_matching_sdiff` (fresh-family). -/\ndef manual_matching_sdiff : Prop := ∀ (S : GT.Edges) (T : GT.Edges) (h1 : FF.Matching S), FF.Matching (S \\ T)\n/-- Generated conjecture `manual_matching_filter` (fresh-family). -/\ndef manual_matching_filter : Prop := ∀ (S : GT.Edges) (q : ℕ × ℕ → Bool) (h1 : FF.Matching S), FF.Matching (S.filter fun e => q e)\n/-- Generated conjecture `manual_matching_erase` (fresh-family). -/\ndef manual_matching_erase : Prop := ∀ (S : GT.Edges) (e : ℕ × ℕ) (h1 : FF.Matching S), FF.Matching (S.erase e)\n/-- Generated conjecture `manual_c4free_inter` (fresh-family). -/\ndef manual_c4free_inter : Prop := ∀ (S : GT.Edges) (T : GT.Edges) (h1 : G4.C4Free S), G4.C4Free (S ∩ T)\n/-- Generated conjecture `manual_c4free_sdiff` (fresh-family). -/\ndef manual_c4free_sdiff : Prop := ∀ (S : GT.Edges) (T : GT.Edges) (h1 : G4.C4Free S), G4.C4Free (S \\ T)\n/-- Generated conjecture `manual_c4free_filter` (fresh-family). -/\ndef manual_c4free_filter : Prop := ∀ (S : GT.Edges) (q : ℕ × ℕ → Bool) (h1 : G4.C4Free S), G4.C4Free (S.filter fun e => q e)\n/-- Generated conjecture `manual_c4free_erase` (fresh-family). -/\ndef manual_c4free_erase : Prop := ∀ (S : GT.Edges) (e : ℕ × ℕ) (h1 : G4.C4Free S), G4.C4Free (S.erase e)\n/-- Generated conjecture `manual_nonempty_inter` (fresh-family). -/\ndef manual_nonempty_inter : Prop := ∀ (S : GT.Edges) (T : GT.Edges) (h1 : FF.NonEmpty S), FF.NonEmpty (S ∩ T)\ndef manual_nonempty_inter_negation : Prop := ¬ manual_nonempty_inter\n/-- Generated conjecture `manual_nonempty_sdiff` (fresh-family). -/\ndef manual_nonempty_sdiff : Prop := ∀ (S : GT.Edges) (T : GT.Edges) (h1 : FF.NonEmpty S), FF.NonEmpty (S \\ T)\ndef manual_nonempty_sdiff_negation : Prop := ¬ manual_nonempty_sdiff\n/-- Generated conjecture `manual_nonempty_filter` (fresh-family). -/\ndef manual_nonempty_filter : Prop := ∀ (S : GT.Edges) (q : ℕ × ℕ → Bool) (h1 : FF.NonEmpty S), FF.NonEmpty (S.filter fun e => q e)\ndef manual_nonempty_filter_negation : Prop := ¬ manual_nonempty_filter\n/-- Generated conjecture `manual_nonempty_erase` (fresh-family). -/\ndef manual_nonempty_erase : Prop := ∀ (S : GT.Edges) (e : ℕ × ℕ) (h1 : FF.NonEmpty S), FF.NonEmpty (S.erase e)\ndef manual_nonempty_erase_negation : Prop := ¬ manual_nonempty_erase\nend FFMConj\n",
+   "source_sha256": "2f794cacb793f7bc5b84d8ca89f835fe76a379d08958d1e13a3bd50814574826",
+   "trusted": true
+  },
+  {
+   "name": "FFMP1",
+   "source": "import GTDefs\nimport HSDefs\nimport HSConj\nimport RCDefs\nimport G4Defs\nimport FFDefs\nimport FFMConj\nnamespace FFMP1\ntheorem proof : FFMConj.gen_antitone_inter := by\n  unfold FFMConj.gen_antitone_inter\n  intro P h S T h1\n  exact h (show S ∩ T ≤ S by simp) h1\nend FFMP1\n",
+   "source_sha256": "e893a04739b475f153e0705020024dc1c9d6b216f6051ff8bfbf55fc481b1042",
+   "trusted": false
+  },
+  {
+   "name": "FFMP2",
+   "source": "import GTDefs\nimport HSDefs\nimport HSConj\nimport RCDefs\nimport G4Defs\nimport FFDefs\nimport FFMConj\nimport FFMP1\nnamespace FFMP2\ntheorem proof : FFMConj.gen_antitone_sdiff := by\n  unfold FFMConj.gen_antitone_sdiff\n  intro P h S T h1\n  exact h (show S \\ T ≤ S by simp) h1\nend FFMP2\n",
+   "source_sha256": "7d132450c1a7f709c3228f13a607ae736bef004608184954e93c09c3c3cbd0c8",
+   "trusted": false
+  },
+  {
+   "name": "FFMP3",
+   "source": "import GTDefs\nimport HSDefs\nimport HSConj\nimport RCDefs\nimport G4Defs\nimport FFDefs\nimport FFMConj\nimport FFMP1\nimport FFMP2\nnamespace FFMP3\ntheorem proof : FFMConj.gen_antitone_filter := by\n  unfold FFMConj.gen_antitone_filter\n  intro P h S q h1\n  try unfold RC.C0 at *\n  try unfold FF.LoopFree at *\n  try unfold FF.Matching at *\n  try unfold FF.NonEmpty at *\n  try unfold G4.C4Free at *\n  try unfold G4.adj at *\n  try unfold G4.verts at *\n  aesop\nend FFMP3\n",
+   "source_sha256": "6ffa31cbb29baaffbf66247ea6d87877ce02fc8a07e5d31702995a9ad938e870",
+   "trusted": false
+  },
+  {
+   "name": "FFMP4",
+   "source": "import GTDefs\nimport HSDefs\nimport HSConj\nimport RCDefs\nimport G4Defs\nimport FFDefs\nimport FFMConj\nimport FFMP1\nimport FFMP2\nimport FFMP3\nnamespace FFMP4\ntheorem proof : FFMConj.gen_antitone_erase := by\n  unfold FFMConj.gen_antitone_erase\n  intro P h S e h1\n  exact h (show S.erase e ≤ S from fun x hx => by simp_all) h1\nend FFMP4\n",
+   "source_sha256": "f451a475af30b1605a30435938e84871b8590bddf7e1e0f6f8f140c42673c1fd",
+   "trusted": false
+  },
+  {
+   "name": "FFMP5",
+   "source": "import GTDefs\nimport HSDefs\nimport HSConj\nimport RCDefs\nimport G4Defs\nimport FFDefs\nimport FFMConj\nimport FFMP1\nimport FFMP2\nimport FFMP3\nimport FFMP4\nnamespace FFMP5\ntheorem proof : FFMConj.inst_antitone_loopfree := by\n  unfold FFMConj.inst_antitone_loopfree\n  intro S T h1 h2\n  try unfold FF.LoopFree at *\n  try unfold FF.Matching at *\n  try unfold FF.NonEmpty at *\n  try unfold G4.C4Free at *\n  try unfold G4.adj at *\n  try unfold G4.verts at *\n  intros\n  apply h2 <;> solve_by_elim\nend FFMP5\n",
+   "source_sha256": "26d8fb97edc10696bd67c81fb4736d4d4ebd1a6187c6454de1fee38e258cfcb9",
+   "trusted": false
+  },
+  {
+   "name": "FFMP6",
+   "source": "import GTDefs\nimport HSDefs\nimport HSConj\nimport RCDefs\nimport G4Defs\nimport FFDefs\nimport FFMConj\nimport FFMP1\nimport FFMP2\nimport FFMP3\nimport FFMP4\nimport FFMP5\nnamespace FFMP6\ntheorem proof : FFMConj.inst_antitone_matching := by\n  unfold FFMConj.inst_antitone_matching\n  intro S T h1 h2\n  try unfold FF.LoopFree at *\n  try unfold FF.Matching at *\n  try unfold FF.NonEmpty at *\n  try unfold G4.C4Free at *\n  try unfold G4.adj at *\n  try unfold G4.verts at *\n  intros\n  apply h2 <;> solve_by_elim\nend FFMP6\n",
+   "source_sha256": "18c4bdbaf19e71b3f97fb7838ecd1a0e459745a69689dd6d4b0a61d0ae7420a4",
+   "trusted": false
+  },
+  {
+   "name": "FFMP7",
+   "source": "import GTDefs\nimport HSDefs\nimport HSConj\nimport RCDefs\nimport G4Defs\nimport FFDefs\nimport FFMConj\nimport FFMP1\nimport FFMP2\nimport FFMP3\nimport FFMP4\nimport FFMP5\nimport FFMP6\nnamespace FFMP7\ntheorem proof : FFMConj.inst_antitone_nonempty_negation := by\n  unfold FFMConj.inst_antitone_nonempty_negation FFMConj.inst_antitone_nonempty\n  intro h\n  exact absurd (h (show (∅ : GT.Edges) ≤ ({(0, 0), (3, 2)} : GT.Edges) by decide) (by decide)) (by decide)\nend FFMP7\n",
+   "source_sha256": "2194b919054e7d2dd7e89ed8765e2e7414e0c471a3d121f141b2567fa6bab2e9",
+   "trusted": false
+  },
+  {
+   "name": "FFMP8",
+   "source": "import GTDefs\nimport HSDefs\nimport HSConj\nimport RCDefs\nimport G4Defs\nimport FFDefs\nimport FFMConj\nimport FFMP1\nimport FFMP2\nimport FFMP3\nimport FFMP4\nimport FFMP5\nimport FFMP6\nimport FFMP7\nnamespace FFMP8\ntheorem proof : FFMConj.manual_loopfree_inter := by\n  unfold FFMConj.manual_loopfree_inter\n  intro S T h1\n  solve_by_elim [FFMP1.proof, FFMP2.proof, FFMP3.proof, FFMP4.proof, FFMP5.proof, FFMP6.proof]\nend FFMP8\n",
+   "source_sha256": "b0c5d5703844e11f275d9809ace8c64367145fefc1a6caa61202bcfc69ab5cce",
+   "trusted": false
+  },
+  {
+   "name": "FFMP9",
+   "source": "import GTDefs\nimport HSDefs\nimport HSConj\nimport RCDefs\nimport G4Defs\nimport FFDefs\nimport FFMConj\nimport FFMP1\nimport FFMP2\nimport FFMP3\nimport FFMP4\nimport FFMP5\nimport FFMP6\nimport FFMP7\nimport FFMP8\nnamespace FFMP9\ntheorem proof : FFMConj.manual_loopfree_sdiff := by\n  unfold FFMConj.manual_loopfree_sdiff\n  intro S T h1\n  solve_by_elim [FFMP1.proof, FFMP2.proof, FFMP3.proof, FFMP4.proof, FFMP5.proof, FFMP6.proof, FFMP8.proof]\nend FFMP9\n",
+   "source_sha256": "fb8fd549a49e5ea071d35714955153b0179acc574dc9a2d417eb518be2c82be0",
+   "trusted": false
+  },
+  {
+   "name": "FFMP10",
+   "source": "import GTDefs\nimport HSDefs\nimport HSConj\nimport RCDefs\nimport G4Defs\nimport FFDefs\nimport FFMConj\nimport FFMP1\nimport FFMP2\nimport FFMP3\nimport FFMP4\nimport FFMP5\nimport FFMP6\nimport FFMP7\nimport FFMP8\nimport FFMP9\nnamespace FFMP10\ntheorem proof : FFMConj.manual_loopfree_filter := by\n  unfold FFMConj.manual_loopfree_filter\n  intro S q h1\n  solve_by_elim [FFMP1.proof, FFMP2.proof, FFMP3.proof, FFMP4.proof, FFMP5.proof, FFMP6.proof, FFMP8.proof, FFMP9.proof]\nend FFMP10\n",
+   "source_sha256": "f33e0e41f4d6652c1d17754514d1ddc1c8ff940475e394eb50b1dfec9e140c74",
+   "trusted": false
+  },
+  {
+   "name": "FFMP11",
+   "source": "import GTDefs\nimport HSDefs\nimport HSConj\nimport RCDefs\nimport G4Defs\nimport FFDefs\nimport FFMConj\nimport FFMP1\nimport FFMP2\nimport FFMP3\nimport FFMP4\nimport FFMP5\nimport FFMP6\nimport FFMP7\nimport FFMP8\nimport FFMP9\nimport FFMP10\nnamespace FFMP11\ntheorem proof : FFMConj.manual_loopfree_erase := by\n  unfold FFMConj.manual_loopfree_erase\n  intro S e h1\n  solve_by_elim [FFMP1.proof, FFMP2.proof, FFMP3.proof, FFMP4.proof, FFMP5.proof, FFMP6.proof, FFMP8.proof, FFMP9.proof, FFMP10.proof]\nend FFMP11\n",
+   "source_sha256": "3857f35fcd6dd425305ef17205dc56002e1179d10b3f0b31e83dff0d641d7962",
+   "trusted": false
+  },
+  {
+   "name": "FFMP12",
+   "source": "import GTDefs\nimport HSDefs\nimport HSConj\nimport RCDefs\nimport G4Defs\nimport FFDefs\nimport FFMConj\nimport FFMP1\nimport FFMP2\nimport FFMP3\nimport FFMP4\nimport FFMP5\nimport FFMP6\nimport FFMP7\nimport FFMP8\nimport FFMP9\nimport FFMP10\nimport FFMP11\nnamespace FFMP12\ntheorem proof : FFMConj.manual_matching_inter := by\n  unfold FFMConj.manual_matching_inter\n  intro S T h1\n  solve_by_elim [FFMP1.proof, FFMP2.proof, FFMP3.proof, FFMP4.proof, FFMP5.proof, FFMP6.proof, FFMP8.proof, FFMP9.proof, FFMP10.proof, FFMP11.proof]\nend FFMP12\n",
+   "source_sha256": "57abffb83d234a7c004007360c6e718bf13caa5453ec44d6ca9e6743ad341f83",
+   "trusted": false
+  },
+  {
+   "name": "FFMP13",
+   "source": "import GTDefs\nimport HSDefs\nimport HSConj\nimport RCDefs\nimport G4Defs\nimport FFDefs\nimport FFMConj\nimport FFMP1\nimport FFMP2\nimport FFMP3\nimport FFMP4\nimport FFMP5\nimport FFMP6\nimport FFMP7\nimport FFMP8\nimport FFMP9\nimport FFMP10\nimport FFMP11\nimport FFMP12\nnamespace FFMP13\ntheorem proof : FFMConj.manual_matching_sdiff := by\n  unfold FFMConj.manual_matching_sdiff\n  intro S T h1\n  solve_by_elim [FFMP1.proof, FFMP2.proof, FFMP3.proof, FFMP4.proof, FFMP5.proof, FFMP6.proof, FFMP8.proof, FFMP9.proof, FFMP10.proof, FFMP11.proof, FFMP12.proof]\nend FFMP13\n",
+   "source_sha256": "33ff2ce961aa0d006f6c82c277a37710fe99b10fd6921fff6bfcfe3e64ced51b",
+   "trusted": false
+  },
+  {
+   "name": "FFMP14",
+   "source": "import GTDefs\nimport HSDefs\nimport HSConj\nimport RCDefs\nimport G4Defs\nimport FFDefs\nimport FFMConj\nimport FFMP1\nimport FFMP2\nimport FFMP3\nimport FFMP4\nimport FFMP5\nimport FFMP6\nimport FFMP7\nimport FFMP8\nimport FFMP9\nimport FFMP10\nimport FFMP11\nimport FFMP12\nimport FFMP13\nnamespace FFMP14\ntheorem proof : FFMConj.manual_matching_filter := by\n  unfold FFMConj.manual_matching_filter\n  intro S q h1\n  solve_by_elim [FFMP1.proof, FFMP2.proof, FFMP3.proof, FFMP4.proof, FFMP5.proof, FFMP6.proof, FFMP8.proof, FFMP9.proof, FFMP10.proof, FFMP11.proof, FFMP12.proof, FFMP13.proof]\nend FFMP14\n",
+   "source_sha256": "ba25ad1b37a14536ab579f6c51637ffb0dc4537755236a3072c9b2078829bd9c",
+   "trusted": false
+  },
+  {
+   "name": "FFMP15",
+   "source": "import GTDefs\nimport HSDefs\nimport HSConj\nimport RCDefs\nimport G4Defs\nimport FFDefs\nimport FFMConj\nimport FFMP1\nimport FFMP2\nimport FFMP3\nimport FFMP4\nimport FFMP5\nimport FFMP6\nimport FFMP7\nimport FFMP8\nimport FFMP9\nimport FFMP10\nimport FFMP11\nimport FFMP12\nimport FFMP13\nimport FFMP14\nnamespace FFMP15\ntheorem proof : FFMConj.manual_matching_erase := by\n  unfold FFMConj.manual_matching_erase\n  intro S e h1\n  solve_by_elim [FFMP1.proof, FFMP2.proof, FFMP3.proof, FFMP4.proof, FFMP5.proof, FFMP6.proof, FFMP8.proof, FFMP9.proof, FFMP10.proof, FFMP11.proof, FFMP12.proof, FFMP13.proof, FFMP14.proof]\nend FFMP15\n",
+   "source_sha256": "236cb0f222ac964ccf608fc0261bfaff2d24afb3ab20fadf4ade065013c85e05",
+   "trusted": false
+  },
+  {
+   "name": "FFMP16",
+   "source": "import GTDefs\nimport HSDefs\nimport HSConj\nimport RCDefs\nimport G4Defs\nimport FFDefs\nimport FFMConj\nimport FFMP1\nimport FFMP2\nimport FFMP3\nimport FFMP4\nimport FFMP5\nimport FFMP6\nimport FFMP7\nimport FFMP8\nimport FFMP9\nimport FFMP10\nimport FFMP11\nimport FFMP12\nimport FFMP13\nimport FFMP14\nimport FFMP15\nnamespace FFMP16\ntheorem proof : FFMConj.manual_nonempty_inter_negation := by\n  unfold FFMConj.manual_nonempty_inter_negation FFMConj.manual_nonempty_inter\n  intro h\n  exact absurd (h (({(3, 2)} : GT.Edges)) (({(1, 3)} : GT.Edges)) (by first | decide +kernel | (intro v; omega) | omega | (intros; omega))) (by decide +kernel)\nend FFMP16\n",
+   "source_sha256": "2a89e65a4ba5beff015c3ca507bac92994b950319f64d1513cf30df32e1fe6a5",
+   "trusted": false
+  },
+  {
+   "name": "FFMP17",
+   "source": "import GTDefs\nimport HSDefs\nimport HSConj\nimport RCDefs\nimport G4Defs\nimport FFDefs\nimport FFMConj\nimport FFMP1\nimport FFMP2\nimport FFMP3\nimport FFMP4\nimport FFMP5\nimport FFMP6\nimport FFMP7\nimport FFMP8\nimport FFMP9\nimport FFMP10\nimport FFMP11\nimport FFMP12\nimport FFMP13\nimport FFMP14\nimport FFMP15\nimport FFMP16\nnamespace FFMP17\ntheorem proof : FFMConj.manual_nonempty_sdiff_negation := by\n  unfold FFMConj.manual_nonempty_sdiff_negation FFMConj.manual_nonempty_sdiff\n  intro h\n  exact absurd (h (({(3, 1)} : GT.Edges)) (({(2, 2), (3, 1)} : GT.Edges)) (by first | decide +kernel | (intro v; omega) | omega | (intros; omega))) (by decide +kernel)\nend FFMP17\n",
+   "source_sha256": "3ae11acc6db66c397bb6beee5538f410f29f053aa30faf86a98499af41355dd6",
+   "trusted": false
+  },
+  {
+   "name": "FFMP18",
+   "source": "import GTDefs\nimport HSDefs\nimport HSConj\nimport RCDefs\nimport G4Defs\nimport FFDefs\nimport FFMConj\nimport FFMP1\nimport FFMP2\nimport FFMP3\nimport FFMP4\nimport FFMP5\nimport FFMP6\nimport FFMP7\nimport FFMP8\nimport FFMP9\nimport FFMP10\nimport FFMP11\nimport FFMP12\nimport FFMP13\nimport FFMP14\nimport FFMP15\nimport FFMP16\nimport FFMP17\nnamespace FFMP18\ntheorem proof : FFMConj.manual_nonempty_filter_negation := by\n  unfold FFMConj.manual_nonempty_filter_negation FFMConj.manual_nonempty_filter\n  intro h\n  exact absurd (h (({(0, 2)} : GT.Edges)) ((fun e => decide (e ∈ (∅ : GT.Edges)))) (by first | decide +kernel | (intro v; omega) | omega | (intros; omega))) (by decide +kernel)\nend FFMP18\n",
+   "source_sha256": "a431737431d708f2003d6d4ac76b091bbd3fd07f830cee34be7644595bbb9df9",
+   "trusted": false
+  },
+  {
+   "name": "FFMP19",
+   "source": "import GTDefs\nimport HSDefs\nimport HSConj\nimport RCDefs\nimport G4Defs\nimport FFDefs\nimport FFMConj\nimport FFMP1\nimport FFMP2\nimport FFMP3\nimport FFMP4\nimport FFMP5\nimport FFMP6\nimport FFMP7\nimport FFMP8\nimport FFMP9\nimport FFMP10\nimport FFMP11\nimport FFMP12\nimport FFMP13\nimport FFMP14\nimport FFMP15\nimport FFMP16\nimport FFMP17\nimport FFMP18\nnamespace FFMP19\ntheorem proof : FFMConj.manual_nonempty_erase_negation := by\n  unfold FFMConj.manual_nonempty_erase_negation FFMConj.manual_nonempty_erase\n  intro h\n  exact absurd (h (({(1, 2)} : GT.Edges)) (((1, 2) : ℕ × ℕ)) (by first | decide +kernel | (intro v; omega) | omega | (intros; omega))) (by decide +kernel)\nend FFMP19\n",
+   "source_sha256": "6ad6102ec08b52c8c97582c6bff01440cf270a51f0c673772ade31761ea41324",
+   "trusted": false
+  }
+ ],
+ "name": "fresh families, arm manual",
+ "package_sha256": "c257dcd712d4422ac3dc497670b152c96a2b3891e90d4f2cb625a602d529c97d",
+ "proofs": [
+  {
+   "module": "FFMP1",
+   "recipe": "antitone-apply",
+   "statement": "gen_antitone_inter"
+  },
+  {
+   "module": "FFMP2",
+   "recipe": "antitone-apply",
+   "statement": "gen_antitone_sdiff"
+  },
+  {
+   "module": "FFMP3",
+   "recipe": "unfold-aesop",
+   "statement": "gen_antitone_filter"
+  },
+  {
+   "module": "FFMP4",
+   "recipe": "antitone-apply-intro",
+   "statement": "gen_antitone_erase"
+  },
+  {
+   "module": "FFMP5",
+   "recipe": "down-closure-unfold",
+   "statement": "inst_antitone_loopfree"
+  },
+  {
+   "module": "FFMP6",
+   "recipe": "down-closure-unfold",
+   "statement": "inst_antitone_matching"
+  },
+  {
+   "module": "FFMP7",
+   "recipe": "counterexample-evaluation",
+   "statement": "inst_antitone_nonempty"
+  },
+  {
+   "module": "FFMP8",
+   "recipe": "elim-with-library",
+   "statement": "manual_loopfree_inter"
+  },
+  {
+   "module": "FFMP9",
+   "recipe": "elim-with-library",
+   "statement": "manual_loopfree_sdiff"
+  },
+  {
+   "module": "FFMP10",
+   "recipe": "elim-with-library",
+   "statement": "manual_loopfree_filter"
+  },
+  {
+   "module": "FFMP11",
+   "recipe": "elim-with-library",
+   "statement": "manual_loopfree_erase"
+  },
+  {
+   "module": "FFMP12",
+   "recipe": "elim-with-library",
+   "statement": "manual_matching_inter"
+  },
+  {
+   "module": "FFMP13",
+   "recipe": "elim-with-library",
+   "statement": "manual_matching_sdiff"
+  },
+  {
+   "module": "FFMP14",
+   "recipe": "elim-with-library",
+   "statement": "manual_matching_filter"
+  },
+  {
+   "module": "FFMP15",
+   "recipe": "elim-with-library",
+   "statement": "manual_matching_erase"
+  },
+  {
+   "module": "FFMP16",
+   "recipe": "counterexample-evaluation",
+   "statement": "manual_nonempty_inter"
+  },
+  {
+   "module": "FFMP17",
+   "recipe": "counterexample-evaluation",
+   "statement": "manual_nonempty_sdiff"
+  },
+  {
+   "module": "FFMP18",
+   "recipe": "counterexample-evaluation",
+   "statement": "manual_nonempty_filter"
+  },
+  {
+   "module": "FFMP19",
+   "recipe": "counterexample-evaluation",
+   "statement": "manual_nonempty_erase"
+  }
+ ],
+ "provenance": {
+  "acceptance": "genesis.formal_research.checker.accept",
+  "created_at": "2026-10-11T12:52:57.569795+00:00",
+  "loop": "genesis.formal_research.loop",
+  "search": "genesis.formal_research.search (builder-written recipes, named per proof)"
+ },
+ "schema": "genesis-theory-package-v1",
+ "scope": "Fresh-family closure statements after the cutoff.",
+ "statements": [
+  {
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "counterexample": null,
+   "id": "gen_antitone_inter",
+   "lean": "∀ (P : GT.Edges → Prop) (h : Antitone P) (S : GT.Edges) (T : GT.Edges) (h1 : P S), P (S ∩ T)",
+   "origin": "generated:generic-over-antitone",
+   "proof_const": "FFMP1.proof",
+   "proof_module": "FFMP1",
+   "recipe": "antitone-apply",
+   "role": "generic",
+   "screened_instances": 0,
+   "spec_const": "FFMConj.gen_antitone_inter",
+   "status": "CHECKED",
+   "subject": "antitone"
+  },
+  {
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "counterexample": null,
+   "id": "gen_antitone_sdiff",
+   "lean": "∀ (P : GT.Edges → Prop) (h : Antitone P) (S : GT.Edges) (T : GT.Edges) (h1 : P S), P (S \\ T)",
+   "origin": "generated:generic-over-antitone",
+   "proof_const": "FFMP2.proof",
+   "proof_module": "FFMP2",
+   "recipe": "antitone-apply",
+   "role": "generic",
+   "screened_instances": 0,
+   "spec_const": "FFMConj.gen_antitone_sdiff",
+   "status": "CHECKED",
+   "subject": "antitone"
+  },
+  {
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "counterexample": null,
+   "id": "gen_antitone_filter",
+   "lean": "∀ (P : GT.Edges → Prop) (h : Antitone P) (S : GT.Edges) (q : ℕ × ℕ → Bool) (h1 : P S), P (S.filter fun e => q e)",
+   "origin": "generated:generic-over-antitone",
+   "proof_const": "FFMP3.proof",
+   "proof_module": "FFMP3",
+   "recipe": "unfold-aesop",
+   "role": "generic",
+   "screened_instances": 0,
+   "spec_const": "FFMConj.gen_antitone_filter",
+   "status": "CHECKED",
+   "subject": "antitone"
+  },
+  {
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "counterexample": null,
+   "id": "gen_antitone_erase",
+   "lean": "∀ (P : GT.Edges → Prop) (h : Antitone P) (S : GT.Edges) (e : ℕ × ℕ) (h1 : P S), P (S.erase e)",
+   "origin": "generated:generic-over-antitone",
+   "proof_const": "FFMP4.proof",
+   "proof_module": "FFMP4",
+   "recipe": "antitone-apply-intro",
+   "role": "generic",
+   "screened_instances": 0,
+   "spec_const": "FFMConj.gen_antitone_erase",
+   "status": "CHECKED",
+   "subject": "antitone"
+  },
+  {
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "counterexample": null,
+   "id": "inst_antitone_loopfree",
+   "lean": "Antitone FF.LoopFree",
+   "origin": "generated:antitone-instance",
+   "proof_const": "FFMP5.proof",
+   "proof_module": "FFMP5",
+   "recipe": "down-closure-unfold",
+   "role": "instance",
+   "screened_instances": 0,
+   "spec_const": "FFMConj.inst_antitone_loopfree",
+   "status": "CHECKED",
+   "subject": "FF.LoopFree"
+  },
+  {
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "counterexample": null,
+   "id": "inst_antitone_matching",
+   "lean": "Antitone FF.Matching",
+   "origin": "generated:antitone-instance",
+   "proof_const": "FFMP6.proof",
+   "proof_module": "FFMP6",
+   "recipe": "down-closure-unfold",
+   "role": "instance",
+   "screened_instances": 0,
+   "spec_const": "FFMConj.inst_antitone_matching",
+   "status": "CHECKED",
+   "subject": "FF.Matching"
+  },
+  {
+   "counterexample": null,
+   "id": "inst_antitone_c4free",
+   "lean": "Antitone G4.C4Free",
+   "origin": "generated:antitone-instance",
+   "reason": "no recipe compiled",
+   "role": "instance",
+   "screened_instances": 0,
+   "spec_const": "FFMConj.inst_antitone_c4free",
+   "status": "UNRESOLVED",
+   "subject": "G4.C4Free"
+  },
+  {
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "counterexample": {
+    "values": {
+     "S": "({(0, 0), (3, 2)} : GT.Edges)",
+     "T": "(∅ : GT.Edges)"
+    }
+   },
+   "id": "inst_antitone_nonempty",
+   "lean": "Antitone FF.NonEmpty",
+   "origin": "generated:antitone-instance",
+   "proof_const": "FFMP7.proof",
+   "proof_module": "FFMP7",
+   "recipe": "counterexample-evaluation",
+   "role": "instance",
+   "screened_instances": null,
+   "spec_const": "FFMConj.inst_antitone_nonempty",
+   "status": "DISPROVED",
+   "subject": "FF.NonEmpty"
+  },
+  {
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "counterexample": null,
+   "id": "manual_loopfree_inter",
+   "lean": "∀ (S : GT.Edges) (T : GT.Edges) (h1 : FF.LoopFree S), FF.LoopFree (S ∩ T)",
+   "origin": "fresh-family",
+   "proof_const": "FFMP8.proof",
+   "proof_module": "FFMP8",
+   "recipe": "elim-with-library",
+   "role": "fresh",
+   "screened_instances": 690,
+   "spec_const": "FFMConj.manual_loopfree_inter",
+   "status": "CHECKED",
+   "subject": "FF.LoopFree:inter"
+  },
+  {
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "counterexample": null,
+   "id": "manual_loopfree_sdiff",
+   "lean": "∀ (S : GT.Edges) (T : GT.Edges) (h1 : FF.LoopFree S), FF.LoopFree (S \\ T)",
+   "origin": "fresh-family",
+   "proof_const": "FFMP9.proof",
+   "proof_module": "FFMP9",
+   "recipe": "elim-with-library",
+   "role": "fresh",
+   "screened_instances": 743,
+   "spec_const": "FFMConj.manual_loopfree_sdiff",
+   "status": "CHECKED",
+   "subject": "FF.LoopFree:sdiff"
+  },
+  {
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "counterexample": null,
+   "id": "manual_loopfree_filter",
+   "lean": "∀ (S : GT.Edges) (q : ℕ × ℕ → Bool) (h1 : FF.LoopFree S), FF.LoopFree (S.filter fun e => q e)",
+   "origin": "fresh-family",
+   "proof_const": "FFMP10.proof",
+   "proof_module": "FFMP10",
+   "recipe": "elim-with-library",
+   "role": "fresh",
+   "screened_instances": 690,
+   "spec_const": "FFMConj.manual_loopfree_filter",
+   "status": "CHECKED",
+   "subject": "FF.LoopFree:filter"
+  },
+  {
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "counterexample": null,
+   "id": "manual_loopfree_erase",
+   "lean": "∀ (S : GT.Edges) (e : ℕ × ℕ) (h1 : FF.LoopFree S), FF.LoopFree (S.erase e)",
+   "origin": "fresh-family",
+   "proof_const": "FFMP11.proof",
+   "proof_module": "FFMP11",
+   "recipe": "elim-with-library",
+   "role": "fresh",
+   "screened_instances": 720,
+   "spec_const": "FFMConj.manual_loopfree_erase",
+   "status": "CHECKED",
+   "subject": "FF.LoopFree:erase"
+  },
+  {
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "counterexample": null,
+   "id": "manual_matching_inter",
+   "lean": "∀ (S : GT.Edges) (T : GT.Edges) (h1 : FF.Matching S), FF.Matching (S ∩ T)",
+   "origin": "fresh-family",
+   "proof_const": "FFMP12.proof",
+   "proof_module": "FFMP12",
+   "recipe": "elim-with-library",
+   "role": "fresh",
+   "screened_instances": 172,
+   "spec_const": "FFMConj.manual_matching_inter",
+   "status": "CHECKED",
+   "subject": "FF.Matching:inter"
+  },
+  {
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "counterexample": null,
+   "id": "manual_matching_sdiff",
+   "lean": "∀ (S : GT.Edges) (T : GT.Edges) (h1 : FF.Matching S), FF.Matching (S \\ T)",
+   "origin": "fresh-family",
+   "proof_const": "FFMP13.proof",
+   "proof_module": "FFMP13",
+   "recipe": "elim-with-library",
+   "role": "fresh",
+   "screened_instances": 173,
+   "spec_const": "FFMConj.manual_matching_sdiff",
+   "status": "CHECKED",
+   "subject": "FF.Matching:sdiff"
+  },
+  {
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "counterexample": null,
+   "id": "manual_matching_filter",
+   "lean": "∀ (S : GT.Edges) (q : ℕ × ℕ → Bool) (h1 : FF.Matching S), FF.Matching (S.filter fun e => q e)",
+   "origin": "fresh-family",
+   "proof_const": "FFMP14.proof",
+   "proof_module": "FFMP14",
+   "recipe": "elim-with-library",
+   "role": "fresh",
+   "screened_instances": 190,
+   "spec_const": "FFMConj.manual_matching_filter",
+   "status": "CHECKED",
+   "subject": "FF.Matching:filter"
+  },
+  {
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "counterexample": null,
+   "id": "manual_matching_erase",
+   "lean": "∀ (S : GT.Edges) (e : ℕ × ℕ) (h1 : FF.Matching S), FF.Matching (S.erase e)",
+   "origin": "fresh-family",
+   "proof_const": "FFMP15.proof",
+   "proof_module": "FFMP15",
+   "recipe": "elim-with-library",
+   "role": "fresh",
+   "screened_instances": 175,
+   "spec_const": "FFMConj.manual_matching_erase",
+   "status": "CHECKED",
+   "subject": "FF.Matching:erase"
+  },
+  {
+   "counterexample": null,
+   "id": "manual_c4free_inter",
+   "lean": "∀ (S : GT.Edges) (T : GT.Edges) (h1 : G4.C4Free S), G4.C4Free (S ∩ T)",
+   "origin": "fresh-family",
+   "reason": "no recipe compiled",
+   "role": "fresh",
+   "screened_instances": 1697,
+   "spec_const": "FFMConj.manual_c4free_inter",
+   "status": "UNRESOLVED",
+   "subject": "G4.C4Free:inter"
+  },
+  {
+   "counterexample": null,
+   "id": "manual_c4free_sdiff",
+   "lean": "∀ (S : GT.Edges) (T : GT.Edges) (h1 : G4.C4Free S), G4.C4Free (S \\ T)",
+   "origin": "fresh-family",
+   "reason": "no recipe compiled",
+   "role": "fresh",
+   "screened_instances": 1670,
+   "spec_const": "FFMConj.manual_c4free_sdiff",
+   "status": "UNRESOLVED",
+   "subject": "G4.C4Free:sdiff"
+  },
+  {
+   "counterexample": null,
+   "id": "manual_c4free_filter",
+   "lean": "∀ (S : GT.Edges) (q : ℕ × ℕ → Bool) (h1 : G4.C4Free S), G4.C4Free (S.filter fun e => q e)",
+   "origin": "fresh-family",
+   "reason": "no recipe compiled",
+   "role": "fresh",
+   "screened_instances": 1738,
+   "spec_const": "FFMConj.manual_c4free_filter",
+   "status": "UNRESOLVED",
+   "subject": "G4.C4Free:filter"
+  },
+  {
+   "counterexample": null,
+   "id": "manual_c4free_erase",
+   "lean": "∀ (S : GT.Edges) (e : ℕ × ℕ) (h1 : G4.C4Free S), G4.C4Free (S.erase e)",
+   "origin": "fresh-family",
+   "reason": "no recipe compiled",
+   "role": "fresh",
+   "screened_instances": 1678,
+   "spec_const": "FFMConj.manual_c4free_erase",
+   "status": "UNRESOLVED",
+   "subject": "G4.C4Free:erase"
+  },
+  {
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "counterexample": {
+    "values": {
+     "S": "({(3, 2)} : GT.Edges)",
+     "T": "({(1, 3)} : GT.Edges)"
+    }
+   },
+   "id": "manual_nonempty_inter",
+   "lean": "∀ (S : GT.Edges) (T : GT.Edges) (h1 : FF.NonEmpty S), FF.NonEmpty (S ∩ T)",
+   "origin": "fresh-family",
+   "proof_const": "FFMP16.proof",
+   "proof_module": "FFMP16",
+   "recipe": "counterexample-evaluation",
+   "role": "fresh",
+   "screened_instances": 2990,
+   "spec_const": "FFMConj.manual_nonempty_inter",
+   "status": "DISPROVED",
+   "subject": "FF.NonEmpty:inter"
+  },
+  {
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "counterexample": {
+    "values": {
+     "S": "({(3, 1)} : GT.Edges)",
+     "T": "({(2, 2), (3, 1)} : GT.Edges)"
+    }
+   },
+   "id": "manual_nonempty_sdiff",
+   "lean": "∀ (S : GT.Edges) (T : GT.Edges) (h1 : FF.NonEmpty S), FF.NonEmpty (S \\ T)",
+   "origin": "fresh-family",
+   "proof_const": "FFMP17.proof",
+   "proof_module": "FFMP17",
+   "recipe": "counterexample-evaluation",
+   "role": "fresh",
+   "screened_instances": 2987,
+   "spec_const": "FFMConj.manual_nonempty_sdiff",
+   "status": "DISPROVED",
+   "subject": "FF.NonEmpty:sdiff"
+  },
+  {
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "counterexample": {
+    "values": {
+     "S": "({(0, 2)} : GT.Edges)",
+     "q": "(fun e => decide (e ∈ (∅ : GT.Edges)))"
+    }
+   },
+   "id": "manual_nonempty_filter",
+   "lean": "∀ (S : GT.Edges) (q : ℕ × ℕ → Bool) (h1 : FF.NonEmpty S), FF.NonEmpty (S.filter fun e => q e)",
+   "origin": "fresh-family",
+   "proof_const": "FFMP18.proof",
+   "proof_module": "FFMP18",
+   "recipe": "counterexample-evaluation",
+   "role": "fresh",
+   "screened_instances": 2991,
+   "spec_const": "FFMConj.manual_nonempty_filter",
+   "status": "DISPROVED",
+   "subject": "FF.NonEmpty:filter"
+  },
+  {
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "counterexample": {
+    "values": {
+     "S": "({(1, 2)} : GT.Edges)",
+     "e": "((1, 2) : ℕ × ℕ)"
+    }
+   },
+   "id": "manual_nonempty_erase",
+   "lean": "∀ (S : GT.Edges) (e : ℕ × ℕ) (h1 : FF.NonEmpty S), FF.NonEmpty (S.erase e)",
+   "origin": "fresh-family",
+   "proof_const": "FFMP19.proof",
+   "proof_module": "FFMP19",
+   "recipe": "counterexample-evaluation",
+   "role": "fresh",
+   "screened_instances": 2987,
+   "spec_const": "FFMConj.manual_nonempty_erase",
+   "status": "DISPROVED",
+   "subject": "FF.NonEmpty:erase"
+  }
+ ]
+}

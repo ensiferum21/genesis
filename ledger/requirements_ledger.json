@@ -492,7 +492,8 @@
     "decision": "PENDING_INDEPENDENT_ACCEPTANCE"
    },
    "code": [
-    "src/genesis/mrdl.py"
+    "src/genesis/mrdl.py",
+    "src/genesis/invention/representations.py"
    ],
    "disposition": "IMPLEMENTED_BOUNDED_PENDING_AUDIT",
    "evidence": [],
@@ -503,13 +504,14 @@
    "local_execution": "TESTS_EXECUTED_IN_MATRIX",
    "owner": "research implementer",
    "remaining": [
-    "typed representation invention (W10)"
+    "representations beyond vertex-class decoders"
    ],
    "scientific_efficacy": "N/A",
-   "scope": "MRDL bounded graph vocabulary",
+   "scope": "MRDL bounded graph vocabulary; typed representation grammar with Lean-checked obligations (B18)",
    "source": "spec \u00a74.4 (p. 13)",
    "tests": [
-    "tests_genesis/test_graphs.py"
+    "tests_genesis/test_graphs.py",
+    "tests_formal/test_invention.py"
    ],
    "title": "MRDL: minimal representation description language",
    "workstream": "W10"
@@ -636,9 +638,7 @@
    "independent_verification": "PENDING",
    "local_execution": "TESTS_EXECUTED_IN_MATRIX",
    "owner": "research implementer",
-   "remaining": [
-    "explicit assumptions/ontologies and checked transport (W12)"
-   ],
+   "remaining": [],
    "scientific_efficacy": "NOT_TESTED",
    "scope": "bounded world ecology over solver programs",
    "source": "spec \u00a75.4 (p. 15)",
@@ -1253,7 +1253,8 @@
     "decision": "PENDING_INDEPENDENT_ACCEPTANCE"
    },
    "code": [
-    "src/genesis/research.py"
+    "src/genesis/research.py",
+    "src/genesis/invention/worlds.py"
    ],
    "disposition": "IMPLEMENTED_BOUNDED_PENDING_AUDIT",
    "evidence": [],
@@ -1263,14 +1264,13 @@
    "independent_verification": "PENDING",
    "local_execution": "TESTS_EXECUTED_IN_MATRIX",
    "owner": "research implementer",
-   "remaining": [
-    "assumptions and ontology per world (W12)"
-   ],
+   "remaining": [],
    "scientific_efficacy": "N/A",
-   "scope": "world = program + representation + lineage + metrics",
+   "scope": "world = program + representation + lineage + metrics; explicit assumption worlds with checked consistency, implication, separation and transport (B18)",
    "source": "spec \u00a79.1 (p. 21)",
    "tests": [
-    "tests_genesis/test_research_runtime.py"
+    "tests_genesis/test_research_runtime.py",
+    "tests_formal/test_invention.py"
    ],
    "title": "World definition",
    "workstream": "W12"
@@ -4700,23 +4700,27 @@
     "date": null,
     "decision": "PENDING_INDEPENDENT_ACCEPTANCE"
    },
-   "code": [],
-   "disposition": "NOT_IMPLEMENTED",
+   "code": [
+    "src/genesis/invention/recovery.py",
+    "src/genesis/invention/recovery_experiment.py",
+    "evidence/invention_b18/recovery/comparison.json"
+   ],
+   "disposition": "IMPLEMENTED_BOUNDED_PENDING_AUDIT",
    "evidence": [],
    "external_blockers": [],
    "id": "W09",
-   "implementation": "NOT_IMPLEMENTED",
+   "implementation": "IMPLEMENTED_BOUNDED",
    "independent_verification": "PENDING",
-   "local_execution": "NOT_EXECUTED",
+   "local_execution": "TESTS_EXECUTED_IN_MATRIX",
    "owner": "research implementer",
-   "remaining": [
-    "not started in B14"
-   ],
+   "remaining": [],
    "scientific_efficacy": "N/A",
-   "scope": "workstream",
+   "scope": "workstream (B14 scope delivered; acceptance pending)",
    "source": "roadmap \u00a77-10",
-   "tests": [],
-   "title": "TCSR and missing-concept recovery",
+   "tests": [
+    "tests_formal/test_invention.py"
+   ],
+   "title": "TCSR and missing-concept recovery (own library and typed anti-unification; no Mathlib-history study)",
    "workstream": "W09"
   },
   {
@@ -4724,23 +4728,26 @@
     "date": null,
     "decision": "PENDING_INDEPENDENT_ACCEPTANCE"
    },
-   "code": [],
-   "disposition": "NOT_IMPLEMENTED",
+   "code": [
+    "src/genesis/invention/representations.py",
+    "evidence/invention_b18/representations/package.json"
+   ],
+   "disposition": "IMPLEMENTED_BOUNDED_PENDING_AUDIT",
    "evidence": [],
    "external_blockers": [],
    "id": "W10",
-   "implementation": "NOT_IMPLEMENTED",
+   "implementation": "IMPLEMENTED_BOUNDED",
    "independent_verification": "PENDING",
-   "local_execution": "NOT_EXECUTED",
+   "local_execution": "TESTS_EXECUTED_IN_MATRIX",
    "owner": "research implementer",
-   "remaining": [
-    "not started in B14"
-   ],
+   "remaining": [],
    "scientific_efficacy": "N/A",
-   "scope": "workstream",
+   "scope": "workstream (B14 scope delivered; acceptance pending)",
    "source": "roadmap \u00a77-10",
-   "tests": [],
-   "title": "Representation and ontology invention",
+   "tests": [
+    "tests_formal/test_invention.py"
+   ],
+   "title": "Representation and ontology invention (vertex-class grammar)",
    "workstream": "W10"
   },
   {
@@ -4776,22 +4783,25 @@
     "date": null,
     "decision": "PENDING_INDEPENDENT_ACCEPTANCE"
    },
-   "code": [],
-   "disposition": "NOT_IMPLEMENTED",
+   "code": [
+    "src/genesis/invention/worlds.py",
+    "evidence/invention_b18/worlds/package.json"
+   ],
+   "disposition": "IMPLEMENTED_BOUNDED_PENDING_AUDIT",
    "evidence": [],
    "external_blockers": [],
    "id": "W12",
-   "implementation": "NOT_IMPLEMENTED",
+   "implementation": "IMPLEMENTED_BOUNDED",
    "independent_verification": "PENDING",
-   "local_execution": "NOT_EXECUTED",
+   "local_execution": "TESTS_EXECUTED_IN_MATRIX",
    "owner": "research implementer",
-   "remaining": [
-    "not started in B14"
-   ],
+   "remaining": [],
    "scientific_efficacy": "N/A",
-   "scope": "workstream",
+   "scope": "workstream (B14 scope delivered; acceptance pending)",
    "source": "roadmap \u00a77-10",
-   "tests": [],
+   "tests": [
+    "tests_formal/test_invention.py"
+   ],
    "title": "Worlds, counterfactual theories and transport",
    "workstream": "W12"
   },

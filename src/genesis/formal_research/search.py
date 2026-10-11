@@ -110,34 +110,48 @@ def target_of(conj_const, counterexample):
     return conj_const, [conj_const]
 
 
-def search(conj, *, conj_const, context, library, unfold, counterexample=None, env=None, policy=C.POLICY):
+SEARCH_HEARTBEATS = 100000
+
+
+def search(conj, *, conj_const, context, library, unfold, counterexample=None, env=None, policy=C.POLICY,
+           extra=(), heartbeats=SEARCH_HEARTBEATS):
     """Try the recipes for `conj` (or its disproof) against compiled `context`
-    ({'imports': [module names], 'artifacts': {file: bytes}}). Never accepts anything."""
+    ({'imports': [module names], 'artifacts': {file: bytes}}). Never accepts anything.
+    `extra`: further (recipe id, tactic) candidates; for a disproof they replace the default."""
     env = env or C._env()
     target, unfold_first = target_of(conj_const, counterexample)
     if counterexample:
-        cands = [('counterexample-evaluation', disproof_recipe(conj, counterexample))]
+        tiers = [list(extra) or [('counterexample-evaluation', disproof_recipe(conj, counterexample))]]
     else:
-        cands = recipes(conj, library, unfold)
-    name = 'GTSearch' + digest({'c': conj_const, 'x': counterexample})[:8].upper().replace('-', 'X')
-    name = re.sub(r'[^A-Za-z0-9]', 'X', name)
-    source, ranges = candidate_module(name, target, unfold_first, context['imports'], cands)
-    r = C.compile_module(name, source, context['artifacts'], env, policy)
-    errors = [int(n) for n in re.findall(rf'(?m)^{name}\.lean:(\d+):\d+: error', r['log'])] \
-        if r['result'] != 'COMPILED' else []
-    whole_failed = r['result'] in ('TIMEOUT', 'RESOURCE_LIMIT', 'CHECKER_ERROR') or \
-        (r['result'] != 'COMPILED' and not errors)
-    attempts = []
-    for j, (rid, text) in enumerate(cands):
-        lo, hi = ranges[j]
-        bad = whole_failed or any(lo <= n <= hi for n in errors) or \
-            re.search(rf'declaration uses .sorry.', r['log']) is not None
-        attempts.append({'recipe': rid, 'tactic_sha256': bytes_hash(text.encode()), 'compiled': not bad})
-    found = next(((cands[j][0], cands[j][1]) for j, a in enumerate(attempts) if a['compiled']), None)
-    return {'target': target, 'module_sha256': bytes_hash(source.encode()), 'result': r['result'],
-            'stats': r['stats'], 'attempts': attempts, 'found': found,
-            'charged': {'candidates': len(cands), 'cpu_ns': r['stats'].get('cpu_ns'),
-                        'wall_ns': r['stats'].get('wall_ns')}}
+        # specialised candidates first; the generic portfolio only if none of them compiles
+        tiers = [t for t in (list(extra), recipes(conj, library, unfold)) if t]
+    base = 'GTSearch' + digest({'c': conj_const, 'x': counterexample})[:8].upper()
+    base = re.sub(r'[^A-Za-z0-9]', 'X', base)
+    attempts, runs, found = [], [], None
+    for tier, cands in enumerate(tiers):
+        name = f'{base}T{tier}'
+        source, ranges = candidate_module(name, target, unfold_first, context['imports'], cands)
+        r = C.compile_module(name, source, context['artifacts'], env, policy, heartbeats=heartbeats)
+        errors = [int(n) for n in re.findall(rf'(?m)^{name}\.lean:(\d+):\d+: error', r['log'])] \
+            if r['result'] != 'COMPILED' else []
+        whole_failed = r['result'] in ('TIMEOUT', 'RESOURCE_LIMIT', 'CHECKER_ERROR') or \
+            (r['result'] != 'COMPILED' and not errors)
+        sorry = re.search(r'declaration uses .sorry.', r['log']) is not None
+        for j, (rid, text) in enumerate(cands):
+            lo, hi = ranges[j]
+            bad = whole_failed or sorry or any(lo <= n <= hi for n in errors)
+            attempts.append({'recipe': rid, 'tier': tier, 'tactic_sha256': bytes_hash(text.encode()),
+                             'compiled': not bad})
+            if not bad and found is None:
+                found = (rid, text)
+        runs.append({'module_sha256': bytes_hash(source.encode()), 'result': r['result'], 'stats': r['stats']})
+        if found is not None:
+            break
+    cpu = sum(x['stats'].get('cpu_ns') or 0 for x in runs)
+    wall = sum(x['stats'].get('wall_ns') or 0 for x in runs)
+    return {'target': target, 'runs': runs, 'result': runs[-1]['result'], 'stats': runs[-1]['stats'],
+            'attempts': attempts, 'found': found,
+            'charged': {'candidates': len(attempts), 'cpu_ns': cpu, 'wall_ns': wall}}
 
 
 __all__ = ['recipes', 'disproof_recipe', 'search', 'proof_module', 'candidate_module', 'target_of']

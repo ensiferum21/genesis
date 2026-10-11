@@ -142,3 +142,15 @@ outstanding (see `docs/checkpoints/B17_REVIEW_BRIEF.md`).
 | B17-OPEN-2 | Workspace artifacts are byte-identical across two builds on one host only. | the R-04 second machine |
 | B17-OPEN-3 | The package is elementary rediscovery. The method is sound but not tight on DEV (gap 1–9 edges) and certified no optimum. W11's done-when (a structural result used by a solver on fresh tasks) is not met. | W11, W13 |
 
+## B18 outcome (W09–W12)
+
+The exit, "typed concepts, explicit worlds and checked semantics", is met by the builder
+only, on DEV. `evidence/invention_b18/replay.json` reports all eight packages REPLAYED.
+Independent review is outstanding; see `docs/checkpoints/B18_REVIEW_BRIEF.md`.
+
+| ID | Residual | Needs |
+|---|---|---|
+| B18-OPEN-1 | W09 ran on a Genesis-generated history library, not a historical Mathlib cutoff. The recovered concept is a known abstraction (`Antitone`). | an ingestion study over a dated library snapshot |
+| B18-OPEN-2 | The W10 grammar has vertex-class decoders only. The usefulness evidence is DEV-only, against per-task strongest baselines. | B19 sealed evaluation (E1) |
+| B18-OPEN-3 | W12 worlds take assumptions over hosts only. `WD.Bipartite` fixes a vertex range to be decidable in Lean. "max degree 1 → triangle-free" stays unresolved. | richer world semantics, learned proof search |
+

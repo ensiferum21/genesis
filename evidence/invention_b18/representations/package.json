@@ -1,0 +1,6875 @@
+{
+ "acceptance": {
+  "check_stage": {
+   "check_sha256": "e234e8ff49a1811b13294b0f646f6f6854ed2a57602912c4f6b644fd4b19b181",
+   "cpu_ns": 36930451556,
+   "exit_code": 0,
+   "exits": {
+    "RPP1": "0",
+    "RPP10": "0",
+    "RPP11": "0",
+    "RPP12": "0",
+    "RPP13": "0",
+    "RPP14": "0",
+    "RPP15": "0",
+    "RPP16": "0",
+    "RPP17": "0",
+    "RPP18": "0",
+    "RPP19": "0",
+    "RPP2": "0",
+    "RPP20": "0",
+    "RPP21": "0",
+    "RPP22": "0",
+    "RPP23": "0",
+    "RPP24": "0",
+    "RPP25": "0",
+    "RPP26": "0",
+    "RPP27": "0",
+    "RPP28": "0",
+    "RPP29": "0",
+    "RPP3": "0",
+    "RPP30": "0",
+    "RPP31": "0",
+    "RPP32": "0",
+    "RPP33": "0",
+    "RPP4": "0",
+    "RPP5": "0",
+    "RPP6": "0",
+    "RPP7": "0",
+    "RPP8": "0",
+    "RPP9": "0",
+    "check": "0"
+   },
+   "log": "",
+   "peak_memory_bytes": 239308800,
+   "status": "SUCCESS",
+   "wall_ns": 37695971774
+  },
+  "leanchecker": {
+   "RPP1": true,
+   "RPP10": true,
+   "RPP11": true,
+   "RPP12": true,
+   "RPP13": true,
+   "RPP14": true,
+   "RPP15": true,
+   "RPP16": true,
+   "RPP17": true,
+   "RPP18": true,
+   "RPP19": true,
+   "RPP2": true,
+   "RPP20": true,
+   "RPP21": true,
+   "RPP22": true,
+   "RPP23": true,
+   "RPP24": true,
+   "RPP25": true,
+   "RPP26": true,
+   "RPP27": true,
+   "RPP28": true,
+   "RPP29": true,
+   "RPP3": true,
+   "RPP30": true,
+   "RPP31": true,
+   "RPP32": true,
+   "RPP33": true,
+   "RPP4": true,
+   "RPP5": true,
+   "RPP6": true,
+   "RPP7": true,
+   "RPP8": true,
+   "RPP9": true
+  },
+  "receipt_sha256": "23d371072543a4851cf3a6758d2f2bf58b60aaee77e4e8658156e5b7016fa47d",
+  "status": "CHECKED"
+ },
+ "assumptions": {
+  "allowed_axioms": [
+   "Classical.choice",
+   "Quot.sound",
+   "propext"
+  ],
+  "axioms_used": [
+   "Classical.choice",
+   "Quot.sound",
+   "propext"
+  ],
+  "conventions": [
+   "hosts list each edge once as (u, v) with u < v",
+   "statements quantify over all pair sets, loops and reversed pairs included"
+  ],
+  "lean": "lean@e8baaa71855a616d",
+  "workspace": {
+   "artifact_identity": "95a6ec9f1aadc0d8d1936c34bd0ce4e144b0e35c85df12543cdcafe9ebf36b41",
+   "import_roots": [
+    "Mathlib.Data.Finset.Powerset"
+   ],
+   "mathlib_rev": "d13f23b723b8a846827a245b89c10fc7d3f11612",
+   "source_identity": "a3a7569b6d7636a844c87c2b72ef2170eda0f712ff8d9a1b0f15b069e301c7ef"
+  }
+ },
+ "bindings": [
+  {
+   "proof": "RPP1.proof",
+   "spec": "RPConj.cross_2_image"
+  },
+  {
+   "proof": "RPP2.proof",
+   "spec": "RPConj.cross_2_sound_tf"
+  },
+  {
+   "proof": "RPP3.proof",
+   "spec": "RPConj.cross_2_sound_c4_negation"
+  },
+  {
+   "proof": "RPP4.proof",
+   "spec": "RPConj.cross_3_image"
+  },
+  {
+   "proof": "RPP5.proof",
+   "spec": "RPConj.cross_3_sound_tf_negation"
+  },
+  {
+   "proof": "RPP6.proof",
+   "spec": "RPConj.cross_3_sound_c4_negation"
+  },
+  {
+   "proof": "RPP7.proof",
+   "spec": "RPConj.inside_2_image"
+  },
+  {
+   "proof": "RPP8.proof",
+   "spec": "RPConj.inside_2_sound_tf_negation"
+  },
+  {
+   "proof": "RPP9.proof",
+   "spec": "RPConj.inside_2_sound_c4_negation"
+  },
+  {
+   "proof": "RPP10.proof",
+   "spec": "RPConj.inside_3_image"
+  },
+  {
+   "proof": "RPP11.proof",
+   "spec": "RPConj.inside_3_sound_tf_negation"
+  },
+  {
+   "proof": "RPP12.proof",
+   "spec": "RPConj.inside_3_sound_c4_negation"
+  },
+  {
+   "proof": "RPP13.proof",
+   "spec": "RPConj.ordered_2_image"
+  },
+  {
+   "proof": "RPP14.proof",
+   "spec": "RPConj.ordered_2_sound_tf"
+  },
+  {
+   "proof": "RPP15.proof",
+   "spec": "RPConj.ordered_2_sound_c4_negation"
+  },
+  {
+   "proof": "RPP16.proof",
+   "spec": "RPConj.ordered_3_image"
+  },
+  {
+   "proof": "RPP17.proof",
+   "spec": "RPConj.ordered_3_sound_tf_negation"
+  },
+  {
+   "proof": "RPP18.proof",
+   "spec": "RPConj.ordered_3_sound_c4_negation"
+  },
+  {
+   "proof": "RPP19.proof",
+   "spec": "RPConj.adjacent_2_image"
+  },
+  {
+   "proof": "RPP20.proof",
+   "spec": "RPConj.adjacent_2_sound_tf"
+  },
+  {
+   "proof": "RPP21.proof",
+   "spec": "RPConj.adjacent_2_sound_c4_negation"
+  },
+  {
+   "proof": "RPP22.proof",
+   "spec": "RPConj.adjacent_3_image"
+  },
+  {
+   "proof": "RPP23.proof",
+   "spec": "RPConj.adjacent_3_sound_tf"
+  },
+  {
+   "proof": "RPP24.proof",
+   "spec": "RPConj.adjacent_3_sound_c4_negation"
+  },
+  {
+   "proof": "RPP25.proof",
+   "spec": "RPConj.cross_2_within_ordered_2_negation"
+  },
+  {
+   "proof": "RPP26.proof",
+   "spec": "RPConj.cross_2_within_adjacent_2"
+  },
+  {
+   "proof": "RPP27.proof",
+   "spec": "RPConj.ordered_2_within_cross_2"
+  },
+  {
+   "proof": "RPP28.proof",
+   "spec": "RPConj.ordered_2_within_adjacent_2"
+  },
+  {
+   "proof": "RPP29.proof",
+   "spec": "RPConj.adjacent_2_within_cross_2"
+  },
+  {
+   "proof": "RPP30.proof",
+   "spec": "RPConj.adjacent_2_within_ordered_2_negation"
+  },
+  {
+   "proof": "RPP31.proof",
+   "spec": "RPConj.cross_2_loses_tf"
+  },
+  {
+   "proof": "RPP32.proof",
+   "spec": "RPConj.ordered_2_loses_tf"
+  },
+  {
+   "proof": "RPP33.proof",
+   "spec": "RPConj.adjacent_2_loses_tf"
+  }
+ ],
+ "costs": {
+  "acceptance_check_cpu_ns": 642515713290,
+  "acceptance_runs": 34,
+  "acceptances": [
+   {
+    "receipt_sha256": "28473953420e51f70cb1d1a48eab6b15c048a558d4d1b273b46d7afd83e26a26",
+    "statement": "cross_2_image",
+    "stats": {
+     "check_sha256": "4694c646d88adb1c8347683732c9b4e96ed2cebd00a1a3fb259f09ab690f248f",
+     "cpu_ns": 2816133245,
+     "exit_code": 0,
+     "exits": {
+      "RPP1": "0",
+      "check": "0"
+     },
+     "log": "",
+     "peak_memory_bytes": 224010240,
+     "status": "SUCCESS",
+     "wall_ns": 2871481799
+    },
+    "status": "CHECKED"
+   },
+   {
+    "receipt_sha256": "a85178df43ce02396ada2463a4be69c38cb1e12b208c07204e37139ce081d255",
+    "statement": "cross_2_sound_tf",
+    "stats": {
+     "check_sha256": "54e0fef21c39a9576e7c001817a4190d14c1fd7b24f399fcc306d938e0bde3ef",
+     "cpu_ns": 3681724788,
+     "exit_code": 0,
+     "exits": {
+      "RPP1": "0",
+      "RPP2": "0",
+      "check": "0"
+     },
+     "log": "",
+     "peak_memory_bytes": 224456704,
+     "status": "SUCCESS",
+     "wall_ns": 3745679477
+    },
+    "status": "CHECKED"
+   },
+   {
+    "receipt_sha256": "a18be6609aac48c587d4f81aba9e98c8608c64c411f5cb2fe073c4defe651a3f",
+    "statement": "cross_2_sound_c4",
+    "stats": {
+     "check_sha256": "9aa4697ea6c9d769a37207468f75d415a1794d3d7725653e448c86bc3345afcf",
+     "cpu_ns": 4813793005,
+     "exit_code": 0,
+     "exits": {
+      "RPP1": "0",
+      "RPP2": "0",
+      "RPP3": "0",
+      "check": "0"
+     },
+     "log": "",
+     "peak_memory_bytes": 224468992,
+     "status": "SUCCESS",
+     "wall_ns": 4912096968
+    },
+    "status": "CHECKED"
+   },
+   {
+    "receipt_sha256": "0444f784981692fb070ee83735828d243b73ab0315b0486dbd9675f1f4b16724",
+    "statement": "cross_3_image",
+    "stats": {
+     "check_sha256": "eec48dd122fd96f1a2d5a6644f3f9dbc7b17ddb3291b62f9a1630d61f1490360",
+     "cpu_ns": 6452406104,
+     "exit_code": 0,
+     "exits": {
+      "RPP1": "0",
+      "RPP2": "0",
+      "RPP3": "0",
+      "RPP4": "0",
+      "check": "0"
+     },
+     "log": "",
+     "peak_memory_bytes": 222146560,
+     "status": "SUCCESS",
+     "wall_ns": 6641547204
+    },
+    "status": "CHECKED"
+   },
+   {
+    "receipt_sha256": "6079f1e4f708c6ed3bf9468085843a0e7dc147ae9c65461ef104de1a8659eef5",
+    "statement": "cross_3_sound_tf",
+    "stats": {
+     "check_sha256": "1a275138d0e8bd2859ae08fa3b97f86b3087eb687f12795c3e49a7ea56e5c8ef",
+     "cpu_ns": 7933136912,
+     "exit_code": 0,
+     "exits": {
+      "RPP1": "0",
+      "RPP2": "0",
+      "RPP3": "0",
+      "RPP4": "0",
+      "RPP5": "0",
+      "check": "0"
+     },
+     "log": "",
+     "peak_memory_bytes": 224202752,
+     "status": "SUCCESS",
+     "wall_ns": 8128499868
+    },
+    "status": "CHECKED"
+   },
+   {
+    "receipt_sha256": "cf3ff7965ad1e91be10a8d6b73e88793737a558ae0b3196d3927c429fee2c72a",
+    "statement": "cross_3_sound_c4",
+    "stats": {
+     "check_sha256": "db0528b2d55aa7b4b81f5d244aa64bc5e8edf66df49f97cb4785b2155685438a",
+     "cpu_ns": 8589981999,
+     "exit_code": 0,
+     "exits": {
+      "RPP1": "0",
+      "RPP2": "0",
+      "RPP3": "0",
+      "RPP4": "0",
+      "RPP5": "0",
+      "RPP6": "0",
+      "check": "0"
+     },
+     "log": "",
+     "peak_memory_bytes": 223928320,
+     "status": "SUCCESS",
+     "wall_ns": 8778038530
+    },
+    "status": "CHECKED"
+   },
+   {
+    "receipt_sha256": "1ab2709047cfcf7859a6b93f62fd29db6dffbf714ca7e08a9bdeaa867955acf8",
+    "statement": "inside_2_image",
+    "stats": {
+     "check_sha256": "dddc03ee74a7f83909ecc4b94dd2131e4c247cc605d26ce642c7cef1e945c944",
+     "cpu_ns": 9686191981,
+     "exit_code": 0,
+     "exits": {
+      "RPP1": "0",
+      "RPP2": "0",
+      "RPP3": "0",
+      "RPP4": "0",
+      "RPP5": "0",
+      "RPP6": "0",
+      "RPP7": "0",
+      "check": "0"
+     },
+     "log": "",
+     "peak_memory_bytes": 223944704,
+     "status": "SUCCESS",
+     "wall_ns": 9900639357
+    },
+    "status": "CHECKED"
+   },
+   {
+    "receipt_sha256": "90d82ba2d7f4888ff06e50606f6b4bd867bd479b4dd44271ce9da9dfcc6d04eb",
+    "statement": "inside_2_sound_tf",
+    "stats": {
+     "check_sha256": "2261dfe0571faa2eabdc8c4337c79e89d2507fb44db0950e308426b82c5786be",
+     "cpu_ns": 12176853953,
+     "exit_code": 0,
+     "exits": {
+      "RPP1": "0",
+      "RPP2": "0",
+      "RPP3": "0",
+      "RPP4": "0",
+      "RPP5": "0",
+      "RPP6": "0",
+      "RPP7": "0",
+      "RPP8": "0",
+      "check": "0"
+     },
+     "log": "",
+     "peak_memory_bytes": 223920128,
+     "status": "SUCCESS",
+     "wall_ns": 12529813590
+    },
+    "status": "CHECKED"
+   },
+   {
+    "receipt_sha256": "76ec147350c69f19adc947fc19639d69a9dc514119ea6f09e3dea926d16b6964",
+    "statement": "inside_2_sound_c4",
+    "stats": {
+     "check_sha256": "ac997aca9a7a3036a9ba859594d74def034fa786a80aea944666859999da77fe",
+     "cpu_ns": 12182873131,
+     "exit_code": 0,
+     "exits": {
+      "RPP1": "0",
+      "RPP2": "0",
+      "RPP3": "0",
+      "RPP4": "0",
+      "RPP5": "0",
+      "RPP6": "0",
+      "RPP7": "0",
+      "RPP8": "0",
+      "RPP9": "0",
+      "check": "0"
+     },
+     "log": "",
+     "peak_memory_bytes": 222363648,
+     "status": "SUCCESS",
+     "wall_ns": 12376134037
+    },
+    "status": "CHECKED"
+   },
+   {
+    "receipt_sha256": "28e25b560a24fe5e991e7641548afaf4bf2d60c89021f7a8d8861c1394a917ee",
+    "statement": "inside_3_image",
+    "stats": {
+     "check_sha256": "b6a7fed806a76ad0b598f668196175d18930ac5af43782642e24de48042231a4",
+     "cpu_ns": 12537850981,
+     "exit_code": 0,
+     "exits": {
+      "RPP1": "0",
+      "RPP10": "0",
+      "RPP2": "0",
+      "RPP3": "0",
+      "RPP4": "0",
+      "RPP5": "0",
+      "RPP6": "0",
+      "RPP7": "0",
+      "RPP8": "0",
+      "RPP9": "0",
+      "check": "0"
+     },
+     "log": "",
+     "peak_memory_bytes": 222093312,
+     "status": "SUCCESS",
+     "wall_ns": 12785322517
+    },
+    "status": "CHECKED"
+   },
+   {
+    "receipt_sha256": "4bf7cf0d95bdff7d6564b766a3508df802843f42bd4097a4943c41c821ec3401",
+    "statement": "inside_3_sound_tf",
+    "stats": {
+     "check_sha256": "a6cb9171a7d3d585ef3c329603663fa0920308462dc98004b37f4607a08fc1a9",
+     "cpu_ns": 14722161234,
+     "exit_code": 0,
+     "exits": {
+      "RPP1": "0",
+      "RPP10": "0",
+      "RPP11": "0",
+      "RPP2": "0",
+      "RPP3": "0",
+      "RPP4": "0",
+      "RPP5": "0",
+      "RPP6": "0",
+      "RPP7": "0",
+      "RPP8": "0",
+      "RPP9": "0",
+      "check": "0"
+     },
+     "log": "",
+     "peak_memory_bytes": 224305152,
+     "status": "SUCCESS",
+     "wall_ns": 14986176130
+    },
+    "status": "CHECKED"
+   },
+   {
+    "receipt_sha256": "6e0ff971471771fdc1286fd052aff010eb5421352c997172ab47ab666b650f52",
+    "statement": "inside_3_sound_c4",
+    "stats": {
+     "check_sha256": "7bf4104fb0b44dc72b1904a90eb7e9bc05998c1520afdaa336d11b2968f730b1",
+     "cpu_ns": 14998058267,
+     "exit_code": 0,
+     "exits": {
+      "RPP1": "0",
+      "RPP10": "0",
+      "RPP11": "0",
+      "RPP12": "0",
+      "RPP2": "0",
+      "RPP3": "0",
+      "RPP4": "0",
+      "RPP5": "0",
+      "RPP6": "0",
+      "RPP7": "0",
+      "RPP8": "0",
+      "RPP9": "0",
+      "check": "0"
+     },
+     "log": "",
+     "peak_memory_bytes": 226050048,
+     "status": "SUCCESS",
+     "wall_ns": 15387765518
+    },
+    "status": "CHECKED"
+   },
+   {
+    "receipt_sha256": "4787ad4bf67bf6bf83460374938c791f1728a4c8b8e8a5a0a3f1d0a272ee393f",
+    "statement": "ordered_2_image",
+    "stats": {
+     "check_sha256": "8168110765f02ef88f232c16e26544d48078f7d20099da0c0a95303b408d007d",
+     "cpu_ns": 17003599090,
+     "exit_code": 0,
+     "exits": {
+      "RPP1": "0",
+      "RPP10": "0",
+      "RPP11": "0",
+      "RPP12": "0",
+      "RPP13": "0",
+      "RPP2": "0",
+      "RPP3": "0",
+      "RPP4": "0",
+      "RPP5": "0",
+      "RPP6": "0",
+      "RPP7": "0",
+      "RPP8": "0",
+      "RPP9": "0",
+      "check": "0"
+     },
+     "log": "",
+     "peak_memory_bytes": 230748160,
+     "status": "SUCCESS",
+     "wall_ns": 17362453720
+    },
+    "status": "CHECKED"
+   },
+   {
+    "receipt_sha256": "95ed45b575995439bc3e1269a3c0b5294d387be1bf6c19de758e0b285f5a4626",
+    "statement": "ordered_2_sound_tf",
+    "stats": {
+     "check_sha256": "6d9e7daf44960c5da4f2a99617215a70f09db747faade961a6b46c7a4a60bbca",
+     "cpu_ns": 16731390766,
+     "exit_code": 0,
+     "exits": {
+      "RPP1": "0",
+      "RPP10": "0",
+      "RPP11": "0",
+      "RPP12": "0",
+      "RPP13": "0",
+      "RPP14": "0",
+      "RPP2": "0",
+      "RPP3": "0",
+      "RPP4": "0",
+      "RPP5": "0",
+      "RPP6": "0",
+      "RPP7": "0",
+      "RPP8": "0",
+      "RPP9": "0",
+      "check": "0"
+     },
+     "log": "",
+     "peak_memory_bytes": 228200448,
+     "status": "SUCCESS",
+     "wall_ns": 17139421837
+    },
+    "status": "CHECKED"
+   },
+   {
+    "receipt_sha256": "d58b7eb8fe65e57ba285f7a2c0f4bae6261ef8023319e094b16e709a29c31bd3",
+    "statement": "ordered_2_sound_c4",
+    "stats": {
+     "check_sha256": "f5da471c6d4d9c0cc81c527545839b06429394363a35e59fd4cb44efa7bf33e9",
+     "cpu_ns": 16772455339,
+     "exit_code": 0,
+     "exits": {
+      "RPP1": "0",
+      "RPP10": "0",
+      "RPP11": "0",
+      "RPP12": "0",
+      "RPP13": "0",
+      "RPP14": "0",
+      "RPP15": "0",
+      "RPP2": "0",
+      "RPP3": "0",
+      "RPP4": "0",
+      "RPP5": "0",
+      "RPP6": "0",
+      "RPP7": "0",
+      "RPP8": "0",
+      "RPP9": "0",
+      "check": "0"
+     },
+     "log": "",
+     "peak_memory_bytes": 230326272,
+     "status": "SUCCESS",
+     "wall_ns": 17155977502
+    },
+    "status": "CHECKED"
+   },
+   {
+    "receipt_sha256": "4be4c15819b5f970c61194a2a9bcc51f46083435cb43c019256e6b7244616d1c",
+    "statement": "ordered_3_image",
+    "stats": {
+     "check_sha256": "9482b7a2cb1bdedf2c910de29d09ceee2784fba020b9258b07fa8cb19be37fd1",
+     "cpu_ns": 18675948782,
+     "exit_code": 0,
+     "exits": {
+      "RPP1": "0",
+      "RPP10": "0",
+      "RPP11": "0",
+      "RPP12": "0",
+      "RPP13": "0",
+      "RPP14": "0",
+      "RPP15": "0",
+      "RPP16": "0",
+      "RPP2": "0",
+      "RPP3": "0",
+      "RPP4": "0",
+      "RPP5": "0",
+      "RPP6": "0",
+      "RPP7": "0",
+      "RPP8": "0",
+      "RPP9": "0",
+      "check": "0"
+     },
+     "log": "",
+     "peak_memory_bytes": 230576128,
+     "status": "SUCCESS",
+     "wall_ns": 19028229786
+    },
+    "status": "CHECKED"
+   },
+   {
+    "receipt_sha256": "32bdd56b365d7778e5b5761cbbcf2fb23f23d7ae9b4616f11fc552713e0103c0",
+    "statement": "ordered_3_sound_tf",
+    "stats": {
+     "check_sha256": "d7f2b43cdf9405639685f24d67589cf2b4e0c93049807fe95c063bfa1dcd3e60",
+     "cpu_ns": 18796190759,
+     "exit_code": 0,
+     "exits": {
+      "RPP1": "0",
+      "RPP10": "0",
+      "RPP11": "0",
+      "RPP12": "0",
+      "RPP13": "0",
+      "RPP14": "0",
+      "RPP15": "0",
+      "RPP16": "0",
+      "RPP17": "0",
+      "RPP2": "0",
+      "RPP3": "0",
+      "RPP4": "0",
+      "RPP5": "0",
+      "RPP6": "0",
+      "RPP7": "0",
+      "RPP8": "0",
+      "RPP9": "0",
+      "check": "0"
+     },
+     "log": "",
+     "peak_memory_bytes": 230309888,
+     "status": "SUCCESS",
+     "wall_ns": 19274539328
+    },
+    "status": "CHECKED"
+   },
+   {
+    "receipt_sha256": "9f0f98b4e4435fdc877e4ae8216e4af6a78370f87a1c033f6f3cb305d737ba2b",
+    "statement": "ordered_3_sound_c4",
+    "stats": {
+     "check_sha256": "141eea3b32ec950084e4a326cf4623536dc823b02c748d9b57bd1d45ec2aca32",
+     "cpu_ns": 19379474220,
+     "exit_code": 0,
+     "exits": {
+      "RPP1": "0",
+      "RPP10": "0",
+      "RPP11": "0",
+      "RPP12": "0",
+      "RPP13": "0",
+      "RPP14": "0",
+      "RPP15": "0",
+      "RPP16": "0",
+      "RPP17": "0",
+      "RPP18": "0",
+      "RPP2": "0",
+      "RPP3": "0",
+      "RPP4": "0",
+      "RPP5": "0",
+      "RPP6": "0",
+      "RPP7": "0",
+      "RPP8": "0",
+      "RPP9": "0",
+      "check": "0"
+     },
+     "log": "",
+     "peak_memory_bytes": 228470784,
+     "status": "SUCCESS",
+     "wall_ns": 19800959206
+    },
+    "status": "CHECKED"
+   },
+   {
+    "receipt_sha256": "63ddcc138ec6594c186a3382f8f7d6bfd3548a29b1f8592347aface63784180c",
+    "statement": "adjacent_2_image",
+    "stats": {
+     "check_sha256": "da81bdd9bfe4185c4baef309293741dfd2cf32e9136d96c780d40d7e679a3e21",
+     "cpu_ns": 21287480118,
+     "exit_code": 0,
+     "exits": {
+      "RPP1": "0",
+      "RPP10": "0",
+      "RPP11": "0",
+      "RPP12": "0",
+      "RPP13": "0",
+      "RPP14": "0",
+      "RPP15": "0",
+      "RPP16": "0",
+      "RPP17": "0",
+      "RPP18": "0",
+      "RPP19": "0",
+      "RPP2": "0",
+      "RPP3": "0",
+      "RPP4": "0",
+      "RPP5": "0",
+      "RPP6": "0",
+      "RPP7": "0",
+      "RPP8": "0",
+      "RPP9": "0",
+      "check": "0"
+     },
+     "log": "",
+     "peak_memory_bytes": 233095168,
+     "status": "SUCCESS",
+     "wall_ns": 21751182927
+    },
+    "status": "CHECKED"
+   },
+   {
+    "receipt_sha256": "442f8207b143f1e219afb7e51eba9819fc830cd35fcb55dd6579a663124f1ccb",
+    "statement": "adjacent_2_sound_tf",
+    "stats": {
+     "check_sha256": "023459478d1916b1363aa6dfc800f96eda3e6da6cb87a8354908521e43703f3e",
+     "cpu_ns": 21635916046,
+     "exit_code": 0,
+     "exits": {
+      "RPP1": "0",
+      "RPP10": "0",
+      "RPP11": "0",
+      "RPP12": "0",
+      "RPP13": "0",
+      "RPP14": "0",
+      "RPP15": "0",
+      "RPP16": "0",
+      "RPP17": "0",
+      "RPP18": "0",
+      "RPP19": "0",
+      "RPP2": "0",
+      "RPP20": "0",
+      "RPP3": "0",
+      "RPP4": "0",
+      "RPP5": "0",
+      "RPP6": "0",
+      "RPP7": "0",
+      "RPP8": "0",
+      "RPP9": "0",
+      "check": "0"
+     },
+     "log": "",
+     "peak_memory_bytes": 232669184,
+     "status": "SUCCESS",
+     "wall_ns": 22142611722
+    },
+    "status": "CHECKED"
+   },
+   {
+    "receipt_sha256": "f70ea9fdb1dc604f2722769fcfaa6c8a02c3be8b50a281562c6ba20b5f768571",
+    "statement": "adjacent_2_sound_c4",
+    "stats": {
+     "check_sha256": "4a10d1dfff0205718acc84fb963f7d9f343b6a628c7360693c2734947407240b",
+     "cpu_ns": 22365426462,
+     "exit_code": 0,
+     "exits": {
+      "RPP1": "0",
+      "RPP10": "0",
+      "RPP11": "0",
+      "RPP12": "0",
+      "RPP13": "0",
+      "RPP14": "0",
+      "RPP15": "0",
+      "RPP16": "0",
+      "RPP17": "0",
+      "RPP18": "0",
+      "RPP19": "0",
+      "RPP2": "0",
+      "RPP20": "0",
+      "RPP21": "0",
+      "RPP3": "0",
+      "RPP4": "0",
+      "RPP5": "0",
+      "RPP6": "0",
+      "RPP7": "0",
+      "RPP8": "0",
+      "RPP9": "0",
+      "check": "0"
+     },
+     "log": "",
+     "peak_memory_bytes": 232554496,
+     "status": "SUCCESS",
+     "wall_ns": 22888637787
+    },
+    "status": "CHECKED"
+   },
+   {
+    "receipt_sha256": "b9314c9815b3c5e582e883e13f6aeaa2679a6fb42734c44da394117404fe63d1",
+    "statement": "adjacent_3_image",
+    "stats": {
+     "check_sha256": "603741447717698085116f9d799c084d2b36da3764a3646e00125f46c0ddfe34",
+     "cpu_ns": 30271212099,
+     "exit_code": 0,
+     "exits": {
+      "RPP1": "0",
+      "RPP10": "0",
+      "RPP11": "0",
+      "RPP12": "0",
+      "RPP13": "0",
+      "RPP14": "0",
+      "RPP15": "0",
+      "RPP16": "0",
+      "RPP17": "0",
+      "RPP18": "0",
+      "RPP19": "0",
+      "RPP2": "0",
+      "RPP20": "0",
+      "RPP21": "0",
+      "RPP22": "0",
+      "RPP3": "0",
+      "RPP4": "0",
+      "RPP5": "0",
+      "RPP6": "0",
+      "RPP7": "0",
+      "RPP8": "0",
+      "RPP9": "0",
+      "check": "0"
+     },
+     "log": "",
+     "peak_memory_bytes": 234692608,
+     "status": "SUCCESS",
+     "wall_ns": 31161663868
+    },
+    "status": "CHECKED"
+   },
+   {
+    "receipt_sha256": "38ad95c3c9d291ceebb9bf1b22135fee9660d1f5cc758bc91c9588617702806a",
+    "statement": "adjacent_3_sound_tf",
+    "stats": {
+     "check_sha256": "25e96a54fc1c59084472da1b5f0713dbdbd3e006de61fe1f8ed9f0aee6305741",
+     "cpu_ns": 25735775425,
+     "exit_code": 0,
+     "exits": {
+      "RPP1": "0",
+      "RPP10": "0",
+      "RPP11": "0",
+      "RPP12": "0",
+      "RPP13": "0",
+      "RPP14": "0",
+      "RPP15": "0",
+      "RPP16": "0",
+      "RPP17": "0",
+      "RPP18": "0",
+      "RPP19": "0",
+      "RPP2": "0",
+      "RPP20": "0",
+      "RPP21": "0",
+      "RPP22": "0",
+      "RPP23": "0",
+      "RPP3": "0",
+      "RPP4": "0",
+      "RPP5": "0",
+      "RPP6": "0",
+      "RPP7": "0",
+      "RPP8": "0",
+      "RPP9": "0",
+      "check": "0"
+     },
+     "log": "",
+     "peak_memory_bytes": 232595456,
+     "status": "SUCCESS",
+     "wall_ns": 26346449138
+    },
+    "status": "CHECKED"
+   },
+   {
+    "receipt_sha256": "c0b7b0d9534e918d2ab378d8a4729e7c905adb3846b148d3bd755fbf52428f9a",
+    "statement": "adjacent_3_sound_c4",
+    "stats": {
+     "check_sha256": "ded787604a36fea3950227d4e755de417ba4f5b53e097468e9a188c4e9cfc05f",
+     "cpu_ns": 26040409276,
+     "exit_code": 0,
+     "exits": {
+      "RPP1": "0",
+      "RPP10": "0",
+      "RPP11": "0",
+      "RPP12": "0",
+      "RPP13": "0",
+      "RPP14": "0",
+      "RPP15": "0",
+      "RPP16": "0",
+      "RPP17": "0",
+      "RPP18": "0",
+      "RPP19": "0",
+      "RPP2": "0",
+      "RPP20": "0",
+      "RPP21": "0",
+      "RPP22": "0",
+      "RPP23": "0",
+      "RPP24": "0",
+      "RPP3": "0",
+      "RPP4": "0",
+      "RPP5": "0",
+      "RPP6": "0",
+      "RPP7": "0",
+      "RPP8": "0",
+      "RPP9": "0",
+      "check": "0"
+     },
+     "log": "",
+     "peak_memory_bytes": 230490112,
+     "status": "SUCCESS",
+     "wall_ns": 26809757735
+    },
+    "status": "CHECKED"
+   },
+   {
+    "receipt_sha256": "f6c81903dd3edf18ee7cc47c3068f702f3ef2ffbd9b66f2d32fa323573606af6",
+    "statement": "cross_2_within_ordered_2",
+    "stats": {
+     "check_sha256": "06a0d49c806dc59386c98bf1781058cb0ef3be9980183cfc089632c7e26d4a88",
+     "cpu_ns": 27019238069,
+     "exit_code": 0,
+     "exits": {
+      "RPP1": "0",
+      "RPP10": "0",
+      "RPP11": "0",
+      "RPP12": "0",
+      "RPP13": "0",
+      "RPP14": "0",
+      "RPP15": "0",
+      "RPP16": "0",
+      "RPP17": "0",
+      "RPP18": "0",
+      "RPP19": "0",
+      "RPP2": "0",
+      "RPP20": "0",
+      "RPP21": "0",
+      "RPP22": "0",
+      "RPP23": "0",
+      "RPP24": "0",
+      "RPP25": "0",
+      "RPP3": "0",
+      "RPP4": "0",
+      "RPP5": "0",
+      "RPP6": "0",
+      "RPP7": "0",
+      "RPP8": "0",
+      "RPP9": "0",
+      "check": "0"
+     },
+     "log": "",
+     "peak_memory_bytes": 233328640,
+     "status": "SUCCESS",
+     "wall_ns": 27619061114
+    },
+    "status": "CHECKED"
+   },
+   {
+    "receipt_sha256": "e09abc697d6d83120672e8caa1c2033aa8bfbc779697a5548a42b60b486b49cd",
+    "statement": "cross_2_within_adjacent_2",
+    "stats": {
+     "check_sha256": "adce40a625a8fee5cf301811d41cd99c3aa9410bc6deba4a5e376b1bf0358962",
+     "cpu_ns": 27390944922,
+     "exit_code": 0,
+     "exits": {
+      "RPP1": "0",
+      "RPP10": "0",
+      "RPP11": "0",
+      "RPP12": "0",
+      "RPP13": "0",
+      "RPP14": "0",
+      "RPP15": "0",
+      "RPP16": "0",
+      "RPP17": "0",
+      "RPP18": "0",
+      "RPP19": "0",
+      "RPP2": "0",
+      "RPP20": "0",
+      "RPP21": "0",
+      "RPP22": "0",
+      "RPP23": "0",
+      "RPP24": "0",
+      "RPP25": "0",
+      "RPP26": "0",
+      "RPP3": "0",
+      "RPP4": "0",
+      "RPP5": "0",
+      "RPP6": "0",
+      "RPP7": "0",
+      "RPP8": "0",
+      "RPP9": "0",
+      "check": "0"
+     },
+     "log": "",
+     "peak_memory_bytes": 234672128,
+     "status": "SUCCESS",
+     "wall_ns": 27980502106
+    },
+    "status": "CHECKED"
+   },
+   {
+    "receipt_sha256": "f8909065c3c4627feeca8243f922a134e93278ddacc48914b37825771d4c5459",
+    "statement": "ordered_2_within_cross_2",
+    "stats": {
+     "check_sha256": "88bafb8bf1b95559bd036547a57fa2a453bc8b7b55561c59ceed7663185d5a01",
+     "cpu_ns": 29766322837,
+     "exit_code": 0,
+     "exits": {
+      "RPP1": "0",
+      "RPP10": "0",
+      "RPP11": "0",
+      "RPP12": "0",
+      "RPP13": "0",
+      "RPP14": "0",
+      "RPP15": "0",
+      "RPP16": "0",
+      "RPP17": "0",
+      "RPP18": "0",
+      "RPP19": "0",
+      "RPP2": "0",
+      "RPP20": "0",
+      "RPP21": "0",
+      "RPP22": "0",
+      "RPP23": "0",
+      "RPP24": "0",
+      "RPP25": "0",
+      "RPP26": "0",
+      "RPP27": "0",
+      "RPP3": "0",
+      "RPP4": "0",
+      "RPP5": "0",
+      "RPP6": "0",
+      "RPP7": "0",
+      "RPP8": "0",
+      "RPP9": "0",
+      "check": "0"
+     },
+     "log": "",
+     "peak_memory_bytes": 230731776,
+     "status": "SUCCESS",
+     "wall_ns": 30705962489
+    },
+    "status": "CHECKED"
+   },
+   {
+    "receipt_sha256": "9ce3a2fa6437435e593d5e9ea2f22a962ff4071105754f8e9bfc403930d70411",
+    "statement": "ordered_2_within_adjacent_2",
+    "stats": {
+     "check_sha256": "1b1434040b63a4cc7308e9e7a445b65dac8cc118c89d6868c58cd5ce9a49a98d",
+     "cpu_ns": 31746693541,
+     "exit_code": 0,
+     "exits": {
+      "RPP1": "0",
+      "RPP10": "0",
+      "RPP11": "0",
+      "RPP12": "0",
+      "RPP13": "0",
+      "RPP14": "0",
+      "RPP15": "0",
+      "RPP16": "0",
+      "RPP17": "0",
+      "RPP18": "0",
+      "RPP19": "0",
+      "RPP2": "0",
+      "RPP20": "0",
+      "RPP21": "0",
+      "RPP22": "0",
+      "RPP23": "0",
+      "RPP24": "0",
+      "RPP25": "0",
+      "RPP26": "0",
+      "RPP27": "0",
+      "RPP28": "0",
+      "RPP3": "0",
+      "RPP4": "0",
+      "RPP5": "0",
+      "RPP6": "0",
+      "RPP7": "0",
+      "RPP8": "0",
+      "RPP9": "0",
+      "check": "0"
+     },
+     "log": "",
+     "peak_memory_bytes": 236773376,
+     "status": "SUCCESS",
+     "wall_ns": 32515201319
+    },
+    "status": "CHECKED"
+   },
+   {
+    "receipt_sha256": "3ec321c388360f1bf43a537cb5a338597d8ec785d82190dabdc3ca3f9ea4c1ba",
+    "statement": "adjacent_2_within_cross_2",
+    "stats": {
+     "check_sha256": "1f1f7bfed953aa5e30baba301d92e3c63eebc774434a6c6156057a5bc03ba9ff",
+     "cpu_ns": 31481120989,
+     "exit_code": 0,
+     "exits": {
+      "RPP1": "0",
+      "RPP10": "0",
+      "RPP11": "0",
+      "RPP12": "0",
+      "RPP13": "0",
+      "RPP14": "0",
+      "RPP15": "0",
+      "RPP16": "0",
+      "RPP17": "0",
+      "RPP18": "0",
+      "RPP19": "0",
+      "RPP2": "0",
+      "RPP20": "0",
+      "RPP21": "0",
+      "RPP22": "0",
+      "RPP23": "0",
+      "RPP24": "0",
+      "RPP25": "0",
+      "RPP26": "0",
+      "RPP27": "0",
+      "RPP28": "0",
+      "RPP29": "0",
+      "RPP3": "0",
+      "RPP4": "0",
+      "RPP5": "0",
+      "RPP6": "0",
+      "RPP7": "0",
+      "RPP8": "0",
+      "RPP9": "0",
+      "check": "0"
+     },
+     "log": "",
+     "peak_memory_bytes": 236589056,
+     "status": "SUCCESS",
+     "wall_ns": 32111047395
+    },
+    "status": "CHECKED"
+   },
+   {
+    "receipt_sha256": "177ce4fe15b77cc14b93de07f46d278b211733416c404fe0fecf05fbfef6494c",
+    "statement": "adjacent_2_within_ordered_2",
+    "stats": {
+     "check_sha256": "675ca53d50e2710690fc6d421284b1f2535a8012a2f2024c99ec11c0ae4443f7",
+     "cpu_ns": 31835735680,
+     "exit_code": 0,
+     "exits": {
+      "RPP1": "0",
+      "RPP10": "0",
+      "RPP11": "0",
+      "RPP12": "0",
+      "RPP13": "0",
+      "RPP14": "0",
+      "RPP15": "0",
+      "RPP16": "0",
+      "RPP17": "0",
+      "RPP18": "0",
+      "RPP19": "0",
+      "RPP2": "0",
+      "RPP20": "0",
+      "RPP21": "0",
+      "RPP22": "0",
+      "RPP23": "0",
+      "RPP24": "0",
+      "RPP25": "0",
+      "RPP26": "0",
+      "RPP27": "0",
+      "RPP28": "0",
+      "RPP29": "0",
+      "RPP3": "0",
+      "RPP30": "0",
+      "RPP4": "0",
+      "RPP5": "0",
+      "RPP6": "0",
+      "RPP7": "0",
+      "RPP8": "0",
+      "RPP9": "0",
+      "check": "0"
+     },
+     "log": "",
+     "peak_memory_bytes": 237633536,
+     "status": "SUCCESS",
+     "wall_ns": 32484137173
+    },
+    "status": "CHECKED"
+   },
+   {
+    "receipt_sha256": "17bb12710194bbfa4d013d114646689c00b26a747ddf975a80eec2590a200a11",
+    "statement": "cross_2_loses_tf",
+    "stats": {
+     "check_sha256": "14abaca5449a3b0fbb7317a6e6c21ad50541575b610aea26fec62cd903bdfc56",
+     "cpu_ns": 32133726831,
+     "exit_code": 0,
+     "exits": {
+      "RPP1": "0",
+      "RPP10": "0",
+      "RPP11": "0",
+      "RPP12": "0",
+      "RPP13": "0",
+      "RPP14": "0",
+      "RPP15": "0",
+      "RPP16": "0",
+      "RPP17": "0",
+      "RPP18": "0",
+      "RPP19": "0",
+      "RPP2": "0",
+      "RPP20": "0",
+      "RPP21": "0",
+      "RPP22": "0",
+      "RPP23": "0",
+      "RPP24": "0",
+      "RPP25": "0",
+      "RPP26": "0",
+      "RPP27": "0",
+      "RPP28": "0",
+      "RPP29": "0",
+      "RPP3": "0",
+      "RPP30": "0",
+      "RPP31": "0",
+      "RPP4": "0",
+      "RPP5": "0",
+      "RPP6": "0",
+      "RPP7": "0",
+      "RPP8": "0",
+      "RPP9": "0",
+      "check": "0"
+     },
+     "log": "",
+     "peak_memory_bytes": 236892160,
+     "status": "SUCCESS",
+     "wall_ns": 32796548601
+    },
+    "status": "CHECKED"
+   },
+   {
+    "receipt_sha256": "73b0062d5274e46f594ccb3e949dd7a129e22e7a8d39ef6c1e26d020b81f7c67",
+    "statement": "ordered_2_loses_tf",
+    "stats": {
+     "check_sha256": "21dd6810534065e1e8107306016b7c3cc1f2ba651e3e8629e932a21bab92e90e",
+     "cpu_ns": 32837497958,
+     "exit_code": 0,
+     "exits": {
+      "RPP1": "0",
+      "RPP10": "0",
+      "RPP11": "0",
+      "RPP12": "0",
+      "RPP13": "0",
+      "RPP14": "0",
+      "RPP15": "0",
+      "RPP16": "0",
+      "RPP17": "0",
+      "RPP18": "0",
+      "RPP19": "0",
+      "RPP2": "0",
+      "RPP20": "0",
+      "RPP21": "0",
+      "RPP22": "0",
+      "RPP23": "0",
+      "RPP24": "0",
+      "RPP25": "0",
+      "RPP26": "0",
+      "RPP27": "0",
+      "RPP28": "0",
+      "RPP29": "0",
+      "RPP3": "0",
+      "RPP30": "0",
+      "RPP31": "0",
+      "RPP32": "0",
+      "RPP4": "0",
+      "RPP5": "0",
+      "RPP6": "0",
+      "RPP7": "0",
+      "RPP8": "0",
+      "RPP9": "0",
+      "check": "0"
+     },
+     "log": "",
+     "peak_memory_bytes": 237031424,
+     "status": "SUCCESS",
+     "wall_ns": 33602657873
+    },
+    "status": "CHECKED"
+   },
+   {
+    "receipt_sha256": "4d8d61047d4a65f2decbf4215f13c80e2727a03cdce62cea69509e74d515263b",
+    "statement": "adjacent_2_loses_tf",
+    "stats": {
+     "check_sha256": "55b317732a02d9bfa1b28492e0a437cecea7724a514a58171047970e5bcc1440",
+     "cpu_ns": 33017988481,
+     "exit_code": 0,
+     "exits": {
+      "RPP1": "0",
+      "RPP10": "0",
+      "RPP11": "0",
+      "RPP12": "0",
+      "RPP13": "0",
+      "RPP14": "0",
+      "RPP15": "0",
+      "RPP16": "0",
+      "RPP17": "0",
+      "RPP18": "0",
+      "RPP19": "0",
+      "RPP2": "0",
+      "RPP20": "0",
+      "RPP21": "0",
+      "RPP22": "0",
+      "RPP23": "0",
+      "RPP24": "0",
+      "RPP25": "0",
+      "RPP26": "0",
+      "RPP27": "0",
+      "RPP28": "0",
+      "RPP29": "0",
+      "RPP3": "0",
+      "RPP30": "0",
+      "RPP31": "0",
+      "RPP32": "0",
+      "RPP33": "0",
+      "RPP4": "0",
+      "RPP5": "0",
+      "RPP6": "0",
+      "RPP7": "0",
+      "RPP8": "0",
+      "RPP9": "0",
+      "check": "0"
+     },
+     "log": "",
+     "peak_memory_bytes": 236736512,
+     "status": "SUCCESS",
+     "wall_ns": 33804016129
+    },
+    "status": "CHECKED"
+   }
+  ],
+  "attempts": [
+   {
+    "attempts": [
+     {
+      "compiled": true,
+      "recipe": "filter-subset",
+      "tactic_sha256": "fb78765e4d94482b800ed874d33ef5eb4e94336ce6be35e08967521ea01029e7",
+      "tier": 0
+     }
+    ],
+    "charged": {
+     "candidates": 1,
+     "cpu_ns": 1164485424,
+     "wall_ns": 1229010671
+    },
+    "result": "COMPILED",
+    "statement": "cross_2_image",
+    "target": "RPConj.cross_2_image"
+   },
+   {
+    "attempts": [
+     {
+      "compiled": true,
+      "recipe": "destructure-subst-omega",
+      "tactic_sha256": "9bc934ce83418a2dda72bc3911b8581fbc1d29ec76947da03dc06b9214e3dd83",
+      "tier": 0
+     }
+    ],
+    "charged": {
+     "candidates": 1,
+     "cpu_ns": 1128585821,
+     "wall_ns": 1159653971
+    },
+    "result": "COMPILED",
+    "statement": "cross_2_sound_tf",
+    "target": "RPConj.cross_2_sound_tf"
+   },
+   {
+    "attempts": [
+     {
+      "compiled": true,
+      "recipe": "counterexample-evaluation",
+      "tactic_sha256": "638fab10bf7f82378e915f0254d042e7d013f678f88beda508653c0f759b7d0b",
+      "tier": 0
+     }
+    ],
+    "charged": {
+     "candidates": 1,
+     "cpu_ns": 1168422219,
+     "wall_ns": 1197664440
+    },
+    "result": "COMPILED",
+    "statement": "cross_2_sound_c4",
+    "target": "RPConj.cross_2_sound_c4_negation"
+   },
+   {
+    "attempts": [
+     {
+      "compiled": true,
+      "recipe": "filter-subset",
+      "tactic_sha256": "d2066afea8467eda6178ba72d47bd051799b94a3d1c8b2857e0be2159bfd784a",
+      "tier": 0
+     }
+    ],
+    "charged": {
+     "candidates": 1,
+     "cpu_ns": 1874473148,
+     "wall_ns": 1900474298
+    },
+    "result": "COMPILED",
+    "statement": "cross_3_image",
+    "target": "RPConj.cross_3_image"
+   },
+   {
+    "attempts": [
+     {
+      "compiled": true,
+      "recipe": "counterexample-evaluation",
+      "tactic_sha256": "1124c939d32e4368164811299c8868152a87b5ea60cd4f9ec296d52f5169a31f",
+      "tier": 0
+     }
+    ],
+    "charged": {
+     "candidates": 1,
+     "cpu_ns": 1262009982,
+     "wall_ns": 1298362930
+    },
+    "result": "COMPILED",
+    "statement": "cross_3_sound_tf",
+    "target": "RPConj.cross_3_sound_tf_negation"
+   },
+   {
+    "attempts": [
+     {
+      "compiled": true,
+      "recipe": "counterexample-evaluation",
+      "tactic_sha256": "3e1f7064a0b4ad8392a2aaece98727428930b507ad54d581833019202d0d56f3",
+      "tier": 0
+     }
+    ],
+    "charged": {
+     "candidates": 1,
+     "cpu_ns": 1211239161,
+     "wall_ns": 1243749869
+    },
+    "result": "COMPILED",
+    "statement": "cross_3_sound_c4",
+    "target": "RPConj.cross_3_sound_c4_negation"
+   },
+   {
+    "attempts": [
+     {
+      "compiled": true,
+      "recipe": "filter-subset",
+      "tactic_sha256": "7d6c2c1f998466afe92ad1776173332b9b5e51a8c2c868a76fa50c2bbe819c38",
+      "tier": 0
+     }
+    ],
+    "charged": {
+     "candidates": 1,
+     "cpu_ns": 1228072901,
+     "wall_ns": 1260408472
+    },
+    "result": "COMPILED",
+    "statement": "inside_2_image",
+    "target": "RPConj.inside_2_image"
+   },
+   {
+    "attempts": [
+     {
+      "compiled": true,
+      "recipe": "counterexample-evaluation",
+      "tactic_sha256": "ce535c377894d03763566bca9a00ce2bd5df831f932061db261473a276ff2da0",
+      "tier": 0
+     }
+    ],
+    "charged": {
+     "candidates": 1,
+     "cpu_ns": 1334366675,
+     "wall_ns": 1365498059
+    },
+    "result": "COMPILED",
+    "statement": "inside_2_sound_tf",
+    "target": "RPConj.inside_2_sound_tf_negation"
+   },
+   {
+    "attempts": [
+     {
+      "compiled": true,
+      "recipe": "counterexample-evaluation",
+      "tactic_sha256": "d1e7a5c1d29682889e19439c47a459f44e4ed61208182219a2718d791dd3bb3a",
+      "tier": 0
+     }
+    ],
+    "charged": {
+     "candidates": 1,
+     "cpu_ns": 1317464210,
+     "wall_ns": 1365874337
+    },
+    "result": "COMPILED",
+    "statement": "inside_2_sound_c4",
+    "target": "RPConj.inside_2_sound_c4_negation"
+   },
+   {
+    "attempts": [
+     {
+      "compiled": true,
+      "recipe": "filter-subset",
+      "tactic_sha256": "5e5a8a9d8ce7972b535d4c71162821b6077e7e3dde8db2c6c3c1e580061a64e6",
+      "tier": 0
+     }
+    ],
+    "charged": {
+     "candidates": 1,
+     "cpu_ns": 1122170809,
+     "wall_ns": 1165761070
+    },
+    "result": "COMPILED",
+    "statement": "inside_3_image",
+    "target": "RPConj.inside_3_image"
+   },
+   {
+    "attempts": [
+     {
+      "compiled": true,
+      "recipe": "counterexample-evaluation",
+      "tactic_sha256": "f4bfa15df555c373a0793ed55e7f757a1468c778a46834cc200eb797bc6362ab",
+      "tier": 0
+     }
+    ],
+    "charged": {
+     "candidates": 1,
+     "cpu_ns": 1187392959,
+     "wall_ns": 1214967064
+    },
+    "result": "COMPILED",
+    "statement": "inside_3_sound_tf",
+    "target": "RPConj.inside_3_sound_tf_negation"
+   },
+   {
+    "attempts": [
+     {
+      "compiled": true,
+      "recipe": "counterexample-evaluation",
+      "tactic_sha256": "f27af9ba1764a26663931342e4017db32c4bfdbb7633855fcea9efda522dea5f",
+      "tier": 0
+     }
+    ],
+    "charged": {
+     "candidates": 1,
+     "cpu_ns": 1386000633,
+     "wall_ns": 1460971383
+    },
+    "result": "COMPILED",
+    "statement": "inside_3_sound_c4",
+    "target": "RPConj.inside_3_sound_c4_negation"
+   },
+   {
+    "attempts": [
+     {
+      "compiled": true,
+      "recipe": "filter-subset",
+      "tactic_sha256": "ddc17223969a75dad186b110a54786eaf19fd021ec658abf490538c7a7fb6226",
+      "tier": 0
+     }
+    ],
+    "charged": {
+     "candidates": 1,
+     "cpu_ns": 1241114524,
+     "wall_ns": 1285901876
+    },
+    "result": "COMPILED",
+    "statement": "ordered_2_image",
+    "target": "RPConj.ordered_2_image"
+   },
+   {
+    "attempts": [
+     {
+      "compiled": true,
+      "recipe": "destructure-subst-omega",
+      "tactic_sha256": "28c67c9a93a4e84f9117e17d4cd4e89abb261bdfbcd7f03036ec7d9f83dff837",
+      "tier": 0
+     }
+    ],
+    "charged": {
+     "candidates": 1,
+     "cpu_ns": 1180157561,
+     "wall_ns": 1216065247
+    },
+    "result": "COMPILED",
+    "statement": "ordered_2_sound_tf",
+    "target": "RPConj.ordered_2_sound_tf"
+   },
+   {
+    "attempts": [
+     {
+      "compiled": true,
+      "recipe": "counterexample-evaluation",
+      "tactic_sha256": "39774b2adad655f0e3e135bc9884b778106527e42e3e00ed791235929edb1ef0",
+      "tier": 0
+     }
+    ],
+    "charged": {
+     "candidates": 1,
+     "cpu_ns": 1274392999,
+     "wall_ns": 1324554237
+    },
+    "result": "COMPILED",
+    "statement": "ordered_2_sound_c4",
+    "target": "RPConj.ordered_2_sound_c4_negation"
+   },
+   {
+    "attempts": [
+     {
+      "compiled": true,
+      "recipe": "filter-subset",
+      "tactic_sha256": "cc651d74366c2581a6046d6a10bfcd03f422e38e8216a8026f2b35bda0c196cd",
+      "tier": 0
+     }
+    ],
+    "charged": {
+     "candidates": 1,
+     "cpu_ns": 1242776131,
+     "wall_ns": 1278042567
+    },
+    "result": "COMPILED",
+    "statement": "ordered_3_image",
+    "target": "RPConj.ordered_3_image"
+   },
+   {
+    "attempts": [
+     {
+      "compiled": true,
+      "recipe": "counterexample-evaluation",
+      "tactic_sha256": "3ebd47f3b413ccc438949a2a1e7ec7d4b74bd039a62d7a098bda81694dddbab1",
+      "tier": 0
+     }
+    ],
+    "charged": {
+     "candidates": 1,
+     "cpu_ns": 1185702471,
+     "wall_ns": 1227765874
+    },
+    "result": "COMPILED",
+    "statement": "ordered_3_sound_tf",
+    "target": "RPConj.ordered_3_sound_tf_negation"
+   },
+   {
+    "attempts": [
+     {
+      "compiled": true,
+      "recipe": "counterexample-evaluation",
+      "tactic_sha256": "806fb1572ddb842b307b92890f782e5ca900333b9dfe3b2d9bdb92bf966461f5",
+      "tier": 0
+     }
+    ],
+    "charged": {
+     "candidates": 1,
+     "cpu_ns": 1311716506,
+     "wall_ns": 1357120406
+    },
+    "result": "COMPILED",
+    "statement": "ordered_3_sound_c4",
+    "target": "RPConj.ordered_3_sound_c4_negation"
+   },
+   {
+    "attempts": [
+     {
+      "compiled": true,
+      "recipe": "filter-subset",
+      "tactic_sha256": "9324cefa70545a82c5ea063a18d54ae7c1465a1a0e339553c8bc23ee96d01caa",
+      "tier": 0
+     }
+    ],
+    "charged": {
+     "candidates": 1,
+     "cpu_ns": 1251488176,
+     "wall_ns": 1286809401
+    },
+    "result": "COMPILED",
+    "statement": "adjacent_2_image",
+    "target": "RPConj.adjacent_2_image"
+   },
+   {
+    "attempts": [
+     {
+      "compiled": true,
+      "recipe": "destructure-subst-omega",
+      "tactic_sha256": "cdaed3b24970239f50736b9f135b2043393478400a6795a2d5a311d0826cbca1",
+      "tier": 0
+     }
+    ],
+    "charged": {
+     "candidates": 1,
+     "cpu_ns": 1109804867,
+     "wall_ns": 1151332577
+    },
+    "result": "COMPILED",
+    "statement": "adjacent_2_sound_tf",
+    "target": "RPConj.adjacent_2_sound_tf"
+   },
+   {
+    "attempts": [
+     {
+      "compiled": true,
+      "recipe": "counterexample-evaluation",
+      "tactic_sha256": "2c7d1454baa4c20ee65257ab13033266c655928a13649e629f21b11c571a15ab",
+      "tier": 0
+     }
+    ],
+    "charged": {
+     "candidates": 1,
+     "cpu_ns": 1240430099,
+     "wall_ns": 1306580065
+    },
+    "result": "COMPILED",
+    "statement": "adjacent_2_sound_c4",
+    "target": "RPConj.adjacent_2_sound_c4_negation"
+   },
+   {
+    "attempts": [
+     {
+      "compiled": true,
+      "recipe": "filter-subset",
+      "tactic_sha256": "c9bf446da91a74b31b86f37afdb31d3ac985e13d7ed7c503ab1478d0e13431ff",
+      "tier": 0
+     }
+    ],
+    "charged": {
+     "candidates": 1,
+     "cpu_ns": 1713802790,
+     "wall_ns": 1808947227
+    },
+    "result": "COMPILED",
+    "statement": "adjacent_3_image",
+    "target": "RPConj.adjacent_3_image"
+   },
+   {
+    "attempts": [
+     {
+      "compiled": true,
+      "recipe": "destructure-subst-omega",
+      "tactic_sha256": "af4e66549ba09ee317af8260df987af112abb910e2fb647ebb04995f000e6bb2",
+      "tier": 0
+     }
+    ],
+    "charged": {
+     "candidates": 1,
+     "cpu_ns": 1143172501,
+     "wall_ns": 1188819774
+    },
+    "result": "COMPILED",
+    "statement": "adjacent_3_sound_tf",
+    "target": "RPConj.adjacent_3_sound_tf"
+   },
+   {
+    "attempts": [
+     {
+      "compiled": true,
+      "recipe": "counterexample-evaluation",
+      "tactic_sha256": "58529b6ae406fab31eee2005c195881832ac2d14ddeb802ac19c87abf8d0e104",
+      "tier": 0
+     }
+    ],
+    "charged": {
+     "candidates": 1,
+     "cpu_ns": 1412834807,
+     "wall_ns": 1440103032
+    },
+    "result": "COMPILED",
+    "statement": "adjacent_3_sound_c4",
+    "target": "RPConj.adjacent_3_sound_c4_negation"
+   },
+   {
+    "attempts": [
+     {
+      "compiled": true,
+      "recipe": "counterexample-evaluation",
+      "tactic_sha256": "b243dcbcf1144602b59aa83dbd43f66ea569830fa7acccc543ed261e3da62812",
+      "tier": 0
+     }
+    ],
+    "charged": {
+     "candidates": 1,
+     "cpu_ns": 1154106789,
+     "wall_ns": 1203041366
+    },
+    "result": "COMPILED",
+    "statement": "cross_2_within_ordered_2",
+    "target": "RPConj.cross_2_within_ordered_2_negation"
+   },
+   {
+    "attempts": [
+     {
+      "compiled": true,
+      "recipe": "filter-pointwise",
+      "tactic_sha256": "aa081b06a08be595c58bdd6225a0e221a43d6e507bb35864bf4442d4e07d6ffc",
+      "tier": 0
+     }
+    ],
+    "charged": {
+     "candidates": 1,
+     "cpu_ns": 1207895564,
+     "wall_ns": 1254684918
+    },
+    "result": "COMPILED",
+    "statement": "cross_2_within_adjacent_2",
+    "target": "RPConj.cross_2_within_adjacent_2"
+   },
+   {
+    "attempts": [
+     {
+      "compiled": true,
+      "recipe": "filter-pointwise",
+      "tactic_sha256": "fb4b348208108f05024b22946b47e2afc07cd4581039838c5cd95d40e2a5464d",
+      "tier": 0
+     }
+    ],
+    "charged": {
+     "candidates": 1,
+     "cpu_ns": 1048811009,
+     "wall_ns": 1077158018
+    },
+    "result": "COMPILED",
+    "statement": "ordered_2_within_cross_2",
+    "target": "RPConj.ordered_2_within_cross_2"
+   },
+   {
+    "attempts": [
+     {
+      "compiled": true,
+      "recipe": "filter-pointwise",
+      "tactic_sha256": "cdd67b181a5b735bf93cbad3858d140311d68338adb58182d399fcf1d98ddcfd",
+      "tier": 0
+     }
+    ],
+    "charged": {
+     "candidates": 1,
+     "cpu_ns": 1080094712,
+     "wall_ns": 1124524573
+    },
+    "result": "COMPILED",
+    "statement": "ordered_2_within_adjacent_2",
+    "target": "RPConj.ordered_2_within_adjacent_2"
+   },
+   {
+    "attempts": [
+     {
+      "compiled": true,
+      "recipe": "filter-pointwise",
+      "tactic_sha256": "3c624074a57008b12ae5f70942da033231700294161cf014309c0782f8f82e9d",
+      "tier": 0
+     }
+    ],
+    "charged": {
+     "candidates": 1,
+     "cpu_ns": 1110245610,
+     "wall_ns": 1170286560
+    },
+    "result": "COMPILED",
+    "statement": "adjacent_2_within_cross_2",
+    "target": "RPConj.adjacent_2_within_cross_2"
+   },
+   {
+    "attempts": [
+     {
+      "compiled": true,
+      "recipe": "counterexample-evaluation",
+      "tactic_sha256": "f858c31f8863498fb8b289a4b950ab2c3df117a44e008a0ba9db78d159752b10",
+      "tier": 0
+     }
+    ],
+    "charged": {
+     "candidates": 1,
+     "cpu_ns": 1264778919,
+     "wall_ns": 1302737763
+    },
+    "result": "COMPILED",
+    "statement": "adjacent_2_within_ordered_2",
+    "target": "RPConj.adjacent_2_within_ordered_2_negation"
+   },
+   {
+    "attempts": [
+     {
+      "compiled": true,
+      "recipe": "witness-evaluation",
+      "tactic_sha256": "fb01f74fb88a8c7f064ff99a476fdbd13c47b11425af8743ccfbdbbc2246e012",
+      "tier": 0
+     }
+    ],
+    "charged": {
+     "candidates": 1,
+     "cpu_ns": 1594644925,
+     "wall_ns": 1649487566
+    },
+    "result": "COMPILED",
+    "statement": "cross_2_loses_tf",
+    "target": "RPConj.cross_2_loses_tf"
+   },
+   {
+    "attempts": [
+     {
+      "compiled": true,
+      "recipe": "witness-evaluation",
+      "tactic_sha256": "b1ff7e0199591ff6884504215fe1a1ced06dd04f5780d647008519ae6f3e635e",
+      "tier": 0
+     }
+    ],
+    "charged": {
+     "candidates": 1,
+     "cpu_ns": 1209866919,
+     "wall_ns": 1280953850
+    },
+    "result": "COMPILED",
+    "statement": "ordered_2_loses_tf",
+    "target": "RPConj.ordered_2_loses_tf"
+   },
+   {
+    "attempts": [
+     {
+      "compiled": true,
+      "recipe": "witness-evaluation",
+      "tactic_sha256": "fb01f74fb88a8c7f064ff99a476fdbd13c47b11425af8743ccfbdbbc2246e012",
+      "tier": 0
+     }
+    ],
+    "charged": {
+     "candidates": 1,
+     "cpu_ns": 1487579676,
+     "wall_ns": 1555720719
+    },
+    "result": "COMPILED",
+    "statement": "adjacent_2_loses_tf",
+    "target": "RPConj.adjacent_2_loses_tf"
+   }
+  ],
+  "search_candidates": 33,
+  "search_context_cpu_ns": 47247694698,
+  "search_cpu_ns": 41850101497,
+  "search_runs": 33
+ },
+ "counterexamples": [
+  {
+   "checked": true,
+   "statement": "cross_2_sound_c4",
+   "values": {
+    "H": "({(1, 0), (1, 3), (2, 0), (3, 2)} : GT.Edges)",
+    "c": "(fun v => ([0, 1, 1, 0] : List (Fin 2)).getD v 0)"
+   }
+  },
+  {
+   "checked": true,
+   "statement": "cross_3_sound_tf",
+   "values": {
+    "H": "({(1, 0), (2, 1), (2, 3), (3, 1)} : GT.Edges)",
+    "c": "(fun v => ([0, 0, 1, 2] : List (Fin 3)).getD v 0)"
+   }
+  },
+  {
+   "checked": true,
+   "statement": "cross_3_sound_c4",
+   "values": {
+    "H": "({(0, 3), (1, 0), (2, 1), (3, 2)} : GT.Edges)",
+    "c": "(fun v => ([0, 1, 0, 1] : List (Fin 3)).getD v 0)"
+   }
+  },
+  {
+   "checked": true,
+   "statement": "inside_2_sound_tf",
+   "values": {
+    "H": "({(2, 2)} : GT.Edges)",
+    "c": "(fun v => ([0, 0, 0, 1] : List (Fin 2)).getD v 0)"
+   }
+  },
+  {
+   "checked": true,
+   "statement": "inside_2_sound_c4",
+   "values": {
+    "H": "({(1, 1), (2, 0), (2, 1), (2, 2)} : GT.Edges)",
+    "c": "(fun v => ([0, 0, 0, 0] : List (Fin 2)).getD v 0)"
+   }
+  },
+  {
+   "checked": true,
+   "statement": "inside_3_sound_tf",
+   "values": {
+    "H": "({(1, 1)} : GT.Edges)",
+    "c": "(fun v => ([0, 0, 2, 1] : List (Fin 3)).getD v 0)"
+   }
+  },
+  {
+   "checked": true,
+   "statement": "inside_3_sound_c4",
+   "values": {
+    "H": "({(2, 0), (2, 3), (3, 0), (3, 3)} : GT.Edges)",
+    "c": "(fun v => ([0, 0, 0, 0] : List (Fin 3)).getD v 0)"
+   }
+  },
+  {
+   "checked": true,
+   "statement": "ordered_2_sound_c4",
+   "values": {
+    "H": "({(0, 2), (0, 3), (1, 2), (1, 3), (2, 0)} : GT.Edges)",
+    "c": "(fun v => ([0, 0, 1, 1] : List (Fin 2)).getD v 0)"
+   }
+  },
+  {
+   "checked": true,
+   "statement": "ordered_3_sound_tf",
+   "values": {
+    "H": "({(1, 0), (2, 0), (2, 1), (2, 3)} : GT.Edges)",
+    "c": "(fun v => ([2, 1, 0, 0] : List (Fin 3)).getD v 0)"
+   }
+  },
+  {
+   "checked": true,
+   "statement": "ordered_3_sound_c4",
+   "values": {
+    "H": "({(0, 1), (0, 3), (1, 2), (2, 1), (2, 3), (3, 3)} : GT.Edges)",
+    "c": "(fun v => ([0, 2, 0, 1] : List (Fin 3)).getD v 0)"
+   }
+  },
+  {
+   "checked": true,
+   "statement": "adjacent_2_sound_c4",
+   "values": {
+    "H": "({(0, 2), (1, 0), (1, 3), (3, 2)} : GT.Edges)",
+    "c": "(fun v => ([1, 0, 0, 1] : List (Fin 2)).getD v 0)"
+   }
+  },
+  {
+   "checked": true,
+   "statement": "adjacent_3_sound_c4",
+   "values": {
+    "H": "({(1, 0), (2, 0), (2, 3), (3, 1)} : GT.Edges)",
+    "c": "(fun v => ([1, 2, 0, 1] : List (Fin 3)).getD v 0)"
+   }
+  },
+  {
+   "checked": true,
+   "statement": "cross_2_within_ordered_2",
+   "values": {
+    "H": "({(0, 3)} : GT.Edges)",
+    "c": "(fun v => ([1, 0, 0, 0] : List (Fin 2)).getD v 0)"
+   }
+  },
+  {
+   "checked": true,
+   "statement": "adjacent_2_within_ordered_2",
+   "values": {
+    "H": "({(2, 1)} : GT.Edges)",
+    "c": "(fun v => ([0, 0, 1, 0] : List (Fin 2)).getD v 0)"
+   }
+  }
+ ],
+ "declarations": [
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "GTDefs",
+   "name": "GT.TriangleFree",
+   "type_sha256": "c98548115419ec271dfd495799f10b35c81fad06e346ef970bd969a518c2a9f4"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "GTDefs",
+   "name": "GT.Edges",
+   "type_sha256": "baaddf70fb5d432b8bd948ef91d6f910124a6d138edae4d5f000c4610ddc8eae"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "GTDefs",
+   "name": "GT.instDecidableTriangleFree",
+   "type_sha256": "5f6ad93fcd86d217b85aa0d5ae9d8484d2f18f9af307b85f1d55bcb68ce406d1"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "G4Defs",
+   "name": "G4.verts",
+   "type_sha256": "7a1ef65cd458ebf10bcecd44c843b1710d493ee0d98e109b6abc53d948459791"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "G4Defs",
+   "name": "G4.adj",
+   "type_sha256": "af2cc6046b4db7f006731f612da96fe9072947a3524d785304d4acef542f9814"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "G4Defs",
+   "name": "G4.instDecidableAdj",
+   "type_sha256": "15bfca590acf8edebe32601b938585677ac6d2a4d3d45c318ce25da607e3af52"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "G4Defs",
+   "name": "G4.C4Free",
+   "type_sha256": "c98548115419ec271dfd495799f10b35c81fad06e346ef970bd969a518c2a9f4"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "G4Defs",
+   "name": "G4.instDecidableC4Free",
+   "type_sha256": "696d08db70be0d43900686ce88431e9640ecc9ab7d9c645364f85ffea376c365"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "RPDefs",
+   "name": "RP.ordered_3",
+   "type_sha256": "0e716aaf2b7f2d52c21e4a663853505ca080a31f5ccdb8d81bf86fa4e236852e"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "RPDefs",
+   "name": "RP.cross_3",
+   "type_sha256": "0e716aaf2b7f2d52c21e4a663853505ca080a31f5ccdb8d81bf86fa4e236852e"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "RPDefs",
+   "name": "RP.adjacent_3",
+   "type_sha256": "0e716aaf2b7f2d52c21e4a663853505ca080a31f5ccdb8d81bf86fa4e236852e"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "RPDefs",
+   "name": "RP.adjacent_2",
+   "type_sha256": "8c0e99b76522eafc61cbc3aaaa54322b2668fe1f77e10204dc57ef1e72e5db76"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "RPDefs",
+   "name": "RP.inside_3",
+   "type_sha256": "0e716aaf2b7f2d52c21e4a663853505ca080a31f5ccdb8d81bf86fa4e236852e"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "RPDefs",
+   "name": "RP.cross_2",
+   "type_sha256": "8c0e99b76522eafc61cbc3aaaa54322b2668fe1f77e10204dc57ef1e72e5db76"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "RPDefs",
+   "name": "RP.inside_2",
+   "type_sha256": "8c0e99b76522eafc61cbc3aaaa54322b2668fe1f77e10204dc57ef1e72e5db76"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "RPDefs",
+   "name": "RP.ordered_2",
+   "type_sha256": "8c0e99b76522eafc61cbc3aaaa54322b2668fe1f77e10204dc57ef1e72e5db76"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "RPConj",
+   "name": "RPConj.ordered_2_sound_c4",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "RPConj",
+   "name": "RPConj.adjacent_3_sound_tf",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "RPConj",
+   "name": "RPConj.adjacent_2_within_ordered_2_negation",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "RPConj",
+   "name": "RPConj.adjacent_2_within_ordered_2",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "RPConj",
+   "name": "RPConj.inside_2_image",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "RPConj",
+   "name": "RPConj.cross_2_within_adjacent_2",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "RPConj",
+   "name": "RPConj.cross_2_sound_c4_negation",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "RPConj",
+   "name": "RPConj.cross_2_sound_c4",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "RPConj",
+   "name": "RPConj.inside_2_sound_c4_negation",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "RPConj",
+   "name": "RPConj.ordered_2_sound_c4_negation",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "RPConj",
+   "name": "RPConj.inside_3_sound_c4",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "RPConj",
+   "name": "RPConj.adjacent_2_sound_c4_negation",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "RPConj",
+   "name": "RPConj.cross_2_loses_tf",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "RPConj",
+   "name": "RPConj.cross_3_sound_tf",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "RPConj",
+   "name": "RPConj.cross_3_sound_tf_negation",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "RPConj",
+   "name": "RPConj.adjacent_3_image",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "RPConj",
+   "name": "RPConj.cross_3_image",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "RPConj",
+   "name": "RPConj.inside_2_sound_tf",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "RPConj",
+   "name": "RPConj.ordered_3_sound_tf_negation",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "RPConj",
+   "name": "RPConj.ordered_2_within_adjacent_2",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "RPConj",
+   "name": "RPConj.cross_2_image",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "RPConj",
+   "name": "RPConj.ordered_2_within_cross_2",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "RPConj",
+   "name": "RPConj.adjacent_3_sound_c4_negation",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "RPConj",
+   "name": "RPConj.ordered_3_sound_tf",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "RPConj",
+   "name": "RPConj.cross_3_sound_c4_negation",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "RPConj",
+   "name": "RPConj.inside_2_sound_tf_negation",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "RPConj",
+   "name": "RPConj.cross_2_sound_tf",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "RPConj",
+   "name": "RPConj.cross_2_within_ordered_2_negation",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "RPConj",
+   "name": "RPConj.cross_2_within_ordered_2",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "RPConj",
+   "name": "RPConj.adjacent_2_sound_c4",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "RPConj",
+   "name": "RPConj.inside_3_sound_tf_negation",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "RPConj",
+   "name": "RPConj.adjacent_2_image",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "RPConj",
+   "name": "RPConj.ordered_2_sound_tf",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "RPConj",
+   "name": "RPConj.ordered_2_loses_tf",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "RPConj",
+   "name": "RPConj.inside_3_sound_c4_negation",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "RPConj",
+   "name": "RPConj.adjacent_2_within_cross_2",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "RPConj",
+   "name": "RPConj.inside_3_image",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "RPConj",
+   "name": "RPConj.cross_3_sound_c4",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "RPConj",
+   "name": "RPConj.ordered_3_sound_c4_negation",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "RPConj",
+   "name": "RPConj.adjacent_2_sound_tf",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "RPConj",
+   "name": "RPConj.ordered_3_image",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "RPConj",
+   "name": "RPConj.adjacent_3_sound_c4",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "RPConj",
+   "name": "RPConj.inside_3_sound_tf",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "RPConj",
+   "name": "RPConj.ordered_3_sound_c4",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "RPConj",
+   "name": "RPConj.adjacent_2_loses_tf",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "RPConj",
+   "name": "RPConj.inside_2_sound_c4",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "RPConj",
+   "name": "RPConj.ordered_2_image",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Quot.sound"
+   ],
+   "kind": "theorem",
+   "module": "RPP1",
+   "name": "RP.cross_2.eq_1",
+   "type_sha256": "c5a0758f9dc06a59b43a482d88467bb87efdb82bd3158081f445093af493ade2"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "theorem",
+   "module": "RPP1",
+   "name": "RPP1.proof",
+   "type_sha256": "c6d32be5b5c958021041e216352dc9a75cd12395e04ba479df0f5eb1c7801736"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "theorem",
+   "module": "RPP2",
+   "name": "RPP2.proof",
+   "type_sha256": "bf2690259d1671229e318033fcfb19933bbe0a791a572b2621e8d3c10592f972"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "theorem",
+   "module": "RPP3",
+   "name": "RPP3.proof",
+   "type_sha256": "f9322fbbcb6fe0f3531b5ef1e74455dc24a0e6a156ab45af7a6de2968557af68"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Quot.sound"
+   ],
+   "kind": "theorem",
+   "module": "RPP4",
+   "name": "RP.cross_3.eq_1",
+   "type_sha256": "60b7109d416cdbb2361971cdee59989af144a2f8e81a610b54b93ecd32d13898"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "theorem",
+   "module": "RPP4",
+   "name": "RPP4.proof",
+   "type_sha256": "3b8a8915dd2cbfe78489494544619461f363158a13bcd528768ea2e605ced948"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "theorem",
+   "module": "RPP5",
+   "name": "RPP5.proof",
+   "type_sha256": "4eac0f26f7e6f703776b84da5c6ab0017c07ed391f97d4f3642c0471669c8e1b"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "theorem",
+   "module": "RPP6",
+   "name": "RPP6.proof",
+   "type_sha256": "850914aed00fa2706ebc5200e19dd3843ccd02fae99a917704b6a8eb86b4802c"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "theorem",
+   "module": "RPP7",
+   "name": "RPP7.proof",
+   "type_sha256": "6ce30950a1d797e706e461d900472c4b8a116fa6b72a194669019db4b7013dc0"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Quot.sound"
+   ],
+   "kind": "theorem",
+   "module": "RPP7",
+   "name": "RP.inside_2.eq_1",
+   "type_sha256": "7f409a39e4c0c3ca0bd733cc64a12ffa8ee21520b0d56319b61145c9de418773"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "theorem",
+   "module": "RPP8",
+   "name": "RPP8.proof",
+   "type_sha256": "512a103c36385721448e32c863a26799cdb8f397621936b8533d7069f2a462f0"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "theorem",
+   "module": "RPP9",
+   "name": "RPP9.proof",
+   "type_sha256": "9e08f03678b1e53f346f1e3307dd84a86129a1d8c62258db3de44c3bb0d1b9be"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "theorem",
+   "module": "RPP10",
+   "name": "RPP10.proof",
+   "type_sha256": "0076424b6086b116014507e60f822028746229f9ddf54cdbf4d03bb04bba4b97"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Quot.sound"
+   ],
+   "kind": "theorem",
+   "module": "RPP10",
+   "name": "RP.inside_3.eq_1",
+   "type_sha256": "55cb57db6b600b19f77d68b4c50c21708eadf0a2dd8fa60be01b3864a5eeb993"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "theorem",
+   "module": "RPP11",
+   "name": "RPP11.proof",
+   "type_sha256": "3eb1e6a126a82bc754b5414f1b850f17b4e88643aeb7ec2031c724536b44776b"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "theorem",
+   "module": "RPP12",
+   "name": "RPP12.proof",
+   "type_sha256": "251908c3053a088fbed7013f8ae772a8f090a4fb237ae31d2f664741085333fc"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "theorem",
+   "module": "RPP13",
+   "name": "RPP13.proof",
+   "type_sha256": "f6e512027af074aaf4eed30566f0dc3dc1f599cbda090d4dc3047cb7c6c52590"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Quot.sound"
+   ],
+   "kind": "theorem",
+   "module": "RPP13",
+   "name": "RP.ordered_2.eq_1",
+   "type_sha256": "dd8bf5f9f84bf1d61190162fd9019b4d94f79f694f4f77c4312670ea50dd6a8c"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "theorem",
+   "module": "RPP14",
+   "name": "RPP14.proof",
+   "type_sha256": "71cc1cd07a97ae704a62c186a58c79d36a679db8ec0164b2eb2e22e0929df3f4"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "theorem",
+   "module": "RPP15",
+   "name": "RPP15.proof",
+   "type_sha256": "f4ed6d2ac3882f1d11f095b1eb01e1879ee3db3ca81b1981e2c9b3be8bcf8b4d"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Quot.sound"
+   ],
+   "kind": "theorem",
+   "module": "RPP16",
+   "name": "RP.ordered_3.eq_1",
+   "type_sha256": "5b65bd43d0ea59da2f674ac6ad57316a669527674a7b1045aa92f113a3db14d6"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "theorem",
+   "module": "RPP16",
+   "name": "RPP16.proof",
+   "type_sha256": "72e6650b0b241e98795837525c70ed1cdf07739c8cbb703f516bd9c97b1dedd1"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "theorem",
+   "module": "RPP17",
+   "name": "RPP17.proof",
+   "type_sha256": "34bdc984d595bb84642d89f4fa178d6186972c8e889cbb17c9584e0779909e3d"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "theorem",
+   "module": "RPP18",
+   "name": "RPP18.proof",
+   "type_sha256": "22eec23fb5f0244234a3a84f6c3d94818bee480f97f9e06e99c3b843de2435f0"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "theorem",
+   "module": "RPP19",
+   "name": "RPP19.proof",
+   "type_sha256": "f17125bb46a7999766bb86556c4e50175e242e0738b94f09d4424d6770dc4006"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Quot.sound"
+   ],
+   "kind": "theorem",
+   "module": "RPP19",
+   "name": "RP.adjacent_2.eq_1",
+   "type_sha256": "69a641030518588df214c6907865485f4f565abc1e60bfd80af0ad5371807796"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "theorem",
+   "module": "RPP20",
+   "name": "RPP20.proof",
+   "type_sha256": "b31222735dbea67c45c0f5a58aaacf15524d22c0a839bfd5a8cb71d5482a05f7"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "theorem",
+   "module": "RPP21",
+   "name": "RPP21.proof",
+   "type_sha256": "7c7fabc71a89b5dbe2faca11773b28c42364d9de1497a15a41422baa48561736"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Quot.sound"
+   ],
+   "kind": "theorem",
+   "module": "RPP22",
+   "name": "RP.adjacent_3.eq_1",
+   "type_sha256": "1679a702f44f81e6af5a7b658ebdfeee2eef54a298d911b0153df0d2d8e8023c"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "theorem",
+   "module": "RPP22",
+   "name": "RPP22.proof",
+   "type_sha256": "9392c3425503017b45070c0f51fcb9b4e516b82b63c81864eef80e06490e4956"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "theorem",
+   "module": "RPP23",
+   "name": "RPP23.proof",
+   "type_sha256": "3dd76d04abd44450c223b23f692e71ad4e8b6ed4f79c0de78ce36f4dab8af540"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "theorem",
+   "module": "RPP24",
+   "name": "RPP24.proof",
+   "type_sha256": "783c2c0bd6dd47b23a1ed40470e5e6560325c37c475ca92cdca879f076d67225"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "theorem",
+   "module": "RPP25",
+   "name": "RPP25.proof",
+   "type_sha256": "fa414b772758fb5fe269c1d1be2d55062b2a51f4d96a320f079d96950cb4999d"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "theorem",
+   "module": "RPP26",
+   "name": "RPP26.proof",
+   "type_sha256": "2cff363b49278125732cd9522b2c1f036e6c88651088b202e25e1123f52a2bee"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "theorem",
+   "module": "RPP27",
+   "name": "RPP27.proof",
+   "type_sha256": "280f6b6d7873f5c35035f8c574c251c0620d09f54e0db65843112d9b4daff48d"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "theorem",
+   "module": "RPP28",
+   "name": "RPP28.proof",
+   "type_sha256": "24d81c55e245f4a6f5d3a55d63b37ad140d433ae4482225f44f00bb44b46c3f9"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "theorem",
+   "module": "RPP29",
+   "name": "RPP29.proof",
+   "type_sha256": "78011d2d1122282a084946598292f640ce11b878a576923be617f5b755ab300b"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "theorem",
+   "module": "RPP30",
+   "name": "RPP30.proof",
+   "type_sha256": "a8b67c064e14235eac0bf2a58e21bcd307b9e261ef9375095a42486972424c3e"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "theorem",
+   "module": "RPP31",
+   "name": "RPP31.proof",
+   "type_sha256": "1a5aa9ad2e9498b248d62b6dcd51915492635829fcbdc5d56896db32c024852d"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "theorem",
+   "module": "RPP32",
+   "name": "RPP32.proof",
+   "type_sha256": "681d63a9988fb0dead1844fc3ab20745f98a5b374e8e0de5007684ebbfdfbbbd"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "theorem",
+   "module": "RPP33",
+   "name": "RPP33.proof",
+   "type_sha256": "0e9842376e11f36eda79321e1b981465a71499e21e13f1f893ef4f447d47470f"
+  }
+ ],
+ "definitions": [
+  {
+   "module": "GTDefs",
+   "name": "GT.TriangleFree",
+   "origin": "trusted-generated",
+   "type_sha256": "c98548115419ec271dfd495799f10b35c81fad06e346ef970bd969a518c2a9f4"
+  },
+  {
+   "module": "GTDefs",
+   "name": "GT.Edges",
+   "origin": "trusted-generated",
+   "type_sha256": "baaddf70fb5d432b8bd948ef91d6f910124a6d138edae4d5f000c4610ddc8eae"
+  },
+  {
+   "module": "GTDefs",
+   "name": "GT.instDecidableTriangleFree",
+   "origin": "trusted-generated",
+   "type_sha256": "5f6ad93fcd86d217b85aa0d5ae9d8484d2f18f9af307b85f1d55bcb68ce406d1"
+  },
+  {
+   "module": "G4Defs",
+   "name": "G4.verts",
+   "origin": "trusted-generated",
+   "type_sha256": "7a1ef65cd458ebf10bcecd44c843b1710d493ee0d98e109b6abc53d948459791"
+  },
+  {
+   "module": "G4Defs",
+   "name": "G4.adj",
+   "origin": "trusted-generated",
+   "type_sha256": "af2cc6046b4db7f006731f612da96fe9072947a3524d785304d4acef542f9814"
+  },
+  {
+   "module": "G4Defs",
+   "name": "G4.instDecidableAdj",
+   "origin": "trusted-generated",
+   "type_sha256": "15bfca590acf8edebe32601b938585677ac6d2a4d3d45c318ce25da607e3af52"
+  },
+  {
+   "module": "G4Defs",
+   "name": "G4.C4Free",
+   "origin": "trusted-generated",
+   "type_sha256": "c98548115419ec271dfd495799f10b35c81fad06e346ef970bd969a518c2a9f4"
+  },
+  {
+   "module": "G4Defs",
+   "name": "G4.instDecidableC4Free",
+   "origin": "trusted-generated",
+   "type_sha256": "696d08db70be0d43900686ce88431e9640ecc9ab7d9c645364f85ffea376c365"
+  },
+  {
+   "module": "RPDefs",
+   "name": "RP.ordered_3",
+   "origin": "trusted-generated",
+   "type_sha256": "0e716aaf2b7f2d52c21e4a663853505ca080a31f5ccdb8d81bf86fa4e236852e"
+  },
+  {
+   "module": "RPDefs",
+   "name": "RP.cross_3",
+   "origin": "trusted-generated",
+   "type_sha256": "0e716aaf2b7f2d52c21e4a663853505ca080a31f5ccdb8d81bf86fa4e236852e"
+  },
+  {
+   "module": "RPDefs",
+   "name": "RP.adjacent_3",
+   "origin": "trusted-generated",
+   "type_sha256": "0e716aaf2b7f2d52c21e4a663853505ca080a31f5ccdb8d81bf86fa4e236852e"
+  },
+  {
+   "module": "RPDefs",
+   "name": "RP.adjacent_2",
+   "origin": "trusted-generated",
+   "type_sha256": "8c0e99b76522eafc61cbc3aaaa54322b2668fe1f77e10204dc57ef1e72e5db76"
+  },
+  {
+   "module": "RPDefs",
+   "name": "RP.inside_3",
+   "origin": "trusted-generated",
+   "type_sha256": "0e716aaf2b7f2d52c21e4a663853505ca080a31f5ccdb8d81bf86fa4e236852e"
+  },
+  {
+   "module": "RPDefs",
+   "name": "RP.cross_2",
+   "origin": "trusted-generated",
+   "type_sha256": "8c0e99b76522eafc61cbc3aaaa54322b2668fe1f77e10204dc57ef1e72e5db76"
+  },
+  {
+   "module": "RPDefs",
+   "name": "RP.inside_2",
+   "origin": "trusted-generated",
+   "type_sha256": "8c0e99b76522eafc61cbc3aaaa54322b2668fe1f77e10204dc57ef1e72e5db76"
+  },
+  {
+   "module": "RPDefs",
+   "name": "RP.ordered_2",
+   "origin": "trusted-generated",
+   "type_sha256": "8c0e99b76522eafc61cbc3aaaa54322b2668fe1f77e10204dc57ef1e72e5db76"
+  },
+  {
+   "module": "RPConj",
+   "name": "RPConj.ordered_2_sound_c4",
+   "origin": "trusted-generated",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "module": "RPConj",
+   "name": "RPConj.adjacent_3_sound_tf",
+   "origin": "trusted-generated",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "module": "RPConj",
+   "name": "RPConj.adjacent_2_within_ordered_2_negation",
+   "origin": "trusted-generated",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "module": "RPConj",
+   "name": "RPConj.adjacent_2_within_ordered_2",
+   "origin": "trusted-generated",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "module": "RPConj",
+   "name": "RPConj.inside_2_image",
+   "origin": "trusted-generated",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "module": "RPConj",
+   "name": "RPConj.cross_2_within_adjacent_2",
+   "origin": "trusted-generated",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "module": "RPConj",
+   "name": "RPConj.cross_2_sound_c4_negation",
+   "origin": "trusted-generated",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "module": "RPConj",
+   "name": "RPConj.cross_2_sound_c4",
+   "origin": "trusted-generated",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "module": "RPConj",
+   "name": "RPConj.inside_2_sound_c4_negation",
+   "origin": "trusted-generated",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "module": "RPConj",
+   "name": "RPConj.ordered_2_sound_c4_negation",
+   "origin": "trusted-generated",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "module": "RPConj",
+   "name": "RPConj.inside_3_sound_c4",
+   "origin": "trusted-generated",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "module": "RPConj",
+   "name": "RPConj.adjacent_2_sound_c4_negation",
+   "origin": "trusted-generated",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "module": "RPConj",
+   "name": "RPConj.cross_2_loses_tf",
+   "origin": "trusted-generated",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "module": "RPConj",
+   "name": "RPConj.cross_3_sound_tf",
+   "origin": "trusted-generated",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "module": "RPConj",
+   "name": "RPConj.cross_3_sound_tf_negation",
+   "origin": "trusted-generated",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "module": "RPConj",
+   "name": "RPConj.adjacent_3_image",
+   "origin": "trusted-generated",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "module": "RPConj",
+   "name": "RPConj.cross_3_image",
+   "origin": "trusted-generated",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "module": "RPConj",
+   "name": "RPConj.inside_2_sound_tf",
+   "origin": "trusted-generated",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "module": "RPConj",
+   "name": "RPConj.ordered_3_sound_tf_negation",
+   "origin": "trusted-generated",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "module": "RPConj",
+   "name": "RPConj.ordered_2_within_adjacent_2",
+   "origin": "trusted-generated",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "module": "RPConj",
+   "name": "RPConj.cross_2_image",
+   "origin": "trusted-generated",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "module": "RPConj",
+   "name": "RPConj.ordered_2_within_cross_2",
+   "origin": "trusted-generated",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "module": "RPConj",
+   "name": "RPConj.adjacent_3_sound_c4_negation",
+   "origin": "trusted-generated",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "module": "RPConj",
+   "name": "RPConj.ordered_3_sound_tf",
+   "origin": "trusted-generated",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "module": "RPConj",
+   "name": "RPConj.cross_3_sound_c4_negation",
+   "origin": "trusted-generated",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "module": "RPConj",
+   "name": "RPConj.inside_2_sound_tf_negation",
+   "origin": "trusted-generated",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "module": "RPConj",
+   "name": "RPConj.cross_2_sound_tf",
+   "origin": "trusted-generated",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "module": "RPConj",
+   "name": "RPConj.cross_2_within_ordered_2_negation",
+   "origin": "trusted-generated",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "module": "RPConj",
+   "name": "RPConj.cross_2_within_ordered_2",
+   "origin": "trusted-generated",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "module": "RPConj",
+   "name": "RPConj.adjacent_2_sound_c4",
+   "origin": "trusted-generated",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "module": "RPConj",
+   "name": "RPConj.inside_3_sound_tf_negation",
+   "origin": "trusted-generated",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "module": "RPConj",
+   "name": "RPConj.adjacent_2_image",
+   "origin": "trusted-generated",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "module": "RPConj",
+   "name": "RPConj.ordered_2_sound_tf",
+   "origin": "trusted-generated",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "module": "RPConj",
+   "name": "RPConj.ordered_2_loses_tf",
+   "origin": "trusted-generated",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "module": "RPConj",
+   "name": "RPConj.inside_3_sound_c4_negation",
+   "origin": "trusted-generated",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "module": "RPConj",
+   "name": "RPConj.adjacent_2_within_cross_2",
+   "origin": "trusted-generated",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "module": "RPConj",
+   "name": "RPConj.inside_3_image",
+   "origin": "trusted-generated",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "module": "RPConj",
+   "name": "RPConj.cross_3_sound_c4",
+   "origin": "trusted-generated",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "module": "RPConj",
+   "name": "RPConj.ordered_3_sound_c4_negation",
+   "origin": "trusted-generated",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "module": "RPConj",
+   "name": "RPConj.adjacent_2_sound_tf",
+   "origin": "trusted-generated",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "module": "RPConj",
+   "name": "RPConj.ordered_3_image",
+   "origin": "trusted-generated",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "module": "RPConj",
+   "name": "RPConj.adjacent_3_sound_c4",
+   "origin": "trusted-generated",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "module": "RPConj",
+   "name": "RPConj.inside_3_sound_tf",
+   "origin": "trusted-generated",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "module": "RPConj",
+   "name": "RPConj.ordered_3_sound_c4",
+   "origin": "trusted-generated",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "module": "RPConj",
+   "name": "RPConj.adjacent_2_loses_tf",
+   "origin": "trusted-generated",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "module": "RPConj",
+   "name": "RPConj.inside_2_sound_c4",
+   "origin": "trusted-generated",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "module": "RPConj",
+   "name": "RPConj.ordered_2_image",
+   "origin": "trusted-generated",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  }
+ ],
+ "dependencies": {
+  "G4.C4Free": {
+   "package": [
+    "G4.adj",
+    "G4.verts",
+    "GT.Edges"
+   ],
+   "workspace_modules": [
+    "Init.Core",
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Defs",
+    "Mathlib.Data.SetLike.Basic"
+   ]
+  },
+  "G4.adj": {
+   "package": [
+    "GT.Edges"
+   ],
+   "workspace_modules": [
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Defs",
+    "Mathlib.Data.SetLike.Basic"
+   ]
+  },
+  "G4.instDecidableAdj": {
+   "package": [
+    "G4.adj",
+    "GT.Edges"
+   ],
+   "workspace_modules": [
+    "Init.Core",
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Defs",
+    "Mathlib.Data.SetLike.Basic"
+   ]
+  },
+  "G4.instDecidableC4Free": {
+   "package": [
+    "G4.C4Free",
+    "G4.adj",
+    "G4.instDecidableAdj",
+    "G4.verts",
+    "GT.Edges"
+   ],
+   "workspace_modules": [
+    "Init.Core",
+    "Init.Prelude",
+    "Init.PropLemmas",
+    "Mathlib.Data.Finset.Defs",
+    "Mathlib.Data.SetLike.Basic"
+   ]
+  },
+  "G4.verts": {
+   "package": [
+    "GT.Edges"
+   ],
+   "workspace_modules": [
+    "Init.Core",
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Defs",
+    "Mathlib.Data.Finset.Image",
+    "Mathlib.Data.Finset.Lattice.Basic"
+   ]
+  },
+  "GT.Edges": {
+   "package": [],
+   "workspace_modules": [
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Defs"
+   ]
+  },
+  "GT.TriangleFree": {
+   "package": [
+    "GT.Edges"
+   ],
+   "workspace_modules": [
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Defs",
+    "Mathlib.Data.SetLike.Basic"
+   ]
+  },
+  "GT.instDecidableTriangleFree": {
+   "package": [
+    "GT.Edges",
+    "GT.TriangleFree"
+   ],
+   "workspace_modules": [
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Defs",
+    "Mathlib.Data.SetLike.Basic"
+   ]
+  },
+  "RP.adjacent_2": {
+   "package": [
+    "GT.Edges"
+   ],
+   "workspace_modules": [
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Filter"
+   ]
+  },
+  "RP.adjacent_2.eq_1": {
+   "package": [
+    "GT.Edges",
+    "RP.adjacent_2"
+   ],
+   "workspace_modules": [
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Filter"
+   ]
+  },
+  "RP.adjacent_3": {
+   "package": [
+    "GT.Edges"
+   ],
+   "workspace_modules": [
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Filter"
+   ]
+  },
+  "RP.adjacent_3.eq_1": {
+   "package": [
+    "GT.Edges",
+    "RP.adjacent_3"
+   ],
+   "workspace_modules": [
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Filter"
+   ]
+  },
+  "RP.cross_2": {
+   "package": [
+    "GT.Edges"
+   ],
+   "workspace_modules": [
+    "Init.Core",
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Filter"
+   ]
+  },
+  "RP.cross_2.eq_1": {
+   "package": [
+    "GT.Edges",
+    "RP.cross_2"
+   ],
+   "workspace_modules": [
+    "Init.Core",
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Filter"
+   ]
+  },
+  "RP.cross_3": {
+   "package": [
+    "GT.Edges"
+   ],
+   "workspace_modules": [
+    "Init.Core",
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Filter"
+   ]
+  },
+  "RP.cross_3.eq_1": {
+   "package": [
+    "GT.Edges",
+    "RP.cross_3"
+   ],
+   "workspace_modules": [
+    "Init.Core",
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Filter"
+   ]
+  },
+  "RP.inside_2": {
+   "package": [
+    "GT.Edges"
+   ],
+   "workspace_modules": [
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Filter"
+   ]
+  },
+  "RP.inside_2.eq_1": {
+   "package": [
+    "GT.Edges",
+    "RP.inside_2"
+   ],
+   "workspace_modules": [
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Filter"
+   ]
+  },
+  "RP.inside_3": {
+   "package": [
+    "GT.Edges"
+   ],
+   "workspace_modules": [
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Filter"
+   ]
+  },
+  "RP.inside_3.eq_1": {
+   "package": [
+    "GT.Edges",
+    "RP.inside_3"
+   ],
+   "workspace_modules": [
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Filter"
+   ]
+  },
+  "RP.ordered_2": {
+   "package": [
+    "GT.Edges"
+   ],
+   "workspace_modules": [
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Filter"
+   ]
+  },
+  "RP.ordered_2.eq_1": {
+   "package": [
+    "GT.Edges",
+    "RP.ordered_2"
+   ],
+   "workspace_modules": [
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Filter"
+   ]
+  },
+  "RP.ordered_3": {
+   "package": [
+    "GT.Edges"
+   ],
+   "workspace_modules": [
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Filter"
+   ]
+  },
+  "RP.ordered_3.eq_1": {
+   "package": [
+    "GT.Edges",
+    "RP.ordered_3"
+   ],
+   "workspace_modules": [
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Filter"
+   ]
+  },
+  "RPConj.adjacent_2_image": {
+   "package": [
+    "GT.Edges",
+    "RP.adjacent_2"
+   ],
+   "workspace_modules": [
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Defs",
+    "Mathlib.Order.Defs.PartialOrder"
+   ]
+  },
+  "RPConj.adjacent_2_loses_tf": {
+   "package": [
+    "GT.Edges",
+    "GT.TriangleFree",
+    "RP.adjacent_2",
+    "RPConj.cross_2_loses_tf._proof_1"
+   ],
+   "workspace_modules": [
+    "Init.Core",
+    "Init.Data.Fin.Basic",
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Defs",
+    "Mathlib.Data.Finset.Powerset",
+    "Mathlib.Data.Finset.Range",
+    "Mathlib.Data.SetLike.Basic"
+   ]
+  },
+  "RPConj.adjacent_2_sound_c4": {
+   "package": [
+    "G4.C4Free",
+    "G4.adj",
+    "G4.verts",
+    "GT.Edges",
+    "RP.adjacent_2"
+   ],
+   "workspace_modules": [
+    "Init.Prelude"
+   ]
+  },
+  "RPConj.adjacent_2_sound_c4_negation": {
+   "package": [
+    "G4.C4Free",
+    "G4.adj",
+    "G4.verts",
+    "GT.Edges",
+    "RP.adjacent_2",
+    "RPConj.adjacent_2_sound_c4"
+   ],
+   "workspace_modules": [
+    "Init.Prelude"
+   ]
+  },
+  "RPConj.adjacent_2_sound_tf": {
+   "package": [
+    "GT.Edges",
+    "GT.TriangleFree",
+    "RP.adjacent_2"
+   ],
+   "workspace_modules": [
+    "Init.Prelude"
+   ]
+  },
+  "RPConj.adjacent_2_within_cross_2": {
+   "package": [
+    "GT.Edges",
+    "RP.adjacent_2",
+    "RP.cross_2"
+   ],
+   "workspace_modules": [
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Defs",
+    "Mathlib.Order.Defs.PartialOrder"
+   ]
+  },
+  "RPConj.adjacent_2_within_ordered_2": {
+   "package": [
+    "GT.Edges",
+    "RP.adjacent_2",
+    "RP.ordered_2"
+   ],
+   "workspace_modules": [
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Defs",
+    "Mathlib.Order.Defs.PartialOrder"
+   ]
+  },
+  "RPConj.adjacent_2_within_ordered_2_negation": {
+   "package": [
+    "GT.Edges",
+    "RP.adjacent_2",
+    "RP.ordered_2",
+    "RPConj.adjacent_2_within_ordered_2"
+   ],
+   "workspace_modules": [
+    "Init.Prelude"
+   ]
+  },
+  "RPConj.adjacent_3_image": {
+   "package": [
+    "GT.Edges",
+    "RP.adjacent_3"
+   ],
+   "workspace_modules": [
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Defs",
+    "Mathlib.Order.Defs.PartialOrder"
+   ]
+  },
+  "RPConj.adjacent_3_sound_c4": {
+   "package": [
+    "G4.C4Free",
+    "G4.adj",
+    "G4.verts",
+    "GT.Edges",
+    "RP.adjacent_3"
+   ],
+   "workspace_modules": [
+    "Init.Prelude"
+   ]
+  },
+  "RPConj.adjacent_3_sound_c4_negation": {
+   "package": [
+    "G4.C4Free",
+    "G4.adj",
+    "G4.verts",
+    "GT.Edges",
+    "RP.adjacent_3",
+    "RPConj.adjacent_3_sound_c4"
+   ],
+   "workspace_modules": [
+    "Init.Prelude"
+   ]
+  },
+  "RPConj.adjacent_3_sound_tf": {
+   "package": [
+    "GT.Edges",
+    "GT.TriangleFree",
+    "RP.adjacent_3"
+   ],
+   "workspace_modules": [
+    "Init.Prelude"
+   ]
+  },
+  "RPConj.cross_2_image": {
+   "package": [
+    "GT.Edges",
+    "RP.cross_2"
+   ],
+   "workspace_modules": [
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Defs",
+    "Mathlib.Order.Defs.PartialOrder"
+   ]
+  },
+  "RPConj.cross_2_loses_tf": {
+   "package": [
+    "GT.Edges",
+    "GT.TriangleFree",
+    "RP.cross_2",
+    "RPConj.cross_2_loses_tf._proof_1"
+   ],
+   "workspace_modules": [
+    "Init.Core",
+    "Init.Data.Fin.Basic",
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Defs",
+    "Mathlib.Data.Finset.Powerset",
+    "Mathlib.Data.Finset.Range",
+    "Mathlib.Data.SetLike.Basic"
+   ]
+  },
+  "RPConj.cross_2_loses_tf._proof_1": {
+   "package": [],
+   "workspace_modules": [
+    "Init.Data.Nat.Basic",
+    "Init.Data.NeZero",
+    "Init.Data.Zero",
+    "Init.Prelude"
+   ]
+  },
+  "RPConj.cross_2_sound_c4": {
+   "package": [
+    "G4.C4Free",
+    "G4.adj",
+    "G4.verts",
+    "GT.Edges",
+    "RP.cross_2"
+   ],
+   "workspace_modules": [
+    "Init.Prelude"
+   ]
+  },
+  "RPConj.cross_2_sound_c4_negation": {
+   "package": [
+    "G4.C4Free",
+    "G4.adj",
+    "G4.verts",
+    "GT.Edges",
+    "RP.cross_2",
+    "RPConj.cross_2_sound_c4"
+   ],
+   "workspace_modules": [
+    "Init.Prelude"
+   ]
+  },
+  "RPConj.cross_2_sound_tf": {
+   "package": [
+    "GT.Edges",
+    "GT.TriangleFree",
+    "RP.cross_2"
+   ],
+   "workspace_modules": [
+    "Init.Prelude"
+   ]
+  },
+  "RPConj.cross_2_within_adjacent_2": {
+   "package": [
+    "GT.Edges",
+    "RP.adjacent_2",
+    "RP.cross_2"
+   ],
+   "workspace_modules": [
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Defs",
+    "Mathlib.Order.Defs.PartialOrder"
+   ]
+  },
+  "RPConj.cross_2_within_ordered_2": {
+   "package": [
+    "GT.Edges",
+    "RP.cross_2",
+    "RP.ordered_2"
+   ],
+   "workspace_modules": [
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Defs",
+    "Mathlib.Order.Defs.PartialOrder"
+   ]
+  },
+  "RPConj.cross_2_within_ordered_2_negation": {
+   "package": [
+    "GT.Edges",
+    "RP.cross_2",
+    "RP.ordered_2",
+    "RPConj.cross_2_within_ordered_2"
+   ],
+   "workspace_modules": [
+    "Init.Prelude"
+   ]
+  },
+  "RPConj.cross_3_image": {
+   "package": [
+    "GT.Edges",
+    "RP.cross_3"
+   ],
+   "workspace_modules": [
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Defs",
+    "Mathlib.Order.Defs.PartialOrder"
+   ]
+  },
+  "RPConj.cross_3_sound_c4": {
+   "package": [
+    "G4.C4Free",
+    "G4.adj",
+    "G4.verts",
+    "GT.Edges",
+    "RP.cross_3"
+   ],
+   "workspace_modules": [
+    "Init.Prelude"
+   ]
+  },
+  "RPConj.cross_3_sound_c4_negation": {
+   "package": [
+    "G4.C4Free",
+    "G4.adj",
+    "G4.verts",
+    "GT.Edges",
+    "RP.cross_3",
+    "RPConj.cross_3_sound_c4"
+   ],
+   "workspace_modules": [
+    "Init.Prelude"
+   ]
+  },
+  "RPConj.cross_3_sound_tf": {
+   "package": [
+    "GT.Edges",
+    "GT.TriangleFree",
+    "RP.cross_3"
+   ],
+   "workspace_modules": [
+    "Init.Prelude"
+   ]
+  },
+  "RPConj.cross_3_sound_tf_negation": {
+   "package": [
+    "GT.Edges",
+    "GT.TriangleFree",
+    "RP.cross_3",
+    "RPConj.cross_3_sound_tf"
+   ],
+   "workspace_modules": [
+    "Init.Prelude"
+   ]
+  },
+  "RPConj.inside_2_image": {
+   "package": [
+    "GT.Edges",
+    "RP.inside_2"
+   ],
+   "workspace_modules": [
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Defs",
+    "Mathlib.Order.Defs.PartialOrder"
+   ]
+  },
+  "RPConj.inside_2_sound_c4": {
+   "package": [
+    "G4.C4Free",
+    "G4.adj",
+    "G4.verts",
+    "GT.Edges",
+    "RP.inside_2"
+   ],
+   "workspace_modules": [
+    "Init.Prelude"
+   ]
+  },
+  "RPConj.inside_2_sound_c4_negation": {
+   "package": [
+    "G4.C4Free",
+    "G4.adj",
+    "G4.verts",
+    "GT.Edges",
+    "RP.inside_2",
+    "RPConj.inside_2_sound_c4"
+   ],
+   "workspace_modules": [
+    "Init.Prelude"
+   ]
+  },
+  "RPConj.inside_2_sound_tf": {
+   "package": [
+    "GT.Edges",
+    "GT.TriangleFree",
+    "RP.inside_2"
+   ],
+   "workspace_modules": [
+    "Init.Prelude"
+   ]
+  },
+  "RPConj.inside_2_sound_tf_negation": {
+   "package": [
+    "GT.Edges",
+    "GT.TriangleFree",
+    "RP.inside_2",
+    "RPConj.inside_2_sound_tf"
+   ],
+   "workspace_modules": [
+    "Init.Prelude"
+   ]
+  },
+  "RPConj.inside_3_image": {
+   "package": [
+    "GT.Edges",
+    "RP.inside_3"
+   ],
+   "workspace_modules": [
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Defs",
+    "Mathlib.Order.Defs.PartialOrder"
+   ]
+  },
+  "RPConj.inside_3_sound_c4": {
+   "package": [
+    "G4.C4Free",
+    "G4.adj",
+    "G4.verts",
+    "GT.Edges",
+    "RP.inside_3"
+   ],
+   "workspace_modules": [
+    "Init.Prelude"
+   ]
+  },
+  "RPConj.inside_3_sound_c4_negation": {
+   "package": [
+    "G4.C4Free",
+    "G4.adj",
+    "G4.verts",
+    "GT.Edges",
+    "RP.inside_3",
+    "RPConj.inside_3_sound_c4"
+   ],
+   "workspace_modules": [
+    "Init.Prelude"
+   ]
+  },
+  "RPConj.inside_3_sound_tf": {
+   "package": [
+    "GT.Edges",
+    "GT.TriangleFree",
+    "RP.inside_3"
+   ],
+   "workspace_modules": [
+    "Init.Prelude"
+   ]
+  },
+  "RPConj.inside_3_sound_tf_negation": {
+   "package": [
+    "GT.Edges",
+    "GT.TriangleFree",
+    "RP.inside_3",
+    "RPConj.inside_3_sound_tf"
+   ],
+   "workspace_modules": [
+    "Init.Prelude"
+   ]
+  },
+  "RPConj.ordered_2_image": {
+   "package": [
+    "GT.Edges",
+    "RP.ordered_2"
+   ],
+   "workspace_modules": [
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Defs",
+    "Mathlib.Order.Defs.PartialOrder"
+   ]
+  },
+  "RPConj.ordered_2_loses_tf": {
+   "package": [
+    "GT.Edges",
+    "GT.TriangleFree",
+    "RP.ordered_2",
+    "RPConj.cross_2_loses_tf._proof_1"
+   ],
+   "workspace_modules": [
+    "Init.Core",
+    "Init.Data.Fin.Basic",
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Defs",
+    "Mathlib.Data.Finset.Powerset",
+    "Mathlib.Data.Finset.Range",
+    "Mathlib.Data.SetLike.Basic"
+   ]
+  },
+  "RPConj.ordered_2_sound_c4": {
+   "package": [
+    "G4.C4Free",
+    "G4.adj",
+    "G4.verts",
+    "GT.Edges",
+    "RP.ordered_2"
+   ],
+   "workspace_modules": [
+    "Init.Prelude"
+   ]
+  },
+  "RPConj.ordered_2_sound_c4_negation": {
+   "package": [
+    "G4.C4Free",
+    "G4.adj",
+    "G4.verts",
+    "GT.Edges",
+    "RP.ordered_2",
+    "RPConj.ordered_2_sound_c4"
+   ],
+   "workspace_modules": [
+    "Init.Prelude"
+   ]
+  },
+  "RPConj.ordered_2_sound_tf": {
+   "package": [
+    "GT.Edges",
+    "GT.TriangleFree",
+    "RP.ordered_2"
+   ],
+   "workspace_modules": [
+    "Init.Prelude"
+   ]
+  },
+  "RPConj.ordered_2_within_adjacent_2": {
+   "package": [
+    "GT.Edges",
+    "RP.adjacent_2",
+    "RP.ordered_2"
+   ],
+   "workspace_modules": [
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Defs",
+    "Mathlib.Order.Defs.PartialOrder"
+   ]
+  },
+  "RPConj.ordered_2_within_cross_2": {
+   "package": [
+    "GT.Edges",
+    "RP.cross_2",
+    "RP.ordered_2"
+   ],
+   "workspace_modules": [
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Defs",
+    "Mathlib.Order.Defs.PartialOrder"
+   ]
+  },
+  "RPConj.ordered_3_image": {
+   "package": [
+    "GT.Edges",
+    "RP.ordered_3"
+   ],
+   "workspace_modules": [
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Defs",
+    "Mathlib.Order.Defs.PartialOrder"
+   ]
+  },
+  "RPConj.ordered_3_sound_c4": {
+   "package": [
+    "G4.C4Free",
+    "G4.adj",
+    "G4.verts",
+    "GT.Edges",
+    "RP.ordered_3"
+   ],
+   "workspace_modules": [
+    "Init.Prelude"
+   ]
+  },
+  "RPConj.ordered_3_sound_c4_negation": {
+   "package": [
+    "G4.C4Free",
+    "G4.adj",
+    "G4.verts",
+    "GT.Edges",
+    "RP.ordered_3",
+    "RPConj.ordered_3_sound_c4"
+   ],
+   "workspace_modules": [
+    "Init.Prelude"
+   ]
+  },
+  "RPConj.ordered_3_sound_tf": {
+   "package": [
+    "GT.Edges",
+    "GT.TriangleFree",
+    "RP.ordered_3"
+   ],
+   "workspace_modules": [
+    "Init.Prelude"
+   ]
+  },
+  "RPConj.ordered_3_sound_tf_negation": {
+   "package": [
+    "GT.Edges",
+    "GT.TriangleFree",
+    "RP.ordered_3",
+    "RPConj.ordered_3_sound_tf"
+   ],
+   "workspace_modules": [
+    "Init.Prelude"
+   ]
+  },
+  "RPP1.proof": {
+   "package": [
+    "GT.Edges",
+    "RP.cross_2",
+    "RPConj.cross_2_image"
+   ],
+   "workspace_modules": [
+    "Init.Core",
+    "Init.Prelude",
+    "Init.SimpLemmas",
+    "Mathlib.Data.Finset.Defs",
+    "Mathlib.Data.Finset.Filter",
+    "Mathlib.Data.SetLike.Basic",
+    "Mathlib.Order.Defs.PartialOrder"
+   ]
+  },
+  "RPP10.proof": {
+   "package": [
+    "GT.Edges",
+    "RP.inside_3",
+    "RPConj.inside_3_image"
+   ],
+   "workspace_modules": [
+    "Init.Prelude",
+    "Init.SimpLemmas",
+    "Mathlib.Data.Finset.Defs",
+    "Mathlib.Data.Finset.Filter",
+    "Mathlib.Order.Defs.PartialOrder"
+   ]
+  },
+  "RPP11.proof": {
+   "package": [
+    "GT.Edges",
+    "GT.TriangleFree",
+    "GT.instDecidableTriangleFree",
+    "RP.inside_3",
+    "RPConj.inside_3_sound_tf",
+    "RPConj.inside_3_sound_tf_negation",
+    "RPP11.proof._proof_1_1"
+   ],
+   "workspace_modules": [
+    "Init.Core",
+    "Init.Data.Fin.Basic",
+    "Init.Data.List.BasicAux",
+    "Init.Data.Nat.Basic",
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Insert"
+   ]
+  },
+  "RPP11.proof._proof_1_1": {
+   "package": [
+    "GT.Edges",
+    "GT.TriangleFree",
+    "GT.instDecidableTriangleFree",
+    "RP.inside_3"
+   ],
+   "workspace_modules": [
+    "Init.Core",
+    "Init.Data.Fin.Basic",
+    "Init.Data.List.BasicAux",
+    "Init.Data.Nat.Basic",
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Insert"
+   ]
+  },
+  "RPP12.proof": {
+   "package": [
+    "G4.C4Free",
+    "G4.adj",
+    "G4.instDecidableAdj",
+    "G4.instDecidableC4Free",
+    "G4.verts",
+    "GT.Edges",
+    "RP.inside_3",
+    "RPConj.inside_3_sound_c4",
+    "RPConj.inside_3_sound_c4_negation",
+    "RPP12.proof._proof_1_1"
+   ],
+   "workspace_modules": [
+    "Init.Core",
+    "Init.Data.Fin.Basic",
+    "Init.Data.List.BasicAux",
+    "Init.Data.Nat.Basic",
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Insert"
+   ]
+  },
+  "RPP12.proof._proof_1_1": {
+   "package": [
+    "G4.C4Free",
+    "G4.adj",
+    "G4.instDecidableAdj",
+    "G4.instDecidableC4Free",
+    "G4.verts",
+    "GT.Edges",
+    "RP.inside_3"
+   ],
+   "workspace_modules": [
+    "Init.Core",
+    "Init.Data.Fin.Basic",
+    "Init.Data.List.BasicAux",
+    "Init.Data.Nat.Basic",
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Insert"
+   ]
+  },
+  "RPP13.proof": {
+   "package": [
+    "GT.Edges",
+    "RP.ordered_2",
+    "RPConj.ordered_2_image"
+   ],
+   "workspace_modules": [
+    "Init.Prelude",
+    "Init.SimpLemmas",
+    "Mathlib.Data.Finset.Defs",
+    "Mathlib.Data.Finset.Filter",
+    "Mathlib.Order.Defs.PartialOrder"
+   ]
+  },
+  "RPP14.proof": {
+   "package": [
+    "GT.Edges",
+    "GT.TriangleFree",
+    "RP.ordered_2",
+    "RPConj.ordered_2_sound_tf",
+    "RPP14.proof._proof_1_2",
+    "RPP14.proof._simp_1_1"
+   ],
+   "workspace_modules": [
+    "Init.Core",
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Defs",
+    "Mathlib.Data.Finset.Filter",
+    "Mathlib.Data.SetLike.Basic"
+   ]
+  },
+  "RPP14.proof._proof_1_2": {
+   "package": [
+    "GT.Edges"
+   ],
+   "workspace_modules": [
+    "Init.Core",
+    "Init.Data.Cast",
+    "Init.Data.Fin.Basic",
+    "Init.Data.Int.Basic",
+    "Init.Data.Int.Lemmas",
+    "Init.Data.Int.Order",
+    "Init.Omega.Coeffs",
+    "Init.Omega.Constraint",
+    "Init.Omega.Int",
+    "Init.Omega.LinearCombo",
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Defs",
+    "Mathlib.Data.SetLike.Basic"
+   ]
+  },
+  "RPP14.proof._simp_1_1": {
+   "package": [],
+   "workspace_modules": [
+    "Init.Core",
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Defs",
+    "Mathlib.Data.Finset.Filter",
+    "Mathlib.Data.SetLike.Basic"
+   ]
+  },
+  "RPP15.proof": {
+   "package": [
+    "G4.C4Free",
+    "G4.adj",
+    "G4.instDecidableAdj",
+    "G4.instDecidableC4Free",
+    "G4.verts",
+    "GT.Edges",
+    "RP.ordered_2",
+    "RPConj.ordered_2_sound_c4",
+    "RPConj.ordered_2_sound_c4_negation",
+    "RPP15.proof._proof_1_1"
+   ],
+   "workspace_modules": [
+    "Init.Core",
+    "Init.Data.Fin.Basic",
+    "Init.Data.List.BasicAux",
+    "Init.Data.Nat.Basic",
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Insert"
+   ]
+  },
+  "RPP15.proof._proof_1_1": {
+   "package": [
+    "G4.C4Free",
+    "G4.adj",
+    "G4.instDecidableAdj",
+    "G4.instDecidableC4Free",
+    "G4.verts",
+    "GT.Edges",
+    "RP.ordered_2"
+   ],
+   "workspace_modules": [
+    "Init.Core",
+    "Init.Data.Fin.Basic",
+    "Init.Data.List.BasicAux",
+    "Init.Data.Nat.Basic",
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Insert"
+   ]
+  },
+  "RPP16.proof": {
+   "package": [
+    "GT.Edges",
+    "RP.ordered_3",
+    "RPConj.ordered_3_image"
+   ],
+   "workspace_modules": [
+    "Init.Prelude",
+    "Init.SimpLemmas",
+    "Mathlib.Data.Finset.Defs",
+    "Mathlib.Data.Finset.Filter",
+    "Mathlib.Order.Defs.PartialOrder"
+   ]
+  },
+  "RPP17.proof": {
+   "package": [
+    "GT.Edges",
+    "GT.TriangleFree",
+    "GT.instDecidableTriangleFree",
+    "RP.ordered_3",
+    "RPConj.ordered_3_sound_tf",
+    "RPConj.ordered_3_sound_tf_negation",
+    "RPP17.proof._proof_1_1"
+   ],
+   "workspace_modules": [
+    "Init.Core",
+    "Init.Data.Fin.Basic",
+    "Init.Data.List.BasicAux",
+    "Init.Data.Nat.Basic",
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Insert"
+   ]
+  },
+  "RPP17.proof._proof_1_1": {
+   "package": [
+    "GT.Edges",
+    "GT.TriangleFree",
+    "GT.instDecidableTriangleFree",
+    "RP.ordered_3"
+   ],
+   "workspace_modules": [
+    "Init.Core",
+    "Init.Data.Fin.Basic",
+    "Init.Data.List.BasicAux",
+    "Init.Data.Nat.Basic",
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Insert"
+   ]
+  },
+  "RPP18.proof": {
+   "package": [
+    "G4.C4Free",
+    "G4.adj",
+    "G4.instDecidableAdj",
+    "G4.instDecidableC4Free",
+    "G4.verts",
+    "GT.Edges",
+    "RP.ordered_3",
+    "RPConj.ordered_3_sound_c4",
+    "RPConj.ordered_3_sound_c4_negation",
+    "RPP18.proof._proof_1_1"
+   ],
+   "workspace_modules": [
+    "Init.Core",
+    "Init.Data.Fin.Basic",
+    "Init.Data.List.BasicAux",
+    "Init.Data.Nat.Basic",
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Insert"
+   ]
+  },
+  "RPP18.proof._proof_1_1": {
+   "package": [
+    "G4.C4Free",
+    "G4.adj",
+    "G4.instDecidableAdj",
+    "G4.instDecidableC4Free",
+    "G4.verts",
+    "GT.Edges",
+    "RP.ordered_3"
+   ],
+   "workspace_modules": [
+    "Init.Core",
+    "Init.Data.Fin.Basic",
+    "Init.Data.List.BasicAux",
+    "Init.Data.Nat.Basic",
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Insert"
+   ]
+  },
+  "RPP19.proof": {
+   "package": [
+    "GT.Edges",
+    "RP.adjacent_2",
+    "RPConj.adjacent_2_image"
+   ],
+   "workspace_modules": [
+    "Init.Prelude",
+    "Init.SimpLemmas",
+    "Mathlib.Data.Finset.Defs",
+    "Mathlib.Data.Finset.Filter",
+    "Mathlib.Order.Defs.PartialOrder"
+   ]
+  },
+  "RPP2.proof": {
+   "package": [
+    "GT.Edges",
+    "GT.TriangleFree",
+    "RP.cross_2",
+    "RPConj.cross_2_sound_tf",
+    "RPP2.proof._proof_1_2",
+    "RPP2.proof._simp_1_1"
+   ],
+   "workspace_modules": [
+    "Init.Core",
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Defs",
+    "Mathlib.Data.Finset.Filter",
+    "Mathlib.Data.SetLike.Basic"
+   ]
+  },
+  "RPP2.proof._proof_1_2": {
+   "package": [
+    "GT.Edges"
+   ],
+   "workspace_modules": [
+    "Init.Core",
+    "Init.Data.Cast",
+    "Init.Data.Fin.Basic",
+    "Init.Data.Int.Basic",
+    "Init.Data.Int.Lemmas",
+    "Init.Data.Int.Order",
+    "Init.Omega.Coeffs",
+    "Init.Omega.Constraint",
+    "Init.Omega.Int",
+    "Init.Omega.LinearCombo",
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Defs",
+    "Mathlib.Data.SetLike.Basic"
+   ]
+  },
+  "RPP2.proof._simp_1_1": {
+   "package": [],
+   "workspace_modules": [
+    "Init.Core",
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Defs",
+    "Mathlib.Data.Finset.Filter",
+    "Mathlib.Data.SetLike.Basic"
+   ]
+  },
+  "RPP20.proof": {
+   "package": [
+    "GT.Edges",
+    "GT.TriangleFree",
+    "RP.adjacent_2",
+    "RPConj.adjacent_2_sound_tf",
+    "RPP20.proof._proof_1_2",
+    "RPP20.proof._simp_1_1"
+   ],
+   "workspace_modules": [
+    "Init.Core",
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Defs",
+    "Mathlib.Data.Finset.Filter",
+    "Mathlib.Data.SetLike.Basic"
+   ]
+  },
+  "RPP20.proof._proof_1_2": {
+   "package": [
+    "GT.Edges"
+   ],
+   "workspace_modules": [
+    "Init.Core",
+    "Init.Data.Cast",
+    "Init.Data.Int.Basic",
+    "Init.Data.Int.Lemmas",
+    "Init.Data.Int.Order",
+    "Init.Omega.Coeffs",
+    "Init.Omega.Constraint",
+    "Init.Omega.Int",
+    "Init.Omega.LinearCombo",
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Defs",
+    "Mathlib.Data.SetLike.Basic"
+   ]
+  },
+  "RPP20.proof._simp_1_1": {
+   "package": [],
+   "workspace_modules": [
+    "Init.Core",
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Defs",
+    "Mathlib.Data.Finset.Filter",
+    "Mathlib.Data.SetLike.Basic"
+   ]
+  },
+  "RPP21.proof": {
+   "package": [
+    "G4.C4Free",
+    "G4.adj",
+    "G4.instDecidableAdj",
+    "G4.instDecidableC4Free",
+    "G4.verts",
+    "GT.Edges",
+    "RP.adjacent_2",
+    "RPConj.adjacent_2_sound_c4",
+    "RPConj.adjacent_2_sound_c4_negation",
+    "RPP21.proof._proof_1_1"
+   ],
+   "workspace_modules": [
+    "Init.Core",
+    "Init.Data.Fin.Basic",
+    "Init.Data.List.BasicAux",
+    "Init.Data.Nat.Basic",
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Insert"
+   ]
+  },
+  "RPP21.proof._proof_1_1": {
+   "package": [
+    "G4.C4Free",
+    "G4.adj",
+    "G4.instDecidableAdj",
+    "G4.instDecidableC4Free",
+    "G4.verts",
+    "GT.Edges",
+    "RP.adjacent_2"
+   ],
+   "workspace_modules": [
+    "Init.Core",
+    "Init.Data.Fin.Basic",
+    "Init.Data.List.BasicAux",
+    "Init.Data.Nat.Basic",
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Insert"
+   ]
+  },
+  "RPP22.proof": {
+   "package": [
+    "GT.Edges",
+    "RP.adjacent_3",
+    "RPConj.adjacent_3_image"
+   ],
+   "workspace_modules": [
+    "Init.Prelude",
+    "Init.SimpLemmas",
+    "Mathlib.Data.Finset.Defs",
+    "Mathlib.Data.Finset.Filter",
+    "Mathlib.Order.Defs.PartialOrder"
+   ]
+  },
+  "RPP23.proof": {
+   "package": [
+    "GT.Edges",
+    "GT.TriangleFree",
+    "RP.adjacent_3",
+    "RPConj.adjacent_3_sound_tf",
+    "RPP23.proof._proof_1_2",
+    "RPP23.proof._simp_1_1"
+   ],
+   "workspace_modules": [
+    "Init.Core",
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Defs",
+    "Mathlib.Data.Finset.Filter",
+    "Mathlib.Data.SetLike.Basic"
+   ]
+  },
+  "RPP23.proof._proof_1_2": {
+   "package": [
+    "GT.Edges"
+   ],
+   "workspace_modules": [
+    "Init.Data.Cast",
+    "Init.Data.Int.Basic",
+    "Init.Data.Int.Lemmas",
+    "Init.Omega.Coeffs",
+    "Init.Omega.Constraint",
+    "Init.Omega.Int",
+    "Init.Omega.LinearCombo",
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Defs",
+    "Mathlib.Data.SetLike.Basic"
+   ]
+  },
+  "RPP23.proof._simp_1_1": {
+   "package": [],
+   "workspace_modules": [
+    "Init.Core",
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Defs",
+    "Mathlib.Data.Finset.Filter",
+    "Mathlib.Data.SetLike.Basic"
+   ]
+  },
+  "RPP24.proof": {
+   "package": [
+    "G4.C4Free",
+    "G4.adj",
+    "G4.instDecidableAdj",
+    "G4.instDecidableC4Free",
+    "G4.verts",
+    "GT.Edges",
+    "RP.adjacent_3",
+    "RPConj.adjacent_3_sound_c4",
+    "RPConj.adjacent_3_sound_c4_negation",
+    "RPP24.proof._proof_1_1"
+   ],
+   "workspace_modules": [
+    "Init.Core",
+    "Init.Data.Fin.Basic",
+    "Init.Data.List.BasicAux",
+    "Init.Data.Nat.Basic",
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Insert"
+   ]
+  },
+  "RPP24.proof._proof_1_1": {
+   "package": [
+    "G4.C4Free",
+    "G4.adj",
+    "G4.instDecidableAdj",
+    "G4.instDecidableC4Free",
+    "G4.verts",
+    "GT.Edges",
+    "RP.adjacent_3"
+   ],
+   "workspace_modules": [
+    "Init.Core",
+    "Init.Data.Fin.Basic",
+    "Init.Data.List.BasicAux",
+    "Init.Data.Nat.Basic",
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Insert"
+   ]
+  },
+  "RPP25.proof": {
+   "package": [
+    "GT.Edges",
+    "RP.cross_2",
+    "RP.ordered_2",
+    "RPConj.cross_2_within_ordered_2",
+    "RPConj.cross_2_within_ordered_2_negation",
+    "RPP25.proof._proof_1_1"
+   ],
+   "workspace_modules": [
+    "Init.Core",
+    "Init.Data.Fin.Basic",
+    "Init.Data.List.BasicAux",
+    "Init.Data.Nat.Basic",
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Defs",
+    "Mathlib.Data.Finset.Insert",
+    "Mathlib.Order.Defs.PartialOrder"
+   ]
+  },
+  "RPP25.proof._proof_1_1": {
+   "package": [
+    "GT.Edges",
+    "RP.cross_2",
+    "RP.ordered_2"
+   ],
+   "workspace_modules": [
+    "Init.Core",
+    "Init.Data.Fin.Basic",
+    "Init.Data.List.BasicAux",
+    "Init.Data.Nat.Basic",
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Defs",
+    "Mathlib.Data.Finset.Insert",
+    "Mathlib.Order.Defs.PartialOrder"
+   ]
+  },
+  "RPP26.proof": {
+   "package": [
+    "GT.Edges",
+    "RP.adjacent_2",
+    "RP.cross_2",
+    "RPConj.cross_2_within_adjacent_2",
+    "RPP26.proof._proof_1_2",
+    "RPP26.proof._simp_1_1"
+   ],
+   "workspace_modules": [
+    "Init.Core",
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Defs",
+    "Mathlib.Data.Finset.Filter",
+    "Mathlib.Data.SetLike.Basic",
+    "Mathlib.Order.Defs.PartialOrder"
+   ]
+  },
+  "RPP26.proof._proof_1_2": {
+   "package": [],
+   "workspace_modules": [
+    "Init.Core",
+    "Init.Data.Cast",
+    "Init.Data.Fin.Basic",
+    "Init.Data.Int.Basic",
+    "Init.Data.Int.Lemmas",
+    "Init.Data.Int.Order",
+    "Init.Data.Nat.Basic",
+    "Init.Omega.Coeffs",
+    "Init.Omega.Constraint",
+    "Init.Omega.Int",
+    "Init.Omega.LinearCombo",
+    "Init.Omega.Logic",
+    "Init.Prelude"
+   ]
+  },
+  "RPP26.proof._simp_1_1": {
+   "package": [],
+   "workspace_modules": [
+    "Init.Core",
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Defs",
+    "Mathlib.Data.Finset.Filter",
+    "Mathlib.Data.SetLike.Basic"
+   ]
+  },
+  "RPP27.proof": {
+   "package": [
+    "GT.Edges",
+    "RP.cross_2",
+    "RP.ordered_2",
+    "RPConj.ordered_2_within_cross_2",
+    "RPP27.proof._proof_1_2",
+    "RPP27.proof._simp_1_1"
+   ],
+   "workspace_modules": [
+    "Init.Core",
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Defs",
+    "Mathlib.Data.Finset.Filter",
+    "Mathlib.Data.SetLike.Basic",
+    "Mathlib.Order.Defs.PartialOrder"
+   ]
+  },
+  "RPP27.proof._proof_1_2": {
+   "package": [
+    "GT.Edges"
+   ],
+   "workspace_modules": [
+    "Init.Core",
+    "Init.Data.Cast",
+    "Init.Data.Fin.Basic",
+    "Init.Data.Int.Basic",
+    "Init.Data.Int.Lemmas",
+    "Init.Data.Int.Order",
+    "Init.Omega.Coeffs",
+    "Init.Omega.Constraint",
+    "Init.Omega.Int",
+    "Init.Omega.LinearCombo",
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Defs",
+    "Mathlib.Data.SetLike.Basic"
+   ]
+  },
+  "RPP27.proof._simp_1_1": {
+   "package": [],
+   "workspace_modules": [
+    "Init.Core",
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Defs",
+    "Mathlib.Data.Finset.Filter",
+    "Mathlib.Data.SetLike.Basic"
+   ]
+  },
+  "RPP28.proof": {
+   "package": [
+    "GT.Edges",
+    "RP.adjacent_2",
+    "RP.ordered_2",
+    "RPConj.ordered_2_within_adjacent_2",
+    "RPP28.proof._proof_1_2",
+    "RPP28.proof._simp_1_1"
+   ],
+   "workspace_modules": [
+    "Init.Core",
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Defs",
+    "Mathlib.Data.Finset.Filter",
+    "Mathlib.Data.SetLike.Basic",
+    "Mathlib.Order.Defs.PartialOrder"
+   ]
+  },
+  "RPP28.proof._proof_1_2": {
+   "package": [
+    "GT.Edges"
+   ],
+   "workspace_modules": [
+    "Init.Core",
+    "Init.Data.Cast",
+    "Init.Data.Fin.Basic",
+    "Init.Data.Int.Basic",
+    "Init.Data.Int.Lemmas",
+    "Init.Data.Int.Order",
+    "Init.Data.Nat.Basic",
+    "Init.Omega.Coeffs",
+    "Init.Omega.Constraint",
+    "Init.Omega.Int",
+    "Init.Omega.LinearCombo",
+    "Init.Omega.Logic",
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Defs",
+    "Mathlib.Data.SetLike.Basic"
+   ]
+  },
+  "RPP28.proof._simp_1_1": {
+   "package": [],
+   "workspace_modules": [
+    "Init.Core",
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Defs",
+    "Mathlib.Data.Finset.Filter",
+    "Mathlib.Data.SetLike.Basic"
+   ]
+  },
+  "RPP29.proof": {
+   "package": [
+    "GT.Edges",
+    "RP.adjacent_2",
+    "RP.cross_2",
+    "RPConj.adjacent_2_within_cross_2",
+    "RPP29.proof._proof_1_2",
+    "RPP29.proof._simp_1_1"
+   ],
+   "workspace_modules": [
+    "Init.Core",
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Defs",
+    "Mathlib.Data.Finset.Filter",
+    "Mathlib.Data.SetLike.Basic",
+    "Mathlib.Order.Defs.PartialOrder"
+   ]
+  },
+  "RPP29.proof._proof_1_2": {
+   "package": [],
+   "workspace_modules": [
+    "Init.Data.Cast",
+    "Init.Data.Fin.Basic",
+    "Init.Data.Int.Basic",
+    "Init.Data.Int.Lemmas",
+    "Init.Omega.Coeffs",
+    "Init.Omega.Constraint",
+    "Init.Omega.Int",
+    "Init.Omega.LinearCombo",
+    "Init.Prelude"
+   ]
+  },
+  "RPP29.proof._simp_1_1": {
+   "package": [],
+   "workspace_modules": [
+    "Init.Core",
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Defs",
+    "Mathlib.Data.Finset.Filter",
+    "Mathlib.Data.SetLike.Basic"
+   ]
+  },
+  "RPP3.proof": {
+   "package": [
+    "G4.C4Free",
+    "G4.adj",
+    "G4.instDecidableAdj",
+    "G4.instDecidableC4Free",
+    "G4.verts",
+    "GT.Edges",
+    "RP.cross_2",
+    "RPConj.cross_2_sound_c4",
+    "RPConj.cross_2_sound_c4_negation",
+    "RPP3.proof._proof_1_1"
+   ],
+   "workspace_modules": [
+    "Init.Core",
+    "Init.Data.Fin.Basic",
+    "Init.Data.List.BasicAux",
+    "Init.Data.Nat.Basic",
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Insert"
+   ]
+  },
+  "RPP3.proof._proof_1_1": {
+   "package": [
+    "G4.C4Free",
+    "G4.adj",
+    "G4.instDecidableAdj",
+    "G4.instDecidableC4Free",
+    "G4.verts",
+    "GT.Edges",
+    "RP.cross_2"
+   ],
+   "workspace_modules": [
+    "Init.Core",
+    "Init.Data.Fin.Basic",
+    "Init.Data.List.BasicAux",
+    "Init.Data.Nat.Basic",
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Insert"
+   ]
+  },
+  "RPP30.proof": {
+   "package": [
+    "GT.Edges",
+    "RP.adjacent_2",
+    "RP.ordered_2",
+    "RPConj.adjacent_2_within_ordered_2",
+    "RPConj.adjacent_2_within_ordered_2_negation",
+    "RPP30.proof._proof_1_1"
+   ],
+   "workspace_modules": [
+    "Init.Core",
+    "Init.Data.Fin.Basic",
+    "Init.Data.List.BasicAux",
+    "Init.Data.Nat.Basic",
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Defs",
+    "Mathlib.Data.Finset.Insert",
+    "Mathlib.Order.Defs.PartialOrder"
+   ]
+  },
+  "RPP30.proof._proof_1_1": {
+   "package": [
+    "GT.Edges",
+    "RP.adjacent_2",
+    "RP.ordered_2"
+   ],
+   "workspace_modules": [
+    "Init.Core",
+    "Init.Data.Fin.Basic",
+    "Init.Data.List.BasicAux",
+    "Init.Data.Nat.Basic",
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Defs",
+    "Mathlib.Data.Finset.Insert",
+    "Mathlib.Order.Defs.PartialOrder"
+   ]
+  },
+  "RPP31.proof": {
+   "package": [
+    "GT.Edges",
+    "GT.TriangleFree",
+    "GT.instDecidableTriangleFree",
+    "RP.cross_2",
+    "RPConj.cross_2_loses_tf",
+    "RPConj.cross_2_loses_tf._proof_1"
+   ],
+   "workspace_modules": [
+    "Init.Core",
+    "Init.Data.Fin.Basic",
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Defs",
+    "Mathlib.Data.Finset.Insert",
+    "Mathlib.Data.Finset.Powerset",
+    "Mathlib.Data.Finset.Range",
+    "Mathlib.Data.SetLike.Basic"
+   ]
+  },
+  "RPP32.proof": {
+   "package": [
+    "GT.Edges",
+    "GT.TriangleFree",
+    "GT.instDecidableTriangleFree",
+    "RP.ordered_2",
+    "RPConj.cross_2_loses_tf._proof_1",
+    "RPConj.ordered_2_loses_tf"
+   ],
+   "workspace_modules": [
+    "Init.Core",
+    "Init.Data.Fin.Basic",
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Defs",
+    "Mathlib.Data.Finset.Insert",
+    "Mathlib.Data.Finset.Powerset",
+    "Mathlib.Data.Finset.Range",
+    "Mathlib.Data.SetLike.Basic"
+   ]
+  },
+  "RPP33.proof": {
+   "package": [
+    "GT.Edges",
+    "GT.TriangleFree",
+    "GT.instDecidableTriangleFree",
+    "RP.adjacent_2",
+    "RPConj.adjacent_2_loses_tf",
+    "RPConj.cross_2_loses_tf._proof_1"
+   ],
+   "workspace_modules": [
+    "Init.Core",
+    "Init.Data.Fin.Basic",
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Defs",
+    "Mathlib.Data.Finset.Insert",
+    "Mathlib.Data.Finset.Powerset",
+    "Mathlib.Data.Finset.Range",
+    "Mathlib.Data.SetLike.Basic"
+   ]
+  },
+  "RPP4.proof": {
+   "package": [
+    "GT.Edges",
+    "RP.cross_3",
+    "RPConj.cross_3_image"
+   ],
+   "workspace_modules": [
+    "Init.Core",
+    "Init.Prelude",
+    "Init.SimpLemmas",
+    "Mathlib.Data.Finset.Defs",
+    "Mathlib.Data.Finset.Filter",
+    "Mathlib.Data.SetLike.Basic",
+    "Mathlib.Order.Defs.PartialOrder"
+   ]
+  },
+  "RPP5.proof": {
+   "package": [
+    "GT.Edges",
+    "GT.TriangleFree",
+    "GT.instDecidableTriangleFree",
+    "RP.cross_3",
+    "RPConj.cross_3_sound_tf",
+    "RPConj.cross_3_sound_tf_negation",
+    "RPP5.proof._proof_1_1"
+   ],
+   "workspace_modules": [
+    "Init.Core",
+    "Init.Data.Fin.Basic",
+    "Init.Data.List.BasicAux",
+    "Init.Data.Nat.Basic",
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Insert"
+   ]
+  },
+  "RPP5.proof._proof_1_1": {
+   "package": [
+    "GT.Edges",
+    "GT.TriangleFree",
+    "GT.instDecidableTriangleFree",
+    "RP.cross_3"
+   ],
+   "workspace_modules": [
+    "Init.Core",
+    "Init.Data.Fin.Basic",
+    "Init.Data.List.BasicAux",
+    "Init.Data.Nat.Basic",
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Insert"
+   ]
+  },
+  "RPP6.proof": {
+   "package": [
+    "G4.C4Free",
+    "G4.adj",
+    "G4.instDecidableAdj",
+    "G4.instDecidableC4Free",
+    "G4.verts",
+    "GT.Edges",
+    "RP.cross_3",
+    "RPConj.cross_3_sound_c4",
+    "RPConj.cross_3_sound_c4_negation",
+    "RPP6.proof._proof_1_1"
+   ],
+   "workspace_modules": [
+    "Init.Core",
+    "Init.Data.Fin.Basic",
+    "Init.Data.List.BasicAux",
+    "Init.Data.Nat.Basic",
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Insert"
+   ]
+  },
+  "RPP6.proof._proof_1_1": {
+   "package": [
+    "G4.C4Free",
+    "G4.adj",
+    "G4.instDecidableAdj",
+    "G4.instDecidableC4Free",
+    "G4.verts",
+    "GT.Edges",
+    "RP.cross_3"
+   ],
+   "workspace_modules": [
+    "Init.Core",
+    "Init.Data.Fin.Basic",
+    "Init.Data.List.BasicAux",
+    "Init.Data.Nat.Basic",
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Insert"
+   ]
+  },
+  "RPP7.proof": {
+   "package": [
+    "GT.Edges",
+    "RP.inside_2",
+    "RPConj.inside_2_image"
+   ],
+   "workspace_modules": [
+    "Init.Prelude",
+    "Init.SimpLemmas",
+    "Mathlib.Data.Finset.Defs",
+    "Mathlib.Data.Finset.Filter",
+    "Mathlib.Order.Defs.PartialOrder"
+   ]
+  },
+  "RPP8.proof": {
+   "package": [
+    "GT.Edges",
+    "GT.TriangleFree",
+    "GT.instDecidableTriangleFree",
+    "RP.inside_2",
+    "RPConj.inside_2_sound_tf",
+    "RPConj.inside_2_sound_tf_negation",
+    "RPP8.proof._proof_1_1"
+   ],
+   "workspace_modules": [
+    "Init.Core",
+    "Init.Data.Fin.Basic",
+    "Init.Data.List.BasicAux",
+    "Init.Data.Nat.Basic",
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Insert"
+   ]
+  },
+  "RPP8.proof._proof_1_1": {
+   "package": [
+    "GT.Edges",
+    "GT.TriangleFree",
+    "GT.instDecidableTriangleFree",
+    "RP.inside_2"
+   ],
+   "workspace_modules": [
+    "Init.Core",
+    "Init.Data.Fin.Basic",
+    "Init.Data.List.BasicAux",
+    "Init.Data.Nat.Basic",
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Insert"
+   ]
+  },
+  "RPP9.proof": {
+   "package": [
+    "G4.C4Free",
+    "G4.adj",
+    "G4.instDecidableAdj",
+    "G4.instDecidableC4Free",
+    "G4.verts",
+    "GT.Edges",
+    "RP.inside_2",
+    "RPConj.inside_2_sound_c4",
+    "RPConj.inside_2_sound_c4_negation",
+    "RPP9.proof._proof_1_1"
+   ],
+   "workspace_modules": [
+    "Init.Core",
+    "Init.Data.Fin.Basic",
+    "Init.Data.List.BasicAux",
+    "Init.Data.Nat.Basic",
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Insert"
+   ]
+  },
+  "RPP9.proof._proof_1_1": {
+   "package": [
+    "G4.C4Free",
+    "G4.adj",
+    "G4.instDecidableAdj",
+    "G4.instDecidableC4Free",
+    "G4.verts",
+    "GT.Edges",
+    "RP.inside_2"
+   ],
+   "workspace_modules": [
+    "Init.Core",
+    "Init.Data.Fin.Basic",
+    "Init.Data.List.BasicAux",
+    "Init.Data.Nat.Basic",
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Insert"
+   ]
+  }
+ },
+ "domain": "triangle_free_host_v1, c4_host_v2",
+ "modules": [
+  {
+   "name": "GTDefs",
+   "source": "import Mathlib.Data.Finset.Powerset\n\nnamespace GT\n\n/-- Edge sets: ordered pairs (u, v), read as the edge {u, v}. Hosts list each edge once, with u < v. -/\nabbrev Edges := Finset (ℕ × ℕ)\n\n/-- No three edges (a, b), (b, c), (a, c). -/\ndef TriangleFree (S : Edges) : Prop :=\n  ∀ e ∈ S, ∀ f ∈ S, ∀ g ∈ S, ¬ (e.1 = g.1 ∧ e.2 = f.1 ∧ f.2 = g.2)\n\ninstance (S : Edges) : Decidable (TriangleFree S) := by\n  unfold TriangleFree; infer_instance\n\nend GT\n",
+   "source_sha256": "34a84d4f227cbf5a95012a37a9f263f14ca419a4959be42c674d8abc47c9e3a7",
+   "trusted": true
+  },
+  {
+   "name": "G4Defs",
+   "source": "import GTDefs\n\nnamespace G4\n\n/-- Domain contract (c4_host_v2): u and v are joined in S, in either orientation. -/\ndef adj (S : GT.Edges) (u v : ℕ) : Prop := (u, v) ∈ S ∨ (v, u) ∈ S\n\ninstance (S : GT.Edges) (u v : ℕ) : Decidable (adj S u v) := by\n  unfold adj; infer_instance\n\ndef verts (S : GT.Edges) : Finset ℕ := S.image Prod.fst ∪ S.image Prod.snd\n\n/-- No 4-cycle a-b-c-d-a with a ≠ c and b ≠ d. -/\ndef C4Free (S : GT.Edges) : Prop :=\n  ∀ a ∈ verts S, ∀ b ∈ verts S, ∀ c ∈ verts S, ∀ d ∈ verts S,\n    a ≠ c → b ≠ d → ¬ (adj S a b ∧ adj S b c ∧ adj S c d ∧ adj S d a)\n\ninstance (S : GT.Edges) : Decidable (C4Free S) := by\n  unfold C4Free; infer_instance\n\nend G4\n",
+   "source_sha256": "bf94fb5d73cc9d32e1e11167df93df0ca356b3f1a6de0b050a8efe53bae7987b",
+   "trusted": true
+  },
+  {
+   "name": "RPDefs",
+   "source": "import GTDefs\n\nnamespace RP\n\n/-- Generated representation `cross_2`: edges whose endpoints lie in different classes. -/\ndef cross_2 (c : ℕ → Fin 2) (H : GT.Edges) : GT.Edges := H.filter fun e => c e.1 ≠ c e.2\n\n/-- Generated representation `cross_3`: edges whose endpoints lie in different classes. -/\ndef cross_3 (c : ℕ → Fin 3) (H : GT.Edges) : GT.Edges := H.filter fun e => c e.1 ≠ c e.2\n\n/-- Generated representation `inside_2`: edges inside a class. -/\ndef inside_2 (c : ℕ → Fin 2) (H : GT.Edges) : GT.Edges := H.filter fun e => c e.1 = c e.2\n\n/-- Generated representation `inside_3`: edges inside a class. -/\ndef inside_3 (c : ℕ → Fin 3) (H : GT.Edges) : GT.Edges := H.filter fun e => c e.1 = c e.2\n\n/-- Generated representation `ordered_2`: edges from a lower class to a higher class (by the host orientation u < v). -/\ndef ordered_2 (c : ℕ → Fin 2) (H : GT.Edges) : GT.Edges := H.filter fun e => c e.1 < c e.2\n\n/-- Generated representation `ordered_3`: edges from a lower class to a higher class (by the host orientation u < v). -/\ndef ordered_3 (c : ℕ → Fin 3) (H : GT.Edges) : GT.Edges := H.filter fun e => c e.1 < c e.2\n\n/-- Generated representation `adjacent_2`: edges between consecutive classes. -/\ndef adjacent_2 (c : ℕ → Fin 2) (H : GT.Edges) : GT.Edges := H.filter fun e => (c e.1).val + 1 = (c e.2).val ∨ (c e.2).val + 1 = (c e.1).val\n\n/-- Generated representation `adjacent_3`: edges between consecutive classes. -/\ndef adjacent_3 (c : ℕ → Fin 3) (H : GT.Edges) : GT.Edges := H.filter fun e => (c e.1).val + 1 = (c e.2).val ∨ (c e.2).val + 1 = (c e.1).val\n\nend RP\n",
+   "source_sha256": "3b6999b749d3bb192ca07ed7ec2543df1d6ecdcc3fe2297b308137f49d22f776",
+   "trusted": true
+  },
+  {
+   "name": "RPConj",
+   "source": "import GTDefs\nimport G4Defs\nimport RPDefs\nset_option linter.unusedVariables false\n\nnamespace RPConj\n/-- Generated conjecture `cross_2_image` (generated:representation-grammar). -/\ndef cross_2_image : Prop := ∀ (c : ℕ → Fin 2) (H : GT.Edges), RP.cross_2 c H ⊆ H\n/-- Generated conjecture `cross_2_sound_tf` (generated:representation-grammar). -/\ndef cross_2_sound_tf : Prop := ∀ (c : ℕ → Fin 2) (H : GT.Edges), GT.TriangleFree (RP.cross_2 c H)\n/-- Generated conjecture `cross_2_sound_c4` (generated:representation-grammar). -/\ndef cross_2_sound_c4 : Prop := ∀ (c : ℕ → Fin 2) (H : GT.Edges), G4.C4Free (RP.cross_2 c H)\ndef cross_2_sound_c4_negation : Prop := ¬ cross_2_sound_c4\n/-- Generated conjecture `cross_3_image` (generated:representation-grammar). -/\ndef cross_3_image : Prop := ∀ (c : ℕ → Fin 3) (H : GT.Edges), RP.cross_3 c H ⊆ H\n/-- Generated conjecture `cross_3_sound_tf` (generated:representation-grammar). -/\ndef cross_3_sound_tf : Prop := ∀ (c : ℕ → Fin 3) (H : GT.Edges), GT.TriangleFree (RP.cross_3 c H)\ndef cross_3_sound_tf_negation : Prop := ¬ cross_3_sound_tf\n/-- Generated conjecture `cross_3_sound_c4` (generated:representation-grammar). -/\ndef cross_3_sound_c4 : Prop := ∀ (c : ℕ → Fin 3) (H : GT.Edges), G4.C4Free (RP.cross_3 c H)\ndef cross_3_sound_c4_negation : Prop := ¬ cross_3_sound_c4\n/-- Generated conjecture `inside_2_image` (generated:representation-grammar). -/\ndef inside_2_image : Prop := ∀ (c : ℕ → Fin 2) (H : GT.Edges), RP.inside_2 c H ⊆ H\n/-- Generated conjecture `inside_2_sound_tf` (generated:representation-grammar). -/\ndef inside_2_sound_tf : Prop := ∀ (c : ℕ → Fin 2) (H : GT.Edges), GT.TriangleFree (RP.inside_2 c H)\ndef inside_2_sound_tf_negation : Prop := ¬ inside_2_sound_tf\n/-- Generated conjecture `inside_2_sound_c4` (generated:representation-grammar). -/\ndef inside_2_sound_c4 : Prop := ∀ (c : ℕ → Fin 2) (H : GT.Edges), G4.C4Free (RP.inside_2 c H)\ndef inside_2_sound_c4_negation : Prop := ¬ inside_2_sound_c4\n/-- Generated conjecture `inside_3_image` (generated:representation-grammar). -/\ndef inside_3_image : Prop := ∀ (c : ℕ → Fin 3) (H : GT.Edges), RP.inside_3 c H ⊆ H\n/-- Generated conjecture `inside_3_sound_tf` (generated:representation-grammar). -/\ndef inside_3_sound_tf : Prop := ∀ (c : ℕ → Fin 3) (H : GT.Edges), GT.TriangleFree (RP.inside_3 c H)\ndef inside_3_sound_tf_negation : Prop := ¬ inside_3_sound_tf\n/-- Generated conjecture `inside_3_sound_c4` (generated:representation-grammar). -/\ndef inside_3_sound_c4 : Prop := ∀ (c : ℕ → Fin 3) (H : GT.Edges), G4.C4Free (RP.inside_3 c H)\ndef inside_3_sound_c4_negation : Prop := ¬ inside_3_sound_c4\n/-- Generated conjecture `ordered_2_image` (generated:representation-grammar). -/\ndef ordered_2_image : Prop := ∀ (c : ℕ → Fin 2) (H : GT.Edges), RP.ordered_2 c H ⊆ H\n/-- Generated conjecture `ordered_2_sound_tf` (generated:representation-grammar). -/\ndef ordered_2_sound_tf : Prop := ∀ (c : ℕ → Fin 2) (H : GT.Edges), GT.TriangleFree (RP.ordered_2 c H)\n/-- Generated conjecture `ordered_2_sound_c4` (generated:representation-grammar). -/\ndef ordered_2_sound_c4 : Prop := ∀ (c : ℕ → Fin 2) (H : GT.Edges), G4.C4Free (RP.ordered_2 c H)\ndef ordered_2_sound_c4_negation : Prop := ¬ ordered_2_sound_c4\n/-- Generated conjecture `ordered_3_image` (generated:representation-grammar). -/\ndef ordered_3_image : Prop := ∀ (c : ℕ → Fin 3) (H : GT.Edges), RP.ordered_3 c H ⊆ H\n/-- Generated conjecture `ordered_3_sound_tf` (generated:representation-grammar). -/\ndef ordered_3_sound_tf : Prop := ∀ (c : ℕ → Fin 3) (H : GT.Edges), GT.TriangleFree (RP.ordered_3 c H)\ndef ordered_3_sound_tf_negation : Prop := ¬ ordered_3_sound_tf\n/-- Generated conjecture `ordered_3_sound_c4` (generated:representation-grammar). -/\ndef ordered_3_sound_c4 : Prop := ∀ (c : ℕ → Fin 3) (H : GT.Edges), G4.C4Free (RP.ordered_3 c H)\ndef ordered_3_sound_c4_negation : Prop := ¬ ordered_3_sound_c4\n/-- Generated conjecture `adjacent_2_image` (generated:representation-grammar). -/\ndef adjacent_2_image : Prop := ∀ (c : ℕ → Fin 2) (H : GT.Edges), RP.adjacent_2 c H ⊆ H\n/-- Generated conjecture `adjacent_2_sound_tf` (generated:representation-grammar). -/\ndef adjacent_2_sound_tf : Prop := ∀ (c : ℕ → Fin 2) (H : GT.Edges), GT.TriangleFree (RP.adjacent_2 c H)\n/-- Generated conjecture `adjacent_2_sound_c4` (generated:representation-grammar). -/\ndef adjacent_2_sound_c4 : Prop := ∀ (c : ℕ → Fin 2) (H : GT.Edges), G4.C4Free (RP.adjacent_2 c H)\ndef adjacent_2_sound_c4_negation : Prop := ¬ adjacent_2_sound_c4\n/-- Generated conjecture `adjacent_3_image` (generated:representation-grammar). -/\ndef adjacent_3_image : Prop := ∀ (c : ℕ → Fin 3) (H : GT.Edges), RP.adjacent_3 c H ⊆ H\n/-- Generated conjecture `adjacent_3_sound_tf` (generated:representation-grammar). -/\ndef adjacent_3_sound_tf : Prop := ∀ (c : ℕ → Fin 3) (H : GT.Edges), GT.TriangleFree (RP.adjacent_3 c H)\n/-- Generated conjecture `adjacent_3_sound_c4` (generated:representation-grammar). -/\ndef adjacent_3_sound_c4 : Prop := ∀ (c : ℕ → Fin 3) (H : GT.Edges), G4.C4Free (RP.adjacent_3 c H)\ndef adjacent_3_sound_c4_negation : Prop := ¬ adjacent_3_sound_c4\n/-- Generated conjecture `cross_2_within_ordered_2` (generated:representation-grammar). -/\ndef cross_2_within_ordered_2 : Prop := ∀ (c : ℕ → Fin 2) (H : GT.Edges), RP.cross_2 c H ⊆ RP.ordered_2 c H\ndef cross_2_within_ordered_2_negation : Prop := ¬ cross_2_within_ordered_2\n/-- Generated conjecture `cross_2_within_adjacent_2` (generated:representation-grammar). -/\ndef cross_2_within_adjacent_2 : Prop := ∀ (c : ℕ → Fin 2) (H : GT.Edges), RP.cross_2 c H ⊆ RP.adjacent_2 c H\n/-- Generated conjecture `ordered_2_within_cross_2` (generated:representation-grammar). -/\ndef ordered_2_within_cross_2 : Prop := ∀ (c : ℕ → Fin 2) (H : GT.Edges), RP.ordered_2 c H ⊆ RP.cross_2 c H\n/-- Generated conjecture `ordered_2_within_adjacent_2` (generated:representation-grammar). -/\ndef ordered_2_within_adjacent_2 : Prop := ∀ (c : ℕ → Fin 2) (H : GT.Edges), RP.ordered_2 c H ⊆ RP.adjacent_2 c H\n/-- Generated conjecture `adjacent_2_within_cross_2` (generated:representation-grammar). -/\ndef adjacent_2_within_cross_2 : Prop := ∀ (c : ℕ → Fin 2) (H : GT.Edges), RP.adjacent_2 c H ⊆ RP.cross_2 c H\n/-- Generated conjecture `adjacent_2_within_ordered_2` (generated:representation-grammar). -/\ndef adjacent_2_within_ordered_2 : Prop := ∀ (c : ℕ → Fin 2) (H : GT.Edges), RP.adjacent_2 c H ⊆ RP.ordered_2 c H\ndef adjacent_2_within_ordered_2_negation : Prop := ¬ adjacent_2_within_ordered_2\n/-- Generated conjecture `cross_2_loses_tf` (generated:representation-grammar). -/\ndef cross_2_loses_tf : Prop := ∃ S : GT.Edges, GT.TriangleFree S ∧ ∀ A ∈ (Finset.range 5).powerset, RP.cross_2 (fun v => if v ∈ A then 1 else 0) S ≠ S\n/-- Generated conjecture `ordered_2_loses_tf` (generated:representation-grammar). -/\ndef ordered_2_loses_tf : Prop := ∃ S : GT.Edges, GT.TriangleFree S ∧ ∀ A ∈ (Finset.range 3).powerset, RP.ordered_2 (fun v => if v ∈ A then 1 else 0) S ≠ S\n/-- Generated conjecture `adjacent_2_loses_tf` (generated:representation-grammar). -/\ndef adjacent_2_loses_tf : Prop := ∃ S : GT.Edges, GT.TriangleFree S ∧ ∀ A ∈ (Finset.range 5).powerset, RP.adjacent_2 (fun v => if v ∈ A then 1 else 0) S ≠ S\nend RPConj\n",
+   "source_sha256": "85b6675b1a34335ae8700bf743a707cc7c442517ebea7189121448e02ae416cd",
+   "trusted": true
+  },
+  {
+   "name": "RPP1",
+   "source": "import GTDefs\nimport G4Defs\nimport RPDefs\nimport RPConj\nnamespace RPP1\ntheorem proof : RPConj.cross_2_image := by\n  unfold RPConj.cross_2_image\n  intro c H\n  simp_all [RP.cross_2]\nend RPP1\n",
+   "source_sha256": "293418bf2428a344bf5ae4a6b95efa136a2c5d7ea11cd4ef9e468d5d2a636c59",
+   "trusted": false
+  },
+  {
+   "name": "RPP2",
+   "source": "import GTDefs\nimport G4Defs\nimport RPDefs\nimport RPConj\nimport RPP1\nnamespace RPP2\ntheorem proof : RPConj.cross_2_sound_tf := by\n  unfold RPConj.cross_2_sound_tf\n  intro c H\n  unfold GT.TriangleFree RP.cross_2\n  rintro ⟨a, b⟩ he ⟨b', d⟩ hf ⟨a', d'⟩ hg ⟨h1, h2, h3⟩\n  simp only [Finset.mem_filter] at he hf hg\n  simp only at h1 h2 h3\n  subst h1 h2 h3\n  omega\nend RPP2\n",
+   "source_sha256": "634ae40a058e55ff62f86163b13d7cec60c9a16e8d1c3b27b494f2bfb1f0ad16",
+   "trusted": false
+  },
+  {
+   "name": "RPP3",
+   "source": "import GTDefs\nimport G4Defs\nimport RPDefs\nimport RPConj\nimport RPP1\nimport RPP2\nnamespace RPP3\ntheorem proof : RPConj.cross_2_sound_c4_negation := by\n  unfold RPConj.cross_2_sound_c4_negation RPConj.cross_2_sound_c4\n  intro h\n  exact absurd (h ((fun v => ([0, 1, 1, 0] : List (Fin 2)).getD v 0)) (({(1, 0), (1, 3), (2, 0), (3, 2)} : GT.Edges))) (by decide +kernel)\nend RPP3\n",
+   "source_sha256": "a31f319cd13c2b11be5a7dac46b6b64b6a1134d937b4fe9063b034e713f6a483",
+   "trusted": false
+  },
+  {
+   "name": "RPP4",
+   "source": "import GTDefs\nimport G4Defs\nimport RPDefs\nimport RPConj\nimport RPP1\nimport RPP2\nimport RPP3\nnamespace RPP4\ntheorem proof : RPConj.cross_3_image := by\n  unfold RPConj.cross_3_image\n  intro c H\n  simp_all [RP.cross_3]\nend RPP4\n",
+   "source_sha256": "9a881f5ac9a85ae17fdf10224c29d2ea249e0795f101e97032d2a6bcacaa1f3f",
+   "trusted": false
+  },
+  {
+   "name": "RPP5",
+   "source": "import GTDefs\nimport G4Defs\nimport RPDefs\nimport RPConj\nimport RPP1\nimport RPP2\nimport RPP3\nimport RPP4\nnamespace RPP5\ntheorem proof : RPConj.cross_3_sound_tf_negation := by\n  unfold RPConj.cross_3_sound_tf_negation RPConj.cross_3_sound_tf\n  intro h\n  exact absurd (h ((fun v => ([0, 0, 1, 2] : List (Fin 3)).getD v 0)) (({(1, 0), (2, 1), (2, 3), (3, 1)} : GT.Edges))) (by decide +kernel)\nend RPP5\n",
+   "source_sha256": "78f0e557a7d1dad3b7282216b7f53b416849be8eda7eb0608200b575a01c6a38",
+   "trusted": false
+  },
+  {
+   "name": "RPP6",
+   "source": "import GTDefs\nimport G4Defs\nimport RPDefs\nimport RPConj\nimport RPP1\nimport RPP2\nimport RPP3\nimport RPP4\nimport RPP5\nnamespace RPP6\ntheorem proof : RPConj.cross_3_sound_c4_negation := by\n  unfold RPConj.cross_3_sound_c4_negation RPConj.cross_3_sound_c4\n  intro h\n  exact absurd (h ((fun v => ([0, 1, 0, 1] : List (Fin 3)).getD v 0)) (({(0, 3), (1, 0), (2, 1), (3, 2)} : GT.Edges))) (by decide +kernel)\nend RPP6\n",
+   "source_sha256": "c01d6c66a06326a936fff215793d817f91adfbbb4beec70eb44a126e40b3c467",
+   "trusted": false
+  },
+  {
+   "name": "RPP7",
+   "source": "import GTDefs\nimport G4Defs\nimport RPDefs\nimport RPConj\nimport RPP1\nimport RPP2\nimport RPP3\nimport RPP4\nimport RPP5\nimport RPP6\nnamespace RPP7\ntheorem proof : RPConj.inside_2_image := by\n  unfold RPConj.inside_2_image\n  intro c H\n  simp_all [RP.inside_2]\nend RPP7\n",
+   "source_sha256": "4656d1b322b3ce745cfa5ba04363a30664046ca9a9e65ee244306982917af7d9",
+   "trusted": false
+  },
+  {
+   "name": "RPP8",
+   "source": "import GTDefs\nimport G4Defs\nimport RPDefs\nimport RPConj\nimport RPP1\nimport RPP2\nimport RPP3\nimport RPP4\nimport RPP5\nimport RPP6\nimport RPP7\nnamespace RPP8\ntheorem proof : RPConj.inside_2_sound_tf_negation := by\n  unfold RPConj.inside_2_sound_tf_negation RPConj.inside_2_sound_tf\n  intro h\n  exact absurd (h ((fun v => ([0, 0, 0, 1] : List (Fin 2)).getD v 0)) (({(2, 2)} : GT.Edges))) (by decide +kernel)\nend RPP8\n",
+   "source_sha256": "103b434c47a57a8b180ff9d8286e1c40512de89a189b2bbccf6f66f89619ca9a",
+   "trusted": false
+  },
+  {
+   "name": "RPP9",
+   "source": "import GTDefs\nimport G4Defs\nimport RPDefs\nimport RPConj\nimport RPP1\nimport RPP2\nimport RPP3\nimport RPP4\nimport RPP5\nimport RPP6\nimport RPP7\nimport RPP8\nnamespace RPP9\ntheorem proof : RPConj.inside_2_sound_c4_negation := by\n  unfold RPConj.inside_2_sound_c4_negation RPConj.inside_2_sound_c4\n  intro h\n  exact absurd (h ((fun v => ([0, 0, 0, 0] : List (Fin 2)).getD v 0)) (({(1, 1), (2, 0), (2, 1), (2, 2)} : GT.Edges))) (by decide +kernel)\nend RPP9\n",
+   "source_sha256": "5bd1c2dc5f974c5d07390c90040247600fff1bb6ca9b36033971b9250ab2f1a5",
+   "trusted": false
+  },
+  {
+   "name": "RPP10",
+   "source": "import GTDefs\nimport G4Defs\nimport RPDefs\nimport RPConj\nimport RPP1\nimport RPP2\nimport RPP3\nimport RPP4\nimport RPP5\nimport RPP6\nimport RPP7\nimport RPP8\nimport RPP9\nnamespace RPP10\ntheorem proof : RPConj.inside_3_image := by\n  unfold RPConj.inside_3_image\n  intro c H\n  simp_all [RP.inside_3]\nend RPP10\n",
+   "source_sha256": "7201972ba2668da4c3a44c3fec594b4b482c4e3209b0e82e310addb0f636171c",
+   "trusted": false
+  },
+  {
+   "name": "RPP11",
+   "source": "import GTDefs\nimport G4Defs\nimport RPDefs\nimport RPConj\nimport RPP1\nimport RPP2\nimport RPP3\nimport RPP4\nimport RPP5\nimport RPP6\nimport RPP7\nimport RPP8\nimport RPP9\nimport RPP10\nnamespace RPP11\ntheorem proof : RPConj.inside_3_sound_tf_negation := by\n  unfold RPConj.inside_3_sound_tf_negation RPConj.inside_3_sound_tf\n  intro h\n  exact absurd (h ((fun v => ([0, 0, 2, 1] : List (Fin 3)).getD v 0)) (({(1, 1)} : GT.Edges))) (by decide +kernel)\nend RPP11\n",
+   "source_sha256": "0fe20206eab62627e7eaa389333e599c57111d117eaf3480fa57a9ca2dc03f45",
+   "trusted": false
+  },
+  {
+   "name": "RPP12",
+   "source": "import GTDefs\nimport G4Defs\nimport RPDefs\nimport RPConj\nimport RPP1\nimport RPP2\nimport RPP3\nimport RPP4\nimport RPP5\nimport RPP6\nimport RPP7\nimport RPP8\nimport RPP9\nimport RPP10\nimport RPP11\nnamespace RPP12\ntheorem proof : RPConj.inside_3_sound_c4_negation := by\n  unfold RPConj.inside_3_sound_c4_negation RPConj.inside_3_sound_c4\n  intro h\n  exact absurd (h ((fun v => ([0, 0, 0, 0] : List (Fin 3)).getD v 0)) (({(2, 0), (2, 3), (3, 0), (3, 3)} : GT.Edges))) (by decide +kernel)\nend RPP12\n",
+   "source_sha256": "01844b86e19009bcceaecbf941324854dc8a11dc4cca03d8916d579b86eae6f3",
+   "trusted": false
+  },
+  {
+   "name": "RPP13",
+   "source": "import GTDefs\nimport G4Defs\nimport RPDefs\nimport RPConj\nimport RPP1\nimport RPP2\nimport RPP3\nimport RPP4\nimport RPP5\nimport RPP6\nimport RPP7\nimport RPP8\nimport RPP9\nimport RPP10\nimport RPP11\nimport RPP12\nnamespace RPP13\ntheorem proof : RPConj.ordered_2_image := by\n  unfold RPConj.ordered_2_image\n  intro c H\n  simp_all [RP.ordered_2]\nend RPP13\n",
+   "source_sha256": "7fa13bc248ffb223c669bd59101c9c874de7bf663cc3ebf5962258fbca9b879b",
+   "trusted": false
+  },
+  {
+   "name": "RPP14",
+   "source": "import GTDefs\nimport G4Defs\nimport RPDefs\nimport RPConj\nimport RPP1\nimport RPP2\nimport RPP3\nimport RPP4\nimport RPP5\nimport RPP6\nimport RPP7\nimport RPP8\nimport RPP9\nimport RPP10\nimport RPP11\nimport RPP12\nimport RPP13\nnamespace RPP14\ntheorem proof : RPConj.ordered_2_sound_tf := by\n  unfold RPConj.ordered_2_sound_tf\n  intro c H\n  unfold GT.TriangleFree RP.ordered_2\n  rintro ⟨a, b⟩ he ⟨b', d⟩ hf ⟨a', d'⟩ hg ⟨h1, h2, h3⟩\n  simp only [Finset.mem_filter] at he hf hg\n  simp only at h1 h2 h3\n  subst h1 h2 h3\n  omega\nend RPP14\n",
+   "source_sha256": "380fa58cf527b51ab7c076427ea00d7c3e6a1c83e9995916494dd22ba040bc3d",
+   "trusted": false
+  },
+  {
+   "name": "RPP15",
+   "source": "import GTDefs\nimport G4Defs\nimport RPDefs\nimport RPConj\nimport RPP1\nimport RPP2\nimport RPP3\nimport RPP4\nimport RPP5\nimport RPP6\nimport RPP7\nimport RPP8\nimport RPP9\nimport RPP10\nimport RPP11\nimport RPP12\nimport RPP13\nimport RPP14\nnamespace RPP15\ntheorem proof : RPConj.ordered_2_sound_c4_negation := by\n  unfold RPConj.ordered_2_sound_c4_negation RPConj.ordered_2_sound_c4\n  intro h\n  exact absurd (h ((fun v => ([0, 0, 1, 1] : List (Fin 2)).getD v 0)) (({(0, 2), (0, 3), (1, 2), (1, 3), (2, 0)} : GT.Edges))) (by decide +kernel)\nend RPP15\n",
+   "source_sha256": "599324128de459056d7050cec28a4d795946aa2931c95b069c61cdf19e465b90",
+   "trusted": false
+  },
+  {
+   "name": "RPP16",
+   "source": "import GTDefs\nimport G4Defs\nimport RPDefs\nimport RPConj\nimport RPP1\nimport RPP2\nimport RPP3\nimport RPP4\nimport RPP5\nimport RPP6\nimport RPP7\nimport RPP8\nimport RPP9\nimport RPP10\nimport RPP11\nimport RPP12\nimport RPP13\nimport RPP14\nimport RPP15\nnamespace RPP16\ntheorem proof : RPConj.ordered_3_image := by\n  unfold RPConj.ordered_3_image\n  intro c H\n  simp_all [RP.ordered_3]\nend RPP16\n",
+   "source_sha256": "551aadfc34bbaee1143baf00ed7013b5a5bf3c46b4e11d141d86f37e713bad03",
+   "trusted": false
+  },
+  {
+   "name": "RPP17",
+   "source": "import GTDefs\nimport G4Defs\nimport RPDefs\nimport RPConj\nimport RPP1\nimport RPP2\nimport RPP3\nimport RPP4\nimport RPP5\nimport RPP6\nimport RPP7\nimport RPP8\nimport RPP9\nimport RPP10\nimport RPP11\nimport RPP12\nimport RPP13\nimport RPP14\nimport RPP15\nimport RPP16\nnamespace RPP17\ntheorem proof : RPConj.ordered_3_sound_tf_negation := by\n  unfold RPConj.ordered_3_sound_tf_negation RPConj.ordered_3_sound_tf\n  intro h\n  exact absurd (h ((fun v => ([2, 1, 0, 0] : List (Fin 3)).getD v 0)) (({(1, 0), (2, 0), (2, 1), (2, 3)} : GT.Edges))) (by decide +kernel)\nend RPP17\n",
+   "source_sha256": "80edd42b8dc13cf023dbbe92cca2f4275ab85029e40489e3f629b47804d84b05",
+   "trusted": false
+  },
+  {
+   "name": "RPP18",
+   "source": "import GTDefs\nimport G4Defs\nimport RPDefs\nimport RPConj\nimport RPP1\nimport RPP2\nimport RPP3\nimport RPP4\nimport RPP5\nimport RPP6\nimport RPP7\nimport RPP8\nimport RPP9\nimport RPP10\nimport RPP11\nimport RPP12\nimport RPP13\nimport RPP14\nimport RPP15\nimport RPP16\nimport RPP17\nnamespace RPP18\ntheorem proof : RPConj.ordered_3_sound_c4_negation := by\n  unfold RPConj.ordered_3_sound_c4_negation RPConj.ordered_3_sound_c4\n  intro h\n  exact absurd (h ((fun v => ([0, 2, 0, 1] : List (Fin 3)).getD v 0)) (({(0, 1), (0, 3), (1, 2), (2, 1), (2, 3), (3, 3)} : GT.Edges))) (by decide +kernel)\nend RPP18\n",
+   "source_sha256": "cc47fe707d6e6a6bd39303b7da2da211420a96c8280a9fe146951c4da04a0041",
+   "trusted": false
+  },
+  {
+   "name": "RPP19",
+   "source": "import GTDefs\nimport G4Defs\nimport RPDefs\nimport RPConj\nimport RPP1\nimport RPP2\nimport RPP3\nimport RPP4\nimport RPP5\nimport RPP6\nimport RPP7\nimport RPP8\nimport RPP9\nimport RPP10\nimport RPP11\nimport RPP12\nimport RPP13\nimport RPP14\nimport RPP15\nimport RPP16\nimport RPP17\nimport RPP18\nnamespace RPP19\ntheorem proof : RPConj.adjacent_2_image := by\n  unfold RPConj.adjacent_2_image\n  intro c H\n  simp_all [RP.adjacent_2]\nend RPP19\n",
+   "source_sha256": "cd63d687e86d5feb4dba3787066d653673c41e7c1523f8c7ba269f3b2cc9d2ac",
+   "trusted": false
+  },
+  {
+   "name": "RPP20",
+   "source": "import GTDefs\nimport G4Defs\nimport RPDefs\nimport RPConj\nimport RPP1\nimport RPP2\nimport RPP3\nimport RPP4\nimport RPP5\nimport RPP6\nimport RPP7\nimport RPP8\nimport RPP9\nimport RPP10\nimport RPP11\nimport RPP12\nimport RPP13\nimport RPP14\nimport RPP15\nimport RPP16\nimport RPP17\nimport RPP18\nimport RPP19\nnamespace RPP20\ntheorem proof : RPConj.adjacent_2_sound_tf := by\n  unfold RPConj.adjacent_2_sound_tf\n  intro c H\n  unfold GT.TriangleFree RP.adjacent_2\n  rintro ⟨a, b⟩ he ⟨b', d⟩ hf ⟨a', d'⟩ hg ⟨h1, h2, h3⟩\n  simp only [Finset.mem_filter] at he hf hg\n  simp only at h1 h2 h3\n  subst h1 h2 h3\n  omega\nend RPP20\n",
+   "source_sha256": "083ff29fd7d1705f4ecc4433c4669914394276b4f7437c48ff6b46491bb9decb",
+   "trusted": false
+  },
+  {
+   "name": "RPP21",
+   "source": "import GTDefs\nimport G4Defs\nimport RPDefs\nimport RPConj\nimport RPP1\nimport RPP2\nimport RPP3\nimport RPP4\nimport RPP5\nimport RPP6\nimport RPP7\nimport RPP8\nimport RPP9\nimport RPP10\nimport RPP11\nimport RPP12\nimport RPP13\nimport RPP14\nimport RPP15\nimport RPP16\nimport RPP17\nimport RPP18\nimport RPP19\nimport RPP20\nnamespace RPP21\ntheorem proof : RPConj.adjacent_2_sound_c4_negation := by\n  unfold RPConj.adjacent_2_sound_c4_negation RPConj.adjacent_2_sound_c4\n  intro h\n  exact absurd (h ((fun v => ([1, 0, 0, 1] : List (Fin 2)).getD v 0)) (({(0, 2), (1, 0), (1, 3), (3, 2)} : GT.Edges))) (by decide +kernel)\nend RPP21\n",
+   "source_sha256": "408e3f7b837d7d1fa8b1791f56bb711b58f9e7013abe1e42c70105f7ff62c206",
+   "trusted": false
+  },
+  {
+   "name": "RPP22",
+   "source": "import GTDefs\nimport G4Defs\nimport RPDefs\nimport RPConj\nimport RPP1\nimport RPP2\nimport RPP3\nimport RPP4\nimport RPP5\nimport RPP6\nimport RPP7\nimport RPP8\nimport RPP9\nimport RPP10\nimport RPP11\nimport RPP12\nimport RPP13\nimport RPP14\nimport RPP15\nimport RPP16\nimport RPP17\nimport RPP18\nimport RPP19\nimport RPP20\nimport RPP21\nnamespace RPP22\ntheorem proof : RPConj.adjacent_3_image := by\n  unfold RPConj.adjacent_3_image\n  intro c H\n  simp_all [RP.adjacent_3]\nend RPP22\n",
+   "source_sha256": "ba783d0d95dbb46b074ba75d7a342351194e02373f99b538434af7624ec2b856",
+   "trusted": false
+  },
+  {
+   "name": "RPP23",
+   "source": "import GTDefs\nimport G4Defs\nimport RPDefs\nimport RPConj\nimport RPP1\nimport RPP2\nimport RPP3\nimport RPP4\nimport RPP5\nimport RPP6\nimport RPP7\nimport RPP8\nimport RPP9\nimport RPP10\nimport RPP11\nimport RPP12\nimport RPP13\nimport RPP14\nimport RPP15\nimport RPP16\nimport RPP17\nimport RPP18\nimport RPP19\nimport RPP20\nimport RPP21\nimport RPP22\nnamespace RPP23\ntheorem proof : RPConj.adjacent_3_sound_tf := by\n  unfold RPConj.adjacent_3_sound_tf\n  intro c H\n  unfold GT.TriangleFree RP.adjacent_3\n  rintro ⟨a, b⟩ he ⟨b', d⟩ hf ⟨a', d'⟩ hg ⟨h1, h2, h3⟩\n  simp only [Finset.mem_filter] at he hf hg\n  simp only at h1 h2 h3\n  subst h1 h2 h3\n  omega\nend RPP23\n",
+   "source_sha256": "00f2505f8323197a56467c47e4972ce268e5bb27481458eeddd3dcc53c347e1c",
+   "trusted": false
+  },
+  {
+   "name": "RPP24",
+   "source": "import GTDefs\nimport G4Defs\nimport RPDefs\nimport RPConj\nimport RPP1\nimport RPP2\nimport RPP3\nimport RPP4\nimport RPP5\nimport RPP6\nimport RPP7\nimport RPP8\nimport RPP9\nimport RPP10\nimport RPP11\nimport RPP12\nimport RPP13\nimport RPP14\nimport RPP15\nimport RPP16\nimport RPP17\nimport RPP18\nimport RPP19\nimport RPP20\nimport RPP21\nimport RPP22\nimport RPP23\nnamespace RPP24\ntheorem proof : RPConj.adjacent_3_sound_c4_negation := by\n  unfold RPConj.adjacent_3_sound_c4_negation RPConj.adjacent_3_sound_c4\n  intro h\n  exact absurd (h ((fun v => ([1, 2, 0, 1] : List (Fin 3)).getD v 0)) (({(1, 0), (2, 0), (2, 3), (3, 1)} : GT.Edges))) (by decide +kernel)\nend RPP24\n",
+   "source_sha256": "79ca98784a4aa11bfa2ec332899fbd398046e0b26392e269f60ee2db32c65345",
+   "trusted": false
+  },
+  {
+   "name": "RPP25",
+   "source": "import GTDefs\nimport G4Defs\nimport RPDefs\nimport RPConj\nimport RPP1\nimport RPP2\nimport RPP3\nimport RPP4\nimport RPP5\nimport RPP6\nimport RPP7\nimport RPP8\nimport RPP9\nimport RPP10\nimport RPP11\nimport RPP12\nimport RPP13\nimport RPP14\nimport RPP15\nimport RPP16\nimport RPP17\nimport RPP18\nimport RPP19\nimport RPP20\nimport RPP21\nimport RPP22\nimport RPP23\nimport RPP24\nnamespace RPP25\ntheorem proof : RPConj.cross_2_within_ordered_2_negation := by\n  unfold RPConj.cross_2_within_ordered_2_negation RPConj.cross_2_within_ordered_2\n  intro h\n  exact absurd (h ((fun v => ([1, 0, 0, 0] : List (Fin 2)).getD v 0)) (({(0, 3)} : GT.Edges))) (by decide +kernel)\nend RPP25\n",
+   "source_sha256": "0b150e17de77560c78d9e972dddfc38b1fae4bc0d55a07e4374b0f92ffefa642",
+   "trusted": false
+  },
+  {
+   "name": "RPP26",
+   "source": "import GTDefs\nimport G4Defs\nimport RPDefs\nimport RPConj\nimport RPP1\nimport RPP2\nimport RPP3\nimport RPP4\nimport RPP5\nimport RPP6\nimport RPP7\nimport RPP8\nimport RPP9\nimport RPP10\nimport RPP11\nimport RPP12\nimport RPP13\nimport RPP14\nimport RPP15\nimport RPP16\nimport RPP17\nimport RPP18\nimport RPP19\nimport RPP20\nimport RPP21\nimport RPP22\nimport RPP23\nimport RPP24\nimport RPP25\nnamespace RPP26\ntheorem proof : RPConj.cross_2_within_adjacent_2 := by\n  unfold RPConj.cross_2_within_adjacent_2\n  intro c H\n  unfold RP.cross_2 RP.adjacent_2\n  intro x hx\n  simp only [Finset.mem_filter] at hx ⊢\n  exact ⟨hx.1, by have := hx.2; omega⟩\nend RPP26\n",
+   "source_sha256": "d29ccada07efb6eef0a6b11ee4a35d273c0abb923e8c8d1d08ecd44a16f700cf",
+   "trusted": false
+  },
+  {
+   "name": "RPP27",
+   "source": "import GTDefs\nimport G4Defs\nimport RPDefs\nimport RPConj\nimport RPP1\nimport RPP2\nimport RPP3\nimport RPP4\nimport RPP5\nimport RPP6\nimport RPP7\nimport RPP8\nimport RPP9\nimport RPP10\nimport RPP11\nimport RPP12\nimport RPP13\nimport RPP14\nimport RPP15\nimport RPP16\nimport RPP17\nimport RPP18\nimport RPP19\nimport RPP20\nimport RPP21\nimport RPP22\nimport RPP23\nimport RPP24\nimport RPP25\nimport RPP26\nnamespace RPP27\ntheorem proof : RPConj.ordered_2_within_cross_2 := by\n  unfold RPConj.ordered_2_within_cross_2\n  intro c H\n  unfold RP.ordered_2 RP.cross_2\n  intro x hx\n  simp only [Finset.mem_filter] at hx ⊢\n  exact ⟨hx.1, by have := hx.2; omega⟩\nend RPP27\n",
+   "source_sha256": "92335c46340519c27fdb1c075beb0ac6a009b1fe4350af9c4293caf324ad739f",
+   "trusted": false
+  },
+  {
+   "name": "RPP28",
+   "source": "import GTDefs\nimport G4Defs\nimport RPDefs\nimport RPConj\nimport RPP1\nimport RPP2\nimport RPP3\nimport RPP4\nimport RPP5\nimport RPP6\nimport RPP7\nimport RPP8\nimport RPP9\nimport RPP10\nimport RPP11\nimport RPP12\nimport RPP13\nimport RPP14\nimport RPP15\nimport RPP16\nimport RPP17\nimport RPP18\nimport RPP19\nimport RPP20\nimport RPP21\nimport RPP22\nimport RPP23\nimport RPP24\nimport RPP25\nimport RPP26\nimport RPP27\nnamespace RPP28\ntheorem proof : RPConj.ordered_2_within_adjacent_2 := by\n  unfold RPConj.ordered_2_within_adjacent_2\n  intro c H\n  unfold RP.ordered_2 RP.adjacent_2\n  intro x hx\n  simp only [Finset.mem_filter] at hx ⊢\n  exact ⟨hx.1, by have := hx.2; omega⟩\nend RPP28\n",
+   "source_sha256": "017c25ea7bbbd3681f0ae5b025b8ebfbcdd9a9070354eedd57b51e043d980759",
+   "trusted": false
+  },
+  {
+   "name": "RPP29",
+   "source": "import GTDefs\nimport G4Defs\nimport RPDefs\nimport RPConj\nimport RPP1\nimport RPP2\nimport RPP3\nimport RPP4\nimport RPP5\nimport RPP6\nimport RPP7\nimport RPP8\nimport RPP9\nimport RPP10\nimport RPP11\nimport RPP12\nimport RPP13\nimport RPP14\nimport RPP15\nimport RPP16\nimport RPP17\nimport RPP18\nimport RPP19\nimport RPP20\nimport RPP21\nimport RPP22\nimport RPP23\nimport RPP24\nimport RPP25\nimport RPP26\nimport RPP27\nimport RPP28\nnamespace RPP29\ntheorem proof : RPConj.adjacent_2_within_cross_2 := by\n  unfold RPConj.adjacent_2_within_cross_2\n  intro c H\n  unfold RP.adjacent_2 RP.cross_2\n  intro x hx\n  simp only [Finset.mem_filter] at hx ⊢\n  exact ⟨hx.1, by have := hx.2; omega⟩\nend RPP29\n",
+   "source_sha256": "d6de20ddde6582ec8fe6194f4cbbad1470b705800daa2160949f696fde1a5496",
+   "trusted": false
+  },
+  {
+   "name": "RPP30",
+   "source": "import GTDefs\nimport G4Defs\nimport RPDefs\nimport RPConj\nimport RPP1\nimport RPP2\nimport RPP3\nimport RPP4\nimport RPP5\nimport RPP6\nimport RPP7\nimport RPP8\nimport RPP9\nimport RPP10\nimport RPP11\nimport RPP12\nimport RPP13\nimport RPP14\nimport RPP15\nimport RPP16\nimport RPP17\nimport RPP18\nimport RPP19\nimport RPP20\nimport RPP21\nimport RPP22\nimport RPP23\nimport RPP24\nimport RPP25\nimport RPP26\nimport RPP27\nimport RPP28\nimport RPP29\nnamespace RPP30\ntheorem proof : RPConj.adjacent_2_within_ordered_2_negation := by\n  unfold RPConj.adjacent_2_within_ordered_2_negation RPConj.adjacent_2_within_ordered_2\n  intro h\n  exact absurd (h ((fun v => ([0, 0, 1, 0] : List (Fin 2)).getD v 0)) (({(2, 1)} : GT.Edges))) (by decide +kernel)\nend RPP30\n",
+   "source_sha256": "929a393c00aff5f141dd984526a94f41b4f6b72ca2ab9beba067977f7556dc35",
+   "trusted": false
+  },
+  {
+   "name": "RPP31",
+   "source": "import GTDefs\nimport G4Defs\nimport RPDefs\nimport RPConj\nimport RPP1\nimport RPP2\nimport RPP3\nimport RPP4\nimport RPP5\nimport RPP6\nimport RPP7\nimport RPP8\nimport RPP9\nimport RPP10\nimport RPP11\nimport RPP12\nimport RPP13\nimport RPP14\nimport RPP15\nimport RPP16\nimport RPP17\nimport RPP18\nimport RPP19\nimport RPP20\nimport RPP21\nimport RPP22\nimport RPP23\nimport RPP24\nimport RPP25\nimport RPP26\nimport RPP27\nimport RPP28\nimport RPP29\nimport RPP30\nnamespace RPP31\ntheorem proof : RPConj.cross_2_loses_tf := by\n  unfold RPConj.cross_2_loses_tf\n  exact ⟨{(0, 1), (0, 2), (1, 3), (2, 4), (3, 4)}, by decide, by decide⟩\nend RPP31\n",
+   "source_sha256": "3ddb353803d8c8ce3388e62b2373163032730d32eff466a8c2fb7bb77de141b4",
+   "trusted": false
+  },
+  {
+   "name": "RPP32",
+   "source": "import GTDefs\nimport G4Defs\nimport RPDefs\nimport RPConj\nimport RPP1\nimport RPP2\nimport RPP3\nimport RPP4\nimport RPP5\nimport RPP6\nimport RPP7\nimport RPP8\nimport RPP9\nimport RPP10\nimport RPP11\nimport RPP12\nimport RPP13\nimport RPP14\nimport RPP15\nimport RPP16\nimport RPP17\nimport RPP18\nimport RPP19\nimport RPP20\nimport RPP21\nimport RPP22\nimport RPP23\nimport RPP24\nimport RPP25\nimport RPP26\nimport RPP27\nimport RPP28\nimport RPP29\nimport RPP30\nimport RPP31\nnamespace RPP32\ntheorem proof : RPConj.ordered_2_loses_tf := by\n  unfold RPConj.ordered_2_loses_tf\n  exact ⟨{(0, 1), (1, 2)}, by decide, by decide⟩\nend RPP32\n",
+   "source_sha256": "5d89293ec788ab7b456589ff311db950d072fd018af06d217fa5efd313974dd7",
+   "trusted": false
+  },
+  {
+   "name": "RPP33",
+   "source": "import GTDefs\nimport G4Defs\nimport RPDefs\nimport RPConj\nimport RPP1\nimport RPP2\nimport RPP3\nimport RPP4\nimport RPP5\nimport RPP6\nimport RPP7\nimport RPP8\nimport RPP9\nimport RPP10\nimport RPP11\nimport RPP12\nimport RPP13\nimport RPP14\nimport RPP15\nimport RPP16\nimport RPP17\nimport RPP18\nimport RPP19\nimport RPP20\nimport RPP21\nimport RPP22\nimport RPP23\nimport RPP24\nimport RPP25\nimport RPP26\nimport RPP27\nimport RPP28\nimport RPP29\nimport RPP30\nimport RPP31\nimport RPP32\nnamespace RPP33\ntheorem proof : RPConj.adjacent_2_loses_tf := by\n  unfold RPConj.adjacent_2_loses_tf\n  exact ⟨{(0, 1), (0, 2), (1, 3), (2, 4), (3, 4)}, by decide, by decide⟩\nend RPP33\n",
+   "source_sha256": "124e58fc8a22de768b2aecff2f46b2e9a5c248f718859f191c737abf90d07ca7",
+   "trusted": false
+  }
+ ],
+ "name": "representation grammar (W10)",
+ "package_sha256": "1b53b1b9926cbf27d3aff43a2b2000176a2c7a5210fc2059972d978e45b19c0e",
+ "proofs": [
+  {
+   "module": "RPP1",
+   "recipe": "filter-subset",
+   "statement": "cross_2_image"
+  },
+  {
+   "module": "RPP2",
+   "recipe": "destructure-subst-omega",
+   "statement": "cross_2_sound_tf"
+  },
+  {
+   "module": "RPP3",
+   "recipe": "counterexample-evaluation",
+   "statement": "cross_2_sound_c4"
+  },
+  {
+   "module": "RPP4",
+   "recipe": "filter-subset",
+   "statement": "cross_3_image"
+  },
+  {
+   "module": "RPP5",
+   "recipe": "counterexample-evaluation",
+   "statement": "cross_3_sound_tf"
+  },
+  {
+   "module": "RPP6",
+   "recipe": "counterexample-evaluation",
+   "statement": "cross_3_sound_c4"
+  },
+  {
+   "module": "RPP7",
+   "recipe": "filter-subset",
+   "statement": "inside_2_image"
+  },
+  {
+   "module": "RPP8",
+   "recipe": "counterexample-evaluation",
+   "statement": "inside_2_sound_tf"
+  },
+  {
+   "module": "RPP9",
+   "recipe": "counterexample-evaluation",
+   "statement": "inside_2_sound_c4"
+  },
+  {
+   "module": "RPP10",
+   "recipe": "filter-subset",
+   "statement": "inside_3_image"
+  },
+  {
+   "module": "RPP11",
+   "recipe": "counterexample-evaluation",
+   "statement": "inside_3_sound_tf"
+  },
+  {
+   "module": "RPP12",
+   "recipe": "counterexample-evaluation",
+   "statement": "inside_3_sound_c4"
+  },
+  {
+   "module": "RPP13",
+   "recipe": "filter-subset",
+   "statement": "ordered_2_image"
+  },
+  {
+   "module": "RPP14",
+   "recipe": "destructure-subst-omega",
+   "statement": "ordered_2_sound_tf"
+  },
+  {
+   "module": "RPP15",
+   "recipe": "counterexample-evaluation",
+   "statement": "ordered_2_sound_c4"
+  },
+  {
+   "module": "RPP16",
+   "recipe": "filter-subset",
+   "statement": "ordered_3_image"
+  },
+  {
+   "module": "RPP17",
+   "recipe": "counterexample-evaluation",
+   "statement": "ordered_3_sound_tf"
+  },
+  {
+   "module": "RPP18",
+   "recipe": "counterexample-evaluation",
+   "statement": "ordered_3_sound_c4"
+  },
+  {
+   "module": "RPP19",
+   "recipe": "filter-subset",
+   "statement": "adjacent_2_image"
+  },
+  {
+   "module": "RPP20",
+   "recipe": "destructure-subst-omega",
+   "statement": "adjacent_2_sound_tf"
+  },
+  {
+   "module": "RPP21",
+   "recipe": "counterexample-evaluation",
+   "statement": "adjacent_2_sound_c4"
+  },
+  {
+   "module": "RPP22",
+   "recipe": "filter-subset",
+   "statement": "adjacent_3_image"
+  },
+  {
+   "module": "RPP23",
+   "recipe": "destructure-subst-omega",
+   "statement": "adjacent_3_sound_tf"
+  },
+  {
+   "module": "RPP24",
+   "recipe": "counterexample-evaluation",
+   "statement": "adjacent_3_sound_c4"
+  },
+  {
+   "module": "RPP25",
+   "recipe": "counterexample-evaluation",
+   "statement": "cross_2_within_ordered_2"
+  },
+  {
+   "module": "RPP26",
+   "recipe": "filter-pointwise",
+   "statement": "cross_2_within_adjacent_2"
+  },
+  {
+   "module": "RPP27",
+   "recipe": "filter-pointwise",
+   "statement": "ordered_2_within_cross_2"
+  },
+  {
+   "module": "RPP28",
+   "recipe": "filter-pointwise",
+   "statement": "ordered_2_within_adjacent_2"
+  },
+  {
+   "module": "RPP29",
+   "recipe": "filter-pointwise",
+   "statement": "adjacent_2_within_cross_2"
+  },
+  {
+   "module": "RPP30",
+   "recipe": "counterexample-evaluation",
+   "statement": "adjacent_2_within_ordered_2"
+  },
+  {
+   "module": "RPP31",
+   "recipe": "witness-evaluation",
+   "statement": "cross_2_loses_tf"
+  },
+  {
+   "module": "RPP32",
+   "recipe": "witness-evaluation",
+   "statement": "ordered_2_loses_tf"
+  },
+  {
+   "module": "RPP33",
+   "recipe": "witness-evaluation",
+   "statement": "adjacent_2_loses_tf"
+  }
+ ],
+ "provenance": {
+  "acceptance": "genesis.formal_research.checker.accept",
+  "created_at": "2026-10-11T12:08:32.419667+00:00",
+  "loop": "genesis.formal_research.loop",
+  "search": "genesis.formal_research.search (builder-written recipes, named per proof)"
+ },
+ "representations": [
+  {
+   "cost": {
+    "bound": "k ≤ 3",
+    "decode": "O(|H|)",
+    "encoder_space": "2^n"
+   },
+   "decoder": "cross",
+   "decoder_lean": "fun e => c e.1 ≠ c e.2",
+   "encoder": {
+    "space": "2^n encodings of an n-vertex host",
+    "type": "ℕ → Fin 2"
+   },
+   "failure_conditions": [
+    "exhaustive search over encodings is infeasible beyond small n; local search gives no optimality guarantee",
+    "a decoder that is unsound for a domain must not be used there"
+   ],
+   "id": "cross_2",
+   "k": 2,
+   "kind": "conservative-definition",
+   "lean_name": "RP.cross_2",
+   "lost": "every edge inside a class",
+   "obligations": {
+    "cross_2_image": "CHECKED",
+    "cross_2_loses_tf": "CHECKED",
+    "cross_2_sound_c4": "DISPROVED",
+    "cross_2_sound_tf": "CHECKED",
+    "cross_2_within_adjacent_2": "CHECKED",
+    "cross_2_within_ordered_2": "DISPROVED"
+   },
+   "retained": "edges whose endpoints lie in different classes",
+   "semantics": "RP.cross_2 c H = H.filter (fun e => c e.1 ≠ c e.2)",
+   "sound": {
+    "c4": "DISPROVED",
+    "tf": "CHECKED"
+   }
+  },
+  {
+   "cost": {
+    "bound": "k ≤ 3",
+    "decode": "O(|H|)",
+    "encoder_space": "3^n"
+   },
+   "decoder": "cross",
+   "decoder_lean": "fun e => c e.1 ≠ c e.2",
+   "encoder": {
+    "space": "3^n encodings of an n-vertex host",
+    "type": "ℕ → Fin 3"
+   },
+   "failure_conditions": [
+    "exhaustive search over encodings is infeasible beyond small n; local search gives no optimality guarantee",
+    "a decoder that is unsound for a domain must not be used there"
+   ],
+   "id": "cross_3",
+   "k": 3,
+   "kind": "conservative-definition",
+   "lean_name": "RP.cross_3",
+   "lost": "every edge inside a class",
+   "obligations": {
+    "cross_3_image": "CHECKED",
+    "cross_3_sound_c4": "DISPROVED",
+    "cross_3_sound_tf": "DISPROVED"
+   },
+   "retained": "edges whose endpoints lie in different classes",
+   "semantics": "RP.cross_3 c H = H.filter (fun e => c e.1 ≠ c e.2)",
+   "sound": {
+    "c4": "DISPROVED",
+    "tf": "DISPROVED"
+   }
+  },
+  {
+   "cost": {
+    "bound": "k ≤ 3",
+    "decode": "O(|H|)",
+    "encoder_space": "2^n"
+   },
+   "decoder": "inside",
+   "decoder_lean": "fun e => c e.1 = c e.2",
+   "encoder": {
+    "space": "2^n encodings of an n-vertex host",
+    "type": "ℕ → Fin 2"
+   },
+   "failure_conditions": [
+    "exhaustive search over encodings is infeasible beyond small n; local search gives no optimality guarantee",
+    "a decoder that is unsound for a domain must not be used there"
+   ],
+   "id": "inside_2",
+   "k": 2,
+   "kind": "conservative-definition",
+   "lean_name": "RP.inside_2",
+   "lost": "every edge between classes",
+   "obligations": {
+    "inside_2_image": "CHECKED",
+    "inside_2_sound_c4": "DISPROVED",
+    "inside_2_sound_tf": "DISPROVED"
+   },
+   "retained": "edges inside a class",
+   "semantics": "RP.inside_2 c H = H.filter (fun e => c e.1 = c e.2)",
+   "sound": {
+    "c4": "DISPROVED",
+    "tf": "DISPROVED"
+   }
+  },
+  {
+   "cost": {
+    "bound": "k ≤ 3",
+    "decode": "O(|H|)",
+    "encoder_space": "3^n"
+   },
+   "decoder": "inside",
+   "decoder_lean": "fun e => c e.1 = c e.2",
+   "encoder": {
+    "space": "3^n encodings of an n-vertex host",
+    "type": "ℕ → Fin 3"
+   },
+   "failure_conditions": [
+    "exhaustive search over encodings is infeasible beyond small n; local search gives no optimality guarantee",
+    "a decoder that is unsound for a domain must not be used there"
+   ],
+   "id": "inside_3",
+   "k": 3,
+   "kind": "conservative-definition",
+   "lean_name": "RP.inside_3",
+   "lost": "every edge between classes",
+   "obligations": {
+    "inside_3_image": "CHECKED",
+    "inside_3_sound_c4": "DISPROVED",
+    "inside_3_sound_tf": "DISPROVED"
+   },
+   "retained": "edges inside a class",
+   "semantics": "RP.inside_3 c H = H.filter (fun e => c e.1 = c e.2)",
+   "sound": {
+    "c4": "DISPROVED",
+    "tf": "DISPROVED"
+   }
+  },
+  {
+   "cost": {
+    "bound": "k ≤ 3",
+    "decode": "O(|H|)",
+    "encoder_space": "2^n"
+   },
+   "decoder": "ordered",
+   "decoder_lean": "fun e => c e.1 < c e.2",
+   "encoder": {
+    "space": "2^n encodings of an n-vertex host",
+    "type": "ℕ → Fin 2"
+   },
+   "failure_conditions": [
+    "exhaustive search over encodings is infeasible beyond small n; local search gives no optimality guarantee",
+    "a decoder that is unsound for a domain must not be used there"
+   ],
+   "id": "ordered_2",
+   "k": 2,
+   "kind": "conservative-definition",
+   "lean_name": "RP.ordered_2",
+   "lost": "edges inside a class and edges pointing down the class order",
+   "obligations": {
+    "ordered_2_image": "CHECKED",
+    "ordered_2_loses_tf": "CHECKED",
+    "ordered_2_sound_c4": "DISPROVED",
+    "ordered_2_sound_tf": "CHECKED",
+    "ordered_2_within_adjacent_2": "CHECKED",
+    "ordered_2_within_cross_2": "CHECKED"
+   },
+   "retained": "edges from a lower class to a higher class (by the host orientation u < v)",
+   "semantics": "RP.ordered_2 c H = H.filter (fun e => c e.1 < c e.2)",
+   "sound": {
+    "c4": "DISPROVED",
+    "tf": "CHECKED"
+   }
+  },
+  {
+   "cost": {
+    "bound": "k ≤ 3",
+    "decode": "O(|H|)",
+    "encoder_space": "3^n"
+   },
+   "decoder": "ordered",
+   "decoder_lean": "fun e => c e.1 < c e.2",
+   "encoder": {
+    "space": "3^n encodings of an n-vertex host",
+    "type": "ℕ → Fin 3"
+   },
+   "failure_conditions": [
+    "exhaustive search over encodings is infeasible beyond small n; local search gives no optimality guarantee",
+    "a decoder that is unsound for a domain must not be used there"
+   ],
+   "id": "ordered_3",
+   "k": 3,
+   "kind": "conservative-definition",
+   "lean_name": "RP.ordered_3",
+   "lost": "edges inside a class and edges pointing down the class order",
+   "obligations": {
+    "ordered_3_image": "CHECKED",
+    "ordered_3_sound_c4": "DISPROVED",
+    "ordered_3_sound_tf": "DISPROVED"
+   },
+   "retained": "edges from a lower class to a higher class (by the host orientation u < v)",
+   "semantics": "RP.ordered_3 c H = H.filter (fun e => c e.1 < c e.2)",
+   "sound": {
+    "c4": "DISPROVED",
+    "tf": "DISPROVED"
+   }
+  },
+  {
+   "cost": {
+    "bound": "k ≤ 3",
+    "decode": "O(|H|)",
+    "encoder_space": "2^n"
+   },
+   "decoder": "adjacent",
+   "decoder_lean": "fun e => (c e.1).val + 1 = (c e.2).val ∨ (c e.2).val + 1 = (c e.1).val",
+   "encoder": {
+    "space": "2^n encodings of an n-vertex host",
+    "type": "ℕ → Fin 2"
+   },
+   "failure_conditions": [
+    "exhaustive search over encodings is infeasible beyond small n; local search gives no optimality guarantee",
+    "a decoder that is unsound for a domain must not be used there"
+   ],
+   "id": "adjacent_2",
+   "k": 2,
+   "kind": "conservative-definition",
+   "lean_name": "RP.adjacent_2",
+   "lost": "edges inside a class and edges skipping a class",
+   "obligations": {
+    "adjacent_2_image": "CHECKED",
+    "adjacent_2_loses_tf": "CHECKED",
+    "adjacent_2_sound_c4": "DISPROVED",
+    "adjacent_2_sound_tf": "CHECKED",
+    "adjacent_2_within_cross_2": "CHECKED",
+    "adjacent_2_within_ordered_2": "DISPROVED"
+   },
+   "retained": "edges between consecutive classes",
+   "semantics": "RP.adjacent_2 c H = H.filter (fun e => (c e.1).val + 1 = (c e.2).val ∨ (c e.2).val + 1 = (c e.1).val)",
+   "sound": {
+    "c4": "DISPROVED",
+    "tf": "CHECKED"
+   }
+  },
+  {
+   "cost": {
+    "bound": "k ≤ 3",
+    "decode": "O(|H|)",
+    "encoder_space": "3^n"
+   },
+   "decoder": "adjacent",
+   "decoder_lean": "fun e => (c e.1).val + 1 = (c e.2).val ∨ (c e.2).val + 1 = (c e.1).val",
+   "encoder": {
+    "space": "3^n encodings of an n-vertex host",
+    "type": "ℕ → Fin 3"
+   },
+   "failure_conditions": [
+    "exhaustive search over encodings is infeasible beyond small n; local search gives no optimality guarantee",
+    "a decoder that is unsound for a domain must not be used there"
+   ],
+   "id": "adjacent_3",
+   "k": 3,
+   "kind": "conservative-definition",
+   "lean_name": "RP.adjacent_3",
+   "lost": "edges inside a class and edges skipping a class",
+   "obligations": {
+    "adjacent_3_image": "CHECKED",
+    "adjacent_3_sound_c4": "DISPROVED",
+    "adjacent_3_sound_tf": "CHECKED"
+   },
+   "retained": "edges between consecutive classes",
+   "semantics": "RP.adjacent_3 c H = H.filter (fun e => (c e.1).val + 1 = (c e.2).val ∨ (c e.2).val + 1 = (c e.1).val)",
+   "sound": {
+    "c4": "DISPROVED",
+    "tf": "CHECKED"
+   }
+  }
+ ],
+ "schema": "genesis-theory-package-v1",
+ "scope": "Typed vertex-class representations of host graphs, their decoders and checked obligations. Conservative definitions only. Rediscovery of known constructions.",
+ "statements": [
+  {
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "counterexample": null,
+   "id": "cross_2_image",
+   "lean": "∀ (c : ℕ → Fin 2) (H : GT.Edges), RP.cross_2 c H ⊆ H",
+   "origin": "generated:representation-grammar",
+   "proof_const": "RPP1.proof",
+   "proof_module": "RPP1",
+   "recipe": "filter-subset",
+   "role": "image",
+   "screened_instances": 3000,
+   "spec_const": "RPConj.cross_2_image",
+   "status": "CHECKED",
+   "subject": "cross_2"
+  },
+  {
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "counterexample": null,
+   "id": "cross_2_sound_tf",
+   "lean": "∀ (c : ℕ → Fin 2) (H : GT.Edges), GT.TriangleFree (RP.cross_2 c H)",
+   "origin": "generated:representation-grammar",
+   "proof_const": "RPP2.proof",
+   "proof_module": "RPP2",
+   "recipe": "destructure-subst-omega",
+   "role": "soundness",
+   "screened_instances": 3000,
+   "spec_const": "RPConj.cross_2_sound_tf",
+   "status": "CHECKED",
+   "subject": "cross_2@triangle_free_host_v1"
+  },
+  {
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "counterexample": {
+    "values": {
+     "H": "({(1, 0), (1, 3), (2, 0), (3, 2)} : GT.Edges)",
+     "c": "(fun v => ([0, 1, 1, 0] : List (Fin 2)).getD v 0)"
+    }
+   },
+   "id": "cross_2_sound_c4",
+   "lean": "∀ (c : ℕ → Fin 2) (H : GT.Edges), G4.C4Free (RP.cross_2 c H)",
+   "origin": "generated:representation-grammar",
+   "proof_const": "RPP3.proof",
+   "proof_module": "RPP3",
+   "recipe": "counterexample-evaluation",
+   "role": "soundness",
+   "screened_instances": 3000,
+   "spec_const": "RPConj.cross_2_sound_c4",
+   "status": "DISPROVED",
+   "subject": "cross_2@c4_host_v2"
+  },
+  {
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "counterexample": null,
+   "id": "cross_3_image",
+   "lean": "∀ (c : ℕ → Fin 3) (H : GT.Edges), RP.cross_3 c H ⊆ H",
+   "origin": "generated:representation-grammar",
+   "proof_const": "RPP4.proof",
+   "proof_module": "RPP4",
+   "recipe": "filter-subset",
+   "role": "image",
+   "screened_instances": 3000,
+   "spec_const": "RPConj.cross_3_image",
+   "status": "CHECKED",
+   "subject": "cross_3"
+  },
+  {
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "counterexample": {
+    "values": {
+     "H": "({(1, 0), (2, 1), (2, 3), (3, 1)} : GT.Edges)",
+     "c": "(fun v => ([0, 0, 1, 2] : List (Fin 3)).getD v 0)"
+    }
+   },
+   "id": "cross_3_sound_tf",
+   "lean": "∀ (c : ℕ → Fin 3) (H : GT.Edges), GT.TriangleFree (RP.cross_3 c H)",
+   "origin": "generated:representation-grammar",
+   "proof_const": "RPP5.proof",
+   "proof_module": "RPP5",
+   "recipe": "counterexample-evaluation",
+   "role": "soundness",
+   "screened_instances": 3000,
+   "spec_const": "RPConj.cross_3_sound_tf",
+   "status": "DISPROVED",
+   "subject": "cross_3@triangle_free_host_v1"
+  },
+  {
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "counterexample": {
+    "values": {
+     "H": "({(0, 3), (1, 0), (2, 1), (3, 2)} : GT.Edges)",
+     "c": "(fun v => ([0, 1, 0, 1] : List (Fin 3)).getD v 0)"
+    }
+   },
+   "id": "cross_3_sound_c4",
+   "lean": "∀ (c : ℕ → Fin 3) (H : GT.Edges), G4.C4Free (RP.cross_3 c H)",
+   "origin": "generated:representation-grammar",
+   "proof_const": "RPP6.proof",
+   "proof_module": "RPP6",
+   "recipe": "counterexample-evaluation",
+   "role": "soundness",
+   "screened_instances": 3000,
+   "spec_const": "RPConj.cross_3_sound_c4",
+   "status": "DISPROVED",
+   "subject": "cross_3@c4_host_v2"
+  },
+  {
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "counterexample": null,
+   "id": "inside_2_image",
+   "lean": "∀ (c : ℕ → Fin 2) (H : GT.Edges), RP.inside_2 c H ⊆ H",
+   "origin": "generated:representation-grammar",
+   "proof_const": "RPP7.proof",
+   "proof_module": "RPP7",
+   "recipe": "filter-subset",
+   "role": "image",
+   "screened_instances": 3000,
+   "spec_const": "RPConj.inside_2_image",
+   "status": "CHECKED",
+   "subject": "inside_2"
+  },
+  {
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "counterexample": {
+    "values": {
+     "H": "({(2, 2)} : GT.Edges)",
+     "c": "(fun v => ([0, 0, 0, 1] : List (Fin 2)).getD v 0)"
+    }
+   },
+   "id": "inside_2_sound_tf",
+   "lean": "∀ (c : ℕ → Fin 2) (H : GT.Edges), GT.TriangleFree (RP.inside_2 c H)",
+   "origin": "generated:representation-grammar",
+   "proof_const": "RPP8.proof",
+   "proof_module": "RPP8",
+   "recipe": "counterexample-evaluation",
+   "role": "soundness",
+   "screened_instances": 3000,
+   "spec_const": "RPConj.inside_2_sound_tf",
+   "status": "DISPROVED",
+   "subject": "inside_2@triangle_free_host_v1"
+  },
+  {
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "counterexample": {
+    "values": {
+     "H": "({(1, 1), (2, 0), (2, 1), (2, 2)} : GT.Edges)",
+     "c": "(fun v => ([0, 0, 0, 0] : List (Fin 2)).getD v 0)"
+    }
+   },
+   "id": "inside_2_sound_c4",
+   "lean": "∀ (c : ℕ → Fin 2) (H : GT.Edges), G4.C4Free (RP.inside_2 c H)",
+   "origin": "generated:representation-grammar",
+   "proof_const": "RPP9.proof",
+   "proof_module": "RPP9",
+   "recipe": "counterexample-evaluation",
+   "role": "soundness",
+   "screened_instances": 3000,
+   "spec_const": "RPConj.inside_2_sound_c4",
+   "status": "DISPROVED",
+   "subject": "inside_2@c4_host_v2"
+  },
+  {
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "counterexample": null,
+   "id": "inside_3_image",
+   "lean": "∀ (c : ℕ → Fin 3) (H : GT.Edges), RP.inside_3 c H ⊆ H",
+   "origin": "generated:representation-grammar",
+   "proof_const": "RPP10.proof",
+   "proof_module": "RPP10",
+   "recipe": "filter-subset",
+   "role": "image",
+   "screened_instances": 3000,
+   "spec_const": "RPConj.inside_3_image",
+   "status": "CHECKED",
+   "subject": "inside_3"
+  },
+  {
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "counterexample": {
+    "values": {
+     "H": "({(1, 1)} : GT.Edges)",
+     "c": "(fun v => ([0, 0, 2, 1] : List (Fin 3)).getD v 0)"
+    }
+   },
+   "id": "inside_3_sound_tf",
+   "lean": "∀ (c : ℕ → Fin 3) (H : GT.Edges), GT.TriangleFree (RP.inside_3 c H)",
+   "origin": "generated:representation-grammar",
+   "proof_const": "RPP11.proof",
+   "proof_module": "RPP11",
+   "recipe": "counterexample-evaluation",
+   "role": "soundness",
+   "screened_instances": 3000,
+   "spec_const": "RPConj.inside_3_sound_tf",
+   "status": "DISPROVED",
+   "subject": "inside_3@triangle_free_host_v1"
+  },
+  {
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "counterexample": {
+    "values": {
+     "H": "({(2, 0), (2, 3), (3, 0), (3, 3)} : GT.Edges)",
+     "c": "(fun v => ([0, 0, 0, 0] : List (Fin 3)).getD v 0)"
+    }
+   },
+   "id": "inside_3_sound_c4",
+   "lean": "∀ (c : ℕ → Fin 3) (H : GT.Edges), G4.C4Free (RP.inside_3 c H)",
+   "origin": "generated:representation-grammar",
+   "proof_const": "RPP12.proof",
+   "proof_module": "RPP12",
+   "recipe": "counterexample-evaluation",
+   "role": "soundness",
+   "screened_instances": 3000,
+   "spec_const": "RPConj.inside_3_sound_c4",
+   "status": "DISPROVED",
+   "subject": "inside_3@c4_host_v2"
+  },
+  {
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "counterexample": null,
+   "id": "ordered_2_image",
+   "lean": "∀ (c : ℕ → Fin 2) (H : GT.Edges), RP.ordered_2 c H ⊆ H",
+   "origin": "generated:representation-grammar",
+   "proof_const": "RPP13.proof",
+   "proof_module": "RPP13",
+   "recipe": "filter-subset",
+   "role": "image",
+   "screened_instances": 3000,
+   "spec_const": "RPConj.ordered_2_image",
+   "status": "CHECKED",
+   "subject": "ordered_2"
+  },
+  {
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "counterexample": null,
+   "id": "ordered_2_sound_tf",
+   "lean": "∀ (c : ℕ → Fin 2) (H : GT.Edges), GT.TriangleFree (RP.ordered_2 c H)",
+   "origin": "generated:representation-grammar",
+   "proof_const": "RPP14.proof",
+   "proof_module": "RPP14",
+   "recipe": "destructure-subst-omega",
+   "role": "soundness",
+   "screened_instances": 3000,
+   "spec_const": "RPConj.ordered_2_sound_tf",
+   "status": "CHECKED",
+   "subject": "ordered_2@triangle_free_host_v1"
+  },
+  {
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "counterexample": {
+    "values": {
+     "H": "({(0, 2), (0, 3), (1, 2), (1, 3), (2, 0)} : GT.Edges)",
+     "c": "(fun v => ([0, 0, 1, 1] : List (Fin 2)).getD v 0)"
+    }
+   },
+   "id": "ordered_2_sound_c4",
+   "lean": "∀ (c : ℕ → Fin 2) (H : GT.Edges), G4.C4Free (RP.ordered_2 c H)",
+   "origin": "generated:representation-grammar",
+   "proof_const": "RPP15.proof",
+   "proof_module": "RPP15",
+   "recipe": "counterexample-evaluation",
+   "role": "soundness",
+   "screened_instances": 3000,
+   "spec_const": "RPConj.ordered_2_sound_c4",
+   "status": "DISPROVED",
+   "subject": "ordered_2@c4_host_v2"
+  },
+  {
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "counterexample": null,
+   "id": "ordered_3_image",
+   "lean": "∀ (c : ℕ → Fin 3) (H : GT.Edges), RP.ordered_3 c H ⊆ H",
+   "origin": "generated:representation-grammar",
+   "proof_const": "RPP16.proof",
+   "proof_module": "RPP16",
+   "recipe": "filter-subset",
+   "role": "image",
+   "screened_instances": 3000,
+   "spec_const": "RPConj.ordered_3_image",
+   "status": "CHECKED",
+   "subject": "ordered_3"
+  },
+  {
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "counterexample": {
+    "values": {
+     "H": "({(1, 0), (2, 0), (2, 1), (2, 3)} : GT.Edges)",
+     "c": "(fun v => ([2, 1, 0, 0] : List (Fin 3)).getD v 0)"
+    }
+   },
+   "id": "ordered_3_sound_tf",
+   "lean": "∀ (c : ℕ → Fin 3) (H : GT.Edges), GT.TriangleFree (RP.ordered_3 c H)",
+   "origin": "generated:representation-grammar",
+   "proof_const": "RPP17.proof",
+   "proof_module": "RPP17",
+   "recipe": "counterexample-evaluation",
+   "role": "soundness",
+   "screened_instances": 3000,
+   "spec_const": "RPConj.ordered_3_sound_tf",
+   "status": "DISPROVED",
+   "subject": "ordered_3@triangle_free_host_v1"
+  },
+  {
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "counterexample": {
+    "values": {
+     "H": "({(0, 1), (0, 3), (1, 2), (2, 1), (2, 3), (3, 3)} : GT.Edges)",
+     "c": "(fun v => ([0, 2, 0, 1] : List (Fin 3)).getD v 0)"
+    }
+   },
+   "id": "ordered_3_sound_c4",
+   "lean": "∀ (c : ℕ → Fin 3) (H : GT.Edges), G4.C4Free (RP.ordered_3 c H)",
+   "origin": "generated:representation-grammar",
+   "proof_const": "RPP18.proof",
+   "proof_module": "RPP18",
+   "recipe": "counterexample-evaluation",
+   "role": "soundness",
+   "screened_instances": 3000,
+   "spec_const": "RPConj.ordered_3_sound_c4",
+   "status": "DISPROVED",
+   "subject": "ordered_3@c4_host_v2"
+  },
+  {
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "counterexample": null,
+   "id": "adjacent_2_image",
+   "lean": "∀ (c : ℕ → Fin 2) (H : GT.Edges), RP.adjacent_2 c H ⊆ H",
+   "origin": "generated:representation-grammar",
+   "proof_const": "RPP19.proof",
+   "proof_module": "RPP19",
+   "recipe": "filter-subset",
+   "role": "image",
+   "screened_instances": 3000,
+   "spec_const": "RPConj.adjacent_2_image",
+   "status": "CHECKED",
+   "subject": "adjacent_2"
+  },
+  {
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "counterexample": null,
+   "id": "adjacent_2_sound_tf",
+   "lean": "∀ (c : ℕ → Fin 2) (H : GT.Edges), GT.TriangleFree (RP.adjacent_2 c H)",
+   "origin": "generated:representation-grammar",
+   "proof_const": "RPP20.proof",
+   "proof_module": "RPP20",
+   "recipe": "destructure-subst-omega",
+   "role": "soundness",
+   "screened_instances": 3000,
+   "spec_const": "RPConj.adjacent_2_sound_tf",
+   "status": "CHECKED",
+   "subject": "adjacent_2@triangle_free_host_v1"
+  },
+  {
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "counterexample": {
+    "values": {
+     "H": "({(0, 2), (1, 0), (1, 3), (3, 2)} : GT.Edges)",
+     "c": "(fun v => ([1, 0, 0, 1] : List (Fin 2)).getD v 0)"
+    }
+   },
+   "id": "adjacent_2_sound_c4",
+   "lean": "∀ (c : ℕ → Fin 2) (H : GT.Edges), G4.C4Free (RP.adjacent_2 c H)",
+   "origin": "generated:representation-grammar",
+   "proof_const": "RPP21.proof",
+   "proof_module": "RPP21",
+   "recipe": "counterexample-evaluation",
+   "role": "soundness",
+   "screened_instances": 3000,
+   "spec_const": "RPConj.adjacent_2_sound_c4",
+   "status": "DISPROVED",
+   "subject": "adjacent_2@c4_host_v2"
+  },
+  {
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "counterexample": null,
+   "id": "adjacent_3_image",
+   "lean": "∀ (c : ℕ → Fin 3) (H : GT.Edges), RP.adjacent_3 c H ⊆ H",
+   "origin": "generated:representation-grammar",
+   "proof_const": "RPP22.proof",
+   "proof_module": "RPP22",
+   "recipe": "filter-subset",
+   "role": "image",
+   "screened_instances": 3000,
+   "spec_const": "RPConj.adjacent_3_image",
+   "status": "CHECKED",
+   "subject": "adjacent_3"
+  },
+  {
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "counterexample": null,
+   "id": "adjacent_3_sound_tf",
+   "lean": "∀ (c : ℕ → Fin 3) (H : GT.Edges), GT.TriangleFree (RP.adjacent_3 c H)",
+   "origin": "generated:representation-grammar",
+   "proof_const": "RPP23.proof",
+   "proof_module": "RPP23",
+   "recipe": "destructure-subst-omega",
+   "role": "soundness",
+   "screened_instances": 3000,
+   "spec_const": "RPConj.adjacent_3_sound_tf",
+   "status": "CHECKED",
+   "subject": "adjacent_3@triangle_free_host_v1"
+  },
+  {
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "counterexample": {
+    "values": {
+     "H": "({(1, 0), (2, 0), (2, 3), (3, 1)} : GT.Edges)",
+     "c": "(fun v => ([1, 2, 0, 1] : List (Fin 3)).getD v 0)"
+    }
+   },
+   "id": "adjacent_3_sound_c4",
+   "lean": "∀ (c : ℕ → Fin 3) (H : GT.Edges), G4.C4Free (RP.adjacent_3 c H)",
+   "origin": "generated:representation-grammar",
+   "proof_const": "RPP24.proof",
+   "proof_module": "RPP24",
+   "recipe": "counterexample-evaluation",
+   "role": "soundness",
+   "screened_instances": 3000,
+   "spec_const": "RPConj.adjacent_3_sound_c4",
+   "status": "DISPROVED",
+   "subject": "adjacent_3@c4_host_v2"
+  },
+  {
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "counterexample": {
+    "values": {
+     "H": "({(0, 3)} : GT.Edges)",
+     "c": "(fun v => ([1, 0, 0, 0] : List (Fin 2)).getD v 0)"
+    }
+   },
+   "id": "cross_2_within_ordered_2",
+   "lean": "∀ (c : ℕ → Fin 2) (H : GT.Edges), RP.cross_2 c H ⊆ RP.ordered_2 c H",
+   "origin": "generated:representation-grammar",
+   "proof_const": "RPP25.proof",
+   "proof_module": "RPP25",
+   "recipe": "counterexample-evaluation",
+   "role": "dominance",
+   "screened_instances": 3000,
+   "spec_const": "RPConj.cross_2_within_ordered_2",
+   "status": "DISPROVED",
+   "subject": "cross_2<=ordered_2"
+  },
+  {
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "counterexample": null,
+   "id": "cross_2_within_adjacent_2",
+   "lean": "∀ (c : ℕ → Fin 2) (H : GT.Edges), RP.cross_2 c H ⊆ RP.adjacent_2 c H",
+   "origin": "generated:representation-grammar",
+   "proof_const": "RPP26.proof",
+   "proof_module": "RPP26",
+   "recipe": "filter-pointwise",
+   "role": "dominance",
+   "screened_instances": 3000,
+   "spec_const": "RPConj.cross_2_within_adjacent_2",
+   "status": "CHECKED",
+   "subject": "cross_2<=adjacent_2"
+  },
+  {
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "counterexample": null,
+   "id": "ordered_2_within_cross_2",
+   "lean": "∀ (c : ℕ → Fin 2) (H : GT.Edges), RP.ordered_2 c H ⊆ RP.cross_2 c H",
+   "origin": "generated:representation-grammar",
+   "proof_const": "RPP27.proof",
+   "proof_module": "RPP27",
+   "recipe": "filter-pointwise",
+   "role": "dominance",
+   "screened_instances": 3000,
+   "spec_const": "RPConj.ordered_2_within_cross_2",
+   "status": "CHECKED",
+   "subject": "ordered_2<=cross_2"
+  },
+  {
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "counterexample": null,
+   "id": "ordered_2_within_adjacent_2",
+   "lean": "∀ (c : ℕ → Fin 2) (H : GT.Edges), RP.ordered_2 c H ⊆ RP.adjacent_2 c H",
+   "origin": "generated:representation-grammar",
+   "proof_const": "RPP28.proof",
+   "proof_module": "RPP28",
+   "recipe": "filter-pointwise",
+   "role": "dominance",
+   "screened_instances": 3000,
+   "spec_const": "RPConj.ordered_2_within_adjacent_2",
+   "status": "CHECKED",
+   "subject": "ordered_2<=adjacent_2"
+  },
+  {
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "counterexample": null,
+   "id": "adjacent_2_within_cross_2",
+   "lean": "∀ (c : ℕ → Fin 2) (H : GT.Edges), RP.adjacent_2 c H ⊆ RP.cross_2 c H",
+   "origin": "generated:representation-grammar",
+   "proof_const": "RPP29.proof",
+   "proof_module": "RPP29",
+   "recipe": "filter-pointwise",
+   "role": "dominance",
+   "screened_instances": 3000,
+   "spec_const": "RPConj.adjacent_2_within_cross_2",
+   "status": "CHECKED",
+   "subject": "adjacent_2<=cross_2"
+  },
+  {
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "counterexample": {
+    "values": {
+     "H": "({(2, 1)} : GT.Edges)",
+     "c": "(fun v => ([0, 0, 1, 0] : List (Fin 2)).getD v 0)"
+    }
+   },
+   "id": "adjacent_2_within_ordered_2",
+   "lean": "∀ (c : ℕ → Fin 2) (H : GT.Edges), RP.adjacent_2 c H ⊆ RP.ordered_2 c H",
+   "origin": "generated:representation-grammar",
+   "proof_const": "RPP30.proof",
+   "proof_module": "RPP30",
+   "recipe": "counterexample-evaluation",
+   "role": "dominance",
+   "screened_instances": 3000,
+   "spec_const": "RPConj.adjacent_2_within_ordered_2",
+   "status": "DISPROVED",
+   "subject": "adjacent_2<=ordered_2"
+  },
+  {
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "counterexample": null,
+   "id": "cross_2_loses_tf",
+   "lean": "∃ S : GT.Edges, GT.TriangleFree S ∧ ∀ A ∈ (Finset.range 5).powerset, RP.cross_2 (fun v => if v ∈ A then 1 else 0) S ≠ S",
+   "origin": "generated:representation-grammar",
+   "proof_const": "RPP31.proof",
+   "proof_module": "RPP31",
+   "recipe": "witness-evaluation",
+   "role": "loss",
+   "screened_instances": 0,
+   "spec_const": "RPConj.cross_2_loses_tf",
+   "status": "CHECKED",
+   "subject": "cross_2"
+  },
+  {
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "counterexample": null,
+   "id": "ordered_2_loses_tf",
+   "lean": "∃ S : GT.Edges, GT.TriangleFree S ∧ ∀ A ∈ (Finset.range 3).powerset, RP.ordered_2 (fun v => if v ∈ A then 1 else 0) S ≠ S",
+   "origin": "generated:representation-grammar",
+   "proof_const": "RPP32.proof",
+   "proof_module": "RPP32",
+   "recipe": "witness-evaluation",
+   "role": "loss",
+   "screened_instances": 0,
+   "spec_const": "RPConj.ordered_2_loses_tf",
+   "status": "CHECKED",
+   "subject": "ordered_2"
+  },
+  {
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "counterexample": null,
+   "id": "adjacent_2_loses_tf",
+   "lean": "∃ S : GT.Edges, GT.TriangleFree S ∧ ∀ A ∈ (Finset.range 5).powerset, RP.adjacent_2 (fun v => if v ∈ A then 1 else 0) S ≠ S",
+   "origin": "generated:representation-grammar",
+   "proof_const": "RPP33.proof",
+   "proof_module": "RPP33",
+   "recipe": "witness-evaluation",
+   "role": "loss",
+   "screened_instances": 0,
+   "spec_const": "RPConj.adjacent_2_loses_tf",
+   "status": "CHECKED",
+   "subject": "adjacent_2"
+  }
+ ]
+}

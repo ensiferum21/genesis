@@ -1,0 +1,3542 @@
+{
+ "acceptance": {
+  "check_stage": {
+   "check_sha256": "d3230b09fd155fdb3c55f182303b238881b3fc90541cadc733494dfd98c31f14",
+   "cpu_ns": 9814864685,
+   "exit_code": 0,
+   "exits": {
+    "FFNP1": "0",
+    "FFNP2": "0",
+    "FFNP3": "0",
+    "FFNP4": "0",
+    "FFNP5": "0",
+    "FFNP6": "0",
+    "FFNP7": "0",
+    "FFNP8": "0",
+    "check": "0"
+   },
+   "log": "",
+   "peak_memory_bytes": 228442112,
+   "status": "SUCCESS",
+   "wall_ns": 10076129049
+  },
+  "leanchecker": {
+   "FFNP1": true,
+   "FFNP2": true,
+   "FFNP3": true,
+   "FFNP4": true,
+   "FFNP5": true,
+   "FFNP6": true,
+   "FFNP7": true,
+   "FFNP8": true
+  },
+  "receipt_sha256": "8a224b3e4a326f274f012544c0535c6b40ae7037e40365577631104351c55851",
+  "status": "CHECKED"
+ },
+ "assumptions": {
+  "allowed_axioms": [
+   "Classical.choice",
+   "Quot.sound",
+   "propext"
+  ],
+  "axioms_used": [
+   "Classical.choice",
+   "Quot.sound",
+   "propext"
+  ],
+  "conventions": [],
+  "lean": "lean@e8baaa71855a616d",
+  "workspace": {
+   "artifact_identity": "95a6ec9f1aadc0d8d1936c34bd0ce4e144b0e35c85df12543cdcafe9ebf36b41",
+   "import_roots": [
+    "Mathlib.Data.Finset.Powerset"
+   ],
+   "mathlib_rev": "d13f23b723b8a846827a245b89c10fc7d3f11612",
+   "source_identity": "a3a7569b6d7636a844c87c2b72ef2170eda0f712ff8d9a1b0f15b069e301c7ef"
+  }
+ },
+ "bindings": [
+  {
+   "proof": "FFNP1.proof",
+   "spec": "FFNConj.none_loopfree_inter"
+  },
+  {
+   "proof": "FFNP2.proof",
+   "spec": "FFNConj.none_loopfree_sdiff"
+  },
+  {
+   "proof": "FFNP3.proof",
+   "spec": "FFNConj.none_loopfree_filter"
+  },
+  {
+   "proof": "FFNP4.proof",
+   "spec": "FFNConj.none_loopfree_erase"
+  },
+  {
+   "proof": "FFNP5.proof",
+   "spec": "FFNConj.none_nonempty_inter_negation"
+  },
+  {
+   "proof": "FFNP6.proof",
+   "spec": "FFNConj.none_nonempty_sdiff_negation"
+  },
+  {
+   "proof": "FFNP7.proof",
+   "spec": "FFNConj.none_nonempty_filter_negation"
+  },
+  {
+   "proof": "FFNP8.proof",
+   "spec": "FFNConj.none_nonempty_erase_negation"
+  }
+ ],
+ "costs": {
+  "acceptance_check_cpu_ns": 54374577759,
+  "acceptance_runs": 9,
+  "acceptances": [
+   {
+    "receipt_sha256": "1677e1543cfe63983a9354854cb7130b69fe896604c798857318025529ab1966",
+    "statement": "none_loopfree_inter",
+    "stats": {
+     "check_sha256": "7271f68cc517cdcf4d5066b206d37e5c405514430cd9d1792b39032d7f1890f5",
+     "cpu_ns": 2969133686,
+     "exit_code": 0,
+     "exits": {
+      "FFNP1": "0",
+      "check": "0"
+     },
+     "log": "",
+     "peak_memory_bytes": 224182272,
+     "status": "SUCCESS",
+     "wall_ns": 3027435275
+    },
+    "status": "CHECKED"
+   },
+   {
+    "receipt_sha256": "02e26926dfa835ea353858ef0c95e3f533fe8538611d6a41c8e287f522bcd21e",
+    "statement": "none_loopfree_sdiff",
+    "stats": {
+     "check_sha256": "6bfd649705ac6351bf1e5bbff8f3450b7c357cae9c03e46fcd9f279ccf343771",
+     "cpu_ns": 4278965764,
+     "exit_code": 0,
+     "exits": {
+      "FFNP1": "0",
+      "FFNP2": "0",
+      "check": "0"
+     },
+     "log": "",
+     "peak_memory_bytes": 221806592,
+     "status": "SUCCESS",
+     "wall_ns": 4369014836
+    },
+    "status": "CHECKED"
+   },
+   {
+    "receipt_sha256": "82d10bd5d1185e6f618fb655958b0edb74b76c0c1bea470e85293608808d34d2",
+    "statement": "none_loopfree_filter",
+    "stats": {
+     "check_sha256": "c74cf70afd2130b56b451fddb5da4f50d575695b4f13f39f43321c7e9814860b",
+     "cpu_ns": 5100820813,
+     "exit_code": 0,
+     "exits": {
+      "FFNP1": "0",
+      "FFNP2": "0",
+      "FFNP3": "0",
+      "check": "0"
+     },
+     "log": "",
+     "peak_memory_bytes": 222113792,
+     "status": "SUCCESS",
+     "wall_ns": 5207799938
+    },
+    "status": "CHECKED"
+   },
+   {
+    "receipt_sha256": "ddeb64dd8e6d8f2403b8a580450ea60f2ebcb81fd7ad6ab8b3c98a77e0c72865",
+    "statement": "none_loopfree_erase",
+    "stats": {
+     "check_sha256": "0c7c922107184755191abf9bfa4f8bfc6f2d78ef91c794575c54f756ec914dc1",
+     "cpu_ns": 5572733942,
+     "exit_code": 0,
+     "exits": {
+      "FFNP1": "0",
+      "FFNP2": "0",
+      "FFNP3": "0",
+      "FFNP4": "0",
+      "check": "0"
+     },
+     "log": "",
+     "peak_memory_bytes": 224178176,
+     "status": "SUCCESS",
+     "wall_ns": 5685856713
+    },
+    "status": "CHECKED"
+   },
+   {
+    "receipt_sha256": "3f2d78814ad6f6cf3866a5b410dcfef2425aba726e8f9ea6927d46792b20724e",
+    "statement": "none_nonempty_inter",
+    "stats": {
+     "check_sha256": "459d524effbb3015196131ab10758e2b76e088b929185954607750739b019008",
+     "cpu_ns": 8589925010,
+     "exit_code": 0,
+     "exits": {
+      "FFNP1": "0",
+      "FFNP2": "0",
+      "FFNP3": "0",
+      "FFNP4": "0",
+      "FFNP5": "0",
+      "check": "0"
+     },
+     "log": "",
+     "peak_memory_bytes": 222367744,
+     "status": "SUCCESS",
+     "wall_ns": 8763613769
+    },
+    "status": "CHECKED"
+   },
+   {
+    "receipt_sha256": "6430b5d3af3e9894dbfee0b398f3415fc81f8948a8d74e3b33580348d81cdefd",
+    "statement": "none_nonempty_sdiff",
+    "stats": {
+     "check_sha256": "6a5c1515e7704c2a976e138383928430893a4aef6363a818c6ebb1f835feb0fb",
+     "cpu_ns": 8476273694,
+     "exit_code": 0,
+     "exits": {
+      "FFNP1": "0",
+      "FFNP2": "0",
+      "FFNP3": "0",
+      "FFNP4": "0",
+      "FFNP5": "0",
+      "FFNP6": "0",
+      "check": "0"
+     },
+     "log": "",
+     "peak_memory_bytes": 222138368,
+     "status": "SUCCESS",
+     "wall_ns": 8632857344
+    },
+    "status": "CHECKED"
+   },
+   {
+    "receipt_sha256": "3e4ab6c1b2b1ce2e7afea22cb34abca1d073ffd0625401071f5f6b55f7301123",
+    "statement": "none_nonempty_filter",
+    "stats": {
+     "check_sha256": "3e2202efd57b6bc3f4b05d6befd2d07eb19288e9b8452a4286045164313e85db",
+     "cpu_ns": 9170957960,
+     "exit_code": 0,
+     "exits": {
+      "FFNP1": "0",
+      "FFNP2": "0",
+      "FFNP3": "0",
+      "FFNP4": "0",
+      "FFNP5": "0",
+      "FFNP6": "0",
+      "FFNP7": "0",
+      "check": "0"
+     },
+     "log": "",
+     "peak_memory_bytes": 221913088,
+     "status": "SUCCESS",
+     "wall_ns": 9312772373
+    },
+    "status": "CHECKED"
+   },
+   {
+    "receipt_sha256": "54bd1dfb80c5a8b599b01718ca2611c94958a4b99c7df4ac187ee4ef45e62014",
+    "statement": "none_nonempty_erase",
+    "stats": {
+     "check_sha256": "eb38df69f662d2af0539ae1c8bdbce799109080b510e47065312044cb9587282",
+     "cpu_ns": 10215766890,
+     "exit_code": 0,
+     "exits": {
+      "FFNP1": "0",
+      "FFNP2": "0",
+      "FFNP3": "0",
+      "FFNP4": "0",
+      "FFNP5": "0",
+      "FFNP6": "0",
+      "FFNP7": "0",
+      "FFNP8": "0",
+      "check": "0"
+     },
+     "log": "",
+     "peak_memory_bytes": 224305152,
+     "status": "SUCCESS",
+     "wall_ns": 10414598774
+    },
+    "status": "CHECKED"
+   }
+  ],
+  "attempts": [
+   {
+    "attempts": [
+     {
+      "compiled": false,
+      "recipe": "elim-with-library",
+      "tactic_sha256": "75462c84e8da3665dded376502e68dfcd98a27b1e66888c4364a69e949d7676d",
+      "tier": 0
+     },
+     {
+      "compiled": false,
+      "recipe": "decide",
+      "tactic_sha256": "5589aa5863c2d85622d06d651add002416e5513afdbb455666cdde01bb3e257d",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "decide-kernel",
+      "tactic_sha256": "9ac77167f92e560c7b03653563b026543eb9e4c018ebd8e1d3c8be05b979ab88",
+      "tier": 1
+     },
+     {
+      "compiled": true,
+      "recipe": "unfold-simp",
+      "tactic_sha256": "2fdb53dd37c5d4e387eab479cf353ebe00ef0c1fb43572953bf24c6264fc3f96",
+      "tier": 1
+     },
+     {
+      "compiled": true,
+      "recipe": "unfold-aesop",
+      "tactic_sha256": "745fb3090d6e4150a8979cc791516f8db8fa764f4ac1581cfd37377803a0670d",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "unfold-omega",
+      "tactic_sha256": "af42f82b697fce0e4dcd3aa3c89a59f9a10d3e2bc15dc44963dade357f1143cf",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "unfold-solve",
+      "tactic_sha256": "62c059a9f6b2b5c9cb9e622af68d6ed0b6ed1fd2ffa55d28d8b58919dfdc1d73",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "apply-hyp:h1",
+      "tactic_sha256": "cac35ae61c14f0f125197a56526e5412715cb2ccf31b9b5d398b24aa48d0b847",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "specialize-omega:h1",
+      "tactic_sha256": "c574d183f732de4913d1717da04b478c5459e230ae063c20528c15a6bd48e4da",
+      "tier": 1
+     }
+    ],
+    "charged": {
+     "candidates": 9,
+     "cpu_ns": 3277540661,
+     "wall_ns": 3355445264
+    },
+    "result": "ELABORATION_ERROR",
+    "statement": "none_loopfree_inter",
+    "target": "FFNConj.none_loopfree_inter"
+   },
+   {
+    "attempts": [
+     {
+      "compiled": false,
+      "recipe": "elim-with-library",
+      "tactic_sha256": "5c4bc9407bf0e79b20b410c47ce01b43755938259d1c974b1b1aaba54854fdc0",
+      "tier": 0
+     },
+     {
+      "compiled": false,
+      "recipe": "decide",
+      "tactic_sha256": "5589aa5863c2d85622d06d651add002416e5513afdbb455666cdde01bb3e257d",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "decide-kernel",
+      "tactic_sha256": "9ac77167f92e560c7b03653563b026543eb9e4c018ebd8e1d3c8be05b979ab88",
+      "tier": 1
+     },
+     {
+      "compiled": true,
+      "recipe": "unfold-simp",
+      "tactic_sha256": "2fdb53dd37c5d4e387eab479cf353ebe00ef0c1fb43572953bf24c6264fc3f96",
+      "tier": 1
+     },
+     {
+      "compiled": true,
+      "recipe": "unfold-aesop",
+      "tactic_sha256": "745fb3090d6e4150a8979cc791516f8db8fa764f4ac1581cfd37377803a0670d",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "unfold-omega",
+      "tactic_sha256": "af42f82b697fce0e4dcd3aa3c89a59f9a10d3e2bc15dc44963dade357f1143cf",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "unfold-solve",
+      "tactic_sha256": "62c059a9f6b2b5c9cb9e622af68d6ed0b6ed1fd2ffa55d28d8b58919dfdc1d73",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "apply-hyp:h1",
+      "tactic_sha256": "cac35ae61c14f0f125197a56526e5412715cb2ccf31b9b5d398b24aa48d0b847",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "specialize-omega:h1",
+      "tactic_sha256": "c574d183f732de4913d1717da04b478c5459e230ae063c20528c15a6bd48e4da",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "library-elim:FFNP1.proof",
+      "tactic_sha256": "17057239afddb864227f2546893337dd86b3972bcb3c36f1981c341e098d4e68",
+      "tier": 1
+     }
+    ],
+    "charged": {
+     "candidates": 10,
+     "cpu_ns": 5668265976,
+     "wall_ns": 5751931702
+    },
+    "result": "ELABORATION_ERROR",
+    "statement": "none_loopfree_sdiff",
+    "target": "FFNConj.none_loopfree_sdiff"
+   },
+   {
+    "attempts": [
+     {
+      "compiled": false,
+      "recipe": "elim-with-library",
+      "tactic_sha256": "8194e0fdaaa93bdb32df8a0b420788639fb6fcbc45fa88ed74d9a48eb747a5cb",
+      "tier": 0
+     },
+     {
+      "compiled": false,
+      "recipe": "decide",
+      "tactic_sha256": "5589aa5863c2d85622d06d651add002416e5513afdbb455666cdde01bb3e257d",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "decide-kernel",
+      "tactic_sha256": "9ac77167f92e560c7b03653563b026543eb9e4c018ebd8e1d3c8be05b979ab88",
+      "tier": 1
+     },
+     {
+      "compiled": true,
+      "recipe": "unfold-simp",
+      "tactic_sha256": "227b9ca76b8892fd79455b9effe00f689b80793f42e413fecaf5296d8e21d025",
+      "tier": 1
+     },
+     {
+      "compiled": true,
+      "recipe": "unfold-aesop",
+      "tactic_sha256": "76442f9e165f28dade7cfb9f3a7976a3060e1b800918beb36be7db0ea20f1817",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "unfold-omega",
+      "tactic_sha256": "af5509267ee864951a5b72997feb2fee36eda1464a91cfe7304beca6d96ac8c2",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "unfold-solve",
+      "tactic_sha256": "62c059a9f6b2b5c9cb9e622af68d6ed0b6ed1fd2ffa55d28d8b58919dfdc1d73",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "apply-hyp:h1",
+      "tactic_sha256": "3cb680637586d7dbfc2f88cf98ab2c41e950ca47598ee98b4ab3f49161920c2a",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "specialize-omega:h1",
+      "tactic_sha256": "09a5e261ded9469c61972363cb52f71fb928d413bddc223ef9eb655dbd361a40",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "library-elim:FFNP1.proof",
+      "tactic_sha256": "d354bf0a68e8c652376267c40a6d11baa03e3c6bead41e5f19ba19e0427b2329",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "library-elim:FFNP2.proof",
+      "tactic_sha256": "b60262ef4a0d9ab88568bab5554af49685f77543b0e171046f27f1bf1287b9dc",
+      "tier": 1
+     }
+    ],
+    "charged": {
+     "candidates": 11,
+     "cpu_ns": 16542796988,
+     "wall_ns": 16688510002
+    },
+    "result": "ELABORATION_ERROR",
+    "statement": "none_loopfree_filter",
+    "target": "FFNConj.none_loopfree_filter"
+   },
+   {
+    "attempts": [
+     {
+      "compiled": false,
+      "recipe": "elim-with-library",
+      "tactic_sha256": "e14372e060f5f2b34db07b3bbeb32962001685f4833e49a49cb94a19ebfbad73",
+      "tier": 0
+     },
+     {
+      "compiled": false,
+      "recipe": "decide",
+      "tactic_sha256": "5589aa5863c2d85622d06d651add002416e5513afdbb455666cdde01bb3e257d",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "decide-kernel",
+      "tactic_sha256": "9ac77167f92e560c7b03653563b026543eb9e4c018ebd8e1d3c8be05b979ab88",
+      "tier": 1
+     },
+     {
+      "compiled": true,
+      "recipe": "unfold-simp",
+      "tactic_sha256": "896e52eb22bacd944da549296bbfd2e953f0856d62f81bab5cc69ea7b4581915",
+      "tier": 1
+     },
+     {
+      "compiled": true,
+      "recipe": "unfold-aesop",
+      "tactic_sha256": "2d15fb56bc3435ed6ab6e20006fb63b71a5210470c406f70b1e1cef52913e440",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "unfold-omega",
+      "tactic_sha256": "cf123ec344bb096808c0acf65e7b2f131bb96be5758a40cb5c9ac4d6d206ddb8",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "unfold-solve",
+      "tactic_sha256": "62c059a9f6b2b5c9cb9e622af68d6ed0b6ed1fd2ffa55d28d8b58919dfdc1d73",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "apply-hyp:h1",
+      "tactic_sha256": "50454769f946dd8d7fde885bbb7bb4c320fad66e46bcba53e8e8c5117b5f17a1",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "specialize-omega:h1",
+      "tactic_sha256": "82d164998c38f5c5119709b6e4344278f95f5ebef6da9cfdf1d1bb7e4f5b1ea4",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "library-elim:FFNP1.proof",
+      "tactic_sha256": "a361143654efe27856bd63ad4d8bc0d534469b340bb134b778f07a93819e00cd",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "library-elim:FFNP2.proof",
+      "tactic_sha256": "1fdf995d1696e34dc7ded964e19c8827a096a68197ca854f188e569b18ee1c2a",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "library-elim:FFNP3.proof",
+      "tactic_sha256": "ac0d472008f4b7d83fea555d7af964083edd0f3e5e5e9c5242c2605870542286",
+      "tier": 1
+     }
+    ],
+    "charged": {
+     "candidates": 12,
+     "cpu_ns": 11873749635,
+     "wall_ns": 11995924738
+    },
+    "result": "ELABORATION_ERROR",
+    "statement": "none_loopfree_erase",
+    "target": "FFNConj.none_loopfree_erase"
+   },
+   {
+    "attempts": [
+     {
+      "compiled": false,
+      "recipe": "elim-with-library",
+      "tactic_sha256": "85e961623e4f8045249293ace9e5ad1a04f26b9af2c20b64e9e5e105fab05470",
+      "tier": 0
+     },
+     {
+      "compiled": false,
+      "recipe": "decide",
+      "tactic_sha256": "5589aa5863c2d85622d06d651add002416e5513afdbb455666cdde01bb3e257d",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "decide-kernel",
+      "tactic_sha256": "9ac77167f92e560c7b03653563b026543eb9e4c018ebd8e1d3c8be05b979ab88",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "unfold-simp",
+      "tactic_sha256": "2fdb53dd37c5d4e387eab479cf353ebe00ef0c1fb43572953bf24c6264fc3f96",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "unfold-aesop",
+      "tactic_sha256": "745fb3090d6e4150a8979cc791516f8db8fa764f4ac1581cfd37377803a0670d",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "unfold-omega",
+      "tactic_sha256": "af42f82b697fce0e4dcd3aa3c89a59f9a10d3e2bc15dc44963dade357f1143cf",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "unfold-solve",
+      "tactic_sha256": "62c059a9f6b2b5c9cb9e622af68d6ed0b6ed1fd2ffa55d28d8b58919dfdc1d73",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "apply-hyp:h1",
+      "tactic_sha256": "cac35ae61c14f0f125197a56526e5412715cb2ccf31b9b5d398b24aa48d0b847",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "specialize-omega:h1",
+      "tactic_sha256": "c574d183f732de4913d1717da04b478c5459e230ae063c20528c15a6bd48e4da",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "library-elim:FFNP1.proof",
+      "tactic_sha256": "17057239afddb864227f2546893337dd86b3972bcb3c36f1981c341e098d4e68",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "library-elim:FFNP2.proof",
+      "tactic_sha256": "3c20156b47cfff045708b7ec09188eeddc156e2163e47929912948d5660d5351",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "library-elim:FFNP3.proof",
+      "tactic_sha256": "b7730ef895a4b79bfd9124c52816faa129a02e15cbac574198d811d87f64462e",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "library-elim:FFNP4.proof",
+      "tactic_sha256": "a37ff1a2af745f1e963870e890370dd3512ac549830a1386002b2aa023d4c566",
+      "tier": 1
+     }
+    ],
+    "charged": {
+     "candidates": 13,
+     "cpu_ns": 10767868547,
+     "wall_ns": 10901597073
+    },
+    "result": "ELABORATION_ERROR",
+    "statement": "none_matching_inter",
+    "target": "FFNConj.none_matching_inter"
+   },
+   {
+    "attempts": [
+     {
+      "compiled": false,
+      "recipe": "elim-with-library",
+      "tactic_sha256": "85e961623e4f8045249293ace9e5ad1a04f26b9af2c20b64e9e5e105fab05470",
+      "tier": 0
+     },
+     {
+      "compiled": false,
+      "recipe": "decide",
+      "tactic_sha256": "5589aa5863c2d85622d06d651add002416e5513afdbb455666cdde01bb3e257d",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "decide-kernel",
+      "tactic_sha256": "9ac77167f92e560c7b03653563b026543eb9e4c018ebd8e1d3c8be05b979ab88",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "unfold-simp",
+      "tactic_sha256": "2fdb53dd37c5d4e387eab479cf353ebe00ef0c1fb43572953bf24c6264fc3f96",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "unfold-aesop",
+      "tactic_sha256": "745fb3090d6e4150a8979cc791516f8db8fa764f4ac1581cfd37377803a0670d",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "unfold-omega",
+      "tactic_sha256": "af42f82b697fce0e4dcd3aa3c89a59f9a10d3e2bc15dc44963dade357f1143cf",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "unfold-solve",
+      "tactic_sha256": "62c059a9f6b2b5c9cb9e622af68d6ed0b6ed1fd2ffa55d28d8b58919dfdc1d73",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "apply-hyp:h1",
+      "tactic_sha256": "cac35ae61c14f0f125197a56526e5412715cb2ccf31b9b5d398b24aa48d0b847",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "specialize-omega:h1",
+      "tactic_sha256": "c574d183f732de4913d1717da04b478c5459e230ae063c20528c15a6bd48e4da",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "library-elim:FFNP1.proof",
+      "tactic_sha256": "17057239afddb864227f2546893337dd86b3972bcb3c36f1981c341e098d4e68",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "library-elim:FFNP2.proof",
+      "tactic_sha256": "3c20156b47cfff045708b7ec09188eeddc156e2163e47929912948d5660d5351",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "library-elim:FFNP3.proof",
+      "tactic_sha256": "b7730ef895a4b79bfd9124c52816faa129a02e15cbac574198d811d87f64462e",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "library-elim:FFNP4.proof",
+      "tactic_sha256": "a37ff1a2af745f1e963870e890370dd3512ac549830a1386002b2aa023d4c566",
+      "tier": 1
+     }
+    ],
+    "charged": {
+     "candidates": 13,
+     "cpu_ns": 16799994855,
+     "wall_ns": 17076025814
+    },
+    "result": "ELABORATION_ERROR",
+    "statement": "none_matching_sdiff",
+    "target": "FFNConj.none_matching_sdiff"
+   },
+   {
+    "attempts": [
+     {
+      "compiled": false,
+      "recipe": "elim-with-library",
+      "tactic_sha256": "75d6ece6142a75f1e5b5522303c494becaf4ac8daab15cdc254dec2da498a078",
+      "tier": 0
+     },
+     {
+      "compiled": false,
+      "recipe": "decide",
+      "tactic_sha256": "5589aa5863c2d85622d06d651add002416e5513afdbb455666cdde01bb3e257d",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "decide-kernel",
+      "tactic_sha256": "9ac77167f92e560c7b03653563b026543eb9e4c018ebd8e1d3c8be05b979ab88",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "unfold-simp",
+      "tactic_sha256": "227b9ca76b8892fd79455b9effe00f689b80793f42e413fecaf5296d8e21d025",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "unfold-aesop",
+      "tactic_sha256": "76442f9e165f28dade7cfb9f3a7976a3060e1b800918beb36be7db0ea20f1817",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "unfold-omega",
+      "tactic_sha256": "af5509267ee864951a5b72997feb2fee36eda1464a91cfe7304beca6d96ac8c2",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "unfold-solve",
+      "tactic_sha256": "62c059a9f6b2b5c9cb9e622af68d6ed0b6ed1fd2ffa55d28d8b58919dfdc1d73",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "apply-hyp:h1",
+      "tactic_sha256": "3cb680637586d7dbfc2f88cf98ab2c41e950ca47598ee98b4ab3f49161920c2a",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "specialize-omega:h1",
+      "tactic_sha256": "09a5e261ded9469c61972363cb52f71fb928d413bddc223ef9eb655dbd361a40",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "library-elim:FFNP1.proof",
+      "tactic_sha256": "d354bf0a68e8c652376267c40a6d11baa03e3c6bead41e5f19ba19e0427b2329",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "library-elim:FFNP2.proof",
+      "tactic_sha256": "b60262ef4a0d9ab88568bab5554af49685f77543b0e171046f27f1bf1287b9dc",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "library-elim:FFNP3.proof",
+      "tactic_sha256": "1dbc83d1d01bd680d765b30aba83941eb7eb01c9a81939f6e1a40fcc47bd6b20",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "library-elim:FFNP4.proof",
+      "tactic_sha256": "301e19c0bf43dc994c612610c10c9e7234738f857553a25037a51886980c70eb",
+      "tier": 1
+     }
+    ],
+    "charged": {
+     "candidates": 13,
+     "cpu_ns": 15297385777,
+     "wall_ns": 15432836627
+    },
+    "result": "ELABORATION_ERROR",
+    "statement": "none_matching_filter",
+    "target": "FFNConj.none_matching_filter"
+   },
+   {
+    "attempts": [
+     {
+      "compiled": false,
+      "recipe": "elim-with-library",
+      "tactic_sha256": "8542b360e4c7da275ff19f8744bdd1c053c0eb298d677b580b7f82d6d0938ec1",
+      "tier": 0
+     },
+     {
+      "compiled": false,
+      "recipe": "decide",
+      "tactic_sha256": "5589aa5863c2d85622d06d651add002416e5513afdbb455666cdde01bb3e257d",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "decide-kernel",
+      "tactic_sha256": "9ac77167f92e560c7b03653563b026543eb9e4c018ebd8e1d3c8be05b979ab88",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "unfold-simp",
+      "tactic_sha256": "896e52eb22bacd944da549296bbfd2e953f0856d62f81bab5cc69ea7b4581915",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "unfold-aesop",
+      "tactic_sha256": "2d15fb56bc3435ed6ab6e20006fb63b71a5210470c406f70b1e1cef52913e440",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "unfold-omega",
+      "tactic_sha256": "cf123ec344bb096808c0acf65e7b2f131bb96be5758a40cb5c9ac4d6d206ddb8",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "unfold-solve",
+      "tactic_sha256": "62c059a9f6b2b5c9cb9e622af68d6ed0b6ed1fd2ffa55d28d8b58919dfdc1d73",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "apply-hyp:h1",
+      "tactic_sha256": "50454769f946dd8d7fde885bbb7bb4c320fad66e46bcba53e8e8c5117b5f17a1",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "specialize-omega:h1",
+      "tactic_sha256": "82d164998c38f5c5119709b6e4344278f95f5ebef6da9cfdf1d1bb7e4f5b1ea4",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "library-elim:FFNP1.proof",
+      "tactic_sha256": "a361143654efe27856bd63ad4d8bc0d534469b340bb134b778f07a93819e00cd",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "library-elim:FFNP2.proof",
+      "tactic_sha256": "1fdf995d1696e34dc7ded964e19c8827a096a68197ca854f188e569b18ee1c2a",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "library-elim:FFNP3.proof",
+      "tactic_sha256": "ac0d472008f4b7d83fea555d7af964083edd0f3e5e5e9c5242c2605870542286",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "library-elim:FFNP4.proof",
+      "tactic_sha256": "23227870e04aec618958df9a0755f67ac530c10a92ac4dd19af979e03491d333",
+      "tier": 1
+     }
+    ],
+    "charged": {
+     "candidates": 13,
+     "cpu_ns": 9672858931,
+     "wall_ns": 9768264856
+    },
+    "result": "ELABORATION_ERROR",
+    "statement": "none_matching_erase",
+    "target": "FFNConj.none_matching_erase"
+   },
+   {
+    "attempts": [
+     {
+      "compiled": false,
+      "recipe": "elim-with-library",
+      "tactic_sha256": "85e961623e4f8045249293ace9e5ad1a04f26b9af2c20b64e9e5e105fab05470",
+      "tier": 0
+     },
+     {
+      "compiled": false,
+      "recipe": "decide",
+      "tactic_sha256": "5589aa5863c2d85622d06d651add002416e5513afdbb455666cdde01bb3e257d",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "decide-kernel",
+      "tactic_sha256": "9ac77167f92e560c7b03653563b026543eb9e4c018ebd8e1d3c8be05b979ab88",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "unfold-simp",
+      "tactic_sha256": "2fdb53dd37c5d4e387eab479cf353ebe00ef0c1fb43572953bf24c6264fc3f96",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "unfold-aesop",
+      "tactic_sha256": "745fb3090d6e4150a8979cc791516f8db8fa764f4ac1581cfd37377803a0670d",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "unfold-omega",
+      "tactic_sha256": "af42f82b697fce0e4dcd3aa3c89a59f9a10d3e2bc15dc44963dade357f1143cf",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "unfold-solve",
+      "tactic_sha256": "62c059a9f6b2b5c9cb9e622af68d6ed0b6ed1fd2ffa55d28d8b58919dfdc1d73",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "apply-hyp:h1",
+      "tactic_sha256": "cac35ae61c14f0f125197a56526e5412715cb2ccf31b9b5d398b24aa48d0b847",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "specialize-omega:h1",
+      "tactic_sha256": "c574d183f732de4913d1717da04b478c5459e230ae063c20528c15a6bd48e4da",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "library-elim:FFNP1.proof",
+      "tactic_sha256": "17057239afddb864227f2546893337dd86b3972bcb3c36f1981c341e098d4e68",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "library-elim:FFNP2.proof",
+      "tactic_sha256": "3c20156b47cfff045708b7ec09188eeddc156e2163e47929912948d5660d5351",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "library-elim:FFNP3.proof",
+      "tactic_sha256": "b7730ef895a4b79bfd9124c52816faa129a02e15cbac574198d811d87f64462e",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "library-elim:FFNP4.proof",
+      "tactic_sha256": "a37ff1a2af745f1e963870e890370dd3512ac549830a1386002b2aa023d4c566",
+      "tier": 1
+     }
+    ],
+    "charged": {
+     "candidates": 13,
+     "cpu_ns": 34534641406,
+     "wall_ns": 34602722940
+    },
+    "result": "RESOURCE_LIMIT",
+    "statement": "none_c4free_inter",
+    "target": "FFNConj.none_c4free_inter"
+   },
+   {
+    "attempts": [
+     {
+      "compiled": false,
+      "recipe": "elim-with-library",
+      "tactic_sha256": "85e961623e4f8045249293ace9e5ad1a04f26b9af2c20b64e9e5e105fab05470",
+      "tier": 0
+     },
+     {
+      "compiled": false,
+      "recipe": "decide",
+      "tactic_sha256": "5589aa5863c2d85622d06d651add002416e5513afdbb455666cdde01bb3e257d",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "decide-kernel",
+      "tactic_sha256": "9ac77167f92e560c7b03653563b026543eb9e4c018ebd8e1d3c8be05b979ab88",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "unfold-simp",
+      "tactic_sha256": "2fdb53dd37c5d4e387eab479cf353ebe00ef0c1fb43572953bf24c6264fc3f96",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "unfold-aesop",
+      "tactic_sha256": "745fb3090d6e4150a8979cc791516f8db8fa764f4ac1581cfd37377803a0670d",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "unfold-omega",
+      "tactic_sha256": "af42f82b697fce0e4dcd3aa3c89a59f9a10d3e2bc15dc44963dade357f1143cf",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "unfold-solve",
+      "tactic_sha256": "62c059a9f6b2b5c9cb9e622af68d6ed0b6ed1fd2ffa55d28d8b58919dfdc1d73",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "apply-hyp:h1",
+      "tactic_sha256": "cac35ae61c14f0f125197a56526e5412715cb2ccf31b9b5d398b24aa48d0b847",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "specialize-omega:h1",
+      "tactic_sha256": "c574d183f732de4913d1717da04b478c5459e230ae063c20528c15a6bd48e4da",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "library-elim:FFNP1.proof",
+      "tactic_sha256": "17057239afddb864227f2546893337dd86b3972bcb3c36f1981c341e098d4e68",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "library-elim:FFNP2.proof",
+      "tactic_sha256": "3c20156b47cfff045708b7ec09188eeddc156e2163e47929912948d5660d5351",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "library-elim:FFNP3.proof",
+      "tactic_sha256": "b7730ef895a4b79bfd9124c52816faa129a02e15cbac574198d811d87f64462e",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "library-elim:FFNP4.proof",
+      "tactic_sha256": "a37ff1a2af745f1e963870e890370dd3512ac549830a1386002b2aa023d4c566",
+      "tier": 1
+     }
+    ],
+    "charged": {
+     "candidates": 13,
+     "cpu_ns": 34931777976,
+     "wall_ns": 35040074102
+    },
+    "result": "RESOURCE_LIMIT",
+    "statement": "none_c4free_sdiff",
+    "target": "FFNConj.none_c4free_sdiff"
+   },
+   {
+    "attempts": [
+     {
+      "compiled": false,
+      "recipe": "elim-with-library",
+      "tactic_sha256": "75d6ece6142a75f1e5b5522303c494becaf4ac8daab15cdc254dec2da498a078",
+      "tier": 0
+     },
+     {
+      "compiled": false,
+      "recipe": "decide",
+      "tactic_sha256": "5589aa5863c2d85622d06d651add002416e5513afdbb455666cdde01bb3e257d",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "decide-kernel",
+      "tactic_sha256": "9ac77167f92e560c7b03653563b026543eb9e4c018ebd8e1d3c8be05b979ab88",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "unfold-simp",
+      "tactic_sha256": "227b9ca76b8892fd79455b9effe00f689b80793f42e413fecaf5296d8e21d025",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "unfold-aesop",
+      "tactic_sha256": "76442f9e165f28dade7cfb9f3a7976a3060e1b800918beb36be7db0ea20f1817",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "unfold-omega",
+      "tactic_sha256": "af5509267ee864951a5b72997feb2fee36eda1464a91cfe7304beca6d96ac8c2",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "unfold-solve",
+      "tactic_sha256": "62c059a9f6b2b5c9cb9e622af68d6ed0b6ed1fd2ffa55d28d8b58919dfdc1d73",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "apply-hyp:h1",
+      "tactic_sha256": "3cb680637586d7dbfc2f88cf98ab2c41e950ca47598ee98b4ab3f49161920c2a",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "specialize-omega:h1",
+      "tactic_sha256": "09a5e261ded9469c61972363cb52f71fb928d413bddc223ef9eb655dbd361a40",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "library-elim:FFNP1.proof",
+      "tactic_sha256": "d354bf0a68e8c652376267c40a6d11baa03e3c6bead41e5f19ba19e0427b2329",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "library-elim:FFNP2.proof",
+      "tactic_sha256": "b60262ef4a0d9ab88568bab5554af49685f77543b0e171046f27f1bf1287b9dc",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "library-elim:FFNP3.proof",
+      "tactic_sha256": "1dbc83d1d01bd680d765b30aba83941eb7eb01c9a81939f6e1a40fcc47bd6b20",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "library-elim:FFNP4.proof",
+      "tactic_sha256": "301e19c0bf43dc994c612610c10c9e7234738f857553a25037a51886980c70eb",
+      "tier": 1
+     }
+    ],
+    "charged": {
+     "candidates": 13,
+     "cpu_ns": 34926220999,
+     "wall_ns": 35019428687
+    },
+    "result": "RESOURCE_LIMIT",
+    "statement": "none_c4free_filter",
+    "target": "FFNConj.none_c4free_filter"
+   },
+   {
+    "attempts": [
+     {
+      "compiled": false,
+      "recipe": "elim-with-library",
+      "tactic_sha256": "8542b360e4c7da275ff19f8744bdd1c053c0eb298d677b580b7f82d6d0938ec1",
+      "tier": 0
+     },
+     {
+      "compiled": false,
+      "recipe": "decide",
+      "tactic_sha256": "5589aa5863c2d85622d06d651add002416e5513afdbb455666cdde01bb3e257d",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "decide-kernel",
+      "tactic_sha256": "9ac77167f92e560c7b03653563b026543eb9e4c018ebd8e1d3c8be05b979ab88",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "unfold-simp",
+      "tactic_sha256": "896e52eb22bacd944da549296bbfd2e953f0856d62f81bab5cc69ea7b4581915",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "unfold-aesop",
+      "tactic_sha256": "2d15fb56bc3435ed6ab6e20006fb63b71a5210470c406f70b1e1cef52913e440",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "unfold-omega",
+      "tactic_sha256": "cf123ec344bb096808c0acf65e7b2f131bb96be5758a40cb5c9ac4d6d206ddb8",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "unfold-solve",
+      "tactic_sha256": "62c059a9f6b2b5c9cb9e622af68d6ed0b6ed1fd2ffa55d28d8b58919dfdc1d73",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "apply-hyp:h1",
+      "tactic_sha256": "50454769f946dd8d7fde885bbb7bb4c320fad66e46bcba53e8e8c5117b5f17a1",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "specialize-omega:h1",
+      "tactic_sha256": "82d164998c38f5c5119709b6e4344278f95f5ebef6da9cfdf1d1bb7e4f5b1ea4",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "library-elim:FFNP1.proof",
+      "tactic_sha256": "a361143654efe27856bd63ad4d8bc0d534469b340bb134b778f07a93819e00cd",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "library-elim:FFNP2.proof",
+      "tactic_sha256": "1fdf995d1696e34dc7ded964e19c8827a096a68197ca854f188e569b18ee1c2a",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "library-elim:FFNP3.proof",
+      "tactic_sha256": "ac0d472008f4b7d83fea555d7af964083edd0f3e5e5e9c5242c2605870542286",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "library-elim:FFNP4.proof",
+      "tactic_sha256": "23227870e04aec618958df9a0755f67ac530c10a92ac4dd19af979e03491d333",
+      "tier": 1
+     }
+    ],
+    "charged": {
+     "candidates": 13,
+     "cpu_ns": 34675709547,
+     "wall_ns": 34797987557
+    },
+    "result": "RESOURCE_LIMIT",
+    "statement": "none_c4free_erase",
+    "target": "FFNConj.none_c4free_erase"
+   },
+   {
+    "attempts": [
+     {
+      "compiled": true,
+      "recipe": "counterexample-evaluation",
+      "tactic_sha256": "b1c8d5382bd145872d2eca2a58b75e3bc5d3682cc0f8d7acbd975982e02cee60",
+      "tier": 0
+     }
+    ],
+    "charged": {
+     "candidates": 1,
+     "cpu_ns": 1258791319,
+     "wall_ns": 1291437543
+    },
+    "result": "COMPILED",
+    "statement": "none_nonempty_inter",
+    "target": "FFNConj.none_nonempty_inter_negation"
+   },
+   {
+    "attempts": [
+     {
+      "compiled": true,
+      "recipe": "counterexample-evaluation",
+      "tactic_sha256": "c323d93fd94ff7b542b33df188893936f2dc775beb9fc3cd7e3e70b72cac870a",
+      "tier": 0
+     }
+    ],
+    "charged": {
+     "candidates": 1,
+     "cpu_ns": 1294963514,
+     "wall_ns": 1319275946
+    },
+    "result": "COMPILED",
+    "statement": "none_nonempty_sdiff",
+    "target": "FFNConj.none_nonempty_sdiff_negation"
+   },
+   {
+    "attempts": [
+     {
+      "compiled": true,
+      "recipe": "counterexample-evaluation",
+      "tactic_sha256": "8e9020f7b1203a90b965a112d637865a8816610cf62cc9f06b48a7624433e32f",
+      "tier": 0
+     }
+    ],
+    "charged": {
+     "candidates": 1,
+     "cpu_ns": 1340037274,
+     "wall_ns": 1375632432
+    },
+    "result": "COMPILED",
+    "statement": "none_nonempty_filter",
+    "target": "FFNConj.none_nonempty_filter_negation"
+   },
+   {
+    "attempts": [
+     {
+      "compiled": true,
+      "recipe": "counterexample-evaluation",
+      "tactic_sha256": "2fba1dc1b30aeaab2e54dcbd11953f6146c59d2eb1ead8813b3d6f11940411e0",
+      "tier": 0
+     }
+    ],
+    "charged": {
+     "candidates": 1,
+     "cpu_ns": 1116844102,
+     "wall_ns": 1147933773
+    },
+    "result": "COMPILED",
+    "statement": "none_nonempty_erase",
+    "target": "FFNConj.none_nonempty_erase_negation"
+   }
+  ],
+  "search_candidates": 150,
+  "search_context_cpu_ns": 24424220366,
+  "search_cpu_ns": 233979447507,
+  "search_runs": 16
+ },
+ "counterexamples": [
+  {
+   "checked": true,
+   "statement": "none_nonempty_inter",
+   "values": {
+    "S": "({(2, 2)} : GT.Edges)",
+    "T": "({(0, 1)} : GT.Edges)"
+   }
+  },
+  {
+   "checked": true,
+   "statement": "none_nonempty_sdiff",
+   "values": {
+    "S": "({(1, 1)} : GT.Edges)",
+    "T": "({(1, 1), (2, 2)} : GT.Edges)"
+   }
+  },
+  {
+   "checked": true,
+   "statement": "none_nonempty_filter",
+   "values": {
+    "S": "({(1, 1)} : GT.Edges)",
+    "q": "(fun e => decide (e ∈ ({(3, 1)} : GT.Edges)))"
+   }
+  },
+  {
+   "checked": true,
+   "statement": "none_nonempty_erase",
+   "values": {
+    "S": "({(0, 0)} : GT.Edges)",
+    "e": "((0, 0) : ℕ × ℕ)"
+   }
+  }
+ ],
+ "declarations": [
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "GTDefs",
+   "name": "GT.TriangleFree",
+   "type_sha256": "c98548115419ec271dfd495799f10b35c81fad06e346ef970bd969a518c2a9f4"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "GTDefs",
+   "name": "GT.Edges",
+   "type_sha256": "baaddf70fb5d432b8bd948ef91d6f910124a6d138edae4d5f000c4610ddc8eae"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "GTDefs",
+   "name": "GT.instDecidableTriangleFree",
+   "type_sha256": "5f6ad93fcd86d217b85aa0d5ae9d8484d2f18f9af307b85f1d55bcb68ce406d1"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "HSDefs",
+   "name": "HS.instDecidableBounded8",
+   "type_sha256": "bb73792b7b918c05e489e5be220ab0e645e6d75f1b8616f9f4eb5c0dd437d9d2"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "HSDefs",
+   "name": "HS.Bounded8",
+   "type_sha256": "c98548115419ec271dfd495799f10b35c81fad06e346ef970bd969a518c2a9f4"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "HSDefs",
+   "name": "HS.instDecidableSimple",
+   "type_sha256": "7c27c71eaad7318747b484aa82461f70d01434b8c83c502b94d09613463fea20"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "HSDefs",
+   "name": "HS.Simple",
+   "type_sha256": "c98548115419ec271dfd495799f10b35c81fad06e346ef970bd969a518c2a9f4"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "HSConj",
+   "name": "HSConj.down_bounded",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "HSConj",
+   "name": "HSConj.down_simple",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "HSConj",
+   "name": "HSConj.down_tf",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "HSConj",
+   "name": "HSConj.inter_tf",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "HSConj",
+   "name": "HSConj.inter_simple",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "RCDefs",
+   "name": "RC.C0",
+   "type_sha256": "9e56932812f3736513e0f638114f0463ac36ec2d16bb971de8dbb8a8fc4c56bc"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "G4Defs",
+   "name": "G4.verts",
+   "type_sha256": "7a1ef65cd458ebf10bcecd44c843b1710d493ee0d98e109b6abc53d948459791"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "G4Defs",
+   "name": "G4.adj",
+   "type_sha256": "af2cc6046b4db7f006731f612da96fe9072947a3524d785304d4acef542f9814"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "G4Defs",
+   "name": "G4.instDecidableAdj",
+   "type_sha256": "15bfca590acf8edebe32601b938585677ac6d2a4d3d45c318ce25da607e3af52"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "G4Defs",
+   "name": "G4.C4Free",
+   "type_sha256": "c98548115419ec271dfd495799f10b35c81fad06e346ef970bd969a518c2a9f4"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "G4Defs",
+   "name": "G4.instDecidableC4Free",
+   "type_sha256": "696d08db70be0d43900686ce88431e9640ecc9ab7d9c645364f85ffea376c365"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "FFDefs",
+   "name": "FF.LoopFree",
+   "type_sha256": "c98548115419ec271dfd495799f10b35c81fad06e346ef970bd969a518c2a9f4"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "FFDefs",
+   "name": "FF.Matching",
+   "type_sha256": "c98548115419ec271dfd495799f10b35c81fad06e346ef970bd969a518c2a9f4"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "FFDefs",
+   "name": "FF.instDecidableMatching",
+   "type_sha256": "f1eb605ce2edb6ef7bb1cf8da2ed3f4e9fa42c30ed97cb62b915a3a8ad23a2ff"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "FFDefs",
+   "name": "FF.instDecidableNonEmpty",
+   "type_sha256": "93046c8536d6d52cc5d00890d47f133c6eb453baf84cd131783aed6f38cfcb03"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "FFDefs",
+   "name": "FF.NonEmpty",
+   "type_sha256": "c98548115419ec271dfd495799f10b35c81fad06e346ef970bd969a518c2a9f4"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "FFDefs",
+   "name": "FF.instDecidableLoopFree",
+   "type_sha256": "b254270f9c7a70752543b6e8548e183942a64fd80cf9cbf1a76167625b0346cf"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "FFNConj",
+   "name": "FFNConj.none_nonempty_erase",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "FFNConj",
+   "name": "FFNConj.none_nonempty_sdiff_negation",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "FFNConj",
+   "name": "FFNConj.none_loopfree_sdiff",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "FFNConj",
+   "name": "FFNConj.none_c4free_sdiff",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "FFNConj",
+   "name": "FFNConj.none_c4free_filter",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "FFNConj",
+   "name": "FFNConj.none_loopfree_filter",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "FFNConj",
+   "name": "FFNConj.none_loopfree_erase",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "FFNConj",
+   "name": "FFNConj.none_nonempty_inter",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "FFNConj",
+   "name": "FFNConj.none_nonempty_sdiff",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "FFNConj",
+   "name": "FFNConj.none_nonempty_erase_negation",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "FFNConj",
+   "name": "FFNConj.none_matching_inter",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "FFNConj",
+   "name": "FFNConj.none_nonempty_filter",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "FFNConj",
+   "name": "FFNConj.none_c4free_erase",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "FFNConj",
+   "name": "FFNConj.none_nonempty_inter_negation",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "FFNConj",
+   "name": "FFNConj.none_matching_erase",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "FFNConj",
+   "name": "FFNConj.none_matching_filter",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "FFNConj",
+   "name": "FFNConj.none_nonempty_filter_negation",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "FFNConj",
+   "name": "FFNConj.none_loopfree_inter",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "FFNConj",
+   "name": "FFNConj.none_c4free_inter",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "FFNConj",
+   "name": "FFNConj.none_matching_sdiff",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "theorem",
+   "module": "FFNP1",
+   "name": "FFNP1.proof",
+   "type_sha256": "8c9e32610efbb9437588db764e79c818c41caa537c7f32020e0408fa890a9783"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "theorem",
+   "module": "FFNP1",
+   "name": "FF.NonEmpty.eq_1",
+   "type_sha256": "72e33063b96fbc8c205e3f78c8b7be0e2998ce21c5c789809971da0cfac36f37"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "theorem",
+   "module": "FFNP1",
+   "name": "RC.C0.eq_1",
+   "type_sha256": "f42a870224ee0b036a86f2fff5470d63cf37fed4f8bcc82d75960d7c86299308"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "theorem",
+   "module": "FFNP1",
+   "name": "G4.C4Free.eq_1",
+   "type_sha256": "a99df87337b3a79887bf3309af80949e666d1f9c5ba664de6526779a99185ad2"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "theorem",
+   "module": "FFNP1",
+   "name": "G4.adj.eq_1",
+   "type_sha256": "f605caac356a65f93233c24feb99fcafc192de9b994e2991bb0a4146f7da912d"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "theorem",
+   "module": "FFNP1",
+   "name": "FF.LoopFree.eq_1",
+   "type_sha256": "ac6896e31cc5b194fa516975c2ec75eea728f96f0bdcb376d0e7092752188b77"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "theorem",
+   "module": "FFNP1",
+   "name": "FF.Matching.eq_1",
+   "type_sha256": "eb13d61965142ae5835d8bca8c115f68a3d34ae190733378e5980d031d5562d5"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "theorem",
+   "module": "FFNP1",
+   "name": "G4.verts.eq_1",
+   "type_sha256": "20d2f77cbac4d174fa3683610a0c13a79ca557b7c8bd28bced602466cfb46a4e"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "theorem",
+   "module": "FFNP2",
+   "name": "FFNP2.proof",
+   "type_sha256": "ffa23ec6ff71597815389d63913ec31f50696eb8a090009c6e89d96884f70e92"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "theorem",
+   "module": "FFNP3",
+   "name": "FFNP3.proof",
+   "type_sha256": "5676b709a20f3df8eea54bf08072343c85e8bc1f0cc7e2a8e55b6263ad2f6de3"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "theorem",
+   "module": "FFNP4",
+   "name": "FFNP4.proof",
+   "type_sha256": "36ec758d5167f3720009f5c78606fced79418a978c9737d62296a7a0ea057716"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "theorem",
+   "module": "FFNP5",
+   "name": "FFNP5.proof",
+   "type_sha256": "65e748deab1020ea8c659792099f49154677a6658f2ae797d44de4a056170210"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "theorem",
+   "module": "FFNP6",
+   "name": "FFNP6.proof",
+   "type_sha256": "fd36e5ff17866ae36301f83e4902a31f177f526a866f1768d6abe646a8f8f346"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "theorem",
+   "module": "FFNP7",
+   "name": "FFNP7.proof",
+   "type_sha256": "b446dc2c1db87fa24aa82bda37dc7ecd39afb94f29550b21d243972a3b53f0b6"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "theorem",
+   "module": "FFNP8",
+   "name": "FFNP8.proof",
+   "type_sha256": "f24647ddc857aa09674d68682246126b30f1d654f3e75d0afc986d5d9c05f4b5"
+  }
+ ],
+ "definitions": [
+  {
+   "module": "GTDefs",
+   "name": "GT.TriangleFree",
+   "origin": "trusted-generated",
+   "type_sha256": "c98548115419ec271dfd495799f10b35c81fad06e346ef970bd969a518c2a9f4"
+  },
+  {
+   "module": "GTDefs",
+   "name": "GT.Edges",
+   "origin": "trusted-generated",
+   "type_sha256": "baaddf70fb5d432b8bd948ef91d6f910124a6d138edae4d5f000c4610ddc8eae"
+  },
+  {
+   "module": "GTDefs",
+   "name": "GT.instDecidableTriangleFree",
+   "origin": "trusted-generated",
+   "type_sha256": "5f6ad93fcd86d217b85aa0d5ae9d8484d2f18f9af307b85f1d55bcb68ce406d1"
+  },
+  {
+   "module": "HSDefs",
+   "name": "HS.instDecidableBounded8",
+   "origin": "trusted-generated",
+   "type_sha256": "bb73792b7b918c05e489e5be220ab0e645e6d75f1b8616f9f4eb5c0dd437d9d2"
+  },
+  {
+   "module": "HSDefs",
+   "name": "HS.Bounded8",
+   "origin": "trusted-generated",
+   "type_sha256": "c98548115419ec271dfd495799f10b35c81fad06e346ef970bd969a518c2a9f4"
+  },
+  {
+   "module": "HSDefs",
+   "name": "HS.instDecidableSimple",
+   "origin": "trusted-generated",
+   "type_sha256": "7c27c71eaad7318747b484aa82461f70d01434b8c83c502b94d09613463fea20"
+  },
+  {
+   "module": "HSDefs",
+   "name": "HS.Simple",
+   "origin": "trusted-generated",
+   "type_sha256": "c98548115419ec271dfd495799f10b35c81fad06e346ef970bd969a518c2a9f4"
+  },
+  {
+   "module": "HSConj",
+   "name": "HSConj.down_bounded",
+   "origin": "trusted-generated",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "module": "HSConj",
+   "name": "HSConj.down_simple",
+   "origin": "trusted-generated",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "module": "HSConj",
+   "name": "HSConj.down_tf",
+   "origin": "trusted-generated",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "module": "HSConj",
+   "name": "HSConj.inter_tf",
+   "origin": "trusted-generated",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "module": "HSConj",
+   "name": "HSConj.inter_simple",
+   "origin": "trusted-generated",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "module": "RCDefs",
+   "name": "RC.C0",
+   "origin": "trusted-generated",
+   "type_sha256": "9e56932812f3736513e0f638114f0463ac36ec2d16bb971de8dbb8a8fc4c56bc"
+  },
+  {
+   "module": "G4Defs",
+   "name": "G4.verts",
+   "origin": "trusted-generated",
+   "type_sha256": "7a1ef65cd458ebf10bcecd44c843b1710d493ee0d98e109b6abc53d948459791"
+  },
+  {
+   "module": "G4Defs",
+   "name": "G4.adj",
+   "origin": "trusted-generated",
+   "type_sha256": "af2cc6046b4db7f006731f612da96fe9072947a3524d785304d4acef542f9814"
+  },
+  {
+   "module": "G4Defs",
+   "name": "G4.instDecidableAdj",
+   "origin": "trusted-generated",
+   "type_sha256": "15bfca590acf8edebe32601b938585677ac6d2a4d3d45c318ce25da607e3af52"
+  },
+  {
+   "module": "G4Defs",
+   "name": "G4.C4Free",
+   "origin": "trusted-generated",
+   "type_sha256": "c98548115419ec271dfd495799f10b35c81fad06e346ef970bd969a518c2a9f4"
+  },
+  {
+   "module": "G4Defs",
+   "name": "G4.instDecidableC4Free",
+   "origin": "trusted-generated",
+   "type_sha256": "696d08db70be0d43900686ce88431e9640ecc9ab7d9c645364f85ffea376c365"
+  },
+  {
+   "module": "FFDefs",
+   "name": "FF.LoopFree",
+   "origin": "trusted-generated",
+   "type_sha256": "c98548115419ec271dfd495799f10b35c81fad06e346ef970bd969a518c2a9f4"
+  },
+  {
+   "module": "FFDefs",
+   "name": "FF.Matching",
+   "origin": "trusted-generated",
+   "type_sha256": "c98548115419ec271dfd495799f10b35c81fad06e346ef970bd969a518c2a9f4"
+  },
+  {
+   "module": "FFDefs",
+   "name": "FF.instDecidableMatching",
+   "origin": "trusted-generated",
+   "type_sha256": "f1eb605ce2edb6ef7bb1cf8da2ed3f4e9fa42c30ed97cb62b915a3a8ad23a2ff"
+  },
+  {
+   "module": "FFDefs",
+   "name": "FF.instDecidableNonEmpty",
+   "origin": "trusted-generated",
+   "type_sha256": "93046c8536d6d52cc5d00890d47f133c6eb453baf84cd131783aed6f38cfcb03"
+  },
+  {
+   "module": "FFDefs",
+   "name": "FF.NonEmpty",
+   "origin": "trusted-generated",
+   "type_sha256": "c98548115419ec271dfd495799f10b35c81fad06e346ef970bd969a518c2a9f4"
+  },
+  {
+   "module": "FFDefs",
+   "name": "FF.instDecidableLoopFree",
+   "origin": "trusted-generated",
+   "type_sha256": "b254270f9c7a70752543b6e8548e183942a64fd80cf9cbf1a76167625b0346cf"
+  },
+  {
+   "module": "FFNConj",
+   "name": "FFNConj.none_nonempty_erase",
+   "origin": "trusted-generated",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "module": "FFNConj",
+   "name": "FFNConj.none_nonempty_sdiff_negation",
+   "origin": "trusted-generated",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "module": "FFNConj",
+   "name": "FFNConj.none_loopfree_sdiff",
+   "origin": "trusted-generated",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "module": "FFNConj",
+   "name": "FFNConj.none_c4free_sdiff",
+   "origin": "trusted-generated",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "module": "FFNConj",
+   "name": "FFNConj.none_c4free_filter",
+   "origin": "trusted-generated",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "module": "FFNConj",
+   "name": "FFNConj.none_loopfree_filter",
+   "origin": "trusted-generated",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "module": "FFNConj",
+   "name": "FFNConj.none_loopfree_erase",
+   "origin": "trusted-generated",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "module": "FFNConj",
+   "name": "FFNConj.none_nonempty_inter",
+   "origin": "trusted-generated",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "module": "FFNConj",
+   "name": "FFNConj.none_nonempty_sdiff",
+   "origin": "trusted-generated",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "module": "FFNConj",
+   "name": "FFNConj.none_nonempty_erase_negation",
+   "origin": "trusted-generated",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "module": "FFNConj",
+   "name": "FFNConj.none_matching_inter",
+   "origin": "trusted-generated",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "module": "FFNConj",
+   "name": "FFNConj.none_nonempty_filter",
+   "origin": "trusted-generated",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "module": "FFNConj",
+   "name": "FFNConj.none_c4free_erase",
+   "origin": "trusted-generated",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "module": "FFNConj",
+   "name": "FFNConj.none_nonempty_inter_negation",
+   "origin": "trusted-generated",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "module": "FFNConj",
+   "name": "FFNConj.none_matching_erase",
+   "origin": "trusted-generated",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "module": "FFNConj",
+   "name": "FFNConj.none_matching_filter",
+   "origin": "trusted-generated",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "module": "FFNConj",
+   "name": "FFNConj.none_nonempty_filter_negation",
+   "origin": "trusted-generated",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "module": "FFNConj",
+   "name": "FFNConj.none_loopfree_inter",
+   "origin": "trusted-generated",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "module": "FFNConj",
+   "name": "FFNConj.none_c4free_inter",
+   "origin": "trusted-generated",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "module": "FFNConj",
+   "name": "FFNConj.none_matching_sdiff",
+   "origin": "trusted-generated",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  }
+ ],
+ "dependencies": {
+  "FF.LoopFree": {
+   "package": [
+    "GT.Edges"
+   ],
+   "workspace_modules": [
+    "Init.Core",
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Defs",
+    "Mathlib.Data.SetLike.Basic"
+   ]
+  },
+  "FF.LoopFree.eq_1": {
+   "package": [
+    "FF.LoopFree",
+    "GT.Edges"
+   ],
+   "workspace_modules": [
+    "Init.Core",
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Defs",
+    "Mathlib.Data.SetLike.Basic"
+   ]
+  },
+  "FF.Matching": {
+   "package": [
+    "GT.Edges"
+   ],
+   "workspace_modules": [
+    "Init.Core",
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Defs",
+    "Mathlib.Data.SetLike.Basic"
+   ]
+  },
+  "FF.Matching.eq_1": {
+   "package": [
+    "FF.Matching",
+    "GT.Edges"
+   ],
+   "workspace_modules": [
+    "Init.Core",
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Defs",
+    "Mathlib.Data.SetLike.Basic"
+   ]
+  },
+  "FF.NonEmpty": {
+   "package": [
+    "GT.Edges"
+   ],
+   "workspace_modules": [
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Empty"
+   ]
+  },
+  "FF.NonEmpty.eq_1": {
+   "package": [
+    "FF.NonEmpty",
+    "GT.Edges"
+   ],
+   "workspace_modules": [
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Empty"
+   ]
+  },
+  "FF.instDecidableLoopFree": {
+   "package": [
+    "FF.LoopFree",
+    "GT.Edges"
+   ],
+   "workspace_modules": [
+    "Init.Core",
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Defs",
+    "Mathlib.Data.SetLike.Basic"
+   ]
+  },
+  "FF.instDecidableMatching": {
+   "package": [
+    "FF.Matching",
+    "GT.Edges"
+   ],
+   "workspace_modules": [
+    "Init.Core",
+    "Init.Prelude",
+    "Init.PropLemmas",
+    "Mathlib.Data.Finset.Defs",
+    "Mathlib.Data.SetLike.Basic"
+   ]
+  },
+  "FF.instDecidableNonEmpty": {
+   "package": [
+    "FF.NonEmpty",
+    "GT.Edges"
+   ],
+   "workspace_modules": [
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Empty"
+   ]
+  },
+  "FFNConj.none_c4free_erase": {
+   "package": [
+    "G4.C4Free",
+    "G4.adj",
+    "G4.verts",
+    "GT.Edges"
+   ],
+   "workspace_modules": [
+    "Init.Core",
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Erase"
+   ]
+  },
+  "FFNConj.none_c4free_filter": {
+   "package": [
+    "G4.C4Free",
+    "G4.adj",
+    "G4.verts",
+    "GT.Edges"
+   ],
+   "workspace_modules": [
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Filter"
+   ]
+  },
+  "FFNConj.none_c4free_inter": {
+   "package": [
+    "G4.C4Free",
+    "G4.adj",
+    "G4.verts",
+    "GT.Edges"
+   ],
+   "workspace_modules": [
+    "Init.Core",
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Lattice.Basic"
+   ]
+  },
+  "FFNConj.none_c4free_sdiff": {
+   "package": [
+    "G4.C4Free",
+    "G4.adj",
+    "G4.verts",
+    "GT.Edges"
+   ],
+   "workspace_modules": [
+    "Init.Core",
+    "Init.Prelude",
+    "Mathlib.Data.Finset.SDiff"
+   ]
+  },
+  "FFNConj.none_loopfree_erase": {
+   "package": [
+    "FF.LoopFree",
+    "GT.Edges"
+   ],
+   "workspace_modules": [
+    "Init.Core",
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Erase"
+   ]
+  },
+  "FFNConj.none_loopfree_filter": {
+   "package": [
+    "FF.LoopFree",
+    "GT.Edges"
+   ],
+   "workspace_modules": [
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Filter"
+   ]
+  },
+  "FFNConj.none_loopfree_inter": {
+   "package": [
+    "FF.LoopFree",
+    "GT.Edges"
+   ],
+   "workspace_modules": [
+    "Init.Core",
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Lattice.Basic"
+   ]
+  },
+  "FFNConj.none_loopfree_sdiff": {
+   "package": [
+    "FF.LoopFree",
+    "GT.Edges"
+   ],
+   "workspace_modules": [
+    "Init.Core",
+    "Init.Prelude",
+    "Mathlib.Data.Finset.SDiff"
+   ]
+  },
+  "FFNConj.none_matching_erase": {
+   "package": [
+    "FF.Matching",
+    "GT.Edges"
+   ],
+   "workspace_modules": [
+    "Init.Core",
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Erase"
+   ]
+  },
+  "FFNConj.none_matching_filter": {
+   "package": [
+    "FF.Matching",
+    "GT.Edges"
+   ],
+   "workspace_modules": [
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Filter"
+   ]
+  },
+  "FFNConj.none_matching_inter": {
+   "package": [
+    "FF.Matching",
+    "GT.Edges"
+   ],
+   "workspace_modules": [
+    "Init.Core",
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Lattice.Basic"
+   ]
+  },
+  "FFNConj.none_matching_sdiff": {
+   "package": [
+    "FF.Matching",
+    "GT.Edges"
+   ],
+   "workspace_modules": [
+    "Init.Core",
+    "Init.Prelude",
+    "Mathlib.Data.Finset.SDiff"
+   ]
+  },
+  "FFNConj.none_nonempty_erase": {
+   "package": [
+    "FF.NonEmpty",
+    "GT.Edges"
+   ],
+   "workspace_modules": [
+    "Init.Core",
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Erase"
+   ]
+  },
+  "FFNConj.none_nonempty_erase_negation": {
+   "package": [
+    "FF.NonEmpty",
+    "FFNConj.none_nonempty_erase",
+    "GT.Edges"
+   ],
+   "workspace_modules": [
+    "Init.Prelude"
+   ]
+  },
+  "FFNConj.none_nonempty_filter": {
+   "package": [
+    "FF.NonEmpty",
+    "GT.Edges"
+   ],
+   "workspace_modules": [
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Filter"
+   ]
+  },
+  "FFNConj.none_nonempty_filter_negation": {
+   "package": [
+    "FF.NonEmpty",
+    "FFNConj.none_nonempty_filter",
+    "GT.Edges"
+   ],
+   "workspace_modules": [
+    "Init.Prelude"
+   ]
+  },
+  "FFNConj.none_nonempty_inter": {
+   "package": [
+    "FF.NonEmpty",
+    "GT.Edges"
+   ],
+   "workspace_modules": [
+    "Init.Core",
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Lattice.Basic"
+   ]
+  },
+  "FFNConj.none_nonempty_inter_negation": {
+   "package": [
+    "FF.NonEmpty",
+    "FFNConj.none_nonempty_inter",
+    "GT.Edges"
+   ],
+   "workspace_modules": [
+    "Init.Prelude"
+   ]
+  },
+  "FFNConj.none_nonempty_sdiff": {
+   "package": [
+    "FF.NonEmpty",
+    "GT.Edges"
+   ],
+   "workspace_modules": [
+    "Init.Core",
+    "Init.Prelude",
+    "Mathlib.Data.Finset.SDiff"
+   ]
+  },
+  "FFNConj.none_nonempty_sdiff_negation": {
+   "package": [
+    "FF.NonEmpty",
+    "FFNConj.none_nonempty_sdiff",
+    "GT.Edges"
+   ],
+   "workspace_modules": [
+    "Init.Prelude"
+   ]
+  },
+  "FFNP1.proof": {
+   "package": [
+    "FF.LoopFree",
+    "FFNConj.none_loopfree_inter",
+    "GT.Edges"
+   ],
+   "workspace_modules": [
+    "Init.Core",
+    "Init.Data.Prod",
+    "Init.Prelude",
+    "Init.SimpLemmas",
+    "Mathlib.Data.Finset.Defs",
+    "Mathlib.Data.Finset.Lattice.Basic",
+    "Mathlib.Data.Prod.Basic",
+    "Mathlib.Data.SetLike.Basic"
+   ]
+  },
+  "FFNP2.proof": {
+   "package": [
+    "FF.LoopFree",
+    "FFNConj.none_loopfree_sdiff",
+    "GT.Edges"
+   ],
+   "workspace_modules": [
+    "Init.Core",
+    "Init.Data.Prod",
+    "Init.Prelude",
+    "Init.SimpLemmas",
+    "Mathlib.Data.Finset.Defs",
+    "Mathlib.Data.Finset.SDiff",
+    "Mathlib.Data.Prod.Basic",
+    "Mathlib.Data.SetLike.Basic"
+   ]
+  },
+  "FFNP3.proof": {
+   "package": [
+    "FF.LoopFree",
+    "FFNConj.none_loopfree_filter",
+    "GT.Edges"
+   ],
+   "workspace_modules": [
+    "Init.Core",
+    "Init.Data.Prod",
+    "Init.Prelude",
+    "Init.SimpLemmas",
+    "Mathlib.Data.Finset.Defs",
+    "Mathlib.Data.Finset.Filter",
+    "Mathlib.Data.Prod.Basic",
+    "Mathlib.Data.SetLike.Basic"
+   ]
+  },
+  "FFNP4.proof": {
+   "package": [
+    "FF.LoopFree",
+    "FFNConj.none_loopfree_erase",
+    "GT.Edges"
+   ],
+   "workspace_modules": [
+    "Init.Core",
+    "Init.Data.Prod",
+    "Init.Prelude",
+    "Init.SimpLemmas",
+    "Mathlib.Data.Finset.Defs",
+    "Mathlib.Data.Finset.Erase",
+    "Mathlib.Data.Prod.Basic",
+    "Mathlib.Data.SetLike.Basic"
+   ]
+  },
+  "FFNP5.proof": {
+   "package": [
+    "FF.NonEmpty",
+    "FF.instDecidableNonEmpty",
+    "FFNConj.none_nonempty_inter",
+    "FFNConj.none_nonempty_inter_negation",
+    "FFNP5.proof._proof_1_1",
+    "FFNP5.proof._proof_1_2",
+    "GT.Edges"
+   ],
+   "workspace_modules": [
+    "Init.Core",
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Insert",
+    "Mathlib.Data.Finset.Lattice.Basic"
+   ]
+  },
+  "FFNP5.proof._proof_1_1": {
+   "package": [
+    "FF.NonEmpty",
+    "FF.instDecidableNonEmpty",
+    "GT.Edges"
+   ],
+   "workspace_modules": [
+    "Init.Core",
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Insert"
+   ]
+  },
+  "FFNP5.proof._proof_1_2": {
+   "package": [
+    "FF.NonEmpty",
+    "FF.instDecidableNonEmpty",
+    "GT.Edges"
+   ],
+   "workspace_modules": [
+    "Init.Core",
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Insert",
+    "Mathlib.Data.Finset.Lattice.Basic"
+   ]
+  },
+  "FFNP6.proof": {
+   "package": [
+    "FF.NonEmpty",
+    "FF.instDecidableNonEmpty",
+    "FFNConj.none_nonempty_sdiff",
+    "FFNConj.none_nonempty_sdiff_negation",
+    "FFNP6.proof._proof_1_1",
+    "FFNP6.proof._proof_1_2",
+    "GT.Edges"
+   ],
+   "workspace_modules": [
+    "Init.Core",
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Insert",
+    "Mathlib.Data.Finset.SDiff"
+   ]
+  },
+  "FFNP6.proof._proof_1_1": {
+   "package": [
+    "FF.NonEmpty",
+    "FF.instDecidableNonEmpty",
+    "GT.Edges"
+   ],
+   "workspace_modules": [
+    "Init.Core",
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Insert"
+   ]
+  },
+  "FFNP6.proof._proof_1_2": {
+   "package": [
+    "FF.NonEmpty",
+    "FF.instDecidableNonEmpty",
+    "GT.Edges"
+   ],
+   "workspace_modules": [
+    "Init.Core",
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Insert",
+    "Mathlib.Data.Finset.SDiff"
+   ]
+  },
+  "FFNP7.proof": {
+   "package": [
+    "FF.NonEmpty",
+    "FF.instDecidableNonEmpty",
+    "FFNConj.none_nonempty_filter",
+    "FFNConj.none_nonempty_filter_negation",
+    "FFNP7.proof._proof_1_1",
+    "FFNP7.proof._proof_1_2",
+    "GT.Edges"
+   ],
+   "workspace_modules": [
+    "Init.Core",
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Defs",
+    "Mathlib.Data.Finset.Filter",
+    "Mathlib.Data.Finset.Insert",
+    "Mathlib.Data.SetLike.Basic"
+   ]
+  },
+  "FFNP7.proof._proof_1_1": {
+   "package": [
+    "FF.NonEmpty",
+    "FF.instDecidableNonEmpty",
+    "GT.Edges"
+   ],
+   "workspace_modules": [
+    "Init.Core",
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Insert"
+   ]
+  },
+  "FFNP7.proof._proof_1_2": {
+   "package": [
+    "FF.NonEmpty",
+    "FF.instDecidableNonEmpty",
+    "GT.Edges"
+   ],
+   "workspace_modules": [
+    "Init.Core",
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Defs",
+    "Mathlib.Data.Finset.Filter",
+    "Mathlib.Data.Finset.Insert",
+    "Mathlib.Data.SetLike.Basic"
+   ]
+  },
+  "FFNP8.proof": {
+   "package": [
+    "FF.NonEmpty",
+    "FF.instDecidableNonEmpty",
+    "FFNConj.none_nonempty_erase",
+    "FFNConj.none_nonempty_erase_negation",
+    "FFNP8.proof._proof_1_1",
+    "FFNP8.proof._proof_1_2",
+    "GT.Edges"
+   ],
+   "workspace_modules": [
+    "Init.Core",
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Erase",
+    "Mathlib.Data.Finset.Insert"
+   ]
+  },
+  "FFNP8.proof._proof_1_1": {
+   "package": [
+    "FF.NonEmpty",
+    "FF.instDecidableNonEmpty",
+    "GT.Edges"
+   ],
+   "workspace_modules": [
+    "Init.Core",
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Insert"
+   ]
+  },
+  "FFNP8.proof._proof_1_2": {
+   "package": [
+    "FF.NonEmpty",
+    "FF.instDecidableNonEmpty",
+    "GT.Edges"
+   ],
+   "workspace_modules": [
+    "Init.Core",
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Erase",
+    "Mathlib.Data.Finset.Insert"
+   ]
+  },
+  "G4.C4Free": {
+   "package": [
+    "G4.adj",
+    "G4.verts",
+    "GT.Edges"
+   ],
+   "workspace_modules": [
+    "Init.Core",
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Defs",
+    "Mathlib.Data.SetLike.Basic"
+   ]
+  },
+  "G4.C4Free.eq_1": {
+   "package": [
+    "G4.C4Free",
+    "G4.adj",
+    "G4.verts",
+    "GT.Edges"
+   ],
+   "workspace_modules": [
+    "Init.Core",
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Defs",
+    "Mathlib.Data.SetLike.Basic"
+   ]
+  },
+  "G4.adj": {
+   "package": [
+    "GT.Edges"
+   ],
+   "workspace_modules": [
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Defs",
+    "Mathlib.Data.SetLike.Basic"
+   ]
+  },
+  "G4.adj.eq_1": {
+   "package": [
+    "G4.adj",
+    "GT.Edges"
+   ],
+   "workspace_modules": [
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Defs",
+    "Mathlib.Data.SetLike.Basic"
+   ]
+  },
+  "G4.instDecidableAdj": {
+   "package": [
+    "G4.adj",
+    "GT.Edges"
+   ],
+   "workspace_modules": [
+    "Init.Core",
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Defs",
+    "Mathlib.Data.SetLike.Basic"
+   ]
+  },
+  "G4.instDecidableC4Free": {
+   "package": [
+    "G4.C4Free",
+    "G4.adj",
+    "G4.instDecidableAdj",
+    "G4.verts",
+    "GT.Edges"
+   ],
+   "workspace_modules": [
+    "Init.Core",
+    "Init.Prelude",
+    "Init.PropLemmas",
+    "Mathlib.Data.Finset.Defs",
+    "Mathlib.Data.SetLike.Basic"
+   ]
+  },
+  "G4.verts": {
+   "package": [
+    "GT.Edges"
+   ],
+   "workspace_modules": [
+    "Init.Core",
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Defs",
+    "Mathlib.Data.Finset.Image",
+    "Mathlib.Data.Finset.Lattice.Basic"
+   ]
+  },
+  "G4.verts.eq_1": {
+   "package": [
+    "G4.verts",
+    "GT.Edges"
+   ],
+   "workspace_modules": [
+    "Init.Core",
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Defs",
+    "Mathlib.Data.Finset.Image",
+    "Mathlib.Data.Finset.Lattice.Basic"
+   ]
+  },
+  "GT.Edges": {
+   "package": [],
+   "workspace_modules": [
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Defs"
+   ]
+  },
+  "GT.TriangleFree": {
+   "package": [
+    "GT.Edges"
+   ],
+   "workspace_modules": [
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Defs",
+    "Mathlib.Data.SetLike.Basic"
+   ]
+  },
+  "GT.instDecidableTriangleFree": {
+   "package": [
+    "GT.Edges",
+    "GT.TriangleFree"
+   ],
+   "workspace_modules": [
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Defs",
+    "Mathlib.Data.SetLike.Basic"
+   ]
+  },
+  "HS.Bounded8": {
+   "package": [
+    "GT.Edges"
+   ],
+   "workspace_modules": [
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Defs",
+    "Mathlib.Data.SetLike.Basic"
+   ]
+  },
+  "HS.Simple": {
+   "package": [
+    "GT.Edges"
+   ],
+   "workspace_modules": [
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Defs",
+    "Mathlib.Data.SetLike.Basic"
+   ]
+  },
+  "HS.instDecidableBounded8": {
+   "package": [
+    "GT.Edges",
+    "HS.Bounded8"
+   ],
+   "workspace_modules": [
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Defs",
+    "Mathlib.Data.SetLike.Basic"
+   ]
+  },
+  "HS.instDecidableSimple": {
+   "package": [
+    "GT.Edges",
+    "HS.Simple"
+   ],
+   "workspace_modules": [
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Defs",
+    "Mathlib.Data.SetLike.Basic"
+   ]
+  },
+  "HSConj.down_bounded": {
+   "package": [
+    "GT.Edges",
+    "HS.Bounded8"
+   ],
+   "workspace_modules": [
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Defs",
+    "Mathlib.Order.Defs.PartialOrder"
+   ]
+  },
+  "HSConj.down_simple": {
+   "package": [
+    "GT.Edges",
+    "HS.Simple"
+   ],
+   "workspace_modules": [
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Defs",
+    "Mathlib.Order.Defs.PartialOrder"
+   ]
+  },
+  "HSConj.down_tf": {
+   "package": [
+    "GT.Edges",
+    "GT.TriangleFree"
+   ],
+   "workspace_modules": [
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Defs",
+    "Mathlib.Order.Defs.PartialOrder"
+   ]
+  },
+  "HSConj.inter_simple": {
+   "package": [
+    "GT.Edges",
+    "HS.Simple"
+   ],
+   "workspace_modules": [
+    "Init.Core",
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Lattice.Basic"
+   ]
+  },
+  "HSConj.inter_tf": {
+   "package": [
+    "GT.Edges",
+    "GT.TriangleFree"
+   ],
+   "workspace_modules": [
+    "Init.Core",
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Lattice.Basic"
+   ]
+  },
+  "RC.C0": {
+   "package": [
+    "GT.Edges"
+   ],
+   "workspace_modules": [
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Defs",
+    "Mathlib.Order.Defs.PartialOrder"
+   ]
+  },
+  "RC.C0.eq_1": {
+   "package": [
+    "GT.Edges",
+    "RC.C0"
+   ],
+   "workspace_modules": [
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Defs",
+    "Mathlib.Order.Defs.PartialOrder"
+   ]
+  }
+ },
+ "domain": "edge-set predicates",
+ "modules": [
+  {
+   "name": "GTDefs",
+   "source": "import Mathlib.Data.Finset.Powerset\n\nnamespace GT\n\n/-- Edge sets: ordered pairs (u, v), read as the edge {u, v}. Hosts list each edge once, with u < v. -/\nabbrev Edges := Finset (ℕ × ℕ)\n\n/-- No three edges (a, b), (b, c), (a, c). -/\ndef TriangleFree (S : Edges) : Prop :=\n  ∀ e ∈ S, ∀ f ∈ S, ∀ g ∈ S, ¬ (e.1 = g.1 ∧ e.2 = f.1 ∧ f.2 = g.2)\n\ninstance (S : Edges) : Decidable (TriangleFree S) := by\n  unfold TriangleFree; infer_instance\n\nend GT\n",
+   "source_sha256": "34a84d4f227cbf5a95012a37a9f263f14ca419a4959be42c674d8abc47c9e3a7",
+   "trusted": true
+  },
+  {
+   "name": "HSDefs",
+   "source": "import GTDefs\n\nnamespace HS\n\n/-- History predicate: every pair is listed as (u, v) with u < v. -/\ndef Simple (S : GT.Edges) : Prop := ∀ e ∈ S, e.1 < e.2\n\n/-- History predicate: every endpoint is below 8. -/\ndef Bounded8 (S : GT.Edges) : Prop := ∀ e ∈ S, e.1 < 8 ∧ e.2 < 8\n\ninstance (S : GT.Edges) : Decidable (Simple S) := by unfold Simple; infer_instance\ninstance (S : GT.Edges) : Decidable (Bounded8 S) := by unfold Bounded8; infer_instance\n\nend HS\n",
+   "source_sha256": "fda70a92d2893b0470ae39d2918fca1b195e1db384d6fedbbc1950b51e65d5db",
+   "trusted": true
+  },
+  {
+   "name": "HSConj",
+   "source": "import GTDefs\nimport HSDefs\nset_option linter.unusedVariables false\n\nnamespace HSConj\n/-- Generated conjecture `down_tf` (history). -/\ndef down_tf : Prop := ∀ (S : GT.Edges) (T : GT.Edges) (h1 : T ⊆ S) (h2 : GT.TriangleFree S), GT.TriangleFree T\n/-- Generated conjecture `down_simple` (history). -/\ndef down_simple : Prop := ∀ (S : GT.Edges) (T : GT.Edges) (h1 : T ⊆ S) (h2 : HS.Simple S), HS.Simple T\n/-- Generated conjecture `down_bounded` (history). -/\ndef down_bounded : Prop := ∀ (S : GT.Edges) (T : GT.Edges) (h1 : T ⊆ S) (h2 : HS.Bounded8 S), HS.Bounded8 T\n/-- Generated conjecture `inter_tf` (history). -/\ndef inter_tf : Prop := ∀ (S : GT.Edges) (T : GT.Edges) (h1 : GT.TriangleFree S), GT.TriangleFree (S ∩ T)\n/-- Generated conjecture `inter_simple` (history). -/\ndef inter_simple : Prop := ∀ (S : GT.Edges) (T : GT.Edges) (h1 : HS.Simple S), HS.Simple (S ∩ T)\nend HSConj\n",
+   "source_sha256": "b51522fc7800b90635c57f6e77ae907ef1f30cf3054ccf078472d4ad0d5b5040",
+   "trusted": true
+  },
+  {
+   "name": "RCDefs",
+   "source": "import GTDefs\nimport HSDefs\n\nnamespace RC\n\n/-- Recovered by typed anti-unification of HSConj.down_bounded, HSConj.down_simple, HSConj.down_tf. -/\ndef C0 (P0 : GT.Edges -> Prop) : Prop := (∀ (x0 : @GT.Edges), (∀ (x1 : @GT.Edges), (∀ (x2 : (@LE.le @GT.Edges (@Preorder.toLE @GT.Edges (@PartialOrder.toPreorder @GT.Edges (@Finset.instPartialOrder (@Prod @Nat @Nat)))) x1 x0)), (∀ (x3 : (P0 x0)), (P0 x1)))))\n\nend RC\n",
+   "source_sha256": "640f2b577f249cc93dd38a96935449b2cee5e8444b6040c263d712a4875931ae",
+   "trusted": true
+  },
+  {
+   "name": "G4Defs",
+   "source": "import GTDefs\n\nnamespace G4\n\n/-- Domain contract (c4_host_v2): u and v are joined in S, in either orientation. -/\ndef adj (S : GT.Edges) (u v : ℕ) : Prop := (u, v) ∈ S ∨ (v, u) ∈ S\n\ninstance (S : GT.Edges) (u v : ℕ) : Decidable (adj S u v) := by\n  unfold adj; infer_instance\n\ndef verts (S : GT.Edges) : Finset ℕ := S.image Prod.fst ∪ S.image Prod.snd\n\n/-- No 4-cycle a-b-c-d-a with a ≠ c and b ≠ d. -/\ndef C4Free (S : GT.Edges) : Prop :=\n  ∀ a ∈ verts S, ∀ b ∈ verts S, ∀ c ∈ verts S, ∀ d ∈ verts S,\n    a ≠ c → b ≠ d → ¬ (adj S a b ∧ adj S b c ∧ adj S c d ∧ adj S d a)\n\ninstance (S : GT.Edges) : Decidable (C4Free S) := by\n  unfold C4Free; infer_instance\n\nend G4\n",
+   "source_sha256": "bf94fb5d73cc9d32e1e11167df93df0ca356b3f1a6de0b050a8efe53bae7987b",
+   "trusted": true
+  },
+  {
+   "name": "FFDefs",
+   "source": "import GTDefs\nimport G4Defs\n\nnamespace FF\n\n/-- Fresh predicate: no loops. -/\ndef LoopFree (S : GT.Edges) : Prop := ∀ e ∈ S, e.1 ≠ e.2\n\n/-- Fresh predicate: distinct pairs share no endpoint. -/\ndef Matching (S : GT.Edges) : Prop :=\n  ∀ e ∈ S, ∀ f ∈ S, e ≠ f → e.1 ≠ f.1 ∧ e.1 ≠ f.2 ∧ e.2 ≠ f.1 ∧ e.2 ≠ f.2\n\n/-- Fresh predicate that is not down-closed. -/\ndef NonEmpty (S : GT.Edges) : Prop := S.Nonempty\n\ninstance (S : GT.Edges) : Decidable (LoopFree S) := by unfold LoopFree; infer_instance\ninstance (S : GT.Edges) : Decidable (Matching S) := by unfold Matching; infer_instance\ninstance (S : GT.Edges) : Decidable (NonEmpty S) := by unfold NonEmpty; infer_instance\n\nend FF\n",
+   "source_sha256": "0c27f1d95779fd682934358911785dc66149d7cf0a39c57d16181aa088198785",
+   "trusted": true
+  },
+  {
+   "name": "FFNConj",
+   "source": "import GTDefs\nimport HSDefs\nimport HSConj\nimport RCDefs\nimport G4Defs\nimport FFDefs\nset_option linter.unusedVariables false\n\nnamespace FFNConj\n/-- Generated conjecture `none_loopfree_inter` (fresh-family). -/\ndef none_loopfree_inter : Prop := ∀ (S : GT.Edges) (T : GT.Edges) (h1 : FF.LoopFree S), FF.LoopFree (S ∩ T)\n/-- Generated conjecture `none_loopfree_sdiff` (fresh-family). -/\ndef none_loopfree_sdiff : Prop := ∀ (S : GT.Edges) (T : GT.Edges) (h1 : FF.LoopFree S), FF.LoopFree (S \\ T)\n/-- Generated conjecture `none_loopfree_filter` (fresh-family). -/\ndef none_loopfree_filter : Prop := ∀ (S : GT.Edges) (q : ℕ × ℕ → Bool) (h1 : FF.LoopFree S), FF.LoopFree (S.filter fun e => q e)\n/-- Generated conjecture `none_loopfree_erase` (fresh-family). -/\ndef none_loopfree_erase : Prop := ∀ (S : GT.Edges) (e : ℕ × ℕ) (h1 : FF.LoopFree S), FF.LoopFree (S.erase e)\n/-- Generated conjecture `none_matching_inter` (fresh-family). -/\ndef none_matching_inter : Prop := ∀ (S : GT.Edges) (T : GT.Edges) (h1 : FF.Matching S), FF.Matching (S ∩ T)\n/-- Generated conjecture `none_matching_sdiff` (fresh-family). -/\ndef none_matching_sdiff : Prop := ∀ (S : GT.Edges) (T : GT.Edges) (h1 : FF.Matching S), FF.Matching (S \\ T)\n/-- Generated conjecture `none_matching_filter` (fresh-family). -/\ndef none_matching_filter : Prop := ∀ (S : GT.Edges) (q : ℕ × ℕ → Bool) (h1 : FF.Matching S), FF.Matching (S.filter fun e => q e)\n/-- Generated conjecture `none_matching_erase` (fresh-family). -/\ndef none_matching_erase : Prop := ∀ (S : GT.Edges) (e : ℕ × ℕ) (h1 : FF.Matching S), FF.Matching (S.erase e)\n/-- Generated conjecture `none_c4free_inter` (fresh-family). -/\ndef none_c4free_inter : Prop := ∀ (S : GT.Edges) (T : GT.Edges) (h1 : G4.C4Free S), G4.C4Free (S ∩ T)\n/-- Generated conjecture `none_c4free_sdiff` (fresh-family). -/\ndef none_c4free_sdiff : Prop := ∀ (S : GT.Edges) (T : GT.Edges) (h1 : G4.C4Free S), G4.C4Free (S \\ T)\n/-- Generated conjecture `none_c4free_filter` (fresh-family). -/\ndef none_c4free_filter : Prop := ∀ (S : GT.Edges) (q : ℕ × ℕ → Bool) (h1 : G4.C4Free S), G4.C4Free (S.filter fun e => q e)\n/-- Generated conjecture `none_c4free_erase` (fresh-family). -/\ndef none_c4free_erase : Prop := ∀ (S : GT.Edges) (e : ℕ × ℕ) (h1 : G4.C4Free S), G4.C4Free (S.erase e)\n/-- Generated conjecture `none_nonempty_inter` (fresh-family). -/\ndef none_nonempty_inter : Prop := ∀ (S : GT.Edges) (T : GT.Edges) (h1 : FF.NonEmpty S), FF.NonEmpty (S ∩ T)\ndef none_nonempty_inter_negation : Prop := ¬ none_nonempty_inter\n/-- Generated conjecture `none_nonempty_sdiff` (fresh-family). -/\ndef none_nonempty_sdiff : Prop := ∀ (S : GT.Edges) (T : GT.Edges) (h1 : FF.NonEmpty S), FF.NonEmpty (S \\ T)\ndef none_nonempty_sdiff_negation : Prop := ¬ none_nonempty_sdiff\n/-- Generated conjecture `none_nonempty_filter` (fresh-family). -/\ndef none_nonempty_filter : Prop := ∀ (S : GT.Edges) (q : ℕ × ℕ → Bool) (h1 : FF.NonEmpty S), FF.NonEmpty (S.filter fun e => q e)\ndef none_nonempty_filter_negation : Prop := ¬ none_nonempty_filter\n/-- Generated conjecture `none_nonempty_erase` (fresh-family). -/\ndef none_nonempty_erase : Prop := ∀ (S : GT.Edges) (e : ℕ × ℕ) (h1 : FF.NonEmpty S), FF.NonEmpty (S.erase e)\ndef none_nonempty_erase_negation : Prop := ¬ none_nonempty_erase\nend FFNConj\n",
+   "source_sha256": "b91c84c009300d3a15f315ab03bb475c0b84fda33299b0a234e09de1a035f3d5",
+   "trusted": true
+  },
+  {
+   "name": "FFNP1",
+   "source": "import GTDefs\nimport HSDefs\nimport HSConj\nimport RCDefs\nimport G4Defs\nimport FFDefs\nimport FFNConj\nnamespace FFNP1\ntheorem proof : FFNConj.none_loopfree_inter := by\n  unfold FFNConj.none_loopfree_inter\n  intro S T h1\n  simp_all [RC.C0, FF.LoopFree, FF.Matching, FF.NonEmpty, G4.C4Free, G4.adj, G4.verts]\nend FFNP1\n",
+   "source_sha256": "81d558ae8f3a1132c49dceae48faee0f8d9a45a66f220f03fac0ab1ffb107641",
+   "trusted": false
+  },
+  {
+   "name": "FFNP2",
+   "source": "import GTDefs\nimport HSDefs\nimport HSConj\nimport RCDefs\nimport G4Defs\nimport FFDefs\nimport FFNConj\nimport FFNP1\nnamespace FFNP2\ntheorem proof : FFNConj.none_loopfree_sdiff := by\n  unfold FFNConj.none_loopfree_sdiff\n  intro S T h1\n  simp_all [RC.C0, FF.LoopFree, FF.Matching, FF.NonEmpty, G4.C4Free, G4.adj, G4.verts]\nend FFNP2\n",
+   "source_sha256": "148cf19f724664475c3d4ef011cb08c9c6ec7d5963e6b767665540f02b85845f",
+   "trusted": false
+  },
+  {
+   "name": "FFNP3",
+   "source": "import GTDefs\nimport HSDefs\nimport HSConj\nimport RCDefs\nimport G4Defs\nimport FFDefs\nimport FFNConj\nimport FFNP1\nimport FFNP2\nnamespace FFNP3\ntheorem proof : FFNConj.none_loopfree_filter := by\n  unfold FFNConj.none_loopfree_filter\n  intro S q h1\n  simp_all [RC.C0, FF.LoopFree, FF.Matching, FF.NonEmpty, G4.C4Free, G4.adj, G4.verts]\nend FFNP3\n",
+   "source_sha256": "b2fcbc525a6a464a405cd987d15cc4bbe121c7035a0e1461d0934102bd5b4f6e",
+   "trusted": false
+  },
+  {
+   "name": "FFNP4",
+   "source": "import GTDefs\nimport HSDefs\nimport HSConj\nimport RCDefs\nimport G4Defs\nimport FFDefs\nimport FFNConj\nimport FFNP1\nimport FFNP2\nimport FFNP3\nnamespace FFNP4\ntheorem proof : FFNConj.none_loopfree_erase := by\n  unfold FFNConj.none_loopfree_erase\n  intro S e h1\n  simp_all [RC.C0, FF.LoopFree, FF.Matching, FF.NonEmpty, G4.C4Free, G4.adj, G4.verts]\nend FFNP4\n",
+   "source_sha256": "57a90849013ac53fc7749b4d0d467c024237f577958fb89edf7515d36f266e1b",
+   "trusted": false
+  },
+  {
+   "name": "FFNP5",
+   "source": "import GTDefs\nimport HSDefs\nimport HSConj\nimport RCDefs\nimport G4Defs\nimport FFDefs\nimport FFNConj\nimport FFNP1\nimport FFNP2\nimport FFNP3\nimport FFNP4\nnamespace FFNP5\ntheorem proof : FFNConj.none_nonempty_inter_negation := by\n  unfold FFNConj.none_nonempty_inter_negation FFNConj.none_nonempty_inter\n  intro h\n  exact absurd (h (({(2, 2)} : GT.Edges)) (({(0, 1)} : GT.Edges)) (by first | decide +kernel | (intro v; omega) | omega | (intros; omega))) (by decide +kernel)\nend FFNP5\n",
+   "source_sha256": "3539cd3b411339852a01719564df431b74d023acd60d450202717d66a100d459",
+   "trusted": false
+  },
+  {
+   "name": "FFNP6",
+   "source": "import GTDefs\nimport HSDefs\nimport HSConj\nimport RCDefs\nimport G4Defs\nimport FFDefs\nimport FFNConj\nimport FFNP1\nimport FFNP2\nimport FFNP3\nimport FFNP4\nimport FFNP5\nnamespace FFNP6\ntheorem proof : FFNConj.none_nonempty_sdiff_negation := by\n  unfold FFNConj.none_nonempty_sdiff_negation FFNConj.none_nonempty_sdiff\n  intro h\n  exact absurd (h (({(1, 1)} : GT.Edges)) (({(1, 1), (2, 2)} : GT.Edges)) (by first | decide +kernel | (intro v; omega) | omega | (intros; omega))) (by decide +kernel)\nend FFNP6\n",
+   "source_sha256": "56d142cd6420aca9295623fe3d5f9cf940828ceab77f7e53fc1b06be2ef43ebc",
+   "trusted": false
+  },
+  {
+   "name": "FFNP7",
+   "source": "import GTDefs\nimport HSDefs\nimport HSConj\nimport RCDefs\nimport G4Defs\nimport FFDefs\nimport FFNConj\nimport FFNP1\nimport FFNP2\nimport FFNP3\nimport FFNP4\nimport FFNP5\nimport FFNP6\nnamespace FFNP7\ntheorem proof : FFNConj.none_nonempty_filter_negation := by\n  unfold FFNConj.none_nonempty_filter_negation FFNConj.none_nonempty_filter\n  intro h\n  exact absurd (h (({(1, 1)} : GT.Edges)) ((fun e => decide (e ∈ ({(3, 1)} : GT.Edges)))) (by first | decide +kernel | (intro v; omega) | omega | (intros; omega))) (by decide +kernel)\nend FFNP7\n",
+   "source_sha256": "628b57882a6cae88a9d93d36582b6d5fbf312bf7d7a66820fb37aca0df4a73cd",
+   "trusted": false
+  },
+  {
+   "name": "FFNP8",
+   "source": "import GTDefs\nimport HSDefs\nimport HSConj\nimport RCDefs\nimport G4Defs\nimport FFDefs\nimport FFNConj\nimport FFNP1\nimport FFNP2\nimport FFNP3\nimport FFNP4\nimport FFNP5\nimport FFNP6\nimport FFNP7\nnamespace FFNP8\ntheorem proof : FFNConj.none_nonempty_erase_negation := by\n  unfold FFNConj.none_nonempty_erase_negation FFNConj.none_nonempty_erase\n  intro h\n  exact absurd (h (({(0, 0)} : GT.Edges)) (((0, 0) : ℕ × ℕ)) (by first | decide +kernel | (intro v; omega) | omega | (intros; omega))) (by decide +kernel)\nend FFNP8\n",
+   "source_sha256": "ca763368dcd2f2aca6bae49c5dd3ae6c22cf33cadc09abb02ac9d242954fe437",
+   "trusted": false
+  }
+ ],
+ "name": "fresh families, arm none",
+ "package_sha256": "eeee115169097d735c3dbce84fea8c4da487b16bbfa40a80d76045375bebcdc2",
+ "proofs": [
+  {
+   "module": "FFNP1",
+   "recipe": "unfold-simp",
+   "statement": "none_loopfree_inter"
+  },
+  {
+   "module": "FFNP2",
+   "recipe": "unfold-simp",
+   "statement": "none_loopfree_sdiff"
+  },
+  {
+   "module": "FFNP3",
+   "recipe": "unfold-simp",
+   "statement": "none_loopfree_filter"
+  },
+  {
+   "module": "FFNP4",
+   "recipe": "unfold-simp",
+   "statement": "none_loopfree_erase"
+  },
+  {
+   "module": "FFNP5",
+   "recipe": "counterexample-evaluation",
+   "statement": "none_nonempty_inter"
+  },
+  {
+   "module": "FFNP6",
+   "recipe": "counterexample-evaluation",
+   "statement": "none_nonempty_sdiff"
+  },
+  {
+   "module": "FFNP7",
+   "recipe": "counterexample-evaluation",
+   "statement": "none_nonempty_filter"
+  },
+  {
+   "module": "FFNP8",
+   "recipe": "counterexample-evaluation",
+   "statement": "none_nonempty_erase"
+  }
+ ],
+ "provenance": {
+  "acceptance": "genesis.formal_research.checker.accept",
+  "created_at": "2026-10-11T12:21:04.039237+00:00",
+  "loop": "genesis.formal_research.loop",
+  "search": "genesis.formal_research.search (builder-written recipes, named per proof)"
+ },
+ "schema": "genesis-theory-package-v1",
+ "scope": "Fresh-family closure statements after the cutoff.",
+ "statements": [
+  {
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "counterexample": null,
+   "id": "none_loopfree_inter",
+   "lean": "∀ (S : GT.Edges) (T : GT.Edges) (h1 : FF.LoopFree S), FF.LoopFree (S ∩ T)",
+   "origin": "fresh-family",
+   "proof_const": "FFNP1.proof",
+   "proof_module": "FFNP1",
+   "recipe": "unfold-simp",
+   "role": "fresh",
+   "screened_instances": 722,
+   "spec_const": "FFNConj.none_loopfree_inter",
+   "status": "CHECKED",
+   "subject": "FF.LoopFree:inter"
+  },
+  {
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "counterexample": null,
+   "id": "none_loopfree_sdiff",
+   "lean": "∀ (S : GT.Edges) (T : GT.Edges) (h1 : FF.LoopFree S), FF.LoopFree (S \\ T)",
+   "origin": "fresh-family",
+   "proof_const": "FFNP2.proof",
+   "proof_module": "FFNP2",
+   "recipe": "unfold-simp",
+   "role": "fresh",
+   "screened_instances": 743,
+   "spec_const": "FFNConj.none_loopfree_sdiff",
+   "status": "CHECKED",
+   "subject": "FF.LoopFree:sdiff"
+  },
+  {
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "counterexample": null,
+   "id": "none_loopfree_filter",
+   "lean": "∀ (S : GT.Edges) (q : ℕ × ℕ → Bool) (h1 : FF.LoopFree S), FF.LoopFree (S.filter fun e => q e)",
+   "origin": "fresh-family",
+   "proof_const": "FFNP3.proof",
+   "proof_module": "FFNP3",
+   "recipe": "unfold-simp",
+   "role": "fresh",
+   "screened_instances": 737,
+   "spec_const": "FFNConj.none_loopfree_filter",
+   "status": "CHECKED",
+   "subject": "FF.LoopFree:filter"
+  },
+  {
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "counterexample": null,
+   "id": "none_loopfree_erase",
+   "lean": "∀ (S : GT.Edges) (e : ℕ × ℕ) (h1 : FF.LoopFree S), FF.LoopFree (S.erase e)",
+   "origin": "fresh-family",
+   "proof_const": "FFNP4.proof",
+   "proof_module": "FFNP4",
+   "recipe": "unfold-simp",
+   "role": "fresh",
+   "screened_instances": 703,
+   "spec_const": "FFNConj.none_loopfree_erase",
+   "status": "CHECKED",
+   "subject": "FF.LoopFree:erase"
+  },
+  {
+   "counterexample": null,
+   "id": "none_matching_inter",
+   "lean": "∀ (S : GT.Edges) (T : GT.Edges) (h1 : FF.Matching S), FF.Matching (S ∩ T)",
+   "origin": "fresh-family",
+   "reason": "no recipe compiled",
+   "role": "fresh",
+   "screened_instances": 176,
+   "spec_const": "FFNConj.none_matching_inter",
+   "status": "UNRESOLVED",
+   "subject": "FF.Matching:inter"
+  },
+  {
+   "counterexample": null,
+   "id": "none_matching_sdiff",
+   "lean": "∀ (S : GT.Edges) (T : GT.Edges) (h1 : FF.Matching S), FF.Matching (S \\ T)",
+   "origin": "fresh-family",
+   "reason": "no recipe compiled",
+   "role": "fresh",
+   "screened_instances": 193,
+   "spec_const": "FFNConj.none_matching_sdiff",
+   "status": "UNRESOLVED",
+   "subject": "FF.Matching:sdiff"
+  },
+  {
+   "counterexample": null,
+   "id": "none_matching_filter",
+   "lean": "∀ (S : GT.Edges) (q : ℕ × ℕ → Bool) (h1 : FF.Matching S), FF.Matching (S.filter fun e => q e)",
+   "origin": "fresh-family",
+   "reason": "no recipe compiled",
+   "role": "fresh",
+   "screened_instances": 157,
+   "spec_const": "FFNConj.none_matching_filter",
+   "status": "UNRESOLVED",
+   "subject": "FF.Matching:filter"
+  },
+  {
+   "counterexample": null,
+   "id": "none_matching_erase",
+   "lean": "∀ (S : GT.Edges) (e : ℕ × ℕ) (h1 : FF.Matching S), FF.Matching (S.erase e)",
+   "origin": "fresh-family",
+   "reason": "no recipe compiled",
+   "role": "fresh",
+   "screened_instances": 178,
+   "spec_const": "FFNConj.none_matching_erase",
+   "status": "UNRESOLVED",
+   "subject": "FF.Matching:erase"
+  },
+  {
+   "counterexample": null,
+   "id": "none_c4free_inter",
+   "lean": "∀ (S : GT.Edges) (T : GT.Edges) (h1 : G4.C4Free S), G4.C4Free (S ∩ T)",
+   "origin": "fresh-family",
+   "reason": "no recipe compiled",
+   "role": "fresh",
+   "screened_instances": 1684,
+   "spec_const": "FFNConj.none_c4free_inter",
+   "status": "UNRESOLVED",
+   "subject": "G4.C4Free:inter"
+  },
+  {
+   "counterexample": null,
+   "id": "none_c4free_sdiff",
+   "lean": "∀ (S : GT.Edges) (T : GT.Edges) (h1 : G4.C4Free S), G4.C4Free (S \\ T)",
+   "origin": "fresh-family",
+   "reason": "no recipe compiled",
+   "role": "fresh",
+   "screened_instances": 1683,
+   "spec_const": "FFNConj.none_c4free_sdiff",
+   "status": "UNRESOLVED",
+   "subject": "G4.C4Free:sdiff"
+  },
+  {
+   "counterexample": null,
+   "id": "none_c4free_filter",
+   "lean": "∀ (S : GT.Edges) (q : ℕ × ℕ → Bool) (h1 : G4.C4Free S), G4.C4Free (S.filter fun e => q e)",
+   "origin": "fresh-family",
+   "reason": "no recipe compiled",
+   "role": "fresh",
+   "screened_instances": 1700,
+   "spec_const": "FFNConj.none_c4free_filter",
+   "status": "UNRESOLVED",
+   "subject": "G4.C4Free:filter"
+  },
+  {
+   "counterexample": null,
+   "id": "none_c4free_erase",
+   "lean": "∀ (S : GT.Edges) (e : ℕ × ℕ) (h1 : G4.C4Free S), G4.C4Free (S.erase e)",
+   "origin": "fresh-family",
+   "reason": "no recipe compiled",
+   "role": "fresh",
+   "screened_instances": 1709,
+   "spec_const": "FFNConj.none_c4free_erase",
+   "status": "UNRESOLVED",
+   "subject": "G4.C4Free:erase"
+  },
+  {
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "counterexample": {
+    "values": {
+     "S": "({(2, 2)} : GT.Edges)",
+     "T": "({(0, 1)} : GT.Edges)"
+    }
+   },
+   "id": "none_nonempty_inter",
+   "lean": "∀ (S : GT.Edges) (T : GT.Edges) (h1 : FF.NonEmpty S), FF.NonEmpty (S ∩ T)",
+   "origin": "fresh-family",
+   "proof_const": "FFNP5.proof",
+   "proof_module": "FFNP5",
+   "recipe": "counterexample-evaluation",
+   "role": "fresh",
+   "screened_instances": 2993,
+   "spec_const": "FFNConj.none_nonempty_inter",
+   "status": "DISPROVED",
+   "subject": "FF.NonEmpty:inter"
+  },
+  {
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "counterexample": {
+    "values": {
+     "S": "({(1, 1)} : GT.Edges)",
+     "T": "({(1, 1), (2, 2)} : GT.Edges)"
+    }
+   },
+   "id": "none_nonempty_sdiff",
+   "lean": "∀ (S : GT.Edges) (T : GT.Edges) (h1 : FF.NonEmpty S), FF.NonEmpty (S \\ T)",
+   "origin": "fresh-family",
+   "proof_const": "FFNP6.proof",
+   "proof_module": "FFNP6",
+   "recipe": "counterexample-evaluation",
+   "role": "fresh",
+   "screened_instances": 2992,
+   "spec_const": "FFNConj.none_nonempty_sdiff",
+   "status": "DISPROVED",
+   "subject": "FF.NonEmpty:sdiff"
+  },
+  {
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "counterexample": {
+    "values": {
+     "S": "({(1, 1)} : GT.Edges)",
+     "q": "(fun e => decide (e ∈ ({(3, 1)} : GT.Edges)))"
+    }
+   },
+   "id": "none_nonempty_filter",
+   "lean": "∀ (S : GT.Edges) (q : ℕ × ℕ → Bool) (h1 : FF.NonEmpty S), FF.NonEmpty (S.filter fun e => q e)",
+   "origin": "fresh-family",
+   "proof_const": "FFNP7.proof",
+   "proof_module": "FFNP7",
+   "recipe": "counterexample-evaluation",
+   "role": "fresh",
+   "screened_instances": 2992,
+   "spec_const": "FFNConj.none_nonempty_filter",
+   "status": "DISPROVED",
+   "subject": "FF.NonEmpty:filter"
+  },
+  {
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "counterexample": {
+    "values": {
+     "S": "({(0, 0)} : GT.Edges)",
+     "e": "((0, 0) : ℕ × ℕ)"
+    }
+   },
+   "id": "none_nonempty_erase",
+   "lean": "∀ (S : GT.Edges) (e : ℕ × ℕ) (h1 : FF.NonEmpty S), FF.NonEmpty (S.erase e)",
+   "origin": "fresh-family",
+   "proof_const": "FFNP8.proof",
+   "proof_module": "FFNP8",
+   "recipe": "counterexample-evaluation",
+   "role": "fresh",
+   "screened_instances": 2994,
+   "spec_const": "FFNConj.none_nonempty_erase",
+   "status": "DISPROVED",
+   "subject": "FF.NonEmpty:erase"
+  }
+ ]
+}

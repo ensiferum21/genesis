@@ -1,0 +1,1484 @@
+{
+ "acceptance": {
+  "check_stage": {
+   "check_sha256": "2ba332d4fd9683f7cb35b7d4da6842c87ec3c51bfaca24951e64ff18454f0e8c",
+   "cpu_ns": 11790557912,
+   "exit_code": 0,
+   "exits": {
+    "RCP1": "0",
+    "RCP2": "0",
+    "RCP3": "0",
+    "RCP4": "0",
+    "RCP5": "0",
+    "RCP6": "0",
+    "RCP7": "0",
+    "check": "0"
+   },
+   "log": "",
+   "peak_memory_bytes": 220295168,
+   "status": "SUCCESS",
+   "wall_ns": 12057898878
+  },
+  "leanchecker": {
+   "RCP1": true,
+   "RCP2": true,
+   "RCP3": true,
+   "RCP4": true,
+   "RCP5": true,
+   "RCP6": true,
+   "RCP7": true
+  },
+  "receipt_sha256": "03a3c9a0a9840b6ff71f109e8fdde0df3f06f7c8b02160e5f85d424bcd3beee1",
+  "status": "CHECKED"
+ },
+ "assumptions": {
+  "allowed_axioms": [
+   "Classical.choice",
+   "Quot.sound",
+   "propext"
+  ],
+  "axioms_used": [
+   "Classical.choice",
+   "Quot.sound",
+   "propext"
+  ],
+  "conventions": [
+   "RC.C0 is reified from the snapshot alone"
+  ],
+  "lean": "lean@e8baaa71855a616d",
+  "workspace": {
+   "artifact_identity": "95a6ec9f1aadc0d8d1936c34bd0ce4e144b0e35c85df12543cdcafe9ebf36b41",
+   "import_roots": [
+    "Mathlib.Data.Finset.Powerset"
+   ],
+   "mathlib_rev": "d13f23b723b8a846827a245b89c10fc7d3f11612",
+   "source_identity": "a3a7569b6d7636a844c87c2b72ef2170eda0f712ff8d9a1b0f15b069e301c7ef"
+  }
+ },
+ "bindings": [
+  {
+   "proof": "RCP1.proof",
+   "spec": "RCConj.instance_down_bounded"
+  },
+  {
+   "proof": "RCP2.proof",
+   "spec": "RCConj.instance_down_simple"
+  },
+  {
+   "proof": "RCP3.proof",
+   "spec": "RCConj.instance_down_tf"
+  },
+  {
+   "proof": "RCP4.proof",
+   "spec": "RCConj.gen_concept_inter"
+  },
+  {
+   "proof": "RCP5.proof",
+   "spec": "RCConj.gen_concept_sdiff"
+  },
+  {
+   "proof": "RCP6.proof",
+   "spec": "RCConj.gen_concept_filter"
+  },
+  {
+   "proof": "RCP7.proof",
+   "spec": "RCConj.gen_concept_erase"
+  }
+ ],
+ "costs": {
+  "acceptance_check_cpu_ns": 52911556187,
+  "acceptance_runs": 8,
+  "acceptances": [
+   {
+    "receipt_sha256": "07dcf78cf0fa0c091ab4fed7f26945138ac8d66001203e1802dd2882c98b25bf",
+    "statement": "instance_down_bounded",
+    "stats": {
+     "check_sha256": "571bf583c47a2afb9cbf8f300c4b3a37133dbad7d89dd5fa81d8f351f9a8c221",
+     "cpu_ns": 2996958845,
+     "exit_code": 0,
+     "exits": {
+      "RCP1": "0",
+      "check": "0"
+     },
+     "log": "",
+     "peak_memory_bytes": 222089216,
+     "status": "SUCCESS",
+     "wall_ns": 3042287255
+    },
+    "status": "CHECKED"
+   },
+   {
+    "receipt_sha256": "3c6b4c501c44c27116779e777cdb273d96c7e3f8fd8b5d1a7fe81fad55809f66",
+    "statement": "instance_down_simple",
+    "stats": {
+     "check_sha256": "b75e400e7cb538ca74523025aeca41ddc63a14cf2c2ef308857177e6c373c8b5",
+     "cpu_ns": 3742769920,
+     "exit_code": 0,
+     "exits": {
+      "RCP1": "0",
+      "RCP2": "0",
+      "check": "0"
+     },
+     "log": "",
+     "peak_memory_bytes": 222203904,
+     "status": "SUCCESS",
+     "wall_ns": 3858187232
+    },
+    "status": "CHECKED"
+   },
+   {
+    "receipt_sha256": "00e5d6e6c5ee4075a4377b24062692aa69a5154c32cb40d5857c126f4504a3ea",
+    "statement": "instance_down_tf",
+    "stats": {
+     "check_sha256": "2985a5a4ceacec806435f4860cd6dccd8ddb70d9eb9cb7ddd06be18176f0c9dd",
+     "cpu_ns": 6949649649,
+     "exit_code": 0,
+     "exits": {
+      "RCP1": "0",
+      "RCP2": "0",
+      "RCP3": "0",
+      "check": "0"
+     },
+     "log": "",
+     "peak_memory_bytes": 221859840,
+     "status": "SUCCESS",
+     "wall_ns": 7207989642
+    },
+    "status": "CHECKED"
+   },
+   {
+    "receipt_sha256": "72edbf91c52584a8389be72c0a4260b6526cb138f0cc2c6e0a5bc58a7c298448",
+    "statement": "gen_concept_inter",
+    "stats": {
+     "check_sha256": "6912ea9695cd90a8f36b48498e269fdca6043c8f8617cfc52d3c85bc1aea2a17",
+     "cpu_ns": 9429487073,
+     "exit_code": 0,
+     "exits": {
+      "RCP1": "0",
+      "RCP2": "0",
+      "RCP3": "0",
+      "RCP4": "0",
+      "check": "0"
+     },
+     "log": "",
+     "peak_memory_bytes": 222126080,
+     "status": "SUCCESS",
+     "wall_ns": 9575534039
+    },
+    "status": "CHECKED"
+   },
+   {
+    "receipt_sha256": "e243a7f08d6c08f869f04c8f3baeab652ca9971d9815e33727c8e082a68c90e3",
+    "statement": "gen_concept_sdiff",
+    "stats": {
+     "check_sha256": "05e1ec4b07ceef46671459edb0e592707dd87539804fbb275fe60fbb3026ee40",
+     "cpu_ns": 7007470923,
+     "exit_code": 0,
+     "exits": {
+      "RCP1": "0",
+      "RCP2": "0",
+      "RCP3": "0",
+      "RCP4": "0",
+      "RCP5": "0",
+      "check": "0"
+     },
+     "log": "",
+     "peak_memory_bytes": 219987968,
+     "status": "SUCCESS",
+     "wall_ns": 7166241740
+    },
+    "status": "CHECKED"
+   },
+   {
+    "receipt_sha256": "bf7c3ea57d0b3238d0bc0aa184bccb3f49038a34f85445373c75cbd67595645e",
+    "statement": "gen_concept_filter",
+    "stats": {
+     "check_sha256": "1bcbb578a8ba862bef76d251c562daf9e69ea25b972ee646a1b00d5b53a9511e",
+     "cpu_ns": 8460101556,
+     "exit_code": 0,
+     "exits": {
+      "RCP1": "0",
+      "RCP2": "0",
+      "RCP3": "0",
+      "RCP4": "0",
+      "RCP5": "0",
+      "RCP6": "0",
+      "check": "0"
+     },
+     "log": "",
+     "peak_memory_bytes": 220004352,
+     "status": "SUCCESS",
+     "wall_ns": 8641713599
+    },
+    "status": "CHECKED"
+   },
+   {
+    "receipt_sha256": "2b1bedcc3eab9db8c2cbcb09286a9f21ffa16e8c0be7197c186b53c7ea5c79dc",
+    "statement": "gen_concept_erase",
+    "stats": {
+     "check_sha256": "4f3e5017aa8b458411fc7330ea5f1de61bbc66338908bd28d9113440353fd366",
+     "cpu_ns": 14325118221,
+     "exit_code": 0,
+     "exits": {
+      "RCP1": "0",
+      "RCP2": "0",
+      "RCP3": "0",
+      "RCP4": "0",
+      "RCP5": "0",
+      "RCP6": "0",
+      "RCP7": "0",
+      "check": "0"
+     },
+     "log": "",
+     "peak_memory_bytes": 221831168,
+     "status": "SUCCESS",
+     "wall_ns": 14790807991
+    },
+    "status": "CHECKED"
+   }
+  ],
+  "attempts": [
+   {
+    "attempts": [
+     {
+      "compiled": true,
+      "recipe": "definitional-unfolding",
+      "tactic_sha256": "5a633da644c1afc6f5222be040e6a19d687c01104c0263cce32773e07376dfa8",
+      "tier": 0
+     }
+    ],
+    "charged": {
+     "candidates": 1,
+     "cpu_ns": 1131405269,
+     "wall_ns": 1183856443
+    },
+    "result": "COMPILED",
+    "statement": "instance_down_bounded",
+    "target": "RCConj.instance_down_bounded"
+   },
+   {
+    "attempts": [
+     {
+      "compiled": true,
+      "recipe": "definitional-unfolding",
+      "tactic_sha256": "5a633da644c1afc6f5222be040e6a19d687c01104c0263cce32773e07376dfa8",
+      "tier": 0
+     }
+    ],
+    "charged": {
+     "candidates": 1,
+     "cpu_ns": 1171515794,
+     "wall_ns": 1214445004
+    },
+    "result": "COMPILED",
+    "statement": "instance_down_simple",
+    "target": "RCConj.instance_down_simple"
+   },
+   {
+    "attempts": [
+     {
+      "compiled": true,
+      "recipe": "definitional-unfolding",
+      "tactic_sha256": "5a633da644c1afc6f5222be040e6a19d687c01104c0263cce32773e07376dfa8",
+      "tier": 0
+     }
+    ],
+    "charged": {
+     "candidates": 1,
+     "cpu_ns": 1260889230,
+     "wall_ns": 1311341111
+    },
+    "result": "COMPILED",
+    "statement": "instance_down_tf",
+    "target": "RCConj.instance_down_tf"
+   },
+   {
+    "attempts": [
+     {
+      "compiled": false,
+      "recipe": "elim-with-library",
+      "tactic_sha256": "f8a55d6580d298b1c992db2dede6336a87784373d74cf5f40cb59092f1a2c974",
+      "tier": 0
+     },
+     {
+      "compiled": true,
+      "recipe": "concept-apply",
+      "tactic_sha256": "6f250a4a24eef2a5494e528af9b79e12dd6a2d10216f2b3f8758e7a23a1d253d",
+      "tier": 0
+     },
+     {
+      "compiled": true,
+      "recipe": "concept-apply-intro",
+      "tactic_sha256": "50393115f2accfbac830270db8750623be5b7ec6b31eefa46178c0b9354a9d60",
+      "tier": 0
+     }
+    ],
+    "charged": {
+     "candidates": 3,
+     "cpu_ns": 1366014575,
+     "wall_ns": 1399041288
+    },
+    "result": "ELABORATION_ERROR",
+    "statement": "gen_concept_inter",
+    "target": "RCConj.gen_concept_inter"
+   },
+   {
+    "attempts": [
+     {
+      "compiled": false,
+      "recipe": "elim-with-library",
+      "tactic_sha256": "cddc67ff5ae5b5c550d1fd9c36d2819dad8d7b5ab9700f2575cda853a3fa82f8",
+      "tier": 0
+     },
+     {
+      "compiled": true,
+      "recipe": "concept-apply",
+      "tactic_sha256": "6f250a4a24eef2a5494e528af9b79e12dd6a2d10216f2b3f8758e7a23a1d253d",
+      "tier": 0
+     },
+     {
+      "compiled": true,
+      "recipe": "concept-apply-intro",
+      "tactic_sha256": "50393115f2accfbac830270db8750623be5b7ec6b31eefa46178c0b9354a9d60",
+      "tier": 0
+     }
+    ],
+    "charged": {
+     "candidates": 3,
+     "cpu_ns": 1482223812,
+     "wall_ns": 1501234555
+    },
+    "result": "ELABORATION_ERROR",
+    "statement": "gen_concept_sdiff",
+    "target": "RCConj.gen_concept_sdiff"
+   },
+   {
+    "attempts": [
+     {
+      "compiled": false,
+      "recipe": "elim-with-library",
+      "tactic_sha256": "ec2b4ec6a246c0cab614460ff19e0ed49d91aa067d26a1554c15e34626ee5177",
+      "tier": 0
+     },
+     {
+      "compiled": true,
+      "recipe": "concept-apply",
+      "tactic_sha256": "89cd614ccfce7ef1b0b7d528640bc42dc03160add8122b9ebdd29c72775d3927",
+      "tier": 0
+     },
+     {
+      "compiled": true,
+      "recipe": "concept-apply-intro",
+      "tactic_sha256": "1857fba7d915e8e945053649cf037737caaa9deb56e739ac0a96c1cca8826e23",
+      "tier": 0
+     }
+    ],
+    "charged": {
+     "candidates": 3,
+     "cpu_ns": 1249323145,
+     "wall_ns": 1295258591
+    },
+    "result": "ELABORATION_ERROR",
+    "statement": "gen_concept_filter",
+    "target": "RCConj.gen_concept_filter"
+   },
+   {
+    "attempts": [
+     {
+      "compiled": false,
+      "recipe": "elim-with-library",
+      "tactic_sha256": "d664505fefd91831fbd9d5f0f2bdbf1393f854673e989c70768ff1a87519b380",
+      "tier": 0
+     },
+     {
+      "compiled": false,
+      "recipe": "concept-apply",
+      "tactic_sha256": "2d7c8f553f8b5f873ccd374430d8d6895a6ff1c31baba88c092e87b44119dbbe",
+      "tier": 0
+     },
+     {
+      "compiled": true,
+      "recipe": "concept-apply-intro",
+      "tactic_sha256": "d81e2908f4bb85ba57f8da6018e80a87690714f797e778ee35000d31ba7dc959",
+      "tier": 0
+     }
+    ],
+    "charged": {
+     "candidates": 3,
+     "cpu_ns": 1361957783,
+     "wall_ns": 1418372976
+    },
+    "result": "ELABORATION_ERROR",
+    "statement": "gen_concept_erase",
+    "target": "RCConj.gen_concept_erase"
+   }
+  ],
+  "search_candidates": 15,
+  "search_context_cpu_ns": 15912127040,
+  "search_cpu_ns": 9023329608,
+  "search_runs": 7
+ },
+ "counterexamples": [],
+ "declarations": [
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "GTDefs",
+   "name": "GT.TriangleFree",
+   "type_sha256": "c98548115419ec271dfd495799f10b35c81fad06e346ef970bd969a518c2a9f4"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "GTDefs",
+   "name": "GT.Edges",
+   "type_sha256": "baaddf70fb5d432b8bd948ef91d6f910124a6d138edae4d5f000c4610ddc8eae"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "GTDefs",
+   "name": "GT.instDecidableTriangleFree",
+   "type_sha256": "5f6ad93fcd86d217b85aa0d5ae9d8484d2f18f9af307b85f1d55bcb68ce406d1"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "HSDefs",
+   "name": "HS.instDecidableBounded8",
+   "type_sha256": "bb73792b7b918c05e489e5be220ab0e645e6d75f1b8616f9f4eb5c0dd437d9d2"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "HSDefs",
+   "name": "HS.Bounded8",
+   "type_sha256": "c98548115419ec271dfd495799f10b35c81fad06e346ef970bd969a518c2a9f4"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "HSDefs",
+   "name": "HS.instDecidableSimple",
+   "type_sha256": "7c27c71eaad7318747b484aa82461f70d01434b8c83c502b94d09613463fea20"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "HSDefs",
+   "name": "HS.Simple",
+   "type_sha256": "c98548115419ec271dfd495799f10b35c81fad06e346ef970bd969a518c2a9f4"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "HSConj",
+   "name": "HSConj.down_bounded",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "HSConj",
+   "name": "HSConj.down_simple",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "HSConj",
+   "name": "HSConj.down_tf",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "HSConj",
+   "name": "HSConj.inter_tf",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "HSConj",
+   "name": "HSConj.inter_simple",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "RCDefs",
+   "name": "RC.C0",
+   "type_sha256": "9e56932812f3736513e0f638114f0463ac36ec2d16bb971de8dbb8a8fc4c56bc"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "RCConj",
+   "name": "RCConj.instance_down_bounded",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "RCConj",
+   "name": "RCConj.instance_down_simple",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "RCConj",
+   "name": "RCConj.gen_concept_erase",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "RCConj",
+   "name": "RCConj.gen_concept_filter",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "RCConj",
+   "name": "RCConj.gen_concept_inter",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "RCConj",
+   "name": "RCConj.instance_down_tf",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "RCConj",
+   "name": "RCConj.gen_concept_sdiff",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "theorem",
+   "module": "RCP1",
+   "name": "RCP1.proof",
+   "type_sha256": "722eb26903971dcfa74e71e7b883b4b4d62595379c8f2bce6e11369fae33b99e"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "theorem",
+   "module": "RCP2",
+   "name": "RCP2.proof",
+   "type_sha256": "8bc4a1952b7105f95a7f47fb859bbd4f408429ee9beb630c216d60e1a80655d5"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "theorem",
+   "module": "RCP3",
+   "name": "RCP3.proof",
+   "type_sha256": "c4d9b903984c7c382d7270d9f5dce3cb0ba3c0b741177c281e9385fc5b68110f"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "theorem",
+   "module": "RCP4",
+   "name": "RCP4.proof",
+   "type_sha256": "7184f3e86c2b601638c2e881189d7120235457c4964629f68102863439675983"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "theorem",
+   "module": "RCP5",
+   "name": "RCP5.proof",
+   "type_sha256": "4e2b174d36a09c507430b6e7f5aa303d9b7abfbe8af798c9a4598f00f50e897a"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "theorem",
+   "module": "RCP6",
+   "name": "RCP6.proof",
+   "type_sha256": "49d30c152bc160b0ab78755c469af8fbb74f192eb72777bf924a39c4560c1197"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "theorem",
+   "module": "RCP7",
+   "name": "RCP7.proof",
+   "type_sha256": "909bd1fae13bfcefc9196bd85b0d1fcff3958966430f758733cbe3cb5a5cd2a8"
+  }
+ ],
+ "definitions": [
+  {
+   "module": "GTDefs",
+   "name": "GT.TriangleFree",
+   "origin": "trusted-generated",
+   "type_sha256": "c98548115419ec271dfd495799f10b35c81fad06e346ef970bd969a518c2a9f4"
+  },
+  {
+   "module": "GTDefs",
+   "name": "GT.Edges",
+   "origin": "trusted-generated",
+   "type_sha256": "baaddf70fb5d432b8bd948ef91d6f910124a6d138edae4d5f000c4610ddc8eae"
+  },
+  {
+   "module": "GTDefs",
+   "name": "GT.instDecidableTriangleFree",
+   "origin": "trusted-generated",
+   "type_sha256": "5f6ad93fcd86d217b85aa0d5ae9d8484d2f18f9af307b85f1d55bcb68ce406d1"
+  },
+  {
+   "module": "HSDefs",
+   "name": "HS.instDecidableBounded8",
+   "origin": "trusted-generated",
+   "type_sha256": "bb73792b7b918c05e489e5be220ab0e645e6d75f1b8616f9f4eb5c0dd437d9d2"
+  },
+  {
+   "module": "HSDefs",
+   "name": "HS.Bounded8",
+   "origin": "trusted-generated",
+   "type_sha256": "c98548115419ec271dfd495799f10b35c81fad06e346ef970bd969a518c2a9f4"
+  },
+  {
+   "module": "HSDefs",
+   "name": "HS.instDecidableSimple",
+   "origin": "trusted-generated",
+   "type_sha256": "7c27c71eaad7318747b484aa82461f70d01434b8c83c502b94d09613463fea20"
+  },
+  {
+   "module": "HSDefs",
+   "name": "HS.Simple",
+   "origin": "trusted-generated",
+   "type_sha256": "c98548115419ec271dfd495799f10b35c81fad06e346ef970bd969a518c2a9f4"
+  },
+  {
+   "module": "HSConj",
+   "name": "HSConj.down_bounded",
+   "origin": "trusted-generated",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "module": "HSConj",
+   "name": "HSConj.down_simple",
+   "origin": "trusted-generated",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "module": "HSConj",
+   "name": "HSConj.down_tf",
+   "origin": "trusted-generated",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "module": "HSConj",
+   "name": "HSConj.inter_tf",
+   "origin": "trusted-generated",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "module": "HSConj",
+   "name": "HSConj.inter_simple",
+   "origin": "trusted-generated",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "module": "RCDefs",
+   "name": "RC.C0",
+   "origin": "trusted-generated",
+   "type_sha256": "9e56932812f3736513e0f638114f0463ac36ec2d16bb971de8dbb8a8fc4c56bc"
+  },
+  {
+   "module": "RCConj",
+   "name": "RCConj.instance_down_bounded",
+   "origin": "trusted-generated",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "module": "RCConj",
+   "name": "RCConj.instance_down_simple",
+   "origin": "trusted-generated",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "module": "RCConj",
+   "name": "RCConj.gen_concept_erase",
+   "origin": "trusted-generated",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "module": "RCConj",
+   "name": "RCConj.gen_concept_filter",
+   "origin": "trusted-generated",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "module": "RCConj",
+   "name": "RCConj.gen_concept_inter",
+   "origin": "trusted-generated",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "module": "RCConj",
+   "name": "RCConj.instance_down_tf",
+   "origin": "trusted-generated",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "module": "RCConj",
+   "name": "RCConj.gen_concept_sdiff",
+   "origin": "trusted-generated",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  }
+ ],
+ "dependencies": {
+  "GT.Edges": {
+   "package": [],
+   "workspace_modules": [
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Defs"
+   ]
+  },
+  "GT.TriangleFree": {
+   "package": [
+    "GT.Edges"
+   ],
+   "workspace_modules": [
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Defs",
+    "Mathlib.Data.SetLike.Basic"
+   ]
+  },
+  "GT.instDecidableTriangleFree": {
+   "package": [
+    "GT.Edges",
+    "GT.TriangleFree"
+   ],
+   "workspace_modules": [
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Defs",
+    "Mathlib.Data.SetLike.Basic"
+   ]
+  },
+  "HS.Bounded8": {
+   "package": [
+    "GT.Edges"
+   ],
+   "workspace_modules": [
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Defs",
+    "Mathlib.Data.SetLike.Basic"
+   ]
+  },
+  "HS.Simple": {
+   "package": [
+    "GT.Edges"
+   ],
+   "workspace_modules": [
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Defs",
+    "Mathlib.Data.SetLike.Basic"
+   ]
+  },
+  "HS.instDecidableBounded8": {
+   "package": [
+    "GT.Edges",
+    "HS.Bounded8"
+   ],
+   "workspace_modules": [
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Defs",
+    "Mathlib.Data.SetLike.Basic"
+   ]
+  },
+  "HS.instDecidableSimple": {
+   "package": [
+    "GT.Edges",
+    "HS.Simple"
+   ],
+   "workspace_modules": [
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Defs",
+    "Mathlib.Data.SetLike.Basic"
+   ]
+  },
+  "HSConj.down_bounded": {
+   "package": [
+    "GT.Edges",
+    "HS.Bounded8"
+   ],
+   "workspace_modules": [
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Defs",
+    "Mathlib.Order.Defs.PartialOrder"
+   ]
+  },
+  "HSConj.down_simple": {
+   "package": [
+    "GT.Edges",
+    "HS.Simple"
+   ],
+   "workspace_modules": [
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Defs",
+    "Mathlib.Order.Defs.PartialOrder"
+   ]
+  },
+  "HSConj.down_tf": {
+   "package": [
+    "GT.Edges",
+    "GT.TriangleFree"
+   ],
+   "workspace_modules": [
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Defs",
+    "Mathlib.Order.Defs.PartialOrder"
+   ]
+  },
+  "HSConj.inter_simple": {
+   "package": [
+    "GT.Edges",
+    "HS.Simple"
+   ],
+   "workspace_modules": [
+    "Init.Core",
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Lattice.Basic"
+   ]
+  },
+  "HSConj.inter_tf": {
+   "package": [
+    "GT.Edges",
+    "GT.TriangleFree"
+   ],
+   "workspace_modules": [
+    "Init.Core",
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Lattice.Basic"
+   ]
+  },
+  "RC.C0": {
+   "package": [
+    "GT.Edges"
+   ],
+   "workspace_modules": [
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Defs",
+    "Mathlib.Order.Defs.PartialOrder"
+   ]
+  },
+  "RCConj.gen_concept_erase": {
+   "package": [
+    "GT.Edges",
+    "RC.C0"
+   ],
+   "workspace_modules": [
+    "Init.Core",
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Erase"
+   ]
+  },
+  "RCConj.gen_concept_filter": {
+   "package": [
+    "GT.Edges",
+    "RC.C0"
+   ],
+   "workspace_modules": [
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Filter"
+   ]
+  },
+  "RCConj.gen_concept_inter": {
+   "package": [
+    "GT.Edges",
+    "RC.C0"
+   ],
+   "workspace_modules": [
+    "Init.Core",
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Lattice.Basic"
+   ]
+  },
+  "RCConj.gen_concept_sdiff": {
+   "package": [
+    "GT.Edges",
+    "RC.C0"
+   ],
+   "workspace_modules": [
+    "Init.Core",
+    "Init.Prelude",
+    "Mathlib.Data.Finset.SDiff"
+   ]
+  },
+  "RCConj.instance_down_bounded": {
+   "package": [
+    "GT.Edges",
+    "HS.Bounded8",
+    "HSConj.down_bounded",
+    "RC.C0"
+   ],
+   "workspace_modules": [
+    "Init.Prelude"
+   ]
+  },
+  "RCConj.instance_down_simple": {
+   "package": [
+    "GT.Edges",
+    "HS.Simple",
+    "HSConj.down_simple",
+    "RC.C0"
+   ],
+   "workspace_modules": [
+    "Init.Prelude"
+   ]
+  },
+  "RCConj.instance_down_tf": {
+   "package": [
+    "GT.Edges",
+    "GT.TriangleFree",
+    "HSConj.down_tf",
+    "RC.C0"
+   ],
+   "workspace_modules": [
+    "Init.Prelude"
+   ]
+  },
+  "RCP1.proof": {
+   "package": [
+    "GT.Edges",
+    "HS.Bounded8",
+    "HSConj.down_bounded",
+    "RC.C0",
+    "RCConj.instance_down_bounded"
+   ],
+   "workspace_modules": [
+    "Init.Prelude"
+   ]
+  },
+  "RCP2.proof": {
+   "package": [
+    "GT.Edges",
+    "HS.Simple",
+    "HSConj.down_simple",
+    "RC.C0",
+    "RCConj.instance_down_simple"
+   ],
+   "workspace_modules": [
+    "Init.Prelude"
+   ]
+  },
+  "RCP3.proof": {
+   "package": [
+    "GT.Edges",
+    "GT.TriangleFree",
+    "HSConj.down_tf",
+    "RC.C0",
+    "RCConj.instance_down_tf"
+   ],
+   "workspace_modules": [
+    "Init.Prelude"
+   ]
+  },
+  "RCP4.proof": {
+   "package": [
+    "GT.Edges",
+    "RC.C0",
+    "RCConj.gen_concept_inter"
+   ],
+   "workspace_modules": [
+    "Init.Core",
+    "Init.Prelude",
+    "Init.SimpLemmas",
+    "Mathlib.Data.Finset.Defs",
+    "Mathlib.Data.Finset.Lattice.Basic",
+    "Mathlib.Order.Defs.PartialOrder"
+   ]
+  },
+  "RCP5.proof": {
+   "package": [
+    "GT.Edges",
+    "RC.C0",
+    "RCConj.gen_concept_sdiff"
+   ],
+   "workspace_modules": [
+    "Init.Core",
+    "Init.Prelude",
+    "Init.SimpLemmas",
+    "Mathlib.Data.Finset.Lattice.Basic",
+    "Mathlib.Data.Finset.SDiff",
+    "Mathlib.Order.BooleanAlgebra.Basic",
+    "Mathlib.Order.Defs.PartialOrder",
+    "Mathlib.Order.Heyting.Basic",
+    "Mathlib.Order.Lattice"
+   ]
+  },
+  "RCP6.proof": {
+   "package": [
+    "GT.Edges",
+    "RC.C0",
+    "RCConj.gen_concept_filter"
+   ],
+   "workspace_modules": [
+    "Init.Prelude",
+    "Init.SimpLemmas",
+    "Mathlib.Data.Finset.Defs",
+    "Mathlib.Data.Finset.Filter",
+    "Mathlib.Order.Defs.PartialOrder"
+   ]
+  },
+  "RCP7.proof": {
+   "package": [
+    "GT.Edges",
+    "RC.C0",
+    "RCConj.gen_concept_erase"
+   ],
+   "workspace_modules": [
+    "Init.Core",
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Defs",
+    "Mathlib.Data.Finset.Erase",
+    "Mathlib.Data.SetLike.Basic"
+   ]
+  }
+ },
+ "domain": "edge-set predicates",
+ "modules": [
+  {
+   "name": "GTDefs",
+   "source": "import Mathlib.Data.Finset.Powerset\n\nnamespace GT\n\n/-- Edge sets: ordered pairs (u, v), read as the edge {u, v}. Hosts list each edge once, with u < v. -/\nabbrev Edges := Finset (ℕ × ℕ)\n\n/-- No three edges (a, b), (b, c), (a, c). -/\ndef TriangleFree (S : Edges) : Prop :=\n  ∀ e ∈ S, ∀ f ∈ S, ∀ g ∈ S, ¬ (e.1 = g.1 ∧ e.2 = f.1 ∧ f.2 = g.2)\n\ninstance (S : Edges) : Decidable (TriangleFree S) := by\n  unfold TriangleFree; infer_instance\n\nend GT\n",
+   "source_sha256": "34a84d4f227cbf5a95012a37a9f263f14ca419a4959be42c674d8abc47c9e3a7",
+   "trusted": true
+  },
+  {
+   "name": "HSDefs",
+   "source": "import GTDefs\n\nnamespace HS\n\n/-- History predicate: every pair is listed as (u, v) with u < v. -/\ndef Simple (S : GT.Edges) : Prop := ∀ e ∈ S, e.1 < e.2\n\n/-- History predicate: every endpoint is below 8. -/\ndef Bounded8 (S : GT.Edges) : Prop := ∀ e ∈ S, e.1 < 8 ∧ e.2 < 8\n\ninstance (S : GT.Edges) : Decidable (Simple S) := by unfold Simple; infer_instance\ninstance (S : GT.Edges) : Decidable (Bounded8 S) := by unfold Bounded8; infer_instance\n\nend HS\n",
+   "source_sha256": "fda70a92d2893b0470ae39d2918fca1b195e1db384d6fedbbc1950b51e65d5db",
+   "trusted": true
+  },
+  {
+   "name": "HSConj",
+   "source": "import GTDefs\nimport HSDefs\nset_option linter.unusedVariables false\n\nnamespace HSConj\n/-- Generated conjecture `down_tf` (history). -/\ndef down_tf : Prop := ∀ (S : GT.Edges) (T : GT.Edges) (h1 : T ⊆ S) (h2 : GT.TriangleFree S), GT.TriangleFree T\n/-- Generated conjecture `down_simple` (history). -/\ndef down_simple : Prop := ∀ (S : GT.Edges) (T : GT.Edges) (h1 : T ⊆ S) (h2 : HS.Simple S), HS.Simple T\n/-- Generated conjecture `down_bounded` (history). -/\ndef down_bounded : Prop := ∀ (S : GT.Edges) (T : GT.Edges) (h1 : T ⊆ S) (h2 : HS.Bounded8 S), HS.Bounded8 T\n/-- Generated conjecture `inter_tf` (history). -/\ndef inter_tf : Prop := ∀ (S : GT.Edges) (T : GT.Edges) (h1 : GT.TriangleFree S), GT.TriangleFree (S ∩ T)\n/-- Generated conjecture `inter_simple` (history). -/\ndef inter_simple : Prop := ∀ (S : GT.Edges) (T : GT.Edges) (h1 : HS.Simple S), HS.Simple (S ∩ T)\nend HSConj\n",
+   "source_sha256": "b51522fc7800b90635c57f6e77ae907ef1f30cf3054ccf078472d4ad0d5b5040",
+   "trusted": true
+  },
+  {
+   "name": "RCDefs",
+   "source": "import GTDefs\nimport HSDefs\n\nnamespace RC\n\n/-- Recovered by typed anti-unification of HSConj.down_bounded, HSConj.down_simple, HSConj.down_tf. -/\ndef C0 (P0 : GT.Edges -> Prop) : Prop := (∀ (x0 : @GT.Edges), (∀ (x1 : @GT.Edges), (∀ (x2 : (@LE.le @GT.Edges (@Preorder.toLE @GT.Edges (@PartialOrder.toPreorder @GT.Edges (@Finset.instPartialOrder (@Prod @Nat @Nat)))) x1 x0)), (∀ (x3 : (P0 x0)), (P0 x1)))))\n\nend RC\n",
+   "source_sha256": "640f2b577f249cc93dd38a96935449b2cee5e8444b6040c263d712a4875931ae",
+   "trusted": true
+  },
+  {
+   "name": "RCConj",
+   "source": "import GTDefs\nimport HSDefs\nimport HSConj\nimport RCDefs\nset_option linter.unusedVariables false\n\nnamespace RCConj\n/-- Generated conjecture `instance_down_bounded` (generated:reification-check). -/\ndef instance_down_bounded : Prop := @HSConj.down_bounded = @RC.C0 @HS.Bounded8\n/-- Generated conjecture `instance_down_simple` (generated:reification-check). -/\ndef instance_down_simple : Prop := @HSConj.down_simple = @RC.C0 @HS.Simple\n/-- Generated conjecture `instance_down_tf` (generated:reification-check). -/\ndef instance_down_tf : Prop := @HSConj.down_tf = @RC.C0 @GT.TriangleFree\n/-- Generated conjecture `gen_concept_inter` (generated:generic-over-concept). -/\ndef gen_concept_inter : Prop := ∀ (P : GT.Edges → Prop) (h : RC.C0 P) (S : GT.Edges) (T : GT.Edges) (h1 : P S), P (S ∩ T)\n/-- Generated conjecture `gen_concept_sdiff` (generated:generic-over-concept). -/\ndef gen_concept_sdiff : Prop := ∀ (P : GT.Edges → Prop) (h : RC.C0 P) (S : GT.Edges) (T : GT.Edges) (h1 : P S), P (S \\ T)\n/-- Generated conjecture `gen_concept_filter` (generated:generic-over-concept). -/\ndef gen_concept_filter : Prop := ∀ (P : GT.Edges → Prop) (h : RC.C0 P) (S : GT.Edges) (q : ℕ × ℕ → Bool) (h1 : P S), P (S.filter fun e => q e)\n/-- Generated conjecture `gen_concept_erase` (generated:generic-over-concept). -/\ndef gen_concept_erase : Prop := ∀ (P : GT.Edges → Prop) (h : RC.C0 P) (S : GT.Edges) (e : ℕ × ℕ) (h1 : P S), P (S.erase e)\nend RCConj\n",
+   "source_sha256": "5487dc376e8ec689b148c6253649770d2c8647bd9ef9dd1ce0a21fbbed8c3b0f",
+   "trusted": true
+  },
+  {
+   "name": "RCP1",
+   "source": "import GTDefs\nimport HSDefs\nimport HSConj\nimport RCDefs\nimport RCConj\nnamespace RCP1\ntheorem proof : RCConj.instance_down_bounded := by\n  unfold RCConj.instance_down_bounded\n  rfl\nend RCP1\n",
+   "source_sha256": "a229acab6dac8cae85d20470b0938cc59b4cd93c4d6bc0b360dbe085f0fc8452",
+   "trusted": false
+  },
+  {
+   "name": "RCP2",
+   "source": "import GTDefs\nimport HSDefs\nimport HSConj\nimport RCDefs\nimport RCConj\nimport RCP1\nnamespace RCP2\ntheorem proof : RCConj.instance_down_simple := by\n  unfold RCConj.instance_down_simple\n  rfl\nend RCP2\n",
+   "source_sha256": "e902d4b426f0bb024ec8c9d8b543e61d6c349f1c47b4c7af618ccce7e5335149",
+   "trusted": false
+  },
+  {
+   "name": "RCP3",
+   "source": "import GTDefs\nimport HSDefs\nimport HSConj\nimport RCDefs\nimport RCConj\nimport RCP1\nimport RCP2\nnamespace RCP3\ntheorem proof : RCConj.instance_down_tf := by\n  unfold RCConj.instance_down_tf\n  rfl\nend RCP3\n",
+   "source_sha256": "ce9f1c61f1118c0bb7fdbd3faeaad2a30e81b60fd3c1fd5527c253980690d900",
+   "trusted": false
+  },
+  {
+   "name": "RCP4",
+   "source": "import GTDefs\nimport HSDefs\nimport HSConj\nimport RCDefs\nimport RCConj\nimport RCP1\nimport RCP2\nimport RCP3\nnamespace RCP4\ntheorem proof : RCConj.gen_concept_inter := by\n  unfold RCConj.gen_concept_inter\n  intro P h S T h1\n  exact h _ _ (by simp) h1\nend RCP4\n",
+   "source_sha256": "6a1e492dd5c39b5754901393e9d4d9cd308b65f633b5bc3d70cc2969f72f974d",
+   "trusted": false
+  },
+  {
+   "name": "RCP5",
+   "source": "import GTDefs\nimport HSDefs\nimport HSConj\nimport RCDefs\nimport RCConj\nimport RCP1\nimport RCP2\nimport RCP3\nimport RCP4\nnamespace RCP5\ntheorem proof : RCConj.gen_concept_sdiff := by\n  unfold RCConj.gen_concept_sdiff\n  intro P h S T h1\n  exact h _ _ (by simp) h1\nend RCP5\n",
+   "source_sha256": "acc37362f6f7d814cdf2cbc2cf18651305157f7f902dfb10ec851e1f0311d8b4",
+   "trusted": false
+  },
+  {
+   "name": "RCP6",
+   "source": "import GTDefs\nimport HSDefs\nimport HSConj\nimport RCDefs\nimport RCConj\nimport RCP1\nimport RCP2\nimport RCP3\nimport RCP4\nimport RCP5\nnamespace RCP6\ntheorem proof : RCConj.gen_concept_filter := by\n  unfold RCConj.gen_concept_filter\n  intro P h S q h1\n  exact h _ _ (by simp) h1\nend RCP6\n",
+   "source_sha256": "587d1b89b0a2ff6ae920246609733368377a7802211d6eb31b41049be714ef0f",
+   "trusted": false
+  },
+  {
+   "name": "RCP7",
+   "source": "import GTDefs\nimport HSDefs\nimport HSConj\nimport RCDefs\nimport RCConj\nimport RCP1\nimport RCP2\nimport RCP3\nimport RCP4\nimport RCP5\nimport RCP6\nnamespace RCP7\ntheorem proof : RCConj.gen_concept_erase := by\n  unfold RCConj.gen_concept_erase\n  intro P h S e h1\n  apply h _ _ _ h1\n  intro x hx\n  simp_all\nend RCP7\n",
+   "source_sha256": "ca06942cfe45b9ced7030cad9723ea27c895cdde84f095bca4117eba716aa72e",
+   "trusted": false
+  }
+ ],
+ "name": "recovered concept (W09)",
+ "package_sha256": "01c93c4c3bec86fdde450d82ce902fa86e06f145cac31e0cc3ae13f5bba7641a",
+ "proofs": [
+  {
+   "module": "RCP1",
+   "recipe": "definitional-unfolding",
+   "statement": "instance_down_bounded"
+  },
+  {
+   "module": "RCP2",
+   "recipe": "definitional-unfolding",
+   "statement": "instance_down_simple"
+  },
+  {
+   "module": "RCP3",
+   "recipe": "definitional-unfolding",
+   "statement": "instance_down_tf"
+  },
+  {
+   "module": "RCP4",
+   "recipe": "concept-apply",
+   "statement": "gen_concept_inter"
+  },
+  {
+   "module": "RCP5",
+   "recipe": "concept-apply",
+   "statement": "gen_concept_sdiff"
+  },
+  {
+   "module": "RCP6",
+   "recipe": "concept-apply",
+   "statement": "gen_concept_filter"
+  },
+  {
+   "module": "RCP7",
+   "recipe": "concept-apply-intro",
+   "statement": "gen_concept_erase"
+  }
+ ],
+ "provenance": {
+  "acceptance": "genesis.formal_research.checker.accept",
+  "created_at": "2026-10-11T12:15:07.795456+00:00",
+  "loop": "genesis.formal_research.loop",
+  "search": "genesis.formal_research.search (builder-written recipes, named per proof)"
+ },
+ "recovery": {
+  "candidates": [
+   {
+    "constants": [
+     "Finset.instPartialOrder",
+     "GT.Edges",
+     "LE.le",
+     "Nat",
+     "PartialOrder.toPreorder",
+     "Preorder.toLE",
+     "Prod"
+    ],
+    "holes": [
+     "GT.Edges -> Prop"
+    ],
+    "members": [
+     "HSConj.down_bounded",
+     "HSConj.down_simple",
+     "HSConj.down_tf"
+    ],
+    "size": 35
+   },
+   {
+    "constants": [
+     "Finset.instInter",
+     "GT.Edges",
+     "Inter.inter",
+     "Nat",
+     "Prod",
+     "instDecidableEqNat",
+     "instDecidableEqProd"
+    ],
+    "holes": [
+     "GT.Edges -> Prop"
+    ],
+    "members": [
+     "HSConj.inter_simple",
+     "HSConj.inter_tf"
+    ],
+    "size": 51
+   }
+  ],
+  "chosen": {
+   "definition": "def C0 (P0 : GT.Edges -> Prop) : Prop := (∀ (x0 : @GT.Edges), (∀ (x1 : @GT.Edges), (∀ (x2 : (@LE.le @GT.Edges (@Preorder.toLE @GT.Edges (@PartialOrder.toPreorder @GT.Edges (@Finset.instPartialOrder (@Prod @Nat @Nat)))) x1 x0)), (∀ (x3 : (P0 x0)), (P0 x1)))))",
+   "hole_types": [
+    "GT.Edges -> Prop"
+   ],
+   "members": [
+    "HSConj.down_bounded",
+    "HSConj.down_simple",
+    "HSConj.down_tf"
+   ],
+   "uses_hidden": []
+  },
+  "hidden_constants": [
+   "Antitone",
+   "Monotone",
+   "AntitoneOn",
+   "MonotoneOn",
+   "StrictAnti",
+   "StrictMono",
+   "IsLowerSet",
+   "IsUpperSet"
+  ],
+  "snapshot_modules": [
+   "HSConj"
+  ],
+  "snapshot_tree_sha256": {
+   "HSConj.down_bounded": "a786d268169aafdb67a3128378842a066a3797fbbac2af9b96581d762120c868",
+   "HSConj.down_simple": "13bc84c921758b2850bdba5b397010dddb1fd33ca015f211c3da6cd4dffa6329",
+   "HSConj.down_tf": "f6977b6551e6032b1e0a3b29996966ee6c73a1a70480c10e9ed691e7de84b184",
+   "HSConj.inter_simple": "7a5c7b8d001cc821a60c6f6e334567cde804ba944bdf49ba6c3d483ae570e7eb",
+   "HSConj.inter_tf": "c38d0c135addfe9f978590b145ae248e79259623ce5dfc1f9e9cd70a22c82948"
+  }
+ },
+ "schema": "genesis-theory-package-v1",
+ "scope": "The recovered abstraction, its rfl-checked instances and generic closure lemmas.",
+ "statements": [
+  {
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "counterexample": null,
+   "id": "instance_down_bounded",
+   "lean": "@HSConj.down_bounded = @RC.C0 @HS.Bounded8",
+   "origin": "generated:reification-check",
+   "proof_const": "RCP1.proof",
+   "proof_module": "RCP1",
+   "recipe": "definitional-unfolding",
+   "role": "reification",
+   "screened_instances": 0,
+   "spec_const": "RCConj.instance_down_bounded",
+   "status": "CHECKED",
+   "subject": "HSConj.down_bounded"
+  },
+  {
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "counterexample": null,
+   "id": "instance_down_simple",
+   "lean": "@HSConj.down_simple = @RC.C0 @HS.Simple",
+   "origin": "generated:reification-check",
+   "proof_const": "RCP2.proof",
+   "proof_module": "RCP2",
+   "recipe": "definitional-unfolding",
+   "role": "reification",
+   "screened_instances": 0,
+   "spec_const": "RCConj.instance_down_simple",
+   "status": "CHECKED",
+   "subject": "HSConj.down_simple"
+  },
+  {
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "counterexample": null,
+   "id": "instance_down_tf",
+   "lean": "@HSConj.down_tf = @RC.C0 @GT.TriangleFree",
+   "origin": "generated:reification-check",
+   "proof_const": "RCP3.proof",
+   "proof_module": "RCP3",
+   "recipe": "definitional-unfolding",
+   "role": "reification",
+   "screened_instances": 0,
+   "spec_const": "RCConj.instance_down_tf",
+   "status": "CHECKED",
+   "subject": "HSConj.down_tf"
+  },
+  {
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "counterexample": null,
+   "id": "gen_concept_inter",
+   "lean": "∀ (P : GT.Edges → Prop) (h : RC.C0 P) (S : GT.Edges) (T : GT.Edges) (h1 : P S), P (S ∩ T)",
+   "origin": "generated:generic-over-concept",
+   "proof_const": "RCP4.proof",
+   "proof_module": "RCP4",
+   "recipe": "concept-apply",
+   "role": "generic",
+   "screened_instances": 0,
+   "spec_const": "RCConj.gen_concept_inter",
+   "status": "CHECKED",
+   "subject": "concept"
+  },
+  {
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "counterexample": null,
+   "id": "gen_concept_sdiff",
+   "lean": "∀ (P : GT.Edges → Prop) (h : RC.C0 P) (S : GT.Edges) (T : GT.Edges) (h1 : P S), P (S \\ T)",
+   "origin": "generated:generic-over-concept",
+   "proof_const": "RCP5.proof",
+   "proof_module": "RCP5",
+   "recipe": "concept-apply",
+   "role": "generic",
+   "screened_instances": 0,
+   "spec_const": "RCConj.gen_concept_sdiff",
+   "status": "CHECKED",
+   "subject": "concept"
+  },
+  {
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "counterexample": null,
+   "id": "gen_concept_filter",
+   "lean": "∀ (P : GT.Edges → Prop) (h : RC.C0 P) (S : GT.Edges) (q : ℕ × ℕ → Bool) (h1 : P S), P (S.filter fun e => q e)",
+   "origin": "generated:generic-over-concept",
+   "proof_const": "RCP6.proof",
+   "proof_module": "RCP6",
+   "recipe": "concept-apply",
+   "role": "generic",
+   "screened_instances": 0,
+   "spec_const": "RCConj.gen_concept_filter",
+   "status": "CHECKED",
+   "subject": "concept"
+  },
+  {
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "counterexample": null,
+   "id": "gen_concept_erase",
+   "lean": "∀ (P : GT.Edges → Prop) (h : RC.C0 P) (S : GT.Edges) (e : ℕ × ℕ) (h1 : P S), P (S.erase e)",
+   "origin": "generated:generic-over-concept",
+   "proof_const": "RCP7.proof",
+   "proof_module": "RCP7",
+   "recipe": "concept-apply-intro",
+   "role": "generic",
+   "screened_instances": 0,
+   "spec_const": "RCConj.gen_concept_erase",
+   "status": "CHECKED",
+   "subject": "concept"
+  }
+ ]
+}

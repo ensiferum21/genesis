@@ -1,0 +1,402 @@
+[   20.5s] cross_2_image: CHECKED (filter-subset)
+[   28.3s] cross_2_sound_tf: CHECKED (destructure-subst-omega)
+[   38.0s] cross_2_sound_c4: DISPROVED (counterexample-evaluation)
+[   49.7s] cross_3_image: CHECKED (filter-subset)
+[   62.8s] cross_3_sound_tf: DISPROVED (counterexample-evaluation)
+[   75.8s] cross_3_sound_c4: DISPROVED (counterexample-evaluation)
+[   90.1s] inside_2_image: CHECKED (filter-subset)
+[  107.4s] inside_2_sound_tf: DISPROVED (counterexample-evaluation)
+[  124.5s] inside_2_sound_c4: DISPROVED (counterexample-evaluation)
+[  141.7s] inside_3_image: CHECKED (filter-subset)
+[  161.7s] inside_3_sound_tf: DISPROVED (counterexample-evaluation)
+[  182.1s] inside_3_sound_c4: DISPROVED (counterexample-evaluation)
+[  203.8s] ordered_2_image: CHECKED (filter-subset)
+[  225.1s] ordered_2_sound_tf: CHECKED (destructure-subst-omega)
+[  246.8s] ordered_2_sound_c4: DISPROVED (counterexample-evaluation)
+[  270.3s] ordered_3_image: CHECKED (filter-subset)
+[  293.8s] ordered_3_sound_tf: DISPROVED (counterexample-evaluation)
+[  318.0s] ordered_3_sound_c4: DISPROVED (counterexample-evaluation)
+[  344.0s] adjacent_2_image: CHECKED (filter-subset)
+[  370.5s] adjacent_2_sound_tf: CHECKED (destructure-subst-omega)
+[  398.2s] adjacent_2_sound_c4: DISPROVED (counterexample-evaluation)
+[  435.0s] adjacent_3_image: CHECKED (filter-subset)
+[  465.7s] adjacent_3_sound_tf: CHECKED (destructure-subst-omega)
+[  497.1s] adjacent_3_sound_c4: DISPROVED (counterexample-evaluation)
+[  528.9s] cross_2_within_ordered_2: DISPROVED (counterexample-evaluation)
+[  561.1s] cross_2_within_adjacent_2: CHECKED (filter-pointwise)
+[  595.8s] ordered_2_within_cross_2: CHECKED (filter-pointwise)
+[  632.5s] ordered_2_within_adjacent_2: CHECKED (filter-pointwise)
+[  668.9s] adjacent_2_within_cross_2: CHECKED (filter-pointwise)
+[  706.2s] adjacent_2_within_ordered_2: DISPROVED (counterexample-evaluation)
+[  744.4s] cross_2_loses_tf: CHECKED (witness-evaluation)
+[  782.3s] ordered_2_loses_tf: CHECKED (witness-evaluation)
+[  821.6s] adjacent_2_loses_tf: CHECKED (witness-evaluation)
+[  859.6s] Lean-checked sound representations for triangle-free: ['cross_2', 'ordered_2', 'adjacent_2', 'adjacent_3']
+[  871.7s] selection panel ranking: [('adjacent_2', 60.5), ('adjacent_3', 60.5), ('cross_2', 60.5), ('ordered_2', 56.5)] -> adjacent_2
+[  875.1s] dev-erdos-80a647eb-20261019-0000: method 55 (valid VALID) baseline 55 (low_cycle) optimum 56 bound 60
+[  878.4s] dev-erdos-80a647eb-20261019-0001: method 57 (valid VALID) baseline 56 (multistart) optimum 57 bound 60
+[  881.6s] dev-erdos-80a647eb-20261019-0002: method 51 (valid VALID) baseline 52 (low_cycle) optimum 52 bound 54
+[  884.9s] dev-erdos-80a647eb-20261019-0003: method 59 (valid VALID) baseline 58 (low_cycle) optimum 60 bound 64
+[  889.4s] dev-erdos-80a647eb-20261019-0004: method 61 (valid VALID) baseline 61 (low_cycle) optimum 62 bound 66
+[  893.7s] dev-erdos-80a647eb-20261019-0005: method 62 (valid VALID) baseline 58 (low_cycle) optimum 63 bound 70
+[  896.9s] dev-erdos-80a647eb-20261019-0006: method 61 (valid VALID) baseline 58 (multistart) optimum 61 bound 65
+[  901.1s] dev-erdos-80a647eb-20261019-0007: method 62 (valid VALID) baseline 61 (low_cycle) optimum 63 bound 70
+[  904.5s] dev-erdos-80a647eb-20261019-0008: method 59 (valid VALID) baseline 59 (low_cycle) optimum 59 bound 64
+[  908.0s] dev-erdos-80a647eb-20261019-0009: method 53 (valid VALID) baseline 53 (low_cycle) optimum 54 bound 56
+[  911.5s] dev-erdos-80a647eb-20261019-0010: method 56 (valid VALID) baseline 56 (low_cycle) optimum 57 bound 58
+[  915.2s] dev-erdos-80a647eb-20261019-0011: method 61 (valid VALID) baseline 59 (multistart) optimum 61 bound 66
+[  932.5s] imp_bipartite__triangle_free: CHECKED (witness-destructure-tauto)
+[  936.3s] imp_max_deg_1__triangle_free: UNRESOLVED
+[  945.5s] imp_bipartite_has_triangle__triangle_free: CHECKED (witness-destructure-tauto)
+[  954.6s] model_W_tf: CHECKED (witness-evaluation)
+[  964.4s] model_W_bip: CHECKED (witness-evaluation)
+[  975.9s] model_W_dense: CHECKED (witness-evaluation)
+[  987.7s] incons_W_conflict: CHECKED (library-solve)
+[ 1001.1s] model_W_deg1: CHECKED (witness-evaluation)
+[ 1017.0s] imp_triangle_free__bipartite: DISPROVED (counterexample-evaluation)
+[ 1033.8s] discriminating experiment: {'erdos': {'tasks': 6, 'keep_all_valid': 0, 'worlds_applicable': ['W_dense']}, 'bipartite': {'tasks': 6, 'keep_all_valid': 6, 'worlds_applicable': ['W_bip', 'W_tf']}}
+[ 1061.9s] down_tf: CHECKED (apply-hyp:h2)
+[ 1070.0s] down_simple: CHECKED (elim-with-library)
+[ 1080.0s] down_bounded: CHECKED (elim-with-library)
+[ 1120.4s] inter_tf: CHECKED (unfold-aesop)
+[ 1133.3s] inter_simple: CHECKED (unfold-simp)
+[ 1140.6s] anti-unification: 2 candidates; top members [['HSConj.down_bounded', 'HSConj.down_simple', 'HSConj.down_tf'], ['HSConj.inter_simple', 'HSConj.inter_tf']]
+[ 1161.5s] instance_down_bounded: CHECKED (definitional-unfolding)
+[ 1169.8s] instance_down_simple: CHECKED (definitional-unfolding)
+[ 1182.3s] instance_down_tf: CHECKED (definitional-unfolding)
+[ 1197.1s] gen_concept_inter: CHECKED (concept-apply)
+[ 1208.8s] gen_concept_sdiff: CHECKED (concept-apply)
+[ 1222.3s] gen_concept_filter: CHECKED (concept-apply)
+[ 1242.7s] gen_concept_erase: CHECKED (concept-apply-intro)
+[ 1291.1s] none_loopfree_inter: CHECKED (unfold-simp)
+[ 1304.7s] none_loopfree_sdiff: CHECKED (unfold-simp)
+[ 1329.7s] none_loopfree_filter: CHECKED (unfold-simp)
+[ 1350.6s] none_loopfree_erase: CHECKED (unfold-simp)
+[ 1361.8s] none_matching_inter: UNRESOLVED
+[ 1379.1s] none_matching_sdiff: UNRESOLVED
+[ 1394.8s] none_matching_filter: UNRESOLVED
+[ 1404.8s] none_matching_erase: UNRESOLVED
+[ 1439.7s] none_c4free_inter: UNRESOLVED
+[ 1475.0s] none_c4free_sdiff: UNRESOLVED
+[ 1510.3s] none_c4free_filter: UNRESOLVED
+[ 1545.3s] none_c4free_erase: UNRESOLVED
+[ 1559.1s] none_nonempty_inter: DISPROVED (counterexample-evaluation)
+[ 1572.8s] none_nonempty_sdiff: DISPROVED (counterexample-evaluation)
+[ 1586.4s] none_nonempty_filter: DISPROVED (counterexample-evaluation)
+[ 1600.9s] none_nonempty_erase: DISPROVED (counterexample-evaluation)
+[ 1611.2s] arm none: proved 4/16 (disproved 4, unresolved 8)
+[ 1675.7s] retrieval_loopfree_inter: CHECKED (unfold-simp)
+[ 1704.2s] retrieval_loopfree_sdiff: CHECKED (unfold-simp)
+[ 1757.9s] retrieval_loopfree_filter: CHECKED (unfold-simp)
+[ 1796.5s] retrieval_loopfree_erase: CHECKED (unfold-simp)
+[ 1811.8s] retrieval_matching_inter: UNRESOLVED
+[ 1833.5s] retrieval_matching_sdiff: UNRESOLVED
+[ 1863.2s] retrieval_matching_filter: UNRESOLVED
+[ 1878.2s] retrieval_matching_erase: UNRESOLVED
+[ 1928.3s] retrieval_c4free_inter: UNRESOLVED
+[ 1977.1s] retrieval_c4free_sdiff: UNRESOLVED
+[ 2020.9s] retrieval_c4free_filter: UNRESOLVED
+[ 2065.4s] retrieval_c4free_erase: UNRESOLVED
+[ 2081.0s] retrieval_nonempty_inter: DISPROVED (counterexample-evaluation)
+[ 2097.0s] retrieval_nonempty_sdiff: DISPROVED (counterexample-evaluation)
+[ 2114.8s] retrieval_nonempty_filter: DISPROVED (counterexample-evaluation)
+[ 2133.7s] retrieval_nonempty_erase: DISPROVED (counterexample-evaluation)
+[ 2148.1s] arm retrieval: proved 4/16 (disproved 4, unresolved 8)
+[ 2202.8s] inst_concept_loopfree: CHECKED (down-closure-unfold)
+[ 2219.4s] inst_concept_matching: CHECKED (down-closure-unfold)
+[ 2268.6s] inst_concept_c4free: UNRESOLVED
+[ 2284.1s] inst_concept_nonempty: DISPROVED (counterexample-evaluation)
+[ 2300.4s] concept_loopfree_inter: CHECKED (elim-with-library)
+[ 2317.7s] concept_loopfree_sdiff: CHECKED (elim-with-library)
+[ 2337.3s] concept_loopfree_filter: CHECKED (elim-with-library)
+[ 2358.7s] concept_loopfree_erase: CHECKED (elim-with-library)
+[ 2380.5s] concept_matching_inter: CHECKED (elim-with-library)
+[ 2403.6s] concept_matching_sdiff: CHECKED (elim-with-library)
+[ 2427.8s] concept_matching_filter: CHECKED (elim-with-library)
+[ 2452.5s] concept_matching_erase: CHECKED (elim-with-library)
+[ 2516.4s] concept_c4free_inter: UNRESOLVED
+[ 2583.4s] concept_c4free_sdiff: UNRESOLVED
+[ 2646.1s] concept_c4free_filter: UNRESOLVED
+[ 2709.6s] concept_c4free_erase: UNRESOLVED
+[ 2734.8s] concept_nonempty_inter: DISPROVED (counterexample-evaluation)
+[ 2761.5s] concept_nonempty_sdiff: DISPROVED (counterexample-evaluation)
+[ 2789.6s] concept_nonempty_filter: DISPROVED (counterexample-evaluation)
+[ 2818.7s] concept_nonempty_erase: DISPROVED (counterexample-evaluation)
+[ 2844.7s] arm concept: proved 8/16 (disproved 4, unresolved 4)
+[ 2872.6s] gen_antitone_inter: CHECKED (antitone-apply)
+[ 2881.2s] gen_antitone_sdiff: CHECKED (antitone-apply)
+[ 2903.1s] gen_antitone_filter: CHECKED (unfold-aesop)
+[ 2913.5s] gen_antitone_erase: CHECKED (antitone-apply-intro)
+[ 2925.6s] inst_antitone_loopfree: CHECKED (down-closure-unfold)
+[ 2940.3s] inst_antitone_matching: CHECKED (down-closure-unfold)
+[ 2975.6s] inst_antitone_c4free: UNRESOLVED
+[ 2989.8s] inst_antitone_nonempty: DISPROVED (counterexample-evaluation)
+[ 3004.8s] manual_loopfree_inter: CHECKED (elim-with-library)
+[ 3020.9s] manual_loopfree_sdiff: CHECKED (elim-with-library)
+[ 3037.7s] manual_loopfree_filter: CHECKED (elim-with-library)
+[ 3056.2s] manual_loopfree_erase: CHECKED (elim-with-library)
+[ 3075.1s] manual_matching_inter: CHECKED (elim-with-library)
+[ 3094.8s] manual_matching_sdiff: CHECKED (elim-with-library)
+[ 3116.1s] manual_matching_filter: CHECKED (elim-with-library)
+[ 3137.2s] manual_matching_erase: CHECKED (elim-with-library)
+[ 3204.6s] manual_c4free_inter: UNRESOLVED
+[ 3273.3s] manual_c4free_sdiff: UNRESOLVED
+[ 3338.1s] manual_c4free_filter: UNRESOLVED
+[ 3401.9s] manual_c4free_erase: UNRESOLVED
+[ 3424.9s] manual_nonempty_inter: DISPROVED (counterexample-evaluation)
+[ 3449.5s] manual_nonempty_sdiff: DISPROVED (counterexample-evaluation)
+[ 3475.6s] manual_nonempty_filter: DISPROVED (counterexample-evaluation)
+[ 3502.6s] manual_nonempty_erase: DISPROVED (counterexample-evaluation)
+[ 3524.7s] arm manual: proved 8/16 (disproved 4, unresolved 4)
+[ 3597.7s] replay recovery/arm_concept/package.json: REPLAYED
+[ 3659.4s] replay recovery/arm_manual/package.json: REPLAYED
+[ 3693.3s] replay recovery/arm_none/package.json: REPLAYED
+[ 3745.7s] replay recovery/arm_retrieval/package.json: REPLAYED
+[ 3771.2s] replay recovery/concept/package.json: REPLAYED
+[ 3795.4s] replay recovery/history/package.json: REPLAYED
+[ 3882.3s] replay representations/package.json: REPLAYED
+[ 3907.0s] replay worlds/package.json: REPLAYED
+{
+ "recovery": {
+  "arms": {
+   "concept": {
+    "cache_hits": 0,
+    "disproved": 4,
+    "fresh_statements": 16,
+    "proof_nodes_fresh": 0,
+    "proved": 8,
+    "search_candidates": 126,
+    "search_cpu_s": 323.8,
+    "unresolved": 4
+   },
+   "manual": {
+    "cache_hits": 0,
+    "disproved": 4,
+    "fresh_statements": 16,
+    "proof_nodes_fresh": 0,
+    "proved": 8,
+    "search_candidates": 150,
+    "search_cpu_s": 333.9,
+    "unresolved": 4
+   },
+   "none": {
+    "cache_hits": 0,
+    "disproved": 4,
+    "fresh_statements": 16,
+    "proof_nodes_fresh": 0,
+    "proved": 4,
+    "search_candidates": 150,
+    "search_cpu_s": 234.0,
+    "unresolved": 8
+   },
+   "retrieval": {
+    "cache_hits": 0,
+    "disproved": 4,
+    "fresh_statements": 16,
+    "proof_nodes_fresh": 0,
+    "proved": 4,
+    "search_candidates": 210,
+    "search_cpu_s": 351.6,
+    "unresolved": 8
+   }
+  },
+  "concept_sha256": "01c93c4c3bec86fdde450d82ce902fa86e06f145cac31e0cc3ae13f5bba7641a",
+  "history_sha256": "6af7b894f44f0620ae47d7d576f08684c15584fa9832563d24b2cd1e4b17f1c8"
+ },
+ "replay": {
+  "recovery/arm_concept/package.json": "REPLAYED",
+  "recovery/arm_manual/package.json": "REPLAYED",
+  "recovery/arm_none/package.json": "REPLAYED",
+  "recovery/arm_retrieval/package.json": "REPLAYED",
+  "recovery/concept/package.json": "REPLAYED",
+  "recovery/history/package.json": "REPLAYED",
+  "representations/package.json": "REPLAYED",
+  "worlds/package.json": "REPLAYED"
+ },
+ "representations": {
+  "chosen": "adjacent_2",
+  "dev_evaluation": {
+   "all_witnesses_valid": true,
+   "certified_optimal_by_packing_bound": 0,
+   "losses_vs_strongest_baseline": 1,
+   "method_optimum_hits": 4,
+   "strongest_baseline_optimum_hits": 2,
+   "tasks": 12,
+   "ties": 5,
+   "wins_vs_strongest_baseline": 6
+  },
+  "package_sha256": "1b53b1b9926cbf27d3aff43a2b2000176a2c7a5210fc2059972d978e45b19c0e",
+  "statements": {
+   "adjacent_2_image": "CHECKED",
+   "adjacent_2_loses_tf": "CHECKED",
+   "adjacent_2_sound_c4": "DISPROVED",
+   "adjacent_2_sound_tf": "CHECKED",
+   "adjacent_2_within_cross_2": "CHECKED",
+   "adjacent_2_within_ordered_2": "DISPROVED",
+   "adjacent_3_image": "CHECKED",
+   "adjacent_3_sound_c4": "DISPROVED",
+   "adjacent_3_sound_tf": "CHECKED",
+   "cross_2_image": "CHECKED",
+   "cross_2_loses_tf": "CHECKED",
+   "cross_2_sound_c4": "DISPROVED",
+   "cross_2_sound_tf": "CHECKED",
+   "cross_2_within_adjacent_2": "CHECKED",
+   "cross_2_within_ordered_2": "DISPROVED",
+   "cross_3_image": "CHECKED",
+   "cross_3_sound_c4": "DISPROVED",
+   "cross_3_sound_tf": "DISPROVED",
+   "inside_2_image": "CHECKED",
+   "inside_2_sound_c4": "DISPROVED",
+   "inside_2_sound_tf": "DISPROVED",
+   "inside_3_image": "CHECKED",
+   "inside_3_sound_c4": "DISPROVED",
+   "inside_3_sound_tf": "DISPROVED",
+   "ordered_2_image": "CHECKED",
+   "ordered_2_loses_tf": "CHECKED",
+   "ordered_2_sound_c4": "DISPROVED",
+   "ordered_2_sound_tf": "CHECKED",
+   "ordered_2_within_adjacent_2": "CHECKED",
+   "ordered_2_within_cross_2": "CHECKED",
+   "ordered_3_image": "CHECKED",
+   "ordered_3_sound_c4": "DISPROVED",
+   "ordered_3_sound_tf": "DISPROVED"
+  }
+ },
+ "wall_seconds": 3907.0,
+ "worlds": {
+  "experiment": {
+   "bipartite": {
+    "keep_all_valid": 6,
+    "tasks": 6,
+    "worlds_applicable": [
+     "W_bip",
+     "W_tf"
+    ]
+   },
+   "erdos": {
+    "keep_all_valid": 0,
+    "tasks": 6,
+    "worlds_applicable": [
+     "W_dense"
+    ]
+   }
+  },
+  "package_sha256": "9db816b69f2468760e795cbaa335d6bb3c47917b7c10e903c6887397c33d9f5f",
+  "verdict": {
+   "claims": [
+    {
+     "assumptions": [
+      "triangle_free"
+     ],
+     "id": "keep_all_is_valid",
+     "statement": "the keep-all solver returns a triangle-free witness",
+     "status": "WORLD_RELATIVE",
+     "world": "W_tf"
+    },
+    {
+     "assumptions": [
+      "triangle_free"
+     ],
+     "id": "keep_all_is_optimal",
+     "statement": "the keep-all witness has |H| edges, the trivial upper bound",
+     "status": "WORLD_RELATIVE",
+     "world": "W_tf"
+    },
+    {
+     "assumptions": [
+      "bipartite",
+      "has_triangle"
+     ],
+     "id": "keep_all_is_valid_bip",
+     "statement": "keep-all is valid (vacuous if the world is inconsistent)",
+     "status": "VACUOUS",
+     "world": "W_conflict"
+    }
+   ],
+   "equivalence": {
+    "W_tf~W_bip": "DISTINCT"
+   },
+   "transports": [
+    {
+     "claims": [
+      "keep_all_is_valid",
+      "keep_all_is_optimal"
+     ],
+     "conditions": [
+      "triangle_free"
+     ],
+     "from": "W_tf",
+     "implication_proofs": [
+      "WDP1.proof"
+     ],
+     "missing": [],
+     "to": "W_bip",
+     "transported_assumptions": [
+      "bipartite"
+     ],
+     "verdict": "TRANSPORTED"
+    },
+    {
+     "claims": [
+      "keep_all_is_valid",
+      "keep_all_is_optimal"
+     ],
+     "conditions": [
+      "triangle_free"
+     ],
+     "from": "W_tf",
+     "implication_proofs": [],
+     "missing": [
+      {
+       "assumption": "triangle_free",
+       "status": "UNRESOLVED"
+      }
+     ],
+     "to": "W_deg1",
+     "transported_assumptions": null,
+     "verdict": "REFUSED_UNPROVED_CONDITIONS"
+    },
+    {
+     "claims": [
+      "keep_all_is_valid",
+      "keep_all_is_optimal"
+     ],
+     "conditions": [
+      "triangle_free"
+     ],
+     "from": "W_tf",
+     "implication_proofs": [
+      "WDP2.proof"
+     ],
+     "missing": [],
+     "to": "W_conflict",
+     "transported_assumptions": null,
+     "verdict": "REFUSED_INCONSISTENT_TARGET"
+    }
+   ],
+   "worlds": {
+    "W_bip": {
+     "evidence": "WDP4.proof",
+     "status": "CONSISTENT"
+    },
+    "W_conflict": {
+     "evidence": "WDP6.proof",
+     "status": "INCONSISTENT"
+    },
+    "W_deg1": {
+     "evidence": "WDP7.proof",
+     "status": "CONSISTENT"
+    },
+    "W_dense": {
+     "evidence": "WDP5.proof",
+     "status": "CONSISTENT"
+    },
+    "W_tf": {
+     "evidence": "WDP3.proof",
+     "status": "CONSISTENT"
+    }
+   }
+  }
+ }
+}
+rc=0

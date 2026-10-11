@@ -11,7 +11,7 @@ Columns keep four things apart: implementation, local execution (tests ran in th
 | Specification §1-48 | 157 | 0 | 0 | 87 | 46 | 20 | 2 | 1 | 1 |
 | Roadmap defects | 4 | 0 | 0 | 4 | 0 | 0 | 0 | 0 | 0 |
 | Gates | 9 | 0 | 0 | 0 | 0 | 9 | 0 | 0 | 0 |
-| Workstreams | 28 | 0 | 0 | 9 | 0 | 19 | 0 | 0 | 0 |
+| Workstreams | 28 | 0 | 0 | 12 | 0 | 16 | 0 | 0 | 0 |
 | Experiments | 8 | 0 | 0 | 0 | 0 | 8 | 0 | 0 | 0 |
 | Engine catalogue (137) | 137 | 0 | 0 | 5 | 0 | 117 | 0 | 0 | 15 |
 
@@ -40,12 +40,12 @@ Proposed DEFERRED_EXTENSION rows remain NOT_IMPLEMENTED until Daniel agrees the 
 | SPEC-4.1 | Initial operator basis | IMPLEMENTED_BOUNDED_PENDING_AUDIT | sixteen primitives with typed overloads (graph wedge only) | tests_genesis/test_macros_market.py::IR | useful semantics outside the graph wedge | — | N/A |
 | SPEC-4.2 | Core Research IR node types | IMPLEMENTED_BOUNDED_PENDING_AUDIT | IR node records, traces, replay, artifact references | tests_genesis/test_macros_market.py::IR<br>tests_certificates/test_certificate_custody.py | — | — | N/A |
 | SPEC-4.3 | Epistemic type and effect system | IMPLEMENTED_BOUNDED_PENDING_AUDIT | epistemic effects with propagation; speculative taint resolved only by passing checks | tests_genesis/test_evidence_kernel.py::MathPromotion | — | — | N/A |
-| SPEC-4.4 | MRDL: minimal representation description language | IMPLEMENTED_BOUNDED_PENDING_AUDIT | MRDL bounded graph vocabulary | tests_genesis/test_graphs.py | typed representation invention (W10) | — | N/A |
+| SPEC-4.4 | MRDL: minimal representation description language | IMPLEMENTED_BOUNDED_PENDING_AUDIT | MRDL bounded graph vocabulary; typed representation grammar with Lean-checked obligations (B18) | tests_genesis/test_graphs.py<br>tests_formal/test_invention.py | representations beyond vertex-class decoders | — | N/A |
 | SPEC-5 | The complete discovery loop | NOT_A_REQUIREMENT | heading | — | — | — | N/A |
 | SPEC-5.1 | Stage A - contract and faithful formalization | IMPLEMENTED_BOUNDED_PENDING_AUDIT | task contracts for two graph domains through the DomainAdapter interface (parse, exposure identity, candidate/evaluator views, validity, score, certified reference, obligations, cost, families, replay); formalization is fixed, not faithful-formalization research | tests_genesis/test_domain_adapters.py<br>tests_genesis/test_graphs.py<br>tests_formal/test_formal_research.py | faithful formalization of natural-language statements (W17) | — | N/A |
 | SPEC-5.2 | Stage B - identifiability and ignorance analysis | NOT_IMPLEMENTED | identifiability and ignorance analysis | — | identifiability engine (W14) | — | NOT_TESTED |
 | SPEC-5.3 | Stage C - gap diagnosis before brute force | IMPLEMENTED_BOUNDED_PENDING_AUDIT | gap diagnosis macro (gap_engine) | tests_genesis/test_macros_market.py::Macros | — | — | NOT_TESTED |
-| SPEC-5.4 | Stage D - competing mathematical/scientific worlds | IMPLEMENTED_BOUNDED_PENDING_AUDIT | bounded world ecology over solver programs | tests_genesis/test_macros_market.py::WorldLoop | explicit assumptions/ontologies and checked transport (W12) | — | NOT_TESTED |
+| SPEC-5.4 | Stage D - competing mathematical/scientific worlds | IMPLEMENTED_BOUNDED_PENDING_AUDIT | bounded world ecology over solver programs | tests_genesis/test_macros_market.py::WorldLoop | — | — | NOT_TESTED |
 | SPEC-5.5 | Stage E - construction and obstruction in parallel | IMPLEMENTED_BOUNDED_PENDING_AUDIT | construction (witness search) and obstruction (SAT/DRAT upper bounds) in one loop | tests_certificates/test_sat_certificates.py<br>tests_certificates/test_certificate_custody.py | — | — | N/A |
 | SPEC-5.6 | Stage F - certificate-first obligation graph | IMPLEMENTED_BOUNDED_PENDING_AUDIT | certificate-first: optimality only with custody-held, replayed certificates | tests_certificates/test_certificate_custody.py<br>tests_genesis/test_redteam_b14.py::KernelFindings | — | — | N/A |
 | SPEC-5.7 | Stage G - prospective evaluation and retention | IMPLEMENTED_BOUNDED_PENDING_AUDIT | sealed prospective evaluation protocol (request v3, anchor, custodian, receipts, preflight) | tests_genesis/test_external_custodian.py<br>tests_genesis/test_phase_receipts.py<br>tests_genesis/test_acceptance_regressions.py | retention policy after confirmation | independent custodian, fresh sealed pools<br>external time anchoring | NOT_TESTED |
@@ -70,7 +70,7 @@ Proposed DEFERRED_EXTENSION rows remain NOT_IMPLEMENTED until Daniel agrees the 
 | SPEC-8.2 | triangle_free_host_v1 transfer domain | IMPLEMENTED_BOUNDED_PENDING_AUDIT | triangle_free_host_v1 transfer domain; DEV-calibrated family (round 2) | tests_genesis/test_graphs.py<br>tests_genesis/test_calibration.py | a structurally more distant domain (E5) | — | NOT_TESTED |
 | SPEC-8.3 | Why these domains | NOT_A_REQUIREMENT | informative rationale | — | — | — | N/A |
 | SPEC-9 | Counterfactual worlds, ecology and option preservation | NOT_A_REQUIREMENT | heading | — | — | — | N/A |
-| SPEC-9.1 | World definition | IMPLEMENTED_BOUNDED_PENDING_AUDIT | world = program + representation + lineage + metrics | tests_genesis/test_research_runtime.py | assumptions and ontology per world (W12) | — | N/A |
+| SPEC-9.1 | World definition | IMPLEMENTED_BOUNDED_PENDING_AUDIT | world = program + representation + lineage + metrics; explicit assumption worlds with checked consistency, implication, separation and transport (B18) | tests_genesis/test_research_runtime.py<br>tests_formal/test_invention.py | — | — | N/A |
 | SPEC-9.2 | Branch promotion and retirement | IMPLEMENTED_BOUNDED_PENDING_AUDIT | Pareto promotion, dormancy and retirement records | tests_genesis/test_macros_market.py::WorldLoop | — | — | N/A |
 | SPEC-9.3 | Irreversibility rule | IMPLEMENTED_BOUNDED_PENDING_AUDIT | irreversibility as the market risk term | tests_genesis/test_macros_market.py::Market | — | — | N/A |
 | SPEC-10 | Local-to-global, continuation and tractability | NOT_A_REQUIREMENT | heading | — | — | — | N/A |
@@ -214,10 +214,10 @@ Proposed DEFERRED_EXTENSION rows remain NOT_IMPLEMENTED until Daniel agrees the 
 | W06 | Independent custody and preregistration | IMPLEMENTED_BOUNDED_PENDING_AUDIT | workstream (B14 scope delivered; acceptance pending) | tests_genesis/test_evaluator_readiness.py<br>tests_genesis/test_redteam_b16.py | — | — | N/A |
 | W07 | Statistics, fairness and decision rules | IMPLEMENTED_BOUNDED_PENDING_AUDIT | workstream (B14 scope delivered; acceptance pending) | tests_genesis/test_analysis_v2.py<br>tests_genesis/test_evaluator_readiness.py<br>tests_genesis/test_resources.py | — | — | N/A |
 | W08 | Lean and Mathlib research workspace | IMPLEMENTED_BOUNDED_PENDING_AUDIT | workstream (B14 scope delivered; acceptance pending) | tests_formal/test_formal_research.py | — | — | N/A |
-| W09 | TCSR and missing-concept recovery | NOT_IMPLEMENTED | workstream | — | not started in B14 | — | N/A |
-| W10 | Representation and ontology invention | NOT_IMPLEMENTED | workstream | — | not started in B14 | — | N/A |
+| W09 | TCSR and missing-concept recovery (own library and typed anti-unification; no Mathlib-history study) | IMPLEMENTED_BOUNDED_PENDING_AUDIT | workstream (B14 scope delivered; acceptance pending) | tests_formal/test_invention.py | — | — | N/A |
+| W10 | Representation and ontology invention (vertex-class grammar) | IMPLEMENTED_BOUNDED_PENDING_AUDIT | workstream (B14 scope delivered; acceptance pending) | tests_formal/test_invention.py | — | — | N/A |
 | W11 | Theory-centered discovery and theory packages (first package path only) | IMPLEMENTED_BOUNDED_PENDING_AUDIT | workstream (B14 scope delivered; acceptance pending) | tests_formal/test_formal_research.py::CommittedPackage | — | — | N/A |
-| W12 | Worlds, counterfactual theories and transport | NOT_IMPLEMENTED | workstream | — | not started in B14 | — | N/A |
+| W12 | Worlds, counterfactual theories and transport | IMPLEMENTED_BOUNDED_PENDING_AUDIT | workstream (B14 scope delivered; acceptance pending) | tests_formal/test_invention.py | — | — | N/A |
 | W13 | Construction, obstruction and certified reductions | NOT_IMPLEMENTED | workstream | — | not started in B14 | — | N/A |
 | W14 | Active experiments and identifiability | NOT_IMPLEMENTED | workstream | — | not started in B14 | — | N/A |
 | W15 | Causal concept catalysis and idea combinations | NOT_IMPLEMENTED | workstream | — | not started in B14 | — | N/A |

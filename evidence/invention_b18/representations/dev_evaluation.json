@@ -1,0 +1,465 @@
+{
+ "chosen_representation": "adjacent_2",
+ "evaluation_seed": 20261019,
+ "note": "DEV only; the strongest baseline is chosen per task after the fact, which favours the baselines. The method gets the baselines' CPU limit; its 0.25 s result is reported too.",
+ "ranking": [
+  {
+   "mean_value": 60.5,
+   "representation": "adjacent_2",
+   "values": [
+    61,
+    64,
+    60,
+    64,
+    56,
+    58
+   ]
+  },
+  {
+   "mean_value": 60.5,
+   "representation": "adjacent_3",
+   "values": [
+    61,
+    64,
+    60,
+    64,
+    56,
+    58
+   ]
+  },
+  {
+   "mean_value": 60.5,
+   "representation": "cross_2",
+   "values": [
+    61,
+    64,
+    60,
+    64,
+    56,
+    58
+   ]
+  },
+  {
+   "mean_value": 56.5,
+   "representation": "ordered_2",
+   "values": [
+    57,
+    60,
+    54,
+    57,
+    55,
+    56
+   ]
+  }
+ ],
+ "rows": [
+  {
+   "baselines": {
+    "exchange": {
+     "cpu_ns": 165981713,
+     "status": "SUCCESS",
+     "value": 50
+    },
+    "low_cycle": {
+     "cpu_ns": 176814568,
+     "status": "SUCCESS",
+     "value": 55
+    },
+    "multistart": {
+     "cpu_ns": 163047135,
+     "status": "SUCCESS",
+     "value": 52
+    }
+   },
+   "certified_optimal_by_bound": false,
+   "edges": 77,
+   "method": {
+    "cpu_seconds_budget": 2,
+    "decoded_before_repair": 54,
+    "rounds": 3533,
+    "valid": true,
+    "value": 55
+   },
+   "method_at_0_25s": 55,
+   "optimum": 56,
+   "packing_upper_bound": 60,
+   "strongest_baseline": "low_cycle",
+   "task_id": "dev-erdos-80a647eb-20261019-0000"
+  },
+  {
+   "baselines": {
+    "exchange": {
+     "cpu_ns": 166276205,
+     "status": "SUCCESS",
+     "value": 51
+    },
+    "low_cycle": {
+     "cpu_ns": 197180798,
+     "status": "SUCCESS",
+     "value": 56
+    },
+    "multistart": {
+     "cpu_ns": 164542196,
+     "status": "SUCCESS",
+     "value": 56
+    }
+   },
+   "certified_optimal_by_bound": false,
+   "edges": 74,
+   "method": {
+    "cpu_seconds_budget": 2,
+    "decoded_before_repair": 54,
+    "rounds": 3979,
+    "valid": true,
+    "value": 57
+   },
+   "method_at_0_25s": 57,
+   "optimum": 57,
+   "packing_upper_bound": 60,
+   "strongest_baseline": "multistart",
+   "task_id": "dev-erdos-80a647eb-20261019-0001"
+  },
+  {
+   "baselines": {
+    "exchange": {
+     "cpu_ns": 172728118,
+     "status": "SUCCESS",
+     "value": 49
+    },
+    "low_cycle": {
+     "cpu_ns": 210608305,
+     "status": "SUCCESS",
+     "value": 52
+    },
+    "multistart": {
+     "cpu_ns": 253738102,
+     "status": "SUCCESS",
+     "value": 51
+    }
+   },
+   "certified_optimal_by_bound": false,
+   "edges": 67,
+   "method": {
+    "cpu_seconds_budget": 2,
+    "decoded_before_repair": 50,
+    "rounds": 4068,
+    "valid": true,
+    "value": 51
+   },
+   "method_at_0_25s": 51,
+   "optimum": 52,
+   "packing_upper_bound": 54,
+   "strongest_baseline": "low_cycle",
+   "task_id": "dev-erdos-80a647eb-20261019-0002"
+  },
+  {
+   "baselines": {
+    "exchange": {
+     "cpu_ns": 155201861,
+     "status": "SUCCESS",
+     "value": 51
+    },
+    "low_cycle": {
+     "cpu_ns": 156171481,
+     "status": "SUCCESS",
+     "value": 58
+    },
+    "multistart": {
+     "cpu_ns": 155776002,
+     "status": "SUCCESS",
+     "value": 55
+    }
+   },
+   "certified_optimal_by_bound": false,
+   "edges": 80,
+   "method": {
+    "cpu_seconds_budget": 2,
+    "decoded_before_repair": 57,
+    "rounds": 3874,
+    "valid": true,
+    "value": 59
+   },
+   "method_at_0_25s": 59,
+   "optimum": 60,
+   "packing_upper_bound": 64,
+   "strongest_baseline": "low_cycle",
+   "task_id": "dev-erdos-80a647eb-20261019-0003"
+  },
+  {
+   "baselines": {
+    "exchange": {
+     "cpu_ns": 154498150,
+     "status": "SUCCESS",
+     "value": 54
+    },
+    "low_cycle": {
+     "cpu_ns": 150760148,
+     "status": "SUCCESS",
+     "value": 61
+    },
+    "multistart": {
+     "cpu_ns": 172593269,
+     "status": "SUCCESS",
+     "value": 59
+    }
+   },
+   "certified_optimal_by_bound": false,
+   "edges": 87,
+   "method": {
+    "cpu_seconds_budget": 2,
+    "decoded_before_repair": 61,
+    "rounds": 3772,
+    "valid": true,
+    "value": 61
+   },
+   "method_at_0_25s": 61,
+   "optimum": 62,
+   "packing_upper_bound": 66,
+   "strongest_baseline": "low_cycle",
+   "task_id": "dev-erdos-80a647eb-20261019-0004"
+  },
+  {
+   "baselines": {
+    "exchange": {
+     "cpu_ns": 158535018,
+     "status": "SUCCESS",
+     "value": 57
+    },
+    "low_cycle": {
+     "cpu_ns": 154628698,
+     "status": "SUCCESS",
+     "value": 58
+    },
+    "multistart": {
+     "cpu_ns": 163005402,
+     "status": "SUCCESS",
+     "value": 56
+    }
+   },
+   "certified_optimal_by_bound": false,
+   "edges": 89,
+   "method": {
+    "cpu_seconds_budget": 2,
+    "decoded_before_repair": 62,
+    "rounds": 3912,
+    "valid": true,
+    "value": 62
+   },
+   "method_at_0_25s": 62,
+   "optimum": 63,
+   "packing_upper_bound": 70,
+   "strongest_baseline": "low_cycle",
+   "task_id": "dev-erdos-80a647eb-20261019-0005"
+  },
+  {
+   "baselines": {
+    "exchange": {
+     "cpu_ns": 163102309,
+     "status": "SUCCESS",
+     "value": 52
+    },
+    "low_cycle": {
+     "cpu_ns": 154538434,
+     "status": "SUCCESS",
+     "value": 58
+    },
+    "multistart": {
+     "cpu_ns": 151396093,
+     "status": "SUCCESS",
+     "value": 58
+    }
+   },
+   "certified_optimal_by_bound": false,
+   "edges": 83,
+   "method": {
+    "cpu_seconds_budget": 2,
+    "decoded_before_repair": 59,
+    "rounds": 3813,
+    "valid": true,
+    "value": 61
+   },
+   "method_at_0_25s": 61,
+   "optimum": 61,
+   "packing_upper_bound": 65,
+   "strongest_baseline": "multistart",
+   "task_id": "dev-erdos-80a647eb-20261019-0006"
+  },
+  {
+   "baselines": {
+    "exchange": {
+     "cpu_ns": 181030049,
+     "status": "SUCCESS",
+     "value": 55
+    },
+    "low_cycle": {
+     "cpu_ns": 174700834,
+     "status": "SUCCESS",
+     "value": 61
+    },
+    "multistart": {
+     "cpu_ns": 176868205,
+     "status": "SUCCESS",
+     "value": 57
+    }
+   },
+   "certified_optimal_by_bound": false,
+   "edges": 88,
+   "method": {
+    "cpu_seconds_budget": 2,
+    "decoded_before_repair": 60,
+    "rounds": 3761,
+    "valid": true,
+    "value": 62
+   },
+   "method_at_0_25s": 62,
+   "optimum": 63,
+   "packing_upper_bound": 70,
+   "strongest_baseline": "low_cycle",
+   "task_id": "dev-erdos-80a647eb-20261019-0007"
+  },
+  {
+   "baselines": {
+    "exchange": {
+     "cpu_ns": 173164390,
+     "status": "SUCCESS",
+     "value": 55
+    },
+    "low_cycle": {
+     "cpu_ns": 159882074,
+     "status": "SUCCESS",
+     "value": 59
+    },
+    "multistart": {
+     "cpu_ns": 154860002,
+     "status": "SUCCESS",
+     "value": 57
+    }
+   },
+   "certified_optimal_by_bound": false,
+   "edges": 81,
+   "method": {
+    "cpu_seconds_budget": 2,
+    "decoded_before_repair": 58,
+    "rounds": 4082,
+    "valid": true,
+    "value": 59
+   },
+   "method_at_0_25s": 59,
+   "optimum": 59,
+   "packing_upper_bound": 64,
+   "strongest_baseline": "low_cycle",
+   "task_id": "dev-erdos-80a647eb-20261019-0008"
+  },
+  {
+   "baselines": {
+    "exchange": {
+     "cpu_ns": 169973024,
+     "status": "SUCCESS",
+     "value": 52
+    },
+    "low_cycle": {
+     "cpu_ns": 187862563,
+     "status": "SUCCESS",
+     "value": 53
+    },
+    "multistart": {
+     "cpu_ns": 179638705,
+     "status": "SUCCESS",
+     "value": 52
+    }
+   },
+   "certified_optimal_by_bound": false,
+   "edges": 74,
+   "method": {
+    "cpu_seconds_budget": 2,
+    "decoded_before_repair": 52,
+    "rounds": 4308,
+    "valid": true,
+    "value": 53
+   },
+   "method_at_0_25s": 53,
+   "optimum": 54,
+   "packing_upper_bound": 56,
+   "strongest_baseline": "low_cycle",
+   "task_id": "dev-erdos-80a647eb-20261019-0009"
+  },
+  {
+   "baselines": {
+    "exchange": {
+     "cpu_ns": 191512201,
+     "status": "SUCCESS",
+     "value": 51
+    },
+    "low_cycle": {
+     "cpu_ns": 198969059,
+     "status": "SUCCESS",
+     "value": 56
+    },
+    "multistart": {
+     "cpu_ns": 220266677,
+     "status": "SUCCESS",
+     "value": 54
+    }
+   },
+   "certified_optimal_by_bound": false,
+   "edges": 77,
+   "method": {
+    "cpu_seconds_budget": 2,
+    "decoded_before_repair": 55,
+    "rounds": 2838,
+    "valid": true,
+    "value": 56
+   },
+   "method_at_0_25s": 56,
+   "optimum": 57,
+   "packing_upper_bound": 58,
+   "strongest_baseline": "low_cycle",
+   "task_id": "dev-erdos-80a647eb-20261019-0010"
+  },
+  {
+   "baselines": {
+    "exchange": {
+     "cpu_ns": 159743369,
+     "status": "SUCCESS",
+     "value": 57
+    },
+    "low_cycle": {
+     "cpu_ns": 154229274,
+     "status": "SUCCESS",
+     "value": 59
+    },
+    "multistart": {
+     "cpu_ns": 158333725,
+     "status": "SUCCESS",
+     "value": 59
+    }
+   },
+   "certified_optimal_by_bound": false,
+   "edges": 82,
+   "method": {
+    "cpu_seconds_budget": 2,
+    "decoded_before_repair": 54,
+    "rounds": 3972,
+    "valid": true,
+    "value": 61
+   },
+   "method_at_0_25s": 61,
+   "optimum": 61,
+   "packing_upper_bound": 66,
+   "strongest_baseline": "multistart",
+   "task_id": "dev-erdos-80a647eb-20261019-0011"
+  }
+ ],
+ "selection_seed": 20261018,
+ "split": "DEV",
+ "summary": {
+  "all_witnesses_valid": true,
+  "certified_optimal_by_packing_bound": 0,
+  "losses_vs_strongest_baseline": 1,
+  "method_optimum_hits": 4,
+  "strongest_baseline_optimum_hits": 2,
+  "tasks": 12,
+  "ties": 5,
+  "wins_vs_strongest_baseline": 6
+ }
+}

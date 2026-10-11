@@ -564,3 +564,51 @@ It is not a sealed-receipt domain.
 - A structural result used by a solver on fresh tasks (W11's done-when).
 - A second machine.
 
+## Batch 18 — Concept invention (W09–W12)
+
+Shared machinery: `formal_research/loop.py` turns any typed conjecture (binders,
+hypotheses, a Python model) into the B17 cycle of screening, checked disproof, recipe
+search and acceptance. The cycle ends in a package in the B17 schema, so `replay`
+applies to it unchanged. Search now tries the specialised candidates before the generic
+portfolio, at a lower heartbeat limit. Acceptance limits stay as they were. The trusted
+check stage also returns statement trees and proof-term sizes.
+
+**W10 representations** (`invention/representations.py`).
+- A typed grammar of vertex-class encodings (`ℕ → Fin k`, k ≤ 3) with four decoders. Each
+  proposal is typechecked and bounded, and records its semantics, what it keeps and loses,
+  its cost and its failure conditions.
+- Lean obligations: image, soundness, dominance and loss. Four representations are sound
+  for triangle-free. All C4 soundness claims are disproved.
+- represent-and-repair, on a fresh DEV panel, against the strongest baseline per task:
+  - 6 wins, 5 ties, 1 loss;
+  - 4 against 2 optimum hits;
+  - every witness valid.
+  This is W11's done-when, checked on DEV only.
+
+**W12 worlds** (`invention/worlds.py`). Worlds with explicit assumptions and their
+interventions:
+- consistency only with a checked model, inconsistency only with a checked proof of
+  False;
+- implications, separations and transport decisions;
+- claims from an inconsistent world are VACUOUS.
+- A discriminating experiment on erdos and bipartite DEV hosts picks the world host by
+  host.
+
+**W09 recovery** (`invention/recovery.py`, `recovery_experiment.py`).
+- History library → cutoff snapshot of statement trees → typed first-order
+  anti-unification → reified concept with rfl-checked instances and no hidden constants.
+- The concept recovered is definitionally Mathlib's `Antitone`.
+- Fresh families in four arms (none, retrieval, concept, manual): proved 4, 4, 8 and 8 of
+  16 statements. The concept enables the Matching family and shortens the LoopFree proofs
+  about 60-fold in proof-term size. The manual abstraction does equally well.
+
+**Evidence.** `evidence/invention_b18/`: eight packages, all replayed (3,907 s). Proof
+sizes were recomputed after a bug fix: theorem values had been read as opaque. The fix
+is recorded in `comparison.json`.
+
+**Not done.**
+- A historical Mathlib cutoff study.
+- Representations beyond vertex classes.
+- Sealed evaluation (B19).
+- Learned proof strategies.
+

@@ -1,0 +1,483 @@
+{
+ "arms": {
+  "concept": {
+   "acceptance_cpu_s": 252.4,
+   "cache_hits": 0,
+   "disproved": 4,
+   "fresh_statements": 16,
+   "package_sha256": "31c11992712bd599e95b186e29e7c02f4d8681051562fafa2b3692b335adc6dd",
+   "per_statement": {
+    "concept_c4free_erase": {
+     "proof_nodes": null,
+     "recipe": null,
+     "status": "UNRESOLVED"
+    },
+    "concept_c4free_filter": {
+     "proof_nodes": null,
+     "recipe": null,
+     "status": "UNRESOLVED"
+    },
+    "concept_c4free_inter": {
+     "proof_nodes": null,
+     "recipe": null,
+     "status": "UNRESOLVED"
+    },
+    "concept_c4free_sdiff": {
+     "proof_nodes": null,
+     "recipe": null,
+     "status": "UNRESOLVED"
+    },
+    "concept_loopfree_erase": {
+     "proof_nodes": 27,
+     "recipe": "elim-with-library",
+     "status": "CHECKED"
+    },
+    "concept_loopfree_filter": {
+     "proof_nodes": 29,
+     "recipe": "elim-with-library",
+     "status": "CHECKED"
+    },
+    "concept_loopfree_inter": {
+     "proof_nodes": 23,
+     "recipe": "elim-with-library",
+     "status": "CHECKED"
+    },
+    "concept_loopfree_sdiff": {
+     "proof_nodes": 23,
+     "recipe": "elim-with-library",
+     "status": "CHECKED"
+    },
+    "concept_matching_erase": {
+     "proof_nodes": 27,
+     "recipe": "elim-with-library",
+     "status": "CHECKED"
+    },
+    "concept_matching_filter": {
+     "proof_nodes": 29,
+     "recipe": "elim-with-library",
+     "status": "CHECKED"
+    },
+    "concept_matching_inter": {
+     "proof_nodes": 23,
+     "recipe": "elim-with-library",
+     "status": "CHECKED"
+    },
+    "concept_matching_sdiff": {
+     "proof_nodes": 23,
+     "recipe": "elim-with-library",
+     "status": "CHECKED"
+    },
+    "concept_nonempty_erase": {
+     "proof_nodes": 247,
+     "recipe": "counterexample-evaluation",
+     "status": "DISPROVED"
+    },
+    "concept_nonempty_filter": {
+     "proof_nodes": 669,
+     "recipe": "counterexample-evaluation",
+     "status": "DISPROVED"
+    },
+    "concept_nonempty_inter": {
+     "proof_nodes": 363,
+     "recipe": "counterexample-evaluation",
+     "status": "DISPROVED"
+    },
+    "concept_nonempty_sdiff": {
+     "proof_nodes": 427,
+     "recipe": "counterexample-evaluation",
+     "status": "DISPROVED"
+    }
+   },
+   "proof_nodes_fresh": 204,
+   "proved": 8,
+   "search_candidates": 126,
+   "search_cpu_s": 323.8,
+   "support_statements": {
+    "inst_concept_c4free": "UNRESOLVED",
+    "inst_concept_loopfree": "CHECKED",
+    "inst_concept_matching": "CHECKED",
+    "inst_concept_nonempty": "DISPROVED"
+   },
+   "unresolved": 4,
+   "wall_s": 696.6
+  },
+  "manual": {
+   "acceptance_cpu_s": 235.9,
+   "cache_hits": 0,
+   "disproved": 4,
+   "fresh_statements": 16,
+   "package_sha256": "c257dcd712d4422ac3dc497670b152c96a2b3891e90d4f2cb625a602d529c97d",
+   "per_statement": {
+    "manual_c4free_erase": {
+     "proof_nodes": null,
+     "recipe": null,
+     "status": "UNRESOLVED"
+    },
+    "manual_c4free_filter": {
+     "proof_nodes": null,
+     "recipe": null,
+     "status": "UNRESOLVED"
+    },
+    "manual_c4free_inter": {
+     "proof_nodes": null,
+     "recipe": null,
+     "status": "UNRESOLVED"
+    },
+    "manual_c4free_sdiff": {
+     "proof_nodes": null,
+     "recipe": null,
+     "status": "UNRESOLVED"
+    },
+    "manual_loopfree_erase": {
+     "proof_nodes": 27,
+     "recipe": "elim-with-library",
+     "status": "CHECKED"
+    },
+    "manual_loopfree_filter": {
+     "proof_nodes": 29,
+     "recipe": "elim-with-library",
+     "status": "CHECKED"
+    },
+    "manual_loopfree_inter": {
+     "proof_nodes": 23,
+     "recipe": "elim-with-library",
+     "status": "CHECKED"
+    },
+    "manual_loopfree_sdiff": {
+     "proof_nodes": 23,
+     "recipe": "elim-with-library",
+     "status": "CHECKED"
+    },
+    "manual_matching_erase": {
+     "proof_nodes": 27,
+     "recipe": "elim-with-library",
+     "status": "CHECKED"
+    },
+    "manual_matching_filter": {
+     "proof_nodes": 29,
+     "recipe": "elim-with-library",
+     "status": "CHECKED"
+    },
+    "manual_matching_inter": {
+     "proof_nodes": 23,
+     "recipe": "elim-with-library",
+     "status": "CHECKED"
+    },
+    "manual_matching_sdiff": {
+     "proof_nodes": 23,
+     "recipe": "elim-with-library",
+     "status": "CHECKED"
+    },
+    "manual_nonempty_erase": {
+     "proof_nodes": 247,
+     "recipe": "counterexample-evaluation",
+     "status": "DISPROVED"
+    },
+    "manual_nonempty_filter": {
+     "proof_nodes": 477,
+     "recipe": "counterexample-evaluation",
+     "status": "DISPROVED"
+    },
+    "manual_nonempty_inter": {
+     "proof_nodes": 287,
+     "recipe": "counterexample-evaluation",
+     "status": "DISPROVED"
+    },
+    "manual_nonempty_sdiff": {
+     "proof_nodes": 427,
+     "recipe": "counterexample-evaluation",
+     "status": "DISPROVED"
+    }
+   },
+   "proof_nodes_fresh": 204,
+   "proved": 8,
+   "search_candidates": 150,
+   "search_cpu_s": 333.9,
+   "support_statements": {
+    "gen_antitone_erase": "CHECKED",
+    "gen_antitone_filter": "CHECKED",
+    "gen_antitone_inter": "CHECKED",
+    "gen_antitone_sdiff": "CHECKED",
+    "inst_antitone_c4free": "UNRESOLVED",
+    "inst_antitone_loopfree": "CHECKED",
+    "inst_antitone_matching": "CHECKED",
+    "inst_antitone_nonempty": "DISPROVED"
+   },
+   "unresolved": 4,
+   "wall_s": 680.0
+  },
+  "none": {
+   "acceptance_cpu_s": 54.4,
+   "cache_hits": 0,
+   "disproved": 4,
+   "fresh_statements": 16,
+   "package_sha256": "eeee115169097d735c3dbce84fea8c4da487b16bbfa40a80d76045375bebcdc2",
+   "per_statement": {
+    "none_c4free_erase": {
+     "proof_nodes": null,
+     "recipe": null,
+     "status": "UNRESOLVED"
+    },
+    "none_c4free_filter": {
+     "proof_nodes": null,
+     "recipe": null,
+     "status": "UNRESOLVED"
+    },
+    "none_c4free_inter": {
+     "proof_nodes": null,
+     "recipe": null,
+     "status": "UNRESOLVED"
+    },
+    "none_c4free_sdiff": {
+     "proof_nodes": null,
+     "recipe": null,
+     "status": "UNRESOLVED"
+    },
+    "none_loopfree_erase": {
+     "proof_nodes": 1468,
+     "recipe": "unfold-simp",
+     "status": "CHECKED"
+    },
+    "none_loopfree_filter": {
+     "proof_nodes": 1470,
+     "recipe": "unfold-simp",
+     "status": "CHECKED"
+    },
+    "none_loopfree_inter": {
+     "proof_nodes": 1638,
+     "recipe": "unfold-simp",
+     "status": "CHECKED"
+    },
+    "none_loopfree_sdiff": {
+     "proof_nodes": 1646,
+     "recipe": "unfold-simp",
+     "status": "CHECKED"
+    },
+    "none_matching_erase": {
+     "proof_nodes": null,
+     "recipe": null,
+     "status": "UNRESOLVED"
+    },
+    "none_matching_filter": {
+     "proof_nodes": null,
+     "recipe": null,
+     "status": "UNRESOLVED"
+    },
+    "none_matching_inter": {
+     "proof_nodes": null,
+     "recipe": null,
+     "status": "UNRESOLVED"
+    },
+    "none_matching_sdiff": {
+     "proof_nodes": null,
+     "recipe": null,
+     "status": "UNRESOLVED"
+    },
+    "none_nonempty_erase": {
+     "proof_nodes": 247,
+     "recipe": "counterexample-evaluation",
+     "status": "DISPROVED"
+    },
+    "none_nonempty_filter": {
+     "proof_nodes": 669,
+     "recipe": "counterexample-evaluation",
+     "status": "DISPROVED"
+    },
+    "none_nonempty_inter": {
+     "proof_nodes": 287,
+     "recipe": "counterexample-evaluation",
+     "status": "DISPROVED"
+    },
+    "none_nonempty_sdiff": {
+     "proof_nodes": 427,
+     "recipe": "counterexample-evaluation",
+     "status": "DISPROVED"
+    }
+   },
+   "proof_nodes_fresh": 6222,
+   "proved": 4,
+   "search_candidates": 150,
+   "search_cpu_s": 234.0,
+   "support_statements": {},
+   "unresolved": 8,
+   "wall_s": 356.0
+  },
+  "retrieval": {
+   "acceptance_cpu_s": 90.9,
+   "cache_hits": 0,
+   "disproved": 4,
+   "fresh_statements": 16,
+   "package_sha256": "4c112e77e7a80f10196e6c758aa151dffba3733d73252c67355bf9995941d812",
+   "per_statement": {
+    "retrieval_c4free_erase": {
+     "proof_nodes": null,
+     "recipe": null,
+     "status": "UNRESOLVED"
+    },
+    "retrieval_c4free_filter": {
+     "proof_nodes": null,
+     "recipe": null,
+     "status": "UNRESOLVED"
+    },
+    "retrieval_c4free_inter": {
+     "proof_nodes": null,
+     "recipe": null,
+     "status": "UNRESOLVED"
+    },
+    "retrieval_c4free_sdiff": {
+     "proof_nodes": null,
+     "recipe": null,
+     "status": "UNRESOLVED"
+    },
+    "retrieval_loopfree_erase": {
+     "proof_nodes": 1468,
+     "recipe": "unfold-simp",
+     "status": "CHECKED"
+    },
+    "retrieval_loopfree_filter": {
+     "proof_nodes": 1470,
+     "recipe": "unfold-simp",
+     "status": "CHECKED"
+    },
+    "retrieval_loopfree_inter": {
+     "proof_nodes": 1638,
+     "recipe": "unfold-simp",
+     "status": "CHECKED"
+    },
+    "retrieval_loopfree_sdiff": {
+     "proof_nodes": 1646,
+     "recipe": "unfold-simp",
+     "status": "CHECKED"
+    },
+    "retrieval_matching_erase": {
+     "proof_nodes": null,
+     "recipe": null,
+     "status": "UNRESOLVED"
+    },
+    "retrieval_matching_filter": {
+     "proof_nodes": null,
+     "recipe": null,
+     "status": "UNRESOLVED"
+    },
+    "retrieval_matching_inter": {
+     "proof_nodes": null,
+     "recipe": null,
+     "status": "UNRESOLVED"
+    },
+    "retrieval_matching_sdiff": {
+     "proof_nodes": null,
+     "recipe": null,
+     "status": "UNRESOLVED"
+    },
+    "retrieval_nonempty_erase": {
+     "proof_nodes": 247,
+     "recipe": "counterexample-evaluation",
+     "status": "DISPROVED"
+    },
+    "retrieval_nonempty_filter": {
+     "proof_nodes": 669,
+     "recipe": "counterexample-evaluation",
+     "status": "DISPROVED"
+    },
+    "retrieval_nonempty_inter": {
+     "proof_nodes": 223,
+     "recipe": "counterexample-evaluation",
+     "status": "DISPROVED"
+    },
+    "retrieval_nonempty_sdiff": {
+     "proof_nodes": 707,
+     "recipe": "counterexample-evaluation",
+     "status": "DISPROVED"
+    }
+   },
+   "proof_nodes_fresh": 6222,
+   "proved": 4,
+   "search_candidates": 210,
+   "search_cpu_s": 351.6,
+   "support_statements": {},
+   "unresolved": 8,
+   "wall_s": 536.9
+  }
+ },
+ "corrections": [
+  {
+   "field": "proof_nodes",
+   "reason": "theorem values were read as opaque (0 nodes); recomputed by re-acceptance with allowOpaque := true (scripts/b18_proof_sizes.py)"
+  }
+ ],
+ "recovery": {
+  "candidates": [
+   {
+    "constants": [
+     "Finset.instPartialOrder",
+     "GT.Edges",
+     "LE.le",
+     "Nat",
+     "PartialOrder.toPreorder",
+     "Preorder.toLE",
+     "Prod"
+    ],
+    "holes": [
+     "GT.Edges -> Prop"
+    ],
+    "members": [
+     "HSConj.down_bounded",
+     "HSConj.down_simple",
+     "HSConj.down_tf"
+    ],
+    "size": 35
+   },
+   {
+    "constants": [
+     "Finset.instInter",
+     "GT.Edges",
+     "Inter.inter",
+     "Nat",
+     "Prod",
+     "instDecidableEqNat",
+     "instDecidableEqProd"
+    ],
+    "holes": [
+     "GT.Edges -> Prop"
+    ],
+    "members": [
+     "HSConj.inter_simple",
+     "HSConj.inter_tf"
+    ],
+    "size": 51
+   }
+  ],
+  "chosen": {
+   "definition": "def C0 (P0 : GT.Edges -> Prop) : Prop := (∀ (x0 : @GT.Edges), (∀ (x1 : @GT.Edges), (∀ (x2 : (@LE.le @GT.Edges (@Preorder.toLE @GT.Edges (@PartialOrder.toPreorder @GT.Edges (@Finset.instPartialOrder (@Prod @Nat @Nat)))) x1 x0)), (∀ (x3 : (P0 x0)), (P0 x1)))))",
+   "hole_types": [
+    "GT.Edges -> Prop"
+   ],
+   "members": [
+    "HSConj.down_bounded",
+    "HSConj.down_simple",
+    "HSConj.down_tf"
+   ],
+   "uses_hidden": []
+  },
+  "hidden_constants": [
+   "Antitone",
+   "Monotone",
+   "AntitoneOn",
+   "MonotoneOn",
+   "StrictAnti",
+   "StrictMono",
+   "IsLowerSet",
+   "IsUpperSet"
+  ],
+  "snapshot_modules": [
+   "HSConj"
+  ],
+  "snapshot_tree_sha256": {
+   "HSConj.down_bounded": "a786d268169aafdb67a3128378842a066a3797fbbac2af9b96581d762120c868",
+   "HSConj.down_simple": "13bc84c921758b2850bdba5b397010dddb1fd33ca015f211c3da6cd4dffa6329",
+   "HSConj.down_tf": "f6977b6551e6032b1e0a3b29996966ee6c73a1a70480c10e9ed691e7de84b184",
+   "HSConj.inter_simple": "7a5c7b8d001cc821a60c6f6e334567cde804ba944bdf49ba6c3d483ae570e7eb",
+   "HSConj.inter_tf": "c38d0c135addfe9f978590b145ae248e79259623ce5dfc1f9e9cd70a22c82948"
+  }
+ }
+}
