@@ -40,6 +40,7 @@ session can resume from the latest checkpoint (see `RESUME.md`).
 | 18 | Concept invention | W09–W12 | Typed concepts, explicit worlds and checked semantics (B18: built and replayed by the builder on DEV; independent review outstanding) |
 | 19 | Useful discovery | W13–W17; E1/E2 readiness | Prospective usefulness accepted or branch rejected (B19: DEV evidence for W13–W15, W16 decided on DEV, W17 records, E1/E2 drafts; acceptance needs independent review and a custodian) |
 | 20 | Learned research | W18–W20; E3 | Better-improver claim supported or explicitly unestablished (B20: explicitly UNESTABLISHED on DEV; macros, policies, memory and curriculum built and tested) |
+| 21 | Repeated improvement | W21–W23; E4 | Three qualifying transitions with retention and audit (B21: generation controller, primitive contract and routes built and tested on DEV; 1 of 3 transitions accepted, then saturation, so GV5 NOT ESTABLISHED; acceptance needs sealed panels and independent review) |
 
 Later phases (B17–B23+) follow the roadmap and its gates; numbers are labels,
 not estimates.

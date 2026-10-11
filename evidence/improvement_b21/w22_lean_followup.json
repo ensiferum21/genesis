@@ -1,0 +1,248 @@
+{
+ "note": "regenerated libraries under a CPU budget; not the main run's libraries",
+ "panel_matches_main_run_targets": true,
+ "panel_sha256": "70e996dcabfd8c70f52bb7850df4a1d4429d27b5bba5fd2dda7fc1b9597cf0e0",
+ "rows": {
+  "base": {
+   "attempted": 11,
+   "checked": 11,
+   "library": 87,
+   "library_sha256": "f985f4f52432131f09b33474cd712226ea56fea19006c6f4547b41e8faa0c308",
+   "replays": [
+    {
+     "chain_lemmas": 37,
+     "errors": [],
+     "hinted_steps": 532,
+     "reason": null,
+     "seconds": 19.5,
+     "status": "THEOREM_CHECKED",
+     "steps": 648,
+     "target": "![X]: (![Y]: (![Z]: (s(s(X,X),s(s(Y,Y),Z)) = s(s(X,X),s(s(Z,Y),Z)))))"
+    },
+    {
+     "chain_lemmas": 33,
+     "errors": [],
+     "hinted_steps": 476,
+     "reason": null,
+     "seconds": 17.5,
+     "status": "THEOREM_CHECKED",
+     "steps": 580,
+     "target": "![X]: (![Y]: (![Z]: (s(X,s(s(s(Y,s(X,X)),X),Z)) = s(X,s(Y,s(X,X))))))"
+    },
+    {
+     "chain_lemmas": 29,
+     "errors": [],
+     "hinted_steps": 412,
+     "reason": null,
+     "seconds": 16.6,
+     "status": "THEOREM_CHECKED",
+     "steps": 503,
+     "target": "![X]: (![Y]: (s(s(s(X,Y),Y),X) = s(s(Y,s(s(s(X,Y),Y),X)),X)))"
+    },
+    {
+     "chain_lemmas": 28,
+     "errors": [],
+     "hinted_steps": 350,
+     "reason": null,
+     "seconds": 14.9,
+     "status": "THEOREM_CHECKED",
+     "steps": 438,
+     "target": "![X]: (![Y]: (![Z]: (s(s(X,s(s(Y,Z),Z)),Z) = s(Z,s(X,s(Z,s(Z,Y)))))))"
+    },
+    {
+     "chain_lemmas": 32,
+     "errors": [],
+     "hinted_steps": 438,
+     "reason": null,
+     "seconds": 17.1,
+     "status": "THEOREM_CHECKED",
+     "steps": 538,
+     "target": "![X]: (![Y]: (![Z]: (s(X,s(s(s(Y,X),Y),Y)) = s(X,s(s(Z,s(Z,Y)),Y)))))"
+    },
+    {
+     "chain_lemmas": 41,
+     "errors": [],
+     "hinted_steps": 559,
+     "reason": null,
+     "seconds": 19.5,
+     "status": "THEOREM_CHECKED",
+     "steps": 687,
+     "target": "![X]: (![Y]: (s(X,s(Y,s(s(X,Y),Y))) = s(X,s(Y,s(X,s(Y,Y))))))"
+    },
+    {
+     "chain_lemmas": 43,
+     "errors": [],
+     "hinted_steps": 596,
+     "reason": null,
+     "seconds": 20.3,
+     "status": "THEOREM_CHECKED",
+     "steps": 730,
+     "target": "![X]: (![Y]: (![Z]: (s(s(s(X,X),X),X) = s(s(Y,s(X,s(Z,s(Z,Z)))),X))))"
+    },
+    {
+     "chain_lemmas": 31,
+     "errors": [],
+     "hinted_steps": 393,
+     "reason": null,
+     "seconds": 16.9,
+     "status": "THEOREM_CHECKED",
+     "steps": 490,
+     "target": "![X]: (![Y]: (![Z]: (s(s(X,Y),s(X,X)) = s(s(Y,X),s(X,s(s(Z,X),Y))))))"
+    },
+    {
+     "chain_lemmas": 33,
+     "errors": [],
+     "hinted_steps": 490,
+     "reason": null,
+     "seconds": 17.7,
+     "status": "THEOREM_CHECKED",
+     "steps": 594,
+     "target": "![X]: (![Y]: (![Z]: (s(s(s(X,X),Y),s(X,Z)) = s(s(X,Z),s(Y,s(Y,X))))))"
+    },
+    {
+     "chain_lemmas": 37,
+     "errors": [],
+     "hinted_steps": 519,
+     "reason": null,
+     "seconds": 18.4,
+     "status": "THEOREM_CHECKED",
+     "steps": 635,
+     "target": "![X]: (![Y]: (s(s(s(s(X,Y),X),X),Y) = s(Y,s(s(X,s(Y,Y)),X))))"
+    },
+    {
+     "chain_lemmas": 37,
+     "errors": [],
+     "hinted_steps": 516,
+     "reason": null,
+     "seconds": 18.7,
+     "status": "THEOREM_CHECKED",
+     "steps": 632,
+     "target": "![X]: (![Y]: (![Z]: (s(s(X,Y),s(X,s(Z,Z))) = s(s(Y,X),s(X,s(X,Z))))))"
+    }
+   ],
+   "successor": 11,
+   "targets": 15
+  },
+  "primitive": {
+   "attempted": 11,
+   "checked": 11,
+   "library": 71,
+   "library_sha256": "76936fa2e46de8719b1d68cb11495be9cfad3f4f520d895050caebdb58ed10b5",
+   "replays": [
+    {
+     "chain_lemmas": 12,
+     "errors": [],
+     "hinted_steps": 337,
+     "reason": null,
+     "seconds": 21.5,
+     "status": "THEOREM_CHECKED",
+     "steps": 380,
+     "target": "![X]: (![Y]: (![Z]: (s(s(X,X),s(s(Y,Y),Z)) = s(s(X,X),s(s(Z,Y),Z)))))"
+    },
+    {
+     "chain_lemmas": 18,
+     "errors": [],
+     "hinted_steps": 476,
+     "reason": null,
+     "seconds": 22.6,
+     "status": "THEOREM_CHECKED",
+     "steps": 538,
+     "target": "![X]: (![Y]: (![Z]: (s(X,s(s(s(Y,s(X,X)),X),Z)) = s(X,s(Y,s(X,X))))))"
+    },
+    {
+     "chain_lemmas": 5,
+     "errors": [],
+     "hinted_steps": 182,
+     "reason": null,
+     "seconds": 14.2,
+     "status": "THEOREM_CHECKED",
+     "steps": 200,
+     "target": "![X]: (![Y]: (s(s(s(X,Y),Y),X) = s(s(Y,s(s(s(X,Y),Y),X)),X)))"
+    },
+    {
+     "chain_lemmas": 5,
+     "errors": [],
+     "hinted_steps": 175,
+     "reason": null,
+     "seconds": 14.8,
+     "status": "THEOREM_CHECKED",
+     "steps": 193,
+     "target": "![X]: (![Y]: (![Z]: (s(s(X,s(s(Y,Z),Z)),Z) = s(Z,s(X,s(Z,s(Z,Y)))))))"
+    },
+    {
+     "chain_lemmas": 5,
+     "errors": [],
+     "hinted_steps": 192,
+     "reason": null,
+     "seconds": 14.1,
+     "status": "THEOREM_CHECKED",
+     "steps": 210,
+     "target": "![X]: (![Y]: (![Z]: (s(X,s(s(s(Y,X),Y),Y)) = s(X,s(s(Z,s(Z,Y)),Y)))))"
+    },
+    {
+     "chain_lemmas": 18,
+     "errors": [],
+     "hinted_steps": 478,
+     "reason": null,
+     "seconds": 23.6,
+     "status": "THEOREM_CHECKED",
+     "steps": 540,
+     "target": "![X]: (![Y]: (s(X,s(Y,s(s(X,Y),Y))) = s(X,s(Y,s(X,s(Y,Y))))))"
+    },
+    {
+     "chain_lemmas": 21,
+     "errors": [],
+     "hinted_steps": 554,
+     "reason": null,
+     "seconds": 26.6,
+     "status": "THEOREM_CHECKED",
+     "steps": 628,
+     "target": "![X]: (![Y]: (![Z]: (s(s(s(X,X),X),X) = s(s(Y,s(X,s(Z,s(Z,Z)))),X))))"
+    },
+    {
+     "chain_lemmas": 6,
+     "errors": [],
+     "hinted_steps": 214,
+     "reason": null,
+     "seconds": 16.4,
+     "status": "THEOREM_CHECKED",
+     "steps": 235,
+     "target": "![X]: (![Y]: (![Z]: (s(s(X,Y),s(X,X)) = s(s(Y,X),s(X,s(s(Z,X),Y))))))"
+    },
+    {
+     "chain_lemmas": 12,
+     "errors": [],
+     "hinted_steps": 340,
+     "reason": null,
+     "seconds": 20.3,
+     "status": "THEOREM_CHECKED",
+     "steps": 383,
+     "target": "![X]: (![Y]: (![Z]: (s(s(s(X,X),Y),s(X,Z)) = s(s(X,Z),s(Y,s(Y,X))))))"
+    },
+    {
+     "chain_lemmas": 16,
+     "errors": [],
+     "hinted_steps": 419,
+     "reason": null,
+     "seconds": 22.2,
+     "status": "THEOREM_CHECKED",
+     "steps": 475,
+     "target": "![X]: (![Y]: (s(s(s(s(X,Y),X),X),Y) = s(Y,s(s(X,s(Y,Y)),X))))"
+    },
+    {
+     "chain_lemmas": 15,
+     "errors": [],
+     "hinted_steps": 398,
+     "reason": null,
+     "seconds": 21.6,
+     "status": "THEOREM_CHECKED",
+     "steps": 451,
+     "target": "![X]: (![Y]: (![Z]: (s(s(X,Y),s(X,s(Z,Z))) = s(s(Y,X),s(X,s(X,Z))))))"
+    }
+   ],
+   "successor": 11,
+   "targets": 15
+  }
+ },
+ "seed": 610
+}

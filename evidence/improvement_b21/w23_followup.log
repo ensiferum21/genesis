@@ -1,0 +1,19 @@
+[   21.5s] item ![X]: (![Y]: (![Z]: (s(s(X,Y),Z) = s(Z,s(X,Y)))): ['ACCEPTED', 'REJECTED_FALSE', 'UNVERIFIED', 'UNVERIFIED', 'REJECTED_FALSE', 'DISAGREEMENT']
+[   41.3s] item ![X]: (![Y]: (s(s(X,Y),s(Y,Y)) = Y)): ['ACCEPTED', 'REJECTED_FALSE', 'UNVERIFIED', 'UNVERIFIED', 'REJECTED_FALSE', 'DISAGREEMENT']
+[   63.0s] item ![X]: (![Y]: (s(X,s(s(Y,X),X)) = s(X,Y))): ['ACCEPTED', 'REJECTED_FALSE', 'UNVERIFIED', 'UNVERIFIED', 'REJECTED_FALSE', 'DISAGREEMENT']
+[   85.9s] item ![X]: (![Y]: (s(s(s(X,Y),X),Y) = s(Y,Y))): ['ACCEPTED', 'REJECTED_FALSE', 'UNVERIFIED', 'UNVERIFIED', 'REJECTED_FALSE', 'DISAGREEMENT']
+[  103.0s] item ![X]: (s(s(X,X),s(X,X)) = X): ['ACCEPTED', 'REJECTED_FALSE', 'UNVERIFIED', 'UNVERIFIED', 'REJECTED_FALSE', 'DISAGREEMENT']
+[  124.6s] item ![X]: (![Y]: (s(s(X,s(Y,X)),X) = s(Y,X))): ['ACCEPTED', 'REJECTED_FALSE', 'UNVERIFIED', 'UNVERIFIED', 'REJECTED_FALSE', 'DISAGREEMENT']
+[  145.6s] item ![X]: (s(s(X,s(X,X)),X) = s(X,X)): ['ACCEPTED', 'REJECTED_FALSE', 'UNVERIFIED', 'ACCEPTED', 'REJECTED_FALSE', 'DISAGREEMENT']
+[  163.7s] item ![X]: (s(s(s(X,X),X),X) = s(X,X)): ['ACCEPTED', 'REJECTED_FALSE', 'UNVERIFIED', 'UNVERIFIED', 'REJECTED_FALSE', 'DISAGREEMENT']
+[  189.8s] expert claims routed: 16 of 24 undecided
+[  189.8s] expert error 0.1 budget 0: 8/24 correct, 0 questions
+[  189.8s] expert error 0.1 budget 4: 12/24 correct, 4 questions
+[  189.8s] expert error 0.1 budget 8: 15/24 correct, 8 questions
+[  189.8s] expert error 0.1 budget 16: 21/24 correct, 16 questions
+[  189.8s] expert error 0.3 budget 0: 8/24 correct, 0 questions
+[  189.8s] expert error 0.3 budget 4: 11/24 correct, 4 questions
+[  189.8s] expert error 0.3 budget 8: 15/24 correct, 8 questions
+[  189.8s] expert error 0.3 budget 16: 21/24 correct, 16 questions
+[  189.8s] wrote evidence/improvement_b21/w23_followup.json: false acceptances 1
+rc=0

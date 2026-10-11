@@ -188,3 +188,23 @@ DEV. See `docs/checkpoints/B20_REVIEW_BRIEF.md`.
 | B20-OPEN-3 | Research outcomes on Wolfram's axiom depend on load-sensitive E time limits and on the first attempts. The main budget rule starved 10-second attempts. Single runs are noisy. | repeated runs on a quiet host; budget rules per attempt cost |
 | B20-OPEN-4 | Memory and curriculum show no effect without headroom, and only parity with plain research where there is headroom. | a regime where reuse across runs matters |
 
+
+## B21 outcome (W21–W23; E4 as DEV transitions)
+
+The exit is "three qualifying transitions with retention and audit". It is **not met**:
+- **E4.** Three DEV transitions ran. One was ACCEPTED, from an empty library; the next
+  two were ROLLED_BACK because the domain had saturated. Retention held throughout. GV5
+  is NOT ESTABLISHED.
+- **What B21 built.** The controller, the primitive contract and the fault-tolerant
+  routes were built and tested.
+- **B14-OPEN-3.** Partly addressed: generations are frozen and content-addressed with
+  their lineage. The custodian-side lineage protocol remains open.
+
+See `docs/checkpoints/B21_REVIEW_BRIEF.md`.
+
+| ID | Residual | Needs |
+|---|---|---|
+| B21-OPEN-1 | E4 saturates. After the first transition, the later runs' pools were already proved, so there was nothing new to research. One accepted transition cannot test compounding. | a domain with a larger frontier (bigger conjecture spaces, harder theories), then sealed panels |
+| B21-OPEN-2 | The W22 primitive passes its definitional contract but helps neither against base research nor against the renaming control. The adversary is a frequency heuristic over failed targets. | proposals scored by prospective usefulness; a primitive that beats its renaming control |
+| B21-OPEN-3 | W23 evidence uses injected faults and a SIMULATED expert. Real disagreements and real experts are unmeasured. The predeclared strict false-acceptance definition counted one sound acceptance: a swapped proof of a more general item, which is a valid proof of the instance claim. | real disagreement cases; a real expert under a declared budget; a revised definition that separates broken objects from valid substitutes |
+| B21-OPEN-4 | Lean replay of Wolfram chains depends on heuristic ground hints. The repair was found after the main run, whose bridge record (0/11) stands. The follow-up (11/11 and 11/11) used regenerated libraries. Hint generation has no completeness guarantee. | replay of the main run's own proof objects (not kept); coverage on other theories and proof shapes |

@@ -166,9 +166,12 @@ SPEC.update({
              ['tests_certificates/test_sat_certificates.py', 'tests_formal/test_discovery.py::LPCertificates'], [], [],
              'N/A', 'W13'),
     '11': (I, 'heading', [], [], [], [], 'N/A', 'W01'),
-    '11.1': (B, 'heterogeneous checks: dual predicates, SAT vs exhaustive, Lean comparator, model finder',
-             ['src/genesis/graphs.py', 'src/genesis/verification/lean.py', 'src/genesis/modelfind.py'],
-             ['tests_certificates/test_sat_certificates.py::AgreementWithExactSolvers', 'tests_formal/test_lean_checker.py'],
+    '11.1': (B, 'heterogeneous checks: dual predicates, SAT vs exhaustive, Lean comparator, model finder; B21: decider / '
+                 'prover / kernel / countermodel routes with fault injection and named disagreements',
+             ['src/genesis/graphs.py', 'src/genesis/verification/lean.py', 'src/genesis/modelfind.py',
+              'src/genesis/learning/faults.py'],
+             ['tests_certificates/test_sat_certificates.py::AgreementWithExactSolvers', 'tests_formal/test_lean_checker.py',
+              'tests_formal/test_improvement.py::Diagnosis'],
              ['kernel replay contract for exact_check so FINITE_CERTIFIED is reachable (B14-OPEN-4)'], [], 'N/A', 'W23'),
     '11.2': (N, 'semantic parity syndromes', [], [], ['parity checks across representations'], [], 'NOT_TESTED', 'W23'),
     '11.3': (N, 'adaptive verification strength', [], [], ['risk-weighted verification policy'], [], 'NOT_TESTED', 'W23'),
@@ -259,10 +262,13 @@ SPEC.update({
     '19.5': (B, 'kernel rules only; the custodian refuses improver evaluations until a lineage protocol exists',
              [K + 'receipts.py'], [G + 'test_acceptance_regressions.py'], ['E3', 'lineage protocol (B14-OPEN-3)'],
              ['independent custodian'], 'NOT_TESTED', 'W21'),
-    '19.6': (B, 'kernel rules only (consecutive, program-linked chains); custodian refuses generation kinds (B14-OPEN-3)',
-             [K + 'receipts.py'],
-             [G + 'test_evidence_kernel.py::Confirmation', G + 'test_redteam_b14.py::KernelFindings'], ['E4'],
-             ['independent custodian'], 'NOT_TESTED', 'W21'),
+    '19.6': (B, 'kernel rules only (consecutive, program-linked chains); custodian refuses generation kinds (B14-OPEN-3); '
+                 'B21: DEV generation controller (frozen content-addressed generations, predeclared accept/rollback rule, '
+                 'retention panels): 1 of 3 transitions accepted, then saturation (compounding NOT ESTABLISHED)',
+             [K + 'receipts.py', 'src/genesis/learning/generations.py', 'evidence/improvement_b21/e4/transitions.json'],
+             [G + 'test_evidence_kernel.py::Confirmation', G + 'test_redteam_b14.py::KernelFindings',
+              'tests_formal/test_improvement.py::Generations'], ['a sealed E4 study in a domain with a larger frontier'],
+             ['independent custodian'], 'UNESTABLISHED', 'W21'),
     '20': (B, 'DSL baselines, CaDiCaL specialist under equal CPU, exact reference, ablation/placebo',
            ['src/genesis/ladder.py', 'src/genesis/dsl.py'], [G + 'test_ladder.py', G + 'test_dsl_equivalence.py'],
            ['frontier-model baseline (no model is used)'], [], 'N/A', 'W07'),
@@ -375,8 +381,12 @@ SPEC.update({
     '41': (H, 'meta-gap candidates recorded as hypotheses', ['src/genesis/worldstep.py'],
            [G + 'test_macros_market.py::WorldLoop'], ['primitive invention with prospective test'], [], 'UNESTABLISHED',
            'W22'),
-    '41.1': (N, 'evidence that a primitive is genuinely new', [], [], ['W22'], ['independent semantic acceptance'],
-             'NOT_TESTED', 'W22'),
+    '41.1': (B, 'evidence that a primitive is genuinely new: B21 compares research with the primitive against base research '
+                 'and a renaming control (the same conjectures unfolded into the base language) at equal budgets; the B21 '
+                 'primitive ties both (UNESTABLISHED)',
+             ['src/genesis/learning/primitives.py', 'scripts/b21_improvement.py', 'evidence/improvement_b21/w22/summary.json'],
+             ['tests_formal/test_improvement.py::Primitives'], ['a primitive that beats its renaming control'],
+             ['independent semantic acceptance'], 'UNESTABLISHED', 'W22'),
     '42': (N, 'kernel minimization experiment', [], [], ['W22'], [], 'NOT_TESTED', 'W22'),
     '43': (B, 'replication bundle; verifier re-derives claims, files and certificates', ['src/genesis/release_bundle.py'],
            [G + 'test_export_revocation.py', G + 'test_redteam_b14.py::F1BundleWholeObject',
@@ -501,9 +511,19 @@ WORKSTREAMS = {
             'demotion)', B,
             ['src/genesis/learning/memory.py', 'evidence/learning_b20/w20/rows.json'],
             ['tests_formal/test_learning.py']),
-    'W21': ('Better-improver and multigeneration controller', N, [], []),
-    'W22': ('New primitives, research-language evolution and trust changes', N, [], []),
-    'W23': ('Fault-tolerant reasoning and expert interaction', N, [], []),
+    'W21': ('Better-improver and multigeneration controller (frozen content-addressed generations, predeclared '
+            'accept/rollback rule, retention panels; DEV transitions)', B,
+            ['src/genesis/learning/generations.py', 'evidence/improvement_b21/e4/transitions.json'],
+            ['tests_formal/test_improvement.py::Generations']),
+    'W22': ('New primitives (operator-completeness adversary, definitional contract, migration/rollback, Lean bridge to '
+            'the base language, renaming control)', B,
+            ['src/genesis/learning/primitives.py', 'evidence/improvement_b21/w22/summary.json',
+             'evidence/improvement_b21/w22_lean_followup.json'],
+            ['tests_formal/test_improvement.py::Primitives', 'tests_formal/test_improvement.py::Routes']),
+    'W23': ('Fault-tolerant reasoning and expert interaction (heterogeneous routes, fault injection, budgeted questions '
+            'to a SIMULATED expert)', B,
+            ['src/genesis/learning/faults.py', 'evidence/improvement_b21/w23_followup.json'],
+            ['tests_formal/test_improvement.py::Diagnosis', 'tests_formal/test_improvement.py::Routes']),
     'W24': ('Transfer and independent reproduction', N, [], []),
     'W25': ('Trainable model extension', N, [], []),
     'W26': ('Software research extension', N, [], []),
@@ -532,6 +552,7 @@ SHARED_TESTS = {
     'Option-Preserving Development': (G + 'test_research_runtime.py', 'Ecology|retire'),
     'Open-Ended Quality-Diversity': (G + 'test_research_runtime.py', 'frontier|Ecology'),
     'Shadow Successor': (G + 'test_research_runtime.py', 'Campaign'),
+    'Operator-Completeness Adversary': ('tests_formal/test_improvement.py', 'propose'),
 }
 NOT_SHARED = {'Evaluator Attack': 'adversarial suites exist (escape suite, GI6, B14 red team) but are human/agent '
                                   'authored; the engine (synthesizing attacks) is not implemented'}

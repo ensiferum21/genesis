@@ -764,3 +764,71 @@ with no sealed panels and no custodian.
 - Learned policies that beat fixed rules.
 - Macro transfer that beats plain research.
 - Research on the Lean/Mathlib domain with these tools.
+
+## Batch 21 — Repeated improvement (W21–W23; E4 as DEV transitions)
+
+**W21 generations** (`learning/generations.py`).
+- A generation is a frozen library (lemma texts and proof digests), policy weights and
+  lineage, content-addressed by `freeze`.
+- A transition starts from a frozen parent. Its research runs use the parent's policy and
+  the parent's library as memory, and the policy is retrained on the accumulated
+  trajectories.
+- `decide` applies the rule declared in `RULE` before any run: at least 1 target gained
+  on the fresh panel, at most 1 lost on any earlier panel, at most one child, no human
+  interventions.
+- Rejected children are kept in the record as ROLLED_BACK. Solver quality (panel scores)
+  and process cost (CPU per accepted improvement) are recorded separately.
+- `research.run` gained a starting library and id prefixes.
+
+**W22 primitives** (`learning/primitives.py`, `equational.DEFINITIONS`).
+- An operator-completeness adversary proposes subterm patterns from failed development
+  targets. It skips mere renamings (an operation applied to distinct variables).
+- Each primitive has a definitional contract: fold/unfold round trip, extension of a
+  system with the definition as an axiom, migration and rollback.
+- Deciders unfold definitions, so an extension is decided exactly.
+- `fof_lean.proof_module(definitions=…)` binds replays to the *base* statement. The
+  defined symbol is instantiated by its λ-term and the definition discharged by `rfl`.
+
+**W23 routes** (`learning/faults.py`).
+- Four routes share no code: decider, prover, kernel and countermodel (re-checked).
+- `diagnose` accepts only with a kernel check. It names the disagreeing routes and a
+  suspect, and never settles a disagreement by majority.
+- Faults are injected by corrupting proofs, swapping proofs, offering a proof for a false
+  claim, and flipping the decider.
+- Expert questions carry cost and provenance and are charged to a budget. A
+  `SimulatedExpert` is labelled everywhere it appears.
+
+**fof_lean repair.** Found when the main run's W22 Lean bridge replayed 0 of 11:
+- Ground hints for E steps `rw(…rw(spm(A,B),C)…)` now rewrite the overlap result towards
+  a normal form under the other parents, using size-decreasing rules and matching modulo a
+  commutativity parent.
+- The rule and commutativity instances used become hints.
+- Matched overlaps are tried before enumeration.
+- The checker now returns error lines (`errors`).
+
+**Evidence** (`evidence/improvement_b21/`). All of it is DEV.
+- **E4.** Transition 1 was ACCEPTED: an empty library went from 0 to 11 of 15 on P1.
+  Transitions 2 and 3 were ROLLED_BACK, with no fresh-panel gain. Their pools were already
+  proved, so 0.07–0.09 CPU-s of research was all there was to do. Retention held. 52.1 CPU-s
+  per accepted improvement.
+- **W22.** The primitive `p1(P0,P1) := s(s(P0,P1),P0)` passes its contract: 119/119 round
+  trips, and migration rollback is the identity. It does not help: base, primitive and the
+  renaming control tie (11/11/11 and 12/12/12).
+- **Lean bridge.** 0 of 11 in the main run. In the follow-up after the repair,
+  11/11 primitive-arm chains and 11/11 base-arm chains replay.
+- **W23.** The main run had only 2 qualifying items. The follow-up has 8 items and 48
+  checks. No false claim was accepted. Corrupted and swapped proofs gave UNVERIFIED,
+  except one swapped proof that was accepted soundly: the claim is an instance of the
+  other item's equation. The strict predeclared count is 1 and is reported. Flipped
+  deciders gave DISAGREEMENT with the decider as suspect.
+- **Simulated expert.** It raised correct decisions from 8/24 to 12, 15 and 21 with 4, 8
+  and 16 questions, at error rates 0.1 and 0.3.
+
+**E4 / GV5.** NOT ESTABLISHED. There are no sealed panels, and the domain saturates after
+one transition.
+
+**Not done.**
+- A domain with a frontier large enough for compounding.
+- A primitive that beats its renaming control.
+- Real experts and real (non-injected) disagreements.
+- A sealed E4 study.

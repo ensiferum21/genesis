@@ -138,7 +138,9 @@ def compile_module(name, source, deps, env, policy=POLICY, heartbeats=HEARTBEATS
         result = 'RESOURCE_LIMIT'
     else:
         result = 'ELABORATION_ERROR'
-    return {'result': result, 'stats': _stats(receipt), 'log': log[-6000:], 'artifacts': artifacts,
+    lines = log.splitlines()
+    errors = ['\n'.join(lines[i:i + 4]) for i, l in enumerate(lines) if ': error' in l][:20]
+    return {'result': result, 'stats': _stats(receipt), 'log': log[-6000:], 'errors': errors, 'artifacts': artifacts,
             'artifact_sha256': {k: bytes_hash(v) for k, v in sorted(artifacts.items())},
             'reason': receipt.get('reason')}
 
@@ -291,7 +293,8 @@ def accept(modules, bindings, *, policy=POLICY, cache=None, trees=()):
             else:
                 entry['cached'] = True
             entry.update(result=r['result'], stats=r['stats'], artifact_sha256=r['artifact_sha256'],
-                         log=r['log'] if r['result'] != 'COMPILED' else '')
+                         log=r['log'] if r['result'] != 'COMPILED' else '',
+                         errors=r.get('errors', []) if r['result'] != 'COMPILED' else [])
             if r['result'] == 'COMPILED':
                 compiled[m['name']] = r
         if entry['result'] != 'COMPILED':

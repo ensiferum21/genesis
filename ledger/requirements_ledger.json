@@ -1492,7 +1492,8 @@
    "code": [
     "src/genesis/graphs.py",
     "src/genesis/verification/lean.py",
-    "src/genesis/modelfind.py"
+    "src/genesis/modelfind.py",
+    "src/genesis/learning/faults.py"
    ],
    "disposition": "IMPLEMENTED_BOUNDED_PENDING_AUDIT",
    "evidence": [],
@@ -1506,11 +1507,12 @@
     "kernel replay contract for exact_check so FINITE_CERTIFIED is reachable (B14-OPEN-4)"
    ],
    "scientific_efficacy": "N/A",
-   "scope": "heterogeneous checks: dual predicates, SAT vs exhaustive, Lean comparator, model finder",
+   "scope": "heterogeneous checks: dual predicates, SAT vs exhaustive, Lean comparator, model finder; B21: decider / prover / kernel / countermodel routes with fault injection and named disagreements",
    "source": "spec \u00a711.1 (p. 22)",
    "tests": [
     "tests_certificates/test_sat_certificates.py::AgreementWithExactSolvers",
-    "tests_formal/test_lean_checker.py"
+    "tests_formal/test_lean_checker.py",
+    "tests_formal/test_improvement.py::Diagnosis"
    ],
    "title": "Heterogeneous redundancy",
    "workstream": "W23"
@@ -2609,7 +2611,9 @@
     "decision": "PENDING_INDEPENDENT_ACCEPTANCE"
    },
    "code": [
-    "src/genesis/kernel/receipts.py"
+    "src/genesis/kernel/receipts.py",
+    "src/genesis/learning/generations.py",
+    "evidence/improvement_b21/e4/transitions.json"
    ],
    "disposition": "IMPLEMENTED_BOUNDED_PENDING_AUDIT",
    "evidence": [],
@@ -2622,14 +2626,15 @@
    "local_execution": "TESTS_EXECUTED_IN_MATRIX",
    "owner": "research implementer",
    "remaining": [
-    "E4"
+    "a sealed E4 study in a domain with a larger frontier"
    ],
-   "scientific_efficacy": "NOT_TESTED",
-   "scope": "kernel rules only (consecutive, program-linked chains); custodian refuses generation kinds (B14-OPEN-3)",
+   "scientific_efficacy": "UNESTABLISHED",
+   "scope": "kernel rules only (consecutive, program-linked chains); custodian refuses generation kinds (B14-OPEN-3); B21: DEV generation controller (frozen content-addressed generations, predeclared accept/rollback rule, retention panels): 1 of 3 transitions accepted, then saturation (compounding NOT ESTABLISHED)",
    "source": "spec \u00a719.6 (p. 31)",
    "tests": [
     "tests_genesis/test_evidence_kernel.py::Confirmation",
-    "tests_genesis/test_redteam_b14.py::KernelFindings"
+    "tests_genesis/test_redteam_b14.py::KernelFindings",
+    "tests_formal/test_improvement.py::Generations"
    ],
    "title": "Experiment F - multi-generation",
    "workstream": "W21"
@@ -3881,24 +3886,30 @@
     "date": null,
     "decision": "PENDING_INDEPENDENT_ACCEPTANCE"
    },
-   "code": [],
-   "disposition": "NOT_IMPLEMENTED",
+   "code": [
+    "src/genesis/learning/primitives.py",
+    "scripts/b21_improvement.py",
+    "evidence/improvement_b21/w22/summary.json"
+   ],
+   "disposition": "IMPLEMENTED_BOUNDED_PENDING_AUDIT",
    "evidence": [],
    "external_blockers": [
     "independent semantic acceptance"
    ],
    "id": "SPEC-41.1",
-   "implementation": "NOT_IMPLEMENTED",
+   "implementation": "IMPLEMENTED_BOUNDED",
    "independent_verification": "PENDING",
-   "local_execution": "NOT_EXECUTED",
+   "local_execution": "TESTS_EXECUTED_IN_MATRIX",
    "owner": "research implementer",
    "remaining": [
-    "W22"
+    "a primitive that beats its renaming control"
    ],
-   "scientific_efficacy": "NOT_TESTED",
-   "scope": "evidence that a primitive is genuinely new",
+   "scientific_efficacy": "UNESTABLISHED",
+   "scope": "evidence that a primitive is genuinely new: B21 compares research with the primitive against base research and a renaming control (the same conjectures unfolded into the base language) at equal budgets; the B21 primitive ties both (UNESTABLISHED)",
    "source": "spec \u00a741.1 (p. 42)",
-   "tests": [],
+   "tests": [
+    "tests_formal/test_improvement.py::Primitives"
+   ],
    "title": "What counts as evidence that a primitive is genuinely new",
    "workstream": "W22"
   },
@@ -5051,23 +5062,26 @@
     "date": null,
     "decision": "PENDING_INDEPENDENT_ACCEPTANCE"
    },
-   "code": [],
-   "disposition": "NOT_IMPLEMENTED",
+   "code": [
+    "src/genesis/learning/generations.py",
+    "evidence/improvement_b21/e4/transitions.json"
+   ],
+   "disposition": "IMPLEMENTED_BOUNDED_PENDING_AUDIT",
    "evidence": [],
    "external_blockers": [],
    "id": "W21",
-   "implementation": "NOT_IMPLEMENTED",
+   "implementation": "IMPLEMENTED_BOUNDED",
    "independent_verification": "PENDING",
-   "local_execution": "NOT_EXECUTED",
+   "local_execution": "TESTS_EXECUTED_IN_MATRIX",
    "owner": "research implementer",
-   "remaining": [
-    "not started in B14"
-   ],
+   "remaining": [],
    "scientific_efficacy": "N/A",
-   "scope": "workstream",
+   "scope": "workstream (B14 scope delivered; acceptance pending)",
    "source": "roadmap \u00a77-10",
-   "tests": [],
-   "title": "Better-improver and multigeneration controller",
+   "tests": [
+    "tests_formal/test_improvement.py::Generations"
+   ],
+   "title": "Better-improver and multigeneration controller (frozen content-addressed generations, predeclared accept/rollback rule, retention panels; DEV transitions)",
    "workstream": "W21"
   },
   {
@@ -5075,23 +5089,28 @@
     "date": null,
     "decision": "PENDING_INDEPENDENT_ACCEPTANCE"
    },
-   "code": [],
-   "disposition": "NOT_IMPLEMENTED",
+   "code": [
+    "src/genesis/learning/primitives.py",
+    "evidence/improvement_b21/w22/summary.json",
+    "evidence/improvement_b21/w22_lean_followup.json"
+   ],
+   "disposition": "IMPLEMENTED_BOUNDED_PENDING_AUDIT",
    "evidence": [],
    "external_blockers": [],
    "id": "W22",
-   "implementation": "NOT_IMPLEMENTED",
+   "implementation": "IMPLEMENTED_BOUNDED",
    "independent_verification": "PENDING",
-   "local_execution": "NOT_EXECUTED",
+   "local_execution": "TESTS_EXECUTED_IN_MATRIX",
    "owner": "research implementer",
-   "remaining": [
-    "not started in B14"
-   ],
+   "remaining": [],
    "scientific_efficacy": "N/A",
-   "scope": "workstream",
+   "scope": "workstream (B14 scope delivered; acceptance pending)",
    "source": "roadmap \u00a77-10",
-   "tests": [],
-   "title": "New primitives, research-language evolution and trust changes",
+   "tests": [
+    "tests_formal/test_improvement.py::Primitives",
+    "tests_formal/test_improvement.py::Routes"
+   ],
+   "title": "New primitives (operator-completeness adversary, definitional contract, migration/rollback, Lean bridge to the base language, renaming control)",
    "workstream": "W22"
   },
   {
@@ -5099,23 +5118,27 @@
     "date": null,
     "decision": "PENDING_INDEPENDENT_ACCEPTANCE"
    },
-   "code": [],
-   "disposition": "NOT_IMPLEMENTED",
+   "code": [
+    "src/genesis/learning/faults.py",
+    "evidence/improvement_b21/w23_followup.json"
+   ],
+   "disposition": "IMPLEMENTED_BOUNDED_PENDING_AUDIT",
    "evidence": [],
    "external_blockers": [],
    "id": "W23",
-   "implementation": "NOT_IMPLEMENTED",
+   "implementation": "IMPLEMENTED_BOUNDED",
    "independent_verification": "PENDING",
-   "local_execution": "NOT_EXECUTED",
+   "local_execution": "TESTS_EXECUTED_IN_MATRIX",
    "owner": "research implementer",
-   "remaining": [
-    "not started in B14"
-   ],
+   "remaining": [],
    "scientific_efficacy": "N/A",
-   "scope": "workstream",
+   "scope": "workstream (B14 scope delivered; acceptance pending)",
    "source": "roadmap \u00a77-10",
-   "tests": [],
-   "title": "Fault-tolerant reasoning and expert interaction",
+   "tests": [
+    "tests_formal/test_improvement.py::Diagnosis",
+    "tests_formal/test_improvement.py::Routes"
+   ],
+   "title": "Fault-tolerant reasoning and expert interaction (heterogeneous routes, fault injection, budgeted questions to a SIMULATED expert)",
    "workstream": "W23"
   },
   {
@@ -7852,23 +7875,25 @@
     "decision": "PENDING_INDEPENDENT_ACCEPTANCE"
    },
    "code": [],
-   "disposition": "NOT_IMPLEMENTED",
+   "disposition": "SHARED_IMPLEMENTATION",
    "evidence": [],
    "external_blockers": [],
    "id": "CAT-099",
-   "implementation": "NOT_IMPLEMENTED",
+   "implementation": "IMPLEMENTED_BOUNDED",
    "independent_verification": "PENDING",
-   "local_execution": "NOT_EXECUTED",
+   "local_execution": "TESTS_EXECUTED_IN_MATRIX",
    "owner": "research implementer",
    "remaining": [
-    "concrete engine with tests"
+    "engine-level semantics beyond the shared mechanism"
    ],
-   "scientific_efficacy": "NOT_TESTED",
-   "scope": "composition hypothesis only; listing a composition is not an implementation (REFLECT -> DISTINGUISH -> SYNTHESIZE)",
+   "scientific_efficacy": "N/A",
+   "scope": "shared: composition hypothesis only",
    "source": "spec Appendix A",
-   "tests": [],
+   "tests": [
+    "tests_formal/test_improvement.py"
+   ],
    "title": "Operator-Completeness Adversary",
-   "workstream": "W22"
+   "workstream": "W18"
   },
   {
    "acceptance": {

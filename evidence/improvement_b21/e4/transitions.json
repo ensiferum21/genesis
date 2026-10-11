@@ -1,0 +1,159 @@
+{
+ "panels": {
+  "P1": [
+   "![X]: (![Y]: (![Z]: (s(s(s(s(X,Y),s(Y,Y)),Y),Z) = s(Z,s(Y,Z)))))",
+   "![X]: (![Y]: (![Z]: (s(s(s(s(X,Y),X),X),Y) = s(s(X,s(s(X,Y),Z)),Y))))",
+   "![X]: (![Y]: (s(s(s(X,s(Y,X)),X),X) = s(X,s(s(s(X,Y),X),Y))))",
+   "![X]: (![Y]: (![Z]: (s(X,s(Y,s(s(X,Z),s(Y,Y)))) = s(X,s(Y,Y)))))",
+   "![X]: (![Y]: (![Z]: (s(s(X,s(s(Y,X),X)),s(Z,Y)) = s(s(Z,Y),s(Y,X)))))",
+   "![X]: (![Y]: (s(X,s(Y,s(s(Y,X),X))) = s(X,s(Y,s(Y,s(X,X))))))",
+   "![X]: (![Y]: (![Z]: (s(s(s(s(X,s(X,Y)),Y),X),Z) = s(Z,s(X,s(X,Y))))))",
+   "![X]: (![Y]: (![Z]: (s(s(X,s(X,Y)),s(Z,Y)) = s(s(Z,Y),s(X,s(X,Y))))))",
+   "![X]: (![Y]: (![Z]: (s(s(X,s(Y,X)),s(Z,Z)) = s(s(Z,Z),s(X,s(Y,X))))))",
+   "![X]: (![Y]: (![Z]: (s(s(X,s(Y,s(Y,Z))),Z) = s(Z,s(Z,s(s(X,X),Z))))))",
+   "![X]: (![Y]: (![Z]: (s(s(X,X),s(s(Y,Z),Z)) = s(s(X,X),s(Z,s(Z,Y))))))",
+   "![X]: (![Y]: (![Z]: (s(s(X,s(Y,X)),s(Z,Z)) = s(s(Z,Z),s(s(Y,X),X)))))",
+   "![X]: (![Y]: (![Z]: (s(s(X,Y),s(s(Y,s(X,Z)),Y)) = s(s(X,Y),s(Y,X)))))",
+   "![X]: (![Y]: (![Z]: (s(s(s(X,s(Y,Y)),Z),s(X,X)) = s(s(Z,Z),s(X,X)))))",
+   "![X]: (![Y]: (![Z]: (s(s(s(X,s(Y,X)),X),s(Z,Y)) = s(s(Y,X),s(Z,Y)))))"
+  ],
+  "P2": [
+   "![X]: (![Y]: (s(X,s(s(X,s(X,X)),Y)) = s(X,s(Y,s(s(X,X),Y)))))",
+   "![X]: (![Y]: (![Z]: (s(X,s(s(s(X,Y),Y),X)) = s(Z,s(Z,s(s(Z,X),X))))))",
+   "![X]: (![Y]: (s(s(s(X,Y),Y),X) = s(X,s(s(Y,s(X,Y)),s(X,X)))))",
+   "![X]: (![Y]: (![Z]: (s(s(X,X),s(Y,Z)) = s(s(Z,Y),s(s(s(X,Y),Y),X)))))",
+   "![X]: (![Y]: (![Z]: (s(s(X,s(s(Y,X),X)),s(Y,Z)) = s(s(Y,Z),s(X,Y)))))",
+   "![X]: (![Y]: (![Z]: (s(s(X,Y),s(Z,s(X,s(Z,Z)))) = s(s(X,Y),s(Z,Z)))))",
+   "![X]: (![Y]: (s(s(s(s(X,Y),X),Y),s(X,Y)) = Y))",
+   "![X]: (![Y]: (![Z]: (s(X,s(s(s(X,Y),X),Z)) = s(X,s(s(s(Z,Y),Y),Y)))))",
+   "![X]: (![Y]: (![Z]: (s(s(s(s(X,Y),X),Z),X) = s(s(s(X,s(X,Y)),Z),X))))",
+   "![X]: (![Y]: (![Z]: (s(s(X,s(s(Y,Z),Z)),Z) = s(Z,s(X,Y)))))",
+   "![X]: (![Y]: (![Z]: (s(s(s(s(X,X),X),Y),Z) = s(Z,s(s(s(Z,Y),X),Y)))))",
+   "![X]: (![Y]: (![Z]: (s(s(s(s(X,X),X),Y),X) = s(s(Y,s(Z,s(X,Y))),X))))",
+   "![X]: (![Y]: (![Z]: (s(s(s(X,Y),Y),Z) = s(Z,s(s(s(Z,s(Z,X)),Y),Y)))))",
+   "![X]: (![Y]: (![Z]: (s(X,s(s(Y,s(Y,Z)),X)) = s(Y,s(Y,s(X,s(Z,Y)))))))",
+   "![X]: (![Y]: (![Z]: (s(s(X,s(Y,Y)),s(Z,X)) = s(s(X,Z),s(X,s(Y,Y))))))"
+  ],
+  "P3": [
+   "![X]: (![Y]: (![Z]: (s(s(X,Y),s(Z,s(X,X))) = s(s(Y,X),s(Z,s(X,X))))))",
+   "![X]: (![Y]: (![Z]: (s(X,s(s(s(Y,X),Y),X)) = s(Z,s(s(X,s(X,X)),Z)))))",
+   "![X]: (![Y]: (![Z]: (s(s(s(X,Y),Y),s(Z,Y)) = s(s(Z,Y),s(s(Y,X),Y)))))",
+   "![X]: (![Y]: (![Z]: (s(s(s(s(X,X),Y),Y),s(Z,X)) = s(s(Z,X),s(X,Y)))))",
+   "![X]: (![Y]: (![Z]: (s(X,s(s(s(Y,Z),Z),Y)) = s(X,s(Y,s(X,s(Y,Y)))))))",
+   "![X]: (![Y]: (![Z]: (s(s(X,s(X,Y)),s(Z,X)) = s(s(X,Z),s(X,s(X,Y))))))",
+   "![X]: (![Y]: (s(s(X,Y),s(X,Y)) = s(s(Y,X),s(X,s(X,s(Y,Y))))))",
+   "![X]: (![Y]: (![Z]: (s(s(s(s(X,Y),X),Z),Z) = s(s(Z,s(s(Y,Z),X)),Z))))",
+   "![X]: (![Y]: (![Z]: (s(s(X,s(s(Y,Z),Z)),Z) = s(s(X,Y),Z))))",
+   "![X]: (![Y]: (![Z]: (s(s(s(s(X,Y),Y),s(Y,X)),Z) = s(s(s(Z,Y),Y),Y))))",
+   "![X]: (![Y]: (![Z]: (s(s(s(X,X),Y),s(Z,X)) = s(s(s(Y,X),Y),s(Z,X)))))",
+   "![X]: (![Y]: (![Z]: (s(s(s(X,s(Y,Z)),X),X) = s(X,s(s(X,s(Z,Y)),Z)))))",
+   "![X]: (![Y]: (![Z]: (s(s(X,s(Y,X)),s(Z,Z)) = s(s(Z,Z),s(X,s(Y,Y))))))",
+   "![X]: (![Y]: (![Z]: (s(s(X,s(Y,Y)),s(Y,Z)) = s(s(Y,Z),s(X,s(X,Y))))))",
+   "![X]: (![Y]: (![Z]: (s(s(X,s(s(Y,Y),X)),Z) = s(s(Y,s(Z,s(Z,X))),Z))))"
+  ]
+ },
+ "records": [
+  {
+   "child_library": 94,
+   "child_scores": {
+    "P1": 11
+   },
+   "child_sha256": "03a6158bfe8ba7abfc99df51d3b104fbe983fb379a880338b394feaf92509092",
+   "decision": "ACCEPTED",
+   "fresh_gain": 11,
+   "generation": 1,
+   "human_interventions": 0,
+   "panel_sizes": {
+    "P1": 15
+   },
+   "parent_library": 0,
+   "parent_scores": {
+    "P1": 0
+   },
+   "parent_sha256": "7e300cb95f0605080e729f7de6211c611d4516d8cb0c4e5a6feebfd36cbddbee",
+   "reason": null,
+   "research_cpu_s": 51.99,
+   "retention_losses": {}
+  },
+  {
+   "child_library": 96,
+   "child_scores": {
+    "P1": 11,
+    "P2": 9
+   },
+   "child_sha256": "8b0931cd37f875e0fab8859a506f8c90755e44071fded499af60863f927dd93a",
+   "decision": "ROLLED_BACK",
+   "fresh_gain": 0,
+   "generation": 2,
+   "human_interventions": 0,
+   "panel_sizes": {
+    "P1": 15,
+    "P2": 15
+   },
+   "parent_library": 94,
+   "parent_scores": {
+    "P1": 11,
+    "P2": 9
+   },
+   "parent_sha256": "03a6158bfe8ba7abfc99df51d3b104fbe983fb379a880338b394feaf92509092",
+   "reason": "no gain on the fresh panel",
+   "research_cpu_s": 0.07,
+   "retention_losses": {
+    "P1": 0
+   }
+  },
+  {
+   "child_library": 96,
+   "child_scores": {
+    "P1": 11,
+    "P2": 9,
+    "P3": 12
+   },
+   "child_sha256": "242fc1c2b1506f67ab2b148332975dbe082b9d8b2fcf856d1bf2aacf9045e354",
+   "decision": "ROLLED_BACK",
+   "fresh_gain": 0,
+   "generation": 3,
+   "human_interventions": 0,
+   "panel_sizes": {
+    "P1": 15,
+    "P2": 15,
+    "P3": 15
+   },
+   "parent_library": 94,
+   "parent_scores": {
+    "P1": 11,
+    "P2": 9,
+    "P3": 12
+   },
+   "parent_sha256": "03a6158bfe8ba7abfc99df51d3b104fbe983fb379a880338b394feaf92509092",
+   "reason": "no gain on the fresh panel",
+   "research_cpu_s": 0.09,
+   "retention_losses": {
+    "P1": 0,
+    "P2": 0
+   }
+  }
+ ],
+ "summary": {
+  "accepted": 1,
+  "claim": "compounding generations (GV5): NOT ESTABLISHED; DEV transitions only, no sealed panels",
+  "cpu_per_accepted_s": 52.1,
+  "fresh_gains": [
+   11,
+   0,
+   0
+  ],
+  "lineage": [
+   "7e300cb95f060508",
+   "03a6158bfe8ba7ab"
+  ],
+  "research_cpu_s": 52.1,
+  "rule": {
+   "human_interventions_allowed": 0,
+   "margin": 1,
+   "max_children": 1,
+   "retention_tolerance": 1
+  },
+  "transitions": 3
+ }
+}

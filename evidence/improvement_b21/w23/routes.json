@@ -1,0 +1,264 @@
+{
+ "by_kind": {
+  "clean_false": {
+   "false_acceptance": 0,
+   "n": 2,
+   "verdicts": {
+    "REJECTED_FALSE": 2
+   }
+  },
+  "clean_true": {
+   "false_acceptance": 0,
+   "n": 2,
+   "verdicts": {
+    "ACCEPTED": 2
+   }
+  },
+  "corrupt_proof": {
+   "false_acceptance": 0,
+   "n": 2,
+   "verdicts": {
+    "UNVERIFIED": 2
+   }
+  },
+  "decider_flip": {
+   "false_acceptance": 0,
+   "n": 2,
+   "verdicts": {
+    "DISAGREEMENT": 2
+   }
+  },
+  "false_claim_with_proof": {
+   "false_acceptance": 0,
+   "n": 2,
+   "verdicts": {
+    "REJECTED_FALSE": 2
+   }
+  },
+  "swapped_proof": {
+   "false_acceptance": 0,
+   "n": 2,
+   "verdicts": {
+    "UNVERIFIED": 2
+   }
+  }
+ },
+ "rows": [
+  {
+   "claim": "![X]: (s(s(X,X),s(X,X)) = X)",
+   "false": [],
+   "false_acceptance": false,
+   "kind": "clean_true",
+   "routes": {
+    "countermodel": "NONE_UP_TO_SIZE",
+    "decider": true,
+    "kernel": "THEOREM_CHECKED",
+    "prover": "OFFERED"
+   },
+   "true": [
+    "decider",
+    "kernel"
+   ],
+   "truth": true,
+   "verdict": "ACCEPTED"
+  },
+  {
+   "claim": "![X]: (![Y]: (s(s(s(X,Y),Y),Y) = X))",
+   "false": [
+    "decider",
+    "countermodel"
+   ],
+   "false_acceptance": false,
+   "kind": "clean_false",
+   "routes": {
+    "countermodel": "FOUND",
+    "decider": false,
+    "kernel": "NO_PROOF",
+    "prover": "ERROR"
+   },
+   "true": [],
+   "truth": false,
+   "verdict": "REJECTED_FALSE"
+  },
+  {
+   "claim": "![X]: (s(s(X,X),s(X,X)) = X)",
+   "false": [],
+   "false_acceptance": false,
+   "kind": "corrupt_proof",
+   "routes": {
+    "countermodel": "NONE_UP_TO_SIZE",
+    "decider": true,
+    "kernel": "NOT_REPLAYED",
+    "prover": "OFFERED"
+   },
+   "true": [
+    "decider"
+   ],
+   "truth": true,
+   "verdict": "UNVERIFIED"
+  },
+  {
+   "claim": "![X]: (s(s(X,X),s(X,X)) = X)",
+   "false": [],
+   "false_acceptance": false,
+   "kind": "swapped_proof",
+   "routes": {
+    "countermodel": "NONE_UP_TO_SIZE",
+    "decider": true,
+    "kernel": "NOT_REPLAYED",
+    "prover": "OFFERED"
+   },
+   "true": [
+    "decider"
+   ],
+   "truth": true,
+   "verdict": "UNVERIFIED"
+  },
+  {
+   "claim": "![X]: (![Y]: (s(s(s(X,Y),Y),Y) = X))",
+   "false": [
+    "decider",
+    "countermodel"
+   ],
+   "false_acceptance": false,
+   "kind": "false_claim_with_proof",
+   "routes": {
+    "countermodel": "FOUND",
+    "decider": false,
+    "kernel": "NOT_REPLAYED",
+    "prover": "OFFERED"
+   },
+   "true": [],
+   "truth": false,
+   "verdict": "REJECTED_FALSE"
+  },
+  {
+   "claim": "![X]: (s(s(X,X),s(X,X)) = X)",
+   "false": [
+    "decider"
+   ],
+   "false_acceptance": false,
+   "kind": "decider_flip",
+   "routes": {
+    "countermodel": "NONE_UP_TO_SIZE",
+    "decider": false,
+    "kernel": "THEOREM_CHECKED",
+    "prover": "OFFERED"
+   },
+   "suspect": "decider",
+   "true": [
+    "kernel"
+   ],
+   "truth": true,
+   "verdict": "DISAGREEMENT"
+  },
+  {
+   "claim": "![X]: (![Y]: (s(X,Y) = s(Y,X)))",
+   "false": [],
+   "false_acceptance": false,
+   "kind": "clean_true",
+   "routes": {
+    "countermodel": "NONE_UP_TO_SIZE",
+    "decider": true,
+    "kernel": "THEOREM_CHECKED",
+    "prover": "OFFERED"
+   },
+   "true": [
+    "decider",
+    "kernel"
+   ],
+   "truth": true,
+   "verdict": "ACCEPTED"
+  },
+  {
+   "claim": "![X]: (![Y]: (![Z]: (s(X,s(X,s(s(Y,Y),Y))) = Z)))",
+   "false": [
+    "decider",
+    "countermodel"
+   ],
+   "false_acceptance": false,
+   "kind": "clean_false",
+   "routes": {
+    "countermodel": "FOUND",
+    "decider": false,
+    "kernel": "NO_PROOF",
+    "prover": "ERROR"
+   },
+   "true": [],
+   "truth": false,
+   "verdict": "REJECTED_FALSE"
+  },
+  {
+   "claim": "![X]: (![Y]: (s(X,Y) = s(Y,X)))",
+   "false": [],
+   "false_acceptance": false,
+   "kind": "corrupt_proof",
+   "routes": {
+    "countermodel": "NONE_UP_TO_SIZE",
+    "decider": true,
+    "kernel": "NOT_REPLAYED",
+    "prover": "OFFERED"
+   },
+   "true": [
+    "decider"
+   ],
+   "truth": true,
+   "verdict": "UNVERIFIED"
+  },
+  {
+   "claim": "![X]: (![Y]: (s(X,Y) = s(Y,X)))",
+   "false": [],
+   "false_acceptance": false,
+   "kind": "swapped_proof",
+   "routes": {
+    "countermodel": "NONE_UP_TO_SIZE",
+    "decider": true,
+    "kernel": "NOT_REPLAYED",
+    "prover": "OFFERED"
+   },
+   "true": [
+    "decider"
+   ],
+   "truth": true,
+   "verdict": "UNVERIFIED"
+  },
+  {
+   "claim": "![X]: (![Y]: (![Z]: (s(X,s(X,s(s(Y,Y),Y))) = Z)))",
+   "false": [
+    "decider",
+    "countermodel"
+   ],
+   "false_acceptance": false,
+   "kind": "false_claim_with_proof",
+   "routes": {
+    "countermodel": "FOUND",
+    "decider": false,
+    "kernel": "NOT_REPLAYED",
+    "prover": "OFFERED"
+   },
+   "true": [],
+   "truth": false,
+   "verdict": "REJECTED_FALSE"
+  },
+  {
+   "claim": "![X]: (![Y]: (s(X,Y) = s(Y,X)))",
+   "false": [
+    "decider"
+   ],
+   "false_acceptance": false,
+   "kind": "decider_flip",
+   "routes": {
+    "countermodel": "NONE_UP_TO_SIZE",
+    "decider": false,
+    "kernel": "THEOREM_CHECKED",
+    "prover": "OFFERED"
+   },
+   "suspect": "decider",
+   "true": [
+    "kernel"
+   ],
+   "truth": true,
+   "verdict": "DISAGREEMENT"
+  }
+ ]
+}

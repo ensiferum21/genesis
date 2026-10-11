@@ -102,6 +102,12 @@ Acceptance needs independent review and a custodian. B20 built learning to resea
 an equational domain with exact deciders: research policies, replayable macros, screened
 memory and curriculum, and Lean-checked lemma chains. The better-improver claim (E3, GV4)
 is explicitly unestablished.
+B21 built repeated improvement on the same domain: a generation controller with frozen,
+content-addressed generations and a predeclared acceptance rule; a primitive proposed by an
+operator-completeness adversary, with a definitional contract and a Lean bridge to the
+base language; and heterogeneous routes with fault injection and a simulated expert under
+an intervention budget. One transition was accepted and then the domain saturated, so
+compounding (E4, GV5) is not established.
 
 - **ENGINEERING_COMPLETE_P0** — builder's assessment only. Blocked on R-04's
   outstanding parts (second-machine run of `deployment/reproduce.sh`, image

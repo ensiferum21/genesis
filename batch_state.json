@@ -22,10 +22,11 @@
     17,
     18,
     19,
-    20
+    20,
+    21
   ],
   "in_progress": null,
-  "next": 21,
+  "next": 22,
   "suites": [
     "tests_genesis",
     "tests",
@@ -54,7 +55,8 @@
     "17": "Formal research (W08 + first theory package): pinned Lean/Mathlib workspace (699-module closure built offline, audited, byte-identical across two builds on one host), sandboxed module-chain acceptance with binding, axiom audit, extraction and leanchecker; recipe search kept apart from acceptance; triangle-obstruction package (9 CHECKED, 7 DISPROVED, 2 UNRESOLVED, 1 UNSUPPORTED), executable packing bound with Lean certificates; Lean statement DomainAdapter. Replayed by the builder; independent replay outstanding.",
     "18": "Concept invention (W09-W12): typed representation grammar with Lean obligations (4 sound for triangle-free, all C4 refuted) and represent-and-repair (DEV: 6W/5T/1L vs strongest baseline, 4 vs 2 optima); worlds with checked consistency/inconsistency, implication, separation, transport and a discriminating experiment; typed anti-unification recovers a down-closure concept (= Antitone) that enables and ~60x shortens fresh-family proofs. 8 packages replayed. Independent review outstanding.",
     "19": "Useful discovery (W13-W17, E1/E2 readiness), DEV only: exact LP dual certificates with Lean-checked inequality validity; joint certification 11/12 optima vs 6/12 for the reference at matched budgets; active selection with identifiability (EIG lost; KG* added and won on fresh pools); catalysis survives removal, placebo, effort and conventional controls; E proofs replayed step by step in Lean; Ghost Census W16 diagnostic RETIRE_NO_HEADROOM for its scope (run 1 kept with a fixed harness defect); literature, priority and faithful-formalization records (all prior art found); E1 pilot and DRAFT decision record, E2 design draft. Independent review outstanding.",
-    "20": "Learning to research (W18-W20, E3), DEV only: equational research environment with exact deciders; five research policies incl. a frozen learned one (learned vs fixed 1W/7T/0L over 8 runs); macros with faithful replay, compression, revocation (no gain over plain research; strict transfer fails); screened memory and curriculum (no effect without headroom; parity on Wolfram's axiom where 60 s of research takes successors 0 -> 8-12/15); chained Lean replay 67/68. Better-improver explicitly UNESTABLISHED."
+    "20": "Learning to research (W18-W20, E3), DEV only: equational research environment with exact deciders; five research policies incl. a frozen learned one (learned vs fixed 1W/7T/0L over 8 runs); macros with faithful replay, compression, revocation (no gain over plain research; strict transfer fails); screened memory and curriculum (no effect without headroom; parity on Wolfram's axiom where 60 s of research takes successors 0 -> 8-12/15); chained Lean replay 67/68. Better-improver explicitly UNESTABLISHED.",
+    "21": "Repeated improvement (W21-W23, E4 as DEV transitions), DEV only: frozen content-addressed generations with a predeclared accept/rollback rule (1 of 3 transitions accepted, then the domain saturated; GV5 NOT ESTABLISHED); primitive from an operator-completeness adversary with a definitional contract and a Lean bridge to the base language (no gain over base or renaming control); decider/prover/kernel/countermodel routes with fault injection (no false claim accepted; one sound strict-definition acceptance) and a SIMULATED expert under an intervention budget; fof_lean ground hints repaired (rewriting after superposition modulo commutativity): Lean bridge 0/11 in the main run, 11/11 + 11/11 in the follow-up."
   },
   "pending_evidence": {},
   "evidence": {
@@ -70,7 +72,8 @@
     "ghost_census_b19": "evidence/ghost_census_b19",
     "literature_b19": "evidence/literature_b19",
     "readiness_b19": "evidence/readiness_b19",
-    "learning_b20": "evidence/learning_b20"
+    "learning_b20": "evidence/learning_b20",
+    "improvement_b21": "evidence/improvement_b21"
   },
   "remaining_external": [
     "external release authority",
@@ -89,11 +92,12 @@
     "17": "Formal research (W08, first TheoryPackage path)",
     "18": "Concept invention (W09-W12)",
     "19": "Useful discovery (W13-W17; E1/E2 readiness)",
-    "20": "Learned research (W18-W20; E3)"
+    "20": "Learned research (W18-W20; E3)",
+    "21": "Repeated improvement (W21-W23; E4)"
   },
   "open_defects": [
     "R-04 second-machine run, image digest, wheel hashes (needs a second machine, registry and PyPI access)",
-    "B14-OPEN-3 improver/generation lineage protocol (W21)",
+    "B14-OPEN-3 improver/generation lineage protocol (W21): DEV lineage content-addressed in B21; custodian-side protocol open",
     "B14-OPEN-4 replay contracts for other evidence kinds",
     "GV0 independent review",
     "B16-OPEN-1 no external time anchoring (operator-attested times)",
@@ -113,6 +117,10 @@
     "B20-OPEN-1 learned policy not better than fixed; little headroom",
     "B20-OPEN-2 macros faithful but no gain; strict transfer brittle",
     "B20-OPEN-3 hard-system results load-sensitive and noisy",
-    "B20-OPEN-4 memory/curriculum: no effect or parity only"
+    "B20-OPEN-4 memory/curriculum: no effect or parity only",
+    "B21-OPEN-1 E4 saturates after one transition; compounding untestable in this domain",
+    "B21-OPEN-2 W22 primitive passes its contract but does not beat the renaming control",
+    "B21-OPEN-3 W23 injected faults and a SIMULATED expert only; strict false-acceptance definition needs revision",
+    "B21-OPEN-4 Wolfram Lean replay depends on heuristic hints; main-run bridge 0/11, follow-up on regenerated libraries"
   ]
 }

@@ -8,12 +8,12 @@ Columns keep four things apart: implementation, local execution (tests ran in th
 
 | Group | Rows | Deferred Extension | Implemented And Accepted | Implemented Bounded Pending Audit | Not A Requirement | Not Implemented | Research Hypothesis | Retired After Test | Shared Implementation |
 |---|---:|---:|---:|---:|---:|---:|---:|---:|---:|
-| Specification §1-48 | 157 | 0 | 0 | 89 | 46 | 18 | 2 | 1 | 1 |
+| Specification §1-48 | 157 | 0 | 0 | 90 | 46 | 17 | 2 | 1 | 1 |
 | Roadmap defects | 4 | 0 | 0 | 4 | 0 | 0 | 0 | 0 | 0 |
 | Gates | 9 | 0 | 0 | 0 | 0 | 9 | 0 | 0 | 0 |
-| Workstreams | 28 | 0 | 0 | 20 | 0 | 8 | 0 | 0 | 0 |
+| Workstreams | 28 | 0 | 0 | 23 | 0 | 5 | 0 | 0 | 0 |
 | Experiments | 8 | 0 | 0 | 0 | 0 | 8 | 0 | 0 | 0 |
-| Engine catalogue (137) | 137 | 0 | 0 | 5 | 0 | 117 | 0 | 0 | 15 |
+| Engine catalogue (137) | 137 | 0 | 0 | 5 | 0 | 116 | 0 | 0 | 16 |
 
 Proposed DEFERRED_EXTENSION rows remain NOT_IMPLEMENTED until Daniel agrees the release scope (roadmap §17: difficult requirements are not silently dropped).
 
@@ -79,7 +79,7 @@ Proposed DEFERRED_EXTENSION rows remain NOT_IMPLEMENTED until Daniel agrees the 
 | SPEC-10.3 | Parameterized tractability and kernels | NOT_IMPLEMENTED | parameterized tractability and kernelization | — | FPT/kernelization engines | — | NOT_TESTED |
 | SPEC-10.4 | Approximation hierarchy | SHARED_IMPLEMENTATION | approximation -> exact via greedy witness + SAT/DRAT completion; LP relaxation -> exact via exact rational dual certificates and SAT/DRAT on the remaining gap (B19) | tests_certificates/test_sat_certificates.py<br>tests_formal/test_discovery.py::LPCertificates | — | — | N/A |
 | SPEC-11 | Fault-tolerant cognition | NOT_A_REQUIREMENT | heading | — | — | — | N/A |
-| SPEC-11.1 | Heterogeneous redundancy | IMPLEMENTED_BOUNDED_PENDING_AUDIT | heterogeneous checks: dual predicates, SAT vs exhaustive, Lean comparator, model finder | tests_certificates/test_sat_certificates.py::AgreementWithExactSolvers<br>tests_formal/test_lean_checker.py | kernel replay contract for exact_check so FINITE_CERTIFIED is reachable (B14-OPEN-4) | — | N/A |
+| SPEC-11.1 | Heterogeneous redundancy | IMPLEMENTED_BOUNDED_PENDING_AUDIT | heterogeneous checks: dual predicates, SAT vs exhaustive, Lean comparator, model finder; B21: decider / prover / kernel / countermodel routes with fault injection and named disagreements | tests_certificates/test_sat_certificates.py::AgreementWithExactSolvers<br>tests_formal/test_lean_checker.py<br>tests_formal/test_improvement.py::Diagnosis | kernel replay contract for exact_check so FINITE_CERTIFIED is reachable (B14-OPEN-4) | — | N/A |
 | SPEC-11.2 | Semantic parity checks | NOT_IMPLEMENTED | semantic parity syndromes | — | parity checks across representations | — | NOT_TESTED |
 | SPEC-11.3 | Adaptive verification strength | NOT_IMPLEMENTED | adaptive verification strength | — | risk-weighted verification policy | — | NOT_TESTED |
 | SPEC-12 | Causal self-improvement | NOT_A_REQUIREMENT | heading | — | — | — | N/A |
@@ -121,7 +121,7 @@ Proposed DEFERRED_EXTENSION rows remain NOT_IMPLEMENTED until Daniel agrees the 
 | SPEC-19.3 | Experiment C - clean prospective Lean study | IMPLEMENTED_BOUNDED_PENDING_AUDIT | harness only: campaign generations, custodian, receipts | tests_genesis/test_phase_receipts.py | clean prospective Lean study | independent custodian<br>sealed Lean pool | NOT_TESTED |
 | SPEC-19.4 | Experiment D - transfer | IMPLEMENTED_BOUNDED_PENDING_AUDIT | harness only: transfer receipts and kernel rules | tests_genesis/test_acceptance_regressions.py | E5 | independent custodian | NOT_TESTED |
 | SPEC-19.5 | Experiment E - better improver | IMPLEMENTED_BOUNDED_PENDING_AUDIT | kernel rules only; the custodian refuses improver evaluations until a lineage protocol exists | tests_genesis/test_acceptance_regressions.py | E3<br>lineage protocol (B14-OPEN-3) | independent custodian | NOT_TESTED |
-| SPEC-19.6 | Experiment F - multi-generation | IMPLEMENTED_BOUNDED_PENDING_AUDIT | kernel rules only (consecutive, program-linked chains); custodian refuses generation kinds (B14-OPEN-3) | tests_genesis/test_evidence_kernel.py::Confirmation<br>tests_genesis/test_redteam_b14.py::KernelFindings | E4 | independent custodian | NOT_TESTED |
+| SPEC-19.6 | Experiment F - multi-generation | IMPLEMENTED_BOUNDED_PENDING_AUDIT | kernel rules only (consecutive, program-linked chains); custodian refuses generation kinds (B14-OPEN-3); B21: DEV generation controller (frozen content-addressed generations, predeclared accept/rollback rule, retention panels): 1 of 3 transitions accepted, then saturation (compounding NOT ESTABLISHED) | tests_genesis/test_evidence_kernel.py::Confirmation<br>tests_genesis/test_redteam_b14.py::KernelFindings<br>tests_formal/test_improvement.py::Generations | a sealed E4 study in a domain with a larger frontier | independent custodian | UNESTABLISHED |
 | SPEC-20 | Baselines and ablations | IMPLEMENTED_BOUNDED_PENDING_AUDIT | DSL baselines, CaDiCaL specialist under equal CPU, exact reference, ablation/placebo | tests_genesis/test_ladder.py<br>tests_genesis/test_dsl_equivalence.py | frontier-model baseline (no model is used) | — | N/A |
 | SPEC-21 | Reporting and scientific honesty | NOT_A_REQUIREMENT | heading | — | — | — | N/A |
 | SPEC-21.1 | Required report structure | IMPLEMENTED_BOUNDED_PENDING_AUDIT | evidence-derived reports with limitations | tests_genesis/test_redteam_b14.py::F1BundleWholeObject | — | — | N/A |
@@ -169,7 +169,7 @@ Proposed DEFERRED_EXTENSION rows remain NOT_IMPLEMENTED until Daniel agrees the 
 | SPEC-39.2 | CLI surface | IMPLEMENTED_BOUNDED_PENDING_AUDIT | CLI surface incl. verify-bundle exit status | tests_genesis/test_redteam_b14.py::F1BundleWholeObject | — | — | N/A |
 | SPEC-40 | End-to-end campaign walkthrough | IMPLEMENTED_BOUNDED_PENDING_AUDIT | walkthrough steps 1-13 with fixture roles (B14 re-run); step 14 not performed | — | — | external release authority for step 14 | N/A |
 | SPEC-41 | Meta-gap discovery: how Genesis finds improvement #61 | RESEARCH_HYPOTHESIS | meta-gap candidates recorded as hypotheses | tests_genesis/test_macros_market.py::WorldLoop | primitive invention with prospective test | — | UNESTABLISHED |
-| SPEC-41.1 | What counts as evidence that a primitive is genuinely new | NOT_IMPLEMENTED | evidence that a primitive is genuinely new | — | W22 | independent semantic acceptance | NOT_TESTED |
+| SPEC-41.1 | What counts as evidence that a primitive is genuinely new | IMPLEMENTED_BOUNDED_PENDING_AUDIT | evidence that a primitive is genuinely new: B21 compares research with the primitive against base research and a renaming control (the same conjectures unfolded into the base language) at equal budgets; the B21 primitive ties both (UNESTABLISHED) | tests_formal/test_improvement.py::Primitives | a primitive that beats its renaming control | independent semantic acceptance | UNESTABLISHED |
 | SPEC-42 | Cognitive-kernel minimization experiment | NOT_IMPLEMENTED | kernel minimization experiment | — | W22 | — | NOT_TESTED |
 | SPEC-43 | Replication bundle and release artifact | IMPLEMENTED_BOUNDED_PENDING_AUDIT | replication bundle; verifier re-derives claims, files and certificates | tests_genesis/test_export_revocation.py<br>tests_genesis/test_redteam_b14.py::F1BundleWholeObject<br>tests_certificates/test_certificate_custody.py | — | independent replicator | N/A |
 | SPEC-44 | Human and expert interaction contract | IMPLEMENTED_BOUNDED_PENDING_AUDIT | signed adjudication records for near duplicates | tests_genesis/test_custodian_registry.py::PanelScreening | expert-query optimizer | domain expert | N/A |
@@ -226,9 +226,9 @@ Proposed DEFERRED_EXTENSION rows remain NOT_IMPLEMENTED until Daniel agrees the 
 | W18 | Replayable research macros and proof-carrying compression (equational domain: induced lemma programs with dependencies, faithful replay, revocation, transfer) | IMPLEMENTED_BOUNDED_PENDING_AUDIT | workstream (B14 scope delivered; acceptance pending) | tests_formal/test_learning.py | — | — | N/A |
 | W19 | Research-policy learning (fixed, random, heuristic, bandit and a frozen learned policy at equal research budgets) | IMPLEMENTED_BOUNDED_PENDING_AUDIT | workstream (B14 scope delivered; acceptance pending) | tests_formal/test_learning.py | — | — | N/A |
 | W20 | Curriculum, experience synthesis and capability memory (screened memory, failure-driven curriculum, demotion) | IMPLEMENTED_BOUNDED_PENDING_AUDIT | workstream (B14 scope delivered; acceptance pending) | tests_formal/test_learning.py | — | — | N/A |
-| W21 | Better-improver and multigeneration controller | NOT_IMPLEMENTED | workstream | — | not started in B14 | — | N/A |
-| W22 | New primitives, research-language evolution and trust changes | NOT_IMPLEMENTED | workstream | — | not started in B14 | — | N/A |
-| W23 | Fault-tolerant reasoning and expert interaction | NOT_IMPLEMENTED | workstream | — | not started in B14 | — | N/A |
+| W21 | Better-improver and multigeneration controller (frozen content-addressed generations, predeclared accept/rollback rule, retention panels; DEV transitions) | IMPLEMENTED_BOUNDED_PENDING_AUDIT | workstream (B14 scope delivered; acceptance pending) | tests_formal/test_improvement.py::Generations | — | — | N/A |
+| W22 | New primitives (operator-completeness adversary, definitional contract, migration/rollback, Lean bridge to the base language, renaming control) | IMPLEMENTED_BOUNDED_PENDING_AUDIT | workstream (B14 scope delivered; acceptance pending) | tests_formal/test_improvement.py::Primitives<br>tests_formal/test_improvement.py::Routes | — | — | N/A |
+| W23 | Fault-tolerant reasoning and expert interaction (heterogeneous routes, fault injection, budgeted questions to a SIMULATED expert) | IMPLEMENTED_BOUNDED_PENDING_AUDIT | workstream (B14 scope delivered; acceptance pending) | tests_formal/test_improvement.py::Diagnosis<br>tests_formal/test_improvement.py::Routes | — | — | N/A |
 | W24 | Transfer and independent reproduction | NOT_IMPLEMENTED | workstream | — | not started in B14 | — | N/A |
 | W25 | Trainable model extension | NOT_IMPLEMENTED | workstream | — | not started in B14 | — | N/A |
 | W26 | Software research extension | NOT_IMPLEMENTED | workstream | — | not started in B14 | — | N/A |
@@ -350,7 +350,7 @@ Proposed DEFERRED_EXTENSION rows remain NOT_IMPLEMENTED until Daniel agrees the 
 | CAT-096 | Diversity-Constrained Search | SHARED_IMPLEMENTATION | shared: market diversity quota under premature convergence | tests_genesis/test_macros_market.py | engine-level semantics beyond the shared mechanism | — | N/A |
 | CAT-097 | Verified Merge | NOT_IMPLEMENTED | composition hypothesis only; listing a composition is not an implementation (COMPOSE -> VERIFY) | — | concrete engine with tests | — | NOT_TESTED |
 | CAT-098 | Specification Ambiguity Lattice | NOT_IMPLEMENTED | composition hypothesis only; listing a composition is not an implementation (FORMALIZE -> BRANCH -> DISTINGUISH) | — | concrete engine with tests | — | NOT_TESTED |
-| CAT-099 | Operator-Completeness Adversary | NOT_IMPLEMENTED | composition hypothesis only; listing a composition is not an implementation (REFLECT -> DISTINGUISH -> SYNTHESIZE) | — | concrete engine with tests | — | NOT_TESTED |
+| CAT-099 | Operator-Completeness Adversary | SHARED_IMPLEMENTATION | shared: composition hypothesis only | tests_formal/test_improvement.py | engine-level semantics beyond the shared mechanism | — | N/A |
 | CAT-100 | Evaluator Attack | NOT_IMPLEMENTED | adversarial suites exist (escape suite, GI6, B14 red team) but are human/agent authored; the engine (synthesizing attacks) is not implemented (DISTINGUISH -> SYNTHESIZE -> VERIFY) | — | concrete engine with tests | — | NOT_TESTED |
 | CAT-101 | Proof-Carrying Compression | NOT_IMPLEMENTED | composition hypothesis only; listing a composition is not an implementation (COMPRESS -> VERIFY) | — | concrete engine with tests | — | NOT_TESTED |
 | CAT-102 | Algorithmic Complexity Tax | NOT_IMPLEMENTED | composition hypothesis only; listing a composition is not an implementation (COMPRESS -> REFLECT) | — | concrete engine with tests | — | NOT_TESTED |

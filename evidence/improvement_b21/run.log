@@ -1,0 +1,193 @@
+[   27.8s] w23 item ![X]: (s(s(X,X),s(X,X)) = X): ['ACCEPTED', 'REJECTED_FALSE', 'UNVERIFIED', 'UNVERIFIED', 'REJECTED_FALSE', 'DISAGREEMENT']
+[   51.0s] w23 item ![X]: (![Y]: (s(X,Y) = s(Y,X))): ['ACCEPTED', 'REJECTED_FALSE', 'UNVERIFIED', 'UNVERIFIED', 'REJECTED_FALSE', 'DISAGREEMENT']
+[   98.4s] w22 primitive p1(P0,P1) := ('fn', 's', (('fn', 's', (('var', 'P0'), ('var', 'P1'))), ('var', 'P0'))); round trip {'checked': 119, 'failures': 0}
+[  221.9s] w22 seed 610 base: library 88, successor 11/15
+[  297.0s] w22 seed 610 primitive: library 76, successor 11/15
+[  371.2s] w22 seed 610 renaming_control: library 22, successor 11/15
+[  472.5s] w22 lean: NOT_REPLAYED (12 chained lemmas)
+[  539.5s] w22 lean: NOT_REPLAYED (18 chained lemmas)
+[  568.8s] w22 lean: NOT_REPLAYED (5 chained lemmas)
+[  598.6s] w22 lean: NOT_REPLAYED (5 chained lemmas)
+[  632.4s] w22 lean: NOT_REPLAYED (5 chained lemmas)
+[  710.7s] w22 lean: NOT_REPLAYED (18 chained lemmas)
+[  784.1s] w22 lean: NOT_REPLAYED (21 chained lemmas)
+[  823.1s] w22 lean: NOT_REPLAYED (6 chained lemmas)
+[  873.5s] w22 lean: NOT_REPLAYED (12 chained lemmas)
+[  923.7s] w22 lean: NOT_REPLAYED (16 chained lemmas)
+[  981.5s] w22 lean: NOT_REPLAYED (15 chained lemmas)
+[ 1151.5s] w22 seed 611 base: library 88, successor 12/15
+[ 1256.8s] w22 seed 611 primitive: library 54, successor 12/15
+[ 1331.3s] w22 seed 611 renaming_control: library 30, successor 12/15
+[ 1455.0s]   gen 1 run 0: library 84
+[ 1475.8s]   gen 1 run 1: library 94
+[ 1549.2s] transition 1: parent {'P1': 0} child {'P1': 11} -> ACCEPTED
+[ 1587.6s]   gen 2 run 0: library 96
+[ 1601.5s]   gen 2 run 1: library 96
+[ 1693.2s] transition 2: parent {'P1': 11, 'P2': 9} child {'P1': 11, 'P2': 9} -> ROLLED_BACK
+[ 1712.4s]   gen 3 run 0: library 95
+[ 1729.9s]   gen 3 run 1: library 96
+[ 1816.2s] transition 3: parent {'P1': 11, 'P2': 9, 'P3': 12} child {'P1': 11, 'P2': 9, 'P3': 12} -> ROLLED_BACK
+{
+ "w23": {
+  "by_kind": {
+   "clean_true": {
+    "n": 2,
+    "false_acceptance": 0,
+    "verdicts": {
+     "ACCEPTED": 2
+    }
+   },
+   "clean_false": {
+    "n": 2,
+    "false_acceptance": 0,
+    "verdicts": {
+     "REJECTED_FALSE": 2
+    }
+   },
+   "corrupt_proof": {
+    "n": 2,
+    "false_acceptance": 0,
+    "verdicts": {
+     "UNVERIFIED": 2
+    }
+   },
+   "swapped_proof": {
+    "n": 2,
+    "false_acceptance": 0,
+    "verdicts": {
+     "UNVERIFIED": 2
+    }
+   },
+   "false_claim_with_proof": {
+    "n": 2,
+    "false_acceptance": 0,
+    "verdicts": {
+     "REJECTED_FALSE": 2
+    }
+   },
+   "decider_flip": {
+    "n": 2,
+    "false_acceptance": 0,
+    "verdicts": {
+     "DISAGREEMENT": 2
+    }
+   }
+  },
+  "false_acceptances": 0,
+  "expert": {
+   "claims": 12,
+   "correct_without_expert": 4,
+   "undecided_without_expert": 8,
+   "correct_with_expert": 10,
+   "questions": 6,
+   "intervention_cost": 6.0,
+   "budget": 6,
+   "expert": "SIMULATED (decider with error rate 0.10); not evidence about real experts"
+  }
+ },
+ "w22": {
+  "contract": {
+   "pattern": "('fn', 's', (('fn', 's', (('var', 'P0'), ('var', 'P1'))), ('var', 'P0')))",
+   "proposals": [
+    [
+     "('fn', 's', (('fn', 's', (('var', 'P0'), ('var', 'P1'))), ('var', 'P0')))",
+     4
+    ],
+    [
+     "('fn', 's', (('var', 'P0'), ('fn', 's', (('var', 'P0'), ('var', 'P1')))))",
+     4
+    ],
+    [
+     "('fn', 's', (('fn', 's', (('var', 'P0'), ('var', 'P0'))), ('var', 'P1')))",
+     4
+    ],
+    [
+     "('fn', 's', (('var', 'P0'), ('var', 'P0')))",
+     4
+    ],
+    [
+     "('fn', 's', (('var', 'P0'), ('fn', 's', (('var', 'P1'), ('var', 'P2')))))",
+     3
+    ]
+   ],
+   "round_trip": {
+    "checked": 119,
+    "failures": 0
+   },
+   "definition": "![P0]: (![P1]: (p1(P0,P1) = s(s(P0,P1),P0)))"
+  },
+  "rows": [
+   {
+    "seed": 610,
+    "scores": {
+     "base": 11,
+     "primitive": 11,
+     "renaming_control": 11
+    },
+    "empty": 0,
+    "targets": 15,
+    "pools": {
+     "base": 118,
+     "primitive": 314,
+     "renaming_control": 302
+    },
+    "migration_round_trip": true,
+    "primitive_library_uses_p1": 76,
+    "lean": [
+     {
+      "target": "![X]: (![Y]: (![Z]: (s(s(X,X),s(s(Y,Y),Z)) = s(s(X,X),s(s(Z,Y),Z)))))",
+      "chain_lemmas": 12,
+      "status": "NOT_REPLAYED",
+      "reason": "Lean: ELABORATION_ERROR"
+     },
+     {
+      "target": "![X]: (![Y]: (![Z]: (s(X,s(s(s(Y,s(X,X)),X),Z)) = s(X,s(Y,s(X,X))))))",
+      "chain_lemmas": 18,
+      "status": "NOT_REPLAYED",
+      "reason": "Lean: ELABORATION_ERROR"
+     },
+     {
+      "target": "![X]: (![Y]: (s(s(s(X,Y),Y),X) = s(s(Y,s(s(s(X,Y),Y),X)),X)))",
+      "chain_lemmas": 5,
+      "status": "NOT_REPLAYED",
+      "reason": "Lean: ELABORATION_ERROR"
+     },
+     {
+      "target": "![X]: (![Y]: (![Z]: (s(s(X,s(s(Y,Z),Z)),Z) = s(Z,s(X,s(Z,s(Z,Y)))))))",
+      "chain_lemmas": 5,
+      "status": "NOT_REPLAYED",
+      "reason": "Lean: ELABORATION_ERROR"
+     },
+     {
+      "target": "![X]: (![Y]: (![Z]: (s(X,s(s(s(Y,X),Y),Y)) = s(X,s(s(Z,s(Z,Y)),Y)))))",
+      "chain_lemmas": 5,
+      "status": "NOT_REPLAYED",
+      "reason": "Lean: ELABORATION_ERROR"
+     },
+     {
+      "target": "![X]: (![Y]: (s(X,s(Y,s(s(X,Y),Y))) = s(X,s(Y,s(X,s(Y,Y))))))",
+      "chain_lemmas": 18,
+      "status": "NOT_REPLAYED",
+      "reason": "Lean: ELABORATION_ERROR"
+     },
+     {
+      "target": "![X]: (![Y]: (![Z]: (s(s(s(X,X),X),X) = s(s(Y,s(X,s(Z,s(Z,Z)))),X))))",
+      "chain_lemmas": 21,
+      "status": "NOT_REPLAYED",
+      "reason": "Lean: ELABORATION_ERROR"
+     },
+     {
+      "target": "![X]: (![Y]: (![Z]: (s(s(X,Y),s(X,X)) = s(s(Y,X),s(X,s(s(Z,X),Y))))))",
+      "chain_lemmas": 6,
+      "status": "NOT_REPLAYED",
+      "reason": "Lean: ELABORATION_ERROR"
+     },
+     {
+      "target": "![X]: (![Y]: (![Z]: (s(s(s(X,X),Y),s(X,Z)) = s(s(X,Z),s(Y,s(Y,X))))))",
+      "chain_lemmas": 12,
+      "status": "NOT_REPLAYED",
+      "reason": "Lean: ELABORATION_ERROR"
+     },
+     {
+      "target": "![X]: (![Y]: (s(s(s(s(X,Y),X),X),Y) = s(Y,s(
+rc=0

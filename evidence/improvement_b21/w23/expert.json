@@ -1,0 +1,178 @@
+{
+ "decisions": [
+  {
+   "asked": true,
+   "claim": "![X]: (![Y]: (![Z]: (s(s(s(X,s(X,Y)),X),s(Z,X)) = s(s(X,Y),s(X,Z)))))",
+   "truth": true,
+   "with_expert": true,
+   "without_expert": null
+  },
+  {
+   "asked": true,
+   "claim": "![X]: (![Y]: (![Z]: (s(s(s(X,Y),X),s(Z,Z)) = s(s(Z,Z),s(s(Y,Y),X)))))",
+   "truth": true,
+   "with_expert": true,
+   "without_expert": null
+  },
+  {
+   "asked": true,
+   "claim": "![X]: (![Y]: (![Z]: (s(s(X,s(Y,X)),s(Z,X)) = s(s(X,Z),s(X,s(Y,X))))))",
+   "truth": true,
+   "with_expert": true,
+   "without_expert": null
+  },
+  {
+   "asked": true,
+   "claim": "![X]: (![Y]: (s(s(X,s(X,X)),s(Y,Y)) = s(s(X,Y),s(Y,s(X,Y)))))",
+   "truth": true,
+   "with_expert": true,
+   "without_expert": null
+  },
+  {
+   "asked": true,
+   "claim": "![X]: (![Y]: (s(s(s(X,X),X),s(Y,X)) = s(s(Y,s(Y,Y)),s(Y,X))))",
+   "truth": true,
+   "with_expert": true,
+   "without_expert": null
+  },
+  {
+   "asked": true,
+   "claim": "![X]: (![Y]: (![Z]: (s(s(X,Y),s(s(X,Z),Z)) = s(s(X,Y),s(s(Z,X),Z)))))",
+   "truth": true,
+   "with_expert": true,
+   "without_expert": null
+  },
+  {
+   "asked": false,
+   "claim": "![X]: (![Y]: (![Z]: (s(s(X,Y),s(Y,s(Y,s(Z,Y)))) = s(s(Z,Y),s(X,Y)))))",
+   "truth": true,
+   "with_expert": null,
+   "without_expert": null
+  },
+  {
+   "asked": false,
+   "claim": "![X]: (![Y]: (![Z]: (s(s(s(s(X,X),Y),X),s(Y,Z)) = s(s(Y,Z),s(X,X)))))",
+   "truth": true,
+   "with_expert": null,
+   "without_expert": null
+  },
+  {
+   "asked": false,
+   "claim": "![X]: (![Y]: (s(s(X,s(Y,Y)),s(Y,Y)) = X))",
+   "truth": false,
+   "with_expert": false,
+   "without_expert": false
+  },
+  {
+   "asked": false,
+   "claim": "![X]: (![Y]: (![Z]: (s(X,s(Y,s(s(X,Z),X))) = Y)))",
+   "truth": false,
+   "with_expert": false,
+   "without_expert": false
+  },
+  {
+   "asked": false,
+   "claim": "![X]: (![Y]: (![Z]: (s(X,s(X,s(s(X,Y),X))) = Z)))",
+   "truth": false,
+   "with_expert": false,
+   "without_expert": false
+  },
+  {
+   "asked": false,
+   "claim": "![X]: (![Y]: (s(s(s(X,Y),Y),X) = X))",
+   "truth": false,
+   "with_expert": false,
+   "without_expert": false
+  }
+ ],
+ "questions": [
+  {
+   "answer": true,
+   "answered_by": "SIMULATED_EXPERT",
+   "claim": "![X]: (![Y]: (![Z]: (s(s(s(X,s(X,Y)),X),s(Z,X)) = s(s(X,Y),s(X,Z)))))",
+   "cost": 1.0,
+   "provenance": {
+    "claim_sha256": "aae22810ccaf51cea54baf695ab398343c746a3bef3d715a64cb1c0fa987a1bb",
+    "raised_by": "faults.routes/diagnose"
+   },
+   "question": "Is \"![X]: (![Y]: (![Z]: (s(s(s(X,s(X,Y)),X),s(Z,X)) = s(s(X,Y),s(X,Z)))))\" true in this system?",
+   "reason": "prover gave up and no countermodel up to size 2",
+   "status": "ANSWERED"
+  },
+  {
+   "answer": true,
+   "answered_by": "SIMULATED_EXPERT",
+   "claim": "![X]: (![Y]: (![Z]: (s(s(s(X,Y),X),s(Z,Z)) = s(s(Z,Z),s(s(Y,Y),X)))))",
+   "cost": 1.0,
+   "provenance": {
+    "claim_sha256": "14973431dd9b4662f66ae3e4c012709c0db8ade1f3a0c003837b7cb12456a51e",
+    "raised_by": "faults.routes/diagnose"
+   },
+   "question": "Is \"![X]: (![Y]: (![Z]: (s(s(s(X,Y),X),s(Z,Z)) = s(s(Z,Z),s(s(Y,Y),X)))))\" true in this system?",
+   "reason": "prover gave up and no countermodel up to size 2",
+   "status": "ANSWERED"
+  },
+  {
+   "answer": true,
+   "answered_by": "SIMULATED_EXPERT",
+   "claim": "![X]: (![Y]: (![Z]: (s(s(X,s(Y,X)),s(Z,X)) = s(s(X,Z),s(X,s(Y,X))))))",
+   "cost": 1.0,
+   "provenance": {
+    "claim_sha256": "1939fc5fed5b6f2b5e5c84a78230ca6cd87e950caa3b25c3679dc7f27c5e4641",
+    "raised_by": "faults.routes/diagnose"
+   },
+   "question": "Is \"![X]: (![Y]: (![Z]: (s(s(X,s(Y,X)),s(Z,X)) = s(s(X,Z),s(X,s(Y,X))))))\" true in this system?",
+   "reason": "prover gave up and no countermodel up to size 2",
+   "status": "ANSWERED"
+  },
+  {
+   "answer": true,
+   "answered_by": "SIMULATED_EXPERT",
+   "claim": "![X]: (![Y]: (s(s(X,s(X,X)),s(Y,Y)) = s(s(X,Y),s(Y,s(X,Y)))))",
+   "cost": 1.0,
+   "provenance": {
+    "claim_sha256": "a7aac19d5a6fa169864d9c8565bc19cd6e7a1a29addaa75b5da047ae5476ef6b",
+    "raised_by": "faults.routes/diagnose"
+   },
+   "question": "Is \"![X]: (![Y]: (s(s(X,s(X,X)),s(Y,Y)) = s(s(X,Y),s(Y,s(X,Y)))))\" true in this system?",
+   "reason": "prover gave up and no countermodel up to size 2",
+   "status": "ANSWERED"
+  },
+  {
+   "answer": true,
+   "answered_by": "SIMULATED_EXPERT",
+   "claim": "![X]: (![Y]: (s(s(s(X,X),X),s(Y,X)) = s(s(Y,s(Y,Y)),s(Y,X))))",
+   "cost": 1.0,
+   "provenance": {
+    "claim_sha256": "d962888ca28341534675a2318a9ad693c0b68782c648631761e3e15a4505cb44",
+    "raised_by": "faults.routes/diagnose"
+   },
+   "question": "Is \"![X]: (![Y]: (s(s(s(X,X),X),s(Y,X)) = s(s(Y,s(Y,Y)),s(Y,X))))\" true in this system?",
+   "reason": "prover gave up and no countermodel up to size 2",
+   "status": "ANSWERED"
+  },
+  {
+   "answer": true,
+   "answered_by": "SIMULATED_EXPERT",
+   "claim": "![X]: (![Y]: (![Z]: (s(s(X,Y),s(s(X,Z),Z)) = s(s(X,Y),s(s(Z,X),Z)))))",
+   "cost": 1.0,
+   "provenance": {
+    "claim_sha256": "e42a9dfc127452c6bb28d0916b6e818522d89d7d9f3bb1765205c831b60caf60",
+    "raised_by": "faults.routes/diagnose"
+   },
+   "question": "Is \"![X]: (![Y]: (![Z]: (s(s(X,Y),s(s(X,Z),Z)) = s(s(X,Y),s(s(Z,X),Z)))))\" true in this system?",
+   "reason": "prover gave up and no countermodel up to size 2",
+   "status": "ANSWERED"
+  }
+ ],
+ "summary": {
+  "budget": 6,
+  "claims": 12,
+  "correct_with_expert": 10,
+  "correct_without_expert": 4,
+  "expert": "SIMULATED (decider with error rate 0.10); not evidence about real experts",
+  "intervention_cost": 6.0,
+  "questions": 6,
+  "undecided_without_expert": 8
+ }
+}

@@ -106,8 +106,39 @@ def _word(t):
     return out
 
 
+# Defined operations (B21, W22): name -> (parameter names, defining term over earlier
+# symbols). Deciders evaluate a defined symbol through its definition, so a definitional
+# extension is decided exactly like the base variety.
+DEFINITIONS = {}
+
+
+def unfold_definitions(t):
+    if t[0] == 'var':
+        return t
+    args = tuple(unfold_definitions(a) for a in t[2])
+    if t[1] in DEFINITIONS:
+        params, body = DEFINITIONS[t[1]]
+        return unfold_definitions(_subst_vars(body, dict(zip(params, args))))
+    return ('fn', t[1], args)
+
+
+def _subst_vars(t, m):
+    if t[0] == 'var':
+        return m.get(t[1], t)
+    return ('fn', t[1], tuple(_subst_vars(a, m) for a in t[2]))
+
+
+def register(name, spec):
+    """Add a derived system (e.g. a definitional extension) under a new name."""
+    if name in SYSTEMS and SYSTEMS[name] != spec:
+        raise ValueError(f'system {name} already registered differently')
+    SYSTEMS[name] = spec
+
+
 def fingerprint(t, decider, vars_=VARS):
     """A value equal for two terms iff they denote the same term function in the variety."""
+    if DEFINITIONS:
+        t = unfold_definitions(t)
     if decider == 'free_group':
         return tuple(_word(t))
     return tuple(_bool(t, dict(zip(vars_, bits)), decider) for bits in product((0, 1), repeat=len(vars_)))
@@ -213,7 +244,7 @@ def false_equations(system, max_size, count, *, seed=0):
     return out
 
 
-__all__ = ['SYSTEMS', 'fingerprint', 'holds', 'terms', 'size', 'canon', 'closed', 'text', 'axioms',
+__all__ = ['SYSTEMS', 'DEFINITIONS', 'register', 'unfold_definitions', 'fingerprint', 'holds', 'terms', 'size', 'canon', 'closed', 'text', 'axioms',
            'true_equations', 'false_equations']
 
 

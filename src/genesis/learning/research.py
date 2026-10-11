@@ -187,13 +187,17 @@ def predict(w, x):
 
 # ---------------------------------------------------------------- runs
 
-def run(system, policy, pool, *, budget_s, dev_targets=(), prove_s=2, premise_k=8, log=None):
-    """One research run. Returns the frozen successor (library) and the full trajectory."""
+def run(system, policy, pool, *, budget_s, dev_targets=(), prove_s=2, premise_k=8, log=None, library=None,
+        id_prefix='L'):
+    """One research run. Returns the frozen successor (library) and the full trajectory.
+    `library` (B21): a starting library (a parent's frozen lemmas); new lemmas are numbered
+    after it with `id_prefix`."""
     spec = Q.SYSTEMS[system]
     ax = Q.axioms(system)
     policy.reset(list(pool), list(dev_targets))
     untried = set(pool)
-    library, trajectory = [], []
+    library, trajectory = list(library or []), []
+    start_size = len(library)
     start = _cpu()
     while untried and _cpu() - start < budget_s:
         eq = policy.choose(untried)
@@ -210,7 +214,8 @@ def run(system, policy, pool, *, budget_s, dev_targets=(), prove_s=2, premise_k=
             rec = {'e_status': r['status'], 'premises': [p['id'] for p in prem]}
             if outcome == 'PROVED':
                 used = used_inputs(r['proof'], len(ax) + len(prem))
-                library.append({'id': f'L{len(library)}', 'eq': eq, 'text': Q.text(eq), 'proof': r['proof'],
+                library.append({'id': f'{id_prefix}{len(library) - start_size}', 'eq': eq, 'text': Q.text(eq),
+                                'proof': r['proof'],
                                 'uses': [prem[i - len(ax)]['id'] for i in used if i >= len(ax)],
                                 'premise_ids': [p['id'] for p in prem]})
         policy.observe(eq, outcome)

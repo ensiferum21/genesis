@@ -482,8 +482,9 @@ def _vars_of(t, out):
 def _overlaps(parents):
     """Superposition overlaps between parents: for a positive equation side l of one parent
     and a non-variable subterm u of another (or the same, renamed apart), the most general
-    unifier. Yields {parent index: {variable: term with variables}} pairs."""
-    out = []
+    unifier. Returns ([{parent index: {variable: term with variables}}], [(overlap index,
+    result sides)]): the result sides are B's literal after the rewrite, under the unifier."""
+    out, results = [], []
     for i, A in enumerate(parents):
         if not A:
             continue
@@ -507,6 +508,11 @@ def _overlaps(parents):
                                         sg = _unify(lhs_r, _rename_vars(u, tb), {})
                                         if sg is None:
                                             continue
+                                        rhs = r if lhs is l else l
+                                        res = [(_resolve(_replace(_rename_vars(z, tb), _rename_vars(u, tb),
+                                                                  _rename_vars(rhs, ta)), sg))
+                                               for z in (x, y)]
+                                        results.append((len(out), tuple(res)))
                                         out.append({i: {v: _resolve(('var', v + ta), sg) for v in A[0]},
                                                     j: {**({v: _resolve(('var', v + ta), sg) for v in A[0]}
                                                            if i == j else {}),
@@ -514,6 +520,119 @@ def _overlaps(parents):
                                                    if i != j else
                                                    {i: {v: _resolve(('var', v + ta), sg) for v in A[0]},
                                                     -1 - j: {v: _resolve(('var', v + tb), sg) for v in B[0]}})
+    return out, results
+
+
+def _replace(t, old, new):
+    if t == old:
+        return new
+    if t[0] == 'var':
+        return t
+    return ('fn', t[1], tuple(_replace(a, old, new) for a in t[2]))
+
+
+def _rules(parents, exclude=()):
+    """Unit positive equations among the parents, oriented as size-decreasing rewrite
+    rules (E rewrites with its term ordering, which under unit weights never increases
+    size): [(parent index, lhs, rhs)]."""
+    out = []
+    for i, P in enumerate(parents):
+        if i in exclude or not P or len(P[1]) != 1 or len(P[1][0]) != 1 or not P[1][0][0][0]:
+            continue
+        _, l, r = P[1][0][0]
+        for a, b in ((l, r), (r, l)):
+            if a[0] != 'var' and _size(a) > _size(b) and _vars_of(b, set()) <= _vars_of(a, set()):
+                out.append((i, a, b))
+    return out
+
+
+def _commutative(parents):
+    """{symbol: (parent index, first variable, second variable)} for parents that are a
+    commutativity law f(V1,V2) = f(V2,V1)."""
+    out = {}
+    for i, P in enumerate(parents):
+        if not P or len(P[1]) != 1 or len(P[1][0]) != 1 or not P[1][0][0][0]:
+            continue
+        _, l, r = P[1][0][0]
+        if (l[0] == r[0] == 'fn' and l[1] == r[1] and len(l[2]) == 2 and all(a[0] == 'var' for a in l[2])
+                and l[2][0] != l[2][1] and r[2] == (l[2][1], l[2][0])):
+            out.setdefault(l[1], (i, l[2][0][1], l[2][1][1]))
+    return out
+
+
+def _match_c(p, t, s, comm, swaps=()):
+    """Matches of pattern p against t modulo commutativity of the symbols in `comm`
+    (B21): yields (substitution, the subterms of t whose arguments were swapped)."""
+    if p[0] == 'var':
+        if p[1] in s:
+            if s[p[1]] == t:
+                yield s, swaps
+            return
+        yield {**s, p[1]: t}, swaps
+        return
+    if t[0] != 'fn' or p[1] != t[1] or len(p[2]) != len(t[2]):
+        return
+    orders = [(t[2], swaps)]
+    if p[1] in comm and len(t[2]) == 2 and t[2][0] != t[2][1]:
+        orders.append(((t[2][1], t[2][0]), swaps + (t,)))
+    for args, sw in orders:
+        yield from _match_args(p[2], args, s, comm, sw)
+
+
+def _match_args(ps, ts, s, comm, swaps):
+    if not ps:
+        yield s, swaps
+        return
+    for s1, sw1 in _match_c(ps[0], ts[0], s, comm, swaps):
+        yield from _match_args(ps[1:], ts[1:], s1, comm, sw1)
+
+
+def _swap_instances(swaps, comm):
+    """Commutativity instances that justify the swapped subterms: [(parent index, substitution)]."""
+    out = []
+    for u in swaps:
+        i, v1, v2 = comm[u[1]]
+        out.append((i, {v1: u[2][0], v2: u[2][1]}))
+    return out
+
+
+def _rewrite_once(t, rules, comm=None):
+    """One leftmost-outermost rewrite step, matching modulo commutativity when `comm` is
+    given: (new term, [(parent index, substitution)] for the rule and any swaps)."""
+    for i, l, r in rules:
+        m = next(_match_c(l, t, {}, comm or {}), None)
+        if m is not None:
+            return _subst(r, m[0]), [(i, m[0])] + _swap_instances(m[1], comm or {})
+    if t[0] == 'fn':
+        for k, a in enumerate(t[2]):
+            s = _rewrite_once(a, rules, comm)
+            if s is not None:
+                args = list(t[2])
+                args[k] = s[0]
+                return ('fn', t[1], tuple(args)), s[1]
+    return None
+
+
+def _ground_all(t, g):
+    if t[0] == 'var':
+        return g
+    return ('fn', t[1], tuple(_ground_all(a, g) for a in t[2]))
+
+
+def _rewrite_path(sides, rules, comm=None, steps=12):
+    """Every state on the way to a normal form of an equation's sides under `rules`, with
+    the rule instances used so far: [((side, side), [(parent index, substitution)])]."""
+    out, used, cur = [], [], list(sides)
+    for _ in range(steps):
+        for k in (0, 1):
+            s = _rewrite_once(cur[k], rules, comm)
+            if s is not None:
+                cur[k] = s[0]
+                used = used + s[1]
+                out.append((tuple(cur), used))
+                break
+        else:
+            break
     return out
 
 
@@ -549,22 +668,70 @@ def ground_hints(parents, conclusion, constants, *, rounds=3, cap=1500, max_term
     # round 0: instances from superposition overlaps, free variables grounded over T
     terms = sorted(T, key=lambda t: (_size(t), repr(t)))[:max_terms]
     seeded = []
-    for ov in _overlaps(parents):
-        free = sorted({x for m in ov.values() for t in m.values() for x in _vars_of(t, set())})
-        combos = [{}]
-        for v in free:
-            if len(combos) * len(terms) > 300:
-                combos = []
+    overlaps, results = _overlaps(parents)
+    goal_sides = [(a, b) for c in neg for _, a, b in c]
+    by_overlap = {}
+    all_rules = _rules(parents)
+    comm = _commutative(parents)
+    for k, (s1, s2) in results:
+        # the overlap result, and (B21) the states on its way to a normal form under the
+        # other parents (E's `rw` after `spm`), matched to the conclusion; with a
+        # commutativity parent, rewriting and matching work modulo commutativity
+        cands = [((s1, s2), [])]
+        if all_rules and time.monotonic() < deadline:
+            own = {i if i >= 0 else -1 - i for i in overlaps[k]}
+            for rules in (_rules(parents, exclude=own), all_rules):
+                cands += _rewrite_path((s1, s2), rules)
+                if comm:
+                    cands += _rewrite_path((s1, s2), rules, comm)
+        for (r1, r2), extra in cands:
+            for a, b in goal_sides:
+                for x, y in ((a, b), (b, a)):
+                    found = 0
+                    for m1, sw1 in _match_c(r1, x, {}, comm):
+                        for m, sw in _match_c(r2, y, m1, comm, sw1):
+                            by_overlap.setdefault(k, []).append((m, extra + _swap_instances(sw, comm)))
+                            found += 1
+                            break
+                        if found >= 2:
+                            break
+    def seed(ks):
+        out = []
+        for k in ks:
+            ov = overlaps[k]
+            free = sorted({x for m in ov.values() for t in m.values() for x in _vars_of(t, set())})
+            # variables the result does not mention are arbitrary: any ground term will do
+            combos = [({**{v: terms[0] for v in free if v not in c}, **c}, extra)
+                      for c, extra in by_overlap.get(k, [])] if terms else []
+            if not combos:
+                combos = [{}]
+                for v in free:
+                    if len(combos) * len(terms) > 300:
+                        combos = []
+                        break
+                    combos = [{**c, v: t} for c in combos for t in terms]
+                combos = [(c, []) for c in combos]
+            for c, extra in combos:
+                keys = []
+                for idx, m in ov.items():
+                    i = idx if idx >= 0 else -1 - idx
+                    keys.append((i, tuple(_subst(m[v], c) for v in parents[i][0])))
+                for i, rm in extra:                # the rewrite-rule instances, grounded alike
+                    keys.append((i, tuple(_ground_all(_subst(rm.get(v, terms[0]), c), terms[0])
+                                          for v in parents[i][0])))
+                for key in keys:
+                    if key not in seen:
+                        seen.add(key); out.append(key)
+            if len(out) > cap or time.monotonic() > deadline:
                 break
-            combos = [{**c, v: t} for c in combos for t in terms]
-        for c in combos:
-            for idx, m in ov.items():
-                i = idx if idx >= 0 else -1 - idx
-                key = (i, tuple(_subst(m[v], c) for v in parents[i][0]))
-                if key not in seen:
-                    seen.add(key); seeded.append(key)
-        if len(seeded) > cap or time.monotonic() > deadline:
-            break
+        return out
+    # overlaps whose result matched the conclusion first (B21): enumerating the others
+    # can exhaust the cap before a matched one is reached
+    matched = [k for k in range(len(overlaps)) if k in by_overlap]
+    first = seed(matched)
+    if first and _unsat(clauses(first)):
+        return _minimise(first, lambda ks: time.monotonic() < deadline + 2 and _unsat(clauses(ks)))
+    seeded = first + seed([k for k in range(len(overlaps)) if k not in by_overlap])
     if seeded:
         inst += seeded
         for i, args in seeded:
@@ -737,19 +904,34 @@ def refutation_block(prefix, sig, hyps, target, proof_text, positions=None):
     return text, None, table
 
 
-def proof_module(problem_id, axioms, goal, proof_text, lemmas=(), goal_deps=None, goal_positions=None):
+def proof_module(problem_id, axioms, goal, proof_text, lemmas=(), goal_deps=None, goal_positions=None,
+                 definitions=()):
     """Untrusted: the replay of E's refutation of `goal`, each lemma replayed from its own E
     proof first. `lemmas`: [(formula, proof text)] or [(formula, proof text, deps)], where
     `deps` are the indices of earlier lemmas that were given to E, after the axioms and in
     that order, when the lemma was proved (B20: lemma chains). `goal_deps` likewise for the
-    goal; by default every lemma, in order (the B19 form). Returns (module | None, reason,
-    tables)."""
+    goal; by default every lemma, in order (the B19 form).
+
+    `definitions` (B21, W22): [(symbol, parameter names, defining term)] for defined
+    operations. The E proofs were found with each definition as an extra axiom after
+    `axioms`. The trusted statement stays the base one (`axioms → goal`, without the
+    defined symbols); the proof instantiates every defined symbol by its λ-term and
+    discharges its definition by `rfl`, so a definitional extension can never prove
+    anything new about the base language. Returns (module | None, reason, tables)."""
     lemmas = [(x[0], x[1], tuple(x[2]) if len(x) > 2 else (), tuple(x[3]) if len(x) > 3 else None) for x in lemmas]
     goal_deps = list(range(len(lemmas))) if goal_deps is None else list(goal_deps)
     sig = signature(list(axioms) + [goal])
-    lsig = signature(list(axioms) + [goal] + [l for l, _, _, _ in lemmas])
-    if lsig != sig:
-        return None, 'a lemma uses a symbol outside the problem signature', {}
+    def_axioms = []
+    for name, params, body in definitions:
+        lhs = ('fn', name, tuple(('var', v) for v in params))
+        f = ('eq', lhs, body)
+        for v in reversed(params):
+            f = ('all', v, f)
+        def_axioms.append(f)
+    ext_axioms = list(axioms) + def_axioms
+    esig = signature(ext_axioms + [goal] + [l for l, _, _, _ in lemmas])
+    if set(esig['functions']) - set(sig['functions']) - {d[0] for d in definitions} or esig['predicates'] != sig['predicates']:
+        return None, 'a lemma uses a symbol outside the problem signature and its definitions', {}
     for j, (_, _, deps, _) in enumerate(lemmas):
         if any(not 0 <= d < j for d in deps):
             return None, f'lemma {j} depends on a lemma that is not earlier in the chain', {}
@@ -757,40 +939,48 @@ def proof_module(problem_id, axioms, goal, proof_text, lemmas=(), goal_deps=None
         return None, 'the goal depends on an unknown lemma', {}
     stmt, proof = module_names(problem_id)
     blocks, tables = [], {}
-    n = len(axioms)
+    n = len(ext_axioms)
     for j, (lem, text, deps, pos) in enumerate(lemmas):
-        block, reason, table = refutation_block(f'L{j}', sig, list(axioms) + [lemmas[d][0] for d in deps], lem, text,
+        block, reason, table = refutation_block(f'L{j}', esig, ext_axioms + [lemmas[d][0] for d in deps], lem, text,
                                                 positions=None if pos is None else list(range(n)) + list(pos))
         tables[f'L{j}'] = table
         if block is None:
             return None, f'lemma {j}: {reason}', tables
         blocks.append(block)
-    block, reason, table = refutation_block('G', sig, list(axioms) + [lemmas[d][0] for d in goal_deps], goal,
+    block, reason, table = refutation_block('G', esig, ext_axioms + [lemmas[d][0] for d in goal_deps], goal,
                                             proof_text, positions=None if goal_positions is None else
                                             list(range(n)) + list(goal_positions))
     tables['G'] = table
     if block is None:
         return None, reason, tables
     blocks.append(block)
-    names = binder_names(sig)
-    axs = [f'ax{i}' for i in range(len(axioms))]
-    haves = [f'  have l{j} := L{j}_thm {" ".join(names + axs + [f"l{d}" for d in deps])}'
+    base_names = binder_names(sig)
+    lam = {}
+    for name, params, body in definitions:
+        lam[sym(name)] = '(fun ' + ' '.join(f'({var(v)} : U)' for v in params) + f' => {term(body)})'
+    ext_names = [lam.get(x, x) for x in binder_names(esig)]
+    axs = [f'ax{i}' for i in range(len(axioms))] + ['(fun ' + ' '.join('_' for _ in d[1]) + ' => rfl)'
+                                                      for d in definitions]
+    haves = [f'  have l{j} := L{j}_thm {" ".join(ext_names + axs + [f"l{d}" for d in deps])}'
              for j, (_, _, deps, _) in enumerate(lemmas)]
     source = (f'import {stmt}\n\nset_option maxHeartbeats 400000\n\nnamespace {proof}\n\n' + '\n'.join(blocks) +
-              f'\ntheorem proof : {stmt}.stmt := by\n  intro {" ".join(names[:1] + ["hU"] + names[1:] + axs)}\n'
+              f'\ntheorem proof : {stmt}.stmt := by\n'
+              f'  intro {" ".join(base_names[:1] + ["hU"] + base_names[1:] + [f"ax{i}" for i in range(len(axioms))])}\n'
               + ''.join(h + '\n' for h in haves) +
-              f'  exact G_thm {" ".join(names + axs + [f"l{d}" for d in goal_deps])}\n\nend {proof}\n')
+              f'  exact G_thm {" ".join(ext_names + axs + [f"l{d}" for d in goal_deps])}\n\nend {proof}\n')
     return {'name': proof, 'source': source, 'trusted': False}, None, tables
 
 
-def replay(problem_id, axioms, goal, proof_text, *, lemmas=(), goal_deps=None, goal_positions=None, cache=None):
+def replay(problem_id, axioms, goal, proof_text, *, lemmas=(), goal_deps=None, goal_positions=None, cache=None,
+           definitions=()):
     """Lean replay of an E proof object (and of the E proofs of any lemmas it used).
     Returns a record with status THEOREM_CHECKED (kernel-checked, bound to the trusted
     statement of `axioms → goal`) or NOT_REPLAYED with the reason; the result then stays
     a prover claim."""
     from . import checker
     stmt_mod, spec, sig = statement_module(problem_id, axioms, goal)
-    pmod, reason, tables = proof_module(problem_id, axioms, goal, proof_text, lemmas, goal_deps, goal_positions)
+    pmod, reason, tables = proof_module(problem_id, axioms, goal, proof_text, lemmas, goal_deps, goal_positions,
+                                        definitions)
     rec = {'problem_id': problem_id, 'statement_module': stmt_mod['name'],
            'statement_sha256': digest({'s': stmt_mod['source']}),
            'steps': sum(len(t) for t in tables.values()), 'lemmas_replayed': len(lemmas),
@@ -808,7 +998,7 @@ def replay(problem_id, axioms, goal, proof_text, *, lemmas=(), goal_deps=None, g
         mods = {m['name']: m for m in receipt.get('modules', [])}
         pm = mods.get(pmod['name'], {})
         log = pm.get('log') or pm.get('reason') or ''
-        errors = [l for l in log.splitlines() if ': error' in l]
+        errors = pm.get('errors') or [l for l in log.splitlines() if ': error' in l]
         out.update(status='NOT_REPLAYED', reason=f'Lean: {status}', module_result=pm.get('result'),
                    errors=errors[:20])
     return out
