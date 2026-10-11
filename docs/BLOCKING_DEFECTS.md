@@ -39,7 +39,7 @@ original log stays meaningful. Post-repair regression tests live in
 |---|---|---|
 | R-04 | Supported deployment: what B15 could not do here — the pinned image digest (no registry), wheel download hashes (PyPI denied), and the second-machine run of `deployment/reproduce.sh` with its operator's attestation | registry and PyPI access, a second machine |
 | B14-OPEN-1 | ~~Custodian did not verify request facts against the campaign export~~ — CLOSED in B14 (round-2 C1): the custodian rebuilds the export and checks campaign, source and domain | — |
-| B14-OPEN-2 | Selective reporting across different candidates or campaigns: one registration per candidate slot is enforced, but a custodian-published registration log with a multiplicity rule is not | W06/W07 |
+| B14-OPEN-2 | ~~Selective reporting across candidates or campaigns~~ — REPAIRED IN B16, PENDING REVIEW: the custodian assigns the hypothesis family (evidence kind × domain at that custodian), enforces its declared size, publishes a signed hash-chained registration log, and Holm uses exactly the family results published before each evaluation (checked at preflight). Scope: one custodian; a researcher using several custodians is outside it | W06/W07 |
 | B14-OPEN-3 | `sealed_improver_evaluation` and `sealed_generation_evaluation` are refused by the custodian until a research-lineage protocol can be checked from the export | W21 |
 | B14-OPEN-4 | FINITE_CERTIFIED, THEOREM_CHECKED, causal, internal-replication, DEV_ONLY and priority levels have no replay contract and are unreachable (fail closed) | W03/W05/W08 |
 | B14-OPEN-5 | ~~Report prose linted against the bundle-wide ceiling~~ — CLOSED after the external review (F-01): report.md is derived from per-claim current wording; caller prose is checked at the floor. Still open: ladder/world-loop internal reports lint against fixed levels (they are not exported as claims) | W02 |
@@ -110,3 +110,22 @@ holds, and it reproduced two new defects on `eb1ae3c`.
 | B15-REV-02 | A claim identifier containing newlines and Markdown injected an `Established` line into report.md, and the bundle still verified. | REPAIRED IN B15_R2, PENDING RE-REVIEW. Identifiers and texts are validated at the kernel, every field is rendered as a literal code span, and the verifier checks report structure. |
 
 The review keeps GV0 and R-04 open. Wheel archive hashes still need PyPI access.
+
+## B16 outcome (W05–W07)
+
+- **B14-OPEN-2 (multiplicity).** Repaired, pending review. The custodian assigns
+  the hypothesis family itself, so a requester cannot pick a fresh family per
+  candidate. A family cannot exceed its declared size. Analysis plan v2 applies
+  Holm with exactly the published results of the family. Release preflight checks
+  all of this against the custodian-signed registration log.
+- **B15-OPEN-1 (unrecovered registrations).** Repaired. The registration log is
+  public, and every registered evaluation without a result is listed as OUTSTANDING
+  for anyone to see. In the analysis an outstanding member counts as p = 1, which is
+  conservative.
+- **New residual: B16-OPEN-1.** There is no external time anchoring. The anchor
+  time, the decision record's FROZEN status and the log order are all attested by
+  the operator. An RFC 3161 or transparency-log anchor needs a network service that
+  this host cannot reach.
+- **New residual: B16-OPEN-2.** The power analysis rests on a modelling assumption,
+  the headroom-limited integer-improvement model with a design effect of 0.5 edges
+  per task. It needs independent review (see `evidence/study_design_b16/STUDY_DESIGN.md`).

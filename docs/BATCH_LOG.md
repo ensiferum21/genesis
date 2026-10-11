@@ -424,3 +424,65 @@ and that the checkpoint is intact. It reproduced two new defects on `eb1ae3c`.
 
 Regressions are in `tests_genesis/test_external_review_b15.py`, with before and
 after logs in `audit/review_b15_external/logs/`.
+
+## Batch 16 — Evaluator readiness (W05–W07)
+
+**W05 (domains).**
+- `genesis.domains` defines the DomainAdapter interface and implements it for both
+  graph domains. Its operations are parse, supports, exposure identity, candidate
+  and evaluator views, validate, score, certified reference, certificate
+  obligations, cost, families, generate and replay.
+- Unsupported input produces an explicit UNSUPPORTED outcome.
+- The solver child now receives only the candidate view (domain, n, edges); the
+  receipt records its hash.
+- A conformance suite runs against every registered adapter.
+
+**Calibration.**
+- `genesis.calibration` uses DEV material only, under a selection rule frozen in code.
+- The v1 panels had a ceiling rate of 1.0 and headroom of 0.0.
+- c4: three erdos settings were adopted (n = 12, 16, 20).
+- Triangle-free: round 1 selected nothing. Round 2 kept the same rule, extended the
+  grid, and selected erdos n=22 p=0.35.
+- The adopted records are pinned by hash in `configs/dev_calibration.json`.
+
+**W07 (statistics).**
+- `kernel/analysis.py` defines plan v2. Its parts are:
+  - a stratified sign-flip test (exact when small);
+  - a stratified bootstrap interval;
+  - the minimum useful effect kept separate from the design effect;
+  - Holm across the custodian family;
+  - a single-analysis stopping rule;
+  - failures scored zero;
+  - an unsupported-task policy;
+  - cost and regression bounds;
+  - four sensitivity analyses.
+- Receipt v3 signs the analysis result. The kernel re-derives the decision from it
+  and rejects internal forgeries.
+- `genesis.judge` recomputes the analysis from the raw receipts.
+- `genesis.power` uses a headroom-limited power model with a design floor, and uses
+  only DEV pilots.
+- `genesis.decision_record` writes the Appendix B record. Its embedded plan core is
+  named by hash from the plan.
+
+**W06 (custody).**
+- The registration log is signed and hash-chained. Its entries are REGISTERED,
+  RESERVED, PUBLISHED and RECOVERED, and each carries its family.
+- Hypothesis families are assigned by the custodian, and declared sizes are enforced.
+- Control declarations for the custodian, auditor and release authority name their
+  controllers, machines, keys, data and analysis. Shared control yields
+  LIMITED_SAME_OPERATOR.
+- Release preflight requires the log and the declarations for v3 receipts.
+
+**Study design.** A DEV pilot of 60 tasks gave an E1 power analysis: 10 tasks per
+family (30 in total) reach a power of 0.946 at a design effect of 0.5. The
+decision record is a DRAFT for review (`evidence/study_design_b16/`).
+
+**Internal red team** (same operator, not independent): five regressions in
+`tests_genesis/test_redteam_b16.py`. They cover family shopping, plan swap, a
+rewritten log chain, evidence extended after sealing, and v1 receipts in a crowded
+family.
+
+**Not done.**
+- Independent review of custody, fairness and study design (the phase's exit).
+- External time anchoring.
+- A Lean adapter (W08).

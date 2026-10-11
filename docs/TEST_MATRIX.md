@@ -18,6 +18,7 @@
 | Deployment and recovery (B15) | platform/lock checks (`test_deployment.py`), real-process crash injection at 14 points (`test_crash_consistency.py`), backup/restore (`test_backup_restore.py`), pin revision protocol (`test_toolchain_revision.py`), reproduction driver (`test_reproduce.py`), red team (`test_redteam_b15.py`) | commit | failure blocks R-04 |
 | Role separation (B15) | root launcher serving an unprivileged worker: peer UID, ceilings, allowlists, budget, anchored log, Lean from UID 65534 (`tests_sandbox/test_launcher.py`) | release | failure **or skip** blocks release |
 | Toolchain behaviour (B15) | 10 known-answer cases on the installed pinned tools (`tests_certificates/test_known_answers.py`) | nightly | failure blocks release |
+| Evaluator readiness (B16) | domain adapter conformance (`test_domain_adapters.py`), DEV calibration (`test_calibration.py`), analysis plan v2 and power (`test_analysis_v2.py`), custody flow with v3 receipts, judge, registration log and preflight (`test_evaluator_readiness.py`), red team (`test_redteam_b16.py`) | commit | failure blocks sealed use |
 | Requirements ledger | every spec section, roadmap item and catalogue entry has a disposition with resolvable tests (`test_ledger.py`) | commit | must pass |
 
 Run: `python3 scripts/run_test_matrix.py --profile commit|nightly|release --report out.json`.

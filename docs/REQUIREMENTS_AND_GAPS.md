@@ -84,7 +84,9 @@ B13 and raised R-03 and R-04. B14 repaired R-01..R-03 (and eleven further
 internal red-team findings), but **every label below is pending independent
 acceptance**, and P0 cannot be accepted while R-04 (supported deployment) is open.
 B15 built and tested on one host everything R-04 asks for that does not need a
-registry, PyPI or a second machine; those three remain.
+registry, PyPI or a second machine; those three remain. B16 built the evaluator
+side (domain contracts, DEV calibration, preregistered statistics, custody records);
+its exit requires independent review of custody, fairness and study design.
 
 - **ENGINEERING_COMPLETE_P0** — builder's assessment only. Blocked on R-04's
   outstanding parts (second-machine run of `deployment/reproduce.sh`, image

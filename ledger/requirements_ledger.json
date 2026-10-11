@@ -542,6 +542,7 @@
     "decision": "PENDING_INDEPENDENT_ACCEPTANCE"
    },
    "code": [
+    "src/genesis/domains.py",
     "src/genesis/models.py",
     "src/genesis/graphs.py"
    ],
@@ -554,13 +555,14 @@
    "local_execution": "TESTS_EXECUTED_IN_MATRIX",
    "owner": "research implementer",
    "remaining": [
-    "DomainAdapter contract (W05)",
+    "Lean domain adapter (W08)",
     "faithful formalization of natural-language statements (W17)"
    ],
    "scientific_efficacy": "N/A",
-   "scope": "task contracts for two graph domains; formalization is fixed, not faithful-formalization research",
+   "scope": "task contracts for two graph domains through the DomainAdapter interface (parse, exposure identity, candidate/evaluator views, validity, score, certified reference, obligations, cost, families, replay); formalization is fixed, not faithful-formalization research",
    "source": "spec \u00a75.1 (p. 14)",
    "tests": [
+    "tests_genesis/test_domain_adapters.py",
     "tests_genesis/test_graphs.py"
    ],
    "title": "Stage A - contract and faithful formalization",
@@ -714,7 +716,8 @@
    "disposition": "IMPLEMENTED_BOUNDED_PENDING_AUDIT",
    "evidence": [],
    "external_blockers": [
-    "independent custodian, fresh sealed pools"
+    "independent custodian, fresh sealed pools",
+    "external time anchoring"
    ],
    "id": "SPEC-5.7",
    "implementation": "IMPLEMENTED_BOUNDED",
@@ -722,8 +725,7 @@
    "local_execution": "TESTS_EXECUTED_IN_MATRIX",
    "owner": "research implementer",
    "remaining": [
-    "retention policy after confirmation",
-    "registration log with multiplicity rule (B14-OPEN-2)"
+    "retention policy after confirmation"
    ],
    "scientific_efficacy": "NOT_TESTED",
    "scope": "sealed prospective evaluation protocol (request v3, anchor, custodian, receipts, preflight)",
@@ -1145,7 +1147,9 @@
     "decision": "PENDING_INDEPENDENT_ACCEPTANCE"
    },
    "code": [
-    "src/genesis/graphs.py"
+    "src/genesis/graphs.py",
+    "src/genesis/calibration.py",
+    "configs/dev_calibration.json"
    ],
    "disposition": "IMPLEMENTED_BOUNDED_PENDING_AUDIT",
    "evidence": [],
@@ -1155,15 +1159,14 @@
    "independent_verification": "PENDING",
    "local_execution": "TESTS_EXECUTED_IN_MATRIX",
    "owner": "research implementer",
-   "remaining": [
-    "harder informative panels"
-   ],
+   "remaining": [],
    "scientific_efficacy": "N/A",
-   "scope": "c4_host_v2 with dual checkers, exact solvers <=24 edges, SAT/DRAT beyond",
+   "scope": "c4_host_v2 with dual checkers, exact solvers <=24 edges, SAT/DRAT beyond; DEV-calibrated families with headroom (v1 panels: ceiling rate 1.0)",
    "source": "spec \u00a78.1 (p. 20)",
    "tests": [
     "tests_genesis/test_graphs.py",
-    "tests_certificates/test_sat_certificates.py"
+    "tests_certificates/test_sat_certificates.py",
+    "tests_genesis/test_calibration.py"
    ],
    "title": "c4_host_v2",
    "workstream": "W05"
@@ -1174,7 +1177,9 @@
     "decision": "PENDING_INDEPENDENT_ACCEPTANCE"
    },
    "code": [
-    "src/genesis/graphs.py"
+    "src/genesis/graphs.py",
+    "src/genesis/calibration.py",
+    "configs/dev_calibration.json"
    ],
    "disposition": "IMPLEMENTED_BOUNDED_PENDING_AUDIT",
    "evidence": [],
@@ -1185,13 +1190,14 @@
    "local_execution": "TESTS_EXECUTED_IN_MATRIX",
    "owner": "research implementer",
    "remaining": [
-    "parameters large enough to be informative"
+    "a structurally more distant domain (E5)"
    ],
    "scientific_efficacy": "NOT_TESTED",
-   "scope": "triangle_free_host_v1 transfer domain",
+   "scope": "triangle_free_host_v1 transfer domain; DEV-calibrated family (round 2)",
    "source": "spec \u00a78.2 (p. 20)",
    "tests": [
-    "tests_genesis/test_graphs.py"
+    "tests_genesis/test_graphs.py",
+    "tests_genesis/test_calibration.py"
    ],
    "title": "triangle_free_host_v1 transfer domain",
    "workstream": "W05"
@@ -3467,24 +3473,24 @@
     "decision": "PENDING_INDEPENDENT_ACCEPTANCE"
    },
    "code": [
-    "src/genesis/graphs.py"
+    "src/genesis/domains.py"
    ],
-   "disposition": "NOT_IMPLEMENTED",
+   "disposition": "IMPLEMENTED_BOUNDED_PENDING_AUDIT",
    "evidence": [],
    "external_blockers": [],
    "id": "SPEC-36.1",
-   "implementation": "NOT_IMPLEMENTED",
+   "implementation": "IMPLEMENTED_BOUNDED",
    "independent_verification": "PENDING",
    "local_execution": "TESTS_EXECUTED_IN_MATRIX",
    "owner": "research implementer",
    "remaining": [
-    "DomainAdapter protocol (W05)"
+    "Lean domain adapter (W08)"
    ],
    "scientific_efficacy": "N/A",
-   "scope": "formal DomainAdapter interface not extracted (functions exist)",
+   "scope": "DomainAdapter interface with conformance suite run against every registered adapter",
    "source": "spec \u00a736.1 (p. 39)",
    "tests": [
-    "tests_genesis/test_graphs.py"
+    "tests_genesis/test_domain_adapters.py"
    ],
    "title": "Required DomainAdapter interface",
    "workstream": "W05"
@@ -4111,9 +4117,7 @@
    "independent_verification": "PENDING",
    "local_execution": "TESTS_EXECUTED_IN_MATRIX",
    "owner": "research implementer",
-   "remaining": [
-    "multiplicity across candidates (B14-OPEN-2)"
-   ],
+   "remaining": [],
    "scientific_efficacy": "N/A",
    "scope": "signed evidence bound to the claim (kernel.receipts shared by all entry points); request facts checked against the campaign export",
    "source": "roadmap \u00a73",
@@ -4122,7 +4126,8 @@
     "tests_genesis/test_redteam_b14.py",
     "tests_genesis/test_redteam_b14_round2.py",
     "tests_genesis/test_redteam_b14_round3.py",
-    "tests_genesis/test_external_custodian.py"
+    "tests_genesis/test_external_custodian.py",
+    "tests_genesis/test_redteam_b16.py"
    ],
    "title": "signed evidence bound to the claim (kernel.receipts shared by all entry points); request facts checked against the campaign export",
    "workstream": "W02"
@@ -4568,22 +4573,26 @@
     "date": null,
     "decision": "PENDING_INDEPENDENT_ACCEPTANCE"
    },
-   "code": [],
-   "disposition": "NOT_IMPLEMENTED",
+   "code": [
+    "src/genesis/domains.py",
+    "src/genesis/calibration.py"
+   ],
+   "disposition": "IMPLEMENTED_BOUNDED_PENDING_AUDIT",
    "evidence": [],
    "external_blockers": [],
    "id": "W05",
-   "implementation": "NOT_IMPLEMENTED",
+   "implementation": "IMPLEMENTED_BOUNDED",
    "independent_verification": "PENDING",
-   "local_execution": "NOT_EXECUTED",
+   "local_execution": "TESTS_EXECUTED_IN_MATRIX",
    "owner": "research implementer",
-   "remaining": [
-    "not started in B14"
-   ],
+   "remaining": [],
    "scientific_efficacy": "N/A",
-   "scope": "workstream",
+   "scope": "workstream (B14 scope delivered; acceptance pending)",
    "source": "roadmap \u00a77-10",
-   "tests": [],
+   "tests": [
+    "tests_genesis/test_domain_adapters.py",
+    "tests_genesis/test_calibration.py"
+   ],
    "title": "Domain contracts and calibration",
    "workstream": "W05"
   },
@@ -4592,22 +4601,27 @@
     "date": null,
     "decision": "PENDING_INDEPENDENT_ACCEPTANCE"
    },
-   "code": [],
-   "disposition": "NOT_IMPLEMENTED",
+   "code": [
+    "src/genesis/custody_records.py",
+    "src/genesis/custodian.py",
+    "src/genesis/decision_record.py"
+   ],
+   "disposition": "IMPLEMENTED_BOUNDED_PENDING_AUDIT",
    "evidence": [],
    "external_blockers": [],
    "id": "W06",
-   "implementation": "NOT_IMPLEMENTED",
+   "implementation": "IMPLEMENTED_BOUNDED",
    "independent_verification": "PENDING",
-   "local_execution": "NOT_EXECUTED",
+   "local_execution": "TESTS_EXECUTED_IN_MATRIX",
    "owner": "research implementer",
-   "remaining": [
-    "not started in B14"
-   ],
+   "remaining": [],
    "scientific_efficacy": "N/A",
-   "scope": "workstream",
+   "scope": "workstream (B14 scope delivered; acceptance pending)",
    "source": "roadmap \u00a77-10",
-   "tests": [],
+   "tests": [
+    "tests_genesis/test_evaluator_readiness.py",
+    "tests_genesis/test_redteam_b16.py"
+   ],
    "title": "Independent custody and preregistration",
    "workstream": "W06"
   },
@@ -4616,22 +4630,27 @@
     "date": null,
     "decision": "PENDING_INDEPENDENT_ACCEPTANCE"
    },
-   "code": [],
-   "disposition": "NOT_IMPLEMENTED",
+   "code": [
+    "src/genesis/kernel/analysis.py",
+    "src/genesis/power.py",
+    "src/genesis/judge.py"
+   ],
+   "disposition": "IMPLEMENTED_BOUNDED_PENDING_AUDIT",
    "evidence": [],
    "external_blockers": [],
    "id": "W07",
-   "implementation": "NOT_IMPLEMENTED",
+   "implementation": "IMPLEMENTED_BOUNDED",
    "independent_verification": "PENDING",
-   "local_execution": "NOT_EXECUTED",
+   "local_execution": "TESTS_EXECUTED_IN_MATRIX",
    "owner": "research implementer",
-   "remaining": [
-    "not started in B14"
-   ],
+   "remaining": [],
    "scientific_efficacy": "N/A",
-   "scope": "workstream",
+   "scope": "workstream (B14 scope delivered; acceptance pending)",
    "source": "roadmap \u00a77-10",
-   "tests": [],
+   "tests": [
+    "tests_genesis/test_analysis_v2.py",
+    "tests_genesis/test_evaluator_readiness.py"
+   ],
    "title": "Statistics, fairness and decision rules",
    "workstream": "W07"
   },
