@@ -1,0 +1,488 @@
+{
+ "ceiling": {
+  "causality": "NOT_TESTED",
+  "improver": "NOT_TESTED",
+  "math": "OPTIMALITY_CHECKED",
+  "novelty": "UNKNOWN",
+  "replication": "NONE",
+  "utility": "NOT_TESTED"
+ },
+ "claims": [
+  {
+   "binding": null,
+   "claim_id": "lower:dev-hard-20261013-0000:32",
+   "conjecture": null,
+   "current_statement": "c4_host_v2 host dev-hard-20261013-0000 [bc94c2f57f5a036d] has a valid subgraph with 32 edges",
+   "dependencies": [
+    "a264e8ed601dad599aabf329ba8ae31e813f27bd3ceda40e56d248529ecf6f1b"
+   ],
+   "effective_levels": {
+    "causality": "NOT_TESTED",
+    "improver": "NOT_TESTED",
+    "math": "WITNESS_VALID",
+    "novelty": "UNKNOWN",
+    "replication": "NONE",
+    "utility": "NOT_TESTED"
+   },
+   "historical": {
+    "promotions": [
+     {
+      "at": "2026-10-11T01:29:42.131902+00:00",
+      "axis": "math",
+      "decision": "0be48f9eecd14ab4717a695388c05eb7e56fcf735e80393e10e0353463f4f303",
+      "level": "WITNESS_VALID",
+      "registry": null
+     }
+    ],
+    "recorded_levels": {
+     "causality": "NOT_TESTED",
+     "improver": "NOT_TESTED",
+     "math": "WITNESS_VALID",
+     "novelty": "UNKNOWN",
+     "replication": "NONE",
+     "utility": "NOT_TESTED"
+    },
+    "status": "PRODUCER_RECORDED_NOT_AUTHORITATIVE"
+   },
+   "invalidated_by": [],
+   "problem": {
+    "claim": "lower_bound",
+    "task_sha256": "bc94c2f57f5a036dfc21d2b77d6dad8a6e9a1039803cebd9ccd1b14949ba4162",
+    "value": 32
+   },
+   "requested_statement": "c4_host_v2 host dev-hard-20261013-0000 [bc94c2f57f5a036d] has a valid subgraph with 32 edges",
+   "scope": "this finite host only",
+   "statement_contract": "GENERATED_FROM_PROBLEM"
+  },
+  {
+   "binding": null,
+   "claim_id": "lower:dev-hard-20261013-0001:29",
+   "conjecture": null,
+   "current_statement": "c4_host_v2 host dev-hard-20261013-0001 [eb20a53c98c07d36] has a valid subgraph with 29 edges",
+   "dependencies": [
+    "c51b9aa820b06a1f8d0ea71b3178bca03217362384e3cff1d5e008d8dcd0170b"
+   ],
+   "effective_levels": {
+    "causality": "NOT_TESTED",
+    "improver": "NOT_TESTED",
+    "math": "WITNESS_VALID",
+    "novelty": "UNKNOWN",
+    "replication": "NONE",
+    "utility": "NOT_TESTED"
+   },
+   "historical": {
+    "promotions": [
+     {
+      "at": "2026-10-11T01:29:48.010390+00:00",
+      "axis": "math",
+      "decision": "b54d6e11c43e29aa28392b336858739529e993b72ecc8fe39cb8005572547ae9",
+      "level": "WITNESS_VALID",
+      "registry": null
+     }
+    ],
+    "recorded_levels": {
+     "causality": "NOT_TESTED",
+     "improver": "NOT_TESTED",
+     "math": "WITNESS_VALID",
+     "novelty": "UNKNOWN",
+     "replication": "NONE",
+     "utility": "NOT_TESTED"
+    },
+    "status": "PRODUCER_RECORDED_NOT_AUTHORITATIVE"
+   },
+   "invalidated_by": [],
+   "problem": {
+    "claim": "lower_bound",
+    "task_sha256": "eb20a53c98c07d360a03758d0986debef3e9fa7de4d6742737c9ed81ff58646d",
+    "value": 29
+   },
+   "requested_statement": "c4_host_v2 host dev-hard-20261013-0001 [eb20a53c98c07d36] has a valid subgraph with 29 edges",
+   "scope": "this finite host only",
+   "statement_contract": "GENERATED_FROM_PROBLEM"
+  },
+  {
+   "binding": null,
+   "claim_id": "lower:dev-hard-20261013-0001:32",
+   "conjecture": null,
+   "current_statement": "c4_host_v2 host dev-hard-20261013-0001 [eb20a53c98c07d36] has a valid subgraph with 32 edges",
+   "dependencies": [
+    "7fa0158dd89f865faad60572701b5ed8733b187022cc21b512d28e75903bae83"
+   ],
+   "effective_levels": {
+    "causality": "NOT_TESTED",
+    "improver": "NOT_TESTED",
+    "math": "WITNESS_VALID",
+    "novelty": "UNKNOWN",
+    "replication": "NONE",
+    "utility": "NOT_TESTED"
+   },
+   "historical": {
+    "promotions": [
+     {
+      "at": "2026-10-11T01:29:49.743491+00:00",
+      "axis": "math",
+      "decision": "b40b3ba9ff7695d08ee99bae4ba36ab7e2cf979deb964084390677eade899a7e",
+      "level": "WITNESS_VALID",
+      "registry": null
+     }
+    ],
+    "recorded_levels": {
+     "causality": "NOT_TESTED",
+     "improver": "NOT_TESTED",
+     "math": "WITNESS_VALID",
+     "novelty": "UNKNOWN",
+     "replication": "NONE",
+     "utility": "NOT_TESTED"
+    },
+    "status": "PRODUCER_RECORDED_NOT_AUTHORITATIVE"
+   },
+   "invalidated_by": [],
+   "problem": {
+    "claim": "lower_bound",
+    "task_sha256": "eb20a53c98c07d360a03758d0986debef3e9fa7de4d6742737c9ed81ff58646d",
+    "value": 32
+   },
+   "requested_statement": "c4_host_v2 host dev-hard-20261013-0001 [eb20a53c98c07d36] has a valid subgraph with 32 edges",
+   "scope": "this finite host only",
+   "statement_contract": "GENERATED_FROM_PROBLEM"
+  },
+  {
+   "binding": null,
+   "claim_id": "lower:dev-hard-20261013-0002:29",
+   "conjecture": null,
+   "current_statement": "c4_host_v2 host dev-hard-20261013-0002 [c3f78dd65792115d] has a valid subgraph with 29 edges",
+   "dependencies": [
+    "fb31bed9a46019efc03064d4d2fc16e82a85e7119dd6bc4c321ec209d27bd514"
+   ],
+   "effective_levels": {
+    "causality": "NOT_TESTED",
+    "improver": "NOT_TESTED",
+    "math": "WITNESS_VALID",
+    "novelty": "UNKNOWN",
+    "replication": "NONE",
+    "utility": "NOT_TESTED"
+   },
+   "historical": {
+    "promotions": [
+     {
+      "at": "2026-10-11T01:29:52.024228+00:00",
+      "axis": "math",
+      "decision": "dde4267a2c575720c9e7486eb076758817937de5d2003534d8c0a66d9f0b40e7",
+      "level": "WITNESS_VALID",
+      "registry": null
+     }
+    ],
+    "recorded_levels": {
+     "causality": "NOT_TESTED",
+     "improver": "NOT_TESTED",
+     "math": "WITNESS_VALID",
+     "novelty": "UNKNOWN",
+     "replication": "NONE",
+     "utility": "NOT_TESTED"
+    },
+    "status": "PRODUCER_RECORDED_NOT_AUTHORITATIVE"
+   },
+   "invalidated_by": [],
+   "problem": {
+    "claim": "lower_bound",
+    "task_sha256": "c3f78dd65792115d21bb2e500fc4b71283827d6f60651e7cf29b87fc063d9476",
+    "value": 29
+   },
+   "requested_statement": "c4_host_v2 host dev-hard-20261013-0002 [c3f78dd65792115d] has a valid subgraph with 29 edges",
+   "scope": "this finite host only",
+   "statement_contract": "GENERATED_FROM_PROBLEM"
+  },
+  {
+   "binding": null,
+   "claim_id": "lower:dev-hard-20261013-0003:26",
+   "conjecture": null,
+   "current_statement": "c4_host_v2 host dev-hard-20261013-0003 [28a09ef2cdd62a62] has a valid subgraph with 26 edges",
+   "dependencies": [
+    "e39cd531e5df0513ada0039b0fa039278e6b063d34461817a9c9cb15edc9b454"
+   ],
+   "effective_levels": {
+    "causality": "NOT_TESTED",
+    "improver": "NOT_TESTED",
+    "math": "WITNESS_VALID",
+    "novelty": "UNKNOWN",
+    "replication": "NONE",
+    "utility": "NOT_TESTED"
+   },
+   "historical": {
+    "promotions": [
+     {
+      "at": "2026-10-11T01:29:52.308673+00:00",
+      "axis": "math",
+      "decision": "8fc62ddc7e1bb0516c023dbe0ee30349793b5e0f0344f65fc3c5cd642f9e0449",
+      "level": "WITNESS_VALID",
+      "registry": null
+     }
+    ],
+    "recorded_levels": {
+     "causality": "NOT_TESTED",
+     "improver": "NOT_TESTED",
+     "math": "WITNESS_VALID",
+     "novelty": "UNKNOWN",
+     "replication": "NONE",
+     "utility": "NOT_TESTED"
+    },
+    "status": "PRODUCER_RECORDED_NOT_AUTHORITATIVE"
+   },
+   "invalidated_by": [],
+   "problem": {
+    "claim": "lower_bound",
+    "task_sha256": "28a09ef2cdd62a62c496b864a731366ddc660035c07ec25227ac0c0a35178c7d",
+    "value": 26
+   },
+   "requested_statement": "c4_host_v2 host dev-hard-20261013-0003 [28a09ef2cdd62a62] has a valid subgraph with 26 edges",
+   "scope": "this finite host only",
+   "statement_contract": "GENERATED_FROM_PROBLEM"
+  },
+  {
+   "binding": null,
+   "claim_id": "lower:dev-hard-20261013-0003:27",
+   "conjecture": null,
+   "current_statement": "c4_host_v2 host dev-hard-20261013-0003 [28a09ef2cdd62a62] has a valid subgraph with 27 edges",
+   "dependencies": [
+    "bb9582ea4e825fbb98bbc6320153d18db089e56d8149710819bacd526419254b"
+   ],
+   "effective_levels": {
+    "causality": "NOT_TESTED",
+    "improver": "NOT_TESTED",
+    "math": "WITNESS_VALID",
+    "novelty": "UNKNOWN",
+    "replication": "NONE",
+    "utility": "NOT_TESTED"
+   },
+   "historical": {
+    "promotions": [
+     {
+      "at": "2026-10-11T01:29:54.596308+00:00",
+      "axis": "math",
+      "decision": "ca6458a4536566dec6d9524a71ab0837fbed336cf486be152e38a54d1111582c",
+      "level": "WITNESS_VALID",
+      "registry": null
+     }
+    ],
+    "recorded_levels": {
+     "causality": "NOT_TESTED",
+     "improver": "NOT_TESTED",
+     "math": "WITNESS_VALID",
+     "novelty": "UNKNOWN",
+     "replication": "NONE",
+     "utility": "NOT_TESTED"
+    },
+    "status": "PRODUCER_RECORDED_NOT_AUTHORITATIVE"
+   },
+   "invalidated_by": [],
+   "problem": {
+    "claim": "lower_bound",
+    "task_sha256": "28a09ef2cdd62a62c496b864a731366ddc660035c07ec25227ac0c0a35178c7d",
+    "value": 27
+   },
+   "requested_statement": "c4_host_v2 host dev-hard-20261013-0003 [28a09ef2cdd62a62] has a valid subgraph with 27 edges",
+   "scope": "this finite host only",
+   "statement_contract": "GENERATED_FROM_PROBLEM"
+  },
+  {
+   "binding": null,
+   "claim_id": "optimum:dev-hard-20261013-0000:32",
+   "conjecture": null,
+   "current_statement": "the optimum for c4_host_v2 host dev-hard-20261013-0000 [bc94c2f57f5a036d] is 32 edges",
+   "dependencies": [
+    "a3a01041720f8f021eb85dbf0753385dba5aea8798fddc26101b004c32005652"
+   ],
+   "effective_levels": {
+    "causality": "NOT_TESTED",
+    "improver": "NOT_TESTED",
+    "math": "OPTIMALITY_CHECKED",
+    "novelty": "UNKNOWN",
+    "replication": "NONE",
+    "utility": "NOT_TESTED"
+   },
+   "historical": {
+    "promotions": [
+     {
+      "at": "2026-10-11T01:29:43.876168+00:00",
+      "axis": "math",
+      "decision": "b13e6c36d46045ae5c0efd16847e66a329e9c3e8d35676e30f4c568e0095d8a1",
+      "level": "OPTIMALITY_CHECKED",
+      "registry": null
+     }
+    ],
+    "recorded_levels": {
+     "causality": "NOT_TESTED",
+     "improver": "NOT_TESTED",
+     "math": "OPTIMALITY_CHECKED",
+     "novelty": "UNKNOWN",
+     "replication": "NONE",
+     "utility": "NOT_TESTED"
+    },
+    "status": "PRODUCER_RECORDED_NOT_AUTHORITATIVE"
+   },
+   "invalidated_by": [],
+   "problem": {
+    "claim": "optimum",
+    "task_sha256": "bc94c2f57f5a036dfc21d2b77d6dad8a6e9a1039803cebd9ccd1b14949ba4162",
+    "value": 32
+   },
+   "requested_statement": "the optimum for c4_host_v2 host dev-hard-20261013-0000 [bc94c2f57f5a036d] is 32 edges",
+   "scope": "this finite host only",
+   "statement_contract": "GENERATED_FROM_PROBLEM"
+  },
+  {
+   "binding": null,
+   "claim_id": "optimum:dev-hard-20261013-0001:32",
+   "conjecture": null,
+   "current_statement": "the optimum for c4_host_v2 host dev-hard-20261013-0001 [eb20a53c98c07d36] is 32 edges",
+   "dependencies": [
+    "64eeb7bbc62883f874250e041977d01097ae35f398bb8b284582dfa5079085ed"
+   ],
+   "effective_levels": {
+    "causality": "NOT_TESTED",
+    "improver": "NOT_TESTED",
+    "math": "OPTIMALITY_CHECKED",
+    "novelty": "UNKNOWN",
+    "replication": "NONE",
+    "utility": "NOT_TESTED"
+   },
+   "historical": {
+    "promotions": [
+     {
+      "at": "2026-10-11T01:29:49.934724+00:00",
+      "axis": "math",
+      "decision": "19a327cd5fb1e1cf72ddcaf99e58e338312969e1a38cb6c974e548100a44a67c",
+      "level": "OPTIMALITY_CHECKED",
+      "registry": null
+     }
+    ],
+    "recorded_levels": {
+     "causality": "NOT_TESTED",
+     "improver": "NOT_TESTED",
+     "math": "OPTIMALITY_CHECKED",
+     "novelty": "UNKNOWN",
+     "replication": "NONE",
+     "utility": "NOT_TESTED"
+    },
+    "status": "PRODUCER_RECORDED_NOT_AUTHORITATIVE"
+   },
+   "invalidated_by": [],
+   "problem": {
+    "claim": "optimum",
+    "task_sha256": "eb20a53c98c07d360a03758d0986debef3e9fa7de4d6742737c9ed81ff58646d",
+    "value": 32
+   },
+   "requested_statement": "the optimum for c4_host_v2 host dev-hard-20261013-0001 [eb20a53c98c07d36] is 32 edges",
+   "scope": "this finite host only",
+   "statement_contract": "GENERATED_FROM_PROBLEM"
+  },
+  {
+   "binding": null,
+   "claim_id": "optimum:dev-hard-20261013-0002:29",
+   "conjecture": null,
+   "current_statement": "the optimum for c4_host_v2 host dev-hard-20261013-0002 [c3f78dd65792115d] is 29 edges",
+   "dependencies": [
+    "6cb942d0290ded0305d7211989aa269a3bc1a2154c6dab10eb4c7ed8ad361aef"
+   ],
+   "effective_levels": {
+    "causality": "NOT_TESTED",
+    "improver": "NOT_TESTED",
+    "math": "OPTIMALITY_CHECKED",
+    "novelty": "UNKNOWN",
+    "replication": "NONE",
+    "utility": "NOT_TESTED"
+   },
+   "historical": {
+    "promotions": [
+     {
+      "at": "2026-10-11T01:29:53.441757+00:00",
+      "axis": "math",
+      "decision": "b4ffea3cd11cebb5773d872e64b893b53ff04f45adaf9f3005a19701201e5a44",
+      "level": "OPTIMALITY_CHECKED",
+      "registry": null
+     }
+    ],
+    "recorded_levels": {
+     "causality": "NOT_TESTED",
+     "improver": "NOT_TESTED",
+     "math": "OPTIMALITY_CHECKED",
+     "novelty": "UNKNOWN",
+     "replication": "NONE",
+     "utility": "NOT_TESTED"
+    },
+    "status": "PRODUCER_RECORDED_NOT_AUTHORITATIVE"
+   },
+   "invalidated_by": [],
+   "problem": {
+    "claim": "optimum",
+    "task_sha256": "c3f78dd65792115d21bb2e500fc4b71283827d6f60651e7cf29b87fc063d9476",
+    "value": 29
+   },
+   "requested_statement": "the optimum for c4_host_v2 host dev-hard-20261013-0002 [c3f78dd65792115d] is 29 edges",
+   "scope": "this finite host only",
+   "statement_contract": "GENERATED_FROM_PROBLEM"
+  },
+  {
+   "binding": null,
+   "claim_id": "optimum:dev-hard-20261013-0003:27",
+   "conjecture": null,
+   "current_statement": "the optimum for c4_host_v2 host dev-hard-20261013-0003 [28a09ef2cdd62a62] is 27 edges",
+   "dependencies": [
+    "8e621f11a03c4a30c3300917d3b445de1a62771141d2eb3f5765374996e2bb5b"
+   ],
+   "effective_levels": {
+    "causality": "NOT_TESTED",
+    "improver": "NOT_TESTED",
+    "math": "OPTIMALITY_CHECKED",
+    "novelty": "UNKNOWN",
+    "replication": "NONE",
+    "utility": "NOT_TESTED"
+   },
+   "historical": {
+    "promotions": [
+     {
+      "at": "2026-10-11T01:29:54.826947+00:00",
+      "axis": "math",
+      "decision": "16f7f787f985ac21b5745ac52555094e3cb1bd0c1bf3ab45bfc47d7a95c81324",
+      "level": "OPTIMALITY_CHECKED",
+      "registry": null
+     }
+    ],
+    "recorded_levels": {
+     "causality": "NOT_TESTED",
+     "improver": "NOT_TESTED",
+     "math": "OPTIMALITY_CHECKED",
+     "novelty": "UNKNOWN",
+     "replication": "NONE",
+     "utility": "NOT_TESTED"
+    },
+    "status": "PRODUCER_RECORDED_NOT_AUTHORITATIVE"
+   },
+   "invalidated_by": [],
+   "problem": {
+    "claim": "optimum",
+    "task_sha256": "28a09ef2cdd62a62c496b864a731366ddc660035c07ec25227ac0c0a35178c7d",
+    "value": 27
+   },
+   "requested_statement": "the optimum for c4_host_v2 host dev-hard-20261013-0003 [28a09ef2cdd62a62] is 27 edges",
+   "scope": "this finite host only",
+   "statement_contract": "GENERATED_FROM_PROBLEM"
+  }
+ ],
+ "evaluated_at": "2026-10-11T01:31:28.497917+00:00",
+ "note": "effective_levels are re-derived from the evidence graph at export; historical.recorded_levels are as originally granted",
+ "promotion_allowed": false,
+ "registry": {
+  "available": false,
+  "problems": [
+   "research process runs as root; external control cannot be established",
+   "missing or symlinked trust file",
+   "missing or symlinked trust file",
+   "missing or symlinked trust file",
+   "trust-root ancestor /etc is controlled by the research account"
+  ],
+  "root_key_sha256": null
+ },
+ "revocation_head": "bb007b5b5b335b3efc387f45bb9c8050ebfdd55206ab64bae7614413eac63206",
+ "schema": "genesis-claims-v2"
+}

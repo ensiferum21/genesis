@@ -1,0 +1,17 @@
+{"step": 1, "action": "initialize campaign and validate config", "phase": "VALIDATED_CONFIG", "evidence": "L0 only"}
+{"step": 2, "action": "load DEV tasks and contracts", "tasks": 32}
+{"step": 3, "action": "run baselines", "comparisons": [{"claim": "DEV_ONLY", "confirmation_p_value": null, "exploratory_sign_p": 0.5, "family_deltas": {"bipartite": 0, "erdos_dense": 1}, "family_sensitivity_p": 0.5, "losses": 0, "n": 4, "ties": 3, "wins": 1}, {"claim": "DEV_ONLY", "confirmation_p_va
+{"step": 8, "action": "causal comparison (DEV ablation/placebo)", "controls": [{"ablation_loss": 0, "candidate_gain": 0, "causal_claim_supported": false, "placebo_delta": 0, "status": "DEV_INTERVENTION_DIAGNOSTIC"}, {"ablation_loss": 0, "candidate_gain": 0, "causal_claim_supported": false, "placebo_
+{"step": 10, "action": "freeze selected successor", "phase": "CANDIDATE_FROZEN", "request": "81890e0ffe2f141a"}
+{"step": 4, "action": "diagnose gap", "hypotheses": ["SEARCH_POLICY_LIMITED", "REPRESENTATION_LIMITED"], "next_experiment": "more_rounds"}
+{"step": 5, "action": "spawn bounded worlds", "worlds": {"7c8a5613": "RETIRED", "e717bd4c": "RETIRED", "074e6a73": "DORMANT"}}
+{"step": 6, "action": "builder/barrier execute (barrier_escape macro under grants)", "funded": [6, 5, 4]}
+{"step": 7, "action": "independent check", "optimality_checked": 4, "of": 4}
+{"step": 7, "action": "formal check of one witness (pinned Lean, sandboxed)", "lean": "CHECKED", "axioms": []}
+{"step": 9, "action": "compile useful mechanism", "status": "COMPILED", "evidence": "DEV_ONLY"}
+{"step": 15, "action": "meta-analysis", "calibration_error": 0.7443485447586109, "meta_gap_candidates": [[], ["dev-hard-20261013-0002", "dev-hard-20261013-0003"], []]}
+{"step": 11, "action": "leak scan / registration (custodian-built exposure registry, salted panel commitment)", "exposure_graphs": 148, "roles": "FIXTURE"}
+{"step": 12, "action": "execute sealed panel (fixture operator, hard CONFIRM hosts, SAT-certified optima)", "rows": 12, "wins": 0, "losses": 0, "ties": 3, "outcome": "NOT_SUPPORTED"}
+{"step": 13, "action": "independent judge (signed receipts verified against the role registry)", "phases": [["OK", {"from": "CANDIDATE_FROZEN", "to": "LEAK_SCAN_PASSED"}], ["OK", {"from": "LEAK_SCAN_PASSED", "to": "SEALED_RUNNING"}], ["OK", {"from": "SEALED_RUNNING", "to": "JUDGED"}], ["PHASE", "JUD
+{"step": 14, "action": "release or reject \u2014 NOT PERFORMED (needs an external release authority)", "preflight": "BLOCKED", "reasons": ["preregistered superiority not supported (outcome NOT_SUPPORTED)", "custody independence not verified", "private evidence replay not verified", "formal replay no
+wrote /tmp/genesis-b15-e2e/run/walkthrough.md
