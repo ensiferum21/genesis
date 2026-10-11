@@ -8,6 +8,7 @@ dirty tree so the checkpoint always corresponds to one commit.
 import argparse
 import hashlib
 import json
+import os
 from datetime import datetime, timezone
 from importlib import metadata
 from pathlib import Path
@@ -29,12 +30,16 @@ def sha256(data):
 
 
 def _lock_check():
-    sys.path.insert(0, str(ROOT / 'src'))
-    from genesis.deployment import check_lock
+    """Run the dependency check in a fresh interpreter with a private bytecode cache, as the
+    supported runtime does (site-packages bytecode is never trusted; B15-REV-01)."""
+    with tempfile.TemporaryDirectory(prefix='genesis-pycache-') as cache:
+        env = dict(os.environ, PYTHONPATH=str(ROOT / 'src'), PYTHONPYCACHEPREFIX=cache)
+        proc = subprocess.run([sys.executable, str(ROOT / 'scripts' / 'environment_lock.py'), '--check'],
+                              capture_output=True, text=True, env=env)
     try:
-        return check_lock()
-    except (OSError, ValueError) as exc:
-        return {'ok': False, 'problems': [f'{type(exc).__name__}: {exc}']}
+        return json.loads(proc.stdout)
+    except ValueError:
+        return {'ok': False, 'problems': [proc.stderr[-500:]]}
 
 
 def environment():

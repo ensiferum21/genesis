@@ -30,9 +30,15 @@ OPTIONAL = {
 }
 
 
+PYCACHE = None
+
+
 def run_suite(name, directory, timeout):
     start = time.monotonic()
     env = dict(os.environ, PYTHONPATH=str(ROOT / 'src'), PYTHONHASHSEED='0')
+    # Site-packages bytecode is never trusted: each suite compiles from verified source into a
+    # private cache (B15-REV-01; see genesis.deployment.bytecode_problems).
+    env['PYTHONPYCACHEPREFIX'] = PYCACHE
     proc = subprocess.run([sys.executable, '-W', 'ignore', '-m', 'unittest', 'discover', '-v',
                            '-s', directory, '-t', '.'], cwd=ROOT, env=env,
                           capture_output=True, text=True, timeout=timeout)
@@ -66,6 +72,9 @@ def main(argv=None):
                              'release adds the sandbox escape suite (all suites)')
     parser.add_argument('--timeout', type=int, default=3600)
     args = parser.parse_args(argv)
+    global PYCACHE
+    import tempfile
+    PYCACHE = tempfile.mkdtemp(prefix='genesis-pycache-')      # created 0700 by mkdtemp
     suites = dict(SUITES)
     for name, spec in OPTIONAL.items():
         if (ROOT / spec[0]).is_dir():

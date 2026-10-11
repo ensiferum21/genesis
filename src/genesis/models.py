@@ -17,6 +17,8 @@ class GraphTask(StrictModel):
 
     @model_validator(mode='after')
     def simple(self):
+        if not (self.task_id.isprintable() and self.family.isprintable()):
+            raise ValueError('task_id and family must be printable single-line labels')
         if any(not 0 <= u < v < self.n for u,v in self.edges):
             raise ValueError('edges must be ordered endpoints of a simple graph')
         if tuple(sorted(set(self.edges))) != self.edges:

@@ -103,7 +103,9 @@ class F01(unittest.TestCase):
         self.assertTrue(c['current_statement'].endswith('has a valid subgraph with 0 edges'))
         self.assertTrue(c['conjecture'].startswith(MARK) and 'the optimum' in c['conjecture'])
         report = report_of(bundle)
-        self.assertIn('Established: c4_host_v2 host path4', report)
+        # B15-REV-02: statements are rendered as literal code spans.
+        self.assertIn('Established: `c4_host_v2 host path4', report)
+        self.assertNotIn('Established: `the optimum', report)
         self.assertNotIn('Established: the optimum', report)
         self.assertTrue(verify_bundle(bundle)['ok'])
         # A producer that promotes the conjecture to the asserted statement is rejected.

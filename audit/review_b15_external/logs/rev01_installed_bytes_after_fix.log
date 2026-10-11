@@ -1,0 +1,29 @@
+== rev01_installed_bytes (reviewer's script, legacy fingerprint format) after fix
+{
+  "before": {
+    "ok": false,
+    "problems": [
+      "reviewprobe: fingerprint has no per-file manifest (regenerate the lock)",
+      "reviewprobe: reviewprobe is imported from /tmp/tmp3aruecw7/site/reviewprobe/__init__.py, a file the locked distribution does not own",
+      "fingerprints do not record start-up hooks (regenerate the lock)"
+    ],
+    "locked": 1
+  },
+  "after_file_change": {
+    "ok": false,
+    "problems": [
+      "reviewprobe: installed bytes differ from the locked content",
+      "reviewprobe: fingerprint has no per-file manifest (regenerate the lock)",
+      "reviewprobe: reviewprobe is imported from /tmp/tmp3aruecw7/site/reviewprobe/__init__.py, a file the locked distribution does not own",
+      "fingerprints do not record start-up hooks (regenerate the lock)"
+    ],
+    "locked": 1
+  },
+  "imported_value": 999
+}
+Traceback (most recent call last):
+  File "/home/claude/genesis/audit/review_b15_external/rev01_installed_bytes.py", line 41, in <module>
+    assert before['ok'] and after['ok'] and reviewprobe.VALUE == 999
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError
+exit=1

@@ -4,9 +4,15 @@ The supported platform is data (deployment/SUPPORTED_PLATFORM.json). This module
 checks a host against it and checks the running Python environment against the
 dependency lock. It reports what it observed; it never "fixes" a host.
 
-Lock fingerprints use the wheel's own file hashes from each RECORD, excluding
-console scripts (their shebang names the local interpreter) and installer
-metadata, so the same wheel gives the same fingerprint on any host.
+The lock fingerprints hold a per-file manifest (path, size, SHA-256) of every
+locked distribution's installed bytes, taken when the lock is written and only if
+those bytes agree with each wheel's RECORD. The check re-reads the files on disk
+(B15-REV-01: it used to hash RECORD's own strings). Excluded, explicitly: console
+scripts outside site-packages (their shebang names the local interpreter) and the
+installer-written dist-info files in EXCLUDED_DIST_INFO. Bytecode in site-packages
+is never deserialized here; it must be inert (a private PYTHONPYCACHEPREFIX).
+Wheel archive hashes are a separate stage and are not pinned here (PyPI was
+unreachable from the build host).
 """
 import hashlib
 import importlib.metadata as metadata
@@ -25,7 +31,15 @@ SPEC_PATH = REPO / 'deployment' / 'SUPPORTED_PLATFORM.json'
 LOCK_PATH = REPO / 'requirements.lock'
 FINGERPRINTS_PATH = REPO / 'environment' / 'lock_fingerprints.json'
 LOCK_SCHEMA = 'genesis-lock-v2'
-_SKIP_RECORD = {'RECORD', 'INSTALLER', 'REQUESTED', 'direct_url.json', 'uv_cache.json', 'uv_build.json'}
+FINGERPRINT_SCHEMA = 'genesis-lock-fingerprints-v2'
+# Installer-written dist-info files: they are not wheel content, so they are not compared.
+# Everything else listed in RECORD, including native libraries and package data, is.
+EXCLUDED_DIST_INFO = {'RECORD': 'cannot contain its own hash',
+                      'INSTALLER': 'names the installing tool',
+                      'REQUESTED': 'marks a direct request to the installer',
+                      'direct_url.json': 'records where the installer obtained the wheel'}
+EXCLUDED_OUTSIDE = 'console script outside site-packages: its shebang names the local interpreter'
+STARTUP_HOOK_NAMES = ('sitecustomize.py', 'usercustomize.py')
 
 
 def _norm(name):
@@ -60,17 +74,93 @@ def lock_closure(roots=None):
     return dict(sorted(seen.items()))
 
 
+# ---------------------------------------------------------------- installed bytes (B15-REV-01)
+
+_hash_cache = {}
+
+
+def _file_sha256(path):
+    """SHA-256 of a file's actual bytes, cached per (path, inode, size, mtime) within a process."""
+    st = os.stat(path, follow_symlinks=False)
+    key = (str(path), st.st_ino, st.st_size, st.st_mtime_ns)
+    if key not in _hash_cache:
+        h = hashlib.sha256()
+        with open(path, 'rb') as f:
+            for chunk in iter(lambda: f.read(1 << 20), b''):
+                h.update(chunk)
+        _hash_cache[key] = h.hexdigest()
+    return _hash_cache[key], st.st_size
+
+
+def _record_rows(dist):
+    import csv
+    import io
+    text = dist.read_text('RECORD') or ''
+    return [tuple(row) for row in csv.reader(io.StringIO(text)) if row and len(row) == 3]
+
+
+def _unsafe(path):
+    parts = path.split('/')
+    return path.startswith('/') or '\\' in path or any(p in ('', '.', '..') for p in parts)
+
+
+def record_entries(dist):
+    """(verifiable {path: (algorithm, expected hex, size)}, excluded [{path, reason}], problems) from RECORD."""
+    import base64
+    files, excluded, problems = {}, [], []
+    for path, h, size in _record_rows(dist):
+        name = path.rsplit('/', 1)[-1]
+        if path.startswith('../'):
+            excluded.append({'path': path, 'reason': EXCLUDED_OUTSIDE}); continue
+        if path.split('/')[0].endswith('.dist-info') and name in EXCLUDED_DIST_INFO:
+            excluded.append({'path': path, 'reason': EXCLUDED_DIST_INFO[name]}); continue
+        if _unsafe(path):
+            problems.append(f'unsafe RECORD path {path!r}'); continue
+        if not h:
+            if '/__pycache__/' in f'/{path}' and path.endswith('.pyc'):
+                continue          # compiled at install time: inert under a private PYTHONPYCACHEPREFIX
+            problems.append(f'RECORD entry without a hash: {path}'); continue
+        algo, _, b64 = h.partition('=')
+        if algo != 'sha256':
+            problems.append(f'RECORD hash algorithm {algo!r} for {path}'); continue
+        try:
+            hexd = base64.urlsafe_b64decode(b64 + '=' * (-len(b64) % 4)).hex()
+        except ValueError:
+            problems.append(f'malformed RECORD hash for {path}'); continue
+        files[path] = (hexd, int(size) if size.isdigit() else None)
+    return files, excluded, problems
+
+
+def installed_manifest(dist):
+    """Per-file manifest {path: {sha256, size}} of what is installed NOW, read from the bytes on
+    disk; at lock time it must also agree with the wheel's RECORD (otherwise refuse to lock)."""
+    base = Path(dist.locate_file(''))
+    entries, excluded, problems = record_entries(dist)
+    manifest = {}
+    for path, (expected, size) in sorted(entries.items()):
+        target = base / path
+        if target.is_symlink() or not target.is_file():
+            problems.append(f'missing or not a regular file: {path}'); continue
+        actual, actual_size = _file_sha256(target)
+        if actual != expected or (size is not None and size != actual_size):
+            problems.append(f'installed bytes differ from RECORD: {path}')
+        manifest[path] = {'sha256': actual, 'size': actual_size}
+    return manifest, excluded, problems
+
+
 def content_fingerprint(dist):
-    rows = []
-    for line in (dist.read_text('RECORD') or '').splitlines():
-        parts = line.rsplit(',', 2)
-        if len(parts) != 3 or not parts[1]:
-            continue
-        path = parts[0]
-        if path.startswith('../') or path.startswith('/') or path.rsplit('/', 1)[-1] in _SKIP_RECORD:
-            continue
-        rows.append(f'{path}\t{parts[1]}')
-    return hashlib.sha256('\n'.join(sorted(rows)).encode()).hexdigest()
+    """Digest of the ACTUAL installed bytes of every verifiable file RECORD lists (a missing
+    file contributes a MISSING marker). B15-REV-01: this used to hash RECORD's strings."""
+    base = Path(dist.locate_file(''))
+    entries, _, problems = record_entries(dist)
+    rows = [f'PROBLEM\t{p}' for p in problems]
+    for path in sorted(entries):
+        target = base / path
+        if target.is_symlink() or not target.is_file():
+            rows.append(f'{path}\tMISSING')
+        else:
+            rows.append(f'{path}\t{_file_sha256(target)[0]}')
+    return hashlib.sha256('\n'.join(rows).encode()).hexdigest()
 
 
 def _top_level(dist):
@@ -86,6 +176,26 @@ def _top_level(dist):
     return sorted(n for n in names if n.isidentifier())
 
 
+def _package_dirs(manifest):
+    """Top-level directories a distribution installs into (owned code and data trees)."""
+    return sorted({p.split('/', 1)[0] for p in manifest if '/' in p and not p.split('/', 1)[0].endswith('.dist-info')})
+
+
+def _site_dirs(closure):
+    return sorted({str(Path(d.locate_file('')).resolve()) for d in closure.values() if d is not None})
+
+
+def startup_hooks(site_dirs):
+    """Files the interpreter executes or follows at start-up from these site directories:
+    every .pth file and any sitecustomize/usercustomize module."""
+    hooks = {}
+    for site in site_dirs:
+        for p in sorted(Path(site).iterdir()):
+            if p.name.endswith('.pth') or p.name in STARTUP_HOOK_NAMES:
+                hooks[str(p)] = _file_sha256(p)[0] if p.is_file() else 'NOT_A_FILE'
+    return hooks
+
+
 def render_lock(closure=None):
     closure = closure if closure is not None else lock_closure()
     missing = [n for n, d in closure.items() if d is None]
@@ -94,12 +204,24 @@ def render_lock(closure=None):
     vi = sys.version_info
     header = [f'# {LOCK_SCHEMA} python={vi.major}.{vi.minor} platform={sys.platform}-{platform.machine()}',
               '# Generated by scripts/environment_lock.py from the installed environment (transitive closure',
-              '# of pyproject dependencies). Wheel hashes are not included: PyPI was denied by the build',
-              '# host egress policy; per-wheel content fingerprints are in environment/lock_fingerprints.json.']
+              '# of pyproject dependencies). Wheel archive hashes are not included: PyPI was denied by the build',
+              '# host egress policy. environment/lock_fingerprints.json holds the per-file manifest of the',
+              '# installed bytes, which genesis platform check compares file by file.']
     body = [f'{_norm(n)}=={d.version}' for n, d in closure.items()]
-    fingerprints = {'schema': 'genesis-lock-fingerprints-v1', 'python': f'{vi.major}.{vi.minor}',
-                    'distributions': {n: {'version': d.version, 'content_sha256': content_fingerprint(d),
-                                          'top_level': _top_level(d)} for n, d in closure.items()}}
+    dists, refused = {}, []
+    for n, d in closure.items():
+        manifest, excluded, problems = installed_manifest(d)
+        refused += [f'{n}: {p}' for p in problems]
+        dists[n] = {'version': d.version, 'top_level': _top_level(d), 'files': manifest, 'excluded': excluded,
+                    'content_sha256': content_fingerprint(d)}
+    if refused:
+        raise RuntimeError('refusing to lock an environment whose installed bytes differ from the wheels: '
+                           + '; '.join(refused[:5]))
+    fingerprints = {'schema': FINGERPRINT_SCHEMA, 'python': f'{vi.major}.{vi.minor}', 'distributions': dists,
+                    'startup_hooks': startup_hooks(_site_dirs(closure)),
+                    'wheel_archives': {'status': 'NOT_PINNED',
+                                       'reason': 'PyPI denied by the build host egress policy; archive hashes '
+                                                 'must be added where the wheels can be downloaded'}}
     return '\n'.join(header + body) + '\n', fingerprints
 
 
@@ -120,8 +242,67 @@ def parse_lock(text):
     return {'python': m.group(1), 'platform': m.group(2), 'pins': pins}
 
 
-def check_lock(lock_text=None, fingerprints=None):
-    """Compare the running interpreter and imported packages with the lock."""
+def _verify_tree(base, package_dirs, owned):
+    """Every file under a distribution's directories must be owned by a locked distribution,
+    except __pycache__ bytecode of an owned source (made inert by bytecode_problems); no
+    symlinks. Catches modules dropped in for optional imports. Returns problems."""
+    problems = []
+    for top in package_dirs:
+        root = base / top
+        if not root.is_dir():
+            continue
+        for p in root.rglob('*'):
+            rel = p.relative_to(base).as_posix()
+            if p.is_symlink():
+                problems.append(f'symlink inside a locked distribution: {rel}'); continue
+            if p.is_dir() or rel in owned:
+                continue
+            if p.parent.name == '__pycache__' and p.name.endswith('.pyc'):
+                try:
+                    source = Path(importlib.util.source_from_cache(str(p)))
+                except ValueError:
+                    problems.append(f'unrecognised bytecode file {rel}'); continue
+                src_rel = source.relative_to(base).as_posix() if source.is_relative_to(base) else None
+                if src_rel not in owned:
+                    problems.append(f'bytecode without an owned source: {rel}')
+                continue
+            problems.append(f'file not owned by the locked distribution: {rel}')
+    return problems
+
+
+def bytecode_problems(site_dirs):
+    """Compiled bytecode cannot be verified without deserializing it, and Python trusts a
+    .pyc whose header matches its source. So site-packages bytecode must be INERT: the
+    interpreter must read and write bytecode under a private PYTHONPYCACHEPREFIX outside the
+    site directories (then every import compiles from the verified source)."""
+    prefix = sys.pycache_prefix
+    if not prefix:
+        return ['compiled bytecode in site-packages would be loaded unverified: run with PYTHONPYCACHEPREFIX '
+                'set to a private directory (the supported runtime does)']
+    p = Path(prefix).resolve()
+    out = []
+    if any(p.is_relative_to(Path(s)) for s in site_dirs):
+        out.append('PYTHONPYCACHEPREFIX lies inside a site directory')
+    for q in [p, *p.parents]:
+        if q.exists():
+            st = q.stat()
+            if q == p and st.st_uid != os.geteuid():
+                out.append('PYTHONPYCACHEPREFIX is not owned by this account')
+            if st.st_mode & 0o002 and not st.st_mode & 0o1000:
+                out.append(f'PYTHONPYCACHEPREFIX path {q} is world-writable without the sticky bit')
+            if q == p and st.st_mode & 0o022:
+                out.append('PYTHONPYCACHEPREFIX is group- or world-writable')
+            break
+    return out
+
+
+def check_lock(lock_text=None, fingerprints=None, *, bytecode=True):  # noqa: C901
+    """Compare the running interpreter and the INSTALLED BYTES of every locked distribution
+    with the lock (B15-REV-01): each file of the per-file manifest must exist with the same
+    size and SHA-256; RECORD may not list files the manifest lacks; no unowned file may sit
+    in a distribution's directories; site-packages bytecode must be inert (private
+    PYTHONPYCACHEPREFIX); each top-level import must resolve to a file the distribution owns; start-up
+    hooks (.pth, sitecustomize) must be the recorded ones."""
     lock = parse_lock(lock_text if lock_text is not None else LOCK_PATH.read_text())
     fps = fingerprints if fingerprints is not None else json.loads(FINGERPRINTS_PATH.read_text())
     problems = []
@@ -132,27 +313,75 @@ def check_lock(lock_text=None, fingerprints=None):
         problems.append('fingerprints were generated for a different python than the lock')
     if set(fps.get('distributions', {})) != set(lock['pins']):
         problems.append('fingerprints and lock name different distributions')
+    found = {}
+    owned_by_base = {}          # files owned by ANY locked distribution, per site directory
+    for name in lock['pins']:
+        try:
+            d = metadata.distribution(name)
+        except metadata.PackageNotFoundError:
+            continue
+        owned_by_base.setdefault(Path(d.locate_file('')).resolve(), set()).update(
+            (fps.get('distributions', {}).get(name, {}).get('files') or {}))
     for name, version in lock['pins'].items():
         try:
             dist = metadata.distribution(name)
         except metadata.PackageNotFoundError:
             problems.append(f'{name}: not installed'); continue
+        found[name] = dist
         if dist.version != version:
             problems.append(f'{name}: installed {dist.version} != locked {version}'); continue
         fp = fps.get('distributions', {}).get(name, {})
         if fp.get('version') != version:
-            problems.append(f'{name}: fingerprint is for version {fp.get("version")}')
-        elif content_fingerprint(dist) != fp.get('content_sha256'):
-            problems.append(f'{name}: installed files differ from the locked wheel content')
+            problems.append(f'{name}: fingerprint is for version {fp.get("version")}'); continue
         base = Path(dist.locate_file('')).resolve()
+        if content_fingerprint(dist) != fp.get('content_sha256'):
+            problems.append(f'{name}: installed bytes differ from the locked content')
+        manifest = fp.get('files')
+        if manifest is None:
+            problems.append(f'{name}: fingerprint has no per-file manifest (regenerate the lock)')
+            manifest = {}
+        else:
+            entries, _, record_problems = record_entries(dist)
+            problems += [f'{name}: {p}' for p in record_problems]
+            for path in sorted(set(entries) - set(manifest)):
+                problems.append(f'{name}: RECORD lists a file the lock does not: {path}')
+            for path, want in sorted(manifest.items()):
+                if _unsafe(path):
+                    problems.append(f'{name}: unsafe manifest path {path!r}'); continue
+                target = base / path
+                if target.is_symlink() or not target.is_file():
+                    problems.append(f'{name}: missing installed file {path}'); continue
+                if not target.resolve().is_relative_to(base):
+                    problems.append(f'{name}: {path} resolves outside the site directory'); continue
+                actual, size = _file_sha256(target)
+                if size != want['size'] or actual != want['sha256']:
+                    problems.append(f'{name}: installed file changed: {path}')
+            problems += [f'{name}: {p}' for p in
+                         _verify_tree(base, _package_dirs(manifest), owned_by_base.get(base, set()))]
         for top in fp.get('top_level', []):
             spec = importlib.util.find_spec(top)
-            origin = spec and (spec.origin if spec.origin not in (None, 'namespace') else
-                               next(iter(spec.submodule_search_locations or []), None))
-            if origin is None:
-                problems.append(f'{name}: top-level {top} not importable')
-            elif not Path(origin).resolve().is_relative_to(base):
-                problems.append(f'{name}: {top} is imported from {origin}, not from the locked distribution')
+            if spec is None:
+                problems.append(f'{name}: top-level {top} not importable'); continue
+            if spec.origin not in (None, 'namespace'):
+                origin = Path(spec.origin).resolve()
+                rel = origin.relative_to(base).as_posix() if origin.is_relative_to(base) else None
+                if rel not in manifest:
+                    problems.append(f'{name}: {top} is imported from {spec.origin}, a file the locked '
+                                    f'distribution does not own')
+            else:
+                for loc in spec.submodule_search_locations or []:
+                    if not Path(loc).resolve().is_relative_to(base):
+                        problems.append(f'{name}: namespace {top} includes {loc}, outside the locked distribution')
+    if bytecode:
+        problems += bytecode_problems(_site_dirs(found))
+    recorded_hooks = fps.get('startup_hooks')
+    if recorded_hooks is None:
+        problems.append('fingerprints do not record start-up hooks (regenerate the lock)')
+    else:
+        current = startup_hooks(_site_dirs(found))
+        for path in sorted(set(current) | set(recorded_hooks)):
+            if current.get(path) != recorded_hooks.get(path):
+                problems.append(f'start-up hook differs from the lock: {path}')
     # pyproject ranges must admit the pins (one source of truth for versions).
     from packaging.requirements import Requirement
     deps, requires_python = project_dependencies()

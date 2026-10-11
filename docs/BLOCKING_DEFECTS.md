@@ -98,3 +98,15 @@ New residual:
 - **B15-OPEN-1.** A custodian who never calls `recover` leaves a registered
   anchor without a receipt. That is visible only to someone who holds the
   anchor (W06: a published registration log).
+
+## External review of B15_R1 (B15_R2)
+
+The review is in `audit/review_b15_external/`. It confirmed that the B14 F-01 repair
+holds, and it reproduced two new defects on `eb1ae3c`.
+
+| ID | Defect | Status |
+|---|---|---|
+| B15-REV-01 | The dependency check hashed RECORD's strings, never the installed files, so a modified importable package passed. | REPAIRED IN B15_R2, PENDING RE-REVIEW. Installed bytes are verified file by file, along with ownership, bytecode, import resolution and start-up hooks. |
+| B15-REV-02 | A claim identifier containing newlines and Markdown injected an `Established` line into report.md, and the bundle still verified. | REPAIRED IN B15_R2, PENDING RE-REVIEW. Identifiers and texts are validated at the kernel, every field is rendered as a literal code span, and the verifier checks report structure. |
+
+The review keeps GV0 and R-04 open. Wheel archive hashes still need PyPI access.

@@ -1,0 +1,10 @@
+== rev02_claim_id_injection after fix (working tree on eb1ae3c)
+    kernel.create_claim(claim_id, kernel.math_statement(problem),
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                        'this finite host only', [node], problem=problem)
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/claude/genesis/src/genesis/kernel/evidence.py", line 423, in create_claim
+    raise ValueError('claim identifier must be one printable line (no newline or control characters, '
+                     'at most 200 characters)')
+ValueError: claim identifier must be one printable line (no newline or control characters, at most 200 characters)
+exit=1

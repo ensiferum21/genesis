@@ -25,6 +25,7 @@ chronology or a later feed from another party can expose that.
 import hashlib
 import io
 import json
+import re
 from importlib import metadata
 from pathlib import Path
 import platform
@@ -119,29 +120,124 @@ def derived_files(s, *, trust_root=None, head=None):
     return files
 
 
+REPORT_TITLE = '# Claims as currently established'
+REPORT_INTRO = ('Generated from CLAIMS.json. Each statement below is asserted only at the levels shown beside it; '
+                'items marked NOT ESTABLISHED are requests or conjectures, not results. Text in code spans is '
+                'literal data recorded by the producer, never report structure.')
+
+
+def md_literal(text):
+    """Render producer-controlled text as ONE literal inline code span (B15-REV-02).
+
+    Control, separator and format characters (newlines included) become visible \\u escapes,
+    so the value cannot open a new line, heading or list item; the backtick fence is longer
+    than any backtick run inside, so the value cannot close the span early."""
+    shown = ''.join(_escape_char(ch) for ch in str(text))
+    run = max((len(m) for m in re.findall(r'`+', shown)), default=0)
+    fence = '`' * (run + 1)
+    pad = ' ' if shown.startswith('`') or shown.endswith('`') or not shown.strip() else ''
+    return f'{fence}{pad}{shown}{pad}{fence}'
+
+
+def _escape_char(ch):
+    # Backslash is escaped too, so the encoding is injective and _md_unliteral inverts it exactly.
+    if ch == '\\':
+        return '\\\\'
+    if ch.isprintable():
+        return ch
+    return f'\\u{ord(ch):04x}' if ord(ch) <= 0xFFFF else f'\\U{ord(ch):08x}'
+
+
+def _md_unliteral(span):
+    m = re.fullmatch(r'(`+)( ?)(.*?)\2\1', span)
+    if not m or re.search(r'`{%d}' % len(m.group(1)), m.group(3)):
+        return None
+
+    def back(x):
+        s = x.group(1)
+        return '\\' if s == '\\' else chr(int(s[1:], 16))
+    inner = m.group(3)
+    if re.sub(r'\\(\\|u[0-9a-f]{4}|U[0-9a-f]{8})', '', inner).count('\\'):
+        return None                       # a lone backslash cannot come from md_literal
+    return re.sub(r'\\(\\|u[0-9a-f]{4}|U[0-9a-f]{8})', back, inner)
+
+
 def render_report(claims):
     """report.md is DERIVED from the per-claim current wording, never free prose: every
     sentence that asserts a result is one claim's own established statement, beside that
     claim's effective levels. Requested-but-unproved propositions appear only as marked
-    conjectures. (B14-OPEN-5 and external review F-01.)"""
-    lines = ['# Claims as currently established', '',
-             'Generated from CLAIMS.json. Each statement below is asserted only at the levels shown beside it; '
-             'items marked NOT ESTABLISHED are requests or conjectures, not results.', '']
+    conjectures. Every producer-controlled field (identifier, statements, scope) is a
+    literal code span. (B14-OPEN-5, external review F-01, B15-REV-02.)"""
+    lines = [REPORT_TITLE, '', REPORT_INTRO, '']
     for c in claims['claims']:
         levels = ', '.join(f'{a} {v}' for a, v in sorted(c['effective_levels'].items()) if a != 'invalidated')
-        lines.append(f"## {c['claim_id']}")
+        lines.append(f"## Claim {md_literal(c['claim_id'])}")
         lines.append('')
         if c['current_statement'] is not None:
-            lines.append(f"- Established: {c['current_statement']}")
+            lines.append(f"- Established: {md_literal(c['current_statement'])}")
         else:
             lines.append('- Established: nothing.')
         if c['conjecture'] is not None:
-            lines.append(f"- {c['conjecture']}")
-        lines.append(f"- Scope: {c['scope']}")
+            lines.append(f"- NOT ESTABLISHED (requested, unproved): {md_literal(c['requested_statement'])}")
+        lines.append(f"- Scope: {md_literal(c['scope'])}")
         lines.append(f"- Levels: {levels}{' (invalidated by revocation)' if c['effective_levels'].get('invalidated') else ''}")
         lines.append(f"- Wording contract: {c['statement_contract']}")
         lines.append('')
     return '\n'.join(lines) + '\n'
+
+
+_LEVEL_LINE = re.compile(r'- Levels: [A-Za-z_]+ [A-Z_]+(, [A-Za-z_]+ [A-Z_]+)*( \(invalidated by revocation\))?')
+
+
+def report_structure_problems(text, claims):
+    """Parse report.md WITHOUT the renderer and check its structure against CLAIMS.json:
+    exactly one block per claim, in order, every line one of the fixed forms, and every
+    asserted statement equal to that claim's current statement. Byte equality with the
+    generator alone would not catch a renderer that lets data become structure."""
+    problems = []
+    lines = text.split('\n')
+    if lines[:4] != [REPORT_TITLE, '', REPORT_INTRO, ''] or lines[-1] != '':
+        return ['report.md header or ending is not the fixed form']
+    body, blocks = lines[4:-1], []
+    for line in body:
+        if line.startswith('## '):
+            blocks.append([line])
+        elif blocks:
+            blocks[-1].append(line)
+        else:
+            problems.append('report.md has text before the first claim block')
+    if len(blocks) != len(claims['claims']):
+        problems.append(f"report.md has {len(blocks)} claim blocks for {len(claims['claims'])} claims")
+    for block, c in zip(blocks, claims['claims']):
+        cid = c['claim_id']
+        head = re.fullmatch(r'## Claim (`+ ?.*? ?`+)', block[0])
+        if not head or _md_unliteral(head.group(1)) != cid:
+            problems.append(f'report.md heading does not name claim {cid!r} literally'); continue
+        expected_kinds = ['', 'Established'] + (['NOT ESTABLISHED'] if c['conjecture'] is not None else []) + \
+            ['Scope', 'Levels', 'Wording contract', '']
+        kinds = []
+        for line in block[1:]:
+            if line == '':
+                kinds.append(''); continue
+            m = re.fullmatch(r'- (Established|NOT ESTABLISHED \(requested, unproved\)|Scope|Levels|Wording contract): (.*)',
+                             line)
+            if not m:
+                problems.append(f'report.md line outside the fixed forms in claim {cid!r}: {line[:60]!r}'); continue
+            kind, value = m.group(1).split(' (')[0], m.group(2)
+            kinds.append(kind)
+            if kind == 'Established':
+                stated = None if value == 'nothing.' else _md_unliteral(value)
+                if stated != c['current_statement']:
+                    problems.append(f'report.md asserts something other than the current statement of {cid!r}')
+            elif kind == 'NOT ESTABLISHED' and _md_unliteral(value) != c.get('requested_statement'):
+                problems.append(f'report.md conjecture of {cid!r} is not its requested statement')
+            elif kind == 'Scope' and _md_unliteral(value) != c['scope']:
+                problems.append(f'report.md scope of {cid!r} differs from CLAIMS.json')
+            elif kind == 'Levels' and not _LEVEL_LINE.fullmatch(line):
+                problems.append(f'report.md levels line of {cid!r} is malformed')
+        if kinds != expected_kinds:
+            problems.append(f'report.md block of {cid!r} does not have the fixed structure')
+    return problems
 
 
 def wording_problems(notes, claims):
@@ -408,6 +504,8 @@ def verify_bundle(path, *, trust_root=None, later_revocations=None, replay_proof
                         f = path / rel
                         if not f.is_file() or f.read_bytes() != data:
                             problems.append(f'{rel} differs from the file re-derived from the evidence store')
+                    if (path / 'report.md').is_file():
+                        problems += report_structure_problems((path / 'report.md').read_text(), recomputed)
                     stray = {r for r in present if r.split('/')[0] in ('checker_receipts', 'resource_receipts',
                                                                           'certificates')} - set(derived)
                     if stray:

@@ -32,11 +32,42 @@ The command exits 0 when the host is SUPPORTED, 2 when something is UNVERIFIED a
 
 **Dependency lock.** `requirements.lock` (format `genesis-lock-v2`) lists the full
 transitive closure of the `pyproject.toml` dependencies for Python 3.13.
-`environment/lock_fingerprints.json` holds per-wheel content hashes taken from each
-RECORD; console scripts and installer metadata are excluded. Wheel download hashes
-are missing: PyPI returned 403 from the build host's egress proxy. Regenerate with
-`scripts/environment_lock.py --write` on a host that can install the pins, and
-check with `--check`.
+
+`environment/lock_fingerprints.json` (format `genesis-lock-fingerprints-v2`) holds
+a per-file manifest of the installed bytes: path, size and SHA-256 for every file
+in each wheel's RECORD, native libraries and package data included. Only two
+kinds of file are explicitly excluded:
+
+- console scripts installed outside site-packages, because their shebang names the
+  local interpreter;
+- the installer-written dist-info files (RECORD, INSTALLER, REQUESTED and
+  direct_url.json).
+
+`--check` re-reads the files on disk and fails on any of the following:
+
+- a missing or changed file;
+- a RECORD entry the lock does not list;
+- an unowned file or symlink inside a distribution's directories;
+- a .pyc that is not the compilation of its owned source;
+- a top-level import that resolves to a file the distribution does not own;
+- a changed .pth file or sitecustomize start-up hook.
+
+Since the external review of B15_R1 (B15-REV-01), the check reads the files on
+disk; before that it hashed RECORD's own text.
+
+The check never deserializes compiled bytecode, and Python trusts any .pyc whose
+header matches its source. Site-packages bytecode is therefore required to be
+inert: the runtime must set `PYTHONPYCACHEPREFIX` to a private directory, so every
+import compiles from the verified source. The test matrix, `reproduce.py`,
+`make_checkpoint.py` and the Containerfile all do this, and the check fails when
+it is unset.
+
+Wheel archive download hashes are a separate stage and are missing: PyPI
+returned 403 from the build host's egress proxy.
+
+Regenerate the lock and fingerprints with `scripts/environment_lock.py --write` on
+a host that can install the pins. The command refuses if the installed bytes
+already disagree with RECORD.
 
 **Container.** `containers/Containerfile` targets `python:3.13-slim-bookworm`. The
 digest is still the `PIN_REQUIRED` placeholder, so the build fails until

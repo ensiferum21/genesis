@@ -12,16 +12,12 @@ from genesis import deployment as D  # noqa: E402
 from genesis import sandbox  # noqa: E402
 
 
-class _FakeDist:
-    def __init__(self, record, version='1.0'):
-        self._record, self.version = record, version
-
-    def read_text(self, name):
-        return self._record if name == 'RECORD' else None
-
-
 class Lock(unittest.TestCase):
     def setUp(self):
+        if not sys.pycache_prefix:      # the supported runtime (and the matrix) sets PYTHONPYCACHEPREFIX
+            saved = sys.pycache_prefix
+            sys.pycache_prefix = tempfile.mkdtemp(prefix='genesis-test-pycache-')
+            self.addCleanup(setattr, sys, 'pycache_prefix', saved)
         self.text = D.LOCK_PATH.read_text()
         self.fps = json.loads(D.FINGERPRINTS_PATH.read_text())
 
@@ -68,7 +64,7 @@ class Lock(unittest.TestCase):
         fps = json.loads(json.dumps(self.fps))
         fps['distributions']['networkx']['content_sha256'] = '0' * 64
         problems = D.check_lock(self.text, fps)['problems']
-        self.assertIn('networkx: installed files differ from the locked wheel content', problems)
+        self.assertIn('networkx: installed bytes differ from the locked content', problems)
 
     def test_shadowed_import_detected(self):
         fps = json.loads(json.dumps(self.fps))
@@ -81,13 +77,8 @@ class Lock(unittest.TestCase):
         problems = D.check_lock(text, self.fps)['problems']
         self.assertTrue(any('cryptography: locked 51.0.0 outside pyproject range' in p for p in problems), problems)
 
-    def test_fingerprint_ignores_scripts_and_installer(self):
-        a = _FakeDist('pkg/a.py,sha256=AAA,10\n../../bin/tool,sha256=X1,5\npkg-1.dist-info/INSTALLER,sha256=I1,4\n'
-                      'pkg-1.dist-info/RECORD,,\n')
-        b = _FakeDist('pkg/a.py,sha256=AAA,10\n../../bin/tool,sha256=X2,5\npkg-1.dist-info/INSTALLER,sha256=I2,3\n')
-        c = _FakeDist('pkg/a.py,sha256=BBB,10\n')
-        self.assertEqual(D.content_fingerprint(a), D.content_fingerprint(b))
-        self.assertNotEqual(D.content_fingerprint(a), D.content_fingerprint(c))
+    # Fingerprint exclusions are exercised on a real temporary distribution in
+    # tests_genesis/test_external_review_b15.py (B15-REV-01).
 
 
 class Host(unittest.TestCase):

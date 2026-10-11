@@ -399,3 +399,28 @@ depended on hidden state.
 
 The test now checks every shipped file instead of skipping. Evidence is in
 `audit/b15_rehearsal/`.
+
+## Batch 15, follow-up 2 (B15_R2): external review of B15_R1
+
+The review (`audit/review_b15_external/`) confirmed that the B14 F-01 repair holds
+and that the checkpoint is intact. It reproduced two new defects on `eb1ae3c`.
+
+- **B15-REV-01.** The lock check hashed RECORD's strings, not the installed files.
+  It now compares installed bytes file by file against a per-file manifest, which
+  the lock writer refuses to record if the bytes already disagree with RECORD. It
+  also rejects:
+  - RECORD entries the lock does not list;
+  - unowned files and symlinks in a distribution's directories;
+  - imports that resolve to files the distribution does not own;
+  - changed start-up hooks.
+
+  Bytecode in site-packages is never deserialized; it must be inert under a
+  private `PYTHONPYCACHEPREFIX`. The matrix, reproduction, checkpoint and
+  Containerfile all set one.
+- **B15-REV-02.** A claim identifier injected an `Established` line into report.md.
+  - Identifiers, statements, scopes and task labels must be one printable line.
+  - Report fields render as literal code spans.
+  - `verify_bundle` re-parses report.md's structure without the renderer.
+
+Regressions are in `tests_genesis/test_external_review_b15.py`, with before and
+after logs in `audit/review_b15_external/logs/`.

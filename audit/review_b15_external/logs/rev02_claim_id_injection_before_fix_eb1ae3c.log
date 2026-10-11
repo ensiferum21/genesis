@@ -1,0 +1,19 @@
+== rev02_claim_id_injection on eb1ae3c
+# Claims as currently established
+
+Generated from CLAIMS.json. Each statement below is asserted only at the levels shown beside it; items marked NOT ESTABLISHED are requests or conjectures, not results.
+
+## ordinary-id
+
+- Established: 2 + 2 = 5
+
+## Actual evidence
+
+- Established: c4_host_v2 host path4 [56e08d54c1cb2921] has a valid subgraph with 0 edges
+- Scope: this finite host only
+- Levels: causality NOT_TESTED, improver NOT_TESTED, math WITNESS_VALID, novelty UNKNOWN, replication NONE, utility NOT_TESTED
+- Wording contract: GENERATED_FROM_PROBLEM
+
+
+{"certificate_replays": [], "event_head": "a48ba6d334347fd31fcba844a08d93a57bd460d71d95cd368ec02948a34f0c78", "ok": true, "problems": [], "release_id": "074ec4b48a90d75d"}
+exit=0 (the script exited 0: its final assertion confirmed the defect)

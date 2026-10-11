@@ -419,6 +419,12 @@ class EvidenceKernel:
         `problem` = {'task_sha256', 'value'} names the exact finite problem a mathematical
         claim is about; OPTIMALITY_CHECKED requires it.
         """
+        if not R.claim_id_ok(claim_id):
+            raise ValueError('claim identifier must be one printable line (no newline or control characters, '
+                             'at most 200 characters)')
+        for name, text in (('statement', statement), ('scope', scope)):
+            if not isinstance(text, str) or not text or not text.isprintable() or len(text) > 2000:
+                raise ValueError(f'claim {name} must be one printable line')
         for d in dependencies:
             self.node(d)
         claim = {'claim_id': claim_id, 'statement': statement, 'scope': scope, 'dependencies': sorted(dependencies)}
@@ -446,7 +452,10 @@ class EvidenceKernel:
 
     def _problem_name(self, problem):
         task = self.s.get(problem['task_sha256'])  # the problem must be in the store
-        return f"{task.get('domain')} host {task.get('task_id')} [{problem['task_sha256'][:16]}]"
+        domain, task_id = task.get('domain'), task.get('task_id')
+        if not all(isinstance(x, str) and x and x.isprintable() and len(x) <= 128 for x in (domain, task_id)):
+            raise ValueError('stored task domain/task_id must be printable single-line labels')
+        return f"{domain} host {task_id} [{problem['task_sha256'][:16]}]"
 
     def math_statement(self, problem):
         """The REQUESTED proposition of a mathematical claim, generated from the stored problem so

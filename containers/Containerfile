@@ -8,7 +8,9 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
       build-essential cmake git curl ca-certificates runc && rm -rf /var/lib/apt/lists/*
 WORKDIR /opt/genesis
 COPY requirements.lock ./
-RUN python -m pip install --no-cache-dir -r requirements.lock
+RUN python -m pip install --no-cache-dir --no-compile -r requirements.lock
+# Site-packages bytecode is never trusted (B15-REV-01): compile from verified source into a private cache.
+ENV PYTHONPYCACHEPREFIX=/var/cache/genesis/pycache
 COPY environment/lock_fingerprints.json environment/
 COPY toolchain/ toolchain/
 ENV GENESIS_TOOLCHAIN=/opt/toolchain

@@ -1,0 +1,20 @@
+== rev01_after_fix_with_v2_lock (working tree on eb1ae3c)
+{
+  "before": {
+    "ok": true,
+    "problems": [],
+    "locked": 1
+  },
+  "after_file_change": {
+    "ok": false,
+    "problems": [
+      "reviewprobe: installed bytes differ from the locked content",
+      "reviewprobe: installed file changed: reviewprobe/__init__.py",
+      "reviewprobe: bytecode does not match its source: reviewprobe/__pycache__/__init__.cpython-313.pyc"
+    ],
+    "locked": 1
+  },
+  "imported_value": 999
+}
+REPAIRED: a module changed without touching RECORD fails the dependency check
+exit=0

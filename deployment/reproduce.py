@@ -152,7 +152,7 @@ def main(argv=None):
         toolchain = a.work / 'toolchain' if a.build_toolchain else a.toolchain.resolve()
         env = {'PATH': '/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin', 'PYTHONPATH': str(tree / 'src'),
                'GENESIS_TOOLCHAIN': str(toolchain), 'PYTHONHASHSEED': '0', 'LC_ALL': 'C.UTF-8',
-               'HOME': str(a.work)}
+               'HOME': str(a.work), 'PYTHONPYCACHEPREFIX': str(a.work / 'pycache')}
         for key in ('HTTPS_PROXY', 'https_proxy', 'SSL_CERT_FILE', 'REQUESTS_CA_BUNDLE', 'GIT_SSL_CAINFO'):
             if key in os.environ:
                 env[key] = os.environ[key]      # network only for --build-toolchain

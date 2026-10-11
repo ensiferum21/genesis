@@ -47,6 +47,7 @@ def execute(task,program,limits,seed):
     package_root=str(Path(__file__).resolve().parents[1])
     env={'PATH':'/usr/bin:/bin','PYTHONPATH':package_root,'PYTHONHASHSEED':'0',
          'PYTHONNOUSERSITE':'1','PYTHONDONTWRITEBYTECODE':'1','LANG':'C.UTF-8'}
+    if sys.pycache_prefix:env['PYTHONPYCACHEPREFIX']=sys.pycache_prefix  # site bytecode stays inert
     start=time.monotonic_ns();deadline=time.monotonic()+limits.wall_seconds
     p=subprocess.Popen([sys.executable,'-m','genesis.execution','--trusted-dsl-child'],
         stdin=subprocess.PIPE,stdout=subprocess.PIPE,stderr=subprocess.PIPE,

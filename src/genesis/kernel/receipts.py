@@ -152,8 +152,13 @@ def domain_contract_hash(domain):
     return digest({'schema': 'genesis-domain-contract-v1', 'domain': domain, **DOMAINS[domain]})
 
 
-def _claim_id_ok(x):
-    return isinstance(x, str) and 0 < len(x) <= 200 and x.isprintable()
+def claim_id_ok(x):
+    """A claim identifier is ONE printable line: no newline, control, format (bidi) or
+    separator characters, no surrounding whitespace, at most 200 characters (B15-REV-02)."""
+    return isinstance(x, str) and 0 < len(x) <= 200 and x.isprintable() and x == x.strip()
+
+
+_claim_id_ok = claim_id_ok
 
 
 def _kind_extras(kind, domain, transfer, transition, candidate):
