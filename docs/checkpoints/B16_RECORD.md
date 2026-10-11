@@ -35,5 +35,5 @@ claim promoted. The pilot candidate is illustrative.
 
 ## Next
 
-1. Independent review of `evidence/study_design_b16/` and of the custody records.
+1. Independent review of custody, fairness and study design (`docs/checkpoints/B16_REVIEW_BRIEF.md`).
 2. B17: formal research (W08).
