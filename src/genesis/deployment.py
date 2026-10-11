@@ -271,6 +271,9 @@ def platform_report(spec=None, *, store_root=None, toolchain=None, mounts=None):
             if actual != pin['binary_sha256']:
                 bad.append(f'{name}: {actual}')
     checks.append(_check('toolchain_pins', not bad, bad or 'all pinned binaries match', 'PINS.json binary hashes'))
+    history = check_pins_history(pins)
+    checks.append(_check('toolchain_pin_history', not history, history or 'PINS.json is the last recorded revision',
+                         'hash-chained PINS_HISTORY.jsonl'))
     fault = os.environ.get('GENESIS_FAULT')
     checks.append(_check('fault_injection_disabled', not fault, fault or 'unset', 'GENESIS_FAULT unset'))
     failed = [c['check'] for c in checks if c['mandatory'] and c['status'] == 'FAIL']
@@ -280,3 +283,96 @@ def platform_report(spec=None, *, store_root=None, toolchain=None, mounts=None):
             'failed': failed, 'unverified': unverified, 'checks': checks,
             'host': {'node_sha256': hashlib.sha256(platform.node().encode()).hexdigest()[:16],
                      'platform': platform.platform()}}
+
+
+# ---------------------------------------------------------------- toolchain pin revisions
+
+PINS_PATH = REPO / 'toolchain' / 'PINS.json'
+HISTORY_PATH = REPO / 'toolchain' / 'PINS_HISTORY.jsonl'
+RECIPE_PATH = REPO / 'toolchain' / 'build_reproducible.sh'
+
+
+def _canon(value):
+    return json.dumps(value, sort_keys=True, separators=(',', ':'), ensure_ascii=False).encode()
+
+
+def pins_diff(old, new):
+    out = []
+    for tool in sorted(set(old) | set(new)):
+        a, b = old.get(tool), new.get(tool)
+        if not isinstance(a, dict) or not isinstance(b, dict):
+            if a != b:
+                out.append({'tool': tool, 'field': None, 'old': a, 'new': b})
+            continue
+        for field in sorted(set(a) | set(b)):
+            if a.get(field) != b.get(field):
+                out.append({'tool': tool, 'field': field, 'old': a.get(field), 'new': b.get(field)})
+    return out
+
+
+def read_history(path=None):
+    lines = (path or HISTORY_PATH).read_bytes().split(b'\n')
+    if lines[-1] != b'':
+        raise ValueError('pin history does not end with a newline')
+    return [(line, json.loads(line)) for line in lines[:-1]]
+
+
+def check_pins_history(pins=None, history=None, *, check_recipe=True):
+    """The current PINS.json must be the last entry of an intact, hash-chained
+    revision history in which every binary change came with passing known answers
+    for exactly the new binaries. Returns a list of problems (empty = consistent)."""
+    problems = []
+    pins = pins if pins is not None else json.loads(PINS_PATH.read_text())
+    try:
+        entries = history if history is not None else read_history()
+    except (OSError, ValueError) as exc:
+        return [f'pin history unreadable: {exc}']
+    if not entries:
+        return ['pin history is empty']
+    prev_hash, prev_pins = None, None
+    for i, (raw, e) in enumerate(entries, 1):
+        if raw != _canon(e):
+            problems.append(f'entry {i} is not canonical JSON')
+        if e.get('seq') != i or e.get('prev') != prev_hash:
+            problems.append(f'entry {i} breaks the chain')
+        if e.get('pins_sha256') != hashlib.sha256(_canon(e.get('pins'))).hexdigest():
+            problems.append(f'entry {i} pins hash mismatch')
+        if not isinstance(e.get('reason'), str) or not e['reason'].strip():
+            problems.append(f'entry {i} has no reason')
+        if prev_pins is not None:
+            changes = pins_diff(prev_pins, e['pins'])
+            if e.get('changes') != changes:
+                problems.append(f'entry {i} changes do not match the pins it records')
+            if not changes:
+                problems.append(f'entry {i} changes nothing')
+            changed = {c['tool'] for c in changes if c['field'] in ('binary_sha256', 'binary', 'commit')}
+            ka = e.get('known_answers')
+            if changed:
+                if not isinstance(ka, dict) or ka.get('ok') is not True:
+                    problems.append(f'entry {i} changes binaries without passing known answers')
+                else:
+                    for tool in changed:
+                        if ka.get('binaries', {}).get(tool) != e['pins'][tool].get('binary_sha256'):
+                            problems.append(f'entry {i}: known answers did not run the new {tool} binary')
+            retired = sorted(c['old'] for c in changes if c['field'] == 'binary_sha256' and c['old'])
+            if e.get('retired_anchors') != retired:
+                problems.append(f'entry {i} must list the anchors it retires')
+        prev_hash, prev_pins = hashlib.sha256(raw).hexdigest(), e.get('pins')
+    if prev_pins != pins:
+        problems.append('PINS.json differs from the last recorded revision (edit pins only via toolchain/revise_pins.py)')
+    recipe = (pins.get('built_with') or {}).get('recipe_sha256')
+    if check_recipe and recipe is not None and RECIPE_PATH.exists() and \
+            recipe != hashlib.sha256(RECIPE_PATH.read_bytes()).hexdigest():
+        problems.append('build_reproducible.sh changed after the pins were recorded; revise the pins')
+    return problems
+
+
+def history_entry(entries, new_pins, *, reason, known_answers=None, build_record=None, recorded_at=None):
+    prev_raw, prev = entries[-1] if entries else (None, None)
+    changes = pins_diff(prev['pins'], new_pins) if prev else []
+    entry = {'seq': len(entries) + 1, 'prev': hashlib.sha256(prev_raw).hexdigest() if prev_raw else None,
+             'pins_sha256': hashlib.sha256(_canon(new_pins)).hexdigest(), 'pins': new_pins, 'changes': changes,
+             'retired_anchors': sorted(c['old'] for c in changes if c['field'] == 'binary_sha256' and c['old']),
+             'reason': reason, 'known_answers': known_answers, 'build_record': build_record,
+             'recorded_at': recorded_at}
+    return _canon(entry), entry

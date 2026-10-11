@@ -1,0 +1,53 @@
+{
+ "binaries": {
+  "cadical": "24fb99286ca1ea9ad978fc0dad9fc130dbf5a8c0f3f192908dd300be9af2e31a",
+  "drat-trim": "92f0aa9575ed519d66a99b8b1b3dde6ece4618ae4c202a3a4b200265dda0aa7a",
+  "eprover": "7e94d6f2eca4b6af5e417137d94647681b9d5f97026e69a067e2fa827faeb0b1",
+  "lean": "e8baaa71855a616dc351028f3ad2200051b0671f423a1696a100e809302d5550",
+  "zstd": "e47e9c2d3199350b79c6db3f08c1dceeee28caf4f5339123922fc6f5406dd11d"
+ },
+ "cases": [
+  {
+   "case": "cadical: UNSAT formula exits 20",
+   "pass": true
+  },
+  {
+   "case": "cadical: SAT formula exits 10 with a model",
+   "pass": true
+  },
+  {
+   "case": "drat-trim: verifies the CaDiCaL refutation",
+   "pass": true
+  },
+  {
+   "case": "drat-trim: rejects a bogus refutation of a SAT formula",
+   "pass": true
+  },
+  {
+   "case": "eprover: proves a theorem",
+   "pass": true
+  },
+  {
+   "case": "eprover: finds a non-theorem counter-satisfiable",
+   "pass": true
+  },
+  {
+   "case": "zstd: round trip is lossless",
+   "pass": true
+  },
+  {
+   "case": "lean: reports the pinned version",
+   "pass": true
+  },
+  {
+   "case": "lean: accepts a true kernel-checked statement",
+   "pass": true
+  },
+  {
+   "case": "lean: rejects a false statement",
+   "pass": true
+  }
+ ],
+ "ok": true,
+ "schema": "genesis-known-answers-v1"
+}
