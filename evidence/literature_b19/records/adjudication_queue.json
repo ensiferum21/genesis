@@ -1,0 +1,60 @@
+[
+ {
+  "answer": null,
+  "answered_by": null,
+  "context": "retrieved through a fetch tool that excerpts and may paraphrase (fidelity TOOL_SUMMARIZED); S4 and S5 were split or summarised by the tool",
+  "item_id": "ADJ-1",
+  "options": [
+   "confirmed",
+   "corrected (give the exact text)",
+   "source unusable"
+  ],
+  "question": "Do the quotes from S1–S5 match the original documents verbatim?",
+  "record": "adjudication",
+  "schema": "genesis-literature-v1",
+  "status": "PENDING_HUMAN"
+ },
+ {
+  "answer": null,
+  "answered_by": null,
+  "context": "S3 calls it simple and gives no attribution; it is commonly credited to Erdős",
+  "item_id": "ADJ-2",
+  "options": [
+   "folklore",
+   "Erdős (give the reference)",
+   "other"
+  ],
+  "question": "How should the m/2 cut bound be attributed?",
+  "record": "adjudication",
+  "schema": "genesis-literature-v1",
+  "status": "PENDING_HUMAN"
+ },
+ {
+  "answer": null,
+  "answered_by": null,
+  "context": "links L1 and L2 are Lean-checked; C2 is a specialization with a naming clash",
+  "item_id": "ADJ-3",
+  "options": [
+   "yes",
+   "no (explain)"
+  ],
+  "question": "Is the B18 recovered concept correctly reported as a rediscovery of lower sets / Antitone predicates / monotone graph properties?",
+  "record": "adjudication",
+  "schema": "genesis-literature-v1",
+  "status": "PENDING_HUMAN"
+ },
+ {
+  "answer": null,
+  "answered_by": null,
+  "context": "the bound is LP duality for fractional triangle packing/cover (C1 context)",
+  "item_id": "ADJ-4",
+  "options": [
+   "yes",
+   "add references (give them)"
+  ],
+  "question": "Is the prior art for the B19 LP certificates adequately credited?",
+  "record": "adjudication",
+  "schema": "genesis-literature-v1",
+  "status": "PENDING_HUMAN"
+ }
+]

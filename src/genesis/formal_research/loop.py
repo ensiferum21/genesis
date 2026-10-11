@@ -89,7 +89,7 @@ class Session:
 
 
 def prove_all(conjectures, *, base_modules, conj_name, proof_prefix, unfold, extra_recipes=None, env=None,
-              cache=None, library=None, log=print, screen_seed=0):
+              cache=None, library=None, log=print, screen_seed=0, search_heartbeats=None):
     """Screen, search and accept every conjecture in order. Returns the loop state."""
     env = env or C._env()
     cache = {} if cache is None else cache
@@ -118,7 +118,8 @@ def prove_all(conjectures, *, base_modules, conj_name, proof_prefix, unfold, ext
         elif extra_recipes:
             extra = extra_recipes(c, library)
         res = S.search(c, conj_const=const, context={'imports': list(session.imports), 'artifacts': session.artifacts},
-                       library=library, unfold=unfold, counterexample=cx, env=env, extra=extra)
+                       library=library, unfold=unfold, counterexample=cx, env=env, extra=extra,
+                       heartbeats=search_heartbeats or S.SEARCH_HEARTBEATS)
         attempts.append({'statement': c['id'], 'target': res['target'], 'attempts': res['attempts'],
                          'charged': res['charged'], 'result': res['result']})
         row = {'id': c['id'], 'lean': statement(c), 'origin': c['origin'], 'spec_const': const,

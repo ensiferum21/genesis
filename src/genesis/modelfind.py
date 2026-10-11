@@ -7,6 +7,8 @@ domain. CaDiCaL (pinned) searches; any model it returns is converted to tables
 and re-checked by the independent evaluator in `fol.py` before use. A size-d
 UNSAT answer only says "no model of size d" — it is never read as a proof.
 """
+import math
+import time
 from itertools import product
 
 from .fol import Model, check_model, signature
@@ -145,13 +147,25 @@ def _vars(t):
     return _VAR_CACHE[t]
 
 
-def find_model(formulas, *, max_size=6, seconds=30):
-    """Return (Model | None, record). The model is independently re-checked."""
+def find_model(formulas, *, max_size=6, seconds=30, total_seconds=None):
+    """Return (Model | None, record). The model is independently re-checked.
+    `seconds` bounds each size; `total_seconds`, when given, bounds the whole search
+    (wall clock of the solver calls), and an exhausted budget is reported UNKNOWN."""
     sig = signature(formulas)
     attempts = []
+    start = time.monotonic()
     for size in range(1, max_size + 1):
+        per = seconds
+        if total_seconds is not None:
+            # The solver's timeout has whole-second granularity, so a remaining fraction of
+            # a second still gets one call (B19 fix: requiring a full second left starved
+            # every size after the first under a one-second budget).
+            remaining = total_seconds - (time.monotonic() - start)
+            if remaining <= 0:
+                return None, {'status': 'UNKNOWN', 'reason': 'budget exhausted', 'attempts': attempts}
+            per = min(seconds, max(1, math.ceil(remaining)))
         cnf, fvar, pvar = encode(formulas, size, sig)
-        result = solve(cnf.dimacs(), seconds=seconds)
+        result = solve(cnf.dimacs(), seconds=max(1, int(per)))
         attempts.append({'size': size, 'status': result['status'], 'vars': cnf.n, 'clauses': len(cnf.clauses),
                          'seconds': result['seconds']})
         if result['status'] == 'SAT':

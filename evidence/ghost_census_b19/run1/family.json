@@ -1,0 +1,1255 @@
+{
+ "family_sha256": "cdd5c891cb64325167d48c3e3d1cc9be05ced50ac4fba3c20753ec39a57612da",
+ "problems": [
+  {
+   "goal": "no_nilpotent",
+   "lemmas": [
+    "char2",
+    "plus_cancel",
+    "times_zero"
+   ],
+   "problem_id": "gc20261024-000",
+   "theory": "ring"
+  },
+  {
+   "goal": "neg_self",
+   "lemmas": [
+    "neg_times",
+    "times_comm",
+    "times_zero"
+   ],
+   "problem_id": "gc20261024-001",
+   "theory": "ring"
+  },
+  {
+   "goal": "comm",
+   "lemmas": [
+    "flexible",
+    "idem",
+    "left_cancel"
+   ],
+   "problem_id": "gc20261024-002",
+   "theory": "quasigroup"
+  },
+  {
+   "goal": "chain",
+   "lemmas": [
+    "distrib_dual",
+    "meet_is_join",
+    "order_dual"
+   ],
+   "problem_id": "gc20261024-003",
+   "theory": "dist_lattice"
+  },
+  {
+   "goal": "plus_cancel",
+   "lemmas": [
+    "neg_self",
+    "times_zero",
+    "zero_times"
+   ],
+   "problem_id": "gc20261024-004",
+   "theory": "ring"
+  },
+  {
+   "goal": "left_cancel",
+   "lemmas": [
+    "comm",
+    "ldiv_e",
+    "sq_e_unique"
+   ],
+   "problem_id": "gc20261024-005",
+   "theory": "moufang"
+  },
+  {
+   "goal": "anti_comm",
+   "lemmas": [
+    "h_idem",
+    "times_comm",
+    "times_zero"
+   ],
+   "problem_id": "gc20261024-006",
+   "theory": "ring"
+  },
+  {
+   "goal": "self_inverse",
+   "lemmas": [
+    "idem",
+    "inv_inv",
+    "left_cancel"
+   ],
+   "problem_id": "gc20261024-007",
+   "theory": "group_exp2"
+  },
+  {
+   "goal": "inv_mul",
+   "lemmas": [
+    "idem",
+    "sq_central",
+    "sq_e_unique"
+   ],
+   "problem_id": "gc20261024-008",
+   "theory": "group_exp2"
+  },
+  {
+   "goal": "right_cancel",
+   "lemmas": [
+    "left_alt",
+    "sq_central",
+    "sq_e_unique"
+   ],
+   "problem_id": "gc20261024-009",
+   "theory": "group"
+  },
+  {
+   "goal": "right_inv",
+   "lemmas": [
+    "comm",
+    "right_id",
+    "self_inverse"
+   ],
+   "problem_id": "gc20261024-010",
+   "theory": "group_sq"
+  },
+  {
+   "goal": "char2",
+   "lemmas": [
+    "anti_comm",
+    "neg_neg",
+    "times_zero"
+   ],
+   "problem_id": "gc20261024-011",
+   "theory": "ring"
+  },
+  {
+   "goal": "right_alt",
+   "lemmas": [
+    "idem",
+    "ldiv_e",
+    "sq_central"
+   ],
+   "problem_id": "gc20261024-012",
+   "theory": "moufang"
+  },
+  {
+   "goal": "no_nilpotent",
+   "lemmas": [
+    "h_idem",
+    "neg_neg",
+    "zero_times"
+   ],
+   "problem_id": "gc20261024-013",
+   "theory": "boolean_ring"
+  },
+  {
+   "goal": "idem",
+   "lemmas": [
+    "comm",
+    "right_alt",
+    "unique_left_id"
+   ],
+   "problem_id": "gc20261024-014",
+   "theory": "moufang"
+  },
+  {
+   "goal": "moufang_right",
+   "lemmas": [
+    "idem",
+    "left_cancel",
+    "unique_left_id"
+   ],
+   "problem_id": "gc20261024-015",
+   "theory": "group_exp2"
+  },
+  {
+   "goal": "sq_e_unique",
+   "lemmas": [
+    "flexible",
+    "sq_central",
+    "unique_left_id"
+   ],
+   "problem_id": "gc20261024-016",
+   "theory": "moufang"
+  },
+  {
+   "goal": "right_cancel",
+   "lemmas": [
+    "inv_inv",
+    "self_inverse",
+    "sq_central"
+   ],
+   "problem_id": "gc20261024-017",
+   "theory": "group_sq"
+  },
+  {
+   "goal": "h_de_morgan_wrong",
+   "lemmas": [
+    "h_idem",
+    "h_neg_fix",
+    "plus_cancel"
+   ],
+   "problem_id": "gc20261024-018",
+   "theory": "huntington"
+  },
+  {
+   "goal": "sq_central",
+   "lemmas": [
+    "idem",
+    "inv_mul",
+    "unique_left_id"
+   ],
+   "problem_id": "gc20261024-019",
+   "theory": "group_sq"
+  },
+  {
+   "goal": "comm",
+   "lemmas": [
+    "inv_comm",
+    "right_inv",
+    "self_inverse"
+   ],
+   "problem_id": "gc20261024-020",
+   "theory": "group_sq"
+  },
+  {
+   "goal": "left_cancel",
+   "lemmas": [
+    "idem",
+    "right_alt",
+    "right_id"
+   ],
+   "problem_id": "gc20261024-021",
+   "theory": "group_exp2"
+  },
+  {
+   "goal": "char2",
+   "lemmas": [
+    "h_idem",
+    "neg_times",
+    "plus_cancel"
+   ],
+   "problem_id": "gc20261024-022",
+   "theory": "boolean_ring"
+  },
+  {
+   "goal": "join_idem",
+   "lemmas": [
+    "chain",
+    "meet_idem",
+    "order_dual"
+   ],
+   "problem_id": "gc20261024-023",
+   "theory": "dist_lattice"
+  },
+  {
+   "goal": "inv_e",
+   "lemmas": [
+    "idem",
+    "right_alt",
+    "right_cancel"
+   ],
+   "problem_id": "gc20261024-024",
+   "theory": "group_sq"
+  },
+  {
+   "goal": "ldiv_self",
+   "lemmas": [
+    "left_cancel",
+    "moufang_right",
+    "right_cancel"
+   ],
+   "problem_id": "gc20261024-025",
+   "theory": "quasigroup"
+  },
+  {
+   "goal": "order_dual",
+   "lemmas": [
+    "cancel",
+    "meet_idem",
+    "modular"
+   ],
+   "problem_id": "gc20261024-026",
+   "theory": "lattice"
+  },
+  {
+   "goal": "flexible",
+   "lemmas": [
+    "idem",
+    "left_alt",
+    "sq_central"
+   ],
+   "problem_id": "gc20261024-027",
+   "theory": "group_exp2"
+  },
+  {
+   "goal": "moufang_right",
+   "lemmas": [
+    "self_inverse",
+    "sq_central",
+    "unique_left_id"
+   ],
+   "problem_id": "gc20261024-028",
+   "theory": "group_sq"
+  },
+  {
+   "goal": "right_inv",
+   "lemmas": [
+    "idem",
+    "right_alt",
+    "sq_e_unique"
+   ],
+   "problem_id": "gc20261024-029",
+   "theory": "group_exp2"
+  },
+  {
+   "goal": "left_alt",
+   "lemmas": [
+    "right_cancel",
+    "right_id",
+    "self_inverse"
+   ],
+   "problem_id": "gc20261024-030",
+   "theory": "group_sq"
+  },
+  {
+   "goal": "sq_central",
+   "lemmas": [
+    "idem",
+    "inv_e",
+    "right_id"
+   ],
+   "problem_id": "gc20261024-031",
+   "theory": "group"
+  },
+  {
+   "goal": "h_idem",
+   "lemmas": [
+    "h_complement",
+    "h_double_neg",
+    "h_neg_fix"
+   ],
+   "problem_id": "gc20261024-032",
+   "theory": "huntington"
+  },
+  {
+   "goal": "inv_comm",
+   "lemmas": [
+    "left_cancel",
+    "sq_central",
+    "sq_e_unique"
+   ],
+   "problem_id": "gc20261024-033",
+   "theory": "group"
+  },
+  {
+   "goal": "inv_comm",
+   "lemmas": [
+    "idem",
+    "left_alt",
+    "moufang_right"
+   ],
+   "problem_id": "gc20261024-034",
+   "theory": "group_sq"
+  },
+  {
+   "goal": "comm",
+   "lemmas": [
+    "idem",
+    "ldiv_e",
+    "ldiv_self"
+   ],
+   "problem_id": "gc20261024-035",
+   "theory": "moufang"
+  },
+  {
+   "goal": "distrib_dual",
+   "lemmas": [
+    "meet_idem",
+    "meet_is_join",
+    "order_dual"
+   ],
+   "problem_id": "gc20261024-036",
+   "theory": "lattice"
+  },
+  {
+   "goal": "idem",
+   "lemmas": [
+    "moufang_right",
+    "self_inverse",
+    "sq_e_unique"
+   ],
+   "problem_id": "gc20261024-037",
+   "theory": "group_exp2"
+  },
+  {
+   "goal": "inv_inv",
+   "lemmas": [
+    "idem",
+    "moufang_right",
+    "right_id"
+   ],
+   "problem_id": "gc20261024-038",
+   "theory": "group_sq"
+  },
+  {
+   "goal": "moufang_right",
+   "lemmas": [
+    "inv_inv",
+    "left_alt",
+    "self_inverse"
+   ],
+   "problem_id": "gc20261024-039",
+   "theory": "group"
+  },
+  {
+   "goal": "plus_cancel",
+   "lemmas": [
+    "h_complement",
+    "h_de_morgan_wrong",
+    "h_idem"
+   ],
+   "problem_id": "gc20261024-040",
+   "theory": "huntington"
+  },
+  {
+   "goal": "h_neg_fix",
+   "lemmas": [
+    "h_de_morgan_wrong",
+    "h_double_neg",
+    "h_idem"
+   ],
+   "problem_id": "gc20261024-041",
+   "theory": "huntington"
+  },
+  {
+   "goal": "times_comm",
+   "lemmas": [
+    "anti_comm",
+    "char2",
+    "h_idem"
+   ],
+   "problem_id": "gc20261024-042",
+   "theory": "boolean_ring"
+  },
+  {
+   "goal": "left_alt",
+   "lemmas": [
+    "inv_e",
+    "right_id",
+    "sq_central"
+   ],
+   "problem_id": "gc20261024-043",
+   "theory": "group"
+  },
+  {
+   "goal": "idem",
+   "lemmas": [
+    "inv_comm",
+    "left_alt",
+    "sq_central"
+   ],
+   "problem_id": "gc20261024-044",
+   "theory": "group"
+  },
+  {
+   "goal": "times_idem",
+   "lemmas": [
+    "char2",
+    "neg_neg",
+    "times_zero"
+   ],
+   "problem_id": "gc20261024-045",
+   "theory": "ring"
+  },
+  {
+   "goal": "flexible",
+   "lemmas": [
+    "assoc",
+    "comm",
+    "unique_left_id"
+   ],
+   "problem_id": "gc20261024-046",
+   "theory": "moufang"
+  },
+  {
+   "goal": "sq_e_unique",
+   "lemmas": [
+    "idem",
+    "self_inverse",
+    "sq_central"
+   ],
+   "problem_id": "gc20261024-047",
+   "theory": "group_exp2"
+  },
+  {
+   "goal": "unique_left_id",
+   "lemmas": [
+    "idem",
+    "left_cancel",
+    "moufang_right"
+   ],
+   "problem_id": "gc20261024-048",
+   "theory": "moufang"
+  },
+  {
+   "goal": "unique_left_id",
+   "lemmas": [
+    "inv_inv",
+    "right_id",
+    "sq_central"
+   ],
+   "problem_id": "gc20261024-049",
+   "theory": "group"
+  },
+  {
+   "goal": "left_alt",
+   "lemmas": [
+    "assoc",
+    "right_alt",
+    "right_cancel"
+   ],
+   "problem_id": "gc20261024-050",
+   "theory": "quasigroup"
+  },
+  {
+   "goal": "h_idem",
+   "lemmas": [
+    "anti_comm",
+    "times_idem",
+    "times_zero"
+   ],
+   "problem_id": "gc20261024-051",
+   "theory": "ring"
+  },
+  {
+   "goal": "inv_e",
+   "lemmas": [
+    "idem",
+    "inv_mul",
+    "self_inverse"
+   ],
+   "problem_id": "gc20261024-052",
+   "theory": "group_exp2"
+  },
+  {
+   "goal": "times_zero",
+   "lemmas": [
+    "anti_comm",
+    "h_idem",
+    "no_nilpotent"
+   ],
+   "problem_id": "gc20261024-053",
+   "theory": "boolean_ring"
+  },
+  {
+   "goal": "h_idem",
+   "lemmas": [
+    "char2",
+    "neg_neg",
+    "neg_self"
+   ],
+   "problem_id": "gc20261024-054",
+   "theory": "boolean_ring"
+  },
+  {
+   "goal": "left_cancel",
+   "lemmas": [
+    "right_alt",
+    "right_cancel",
+    "sq_central"
+   ],
+   "problem_id": "gc20261024-055",
+   "theory": "quasigroup"
+  },
+  {
+   "goal": "modular",
+   "lemmas": [
+    "cancel",
+    "chain",
+    "join_idem"
+   ],
+   "problem_id": "gc20261024-056",
+   "theory": "lattice"
+  },
+  {
+   "goal": "anti_comm",
+   "lemmas": [
+    "h_idem",
+    "neg_neg",
+    "zero_times"
+   ],
+   "problem_id": "gc20261024-057",
+   "theory": "boolean_ring"
+  },
+  {
+   "goal": "modular",
+   "lemmas": [
+    "cancel",
+    "meet_is_join",
+    "order_dual"
+   ],
+   "problem_id": "gc20261024-058",
+   "theory": "dist_lattice"
+  },
+  {
+   "goal": "right_inv",
+   "lemmas": [
+    "inv_comm",
+    "inv_e",
+    "sq_central"
+   ],
+   "problem_id": "gc20261024-059",
+   "theory": "group"
+  },
+  {
+   "goal": "idem",
+   "lemmas": [
+    "flexible",
+    "left_cancel",
+    "moufang_right"
+   ],
+   "problem_id": "gc20261024-060",
+   "theory": "quasigroup"
+  },
+  {
+   "goal": "right_cancel",
+   "lemmas": [
+    "idem",
+    "inv_comm",
+    "sq_e_unique"
+   ],
+   "problem_id": "gc20261024-061",
+   "theory": "group_exp2"
+  },
+  {
+   "goal": "flexible",
+   "lemmas": [
+    "right_alt",
+    "right_id",
+    "self_inverse"
+   ],
+   "problem_id": "gc20261024-062",
+   "theory": "group_sq"
+  },
+  {
+   "goal": "inv_inv",
+   "lemmas": [
+    "comm",
+    "idem",
+    "right_alt"
+   ],
+   "problem_id": "gc20261024-063",
+   "theory": "group_exp2"
+  },
+  {
+   "goal": "sq_e_unique",
+   "lemmas": [
+    "idem",
+    "left_alt",
+    "right_cancel"
+   ],
+   "problem_id": "gc20261024-064",
+   "theory": "group"
+  },
+  {
+   "goal": "neg_times",
+   "lemmas": [
+    "neg_self",
+    "no_nilpotent",
+    "times_zero"
+   ],
+   "problem_id": "gc20261024-065",
+   "theory": "ring"
+  },
+  {
+   "goal": "unique_left_id",
+   "lemmas": [
+    "idem",
+    "inv_mul",
+    "right_cancel"
+   ],
+   "problem_id": "gc20261024-066",
+   "theory": "group_exp2"
+  },
+  {
+   "goal": "right_cancel",
+   "lemmas": [
+    "ldiv_self",
+    "left_cancel",
+    "sq_central"
+   ],
+   "problem_id": "gc20261024-067",
+   "theory": "moufang"
+  },
+  {
+   "goal": "ldiv_self",
+   "lemmas": [
+    "assoc",
+    "comm",
+    "moufang_right"
+   ],
+   "problem_id": "gc20261024-068",
+   "theory": "moufang"
+  },
+  {
+   "goal": "join_idem",
+   "lemmas": [
+    "distrib",
+    "meet_is_join",
+    "order_dual"
+   ],
+   "problem_id": "gc20261024-069",
+   "theory": "lattice"
+  },
+  {
+   "goal": "sq_central",
+   "lemmas": [
+    "left_alt",
+    "left_cancel",
+    "moufang_right"
+   ],
+   "problem_id": "gc20261024-070",
+   "theory": "quasigroup"
+  },
+  {
+   "goal": "h_complement",
+   "lemmas": [
+    "h_de_morgan_wrong",
+    "h_double_neg",
+    "h_idem"
+   ],
+   "problem_id": "gc20261024-071",
+   "theory": "huntington"
+  },
+  {
+   "goal": "right_alt",
+   "lemmas": [
+    "flexible",
+    "idem",
+    "inv_e"
+   ],
+   "problem_id": "gc20261024-072",
+   "theory": "group_sq"
+  },
+  {
+   "goal": "assoc",
+   "lemmas": [
+    "comm",
+    "right_cancel",
+    "sq_e_unique"
+   ],
+   "problem_id": "gc20261024-073",
+   "theory": "moufang"
+  },
+  {
+   "goal": "meet_is_join",
+   "lemmas": [
+    "chain",
+    "distrib_dual",
+    "join_idem"
+   ],
+   "problem_id": "gc20261024-074",
+   "theory": "dist_lattice"
+  },
+  {
+   "goal": "zero_times",
+   "lemmas": [
+    "h_idem",
+    "neg_times",
+    "times_zero"
+   ],
+   "problem_id": "gc20261024-075",
+   "theory": "boolean_ring"
+  },
+  {
+   "goal": "inv_mul",
+   "lemmas": [
+    "inv_inv",
+    "moufang_right",
+    "self_inverse"
+   ],
+   "problem_id": "gc20261024-076",
+   "theory": "group_sq"
+  },
+  {
+   "goal": "neg_neg",
+   "lemmas": [
+    "h_idem",
+    "plus_cancel",
+    "zero_times"
+   ],
+   "problem_id": "gc20261024-077",
+   "theory": "boolean_ring"
+  },
+  {
+   "goal": "ldiv_e",
+   "lemmas": [
+    "comm",
+    "flexible",
+    "moufang_right"
+   ],
+   "problem_id": "gc20261024-078",
+   "theory": "moufang"
+  },
+  {
+   "goal": "zero_times",
+   "lemmas": [
+    "h_idem",
+    "neg_self",
+    "neg_times"
+   ],
+   "problem_id": "gc20261024-079",
+   "theory": "ring"
+  },
+  {
+   "goal": "distrib",
+   "lemmas": [
+    "join_idem",
+    "meet_idem",
+    "meet_is_join"
+   ],
+   "problem_id": "gc20261024-080",
+   "theory": "lattice"
+  },
+  {
+   "goal": "comm",
+   "lemmas": [
+    "right_cancel",
+    "right_id",
+    "self_inverse"
+   ],
+   "problem_id": "gc20261024-081",
+   "theory": "group"
+  },
+  {
+   "goal": "assoc",
+   "lemmas": [
+    "left_cancel",
+    "right_alt",
+    "sq_central"
+   ],
+   "problem_id": "gc20261024-082",
+   "theory": "quasigroup"
+  },
+  {
+   "goal": "comm",
+   "lemmas": [
+    "idem",
+    "right_alt",
+    "right_inv"
+   ],
+   "problem_id": "gc20261024-083",
+   "theory": "group_exp2"
+  },
+  {
+   "goal": "flexible",
+   "lemmas": [
+    "moufang_right",
+    "right_cancel",
+    "sq_central"
+   ],
+   "problem_id": "gc20261024-084",
+   "theory": "quasigroup"
+  },
+  {
+   "goal": "left_cancel",
+   "lemmas": [
+    "idem",
+    "inv_inv",
+    "self_inverse"
+   ],
+   "problem_id": "gc20261024-085",
+   "theory": "group"
+  },
+  {
+   "goal": "idem",
+   "lemmas": [
+    "right_cancel",
+    "self_inverse",
+    "sq_e_unique"
+   ],
+   "problem_id": "gc20261024-086",
+   "theory": "group_sq"
+  },
+  {
+   "goal": "flexible",
+   "lemmas": [
+    "idem",
+    "right_cancel",
+    "self_inverse"
+   ],
+   "problem_id": "gc20261024-087",
+   "theory": "group"
+  },
+  {
+   "goal": "order_dual",
+   "lemmas": [
+    "cancel",
+    "chain",
+    "meet_is_join"
+   ],
+   "problem_id": "gc20261024-088",
+   "theory": "dist_lattice"
+  },
+  {
+   "goal": "sq_central",
+   "lemmas": [
+    "comm",
+    "left_alt",
+    "sq_e_unique"
+   ],
+   "problem_id": "gc20261024-089",
+   "theory": "moufang"
+  },
+  {
+   "goal": "right_id",
+   "lemmas": [
+    "comm",
+    "flexible",
+    "self_inverse"
+   ],
+   "problem_id": "gc20261024-090",
+   "theory": "group_sq"
+  },
+  {
+   "goal": "inv_mul",
+   "lemmas": [
+    "inv_comm",
+    "right_alt",
+    "sq_central"
+   ],
+   "problem_id": "gc20261024-091",
+   "theory": "group"
+  },
+  {
+   "goal": "right_id",
+   "lemmas": [
+    "idem",
+    "inv_comm",
+    "left_alt"
+   ],
+   "problem_id": "gc20261024-092",
+   "theory": "group"
+  },
+  {
+   "goal": "right_alt",
+   "lemmas": [
+    "idem",
+    "inv_comm",
+    "right_id"
+   ],
+   "problem_id": "gc20261024-093",
+   "theory": "group_exp2"
+  },
+  {
+   "goal": "left_alt",
+   "lemmas": [
+    "comm",
+    "moufang_right",
+    "right_alt"
+   ],
+   "problem_id": "gc20261024-094",
+   "theory": "moufang"
+  },
+  {
+   "goal": "neg_times",
+   "lemmas": [
+    "char2",
+    "h_idem",
+    "plus_cancel"
+   ],
+   "problem_id": "gc20261024-095",
+   "theory": "boolean_ring"
+  },
+  {
+   "goal": "inv_comm",
+   "lemmas": [
+    "idem",
+    "right_inv",
+    "sq_central"
+   ],
+   "problem_id": "gc20261024-096",
+   "theory": "group_exp2"
+  },
+  {
+   "goal": "h_double_neg",
+   "lemmas": [
+    "h_complement",
+    "h_de_morgan_wrong",
+    "h_idem"
+   ],
+   "problem_id": "gc20261024-097",
+   "theory": "huntington"
+  },
+  {
+   "goal": "moufang_right",
+   "lemmas": [
+    "left_cancel",
+    "right_alt",
+    "sq_central"
+   ],
+   "problem_id": "gc20261024-098",
+   "theory": "quasigroup"
+  },
+  {
+   "goal": "inv_inv",
+   "lemmas": [
+    "inv_comm",
+    "sq_central",
+    "unique_left_id"
+   ],
+   "problem_id": "gc20261024-099",
+   "theory": "group"
+  },
+  {
+   "goal": "inv_e",
+   "lemmas": [
+    "comm",
+    "flexible",
+    "right_id"
+   ],
+   "problem_id": "gc20261024-100",
+   "theory": "group"
+  },
+  {
+   "goal": "distrib_dual",
+   "lemmas": [
+    "chain",
+    "meet_idem",
+    "order_dual"
+   ],
+   "problem_id": "gc20261024-101",
+   "theory": "dist_lattice"
+  },
+  {
+   "goal": "chain",
+   "lemmas": [
+    "join_idem",
+    "meet_is_join",
+    "order_dual"
+   ],
+   "problem_id": "gc20261024-102",
+   "theory": "lattice"
+  },
+  {
+   "goal": "meet_is_join",
+   "lemmas": [
+    "chain",
+    "distrib",
+    "meet_idem"
+   ],
+   "problem_id": "gc20261024-103",
+   "theory": "lattice"
+  },
+  {
+   "goal": "plus_cancel",
+   "lemmas": [
+    "char2",
+    "h_idem",
+    "times_zero"
+   ],
+   "problem_id": "gc20261024-104",
+   "theory": "boolean_ring"
+  },
+  {
+   "goal": "left_cancel",
+   "lemmas": [
+    "idem",
+    "inv_e",
+    "moufang_right"
+   ],
+   "problem_id": "gc20261024-105",
+   "theory": "group_sq"
+  },
+  {
+   "goal": "neg_neg",
+   "lemmas": [
+    "char2",
+    "plus_cancel",
+    "times_idem"
+   ],
+   "problem_id": "gc20261024-106",
+   "theory": "ring"
+  },
+  {
+   "goal": "cancel",
+   "lemmas": [
+    "chain",
+    "meet_idem",
+    "meet_is_join"
+   ],
+   "problem_id": "gc20261024-107",
+   "theory": "dist_lattice"
+  },
+  {
+   "goal": "meet_idem",
+   "lemmas": [
+    "distrib",
+    "join_idem",
+    "order_dual"
+   ],
+   "problem_id": "gc20261024-108",
+   "theory": "lattice"
+  },
+  {
+   "goal": "meet_idem",
+   "lemmas": [
+    "cancel",
+    "chain",
+    "modular"
+   ],
+   "problem_id": "gc20261024-109",
+   "theory": "dist_lattice"
+  },
+  {
+   "goal": "sq_e_unique",
+   "lemmas": [
+    "comm",
+    "idem",
+    "self_inverse"
+   ],
+   "problem_id": "gc20261024-110",
+   "theory": "group_sq"
+  },
+  {
+   "goal": "right_cancel",
+   "lemmas": [
+    "assoc",
+    "left_cancel",
+    "right_alt"
+   ],
+   "problem_id": "gc20261024-111",
+   "theory": "quasigroup"
+  },
+  {
+   "goal": "cancel",
+   "lemmas": [
+    "distrib",
+    "join_idem",
+    "order_dual"
+   ],
+   "problem_id": "gc20261024-112",
+   "theory": "lattice"
+  },
+  {
+   "goal": "times_comm",
+   "lemmas": [
+    "anti_comm",
+    "h_idem",
+    "neg_neg"
+   ],
+   "problem_id": "gc20261024-113",
+   "theory": "ring"
+  },
+  {
+   "goal": "neg_self",
+   "lemmas": [
+    "h_idem",
+    "times_comm",
+    "times_zero"
+   ],
+   "problem_id": "gc20261024-114",
+   "theory": "boolean_ring"
+  },
+  {
+   "goal": "right_id",
+   "lemmas": [
+    "idem",
+    "inv_comm",
+    "inv_mul"
+   ],
+   "problem_id": "gc20261024-115",
+   "theory": "group_exp2"
+  },
+  {
+   "goal": "moufang_right",
+   "lemmas": [
+    "left_cancel",
+    "sq_central",
+    "unique_left_id"
+   ],
+   "problem_id": "gc20261024-116",
+   "theory": "moufang"
+  },
+  {
+   "goal": "times_zero",
+   "lemmas": [
+    "neg_neg",
+    "no_nilpotent",
+    "times_comm"
+   ],
+   "problem_id": "gc20261024-117",
+   "theory": "ring"
+  },
+  {
+   "goal": "self_inverse",
+   "lemmas": [
+    "idem",
+    "right_alt",
+    "right_inv"
+   ],
+   "problem_id": "gc20261024-118",
+   "theory": "group_sq"
+  },
+  {
+   "goal": "sq_central",
+   "lemmas": [
+    "idem",
+    "right_cancel",
+    "right_id"
+   ],
+   "problem_id": "gc20261024-119",
+   "theory": "group_exp2"
+  },
+  {
+   "goal": "left_alt",
+   "lemmas": [
+    "idem",
+    "inv_mul",
+    "sq_e_unique"
+   ],
+   "problem_id": "gc20261024-120",
+   "theory": "group_exp2"
+  },
+  {
+   "goal": "right_alt",
+   "lemmas": [
+    "inv_inv",
+    "inv_mul",
+    "sq_central"
+   ],
+   "problem_id": "gc20261024-121",
+   "theory": "group"
+  },
+  {
+   "goal": "self_inverse",
+   "lemmas": [
+    "idem",
+    "left_alt",
+    "right_alt"
+   ],
+   "problem_id": "gc20261024-122",
+   "theory": "group"
+  },
+  {
+   "goal": "right_alt",
+   "lemmas": [
+    "flexible",
+    "left_alt",
+    "right_cancel"
+   ],
+   "problem_id": "gc20261024-123",
+   "theory": "quasigroup"
+  },
+  {
+   "goal": "unique_left_id",
+   "lemmas": [
+    "comm",
+    "idem",
+    "inv_e"
+   ],
+   "problem_id": "gc20261024-124",
+   "theory": "group_sq"
+  }
+ ]
+}

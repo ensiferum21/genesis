@@ -1,0 +1,168 @@
+{
+ "lean_receipt": {
+  "modules": [
+   [
+    "GTDefs",
+    "COMPILED"
+   ],
+   [
+    "HSDefs",
+    "COMPILED"
+   ],
+   [
+    "RCDefs",
+    "COMPILED"
+   ],
+   [
+    "LitSpec",
+    "COMPILED"
+   ],
+   [
+    "LitProof",
+    "COMPILED"
+   ]
+  ],
+  "proof_sha256": "4bb62d52a6de825a4bd214b44f8f5f53abb06eeed70d6972b1890c466d9f73b4",
+  "spec_sha256": "c8eca7e4ae66b65d8e7c9eb8e6e54005260cb3455e22ec25634fd61cb0fa125c"
+ },
+ "links": [
+  {
+   "checks": [
+    {
+     "check": "executable agreement on random small graphs",
+     "failures": [],
+     "instances": 60,
+     "reading": "τ = min edges meeting all triangles; ν* = LP triangle packing; checked: m − τ = largest triangle-free subgraph, ν* ≤ τ ≤ 2ν* (the quoted theorem), and the B19 certificate bound ≥ the optimum with objective = m − ν* up to rounding",
+     "verdict": "PASS"
+    }
+   ],
+   "claim_id": "C1",
+   "formal": "B19 LP dual certificate bound: |S| ≤ ⌊m − ν*⌋ (genesis.discovery.obstruction)",
+   "kind": "CONTEXT",
+   "note": "the B19 bound is weak LP duality for the triangle packing/cover relaxation; C1 is the fractional packing literature it belongs to",
+   "record": "link",
+   "schema": "genesis-literature-v1",
+   "status": "LINKED"
+  },
+  {
+   "checks": [
+    {
+     "check": "both readings on every edge subset of K4",
+     "rows": {
+      "bipartite": {
+       "alon_shapira_reading": true,
+       "rc_c0_down_closed": true
+      },
+      "c4_free": {
+       "alon_shapira_reading": true,
+       "rc_c0_down_closed": true
+      },
+      "has_triangle": {
+       "alon_shapira_reading": false,
+       "rc_c0_down_closed": false
+      },
+      "max_degree_le_1": {
+       "alon_shapira_reading": true,
+       "rc_c0_down_closed": true
+      },
+      "non_empty": {
+       "alon_shapira_reading": false,
+       "rc_c0_down_closed": false
+      },
+      "triangle_free": {
+       "alon_shapira_reading": true,
+       "rc_c0_down_closed": true
+      }
+     },
+     "verdict": "PASS"
+    }
+   ],
+   "claim_id": "C2",
+   "formal": "RC.C0 (B18 recovered concept), restricted to isomorphism-invariant predicates",
+   "kind": "SPECIALIZATION",
+   "note": "RC.C0 does not require isomorphism invariance, so a monotone graph property is the special case of RC.C0 for invariant predicates",
+   "record": "link",
+   "schema": "genesis-literature-v1",
+   "status": "LINKED"
+  },
+  {
+   "checks": [
+    {
+     "axioms": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+     ],
+     "check": "Lean theorem accepted by formal_research.checker",
+     "proof": "LitProof.rc_antitone",
+     "verdict": "CHECKED"
+    }
+   ],
+   "claim_id": "L1",
+   "formal": "∀ P, RC.C0 P ↔ Antitone P",
+   "kind": "EXACT",
+   "note": "",
+   "record": "link",
+   "schema": "genesis-literature-v1",
+   "status": "LINKED"
+  },
+  {
+   "checks": [
+    {
+     "axioms": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+     ],
+     "check": "Lean theorem accepted by formal_research.checker",
+     "proof": "LitProof.rc_lower_set",
+     "verdict": "CHECKED"
+    }
+   ],
+   "claim_id": "L2",
+   "formal": "∀ P, RC.C0 P ↔ IsLowerSet {x | P x}",
+   "kind": "EXACT",
+   "note": "",
+   "record": "link",
+   "schema": "genesis-literature-v1",
+   "status": "LINKED"
+  },
+  {
+   "checks": [
+    {
+     "check": "max over cross_2 encodings ≥ m/2, brute force",
+     "failures": [],
+     "instances": 60,
+     "verdict": "PASS"
+    }
+   ],
+   "claim_id": "C3",
+   "formal": "max over cross_2 encodings c of |decode(cross_2, c, H)| ≥ |H| / 2",
+   "kind": "EXACT",
+   "note": "",
+   "record": "link",
+   "schema": "genesis-literature-v1",
+   "status": "LINKED"
+  },
+  {
+   "checks": [],
+   "claim_id": "C4",
+   "formal": "B19 W16: E proof objects replayed step by step in Lean",
+   "kind": "CONTEXT",
+   "note": "prior work validating automated equational proofs in Lean",
+   "record": "link",
+   "schema": "genesis-literature-v1",
+   "status": "LINKED"
+  },
+  {
+   "checks": [],
+   "claim_id": "C5",
+   "formal": "B19 W16: E proof objects replayed step by step in Lean",
+   "kind": "CONTEXT",
+   "note": "prior work on superposition proof reconstruction in Lean",
+   "record": "link",
+   "schema": "genesis-literature-v1",
+   "status": "LINKED"
+  }
+ ]
+}

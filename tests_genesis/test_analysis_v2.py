@@ -176,6 +176,19 @@ class Power(unittest.TestCase):
         self.assertEqual(result['status'], 'INFEASIBLE')
         self.assertIsNone(result['chosen'])
 
+    def test_centred_headroom_for_a_near_ceiling_candidate(self):
+        """B19: a candidate already at the optimum but well ahead of the baseline. The B16
+        model reads its zero headroom as no room for any effect; the centred model measures
+        the headroom of the centred candidate that the simulation actually perturbs."""
+        near = rows({'a': [2, 1, 2, 2, 1, 2, 2, 1], 'b': [1, 2, 2, 1, 2, 2, 1, 2]}, split='DEV', headroom=0)
+        self.assertEqual(P.required_sample(near, plan(), sims=50)['status'], 'INFEASIBLE')
+        centred = P.required_sample(near, plan(), sims=200, headroom='centred')
+        self.assertNotEqual(centred['status'], 'INFEASIBLE')
+        self.assertEqual(centred['headroom_reference'], 'centred')
+        self.assertNotIn('headroom_reference', P.required_sample(self.pilot(), plan(), sims=50))  # B16 output unchanged
+        with self.assertRaises(ValueError):
+            P.required_sample(near, plan(), sims=10, headroom='other')
+
     def test_pilot_must_be_dev_material_with_optima(self):
         bad = self.pilot()
         bad[0]['split'] = 'CONFIRM'

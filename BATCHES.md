@@ -38,6 +38,7 @@ session can resume from the latest checkpoint (see `RESUME.md`).
 | 16 | Evaluator readiness | W05–W07 | Custody, fairness and study design independently reviewed (B16 built and tested them; the independent review is outstanding) |
 | 17 | Formal research | W08, first TheoryPackage path | Real generated reusable Lean artifacts replay (B17: replayed by the builder from the package sources; independent replay outstanding) |
 | 18 | Concept invention | W09–W12 | Typed concepts, explicit worlds and checked semantics (B18: built and replayed by the builder on DEV; independent review outstanding) |
+| 19 | Useful discovery | W13–W17; E1/E2 readiness | Prospective usefulness accepted or branch rejected (B19: DEV evidence for W13–W15, W16 decided on DEV, W17 records, E1/E2 drafts; acceptance needs independent review and a custodian) |
 
 Later phases (B17–B23+) follow the roadmap and its gates; numbers are labels,
 not estimates.

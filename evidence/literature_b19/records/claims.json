@@ -1,0 +1,187 @@
+{
+ "C1": {
+  "assumptions": [
+   "finite simple graph"
+  ],
+  "claim_id": "C1",
+  "notation": {
+   "edge-disjoint triangles": {
+    "differences": null,
+    "genesis": "a triangle packing; ν = max size; ν* = LP relaxation"
+   },
+   "graph": {
+    "differences": "pairs are ordered in the type; Genesis tasks store each edge once as (u, v) with u < v, and no loops",
+    "genesis": "GT.Edges (Finset (ℕ × ℕ)), read as a finite simple undirected graph"
+   },
+   "set of edges meeting all triangles": {
+    "differences": null,
+    "genesis": "a triangle edge cover T ⊆ H; τ = min |T|"
+   }
+  },
+  "quote": "Krivelevich who proved that $\\tau \\leq 2\\nu^*$",
+  "quote_confirmed": false,
+  "record": "claim",
+  "schema": "genesis-literature-v1",
+  "source_id": "S1",
+  "span": [
+   739,
+   785
+  ],
+  "statement": "For every graph, τ ≤ 2ν*: the least number of edges meeting all triangles is at most twice the fractional triangle packing number (Krivelevich).",
+  "status": "EXTRACTED"
+ },
+ "C1def": {
+  "assumptions": [],
+  "claim_id": "C1def",
+  "notation": {
+   "set of edges meeting all triangles": {
+    "differences": null,
+    "genesis": "a triangle edge cover T ⊆ H; τ = min |T|"
+   }
+  },
+  "quote": "minimum size $\\tau$ of a set of edges meeting all triangles",
+  "quote_confirmed": false,
+  "record": "claim",
+  "schema": "genesis-literature-v1",
+  "source_id": "S1",
+  "span": [
+   367,
+   426
+  ],
+  "statement": "τ(G) is the minimum size of an edge set meeting every triangle.",
+  "status": "EXTRACTED"
+ },
+ "C2": {
+  "assumptions": [
+   "graph properties are isomorphism-invariant"
+  ],
+  "claim_id": "C2",
+  "notation": {
+   "monotone graph property": {
+    "differences": "a graph property is isomorphism-invariant and also closed under vertex removal; on edge sets vertex removal is a special edge removal, but RC.C0 does not require isomorphism invariance. Order-theoretic naming is reversed: Mathlib calls such a predicate Antitone, while Monotone means order-preserving.",
+    "genesis": "a predicate P on edge sets with RC.C0 P (closed under taking subsets)"
+   }
+  },
+  "quote": "A graph property is called monotone if it is closed under removal of edges and vertices.",
+  "quote_confirmed": false,
+  "record": "claim",
+  "schema": "genesis-literature-v1",
+  "source_id": "S2",
+  "span": [
+   128,
+   216
+  ],
+  "statement": "A monotone graph property is one closed under removing edges and vertices.",
+  "status": "EXTRACTED"
+ },
+ "C3": {
+  "assumptions": [
+   "finite simple graph"
+  ],
+  "claim_id": "C3",
+  "notation": {
+   "bipartite cut": {
+    "differences": null,
+    "genesis": "the edges decoded by the B18 representation cross_2 (2 vertex classes, cross decoder)"
+   },
+   "edges m": {
+    "differences": null,
+    "genesis": "H.card"
+   },
+   "graph": {
+    "differences": "pairs are ordered in the type; Genesis tasks store each edge once as (u, v) with u < v, and no loops",
+    "genesis": "GT.Edges (Finset (ℕ × ℕ)), read as a finite simple undirected graph"
+   }
+  },
+  "quote": "every graph G = (V, E) with m edges contains a bipartite cut (V1, V2) spanning at least m/2 edges.",
+  "quote_confirmed": false,
+  "record": "claim",
+  "schema": "genesis-literature-v1",
+  "source_id": "S3",
+  "span": [
+   349,
+   447
+  ],
+  "statement": "Every graph with m edges has a cut with at least m/2 edges.",
+  "status": "EXTRACTED"
+ },
+ "C4": {
+  "assumptions": [],
+  "claim_id": "C4",
+  "notation": {
+   "equational law": {
+    "differences": null,
+    "genesis": "a universally quantified equation (genesis.fol)"
+   }
+  },
+  "quote": "all validated by the formal proof assistant language Lean.",
+  "quote_confirmed": false,
+  "record": "claim",
+  "schema": "genesis-literature-v1",
+  "source_id": "S4",
+  "span": [
+   690,
+   748
+  ],
+  "statement": "The ETP results, including automated proofs, were validated in Lean.",
+  "status": "EXTRACTED"
+ },
+ "C5": {
+  "assumptions": [],
+  "claim_id": "C5",
+  "notation": {},
+  "quote": "We present Duper, a proof-producing theorem prover for Lean based on the superposition calculus.",
+  "quote_confirmed": false,
+  "record": "claim",
+  "schema": "genesis-literature-v1",
+  "source_id": "S5",
+  "span": [
+   337,
+   433
+  ],
+  "statement": "Duper is a proof-producing superposition prover for Lean.",
+  "status": "EXTRACTED"
+ },
+ "L1": {
+  "assumptions": [],
+  "claim_id": "L1",
+  "notation": {
+   "antitone": {
+    "differences": null,
+    "genesis": "Antitone (Mathlib.Order.Monotone.Defs)"
+   }
+  },
+  "quote": "def Antitone (f : α → β) : Prop :=\n  ∀ ⦃a b⦄, a ≤ b → f b ≤ f a",
+  "quote_confirmed": true,
+  "record": "claim",
+  "schema": "genesis-literature-v1",
+  "source_id": "L1",
+  "span": [
+   66,
+   129
+  ],
+  "statement": "Antitone f: a ≤ b implies f b ≤ f a.",
+  "status": "EXTRACTED"
+ },
+ "L2": {
+  "assumptions": [],
+  "claim_id": "L2",
+  "notation": {
+   "lower set": {
+    "differences": null,
+    "genesis": "IsLowerSet (Mathlib.Order.Defs.Unbundled)"
+   }
+  },
+  "quote": "Also called down-set, downward-closed set.",
+  "quote_confirmed": true,
+  "record": "claim",
+  "schema": "genesis-literature-v1",
+  "source_id": "L2",
+  "span": [
+   277,
+   319
+  ],
+  "statement": "A lower set contains every element below one of its members.",
+  "status": "EXTRACTED"
+ }
+}

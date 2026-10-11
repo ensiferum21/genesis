@@ -19,7 +19,11 @@ def problem_text(axioms, conjecture):
     return '\n'.join(lines) + '\n'
 
 
-def prove(axioms, conjecture, *, seconds=10, memory_mib=2048):
+def prove(axioms, conjecture, *, seconds=10, memory_mib=2048, mode='auto'):
+    """mode: 'auto' (E's single automatic strategy, the B11 setting) or 'schedule' (E's
+    strategy schedule on one core)."""
+    if mode not in ('auto', 'schedule'):
+        raise ValueError(mode)
     e = tool('eprover')
     text = problem_text(axioms, conjecture)
     with tempfile.TemporaryDirectory(prefix='genesis-e-') as d:
@@ -30,7 +34,7 @@ def prove(axioms, conjecture, *, seconds=10, memory_mib=2048):
             resource.setrlimit(resource.RLIMIT_CORE, (0, 0))
         start = time.monotonic()
         try:
-            proc = subprocess.run([e['path'], '--auto', f'--cpu-limit={max(1, int(seconds))}', '-s', '--proof-object',
+            proc = subprocess.run([e['path'], '--auto' if mode == 'auto' else '--auto-schedule=1', f'--cpu-limit={max(1, int(seconds))}', '-s', '--proof-object',
                                    str(path)], capture_output=True, text=True, timeout=seconds + 15, preexec_fn=limits,
                                   stdin=subprocess.DEVNULL, env={'PATH': '/usr/bin:/bin'})
             out = proc.stdout
@@ -49,4 +53,4 @@ def prove(axioms, conjecture, *, seconds=10, memory_mib=2048):
     if status == 'THEOREM' and 'SZS output start' in out:
         proof = out[out.index('SZS output start'):]
     return {'status': status, 'prover': e['identity'], 'seconds': round(elapsed, 3), 'proof': proof,
-            'proof_replayed': False, 'problem': text}
+            'proof_replayed': False, 'problem': text, 'mode': mode}

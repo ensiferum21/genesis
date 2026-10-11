@@ -39,7 +39,16 @@ class NonDevPilot(ValueError):
     pass
 
 
-def _pilot(rows):
+def _pilot(rows, headroom='candidate'):
+    """Per stratum, (paired difference, headroom) cells. `headroom`:
+      candidate  optimum − candidate value (the B16 model);
+      centred    optimum − (candidate value − the stratum's mean difference): the headroom of
+                 the centred candidate that the simulation actually perturbs. The two agree
+                 when the pilot's mean difference is near zero; they differ when the pilot
+                 candidate is already much better than the baseline (added in B19, where the
+                 B16 model reported a near-ceiling candidate as INFEASIBLE)."""
+    if headroom not in ('candidate', 'centred'):
+        raise ValueError(headroom)
     by = defaultdict(list)
     for r in rows:
         if r.get('split') != 'DEV':
@@ -52,6 +61,10 @@ def _pilot(rows):
         by[r['stratum']].append((d, r['optimum'] - r['candidate']['value']))
     if not by or any(len(v) < 2 for v in by.values()):
         raise ValueError('every pilot stratum needs at least two scored tasks')
+    if headroom == 'centred':
+        for st, cells in by.items():
+            mean = sum(d for d, _ in cells) / len(cells)
+            by[st] = [(d, math.floor(h + mean + 1e-9)) for d, h in cells]
     return dict(sorted(by.items()))
 
 
@@ -122,8 +135,8 @@ def simulate_power(pilot, plan, tasks_per_stratum, *, effect=None, sims=1000):
 
 
 def required_sample(pilot_rows, plan, *, min_tasks_per_stratum=10,
-                    grid=(10, 12, 15, 20, 25, 30, 40, 50, 60, 80, 100, 150, 200), sims=1000):
-    pilot = _pilot(pilot_rows)
+                    grid=(10, 12, 15, 20, 25, 30, 40, 50, 60, 80, 100, 150, 200), sims=1000, headroom='candidate'):
+    pilot = _pilot(pilot_rows, headroom)
     grid = sorted({n for n in grid if n >= min_tasks_per_stratum} | {min_tasks_per_stratum})
     table, chosen = [], None
     for n in grid:
@@ -143,7 +156,8 @@ def required_sample(pilot_rows, plan, *, min_tasks_per_stratum=10,
                     'sd': round(math.sqrt(sum((d - mean) ** 2 for d in ds) / (len(ds) - 1)), 4),
                     'share_with_headroom': round(sum(h > 0 for _, h in cells) / len(cells), 4)}
     feasible = table[0]['power'] is not None
-    return {'schema': 'genesis-power-analysis-v1', 'plan_core_sha256': digest(plan_core(plan)),
+    extra = {} if headroom == 'candidate' else {'headroom_reference': headroom}
+    return {**extra, 'schema': 'genesis-power-analysis-v1', 'plan_core_sha256': digest(plan_core(plan)),
             'pilot_strata': stats, 'pilot_rows_sha256': digest(pilot_rows),
             'design_effect': plan['design_effect'], 'minimum_useful_effect': plan['minimum_useful_effect'],
             'power_target': plan['power_target'], 'min_tasks_per_stratum': min_tasks_per_stratum,
@@ -156,9 +170,9 @@ def required_sample(pilot_rows, plan, *, min_tasks_per_stratum=10,
             'note': 'pilot effect sizes are reported but never used to set the effect; only spread and headroom are'}
 
 
-def approximation_check(pilot_rows, plan, tasks_per_stratum, *, sims=40):
+def approximation_check(pilot_rows, plan, tasks_per_stratum, *, sims=40, headroom='candidate'):
     """Share of simulated studies on which the simulated decision equals the exact analysis."""
-    pilot = _pilot(pilot_rows)
+    pilot = _pilot(pilot_rows, headroom)
     rng = random.Random(int(digest({'check': plan_core(plan), 'n': tasks_per_stratum})[:16], 16))
     alpha_rank = plan['alpha'] / plan['multiplicity']['family_size']
     agree = 0

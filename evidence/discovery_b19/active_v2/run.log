@@ -1,0 +1,52 @@
+[   34.5s] pool erdos22: 16 certified tasks
+[  203.5s] pool erdos30: 14 certified tasks
+[  235.8s] pool bipartite22: 16 certified tasks
+[  317.0s] 20%: {'eig': {'p_correct_class': 0.7417, 'mean_regret': 0.0527}, 'round_robin': {'p_correct_class': 0.7833, 'mean_regret': 0.0387}, 'random': {'p_correct_class': 0.8083, 'mean_regret': 0.0332}, 'kg': {'p_correct_class': 0.9333, 'mean_regret': 0.0095}, 'top_two': {'p_correct_class': 0.8417, 'mean_regret': 0.0402}}
+[  435.4s] 40%: {'eig': {'p_correct_class': 0.9417, 'mean_regret': 0.0083}, 'round_robin': {'p_correct_class': 0.925, 'mean_regret': 0.0107}, 'random': {'p_correct_class': 0.9583, 'mean_regret': 0.0079}, 'kg': {'p_correct_class': 1.0, 'mean_regret': 0.0}, 'top_two': {'p_correct_class': 0.9417, 'mean_regret': 0.0199}}
+{
+ "0.2": {
+  "eig": {
+   "p_correct_class": 0.7417,
+   "mean_regret": 0.0527
+  },
+  "round_robin": {
+   "p_correct_class": 0.7833,
+   "mean_regret": 0.0387
+  },
+  "random": {
+   "p_correct_class": 0.8083,
+   "mean_regret": 0.0332
+  },
+  "kg": {
+   "p_correct_class": 0.9333,
+   "mean_regret": 0.0095
+  },
+  "top_two": {
+   "p_correct_class": 0.8417,
+   "mean_regret": 0.0402
+  }
+ },
+ "0.4": {
+  "eig": {
+   "p_correct_class": 0.9417,
+   "mean_regret": 0.0083
+  },
+  "round_robin": {
+   "p_correct_class": 0.925,
+   "mean_regret": 0.0107
+  },
+  "random": {
+   "p_correct_class": 0.9583,
+   "mean_regret": 0.0079
+  },
+  "kg": {
+   "p_correct_class": 1.0,
+   "mean_regret": 0.0
+  },
+  "top_two": {
+   "p_correct_class": 0.9417,
+   "mean_regret": 0.0199
+  }
+ }
+}
+rc=0

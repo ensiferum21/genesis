@@ -1,0 +1,209 @@
+{
+ "allowed_conclusion": "If SUPPORTED: a scoped better-solver statement for triangle_free_host_v1 hosts from the calibrated family on that panel only. Not better-improver, transfer or novelty.",
+ "analysis_plan_core": {
+  "alpha": 0.05,
+  "cost": {
+   "max_ratio": 3.0,
+   "measure": "cpu_ns"
+  },
+  "decision_rule": "superiority-with-minimum-useful-effect",
+  "design_effect": 1.0,
+  "estimand": "mean-of-stratum-means",
+  "failures": "score-zero",
+  "interval": {
+   "level": 0.9,
+   "method": "stratified-bootstrap-percentile",
+   "resamples": 4000
+  },
+  "max_unsupported_fraction": 0.05,
+  "minimum_useful_effect": 0.5,
+  "multiplicity": {
+   "family_id": "sealed_evaluation:triangle_free_host_v1",
+   "family_size": 3,
+   "method": "holm"
+  },
+  "power_target": 0.8,
+  "primary": "paired-edge-difference",
+  "regression": {
+   "max_stratum_loss": 1.0
+  },
+  "schema": "genesis-analysis-plan-v2",
+  "sensitivity": [
+   "task-sign-test",
+   "leave-one-stratum-out",
+   "failures-excluded",
+   "stratum-level-sign-flip"
+  ],
+  "stopping": {
+   "rule": "single-analysis"
+  },
+  "strata": "family",
+  "test": "stratified-sign-flip",
+  "unsupported": "exclude-and-report"
+ },
+ "baselines": {
+  "all_fixed_baselines": [
+   "exchange",
+   "low_cycle",
+   "multistart"
+  ],
+  "comparator": "strongest fixed DSL baseline on the SELECT panel (pilot: low_cycle)",
+  "not_a_competitor": "the SAT/DRAT or LP reference optimum is evaluator ground truth"
+ },
+ "capability_changes": "Candidate: B18 W10 representation grammar (cross_2) with greedy repair; no change to trusted checking. The custodian evaluator needs an adapter to execute it (B19-OPEN-3).",
+ "created_at": "2026-10-11T15:04:22.518738+00:00",
+ "exact_claim": "The frozen representation-and-repair candidate (cut representation cross_2, identity b1ac10462bf5dab3) scores more edges than the strongest frozen fixed baseline on a custodian-held CONFIRM panel of triangle_free_host_v1 hosts drawn from the adopted calibration, by at least the minimum useful effect, under the registered analysis.",
+ "exposure_policy": "Custodian-built exposure registry; isomorphism and near-duplicate screening against every DEV panel named in B16\u2013B19 evidence; a CONFIRM panel is retired after its one use.",
+ "minimum_useful_effect": 0.5,
+ "permissible_information": "The candidate sees only the candidate view (domain, n, edges). Development used public DEV panels only. SELECT and CONFIRM are drawn and held by the custodian.",
+ "primary_outcome": {
+  "endpoint": "paired-edge-difference",
+  "estimand": "mean-of-stratum-means",
+  "strata": "family"
+ },
+ "raw_evidence_custody": "Custodian private evidence store; the judge recomputes the analysis; the custodian publishes a signed registration log.",
+ "rejection_criteria": "Any decision-record or plan check failing; an evaluator that cannot run the candidate; registration beyond the declared family size; an INVALID or NOT_SUPPORTED outcome.",
+ "roles": {
+  "auditor": "TO BE ASSIGNED",
+  "custodian": "TO BE ASSIGNED (independent operator)",
+  "release_authority": "TO BE ASSIGNED",
+  "research_operator": "Genesis builder"
+ },
+ "sample_size_justification": {
+  "assumed_holm_rank_alpha": 0.016666666666666666,
+  "chosen": {
+   "power": 0.83,
+   "tasks_per_stratum": 25,
+   "total_tasks": 25
+  },
+  "design_effect": 1.0,
+  "false_positive_rate_at_zero_effect": 0.015,
+  "headroom_reference": "centred",
+  "min_tasks_per_stratum": 10,
+  "minimum_useful_effect": 0.5,
+  "model": "headroom-limited integer improvements over centred DEV pilot differences",
+  "note": "pilot effect sizes are reported but never used to set the effect; only spread and headroom are",
+  "pilot_rows_sha256": "0f8e14c9022110f32e10f6b43f2cafac78b8c34e260c189d09d12873dd7620b2",
+  "pilot_strata": {
+   "erdos:80a647eb": {
+    "mean_difference": 1.2667,
+    "sd": 1.5499,
+    "share_with_headroom": 1.0,
+    "tasks": 60
+   }
+  },
+  "plan_core_sha256": "00907f25a5efb05408a63a2646fbef7bf19dd3b2ab9094143cc7d788b521458a",
+  "power_at_minimum_useful_effect": 0.233,
+  "power_target": 0.8,
+  "schema": "genesis-power-analysis-v1",
+  "status": "CHOSEN",
+  "table": [
+   {
+    "power": 0.299,
+    "tasks_per_stratum": 10,
+    "total_tasks": 10
+   },
+   {
+    "power": 0.401,
+    "tasks_per_stratum": 12,
+    "total_tasks": 12
+   },
+   {
+    "power": 0.544,
+    "tasks_per_stratum": 15,
+    "total_tasks": 15
+   },
+   {
+    "power": 0.714,
+    "tasks_per_stratum": 20,
+    "total_tasks": 20
+   },
+   {
+    "power": 0.83,
+    "tasks_per_stratum": 25,
+    "total_tasks": 25
+   },
+   {
+    "power": 0.905,
+    "tasks_per_stratum": 30,
+    "total_tasks": 30
+   },
+   {
+    "power": 0.962,
+    "tasks_per_stratum": 40,
+    "total_tasks": 40
+   },
+   {
+    "power": 0.985,
+    "tasks_per_stratum": 50,
+    "total_tasks": 50
+   },
+   {
+    "power": 0.995,
+    "tasks_per_stratum": 60,
+    "total_tasks": 60
+   },
+   {
+    "power": 1.0,
+    "tasks_per_stratum": 80,
+    "total_tasks": 80
+   },
+   {
+    "power": 1.0,
+    "tasks_per_stratum": 100,
+    "total_tasks": 100
+   },
+   {
+    "power": 1.0,
+    "tasks_per_stratum": 150,
+    "total_tasks": 150
+   },
+   {
+    "power": 1.0,
+    "tasks_per_stratum": 200,
+    "total_tasks": 200
+   }
+  ]
+ },
+ "schema": "genesis-decision-record-v1",
+ "statistical_rules": {
+  "alpha": 0.05,
+  "failures": "score-zero",
+  "interval": {
+   "level": 0.9,
+   "method": "stratified-bootstrap-percentile",
+   "resamples": 4000
+  },
+  "multiplicity": {
+   "family_id": "sealed_evaluation:triangle_free_host_v1",
+   "family_size": 3,
+   "method": "holm"
+  },
+  "sensitivity": [
+   "task-sign-test",
+   "leave-one-stratum-out",
+   "failures-excluded",
+   "stratum-level-sign-flip"
+  ],
+  "test": "stratified-sign-flip",
+  "unsupported": "exclude-and-report"
+ },
+ "status": "DRAFT",
+ "stopping_rule": {
+  "rule": "single-analysis"
+ },
+ "total_budget": {
+  "arms": 2,
+  "candidate_cpu_seconds": 0.5,
+  "charge": "every attempt, retry, timeout and failure",
+  "discovery_cost": "B18 W10 representation search, recorded in evidence/invention_b18",
+  "reference_seconds_per_task": 30,
+  "solver_limits": {
+   "cpu_seconds": 2,
+   "memory_mib": 2048,
+   "output_bytes": 8388608,
+   "queries": 1000,
+   "wall_seconds": 120
+  }
+ }
+}

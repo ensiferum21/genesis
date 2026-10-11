@@ -1,0 +1,915 @@
+{
+ "by_budget": {
+  "0.2": {
+   "best": {
+    "bipartite22": [
+     "low_cycle",
+     "multistart",
+     "rr_adjacent_2",
+     "rr_cross_2",
+     "rr_ordered_2"
+    ],
+    "erdos22": [
+     "rr_adjacent_2",
+     "rr_cross_2"
+    ],
+    "erdos30": [
+     "rr_adjacent_2",
+     "rr_cross_2"
+    ]
+   },
+   "budget_cpu_s": 16.949,
+   "classes": [
+    [
+     "rr_adjacent_2",
+     "rr_cross_2"
+    ],
+    [
+     "rr_ordered_2"
+    ],
+    [
+     "low_cycle"
+    ],
+    [
+     "multistart"
+    ]
+   ],
+   "policies": {
+    "eig": {
+     "mean_regret": 0.0527,
+     "p_correct_class": 0.7417
+    },
+    "kg": {
+     "mean_regret": 0.0095,
+     "p_correct_class": 0.9333
+    },
+    "random": {
+     "mean_regret": 0.0332,
+     "p_correct_class": 0.8083
+    },
+    "round_robin": {
+     "mean_regret": 0.0387,
+     "p_correct_class": 0.7833
+    },
+    "top_two": {
+     "mean_regret": 0.0402,
+     "p_correct_class": 0.8417
+    }
+   },
+   "rates": {
+    "low_cycle@bipartite22": 1.0,
+    "low_cycle@erdos22": 0.25,
+    "low_cycle@erdos30": 0.0,
+    "multistart@bipartite22": 1.0,
+    "multistart@erdos22": 0.0,
+    "multistart@erdos30": 0.0,
+    "rr_adjacent_2@bipartite22": 1.0,
+    "rr_adjacent_2@erdos22": 0.625,
+    "rr_adjacent_2@erdos30": 0.1429,
+    "rr_cross_2@bipartite22": 1.0,
+    "rr_cross_2@erdos22": 0.625,
+    "rr_cross_2@erdos30": 0.1429,
+    "rr_ordered_2@bipartite22": 1.0,
+    "rr_ordered_2@erdos22": 0.0,
+    "rr_ordered_2@erdos30": 0.0
+   },
+   "repetitions": 40,
+   "within_class": [
+    {
+     "class": [
+      "rr_adjacent_2",
+      "rr_cross_2"
+     ],
+     "reason": "identical observations under every admissible action",
+     "verdict": "UNRESOLVED"
+    }
+   ]
+  },
+  "0.4": {
+   "best": {
+    "bipartite22": [
+     "low_cycle",
+     "multistart",
+     "rr_adjacent_2",
+     "rr_cross_2",
+     "rr_ordered_2"
+    ],
+    "erdos22": [
+     "rr_adjacent_2",
+     "rr_cross_2"
+    ],
+    "erdos30": [
+     "rr_adjacent_2",
+     "rr_cross_2"
+    ]
+   },
+   "budget_cpu_s": 33.898,
+   "classes": [
+    [
+     "rr_adjacent_2",
+     "rr_cross_2"
+    ],
+    [
+     "rr_ordered_2"
+    ],
+    [
+     "low_cycle"
+    ],
+    [
+     "multistart"
+    ]
+   ],
+   "policies": {
+    "eig": {
+     "mean_regret": 0.0083,
+     "p_correct_class": 0.9417
+    },
+    "kg": {
+     "mean_regret": 0.0,
+     "p_correct_class": 1.0
+    },
+    "random": {
+     "mean_regret": 0.0079,
+     "p_correct_class": 0.9583
+    },
+    "round_robin": {
+     "mean_regret": 0.0107,
+     "p_correct_class": 0.925
+    },
+    "top_two": {
+     "mean_regret": 0.0199,
+     "p_correct_class": 0.9417
+    }
+   },
+   "rates": {
+    "low_cycle@bipartite22": 1.0,
+    "low_cycle@erdos22": 0.25,
+    "low_cycle@erdos30": 0.0,
+    "multistart@bipartite22": 1.0,
+    "multistart@erdos22": 0.0,
+    "multistart@erdos30": 0.0,
+    "rr_adjacent_2@bipartite22": 1.0,
+    "rr_adjacent_2@erdos22": 0.625,
+    "rr_adjacent_2@erdos30": 0.1429,
+    "rr_cross_2@bipartite22": 1.0,
+    "rr_cross_2@erdos22": 0.625,
+    "rr_cross_2@erdos30": 0.1429,
+    "rr_ordered_2@bipartite22": 1.0,
+    "rr_ordered_2@erdos22": 0.0,
+    "rr_ordered_2@erdos30": 0.0
+   },
+   "repetitions": 40,
+   "within_class": [
+    {
+     "class": [
+      "rr_adjacent_2",
+      "rr_cross_2"
+     ],
+     "reason": "identical observations under every admissible action",
+     "verdict": "UNRESOLVED"
+    }
+   ]
+  }
+ },
+ "calibration": {
+  "mean_abs_error": 0.1095,
+  "rows": [
+   {
+    "action": "rr_cross_2@erdos22",
+    "observed": 0.75,
+    "predicted": 0.5
+   },
+   {
+    "action": "rr_cross_2@erdos30",
+    "observed": 0.1429,
+    "predicted": 0.2222
+   },
+   {
+    "action": "rr_cross_2@bipartite22",
+    "observed": 1.0,
+    "predicted": 0.9
+   },
+   {
+    "action": "rr_adjacent_2@erdos22",
+    "observed": 0.625,
+    "predicted": 0.6
+   },
+   {
+    "action": "rr_adjacent_2@erdos30",
+    "observed": 0.1429,
+    "predicted": 0.2222
+   },
+   {
+    "action": "rr_adjacent_2@bipartite22",
+    "observed": 1.0,
+    "predicted": 0.9
+   },
+   {
+    "action": "rr_ordered_2@erdos22",
+    "observed": 0.0,
+    "predicted": 0.1
+   },
+   {
+    "action": "rr_ordered_2@erdos30",
+    "observed": 0.0,
+    "predicted": 0.1111
+   },
+   {
+    "action": "rr_ordered_2@bipartite22",
+    "observed": 1.0,
+    "predicted": 0.9
+   },
+   {
+    "action": "low_cycle@erdos22",
+    "observed": 0.375,
+    "predicted": 0.2
+   },
+   {
+    "action": "low_cycle@erdos30",
+    "observed": 0.0,
+    "predicted": 0.1111
+   },
+   {
+    "action": "low_cycle@bipartite22",
+    "observed": 1.0,
+    "predicted": 0.9
+   },
+   {
+    "action": "multistart@erdos22",
+    "observed": 0.0,
+    "predicted": 0.1
+   },
+   {
+    "action": "multistart@erdos30",
+    "observed": 0.0,
+    "predicted": 0.1111
+   },
+   {
+    "action": "multistart@bipartite22",
+    "observed": 1.0,
+    "predicted": 0.9
+   }
+  ]
+ },
+ "costs_cpu_s": {
+  "low_cycle@bipartite22": 0.1676,
+  "low_cycle@erdos22": 0.1641,
+  "low_cycle@erdos30": 0.1804,
+  "multistart@bipartite22": 0.1663,
+  "multistart@erdos22": 0.1667,
+  "multistart@erdos30": 0.1801,
+  "rr_adjacent_2@bipartite22": 0.5002,
+  "rr_adjacent_2@erdos22": 0.5004,
+  "rr_adjacent_2@erdos30": 0.5007,
+  "rr_cross_2@bipartite22": 0.5004,
+  "rr_cross_2@erdos22": 0.5004,
+  "rr_cross_2@erdos30": 0.5007,
+  "rr_ordered_2@bipartite22": 0.5002,
+  "rr_ordered_2@erdos22": 0.5004,
+  "rr_ordered_2@erdos30": 0.5008
+ },
+ "declared_indistinguishable": [
+  [
+   "rr_cross_2",
+   "rr_adjacent_2"
+  ]
+ ],
+ "families": [
+  "erdos22",
+  "erdos30",
+  "bipartite22"
+ ],
+ "methods": [
+  "rr_cross_2",
+  "rr_adjacent_2",
+  "rr_ordered_2",
+  "low_cycle",
+  "multistart"
+ ],
+ "note": "kg and top_two were added after the first evaluation; these pools are fresh (new seed)",
+ "policies": [
+  "eig",
+  "round_robin",
+  "random",
+  "kg",
+  "top_two"
+ ],
+ "pool_cost_cpu_s": 84.75,
+ "pool_sizes": {
+  "bipartite22": 16,
+  "erdos22": 16,
+  "erdos30": 14
+ },
+ "raw": [
+  {
+   "certified_by": "LP_DUAL_EXACT",
+   "family": "erdos22",
+   "optimum": 59,
+   "task_id": "dev-erdos-80a647eb-20261027-0000",
+   "values": {
+    "low_cycle": 58,
+    "multistart": 56,
+    "rr_adjacent_2": 58,
+    "rr_cross_2": 58,
+    "rr_ordered_2": 55
+   }
+  },
+  {
+   "certified_by": "LP_DUAL_EXACT",
+   "family": "erdos22",
+   "optimum": 61,
+   "task_id": "dev-erdos-80a647eb-20261027-0001",
+   "values": {
+    "low_cycle": 60,
+    "multistart": 56,
+    "rr_adjacent_2": 61,
+    "rr_cross_2": 61,
+    "rr_ordered_2": 58
+   }
+  },
+  {
+   "certified_by": "LP_DUAL_EXACT",
+   "family": "erdos22",
+   "optimum": 59,
+   "task_id": "dev-erdos-80a647eb-20261027-0002",
+   "values": {
+    "low_cycle": 58,
+    "multistart": 57,
+    "rr_adjacent_2": 58,
+    "rr_cross_2": 58,
+    "rr_ordered_2": 56
+   }
+  },
+  {
+   "certified_by": "LP_DUAL_EXACT",
+   "family": "erdos22",
+   "optimum": 65,
+   "task_id": "dev-erdos-80a647eb-20261027-0003",
+   "values": {
+    "low_cycle": 64,
+    "multistart": 60,
+    "rr_adjacent_2": 65,
+    "rr_cross_2": 65,
+    "rr_ordered_2": 59
+   }
+  },
+  {
+   "certified_by": "LP_DUAL_EXACT",
+   "family": "erdos22",
+   "optimum": 56,
+   "task_id": "dev-erdos-80a647eb-20261027-0004",
+   "values": {
+    "low_cycle": 55,
+    "multistart": 53,
+    "rr_adjacent_2": 56,
+    "rr_cross_2": 56,
+    "rr_ordered_2": 54
+   }
+  },
+  {
+   "certified_by": "LP_DUAL_EXACT",
+   "family": "erdos22",
+   "optimum": 63,
+   "task_id": "dev-erdos-80a647eb-20261027-0005",
+   "values": {
+    "low_cycle": 61,
+    "multistart": 60,
+    "rr_adjacent_2": 63,
+    "rr_cross_2": 63,
+    "rr_ordered_2": 61
+   }
+  },
+  {
+   "certified_by": "LP_DUAL_EXACT",
+   "family": "erdos22",
+   "optimum": 58,
+   "task_id": "dev-erdos-80a647eb-20261027-0006",
+   "values": {
+    "low_cycle": 56,
+    "multistart": 54,
+    "rr_adjacent_2": 58,
+    "rr_cross_2": 58,
+    "rr_ordered_2": 53
+   }
+  },
+  {
+   "certified_by": "LP_DUAL_EXACT",
+   "family": "erdos22",
+   "optimum": 63,
+   "task_id": "dev-erdos-80a647eb-20261027-0007",
+   "values": {
+    "low_cycle": 61,
+    "multistart": 59,
+    "rr_adjacent_2": 62,
+    "rr_cross_2": 62,
+    "rr_ordered_2": 61
+   }
+  },
+  {
+   "certified_by": "LP_DUAL_EXACT",
+   "family": "erdos22",
+   "optimum": 60,
+   "task_id": "dev-erdos-80a647eb-20261027-0008",
+   "values": {
+    "low_cycle": 60,
+    "multistart": 56,
+    "rr_adjacent_2": 60,
+    "rr_cross_2": 60,
+    "rr_ordered_2": 58
+   }
+  },
+  {
+   "certified_by": "LP_DUAL_EXACT",
+   "family": "erdos22",
+   "optimum": 57,
+   "task_id": "dev-erdos-80a647eb-20261027-0009",
+   "values": {
+    "low_cycle": 57,
+    "multistart": 53,
+    "rr_adjacent_2": 57,
+    "rr_cross_2": 57,
+    "rr_ordered_2": 52
+   }
+  },
+  {
+   "certified_by": "LP_DUAL_EXACT",
+   "family": "erdos22",
+   "optimum": 65,
+   "task_id": "dev-erdos-80a647eb-20261027-0010",
+   "values": {
+    "low_cycle": 60,
+    "multistart": 58,
+    "rr_adjacent_2": 65,
+    "rr_cross_2": 65,
+    "rr_ordered_2": 62
+   }
+  },
+  {
+   "certified_by": "LP_DUAL_EXACT",
+   "family": "erdos22",
+   "optimum": 60,
+   "task_id": "dev-erdos-80a647eb-20261027-0011",
+   "values": {
+    "low_cycle": 60,
+    "multistart": 58,
+    "rr_adjacent_2": 60,
+    "rr_cross_2": 60,
+    "rr_ordered_2": 55
+   }
+  },
+  {
+   "certified_by": "LP_DUAL_EXACT",
+   "family": "erdos22",
+   "optimum": 55,
+   "task_id": "dev-erdos-80a647eb-20261027-0012",
+   "values": {
+    "low_cycle": 54,
+    "multistart": 52,
+    "rr_adjacent_2": 53,
+    "rr_cross_2": 53,
+    "rr_ordered_2": 52
+   }
+  },
+  {
+   "certified_by": "LP_DUAL_EXACT",
+   "family": "erdos22",
+   "optimum": 57,
+   "task_id": "dev-erdos-80a647eb-20261027-0013",
+   "values": {
+    "low_cycle": 57,
+    "multistart": 55,
+    "rr_adjacent_2": 57,
+    "rr_cross_2": 57,
+    "rr_ordered_2": 55
+   }
+  },
+  {
+   "certified_by": "LP_DUAL_EXACT",
+   "family": "erdos22",
+   "optimum": 58,
+   "task_id": "dev-erdos-80a647eb-20261027-0014",
+   "values": {
+    "low_cycle": 57,
+    "multistart": 54,
+    "rr_adjacent_2": 57,
+    "rr_cross_2": 57,
+    "rr_ordered_2": 55
+   }
+  },
+  {
+   "certified_by": "LP_DUAL_EXACT",
+   "family": "erdos22",
+   "optimum": 58,
+   "task_id": "dev-erdos-80a647eb-20261027-0015",
+   "values": {
+    "low_cycle": 57,
+    "multistart": 55,
+    "rr_adjacent_2": 57,
+    "rr_cross_2": 57,
+    "rr_ordered_2": 51
+   }
+  },
+  {
+   "certified_by": "LP_DUAL_EXACT",
+   "family": "erdos30",
+   "optimum": 89,
+   "task_id": "dev-erdos-b73f6828-20261027-0000",
+   "values": {
+    "low_cycle": 87,
+    "multistart": 79,
+    "rr_adjacent_2": 86,
+    "rr_cross_2": 86,
+    "rr_ordered_2": 79
+   }
+  },
+  {
+   "certified_by": "LP_DUAL_EXACT",
+   "family": "erdos30",
+   "optimum": 89,
+   "task_id": "dev-erdos-b73f6828-20261027-0001",
+   "values": {
+    "low_cycle": 86,
+    "multistart": 83,
+    "rr_adjacent_2": 87,
+    "rr_cross_2": 87,
+    "rr_ordered_2": 83
+   }
+  },
+  {
+   "dropped": "optimum not certified",
+   "family": "erdos30",
+   "task_id": "dev-erdos-b73f6828-20261027-0002"
+  },
+  {
+   "certified_by": "LP_DUAL_EXACT",
+   "family": "erdos30",
+   "optimum": 96,
+   "task_id": "dev-erdos-b73f6828-20261027-0003",
+   "values": {
+    "low_cycle": 92,
+    "multistart": 89,
+    "rr_adjacent_2": 95,
+    "rr_cross_2": 95,
+    "rr_ordered_2": 86
+   }
+  },
+  {
+   "certified_by": "LP_DUAL_EXACT",
+   "family": "erdos30",
+   "optimum": 97,
+   "task_id": "dev-erdos-b73f6828-20261027-0004",
+   "values": {
+    "low_cycle": 94,
+    "multistart": 89,
+    "rr_adjacent_2": 96,
+    "rr_cross_2": 96,
+    "rr_ordered_2": 86
+   }
+  },
+  {
+   "certified_by": "LP_DUAL_EXACT",
+   "family": "erdos30",
+   "optimum": 91,
+   "task_id": "dev-erdos-b73f6828-20261027-0005",
+   "values": {
+    "low_cycle": 90,
+    "multistart": 87,
+    "rr_adjacent_2": 89,
+    "rr_cross_2": 90,
+    "rr_ordered_2": 86
+   }
+  },
+  {
+   "certified_by": "LP_DUAL_EXACT",
+   "family": "erdos30",
+   "optimum": 86,
+   "task_id": "dev-erdos-b73f6828-20261027-0006",
+   "values": {
+    "low_cycle": 85,
+    "multistart": 81,
+    "rr_adjacent_2": 85,
+    "rr_cross_2": 84,
+    "rr_ordered_2": 79
+   }
+  },
+  {
+   "certified_by": "LP_DUAL_EXACT",
+   "family": "erdos30",
+   "optimum": 102,
+   "task_id": "dev-erdos-b73f6828-20261027-0007",
+   "values": {
+    "low_cycle": 99,
+    "multistart": 94,
+    "rr_adjacent_2": 100,
+    "rr_cross_2": 100,
+    "rr_ordered_2": 93
+   }
+  },
+  {
+   "certified_by": "SAT_DRAT",
+   "family": "erdos30",
+   "optimum": 96,
+   "task_id": "dev-erdos-b73f6828-20261027-0008",
+   "values": {
+    "low_cycle": 92,
+    "multistart": 89,
+    "rr_adjacent_2": 96,
+    "rr_cross_2": 96,
+    "rr_ordered_2": 91
+   }
+  },
+  {
+   "certified_by": "LP_DUAL_EXACT",
+   "family": "erdos30",
+   "optimum": 94,
+   "task_id": "dev-erdos-b73f6828-20261027-0009",
+   "values": {
+    "low_cycle": 92,
+    "multistart": 87,
+    "rr_adjacent_2": 93,
+    "rr_cross_2": 93,
+    "rr_ordered_2": 89
+   }
+  },
+  {
+   "certified_by": "LP_DUAL_EXACT",
+   "family": "erdos30",
+   "optimum": 92,
+   "task_id": "dev-erdos-b73f6828-20261027-0010",
+   "values": {
+    "low_cycle": 88,
+    "multistart": 84,
+    "rr_adjacent_2": 91,
+    "rr_cross_2": 91,
+    "rr_ordered_2": 83
+   }
+  },
+  {
+   "certified_by": "LP_DUAL_EXACT",
+   "family": "erdos30",
+   "optimum": 102,
+   "task_id": "dev-erdos-b73f6828-20261027-0011",
+   "values": {
+    "low_cycle": 101,
+    "multistart": 91,
+    "rr_adjacent_2": 100,
+    "rr_cross_2": 100,
+    "rr_ordered_2": 93
+   }
+  },
+  {
+   "certified_by": "LP_DUAL_EXACT",
+   "family": "erdos30",
+   "optimum": 99,
+   "task_id": "dev-erdos-b73f6828-20261027-0012",
+   "values": {
+    "low_cycle": 97,
+    "multistart": 87,
+    "rr_adjacent_2": 98,
+    "rr_cross_2": 98,
+    "rr_ordered_2": 96
+   }
+  },
+  {
+   "certified_by": "LP_DUAL_EXACT",
+   "family": "erdos30",
+   "optimum": 92,
+   "task_id": "dev-erdos-b73f6828-20261027-0013",
+   "values": {
+    "low_cycle": 91,
+    "multistart": 86,
+    "rr_adjacent_2": 92,
+    "rr_cross_2": 92,
+    "rr_ordered_2": 85
+   }
+  },
+  {
+   "certified_by": "LP_DUAL_EXACT",
+   "family": "erdos30",
+   "optimum": 89,
+   "task_id": "dev-erdos-b73f6828-20261027-0014",
+   "values": {
+    "low_cycle": 87,
+    "multistart": 83,
+    "rr_adjacent_2": 88,
+    "rr_cross_2": 88,
+    "rr_ordered_2": 86
+   }
+  },
+  {
+   "dropped": "optimum not certified",
+   "family": "erdos30",
+   "task_id": "dev-erdos-b73f6828-20261027-0015"
+  },
+  {
+   "certified_by": "HOST_EDGE_COUNT",
+   "family": "bipartite22",
+   "optimum": 40,
+   "task_id": "dev-bipartite-28e0bd0d-20261027-0000",
+   "values": {
+    "low_cycle": 40,
+    "multistart": 40,
+    "rr_adjacent_2": 40,
+    "rr_cross_2": 40,
+    "rr_ordered_2": 40
+   }
+  },
+  {
+   "certified_by": "HOST_EDGE_COUNT",
+   "family": "bipartite22",
+   "optimum": 35,
+   "task_id": "dev-bipartite-28e0bd0d-20261027-0001",
+   "values": {
+    "low_cycle": 35,
+    "multistart": 35,
+    "rr_adjacent_2": 35,
+    "rr_cross_2": 35,
+    "rr_ordered_2": 35
+   }
+  },
+  {
+   "certified_by": "HOST_EDGE_COUNT",
+   "family": "bipartite22",
+   "optimum": 39,
+   "task_id": "dev-bipartite-28e0bd0d-20261027-0002",
+   "values": {
+    "low_cycle": 39,
+    "multistart": 39,
+    "rr_adjacent_2": 39,
+    "rr_cross_2": 39,
+    "rr_ordered_2": 39
+   }
+  },
+  {
+   "certified_by": "HOST_EDGE_COUNT",
+   "family": "bipartite22",
+   "optimum": 38,
+   "task_id": "dev-bipartite-28e0bd0d-20261027-0003",
+   "values": {
+    "low_cycle": 38,
+    "multistart": 38,
+    "rr_adjacent_2": 38,
+    "rr_cross_2": 38,
+    "rr_ordered_2": 38
+   }
+  },
+  {
+   "certified_by": "HOST_EDGE_COUNT",
+   "family": "bipartite22",
+   "optimum": 45,
+   "task_id": "dev-bipartite-28e0bd0d-20261027-0004",
+   "values": {
+    "low_cycle": 45,
+    "multistart": 45,
+    "rr_adjacent_2": 45,
+    "rr_cross_2": 45,
+    "rr_ordered_2": 45
+   }
+  },
+  {
+   "certified_by": "HOST_EDGE_COUNT",
+   "family": "bipartite22",
+   "optimum": 37,
+   "task_id": "dev-bipartite-28e0bd0d-20261027-0005",
+   "values": {
+    "low_cycle": 37,
+    "multistart": 37,
+    "rr_adjacent_2": 37,
+    "rr_cross_2": 37,
+    "rr_ordered_2": 37
+   }
+  },
+  {
+   "certified_by": "HOST_EDGE_COUNT",
+   "family": "bipartite22",
+   "optimum": 43,
+   "task_id": "dev-bipartite-28e0bd0d-20261027-0006",
+   "values": {
+    "low_cycle": 43,
+    "multistart": 43,
+    "rr_adjacent_2": 43,
+    "rr_cross_2": 43,
+    "rr_ordered_2": 43
+   }
+  },
+  {
+   "certified_by": "HOST_EDGE_COUNT",
+   "family": "bipartite22",
+   "optimum": 53,
+   "task_id": "dev-bipartite-28e0bd0d-20261027-0007",
+   "values": {
+    "low_cycle": 53,
+    "multistart": 53,
+    "rr_adjacent_2": 53,
+    "rr_cross_2": 53,
+    "rr_ordered_2": 53
+   }
+  },
+  {
+   "certified_by": "HOST_EDGE_COUNT",
+   "family": "bipartite22",
+   "optimum": 44,
+   "task_id": "dev-bipartite-28e0bd0d-20261027-0008",
+   "values": {
+    "low_cycle": 44,
+    "multistart": 44,
+    "rr_adjacent_2": 44,
+    "rr_cross_2": 44,
+    "rr_ordered_2": 44
+   }
+  },
+  {
+   "certified_by": "HOST_EDGE_COUNT",
+   "family": "bipartite22",
+   "optimum": 43,
+   "task_id": "dev-bipartite-28e0bd0d-20261027-0009",
+   "values": {
+    "low_cycle": 43,
+    "multistart": 43,
+    "rr_adjacent_2": 43,
+    "rr_cross_2": 43,
+    "rr_ordered_2": 43
+   }
+  },
+  {
+   "certified_by": "HOST_EDGE_COUNT",
+   "family": "bipartite22",
+   "optimum": 50,
+   "task_id": "dev-bipartite-28e0bd0d-20261027-0010",
+   "values": {
+    "low_cycle": 50,
+    "multistart": 50,
+    "rr_adjacent_2": 50,
+    "rr_cross_2": 50,
+    "rr_ordered_2": 50
+   }
+  },
+  {
+   "certified_by": "HOST_EDGE_COUNT",
+   "family": "bipartite22",
+   "optimum": 38,
+   "task_id": "dev-bipartite-28e0bd0d-20261027-0011",
+   "values": {
+    "low_cycle": 38,
+    "multistart": 38,
+    "rr_adjacent_2": 38,
+    "rr_cross_2": 38,
+    "rr_ordered_2": 38
+   }
+  },
+  {
+   "certified_by": "HOST_EDGE_COUNT",
+   "family": "bipartite22",
+   "optimum": 44,
+   "task_id": "dev-bipartite-28e0bd0d-20261027-0012",
+   "values": {
+    "low_cycle": 44,
+    "multistart": 44,
+    "rr_adjacent_2": 44,
+    "rr_cross_2": 44,
+    "rr_ordered_2": 44
+   }
+  },
+  {
+   "certified_by": "HOST_EDGE_COUNT",
+   "family": "bipartite22",
+   "optimum": 41,
+   "task_id": "dev-bipartite-28e0bd0d-20261027-0013",
+   "values": {
+    "low_cycle": 41,
+    "multistart": 41,
+    "rr_adjacent_2": 41,
+    "rr_cross_2": 41,
+    "rr_ordered_2": 41
+   }
+  },
+  {
+   "certified_by": "HOST_EDGE_COUNT",
+   "family": "bipartite22",
+   "optimum": 36,
+   "task_id": "dev-bipartite-28e0bd0d-20261027-0014",
+   "values": {
+    "low_cycle": 36,
+    "multistart": 36,
+    "rr_adjacent_2": 36,
+    "rr_cross_2": 36,
+    "rr_ordered_2": 36
+   }
+  },
+  {
+   "certified_by": "HOST_EDGE_COUNT",
+   "family": "bipartite22",
+   "optimum": 45,
+   "task_id": "dev-bipartite-28e0bd0d-20261027-0015",
+   "values": {
+    "low_cycle": 45,
+    "multistart": 45,
+    "rr_adjacent_2": 45,
+    "rr_cross_2": 45,
+    "rr_ordered_2": 45
+   }
+  }
+ ],
+ "seed": 20261027,
+ "split": "DEV"
+}

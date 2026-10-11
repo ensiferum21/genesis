@@ -1,0 +1,183 @@
+{
+ "code_identity": "6718dea32537fea1fb8f5fb0339395d36851402844f6b16504b55d2bc3450a1f",
+ "plan": {
+  "arms": [
+   "portfolio_auto",
+   "portfolio",
+   "lemmas_unfiltered",
+   "ghost_lemmas",
+   "ghost_lemmas_lean",
+   "oracle_lemmas"
+  ],
+  "baselines": [
+   "portfolio_auto",
+   "portfolio",
+   "lemmas_unfiltered"
+  ],
+  "budgets_cpu_s": [
+   2.0,
+   8.0
+  ],
+  "competitors": [
+   "portfolio_auto",
+   "portfolio",
+   "lemmas_unfiltered",
+   "ghost_lemmas",
+   "ghost_lemmas_lean"
+  ],
+  "consequence": {
+   "PLAUSIBLE_BENEFIT": "freeze the arm and design a sealed, custodian-run study (not run by the builder)",
+   "RETIRE_MECHANISM_GAP": "retire this mechanism design for this scope; record redesign directions",
+   "RETIRE_NO_HEADROOM": "retire the Ghost Census branch for this scope (equational theories, these budgets)"
+  },
+  "decision_rule": [
+   "HARNESS_ERROR if any problem is PROVED by one arm and GHOST_FOUND by another, or contradicts its label",
+   "RETIRE_NO_HEADROOM if at every budget oracle_lemmas settles fewer than best_baseline + margin",
+   "PLAUSIBLE_BENEFIT if at the larger budget some mechanism arm settles at least best_baseline + margin",
+   "RETIRE_MECHANISM_GAP otherwise (headroom exists, the Ghost Census arms do not capture it)"
+  ],
+  "diagnostic_only": [
+   "oracle_lemmas"
+  ],
+  "label_budget": {
+   "ghost_max_size": 6,
+   "ghost_total_s": 20,
+   "prove_cpu_s": 30
+  },
+  "lemmas_per_problem": 3,
+  "margin_rule": "margin = max(1, ceil(0.05 * problems))",
+  "mechanism_arms": [
+   "ghost_lemmas",
+   "ghost_lemmas_lean"
+  ],
+  "not_claimed": "no efficacy claim; DEV diagnostic only; a sealed study needs the independent custodian",
+  "schema": "genesis-ghost-census-v2-diagnostic-plan",
+  "seed": 20261024,
+  "settled_means": "PROVED (E claim) or GHOST_FOUND; the checked count is reported alongside",
+  "split": "DEV"
+ },
+ "plan_sha256": "0050b951ee8dce2310c371cd1e52a6fdb9a3f4773a1ff1b65bca459a50a68fb8",
+ "statements": {
+  "anti_comm": "![X,Y]: plus(times(X,Y),times(Y,X)) = zero",
+  "assoc": "![X,Y,Z]: mul(mul(X,Y),Z) = mul(X,mul(Y,Z))",
+  "cancel": "![X,Y,Z]: ((meet(X,Z) = meet(Y,Z) & join(X,Z) = join(Y,Z)) => X = Y)",
+  "chain": "![X,Y]: (meet(X,Y) = X | meet(X,Y) = Y)",
+  "char2": "![X]: plus(X,X) = zero",
+  "comm": "![X,Y]: mul(X,Y) = mul(Y,X)",
+  "distrib": "![X,Y,Z]: meet(X,join(Y,Z)) = join(meet(X,Y),meet(X,Z))",
+  "distrib_dual": "![X,Y,Z]: join(X,meet(Y,Z)) = meet(join(X,Y),join(X,Z))",
+  "flexible": "![X,Y]: mul(mul(X,Y),X) = mul(X,mul(Y,X))",
+  "h_complement": "![X,Y]: plus(X,n(X)) = plus(Y,n(Y))",
+  "h_de_morgan_wrong": "![X,Y]: n(plus(X,Y)) = plus(n(X),n(Y))",
+  "h_double_neg": "![X]: n(n(X)) = X",
+  "h_idem": "![X]: plus(X,X) = X",
+  "h_neg_fix": "![X]: n(X) = X",
+  "idem": "![X]: mul(X,X) = X",
+  "inv_comm": "![X,Y]: mul(inv(X),inv(Y)) = mul(inv(Y),inv(X))",
+  "inv_e": "inv(e) = e",
+  "inv_inv": "![X]: inv(inv(X)) = X",
+  "inv_mul": "![X,Y]: inv(mul(X,Y)) = mul(inv(Y),inv(X))",
+  "join_idem": "![X]: join(X,X) = X",
+  "ldiv_e": "![X]: ldiv(X,X) = e",
+  "ldiv_self": "![X,Y]: ldiv(X,X) = ldiv(Y,Y)",
+  "left_alt": "![X,Y]: mul(X,mul(X,Y)) = mul(mul(X,X),Y)",
+  "left_cancel": "![X,Y,Z]: (mul(X,Y) = mul(X,Z) => Y = Z)",
+  "meet_idem": "![X]: meet(X,X) = X",
+  "meet_is_join": "![X,Y]: meet(X,Y) = join(X,Y)",
+  "modular": "![X,Y,Z]: (meet(X,Z) = X => meet(join(X,Y),Z) = join(X,meet(Y,Z)))",
+  "moufang_right": "![X,Y,Z]: mul(mul(mul(X,Y),Z),Y) = mul(X,mul(Y,mul(Z,Y)))",
+  "neg_neg": "![X]: neg(neg(X)) = X",
+  "neg_self": "![X]: neg(X) = X",
+  "neg_times": "![X,Y]: times(neg(X),Y) = neg(times(X,Y))",
+  "no_nilpotent": "![X]: (times(X,X) = zero => X = zero)",
+  "order_dual": "![X,Y]: (meet(X,Y) = X <=> join(X,Y) = Y)",
+  "plus_cancel": "![X,Y,Z]: (plus(X,Y) = plus(X,Z) => Y = Z)",
+  "right_alt": "![X,Y]: mul(mul(Y,X),X) = mul(Y,mul(X,X))",
+  "right_cancel": "![X,Y,Z]: (mul(Y,X) = mul(Z,X) => Y = Z)",
+  "right_id": "![X]: mul(X,e) = X",
+  "right_inv": "![X]: mul(X,inv(X)) = e",
+  "self_inverse": "![X]: inv(X) = X",
+  "sq_central": "![X,Y]: mul(mul(X,X),Y) = mul(Y,mul(X,X))",
+  "sq_e_unique": "![X]: (mul(X,X) = X => X = e)",
+  "times_comm": "![X,Y]: times(X,Y) = times(Y,X)",
+  "times_idem": "![X]: times(X,X) = X",
+  "times_zero": "![X]: times(X,zero) = zero",
+  "unique_left_id": "![U]: ((![X]: mul(U,X) = X) => U = e)",
+  "zero_times": "![X]: times(zero,X) = zero"
+ },
+ "theories": {
+  "boolean_ring": [
+   "![X,Y,Z]: plus(plus(X,Y),Z) = plus(X,plus(Y,Z))",
+   "![X,Y]: plus(X,Y) = plus(Y,X)",
+   "![X]: plus(zero,X) = X",
+   "![X]: plus(X,neg(X)) = zero",
+   "![X,Y,Z]: times(times(X,Y),Z) = times(X,times(Y,Z))",
+   "![X,Y,Z]: times(X,plus(Y,Z)) = plus(times(X,Y),times(X,Z))",
+   "![X,Y,Z]: times(plus(X,Y),Z) = plus(times(X,Z),times(Y,Z))",
+   "![X]: times(X,X) = X"
+  ],
+  "dist_lattice": [
+   "![X,Y]: meet(X,Y) = meet(Y,X)",
+   "![X,Y]: join(X,Y) = join(Y,X)",
+   "![X,Y,Z]: meet(meet(X,Y),Z) = meet(X,meet(Y,Z))",
+   "![X,Y,Z]: join(join(X,Y),Z) = join(X,join(Y,Z))",
+   "![X,Y]: meet(X,join(X,Y)) = X",
+   "![X,Y]: join(X,meet(X,Y)) = X",
+   "![X,Y,Z]: meet(X,join(Y,Z)) = join(meet(X,Y),meet(X,Z))"
+  ],
+  "group": [
+   "![X,Y,Z]: mul(mul(X,Y),Z) = mul(X,mul(Y,Z))",
+   "![X]: mul(e,X) = X",
+   "![X]: mul(inv(X),X) = e"
+  ],
+  "group_exp2": [
+   "![X,Y,Z]: mul(mul(X,Y),Z) = mul(X,mul(Y,Z))",
+   "![X]: mul(e,X) = X",
+   "![X]: mul(inv(X),X) = e",
+   "![X]: mul(X,X) = e"
+  ],
+  "group_sq": [
+   "![X,Y,Z]: mul(mul(X,Y),Z) = mul(X,mul(Y,Z))",
+   "![X]: mul(e,X) = X",
+   "![X]: mul(inv(X),X) = e",
+   "![X,Y]: mul(mul(X,Y),mul(X,Y)) = mul(mul(X,X),mul(Y,Y))"
+  ],
+  "huntington": [
+   "![X,Y]: plus(X,Y) = plus(Y,X)",
+   "![X,Y,Z]: plus(plus(X,Y),Z) = plus(X,plus(Y,Z))",
+   "![X,Y]: plus(n(plus(n(X),Y)),n(plus(n(X),n(Y)))) = X"
+  ],
+  "lattice": [
+   "![X,Y]: meet(X,Y) = meet(Y,X)",
+   "![X,Y]: join(X,Y) = join(Y,X)",
+   "![X,Y,Z]: meet(meet(X,Y),Z) = meet(X,meet(Y,Z))",
+   "![X,Y,Z]: join(join(X,Y),Z) = join(X,join(Y,Z))",
+   "![X,Y]: meet(X,join(X,Y)) = X",
+   "![X,Y]: join(X,meet(X,Y)) = X"
+  ],
+  "moufang": [
+   "![X]: mul(e,X) = X",
+   "![X]: mul(X,e) = X",
+   "![X,Y]: mul(X,ldiv(X,Y)) = Y",
+   "![X,Y]: ldiv(X,mul(X,Y)) = Y",
+   "![X,Y]: mul(rdiv(X,Y),Y) = X",
+   "![X,Y]: rdiv(mul(X,Y),Y) = X",
+   "![X,Y,Z]: mul(mul(Z,X),mul(Y,Z)) = mul(mul(Z,mul(X,Y)),Z)"
+  ],
+  "quasigroup": [
+   "![X,Y]: mul(X,ldiv(X,Y)) = Y",
+   "![X,Y]: ldiv(X,mul(X,Y)) = Y",
+   "![X,Y]: mul(rdiv(X,Y),Y) = X",
+   "![X,Y]: rdiv(mul(X,Y),Y) = X"
+  ],
+  "ring": [
+   "![X,Y,Z]: plus(plus(X,Y),Z) = plus(X,plus(Y,Z))",
+   "![X,Y]: plus(X,Y) = plus(Y,X)",
+   "![X]: plus(zero,X) = X",
+   "![X]: plus(X,neg(X)) = zero",
+   "![X,Y,Z]: times(times(X,Y),Z) = times(X,times(Y,Z))",
+   "![X,Y,Z]: times(X,plus(Y,Z)) = plus(times(X,Y),times(X,Z))",
+   "![X,Y,Z]: times(plus(X,Y),Z) = plus(times(X,Z),times(Y,Z))"
+  ]
+ }
+}

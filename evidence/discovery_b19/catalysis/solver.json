@@ -1,0 +1,483 @@
+{
+ "arms": {
+  "cut_only": 0.5,
+  "full": 0.5,
+  "full_x4": 2.0,
+  "placebo": 0.5,
+  "random_cut": 0.5,
+  "repair_only": 0.5,
+  "repair_only_x4": 2.0
+ },
+ "factorial": {
+  "all": {
+   "cells_mean_value": {
+    "cut_only": 75.708,
+    "full": 77.042,
+    "placebo": 73.875,
+    "random_cut": 70.042
+   },
+   "full_minus_conventional": 1.583,
+   "full_minus_placebo": 3.167,
+   "full_minus_repair_only": 2.375,
+   "full_minus_repair_only_x4": 1.667,
+   "full_x4_minus_full": 0,
+   "interaction": -2.5,
+   "main_effect_encoding": 4.417,
+   "main_effect_repair": 2.583,
+   "optimum_hits": {
+    "conventional_low_cycle": 3,
+    "cut_only": 4,
+    "full": 10,
+    "full_x4": 10,
+    "placebo": 0,
+    "random_cut": 0,
+    "repair_only": 1,
+    "repair_only_x4": 1
+   },
+   "repair_only_x4_minus_repair_only": 0.708
+  },
+  "erdos22": {
+   "cells_mean_value": {
+    "cut_only": 59.417,
+    "full": 60.083,
+    "placebo": 58.333,
+    "random_cut": 56.417
+   },
+   "full_minus_conventional": 1.75,
+   "full_minus_placebo": 1.75,
+   "full_minus_repair_only": 1.583,
+   "full_minus_repair_only_x4": 1,
+   "full_x4_minus_full": 0,
+   "interaction": -1.25,
+   "main_effect_encoding": 2.375,
+   "main_effect_repair": 1.292,
+   "optimum_hits": {
+    "conventional_low_cycle": 2,
+    "cut_only": 4,
+    "full": 9,
+    "full_x4": 9,
+    "placebo": 0,
+    "random_cut": 0,
+    "repair_only": 1,
+    "repair_only_x4": 1
+   },
+   "repair_only_x4_minus_repair_only": 0.583
+  },
+  "erdos30": {
+   "cells_mean_value": {
+    "cut_only": 92,
+    "full": 94,
+    "placebo": 89.417,
+    "random_cut": 83.667
+   },
+   "full_minus_conventional": 1.417,
+   "full_minus_placebo": 4.583,
+   "full_minus_repair_only": 3.167,
+   "full_minus_repair_only_x4": 2.333,
+   "full_x4_minus_full": 0,
+   "interaction": -3.75,
+   "main_effect_encoding": 6.458,
+   "main_effect_repair": 3.875,
+   "optimum_hits": {
+    "conventional_low_cycle": 1,
+    "cut_only": 0,
+    "full": 1,
+    "full_x4": 1,
+    "placebo": 0,
+    "random_cut": 0,
+    "repair_only": 0,
+    "repair_only_x4": 0
+   },
+   "repair_only_x4_minus_repair_only": 0.833
+  }
+ },
+ "reading": "removal: full vs repair_only (the representation removed); placebo: a random encoding with the same repair; effort: repair_only and full at 4x CPU; conventional alternative: the DSL low_cycle baseline. Matched CPU within each comparison except the x4 controls.",
+ "rows": [
+  {
+   "certified_by": "LP_DUAL_EXACT",
+   "family": "erdos22",
+   "optimum": 57,
+   "task_id": "dev-erdos-80a647eb-20261023-0000",
+   "values": {
+    "conventional_low_cycle": 55,
+    "cut_only": 56,
+    "full": 56,
+    "full_x4": 56,
+    "placebo": 55,
+    "random_cut": 55,
+    "repair_only": 56,
+    "repair_only_x4": 56
+   }
+  },
+  {
+   "certified_by": "LP_DUAL_EXACT",
+   "family": "erdos22",
+   "optimum": 60,
+   "task_id": "dev-erdos-80a647eb-20261023-0001",
+   "values": {
+    "conventional_low_cycle": 57,
+    "cut_only": 60,
+    "full": 60,
+    "full_x4": 60,
+    "placebo": 58,
+    "random_cut": 54,
+    "repair_only": 57,
+    "repair_only_x4": 58
+   }
+  },
+  {
+   "certified_by": "LP_DUAL_EXACT",
+   "family": "erdos22",
+   "optimum": 55,
+   "task_id": "dev-erdos-80a647eb-20261023-0002",
+   "values": {
+    "conventional_low_cycle": 55,
+    "cut_only": 54,
+    "full": 55,
+    "full_x4": 55,
+    "placebo": 54,
+    "random_cut": 52,
+    "repair_only": 55,
+    "repair_only_x4": 55
+   }
+  },
+  {
+   "certified_by": "LP_DUAL_EXACT",
+   "family": "erdos22",
+   "optimum": 57,
+   "task_id": "dev-erdos-80a647eb-20261023-0003",
+   "values": {
+    "conventional_low_cycle": 55,
+    "cut_only": 56,
+    "full": 56,
+    "full_x4": 56,
+    "placebo": 55,
+    "random_cut": 54,
+    "repair_only": 55,
+    "repair_only_x4": 56
+   }
+  },
+  {
+   "certified_by": "LP_DUAL_EXACT",
+   "family": "erdos22",
+   "optimum": 59,
+   "task_id": "dev-erdos-80a647eb-20261023-0004",
+   "values": {
+    "conventional_low_cycle": 57,
+    "cut_only": 58,
+    "full": 59,
+    "full_x4": 59,
+    "placebo": 57,
+    "random_cut": 55,
+    "repair_only": 58,
+    "repair_only_x4": 58
+   }
+  },
+  {
+   "certified_by": "LP_DUAL_EXACT",
+   "family": "erdos22",
+   "optimum": 61,
+   "task_id": "dev-erdos-80a647eb-20261023-0005",
+   "values": {
+    "conventional_low_cycle": 59,
+    "cut_only": 60,
+    "full": 61,
+    "full_x4": 61,
+    "placebo": 59,
+    "random_cut": 57,
+    "repair_only": 58,
+    "repair_only_x4": 60
+   }
+  },
+  {
+   "certified_by": "LP_DUAL_EXACT",
+   "family": "erdos22",
+   "optimum": 61,
+   "task_id": "dev-erdos-80a647eb-20261023-0006",
+   "values": {
+    "conventional_low_cycle": 57,
+    "cut_only": 61,
+    "full": 61,
+    "full_x4": 61,
+    "placebo": 58,
+    "random_cut": 56,
+    "repair_only": 58,
+    "repair_only_x4": 59
+   }
+  },
+  {
+   "certified_by": "LP_DUAL_EXACT",
+   "family": "erdos22",
+   "optimum": 57,
+   "task_id": "dev-erdos-80a647eb-20261023-0007",
+   "values": {
+    "conventional_low_cycle": 55,
+    "cut_only": 55,
+    "full": 56,
+    "full_x4": 56,
+    "placebo": 55,
+    "random_cut": 53,
+    "repair_only": 56,
+    "repair_only_x4": 56
+   }
+  },
+  {
+   "certified_by": "LP_DUAL_EXACT",
+   "family": "erdos22",
+   "optimum": 62,
+   "task_id": "dev-erdos-80a647eb-20261023-0008",
+   "values": {
+    "conventional_low_cycle": 58,
+    "cut_only": 62,
+    "full": 62,
+    "full_x4": 62,
+    "placebo": 61,
+    "random_cut": 60,
+    "repair_only": 60,
+    "repair_only_x4": 61
+   }
+  },
+  {
+   "certified_by": "LP_DUAL_EXACT",
+   "family": "erdos22",
+   "optimum": 70,
+   "task_id": "dev-erdos-80a647eb-20261023-0009",
+   "values": {
+    "conventional_low_cycle": 68,
+    "cut_only": 70,
+    "full": 70,
+    "full_x4": 70,
+    "placebo": 67,
+    "random_cut": 65,
+    "repair_only": 67,
+    "repair_only_x4": 67
+   }
+  },
+  {
+   "certified_by": "SAT_DRAT",
+   "family": "erdos22",
+   "optimum": 62,
+   "task_id": "dev-erdos-80a647eb-20261023-0010",
+   "values": {
+    "conventional_low_cycle": 61,
+    "cut_only": 61,
+    "full": 62,
+    "full_x4": 62,
+    "placebo": 60,
+    "random_cut": 59,
+    "repair_only": 60,
+    "repair_only_x4": 61
+   }
+  },
+  {
+   "certified_by": "LP_DUAL_EXACT",
+   "family": "erdos22",
+   "optimum": 63,
+   "task_id": "dev-erdos-80a647eb-20261023-0011",
+   "values": {
+    "conventional_low_cycle": 63,
+    "cut_only": 60,
+    "full": 63,
+    "full_x4": 63,
+    "placebo": 61,
+    "random_cut": 57,
+    "repair_only": 62,
+    "repair_only_x4": 62
+   }
+  },
+  {
+   "certified_by": "LP_DUAL_EXACT",
+   "family": "erdos30",
+   "optimum": 95,
+   "task_id": "dev-erdos-b73f6828-20261023-0000",
+   "values": {
+    "conventional_low_cycle": 95,
+    "cut_only": 91,
+    "full": 94,
+    "full_x4": 94,
+    "placebo": 91,
+    "random_cut": 81,
+    "repair_only": 92,
+    "repair_only_x4": 93
+   }
+  },
+  {
+   "certified_by": "LP_DUAL_EXACT",
+   "family": "erdos30",
+   "optimum": 90,
+   "task_id": "dev-erdos-b73f6828-20261023-0001",
+   "values": {
+    "conventional_low_cycle": 89,
+    "cut_only": 86,
+    "full": 88,
+    "full_x4": 88,
+    "placebo": 85,
+    "random_cut": 80,
+    "repair_only": 86,
+    "repair_only_x4": 87
+   }
+  },
+  {
+   "certified_by": "LP_DUAL_EXACT",
+   "family": "erdos30",
+   "optimum": 96,
+   "task_id": "dev-erdos-b73f6828-20261023-0002",
+   "values": {
+    "conventional_low_cycle": 94,
+    "cut_only": 91,
+    "full": 95,
+    "full_x4": 95,
+    "placebo": 90,
+    "random_cut": 82,
+    "repair_only": 91,
+    "repair_only_x4": 94
+   }
+  },
+  {
+   "certified_by": "LP_DUAL_EXACT",
+   "family": "erdos30",
+   "optimum": 90,
+   "task_id": "dev-erdos-b73f6828-20261023-0003",
+   "values": {
+    "conventional_low_cycle": 87,
+    "cut_only": 85,
+    "full": 88,
+    "full_x4": 88,
+    "placebo": 85,
+    "random_cut": 79,
+    "repair_only": 88,
+    "repair_only_x4": 87
+   }
+  },
+  {
+   "certified_by": "LP_DUAL_EXACT",
+   "family": "erdos30",
+   "optimum": 90,
+   "task_id": "dev-erdos-b73f6828-20261023-0004",
+   "values": {
+    "conventional_low_cycle": 88,
+    "cut_only": 87,
+    "full": 89,
+    "full_x4": 89,
+    "placebo": 86,
+    "random_cut": 79,
+    "repair_only": 87,
+    "repair_only_x4": 87
+   }
+  },
+  {
+   "certified_by": "LP_DUAL_EXACT",
+   "family": "erdos30",
+   "optimum": 103,
+   "task_id": "dev-erdos-b73f6828-20261023-0005",
+   "values": {
+    "conventional_low_cycle": 97,
+    "cut_only": 102,
+    "full": 102,
+    "full_x4": 102,
+    "placebo": 96,
+    "random_cut": 90,
+    "repair_only": 96,
+    "repair_only_x4": 97
+   }
+  },
+  {
+   "certified_by": "LP_DUAL_EXACT",
+   "family": "erdos30",
+   "optimum": 102,
+   "task_id": "dev-erdos-b73f6828-20261023-0006",
+   "values": {
+    "conventional_low_cycle": 97,
+    "cut_only": 100,
+    "full": 101,
+    "full_x4": 101,
+    "placebo": 93,
+    "random_cut": 91,
+    "repair_only": 94,
+    "repair_only_x4": 96
+   }
+  },
+  {
+   "certified_by": "LP_DUAL_EXACT",
+   "family": "erdos30",
+   "optimum": 93,
+   "task_id": "dev-erdos-b73f6828-20261023-0007",
+   "values": {
+    "conventional_low_cycle": 89,
+    "cut_only": 92,
+    "full": 92,
+    "full_x4": 92,
+    "placebo": 88,
+    "random_cut": 86,
+    "repair_only": 89,
+    "repair_only_x4": 89
+   }
+  },
+  {
+   "certified_by": "LP_DUAL_EXACT",
+   "family": "erdos30",
+   "optimum": 97,
+   "task_id": "dev-erdos-b73f6828-20261023-0008",
+   "values": {
+    "conventional_low_cycle": 94,
+    "cut_only": 94,
+    "full": 96,
+    "full_x4": 96,
+    "placebo": 91,
+    "random_cut": 86,
+    "repair_only": 93,
+    "repair_only_x4": 94
+   }
+  },
+  {
+   "certified_by": "LP_DUAL_EXACT",
+   "family": "erdos30",
+   "optimum": 92,
+   "task_id": "dev-erdos-b73f6828-20261023-0009",
+   "values": {
+    "conventional_low_cycle": 91,
+    "cut_only": 85,
+    "full": 89,
+    "full_x4": 89,
+    "placebo": 86,
+    "random_cut": 77,
+    "repair_only": 87,
+    "repair_only_x4": 88
+   }
+  },
+  {
+   "certified_by": "LP_DUAL_EXACT",
+   "family": "erdos30",
+   "optimum": 97,
+   "task_id": "dev-erdos-b73f6828-20261023-0010",
+   "values": {
+    "conventional_low_cycle": 94,
+    "cut_only": 96,
+    "full": 97,
+    "full_x4": 97,
+    "placebo": 91,
+    "random_cut": 87,
+    "repair_only": 93,
+    "repair_only_x4": 92
+   }
+  },
+  {
+   "certified_by": "LP_DUAL_EXACT",
+   "family": "erdos30",
+   "optimum": 99,
+   "task_id": "dev-erdos-b73f6828-20261023-0011",
+   "values": {
+    "conventional_low_cycle": 96,
+    "cut_only": 95,
+    "full": 97,
+    "full_x4": 97,
+    "placebo": 91,
+    "random_cut": 86,
+    "repair_only": 94,
+    "repair_only_x4": 96
+   }
+  }
+ ],
+ "seed": 20261023,
+ "split": "DEV"
+}

@@ -1,0 +1,10 @@
+{
+ "request": {
+  "prompt": "Return the paper's title, authors, and the full abstract text copied verbatim (exact wording, no paraphrase). Then list any sentence of the abstract that mentions Tuza's conjecture, fractional packing, nu*, tau, or Krivelevich, verbatim.",
+  "url": "https://arxiv.org/abs/1012.0372"
+ },
+ "response_text": "**Title:** Packing triangles in weighted graphs\n\n**Authors:** Guillaume Chapuy, Matt DeVos, Jessica McDonald, Bojan Mohar, Diego Scheide\n\n**Abstract:** Each quoted segment below is under the 125-character limit, so the full abstract is given in pieces:\n\n1. \"Tuza conjectured that for every graph G, the maximum size $\\nu$ of a set of edge-disjoint triangles\"\n2. \"and minimum size $\\tau$ of a set of edges meeting all triangles satisfy $\\tau \\leq 2\\nu$ .\"\n3. \"We consider an edge-weighted version of this conjecture, which amounts to packing and covering triangles in multigraphs.\"\n4. \"Several known results about the original problem are shown to be true in this context, and some are improved.\"\n5. \"In particular, we answer a question of Krivelevich who proved that $\\tau \\leq 2\\nu^*$\"\n6. \"(where $\\nu^*$ is the fractional version of $\\nu$ ), and asked if this is tight.\"\n7. \"We prove that $\\tau \\leq 2\\nu^* - \\frac{1}{\\sqrt{6}}\\sqrt{\\nu^*}$ and show that this bound is essentially best possible.\"",
+ "retrieved_utc": "2026-10-11T14:05:00Z",
+ "source_id": "S1",
+ "tool": "WebFetch"
+}

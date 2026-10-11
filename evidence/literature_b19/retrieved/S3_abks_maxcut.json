@@ -1,0 +1,10 @@
+{
+ "request": {
+  "prompt": "Return verbatim (exact wording) the title, the authors, and the sentence(s) in the paper stating that every graph with m edges contains a bipartite subgraph with at least m/2 edges (or similar), including any attribution (e.g., to Erdős). Quote exactly; do not paraphrase.",
+  "url": "https://web.math.princeton.edu/~nalon/PDFS/abks5.pdf"
+ },
+ "response_text": "**Title:** \"Maximum cuts and judicious partitions in graphs without short cycles\"\n\n**Authors:** Noga Alon, Béla Bollobás, Michael Krivelevich, and Benny Sudakov. (The source text renders \"Béla\" with a garbled accent.)\n\n**Sentences on the m/2 bound:**\n\n1. Section 2.1 (Background): \"As we indicated in the introduction, it is quite easy to show that every graph G = (V, E) with m edges contains a bipartite cut (V1, V2) spanning at least m/2 edges.\"\n\n2. Section 1 (Introduction): \"...the above simple argument shows that every graph G with m edges has a cut of size at least m/2, implying f(G) ≥ m/2...\"\n\nNeither sentence attributes the result to Erdős or anyone else. The paper calls it an \"elementary\" or \"simple\" argument.",
+ "retrieved_utc": "2026-10-11T14:06:00Z",
+ "source_id": "S3",
+ "tool": "WebFetch"
+}

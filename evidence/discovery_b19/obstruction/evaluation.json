@@ -1,0 +1,554 @@
+{
+ "rows": [
+  {
+   "edges": 142,
+   "joint": {
+    "gap": 1,
+    "lower": 99,
+    "lp_certificate_recheck": "VALID",
+    "status": "BOUNDS_ONLY",
+    "steps": [
+     {
+      "bound": 100,
+      "cpu_s": 0.604,
+      "lp_value": 100.5,
+      "step": "lp-dual",
+      "verdict": "VALID"
+     },
+     {
+      "calls": [
+       {
+        "k": 99,
+        "seconds": 0.724,
+        "status": "SAT"
+       },
+       {
+        "k": 100,
+        "seconds": 57.017,
+        "status": "UNKNOWN"
+       }
+      ],
+      "step": "sat-drat"
+     }
+    ],
+    "upper": 100,
+    "upper_method": "LP_DUAL_EXACT",
+    "wall_s": 59.33
+   },
+   "n": 30,
+   "optima_agree": null,
+   "p": 0.3,
+   "reference": {
+    "gap": 42,
+    "lower": 100,
+    "status": "BOUNDS_ONLY",
+    "upper": 142,
+    "wall_s": 59.65
+   },
+   "task_id": "dev-erdos-b73f6828-20261021-0000"
+  },
+  {
+   "edges": 152,
+   "joint": {
+    "gap": 0,
+    "lower": 107,
+    "lp_certificate_recheck": "VALID",
+    "status": "OPTIMALITY_CHECKED",
+    "steps": [
+     {
+      "bound": 107,
+      "cpu_s": 0.014,
+      "lp_value": 107.0,
+      "step": "lp-dual",
+      "verdict": "VALID"
+     },
+     {
+      "calls": [
+       {
+        "k": 106,
+        "seconds": 3.479,
+        "status": "SAT"
+       },
+       {
+        "k": 107,
+        "seconds": 7.347,
+        "status": "SAT"
+       }
+      ],
+      "step": "sat-drat"
+     }
+    ],
+    "upper": 107,
+    "upper_method": "LP_DUAL_EXACT",
+    "wall_s": 11.91
+   },
+   "n": 30,
+   "optima_agree": null,
+   "p": 0.3,
+   "reference": {
+    "gap": 45,
+    "lower": 107,
+    "status": "BOUNDS_ONLY",
+    "upper": 152,
+    "wall_s": 59.68
+   },
+   "task_id": "dev-erdos-b73f6828-20261021-0001"
+  },
+  {
+   "edges": 136,
+   "joint": {
+    "gap": 0,
+    "lower": 101,
+    "lp_certificate_recheck": "VALID",
+    "status": "OPTIMALITY_CHECKED",
+    "steps": [
+     {
+      "bound": 101,
+      "cpu_s": 0.015,
+      "lp_value": 101.33333333333333,
+      "step": "lp-dual",
+      "verdict": "VALID"
+     },
+     {
+      "calls": [
+       {
+        "k": 101,
+        "seconds": 2.591,
+        "status": "SAT"
+       }
+      ],
+      "step": "sat-drat"
+     }
+    ],
+    "upper": 101,
+    "upper_method": "LP_DUAL_EXACT",
+    "wall_s": 3.64
+   },
+   "n": 30,
+   "optima_agree": true,
+   "p": 0.3,
+   "reference": {
+    "gap": 0,
+    "lower": 101,
+    "status": "OPTIMALITY_CHECKED",
+    "upper": 101,
+    "wall_s": 15.86
+   },
+   "task_id": "dev-erdos-b73f6828-20261021-0002"
+  },
+  {
+   "edges": 141,
+   "joint": {
+    "gap": 0,
+    "lower": 100,
+    "lp_certificate_recheck": "VALID",
+    "status": "OPTIMALITY_CHECKED",
+    "steps": [
+     {
+      "bound": 100,
+      "cpu_s": 0.015,
+      "lp_value": 99.99999999999997,
+      "step": "lp-dual",
+      "verdict": "VALID"
+     },
+     {
+      "calls": [
+       {
+        "k": 100,
+        "seconds": 8.599,
+        "status": "SAT"
+       }
+      ],
+      "step": "sat-drat"
+     }
+    ],
+    "upper": 100,
+    "upper_method": "LP_DUAL_EXACT",
+    "wall_s": 9.64
+   },
+   "n": 30,
+   "optima_agree": null,
+   "p": 0.3,
+   "reference": {
+    "gap": 41,
+    "lower": 100,
+    "status": "BOUNDS_ONLY",
+    "upper": 141,
+    "wall_s": 59.97
+   },
+   "task_id": "dev-erdos-b73f6828-20261021-0003"
+  },
+  {
+   "edges": 151,
+   "joint": {
+    "gap": 0,
+    "lower": 120,
+    "lp_certificate_recheck": "VALID",
+    "status": "OPTIMALITY_CHECKED",
+    "steps": [
+     {
+      "bound": 120,
+      "cpu_s": 0.01,
+      "lp_value": 120.5,
+      "step": "lp-dual",
+      "verdict": "VALID"
+     },
+     {
+      "calls": [
+       {
+        "k": 117,
+        "seconds": 0.246,
+        "status": "SAT"
+       },
+       {
+        "k": 118,
+        "seconds": 0.197,
+        "status": "SAT"
+       },
+       {
+        "k": 119,
+        "seconds": 0.233,
+        "status": "SAT"
+       },
+       {
+        "k": 120,
+        "seconds": 0.376,
+        "status": "SAT"
+       }
+      ],
+      "step": "sat-drat"
+     }
+    ],
+    "upper": 120,
+    "upper_method": "LP_DUAL_EXACT",
+    "wall_s": 2.19
+   },
+   "n": 36,
+   "optima_agree": true,
+   "p": 0.25,
+   "reference": {
+    "gap": 0,
+    "lower": 120,
+    "status": "OPTIMALITY_CHECKED",
+    "upper": 120,
+    "wall_s": 11.56
+   },
+   "task_id": "dev-erdos-7fee9578-20261021-0000"
+  },
+  {
+   "edges": 164,
+   "joint": {
+    "gap": 0,
+    "lower": 122,
+    "lp_certificate_recheck": "VALID",
+    "status": "OPTIMALITY_CHECKED",
+    "steps": [
+     {
+      "bound": 122,
+      "cpu_s": 0.015,
+      "lp_value": 122.33333333333334,
+      "step": "lp-dual",
+      "verdict": "VALID"
+     },
+     {
+      "calls": [
+       {
+        "k": 122,
+        "seconds": 1.019,
+        "status": "SAT"
+       }
+      ],
+      "step": "sat-drat"
+     }
+    ],
+    "upper": 122,
+    "upper_method": "LP_DUAL_EXACT",
+    "wall_s": 2.08
+   },
+   "n": 36,
+   "optima_agree": true,
+   "p": 0.25,
+   "reference": {
+    "gap": 0,
+    "lower": 122,
+    "status": "OPTIMALITY_CHECKED",
+    "upper": 122,
+    "wall_s": 106.95
+   },
+   "task_id": "dev-erdos-7fee9578-20261021-0001"
+  },
+  {
+   "edges": 160,
+   "joint": {
+    "gap": 0,
+    "lower": 117,
+    "lp_certificate_recheck": "VALID",
+    "status": "OPTIMALITY_CHECKED",
+    "steps": [
+     {
+      "bound": 117,
+      "cpu_s": 0.015,
+      "lp_value": 117.5,
+      "step": "lp-dual",
+      "verdict": "VALID"
+     },
+     {
+      "calls": [
+       {
+        "k": 117,
+        "seconds": 1.308,
+        "status": "SAT"
+       }
+      ],
+      "step": "sat-drat"
+     }
+    ],
+    "upper": 117,
+    "upper_method": "LP_DUAL_EXACT",
+    "wall_s": 2.38
+   },
+   "n": 36,
+   "optima_agree": null,
+   "p": 0.25,
+   "reference": {
+    "gap": 43,
+    "lower": 117,
+    "status": "BOUNDS_ONLY",
+    "upper": 160,
+    "wall_s": 59.22
+   },
+   "task_id": "dev-erdos-7fee9578-20261021-0002"
+  },
+  {
+   "edges": 168,
+   "joint": {
+    "gap": 0,
+    "lower": 126,
+    "lp_certificate_recheck": "VALID",
+    "status": "OPTIMALITY_CHECKED",
+    "steps": [
+     {
+      "bound": 126,
+      "cpu_s": 0.016,
+      "lp_value": 126.27272727272725,
+      "step": "lp-dual",
+      "verdict": "VALID"
+     },
+     {
+      "calls": [
+       {
+        "k": 126,
+        "seconds": 12.024,
+        "status": "SAT"
+       }
+      ],
+      "step": "sat-drat"
+     }
+    ],
+    "upper": 126,
+    "upper_method": "LP_DUAL_EXACT",
+    "wall_s": 13.15
+   },
+   "n": 36,
+   "optima_agree": null,
+   "p": 0.25,
+   "reference": {
+    "gap": 42,
+    "lower": 126,
+    "status": "BOUNDS_ONLY",
+    "upper": 168,
+    "wall_s": 59.36
+   },
+   "task_id": "dev-erdos-7fee9578-20261021-0003"
+  },
+  {
+   "edges": 145,
+   "joint": {
+    "gap": 0,
+    "lower": 116,
+    "lp_certificate_recheck": "VALID",
+    "status": "OPTIMALITY_CHECKED",
+    "steps": [
+     {
+      "bound": 116,
+      "cpu_s": 0.008,
+      "lp_value": 116.0,
+      "step": "lp-dual",
+      "verdict": "VALID"
+     },
+     {
+      "calls": [
+       {
+        "k": 116,
+        "seconds": 0.416,
+        "status": "SAT"
+       }
+      ],
+      "step": "sat-drat"
+     }
+    ],
+    "upper": 116,
+    "upper_method": "LP_DUAL_EXACT",
+    "wall_s": 1.48
+   },
+   "n": 40,
+   "optima_agree": true,
+   "p": 0.2,
+   "reference": {
+    "gap": 0,
+    "lower": 116,
+    "status": "OPTIMALITY_CHECKED",
+    "upper": 116,
+    "wall_s": 6.66
+   },
+   "task_id": "dev-erdos-3765432f-20261021-0000"
+  },
+  {
+   "edges": 166,
+   "joint": {
+    "gap": 0,
+    "lower": 125,
+    "lp_certificate_recheck": "VALID",
+    "status": "OPTIMALITY_CHECKED",
+    "steps": [
+     {
+      "bound": 125,
+      "cpu_s": 0.015,
+      "lp_value": 125.0,
+      "step": "lp-dual",
+      "verdict": "VALID"
+     },
+     {
+      "calls": [
+       {
+        "k": 124,
+        "seconds": 0.993,
+        "status": "SAT"
+       },
+       {
+        "k": 125,
+        "seconds": 10.845,
+        "status": "SAT"
+       }
+      ],
+      "step": "sat-drat"
+     }
+    ],
+    "upper": 125,
+    "upper_method": "LP_DUAL_EXACT",
+    "wall_s": 13.01
+   },
+   "n": 40,
+   "optima_agree": null,
+   "p": 0.2,
+   "reference": {
+    "gap": 41,
+    "lower": 125,
+    "status": "BOUNDS_ONLY",
+    "upper": 166,
+    "wall_s": 59.92
+   },
+   "task_id": "dev-erdos-3765432f-20261021-0001"
+  },
+  {
+   "edges": 154,
+   "joint": {
+    "gap": 0,
+    "lower": 122,
+    "lp_certificate_recheck": "VALID",
+    "status": "OPTIMALITY_CHECKED",
+    "steps": [
+     {
+      "bound": 122,
+      "cpu_s": 0.009,
+      "lp_value": 122.0,
+      "step": "lp-dual",
+      "verdict": "VALID"
+     },
+     {
+      "calls": [
+       {
+        "k": 122,
+        "seconds": 1.11,
+        "status": "SAT"
+       }
+      ],
+      "step": "sat-drat"
+     }
+    ],
+    "upper": 122,
+    "upper_method": "LP_DUAL_EXACT",
+    "wall_s": 2.19
+   },
+   "n": 40,
+   "optima_agree": true,
+   "p": 0.2,
+   "reference": {
+    "gap": 0,
+    "lower": 122,
+    "status": "OPTIMALITY_CHECKED",
+    "upper": 122,
+    "wall_s": 14.89
+   },
+   "task_id": "dev-erdos-3765432f-20261021-0002"
+  },
+  {
+   "edges": 142,
+   "joint": {
+    "gap": 0,
+    "lower": 116,
+    "lp_certificate_recheck": "VALID",
+    "status": "OPTIMALITY_CHECKED",
+    "steps": [
+     {
+      "bound": 116,
+      "cpu_s": 0.008,
+      "lp_value": 116.5,
+      "step": "lp-dual",
+      "verdict": "VALID"
+     },
+     {
+      "calls": [
+       {
+        "k": 116,
+        "seconds": 0.305,
+        "status": "SAT"
+       }
+      ],
+      "step": "sat-drat"
+     }
+    ],
+    "upper": 116,
+    "upper_method": "LP_DUAL_EXACT",
+    "wall_s": 1.77
+   },
+   "n": 40,
+   "optima_agree": true,
+   "p": 0.2,
+   "reference": {
+    "gap": 0,
+    "lower": 116,
+    "status": "OPTIMALITY_CHECKED",
+    "upper": 116,
+    "wall_s": 1.77
+   },
+   "task_id": "dev-erdos-3765432f-20261021-0003"
+  }
+ ],
+ "seed": 20261021,
+ "split": "DEV",
+ "summary": {
+  "budget_wall_s": 60,
+  "disagreements": 0,
+  "joint_by_lp": 12,
+  "joint_certified": 11,
+  "joint_mean_gap": 0.08333333333333333,
+  "lean_inequalities": {
+   "c4_not_all": "CHECKED",
+   "tri_not_all": "CHECKED"
+  },
+  "reference_certified": 6,
+  "reference_mean_gap": 21.166666666666668,
+  "tasks": 12
+ }
+}

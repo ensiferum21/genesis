@@ -1,0 +1,93 @@
+{
+ "adjudication_pending": 4,
+ "ambiguities_material": {
+  "\"C4-free\" (Genesis domain)": true,
+  "\"at least m/2\" (C3)": false,
+  "\"monotone\" (C2 vs Mathlib Monotone)": true
+ },
+ "claims": {
+  "C1": "EXTRACTED",
+  "C1def": "EXTRACTED",
+  "C2": "EXTRACTED",
+  "C3": "EXTRACTED",
+  "C4": "EXTRACTED",
+  "C5": "EXTRACTED",
+  "L1": "EXTRACTED",
+  "L2": "EXTRACTED"
+ },
+ "executable_checks": {
+  "C1": "PASS",
+  "C2": "PASS",
+  "C3": "PASS"
+ },
+ "lean_links": {
+  "LitSpec.rc_antitone": "CHECKED",
+  "LitSpec.rc_lower_set": "CHECKED"
+ },
+ "links": {
+  "C1": [
+   "CONTEXT",
+   "LINKED"
+  ],
+  "C2": [
+   "SPECIALIZATION",
+   "LINKED"
+  ],
+  "C3": [
+   "EXACT",
+   "LINKED"
+  ],
+  "C4": [
+   "CONTEXT",
+   "LINKED"
+  ],
+  "C5": [
+   "CONTEXT",
+   "LINKED"
+  ],
+  "L1": [
+   "EXACT",
+   "LINKED"
+  ],
+  "L2": [
+   "EXACT",
+   "LINKED"
+  ]
+ },
+ "novelty": {
+  "B18-RC.C0": "PRIOR_ART_FOUND",
+  "B18-cross_2": "PRIOR_ART_FOUND",
+  "B19-LP-certificates": "PRIOR_ART_FOUND",
+  "B19-W16-lean-replay": "PRIOR_ART_FOUND"
+ },
+ "sources": {
+  "L1": {
+   "fidelity": "VERBATIM",
+   "quarantined": false
+  },
+  "L2": {
+   "fidelity": "VERBATIM",
+   "quarantined": false
+  },
+  "S1": {
+   "fidelity": "TOOL_SUMMARIZED",
+   "quarantined": false
+  },
+  "S2": {
+   "fidelity": "TOOL_SUMMARIZED",
+   "quarantined": false
+  },
+  "S3": {
+   "fidelity": "TOOL_SUMMARIZED",
+   "quarantined": false
+  },
+  "S4": {
+   "fidelity": "TOOL_SUMMARIZED",
+   "quarantined": false
+  },
+  "S5": {
+   "fidelity": "TOOL_SUMMARIZED",
+   "quarantined": false
+  }
+ }
+}

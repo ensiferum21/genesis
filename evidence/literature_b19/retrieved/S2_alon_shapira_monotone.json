@@ -1,0 +1,10 @@
+{
+ "request": {
+  "prompt": "Return verbatim (exact wording) the title, the authors, and the sentence(s) in the paper that define what a \"monotone\" graph property is. Quote exactly; do not paraphrase.",
+  "url": "https://web.math.princeton.edu/~nalon/PDFS/monotone1.pdf"
+ },
+ "response_text": "**Title:** \"Every Monotone Graph Property is Testable\"\n\n**Authors:** Noga Alon and Asaf Shapira\n\n**Definition of \"monotone\":** \"A graph property is called monotone if it is closed under removal of edges and vertices.\" (Abstract)",
+ "retrieved_utc": "2026-10-11T14:05:30Z",
+ "source_id": "S2",
+ "tool": "WebFetch"
+}

@@ -1,0 +1,89 @@
+[
+ {
+  "instances_tested": 30,
+  "material_on_tested_range": false,
+  "pairs": [
+   {
+    "distinguished": false,
+    "readings": [
+     "ceiling",
+     "real"
+    ],
+    "witness": null
+   }
+  ],
+  "phrase": "\"at least m/2\" (C3)",
+  "reading_used": "real",
+  "readings": [
+   "ceiling",
+   "real"
+  ],
+  "record": "ambiguity",
+  "schema": "genesis-literature-v1"
+ },
+ {
+  "instances_tested": 6,
+  "material_on_tested_range": true,
+  "pairs": [
+   {
+    "distinguished": true,
+    "readings": [
+     "graph_theory_down_closed",
+     "order_theory_up_closed"
+    ],
+    "witness": "bipartite"
+   }
+  ],
+  "phrase": "\"monotone\" (C2 vs Mathlib Monotone)",
+  "reading_used": "graph_theory_down_closed",
+  "readings": [
+   "graph_theory_down_closed",
+   "order_theory_up_closed"
+  ],
+  "record": "ambiguity",
+  "schema": "genesis-literature-v1"
+ },
+ {
+  "instances_tested": 64,
+  "material_on_tested_range": true,
+  "pairs": [
+   {
+    "distinguished": true,
+    "readings": [
+     "no_4_cycle_subgraph",
+     "no_induced_4_cycle"
+    ],
+    "witness": [
+     [
+      0,
+      1
+     ],
+     [
+      0,
+      2
+     ],
+     [
+      0,
+      3
+     ],
+     [
+      1,
+      2
+     ],
+     [
+      1,
+      3
+     ]
+    ]
+   }
+  ],
+  "phrase": "\"C4-free\" (Genesis domain)",
+  "reading_used": "no_4_cycle_subgraph",
+  "readings": [
+   "no_4_cycle_subgraph",
+   "no_induced_4_cycle"
+  ],
+  "record": "ambiguity",
+  "schema": "genesis-literature-v1"
+ }
+]

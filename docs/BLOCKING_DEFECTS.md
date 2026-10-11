@@ -154,3 +154,24 @@ Independent review is outstanding; see `docs/checkpoints/B18_REVIEW_BRIEF.md`.
 | B18-OPEN-2 | The W10 grammar has vertex-class decoders only. The usefulness evidence is DEV-only, against per-task strongest baselines. | B19 sealed evaluation (E1) |
 | B18-OPEN-3 | W12 worlds take assumptions over hosts only. `WD.Bipartite` fixes a vertex range to be decidable in Lean. "max degree 1 → triangle-free" stays unresolved. | richer world semantics, learned proof search |
 
+## B19 outcome (W13–W17; E1/E2 readiness)
+
+The exit, "prospective usefulness accepted or branch rejected", is met by the builder
+only, on DEV:
+- usefulness evidence for W13–W15;
+- the Ghost Census branch retired for its scope (W16);
+- literature and priority records (W17);
+- E1 and E2 drafts.
+
+Acceptance needs independent review and a custodian; see
+`docs/checkpoints/B19_REVIEW_BRIEF.md`.
+
+| ID | Residual | Needs |
+|---|---|---|
+| B19-OPEN-1 | W13 builds only the relaxation route (LP dual certificates + SAT/DRAT). The joint method's advantage over the B13 reference loop is DEV-only. | symmetry reduction, kernelization, continuation; a sealed comparison |
+| B19-OPEN-2 | W14: KG* was chosen after EIG failed, and it beats fixed and random selection on fresh DEV pools only. The hypotheses are a finite method set. | a sealed comparison with KG* frozen first; richer hypothesis spaces |
+| B19-OPEN-3 | The E1 candidate (represent-and-repair) is not a DSL program, and the custodian's evaluator cannot run it. | an evaluator adapter, with trusted-path review |
+| B19-OPEN-4 | The E1 power analysis uses a centred-headroom option added in B19, because the B16 model reported INFEASIBLE for a near-ceiling candidate. | a reviewer to accept or reject the correction (with B16-OPEN-2) |
+| B19-OPEN-5 | The W16 decision covers equational theories that E solves from the axioms alone. Lean replay of E proofs does not cover Skolem functions with arguments, or steps that the tactic cascade cannot close. | a family where E needs help; a fuller replay |
+| B19-OPEN-6 | The W17 quotes come from a summarising fetch tool and are unconfirmed (ADJ-1 to ADJ-4 pending). The search record is small. The E2 design is a draft without a sealed statement generator. | a person to adjudicate; a priority reviewer; a custodian-side generator |
+

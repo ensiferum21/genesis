@@ -1,0 +1,1024 @@
+[    0.0s] plan 0050b951ee8dce23 written before any run
+[   10.4s] translation check COMPILED on 138 tables; round-trip failures []
+[   15.6s] label group/right_id: TRUE (e THEOREM, ghost size None, 4.847s)
+[   21.1s] label group/right_inv: TRUE (e THEOREM, ghost size None, 5.012s)
+[   22.2s] label group/comm: FALSE (e None, ghost size 6, 1.122s)
+[   28.7s] label group/inv_inv: TRUE (e THEOREM, ghost size None, 5.906s)
+[   35.5s] label group/left_cancel: TRUE (e THEOREM, ghost size None, 6.08s)
+[   41.4s] label group/right_cancel: TRUE (e THEOREM, ghost size None, 5.339s)
+[   49.4s] label group/inv_mul: TRUE (e THEOREM, ghost size None, 7.344s)
+[   54.3s] label group/unique_left_id: TRUE (e THEOREM, ghost size None, 4.372s)
+[   54.3s] label group/idem: FALSE (e None, ghost size 2, 0.027s)
+[   59.2s] label group/inv_e: TRUE (e THEOREM, ghost size None, 4.414s)
+[   59.2s] label group/self_inverse: FALSE (e None, ghost size 3, 0.038s)
+[   60.5s] label group/inv_comm: FALSE (e None, ghost size 6, 1.246s)
+[   65.2s] label group/sq_e_unique: TRUE (e THEOREM, ghost size None, 4.276s)
+[   66.3s] label group/sq_central: FALSE (e None, ghost size 6, 1.022s)
+[   71.9s] label group/flexible: TRUE (e THEOREM, ghost size None, 5.118s)
+[   77.6s] label group/left_alt: TRUE (e THEOREM, ghost size None, 5.211s)
+[   84.0s] label group/right_alt: TRUE (e THEOREM, ghost size None, 4.96s)
+[   95.2s] label group/moufang_right: TRUE (e THEOREM, ghost size None, 7.748s)
+[  104.9s] label group_sq/right_id: TRUE (e THEOREM, ghost size None, 6.592s)
+[  114.7s] label group_sq/right_inv: TRUE (e THEOREM, ghost size None, 6.483s)
+[  125.1s] label group_sq/comm: TRUE (e THEOREM, ghost size None, 7.156s)
+[  134.8s] label group_sq/inv_inv: TRUE (e THEOREM, ghost size None, 6.808s)
+[  143.5s] label group_sq/left_cancel: TRUE (e THEOREM, ghost size None, 6.022s)
+[  153.0s] label group_sq/right_cancel: TRUE (e THEOREM, ghost size None, 6.836s)
+[  162.5s] label group_sq/inv_mul: TRUE (e THEOREM, ghost size None, 6.583s)
+[  170.0s] label group_sq/unique_left_id: TRUE (e THEOREM, ghost size None, 4.981s)
+[  170.0s] label group_sq/idem: FALSE (e None, ghost size 2, 0.021s)
+[  176.3s] label group_sq/inv_e: TRUE (e THEOREM, ghost size None, 4.394s)
+[  176.5s] label group_sq/self_inverse: FALSE (e None, ghost size 3, 0.061s)
+[  186.2s] label group_sq/inv_comm: TRUE (e THEOREM, ghost size None, 6.904s)
+[  194.5s] label group_sq/sq_e_unique: TRUE (e THEOREM, ghost size None, 5.667s)
+[  201.4s] label group_sq/sq_central: TRUE (e THEOREM, ghost size None, 6.195s)
+[  207.4s] label group_sq/flexible: TRUE (e THEOREM, ghost size None, 5.579s)
+[  213.9s] label group_sq/left_alt: TRUE (e THEOREM, ghost size None, 6.037s)
+[  221.4s] label group_sq/right_alt: TRUE (e THEOREM, ghost size None, 6.962s)
+[  232.1s] label group_sq/moufang_right: TRUE (e THEOREM, ghost size None, 10.039s)
+[  236.5s] label group_exp2/right_id: TRUE (e THEOREM, ghost size None, 3.93s)
+[  241.5s] label group_exp2/right_inv: TRUE (e THEOREM, ghost size None, 4.447s)
+[  247.9s] label group_exp2/comm: TRUE (e THEOREM, ghost size None, 4.413s)
+[  253.5s] label group_exp2/inv_inv: TRUE (e THEOREM, ghost size None, 3.628s)
+[  259.6s] label group_exp2/left_cancel: TRUE (e THEOREM, ghost size None, 3.991s)
+[  265.9s] label group_exp2/right_cancel: TRUE (e THEOREM, ghost size None, 4.003s)
+[  272.1s] label group_exp2/inv_mul: TRUE (e THEOREM, ghost size None, 4.351s)
+[  277.8s] label group_exp2/unique_left_id: TRUE (e THEOREM, ghost size None, 3.659s)
+[  277.8s] label group_exp2/idem: FALSE (e None, ghost size 2, 0.025s)
+[  283.4s] label group_exp2/inv_e: TRUE (e THEOREM, ghost size None, 3.784s)
+[  289.9s] label group_exp2/self_inverse: TRUE (e THEOREM, ghost size None, 4.262s)
+[  297.0s] label group_exp2/inv_comm: TRUE (e THEOREM, ghost size None, 4.789s)
+[  302.9s] label group_exp2/sq_e_unique: TRUE (e THEOREM, ghost size None, 3.979s)
+[  309.5s] label group_exp2/sq_central: TRUE (e THEOREM, ghost size None, 4.361s)
+[  317.0s] label group_exp2/flexible: TRUE (e THEOREM, ghost size None, 4.997s)
+[  323.5s] label group_exp2/left_alt: TRUE (e THEOREM, ghost size None, 4.404s)
+[  330.3s] label group_exp2/right_alt: TRUE (e THEOREM, ghost size None, 4.597s)
+[  338.7s] label group_exp2/moufang_right: TRUE (e THEOREM, ghost size None, 5.746s)
+[  347.4s] label lattice/meet_idem: TRUE (e THEOREM, ghost size None, 5.923s)
+[  356.2s] label lattice/join_idem: TRUE (e THEOREM, ghost size None, 6.014s)
+[  365.1s] label lattice/order_dual: TRUE (e THEOREM, ghost size None, 7.082s)
+[  366.6s] label lattice/distrib: FALSE (e None, ghost size 5, 1.453s)
+[  367.9s] label lattice/distrib_dual: FALSE (e None, ghost size 5, 1.33s)
+[  368.9s] label lattice/modular: FALSE (e None, ghost size 5, 0.94s)
+[  369.8s] label lattice/cancel: FALSE (e None, ghost size 5, 0.905s)
+[  369.9s] label lattice/meet_is_join: FALSE (e None, ghost size 2, 0.027s)
+[  370.2s] label lattice/chain: FALSE (e None, ghost size 4, 0.289s)
+[  377.5s] label dist_lattice/meet_idem: TRUE (e THEOREM, ghost size None, 6.851s)
+[  385.0s] label dist_lattice/join_idem: TRUE (e THEOREM, ghost size None, 6.887s)
+[  395.9s] label dist_lattice/order_dual: TRUE (e THEOREM, ghost size None, 10.327s)
+[  424.6s] label dist_lattice/distrib_dual: TRUE (e THEOREM, ghost size None, 27.849s)
+[  451.8s] label dist_lattice/modular: TRUE (e THEOREM, ghost size None, 25.867s)
+[  479.2s] label dist_lattice/cancel: TRUE (e THEOREM, ghost size None, 26.598s)
+[  479.2s] label dist_lattice/meet_is_join: FALSE (e None, ghost size 2, 0.053s)
+[  479.8s] label dist_lattice/chain: FALSE (e None, ghost size 4, 0.587s)
+[  480.0s] label ring/char2: FALSE (e None, ghost size 3, 0.106s)
+[  480.4s] label ring/times_comm: FALSE (e None, ghost size 4, 0.408s)
+[  480.5s] label ring/neg_self: FALSE (e None, ghost size 3, 0.106s)
+[  493.7s] label ring/times_zero: TRUE (e THEOREM, ghost size None, 12.621s)
+[  505.6s] label ring/zero_times: TRUE (e THEOREM, ghost size None, 11.327s)
+[  515.5s] label ring/plus_cancel: TRUE (e THEOREM, ghost size None, 9.389s)
+[  526.3s] label ring/neg_neg: TRUE (e THEOREM, ghost size None, 9.575s)
+[  549.1s] label ring/neg_times: TRUE (e THEOREM, ghost size None, 22.04s)
+[  549.7s] label ring/anti_comm: FALSE (e None, ghost size 3, 0.503s)
+[  549.7s] label ring/no_nilpotent: FALSE (e None, ghost size 2, 0.037s)
+[  549.8s] label ring/times_idem: FALSE (e None, ghost size 2, 0.052s)
+[  549.9s] label ring/h_idem: FALSE (e None, ghost size 2, 0.049s)
+[  563.4s] label boolean_ring/char2: TRUE (e THEOREM, ghost size None, 9.757s)
+[  578.7s] label boolean_ring/times_comm: TRUE (e THEOREM, ghost size None, 12.495s)
+[  590.9s] label boolean_ring/neg_self: TRUE (e THEOREM, ghost size None, 9.902s)
+[  601.4s] label boolean_ring/times_zero: TRUE (e THEOREM, ghost size None, 8.726s)
+[  613.5s] label boolean_ring/zero_times: TRUE (e THEOREM, ghost size None, 9.536s)
+[  626.3s] label boolean_ring/plus_cancel: TRUE (e THEOREM, ghost size None, 9.352s)
+[  639.6s] label boolean_ring/neg_neg: TRUE (e THEOREM, ghost size None, 9.488s)
+[  653.1s] label boolean_ring/neg_times: TRUE (e THEOREM, ghost size None, 11.017s)
+[  665.8s] label boolean_ring/anti_comm: TRUE (e THEOREM, ghost size None, 12.046s)
+[  673.5s] label boolean_ring/no_nilpotent: TRUE (e THEOREM, ghost size None, 7.243s)
+[  673.5s] label boolean_ring/h_idem: FALSE (e None, ghost size 2, 0.037s)
+[  673.6s] label quasigroup/comm: FALSE (e None, ghost size 3, 0.055s)
+[  678.1s] label quasigroup/left_cancel: TRUE (e THEOREM, ghost size None, 4.019s)
+[  682.7s] label quasigroup/right_cancel: TRUE (e THEOREM, ghost size None, 4.188s)
+[  682.8s] label quasigroup/idem: FALSE (e None, ghost size 2, 0.031s)
+[  682.8s] label quasigroup/sq_central: FALSE (e None, ghost size 3, 0.052s)
+[  682.9s] label quasigroup/assoc: FALSE (e None, ghost size 3, 0.06s)
+[  683.0s] label quasigroup/flexible: FALSE (e None, ghost size 3, 0.057s)
+[  683.0s] label quasigroup/left_alt: FALSE (e None, ghost size 3, 0.047s)
+[  683.1s] label quasigroup/right_alt: FALSE (e None, ghost size 3, 0.049s)
+[  683.1s] label quasigroup/ldiv_self: FALSE (e None, ghost size 3, 0.057s)
+[  683.2s] label quasigroup/moufang_right: FALSE (e None, ghost size 3, 0.084s)
+[  685.7s] label moufang/comm: FALSE (e None, ghost size 6, 2.399s)
+[  692.0s] label moufang/left_cancel: TRUE (e THEOREM, ghost size None, 5.844s)
+[  699.1s] label moufang/right_cancel: TRUE (e THEOREM, ghost size None, 6.579s)
+[  704.8s] label moufang/unique_left_id: TRUE (e THEOREM, ghost size None, 5.367s)
+[  704.8s] label moufang/idem: FALSE (e None, ghost size 2, 0.033s)
+[  710.7s] label moufang/sq_e_unique: TRUE (e THEOREM, ghost size None, 5.466s)
+[  713.3s] label moufang/sq_central: FALSE (e None, ghost size 6, 2.607s)
+[  747.9s] label moufang/assoc: UNKNOWN (e GAVE_UP, ghost size None, 33.961s)
+[  754.5s] label moufang/flexible: TRUE (e THEOREM, ghost size None, 6.164s)
+[  761.3s] label moufang/left_alt: TRUE (e THEOREM, ghost size None, 6.186s)
+[  768.8s] label moufang/right_alt: TRUE (e THEOREM, ghost size None, 6.853s)
+[  774.0s] label moufang/ldiv_self: TRUE (e THEOREM, ghost size None, 4.742s)
+[  792.0s] label moufang/moufang_right: TRUE (e THEOREM, ghost size None, 17.229s)
+[  797.8s] label moufang/ldiv_e: TRUE (e THEOREM, ghost size None, 5.414s)
+[  797.9s] label huntington/plus_cancel: FALSE (e None, ghost size 2, 0.029s)
+[  830.9s] label huntington/h_idem: TRUE (e THEOREM, ghost size None, 31.841s)
+[  859.4s] label huntington/h_double_neg: TRUE (e THEOREM, ghost size None, 27.607s)
+[  889.3s] label huntington/h_complement: TRUE (e THEOREM, ghost size None, 28.844s)
+[  889.4s] label huntington/h_neg_fix: FALSE (e None, ghost size 2, 0.027s)
+[  889.4s] label huntington/h_de_morgan_wrong: FALSE (e None, ghost size 2, 0.026s)
+[  889.7s] budget 2.0: gc20261024-070 quasigroup/sq_central: {'ghost_lemmas_lean': 'GHOST_FOUND', 'oracle_lemmas': 'GHOST_FOUND', 'ghost_lemmas': 'GHOST_FOUND', 'portfolio_auto': 'GHOST_FOUND', 'portfolio': 'GHOST_FOUND', 'lemmas_unfiltered': 'UNSETTLED'}
+[  897.9s] budget 2.0: gc20261024-066 group_exp2/unique_left_id: {'lemmas_unfiltered': 'UNSETTLED', 'ghost_lemmas': 'UNSETTLED', 'ghost_lemmas_lean': 'UNSETTLED', 'portfolio': 'UNSETTLED', 'portfolio_auto': 'PROVED', 'oracle_lemmas': 'PROVED'}
+[  909.8s] budget 2.0: gc20261024-065 ring/neg_times: {'portfolio': 'UNSETTLED', 'portfolio_auto': 'UNSETTLED', 'ghost_lemmas': 'UNSETTLED', 'lemmas_unfiltered': 'UNSETTLED', 'oracle_lemmas': 'UNSETTLED', 'ghost_lemmas_lean': 'UNSETTLED'}
+[  921.2s] budget 2.0: gc20261024-124 group_sq/unique_left_id: {'portfolio': 'UNSETTLED', 'lemmas_unfiltered': 'UNSETTLED', 'portfolio_auto': 'UNSETTLED', 'ghost_lemmas_lean': 'UNSETTLED', 'oracle_lemmas': 'UNSETTLED', 'ghost_lemmas': 'UNSETTLED'}
+[  928.7s] budget 2.0: gc20261024-093 group_exp2/right_alt: {'oracle_lemmas': 'PROVED', 'lemmas_unfiltered': 'UNSETTLED', 'portfolio_auto': 'UNSETTLED', 'ghost_lemmas_lean': 'UNSETTLED', 'portfolio': 'PROVED', 'ghost_lemmas': 'UNSETTLED'}
+[  942.5s] budget 2.0: gc20261024-062 group_sq/flexible: {'ghost_lemmas': 'UNSETTLED', 'portfolio_auto': 'UNSETTLED', 'lemmas_unfiltered': 'UNSETTLED', 'portfolio': 'UNSETTLED', 'oracle_lemmas': 'UNSETTLED', 'ghost_lemmas_lean': 'UNSETTLED'}
+[  954.3s] budget 2.0: gc20261024-087 group/flexible: {'ghost_lemmas': 'UNSETTLED', 'portfolio_auto': 'UNSETTLED', 'portfolio': 'UNSETTLED', 'lemmas_unfiltered': 'UNSETTLED', 'oracle_lemmas': 'UNSETTLED', 'ghost_lemmas_lean': 'UNSETTLED'}
+[  954.7s] budget 2.0: gc20261024-050 quasigroup/left_alt: {'portfolio_auto': 'GHOST_FOUND', 'ghost_lemmas': 'GHOST_FOUND', 'oracle_lemmas': 'GHOST_FOUND', 'ghost_lemmas_lean': 'GHOST_FOUND', 'portfolio': 'GHOST_FOUND', 'lemmas_unfiltered': 'UNSETTLED'}
+[  961.6s] budget 2.0: gc20261024-008 group_exp2/inv_mul: {'portfolio_auto': 'PROVED', 'portfolio': 'UNSETTLED', 'ghost_lemmas_lean': 'UNSETTLED', 'ghost_lemmas': 'UNSETTLED', 'oracle_lemmas': 'UNSETTLED', 'lemmas_unfiltered': 'UNSETTLED'}
+[  962.0s] budget 2.0: gc20261024-082 quasigroup/assoc: {'lemmas_unfiltered': 'UNSETTLED', 'portfolio_auto': 'GHOST_FOUND', 'ghost_lemmas_lean': 'GHOST_FOUND', 'portfolio': 'GHOST_FOUND', 'oracle_lemmas': 'GHOST_FOUND', 'ghost_lemmas': 'GHOST_FOUND'}
+[  975.3s] budget 2.0: gc20261024-072 group_sq/right_alt: {'portfolio': 'UNSETTLED', 'lemmas_unfiltered': 'UNSETTLED', 'portfolio_auto': 'UNSETTLED', 'ghost_lemmas_lean': 'UNSETTLED', 'oracle_lemmas': 'UNSETTLED', 'ghost_lemmas': 'UNSETTLED'}
+[  984.6s] budget 2.0: gc20261024-016 moufang/sq_e_unique: {'ghost_lemmas': 'UNSETTLED', 'portfolio_auto': 'UNSETTLED', 'lemmas_unfiltered': 'UNSETTLED', 'oracle_lemmas': 'UNSETTLED', 'ghost_lemmas_lean': 'UNSETTLED', 'portfolio': 'UNSETTLED'}
+[  986.2s] budget 2.0: gc20261024-001 ring/neg_self: {'portfolio': 'GHOST_FOUND', 'ghost_lemmas': 'GHOST_FOUND', 'oracle_lemmas': 'GHOST_FOUND', 'portfolio_auto': 'GHOST_FOUND', 'ghost_lemmas_lean': 'GHOST_FOUND', 'lemmas_unfiltered': 'UNSETTLED'}
+[  999.3s] budget 2.0: gc20261024-110 group_sq/sq_e_unique: {'lemmas_unfiltered': 'UNSETTLED', 'portfolio': 'UNSETTLED', 'ghost_lemmas': 'UNSETTLED', 'ghost_lemmas_lean': 'UNSETTLED', 'portfolio_auto': 'UNSETTLED', 'oracle_lemmas': 'UNSETTLED'}
+[ 1010.3s] budget 2.0: gc20261024-095 boolean_ring/neg_times: {'ghost_lemmas_lean': 'UNSETTLED', 'lemmas_unfiltered': 'UNSETTLED', 'portfolio_auto': 'UNSETTLED', 'oracle_lemmas': 'UNSETTLED', 'portfolio': 'UNSETTLED', 'ghost_lemmas': 'UNSETTLED'}
+[ 1021.8s] budget 2.0: gc20261024-026 lattice/order_dual: {'lemmas_unfiltered': 'UNSETTLED', 'portfolio': 'UNSETTLED', 'ghost_lemmas_lean': 'UNSETTLED', 'oracle_lemmas': 'UNSETTLED', 'ghost_lemmas': 'UNSETTLED', 'portfolio_auto': 'UNSETTLED'}
+[ 1023.1s] budget 2.0: gc20261024-122 group/self_inverse: {'ghost_lemmas': 'GHOST_FOUND', 'ghost_lemmas_lean': 'GHOST_FOUND', 'portfolio_auto': 'GHOST_FOUND', 'oracle_lemmas': 'GHOST_FOUND', 'portfolio': 'GHOST_FOUND', 'lemmas_unfiltered': 'UNSETTLED'}
+[ 1032.2s] budget 2.0: gc20261024-064 group/sq_e_unique: {'portfolio': 'UNSETTLED', 'ghost_lemmas': 'UNSETTLED', 'oracle_lemmas': 'UNSETTLED', 'lemmas_unfiltered': 'UNSETTLED', 'ghost_lemmas_lean': 'UNSETTLED', 'portfolio_auto': 'UNSETTLED'}
+[ 1032.6s] budget 2.0: gc20261024-123 quasigroup/right_alt: {'lemmas_unfiltered': 'UNSETTLED', 'portfolio': 'GHOST_FOUND', 'ghost_lemmas': 'GHOST_FOUND', 'ghost_lemmas_lean': 'GHOST_FOUND', 'oracle_lemmas': 'GHOST_FOUND', 'portfolio_auto': 'GHOST_FOUND'}
+[ 1044.7s] budget 2.0: gc20261024-117 ring/times_zero: {'portfolio': 'UNSETTLED', 'lemmas_unfiltered': 'UNSETTLED', 'portfolio_auto': 'UNSETTLED', 'ghost_lemmas': 'UNSETTLED', 'oracle_lemmas': 'PROVED', 'ghost_lemmas_lean': 'UNSETTLED'}
+[ 1059.1s] budget 2.0: gc20261024-030 group_sq/left_alt: {'lemmas_unfiltered': 'UNSETTLED', 'ghost_lemmas_lean': 'UNSETTLED', 'portfolio': 'PROVED', 'portfolio_auto': 'PROVED', 'oracle_lemmas': 'UNSETTLED', 'ghost_lemmas': 'UNSETTLED'}
+[ 1069.9s] budget 2.0: gc20261024-021 group_exp2/left_cancel: {'portfolio': 'UNSETTLED', 'lemmas_unfiltered': 'UNSETTLED', 'ghost_lemmas_lean': 'UNSETTLED', 'oracle_lemmas': 'UNSETTLED', 'ghost_lemmas': 'UNSETTLED', 'portfolio_auto': 'PROVED'}
+[ 1082.3s] budget 2.0: gc20261024-013 boolean_ring/no_nilpotent: {'lemmas_unfiltered': 'UNSETTLED', 'portfolio': 'PROVED', 'portfolio_auto': 'UNSETTLED', 'oracle_lemmas': 'UNSETTLED', 'ghost_lemmas': 'UNSETTLED', 'ghost_lemmas_lean': 'UNSETTLED'}
+[ 1095.7s] budget 2.0: gc20261024-068 moufang/ldiv_self: {'portfolio_auto': 'PROVED', 'ghost_lemmas': 'UNSETTLED', 'portfolio': 'UNSETTLED', 'oracle_lemmas': 'PROVED', 'ghost_lemmas_lean': 'UNSETTLED', 'lemmas_unfiltered': 'UNSETTLED'}
+[ 1109.1s] budget 2.0: gc20261024-038 group_sq/inv_inv: {'portfolio_auto': 'UNSETTLED', 'lemmas_unfiltered': 'UNSETTLED', 'portfolio': 'UNSETTLED', 'oracle_lemmas': 'UNSETTLED', 'ghost_lemmas': 'UNSETTLED', 'ghost_lemmas_lean': 'UNSETTLED'}
+[ 1116.9s] budget 2.0: gc20261024-083 group_exp2/comm: {'portfolio_auto': 'PROVED', 'portfolio': 'PROVED', 'ghost_lemmas_lean': 'UNSETTLED', 'ghost_lemmas': 'UNSETTLED', 'lemmas_unfiltered': 'UNSETTLED', 'oracle_lemmas': 'PROVED'}
+[ 1118.1s] budget 2.0: gc20261024-000 ring/no_nilpotent: {'portfolio_auto': 'GHOST_FOUND', 'lemmas_unfiltered': 'UNSETTLED', 'ghost_lemmas': 'GHOST_FOUND', 'ghost_lemmas_lean': 'GHOST_FOUND', 'portfolio': 'GHOST_FOUND', 'oracle_lemmas': 'GHOST_FOUND'}
+[ 1125.4s] budget 2.0: gc20261024-031 group/sq_central: {'oracle_lemmas': 'GHOST_FOUND', 'lemmas_unfiltered': 'UNSETTLED', 'ghost_lemmas': 'GHOST_FOUND', 'portfolio_auto': 'GHOST_FOUND', 'portfolio': 'GHOST_FOUND', 'ghost_lemmas_lean': 'GHOST_FOUND'}
+[ 1136.7s] budget 2.0: gc20261024-067 moufang/right_cancel: {'ghost_lemmas_lean': 'UNSETTLED', 'portfolio': 'UNSETTLED', 'lemmas_unfiltered': 'UNSETTLED', 'ghost_lemmas': 'UNSETTLED', 'oracle_lemmas': 'UNSETTLED', 'portfolio_auto': 'UNSETTLED'}
+[ 1143.8s] budget 2.0: gc20261024-047 group_exp2/sq_e_unique: {'portfolio': 'PROVED', 'portfolio_auto': 'PROVED', 'ghost_lemmas': 'UNSETTLED', 'oracle_lemmas': 'PROVED', 'ghost_lemmas_lean': 'UNSETTLED', 'lemmas_unfiltered': 'UNSETTLED'}
+[ 1152.7s] budget 2.0: gc20261024-036 lattice/distrib_dual: {'ghost_lemmas_lean': 'GHOST_FOUND', 'portfolio_auto': 'GHOST_FOUND', 'ghost_lemmas': 'GHOST_FOUND', 'portfolio': 'GHOST_FOUND', 'lemmas_unfiltered': 'UNSETTLED', 'oracle_lemmas': 'GHOST_FOUND'}
+[ 1154.0s] budget 2.0: gc20261024-051 ring/h_idem: {'portfolio_auto': 'GHOST_FOUND', 'portfolio': 'GHOST_FOUND', 'ghost_lemmas': 'GHOST_FOUND', 'oracle_lemmas': 'GHOST_FOUND', 'ghost_lemmas_lean': 'GHOST_FOUND', 'lemmas_unfiltered': 'UNSETTLED'}
+[ 1162.2s] budget 2.0: gc20261024-116 moufang/moufang_right: {'portfolio': 'UNSETTLED', 'ghost_lemmas_lean': 'UNSETTLED', 'lemmas_unfiltered': 'UNSETTLED', 'ghost_lemmas': 'UNSETTLED', 'oracle_lemmas': 'UNSETTLED', 'portfolio_auto': 'UNSETTLED'}
+[ 1163.9s] budget 2.0: gc20261024-011 ring/char2: {'lemmas_unfiltered': 'UNSETTLED', 'oracle_lemmas': 'GHOST_FOUND', 'ghost_lemmas': 'GHOST_FOUND', 'portfolio_auto': 'GHOST_FOUND', 'ghost_lemmas_lean': 'GHOST_FOUND', 'portfolio': 'GHOST_FOUND'}
+[ 1165.1s] budget 2.0: gc20261024-014 moufang/idem: {'portfolio_auto': 'GHOST_FOUND', 'portfolio': 'GHOST_FOUND', 'oracle_lemmas': 'GHOST_FOUND', 'lemmas_unfiltered': 'UNSETTLED', 'ghost_lemmas_lean': 'GHOST_FOUND', 'ghost_lemmas': 'GHOST_FOUND'}
+[ 1165.6s] budget 2.0: gc20261024-084 quasigroup/flexible: {'ghost_lemmas_lean': 'GHOST_FOUND', 'oracle_lemmas': 'GHOST_FOUND', 'lemmas_unfiltered': 'UNSETTLED', 'portfolio': 'GHOST_FOUND', 'portfolio_auto': 'GHOST_FOUND', 'ghost_lemmas': 'GHOST_FOUND'}
+[ 1176.1s] budget 2.0: gc20261024-022 boolean_ring/char2: {'lemmas_unfiltered': 'UNSETTLED', 'oracle_lemmas': 'UNSETTLED', 'ghost_lemmas': 'UNSETTLED', 'ghost_lemmas_lean': 'UNSETTLED', 'portfolio_auto': 'UNSETTLED', 'portfolio': 'UNSETTLED'}
+[ 1187.3s] budget 2.0: gc20261024-057 boolean_ring/anti_comm: {'ghost_lemmas': 'UNSETTLED', 'portfolio_auto': 'UNSETTLED', 'oracle_lemmas': 'UNSETTLED', 'lemmas_unfiltered': 'UNSETTLED', 'portfolio': 'UNSETTLED', 'ghost_lemmas_lean': 'UNSETTLED'}
+[ 1191.2s] budget 2.0: gc20261024-113 ring/times_comm: {'oracle_lemmas': 'GHOST_FOUND', 'ghost_lemmas': 'GHOST_FOUND', 'portfolio': 'GHOST_FOUND', 'ghost_lemmas_lean': 'GHOST_FOUND', 'portfolio_auto': 'GHOST_FOUND', 'lemmas_unfiltered': 'UNSETTLED'}
+[ 1200.1s] budget 2.0: gc20261024-033 group/inv_comm: {'ghost_lemmas': 'GHOST_FOUND', 'portfolio_auto': 'GHOST_FOUND', 'ghost_lemmas_lean': 'GHOST_FOUND', 'lemmas_unfiltered': 'UNSETTLED', 'oracle_lemmas': 'GHOST_FOUND', 'portfolio': 'GHOST_FOUND'}
+[ 1211.5s] budget 2.0: gc20261024-077 boolean_ring/neg_neg: {'ghost_lemmas': 'UNSETTLED', 'portfolio': 'UNSETTLED', 'portfolio_auto': 'UNSETTLED', 'oracle_lemmas': 'UNSETTLED', 'lemmas_unfiltered': 'UNSETTLED', 'ghost_lemmas_lean': 'UNSETTLED'}
+[ 1228.0s] budget 2.0: gc20261024-039 group/moufang_right: {'lemmas_unfiltered': 'UNSETTLED', 'ghost_lemmas_lean': 'UNSETTLED', 'ghost_lemmas': 'UNSETTLED', 'portfolio': 'UNSETTLED', 'portfolio_auto': 'UNSETTLED', 'oracle_lemmas': 'UNSETTLED'}
+[ 1239.5s] budget 2.0: gc20261024-024 group_sq/inv_e: {'portfolio_auto': 'UNSETTLED', 'oracle_lemmas': 'UNSETTLED', 'portfolio': 'UNSETTLED', 'ghost_lemmas_lean': 'UNSETTLED', 'ghost_lemmas': 'UNSETTLED', 'lemmas_unfiltered': 'UNSETTLED'}
+[ 1247.9s] budget 2.0: gc20261024-100 group/inv_e: {'lemmas_unfiltered': 'UNSETTLED', 'ghost_lemmas_lean': 'UNSETTLED', 'ghost_lemmas': 'UNSETTLED', 'portfolio_auto': 'UNSETTLED', 'portfolio': 'UNSETTLED', 'oracle_lemmas': 'UNSETTLED'}
+[ 1262.3s] budget 2.0: gc20261024-090 group_sq/right_id: {'ghost_lemmas_lean': 'UNSETTLED', 'ghost_lemmas': 'UNSETTLED', 'oracle_lemmas': 'UNSETTLED', 'lemmas_unfiltered': 'UNSETTLED', 'portfolio_auto': 'UNSETTLED', 'portfolio': 'UNSETTLED'}
+[ 1272.5s] budget 2.0: gc20261024-089 moufang/sq_central: {'ghost_lemmas': 'UNSETTLED', 'portfolio': 'GHOST_FOUND', 'portfolio_auto': 'UNSETTLED', 'oracle_lemmas': 'UNSETTLED', 'lemmas_unfiltered': 'UNSETTLED', 'ghost_lemmas_lean': 'GHOST_FOUND'}
+[ 1273.6s] budget 2.0: gc20261024-044 group/idem: {'lemmas_unfiltered': 'UNSETTLED', 'ghost_lemmas': 'GHOST_FOUND', 'portfolio': 'GHOST_FOUND', 'ghost_lemmas_lean': 'GHOST_FOUND', 'portfolio_auto': 'GHOST_FOUND', 'oracle_lemmas': 'GHOST_FOUND'}
+[ 1276.1s] budget 2.0: gc20261024-102 lattice/chain: {'portfolio_auto': 'GHOST_FOUND', 'lemmas_unfiltered': 'UNSETTLED', 'ghost_lemmas': 'GHOST_FOUND', 'oracle_lemmas': 'GHOST_FOUND', 'ghost_lemmas_lean': 'GHOST_FOUND', 'portfolio': 'GHOST_FOUND'}
+[ 1289.7s] budget 2.0: gc20261024-105 group_sq/left_cancel: {'lemmas_unfiltered': 'UNSETTLED', 'ghost_lemmas_lean': 'UNSETTLED', 'portfolio': 'UNSETTLED', 'portfolio_auto': 'UNSETTLED', 'oracle_lemmas': 'UNSETTLED', 'ghost_lemmas': 'UNSETTLED'}
+[ 1293.0s] budget 2.0: gc20261024-003 dist_lattice/chain: {'lemmas_unfiltered': 'UNSETTLED', 'portfolio_auto': 'GHOST_FOUND', 'oracle_lemmas': 'GHOST_FOUND', 'ghost_lemmas_lean': 'GHOST_FOUND', 'ghost_lemmas': 'GHOST_FOUND', 'portfolio': 'GHOST_FOUND'}
+[ 1298.6s] budget 2.0: gc20261024-055 quasigroup/left_cancel: {'ghost_lemmas': 'UNSETTLED', 'lemmas_unfiltered': 'PROVED', 'portfolio': 'PROVED', 'portfolio_auto': 'PROVED', 'ghost_lemmas_lean': 'UNSETTLED', 'oracle_lemmas': 'UNSETTLED'}
+[ 1311.2s] budget 2.0: gc20261024-091 group/inv_mul: {'oracle_lemmas': 'UNSETTLED', 'ghost_lemmas_lean': 'UNSETTLED', 'portfolio': 'UNSETTLED', 'ghost_lemmas': 'UNSETTLED', 'portfolio_auto': 'UNSETTLED', 'lemmas_unfiltered': 'UNSETTLED'}
+[ 1320.3s] budget 2.0: gc20261024-071 huntington/h_complement: {'ghost_lemmas': 'UNSETTLED', 'oracle_lemmas': 'UNSETTLED', 'ghost_lemmas_lean': 'UNSETTLED', 'portfolio_auto': 'UNSETTLED', 'lemmas_unfiltered': 'UNSETTLED', 'portfolio': 'UNSETTLED'}
+[ 1329.6s] budget 2.0: gc20261024-035 moufang/comm: {'ghost_lemmas': 'UNSETTLED', 'lemmas_unfiltered': 'UNSETTLED', 'portfolio': 'UNSETTLED', 'ghost_lemmas_lean': 'GHOST_FOUND', 'oracle_lemmas': 'UNSETTLED', 'portfolio_auto': 'GHOST_FOUND'}
+[ 1337.3s] budget 2.0: gc20261024-023 dist_lattice/join_idem: {'ghost_lemmas_lean': 'UNSETTLED', 'lemmas_unfiltered': 'UNSETTLED', 'ghost_lemmas': 'UNSETTLED', 'portfolio': 'UNSETTLED', 'portfolio_auto': 'UNSETTLED', 'oracle_lemmas': 'UNSETTLED'}
+[ 1343.7s] budget 2.0: gc20261024-120 group_exp2/left_alt: {'oracle_lemmas': 'PROVED', 'ghost_lemmas_lean': 'UNSETTLED', 'portfolio': 'UNSETTLED', 'portfolio_auto': 'UNSETTLED', 'ghost_lemmas': 'UNSETTLED', 'lemmas_unfiltered': 'UNSETTLED'}
+[ 1357.1s] budget 2.0: gc20261024-019 group_sq/sq_central: {'lemmas_unfiltered': 'UNSETTLED', 'oracle_lemmas': 'UNSETTLED', 'portfolio_auto': 'UNSETTLED', 'ghost_lemmas_lean': 'UNSETTLED', 'portfolio': 'UNSETTLED', 'ghost_lemmas': 'UNSETTLED'}
+[ 1363.8s] budget 2.0: gc20261024-119 group_exp2/sq_central: {'portfolio': 'UNSETTLED', 'ghost_lemmas_lean': 'UNSETTLED', 'oracle_lemmas': 'PROVED', 'ghost_lemmas': 'UNSETTLED', 'lemmas_unfiltered': 'UNSETTLED', 'portfolio_auto': 'UNSETTLED'}
+[ 1375.6s] budget 2.0: gc20261024-085 group/left_cancel: {'oracle_lemmas': 'UNSETTLED', 'lemmas_unfiltered': 'UNSETTLED', 'ghost_lemmas_lean': 'UNSETTLED', 'ghost_lemmas': 'UNSETTLED', 'portfolio_auto': 'UNSETTLED', 'portfolio': 'UNSETTLED'}
+[ 1389.5s] budget 2.0: gc20261024-020 group_sq/comm: {'oracle_lemmas': 'UNSETTLED', 'ghost_lemmas': 'UNSETTLED', 'portfolio_auto': 'UNSETTLED', 'portfolio': 'UNSETTLED', 'ghost_lemmas_lean': 'UNSETTLED', 'lemmas_unfiltered': 'UNSETTLED'}
+[ 1401.3s] budget 2.0: gc20261024-042 boolean_ring/times_comm: {'portfolio_auto': 'UNSETTLED', 'portfolio': 'UNSETTLED', 'lemmas_unfiltered': 'UNSETTLED', 'oracle_lemmas': 'UNSETTLED', 'ghost_lemmas': 'UNSETTLED', 'ghost_lemmas_lean': 'UNSETTLED'}
+[ 1412.4s] budget 2.0: gc20261024-094 moufang/left_alt: {'portfolio_auto': 'UNSETTLED', 'lemmas_unfiltered': 'UNSETTLED', 'portfolio': 'UNSETTLED', 'oracle_lemmas': 'UNSETTLED', 'ghost_lemmas': 'UNSETTLED', 'ghost_lemmas_lean': 'UNSETTLED'}
+[ 1426.3s] budget 2.0: gc20261024-101 dist_lattice/distrib_dual: {'portfolio': 'UNSETTLED', 'portfolio_auto': 'UNSETTLED', 'ghost_lemmas_lean': 'UNSETTLED', 'oracle_lemmas': 'UNSETTLED', 'lemmas_unfiltered': 'UNSETTLED', 'ghost_lemmas': 'UNSETTLED'}
+[ 1427.8s] budget 2.0: gc20261024-040 huntington/plus_cancel: {'lemmas_unfiltered': 'UNSETTLED', 'ghost_lemmas': 'GHOST_FOUND', 'portfolio': 'GHOST_FOUND', 'oracle_lemmas': 'GHOST_FOUND', 'ghost_lemmas_lean': 'GHOST_FOUND', 'portfolio_auto': 'GHOST_FOUND'}
+[ 1438.4s] budget 2.0: gc20261024-015 group_exp2/moufang_right: {'oracle_lemmas': 'UNSETTLED', 'portfolio_auto': 'UNSETTLED', 'lemmas_unfiltered': 'UNSETTLED', 'ghost_lemmas': 'UNSETTLED', 'ghost_lemmas_lean': 'UNSETTLED', 'portfolio': 'UNSETTLED'}
+[ 1450.3s] budget 2.0: gc20261024-078 moufang/ldiv_e: {'ghost_lemmas': 'UNSETTLED', 'portfolio': 'UNSETTLED', 'ghost_lemmas_lean': 'UNSETTLED', 'portfolio_auto': 'UNSETTLED', 'oracle_lemmas': 'UNSETTLED', 'lemmas_unfiltered': 'UNSETTLED'}
+[ 1452.5s] budget 2.0: gc20261024-037 group_exp2/idem: {'lemmas_unfiltered': 'UNSETTLED', 'portfolio_auto': 'GHOST_FOUND', 'ghost_lemmas': 'GHOST_FOUND', 'ghost_lemmas_lean': 'GHOST_FOUND', 'portfolio': 'GHOST_FOUND', 'oracle_lemmas': 'GHOST_FOUND'}
+[ 1457.8s] budget 2.0: gc20261024-111 quasigroup/right_cancel: {'ghost_lemmas': 'UNSETTLED', 'lemmas_unfiltered': 'PROVED', 'portfolio_auto': 'PROVED', 'ghost_lemmas_lean': 'UNSETTLED', 'portfolio': 'PROVED', 'oracle_lemmas': 'PROVED'}
+[ 1467.5s] budget 2.0: gc20261024-106 ring/neg_neg: {'ghost_lemmas': 'UNSETTLED', 'portfolio_auto': 'UNSETTLED', 'ghost_lemmas_lean': 'UNSETTLED', 'oracle_lemmas': 'UNSETTLED', 'lemmas_unfiltered': 'UNSETTLED', 'portfolio': 'UNSETTLED'}
+[ 1481.6s] budget 2.0: gc20261024-058 dist_lattice/modular: {'oracle_lemmas': 'UNSETTLED', 'lemmas_unfiltered': 'UNSETTLED', 'ghost_lemmas_lean': 'UNSETTLED', 'portfolio': 'UNSETTLED', 'ghost_lemmas': 'UNSETTLED', 'portfolio_auto': 'UNSETTLED'}
+[ 1493.4s] budget 2.0: gc20261024-075 boolean_ring/zero_times: {'portfolio': 'UNSETTLED', 'portfolio_auto': 'UNSETTLED', 'lemmas_unfiltered': 'UNSETTLED', 'ghost_lemmas_lean': 'UNSETTLED', 'oracle_lemmas': 'UNSETTLED', 'ghost_lemmas': 'UNSETTLED'}
+[ 1505.7s] budget 2.0: gc20261024-107 dist_lattice/cancel: {'portfolio_auto': 'UNSETTLED', 'ghost_lemmas': 'UNSETTLED', 'lemmas_unfiltered': 'UNSETTLED', 'ghost_lemmas_lean': 'UNSETTLED', 'oracle_lemmas': 'UNSETTLED', 'portfolio': 'UNSETTLED'}
+[ 1517.6s] budget 2.0: gc20261024-121 group/right_alt: {'portfolio_auto': 'UNSETTLED', 'portfolio': 'UNSETTLED', 'oracle_lemmas': 'UNSETTLED', 'lemmas_unfiltered': 'UNSETTLED', 'ghost_lemmas_lean': 'UNSETTLED', 'ghost_lemmas': 'UNSETTLED'}
+[ 1528.9s] budget 2.0: gc20261024-097 huntington/h_double_neg: {'portfolio_auto': 'UNSETTLED', 'oracle_lemmas': 'UNSETTLED', 'lemmas_unfiltered': 'UNSETTLED', 'portfolio': 'UNSETTLED', 'ghost_lemmas_lean': 'UNSETTLED', 'ghost_lemmas': 'UNSETTLED'}
+[ 1540.5s] budget 2.0: gc20261024-034 group_sq/inv_comm: {'oracle_lemmas': 'UNSETTLED', 'lemmas_unfiltered': 'UNSETTLED', 'ghost_lemmas_lean': 'UNSETTLED', 'ghost_lemmas': 'UNSETTLED', 'portfolio': 'UNSETTLED', 'portfolio_auto': 'UNSETTLED'}
+[ 1551.8s] budget 2.0: gc20261024-059 group/right_inv: {'portfolio': 'UNSETTLED', 'ghost_lemmas': 'UNSETTLED', 'lemmas_unfiltered': 'UNSETTLED', 'oracle_lemmas': 'UNSETTLED', 'portfolio_auto': 'UNSETTLED', 'ghost_lemmas_lean': 'UNSETTLED'}
+[ 1564.2s] budget 2.0: gc20261024-069 lattice/join_idem: {'portfolio': 'UNSETTLED', 'ghost_lemmas_lean': 'UNSETTLED', 'lemmas_unfiltered': 'UNSETTLED', 'oracle_lemmas': 'UNSETTLED', 'portfolio_auto': 'UNSETTLED', 'ghost_lemmas': 'UNSETTLED'}
+[ 1565.4s] budget 2.0: gc20261024-103 lattice/meet_is_join: {'oracle_lemmas': 'GHOST_FOUND', 'ghost_lemmas_lean': 'GHOST_FOUND', 'ghost_lemmas': 'GHOST_FOUND', 'lemmas_unfiltered': 'UNSETTLED', 'portfolio_auto': 'GHOST_FOUND', 'portfolio': 'GHOST_FOUND'}
+[ 1573.3s] budget 2.0: gc20261024-029 group_exp2/right_inv: {'portfolio': 'UNSETTLED', 'ghost_lemmas': 'UNSETTLED', 'oracle_lemmas': 'UNSETTLED', 'lemmas_unfiltered': 'UNSETTLED', 'portfolio_auto': 'UNSETTLED', 'ghost_lemmas_lean': 'UNSETTLED'}
+[ 1574.4s] budget 2.0: gc20261024-041 huntington/h_neg_fix: {'portfolio_auto': 'GHOST_FOUND', 'oracle_lemmas': 'GHOST_FOUND', 'lemmas_unfiltered': 'UNSETTLED', 'ghost_lemmas_lean': 'GHOST_FOUND', 'portfolio': 'GHOST_FOUND', 'ghost_lemmas': 'GHOST_FOUND'}
+[ 1574.8s] budget 2.0: gc20261024-002 quasigroup/comm: {'portfolio_auto': 'GHOST_FOUND', 'oracle_lemmas': 'GHOST_FOUND', 'portfolio': 'GHOST_FOUND', 'lemmas_unfiltered': 'UNSETTLED', 'ghost_lemmas_lean': 'GHOST_FOUND', 'ghost_lemmas': 'GHOST_FOUND'}
+[ 1576.3s] budget 2.0: gc20261024-118 group_sq/self_inverse: {'portfolio_auto': 'GHOST_FOUND', 'ghost_lemmas': 'GHOST_FOUND', 'portfolio': 'GHOST_FOUND', 'ghost_lemmas_lean': 'GHOST_FOUND', 'lemmas_unfiltered': 'UNSETTLED', 'oracle_lemmas': 'GHOST_FOUND'}
+[ 1583.7s] budget 2.0: gc20261024-063 group_exp2/inv_inv: {'lemmas_unfiltered': 'UNSETTLED', 'ghost_lemmas': 'UNSETTLED', 'portfolio_auto': 'PROVED', 'oracle_lemmas': 'UNSETTLED', 'portfolio': 'UNSETTLED', 'ghost_lemmas_lean': 'UNSETTLED'}
+[ 1590.3s] budget 2.0: gc20261024-027 group_exp2/flexible: {'ghost_lemmas_lean': 'UNSETTLED', 'lemmas_unfiltered': 'UNSETTLED', 'oracle_lemmas': 'PROVED', 'portfolio_auto': 'UNSETTLED', 'ghost_lemmas': 'UNSETTLED', 'portfolio': 'PROVED'}
+[ 1590.6s] budget 2.0: gc20261024-060 quasigroup/idem: {'ghost_lemmas': 'GHOST_FOUND', 'portfolio_auto': 'GHOST_FOUND', 'oracle_lemmas': 'GHOST_FOUND', 'ghost_lemmas_lean': 'GHOST_FOUND', 'lemmas_unfiltered': 'UNSETTLED', 'portfolio': 'GHOST_FOUND'}
+[ 1601.0s] budget 2.0: gc20261024-053 boolean_ring/times_zero: {'portfolio_auto': 'UNSETTLED', 'ghost_lemmas_lean': 'UNSETTLED', 'oracle_lemmas': 'UNSETTLED', 'portfolio': 'UNSETTLED', 'ghost_lemmas': 'UNSETTLED', 'lemmas_unfiltered': 'UNSETTLED'}
+[ 1610.4s] budget 2.0: gc20261024-032 huntington/h_idem: {'portfolio': 'UNSETTLED', 'oracle_lemmas': 'UNSETTLED', 'lemmas_unfiltered': 'UNSETTLED', 'portfolio_auto': 'UNSETTLED', 'ghost_lemmas': 'UNSETTLED', 'ghost_lemmas_lean': 'UNSETTLED'}
+[ 1620.8s] budget 2.0: gc20261024-004 ring/plus_cancel: {'oracle_lemmas': 'UNSETTLED', 'portfolio': 'UNSETTLED', 'ghost_lemmas': 'UNSETTLED', 'lemmas_unfiltered': 'UNSETTLED', 'ghost_lemmas_lean': 'UNSETTLED', 'portfolio_auto': 'UNSETTLED'}
+[ 1632.2s] budget 2.0: gc20261024-012 moufang/right_alt: {'lemmas_unfiltered': 'UNSETTLED', 'portfolio_auto': 'UNSETTLED', 'oracle_lemmas': 'UNSETTLED', 'ghost_lemmas_lean': 'UNSETTLED', 'ghost_lemmas': 'UNSETTLED', 'portfolio': 'UNSETTLED'}
+[ 1638.7s] budget 2.0: gc20261024-007 group_exp2/self_inverse: {'portfolio_auto': 'PROVED', 'lemmas_unfiltered': 'UNSETTLED', 'ghost_lemmas_lean': 'UNSETTLED', 'ghost_lemmas': 'UNSETTLED', 'oracle_lemmas': 'UNSETTLED', 'portfolio': 'UNSETTLED'}
+[ 1646.0s] budget 2.0: gc20261024-081 group/comm: {'ghost_lemmas': 'GHOST_FOUND', 'lemmas_unfiltered': 'UNSETTLED', 'oracle_lemmas': 'GHOST_FOUND', 'portfolio_auto': 'GHOST_FOUND', 'ghost_lemmas_lean': 'GHOST_FOUND', 'portfolio': 'GHOST_FOUND'}
+[ 1657.4s] budget 2.0: gc20261024-076 group_sq/inv_mul: {'ghost_lemmas_lean': 'UNSETTLED', 'oracle_lemmas': 'UNSETTLED', 'lemmas_unfiltered': 'UNSETTLED', 'ghost_lemmas': 'UNSETTLED', 'portfolio_auto': 'UNSETTLED', 'portfolio': 'UNSETTLED'}
+[ 1668.5s] budget 2.0: gc20261024-005 moufang/left_cancel: {'ghost_lemmas_lean': 'UNSETTLED', 'portfolio_auto': 'UNSETTLED', 'ghost_lemmas': 'UNSETTLED', 'oracle_lemmas': 'UNSETTLED', 'portfolio': 'UNSETTLED', 'lemmas_unfiltered': 'UNSETTLED'}
+[ 1676.5s] budget 2.0: gc20261024-109 dist_lattice/meet_idem: {'oracle_lemmas': 'UNSETTLED', 'portfolio': 'UNSETTLED', 'ghost_lemmas_lean': 'UNSETTLED', 'portfolio_auto': 'UNSETTLED', 'lemmas_unfiltered': 'UNSETTLED', 'ghost_lemmas': 'UNSETTLED'}
+[ 1685.1s] budget 2.0: gc20261024-061 group_exp2/right_cancel: {'ghost_lemmas_lean': 'UNSETTLED', 'lemmas_unfiltered': 'UNSETTLED', 'portfolio': 'UNSETTLED', 'ghost_lemmas': 'UNSETTLED', 'oracle_lemmas': 'UNSETTLED', 'portfolio_auto': 'UNSETTLED'}
+[ 1696.3s] budget 2.0: gc20261024-108 lattice/meet_idem: {'ghost_lemmas_lean': 'UNSETTLED', 'portfolio': 'UNSETTLED', 'portfolio_auto': 'UNSETTLED', 'lemmas_unfiltered': 'UNSETTLED', 'ghost_lemmas': 'UNSETTLED', 'oracle_lemmas': 'UNSETTLED'}
+[ 1710.4s] budget 2.0: gc20261024-010 group_sq/right_inv: {'portfolio_auto': 'UNSETTLED', 'lemmas_unfiltered': 'UNSETTLED', 'ghost_lemmas': 'UNSETTLED', 'portfolio': 'UNSETTLED', 'oracle_lemmas': 'UNSETTLED', 'ghost_lemmas_lean': 'UNSETTLED'}
+[ 1721.6s] budget 2.0: gc20261024-079 ring/zero_times: {'lemmas_unfiltered': 'UNSETTLED', 'ghost_lemmas': 'UNSETTLED', 'oracle_lemmas': 'UNSETTLED', 'portfolio': 'UNSETTLED', 'portfolio_auto': 'UNSETTLED', 'ghost_lemmas_lean': 'UNSETTLED'}
+[ 1722.9s] budget 2.0: gc20261024-074 dist_lattice/meet_is_join: {'ghost_lemmas_lean': 'GHOST_FOUND', 'lemmas_unfiltered': 'UNSETTLED', 'portfolio_auto': 'GHOST_FOUND', 'oracle_lemmas': 'GHOST_FOUND', 'ghost_lemmas': 'GHOST_FOUND', 'portfolio': 'GHOST_FOUND'}
+[ 1724.3s] budget 2.0: gc20261024-045 ring/times_idem: {'ghost_lemmas': 'GHOST_FOUND', 'lemmas_unfiltered': 'UNSETTLED', 'oracle_lemmas': 'GHOST_FOUND', 'ghost_lemmas_lean': 'GHOST_FOUND', 'portfolio_auto': 'GHOST_FOUND', 'portfolio': 'GHOST_FOUND'}
+[ 1737.3s] budget 2.0: gc20261024-114 boolean_ring/neg_self: {'lemmas_unfiltered': 'UNSETTLED', 'oracle_lemmas': 'UNSETTLED', 'ghost_lemmas': 'UNSETTLED', 'portfolio': 'UNSETTLED', 'portfolio_auto': 'UNSETTLED', 'ghost_lemmas_lean': 'UNSETTLED'}
+[ 1745.5s] budget 2.0: gc20261024-096 group_exp2/inv_comm: {'lemmas_unfiltered': 'UNSETTLED', 'ghost_lemmas': 'UNSETTLED', 'oracle_lemmas': 'UNSETTLED', 'ghost_lemmas_lean': 'UNSETTLED', 'portfolio_auto': 'UNSETTLED', 'portfolio': 'UNSETTLED'}
+[ 1754.2s] budget 2.0: gc20261024-080 lattice/distrib: {'portfolio': 'GHOST_FOUND', 'lemmas_unfiltered': 'UNSETTLED', 'ghost_lemmas': 'GHOST_FOUND', 'ghost_lemmas_lean': 'GHOST_FOUND', 'oracle_lemmas': 'GHOST_FOUND', 'portfolio_auto': 'GHOST_FOUND'}
+[ 1762.8s] budget 2.0: gc20261024-049 group/unique_left_id: {'portfolio_auto': 'UNSETTLED', 'lemmas_unfiltered': 'UNSETTLED', 'ghost_lemmas_lean': 'UNSETTLED', 'oracle_lemmas': 'UNSETTLED', 'ghost_lemmas': 'UNSETTLED', 'portfolio': 'UNSETTLED'}
+[ 1771.7s] budget 2.0: gc20261024-115 group_exp2/right_id: {'oracle_lemmas': 'UNSETTLED', 'lemmas_unfiltered': 'UNSETTLED', 'ghost_lemmas_lean': 'UNSETTLED', 'portfolio_auto': 'UNSETTLED', 'portfolio': 'PROVED', 'ghost_lemmas': 'UNSETTLED'}
+[ 1783.8s] budget 2.0: gc20261024-043 group/left_alt: {'ghost_lemmas_lean': 'UNSETTLED', 'portfolio': 'UNSETTLED', 'oracle_lemmas': 'UNSETTLED', 'lemmas_unfiltered': 'UNSETTLED', 'portfolio_auto': 'UNSETTLED', 'ghost_lemmas': 'UNSETTLED'}
+[ 1785.4s] budget 2.0: gc20261024-006 ring/anti_comm: {'ghost_lemmas': 'GHOST_FOUND', 'ghost_lemmas_lean': 'GHOST_FOUND', 'portfolio_auto': 'GHOST_FOUND', 'oracle_lemmas': 'GHOST_FOUND', 'portfolio': 'GHOST_FOUND', 'lemmas_unfiltered': 'UNSETTLED'}
+[ 1800.2s] budget 2.0: gc20261024-017 group_sq/right_cancel: {'ghost_lemmas_lean': 'UNSETTLED', 'lemmas_unfiltered': 'UNSETTLED', 'oracle_lemmas': 'UNSETTLED', 'ghost_lemmas': 'UNSETTLED', 'portfolio_auto': 'UNSETTLED', 'portfolio': 'UNSETTLED'}
+[ 1810.7s] budget 2.0: gc20261024-088 dist_lattice/order_dual: {'oracle_lemmas': 'UNSETTLED', 'ghost_lemmas': 'UNSETTLED', 'lemmas_unfiltered': 'UNSETTLED', 'portfolio_auto': 'UNSETTLED', 'portfolio': 'UNSETTLED', 'ghost_lemmas_lean': 'UNSETTLED'}
+[ 1811.2s] budget 2.0: gc20261024-098 quasigroup/moufang_right: {'oracle_lemmas': 'GHOST_FOUND', 'portfolio_auto': 'GHOST_FOUND', 'ghost_lemmas_lean': 'GHOST_FOUND', 'ghost_lemmas': 'GHOST_FOUND', 'portfolio': 'GHOST_FOUND', 'lemmas_unfiltered': 'UNSETTLED'}
+[ 1812.7s] budget 2.0: gc20261024-018 huntington/h_de_morgan_wrong: {'ghost_lemmas': 'GHOST_FOUND', 'portfolio_auto': 'GHOST_FOUND', 'portfolio': 'GHOST_FOUND', 'lemmas_unfiltered': 'UNSETTLED', 'ghost_lemmas_lean': 'GHOST_FOUND', 'oracle_lemmas': 'GHOST_FOUND'}
+[ 1819.3s] budget 2.0: gc20261024-046 moufang/flexible: {'ghost_lemmas_lean': 'UNSETTLED', 'oracle_lemmas': 'UNSETTLED', 'portfolio': 'UNSETTLED', 'portfolio_auto': 'UNSETTLED', 'ghost_lemmas': 'UNSETTLED', 'lemmas_unfiltered': 'UNSETTLED'}
+[ 1825.6s] budget 2.0: gc20261024-052 group_exp2/inv_e: {'ghost_lemmas_lean': 'UNSETTLED', 'portfolio': 'PROVED', 'ghost_lemmas': 'UNSETTLED', 'lemmas_unfiltered': 'UNSETTLED', 'portfolio_auto': 'PROVED', 'oracle_lemmas': 'PROVED'}
+[ 1836.4s] budget 2.0: gc20261024-104 boolean_ring/plus_cancel: {'lemmas_unfiltered': 'UNSETTLED', 'portfolio': 'UNSETTLED', 'portfolio_auto': 'UNSETTLED', 'ghost_lemmas_lean': 'UNSETTLED', 'oracle_lemmas': 'UNSETTLED', 'ghost_lemmas': 'UNSETTLED'}
+[ 1849.0s] budget 2.0: gc20261024-009 group/right_cancel: {'lemmas_unfiltered': 'UNSETTLED', 'portfolio_auto': 'UNSETTLED', 'portfolio': 'UNSETTLED', 'ghost_lemmas': 'UNSETTLED', 'ghost_lemmas_lean': 'UNSETTLED', 'oracle_lemmas': 'UNSETTLED'}
+[ 1855.8s] budget 2.0: gc20261024-056 lattice/modular: {'ghost_lemmas_lean': 'GHOST_FOUND', 'lemmas_unfiltered': 'UNSETTLED', 'portfolio': 'GHOST_FOUND', 'ghost_lemmas': 'GHOST_FOUND', 'oracle_lemmas': 'GHOST_FOUND', 'portfolio_auto': 'GHOST_FOUND'}
+[ 1861.6s] budget 2.0: gc20261024-112 lattice/cancel: {'portfolio_auto': 'GHOST_FOUND', 'portfolio': 'GHOST_FOUND', 'ghost_lemmas': 'GHOST_FOUND', 'lemmas_unfiltered': 'UNSETTLED', 'oracle_lemmas': 'GHOST_FOUND', 'ghost_lemmas_lean': 'GHOST_FOUND'}
+[ 1868.9s] budget 2.0: gc20261024-073 moufang/assoc: {'oracle_lemmas': 'UNSETTLED', 'portfolio': 'UNSETTLED', 'portfolio_auto': 'UNSETTLED', 'ghost_lemmas_lean': 'UNSETTLED', 'ghost_lemmas': 'UNSETTLED', 'lemmas_unfiltered': 'UNSETTLED'}
+[ 1877.6s] budget 2.0: gc20261024-092 group/right_id: {'oracle_lemmas': 'UNSETTLED', 'portfolio': 'UNSETTLED', 'ghost_lemmas': 'UNSETTLED', 'ghost_lemmas_lean': 'UNSETTLED', 'portfolio_auto': 'UNSETTLED', 'lemmas_unfiltered': 'UNSETTLED'}
+[ 1878.9s] budget 2.0: gc20261024-086 group_sq/idem: {'portfolio': 'GHOST_FOUND', 'oracle_lemmas': 'GHOST_FOUND', 'ghost_lemmas': 'GHOST_FOUND', 'portfolio_auto': 'GHOST_FOUND', 'ghost_lemmas_lean': 'GHOST_FOUND', 'lemmas_unfiltered': 'UNSETTLED'}
+[ 1879.3s] budget 2.0: gc20261024-025 quasigroup/ldiv_self: {'oracle_lemmas': 'GHOST_FOUND', 'lemmas_unfiltered': 'UNSETTLED', 'ghost_lemmas_lean': 'GHOST_FOUND', 'ghost_lemmas': 'GHOST_FOUND', 'portfolio_auto': 'GHOST_FOUND', 'portfolio': 'GHOST_FOUND'}
+[ 1888.7s] budget 2.0: gc20261024-028 group_sq/moufang_right: {'lemmas_unfiltered': 'UNSETTLED', 'portfolio': 'UNSETTLED', 'oracle_lemmas': 'UNSETTLED', 'portfolio_auto': 'UNSETTLED', 'ghost_lemmas': 'UNSETTLED', 'ghost_lemmas_lean': 'UNSETTLED'}
+[ 1900.7s] budget 2.0: gc20261024-099 group/inv_inv: {'portfolio_auto': 'UNSETTLED', 'lemmas_unfiltered': 'UNSETTLED', 'ghost_lemmas_lean': 'UNSETTLED', 'portfolio': 'UNSETTLED', 'oracle_lemmas': 'UNSETTLED', 'ghost_lemmas': 'UNSETTLED'}
+[ 1913.7s] budget 2.0: gc20261024-048 moufang/unique_left_id: {'ghost_lemmas': 'UNSETTLED', 'ghost_lemmas_lean': 'UNSETTLED', 'portfolio': 'UNSETTLED', 'portfolio_auto': 'UNSETTLED', 'oracle_lemmas': 'UNSETTLED', 'lemmas_unfiltered': 'UNSETTLED'}
+[ 1916.1s] budget 2.0: gc20261024-054 boolean_ring/h_idem: {'lemmas_unfiltered': 'UNSETTLED', 'portfolio': 'GHOST_FOUND', 'portfolio_auto': 'GHOST_FOUND', 'oracle_lemmas': 'GHOST_FOUND', 'ghost_lemmas': 'GHOST_FOUND', 'ghost_lemmas_lean': 'GHOST_FOUND'}
+[ 1928.0s] budget 8.0: gc20261024-066 group_exp2/unique_left_id: {'oracle_lemmas': 'PROVED', 'lemmas_unfiltered': 'PROVED', 'portfolio': 'PROVED', 'portfolio_auto': 'PROVED', 'ghost_lemmas_lean': 'PROVED', 'ghost_lemmas': 'PROVED'}
+[ 1960.1s] budget 8.0: gc20261024-004 ring/plus_cancel: {'portfolio': 'PROVED', 'lemmas_unfiltered': 'PROVED', 'ghost_lemmas_lean': 'PROVED', 'ghost_lemmas': 'UNSETTLED', 'oracle_lemmas': 'PROVED', 'portfolio_auto': 'PROVED'}
+[ 1994.2s] budget 8.0: gc20261024-095 boolean_ring/neg_times: {'lemmas_unfiltered': 'PROVED', 'ghost_lemmas_lean': 'PROVED', 'portfolio_auto': 'PROVED', 'ghost_lemmas': 'PROVED', 'portfolio': 'PROVED', 'oracle_lemmas': 'PROVED'}
+[ 1994.6s] budget 8.0: gc20261024-002 quasigroup/comm: {'portfolio_auto': 'GHOST_FOUND', 'oracle_lemmas': 'GHOST_FOUND', 'ghost_lemmas': 'GHOST_FOUND', 'lemmas_unfiltered': 'UNSETTLED', 'ghost_lemmas_lean': 'GHOST_FOUND', 'portfolio': 'GHOST_FOUND'}
+[ 2016.7s] budget 8.0: gc20261024-043 group/left_alt: {'oracle_lemmas': 'PROVED', 'portfolio_auto': 'PROVED', 'portfolio': 'PROVED', 'lemmas_unfiltered': 'PROVED', 'ghost_lemmas_lean': 'PROVED', 'ghost_lemmas': 'PROVED'}
+[ 2046.7s] budget 8.0: gc20261024-065 ring/neg_times: {'oracle_lemmas': 'UNSETTLED', 'ghost_lemmas_lean': 'PROVED', 'ghost_lemmas': 'PROVED', 'portfolio_auto': 'PROVED', 'lemmas_unfiltered': 'PROVED', 'portfolio': 'PROVED'}
+[ 2075.3s] budget 8.0: gc20261024-062 group_sq/flexible: {'oracle_lemmas': 'PROVED', 'portfolio_auto': 'PROVED', 'portfolio': 'PROVED', 'ghost_lemmas': 'UNSETTLED', 'lemmas_unfiltered': 'PROVED', 'ghost_lemmas_lean': 'UNSETTLED'}
+[ 2084.3s] budget 8.0: gc20261024-040 huntington/plus_cancel: {'ghost_lemmas': 'GHOST_FOUND', 'lemmas_unfiltered': 'UNSETTLED', 'portfolio': 'GHOST_FOUND', 'oracle_lemmas': 'GHOST_FOUND', 'portfolio_auto': 'GHOST_FOUND', 'ghost_lemmas_lean': 'GHOST_FOUND'}
+[ 2102.4s] budget 8.0: gc20261024-015 group_exp2/moufang_right: {'portfolio_auto': 'PROVED', 'ghost_lemmas_lean': 'PROVED', 'lemmas_unfiltered': 'PROVED', 'oracle_lemmas': 'PROVED', 'ghost_lemmas': 'PROVED', 'portfolio': 'PROVED'}
+[ 2130.1s] budget 8.0: gc20261024-013 boolean_ring/no_nilpotent: {'lemmas_unfiltered': 'PROVED', 'portfolio': 'PROVED', 'portfolio_auto': 'PROVED', 'ghost_lemmas': 'UNSETTLED', 'ghost_lemmas_lean': 'PROVED', 'oracle_lemmas': 'PROVED'}
+[ 2139.5s] budget 8.0: gc20261024-055 quasigroup/left_cancel: {'lemmas_unfiltered': 'PROVED', 'oracle_lemmas': 'PROVED', 'ghost_lemmas_lean': 'PROVED', 'portfolio': 'PROVED', 'portfolio_auto': 'PROVED', 'ghost_lemmas': 'PROVED'}
+[ 2139.9s] budget 8.0: gc20261024-070 quasigroup/sq_central: {'ghost_lemmas': 'GHOST_FOUND', 'ghost_lemmas_lean': 'GHOST_FOUND', 'portfolio': 'GHOST_FOUND', 'lemmas_unfiltered': 'UNSETTLED', 'oracle_lemmas': 'GHOST_FOUND', 'portfolio_auto': 'GHOST_FOUND'}
+[ 2151.8s] budget 8.0: gc20261024-007 group_exp2/self_inverse: {'oracle_lemmas': 'PROVED', 'portfolio_auto': 'PROVED', 'ghost_lemmas': 'PROVED', 'lemmas_unfiltered': 'PROVED', 'ghost_lemmas_lean': 'PROVED', 'portfolio': 'PROVED'}
+[ 2164.1s] budget 8.0: gc20261024-112 lattice/cancel: {'portfolio_auto': 'GHOST_FOUND', 'portfolio': 'GHOST_FOUND', 'ghost_lemmas_lean': 'GHOST_FOUND', 'ghost_lemmas': 'GHOST_FOUND', 'lemmas_unfiltered': 'UNSETTLED', 'oracle_lemmas': 'GHOST_FOUND'}
+[ 2173.1s] budget 8.0: gc20261024-011 ring/char2: {'oracle_lemmas': 'GHOST_FOUND', 'ghost_lemmas_lean': 'GHOST_FOUND', 'portfolio': 'GHOST_FOUND', 'ghost_lemmas': 'GHOST_FOUND', 'lemmas_unfiltered': 'UNSETTLED', 'portfolio_auto': 'GHOST_FOUND'}
+[ 2181.5s] budget 8.0: gc20261024-103 lattice/meet_is_join: {'portfolio_auto': 'GHOST_FOUND', 'lemmas_unfiltered': 'UNSETTLED', 'ghost_lemmas_lean': 'GHOST_FOUND', 'portfolio': 'GHOST_FOUND', 'oracle_lemmas': 'GHOST_FOUND', 'ghost_lemmas': 'GHOST_FOUND'}
+[ 2203.1s] budget 8.0: gc20261024-087 group/flexible: {'ghost_lemmas': 'PROVED', 'oracle_lemmas': 'PROVED', 'portfolio_auto': 'PROVED', 'portfolio': 'PROVED', 'lemmas_unfiltered': 'PROVED', 'ghost_lemmas_lean': 'PROVED'}
+[ 2226.6s] budget 8.0: gc20261024-009 group/right_cancel: {'oracle_lemmas': 'PROVED', 'ghost_lemmas': 'UNSETTLED', 'portfolio': 'PROVED', 'portfolio_auto': 'PROVED', 'ghost_lemmas_lean': 'PROVED', 'lemmas_unfiltered': 'PROVED'}
+[ 2257.6s] budget 8.0: gc20261024-067 moufang/right_cancel: {'ghost_lemmas_lean': 'UNSETTLED', 'ghost_lemmas': 'UNSETTLED', 'oracle_lemmas': 'PROVED', 'lemmas_unfiltered': 'PROVED', 'portfolio_auto': 'PROVED', 'portfolio': 'PROVED'}
+[ 2282.8s] budget 8.0: gc20261024-059 group/right_inv: {'ghost_lemmas': 'UNSETTLED', 'oracle_lemmas': 'PROVED', 'portfolio': 'PROVED', 'lemmas_unfiltered': 'PROVED', 'portfolio_auto': 'PROVED', 'ghost_lemmas_lean': 'PROVED'}
+[ 2334.4s] budget 8.0: gc20261024-073 moufang/assoc: {'oracle_lemmas': 'UNSETTLED', 'lemmas_unfiltered': 'UNSETTLED', 'ghost_lemmas_lean': 'UNSETTLED', 'portfolio': 'UNSETTLED', 'ghost_lemmas': 'UNSETTLED', 'portfolio_auto': 'UNSETTLED'}
+[ 2352.4s] budget 8.0: gc20261024-033 group/inv_comm: {'lemmas_unfiltered': 'UNSETTLED', 'oracle_lemmas': 'GHOST_FOUND', 'ghost_lemmas': 'GHOST_FOUND', 'ghost_lemmas_lean': 'GHOST_FOUND', 'portfolio': 'GHOST_FOUND', 'portfolio_auto': 'GHOST_FOUND'}
+[ 2382.5s] budget 8.0: gc20261024-072 group_sq/right_alt: {'ghost_lemmas': 'UNSETTLED', 'ghost_lemmas_lean': 'UNSETTLED', 'oracle_lemmas': 'PROVED', 'portfolio_auto': 'PROVED', 'portfolio': 'PROVED', 'lemmas_unfiltered': 'PROVED'}
+[ 2414.0s] budget 8.0: gc20261024-039 group/moufang_right: {'oracle_lemmas': 'PROVED', 'ghost_lemmas_lean': 'UNSETTLED', 'portfolio_auto': 'PROVED', 'ghost_lemmas': 'UNSETTLED', 'lemmas_unfiltered': 'PROVED', 'portfolio': 'PROVED'}
+[ 2435.8s] budget 8.0: gc20261024-124 group_sq/unique_left_id: {'ghost_lemmas': 'PROVED', 'oracle_lemmas': 'PROVED', 'lemmas_unfiltered': 'PROVED', 'ghost_lemmas_lean': 'PROVED', 'portfolio': 'PROVED', 'portfolio_auto': 'PROVED'}
+[ 2455.1s] budget 8.0: gc20261024-100 group/inv_e: {'portfolio_auto': 'PROVED', 'ghost_lemmas': 'PROVED', 'portfolio': 'PROVED', 'lemmas_unfiltered': 'PROVED', 'ghost_lemmas_lean': 'PROVED', 'oracle_lemmas': 'PROVED'}
+[ 2467.6s] budget 8.0: gc20261024-021 group_exp2/left_cancel: {'oracle_lemmas': 'PROVED', 'ghost_lemmas': 'PROVED', 'ghost_lemmas_lean': 'PROVED', 'portfolio_auto': 'PROVED', 'portfolio': 'PROVED', 'lemmas_unfiltered': 'PROVED'}
+[ 2475.9s] budget 8.0: gc20261024-086 group_sq/idem: {'oracle_lemmas': 'GHOST_FOUND', 'portfolio_auto': 'GHOST_FOUND', 'portfolio': 'GHOST_FOUND', 'ghost_lemmas_lean': 'GHOST_FOUND', 'lemmas_unfiltered': 'UNSETTLED', 'ghost_lemmas': 'GHOST_FOUND'}
+[ 2506.8s] budget 8.0: gc20261024-078 moufang/ldiv_e: {'oracle_lemmas': 'PROVED', 'portfolio_auto': 'PROVED', 'ghost_lemmas_lean': 'UNSETTLED', 'lemmas_unfiltered': 'PROVED', 'ghost_lemmas': 'UNSETTLED', 'portfolio': 'PROVED'}
+[ 2536.6s] budget 8.0: gc20261024-091 group/inv_mul: {'portfolio': 'PROVED', 'ghost_lemmas': 'UNSETTLED', 'ghost_lemmas_lean': 'UNSETTLED', 'lemmas_unfiltered': 'PROVED', 'oracle_lemmas': 'PROVED', 'portfolio_auto': 'PROVED'}
+[ 2564.6s] budget 8.0: gc20261024-109 dist_lattice/meet_idem: {'ghost_lemmas_lean': 'PROVED', 'oracle_lemmas': 'PROVED', 'lemmas_unfiltered': 'PROVED', 'ghost_lemmas': 'UNSETTLED', 'portfolio_auto': 'PROVED', 'portfolio': 'PROVED'}
+[ 2596.4s] budget 8.0: gc20261024-068 moufang/ldiv_self: {'portfolio': 'PROVED', 'ghost_lemmas_lean': 'UNSETTLED', 'oracle_lemmas': 'PROVED', 'ghost_lemmas': 'UNSETTLED', 'lemmas_unfiltered': 'PROVED', 'portfolio_auto': 'PROVED'}
+[ 2622.8s] budget 8.0: gc20261024-058 dist_lattice/modular: {'portfolio': 'PROVED', 'portfolio_auto': 'PROVED', 'oracle_lemmas': 'PROVED', 'ghost_lemmas_lean': 'UNSETTLED', 'ghost_lemmas': 'UNSETTLED', 'lemmas_unfiltered': 'PROVED'}
+[ 2652.2s] budget 8.0: gc20261024-034 group_sq/inv_comm: {'lemmas_unfiltered': 'PROVED', 'portfolio_auto': 'PROVED', 'portfolio': 'PROVED', 'ghost_lemmas': 'UNSETTLED', 'oracle_lemmas': 'PROVED', 'ghost_lemmas_lean': 'UNSETTLED'}
+[ 2688.1s] budget 8.0: gc20261024-104 boolean_ring/plus_cancel: {'portfolio_auto': 'PROVED', 'portfolio': 'PROVED', 'ghost_lemmas_lean': 'PROVED', 'oracle_lemmas': 'PROVED', 'lemmas_unfiltered': 'PROVED', 'ghost_lemmas': 'UNSETTLED'}
+[ 2697.8s] budget 8.0: gc20261024-102 lattice/chain: {'oracle_lemmas': 'GHOST_FOUND', 'portfolio': 'GHOST_FOUND', 'lemmas_unfiltered': 'UNSETTLED', 'ghost_lemmas': 'GHOST_FOUND', 'portfolio_auto': 'GHOST_FOUND', 'ghost_lemmas_lean': 'GHOST_FOUND'}
+[ 2725.1s] budget 8.0: gc20261024-090 group_sq/right_id: {'ghost_lemmas_lean': 'UNSETTLED', 'portfolio_auto': 'PROVED', 'oracle_lemmas': 'PROVED', 'portfolio': 'PROVED', 'lemmas_unfiltered': 'PROVED', 'ghost_lemmas': 'UNSETTLED'}
+[ 2754.0s] budget 8.0: gc20261024-076 group_sq/inv_mul: {'portfolio_auto': 'PROVED', 'ghost_lemmas': 'UNSETTLED', 'portfolio': 'PROVED', 'oracle_lemmas': 'PROVED', 'lemmas_unfiltered': 'PROVED', 'ghost_lemmas_lean': 'UNSETTLED'}
+[ 2766.4s] budget 8.0: gc20261024-027 group_exp2/flexible: {'lemmas_unfiltered': 'PROVED', 'oracle_lemmas': 'PROVED', 'ghost_lemmas': 'PROVED', 'portfolio_auto': 'PROVED', 'ghost_lemmas_lean': 'PROVED', 'portfolio': 'PROVED'}
+[ 2791.5s] budget 8.0: gc20261024-038 group_sq/inv_inv: {'ghost_lemmas': 'PROVED', 'portfolio_auto': 'PROVED', 'oracle_lemmas': 'PROVED', 'portfolio': 'PROVED', 'ghost_lemmas_lean': 'PROVED', 'lemmas_unfiltered': 'PROVED'}
+[ 2823.7s] budget 8.0: gc20261024-046 moufang/flexible: {'portfolio': 'PROVED', 'oracle_lemmas': 'PROVED', 'ghost_lemmas': 'UNSETTLED', 'portfolio_auto': 'PROVED', 'ghost_lemmas_lean': 'UNSETTLED', 'lemmas_unfiltered': 'PROVED'}
+[ 2844.5s] budget 8.0: gc20261024-108 lattice/meet_idem: {'portfolio_auto': 'PROVED', 'ghost_lemmas': 'PROVED', 'lemmas_unfiltered': 'PROVED', 'portfolio': 'PROVED', 'oracle_lemmas': 'PROVED', 'ghost_lemmas_lean': 'PROVED'}
+[ 2870.1s] budget 8.0: gc20261024-016 moufang/sq_e_unique: {'oracle_lemmas': 'PROVED', 'ghost_lemmas_lean': 'UNSETTLED', 'lemmas_unfiltered': 'PROVED', 'portfolio': 'PROVED', 'portfolio_auto': 'PROVED', 'ghost_lemmas': 'UNSETTLED'}
+[ 2882.0s] budget 8.0: gc20261024-029 group_exp2/right_inv: {'lemmas_unfiltered': 'PROVED', 'oracle_lemmas': 'PROVED', 'portfolio_auto': 'PROVED', 'portfolio': 'PROVED', 'ghost_lemmas': 'PROVED', 'ghost_lemmas_lean': 'PROVED'}
+[ 2910.9s] budget 8.0: gc20261024-020 group_sq/comm: {'lemmas_unfiltered': 'PROVED', 'oracle_lemmas': 'PROVED', 'portfolio': 'PROVED', 'ghost_lemmas': 'UNSETTLED', 'ghost_lemmas_lean': 'UNSETTLED', 'portfolio_auto': 'PROVED'}
+[ 2921.5s] budget 8.0: gc20261024-003 dist_lattice/chain: {'oracle_lemmas': 'GHOST_FOUND', 'ghost_lemmas_lean': 'GHOST_FOUND', 'ghost_lemmas': 'GHOST_FOUND', 'portfolio': 'GHOST_FOUND', 'portfolio_auto': 'GHOST_FOUND', 'lemmas_unfiltered': 'UNSETTLED'}
+[ 2950.8s] budget 8.0: gc20261024-101 dist_lattice/distrib_dual: {'ghost_lemmas_lean': 'PROVED', 'portfolio': 'PROVED', 'oracle_lemmas': 'PROVED', 'portfolio_auto': 'PROVED', 'ghost_lemmas': 'PROVED', 'lemmas_unfiltered': 'PROVED'}
+[ 2964.4s] budget 8.0: gc20261024-056 lattice/modular: {'portfolio': 'GHOST_FOUND', 'ghost_lemmas_lean': 'GHOST_FOUND', 'lemmas_unfiltered': 'UNSETTLED', 'ghost_lemmas': 'GHOST_FOUND', 'oracle_lemmas': 'GHOST_FOUND', 'portfolio_auto': 'GHOST_FOUND'}
+[ 2972.7s] budget 8.0: gc20261024-037 group_exp2/idem: {'ghost_lemmas': 'GHOST_FOUND', 'oracle_lemmas': 'GHOST_FOUND', 'portfolio_auto': 'GHOST_FOUND', 'portfolio': 'GHOST_FOUND', 'ghost_lemmas_lean': 'GHOST_FOUND', 'lemmas_unfiltered': 'UNSETTLED'}
+[ 2983.4s] budget 8.0: gc20261024-063 group_exp2/inv_inv: {'portfolio': 'PROVED', 'portfolio_auto': 'PROVED', 'lemmas_unfiltered': 'PROVED', 'oracle_lemmas': 'PROVED', 'ghost_lemmas_lean': 'PROVED', 'ghost_lemmas': 'PROVED'}
+[ 3016.8s] budget 8.0: gc20261024-022 boolean_ring/char2: {'portfolio_auto': 'PROVED', 'ghost_lemmas_lean': 'PROVED', 'ghost_lemmas': 'UNSETTLED', 'lemmas_unfiltered': 'PROVED', 'portfolio': 'PROVED', 'oracle_lemmas': 'PROVED'}
+[ 3035.3s] budget 8.0: gc20261024-064 group/sq_e_unique: {'portfolio_auto': 'PROVED', 'oracle_lemmas': 'PROVED', 'lemmas_unfiltered': 'PROVED', 'ghost_lemmas': 'PROVED', 'portfolio': 'PROVED', 'ghost_lemmas_lean': 'PROVED'}
+[ 3051.1s] budget 8.0: gc20261024-036 lattice/distrib_dual: {'portfolio': 'GHOST_FOUND', 'lemmas_unfiltered': 'UNSETTLED', 'ghost_lemmas_lean': 'GHOST_FOUND', 'ghost_lemmas': 'GHOST_FOUND', 'portfolio_auto': 'GHOST_FOUND', 'oracle_lemmas': 'GHOST_FOUND'}
+[ 3076.1s] budget 8.0: gc20261024-023 dist_lattice/join_idem: {'ghost_lemmas_lean': 'PROVED', 'ghost_lemmas': 'UNSETTLED', 'oracle_lemmas': 'PROVED', 'portfolio_auto': 'PROVED', 'portfolio': 'PROVED', 'lemmas_unfiltered': 'PROVED'}
+[ 3105.1s] budget 8.0: gc20261024-097 huntington/h_double_neg: {'portfolio': 'PROVED', 'ghost_lemmas_lean': 'PROVED', 'oracle_lemmas': 'PROVED', 'portfolio_auto': 'PROVED', 'lemmas_unfiltered': 'PROVED', 'ghost_lemmas': 'UNSETTLED'}
+[ 3113.7s] budget 8.0: gc20261024-122 group/self_inverse: {'oracle_lemmas': 'GHOST_FOUND', 'ghost_lemmas_lean': 'GHOST_FOUND', 'portfolio_auto': 'GHOST_FOUND', 'lemmas_unfiltered': 'UNSETTLED', 'ghost_lemmas': 'GHOST_FOUND', 'portfolio': 'GHOST_FOUND'}
+[ 3122.2s] budget 8.0: gc20261024-051 ring/h_idem: {'ghost_lemmas': 'GHOST_FOUND', 'lemmas_unfiltered': 'UNSETTLED', 'oracle_lemmas': 'GHOST_FOUND', 'portfolio_auto': 'GHOST_FOUND', 'portfolio': 'GHOST_FOUND', 'ghost_lemmas_lean': 'GHOST_FOUND'}
+[ 3122.8s] budget 8.0: gc20261024-098 quasigroup/moufang_right: {'oracle_lemmas': 'GHOST_FOUND', 'portfolio_auto': 'GHOST_FOUND', 'ghost_lemmas': 'GHOST_FOUND', 'ghost_lemmas_lean': 'GHOST_FOUND', 'lemmas_unfiltered': 'UNSETTLED', 'portfolio': 'GHOST_FOUND'}
+[ 3134.0s] budget 8.0: gc20261024-047 group_exp2/sq_e_unique: {'oracle_lemmas': 'PROVED', 'ghost_lemmas_lean': 'PROVED', 'lemmas_unfiltered': 'PROVED', 'portfolio': 'PROVED', 'portfolio_auto': 'PROVED', 'ghost_lemmas': 'PROVED'}
+[ 3169.5s] budget 8.0: gc20261024-057 boolean_ring/anti_comm: {'oracle_lemmas': 'PROVED', 'lemmas_unfiltered': 'PROVED', 'portfolio': 'PROVED', 'ghost_lemmas_lean': 'PROVED', 'ghost_lemmas': 'UNSETTLED', 'portfolio_auto': 'PROVED'}
+[ 3201.6s] budget 8.0: gc20261024-005 moufang/left_cancel: {'portfolio_auto': 'PROVED', 'ghost_lemmas': 'UNSETTLED', 'lemmas_unfiltered': 'PROVED', 'ghost_lemmas_lean': 'UNSETTLED', 'oracle_lemmas': 'PROVED', 'portfolio': 'PROVED'}
+[ 3231.9s] budget 8.0: gc20261024-017 group_sq/right_cancel: {'oracle_lemmas': 'PROVED', 'portfolio_auto': 'PROVED', 'portfolio': 'PROVED', 'ghost_lemmas_lean': 'UNSETTLED', 'ghost_lemmas': 'UNSETTLED', 'lemmas_unfiltered': 'PROVED'}
+[ 3254.9s] budget 8.0: gc20261024-110 group_sq/sq_e_unique: {'portfolio': 'PROVED', 'ghost_lemmas': 'PROVED', 'portfolio_auto': 'PROVED', 'ghost_lemmas_lean': 'PROVED', 'lemmas_unfiltered': 'PROVED', 'oracle_lemmas': 'PROVED'}
+[ 3283.3s] budget 8.0: gc20261024-030 group_sq/left_alt: {'lemmas_unfiltered': 'PROVED', 'ghost_lemmas_lean': 'PROVED', 'ghost_lemmas': 'UNSETTLED', 'portfolio_auto': 'PROVED', 'portfolio': 'PROVED', 'oracle_lemmas': 'PROVED'}
+[ 3310.6s] budget 8.0: gc20261024-121 group/right_alt: {'lemmas_unfiltered': 'PROVED', 'portfolio': 'PROVED', 'ghost_lemmas': 'UNSETTLED', 'portfolio_auto': 'PROVED', 'ghost_lemmas_lean': 'UNSETTLED', 'oracle_lemmas': 'PROVED'}
+[ 3339.7s] budget 8.0: gc20261024-048 moufang/unique_left_id: {'ghost_lemmas': 'UNSETTLED', 'portfolio_auto': 'PROVED', 'oracle_lemmas': 'PROVED', 'lemmas_unfiltered': 'PROVED', 'portfolio': 'PROVED', 'ghost_lemmas_lean': 'PROVED'}
+[ 3340.0s] budget 8.0: gc20261024-060 quasigroup/idem: {'portfolio_auto': 'GHOST_FOUND', 'oracle_lemmas': 'GHOST_FOUND', 'ghost_lemmas': 'GHOST_FOUND', 'lemmas_unfiltered': 'UNSETTLED', 'portfolio': 'GHOST_FOUND', 'ghost_lemmas_lean': 'GHOST_FOUND'}
+[ 3349.0s] budget 8.0: gc20261024-006 ring/anti_comm: {'portfolio': 'GHOST_FOUND', 'lemmas_unfiltered': 'UNSETTLED', 'ghost_lemmas': 'GHOST_FOUND', 'portfolio_auto': 'GHOST_FOUND', 'oracle_lemmas': 'GHOST_FOUND', 'ghost_lemmas_lean': 'GHOST_FOUND'}
+[ 3364.3s] budget 8.0: gc20261024-081 group/comm: {'ghost_lemmas': 'GHOST_FOUND', 'portfolio_auto': 'GHOST_FOUND', 'lemmas_unfiltered': 'UNSETTLED', 'portfolio': 'GHOST_FOUND', 'ghost_lemmas_lean': 'GHOST_FOUND', 'oracle_lemmas': 'GHOST_FOUND'}
+[ 3364.7s] budget 8.0: gc20261024-123 quasigroup/right_alt: {'portfolio': 'GHOST_FOUND', 'ghost_lemmas': 'GHOST_FOUND', 'lemmas_unfiltered': 'UNSETTLED', 'ghost_lemmas_lean': 'GHOST_FOUND', 'portfolio_auto': 'GHOST_FOUND', 'oracle_lemmas': 'GHOST_FOUND'}
+[ 3392.5s] budget 8.0: gc20261024-105 group_sq/left_cancel: {'portfolio_auto': 'PROVED', 'ghost_lemmas': 'UNSETTLED', 'ghost_lemmas_lean': 'PROVED', 'lemmas_unfiltered': 'PROVED', 'portfolio': 'PROVED', 'oracle_lemmas': 'PROVED'}
+[ 3401.4s] budget 8.0: gc20261024-041 huntington/h_neg_fix: {'portfolio': 'GHOST_FOUND', 'portfolio_auto': 'GHOST_FOUND', 'lemmas_unfiltered': 'UNSETTLED', 'ghost_lemmas_lean': 'GHOST_FOUND', 'oracle_lemmas': 'GHOST_FOUND', 'ghost_lemmas': 'GHOST_FOUND'}
+[ 3410.0s] budget 8.0: gc20261024-054 boolean_ring/h_idem: {'oracle_lemmas': 'GHOST_FOUND', 'portfolio_auto': 'GHOST_FOUND', 'lemmas_unfiltered': 'UNSETTLED', 'ghost_lemmas_lean': 'GHOST_FOUND', 'ghost_lemmas': 'GHOST_FOUND', 'portfolio': 'GHOST_FOUND'}
+[ 3423.9s] budget 8.0: gc20261024-119 group_exp2/sq_central: {'ghost_lemmas_lean': 'PROVED', 'oracle_lemmas': 'PROVED', 'lemmas_unfiltered': 'PROVED', 'portfolio_auto': 'PROVED', 'ghost_lemmas': 'PROVED', 'portfolio': 'PROVED'}
+[ 3444.5s] budget 8.0: gc20261024-049 group/unique_left_id: {'lemmas_unfiltered': 'PROVED', 'ghost_lemmas_lean': 'PROVED', 'ghost_lemmas': 'UNSETTLED', 'portfolio_auto': 'PROVED', 'oracle_lemmas': 'PROVED', 'portfolio': 'PROVED'}
+[ 3475.7s] budget 8.0: gc20261024-117 ring/times_zero: {'oracle_lemmas': 'PROVED', 'ghost_lemmas_lean': 'PROVED', 'portfolio': 'PROVED', 'ghost_lemmas': 'PROVED', 'portfolio_auto': 'PROVED', 'lemmas_unfiltered': 'PROVED'}
+[ 3498.2s] budget 8.0: gc20261024-069 lattice/join_idem: {'portfolio': 'PROVED', 'portfolio_auto': 'PROVED', 'ghost_lemmas': 'PROVED', 'ghost_lemmas_lean': 'PROVED', 'lemmas_unfiltered': 'PROVED', 'oracle_lemmas': 'PROVED'}
+[ 3511.7s] budget 8.0: gc20261024-115 group_exp2/right_id: {'portfolio': 'PROVED', 'ghost_lemmas_lean': 'PROVED', 'oracle_lemmas': 'PROVED', 'lemmas_unfiltered': 'PROVED', 'ghost_lemmas': 'PROVED', 'portfolio_auto': 'PROVED'}
+[ 3520.4s] budget 8.0: gc20261024-118 group_sq/self_inverse: {'lemmas_unfiltered': 'UNSETTLED', 'portfolio_auto': 'GHOST_FOUND', 'ghost_lemmas': 'GHOST_FOUND', 'oracle_lemmas': 'GHOST_FOUND', 'ghost_lemmas_lean': 'GHOST_FOUND', 'portfolio': 'GHOST_FOUND'}
+[ 3552.3s] budget 8.0: gc20261024-106 ring/neg_neg: {'portfolio_auto': 'PROVED', 'ghost_lemmas_lean': 'PROVED', 'oracle_lemmas': 'PROVED', 'ghost_lemmas': 'PROVED', 'portfolio': 'PROVED', 'lemmas_unfiltered': 'PROVED'}
+[ 3567.0s] budget 8.0: gc20261024-031 group/sq_central: {'portfolio': 'GHOST_FOUND', 'portfolio_auto': 'GHOST_FOUND', 'lemmas_unfiltered': 'UNSETTLED', 'ghost_lemmas': 'GHOST_FOUND', 'ghost_lemmas_lean': 'GHOST_FOUND', 'oracle_lemmas': 'GHOST_FOUND'}
+[ 3579.8s] budget 8.0: gc20261024-120 group_exp2/left_alt: {'portfolio': 'PROVED', 'portfolio_auto': 'PROVED', 'lemmas_unfiltered': 'PROVED', 'ghost_lemmas': 'PROVED', 'ghost_lemmas_lean': 'PROVED', 'oracle_lemmas': 'PROVED'}
+[ 3612.1s] budget 8.0: gc20261024-107 dist_lattice/cancel: {'lemmas_unfiltered': 'PROVED', 'portfolio': 'PROVED', 'ghost_lemmas': 'UNSETTLED', 'oracle_lemmas': 'PROVED', 'portfolio_auto': 'PROVED', 'ghost_lemmas_lean': 'PROVED'}
+[ 3624.3s] budget 8.0: gc20261024-052 group_exp2/inv_e: {'ghost_lemmas': 'PROVED', 'portfolio_auto': 'PROVED', 'lemmas_unfiltered': 'PROVED', 'portfolio': 'PROVED', 'ghost_lemmas_lean': 'PROVED', 'oracle_lemmas': 'PROVED'}
+[ 3636.1s] budget 8.0: gc20261024-083 group_exp2/comm: {'ghost_lemmas': 'PROVED', 'oracle_lemmas': 'PROVED', 'ghost_lemmas_lean': 'PROVED', 'lemmas_unfiltered': 'PROVED', 'portfolio_auto': 'PROVED', 'portfolio': 'PROVED'}
+[ 3659.0s] budget 8.0: gc20261024-089 moufang/sq_central: {'ghost_lemmas_lean': 'GHOST_FOUND', 'lemmas_unfiltered': 'UNSETTLED', 'portfolio': 'GHOST_FOUND', 'portfolio_auto': 'GHOST_FOUND', 'ghost_lemmas': 'GHOST_FOUND', 'oracle_lemmas': 'GHOST_FOUND'}
+[ 3667.5s] budget 8.0: gc20261024-000 ring/no_nilpotent: {'lemmas_unfiltered': 'UNSETTLED', 'ghost_lemmas_lean': 'GHOST_FOUND', 'oracle_lemmas': 'GHOST_FOUND', 'portfolio': 'GHOST_FOUND', 'portfolio_auto': 'GHOST_FOUND', 'ghost_lemmas': 'GHOST_FOUND'}
+[ 3696.9s] budget 8.0: gc20261024-071 huntington/h_complement: {'ghost_lemmas': 'UNSETTLED', 'ghost_lemmas_lean': 'UNSETTLED', 'lemmas_unfiltered': 'PROVED', 'portfolio': 'PROVED', 'portfolio_auto': 'PROVED', 'oracle_lemmas': 'PROVED'}
+[ 3709.9s] budget 8.0: gc20261024-008 group_exp2/inv_mul: {'lemmas_unfiltered': 'PROVED', 'portfolio': 'PROVED', 'ghost_lemmas': 'PROVED', 'oracle_lemmas': 'PROVED', 'ghost_lemmas_lean': 'PROVED', 'portfolio_auto': 'PROVED'}
+[ 3730.4s] budget 8.0: gc20261024-085 group/left_cancel: {'lemmas_unfiltered': 'PROVED', 'oracle_lemmas': 'PROVED', 'portfolio_auto': 'PROVED', 'ghost_lemmas_lean': 'PROVED', 'ghost_lemmas': 'PROVED', 'portfolio': 'PROVED'}
+[ 3758.6s] budget 8.0: gc20261024-032 huntington/h_idem: {'lemmas_unfiltered': 'PROVED', 'portfolio': 'PROVED', 'oracle_lemmas': 'PROVED', 'portfolio_auto': 'PROVED', 'ghost_lemmas_lean': 'PROVED', 'ghost_lemmas': 'UNSETTLED'}
+[ 3793.6s] budget 8.0: gc20261024-079 ring/zero_times: {'oracle_lemmas': 'PROVED', 'ghost_lemmas_lean': 'PROVED', 'portfolio': 'PROVED', 'ghost_lemmas': 'UNSETTLED', 'portfolio_auto': 'PROVED', 'lemmas_unfiltered': 'PROVED'}
+[ 3823.5s] budget 8.0: gc20261024-012 moufang/right_alt: {'oracle_lemmas': 'PROVED', 'ghost_lemmas': 'UNSETTLED', 'portfolio_auto': 'PROVED', 'ghost_lemmas_lean': 'PROVED', 'lemmas_unfiltered': 'PROVED', 'portfolio': 'PROVED'}
+[ 3832.2s] budget 8.0: gc20261024-018 huntington/h_de_morgan_wrong: {'oracle_lemmas': 'GHOST_FOUND', 'lemmas_unfiltered': 'UNSETTLED', 'ghost_lemmas': 'GHOST_FOUND', 'ghost_lemmas_lean': 'GHOST_FOUND', 'portfolio_auto': 'GHOST_FOUND', 'portfolio': 'GHOST_FOUND'}
+[ 3840.7s] budget 8.0: gc20261024-074 dist_lattice/meet_is_join: {'lemmas_unfiltered': 'UNSETTLED', 'portfolio_auto': 'GHOST_FOUND', 'ghost_lemmas_lean': 'GHOST_FOUND', 'oracle_lemmas': 'GHOST_FOUND', 'portfolio': 'GHOST_FOUND', 'ghost_lemmas': 'GHOST_FOUND'}
+[ 3853.8s] budget 8.0: gc20261024-093 group_exp2/right_alt: {'portfolio': 'PROVED', 'lemmas_unfiltered': 'PROVED', 'ghost_lemmas': 'PROVED', 'oracle_lemmas': 'PROVED', 'ghost_lemmas_lean': 'PROVED', 'portfolio_auto': 'PROVED'}
+[ 3897.7s] budget 8.0: gc20261024-116 moufang/moufang_right: {'portfolio': 'UNSETTLED', 'oracle_lemmas': 'PROVED', 'ghost_lemmas_lean': 'UNSETTLED', 'portfolio_auto': 'PROVED', 'lemmas_unfiltered': 'PROVED', 'ghost_lemmas': 'UNSETTLED'}
+[ 3922.9s] budget 8.0: gc20261024-026 lattice/order_dual: {'lemmas_unfiltered': 'PROVED', 'portfolio_auto': 'PROVED', 'ghost_lemmas_lean': 'PROVED', 'ghost_lemmas': 'PROVED', 'oracle_lemmas': 'PROVED', 'portfolio': 'PROVED'}
+[ 3942.4s] budget 8.0: gc20261024-092 group/right_id: {'ghost_lemmas': 'PROVED', 'lemmas_unfiltered': 'PROVED', 'ghost_lemmas_lean': 'PROVED', 'portfolio_auto': 'PROVED', 'portfolio': 'PROVED', 'oracle_lemmas': 'PROVED'}
+[ 3954.5s] budget 8.0: gc20261024-061 group_exp2/right_cancel: {'ghost_lemmas': 'PROVED', 'portfolio': 'PROVED', 'lemmas_unfiltered': 'PROVED', 'portfolio_auto': 'PROVED', 'oracle_lemmas': 'PROVED', 'ghost_lemmas_lean': 'PROVED'}
+[ 3962.9s] budget 8.0: gc20261024-045 ring/times_idem: {'portfolio_auto': 'GHOST_FOUND', 'portfolio': 'GHOST_FOUND', 'oracle_lemmas': 'GHOST_FOUND', 'ghost_lemmas_lean': 'GHOST_FOUND', 'ghost_lemmas': 'GHOST_FOUND', 'lemmas_unfiltered': 'UNSETTLED'}
+[ 3985.3s] budget 8.0: gc20261024-035 moufang/comm: {'oracle_lemmas': 'GHOST_FOUND', 'portfolio_auto': 'GHOST_FOUND', 'portfolio': 'GHOST_FOUND', 'lemmas_unfiltered': 'UNSETTLED', 'ghost_lemmas': 'GHOST_FOUND', 'ghost_lemmas_lean': 'GHOST_FOUND'}
+[ 4016.7s] budget 8.0: gc20261024-028 group_sq/moufang_right: {'portfolio_auto': 'PROVED', 'portfolio': 'PROVED', 'oracle_lemmas': 'PROVED', 'lemmas_unfiltered': 'PROVED', 'ghost_lemmas_lean': 'PROVED', 'ghost_lemmas': 'UNSETTLED'}
+[ 4024.7s] budget 8.0: gc20261024-111 quasigroup/right_cancel: {'portfolio': 'PROVED', 'lemmas_unfiltered': 'PROVED', 'oracle_lemmas': 'PROVED', 'ghost_lemmas': 'PROVED', 'portfolio_auto': 'PROVED', 'ghost_lemmas_lean': 'PROVED'}
+[ 4040.3s] budget 8.0: gc20261024-080 lattice/distrib: {'ghost_lemmas_lean': 'GHOST_FOUND', 'lemmas_unfiltered': 'UNSETTLED', 'oracle_lemmas': 'GHOST_FOUND', 'portfolio_auto': 'GHOST_FOUND', 'ghost_lemmas': 'GHOST_FOUND', 'portfolio': 'GHOST_FOUND'}
+[ 4048.7s] budget 8.0: gc20261024-014 moufang/idem: {'oracle_lemmas': 'GHOST_FOUND', 'portfolio': 'GHOST_FOUND', 'ghost_lemmas': 'GHOST_FOUND', 'lemmas_unfiltered': 'UNSETTLED', 'portfolio_auto': 'GHOST_FOUND', 'ghost_lemmas_lean': 'GHOST_FOUND'}
+[ 4084.3s] budget 8.0: gc20261024-114 boolean_ring/neg_self: {'portfolio': 'PROVED', 'oracle_lemmas': 'PROVED', 'lemmas_unfiltered': 'PROVED', 'ghost_lemmas_lean': 'PROVED', 'ghost_lemmas': 'UNSETTLED', 'portfolio_auto': 'PROVED'}
+[ 4116.8s] budget 8.0: gc20261024-094 moufang/left_alt: {'oracle_lemmas': 'PROVED', 'portfolio_auto': 'PROVED', 'portfolio': 'PROVED', 'ghost_lemmas_lean': 'UNSETTLED', 'ghost_lemmas': 'UNSETTLED', 'lemmas_unfiltered': 'PROVED'}
+[ 4152.6s] budget 8.0: gc20261024-077 boolean_ring/neg_neg: {'portfolio_auto': 'PROVED', 'portfolio': 'PROVED', 'ghost_lemmas_lean': 'PROVED', 'ghost_lemmas': 'UNSETTLED', 'lemmas_unfiltered': 'PROVED', 'oracle_lemmas': 'PROVED'}
+[ 4163.9s] budget 8.0: gc20261024-113 ring/times_comm: {'ghost_lemmas_lean': 'GHOST_FOUND', 'ghost_lemmas': 'GHOST_FOUND', 'portfolio': 'GHOST_FOUND', 'portfolio_auto': 'GHOST_FOUND', 'lemmas_unfiltered': 'UNSETTLED', 'oracle_lemmas': 'GHOST_FOUND'}
+[ 4164.8s] budget 8.0: gc20261024-082 quasigroup/assoc: {'ghost_lemmas': 'GHOST_FOUND', 'portfolio_auto': 'GHOST_FOUND', 'lemmas_unfiltered': 'UNSETTLED', 'ghost_lemmas_lean': 'GHOST_FOUND', 'portfolio': 'GHOST_FOUND', 'oracle_lemmas': 'GHOST_FOUND'}
+[ 4165.2s] budget 8.0: gc20261024-025 quasigroup/ldiv_self: {'portfolio': 'GHOST_FOUND', 'ghost_lemmas_lean': 'GHOST_FOUND', 'lemmas_unfiltered': 'UNSETTLED', 'portfolio_auto': 'GHOST_FOUND', 'oracle_lemmas': 'GHOST_FOUND', 'ghost_lemmas': 'GHOST_FOUND'}
+[ 4198.7s] budget 8.0: gc20261024-075 boolean_ring/zero_times: {'ghost_lemmas_lean': 'PROVED', 'ghost_lemmas': 'UNSETTLED', 'lemmas_unfiltered': 'PROVED', 'portfolio_auto': 'PROVED', 'portfolio': 'PROVED', 'oracle_lemmas': 'PROVED'}
+[ 4226.6s] budget 8.0: gc20261024-010 group_sq/right_inv: {'portfolio': 'PROVED', 'lemmas_unfiltered': 'PROVED', 'oracle_lemmas': 'PROVED', 'ghost_lemmas_lean': 'UNSETTLED', 'portfolio_auto': 'PROVED', 'ghost_lemmas': 'UNSETTLED'}
+[ 4252.4s] budget 8.0: gc20261024-099 group/inv_inv: {'ghost_lemmas': 'UNSETTLED', 'portfolio': 'PROVED', 'lemmas_unfiltered': 'PROVED', 'oracle_lemmas': 'PROVED', 'ghost_lemmas_lean': 'PROVED', 'portfolio_auto': 'PROVED'}
+[ 4252.8s] budget 8.0: gc20261024-050 quasigroup/left_alt: {'portfolio': 'GHOST_FOUND', 'ghost_lemmas_lean': 'GHOST_FOUND', 'ghost_lemmas': 'GHOST_FOUND', 'portfolio_auto': 'GHOST_FOUND', 'oracle_lemmas': 'GHOST_FOUND', 'lemmas_unfiltered': 'UNSETTLED'}
+[ 4283.9s] budget 8.0: gc20261024-088 dist_lattice/order_dual: {'portfolio_auto': 'PROVED', 'oracle_lemmas': 'PROVED', 'lemmas_unfiltered': 'PROVED', 'ghost_lemmas': 'UNSETTLED', 'ghost_lemmas_lean': 'PROVED', 'portfolio': 'PROVED'}
+[ 4292.3s] budget 8.0: gc20261024-044 group/idem: {'ghost_lemmas_lean': 'GHOST_FOUND', 'lemmas_unfiltered': 'UNSETTLED', 'portfolio_auto': 'GHOST_FOUND', 'oracle_lemmas': 'GHOST_FOUND', 'ghost_lemmas': 'GHOST_FOUND', 'portfolio': 'GHOST_FOUND'}
+[ 4329.6s] budget 8.0: gc20261024-053 boolean_ring/times_zero: {'lemmas_unfiltered': 'PROVED', 'portfolio_auto': 'PROVED', 'portfolio': 'PROVED', 'oracle_lemmas': 'PROVED', 'ghost_lemmas_lean': 'PROVED', 'ghost_lemmas': 'UNSETTLED'}
+[ 4349.7s] budget 8.0: gc20261024-024 group_sq/inv_e: {'portfolio': 'PROVED', 'ghost_lemmas_lean': 'PROVED', 'ghost_lemmas': 'PROVED', 'oracle_lemmas': 'PROVED', 'portfolio_auto': 'PROVED', 'lemmas_unfiltered': 'PROVED'}
+[ 4384.2s] budget 8.0: gc20261024-042 boolean_ring/times_comm: {'portfolio_auto': 'PROVED', 'oracle_lemmas': 'PROVED', 'ghost_lemmas': 'UNSETTLED', 'lemmas_unfiltered': 'PROVED', 'portfolio': 'PROVED', 'ghost_lemmas_lean': 'PROVED'}
+[ 4409.7s] budget 8.0: gc20261024-019 group_sq/sq_central: {'lemmas_unfiltered': 'PROVED', 'portfolio': 'PROVED', 'portfolio_auto': 'PROVED', 'ghost_lemmas_lean': 'UNSETTLED', 'oracle_lemmas': 'PROVED', 'ghost_lemmas': 'UNSETTLED'}
+[ 4419.0s] budget 8.0: gc20261024-001 ring/neg_self: {'ghost_lemmas': 'GHOST_FOUND', 'portfolio': 'GHOST_FOUND', 'portfolio_auto': 'GHOST_FOUND', 'lemmas_unfiltered': 'UNSETTLED', 'oracle_lemmas': 'GHOST_FOUND', 'ghost_lemmas_lean': 'GHOST_FOUND'}
+[ 4419.5s] budget 8.0: gc20261024-084 quasigroup/flexible: {'portfolio_auto': 'GHOST_FOUND', 'ghost_lemmas_lean': 'GHOST_FOUND', 'ghost_lemmas': 'GHOST_FOUND', 'oracle_lemmas': 'GHOST_FOUND', 'lemmas_unfiltered': 'UNSETTLED', 'portfolio': 'GHOST_FOUND'}
+[ 4433.9s] budget 8.0: gc20261024-096 group_exp2/inv_comm: {'oracle_lemmas': 'PROVED', 'ghost_lemmas_lean': 'PROVED', 'ghost_lemmas': 'PROVED', 'lemmas_unfiltered': 'PROVED', 'portfolio_auto': 'PROVED', 'portfolio': 'PROVED'}
+[ 4437.6s] replay gc20261024-068: THEOREM_CHECKED (1/473)
+[ 4439.1s] replay gc20261024-110: THEOREM_CHECKED (2/473)
+[ 4441.9s] replay gc20261024-117: THEOREM_CHECKED (3/473)
+[ 4443.5s] replay gc20261024-077: THEOREM_CHECKED (4/473)
+[ 4445.0s] replay gc20261024-066: THEOREM_CHECKED (5/473)
+[ 4447.0s] replay gc20261024-016: THEOREM_CHECKED (6/473)
+[ 4448.2s] replay gc20261024-030: THEOREM_CHECKED (7/473)
+[ 4450.8s] replay gc20261024-059: THEOREM_CHECKED (8/473)
+[ 4451.8s] replay gc20261024-069: THEOREM_CHECKED (9/473)
+[ 4454.2s] replay gc20261024-030: THEOREM_CHECKED (10/473)
+[ 4455.7s] replay gc20261024-047: THEOREM_CHECKED (11/473)
+[ 4458.3s] replay gc20261024-024: THEOREM_CHECKED (12/473)
+[ 4459.6s] replay gc20261024-039: THEOREM_CHECKED (13/473)
+[ 4462.1s] replay gc20261024-064: THEOREM_CHECKED (14/473)
+[ 4463.6s] replay gc20261024-052: THEOREM_CHECKED (15/473)
+[ 4466.0s] replay gc20261024-059: THEOREM_CHECKED (16/473)
+[ 4467.7s] replay gc20261024-038: THEOREM_CHECKED (17/473)
+[ 4471.1s] replay gc20261024-064: THEOREM_CHECKED (18/473)
+[ 4471.6s] replay gc20261024-058: THEOREM_CHECKED (19/473)
+[ 4475.0s] replay gc20261024-108: THEOREM_CHECKED (20/473)
+[ 4476.0s] replay gc20261024-077: THEOREM_CHECKED (21/473)
+[ 4478.9s] replay gc20261024-105: THEOREM_CHECKED (22/473)
+[ 4482.8s] replay gc20261024-097: THEOREM_CHECKED (23/473)
+[ 4484.9s] replay gc20261024-116: NOT_REPLAYED (24/473)
+[ 4487.6s] replay gc20261024-034: THEOREM_CHECKED (25/473)
+[ 4489.1s] replay gc20261024-105: THEOREM_CHECKED (26/473)
+[ 4491.3s] replay gc20261024-092: THEOREM_CHECKED (27/473)
+[ 4492.6s] replay gc20261024-061: THEOREM_CHECKED (28/473)
+[ 4495.5s] replay gc20261024-088: THEOREM_CHECKED (29/473)
+[ 4499.8s] replay gc20261024-061: THEOREM_CHECKED (30/473)
+[ 4500.9s] replay gc20261024-042: THEOREM_CHECKED (31/473)
+[ 4504.5s] replay gc20261024-068: THEOREM_CHECKED (32/473)
+[ 4507.3s] replay gc20261024-053: THEOREM_CHECKED (33/473)
+[ 4508.2s] replay gc20261024-087: THEOREM_CHECKED (34/473)
+[ 4510.8s] replay gc20261024-059: THEOREM_CHECKED (35/473)
+[ 4511.5s] replay gc20261024-108: THEOREM_CHECKED (36/473)
+[ 4515.0s] replay gc20261024-076: THEOREM_CHECKED (37/473)
+[ 4515.4s] replay gc20261024-010: THEOREM_CHECKED (38/473)
+[ 4519.2s] replay gc20261024-007: THEOREM_CHECKED (39/473)
+[ 4519.4s] replay gc20261024-008: THEOREM_CHECKED (40/473)
+[ 4522.4s] replay gc20261024-066: THEOREM_CHECKED (41/473)
+[ 4522.5s] replay gc20261024-013: THEOREM_CHECKED (42/473)
+[ 4526.5s] replay gc20261024-119: THEOREM_CHECKED (43/473)
+[ 4527.6s] replay gc20261024-109: THEOREM_CHECKED (44/473)
+[ 4531.5s] replay gc20261024-030: THEOREM_CHECKED (45/473)
+[ 4533.8s] replay gc20261024-116: THEOREM_CHECKED (46/473)
+[ 4534.7s] replay gc20261024-111: THEOREM_CHECKED (47/473)
+[ 4538.2s] replay gc20261024-015: THEOREM_CHECKED (48/473)
+[ 4538.4s] replay gc20261024-124: THEOREM_CHECKED (49/473)
+[ 4541.7s] replay gc20261024-023: THEOREM_CHECKED (50/473)
+[ 4542.2s] replay gc20261024-030: THEOREM_CHECKED (51/473)
+[ 4545.9s] replay gc20261024-030: THEOREM_CHECKED (52/473)
+[ 4546.4s] replay gc20261024-109: THEOREM_CHECKED (53/473)
+[ 4549.8s] replay gc20261024-007: THEOREM_CHECKED (54/473)
+[ 4550.1s] replay gc20261024-013: THEOREM_CHECKED (55/473)
+[ 4553.4s] replay gc20261024-091: THEOREM_CHECKED (56/473)
+[ 4553.7s] replay gc20261024-021: THEOREM_CHECKED (57/473)
+[ 4557.5s] replay gc20261024-052: THEOREM_CHECKED (58/473)
+[ 4557.6s] replay gc20261024-120: THEOREM_CHECKED (59/473)
+[ 4561.3s] replay gc20261024-119: THEOREM_CHECKED (60/473)
+[ 4561.7s] replay gc20261024-101: THEOREM_CHECKED (61/473)
+[ 4565.0s] replay gc20261024-111: THEOREM_CHECKED (62/473)
+[ 4567.8s] replay gc20261024-022: THEOREM_CHECKED (63/473)
+[ 4569.2s] replay gc20261024-107: THEOREM_CHECKED (64/473)
+[ 4571.9s] replay gc20261024-019: THEOREM_CHECKED (65/473)
+[ 4572.6s] replay gc20261024-077: THEOREM_CHECKED (66/473)
+[ 4576.5s] replay gc20261024-090: THEOREM_CHECKED (67/473)
+[ 4580.3s] replay gc20261024-072: THEOREM_CHECKED (68/473)
+[ 4580.8s] replay gc20261024-042: THEOREM_CHECKED (69/473)
+[ 4583.9s] replay gc20261024-039: THEOREM_CHECKED (70/473)
+[ 4584.4s] replay gc20261024-008: THEOREM_CHECKED (71/473)
+[ 4587.9s] replay gc20261024-016: THEOREM_CHECKED (72/473)
+[ 4588.0s] replay gc20261024-043: THEOREM_CHECKED (73/473)
+[ 4591.9s] replay gc20261024-007: THEOREM_CHECKED (74/473)
+[ 4593.1s] replay gc20261024-065: THEOREM_CHECKED (75/473)
+[ 4597.2s] replay gc20261024-008: THEOREM_CHECKED (76/473)
+[ 4600.6s] replay gc20261024-114: THEOREM_CHECKED (77/473)
+[ 4600.8s] replay gc20261024-053: THEOREM_CHECKED (78/473)
+[ 4603.8s] replay gc20261024-007: THEOREM_CHECKED (79/473)
+[ 4603.9s] replay gc20261024-111: THEOREM_CHECKED (80/473)
+[ 4607.2s] replay gc20261024-028: THEOREM_CHECKED (81/473)
+[ 4607.2s] replay gc20261024-111: THEOREM_CHECKED (82/473)
+[ 4611.0s] replay gc20261024-023: THEOREM_CHECKED (83/473)
+[ 4614.6s] replay gc20261024-024: THEOREM_CHECKED (84/473)
+[ 4619.6s] replay gc20261024-095: THEOREM_CHECKED (85/473)
+[ 4624.0s] replay gc20261024-071: THEOREM_CHECKED (86/473)
+[ 4631.0s] replay gc20261024-032: THEOREM_CHECKED (87/473)
+[ 4634.2s] replay gc20261024-046: THEOREM_CHECKED (88/473)
+[ 4637.3s] replay gc20261024-032: THEOREM_CHECKED (89/473)
+[ 4638.1s] replay gc20261024-120: THEOREM_CHECKED (90/473)
+[ 4641.6s] replay gc20261024-093: THEOREM_CHECKED (91/473)
+[ 4645.0s] replay gc20261024-062: THEOREM_CHECKED (92/473)
+[ 4647.9s] replay gc20261024-094: THEOREM_CHECKED (93/473)
+[ 4649.6s] replay gc20261024-096: THEOREM_CHECKED (94/473)
+[ 4651.8s] replay gc20261024-038: THEOREM_CHECKED (95/473)
+[ 4653.6s] replay gc20261024-064: THEOREM_CHECKED (96/473)
+[ 4658.1s] replay gc20261024-012: THEOREM_CHECKED (97/473)
+[ 4661.0s] replay gc20261024-114: THEOREM_CHECKED (98/473)
+[ 4661.4s] replay gc20261024-085: THEOREM_CHECKED (99/473)
+[ 4665.4s] replay gc20261024-012: THEOREM_CHECKED (100/473)
+[ 4666.2s] replay gc20261024-020: THEOREM_CHECKED (101/473)
+[ 4669.2s] replay gc20261024-085: THEOREM_CHECKED (102/473)
+[ 4669.9s] replay gc20261024-048: THEOREM_CHECKED (103/473)
+[ 4672.8s] replay gc20261024-026: THEOREM_CHECKED (104/473)
+[ 4675.6s] replay gc20261024-104: THEOREM_CHECKED (105/473)
+[ 4676.6s] replay gc20261024-029: THEOREM_CHECKED (106/473)
+[ 4679.7s] replay gc20261024-027: THEOREM_CHECKED (107/473)
+[ 4680.3s] replay gc20261024-111: THEOREM_CHECKED (108/473)
+[ 4683.4s] replay gc20261024-062: THEOREM_CHECKED (109/473)
+[ 4685.0s] replay gc20261024-028: THEOREM_CHECKED (110/473)
+[ 4687.2s] replay gc20261024-063: THEOREM_CHECKED (111/473)
+[ 4688.8s] replay gc20261024-076: THEOREM_CHECKED (112/473)
+[ 4692.5s] replay gc20261024-085: THEOREM_CHECKED (113/473)
+[ 4694.5s] replay gc20261024-053: THEOREM_CHECKED (114/473)
+[ 4696.3s] replay gc20261024-038: THEOREM_CHECKED (115/473)
+[ 4698.8s] replay gc20261024-093: THEOREM_CHECKED (116/473)
+[ 4702.0s] replay gc20261024-005: THEOREM_CHECKED (117/473)
+[ 4702.3s] replay gc20261024-097: THEOREM_CHECKED (118/473)
+[ 4705.6s] replay gc20261024-100: THEOREM_CHECKED (119/473)
+[ 4705.8s] replay gc20261024-047: THEOREM_CHECKED (120/473)
+[ 4709.3s] replay gc20261024-063: THEOREM_CHECKED (121/473)
+[ 4709.3s] replay gc20261024-013: THEOREM_CHECKED (122/473)
+[ 4712.4s] replay gc20261024-108: THEOREM_CHECKED (123/473)
+[ 4712.5s] replay gc20261024-069: THEOREM_CHECKED (124/473)
+[ 4716.0s] replay gc20261024-015: THEOREM_CHECKED (125/473)
+[ 4719.1s] replay gc20261024-010: THEOREM_CHECKED (126/473)
+[ 4726.3s] replay gc20261024-032: THEOREM_CHECKED (127/473)
+[ 4726.8s] replay gc20261024-042: THEOREM_CHECKED (128/473)
+[ 4730.8s] replay gc20261024-109: THEOREM_CHECKED (129/473)
+[ 4735.2s] replay gc20261024-114: THEOREM_CHECKED (130/473)
+[ 4735.4s] replay gc20261024-028: THEOREM_CHECKED (131/473)
+[ 4739.3s] replay gc20261024-047: THEOREM_CHECKED (132/473)
+[ 4739.7s] replay gc20261024-012: THEOREM_CHECKED (133/473)
+[ 4743.4s] replay gc20261024-034: THEOREM_CHECKED (134/473)
+[ 4744.0s] replay gc20261024-012: THEOREM_CHECKED (135/473)
+[ 4747.2s] replay gc20261024-055: THEOREM_CHECKED (136/473)
+[ 4747.2s] replay gc20261024-024: THEOREM_CHECKED (137/473)
+[ 4750.6s] replay gc20261024-030: THEOREM_CHECKED (138/473)
+[ 4751.6s] replay gc20261024-115: THEOREM_CHECKED (139/473)
+[ 4754.0s] replay gc20261024-055: THEOREM_CHECKED (140/473)
+[ 4758.7s] replay gc20261024-022: THEOREM_CHECKED (141/473)
+[ 4762.1s] replay gc20261024-087: THEOREM_CHECKED (142/473)
+[ 4765.7s] replay gc20261024-046: THEOREM_CHECKED (143/473)
+[ 4766.2s] replay gc20261024-032: THEOREM_CHECKED (144/473)
+[ 4769.8s] replay gc20261024-083: THEOREM_CHECKED (145/473)
+[ 4770.1s] replay gc20261024-093: THEOREM_CHECKED (146/473)
+[ 4772.9s] replay gc20261024-120: THEOREM_CHECKED (147/473)
+[ 4773.5s] replay gc20261024-052: THEOREM_CHECKED (148/473)
+[ 4776.0s] replay gc20261024-100: THEOREM_CHECKED (149/473)
+[ 4776.8s] replay gc20261024-069: THEOREM_CHECKED (150/473)
+[ 4780.6s] replay gc20261024-117: THEOREM_CHECKED (151/473)
+[ 4781.1s] replay gc20261024-004: THEOREM_CHECKED (152/473)
+[ 4784.5s] replay gc20261024-107: THEOREM_CHECKED (153/473)
+[ 4784.9s] replay gc20261024-027: THEOREM_CHECKED (154/473)
+[ 4788.4s] replay gc20261024-029: THEOREM_CHECKED (155/473)
+[ 4788.7s] replay gc20261024-100: THEOREM_CHECKED (156/473)
+[ 4792.7s] replay gc20261024-021: THEOREM_CHECKED (157/473)
+[ 4795.8s] replay gc20261024-042: THEOREM_CHECKED (158/473)
+[ 4796.1s] replay gc20261024-055: THEOREM_CHECKED (159/473)
+[ 4800.1s] replay gc20261024-027: THEOREM_CHECKED (160/473)
+[ 4804.2s] replay gc20261024-038: THEOREM_CHECKED (161/473)
+[ 4807.6s] replay gc20261024-009: THEOREM_CHECKED (162/473)
+[ 4811.1s] replay gc20261024-047: THEOREM_CHECKED (163/473)
+[ 4813.5s] replay gc20261024-097: THEOREM_CHECKED (164/473)
+[ 4815.1s] replay gc20261024-020: THEOREM_CHECKED (165/473)
+[ 4818.7s] replay gc20261024-079: THEOREM_CHECKED (166/473)
+[ 4819.5s] replay gc20261024-007: THEOREM_CHECKED (167/473)
+[ 4821.9s] replay gc20261024-055: THEOREM_CHECKED (168/473)
+[ 4822.7s] replay gc20261024-099: THEOREM_CHECKED (169/473)
+[ 4825.0s] replay gc20261024-072: THEOREM_CHECKED (170/473)
+[ 4825.9s] replay gc20261024-078: THEOREM_CHECKED (171/473)
+[ 4828.4s] replay gc20261024-115: THEOREM_CHECKED (172/473)
+[ 4829.1s] replay gc20261024-111: THEOREM_CHECKED (173/473)
+[ 4831.7s] replay gc20261024-119: THEOREM_CHECKED (174/473)
+[ 4832.9s] replay gc20261024-117: THEOREM_CHECKED (175/473)
+[ 4835.4s] replay gc20261024-047: THEOREM_CHECKED (176/473)
+[ 4838.0s] replay gc20261024-104: THEOREM_CHECKED (177/473)
+[ 4840.4s] replay gc20261024-017: THEOREM_CHECKED (178/473)
+[ 4841.4s] replay gc20261024-055: THEOREM_CHECKED (179/473)
+[ 4844.0s] replay gc20261024-021: THEOREM_CHECKED (180/473)
+[ 4845.2s] replay gc20261024-052: THEOREM_CHECKED (181/473)
+[ 4847.2s] replay gc20261024-068: THEOREM_CHECKED (182/473)
+[ 4850.6s] replay gc20261024-065: THEOREM_CHECKED (183/473)
+[ 4851.2s] replay gc20261024-104: THEOREM_CHECKED (184/473)
+[ 4854.2s] replay gc20261024-111: THEOREM_CHECKED (185/473)
+[ 4854.6s] replay gc20261024-021: THEOREM_CHECKED (186/473)
+[ 4858.1s] replay gc20261024-015: THEOREM_CHECKED (187/473)
+[ 4858.5s] replay gc20261024-043: THEOREM_CHECKED (188/473)
+[ 4861.8s] replay gc20261024-091: THEOREM_CHECKED (189/473)
+[ 4861.8s] replay gc20261024-026: THEOREM_CHECKED (190/473)
+[ 4865.3s] replay gc20261024-017: THEOREM_CHECKED (191/473)
+[ 4865.4s] replay gc20261024-029: THEOREM_CHECKED (192/473)
+[ 4868.3s] replay gc20261024-062: THEOREM_CHECKED (193/473)
+[ 4873.6s] replay gc20261024-068: THEOREM_CHECKED (194/473)
+[ 4874.2s] replay gc20261024-094: NOT_REPLAYED (195/473)
+[ 4877.9s] replay gc20261024-077: THEOREM_CHECKED (196/473)
+[ 4878.0s] replay gc20261024-053: THEOREM_CHECKED (197/473)
+[ 4881.3s] replay gc20261024-115: THEOREM_CHECKED (198/473)
+[ 4881.4s] replay gc20261024-106: THEOREM_CHECKED (199/473)
+[ 4884.6s] replay gc20261024-090: THEOREM_CHECKED (200/473)
+[ 4885.0s] replay gc20261024-078: THEOREM_CHECKED (201/473)
+[ 4887.8s] replay gc20261024-069: THEOREM_CHECKED (202/473)
+[ 4888.8s] replay gc20261024-063: THEOREM_CHECKED (203/473)
+[ 4891.0s] replay gc20261024-120: THEOREM_CHECKED (204/473)
+[ 4891.9s] replay gc20261024-066: THEOREM_CHECKED (205/473)
+[ 4894.5s] replay gc20261024-064: THEOREM_CHECKED (206/473)
+[ 4895.7s] replay gc20261024-120: THEOREM_CHECKED (207/473)
+[ 4897.6s] replay gc20261024-047: THEOREM_CHECKED (208/473)
+[ 4899.9s] replay gc20261024-101: THEOREM_CHECKED (209/473)
+[ 4901.4s] replay gc20261024-093: THEOREM_CHECKED (210/473)
+[ 4903.0s] replay gc20261024-088: THEOREM_CHECKED (211/473)
+[ 4906.3s] replay gc20261024-095: THEOREM_CHECKED (212/473)
+[ 4906.3s] replay gc20261024-083: THEOREM_CHECKED (213/473)
+[ 4910.7s] replay gc20261024-088: THEOREM_CHECKED (214/473)
+[ 4911.2s] replay gc20261024-110: THEOREM_CHECKED (215/473)
+[ 4914.2s] replay gc20261024-083: THEOREM_CHECKED (216/473)
+[ 4919.8s] replay gc20261024-095: THEOREM_CHECKED (217/473)
+[ 4924.8s] replay gc20261024-020: THEOREM_CHECKED (218/473)
+[ 4928.0s] replay gc20261024-097: THEOREM_CHECKED (219/473)
+[ 4929.3s] replay gc20261024-020: THEOREM_CHECKED (220/473)
+[ 4931.7s] replay gc20261024-093: THEOREM_CHECKED (221/473)
+[ 4932.5s] replay gc20261024-021: THEOREM_CHECKED (222/473)
+[ 4935.4s] replay gc20261024-027: THEOREM_CHECKED (223/473)
+[ 4938.5s] replay gc20261024-022: THEOREM_CHECKED (224/473)
+[ 4939.3s] replay gc20261024-096: THEOREM_CHECKED (225/473)
+[ 4941.9s] replay gc20261024-008: THEOREM_CHECKED (226/473)
+[ 4942.5s] replay gc20261024-026: THEOREM_CHECKED (227/473)
+[ 4945.9s] replay gc20261024-107: THEOREM_CHECKED (228/473)
+[ 4946.1s] replay gc20261024-100: THEOREM_CHECKED (229/473)
+[ 4949.7s] replay gc20261024-083: THEOREM_CHECKED (230/473)
+[ 4949.8s] replay gc20261024-083: THEOREM_CHECKED (231/473)
+[ 4953.5s] replay gc20261024-007: THEOREM_CHECKED (232/473)
+[ 4953.7s] replay gc20261024-083: THEOREM_CHECKED (233/473)
+[ 4957.8s] replay gc20261024-034: THEOREM_CHECKED (234/473)
+[ 4958.0s] replay gc20261024-114: THEOREM_CHECKED (235/473)
+[ 4961.3s] replay gc20261024-024: THEOREM_CHECKED (236/473)
+[ 4961.5s] replay gc20261024-049: THEOREM_CHECKED (237/473)
+[ 4964.5s] replay gc20261024-028: THEOREM_CHECKED (238/473)
+[ 4964.8s] replay gc20261024-119: THEOREM_CHECKED (239/473)
+[ 4968.6s] replay gc20261024-039: THEOREM_CHECKED (240/473)
+[ 4970.8s] replay gc20261024-075: THEOREM_CHECKED (241/473)
+[ 4974.0s] replay gc20261024-068: THEOREM_CHECKED (242/473)
+[ 4978.1s] replay gc20261024-115: THEOREM_CHECKED (243/473)
+[ 4983.3s] replay gc20261024-079: THEOREM_CHECKED (244/473)
+[ 4985.2s] replay gc20261024-097: THEOREM_CHECKED (245/473)
+[ 4986.7s] replay gc20261024-063: THEOREM_CHECKED (246/473)
+[ 4988.7s] replay gc20261024-055: THEOREM_CHECKED (247/473)
+[ 4990.1s] replay gc20261024-021: THEOREM_CHECKED (248/473)
+[ 4992.0s] replay gc20261024-010: THEOREM_CHECKED (249/473)
+[ 4993.3s] replay gc20261024-092: THEOREM_CHECKED (250/473)
+[ 4996.4s] replay gc20261024-061: THEOREM_CHECKED (251/473)
+[ 4997.0s] replay gc20261024-039: THEOREM_CHECKED (252/473)
+[ 5000.6s] replay gc20261024-063: THEOREM_CHECKED (253/473)
+[ 5001.5s] replay gc20261024-107: THEOREM_CHECKED (254/473)
+[ 5003.8s] replay gc20261024-005: THEOREM_CHECKED (255/473)
+[ 5007.2s] replay gc20261024-026: THEOREM_CHECKED (256/473)
+[ 5009.4s] replay gc20261024-042: THEOREM_CHECKED (257/473)
+[ 5010.3s] replay gc20261024-048: THEOREM_CHECKED (258/473)
+[ 5012.9s] replay gc20261024-108: THEOREM_CHECKED (259/473)
+[ 5014.4s] replay gc20261024-117: THEOREM_CHECKED (260/473)
+[ 5017.2s] replay gc20261024-117: THEOREM_CHECKED (261/473)
+[ 5018.3s] replay gc20261024-052: THEOREM_CHECKED (262/473)
+[ 5020.5s] replay gc20261024-009: THEOREM_CHECKED (263/473)
+[ 5021.3s] replay gc20261024-016: THEOREM_CHECKED (264/473)
+[ 5024.7s] replay gc20261024-022: THEOREM_CHECKED (265/473)
+[ 5029.1s] replay gc20261024-061: THEOREM_CHECKED (266/473)
+[ 5030.5s] replay gc20261024-048: THEOREM_CHECKED (267/473)
+[ 5033.3s] replay gc20261024-066: THEOREM_CHECKED (268/473)
+[ 5034.5s] replay gc20261024-066: THEOREM_CHECKED (269/473)
+[ 5036.6s] replay gc20261024-059: THEOREM_CHECKED (270/473)
+[ 5038.2s] replay gc20261024-094: THEOREM_CHECKED (271/473)
+[ 5040.2s] replay gc20261024-052: THEOREM_CHECKED (272/473)
+[ 5041.8s] replay gc20261024-093: THEOREM_CHECKED (273/473)
+[ 5043.6s] replay gc20261024-105: THEOREM_CHECKED (274/473)
+[ 5047.2s] replay gc20261024-049: THEOREM_CHECKED (275/473)
+[ 5047.6s] replay gc20261024-022: THEOREM_CHECKED (276/473)
+[ 5051.9s] replay gc20261024-090: THEOREM_CHECKED (277/473)
+[ 5053.4s] replay gc20261024-101: THEOREM_CHECKED (278/473)
+[ 5055.4s] replay gc20261024-104: THEOREM_CHECKED (279/473)
+[ 5057.0s] replay gc20261024-106: THEOREM_CHECKED (280/473)
+[ 5059.3s] replay gc20261024-067: THEOREM_CHECKED (281/473)
+[ 5061.9s] replay gc20261024-095: THEOREM_CHECKED (282/473)
+[ 5063.9s] replay gc20261024-101: THEOREM_CHECKED (283/473)
+[ 5065.0s] replay gc20261024-052: THEOREM_CHECKED (284/473)
+[ 5067.7s] replay gc20261024-013: THEOREM_CHECKED (285/473)
+[ 5068.7s] replay gc20261024-009: THEOREM_CHECKED (286/473)
+[ 5070.9s] replay gc20261024-096: THEOREM_CHECKED (287/473)
+[ 5072.5s] replay gc20261024-066: THEOREM_CHECKED (288/473)
+[ 5076.2s] replay gc20261024-119: THEOREM_CHECKED (289/473)
+[ 5076.5s] replay gc20261024-019: THEOREM_CHECKED (290/473)
+[ 5080.0s] replay gc20261024-058: THEOREM_CHECKED (291/473)
+[ 5080.4s] replay gc20261024-114: THEOREM_CHECKED (292/473)
+[ 5083.9s] replay gc20261024-096: THEOREM_CHECKED (293/473)
+[ 5084.0s] replay gc20261024-026: THEOREM_CHECKED (294/473)
+[ 5087.3s] replay gc20261024-121: THEOREM_CHECKED (295/473)
+[ 5089.2s] replay gc20261024-004: THEOREM_CHECKED (296/473)
+[ 5090.5s] replay gc20261024-048: THEOREM_CHECKED (297/473)
+[ 5092.5s] replay gc20261024-083: THEOREM_CHECKED (298/473)
+[ 5094.0s] replay gc20261024-008: THEOREM_CHECKED (299/473)
+[ 5096.0s] replay gc20261024-124: THEOREM_CHECKED (300/473)
+[ 5097.9s] replay gc20261024-052: THEOREM_CHECKED (301/473)
+[ 5100.4s] replay gc20261024-124: THEOREM_CHECKED (302/473)
+[ 5101.1s] replay gc20261024-047: THEOREM_CHECKED (303/473)
+[ 5103.9s] replay gc20261024-016: THEOREM_CHECKED (304/473)
+[ 5104.2s] replay gc20261024-069: THEOREM_CHECKED (305/473)
+[ 5107.3s] replay gc20261024-105: THEOREM_CHECKED (306/473)
+[ 5107.6s] replay gc20261024-106: THEOREM_CHECKED (307/473)
+[ 5110.6s] replay gc20261024-110: THEOREM_CHECKED (308/473)
+[ 5112.0s] replay gc20261024-117: THEOREM_CHECKED (309/473)
+[ 5114.7s] replay gc20261024-043: THEOREM_CHECKED (310/473)
+[ 5116.7s] replay gc20261024-012: THEOREM_CHECKED (311/473)
+[ 5118.4s] replay gc20261024-108: THEOREM_CHECKED (312/473)
+[ 5120.4s] replay gc20261024-100: THEOREM_CHECKED (313/473)
+[ 5121.9s] replay gc20261024-067: THEOREM_CHECKED (314/473)
+[ 5124.3s] replay gc20261024-092: THEOREM_CHECKED (315/473)
+[ 5126.1s] replay gc20261024-108: THEOREM_CHECKED (316/473)
+[ 5127.8s] replay gc20261024-048: THEOREM_CHECKED (317/473)
+[ 5129.9s] replay gc20261024-021: THEOREM_CHECKED (318/473)
+[ 5130.9s] replay gc20261024-078: THEOREM_CHECKED (319/473)
+[ 5136.3s] replay gc20261024-101: THEOREM_CHECKED (320/473)
+[ 5138.6s] replay gc20261024-071: THEOREM_CHECKED (321/473)
+[ 5139.7s] replay gc20261024-029: THEOREM_CHECKED (322/473)
+[ 5142.2s] replay gc20261024-085: THEOREM_CHECKED (323/473)
+[ 5143.7s] replay gc20261024-083: THEOREM_CHECKED (324/473)
+[ 5145.7s] replay gc20261024-049: THEOREM_CHECKED (325/473)
+[ 5149.1s] replay gc20261024-065: THEOREM_CHECKED (326/473)
+[ 5150.0s] replay gc20261024-008: THEOREM_CHECKED (327/473)
+[ 5152.9s] replay gc20261024-099: THEOREM_CHECKED (328/473)
+[ 5154.1s] replay gc20261024-009: THEOREM_CHECKED (329/473)
+[ 5156.3s] replay gc20261024-124: THEOREM_CHECKED (330/473)
+[ 5157.4s] replay gc20261024-109: THEOREM_CHECKED (331/473)
+[ 5159.7s] replay gc20261024-052: THEOREM_CHECKED (332/473)
+[ 5160.8s] replay gc20261024-083: THEOREM_CHECKED (333/473)
+[ 5163.0s] replay gc20261024-092: THEOREM_CHECKED (334/473)
+[ 5164.3s] replay gc20261024-029: THEOREM_CHECKED (335/473)
+[ 5166.9s] replay gc20261024-024: THEOREM_CHECKED (336/473)
+[ 5168.2s] replay gc20261024-085: THEOREM_CHECKED (337/473)
+[ 5170.1s] replay gc20261024-024: THEOREM_CHECKED (338/473)
+[ 5173.5s] replay gc20261024-110: THEOREM_CHECKED (339/473)
+[ 5174.0s] replay gc20261024-075: THEOREM_CHECKED (340/473)
+[ 5177.5s] replay gc20261024-067: THEOREM_CHECKED (341/473)
+[ 5181.9s] replay gc20261024-120: THEOREM_CHECKED (342/473)
+[ 5183.2s] replay gc20261024-078: THEOREM_CHECKED (343/473)
+[ 5185.4s] replay gc20261024-043: THEOREM_CHECKED (344/473)
+[ 5186.6s] replay gc20261024-030: THEOREM_CHECKED (345/473)
+[ 5190.1s] replay gc20261024-013: THEOREM_CHECKED (346/473)
+[ 5193.5s] replay gc20261024-019: THEOREM_CHECKED (347/473)
+[ 5198.0s] replay gc20261024-115: THEOREM_CHECKED (348/473)
+[ 5198.3s] replay gc20261024-053: THEOREM_CHECKED (349/473)
+[ 5202.2s] replay gc20261024-079: THEOREM_CHECKED (350/473)
+[ 5209.8s] replay gc20261024-057: THEOREM_CHECKED (351/473)
+[ 5212.9s] replay gc20261024-063: THEOREM_CHECKED (352/473)
+[ 5214.5s] replay gc20261024-071: THEOREM_CHECKED (353/473)
+[ 5216.4s] replay gc20261024-005: THEOREM_CHECKED (354/473)
+[ 5218.5s] replay gc20261024-121: THEOREM_CHECKED (355/473)
+[ 5220.0s] replay gc20261024-017: THEOREM_CHECKED (356/473)
+[ 5221.8s] replay gc20261024-047: THEOREM_CHECKED (357/473)
+[ 5223.7s] replay gc20261024-075: THEOREM_CHECKED (358/473)
+[ 5225.3s] replay gc20261024-023: THEOREM_CHECKED (359/473)
+[ 5227.1s] replay gc20261024-087: THEOREM_CHECKED (360/473)
+[ 5229.0s] replay gc20261024-062: THEOREM_CHECKED (361/473)
+[ 5231.4s] replay gc20261024-124: THEOREM_CHECKED (362/473)
+[ 5232.1s] replay gc20261024-055: THEOREM_CHECKED (363/473)
+[ 5236.0s] replay gc20261024-010: THEOREM_CHECKED (364/473)
+[ 5238.1s] replay gc20261024-075: THEOREM_CHECKED (365/473)
+[ 5240.0s] replay gc20261024-008: THEOREM_CHECKED (366/473)
+[ 5241.7s] replay gc20261024-009: THEOREM_CHECKED (367/473)
+[ 5244.7s] replay gc20261024-065: THEOREM_CHECKED (368/473)
+[ 5247.0s] replay gc20261024-104: THEOREM_CHECKED (369/473)
+[ 5248.8s] replay gc20261024-115: THEOREM_CHECKED (370/473)
+[ 5250.6s] replay gc20261024-055: THEOREM_CHECKED (371/473)
+[ 5252.4s] replay gc20261024-055: THEOREM_CHECKED (372/473)
+[ 5254.1s] replay gc20261024-004: THEOREM_CHECKED (373/473)
+[ 5255.8s] replay gc20261024-075: THEOREM_CHECKED (374/473)
+[ 5257.9s] replay gc20261024-106: THEOREM_CHECKED (375/473)
+[ 5259.7s] replay gc20261024-015: THEOREM_CHECKED (376/473)
+[ 5263.2s] replay gc20261024-090: THEOREM_CHECKED (377/473)
+[ 5267.0s] replay gc20261024-068: THEOREM_CHECKED (378/473)
+[ 5267.6s] replay gc20261024-061: THEOREM_CHECKED (379/473)
+[ 5271.5s] replay gc20261024-096: THEOREM_CHECKED (380/473)
+[ 5272.1s] replay gc20261024-079: THEOREM_CHECKED (381/473)
+[ 5275.0s] replay gc20261024-106: THEOREM_CHECKED (382/473)
+[ 5276.6s] replay gc20261024-110: THEOREM_CHECKED (383/473)
+[ 5278.8s] replay gc20261024-119: THEOREM_CHECKED (384/473)
+[ 5281.5s] replay gc20261024-095: THEOREM_CHECKED (385/473)
+[ 5282.1s] replay gc20261024-026: THEOREM_CHECKED (386/473)
+[ 5285.6s] replay gc20261024-029: THEOREM_CHECKED (387/473)
+[ 5286.1s] replay gc20261024-027: THEOREM_CHECKED (388/473)
+[ 5289.1s] replay gc20261024-111: THEOREM_CHECKED (389/473)
+[ 5290.1s] replay gc20261024-119: THEOREM_CHECKED (390/473)
+[ 5292.7s] replay gc20261024-015: THEOREM_CHECKED (391/473)
+[ 5293.7s] replay gc20261024-094: THEOREM_CHECKED (392/473)
+[ 5297.5s] replay gc20261024-095: THEOREM_CHECKED (393/473)
+[ 5299.3s] replay gc20261024-058: THEOREM_CHECKED (394/473)
+[ 5302.6s] replay gc20261024-004: THEOREM_CHECKED (395/473)
+[ 5305.2s] replay gc20261024-057: THEOREM_CHECKED (396/473)
+[ 5307.4s] replay gc20261024-124: THEOREM_CHECKED (397/473)
+[ 5308.5s] replay gc20261024-046: THEOREM_CHECKED (398/473)
+[ 5310.8s] replay gc20261024-092: THEOREM_CHECKED (399/473)
+[ 5311.8s] replay gc20261024-115: THEOREM_CHECKED (400/473)
+[ 5314.0s] replay gc20261024-023: THEOREM_CHECKED (401/473)
+[ 5315.5s] replay gc20261024-043: THEOREM_CHECKED (402/473)
+[ 5317.6s] replay gc20261024-085: THEOREM_CHECKED (403/473)
+[ 5318.9s] replay gc20261024-076: THEOREM_CHECKED (404/473)
+[ 5321.8s] replay gc20261024-019: THEOREM_CHECKED (405/473)
+[ 5325.2s] replay gc20261024-057: THEOREM_CHECKED (406/473)
+[ 5329.0s] replay gc20261024-093: THEOREM_CHECKED (407/473)
+[ 5329.2s] replay gc20261024-116: THEOREM_CHECKED (408/473)
+[ 5332.4s] replay gc20261024-099: THEOREM_CHECKED (409/473)
+[ 5332.9s] replay gc20261024-023: THEOREM_CHECKED (410/473)
+[ 5335.8s] replay gc20261024-059: THEOREM_CHECKED (411/473)
+[ 5336.9s] replay gc20261024-063: THEOREM_CHECKED (412/473)
+[ 5340.4s] replay gc20261024-067: THEOREM_CHECKED (413/473)
+[ 5340.7s] replay gc20261024-079: THEOREM_CHECKED (414/473)
+[ 5344.4s] replay gc20261024-027: THEOREM_CHECKED (415/473)
+[ 5345.7s] replay gc20261024-065: THEOREM_CHECKED (416/473)
+[ 5348.0s] replay gc20261024-015: THEOREM_CHECKED (417/473)
+[ 5349.4s] replay gc20261024-093: THEOREM_CHECKED (418/473)
+[ 5353.2s] replay gc20261024-087: THEOREM_CHECKED (419/473)
+[ 5353.3s] replay gc20261024-017: THEOREM_CHECKED (420/473)
+[ 5357.0s] replay gc20261024-087: THEOREM_CHECKED (421/473)
+[ 5357.3s] replay gc20261024-121: THEOREM_CHECKED (422/473)
+[ 5361.0s] replay gc20261024-047: THEOREM_CHECKED (423/473)
+[ 5361.6s] replay gc20261024-066: THEOREM_CHECKED (424/473)
+[ 5364.3s] replay gc20261024-072: THEOREM_CHECKED (425/473)
+[ 5366.0s] replay gc20261024-110: THEOREM_CHECKED (426/473)
+[ 5367.6s] replay gc20261024-049: THEOREM_CHECKED (427/473)
+[ 5369.3s] replay gc20261024-077: THEOREM_CHECKED (428/473)
+[ 5371.8s] replay gc20261024-066: THEOREM_CHECKED (429/473)
+[ 5372.9s] replay gc20261024-096: THEOREM_CHECKED (430/473)
+[ 5375.7s] replay gc20261024-120: THEOREM_CHECKED (431/473)
+[ 5376.6s] replay gc20261024-099: THEOREM_CHECKED (432/473)
+[ 5379.2s] replay gc20261024-111: THEOREM_CHECKED (433/473)
+[ 5380.4s] replay gc20261024-064: THEOREM_CHECKED (434/473)
+[ 5383.0s] replay gc20261024-064: THEOREM_CHECKED (435/473)
+[ 5383.7s] replay gc20261024-111: THEOREM_CHECKED (436/473)
+[ 5386.4s] replay gc20261024-069: THEOREM_CHECKED (437/473)
+[ 5387.0s] replay gc20261024-027: THEOREM_CHECKED (438/473)
+[ 5389.9s] replay gc20261024-061: THEOREM_CHECKED (439/473)
+[ 5390.9s] replay gc20261024-099: THEOREM_CHECKED (440/473)
+[ 5393.1s] replay gc20261024-100: THEOREM_CHECKED (441/473)
+[ 5394.2s] replay gc20261024-058: THEOREM_CHECKED (442/473)
+[ 5398.0s] replay gc20261024-049: THEOREM_CHECKED (443/473)
+[ 5400.4s] replay gc20261024-071: THEOREM_CHECKED (444/473)
+[ 5401.9s] replay gc20261024-106: THEOREM_CHECKED (445/473)
+[ 5405.1s] replay gc20261024-034: THEOREM_CHECKED (446/473)
+[ 5405.8s] replay gc20261024-105: THEOREM_CHECKED (447/473)
+[ 5408.6s] replay gc20261024-091: THEOREM_CHECKED (448/473)
+[ 5409.0s] replay gc20261024-121: THEOREM_CHECKED (449/473)
+[ 5411.5s] replay gc20261024-109: THEOREM_CHECKED (450/473)
+[ 5413.8s] replay gc20261024-004: THEOREM_CHECKED (451/473)
+[ 5414.8s] replay gc20261024-038: THEOREM_CHECKED (452/473)
+[ 5419.0s] replay gc20261024-107: THEOREM_CHECKED (453/473)
+[ 5420.4s] replay gc20261024-057: THEOREM_CHECKED (454/473)
+[ 5424.3s] replay gc20261024-028: THEOREM_CHECKED (455/473)
+[ 5424.4s] replay gc20261024-091: THEOREM_CHECKED (456/473)
+[ 5428.1s] replay gc20261024-087: THEOREM_CHECKED (457/473)
+[ 5428.4s] replay gc20261024-027: THEOREM_CHECKED (458/473)
+[ 5431.6s] replay gc20261024-038: THEOREM_CHECKED (459/473)
+[ 5432.6s] replay gc20261024-076: THEOREM_CHECKED (460/473)
+[ 5435.9s] replay gc20261024-046: THEOREM_CHECKED (461/473)
+[ 5439.3s] replay gc20261024-092: THEOREM_CHECKED (462/473)
+[ 5442.8s] replay gc20261024-072: THEOREM_CHECKED (463/473)
+[ 5443.8s] replay gc20261024-032: THEOREM_CHECKED (464/473)
+[ 5446.4s] replay gc20261024-088: THEOREM_CHECKED (465/473)
+[ 5450.1s] replay gc20261024-005: THEOREM_CHECKED (466/473)
+[ 5451.0s] replay gc20261024-101: THEOREM_CHECKED (467/473)
+[ 5454.9s] replay gc20261024-117: THEOREM_CHECKED (468/473)
+[ 5455.8s] replay gc20261024-088: THEOREM_CHECKED (469/473)
+[ 5459.2s] replay gc20261024-013: THEOREM_CHECKED (470/473)
+[ 5463.2s] replay gc20261024-007: THEOREM_CHECKED (471/473)
+[ 5463.7s] replay gc20261024-057: THEOREM_CHECKED (472/473)
+[ 5467.4s] replay gc20261024-043: THEOREM_CHECKED (473/473)
+{
+ "budgets": {
+  "2.0": {
+   "best_baseline": "portfolio_auto",
+   "best_baseline_settled": 50,
+   "counts": {
+    "ghost_lemmas": {
+     "GHOST_FOUND": 37,
+     "HARNESS_ERROR": 0,
+     "PROVED": 0,
+     "UNSETTLED": 88,
+     "cpu_s": 184.84,
+     "proved_checked": 0,
+     "settled": 37,
+     "settled_checked": 37
+    },
+    "ghost_lemmas_lean": {
+     "GHOST_FOUND": 39,
+     "HARNESS_ERROR": 0,
+     "PROVED": 0,
+     "UNSETTLED": 86,
+     "cpu_s": 176.88,
+     "proved_checked": 0,
+     "settled": 39,
+     "settled_checked": 39
+    },
+    "lemmas_unfiltered": {
+     "GHOST_FOUND": 0,
+     "HARNESS_ERROR": 0,
+     "PROVED": 2,
+     "UNSETTLED": 123,
+     "cpu_s": 122.03,
+     "proved_checked": 2,
+     "settled": 2,
+     "settled_checked": 2
+    },
+    "oracle_lemmas": {
+     "GHOST_FOUND": 37,
+     "HARNESS_ERROR": 0,
+     "PROVED": 11,
+     "UNSETTLED": 77,
+     "cpu_s": 172.22,
+     "proved_checked": 11,
+     "settled": 48,
+     "settled_checked": 48
+    },
+    "portfolio": {
+     "GHOST_FOUND": 38,
+     "HARNESS_ERROR": 0,
+     "PROVED": 10,
+     "UNSETTLED": 77,
+     "cpu_s": 174.05,
+     "proved_checked": 10,
+     "settled": 48,
+     "settled_checked": 48
+    },
+    "portfolio_auto": {
+     "GHOST_FOUND": 38,
+     "HARNESS_ERROR": 0,
+     "PROVED": 12,
+     "UNSETTLED": 75,
+     "cpu_s": 161.1,
+     "proved_checked": 12,
+     "settled": 50,
+     "settled_checked": 50
+    }
+   },
+   "ghost_lemmas_false_lemmas_dropped": 8,
+   "headroom_fraction": 0.6,
+   "headroom_problems": 75,
+   "mechanism_gain": {
+    "ghost_lemmas": -13,
+    "ghost_lemmas_lean": -11
+   },
+   "oracle_gain": -2,
+   "oracle_gain_on_headroom": 5,
+   "unfiltered_cpu_on_false_lemmas_s": 112.56
+  },
+  "8.0": {
+   "best_baseline": "portfolio_auto",
+   "best_baseline_settled": 124,
+   "counts": {
+    "ghost_lemmas": {
+     "GHOST_FOUND": 39,
+     "HARNESS_ERROR": 0,
+     "PROVED": 37,
+     "UNSETTLED": 49,
+     "cpu_s": 595.42,
+     "proved_checked": 37,
+     "settled": 76,
+     "settled_checked": 76
+    },
+    "ghost_lemmas_lean": {
+     "GHOST_FOUND": 39,
+     "HARNESS_ERROR": 0,
+     "PROVED": 63,
+     "UNSETTLED": 23,
+     "cpu_s": 522.59,
+     "proved_checked": 63,
+     "settled": 102,
+     "settled_checked": 102
+    },
+    "lemmas_unfiltered": {
+     "GHOST_FOUND": 0,
+     "HARNESS_ERROR": 0,
+     "PROVED": 85,
+     "UNSETTLED": 40,
+     "cpu_s": 478.97,
+     "proved_checked": 84,
+     "settled": 85,
+     "settled_checked": 84
+    },
+    "oracle_lemmas": {
+     "GHOST_FOUND": 39,
+     "HARNESS_ERROR": 0,
+     "PROVED": 84,
+     "UNSETTLED": 2,
+     "cpu_s": 296.24,
+     "proved_checked": 84,
+     "settled": 123,
+     "settled_checked": 123
+    },
+    "portfolio": {
+     "GHOST_FOUND": 39,
+     "HARNESS_ERROR": 0,
+     "PROVED": 84,
+     "UNSETTLED": 2,
+     "cpu_s": 294.32,
+     "proved_checked": 84,
+     "settled": 123,
+     "settled_checked": 123
+    },
+    "portfolio_auto": {
+     "GHOST_FOUND": 39,
+     "HARNESS_ERROR": 0,
+     "PROVED": 85,
+     "UNSETTLED": 1,
+     "cpu_s": 290.75,
+     "proved_checked": 84,
+     "settled": 124,
+     "settled_checked": 123
+    }
+   },
+   "ghost_lemmas_false_lemmas_dropped": 81,
+   "headroom_fraction": 0.008,
+   "headroom_problems": 1,
+   "mechanism_gain": {
+    "ghost_lemmas": -48,
+    "ghost_lemmas_lean": -22
+   },
+   "oracle_gain": -1,
+   "oracle_gain_on_headroom": 0,
+   "unfiltered_cpu_on_false_lemmas_s": 273.96
+  }
+ },
+ "consequence": "retire the Ghost Census branch for this scope (equational theories, these budgets)",
+ "contradictions": [],
+ "decision": "RETIRE_NO_HEADROOM",
+ "labels": {
+  "FALSE": 39,
+  "TRUE": 85,
+  "TRUE_UNCHECKED": 0,
+  "UNKNOWN": 1
+ },
+ "margin": 7,
+ "plan_sha256": "0050b951ee8dce2310c371cd1e52a6fdb9a3f4773a1ff1b65bca459a50a68fb8",
+ "problems": 125,
+ "replays": {
+  "NOT_REPLAYED": 2,
+  "THEOREM_CHECKED": 471
+ },
+ "wall_seconds": 5467.5
+}
+rc=0

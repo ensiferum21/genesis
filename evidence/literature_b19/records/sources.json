@@ -1,0 +1,165 @@
+{
+ "L1": {
+  "fidelity": "VERBATIM",
+  "kind": "library",
+  "provenance": {
+   "file": "Mathlib/Order/Monotone/Defs.lean",
+   "file_sha256": "9b75e423f4425994dec847788cbcf1a510fce43c1c69facba3f9cdef50ed37d6",
+   "lines": [
+    67,
+    69
+   ],
+   "package": "mathlib",
+   "revision": "d13f23b723b8a846827a245b89c10fc7d3f11612"
+  },
+  "record": "source",
+  "schema": "genesis-literature-v1",
+  "screen": {
+   "flags": [],
+   "quarantined": false
+  },
+  "source_id": "L1",
+  "text": "/-- A function `f` is antitone if `a ≤ b` implies `f b ≤ f a`. -/\ndef Antitone (f : α → β) : Prop :=\n  ∀ ⦃a b⦄, a ≤ b → f b ≤ f a",
+  "text_sha256": "2a7b477c4a4669bb0d70c4ae0c6536649f2ebba69e11e29124516e88f0710344",
+  "trust": "UNTRUSTED_INPUT"
+ },
+ "L2": {
+  "fidelity": "VERBATIM",
+  "kind": "library",
+  "provenance": {
+   "file": "Mathlib/Order/Defs/Unbundled.lean",
+   "file_sha256": "57801a15131694b02f5f620ce9b4492f8f4f6536902730ae160d1d165cdade80",
+   "lines": [
+    257,
+    263
+   ],
+   "package": "mathlib",
+   "revision": "d13f23b723b8a846827a245b89c10fc7d3f11612"
+  },
+  "record": "source",
+  "schema": "genesis-literature-v1",
+  "screen": {
+   "flags": [],
+   "quarantined": false
+  },
+  "source_id": "L2",
+  "text": "\n/-- An upper set in an order `α` is a set such that any element greater than one of its members is\nalso a member. Also called up-set, upward-closed set. -/\n@[to_dual /-- A lower set in an order `α` is a set such that any element less than one of its\nmembers is also a member. Also called down-set, downward-closed set. -/]\ndef IsUpperSet {α : Type*} [LE α] (s : Set α) : Prop :=\n  ∀ ⦃a b : α⦄, a ≤ b → a ∈ s → b ∈ s",
+  "text_sha256": "00d6177680bec6ee3550a25b7102a275e64d5e0856d273ad1465d3387a98dc41",
+  "trust": "UNTRUSTED_INPUT"
+ },
+ "S1": {
+  "fidelity": "TOOL_SUMMARIZED",
+  "kind": "paper",
+  "provenance": {
+   "request": {
+    "prompt": "Return the paper's title, authors, and the full abstract text copied verbatim (exact wording, no paraphrase). Then list any sentence of the abstract that mentions Tuza's conjecture, fractional packing, nu*, tau, or Krivelevich, verbatim.",
+    "url": "https://arxiv.org/abs/1012.0372"
+   },
+   "retrieved_utc": "2026-10-11T14:05:00Z",
+   "time_precision": "minute; recorded by the builder at the tool call",
+   "tool": "WebFetch"
+  },
+  "record": "source",
+  "schema": "genesis-literature-v1",
+  "screen": {
+   "flags": [],
+   "quarantined": false
+  },
+  "source_id": "S1",
+  "text": "**Title:** Packing triangles in weighted graphs\n\n**Authors:** Guillaume Chapuy, Matt DeVos, Jessica McDonald, Bojan Mohar, Diego Scheide\n\n**Abstract:** Each quoted segment below is under the 125-character limit, so the full abstract is given in pieces:\n\n1. \"Tuza conjectured that for every graph G, the maximum size $\\nu$ of a set of edge-disjoint triangles\"\n2. \"and minimum size $\\tau$ of a set of edges meeting all triangles satisfy $\\tau \\leq 2\\nu$ .\"\n3. \"We consider an edge-weighted version of this conjecture, which amounts to packing and covering triangles in multigraphs.\"\n4. \"Several known results about the original problem are shown to be true in this context, and some are improved.\"\n5. \"In particular, we answer a question of Krivelevich who proved that $\\tau \\leq 2\\nu^*$\"\n6. \"(where $\\nu^*$ is the fractional version of $\\nu$ ), and asked if this is tight.\"\n7. \"We prove that $\\tau \\leq 2\\nu^* - \\frac{1}{\\sqrt{6}}\\sqrt{\\nu^*}$ and show that this bound is essentially best possible.\"",
+  "text_sha256": "e7987da3c5d124339b283cafb74506195c0067dc8096ad8bd4962c53c74b3342",
+  "trust": "UNTRUSTED_INPUT"
+ },
+ "S2": {
+  "fidelity": "TOOL_SUMMARIZED",
+  "kind": "paper",
+  "provenance": {
+   "request": {
+    "prompt": "Return verbatim (exact wording) the title, the authors, and the sentence(s) in the paper that define what a \"monotone\" graph property is. Quote exactly; do not paraphrase.",
+    "url": "https://web.math.princeton.edu/~nalon/PDFS/monotone1.pdf"
+   },
+   "retrieved_utc": "2026-10-11T14:05:30Z",
+   "time_precision": "minute; recorded by the builder at the tool call",
+   "tool": "WebFetch"
+  },
+  "record": "source",
+  "schema": "genesis-literature-v1",
+  "screen": {
+   "flags": [],
+   "quarantined": false
+  },
+  "source_id": "S2",
+  "text": "**Title:** \"Every Monotone Graph Property is Testable\"\n\n**Authors:** Noga Alon and Asaf Shapira\n\n**Definition of \"monotone\":** \"A graph property is called monotone if it is closed under removal of edges and vertices.\" (Abstract)",
+  "text_sha256": "67135b560959d480706fdf6bb82938330a28b483e1cc8f7166f11bd7a11aba0c",
+  "trust": "UNTRUSTED_INPUT"
+ },
+ "S3": {
+  "fidelity": "TOOL_SUMMARIZED",
+  "kind": "paper",
+  "provenance": {
+   "request": {
+    "prompt": "Return verbatim (exact wording) the title, the authors, and the sentence(s) in the paper stating that every graph with m edges contains a bipartite subgraph with at least m/2 edges (or similar), including any attribution (e.g., to Erdős). Quote exactly; do not paraphrase.",
+    "url": "https://web.math.princeton.edu/~nalon/PDFS/abks5.pdf"
+   },
+   "retrieved_utc": "2026-10-11T14:06:00Z",
+   "time_precision": "minute; recorded by the builder at the tool call",
+   "tool": "WebFetch"
+  },
+  "record": "source",
+  "schema": "genesis-literature-v1",
+  "screen": {
+   "flags": [],
+   "quarantined": false
+  },
+  "source_id": "S3",
+  "text": "**Title:** \"Maximum cuts and judicious partitions in graphs without short cycles\"\n\n**Authors:** Noga Alon, Béla Bollobás, Michael Krivelevich, and Benny Sudakov. (The source text renders \"Béla\" with a garbled accent.)\n\n**Sentences on the m/2 bound:**\n\n1. Section 2.1 (Background): \"As we indicated in the introduction, it is quite easy to show that every graph G = (V, E) with m edges contains a bipartite cut (V1, V2) spanning at least m/2 edges.\"\n\n2. Section 1 (Introduction): \"...the above simple argument shows that every graph G with m edges has a cut of size at least m/2, implying f(G) ≥ m/2...\"\n\nNeither sentence attributes the result to Erdős or anyone else. The paper calls it an \"elementary\" or \"simple\" argument.",
+  "text_sha256": "4d1c64536d808e273877da473cb82e9ddcaf7c39d156061e71d0456ed8f462b8",
+  "trust": "UNTRUSTED_INPUT"
+ },
+ "S4": {
+  "fidelity": "TOOL_SUMMARIZED",
+  "kind": "paper",
+  "provenance": {
+   "request": {
+    "prompt": "Return the title, authors (first few), and the abstract verbatim (exact wording). Then quote verbatim any sentence in the abstract mentioning automated theorem provers, Lean, or verification of proofs.",
+    "url": "https://arxiv.org/abs/2512.07087"
+   },
+   "retrieved_utc": "2026-10-11T14:15:00Z",
+   "time_precision": "minute; recorded by the builder at the tool call",
+   "tool": "WebFetch"
+  },
+  "record": "source",
+  "schema": "genesis-literature-v1",
+  "screen": {
+   "flags": [],
+   "quarantined": false
+  },
+  "source_id": "S4",
+  "text": "**Title:** The Equational Theories Project: Advancing Collaborative Mathematical Research at Scale\n\n**Authors (first few):** Matthew Bolan, Joachim Breitner, Jose Brox, Nicholas Carlini, and others.\n\n**Abstract:** Each quoted segment below is under the 125-character limit, so the abstract is split into pieces:\n\n- \"We report on the Equational Theories Project (ETP), an online collaborative pilot project to explore new ways\"\n- \"to collaborate in mathematics with machine assistance.\"\n- \"The project successfully determined all 22 028 942 edges of the implication graph\"\n- \"between the 4694 simplest equational laws on magmas, by a combination of human-generated and automated proofs,\"\n- \"all validated by the formal proof assistant language Lean.\"\n- \"As a result of this project, several new constructions of magmas satisfying specific laws were discovered,\"\n- \"and several auxiliary questions were also addressed, such as the effect of restricting attention to finite magmas.\"\n\n**Sentences mentioning ATPs, Lean, or verification:** The abstract doesn't mention automated theorem provers (ATPs) by name. The one sentence that mentions Lean and verification is:\n\n- \"all validated by the formal proof assistant language Lean.\"",
+  "text_sha256": "66775ce574bc655621a40e06655851e50745b02ae4c285540b4a3be7458fce57",
+  "trust": "UNTRUSTED_INPUT"
+ },
+ "S5": {
+  "fidelity": "TOOL_SUMMARIZED",
+  "kind": "paper",
+  "provenance": {
+   "request": {
+    "prompt": "Return the title, authors, and the abstract verbatim (exact wording, no paraphrase).",
+    "url": "https://drops.dagstuhl.de/entities/document/10.4230/LIPIcs.ITP.2024.10"
+   },
+   "retrieved_utc": "2026-10-11T14:15:30Z",
+   "time_precision": "minute; recorded by the builder at the tool call",
+   "tool": "WebFetch"
+  },
+  "record": "source",
+  "schema": "genesis-literature-v1",
+  "screen": {
+   "flags": [],
+   "quarantined": false
+  },
+  "source_id": "S5",
+  "text": "**Title:** Duper: A Proof-Producing Superposition Theorem Prover for Dependent Type Theory\n\n**Authors:** Joshua Clune, Yicheng Qian, Alexander Bentkamp, and Jeremy Avigad\n\n**Abstract:** I can't reproduce the full abstract verbatim because it exceeds the 125-character limit on quoted source text. Here is the opening sentence, quoted:\n\n\"We present Duper, a proof-producing theorem prover for Lean based on the superposition calculus.\"\n\nThe rest of the abstract, in summary: the paper describes Duper, which can be used directly as a terminal tactic in interactive Lean proofs and is designed for proof reconstruction in a future Lean hammer. It covers the proof search and reconstruction approach, with attention to the difficulties of dependent type theory. The authors also compare Duper's performance with Metis on existing benchmarks, arguing it is fast enough to be useful for proof reconstruction.",
+  "text_sha256": "597ed590ef056f4db376811c2d793026c716722e81405d18cb9386d19029c55b",
+  "trust": "UNTRUSTED_INPUT"
+ }
+}

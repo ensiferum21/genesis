@@ -1,0 +1,309 @@
+[   18.4s] tri_not_all: CHECKED (definition-instance)
+[   41.4s] c4_not_all: CHECKED (verts-from-adjacency)
+[  164.3s] dev-erdos-b73f6828-20261021-0000 n=30 p=0.3: reference BOUNDS_ONLY 100..142 (59.7s); joint BOUNDS_ONLY 99..100 via LP_DUAL_EXACT (59.3s)
+[  235.9s] dev-erdos-b73f6828-20261021-0001 n=30 p=0.3: reference BOUNDS_ONLY 107..152 (59.7s); joint OPTIMALITY_CHECKED 107..107 via LP_DUAL_EXACT (11.9s)
+[  255.5s] dev-erdos-b73f6828-20261021-0002 n=30 p=0.3: reference OPTIMALITY_CHECKED 101..101 (15.9s); joint OPTIMALITY_CHECKED 101..101 via LP_DUAL_EXACT (3.6s)
+[  325.1s] dev-erdos-b73f6828-20261021-0003 n=30 p=0.3: reference BOUNDS_ONLY 100..141 (60.0s); joint OPTIMALITY_CHECKED 100..100 via LP_DUAL_EXACT (9.6s)
+[  338.9s] dev-erdos-7fee9578-20261021-0000 n=36 p=0.25: reference OPTIMALITY_CHECKED 120..120 (11.6s); joint OPTIMALITY_CHECKED 120..120 via LP_DUAL_EXACT (2.2s)
+[  447.9s] dev-erdos-7fee9578-20261021-0001 n=36 p=0.25: reference OPTIMALITY_CHECKED 122..122 (107.0s); joint OPTIMALITY_CHECKED 122..122 via LP_DUAL_EXACT (2.1s)
+[  509.5s] dev-erdos-7fee9578-20261021-0002 n=36 p=0.25: reference BOUNDS_ONLY 117..160 (59.2s); joint OPTIMALITY_CHECKED 117..117 via LP_DUAL_EXACT (2.4s)
+[  582.1s] dev-erdos-7fee9578-20261021-0003 n=36 p=0.25: reference BOUNDS_ONLY 126..168 (59.4s); joint OPTIMALITY_CHECKED 126..126 via LP_DUAL_EXACT (13.2s)
+[  590.2s] dev-erdos-3765432f-20261021-0000 n=40 p=0.2: reference OPTIMALITY_CHECKED 116..116 (6.7s); joint OPTIMALITY_CHECKED 116..116 via LP_DUAL_EXACT (1.5s)
+[  663.2s] dev-erdos-3765432f-20261021-0001 n=40 p=0.2: reference BOUNDS_ONLY 125..166 (59.9s); joint OPTIMALITY_CHECKED 125..125 via LP_DUAL_EXACT (13.0s)
+[  680.2s] dev-erdos-3765432f-20261021-0002 n=40 p=0.2: reference OPTIMALITY_CHECKED 122..122 (14.9s); joint OPTIMALITY_CHECKED 122..122 via LP_DUAL_EXACT (2.2s)
+[  683.8s] dev-erdos-3765432f-20261021-0003 n=40 p=0.2: reference OPTIMALITY_CHECKED 116..116 (1.8s); joint OPTIMALITY_CHECKED 116..116 via LP_DUAL_EXACT (1.8s)
+[  683.8s] obstruction summary: {'tasks': 12, 'budget_wall_s': 60, 'reference_certified': 6, 'joint_certified': 11, 'reference_mean_gap': 21.166666666666668, 'joint_mean_gap': 0.08333333333333333, 'disagreements': 0, 'joint_by_lp': 12, 'lean_inequalities': {'tri_not_all': 'CHECKED', 'c4_not_all': 'CHECKED'}}
+[  719.5s] pool erdos22: 16 certified tasks; hit rates {'rr_cross_2': 0.5, 'rr_adjacent_2': 0.5, 'rr_ordered_2': 0.0, 'low_cycle': 0.19, 'multistart': 0.0}
+[  914.7s] pool erdos30: 11 certified tasks; hit rates {'rr_cross_2': 0.09, 'rr_adjacent_2': 0.09, 'rr_ordered_2': 0.0, 'low_cycle': 0.09, 'multistart': 0.0}
+[  947.5s] pool bipartite22: 16 certified tasks; hit rates {'rr_cross_2': 1.0, 'rr_adjacent_2': 1.0, 'rr_ordered_2': 1.0, 'low_cycle': 1.0, 'multistart': 1.0}
+[ 1021.0s] active selection at 20% of the pool cost: {'eig': {'p_correct_class': 0.7083, 'mean_regret': 0.0593}, 'round_robin': {'p_correct_class': 0.8583, 'mean_regret': 0.0184}, 'random': {'p_correct_class': 0.875, 'mean_regret': 0.024}}
+[ 1138.9s] active selection at 40% of the pool cost: {'eig': {'p_correct_class': 0.9417, 'mean_regret': 0.0053}, 'round_robin': {'p_correct_class': 0.9917, 'mean_regret': 0.0008}, 'random': {'p_correct_class': 0.9583, 'mean_regret': 0.0056}}
+[ 1145.9s] catalysis dev-erdos-80a647eb-20261023-0000: {'full': 56, 'cut_only': 56, 'placebo': 55, 'random_cut': 55, 'repair_only': 56, 'full_x4': 56, 'repair_only_x4': 56, 'conventional_low_cycle': 55} opt 57
+[ 1152.8s] catalysis dev-erdos-80a647eb-20261023-0001: {'full': 60, 'cut_only': 60, 'placebo': 58, 'random_cut': 54, 'repair_only': 57, 'full_x4': 60, 'repair_only_x4': 58, 'conventional_low_cycle': 57} opt 60
+[ 1159.7s] catalysis dev-erdos-80a647eb-20261023-0002: {'full': 55, 'cut_only': 54, 'placebo': 54, 'random_cut': 52, 'repair_only': 55, 'full_x4': 55, 'repair_only_x4': 55, 'conventional_low_cycle': 55} opt 55
+[ 1166.9s] catalysis dev-erdos-80a647eb-20261023-0003: {'full': 56, 'cut_only': 56, 'placebo': 55, 'random_cut': 54, 'repair_only': 55, 'full_x4': 56, 'repair_only_x4': 56, 'conventional_low_cycle': 55} opt 57
+[ 1173.7s] catalysis dev-erdos-80a647eb-20261023-0004: {'full': 59, 'cut_only': 58, 'placebo': 57, 'random_cut': 55, 'repair_only': 58, 'full_x4': 59, 'repair_only_x4': 58, 'conventional_low_cycle': 57} opt 59
+[ 1180.6s] catalysis dev-erdos-80a647eb-20261023-0005: {'full': 61, 'cut_only': 60, 'placebo': 59, 'random_cut': 57, 'repair_only': 58, 'full_x4': 61, 'repair_only_x4': 60, 'conventional_low_cycle': 59} opt 61
+[ 1187.6s] catalysis dev-erdos-80a647eb-20261023-0006: {'full': 61, 'cut_only': 61, 'placebo': 58, 'random_cut': 56, 'repair_only': 58, 'full_x4': 61, 'repair_only_x4': 59, 'conventional_low_cycle': 57} opt 61
+[ 1194.7s] catalysis dev-erdos-80a647eb-20261023-0007: {'full': 56, 'cut_only': 55, 'placebo': 55, 'random_cut': 53, 'repair_only': 56, 'full_x4': 56, 'repair_only_x4': 56, 'conventional_low_cycle': 55} opt 57
+[ 1201.7s] catalysis dev-erdos-80a647eb-20261023-0008: {'full': 62, 'cut_only': 62, 'placebo': 61, 'random_cut': 60, 'repair_only': 60, 'full_x4': 62, 'repair_only_x4': 61, 'conventional_low_cycle': 58} opt 62
+[ 1208.6s] catalysis dev-erdos-80a647eb-20261023-0009: {'full': 70, 'cut_only': 70, 'placebo': 67, 'random_cut': 65, 'repair_only': 67, 'full_x4': 70, 'repair_only_x4': 67, 'conventional_low_cycle': 68} opt 70
+[ 1217.3s] catalysis dev-erdos-80a647eb-20261023-0010: {'full': 62, 'cut_only': 61, 'placebo': 60, 'random_cut': 59, 'repair_only': 60, 'full_x4': 62, 'repair_only_x4': 61, 'conventional_low_cycle': 61} opt 62
+[ 1224.2s] catalysis dev-erdos-80a647eb-20261023-0011: {'full': 63, 'cut_only': 60, 'placebo': 61, 'random_cut': 57, 'repair_only': 62, 'full_x4': 63, 'repair_only_x4': 62, 'conventional_low_cycle': 63} opt 63
+[ 1231.6s] catalysis dev-erdos-b73f6828-20261023-0000: {'full': 94, 'cut_only': 91, 'placebo': 91, 'random_cut': 81, 'repair_only': 92, 'full_x4': 94, 'repair_only_x4': 93, 'conventional_low_cycle': 95} opt 95
+[ 1240.0s] catalysis dev-erdos-b73f6828-20261023-0001: {'full': 88, 'cut_only': 86, 'placebo': 85, 'random_cut': 80, 'repair_only': 86, 'full_x4': 88, 'repair_only_x4': 87, 'conventional_low_cycle': 89} opt 90
+[ 1247.2s] catalysis dev-erdos-b73f6828-20261023-0002: {'full': 95, 'cut_only': 91, 'placebo': 90, 'random_cut': 82, 'repair_only': 91, 'full_x4': 95, 'repair_only_x4': 94, 'conventional_low_cycle': 94} opt 96
+[ 1255.0s] catalysis dev-erdos-b73f6828-20261023-0003: {'full': 88, 'cut_only': 85, 'placebo': 85, 'random_cut': 79, 'repair_only': 88, 'full_x4': 88, 'repair_only_x4': 87, 'conventional_low_cycle': 87} opt 90
+[ 1262.3s] catalysis dev-erdos-b73f6828-20261023-0004: {'full': 89, 'cut_only': 87, 'placebo': 86, 'random_cut': 79, 'repair_only': 87, 'full_x4': 89, 'repair_only_x4': 87, 'conventional_low_cycle': 88} opt 90
+[ 1271.6s] catalysis dev-erdos-b73f6828-20261023-0005: {'full': 102, 'cut_only': 102, 'placebo': 96, 'random_cut': 90, 'repair_only': 96, 'full_x4': 102, 'repair_only_x4': 97, 'conventional_low_cycle': 97} opt 103
+[ 1280.3s] catalysis dev-erdos-b73f6828-20261023-0006: {'full': 101, 'cut_only': 100, 'placebo': 93, 'random_cut': 91, 'repair_only': 94, 'full_x4': 101, 'repair_only_x4': 96, 'conventional_low_cycle': 97} opt 102
+[ 1289.5s] catalysis dev-erdos-b73f6828-20261023-0007: {'full': 92, 'cut_only': 92, 'placebo': 88, 'random_cut': 86, 'repair_only': 89, 'full_x4': 92, 'repair_only_x4': 89, 'conventional_low_cycle': 89} opt 93
+[ 1297.6s] catalysis dev-erdos-b73f6828-20261023-0008: {'full': 96, 'cut_only': 94, 'placebo': 91, 'random_cut': 86, 'repair_only': 93, 'full_x4': 96, 'repair_only_x4': 94, 'conventional_low_cycle': 94} opt 97
+[ 1306.1s] catalysis dev-erdos-b73f6828-20261023-0009: {'full': 89, 'cut_only': 85, 'placebo': 86, 'random_cut': 77, 'repair_only': 87, 'full_x4': 89, 'repair_only_x4': 88, 'conventional_low_cycle': 91} opt 92
+[ 1312.9s] catalysis dev-erdos-b73f6828-20261023-0010: {'full': 97, 'cut_only': 96, 'placebo': 91, 'random_cut': 87, 'repair_only': 93, 'full_x4': 97, 'repair_only_x4': 92, 'conventional_low_cycle': 94} opt 97
+[ 1321.5s] catalysis dev-erdos-b73f6828-20261023-0011: {'full': 97, 'cut_only': 95, 'placebo': 91, 'random_cut': 86, 'repair_only': 94, 'full_x4': 97, 'repair_only_x4': 96, 'conventional_low_cycle': 96} opt 99
+[ 1321.5s] solver catalysis: {'cells_mean_value': {'full': 77.042, 'cut_only': 75.708, 'placebo': 73.875, 'random_cut': 70.042}, 'main_effect_encoding': 4.417, 'main_effect_repair': 2.583, 'interaction': -2.5, 'full_minus_placebo': 3.167, 'full_minus_repair_only': 2.375, 'repair_only_x4_minus_repair_only': 0.708, 'full_minus_repair_only_x4': 1.667, 'full_x4_minus_full': 0, 'full_minus_conventional': 1.583, 'optimum_hits': {'full': 10, 'cut_only': 4, 'placebo': 0, 'random_cut': 0, 'repair_only': 1, 'full_x4': 10, 'repair_only_x4': 1, 'conventional_low_cycle': 3}}
+[ 1341.1s] gen_placebo_inter: UNRESOLVED
+[ 1348.4s] gen_placebo_sdiff: UNRESOLVED
+[ 1355.3s] gen_placebo_filter: UNRESOLVED
+[ 1362.1s] gen_placebo_erase: UNRESOLVED
+[ 1365.5s] inst_placebo_loopfree: UNRESOLVED
+[ 1373.3s] inst_placebo_matching: UNRESOLVED
+[ 1403.1s] inst_placebo_c4free: UNRESOLVED
+[ 1404.4s] inst_placebo_nonempty: UNRESOLVED
+[ 1426.1s] placebo_loopfree_inter: CHECKED (unfold-simp)
+[ 1440.2s] placebo_loopfree_sdiff: CHECKED (unfold-simp)
+[ 1466.4s] placebo_loopfree_filter: CHECKED (unfold-simp)
+[ 1487.3s] placebo_loopfree_erase: CHECKED (unfold-simp)
+[ 1496.4s] placebo_matching_inter: UNRESOLVED
+[ 1510.9s] placebo_matching_sdiff: UNRESOLVED
+[ 1525.0s] placebo_matching_filter: UNRESOLVED
+[ 1534.4s] placebo_matching_erase: UNRESOLVED
+[ 1565.2s] placebo_c4free_inter: UNRESOLVED
+[ 1597.2s] placebo_c4free_sdiff: UNRESOLVED
+[ 1628.6s] placebo_c4free_filter: UNRESOLVED
+[ 1660.7s] placebo_c4free_erase: UNRESOLVED
+[ 1671.1s] placebo_nonempty_inter: DISPROVED (counterexample-evaluation)
+[ 1682.5s] placebo_nonempty_sdiff: DISPROVED (counterexample-evaluation)
+[ 1694.9s] placebo_nonempty_filter: DISPROVED (counterexample-evaluation)
+[ 1709.1s] placebo_nonempty_erase: DISPROVED (counterexample-evaluation)
+[ 1719.1s] concept control placebo: 4/16 proved
+[ 1746.5s] effort_loopfree_inter: CHECKED (unfold-aesop)
+[ 1759.3s] effort_loopfree_sdiff: CHECKED (unfold-aesop)
+[ 1783.7s] effort_loopfree_filter: CHECKED (unfold-aesop)
+[ 1803.7s] effort_loopfree_erase: CHECKED (unfold-aesop)
+[ 1813.5s] effort_matching_inter: UNRESOLVED
+[ 1827.2s] effort_matching_sdiff: UNRESOLVED
+[ 1840.5s] effort_matching_filter: UNRESOLVED
+[ 1850.1s] effort_matching_erase: UNRESOLVED
+[ 1939.2s] effort_c4free_inter: UNRESOLVED
+[ 2028.7s] effort_c4free_sdiff: UNRESOLVED
+[ 2115.5s] effort_c4free_filter: UNRESOLVED
+[ 2218.9s] effort_c4free_erase: UNRESOLVED
+[ 2229.7s] effort_nonempty_inter: DISPROVED (counterexample-evaluation)
+[ 2242.3s] effort_nonempty_sdiff: DISPROVED (counterexample-evaluation)
+[ 2255.1s] effort_nonempty_filter: DISPROVED (counterexample-evaluation)
+[ 2268.6s] effort_nonempty_erase: DISPROVED (counterexample-evaluation)
+[ 2278.5s] concept control effort: 4/16 proved
+[ 2308.1s] replay catalysis/concept_effort/package.json: REPLAYED
+[ 2339.3s] replay catalysis/concept_placebo/package.json: REPLAYED
+[ 2355.2s] replay obstruction/package.json: REPLAYED
+{
+ "active": {
+  "0.2": {
+   "eig": {
+    "mean_regret": 0.0593,
+    "p_correct_class": 0.7083
+   },
+   "random": {
+    "mean_regret": 0.024,
+    "p_correct_class": 0.875
+   },
+   "round_robin": {
+    "mean_regret": 0.0184,
+    "p_correct_class": 0.8583
+   }
+  },
+  "0.4": {
+   "eig": {
+    "mean_regret": 0.0053,
+    "p_correct_class": 0.9417
+   },
+   "random": {
+    "mean_regret": 0.0056,
+    "p_correct_class": 0.9583
+   },
+   "round_robin": {
+    "mean_regret": 0.0008,
+    "p_correct_class": 0.9917
+   }
+  },
+  "calibration_mae": 0.1296,
+  "classes": [
+   [
+    "rr_adjacent_2",
+    "rr_cross_2"
+   ],
+   [
+    "rr_ordered_2"
+   ],
+   [
+    "low_cycle"
+   ],
+   [
+    "multistart"
+   ]
+  ],
+  "pool_sizes": {
+   "bipartite22": 16,
+   "erdos22": 16,
+   "erdos30": 11
+  }
+ },
+ "catalysis": {
+  "concept": {
+   "b18_arms": {
+    "concept": {
+     "disproved": 4,
+     "fresh_statements": 16,
+     "proved": 8,
+     "unresolved": 4
+    },
+    "manual": {
+     "disproved": 4,
+     "fresh_statements": 16,
+     "proved": 8,
+     "unresolved": 4
+    },
+    "none": {
+     "disproved": 4,
+     "fresh_statements": 16,
+     "proved": 4,
+     "unresolved": 8
+    },
+    "retrieval": {
+     "disproved": 4,
+     "fresh_statements": 16,
+     "proved": 4,
+     "unresolved": 8
+    }
+   },
+   "controls": {
+    "effort": {
+     "disproved": 4,
+     "fresh_statements": 16,
+     "proved": 4,
+     "search_candidates": 150,
+     "search_cpu_s": 433.9,
+     "search_heartbeats": 400000,
+     "support": {},
+     "unresolved": 8
+    },
+    "placebo": {
+     "disproved": 4,
+     "fresh_statements": 16,
+     "proved": 4,
+     "search_candidates": 230,
+     "search_cpu_s": 277.4,
+     "search_heartbeats": "default",
+     "support": {
+      "gen_placebo_erase": "UNRESOLVED",
+      "gen_placebo_filter": "UNRESOLVED",
+      "gen_placebo_inter": "UNRESOLVED",
+      "gen_placebo_sdiff": "UNRESOLVED",
+      "inst_placebo_c4free": "UNRESOLVED",
+      "inst_placebo_loopfree": "UNRESOLVED",
+      "inst_placebo_matching": "UNRESOLVED",
+      "inst_placebo_nonempty": "UNRESOLVED"
+     },
+     "unresolved": 8
+    }
+   },
+   "reading": "concept (B18) vs placebo (same size, reversed order) vs effort (no concept, 4x search heartbeats) vs manual (B18, equivalent-information alternative)."
+  },
+  "solver": {
+   "all": {
+    "cells_mean_value": {
+     "cut_only": 75.708,
+     "full": 77.042,
+     "placebo": 73.875,
+     "random_cut": 70.042
+    },
+    "full_minus_conventional": 1.583,
+    "full_minus_placebo": 3.167,
+    "full_minus_repair_only": 2.375,
+    "full_minus_repair_only_x4": 1.667,
+    "full_x4_minus_full": 0,
+    "interaction": -2.5,
+    "main_effect_encoding": 4.417,
+    "main_effect_repair": 2.583,
+    "optimum_hits": {
+     "conventional_low_cycle": 3,
+     "cut_only": 4,
+     "full": 10,
+     "full_x4": 10,
+     "placebo": 0,
+     "random_cut": 0,
+     "repair_only": 1,
+     "repair_only_x4": 1
+    },
+    "repair_only_x4_minus_repair_only": 0.708
+   },
+   "erdos22": {
+    "cells_mean_value": {
+     "cut_only": 59.417,
+     "full": 60.083,
+     "placebo": 58.333,
+     "random_cut": 56.417
+    },
+    "full_minus_conventional": 1.75,
+    "full_minus_placebo": 1.75,
+    "full_minus_repair_only": 1.583,
+    "full_minus_repair_only_x4": 1,
+    "full_x4_minus_full": 0,
+    "interaction": -1.25,
+    "main_effect_encoding": 2.375,
+    "main_effect_repair": 1.292,
+    "optimum_hits": {
+     "conventional_low_cycle": 2,
+     "cut_only": 4,
+     "full": 9,
+     "full_x4": 9,
+     "placebo": 0,
+     "random_cut": 0,
+     "repair_only": 1,
+     "repair_only_x4": 1
+    },
+    "repair_only_x4_minus_repair_only": 0.583
+   },
+   "erdos30": {
+    "cells_mean_value": {
+     "cut_only": 92,
+     "full": 94,
+     "placebo": 89.417,
+     "random_cut": 83.667
+    },
+    "full_minus_conventional": 1.417,
+    "full_minus_placebo": 4.583,
+    "full_minus_repair_only": 3.167,
+    "full_minus_repair_only_x4": 2.333,
+    "full_x4_minus_full": 0,
+    "interaction": -3.75,
+    "main_effect_encoding": 6.458,
+    "main_effect_repair": 3.875,
+    "optimum_hits": {
+     "conventional_low_cycle": 1,
+     "cut_only": 0,
+     "full": 1,
+     "full_x4": 1,
+     "placebo": 0,
+     "random_cut": 0,
+     "repair_only": 0,
+     "repair_only_x4": 0
+    },
+    "repair_only_x4_minus_repair_only": 0.833
+   }
+  }
+ },
+ "obstruction": {
+  "budget_wall_s": 60,
+  "disagreements": 0,
+  "joint_by_lp": 12,
+  "joint_certified": 11,
+  "joint_mean_gap": 0.08333333333333333,
+  "lean_inequalities": {
+   "c4_not_all": "CHECKED",
+   "tri_not_all": "CHECKED"
+  },
+  "reference_certified": 6,
+  "reference_mean_gap": 21.166666666666668,
+  "tasks": 12
+ },
+ "replay": {
+  "catalysis/concept_effort/package.json": "REPLAYED",
+  "catalysis/concept_placebo/package.json": "REPLAYED",
+  "obstruction/package.json": "REPLAYED"
+ },
+ "wall_seconds": 2355.2
+}
+rc=0

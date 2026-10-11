@@ -1,0 +1,10 @@
+{
+ "request": {
+  "prompt": "Return the title, authors (first few), and the abstract verbatim (exact wording). Then quote verbatim any sentence in the abstract mentioning automated theorem provers, Lean, or verification of proofs.",
+  "url": "https://arxiv.org/abs/2512.07087"
+ },
+ "response_text": "**Title:** The Equational Theories Project: Advancing Collaborative Mathematical Research at Scale\n\n**Authors (first few):** Matthew Bolan, Joachim Breitner, Jose Brox, Nicholas Carlini, and others.\n\n**Abstract:** Each quoted segment below is under the 125-character limit, so the abstract is split into pieces:\n\n- \"We report on the Equational Theories Project (ETP), an online collaborative pilot project to explore new ways\"\n- \"to collaborate in mathematics with machine assistance.\"\n- \"The project successfully determined all 22 028 942 edges of the implication graph\"\n- \"between the 4694 simplest equational laws on magmas, by a combination of human-generated and automated proofs,\"\n- \"all validated by the formal proof assistant language Lean.\"\n- \"As a result of this project, several new constructions of magmas satisfying specific laws were discovered,\"\n- \"and several auxiliary questions were also addressed, such as the effect of restricting attention to finite magmas.\"\n\n**Sentences mentioning ATPs, Lean, or verification:** The abstract doesn't mention automated theorem provers (ATPs) by name. The one sentence that mentions Lean and verification is:\n\n- \"all validated by the formal proof assistant language Lean.\"",
+ "retrieved_utc": "2026-10-11T14:15:00Z",
+ "source_id": "S4",
+ "tool": "WebFetch"
+}

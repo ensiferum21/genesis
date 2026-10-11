@@ -1,0 +1,428 @@
+[    0.0s] plan 0050b951ee8dce23 written before any run
+[   13.9s] translation check COMPILED on 138 tables; round-trip failures []
+[   18.8s] label group/right_id: TRUE (e THEOREM, ghost size None, 4.444s)
+[   23.8s] label group/right_inv: TRUE (e THEOREM, ghost size None, 4.548s)
+[   25.1s] label group/comm: FALSE (e None, ghost size 6, 1.268s)
+[   30.9s] label group/inv_inv: TRUE (e THEOREM, ghost size None, 5.351s)
+[   37.7s] label group/left_cancel: TRUE (e THEOREM, ghost size None, 6.321s)
+[   43.8s] label group/right_cancel: TRUE (e THEOREM, ghost size None, 5.575s)
+[   51.9s] label group/inv_mul: TRUE (e THEOREM, ghost size None, 7.633s)
+[   57.1s] label group/unique_left_id: TRUE (e THEOREM, ghost size None, 4.799s)
+[   57.2s] label group/idem: FALSE (e None, ghost size 2, 0.025s)
+[   63.0s] label group/inv_e: TRUE (e THEOREM, ghost size None, 5.254s)
+[   63.0s] label group/self_inverse: FALSE (e None, ghost size 3, 0.045s)
+[   64.6s] label group/inv_comm: FALSE (e None, ghost size 6, 1.476s)
+[   70.0s] label group/sq_e_unique: TRUE (e THEOREM, ghost size None, 4.816s)
+[   71.1s] label group/sq_central: FALSE (e None, ghost size 6, 1.097s)
+[   77.0s] label group/flexible: TRUE (e THEOREM, ghost size None, 5.292s)
+[   83.8s] label group/left_alt: TRUE (e THEOREM, ghost size None, 6.22s)
+[   90.3s] label group/right_alt: TRUE (e THEOREM, ghost size None, 5.812s)
+[   99.1s] label group/moufang_right: TRUE (e THEOREM, ghost size None, 8.239s)
+[  106.3s] label group_sq/right_id: TRUE (e THEOREM, ghost size None, 6.593s)
+[  113.8s] label group_sq/right_inv: TRUE (e THEOREM, ghost size None, 6.676s)
+[  122.0s] label group_sq/comm: TRUE (e THEOREM, ghost size None, 7.57s)
+[  129.8s] label group_sq/inv_inv: TRUE (e THEOREM, ghost size None, 7.09s)
+[  137.5s] label group_sq/left_cancel: TRUE (e THEOREM, ghost size None, 7.204s)
+[  146.4s] label group_sq/right_cancel: TRUE (e THEOREM, ghost size None, 8.352s)
+[  154.7s] label group_sq/inv_mul: TRUE (e THEOREM, ghost size None, 7.94s)
+[  160.7s] label group_sq/unique_left_id: TRUE (e THEOREM, ghost size None, 5.467s)
+[  160.7s] label group_sq/idem: FALSE (e None, ghost size 2, 0.026s)
+[  166.9s] label group_sq/inv_e: TRUE (e THEOREM, ghost size None, 5.765s)
+[  167.0s] label group_sq/self_inverse: FALSE (e None, ghost size 3, 0.058s)
+[  175.4s] label group_sq/inv_comm: TRUE (e THEOREM, ghost size None, 7.855s)
+[  181.9s] label group_sq/sq_e_unique: TRUE (e THEOREM, ghost size None, 6.119s)
+[  190.1s] label group_sq/sq_central: TRUE (e THEOREM, ghost size None, 7.717s)
+[  197.9s] label group_sq/flexible: TRUE (e THEOREM, ghost size None, 7.375s)
+[  206.0s] label group_sq/left_alt: TRUE (e THEOREM, ghost size None, 7.607s)
+[  213.4s] label group_sq/right_alt: TRUE (e THEOREM, ghost size None, 6.944s)
+[  225.2s] label group_sq/moufang_right: TRUE (e THEOREM, ghost size None, 11.254s)
+[  229.6s] label group_exp2/right_id: TRUE (e THEOREM, ghost size None, 3.897s)
+[  234.0s] label group_exp2/right_inv: TRUE (e THEOREM, ghost size None, 4.009s)
+[  238.4s] label group_exp2/comm: TRUE (e THEOREM, ghost size None, 3.933s)
+[  242.8s] label group_exp2/inv_inv: TRUE (e THEOREM, ghost size None, 3.996s)
+[  247.1s] label group_exp2/left_cancel: TRUE (e THEOREM, ghost size None, 3.884s)
+[  251.4s] label group_exp2/right_cancel: TRUE (e THEOREM, ghost size None, 3.869s)
+[  256.0s] label group_exp2/inv_mul: TRUE (e THEOREM, ghost size None, 4.058s)
+[  260.5s] label group_exp2/unique_left_id: TRUE (e THEOREM, ghost size None, 4.037s)
+[  260.5s] label group_exp2/idem: FALSE (e None, ghost size 2, 0.023s)
+[  265.0s] label group_exp2/inv_e: TRUE (e THEOREM, ghost size None, 3.896s)
+[  269.5s] label group_exp2/self_inverse: TRUE (e THEOREM, ghost size None, 4.075s)
+[  274.5s] label group_exp2/inv_comm: TRUE (e THEOREM, ghost size None, 4.522s)
+[  278.7s] label group_exp2/sq_e_unique: TRUE (e THEOREM, ghost size None, 3.768s)
+[  283.1s] label group_exp2/sq_central: TRUE (e THEOREM, ghost size None, 3.873s)
+[  287.6s] label group_exp2/flexible: TRUE (e THEOREM, ghost size None, 4.145s)
+[  292.5s] label group_exp2/left_alt: TRUE (e THEOREM, ghost size None, 4.33s)
+[  297.1s] label group_exp2/right_alt: TRUE (e THEOREM, ghost size None, 4.128s)
+[  303.2s] label group_exp2/moufang_right: TRUE (e THEOREM, ghost size None, 5.66s)
+[  308.7s] label lattice/meet_idem: TRUE (e THEOREM, ghost size None, 5.047s)
+[  315.0s] label lattice/join_idem: TRUE (e THEOREM, ghost size None, 5.826s)
+[  322.0s] label lattice/order_dual: TRUE (e THEOREM, ghost size None, 6.553s)
+[  323.2s] label lattice/distrib: FALSE (e None, ghost size 5, 1.122s)
+[  324.9s] label lattice/distrib_dual: FALSE (e None, ghost size 5, 1.656s)
+[  326.0s] label lattice/modular: FALSE (e None, ghost size 5, 1.114s)
+[  327.0s] label lattice/cancel: FALSE (e None, ghost size 5, 0.953s)
+[  327.0s] label lattice/meet_is_join: FALSE (e None, ghost size 2, 0.027s)
+[  327.2s] label lattice/chain: FALSE (e None, ghost size 4, 0.212s)
+[  333.8s] label dist_lattice/meet_idem: TRUE (e THEOREM, ghost size None, 6.097s)
+[  341.6s] label dist_lattice/join_idem: TRUE (e THEOREM, ghost size None, 7.355s)
+[  352.4s] label dist_lattice/order_dual: TRUE (e THEOREM, ghost size None, 10.233s)
+[  379.6s] label dist_lattice/distrib_dual: TRUE (e THEOREM, ghost size None, 26.474s)
+[  406.2s] label dist_lattice/modular: TRUE (e THEOREM, ghost size None, 25.593s)
+[  431.8s] label dist_lattice/cancel: TRUE (e THEOREM, ghost size None, 24.896s)
+[  431.8s] label dist_lattice/meet_is_join: FALSE (e None, ghost size 2, 0.041s)
+[  432.4s] label dist_lattice/chain: FALSE (e None, ghost size 4, 0.588s)
+[  432.5s] label ring/char2: FALSE (e None, ghost size 3, 0.097s)
+[  433.0s] label ring/times_comm: FALSE (e None, ghost size 4, 0.415s)
+[  433.1s] label ring/neg_self: FALSE (e None, ghost size 3, 0.095s)
+[  446.3s] label ring/times_zero: TRUE (e THEOREM, ghost size None, 12.674s)
+[  458.5s] label ring/zero_times: TRUE (e THEOREM, ghost size None, 11.7s)
+[  469.9s] label ring/plus_cancel: TRUE (e THEOREM, ghost size None, 10.854s)
+[  481.1s] label ring/neg_neg: TRUE (e THEOREM, ghost size None, 10.679s)
+[  507.7s] label ring/neg_times: TRUE (e THEOREM, ghost size None, 25.82s)
+[  508.2s] label ring/anti_comm: FALSE (e None, ghost size 3, 0.538s)
+[  508.3s] label ring/no_nilpotent: FALSE (e None, ghost size 2, 0.044s)
+[  508.3s] label ring/times_idem: FALSE (e None, ghost size 2, 0.044s)
+[  508.4s] label ring/h_idem: FALSE (e None, ghost size 2, 0.042s)
+[  521.9s] label boolean_ring/char2: TRUE (e THEOREM, ghost size None, 12.785s)
+[  537.4s] label boolean_ring/times_comm: TRUE (e THEOREM, ghost size None, 14.746s)
+[  549.4s] label boolean_ring/neg_self: TRUE (e THEOREM, ghost size None, 10.928s)
+[  560.6s] label boolean_ring/times_zero: TRUE (e THEOREM, ghost size None, 10.641s)
+[  571.3s] label boolean_ring/zero_times: TRUE (e THEOREM, ghost size None, 9.851s)
+[  581.3s] label boolean_ring/plus_cancel: TRUE (e THEOREM, ghost size None, 9.317s)
+[  592.5s] label boolean_ring/neg_neg: TRUE (e THEOREM, ghost size None, 9.131s)
+[  605.7s] label boolean_ring/neg_times: TRUE (e THEOREM, ghost size None, 11.393s)
+[  619.2s] label boolean_ring/anti_comm: TRUE (e THEOREM, ghost size None, 12.843s)
+[  627.5s] label boolean_ring/no_nilpotent: TRUE (e THEOREM, ghost size None, 7.78s)
+[  627.6s] label boolean_ring/h_idem: FALSE (e None, ghost size 2, 0.038s)
+[  627.6s] label quasigroup/comm: FALSE (e None, ghost size 3, 0.053s)
+[  632.1s] label quasigroup/left_cancel: TRUE (e THEOREM, ghost size None, 3.911s)
+[  636.7s] label quasigroup/right_cancel: TRUE (e THEOREM, ghost size None, 4.134s)
+[  636.7s] label quasigroup/idem: FALSE (e None, ghost size 2, 0.027s)
+[  636.8s] label quasigroup/sq_central: FALSE (e None, ghost size 3, 0.049s)
+[  636.8s] label quasigroup/assoc: FALSE (e None, ghost size 3, 0.056s)
+[  636.9s] label quasigroup/flexible: FALSE (e None, ghost size 3, 0.048s)
+[  636.9s] label quasigroup/left_alt: FALSE (e None, ghost size 3, 0.047s)
+[  637.0s] label quasigroup/right_alt: FALSE (e None, ghost size 3, 0.055s)
+[  637.1s] label quasigroup/ldiv_self: FALSE (e None, ghost size 3, 0.047s)
+[  637.1s] label quasigroup/moufang_right: FALSE (e None, ghost size 3, 0.082s)
+[  639.6s] label moufang/comm: FALSE (e None, ghost size 6, 2.332s)
+[  646.6s] label moufang/left_cancel: TRUE (e THEOREM, ghost size None, 6.407s)
+[  653.5s] label moufang/right_cancel: TRUE (e THEOREM, ghost size None, 6.117s)
+[  659.0s] label moufang/unique_left_id: TRUE (e THEOREM, ghost size None, 4.905s)
+[  659.0s] label moufang/idem: FALSE (e None, ghost size 2, 0.043s)
+[  664.9s] label moufang/sq_e_unique: TRUE (e THEOREM, ghost size None, 5.275s)
+[  667.3s] label moufang/sq_central: FALSE (e None, ghost size 6, 2.351s)
+[  701.9s] label moufang/assoc: UNKNOWN (e GAVE_UP, ghost size None, 33.906s)
+[  709.7s] label moufang/flexible: TRUE (e THEOREM, ghost size None, 6.664s)
+[  717.0s] label moufang/left_alt: TRUE (e THEOREM, ghost size None, 6.36s)
+[  724.5s] label moufang/right_alt: TRUE (e THEOREM, ghost size None, 6.926s)
+[  730.4s] label moufang/ldiv_self: TRUE (e THEOREM, ghost size None, 5.377s)
+[  748.4s] label moufang/moufang_right: TRUE (e THEOREM, ghost size None, 17.14s)
+[  753.9s] label moufang/ldiv_e: TRUE (e THEOREM, ghost size None, 5.066s)
+[  753.9s] label huntington/plus_cancel: FALSE (e None, ghost size 2, 0.045s)
+[  786.9s] label huntington/h_idem: TRUE (e THEOREM, ghost size None, 31.493s)
+[  812.7s] label huntington/h_double_neg: TRUE (e THEOREM, ghost size None, 24.524s)
+[  840.5s] label huntington/h_complement: TRUE (e THEOREM, ghost size None, 26.315s)
+[  840.5s] label huntington/h_neg_fix: FALSE (e None, ghost size 2, 0.033s)
+[  840.6s] label huntington/h_de_morgan_wrong: FALSE (e None, ghost size 2, 0.029s)
+[  841.0s] budget 2.0: gc20261024-070 quasigroup/sq_central: {'ghost_lemmas_lean': 'UNSETTLED', 'oracle_lemmas': 'UNSETTLED', 'ghost_lemmas': 'UNSETTLED', 'portfolio_auto': 'UNSETTLED', 'portfolio': 'UNSETTLED', 'lemmas_unfiltered': 'UNSETTLED'}
+[  844.2s] budget 2.0: gc20261024-066 group_exp2/unique_left_id: {'lemmas_unfiltered': 'UNSETTLED', 'ghost_lemmas': 'UNSETTLED', 'ghost_lemmas_lean': 'UNSETTLED', 'portfolio': 'PROVED', 'portfolio_auto': 'PROVED', 'oracle_lemmas': 'PROVED'}
+[  847.4s] budget 2.0: gc20261024-065 ring/neg_times: {'portfolio': 'PROVED', 'portfolio_auto': 'PROVED', 'ghost_lemmas': 'UNSETTLED', 'lemmas_unfiltered': 'UNSETTLED', 'oracle_lemmas': 'PROVED', 'ghost_lemmas_lean': 'UNSETTLED'}
+[  850.8s] budget 2.0: gc20261024-124 group_sq/unique_left_id: {'portfolio': 'PROVED', 'lemmas_unfiltered': 'UNSETTLED', 'portfolio_auto': 'PROVED', 'ghost_lemmas_lean': 'UNSETTLED', 'oracle_lemmas': 'PROVED', 'ghost_lemmas': 'UNSETTLED'}
+[  853.9s] budget 2.0: gc20261024-093 group_exp2/right_alt: {'oracle_lemmas': 'PROVED', 'lemmas_unfiltered': 'UNSETTLED', 'portfolio_auto': 'PROVED', 'ghost_lemmas_lean': 'UNSETTLED', 'portfolio': 'PROVED', 'ghost_lemmas': 'UNSETTLED'}
+[  857.3s] budget 2.0: gc20261024-062 group_sq/flexible: {'ghost_lemmas': 'UNSETTLED', 'portfolio_auto': 'PROVED', 'lemmas_unfiltered': 'UNSETTLED', 'portfolio': 'PROVED', 'oracle_lemmas': 'PROVED', 'ghost_lemmas_lean': 'UNSETTLED'}
+[  860.6s] budget 2.0: gc20261024-087 group/flexible: {'ghost_lemmas': 'UNSETTLED', 'portfolio_auto': 'PROVED', 'portfolio': 'PROVED', 'lemmas_unfiltered': 'UNSETTLED', 'oracle_lemmas': 'PROVED', 'ghost_lemmas_lean': 'UNSETTLED'}
+[  860.9s] budget 2.0: gc20261024-050 quasigroup/left_alt: {'portfolio_auto': 'UNSETTLED', 'ghost_lemmas': 'UNSETTLED', 'oracle_lemmas': 'UNSETTLED', 'ghost_lemmas_lean': 'UNSETTLED', 'portfolio': 'UNSETTLED', 'lemmas_unfiltered': 'UNSETTLED'}
+[  864.1s] budget 2.0: gc20261024-008 group_exp2/inv_mul: {'portfolio_auto': 'PROVED', 'portfolio': 'PROVED', 'ghost_lemmas_lean': 'UNSETTLED', 'ghost_lemmas': 'UNSETTLED', 'oracle_lemmas': 'PROVED', 'lemmas_unfiltered': 'UNSETTLED'}
+[  864.5s] budget 2.0: gc20261024-082 quasigroup/assoc: {'lemmas_unfiltered': 'UNSETTLED', 'portfolio_auto': 'UNSETTLED', 'ghost_lemmas_lean': 'UNSETTLED', 'portfolio': 'UNSETTLED', 'oracle_lemmas': 'UNSETTLED', 'ghost_lemmas': 'UNSETTLED'}
+[  867.8s] budget 2.0: gc20261024-072 group_sq/right_alt: {'portfolio': 'PROVED', 'lemmas_unfiltered': 'UNSETTLED', 'portfolio_auto': 'PROVED', 'ghost_lemmas_lean': 'UNSETTLED', 'oracle_lemmas': 'PROVED', 'ghost_lemmas': 'UNSETTLED'}
+[  871.1s] budget 2.0: gc20261024-016 moufang/sq_e_unique: {'ghost_lemmas': 'UNSETTLED', 'portfolio_auto': 'PROVED', 'lemmas_unfiltered': 'UNSETTLED', 'oracle_lemmas': 'PROVED', 'ghost_lemmas_lean': 'UNSETTLED', 'portfolio': 'PROVED'}
+[  880.8s] budget 2.0: gc20261024-001 ring/neg_self: {'portfolio': 'UNSETTLED', 'ghost_lemmas': 'UNSETTLED', 'oracle_lemmas': 'UNSETTLED', 'portfolio_auto': 'UNSETTLED', 'ghost_lemmas_lean': 'UNSETTLED', 'lemmas_unfiltered': 'UNSETTLED'}
+[  884.0s] budget 2.0: gc20261024-110 group_sq/sq_e_unique: {'lemmas_unfiltered': 'UNSETTLED', 'portfolio': 'PROVED', 'ghost_lemmas': 'UNSETTLED', 'ghost_lemmas_lean': 'UNSETTLED', 'portfolio_auto': 'PROVED', 'oracle_lemmas': 'PROVED'}
+[  887.4s] budget 2.0: gc20261024-095 boolean_ring/neg_times: {'ghost_lemmas_lean': 'UNSETTLED', 'lemmas_unfiltered': 'UNSETTLED', 'portfolio_auto': 'PROVED', 'oracle_lemmas': 'PROVED', 'portfolio': 'PROVED', 'ghost_lemmas': 'UNSETTLED'}
+[  890.9s] budget 2.0: gc20261024-026 lattice/order_dual: {'lemmas_unfiltered': 'UNSETTLED', 'portfolio': 'PROVED', 'ghost_lemmas_lean': 'UNSETTLED', 'oracle_lemmas': 'PROVED', 'ghost_lemmas': 'UNSETTLED', 'portfolio_auto': 'PROVED'}
+[  900.4s] budget 2.0: gc20261024-122 group/self_inverse: {'ghost_lemmas': 'UNSETTLED', 'ghost_lemmas_lean': 'UNSETTLED', 'portfolio_auto': 'UNSETTLED', 'oracle_lemmas': 'UNSETTLED', 'portfolio': 'UNSETTLED', 'lemmas_unfiltered': 'UNSETTLED'}
+[  903.9s] budget 2.0: gc20261024-064 group/sq_e_unique: {'portfolio': 'PROVED', 'ghost_lemmas': 'UNSETTLED', 'oracle_lemmas': 'PROVED', 'lemmas_unfiltered': 'UNSETTLED', 'ghost_lemmas_lean': 'UNSETTLED', 'portfolio_auto': 'PROVED'}
+[  904.2s] budget 2.0: gc20261024-123 quasigroup/right_alt: {'lemmas_unfiltered': 'UNSETTLED', 'portfolio': 'UNSETTLED', 'ghost_lemmas': 'UNSETTLED', 'ghost_lemmas_lean': 'UNSETTLED', 'oracle_lemmas': 'UNSETTLED', 'portfolio_auto': 'UNSETTLED'}
+[  907.7s] budget 2.0: gc20261024-117 ring/times_zero: {'portfolio': 'PROVED', 'lemmas_unfiltered': 'UNSETTLED', 'portfolio_auto': 'PROVED', 'ghost_lemmas': 'UNSETTLED', 'oracle_lemmas': 'PROVED', 'ghost_lemmas_lean': 'UNSETTLED'}
+[  911.1s] budget 2.0: gc20261024-030 group_sq/left_alt: {'lemmas_unfiltered': 'UNSETTLED', 'ghost_lemmas_lean': 'UNSETTLED', 'portfolio': 'PROVED', 'portfolio_auto': 'PROVED', 'oracle_lemmas': 'PROVED', 'ghost_lemmas': 'UNSETTLED'}
+[  914.4s] budget 2.0: gc20261024-021 group_exp2/left_cancel: {'portfolio': 'PROVED', 'lemmas_unfiltered': 'UNSETTLED', 'ghost_lemmas_lean': 'UNSETTLED', 'oracle_lemmas': 'PROVED', 'ghost_lemmas': 'UNSETTLED', 'portfolio_auto': 'PROVED'}
+[  917.5s] budget 2.0: gc20261024-013 boolean_ring/no_nilpotent: {'lemmas_unfiltered': 'UNSETTLED', 'portfolio': 'PROVED', 'portfolio_auto': 'PROVED', 'oracle_lemmas': 'PROVED', 'ghost_lemmas': 'UNSETTLED', 'ghost_lemmas_lean': 'UNSETTLED'}
+[  920.8s] budget 2.0: gc20261024-068 moufang/ldiv_self: {'portfolio_auto': 'PROVED', 'ghost_lemmas': 'UNSETTLED', 'portfolio': 'PROVED', 'oracle_lemmas': 'PROVED', 'ghost_lemmas_lean': 'UNSETTLED', 'lemmas_unfiltered': 'UNSETTLED'}
+[  924.5s] budget 2.0: gc20261024-038 group_sq/inv_inv: {'portfolio_auto': 'PROVED', 'lemmas_unfiltered': 'UNSETTLED', 'portfolio': 'PROVED', 'oracle_lemmas': 'PROVED', 'ghost_lemmas': 'UNSETTLED', 'ghost_lemmas_lean': 'UNSETTLED'}
+[  928.0s] budget 2.0: gc20261024-083 group_exp2/comm: {'portfolio_auto': 'PROVED', 'portfolio': 'PROVED', 'ghost_lemmas_lean': 'UNSETTLED', 'ghost_lemmas': 'UNSETTLED', 'lemmas_unfiltered': 'UNSETTLED', 'oracle_lemmas': 'PROVED'}
+[  937.6s] budget 2.0: gc20261024-000 ring/no_nilpotent: {'portfolio_auto': 'UNSETTLED', 'lemmas_unfiltered': 'UNSETTLED', 'ghost_lemmas': 'UNSETTLED', 'ghost_lemmas_lean': 'UNSETTLED', 'portfolio': 'UNSETTLED', 'oracle_lemmas': 'UNSETTLED'}
+[  947.0s] budget 2.0: gc20261024-031 group/sq_central: {'oracle_lemmas': 'UNSETTLED', 'lemmas_unfiltered': 'UNSETTLED', 'ghost_lemmas': 'UNSETTLED', 'portfolio_auto': 'UNSETTLED', 'portfolio': 'UNSETTLED', 'ghost_lemmas_lean': 'UNSETTLED'}
+[  950.3s] budget 2.0: gc20261024-067 moufang/right_cancel: {'ghost_lemmas_lean': 'UNSETTLED', 'portfolio': 'PROVED', 'lemmas_unfiltered': 'UNSETTLED', 'ghost_lemmas': 'UNSETTLED', 'oracle_lemmas': 'PROVED', 'portfolio_auto': 'PROVED'}
+[  953.8s] budget 2.0: gc20261024-047 group_exp2/sq_e_unique: {'portfolio': 'PROVED', 'portfolio_auto': 'PROVED', 'ghost_lemmas': 'UNSETTLED', 'oracle_lemmas': 'PROVED', 'ghost_lemmas_lean': 'UNSETTLED', 'lemmas_unfiltered': 'UNSETTLED'}
+[  963.5s] budget 2.0: gc20261024-036 lattice/distrib_dual: {'ghost_lemmas_lean': 'UNSETTLED', 'portfolio_auto': 'UNSETTLED', 'ghost_lemmas': 'UNSETTLED', 'portfolio': 'UNSETTLED', 'lemmas_unfiltered': 'UNSETTLED', 'oracle_lemmas': 'UNSETTLED'}
+[  972.9s] budget 2.0: gc20261024-051 ring/h_idem: {'portfolio_auto': 'UNSETTLED', 'portfolio': 'UNSETTLED', 'ghost_lemmas': 'UNSETTLED', 'oracle_lemmas': 'UNSETTLED', 'ghost_lemmas_lean': 'UNSETTLED', 'lemmas_unfiltered': 'UNSETTLED'}
+[  982.2s] budget 2.0: gc20261024-116 moufang/moufang_right: {'portfolio': 'PROVED', 'ghost_lemmas_lean': 'UNSETTLED', 'lemmas_unfiltered': 'UNSETTLED', 'ghost_lemmas': 'UNSETTLED', 'oracle_lemmas': 'PROVED', 'portfolio_auto': 'UNSETTLED'}
+[  991.5s] budget 2.0: gc20261024-011 ring/char2: {'lemmas_unfiltered': 'UNSETTLED', 'oracle_lemmas': 'UNSETTLED', 'ghost_lemmas': 'UNSETTLED', 'portfolio_auto': 'UNSETTLED', 'ghost_lemmas_lean': 'UNSETTLED', 'portfolio': 'UNSETTLED'}
+[ 1000.8s] budget 2.0: gc20261024-014 moufang/idem: {'portfolio_auto': 'UNSETTLED', 'portfolio': 'UNSETTLED', 'oracle_lemmas': 'UNSETTLED', 'lemmas_unfiltered': 'UNSETTLED', 'ghost_lemmas_lean': 'UNSETTLED', 'ghost_lemmas': 'UNSETTLED'}
+[ 1001.0s] budget 2.0: gc20261024-084 quasigroup/flexible: {'ghost_lemmas_lean': 'UNSETTLED', 'oracle_lemmas': 'UNSETTLED', 'lemmas_unfiltered': 'UNSETTLED', 'portfolio': 'UNSETTLED', 'portfolio_auto': 'UNSETTLED', 'ghost_lemmas': 'UNSETTLED'}
+[ 1004.2s] budget 2.0: gc20261024-022 boolean_ring/char2: {'lemmas_unfiltered': 'UNSETTLED', 'oracle_lemmas': 'PROVED', 'ghost_lemmas': 'UNSETTLED', 'ghost_lemmas_lean': 'UNSETTLED', 'portfolio_auto': 'PROVED', 'portfolio': 'PROVED'}
+[ 1007.5s] budget 2.0: gc20261024-057 boolean_ring/anti_comm: {'ghost_lemmas': 'UNSETTLED', 'portfolio_auto': 'PROVED', 'oracle_lemmas': 'PROVED', 'lemmas_unfiltered': 'UNSETTLED', 'portfolio': 'PROVED', 'ghost_lemmas_lean': 'UNSETTLED'}
+[ 1016.9s] budget 2.0: gc20261024-113 ring/times_comm: {'oracle_lemmas': 'UNSETTLED', 'ghost_lemmas': 'UNSETTLED', 'portfolio': 'UNSETTLED', 'ghost_lemmas_lean': 'UNSETTLED', 'portfolio_auto': 'UNSETTLED', 'lemmas_unfiltered': 'UNSETTLED'}
+[ 1026.5s] budget 2.0: gc20261024-033 group/inv_comm: {'ghost_lemmas': 'UNSETTLED', 'portfolio_auto': 'UNSETTLED', 'ghost_lemmas_lean': 'UNSETTLED', 'lemmas_unfiltered': 'UNSETTLED', 'oracle_lemmas': 'UNSETTLED', 'portfolio': 'UNSETTLED'}
+[ 1029.7s] budget 2.0: gc20261024-077 boolean_ring/neg_neg: {'ghost_lemmas': 'UNSETTLED', 'portfolio': 'PROVED', 'portfolio_auto': 'PROVED', 'oracle_lemmas': 'PROVED', 'lemmas_unfiltered': 'UNSETTLED', 'ghost_lemmas_lean': 'UNSETTLED'}
+[ 1033.0s] budget 2.0: gc20261024-039 group/moufang_right: {'lemmas_unfiltered': 'UNSETTLED', 'ghost_lemmas_lean': 'UNSETTLED', 'ghost_lemmas': 'UNSETTLED', 'portfolio': 'PROVED', 'portfolio_auto': 'PROVED', 'oracle_lemmas': 'PROVED'}
+[ 1036.2s] budget 2.0: gc20261024-024 group_sq/inv_e: {'portfolio_auto': 'PROVED', 'oracle_lemmas': 'PROVED', 'portfolio': 'PROVED', 'ghost_lemmas_lean': 'UNSETTLED', 'ghost_lemmas': 'UNSETTLED', 'lemmas_unfiltered': 'UNSETTLED'}
+[ 1039.3s] budget 2.0: gc20261024-100 group/inv_e: {'lemmas_unfiltered': 'UNSETTLED', 'ghost_lemmas_lean': 'UNSETTLED', 'ghost_lemmas': 'UNSETTLED', 'portfolio_auto': 'PROVED', 'portfolio': 'PROVED', 'oracle_lemmas': 'PROVED'}
+[ 1042.6s] budget 2.0: gc20261024-090 group_sq/right_id: {'ghost_lemmas_lean': 'UNSETTLED', 'ghost_lemmas': 'UNSETTLED', 'oracle_lemmas': 'PROVED', 'lemmas_unfiltered': 'UNSETTLED', 'portfolio_auto': 'PROVED', 'portfolio': 'PROVED'}
+[ 1051.9s] budget 2.0: gc20261024-089 moufang/sq_central: {'ghost_lemmas': 'UNSETTLED', 'portfolio': 'UNSETTLED', 'portfolio_auto': 'UNSETTLED', 'oracle_lemmas': 'UNSETTLED', 'lemmas_unfiltered': 'UNSETTLED', 'ghost_lemmas_lean': 'UNSETTLED'}
+[ 1061.1s] budget 2.0: gc20261024-044 group/idem: {'lemmas_unfiltered': 'UNSETTLED', 'ghost_lemmas': 'UNSETTLED', 'portfolio': 'UNSETTLED', 'ghost_lemmas_lean': 'UNSETTLED', 'portfolio_auto': 'UNSETTLED', 'oracle_lemmas': 'UNSETTLED'}
+[ 1070.4s] budget 2.0: gc20261024-102 lattice/chain: {'portfolio_auto': 'UNSETTLED', 'lemmas_unfiltered': 'UNSETTLED', 'ghost_lemmas': 'UNSETTLED', 'oracle_lemmas': 'UNSETTLED', 'ghost_lemmas_lean': 'UNSETTLED', 'portfolio': 'UNSETTLED'}
+[ 1073.6s] budget 2.0: gc20261024-105 group_sq/left_cancel: {'lemmas_unfiltered': 'UNSETTLED', 'ghost_lemmas_lean': 'UNSETTLED', 'portfolio': 'PROVED', 'portfolio_auto': 'PROVED', 'oracle_lemmas': 'PROVED', 'ghost_lemmas': 'UNSETTLED'}
+[ 1083.4s] budget 2.0: gc20261024-003 dist_lattice/chain: {'lemmas_unfiltered': 'UNSETTLED', 'portfolio_auto': 'UNSETTLED', 'oracle_lemmas': 'UNSETTLED', 'ghost_lemmas_lean': 'UNSETTLED', 'ghost_lemmas': 'UNSETTLED', 'portfolio': 'UNSETTLED'}
+[ 1083.9s] budget 2.0: gc20261024-055 quasigroup/left_cancel: {'ghost_lemmas': 'PROVED', 'lemmas_unfiltered': 'PROVED', 'portfolio': 'PROVED', 'portfolio_auto': 'PROVED', 'ghost_lemmas_lean': 'PROVED', 'oracle_lemmas': 'PROVED'}
+[ 1087.2s] budget 2.0: gc20261024-091 group/inv_mul: {'oracle_lemmas': 'PROVED', 'ghost_lemmas_lean': 'UNSETTLED', 'portfolio': 'PROVED', 'ghost_lemmas': 'UNSETTLED', 'portfolio_auto': 'PROVED', 'lemmas_unfiltered': 'UNSETTLED'}
+[ 1091.0s] budget 2.0: gc20261024-071 huntington/h_complement: {'ghost_lemmas': 'UNSETTLED', 'oracle_lemmas': 'PROVED', 'ghost_lemmas_lean': 'UNSETTLED', 'portfolio_auto': 'PROVED', 'lemmas_unfiltered': 'UNSETTLED', 'portfolio': 'PROVED'}
+[ 1100.3s] budget 2.0: gc20261024-035 moufang/comm: {'ghost_lemmas': 'UNSETTLED', 'lemmas_unfiltered': 'UNSETTLED', 'portfolio': 'UNSETTLED', 'ghost_lemmas_lean': 'UNSETTLED', 'oracle_lemmas': 'UNSETTLED', 'portfolio_auto': 'UNSETTLED'}
+[ 1103.4s] budget 2.0: gc20261024-023 dist_lattice/join_idem: {'ghost_lemmas_lean': 'UNSETTLED', 'lemmas_unfiltered': 'UNSETTLED', 'ghost_lemmas': 'UNSETTLED', 'portfolio': 'PROVED', 'portfolio_auto': 'PROVED', 'oracle_lemmas': 'PROVED'}
+[ 1106.7s] budget 2.0: gc20261024-120 group_exp2/left_alt: {'oracle_lemmas': 'PROVED', 'ghost_lemmas_lean': 'UNSETTLED', 'portfolio': 'PROVED', 'portfolio_auto': 'PROVED', 'ghost_lemmas': 'UNSETTLED', 'lemmas_unfiltered': 'UNSETTLED'}
+[ 1110.2s] budget 2.0: gc20261024-019 group_sq/sq_central: {'lemmas_unfiltered': 'UNSETTLED', 'oracle_lemmas': 'PROVED', 'portfolio_auto': 'PROVED', 'ghost_lemmas_lean': 'UNSETTLED', 'portfolio': 'PROVED', 'ghost_lemmas': 'UNSETTLED'}
+[ 1113.3s] budget 2.0: gc20261024-119 group_exp2/sq_central: {'portfolio': 'PROVED', 'ghost_lemmas_lean': 'UNSETTLED', 'oracle_lemmas': 'PROVED', 'ghost_lemmas': 'UNSETTLED', 'lemmas_unfiltered': 'UNSETTLED', 'portfolio_auto': 'PROVED'}
+[ 1116.5s] budget 2.0: gc20261024-085 group/left_cancel: {'oracle_lemmas': 'PROVED', 'lemmas_unfiltered': 'UNSETTLED', 'ghost_lemmas_lean': 'UNSETTLED', 'ghost_lemmas': 'UNSETTLED', 'portfolio_auto': 'PROVED', 'portfolio': 'PROVED'}
+[ 1119.8s] budget 2.0: gc20261024-020 group_sq/comm: {'oracle_lemmas': 'PROVED', 'ghost_lemmas': 'UNSETTLED', 'portfolio_auto': 'PROVED', 'portfolio': 'PROVED', 'ghost_lemmas_lean': 'UNSETTLED', 'lemmas_unfiltered': 'UNSETTLED'}
+[ 1123.3s] budget 2.0: gc20261024-042 boolean_ring/times_comm: {'portfolio_auto': 'PROVED', 'portfolio': 'PROVED', 'lemmas_unfiltered': 'UNSETTLED', 'oracle_lemmas': 'PROVED', 'ghost_lemmas': 'UNSETTLED', 'ghost_lemmas_lean': 'UNSETTLED'}
+[ 1126.7s] budget 2.0: gc20261024-094 moufang/left_alt: {'portfolio_auto': 'PROVED', 'lemmas_unfiltered': 'UNSETTLED', 'portfolio': 'PROVED', 'oracle_lemmas': 'PROVED', 'ghost_lemmas': 'UNSETTLED', 'ghost_lemmas_lean': 'UNSETTLED'}
+[ 1131.2s] budget 2.0: gc20261024-101 dist_lattice/distrib_dual: {'portfolio': 'PROVED', 'portfolio_auto': 'PROVED', 'ghost_lemmas_lean': 'UNSETTLED', 'oracle_lemmas': 'PROVED', 'lemmas_unfiltered': 'UNSETTLED', 'ghost_lemmas': 'UNSETTLED'}
+[ 1141.5s] budget 2.0: gc20261024-040 huntington/plus_cancel: {'lemmas_unfiltered': 'UNSETTLED', 'ghost_lemmas': 'UNSETTLED', 'portfolio': 'UNSETTLED', 'oracle_lemmas': 'UNSETTLED', 'ghost_lemmas_lean': 'UNSETTLED', 'portfolio_auto': 'UNSETTLED'}
+[ 1144.8s] budget 2.0: gc20261024-015 group_exp2/moufang_right: {'oracle_lemmas': 'PROVED', 'portfolio_auto': 'PROVED', 'lemmas_unfiltered': 'UNSETTLED', 'ghost_lemmas': 'UNSETTLED', 'ghost_lemmas_lean': 'UNSETTLED', 'portfolio': 'PROVED'}
+[ 1148.0s] budget 2.0: gc20261024-078 moufang/ldiv_e: {'ghost_lemmas': 'UNSETTLED', 'portfolio': 'PROVED', 'ghost_lemmas_lean': 'UNSETTLED', 'portfolio_auto': 'PROVED', 'oracle_lemmas': 'PROVED', 'lemmas_unfiltered': 'UNSETTLED'}
+[ 1160.8s] budget 2.0: gc20261024-037 group_exp2/idem: {'lemmas_unfiltered': 'UNSETTLED', 'portfolio_auto': 'UNSETTLED', 'ghost_lemmas': 'UNSETTLED', 'ghost_lemmas_lean': 'UNSETTLED', 'portfolio': 'UNSETTLED', 'oracle_lemmas': 'UNSETTLED'}
+[ 1161.0s] budget 2.0: gc20261024-111 quasigroup/right_cancel: {'ghost_lemmas': 'PROVED', 'lemmas_unfiltered': 'PROVED', 'portfolio_auto': 'PROVED', 'ghost_lemmas_lean': 'PROVED', 'portfolio': 'PROVED', 'oracle_lemmas': 'PROVED'}
+[ 1164.3s] budget 2.0: gc20261024-106 ring/neg_neg: {'ghost_lemmas': 'UNSETTLED', 'portfolio_auto': 'PROVED', 'ghost_lemmas_lean': 'UNSETTLED', 'oracle_lemmas': 'PROVED', 'lemmas_unfiltered': 'UNSETTLED', 'portfolio': 'PROVED'}
+[ 1168.7s] budget 2.0: gc20261024-058 dist_lattice/modular: {'oracle_lemmas': 'PROVED', 'lemmas_unfiltered': 'UNSETTLED', 'ghost_lemmas_lean': 'UNSETTLED', 'portfolio': 'PROVED', 'ghost_lemmas': 'UNSETTLED', 'portfolio_auto': 'PROVED'}
+[ 1171.9s] budget 2.0: gc20261024-075 boolean_ring/zero_times: {'portfolio': 'PROVED', 'portfolio_auto': 'PROVED', 'lemmas_unfiltered': 'UNSETTLED', 'ghost_lemmas_lean': 'UNSETTLED', 'oracle_lemmas': 'PROVED', 'ghost_lemmas': 'UNSETTLED'}
+[ 1175.5s] budget 2.0: gc20261024-107 dist_lattice/cancel: {'portfolio_auto': 'PROVED', 'ghost_lemmas': 'UNSETTLED', 'lemmas_unfiltered': 'UNSETTLED', 'ghost_lemmas_lean': 'UNSETTLED', 'oracle_lemmas': 'PROVED', 'portfolio': 'PROVED'}
+[ 1179.0s] budget 2.0: gc20261024-121 group/right_alt: {'portfolio_auto': 'PROVED', 'portfolio': 'PROVED', 'oracle_lemmas': 'PROVED', 'lemmas_unfiltered': 'UNSETTLED', 'ghost_lemmas_lean': 'UNSETTLED', 'ghost_lemmas': 'UNSETTLED'}
+[ 1183.6s] budget 2.0: gc20261024-097 huntington/h_double_neg: {'portfolio_auto': 'PROVED', 'oracle_lemmas': 'PROVED', 'lemmas_unfiltered': 'UNSETTLED', 'portfolio': 'PROVED', 'ghost_lemmas_lean': 'UNSETTLED', 'ghost_lemmas': 'UNSETTLED'}
+[ 1187.0s] budget 2.0: gc20261024-034 group_sq/inv_comm: {'oracle_lemmas': 'PROVED', 'lemmas_unfiltered': 'UNSETTLED', 'ghost_lemmas_lean': 'UNSETTLED', 'ghost_lemmas': 'UNSETTLED', 'portfolio': 'PROVED', 'portfolio_auto': 'PROVED'}
+[ 1190.5s] budget 2.0: gc20261024-059 group/right_inv: {'portfolio': 'PROVED', 'ghost_lemmas': 'UNSETTLED', 'lemmas_unfiltered': 'UNSETTLED', 'oracle_lemmas': 'PROVED', 'portfolio_auto': 'PROVED', 'ghost_lemmas_lean': 'UNSETTLED'}
+[ 1193.8s] budget 2.0: gc20261024-069 lattice/join_idem: {'portfolio': 'PROVED', 'ghost_lemmas_lean': 'UNSETTLED', 'lemmas_unfiltered': 'UNSETTLED', 'oracle_lemmas': 'PROVED', 'portfolio_auto': 'PROVED', 'ghost_lemmas': 'UNSETTLED'}
+[ 1203.4s] budget 2.0: gc20261024-103 lattice/meet_is_join: {'oracle_lemmas': 'UNSETTLED', 'ghost_lemmas_lean': 'UNSETTLED', 'ghost_lemmas': 'UNSETTLED', 'lemmas_unfiltered': 'UNSETTLED', 'portfolio_auto': 'UNSETTLED', 'portfolio': 'UNSETTLED'}
+[ 1206.7s] budget 2.0: gc20261024-029 group_exp2/right_inv: {'portfolio': 'PROVED', 'ghost_lemmas': 'UNSETTLED', 'oracle_lemmas': 'PROVED', 'lemmas_unfiltered': 'UNSETTLED', 'portfolio_auto': 'PROVED', 'ghost_lemmas_lean': 'UNSETTLED'}
+[ 1216.3s] budget 2.0: gc20261024-041 huntington/h_neg_fix: {'portfolio_auto': 'UNSETTLED', 'oracle_lemmas': 'UNSETTLED', 'lemmas_unfiltered': 'UNSETTLED', 'ghost_lemmas_lean': 'UNSETTLED', 'portfolio': 'UNSETTLED', 'ghost_lemmas': 'UNSETTLED'}
+[ 1216.7s] budget 2.0: gc20261024-002 quasigroup/comm: {'portfolio_auto': 'UNSETTLED', 'oracle_lemmas': 'UNSETTLED', 'portfolio': 'UNSETTLED', 'lemmas_unfiltered': 'UNSETTLED', 'ghost_lemmas_lean': 'UNSETTLED', 'ghost_lemmas': 'UNSETTLED'}
+[ 1226.5s] budget 2.0: gc20261024-118 group_sq/self_inverse: {'portfolio_auto': 'UNSETTLED', 'ghost_lemmas': 'UNSETTLED', 'portfolio': 'UNSETTLED', 'ghost_lemmas_lean': 'UNSETTLED', 'lemmas_unfiltered': 'UNSETTLED', 'oracle_lemmas': 'UNSETTLED'}
+[ 1230.0s] budget 2.0: gc20261024-063 group_exp2/inv_inv: {'lemmas_unfiltered': 'UNSETTLED', 'ghost_lemmas': 'UNSETTLED', 'portfolio_auto': 'PROVED', 'oracle_lemmas': 'PROVED', 'portfolio': 'PROVED', 'ghost_lemmas_lean': 'UNSETTLED'}
+[ 1233.4s] budget 2.0: gc20261024-027 group_exp2/flexible: {'ghost_lemmas_lean': 'UNSETTLED', 'lemmas_unfiltered': 'UNSETTLED', 'oracle_lemmas': 'PROVED', 'portfolio_auto': 'PROVED', 'ghost_lemmas': 'UNSETTLED', 'portfolio': 'PROVED'}
+[ 1233.8s] budget 2.0: gc20261024-060 quasigroup/idem: {'ghost_lemmas': 'UNSETTLED', 'portfolio_auto': 'UNSETTLED', 'oracle_lemmas': 'UNSETTLED', 'ghost_lemmas_lean': 'UNSETTLED', 'lemmas_unfiltered': 'UNSETTLED', 'portfolio': 'UNSETTLED'}
+[ 1237.5s] budget 2.0: gc20261024-053 boolean_ring/times_zero: {'portfolio_auto': 'PROVED', 'ghost_lemmas_lean': 'UNSETTLED', 'oracle_lemmas': 'PROVED', 'portfolio': 'PROVED', 'ghost_lemmas': 'UNSETTLED', 'lemmas_unfiltered': 'UNSETTLED'}
+[ 1242.8s] budget 2.0: gc20261024-032 huntington/h_idem: {'portfolio': 'PROVED', 'oracle_lemmas': 'PROVED', 'lemmas_unfiltered': 'UNSETTLED', 'portfolio_auto': 'PROVED', 'ghost_lemmas': 'UNSETTLED', 'ghost_lemmas_lean': 'UNSETTLED'}
+[ 1246.1s] budget 2.0: gc20261024-004 ring/plus_cancel: {'oracle_lemmas': 'PROVED', 'portfolio': 'PROVED', 'ghost_lemmas': 'UNSETTLED', 'lemmas_unfiltered': 'UNSETTLED', 'ghost_lemmas_lean': 'UNSETTLED', 'portfolio_auto': 'PROVED'}
+[ 1249.5s] budget 2.0: gc20261024-012 moufang/right_alt: {'lemmas_unfiltered': 'UNSETTLED', 'portfolio_auto': 'PROVED', 'oracle_lemmas': 'PROVED', 'ghost_lemmas_lean': 'UNSETTLED', 'ghost_lemmas': 'UNSETTLED', 'portfolio': 'PROVED'}
+[ 1252.7s] budget 2.0: gc20261024-007 group_exp2/self_inverse: {'portfolio_auto': 'PROVED', 'lemmas_unfiltered': 'UNSETTLED', 'ghost_lemmas_lean': 'UNSETTLED', 'ghost_lemmas': 'UNSETTLED', 'oracle_lemmas': 'PROVED', 'portfolio': 'PROVED'}
+[ 1262.2s] budget 2.0: gc20261024-081 group/comm: {'ghost_lemmas': 'UNSETTLED', 'lemmas_unfiltered': 'UNSETTLED', 'oracle_lemmas': 'UNSETTLED', 'portfolio_auto': 'UNSETTLED', 'ghost_lemmas_lean': 'UNSETTLED', 'portfolio': 'UNSETTLED'}
+[ 1265.8s] budget 2.0: gc20261024-076 group_sq/inv_mul: {'ghost_lemmas_lean': 'UNSETTLED', 'oracle_lemmas': 'PROVED', 'lemmas_unfiltered': 'UNSETTLED', 'ghost_lemmas': 'UNSETTLED', 'portfolio_auto': 'PROVED', 'portfolio': 'PROVED'}
+[ 1269.2s] budget 2.0: gc20261024-005 moufang/left_cancel: {'ghost_lemmas_lean': 'UNSETTLED', 'portfolio_auto': 'PROVED', 'ghost_lemmas': 'UNSETTLED', 'oracle_lemmas': 'PROVED', 'portfolio': 'PROVED', 'lemmas_unfiltered': 'UNSETTLED'}
+[ 1273.1s] budget 2.0: gc20261024-109 dist_lattice/meet_idem: {'oracle_lemmas': 'PROVED', 'portfolio': 'PROVED', 'ghost_lemmas_lean': 'UNSETTLED', 'portfolio_auto': 'PROVED', 'lemmas_unfiltered': 'UNSETTLED', 'ghost_lemmas': 'UNSETTLED'}
+[ 1276.5s] budget 2.0: gc20261024-061 group_exp2/right_cancel: {'ghost_lemmas_lean': 'UNSETTLED', 'lemmas_unfiltered': 'UNSETTLED', 'portfolio': 'PROVED', 'ghost_lemmas': 'UNSETTLED', 'oracle_lemmas': 'PROVED', 'portfolio_auto': 'PROVED'}
+[ 1280.0s] budget 2.0: gc20261024-108 lattice/meet_idem: {'ghost_lemmas_lean': 'UNSETTLED', 'portfolio': 'PROVED', 'portfolio_auto': 'PROVED', 'lemmas_unfiltered': 'UNSETTLED', 'ghost_lemmas': 'UNSETTLED', 'oracle_lemmas': 'PROVED'}
+[ 1283.7s] budget 2.0: gc20261024-010 group_sq/right_inv: {'portfolio_auto': 'PROVED', 'lemmas_unfiltered': 'UNSETTLED', 'ghost_lemmas': 'UNSETTLED', 'portfolio': 'PROVED', 'oracle_lemmas': 'PROVED', 'ghost_lemmas_lean': 'UNSETTLED'}
+[ 1287.0s] budget 2.0: gc20261024-079 ring/zero_times: {'lemmas_unfiltered': 'UNSETTLED', 'ghost_lemmas': 'UNSETTLED', 'oracle_lemmas': 'PROVED', 'portfolio': 'PROVED', 'portfolio_auto': 'PROVED', 'ghost_lemmas_lean': 'UNSETTLED'}
+[ 1296.5s] budget 2.0: gc20261024-074 dist_lattice/meet_is_join: {'ghost_lemmas_lean': 'UNSETTLED', 'lemmas_unfiltered': 'UNSETTLED', 'portfolio_auto': 'UNSETTLED', 'oracle_lemmas': 'UNSETTLED', 'ghost_lemmas': 'UNSETTLED', 'portfolio': 'UNSETTLED'}
+[ 1305.9s] budget 2.0: gc20261024-045 ring/times_idem: {'ghost_lemmas': 'UNSETTLED', 'lemmas_unfiltered': 'UNSETTLED', 'oracle_lemmas': 'UNSETTLED', 'ghost_lemmas_lean': 'UNSETTLED', 'portfolio_auto': 'UNSETTLED', 'portfolio': 'UNSETTLED'}
+[ 1309.4s] budget 2.0: gc20261024-114 boolean_ring/neg_self: {'lemmas_unfiltered': 'UNSETTLED', 'oracle_lemmas': 'PROVED', 'ghost_lemmas': 'UNSETTLED', 'portfolio': 'PROVED', 'portfolio_auto': 'PROVED', 'ghost_lemmas_lean': 'UNSETTLED'}
+[ 1312.7s] budget 2.0: gc20261024-096 group_exp2/inv_comm: {'lemmas_unfiltered': 'UNSETTLED', 'ghost_lemmas': 'UNSETTLED', 'oracle_lemmas': 'PROVED', 'ghost_lemmas_lean': 'UNSETTLED', 'portfolio_auto': 'PROVED', 'portfolio': 'PROVED'}
+[ 1322.4s] budget 2.0: gc20261024-080 lattice/distrib: {'portfolio': 'UNSETTLED', 'lemmas_unfiltered': 'UNSETTLED', 'ghost_lemmas': 'UNSETTLED', 'ghost_lemmas_lean': 'UNSETTLED', 'oracle_lemmas': 'UNSETTLED', 'portfolio_auto': 'UNSETTLED'}
+[ 1325.9s] budget 2.0: gc20261024-049 group/unique_left_id: {'portfolio_auto': 'PROVED', 'lemmas_unfiltered': 'UNSETTLED', 'ghost_lemmas_lean': 'UNSETTLED', 'oracle_lemmas': 'PROVED', 'ghost_lemmas': 'UNSETTLED', 'portfolio': 'PROVED'}
+[ 1329.3s] budget 2.0: gc20261024-115 group_exp2/right_id: {'oracle_lemmas': 'PROVED', 'lemmas_unfiltered': 'UNSETTLED', 'ghost_lemmas_lean': 'UNSETTLED', 'portfolio_auto': 'PROVED', 'portfolio': 'PROVED', 'ghost_lemmas': 'UNSETTLED'}
+[ 1332.6s] budget 2.0: gc20261024-043 group/left_alt: {'ghost_lemmas_lean': 'UNSETTLED', 'portfolio': 'PROVED', 'oracle_lemmas': 'PROVED', 'lemmas_unfiltered': 'UNSETTLED', 'portfolio_auto': 'PROVED', 'ghost_lemmas': 'UNSETTLED'}
+[ 1342.3s] budget 2.0: gc20261024-006 ring/anti_comm: {'ghost_lemmas': 'UNSETTLED', 'ghost_lemmas_lean': 'UNSETTLED', 'portfolio_auto': 'UNSETTLED', 'oracle_lemmas': 'UNSETTLED', 'portfolio': 'UNSETTLED', 'lemmas_unfiltered': 'UNSETTLED'}
+[ 1345.6s] budget 2.0: gc20261024-017 group_sq/right_cancel: {'ghost_lemmas_lean': 'UNSETTLED', 'lemmas_unfiltered': 'UNSETTLED', 'oracle_lemmas': 'PROVED', 'ghost_lemmas': 'UNSETTLED', 'portfolio_auto': 'PROVED', 'portfolio': 'PROVED'}
+[ 1349.1s] budget 2.0: gc20261024-088 dist_lattice/order_dual: {'oracle_lemmas': 'PROVED', 'ghost_lemmas': 'UNSETTLED', 'lemmas_unfiltered': 'UNSETTLED', 'portfolio_auto': 'PROVED', 'portfolio': 'PROVED', 'ghost_lemmas_lean': 'UNSETTLED'}
+[ 1349.3s] budget 2.0: gc20261024-098 quasigroup/moufang_right: {'oracle_lemmas': 'UNSETTLED', 'portfolio_auto': 'UNSETTLED', 'ghost_lemmas_lean': 'UNSETTLED', 'ghost_lemmas': 'UNSETTLED', 'portfolio': 'UNSETTLED', 'lemmas_unfiltered': 'UNSETTLED'}
+[ 1360.0s] budget 2.0: gc20261024-018 huntington/h_de_morgan_wrong: {'ghost_lemmas': 'UNSETTLED', 'portfolio_auto': 'UNSETTLED', 'portfolio': 'UNSETTLED', 'lemmas_unfiltered': 'UNSETTLED', 'ghost_lemmas_lean': 'UNSETTLED', 'oracle_lemmas': 'UNSETTLED'}
+[ 1363.4s] budget 2.0: gc20261024-046 moufang/flexible: {'ghost_lemmas_lean': 'UNSETTLED', 'oracle_lemmas': 'PROVED', 'portfolio': 'PROVED', 'portfolio_auto': 'PROVED', 'ghost_lemmas': 'UNSETTLED', 'lemmas_unfiltered': 'UNSETTLED'}
+[ 1366.8s] budget 2.0: gc20261024-052 group_exp2/inv_e: {'ghost_lemmas_lean': 'UNSETTLED', 'portfolio': 'PROVED', 'ghost_lemmas': 'UNSETTLED', 'lemmas_unfiltered': 'UNSETTLED', 'portfolio_auto': 'PROVED', 'oracle_lemmas': 'PROVED'}
+[ 1370.3s] budget 2.0: gc20261024-104 boolean_ring/plus_cancel: {'lemmas_unfiltered': 'UNSETTLED', 'portfolio': 'PROVED', 'portfolio_auto': 'PROVED', 'ghost_lemmas_lean': 'UNSETTLED', 'oracle_lemmas': 'PROVED', 'ghost_lemmas': 'UNSETTLED'}
+[ 1373.9s] budget 2.0: gc20261024-009 group/right_cancel: {'lemmas_unfiltered': 'UNSETTLED', 'portfolio_auto': 'PROVED', 'portfolio': 'PROVED', 'ghost_lemmas': 'UNSETTLED', 'ghost_lemmas_lean': 'UNSETTLED', 'oracle_lemmas': 'PROVED'}
+[ 1383.6s] budget 2.0: gc20261024-056 lattice/modular: {'ghost_lemmas_lean': 'UNSETTLED', 'lemmas_unfiltered': 'UNSETTLED', 'portfolio': 'UNSETTLED', 'ghost_lemmas': 'UNSETTLED', 'oracle_lemmas': 'UNSETTLED', 'portfolio_auto': 'UNSETTLED'}
+[ 1393.2s] budget 2.0: gc20261024-112 lattice/cancel: {'portfolio_auto': 'UNSETTLED', 'portfolio': 'UNSETTLED', 'ghost_lemmas': 'UNSETTLED', 'lemmas_unfiltered': 'UNSETTLED', 'oracle_lemmas': 'UNSETTLED', 'ghost_lemmas_lean': 'UNSETTLED'}
+[ 1402.8s] budget 2.0: gc20261024-073 moufang/assoc: {'oracle_lemmas': 'UNSETTLED', 'portfolio': 'UNSETTLED', 'portfolio_auto': 'UNSETTLED', 'ghost_lemmas_lean': 'UNSETTLED', 'ghost_lemmas': 'UNSETTLED', 'lemmas_unfiltered': 'UNSETTLED'}
+[ 1406.2s] budget 2.0: gc20261024-092 group/right_id: {'oracle_lemmas': 'PROVED', 'portfolio': 'PROVED', 'ghost_lemmas': 'UNSETTLED', 'ghost_lemmas_lean': 'UNSETTLED', 'portfolio_auto': 'PROVED', 'lemmas_unfiltered': 'UNSETTLED'}
+[ 1415.7s] budget 2.0: gc20261024-086 group_sq/idem: {'portfolio': 'UNSETTLED', 'oracle_lemmas': 'UNSETTLED', 'ghost_lemmas': 'UNSETTLED', 'portfolio_auto': 'UNSETTLED', 'ghost_lemmas_lean': 'UNSETTLED', 'lemmas_unfiltered': 'UNSETTLED'}
+[ 1416.1s] budget 2.0: gc20261024-025 quasigroup/ldiv_self: {'oracle_lemmas': 'UNSETTLED', 'lemmas_unfiltered': 'UNSETTLED', 'ghost_lemmas_lean': 'UNSETTLED', 'ghost_lemmas': 'UNSETTLED', 'portfolio_auto': 'UNSETTLED', 'portfolio': 'UNSETTLED'}
+[ 1419.4s] budget 2.0: gc20261024-028 group_sq/moufang_right: {'lemmas_unfiltered': 'UNSETTLED', 'portfolio': 'PROVED', 'oracle_lemmas': 'PROVED', 'portfolio_auto': 'PROVED', 'ghost_lemmas': 'UNSETTLED', 'ghost_lemmas_lean': 'UNSETTLED'}
+[ 1422.6s] budget 2.0: gc20261024-099 group/inv_inv: {'portfolio_auto': 'PROVED', 'lemmas_unfiltered': 'UNSETTLED', 'ghost_lemmas_lean': 'UNSETTLED', 'portfolio': 'PROVED', 'oracle_lemmas': 'PROVED', 'ghost_lemmas': 'UNSETTLED'}
+[ 1426.1s] budget 2.0: gc20261024-048 moufang/unique_left_id: {'ghost_lemmas': 'UNSETTLED', 'ghost_lemmas_lean': 'UNSETTLED', 'portfolio': 'PROVED', 'portfolio_auto': 'PROVED', 'oracle_lemmas': 'PROVED', 'lemmas_unfiltered': 'UNSETTLED'}
+[ 1439.0s] budget 2.0: gc20261024-054 boolean_ring/h_idem: {'lemmas_unfiltered': 'UNSETTLED', 'portfolio': 'UNSETTLED', 'portfolio_auto': 'UNSETTLED', 'oracle_lemmas': 'UNSETTLED', 'ghost_lemmas': 'UNSETTLED', 'ghost_lemmas_lean': 'UNSETTLED'}
+[ 1448.8s] budget 8.0: gc20261024-066 group_exp2/unique_left_id: {'oracle_lemmas': 'PROVED', 'lemmas_unfiltered': 'PROVED', 'portfolio': 'PROVED', 'portfolio_auto': 'PROVED', 'ghost_lemmas_lean': 'PROVED', 'ghost_lemmas': 'PROVED'}
+[ 1462.9s] budget 8.0: gc20261024-004 ring/plus_cancel: {'portfolio': 'PROVED', 'lemmas_unfiltered': 'PROVED', 'ghost_lemmas_lean': 'PROVED', 'ghost_lemmas': 'PROVED', 'oracle_lemmas': 'PROVED', 'portfolio_auto': 'PROVED'}
+[ 1476.3s] budget 8.0: gc20261024-095 boolean_ring/neg_times: {'lemmas_unfiltered': 'PROVED', 'ghost_lemmas_lean': 'PROVED', 'portfolio_auto': 'PROVED', 'ghost_lemmas': 'PROVED', 'portfolio': 'PROVED', 'oracle_lemmas': 'PROVED'}
+[ 1476.7s] budget 8.0: gc20261024-002 quasigroup/comm: {'portfolio_auto': 'GHOST_FOUND', 'oracle_lemmas': 'GHOST_FOUND', 'ghost_lemmas': 'GHOST_FOUND', 'lemmas_unfiltered': 'UNSETTLED', 'ghost_lemmas_lean': 'GHOST_FOUND', 'portfolio': 'GHOST_FOUND'}
+[ 1493.0s] budget 8.0: gc20261024-043 group/left_alt: {'oracle_lemmas': 'PROVED', 'portfolio_auto': 'PROVED', 'portfolio': 'PROVED', 'lemmas_unfiltered': 'PROVED', 'ghost_lemmas_lean': 'PROVED', 'ghost_lemmas': 'PROVED'}
+[ 1515.3s] budget 8.0: gc20261024-065 ring/neg_times: {'oracle_lemmas': 'PROVED', 'ghost_lemmas_lean': 'PROVED', 'ghost_lemmas': 'PROVED', 'portfolio_auto': 'PROVED', 'lemmas_unfiltered': 'PROVED', 'portfolio': 'PROVED'}
+[ 1532.6s] budget 8.0: gc20261024-062 group_sq/flexible: {'oracle_lemmas': 'PROVED', 'portfolio_auto': 'PROVED', 'portfolio': 'PROVED', 'ghost_lemmas': 'PROVED', 'lemmas_unfiltered': 'PROVED', 'ghost_lemmas_lean': 'PROVED'}
+[ 1541.8s] budget 8.0: gc20261024-040 huntington/plus_cancel: {'ghost_lemmas': 'GHOST_FOUND', 'lemmas_unfiltered': 'UNSETTLED', 'portfolio': 'GHOST_FOUND', 'oracle_lemmas': 'GHOST_FOUND', 'portfolio_auto': 'GHOST_FOUND', 'ghost_lemmas_lean': 'GHOST_FOUND'}
+[ 1555.1s] budget 8.0: gc20261024-015 group_exp2/moufang_right: {'portfolio_auto': 'PROVED', 'ghost_lemmas_lean': 'PROVED', 'lemmas_unfiltered': 'PROVED', 'oracle_lemmas': 'PROVED', 'ghost_lemmas': 'PROVED', 'portfolio': 'PROVED'}
+[ 1567.6s] budget 8.0: gc20261024-013 boolean_ring/no_nilpotent: {'lemmas_unfiltered': 'PROVED', 'portfolio': 'PROVED', 'portfolio_auto': 'PROVED', 'ghost_lemmas': 'PROVED', 'ghost_lemmas_lean': 'PROVED', 'oracle_lemmas': 'PROVED'}
+[ 1571.9s] budget 8.0: gc20261024-055 quasigroup/left_cancel: {'lemmas_unfiltered': 'PROVED', 'oracle_lemmas': 'PROVED', 'ghost_lemmas_lean': 'PROVED', 'portfolio': 'PROVED', 'portfolio_auto': 'PROVED', 'ghost_lemmas': 'PROVED'}
+[ 1572.1s] budget 8.0: gc20261024-070 quasigroup/sq_central: {'ghost_lemmas': 'GHOST_FOUND', 'ghost_lemmas_lean': 'GHOST_FOUND', 'portfolio': 'GHOST_FOUND', 'lemmas_unfiltered': 'UNSETTLED', 'oracle_lemmas': 'GHOST_FOUND', 'portfolio_auto': 'GHOST_FOUND'}
+[ 1581.1s] budget 8.0: gc20261024-007 group_exp2/self_inverse: {'oracle_lemmas': 'PROVED', 'portfolio_auto': 'PROVED', 'ghost_lemmas': 'PROVED', 'lemmas_unfiltered': 'PROVED', 'ghost_lemmas_lean': 'PROVED', 'portfolio': 'PROVED'}
+[ 1600.9s] budget 8.0: gc20261024-112 lattice/cancel: {'portfolio_auto': 'GHOST_FOUND', 'portfolio': 'GHOST_FOUND', 'ghost_lemmas_lean': 'UNSETTLED', 'ghost_lemmas': 'GHOST_FOUND', 'lemmas_unfiltered': 'UNSETTLED', 'oracle_lemmas': 'GHOST_FOUND'}
+[ 1609.7s] budget 8.0: gc20261024-011 ring/char2: {'oracle_lemmas': 'GHOST_FOUND', 'ghost_lemmas_lean': 'GHOST_FOUND', 'portfolio': 'GHOST_FOUND', 'ghost_lemmas': 'GHOST_FOUND', 'lemmas_unfiltered': 'UNSETTLED', 'portfolio_auto': 'GHOST_FOUND'}
+[ 1618.2s] budget 8.0: gc20261024-103 lattice/meet_is_join: {'portfolio_auto': 'GHOST_FOUND', 'lemmas_unfiltered': 'UNSETTLED', 'ghost_lemmas_lean': 'GHOST_FOUND', 'portfolio': 'GHOST_FOUND', 'oracle_lemmas': 'GHOST_FOUND', 'ghost_lemmas': 'GHOST_FOUND'}
+[ 1637.6s] budget 8.0: gc20261024-087 group/flexible: {'ghost_lemmas': 'PROVED', 'oracle_lemmas': 'PROVED', 'portfolio_auto': 'PROVED', 'portfolio': 'PROVED', 'lemmas_unfiltered': 'PROVED', 'ghost_lemmas_lean': 'PROVED'}
+[ 1651.6s] budget 8.0: gc20261024-009 group/right_cancel: {'oracle_lemmas': 'PROVED', 'ghost_lemmas': 'PROVED', 'portfolio': 'PROVED', 'portfolio_auto': 'PROVED', 'ghost_lemmas_lean': 'PROVED', 'lemmas_unfiltered': 'PROVED'}
+[ 1669.5s] budget 8.0: gc20261024-067 moufang/right_cancel: {'ghost_lemmas_lean': 'PROVED', 'ghost_lemmas': 'PROVED', 'oracle_lemmas': 'PROVED', 'lemmas_unfiltered': 'PROVED', 'portfolio_auto': 'PROVED', 'portfolio': 'PROVED'}
+[ 1687.2s] budget 8.0: gc20261024-059 group/right_inv: {'ghost_lemmas': 'PROVED', 'oracle_lemmas': 'PROVED', 'portfolio': 'PROVED', 'lemmas_unfiltered': 'PROVED', 'portfolio_auto': 'PROVED', 'ghost_lemmas_lean': 'PROVED'}
+[ 1739.2s] budget 8.0: gc20261024-073 moufang/assoc: {'oracle_lemmas': 'UNSETTLED', 'lemmas_unfiltered': 'UNSETTLED', 'ghost_lemmas_lean': 'UNSETTLED', 'portfolio': 'UNSETTLED', 'ghost_lemmas': 'UNSETTLED', 'portfolio_auto': 'UNSETTLED'}
+[ 1762.4s] budget 8.0: gc20261024-033 group/inv_comm: {'lemmas_unfiltered': 'UNSETTLED', 'oracle_lemmas': 'GHOST_FOUND', 'ghost_lemmas': 'GHOST_FOUND', 'ghost_lemmas_lean': 'UNSETTLED', 'portfolio': 'GHOST_FOUND', 'portfolio_auto': 'GHOST_FOUND'}
+[ 1778.1s] budget 8.0: gc20261024-072 group_sq/right_alt: {'ghost_lemmas': 'PROVED', 'ghost_lemmas_lean': 'PROVED', 'oracle_lemmas': 'PROVED', 'portfolio_auto': 'PROVED', 'portfolio': 'PROVED', 'lemmas_unfiltered': 'PROVED'}
+[ 1795.3s] budget 8.0: gc20261024-039 group/moufang_right: {'oracle_lemmas': 'PROVED', 'ghost_lemmas_lean': 'PROVED', 'portfolio_auto': 'PROVED', 'ghost_lemmas': 'PROVED', 'lemmas_unfiltered': 'PROVED', 'portfolio': 'PROVED'}
+[ 1807.9s] budget 8.0: gc20261024-124 group_sq/unique_left_id: {'ghost_lemmas': 'PROVED', 'oracle_lemmas': 'PROVED', 'lemmas_unfiltered': 'PROVED', 'ghost_lemmas_lean': 'PROVED', 'portfolio': 'PROVED', 'portfolio_auto': 'PROVED'}
+[ 1818.3s] budget 8.0: gc20261024-100 group/inv_e: {'portfolio_auto': 'PROVED', 'ghost_lemmas': 'PROVED', 'portfolio': 'PROVED', 'lemmas_unfiltered': 'PROVED', 'ghost_lemmas_lean': 'PROVED', 'oracle_lemmas': 'PROVED'}
+[ 1828.7s] budget 8.0: gc20261024-021 group_exp2/left_cancel: {'oracle_lemmas': 'PROVED', 'ghost_lemmas': 'PROVED', 'ghost_lemmas_lean': 'PROVED', 'portfolio_auto': 'PROVED', 'portfolio': 'PROVED', 'lemmas_unfiltered': 'PROVED'}
+[ 1837.2s] budget 8.0: gc20261024-086 group_sq/idem: {'oracle_lemmas': 'GHOST_FOUND', 'portfolio_auto': 'GHOST_FOUND', 'portfolio': 'GHOST_FOUND', 'ghost_lemmas_lean': 'GHOST_FOUND', 'lemmas_unfiltered': 'UNSETTLED', 'ghost_lemmas': 'GHOST_FOUND'}
+[ 1857.3s] budget 8.0: gc20261024-078 moufang/ldiv_e: {'oracle_lemmas': 'PROVED', 'portfolio_auto': 'PROVED', 'ghost_lemmas_lean': 'PROVED', 'lemmas_unfiltered': 'PROVED', 'ghost_lemmas': 'PROVED', 'portfolio': 'PROVED'}
+[ 1877.6s] budget 8.0: gc20261024-091 group/inv_mul: {'portfolio': 'PROVED', 'ghost_lemmas': 'PROVED', 'ghost_lemmas_lean': 'PROVED', 'lemmas_unfiltered': 'PROVED', 'oracle_lemmas': 'PROVED', 'portfolio_auto': 'PROVED'}
+[ 1899.2s] budget 8.0: gc20261024-109 dist_lattice/meet_idem: {'ghost_lemmas_lean': 'PROVED', 'oracle_lemmas': 'PROVED', 'lemmas_unfiltered': 'PROVED', 'ghost_lemmas': 'PROVED', 'portfolio_auto': 'PROVED', 'portfolio': 'PROVED'}
+[ 1924.8s] budget 8.0: gc20261024-068 moufang/ldiv_self: {'portfolio': 'PROVED', 'ghost_lemmas_lean': 'PROVED', 'oracle_lemmas': 'PROVED', 'ghost_lemmas': 'UNSETTLED', 'lemmas_unfiltered': 'PROVED', 'portfolio_auto': 'PROVED'}
+[ 1942.0s] budget 8.0: gc20261024-058 dist_lattice/modular: {'portfolio': 'PROVED', 'portfolio_auto': 'PROVED', 'oracle_lemmas': 'PROVED', 'ghost_lemmas_lean': 'PROVED', 'ghost_lemmas': 'PROVED', 'lemmas_unfiltered': 'PROVED'}
+[ 1958.3s] budget 8.0: gc20261024-034 group_sq/inv_comm: {'lemmas_unfiltered': 'PROVED', 'portfolio_auto': 'PROVED', 'portfolio': 'PROVED', 'ghost_lemmas': 'PROVED', 'oracle_lemmas': 'PROVED', 'ghost_lemmas_lean': 'PROVED'}
+[ 1971.2s] budget 8.0: gc20261024-104 boolean_ring/plus_cancel: {'portfolio_auto': 'PROVED', 'portfolio': 'PROVED', 'ghost_lemmas_lean': 'PROVED', 'oracle_lemmas': 'PROVED', 'lemmas_unfiltered': 'PROVED', 'ghost_lemmas': 'PROVED'}
+[ 1989.0s] budget 8.0: gc20261024-102 lattice/chain: {'oracle_lemmas': 'GHOST_FOUND', 'portfolio': 'GHOST_FOUND', 'lemmas_unfiltered': 'UNSETTLED', 'ghost_lemmas': 'GHOST_FOUND', 'portfolio_auto': 'GHOST_FOUND', 'ghost_lemmas_lean': 'UNSETTLED'}
+[ 2003.9s] budget 8.0: gc20261024-090 group_sq/right_id: {'ghost_lemmas_lean': 'PROVED', 'portfolio_auto': 'PROVED', 'oracle_lemmas': 'PROVED', 'portfolio': 'PROVED', 'lemmas_unfiltered': 'PROVED', 'ghost_lemmas': 'PROVED'}
+[ 2019.8s] budget 8.0: gc20261024-076 group_sq/inv_mul: {'portfolio_auto': 'PROVED', 'ghost_lemmas': 'PROVED', 'portfolio': 'PROVED', 'oracle_lemmas': 'PROVED', 'lemmas_unfiltered': 'PROVED', 'ghost_lemmas_lean': 'PROVED'}
+[ 2029.4s] budget 8.0: gc20261024-027 group_exp2/flexible: {'lemmas_unfiltered': 'PROVED', 'oracle_lemmas': 'PROVED', 'ghost_lemmas': 'PROVED', 'portfolio_auto': 'PROVED', 'ghost_lemmas_lean': 'PROVED', 'portfolio': 'PROVED'}
+[ 2044.2s] budget 8.0: gc20261024-038 group_sq/inv_inv: {'ghost_lemmas': 'PROVED', 'portfolio_auto': 'PROVED', 'oracle_lemmas': 'PROVED', 'portfolio': 'PROVED', 'ghost_lemmas_lean': 'PROVED', 'lemmas_unfiltered': 'PROVED'}
+[ 2067.5s] budget 8.0: gc20261024-046 moufang/flexible: {'portfolio': 'PROVED', 'oracle_lemmas': 'PROVED', 'ghost_lemmas': 'PROVED', 'portfolio_auto': 'PROVED', 'ghost_lemmas_lean': 'PROVED', 'lemmas_unfiltered': 'PROVED'}
+[ 2080.6s] budget 8.0: gc20261024-108 lattice/meet_idem: {'portfolio_auto': 'PROVED', 'ghost_lemmas': 'PROVED', 'lemmas_unfiltered': 'PROVED', 'portfolio': 'PROVED', 'oracle_lemmas': 'PROVED', 'ghost_lemmas_lean': 'PROVED'}
+[ 2096.2s] budget 8.0: gc20261024-016 moufang/sq_e_unique: {'oracle_lemmas': 'PROVED', 'ghost_lemmas_lean': 'PROVED', 'lemmas_unfiltered': 'PROVED', 'portfolio': 'PROVED', 'portfolio_auto': 'PROVED', 'ghost_lemmas': 'PROVED'}
+[ 2105.5s] budget 8.0: gc20261024-029 group_exp2/right_inv: {'lemmas_unfiltered': 'PROVED', 'oracle_lemmas': 'PROVED', 'portfolio_auto': 'PROVED', 'portfolio': 'PROVED', 'ghost_lemmas': 'PROVED', 'ghost_lemmas_lean': 'PROVED'}
+[ 2121.3s] budget 8.0: gc20261024-020 group_sq/comm: {'lemmas_unfiltered': 'PROVED', 'oracle_lemmas': 'PROVED', 'portfolio': 'PROVED', 'ghost_lemmas': 'PROVED', 'ghost_lemmas_lean': 'PROVED', 'portfolio_auto': 'PROVED'}
+[ 2131.5s] budget 8.0: gc20261024-003 dist_lattice/chain: {'oracle_lemmas': 'GHOST_FOUND', 'ghost_lemmas_lean': 'GHOST_FOUND', 'ghost_lemmas': 'GHOST_FOUND', 'portfolio': 'GHOST_FOUND', 'portfolio_auto': 'GHOST_FOUND', 'lemmas_unfiltered': 'UNSETTLED'}
+[ 2152.5s] budget 8.0: gc20261024-101 dist_lattice/distrib_dual: {'ghost_lemmas_lean': 'PROVED', 'portfolio': 'PROVED', 'oracle_lemmas': 'PROVED', 'portfolio_auto': 'PROVED', 'ghost_lemmas': 'PROVED', 'lemmas_unfiltered': 'PROVED'}
+[ 2173.3s] budget 8.0: gc20261024-056 lattice/modular: {'portfolio': 'GHOST_FOUND', 'ghost_lemmas_lean': 'UNSETTLED', 'lemmas_unfiltered': 'UNSETTLED', 'ghost_lemmas': 'GHOST_FOUND', 'oracle_lemmas': 'GHOST_FOUND', 'portfolio_auto': 'GHOST_FOUND'}
+[ 2181.7s] budget 8.0: gc20261024-037 group_exp2/idem: {'ghost_lemmas': 'GHOST_FOUND', 'oracle_lemmas': 'GHOST_FOUND', 'portfolio_auto': 'GHOST_FOUND', 'portfolio': 'GHOST_FOUND', 'ghost_lemmas_lean': 'GHOST_FOUND', 'lemmas_unfiltered': 'UNSETTLED'}
+[ 2191.6s] budget 8.0: gc20261024-063 group_exp2/inv_inv: {'portfolio': 'PROVED', 'portfolio_auto': 'PROVED', 'lemmas_unfiltered': 'PROVED', 'oracle_lemmas': 'PROVED', 'ghost_lemmas_lean': 'PROVED', 'ghost_lemmas': 'PROVED'}
+[ 2204.3s] budget 8.0: gc20261024-022 boolean_ring/char2: {'portfolio_auto': 'PROVED', 'ghost_lemmas_lean': 'PROVED', 'ghost_lemmas': 'PROVED', 'lemmas_unfiltered': 'PROVED', 'portfolio': 'PROVED', 'oracle_lemmas': 'PROVED'}
+[ 2216.1s] budget 8.0: gc20261024-064 group/sq_e_unique: {'portfolio_auto': 'PROVED', 'oracle_lemmas': 'PROVED', 'lemmas_unfiltered': 'PROVED', 'ghost_lemmas': 'PROVED', 'portfolio': 'PROVED', 'ghost_lemmas_lean': 'PROVED'}
+[ 2238.3s] budget 8.0: gc20261024-036 lattice/distrib_dual: {'portfolio': 'GHOST_FOUND', 'lemmas_unfiltered': 'UNSETTLED', 'ghost_lemmas_lean': 'UNSETTLED', 'ghost_lemmas': 'GHOST_FOUND', 'portfolio_auto': 'GHOST_FOUND', 'oracle_lemmas': 'GHOST_FOUND'}
+[ 2253.8s] budget 8.0: gc20261024-023 dist_lattice/join_idem: {'ghost_lemmas_lean': 'PROVED', 'ghost_lemmas': 'PROVED', 'oracle_lemmas': 'PROVED', 'portfolio_auto': 'PROVED', 'portfolio': 'PROVED', 'lemmas_unfiltered': 'PROVED'}
+[ 2271.3s] budget 8.0: gc20261024-097 huntington/h_double_neg: {'portfolio': 'PROVED', 'ghost_lemmas_lean': 'PROVED', 'oracle_lemmas': 'PROVED', 'portfolio_auto': 'PROVED', 'lemmas_unfiltered': 'PROVED', 'ghost_lemmas': 'PROVED'}
+[ 2279.8s] budget 8.0: gc20261024-122 group/self_inverse: {'oracle_lemmas': 'GHOST_FOUND', 'ghost_lemmas_lean': 'GHOST_FOUND', 'portfolio_auto': 'GHOST_FOUND', 'lemmas_unfiltered': 'UNSETTLED', 'ghost_lemmas': 'GHOST_FOUND', 'portfolio': 'GHOST_FOUND'}
+[ 2288.1s] budget 8.0: gc20261024-051 ring/h_idem: {'ghost_lemmas': 'GHOST_FOUND', 'lemmas_unfiltered': 'UNSETTLED', 'oracle_lemmas': 'GHOST_FOUND', 'portfolio_auto': 'GHOST_FOUND', 'portfolio': 'GHOST_FOUND', 'ghost_lemmas_lean': 'GHOST_FOUND'}
+[ 2288.8s] budget 8.0: gc20261024-098 quasigroup/moufang_right: {'oracle_lemmas': 'GHOST_FOUND', 'portfolio_auto': 'GHOST_FOUND', 'ghost_lemmas': 'GHOST_FOUND', 'ghost_lemmas_lean': 'GHOST_FOUND', 'lemmas_unfiltered': 'UNSETTLED', 'portfolio': 'GHOST_FOUND'}
+[ 2298.0s] budget 8.0: gc20261024-047 group_exp2/sq_e_unique: {'oracle_lemmas': 'PROVED', 'ghost_lemmas_lean': 'PROVED', 'lemmas_unfiltered': 'PROVED', 'portfolio': 'PROVED', 'portfolio_auto': 'PROVED', 'ghost_lemmas': 'PROVED'}
+[ 2311.4s] budget 8.0: gc20261024-057 boolean_ring/anti_comm: {'oracle_lemmas': 'PROVED', 'lemmas_unfiltered': 'PROVED', 'portfolio': 'PROVED', 'ghost_lemmas_lean': 'PROVED', 'ghost_lemmas': 'PROVED', 'portfolio_auto': 'PROVED'}
+[ 2329.8s] budget 8.0: gc20261024-005 moufang/left_cancel: {'portfolio_auto': 'PROVED', 'ghost_lemmas': 'PROVED', 'lemmas_unfiltered': 'PROVED', 'ghost_lemmas_lean': 'PROVED', 'oracle_lemmas': 'PROVED', 'portfolio': 'PROVED'}
+[ 2345.8s] budget 8.0: gc20261024-017 group_sq/right_cancel: {'oracle_lemmas': 'PROVED', 'portfolio_auto': 'PROVED', 'portfolio': 'PROVED', 'ghost_lemmas_lean': 'PROVED', 'ghost_lemmas': 'PROVED', 'lemmas_unfiltered': 'PROVED'}
+[ 2366.6s] budget 8.0: gc20261024-110 group_sq/sq_e_unique: {'portfolio': 'PROVED', 'ghost_lemmas': 'PROVED', 'portfolio_auto': 'PROVED', 'ghost_lemmas_lean': 'PROVED', 'lemmas_unfiltered': 'PROVED', 'oracle_lemmas': 'PROVED'}
+[ 2382.4s] budget 8.0: gc20261024-030 group_sq/left_alt: {'lemmas_unfiltered': 'PROVED', 'ghost_lemmas_lean': 'PROVED', 'ghost_lemmas': 'PROVED', 'portfolio_auto': 'PROVED', 'portfolio': 'PROVED', 'oracle_lemmas': 'PROVED'}
+[ 2397.2s] budget 8.0: gc20261024-121 group/right_alt: {'lemmas_unfiltered': 'PROVED', 'portfolio': 'PROVED', 'ghost_lemmas': 'PROVED', 'portfolio_auto': 'PROVED', 'ghost_lemmas_lean': 'PROVED', 'oracle_lemmas': 'PROVED'}
+[ 2417.8s] budget 8.0: gc20261024-048 moufang/unique_left_id: {'ghost_lemmas': 'PROVED', 'portfolio_auto': 'PROVED', 'oracle_lemmas': 'PROVED', 'lemmas_unfiltered': 'PROVED', 'portfolio': 'PROVED', 'ghost_lemmas_lean': 'PROVED'}
+[ 2418.0s] budget 8.0: gc20261024-060 quasigroup/idem: {'portfolio_auto': 'GHOST_FOUND', 'oracle_lemmas': 'GHOST_FOUND', 'ghost_lemmas': 'GHOST_FOUND', 'lemmas_unfiltered': 'UNSETTLED', 'portfolio': 'GHOST_FOUND', 'ghost_lemmas_lean': 'GHOST_FOUND'}
+[ 2426.8s] budget 8.0: gc20261024-006 ring/anti_comm: {'portfolio': 'GHOST_FOUND', 'lemmas_unfiltered': 'UNSETTLED', 'ghost_lemmas': 'GHOST_FOUND', 'portfolio_auto': 'GHOST_FOUND', 'oracle_lemmas': 'GHOST_FOUND', 'ghost_lemmas_lean': 'GHOST_FOUND'}
+[ 2448.6s] budget 8.0: gc20261024-081 group/comm: {'ghost_lemmas': 'GHOST_FOUND', 'portfolio_auto': 'GHOST_FOUND', 'lemmas_unfiltered': 'UNSETTLED', 'portfolio': 'GHOST_FOUND', 'ghost_lemmas_lean': 'UNSETTLED', 'oracle_lemmas': 'GHOST_FOUND'}
+[ 2449.2s] budget 8.0: gc20261024-123 quasigroup/right_alt: {'portfolio': 'GHOST_FOUND', 'ghost_lemmas': 'GHOST_FOUND', 'lemmas_unfiltered': 'UNSETTLED', 'ghost_lemmas_lean': 'GHOST_FOUND', 'portfolio_auto': 'GHOST_FOUND', 'oracle_lemmas': 'GHOST_FOUND'}
+[ 2465.3s] budget 8.0: gc20261024-105 group_sq/left_cancel: {'portfolio_auto': 'PROVED', 'ghost_lemmas': 'PROVED', 'ghost_lemmas_lean': 'PROVED', 'lemmas_unfiltered': 'PROVED', 'portfolio': 'PROVED', 'oracle_lemmas': 'PROVED'}
+[ 2474.2s] budget 8.0: gc20261024-041 huntington/h_neg_fix: {'portfolio': 'GHOST_FOUND', 'portfolio_auto': 'GHOST_FOUND', 'lemmas_unfiltered': 'UNSETTLED', 'ghost_lemmas_lean': 'GHOST_FOUND', 'oracle_lemmas': 'GHOST_FOUND', 'ghost_lemmas': 'GHOST_FOUND'}
+[ 2482.9s] budget 8.0: gc20261024-054 boolean_ring/h_idem: {'oracle_lemmas': 'GHOST_FOUND', 'portfolio_auto': 'GHOST_FOUND', 'lemmas_unfiltered': 'UNSETTLED', 'ghost_lemmas_lean': 'GHOST_FOUND', 'ghost_lemmas': 'GHOST_FOUND', 'portfolio': 'GHOST_FOUND'}
+[ 2492.7s] budget 8.0: gc20261024-119 group_exp2/sq_central: {'ghost_lemmas_lean': 'PROVED', 'oracle_lemmas': 'PROVED', 'lemmas_unfiltered': 'PROVED', 'portfolio_auto': 'PROVED', 'ghost_lemmas': 'PROVED', 'portfolio': 'PROVED'}
+[ 2504.1s] budget 8.0: gc20261024-049 group/unique_left_id: {'lemmas_unfiltered': 'PROVED', 'ghost_lemmas_lean': 'PROVED', 'ghost_lemmas': 'PROVED', 'portfolio_auto': 'PROVED', 'oracle_lemmas': 'PROVED', 'portfolio': 'PROVED'}
+[ 2524.0s] budget 8.0: gc20261024-117 ring/times_zero: {'oracle_lemmas': 'PROVED', 'ghost_lemmas_lean': 'PROVED', 'portfolio': 'PROVED', 'ghost_lemmas': 'PROVED', 'portfolio_auto': 'PROVED', 'lemmas_unfiltered': 'PROVED'}
+[ 2543.2s] budget 8.0: gc20261024-069 lattice/join_idem: {'portfolio': 'PROVED', 'portfolio_auto': 'PROVED', 'ghost_lemmas': 'PROVED', 'ghost_lemmas_lean': 'PROVED', 'lemmas_unfiltered': 'PROVED', 'oracle_lemmas': 'PROVED'}
+[ 2553.1s] budget 8.0: gc20261024-115 group_exp2/right_id: {'portfolio': 'PROVED', 'ghost_lemmas_lean': 'PROVED', 'oracle_lemmas': 'PROVED', 'lemmas_unfiltered': 'PROVED', 'ghost_lemmas': 'PROVED', 'portfolio_auto': 'PROVED'}
+[ 2561.7s] budget 8.0: gc20261024-118 group_sq/self_inverse: {'lemmas_unfiltered': 'UNSETTLED', 'portfolio_auto': 'GHOST_FOUND', 'ghost_lemmas': 'GHOST_FOUND', 'oracle_lemmas': 'GHOST_FOUND', 'ghost_lemmas_lean': 'GHOST_FOUND', 'portfolio': 'GHOST_FOUND'}
+[ 2580.0s] budget 8.0: gc20261024-106 ring/neg_neg: {'portfolio_auto': 'PROVED', 'ghost_lemmas_lean': 'PROVED', 'oracle_lemmas': 'PROVED', 'ghost_lemmas': 'PROVED', 'portfolio': 'PROVED', 'lemmas_unfiltered': 'PROVED'}
+[ 2602.1s] budget 8.0: gc20261024-031 group/sq_central: {'portfolio': 'GHOST_FOUND', 'portfolio_auto': 'GHOST_FOUND', 'lemmas_unfiltered': 'UNSETTLED', 'ghost_lemmas': 'GHOST_FOUND', 'ghost_lemmas_lean': 'UNSETTLED', 'oracle_lemmas': 'GHOST_FOUND'}
+[ 2612.3s] budget 8.0: gc20261024-120 group_exp2/left_alt: {'portfolio': 'PROVED', 'portfolio_auto': 'PROVED', 'lemmas_unfiltered': 'PROVED', 'ghost_lemmas': 'PROVED', 'ghost_lemmas_lean': 'PROVED', 'oracle_lemmas': 'PROVED'}
+[ 2633.2s] budget 8.0: gc20261024-107 dist_lattice/cancel: {'lemmas_unfiltered': 'PROVED', 'portfolio': 'PROVED', 'ghost_lemmas': 'PROVED', 'oracle_lemmas': 'PROVED', 'portfolio_auto': 'PROVED', 'ghost_lemmas_lean': 'PROVED'}
+[ 2643.2s] budget 8.0: gc20261024-052 group_exp2/inv_e: {'ghost_lemmas': 'PROVED', 'portfolio_auto': 'PROVED', 'lemmas_unfiltered': 'PROVED', 'portfolio': 'PROVED', 'ghost_lemmas_lean': 'PROVED', 'oracle_lemmas': 'PROVED'}
+[ 2652.9s] budget 8.0: gc20261024-083 group_exp2/comm: {'ghost_lemmas': 'PROVED', 'oracle_lemmas': 'PROVED', 'ghost_lemmas_lean': 'PROVED', 'lemmas_unfiltered': 'PROVED', 'portfolio_auto': 'PROVED', 'portfolio': 'PROVED'}
+[ 2681.3s] budget 8.0: gc20261024-089 moufang/sq_central: {'ghost_lemmas_lean': 'UNSETTLED', 'lemmas_unfiltered': 'UNSETTLED', 'portfolio': 'GHOST_FOUND', 'portfolio_auto': 'GHOST_FOUND', 'ghost_lemmas': 'GHOST_FOUND', 'oracle_lemmas': 'GHOST_FOUND'}
+[ 2689.7s] budget 8.0: gc20261024-000 ring/no_nilpotent: {'lemmas_unfiltered': 'UNSETTLED', 'ghost_lemmas_lean': 'GHOST_FOUND', 'oracle_lemmas': 'GHOST_FOUND', 'portfolio': 'GHOST_FOUND', 'portfolio_auto': 'GHOST_FOUND', 'ghost_lemmas': 'GHOST_FOUND'}
+[ 2707.6s] budget 8.0: gc20261024-071 huntington/h_complement: {'ghost_lemmas': 'PROVED', 'ghost_lemmas_lean': 'PROVED', 'lemmas_unfiltered': 'PROVED', 'portfolio': 'PROVED', 'portfolio_auto': 'PROVED', 'oracle_lemmas': 'PROVED'}
+[ 2717.5s] budget 8.0: gc20261024-008 group_exp2/inv_mul: {'lemmas_unfiltered': 'PROVED', 'portfolio': 'PROVED', 'ghost_lemmas': 'PROVED', 'oracle_lemmas': 'PROVED', 'ghost_lemmas_lean': 'PROVED', 'portfolio_auto': 'PROVED'}
+[ 2736.4s] budget 8.0: gc20261024-085 group/left_cancel: {'lemmas_unfiltered': 'PROVED', 'oracle_lemmas': 'PROVED', 'portfolio_auto': 'PROVED', 'ghost_lemmas_lean': 'PROVED', 'ghost_lemmas': 'PROVED', 'portfolio': 'PROVED'}
+[ 2753.9s] budget 8.0: gc20261024-032 huntington/h_idem: {'lemmas_unfiltered': 'PROVED', 'portfolio': 'PROVED', 'oracle_lemmas': 'PROVED', 'portfolio_auto': 'PROVED', 'ghost_lemmas_lean': 'PROVED', 'ghost_lemmas': 'PROVED'}
+[ 2772.0s] budget 8.0: gc20261024-079 ring/zero_times: {'oracle_lemmas': 'PROVED', 'ghost_lemmas_lean': 'PROVED', 'portfolio': 'PROVED', 'ghost_lemmas': 'PROVED', 'portfolio_auto': 'PROVED', 'lemmas_unfiltered': 'PROVED'}
+[ 2796.6s] budget 8.0: gc20261024-012 moufang/right_alt: {'oracle_lemmas': 'PROVED', 'ghost_lemmas': 'UNSETTLED', 'portfolio_auto': 'PROVED', 'ghost_lemmas_lean': 'PROVED', 'lemmas_unfiltered': 'PROVED', 'portfolio': 'PROVED'}
+[ 2805.2s] budget 8.0: gc20261024-018 huntington/h_de_morgan_wrong: {'oracle_lemmas': 'GHOST_FOUND', 'lemmas_unfiltered': 'UNSETTLED', 'ghost_lemmas': 'GHOST_FOUND', 'ghost_lemmas_lean': 'GHOST_FOUND', 'portfolio_auto': 'GHOST_FOUND', 'portfolio': 'GHOST_FOUND'}
+[ 2813.7s] budget 8.0: gc20261024-074 dist_lattice/meet_is_join: {'lemmas_unfiltered': 'UNSETTLED', 'portfolio_auto': 'GHOST_FOUND', 'ghost_lemmas_lean': 'GHOST_FOUND', 'oracle_lemmas': 'GHOST_FOUND', 'portfolio': 'GHOST_FOUND', 'ghost_lemmas': 'GHOST_FOUND'}
+[ 2824.4s] budget 8.0: gc20261024-093 group_exp2/right_alt: {'portfolio': 'PROVED', 'lemmas_unfiltered': 'PROVED', 'ghost_lemmas': 'PROVED', 'oracle_lemmas': 'PROVED', 'ghost_lemmas_lean': 'PROVED', 'portfolio_auto': 'PROVED'}
+[ 2857.3s] budget 8.0: gc20261024-116 moufang/moufang_right: {'portfolio': 'UNSETTLED', 'oracle_lemmas': 'PROVED', 'ghost_lemmas_lean': 'PROVED', 'portfolio_auto': 'PROVED', 'lemmas_unfiltered': 'PROVED', 'ghost_lemmas': 'PROVED'}
+[ 2879.8s] budget 8.0: gc20261024-026 lattice/order_dual: {'lemmas_unfiltered': 'PROVED', 'portfolio_auto': 'PROVED', 'ghost_lemmas_lean': 'PROVED', 'ghost_lemmas': 'UNSETTLED', 'oracle_lemmas': 'PROVED', 'portfolio': 'PROVED'}
+[ 2896.5s] budget 8.0: gc20261024-092 group/right_id: {'ghost_lemmas': 'PROVED', 'lemmas_unfiltered': 'PROVED', 'ghost_lemmas_lean': 'PROVED', 'portfolio_auto': 'PROVED', 'portfolio': 'PROVED', 'oracle_lemmas': 'PROVED'}
+[ 2907.0s] budget 8.0: gc20261024-061 group_exp2/right_cancel: {'ghost_lemmas': 'PROVED', 'portfolio': 'PROVED', 'lemmas_unfiltered': 'PROVED', 'portfolio_auto': 'PROVED', 'oracle_lemmas': 'PROVED', 'ghost_lemmas_lean': 'PROVED'}
+[ 2915.4s] budget 8.0: gc20261024-045 ring/times_idem: {'portfolio_auto': 'GHOST_FOUND', 'portfolio': 'GHOST_FOUND', 'oracle_lemmas': 'GHOST_FOUND', 'ghost_lemmas_lean': 'GHOST_FOUND', 'ghost_lemmas': 'GHOST_FOUND', 'lemmas_unfiltered': 'UNSETTLED'}
+[ 2943.1s] budget 8.0: gc20261024-035 moufang/comm: {'oracle_lemmas': 'GHOST_FOUND', 'portfolio_auto': 'GHOST_FOUND', 'portfolio': 'GHOST_FOUND', 'lemmas_unfiltered': 'UNSETTLED', 'ghost_lemmas': 'GHOST_FOUND', 'ghost_lemmas_lean': 'UNSETTLED'}
+[ 2962.1s] budget 8.0: gc20261024-028 group_sq/moufang_right: {'portfolio_auto': 'PROVED', 'portfolio': 'PROVED', 'oracle_lemmas': 'PROVED', 'lemmas_unfiltered': 'PROVED', 'ghost_lemmas_lean': 'PROVED', 'ghost_lemmas': 'PROVED'}
+[ 2967.6s] budget 8.0: gc20261024-111 quasigroup/right_cancel: {'portfolio': 'PROVED', 'lemmas_unfiltered': 'PROVED', 'oracle_lemmas': 'PROVED', 'ghost_lemmas': 'PROVED', 'portfolio_auto': 'PROVED', 'ghost_lemmas_lean': 'PROVED'}
+[ 2990.1s] budget 8.0: gc20261024-080 lattice/distrib: {'ghost_lemmas_lean': 'UNSETTLED', 'lemmas_unfiltered': 'UNSETTLED', 'oracle_lemmas': 'GHOST_FOUND', 'portfolio_auto': 'GHOST_FOUND', 'ghost_lemmas': 'GHOST_FOUND', 'portfolio': 'GHOST_FOUND'}
+[ 2998.5s] budget 8.0: gc20261024-014 moufang/idem: {'oracle_lemmas': 'GHOST_FOUND', 'portfolio': 'GHOST_FOUND', 'ghost_lemmas': 'GHOST_FOUND', 'lemmas_unfiltered': 'UNSETTLED', 'portfolio_auto': 'GHOST_FOUND', 'ghost_lemmas_lean': 'GHOST_FOUND'}
+[ 3011.9s] budget 8.0: gc20261024-114 boolean_ring/neg_self: {'portfolio': 'PROVED', 'oracle_lemmas': 'PROVED', 'lemmas_unfiltered': 'PROVED', 'ghost_lemmas_lean': 'PROVED', 'ghost_lemmas': 'PROVED', 'portfolio_auto': 'PROVED'}
+[ 3036.9s] budget 8.0: gc20261024-094 moufang/left_alt: {'oracle_lemmas': 'PROVED', 'portfolio_auto': 'PROVED', 'portfolio': 'PROVED', 'ghost_lemmas_lean': 'PROVED', 'ghost_lemmas': 'UNSETTLED', 'lemmas_unfiltered': 'PROVED'}
+[ 3050.6s] budget 8.0: gc20261024-077 boolean_ring/neg_neg: {'portfolio_auto': 'PROVED', 'portfolio': 'PROVED', 'ghost_lemmas_lean': 'PROVED', 'ghost_lemmas': 'PROVED', 'lemmas_unfiltered': 'PROVED', 'oracle_lemmas': 'PROVED'}
+[ 3062.1s] budget 8.0: gc20261024-113 ring/times_comm: {'ghost_lemmas_lean': 'GHOST_FOUND', 'ghost_lemmas': 'GHOST_FOUND', 'portfolio': 'GHOST_FOUND', 'portfolio_auto': 'GHOST_FOUND', 'lemmas_unfiltered': 'UNSETTLED', 'oracle_lemmas': 'GHOST_FOUND'}
+[ 3062.5s] budget 8.0: gc20261024-082 quasigroup/assoc: {'ghost_lemmas': 'GHOST_FOUND', 'portfolio_auto': 'GHOST_FOUND', 'lemmas_unfiltered': 'UNSETTLED', 'ghost_lemmas_lean': 'GHOST_FOUND', 'portfolio': 'GHOST_FOUND', 'oracle_lemmas': 'GHOST_FOUND'}
+[ 3062.9s] budget 8.0: gc20261024-025 quasigroup/ldiv_self: {'portfolio': 'GHOST_FOUND', 'ghost_lemmas_lean': 'GHOST_FOUND', 'lemmas_unfiltered': 'UNSETTLED', 'portfolio_auto': 'GHOST_FOUND', 'oracle_lemmas': 'GHOST_FOUND', 'ghost_lemmas': 'GHOST_FOUND'}
+[ 3076.4s] budget 8.0: gc20261024-075 boolean_ring/zero_times: {'ghost_lemmas_lean': 'PROVED', 'ghost_lemmas': 'PROVED', 'lemmas_unfiltered': 'PROVED', 'portfolio_auto': 'PROVED', 'portfolio': 'PROVED', 'oracle_lemmas': 'PROVED'}
+[ 3092.3s] budget 8.0: gc20261024-010 group_sq/right_inv: {'portfolio': 'PROVED', 'lemmas_unfiltered': 'PROVED', 'oracle_lemmas': 'PROVED', 'ghost_lemmas_lean': 'PROVED', 'portfolio_auto': 'PROVED', 'ghost_lemmas': 'PROVED'}
+[ 3111.8s] budget 8.0: gc20261024-099 group/inv_inv: {'ghost_lemmas': 'PROVED', 'portfolio': 'PROVED', 'lemmas_unfiltered': 'PROVED', 'oracle_lemmas': 'PROVED', 'ghost_lemmas_lean': 'PROVED', 'portfolio_auto': 'PROVED'}
+[ 3112.2s] budget 8.0: gc20261024-050 quasigroup/left_alt: {'portfolio': 'GHOST_FOUND', 'ghost_lemmas_lean': 'GHOST_FOUND', 'ghost_lemmas': 'GHOST_FOUND', 'portfolio_auto': 'GHOST_FOUND', 'oracle_lemmas': 'GHOST_FOUND', 'lemmas_unfiltered': 'UNSETTLED'}
+[ 3130.3s] budget 8.0: gc20261024-088 dist_lattice/order_dual: {'portfolio_auto': 'PROVED', 'oracle_lemmas': 'PROVED', 'lemmas_unfiltered': 'PROVED', 'ghost_lemmas': 'PROVED', 'ghost_lemmas_lean': 'PROVED', 'portfolio': 'PROVED'}
+[ 3138.7s] budget 8.0: gc20261024-044 group/idem: {'ghost_lemmas_lean': 'GHOST_FOUND', 'lemmas_unfiltered': 'UNSETTLED', 'portfolio_auto': 'GHOST_FOUND', 'oracle_lemmas': 'GHOST_FOUND', 'ghost_lemmas': 'GHOST_FOUND', 'portfolio': 'GHOST_FOUND'}
+[ 3153.0s] budget 8.0: gc20261024-053 boolean_ring/times_zero: {'lemmas_unfiltered': 'PROVED', 'portfolio_auto': 'PROVED', 'portfolio': 'PROVED', 'oracle_lemmas': 'PROVED', 'ghost_lemmas_lean': 'PROVED', 'ghost_lemmas': 'PROVED'}
+[ 3167.5s] budget 8.0: gc20261024-024 group_sq/inv_e: {'portfolio': 'PROVED', 'ghost_lemmas_lean': 'PROVED', 'ghost_lemmas': 'PROVED', 'oracle_lemmas': 'PROVED', 'portfolio_auto': 'PROVED', 'lemmas_unfiltered': 'PROVED'}
+[ 3181.5s] budget 8.0: gc20261024-042 boolean_ring/times_comm: {'portfolio_auto': 'PROVED', 'oracle_lemmas': 'PROVED', 'ghost_lemmas': 'PROVED', 'lemmas_unfiltered': 'PROVED', 'portfolio': 'PROVED', 'ghost_lemmas_lean': 'PROVED'}
+[ 3198.6s] budget 8.0: gc20261024-019 group_sq/sq_central: {'lemmas_unfiltered': 'PROVED', 'portfolio': 'PROVED', 'portfolio_auto': 'PROVED', 'ghost_lemmas_lean': 'PROVED', 'oracle_lemmas': 'PROVED', 'ghost_lemmas': 'PROVED'}
+[ 3207.9s] budget 8.0: gc20261024-001 ring/neg_self: {'ghost_lemmas': 'GHOST_FOUND', 'portfolio': 'GHOST_FOUND', 'portfolio_auto': 'GHOST_FOUND', 'lemmas_unfiltered': 'UNSETTLED', 'oracle_lemmas': 'GHOST_FOUND', 'ghost_lemmas_lean': 'GHOST_FOUND'}
+[ 3208.3s] budget 8.0: gc20261024-084 quasigroup/flexible: {'portfolio_auto': 'GHOST_FOUND', 'ghost_lemmas_lean': 'GHOST_FOUND', 'ghost_lemmas': 'GHOST_FOUND', 'oracle_lemmas': 'GHOST_FOUND', 'lemmas_unfiltered': 'UNSETTLED', 'portfolio': 'GHOST_FOUND'}
+[ 3220.7s] budget 8.0: gc20261024-096 group_exp2/inv_comm: {'oracle_lemmas': 'PROVED', 'ghost_lemmas_lean': 'PROVED', 'ghost_lemmas': 'PROVED', 'lemmas_unfiltered': 'PROVED', 'portfolio_auto': 'PROVED', 'portfolio': 'PROVED'}
+[ 3224.3s] replay gc20261024-066 (portfolio, 2.0): THEOREM_CHECKED
+[ 3227.5s] replay gc20261024-066 (portfolio_auto, 2.0): THEOREM_CHECKED
+[ 3232.3s] replay gc20261024-066 (oracle_lemmas, 2.0): THEOREM_CHECKED
+[ 3237.5s] replay gc20261024-065 (portfolio, 2.0): THEOREM_CHECKED
+[ 3242.3s] replay gc20261024-065 (portfolio_auto, 2.0): THEOREM_CHECKED
+[ 3247.9s] replay gc20261024-065 (oracle_lemmas, 2.0): THEOREM_CHECKED
+[ 3251.3s] replay gc20261024-124 (portfolio, 2.0): THEOREM_CHECKED
+[ 3254.8s] replay gc20261024-124 (portfolio_auto, 2.0): THEOREM_CHECKED
+[ 3260.0s] replay gc20261024-124 (oracle_lemmas, 2.0): THEOREM_CHECKED
+[ 3264.0s] replay gc20261024-093 (oracle_lemmas, 2.0): THEOREM_CHECKED
+[ 3267.2s] replay gc20261024-093 (portfolio_auto, 2.0): THEOREM_CHECKED
+[ 3270.3s] replay gc20261024-093 (portfolio, 2.0): THEOREM_CHECKED
+[ 3273.3s] replay gc20261024-062 (portfolio_auto, 2.0): THEOREM_CHECKED
+[ 3276.6s] replay gc20261024-062 (portfolio, 2.0): THEOREM_CHECKED
+[ 3280.3s] replay gc20261024-062 (oracle_lemmas, 2.0): THEOREM_CHECKED
+[ 3283.3s] replay gc20261024-087 (portfolio_auto, 2.0): THEOREM_CHECKED
+[ 3286.5s] replay gc20261024-087 (portfolio, 2.0): THEOREM_CHECKED
+[ 3290.2s] replay gc20261024-087 (oracle_lemmas, 2.0): THEOREM_CHECKED
+[ 3293.6s] replay gc20261024-008 (portfolio_auto, 2.0): THEOREM_CHECKED
+[ 3297.0s] replay gc20261024-008 (portfolio, 2.0): THEOREM_CHECKED
+[ 3300.5s] replay gc20261024-008 (oracle_lemmas, 2.0): THEOREM_CHECKED
+[ 3303.6s] replay gc20261024-072 (portfolio, 2.0): THEOREM_CHECKED
+[ 3306.4s] replay gc20261024-072 (portfolio_auto, 2.0): THEOREM_CHECKED
+[ 3309.9s] replay gc20261024-072 (oracle_lemmas, 2.0): THEOREM_CHECKED
+[ 3313.0s] replay gc20261024-016 (portfolio_auto, 2.0): THEOREM_CHECKED
+[ 3316.7s] replay gc20261024-016 (oracle_lemmas, 2.0): THEOREM_CHECKED
+[ 3320.4s] replay gc20261024-016 (portfolio, 2.0): THEOREM_CHECKED
+[ 3323.7s] replay gc20261024-110 (portfolio, 2.0): THEOREM_CHECKED
+[ 3327.0s] replay gc20261024-110 (portfolio_auto, 2.0): THEOREM_CHECKED
+[ 3331.9s] replay gc20261024-110 (oracle_lemmas, 2.0): THEOREM_CHECKED
+[ 3337.7s] replay gc20261024-095 (portfolio_auto, 2.0): THEOREM_CHECKED
+[ 3343.2s] replay gc20261024-095 (oracle_lemmas, 2.0): THEOREM_CHECKED
+[ 3348.3s] replay gc20261024-095 (portfolio, 2.0): THEOREM_CHECKED
+[ 3352.1s] replay gc20261024-026 (portfolio, 2.0): THEOREM_CHECKED
+[ 3355.6s] replay gc20261024-026 (oracle_lemmas, 2.0): THEOREM_CHECKED
+[ 3359.1s] replay gc20261024-026 (portfolio_auto, 2.0): THEOREM_CHECKED
+[ 3362.7s] replay gc20261024-064 (portfolio, 2.0): THEOREM_CHECKED
+[ 3366.6s] replay gc20261024-064 (oracle_lemmas, 2.0): THEOREM_CHECKED
+[ 3370.4s] replay gc20261024-064 (portfolio_auto, 2.0): THEOREM_CHECKED
+[ 3374.6s] replay gc20261024-117 (portfolio, 2.0): THEOREM_CHECKED
+[ 3378.4s] replay gc20261024-117 (portfolio_auto, 2.0): THEOREM_CHECKED
+[ 3382.3s] replay gc20261024-117 (oracle_lemmas, 2.0): THEOREM_CHECKED
+[ 3386.1s] replay gc20261024-030 (portfolio, 2.0): THEOREM_CHECKED
+[ 3389.3s] replay gc20261024-030 (portfolio_auto, 2.0): THEOREM_CHECKED
+[ 3393.2s] replay gc20261024-030 (oracle_lemmas, 2.0): THEOREM_CHECKED
+[ 3396.5s] replay gc20261024-021 (portfolio, 2.0): THEOREM_CHECKED
+[ 3400.3s] replay gc20261024-021 (oracle_lemmas, 2.0): THEOREM_CHECKED
+[ 3403.4s] replay gc20261024-021 (portfolio_auto, 2.0): THEOREM_CHECKED
+[ 3406.5s] replay gc20261024-013 (portfolio, 2.0): THEOREM_CHECKED
+[ 3409.8s] replay gc20261024-013 (portfolio_auto, 2.0): THEOREM_CHECKED
+rc=143

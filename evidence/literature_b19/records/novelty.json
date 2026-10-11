@@ -1,0 +1,781 @@
+{
+ "reports": [
+  {
+   "absence_disclaimer": "absence of a search hit does not show that nobody has found this",
+   "conclusion": "PRIOR_ART_FOUND",
+   "description": "the concept recovered by typed anti-unification in B18",
+   "independent_review": "PENDING",
+   "prior_art": [
+    {
+     "relation": "definitionally equal (Lean-checked link)",
+     "source": "L1"
+    },
+    {
+     "relation": "equivalent (Lean-checked link)",
+     "source": "L2"
+    },
+    {
+     "relation": "monotone graph property: special case",
+     "source": "S2"
+    }
+   ],
+   "record": "novelty",
+   "result_id": "B18-RC.C0",
+   "schema": "genesis-literature-v1",
+   "scope": "Mathlib at the pinned revision; one web search; one paper read",
+   "search_record": {
+    "library_searches": [
+     {
+      "files_searched": 8529,
+      "hit_count": 2,
+      "hits": [
+       {
+        "file": "Mathlib/Order/Monotone/Defs.lean",
+        "line": 68,
+        "text": "def Antitone (f : α → β) : Prop :="
+       },
+       {
+        "file": "Mathlib/Topology/MetricSpace/CantorScheme.lean",
+        "line": 63,
+        "text": "protected def Antitone : Prop :="
+       }
+      ],
+      "pattern": "def Antitone\\b",
+      "revision": "d13f23b723b8a846827a245b89c10fc7d3f11612"
+     },
+     {
+      "files_searched": 8529,
+      "hit_count": 1,
+      "hits": [
+       {
+        "file": "Mathlib/Order/Defs/Unbundled.lean",
+        "line": 262,
+        "text": "def IsUpperSet {α : Type*} [LE α] (s : Set α) : Prop :="
+       }
+      ],
+      "pattern": "def IsUpperSet\\b",
+      "revision": "d13f23b723b8a846827a245b89c10fc7d3f11612"
+     },
+     {
+      "files_searched": 8529,
+      "hit_count": 139,
+      "hits": [
+       {
+        "file": "Mathlib/Algebra/Order/UpperLower.lean",
+        "line": 35,
+        "text": "theorem IsLowerSet.smul_subset (hs : IsLowerSet s) (hx : x ≤ 1) : x • s ⊆ s :="
+       },
+       {
+        "file": "Mathlib/Algebra/Order/UpperLower.lean",
+        "line": 48,
+        "text": "theorem IsLowerSet.smul (hs : IsLowerSet s) : IsLowerSet (a • s) := hs.image <| OrderIso.mulLeft _"
+       },
+       {
+        "file": "Mathlib/Algebra/Order/UpperLower.lean",
+        "line": 66,
+        "text": "theorem IsLowerSet.mul_left (ht : IsLowerSet t) : IsLowerSet (s * t) := ht.toDual.mul_left"
+       },
+       {
+        "file": "Mathlib/Algebra/Order/UpperLower.lean",
+        "line": 69,
+        "text": "theorem IsLowerSet.mul_right (hs : IsLowerSet s) : IsLowerSet (s * t) := hs.toDual.mul_right"
+       },
+       {
+        "file": "Mathlib/Algebra/Order/UpperLower.lean",
+        "line": 73,
+        "text": "{s : Set α} (hs : IsUpperSet s) : IsLowerSet s⁻¹ := fun _ _ h ↦ hs <| inv_le_inv' h"
+       },
+       {
+        "file": "Mathlib/Algebra/Order/UpperLower.lean",
+        "line": 76,
+        "text": "theorem IsLowerSet.inv {α : Type*} [CommGroup α] [PartialOrder α] [IsOrderedMonoid α]"
+       },
+       {
+        "file": "Mathlib/Algebra/Order/UpperLower.lean",
+        "line": 77,
+        "text": "{s : Set α} (hs : IsLowerSet s) : IsUpperSet s⁻¹ := fun _ _ h ↦ hs <| inv_le_inv' h"
+       },
+       {
+        "file": "Mathlib/Algebra/Order/UpperLower.lean",
+        "line": 81,
+        "text": "{s t : Set α} (ht : IsUpperSet t) : IsLowerSet (s / t) := by"
+       },
+       {
+        "file": "Mathlib/Algebra/Order/UpperLower.lean",
+        "line": 91,
+        "text": "theorem IsLowerSet.div_left {α : Type*} [CommGroup α] [PartialOrder α] [IsOrderedMonoid α]"
+       },
+       {
+        "file": "Mathlib/Algebra/Order/UpperLower.lean",
+        "line": 92,
+        "text": "{s t : Set α} (ht : IsLowerSet t) : IsUpperSet (s / t) := ht.toDual.div_left"
+       },
+       {
+        "file": "Mathlib/Algebra/Order/UpperLower.lean",
+        "line": 95,
+        "text": "theorem IsLowerSet.div_right (hs : IsLowerSet s) : IsLowerSet (s / t) := hs.toDual.div_right"
+       },
+       {
+        "file": "Mathlib/Analysis/Convex/SimplicialComplex/Basic.lean",
+        "line": 116,
+        "text": "(down_closed : IsLowerSet faces)"
+       },
+       {
+        "file": "Mathlib/Analysis/Convex/SimplicialComplex/Basic.lean",
+        "line": 130,
+        "text": "(down_closed : IsLowerSet faces) : SimplicialComplex 𝕜 E :="
+       },
+       {
+        "file": "Mathlib/Analysis/InnerProductSpace/SingularValues.lean",
+        "line": 184,
+        "text": "theorem isLowerSet_support_singularValues : IsLowerSet (T.singularValues.support : Set ℕ) := by"
+       },
+       {
+        "file": "Mathlib/Analysis/Normed/Order/UpperLower.lean",
+        "line": 49,
+        "text": "@[to_additive IsLowerSet.thickening]"
+       },
+       {
+        "file": "Mathlib/Analysis/Normed/Order/UpperLower.lean",
+        "line": 50,
+        "text": "protected theorem IsLowerSet.thickening' (hs : IsLowerSet s) (ε : ℝ) :"
+       },
+       {
+        "file": "Mathlib/Analysis/Normed/Order/UpperLower.lean",
+        "line": 51,
+        "text": "IsLowerSet (thickening ε s) := by"
+       },
+       {
+        "file": "Mathlib/Analysis/Normed/Order/UpperLower.lean",
+        "line": 61,
+        "text": "@[to_additive IsLowerSet.cthickening]"
+       },
+       {
+        "file": "Mathlib/Analysis/Normed/Order/UpperLower.lean",
+        "line": 62,
+        "text": "protected theorem IsLowerSet.cthickening' (hs : IsLowerSet s) (ε : ℝ) :"
+       },
+       {
+        "file": "Mathlib/Analysis/Normed/Order/UpperLower.lean",
+        "line": 63,
+        "text": "IsLowerSet (cthickening ε s) := by"
+       },
+       {
+        "file": "Mathlib/Analysis/Normed/Order/UpperLower.lean",
+        "line": 100,
+        "text": "theorem IsLowerSet.mem_interior_of_forall_lt (hs : IsLowerSet s) (hx : x ∈ closure s)"
+       },
+       {
+        "file": "Mathlib/Analysis/Normed/Order/UpperLower.lean",
+        "line": 169,
+        "text": "theorem IsLowerSet.exists_subset_ball (hs : IsLowerSet s) (hx : x ∈ closure s) (hδ : 0 < δ) :"
+       },
+       {
+        "file": "Mathlib/Combinatorics/SetFamily/HarrisKleitman.lean",
+        "line": 24,
+        "text": "* `IsLowerSet.le_card_inter_finset`: One form of the Harris-Kleitman inequality."
+       },
+       {
+        "file": "Mathlib/Combinatorics/SetFamily/HarrisKleitman.lean",
+        "line": 38,
+        "text": "theorem IsLowerSet.nonMemberSubfamily (h : IsLowerSet (𝒜 : Set (Finset α))) :"
+       },
+       {
+        "file": "Mathlib/Combinatorics/SetFamily/HarrisKleitman.lean",
+        "line": 39,
+        "text": "IsLowerSet (𝒜.nonMemberSubfamily a : Set (Finset α)) := fun s t hts => by"
+       },
+       {
+        "file": "Mathlib/Combinatorics/SetFamily/HarrisKleitman.lean",
+        "line": 43,
+        "text": "theorem IsLowerSet.memberSubfamily (h : IsLowerSet (𝒜 : Set (Finset α))) :"
+       },
+       {
+        "file": "Mathlib/Combinatorics/SetFamily/HarrisKleitman.lean",
+        "line": 44,
+        "text": "IsLowerSet (𝒜.memberSubfamily a : Set (Finset α)) := by"
+       },
+       {
+        "file": "Mathlib/Combinatorics/SetFamily/HarrisKleitman.lean",
+        "line": 49,
+        "text": "theorem IsLowerSet.memberSubfamily_subset_nonMemberSubfamily (h : IsLowerSet (𝒜 : Set (Finset α))) :"
+       },
+       {
+        "file": "Mathlib/Combinatorics/SetFamily/HarrisKleitman.lean",
+        "line": 55,
+        "text": "theorem IsLowerSet.le_card_inter_finset' (h𝒜 : IsLowerSet (𝒜 : Set (Finset α)))"
+       },
+       {
+        "file": "Mathlib/Combinatorics/SetFamily/HarrisKleitman.lean",
+        "line": 56,
+        "text": "(hℬ : IsLowerSet (ℬ : Set (Finset α))) (h𝒜s : ∀ t ∈ 𝒜, t ⊆ s) (hℬs : ∀ t ∈ ℬ, t ⊆ s) :"
+       },
+       {
+        "file": "Mathlib/Combinatorics/SetFamily/HarrisKleitman.lean",
+        "line": 93,
+        "text": "theorem IsLowerSet.le_card_inter_finset (h𝒜 : IsLowerSet (𝒜 : Set (Finset α)))"
+       },
+       {
+        "file": "Mathlib/Combinatorics/SetFamily/HarrisKleitman.lean",
+        "line": 94,
+        "text": "(hℬ : IsLowerSet (ℬ : Set (Finset α))) : #𝒜 * #ℬ ≤ 2 ^ Fintype.card α * #(𝒜 ∩ ℬ) :="
+       },
+       {
+        "file": "Mathlib/Combinatorics/SetFamily/HarrisKleitman.lean",
+        "line": 99,
+        "text": "(hℬ : IsLowerSet (ℬ : Set (Finset α))) :"
+       },
+       {
+        "file": "Mathlib/Combinatorics/SetFamily/HarrisKleitman.lean",
+        "line": 108,
+        "text": "theorem IsLowerSet.card_inter_le_finset (h𝒜 : IsLowerSet (𝒜 : Set (Finset α)))"
+       },
+       {
+        "file": "Mathlib/Combinatorics/SetFamily/Shatter.lean",
+        "line": 90,
+        "text": "lemma subset_shatterer (h : IsLowerSet (𝒜 : Set (Finset α))) : 𝒜 ⊆ 𝒜.shatterer :="
+       },
+       {
+        "file": "Mathlib/Combinatorics/SetFamily/Shatter.lean",
+        "line": 94,
+        "text": "IsLowerSet (𝒜.shatterer : Set (Finset α)) := fun s t ↦ by simpa using Shatters.mono_right"
+       },
+       {
+        "file": "Mathlib/Combinatorics/SetFamily/Shatter.lean",
+        "line": 96,
+        "text": "@[simp] lemma shatterer_eq : 𝒜.shatterer = 𝒜 ↔ IsLowerSet (𝒜 : Set (Finset α)) := by"
+       },
+       {
+        "file": "Mathlib/Combinatorics/Young/YoungDiagram.lean",
+        "line": 71,
+        "text": "isLowerSet : IsLowerSet (cells : Set (ℕ × ℕ))"
+       },
+       {
+        "file": "Mathlib/Data/Finsupp/Order.lean",
+        "line": 356,
+        "text": "IsLowerSet ((Set.range (embDomain f)) : Set (β →₀ ℕ)) := by"
+       },
+       {
+        "file": "Mathlib/MeasureTheory/Order/UpperLower.lean",
+        "line": 134,
+        "text": "theorem IsLowerSet.null_frontier (hs : IsLowerSet s) : volume (frontier s) = 0 := by"
+       },
+       {
+        "file": "Mathlib/Order/Concept.lean",
+        "line": 464,
+        "text": "IsLowerSet c.extent :="
+       },
+       {
+        "file": "Mathlib/Order/Concept.lean",
+        "line": 474,
+        "text": "IsLowerSet c.extent := by"
+       },
+       {
+        "file": "Mathlib/Order/Defs/Unbundled.lean",
+        "line": 274,
+        "text": "@[inherit_doc IsLowerSet, to_dual]"
+       },
+       {
+        "file": "Mathlib/Order/Defs/Unbundled.lean",
+        "line": 279,
+        "text": "lower' : IsLowerSet carrier"
+       },
+       {
+        "file": "Mathlib/Order/DirSupClosed.lean",
+        "line": 170,
+        "text": "theorem DirSupClosedOn.union (hDL : IsLowerSet D)"
+       },
+       {
+        "file": "Mathlib/Order/DirSupClosed.lean",
+        "line": 183,
+        "text": "theorem DirSupInaccOn.inter (hDL : IsLowerSet D)"
+       },
+       {
+        "file": "Mathlib/Order/DirSupClosed.lean",
+        "line": 207,
+        "text": "theorem dirSupInaccOn_iff_inter_subset (hDL : IsLowerSet D) :"
+       },
+       {
+        "file": "Mathlib/Order/DirSupClosed.lean",
+        "line": 232,
+        "text": "lemma IsLowerSet.dirSupInacc (hs : IsLowerSet s) : DirSupInacc s :="
+       },
+       {
+        "file": "Mathlib/Order/DirSupClosed.lean",
+        "line": 235,
+        "text": "lemma IsLowerSet.dirSupInaccOn (hs : IsLowerSet s) : DirSupInaccOn D s :="
+       },
+       {
+        "file": "Mathlib/Order/DirectedInverseSystem.lean",
+        "line": 426,
+        "text": "theorem unique_pEquivOn (hs : IsLowerSet s) {e₁ e₂ : PEquivOn f equivSucc s} : e₁ = e₂ := by"
+       }
+      ],
+      "pattern": "IsLowerSet",
+      "revision": "d13f23b723b8a846827a245b89c10fc7d3f11612"
+     }
+    ],
+    "searches": [
+     "Q2"
+    ],
+    "sources_read": [
+     "S2",
+     "L1",
+     "L2"
+    ]
+   }
+  },
+  {
+   "absence_disclaimer": "absence of a search hit does not show that nobody has found this",
+   "conclusion": "PRIOR_ART_FOUND",
+   "description": "exact LP dual certificates for the largest triangle-free subgraph (W13)",
+   "independent_review": "PENDING",
+   "prior_art": [
+    {
+     "relation": "fractional triangle packing/cover; the bound is weak LP duality for this relaxation",
+     "source": "S1"
+    }
+   ],
+   "record": "novelty",
+   "result_id": "B19-LP-certificates",
+   "schema": "genesis-literature-v1",
+   "scope": "one web search; one abstract read; Mathlib at the pinned revision",
+   "search_record": {
+    "library_searches": [
+     {
+      "files_searched": 8529,
+      "hit_count": 41,
+      "hits": [
+       {
+        "file": "Mathlib/Combinatorics/Additive/Corner/Roth.lean",
+        "line": 56,
+        "text": "private lemma farFromTriangleFree_graph [Fintype G] [DecidableEq G] (hε : ε * card G ^ 2 ≤ #A) :"
+       },
+       {
+        "file": "Mathlib/Combinatorics/Additive/Corner/Roth.lean",
+        "line": 57,
+        "text": "(graph <| triangleIndices A).FarFromTriangleFree (ε / 9) := by"
+       },
+       {
+        "file": "Mathlib/Combinatorics/Additive/Corner/Roth.lean",
+        "line": 58,
+        "text": "refine farFromTriangleFree _ ?_"
+       },
+       {
+        "file": "Mathlib/Combinatorics/Additive/Corner/Roth.lean",
+        "line": 92,
+        "text": "have h₁ := (farFromTriangleFree_graph hAε).le_card_cliqueFinset"
+       },
+       {
+        "file": "Mathlib/Combinatorics/SimpleGraph/Clique.lean",
+        "line": 938,
+        "text": "/-- The neighbors of a vertex `v` form an independent set in a triangle free graph `G`. -/"
+       },
+       {
+        "file": "Mathlib/Combinatorics/SimpleGraph/Clique.lean",
+        "line": 939,
+        "text": "theorem isIndepSet_neighborSet_of_triangleFree (h : G.CliqueFree 3) (v : α) :"
+       },
+       {
+        "file": "Mathlib/Combinatorics/SimpleGraph/Hasse.lean",
+        "line": 62,
+        "text": "/-- The Hasse diagram of a preorder is triangle-free. This is the graph-theoretic formulation of"
+       },
+       {
+        "file": "Mathlib/Combinatorics/SimpleGraph/Triangle/Basic.lean",
+        "line": 27,
+        "text": "* `SimpleGraph.FarFromTriangleFree`: Predicate for a graph such that one must remove a lot of edges"
+       },
+       {
+        "file": "Mathlib/Combinatorics/SimpleGraph/Triangle/Basic.lean",
+        "line": 28,
+        "text": "from it for it to become triangle-free. This is the crux of the Triangle Removal Lemma."
+       },
+       {
+        "file": "Mathlib/Combinatorics/SimpleGraph/Triangle/Basic.lean",
+        "line": 32,
+        "text": "* Generalise `FarFromTriangleFree` to other graphs, to state and prove the Graph Removal Lemma."
+       },
+       {
+        "file": "Mathlib/Combinatorics/SimpleGraph/Triangle/Basic.lean",
+        "line": 185,
+        "text": "/-- A simple graph is *`ε`-far from triangle-free* if one must remove at least"
+       },
+       {
+        "file": "Mathlib/Combinatorics/SimpleGraph/Triangle/Basic.lean",
+        "line": 186,
+        "text": "`ε * (card α) ^ 2` edges to make it triangle-free. -/"
+       },
+       {
+        "file": "Mathlib/Combinatorics/SimpleGraph/Triangle/Basic.lean",
+        "line": 187,
+        "text": "def FarFromTriangleFree : Prop := G.DeleteFar (fun H ↦ H.CliqueFree 3) <| ε * (card α ^ 2 : ℕ)"
+       },
+       {
+        "file": "Mathlib/Combinatorics/SimpleGraph/Triangle/Basic.lean",
+        "line": 192,
+        "text": "theorem farFromTriangleFree_iff :"
+       },
+       {
+        "file": "Mathlib/Combinatorics/SimpleGraph/Triangle/Basic.lean",
+        "line": 193,
+        "text": "G.FarFromTriangleFree ε ↔ ∀ ⦃H : SimpleGraph α⦄, [DecidableRel H.Adj] → H ≤ G → H.CliqueFree 3 →"
+       },
+       {
+        "file": "Mathlib/Combinatorics/SimpleGraph/Triangle/Basic.lean",
+        "line": 196,
+        "text": "alias ⟨farFromTriangleFree.le_card_sub_card, _⟩ := farFromTriangleFree_iff"
+       },
+       {
+        "file": "Mathlib/Combinatorics/SimpleGraph/Triangle/Basic.lean",
+        "line": 198,
+        "text": "nonrec theorem FarFromTriangleFree.mono (hε : G.FarFromTriangleFree ε) (h : δ ≤ ε) :"
+       },
+       {
+        "file": "Mathlib/Combinatorics/SimpleGraph/Triangle/Basic.lean",
+        "line": 199,
+        "text": "G.FarFromTriangleFree δ := hε.mono <| by gcongr"
+       },
+       {
+        "file": "Mathlib/Combinatorics/SimpleGraph/Triangle/Basic.lean",
+        "line": 206,
+        "text": "theorem FarFromTriangleFree.cliqueFinset_nonempty' (hH : H ≤ G) (hG : G.FarFromTriangleFree ε)"
+       },
+       {
+        "file": "Mathlib/Combinatorics/SimpleGraph/Triangle/Basic.lean",
+        "line": 212,
+        "text": "private lemma farFromTriangleFree_of_disjoint_triangles_aux {tris : Finset (Finset α)}"
+       },
+       {
+        "file": "Mathlib/Combinatorics/SimpleGraph/Triangle/Basic.lean",
+        "line": 239,
+        "text": "triangle-free. -/"
+       },
+       {
+        "file": "Mathlib/Combinatorics/SimpleGraph/Triangle/Basic.lean",
+        "line": 240,
+        "text": "lemma farFromTriangleFree_of_disjoint_triangles (tris : Finset (Finset α))"
+       },
+       {
+        "file": "Mathlib/Combinatorics/SimpleGraph/Triangle/Basic.lean",
+        "line": 244,
+        "text": "G.FarFromTriangleFree ε := by"
+       },
+       {
+        "file": "Mathlib/Combinatorics/SimpleGraph/Triangle/Basic.lean",
+        "line": 245,
+        "text": "rw [farFromTriangleFree_iff]"
+       },
+       {
+        "file": "Mathlib/Combinatorics/SimpleGraph/Triangle/Basic.lean",
+        "line": 249,
+        "text": "(Nat.cast_le.2 <| farFromTriangleFree_of_disjoint_triangles_aux htris pd hG hH)"
+       },
+       {
+        "file": "Mathlib/Combinatorics/SimpleGraph/Triangle/Basic.lean",
+        "line": 251,
+        "text": "protected lemma EdgeDisjointTriangles.farFromTriangleFree (hG : G.EdgeDisjointTriangles)"
+       },
+       {
+        "file": "Mathlib/Combinatorics/SimpleGraph/Triangle/Basic.lean",
+        "line": 253,
+        "text": "G.FarFromTriangleFree ε :="
+       },
+       {
+        "file": "Mathlib/Combinatorics/SimpleGraph/Triangle/Basic.lean",
+        "line": 254,
+        "text": "farFromTriangleFree_of_disjoint_triangles _ Subset.rfl (by simpa using! hG) tris_big"
+       },
+       {
+        "file": "Mathlib/Combinatorics/SimpleGraph/Triangle/Basic.lean",
+        "line": 260,
+        "text": "lemma FarFromTriangleFree.lt_half (hε : G.FarFromTriangleFree ε) : ε < 2⁻¹ := by"
+       },
+       {
+        "file": "Mathlib/Combinatorics/SimpleGraph/Triangle/Basic.lean",
+        "line": 269,
+        "text": "lemma FarFromTriangleFree.lt_one (hG : G.FarFromTriangleFree ε) : ε < 1 :="
+       },
+       {
+        "file": "Mathlib/Combinatorics/SimpleGraph/Triangle/Basic.lean",
+        "line": 272,
+        "text": "theorem FarFromTriangleFree.nonpos (h₀ : G.FarFromTriangleFree ε) (h₁ : G.CliqueFree 3) :"
+       },
+       {
+        "file": "Mathlib/Combinatorics/SimpleGraph/Triangle/Basic.lean",
+        "line": 278,
+        "text": "theorem CliqueFree.not_farFromTriangleFree (hG : G.CliqueFree 3) (hε : 0 < ε) :"
+       },
+       {
+        "file": "Mathlib/Combinatorics/SimpleGraph/Triangle/Basic.lean",
+        "line": 279,
+        "text": "¬G.FarFromTriangleFree ε := fun h => (h.nonpos hG).not_gt hε"
+       },
+       {
+        "file": "Mathlib/Combinatorics/SimpleGraph/Triangle/Basic.lean",
+        "line": 281,
+        "text": "theorem FarFromTriangleFree.not_cliqueFree (hG : G.FarFromTriangleFree ε) (hε : 0 < ε) :"
+       },
+       {
+        "file": "Mathlib/Combinatorics/SimpleGraph/Triangle/Basic.lean",
+        "line": 284,
+        "text": "theorem FarFromTriangleFree.cliqueFinset_nonempty [DecidableEq α]"
+       },
+       {
+        "file": "Mathlib/Combinatorics/SimpleGraph/Triangle/Basic.lean",
+        "line": 285,
+        "text": "(hG : G.FarFromTriangleFree ε) (hε : 0 < ε) : (G.cliqueFinset 3).Nonempty :="
+       },
+       {
+        "file": "Mathlib/Combinatorics/SimpleGraph/Triangle/Removal.lean",
+        "line": 137,
+        "text": "lemma FarFromTriangleFree.le_card_cliqueFinset (hG : G.FarFromTriangleFree ε) :"
+       },
+       {
+        "file": "Mathlib/Combinatorics/SimpleGraph/Triangle/Removal.lean",
+        "line": 165,
+        "text": "refine hG.not_ge (farFromTriangleFree_iff.2 ?_).le_card_cliqueFinset"
+       },
+       {
+        "file": "Mathlib/Combinatorics/SimpleGraph/Triangle/Tripartite.lean",
+        "line": 234,
+        "text": "lemma farFromTriangleFree [ExplicitDisjoint t] {ε : 𝕜}"
+       },
+       {
+        "file": "Mathlib/Combinatorics/SimpleGraph/Triangle/Tripartite.lean",
+        "line": 236,
+        "text": "(graph t).FarFromTriangleFree ε :="
+       },
+       {
+        "file": "Mathlib/Combinatorics/SimpleGraph/Triangle/Tripartite.lean",
+        "line": 237,
+        "text": "farFromTriangleFree_of_disjoint_triangles (t.map toTriangle)"
+       }
+      ],
+      "pattern": "[Tt]riangle[- ]?[Ff]ree",
+      "revision": "d13f23b723b8a846827a245b89c10fc7d3f11612"
+     },
+     {
+      "files_searched": 8529,
+      "hit_count": 0,
+      "hits": [],
+      "pattern": "[Tt]uza",
+      "revision": "d13f23b723b8a846827a245b89c10fc7d3f11612"
+     }
+    ],
+    "searches": [
+     "Q1"
+    ],
+    "sources_read": [
+     "S1"
+    ]
+   }
+  },
+  {
+   "absence_disclaimer": "absence of a search hit does not show that nobody has found this",
+   "conclusion": "PRIOR_ART_FOUND",
+   "description": "the cut representation (2 vertex classes, cross decoder)",
+   "independent_review": "PENDING",
+   "prior_art": [
+    {
+     "relation": "the max-cut ≥ m/2 guarantee; bipartite subgraphs",
+     "source": "S3"
+    }
+   ],
+   "record": "novelty",
+   "result_id": "B18-cross_2",
+   "schema": "genesis-literature-v1",
+   "scope": "one web search; one paper read",
+   "search_record": {
+    "library_searches": [
+     {
+      "files_searched": 8529,
+      "hit_count": 1,
+      "hits": [
+       {
+        "file": "Mathlib/Combinatorics/SimpleGraph/Clique.lean",
+        "line": 379,
+        "text": "def CliqueFree (n : ℕ) : Prop :="
+       }
+      ],
+      "pattern": "def CliqueFree\\b",
+      "revision": "d13f23b723b8a846827a245b89c10fc7d3f11612"
+     },
+     {
+      "files_searched": 8529,
+      "hit_count": 10,
+      "hits": [
+       {
+        "file": "Mathlib/Combinatorics/Optimization/ValuedCSP.lean",
+        "line": 27,
+        "text": "* `Function.HasMaxCutProperty`: Can given binary function express the Max-Cut problem?"
+       },
+       {
+        "file": "Mathlib/Combinatorics/Optimization/ValuedCSP.lean",
+        "line": 79,
+        "text": "/-- Function `f` has Max-Cut property at labels `a` and `b` when `argmin f` is exactly"
+       },
+       {
+        "file": "Mathlib/Combinatorics/Optimization/ValuedCSP.lean",
+        "line": 81,
+        "text": "def Function.HasMaxCutPropertyAt (f : (Fin 2 → D) → C) (a b : D) : Prop :="
+       },
+       {
+        "file": "Mathlib/Combinatorics/Optimization/ValuedCSP.lean",
+        "line": 85,
+        "text": "/-- Function `f` has Max-Cut property at some two non-identical labels. -/"
+       },
+       {
+        "file": "Mathlib/Combinatorics/Optimization/ValuedCSP.lean",
+        "line": 86,
+        "text": "def Function.HasMaxCutProperty (f : (Fin 2 → D) → C) : Prop :="
+       },
+       {
+        "file": "Mathlib/Combinatorics/Optimization/ValuedCSP.lean",
+        "line": 87,
+        "text": "∃ a b : D, a ≠ b ∧ f.HasMaxCutPropertyAt a b"
+       },
+       {
+        "file": "Mathlib/Combinatorics/Optimization/ValuedCSP.lean",
+        "line": 132,
+        "text": "lemma Function.HasMaxCutPropertyAt.rows_lt_aux {C : Type*} [PartialOrder C]"
+       },
+       {
+        "file": "Mathlib/Combinatorics/Optimization/ValuedCSP.lean",
+        "line": 133,
+        "text": "{f : (Fin 2 → D) → C} {a b : D} (mcf : f.HasMaxCutPropertyAt a b) (hab : a ≠ b)"
+       },
+       {
+        "file": "Mathlib/Combinatorics/Optimization/ValuedCSP.lean",
+        "line": 155,
+        "text": "lemma Function.HasMaxCutProperty.forbids_commutativeFractionalPolymorphism"
+       },
+       {
+        "file": "Mathlib/Combinatorics/Optimization/ValuedCSP.lean",
+        "line": 156,
+        "text": "{f : (Fin 2 → D) → C} (mcf : f.HasMaxCutProperty)"
+       }
+      ],
+      "pattern": "[Mm]ax[- ]?[Cc]ut",
+      "revision": "d13f23b723b8a846827a245b89c10fc7d3f11612"
+     }
+    ],
+    "searches": [
+     "Q3"
+    ],
+    "sources_read": [
+     "S3"
+    ]
+   }
+  },
+  {
+   "absence_disclaimer": "absence of a search hit does not show that nobody has found this",
+   "conclusion": "PRIOR_ART_FOUND",
+   "description": "step-by-step Lean replay of E proof objects (W16)",
+   "independent_review": "PENDING",
+   "prior_art": [
+    {
+     "relation": "automated equational proofs validated in Lean",
+     "source": "S4"
+    },
+    {
+     "relation": "superposition proof reconstruction in Lean",
+     "source": "S5"
+    }
+   ],
+   "record": "novelty",
+   "result_id": "B19-W16-lean-replay",
+   "schema": "genesis-literature-v1",
+   "scope": "one web search; two abstracts read",
+   "search_record": {
+    "library_searches": [],
+    "searches": [
+     "Q4"
+    ],
+    "sources_read": [
+     "S4",
+     "S5"
+    ]
+   }
+  }
+ ],
+ "searches": {
+  "note": "Result lists are titles/URLs returned by the search tool; only the fetched sources S1-S5 were read.",
+  "operator": "builder agent (Claude, Genesis builder session) through its WebSearch tool",
+  "searches": [
+   {
+    "mode": "standard",
+    "query": "Krivelevich \"On a conjecture of Tuza about packing and covering of triangles\" Discrete Mathematics 1995",
+    "results": [
+     "https://arxiv.org/pdf/1012.0372",
+     "https://cs.tau.ac.il/~krivelev/papers.html",
+     "https://www.math.tau.ac.il/~krivelev/papers.html",
+     "https://kostochk.web.illinois.edu/docs/accepted/frac-ht.pdf",
+     "https://openproblemgarden.org/comment/reply/46837",
+     "https://www.emergentmind.com/papers/1012.0372",
+     "https://kostochk.web.illinois.edu/docs/accepted/plan-ht.pdf",
+     "https://ar5iv.arxiv.org/html/1012.0372",
+     "https://ar5iv.labs.arxiv.org/html/1806.08809"
+    ],
+    "retrieved_utc": "2026-10-11T14:04:00Z",
+    "search_id": "Q1",
+    "tool": "WebSearch"
+   },
+   {
+    "mode": "standard",
+    "query": "Alon Shapira \"Every monotone graph property is testable\" monotone property closed under removal of edges",
+    "results": [
+     "https://web.math.princeton.edu/~nalon/PDFS/monotone1.pdf",
+     "https://www.math.uni-hamburg.de/home/schacht/2007/monotone_test.pdf",
+     "https://collaborate.princeton.edu/en/publications/every-monotone-graph-property-is-testable/",
+     "https://cris.tau.ac.il/en/publications/every-monotone-graph-property-is-testable/",
+     "https://archive.dimacs.rutgers.edu/archive/Events/2005/abstracts/shapira.html",
+     "https://collaborate.princeton.edu/en/publications/every-monotone-graph-property-is-testable-2/",
+     "https://cs.tau.ac.il/~nogaa/PDFS/MonotoneSTOC.pdf",
+     "https://real.mtak.hu/204134/7/EJC_Fekete_Kun.pdf",
+     "https://cris.tau.ac.il/en/publications/every-monotone-graph-property-is-testable-2/",
+     "https://sugaku.net/oa/W1980424184"
+    ],
+    "retrieved_utc": "2026-10-11T14:04:10Z",
+    "search_id": "Q2",
+    "tool": "WebSearch"
+   },
+   {
+    "mode": "standard",
+    "query": "every graph has a bipartite subgraph with at least half of its edges Erdős 1965 max cut m/2",
+    "results": [
+     "https://repository.lsu.edu/mathematics_pubs/1211",
+     "https://www.math.lsu.edu/~oxley/bin_bip_12.pdf",
+     "https://static.renyi.hu/~p_erdos/1988-12.pdf",
+     "https://collaborate.princeton.edu/en/publications/maximum-cuts-and-judicious-partitions-in-graphs-without-short-cyc/",
+     "https://digitalcommons.memphis.edu/facpubs/5104",
+     "https://www.cambridge.org/core/journals/mathematical-proceedings-of-the-cambridge-philosophical-society/article/abs/large-cuts-in-hypergraphs-via-energy/185967C4988557519802AD34CEDD94B9",
+     "https://collaborate.princeton.edu/en/publications/bipartite-subgraphs/",
+     "https://web.math.princeton.edu/~nalon/PDFS/abks5.pdf",
+     "https://core-prod.cambridgecore.org/core/product/579B58C26FFFF4E4CCA4666326261478/core-reader"
+    ],
+    "retrieved_utc": "2026-10-11T14:04:20Z",
+    "search_id": "Q3",
+    "tool": "WebSearch"
+   },
+   {
+    "mode": "standard",
+    "query": "reconstructing E prover TSTP proofs in Lean 4 proof reconstruction superposition",
+    "results": [
+     "https://arxiv.org/pdf/1908.09479",
+     "https://arxiv.org/pdf/2512.07087",
+     "https://arxiv.org/pdf/2601.14495",
+     "https://ar5iv.labs.arxiv.org/html/1908.09479",
+     "https://reservoir.lean-lang.org/@leanprover-community/auto",
+     "https://drops.dagstuhl.de/entities/document/10.4230/LIPIcs.ITP.2024.10",
+     "https://isabelle.in.tum.de/repos/isabelle/file/e692e0a38bad/src/HOL/Tools/res_reconstruct.ML",
+     "https://www.cl.cam.ac.uk/~lp15/papers/Automation/reconstruction-slides.pdf",
+     "https://drops.dagstuhl.de/storage/00lipics/lipics-vol309-itp2024/LIPIcs.ITP.2024.10/LIPIcs.ITP.2024.10.pdf"
+    ],
+    "retrieved_utc": "2026-10-11T14:14:00Z",
+    "search_id": "Q4",
+    "tool": "WebSearch"
+   }
+  ]
+ }
+}

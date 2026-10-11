@@ -1,0 +1,60 @@
+{
+ "b18_arms": {
+  "concept": {
+   "disproved": 4,
+   "fresh_statements": 16,
+   "proved": 8,
+   "unresolved": 4
+  },
+  "manual": {
+   "disproved": 4,
+   "fresh_statements": 16,
+   "proved": 8,
+   "unresolved": 4
+  },
+  "none": {
+   "disproved": 4,
+   "fresh_statements": 16,
+   "proved": 4,
+   "unresolved": 8
+  },
+  "retrieval": {
+   "disproved": 4,
+   "fresh_statements": 16,
+   "proved": 4,
+   "unresolved": 8
+  }
+ },
+ "controls": {
+  "effort": {
+   "disproved": 4,
+   "fresh_statements": 16,
+   "proved": 4,
+   "search_candidates": 150,
+   "search_cpu_s": 433.9,
+   "search_heartbeats": 400000,
+   "support": {},
+   "unresolved": 8
+  },
+  "placebo": {
+   "disproved": 4,
+   "fresh_statements": 16,
+   "proved": 4,
+   "search_candidates": 230,
+   "search_cpu_s": 277.4,
+   "search_heartbeats": "default",
+   "support": {
+    "gen_placebo_erase": "UNRESOLVED",
+    "gen_placebo_filter": "UNRESOLVED",
+    "gen_placebo_inter": "UNRESOLVED",
+    "gen_placebo_sdiff": "UNRESOLVED",
+    "inst_placebo_c4free": "UNRESOLVED",
+    "inst_placebo_loopfree": "UNRESOLVED",
+    "inst_placebo_matching": "UNRESOLVED",
+    "inst_placebo_nonempty": "UNRESOLVED"
+   },
+   "unresolved": 8
+  }
+ },
+ "reading": "concept (B18) vs placebo (same size, reversed order) vs effort (no concept, 4x search heartbeats) vs manual (B18, equivalent-information alternative)."
+}

@@ -1,0 +1,3384 @@
+{
+ "acceptance": {
+  "check_stage": {
+   "check_sha256": "446a13af04224fb6aa47034eb58f8e1d43e3b11f93c4cfeb28f9c40f3fdec0f5",
+   "cpu_ns": 9426592993,
+   "exit_code": 0,
+   "exits": {
+    "EFFP1": "0",
+    "EFFP2": "0",
+    "EFFP3": "0",
+    "EFFP4": "0",
+    "EFFP5": "0",
+    "EFFP6": "0",
+    "EFFP7": "0",
+    "EFFP8": "0",
+    "check": "0"
+   },
+   "log": "",
+   "peak_memory_bytes": 228732928,
+   "status": "SUCCESS",
+   "wall_ns": 9706122204
+  },
+  "leanchecker": {
+   "EFFP1": true,
+   "EFFP2": true,
+   "EFFP3": true,
+   "EFFP4": true,
+   "EFFP5": true,
+   "EFFP6": true,
+   "EFFP7": true,
+   "EFFP8": true
+  },
+  "receipt_sha256": "05cedf90273ca8489261914a9af737cd662a64982dabc64c01cf4478ea625bed",
+  "status": "CHECKED"
+ },
+ "assumptions": {
+  "allowed_axioms": [
+   "Classical.choice",
+   "Quot.sound",
+   "propext"
+  ],
+  "axioms_used": [
+   "Classical.choice",
+   "Quot.sound",
+   "propext"
+  ],
+  "conventions": [],
+  "lean": "lean@e8baaa71855a616d",
+  "workspace": {
+   "artifact_identity": "95a6ec9f1aadc0d8d1936c34bd0ce4e144b0e35c85df12543cdcafe9ebf36b41",
+   "import_roots": [
+    "Mathlib.Data.Finset.Powerset"
+   ],
+   "mathlib_rev": "d13f23b723b8a846827a245b89c10fc7d3f11612",
+   "source_identity": "a3a7569b6d7636a844c87c2b72ef2170eda0f712ff8d9a1b0f15b069e301c7ef"
+  }
+ },
+ "bindings": [
+  {
+   "proof": "EFFP1.proof",
+   "spec": "EFFConj.effort_loopfree_inter"
+  },
+  {
+   "proof": "EFFP2.proof",
+   "spec": "EFFConj.effort_loopfree_sdiff"
+  },
+  {
+   "proof": "EFFP3.proof",
+   "spec": "EFFConj.effort_loopfree_filter"
+  },
+  {
+   "proof": "EFFP4.proof",
+   "spec": "EFFConj.effort_loopfree_erase"
+  },
+  {
+   "proof": "EFFP5.proof",
+   "spec": "EFFConj.effort_nonempty_inter_negation"
+  },
+  {
+   "proof": "EFFP6.proof",
+   "spec": "EFFConj.effort_nonempty_sdiff_negation"
+  },
+  {
+   "proof": "EFFP7.proof",
+   "spec": "EFFConj.effort_nonempty_filter_negation"
+  },
+  {
+   "proof": "EFFP8.proof",
+   "spec": "EFFConj.effort_nonempty_erase_negation"
+  }
+ ],
+ "costs": {
+  "acceptance_check_cpu_ns": 49491962931,
+  "acceptance_runs": 9,
+  "acceptances": [
+   {
+    "receipt_sha256": "3b7a0f2e9cb29ac43da672441286a4229952dafb500284104b2a1fdbddcffb2e",
+    "statement": "effort_loopfree_inter",
+    "stats": {
+     "check_sha256": "2de76e57e9358006e633109f1549fc329e84d2ec17606399488aa9385ce244d8",
+     "cpu_ns": 2721872547,
+     "exit_code": 0,
+     "exits": {
+      "EFFP1": "0",
+      "check": "0"
+     },
+     "log": "",
+     "peak_memory_bytes": 222167040,
+     "status": "SUCCESS",
+     "wall_ns": 2803961402
+    },
+    "status": "CHECKED"
+   },
+   {
+    "receipt_sha256": "617956026fbc0b2735e2458bf24684cfb836dd3c934336da6f3b5dd3939fa679",
+    "statement": "effort_loopfree_sdiff",
+    "stats": {
+     "check_sha256": "919a3a31380e6a23625ce8b729cdc689d20b440eafc749f982fab750960953b4",
+     "cpu_ns": 3750294922,
+     "exit_code": 0,
+     "exits": {
+      "EFFP1": "0",
+      "EFFP2": "0",
+      "check": "0"
+     },
+     "log": "",
+     "peak_memory_bytes": 222089216,
+     "status": "SUCCESS",
+     "wall_ns": 3899280709
+    },
+    "status": "CHECKED"
+   },
+   {
+    "receipt_sha256": "5e3ea9914334f37bebea9f9f3a2269cfbd0a553158718baa37874698383cb91d",
+    "statement": "effort_loopfree_filter",
+    "stats": {
+     "check_sha256": "b0c93842d556e94954ffbe174a6b801a71bb2e0baf085b1963b770573e79870d",
+     "cpu_ns": 5256178680,
+     "exit_code": 0,
+     "exits": {
+      "EFFP1": "0",
+      "EFFP2": "0",
+      "EFFP3": "0",
+      "check": "0"
+     },
+     "log": "",
+     "peak_memory_bytes": 221884416,
+     "status": "SUCCESS",
+     "wall_ns": 5419744571
+    },
+    "status": "CHECKED"
+   },
+   {
+    "receipt_sha256": "7bc56639045363bba1092869a99763c2bfb4c9bed00bd3002a0e9e47a1383d0c",
+    "statement": "effort_loopfree_erase",
+    "stats": {
+     "check_sha256": "68c187996303217fa77850adb3abddcee4a5c79b30ac8b75172ed6cbe37eaac7",
+     "cpu_ns": 5893283998,
+     "exit_code": 0,
+     "exits": {
+      "EFFP1": "0",
+      "EFFP2": "0",
+      "EFFP3": "0",
+      "EFFP4": "0",
+      "check": "0"
+     },
+     "log": "",
+     "peak_memory_bytes": 224477184,
+     "status": "SUCCESS",
+     "wall_ns": 6084304342
+    },
+    "status": "CHECKED"
+   },
+   {
+    "receipt_sha256": "bf1207f63ec3171b0d716253928aaa3c23cafbfe1891e2ff495c0f6cde65514a",
+    "statement": "effort_nonempty_inter",
+    "stats": {
+     "check_sha256": "673c8962240933d9ff8ca09d7dfd7f15168494a73f1d0b85b7d708ee80e8f238",
+     "cpu_ns": 6497312677,
+     "exit_code": 0,
+     "exits": {
+      "EFFP1": "0",
+      "EFFP2": "0",
+      "EFFP3": "0",
+      "EFFP4": "0",
+      "EFFP5": "0",
+      "check": "0"
+     },
+     "log": "",
+     "peak_memory_bytes": 222998528,
+     "status": "SUCCESS",
+     "wall_ns": 6689024483
+    },
+    "status": "CHECKED"
+   },
+   {
+    "receipt_sha256": "1d5a2f26a4df2ee2280553cfb547732da15670f45fcb240a713e52720a72e41d",
+    "statement": "effort_nonempty_sdiff",
+    "stats": {
+     "check_sha256": "4acb658ba9f0d5e389843f3c5147fc60616caf74fb9ba974e3c4ab8359f55c53",
+     "cpu_ns": 7680495091,
+     "exit_code": 0,
+     "exits": {
+      "EFFP1": "0",
+      "EFFP2": "0",
+      "EFFP3": "0",
+      "EFFP4": "0",
+      "EFFP5": "0",
+      "EFFP6": "0",
+      "check": "0"
+     },
+     "log": "",
+     "peak_memory_bytes": 220094464,
+     "status": "SUCCESS",
+     "wall_ns": 7949603360
+    },
+    "status": "CHECKED"
+   },
+   {
+    "receipt_sha256": "1b48a2104a8153328a92350a51cfec12ca37cd420a67b38a6668c510c6a826e4",
+    "statement": "effort_nonempty_filter",
+    "stats": {
+     "check_sha256": "f56a2a1c52edeefc0c1b344059695c3d6f87f61126e732a0c473a0808f1c00e5",
+     "cpu_ns": 8425812027,
+     "exit_code": 0,
+     "exits": {
+      "EFFP1": "0",
+      "EFFP2": "0",
+      "EFFP3": "0",
+      "EFFP4": "0",
+      "EFFP5": "0",
+      "EFFP6": "0",
+      "EFFP7": "0",
+      "check": "0"
+     },
+     "log": "",
+     "peak_memory_bytes": 221855744,
+     "status": "SUCCESS",
+     "wall_ns": 8687598295
+    },
+    "status": "CHECKED"
+   },
+   {
+    "receipt_sha256": "a73fcd3aaa706bc91991f5b6369b0f52b654ae2011c0d81205c5bdf55c04d1cc",
+    "statement": "effort_nonempty_erase",
+    "stats": {
+     "check_sha256": "c98e83826cd48b53e1f7c3bdca0e46d74f8c272a905b153245f701303c78ad8b",
+     "cpu_ns": 9266712989,
+     "exit_code": 0,
+     "exits": {
+      "EFFP1": "0",
+      "EFFP2": "0",
+      "EFFP3": "0",
+      "EFFP4": "0",
+      "EFFP5": "0",
+      "EFFP6": "0",
+      "EFFP7": "0",
+      "EFFP8": "0",
+      "check": "0"
+     },
+     "log": "",
+     "peak_memory_bytes": 223744000,
+     "status": "SUCCESS",
+     "wall_ns": 9525367362
+    },
+    "status": "CHECKED"
+   }
+  ],
+  "attempts": [
+   {
+    "attempts": [
+     {
+      "compiled": false,
+      "recipe": "elim-with-library",
+      "tactic_sha256": "75462c84e8da3665dded376502e68dfcd98a27b1e66888c4364a69e949d7676d",
+      "tier": 0
+     },
+     {
+      "compiled": false,
+      "recipe": "decide",
+      "tactic_sha256": "5589aa5863c2d85622d06d651add002416e5513afdbb455666cdde01bb3e257d",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "decide-kernel",
+      "tactic_sha256": "9ac77167f92e560c7b03653563b026543eb9e4c018ebd8e1d3c8be05b979ab88",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "unfold-simp",
+      "tactic_sha256": "ef340eba7fc3685691ee1daf722c5157cbd1d9ddf2c8f4e322c480b0ced7ce78",
+      "tier": 1
+     },
+     {
+      "compiled": true,
+      "recipe": "unfold-aesop",
+      "tactic_sha256": "8de7e721871d61b3968169e05868e6ae49ab9e95df25962886705be73a95af2e",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "unfold-omega",
+      "tactic_sha256": "2ce5cac309bf19cd675d1026c6d7170a31f843b7c2a944d6ffcbffd0b3ef8ee2",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "unfold-solve",
+      "tactic_sha256": "6761c036be293e59ff0b95646913ea2dba384059cbec0d389a9b0f4422070ac3",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "apply-hyp:h1",
+      "tactic_sha256": "73e9e7c5ba144839e2b92186ebf39514d1ab9a46bdbdbf7b35a9d0cbae74f694",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "specialize-omega:h1",
+      "tactic_sha256": "17d8b15f5e6cc5bf4afd9251414afcb120f16824a7d80419a6d44daba87b7e21",
+      "tier": 1
+     }
+    ],
+    "charged": {
+     "candidates": 9,
+     "cpu_ns": 2644475286,
+     "wall_ns": 2766454612
+    },
+    "result": "ELABORATION_ERROR",
+    "statement": "effort_loopfree_inter",
+    "target": "EFFConj.effort_loopfree_inter"
+   },
+   {
+    "attempts": [
+     {
+      "compiled": false,
+      "recipe": "elim-with-library",
+      "tactic_sha256": "913cf52fde894b9d610b4880313983b164c324410ef12c65ccbbb34304cd9246",
+      "tier": 0
+     },
+     {
+      "compiled": false,
+      "recipe": "decide",
+      "tactic_sha256": "5589aa5863c2d85622d06d651add002416e5513afdbb455666cdde01bb3e257d",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "decide-kernel",
+      "tactic_sha256": "9ac77167f92e560c7b03653563b026543eb9e4c018ebd8e1d3c8be05b979ab88",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "unfold-simp",
+      "tactic_sha256": "ef340eba7fc3685691ee1daf722c5157cbd1d9ddf2c8f4e322c480b0ced7ce78",
+      "tier": 1
+     },
+     {
+      "compiled": true,
+      "recipe": "unfold-aesop",
+      "tactic_sha256": "8de7e721871d61b3968169e05868e6ae49ab9e95df25962886705be73a95af2e",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "unfold-omega",
+      "tactic_sha256": "2ce5cac309bf19cd675d1026c6d7170a31f843b7c2a944d6ffcbffd0b3ef8ee2",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "unfold-solve",
+      "tactic_sha256": "6761c036be293e59ff0b95646913ea2dba384059cbec0d389a9b0f4422070ac3",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "apply-hyp:h1",
+      "tactic_sha256": "73e9e7c5ba144839e2b92186ebf39514d1ab9a46bdbdbf7b35a9d0cbae74f694",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "specialize-omega:h1",
+      "tactic_sha256": "17d8b15f5e6cc5bf4afd9251414afcb120f16824a7d80419a6d44daba87b7e21",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "library-elim:EFFP1.proof",
+      "tactic_sha256": "91aab5f68a58c1aa3ff8878ab830790ee1e1abfbb6e06c28cdf13d1f99b19839",
+      "tier": 1
+     }
+    ],
+    "charged": {
+     "candidates": 10,
+     "cpu_ns": 5449258869,
+     "wall_ns": 5649358980
+    },
+    "result": "ELABORATION_ERROR",
+    "statement": "effort_loopfree_sdiff",
+    "target": "EFFConj.effort_loopfree_sdiff"
+   },
+   {
+    "attempts": [
+     {
+      "compiled": false,
+      "recipe": "elim-with-library",
+      "tactic_sha256": "88078794c76cfcf6c1da05b24bb9627cb95ef8690bb75b1e09442ea418bbc0c2",
+      "tier": 0
+     },
+     {
+      "compiled": false,
+      "recipe": "decide",
+      "tactic_sha256": "5589aa5863c2d85622d06d651add002416e5513afdbb455666cdde01bb3e257d",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "decide-kernel",
+      "tactic_sha256": "9ac77167f92e560c7b03653563b026543eb9e4c018ebd8e1d3c8be05b979ab88",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "unfold-simp",
+      "tactic_sha256": "c362b4f1fe447a32f63d70250593da67b4638f98f3d3d22556dffb2f8966a26c",
+      "tier": 1
+     },
+     {
+      "compiled": true,
+      "recipe": "unfold-aesop",
+      "tactic_sha256": "64fb54ac7c7bcc4075378acabbb74973b556eb5b43b5b7968ed56109f5937832",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "unfold-omega",
+      "tactic_sha256": "a2f98f08678ed6bfc5addaa6a0833792a9daf87de7fc22a69a8fd72ef417a805",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "unfold-solve",
+      "tactic_sha256": "6761c036be293e59ff0b95646913ea2dba384059cbec0d389a9b0f4422070ac3",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "apply-hyp:h1",
+      "tactic_sha256": "d74992c4d8619fb6829bdd7f6d22c03d0a33d41c48e661d4ce2f5998f1ce90c7",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "specialize-omega:h1",
+      "tactic_sha256": "2db755bdb00ece3207c4bfe275c4e934c160bb97b3fde55b3ff709f4f28b48c2",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "library-elim:EFFP1.proof",
+      "tactic_sha256": "8436dfad383a44a80328509cb010f7e558e79cf2215314fa275d4d0efa499264",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "library-elim:EFFP2.proof",
+      "tactic_sha256": "47b36eb4903ccce9abcad69f9c4f91768cd49f85a87d5b84722b7b58a7a82074",
+      "tier": 1
+     }
+    ],
+    "charged": {
+     "candidates": 11,
+     "cpu_ns": 15381178732,
+     "wall_ns": 15666953460
+    },
+    "result": "ELABORATION_ERROR",
+    "statement": "effort_loopfree_filter",
+    "target": "EFFConj.effort_loopfree_filter"
+   },
+   {
+    "attempts": [
+     {
+      "compiled": false,
+      "recipe": "elim-with-library",
+      "tactic_sha256": "90c5298c3e879c43a46607b8498f38b4a500f8e20a29a379fc72a77c54360b3e",
+      "tier": 0
+     },
+     {
+      "compiled": false,
+      "recipe": "decide",
+      "tactic_sha256": "5589aa5863c2d85622d06d651add002416e5513afdbb455666cdde01bb3e257d",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "decide-kernel",
+      "tactic_sha256": "9ac77167f92e560c7b03653563b026543eb9e4c018ebd8e1d3c8be05b979ab88",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "unfold-simp",
+      "tactic_sha256": "e4fc0a922d4eeb813c1fbb1cc9b4a511c89a60b36e89003ea18d0891b97fc3eb",
+      "tier": 1
+     },
+     {
+      "compiled": true,
+      "recipe": "unfold-aesop",
+      "tactic_sha256": "4a0e1c2fb2ff88560f04a13b8078fd0cfb4370740000227de3663947167aca6d",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "unfold-omega",
+      "tactic_sha256": "dd7d11761a96e3da4c0c87027365521023ebc3aad08f22c5ae5d2bebb8c758cb",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "unfold-solve",
+      "tactic_sha256": "6761c036be293e59ff0b95646913ea2dba384059cbec0d389a9b0f4422070ac3",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "apply-hyp:h1",
+      "tactic_sha256": "d4335e18875b1aa54daff135b79185be6691517526365faeaa26c5d51287d3d2",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "specialize-omega:h1",
+      "tactic_sha256": "dcc7358db0768d6371bb5366a4c1cf4e2ab3d3c5ef126020401243a11edb8707",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "library-elim:EFFP1.proof",
+      "tactic_sha256": "98b338b4f3b3903c1d689609b7b5ff2c41711c2e108ef8331bfc1245556fb88f",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "library-elim:EFFP2.proof",
+      "tactic_sha256": "5d0b28736f4f423c4a560f6cba915cbf270d2f5883e33e1f4c0600893d4b6d65",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "library-elim:EFFP3.proof",
+      "tactic_sha256": "258011269e670f0880b75b3204bd00cc2f322afb3390cde2217124bfab9b5f60",
+      "tier": 1
+     }
+    ],
+    "charged": {
+     "candidates": 12,
+     "cpu_ns": 10715645900,
+     "wall_ns": 10945082585
+    },
+    "result": "ELABORATION_ERROR",
+    "statement": "effort_loopfree_erase",
+    "target": "EFFConj.effort_loopfree_erase"
+   },
+   {
+    "attempts": [
+     {
+      "compiled": false,
+      "recipe": "elim-with-library",
+      "tactic_sha256": "cfba077894c1927e6b4339b8df99ec40e01f3c8ba5d22728a881ae8a769b5d49",
+      "tier": 0
+     },
+     {
+      "compiled": false,
+      "recipe": "decide",
+      "tactic_sha256": "5589aa5863c2d85622d06d651add002416e5513afdbb455666cdde01bb3e257d",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "decide-kernel",
+      "tactic_sha256": "9ac77167f92e560c7b03653563b026543eb9e4c018ebd8e1d3c8be05b979ab88",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "unfold-simp",
+      "tactic_sha256": "ef340eba7fc3685691ee1daf722c5157cbd1d9ddf2c8f4e322c480b0ced7ce78",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "unfold-aesop",
+      "tactic_sha256": "8de7e721871d61b3968169e05868e6ae49ab9e95df25962886705be73a95af2e",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "unfold-omega",
+      "tactic_sha256": "2ce5cac309bf19cd675d1026c6d7170a31f843b7c2a944d6ffcbffd0b3ef8ee2",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "unfold-solve",
+      "tactic_sha256": "6761c036be293e59ff0b95646913ea2dba384059cbec0d389a9b0f4422070ac3",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "apply-hyp:h1",
+      "tactic_sha256": "73e9e7c5ba144839e2b92186ebf39514d1ab9a46bdbdbf7b35a9d0cbae74f694",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "specialize-omega:h1",
+      "tactic_sha256": "17d8b15f5e6cc5bf4afd9251414afcb120f16824a7d80419a6d44daba87b7e21",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "library-elim:EFFP1.proof",
+      "tactic_sha256": "91aab5f68a58c1aa3ff8878ab830790ee1e1abfbb6e06c28cdf13d1f99b19839",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "library-elim:EFFP2.proof",
+      "tactic_sha256": "4c17a62b2c6f5b5bbeeae8451b5fb1841e745eb25c367e1fcf8260ba7ebf8af0",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "library-elim:EFFP3.proof",
+      "tactic_sha256": "109195635e05bf0084703f7a213ae5fe21a3a1d843da2b5d15ba4db705b3bca0",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "library-elim:EFFP4.proof",
+      "tactic_sha256": "fe7cfdcca321dca5012c853c3abd319f8b509b4e4a39eca8060ff45bbe4faa62",
+      "tier": 1
+     }
+    ],
+    "charged": {
+     "candidates": 13,
+     "cpu_ns": 9349431437,
+     "wall_ns": 9547784447
+    },
+    "result": "ELABORATION_ERROR",
+    "statement": "effort_matching_inter",
+    "target": "EFFConj.effort_matching_inter"
+   },
+   {
+    "attempts": [
+     {
+      "compiled": false,
+      "recipe": "elim-with-library",
+      "tactic_sha256": "cfba077894c1927e6b4339b8df99ec40e01f3c8ba5d22728a881ae8a769b5d49",
+      "tier": 0
+     },
+     {
+      "compiled": false,
+      "recipe": "decide",
+      "tactic_sha256": "5589aa5863c2d85622d06d651add002416e5513afdbb455666cdde01bb3e257d",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "decide-kernel",
+      "tactic_sha256": "9ac77167f92e560c7b03653563b026543eb9e4c018ebd8e1d3c8be05b979ab88",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "unfold-simp",
+      "tactic_sha256": "ef340eba7fc3685691ee1daf722c5157cbd1d9ddf2c8f4e322c480b0ced7ce78",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "unfold-aesop",
+      "tactic_sha256": "8de7e721871d61b3968169e05868e6ae49ab9e95df25962886705be73a95af2e",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "unfold-omega",
+      "tactic_sha256": "2ce5cac309bf19cd675d1026c6d7170a31f843b7c2a944d6ffcbffd0b3ef8ee2",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "unfold-solve",
+      "tactic_sha256": "6761c036be293e59ff0b95646913ea2dba384059cbec0d389a9b0f4422070ac3",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "apply-hyp:h1",
+      "tactic_sha256": "73e9e7c5ba144839e2b92186ebf39514d1ab9a46bdbdbf7b35a9d0cbae74f694",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "specialize-omega:h1",
+      "tactic_sha256": "17d8b15f5e6cc5bf4afd9251414afcb120f16824a7d80419a6d44daba87b7e21",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "library-elim:EFFP1.proof",
+      "tactic_sha256": "91aab5f68a58c1aa3ff8878ab830790ee1e1abfbb6e06c28cdf13d1f99b19839",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "library-elim:EFFP2.proof",
+      "tactic_sha256": "4c17a62b2c6f5b5bbeeae8451b5fb1841e745eb25c367e1fcf8260ba7ebf8af0",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "library-elim:EFFP3.proof",
+      "tactic_sha256": "109195635e05bf0084703f7a213ae5fe21a3a1d843da2b5d15ba4db705b3bca0",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "library-elim:EFFP4.proof",
+      "tactic_sha256": "fe7cfdcca321dca5012c853c3abd319f8b509b4e4a39eca8060ff45bbe4faa62",
+      "tier": 1
+     }
+    ],
+    "charged": {
+     "candidates": 13,
+     "cpu_ns": 13136103012,
+     "wall_ns": 13479707589
+    },
+    "result": "ELABORATION_ERROR",
+    "statement": "effort_matching_sdiff",
+    "target": "EFFConj.effort_matching_sdiff"
+   },
+   {
+    "attempts": [
+     {
+      "compiled": false,
+      "recipe": "elim-with-library",
+      "tactic_sha256": "055a040ade8750f023957cbd201a04897d1a1d53d49d45a714ac745a901ef740",
+      "tier": 0
+     },
+     {
+      "compiled": false,
+      "recipe": "decide",
+      "tactic_sha256": "5589aa5863c2d85622d06d651add002416e5513afdbb455666cdde01bb3e257d",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "decide-kernel",
+      "tactic_sha256": "9ac77167f92e560c7b03653563b026543eb9e4c018ebd8e1d3c8be05b979ab88",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "unfold-simp",
+      "tactic_sha256": "c362b4f1fe447a32f63d70250593da67b4638f98f3d3d22556dffb2f8966a26c",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "unfold-aesop",
+      "tactic_sha256": "64fb54ac7c7bcc4075378acabbb74973b556eb5b43b5b7968ed56109f5937832",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "unfold-omega",
+      "tactic_sha256": "a2f98f08678ed6bfc5addaa6a0833792a9daf87de7fc22a69a8fd72ef417a805",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "unfold-solve",
+      "tactic_sha256": "6761c036be293e59ff0b95646913ea2dba384059cbec0d389a9b0f4422070ac3",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "apply-hyp:h1",
+      "tactic_sha256": "d74992c4d8619fb6829bdd7f6d22c03d0a33d41c48e661d4ce2f5998f1ce90c7",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "specialize-omega:h1",
+      "tactic_sha256": "2db755bdb00ece3207c4bfe275c4e934c160bb97b3fde55b3ff709f4f28b48c2",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "library-elim:EFFP1.proof",
+      "tactic_sha256": "8436dfad383a44a80328509cb010f7e558e79cf2215314fa275d4d0efa499264",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "library-elim:EFFP2.proof",
+      "tactic_sha256": "47b36eb4903ccce9abcad69f9c4f91768cd49f85a87d5b84722b7b58a7a82074",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "library-elim:EFFP3.proof",
+      "tactic_sha256": "636fb50baa5c9580560c09bc6a0226ae1fefa1d597408a6370fca3c7d47bd88b",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "library-elim:EFFP4.proof",
+      "tactic_sha256": "91872491108b675c2449e6307c2241b6250fce1e63d33e7e5e64180d0fd02340",
+      "tier": 1
+     }
+    ],
+    "charged": {
+     "candidates": 13,
+     "cpu_ns": 12756871221,
+     "wall_ns": 13047242416
+    },
+    "result": "ELABORATION_ERROR",
+    "statement": "effort_matching_filter",
+    "target": "EFFConj.effort_matching_filter"
+   },
+   {
+    "attempts": [
+     {
+      "compiled": false,
+      "recipe": "elim-with-library",
+      "tactic_sha256": "18c07bf7107489430e264bbc8ba303657d5ba9d4668094b79d6dfea60089bcf2",
+      "tier": 0
+     },
+     {
+      "compiled": false,
+      "recipe": "decide",
+      "tactic_sha256": "5589aa5863c2d85622d06d651add002416e5513afdbb455666cdde01bb3e257d",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "decide-kernel",
+      "tactic_sha256": "9ac77167f92e560c7b03653563b026543eb9e4c018ebd8e1d3c8be05b979ab88",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "unfold-simp",
+      "tactic_sha256": "e4fc0a922d4eeb813c1fbb1cc9b4a511c89a60b36e89003ea18d0891b97fc3eb",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "unfold-aesop",
+      "tactic_sha256": "4a0e1c2fb2ff88560f04a13b8078fd0cfb4370740000227de3663947167aca6d",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "unfold-omega",
+      "tactic_sha256": "dd7d11761a96e3da4c0c87027365521023ebc3aad08f22c5ae5d2bebb8c758cb",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "unfold-solve",
+      "tactic_sha256": "6761c036be293e59ff0b95646913ea2dba384059cbec0d389a9b0f4422070ac3",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "apply-hyp:h1",
+      "tactic_sha256": "d4335e18875b1aa54daff135b79185be6691517526365faeaa26c5d51287d3d2",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "specialize-omega:h1",
+      "tactic_sha256": "dcc7358db0768d6371bb5366a4c1cf4e2ab3d3c5ef126020401243a11edb8707",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "library-elim:EFFP1.proof",
+      "tactic_sha256": "98b338b4f3b3903c1d689609b7b5ff2c41711c2e108ef8331bfc1245556fb88f",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "library-elim:EFFP2.proof",
+      "tactic_sha256": "5d0b28736f4f423c4a560f6cba915cbf270d2f5883e33e1f4c0600893d4b6d65",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "library-elim:EFFP3.proof",
+      "tactic_sha256": "258011269e670f0880b75b3204bd00cc2f322afb3390cde2217124bfab9b5f60",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "library-elim:EFFP4.proof",
+      "tactic_sha256": "503aa27228a2486b87c04391a6d7e881a236a7d0f6f8d94548d8d2733400956c",
+      "tier": 1
+     }
+    ],
+    "charged": {
+     "candidates": 13,
+     "cpu_ns": 9079275696,
+     "wall_ns": 9278500252
+    },
+    "result": "ELABORATION_ERROR",
+    "statement": "effort_matching_erase",
+    "target": "EFFConj.effort_matching_erase"
+   },
+   {
+    "attempts": [
+     {
+      "compiled": false,
+      "recipe": "elim-with-library",
+      "tactic_sha256": "cfba077894c1927e6b4339b8df99ec40e01f3c8ba5d22728a881ae8a769b5d49",
+      "tier": 0
+     },
+     {
+      "compiled": false,
+      "recipe": "decide",
+      "tactic_sha256": "5589aa5863c2d85622d06d651add002416e5513afdbb455666cdde01bb3e257d",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "decide-kernel",
+      "tactic_sha256": "9ac77167f92e560c7b03653563b026543eb9e4c018ebd8e1d3c8be05b979ab88",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "unfold-simp",
+      "tactic_sha256": "ef340eba7fc3685691ee1daf722c5157cbd1d9ddf2c8f4e322c480b0ced7ce78",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "unfold-aesop",
+      "tactic_sha256": "8de7e721871d61b3968169e05868e6ae49ab9e95df25962886705be73a95af2e",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "unfold-omega",
+      "tactic_sha256": "2ce5cac309bf19cd675d1026c6d7170a31f843b7c2a944d6ffcbffd0b3ef8ee2",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "unfold-solve",
+      "tactic_sha256": "6761c036be293e59ff0b95646913ea2dba384059cbec0d389a9b0f4422070ac3",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "apply-hyp:h1",
+      "tactic_sha256": "73e9e7c5ba144839e2b92186ebf39514d1ab9a46bdbdbf7b35a9d0cbae74f694",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "specialize-omega:h1",
+      "tactic_sha256": "17d8b15f5e6cc5bf4afd9251414afcb120f16824a7d80419a6d44daba87b7e21",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "library-elim:EFFP1.proof",
+      "tactic_sha256": "91aab5f68a58c1aa3ff8878ab830790ee1e1abfbb6e06c28cdf13d1f99b19839",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "library-elim:EFFP2.proof",
+      "tactic_sha256": "4c17a62b2c6f5b5bbeeae8451b5fb1841e745eb25c367e1fcf8260ba7ebf8af0",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "library-elim:EFFP3.proof",
+      "tactic_sha256": "109195635e05bf0084703f7a213ae5fe21a3a1d843da2b5d15ba4db705b3bca0",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "library-elim:EFFP4.proof",
+      "tactic_sha256": "fe7cfdcca321dca5012c853c3abd319f8b509b4e4a39eca8060ff45bbe4faa62",
+      "tier": 1
+     }
+    ],
+    "charged": {
+     "candidates": 13,
+     "cpu_ns": 87845385179,
+     "wall_ns": 88894336948
+    },
+    "result": "RESOURCE_LIMIT",
+    "statement": "effort_c4free_inter",
+    "target": "EFFConj.effort_c4free_inter"
+   },
+   {
+    "attempts": [
+     {
+      "compiled": false,
+      "recipe": "elim-with-library",
+      "tactic_sha256": "cfba077894c1927e6b4339b8df99ec40e01f3c8ba5d22728a881ae8a769b5d49",
+      "tier": 0
+     },
+     {
+      "compiled": false,
+      "recipe": "decide",
+      "tactic_sha256": "5589aa5863c2d85622d06d651add002416e5513afdbb455666cdde01bb3e257d",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "decide-kernel",
+      "tactic_sha256": "9ac77167f92e560c7b03653563b026543eb9e4c018ebd8e1d3c8be05b979ab88",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "unfold-simp",
+      "tactic_sha256": "ef340eba7fc3685691ee1daf722c5157cbd1d9ddf2c8f4e322c480b0ced7ce78",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "unfold-aesop",
+      "tactic_sha256": "8de7e721871d61b3968169e05868e6ae49ab9e95df25962886705be73a95af2e",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "unfold-omega",
+      "tactic_sha256": "2ce5cac309bf19cd675d1026c6d7170a31f843b7c2a944d6ffcbffd0b3ef8ee2",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "unfold-solve",
+      "tactic_sha256": "6761c036be293e59ff0b95646913ea2dba384059cbec0d389a9b0f4422070ac3",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "apply-hyp:h1",
+      "tactic_sha256": "73e9e7c5ba144839e2b92186ebf39514d1ab9a46bdbdbf7b35a9d0cbae74f694",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "specialize-omega:h1",
+      "tactic_sha256": "17d8b15f5e6cc5bf4afd9251414afcb120f16824a7d80419a6d44daba87b7e21",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "library-elim:EFFP1.proof",
+      "tactic_sha256": "91aab5f68a58c1aa3ff8878ab830790ee1e1abfbb6e06c28cdf13d1f99b19839",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "library-elim:EFFP2.proof",
+      "tactic_sha256": "4c17a62b2c6f5b5bbeeae8451b5fb1841e745eb25c367e1fcf8260ba7ebf8af0",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "library-elim:EFFP3.proof",
+      "tactic_sha256": "109195635e05bf0084703f7a213ae5fe21a3a1d843da2b5d15ba4db705b3bca0",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "library-elim:EFFP4.proof",
+      "tactic_sha256": "fe7cfdcca321dca5012c853c3abd319f8b509b4e4a39eca8060ff45bbe4faa62",
+      "tier": 1
+     }
+    ],
+    "charged": {
+     "candidates": 13,
+     "cpu_ns": 88464532987,
+     "wall_ns": 89241365416
+    },
+    "result": "RESOURCE_LIMIT",
+    "statement": "effort_c4free_sdiff",
+    "target": "EFFConj.effort_c4free_sdiff"
+   },
+   {
+    "attempts": [
+     {
+      "compiled": false,
+      "recipe": "elim-with-library",
+      "tactic_sha256": "055a040ade8750f023957cbd201a04897d1a1d53d49d45a714ac745a901ef740",
+      "tier": 0
+     },
+     {
+      "compiled": false,
+      "recipe": "decide",
+      "tactic_sha256": "5589aa5863c2d85622d06d651add002416e5513afdbb455666cdde01bb3e257d",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "decide-kernel",
+      "tactic_sha256": "9ac77167f92e560c7b03653563b026543eb9e4c018ebd8e1d3c8be05b979ab88",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "unfold-simp",
+      "tactic_sha256": "c362b4f1fe447a32f63d70250593da67b4638f98f3d3d22556dffb2f8966a26c",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "unfold-aesop",
+      "tactic_sha256": "64fb54ac7c7bcc4075378acabbb74973b556eb5b43b5b7968ed56109f5937832",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "unfold-omega",
+      "tactic_sha256": "a2f98f08678ed6bfc5addaa6a0833792a9daf87de7fc22a69a8fd72ef417a805",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "unfold-solve",
+      "tactic_sha256": "6761c036be293e59ff0b95646913ea2dba384059cbec0d389a9b0f4422070ac3",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "apply-hyp:h1",
+      "tactic_sha256": "d74992c4d8619fb6829bdd7f6d22c03d0a33d41c48e661d4ce2f5998f1ce90c7",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "specialize-omega:h1",
+      "tactic_sha256": "2db755bdb00ece3207c4bfe275c4e934c160bb97b3fde55b3ff709f4f28b48c2",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "library-elim:EFFP1.proof",
+      "tactic_sha256": "8436dfad383a44a80328509cb010f7e558e79cf2215314fa275d4d0efa499264",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "library-elim:EFFP2.proof",
+      "tactic_sha256": "47b36eb4903ccce9abcad69f9c4f91768cd49f85a87d5b84722b7b58a7a82074",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "library-elim:EFFP3.proof",
+      "tactic_sha256": "636fb50baa5c9580560c09bc6a0226ae1fefa1d597408a6370fca3c7d47bd88b",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "library-elim:EFFP4.proof",
+      "tactic_sha256": "91872491108b675c2449e6307c2241b6250fce1e63d33e7e5e64180d0fd02340",
+      "tier": 1
+     }
+    ],
+    "charged": {
+     "candidates": 13,
+     "cpu_ns": 85451872419,
+     "wall_ns": 86567794656
+    },
+    "result": "RESOURCE_LIMIT",
+    "statement": "effort_c4free_filter",
+    "target": "EFFConj.effort_c4free_filter"
+   },
+   {
+    "attempts": [
+     {
+      "compiled": false,
+      "recipe": "elim-with-library",
+      "tactic_sha256": "18c07bf7107489430e264bbc8ba303657d5ba9d4668094b79d6dfea60089bcf2",
+      "tier": 0
+     },
+     {
+      "compiled": false,
+      "recipe": "decide",
+      "tactic_sha256": "5589aa5863c2d85622d06d651add002416e5513afdbb455666cdde01bb3e257d",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "decide-kernel",
+      "tactic_sha256": "9ac77167f92e560c7b03653563b026543eb9e4c018ebd8e1d3c8be05b979ab88",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "unfold-simp",
+      "tactic_sha256": "e4fc0a922d4eeb813c1fbb1cc9b4a511c89a60b36e89003ea18d0891b97fc3eb",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "unfold-aesop",
+      "tactic_sha256": "4a0e1c2fb2ff88560f04a13b8078fd0cfb4370740000227de3663947167aca6d",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "unfold-omega",
+      "tactic_sha256": "dd7d11761a96e3da4c0c87027365521023ebc3aad08f22c5ae5d2bebb8c758cb",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "unfold-solve",
+      "tactic_sha256": "6761c036be293e59ff0b95646913ea2dba384059cbec0d389a9b0f4422070ac3",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "apply-hyp:h1",
+      "tactic_sha256": "d4335e18875b1aa54daff135b79185be6691517526365faeaa26c5d51287d3d2",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "specialize-omega:h1",
+      "tactic_sha256": "dcc7358db0768d6371bb5366a4c1cf4e2ab3d3c5ef126020401243a11edb8707",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "library-elim:EFFP1.proof",
+      "tactic_sha256": "98b338b4f3b3903c1d689609b7b5ff2c41711c2e108ef8331bfc1245556fb88f",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "library-elim:EFFP2.proof",
+      "tactic_sha256": "5d0b28736f4f423c4a560f6cba915cbf270d2f5883e33e1f4c0600893d4b6d65",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "library-elim:EFFP3.proof",
+      "tactic_sha256": "258011269e670f0880b75b3204bd00cc2f322afb3390cde2217124bfab9b5f60",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "library-elim:EFFP4.proof",
+      "tactic_sha256": "503aa27228a2486b87c04391a6d7e881a236a7d0f6f8d94548d8d2733400956c",
+      "tier": 1
+     }
+    ],
+    "charged": {
+     "candidates": 13,
+     "cpu_ns": 88955123678,
+     "wall_ns": 103163608517
+    },
+    "result": "RESOURCE_LIMIT",
+    "statement": "effort_c4free_erase",
+    "target": "EFFConj.effort_c4free_erase"
+   },
+   {
+    "attempts": [
+     {
+      "compiled": true,
+      "recipe": "counterexample-evaluation",
+      "tactic_sha256": "a9a894e3b9047e0043641f380c202f4edcc39930c5fa745a76ec21063e61bc72",
+      "tier": 0
+     }
+    ],
+    "charged": {
+     "candidates": 1,
+     "cpu_ns": 1147089248,
+     "wall_ns": 1239378599
+    },
+    "result": "COMPILED",
+    "statement": "effort_nonempty_inter",
+    "target": "EFFConj.effort_nonempty_inter_negation"
+   },
+   {
+    "attempts": [
+     {
+      "compiled": true,
+      "recipe": "counterexample-evaluation",
+      "tactic_sha256": "be75c53876b5e13c8c7f0b739f6c606c0fe54c093903498139ab585d44820c3b",
+      "tier": 0
+     }
+    ],
+    "charged": {
+     "candidates": 1,
+     "cpu_ns": 1182110031,
+     "wall_ns": 1255531560
+    },
+    "result": "COMPILED",
+    "statement": "effort_nonempty_sdiff",
+    "target": "EFFConj.effort_nonempty_sdiff_negation"
+   },
+   {
+    "attempts": [
+     {
+      "compiled": true,
+      "recipe": "counterexample-evaluation",
+      "tactic_sha256": "48843b0f47278ae621e02e9572cea60e84d29ae0fd4cc9a0816e0fd660ec09ee",
+      "tier": 0
+     }
+    ],
+    "charged": {
+     "candidates": 1,
+     "cpu_ns": 1286125383,
+     "wall_ns": 1335979058
+    },
+    "result": "COMPILED",
+    "statement": "effort_nonempty_filter",
+    "target": "EFFConj.effort_nonempty_filter_negation"
+   },
+   {
+    "attempts": [
+     {
+      "compiled": true,
+      "recipe": "counterexample-evaluation",
+      "tactic_sha256": "1139756723036042773e4229d65b414e451e91423d3ed2816dd918a08642e088",
+      "tier": 0
+     }
+    ],
+    "charged": {
+     "candidates": 1,
+     "cpu_ns": 1089647893,
+     "wall_ns": 1146755329
+    },
+    "result": "COMPILED",
+    "statement": "effort_nonempty_erase",
+    "target": "EFFConj.effort_nonempty_erase_negation"
+   }
+  ],
+  "search_candidates": 150,
+  "search_context_cpu_ns": 17641432236,
+  "search_cpu_ns": 433934126971,
+  "search_runs": 16
+ },
+ "counterexamples": [
+  {
+   "checked": true,
+   "statement": "effort_nonempty_inter",
+   "values": {
+    "S": "({(3, 2)} : GT.Edges)",
+    "T": "({(1, 0)} : GT.Edges)"
+   }
+  },
+  {
+   "checked": true,
+   "statement": "effort_nonempty_sdiff",
+   "values": {
+    "S": "({(0, 3)} : GT.Edges)",
+    "T": "({(0, 3), (3, 3)} : GT.Edges)"
+   }
+  },
+  {
+   "checked": true,
+   "statement": "effort_nonempty_filter",
+   "values": {
+    "S": "({(1, 2), (2, 3)} : GT.Edges)",
+    "q": "(fun e => decide (e ∈ (∅ : GT.Edges)))"
+   }
+  },
+  {
+   "checked": true,
+   "statement": "effort_nonempty_erase",
+   "values": {
+    "S": "({(3, 1)} : GT.Edges)",
+    "e": "((3, 1) : ℕ × ℕ)"
+   }
+  }
+ ],
+ "declarations": [
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "GTDefs",
+   "name": "GT.TriangleFree",
+   "type_sha256": "c98548115419ec271dfd495799f10b35c81fad06e346ef970bd969a518c2a9f4"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "GTDefs",
+   "name": "GT.Edges",
+   "type_sha256": "baaddf70fb5d432b8bd948ef91d6f910124a6d138edae4d5f000c4610ddc8eae"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "GTDefs",
+   "name": "GT.instDecidableTriangleFree",
+   "type_sha256": "5f6ad93fcd86d217b85aa0d5ae9d8484d2f18f9af307b85f1d55bcb68ce406d1"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "HSDefs",
+   "name": "HS.instDecidableBounded8",
+   "type_sha256": "bb73792b7b918c05e489e5be220ab0e645e6d75f1b8616f9f4eb5c0dd437d9d2"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "HSDefs",
+   "name": "HS.Bounded8",
+   "type_sha256": "c98548115419ec271dfd495799f10b35c81fad06e346ef970bd969a518c2a9f4"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "HSDefs",
+   "name": "HS.instDecidableSimple",
+   "type_sha256": "7c27c71eaad7318747b484aa82461f70d01434b8c83c502b94d09613463fea20"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "HSDefs",
+   "name": "HS.Simple",
+   "type_sha256": "c98548115419ec271dfd495799f10b35c81fad06e346ef970bd969a518c2a9f4"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "HSConj",
+   "name": "HSConj.down_bounded",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "HSConj",
+   "name": "HSConj.down_simple",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "HSConj",
+   "name": "HSConj.down_tf",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "HSConj",
+   "name": "HSConj.inter_tf",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "HSConj",
+   "name": "HSConj.inter_simple",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "RCDefs",
+   "name": "RC.C0",
+   "type_sha256": "9e56932812f3736513e0f638114f0463ac36ec2d16bb971de8dbb8a8fc4c56bc"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "G4Defs",
+   "name": "G4.verts",
+   "type_sha256": "7a1ef65cd458ebf10bcecd44c843b1710d493ee0d98e109b6abc53d948459791"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "G4Defs",
+   "name": "G4.adj",
+   "type_sha256": "af2cc6046b4db7f006731f612da96fe9072947a3524d785304d4acef542f9814"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "G4Defs",
+   "name": "G4.instDecidableAdj",
+   "type_sha256": "15bfca590acf8edebe32601b938585677ac6d2a4d3d45c318ce25da607e3af52"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "G4Defs",
+   "name": "G4.C4Free",
+   "type_sha256": "c98548115419ec271dfd495799f10b35c81fad06e346ef970bd969a518c2a9f4"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "G4Defs",
+   "name": "G4.instDecidableC4Free",
+   "type_sha256": "696d08db70be0d43900686ce88431e9640ecc9ab7d9c645364f85ffea376c365"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "FFDefs",
+   "name": "FF.LoopFree",
+   "type_sha256": "c98548115419ec271dfd495799f10b35c81fad06e346ef970bd969a518c2a9f4"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "FFDefs",
+   "name": "FF.Matching",
+   "type_sha256": "c98548115419ec271dfd495799f10b35c81fad06e346ef970bd969a518c2a9f4"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "FFDefs",
+   "name": "FF.instDecidableMatching",
+   "type_sha256": "f1eb605ce2edb6ef7bb1cf8da2ed3f4e9fa42c30ed97cb62b915a3a8ad23a2ff"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "FFDefs",
+   "name": "FF.instDecidableNonEmpty",
+   "type_sha256": "93046c8536d6d52cc5d00890d47f133c6eb453baf84cd131783aed6f38cfcb03"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "FFDefs",
+   "name": "FF.NonEmpty",
+   "type_sha256": "c98548115419ec271dfd495799f10b35c81fad06e346ef970bd969a518c2a9f4"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "FFDefs",
+   "name": "FF.instDecidableLoopFree",
+   "type_sha256": "b254270f9c7a70752543b6e8548e183942a64fd80cf9cbf1a76167625b0346cf"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "EFFConj",
+   "name": "EFFConj.effort_nonempty_erase_negation",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "EFFConj",
+   "name": "EFFConj.effort_nonempty_sdiff",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "EFFConj",
+   "name": "EFFConj.effort_matching_erase",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "EFFConj",
+   "name": "EFFConj.effort_matching_inter",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "EFFConj",
+   "name": "EFFConj.effort_c4free_inter",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "EFFConj",
+   "name": "EFFConj.effort_loopfree_inter",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "EFFConj",
+   "name": "EFFConj.effort_nonempty_inter_negation",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "EFFConj",
+   "name": "EFFConj.effort_nonempty_inter",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "EFFConj",
+   "name": "EFFConj.effort_matching_filter",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "EFFConj",
+   "name": "EFFConj.effort_nonempty_filter",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "EFFConj",
+   "name": "EFFConj.effort_matching_sdiff",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "EFFConj",
+   "name": "EFFConj.effort_loopfree_erase",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "EFFConj",
+   "name": "EFFConj.effort_c4free_sdiff",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "EFFConj",
+   "name": "EFFConj.effort_nonempty_filter_negation",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "EFFConj",
+   "name": "EFFConj.effort_nonempty_erase",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "EFFConj",
+   "name": "EFFConj.effort_c4free_filter",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "EFFConj",
+   "name": "EFFConj.effort_nonempty_sdiff_negation",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "EFFConj",
+   "name": "EFFConj.effort_loopfree_filter",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "EFFConj",
+   "name": "EFFConj.effort_c4free_erase",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "EFFConj",
+   "name": "EFFConj.effort_loopfree_sdiff",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "theorem",
+   "module": "EFFP1",
+   "name": "EFFP1.proof",
+   "type_sha256": "eb9bf0b7afb0288ec8b3e1437334a510a44942aaed41ee6bb656b441246ad6a6"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "theorem",
+   "module": "EFFP2",
+   "name": "EFFP2.proof",
+   "type_sha256": "215dcc8bbbac21f1b61ab4c06ea37fdf7e989b7daf12b13f24401d5504a7cacb"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "theorem",
+   "module": "EFFP3",
+   "name": "EFFP3.proof",
+   "type_sha256": "64e2d9eb69da4e00104dce76d080154819fef37a2af08af99d3a19c5c4abacf8"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "theorem",
+   "module": "EFFP4",
+   "name": "EFFP4.proof",
+   "type_sha256": "21ae6d6e95ff42f30ef7236899e3598b9c7575d7138a2310a38bf4d5f98d5a33"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "theorem",
+   "module": "EFFP5",
+   "name": "EFFP5.proof",
+   "type_sha256": "a41d5b8470edad16e45860602617ca9e84d9fedef94cbaf94b4363864f48d44e"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "theorem",
+   "module": "EFFP6",
+   "name": "EFFP6.proof",
+   "type_sha256": "13e03a3c1213b59134c52779da49dad8a1a24b41fcfadfb37e044a320047076d"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "theorem",
+   "module": "EFFP7",
+   "name": "EFFP7.proof",
+   "type_sha256": "77bd5190c101196443673201f94fdf9137ec6ade60e1bb72996701c1ec5552ec"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "theorem",
+   "module": "EFFP8",
+   "name": "EFFP8.proof",
+   "type_sha256": "f992c030fe73d32635694a2e910abc2ddf7057b8423ea8bb9bb81b6ec829ce04"
+  }
+ ],
+ "definitions": [
+  {
+   "module": "GTDefs",
+   "name": "GT.TriangleFree",
+   "origin": "trusted-generated",
+   "type_sha256": "c98548115419ec271dfd495799f10b35c81fad06e346ef970bd969a518c2a9f4"
+  },
+  {
+   "module": "GTDefs",
+   "name": "GT.Edges",
+   "origin": "trusted-generated",
+   "type_sha256": "baaddf70fb5d432b8bd948ef91d6f910124a6d138edae4d5f000c4610ddc8eae"
+  },
+  {
+   "module": "GTDefs",
+   "name": "GT.instDecidableTriangleFree",
+   "origin": "trusted-generated",
+   "type_sha256": "5f6ad93fcd86d217b85aa0d5ae9d8484d2f18f9af307b85f1d55bcb68ce406d1"
+  },
+  {
+   "module": "HSDefs",
+   "name": "HS.instDecidableBounded8",
+   "origin": "trusted-generated",
+   "type_sha256": "bb73792b7b918c05e489e5be220ab0e645e6d75f1b8616f9f4eb5c0dd437d9d2"
+  },
+  {
+   "module": "HSDefs",
+   "name": "HS.Bounded8",
+   "origin": "trusted-generated",
+   "type_sha256": "c98548115419ec271dfd495799f10b35c81fad06e346ef970bd969a518c2a9f4"
+  },
+  {
+   "module": "HSDefs",
+   "name": "HS.instDecidableSimple",
+   "origin": "trusted-generated",
+   "type_sha256": "7c27c71eaad7318747b484aa82461f70d01434b8c83c502b94d09613463fea20"
+  },
+  {
+   "module": "HSDefs",
+   "name": "HS.Simple",
+   "origin": "trusted-generated",
+   "type_sha256": "c98548115419ec271dfd495799f10b35c81fad06e346ef970bd969a518c2a9f4"
+  },
+  {
+   "module": "HSConj",
+   "name": "HSConj.down_bounded",
+   "origin": "trusted-generated",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "module": "HSConj",
+   "name": "HSConj.down_simple",
+   "origin": "trusted-generated",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "module": "HSConj",
+   "name": "HSConj.down_tf",
+   "origin": "trusted-generated",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "module": "HSConj",
+   "name": "HSConj.inter_tf",
+   "origin": "trusted-generated",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "module": "HSConj",
+   "name": "HSConj.inter_simple",
+   "origin": "trusted-generated",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "module": "RCDefs",
+   "name": "RC.C0",
+   "origin": "trusted-generated",
+   "type_sha256": "9e56932812f3736513e0f638114f0463ac36ec2d16bb971de8dbb8a8fc4c56bc"
+  },
+  {
+   "module": "G4Defs",
+   "name": "G4.verts",
+   "origin": "trusted-generated",
+   "type_sha256": "7a1ef65cd458ebf10bcecd44c843b1710d493ee0d98e109b6abc53d948459791"
+  },
+  {
+   "module": "G4Defs",
+   "name": "G4.adj",
+   "origin": "trusted-generated",
+   "type_sha256": "af2cc6046b4db7f006731f612da96fe9072947a3524d785304d4acef542f9814"
+  },
+  {
+   "module": "G4Defs",
+   "name": "G4.instDecidableAdj",
+   "origin": "trusted-generated",
+   "type_sha256": "15bfca590acf8edebe32601b938585677ac6d2a4d3d45c318ce25da607e3af52"
+  },
+  {
+   "module": "G4Defs",
+   "name": "G4.C4Free",
+   "origin": "trusted-generated",
+   "type_sha256": "c98548115419ec271dfd495799f10b35c81fad06e346ef970bd969a518c2a9f4"
+  },
+  {
+   "module": "G4Defs",
+   "name": "G4.instDecidableC4Free",
+   "origin": "trusted-generated",
+   "type_sha256": "696d08db70be0d43900686ce88431e9640ecc9ab7d9c645364f85ffea376c365"
+  },
+  {
+   "module": "FFDefs",
+   "name": "FF.LoopFree",
+   "origin": "trusted-generated",
+   "type_sha256": "c98548115419ec271dfd495799f10b35c81fad06e346ef970bd969a518c2a9f4"
+  },
+  {
+   "module": "FFDefs",
+   "name": "FF.Matching",
+   "origin": "trusted-generated",
+   "type_sha256": "c98548115419ec271dfd495799f10b35c81fad06e346ef970bd969a518c2a9f4"
+  },
+  {
+   "module": "FFDefs",
+   "name": "FF.instDecidableMatching",
+   "origin": "trusted-generated",
+   "type_sha256": "f1eb605ce2edb6ef7bb1cf8da2ed3f4e9fa42c30ed97cb62b915a3a8ad23a2ff"
+  },
+  {
+   "module": "FFDefs",
+   "name": "FF.instDecidableNonEmpty",
+   "origin": "trusted-generated",
+   "type_sha256": "93046c8536d6d52cc5d00890d47f133c6eb453baf84cd131783aed6f38cfcb03"
+  },
+  {
+   "module": "FFDefs",
+   "name": "FF.NonEmpty",
+   "origin": "trusted-generated",
+   "type_sha256": "c98548115419ec271dfd495799f10b35c81fad06e346ef970bd969a518c2a9f4"
+  },
+  {
+   "module": "FFDefs",
+   "name": "FF.instDecidableLoopFree",
+   "origin": "trusted-generated",
+   "type_sha256": "b254270f9c7a70752543b6e8548e183942a64fd80cf9cbf1a76167625b0346cf"
+  },
+  {
+   "module": "EFFConj",
+   "name": "EFFConj.effort_nonempty_erase_negation",
+   "origin": "trusted-generated",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "module": "EFFConj",
+   "name": "EFFConj.effort_nonempty_sdiff",
+   "origin": "trusted-generated",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "module": "EFFConj",
+   "name": "EFFConj.effort_matching_erase",
+   "origin": "trusted-generated",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "module": "EFFConj",
+   "name": "EFFConj.effort_matching_inter",
+   "origin": "trusted-generated",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "module": "EFFConj",
+   "name": "EFFConj.effort_c4free_inter",
+   "origin": "trusted-generated",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "module": "EFFConj",
+   "name": "EFFConj.effort_loopfree_inter",
+   "origin": "trusted-generated",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "module": "EFFConj",
+   "name": "EFFConj.effort_nonempty_inter_negation",
+   "origin": "trusted-generated",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "module": "EFFConj",
+   "name": "EFFConj.effort_nonempty_inter",
+   "origin": "trusted-generated",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "module": "EFFConj",
+   "name": "EFFConj.effort_matching_filter",
+   "origin": "trusted-generated",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "module": "EFFConj",
+   "name": "EFFConj.effort_nonempty_filter",
+   "origin": "trusted-generated",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "module": "EFFConj",
+   "name": "EFFConj.effort_matching_sdiff",
+   "origin": "trusted-generated",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "module": "EFFConj",
+   "name": "EFFConj.effort_loopfree_erase",
+   "origin": "trusted-generated",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "module": "EFFConj",
+   "name": "EFFConj.effort_c4free_sdiff",
+   "origin": "trusted-generated",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "module": "EFFConj",
+   "name": "EFFConj.effort_nonempty_filter_negation",
+   "origin": "trusted-generated",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "module": "EFFConj",
+   "name": "EFFConj.effort_nonempty_erase",
+   "origin": "trusted-generated",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "module": "EFFConj",
+   "name": "EFFConj.effort_c4free_filter",
+   "origin": "trusted-generated",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "module": "EFFConj",
+   "name": "EFFConj.effort_nonempty_sdiff_negation",
+   "origin": "trusted-generated",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "module": "EFFConj",
+   "name": "EFFConj.effort_loopfree_filter",
+   "origin": "trusted-generated",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "module": "EFFConj",
+   "name": "EFFConj.effort_c4free_erase",
+   "origin": "trusted-generated",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "module": "EFFConj",
+   "name": "EFFConj.effort_loopfree_sdiff",
+   "origin": "trusted-generated",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  }
+ ],
+ "dependencies": {
+  "EFFConj.effort_c4free_erase": {
+   "package": [
+    "G4.C4Free",
+    "G4.adj",
+    "G4.verts",
+    "GT.Edges"
+   ],
+   "workspace_modules": [
+    "Init.Core",
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Erase"
+   ]
+  },
+  "EFFConj.effort_c4free_filter": {
+   "package": [
+    "G4.C4Free",
+    "G4.adj",
+    "G4.verts",
+    "GT.Edges"
+   ],
+   "workspace_modules": [
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Filter"
+   ]
+  },
+  "EFFConj.effort_c4free_inter": {
+   "package": [
+    "G4.C4Free",
+    "G4.adj",
+    "G4.verts",
+    "GT.Edges"
+   ],
+   "workspace_modules": [
+    "Init.Core",
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Lattice.Basic"
+   ]
+  },
+  "EFFConj.effort_c4free_sdiff": {
+   "package": [
+    "G4.C4Free",
+    "G4.adj",
+    "G4.verts",
+    "GT.Edges"
+   ],
+   "workspace_modules": [
+    "Init.Core",
+    "Init.Prelude",
+    "Mathlib.Data.Finset.SDiff"
+   ]
+  },
+  "EFFConj.effort_loopfree_erase": {
+   "package": [
+    "FF.LoopFree",
+    "GT.Edges"
+   ],
+   "workspace_modules": [
+    "Init.Core",
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Erase"
+   ]
+  },
+  "EFFConj.effort_loopfree_filter": {
+   "package": [
+    "FF.LoopFree",
+    "GT.Edges"
+   ],
+   "workspace_modules": [
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Filter"
+   ]
+  },
+  "EFFConj.effort_loopfree_inter": {
+   "package": [
+    "FF.LoopFree",
+    "GT.Edges"
+   ],
+   "workspace_modules": [
+    "Init.Core",
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Lattice.Basic"
+   ]
+  },
+  "EFFConj.effort_loopfree_sdiff": {
+   "package": [
+    "FF.LoopFree",
+    "GT.Edges"
+   ],
+   "workspace_modules": [
+    "Init.Core",
+    "Init.Prelude",
+    "Mathlib.Data.Finset.SDiff"
+   ]
+  },
+  "EFFConj.effort_matching_erase": {
+   "package": [
+    "FF.Matching",
+    "GT.Edges"
+   ],
+   "workspace_modules": [
+    "Init.Core",
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Erase"
+   ]
+  },
+  "EFFConj.effort_matching_filter": {
+   "package": [
+    "FF.Matching",
+    "GT.Edges"
+   ],
+   "workspace_modules": [
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Filter"
+   ]
+  },
+  "EFFConj.effort_matching_inter": {
+   "package": [
+    "FF.Matching",
+    "GT.Edges"
+   ],
+   "workspace_modules": [
+    "Init.Core",
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Lattice.Basic"
+   ]
+  },
+  "EFFConj.effort_matching_sdiff": {
+   "package": [
+    "FF.Matching",
+    "GT.Edges"
+   ],
+   "workspace_modules": [
+    "Init.Core",
+    "Init.Prelude",
+    "Mathlib.Data.Finset.SDiff"
+   ]
+  },
+  "EFFConj.effort_nonempty_erase": {
+   "package": [
+    "FF.NonEmpty",
+    "GT.Edges"
+   ],
+   "workspace_modules": [
+    "Init.Core",
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Erase"
+   ]
+  },
+  "EFFConj.effort_nonempty_erase_negation": {
+   "package": [
+    "EFFConj.effort_nonempty_erase",
+    "FF.NonEmpty",
+    "GT.Edges"
+   ],
+   "workspace_modules": [
+    "Init.Prelude"
+   ]
+  },
+  "EFFConj.effort_nonempty_filter": {
+   "package": [
+    "FF.NonEmpty",
+    "GT.Edges"
+   ],
+   "workspace_modules": [
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Filter"
+   ]
+  },
+  "EFFConj.effort_nonempty_filter_negation": {
+   "package": [
+    "EFFConj.effort_nonempty_filter",
+    "FF.NonEmpty",
+    "GT.Edges"
+   ],
+   "workspace_modules": [
+    "Init.Prelude"
+   ]
+  },
+  "EFFConj.effort_nonempty_inter": {
+   "package": [
+    "FF.NonEmpty",
+    "GT.Edges"
+   ],
+   "workspace_modules": [
+    "Init.Core",
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Lattice.Basic"
+   ]
+  },
+  "EFFConj.effort_nonempty_inter_negation": {
+   "package": [
+    "EFFConj.effort_nonempty_inter",
+    "FF.NonEmpty",
+    "GT.Edges"
+   ],
+   "workspace_modules": [
+    "Init.Prelude"
+   ]
+  },
+  "EFFConj.effort_nonempty_sdiff": {
+   "package": [
+    "FF.NonEmpty",
+    "GT.Edges"
+   ],
+   "workspace_modules": [
+    "Init.Core",
+    "Init.Prelude",
+    "Mathlib.Data.Finset.SDiff"
+   ]
+  },
+  "EFFConj.effort_nonempty_sdiff_negation": {
+   "package": [
+    "EFFConj.effort_nonempty_sdiff",
+    "FF.NonEmpty",
+    "GT.Edges"
+   ],
+   "workspace_modules": [
+    "Init.Prelude"
+   ]
+  },
+  "EFFP1.proof": {
+   "package": [
+    "EFFConj.effort_loopfree_inter",
+    "FF.LoopFree",
+    "GT.Edges"
+   ],
+   "workspace_modules": [
+    "Init.Core",
+    "Init.Data.Prod",
+    "Init.Prelude",
+    "Init.SimpLemmas",
+    "Mathlib.Data.Finset.Defs",
+    "Mathlib.Data.Finset.Lattice.Basic",
+    "Mathlib.Data.Prod.Basic",
+    "Mathlib.Data.SetLike.Basic"
+   ]
+  },
+  "EFFP2.proof": {
+   "package": [
+    "EFFConj.effort_loopfree_sdiff",
+    "FF.LoopFree",
+    "GT.Edges"
+   ],
+   "workspace_modules": [
+    "Init.Core",
+    "Init.Data.Prod",
+    "Init.Prelude",
+    "Init.SimpLemmas",
+    "Mathlib.Data.Finset.Defs",
+    "Mathlib.Data.Finset.SDiff",
+    "Mathlib.Data.Prod.Basic",
+    "Mathlib.Data.SetLike.Basic"
+   ]
+  },
+  "EFFP3.proof": {
+   "package": [
+    "EFFConj.effort_loopfree_filter",
+    "FF.LoopFree",
+    "GT.Edges"
+   ],
+   "workspace_modules": [
+    "Init.Core",
+    "Init.Data.Prod",
+    "Init.Prelude",
+    "Init.SimpLemmas",
+    "Mathlib.Data.Finset.Defs",
+    "Mathlib.Data.Finset.Filter",
+    "Mathlib.Data.Prod.Basic",
+    "Mathlib.Data.SetLike.Basic"
+   ]
+  },
+  "EFFP4.proof": {
+   "package": [
+    "EFFConj.effort_loopfree_erase",
+    "FF.LoopFree",
+    "GT.Edges"
+   ],
+   "workspace_modules": [
+    "Init.Core",
+    "Init.Data.Prod",
+    "Init.Prelude",
+    "Init.SimpLemmas",
+    "Mathlib.Data.Finset.Defs",
+    "Mathlib.Data.Finset.Erase",
+    "Mathlib.Data.Prod.Basic",
+    "Mathlib.Data.SetLike.Basic"
+   ]
+  },
+  "EFFP5.proof": {
+   "package": [
+    "EFFConj.effort_nonempty_inter",
+    "EFFConj.effort_nonempty_inter_negation",
+    "EFFP5.proof._proof_1_1",
+    "EFFP5.proof._proof_1_2",
+    "FF.NonEmpty",
+    "FF.instDecidableNonEmpty",
+    "GT.Edges"
+   ],
+   "workspace_modules": [
+    "Init.Core",
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Insert",
+    "Mathlib.Data.Finset.Lattice.Basic"
+   ]
+  },
+  "EFFP5.proof._proof_1_1": {
+   "package": [
+    "FF.NonEmpty",
+    "FF.instDecidableNonEmpty",
+    "GT.Edges"
+   ],
+   "workspace_modules": [
+    "Init.Core",
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Insert"
+   ]
+  },
+  "EFFP5.proof._proof_1_2": {
+   "package": [
+    "FF.NonEmpty",
+    "FF.instDecidableNonEmpty",
+    "GT.Edges"
+   ],
+   "workspace_modules": [
+    "Init.Core",
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Insert",
+    "Mathlib.Data.Finset.Lattice.Basic"
+   ]
+  },
+  "EFFP6.proof": {
+   "package": [
+    "EFFConj.effort_nonempty_sdiff",
+    "EFFConj.effort_nonempty_sdiff_negation",
+    "EFFP6.proof._proof_1_1",
+    "EFFP6.proof._proof_1_2",
+    "FF.NonEmpty",
+    "FF.instDecidableNonEmpty",
+    "GT.Edges"
+   ],
+   "workspace_modules": [
+    "Init.Core",
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Insert",
+    "Mathlib.Data.Finset.SDiff"
+   ]
+  },
+  "EFFP6.proof._proof_1_1": {
+   "package": [
+    "FF.NonEmpty",
+    "FF.instDecidableNonEmpty",
+    "GT.Edges"
+   ],
+   "workspace_modules": [
+    "Init.Core",
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Insert"
+   ]
+  },
+  "EFFP6.proof._proof_1_2": {
+   "package": [
+    "FF.NonEmpty",
+    "FF.instDecidableNonEmpty",
+    "GT.Edges"
+   ],
+   "workspace_modules": [
+    "Init.Core",
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Insert",
+    "Mathlib.Data.Finset.SDiff"
+   ]
+  },
+  "EFFP7.proof": {
+   "package": [
+    "EFFConj.effort_nonempty_filter",
+    "EFFConj.effort_nonempty_filter_negation",
+    "EFFP7.proof._proof_1_1",
+    "EFFP7.proof._proof_1_2",
+    "FF.NonEmpty",
+    "FF.instDecidableNonEmpty",
+    "GT.Edges"
+   ],
+   "workspace_modules": [
+    "Init.Core",
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Defs",
+    "Mathlib.Data.Finset.Empty",
+    "Mathlib.Data.Finset.Filter",
+    "Mathlib.Data.Finset.Insert",
+    "Mathlib.Data.SetLike.Basic"
+   ]
+  },
+  "EFFP7.proof._proof_1_1": {
+   "package": [
+    "FF.NonEmpty",
+    "FF.instDecidableNonEmpty",
+    "GT.Edges"
+   ],
+   "workspace_modules": [
+    "Init.Core",
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Insert"
+   ]
+  },
+  "EFFP7.proof._proof_1_2": {
+   "package": [
+    "FF.NonEmpty",
+    "FF.instDecidableNonEmpty",
+    "GT.Edges"
+   ],
+   "workspace_modules": [
+    "Init.Core",
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Defs",
+    "Mathlib.Data.Finset.Empty",
+    "Mathlib.Data.Finset.Filter",
+    "Mathlib.Data.Finset.Insert",
+    "Mathlib.Data.SetLike.Basic"
+   ]
+  },
+  "EFFP8.proof": {
+   "package": [
+    "EFFConj.effort_nonempty_erase",
+    "EFFConj.effort_nonempty_erase_negation",
+    "EFFP8.proof._proof_1_1",
+    "EFFP8.proof._proof_1_2",
+    "FF.NonEmpty",
+    "FF.instDecidableNonEmpty",
+    "GT.Edges"
+   ],
+   "workspace_modules": [
+    "Init.Core",
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Erase",
+    "Mathlib.Data.Finset.Insert"
+   ]
+  },
+  "EFFP8.proof._proof_1_1": {
+   "package": [
+    "FF.NonEmpty",
+    "FF.instDecidableNonEmpty",
+    "GT.Edges"
+   ],
+   "workspace_modules": [
+    "Init.Core",
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Insert"
+   ]
+  },
+  "EFFP8.proof._proof_1_2": {
+   "package": [
+    "FF.NonEmpty",
+    "FF.instDecidableNonEmpty",
+    "GT.Edges"
+   ],
+   "workspace_modules": [
+    "Init.Core",
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Erase",
+    "Mathlib.Data.Finset.Insert"
+   ]
+  },
+  "FF.LoopFree": {
+   "package": [
+    "GT.Edges"
+   ],
+   "workspace_modules": [
+    "Init.Core",
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Defs",
+    "Mathlib.Data.SetLike.Basic"
+   ]
+  },
+  "FF.Matching": {
+   "package": [
+    "GT.Edges"
+   ],
+   "workspace_modules": [
+    "Init.Core",
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Defs",
+    "Mathlib.Data.SetLike.Basic"
+   ]
+  },
+  "FF.NonEmpty": {
+   "package": [
+    "GT.Edges"
+   ],
+   "workspace_modules": [
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Empty"
+   ]
+  },
+  "FF.instDecidableLoopFree": {
+   "package": [
+    "FF.LoopFree",
+    "GT.Edges"
+   ],
+   "workspace_modules": [
+    "Init.Core",
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Defs",
+    "Mathlib.Data.SetLike.Basic"
+   ]
+  },
+  "FF.instDecidableMatching": {
+   "package": [
+    "FF.Matching",
+    "GT.Edges"
+   ],
+   "workspace_modules": [
+    "Init.Core",
+    "Init.Prelude",
+    "Init.PropLemmas",
+    "Mathlib.Data.Finset.Defs",
+    "Mathlib.Data.SetLike.Basic"
+   ]
+  },
+  "FF.instDecidableNonEmpty": {
+   "package": [
+    "FF.NonEmpty",
+    "GT.Edges"
+   ],
+   "workspace_modules": [
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Empty"
+   ]
+  },
+  "G4.C4Free": {
+   "package": [
+    "G4.adj",
+    "G4.verts",
+    "GT.Edges"
+   ],
+   "workspace_modules": [
+    "Init.Core",
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Defs",
+    "Mathlib.Data.SetLike.Basic"
+   ]
+  },
+  "G4.adj": {
+   "package": [
+    "GT.Edges"
+   ],
+   "workspace_modules": [
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Defs",
+    "Mathlib.Data.SetLike.Basic"
+   ]
+  },
+  "G4.instDecidableAdj": {
+   "package": [
+    "G4.adj",
+    "GT.Edges"
+   ],
+   "workspace_modules": [
+    "Init.Core",
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Defs",
+    "Mathlib.Data.SetLike.Basic"
+   ]
+  },
+  "G4.instDecidableC4Free": {
+   "package": [
+    "G4.C4Free",
+    "G4.adj",
+    "G4.instDecidableAdj",
+    "G4.verts",
+    "GT.Edges"
+   ],
+   "workspace_modules": [
+    "Init.Core",
+    "Init.Prelude",
+    "Init.PropLemmas",
+    "Mathlib.Data.Finset.Defs",
+    "Mathlib.Data.SetLike.Basic"
+   ]
+  },
+  "G4.verts": {
+   "package": [
+    "GT.Edges"
+   ],
+   "workspace_modules": [
+    "Init.Core",
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Defs",
+    "Mathlib.Data.Finset.Image",
+    "Mathlib.Data.Finset.Lattice.Basic"
+   ]
+  },
+  "GT.Edges": {
+   "package": [],
+   "workspace_modules": [
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Defs"
+   ]
+  },
+  "GT.TriangleFree": {
+   "package": [
+    "GT.Edges"
+   ],
+   "workspace_modules": [
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Defs",
+    "Mathlib.Data.SetLike.Basic"
+   ]
+  },
+  "GT.instDecidableTriangleFree": {
+   "package": [
+    "GT.Edges",
+    "GT.TriangleFree"
+   ],
+   "workspace_modules": [
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Defs",
+    "Mathlib.Data.SetLike.Basic"
+   ]
+  },
+  "HS.Bounded8": {
+   "package": [
+    "GT.Edges"
+   ],
+   "workspace_modules": [
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Defs",
+    "Mathlib.Data.SetLike.Basic"
+   ]
+  },
+  "HS.Simple": {
+   "package": [
+    "GT.Edges"
+   ],
+   "workspace_modules": [
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Defs",
+    "Mathlib.Data.SetLike.Basic"
+   ]
+  },
+  "HS.instDecidableBounded8": {
+   "package": [
+    "GT.Edges",
+    "HS.Bounded8"
+   ],
+   "workspace_modules": [
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Defs",
+    "Mathlib.Data.SetLike.Basic"
+   ]
+  },
+  "HS.instDecidableSimple": {
+   "package": [
+    "GT.Edges",
+    "HS.Simple"
+   ],
+   "workspace_modules": [
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Defs",
+    "Mathlib.Data.SetLike.Basic"
+   ]
+  },
+  "HSConj.down_bounded": {
+   "package": [
+    "GT.Edges",
+    "HS.Bounded8"
+   ],
+   "workspace_modules": [
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Defs",
+    "Mathlib.Order.Defs.PartialOrder"
+   ]
+  },
+  "HSConj.down_simple": {
+   "package": [
+    "GT.Edges",
+    "HS.Simple"
+   ],
+   "workspace_modules": [
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Defs",
+    "Mathlib.Order.Defs.PartialOrder"
+   ]
+  },
+  "HSConj.down_tf": {
+   "package": [
+    "GT.Edges",
+    "GT.TriangleFree"
+   ],
+   "workspace_modules": [
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Defs",
+    "Mathlib.Order.Defs.PartialOrder"
+   ]
+  },
+  "HSConj.inter_simple": {
+   "package": [
+    "GT.Edges",
+    "HS.Simple"
+   ],
+   "workspace_modules": [
+    "Init.Core",
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Lattice.Basic"
+   ]
+  },
+  "HSConj.inter_tf": {
+   "package": [
+    "GT.Edges",
+    "GT.TriangleFree"
+   ],
+   "workspace_modules": [
+    "Init.Core",
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Lattice.Basic"
+   ]
+  },
+  "RC.C0": {
+   "package": [
+    "GT.Edges"
+   ],
+   "workspace_modules": [
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Defs",
+    "Mathlib.Order.Defs.PartialOrder"
+   ]
+  }
+ },
+ "domain": "edge-set predicates",
+ "modules": [
+  {
+   "name": "GTDefs",
+   "source": "import Mathlib.Data.Finset.Powerset\n\nnamespace GT\n\n/-- Edge sets: ordered pairs (u, v), read as the edge {u, v}. Hosts list each edge once, with u < v. -/\nabbrev Edges := Finset (ℕ × ℕ)\n\n/-- No three edges (a, b), (b, c), (a, c). -/\ndef TriangleFree (S : Edges) : Prop :=\n  ∀ e ∈ S, ∀ f ∈ S, ∀ g ∈ S, ¬ (e.1 = g.1 ∧ e.2 = f.1 ∧ f.2 = g.2)\n\ninstance (S : Edges) : Decidable (TriangleFree S) := by\n  unfold TriangleFree; infer_instance\n\nend GT\n",
+   "source_sha256": "34a84d4f227cbf5a95012a37a9f263f14ca419a4959be42c674d8abc47c9e3a7",
+   "trusted": true
+  },
+  {
+   "name": "HSDefs",
+   "source": "import GTDefs\n\nnamespace HS\n\n/-- History predicate: every pair is listed as (u, v) with u < v. -/\ndef Simple (S : GT.Edges) : Prop := ∀ e ∈ S, e.1 < e.2\n\n/-- History predicate: every endpoint is below 8. -/\ndef Bounded8 (S : GT.Edges) : Prop := ∀ e ∈ S, e.1 < 8 ∧ e.2 < 8\n\ninstance (S : GT.Edges) : Decidable (Simple S) := by unfold Simple; infer_instance\ninstance (S : GT.Edges) : Decidable (Bounded8 S) := by unfold Bounded8; infer_instance\n\nend HS\n",
+   "source_sha256": "fda70a92d2893b0470ae39d2918fca1b195e1db384d6fedbbc1950b51e65d5db",
+   "trusted": true
+  },
+  {
+   "name": "HSConj",
+   "source": "import GTDefs\nimport HSDefs\nset_option linter.unusedVariables false\n\nnamespace HSConj\n/-- Generated conjecture `down_tf` (history). -/\ndef down_tf : Prop := ∀ (S : GT.Edges) (T : GT.Edges) (h1 : T ⊆ S) (h2 : GT.TriangleFree S), GT.TriangleFree T\n/-- Generated conjecture `down_simple` (history). -/\ndef down_simple : Prop := ∀ (S : GT.Edges) (T : GT.Edges) (h1 : T ⊆ S) (h2 : HS.Simple S), HS.Simple T\n/-- Generated conjecture `down_bounded` (history). -/\ndef down_bounded : Prop := ∀ (S : GT.Edges) (T : GT.Edges) (h1 : T ⊆ S) (h2 : HS.Bounded8 S), HS.Bounded8 T\n/-- Generated conjecture `inter_tf` (history). -/\ndef inter_tf : Prop := ∀ (S : GT.Edges) (T : GT.Edges) (h1 : GT.TriangleFree S), GT.TriangleFree (S ∩ T)\n/-- Generated conjecture `inter_simple` (history). -/\ndef inter_simple : Prop := ∀ (S : GT.Edges) (T : GT.Edges) (h1 : HS.Simple S), HS.Simple (S ∩ T)\nend HSConj\n",
+   "source_sha256": "b51522fc7800b90635c57f6e77ae907ef1f30cf3054ccf078472d4ad0d5b5040",
+   "trusted": true
+  },
+  {
+   "name": "RCDefs",
+   "source": "import GTDefs\nimport HSDefs\n\nnamespace RC\n\n/-- Recovered by typed anti-unification of HSConj.down_bounded, HSConj.down_simple, HSConj.down_tf. -/\ndef C0 (P0 : GT.Edges -> Prop) : Prop := (∀ (x0 : @GT.Edges), (∀ (x1 : @GT.Edges), (∀ (x2 : (@LE.le @GT.Edges (@Preorder.toLE @GT.Edges (@PartialOrder.toPreorder @GT.Edges (@Finset.instPartialOrder (@Prod @Nat @Nat)))) x1 x0)), (∀ (x3 : (P0 x0)), (P0 x1)))))\n\nend RC\n",
+   "source_sha256": "640f2b577f249cc93dd38a96935449b2cee5e8444b6040c263d712a4875931ae",
+   "trusted": true
+  },
+  {
+   "name": "G4Defs",
+   "source": "import GTDefs\n\nnamespace G4\n\n/-- Domain contract (c4_host_v2): u and v are joined in S, in either orientation. -/\ndef adj (S : GT.Edges) (u v : ℕ) : Prop := (u, v) ∈ S ∨ (v, u) ∈ S\n\ninstance (S : GT.Edges) (u v : ℕ) : Decidable (adj S u v) := by\n  unfold adj; infer_instance\n\ndef verts (S : GT.Edges) : Finset ℕ := S.image Prod.fst ∪ S.image Prod.snd\n\n/-- No 4-cycle a-b-c-d-a with a ≠ c and b ≠ d. -/\ndef C4Free (S : GT.Edges) : Prop :=\n  ∀ a ∈ verts S, ∀ b ∈ verts S, ∀ c ∈ verts S, ∀ d ∈ verts S,\n    a ≠ c → b ≠ d → ¬ (adj S a b ∧ adj S b c ∧ adj S c d ∧ adj S d a)\n\ninstance (S : GT.Edges) : Decidable (C4Free S) := by\n  unfold C4Free; infer_instance\n\nend G4\n",
+   "source_sha256": "bf94fb5d73cc9d32e1e11167df93df0ca356b3f1a6de0b050a8efe53bae7987b",
+   "trusted": true
+  },
+  {
+   "name": "FFDefs",
+   "source": "import GTDefs\nimport G4Defs\n\nnamespace FF\n\n/-- Fresh predicate: no loops. -/\ndef LoopFree (S : GT.Edges) : Prop := ∀ e ∈ S, e.1 ≠ e.2\n\n/-- Fresh predicate: distinct pairs share no endpoint. -/\ndef Matching (S : GT.Edges) : Prop :=\n  ∀ e ∈ S, ∀ f ∈ S, e ≠ f → e.1 ≠ f.1 ∧ e.1 ≠ f.2 ∧ e.2 ≠ f.1 ∧ e.2 ≠ f.2\n\n/-- Fresh predicate that is not down-closed. -/\ndef NonEmpty (S : GT.Edges) : Prop := S.Nonempty\n\ninstance (S : GT.Edges) : Decidable (LoopFree S) := by unfold LoopFree; infer_instance\ninstance (S : GT.Edges) : Decidable (Matching S) := by unfold Matching; infer_instance\ninstance (S : GT.Edges) : Decidable (NonEmpty S) := by unfold NonEmpty; infer_instance\n\nend FF\n",
+   "source_sha256": "0c27f1d95779fd682934358911785dc66149d7cf0a39c57d16181aa088198785",
+   "trusted": true
+  },
+  {
+   "name": "EFFConj",
+   "source": "import GTDefs\nimport HSDefs\nimport HSConj\nimport RCDefs\nimport G4Defs\nimport FFDefs\nset_option linter.unusedVariables false\n\nnamespace EFFConj\n/-- Generated conjecture `effort_loopfree_inter` (fresh-family). -/\ndef effort_loopfree_inter : Prop := ∀ (S : GT.Edges) (T : GT.Edges) (h1 : FF.LoopFree S), FF.LoopFree (S ∩ T)\n/-- Generated conjecture `effort_loopfree_sdiff` (fresh-family). -/\ndef effort_loopfree_sdiff : Prop := ∀ (S : GT.Edges) (T : GT.Edges) (h1 : FF.LoopFree S), FF.LoopFree (S \\ T)\n/-- Generated conjecture `effort_loopfree_filter` (fresh-family). -/\ndef effort_loopfree_filter : Prop := ∀ (S : GT.Edges) (q : ℕ × ℕ → Bool) (h1 : FF.LoopFree S), FF.LoopFree (S.filter fun e => q e)\n/-- Generated conjecture `effort_loopfree_erase` (fresh-family). -/\ndef effort_loopfree_erase : Prop := ∀ (S : GT.Edges) (e : ℕ × ℕ) (h1 : FF.LoopFree S), FF.LoopFree (S.erase e)\n/-- Generated conjecture `effort_matching_inter` (fresh-family). -/\ndef effort_matching_inter : Prop := ∀ (S : GT.Edges) (T : GT.Edges) (h1 : FF.Matching S), FF.Matching (S ∩ T)\n/-- Generated conjecture `effort_matching_sdiff` (fresh-family). -/\ndef effort_matching_sdiff : Prop := ∀ (S : GT.Edges) (T : GT.Edges) (h1 : FF.Matching S), FF.Matching (S \\ T)\n/-- Generated conjecture `effort_matching_filter` (fresh-family). -/\ndef effort_matching_filter : Prop := ∀ (S : GT.Edges) (q : ℕ × ℕ → Bool) (h1 : FF.Matching S), FF.Matching (S.filter fun e => q e)\n/-- Generated conjecture `effort_matching_erase` (fresh-family). -/\ndef effort_matching_erase : Prop := ∀ (S : GT.Edges) (e : ℕ × ℕ) (h1 : FF.Matching S), FF.Matching (S.erase e)\n/-- Generated conjecture `effort_c4free_inter` (fresh-family). -/\ndef effort_c4free_inter : Prop := ∀ (S : GT.Edges) (T : GT.Edges) (h1 : G4.C4Free S), G4.C4Free (S ∩ T)\n/-- Generated conjecture `effort_c4free_sdiff` (fresh-family). -/\ndef effort_c4free_sdiff : Prop := ∀ (S : GT.Edges) (T : GT.Edges) (h1 : G4.C4Free S), G4.C4Free (S \\ T)\n/-- Generated conjecture `effort_c4free_filter` (fresh-family). -/\ndef effort_c4free_filter : Prop := ∀ (S : GT.Edges) (q : ℕ × ℕ → Bool) (h1 : G4.C4Free S), G4.C4Free (S.filter fun e => q e)\n/-- Generated conjecture `effort_c4free_erase` (fresh-family). -/\ndef effort_c4free_erase : Prop := ∀ (S : GT.Edges) (e : ℕ × ℕ) (h1 : G4.C4Free S), G4.C4Free (S.erase e)\n/-- Generated conjecture `effort_nonempty_inter` (fresh-family). -/\ndef effort_nonempty_inter : Prop := ∀ (S : GT.Edges) (T : GT.Edges) (h1 : FF.NonEmpty S), FF.NonEmpty (S ∩ T)\ndef effort_nonempty_inter_negation : Prop := ¬ effort_nonempty_inter\n/-- Generated conjecture `effort_nonempty_sdiff` (fresh-family). -/\ndef effort_nonempty_sdiff : Prop := ∀ (S : GT.Edges) (T : GT.Edges) (h1 : FF.NonEmpty S), FF.NonEmpty (S \\ T)\ndef effort_nonempty_sdiff_negation : Prop := ¬ effort_nonempty_sdiff\n/-- Generated conjecture `effort_nonempty_filter` (fresh-family). -/\ndef effort_nonempty_filter : Prop := ∀ (S : GT.Edges) (q : ℕ × ℕ → Bool) (h1 : FF.NonEmpty S), FF.NonEmpty (S.filter fun e => q e)\ndef effort_nonempty_filter_negation : Prop := ¬ effort_nonempty_filter\n/-- Generated conjecture `effort_nonempty_erase` (fresh-family). -/\ndef effort_nonempty_erase : Prop := ∀ (S : GT.Edges) (e : ℕ × ℕ) (h1 : FF.NonEmpty S), FF.NonEmpty (S.erase e)\ndef effort_nonempty_erase_negation : Prop := ¬ effort_nonempty_erase\nend EFFConj\n",
+   "source_sha256": "60fcef24f6f09524d227582343f41f445f484b35506170e8144ec9a2dccc3b52",
+   "trusted": true
+  },
+  {
+   "name": "EFFP1",
+   "source": "import GTDefs\nimport HSDefs\nimport HSConj\nimport RCDefs\nimport G4Defs\nimport FFDefs\nimport EFFConj\nnamespace EFFP1\ntheorem proof : EFFConj.effort_loopfree_inter := by\n  unfold EFFConj.effort_loopfree_inter\n  intro S T h1\n  try unfold PC.C0 at *\n  try unfold RC.C0 at *\n  try unfold FF.LoopFree at *\n  try unfold FF.Matching at *\n  try unfold FF.NonEmpty at *\n  try unfold G4.C4Free at *\n  try unfold G4.adj at *\n  try unfold G4.verts at *\n  aesop\nend EFFP1\n",
+   "source_sha256": "02d9b856867356592ab55e65fe0dffb0fa0aebcaa4fc0f0e1de8d4cafbe75c85",
+   "trusted": false
+  },
+  {
+   "name": "EFFP2",
+   "source": "import GTDefs\nimport HSDefs\nimport HSConj\nimport RCDefs\nimport G4Defs\nimport FFDefs\nimport EFFConj\nimport EFFP1\nnamespace EFFP2\ntheorem proof : EFFConj.effort_loopfree_sdiff := by\n  unfold EFFConj.effort_loopfree_sdiff\n  intro S T h1\n  try unfold PC.C0 at *\n  try unfold RC.C0 at *\n  try unfold FF.LoopFree at *\n  try unfold FF.Matching at *\n  try unfold FF.NonEmpty at *\n  try unfold G4.C4Free at *\n  try unfold G4.adj at *\n  try unfold G4.verts at *\n  aesop\nend EFFP2\n",
+   "source_sha256": "be0e7e34dfb5dfcf3fb0300dafa90381f1fc8ec02a85f081416c580bd7288aac",
+   "trusted": false
+  },
+  {
+   "name": "EFFP3",
+   "source": "import GTDefs\nimport HSDefs\nimport HSConj\nimport RCDefs\nimport G4Defs\nimport FFDefs\nimport EFFConj\nimport EFFP1\nimport EFFP2\nnamespace EFFP3\ntheorem proof : EFFConj.effort_loopfree_filter := by\n  unfold EFFConj.effort_loopfree_filter\n  intro S q h1\n  try unfold PC.C0 at *\n  try unfold RC.C0 at *\n  try unfold FF.LoopFree at *\n  try unfold FF.Matching at *\n  try unfold FF.NonEmpty at *\n  try unfold G4.C4Free at *\n  try unfold G4.adj at *\n  try unfold G4.verts at *\n  aesop\nend EFFP3\n",
+   "source_sha256": "d36a824836544bae589940fa412d5da8e41a9151f55f990c38bb069813a006d4",
+   "trusted": false
+  },
+  {
+   "name": "EFFP4",
+   "source": "import GTDefs\nimport HSDefs\nimport HSConj\nimport RCDefs\nimport G4Defs\nimport FFDefs\nimport EFFConj\nimport EFFP1\nimport EFFP2\nimport EFFP3\nnamespace EFFP4\ntheorem proof : EFFConj.effort_loopfree_erase := by\n  unfold EFFConj.effort_loopfree_erase\n  intro S e h1\n  try unfold PC.C0 at *\n  try unfold RC.C0 at *\n  try unfold FF.LoopFree at *\n  try unfold FF.Matching at *\n  try unfold FF.NonEmpty at *\n  try unfold G4.C4Free at *\n  try unfold G4.adj at *\n  try unfold G4.verts at *\n  aesop\nend EFFP4\n",
+   "source_sha256": "ec5a1ded8e318335cedfb0b1cc94d7b40dfbcac71bec2d961512a5fb25b610ec",
+   "trusted": false
+  },
+  {
+   "name": "EFFP5",
+   "source": "import GTDefs\nimport HSDefs\nimport HSConj\nimport RCDefs\nimport G4Defs\nimport FFDefs\nimport EFFConj\nimport EFFP1\nimport EFFP2\nimport EFFP3\nimport EFFP4\nnamespace EFFP5\ntheorem proof : EFFConj.effort_nonempty_inter_negation := by\n  unfold EFFConj.effort_nonempty_inter_negation EFFConj.effort_nonempty_inter\n  intro h\n  exact absurd (h (({(3, 2)} : GT.Edges)) (({(1, 0)} : GT.Edges)) (by first | decide +kernel | (intro v; omega) | omega | (intros; omega))) (by decide +kernel)\nend EFFP5\n",
+   "source_sha256": "6075d1bcdb3e4b0e87ba4d1665bea58ad29cf251039e12d5f84bce6d24804eae",
+   "trusted": false
+  },
+  {
+   "name": "EFFP6",
+   "source": "import GTDefs\nimport HSDefs\nimport HSConj\nimport RCDefs\nimport G4Defs\nimport FFDefs\nimport EFFConj\nimport EFFP1\nimport EFFP2\nimport EFFP3\nimport EFFP4\nimport EFFP5\nnamespace EFFP6\ntheorem proof : EFFConj.effort_nonempty_sdiff_negation := by\n  unfold EFFConj.effort_nonempty_sdiff_negation EFFConj.effort_nonempty_sdiff\n  intro h\n  exact absurd (h (({(0, 3)} : GT.Edges)) (({(0, 3), (3, 3)} : GT.Edges)) (by first | decide +kernel | (intro v; omega) | omega | (intros; omega))) (by decide +kernel)\nend EFFP6\n",
+   "source_sha256": "3aa94f0bab83a82ade8157bb43d64ef3694f4e0b903099d2d1f7580379a27433",
+   "trusted": false
+  },
+  {
+   "name": "EFFP7",
+   "source": "import GTDefs\nimport HSDefs\nimport HSConj\nimport RCDefs\nimport G4Defs\nimport FFDefs\nimport EFFConj\nimport EFFP1\nimport EFFP2\nimport EFFP3\nimport EFFP4\nimport EFFP5\nimport EFFP6\nnamespace EFFP7\ntheorem proof : EFFConj.effort_nonempty_filter_negation := by\n  unfold EFFConj.effort_nonempty_filter_negation EFFConj.effort_nonempty_filter\n  intro h\n  exact absurd (h (({(1, 2), (2, 3)} : GT.Edges)) ((fun e => decide (e ∈ (∅ : GT.Edges)))) (by first | decide +kernel | (intro v; omega) | omega | (intros; omega))) (by decide +kernel)\nend EFFP7\n",
+   "source_sha256": "62787fab6920c5557c1a4552e8a447bdd587cdab10dba856d335b290817ca82b",
+   "trusted": false
+  },
+  {
+   "name": "EFFP8",
+   "source": "import GTDefs\nimport HSDefs\nimport HSConj\nimport RCDefs\nimport G4Defs\nimport FFDefs\nimport EFFConj\nimport EFFP1\nimport EFFP2\nimport EFFP3\nimport EFFP4\nimport EFFP5\nimport EFFP6\nimport EFFP7\nnamespace EFFP8\ntheorem proof : EFFConj.effort_nonempty_erase_negation := by\n  unfold EFFConj.effort_nonempty_erase_negation EFFConj.effort_nonempty_erase\n  intro h\n  exact absurd (h (({(3, 1)} : GT.Edges)) (((3, 1) : ℕ × ℕ)) (by first | decide +kernel | (intro v; omega) | omega | (intros; omega))) (by decide +kernel)\nend EFFP8\n",
+   "source_sha256": "f248420e001d0c56d975ca065541d9cf440c22c4e96ec5b3e65b2c650bf41871",
+   "trusted": false
+  }
+ ],
+ "name": "concept control, arm effort",
+ "package_sha256": "ee09db588be758c0c7d3f20c45823763dfa9312e3a575729d0966725388d0078",
+ "proofs": [
+  {
+   "module": "EFFP1",
+   "recipe": "unfold-aesop",
+   "statement": "effort_loopfree_inter"
+  },
+  {
+   "module": "EFFP2",
+   "recipe": "unfold-aesop",
+   "statement": "effort_loopfree_sdiff"
+  },
+  {
+   "module": "EFFP3",
+   "recipe": "unfold-aesop",
+   "statement": "effort_loopfree_filter"
+  },
+  {
+   "module": "EFFP4",
+   "recipe": "unfold-aesop",
+   "statement": "effort_loopfree_erase"
+  },
+  {
+   "module": "EFFP5",
+   "recipe": "counterexample-evaluation",
+   "statement": "effort_nonempty_inter"
+  },
+  {
+   "module": "EFFP6",
+   "recipe": "counterexample-evaluation",
+   "statement": "effort_nonempty_sdiff"
+  },
+  {
+   "module": "EFFP7",
+   "recipe": "counterexample-evaluation",
+   "statement": "effort_nonempty_filter"
+  },
+  {
+   "module": "EFFP8",
+   "recipe": "counterexample-evaluation",
+   "statement": "effort_nonempty_erase"
+  }
+ ],
+ "provenance": {
+  "acceptance": "genesis.formal_research.checker.accept",
+  "created_at": "2026-10-11T14:49:41.280668+00:00",
+  "loop": "genesis.formal_research.loop",
+  "search": "genesis.formal_research.search (builder-written recipes, named per proof)"
+ },
+ "schema": "genesis-theory-package-v1",
+ "scope": "Fresh-family closure statements under a control arm (W15).",
+ "statements": [
+  {
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "counterexample": null,
+   "id": "effort_loopfree_inter",
+   "lean": "∀ (S : GT.Edges) (T : GT.Edges) (h1 : FF.LoopFree S), FF.LoopFree (S ∩ T)",
+   "origin": "fresh-family",
+   "proof_const": "EFFP1.proof",
+   "proof_module": "EFFP1",
+   "recipe": "unfold-aesop",
+   "role": "fresh",
+   "screened_instances": 697,
+   "spec_const": "EFFConj.effort_loopfree_inter",
+   "status": "CHECKED",
+   "subject": "FF.LoopFree:inter"
+  },
+  {
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "counterexample": null,
+   "id": "effort_loopfree_sdiff",
+   "lean": "∀ (S : GT.Edges) (T : GT.Edges) (h1 : FF.LoopFree S), FF.LoopFree (S \\ T)",
+   "origin": "fresh-family",
+   "proof_const": "EFFP2.proof",
+   "proof_module": "EFFP2",
+   "recipe": "unfold-aesop",
+   "role": "fresh",
+   "screened_instances": 723,
+   "spec_const": "EFFConj.effort_loopfree_sdiff",
+   "status": "CHECKED",
+   "subject": "FF.LoopFree:sdiff"
+  },
+  {
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "counterexample": null,
+   "id": "effort_loopfree_filter",
+   "lean": "∀ (S : GT.Edges) (q : ℕ × ℕ → Bool) (h1 : FF.LoopFree S), FF.LoopFree (S.filter fun e => q e)",
+   "origin": "fresh-family",
+   "proof_const": "EFFP3.proof",
+   "proof_module": "EFFP3",
+   "recipe": "unfold-aesop",
+   "role": "fresh",
+   "screened_instances": 705,
+   "spec_const": "EFFConj.effort_loopfree_filter",
+   "status": "CHECKED",
+   "subject": "FF.LoopFree:filter"
+  },
+  {
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "counterexample": null,
+   "id": "effort_loopfree_erase",
+   "lean": "∀ (S : GT.Edges) (e : ℕ × ℕ) (h1 : FF.LoopFree S), FF.LoopFree (S.erase e)",
+   "origin": "fresh-family",
+   "proof_const": "EFFP4.proof",
+   "proof_module": "EFFP4",
+   "recipe": "unfold-aesop",
+   "role": "fresh",
+   "screened_instances": 739,
+   "spec_const": "EFFConj.effort_loopfree_erase",
+   "status": "CHECKED",
+   "subject": "FF.LoopFree:erase"
+  },
+  {
+   "counterexample": null,
+   "id": "effort_matching_inter",
+   "lean": "∀ (S : GT.Edges) (T : GT.Edges) (h1 : FF.Matching S), FF.Matching (S ∩ T)",
+   "origin": "fresh-family",
+   "reason": "no recipe compiled",
+   "role": "fresh",
+   "screened_instances": 189,
+   "spec_const": "EFFConj.effort_matching_inter",
+   "status": "UNRESOLVED",
+   "subject": "FF.Matching:inter"
+  },
+  {
+   "counterexample": null,
+   "id": "effort_matching_sdiff",
+   "lean": "∀ (S : GT.Edges) (T : GT.Edges) (h1 : FF.Matching S), FF.Matching (S \\ T)",
+   "origin": "fresh-family",
+   "reason": "no recipe compiled",
+   "role": "fresh",
+   "screened_instances": 155,
+   "spec_const": "EFFConj.effort_matching_sdiff",
+   "status": "UNRESOLVED",
+   "subject": "FF.Matching:sdiff"
+  },
+  {
+   "counterexample": null,
+   "id": "effort_matching_filter",
+   "lean": "∀ (S : GT.Edges) (q : ℕ × ℕ → Bool) (h1 : FF.Matching S), FF.Matching (S.filter fun e => q e)",
+   "origin": "fresh-family",
+   "reason": "no recipe compiled",
+   "role": "fresh",
+   "screened_instances": 168,
+   "spec_const": "EFFConj.effort_matching_filter",
+   "status": "UNRESOLVED",
+   "subject": "FF.Matching:filter"
+  },
+  {
+   "counterexample": null,
+   "id": "effort_matching_erase",
+   "lean": "∀ (S : GT.Edges) (e : ℕ × ℕ) (h1 : FF.Matching S), FF.Matching (S.erase e)",
+   "origin": "fresh-family",
+   "reason": "no recipe compiled",
+   "role": "fresh",
+   "screened_instances": 189,
+   "spec_const": "EFFConj.effort_matching_erase",
+   "status": "UNRESOLVED",
+   "subject": "FF.Matching:erase"
+  },
+  {
+   "counterexample": null,
+   "id": "effort_c4free_inter",
+   "lean": "∀ (S : GT.Edges) (T : GT.Edges) (h1 : G4.C4Free S), G4.C4Free (S ∩ T)",
+   "origin": "fresh-family",
+   "reason": "no recipe compiled",
+   "role": "fresh",
+   "screened_instances": 1729,
+   "spec_const": "EFFConj.effort_c4free_inter",
+   "status": "UNRESOLVED",
+   "subject": "G4.C4Free:inter"
+  },
+  {
+   "counterexample": null,
+   "id": "effort_c4free_sdiff",
+   "lean": "∀ (S : GT.Edges) (T : GT.Edges) (h1 : G4.C4Free S), G4.C4Free (S \\ T)",
+   "origin": "fresh-family",
+   "reason": "no recipe compiled",
+   "role": "fresh",
+   "screened_instances": 1703,
+   "spec_const": "EFFConj.effort_c4free_sdiff",
+   "status": "UNRESOLVED",
+   "subject": "G4.C4Free:sdiff"
+  },
+  {
+   "counterexample": null,
+   "id": "effort_c4free_filter",
+   "lean": "∀ (S : GT.Edges) (q : ℕ × ℕ → Bool) (h1 : G4.C4Free S), G4.C4Free (S.filter fun e => q e)",
+   "origin": "fresh-family",
+   "reason": "no recipe compiled",
+   "role": "fresh",
+   "screened_instances": 1696,
+   "spec_const": "EFFConj.effort_c4free_filter",
+   "status": "UNRESOLVED",
+   "subject": "G4.C4Free:filter"
+  },
+  {
+   "counterexample": null,
+   "id": "effort_c4free_erase",
+   "lean": "∀ (S : GT.Edges) (e : ℕ × ℕ) (h1 : G4.C4Free S), G4.C4Free (S.erase e)",
+   "origin": "fresh-family",
+   "reason": "no recipe compiled",
+   "role": "fresh",
+   "screened_instances": 1724,
+   "spec_const": "EFFConj.effort_c4free_erase",
+   "status": "UNRESOLVED",
+   "subject": "G4.C4Free:erase"
+  },
+  {
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "counterexample": {
+    "values": {
+     "S": "({(3, 2)} : GT.Edges)",
+     "T": "({(1, 0)} : GT.Edges)"
+    }
+   },
+   "id": "effort_nonempty_inter",
+   "lean": "∀ (S : GT.Edges) (T : GT.Edges) (h1 : FF.NonEmpty S), FF.NonEmpty (S ∩ T)",
+   "origin": "fresh-family",
+   "proof_const": "EFFP5.proof",
+   "proof_module": "EFFP5",
+   "recipe": "counterexample-evaluation",
+   "role": "fresh",
+   "screened_instances": 2991,
+   "spec_const": "EFFConj.effort_nonempty_inter",
+   "status": "DISPROVED",
+   "subject": "FF.NonEmpty:inter"
+  },
+  {
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "counterexample": {
+    "values": {
+     "S": "({(0, 3)} : GT.Edges)",
+     "T": "({(0, 3), (3, 3)} : GT.Edges)"
+    }
+   },
+   "id": "effort_nonempty_sdiff",
+   "lean": "∀ (S : GT.Edges) (T : GT.Edges) (h1 : FF.NonEmpty S), FF.NonEmpty (S \\ T)",
+   "origin": "fresh-family",
+   "proof_const": "EFFP6.proof",
+   "proof_module": "EFFP6",
+   "recipe": "counterexample-evaluation",
+   "role": "fresh",
+   "screened_instances": 2985,
+   "spec_const": "EFFConj.effort_nonempty_sdiff",
+   "status": "DISPROVED",
+   "subject": "FF.NonEmpty:sdiff"
+  },
+  {
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "counterexample": {
+    "values": {
+     "S": "({(1, 2), (2, 3)} : GT.Edges)",
+     "q": "(fun e => decide (e ∈ (∅ : GT.Edges)))"
+    }
+   },
+   "id": "effort_nonempty_filter",
+   "lean": "∀ (S : GT.Edges) (q : ℕ × ℕ → Bool) (h1 : FF.NonEmpty S), FF.NonEmpty (S.filter fun e => q e)",
+   "origin": "fresh-family",
+   "proof_const": "EFFP7.proof",
+   "proof_module": "EFFP7",
+   "recipe": "counterexample-evaluation",
+   "role": "fresh",
+   "screened_instances": 2994,
+   "spec_const": "EFFConj.effort_nonempty_filter",
+   "status": "DISPROVED",
+   "subject": "FF.NonEmpty:filter"
+  },
+  {
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "counterexample": {
+    "values": {
+     "S": "({(3, 1)} : GT.Edges)",
+     "e": "((3, 1) : ℕ × ℕ)"
+    }
+   },
+   "id": "effort_nonempty_erase",
+   "lean": "∀ (S : GT.Edges) (e : ℕ × ℕ) (h1 : FF.NonEmpty S), FF.NonEmpty (S.erase e)",
+   "origin": "fresh-family",
+   "proof_const": "EFFP8.proof",
+   "proof_module": "EFFP8",
+   "recipe": "counterexample-evaluation",
+   "role": "fresh",
+   "screened_instances": 2990,
+   "spec_const": "EFFConj.effort_nonempty_erase",
+   "status": "DISPROVED",
+   "subject": "FF.NonEmpty:erase"
+  }
+ ]
+}

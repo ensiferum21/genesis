@@ -1,0 +1,173 @@
+{
+ "budgets": {
+  "2.0": {
+   "best_baseline": "portfolio_auto",
+   "best_baseline_settled": 50,
+   "counts": {
+    "ghost_lemmas": {
+     "GHOST_FOUND": 37,
+     "HARNESS_ERROR": 0,
+     "PROVED": 0,
+     "UNSETTLED": 88,
+     "cpu_s": 184.84,
+     "proved_checked": 0,
+     "settled": 37,
+     "settled_checked": 37
+    },
+    "ghost_lemmas_lean": {
+     "GHOST_FOUND": 39,
+     "HARNESS_ERROR": 0,
+     "PROVED": 0,
+     "UNSETTLED": 86,
+     "cpu_s": 176.88,
+     "proved_checked": 0,
+     "settled": 39,
+     "settled_checked": 39
+    },
+    "lemmas_unfiltered": {
+     "GHOST_FOUND": 0,
+     "HARNESS_ERROR": 0,
+     "PROVED": 2,
+     "UNSETTLED": 123,
+     "cpu_s": 122.03,
+     "proved_checked": 2,
+     "settled": 2,
+     "settled_checked": 2
+    },
+    "oracle_lemmas": {
+     "GHOST_FOUND": 37,
+     "HARNESS_ERROR": 0,
+     "PROVED": 11,
+     "UNSETTLED": 77,
+     "cpu_s": 172.22,
+     "proved_checked": 11,
+     "settled": 48,
+     "settled_checked": 48
+    },
+    "portfolio": {
+     "GHOST_FOUND": 38,
+     "HARNESS_ERROR": 0,
+     "PROVED": 10,
+     "UNSETTLED": 77,
+     "cpu_s": 174.05,
+     "proved_checked": 10,
+     "settled": 48,
+     "settled_checked": 48
+    },
+    "portfolio_auto": {
+     "GHOST_FOUND": 38,
+     "HARNESS_ERROR": 0,
+     "PROVED": 12,
+     "UNSETTLED": 75,
+     "cpu_s": 161.1,
+     "proved_checked": 12,
+     "settled": 50,
+     "settled_checked": 50
+    }
+   },
+   "ghost_lemmas_false_lemmas_dropped": 8,
+   "headroom_fraction": 0.6,
+   "headroom_problems": 75,
+   "mechanism_gain": {
+    "ghost_lemmas": -13,
+    "ghost_lemmas_lean": -11
+   },
+   "oracle_gain": -2,
+   "oracle_gain_on_headroom": 5,
+   "unfiltered_cpu_on_false_lemmas_s": 112.56
+  },
+  "8.0": {
+   "best_baseline": "portfolio_auto",
+   "best_baseline_settled": 124,
+   "counts": {
+    "ghost_lemmas": {
+     "GHOST_FOUND": 39,
+     "HARNESS_ERROR": 0,
+     "PROVED": 37,
+     "UNSETTLED": 49,
+     "cpu_s": 595.42,
+     "proved_checked": 37,
+     "settled": 76,
+     "settled_checked": 76
+    },
+    "ghost_lemmas_lean": {
+     "GHOST_FOUND": 39,
+     "HARNESS_ERROR": 0,
+     "PROVED": 63,
+     "UNSETTLED": 23,
+     "cpu_s": 522.59,
+     "proved_checked": 63,
+     "settled": 102,
+     "settled_checked": 102
+    },
+    "lemmas_unfiltered": {
+     "GHOST_FOUND": 0,
+     "HARNESS_ERROR": 0,
+     "PROVED": 85,
+     "UNSETTLED": 40,
+     "cpu_s": 478.97,
+     "proved_checked": 84,
+     "settled": 85,
+     "settled_checked": 84
+    },
+    "oracle_lemmas": {
+     "GHOST_FOUND": 39,
+     "HARNESS_ERROR": 0,
+     "PROVED": 84,
+     "UNSETTLED": 2,
+     "cpu_s": 296.24,
+     "proved_checked": 84,
+     "settled": 123,
+     "settled_checked": 123
+    },
+    "portfolio": {
+     "GHOST_FOUND": 39,
+     "HARNESS_ERROR": 0,
+     "PROVED": 84,
+     "UNSETTLED": 2,
+     "cpu_s": 294.32,
+     "proved_checked": 84,
+     "settled": 123,
+     "settled_checked": 123
+    },
+    "portfolio_auto": {
+     "GHOST_FOUND": 39,
+     "HARNESS_ERROR": 0,
+     "PROVED": 85,
+     "UNSETTLED": 1,
+     "cpu_s": 290.75,
+     "proved_checked": 84,
+     "settled": 124,
+     "settled_checked": 123
+    }
+   },
+   "ghost_lemmas_false_lemmas_dropped": 81,
+   "headroom_fraction": 0.008,
+   "headroom_problems": 1,
+   "mechanism_gain": {
+    "ghost_lemmas": -48,
+    "ghost_lemmas_lean": -22
+   },
+   "oracle_gain": -1,
+   "oracle_gain_on_headroom": 0,
+   "unfiltered_cpu_on_false_lemmas_s": 273.96
+  }
+ },
+ "consequence": "retire the Ghost Census branch for this scope (equational theories, these budgets)",
+ "contradictions": [],
+ "decision": "RETIRE_NO_HEADROOM",
+ "labels": {
+  "FALSE": 39,
+  "TRUE": 85,
+  "TRUE_UNCHECKED": 0,
+  "UNKNOWN": 1
+ },
+ "margin": 7,
+ "plan_sha256": "0050b951ee8dce2310c371cd1e52a6fdb9a3f4773a1ff1b65bca459a50a68fb8",
+ "problems": 125,
+ "replays": {
+  "NOT_REPLAYED": 2,
+  "THEOREM_CHECKED": 471
+ },
+ "wall_seconds": 5467.5
+}

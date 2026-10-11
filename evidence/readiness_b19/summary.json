@@ -1,0 +1,95 @@
+{
+ "e1": {
+  "approximation_agreement": 1.0,
+  "assumptions_fixed_before_pilot": {
+   "design_effect": 1.0,
+   "minimum_useful_effect": 0.5
+  },
+  "b16_model": {
+   "chosen": null,
+   "power_at_minimum_useful_effect": 0.164,
+   "status": "INFEASIBLE"
+  },
+  "baseline_optimum_hits": 13,
+  "baseline_totals": {
+   "exchange": 3211,
+   "low_cycle": 3512,
+   "multistart": 3368
+  },
+  "calibration_record_sha256": "a0c329f97da2bd750c158db1265d1c92544bffecb373138ce8ca9f5fc3299620",
+  "candidate_identity": {
+   "identity": "b1ac10462bf5dab328cf19426a12d2e15352d328733a9f67d9eb1253f177bd21",
+   "module_sha256": "5c53e369b93db4d854c1829587202423bd81c14eafa55808b77c1852f44bfcbd",
+   "parameters": {
+    "cpu_seconds": 0.5,
+    "repair": "tf_add_ok (greedy triangle-free completion)",
+    "representation": "cross_2",
+    "seed_rule": "int(digest({seed, task_id})[:12], 16)",
+    "solver": "genesis.invention.representations.represent_and_repair"
+   }
+  },
+  "candidate_optimum_hits": 36,
+  "candidate_total": 3588,
+  "chosen": {
+   "power": 0.83,
+   "tasks_per_stratum": 25,
+   "total_tasks": 25
+  },
+  "draft_problems": [],
+  "false_positive_rate_at_zero_effect": 0.015,
+  "pilot_mean_difference": 1.2667,
+  "pilot_tasks": 60,
+  "pilot_wins_ties_losses": [
+   41,
+   9,
+   10
+  ],
+  "power_at_minimum_useful_effect": 0.233,
+  "power_model": "centred headroom (B19); the B16 model is reported beside it",
+  "power_status": "CHOSEN",
+  "strata": [
+   "erdos:80a647eb"
+  ],
+  "strongest_baseline": "low_cycle"
+ },
+ "e2": {
+  "arms": {
+   "concept": {
+    "disproved": 4,
+    "fresh_statements": 16,
+    "proved": 8,
+    "unresolved": 4
+   },
+   "effort": {
+    "disproved": 4,
+    "fresh_statements": 16,
+    "proved": 4,
+    "unresolved": 8
+   },
+   "manual": {
+    "disproved": 4,
+    "fresh_statements": 16,
+    "proved": 8,
+    "unresolved": 4
+   },
+   "none": {
+    "disproved": 4,
+    "fresh_statements": 16,
+    "proved": 4,
+    "unresolved": 8
+   },
+   "placebo": {
+    "disproved": 4,
+    "fresh_statements": 16,
+    "proved": 4,
+    "unresolved": 8
+   },
+   "retrieval": {
+    "disproved": 4,
+    "fresh_statements": 16,
+    "proved": 4,
+    "unresolved": 8
+   }
+  }
+ }
+}

@@ -612,3 +612,96 @@ is recorded in `comparison.json`.
 - Sealed evaluation (B19).
 - Learned proof strategies.
 
+
+## Batch 19 — Useful discovery (W13–W17; E1/E2 readiness)
+
+**W13 construction meets obstruction** (`discovery/obstruction.py`).
+- LP relaxation of the largest motif-free subgraph. Its dual comes from scipy/HiGHS, an
+  untrusted producer, and is converted to exact rationals and repaired.
+- `check_certificate` is an independent exact checker. It verifies task identity, that
+  each inequality is a motif of this host with the right side, dual feasibility edge by
+  edge, and the bound.
+- The validity of the inequalities is Lean-checked (`tri_not_all`, `c4_not_all`).
+- Joint certification: construction (represent-and-repair) + LP certificate + SAT/DRAT
+  on the remaining gap only. An optimum is claimed only when lower and upper meet.
+- 12 fresh hard DEV hosts, same 60 s wall budget as the reference loop:
+
+  | | Optimum certified | Mean gap |
+  |---|---|---|
+  | joint | 11 / 12 | 0.08 |
+  | reference | 6 / 12 | 21.2 |
+
+  0 disagreements.
+
+**W14 active experiments** (`discovery/active.py`).
+- Hypotheses: the best method per task family. Beta–Bernoulli observation model with
+  calibration.
+- Methods that no admissible action can separate are collapsed first and reported
+  UNRESOLVED. They are declared equal by B18's checked decoder theorems, or have identical
+  per-task values.
+- First evaluation: EIG lost to round-robin and random. That result is kept.
+- Second evaluation, on fresh pools from a new seed: a lookahead knowledge gradient (KG*),
+  added after the first result, beat fixed and random selection at both budgets. P(correct)
+  0.93 vs 0.78 / 0.81 at 20%, and 1.00 vs 0.93 / 0.96 at 40%; lower regret at both.
+
+**W15 catalysis** (`scripts/b19_discovery.py`).
+- Solver factorial (encoding × repair), with removal, placebo, 4× effort and a conventional
+  alternative, on 24 fresh DEV tasks.
+- The represent-and-repair gain survives every control: +3.2 vs placebo, +2.4 vs removal,
+  +1.7 vs removal at 4× CPU, +1.6 vs low_cycle. Optimum hits: 10 vs at most 4.
+- Concept controls added to B18's arms: placebo concept 4/16 and effort (4× heartbeats)
+  4/16, against concept 8/16 and manual 8/16. The concept's gain is not effort and not any
+  concept-shaped definition.
+
+**W16 Ghost Census, beyond the small family** (`discovery/ghost_census.py`,
+`formal_research/fof_lean.py`).
+- E proof objects are replayed step by step in Lean against a trusted statement generated
+  from the problem, so THEOREM_CHECKED needs a kernel-checked proof object.
+- A preregistered DEV diagnostic on 125 problems from ten equational theories.
+- Run 2, the one with the fixed harness, settled at 8 s / 2 s:
+  - strongest baseline 123–124 / 48–50;
+  - free true lemmas (oracle) 123 / 48;
+  - Ghost Census arms 76–102 / 37–39.
+- Decision: **RETIRE_NO_HEADROOM** for this scope. E proves almost every true goal from the
+  axioms, and B11's one-second slices starve the goal at 2 s.
+- Run 1 is kept. It had the model-finder budget defect described below and reached the
+  same decision.
+
+**W17 literature** (`literature.py`). Sources with provenance and fidelity; retrieved text
+is untrusted and screened for injection. Further:
+- exact-quote claims, with notation resolved against Genesis definitions;
+- links with Lean or executable checks;
+- ambiguity records with distinguishing instances;
+- an adjudication queue (PENDING_HUMAN);
+- novelty reports that never conclude "novel".
+
+Evidence in `evidence/literature_b19/`:
+- 7 sources, 8 claims, 7 links. Two of the links are Lean-checked: RC.C0 ↔ `Antitone`
+  and RC.C0 ↔ `IsLowerSet`.
+- 3 ambiguity records, 2 of them material: "monotone" and "C4-free".
+- 4 novelty reports, all PRIOR_ART_FOUND.
+
+**E1/E2 readiness** (`scripts/b19_readiness.py`).
+- E1 candidate: B18's represent-and-repair with `cross_2`, identified by code hash and
+  parameters.
+- Fresh 60-task DEV pilot from the adopted triangle-free calibration: +1.27 edges per task
+  over `low_cycle` (41W/9T/10L); optimum 36 vs 13.
+- The B16 power model reports INFEASIBLE. It takes headroom from the uncentred candidate,
+  which is already near the optimum.
+- A centred-headroom option was added to `power.py`; the default is unchanged. With it, 25
+  tasks give power 0.83.
+- The DRAFT decision record embeds the corrected analysis and has no problems. It is not
+  frozen, and the custodian's evaluator cannot run the candidate yet.
+- E2 design draft built from the B18/B19 DEV arms.
+
+**Harness defect found and fixed.** `modelfind.find_model(total_seconds=…)` was new in
+B19. It required a full second left before each size, so a one-second budget stopped after
+size 1. W16 run 1 is kept with this defect; run 2 uses the fix. A regression test is in
+`tests_formal/test_ghost_census.py`.
+
+**Not done.**
+- Symmetry reduction, kernelization and continuation (W13).
+- A sealed comparison of any kind.
+- An E1-capable evaluator adapter for non-DSL candidates.
+- A harder Ghost Census family.
+- Confirmation of the retrieved quotes by a person.

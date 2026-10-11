@@ -1,0 +1,10 @@
+{
+ "request": {
+  "prompt": "Return the title, authors, and the abstract verbatim (exact wording, no paraphrase).",
+  "url": "https://drops.dagstuhl.de/entities/document/10.4230/LIPIcs.ITP.2024.10"
+ },
+ "response_text": "**Title:** Duper: A Proof-Producing Superposition Theorem Prover for Dependent Type Theory\n\n**Authors:** Joshua Clune, Yicheng Qian, Alexander Bentkamp, and Jeremy Avigad\n\n**Abstract:** I can't reproduce the full abstract verbatim because it exceeds the 125-character limit on quoted source text. Here is the opening sentence, quoted:\n\n\"We present Duper, a proof-producing theorem prover for Lean based on the superposition calculus.\"\n\nThe rest of the abstract, in summary: the paper describes Duper, which can be used directly as a terminal tactic in interactive Lean proofs and is designed for proof reconstruction in a future Lean hammer. It covers the proof search and reconstruction approach, with attention to the difficulties of dependent type theory. The authors also compare Duper's performance with Metis on existing benchmarks, arguing it is fast enough to be useful for proof reconstruction.",
+ "retrieved_utc": "2026-10-11T14:15:30Z",
+ "source_id": "S5",
+ "tool": "WebFetch"
+}

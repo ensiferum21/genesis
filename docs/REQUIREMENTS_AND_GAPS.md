@@ -90,7 +90,15 @@ accounting, custody records); its exit requires independent review of custody,
 fairness and study design. B17 built the Lean/Mathlib research workspace and the
 first theory package. The package replays from its sources, but only the builder has
 replayed it. B18 built concept invention: a representation grammar, worlds with checked
-transport, and concept recovery. All of it is DEV-only and replayed by the builder.
+transport, and concept recovery. All of it is DEV-only and replayed by the builder. B19
+built useful discovery on DEV:
+- certified reductions with exact LP dual certificates (W13);
+- active selection with honest identifiability (W14);
+- catalysis controls (W15);
+- a Ghost Census diagnostic with Lean replay of E proofs (W16);
+- literature and priority records (W17);
+- E1/E2 drafts.
+Acceptance needs independent review and a custodian.
 
 - **ENGINEERING_COMPLETE_P0** — builder's assessment only. Blocked on R-04's
   outstanding parts (second-machine run of `deployment/reproduce.sh`, image

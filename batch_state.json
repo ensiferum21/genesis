@@ -20,10 +20,11 @@
     15,
     16,
     17,
-    18
+    18,
+    19
   ],
   "in_progress": null,
-  "next": 19,
+  "next": 20,
   "suites": [
     "tests_genesis",
     "tests",
@@ -43,14 +44,15 @@
     "9": "Leak firewall: text/structural/elaborated/near-dup screening, oracle, theorem memory rule.",
     "10": "IR overloads + replay, 5 macros, research market, world-step loop, Appendix A registry.",
     "11": "Experiment B harness: FOF parser, SAT model finder, independent evaluator, E prover, kill gate (DEV: KILL).",
-    "12": "Release bundle + verifier, \u00a738 classes (mutation, load, golden baselines, smoke cap), CI, container recipe, env lock.",
+    "12": "Release bundle + verifier, §38 classes (mutation, load, golden baselines, smoke cap), CI, container recipe, env lock.",
     "13": "SAT baseline arm, e2e walkthrough, requirements map, final matrix.",
     "14": "R-01 shared receipt semantics; R-02 effective levels and bundle re-derivation; R-03 certificate custody + checker-only replay; three internal red-team rounds (11, 12, 9 findings; 4, 2, 1 critical) all closed with regressions; only replayable evidence licenses levels; custodian checks requests against the frozen campaign export; W01 ledger (343 rows); undeclared skips fail the matrix.",
     "14R1": "External review F-01 repaired: requested vs established wording; report.md derived per claim; free prose at floor; B14-OPEN-5 closed.",
     "15": "Independent execution (W04/R-04) on one host: platform spec + check, Python 3.13 lock, reproducible toolchain + pin revision protocol, root launcher / unprivileged worker, 14-point crash injection, resume/recover, backup/restore, second-machine reproduction driver. Second-machine run, image digest and wheel hashes outstanding.",
     "16": "Evaluator readiness (W05-W07): DomainAdapter + candidate views, DEV-only calibration (v1 ceiling 1.0 -> calibrated families), analysis plan v2 + receipts v3 + judge, power from DEV pilots, decision records, signed registration log with custodian-assigned families, control declarations. Independent review outstanding.",
     "17": "Formal research (W08 + first theory package): pinned Lean/Mathlib workspace (699-module closure built offline, audited, byte-identical across two builds on one host), sandboxed module-chain acceptance with binding, axiom audit, extraction and leanchecker; recipe search kept apart from acceptance; triangle-obstruction package (9 CHECKED, 7 DISPROVED, 2 UNRESOLVED, 1 UNSUPPORTED), executable packing bound with Lean certificates; Lean statement DomainAdapter. Replayed by the builder; independent replay outstanding.",
-    "18": "Concept invention (W09-W12): typed representation grammar with Lean obligations (4 sound for triangle-free, all C4 refuted) and represent-and-repair (DEV: 6W/5T/1L vs strongest baseline, 4 vs 2 optima); worlds with checked consistency/inconsistency, implication, separation, transport and a discriminating experiment; typed anti-unification recovers a down-closure concept (= Antitone) that enables and ~60x shortens fresh-family proofs. 8 packages replayed. Independent review outstanding."
+    "18": "Concept invention (W09-W12): typed representation grammar with Lean obligations (4 sound for triangle-free, all C4 refuted) and represent-and-repair (DEV: 6W/5T/1L vs strongest baseline, 4 vs 2 optima); worlds with checked consistency/inconsistency, implication, separation, transport and a discriminating experiment; typed anti-unification recovers a down-closure concept (= Antitone) that enables and ~60x shortens fresh-family proofs. 8 packages replayed. Independent review outstanding.",
+    "19": "Useful discovery (W13-W17, E1/E2 readiness), DEV only: exact LP dual certificates with Lean-checked inequality validity; joint certification 11/12 optima vs 6/12 for the reference at matched budgets; active selection with identifiability (EIG lost; KG* added and won on fresh pools); catalysis survives removal, placebo, effort and conventional controls; E proofs replayed step by step in Lean; Ghost Census W16 diagnostic RETIRE_NO_HEADROOM for its scope (run 1 kept with a fixed harness defect); literature, priority and faithful-formalization records (all prior art found); E1 pilot and DRAFT decision record, E2 design draft. Independent review outstanding."
   },
   "pending_evidence": {},
   "evidence": {
@@ -61,7 +63,11 @@
     "e2e_walkthrough": "evidence/e2e_walkthrough",
     "e2e_walkthrough_b14": "evidence/e2e_walkthrough_b14/final",
     "formal_research_b17": "evidence/formal_research_b17",
-    "invention_b18": "evidence/invention_b18"
+    "invention_b18": "evidence/invention_b18",
+    "discovery_b19": "evidence/discovery_b19",
+    "ghost_census_b19": "evidence/ghost_census_b19",
+    "literature_b19": "evidence/literature_b19",
+    "readiness_b19": "evidence/readiness_b19"
   },
   "remaining_external": [
     "external release authority",
@@ -78,7 +84,8 @@
     "15": "Independent execution (W04, R-04 deployment)",
     "16": "Evaluator readiness (W05-W07)",
     "17": "Formal research (W08, first TheoryPackage path)",
-    "18": "Concept invention (W09-W12)"
+    "18": "Concept invention (W09-W12)",
+    "19": "Useful discovery (W13-W17; E1/E2 readiness)"
   },
   "open_defects": [
     "R-04 second-machine run, image digest, wheel hashes (needs a second machine, registry and PyPI access)",
@@ -92,6 +99,12 @@
     "B17-OPEN-3 elementary rediscovery; W11 done-when not met",
     "B18-OPEN-1 W09 on a generated history library, not a dated Mathlib cutoff",
     "B18-OPEN-2 W10 grammar is vertex-class only; usefulness DEV-only",
-    "B18-OPEN-3 W12 world assumptions over hosts only"
+    "B18-OPEN-3 W12 world assumptions over hosts only",
+    "B19-OPEN-1 W13 relaxation route only; DEV-only advantage",
+    "B19-OPEN-2 W14 KG* chosen after EIG failed; fresh DEV pools only",
+    "B19-OPEN-3 custodian evaluator cannot run the E1 candidate (non-DSL)",
+    "B19-OPEN-4 centred-headroom power model needs review",
+    "B19-OPEN-5 Ghost Census retired for a family E solves alone; replay limits",
+    "B19-OPEN-6 W17 quotes unconfirmed; E2 needs a custodian-side generator"
   ]
 }

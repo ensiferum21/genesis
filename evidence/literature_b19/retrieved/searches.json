@@ -1,0 +1,79 @@
+{
+ "note": "Result lists are titles/URLs returned by the search tool; only the fetched sources S1-S5 were read.",
+ "operator": "builder agent (Claude, Genesis builder session) through its WebSearch tool",
+ "searches": [
+  {
+   "mode": "standard",
+   "query": "Krivelevich \"On a conjecture of Tuza about packing and covering of triangles\" Discrete Mathematics 1995",
+   "results": [
+    "https://arxiv.org/pdf/1012.0372",
+    "https://cs.tau.ac.il/~krivelev/papers.html",
+    "https://www.math.tau.ac.il/~krivelev/papers.html",
+    "https://kostochk.web.illinois.edu/docs/accepted/frac-ht.pdf",
+    "https://openproblemgarden.org/comment/reply/46837",
+    "https://www.emergentmind.com/papers/1012.0372",
+    "https://kostochk.web.illinois.edu/docs/accepted/plan-ht.pdf",
+    "https://ar5iv.arxiv.org/html/1012.0372",
+    "https://ar5iv.labs.arxiv.org/html/1806.08809"
+   ],
+   "retrieved_utc": "2026-10-11T14:04:00Z",
+   "search_id": "Q1",
+   "tool": "WebSearch"
+  },
+  {
+   "mode": "standard",
+   "query": "Alon Shapira \"Every monotone graph property is testable\" monotone property closed under removal of edges",
+   "results": [
+    "https://web.math.princeton.edu/~nalon/PDFS/monotone1.pdf",
+    "https://www.math.uni-hamburg.de/home/schacht/2007/monotone_test.pdf",
+    "https://collaborate.princeton.edu/en/publications/every-monotone-graph-property-is-testable/",
+    "https://cris.tau.ac.il/en/publications/every-monotone-graph-property-is-testable/",
+    "https://archive.dimacs.rutgers.edu/archive/Events/2005/abstracts/shapira.html",
+    "https://collaborate.princeton.edu/en/publications/every-monotone-graph-property-is-testable-2/",
+    "https://cs.tau.ac.il/~nogaa/PDFS/MonotoneSTOC.pdf",
+    "https://real.mtak.hu/204134/7/EJC_Fekete_Kun.pdf",
+    "https://cris.tau.ac.il/en/publications/every-monotone-graph-property-is-testable-2/",
+    "https://sugaku.net/oa/W1980424184"
+   ],
+   "retrieved_utc": "2026-10-11T14:04:10Z",
+   "search_id": "Q2",
+   "tool": "WebSearch"
+  },
+  {
+   "mode": "standard",
+   "query": "every graph has a bipartite subgraph with at least half of its edges Erdős 1965 max cut m/2",
+   "results": [
+    "https://repository.lsu.edu/mathematics_pubs/1211",
+    "https://www.math.lsu.edu/~oxley/bin_bip_12.pdf",
+    "https://static.renyi.hu/~p_erdos/1988-12.pdf",
+    "https://collaborate.princeton.edu/en/publications/maximum-cuts-and-judicious-partitions-in-graphs-without-short-cyc/",
+    "https://digitalcommons.memphis.edu/facpubs/5104",
+    "https://www.cambridge.org/core/journals/mathematical-proceedings-of-the-cambridge-philosophical-society/article/abs/large-cuts-in-hypergraphs-via-energy/185967C4988557519802AD34CEDD94B9",
+    "https://collaborate.princeton.edu/en/publications/bipartite-subgraphs/",
+    "https://web.math.princeton.edu/~nalon/PDFS/abks5.pdf",
+    "https://core-prod.cambridgecore.org/core/product/579B58C26FFFF4E4CCA4666326261478/core-reader"
+   ],
+   "retrieved_utc": "2026-10-11T14:04:20Z",
+   "search_id": "Q3",
+   "tool": "WebSearch"
+  },
+  {
+   "mode": "standard",
+   "query": "reconstructing E prover TSTP proofs in Lean 4 proof reconstruction superposition",
+   "results": [
+    "https://arxiv.org/pdf/1908.09479",
+    "https://arxiv.org/pdf/2512.07087",
+    "https://arxiv.org/pdf/2601.14495",
+    "https://ar5iv.labs.arxiv.org/html/1908.09479",
+    "https://reservoir.lean-lang.org/@leanprover-community/auto",
+    "https://drops.dagstuhl.de/entities/document/10.4230/LIPIcs.ITP.2024.10",
+    "https://isabelle.in.tum.de/repos/isabelle/file/e692e0a38bad/src/HOL/Tools/res_reconstruct.ML",
+    "https://www.cl.cam.ac.uk/~lp15/papers/Automation/reconstruction-slides.pdf",
+    "https://drops.dagstuhl.de/storage/00lipics/lipics-vol309-itp2024/LIPIcs.ITP.2024.10/LIPIcs.ITP.2024.10.pdf"
+   ],
+   "retrieved_utc": "2026-10-11T14:14:00Z",
+   "search_id": "Q4",
+   "tool": "WebSearch"
+  }
+ ]
+}

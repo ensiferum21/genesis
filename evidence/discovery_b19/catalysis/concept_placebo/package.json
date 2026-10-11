@@ -1,0 +1,4517 @@
+{
+ "acceptance": {
+  "check_stage": {
+   "check_sha256": "8a3e36429b70e6d1c69b2b1c1e821d53c229d3366a8498a1eb0c8fb7c10f60f9",
+   "cpu_ns": 9454737865,
+   "exit_code": 0,
+   "exits": {
+    "PLCP1": "0",
+    "PLCP2": "0",
+    "PLCP3": "0",
+    "PLCP4": "0",
+    "PLCP5": "0",
+    "PLCP6": "0",
+    "PLCP7": "0",
+    "PLCP8": "0",
+    "check": "0"
+   },
+   "log": "",
+   "peak_memory_bytes": 226549760,
+   "status": "SUCCESS",
+   "wall_ns": 9809957537
+  },
+  "leanchecker": {
+   "PLCP1": true,
+   "PLCP2": true,
+   "PLCP3": true,
+   "PLCP4": true,
+   "PLCP5": true,
+   "PLCP6": true,
+   "PLCP7": true,
+   "PLCP8": true
+  },
+  "receipt_sha256": "0333d16039f4baca3340db6b4d67e63285f98d59ba5c449a331ac3816a6f9fb9",
+  "status": "CHECKED"
+ },
+ "assumptions": {
+  "allowed_axioms": [
+   "Classical.choice",
+   "Quot.sound",
+   "propext"
+  ],
+  "axioms_used": [
+   "Classical.choice",
+   "Quot.sound",
+   "propext"
+  ],
+  "conventions": [],
+  "lean": "lean@e8baaa71855a616d",
+  "workspace": {
+   "artifact_identity": "95a6ec9f1aadc0d8d1936c34bd0ce4e144b0e35c85df12543cdcafe9ebf36b41",
+   "import_roots": [
+    "Mathlib.Data.Finset.Powerset"
+   ],
+   "mathlib_rev": "d13f23b723b8a846827a245b89c10fc7d3f11612",
+   "source_identity": "a3a7569b6d7636a844c87c2b72ef2170eda0f712ff8d9a1b0f15b069e301c7ef"
+  }
+ },
+ "bindings": [
+  {
+   "proof": "PLCP1.proof",
+   "spec": "PLCConj.placebo_loopfree_inter"
+  },
+  {
+   "proof": "PLCP2.proof",
+   "spec": "PLCConj.placebo_loopfree_sdiff"
+  },
+  {
+   "proof": "PLCP3.proof",
+   "spec": "PLCConj.placebo_loopfree_filter"
+  },
+  {
+   "proof": "PLCP4.proof",
+   "spec": "PLCConj.placebo_loopfree_erase"
+  },
+  {
+   "proof": "PLCP5.proof",
+   "spec": "PLCConj.placebo_nonempty_inter_negation"
+  },
+  {
+   "proof": "PLCP6.proof",
+   "spec": "PLCConj.placebo_nonempty_sdiff_negation"
+  },
+  {
+   "proof": "PLCP7.proof",
+   "spec": "PLCConj.placebo_nonempty_filter_negation"
+  },
+  {
+   "proof": "PLCP8.proof",
+   "spec": "PLCConj.placebo_nonempty_erase_negation"
+  }
+ ],
+ "costs": {
+  "acceptance_check_cpu_ns": 49115411080,
+  "acceptance_runs": 9,
+  "acceptances": [
+   {
+    "receipt_sha256": "62bc4cb18486f3ae3d203f6f28f7cae6437a4962c71b1b10127662071ae871bb",
+    "statement": "placebo_loopfree_inter",
+    "stats": {
+     "check_sha256": "e994d5b0e0111c33cb1a49259b7d071497c739cda72b495f9738e12085d44e6b",
+     "cpu_ns": 3256689798,
+     "exit_code": 0,
+     "exits": {
+      "PLCP1": "0",
+      "check": "0"
+     },
+     "log": "",
+     "peak_memory_bytes": 224477184,
+     "status": "SUCCESS",
+     "wall_ns": 3336095953
+    },
+    "status": "CHECKED"
+   },
+   {
+    "receipt_sha256": "ab4b23c7abe90100fd46f2b262e28ff3afff2f40274115b3ded8d6d52c5e6055",
+    "statement": "placebo_loopfree_sdiff",
+    "stats": {
+     "check_sha256": "eda754b5bf629bfc12a438e745fe45ab6ce5486c297588339108aa80c66ff278",
+     "cpu_ns": 3924426011,
+     "exit_code": 0,
+     "exits": {
+      "PLCP1": "0",
+      "PLCP2": "0",
+      "check": "0"
+     },
+     "log": "",
+     "peak_memory_bytes": 224272384,
+     "status": "SUCCESS",
+     "wall_ns": 4059107688
+    },
+    "status": "CHECKED"
+   },
+   {
+    "receipt_sha256": "8bcbaeeb53625248ec35378ada6b68d6769a7b3e5ce2e2df8097a5f3d3cf984c",
+    "statement": "placebo_loopfree_filter",
+    "stats": {
+     "check_sha256": "a6920f91bc85595f3e30b7bfe7969b3895b1eb5d0a6f5247ae4fa5c045094192",
+     "cpu_ns": 5277582045,
+     "exit_code": 0,
+     "exits": {
+      "PLCP1": "0",
+      "PLCP2": "0",
+      "PLCP3": "0",
+      "check": "0"
+     },
+     "log": "",
+     "peak_memory_bytes": 223989760,
+     "status": "SUCCESS",
+     "wall_ns": 5489048349
+    },
+    "status": "CHECKED"
+   },
+   {
+    "receipt_sha256": "58f77c3349106ea2f162932751cb15e24c2c5bc5451ef434f86b37d35c736651",
+    "statement": "placebo_loopfree_erase",
+    "stats": {
+     "check_sha256": "5e920964193e0ce6dcf871b7bedc771a5afc0592598942a2b6549203606b0d48",
+     "cpu_ns": 6099251296,
+     "exit_code": 0,
+     "exits": {
+      "PLCP1": "0",
+      "PLCP2": "0",
+      "PLCP3": "0",
+      "PLCP4": "0",
+      "check": "0"
+     },
+     "log": "",
+     "peak_memory_bytes": 224227328,
+     "status": "SUCCESS",
+     "wall_ns": 6314425156
+    },
+    "status": "CHECKED"
+   },
+   {
+    "receipt_sha256": "406ea4a79470bd26fea6bd2b9bcebbbee5ef44307af207d292152e60691f5122",
+    "statement": "placebo_nonempty_inter",
+    "stats": {
+     "check_sha256": "65170a6c813c28cdbb5488daca329cbbf0d8344c3ecbb7d808f5a305b0e478bb",
+     "cpu_ns": 5992734736,
+     "exit_code": 0,
+     "exits": {
+      "PLCP1": "0",
+      "PLCP2": "0",
+      "PLCP3": "0",
+      "PLCP4": "0",
+      "PLCP5": "0",
+      "check": "0"
+     },
+     "log": "",
+     "peak_memory_bytes": 223674368,
+     "status": "SUCCESS",
+     "wall_ns": 6143509585
+    },
+    "status": "CHECKED"
+   },
+   {
+    "receipt_sha256": "d5c5481af080ea436ab344d0ea280d5cb36c7ce22a8db4e9bb2318beb4a3539a",
+    "statement": "placebo_nonempty_sdiff",
+    "stats": {
+     "check_sha256": "c8174818825c0f92420b37a3be1ba5784c1b665a3ff035cab9b4e3e86f21e2ff",
+     "cpu_ns": 7098566422,
+     "exit_code": 0,
+     "exits": {
+      "PLCP1": "0",
+      "PLCP2": "0",
+      "PLCP3": "0",
+      "PLCP4": "0",
+      "PLCP5": "0",
+      "PLCP6": "0",
+      "check": "0"
+     },
+     "log": "",
+     "peak_memory_bytes": 221872128,
+     "status": "SUCCESS",
+     "wall_ns": 7321439284
+    },
+    "status": "CHECKED"
+   },
+   {
+    "receipt_sha256": "4b5dd1bc154122f103fdb1ca4dcaa6e1cf3575bd12f7a34e00fcc81bb54642e9",
+    "statement": "placebo_nonempty_filter",
+    "stats": {
+     "check_sha256": "cdd4f70314b4602a27b63e354d0b1bf9498fd16e3b64ed1487fadbdc3f47df1b",
+     "cpu_ns": 8194407213,
+     "exit_code": 0,
+     "exits": {
+      "PLCP1": "0",
+      "PLCP2": "0",
+      "PLCP3": "0",
+      "PLCP4": "0",
+      "PLCP5": "0",
+      "PLCP6": "0",
+      "PLCP7": "0",
+      "check": "0"
+     },
+     "log": "",
+     "peak_memory_bytes": 223961088,
+     "status": "SUCCESS",
+     "wall_ns": 8397746525
+    },
+    "status": "CHECKED"
+   },
+   {
+    "receipt_sha256": "e14e57c37f1d819dc1e28dcbd67eefc33e32619dd8f7484ec315ee153903986c",
+    "statement": "placebo_nonempty_erase",
+    "stats": {
+     "check_sha256": "d1da1b5eb760073cccc310c3c7929f9c1ad05fc50fd5c450fb4d8615d540726c",
+     "cpu_ns": 9271753559,
+     "exit_code": 0,
+     "exits": {
+      "PLCP1": "0",
+      "PLCP2": "0",
+      "PLCP3": "0",
+      "PLCP4": "0",
+      "PLCP5": "0",
+      "PLCP6": "0",
+      "PLCP7": "0",
+      "PLCP8": "0",
+      "check": "0"
+     },
+     "log": "",
+     "peak_memory_bytes": 226586624,
+     "status": "SUCCESS",
+     "wall_ns": 10086360698
+    },
+    "status": "CHECKED"
+   }
+  ],
+  "attempts": [
+   {
+    "attempts": [
+     {
+      "compiled": false,
+      "recipe": "elim-with-library",
+      "tactic_sha256": "e779d31ef0a4cb1e75d0960aee8c6f70686a385c5e86ecb9931c230d8030ea66",
+      "tier": 0
+     },
+     {
+      "compiled": false,
+      "recipe": "concept-apply",
+      "tactic_sha256": "6f250a4a24eef2a5494e528af9b79e12dd6a2d10216f2b3f8758e7a23a1d253d",
+      "tier": 0
+     },
+     {
+      "compiled": false,
+      "recipe": "concept-apply-intro",
+      "tactic_sha256": "50393115f2accfbac830270db8750623be5b7ec6b31eefa46178c0b9354a9d60",
+      "tier": 0
+     },
+     {
+      "compiled": false,
+      "recipe": "decide",
+      "tactic_sha256": "5589aa5863c2d85622d06d651add002416e5513afdbb455666cdde01bb3e257d",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "decide-kernel",
+      "tactic_sha256": "9ac77167f92e560c7b03653563b026543eb9e4c018ebd8e1d3c8be05b979ab88",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "unfold-simp",
+      "tactic_sha256": "881c37ecb8103283e311023f36696841e48f7600f31d8db8e9061a2b1d59fe1a",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "unfold-aesop",
+      "tactic_sha256": "7bb1b75fe580a8b07752f8683602c39da237ebda1879663c82c98c7d710c593c",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "unfold-omega",
+      "tactic_sha256": "6cbae144331994699881e7bae9372e44c0d841435f53365fa1ab3a02c0e4c8ff",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "unfold-solve",
+      "tactic_sha256": "6761c036be293e59ff0b95646913ea2dba384059cbec0d389a9b0f4422070ac3",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "apply-hyp:h",
+      "tactic_sha256": "427f059be785b96360bec071ccbced3327e5818b490a0dc9441328919ad556c6",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "specialize-omega:h",
+      "tactic_sha256": "764e71cc5393372a422cd115a2c445a8f2c5fcca3068d0c656256a35f76fb7f0",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "apply-hyp:h1",
+      "tactic_sha256": "4b6c12d42e0a783ed8f07542711c40d1a6a6fde010530d482f519914b9019c19",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "specialize-omega:h1",
+      "tactic_sha256": "35162e8c27f88776041b7cdaf89547f3fe8d1909ad82e24e0e5b624f71d60b86",
+      "tier": 1
+     }
+    ],
+    "charged": {
+     "candidates": 13,
+     "cpu_ns": 6564656179,
+     "wall_ns": 6904461233
+    },
+    "result": "ELABORATION_ERROR",
+    "statement": "gen_placebo_inter",
+    "target": "PLCConj.gen_placebo_inter"
+   },
+   {
+    "attempts": [
+     {
+      "compiled": false,
+      "recipe": "elim-with-library",
+      "tactic_sha256": "e779d31ef0a4cb1e75d0960aee8c6f70686a385c5e86ecb9931c230d8030ea66",
+      "tier": 0
+     },
+     {
+      "compiled": false,
+      "recipe": "concept-apply",
+      "tactic_sha256": "6f250a4a24eef2a5494e528af9b79e12dd6a2d10216f2b3f8758e7a23a1d253d",
+      "tier": 0
+     },
+     {
+      "compiled": false,
+      "recipe": "concept-apply-intro",
+      "tactic_sha256": "50393115f2accfbac830270db8750623be5b7ec6b31eefa46178c0b9354a9d60",
+      "tier": 0
+     },
+     {
+      "compiled": false,
+      "recipe": "decide",
+      "tactic_sha256": "5589aa5863c2d85622d06d651add002416e5513afdbb455666cdde01bb3e257d",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "decide-kernel",
+      "tactic_sha256": "9ac77167f92e560c7b03653563b026543eb9e4c018ebd8e1d3c8be05b979ab88",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "unfold-simp",
+      "tactic_sha256": "881c37ecb8103283e311023f36696841e48f7600f31d8db8e9061a2b1d59fe1a",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "unfold-aesop",
+      "tactic_sha256": "7bb1b75fe580a8b07752f8683602c39da237ebda1879663c82c98c7d710c593c",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "unfold-omega",
+      "tactic_sha256": "6cbae144331994699881e7bae9372e44c0d841435f53365fa1ab3a02c0e4c8ff",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "unfold-solve",
+      "tactic_sha256": "6761c036be293e59ff0b95646913ea2dba384059cbec0d389a9b0f4422070ac3",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "apply-hyp:h",
+      "tactic_sha256": "427f059be785b96360bec071ccbced3327e5818b490a0dc9441328919ad556c6",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "specialize-omega:h",
+      "tactic_sha256": "764e71cc5393372a422cd115a2c445a8f2c5fcca3068d0c656256a35f76fb7f0",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "apply-hyp:h1",
+      "tactic_sha256": "4b6c12d42e0a783ed8f07542711c40d1a6a6fde010530d482f519914b9019c19",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "specialize-omega:h1",
+      "tactic_sha256": "35162e8c27f88776041b7cdaf89547f3fe8d1909ad82e24e0e5b624f71d60b86",
+      "tier": 1
+     }
+    ],
+    "charged": {
+     "candidates": 13,
+     "cpu_ns": 6824401879,
+     "wall_ns": 7096975427
+    },
+    "result": "ELABORATION_ERROR",
+    "statement": "gen_placebo_sdiff",
+    "target": "PLCConj.gen_placebo_sdiff"
+   },
+   {
+    "attempts": [
+     {
+      "compiled": false,
+      "recipe": "elim-with-library",
+      "tactic_sha256": "b4f3f9ad1a846ec7d000f3110cfcc7e94953c65ed3222b30040f77e68b276431",
+      "tier": 0
+     },
+     {
+      "compiled": false,
+      "recipe": "concept-apply",
+      "tactic_sha256": "89cd614ccfce7ef1b0b7d528640bc42dc03160add8122b9ebdd29c72775d3927",
+      "tier": 0
+     },
+     {
+      "compiled": false,
+      "recipe": "concept-apply-intro",
+      "tactic_sha256": "1857fba7d915e8e945053649cf037737caaa9deb56e739ac0a96c1cca8826e23",
+      "tier": 0
+     },
+     {
+      "compiled": false,
+      "recipe": "decide",
+      "tactic_sha256": "5589aa5863c2d85622d06d651add002416e5513afdbb455666cdde01bb3e257d",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "decide-kernel",
+      "tactic_sha256": "9ac77167f92e560c7b03653563b026543eb9e4c018ebd8e1d3c8be05b979ab88",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "unfold-simp",
+      "tactic_sha256": "99f5663f63348090de27e52f6e0f844e100a7181b47419225125db7231af56d6",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "unfold-aesop",
+      "tactic_sha256": "a61fa0defd26126206ca4e9fefc502bdf432fbc509107461579eb61b7f310c5c",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "unfold-omega",
+      "tactic_sha256": "7ef3a6fb1e032c0f4472b74bed5dbed22250fe5d38ce7870cf88f166c8988469",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "unfold-solve",
+      "tactic_sha256": "6761c036be293e59ff0b95646913ea2dba384059cbec0d389a9b0f4422070ac3",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "apply-hyp:h",
+      "tactic_sha256": "2a97bb97eb256474092ece10dddd6bb4bd9a071483d89bbe1d2f9a47276f9d80",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "specialize-omega:h",
+      "tactic_sha256": "a9dd9df3b3d19809c7ab3c69458597ded37f62c887e6ef346ab0d4fcb505dc5e",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "apply-hyp:h1",
+      "tactic_sha256": "edeb01776ed478033282ecb9eb78628afea8b72ac17c85a0505fd935bd8fadea",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "specialize-omega:h1",
+      "tactic_sha256": "0f10188cdbae574de03857e2575acc3db1d56434c8f4545400d60e4948bfff76",
+      "tier": 1
+     }
+    ],
+    "charged": {
+     "candidates": 13,
+     "cpu_ns": 6424014298,
+     "wall_ns": 6596298394
+    },
+    "result": "ELABORATION_ERROR",
+    "statement": "gen_placebo_filter",
+    "target": "PLCConj.gen_placebo_filter"
+   },
+   {
+    "attempts": [
+     {
+      "compiled": false,
+      "recipe": "elim-with-library",
+      "tactic_sha256": "1d5794bd335377e08d6061e5d907bd332d84a0dc2ae22ad51bf464118ff9f95b",
+      "tier": 0
+     },
+     {
+      "compiled": false,
+      "recipe": "concept-apply",
+      "tactic_sha256": "2d7c8f553f8b5f873ccd374430d8d6895a6ff1c31baba88c092e87b44119dbbe",
+      "tier": 0
+     },
+     {
+      "compiled": false,
+      "recipe": "concept-apply-intro",
+      "tactic_sha256": "d81e2908f4bb85ba57f8da6018e80a87690714f797e778ee35000d31ba7dc959",
+      "tier": 0
+     },
+     {
+      "compiled": false,
+      "recipe": "decide",
+      "tactic_sha256": "5589aa5863c2d85622d06d651add002416e5513afdbb455666cdde01bb3e257d",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "decide-kernel",
+      "tactic_sha256": "9ac77167f92e560c7b03653563b026543eb9e4c018ebd8e1d3c8be05b979ab88",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "unfold-simp",
+      "tactic_sha256": "77c443339492f842ebbc9d7a6fd6ad10dd81dc30d2441f957688168d7d86a687",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "unfold-aesop",
+      "tactic_sha256": "8e50cc747c0421a74ec765b410e88d59bd9026090ba8f059f4b2f8a2aaeac668",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "unfold-omega",
+      "tactic_sha256": "214e4f998683dbf09ed15cfefc01b85bd4eb20e2670fe538c591ad08f8d56d26",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "unfold-solve",
+      "tactic_sha256": "6761c036be293e59ff0b95646913ea2dba384059cbec0d389a9b0f4422070ac3",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "apply-hyp:h",
+      "tactic_sha256": "9c4376f9d5fb9279d6ca242eced2e1629e1cb870dd27c51b7b6099fdb3e823e3",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "specialize-omega:h",
+      "tactic_sha256": "b40fb99b52b30d7d402f4c3439610983e268ae128cef2860c7431191441ba740",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "apply-hyp:h1",
+      "tactic_sha256": "f5085581c5d1f405d24b9b68e438ae6df0febc08ae5f5159e746bfe97fedc38f",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "specialize-omega:h1",
+      "tactic_sha256": "206c0b4eed6db49b94aaacef10fa64a220578ceb66598991d3c7d55a0e01cf78",
+      "tier": 1
+     }
+    ],
+    "charged": {
+     "candidates": 13,
+     "cpu_ns": 6481992954,
+     "wall_ns": 6623626920
+    },
+    "result": "ELABORATION_ERROR",
+    "statement": "gen_placebo_erase",
+    "target": "PLCConj.gen_placebo_erase"
+   },
+   {
+    "attempts": [
+     {
+      "compiled": false,
+      "recipe": "elim-with-library",
+      "tactic_sha256": "87dd796273161968e1a64f661fd4bfd38bd912b8267b2a9cc002489169dc2a69",
+      "tier": 0
+     },
+     {
+      "compiled": false,
+      "recipe": "down-closure-unfold",
+      "tactic_sha256": "27d2ec37aa3f07bd0a5f7e8182ea4a564a01dfb66e97ef24f1b92c28c23b6c7a",
+      "tier": 0
+     },
+     {
+      "compiled": false,
+      "recipe": "down-closure-aesop",
+      "tactic_sha256": "e6fcdd4133865fb72b9ce882496fed2c13e247c0c5e4c78df92b5d099e89388e",
+      "tier": 0
+     },
+     {
+      "compiled": false,
+      "recipe": "decide",
+      "tactic_sha256": "5589aa5863c2d85622d06d651add002416e5513afdbb455666cdde01bb3e257d",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "decide-kernel",
+      "tactic_sha256": "9ac77167f92e560c7b03653563b026543eb9e4c018ebd8e1d3c8be05b979ab88",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "unfold-simp",
+      "tactic_sha256": "0d0f02b342558d74b10d236c4eb112b1c43f3709b4fdd4a20f69038ddc14fe96",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "unfold-aesop",
+      "tactic_sha256": "e15539f0be5f29ccf821e16cf211eaa10fdcd5923e502921a3e834fd19d918cd",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "unfold-omega",
+      "tactic_sha256": "7107e0dfa62c1d05bb0429266b77a58a10d2cb5d080d1205224812cf35b30751",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "unfold-solve",
+      "tactic_sha256": "6761c036be293e59ff0b95646913ea2dba384059cbec0d389a9b0f4422070ac3",
+      "tier": 1
+     }
+    ],
+    "charged": {
+     "candidates": 9,
+     "cpu_ns": 2954305508,
+     "wall_ns": 3082353277
+    },
+    "result": "ELABORATION_ERROR",
+    "statement": "inst_placebo_loopfree",
+    "target": "PLCConj.inst_placebo_loopfree"
+   },
+   {
+    "attempts": [
+     {
+      "compiled": false,
+      "recipe": "elim-with-library",
+      "tactic_sha256": "87dd796273161968e1a64f661fd4bfd38bd912b8267b2a9cc002489169dc2a69",
+      "tier": 0
+     },
+     {
+      "compiled": false,
+      "recipe": "down-closure-unfold",
+      "tactic_sha256": "27d2ec37aa3f07bd0a5f7e8182ea4a564a01dfb66e97ef24f1b92c28c23b6c7a",
+      "tier": 0
+     },
+     {
+      "compiled": false,
+      "recipe": "down-closure-aesop",
+      "tactic_sha256": "e6fcdd4133865fb72b9ce882496fed2c13e247c0c5e4c78df92b5d099e89388e",
+      "tier": 0
+     },
+     {
+      "compiled": false,
+      "recipe": "decide",
+      "tactic_sha256": "5589aa5863c2d85622d06d651add002416e5513afdbb455666cdde01bb3e257d",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "decide-kernel",
+      "tactic_sha256": "9ac77167f92e560c7b03653563b026543eb9e4c018ebd8e1d3c8be05b979ab88",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "unfold-simp",
+      "tactic_sha256": "0d0f02b342558d74b10d236c4eb112b1c43f3709b4fdd4a20f69038ddc14fe96",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "unfold-aesop",
+      "tactic_sha256": "e15539f0be5f29ccf821e16cf211eaa10fdcd5923e502921a3e834fd19d918cd",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "unfold-omega",
+      "tactic_sha256": "7107e0dfa62c1d05bb0429266b77a58a10d2cb5d080d1205224812cf35b30751",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "unfold-solve",
+      "tactic_sha256": "6761c036be293e59ff0b95646913ea2dba384059cbec0d389a9b0f4422070ac3",
+      "tier": 1
+     }
+    ],
+    "charged": {
+     "candidates": 9,
+     "cpu_ns": 7336617408,
+     "wall_ns": 7554130705
+    },
+    "result": "ELABORATION_ERROR",
+    "statement": "inst_placebo_matching",
+    "target": "PLCConj.inst_placebo_matching"
+   },
+   {
+    "attempts": [
+     {
+      "compiled": false,
+      "recipe": "elim-with-library",
+      "tactic_sha256": "87dd796273161968e1a64f661fd4bfd38bd912b8267b2a9cc002489169dc2a69",
+      "tier": 0
+     },
+     {
+      "compiled": false,
+      "recipe": "down-closure-unfold",
+      "tactic_sha256": "27d2ec37aa3f07bd0a5f7e8182ea4a564a01dfb66e97ef24f1b92c28c23b6c7a",
+      "tier": 0
+     },
+     {
+      "compiled": false,
+      "recipe": "down-closure-aesop",
+      "tactic_sha256": "e6fcdd4133865fb72b9ce882496fed2c13e247c0c5e4c78df92b5d099e89388e",
+      "tier": 0
+     },
+     {
+      "compiled": false,
+      "recipe": "decide",
+      "tactic_sha256": "5589aa5863c2d85622d06d651add002416e5513afdbb455666cdde01bb3e257d",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "decide-kernel",
+      "tactic_sha256": "9ac77167f92e560c7b03653563b026543eb9e4c018ebd8e1d3c8be05b979ab88",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "unfold-simp",
+      "tactic_sha256": "0d0f02b342558d74b10d236c4eb112b1c43f3709b4fdd4a20f69038ddc14fe96",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "unfold-aesop",
+      "tactic_sha256": "e15539f0be5f29ccf821e16cf211eaa10fdcd5923e502921a3e834fd19d918cd",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "unfold-omega",
+      "tactic_sha256": "7107e0dfa62c1d05bb0429266b77a58a10d2cb5d080d1205224812cf35b30751",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "unfold-solve",
+      "tactic_sha256": "6761c036be293e59ff0b95646913ea2dba384059cbec0d389a9b0f4422070ac3",
+      "tier": 1
+     }
+    ],
+    "charged": {
+     "candidates": 9,
+     "cpu_ns": 29143847443,
+     "wall_ns": 29584208351
+    },
+    "result": "RESOURCE_LIMIT",
+    "statement": "inst_placebo_c4free",
+    "target": "PLCConj.inst_placebo_c4free"
+   },
+   {
+    "attempts": [
+     {
+      "compiled": false,
+      "recipe": "counterexample-evaluation",
+      "tactic_sha256": "a3b55d19ad8a5bbc336fdbb5a62162f18e09c1274e1dc698720fea96107fc4a7",
+      "tier": 0
+     }
+    ],
+    "charged": {
+     "candidates": 1,
+     "cpu_ns": 1129545774,
+     "wall_ns": 1170887128
+    },
+    "result": "ELABORATION_ERROR",
+    "statement": "inst_placebo_nonempty",
+    "target": "PLCConj.inst_placebo_nonempty_negation"
+   },
+   {
+    "attempts": [
+     {
+      "compiled": false,
+      "recipe": "elim-with-library",
+      "tactic_sha256": "75462c84e8da3665dded376502e68dfcd98a27b1e66888c4364a69e949d7676d",
+      "tier": 0
+     },
+     {
+      "compiled": false,
+      "recipe": "decide",
+      "tactic_sha256": "5589aa5863c2d85622d06d651add002416e5513afdbb455666cdde01bb3e257d",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "decide-kernel",
+      "tactic_sha256": "9ac77167f92e560c7b03653563b026543eb9e4c018ebd8e1d3c8be05b979ab88",
+      "tier": 1
+     },
+     {
+      "compiled": true,
+      "recipe": "unfold-simp",
+      "tactic_sha256": "ef340eba7fc3685691ee1daf722c5157cbd1d9ddf2c8f4e322c480b0ced7ce78",
+      "tier": 1
+     },
+     {
+      "compiled": true,
+      "recipe": "unfold-aesop",
+      "tactic_sha256": "8de7e721871d61b3968169e05868e6ae49ab9e95df25962886705be73a95af2e",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "unfold-omega",
+      "tactic_sha256": "2ce5cac309bf19cd675d1026c6d7170a31f843b7c2a944d6ffcbffd0b3ef8ee2",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "unfold-solve",
+      "tactic_sha256": "6761c036be293e59ff0b95646913ea2dba384059cbec0d389a9b0f4422070ac3",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "apply-hyp:h1",
+      "tactic_sha256": "73e9e7c5ba144839e2b92186ebf39514d1ab9a46bdbdbf7b35a9d0cbae74f694",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "specialize-omega:h1",
+      "tactic_sha256": "17d8b15f5e6cc5bf4afd9251414afcb120f16824a7d80419a6d44daba87b7e21",
+      "tier": 1
+     }
+    ],
+    "charged": {
+     "candidates": 9,
+     "cpu_ns": 2904136639,
+     "wall_ns": 3041415438
+    },
+    "result": "ELABORATION_ERROR",
+    "statement": "placebo_loopfree_inter",
+    "target": "PLCConj.placebo_loopfree_inter"
+   },
+   {
+    "attempts": [
+     {
+      "compiled": false,
+      "recipe": "elim-with-library",
+      "tactic_sha256": "411c5f0c86de6332b9d1c15694a1b19b733d66a92b08ea4bc7390b236effda10",
+      "tier": 0
+     },
+     {
+      "compiled": false,
+      "recipe": "decide",
+      "tactic_sha256": "5589aa5863c2d85622d06d651add002416e5513afdbb455666cdde01bb3e257d",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "decide-kernel",
+      "tactic_sha256": "9ac77167f92e560c7b03653563b026543eb9e4c018ebd8e1d3c8be05b979ab88",
+      "tier": 1
+     },
+     {
+      "compiled": true,
+      "recipe": "unfold-simp",
+      "tactic_sha256": "ef340eba7fc3685691ee1daf722c5157cbd1d9ddf2c8f4e322c480b0ced7ce78",
+      "tier": 1
+     },
+     {
+      "compiled": true,
+      "recipe": "unfold-aesop",
+      "tactic_sha256": "8de7e721871d61b3968169e05868e6ae49ab9e95df25962886705be73a95af2e",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "unfold-omega",
+      "tactic_sha256": "2ce5cac309bf19cd675d1026c6d7170a31f843b7c2a944d6ffcbffd0b3ef8ee2",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "unfold-solve",
+      "tactic_sha256": "6761c036be293e59ff0b95646913ea2dba384059cbec0d389a9b0f4422070ac3",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "apply-hyp:h1",
+      "tactic_sha256": "73e9e7c5ba144839e2b92186ebf39514d1ab9a46bdbdbf7b35a9d0cbae74f694",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "specialize-omega:h1",
+      "tactic_sha256": "17d8b15f5e6cc5bf4afd9251414afcb120f16824a7d80419a6d44daba87b7e21",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "library-elim:PLCP1.proof",
+      "tactic_sha256": "3dc0c1c4f012bc4a3e9beb6478a1ecf5175f6fd9ed34919b2a97e14cec8f9339",
+      "tier": 1
+     }
+    ],
+    "charged": {
+     "candidates": 10,
+     "cpu_ns": 6475711145,
+     "wall_ns": 6627417053
+    },
+    "result": "ELABORATION_ERROR",
+    "statement": "placebo_loopfree_sdiff",
+    "target": "PLCConj.placebo_loopfree_sdiff"
+   },
+   {
+    "attempts": [
+     {
+      "compiled": false,
+      "recipe": "elim-with-library",
+      "tactic_sha256": "600ef74d078e2f4b44a768803beb159cffbf2167c18740585410d7d0c480a6db",
+      "tier": 0
+     },
+     {
+      "compiled": false,
+      "recipe": "decide",
+      "tactic_sha256": "5589aa5863c2d85622d06d651add002416e5513afdbb455666cdde01bb3e257d",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "decide-kernel",
+      "tactic_sha256": "9ac77167f92e560c7b03653563b026543eb9e4c018ebd8e1d3c8be05b979ab88",
+      "tier": 1
+     },
+     {
+      "compiled": true,
+      "recipe": "unfold-simp",
+      "tactic_sha256": "c362b4f1fe447a32f63d70250593da67b4638f98f3d3d22556dffb2f8966a26c",
+      "tier": 1
+     },
+     {
+      "compiled": true,
+      "recipe": "unfold-aesop",
+      "tactic_sha256": "64fb54ac7c7bcc4075378acabbb74973b556eb5b43b5b7968ed56109f5937832",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "unfold-omega",
+      "tactic_sha256": "a2f98f08678ed6bfc5addaa6a0833792a9daf87de7fc22a69a8fd72ef417a805",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "unfold-solve",
+      "tactic_sha256": "6761c036be293e59ff0b95646913ea2dba384059cbec0d389a9b0f4422070ac3",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "apply-hyp:h1",
+      "tactic_sha256": "d74992c4d8619fb6829bdd7f6d22c03d0a33d41c48e661d4ce2f5998f1ce90c7",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "specialize-omega:h1",
+      "tactic_sha256": "2db755bdb00ece3207c4bfe275c4e934c160bb97b3fde55b3ff709f4f28b48c2",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "library-elim:PLCP1.proof",
+      "tactic_sha256": "789fe1fd5e24f09e37ba8f8a98701ef229ca1e400fc71beb65797abc4353dcb4",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "library-elim:PLCP2.proof",
+      "tactic_sha256": "011720eec934aaf919caa5899adc98c7c19cf1092fd7fba7ff5d1e92a0b7f428",
+      "tier": 1
+     }
+    ],
+    "charged": {
+     "candidates": 11,
+     "cpu_ns": 16799680825,
+     "wall_ns": 17246583061
+    },
+    "result": "ELABORATION_ERROR",
+    "statement": "placebo_loopfree_filter",
+    "target": "PLCConj.placebo_loopfree_filter"
+   },
+   {
+    "attempts": [
+     {
+      "compiled": false,
+      "recipe": "elim-with-library",
+      "tactic_sha256": "d31333c7b562d281606d8465da534a778f9009ce7987e51bf5724a74649c3089",
+      "tier": 0
+     },
+     {
+      "compiled": false,
+      "recipe": "decide",
+      "tactic_sha256": "5589aa5863c2d85622d06d651add002416e5513afdbb455666cdde01bb3e257d",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "decide-kernel",
+      "tactic_sha256": "9ac77167f92e560c7b03653563b026543eb9e4c018ebd8e1d3c8be05b979ab88",
+      "tier": 1
+     },
+     {
+      "compiled": true,
+      "recipe": "unfold-simp",
+      "tactic_sha256": "e4fc0a922d4eeb813c1fbb1cc9b4a511c89a60b36e89003ea18d0891b97fc3eb",
+      "tier": 1
+     },
+     {
+      "compiled": true,
+      "recipe": "unfold-aesop",
+      "tactic_sha256": "4a0e1c2fb2ff88560f04a13b8078fd0cfb4370740000227de3663947167aca6d",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "unfold-omega",
+      "tactic_sha256": "dd7d11761a96e3da4c0c87027365521023ebc3aad08f22c5ae5d2bebb8c758cb",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "unfold-solve",
+      "tactic_sha256": "6761c036be293e59ff0b95646913ea2dba384059cbec0d389a9b0f4422070ac3",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "apply-hyp:h1",
+      "tactic_sha256": "d4335e18875b1aa54daff135b79185be6691517526365faeaa26c5d51287d3d2",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "specialize-omega:h1",
+      "tactic_sha256": "dcc7358db0768d6371bb5366a4c1cf4e2ab3d3c5ef126020401243a11edb8707",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "library-elim:PLCP1.proof",
+      "tactic_sha256": "9b895f148b4fc988ac46a49ef98cde2082f187edca75a5e5d393f6ffa4cdbc09",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "library-elim:PLCP2.proof",
+      "tactic_sha256": "a4e75c0325371b8a13698907c7b7a5be28b33ff02386fe8288e6fa271f3d6a98",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "library-elim:PLCP3.proof",
+      "tactic_sha256": "7fb91d1b474bb677fdec0f97da9538031e2b152e0855a16c5c60a7c88e86c77a",
+      "tier": 1
+     }
+    ],
+    "charged": {
+     "candidates": 12,
+     "cpu_ns": 11189042628,
+     "wall_ns": 11576225286
+    },
+    "result": "ELABORATION_ERROR",
+    "statement": "placebo_loopfree_erase",
+    "target": "PLCConj.placebo_loopfree_erase"
+   },
+   {
+    "attempts": [
+     {
+      "compiled": false,
+      "recipe": "elim-with-library",
+      "tactic_sha256": "91e065130c426200e085b6946f1cd05cbf718889b4d54c155e05c23596d23135",
+      "tier": 0
+     },
+     {
+      "compiled": false,
+      "recipe": "decide",
+      "tactic_sha256": "5589aa5863c2d85622d06d651add002416e5513afdbb455666cdde01bb3e257d",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "decide-kernel",
+      "tactic_sha256": "9ac77167f92e560c7b03653563b026543eb9e4c018ebd8e1d3c8be05b979ab88",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "unfold-simp",
+      "tactic_sha256": "ef340eba7fc3685691ee1daf722c5157cbd1d9ddf2c8f4e322c480b0ced7ce78",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "unfold-aesop",
+      "tactic_sha256": "8de7e721871d61b3968169e05868e6ae49ab9e95df25962886705be73a95af2e",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "unfold-omega",
+      "tactic_sha256": "2ce5cac309bf19cd675d1026c6d7170a31f843b7c2a944d6ffcbffd0b3ef8ee2",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "unfold-solve",
+      "tactic_sha256": "6761c036be293e59ff0b95646913ea2dba384059cbec0d389a9b0f4422070ac3",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "apply-hyp:h1",
+      "tactic_sha256": "73e9e7c5ba144839e2b92186ebf39514d1ab9a46bdbdbf7b35a9d0cbae74f694",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "specialize-omega:h1",
+      "tactic_sha256": "17d8b15f5e6cc5bf4afd9251414afcb120f16824a7d80419a6d44daba87b7e21",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "library-elim:PLCP1.proof",
+      "tactic_sha256": "3dc0c1c4f012bc4a3e9beb6478a1ecf5175f6fd9ed34919b2a97e14cec8f9339",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "library-elim:PLCP2.proof",
+      "tactic_sha256": "bdef60c15917aeea1840da4453268e7fd68a93264e4925db57312f2c6b34cf02",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "library-elim:PLCP3.proof",
+      "tactic_sha256": "2df58f9fb05868fb6ebb23051dbe1b21a41f818e96e827a56ce5e054c7f6caef",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "library-elim:PLCP4.proof",
+      "tactic_sha256": "1a91a36ac992a451b3b5f16cd523c34e702bd94b6b8b59a21cbe694797779ef3",
+      "tier": 1
+     }
+    ],
+    "charged": {
+     "candidates": 13,
+     "cpu_ns": 8684390397,
+     "wall_ns": 8862383517
+    },
+    "result": "ELABORATION_ERROR",
+    "statement": "placebo_matching_inter",
+    "target": "PLCConj.placebo_matching_inter"
+   },
+   {
+    "attempts": [
+     {
+      "compiled": false,
+      "recipe": "elim-with-library",
+      "tactic_sha256": "91e065130c426200e085b6946f1cd05cbf718889b4d54c155e05c23596d23135",
+      "tier": 0
+     },
+     {
+      "compiled": false,
+      "recipe": "decide",
+      "tactic_sha256": "5589aa5863c2d85622d06d651add002416e5513afdbb455666cdde01bb3e257d",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "decide-kernel",
+      "tactic_sha256": "9ac77167f92e560c7b03653563b026543eb9e4c018ebd8e1d3c8be05b979ab88",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "unfold-simp",
+      "tactic_sha256": "ef340eba7fc3685691ee1daf722c5157cbd1d9ddf2c8f4e322c480b0ced7ce78",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "unfold-aesop",
+      "tactic_sha256": "8de7e721871d61b3968169e05868e6ae49ab9e95df25962886705be73a95af2e",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "unfold-omega",
+      "tactic_sha256": "2ce5cac309bf19cd675d1026c6d7170a31f843b7c2a944d6ffcbffd0b3ef8ee2",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "unfold-solve",
+      "tactic_sha256": "6761c036be293e59ff0b95646913ea2dba384059cbec0d389a9b0f4422070ac3",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "apply-hyp:h1",
+      "tactic_sha256": "73e9e7c5ba144839e2b92186ebf39514d1ab9a46bdbdbf7b35a9d0cbae74f694",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "specialize-omega:h1",
+      "tactic_sha256": "17d8b15f5e6cc5bf4afd9251414afcb120f16824a7d80419a6d44daba87b7e21",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "library-elim:PLCP1.proof",
+      "tactic_sha256": "3dc0c1c4f012bc4a3e9beb6478a1ecf5175f6fd9ed34919b2a97e14cec8f9339",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "library-elim:PLCP2.proof",
+      "tactic_sha256": "bdef60c15917aeea1840da4453268e7fd68a93264e4925db57312f2c6b34cf02",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "library-elim:PLCP3.proof",
+      "tactic_sha256": "2df58f9fb05868fb6ebb23051dbe1b21a41f818e96e827a56ce5e054c7f6caef",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "library-elim:PLCP4.proof",
+      "tactic_sha256": "1a91a36ac992a451b3b5f16cd523c34e702bd94b6b8b59a21cbe694797779ef3",
+      "tier": 1
+     }
+    ],
+    "charged": {
+     "candidates": 13,
+     "cpu_ns": 13921179645,
+     "wall_ns": 14232756856
+    },
+    "result": "ELABORATION_ERROR",
+    "statement": "placebo_matching_sdiff",
+    "target": "PLCConj.placebo_matching_sdiff"
+   },
+   {
+    "attempts": [
+     {
+      "compiled": false,
+      "recipe": "elim-with-library",
+      "tactic_sha256": "5c2cc149ee89284dc75eb499d0f3c706b1e431bb65645761e29751d15f118f03",
+      "tier": 0
+     },
+     {
+      "compiled": false,
+      "recipe": "decide",
+      "tactic_sha256": "5589aa5863c2d85622d06d651add002416e5513afdbb455666cdde01bb3e257d",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "decide-kernel",
+      "tactic_sha256": "9ac77167f92e560c7b03653563b026543eb9e4c018ebd8e1d3c8be05b979ab88",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "unfold-simp",
+      "tactic_sha256": "c362b4f1fe447a32f63d70250593da67b4638f98f3d3d22556dffb2f8966a26c",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "unfold-aesop",
+      "tactic_sha256": "64fb54ac7c7bcc4075378acabbb74973b556eb5b43b5b7968ed56109f5937832",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "unfold-omega",
+      "tactic_sha256": "a2f98f08678ed6bfc5addaa6a0833792a9daf87de7fc22a69a8fd72ef417a805",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "unfold-solve",
+      "tactic_sha256": "6761c036be293e59ff0b95646913ea2dba384059cbec0d389a9b0f4422070ac3",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "apply-hyp:h1",
+      "tactic_sha256": "d74992c4d8619fb6829bdd7f6d22c03d0a33d41c48e661d4ce2f5998f1ce90c7",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "specialize-omega:h1",
+      "tactic_sha256": "2db755bdb00ece3207c4bfe275c4e934c160bb97b3fde55b3ff709f4f28b48c2",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "library-elim:PLCP1.proof",
+      "tactic_sha256": "789fe1fd5e24f09e37ba8f8a98701ef229ca1e400fc71beb65797abc4353dcb4",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "library-elim:PLCP2.proof",
+      "tactic_sha256": "011720eec934aaf919caa5899adc98c7c19cf1092fd7fba7ff5d1e92a0b7f428",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "library-elim:PLCP3.proof",
+      "tactic_sha256": "05a576af232e72000a183bd9a1405e9c934d297af15af8d7cb08b62e1d21aa85",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "library-elim:PLCP4.proof",
+      "tactic_sha256": "11d364c01917e6b7ad6f57b5abb07d633a17d44c27ce181cc398ff8070894766",
+      "tier": 1
+     }
+    ],
+    "charged": {
+     "candidates": 13,
+     "cpu_ns": 13625670330,
+     "wall_ns": 13872416935
+    },
+    "result": "ELABORATION_ERROR",
+    "statement": "placebo_matching_filter",
+    "target": "PLCConj.placebo_matching_filter"
+   },
+   {
+    "attempts": [
+     {
+      "compiled": false,
+      "recipe": "elim-with-library",
+      "tactic_sha256": "8ef39f51fad3d801643911ad50372578a7339e023f5ae966a61f4706d4b57466",
+      "tier": 0
+     },
+     {
+      "compiled": false,
+      "recipe": "decide",
+      "tactic_sha256": "5589aa5863c2d85622d06d651add002416e5513afdbb455666cdde01bb3e257d",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "decide-kernel",
+      "tactic_sha256": "9ac77167f92e560c7b03653563b026543eb9e4c018ebd8e1d3c8be05b979ab88",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "unfold-simp",
+      "tactic_sha256": "e4fc0a922d4eeb813c1fbb1cc9b4a511c89a60b36e89003ea18d0891b97fc3eb",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "unfold-aesop",
+      "tactic_sha256": "4a0e1c2fb2ff88560f04a13b8078fd0cfb4370740000227de3663947167aca6d",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "unfold-omega",
+      "tactic_sha256": "dd7d11761a96e3da4c0c87027365521023ebc3aad08f22c5ae5d2bebb8c758cb",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "unfold-solve",
+      "tactic_sha256": "6761c036be293e59ff0b95646913ea2dba384059cbec0d389a9b0f4422070ac3",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "apply-hyp:h1",
+      "tactic_sha256": "d4335e18875b1aa54daff135b79185be6691517526365faeaa26c5d51287d3d2",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "specialize-omega:h1",
+      "tactic_sha256": "dcc7358db0768d6371bb5366a4c1cf4e2ab3d3c5ef126020401243a11edb8707",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "library-elim:PLCP1.proof",
+      "tactic_sha256": "9b895f148b4fc988ac46a49ef98cde2082f187edca75a5e5d393f6ffa4cdbc09",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "library-elim:PLCP2.proof",
+      "tactic_sha256": "a4e75c0325371b8a13698907c7b7a5be28b33ff02386fe8288e6fa271f3d6a98",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "library-elim:PLCP3.proof",
+      "tactic_sha256": "7fb91d1b474bb677fdec0f97da9538031e2b152e0855a16c5c60a7c88e86c77a",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "library-elim:PLCP4.proof",
+      "tactic_sha256": "2c515f0121bdc233a04e918f7c58d3f660f5eaf24a3290f0499e447980348467",
+      "tier": 1
+     }
+    ],
+    "charged": {
+     "candidates": 13,
+     "cpu_ns": 8986519042,
+     "wall_ns": 9160520742
+    },
+    "result": "ELABORATION_ERROR",
+    "statement": "placebo_matching_erase",
+    "target": "PLCConj.placebo_matching_erase"
+   },
+   {
+    "attempts": [
+     {
+      "compiled": false,
+      "recipe": "elim-with-library",
+      "tactic_sha256": "91e065130c426200e085b6946f1cd05cbf718889b4d54c155e05c23596d23135",
+      "tier": 0
+     },
+     {
+      "compiled": false,
+      "recipe": "decide",
+      "tactic_sha256": "5589aa5863c2d85622d06d651add002416e5513afdbb455666cdde01bb3e257d",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "decide-kernel",
+      "tactic_sha256": "9ac77167f92e560c7b03653563b026543eb9e4c018ebd8e1d3c8be05b979ab88",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "unfold-simp",
+      "tactic_sha256": "ef340eba7fc3685691ee1daf722c5157cbd1d9ddf2c8f4e322c480b0ced7ce78",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "unfold-aesop",
+      "tactic_sha256": "8de7e721871d61b3968169e05868e6ae49ab9e95df25962886705be73a95af2e",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "unfold-omega",
+      "tactic_sha256": "2ce5cac309bf19cd675d1026c6d7170a31f843b7c2a944d6ffcbffd0b3ef8ee2",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "unfold-solve",
+      "tactic_sha256": "6761c036be293e59ff0b95646913ea2dba384059cbec0d389a9b0f4422070ac3",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "apply-hyp:h1",
+      "tactic_sha256": "73e9e7c5ba144839e2b92186ebf39514d1ab9a46bdbdbf7b35a9d0cbae74f694",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "specialize-omega:h1",
+      "tactic_sha256": "17d8b15f5e6cc5bf4afd9251414afcb120f16824a7d80419a6d44daba87b7e21",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "library-elim:PLCP1.proof",
+      "tactic_sha256": "3dc0c1c4f012bc4a3e9beb6478a1ecf5175f6fd9ed34919b2a97e14cec8f9339",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "library-elim:PLCP2.proof",
+      "tactic_sha256": "bdef60c15917aeea1840da4453268e7fd68a93264e4925db57312f2c6b34cf02",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "library-elim:PLCP3.proof",
+      "tactic_sha256": "2df58f9fb05868fb6ebb23051dbe1b21a41f818e96e827a56ce5e054c7f6caef",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "library-elim:PLCP4.proof",
+      "tactic_sha256": "1a91a36ac992a451b3b5f16cd523c34e702bd94b6b8b59a21cbe694797779ef3",
+      "tier": 1
+     }
+    ],
+    "charged": {
+     "candidates": 13,
+     "cpu_ns": 30215757831,
+     "wall_ns": 30605402226
+    },
+    "result": "RESOURCE_LIMIT",
+    "statement": "placebo_c4free_inter",
+    "target": "PLCConj.placebo_c4free_inter"
+   },
+   {
+    "attempts": [
+     {
+      "compiled": false,
+      "recipe": "elim-with-library",
+      "tactic_sha256": "91e065130c426200e085b6946f1cd05cbf718889b4d54c155e05c23596d23135",
+      "tier": 0
+     },
+     {
+      "compiled": false,
+      "recipe": "decide",
+      "tactic_sha256": "5589aa5863c2d85622d06d651add002416e5513afdbb455666cdde01bb3e257d",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "decide-kernel",
+      "tactic_sha256": "9ac77167f92e560c7b03653563b026543eb9e4c018ebd8e1d3c8be05b979ab88",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "unfold-simp",
+      "tactic_sha256": "ef340eba7fc3685691ee1daf722c5157cbd1d9ddf2c8f4e322c480b0ced7ce78",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "unfold-aesop",
+      "tactic_sha256": "8de7e721871d61b3968169e05868e6ae49ab9e95df25962886705be73a95af2e",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "unfold-omega",
+      "tactic_sha256": "2ce5cac309bf19cd675d1026c6d7170a31f843b7c2a944d6ffcbffd0b3ef8ee2",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "unfold-solve",
+      "tactic_sha256": "6761c036be293e59ff0b95646913ea2dba384059cbec0d389a9b0f4422070ac3",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "apply-hyp:h1",
+      "tactic_sha256": "73e9e7c5ba144839e2b92186ebf39514d1ab9a46bdbdbf7b35a9d0cbae74f694",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "specialize-omega:h1",
+      "tactic_sha256": "17d8b15f5e6cc5bf4afd9251414afcb120f16824a7d80419a6d44daba87b7e21",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "library-elim:PLCP1.proof",
+      "tactic_sha256": "3dc0c1c4f012bc4a3e9beb6478a1ecf5175f6fd9ed34919b2a97e14cec8f9339",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "library-elim:PLCP2.proof",
+      "tactic_sha256": "bdef60c15917aeea1840da4453268e7fd68a93264e4925db57312f2c6b34cf02",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "library-elim:PLCP3.proof",
+      "tactic_sha256": "2df58f9fb05868fb6ebb23051dbe1b21a41f818e96e827a56ce5e054c7f6caef",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "library-elim:PLCP4.proof",
+      "tactic_sha256": "1a91a36ac992a451b3b5f16cd523c34e702bd94b6b8b59a21cbe694797779ef3",
+      "tier": 1
+     }
+    ],
+    "charged": {
+     "candidates": 13,
+     "cpu_ns": 31207457106,
+     "wall_ns": 31715733168
+    },
+    "result": "RESOURCE_LIMIT",
+    "statement": "placebo_c4free_sdiff",
+    "target": "PLCConj.placebo_c4free_sdiff"
+   },
+   {
+    "attempts": [
+     {
+      "compiled": false,
+      "recipe": "elim-with-library",
+      "tactic_sha256": "5c2cc149ee89284dc75eb499d0f3c706b1e431bb65645761e29751d15f118f03",
+      "tier": 0
+     },
+     {
+      "compiled": false,
+      "recipe": "decide",
+      "tactic_sha256": "5589aa5863c2d85622d06d651add002416e5513afdbb455666cdde01bb3e257d",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "decide-kernel",
+      "tactic_sha256": "9ac77167f92e560c7b03653563b026543eb9e4c018ebd8e1d3c8be05b979ab88",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "unfold-simp",
+      "tactic_sha256": "c362b4f1fe447a32f63d70250593da67b4638f98f3d3d22556dffb2f8966a26c",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "unfold-aesop",
+      "tactic_sha256": "64fb54ac7c7bcc4075378acabbb74973b556eb5b43b5b7968ed56109f5937832",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "unfold-omega",
+      "tactic_sha256": "a2f98f08678ed6bfc5addaa6a0833792a9daf87de7fc22a69a8fd72ef417a805",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "unfold-solve",
+      "tactic_sha256": "6761c036be293e59ff0b95646913ea2dba384059cbec0d389a9b0f4422070ac3",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "apply-hyp:h1",
+      "tactic_sha256": "d74992c4d8619fb6829bdd7f6d22c03d0a33d41c48e661d4ce2f5998f1ce90c7",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "specialize-omega:h1",
+      "tactic_sha256": "2db755bdb00ece3207c4bfe275c4e934c160bb97b3fde55b3ff709f4f28b48c2",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "library-elim:PLCP1.proof",
+      "tactic_sha256": "789fe1fd5e24f09e37ba8f8a98701ef229ca1e400fc71beb65797abc4353dcb4",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "library-elim:PLCP2.proof",
+      "tactic_sha256": "011720eec934aaf919caa5899adc98c7c19cf1092fd7fba7ff5d1e92a0b7f428",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "library-elim:PLCP3.proof",
+      "tactic_sha256": "05a576af232e72000a183bd9a1405e9c934d297af15af8d7cb08b62e1d21aa85",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "library-elim:PLCP4.proof",
+      "tactic_sha256": "11d364c01917e6b7ad6f57b5abb07d633a17d44c27ce181cc398ff8070894766",
+      "tier": 1
+     }
+    ],
+    "charged": {
+     "candidates": 13,
+     "cpu_ns": 30645950597,
+     "wall_ns": 31128422481
+    },
+    "result": "RESOURCE_LIMIT",
+    "statement": "placebo_c4free_filter",
+    "target": "PLCConj.placebo_c4free_filter"
+   },
+   {
+    "attempts": [
+     {
+      "compiled": false,
+      "recipe": "elim-with-library",
+      "tactic_sha256": "8ef39f51fad3d801643911ad50372578a7339e023f5ae966a61f4706d4b57466",
+      "tier": 0
+     },
+     {
+      "compiled": false,
+      "recipe": "decide",
+      "tactic_sha256": "5589aa5863c2d85622d06d651add002416e5513afdbb455666cdde01bb3e257d",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "decide-kernel",
+      "tactic_sha256": "9ac77167f92e560c7b03653563b026543eb9e4c018ebd8e1d3c8be05b979ab88",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "unfold-simp",
+      "tactic_sha256": "e4fc0a922d4eeb813c1fbb1cc9b4a511c89a60b36e89003ea18d0891b97fc3eb",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "unfold-aesop",
+      "tactic_sha256": "4a0e1c2fb2ff88560f04a13b8078fd0cfb4370740000227de3663947167aca6d",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "unfold-omega",
+      "tactic_sha256": "dd7d11761a96e3da4c0c87027365521023ebc3aad08f22c5ae5d2bebb8c758cb",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "unfold-solve",
+      "tactic_sha256": "6761c036be293e59ff0b95646913ea2dba384059cbec0d389a9b0f4422070ac3",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "apply-hyp:h1",
+      "tactic_sha256": "d4335e18875b1aa54daff135b79185be6691517526365faeaa26c5d51287d3d2",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "specialize-omega:h1",
+      "tactic_sha256": "dcc7358db0768d6371bb5366a4c1cf4e2ab3d3c5ef126020401243a11edb8707",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "library-elim:PLCP1.proof",
+      "tactic_sha256": "9b895f148b4fc988ac46a49ef98cde2082f187edca75a5e5d393f6ffa4cdbc09",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "library-elim:PLCP2.proof",
+      "tactic_sha256": "a4e75c0325371b8a13698907c7b7a5be28b33ff02386fe8288e6fa271f3d6a98",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "library-elim:PLCP3.proof",
+      "tactic_sha256": "7fb91d1b474bb677fdec0f97da9538031e2b152e0855a16c5c60a7c88e86c77a",
+      "tier": 1
+     },
+     {
+      "compiled": false,
+      "recipe": "library-elim:PLCP4.proof",
+      "tactic_sha256": "2c515f0121bdc233a04e918f7c58d3f660f5eaf24a3290f0499e447980348467",
+      "tier": 1
+     }
+    ],
+    "charged": {
+     "candidates": 13,
+     "cpu_ns": 31392685815,
+     "wall_ns": 31854947451
+    },
+    "result": "RESOURCE_LIMIT",
+    "statement": "placebo_c4free_erase",
+    "target": "PLCConj.placebo_c4free_erase"
+   },
+   {
+    "attempts": [
+     {
+      "compiled": true,
+      "recipe": "counterexample-evaluation",
+      "tactic_sha256": "dfff62bb4601f5e79242d967fd7b879decee0caa6ec591b1c3d1963a8a497ed3",
+      "tier": 0
+     }
+    ],
+    "charged": {
+     "candidates": 1,
+     "cpu_ns": 1128745500,
+     "wall_ns": 1182603056
+    },
+    "result": "COMPILED",
+    "statement": "placebo_nonempty_inter",
+    "target": "PLCConj.placebo_nonempty_inter_negation"
+   },
+   {
+    "attempts": [
+     {
+      "compiled": true,
+      "recipe": "counterexample-evaluation",
+      "tactic_sha256": "29fbbeb184a18b968f5fd640711bacc639ffb8319003353f787ee2f273199e94",
+      "tier": 0
+     }
+    ],
+    "charged": {
+     "candidates": 1,
+     "cpu_ns": 1124430860,
+     "wall_ns": 1177676063
+    },
+    "result": "COMPILED",
+    "statement": "placebo_nonempty_sdiff",
+    "target": "PLCConj.placebo_nonempty_sdiff_negation"
+   },
+   {
+    "attempts": [
+     {
+      "compiled": true,
+      "recipe": "counterexample-evaluation",
+      "tactic_sha256": "191463155388ff3a70ba1020e96aa16d61fb7098ddf512cb6b9bd65738a65e2a",
+      "tier": 0
+     }
+    ],
+    "charged": {
+     "candidates": 1,
+     "cpu_ns": 1033076408,
+     "wall_ns": 1092662832
+    },
+    "result": "COMPILED",
+    "statement": "placebo_nonempty_filter",
+    "target": "PLCConj.placebo_nonempty_filter_negation"
+   },
+   {
+    "attempts": [
+     {
+      "compiled": true,
+      "recipe": "counterexample-evaluation",
+      "tactic_sha256": "2197db378cf88dbacb883786af1152cc06563ff3c519264ac210eb0dce74294d",
+      "tier": 0
+     }
+    ],
+    "charged": {
+     "candidates": 1,
+     "cpu_ns": 1219872047,
+     "wall_ns": 1300708791
+    },
+    "result": "COMPILED",
+    "statement": "placebo_nonempty_erase",
+    "target": "PLCConj.placebo_nonempty_erase_negation"
+   }
+  ],
+  "search_candidates": 230,
+  "search_context_cpu_ns": 19082715449,
+  "search_cpu_ns": 277413688258,
+  "search_runs": 24
+ },
+ "counterexamples": [
+  {
+   "checked": true,
+   "statement": "placebo_nonempty_inter",
+   "values": {
+    "S": "({(0, 0), (1, 3)} : GT.Edges)",
+    "T": "(∅ : GT.Edges)"
+   }
+  },
+  {
+   "checked": true,
+   "statement": "placebo_nonempty_sdiff",
+   "values": {
+    "S": "({(0, 2)} : GT.Edges)",
+    "T": "({(0, 2)} : GT.Edges)"
+   }
+  },
+  {
+   "checked": true,
+   "statement": "placebo_nonempty_filter",
+   "values": {
+    "S": "({(0, 2)} : GT.Edges)",
+    "q": "(fun e => decide (e ∈ ({(2, 0)} : GT.Edges)))"
+   }
+  },
+  {
+   "checked": true,
+   "statement": "placebo_nonempty_erase",
+   "values": {
+    "S": "({(0, 1)} : GT.Edges)",
+    "e": "((0, 1) : ℕ × ℕ)"
+   }
+  }
+ ],
+ "declarations": [
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "GTDefs",
+   "name": "GT.TriangleFree",
+   "type_sha256": "c98548115419ec271dfd495799f10b35c81fad06e346ef970bd969a518c2a9f4"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "GTDefs",
+   "name": "GT.Edges",
+   "type_sha256": "baaddf70fb5d432b8bd948ef91d6f910124a6d138edae4d5f000c4610ddc8eae"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "GTDefs",
+   "name": "GT.instDecidableTriangleFree",
+   "type_sha256": "5f6ad93fcd86d217b85aa0d5ae9d8484d2f18f9af307b85f1d55bcb68ce406d1"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "HSDefs",
+   "name": "HS.instDecidableBounded8",
+   "type_sha256": "bb73792b7b918c05e489e5be220ab0e645e6d75f1b8616f9f4eb5c0dd437d9d2"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "HSDefs",
+   "name": "HS.Bounded8",
+   "type_sha256": "c98548115419ec271dfd495799f10b35c81fad06e346ef970bd969a518c2a9f4"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "HSDefs",
+   "name": "HS.instDecidableSimple",
+   "type_sha256": "7c27c71eaad7318747b484aa82461f70d01434b8c83c502b94d09613463fea20"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "HSDefs",
+   "name": "HS.Simple",
+   "type_sha256": "c98548115419ec271dfd495799f10b35c81fad06e346ef970bd969a518c2a9f4"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "HSConj",
+   "name": "HSConj.down_bounded",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "HSConj",
+   "name": "HSConj.down_simple",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "HSConj",
+   "name": "HSConj.down_tf",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "HSConj",
+   "name": "HSConj.inter_tf",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "HSConj",
+   "name": "HSConj.inter_simple",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "RCDefs",
+   "name": "RC.C0",
+   "type_sha256": "9e56932812f3736513e0f638114f0463ac36ec2d16bb971de8dbb8a8fc4c56bc"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "G4Defs",
+   "name": "G4.verts",
+   "type_sha256": "7a1ef65cd458ebf10bcecd44c843b1710d493ee0d98e109b6abc53d948459791"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "G4Defs",
+   "name": "G4.adj",
+   "type_sha256": "af2cc6046b4db7f006731f612da96fe9072947a3524d785304d4acef542f9814"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "G4Defs",
+   "name": "G4.instDecidableAdj",
+   "type_sha256": "15bfca590acf8edebe32601b938585677ac6d2a4d3d45c318ce25da607e3af52"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "G4Defs",
+   "name": "G4.C4Free",
+   "type_sha256": "c98548115419ec271dfd495799f10b35c81fad06e346ef970bd969a518c2a9f4"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "G4Defs",
+   "name": "G4.instDecidableC4Free",
+   "type_sha256": "696d08db70be0d43900686ce88431e9640ecc9ab7d9c645364f85ffea376c365"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "FFDefs",
+   "name": "FF.LoopFree",
+   "type_sha256": "c98548115419ec271dfd495799f10b35c81fad06e346ef970bd969a518c2a9f4"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "FFDefs",
+   "name": "FF.Matching",
+   "type_sha256": "c98548115419ec271dfd495799f10b35c81fad06e346ef970bd969a518c2a9f4"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "FFDefs",
+   "name": "FF.instDecidableMatching",
+   "type_sha256": "f1eb605ce2edb6ef7bb1cf8da2ed3f4e9fa42c30ed97cb62b915a3a8ad23a2ff"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "FFDefs",
+   "name": "FF.instDecidableNonEmpty",
+   "type_sha256": "93046c8536d6d52cc5d00890d47f133c6eb453baf84cd131783aed6f38cfcb03"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "FFDefs",
+   "name": "FF.NonEmpty",
+   "type_sha256": "c98548115419ec271dfd495799f10b35c81fad06e346ef970bd969a518c2a9f4"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "FFDefs",
+   "name": "FF.instDecidableLoopFree",
+   "type_sha256": "b254270f9c7a70752543b6e8548e183942a64fd80cf9cbf1a76167625b0346cf"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "PCDefs",
+   "name": "PC.C0",
+   "type_sha256": "9e56932812f3736513e0f638114f0463ac36ec2d16bb971de8dbb8a8fc4c56bc"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "PLCConj",
+   "name": "PLCConj.inst_placebo_nonempty_negation",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "PLCConj",
+   "name": "PLCConj.placebo_loopfree_erase",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "PLCConj",
+   "name": "PLCConj.placebo_nonempty_erase_negation",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "PLCConj",
+   "name": "PLCConj.placebo_matching_sdiff",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "PLCConj",
+   "name": "PLCConj.placebo_c4free_inter",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "PLCConj",
+   "name": "PLCConj.placebo_nonempty_erase",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "PLCConj",
+   "name": "PLCConj.placebo_c4free_filter",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "PLCConj",
+   "name": "PLCConj.placebo_loopfree_sdiff",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "PLCConj",
+   "name": "PLCConj.placebo_nonempty_inter",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "PLCConj",
+   "name": "PLCConj.placebo_nonempty_sdiff",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "PLCConj",
+   "name": "PLCConj.placebo_loopfree_inter",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "PLCConj",
+   "name": "PLCConj.placebo_matching_inter",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "PLCConj",
+   "name": "PLCConj.placebo_matching_erase",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "PLCConj",
+   "name": "PLCConj.placebo_c4free_sdiff",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "PLCConj",
+   "name": "PLCConj.placebo_nonempty_sdiff_negation",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "PLCConj",
+   "name": "PLCConj.placebo_matching_filter",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "PLCConj",
+   "name": "PLCConj.placebo_nonempty_filter_negation",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "PLCConj",
+   "name": "PLCConj.inst_placebo_c4free",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "PLCConj",
+   "name": "PLCConj.placebo_c4free_erase",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "PLCConj",
+   "name": "PLCConj.gen_placebo_filter",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "PLCConj",
+   "name": "PLCConj.inst_placebo_loopfree",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "PLCConj",
+   "name": "PLCConj.placebo_nonempty_inter_negation",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "PLCConj",
+   "name": "PLCConj.gen_placebo_erase",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "PLCConj",
+   "name": "PLCConj.inst_placebo_matching",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "PLCConj",
+   "name": "PLCConj.placebo_loopfree_filter",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "PLCConj",
+   "name": "PLCConj.placebo_nonempty_filter",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "PLCConj",
+   "name": "PLCConj.gen_placebo_inter",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "PLCConj",
+   "name": "PLCConj.gen_placebo_sdiff",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "PLCConj",
+   "name": "PLCConj.inst_placebo_nonempty",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "theorem",
+   "module": "PLCP1",
+   "name": "FF.NonEmpty.eq_1",
+   "type_sha256": "72e33063b96fbc8c205e3f78c8b7be0e2998ce21c5c789809971da0cfac36f37"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "theorem",
+   "module": "PLCP1",
+   "name": "RC.C0.eq_1",
+   "type_sha256": "f42a870224ee0b036a86f2fff5470d63cf37fed4f8bcc82d75960d7c86299308"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "theorem",
+   "module": "PLCP1",
+   "name": "G4.C4Free.eq_1",
+   "type_sha256": "a99df87337b3a79887bf3309af80949e666d1f9c5ba664de6526779a99185ad2"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "theorem",
+   "module": "PLCP1",
+   "name": "G4.adj.eq_1",
+   "type_sha256": "f605caac356a65f93233c24feb99fcafc192de9b994e2991bb0a4146f7da912d"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "theorem",
+   "module": "PLCP1",
+   "name": "FF.LoopFree.eq_1",
+   "type_sha256": "ac6896e31cc5b194fa516975c2ec75eea728f96f0bdcb376d0e7092752188b77"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "theorem",
+   "module": "PLCP1",
+   "name": "FF.Matching.eq_1",
+   "type_sha256": "eb13d61965142ae5835d8bca8c115f68a3d34ae190733378e5980d031d5562d5"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "theorem",
+   "module": "PLCP1",
+   "name": "PC.C0.eq_1",
+   "type_sha256": "ca8d28b083cd1c2383a69c27c013498fb96dc5d5ed7f696ad56f2da909343ad2"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "theorem",
+   "module": "PLCP1",
+   "name": "G4.verts.eq_1",
+   "type_sha256": "20d2f77cbac4d174fa3683610a0c13a79ca557b7c8bd28bced602466cfb46a4e"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "theorem",
+   "module": "PLCP1",
+   "name": "PLCP1.proof",
+   "type_sha256": "7a57f180bcb623ed1a43c3b00e0e479125ca3c8e8120c4163a97f4ac3b71837b"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "theorem",
+   "module": "PLCP2",
+   "name": "PLCP2.proof",
+   "type_sha256": "1f02b6f5754cd0cc4e2711b72691706d53c86cb85dc1b2e74b700840de967e21"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "theorem",
+   "module": "PLCP3",
+   "name": "PLCP3.proof",
+   "type_sha256": "3574fbc6278f1542b53fea0b05a3beeb08f29227032f9462bf3dd9764cdbe5d6"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "theorem",
+   "module": "PLCP4",
+   "name": "PLCP4.proof",
+   "type_sha256": "50bc57ed2b4fc9365882e30ab17af5a3edebec9edd52a1b68b512daf175ebc62"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "theorem",
+   "module": "PLCP5",
+   "name": "PLCP5.proof",
+   "type_sha256": "63c06b7adead63d7ab90e358e865fdc168dee452f48e643e12de1060aabd15f8"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "theorem",
+   "module": "PLCP6",
+   "name": "PLCP6.proof",
+   "type_sha256": "6acc9866cd1c03166753a21de4c982df3be3570b5a5175358fd0b337d6f26ba9"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "theorem",
+   "module": "PLCP7",
+   "name": "PLCP7.proof",
+   "type_sha256": "181cb47cd9d0eba083143918b6539e027c576ea73d886f81ef2b46ca498c60dd"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "theorem",
+   "module": "PLCP8",
+   "name": "PLCP8.proof",
+   "type_sha256": "a0278e3681a762eecc6822042722699451d32d3bd96bbf06e116687b489c8455"
+  }
+ ],
+ "definitions": [
+  {
+   "module": "GTDefs",
+   "name": "GT.TriangleFree",
+   "origin": "trusted-generated",
+   "type_sha256": "c98548115419ec271dfd495799f10b35c81fad06e346ef970bd969a518c2a9f4"
+  },
+  {
+   "module": "GTDefs",
+   "name": "GT.Edges",
+   "origin": "trusted-generated",
+   "type_sha256": "baaddf70fb5d432b8bd948ef91d6f910124a6d138edae4d5f000c4610ddc8eae"
+  },
+  {
+   "module": "GTDefs",
+   "name": "GT.instDecidableTriangleFree",
+   "origin": "trusted-generated",
+   "type_sha256": "5f6ad93fcd86d217b85aa0d5ae9d8484d2f18f9af307b85f1d55bcb68ce406d1"
+  },
+  {
+   "module": "HSDefs",
+   "name": "HS.instDecidableBounded8",
+   "origin": "trusted-generated",
+   "type_sha256": "bb73792b7b918c05e489e5be220ab0e645e6d75f1b8616f9f4eb5c0dd437d9d2"
+  },
+  {
+   "module": "HSDefs",
+   "name": "HS.Bounded8",
+   "origin": "trusted-generated",
+   "type_sha256": "c98548115419ec271dfd495799f10b35c81fad06e346ef970bd969a518c2a9f4"
+  },
+  {
+   "module": "HSDefs",
+   "name": "HS.instDecidableSimple",
+   "origin": "trusted-generated",
+   "type_sha256": "7c27c71eaad7318747b484aa82461f70d01434b8c83c502b94d09613463fea20"
+  },
+  {
+   "module": "HSDefs",
+   "name": "HS.Simple",
+   "origin": "trusted-generated",
+   "type_sha256": "c98548115419ec271dfd495799f10b35c81fad06e346ef970bd969a518c2a9f4"
+  },
+  {
+   "module": "HSConj",
+   "name": "HSConj.down_bounded",
+   "origin": "trusted-generated",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "module": "HSConj",
+   "name": "HSConj.down_simple",
+   "origin": "trusted-generated",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "module": "HSConj",
+   "name": "HSConj.down_tf",
+   "origin": "trusted-generated",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "module": "HSConj",
+   "name": "HSConj.inter_tf",
+   "origin": "trusted-generated",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "module": "HSConj",
+   "name": "HSConj.inter_simple",
+   "origin": "trusted-generated",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "module": "RCDefs",
+   "name": "RC.C0",
+   "origin": "trusted-generated",
+   "type_sha256": "9e56932812f3736513e0f638114f0463ac36ec2d16bb971de8dbb8a8fc4c56bc"
+  },
+  {
+   "module": "G4Defs",
+   "name": "G4.verts",
+   "origin": "trusted-generated",
+   "type_sha256": "7a1ef65cd458ebf10bcecd44c843b1710d493ee0d98e109b6abc53d948459791"
+  },
+  {
+   "module": "G4Defs",
+   "name": "G4.adj",
+   "origin": "trusted-generated",
+   "type_sha256": "af2cc6046b4db7f006731f612da96fe9072947a3524d785304d4acef542f9814"
+  },
+  {
+   "module": "G4Defs",
+   "name": "G4.instDecidableAdj",
+   "origin": "trusted-generated",
+   "type_sha256": "15bfca590acf8edebe32601b938585677ac6d2a4d3d45c318ce25da607e3af52"
+  },
+  {
+   "module": "G4Defs",
+   "name": "G4.C4Free",
+   "origin": "trusted-generated",
+   "type_sha256": "c98548115419ec271dfd495799f10b35c81fad06e346ef970bd969a518c2a9f4"
+  },
+  {
+   "module": "G4Defs",
+   "name": "G4.instDecidableC4Free",
+   "origin": "trusted-generated",
+   "type_sha256": "696d08db70be0d43900686ce88431e9640ecc9ab7d9c645364f85ffea376c365"
+  },
+  {
+   "module": "FFDefs",
+   "name": "FF.LoopFree",
+   "origin": "trusted-generated",
+   "type_sha256": "c98548115419ec271dfd495799f10b35c81fad06e346ef970bd969a518c2a9f4"
+  },
+  {
+   "module": "FFDefs",
+   "name": "FF.Matching",
+   "origin": "trusted-generated",
+   "type_sha256": "c98548115419ec271dfd495799f10b35c81fad06e346ef970bd969a518c2a9f4"
+  },
+  {
+   "module": "FFDefs",
+   "name": "FF.instDecidableMatching",
+   "origin": "trusted-generated",
+   "type_sha256": "f1eb605ce2edb6ef7bb1cf8da2ed3f4e9fa42c30ed97cb62b915a3a8ad23a2ff"
+  },
+  {
+   "module": "FFDefs",
+   "name": "FF.instDecidableNonEmpty",
+   "origin": "trusted-generated",
+   "type_sha256": "93046c8536d6d52cc5d00890d47f133c6eb453baf84cd131783aed6f38cfcb03"
+  },
+  {
+   "module": "FFDefs",
+   "name": "FF.NonEmpty",
+   "origin": "trusted-generated",
+   "type_sha256": "c98548115419ec271dfd495799f10b35c81fad06e346ef970bd969a518c2a9f4"
+  },
+  {
+   "module": "FFDefs",
+   "name": "FF.instDecidableLoopFree",
+   "origin": "trusted-generated",
+   "type_sha256": "b254270f9c7a70752543b6e8548e183942a64fd80cf9cbf1a76167625b0346cf"
+  },
+  {
+   "module": "PCDefs",
+   "name": "PC.C0",
+   "origin": "trusted-generated",
+   "type_sha256": "9e56932812f3736513e0f638114f0463ac36ec2d16bb971de8dbb8a8fc4c56bc"
+  },
+  {
+   "module": "PLCConj",
+   "name": "PLCConj.inst_placebo_nonempty_negation",
+   "origin": "trusted-generated",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "module": "PLCConj",
+   "name": "PLCConj.placebo_loopfree_erase",
+   "origin": "trusted-generated",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "module": "PLCConj",
+   "name": "PLCConj.placebo_nonempty_erase_negation",
+   "origin": "trusted-generated",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "module": "PLCConj",
+   "name": "PLCConj.placebo_matching_sdiff",
+   "origin": "trusted-generated",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "module": "PLCConj",
+   "name": "PLCConj.placebo_c4free_inter",
+   "origin": "trusted-generated",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "module": "PLCConj",
+   "name": "PLCConj.placebo_nonempty_erase",
+   "origin": "trusted-generated",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "module": "PLCConj",
+   "name": "PLCConj.placebo_c4free_filter",
+   "origin": "trusted-generated",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "module": "PLCConj",
+   "name": "PLCConj.placebo_loopfree_sdiff",
+   "origin": "trusted-generated",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "module": "PLCConj",
+   "name": "PLCConj.placebo_nonempty_inter",
+   "origin": "trusted-generated",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "module": "PLCConj",
+   "name": "PLCConj.placebo_nonempty_sdiff",
+   "origin": "trusted-generated",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "module": "PLCConj",
+   "name": "PLCConj.placebo_loopfree_inter",
+   "origin": "trusted-generated",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "module": "PLCConj",
+   "name": "PLCConj.placebo_matching_inter",
+   "origin": "trusted-generated",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "module": "PLCConj",
+   "name": "PLCConj.placebo_matching_erase",
+   "origin": "trusted-generated",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "module": "PLCConj",
+   "name": "PLCConj.placebo_c4free_sdiff",
+   "origin": "trusted-generated",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "module": "PLCConj",
+   "name": "PLCConj.placebo_nonempty_sdiff_negation",
+   "origin": "trusted-generated",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "module": "PLCConj",
+   "name": "PLCConj.placebo_matching_filter",
+   "origin": "trusted-generated",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "module": "PLCConj",
+   "name": "PLCConj.placebo_nonempty_filter_negation",
+   "origin": "trusted-generated",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "module": "PLCConj",
+   "name": "PLCConj.inst_placebo_c4free",
+   "origin": "trusted-generated",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "module": "PLCConj",
+   "name": "PLCConj.placebo_c4free_erase",
+   "origin": "trusted-generated",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "module": "PLCConj",
+   "name": "PLCConj.gen_placebo_filter",
+   "origin": "trusted-generated",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "module": "PLCConj",
+   "name": "PLCConj.inst_placebo_loopfree",
+   "origin": "trusted-generated",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "module": "PLCConj",
+   "name": "PLCConj.placebo_nonempty_inter_negation",
+   "origin": "trusted-generated",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "module": "PLCConj",
+   "name": "PLCConj.gen_placebo_erase",
+   "origin": "trusted-generated",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "module": "PLCConj",
+   "name": "PLCConj.inst_placebo_matching",
+   "origin": "trusted-generated",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "module": "PLCConj",
+   "name": "PLCConj.placebo_loopfree_filter",
+   "origin": "trusted-generated",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "module": "PLCConj",
+   "name": "PLCConj.placebo_nonempty_filter",
+   "origin": "trusted-generated",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "module": "PLCConj",
+   "name": "PLCConj.gen_placebo_inter",
+   "origin": "trusted-generated",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "module": "PLCConj",
+   "name": "PLCConj.gen_placebo_sdiff",
+   "origin": "trusted-generated",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "module": "PLCConj",
+   "name": "PLCConj.inst_placebo_nonempty",
+   "origin": "trusted-generated",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  }
+ ],
+ "dependencies": {
+  "FF.LoopFree": {
+   "package": [
+    "GT.Edges"
+   ],
+   "workspace_modules": [
+    "Init.Core",
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Defs",
+    "Mathlib.Data.SetLike.Basic"
+   ]
+  },
+  "FF.LoopFree.eq_1": {
+   "package": [
+    "FF.LoopFree",
+    "GT.Edges"
+   ],
+   "workspace_modules": [
+    "Init.Core",
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Defs",
+    "Mathlib.Data.SetLike.Basic"
+   ]
+  },
+  "FF.Matching": {
+   "package": [
+    "GT.Edges"
+   ],
+   "workspace_modules": [
+    "Init.Core",
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Defs",
+    "Mathlib.Data.SetLike.Basic"
+   ]
+  },
+  "FF.Matching.eq_1": {
+   "package": [
+    "FF.Matching",
+    "GT.Edges"
+   ],
+   "workspace_modules": [
+    "Init.Core",
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Defs",
+    "Mathlib.Data.SetLike.Basic"
+   ]
+  },
+  "FF.NonEmpty": {
+   "package": [
+    "GT.Edges"
+   ],
+   "workspace_modules": [
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Empty"
+   ]
+  },
+  "FF.NonEmpty.eq_1": {
+   "package": [
+    "FF.NonEmpty",
+    "GT.Edges"
+   ],
+   "workspace_modules": [
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Empty"
+   ]
+  },
+  "FF.instDecidableLoopFree": {
+   "package": [
+    "FF.LoopFree",
+    "GT.Edges"
+   ],
+   "workspace_modules": [
+    "Init.Core",
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Defs",
+    "Mathlib.Data.SetLike.Basic"
+   ]
+  },
+  "FF.instDecidableMatching": {
+   "package": [
+    "FF.Matching",
+    "GT.Edges"
+   ],
+   "workspace_modules": [
+    "Init.Core",
+    "Init.Prelude",
+    "Init.PropLemmas",
+    "Mathlib.Data.Finset.Defs",
+    "Mathlib.Data.SetLike.Basic"
+   ]
+  },
+  "FF.instDecidableNonEmpty": {
+   "package": [
+    "FF.NonEmpty",
+    "GT.Edges"
+   ],
+   "workspace_modules": [
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Empty"
+   ]
+  },
+  "G4.C4Free": {
+   "package": [
+    "G4.adj",
+    "G4.verts",
+    "GT.Edges"
+   ],
+   "workspace_modules": [
+    "Init.Core",
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Defs",
+    "Mathlib.Data.SetLike.Basic"
+   ]
+  },
+  "G4.C4Free.eq_1": {
+   "package": [
+    "G4.C4Free",
+    "G4.adj",
+    "G4.verts",
+    "GT.Edges"
+   ],
+   "workspace_modules": [
+    "Init.Core",
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Defs",
+    "Mathlib.Data.SetLike.Basic"
+   ]
+  },
+  "G4.adj": {
+   "package": [
+    "GT.Edges"
+   ],
+   "workspace_modules": [
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Defs",
+    "Mathlib.Data.SetLike.Basic"
+   ]
+  },
+  "G4.adj.eq_1": {
+   "package": [
+    "G4.adj",
+    "GT.Edges"
+   ],
+   "workspace_modules": [
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Defs",
+    "Mathlib.Data.SetLike.Basic"
+   ]
+  },
+  "G4.instDecidableAdj": {
+   "package": [
+    "G4.adj",
+    "GT.Edges"
+   ],
+   "workspace_modules": [
+    "Init.Core",
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Defs",
+    "Mathlib.Data.SetLike.Basic"
+   ]
+  },
+  "G4.instDecidableC4Free": {
+   "package": [
+    "G4.C4Free",
+    "G4.adj",
+    "G4.instDecidableAdj",
+    "G4.verts",
+    "GT.Edges"
+   ],
+   "workspace_modules": [
+    "Init.Core",
+    "Init.Prelude",
+    "Init.PropLemmas",
+    "Mathlib.Data.Finset.Defs",
+    "Mathlib.Data.SetLike.Basic"
+   ]
+  },
+  "G4.verts": {
+   "package": [
+    "GT.Edges"
+   ],
+   "workspace_modules": [
+    "Init.Core",
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Defs",
+    "Mathlib.Data.Finset.Image",
+    "Mathlib.Data.Finset.Lattice.Basic"
+   ]
+  },
+  "G4.verts.eq_1": {
+   "package": [
+    "G4.verts",
+    "GT.Edges"
+   ],
+   "workspace_modules": [
+    "Init.Core",
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Defs",
+    "Mathlib.Data.Finset.Image",
+    "Mathlib.Data.Finset.Lattice.Basic"
+   ]
+  },
+  "GT.Edges": {
+   "package": [],
+   "workspace_modules": [
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Defs"
+   ]
+  },
+  "GT.TriangleFree": {
+   "package": [
+    "GT.Edges"
+   ],
+   "workspace_modules": [
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Defs",
+    "Mathlib.Data.SetLike.Basic"
+   ]
+  },
+  "GT.instDecidableTriangleFree": {
+   "package": [
+    "GT.Edges",
+    "GT.TriangleFree"
+   ],
+   "workspace_modules": [
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Defs",
+    "Mathlib.Data.SetLike.Basic"
+   ]
+  },
+  "HS.Bounded8": {
+   "package": [
+    "GT.Edges"
+   ],
+   "workspace_modules": [
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Defs",
+    "Mathlib.Data.SetLike.Basic"
+   ]
+  },
+  "HS.Simple": {
+   "package": [
+    "GT.Edges"
+   ],
+   "workspace_modules": [
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Defs",
+    "Mathlib.Data.SetLike.Basic"
+   ]
+  },
+  "HS.instDecidableBounded8": {
+   "package": [
+    "GT.Edges",
+    "HS.Bounded8"
+   ],
+   "workspace_modules": [
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Defs",
+    "Mathlib.Data.SetLike.Basic"
+   ]
+  },
+  "HS.instDecidableSimple": {
+   "package": [
+    "GT.Edges",
+    "HS.Simple"
+   ],
+   "workspace_modules": [
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Defs",
+    "Mathlib.Data.SetLike.Basic"
+   ]
+  },
+  "HSConj.down_bounded": {
+   "package": [
+    "GT.Edges",
+    "HS.Bounded8"
+   ],
+   "workspace_modules": [
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Defs",
+    "Mathlib.Order.Defs.PartialOrder"
+   ]
+  },
+  "HSConj.down_simple": {
+   "package": [
+    "GT.Edges",
+    "HS.Simple"
+   ],
+   "workspace_modules": [
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Defs",
+    "Mathlib.Order.Defs.PartialOrder"
+   ]
+  },
+  "HSConj.down_tf": {
+   "package": [
+    "GT.Edges",
+    "GT.TriangleFree"
+   ],
+   "workspace_modules": [
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Defs",
+    "Mathlib.Order.Defs.PartialOrder"
+   ]
+  },
+  "HSConj.inter_simple": {
+   "package": [
+    "GT.Edges",
+    "HS.Simple"
+   ],
+   "workspace_modules": [
+    "Init.Core",
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Lattice.Basic"
+   ]
+  },
+  "HSConj.inter_tf": {
+   "package": [
+    "GT.Edges",
+    "GT.TriangleFree"
+   ],
+   "workspace_modules": [
+    "Init.Core",
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Lattice.Basic"
+   ]
+  },
+  "PC.C0": {
+   "package": [
+    "GT.Edges"
+   ],
+   "workspace_modules": [
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Defs",
+    "Mathlib.Order.Defs.PartialOrder"
+   ]
+  },
+  "PC.C0.eq_1": {
+   "package": [
+    "GT.Edges",
+    "PC.C0"
+   ],
+   "workspace_modules": [
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Defs",
+    "Mathlib.Order.Defs.PartialOrder"
+   ]
+  },
+  "PLCConj.gen_placebo_erase": {
+   "package": [
+    "GT.Edges",
+    "PC.C0"
+   ],
+   "workspace_modules": [
+    "Init.Core",
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Erase"
+   ]
+  },
+  "PLCConj.gen_placebo_filter": {
+   "package": [
+    "GT.Edges",
+    "PC.C0"
+   ],
+   "workspace_modules": [
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Filter"
+   ]
+  },
+  "PLCConj.gen_placebo_inter": {
+   "package": [
+    "GT.Edges",
+    "PC.C0"
+   ],
+   "workspace_modules": [
+    "Init.Core",
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Lattice.Basic"
+   ]
+  },
+  "PLCConj.gen_placebo_sdiff": {
+   "package": [
+    "GT.Edges",
+    "PC.C0"
+   ],
+   "workspace_modules": [
+    "Init.Core",
+    "Init.Prelude",
+    "Mathlib.Data.Finset.SDiff"
+   ]
+  },
+  "PLCConj.inst_placebo_c4free": {
+   "package": [
+    "G4.C4Free",
+    "G4.adj",
+    "G4.verts",
+    "GT.Edges",
+    "PC.C0"
+   ],
+   "workspace_modules": []
+  },
+  "PLCConj.inst_placebo_loopfree": {
+   "package": [
+    "FF.LoopFree",
+    "GT.Edges",
+    "PC.C0"
+   ],
+   "workspace_modules": []
+  },
+  "PLCConj.inst_placebo_matching": {
+   "package": [
+    "FF.Matching",
+    "GT.Edges",
+    "PC.C0"
+   ],
+   "workspace_modules": []
+  },
+  "PLCConj.inst_placebo_nonempty": {
+   "package": [
+    "FF.NonEmpty",
+    "GT.Edges",
+    "PC.C0"
+   ],
+   "workspace_modules": []
+  },
+  "PLCConj.inst_placebo_nonempty_negation": {
+   "package": [
+    "FF.NonEmpty",
+    "GT.Edges",
+    "PC.C0",
+    "PLCConj.inst_placebo_nonempty"
+   ],
+   "workspace_modules": [
+    "Init.Prelude"
+   ]
+  },
+  "PLCConj.placebo_c4free_erase": {
+   "package": [
+    "G4.C4Free",
+    "G4.adj",
+    "G4.verts",
+    "GT.Edges"
+   ],
+   "workspace_modules": [
+    "Init.Core",
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Erase"
+   ]
+  },
+  "PLCConj.placebo_c4free_filter": {
+   "package": [
+    "G4.C4Free",
+    "G4.adj",
+    "G4.verts",
+    "GT.Edges"
+   ],
+   "workspace_modules": [
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Filter"
+   ]
+  },
+  "PLCConj.placebo_c4free_inter": {
+   "package": [
+    "G4.C4Free",
+    "G4.adj",
+    "G4.verts",
+    "GT.Edges"
+   ],
+   "workspace_modules": [
+    "Init.Core",
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Lattice.Basic"
+   ]
+  },
+  "PLCConj.placebo_c4free_sdiff": {
+   "package": [
+    "G4.C4Free",
+    "G4.adj",
+    "G4.verts",
+    "GT.Edges"
+   ],
+   "workspace_modules": [
+    "Init.Core",
+    "Init.Prelude",
+    "Mathlib.Data.Finset.SDiff"
+   ]
+  },
+  "PLCConj.placebo_loopfree_erase": {
+   "package": [
+    "FF.LoopFree",
+    "GT.Edges"
+   ],
+   "workspace_modules": [
+    "Init.Core",
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Erase"
+   ]
+  },
+  "PLCConj.placebo_loopfree_filter": {
+   "package": [
+    "FF.LoopFree",
+    "GT.Edges"
+   ],
+   "workspace_modules": [
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Filter"
+   ]
+  },
+  "PLCConj.placebo_loopfree_inter": {
+   "package": [
+    "FF.LoopFree",
+    "GT.Edges"
+   ],
+   "workspace_modules": [
+    "Init.Core",
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Lattice.Basic"
+   ]
+  },
+  "PLCConj.placebo_loopfree_sdiff": {
+   "package": [
+    "FF.LoopFree",
+    "GT.Edges"
+   ],
+   "workspace_modules": [
+    "Init.Core",
+    "Init.Prelude",
+    "Mathlib.Data.Finset.SDiff"
+   ]
+  },
+  "PLCConj.placebo_matching_erase": {
+   "package": [
+    "FF.Matching",
+    "GT.Edges"
+   ],
+   "workspace_modules": [
+    "Init.Core",
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Erase"
+   ]
+  },
+  "PLCConj.placebo_matching_filter": {
+   "package": [
+    "FF.Matching",
+    "GT.Edges"
+   ],
+   "workspace_modules": [
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Filter"
+   ]
+  },
+  "PLCConj.placebo_matching_inter": {
+   "package": [
+    "FF.Matching",
+    "GT.Edges"
+   ],
+   "workspace_modules": [
+    "Init.Core",
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Lattice.Basic"
+   ]
+  },
+  "PLCConj.placebo_matching_sdiff": {
+   "package": [
+    "FF.Matching",
+    "GT.Edges"
+   ],
+   "workspace_modules": [
+    "Init.Core",
+    "Init.Prelude",
+    "Mathlib.Data.Finset.SDiff"
+   ]
+  },
+  "PLCConj.placebo_nonempty_erase": {
+   "package": [
+    "FF.NonEmpty",
+    "GT.Edges"
+   ],
+   "workspace_modules": [
+    "Init.Core",
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Erase"
+   ]
+  },
+  "PLCConj.placebo_nonempty_erase_negation": {
+   "package": [
+    "FF.NonEmpty",
+    "GT.Edges",
+    "PLCConj.placebo_nonempty_erase"
+   ],
+   "workspace_modules": [
+    "Init.Prelude"
+   ]
+  },
+  "PLCConj.placebo_nonempty_filter": {
+   "package": [
+    "FF.NonEmpty",
+    "GT.Edges"
+   ],
+   "workspace_modules": [
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Filter"
+   ]
+  },
+  "PLCConj.placebo_nonempty_filter_negation": {
+   "package": [
+    "FF.NonEmpty",
+    "GT.Edges",
+    "PLCConj.placebo_nonempty_filter"
+   ],
+   "workspace_modules": [
+    "Init.Prelude"
+   ]
+  },
+  "PLCConj.placebo_nonempty_inter": {
+   "package": [
+    "FF.NonEmpty",
+    "GT.Edges"
+   ],
+   "workspace_modules": [
+    "Init.Core",
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Lattice.Basic"
+   ]
+  },
+  "PLCConj.placebo_nonempty_inter_negation": {
+   "package": [
+    "FF.NonEmpty",
+    "GT.Edges",
+    "PLCConj.placebo_nonempty_inter"
+   ],
+   "workspace_modules": [
+    "Init.Prelude"
+   ]
+  },
+  "PLCConj.placebo_nonempty_sdiff": {
+   "package": [
+    "FF.NonEmpty",
+    "GT.Edges"
+   ],
+   "workspace_modules": [
+    "Init.Core",
+    "Init.Prelude",
+    "Mathlib.Data.Finset.SDiff"
+   ]
+  },
+  "PLCConj.placebo_nonempty_sdiff_negation": {
+   "package": [
+    "FF.NonEmpty",
+    "GT.Edges",
+    "PLCConj.placebo_nonempty_sdiff"
+   ],
+   "workspace_modules": [
+    "Init.Prelude"
+   ]
+  },
+  "PLCP1.proof": {
+   "package": [
+    "FF.LoopFree",
+    "GT.Edges",
+    "PLCConj.placebo_loopfree_inter"
+   ],
+   "workspace_modules": [
+    "Init.Core",
+    "Init.Data.Prod",
+    "Init.Prelude",
+    "Init.SimpLemmas",
+    "Mathlib.Data.Finset.Defs",
+    "Mathlib.Data.Finset.Lattice.Basic",
+    "Mathlib.Data.Prod.Basic",
+    "Mathlib.Data.SetLike.Basic"
+   ]
+  },
+  "PLCP2.proof": {
+   "package": [
+    "FF.LoopFree",
+    "GT.Edges",
+    "PLCConj.placebo_loopfree_sdiff"
+   ],
+   "workspace_modules": [
+    "Init.Core",
+    "Init.Data.Prod",
+    "Init.Prelude",
+    "Init.SimpLemmas",
+    "Mathlib.Data.Finset.Defs",
+    "Mathlib.Data.Finset.SDiff",
+    "Mathlib.Data.Prod.Basic",
+    "Mathlib.Data.SetLike.Basic"
+   ]
+  },
+  "PLCP3.proof": {
+   "package": [
+    "FF.LoopFree",
+    "GT.Edges",
+    "PLCConj.placebo_loopfree_filter"
+   ],
+   "workspace_modules": [
+    "Init.Core",
+    "Init.Data.Prod",
+    "Init.Prelude",
+    "Init.SimpLemmas",
+    "Mathlib.Data.Finset.Defs",
+    "Mathlib.Data.Finset.Filter",
+    "Mathlib.Data.Prod.Basic",
+    "Mathlib.Data.SetLike.Basic"
+   ]
+  },
+  "PLCP4.proof": {
+   "package": [
+    "FF.LoopFree",
+    "GT.Edges",
+    "PLCConj.placebo_loopfree_erase"
+   ],
+   "workspace_modules": [
+    "Init.Core",
+    "Init.Data.Prod",
+    "Init.Prelude",
+    "Init.SimpLemmas",
+    "Mathlib.Data.Finset.Defs",
+    "Mathlib.Data.Finset.Erase",
+    "Mathlib.Data.Prod.Basic",
+    "Mathlib.Data.SetLike.Basic"
+   ]
+  },
+  "PLCP5.proof": {
+   "package": [
+    "FF.NonEmpty",
+    "FF.instDecidableNonEmpty",
+    "GT.Edges",
+    "PLCConj.placebo_nonempty_inter",
+    "PLCConj.placebo_nonempty_inter_negation",
+    "PLCP5.proof._proof_1_1",
+    "PLCP5.proof._proof_1_2"
+   ],
+   "workspace_modules": [
+    "Init.Core",
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Empty",
+    "Mathlib.Data.Finset.Insert",
+    "Mathlib.Data.Finset.Lattice.Basic"
+   ]
+  },
+  "PLCP5.proof._proof_1_1": {
+   "package": [
+    "FF.NonEmpty",
+    "FF.instDecidableNonEmpty",
+    "GT.Edges"
+   ],
+   "workspace_modules": [
+    "Init.Core",
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Insert"
+   ]
+  },
+  "PLCP5.proof._proof_1_2": {
+   "package": [
+    "FF.NonEmpty",
+    "FF.instDecidableNonEmpty",
+    "GT.Edges"
+   ],
+   "workspace_modules": [
+    "Init.Core",
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Empty",
+    "Mathlib.Data.Finset.Insert",
+    "Mathlib.Data.Finset.Lattice.Basic"
+   ]
+  },
+  "PLCP6.proof": {
+   "package": [
+    "FF.NonEmpty",
+    "FF.instDecidableNonEmpty",
+    "GT.Edges",
+    "PLCConj.placebo_nonempty_sdiff",
+    "PLCConj.placebo_nonempty_sdiff_negation",
+    "PLCP6.proof._proof_1_1",
+    "PLCP6.proof._proof_1_2"
+   ],
+   "workspace_modules": [
+    "Init.Core",
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Insert",
+    "Mathlib.Data.Finset.SDiff"
+   ]
+  },
+  "PLCP6.proof._proof_1_1": {
+   "package": [
+    "FF.NonEmpty",
+    "FF.instDecidableNonEmpty",
+    "GT.Edges"
+   ],
+   "workspace_modules": [
+    "Init.Core",
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Insert"
+   ]
+  },
+  "PLCP6.proof._proof_1_2": {
+   "package": [
+    "FF.NonEmpty",
+    "FF.instDecidableNonEmpty",
+    "GT.Edges"
+   ],
+   "workspace_modules": [
+    "Init.Core",
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Insert",
+    "Mathlib.Data.Finset.SDiff"
+   ]
+  },
+  "PLCP7.proof": {
+   "package": [
+    "FF.NonEmpty",
+    "FF.instDecidableNonEmpty",
+    "GT.Edges",
+    "PLCConj.placebo_nonempty_filter",
+    "PLCConj.placebo_nonempty_filter_negation",
+    "PLCP7.proof._proof_1_1",
+    "PLCP7.proof._proof_1_2"
+   ],
+   "workspace_modules": [
+    "Init.Core",
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Defs",
+    "Mathlib.Data.Finset.Filter",
+    "Mathlib.Data.Finset.Insert",
+    "Mathlib.Data.SetLike.Basic"
+   ]
+  },
+  "PLCP7.proof._proof_1_1": {
+   "package": [
+    "FF.NonEmpty",
+    "FF.instDecidableNonEmpty",
+    "GT.Edges"
+   ],
+   "workspace_modules": [
+    "Init.Core",
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Insert"
+   ]
+  },
+  "PLCP7.proof._proof_1_2": {
+   "package": [
+    "FF.NonEmpty",
+    "FF.instDecidableNonEmpty",
+    "GT.Edges"
+   ],
+   "workspace_modules": [
+    "Init.Core",
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Defs",
+    "Mathlib.Data.Finset.Filter",
+    "Mathlib.Data.Finset.Insert",
+    "Mathlib.Data.SetLike.Basic"
+   ]
+  },
+  "PLCP8.proof": {
+   "package": [
+    "FF.NonEmpty",
+    "FF.instDecidableNonEmpty",
+    "GT.Edges",
+    "PLCConj.placebo_nonempty_erase",
+    "PLCConj.placebo_nonempty_erase_negation",
+    "PLCP8.proof._proof_1_1",
+    "PLCP8.proof._proof_1_2"
+   ],
+   "workspace_modules": [
+    "Init.Core",
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Erase",
+    "Mathlib.Data.Finset.Insert"
+   ]
+  },
+  "PLCP8.proof._proof_1_1": {
+   "package": [
+    "FF.NonEmpty",
+    "FF.instDecidableNonEmpty",
+    "GT.Edges"
+   ],
+   "workspace_modules": [
+    "Init.Core",
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Insert"
+   ]
+  },
+  "PLCP8.proof._proof_1_2": {
+   "package": [
+    "FF.NonEmpty",
+    "FF.instDecidableNonEmpty",
+    "GT.Edges"
+   ],
+   "workspace_modules": [
+    "Init.Core",
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Erase",
+    "Mathlib.Data.Finset.Insert"
+   ]
+  },
+  "RC.C0": {
+   "package": [
+    "GT.Edges"
+   ],
+   "workspace_modules": [
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Defs",
+    "Mathlib.Order.Defs.PartialOrder"
+   ]
+  },
+  "RC.C0.eq_1": {
+   "package": [
+    "GT.Edges",
+    "RC.C0"
+   ],
+   "workspace_modules": [
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Defs",
+    "Mathlib.Order.Defs.PartialOrder"
+   ]
+  }
+ },
+ "domain": "edge-set predicates",
+ "modules": [
+  {
+   "name": "GTDefs",
+   "source": "import Mathlib.Data.Finset.Powerset\n\nnamespace GT\n\n/-- Edge sets: ordered pairs (u, v), read as the edge {u, v}. Hosts list each edge once, with u < v. -/\nabbrev Edges := Finset (ℕ × ℕ)\n\n/-- No three edges (a, b), (b, c), (a, c). -/\ndef TriangleFree (S : Edges) : Prop :=\n  ∀ e ∈ S, ∀ f ∈ S, ∀ g ∈ S, ¬ (e.1 = g.1 ∧ e.2 = f.1 ∧ f.2 = g.2)\n\ninstance (S : Edges) : Decidable (TriangleFree S) := by\n  unfold TriangleFree; infer_instance\n\nend GT\n",
+   "source_sha256": "34a84d4f227cbf5a95012a37a9f263f14ca419a4959be42c674d8abc47c9e3a7",
+   "trusted": true
+  },
+  {
+   "name": "HSDefs",
+   "source": "import GTDefs\n\nnamespace HS\n\n/-- History predicate: every pair is listed as (u, v) with u < v. -/\ndef Simple (S : GT.Edges) : Prop := ∀ e ∈ S, e.1 < e.2\n\n/-- History predicate: every endpoint is below 8. -/\ndef Bounded8 (S : GT.Edges) : Prop := ∀ e ∈ S, e.1 < 8 ∧ e.2 < 8\n\ninstance (S : GT.Edges) : Decidable (Simple S) := by unfold Simple; infer_instance\ninstance (S : GT.Edges) : Decidable (Bounded8 S) := by unfold Bounded8; infer_instance\n\nend HS\n",
+   "source_sha256": "fda70a92d2893b0470ae39d2918fca1b195e1db384d6fedbbc1950b51e65d5db",
+   "trusted": true
+  },
+  {
+   "name": "HSConj",
+   "source": "import GTDefs\nimport HSDefs\nset_option linter.unusedVariables false\n\nnamespace HSConj\n/-- Generated conjecture `down_tf` (history). -/\ndef down_tf : Prop := ∀ (S : GT.Edges) (T : GT.Edges) (h1 : T ⊆ S) (h2 : GT.TriangleFree S), GT.TriangleFree T\n/-- Generated conjecture `down_simple` (history). -/\ndef down_simple : Prop := ∀ (S : GT.Edges) (T : GT.Edges) (h1 : T ⊆ S) (h2 : HS.Simple S), HS.Simple T\n/-- Generated conjecture `down_bounded` (history). -/\ndef down_bounded : Prop := ∀ (S : GT.Edges) (T : GT.Edges) (h1 : T ⊆ S) (h2 : HS.Bounded8 S), HS.Bounded8 T\n/-- Generated conjecture `inter_tf` (history). -/\ndef inter_tf : Prop := ∀ (S : GT.Edges) (T : GT.Edges) (h1 : GT.TriangleFree S), GT.TriangleFree (S ∩ T)\n/-- Generated conjecture `inter_simple` (history). -/\ndef inter_simple : Prop := ∀ (S : GT.Edges) (T : GT.Edges) (h1 : HS.Simple S), HS.Simple (S ∩ T)\nend HSConj\n",
+   "source_sha256": "b51522fc7800b90635c57f6e77ae907ef1f30cf3054ccf078472d4ad0d5b5040",
+   "trusted": true
+  },
+  {
+   "name": "RCDefs",
+   "source": "import GTDefs\nimport HSDefs\n\nnamespace RC\n\n/-- Recovered by typed anti-unification of HSConj.down_bounded, HSConj.down_simple, HSConj.down_tf. -/\ndef C0 (P0 : GT.Edges -> Prop) : Prop := (∀ (x0 : @GT.Edges), (∀ (x1 : @GT.Edges), (∀ (x2 : (@LE.le @GT.Edges (@Preorder.toLE @GT.Edges (@PartialOrder.toPreorder @GT.Edges (@Finset.instPartialOrder (@Prod @Nat @Nat)))) x1 x0)), (∀ (x3 : (P0 x0)), (P0 x1)))))\n\nend RC\n",
+   "source_sha256": "640f2b577f249cc93dd38a96935449b2cee5e8444b6040c263d712a4875931ae",
+   "trusted": true
+  },
+  {
+   "name": "G4Defs",
+   "source": "import GTDefs\n\nnamespace G4\n\n/-- Domain contract (c4_host_v2): u and v are joined in S, in either orientation. -/\ndef adj (S : GT.Edges) (u v : ℕ) : Prop := (u, v) ∈ S ∨ (v, u) ∈ S\n\ninstance (S : GT.Edges) (u v : ℕ) : Decidable (adj S u v) := by\n  unfold adj; infer_instance\n\ndef verts (S : GT.Edges) : Finset ℕ := S.image Prod.fst ∪ S.image Prod.snd\n\n/-- No 4-cycle a-b-c-d-a with a ≠ c and b ≠ d. -/\ndef C4Free (S : GT.Edges) : Prop :=\n  ∀ a ∈ verts S, ∀ b ∈ verts S, ∀ c ∈ verts S, ∀ d ∈ verts S,\n    a ≠ c → b ≠ d → ¬ (adj S a b ∧ adj S b c ∧ adj S c d ∧ adj S d a)\n\ninstance (S : GT.Edges) : Decidable (C4Free S) := by\n  unfold C4Free; infer_instance\n\nend G4\n",
+   "source_sha256": "bf94fb5d73cc9d32e1e11167df93df0ca356b3f1a6de0b050a8efe53bae7987b",
+   "trusted": true
+  },
+  {
+   "name": "FFDefs",
+   "source": "import GTDefs\nimport G4Defs\n\nnamespace FF\n\n/-- Fresh predicate: no loops. -/\ndef LoopFree (S : GT.Edges) : Prop := ∀ e ∈ S, e.1 ≠ e.2\n\n/-- Fresh predicate: distinct pairs share no endpoint. -/\ndef Matching (S : GT.Edges) : Prop :=\n  ∀ e ∈ S, ∀ f ∈ S, e ≠ f → e.1 ≠ f.1 ∧ e.1 ≠ f.2 ∧ e.2 ≠ f.1 ∧ e.2 ≠ f.2\n\n/-- Fresh predicate that is not down-closed. -/\ndef NonEmpty (S : GT.Edges) : Prop := S.Nonempty\n\ninstance (S : GT.Edges) : Decidable (LoopFree S) := by unfold LoopFree; infer_instance\ninstance (S : GT.Edges) : Decidable (Matching S) := by unfold Matching; infer_instance\ninstance (S : GT.Edges) : Decidable (NonEmpty S) := by unfold NonEmpty; infer_instance\n\nend FF\n",
+   "source_sha256": "0c27f1d95779fd682934358911785dc66149d7cf0a39c57d16181aa088198785",
+   "trusted": true
+  },
+  {
+   "name": "PCDefs",
+   "source": "import GTDefs\n\nnamespace PC\n\n/-- Placebo: the recovered concept with the order reversed (up-closure); same size, no information about down-closed predicates. -/\ndef C0 (P0 : GT.Edges → Prop) : Prop := ∀ (x0 x1 : GT.Edges), x0 ≤ x1 → P0 x0 → P0 x1\n\nend PC\n",
+   "source_sha256": "90f2f0b8c49f7082df93efc4f6710df231139655d7728312d5c59794682b7a5e",
+   "trusted": true
+  },
+  {
+   "name": "PLCConj",
+   "source": "import GTDefs\nimport HSDefs\nimport HSConj\nimport RCDefs\nimport G4Defs\nimport FFDefs\nimport PCDefs\nset_option linter.unusedVariables false\n\nnamespace PLCConj\n/-- Generated conjecture `gen_placebo_inter` (generated:generic-over-concept). -/\ndef gen_placebo_inter : Prop := ∀ (P : GT.Edges → Prop) (h : PC.C0 P) (S : GT.Edges) (T : GT.Edges) (h1 : P S), P (S ∩ T)\n/-- Generated conjecture `gen_placebo_sdiff` (generated:generic-over-concept). -/\ndef gen_placebo_sdiff : Prop := ∀ (P : GT.Edges → Prop) (h : PC.C0 P) (S : GT.Edges) (T : GT.Edges) (h1 : P S), P (S \\ T)\n/-- Generated conjecture `gen_placebo_filter` (generated:generic-over-concept). -/\ndef gen_placebo_filter : Prop := ∀ (P : GT.Edges → Prop) (h : PC.C0 P) (S : GT.Edges) (q : ℕ × ℕ → Bool) (h1 : P S), P (S.filter fun e => q e)\n/-- Generated conjecture `gen_placebo_erase` (generated:generic-over-concept). -/\ndef gen_placebo_erase : Prop := ∀ (P : GT.Edges → Prop) (h : PC.C0 P) (S : GT.Edges) (e : ℕ × ℕ) (h1 : P S), P (S.erase e)\n/-- Generated conjecture `inst_placebo_loopfree` (generated:concept-instance). -/\ndef inst_placebo_loopfree : Prop := PC.C0 FF.LoopFree\n/-- Generated conjecture `inst_placebo_matching` (generated:concept-instance). -/\ndef inst_placebo_matching : Prop := PC.C0 FF.Matching\n/-- Generated conjecture `inst_placebo_c4free` (generated:concept-instance). -/\ndef inst_placebo_c4free : Prop := PC.C0 G4.C4Free\n/-- Generated conjecture `inst_placebo_nonempty` (generated:concept-instance). -/\ndef inst_placebo_nonempty : Prop := PC.C0 FF.NonEmpty\ndef inst_placebo_nonempty_negation : Prop := ¬ inst_placebo_nonempty\n/-- Generated conjecture `placebo_loopfree_inter` (fresh-family). -/\ndef placebo_loopfree_inter : Prop := ∀ (S : GT.Edges) (T : GT.Edges) (h1 : FF.LoopFree S), FF.LoopFree (S ∩ T)\n/-- Generated conjecture `placebo_loopfree_sdiff` (fresh-family). -/\ndef placebo_loopfree_sdiff : Prop := ∀ (S : GT.Edges) (T : GT.Edges) (h1 : FF.LoopFree S), FF.LoopFree (S \\ T)\n/-- Generated conjecture `placebo_loopfree_filter` (fresh-family). -/\ndef placebo_loopfree_filter : Prop := ∀ (S : GT.Edges) (q : ℕ × ℕ → Bool) (h1 : FF.LoopFree S), FF.LoopFree (S.filter fun e => q e)\n/-- Generated conjecture `placebo_loopfree_erase` (fresh-family). -/\ndef placebo_loopfree_erase : Prop := ∀ (S : GT.Edges) (e : ℕ × ℕ) (h1 : FF.LoopFree S), FF.LoopFree (S.erase e)\n/-- Generated conjecture `placebo_matching_inter` (fresh-family). -/\ndef placebo_matching_inter : Prop := ∀ (S : GT.Edges) (T : GT.Edges) (h1 : FF.Matching S), FF.Matching (S ∩ T)\n/-- Generated conjecture `placebo_matching_sdiff` (fresh-family). -/\ndef placebo_matching_sdiff : Prop := ∀ (S : GT.Edges) (T : GT.Edges) (h1 : FF.Matching S), FF.Matching (S \\ T)\n/-- Generated conjecture `placebo_matching_filter` (fresh-family). -/\ndef placebo_matching_filter : Prop := ∀ (S : GT.Edges) (q : ℕ × ℕ → Bool) (h1 : FF.Matching S), FF.Matching (S.filter fun e => q e)\n/-- Generated conjecture `placebo_matching_erase` (fresh-family). -/\ndef placebo_matching_erase : Prop := ∀ (S : GT.Edges) (e : ℕ × ℕ) (h1 : FF.Matching S), FF.Matching (S.erase e)\n/-- Generated conjecture `placebo_c4free_inter` (fresh-family). -/\ndef placebo_c4free_inter : Prop := ∀ (S : GT.Edges) (T : GT.Edges) (h1 : G4.C4Free S), G4.C4Free (S ∩ T)\n/-- Generated conjecture `placebo_c4free_sdiff` (fresh-family). -/\ndef placebo_c4free_sdiff : Prop := ∀ (S : GT.Edges) (T : GT.Edges) (h1 : G4.C4Free S), G4.C4Free (S \\ T)\n/-- Generated conjecture `placebo_c4free_filter` (fresh-family). -/\ndef placebo_c4free_filter : Prop := ∀ (S : GT.Edges) (q : ℕ × ℕ → Bool) (h1 : G4.C4Free S), G4.C4Free (S.filter fun e => q e)\n/-- Generated conjecture `placebo_c4free_erase` (fresh-family). -/\ndef placebo_c4free_erase : Prop := ∀ (S : GT.Edges) (e : ℕ × ℕ) (h1 : G4.C4Free S), G4.C4Free (S.erase e)\n/-- Generated conjecture `placebo_nonempty_inter` (fresh-family). -/\ndef placebo_nonempty_inter : Prop := ∀ (S : GT.Edges) (T : GT.Edges) (h1 : FF.NonEmpty S), FF.NonEmpty (S ∩ T)\ndef placebo_nonempty_inter_negation : Prop := ¬ placebo_nonempty_inter\n/-- Generated conjecture `placebo_nonempty_sdiff` (fresh-family). -/\ndef placebo_nonempty_sdiff : Prop := ∀ (S : GT.Edges) (T : GT.Edges) (h1 : FF.NonEmpty S), FF.NonEmpty (S \\ T)\ndef placebo_nonempty_sdiff_negation : Prop := ¬ placebo_nonempty_sdiff\n/-- Generated conjecture `placebo_nonempty_filter` (fresh-family). -/\ndef placebo_nonempty_filter : Prop := ∀ (S : GT.Edges) (q : ℕ × ℕ → Bool) (h1 : FF.NonEmpty S), FF.NonEmpty (S.filter fun e => q e)\ndef placebo_nonempty_filter_negation : Prop := ¬ placebo_nonempty_filter\n/-- Generated conjecture `placebo_nonempty_erase` (fresh-family). -/\ndef placebo_nonempty_erase : Prop := ∀ (S : GT.Edges) (e : ℕ × ℕ) (h1 : FF.NonEmpty S), FF.NonEmpty (S.erase e)\ndef placebo_nonempty_erase_negation : Prop := ¬ placebo_nonempty_erase\nend PLCConj\n",
+   "source_sha256": "b919a95a57b6c8d8b7b159d86e0ff76f146e10ec6a8c0fc0cfa812729d25e58f",
+   "trusted": true
+  },
+  {
+   "name": "PLCP1",
+   "source": "import GTDefs\nimport HSDefs\nimport HSConj\nimport RCDefs\nimport G4Defs\nimport FFDefs\nimport PCDefs\nimport PLCConj\nnamespace PLCP1\ntheorem proof : PLCConj.placebo_loopfree_inter := by\n  unfold PLCConj.placebo_loopfree_inter\n  intro S T h1\n  simp_all [PC.C0, RC.C0, FF.LoopFree, FF.Matching, FF.NonEmpty, G4.C4Free, G4.adj, G4.verts]\nend PLCP1\n",
+   "source_sha256": "f03f513d0b439b8126671c976b683a1260dd73156602b99b020ea1630c88e899",
+   "trusted": false
+  },
+  {
+   "name": "PLCP2",
+   "source": "import GTDefs\nimport HSDefs\nimport HSConj\nimport RCDefs\nimport G4Defs\nimport FFDefs\nimport PCDefs\nimport PLCConj\nimport PLCP1\nnamespace PLCP2\ntheorem proof : PLCConj.placebo_loopfree_sdiff := by\n  unfold PLCConj.placebo_loopfree_sdiff\n  intro S T h1\n  simp_all [PC.C0, RC.C0, FF.LoopFree, FF.Matching, FF.NonEmpty, G4.C4Free, G4.adj, G4.verts]\nend PLCP2\n",
+   "source_sha256": "a5de21b7ba3863c7e6c9c4b6b55f6cf96a2de263ca0afa1b5526cc044f60bfac",
+   "trusted": false
+  },
+  {
+   "name": "PLCP3",
+   "source": "import GTDefs\nimport HSDefs\nimport HSConj\nimport RCDefs\nimport G4Defs\nimport FFDefs\nimport PCDefs\nimport PLCConj\nimport PLCP1\nimport PLCP2\nnamespace PLCP3\ntheorem proof : PLCConj.placebo_loopfree_filter := by\n  unfold PLCConj.placebo_loopfree_filter\n  intro S q h1\n  simp_all [PC.C0, RC.C0, FF.LoopFree, FF.Matching, FF.NonEmpty, G4.C4Free, G4.adj, G4.verts]\nend PLCP3\n",
+   "source_sha256": "fdc7a4eff4a2dcf34f5299c0fb57b79ea32dd2ae3be1df68e72b16e326c14386",
+   "trusted": false
+  },
+  {
+   "name": "PLCP4",
+   "source": "import GTDefs\nimport HSDefs\nimport HSConj\nimport RCDefs\nimport G4Defs\nimport FFDefs\nimport PCDefs\nimport PLCConj\nimport PLCP1\nimport PLCP2\nimport PLCP3\nnamespace PLCP4\ntheorem proof : PLCConj.placebo_loopfree_erase := by\n  unfold PLCConj.placebo_loopfree_erase\n  intro S e h1\n  simp_all [PC.C0, RC.C0, FF.LoopFree, FF.Matching, FF.NonEmpty, G4.C4Free, G4.adj, G4.verts]\nend PLCP4\n",
+   "source_sha256": "2e696b3376b2f5259348b9453107c1c8489a81f4ea478fc7222dad71bac99849",
+   "trusted": false
+  },
+  {
+   "name": "PLCP5",
+   "source": "import GTDefs\nimport HSDefs\nimport HSConj\nimport RCDefs\nimport G4Defs\nimport FFDefs\nimport PCDefs\nimport PLCConj\nimport PLCP1\nimport PLCP2\nimport PLCP3\nimport PLCP4\nnamespace PLCP5\ntheorem proof : PLCConj.placebo_nonempty_inter_negation := by\n  unfold PLCConj.placebo_nonempty_inter_negation PLCConj.placebo_nonempty_inter\n  intro h\n  exact absurd (h (({(0, 0), (1, 3)} : GT.Edges)) ((∅ : GT.Edges)) (by first | decide +kernel | (intro v; omega) | omega | (intros; omega))) (by decide +kernel)\nend PLCP5\n",
+   "source_sha256": "5a563e7e5903852d6028217cf09d0d5302990e3f8943f99619c9ecc6e239a5aa",
+   "trusted": false
+  },
+  {
+   "name": "PLCP6",
+   "source": "import GTDefs\nimport HSDefs\nimport HSConj\nimport RCDefs\nimport G4Defs\nimport FFDefs\nimport PCDefs\nimport PLCConj\nimport PLCP1\nimport PLCP2\nimport PLCP3\nimport PLCP4\nimport PLCP5\nnamespace PLCP6\ntheorem proof : PLCConj.placebo_nonempty_sdiff_negation := by\n  unfold PLCConj.placebo_nonempty_sdiff_negation PLCConj.placebo_nonempty_sdiff\n  intro h\n  exact absurd (h (({(0, 2)} : GT.Edges)) (({(0, 2)} : GT.Edges)) (by first | decide +kernel | (intro v; omega) | omega | (intros; omega))) (by decide +kernel)\nend PLCP6\n",
+   "source_sha256": "3f9d181eb4903836123e61008b08dd4a0717c8e1c77495ca4331af45c94d4f7b",
+   "trusted": false
+  },
+  {
+   "name": "PLCP7",
+   "source": "import GTDefs\nimport HSDefs\nimport HSConj\nimport RCDefs\nimport G4Defs\nimport FFDefs\nimport PCDefs\nimport PLCConj\nimport PLCP1\nimport PLCP2\nimport PLCP3\nimport PLCP4\nimport PLCP5\nimport PLCP6\nnamespace PLCP7\ntheorem proof : PLCConj.placebo_nonempty_filter_negation := by\n  unfold PLCConj.placebo_nonempty_filter_negation PLCConj.placebo_nonempty_filter\n  intro h\n  exact absurd (h (({(0, 2)} : GT.Edges)) ((fun e => decide (e ∈ ({(2, 0)} : GT.Edges)))) (by first | decide +kernel | (intro v; omega) | omega | (intros; omega))) (by decide +kernel)\nend PLCP7\n",
+   "source_sha256": "cc20be5dde488e13f524060c890c81f6205d59cf085e4ba49d37c18a74a9d828",
+   "trusted": false
+  },
+  {
+   "name": "PLCP8",
+   "source": "import GTDefs\nimport HSDefs\nimport HSConj\nimport RCDefs\nimport G4Defs\nimport FFDefs\nimport PCDefs\nimport PLCConj\nimport PLCP1\nimport PLCP2\nimport PLCP3\nimport PLCP4\nimport PLCP5\nimport PLCP6\nimport PLCP7\nnamespace PLCP8\ntheorem proof : PLCConj.placebo_nonempty_erase_negation := by\n  unfold PLCConj.placebo_nonempty_erase_negation PLCConj.placebo_nonempty_erase\n  intro h\n  exact absurd (h (({(0, 1)} : GT.Edges)) (((0, 1) : ℕ × ℕ)) (by first | decide +kernel | (intro v; omega) | omega | (intros; omega))) (by decide +kernel)\nend PLCP8\n",
+   "source_sha256": "bc4ac2070b1351b8935895198a6bf411c673c5bd353dbc796aa92f685cf6dc2f",
+   "trusted": false
+  }
+ ],
+ "name": "concept control, arm placebo",
+ "package_sha256": "bd14679ca1580e240f53f98484cf108b97dac8175740ab0cf4eb61da8a6a5a89",
+ "proofs": [
+  {
+   "module": "PLCP1",
+   "recipe": "unfold-simp",
+   "statement": "placebo_loopfree_inter"
+  },
+  {
+   "module": "PLCP2",
+   "recipe": "unfold-simp",
+   "statement": "placebo_loopfree_sdiff"
+  },
+  {
+   "module": "PLCP3",
+   "recipe": "unfold-simp",
+   "statement": "placebo_loopfree_filter"
+  },
+  {
+   "module": "PLCP4",
+   "recipe": "unfold-simp",
+   "statement": "placebo_loopfree_erase"
+  },
+  {
+   "module": "PLCP5",
+   "recipe": "counterexample-evaluation",
+   "statement": "placebo_nonempty_inter"
+  },
+  {
+   "module": "PLCP6",
+   "recipe": "counterexample-evaluation",
+   "statement": "placebo_nonempty_sdiff"
+  },
+  {
+   "module": "PLCP7",
+   "recipe": "counterexample-evaluation",
+   "statement": "placebo_nonempty_filter"
+  },
+  {
+   "module": "PLCP8",
+   "recipe": "counterexample-evaluation",
+   "statement": "placebo_nonempty_erase"
+  }
+ ],
+ "provenance": {
+  "acceptance": "genesis.formal_research.checker.accept",
+  "created_at": "2026-10-11T14:40:21.845255+00:00",
+  "loop": "genesis.formal_research.loop",
+  "search": "genesis.formal_research.search (builder-written recipes, named per proof)"
+ },
+ "schema": "genesis-theory-package-v1",
+ "scope": "Fresh-family closure statements under a control arm (W15).",
+ "statements": [
+  {
+   "counterexample": null,
+   "id": "gen_placebo_inter",
+   "lean": "∀ (P : GT.Edges → Prop) (h : PC.C0 P) (S : GT.Edges) (T : GT.Edges) (h1 : P S), P (S ∩ T)",
+   "origin": "generated:generic-over-concept",
+   "reason": "no recipe compiled",
+   "role": "generic",
+   "screened_instances": 0,
+   "spec_const": "PLCConj.gen_placebo_inter",
+   "status": "UNRESOLVED",
+   "subject": "concept"
+  },
+  {
+   "counterexample": null,
+   "id": "gen_placebo_sdiff",
+   "lean": "∀ (P : GT.Edges → Prop) (h : PC.C0 P) (S : GT.Edges) (T : GT.Edges) (h1 : P S), P (S \\ T)",
+   "origin": "generated:generic-over-concept",
+   "reason": "no recipe compiled",
+   "role": "generic",
+   "screened_instances": 0,
+   "spec_const": "PLCConj.gen_placebo_sdiff",
+   "status": "UNRESOLVED",
+   "subject": "concept"
+  },
+  {
+   "counterexample": null,
+   "id": "gen_placebo_filter",
+   "lean": "∀ (P : GT.Edges → Prop) (h : PC.C0 P) (S : GT.Edges) (q : ℕ × ℕ → Bool) (h1 : P S), P (S.filter fun e => q e)",
+   "origin": "generated:generic-over-concept",
+   "reason": "no recipe compiled",
+   "role": "generic",
+   "screened_instances": 0,
+   "spec_const": "PLCConj.gen_placebo_filter",
+   "status": "UNRESOLVED",
+   "subject": "concept"
+  },
+  {
+   "counterexample": null,
+   "id": "gen_placebo_erase",
+   "lean": "∀ (P : GT.Edges → Prop) (h : PC.C0 P) (S : GT.Edges) (e : ℕ × ℕ) (h1 : P S), P (S.erase e)",
+   "origin": "generated:generic-over-concept",
+   "reason": "no recipe compiled",
+   "role": "generic",
+   "screened_instances": 0,
+   "spec_const": "PLCConj.gen_placebo_erase",
+   "status": "UNRESOLVED",
+   "subject": "concept"
+  },
+  {
+   "counterexample": null,
+   "id": "inst_placebo_loopfree",
+   "lean": "PC.C0 FF.LoopFree",
+   "origin": "generated:concept-instance",
+   "reason": "no recipe compiled",
+   "role": "instance",
+   "screened_instances": 0,
+   "spec_const": "PLCConj.inst_placebo_loopfree",
+   "status": "UNRESOLVED",
+   "subject": "FF.LoopFree"
+  },
+  {
+   "counterexample": null,
+   "id": "inst_placebo_matching",
+   "lean": "PC.C0 FF.Matching",
+   "origin": "generated:concept-instance",
+   "reason": "no recipe compiled",
+   "role": "instance",
+   "screened_instances": 0,
+   "spec_const": "PLCConj.inst_placebo_matching",
+   "status": "UNRESOLVED",
+   "subject": "FF.Matching"
+  },
+  {
+   "counterexample": null,
+   "id": "inst_placebo_c4free",
+   "lean": "PC.C0 G4.C4Free",
+   "origin": "generated:concept-instance",
+   "reason": "no recipe compiled",
+   "role": "instance",
+   "screened_instances": 0,
+   "spec_const": "PLCConj.inst_placebo_c4free",
+   "status": "UNRESOLVED",
+   "subject": "G4.C4Free"
+  },
+  {
+   "counterexample": {
+    "values": {
+     "S": "({(0, 0), (3, 2)} : GT.Edges)",
+     "T": "(∅ : GT.Edges)"
+    }
+   },
+   "id": "inst_placebo_nonempty",
+   "lean": "PC.C0 FF.NonEmpty",
+   "origin": "generated:concept-instance",
+   "reason": "the counterexample did not refute the statement in Lean",
+   "role": "instance",
+   "screened_instances": null,
+   "spec_const": "PLCConj.inst_placebo_nonempty",
+   "status": "UNRESOLVED",
+   "subject": "FF.NonEmpty"
+  },
+  {
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "counterexample": null,
+   "id": "placebo_loopfree_inter",
+   "lean": "∀ (S : GT.Edges) (T : GT.Edges) (h1 : FF.LoopFree S), FF.LoopFree (S ∩ T)",
+   "origin": "fresh-family",
+   "proof_const": "PLCP1.proof",
+   "proof_module": "PLCP1",
+   "recipe": "unfold-simp",
+   "role": "fresh",
+   "screened_instances": 704,
+   "spec_const": "PLCConj.placebo_loopfree_inter",
+   "status": "CHECKED",
+   "subject": "FF.LoopFree:inter"
+  },
+  {
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "counterexample": null,
+   "id": "placebo_loopfree_sdiff",
+   "lean": "∀ (S : GT.Edges) (T : GT.Edges) (h1 : FF.LoopFree S), FF.LoopFree (S \\ T)",
+   "origin": "fresh-family",
+   "proof_const": "PLCP2.proof",
+   "proof_module": "PLCP2",
+   "recipe": "unfold-simp",
+   "role": "fresh",
+   "screened_instances": 692,
+   "spec_const": "PLCConj.placebo_loopfree_sdiff",
+   "status": "CHECKED",
+   "subject": "FF.LoopFree:sdiff"
+  },
+  {
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "counterexample": null,
+   "id": "placebo_loopfree_filter",
+   "lean": "∀ (S : GT.Edges) (q : ℕ × ℕ → Bool) (h1 : FF.LoopFree S), FF.LoopFree (S.filter fun e => q e)",
+   "origin": "fresh-family",
+   "proof_const": "PLCP3.proof",
+   "proof_module": "PLCP3",
+   "recipe": "unfold-simp",
+   "role": "fresh",
+   "screened_instances": 702,
+   "spec_const": "PLCConj.placebo_loopfree_filter",
+   "status": "CHECKED",
+   "subject": "FF.LoopFree:filter"
+  },
+  {
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "counterexample": null,
+   "id": "placebo_loopfree_erase",
+   "lean": "∀ (S : GT.Edges) (e : ℕ × ℕ) (h1 : FF.LoopFree S), FF.LoopFree (S.erase e)",
+   "origin": "fresh-family",
+   "proof_const": "PLCP4.proof",
+   "proof_module": "PLCP4",
+   "recipe": "unfold-simp",
+   "role": "fresh",
+   "screened_instances": 685,
+   "spec_const": "PLCConj.placebo_loopfree_erase",
+   "status": "CHECKED",
+   "subject": "FF.LoopFree:erase"
+  },
+  {
+   "counterexample": null,
+   "id": "placebo_matching_inter",
+   "lean": "∀ (S : GT.Edges) (T : GT.Edges) (h1 : FF.Matching S), FF.Matching (S ∩ T)",
+   "origin": "fresh-family",
+   "reason": "no recipe compiled",
+   "role": "fresh",
+   "screened_instances": 128,
+   "spec_const": "PLCConj.placebo_matching_inter",
+   "status": "UNRESOLVED",
+   "subject": "FF.Matching:inter"
+  },
+  {
+   "counterexample": null,
+   "id": "placebo_matching_sdiff",
+   "lean": "∀ (S : GT.Edges) (T : GT.Edges) (h1 : FF.Matching S), FF.Matching (S \\ T)",
+   "origin": "fresh-family",
+   "reason": "no recipe compiled",
+   "role": "fresh",
+   "screened_instances": 176,
+   "spec_const": "PLCConj.placebo_matching_sdiff",
+   "status": "UNRESOLVED",
+   "subject": "FF.Matching:sdiff"
+  },
+  {
+   "counterexample": null,
+   "id": "placebo_matching_filter",
+   "lean": "∀ (S : GT.Edges) (q : ℕ × ℕ → Bool) (h1 : FF.Matching S), FF.Matching (S.filter fun e => q e)",
+   "origin": "fresh-family",
+   "reason": "no recipe compiled",
+   "role": "fresh",
+   "screened_instances": 162,
+   "spec_const": "PLCConj.placebo_matching_filter",
+   "status": "UNRESOLVED",
+   "subject": "FF.Matching:filter"
+  },
+  {
+   "counterexample": null,
+   "id": "placebo_matching_erase",
+   "lean": "∀ (S : GT.Edges) (e : ℕ × ℕ) (h1 : FF.Matching S), FF.Matching (S.erase e)",
+   "origin": "fresh-family",
+   "reason": "no recipe compiled",
+   "role": "fresh",
+   "screened_instances": 150,
+   "spec_const": "PLCConj.placebo_matching_erase",
+   "status": "UNRESOLVED",
+   "subject": "FF.Matching:erase"
+  },
+  {
+   "counterexample": null,
+   "id": "placebo_c4free_inter",
+   "lean": "∀ (S : GT.Edges) (T : GT.Edges) (h1 : G4.C4Free S), G4.C4Free (S ∩ T)",
+   "origin": "fresh-family",
+   "reason": "no recipe compiled",
+   "role": "fresh",
+   "screened_instances": 1729,
+   "spec_const": "PLCConj.placebo_c4free_inter",
+   "status": "UNRESOLVED",
+   "subject": "G4.C4Free:inter"
+  },
+  {
+   "counterexample": null,
+   "id": "placebo_c4free_sdiff",
+   "lean": "∀ (S : GT.Edges) (T : GT.Edges) (h1 : G4.C4Free S), G4.C4Free (S \\ T)",
+   "origin": "fresh-family",
+   "reason": "no recipe compiled",
+   "role": "fresh",
+   "screened_instances": 1687,
+   "spec_const": "PLCConj.placebo_c4free_sdiff",
+   "status": "UNRESOLVED",
+   "subject": "G4.C4Free:sdiff"
+  },
+  {
+   "counterexample": null,
+   "id": "placebo_c4free_filter",
+   "lean": "∀ (S : GT.Edges) (q : ℕ × ℕ → Bool) (h1 : G4.C4Free S), G4.C4Free (S.filter fun e => q e)",
+   "origin": "fresh-family",
+   "reason": "no recipe compiled",
+   "role": "fresh",
+   "screened_instances": 1692,
+   "spec_const": "PLCConj.placebo_c4free_filter",
+   "status": "UNRESOLVED",
+   "subject": "G4.C4Free:filter"
+  },
+  {
+   "counterexample": null,
+   "id": "placebo_c4free_erase",
+   "lean": "∀ (S : GT.Edges) (e : ℕ × ℕ) (h1 : G4.C4Free S), G4.C4Free (S.erase e)",
+   "origin": "fresh-family",
+   "reason": "no recipe compiled",
+   "role": "fresh",
+   "screened_instances": 1722,
+   "spec_const": "PLCConj.placebo_c4free_erase",
+   "status": "UNRESOLVED",
+   "subject": "G4.C4Free:erase"
+  },
+  {
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "counterexample": {
+    "values": {
+     "S": "({(0, 0), (1, 3)} : GT.Edges)",
+     "T": "(∅ : GT.Edges)"
+    }
+   },
+   "id": "placebo_nonempty_inter",
+   "lean": "∀ (S : GT.Edges) (T : GT.Edges) (h1 : FF.NonEmpty S), FF.NonEmpty (S ∩ T)",
+   "origin": "fresh-family",
+   "proof_const": "PLCP5.proof",
+   "proof_module": "PLCP5",
+   "recipe": "counterexample-evaluation",
+   "role": "fresh",
+   "screened_instances": 2988,
+   "spec_const": "PLCConj.placebo_nonempty_inter",
+   "status": "DISPROVED",
+   "subject": "FF.NonEmpty:inter"
+  },
+  {
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "counterexample": {
+    "values": {
+     "S": "({(0, 2)} : GT.Edges)",
+     "T": "({(0, 2)} : GT.Edges)"
+    }
+   },
+   "id": "placebo_nonempty_sdiff",
+   "lean": "∀ (S : GT.Edges) (T : GT.Edges) (h1 : FF.NonEmpty S), FF.NonEmpty (S \\ T)",
+   "origin": "fresh-family",
+   "proof_const": "PLCP6.proof",
+   "proof_module": "PLCP6",
+   "recipe": "counterexample-evaluation",
+   "role": "fresh",
+   "screened_instances": 2988,
+   "spec_const": "PLCConj.placebo_nonempty_sdiff",
+   "status": "DISPROVED",
+   "subject": "FF.NonEmpty:sdiff"
+  },
+  {
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "counterexample": {
+    "values": {
+     "S": "({(0, 2)} : GT.Edges)",
+     "q": "(fun e => decide (e ∈ ({(2, 0)} : GT.Edges)))"
+    }
+   },
+   "id": "placebo_nonempty_filter",
+   "lean": "∀ (S : GT.Edges) (q : ℕ × ℕ → Bool) (h1 : FF.NonEmpty S), FF.NonEmpty (S.filter fun e => q e)",
+   "origin": "fresh-family",
+   "proof_const": "PLCP7.proof",
+   "proof_module": "PLCP7",
+   "recipe": "counterexample-evaluation",
+   "role": "fresh",
+   "screened_instances": 2990,
+   "spec_const": "PLCConj.placebo_nonempty_filter",
+   "status": "DISPROVED",
+   "subject": "FF.NonEmpty:filter"
+  },
+  {
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "counterexample": {
+    "values": {
+     "S": "({(0, 1)} : GT.Edges)",
+     "e": "((0, 1) : ℕ × ℕ)"
+    }
+   },
+   "id": "placebo_nonempty_erase",
+   "lean": "∀ (S : GT.Edges) (e : ℕ × ℕ) (h1 : FF.NonEmpty S), FF.NonEmpty (S.erase e)",
+   "origin": "fresh-family",
+   "proof_const": "PLCP8.proof",
+   "proof_module": "PLCP8",
+   "recipe": "counterexample-evaluation",
+   "role": "fresh",
+   "screened_instances": 2991,
+   "spec_const": "PLCConj.placebo_nonempty_erase",
+   "status": "DISPROVED",
+   "subject": "FF.NonEmpty:erase"
+  }
+ ]
+}
