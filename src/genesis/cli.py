@@ -144,8 +144,11 @@ def main(argv=None):
     p.add_argument('--problems',type=int,default=16);p.add_argument('--budget',type=float,default=12.0)
     p.add_argument('--seed',type=int,default=20261014)
     p=subs.add_parser('registry');p.add_argument('action',choices=['show','summary'])
-    p=subs.add_parser('store');p.add_argument('action',choices=['verify','rebuild','index']);p.add_argument('root',type=Path)
-    p.add_argument('--out',type=Path,help='index destination (store index)')
+    p=subs.add_parser('store');p.add_argument('action',choices=['verify','rebuild','index','backup','restore'])
+    p.add_argument('root',type=Path,help='campaign root (for restore: the new, absent or empty, destination)')
+    p.add_argument('--out',type=Path,help='index destination (store index) or backup archive (store backup)')
+    p.add_argument('--from',dest='archive',type=Path,help='backup archive to restore')
+    p.add_argument('--expected-head',default=None,help='event head recorded elsewhere that the restore must reproduce')
     p=subs.add_parser('benchmark');p.add_argument('action',choices=['ladder']);p.add_argument('root',type=Path)
     p.add_argument('--domain',choices=['c4_host_v2','triangle_free_host_v1'],default='c4_host_v2')
     p.add_argument('--dev',default='4-20',help='development rungs, e.g. 4-20');p.add_argument('--test',default='21-40')
@@ -178,6 +181,14 @@ def main(argv=None):
             from .store import rebuild_from_export
             result=rebuild_from_export(args.root)
             with Store(args.root) as s:result['verify']=s.verify()
+        elif args.action=='backup':
+            from .backup import backup
+            if args.out is None:raise SystemExit('store backup needs --out ARCHIVE')
+            result=backup(args.root,args.out)
+        elif args.action=='restore':
+            from .backup import restore
+            if args.archive is None:raise SystemExit('store restore needs --from ARCHIVE')
+            result=restore(args.archive,args.root,expected_head=args.expected_head)
         elif args.action=='index':
             from .kernel.index import build_index
             with Store(args.root) as s:result=build_index(s,args.out or args.root/'reports'/'index.sqlite3')
