@@ -53,7 +53,7 @@ def validate_request(request):
     if type(request['seed']) is not int or type(request['task_count']) is not int or not 1<=request['task_count']<=10000:
         raise ValueError('task count or seed')
     if request['domain'] not in R.DOMAINS:raise ValueError('domain')
-    if request['analysis']!=R.ANALYSIS_V1:
+    if not R.analysis_ok(request['analysis']):
         raise ValueError('unsupported preregistered analysis')
     if not isinstance(request['exposed_graph_fingerprints'],list):raise ValueError('exposure list')
     for h in request['exposed_graph_fingerprints']:
@@ -79,7 +79,9 @@ CREATE TABLE IF NOT EXISTS adjudications(graph TEXT PRIMARY KEY, decision TEXT N
 CREATE TABLE IF NOT EXISTS exposure_digests(graph_hash TEXT PRIMARY KEY, request_id TEXT NOT NULL);
 CREATE TABLE IF NOT EXISTS panels(request_id TEXT PRIMARY KEY, pool_hash TEXT NOT NULL, salt TEXT NOT NULL,
                                   commitment TEXT NOT NULL);
-CREATE TABLE IF NOT EXISTS slots(slot TEXT PRIMARY KEY, request_id TEXT NOT NULL);'''
+CREATE TABLE IF NOT EXISTS slots(slot TEXT PRIMARY KEY, request_id TEXT NOT NULL);
+CREATE TABLE IF NOT EXISTS registration_log(seq INTEGER PRIMARY KEY, entry BLOB NOT NULL);
+CREATE TABLE IF NOT EXISTS decision_records(request_id TEXT PRIMARY KEY, record BLOB NOT NULL);'''
 
 
 def _open_custody(root):
@@ -94,6 +96,32 @@ def _registry_from_db(db):
     for n,edges,source in db.execute('SELECT n,edges,source FROM exposure_graphs ORDER BY id'):
         index.add(n,tuple(tuple(e) for e in json.loads(edges)),source)
     return index
+
+
+def _log_entries(db):
+    return [json.loads(e) for (e,) in db.execute('SELECT entry FROM registration_log ORDER BY seq')]
+
+
+def _append_log(db,kind,fields):
+    """Append one public registration-log entry; call inside the transaction that makes the change."""
+    from .custody_records import new_entry
+    entry=new_entry(_log_entries(db),kind,fields)
+    db.execute('INSERT INTO registration_log VALUES (?,?)',(entry['seq'],canonical(entry)))
+    return entry
+
+
+def _is_v2(request):
+    from .kernel.analysis import PLAN_SCHEMA
+    return isinstance(request['analysis'],dict) and request['analysis'].get('schema')==PLAN_SCHEMA
+
+
+def registration_log(private_root,key_path):
+    """The signed public registration log (W06): every registration, reservation and result,
+    with hypothesis families; names no task."""
+    from .custody_records import export_log
+    root=_private_root(private_root);db=_open_custody(root)
+    try:return export_log(_log_entries(db),sign,key_path)
+    finally:db.close()
 
 
 # Kinds whose meaning needs evidence this custodian cannot yet check from the export
@@ -193,7 +221,7 @@ def _load_pool(pool_path):
     return pool,tasks
 
 
-def register(private_root,request,key_path,operator_id,*,exposure_manifest,campaign_export,pool):
+def register(private_root,request,key_path,operator_id,*,exposure_manifest,campaign_export,pool,decision_record=None):
     """Run before outcome exposure. Signed time is an operator attestation,
     not an independent public timestamp service or proof of independence.
 
@@ -206,6 +234,13 @@ def register(private_root,request,key_path,operator_id,*,exposure_manifest,campa
     from .exposure import build_registry,campaign_hosts
     from .graphs import SearchLimit
     root=_private_root(private_root);validate_request(request);rid=digest(request)
+    if _is_v2(request):
+        # A v2 plan must name a published (FROZEN) pre-freeze decision record that agrees with it.
+        from . import decision_record as DR
+        problems=DR.problems(decision_record,request['analysis'],task_count=request['task_count'],require_frozen=True)
+        if problems:raise ValueError('decision record: '+'; '.join(problems))
+    elif decision_record is not None:
+        raise ValueError('a decision record accompanies a v2 analysis plan only')
     pool_data,pool_tasks=_load_pool(pool)
     if len(pool_tasks)!=request['task_count']:raise ValueError('pool size differs from the preregistered task count')
     salt=os.urandom(32).hex();pool_hash=digest(pool_data)
@@ -244,8 +279,12 @@ def register(private_root,request,key_path,operator_id,*,exposure_manifest,campa
         problems=R.check_anchor(payload)
         if problems:raise RuntimeError('custodian built an invalid anchor: '+'; '.join(problems))
         anchor=sign(payload,key_path)
+        from .custody_records import family_of,family_size_of,registration_problems
         with db:
             db.execute('BEGIN IMMEDIATE')
+            if _is_v2(request):
+                problems=registration_problems(_log_entries(db),request)
+                if problems:raise ValueError('hypothesis family: '+'; '.join(problems))
             for one in slots:
                 taken=db.execute('SELECT request_id FROM slots WHERE slot=?',(one,)).fetchone()
                 if taken:
@@ -257,6 +296,15 @@ def register(private_root,request,key_path,operator_id,*,exposure_manifest,campa
             db.execute('INSERT INTO requests VALUES (?,?,?,?)',(rid,canonical(request),canonical(anchor),'REGISTERED'))
             db.execute('INSERT INTO registry_builds VALUES (?,?)',(rid,canonical(record)))
             db.execute('INSERT INTO panels VALUES (?,?,?,?)',(rid,pool_hash,salt,commitment))
+            if decision_record is not None:
+                db.execute('INSERT INTO decision_records VALUES (?,?)',(rid,canonical(decision_record)))
+            _append_log(db,'REGISTERED',{'request_hash':rid,'claim_id':request['claim_id'],
+                'statement_hash':request['statement_hash'],'evidence_kind':request['evidence_kind'],
+                'domain':request['domain'],'campaign_id':request['campaign_id'],
+                'candidate_version':request['candidate_version'],'family':family_of(request),
+                'family_size':family_size_of(request),'analysis':'v2' if _is_v2(request) else 'v1',
+                'anchor_sha256':digest(anchor),
+                'decision_record_sha256':digest(decision_record) if decision_record is not None else None})
             known=_registry_from_db(db)
             rows=[(k,json.dumps([list(e) for e in es]),source,rid) for k,es,source in index.items()
                   if known.find(k,es) is None]
@@ -383,6 +431,8 @@ def evaluate(private_root,request_id,pool_path,key_path,operator_id):
                 db.execute('INSERT INTO reservations(n,edges,request_id) VALUES (?,?,?)',
                            (t.n,json.dumps([list(e) for e in t.edges]),request_id))
             db.execute("UPDATE requests SET state='CONSUMED_NO_RETRY' WHERE id=?",(request_id,))
+            from .custody_records import family_of
+            _append_log(db,'RESERVED',{'request_hash':request_id,'family':family_of(request),'tasks':len(tasks)})
             db.execute('COMMIT')
         except BaseException:
             db.execute('ROLLBACK');raise
@@ -398,9 +448,20 @@ def evaluate(private_root,request_id,pool_path,key_path,operator_id):
                 for task in tasks:
                     opt_aid=evidence.start('optimum-'+task.task_id,{'kind':'exact-check','task':task.model_dump(mode='json')})
                     start=time.monotonic_ns()
-                    try:optimum=reference_optimum(task,evidence)
-                    except BaseException as exc:
-                        evidence.finish(opt_aid,{'status':'CHECKER_ERROR','error':type(exc).__name__,'wall_ns':time.monotonic_ns()-start});raise
+                    if _is_v2(request):
+                        # W05: what the evaluator cannot certify is an explicit UNSUPPORTED row,
+                        # handled by the preregistered policy; it is never dropped silently.
+                        from .domains import Unsupported,adapter
+                        optimum=adapter(task.domain).reference(task,evidence=evidence)
+                        if isinstance(optimum,Unsupported):
+                            evidence.finish(opt_aid,{'status':'UNSUPPORTED','reason':optimum.reason,
+                                                     'wall_ns':time.monotonic_ns()-start})
+                            evidence.save('unsupported_task',task.task_id,optimum.record())
+                            continue
+                    else:
+                        try:optimum=reference_optimum(task,evidence)
+                        except BaseException as exc:
+                            evidence.finish(opt_aid,{'status':'CHECKER_ERROR','error':type(exc).__name__,'wall_ns':time.monotonic_ns()-start});raise
                     evidence.finish(opt_aid,{'status':'SUCCESS','result':optimum,'wall_ns':time.monotonic_ns()-start})
                     names=sorted(programs);seed=int(digest({'seed':request['seed'],'task':task.task_id})[:16],16)
                     random.Random(seed).shuffle(names)
@@ -419,9 +480,14 @@ def evaluate(private_root,request_id,pool_path,key_path,operator_id):
                 evidence.event('EVALUATION_FAILED',{'exception':type(exc).__name__,'message':str(exc)})
                 evidence.interrupt_running();raise
             receipt=_seal(evidence,request_id,request,anchor,commitment,identity,operator_id,key_path,tasks,programs,
-                          complete=True)
-        return _publish(db,work,request_id,receipt)
+                          complete=True,family_p_values=_family_p(db,request,request_id))
+        return _publish(db,work,request_id,receipt,request)
     finally:db.close()
+
+
+def _family_p(db,request,request_id):
+    from .custody_records import family_of,published_p_values_before
+    return published_p_values_before(_log_entries(db),family_of(request),request_id)
 
 
 def _comparison(evidence,tasks,programs):
@@ -440,10 +506,14 @@ def _comparison(evidence,tasks,programs):
     return paired(rows),completed,failures
 
 
-def _seal(evidence,request_id,request,anchor,commitment,identity,operator_id,key_path,tasks,programs,*,complete):
+def _seal(evidence,request_id,request,anchor,commitment,identity,operator_id,key_path,tasks,programs,*,complete,
+          family_p_values=()):
     comparison,completed,failures=_comparison(evidence,tasks,programs)
     integrity=evidence.verify()
-    payload={'schema':R.SCIENTIFIC_RECEIPT,'evidence_kind':request['evidence_kind'],
+    v2=_is_v2(request)
+    unsupported=evidence.db.execute("SELECT count(*) FROM entities WHERE kind='unsupported_task'").fetchone()[0]
+    expected=(len(tasks)-unsupported)*len(programs) if v2 else len(tasks)*len(programs)
+    payload={'schema':R.SCIENTIFIC_RECEIPT_V3 if v2 else R.SCIENTIFIC_RECEIPT,'evidence_kind':request['evidence_kind'],
              'claim_id':request['claim_id'],'statement_hash':request['statement_hash'],'scope':request['scope'],
              'campaign_id':request['campaign_id'],'request_hash':request_id,
              'anchor_hash':digest(anchor),'candidate_version':request['candidate_version'],
@@ -454,13 +524,23 @@ def _seal(evidence,request_id,request,anchor,commitment,identity,operator_id,key
              'transfer_source_domain':request['transfer_source_domain'],
              'generation_transition':request['generation_transition'],'panel_commitment':commitment,
              'task_count':len(tasks),'raw_evidence_root':integrity['head'],
-             'raw_evidence_complete':bool(complete and completed==len(tasks)*len(programs)),
-             'expected_rows':len(tasks)*len(programs),'completed_rows':completed,'execution_failures':failures,
+             'raw_evidence_complete':bool(complete and completed==expected),
+             'expected_rows':expected,'completed_rows':completed,'execution_failures':failures,
              'wins':comparison['wins'],'losses':comparison['losses'],'ties':comparison['ties'],
              'paired_p':comparison['exploratory_sign_p'],'family_p':comparison['family_sensitivity_p'],
              'outcome':None,'operator_id':operator_id,'registered_at':anchor['payload']['registered_at'],
              'completed_at':utcnow(),'screen':'CUSTODIAN_BUILT_REGISTRY_ISOMORPHISM_AND_NEAR_DUPLICATE',
              'independence':'OPERATOR_ATTESTATION_REQUIRED'}
+    if v2:
+        from .kernel.analysis import analyze
+        from .kernel.stats import sign_test
+        from .judge import analysis_rows
+        result=analyze(analysis_rows(evidence,tasks),request['analysis'],family_p_values=family_p_values)
+        payload['analysis_result']=result
+        if result['decision']!='INVALID':
+            payload.update(wins=result['wins'],losses=result['losses'],ties=result['ties'],
+                           paired_p=sign_test(result['wins'],result['losses']),family_p=result['p_value'],
+                           execution_failures=result['failures']['candidate']+result['failures']['baseline'])
     payload['outcome']=R.derive_outcome(payload)
     problems=R.check_receipt(payload,request['evidence_kind'])
     if problems:raise RuntimeError('custodian built an invalid receipt: '+'; '.join(problems))
@@ -469,11 +549,32 @@ def _seal(evidence,request_id,request,anchor,commitment,identity,operator_id,key
     return receipt
 
 
-def _publish(db,work,request_id,receipt):
-    atomic_write(work/'public_receipt.json',canonical(receipt))
-    point('custodian.publish')
-    db.execute("UPDATE requests SET state='COMPLETE' WHERE id=?",(request_id,))
+def _publish(db,work,request_id,receipt,request,kind='PUBLISHED'):
+    from .custody_records import family_of,published_p_values_before
+    p=receipt['payload']
+    db.execute('BEGIN IMMEDIATE')
+    try:
+        if p.get('schema')==R.SCIENTIFIC_RECEIPT_V3 and p['analysis_result'].get('decision')!='INVALID' and \
+                p['analysis_result']['family_p_values']!=[round(float(x),10) for x in
+                                                          published_p_values_before(_log_entries(db),family_of(request),request_id)]:
+            raise RuntimeError('family results changed while this evaluation was sealed; run recover to re-seal')
+        atomic_write(work/'public_receipt.json',canonical(receipt))
+        point('custodian.publish')
+        db.execute("UPDATE requests SET state='COMPLETE' WHERE id=?",(request_id,))
+        _log_result(db,request,request_id,receipt,kind)
+        db.execute('COMMIT')
+    except BaseException:
+        if db.in_transaction:db.execute('ROLLBACK')
+        raise
     return receipt
+
+
+def _log_result(db,request,request_id,receipt,kind):
+    from .custody_records import family_of
+    p=receipt['payload']
+    pv=(p['analysis_result'].get('p_value') if p.get('schema')==R.SCIENTIFIC_RECEIPT_V3 else p.get('paired_p'))
+    _append_log(db,kind,{'request_hash':request_id,'family':family_of(request),'receipt_sha256':digest(receipt),
+                         'outcome':p['outcome'],'p_value':pv if p['outcome']!='INVALID' else None})
 
 
 def recover(private_root,request_id,pool_path,key_path,operator_id):
@@ -507,7 +608,12 @@ def recover(private_root,request_id,pool_path,key_path,operator_id):
             except Exception as exc:raise RuntimeError(f'published receipt does not verify under the custodian key ({type(exc).__name__})')
             if payload.get('request_hash')!=request_id or payload.get('anchor_hash')!=digest(anchor):
                 raise RuntimeError('published receipt names another request')
+            logged=any(e['kind'] in ('PUBLISHED','RECOVERED') and e['request_hash']==request_id
+                       for e in _log_entries(db))
+            db.execute('BEGIN IMMEDIATE')
             if row[2]!='COMPLETE':db.execute("UPDATE requests SET state='COMPLETE' WHERE id=?",(request_id,))
+            if not logged:_log_result(db,request,request_id,receipt,'PUBLISHED')
+            db.execute('COMMIT')
             return receipt
         if row[2]!='CONSUMED_NO_RETRY':raise RuntimeError(f'unexpected request state {row[2]}')
         identity=code_identity(Path(__file__).resolve().parents[2])['sha256']
@@ -528,21 +634,28 @@ def recover(private_root,request_id,pool_path,key_path,operator_id):
                                          (request_id,)).fetchone() is not None
             evidence.event('EVALUATION_RECOVERED',{'interrupted_attempts':interrupted,'comparison_recorded':complete})
             receipt=_seal(evidence,request_id,request,anchor,commitment,identity,operator_id,key_path,tasks,programs,
-                          complete=complete)
-        return _publish(db,work,request_id,receipt)
+                          complete=complete,family_p_values=_family_p(db,request,request_id))
+        return _publish(db,work,request_id,receipt,request,kind='RECOVERED')
     finally:db.close()
 
 
 from .kernel.roles import TRUST_ROOT_ENV,DEFAULT_TRUST_ROOT,ROLE_FIELDS,load_role_registry  # re-exported
 
 
-def release_preflight(request,anchor,receipt,audit,*,trust_root=None,revocations=()):
+def release_preflight(request,anchor,receipt,audit,*,trust_root=None,revocations=(),registration_log=None,
+                      control_declarations=None):
     """Check externally pinned roles. Never lets a builder-created key self-promote.
 
     Uses the same receipt semantics as the evidence kernel and phase machine
     (kernel.receipts): exact schemas, role-to-kind authorization, request and
     anchor binding, and the signed outcome re-derived from the signed counts.
+
+    W06: `registration_log` is the custodian-signed public log; `control_declarations`
+    maps custodian / auditor / release_authority to signed control declarations. Both are
+    required for v3 (analysis-plan-v2) receipts. Shared control is disclosed and limits the
+    result to LIMITED_SAME_OPERATOR; it never reaches EXTERNAL_RELEASE_REVIEW_READY.
     """
+    family_info=None;indep=None
     registry,reasons=load_role_registry(trust_root)
     if registry is None:
         return {'status':'BLOCKED','reasons':reasons,'promotion_allowed':False}
@@ -585,8 +698,28 @@ def release_preflight(request,anchor,receipt,audit,*,trust_root=None,revocations
         if review.get('independent_operation_verified') is not True:reasons.append('custody independence not verified')
         if review.get('raw_replay_verified') is not True:reasons.append('private evidence replay not verified')
         if review.get('formal_replay_verified') is not True:reasons.append('formal replay not verified')
+        from .custody_records import check_log,independence,receipt_log_problems
+        v3=receipt.get('payload',{}).get('schema')==R.SCIENTIFIC_RECEIPT_V3
+        if registration_log is not None:
+            log,why=check_log(registration_log,pins['custodian_key'],verify)
+            reasons+=why
+            if log is not None:
+                why,state=receipt_log_problems(log['entries'],request,receipt)
+                reasons+=why
+                family_info={'family':state['family'],'registered':len(state['registered']),
+                             'declared_sizes':state['declared_sizes'],'outstanding':state['outstanding']}
+                if not v3 and len(state['registered'])>1:
+                    reasons.append(f"ANALYSIS_V1 has no multiplicity correction and its family holds "
+                                   f"{len(state['registered'])} registrations")
+        elif v3:reasons.append('a v3 receipt needs the custodian-signed public registration log')
+        if control_declarations is not None:
+            indep=independence(control_declarations,pins,verify)
+            if indep['status']=='UNDECLARED':reasons+=indep['reasons']
+        elif v3:reasons.append('control declarations (custodian, auditor, release authority) are required')
     except Exception as exc:reasons.append('signature/schema verification failed: '+type(exc).__name__)
-    return {'status':'EXTERNAL_RELEASE_REVIEW_READY' if not reasons else 'BLOCKED','reasons':reasons,
+    status='BLOCKED' if reasons else ('LIMITED_SAME_OPERATOR' if indep and indep['status']=='SAME_OPERATOR_DISCLOSED'
+                                      else 'EXTERNAL_RELEASE_REVIEW_READY')
+    return {'status':status,'reasons':reasons,'registration_family':family_info,'independence':indep,
             'promotion_allowed':False,'next_authority':pins['release_authority_id'],
             'trust_root':registry['trust_root'],'root_key_sha256':registry['root_key_sha256'],
             'note':'External release authority must record its decision; local preflight never activates a release.'}

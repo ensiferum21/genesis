@@ -31,10 +31,12 @@ import base64
 from .. import eligibility
 from ..common import digest
 from .stats import sign_test
+from . import analysis as AN
 from .signing import verify
 
 SIGNED_EVIDENCE = 'genesis-signed-evidence-v1'      # evidence-node payload wrapper
 SCIENTIFIC_RECEIPT = 'genesis-scientific-receipt-v2'
+SCIENTIFIC_RECEIPT_V3 = 'genesis-scientific-receipt-v3'   # analysis plan v2 + its signed result (W07)
 PREREG_ANCHOR = 'genesis-prereg-anchor-v3'
 PRIORITY_ADJUDICATION = 'genesis-priority-adjudication-v1'
 CLAIM_BINDING = 'genesis-claim-binding-v1'
@@ -75,6 +77,7 @@ RECEIPT_FIELDS = frozenset({
     'expected_rows', 'completed_rows', 'execution_failures', 'wins', 'losses', 'ties',
     'paired_p', 'family_p', 'outcome', 'operator_id', 'registered_at', 'completed_at',
     'screen', 'independence'})
+RECEIPT_FIELDS_V3 = RECEIPT_FIELDS | {'analysis_result'}
 ANCHOR_FIELDS = frozenset({
     'schema', 'request_hash', 'claim_id', 'statement_hash', 'scope', 'evidence_kind', 'registration_slot',
     'registered_at', 'operator_id', 'exposure_registry_root', 'exposure_graphs', 'declaration_unscreenable_graphs',
@@ -183,8 +186,17 @@ def _kind_extras(kind, domain, transfer, transition, candidate):
     return out
 
 
+def analysis_ok(analysis):
+    """A request/receipt analysis is the legacy ANALYSIS_V1 or a valid v2 plan."""
+    return analysis == ANALYSIS_V1 or (isinstance(analysis, dict) and analysis.get('schema') == AN.PLAN_SCHEMA
+                                       and not AN.check_plan(analysis))
+
+
 def derive_outcome(p):
-    """Outcome implied by signed counts under ANALYSIS_V1 (one-sided paired sign test)."""
+    """Outcome implied by the signed payload: under ANALYSIS_V1 from the signed counts (one-sided
+    paired sign test); under a v2 plan from the signed analysis result, re-derived by the kernel."""
+    if isinstance(p, dict) and p.get('schema') == SCIENTIFIC_RECEIPT_V3:
+        return _derive_outcome_v3(p)
     try:
         n = p['wins'] + p['losses'] + p['ties']
         valid = (p['raw_evidence_complete'] is True and p['completed_rows'] == p['expected_rows']
@@ -201,15 +213,35 @@ def derive_outcome(p):
     return 'NOT_SUPPORTED'
 
 
+def _derive_outcome_v3(p):
+    try:
+        result, plan = p['analysis_result'], p['analysis']
+        if p['raw_evidence_complete'] is not True or p['completed_rows'] != p['expected_rows']:
+            return 'INVALID'
+        decision = AN.decision_from_result(result, plan)
+        if decision == 'INVALID':
+            return 'INVALID'
+        if (p['wins'], p['losses'], p['ties']) != (result['wins'], result['losses'], result['ties']) or \
+                result['scored'] + len(result['unsupported']) != p['task_count'] or \
+                p['paired_p'] != sign_test(p['wins'], p['losses']) or \
+                p['family_p'] != result['p_value'] or \
+                p['execution_failures'] != result['failures']['candidate'] + result['failures']['baseline']:
+            return 'INVALID'
+        return decision
+    except (KeyError, TypeError, ValueError):
+        return 'INVALID'
+
+
 def check_receipt(p, kind):
     """Strict schema and internal consistency of a scientific receipt payload."""
     if not isinstance(p, dict):
         return ['receipt payload is not an object']
-    if p.get('schema') != SCIENTIFIC_RECEIPT:
+    fields = {SCIENTIFIC_RECEIPT: RECEIPT_FIELDS, SCIENTIFIC_RECEIPT_V3: RECEIPT_FIELDS_V3}.get(p.get('schema'))
+    if fields is None:
         return [f'unknown receipt schema {p.get("schema")!r}']
-    if set(p) != RECEIPT_FIELDS:
-        return [f'receipt fields differ: missing {sorted(RECEIPT_FIELDS - set(p))[:4]}, '
-                f'extra {sorted(set(p) - RECEIPT_FIELDS)[:4]}']
+    if set(p) != fields:
+        return [f'receipt fields differ: missing {sorted(fields - set(p))[:4]}, '
+                f'extra {sorted(set(p) - fields)[:4]}']
     out = []
     if p['evidence_kind'] != kind or kind not in EVALUATION_KINDS:
         out.append(f'receipt is for evidence kind {p["evidence_kind"]!r}, not {kind!r}')
@@ -224,8 +256,10 @@ def check_receipt(p, kind):
         out.append('unknown domain')
     elif p['domain_contract_hash'] != domain_contract_hash(p['domain']):
         out.append('domain contract hash does not match the domain semantics')
-    if p['analysis'] != ANALYSIS_V1:
+    if p['schema'] == SCIENTIFIC_RECEIPT and p['analysis'] != ANALYSIS_V1:
         out.append('unregistered analysis')
+    if p['schema'] == SCIENTIFIC_RECEIPT_V3 and (not isinstance(p['analysis'], dict) or AN.check_plan(p['analysis'])):
+        out.append('a v3 receipt needs a valid v2 analysis plan')
     out += _kind_extras(kind, p['domain'], p['transfer_source_domain'], p['generation_transition'],
                         p['candidate_version'])
     if p['candidate_program_hash'] == p['baseline_version']:
@@ -302,6 +336,8 @@ def check_request(r):
                 out.append('candidate and baseline are the same program')
         except Exception:
             out.append('candidate or baseline is not a valid program')
+    if not analysis_ok(r.get('analysis')):
+        out.append('analysis must be ANALYSIS_V1 or a valid v2 plan (kernel.analysis.check_plan)')
     if r.get('evidence_kind') not in EVALUATION_KINDS:
         out.append('evidence_kind')
     else:
