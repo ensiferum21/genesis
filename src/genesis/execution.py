@@ -12,7 +12,7 @@ import subprocess
 import sys
 import time
 from .common import canonical,bytes_hash
-from .models import GraphTask,SolverProgram,Limits
+from .models import CandidateGraph,GraphTask,SolverProgram,Limits
 from .graphs import check_witness
 
 
@@ -20,7 +20,8 @@ def _child():
     import resource
     request=json.loads(sys.stdin.buffer.read(8*1024*1024+1))
     if set(request)!={'task','program','limits','seed'}:raise ValueError('request shape')
-    task=GraphTask.model_validate_json(canonical(request['task']))
+    # The child sees only the candidate view (W05): no task id, family, split or reference.
+    task=CandidateGraph.model_validate_json(canonical(request['task']))
     program=SolverProgram.model_validate_json(canonical(request['program']))
     limits=Limits.model_validate_json(canonical(request['limits']))
     if type(request['seed']) is not int:raise ValueError('seed')
@@ -42,7 +43,14 @@ def execute(task,program,limits,seed):
     # Inputs are strict models, not arbitrary commands or module names.
     if not isinstance(task,GraphTask) or not isinstance(program,SolverProgram) or not isinstance(limits,Limits):
         raise TypeError('typed execution input required')
-    request={'task':task.model_dump(mode='json'),'program':program.model_dump(mode='json'),
+    from .domains import Unsupported,adapter
+    domain=adapter(task.domain)
+    gate=domain if isinstance(domain,Unsupported) else domain.supports(task,'execute')
+    if gate:
+        return {'status':'UNSUPPORTED','reason':gate.reason,'limits':limits.model_dump(mode='json'),
+                'execution_mode':'FIXED_DATA_ONLY_DSL','arbitrary_code_sandbox':False}
+    view=domain.candidate_view(task)
+    request={'task':view.model_dump(mode='json'),'program':program.model_dump(mode='json'),
              'limits':limits.model_dump(mode='json'),'seed':seed}
     package_root=str(Path(__file__).resolve().parents[1])
     env={'PATH':'/usr/bin:/bin','PYTHONPATH':package_root,'PYTHONHASHSEED':'0',
@@ -93,7 +101,8 @@ def execute(task,program,limits,seed):
              'stderr':bytes(buffers['stderr']).decode(errors='replace'),
              'output_bytes_observed':sizes,'truncated':status=='OUTPUT_LIMIT',
              'runner_sha256':bytes_hash(Path(__file__).read_bytes()),
-             'execution_mode':'FIXED_DATA_ONLY_DSL','arbitrary_code_sandbox':False}
+             'execution_mode':'FIXED_DATA_ONLY_DSL','arbitrary_code_sandbox':False,
+             'candidate_view_sha256':bytes_hash(canonical(view.model_dump(mode='json')))}
     if status=='SUCCESS':
         try:
             result=json.loads(buffers['stdout'])

@@ -26,6 +26,22 @@ class GraphTask(StrictModel):
         return self
 
 
+class CandidateGraph(StrictModel):
+    """What a candidate solver may see of a task (W05): the host graph and its domain.
+    No task identifier, family, split label, reference optimum or certificate."""
+    domain: Literal['c4_host_v2', 'triangle_free_host_v1'] = 'c4_host_v2'
+    n: int = Field(ge=0, le=63)
+    edges: tuple[tuple[int, int], ...]
+
+    @model_validator(mode='after')
+    def simple(self):
+        if any(not 0 <= u < v < self.n for u,v in self.edges):
+            raise ValueError('edges must be ordered endpoints of a simple graph')
+        if tuple(sorted(set(self.edges))) != self.edges:
+            raise ValueError('edges must be sorted without duplicates')
+        return self
+
+
 class SolverProgram(StrictModel):
     schema_version: Literal['graph-priority-v1'] = 'graph-priority-v1'
     # linear combination of degree sum, product, codegree and forbidden-motif incidence
