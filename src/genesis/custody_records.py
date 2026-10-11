@@ -29,12 +29,19 @@ CONTROL_FIELDS = ('machines', 'keys', 'data', 'analysis')
 
 # ---------------------------------------------------------------- hypothesis families
 
+def custodian_family(request):
+    """The hypothesis family is assigned by the custodian, not chosen by the requester: every
+    registration of the same evidence kind in the same domain at this custodian. A requester
+    who could name a fresh family per candidate could escape the multiplicity correction
+    ("family shopping"); new campaigns or renamed claims do not change this family."""
+    return f"{request['evidence_kind']}:{request['domain']}"
+
+
 def family_of(request):
     a = request['analysis']
     if isinstance(a, dict) and a.get('schema') == PLAN_SCHEMA:
         return a['multiplicity']['family_id']
-    # Legacy ANALYSIS_V1 requests form one family per campaign, kind and domain.
-    return f"v1:{request['campaign_id']}:{request['evidence_kind']}:{request['domain']}"
+    return custodian_family(request)
 
 
 def family_size_of(request):
@@ -86,6 +93,8 @@ def registration_problems(entries, request):
     fam, size = family_of(request), family_size_of(request)
     state = family_state(entries, fam)
     out = []
+    if fam != custodian_family(request):
+        out.append(f'the hypothesis family is assigned by the custodian: family_id must be {custodian_family(request)!r}')
     if state['declared_sizes'] and state['declared_sizes'] != [size]:
         out.append(f'family {fam!r} was declared with size {state["declared_sizes"]}; this request says {size}')
     if len(state['registered']) + 1 > size:

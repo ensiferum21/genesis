@@ -1,0 +1,1054 @@
+{
+ "baselines": {
+  "exchange": {
+   "componentwise": false,
+   "exchange": true,
+   "rounds": 32,
+   "schema_version": "graph-priority-v1",
+   "weights": [
+    0,
+    0,
+    0,
+    0
+   ]
+  },
+  "low_cycle": {
+   "componentwise": false,
+   "exchange": false,
+   "rounds": 32,
+   "schema_version": "graph-priority-v1",
+   "weights": [
+    0,
+    0,
+    0,
+    1
+   ]
+  },
+  "multistart": {
+   "componentwise": false,
+   "exchange": false,
+   "rounds": 32,
+   "schema_version": "graph-priority-v1",
+   "weights": [
+    0,
+    0,
+    0,
+    0
+   ]
+  }
+ },
+ "created_at": "2026-10-11T06:17:38.462299+00:00",
+ "domain": "triangle_free_host_v1",
+ "grid": [
+  {
+   "family": "erdos",
+   "params": {
+    "n": 18,
+    "p": 0.35
+   }
+  },
+  {
+   "family": "erdos",
+   "params": {
+    "n": 18,
+    "p": 0.5
+   }
+  },
+  {
+   "family": "erdos",
+   "params": {
+    "n": 22,
+    "p": 0.35
+   }
+  },
+  {
+   "family": "erdos",
+   "params": {
+    "n": 22,
+    "p": 0.5
+   }
+  },
+  {
+   "family": "erdos",
+   "params": {
+    "n": 26,
+    "p": 0.3
+   }
+  },
+  {
+   "family": "planted_cluster",
+   "params": {
+    "n": 20,
+    "p_in": 0.7,
+    "p_out": 0.3
+   }
+  }
+ ],
+ "limits": {
+  "cpu_seconds": 2,
+  "memory_mib": 2048,
+  "output_bytes": 8388608,
+  "queries": 1000,
+  "wall_seconds": 120
+ },
+ "note": "DEV material only; no SELECT, CONFIRM or FUTURE task was generated or measured",
+ "reference_seconds": 30,
+ "round": {
+  "number": 2,
+  "reason": "round 1 (default grid) selected no setting for triangle_free_host_v1; the frozen SELECTION_RULE is unchanged, only the grid is extended to larger hosts"
+ },
+ "rule": {
+  "ceiling_rate_max": 0.6,
+  "ceiling_rate_min": 0.1,
+  "certified_fraction_min": 0.9,
+  "mean_headroom_min": 0.02,
+  "order": "closest ceiling_rate to 0.35, then lower median reference_seconds, then setting order",
+  "reference_seconds_median_max": 15.0,
+  "select_at_most": 4
+ },
+ "schema": "genesis-dev-calibration-v1",
+ "seed": 20261111,
+ "selected": [
+  {
+   "family": "erdos",
+   "index": 2,
+   "params": {
+    "n": 22,
+    "p": 0.35
+   }
+  }
+ ],
+ "settings": [
+  {
+   "family": "erdos",
+   "generator": {
+    "draws": 8,
+    "skipped_unsupported_identity": 0
+   },
+   "index": 0,
+   "ineligible_because": [
+    "too little headroom"
+   ],
+   "params": {
+    "n": 18,
+    "p": 0.35
+   },
+   "rows": [
+    {
+     "baselines": {
+      "exchange": 39,
+      "low_cycle": 43,
+      "multistart": 40
+     },
+     "edges": 58,
+     "reference": {
+      "method": "SAT_DRAT_UPPER+CHECKED_WITNESS",
+      "status": "FINITE_CERTIFIED",
+      "value": 43
+     },
+     "reference_seconds": 0.138,
+     "task_sha256": "5560c160a17e3812f6a5a272a9d40fb47cd9b66222a7021b1d6e50c146df0e90"
+    },
+    {
+     "baselines": {
+      "exchange": 39,
+      "low_cycle": 43,
+      "multistart": 43
+     },
+     "edges": 59,
+     "reference": {
+      "method": "SAT_DRAT_UPPER+CHECKED_WITNESS",
+      "status": "FINITE_CERTIFIED",
+      "value": 44
+     },
+     "reference_seconds": 0.163,
+     "task_sha256": "02776d13666cf49be3209e19de19ecf797676f55bab84b27bcb20b4710330516"
+    },
+    {
+     "baselines": {
+      "exchange": 39,
+      "low_cycle": 42,
+      "multistart": 43
+     },
+     "edges": 59,
+     "reference": {
+      "method": "SAT_DRAT_UPPER+CHECKED_WITNESS",
+      "status": "FINITE_CERTIFIED",
+      "value": 44
+     },
+     "reference_seconds": 0.175,
+     "task_sha256": "993993401d2d115de631028daccbadaa456722b7cfbe93cc1ee38e9cfade8735"
+    },
+    {
+     "baselines": {
+      "exchange": 34,
+      "low_cycle": 38,
+      "multistart": 38
+     },
+     "edges": 53,
+     "reference": {
+      "method": "SAT_DRAT_UPPER+CHECKED_WITNESS",
+      "status": "FINITE_CERTIFIED",
+      "value": 39
+     },
+     "reference_seconds": 0.149,
+     "task_sha256": "ca2411a0d90dbc0e51572a9cd6058c6e5c7c2c39380c85d25c9a3817e54d3343"
+    },
+    {
+     "baselines": {
+      "exchange": 40,
+      "low_cycle": 40,
+      "multistart": 40
+     },
+     "edges": 48,
+     "reference": {
+      "method": "SAT_DRAT_UPPER+CHECKED_WITNESS",
+      "status": "FINITE_CERTIFIED",
+      "value": 40
+     },
+     "reference_seconds": 0.094,
+     "task_sha256": "cf49069f1cf60eac2e8a27a4c147fdc39ee98db3d69ad321d60dad76d5fa1d69"
+    },
+    {
+     "baselines": {
+      "exchange": 35,
+      "low_cycle": 38,
+      "multistart": 38
+     },
+     "edges": 50,
+     "reference": {
+      "method": "SAT_DRAT_UPPER+CHECKED_WITNESS",
+      "status": "FINITE_CERTIFIED",
+      "value": 39
+     },
+     "reference_seconds": 0.1,
+     "task_sha256": "ea4cb1ae2262939435d4ac93c6bdb36ea7977ffaa5fae53989bb6ca310e77844"
+    },
+    {
+     "baselines": {
+      "exchange": 37,
+      "low_cycle": 41,
+      "multistart": 41
+     },
+     "edges": 58,
+     "reference": {
+      "method": "SAT_DRAT_UPPER+CHECKED_WITNESS",
+      "status": "FINITE_CERTIFIED",
+      "value": 43
+     },
+     "reference_seconds": 0.153,
+     "task_sha256": "716b39229acb84402eeac0b0099068b14ddd476b995ea41a179ebeaef976f7f7"
+    },
+    {
+     "baselines": {
+      "exchange": 39,
+      "low_cycle": 44,
+      "multistart": 41
+     },
+     "edges": 59,
+     "reference": {
+      "method": "SAT_DRAT_UPPER+CHECKED_WITNESS",
+      "status": "FINITE_CERTIFIED",
+      "value": 44
+     },
+     "reference_seconds": 0.166,
+     "task_sha256": "ae327ebe835c903cf513f9a905db5dc1744eeda28b2d95e5c119129f28e61408"
+    }
+   ],
+   "summary": {
+    "ceiling_rate": 0.375,
+    "certified": 8,
+    "certified_fraction": 1.0,
+    "mean_edges": 55.5,
+    "mean_headroom": 0.0179,
+    "reference_seconds_median": 0.151,
+    "tasks": 8
+   }
+  },
+  {
+   "family": "erdos",
+   "generator": {
+    "draws": 8,
+    "skipped_unsupported_identity": 0
+   },
+   "index": 1,
+   "ineligible_because": [
+    "ceiling rate outside the band"
+   ],
+   "params": {
+    "n": 18,
+    "p": 0.5
+   },
+   "rows": [
+    {
+     "baselines": {
+      "exchange": 46,
+      "low_cycle": 49,
+      "multistart": 46
+     },
+     "edges": 75,
+     "reference": {
+      "method": "SAT_DRAT_UPPER+CHECKED_WITNESS",
+      "status": "FINITE_CERTIFIED",
+      "value": 52
+     },
+     "reference_seconds": 0.615,
+     "task_sha256": "fce75d9ce16df0632d6692a3f294c6c5f1152c69da84ddb41828893576ae72df"
+    },
+    {
+     "baselines": {
+      "exchange": 43,
+      "low_cycle": 46,
+      "multistart": 44
+     },
+     "edges": 74,
+     "reference": {
+      "method": "SAT_DRAT_UPPER+CHECKED_WITNESS",
+      "status": "FINITE_CERTIFIED",
+      "value": 50
+     },
+     "reference_seconds": 0.892,
+     "task_sha256": "6bdf9dd66f763b8130ea2c9404dcd3be0e190eb2078d91e1513f79a27b4caffa"
+    },
+    {
+     "baselines": {
+      "exchange": 46,
+      "low_cycle": 55,
+      "multistart": 51
+     },
+     "edges": 94,
+     "reference": {
+      "method": "SAT_DRAT_UPPER+CHECKED_WITNESS",
+      "status": "FINITE_CERTIFIED",
+      "value": 60
+     },
+     "reference_seconds": 11.193,
+     "task_sha256": "935ef342e7c6e9805589d7319dcf8dfc9dde1c9ce349d02ebc77213043d2f741"
+    },
+    {
+     "baselines": {
+      "exchange": 47,
+      "low_cycle": 48,
+      "multistart": 47
+     },
+     "edges": 77,
+     "reference": {
+      "method": "SAT_DRAT_UPPER+CHECKED_WITNESS",
+      "status": "FINITE_CERTIFIED",
+      "value": 52
+     },
+     "reference_seconds": 0.649,
+     "task_sha256": "4f494fd0600fe662e946b288add2dc55803e32c307d7a0d68b8a59975cc692b6"
+    },
+    {
+     "baselines": {
+      "exchange": 44,
+      "low_cycle": 47,
+      "multistart": 46
+     },
+     "edges": 74,
+     "reference": {
+      "method": "SAT_DRAT_UPPER+CHECKED_WITNESS",
+      "status": "FINITE_CERTIFIED",
+      "value": 50
+     },
+     "reference_seconds": 0.91,
+     "task_sha256": "bb4fc970b7a7fbb9eba35011dc5cb0d76e2eeadad3020b80d666247f8ace401a"
+    },
+    {
+     "baselines": {
+      "exchange": 49,
+      "low_cycle": 53,
+      "multistart": 50
+     },
+     "edges": 96,
+     "reference": {
+      "method": "SAT_DRAT_UPPER+CHECKED_WITNESS",
+      "status": "FINITE_CERTIFIED",
+      "value": 63
+     },
+     "reference_seconds": 5.006,
+     "task_sha256": "29d157894180e4ae6d2aecb552b17e16f4ca767b11c25b9da8531a7ac147a45b"
+    },
+    {
+     "baselines": {
+      "exchange": 42,
+      "low_cycle": 47,
+      "multistart": 44
+     },
+     "edges": 70,
+     "reference": {
+      "method": "SAT_DRAT_UPPER+CHECKED_WITNESS",
+      "status": "FINITE_CERTIFIED",
+      "value": 50
+     },
+     "reference_seconds": 0.407,
+     "task_sha256": "472375b632a09505f87a9f33643105cec33fa7c6788a1d1dcdec75a82c90c27b"
+    },
+    {
+     "baselines": {
+      "exchange": 47,
+      "low_cycle": 56,
+      "multistart": 50
+     },
+     "edges": 83,
+     "reference": {
+      "method": "SAT_DRAT_UPPER+CHECKED_WITNESS",
+      "status": "FINITE_CERTIFIED",
+      "value": 59
+     },
+     "reference_seconds": 0.802,
+     "task_sha256": "60845a07f1ae9934b89a74d5f54d9ecb14779ec97fc36b9e6516e810a16b28d6"
+    }
+   ],
+   "summary": {
+    "ceiling_rate": 0.0,
+    "certified": 8,
+    "certified_fraction": 1.0,
+    "mean_edges": 80.38,
+    "mean_headroom": 0.0784,
+    "reference_seconds_median": 0.847,
+    "tasks": 8
+   }
+  },
+  {
+   "family": "erdos",
+   "generator": {
+    "draws": 8,
+    "skipped_unsupported_identity": 0
+   },
+   "index": 2,
+   "ineligible_because": [],
+   "params": {
+    "n": 22,
+    "p": 0.35
+   },
+   "rows": [
+    {
+     "baselines": {
+      "exchange": 54,
+      "low_cycle": 62,
+      "multistart": 60
+     },
+     "edges": 92,
+     "reference": {
+      "method": "SAT_DRAT_UPPER+CHECKED_WITNESS",
+      "status": "FINITE_CERTIFIED",
+      "value": 65
+     },
+     "reference_seconds": 1.264,
+     "task_sha256": "4f49a5f4e00d79812b1d8ee48c835122dc4f842bba7a922dd444b9d19910eb2b"
+    },
+    {
+     "baselines": {
+      "exchange": 55,
+      "low_cycle": 60,
+      "multistart": 58
+     },
+     "edges": 88,
+     "reference": {
+      "method": "SAT_DRAT_UPPER+CHECKED_WITNESS",
+      "status": "FINITE_CERTIFIED",
+      "value": 62
+     },
+     "reference_seconds": 1.66,
+     "task_sha256": "07f69d9b5bc59582449081230a1f53e6173bbb359ff1b98f9c0bd96591486c92"
+    },
+    {
+     "baselines": {
+      "exchange": 55,
+      "low_cycle": 58,
+      "multistart": 56
+     },
+     "edges": 82,
+     "reference": {
+      "method": "SAT_DRAT_UPPER+CHECKED_WITNESS",
+      "status": "FINITE_CERTIFIED",
+      "value": 60
+     },
+     "reference_seconds": 0.737,
+     "task_sha256": "f65d67a04333a483fc31a46ca63f256aa4029ac279c50bff3ea11aba8d6c3097"
+    },
+    {
+     "baselines": {
+      "exchange": 52,
+      "low_cycle": 58,
+      "multistart": 56
+     },
+     "edges": 80,
+     "reference": {
+      "method": "SAT_DRAT_UPPER+CHECKED_WITNESS",
+      "status": "FINITE_CERTIFIED",
+      "value": 59
+     },
+     "reference_seconds": 0.366,
+     "task_sha256": "614404093c59100b10fc9dbf1dba9e3f0207b43e7257a75f9cb894acae177116"
+    },
+    {
+     "baselines": {
+      "exchange": 47,
+      "low_cycle": 50,
+      "multistart": 48
+     },
+     "edges": 66,
+     "reference": {
+      "method": "SAT_DRAT_UPPER+CHECKED_WITNESS",
+      "status": "FINITE_CERTIFIED",
+      "value": 50
+     },
+     "reference_seconds": 0.176,
+     "task_sha256": "2283f6aa1f877d4e5b18e826fd7a949c2fa0cda93182abc5f39d9caa416f3870"
+    },
+    {
+     "baselines": {
+      "exchange": 55,
+      "low_cycle": 58,
+      "multistart": 55
+     },
+     "edges": 85,
+     "reference": {
+      "method": "SAT_DRAT_UPPER+CHECKED_WITNESS",
+      "status": "FINITE_CERTIFIED",
+      "value": 59
+     },
+     "reference_seconds": 2.293,
+     "task_sha256": "f8fa228f85b59ad63a9d4d4e9fef0e27f8d7e26f79d2a9a3b1b75b3da06c082e"
+    },
+    {
+     "baselines": {
+      "exchange": 49,
+      "low_cycle": 54,
+      "multistart": 54
+     },
+     "edges": 71,
+     "reference": {
+      "method": "SAT_DRAT_UPPER+CHECKED_WITNESS",
+      "status": "FINITE_CERTIFIED",
+      "value": 56
+     },
+     "reference_seconds": 0.183,
+     "task_sha256": "300e2548674d28a046e99f7de861e780a11e4e376733517631049c13c85ef651"
+    },
+    {
+     "baselines": {
+      "exchange": 54,
+      "low_cycle": 56,
+      "multistart": 54
+     },
+     "edges": 76,
+     "reference": {
+      "method": "SAT_DRAT_UPPER+CHECKED_WITNESS",
+      "status": "FINITE_CERTIFIED",
+      "value": 57
+     },
+     "reference_seconds": 0.462,
+     "task_sha256": "6179a581cef4b41397fbbd2ec96ddb6821e6df6f76339641d97e7d4b9f108381"
+    }
+   ],
+   "summary": {
+    "ceiling_rate": 0.125,
+    "certified": 8,
+    "certified_fraction": 1.0,
+    "mean_edges": 80.0,
+    "mean_headroom": 0.0249,
+    "reference_seconds_median": 0.6,
+    "tasks": 8
+   }
+  },
+  {
+   "family": "erdos",
+   "generator": {
+    "draws": 8,
+    "skipped_unsupported_identity": 0
+   },
+   "index": 3,
+   "ineligible_because": [
+    "ceiling rate outside the band",
+    "evaluator too slow"
+   ],
+   "params": {
+    "n": 22,
+    "p": 0.5
+   },
+   "rows": [
+    {
+     "baselines": {
+      "exchange": 64,
+      "low_cycle": 71,
+      "multistart": 67
+     },
+     "edges": 116,
+     "reference": {
+      "method": "SAT_DRAT_UPPER+CHECKED_WITNESS",
+      "status": "FINITE_CERTIFIED",
+      "value": 79
+     },
+     "reference_seconds": 11.002,
+     "task_sha256": "2fd83af52bdfa282e56a67e3b415094a972ed7a91aee5e37bfa0ebf61296e14b"
+    },
+    {
+     "baselines": {
+      "exchange": 60,
+      "low_cycle": 69,
+      "multistart": 67
+     },
+     "edges": 120,
+     "reference": {
+      "method": "SAT_DRAT_UPPER+CHECKED_WITNESS",
+      "status": "FINITE_CERTIFIED",
+      "value": 79
+     },
+     "reference_seconds": 26.466,
+     "task_sha256": "5740bbc00030ca0f018d6ccd770aaea306e37d8fb41957d1453fdbe916d02555"
+    },
+    {
+     "baselines": {
+      "exchange": 58,
+      "low_cycle": 69,
+      "multistart": 63
+     },
+     "edges": 116,
+     "reference": {
+      "method": "SAT_DRAT_UPPER+CHECKED_WITNESS",
+      "status": "FINITE_CERTIFIED",
+      "value": 77
+     },
+     "reference_seconds": 19.981,
+     "task_sha256": "8476a8f670da3a141c13a08ba911367a49606c6aac40b9a683ac454e1edce7fa"
+    },
+    {
+     "baselines": {
+      "exchange": 59,
+      "low_cycle": 68,
+      "multistart": 66
+     },
+     "edges": 112,
+     "reference": {
+      "method": "SAT_DRAT_UPPER+CHECKED_WITNESS",
+      "status": "FINITE_CERTIFIED",
+      "value": 74
+     },
+     "reference_seconds": 34.186,
+     "task_sha256": "3dabe6d4c82139401e18ee1f4d995da453f31517fcafe590c3adc9673115830f"
+    },
+    {
+     "baselines": {
+      "exchange": 59,
+      "low_cycle": 66,
+      "multistart": 65
+     },
+     "edges": 115,
+     "reference": {
+      "method": "SAT_DRAT_UPPER+CHECKED_WITNESS",
+      "status": "FINITE_CERTIFIED",
+      "value": 75
+     },
+     "reference_seconds": 40.341,
+     "task_sha256": "26f2fac19b25791d7b342dd90be955af11d31dc596923730608b28db27630520"
+    },
+    {
+     "baselines": {
+      "exchange": 60,
+      "low_cycle": 75,
+      "multistart": 70
+     },
+     "edges": 127,
+     "reference": {
+      "method": "SAT_DRAT_UPPER+CHECKED_WITNESS",
+      "status": "FINITE_CERTIFIED",
+      "value": 84
+     },
+     "reference_seconds": 26.654,
+     "task_sha256": "c99a9dfcf59c951845d2f4b2717d26cbab4193a8b2ef031fc4f1c0cea0de586a"
+    },
+    {
+     "baselines": {
+      "exchange": 62,
+      "low_cycle": 68,
+      "multistart": 68
+     },
+     "edges": 124,
+     "reference": {
+      "method": "SAT_DRAT_UPPER+CHECKED_WITNESS",
+      "status": "FINITE_CERTIFIED",
+      "value": 81
+     },
+     "reference_seconds": 35.606,
+     "task_sha256": "f69a425ff62e91fcd9b3e6995a587e874a0ca0537456390b29cbc3e43737c66e"
+    },
+    {
+     "baselines": {
+      "exchange": 59,
+      "low_cycle": 73,
+      "multistart": 68
+     },
+     "edges": 116,
+     "reference": {
+      "method": "SAT_DRAT_UPPER+CHECKED_WITNESS",
+      "status": "FINITE_CERTIFIED",
+      "value": 79
+     },
+     "reference_seconds": 22.878,
+     "task_sha256": "5231f05861ee13a801c8bb2518f86838b2b450b43f28e24d9205ca3d0dda3552"
+    }
+   ],
+   "summary": {
+    "ceiling_rate": 0.0,
+    "certified": 8,
+    "certified_fraction": 1.0,
+    "mean_edges": 118.25,
+    "mean_headroom": 0.1096,
+    "reference_seconds_median": 26.56,
+    "tasks": 8
+   }
+  },
+  {
+   "family": "erdos",
+   "generator": {
+    "draws": 8,
+    "skipped_unsupported_identity": 0
+   },
+   "index": 4,
+   "ineligible_because": [
+    "too little headroom"
+   ],
+   "params": {
+    "n": 26,
+    "p": 0.3
+   },
+   "rows": [
+    {
+     "baselines": {
+      "exchange": 66,
+      "low_cycle": 72,
+      "multistart": 66
+     },
+     "edges": 101,
+     "reference": {
+      "method": "SAT_DRAT_UPPER+CHECKED_WITNESS",
+      "status": "FINITE_CERTIFIED",
+      "value": 73
+     },
+     "reference_seconds": 4.762,
+     "task_sha256": "78c2966beeca5cfef8985a5f6bfa646f0b0a827d7960e1f32d2ff23e9d8603fb"
+    },
+    {
+     "baselines": {
+      "exchange": 66,
+      "low_cycle": 72,
+      "multistart": 68
+     },
+     "edges": 102,
+     "reference": {
+      "method": "SAT_DRAT_UPPER+CHECKED_WITNESS",
+      "status": "FINITE_CERTIFIED",
+      "value": 74
+     },
+     "reference_seconds": 1.292,
+     "task_sha256": "f77f9327b374782acc69b5f3caec9fdccff0d60f0cdd240fbf5c341584f6e67c"
+    },
+    {
+     "baselines": {
+      "exchange": 64,
+      "low_cycle": 69,
+      "multistart": 67
+     },
+     "edges": 96,
+     "reference": {
+      "method": "SAT_DRAT_UPPER+CHECKED_WITNESS",
+      "status": "FINITE_CERTIFIED",
+      "value": 72
+     },
+     "reference_seconds": 0.867,
+     "task_sha256": "0e5c5fb9d4c5ee7735736b950f5da64c478ada4c8c8297848082fc7a19a3ad70"
+    },
+    {
+     "baselines": {
+      "exchange": 69,
+      "low_cycle": 79,
+      "multistart": 70
+     },
+     "edges": 110,
+     "reference": {
+      "method": "SAT_DRAT_UPPER+CHECKED_WITNESS",
+      "status": "FINITE_CERTIFIED",
+      "value": 80
+     },
+     "reference_seconds": 2.41,
+     "task_sha256": "0c24048560d9fc15534a9a08cd4a24fc8690a3b08a75f4af0e3606f27b5b324d"
+    },
+    {
+     "baselines": {
+      "exchange": 68,
+      "low_cycle": 74,
+      "multistart": 73
+     },
+     "edges": 91,
+     "reference": {
+      "method": "SAT_DRAT_UPPER+CHECKED_WITNESS",
+      "status": "FINITE_CERTIFIED",
+      "value": 74
+     },
+     "reference_seconds": 0.378,
+     "task_sha256": "4b944a5ecba9449fd65dc587ab75f3e7b8b84dfa09c07df5d66ea8a269afc094"
+    },
+    {
+     "baselines": {
+      "exchange": 59,
+      "low_cycle": 64,
+      "multistart": 61
+     },
+     "edges": 81,
+     "reference": {
+      "method": "SAT_DRAT_UPPER+CHECKED_WITNESS",
+      "status": "FINITE_CERTIFIED",
+      "value": 64
+     },
+     "reference_seconds": 0.368,
+     "task_sha256": "822f16845056565332cbb9a25729322f9f317a6cdea766c8e931709ac3434342"
+    },
+    {
+     "baselines": {
+      "exchange": 64,
+      "low_cycle": 76,
+      "multistart": 72
+     },
+     "edges": 102,
+     "reference": {
+      "method": "SAT_DRAT_UPPER+CHECKED_WITNESS",
+      "status": "FINITE_CERTIFIED",
+      "value": 76
+     },
+     "reference_seconds": 0.848,
+     "task_sha256": "79bb4f6d605792a68ef40210453e9c17ed41af333abe98564055e025fce1e759"
+    },
+    {
+     "baselines": {
+      "exchange": 59,
+      "low_cycle": 66,
+      "multistart": 64
+     },
+     "edges": 95,
+     "reference": {
+      "method": "SAT_DRAT_UPPER+CHECKED_WITNESS",
+      "status": "FINITE_CERTIFIED",
+      "value": 68
+     },
+     "reference_seconds": 1.249,
+     "task_sha256": "0e0e20a3682d38f31ef1eb7adc312259b772c184bf54e441b7cefd98c55b0632"
+    }
+   ],
+   "summary": {
+    "ceiling_rate": 0.375,
+    "certified": 8,
+    "certified_fraction": 1.0,
+    "mean_edges": 97.25,
+    "mean_headroom": 0.0155,
+    "reference_seconds_median": 1.058,
+    "tasks": 8
+   }
+  },
+  {
+   "family": "planted_cluster",
+   "generator": {
+    "draws": 8,
+    "skipped_unsupported_identity": 0
+   },
+   "index": 5,
+   "ineligible_because": [
+    "ceiling rate outside the band"
+   ],
+   "params": {
+    "n": 20,
+    "p_in": 0.7,
+    "p_out": 0.3
+   },
+   "rows": [
+    {
+     "baselines": {
+      "exchange": 45,
+      "low_cycle": 49,
+      "multistart": 51
+     },
+     "edges": 72,
+     "reference": {
+      "method": "SAT_DRAT_UPPER+CHECKED_WITNESS",
+      "status": "FINITE_CERTIFIED",
+      "value": 52
+     },
+     "reference_seconds": 0.433,
+     "task_sha256": "626edeb23d57f4005b851197213d0aefe6775ebfc2b7d329be7d2a009939324f"
+    },
+    {
+     "baselines": {
+      "exchange": 39,
+      "low_cycle": 46,
+      "multistart": 46
+     },
+     "edges": 67,
+     "reference": {
+      "method": "SAT_DRAT_UPPER+CHECKED_WITNESS",
+      "status": "FINITE_CERTIFIED",
+      "value": 48
+     },
+     "reference_seconds": 0.485,
+     "task_sha256": "08cab668a232dc47502dbc92de480bd6143e3889846f89e1057752509ec4e81c"
+    },
+    {
+     "baselines": {
+      "exchange": 49,
+      "low_cycle": 52,
+      "multistart": 49
+     },
+     "edges": 79,
+     "reference": {
+      "method": "SAT_DRAT_UPPER+CHECKED_WITNESS",
+      "status": "FINITE_CERTIFIED",
+      "value": 56
+     },
+     "reference_seconds": 0.868,
+     "task_sha256": "61b56495814bb228237ff38fef6dd10688710e9d5b1d45f9032165704f62a4dc"
+    },
+    {
+     "baselines": {
+      "exchange": 45,
+      "low_cycle": 51,
+      "multistart": 48
+     },
+     "edges": 78,
+     "reference": {
+      "method": "SAT_DRAT_UPPER+CHECKED_WITNESS",
+      "status": "FINITE_CERTIFIED",
+      "value": 54
+     },
+     "reference_seconds": 0.703,
+     "task_sha256": "105d2a0a6e0081ed8da5bb8d322ebfa4e3d46d9d06649dfe71cb2e72ff27b2a0"
+    },
+    {
+     "baselines": {
+      "exchange": 42,
+      "low_cycle": 45,
+      "multistart": 48
+     },
+     "edges": 68,
+     "reference": {
+      "method": "SAT_DRAT_UPPER+CHECKED_WITNESS",
+      "status": "FINITE_CERTIFIED",
+      "value": 49
+     },
+     "reference_seconds": 0.525,
+     "task_sha256": "b370fbbc0423756ced33cd4c3d98aac6ecb755997d8269e7393b6c433361cd59"
+    },
+    {
+     "baselines": {
+      "exchange": 44,
+      "low_cycle": 49,
+      "multistart": 48
+     },
+     "edges": 68,
+     "reference": {
+      "method": "SAT_DRAT_UPPER+CHECKED_WITNESS",
+      "status": "FINITE_CERTIFIED",
+      "value": 50
+     },
+     "reference_seconds": 0.244,
+     "task_sha256": "35993702a39363aa7f9e08025a667486bb88a7af6f0087d046cb01005be47064"
+    },
+    {
+     "baselines": {
+      "exchange": 51,
+      "low_cycle": 55,
+      "multistart": 54
+     },
+     "edges": 82,
+     "reference": {
+      "method": "SAT_DRAT_UPPER+CHECKED_WITNESS",
+      "status": "FINITE_CERTIFIED",
+      "value": 58
+     },
+     "reference_seconds": 0.926,
+     "task_sha256": "e01975edb9f00416601a2ac6831e17d49c66df7417e4aa57ffdaa54389342306"
+    },
+    {
+     "baselines": {
+      "exchange": 43,
+      "low_cycle": 50,
+      "multistart": 51
+     },
+     "edges": 78,
+     "reference": {
+      "method": "SAT_DRAT_UPPER+CHECKED_WITNESS",
+      "status": "FINITE_CERTIFIED",
+      "value": 55
+     },
+     "reference_seconds": 0.923,
+     "task_sha256": "653ac06e585848144fdc5c1c187bf602465910f56582db6fd10b65a051574c4f"
+    }
+   ],
+   "summary": {
+    "ceiling_rate": 0.0,
+    "certified": 8,
+    "certified_fraction": 1.0,
+    "mean_edges": 74.0,
+    "mean_headroom": 0.0441,
+    "reference_seconds_median": 0.614,
+    "tasks": 8
+   }
+  }
+ ],
+ "splits_used": [
+  "DEV"
+ ],
+ "task_sha256s": [
+  "5560c160a17e3812f6a5a272a9d40fb47cd9b66222a7021b1d6e50c146df0e90",
+  "02776d13666cf49be3209e19de19ecf797676f55bab84b27bcb20b4710330516",
+  "993993401d2d115de631028daccbadaa456722b7cfbe93cc1ee38e9cfade8735",
+  "ca2411a0d90dbc0e51572a9cd6058c6e5c7c2c39380c85d25c9a3817e54d3343",
+  "cf49069f1cf60eac2e8a27a4c147fdc39ee98db3d69ad321d60dad76d5fa1d69",
+  "ea4cb1ae2262939435d4ac93c6bdb36ea7977ffaa5fae53989bb6ca310e77844",
+  "716b39229acb84402eeac0b0099068b14ddd476b995ea41a179ebeaef976f7f7",
+  "ae327ebe835c903cf513f9a905db5dc1744eeda28b2d95e5c119129f28e61408",
+  "fce75d9ce16df0632d6692a3f294c6c5f1152c69da84ddb41828893576ae72df",
+  "6bdf9dd66f763b8130ea2c9404dcd3be0e190eb2078d91e1513f79a27b4caffa",
+  "935ef342e7c6e9805589d7319dcf8dfc9dde1c9ce349d02ebc77213043d2f741",
+  "4f494fd0600fe662e946b288add2dc55803e32c307d7a0d68b8a59975cc692b6",
+  "bb4fc970b7a7fbb9eba35011dc5cb0d76e2eeadad3020b80d666247f8ace401a",
+  "29d157894180e4ae6d2aecb552b17e16f4ca767b11c25b9da8531a7ac147a45b",
+  "472375b632a09505f87a9f33643105cec33fa7c6788a1d1dcdec75a82c90c27b",
+  "60845a07f1ae9934b89a74d5f54d9ecb14779ec97fc36b9e6516e810a16b28d6",
+  "4f49a5f4e00d79812b1d8ee48c835122dc4f842bba7a922dd444b9d19910eb2b",
+  "07f69d9b5bc59582449081230a1f53e6173bbb359ff1b98f9c0bd96591486c92",
+  "f65d67a04333a483fc31a46ca63f256aa4029ac279c50bff3ea11aba8d6c3097",
+  "614404093c59100b10fc9dbf1dba9e3f0207b43e7257a75f9cb894acae177116",
+  "2283f6aa1f877d4e5b18e826fd7a949c2fa0cda93182abc5f39d9caa416f3870",
+  "f8fa228f85b59ad63a9d4d4e9fef0e27f8d7e26f79d2a9a3b1b75b3da06c082e",
+  "300e2548674d28a046e99f7de861e780a11e4e376733517631049c13c85ef651",
+  "6179a581cef4b41397fbbd2ec96ddb6821e6df6f76339641d97e7d4b9f108381",
+  "2fd83af52bdfa282e56a67e3b415094a972ed7a91aee5e37bfa0ebf61296e14b",
+  "5740bbc00030ca0f018d6ccd770aaea306e37d8fb41957d1453fdbe916d02555",
+  "8476a8f670da3a141c13a08ba911367a49606c6aac40b9a683ac454e1edce7fa",
+  "3dabe6d4c82139401e18ee1f4d995da453f31517fcafe590c3adc9673115830f",
+  "26f2fac19b25791d7b342dd90be955af11d31dc596923730608b28db27630520",
+  "c99a9dfcf59c951845d2f4b2717d26cbab4193a8b2ef031fc4f1c0cea0de586a",
+  "f69a425ff62e91fcd9b3e6995a587e874a0ca0537456390b29cbc3e43737c66e",
+  "5231f05861ee13a801c8bb2518f86838b2b450b43f28e24d9205ca3d0dda3552",
+  "78c2966beeca5cfef8985a5f6bfa646f0b0a827d7960e1f32d2ff23e9d8603fb",
+  "f77f9327b374782acc69b5f3caec9fdccff0d60f0cdd240fbf5c341584f6e67c",
+  "0e5c5fb9d4c5ee7735736b950f5da64c478ada4c8c8297848082fc7a19a3ad70",
+  "0c24048560d9fc15534a9a08cd4a24fc8690a3b08a75f4af0e3606f27b5b324d",
+  "4b944a5ecba9449fd65dc587ab75f3e7b8b84dfa09c07df5d66ea8a269afc094",
+  "822f16845056565332cbb9a25729322f9f317a6cdea766c8e931709ac3434342",
+  "79bb4f6d605792a68ef40210453e9c17ed41af333abe98564055e025fce1e759",
+  "0e0e20a3682d38f31ef1eb7adc312259b772c184bf54e441b7cefd98c55b0632",
+  "626edeb23d57f4005b851197213d0aefe6775ebfc2b7d329be7d2a009939324f",
+  "08cab668a232dc47502dbc92de480bd6143e3889846f89e1057752509ec4e81c",
+  "61b56495814bb228237ff38fef6dd10688710e9d5b1d45f9032165704f62a4dc",
+  "105d2a0a6e0081ed8da5bb8d322ebfa4e3d46d9d06649dfe71cb2e72ff27b2a0",
+  "b370fbbc0423756ced33cd4c3d98aac6ecb755997d8269e7393b6c433361cd59",
+  "35993702a39363aa7f9e08025a667486bb88a7af6f0087d046cb01005be47064",
+  "e01975edb9f00416601a2ac6831e17d49c66df7417e4aa57ffdaa54389342306",
+  "653ac06e585848144fdc5c1c187bf602465910f56582db6fd10b65a051574c4f"
+ ],
+ "tasks_per_setting": 8,
+ "tool_pins_sha256": "ff3f4a568a87c4806bda71ee2f9b1bd490766294bf02f14dd15f0182c1d8f6ed"
+}

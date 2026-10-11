@@ -1,0 +1,218 @@
+{
+ "allowed_conclusion": "If SUPPORTED: a scoped better-solver statement for c4_host_v2 hosts from the calibrated families on that panel only. Not better-improver, transfer, novelty or self-improvement.",
+ "analysis_plan_core": {
+  "alpha": 0.05,
+  "cost": {
+   "max_ratio": 3.0,
+   "measure": "cpu_ns"
+  },
+  "decision_rule": "superiority-with-minimum-useful-effect",
+  "design_effect": 0.5,
+  "estimand": "mean-of-stratum-means",
+  "failures": "score-zero",
+  "interval": {
+   "level": 0.9,
+   "method": "stratified-bootstrap-percentile",
+   "resamples": 4000
+  },
+  "max_unsupported_fraction": 0.05,
+  "minimum_useful_effect": 0.25,
+  "multiplicity": {
+   "family_id": "sealed_evaluation:c4_host_v2",
+   "family_size": 3,
+   "method": "holm"
+  },
+  "power_target": 0.8,
+  "primary": "paired-edge-difference",
+  "regression": {
+   "max_stratum_loss": 1.0
+  },
+  "schema": "genesis-analysis-plan-v2",
+  "sensitivity": [
+   "task-sign-test",
+   "leave-one-stratum-out",
+   "failures-excluded",
+   "stratum-level-sign-flip"
+  ],
+  "stopping": {
+   "rule": "single-analysis"
+  },
+  "strata": "family",
+  "test": "stratified-sign-flip",
+  "unsupported": "exclude-and-report"
+ },
+ "baselines": {
+  "all_fixed_baselines": [
+   "exchange",
+   "low_cycle",
+   "multistart"
+  ],
+  "comparator": "strongest fixed DSL baseline on the SELECT panel (pilot: low_cycle)",
+  "not_a_competitor": "the SAT/DRAT reference optimum is evaluator ground truth, not a solver arm"
+ },
+ "capability_changes": "To be filled at freeze: the candidate program and any library changes since the parent version (none exist yet; no candidate is frozen).",
+ "created_at": "2026-10-11T06:29:45.464466+00:00",
+ "exact_claim": "A frozen research-generated candidate program scores more edges than the strongest frozen baseline on a custodian-held CONFIRM panel of c4_host_v2 hosts drawn from the adopted calibration, by at least the minimum useful effect, under the registered analysis.",
+ "exposure_policy": "Custodian-built exposure registry from the public manifest and the campaign export; isomorphism and near-duplicate screening; a CONFIRM panel is retired after its one use.",
+ "minimum_useful_effect": 0.25,
+ "permissible_information": "Candidates see only the candidate view (domain, n, edges). Development may use public DEV panels and SELECT for choosing one candidate; CONFIRM is held by the custodian and never visible before the single analysis.",
+ "primary_outcome": {
+  "endpoint": "paired-edge-difference",
+  "estimand": "mean-of-stratum-means",
+  "strata": "family"
+ },
+ "raw_evidence_custody": "Custodian private evidence store (per-task raw receipts); the judge recomputes the analysis from it; the custodian publishes a signed registration log.",
+ "rejection_criteria": "Any decision-record or plan check failing; registration beyond the declared family size; an INVALID or NOT_SUPPORTED outcome; shared control between roles limits the claim to an operator-attested evaluation.",
+ "roles": {
+  "auditor": "TO BE ASSIGNED",
+  "custodian": "TO BE ASSIGNED (independent operator)",
+  "release_authority": "TO BE ASSIGNED",
+  "research_operator": "Genesis builder"
+ },
+ "sample_size_justification": {
+  "assumed_holm_rank_alpha": 0.016666666666666666,
+  "chosen": {
+   "power": 0.946,
+   "tasks_per_stratum": 10,
+   "total_tasks": 30
+  },
+  "design_effect": 0.5,
+  "false_positive_rate_at_zero_effect": 0.006,
+  "min_tasks_per_stratum": 10,
+  "minimum_useful_effect": 0.25,
+  "model": "headroom-limited integer improvements over centred DEV pilot differences",
+  "note": "pilot effect sizes are reported but never used to set the effect; only spread and headroom are",
+  "pilot_rows_sha256": "f848c5639dfd3125cd4cc62c3596d678f75b376f66c72db2905d23f90a4025ab",
+  "pilot_strata": {
+   "erdos:bb314e2d": {
+    "mean_difference": -0.2,
+    "sd": 0.6156,
+    "share_with_headroom": 0.6,
+    "tasks": 20
+   },
+   "erdos:efbae367": {
+    "mean_difference": 0.35,
+    "sd": 0.5871,
+    "share_with_headroom": 0.5,
+    "tasks": 20
+   },
+   "erdos:f7f56d4b": {
+    "mean_difference": 0.45,
+    "sd": 0.6048,
+    "share_with_headroom": 0.55,
+    "tasks": 20
+   }
+  },
+  "plan_core_sha256": "f236af7caee644b9352a903eac5d4d2e6adf08604c76ab4a879e98c4637b7373",
+  "power_at_minimum_useful_effect": 0.392,
+  "power_target": 0.8,
+  "schema": "genesis-power-analysis-v1",
+  "status": "CHOSEN",
+  "table": [
+   {
+    "power": 0.946,
+    "tasks_per_stratum": 10,
+    "total_tasks": 30
+   },
+   {
+    "power": 0.972,
+    "tasks_per_stratum": 12,
+    "total_tasks": 36
+   },
+   {
+    "power": 0.987,
+    "tasks_per_stratum": 15,
+    "total_tasks": 45
+   },
+   {
+    "power": 1.0,
+    "tasks_per_stratum": 20,
+    "total_tasks": 60
+   },
+   {
+    "power": 0.998,
+    "tasks_per_stratum": 25,
+    "total_tasks": 75
+   },
+   {
+    "power": 0.999,
+    "tasks_per_stratum": 30,
+    "total_tasks": 90
+   },
+   {
+    "power": 1.0,
+    "tasks_per_stratum": 40,
+    "total_tasks": 120
+   },
+   {
+    "power": 1.0,
+    "tasks_per_stratum": 50,
+    "total_tasks": 150
+   },
+   {
+    "power": 1.0,
+    "tasks_per_stratum": 60,
+    "total_tasks": 180
+   },
+   {
+    "power": 1.0,
+    "tasks_per_stratum": 80,
+    "total_tasks": 240
+   },
+   {
+    "power": 1.0,
+    "tasks_per_stratum": 100,
+    "total_tasks": 300
+   },
+   {
+    "power": 1.0,
+    "tasks_per_stratum": 150,
+    "total_tasks": 450
+   },
+   {
+    "power": 1.0,
+    "tasks_per_stratum": 200,
+    "total_tasks": 600
+   }
+  ]
+ },
+ "schema": "genesis-decision-record-v1",
+ "statistical_rules": {
+  "alpha": 0.05,
+  "failures": "score-zero",
+  "interval": {
+   "level": 0.9,
+   "method": "stratified-bootstrap-percentile",
+   "resamples": 4000
+  },
+  "multiplicity": {
+   "family_id": "sealed_evaluation:c4_host_v2",
+   "family_size": 3,
+   "method": "holm"
+  },
+  "sensitivity": [
+   "task-sign-test",
+   "leave-one-stratum-out",
+   "failures-excluded",
+   "stratum-level-sign-flip"
+  ],
+  "test": "stratified-sign-flip",
+  "unsupported": "exclude-and-report"
+ },
+ "status": "DRAFT",
+ "stopping_rule": {
+  "rule": "single-analysis"
+ },
+ "total_budget": {
+  "arms": 2,
+  "charge": "every attempt, retry, timeout and failure",
+  "reference_seconds_per_task": 30,
+  "solver_limits": {
+   "cpu_seconds": 2,
+   "memory_mib": 2048,
+   "output_bytes": 8388608,
+   "queries": 1000,
+   "wall_seconds": 120
+  }
+ }
+}

@@ -20,7 +20,7 @@ def plan(**over):
     return p
 
 
-def rows(diffs_by_stratum, *, cand_fail=(), base_fail=(), unsupported=(), cpu=(1, 1), split=None):
+def rows(diffs_by_stratum, *, cand_fail=(), base_fail=(), unsupported=(), cpu=(1, 1), split=None, headroom=2):
     out = []
     for s, diffs in diffs_by_stratum.items():
         for i, d in enumerate(diffs):
@@ -36,6 +36,7 @@ def rows(diffs_by_stratum, *, cand_fail=(), base_fail=(), unsupported=(), cpu=(1
                               'run': 'FAILED' if tid in base_fail else 'SUCCESS', 'cpu_ns': cpu[1]}}
             if split:
                 r['split'] = split
+                r['optimum'] = r['candidate']['value'] + headroom
             out.append(r)
     return out
 
@@ -151,19 +152,31 @@ class Analyze(unittest.TestCase):
 
 
 class Power(unittest.TestCase):
-    def pilot(self):
-        return rows({'a': [0, 1, -1, 2, 0, 1, 0, -1], 'b': [1, 0, 0, 2, -1, 1, 1, 0]}, split='DEV')
+    def pilot(self, headroom=2):
+        return rows({'a': [0, 1, -1, 2, 0, 1, 0, -1], 'b': [1, 0, 0, 2, -1, 1, 1, 0]}, split='DEV',
+                    headroom=headroom)
 
     def test_power_increases_with_sample_and_targets_are_met(self):
-        result = P.required_sample(self.pilot(), plan(), sims=400)
+        result = P.required_sample(self.pilot(), plan(), sims=300)
         powers = [row['power'] for row in result['table']]
         self.assertGreaterEqual(powers[-1], powers[0])
-        self.assertIsNotNone(result['chosen'])
+        self.assertEqual(result['status'], 'CHOSEN')
         self.assertGreaterEqual(result['chosen']['power'], 0.8)
-        self.assertLessEqual(result['power_at_minimum_useful_effect'], 0.6)   # the threshold is not the design effect
+        self.assertGreaterEqual(result['chosen']['tasks_per_stratum'], 10)        # design floor
+        self.assertLessEqual(result['power_at_minimum_useful_effect'], 0.7)    # the threshold is not the design effect
         self.assertLessEqual(result['false_positive_rate_at_zero_effect'], 0.06)
 
-    def test_pilot_must_be_dev_material(self):
+    def test_floor_is_a_parameter_and_recorded(self):
+        result = P.required_sample(self.pilot(), plan(), sims=200, min_tasks_per_stratum=4)
+        self.assertEqual(result['min_tasks_per_stratum'], 4)
+        self.assertEqual(result['table'][0]['tasks_per_stratum'], 4)
+
+    def test_no_headroom_makes_the_design_infeasible(self):
+        result = P.required_sample(self.pilot(headroom=0), plan(), sims=50)
+        self.assertEqual(result['status'], 'INFEASIBLE')
+        self.assertIsNone(result['chosen'])
+
+    def test_pilot_must_be_dev_material_with_optima(self):
         bad = self.pilot()
         bad[0]['split'] = 'CONFIRM'
         with self.assertRaises(P.NonDevPilot):
@@ -171,10 +184,12 @@ class Power(unittest.TestCase):
         missing = [{k: v for k, v in r.items() if k != 'split'} for r in self.pilot()]
         with self.assertRaises(P.NonDevPilot):
             P.required_sample(missing, plan(), sims=50)
+        no_opt = [{k: v for k, v in r.items() if k != 'optimum'} for r in self.pilot()]
+        with self.assertRaisesRegex(ValueError, 'certified optimum'):
+            P.required_sample(no_opt, plan(), sims=50)
 
-    def test_approximation_agrees_with_the_exact_analysis(self):
-        agreement = P.approximation_check(self.pilot(), plan(), 12, sims=30)
-        self.assertGreaterEqual(agreement, 0.8)
+    def test_simulation_agrees_with_the_exact_analysis(self):
+        self.assertGreaterEqual(P.approximation_check(self.pilot(), plan(), 12, sims=30), 0.8)
 
 
 if __name__ == '__main__':

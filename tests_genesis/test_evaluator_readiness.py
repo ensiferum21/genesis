@@ -33,7 +33,7 @@ ROOT = Path(__file__).resolve().parents[1]
 SRC = 'c' * 64
 
 
-def base_plan(family_id='fixture-family', family_size=2):
+def base_plan(family_id='sealed_evaluation:c4_host_v2', family_size=2):
     return {'schema': PLAN_SCHEMA, 'primary': 'paired-edge-difference', 'estimand': 'mean-of-stratum-means',
             'strata': 'family', 'minimum_useful_effect': 1.0, 'design_effect': 2.0, 'alpha': 0.05,
             'power_target': 0.8, 'test': 'stratified-sign-flip',
@@ -49,7 +49,7 @@ def pilot_rows():
     rows = []
     for s, diffs in (('dev-a', [2, 3, 2, 2, 3, 2]), ('dev-b', [2, 2, 3, 2, 2, 3])):
         for i, d in enumerate(diffs):
-            rows.append({'task_id': f'{s}-{i}', 'stratum': s, 'status': 'SCORED', 'split': 'DEV',
+            rows.append({'task_id': f'{s}-{i}', 'stratum': s, 'status': 'SCORED', 'split': 'DEV', 'optimum': 26,
                          'candidate': {'value': 20 + d, 'run': 'SUCCESS', 'cpu_ns': 1},
                          'baseline': {'value': 20, 'run': 'SUCCESS', 'cpu_ns': 1}})
     return rows
@@ -57,7 +57,8 @@ def pilot_rows():
 
 def frozen_plan_and_record(**plan_kw):
     plan = base_plan(**plan_kw)
-    power = required_sample(pilot_rows(), plan, sims=300)
+    # Fixture panels are tiny, so the fixture states a floor of 2 tasks per family (a recorded design choice).
+    power = required_sample(pilot_rows(), plan, sims=60, min_tasks_per_stratum=2, grid=(2, 3, 4, 6, 8))
     record = DR.build(plan_core_dict=plan_core(plan), power=power,
                       exact_claim='frozen candidate beats the frozen baseline on sealed c4 hosts (fixture)',
                       capability_changes='none beyond the frozen candidate program (fixture)',
@@ -243,7 +244,7 @@ class CustodianV2Flow(unittest.TestCase):
             self.reg(third, ex3, record)
         r1 = evaluate(self.root, digest(first), self.pool, self.cust[0], 'FIXTURE')
         log, _ = CR.check_log(registration_log(self.root, self.cust[0]), self.cust[1], verify)
-        state = CR.family_state(log['entries'], 'fixture-family')
+        state = CR.family_state(log['entries'], 'sealed_evaluation:c4_host_v2')
         self.assertEqual(state['outstanding'], [digest(second)])     # B15-OPEN-1: visible to everyone
         p1 = r1['payload']['analysis_result'].get('p_value')
         r2 = evaluate(self.root, digest(second), pool2, self.cust[0], 'FIXTURE')
@@ -251,7 +252,7 @@ class CustodianV2Flow(unittest.TestCase):
         if p1 is not None and r2['payload']['analysis_result']['decision'] != 'INVALID':
             self.assertEqual(used, [round(p1, 10)])                    # Holm saw the published first result
         log, _ = CR.check_log(registration_log(self.root, self.cust[0]), self.cust[1], verify)
-        self.assertEqual(CR.family_state(log['entries'], 'fixture-family')['outstanding'], [])
+        self.assertEqual(CR.family_state(log['entries'], 'sealed_evaluation:c4_host_v2')['outstanding'], [])
         for req, rec in ((first, r1), (second, r2)):
             self.assertEqual(CR.receipt_log_problems(log['entries'], req, rec)[0], [])
 

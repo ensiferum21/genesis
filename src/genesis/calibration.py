@@ -198,3 +198,24 @@ def compact(record):
 
 __all__ = ['calibrate', 'measure', 'summarize', 'select', 'calibrated_panel', 'record_problems', 'require_dev',
            'compact', 'canonical']
+
+
+CONFIG = 'configs/dev_calibration.json'
+
+
+def load(domain, repo=None):
+    """The adopted calibration for `domain`: the evidence record named (by path and SHA-256) in
+    configs/dev_calibration.json, re-checked with record_problems before use."""
+    import json
+    from pathlib import Path
+    repo = Path(repo) if repo else Path(__file__).resolve().parents[2]
+    entry = json.loads((repo / CONFIG).read_text())['domains'].get(domain)
+    if entry is None:
+        raise ValueError(f'no adopted calibration for {domain}')
+    record = json.loads((repo / entry['record']).read_text())
+    if digest(record) != entry['sha256']:
+        raise ValueError('calibration record differs from the adopted one')
+    problems = record_problems(record)
+    if problems:
+        raise ValueError('calibration record: ' + '; '.join(problems))
+    return record

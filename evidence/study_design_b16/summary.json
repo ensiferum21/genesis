@@ -1,0 +1,27 @@
+{
+ "approximation_agreement": 1.0,
+ "baseline_totals": {
+  "exchange": 1509,
+  "low_cycle": 1557,
+  "multistart": 1549
+ },
+ "calibration_record_sha256": "1a0441a0d77ce138e45c433863fa143e2a7b9b5997526780a093fd706cb1cb77",
+ "candidate_total": 1569,
+ "chosen": {
+  "power": 0.946,
+  "tasks_per_stratum": 10,
+  "total_tasks": 30
+ },
+ "draft_problems": [],
+ "false_positive_rate_at_zero_effect": 0.006,
+ "pilot_mean_difference": 0.2,
+ "pilot_tasks": 60,
+ "power_at_minimum_useful_effect": 0.392,
+ "power_status": "CHOSEN",
+ "strata": [
+  "erdos:bb314e2d",
+  "erdos:efbae367",
+  "erdos:f7f56d4b"
+ ],
+ "strongest_baseline": "low_cycle"
+}

@@ -1,0 +1,107 @@
+{
+ "assumed_holm_rank_alpha": 0.016666666666666666,
+ "chosen": {
+  "power": 0.946,
+  "tasks_per_stratum": 10,
+  "total_tasks": 30
+ },
+ "design_effect": 0.5,
+ "false_positive_rate_at_zero_effect": 0.006,
+ "min_tasks_per_stratum": 10,
+ "minimum_useful_effect": 0.25,
+ "model": "headroom-limited integer improvements over centred DEV pilot differences",
+ "note": "pilot effect sizes are reported but never used to set the effect; only spread and headroom are",
+ "pilot_rows_sha256": "f848c5639dfd3125cd4cc62c3596d678f75b376f66c72db2905d23f90a4025ab",
+ "pilot_strata": {
+  "erdos:bb314e2d": {
+   "mean_difference": -0.2,
+   "sd": 0.6156,
+   "share_with_headroom": 0.6,
+   "tasks": 20
+  },
+  "erdos:efbae367": {
+   "mean_difference": 0.35,
+   "sd": 0.5871,
+   "share_with_headroom": 0.5,
+   "tasks": 20
+  },
+  "erdos:f7f56d4b": {
+   "mean_difference": 0.45,
+   "sd": 0.6048,
+   "share_with_headroom": 0.55,
+   "tasks": 20
+  }
+ },
+ "plan_core_sha256": "f236af7caee644b9352a903eac5d4d2e6adf08604c76ab4a879e98c4637b7373",
+ "power_at_minimum_useful_effect": 0.392,
+ "power_target": 0.8,
+ "schema": "genesis-power-analysis-v1",
+ "status": "CHOSEN",
+ "table": [
+  {
+   "power": 0.946,
+   "tasks_per_stratum": 10,
+   "total_tasks": 30
+  },
+  {
+   "power": 0.972,
+   "tasks_per_stratum": 12,
+   "total_tasks": 36
+  },
+  {
+   "power": 0.987,
+   "tasks_per_stratum": 15,
+   "total_tasks": 45
+  },
+  {
+   "power": 1.0,
+   "tasks_per_stratum": 20,
+   "total_tasks": 60
+  },
+  {
+   "power": 0.998,
+   "tasks_per_stratum": 25,
+   "total_tasks": 75
+  },
+  {
+   "power": 0.999,
+   "tasks_per_stratum": 30,
+   "total_tasks": 90
+  },
+  {
+   "power": 1.0,
+   "tasks_per_stratum": 40,
+   "total_tasks": 120
+  },
+  {
+   "power": 1.0,
+   "tasks_per_stratum": 50,
+   "total_tasks": 150
+  },
+  {
+   "power": 1.0,
+   "tasks_per_stratum": 60,
+   "total_tasks": 180
+  },
+  {
+   "power": 1.0,
+   "tasks_per_stratum": 80,
+   "total_tasks": 240
+  },
+  {
+   "power": 1.0,
+   "tasks_per_stratum": 100,
+   "total_tasks": 300
+  },
+  {
+   "power": 1.0,
+   "tasks_per_stratum": 150,
+   "total_tasks": 450
+  },
+  {
+   "power": 1.0,
+   "tasks_per_stratum": 200,
+   "total_tasks": 600
+  }
+ ]
+}

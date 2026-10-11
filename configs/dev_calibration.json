@@ -1,0 +1,52 @@
+{
+ "domains": {
+  "c4_host_v2": {
+   "note": "round 1 (default grid)",
+   "record": "evidence/dev_calibration_b16/calibration_c4_host_v2.json",
+   "selected": [
+    {
+     "family": "erdos",
+     "index": 8,
+     "params": {
+      "n": 20,
+      "p": 0.25
+     }
+    },
+    {
+     "family": "erdos",
+     "index": 6,
+     "params": {
+      "n": 16,
+      "p": 0.3
+     }
+    },
+    {
+     "family": "erdos",
+     "index": 2,
+     "params": {
+      "n": 12,
+      "p": 0.45
+     }
+    }
+   ],
+   "sha256": "1a0441a0d77ce138e45c433863fa143e2a7b9b5997526780a093fd706cb1cb77"
+  },
+  "triangle_free_host_v1": {
+   "note": "round 2: round 1 selected nothing; grid extended, rule unchanged",
+   "record": "evidence/dev_calibration_b16/calibration_triangle_free_host_v1_round2.json",
+   "selected": [
+    {
+     "family": "erdos",
+     "index": 2,
+     "params": {
+      "n": 22,
+      "p": 0.35
+     }
+    }
+   ],
+   "sha256": "a0c329f97da2bd750c158db1265d1c92544bffecb373138ce8ca9f5fc3299620"
+  }
+ },
+ "note": "Family settings adopted for harder panels. Chosen on DEV material only by the frozen calibration.SELECTION_RULE; every setting tried, selected or not, is in the records.",
+ "schema": "genesis-dev-calibration-adoption-v1"
+}
