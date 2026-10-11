@@ -328,3 +328,63 @@ See `docs/AUDIT_REMEDIATION.md` (GI6 section).
   floor-checked operator notes; math scope is fixed; free text is never
   asserted. B14-OPEN-5 closed. Regressions:
   `tests_genesis/test_external_review_b14.py` (the review's six cases + 2).
+
+## Batch 15 — Independent execution (W04, R-04)
+
+Environment findings:
+
+- PyPI returned 403 from the egress proxy, so there are no wheel download hashes.
+- No container registry was reachable, and no Docker daemon ran.
+- No second machine was available.
+
+What was built:
+
+- **Platform and lock.**
+  - `deployment/SUPPORTED_PLATFORM.json` and `genesis platform check` (12 host checks).
+  - `requirements.lock` v2: Python 3.13, 17 pins, the full closure, wheel-content
+    fingerprints and shadowed-import detection.
+  - `requires-python` is pinned to 3.13 and the Containerfile moved to 3.13.
+  - The sandbox reads cgroup v2 statistics.
+- **Crash consistency.**
+  - `genesis.faults` defines 14 crash points.
+  - CAS objects are written to `objects/tmp` and linked into place; directories are
+    fsynced before commit.
+  - Export appends are recoverable; the zip, snapshot, report and request writes
+    are atomic.
+  - Rebuild constructs the new database aside and swaps it in.
+  - Each generation is committed in one transaction.
+- **Resume and recovery.**
+  - `genesis campaign resume` reuses journalled attempts, charges interrupted ones
+    and keeps an existing freeze.
+  - `custodian.recover` publishes a receipt for an interrupted sealed evaluation.
+- **Backup and restore.** `genesis store backup|restore`, with a manifest, safe
+  extraction, a chain rebuild and an optional pinned head.
+- **Toolchain.**
+  - `toolchain/build_reproducible.sh` reproduced identical bytes for all four
+    source-built tools across paths and times.
+  - `toolchain/known_answers.py` runs 10 behavioural cases.
+  - `toolchain/revise_pins.py` and `PINS_HISTORY.jsonl` record three entries:
+    the baseline, the reproducible rebuild and a recipe guard.
+- **Roles.** The `genesis.launcher` root service and unprivileged worker
+  delegation, `scripts/genesis_launcher.py`, and the role-layout check.
+- **Reproduction.** `deployment/reproduce.{py,sh}` and `deployment/reference_run.py`
+  with `deployment/EXPECTED_RESULTS.json`.
+- **Internal red team** (same operator, not independent): 5 findings, all repaired.
+
+Tests added:
+
+- `test_deployment`
+- `test_crash_consistency`
+- `test_backup_restore`
+- `test_toolchain_revision`
+- `test_reproduce`
+- `test_redteam_b15`
+- `tests_sandbox/test_launcher`
+- `tests_certificates/test_known_answers`
+
+Not done:
+
+- second-machine acceptance;
+- the image digest;
+- wheel hashes;
+- compute sizing.

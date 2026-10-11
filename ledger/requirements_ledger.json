@@ -169,11 +169,15 @@
     "decision": "PENDING_INDEPENDENT_ACCEPTANCE"
    },
    "code": [
-    "src/genesis/store.py"
+    "src/genesis/store.py",
+    "src/genesis/backup.py",
+    "src/genesis/faults.py"
    ],
    "disposition": "IMPLEMENTED_BOUNDED_PENDING_AUDIT",
    "evidence": [],
-   "external_blockers": [],
+   "external_blockers": [
+    "second supported machine"
+   ],
    "id": "SPEC-2.2",
    "implementation": "IMPLEMENTED_BOUNDED",
    "independent_verification": "PENDING",
@@ -181,10 +185,12 @@
    "owner": "research implementer",
    "remaining": [],
    "scientific_efficacy": "N/A",
-   "scope": "research state in the event-sourced store",
+   "scope": "research state in the event-sourced store; atomic CAS/export, crash-tested at 14 points, verified backup/restore",
    "source": "spec \u00a72.2 (p. 9)",
    "tests": [
-    "tests_genesis/test_store.py"
+    "tests_genesis/test_store.py",
+    "tests_genesis/test_crash_consistency.py::StoreCrashes",
+    "tests_genesis/test_backup_restore.py"
    ],
    "title": "Research state",
    "workstream": "W04"
@@ -1999,22 +2005,30 @@
     "decision": "PENDING_INDEPENDENT_ACCEPTANCE"
    },
    "code": [
-    "src/genesis/store.py"
+    "src/genesis/store.py",
+    "src/genesis/deployment.py",
+    "deployment/SUPPORTED_PLATFORM.json"
    ],
    "disposition": "IMPLEMENTED_BOUNDED_PENDING_AUDIT",
    "evidence": [],
-   "external_blockers": [],
+   "external_blockers": [
+    "registry access",
+    "second machine"
+   ],
    "id": "SPEC-16.1",
    "implementation": "IMPLEMENTED_BOUNDED",
    "independent_verification": "PENDING",
    "local_execution": "TESTS_EXECUTED_IN_MATRIX",
    "owner": "research implementer",
-   "remaining": [],
+   "remaining": [
+    "wheel download hashes (PyPI denied on the build host)"
+   ],
    "scientific_efficacy": "N/A",
-   "scope": "fixed engineering decisions (Python, SQLite single writer, CAS, Ed25519)",
+   "scope": "fixed engineering decisions (Python 3.13 locked with wheel-content fingerprints, SQLite single writer, CAS, Ed25519); supported platform as data with a host check",
    "source": "spec \u00a716.1 (p. 26)",
    "tests": [
-    "tests_genesis/test_store.py"
+    "tests_genesis/test_store.py",
+    "tests_genesis/test_deployment.py"
    ],
    "title": "Fixed engineering decisions",
    "workstream": "W04"
@@ -2180,12 +2194,13 @@
    },
    "code": [
     "src/genesis/execution.py",
-    "src/genesis/sandbox.py"
+    "src/genesis/sandbox.py",
+    "src/genesis/launcher.py"
    ],
    "disposition": "IMPLEMENTED_BOUNDED_PENDING_AUDIT",
    "evidence": [],
    "external_blockers": [
-    "containment must be re-run on the supported host (R-04)"
+    "containment must be re-run on a second supported host (R-04)"
    ],
    "id": "SPEC-17.1",
    "implementation": "IMPLEMENTED_BOUNDED",
@@ -2194,10 +2209,11 @@
    "owner": "research implementer",
    "remaining": [],
    "scientific_efficacy": "N/A",
-   "scope": "default limits enforced by DSL executor and OCI sandbox",
+   "scope": "default limits enforced by DSL executor and OCI sandbox; root launcher enforces its own ceiling and budget",
    "source": "spec \u00a717.1 (p. 28)",
    "tests": [
-    "tests_sandbox/test_escape.py::Resources"
+    "tests_sandbox/test_escape.py::Resources",
+    "tests_sandbox/test_launcher.py::LauncherLifecycle"
    ],
    "title": "Default limits",
    "workstream": "W04"
@@ -2425,7 +2441,7 @@
    "local_execution": "TESTS_EXECUTED_IN_MATRIX",
    "owner": "research implementer",
    "remaining": [
-    "independent replay on a second host (E0)"
+    "independent replay on a second host (E0); deployment/reproduce.py is ready for it"
    ],
    "scientific_efficacy": "N/A",
    "scope": "Experiment A: corruption, mutation, rebuild, bundle verification, escape suite",
@@ -3292,24 +3308,29 @@
     "decision": "PENDING_INDEPENDENT_ACCEPTANCE"
    },
    "code": [
-    "src/genesis/store.py"
+    "src/genesis/store.py",
+    "src/genesis/faults.py",
+    "src/genesis/campaign.py",
+    "src/genesis/custodian.py"
    ],
    "disposition": "IMPLEMENTED_BOUNDED_PENDING_AUDIT",
    "evidence": [],
-   "external_blockers": [],
+   "external_blockers": [
+    "independent review of the recovery semantics"
+   ],
    "id": "SPEC-33.2",
    "implementation": "IMPLEMENTED_BOUNDED",
    "independent_verification": "PENDING",
    "local_execution": "TESTS_EXECUTED_IN_MATRIX",
    "owner": "research implementer",
-   "remaining": [
-    "failure injection at freeze/reservation/completion/export (W04)"
-   ],
+   "remaining": [],
    "scientific_efficacy": "N/A",
-   "scope": "crash recovery from events.jsonl + CAS with quarantine",
+   "scope": "crash recovery from events.jsonl + CAS with quarantine; real-process crash injection at CAS write, commit, export, trial, freeze, generation commit, completion, request freeze, zip, custodian reservation/evaluation/signing/publication; campaign resume; custodian recover",
    "source": "spec \u00a733.2 (p. 38)",
    "tests": [
-    "tests_genesis/test_store_recovery.py"
+    "tests_genesis/test_store_recovery.py",
+    "tests_genesis/test_crash_consistency.py",
+    "tests_genesis/test_redteam_b15.py"
    ],
    "title": "Recovery after crash",
    "workstream": "W04"
@@ -3632,7 +3653,8 @@
    },
    "code": [
     "scripts/run_test_matrix.py",
-    ".github/workflows/ci.yml"
+    ".github/workflows/ci.yml",
+    "deployment/reproduce.py"
    ],
    "disposition": "IMPLEMENTED_BOUNDED_PENDING_AUDIT",
    "evidence": [],
@@ -3645,13 +3667,14 @@
    "local_execution": "TESTS_EXECUTED_IN_MATRIX",
    "owner": "research implementer",
    "remaining": [
-    "independent run on the supported host (R-04)"
+    "independent run on a second supported host (R-04)"
    ],
    "scientific_efficacy": "N/A",
-   "scope": "test and CI matrix; skips in release-blocking suites fail",
+   "scope": "test and CI matrix; skips in release-blocking suites fail; clean-room reproduction driver",
    "source": "spec \u00a738 (p. 40)",
    "tests": [
-    "tests_genesis/test_matrix_classes.py"
+    "tests_genesis/test_matrix_classes.py",
+    "tests_genesis/test_reproduce.py"
    ],
    "title": "Test and CI matrix",
    "workstream": "W04"
@@ -3982,28 +4005,33 @@
     "decision": "PENDING_INDEPENDENT_ACCEPTANCE"
    },
    "code": [
+    "deployment/SUPPORTED_PLATFORM.json",
+    "src/genesis/deployment.py",
     "containers/Containerfile"
    ],
-   "disposition": "NOT_IMPLEMENTED",
+   "disposition": "IMPLEMENTED_BOUNDED_PENDING_AUDIT",
    "evidence": [],
    "external_blockers": [
     "registry access",
-    "supported host"
+    "second machine"
    ],
    "id": "SPEC-46",
-   "implementation": "NOT_IMPLEMENTED",
+   "implementation": "IMPLEMENTED_BOUNDED",
    "independent_verification": "PENDING",
-   "local_execution": "NOT_EXECUTED",
+   "local_execution": "TESTS_EXECUTED_IN_MATRIX",
    "owner": "research implementer",
    "remaining": [
     "pin image digest",
-    "choose Python version",
-    "second-machine matrix"
+    "second-machine matrix",
+    "compute sizing from measured runs"
    ],
    "scientific_efficacy": "N/A",
-   "scope": "supported deployment (R-04): image digest placeholder, Python version mismatch, containment host",
+   "scope": "supported deployment: platform spec and host check, Python 3.13 lock, reproducible toolchain, role separation, recovery, reproduction driver (deployment/DEPLOYMENT.md); compute sizing not measured",
    "source": "spec \u00a746 (p. 43)",
-   "tests": [],
+   "tests": [
+    "tests_genesis/test_deployment.py",
+    "tests_genesis/test_reproduce.py"
+   ],
    "title": "Practical deployment and compute sizing",
    "workstream": "W04"
   },
@@ -4162,29 +4190,43 @@
     "decision": "PENDING_INDEPENDENT_ACCEPTANCE"
    },
    "code": [
+    "src/genesis/deployment.py",
+    "src/genesis/launcher.py",
+    "toolchain/build_reproducible.sh",
+    "toolchain/revise_pins.py",
+    "deployment/reproduce.py",
     "containers/Containerfile"
    ],
-   "disposition": "NOT_IMPLEMENTED",
+   "disposition": "IMPLEMENTED_BOUNDED_PENDING_AUDIT",
    "evidence": [],
    "external_blockers": [
     "registry access",
-    "second machine"
+    "PyPI access",
+    "second machine and its operator"
    ],
    "id": "R-04",
-   "implementation": "NOT_IMPLEMENTED",
+   "implementation": "IMPLEMENTED_BOUNDED",
    "independent_verification": "PENDING",
-   "local_execution": "NOT_EXECUTED",
+   "local_execution": "TESTS_EXECUTED_IN_MATRIX",
    "owner": "research implementer",
    "remaining": [
     "pinned image digest",
-    "single Python version in lock and runtime",
-    "containment on a supporting host"
+    "wheel download hashes",
+    "reproduction on a second machine"
    ],
    "scientific_efficacy": "N/A",
-   "scope": "reproducible supported deployment",
+   "scope": "supported platform spec + host check; one Python (3.13) across lock, pyproject, container and runtime; byte-reproducible tool builds with a gated pin-revision protocol; root launcher / unprivileged worker; crash-tested recovery; backup/restore; second-machine reproduction driver with deterministic reference results",
    "source": "roadmap \u00a73",
-   "tests": [],
-   "title": "reproducible supported deployment",
+   "tests": [
+    "tests_genesis/test_deployment.py",
+    "tests_genesis/test_toolchain_revision.py",
+    "tests_sandbox/test_launcher.py",
+    "tests_genesis/test_crash_consistency.py",
+    "tests_genesis/test_backup_restore.py",
+    "tests_genesis/test_reproduce.py",
+    "tests_certificates/test_known_answers.py"
+   ],
+   "title": "supported platform spec + host check; one Python (3.13) across lock, pyproject, container and runtime; byte-reproducible tool builds with a gated pin-revision protocol; root launcher / unprivileged worker; crash-tested recovery; backup/restore; second-machine reproduction driver with deterministic reference results",
    "workstream": "W04"
   },
   {
@@ -4196,7 +4238,7 @@
    "disposition": "NOT_IMPLEMENTED",
    "evidence": [],
    "external_blockers": [
-    "R-04 open",
+    "R-04 second-machine acceptance",
     "independent source review"
    ],
    "id": "GV0",
@@ -4492,22 +4534,32 @@
     "date": null,
     "decision": "PENDING_INDEPENDENT_ACCEPTANCE"
    },
-   "code": [],
-   "disposition": "NOT_IMPLEMENTED",
+   "code": [
+    "src/genesis/deployment.py",
+    "src/genesis/launcher.py",
+    "src/genesis/backup.py",
+    "src/genesis/faults.py",
+    "deployment/reproduce.py"
+   ],
+   "disposition": "IMPLEMENTED_BOUNDED_PENDING_AUDIT",
    "evidence": [],
    "external_blockers": [],
    "id": "W04",
-   "implementation": "NOT_IMPLEMENTED",
+   "implementation": "IMPLEMENTED_BOUNDED",
    "independent_verification": "PENDING",
-   "local_execution": "NOT_EXECUTED",
+   "local_execution": "TESTS_EXECUTED_IN_MATRIX",
    "owner": "research implementer",
-   "remaining": [
-    "not started in B14"
-   ],
+   "remaining": [],
    "scientific_efficacy": "N/A",
-   "scope": "workstream",
+   "scope": "workstream (B14 scope delivered; acceptance pending)",
    "source": "roadmap \u00a77-10",
-   "tests": [],
+   "tests": [
+    "tests_genesis/test_deployment.py",
+    "tests_genesis/test_crash_consistency.py",
+    "tests_genesis/test_backup_restore.py",
+    "tests_sandbox/test_launcher.py",
+    "tests_genesis/test_reproduce.py"
+   ],
    "title": "Deployment, isolation, recovery and reproducibility",
    "workstream": "W04"
   },

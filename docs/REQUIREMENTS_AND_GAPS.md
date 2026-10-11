@@ -56,7 +56,7 @@ history at `c2d53a9`. Status words:
 | 41–42 | Meta-gap discovery, kernel minimization | RESEARCH_UNESTABLISHED | Meta-gap candidates recorded as hypotheses; no primitive invention. |
 | 43 | Replication bundle | DONE_BOUNDED | `release_bundle.py` + independent `verify_bundle`. |
 | 44 | Human/expert interaction | PARTIAL | Signed adjudication records for near duplicates; expert-query optimizer NOT_IMPLEMENTED. |
-| 46 | Deployment | PARTIAL | Runs on one workstation (2 CPU, 7 GB here); container recipe unpinned. |
+| 46 | Deployment | PARTIAL | B15: supported platform spec and host check, Python 3.13 lock, reproducible toolchain with pin-revision protocol, root launcher / unprivileged worker, crash-tested recovery, backup/restore and a second-machine reproduction driver (`deployment/DEPLOYMENT.md`). Container digest still unpinned (no registry); no second machine; compute sizing not measured. |
 
 ## §31 acceptance checklist
 
@@ -83,9 +83,12 @@ The reviewer reproduced two evidence-integrity defects (R-01, R-02) against
 B13 and raised R-03 and R-04. B14 repaired R-01..R-03 (and eleven further
 internal red-team findings), but **every label below is pending independent
 acceptance**, and P0 cannot be accepted while R-04 (supported deployment) is open.
+B15 built and tested on one host everything R-04 asks for that does not need a
+registry, PyPI or a second machine; those three remain.
 
-- **ENGINEERING_COMPLETE_P0** — builder's assessment only. Blocked on R-04 and
-  on independent review of the B14 repairs (gate GV0).
+- **ENGINEERING_COMPLETE_P0** — builder's assessment only. Blocked on R-04's
+  outstanding parts (second-machine run of `deployment/reproduce.sh`, image
+  digest, wheel hashes) and on independent review of the B14/B15 work (gate GV0).
 - **DOMAIN_COMPLETE_P1** — c4_host_v2 runs end to end with strong conventional
   baselines and exact checking; optimality now needs a custody-held certificate
   replayed with the solver disabled. Pending audit.

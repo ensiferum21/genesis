@@ -16,10 +16,11 @@
     11,
     12,
     13,
-    14
+    14,
+    15
   ],
   "in_progress": null,
-  "next": 15,
+  "next": 16,
   "suites": [
     "tests_genesis",
     "tests",
@@ -42,7 +43,8 @@
     "12": "Release bundle + verifier, \u00a738 classes (mutation, load, golden baselines, smoke cap), CI, container recipe, env lock.",
     "13": "SAT baseline arm, e2e walkthrough, requirements map, final matrix.",
     "14": "R-01 shared receipt semantics; R-02 effective levels and bundle re-derivation; R-03 certificate custody + checker-only replay; three internal red-team rounds (11, 12, 9 findings; 4, 2, 1 critical) all closed with regressions; only replayable evidence licenses levels; custodian checks requests against the frozen campaign export; W01 ledger (343 rows); undeclared skips fail the matrix.",
-    "14R1": "External review F-01 repaired: requested vs established wording; report.md derived per claim; free prose at floor; B14-OPEN-5 closed."
+    "14R1": "External review F-01 repaired: requested vs established wording; report.md derived per claim; free prose at floor; B14-OPEN-5 closed.",
+    "15": "Independent execution (W04/R-04) on one host: platform spec + check, Python 3.13 lock, reproducible toolchain + pin revision protocol, root launcher / unprivileged worker, 14-point crash injection, resume/recover, backup/restore, second-machine reproduction driver. Second-machine run, image digest and wheel hashes outstanding."
   },
   "pending_evidence": {},
   "evidence": {
@@ -69,10 +71,11 @@
     "16": "Evaluator readiness (W05-W07)"
   },
   "open_defects": [
-    "R-04 deployment",
+    "R-04 second-machine run, image digest, wheel hashes (needs a second machine, registry and PyPI access)",
     "B14-OPEN-2 multiplicity across candidates (W06/W07)",
     "B14-OPEN-3 improver/generation lineage protocol (W21)",
     "B14-OPEN-4 replay contracts for other evidence kinds",
+    "B15-OPEN-1 unrecovered registered evaluations visible only to anchor holders (W06)",
     "GV0 independent review"
   ]
 }

@@ -8,9 +8,15 @@
 5. Continue with the next batch in `BATCHES.md`. Finish it with
    `python3 scripts/make_checkpoint.py --batch <k>`.
 
-External tools are rebuilt with `toolchain/install_tools.sh` (Lean via elan,
-CaDiCaL, drat-trim, E prover from their GitHub sources). Their pinned
-revisions are recorded in `toolchain/PINS.json` once a batch depends on them.
+External tools are rebuilt with `toolchain/install_tools.sh`:
+
+- zstd, CaDiCaL, drat-trim and E are byte-reproducible builds from their pinned
+  commits, made with `toolchain/build_reproducible.sh`;
+- Lean comes from its pinned release tarball.
+
+Pins change only through `toolchain/revise_pins.py`, which keeps a hash-chained
+`PINS_HISTORY.jsonl`. Check a host with `genesis platform check`. To reproduce a
+checkpoint on another machine, follow `deployment/DEPLOYMENT.md` §5.
 
 From B14 on, the plan follows the reviewer roadmap. Read `docs/BLOCKING_DEFECTS.md`
 (open defects) and `docs/REQUIREMENTS_LEDGER.md` (dispositions) before

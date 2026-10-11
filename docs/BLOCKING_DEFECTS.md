@@ -10,7 +10,7 @@ test and independent review (gate GV0).
 | R-01 | Evidence kernel accepts a valid envelope without schema, role-to-kind authorization or claim binding; one envelope in three wrapper nodes counts as three generations | yes — `audit/reproductions/logs/b13_baseline_82aa557.log` (R-01a, R-01b ATTACK_SUCCEEDED) | REPAIRED IN B14, PENDING INDEPENDENT REVIEW |
 | R-02 | Release bundle exports stored claim levels and ignores revocation; `verify_bundle` returns ok | yes — same log (R-02 ATTACK_SUCCEEDED, `verify_ok: true`) | REPAIRED IN B14, PENDING INDEPENDENT REVIEW |
 | R-03 | World loop / IR drop the DRAT proof and full upper certificate; no checker-only replay | source inspection (not an exploit) | REPAIRED IN B14, PENDING INDEPENDENT REVIEW |
-| R-04 | Deployment not reproducible: placeholder image digest, Python 3.12 lock vs 3.13 run, containment needs a supporting host | environment finding | OPEN (main work in B15) |
+| R-04 | Deployment not reproducible: placeholder image digest, Python 3.12 lock vs 3.13 run, containment needs a supporting host | environment finding | WORKED IN B15; SECOND-MACHINE ACCEPTANCE AND IMAGE DIGEST OUTSTANDING |
 
 Reproduction command (run from the repo root against any tree):
 
@@ -37,7 +37,7 @@ original log stays meaningful. Post-repair regression tests live in
 
 | ID | Item still open | Needs |
 |---|---|---|
-| R-04 | Supported deployment: pinned image digest, one Python version across lock and runtime, containment on a supporting host, second-machine matrix | registry access, a second machine |
+| R-04 | Supported deployment: what B15 could not do here — the pinned image digest (no registry), wheel download hashes (PyPI denied), and the second-machine run of `deployment/reproduce.sh` with its operator's attestation | registry and PyPI access, a second machine |
 | B14-OPEN-1 | ~~Custodian did not verify request facts against the campaign export~~ — CLOSED in B14 (round-2 C1): the custodian rebuilds the export and checks campaign, source and domain | — |
 | B14-OPEN-2 | Selective reporting across different candidates or campaigns: one registration per candidate slot is enforced, but a custodian-published registration log with a multiplicity rule is not | W06/W07 |
 | B14-OPEN-3 | `sealed_improver_evaluation` and `sealed_generation_evaluation` are refused by the custodian until a research-lineage protocol can be checked from the export | W21 |
@@ -45,3 +45,56 @@ original log stays meaningful. Post-repair regression tests live in
 | B14-OPEN-5 | ~~Report prose linted against the bundle-wide ceiling~~ — CLOSED after the external review (F-01): report.md is derived from per-claim current wording; caller prose is checked at the floor. Still open: ladder/world-loop internal reports lint against fixed levels (they are not exported as claims) | W02 |
 | F-01 (external review) | ~~A requested optimum exported as the claim's statement at WITNESS_VALID~~ — REPAIRED: requested vs established wording separated; see `audit/review_b14_external/` | pending re-review |
 | GV0 | Independent source review of R-01..R-03 and the F1–F11 repairs | an auditor outside the research operator |
+
+## B15 outcome (R-04, W04)
+
+Done on the build host, with regression tests:
+
+- **Platform.** One Python version, 3.13, across `pyproject.toml`,
+  `requirements.lock`, the Containerfile and the runtime. The lock is the full
+  transitive closure with wheel-content fingerprints. The supported platform is
+  data, and `genesis platform check` checks a host against it.
+- **Toolchain.** Rebuilding the pinned commits elsewhere used to give different
+  zstd, CaDiCaL and E binaries (embedded paths and dates). They are now
+  byte-reproducible with `toolchain/build_reproducible.sh`. The pins changed
+  only through the new hash-chained, known-answer-gated revision protocol.
+- **Roles.** A root sandbox launcher serves one unprivileged worker UID. It
+  checks the peer with SO_PEERCRED and enforces ceilings, allowlists and a
+  budget, and its log is anchored by the worker's receipts. The research
+  worker no longer needs root; this was demonstrated end to end, including a
+  Lean check from UID 65534.
+- **Crash consistency.** Faults are injected by real process death at 14
+  points. Repairs found while doing this:
+  - a torn CAS object would have blocked that object forever;
+  - an interrupted export zip or snapshot left a torn file under its final
+    name;
+  - an interrupted sealed evaluation left no receipt at all (now `recover`
+    publishes one, INVALID unless complete);
+  - an interrupted DEV campaign could only be aborted (now resumable);
+  - a second export at the same event head failed.
+- **Backup and restore.** Both are verified; a restore can be pinned to a head
+  recorded elsewhere.
+- **Second machine.** `deployment/reproduce.sh` verifies a checkpoint, then
+  runs the host check, the release matrix and deterministic reference
+  computations, and writes a report for the second machine's operator to
+  attest.
+- **Internal red-team pass.** It found five issues, all repaired:
+  - `recover` adopted any receipt file;
+  - backups dropped quarantined databases;
+  - restore followed a symlinked destination;
+  - the pin history could be re-initialised;
+  - divergence on resume needed to fail closed.
+
+  See `tests_genesis/test_redteam_b15.py`.
+
+Still open for R-04:
+
+- the container digest;
+- wheel download hashes;
+- an independent second-machine run.
+
+New residual:
+
+- **B15-OPEN-1.** A custodian who never calls `recover` leaves a registered
+  anchor without a receipt. That is visible only to someone who holds the
+  anchor (W06: a published registration log).

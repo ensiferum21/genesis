@@ -8,10 +8,10 @@ Columns keep four things apart: implementation, local execution (tests ran in th
 
 | Group | Rows | Deferred Extension | Implemented And Accepted | Implemented Bounded Pending Audit | Not A Requirement | Not Implemented | Research Hypothesis | Retired After Test | Shared Implementation |
 |---|---:|---:|---:|---:|---:|---:|---:|---:|---:|
-| Specification §1-48 | 157 | 0 | 0 | 85 | 46 | 22 | 2 | 1 | 1 |
-| Roadmap defects | 4 | 0 | 0 | 3 | 0 | 1 | 0 | 0 | 0 |
+| Specification §1-48 | 157 | 0 | 0 | 86 | 46 | 21 | 2 | 1 | 1 |
+| Roadmap defects | 4 | 0 | 0 | 4 | 0 | 0 | 0 | 0 | 0 |
 | Gates | 9 | 0 | 0 | 0 | 0 | 9 | 0 | 0 | 0 |
-| Workstreams | 28 | 0 | 0 | 3 | 0 | 25 | 0 | 0 | 0 |
+| Workstreams | 28 | 0 | 0 | 4 | 0 | 24 | 0 | 0 | 0 |
 | Experiments | 8 | 0 | 0 | 0 | 0 | 8 | 0 | 0 | 0 |
 | Engine catalogue (137) | 137 | 0 | 0 | 5 | 0 | 117 | 0 | 0 | 15 |
 
@@ -28,7 +28,7 @@ Proposed DEFERRED_EXTENSION rows remain NOT_IMPLEMENTED until Daniel agrees the 
 | SPEC-1.4 | Design objectives | NOT_A_REQUIREMENT | heading-level objectives; realized by the rows below | — | — | — | N/A |
 | SPEC-2 | Formal model | NOT_A_REQUIREMENT | heading | — | — | — | N/A |
 | SPEC-2.1 | System version | IMPLEMENTED_BOUNDED_PENDING_AUDIT | SystemVersion with all §2.1 fields | tests_genesis/test_research_runtime.py | — | — | N/A |
-| SPEC-2.2 | Research state | IMPLEMENTED_BOUNDED_PENDING_AUDIT | research state in the event-sourced store | tests_genesis/test_store.py | — | — | N/A |
+| SPEC-2.2 | Research state | IMPLEMENTED_BOUNDED_PENDING_AUDIT | research state in the event-sourced store; atomic CAS/export, crash-tested at 14 points, verified backup/restore | tests_genesis/test_store.py<br>tests_genesis/test_crash_consistency.py::StoreCrashes<br>tests_genesis/test_backup_restore.py | — | second supported machine | N/A |
 | SPEC-2.3 | Capability, reachability and improver quality | NOT_IMPLEMENTED | capability/reachability/improver-quality quantities are defined, not measured | — | measured reachability and improver-quality estimates | — | NOT_TESTED |
 | SPEC-2.4 | Authority invariant | IMPLEMENTED_BOUNDED_PENDING_AUDIT | authority invariant: children cannot gain budget or permissions | tests_genesis/test_authority.py | — | — | N/A |
 | SPEC-2.5 | Research as typed program synthesis | IMPLEMENTED_BOUNDED_PENDING_AUDIT | research as typed IR programs over 16 primitives (graph wedge) | tests_genesis/test_macros_market.py::IR | other domains | — | N/A |
@@ -100,14 +100,14 @@ Proposed DEFERRED_EXTENSION rows remain NOT_IMPLEMENTED until Daniel agrees the 
 | SPEC-15.2 | Foundation lifting | NOT_IMPLEMENTED | foundation lifting | — | external trust decision process | external trust authority | NOT_TESTED |
 | SPEC-15.3 | No self-certification escape hatch | IMPLEMENTED_BOUNDED_PENDING_AUDIT | no self-certification: fixture grants never survive production paths; pins never arguments | tests_genesis/test_acceptance_regressions.py::RevocationAndTrust<br>tests_genesis/test_role_registry.py | — | — | N/A |
 | SPEC-16 | Software architecture and repository specification | NOT_A_REQUIREMENT | heading | — | — | — | N/A |
-| SPEC-16.1 | Fixed engineering decisions | IMPLEMENTED_BOUNDED_PENDING_AUDIT | fixed engineering decisions (Python, SQLite single writer, CAS, Ed25519) | tests_genesis/test_store.py | — | — | N/A |
+| SPEC-16.1 | Fixed engineering decisions | IMPLEMENTED_BOUNDED_PENDING_AUDIT | fixed engineering decisions (Python 3.13 locked with wheel-content fingerprints, SQLite single writer, CAS, Ed25519); supported platform as data with a host check | tests_genesis/test_store.py<br>tests_genesis/test_deployment.py | wheel download hashes (PyPI denied on the build host) | registry access<br>second machine | N/A |
 | SPEC-16.2 | Reference repository layout | IMPLEMENTED_BOUNDED_PENDING_AUDIT | repository layout with kernel/research boundary enforced by test | tests_genesis/test_architecture_boundaries.py | — | — | N/A |
 | SPEC-16.3 | Campaign directory | IMPLEMENTED_BOUNDED_PENDING_AUDIT | campaign directory layout | tests_genesis/test_store.py | — | — | N/A |
 | SPEC-16.4 | Core relational tables | IMPLEMENTED_BOUNDED_PENDING_AUDIT | relational tables as a derived index from effective state | tests_genesis/test_relational_index.py<br>tests_genesis/test_redteam_b14.py::KernelFindings | — | — | N/A |
 | SPEC-16.5 | Event envelope | IMPLEMENTED_BOUNDED_PENDING_AUDIT | hash-chained event envelope | tests_genesis/test_store.py | — | — | N/A |
 | SPEC-16.6 | Single-writer rule | IMPLEMENTED_BOUNDED_PENDING_AUDIT | single-writer lock; WAL sidecars refused | tests_genesis/test_matrix_classes.py::LoadAndConcurrency<br>tests_genesis/test_store_recovery.py | — | — | N/A |
 | SPEC-17 | Execution, containment and resource accounting | NOT_A_REQUIREMENT | heading | — | — | — | N/A |
-| SPEC-17.1 | Default limits | IMPLEMENTED_BOUNDED_PENDING_AUDIT | default limits enforced by DSL executor and OCI sandbox | tests_sandbox/test_escape.py::Resources | — | containment must be re-run on the supported host (R-04) | N/A |
+| SPEC-17.1 | Default limits | IMPLEMENTED_BOUNDED_PENDING_AUDIT | default limits enforced by DSL executor and OCI sandbox; root launcher enforces its own ceiling and budget | tests_sandbox/test_escape.py::Resources<br>tests_sandbox/test_launcher.py::LauncherLifecycle | — | containment must be re-run on a second supported host (R-04) | N/A |
 | SPEC-17.2 | Profiles | IMPLEMENTED_BOUNDED_PENDING_AUDIT | profiles (commit/nightly/release matrix) | tests_genesis/test_matrix_classes.py | — | — | N/A |
 | SPEC-17.3 | Resource fairness | IMPLEMENTED_BOUNDED_PENDING_AUDIT | realized-CPU matching in the ladder and specialist arm | tests_genesis/test_ladder.py | audited resource fairness (W07) | — | N/A |
 | SPEC-18 | Evaluation integrity and leak prevention | NOT_A_REQUIREMENT | heading | — | — | — | N/A |
@@ -116,7 +116,7 @@ Proposed DEFERRED_EXTENSION rows remain NOT_IMPLEMENTED until Daniel agrees the 
 | SPEC-18.3 | Current project evidence note | NOT_A_REQUIREMENT | historical evidence note (round-2 contamination stays invalidating) | — | — | — | N/A |
 | SPEC-18.4 | Claim ladder | IMPLEMENTED_BOUNDED_PENDING_AUDIT | claim ladder = evidence axes | tests_genesis/test_evidence_kernel.py | — | — | N/A |
 | SPEC-19 | Clean experimental program | NOT_A_REQUIREMENT | heading | — | — | — | N/A |
-| SPEC-19.1 | Experiment A - microkernel and replay | IMPLEMENTED_BOUNDED_PENDING_AUDIT | Experiment A: corruption, mutation, rebuild, bundle verification, escape suite | tests_genesis/test_matrix_classes.py<br>tests_genesis/test_export_revocation.py<br>tests_sandbox/test_escape.py | independent replay on a second host (E0) | second supported machine | N/A |
+| SPEC-19.1 | Experiment A - microkernel and replay | IMPLEMENTED_BOUNDED_PENDING_AUDIT | Experiment A: corruption, mutation, rebuild, bundle verification, escape suite | tests_genesis/test_matrix_classes.py<br>tests_genesis/test_export_revocation.py<br>tests_sandbox/test_escape.py | independent replay on a second host (E0); deployment/reproduce.py is ready for it | second supported machine | N/A |
 | SPEC-19.2 | Experiment B - Ghost Census kill gate | RETIRED_AFTER_TEST | Experiment B (Ghost Census kill gate) ran on DEV; decision KILL for this family | tests_formal/test_fol_ghosts.py::ExperimentB | redesign on a harder family (W16) | — | EFFECT_NOT_SUPPORTED |
 | SPEC-19.3 | Experiment C - clean prospective Lean study | IMPLEMENTED_BOUNDED_PENDING_AUDIT | harness only: campaign generations, custodian, receipts | tests_genesis/test_phase_receipts.py | clean prospective Lean study | independent custodian<br>sealed Lean pool | NOT_TESTED |
 | SPEC-19.4 | Experiment D - transfer | IMPLEMENTED_BOUNDED_PENDING_AUDIT | harness only: transfer receipts and kernel rules | tests_genesis/test_acceptance_regressions.py | E5 | independent custodian | NOT_TESTED |
@@ -149,7 +149,7 @@ Proposed DEFERRED_EXTENSION rows remain NOT_IMPLEMENTED until Daniel agrees the 
 | SPEC-32 | Cognitive primitive implementation contracts | IMPLEMENTED_BOUNDED_PENDING_AUDIT | primitive contracts (graph wedge) | tests_genesis/test_macros_market.py::IR | contracts for other domains | — | N/A |
 | SPEC-33 | Coordinator and campaign state machine | NOT_A_REQUIREMENT | heading | — | — | — | N/A |
 | SPEC-33.1 | Transaction boundary | IMPLEMENTED_BOUNDED_PENDING_AUDIT | signed scientific transitions bound to this campaign; envelope persisted before the phase; verified phase re-derived from events with the same binding checks | tests_genesis/test_phase_receipts.py<br>tests_genesis/test_redteam_b14.py::F10SharedAcceptance<br>tests_genesis/test_redteam_b14_round2.py::H1PhaseChain | — | — | N/A |
-| SPEC-33.2 | Recovery after crash | IMPLEMENTED_BOUNDED_PENDING_AUDIT | crash recovery from events.jsonl + CAS with quarantine | tests_genesis/test_store_recovery.py | failure injection at freeze/reservation/completion/export (W04) | — | N/A |
+| SPEC-33.2 | Recovery after crash | IMPLEMENTED_BOUNDED_PENDING_AUDIT | crash recovery from events.jsonl + CAS with quarantine; real-process crash injection at CAS write, commit, export, trial, freeze, generation commit, completion, request freeze, zip, custodian reservation/evaluation/signing/publication; campaign resume; custodian recover | tests_genesis/test_store_recovery.py<br>tests_genesis/test_crash_consistency.py<br>tests_genesis/test_redteam_b15.py | — | independent review of the recovery semantics | N/A |
 | SPEC-34 | Research market and scheduling algorithm | IMPLEMENTED_BOUNDED_PENDING_AUDIT | research market score, Pareto prefilter, diversity slot, calibration | tests_genesis/test_macros_market.py::Market | — | — | NOT_TESTED |
 | SPEC-34.1 | Stop-thinking rule | IMPLEMENTED_BOUNDED_PENDING_AUDIT | stop-thinking rule | tests_genesis/test_macros_market.py::Market | — | — | N/A |
 | SPEC-35 | Leak scanner and contamination firewall | IMPLEMENTED_BOUNDED_PENDING_AUDIT | leak scanner and contamination firewall | tests_genesis/test_leak_firewall.py | — | — | N/A |
@@ -162,7 +162,7 @@ Proposed DEFERRED_EXTENSION rows remain NOT_IMPLEMENTED until Daniel agrees the 
 | SPEC-37.1 | Lean worker responsibilities | IMPLEMENTED_BOUNDED_PENDING_AUDIT | Lean worker in sandbox for finite witness obligations | tests_formal/test_lean_checker.py | Mathlib workspace (W08) | — | N/A |
 | SPEC-37.2 | Formal checker responsibilities | IMPLEMENTED_BOUNDED_PENDING_AUDIT | trusted spec / untrusted proof / trusted check; axiom audit; leanchecker | tests_formal/test_lean_checker.py::DefenceInDepth | kernel replay contract so THEOREM_CHECKED is reachable (B14-OPEN-4) | — | N/A |
 | SPEC-37.3 | Theorem-memory rule | IMPLEMENTED_BOUNDED_PENDING_AUDIT | theorem-memory rule with transitive revocation | tests_genesis/test_leak_firewall.py::TheoremMemoryRule | — | — | N/A |
-| SPEC-38 | Test and CI matrix | IMPLEMENTED_BOUNDED_PENDING_AUDIT | test and CI matrix; skips in release-blocking suites fail | tests_genesis/test_matrix_classes.py | independent run on the supported host (R-04) | second machine | N/A |
+| SPEC-38 | Test and CI matrix | IMPLEMENTED_BOUNDED_PENDING_AUDIT | test and CI matrix; skips in release-blocking suites fail; clean-room reproduction driver | tests_genesis/test_matrix_classes.py<br>tests_genesis/test_reproduce.py | independent run on a second supported host (R-04) | second machine | N/A |
 | SPEC-38.1 | Property-test examples | IMPLEMENTED_BOUNDED_PENDING_AUDIT | seeded property loops under unittest | tests_genesis/test_store.py | Hypothesis not installable here | — | N/A |
 | SPEC-39 | Configuration and CLI contract | NOT_A_REQUIREMENT | heading | — | — | — | N/A |
 | SPEC-39.1 | Resolved configuration example | IMPLEMENTED_BOUNDED_PENDING_AUDIT | resolved configuration | tests_genesis/test_research_runtime.py | — | — | N/A |
@@ -175,7 +175,7 @@ Proposed DEFERRED_EXTENSION rows remain NOT_IMPLEMENTED until Daniel agrees the 
 | SPEC-44 | Human and expert interaction contract | IMPLEMENTED_BOUNDED_PENDING_AUDIT | signed adjudication records for near duplicates | tests_genesis/test_custodian_registry.py::PanelScreening | expert-query optimizer | domain expert | N/A |
 | SPEC-44.1 | Optimal expert query | NOT_IMPLEMENTED | optimal expert query | — | W23 | — | NOT_TESTED |
 | SPEC-45 | Threat model | IMPLEMENTED_BOUNDED_PENDING_AUDIT | threat model exercised by escape suite, audit reproductions and red-team regressions | tests_sandbox/test_escape.py<br>tests_genesis/test_redteam_b14.py | — | independent red team | N/A |
-| SPEC-46 | Practical deployment and compute sizing | NOT_IMPLEMENTED | supported deployment (R-04): image digest placeholder, Python version mismatch, containment host | — | pin image digest<br>choose Python version<br>second-machine matrix | registry access<br>supported host | N/A |
+| SPEC-46 | Practical deployment and compute sizing | IMPLEMENTED_BOUNDED_PENDING_AUDIT | supported deployment: platform spec and host check, Python 3.13 lock, reproducible toolchain, role separation, recovery, reproduction driver (deployment/DEPLOYMENT.md); compute sizing not measured | tests_genesis/test_deployment.py<br>tests_genesis/test_reproduce.py | pin image digest<br>second-machine matrix<br>compute sizing from measured runs | registry access<br>second machine | N/A |
 | SPEC-47 | Empirical-science adapter requirements | NOT_IMPLEMENTED | empirical-science adapter (proposed DEFERRED_EXTENSION; needs scope agreement) | — | W27 | empirical operator | NOT_TESTED |
 | SPEC-48 | Definition of implementation completion | IMPLEMENTED_BOUNDED_PENDING_AUDIT | completion labels assessed in docs; P0-P2 pending independent acceptance after R-01..R-03 | tests_genesis/test_ledger.py | GV0..GV7 | auditor<br>release authority | N/A |
 
@@ -186,13 +186,13 @@ Proposed DEFERRED_EXTENSION rows remain NOT_IMPLEMENTED until Daniel agrees the 
 | R-01 | signed evidence bound to the claim (kernel.receipts shared by all entry points); request facts checked against the campaign export | IMPLEMENTED_BOUNDED_PENDING_AUDIT | signed evidence bound to the claim (kernel.receipts shared by all entry points); request facts checked against the campaign export | tests_genesis/test_acceptance_regressions.py<br>tests_genesis/test_redteam_b14.py<br>tests_genesis/test_redteam_b14_round2.py<br>tests_genesis/test_redteam_b14_round3.py<br>tests_genesis/test_external_custodian.py | multiplicity across candidates (B14-OPEN-2) | independent source review (GV0) | N/A |
 | R-02 | effective revocation in every export; verifier re-derives the bundle | IMPLEMENTED_BOUNDED_PENDING_AUDIT | effective revocation in every export; verifier re-derives the bundle | tests_genesis/test_export_revocation.py<br>tests_genesis/test_redteam_b14.py::F1BundleWholeObject | — | independent replay reviewer | N/A |
 | R-03 | certificate custody and checker-only replay | IMPLEMENTED_BOUNDED_PENDING_AUDIT | certificate custody and checker-only replay | tests_certificates/test_certificate_custody.py | — | independent replay on another host | N/A |
-| R-04 | reproducible supported deployment | NOT_IMPLEMENTED | reproducible supported deployment | — | pinned image digest<br>single Python version in lock and runtime<br>containment on a supporting host | registry access<br>second machine | N/A |
+| R-04 | supported platform spec + host check; one Python (3.13) across lock, pyproject, container and runtime; byte-reproducible tool builds with a gated pin-revision protocol; root launcher / unprivileged worker; crash-tested recovery; backup/restore; second-machine reproduction driver with deterministic reference results | IMPLEMENTED_BOUNDED_PENDING_AUDIT | supported platform spec + host check; one Python (3.13) across lock, pyproject, container and runtime; byte-reproducible tool builds with a gated pin-revision protocol; root launcher / unprivileged worker; crash-tested recovery; backup/restore; second-machine reproduction driver with deterministic reference results | tests_genesis/test_deployment.py<br>tests_genesis/test_toolchain_revision.py<br>tests_sandbox/test_launcher.py<br>tests_genesis/test_crash_consistency.py<br>tests_genesis/test_backup_restore.py<br>tests_genesis/test_reproduce.py<br>tests_certificates/test_known_answers.py | pinned image digest<br>wheel download hashes<br>reproduction on a second machine | registry access<br>PyPI access<br>second machine and its operator | N/A |
 
 ## Gates
 
 | ID | Title | Disposition | Scope | Tests | Remaining | External blockers | Efficacy |
 |---|---|---|---|---|---|---|---|
-| GV0 | trust repaired: R-01..R-04 closed, no critical evidence-integrity defect open | NOT_IMPLEMENTED | trust repaired: R-01..R-04 closed, no critical evidence-integrity defect open | — | — | R-04 open<br>independent source review | N/A |
+| GV0 | trust repaired: R-01..R-04 closed, no critical evidence-integrity defect open | NOT_IMPLEMENTED | trust repaired: R-01..R-04 closed, no critical evidence-integrity defect open | — | — | R-04 second-machine acceptance<br>independent source review | N/A |
 | GV1 | bounded platform accepted | NOT_IMPLEMENTED | bounded platform accepted | — | — | independent release-matrix run<br>audited bundle | N/A |
 | GV2 | real formal discovery loop | NOT_IMPLEMENTED | real formal discovery loop | — | — | Mathlib workspace<br>theory packages | NOT_TESTED |
 | GV3 | useful verified discovery on fresh tasks | NOT_IMPLEMENTED | useful verified discovery on fresh tasks | — | — | independent custodian<br>fresh panels | NOT_TESTED |
@@ -209,7 +209,7 @@ Proposed DEFERRED_EXTENSION rows remain NOT_IMPLEMENTED until Daniel agrees the 
 | W01 | Requirements, status and specification reconciliation | IMPLEMENTED_BOUNDED_PENDING_AUDIT | workstream (B14 scope delivered; acceptance pending) | tests_genesis/test_ledger.py | — | — | N/A |
 | W02 | Evidence and release authority | IMPLEMENTED_BOUNDED_PENDING_AUDIT | workstream (B14 scope delivered; acceptance pending) | tests_genesis/test_acceptance_regressions.py | — | — | N/A |
 | W03 | Certificate custody and independent replay | IMPLEMENTED_BOUNDED_PENDING_AUDIT | workstream (B14 scope delivered; acceptance pending) | tests_certificates/test_certificate_custody.py | — | — | N/A |
-| W04 | Deployment, isolation, recovery and reproducibility | NOT_IMPLEMENTED | workstream | — | not started in B14 | — | N/A |
+| W04 | Deployment, isolation, recovery and reproducibility | IMPLEMENTED_BOUNDED_PENDING_AUDIT | workstream (B14 scope delivered; acceptance pending) | tests_genesis/test_deployment.py<br>tests_genesis/test_crash_consistency.py<br>tests_genesis/test_backup_restore.py<br>tests_sandbox/test_launcher.py<br>tests_genesis/test_reproduce.py | — | — | N/A |
 | W05 | Domain contracts and calibration | NOT_IMPLEMENTED | workstream | — | not started in B14 | — | N/A |
 | W06 | Independent custody and preregistration | NOT_IMPLEMENTED | workstream | — | not started in B14 | — | N/A |
 | W07 | Statistics, fairness and decision rules | NOT_IMPLEMENTED | workstream | — | not started in B14 | — | N/A |

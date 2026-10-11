@@ -15,6 +15,9 @@
 | End-to-end smoke | one campaign through report under 600 s (`test_matrix_classes.py`) | commit | must pass under the cap |
 | Formal | Lean canaries and defence in depth (`tests_formal/`) | nightly | failure blocks formal claims |
 | Acceptance regressions (B14) | R-01 reproduced attacks + every forged-receipt case (`test_acceptance_regressions.py`), R-02 export revocation (`test_export_revocation.py`), R-03 checker-only replay (`tests_certificates/test_certificate_custody.py`), internal red-team F1–F11 (`test_redteam_b14.py`) | commit / nightly | any failure re-opens GV0 |
+| Deployment and recovery (B15) | platform/lock checks (`test_deployment.py`), real-process crash injection at 14 points (`test_crash_consistency.py`), backup/restore (`test_backup_restore.py`), pin revision protocol (`test_toolchain_revision.py`), reproduction driver (`test_reproduce.py`), red team (`test_redteam_b15.py`) | commit | failure blocks R-04 |
+| Role separation (B15) | root launcher serving an unprivileged worker: peer UID, ceilings, allowlists, budget, anchored log, Lean from UID 65534 (`tests_sandbox/test_launcher.py`) | release | failure **or skip** blocks release |
+| Toolchain behaviour (B15) | 10 known-answer cases on the installed pinned tools (`tests_certificates/test_known_answers.py`) | nightly | failure blocks release |
 | Requirements ledger | every spec section, roadmap item and catalogue entry has a disposition with resolvable tests (`test_ledger.py`) | commit | must pass |
 
 Run: `python3 scripts/run_test_matrix.py --profile commit|nightly|release --report out.json`.
