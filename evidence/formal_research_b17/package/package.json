@@ -1,0 +1,4796 @@
+{
+ "acceptance": {
+  "check_stage": {
+   "check_sha256": "4e1555369c3bfb1153d2cd7aa04083d40a85c22a366e493296af9148c4fde29f",
+   "cpu_ns": 17638455744,
+   "exit_code": 0,
+   "exits": {
+    "GTP1": "0",
+    "GTP10": "0",
+    "GTP11": "0",
+    "GTP12": "0",
+    "GTP13": "0",
+    "GTP14": "0",
+    "GTP15": "0",
+    "GTP16": "0",
+    "GTP2": "0",
+    "GTP3": "0",
+    "GTP4": "0",
+    "GTP5": "0",
+    "GTP6": "0",
+    "GTP7": "0",
+    "GTP8": "0",
+    "GTP9": "0",
+    "check": "0"
+   },
+   "log": "",
+   "peak_memory_bytes": 228122624,
+   "status": "SUCCESS",
+   "wall_ns": 18022742112
+  },
+  "leanchecker": {
+   "GTP1": true,
+   "GTP10": true,
+   "GTP11": true,
+   "GTP12": true,
+   "GTP13": true,
+   "GTP14": true,
+   "GTP15": true,
+   "GTP16": true,
+   "GTP2": true,
+   "GTP3": true,
+   "GTP4": true,
+   "GTP5": true,
+   "GTP6": true,
+   "GTP7": true,
+   "GTP8": true,
+   "GTP9": true
+  },
+  "receipt_sha256": "0040dd85403893566ab65ba818d05c7f647c57d292009064a63748108d6c9330",
+  "status": "CHECKED"
+ },
+ "assumptions": {
+  "allowed_axioms": [
+   "Classical.choice",
+   "Quot.sound",
+   "propext"
+  ],
+  "axioms_used": [
+   "Classical.choice",
+   "Quot.sound",
+   "propext"
+  ],
+  "conventions": [
+   "edge sets are finite sets of ordered pairs of naturals",
+   "hosts list each edge once as (u, v) with u < v"
+  ],
+  "lean": "lean@e8baaa71855a616d",
+  "workspace": {
+   "artifact_identity": "95a6ec9f1aadc0d8d1936c34bd0ce4e144b0e35c85df12543cdcafe9ebf36b41",
+   "import_roots": [
+    "Mathlib.Data.Finset.Powerset"
+   ],
+   "mathlib_rev": "d13f23b723b8a846827a245b89c10fc7d3f11612",
+   "source_identity": "a3a7569b6d7636a844c87c2b72ef2170eda0f712ff8d9a1b0f15b069e301c7ef"
+  }
+ },
+ "bindings": [
+  {
+   "proof": "GTP1.proof",
+   "spec": "GTConj.down_closed"
+  },
+  {
+   "proof": "GTP2.proof",
+   "spec": "GTConj.union_closed_negation"
+  },
+  {
+   "proof": "GTP3.proof",
+   "spec": "GTConj.union_closed_simple_negation"
+  },
+  {
+   "proof": "GTP4.proof",
+   "spec": "GTConj.inter_closed"
+  },
+  {
+   "proof": "GTP5.proof",
+   "spec": "GTConj.insert_closed_negation"
+  },
+  {
+   "proof": "GTP6.proof",
+   "spec": "GTConj.insert_closed_simple_negation"
+  },
+  {
+   "proof": "GTP7.proof",
+   "spec": "GTConj.bound_card"
+  },
+  {
+   "proof": "GTP8.proof",
+   "spec": "GTConj.bound_union"
+  },
+  {
+   "proof": "GTP9.proof",
+   "spec": "GTConj.bound_mono"
+  },
+  {
+   "proof": "GTP10.proof",
+   "spec": "GTConj.bound_insert_negation"
+  },
+  {
+   "proof": "GTP11.proof",
+   "spec": "GTConj.bound_le_card_negation"
+  },
+  {
+   "proof": "GTP12.proof",
+   "spec": "GTConj.bound_zero_empty_negation"
+  },
+  {
+   "proof": "GTP13.proof",
+   "spec": "GTConj.gadget_Gad3e3_bound"
+  },
+  {
+   "proof": "GTP14.proof",
+   "spec": "GTConj.gadget_Gad3e3_tight"
+  },
+  {
+   "proof": "GTP15.proof",
+   "spec": "GTConj.gadget_Gad4e6_bound"
+  },
+  {
+   "proof": "GTP16.proof",
+   "spec": "GTConj.gadget_Gad4e6_tight"
+  }
+ ],
+ "costs": {
+  "acceptance_check_cpu_ns": 157482106928,
+  "acceptance_runs": 19,
+  "acceptances": [
+   {
+    "receipt_sha256": "4f45b51a85bed7456b528aa58809f2dce1d844f3e95164c15f11de672e3934e6",
+    "statement": "down_closed",
+    "stats": {
+     "check_sha256": "bcf4a67d87ac7914c84f0d69f8c0657e627d158c1d114b8d773f909490754f28",
+     "cpu_ns": 2750712262,
+     "exit_code": 0,
+     "exits": {
+      "GTP1": "0",
+      "check": "0"
+     },
+     "log": "",
+     "peak_memory_bytes": 219820032,
+     "status": "SUCCESS",
+     "wall_ns": 2790915521
+    },
+    "status": "CHECKED"
+   },
+   {
+    "receipt_sha256": "5ee63da593dddbcce963b19702803062561680c4994536fa2432010ecb99c544",
+    "statement": "union_closed",
+    "stats": {
+     "check_sha256": "b0bca373c5a0d75e7742c185d13042a90e06624997b83b0c63669fdf357ca763",
+     "cpu_ns": 3685430970,
+     "exit_code": 0,
+     "exits": {
+      "GTP1": "0",
+      "GTP2": "0",
+      "check": "0"
+     },
+     "log": "",
+     "peak_memory_bytes": 219967488,
+     "status": "SUCCESS",
+     "wall_ns": 3799580865
+    },
+    "status": "CHECKED"
+   },
+   {
+    "receipt_sha256": "bdcfeacd8d2ec4af723ebc7a15e89d6edfccd327d28d1804266e82ed174c0f51",
+    "statement": "union_closed_simple",
+    "stats": {
+     "check_sha256": "5dbffc21183351059117b5c76bcaf54dbff61e1c86cfd8d7757119371a3bc7ed",
+     "cpu_ns": 4743438838,
+     "exit_code": 0,
+     "exits": {
+      "GTP1": "0",
+      "GTP2": "0",
+      "GTP3": "0",
+      "check": "0"
+     },
+     "log": "",
+     "peak_memory_bytes": 221831168,
+     "status": "SUCCESS",
+     "wall_ns": 4930968527
+    },
+    "status": "CHECKED"
+   },
+   {
+    "receipt_sha256": "af29e4f6bb91a7ef4bc32885677a94d760df555d9605fe057b7228e3e45f6434",
+    "statement": "inter_closed",
+    "stats": {
+     "check_sha256": "44b3cf78687d0726fe6a3d606c36d3fd20737df0710212e1182c6661363070f6",
+     "cpu_ns": 5500762185,
+     "exit_code": 0,
+     "exits": {
+      "GTP1": "0",
+      "GTP2": "0",
+      "GTP3": "0",
+      "GTP4": "0",
+      "check": "0"
+     },
+     "log": "",
+     "peak_memory_bytes": 219295744,
+     "status": "SUCCESS",
+     "wall_ns": 5644244534
+    },
+    "status": "CHECKED"
+   },
+   {
+    "receipt_sha256": "b0537119353e5abe2f8e4d2452e29d27349070d58b102cbbf2bf38b416c5d1f2",
+    "statement": "insert_closed",
+    "stats": {
+     "check_sha256": "e95d58c6340fd63dc7dc81a2602720684f054a0cd9efe7abda8b6b22ac65cab7",
+     "cpu_ns": 6466567109,
+     "exit_code": 0,
+     "exits": {
+      "GTP1": "0",
+      "GTP2": "0",
+      "GTP3": "0",
+      "GTP4": "0",
+      "GTP5": "0",
+      "check": "0"
+     },
+     "log": "",
+     "peak_memory_bytes": 220295168,
+     "status": "SUCCESS",
+     "wall_ns": 6624435021
+    },
+    "status": "CHECKED"
+   },
+   {
+    "receipt_sha256": "0a9f46c884989b94ec88f0ea539a3ebb287be7cf0d81480ab88d56be2c187f6f",
+    "statement": "insert_closed_simple",
+    "stats": {
+     "check_sha256": "f5ac2eb235fc1888239420613b12041d96d140f58d30520dc63976c557799949",
+     "cpu_ns": 7492870303,
+     "exit_code": 0,
+     "exits": {
+      "GTP1": "0",
+      "GTP2": "0",
+      "GTP3": "0",
+      "GTP4": "0",
+      "GTP5": "0",
+      "GTP6": "0",
+      "check": "0"
+     },
+     "log": "",
+     "peak_memory_bytes": 224198656,
+     "status": "SUCCESS",
+     "wall_ns": 7684618197
+    },
+    "status": "CHECKED"
+   },
+   {
+    "receipt_sha256": "a60174d38ba12d1e5a13a37852360118e983ea5fe004121a35cedd9ae737ed16",
+    "statement": "bound_card",
+    "stats": {
+     "check_sha256": "55c72421e0a8fd3cf544d5154bc2302a88cb0e2a4c8a715a48bbba1228a64ff8",
+     "cpu_ns": 8090645303,
+     "exit_code": 0,
+     "exits": {
+      "GTP1": "0",
+      "GTP2": "0",
+      "GTP3": "0",
+      "GTP4": "0",
+      "GTP5": "0",
+      "GTP6": "0",
+      "GTP7": "0",
+      "check": "0"
+     },
+     "log": "",
+     "peak_memory_bytes": 224481280,
+     "status": "SUCCESS",
+     "wall_ns": 8295610970
+    },
+    "status": "CHECKED"
+   },
+   {
+    "receipt_sha256": "d88d8ac28c25e44ec502d5ceffd3e4602febac7d1946eeccb10ac36308009e25",
+    "statement": "bound_union",
+    "stats": {
+     "check_sha256": "a58ac8a8c6769882810e7b9eb54324ad9e7a664d3b6b5772166c38b57d440100",
+     "cpu_ns": 9011242912,
+     "exit_code": 0,
+     "exits": {
+      "GTP1": "0",
+      "GTP2": "0",
+      "GTP3": "0",
+      "GTP4": "0",
+      "GTP5": "0",
+      "GTP6": "0",
+      "GTP7": "0",
+      "GTP8": "0",
+      "check": "0"
+     },
+     "log": "",
+     "peak_memory_bytes": 220008448,
+     "status": "SUCCESS",
+     "wall_ns": 9172271306
+    },
+    "status": "CHECKED"
+   },
+   {
+    "receipt_sha256": "6842660ac2e93301d67dcfe2c59f7b08693c5f438683c011af2c3d8486f98259",
+    "statement": "bound_mono",
+    "stats": {
+     "check_sha256": "89a5ff71e56c52e964f021fabbf1e0478b098888901d8d4c4e23e31f0b7352f8",
+     "cpu_ns": 10336718754,
+     "exit_code": 0,
+     "exits": {
+      "GTP1": "0",
+      "GTP2": "0",
+      "GTP3": "0",
+      "GTP4": "0",
+      "GTP5": "0",
+      "GTP6": "0",
+      "GTP7": "0",
+      "GTP8": "0",
+      "GTP9": "0",
+      "check": "0"
+     },
+     "log": "",
+     "peak_memory_bytes": 220061696,
+     "status": "SUCCESS",
+     "wall_ns": 10559942187
+    },
+    "status": "CHECKED"
+   },
+   {
+    "receipt_sha256": "78076dbad84899c189ad0a75e4a14e2715dacbda03c99d871750ea9cc5a32dcf",
+    "statement": "bound_insert",
+    "stats": {
+     "check_sha256": "c6e609a8954f869fe0be0508bc3789213b05df40d7d65eef01271646b66ef694",
+     "cpu_ns": 10868880491,
+     "exit_code": 0,
+     "exits": {
+      "GTP1": "0",
+      "GTP10": "0",
+      "GTP2": "0",
+      "GTP3": "0",
+      "GTP4": "0",
+      "GTP5": "0",
+      "GTP6": "0",
+      "GTP7": "0",
+      "GTP8": "0",
+      "GTP9": "0",
+      "check": "0"
+     },
+     "log": "",
+     "peak_memory_bytes": 219496448,
+     "status": "SUCCESS",
+     "wall_ns": 11101614037
+    },
+    "status": "CHECKED"
+   },
+   {
+    "receipt_sha256": "4c14cda9811880ac25c19734858fbd30ed597abe069441eb4df75caa9ca15253",
+    "statement": "bound_le_card",
+    "stats": {
+     "check_sha256": "26cc9c04dca311eaf7468f093a32938310190c91e474c623169b6b15ef946c9e",
+     "cpu_ns": 12188466211,
+     "exit_code": 0,
+     "exits": {
+      "GTP1": "0",
+      "GTP10": "0",
+      "GTP11": "0",
+      "GTP2": "0",
+      "GTP3": "0",
+      "GTP4": "0",
+      "GTP5": "0",
+      "GTP6": "0",
+      "GTP7": "0",
+      "GTP8": "0",
+      "GTP9": "0",
+      "check": "0"
+     },
+     "log": "",
+     "peak_memory_bytes": 219561984,
+     "status": "SUCCESS",
+     "wall_ns": 12400583908
+    },
+    "status": "CHECKED"
+   },
+   {
+    "receipt_sha256": "104a224baecb4e851188514c9a867c8a397ec32b6bc200c3e1b9e8bbd0ca229b",
+    "statement": "bound_zero_empty",
+    "stats": {
+     "check_sha256": "af7b6269015452afc0a9a7c09dba04a925f3bcb0e19e34b72f9167d8556cb240",
+     "cpu_ns": 13473396068,
+     "exit_code": 0,
+     "exits": {
+      "GTP1": "0",
+      "GTP10": "0",
+      "GTP11": "0",
+      "GTP12": "0",
+      "GTP2": "0",
+      "GTP3": "0",
+      "GTP4": "0",
+      "GTP5": "0",
+      "GTP6": "0",
+      "GTP7": "0",
+      "GTP8": "0",
+      "GTP9": "0",
+      "check": "0"
+     },
+     "log": "",
+     "peak_memory_bytes": 223928320,
+     "status": "SUCCESS",
+     "wall_ns": 13858522750
+    },
+    "status": "CHECKED"
+   },
+   {
+    "receipt_sha256": "4afe350309452ba5376966f31ba1f51ff18c6f624d2ff3250aa7d14bc7ca23a5",
+    "statement": "gadget_Gad3e3_bound",
+    "stats": {
+     "check_sha256": "7c6aac06509df6b8cdd8acceb69ece78b1457348e44a33e84e090291c29376c3",
+     "cpu_ns": 14085750859,
+     "exit_code": 0,
+     "exits": {
+      "GTP1": "0",
+      "GTP10": "0",
+      "GTP11": "0",
+      "GTP12": "0",
+      "GTP13": "0",
+      "GTP2": "0",
+      "GTP3": "0",
+      "GTP4": "0",
+      "GTP5": "0",
+      "GTP6": "0",
+      "GTP7": "0",
+      "GTP8": "0",
+      "GTP9": "0",
+      "check": "0"
+     },
+     "log": "",
+     "peak_memory_bytes": 224526336,
+     "status": "SUCCESS",
+     "wall_ns": 14502949883
+    },
+    "status": "CHECKED"
+   },
+   {
+    "receipt_sha256": "d3d2acef3aa2d4354b16a237925d7867408687f519d55010faf5219b191ad26b",
+    "statement": "gadget_Gad3e3_tight",
+    "stats": {
+     "check_sha256": "55b0251781b46fa7fbaaf950cbba11f808e8bed6936a16e25ff1d243b0664ae6",
+     "cpu_ns": 15200349084,
+     "exit_code": 0,
+     "exits": {
+      "GTP1": "0",
+      "GTP10": "0",
+      "GTP11": "0",
+      "GTP12": "0",
+      "GTP13": "0",
+      "GTP14": "0",
+      "GTP2": "0",
+      "GTP3": "0",
+      "GTP4": "0",
+      "GTP5": "0",
+      "GTP6": "0",
+      "GTP7": "0",
+      "GTP8": "0",
+      "GTP9": "0",
+      "check": "0"
+     },
+     "log": "",
+     "peak_memory_bytes": 224468992,
+     "status": "SUCCESS",
+     "wall_ns": 15511232207
+    },
+    "status": "CHECKED"
+   },
+   {
+    "receipt_sha256": "5e94b73896c063603c6cdbc36a8da1c2e697a35118fea7b366a5a42d3a97f1e3",
+    "statement": "gadget_Gad4e6_bound",
+    "stats": {
+     "check_sha256": "a1110c68638545be8b5a8970cdf0888b6ad6ff0b149168385f5b6666456d6b5d",
+     "cpu_ns": 16196322911,
+     "exit_code": 0,
+     "exits": {
+      "GTP1": "0",
+      "GTP10": "0",
+      "GTP11": "0",
+      "GTP12": "0",
+      "GTP13": "0",
+      "GTP14": "0",
+      "GTP15": "0",
+      "GTP2": "0",
+      "GTP3": "0",
+      "GTP4": "0",
+      "GTP5": "0",
+      "GTP6": "0",
+      "GTP7": "0",
+      "GTP8": "0",
+      "GTP9": "0",
+      "check": "0"
+     },
+     "log": "",
+     "peak_memory_bytes": 223956992,
+     "status": "SUCCESS",
+     "wall_ns": 16579604369
+    },
+    "status": "CHECKED"
+   },
+   {
+    "receipt_sha256": "1fb3fe3754e99426dd5a24ba75367de8ede70f328f192256d1cf4cefa818f952",
+    "statement": "gadget_Gad4e6_tight",
+    "stats": {
+     "check_sha256": "cf3f9c935a9ab9c009f60fb07eba335427b1a8603284f2e03434004fd6f2e6d4",
+     "cpu_ns": 17390552668,
+     "exit_code": 0,
+     "exits": {
+      "GTP1": "0",
+      "GTP10": "0",
+      "GTP11": "0",
+      "GTP12": "0",
+      "GTP13": "0",
+      "GTP14": "0",
+      "GTP15": "0",
+      "GTP16": "0",
+      "GTP2": "0",
+      "GTP3": "0",
+      "GTP4": "0",
+      "GTP5": "0",
+      "GTP6": "0",
+      "GTP7": "0",
+      "GTP8": "0",
+      "GTP9": "0",
+      "check": "0"
+     },
+     "log": "",
+     "peak_memory_bytes": 224014336,
+     "status": "SUCCESS",
+     "wall_ns": 17717650173
+    },
+    "status": "CHECKED"
+   }
+  ],
+  "attempts": [
+   {
+    "attempts": [
+     {
+      "compiled": false,
+      "recipe": "decide",
+      "tactic_sha256": "5589aa5863c2d85622d06d651add002416e5513afdbb455666cdde01bb3e257d"
+     },
+     {
+      "compiled": false,
+      "recipe": "decide-kernel",
+      "tactic_sha256": "9ac77167f92e560c7b03653563b026543eb9e4c018ebd8e1d3c8be05b979ab88"
+     },
+     {
+      "compiled": false,
+      "recipe": "unfold-simp",
+      "tactic_sha256": "825996ecf425849e11b7fb1d9addc5586d386ea896b6ebf79f35ee091bcf52a5"
+     },
+     {
+      "compiled": false,
+      "recipe": "unfold-aesop",
+      "tactic_sha256": "856173a7ee377d08af0810f6adde77323182b1e5aa68969860abf56810fdee11"
+     },
+     {
+      "compiled": false,
+      "recipe": "unfold-omega",
+      "tactic_sha256": "5b4bad3a9f59da17d7b9863877b7461b0f2102a9dcc16fff4e3189763efeb64d"
+     },
+     {
+      "compiled": false,
+      "recipe": "unfold-solve",
+      "tactic_sha256": "12eaf2be8d999b5e8da8986e9df77adfe8d7ec653b6b25635fd3fe00bdf9033f"
+     },
+     {
+      "compiled": false,
+      "recipe": "apply-hyp:h1",
+      "tactic_sha256": "dce31e2d2e902e2fe0f136f011380a06445813e8e094ba2843460f4d62d38773"
+     },
+     {
+      "compiled": false,
+      "recipe": "specialize-omega:h1",
+      "tactic_sha256": "237933f91b1c50330ea0ed3204341ef212d8a758aafe48d7b24ea50dfdb494dc"
+     },
+     {
+      "compiled": true,
+      "recipe": "apply-hyp:h2",
+      "tactic_sha256": "f3baa26296173140ffbb9c3e970eb11ad2adcb31d48b8f5cc2bd42c8787a8a50"
+     },
+     {
+      "compiled": false,
+      "recipe": "specialize-omega:h2",
+      "tactic_sha256": "8257ebbe55138341ac9683aede782ca3233ecc1f4a1b4d640ab697084cdbf05f"
+     }
+    ],
+    "charged": {
+     "candidates": 10,
+     "cpu_ns": 8392679485,
+     "wall_ns": 8437995159
+    },
+    "result": "ELABORATION_ERROR",
+    "statement": "down_closed",
+    "target": "GTConj.down_closed"
+   },
+   {
+    "attempts": [
+     {
+      "compiled": true,
+      "recipe": "counterexample-evaluation",
+      "tactic_sha256": "c8f3ecfd5da0a8cc4d11213b4a174f11aaebed9e1b50af9c9092874c5bef75cc"
+     }
+    ],
+    "charged": {
+     "candidates": 1,
+     "cpu_ns": 1266774947,
+     "wall_ns": 1308747503
+    },
+    "result": "COMPILED",
+    "statement": "union_closed",
+    "target": "GTConj.union_closed_negation"
+   },
+   {
+    "attempts": [
+     {
+      "compiled": true,
+      "recipe": "counterexample-evaluation",
+      "tactic_sha256": "8e7bad010eb8e97521590bcf15d336dc5818114f7adea24324d8cd5422f73ff2"
+     }
+    ],
+    "charged": {
+     "candidates": 1,
+     "cpu_ns": 1157188294,
+     "wall_ns": 1186434293
+    },
+    "result": "COMPILED",
+    "statement": "union_closed_simple",
+    "target": "GTConj.union_closed_simple_negation"
+   },
+   {
+    "attempts": [
+     {
+      "compiled": false,
+      "recipe": "decide",
+      "tactic_sha256": "5589aa5863c2d85622d06d651add002416e5513afdbb455666cdde01bb3e257d"
+     },
+     {
+      "compiled": false,
+      "recipe": "decide-kernel",
+      "tactic_sha256": "9ac77167f92e560c7b03653563b026543eb9e4c018ebd8e1d3c8be05b979ab88"
+     },
+     {
+      "compiled": false,
+      "recipe": "unfold-simp",
+      "tactic_sha256": "d6210263e605a9de48b8a784b73bd4adb69f6f991a477ade36b7e14f7047f286"
+     },
+     {
+      "compiled": true,
+      "recipe": "unfold-aesop",
+      "tactic_sha256": "f343a48ab3ac51a786133955f5458b9921c72898b4b8833f96eddce261def6af"
+     },
+     {
+      "compiled": false,
+      "recipe": "unfold-omega",
+      "tactic_sha256": "f50a4331592ef6c38ef7f20b6a616b19f8018d9b213f329481fb84a0a4c7739f"
+     },
+     {
+      "compiled": false,
+      "recipe": "unfold-solve",
+      "tactic_sha256": "12eaf2be8d999b5e8da8986e9df77adfe8d7ec653b6b25635fd3fe00bdf9033f"
+     },
+     {
+      "compiled": false,
+      "recipe": "apply-hyp:h1",
+      "tactic_sha256": "f1606dfe3baf35c6b718b97c380e154c5156c024246bbeb735e65a24e5c4615b"
+     },
+     {
+      "compiled": false,
+      "recipe": "specialize-omega:h1",
+      "tactic_sha256": "e05063bf71171d7d049686a05ec734ebdd6bf5ae183356e42a6405f24e5919a2"
+     },
+     {
+      "compiled": true,
+      "recipe": "library-elim:GTP1.proof",
+      "tactic_sha256": "170ec580ba829e24c8ef9e9b7222912a798afbae4610a71f32de658a394ceef5"
+     }
+    ],
+    "charged": {
+     "candidates": 9,
+     "cpu_ns": 9094750128,
+     "wall_ns": 9162674557
+    },
+    "result": "ELABORATION_ERROR",
+    "statement": "inter_closed",
+    "target": "GTConj.inter_closed"
+   },
+   {
+    "attempts": [
+     {
+      "compiled": true,
+      "recipe": "counterexample-evaluation",
+      "tactic_sha256": "375b06b71d12583ecef344b634784c93717b8bcf30c719fbf5c506762e36c3be"
+     }
+    ],
+    "charged": {
+     "candidates": 1,
+     "cpu_ns": 1184708749,
+     "wall_ns": 1221378083
+    },
+    "result": "COMPILED",
+    "statement": "insert_closed",
+    "target": "GTConj.insert_closed_negation"
+   },
+   {
+    "attempts": [
+     {
+      "compiled": true,
+      "recipe": "counterexample-evaluation",
+      "tactic_sha256": "30974c664d00d95725b6e8f20aaad41fe6f994d498ec95f856f596ccae086ea9"
+     }
+    ],
+    "charged": {
+     "candidates": 1,
+     "cpu_ns": 1277224360,
+     "wall_ns": 1313214690
+    },
+    "result": "COMPILED",
+    "statement": "insert_closed_simple",
+    "target": "GTConj.insert_closed_simple_negation"
+   },
+   {
+    "attempts": [
+     {
+      "compiled": false,
+      "recipe": "decide",
+      "tactic_sha256": "5589aa5863c2d85622d06d651add002416e5513afdbb455666cdde01bb3e257d"
+     },
+     {
+      "compiled": false,
+      "recipe": "decide-kernel",
+      "tactic_sha256": "9ac77167f92e560c7b03653563b026543eb9e4c018ebd8e1d3c8be05b979ab88"
+     },
+     {
+      "compiled": false,
+      "recipe": "unfold-simp",
+      "tactic_sha256": "80c437df85874f1cdfff86af4749eb9153969d0e93bb0b25af5e7a0dd39baa63"
+     },
+     {
+      "compiled": false,
+      "recipe": "unfold-aesop",
+      "tactic_sha256": "7fa2be1b7ad4dce51973e22b96c3a58a14cef8a9528965add239f9d9297f1ed3"
+     },
+     {
+      "compiled": false,
+      "recipe": "unfold-omega",
+      "tactic_sha256": "655c90877b2393f6548637b339f4b1a16867a40998f20e61cfcc013a92629494"
+     },
+     {
+      "compiled": true,
+      "recipe": "unfold-solve",
+      "tactic_sha256": "12eaf2be8d999b5e8da8986e9df77adfe8d7ec653b6b25635fd3fe00bdf9033f"
+     },
+     {
+      "compiled": false,
+      "recipe": "library-elim:GTP1.proof",
+      "tactic_sha256": "c16b51daa383a0e4afe94900964877f03a6ace9046075306dc52f26662617d3a"
+     },
+     {
+      "compiled": false,
+      "recipe": "library-elim:GTP4.proof",
+      "tactic_sha256": "61c92c7c58f47bbe22716330b18615936cc056c5c10ab974fe7fe5c362c8f03a"
+     }
+    ],
+    "charged": {
+     "candidates": 8,
+     "cpu_ns": 4221155048,
+     "wall_ns": 4260990482
+    },
+    "result": "ELABORATION_ERROR",
+    "statement": "bound_card",
+    "target": "GTConj.bound_card"
+   },
+   {
+    "attempts": [
+     {
+      "compiled": false,
+      "recipe": "decide",
+      "tactic_sha256": "5589aa5863c2d85622d06d651add002416e5513afdbb455666cdde01bb3e257d"
+     },
+     {
+      "compiled": false,
+      "recipe": "decide-kernel",
+      "tactic_sha256": "9ac77167f92e560c7b03653563b026543eb9e4c018ebd8e1d3c8be05b979ab88"
+     },
+     {
+      "compiled": false,
+      "recipe": "unfold-simp",
+      "tactic_sha256": "914e18b31ab5e00c4b289e81d66c6081d4e4c0bbf462dec1df46b1f2e7cd3606"
+     },
+     {
+      "compiled": false,
+      "recipe": "unfold-aesop",
+      "tactic_sha256": "dffc6ff277da1ddc92e4f89530faea5abe3a970bcc777334b316595794c96ef8"
+     },
+     {
+      "compiled": false,
+      "recipe": "unfold-omega",
+      "tactic_sha256": "b9c0e6f0188e90d947e321779c6e2de19a662b938c5099416bbe78d1cff3a113"
+     },
+     {
+      "compiled": false,
+      "recipe": "unfold-solve",
+      "tactic_sha256": "12eaf2be8d999b5e8da8986e9df77adfe8d7ec653b6b25635fd3fe00bdf9033f"
+     },
+     {
+      "compiled": false,
+      "recipe": "apply-hyp:h1",
+      "tactic_sha256": "243f88cd3e8a4bb3cd67fb1d7340108307134b0252e6cc60f743358ec2cfb3dc"
+     },
+     {
+      "compiled": false,
+      "recipe": "specialize-omega:h1",
+      "tactic_sha256": "d529dc1acb45b462bfdeabb5dce5e1b7923f5ba2b6c66cc962459ba6ecfbfec0"
+     },
+     {
+      "compiled": false,
+      "recipe": "apply-hyp:h2",
+      "tactic_sha256": "b69582d9f4c93a0569fdf87a6393cc26d67be3c5b8c5e989cd4ed5b2894a1cd2"
+     },
+     {
+      "compiled": false,
+      "recipe": "specialize-omega:h2",
+      "tactic_sha256": "fd862197f4e5a43aec0b7fa98a6d22a2bdf985fa1f63bf99c926923266d367df"
+     },
+     {
+      "compiled": false,
+      "recipe": "library-elim:GTP1.proof",
+      "tactic_sha256": "fb88562212e990dd307805f9927633aba334e99f10dffcd9289be950c7360333"
+     },
+     {
+      "compiled": true,
+      "recipe": "cover-split:GTP1.proof",
+      "tactic_sha256": "92ac747fe148f04375c13ef31113280f482d5edc80dccc607b91379b2142370f"
+     },
+     {
+      "compiled": false,
+      "recipe": "library-elim:GTP4.proof",
+      "tactic_sha256": "e6efd3d77988b2262e008bd31f580c3a1fb98a7ee6f95224fa74c81680da6bf8"
+     },
+     {
+      "compiled": false,
+      "recipe": "cover-split:GTP4.proof",
+      "tactic_sha256": "99e4d50e546d57ad52450be4e7a2107d96564a96c3663cf84cceef0c8064f25d"
+     },
+     {
+      "compiled": false,
+      "recipe": "library-elim:GTP7.proof",
+      "tactic_sha256": "5ce5314339cd2d91f3b62147cba1031cb613fc02b377119b4d06acf29d7e8703"
+     },
+     {
+      "compiled": false,
+      "recipe": "cover-split:GTP7.proof",
+      "tactic_sha256": "6805a9997d56b2d8700103978120b10f729e6c2add2431cbba98381a81c6f053"
+     }
+    ],
+    "charged": {
+     "candidates": 16,
+     "cpu_ns": 13261054197,
+     "wall_ns": 13284528238
+    },
+    "result": "ELABORATION_ERROR",
+    "statement": "bound_union",
+    "target": "GTConj.bound_union"
+   },
+   {
+    "attempts": [
+     {
+      "compiled": false,
+      "recipe": "decide",
+      "tactic_sha256": "5589aa5863c2d85622d06d651add002416e5513afdbb455666cdde01bb3e257d"
+     },
+     {
+      "compiled": false,
+      "recipe": "decide-kernel",
+      "tactic_sha256": "9ac77167f92e560c7b03653563b026543eb9e4c018ebd8e1d3c8be05b979ab88"
+     },
+     {
+      "compiled": false,
+      "recipe": "unfold-simp",
+      "tactic_sha256": "5f700bd670ef97a5b211c82493d6eda8bbcc3ecc06b2759090ad7d8556441bd8"
+     },
+     {
+      "compiled": false,
+      "recipe": "unfold-aesop",
+      "tactic_sha256": "73de5415251c7539ddcc5c7a50e4b19463cf2878cdf634d9d0cded395d5419f2"
+     },
+     {
+      "compiled": false,
+      "recipe": "unfold-omega",
+      "tactic_sha256": "79163a9c798918572dded3f3375807a45bc756dc390039b1201b8be8d011c823"
+     },
+     {
+      "compiled": false,
+      "recipe": "unfold-solve",
+      "tactic_sha256": "12eaf2be8d999b5e8da8986e9df77adfe8d7ec653b6b25635fd3fe00bdf9033f"
+     },
+     {
+      "compiled": false,
+      "recipe": "apply-hyp:h1",
+      "tactic_sha256": "d95a8d14fe5ca897fe958c8c44b7994e5dd290e0bd9313a82982a2b9489f47df"
+     },
+     {
+      "compiled": true,
+      "recipe": "specialize-omega:h1",
+      "tactic_sha256": "e2dba89f68e10425e93eaf9a6106ba1d2264096efc2e41b942f12f733c0bcf61"
+     },
+     {
+      "compiled": false,
+      "recipe": "apply-hyp:h2",
+      "tactic_sha256": "fce5b839258a02110c6d3536b0b5770cc275554d68df09a43e944b51504c436a"
+     },
+     {
+      "compiled": false,
+      "recipe": "specialize-omega:h2",
+      "tactic_sha256": "29b55ab808e6b7c2ec7386edca8171dfb01f8364158bcb3e53459cbc227cc1a5"
+     },
+     {
+      "compiled": false,
+      "recipe": "apply-hyp:h3",
+      "tactic_sha256": "2f2fa9ae1cb7e1ad859cc09525c6789db63731064470976ae0eac57e52a9b549"
+     },
+     {
+      "compiled": false,
+      "recipe": "specialize-omega:h3",
+      "tactic_sha256": "5b56770d946c17314d58c83bd76339275ce2cce5e0c4e6193f5529a3a2a16714"
+     },
+     {
+      "compiled": false,
+      "recipe": "library-elim:GTP1.proof",
+      "tactic_sha256": "95c7415b5a6aff267a2e58e0c29e7c3d6aa085a45881e8ad204a14cf9a649e25"
+     },
+     {
+      "compiled": false,
+      "recipe": "cover-split:GTP1.proof",
+      "tactic_sha256": "41c31a27a5f0c8f4371e5730134c5e5d5ecd82cb4d4edcca649fef407e8b9b94"
+     },
+     {
+      "compiled": false,
+      "recipe": "library-elim:GTP4.proof",
+      "tactic_sha256": "b2ef1630c5dfbe31d74d812aff99016b02ca5c1905bf03f8a2c301c92630b1ad"
+     },
+     {
+      "compiled": false,
+      "recipe": "cover-split:GTP4.proof",
+      "tactic_sha256": "d86b06cc071a0d2368943ce9c85c111ba221ec6ddf52c639fde0fa5d61a696a2"
+     },
+     {
+      "compiled": false,
+      "recipe": "library-elim:GTP7.proof",
+      "tactic_sha256": "446c4d36cd8e900c4c40c534d1a4eec063afea41b26eb244899e1597f3ccbf1c"
+     },
+     {
+      "compiled": false,
+      "recipe": "cover-split:GTP7.proof",
+      "tactic_sha256": "81abdcde85fcbddc1f0e0eb6bc8dd7eff016b241a6c8cfc42a9f61ac0810b0da"
+     },
+     {
+      "compiled": false,
+      "recipe": "library-elim:GTP8.proof",
+      "tactic_sha256": "adde904492739a73fbeeadf69889c46cd8fa4899f0f0a7652fef18318ba86191"
+     },
+     {
+      "compiled": false,
+      "recipe": "cover-split:GTP8.proof",
+      "tactic_sha256": "d9143925f0d0e6aa8bf1e3a0e985a270bb09bbd5550627d1e106900b1682a851"
+     }
+    ],
+    "charged": {
+     "candidates": 20,
+     "cpu_ns": 9225590983,
+     "wall_ns": 9260533848
+    },
+    "result": "ELABORATION_ERROR",
+    "statement": "bound_mono",
+    "target": "GTConj.bound_mono"
+   },
+   {
+    "attempts": [
+     {
+      "compiled": true,
+      "recipe": "counterexample-evaluation",
+      "tactic_sha256": "89a2850de815e21a341aa93ca61600276d57404a119c0603f869ee39327c0499"
+     }
+    ],
+    "charged": {
+     "candidates": 1,
+     "cpu_ns": 1172847275,
+     "wall_ns": 1209750143
+    },
+    "result": "COMPILED",
+    "statement": "bound_insert",
+    "target": "GTConj.bound_insert_negation"
+   },
+   {
+    "attempts": [
+     {
+      "compiled": true,
+      "recipe": "counterexample-evaluation",
+      "tactic_sha256": "f2521550f21a66050cdc8e474889e5bb3f47112e3fd7bb58b437b751c4d3d78a"
+     }
+    ],
+    "charged": {
+     "candidates": 1,
+     "cpu_ns": 1074784554,
+     "wall_ns": 1096236248
+    },
+    "result": "COMPILED",
+    "statement": "bound_le_card",
+    "target": "GTConj.bound_le_card_negation"
+   },
+   {
+    "attempts": [
+     {
+      "compiled": true,
+      "recipe": "counterexample-evaluation",
+      "tactic_sha256": "ccdb6938ed28804327ce43fa341646dada1b2804956b69814eb1ea5055e20bd2"
+     }
+    ],
+    "charged": {
+     "candidates": 1,
+     "cpu_ns": 1013332482,
+     "wall_ns": 1027879859
+    },
+    "result": "COMPILED",
+    "statement": "bound_zero_empty",
+    "target": "GTConj.bound_zero_empty_negation"
+   },
+   {
+    "attempts": [
+     {
+      "compiled": false,
+      "recipe": "decide",
+      "tactic_sha256": "5589aa5863c2d85622d06d651add002416e5513afdbb455666cdde01bb3e257d"
+     },
+     {
+      "compiled": false,
+      "recipe": "decide-kernel",
+      "tactic_sha256": "9ac77167f92e560c7b03653563b026543eb9e4c018ebd8e1d3c8be05b979ab88"
+     },
+     {
+      "compiled": false,
+      "recipe": "unfold-simp",
+      "tactic_sha256": "51494e1f18bf368ea42d9c4de40fb16e6d082c8254fc41d63ad600095b34bc7b"
+     },
+     {
+      "compiled": false,
+      "recipe": "unfold-aesop",
+      "tactic_sha256": "fbdabd14505fdea48ed902f9f516fda82c2df8462e6d4d19f7bde67fce2f59aa"
+     },
+     {
+      "compiled": false,
+      "recipe": "unfold-omega",
+      "tactic_sha256": "1e8ccda01a762213d6f7c45308dd14655af3d7f15d0ac21eea8a467c055b995f"
+     },
+     {
+      "compiled": false,
+      "recipe": "unfold-solve",
+      "tactic_sha256": "12eaf2be8d999b5e8da8986e9df77adfe8d7ec653b6b25635fd3fe00bdf9033f"
+     },
+     {
+      "compiled": false,
+      "recipe": "apply-hyp:hsA",
+      "tactic_sha256": "f76ece9bd28aa99a7b452c7f0cc56dbbb13051cfc51bca091cffd6b9f5b1c007"
+     },
+     {
+      "compiled": false,
+      "recipe": "specialize-omega:hsA",
+      "tactic_sha256": "a9af7cc8e63f5bb0391a3ceeb71b664d11d083856aa6d7f6ada46542ed19313a"
+     },
+     {
+      "compiled": false,
+      "recipe": "apply-hyp:h1",
+      "tactic_sha256": "e2a0b720f90d519ffe91d82289c66595b8090c8a2b89e0a111c5b8c48c336dcd"
+     },
+     {
+      "compiled": false,
+      "recipe": "specialize-omega:h1",
+      "tactic_sha256": "5f3b9b09b34c1805e16bbd36195c5e0a262a29c5cd8ba09c70a8a7d501c5f7d4"
+     },
+     {
+      "compiled": false,
+      "recipe": "library-elim:GTP1.proof",
+      "tactic_sha256": "0ca3fb86c86848958fd3a88360381080c4eddf6f6ca9de72dbfcef67ac4867fb"
+     },
+     {
+      "compiled": false,
+      "recipe": "library-elim:GTP4.proof",
+      "tactic_sha256": "648c3a946da28e77149a131bb3684ab8edd5973397c0e2c32529750df6ec5773"
+     },
+     {
+      "compiled": false,
+      "recipe": "library-elim:GTP7.proof",
+      "tactic_sha256": "afb48cec3ce062334032ceba86eeea71a5fa305f185c81f9ff2e7cec44c93d83"
+     },
+     {
+      "compiled": false,
+      "recipe": "library-elim:GTP8.proof",
+      "tactic_sha256": "564b49da4f038830eb3e161c43d5d07096199a82b143632c2d08aec7dbe2423c"
+     },
+     {
+      "compiled": false,
+      "recipe": "library-elim:GTP9.proof",
+      "tactic_sha256": "603773c706dc5be72990de4fcc702caafa191e52adad41b613841610daaee695"
+     }
+    ],
+    "charged": {
+     "candidates": 15,
+     "cpu_ns": 51740166333,
+     "wall_ns": 52056506409
+    },
+    "result": "RESOURCE_LIMIT",
+    "statement": "bound_zero_empty_simple",
+    "target": "GTConj.bound_zero_empty_simple"
+   },
+   {
+    "attempts": [
+     {
+      "compiled": false,
+      "recipe": "decide",
+      "tactic_sha256": "5589aa5863c2d85622d06d651add002416e5513afdbb455666cdde01bb3e257d"
+     },
+     {
+      "compiled": false,
+      "recipe": "decide-kernel",
+      "tactic_sha256": "9ac77167f92e560c7b03653563b026543eb9e4c018ebd8e1d3c8be05b979ab88"
+     },
+     {
+      "compiled": false,
+      "recipe": "unfold-simp",
+      "tactic_sha256": "d6685ae8309c76e89a4264fb1a7e952e7bdf1b6d712089cfe397107f3db9582c"
+     },
+     {
+      "compiled": false,
+      "recipe": "unfold-aesop",
+      "tactic_sha256": "a1aa39dc89ea6d1a690088841f22f6c3b93c3049788e951bab2705be9b83e7ae"
+     },
+     {
+      "compiled": false,
+      "recipe": "unfold-omega",
+      "tactic_sha256": "f2b5e785d17791310ff133da01efd2ee1f8255f8a595fa297ef835aa2f741212"
+     },
+     {
+      "compiled": false,
+      "recipe": "unfold-solve",
+      "tactic_sha256": "12eaf2be8d999b5e8da8986e9df77adfe8d7ec653b6b25635fd3fe00bdf9033f"
+     },
+     {
+      "compiled": false,
+      "recipe": "apply-hyp:h1",
+      "tactic_sha256": "518fc347c929cad411c4f4ea774e32f86dc2bc79330e98462b70bd8c396adea0"
+     },
+     {
+      "compiled": false,
+      "recipe": "specialize-omega:h1",
+      "tactic_sha256": "3eabf7d49301261a06a3759946fc9964604cdb058b1554d52f07df1294be5624"
+     },
+     {
+      "compiled": false,
+      "recipe": "library-elim:GTP1.proof",
+      "tactic_sha256": "87a15f3778aa1cf1278f1c26da2a7dd7b48396196605b8aeaab7aad82a1806a5"
+     },
+     {
+      "compiled": false,
+      "recipe": "library-elim:GTP4.proof",
+      "tactic_sha256": "abb01decc00869f79086dfd7352f3fb779c00e8b2e55eca8f78927d62e72c9b9"
+     },
+     {
+      "compiled": false,
+      "recipe": "library-elim:GTP7.proof",
+      "tactic_sha256": "d4801e27a098802745ff3cc454f2e5c990029e93715a97154a0ac9b5aac45da5"
+     },
+     {
+      "compiled": false,
+      "recipe": "library-elim:GTP8.proof",
+      "tactic_sha256": "12f0851e68b8089a209f37ada7c070b48715244db50685be9a49bf968a842376"
+     },
+     {
+      "compiled": false,
+      "recipe": "library-elim:GTP9.proof",
+      "tactic_sha256": "262aa7badbd831f87064c7300c767dbb3a88bde0e1032818258fb7740f215303"
+     }
+    ],
+    "charged": {
+     "candidates": 13,
+     "cpu_ns": 5469047923,
+     "wall_ns": 5509562569
+    },
+    "result": "ELABORATION_ERROR",
+    "statement": "mantel",
+    "target": "GTConj.mantel"
+   },
+   {
+    "attempts": [
+     {
+      "compiled": true,
+      "recipe": "decide",
+      "tactic_sha256": "5589aa5863c2d85622d06d651add002416e5513afdbb455666cdde01bb3e257d"
+     },
+     {
+      "compiled": true,
+      "recipe": "decide-kernel",
+      "tactic_sha256": "9ac77167f92e560c7b03653563b026543eb9e4c018ebd8e1d3c8be05b979ab88"
+     },
+     {
+      "compiled": false,
+      "recipe": "unfold-simp",
+      "tactic_sha256": "eada4b7e5f828bc5038665aeb9ac6fa92d6eae7032009871d42aa8773bf0c70c"
+     },
+     {
+      "compiled": false,
+      "recipe": "unfold-aesop",
+      "tactic_sha256": "2f232408e92b423e03ff5e5620e5e8d119e47dff7be5fd1eafd11708954200f5"
+     },
+     {
+      "compiled": false,
+      "recipe": "unfold-omega",
+      "tactic_sha256": "8cd88dca1c2adc3af7f1f4b6e5422f0fe3d47695e76a5d269887f5de5168f60d"
+     },
+     {
+      "compiled": false,
+      "recipe": "unfold-solve",
+      "tactic_sha256": "12eaf2be8d999b5e8da8986e9df77adfe8d7ec653b6b25635fd3fe00bdf9033f"
+     },
+     {
+      "compiled": false,
+      "recipe": "library-elim:GTP1.proof",
+      "tactic_sha256": "5bd7e06b4f875fdf907e29eb81ebd2a1b5fd1d608bb7e1a4562f5aab1eb2a4ae"
+     },
+     {
+      "compiled": false,
+      "recipe": "library-elim:GTP4.proof",
+      "tactic_sha256": "e3fc73ae0a15a881baa473687df635df229d04bcd44f053d5b6993af908c8f81"
+     },
+     {
+      "compiled": false,
+      "recipe": "library-elim:GTP7.proof",
+      "tactic_sha256": "74ba834e27e82a9f8d0c35453d72c7894e71ba7c3ca95c916d8347775f4ea658"
+     },
+     {
+      "compiled": false,
+      "recipe": "library-elim:GTP8.proof",
+      "tactic_sha256": "c2cd384bd9cb28cc5395f9801db47a3e6a70ed171d1559e8cb410ccdfb26097e"
+     },
+     {
+      "compiled": false,
+      "recipe": "library-elim:GTP9.proof",
+      "tactic_sha256": "1170a6c782fb98eb334b106c5421a72e8eeda26e4d13348dc8bc1740704ed46e"
+     }
+    ],
+    "charged": {
+     "candidates": 11,
+     "cpu_ns": 4226864611,
+     "wall_ns": 4251998136
+    },
+    "result": "ELABORATION_ERROR",
+    "statement": "gadget_Gad3e3_bound",
+    "target": "GTConj.gadget_Gad3e3_bound"
+   },
+   {
+    "attempts": [
+     {
+      "compiled": true,
+      "recipe": "decide",
+      "tactic_sha256": "5589aa5863c2d85622d06d651add002416e5513afdbb455666cdde01bb3e257d"
+     },
+     {
+      "compiled": true,
+      "recipe": "decide-kernel",
+      "tactic_sha256": "9ac77167f92e560c7b03653563b026543eb9e4c018ebd8e1d3c8be05b979ab88"
+     },
+     {
+      "compiled": false,
+      "recipe": "unfold-simp",
+      "tactic_sha256": "eada4b7e5f828bc5038665aeb9ac6fa92d6eae7032009871d42aa8773bf0c70c"
+     },
+     {
+      "compiled": false,
+      "recipe": "unfold-aesop",
+      "tactic_sha256": "2f232408e92b423e03ff5e5620e5e8d119e47dff7be5fd1eafd11708954200f5"
+     },
+     {
+      "compiled": false,
+      "recipe": "unfold-omega",
+      "tactic_sha256": "8cd88dca1c2adc3af7f1f4b6e5422f0fe3d47695e76a5d269887f5de5168f60d"
+     },
+     {
+      "compiled": false,
+      "recipe": "unfold-solve",
+      "tactic_sha256": "12eaf2be8d999b5e8da8986e9df77adfe8d7ec653b6b25635fd3fe00bdf9033f"
+     },
+     {
+      "compiled": false,
+      "recipe": "library-elim:GTP1.proof",
+      "tactic_sha256": "5bd7e06b4f875fdf907e29eb81ebd2a1b5fd1d608bb7e1a4562f5aab1eb2a4ae"
+     },
+     {
+      "compiled": false,
+      "recipe": "library-elim:GTP4.proof",
+      "tactic_sha256": "e3fc73ae0a15a881baa473687df635df229d04bcd44f053d5b6993af908c8f81"
+     },
+     {
+      "compiled": false,
+      "recipe": "library-elim:GTP7.proof",
+      "tactic_sha256": "74ba834e27e82a9f8d0c35453d72c7894e71ba7c3ca95c916d8347775f4ea658"
+     },
+     {
+      "compiled": false,
+      "recipe": "library-elim:GTP8.proof",
+      "tactic_sha256": "c2cd384bd9cb28cc5395f9801db47a3e6a70ed171d1559e8cb410ccdfb26097e"
+     },
+     {
+      "compiled": false,
+      "recipe": "library-elim:GTP9.proof",
+      "tactic_sha256": "1170a6c782fb98eb334b106c5421a72e8eeda26e4d13348dc8bc1740704ed46e"
+     },
+     {
+      "compiled": false,
+      "recipe": "library-elim:GTP13.proof",
+      "tactic_sha256": "81ac6f527c659c75a2ad3bfa62647636e93656d3063201f72ceac616e78db4ca"
+     }
+    ],
+    "charged": {
+     "candidates": 12,
+     "cpu_ns": 6160694568,
+     "wall_ns": 6184938116
+    },
+    "result": "ELABORATION_ERROR",
+    "statement": "gadget_Gad3e3_tight",
+    "target": "GTConj.gadget_Gad3e3_tight"
+   },
+   {
+    "attempts": [
+     {
+      "compiled": true,
+      "recipe": "decide",
+      "tactic_sha256": "5589aa5863c2d85622d06d651add002416e5513afdbb455666cdde01bb3e257d"
+     },
+     {
+      "compiled": true,
+      "recipe": "decide-kernel",
+      "tactic_sha256": "9ac77167f92e560c7b03653563b026543eb9e4c018ebd8e1d3c8be05b979ab88"
+     },
+     {
+      "compiled": false,
+      "recipe": "unfold-simp",
+      "tactic_sha256": "eada4b7e5f828bc5038665aeb9ac6fa92d6eae7032009871d42aa8773bf0c70c"
+     },
+     {
+      "compiled": false,
+      "recipe": "unfold-aesop",
+      "tactic_sha256": "2f232408e92b423e03ff5e5620e5e8d119e47dff7be5fd1eafd11708954200f5"
+     },
+     {
+      "compiled": false,
+      "recipe": "unfold-omega",
+      "tactic_sha256": "8cd88dca1c2adc3af7f1f4b6e5422f0fe3d47695e76a5d269887f5de5168f60d"
+     },
+     {
+      "compiled": false,
+      "recipe": "unfold-solve",
+      "tactic_sha256": "12eaf2be8d999b5e8da8986e9df77adfe8d7ec653b6b25635fd3fe00bdf9033f"
+     },
+     {
+      "compiled": false,
+      "recipe": "library-elim:GTP1.proof",
+      "tactic_sha256": "5bd7e06b4f875fdf907e29eb81ebd2a1b5fd1d608bb7e1a4562f5aab1eb2a4ae"
+     },
+     {
+      "compiled": false,
+      "recipe": "library-elim:GTP4.proof",
+      "tactic_sha256": "e3fc73ae0a15a881baa473687df635df229d04bcd44f053d5b6993af908c8f81"
+     },
+     {
+      "compiled": false,
+      "recipe": "library-elim:GTP7.proof",
+      "tactic_sha256": "74ba834e27e82a9f8d0c35453d72c7894e71ba7c3ca95c916d8347775f4ea658"
+     },
+     {
+      "compiled": false,
+      "recipe": "library-elim:GTP8.proof",
+      "tactic_sha256": "c2cd384bd9cb28cc5395f9801db47a3e6a70ed171d1559e8cb410ccdfb26097e"
+     },
+     {
+      "compiled": false,
+      "recipe": "library-elim:GTP9.proof",
+      "tactic_sha256": "1170a6c782fb98eb334b106c5421a72e8eeda26e4d13348dc8bc1740704ed46e"
+     },
+     {
+      "compiled": false,
+      "recipe": "library-elim:GTP13.proof",
+      "tactic_sha256": "81ac6f527c659c75a2ad3bfa62647636e93656d3063201f72ceac616e78db4ca"
+     },
+     {
+      "compiled": false,
+      "recipe": "library-elim:GTP14.proof",
+      "tactic_sha256": "841f38d2ad5523d6212a44bfe378ef1245eddab19462296925432287ee63b91e"
+     }
+    ],
+    "charged": {
+     "candidates": 13,
+     "cpu_ns": 6389411884,
+     "wall_ns": 6441894063
+    },
+    "result": "ELABORATION_ERROR",
+    "statement": "gadget_Gad4e6_bound",
+    "target": "GTConj.gadget_Gad4e6_bound"
+   },
+   {
+    "attempts": [
+     {
+      "compiled": true,
+      "recipe": "decide",
+      "tactic_sha256": "5589aa5863c2d85622d06d651add002416e5513afdbb455666cdde01bb3e257d"
+     },
+     {
+      "compiled": true,
+      "recipe": "decide-kernel",
+      "tactic_sha256": "9ac77167f92e560c7b03653563b026543eb9e4c018ebd8e1d3c8be05b979ab88"
+     },
+     {
+      "compiled": false,
+      "recipe": "unfold-simp",
+      "tactic_sha256": "eada4b7e5f828bc5038665aeb9ac6fa92d6eae7032009871d42aa8773bf0c70c"
+     },
+     {
+      "compiled": false,
+      "recipe": "unfold-aesop",
+      "tactic_sha256": "2f232408e92b423e03ff5e5620e5e8d119e47dff7be5fd1eafd11708954200f5"
+     },
+     {
+      "compiled": false,
+      "recipe": "unfold-omega",
+      "tactic_sha256": "8cd88dca1c2adc3af7f1f4b6e5422f0fe3d47695e76a5d269887f5de5168f60d"
+     },
+     {
+      "compiled": false,
+      "recipe": "unfold-solve",
+      "tactic_sha256": "12eaf2be8d999b5e8da8986e9df77adfe8d7ec653b6b25635fd3fe00bdf9033f"
+     },
+     {
+      "compiled": false,
+      "recipe": "library-elim:GTP1.proof",
+      "tactic_sha256": "5bd7e06b4f875fdf907e29eb81ebd2a1b5fd1d608bb7e1a4562f5aab1eb2a4ae"
+     },
+     {
+      "compiled": false,
+      "recipe": "library-elim:GTP4.proof",
+      "tactic_sha256": "e3fc73ae0a15a881baa473687df635df229d04bcd44f053d5b6993af908c8f81"
+     },
+     {
+      "compiled": false,
+      "recipe": "library-elim:GTP7.proof",
+      "tactic_sha256": "74ba834e27e82a9f8d0c35453d72c7894e71ba7c3ca95c916d8347775f4ea658"
+     },
+     {
+      "compiled": false,
+      "recipe": "library-elim:GTP8.proof",
+      "tactic_sha256": "c2cd384bd9cb28cc5395f9801db47a3e6a70ed171d1559e8cb410ccdfb26097e"
+     },
+     {
+      "compiled": false,
+      "recipe": "library-elim:GTP9.proof",
+      "tactic_sha256": "1170a6c782fb98eb334b106c5421a72e8eeda26e4d13348dc8bc1740704ed46e"
+     },
+     {
+      "compiled": false,
+      "recipe": "library-elim:GTP13.proof",
+      "tactic_sha256": "81ac6f527c659c75a2ad3bfa62647636e93656d3063201f72ceac616e78db4ca"
+     },
+     {
+      "compiled": false,
+      "recipe": "library-elim:GTP14.proof",
+      "tactic_sha256": "841f38d2ad5523d6212a44bfe378ef1245eddab19462296925432287ee63b91e"
+     },
+     {
+      "compiled": false,
+      "recipe": "library-elim:GTP15.proof",
+      "tactic_sha256": "2e3faf4241e092f3e0057a023497ad6b91727dcd86cc6f1a62a8e394c8d4c4b3"
+     }
+    ],
+    "charged": {
+     "candidates": 14,
+     "cpu_ns": 6405744669,
+     "wall_ns": 6449655919
+    },
+    "result": "ELABORATION_ERROR",
+    "statement": "gadget_Gad4e6_tight",
+    "target": "GTConj.gadget_Gad4e6_tight"
+   }
+  ],
+  "search_candidates": 148,
+  "search_context_cpu_ns": 30641989471,
+  "search_cpu_ns": 132734020490,
+  "search_runs": 18,
+  "wall_seconds": 470.9
+ },
+ "counterexamples": [
+  {
+   "checked": true,
+   "statement": "union_closed",
+   "values": {
+    "S": "({(2, 0), (2, 1)} : GT.Edges)",
+    "T": "({(0, 1)} : GT.Edges)"
+   }
+  },
+  {
+   "checked": true,
+   "statement": "union_closed_simple",
+   "values": {
+    "S": "({(0, 2), (1, 2)} : GT.Edges)",
+    "T": "({(0, 1)} : GT.Edges)"
+   }
+  },
+  {
+   "checked": true,
+   "statement": "insert_closed",
+   "values": {
+    "S": "(∅ : GT.Edges)",
+    "e": "((1, 1) : ℕ × ℕ)"
+   }
+  },
+  {
+   "checked": true,
+   "statement": "insert_closed_simple",
+   "values": {
+    "S": "({(0, 1), (1, 2)} : GT.Edges)",
+    "e": "((0, 2) : ℕ × ℕ)"
+   }
+  },
+  {
+   "checked": true,
+   "statement": "bound_insert",
+   "values": {
+    "A": "(∅ : GT.Edges)",
+    "a": "0",
+    "e": "((1, 2) : ℕ × ℕ)"
+   }
+  },
+  {
+   "checked": true,
+   "statement": "bound_le_card",
+   "values": {
+    "A": "(∅ : GT.Edges)",
+    "a": "1"
+   }
+  },
+  {
+   "checked": true,
+   "statement": "bound_zero_empty",
+   "values": {
+    "A": "({(2, 2)} : GT.Edges)"
+   }
+  }
+ ],
+ "declarations": [
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "GTDefs",
+   "name": "GT.TriangleFree",
+   "type_sha256": "c98548115419ec271dfd495799f10b35c81fad06e346ef970bd969a518c2a9f4"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "GTDefs",
+   "name": "GT.Edges",
+   "type_sha256": "baaddf70fb5d432b8bd948ef91d6f910124a6d138edae4d5f000c4610ddc8eae"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "GTDefs",
+   "name": "GT.instDecidableTriangleFree",
+   "type_sha256": "5f6ad93fcd86d217b85aa0d5ae9d8484d2f18f9af307b85f1d55bcb68ce406d1"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "GTConcepts",
+   "name": "GT.Simple",
+   "type_sha256": "c98548115419ec271dfd495799f10b35c81fad06e346ef970bd969a518c2a9f4"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "GTConcepts",
+   "name": "GT.TFBound",
+   "type_sha256": "7beb07b1ffcff3fc3ade2e9ad7909b7df33f9ca1d57bdf6bb84a56b49ab4363e"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "GTConcepts",
+   "name": "GT.Gad4e6",
+   "type_sha256": "6fb761990434a70dea29b5f7c8d7f198fe5a6fb9e74f0fa38b68504b03f7d3ce"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "GTConcepts",
+   "name": "GT.Gad3e3",
+   "type_sha256": "57c1f26cb29c7089cae40291c96b85384bf6085610f7fb4282596f77dd4ddb66"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "GTConcepts",
+   "name": "GT.instDecidableSimple",
+   "type_sha256": "7200df717b49b4c2f23749e8e94bf82f67d4fb4d4455819676a570af152dd442"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "GTConcepts",
+   "name": "GT.instDecidableTFBound",
+   "type_sha256": "7335f1490fe2a757a2f26bd4e4e1f2031cd46e971dbb82d3576530b2ad12d589"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "GTConj",
+   "name": "GTConj.bound_zero_empty_negation",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "GTConj",
+   "name": "GTConj.union_closed_negation",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "GTConj",
+   "name": "GTConj.gadget_Gad3e3_bound",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "GTConj",
+   "name": "GTConj.bound_le_card_negation",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "GTConj",
+   "name": "GTConj.bound_zero_empty_simple",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "GTConj",
+   "name": "GTConj.bound_le_card",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "GTConj",
+   "name": "GTConj.union_closed_simple_negation",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "GTConj",
+   "name": "GTConj.bound_union",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "GTConj",
+   "name": "GTConj.bound_zero_empty",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "GTConj",
+   "name": "GTConj.bound_insert_negation",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "GTConj",
+   "name": "GTConj.down_closed",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "GTConj",
+   "name": "GTConj.inter_closed",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "GTConj",
+   "name": "GTConj.union_closed_simple",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "GTConj",
+   "name": "GTConj.gadget_Gad4e6_tight",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "GTConj",
+   "name": "GTConj.insert_closed",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "GTConj",
+   "name": "GTConj.bound_card",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "GTConj",
+   "name": "GTConj.bound_insert",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "GTConj",
+   "name": "GTConj.gadget_Gad3e3_tight",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "GTConj",
+   "name": "GTConj.gadget_Gad4e6_bound",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "GTConj",
+   "name": "GTConj.insert_closed_simple",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "GTConj",
+   "name": "GTConj.mantel",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "GTConj",
+   "name": "GTConj.union_closed",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "GTConj",
+   "name": "GTConj.insert_closed_negation",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "GTConj",
+   "name": "GTConj.bound_mono",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "GTConj",
+   "name": "GTConj.insert_closed_simple_negation",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "theorem",
+   "module": "GTP1",
+   "name": "GTP1.proof",
+   "type_sha256": "77ed847f44a842124e2ff77f225b18a381c57fb79627a91a774e88dc2f2492bd"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "theorem",
+   "module": "GTP2",
+   "name": "GTP2.proof",
+   "type_sha256": "4be888d405b9c248108d3b342ca8e5ce2b8f1b6657a29f3db76525af18391251"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "theorem",
+   "module": "GTP3",
+   "name": "GTP3.proof",
+   "type_sha256": "54099888eb5d0c4e5f2f33fc7df344befaf6e4a3592538e6b2fdd7c9ea47835e"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "theorem",
+   "module": "GTP4",
+   "name": "GTP4.proof",
+   "type_sha256": "33d2db4a6d33d690110587a240b2644dc8ce4aac8033f5561fa2cacaad9d905a"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "theorem",
+   "module": "GTP5",
+   "name": "GTP5.proof",
+   "type_sha256": "9aa78c42d23005d477f027975202b371e1276ba58c17783059f8b2c863caadfd"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "theorem",
+   "module": "GTP6",
+   "name": "GTP6.proof",
+   "type_sha256": "a1f36935eb989b096d800008ae2e2d7238c7052ccb2209c6a1a447e19d18aa5b"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "theorem",
+   "module": "GTP7",
+   "name": "GTP7.proof",
+   "type_sha256": "d9dd805c38919b14395919fb5eac55e2416ad787ddbeffa31f44981702bee212"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "theorem",
+   "module": "GTP8",
+   "name": "GTP8.proof",
+   "type_sha256": "bace685f024e41eafd2946c5e196c9691f826f0d8072a708966f7ad1b0d5f6f4"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "theorem",
+   "module": "GTP9",
+   "name": "GTP9.proof",
+   "type_sha256": "88bbba3ad580b926eb94108ece01b53d0502f2d4bcb6ee66200f9097a127afeb"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "theorem",
+   "module": "GTP10",
+   "name": "GTP10.proof",
+   "type_sha256": "26b0e9f9e39b001905a8e905d30c78ad632c58b07315950602c02beab81e0211"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "theorem",
+   "module": "GTP11",
+   "name": "GTP11.proof",
+   "type_sha256": "ec011b7f7e41663b056e5bf9a5d8ce1ec60a6bdb22f2e5e35672ca295903d09d"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "theorem",
+   "module": "GTP12",
+   "name": "GTP12.proof",
+   "type_sha256": "bb539769bdcb3a510899ed44e3a7b26f0398f34c411a7a29a54c0e5723155d9a"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "theorem",
+   "module": "GTP13",
+   "name": "GTP13.proof",
+   "type_sha256": "79967fc0e692d1681d66147a183f2fd87c3fa2f416ba692c9abe37b2dc7482cb"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "theorem",
+   "module": "GTP14",
+   "name": "GTP14.proof",
+   "type_sha256": "00eb59991cf6f4a8789211e9c494cac27be9efe96bdede9a4e46ce94b16df841"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "theorem",
+   "module": "GTP15",
+   "name": "GTP15.proof",
+   "type_sha256": "63d7918772e8dac91dfa82764c5e7362fccea07553ca04bba66794bc39e2aa64"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "theorem",
+   "module": "GTP16",
+   "name": "GTP16.proof",
+   "type_sha256": "a18c26c54c45328174c4a747e8afb4217fd163703ac593175c2e8b0bf56cce93"
+  }
+ ],
+ "definitions": [
+  {
+   "module": "GTDefs",
+   "name": "GT.TriangleFree",
+   "origin": "domain-contract",
+   "type_sha256": "c98548115419ec271dfd495799f10b35c81fad06e346ef970bd969a518c2a9f4"
+  },
+  {
+   "module": "GTDefs",
+   "name": "GT.Edges",
+   "origin": "domain-contract",
+   "type_sha256": "baaddf70fb5d432b8bd948ef91d6f910124a6d138edae4d5f000c4610ddc8eae"
+  },
+  {
+   "module": "GTDefs",
+   "name": "GT.instDecidableTriangleFree",
+   "origin": "domain-contract",
+   "type_sha256": "5f6ad93fcd86d217b85aa0d5ae9d8484d2f18f9af307b85f1d55bcb68ce406d1"
+  },
+  {
+   "module": "GTConcepts",
+   "name": "GT.Simple",
+   "origin": "generated:concept-template",
+   "type_sha256": "c98548115419ec271dfd495799f10b35c81fad06e346ef970bd969a518c2a9f4"
+  },
+  {
+   "module": "GTConcepts",
+   "name": "GT.TFBound",
+   "origin": "generated:concept-template",
+   "type_sha256": "7beb07b1ffcff3fc3ade2e9ad7909b7df33f9ca1d57bdf6bb84a56b49ab4363e"
+  },
+  {
+   "module": "GTConcepts",
+   "name": "GT.Gad4e6",
+   "origin": "generated:gadget-search",
+   "type_sha256": "6fb761990434a70dea29b5f7c8d7f198fe5a6fb9e74f0fa38b68504b03f7d3ce"
+  },
+  {
+   "module": "GTConcepts",
+   "name": "GT.Gad3e3",
+   "origin": "generated:gadget-search",
+   "type_sha256": "57c1f26cb29c7089cae40291c96b85384bf6085610f7fb4282596f77dd4ddb66"
+  },
+  {
+   "module": "GTConcepts",
+   "name": "GT.instDecidableSimple",
+   "origin": "generated:instance",
+   "type_sha256": "7200df717b49b4c2f23749e8e94bf82f67d4fb4d4455819676a570af152dd442"
+  },
+  {
+   "module": "GTConcepts",
+   "name": "GT.instDecidableTFBound",
+   "origin": "generated:instance",
+   "type_sha256": "7335f1490fe2a757a2f26bd4e4e1f2031cd46e971dbb82d3576530b2ad12d589"
+  }
+ ],
+ "dependencies": {
+  "GT.Edges": {
+   "package": [],
+   "workspace_modules": [
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Defs"
+   ]
+  },
+  "GT.Gad3e3": {
+   "package": [
+    "GT.Edges"
+   ],
+   "workspace_modules": [
+    "Init.Core",
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Insert"
+   ]
+  },
+  "GT.Gad4e6": {
+   "package": [
+    "GT.Edges"
+   ],
+   "workspace_modules": [
+    "Init.Core",
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Insert"
+   ]
+  },
+  "GT.Simple": {
+   "package": [
+    "GT.Edges"
+   ],
+   "workspace_modules": [
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Defs",
+    "Mathlib.Data.SetLike.Basic"
+   ]
+  },
+  "GT.TFBound": {
+   "package": [
+    "GT.Edges",
+    "GT.TriangleFree"
+   ],
+   "workspace_modules": [
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Card",
+    "Mathlib.Data.Finset.Defs",
+    "Mathlib.Order.Defs.PartialOrder"
+   ]
+  },
+  "GT.TriangleFree": {
+   "package": [
+    "GT.Edges"
+   ],
+   "workspace_modules": [
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Defs",
+    "Mathlib.Data.SetLike.Basic"
+   ]
+  },
+  "GT.instDecidableSimple": {
+   "package": [
+    "GT.Edges",
+    "GT.Simple"
+   ],
+   "workspace_modules": [
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Defs",
+    "Mathlib.Data.SetLike.Basic"
+   ]
+  },
+  "GT.instDecidableTFBound": {
+   "package": [
+    "GT.Edges",
+    "GT.TFBound",
+    "GT.TriangleFree",
+    "GT.instDecidableTriangleFree"
+   ],
+   "workspace_modules": [
+    "Init.Prelude",
+    "Init.PropLemmas",
+    "Mathlib.Data.Finset.Card",
+    "Mathlib.Data.Finset.Defs",
+    "Mathlib.Data.Finset.Powerset",
+    "Mathlib.Order.Defs.PartialOrder"
+   ]
+  },
+  "GT.instDecidableTriangleFree": {
+   "package": [
+    "GT.Edges",
+    "GT.TriangleFree"
+   ],
+   "workspace_modules": [
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Defs",
+    "Mathlib.Data.SetLike.Basic"
+   ]
+  },
+  "GTConj.bound_card": {
+   "package": [
+    "GT.Edges",
+    "GT.TFBound",
+    "GT.TriangleFree"
+   ],
+   "workspace_modules": [
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Card"
+   ]
+  },
+  "GTConj.bound_insert": {
+   "package": [
+    "GT.Edges",
+    "GT.TFBound",
+    "GT.TriangleFree"
+   ],
+   "workspace_modules": [
+    "Init.Core",
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Insert"
+   ]
+  },
+  "GTConj.bound_insert_negation": {
+   "package": [
+    "GT.Edges",
+    "GT.TFBound",
+    "GT.TriangleFree",
+    "GTConj.bound_insert"
+   ],
+   "workspace_modules": [
+    "Init.Prelude"
+   ]
+  },
+  "GTConj.bound_le_card": {
+   "package": [
+    "GT.Edges",
+    "GT.TFBound",
+    "GT.TriangleFree"
+   ],
+   "workspace_modules": [
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Card"
+   ]
+  },
+  "GTConj.bound_le_card_negation": {
+   "package": [
+    "GT.Edges",
+    "GT.TFBound",
+    "GT.TriangleFree",
+    "GTConj.bound_le_card"
+   ],
+   "workspace_modules": [
+    "Init.Prelude"
+   ]
+  },
+  "GTConj.bound_mono": {
+   "package": [
+    "GT.Edges",
+    "GT.TFBound",
+    "GT.TriangleFree"
+   ],
+   "workspace_modules": [
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Defs",
+    "Mathlib.Order.Defs.PartialOrder"
+   ]
+  },
+  "GTConj.bound_union": {
+   "package": [
+    "GT.Edges",
+    "GT.TFBound",
+    "GT.TriangleFree"
+   ],
+   "workspace_modules": [
+    "Init.Core",
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Lattice.Basic"
+   ]
+  },
+  "GTConj.bound_zero_empty": {
+   "package": [
+    "GT.Edges",
+    "GT.TFBound",
+    "GT.TriangleFree"
+   ],
+   "workspace_modules": [
+    "Init.Core",
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Empty"
+   ]
+  },
+  "GTConj.bound_zero_empty_negation": {
+   "package": [
+    "GT.Edges",
+    "GT.TFBound",
+    "GT.TriangleFree",
+    "GTConj.bound_zero_empty"
+   ],
+   "workspace_modules": [
+    "Init.Prelude"
+   ]
+  },
+  "GTConj.bound_zero_empty_simple": {
+   "package": [
+    "GT.Edges",
+    "GT.Simple",
+    "GT.TFBound",
+    "GT.TriangleFree"
+   ],
+   "workspace_modules": [
+    "Init.Core",
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Empty"
+   ]
+  },
+  "GTConj.down_closed": {
+   "package": [
+    "GT.Edges",
+    "GT.TriangleFree"
+   ],
+   "workspace_modules": [
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Defs",
+    "Mathlib.Order.Defs.PartialOrder"
+   ]
+  },
+  "GTConj.gadget_Gad3e3_bound": {
+   "package": [
+    "GT.Edges",
+    "GT.Gad3e3",
+    "GT.TFBound",
+    "GT.TriangleFree"
+   ],
+   "workspace_modules": [
+    "Init.Prelude"
+   ]
+  },
+  "GTConj.gadget_Gad3e3_tight": {
+   "package": [
+    "GT.Edges",
+    "GT.Gad3e3",
+    "GT.TFBound",
+    "GT.TriangleFree"
+   ],
+   "workspace_modules": [
+    "Init.Prelude"
+   ]
+  },
+  "GTConj.gadget_Gad4e6_bound": {
+   "package": [
+    "GT.Edges",
+    "GT.Gad4e6",
+    "GT.TFBound",
+    "GT.TriangleFree"
+   ],
+   "workspace_modules": [
+    "Init.Prelude"
+   ]
+  },
+  "GTConj.gadget_Gad4e6_tight": {
+   "package": [
+    "GT.Edges",
+    "GT.Gad4e6",
+    "GT.TFBound",
+    "GT.TriangleFree"
+   ],
+   "workspace_modules": [
+    "Init.Prelude"
+   ]
+  },
+  "GTConj.insert_closed": {
+   "package": [
+    "GT.Edges",
+    "GT.TriangleFree"
+   ],
+   "workspace_modules": [
+    "Init.Core",
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Insert"
+   ]
+  },
+  "GTConj.insert_closed_negation": {
+   "package": [
+    "GT.Edges",
+    "GT.TriangleFree",
+    "GTConj.insert_closed"
+   ],
+   "workspace_modules": [
+    "Init.Prelude"
+   ]
+  },
+  "GTConj.insert_closed_simple": {
+   "package": [
+    "GT.Edges",
+    "GT.Simple",
+    "GT.TriangleFree"
+   ],
+   "workspace_modules": [
+    "Init.Core",
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Insert"
+   ]
+  },
+  "GTConj.insert_closed_simple_negation": {
+   "package": [
+    "GT.Edges",
+    "GT.Simple",
+    "GT.TriangleFree",
+    "GTConj.insert_closed_simple"
+   ],
+   "workspace_modules": [
+    "Init.Prelude"
+   ]
+  },
+  "GTConj.inter_closed": {
+   "package": [
+    "GT.Edges",
+    "GT.TriangleFree"
+   ],
+   "workspace_modules": [
+    "Init.Core",
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Lattice.Basic"
+   ]
+  },
+  "GTConj.mantel": {
+   "package": [
+    "GT.Edges",
+    "GT.TFBound",
+    "GT.TriangleFree"
+   ],
+   "workspace_modules": [
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Defs",
+    "Mathlib.Data.SetLike.Basic"
+   ]
+  },
+  "GTConj.union_closed": {
+   "package": [
+    "GT.Edges",
+    "GT.TriangleFree"
+   ],
+   "workspace_modules": [
+    "Init.Core",
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Lattice.Basic"
+   ]
+  },
+  "GTConj.union_closed_negation": {
+   "package": [
+    "GT.Edges",
+    "GT.TriangleFree",
+    "GTConj.union_closed"
+   ],
+   "workspace_modules": [
+    "Init.Prelude"
+   ]
+  },
+  "GTConj.union_closed_simple": {
+   "package": [
+    "GT.Edges",
+    "GT.Simple",
+    "GT.TriangleFree"
+   ],
+   "workspace_modules": [
+    "Init.Core",
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Lattice.Basic"
+   ]
+  },
+  "GTConj.union_closed_simple_negation": {
+   "package": [
+    "GT.Edges",
+    "GT.Simple",
+    "GT.TriangleFree",
+    "GTConj.union_closed_simple"
+   ],
+   "workspace_modules": [
+    "Init.Prelude"
+   ]
+  },
+  "GTP1.proof": {
+   "package": [
+    "GT.Edges",
+    "GT.TriangleFree",
+    "GTConj.down_closed"
+   ],
+   "workspace_modules": [
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Defs",
+    "Mathlib.Data.SetLike.Basic",
+    "Mathlib.Order.Defs.PartialOrder"
+   ]
+  },
+  "GTP10.proof": {
+   "package": [
+    "GT.Edges",
+    "GT.TFBound",
+    "GT.TriangleFree",
+    "GT.instDecidableTFBound",
+    "GT.instDecidableTriangleFree",
+    "GTConj.bound_insert",
+    "GTConj.bound_insert_negation",
+    "GTP10.proof._proof_1_1",
+    "GTP10.proof._proof_1_2"
+   ],
+   "workspace_modules": [
+    "Init.Core",
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Empty",
+    "Mathlib.Data.Finset.Insert"
+   ]
+  },
+  "GTP10.proof._proof_1_1": {
+   "package": [
+    "GT.Edges",
+    "GT.TFBound",
+    "GT.TriangleFree",
+    "GT.instDecidableTFBound",
+    "GT.instDecidableTriangleFree"
+   ],
+   "workspace_modules": [
+    "Init.Core",
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Empty"
+   ]
+  },
+  "GTP10.proof._proof_1_2": {
+   "package": [
+    "GT.Edges",
+    "GT.TFBound",
+    "GT.TriangleFree",
+    "GT.instDecidableTFBound",
+    "GT.instDecidableTriangleFree"
+   ],
+   "workspace_modules": [
+    "Init.Core",
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Empty",
+    "Mathlib.Data.Finset.Insert"
+   ]
+  },
+  "GTP11.proof": {
+   "package": [
+    "GT.Edges",
+    "GT.TFBound",
+    "GT.TriangleFree",
+    "GT.instDecidableTFBound",
+    "GT.instDecidableTriangleFree",
+    "GTConj.bound_le_card",
+    "GTConj.bound_le_card_negation",
+    "GTP11.proof._proof_1_1",
+    "GTP11.proof._proof_1_2"
+   ],
+   "workspace_modules": [
+    "Init.Core",
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Card",
+    "Mathlib.Data.Finset.Empty"
+   ]
+  },
+  "GTP11.proof._proof_1_1": {
+   "package": [
+    "GT.Edges",
+    "GT.TFBound",
+    "GT.TriangleFree",
+    "GT.instDecidableTFBound",
+    "GT.instDecidableTriangleFree"
+   ],
+   "workspace_modules": [
+    "Init.Core",
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Empty"
+   ]
+  },
+  "GTP11.proof._proof_1_2": {
+   "package": [
+    "GT.Edges"
+   ],
+   "workspace_modules": [
+    "Init.Core",
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Card",
+    "Mathlib.Data.Finset.Empty"
+   ]
+  },
+  "GTP12.proof": {
+   "package": [
+    "GT.Edges",
+    "GT.TFBound",
+    "GT.TriangleFree",
+    "GT.instDecidableTFBound",
+    "GT.instDecidableTriangleFree",
+    "GTConj.bound_zero_empty",
+    "GTConj.bound_zero_empty_negation",
+    "GTP12.proof._proof_1_1",
+    "GTP12.proof._proof_1_2"
+   ],
+   "workspace_modules": [
+    "Init.Core",
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Empty",
+    "Mathlib.Data.Finset.Insert"
+   ]
+  },
+  "GTP12.proof._proof_1_1": {
+   "package": [
+    "GT.Edges",
+    "GT.TFBound",
+    "GT.TriangleFree",
+    "GT.instDecidableTFBound",
+    "GT.instDecidableTriangleFree"
+   ],
+   "workspace_modules": [
+    "Init.Core",
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Insert"
+   ]
+  },
+  "GTP12.proof._proof_1_2": {
+   "package": [
+    "GT.Edges"
+   ],
+   "workspace_modules": [
+    "Init.Core",
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Defs",
+    "Mathlib.Data.Finset.Empty",
+    "Mathlib.Data.Finset.Insert"
+   ]
+  },
+  "GTP13.proof": {
+   "package": [
+    "GT.Edges",
+    "GT.Gad3e3",
+    "GT.TFBound",
+    "GT.TriangleFree",
+    "GT.instDecidableTFBound",
+    "GT.instDecidableTriangleFree",
+    "GTConj.gadget_Gad3e3_bound"
+   ],
+   "workspace_modules": [
+    "Init.Prelude"
+   ]
+  },
+  "GTP14.proof": {
+   "package": [
+    "GT.Edges",
+    "GT.Gad3e3",
+    "GT.TFBound",
+    "GT.TriangleFree",
+    "GT.instDecidableTFBound",
+    "GT.instDecidableTriangleFree",
+    "GTConj.gadget_Gad3e3_tight"
+   ],
+   "workspace_modules": [
+    "Init.Prelude"
+   ]
+  },
+  "GTP15.proof": {
+   "package": [
+    "GT.Edges",
+    "GT.Gad4e6",
+    "GT.TFBound",
+    "GT.TriangleFree",
+    "GT.instDecidableTFBound",
+    "GT.instDecidableTriangleFree",
+    "GTConj.gadget_Gad4e6_bound"
+   ],
+   "workspace_modules": [
+    "Init.Prelude"
+   ]
+  },
+  "GTP16.proof": {
+   "package": [
+    "GT.Edges",
+    "GT.Gad4e6",
+    "GT.TFBound",
+    "GT.TriangleFree",
+    "GT.instDecidableTFBound",
+    "GT.instDecidableTriangleFree",
+    "GTConj.gadget_Gad4e6_tight"
+   ],
+   "workspace_modules": [
+    "Init.Prelude"
+   ]
+  },
+  "GTP2.proof": {
+   "package": [
+    "GT.Edges",
+    "GT.TriangleFree",
+    "GT.instDecidableTriangleFree",
+    "GTConj.union_closed",
+    "GTConj.union_closed_negation",
+    "GTP2.proof._proof_1_1",
+    "GTP2.proof._proof_1_2",
+    "GTP2.proof._proof_1_3"
+   ],
+   "workspace_modules": [
+    "Init.Core",
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Insert",
+    "Mathlib.Data.Finset.Lattice.Basic"
+   ]
+  },
+  "GTP2.proof._proof_1_1": {
+   "package": [
+    "GT.Edges",
+    "GT.TriangleFree",
+    "GT.instDecidableTriangleFree"
+   ],
+   "workspace_modules": [
+    "Init.Core",
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Insert"
+   ]
+  },
+  "GTP2.proof._proof_1_2": {
+   "package": [
+    "GT.Edges",
+    "GT.TriangleFree",
+    "GT.instDecidableTriangleFree"
+   ],
+   "workspace_modules": [
+    "Init.Core",
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Insert"
+   ]
+  },
+  "GTP2.proof._proof_1_3": {
+   "package": [
+    "GT.Edges",
+    "GT.TriangleFree",
+    "GT.instDecidableTriangleFree"
+   ],
+   "workspace_modules": [
+    "Init.Core",
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Insert",
+    "Mathlib.Data.Finset.Lattice.Basic"
+   ]
+  },
+  "GTP3.proof": {
+   "package": [
+    "GT.Edges",
+    "GT.Simple",
+    "GT.TriangleFree",
+    "GT.instDecidableSimple",
+    "GT.instDecidableTriangleFree",
+    "GTConj.union_closed_simple",
+    "GTConj.union_closed_simple_negation",
+    "GTP3.proof._proof_1_1",
+    "GTP3.proof._proof_1_2",
+    "GTP3.proof._proof_1_3",
+    "GTP3.proof._proof_1_4",
+    "GTP3.proof._proof_1_5"
+   ],
+   "workspace_modules": [
+    "Init.Core",
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Insert",
+    "Mathlib.Data.Finset.Lattice.Basic"
+   ]
+  },
+  "GTP3.proof._proof_1_1": {
+   "package": [
+    "GT.Edges",
+    "GT.Simple",
+    "GT.instDecidableSimple"
+   ],
+   "workspace_modules": [
+    "Init.Core",
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Insert"
+   ]
+  },
+  "GTP3.proof._proof_1_2": {
+   "package": [
+    "GT.Edges",
+    "GT.Simple",
+    "GT.instDecidableSimple"
+   ],
+   "workspace_modules": [
+    "Init.Core",
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Insert"
+   ]
+  },
+  "GTP3.proof._proof_1_3": {
+   "package": [
+    "GT.Edges",
+    "GT.TriangleFree",
+    "GT.instDecidableTriangleFree"
+   ],
+   "workspace_modules": [
+    "Init.Core",
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Insert"
+   ]
+  },
+  "GTP3.proof._proof_1_4": {
+   "package": [
+    "GT.Edges",
+    "GT.TriangleFree",
+    "GT.instDecidableTriangleFree"
+   ],
+   "workspace_modules": [
+    "Init.Core",
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Insert"
+   ]
+  },
+  "GTP3.proof._proof_1_5": {
+   "package": [
+    "GT.Edges",
+    "GT.TriangleFree",
+    "GT.instDecidableTriangleFree"
+   ],
+   "workspace_modules": [
+    "Init.Core",
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Insert",
+    "Mathlib.Data.Finset.Lattice.Basic"
+   ]
+  },
+  "GTP4.proof": {
+   "package": [
+    "GT.Edges",
+    "GT.TriangleFree",
+    "GTConj.inter_closed"
+   ],
+   "workspace_modules": [
+    "Aesop.BuiltinRules",
+    "Init.Core",
+    "Init.Data.Prod",
+    "Init.Prelude",
+    "Init.SimpLemmas",
+    "Mathlib.Data.Finset.Defs",
+    "Mathlib.Data.Finset.Lattice.Basic",
+    "Mathlib.Data.SetLike.Basic"
+   ]
+  },
+  "GTP5.proof": {
+   "package": [
+    "GT.Edges",
+    "GT.TriangleFree",
+    "GT.instDecidableTriangleFree",
+    "GTConj.insert_closed",
+    "GTConj.insert_closed_negation",
+    "GTP5.proof._proof_1_1",
+    "GTP5.proof._proof_1_2"
+   ],
+   "workspace_modules": [
+    "Init.Core",
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Empty",
+    "Mathlib.Data.Finset.Insert"
+   ]
+  },
+  "GTP5.proof._proof_1_1": {
+   "package": [
+    "GT.Edges",
+    "GT.TriangleFree",
+    "GT.instDecidableTriangleFree"
+   ],
+   "workspace_modules": [
+    "Init.Core",
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Empty"
+   ]
+  },
+  "GTP5.proof._proof_1_2": {
+   "package": [
+    "GT.Edges",
+    "GT.TriangleFree",
+    "GT.instDecidableTriangleFree"
+   ],
+   "workspace_modules": [
+    "Init.Core",
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Empty",
+    "Mathlib.Data.Finset.Insert"
+   ]
+  },
+  "GTP6.proof": {
+   "package": [
+    "GT.Edges",
+    "GT.Simple",
+    "GT.TriangleFree",
+    "GT.instDecidableSimple",
+    "GT.instDecidableTriangleFree",
+    "GTConj.insert_closed_simple",
+    "GTConj.insert_closed_simple_negation",
+    "GTP6.proof._proof_1_1",
+    "GTP6.proof._proof_1_2",
+    "GTP6.proof._proof_1_3",
+    "GTP6.proof._proof_1_4"
+   ],
+   "workspace_modules": [
+    "Init.Core",
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Insert"
+   ]
+  },
+  "GTP6.proof._proof_1_1": {
+   "package": [
+    "GT.Edges",
+    "GT.Simple",
+    "GT.instDecidableSimple"
+   ],
+   "workspace_modules": [
+    "Init.Core",
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Insert"
+   ]
+  },
+  "GTP6.proof._proof_1_2": {
+   "package": [],
+   "workspace_modules": [
+    "Init.Prelude"
+   ]
+  },
+  "GTP6.proof._proof_1_3": {
+   "package": [
+    "GT.Edges",
+    "GT.TriangleFree",
+    "GT.instDecidableTriangleFree"
+   ],
+   "workspace_modules": [
+    "Init.Core",
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Insert"
+   ]
+  },
+  "GTP6.proof._proof_1_4": {
+   "package": [
+    "GT.Edges",
+    "GT.TriangleFree",
+    "GT.instDecidableTriangleFree"
+   ],
+   "workspace_modules": [
+    "Init.Core",
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Insert"
+   ]
+  },
+  "GTP7.proof": {
+   "package": [
+    "GT.Edges",
+    "GT.TFBound",
+    "GT.TriangleFree",
+    "GTConj.bound_card"
+   ],
+   "workspace_modules": [
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Card",
+    "Mathlib.Data.Finset.Defs",
+    "Mathlib.Data.SetLike.Basic",
+    "Mathlib.Order.Defs.PartialOrder"
+   ]
+  },
+  "GTP8.proof": {
+   "package": [
+    "GT.Edges",
+    "GT.TFBound",
+    "GT.TriangleFree",
+    "GTConj.bound_union",
+    "GTConj.down_closed",
+    "GTP1.proof",
+    "GTP8.proof._proof_1_3",
+    "GTP8.proof._simp_1_1",
+    "GTP8.proof._simp_1_2"
+   ],
+   "workspace_modules": [
+    "Init.Classical",
+    "Init.Core",
+    "Init.Prelude",
+    "Init.PropLemmas",
+    "Mathlib.Data.Finset.Card",
+    "Mathlib.Data.Finset.Defs",
+    "Mathlib.Data.Finset.Lattice.Basic",
+    "Mathlib.Data.Nat.Basic",
+    "Mathlib.Data.SetLike.Basic",
+    "Mathlib.Order.Basic",
+    "Mathlib.Order.Defs.PartialOrder"
+   ]
+  },
+  "GTP8.proof._proof_1_3": {
+   "package": [
+    "GT.Edges"
+   ],
+   "workspace_modules": [
+    "Init.Core",
+    "Init.Data.Cast",
+    "Init.Data.Int.Basic",
+    "Init.Data.Int.Lemmas",
+    "Init.Data.Int.Order",
+    "Init.Omega.Coeffs",
+    "Init.Omega.Constraint",
+    "Init.Omega.Int",
+    "Init.Omega.LinearCombo",
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Card",
+    "Mathlib.Data.Finset.Lattice.Basic",
+    "Mathlib.Data.Nat.Basic",
+    "Mathlib.Order.Defs.PartialOrder"
+   ]
+  },
+  "GTP8.proof._simp_1_1": {
+   "package": [],
+   "workspace_modules": [
+    "Init.Core",
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Defs",
+    "Mathlib.Data.Finset.Lattice.Basic",
+    "Mathlib.Data.SetLike.Basic"
+   ]
+  },
+  "GTP8.proof._simp_1_2": {
+   "package": [],
+   "workspace_modules": [
+    "Init.Core",
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Defs",
+    "Mathlib.Data.Finset.Lattice.Basic",
+    "Mathlib.Data.SetLike.Basic"
+   ]
+  },
+  "GTP9.proof": {
+   "package": [
+    "GT.Edges",
+    "GT.TFBound",
+    "GT.TriangleFree",
+    "GTConj.bound_mono",
+    "GTP9.proof._proof_1_1"
+   ],
+   "workspace_modules": [
+    "Init.Core",
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Card",
+    "Mathlib.Data.Finset.Defs",
+    "Mathlib.Data.SetLike.Basic",
+    "Mathlib.Order.Defs.PartialOrder"
+   ]
+  },
+  "GTP9.proof._proof_1_1": {
+   "package": [
+    "GT.Edges"
+   ],
+   "workspace_modules": [
+    "Init.Core",
+    "Init.Data.Cast",
+    "Init.Data.Int.Basic",
+    "Init.Data.Int.Order",
+    "Init.Omega.Coeffs",
+    "Init.Omega.Constraint",
+    "Init.Omega.Int",
+    "Init.Omega.LinearCombo",
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Card"
+   ]
+  }
+ },
+ "domain": "triangle_free_host_v1",
+ "executable_method": {
+  "code_sha256": "32768094b0f8c58f0ac09492c9538000a4ef61af611962f077f56823d520db58",
+  "entrypoint": "genesis.formal_research.triangle_theory:packing_bound",
+  "gadgets": [
+   {
+    "best_packing_of_smaller": 0,
+    "bound": 2,
+    "deficit": 1,
+    "edges": 3,
+    "kept": true,
+    "name": "Gad3e3",
+    "pattern": [
+     [
+      0,
+      1
+     ],
+     [
+      0,
+      2
+     ],
+     [
+      1,
+      2
+     ]
+    ],
+    "vertices": 3
+   },
+   {
+    "best_packing_of_smaller": 1,
+    "bound": 4,
+    "deficit": 2,
+    "edges": 6,
+    "kept": true,
+    "name": "Gad4e6",
+    "pattern": [
+     [
+      0,
+      1
+     ],
+     [
+      0,
+      2
+     ],
+     [
+      0,
+      3
+     ],
+     [
+      1,
+      2
+     ],
+     [
+      1,
+      3
+     ],
+     [
+      2,
+      3
+     ]
+    ],
+    "vertices": 4
+   }
+  ],
+  "lemmas": {
+   "bound_card": "GTP7.proof",
+   "bound_mono": "GTP9.proof",
+   "bound_union": "GTP8.proof"
+  },
+  "library_modules": [
+   "GTP1",
+   "GTP10",
+   "GTP11",
+   "GTP12",
+   "GTP13",
+   "GTP14",
+   "GTP15",
+   "GTP16",
+   "GTP2",
+   "GTP3",
+   "GTP4",
+   "GTP5",
+   "GTP6",
+   "GTP7",
+   "GTP8",
+   "GTP9"
+  ]
+ },
+ "gadget_search": {
+  "catalog": [
+   {
+    "best_packing_of_smaller": 0,
+    "bound": 2,
+    "deficit": 1,
+    "edges": 3,
+    "kept": true,
+    "name": "Gad3e3",
+    "pattern": [
+     [
+      0,
+      1
+     ],
+     [
+      0,
+      2
+     ],
+     [
+      1,
+      2
+     ]
+    ],
+    "vertices": 3
+   },
+   {
+    "best_packing_of_smaller": 1,
+    "bound": 4,
+    "deficit": 2,
+    "edges": 6,
+    "kept": true,
+    "name": "Gad4e6",
+    "pattern": [
+     [
+      0,
+      1
+     ],
+     [
+      0,
+      2
+     ],
+     [
+      0,
+      3
+     ],
+     [
+      1,
+      2
+     ],
+     [
+      1,
+      3
+     ],
+     [
+      2,
+      3
+     ]
+    ],
+    "vertices": 4
+   }
+  ],
+  "examined": [
+   {
+    "best_packing_of_smaller": 0,
+    "bound": 2,
+    "deficit": 1,
+    "edges": 3,
+    "kept": true,
+    "name": "Gad3e3",
+    "pattern": [
+     [
+      0,
+      1
+     ],
+     [
+      0,
+      2
+     ],
+     [
+      1,
+      2
+     ]
+    ],
+    "vertices": 3
+   },
+   {
+    "best_packing_of_smaller": 1,
+    "bound": 4,
+    "deficit": 1,
+    "edges": 5,
+    "kept": false,
+    "pattern": [
+     [
+      0,
+      1
+     ],
+     [
+      0,
+      2
+     ],
+     [
+      0,
+      3
+     ],
+     [
+      1,
+      2
+     ],
+     [
+      1,
+      3
+     ]
+    ],
+    "vertices": 4
+   },
+   {
+    "best_packing_of_smaller": 1,
+    "bound": 4,
+    "deficit": 2,
+    "edges": 6,
+    "kept": true,
+    "name": "Gad4e6",
+    "pattern": [
+     [
+      0,
+      1
+     ],
+     [
+      0,
+      2
+     ],
+     [
+      0,
+      3
+     ],
+     [
+      1,
+      2
+     ],
+     [
+      1,
+      3
+     ],
+     [
+      2,
+      3
+     ]
+    ],
+    "vertices": 4
+   },
+   {
+    "best_packing_of_smaller": 2,
+    "bound": 4,
+    "deficit": 2,
+    "edges": 6,
+    "kept": false,
+    "pattern": [
+     [
+      0,
+      1
+     ],
+     [
+      0,
+      2
+     ],
+     [
+      0,
+      3
+     ],
+     [
+      0,
+      4
+     ],
+     [
+      1,
+      2
+     ],
+     [
+      3,
+      4
+     ]
+    ],
+    "vertices": 5
+   },
+   {
+    "best_packing_of_smaller": 1,
+    "bound": 6,
+    "deficit": 1,
+    "edges": 7,
+    "kept": false,
+    "pattern": [
+     [
+      0,
+      1
+     ],
+     [
+      0,
+      2
+     ],
+     [
+      0,
+      3
+     ],
+     [
+      0,
+      4
+     ],
+     [
+      1,
+      2
+     ],
+     [
+      1,
+      3
+     ],
+     [
+      1,
+      4
+     ]
+    ],
+    "vertices": 5
+   },
+   {
+    "best_packing_of_smaller": 2,
+    "bound": 5,
+    "deficit": 2,
+    "edges": 7,
+    "kept": false,
+    "pattern": [
+     [
+      0,
+      1
+     ],
+     [
+      0,
+      2
+     ],
+     [
+      0,
+      3
+     ],
+     [
+      0,
+      4
+     ],
+     [
+      1,
+      2
+     ],
+     [
+      1,
+      3
+     ],
+     [
+      2,
+      4
+     ]
+    ],
+    "vertices": 5
+   }
+  ]
+ },
+ "method_evaluation": {
+  "all_sound": true,
+  "split": "DEV",
+  "tasks": [
+   {
+    "bound": 68,
+    "edges": 86,
+    "gadgets_used": 12,
+    "gap": 4,
+    "optimum": 64,
+    "sound": true,
+    "task_id": "dev-erdos-80a647eb-20261017-0000"
+   },
+   {
+    "bound": 71,
+    "edges": 90,
+    "gadgets_used": 14,
+    "gap": 7,
+    "optimum": 64,
+    "sound": true,
+    "task_id": "dev-erdos-80a647eb-20261017-0001"
+   },
+   {
+    "bound": 75,
+    "edges": 96,
+    "gadgets_used": 14,
+    "gap": 9,
+    "optimum": 66,
+    "sound": true,
+    "task_id": "dev-erdos-80a647eb-20261017-0002"
+   },
+   {
+    "bound": 71,
+    "edges": 93,
+    "gadgets_used": 17,
+    "gap": 6,
+    "optimum": 65,
+    "sound": true,
+    "task_id": "dev-erdos-80a647eb-20261017-0003"
+   },
+   {
+    "bound": 53,
+    "edges": 66,
+    "gadgets_used": 12,
+    "gap": 2,
+    "optimum": 51,
+    "sound": true,
+    "task_id": "dev-erdos-80a647eb-20261017-0004"
+   },
+   {
+    "bound": 57,
+    "edges": 73,
+    "gadgets_used": 14,
+    "gap": 1,
+    "optimum": 56,
+    "sound": true,
+    "task_id": "dev-erdos-80a647eb-20261017-0005"
+   },
+   {
+    "bound": 61,
+    "edges": 78,
+    "gadgets_used": 14,
+    "gap": 5,
+    "optimum": 56,
+    "sound": true,
+    "task_id": "dev-erdos-80a647eb-20261017-0006"
+   },
+   {
+    "bound": 64,
+    "edges": 79,
+    "gadgets_used": 12,
+    "gap": 4,
+    "optimum": 60,
+    "sound": true,
+    "task_id": "dev-erdos-80a647eb-20261017-0007"
+   },
+   {
+    "bound": 60,
+    "edges": 74,
+    "gadgets_used": 10,
+    "gap": 5,
+    "optimum": 55,
+    "sound": true,
+    "task_id": "dev-erdos-80a647eb-20261017-0008"
+   },
+   {
+    "bound": 62,
+    "edges": 76,
+    "gadgets_used": 11,
+    "gap": 3,
+    "optimum": 59,
+    "sound": true,
+    "task_id": "dev-erdos-80a647eb-20261017-0009"
+   },
+   {
+    "bound": 71,
+    "edges": 86,
+    "gadgets_used": 11,
+    "gap": 6,
+    "optimum": 65,
+    "sound": true,
+    "task_id": "dev-erdos-80a647eb-20261017-0010"
+   },
+   {
+    "bound": 72,
+    "edges": 99,
+    "gadgets_used": 19,
+    "gap": 6,
+    "optimum": 66,
+    "sound": true,
+    "task_id": "dev-erdos-80a647eb-20261017-0011"
+   }
+  ]
+ },
+ "modules": [
+  {
+   "name": "GTDefs",
+   "source": "import Mathlib.Data.Finset.Powerset\n\nnamespace GT\n\n/-- Edge sets: ordered pairs (u, v), read as the edge {u, v}. Hosts list each edge once, with u < v. -/\nabbrev Edges := Finset (ℕ × ℕ)\n\n/-- No three edges (a, b), (b, c), (a, c). -/\ndef TriangleFree (S : Edges) : Prop :=\n  ∀ e ∈ S, ∀ f ∈ S, ∀ g ∈ S, ¬ (e.1 = g.1 ∧ e.2 = f.1 ∧ f.2 = g.2)\n\ninstance (S : Edges) : Decidable (TriangleFree S) := by\n  unfold TriangleFree; infer_instance\n\nend GT\n",
+   "source_sha256": "34a84d4f227cbf5a95012a37a9f263f14ca419a4959be42c674d8abc47c9e3a7",
+   "trusted": true
+  },
+  {
+   "name": "GTConcepts",
+   "source": "import GTDefs\n\nnamespace GT\n\n/-- Generated bound concept: `k` bounds every triangle-free edge set inside `H`. -/\ndef TFBound (H : Edges) (k : ℕ) : Prop := ∀ S ⊆ H, TriangleFree S → S.card ≤ k\n\ninstance (H : Edges) (k : ℕ) : Decidable (TFBound H k) := by\n  unfold TFBound; infer_instance\n\n/-- Generated normal form: every pair is listed with u < v. -/\ndef Simple (S : Edges) : Prop := ∀ e ∈ S, e.1 < e.2\n\ninstance (S : Edges) : Decidable (Simple S) := by\n  unfold Simple; infer_instance\n\n/-- Generated gadget: 3 vertices, 3 edges, triangle-free bound 2. -/\ndef Gad3e3 (v0 v1 v2 : ℕ) : Edges := {(v0, v1), (v0, v2), (v1, v2)}\n\n/-- Generated gadget: 4 vertices, 6 edges, triangle-free bound 4. -/\ndef Gad4e6 (v0 v1 v2 v3 : ℕ) : Edges := {(v0, v1), (v0, v2), (v0, v3), (v1, v2), (v1, v3), (v2, v3)}\n\nend GT\n",
+   "source_sha256": "356e295bf476b65fb60dd0e194f404a920382f0388cee2cfd55ceca73169c4cf",
+   "trusted": true
+  },
+  {
+   "name": "GTConj",
+   "source": "import GTConcepts\nset_option linter.unusedVariables false\nnamespace GTConj\n/-- Generated conjecture `down_closed` (generated:template). -/\ndef down_closed : Prop := ∀ (S : GT.Edges) (T : GT.Edges) (h1 : T ⊆ S) (h2 : GT.TriangleFree S), GT.TriangleFree T\n/-- Generated conjecture `union_closed` (generated:template). -/\ndef union_closed : Prop := ∀ (S : GT.Edges) (T : GT.Edges) (h1 : GT.TriangleFree S) (h2 : GT.TriangleFree T), GT.TriangleFree (S ∪ T)\ndef union_closed_negation : Prop := ¬ union_closed\n/-- Generated conjecture `union_closed_simple` (generated:hypothesis-correction-of:union_closed). -/\ndef union_closed_simple : Prop := ∀ (S : GT.Edges) (T : GT.Edges) (hsS : GT.Simple S) (hsT : GT.Simple T) (h1 : GT.TriangleFree S) (h2 : GT.TriangleFree T), GT.TriangleFree (S ∪ T)\ndef union_closed_simple_negation : Prop := ¬ union_closed_simple\n/-- Generated conjecture `inter_closed` (generated:template). -/\ndef inter_closed : Prop := ∀ (S : GT.Edges) (T : GT.Edges) (h1 : GT.TriangleFree S), GT.TriangleFree (S ∩ T)\n/-- Generated conjecture `insert_closed` (generated:template). -/\ndef insert_closed : Prop := ∀ (S : GT.Edges) (e : ℕ × ℕ) (h1 : GT.TriangleFree S), GT.TriangleFree (insert e S)\ndef insert_closed_negation : Prop := ¬ insert_closed\n/-- Generated conjecture `insert_closed_simple` (generated:hypothesis-correction-of:insert_closed). -/\ndef insert_closed_simple : Prop := ∀ (S : GT.Edges) (e : ℕ × ℕ) (hsS : GT.Simple S) (hse : e.1 < e.2) (h1 : GT.TriangleFree S), GT.TriangleFree (insert e S)\ndef insert_closed_simple_negation : Prop := ¬ insert_closed_simple\n/-- Generated conjecture `bound_card` (generated:template). -/\ndef bound_card : Prop := ∀ (A : GT.Edges), GT.TFBound A A.card\n/-- Generated conjecture `bound_union` (generated:template). -/\ndef bound_union : Prop := ∀ (A : GT.Edges) (B : GT.Edges) (a : ℕ) (b : ℕ) (h1 : GT.TFBound A a) (h2 : GT.TFBound B b), GT.TFBound (A ∪ B) (a + b)\n/-- Generated conjecture `bound_mono` (generated:template). -/\ndef bound_mono : Prop := ∀ (A : GT.Edges) (B : GT.Edges) (a : ℕ) (b : ℕ) (h1 : GT.TFBound B a) (h2 : A ⊆ B) (h3 : a ≤ b), GT.TFBound A b\n/-- Generated conjecture `bound_insert` (generated:template). -/\ndef bound_insert : Prop := ∀ (A : GT.Edges) (a : ℕ) (e : ℕ × ℕ) (h1 : GT.TFBound A a), GT.TFBound (insert e A) a\ndef bound_insert_negation : Prop := ¬ bound_insert\n/-- Generated conjecture `bound_le_card` (generated:template). -/\ndef bound_le_card : Prop := ∀ (A : GT.Edges) (a : ℕ) (h1 : GT.TFBound A a), a ≤ A.card\ndef bound_le_card_negation : Prop := ¬ bound_le_card\n/-- Generated conjecture `bound_zero_empty` (generated:template). -/\ndef bound_zero_empty : Prop := ∀ (A : GT.Edges) (h1 : GT.TFBound A 0), A = ∅\ndef bound_zero_empty_negation : Prop := ¬ bound_zero_empty\n/-- Generated conjecture `bound_zero_empty_simple` (generated:hypothesis-correction-of:bound_zero_empty). -/\ndef bound_zero_empty_simple : Prop := ∀ (A : GT.Edges) (hsA : GT.Simple A) (h1 : GT.TFBound A 0), A = ∅\n/-- Generated conjecture `mantel` (generated:template). -/\ndef mantel : Prop := ∀ (A : GT.Edges) (n : ℕ) (h1 : ∀ e ∈ A, e.1 < e.2 ∧ e.2 < n), GT.TFBound A (n * n / 4)\n/-- Generated conjecture `gadget_Gad3e3_bound` (generated:gadget-search). -/\ndef gadget_Gad3e3_bound : Prop := GT.TFBound (GT.Gad3e3 0 1 2) 2\n/-- Generated conjecture `gadget_Gad3e3_tight` (generated:gadget-search). -/\ndef gadget_Gad3e3_tight : Prop := ¬ GT.TFBound (GT.Gad3e3 0 1 2) 1\n/-- Generated conjecture `gadget_Gad4e6_bound` (generated:gadget-search). -/\ndef gadget_Gad4e6_bound : Prop := GT.TFBound (GT.Gad4e6 0 1 2 3) 4\n/-- Generated conjecture `gadget_Gad4e6_tight` (generated:gadget-search). -/\ndef gadget_Gad4e6_tight : Prop := ¬ GT.TFBound (GT.Gad4e6 0 1 2 3) 3\nend GTConj\n",
+   "source_sha256": "80b7e0e914cb5a1e00a3c5c175c34ca1ab5e4c67c526fdc6c0792e6106b22155",
+   "trusted": true
+  },
+  {
+   "name": "GTP1",
+   "source": "import GTDefs\nimport GTConcepts\nimport GTConj\nnamespace GTP1\ntheorem proof : GTConj.down_closed := by\n  unfold GTConj.down_closed\n  intro S T h1 h2\n  try unfold GT.TFBound at *\n  try unfold GT.TriangleFree at *\n  intros\n  apply h2 <;> solve_by_elim\nend GTP1\n",
+   "source_sha256": "bcbf714afda8da16015fb7a2ab032fddcaec81c923d9cad7bc1aecc59c648837",
+   "trusted": false
+  },
+  {
+   "name": "GTP2",
+   "source": "import GTDefs\nimport GTConcepts\nimport GTConj\nimport GTP1\nnamespace GTP2\ntheorem proof : GTConj.union_closed_negation := by\n  unfold GTConj.union_closed_negation GTConj.union_closed\n  intro h\n  exact absurd (h (({(2, 0), (2, 1)} : GT.Edges)) (({(0, 1)} : GT.Edges)) (by decide +kernel) (by decide +kernel)) (by decide +kernel)\nend GTP2\n",
+   "source_sha256": "9c0124c10c95085d3adc6a40a75adcbf8c379c2217c7fd04ba7aa34983810342",
+   "trusted": false
+  },
+  {
+   "name": "GTP3",
+   "source": "import GTDefs\nimport GTConcepts\nimport GTConj\nimport GTP1\nimport GTP2\nnamespace GTP3\ntheorem proof : GTConj.union_closed_simple_negation := by\n  unfold GTConj.union_closed_simple_negation GTConj.union_closed_simple\n  intro h\n  exact absurd (h (({(0, 2), (1, 2)} : GT.Edges)) (({(0, 1)} : GT.Edges)) (by decide +kernel) (by decide +kernel) (by decide +kernel) (by decide +kernel)) (by decide +kernel)\nend GTP3\n",
+   "source_sha256": "d881ab515e393f8db039dab653febdb07e763e8433497992b25c528149be4984",
+   "trusted": false
+  },
+  {
+   "name": "GTP4",
+   "source": "import GTDefs\nimport GTConcepts\nimport GTConj\nimport GTP1\nimport GTP2\nimport GTP3\nnamespace GTP4\ntheorem proof : GTConj.inter_closed := by\n  unfold GTConj.inter_closed\n  intro S T h1\n  try unfold GT.TFBound at *\n  try unfold GT.TriangleFree at *\n  aesop\nend GTP4\n",
+   "source_sha256": "bec3510057d11eda22ab3b70d29408831f734559e97285e9e6fe28cc30747f4a",
+   "trusted": false
+  },
+  {
+   "name": "GTP5",
+   "source": "import GTDefs\nimport GTConcepts\nimport GTConj\nimport GTP1\nimport GTP2\nimport GTP3\nimport GTP4\nnamespace GTP5\ntheorem proof : GTConj.insert_closed_negation := by\n  unfold GTConj.insert_closed_negation GTConj.insert_closed\n  intro h\n  exact absurd (h ((∅ : GT.Edges)) (((1, 1) : ℕ × ℕ)) (by decide +kernel)) (by decide +kernel)\nend GTP5\n",
+   "source_sha256": "3a992b2a6ffe16c0e30e28e4477a996cb96ebf1e592dc6921f0ed39083869a6e",
+   "trusted": false
+  },
+  {
+   "name": "GTP6",
+   "source": "import GTDefs\nimport GTConcepts\nimport GTConj\nimport GTP1\nimport GTP2\nimport GTP3\nimport GTP4\nimport GTP5\nnamespace GTP6\ntheorem proof : GTConj.insert_closed_simple_negation := by\n  unfold GTConj.insert_closed_simple_negation GTConj.insert_closed_simple\n  intro h\n  exact absurd (h (({(0, 1), (1, 2)} : GT.Edges)) (((0, 2) : ℕ × ℕ)) (by decide +kernel) (by decide +kernel) (by decide +kernel)) (by decide +kernel)\nend GTP6\n",
+   "source_sha256": "d27cef7290092e23bca7cbe834ea6cf3d21895478bd6bff04ee514fdb46b4962",
+   "trusted": false
+  },
+  {
+   "name": "GTP7",
+   "source": "import GTDefs\nimport GTConcepts\nimport GTConj\nimport GTP1\nimport GTP2\nimport GTP3\nimport GTP4\nimport GTP5\nimport GTP6\nnamespace GTP7\ntheorem proof : GTConj.bound_card := by\n  unfold GTConj.bound_card\n  intros\n  try unfold GT.TFBound at *\n  try unfold GT.TriangleFree at *\n  solve_by_elim [Finset.card_le_card, Finset.Subset.trans]\nend GTP7\n",
+   "source_sha256": "d67040be4d7ff90da9c076fad94d040030089a00a6dba3f3caf560077e3d130d",
+   "trusted": false
+  },
+  {
+   "name": "GTP8",
+   "source": "import GTDefs\nimport GTConcepts\nimport GTConj\nimport GTP1\nimport GTP2\nimport GTP3\nimport GTP4\nimport GTP5\nimport GTP6\nimport GTP7\nnamespace GTP8\ntheorem proof : GTConj.bound_union := by\n  unfold GTConj.bound_union\n  intro A B a b h1 h2\n  try unfold GT.TFBound at *\n  try unfold GT.TriangleFree at *\n  intro S hS hT\n  have h1 := h1 (S ∩ A) Finset.inter_subset_right (GTP1.proof _ _ Finset.inter_subset_left hT)\n  have h2 := h2 (S ∩ B) Finset.inter_subset_right (GTP1.proof _ _ Finset.inter_subset_left hT)\n  have h3 : S ⊆ S ∩ A ∪ S ∩ B := by\n    intro x hx; have := hS hx; simp only [Finset.mem_union, Finset.mem_inter] at this ⊢; tauto\n  have h4 := (Finset.card_le_card h3).trans (Finset.card_union_le _ _)\n  omega\nend GTP8\n",
+   "source_sha256": "ba2100764336fc637eebb6ba31cd64a83f4414f04d68cb73c15b02da7e67c610",
+   "trusted": false
+  },
+  {
+   "name": "GTP9",
+   "source": "import GTDefs\nimport GTConcepts\nimport GTConj\nimport GTP1\nimport GTP2\nimport GTP3\nimport GTP4\nimport GTP5\nimport GTP6\nimport GTP7\nimport GTP8\nnamespace GTP9\ntheorem proof : GTConj.bound_mono := by\n  unfold GTConj.bound_mono\n  intro A B a b h1 h2 h3\n  try unfold GT.TFBound at *\n  try unfold GT.TriangleFree at *\n  intro S hS hT\n  have := h1 S (by solve_by_elim [Finset.Subset.trans]) hT\n  omega\nend GTP9\n",
+   "source_sha256": "6c1e3925c061c0465d0c5d8ff8e694610c6f34e54fedea2c9d0015623f4f9def",
+   "trusted": false
+  },
+  {
+   "name": "GTP10",
+   "source": "import GTDefs\nimport GTConcepts\nimport GTConj\nimport GTP1\nimport GTP2\nimport GTP3\nimport GTP4\nimport GTP5\nimport GTP6\nimport GTP7\nimport GTP8\nimport GTP9\nnamespace GTP10\ntheorem proof : GTConj.bound_insert_negation := by\n  unfold GTConj.bound_insert_negation GTConj.bound_insert\n  intro h\n  exact absurd (h ((∅ : GT.Edges)) (0) (((1, 2) : ℕ × ℕ)) (by decide +kernel)) (by decide +kernel)\nend GTP10\n",
+   "source_sha256": "799827a5181417843147b44ed7ba702a8bb8c22218d28fe3aa9daa1d76f9861e",
+   "trusted": false
+  },
+  {
+   "name": "GTP11",
+   "source": "import GTDefs\nimport GTConcepts\nimport GTConj\nimport GTP1\nimport GTP2\nimport GTP3\nimport GTP4\nimport GTP5\nimport GTP6\nimport GTP7\nimport GTP8\nimport GTP9\nimport GTP10\nnamespace GTP11\ntheorem proof : GTConj.bound_le_card_negation := by\n  unfold GTConj.bound_le_card_negation GTConj.bound_le_card\n  intro h\n  exact absurd (h ((∅ : GT.Edges)) (1) (by decide +kernel)) (by decide +kernel)\nend GTP11\n",
+   "source_sha256": "3fcf52f74f86d7ad69ae64a49900f8de47a27ca26cbca1bc74bbe425011022fd",
+   "trusted": false
+  },
+  {
+   "name": "GTP12",
+   "source": "import GTDefs\nimport GTConcepts\nimport GTConj\nimport GTP1\nimport GTP2\nimport GTP3\nimport GTP4\nimport GTP5\nimport GTP6\nimport GTP7\nimport GTP8\nimport GTP9\nimport GTP10\nimport GTP11\nnamespace GTP12\ntheorem proof : GTConj.bound_zero_empty_negation := by\n  unfold GTConj.bound_zero_empty_negation GTConj.bound_zero_empty\n  intro h\n  exact absurd (h (({(2, 2)} : GT.Edges)) (by decide +kernel)) (by decide +kernel)\nend GTP12\n",
+   "source_sha256": "e8723a2a4368f02aebcccd5f3c1f5eae47e05fcf20c61c1261a6c8c5bf974353",
+   "trusted": false
+  },
+  {
+   "name": "GTP13",
+   "source": "import GTDefs\nimport GTConcepts\nimport GTConj\nimport GTP1\nimport GTP2\nimport GTP3\nimport GTP4\nimport GTP5\nimport GTP6\nimport GTP7\nimport GTP8\nimport GTP9\nimport GTP10\nimport GTP11\nimport GTP12\nnamespace GTP13\ntheorem proof : GTConj.gadget_Gad3e3_bound := by\n  unfold GTConj.gadget_Gad3e3_bound\n  decide\nend GTP13\n",
+   "source_sha256": "3b0089616e0f7fa0acd6a12a779a94fa274d46095aef421aaace880de78881c8",
+   "trusted": false
+  },
+  {
+   "name": "GTP14",
+   "source": "import GTDefs\nimport GTConcepts\nimport GTConj\nimport GTP1\nimport GTP2\nimport GTP3\nimport GTP4\nimport GTP5\nimport GTP6\nimport GTP7\nimport GTP8\nimport GTP9\nimport GTP10\nimport GTP11\nimport GTP12\nimport GTP13\nnamespace GTP14\ntheorem proof : GTConj.gadget_Gad3e3_tight := by\n  unfold GTConj.gadget_Gad3e3_tight\n  decide\nend GTP14\n",
+   "source_sha256": "71d19f7685cea3581e98e36b31e7c56b89aa41d8852abc210cd18cb15b7218a6",
+   "trusted": false
+  },
+  {
+   "name": "GTP15",
+   "source": "import GTDefs\nimport GTConcepts\nimport GTConj\nimport GTP1\nimport GTP2\nimport GTP3\nimport GTP4\nimport GTP5\nimport GTP6\nimport GTP7\nimport GTP8\nimport GTP9\nimport GTP10\nimport GTP11\nimport GTP12\nimport GTP13\nimport GTP14\nnamespace GTP15\ntheorem proof : GTConj.gadget_Gad4e6_bound := by\n  unfold GTConj.gadget_Gad4e6_bound\n  decide\nend GTP15\n",
+   "source_sha256": "6ada1e7591873e3491942a2d1eea5ce0ac1bf1c996596edb4e3f4c91b4e88ed1",
+   "trusted": false
+  },
+  {
+   "name": "GTP16",
+   "source": "import GTDefs\nimport GTConcepts\nimport GTConj\nimport GTP1\nimport GTP2\nimport GTP3\nimport GTP4\nimport GTP5\nimport GTP6\nimport GTP7\nimport GTP8\nimport GTP9\nimport GTP10\nimport GTP11\nimport GTP12\nimport GTP13\nimport GTP14\nimport GTP15\nnamespace GTP16\ntheorem proof : GTConj.gadget_Gad4e6_tight := by\n  unfold GTConj.gadget_Gad4e6_tight\n  decide\nend GTP16\n",
+   "source_sha256": "26d5a619134ec3e28aad4d02207cefdb2ccfe4082efe2f80bc1123bfdc3f777c",
+   "trusted": false
+  }
+ ],
+ "name": "triangle-free obstruction by gadget packing",
+ "package_sha256": "6550a279c6cb4010aae5ab2e002fb6b59465b9f3d0a8418b5009fec3009d780c",
+ "proofs": [
+  {
+   "module": "GTP1",
+   "recipe": "apply-hyp:h2",
+   "statement": "down_closed"
+  },
+  {
+   "module": "GTP2",
+   "recipe": "counterexample-evaluation",
+   "statement": "union_closed"
+  },
+  {
+   "module": "GTP3",
+   "recipe": "counterexample-evaluation",
+   "statement": "union_closed_simple"
+  },
+  {
+   "module": "GTP4",
+   "recipe": "unfold-aesop",
+   "statement": "inter_closed"
+  },
+  {
+   "module": "GTP5",
+   "recipe": "counterexample-evaluation",
+   "statement": "insert_closed"
+  },
+  {
+   "module": "GTP6",
+   "recipe": "counterexample-evaluation",
+   "statement": "insert_closed_simple"
+  },
+  {
+   "module": "GTP7",
+   "recipe": "unfold-solve",
+   "statement": "bound_card"
+  },
+  {
+   "module": "GTP8",
+   "recipe": "cover-split:GTP1.proof",
+   "statement": "bound_union"
+  },
+  {
+   "module": "GTP9",
+   "recipe": "specialize-omega:h1",
+   "statement": "bound_mono"
+  },
+  {
+   "module": "GTP10",
+   "recipe": "counterexample-evaluation",
+   "statement": "bound_insert"
+  },
+  {
+   "module": "GTP11",
+   "recipe": "counterexample-evaluation",
+   "statement": "bound_le_card"
+  },
+  {
+   "module": "GTP12",
+   "recipe": "counterexample-evaluation",
+   "statement": "bound_zero_empty"
+  },
+  {
+   "module": "GTP13",
+   "recipe": "decide",
+   "statement": "gadget_Gad3e3_bound"
+  },
+  {
+   "module": "GTP14",
+   "recipe": "decide",
+   "statement": "gadget_Gad3e3_tight"
+  },
+  {
+   "module": "GTP15",
+   "recipe": "decide",
+   "statement": "gadget_Gad4e6_bound"
+  },
+  {
+   "module": "GTP16",
+   "recipe": "decide",
+   "statement": "gadget_Gad4e6_tight"
+  }
+ ],
+ "provenance": {
+  "acceptance": "genesis.formal_research.checker.accept",
+  "created_at": "2026-10-11T10:03:37.436179+00:00",
+  "generator_code": "6ccc6d24f53f49e67a3d0e289a0dbdc0ab05ed236690e0e31c054feecbf37750",
+  "search": "genesis.formal_research.search (builder-written recipes, see recipe names)",
+  "seed": 0
+ },
+ "schema": "genesis-theory-package-v1",
+ "scope": "Upper bounds on the largest triangle-free subgraph of a host given as pairs (u, v), u < v. Bounds only, never optima. Elementary facts, rediscovered: a capability demonstration with no novelty claim.",
+ "statements": [
+  {
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "counterexample": null,
+   "id": "down_closed",
+   "lean": "∀ (S : GT.Edges) (T : GT.Edges) (h1 : T ⊆ S) (h2 : GT.TriangleFree S), GT.TriangleFree T",
+   "origin": "generated:template",
+   "proof_const": "GTP1.proof",
+   "proof_module": "GTP1",
+   "recipe": "apply-hyp:h2",
+   "screened_instances": 108,
+   "spec_const": "GTConj.down_closed",
+   "status": "CHECKED"
+  },
+  {
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "counterexample": {
+    "values": {
+     "S": "({(2, 0), (2, 1)} : GT.Edges)",
+     "T": "({(0, 1)} : GT.Edges)"
+    }
+   },
+   "id": "union_closed",
+   "lean": "∀ (S : GT.Edges) (T : GT.Edges) (h1 : GT.TriangleFree S) (h2 : GT.TriangleFree T), GT.TriangleFree (S ∪ T)",
+   "origin": "generated:template",
+   "proof_const": "GTP2.proof",
+   "proof_module": "GTP2",
+   "recipe": "counterexample-evaluation",
+   "screened_instances": 373,
+   "spec_const": "GTConj.union_closed",
+   "status": "DISPROVED"
+  },
+  {
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "counterexample": {
+    "values": {
+     "S": "({(0, 2), (1, 2)} : GT.Edges)",
+     "T": "({(0, 1)} : GT.Edges)"
+    }
+   },
+   "id": "union_closed_simple",
+   "lean": "∀ (S : GT.Edges) (T : GT.Edges) (hsS : GT.Simple S) (hsT : GT.Simple T) (h1 : GT.TriangleFree S) (h2 : GT.TriangleFree T), GT.TriangleFree (S ∪ T)",
+   "origin": "generated:hypothesis-correction-of:union_closed",
+   "proof_const": "GTP3.proof",
+   "proof_module": "GTP3",
+   "recipe": "counterexample-evaluation",
+   "screened_instances": 56,
+   "spec_const": "GTConj.union_closed_simple",
+   "status": "DISPROVED"
+  },
+  {
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "counterexample": null,
+   "id": "inter_closed",
+   "lean": "∀ (S : GT.Edges) (T : GT.Edges) (h1 : GT.TriangleFree S), GT.TriangleFree (S ∩ T)",
+   "origin": "generated:template",
+   "proof_const": "GTP4.proof",
+   "proof_module": "GTP4",
+   "recipe": "unfold-aesop",
+   "screened_instances": 1189,
+   "spec_const": "GTConj.inter_closed",
+   "status": "CHECKED"
+  },
+  {
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "counterexample": {
+    "values": {
+     "S": "(∅ : GT.Edges)",
+     "e": "((1, 1) : ℕ × ℕ)"
+    }
+   },
+   "id": "insert_closed",
+   "lean": "∀ (S : GT.Edges) (e : ℕ × ℕ) (h1 : GT.TriangleFree S), GT.TriangleFree (insert e S)",
+   "origin": "generated:template",
+   "proof_const": "GTP5.proof",
+   "proof_module": "GTP5",
+   "recipe": "counterexample-evaluation",
+   "screened_instances": 1229,
+   "spec_const": "GTConj.insert_closed",
+   "status": "DISPROVED"
+  },
+  {
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "counterexample": {
+    "values": {
+     "S": "({(0, 1), (1, 2)} : GT.Edges)",
+     "e": "((0, 2) : ℕ × ℕ)"
+    }
+   },
+   "id": "insert_closed_simple",
+   "lean": "∀ (S : GT.Edges) (e : ℕ × ℕ) (hsS : GT.Simple S) (hse : e.1 < e.2) (h1 : GT.TriangleFree S), GT.TriangleFree (insert e S)",
+   "origin": "generated:hypothesis-correction-of:insert_closed",
+   "proof_const": "GTP6.proof",
+   "proof_module": "GTP6",
+   "recipe": "counterexample-evaluation",
+   "screened_instances": 159,
+   "spec_const": "GTConj.insert_closed_simple",
+   "status": "DISPROVED"
+  },
+  {
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "counterexample": null,
+   "id": "bound_card",
+   "lean": "∀ (A : GT.Edges), GT.TFBound A A.card",
+   "origin": "generated:template",
+   "proof_const": "GTP7.proof",
+   "proof_module": "GTP7",
+   "recipe": "unfold-solve",
+   "screened_instances": 4000,
+   "spec_const": "GTConj.bound_card",
+   "status": "CHECKED"
+  },
+  {
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "counterexample": null,
+   "id": "bound_union",
+   "lean": "∀ (A : GT.Edges) (B : GT.Edges) (a : ℕ) (b : ℕ) (h1 : GT.TFBound A a) (h2 : GT.TFBound B b), GT.TFBound (A ∪ B) (a + b)",
+   "origin": "generated:template",
+   "proof_const": "GTP8.proof",
+   "proof_module": "GTP8",
+   "recipe": "cover-split:GTP1.proof",
+   "screened_instances": 2074,
+   "spec_const": "GTConj.bound_union",
+   "status": "CHECKED"
+  },
+  {
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "counterexample": null,
+   "id": "bound_mono",
+   "lean": "∀ (A : GT.Edges) (B : GT.Edges) (a : ℕ) (b : ℕ) (h1 : GT.TFBound B a) (h2 : A ⊆ B) (h3 : a ≤ b), GT.TFBound A b",
+   "origin": "generated:template",
+   "proof_const": "GTP9.proof",
+   "proof_module": "GTP9",
+   "recipe": "specialize-omega:h1",
+   "screened_instances": 120,
+   "spec_const": "GTConj.bound_mono",
+   "status": "CHECKED"
+  },
+  {
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "counterexample": {
+    "values": {
+     "A": "(∅ : GT.Edges)",
+     "a": "0",
+     "e": "((1, 2) : ℕ × ℕ)"
+    }
+   },
+   "id": "bound_insert",
+   "lean": "∀ (A : GT.Edges) (a : ℕ) (e : ℕ × ℕ) (h1 : GT.TFBound A a), GT.TFBound (insert e A) a",
+   "origin": "generated:template",
+   "proof_const": "GTP10.proof",
+   "proof_module": "GTP10",
+   "recipe": "counterexample-evaluation",
+   "screened_instances": 2926,
+   "spec_const": "GTConj.bound_insert",
+   "status": "DISPROVED"
+  },
+  {
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "counterexample": {
+    "values": {
+     "A": "(∅ : GT.Edges)",
+     "a": "1"
+    }
+   },
+   "id": "bound_le_card",
+   "lean": "∀ (A : GT.Edges) (a : ℕ) (h1 : GT.TFBound A a), a ≤ A.card",
+   "origin": "generated:template",
+   "proof_const": "GTP11.proof",
+   "proof_module": "GTP11",
+   "recipe": "counterexample-evaluation",
+   "screened_instances": 2838,
+   "spec_const": "GTConj.bound_le_card",
+   "status": "DISPROVED"
+  },
+  {
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "counterexample": {
+    "values": {
+     "A": "({(2, 2)} : GT.Edges)"
+    }
+   },
+   "id": "bound_zero_empty",
+   "lean": "∀ (A : GT.Edges) (h1 : GT.TFBound A 0), A = ∅",
+   "origin": "generated:template",
+   "proof_const": "GTP12.proof",
+   "proof_module": "GTP12",
+   "recipe": "counterexample-evaluation",
+   "screened_instances": 472,
+   "spec_const": "GTConj.bound_zero_empty",
+   "status": "DISPROVED"
+  },
+  {
+   "counterexample": null,
+   "id": "bound_zero_empty_simple",
+   "lean": "∀ (A : GT.Edges) (hsA : GT.Simple A) (h1 : GT.TFBound A 0), A = ∅",
+   "origin": "generated:hypothesis-correction-of:bound_zero_empty",
+   "reason": "no recipe compiled",
+   "screened_instances": 179,
+   "spec_const": "GTConj.bound_zero_empty_simple",
+   "status": "UNRESOLVED"
+  },
+  {
+   "counterexample": null,
+   "id": "mantel",
+   "lean": "∀ (A : GT.Edges) (n : ℕ) (h1 : ∀ e ∈ A, e.1 < e.2 ∧ e.2 < n), GT.TFBound A (n * n / 4)",
+   "origin": "generated:template",
+   "reason": "no recipe compiled",
+   "screened_instances": 347,
+   "spec_const": "GTConj.mantel",
+   "status": "UNRESOLVED"
+  },
+  {
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "counterexample": null,
+   "id": "gadget_Gad3e3_bound",
+   "lean": "GT.TFBound (GT.Gad3e3 0 1 2) 2",
+   "origin": "generated:gadget-search",
+   "proof_const": "GTP13.proof",
+   "proof_module": "GTP13",
+   "recipe": "decide",
+   "screened_instances": null,
+   "spec_const": "GTConj.gadget_Gad3e3_bound",
+   "status": "CHECKED"
+  },
+  {
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "counterexample": null,
+   "id": "gadget_Gad3e3_tight",
+   "lean": "¬ GT.TFBound (GT.Gad3e3 0 1 2) 1",
+   "origin": "generated:gadget-search",
+   "proof_const": "GTP14.proof",
+   "proof_module": "GTP14",
+   "recipe": "decide",
+   "screened_instances": null,
+   "spec_const": "GTConj.gadget_Gad3e3_tight",
+   "status": "CHECKED"
+  },
+  {
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "counterexample": null,
+   "id": "gadget_Gad4e6_bound",
+   "lean": "GT.TFBound (GT.Gad4e6 0 1 2 3) 4",
+   "origin": "generated:gadget-search",
+   "proof_const": "GTP15.proof",
+   "proof_module": "GTP15",
+   "recipe": "decide",
+   "screened_instances": null,
+   "spec_const": "GTConj.gadget_Gad4e6_bound",
+   "status": "CHECKED"
+  },
+  {
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "counterexample": null,
+   "id": "gadget_Gad4e6_tight",
+   "lean": "¬ GT.TFBound (GT.Gad4e6 0 1 2 3) 3",
+   "origin": "generated:gadget-search",
+   "proof_const": "GTP16.proof",
+   "proof_module": "GTP16",
+   "recipe": "decide",
+   "screened_instances": null,
+   "spec_const": "GTConj.gadget_Gad4e6_tight",
+   "status": "CHECKED"
+  },
+  {
+   "id": "c4_down_closed",
+   "origin": "generated:template",
+   "reason": "mentions a definition this theory does not have",
+   "status": "UNSUPPORTED"
+  }
+ ],
+ "task_certificates": [
+  {
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "binding": {
+    "proof": "GTCert0.proof",
+    "spec": "GTTask0.stmt"
+   },
+   "bound": 68,
+   "certificate": {
+    "bound": 68,
+    "edges": 86,
+    "parts": [
+     {
+      "bound": 4,
+      "gadget": "Gad4e6",
+      "vertices": [
+       0,
+       1,
+       12,
+       18
+      ]
+     },
+     {
+      "bound": 4,
+      "gadget": "Gad4e6",
+      "vertices": [
+       0,
+       5,
+       8,
+       20
+      ]
+     },
+     {
+      "bound": 4,
+      "gadget": "Gad4e6",
+      "vertices": [
+       0,
+       6,
+       7,
+       11
+      ]
+     },
+     {
+      "bound": 4,
+      "gadget": "Gad4e6",
+      "vertices": [
+       4,
+       13,
+       17,
+       19
+      ]
+     },
+     {
+      "bound": 4,
+      "gadget": "Gad4e6",
+      "vertices": [
+       6,
+       8,
+       14,
+       21
+      ]
+     },
+     {
+      "bound": 4,
+      "gadget": "Gad4e6",
+      "vertices": [
+       9,
+       16,
+       18,
+       19
+      ]
+     },
+     {
+      "bound": 2,
+      "gadget": "Gad3e3",
+      "vertices": [
+       1,
+       3,
+       11
+      ]
+     },
+     {
+      "bound": 2,
+      "gadget": "Gad3e3",
+      "vertices": [
+       1,
+       15,
+       16
+      ]
+     },
+     {
+      "bound": 2,
+      "gadget": "Gad3e3",
+      "vertices": [
+       2,
+       5,
+       14
+      ]
+     },
+     {
+      "bound": 2,
+      "gadget": "Gad3e3",
+      "vertices": [
+       3,
+       6,
+       19
+      ]
+     },
+     {
+      "bound": 2,
+      "gadget": "Gad3e3",
+      "vertices": [
+       4,
+       15,
+       18
+      ]
+     },
+     {
+      "bound": 2,
+      "gadget": "Gad3e3",
+      "vertices": [
+       12,
+       19,
+       21
+      ]
+     }
+    ],
+    "rest": [
+     [
+      0,
+      9
+     ],
+     [
+      1,
+      17
+     ],
+     [
+      1,
+      21
+     ],
+     [
+      2,
+      3
+     ],
+     [
+      2,
+      8
+     ],
+     [
+      2,
+      17
+     ],
+     [
+      3,
+      7
+     ],
+     [
+      3,
+      12
+     ],
+     [
+      4,
+      21
+     ],
+     [
+      5,
+      7
+     ],
+     [
+      5,
+      10
+     ],
+     [
+      5,
+      13
+     ],
+     [
+      6,
+      10
+     ],
+     [
+      6,
+      15
+     ],
+     [
+      6,
+      20
+     ],
+     [
+      7,
+      16
+     ],
+     [
+      7,
+      21
+     ],
+     [
+      8,
+      13
+     ],
+     [
+      8,
+      15
+     ],
+     [
+      8,
+      16
+     ],
+     [
+      9,
+      13
+     ],
+     [
+      9,
+      17
+     ],
+     [
+      10,
+      18
+     ],
+     [
+      11,
+      13
+     ],
+     [
+      11,
+      16
+     ],
+     [
+      12,
+      13
+     ],
+     [
+      12,
+      14
+     ],
+     [
+      12,
+      16
+     ],
+     [
+      12,
+      20
+     ],
+     [
+      16,
+      17
+     ],
+     [
+      17,
+      20
+     ],
+     [
+      18,
+      20
+     ]
+    ]
+   },
+   "modules": [
+    {
+     "name": "GTTask0",
+     "source": "import GTConcepts\nnamespace GTTask0\ndef host : GT.Edges := {(0, 1), (0, 5), (0, 6), (0, 7), (0, 8), (0, 9), (0, 11), (0, 12), (0, 18), (0, 20), (1, 3), (1, 11), (1, 12), (1, 15), (1, 16), (1, 17), (1, 18), (1, 21), (2, 3), (2, 5), (2, 8), (2, 14), (2, 17), (3, 6), (3, 7), (3, 11), (3, 12), (3, 19), (4, 13), (4, 15), (4, 17), (4, 18), (4, 19), (4, 21), (5, 7), (5, 8), (5, 10), (5, 13), (5, 14), (5, 20), (6, 7), (6, 8), (6, 10), (6, 11), (6, 14), (6, 15), (6, 19), (6, 20), (6, 21), (7, 11), (7, 16), (7, 21), (8, 13), (8, 14), (8, 15), (8, 16), (8, 20), (8, 21), (9, 13), (9, 16), (9, 17), (9, 18), (9, 19), (10, 18), (11, 13), (11, 16), (12, 13), (12, 14), (12, 16), (12, 18), (12, 19), (12, 20), (12, 21), (13, 17), (13, 19), (14, 21), (15, 16), (15, 18), (16, 17), (16, 18), (16, 19), (17, 19), (17, 20), (18, 19), (18, 20), (19, 21)}\ndef stmt : Prop := GT.TFBound host 68\nend GTTask0\n",
+     "trusted": true
+    },
+    {
+     "name": "GTCert0",
+     "source": "import GTConcepts\nimport GTTask0\nimport GTP1\nimport GTP10\nimport GTP11\nimport GTP12\nimport GTP13\nimport GTP14\nimport GTP15\nimport GTP16\nimport GTP2\nimport GTP3\nimport GTP4\nimport GTP5\nimport GTP6\nimport GTP7\nimport GTP8\nimport GTP9\nnamespace GTCert0\ndef rest : GT.Edges := {(0, 9), (1, 17), (1, 21), (2, 3), (2, 8), (2, 17), (3, 7), (3, 12), (4, 21), (5, 7), (5, 10), (5, 13), (6, 10), (6, 15), (6, 20), (7, 16), (7, 21), (8, 13), (8, 15), (8, 16), (9, 13), (9, 17), (10, 18), (11, 13), (11, 16), (12, 13), (12, 14), (12, 16), (12, 20), (16, 17), (17, 20), (18, 20)}\ntheorem proof : GTTask0.stmt := by\n  unfold GTTask0.stmt\n  have h0 : GT.TFBound (GT.Gad4e6 0 1 12 18) 4 := by decide\n  have h1 : GT.TFBound (GT.Gad4e6 0 5 8 20) 4 := by decide\n  have h2 : GT.TFBound (GT.Gad4e6 0 6 7 11) 4 := by decide\n  have h3 : GT.TFBound (GT.Gad4e6 4 13 17 19) 4 := by decide\n  have h4 : GT.TFBound (GT.Gad4e6 6 8 14 21) 4 := by decide\n  have h5 : GT.TFBound (GT.Gad4e6 9 16 18 19) 4 := by decide\n  have h6 : GT.TFBound (GT.Gad3e3 1 3 11) 2 := by decide\n  have h7 : GT.TFBound (GT.Gad3e3 1 15 16) 2 := by decide\n  have h8 : GT.TFBound (GT.Gad3e3 2 5 14) 2 := by decide\n  have h9 : GT.TFBound (GT.Gad3e3 3 6 19) 2 := by decide\n  have h10 : GT.TFBound (GT.Gad3e3 4 15 18) 2 := by decide\n  have h11 : GT.TFBound (GT.Gad3e3 12 19 21) 2 := by decide\n  have hr : GT.TFBound rest rest.card := GTP7.proof rest\n  exact GTP9.proof _ _ _ _ (GTP8.proof _ _ _ _ h0 (GTP8.proof _ _ _ _ h1 (GTP8.proof _ _ _ _ h2 (GTP8.proof _ _ _ _ h3 (GTP8.proof _ _ _ _ h4 (GTP8.proof _ _ _ _ h5 (GTP8.proof _ _ _ _ h6 (GTP8.proof _ _ _ _ h7 (GTP8.proof _ _ _ _ h8 (GTP8.proof _ _ _ _ h9 (GTP8.proof _ _ _ _ h10 (GTP8.proof _ _ _ _ h11 hr)))))))))))) (by decide +kernel) (by decide +kernel)\nend GTCert0\n",
+     "trusted": false
+    }
+   ],
+   "stats": {
+    "check_sha256": "4e5608e72edff3a7ce256dc07882f62ebdfb115cdf1bd53d43af3eb900d80ca3",
+    "cpu_ns": 27446979456,
+    "exit_code": 0,
+    "exits": {
+     "GTCert0": "0",
+     "GTP1": "0",
+     "GTP10": "0",
+     "GTP11": "0",
+     "GTP12": "0",
+     "GTP13": "0",
+     "GTP14": "0",
+     "GTP15": "0",
+     "GTP16": "0",
+     "GTP2": "0",
+     "GTP3": "0",
+     "GTP4": "0",
+     "GTP5": "0",
+     "GTP6": "0",
+     "GTP7": "0",
+     "GTP8": "0",
+     "GTP9": "0",
+     "check": "0"
+    },
+    "log": "",
+    "peak_memory_bytes": 614383616,
+    "status": "SUCCESS",
+    "wall_ns": 27963057560
+   },
+   "status": "CHECKED",
+   "task_id": "dev-erdos-80a647eb-20261017-0000",
+   "uses_package_lemmas": [
+    "GTP7.proof",
+    "GTP8.proof",
+    "GTP9.proof"
+   ]
+  },
+  {
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "binding": {
+    "proof": "GTCert1.proof",
+    "spec": "GTTask1.stmt"
+   },
+   "bound": 71,
+   "certificate": {
+    "bound": 71,
+    "edges": 90,
+    "parts": [
+     {
+      "bound": 4,
+      "gadget": "Gad4e6",
+      "vertices": [
+       0,
+       1,
+       6,
+       10
+      ]
+     },
+     {
+      "bound": 4,
+      "gadget": "Gad4e6",
+      "vertices": [
+       0,
+       2,
+       16,
+       20
+      ]
+     },
+     {
+      "bound": 4,
+      "gadget": "Gad4e6",
+      "vertices": [
+       0,
+       5,
+       7,
+       11
+      ]
+     },
+     {
+      "bound": 4,
+      "gadget": "Gad4e6",
+      "vertices": [
+       1,
+       4,
+       11,
+       21
+      ]
+     },
+     {
+      "bound": 4,
+      "gadget": "Gad4e6",
+      "vertices": [
+       4,
+       6,
+       9,
+       15
+      ]
+     },
+     {
+      "bound": 2,
+      "gadget": "Gad3e3",
+      "vertices": [
+       2,
+       12,
+       14
+      ]
+     },
+     {
+      "bound": 2,
+      "gadget": "Gad3e3",
+      "vertices": [
+       2,
+       17,
+       18
+      ]
+     },
+     {
+      "bound": 2,
+      "gadget": "Gad3e3",
+      "vertices": [
+       3,
+       6,
+       21
+      ]
+     },
+     {
+      "bound": 2,
+      "gadget": "Gad3e3",
+      "vertices": [
+       3,
+       7,
+       14
+      ]
+     },
+     {
+      "bound": 2,
+      "gadget": "Gad3e3",
+      "vertices": [
+       4,
+       14,
+       17
+      ]
+     },
+     {
+      "bound": 2,
+      "gadget": "Gad3e3",
+      "vertices": [
+       7,
+       12,
+       18
+      ]
+     },
+     {
+      "bound": 2,
+      "gadget": "Gad3e3",
+      "vertices": [
+       7,
+       16,
+       17
+      ]
+     },
+     {
+      "bound": 2,
+      "gadget": "Gad3e3",
+      "vertices": [
+       10,
+       11,
+       16
+      ]
+     },
+     {
+      "bound": 2,
+      "gadget": "Gad3e3",
+      "vertices": [
+       10,
+       13,
+       21
+      ]
+     }
+    ],
+    "rest": [
+     [
+      0,
+      9
+     ],
+     [
+      0,
+      13
+     ],
+     [
+      0,
+      14
+     ],
+     [
+      0,
+      18
+     ],
+     [
+      0,
+      19
+     ],
+     [
+      1,
+      3
+     ],
+     [
+      1,
+      18
+     ],
+     [
+      1,
+      19
+     ],
+     [
+      3,
+      13
+     ],
+     [
+      3,
+      16
+     ],
+     [
+      3,
+      20
+     ],
+     [
+      4,
+      20
+     ],
+     [
+      5,
+      6
+     ],
+     [
+      5,
+      20
+     ],
+     [
+      5,
+      21
+     ],
+     [
+      6,
+      8
+     ],
+     [
+      6,
+      17
+     ],
+     [
+      7,
+      15
+     ],
+     [
+      7,
+      20
+     ],
+     [
+      8,
+      13
+     ],
+     [
+      8,
+      15
+     ],
+     [
+      8,
+      16
+     ],
+     [
+      8,
+      20
+     ],
+     [
+      9,
+      10
+     ],
+     [
+      9,
+      12
+     ],
+     [
+      10,
+      17
+     ],
+     [
+      10,
+      20
+     ],
+     [
+      11,
+      18
+     ],
+     [
+      11,
+      19
+     ],
+     [
+      11,
+      20
+     ],
+     [
+      14,
+      21
+     ],
+     [
+      15,
+      18
+     ],
+     [
+      16,
+      21
+     ]
+    ]
+   },
+   "modules": [
+    {
+     "name": "GTTask1",
+     "source": "import GTConcepts\nnamespace GTTask1\ndef host : GT.Edges := {(0, 1), (0, 2), (0, 5), (0, 6), (0, 7), (0, 9), (0, 10), (0, 11), (0, 13), (0, 14), (0, 16), (0, 18), (0, 19), (0, 20), (1, 3), (1, 4), (1, 6), (1, 10), (1, 11), (1, 18), (1, 19), (1, 21), (2, 12), (2, 14), (2, 16), (2, 17), (2, 18), (2, 20), (3, 6), (3, 7), (3, 13), (3, 14), (3, 16), (3, 20), (3, 21), (4, 6), (4, 9), (4, 11), (4, 14), (4, 15), (4, 17), (4, 20), (4, 21), (5, 6), (5, 7), (5, 11), (5, 20), (5, 21), (6, 8), (6, 9), (6, 10), (6, 15), (6, 17), (6, 21), (7, 11), (7, 12), (7, 14), (7, 15), (7, 16), (7, 17), (7, 18), (7, 20), (8, 13), (8, 15), (8, 16), (8, 20), (9, 10), (9, 12), (9, 15), (10, 11), (10, 13), (10, 16), (10, 17), (10, 20), (10, 21), (11, 16), (11, 18), (11, 19), (11, 20), (11, 21), (12, 14), (12, 18), (13, 21), (14, 17), (14, 21), (15, 18), (16, 17), (16, 20), (16, 21), (17, 18)}\ndef stmt : Prop := GT.TFBound host 71\nend GTTask1\n",
+     "trusted": true
+    },
+    {
+     "name": "GTCert1",
+     "source": "import GTConcepts\nimport GTTask1\nimport GTP1\nimport GTP10\nimport GTP11\nimport GTP12\nimport GTP13\nimport GTP14\nimport GTP15\nimport GTP16\nimport GTP2\nimport GTP3\nimport GTP4\nimport GTP5\nimport GTP6\nimport GTP7\nimport GTP8\nimport GTP9\nnamespace GTCert1\ndef rest : GT.Edges := {(0, 9), (0, 13), (0, 14), (0, 18), (0, 19), (1, 3), (1, 18), (1, 19), (3, 13), (3, 16), (3, 20), (4, 20), (5, 6), (5, 20), (5, 21), (6, 8), (6, 17), (7, 15), (7, 20), (8, 13), (8, 15), (8, 16), (8, 20), (9, 10), (9, 12), (10, 17), (10, 20), (11, 18), (11, 19), (11, 20), (14, 21), (15, 18), (16, 21)}\ntheorem proof : GTTask1.stmt := by\n  unfold GTTask1.stmt\n  have h0 : GT.TFBound (GT.Gad4e6 0 1 6 10) 4 := by decide\n  have h1 : GT.TFBound (GT.Gad4e6 0 2 16 20) 4 := by decide\n  have h2 : GT.TFBound (GT.Gad4e6 0 5 7 11) 4 := by decide\n  have h3 : GT.TFBound (GT.Gad4e6 1 4 11 21) 4 := by decide\n  have h4 : GT.TFBound (GT.Gad4e6 4 6 9 15) 4 := by decide\n  have h5 : GT.TFBound (GT.Gad3e3 2 12 14) 2 := by decide\n  have h6 : GT.TFBound (GT.Gad3e3 2 17 18) 2 := by decide\n  have h7 : GT.TFBound (GT.Gad3e3 3 6 21) 2 := by decide\n  have h8 : GT.TFBound (GT.Gad3e3 3 7 14) 2 := by decide\n  have h9 : GT.TFBound (GT.Gad3e3 4 14 17) 2 := by decide\n  have h10 : GT.TFBound (GT.Gad3e3 7 12 18) 2 := by decide\n  have h11 : GT.TFBound (GT.Gad3e3 7 16 17) 2 := by decide\n  have h12 : GT.TFBound (GT.Gad3e3 10 11 16) 2 := by decide\n  have h13 : GT.TFBound (GT.Gad3e3 10 13 21) 2 := by decide\n  have hr : GT.TFBound rest rest.card := GTP7.proof rest\n  exact GTP9.proof _ _ _ _ (GTP8.proof _ _ _ _ h0 (GTP8.proof _ _ _ _ h1 (GTP8.proof _ _ _ _ h2 (GTP8.proof _ _ _ _ h3 (GTP8.proof _ _ _ _ h4 (GTP8.proof _ _ _ _ h5 (GTP8.proof _ _ _ _ h6 (GTP8.proof _ _ _ _ h7 (GTP8.proof _ _ _ _ h8 (GTP8.proof _ _ _ _ h9 (GTP8.proof _ _ _ _ h10 (GTP8.proof _ _ _ _ h11 (GTP8.proof _ _ _ _ h12 (GTP8.proof _ _ _ _ h13 hr)))))))))))))) (by decide +kernel) (by decide +kernel)\nend GTCert1\n",
+     "trusted": false
+    }
+   ],
+   "stats": {
+    "check_sha256": "76038b4446615b38b2e1498b103cf66cc29d6a31e2f71417450a4b1837bcc488",
+    "cpu_ns": 24770853054,
+    "exit_code": 0,
+    "exits": {
+     "GTCert1": "0",
+     "GTP1": "0",
+     "GTP10": "0",
+     "GTP11": "0",
+     "GTP12": "0",
+     "GTP13": "0",
+     "GTP14": "0",
+     "GTP15": "0",
+     "GTP16": "0",
+     "GTP2": "0",
+     "GTP3": "0",
+     "GTP4": "0",
+     "GTP5": "0",
+     "GTP6": "0",
+     "GTP7": "0",
+     "GTP8": "0",
+     "GTP9": "0",
+     "check": "0"
+    },
+    "log": "",
+    "peak_memory_bytes": 550535168,
+    "status": "SUCCESS",
+    "wall_ns": 25306104536
+   },
+   "status": "CHECKED",
+   "task_id": "dev-erdos-80a647eb-20261017-0001",
+   "uses_package_lemmas": [
+    "GTP7.proof",
+    "GTP8.proof",
+    "GTP9.proof"
+   ]
+  }
+ ]
+}

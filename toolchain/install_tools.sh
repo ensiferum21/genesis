@@ -3,7 +3,8 @@
 # ${GENESIS_TOOLCHAIN:-$HOME/toolchain}.
 #   * zstd, CaDiCaL, drat-trim and E: toolchain/build_reproducible.sh (git clone at the
 #     pinned commit, path- and date-independent flags);
-#   * Lean: the upstream release tarball, checked against its pinned SHA-256.
+#   * Lean: the upstream release tarball, checked against its pinned SHA-256;
+#   * the Lean/Mathlib workspace: toolchain/build_formal_workspace.py (FORMAL_WORKSPACE.json).
 # Then every binary is compared with PINS.json and the known-answer suite is run.
 # A hash mismatch (e.g. another compiler) is reported, never silently accepted: see
 # toolchain/revise_pins.py for the only way to change a pin.
@@ -23,3 +24,8 @@ if [ ! -x "lean-$LV-linux/bin/lean" ]; then
 fi
 python3 "$HERE/check_pins.py" "$T"
 python3 "$HERE/known_answers.py" "$T" >/dev/null && echo "known answers: all pass"
+# Lean/Mathlib research workspace (W08): pinned sources, import closure built locally and offline.
+if [ ! -f "$T/formal-workspace/WORKSPACE_MANIFEST.json" ]; then
+  python3 "$HERE/build_formal_workspace.py" build "$T/formal-workspace"
+fi
+python3 "$HERE/build_formal_workspace.py" check "$T/formal-workspace"

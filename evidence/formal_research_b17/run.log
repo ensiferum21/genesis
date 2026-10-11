@@ -1,0 +1,193 @@
+[   24.0s] down_closed: CHECKED (apply-hyp:h2)
+[   31.9s] union_closed: DISPROVED (counterexample-evaluation)
+[   40.8s] union_closed_simple: DISPROVED (counterexample-evaluation)
+[   72.4s] inter_closed: CHECKED (unfold-aesop)
+[   83.3s] insert_closed: DISPROVED (counterexample-evaluation)
+[   95.2s] insert_closed_simple: DISPROVED (counterexample-evaluation)
+[  110.6s] bound_card: CHECKED (unfold-solve)
+[  136.1s] bound_union: CHECKED (cover-split:GTP1.proof)
+[  158.8s] bound_mono: CHECKED (specialize-omega:h1)
+[  173.8s] bound_insert: DISPROVED (counterexample-evaluation)
+[  190.1s] bound_le_card: DISPROVED (counterexample-evaluation)
+[  207.8s] bound_zero_empty: DISPROVED (counterexample-evaluation)
+[  260.0s] bound_zero_empty_simple: UNRESOLVED
+[  265.6s] mantel: UNRESOLVED
+[  287.6s] gadget_Gad3e3_bound: CHECKED (decide)
+[  312.2s] gadget_Gad3e3_tight: CHECKED (decide)
+[  340.4s] gadget_Gad4e6_bound: CHECKED (decide)
+[  368.8s] gadget_Gad4e6_tight: CHECKED (decide)
+[  430.8s] certificate dev-erdos-80a647eb-20261017-0000: CHECKED bound 68
+[  470.9s] certificate dev-erdos-80a647eb-20261017-0001: CHECKED bound 71
+{
+ "calibration_record_sha256": "a0c329f97da2bd750c158db1265d1c92544bffecb373138ce8ca9f5fc3299620",
+ "certificates": [
+  [
+   "dev-erdos-80a647eb-20261017-0000",
+   "CHECKED",
+   68,
+   [
+    "GTP7.proof",
+    "GTP8.proof",
+    "GTP9.proof"
+   ]
+  ],
+  [
+   "dev-erdos-80a647eb-20261017-0001",
+   "CHECKED",
+   71,
+   [
+    "GTP7.proof",
+    "GTP8.proof",
+    "GTP9.proof"
+   ]
+  ]
+ ],
+ "costs": {
+  "acceptance_check_cpu_ns": 157482106928,
+  "acceptance_runs": 19,
+  "search_candidates": 148,
+  "search_context_cpu_ns": 30641989471,
+  "search_cpu_ns": 132734020490,
+  "search_runs": 18,
+  "wall_seconds": 470.9
+ },
+ "method_evaluation": {
+  "all_sound": true,
+  "split": "DEV",
+  "tasks": [
+   {
+    "bound": 68,
+    "edges": 86,
+    "gadgets_used": 12,
+    "gap": 4,
+    "optimum": 64,
+    "sound": true,
+    "task_id": "dev-erdos-80a647eb-20261017-0000"
+   },
+   {
+    "bound": 71,
+    "edges": 90,
+    "gadgets_used": 14,
+    "gap": 7,
+    "optimum": 64,
+    "sound": true,
+    "task_id": "dev-erdos-80a647eb-20261017-0001"
+   },
+   {
+    "bound": 75,
+    "edges": 96,
+    "gadgets_used": 14,
+    "gap": 9,
+    "optimum": 66,
+    "sound": true,
+    "task_id": "dev-erdos-80a647eb-20261017-0002"
+   },
+   {
+    "bound": 71,
+    "edges": 93,
+    "gadgets_used": 17,
+    "gap": 6,
+    "optimum": 65,
+    "sound": true,
+    "task_id": "dev-erdos-80a647eb-20261017-0003"
+   },
+   {
+    "bound": 53,
+    "edges": 66,
+    "gadgets_used": 12,
+    "gap": 2,
+    "optimum": 51,
+    "sound": true,
+    "task_id": "dev-erdos-80a647eb-20261017-0004"
+   },
+   {
+    "bound": 57,
+    "edges": 73,
+    "gadgets_used": 14,
+    "gap": 1,
+    "optimum": 56,
+    "sound": true,
+    "task_id": "dev-erdos-80a647eb-20261017-0005"
+   },
+   {
+    "bound": 61,
+    "edges": 78,
+    "gadgets_used": 14,
+    "gap": 5,
+    "optimum": 56,
+    "sound": true,
+    "task_id": "dev-erdos-80a647eb-20261017-0006"
+   },
+   {
+    "bound": 64,
+    "edges": 79,
+    "gadgets_used": 12,
+    "gap": 4,
+    "optimum": 60,
+    "sound": true,
+    "task_id": "dev-erdos-80a647eb-20261017-0007"
+   },
+   {
+    "bound": 60,
+    "edges": 74,
+    "gadgets_used": 10,
+    "gap": 5,
+    "optimum": 55,
+    "sound": true,
+    "task_id": "dev-erdos-80a647eb-20261017-0008"
+   },
+   {
+    "bound": 62,
+    "edges": 76,
+    "gadgets_used": 11,
+    "gap": 3,
+    "optimum": 59,
+    "sound": true,
+    "task_id": "dev-erdos-80a647eb-20261017-0009"
+   },
+   {
+    "bound": 71,
+    "edges": 86,
+    "gadgets_used": 11,
+    "gap": 6,
+    "optimum": 65,
+    "sound": true,
+    "task_id": "dev-erdos-80a647eb-20261017-0010"
+   },
+   {
+    "bound": 72,
+    "edges": 99,
+    "gadgets_used": 19,
+    "gap": 6,
+    "optimum": 66,
+    "sound": true,
+    "task_id": "dev-erdos-80a647eb-20261017-0011"
+   }
+  ]
+ },
+ "package_sha256": "6550a279c6cb4010aae5ab2e002fb6b59465b9f3d0a8418b5009fec3009d780c",
+ "replay": "REPLAYED",
+ "replay_differences": [],
+ "statements": {
+  "bound_card": "CHECKED",
+  "bound_insert": "DISPROVED",
+  "bound_le_card": "DISPROVED",
+  "bound_mono": "CHECKED",
+  "bound_union": "CHECKED",
+  "bound_zero_empty": "DISPROVED",
+  "bound_zero_empty_simple": "UNRESOLVED",
+  "c4_down_closed": "UNSUPPORTED",
+  "down_closed": "CHECKED",
+  "gadget_Gad3e3_bound": "CHECKED",
+  "gadget_Gad3e3_tight": "CHECKED",
+  "gadget_Gad4e6_bound": "CHECKED",
+  "gadget_Gad4e6_tight": "CHECKED",
+  "insert_closed": "DISPROVED",
+  "insert_closed_simple": "DISPROVED",
+  "inter_closed": "CHECKED",
+  "mantel": "UNRESOLVED",
+  "union_closed": "DISPROVED",
+  "union_closed_simple": "DISPROVED"
+ }
+}
+rc=0

@@ -1,0 +1,143 @@
+"""Proof search (roadmap W08: "separate proof search and proof acceptance").
+
+Search is untrusted. It compiles its own context, tries candidate proofs and reports
+which compiled. Nothing it produces is accepted here: a candidate becomes a library
+lemma only after `checker.accept` has recompiled it from source in fresh sandboxes,
+bound it to its trusted statement and audited it.
+
+Candidates come from recipes. The recipes are builder-written, generic tactic programs
+parameterised by the conjecture's binders, the definitions it mentions and the lemmas
+already in the accepted library. Which recipe proves which conjecture, and which library
+lemmas a proof uses, is found by running them. The receipts name the recipe of every
+attempt, so a reviewer can see how much of a proof the search found and how much the
+recipe supplied.
+
+All candidates for one conjecture are elaborated in one sandbox run, each as its own
+theorem. Lean reports errors with line numbers, so every candidate gets its own verdict.
+Every attempt is charged, including the ones that fail.
+"""
+import re
+
+from ..common import bytes_hash, digest
+from . import checker as C
+
+
+def _binders(conj):
+    return [b['name'] for b in conj['binders']]
+
+
+def _hyps(conj):
+    return [b['name'] for b in conj['binders'] if b.get('hyp')]
+
+
+def recipes(conj, library, unfold):
+    """[(recipe id, tactic text)] for a conjecture. Tactic text is a tactic block whose
+    lines are relative to the block's own column. `library` lists accepted lemmas as
+    {'const': 'GTP3.proof', 'statement': id}; `unfold` lists definitions to unfold."""
+    names = _binders(conj)
+    intro = f'intro {" ".join(names)}' if names else 'skip'
+    # `unfold` fails when a definition does not occur, so each one is tried in turn (outermost
+    # first: unfolding a bound exposes the predicate inside it)
+    unf = '\n'.join(f'try unfold {d} at *' for d in unfold) if unfold else 'skip'
+    edges = [b['name'] for b in conj['binders'] if b.get('type') == 'GT.Edges']
+    out = [('decide', ['decide']),
+           ('decide-kernel', ['decide +kernel']),
+           ('unfold-simp', [intro, f'simp_all [{", ".join(unfold)}]' if unfold else 'simp_all']),
+           ('unfold-aesop', [intro, unf, 'aesop']),
+           ('unfold-omega', [intro, unf, 'intros', 'omega']),
+           ('unfold-solve', ['intros', unf, 'solve_by_elim [Finset.card_le_card, Finset.Subset.trans]'])]
+    for h in _hyps(conj):
+        out.append((f'apply-hyp:{h}', [intro, unf, 'intros', f'apply {h} <;> solve_by_elim']))
+        # instantiate a universally quantified hypothesis at the goal's objects, then arithmetic
+        out.append((f'specialize-omega:{h}', [intro, unf, 'intro S hS hT',
+                                              f'have := {h} S (by solve_by_elim [Finset.Subset.trans]) hT',
+                                              'omega']))
+    for lem in library:
+        c = lem['const']
+        out.append((f'library-elim:{c}', [intro, f'solve_by_elim [{c}, Finset.inter_subset_left, '
+                                                  'Finset.inter_subset_right, Finset.Subset.refl]']))
+        # cover strategy: split a subset S of A ∪ B along the cover, bound each part with the
+        # hypotheses, using a down-closure lemma from the library for the restricted parts
+        hyps = _hyps(conj)
+        if len(hyps) >= 2 and len(edges) >= 2:
+            (ha, hb), (a, b) = hyps[:2], edges[:2]
+            out.append((f'cover-split:{c}', [
+                intro, unf, 'intro S hS hT',
+                f'have h1 := {ha} (S ∩ {a}) Finset.inter_subset_right ({c} _ _ Finset.inter_subset_left hT)',
+                f'have h2 := {hb} (S ∩ {b}) Finset.inter_subset_right ({c} _ _ Finset.inter_subset_left hT)',
+                f'have h3 : S ⊆ S ∩ {a} ∪ S ∩ {b} := by',
+                '  intro x hx; have := hS hx; simp only [Finset.mem_union, Finset.mem_inter] at this ⊢; tauto',
+                'have h4 := (Finset.card_le_card h3).trans (Finset.card_union_le _ _)',
+                'omega']))
+    return [(rid, '\n'.join(lines)) for rid, lines in out]
+
+
+def disproof_recipe(conj, counterexample):
+    """The proof of `¬ conj` from a counterexample found by the Python model: instantiate
+    every binder, discharge every hypothesis and refute the conclusion by evaluation."""
+    args = ' '.join(f'({counterexample["values"][b["name"]]})' if not b.get('hyp') else '(by decide +kernel)'
+                    for b in conj['binders'])
+    return f'intro h\nexact absurd (h {args}) (by decide +kernel)'
+
+
+def candidate_module(name, target, unfold_first, imports, candidates):
+    """One module holding every candidate as its own theorem; returns (source, line ranges)."""
+    lines = [f'import {m}' for m in imports] + [f'namespace {name}']
+    ranges = {}
+    for j, (rid, text) in enumerate(candidates):
+        start = len(lines) + 1
+        lines.append(f'theorem cand_{j} : {target} := by')
+        lines.append(f'  unfold {" ".join(unfold_first)}')
+        lines += ['  ' + t for t in text.split('\n')]
+        ranges[j] = (start, len(lines))
+    lines.append(f'end {name}')
+    return '\n'.join(lines) + '\n', ranges
+
+
+def proof_module(name, target, unfold_first, imports, tactic):
+    """The proof module submitted for acceptance: `theorem proof : target := by ...`."""
+    lines = [f'import {m}' for m in imports] + [f'namespace {name}', f'theorem proof : {target} := by',
+                                                f'  unfold {" ".join(unfold_first)}']
+    lines += ['  ' + t for t in tactic.split('\n')] + [f'end {name}']
+    return '\n'.join(lines) + '\n'
+
+
+def target_of(conj_const, counterexample):
+    """The constant a proof must inhabit, and what to unfold first. A disproof proves the
+    trusted negation constant `<conjecture>_negation`."""
+    if counterexample:
+        return conj_const + '_negation', [conj_const + '_negation', conj_const]
+    return conj_const, [conj_const]
+
+
+def search(conj, *, conj_const, context, library, unfold, counterexample=None, env=None, policy=C.POLICY):
+    """Try the recipes for `conj` (or its disproof) against compiled `context`
+    ({'imports': [module names], 'artifacts': {file: bytes}}). Never accepts anything."""
+    env = env or C._env()
+    target, unfold_first = target_of(conj_const, counterexample)
+    if counterexample:
+        cands = [('counterexample-evaluation', disproof_recipe(conj, counterexample))]
+    else:
+        cands = recipes(conj, library, unfold)
+    name = 'GTSearch' + digest({'c': conj_const, 'x': counterexample})[:8].upper().replace('-', 'X')
+    name = re.sub(r'[^A-Za-z0-9]', 'X', name)
+    source, ranges = candidate_module(name, target, unfold_first, context['imports'], cands)
+    r = C.compile_module(name, source, context['artifacts'], env, policy)
+    errors = [int(n) for n in re.findall(rf'(?m)^{name}\.lean:(\d+):\d+: error', r['log'])] \
+        if r['result'] != 'COMPILED' else []
+    whole_failed = r['result'] in ('TIMEOUT', 'RESOURCE_LIMIT', 'CHECKER_ERROR') or \
+        (r['result'] != 'COMPILED' and not errors)
+    attempts = []
+    for j, (rid, text) in enumerate(cands):
+        lo, hi = ranges[j]
+        bad = whole_failed or any(lo <= n <= hi for n in errors) or \
+            re.search(rf'declaration uses .sorry.', r['log']) is not None
+        attempts.append({'recipe': rid, 'tactic_sha256': bytes_hash(text.encode()), 'compiled': not bad})
+    found = next(((cands[j][0], cands[j][1]) for j, a in enumerate(attempts) if a['compiled']), None)
+    return {'target': target, 'module_sha256': bytes_hash(source.encode()), 'result': r['result'],
+            'stats': r['stats'], 'attempts': attempts, 'found': found,
+            'charged': {'candidates': len(cands), 'cpu_ns': r['stats'].get('cpu_ns'),
+                        'wall_ns': r['stats'].get('wall_ns')}}
+
+
+__all__ = ['recipes', 'disproof_recipe', 'search', 'proof_module', 'candidate_module', 'target_of']

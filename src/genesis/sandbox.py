@@ -303,6 +303,7 @@ def _run_local(files, argv, policy, *, ro_mounts=None, env=None):
             subprocess.run([RUNC, 'kill', cid, 'KILL'], capture_output=True)
             proc.wait(timeout=10); status = status or 'TIMEOUT'
         sel.close()
+        proc.stdout.close(); proc.stderr.close()
         wall = time.monotonic_ns() - start
         stats = _cgroup_stat(cid)
         code = proc.returncode

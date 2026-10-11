@@ -11,7 +11,7 @@ Columns keep four things apart: implementation, local execution (tests ran in th
 | Specification §1-48 | 157 | 0 | 0 | 87 | 46 | 20 | 2 | 1 | 1 |
 | Roadmap defects | 4 | 0 | 0 | 4 | 0 | 0 | 0 | 0 | 0 |
 | Gates | 9 | 0 | 0 | 0 | 0 | 9 | 0 | 0 | 0 |
-| Workstreams | 28 | 0 | 0 | 7 | 0 | 21 | 0 | 0 | 0 |
+| Workstreams | 28 | 0 | 0 | 9 | 0 | 19 | 0 | 0 | 0 |
 | Experiments | 8 | 0 | 0 | 0 | 0 | 8 | 0 | 0 | 0 |
 | Engine catalogue (137) | 137 | 0 | 0 | 5 | 0 | 117 | 0 | 0 | 15 |
 
@@ -42,7 +42,7 @@ Proposed DEFERRED_EXTENSION rows remain NOT_IMPLEMENTED until Daniel agrees the 
 | SPEC-4.3 | Epistemic type and effect system | IMPLEMENTED_BOUNDED_PENDING_AUDIT | epistemic effects with propagation; speculative taint resolved only by passing checks | tests_genesis/test_evidence_kernel.py::MathPromotion | — | — | N/A |
 | SPEC-4.4 | MRDL: minimal representation description language | IMPLEMENTED_BOUNDED_PENDING_AUDIT | MRDL bounded graph vocabulary | tests_genesis/test_graphs.py | typed representation invention (W10) | — | N/A |
 | SPEC-5 | The complete discovery loop | NOT_A_REQUIREMENT | heading | — | — | — | N/A |
-| SPEC-5.1 | Stage A - contract and faithful formalization | IMPLEMENTED_BOUNDED_PENDING_AUDIT | task contracts for two graph domains through the DomainAdapter interface (parse, exposure identity, candidate/evaluator views, validity, score, certified reference, obligations, cost, families, replay); formalization is fixed, not faithful-formalization research | tests_genesis/test_domain_adapters.py<br>tests_genesis/test_graphs.py | Lean domain adapter (W08)<br>faithful formalization of natural-language statements (W17) | — | N/A |
+| SPEC-5.1 | Stage A - contract and faithful formalization | IMPLEMENTED_BOUNDED_PENDING_AUDIT | task contracts for two graph domains through the DomainAdapter interface (parse, exposure identity, candidate/evaluator views, validity, score, certified reference, obligations, cost, families, replay); formalization is fixed, not faithful-formalization research | tests_genesis/test_domain_adapters.py<br>tests_genesis/test_graphs.py<br>tests_formal/test_formal_research.py | faithful formalization of natural-language statements (W17) | — | N/A |
 | SPEC-5.2 | Stage B - identifiability and ignorance analysis | NOT_IMPLEMENTED | identifiability and ignorance analysis | — | identifiability engine (W14) | — | NOT_TESTED |
 | SPEC-5.3 | Stage C - gap diagnosis before brute force | IMPLEMENTED_BOUNDED_PENDING_AUDIT | gap diagnosis macro (gap_engine) | tests_genesis/test_macros_market.py::Macros | — | — | NOT_TESTED |
 | SPEC-5.4 | Stage D - competing mathematical/scientific worlds | IMPLEMENTED_BOUNDED_PENDING_AUDIT | bounded world ecology over solver programs | tests_genesis/test_macros_market.py::WorldLoop | explicit assumptions/ontologies and checked transport (W12) | — | NOT_TESTED |
@@ -155,12 +155,12 @@ Proposed DEFERRED_EXTENSION rows remain NOT_IMPLEMENTED until Daniel agrees the 
 | SPEC-35 | Leak scanner and contamination firewall | IMPLEMENTED_BOUNDED_PENDING_AUDIT | leak scanner and contamination firewall | tests_genesis/test_leak_firewall.py | — | — | N/A |
 | SPEC-35.1 | Canonicalization requirements | IMPLEMENTED_BOUNDED_PENDING_AUDIT | canonicalization: alpha/structural, elaborated Lean fingerprints, graph WL+VF2 | tests_genesis/test_leak_firewall.py::Elaborated | — | — | N/A |
 | SPEC-36 | Domain adapter contract and worked C4 flow | NOT_A_REQUIREMENT | heading | — | — | — | N/A |
-| SPEC-36.1 | Required DomainAdapter interface | IMPLEMENTED_BOUNDED_PENDING_AUDIT | DomainAdapter interface with conformance suite run against every registered adapter | tests_genesis/test_domain_adapters.py | Lean domain adapter (W08) | — | N/A |
+| SPEC-36.1 | Required DomainAdapter interface | IMPLEMENTED_BOUNDED_PENDING_AUDIT | DomainAdapter interface: conformance suite for the graph adapters; the Lean statement adapter (B17) conforms with explicit UNSUPPORTED exact references and is not a sealed-receipt domain | tests_genesis/test_domain_adapters.py<br>tests_formal/test_formal_research.py | — | — | N/A |
 | SPEC-36.2 | Worked C4 research trace | IMPLEMENTED_BOUNDED_PENDING_AUDIT | worked C4 flow = e2e walkthrough (re-run in B14: evidence/e2e_walkthrough_b14) | — | — | — | N/A |
 | SPEC-36.3 | Required fixtures | IMPLEMENTED_BOUNDED_PENDING_AUDIT | fixtures (hard panels, ladder answer key) | tests_certificates/test_hard_panels.py<br>tests_genesis/test_ladder.py::AnswerKeyIntegrity | — | — | N/A |
 | SPEC-37 | Lean integration contract | NOT_A_REQUIREMENT | heading | — | — | — | N/A |
-| SPEC-37.1 | Lean worker responsibilities | IMPLEMENTED_BOUNDED_PENDING_AUDIT | Lean worker in sandbox for finite witness obligations | tests_formal/test_lean_checker.py | Mathlib workspace (W08) | — | N/A |
-| SPEC-37.2 | Formal checker responsibilities | IMPLEMENTED_BOUNDED_PENDING_AUDIT | trusted spec / untrusted proof / trusted check; axiom audit; leanchecker | tests_formal/test_lean_checker.py::DefenceInDepth | kernel replay contract so THEOREM_CHECKED is reachable (B14-OPEN-4) | — | N/A |
+| SPEC-37.1 | Lean worker responsibilities | IMPLEMENTED_BOUNDED_PENDING_AUDIT | Lean worker in sandbox for finite witness obligations; pinned Lean/Mathlib workspace (B17): pinned commits, import closure built offline without Lake cache, audited artifacts, mounted read-only | tests_formal/test_lean_checker.py<br>tests_formal/test_formal_research.py | byte-identical workspace artifacts on a second machine | — | N/A |
+| SPEC-37.2 | Formal checker responsibilities | IMPLEMENTED_BOUNDED_PENDING_AUDIT | trusted spec / untrusted proof / trusted check; axiom audit; leanchecker; module chains with per-binding statements, declaration extraction and dependency closure (B17) | tests_formal/test_lean_checker.py::DefenceInDepth<br>tests_formal/test_formal_research.py::Acceptance | kernel replay contract so THEOREM_CHECKED is reachable (B14-OPEN-4) | — | N/A |
 | SPEC-37.3 | Theorem-memory rule | IMPLEMENTED_BOUNDED_PENDING_AUDIT | theorem-memory rule with transitive revocation | tests_genesis/test_leak_firewall.py::TheoremMemoryRule | — | — | N/A |
 | SPEC-38 | Test and CI matrix | IMPLEMENTED_BOUNDED_PENDING_AUDIT | test and CI matrix; skips in release-blocking suites fail; clean-room reproduction driver | tests_genesis/test_matrix_classes.py<br>tests_genesis/test_reproduce.py | independent run on a second supported host (R-04) | second machine | N/A |
 | SPEC-38.1 | Property-test examples | IMPLEMENTED_BOUNDED_PENDING_AUDIT | seeded property loops under unittest | tests_genesis/test_store.py | Hypothesis not installable here | — | N/A |
@@ -194,7 +194,7 @@ Proposed DEFERRED_EXTENSION rows remain NOT_IMPLEMENTED until Daniel agrees the 
 |---|---|---|---|---|---|---|---|
 | GV0 | trust repaired: R-01..R-04 closed, no critical evidence-integrity defect open | NOT_IMPLEMENTED | trust repaired: R-01..R-04 closed, no critical evidence-integrity defect open | — | — | R-04 second-machine acceptance<br>independent source review | N/A |
 | GV1 | bounded platform accepted | NOT_IMPLEMENTED | bounded platform accepted | — | — | independent release-matrix run<br>audited bundle | N/A |
-| GV2 | real formal discovery loop | NOT_IMPLEMENTED | real formal discovery loop | — | — | Mathlib workspace<br>theory packages | NOT_TESTED |
+| GV2 | real formal discovery loop | NOT_IMPLEMENTED | real formal discovery loop | — | — | independent replay of the B17 theory package<br>conjectures and proofs beyond builder templates and rediscovery | NOT_TESTED |
 | GV3 | useful verified discovery on fresh tasks | NOT_IMPLEMENTED | useful verified discovery on fresh tasks | — | — | independent custodian<br>fresh panels | NOT_TESTED |
 | GV4 | better improver | NOT_IMPLEMENTED | better improver | — | — | independent search runs<br>sealed downstream evaluation | NOT_TESTED |
 | GV5 | three compounding generations | NOT_IMPLEMENTED | three compounding generations | — | — | fresh panels per transition | NOT_TESTED |
@@ -213,10 +213,10 @@ Proposed DEFERRED_EXTENSION rows remain NOT_IMPLEMENTED until Daniel agrees the 
 | W05 | Domain contracts and calibration | IMPLEMENTED_BOUNDED_PENDING_AUDIT | workstream (B14 scope delivered; acceptance pending) | tests_genesis/test_domain_adapters.py<br>tests_genesis/test_calibration.py | — | — | N/A |
 | W06 | Independent custody and preregistration | IMPLEMENTED_BOUNDED_PENDING_AUDIT | workstream (B14 scope delivered; acceptance pending) | tests_genesis/test_evaluator_readiness.py<br>tests_genesis/test_redteam_b16.py | — | — | N/A |
 | W07 | Statistics, fairness and decision rules | IMPLEMENTED_BOUNDED_PENDING_AUDIT | workstream (B14 scope delivered; acceptance pending) | tests_genesis/test_analysis_v2.py<br>tests_genesis/test_evaluator_readiness.py<br>tests_genesis/test_resources.py | — | — | N/A |
-| W08 | Lean and Mathlib research workspace | NOT_IMPLEMENTED | workstream | — | not started in B14 | — | N/A |
+| W08 | Lean and Mathlib research workspace | IMPLEMENTED_BOUNDED_PENDING_AUDIT | workstream (B14 scope delivered; acceptance pending) | tests_formal/test_formal_research.py | — | — | N/A |
 | W09 | TCSR and missing-concept recovery | NOT_IMPLEMENTED | workstream | — | not started in B14 | — | N/A |
 | W10 | Representation and ontology invention | NOT_IMPLEMENTED | workstream | — | not started in B14 | — | N/A |
-| W11 | Theory-centered discovery and theory packages | NOT_IMPLEMENTED | workstream | — | not started in B14 | — | N/A |
+| W11 | Theory-centered discovery and theory packages (first package path only) | IMPLEMENTED_BOUNDED_PENDING_AUDIT | workstream (B14 scope delivered; acceptance pending) | tests_formal/test_formal_research.py::CommittedPackage | — | — | N/A |
 | W12 | Worlds, counterfactual theories and transport | NOT_IMPLEMENTED | workstream | — | not started in B14 | — | N/A |
 | W13 | Construction, obstruction and certified reductions | NOT_IMPLEMENTED | workstream | — | not started in B14 | — | N/A |
 | W14 | Active experiments and identifiability | NOT_IMPLEMENTED | workstream | — | not started in B14 | — | N/A |

@@ -8,7 +8,8 @@ Steps, each recorded in the report; the first failing step stops the run:
   1  checkpoint bytes match the SHA-256 given out of band;
   2  safe extraction; every member matches CHECKPOINT_MANIFEST.json, nothing extra;
   3  the git bundle contains the recorded commit, whose tree equals the extracted tree;
-  4  toolchain: use --toolchain, or build it from source (--build-toolchain, needs GitHub);
+  4  toolchain: use --toolchain, or build it from source (--build-toolchain, needs GitHub),
+     including the Lean/Mathlib workspace, whose artifacts are then audited against its pins;
   5  host check against deployment/SUPPORTED_PLATFORM.json (`genesis platform check`);
   6  the release test matrix (all suites; the sandbox suites need root);
   7  deterministic reference computations equal deployment/EXPECTED_RESULTS.json.
@@ -167,7 +168,13 @@ def main(argv=None):
                                   cwd=tree, log=logs / 'check_pins.log')
             if code:
                 raise Step('pinned binaries or pin history do not match; see logs/check_pins.log')
-            return {'toolchain': str(toolchain), 'built_here': a.build_toolchain, 'pins': out.strip().splitlines()}
+            code, ws, secs = run([sys.executable, str(tree / 'toolchain/build_formal_workspace.py'), 'check',
+                                  str(toolchain / 'formal-workspace')], env=env, cwd=tree,
+                                 log=logs / 'formal_workspace.log')
+            if code:
+                raise Step('the Lean/Mathlib workspace is missing or differs from its pins; see logs/formal_workspace.log')
+            return {'toolchain': str(toolchain), 'built_here': a.build_toolchain, 'pins': out.strip().splitlines(),
+                    'formal_workspace': json.loads(ws)}
         step('4 toolchain', s4)
 
         def s5():

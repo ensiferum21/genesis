@@ -129,3 +129,16 @@ The review keeps GV0 and R-04 open. Wheel archive hashes still need PyPI access.
 - **New residual: B16-OPEN-2.** The power analysis rests on a modelling assumption,
   the headroom-limited integer-improvement model with a design effect of 0.5 edges
   per task. It needs independent review (see `evidence/study_design_b16/STUDY_DESIGN.md`).
+
+## B17 outcome (W08, first theory-package path)
+
+The exit "real generated reusable Lean artifacts replay" is met by the builder only:
+`evidence/formal_research_b17/replay.json` reports REPLAYED. An independent replay is
+outstanding (see `docs/checkpoints/B17_REVIEW_BRIEF.md`).
+
+| ID | Residual | Needs |
+|---|---|---|
+| B17-OPEN-1 | Proof strategies are builder-written recipes. Search chooses among them and fills in binders and library lemmas, but it does not invent strategies. Two true statements stay UNRESOLVED. | learned or open-ended proof search (W18, W20) |
+| B17-OPEN-2 | Workspace artifacts are byte-identical across two builds on one host only. | the R-04 second machine |
+| B17-OPEN-3 | The package is elementary rediscovery. The method is sound but not tight on DEV (gap 1–9 edges) and certified no optimum. W11's done-when (a structural result used by a solver on fresh tasks) is not met. | W11, W13 |
+

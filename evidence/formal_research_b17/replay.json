@@ -1,0 +1,103 @@
+{
+ "acceptance_receipt_sha256": "50d7cded6d9d08ceaab996f80e9141ac87eae63eb1e21731c39231e62358dd6d",
+ "bindings": [
+  [
+   "GTP1.proof",
+   "CHECKED"
+  ],
+  [
+   "GTP2.proof",
+   "CHECKED"
+  ],
+  [
+   "GTP3.proof",
+   "CHECKED"
+  ],
+  [
+   "GTP4.proof",
+   "CHECKED"
+  ],
+  [
+   "GTP5.proof",
+   "CHECKED"
+  ],
+  [
+   "GTP6.proof",
+   "CHECKED"
+  ],
+  [
+   "GTP7.proof",
+   "CHECKED"
+  ],
+  [
+   "GTP8.proof",
+   "CHECKED"
+  ],
+  [
+   "GTP9.proof",
+   "CHECKED"
+  ],
+  [
+   "GTP10.proof",
+   "CHECKED"
+  ],
+  [
+   "GTP11.proof",
+   "CHECKED"
+  ],
+  [
+   "GTP12.proof",
+   "CHECKED"
+  ],
+  [
+   "GTP13.proof",
+   "CHECKED"
+  ],
+  [
+   "GTP14.proof",
+   "CHECKED"
+  ],
+  [
+   "GTP15.proof",
+   "CHECKED"
+  ],
+  [
+   "GTP16.proof",
+   "CHECKED"
+  ]
+ ],
+ "certificates": [
+  {
+   "status": "CHECKED",
+   "task_id": "dev-erdos-80a647eb-20261017-0000"
+  },
+  {
+   "status": "CHECKED",
+   "task_id": "dev-erdos-80a647eb-20261017-0001"
+  }
+ ],
+ "checked_in_lean": true,
+ "differences": [],
+ "environment": {
+  "allowed_axioms": [
+   "Classical.choice",
+   "Quot.sound",
+   "propext"
+  ],
+  "forbidden_patterns_sha256": "9fd4c6ac9bc7916090106c8d787616b03472c6dec29438513221124ba053442e",
+  "lean": "lean@e8baaa71855a616d",
+  "lean_sha256": "e8baaa71855a616dc351028f3ad2200051b0671f423a1696a100e809302d5550",
+  "workspace": {
+   "artifact_identity": "95a6ec9f1aadc0d8d1936c34bd0ce4e144b0e35c85df12543cdcafe9ebf36b41",
+   "import_roots": [
+    "Mathlib.Data.Finset.Powerset"
+   ],
+   "mathlib_rev": "d13f23b723b8a846827a245b89c10fc7d3f11612",
+   "source_identity": "a3a7569b6d7636a844c87c2b72ef2170eda0f712ff8d9a1b0f15b069e301c7ef"
+  }
+ },
+ "package_sha256": "6550a279c6cb4010aae5ab2e002fb6b59465b9f3d0a8418b5009fec3009d780c",
+ "replayed_at": "2026-10-11T10:05:51.264429+00:00",
+ "schema": "genesis-theory-replay-v1",
+ "verdict": "REPLAYED"
+}

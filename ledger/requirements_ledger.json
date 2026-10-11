@@ -544,7 +544,8 @@
    "code": [
     "src/genesis/domains.py",
     "src/genesis/models.py",
-    "src/genesis/graphs.py"
+    "src/genesis/graphs.py",
+    "src/genesis/formal_research/lean_domain.py"
    ],
    "disposition": "IMPLEMENTED_BOUNDED_PENDING_AUDIT",
    "evidence": [],
@@ -555,7 +556,6 @@
    "local_execution": "TESTS_EXECUTED_IN_MATRIX",
    "owner": "research implementer",
    "remaining": [
-    "Lean domain adapter (W08)",
     "faithful formalization of natural-language statements (W17)"
    ],
    "scientific_efficacy": "N/A",
@@ -563,7 +563,8 @@
    "source": "spec \u00a75.1 (p. 14)",
    "tests": [
     "tests_genesis/test_domain_adapters.py",
-    "tests_genesis/test_graphs.py"
+    "tests_genesis/test_graphs.py",
+    "tests_formal/test_formal_research.py"
    ],
    "title": "Stage A - contract and faithful formalization",
    "workstream": "W05"
@@ -3476,7 +3477,8 @@
     "decision": "PENDING_INDEPENDENT_ACCEPTANCE"
    },
    "code": [
-    "src/genesis/domains.py"
+    "src/genesis/domains.py",
+    "src/genesis/formal_research/lean_domain.py"
    ],
    "disposition": "IMPLEMENTED_BOUNDED_PENDING_AUDIT",
    "evidence": [],
@@ -3486,14 +3488,13 @@
    "independent_verification": "PENDING",
    "local_execution": "TESTS_EXECUTED_IN_MATRIX",
    "owner": "research implementer",
-   "remaining": [
-    "Lean domain adapter (W08)"
-   ],
+   "remaining": [],
    "scientific_efficacy": "N/A",
-   "scope": "DomainAdapter interface with conformance suite run against every registered adapter",
+   "scope": "DomainAdapter interface: conformance suite for the graph adapters; the Lean statement adapter (B17) conforms with explicit UNSUPPORTED exact references and is not a sealed-receipt domain",
    "source": "spec \u00a736.1 (p. 39)",
    "tests": [
-    "tests_genesis/test_domain_adapters.py"
+    "tests_genesis/test_domain_adapters.py",
+    "tests_formal/test_formal_research.py"
    ],
    "title": "Required DomainAdapter interface",
    "workstream": "W05"
@@ -3579,7 +3580,10 @@
     "decision": "PENDING_INDEPENDENT_ACCEPTANCE"
    },
    "code": [
-    "src/genesis/verification/lean.py"
+    "src/genesis/verification/lean.py",
+    "src/genesis/formal_research/workspace.py",
+    "toolchain/FORMAL_WORKSPACE.json",
+    "toolchain/build_formal_workspace.py"
    ],
    "disposition": "IMPLEMENTED_BOUNDED_PENDING_AUDIT",
    "evidence": [],
@@ -3590,13 +3594,14 @@
    "local_execution": "TESTS_EXECUTED_IN_MATRIX",
    "owner": "research implementer",
    "remaining": [
-    "Mathlib workspace (W08)"
+    "byte-identical workspace artifacts on a second machine"
    ],
    "scientific_efficacy": "N/A",
-   "scope": "Lean worker in sandbox for finite witness obligations",
+   "scope": "Lean worker in sandbox for finite witness obligations; pinned Lean/Mathlib workspace (B17): pinned commits, import closure built offline without Lake cache, audited artifacts, mounted read-only",
    "source": "spec \u00a737.1 (p. 39)",
    "tests": [
-    "tests_formal/test_lean_checker.py"
+    "tests_formal/test_lean_checker.py",
+    "tests_formal/test_formal_research.py"
    ],
    "title": "Lean worker responsibilities",
    "workstream": "W08"
@@ -3607,7 +3612,8 @@
     "decision": "PENDING_INDEPENDENT_ACCEPTANCE"
    },
    "code": [
-    "src/genesis/verification/lean.py"
+    "src/genesis/verification/lean.py",
+    "src/genesis/formal_research/checker.py"
    ],
    "disposition": "IMPLEMENTED_BOUNDED_PENDING_AUDIT",
    "evidence": [],
@@ -3621,10 +3627,11 @@
     "kernel replay contract so THEOREM_CHECKED is reachable (B14-OPEN-4)"
    ],
    "scientific_efficacy": "N/A",
-   "scope": "trusted spec / untrusted proof / trusted check; axiom audit; leanchecker",
+   "scope": "trusted spec / untrusted proof / trusted check; axiom audit; leanchecker; module chains with per-binding statements, declaration extraction and dependency closure (B17)",
    "source": "spec \u00a737.2 (p. 39)",
    "tests": [
-    "tests_formal/test_lean_checker.py::DefenceInDepth"
+    "tests_formal/test_lean_checker.py::DefenceInDepth",
+    "tests_formal/test_formal_research.py::Acceptance"
    ],
    "title": "Formal checker responsibilities",
    "workstream": "W08"
@@ -4296,8 +4303,8 @@
    "disposition": "NOT_IMPLEMENTED",
    "evidence": [],
    "external_blockers": [
-    "Mathlib workspace",
-    "theory packages"
+    "independent replay of the B17 theory package",
+    "conjectures and proofs beyond builder templates and rediscovery"
    ],
    "id": "GV2",
    "implementation": "NOT_IMPLEMENTED",
@@ -4664,22 +4671,27 @@
     "date": null,
     "decision": "PENDING_INDEPENDENT_ACCEPTANCE"
    },
-   "code": [],
-   "disposition": "NOT_IMPLEMENTED",
+   "code": [
+    "src/genesis/formal_research/workspace.py",
+    "src/genesis/formal_research/checker.py",
+    "src/genesis/formal_research/search.py",
+    "toolchain/FORMAL_WORKSPACE.json"
+   ],
+   "disposition": "IMPLEMENTED_BOUNDED_PENDING_AUDIT",
    "evidence": [],
    "external_blockers": [],
    "id": "W08",
-   "implementation": "NOT_IMPLEMENTED",
+   "implementation": "IMPLEMENTED_BOUNDED",
    "independent_verification": "PENDING",
-   "local_execution": "NOT_EXECUTED",
+   "local_execution": "TESTS_EXECUTED_IN_MATRIX",
    "owner": "research implementer",
-   "remaining": [
-    "not started in B14"
-   ],
+   "remaining": [],
    "scientific_efficacy": "N/A",
-   "scope": "workstream",
+   "scope": "workstream (B14 scope delivered; acceptance pending)",
    "source": "roadmap \u00a77-10",
-   "tests": [],
+   "tests": [
+    "tests_formal/test_formal_research.py"
+   ],
    "title": "Lean and Mathlib research workspace",
    "workstream": "W08"
   },
@@ -4736,23 +4748,27 @@
     "date": null,
     "decision": "PENDING_INDEPENDENT_ACCEPTANCE"
    },
-   "code": [],
-   "disposition": "NOT_IMPLEMENTED",
+   "code": [
+    "src/genesis/formal_research/theory_package.py",
+    "src/genesis/formal_research/triangle_theory.py",
+    "evidence/formal_research_b17/package/package.json"
+   ],
+   "disposition": "IMPLEMENTED_BOUNDED_PENDING_AUDIT",
    "evidence": [],
    "external_blockers": [],
    "id": "W11",
-   "implementation": "NOT_IMPLEMENTED",
+   "implementation": "IMPLEMENTED_BOUNDED",
    "independent_verification": "PENDING",
-   "local_execution": "NOT_EXECUTED",
+   "local_execution": "TESTS_EXECUTED_IN_MATRIX",
    "owner": "research implementer",
-   "remaining": [
-    "not started in B14"
-   ],
+   "remaining": [],
    "scientific_efficacy": "N/A",
-   "scope": "workstream",
+   "scope": "workstream (B14 scope delivered; acceptance pending)",
    "source": "roadmap \u00a77-10",
-   "tests": [],
-   "title": "Theory-centered discovery and theory packages",
+   "tests": [
+    "tests_formal/test_formal_research.py::CommittedPackage"
+   ],
+   "title": "Theory-centered discovery and theory packages (first package path only)",
    "workstream": "W11"
   },
   {

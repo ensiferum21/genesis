@@ -87,7 +87,9 @@ B15 built and tested on one host everything R-04 asks for that does not need a
 registry, PyPI or a second machine; those three remain. B16 built the evaluator
 side (domain contracts, DEV calibration, preregistered statistics, resource
 accounting, custody records); its exit requires independent review of custody,
-fairness and study design.
+fairness and study design. B17 built the Lean/Mathlib research workspace and the
+first theory package. The package replays from its sources, but only the builder has
+replayed it.
 
 - **ENGINEERING_COMPLETE_P0** — builder's assessment only. Blocked on R-04's
   outstanding parts (second-machine run of `deployment/reproduce.sh`, image

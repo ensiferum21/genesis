@@ -36,6 +36,7 @@ session can resume from the latest checkpoint (see `RESUME.md`).
 | 14 | Repair acceptance | W01–W03; R-01/R-02 regressions; certificate custody | Unsupported labels and stale exports rejected (internal red team included); independent review pending |
 | 15 | Independent execution | W04, R-04 | Supported host and mandatory matrix verified on a second machine (B15 built everything checkable on one host; the second-machine run is outstanding) |
 | 16 | Evaluator readiness | W05–W07 | Custody, fairness and study design independently reviewed (B16 built and tested them; the independent review is outstanding) |
+| 17 | Formal research | W08, first TheoryPackage path | Real generated reusable Lean artifacts replay (B17: replayed by the builder from the package sources; independent replay outstanding) |
 
 Later phases (B17–B23+) follow the roadmap and its gates; numbers are labels,
 not estimates.

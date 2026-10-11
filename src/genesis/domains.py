@@ -9,9 +9,11 @@ evaluator holds (task identity, family, split, reference optimum, certificates).
 Anything an adapter cannot handle is an explicit UNSUPPORTED outcome with a
 reason, never an exception that silently drops a task and never a guessed value.
 
-The two graph domains conform; the Lean domain (W08) is to implement the same
-interface. The signed meaning of a domain stays kernel.receipts.DOMAINS: each
-adapter's contract digest must equal receipts.domain_contract_hash(name).
+The two graph domains conform, and so does the Lean statement domain
+(genesis.formal_research.lean_domain, B17). The signed meaning of a sealed-evaluation
+domain stays kernel.receipts.DOMAINS: each graph adapter's contract digest must equal
+receipts.domain_contract_hash(name). The Lean domain is not listed there, so no sealed
+receipt can name it yet.
 """
 from abc import ABC, abstractmethod
 from dataclasses import dataclass
