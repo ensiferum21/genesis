@@ -25,6 +25,8 @@ def request_bundle(campaign,task_count=300,*,claim_id=None,evidence_kind='sealed
     # The frozen version document goes into the store BEFORE the export the request binds,
     # so the custodian can check the requested candidate against the campaign (B14 round 3).
     s.save('candidate_version',digest(version),version)
+    from .faults import point
+    point('request.freeze')
     export=campaign.root/'exports/campaign_export.zip'
     if export.exists():
         import zipfile as _z
@@ -58,25 +60,33 @@ def request_bundle(campaign,task_count=300,*,claim_id=None,evidence_kind='sealed
     s.set_state('frozen_request_hash',digest(request))
     path=campaign.root/'exports/evaluation_request.json'
     if path.exists() and path.read_bytes()!=canonical(request):raise FileExistsError('request already exported with different scope')
-    path.write_bytes(canonical(request));return path
+    from .common import atomic_write
+    if not path.exists():atomic_write(path,canonical(request))
+    return path
 
 
 def export_replication(root,destination,store=None):
     root=Path(root);destination=Path(destination)
     if destination.exists():raise FileExistsError(destination)
     def snapshot(s):
-        s.verify();s.snapshot('export-'+digest({'events':s.verify()['head']})[:16]+'.sqlite3');s.recover_export()
+        name='export-'+digest({'events':s.verify()['head']})[:16]+'.sqlite3'
+        # Same event head, same derived state: an existing snapshot (e.g. from an interrupted export) is reused.
+        if not (s.root/'snapshots'/name).exists():s.snapshot(name)
+        s.recover_export()
     if store is None:
         with Store(root) as s:snapshot(s)
     else:snapshot(store)
     manifest={}
     from .common import bytes_hash
-    skip=('writer.lock','campaign.sqlite3','campaign.sqlite3-wal','campaign.sqlite3-shm','campaign.sqlite3-journal')
-    files=[p for p in sorted(root.rglob('*')) if p.is_file() and p.name not in skip and p.resolve()!=destination.resolve()]
+    from .common import atomic_zip,is_temp_name
+    skip=('writer.lock','campaign.sqlite3.rebuild-tmp','campaign.sqlite3','campaign.sqlite3-wal','campaign.sqlite3-shm','campaign.sqlite3-journal')
+    # Hidden temporaries of interrupted writes (and objects/tmp) are never campaign data.
+    files=[p for p in sorted(root.rglob('*')) if p.is_file() and p.name not in skip and not is_temp_name(p.name)
+           and p.relative_to(root).parts[:2]!=('objects','tmp') and p.resolve()!=destination.resolve()]
     for p in files:
         if p.is_symlink():raise ValueError('symlink in replication data')
         manifest[str(p.relative_to(root))]=bytes_hash(p.read_bytes())
-    with zipfile.ZipFile(destination,'x',zipfile.ZIP_DEFLATED) as z:
+    with atomic_zip(destination) as z:
         for p in files:z.write(p,str(p.relative_to(root)))
         z.writestr('MANIFEST.json',canonical({'files':manifest,'root':digest(manifest),'scope':'public offline campaign'}))
     return {'path':str(destination.resolve()),'files':len(files),'root':digest(manifest)}
@@ -113,7 +123,7 @@ def main(argv=None):
     p=subs.add_parser('platform');p.add_argument('action',choices=['check'])
     p.add_argument('--store-root',type=Path,default=None,help='campaign root whose filesystem must be supported')
     p=subs.add_parser('smoke');p.add_argument('root',type=Path);p.add_argument('--seed',type=int,default=20261010)
-    p=subs.add_parser('campaign');p.add_argument('action',choices=['run','status']);p.add_argument('root',type=Path)
+    p=subs.add_parser('campaign');p.add_argument('action',choices=['run','resume','status']);p.add_argument('root',type=Path)
     p=subs.add_parser('world');p.add_argument('action',choices=['list']);p.add_argument('root',type=Path)
     p=subs.add_parser('trial');p.add_argument('action',choices=['replay']);p.add_argument('root',type=Path);p.add_argument('--limit',type=int,default=10)
     p=subs.add_parser('artifact');p.add_argument('action',choices=['verify']);p.add_argument('root',type=Path);p.add_argument('hash')
@@ -210,8 +220,8 @@ def main(argv=None):
         with Campaign(args.root) as c:
             if args.command=='campaign':
                 from .kernel.phases import verified_phase
-                result=c.run() if args.action=='run' else {'phase':verified_phase(c.store),
-                                                          'summary':c.store.state('summary')}
+                result=c.run(resume=args.action=='resume') if args.action in ('run','resume') else \
+                    {'phase':verified_phase(c.store),'summary':c.store.state('summary')}
             elif args.command=='trial':result=c.replay(args.limit)
             elif args.command=='freeze':result={'request_path':str(request_bundle(c,args.tasks)),'promotion_allowed':False}
             elif args.command=='report':c.report();result={'report':str(c.root/'reports/report.md')}

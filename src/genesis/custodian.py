@@ -9,7 +9,8 @@ from pathlib import Path
 import random
 import sqlite3
 import time
-from .common import canonical,bytes_hash,digest,load_json,utcnow,code_identity
+from .common import atomic_write,canonical,bytes_hash,digest,load_json,utcnow,code_identity
+from .faults import point
 from .models import GraphTask,SolverProgram,Limits
 from .graphs import canonical_graph,certified_optimum,check_witness,SearchLimit
 from .execution import execute
@@ -385,10 +386,10 @@ def evaluate(private_root,request_id,pool_path,key_path,operator_id):
             db.execute('COMMIT')
         except BaseException:
             db.execute('ROLLBACK');raise
+        point('custodian.reserve')
         work=root/'evaluations'/request_id
         work.mkdir(parents=True,mode=0o700)
         limits=Limits.model_validate_json(canonical(request['limits']))
-        byarm={name:[] for name in programs};total_rows=0;failures=0
         with Store(work) as evidence:
             evidence.save('request',request_id,request)
             evidence.save('pool',digest(pool),pool)
@@ -407,43 +408,120 @@ def evaluate(private_root,request_id,pool_path,key_path,operator_id):
                         aid=evidence.start(task.task_id+'-'+name,{'kind':'solver','task':task.model_dump(mode='json'),
                             'program':programs[name].model_dump(mode='json'),'arm':name,'seed':seed,'limits':request['limits']})
                         receipt=execute(task,programs[name],limits,seed)
-                        rh=evidence.finish(aid,receipt);total_rows+=1
+                        evidence.finish(aid,receipt)
+                        point('custodian.evaluate')
                         value=receipt.get('result',{}).get('value',0)
                         if value>optimum['value']:raise RuntimeError('exact checker disagreement')
-                        failures+=int(receipt['status']!='SUCCESS')
-                        byarm[name].append({'task_id':task.task_id,'family':task.family,'value':value,'status':receipt['status'],'receipt':rh})
-                comparison=paired([{'task_id':a['task_id'],'family':a['family'],'candidate':a['value'],'baseline':b['value']}
-                                   for a,b in zip(byarm['candidate'],byarm['baseline'])])
+                comparison=_comparison(evidence,tasks,programs)[0]
                 evidence.save('comparison',request_id,comparison)
-                integrity=evidence.verify();evidence.snapshot('complete.sqlite3')
-                complete=True
+                evidence.verify();evidence.snapshot('complete.sqlite3')
             except BaseException as exc:
                 evidence.event('EVALUATION_FAILED',{'exception':type(exc).__name__,'message':str(exc)})
                 evidence.interrupt_running();raise
-        payload={'schema':R.SCIENTIFIC_RECEIPT,'evidence_kind':request['evidence_kind'],
-                 'claim_id':request['claim_id'],'statement_hash':request['statement_hash'],'scope':request['scope'],
-                 'campaign_id':request['campaign_id'],'request_hash':request_id,
-                 'anchor_hash':digest(anchor),'candidate_version':request['candidate_version'],
-                 'candidate_program_hash':R.program_identity(request['programs']['candidate']),
-                 'baseline_version':R.program_identity(request['programs']['baseline']),'source_hash':request['source_hash'],
-                 'evaluator_hash':identity,'analysis':request['analysis'],'domain':request['domain'],
-                 'domain_contract_hash':R.domain_contract_hash(request['domain']),
-                 'transfer_source_domain':request['transfer_source_domain'],
-                 'generation_transition':request['generation_transition'],'panel_commitment':commitment,
-                 'task_count':len(tasks),'raw_evidence_root':integrity['head'],'raw_evidence_complete':complete,
-                 'expected_rows':len(tasks)*len(programs),'completed_rows':total_rows,'execution_failures':failures,
-                 'wins':comparison['wins'],'losses':comparison['losses'],'ties':comparison['ties'],
-                 'paired_p':comparison['exploratory_sign_p'],'family_p':comparison['family_sensitivity_p'],
-                 'outcome':None,'operator_id':operator_id,'registered_at':anchor['payload']['registered_at'],
-                 'completed_at':utcnow(),'screen':'CUSTODIAN_BUILT_REGISTRY_ISOMORPHISM_AND_NEAR_DUPLICATE',
-                 'independence':'OPERATOR_ATTESTATION_REQUIRED'}
-        payload['outcome']=R.derive_outcome(payload)
-        problems=R.check_receipt(payload,request['evidence_kind'])
-        if problems:raise RuntimeError('custodian built an invalid receipt: '+'; '.join(problems))
-        receipt=sign(payload,key_path)
-        (work/'public_receipt.json').write_bytes(canonical(receipt))
-        db.execute("UPDATE requests SET state='COMPLETE' WHERE id=?",(request_id,))
-        return receipt
+            receipt=_seal(evidence,request_id,request,anchor,commitment,identity,operator_id,key_path,tasks,programs,
+                          complete=True)
+        return _publish(db,work,request_id,receipt)
+    finally:db.close()
+
+
+def _comparison(evidence,tasks,programs):
+    """Per-arm rows rebuilt from the evidence journal (terminal solver attempts only).
+    Returns (paired comparison over tasks where both arms finished, completed rows, failures)."""
+    byarm={name:{} for name in programs};completed=0;failures=0
+    for status,req,rec in evidence.db.execute('SELECT status,request,receipt FROM attempts ORDER BY rowid'):
+        if rec is None or status in ('RUNNING','INTERRUPTED'):continue
+        request=evidence.get(req)
+        if request.get('kind')!='solver':continue
+        receipt=evidence.get(rec);completed+=1;failures+=int(receipt['status']!='SUCCESS')
+        byarm[request['arm']][request['task']['task_id']]=receipt.get('result',{}).get('value',0)
+    rows=[{'task_id':t.task_id,'family':t.family,'candidate':byarm['candidate'][t.task_id],
+           'baseline':byarm['baseline'][t.task_id]}
+          for t in tasks if t.task_id in byarm['candidate'] and t.task_id in byarm['baseline']]
+    return paired(rows),completed,failures
+
+
+def _seal(evidence,request_id,request,anchor,commitment,identity,operator_id,key_path,tasks,programs,*,complete):
+    comparison,completed,failures=_comparison(evidence,tasks,programs)
+    integrity=evidence.verify()
+    payload={'schema':R.SCIENTIFIC_RECEIPT,'evidence_kind':request['evidence_kind'],
+             'claim_id':request['claim_id'],'statement_hash':request['statement_hash'],'scope':request['scope'],
+             'campaign_id':request['campaign_id'],'request_hash':request_id,
+             'anchor_hash':digest(anchor),'candidate_version':request['candidate_version'],
+             'candidate_program_hash':R.program_identity(request['programs']['candidate']),
+             'baseline_version':R.program_identity(request['programs']['baseline']),'source_hash':request['source_hash'],
+             'evaluator_hash':identity,'analysis':request['analysis'],'domain':request['domain'],
+             'domain_contract_hash':R.domain_contract_hash(request['domain']),
+             'transfer_source_domain':request['transfer_source_domain'],
+             'generation_transition':request['generation_transition'],'panel_commitment':commitment,
+             'task_count':len(tasks),'raw_evidence_root':integrity['head'],
+             'raw_evidence_complete':bool(complete and completed==len(tasks)*len(programs)),
+             'expected_rows':len(tasks)*len(programs),'completed_rows':completed,'execution_failures':failures,
+             'wins':comparison['wins'],'losses':comparison['losses'],'ties':comparison['ties'],
+             'paired_p':comparison['exploratory_sign_p'],'family_p':comparison['family_sensitivity_p'],
+             'outcome':None,'operator_id':operator_id,'registered_at':anchor['payload']['registered_at'],
+             'completed_at':utcnow(),'screen':'CUSTODIAN_BUILT_REGISTRY_ISOMORPHISM_AND_NEAR_DUPLICATE',
+             'independence':'OPERATOR_ATTESTATION_REQUIRED'}
+    payload['outcome']=R.derive_outcome(payload)
+    problems=R.check_receipt(payload,request['evidence_kind'])
+    if problems:raise RuntimeError('custodian built an invalid receipt: '+'; '.join(problems))
+    receipt=sign(payload,key_path)
+    point('custodian.sign')
+    return receipt
+
+
+def _publish(db,work,request_id,receipt):
+    atomic_write(work/'public_receipt.json',canonical(receipt))
+    point('custodian.publish')
+    db.execute("UPDATE requests SET state='COMPLETE' WHERE id=?",(request_id,))
+    return receipt
+
+
+def recover(private_root,request_id,pool_path,key_path,operator_id):
+    """Finish the record of an evaluation interrupted after its panel was reserved.
+
+    The panel stays consumed (no automatic retry). The custodian still publishes
+    a signed receipt, so an interrupted evaluation cannot silently disappear:
+      * receipt already published -> mark COMPLETE and return it unchanged;
+      * every row finished before the crash -> the complete receipt;
+      * otherwise -> a receipt with raw_evidence_complete=false, whose derived
+        outcome is INVALID (it licenses nothing).
+    The operator supplies the same pool; it must match the registered commitment.
+    """
+    root=_private_root(private_root)
+    db=_open_custody(root)
+    try:
+        row=db.execute('SELECT body,anchor,state FROM requests WHERE id=?',(request_id,)).fetchone()
+        if not row:raise ValueError('request not preregistered')
+        request=json.loads(row[0]);anchor=json.loads(row[1]);programs=validate_request(request)
+        if row[2]=='REGISTERED':raise ValueError('evaluation never reserved a panel; nothing to recover')
+        work=root/'evaluations'/request_id
+        published=work/'public_receipt.json'
+        if published.exists():
+            receipt=json.loads(published.read_bytes())
+            if receipt['payload']['request_hash']!=request_id:raise RuntimeError('published receipt names another request')
+            if row[2]!='COMPLETE':db.execute("UPDATE requests SET state='COMPLETE' WHERE id=?",(request_id,))
+            return receipt
+        if row[2]!='CONSUMED_NO_RETRY':raise RuntimeError(f'unexpected request state {row[2]}')
+        identity=code_identity(Path(__file__).resolve().parents[2])['sha256']
+        if identity!=request['expected_evaluator_hash']:raise ValueError('pinned evaluator source mismatch')
+        pool,tasks=_load_pool(pool_path)
+        pool_hash,commitment=db.execute('SELECT pool_hash,commitment FROM panels WHERE request_id=?',(request_id,)).fetchone()
+        if digest(pool)!=pool_hash:raise ValueError('pool does not match the panel committed at registration')
+        work.mkdir(parents=True,mode=0o700,exist_ok=True)
+        from .store import rebuild_from_export
+        try:evidence=Store(work)
+        except RuntimeError:
+            rebuild_from_export(work);evidence=Store(work)
+        with evidence:
+            for kind,key,value in (('request',request_id,request),('pool',digest(pool),pool),('anchor',request_id,anchor)):
+                evidence.save(kind,key,value)   # idempotent; records them if the crash came first
+            interrupted=evidence.interrupt_running()
+            complete=evidence.db.execute("SELECT 1 FROM entities WHERE kind='comparison' AND id=?",
+                                         (request_id,)).fetchone() is not None
+            evidence.event('EVALUATION_RECOVERED',{'interrupted_attempts':interrupted,'comparison_recorded':complete})
+            receipt=_seal(evidence,request_id,request,anchor,commitment,identity,operator_id,key_path,tasks,programs,
+                          complete=complete)
+        return _publish(db,work,request_id,receipt)
     finally:db.close()
 
 

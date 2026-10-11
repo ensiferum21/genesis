@@ -30,7 +30,7 @@ import time
 
 from pydantic import Field
 
-from .common import canonical, code_identity, digest, utcnow
+from .common import atomic_write, canonical, code_identity, digest, utcnow
 from .fol import parse, to_tptp
 from .modelfind import find_model
 from .models import StrictModel
@@ -198,7 +198,7 @@ def run_experiment(root, prereg=None):
                              'status': result['status'], 'cpu_seconds': round(cpu, 3)})
         summary = summarize(prereg, rows)
         s.save('experiment_b_results', pid, summary)
-        (root / 'reports' / 'experiment_b.json').write_bytes(canonical(summary))
+        atomic_write(root / 'reports' / 'experiment_b.json', canonical(summary), overwrite=True)
         return summary
 
 

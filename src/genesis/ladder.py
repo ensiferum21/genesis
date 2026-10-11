@@ -19,7 +19,7 @@ from itertools import combinations
 from pathlib import Path
 from typing import Literal
 from pydantic import Field, model_validator
-from .common import canonical, code_identity, digest, utcnow
+from .common import atomic_write, canonical, code_identity, digest, utcnow
 from .models import StrictModel, GraphTask, SolverProgram, Limits
 from .execution import execute
 from .graphs import check_witness
@@ -204,8 +204,8 @@ def run_ladder(root, prereg, progress=None):
         results['source_hash'] = identity['sha256']
         s.save('ladder_results', prereg_id, results)
         s.set_state('ladder_phase', 'COMPLETE')
-        (root / 'reports' / 'ladder_results.json').write_bytes(canonical(results))
-        (root / 'reports' / 'ladder_report.md').write_text(render(results))
+        atomic_write(root / 'reports' / 'ladder_results.json', canonical(results), overwrite=True)
+        atomic_write(root / 'reports' / 'ladder_report.md', render(results).encode(), overwrite=True)
         return results
 
 

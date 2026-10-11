@@ -222,7 +222,8 @@ def build_bundle(campaign_root, destination, *, report=None, limitations=(), tru
     manifest = {'release_id': release_id, 'event_head': integrity['head'], 'events': integrity['events'],
                 'source_hash': source_hash, 'shipped_code_identity': identity['sha256'],
                 'files': {k: hashlib.sha256(v).hexdigest() for k, v in sorted(files.items())}}
-    with zipfile.ZipFile(destination, 'x', zipfile.ZIP_DEFLATED) as z:
+    from .common import atomic_zip
+    with atomic_zip(destination) as z:
         for k, v in sorted(files.items()):
             z.writestr(base + k, v)
         z.writestr(base + 'MANIFEST.json', canonical(manifest))

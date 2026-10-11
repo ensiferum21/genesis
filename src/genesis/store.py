@@ -8,7 +8,8 @@ import os
 from pathlib import Path
 import sqlite3
 import uuid
-from .common import canonical, bytes_hash, utcnow
+from .common import canonical, bytes_hash, utcnow, atomic_write, fsync_dir
+from .faults import point
 
 
 class Store:
@@ -21,9 +22,15 @@ class Store:
         except BlockingIOError:
             self.lock.close()
             raise RuntimeError('campaign already has a writer')
-        for name in ('objects/sha256','work','snapshots','reports','exports'):
+        for name in ('objects/sha256','objects/tmp','work','snapshots','reports','exports'):
             (self.root/name).mkdir(parents=True,exist_ok=True)
-        self._export_seq = None; self._export_size = None
+        self._export_seq = None; self._export_size = None; self._objects_dirty = False
+        # Under the writer lock, anything in objects/tmp is a torn write from a
+        # crashed writer: never referenced (objects are linked into place only
+        # once complete), so it is not evidence.
+        self.stale_temp_objects = 0
+        for stale in (self.root/'objects/tmp').iterdir():
+            stale.unlink(); self.stale_temp_objects += 1
         if (self.root/'campaign.sqlite3-wal').exists() or (self.root/'campaign.sqlite3-shm').exists():
             # This store never uses WAL. Sidecars mean a legacy or interrupted
             # state; opening would let SQLite rewrite them and destroy evidence.
@@ -60,9 +67,17 @@ class Store:
             if path.is_symlink() or path.read_bytes()!=data:
                 raise RuntimeError('content-addressed object corruption')
             return h
-        fd = os.open(path, os.O_CREAT|os.O_EXCL|os.O_WRONLY,0o400)
-        with os.fdopen(fd,'wb') as stream:
-            stream.write(data); stream.flush(); os.fsync(stream.fileno())
+        # Torn writes stay in objects/tmp; the final name only ever holds complete bytes.
+        tmp = self.root/'objects/tmp'/f'{h}.{uuid.uuid4().hex[:8]}'
+        fd = os.open(tmp, os.O_CREAT|os.O_EXCL|os.O_WRONLY,0o400)
+        try:
+            with os.fdopen(fd,'wb') as stream:
+                stream.write(data[:len(data)//2]); stream.flush(); point('cas.write')
+                stream.write(data[len(data)//2:]); stream.flush(); os.fsync(stream.fileno())
+            os.link(tmp, path)
+        finally:
+            tmp.unlink(missing_ok=True)
+        self._objects_dirty = True
         return h
 
     def put(self, value): return self.put_bytes(canonical(value))
@@ -98,9 +113,16 @@ class Store:
             self.db.execute('BEGIN IMMEDIATE')
             try:
                 yield
+                if self._objects_dirty:
+                    # Directory entries of every object this commit may reference are durable first.
+                    fsync_dir(self.root/'objects/sha256'); self._objects_dirty = False
+                point('store.commit')
                 self.db.execute('COMMIT')
             except BaseException:
-                self.db.execute('ROLLBACK'); raise
+                if self.db.in_transaction:
+                    self.db.execute('ROLLBACK')
+                raise
+            point('store.committed')
             self.recover_export()
         return tx()
 
@@ -112,6 +134,20 @@ class Store:
             self.db.execute('INSERT OR IGNORE INTO entities VALUES (?,?,?)',(kind,key,h))
             self._event('ENTITY_COMMITTED',{'kind':kind,'id':key,'object_hash':h})
         return h
+
+    def commit_batch(self,entities=(),states=()):
+        """Save several immutable entities and state keys in ONE transaction, so a
+        crash leaves either all of them or none (used for per-generation commits)."""
+        hashes=[(kind,key,self.put(value)) for kind,key,value in entities]
+        with self.transaction():
+            for kind,key,h in hashes:
+                existing=self.db.execute('SELECT object_hash FROM entities WHERE kind=? AND id=?',(kind,key)).fetchone()
+                if existing and existing[0]!=h:raise ValueError('immutable entity identity reused')
+                self.db.execute('INSERT OR IGNORE INTO entities VALUES (?,?,?)',(kind,key,h))
+                self._event('ENTITY_COMMITTED',{'kind':kind,'id':key,'object_hash':h})
+            for key,value in states:
+                self.db.execute('INSERT OR REPLACE INTO state VALUES (?,?)',(key,canonical(value)))
+                self._event('STATE_UPDATED',{'key':key,'value':value})
 
     def start(self,trial_id,request):
         aid=str(uuid.uuid4()); h=self.put(request)
@@ -160,8 +196,7 @@ class Store:
                                      (self._export_seq,)).fetchall()
                 if rows:
                     data=b''.join(canonical({'hash':h,'event':json.loads(b)})+b'\n' for _,h,b in rows)
-                    with path.open('ab') as f:
-                        f.write(data); f.flush(); os.fsync(f.fileno())
+                    _append(path,data)
                     self._export_seq=rows[-1][0]; self._export_size=size+len(data)
                 return
         rows=self.db.execute('SELECT seq,hash,body FROM events ORDER BY seq').fetchall()
@@ -171,8 +206,9 @@ class Store:
         if not wanted.startswith(existing): raise RuntimeError('event export corruption')
         if len(existing)<len(wanted):
             # Append even a partially written final line; never truncate or rewrite history.
-            with path.open('ab') as f:
-                f.write(wanted[len(existing):]); f.flush(); os.fsync(f.fileno())
+            created=not path.exists()
+            _append(path,wanted[len(existing):])
+            if created:fsync_dir(self.root)
         self._export_seq=rows[-1][0] if rows else 0; self._export_size=len(wanted)
 
     def verify(self):
@@ -196,13 +232,26 @@ class Store:
     def snapshot(self,name):
         path=self.root/'snapshots'/name
         if path.exists(): raise FileExistsError(path)
-        dest=sqlite3.connect(path)
+        tmp=self.root/'snapshots'/f'.{name}.tmp-{os.getpid()}-{uuid.uuid4().hex[:8]}'
         try:
-            self.db.backup(dest)
-            if dest.execute('PRAGMA integrity_check').fetchall()!=[('ok',)]:
-                raise RuntimeError('snapshot structural integrity failure')
-        finally:dest.close()
+            dest=sqlite3.connect(tmp)
+            try:
+                self.db.backup(dest)
+                if dest.execute('PRAGMA integrity_check').fetchall()!=[('ok',)]:
+                    raise RuntimeError('snapshot structural integrity failure')
+            finally:dest.close()
+            with open(tmp,'rb') as f:os.fsync(f.fileno())
+            os.link(tmp,path)
+        finally:
+            tmp.unlink(missing_ok=True)
+        fsync_dir(path.parent)
         return path
+
+
+def _append(path,data):
+    with path.open('ab') as f:
+        f.write(data[:len(data)//2]); f.flush(); point('store.export')
+        f.write(data[len(data)//2:]); f.flush(); os.fsync(f.fileno())
 
 
 def derive(rows,get):
@@ -282,12 +331,13 @@ def _rebuild_locked(root,export):
         if receipt:get(receipt)
     stamp=utcnow().replace(':','').replace('+','Z')
     quarantine=root/'quarantine'/stamp
-    moved=[]
-    for name in ('campaign.sqlite3','campaign.sqlite3-wal','campaign.sqlite3-shm','campaign.sqlite3-journal'):
-        if (root/name).exists():
-            quarantine.mkdir(parents=True,exist_ok=True)
-            os.replace(root/name,quarantine/name);moved.append(name)
-    db=sqlite3.connect(root/'campaign.sqlite3',isolation_level=None)
+    # Build the new database beside the old one, then swap: a crash at any point
+    # leaves either the old files or a complete new database (plus a stale temp
+    # that the next rebuild discards).
+    building=root/'campaign.sqlite3.rebuild-tmp'
+    for stale in (building,building.with_name(building.name+'-journal')):
+        stale.unlink(missing_ok=True)
+    db=sqlite3.connect(building,isolation_level=None)
     try:
         db.execute('PRAGMA journal_mode=DELETE');db.execute('PRAGMA synchronous=FULL')
         db.executescript(SCHEMA)
@@ -298,12 +348,17 @@ def _rebuild_locked(root,export):
         db.executemany('INSERT INTO state VALUES (?,?)',[(k,canonical(v)) for k,v in derived_state.items()])
         db.execute('COMMIT')
     finally:db.close()
+    moved=[]
+    for name in ('campaign.sqlite3','campaign.sqlite3-wal','campaign.sqlite3-shm','campaign.sqlite3-journal'):
+        if (root/name).exists():
+            quarantine.mkdir(parents=True,exist_ok=True)
+            os.replace(root/name,quarantine/name);moved.append(name)
+    os.replace(building,root/'campaign.sqlite3');fsync_dir(root)
     if partial:
-        # Keep history append-only: the dropped fragment is preserved beside the quarantine.
+        # Keep history append-only: the dropped fragment and the original file are preserved.
         quarantine.mkdir(parents=True,exist_ok=True)
-        (quarantine/'events.jsonl.partial-tail').write_bytes(raw_lines[-1])
-        full=b''.join(line+b'\n' for line in raw_lines[:-1])
-        os.replace(export,quarantine/'events.jsonl.before-rebuild')
-        export.write_bytes(full)
+        atomic_write(quarantine/'events.jsonl.partial-tail',raw_lines[-1])
+        atomic_write(quarantine/'events.jsonl.before-rebuild',export.read_bytes())
+        atomic_write(export,b''.join(line+b'\n' for line in raw_lines[:-1]),overwrite=True)
     return {'events':count,'head':head,'quarantined':moved,'partial_tail_dropped':partial,
             'quarantine':str(quarantine) if moved or partial else None}

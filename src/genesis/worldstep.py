@@ -22,7 +22,7 @@ import time
 
 from pydantic import Field
 
-from .common import canonical, code_identity, digest, utcnow
+from .common import atomic_write, canonical, code_identity, digest, utcnow
 from .dsl import baseline_programs
 from .graphs import universal_upper, components
 from .kernel.authority import GrantLedger
@@ -246,8 +246,8 @@ class ResearchLoop:
         summary = self._summary(tasks, best, history, eco, calibration)
         self.s.set_state('loop_summary', summary)
         self.s.set_state('loop_phase', 'COMPLETE')
-        (self.s.root / 'reports' / 'world_loop.md').write_text(self._report(summary))
-        (self.s.root / 'reports' / 'world_loop.json').write_bytes(canonical(summary))
+        atomic_write(self.s.root / 'reports' / 'world_loop.md', self._report(summary).encode(), overwrite=True)
+        atomic_write(self.s.root / 'reports' / 'world_loop.json', canonical(summary), overwrite=True)
         return summary
 
     def _update_evidence(self, task, lower, upper, certified, program_id, kind, *, certificate=None, witness=None):

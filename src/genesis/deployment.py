@@ -271,6 +271,8 @@ def platform_report(spec=None, *, store_root=None, toolchain=None, mounts=None):
             if actual != pin['binary_sha256']:
                 bad.append(f'{name}: {actual}')
     checks.append(_check('toolchain_pins', not bad, bad or 'all pinned binaries match', 'PINS.json binary hashes'))
+    fault = os.environ.get('GENESIS_FAULT')
+    checks.append(_check('fault_injection_disabled', not fault, fault or 'unset', 'GENESIS_FAULT unset'))
     failed = [c['check'] for c in checks if c['mandatory'] and c['status'] == 'FAIL']
     unverified = [c['check'] for c in checks if c['mandatory'] and c['status'] == 'UNVERIFIED']
     verdict = 'UNSUPPORTED' if failed else ('UNVERIFIED' if unverified else 'SUPPORTED')

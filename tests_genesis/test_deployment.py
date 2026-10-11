@@ -131,9 +131,18 @@ class Host(unittest.TestCase):
         report = D.platform_report(store_root=ROOT)
         names = [c['check'] for c in report['checks']]
         for required in ('os', 'machine', 'python', 'kernel', 'glibc', 'dependency_lock', 'runc', 'cgroup',
-                         'seccomp', 'store_filesystem', 'toolchain_pins'):
+                         'seccomp', 'store_filesystem', 'toolchain_pins', 'fault_injection_disabled'):
             self.assertIn(required, names)
         json.dumps(report)
+
+    def test_armed_fault_injection_is_unsupported(self):
+        import os
+        os.environ['GENESIS_FAULT'] = 'store.commit'
+        try:
+            report = D.platform_report(mounts=self.MOUNTS_V1)
+        finally:
+            del os.environ['GENESIS_FAULT']
+        self.assertIn('fault_injection_disabled', report['failed'])
 
     def test_container_digest_status_is_consistent(self):
         spec = json.loads(D.SPEC_PATH.read_text())

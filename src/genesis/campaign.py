@@ -9,9 +9,10 @@ import json
 import platform
 from pathlib import Path
 import time
-from .common import canonical,code_identity,digest,utcnow
+from .common import atomic_write,canonical,code_identity,digest,utcnow
 from .models import Config,GraphTask,SolverProgram,Evidence,Capability,Modification
 from .store import Store
+from .faults import point
 from .graphs import certified_optimum,check_witness,canonical_graph,SearchLimit
 from .dsl import baseline_programs
 from .execution import execute
@@ -65,6 +66,8 @@ class Campaign:
             self.store.close()
             raise RuntimeError('resolved_config.json differs from the configuration recorded at initialization')
         self.optima={}
+        self._journal={}      # trial_id -> completed receipt hashes reusable on resume (in start order)
+        self.reused_from_journal=0
 
     def close(self):self.store.close()
     def __enter__(self):return self
@@ -75,7 +78,7 @@ class Campaign:
         root=Path(root)
         if root.exists() and any(root.iterdir()):raise FileExistsError('campaign destination must be empty')
         root.mkdir(parents=True,exist_ok=True)
-        (root/'resolved_config.json').write_bytes(canonical(config.model_dump(mode='json')))
+        atomic_write(root/'resolved_config.json',canonical(config.model_dump(mode='json')))
         with Store(root) as s:
             s.set_state('campaign_id',digest({'config':config.model_dump(mode='json'),'created':utcnow()}))
             s.set_state('phase','CREATED')
@@ -99,8 +102,50 @@ class Campaign:
         for task in tasks:self.store.save('task',task.task_id,task.model_dump(mode='json'))
         return tasks,seen
 
+    # ---------------------------------------------------------------- resume support
+
+    REUSABLE_EXCLUDED=('RUNNING','INTERRUPTED','HARNESS_ERROR','CHECKER_ERROR')
+
+    def _load_journal(self):
+        """Completed attempts, in the order they started. A resumed run makes the same
+        deterministic calls in the same order, so the k-th request for a trial id
+        reuses the k-th completed attempt for it; anything interrupted runs again
+        as a new, separately charged attempt."""
+        from collections import deque
+        memo={}
+        for trial,status,receipt in self.store.db.execute('SELECT trial_id,status,receipt FROM attempts ORDER BY rowid'):
+            if status not in self.REUSABLE_EXCLUDED and receipt:memo.setdefault(trial,[]).append(receipt)
+        self._journal={k:deque(v) for k,v in memo.items()}
+
+    def _reuse(self,trial_id):
+        queue=self._journal.get(trial_id)
+        if not queue:return None
+        self.reused_from_journal+=1
+        return queue.popleft()
+
+    def _frozen_version(self,generation):
+        """(vid, version) of a successor frozen for `generation` before an interruption.
+        The freeze precedes the FUTURE panels, so a resumed run must keep it, not re-freeze."""
+        for (raw,) in self.store.db.execute('SELECT body FROM events ORDER BY seq'):
+            body=json.loads(raw)
+            if body['kind']!='DEV_SUCCESSOR_FROZEN':continue
+            vid=self.store.get(body['payload'])['version']
+            row=self.store.db.execute("SELECT object_hash FROM entities WHERE kind='system_version' AND id=?",(vid,)).fetchone()
+            if row and self.store.get(row[0])['generation']==generation:return vid,self.store.get(row[0])
+        return None
+
+    def _initial_version(self):
+        rows=[(i,self.store.get(h)) for i,h in self.store.db.execute("SELECT id,object_hash FROM entities WHERE kind='system_version'")]
+        initial=[(i,v) for i,v in rows if v['generation']==-1]
+        if len(initial)>1:raise RuntimeError('more than one initial system version recorded')
+        return initial[0] if initial else None
+
     def _optimum(self,task):
         key=digest({'domain':task.domain,'n':task.n,'edges':task.edges})
+        reused=self._reuse('check-'+key) if key not in self.optima else None
+        if reused is not None:
+            receipt=self.store.get(reused)
+            self.optima[key]=receipt['result']['value'] if receipt['status']=='SUCCESS' else None
         if key not in self.optima:
             aid=self.store.start('check-'+key,{'kind':'exact-check','task':task.model_dump(mode='json')})
             start=time.perf_counter_ns()
@@ -125,12 +170,16 @@ class Campaign:
                  'program':program.model_dump(mode='json'),'limits':self.config.limits.model_dump(mode='json'),
                  'seed':seed,'context':context}
         trial_id=digest(request)
-        aid=self.store.start(trial_id,request)
-        try:receipt=execute(task,program,self.config.limits,seed)
-        except BaseException as e:
-            self.store.finish(aid,{'status':'HARNESS_ERROR','reason':type(e).__name__,'cost_unknown':True})
-            raise
-        rh=self.store.finish(aid,receipt)
+        rh=self._reuse(trial_id)
+        if rh is not None:receipt=self.store.get(rh)
+        else:
+            aid=self.store.start(trial_id,request)
+            point('campaign.trial')
+            try:receipt=execute(task,program,self.config.limits,seed)
+            except BaseException as e:
+                self.store.finish(aid,{'status':'HARNESS_ERROR','reason':type(e).__name__,'cost_unknown':True})
+                raise
+            rh=self.store.finish(aid,receipt)
         optimum=self._optimum(task)
         result=receipt.get('result',{})
         row={'task_id':task.task_id,'family':task.family,'status':receipt['status'],
@@ -175,25 +224,52 @@ class Campaign:
         self.store.save('research',f'g{generation}-{policy}',summary)
         return candidates[winner],summary,all_rows
 
-    def run(self):
+    def run(self,resume=False):
+        """Run the DEV campaign. After an interruption the phase is still DEV_RUNNING;
+        `resume=True` continues it: committed generations are kept, completed attempts
+        are reused from the journal (not re-executed, not charged twice), interrupted
+        attempts stay recorded as charged INTERRUPTED receipts and are run again as
+        new attempts, and a successor frozen before the interruption stays frozen."""
         self._check_frozen_environment()
         phase=self.store.state('phase')
-        if phase=='CANDIDATE_FROZEN':return self.store.state('summary')
-        if phase=='DEV_RUNNING':
-            interrupted=self.store.interrupt_running()
-            transition(self.store,'ABORTED')
-            raise RuntimeError(f'interrupted DEV campaign preserved ({len(interrupted)} attempts); start a new campaign')
-        if phase!='VALIDATED_CONFIG':raise ValueError('campaign not ready')
-        transition(self.store,'DEV_RUNNING')
-        seen=set();parent=SolverProgram(rounds=32);history=[];library=[]
+        if phase=='CANDIDATE_FROZEN':
+            if not (self.root/'reports/report.md').exists():self.report()   # interrupted after the freeze
+            return self.store.state('summary')
         from .kernel.version import SystemVersion
         fixed=version_components(self.config)
-        initial=SystemVersion(generation=-1,parent=None,solver=parent.model_dump(mode='json'),tool_library=(),
-                              memory_snapshot=self.store.verify()['head'],research_policy={'policy':'uniform'},
-                              source=self.store.state('source_hash'),**fixed)
-        parent_version=initial.version_id();self.store.save('system_version',parent_version,initial.model_dump(mode='json'))
+        resuming=phase=='DEV_RUNNING'
+        if resuming:
+            if not resume:
+                raise RuntimeError('campaign was interrupted while DEV_RUNNING; resume it (`genesis campaign resume`) '
+                                   'or start a new campaign')
+            interrupted=self.store.interrupt_running()
+            progress=self.store.state('dev_progress')
+            committed=progress['completed'] if progress else 0
+            self.store.event('CAMPAIGN_RESUMED',{'interrupted_attempts':interrupted,'committed_generations':committed,
+                                                 'missing_snapshots':[g for g in range(committed) if not
+                                                                      (self.root/'snapshots'/f'g{g}.sqlite3').exists()]})
+            self._load_journal()
+        elif phase!='VALIDATED_CONFIG':raise ValueError('campaign not ready')
+        else:
+            progress=None
+            transition(self.store,'DEV_RUNNING')
+        if progress:
+            seen=set(progress['seen']);parent=SolverProgram.model_validate_json(canonical(progress['parent']))
+            parent_version=progress['parent_version'];library=list(progress['library'])
+            history=[self.store.get(self.store.db.execute("SELECT object_hash FROM entities WHERE kind='generation' AND id=?",
+                                                          (str(g),)).fetchone()[0]) for g in range(progress['completed'])]
+            first=progress['completed']
+        else:
+            seen=set();parent=SolverProgram(rounds=32);history=[];library=[];first=0
+            existing=self._initial_version() if resuming else None
+            if existing:parent_version=existing[0]
+            else:
+                initial=SystemVersion(generation=-1,parent=None,solver=parent.model_dump(mode='json'),tool_library=(),
+                                      memory_snapshot=self.store.verify()['head'],research_policy={'policy':'uniform'},
+                                      source=self.store.state('source_hash'),**fixed)
+                parent_version=initial.version_id();self.store.save('system_version',parent_version,initial.model_dump(mode='json'))
         try:
-            for generation in range(self.config.generations):
+            for generation in range(first,self.config.generations):
                 seed=self.config.seed+100000*generation
                 dev,seen=self._panel(seed,'DEV',seen)
                 select,seen=self._panel(seed+1,'SELECT',seen)
@@ -214,12 +290,19 @@ class Campaign:
                 policy=max(children,key=lambda p:(sum(r['value'] for r in child_select[p]),p))
                 selected=children[policy]
                 # Frozen before the subsequently generated public future panels.
-                version=SystemVersion(generation=generation,parent=parent_version,solver=selected.model_dump(mode='json'),
-                                      tool_library=tuple(library),memory_snapshot=self.store.verify()['head'],
-                                      research_policy={'policy':policy,'mutation_weights':self.store.state('mutation_weights',[1,1,1,1])},
-                                      source=self.store.state('source_hash'),**fixed)
-                vid=version.version_id();self.store.save('system_version',vid,version.model_dump(mode='json'))
-                self.store.event('DEV_SUCCESSOR_FROZEN',{'version':vid,'candidate':selected.model_dump(mode='json')})
+                frozen=self._frozen_version(generation) if resuming else None
+                if frozen is not None:
+                    vid,recorded=frozen
+                    if recorded['solver']!=selected.model_dump(mode='json') or recorded['parent']!=parent_version:
+                        raise RuntimeError('resumed run diverged from the successor frozen before the interruption')
+                else:
+                    version=SystemVersion(generation=generation,parent=parent_version,solver=selected.model_dump(mode='json'),
+                                          tool_library=tuple(library),memory_snapshot=self.store.verify()['head'],
+                                          research_policy={'policy':policy,'mutation_weights':self.store.state('mutation_weights',[1,1,1,1])},
+                                          source=self.store.state('source_hash'),**fixed)
+                    vid=version.version_id();self.store.save('system_version',vid,version.model_dump(mode='json'))
+                    self.store.event('DEV_SUCCESSOR_FROZEN',{'version':vid,'candidate':selected.model_dump(mode='json')})
+                    point('campaign.frozen')
                 future,seen=self._panel(seed+4,'FUTURE',seen)
                 # Deterministic arm order is alternated per generation, and paired
                 # task RNG is held fixed across all arms.
@@ -245,7 +328,7 @@ class Campaign:
                 a=self.evaluate(transfer,selected,f'g{generation}:transfer-candidate',seed+7)
                 b=self.evaluate(transfer,baseline,f'g{generation}:transfer-baseline',seed+7)
                 transfer_result=compare_rows(a,b)
-                diagnosis=diagnose(research_rows[policy]);self.store.set_state('diagnosis',diagnosis)
+                diagnosis=diagnose(research_rows[policy])   # committed with the generation (read by the next one)
                 macro=compile_trace(selected,[r['trace'] for r in research_rows[policy]])
                 mid=digest(macro);self.store.save('macro',mid,macro)
                 # DEV retention uses SELECT alone; public future outcomes cannot
@@ -268,7 +351,6 @@ class Campaign:
                         'research':summaries,'solver_comparison':solver,'better_improver_diagnostic':improver,
                         'causal_controls':causal,'transfer':transfer_result,'retained_in_dev':retained,
                         'scientifically_confirmed':False,'public_panel_freshness':'exact graph isomorphism disjoint within campaign'}
-                self.store.save('generation',str(generation),result);history.append(result)
                 # Learn a bounded proposal-allocation policy from DEV outcomes only.
                 # Freeze it as a child policy for the next generation; FUTURE scores
                 # never train or select it. This is a mechanism, not evidence of gain.
@@ -278,14 +360,21 @@ class Campaign:
                     if score[0]>base_score:
                         for i,(old,new) in enumerate(zip(parent.weights,program_data['weights'])):
                             if old!=new:learned[i]=min(32,learned[i]+1)
-                self.store.save('research_policy',str(generation),{
-                    'parent_weights':adaptive_summary['mutation_weights'],'child_weights':learned,
-                    'training_source':f'g{generation}-adaptive','effects':['USES_DEV_DATA'],
-                    'claim':'candidate future research policy, utility unconfirmed'})
-                self.store.set_state('mutation_weights',learned)
-                self.store.set_state('completed_dev_generations',generation+1)
-                self.store.snapshot(f'g{generation}.sqlite3')
                 if retained:parent=selected;parent_version=vid;library.append(cid)
+                # One transaction commits the generation: a crash leaves all of it or none.
+                self.store.commit_batch(
+                    entities=[('generation',str(generation),result),
+                              ('research_policy',str(generation),{
+                                  'parent_weights':adaptive_summary['mutation_weights'],'child_weights':learned,
+                                  'training_source':f'g{generation}-adaptive','effects':['USES_DEV_DATA'],
+                                  'claim':'candidate future research policy, utility unconfirmed'})],
+                    states=[('diagnosis',diagnosis),('mutation_weights',learned),('completed_dev_generations',generation+1),
+                            ('dev_progress',{'completed':generation+1,'parent':parent.model_dump(mode='json'),
+                                             'parent_version':parent_version,'library':library,'seen':sorted(seen)})])
+                history.append(result)
+                point('campaign.generation')
+                if not (self.root/'snapshots'/f'g{generation}.sqlite3').exists():
+                    self.store.snapshot(f'g{generation}.sqlite3')
             self.store.set_state('latest_program',parent.model_dump(mode='json'))
             self.store.set_state('exposure_fingerprints',sorted(seen))
             summary={'status':'DEV_EXPERIMENT_COMPLETE','claim_ceiling':'FINITE_INSTANCE_RESULTS_AND_DEV_DIAGNOSTICS',
@@ -293,6 +382,10 @@ class Campaign:
                      'theorem_checked':False,'retained_dev_capabilities':library,
                      'scientific_generations_confirmed':0,'external_replication':False,
                      'total_attempts':self.store.db.execute('SELECT count(*) FROM attempts').fetchone()[0],
+                     'interrupted_attempts':self.store.db.execute(
+                         "SELECT count(*) FROM attempts WHERE status IN ('INTERRUPTED','HARNESS_ERROR')").fetchone()[0],
+                     'resumes':sum(json.loads(b)['kind']=='CAMPAIGN_RESUMED'
+                                   for (b,) in self.store.db.execute('SELECT body FROM events')),
                      'limitations':['All panels public and locally generated','Fixed bounded candidate grammar',
                          'Exact solver is an evaluation reference, not a matched heuristic competitor',
                          'CPU limits matched; observed wall/CPU costs may differ','Discovery and checking costs separately ledgered',
@@ -300,8 +393,14 @@ class Campaign:
                          'No novelty or recursive-improvement claim']}
             summary=json.loads(canonical(summary))
             self.store.set_state('summary',summary);transition(self.store,'CANDIDATE_FROZEN')
+            point('campaign.complete')
             self.report(summary)
             return summary
+        except (KeyboardInterrupt,SystemExit) as exc:
+            # An operator stop is an interruption, not a failure: keep DEV_RUNNING so it can be resumed.
+            self.store.event('CAMPAIGN_INTERRUPTED',{'exception':type(exc).__name__})
+            self.store.interrupt_running()
+            raise
         except BaseException as exc:
             self.store.event('CAMPAIGN_ERROR',{'exception':type(exc).__name__,'message':str(exc)})
             self.store.interrupt_running()
@@ -326,8 +425,8 @@ class Campaign:
         text='\n'.join(lines)+'\n'
         require_clean(text,{'math':'FINITE_CERTIFIED','utility':'DEV_ONLY','causality':'NOT_TESTED',
                             'improver':'NOT_TESTED','novelty':'UNKNOWN','replication':'NONE'})
-        (self.root/'reports/report.md').write_text(text)
-        (self.root/'reports/results.json').write_bytes(canonical(summary))
+        atomic_write(self.root/'reports/report.md',text.encode(),overwrite=True)
+        atomic_write(self.root/'reports/results.json',canonical(summary),overwrite=True)
 
     def replay(self,limit=10):
         if type(limit) is not int or limit<1:raise ValueError('replay limit')
