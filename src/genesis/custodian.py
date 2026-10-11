@@ -498,7 +498,15 @@ def recover(private_root,request_id,pool_path,key_path,operator_id):
         published=work/'public_receipt.json'
         if published.exists():
             receipt=json.loads(published.read_bytes())
-            if receipt['payload']['request_hash']!=request_id:raise RuntimeError('published receipt names another request')
+            # Never re-sign, and never adopt a file this custodian's key did not sign for this request.
+            from cryptography.hazmat.primitives import serialization as _ser
+            pub=_ser.load_pem_private_key(Path(key_path).read_bytes(),password=None).public_key().public_bytes(
+                _ser.Encoding.Raw,_ser.PublicFormat.Raw)
+            import base64 as _b64
+            try:payload=verify(receipt,_b64.b64encode(pub).decode())
+            except Exception as exc:raise RuntimeError(f'published receipt does not verify under the custodian key ({type(exc).__name__})')
+            if payload.get('request_hash')!=request_id or payload.get('anchor_hash')!=digest(anchor):
+                raise RuntimeError('published receipt names another request')
             if row[2]!='COMPLETE':db.execute("UPDATE requests SET state='COMPLETE' WHERE id=?",(request_id,))
             return receipt
         if row[2]!='CONSUMED_NO_RETRY':raise RuntimeError(f'unexpected request state {row[2]}')

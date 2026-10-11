@@ -51,6 +51,7 @@ class LauncherConfig(StrictModel):
     programs: tuple[str, ...]     # allowed argv[0] values inside the sandbox
     mounts: dict[str, str]        # allowed read-only mounts: sandbox destination -> host source
     env_keys: tuple[str, ...] = ('PATH_PREFIX', 'LEAN_PATH', 'LEAN_SYSROOT', 'GENESIS_STAGE')
+    socket_gid: int | None = None   # set: socket is root:<gid> 0660, so other accounts cannot even connect
     budget_runs: int = 1000
     budget_cpu_seconds: int = 36000
 
@@ -109,8 +110,12 @@ class Launcher:
             self._log_head, self._log_seq = None, 0
         self.server = socket.socket(socket.AF_UNIX, socket.SOCK_STREAM)
         self.server.bind(str(sock_path))
-        # The worker must be able to connect; the peer UID check decides who is served.
-        os.chmod(sock_path, 0o666)
+        # The peer UID check decides who is served; with socket_gid set, other accounts
+        # cannot connect at all (so they cannot fill the log with refusals either).
+        if config.socket_gid is not None:
+            os.chown(sock_path, 0, config.socket_gid); os.chmod(sock_path, 0o660)
+        else:
+            os.chmod(sock_path, 0o666)
         self.server.listen(8)
         self._stop = threading.Event()
 

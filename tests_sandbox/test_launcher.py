@@ -252,6 +252,24 @@ print(json.dumps(anchors))
         with self.assertRaisesRegex(RuntimeError, 'hash chain'):
             Launcher(cfg)
 
+    def test_socket_group_keeps_other_accounts_from_connecting(self):
+        cfg = self.config(socket_gid=NOBODY)
+        self.serve(cfg)
+        code = RUN % json.dumps(SMALL) + 'print(json.dumps(run_python("print(1)", small)["status"]))'
+        self.assertEqual(as_worker(code, socket_path=cfg.socket_path), 'SUCCESS')
+        out = as_worker('''
+            import json, socket
+            s = socket.socket(socket.AF_UNIX)
+            try:
+                s.connect(%r); r = "CONNECTED"
+            except OSError as e:
+                r = type(e).__name__
+            print(json.dumps(r))
+        ''' % cfg.socket_path, uid=1234)
+        self.assertEqual(out, 'PermissionError')
+        refusals = [json.loads(l) for l in Path(cfg.log_path).read_text().splitlines()]
+        self.assertFalse(any(e['peer']['uid'] == 1234 for e in refusals))
+
     def test_socket_directory_must_be_root_controlled(self):
         (self.base / 'run').chmod(0o777)
         with self.assertRaisesRegex(PermissionError, 'root-owned'):

@@ -35,8 +35,8 @@ def _members(root):
         rel = p.relative_to(root)
         if p.is_symlink():
             raise ValueError(f'symlink in store: {rel}')
-        if not p.is_file() or p.name in DERIVED or is_temp_name(p.name):
-            continue
+        if not p.is_file() or (len(rel.parts) == 1 and p.name in DERIVED) or is_temp_name(p.name):
+            continue      # quarantined database files deeper down are forensic history and are kept
         if any(rel.parts[:len(d)] == d for d in SKIP_DIRS):
             continue
         yield rel.as_posix(), p
@@ -81,6 +81,8 @@ def restore(archive, destination, *, expected_head=None):
     `destination` unless every member hash, the event chain, every referenced
     object and the derived database check out."""
     destination = Path(destination)
+    if destination.is_symlink():
+        raise FileExistsError(f'restore destination is a symlink: {destination}')
     if destination.exists() and (not destination.is_dir() or any(destination.iterdir())):
         raise FileExistsError(f'restore destination must be absent or empty: {destination}')
     destination.parent.mkdir(parents=True, exist_ok=True)
@@ -107,7 +109,7 @@ def restore(archive, destination, *, expected_head=None):
                 raise ValueError('backup has no event export')
             for name in sorted(manifest['files']):
                 parts = name.split('/')
-                if parts[0] in ('snapshots',) or name in DERIVED or parts[-1] in DERIVED or \
+                if parts[0] in ('snapshots',) or name in DERIVED or \
                         is_temp_name(parts[-1]) or parts[:2] == ['objects', 'tmp']:
                     raise ValueError(f'derived or temporary file in backup: {name}')
                 data = z.read(name)
