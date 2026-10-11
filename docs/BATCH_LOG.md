@@ -388,3 +388,14 @@ Not done:
 - the image digest;
 - wheel hashes;
 - compute sizing.
+
+## Batch 15, follow-up 1 (B15_R1)
+
+The clean-room rehearsal of the B15 checkpoint ran `deployment/reproduce.sh` on the
+build host. The toolchain was rebuilt from GitHub and the Lean tarball, and every
+pin matched byte for byte. The rehearsal then failed at the release matrix: one
+integration test skipped outside a git checkout, so the mandatory matrix had
+depended on hidden state.
+
+The test now checks every shipped file instead of skipping. Evidence is in
+`audit/b15_rehearsal/`.

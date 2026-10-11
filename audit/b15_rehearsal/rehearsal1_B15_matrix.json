@@ -1,0 +1,79 @@
+{
+ "profile": "release",
+ "python": "3.13.16",
+ "total_ran": 709,
+ "total_skipped": 2,
+ "all_ok": false,
+ "suites": [
+  {
+   "suite": "integration",
+   "ran": 360,
+   "skipped": 1,
+   "failures": 0,
+   "errors": 0,
+   "ok": false,
+   "skips": [
+    {
+     "test": "test_no_pickle_caches_tracked",
+     "reason": "not a git checkout"
+    }
+   ],
+   "undeclared_skips": [
+    {
+     "test": "test_no_pickle_caches_tracked",
+     "reason": "not a git checkout"
+    }
+   ],
+   "seconds": 384.65
+  },
+  {
+   "suite": "legacy_regression",
+   "ran": 282,
+   "skipped": 1,
+   "failures": 0,
+   "errors": 0,
+   "ok": true,
+   "skips": [
+    {
+     "test": "test_u_admission_replay_identical_across_hash_seeds",
+     "reason": "set GAP_SLOW_TESTS=1 (needs the cached round-2b worlds)"
+    }
+   ],
+   "undeclared_skips": [],
+   "seconds": 64.36
+  },
+  {
+   "suite": "sandbox_escape",
+   "ran": 28,
+   "skipped": 0,
+   "failures": 0,
+   "errors": 0,
+   "ok": true,
+   "skips": [],
+   "undeclared_skips": [],
+   "seconds": 15.7
+  },
+  {
+   "suite": "certificates",
+   "ran": 21,
+   "skipped": 0,
+   "failures": 0,
+   "errors": 0,
+   "ok": true,
+   "skips": [],
+   "undeclared_skips": [],
+   "seconds": 99.78
+  },
+  {
+   "suite": "formal",
+   "ran": 18,
+   "skipped": 0,
+   "failures": 0,
+   "errors": 0,
+   "ok": true,
+   "skips": [],
+   "undeclared_skips": [],
+   "seconds": 49.59
+  }
+ ]
+}

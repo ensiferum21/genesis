@@ -57,9 +57,13 @@ class GI6_02_NoUnsafeDeserialization(unittest.TestCase):
 
     def test_no_pickle_caches_tracked(self):
         tracked = subprocess.run(['git', 'ls-files'], cwd=REPO, capture_output=True, text=True)
-        if tracked.returncode != 0:
-            self.skipTest('not a git checkout')
-        bad = [p for p in tracked.stdout.splitlines() if p.endswith(('.pkl', '.pickle', '.joblib'))]
+        if tracked.returncode == 0:
+            paths = tracked.stdout.splitlines()
+        else:
+            # An extracted checkpoint is not a git checkout; every file in it is shipped, so check them all.
+            # (B15 clean-room rehearsal: a skip here made the mandatory matrix depend on hidden state.)
+            paths = [str(q.relative_to(REPO)) for q in REPO.rglob('*') if q.is_file()]
+        bad = [p for p in paths if p.endswith(('.pkl', '.pickle', '.joblib'))]
         self.assertEqual(bad, [])
 
 
