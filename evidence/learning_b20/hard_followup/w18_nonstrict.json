@@ -1,0 +1,290 @@
+{
+ "log": [
+  {
+   "cpu_s": 9.907,
+   "eq": "![X]: (![Y]: (s(X,Y) = s(Y,X)))",
+   "outcome": "PROVED",
+   "step": 0
+  },
+  {
+   "cpu_s": 0.019,
+   "eq": "![X]: (![Y]: (s(s(X,X),s(X,Y)) = X))",
+   "outcome": "PROVED",
+   "step": 1
+  },
+  {
+   "cpu_s": 0.008,
+   "eq": "![X]: (![Y]: (s(s(X,X),s(Y,X)) = X))",
+   "outcome": "PROVED",
+   "step": 2
+  },
+  {
+   "cpu_s": 0.007,
+   "eq": "![X]: (![Y]: (s(s(X,Y),s(X,X)) = X))",
+   "outcome": "PROVED",
+   "step": 3
+  },
+  {
+   "cpu_s": 0.007,
+   "eq": "![X]: (![Y]: (s(s(X,Y),s(Y,Y)) = Y))",
+   "outcome": "PROVED",
+   "step": 4
+  },
+  {
+   "cpu_s": 0.013,
+   "eq": "![X]: (![Y]: (s(s(s(X,X),Y),s(X,Y)) = Y))",
+   "outcome": "PROVED",
+   "step": 5
+  },
+  {
+   "cpu_s": 0.008,
+   "eq": "![X]: (![Y]: (s(s(s(X,X),Y),s(Y,Y)) = Y))",
+   "outcome": "PROVED",
+   "step": 6
+  },
+  {
+   "cpu_s": 0.039,
+   "eq": "![X]: (![Y]: (s(s(s(X,X),Y),X) = s(X,X)))",
+   "outcome": "PROVED",
+   "step": 7
+  },
+  {
+   "cpu_s": 0.048,
+   "eq": "![X]: (![Y]: (s(s(s(X,X),Y),Y) = s(X,Y)))",
+   "outcome": "PROVED",
+   "step": 8
+  },
+  {
+   "cpu_s": 0.009,
+   "eq": "![X]: (![Y]: (s(s(s(X,Y),X),s(X,Y)) = X))",
+   "outcome": "PROVED",
+   "step": 9
+  },
+  {
+   "cpu_s": 0.007,
+   "eq": "![X]: (![Y]: (s(s(s(X,Y),X),s(Y,X)) = X))",
+   "outcome": "PROVED",
+   "step": 10
+  },
+  {
+   "cpu_s": 0.009,
+   "eq": "![X]: (![Y]: (s(s(s(X,Y),X),X) = s(X,Y)))",
+   "outcome": "PROVED",
+   "step": 11
+  },
+  {
+   "cpu_s": 0.007,
+   "eq": "![X]: (![Y]: (s(s(s(X,Y),X),X) = s(Y,X)))",
+   "outcome": "PROVED",
+   "step": 12
+  },
+  {
+   "cpu_s": 0.037,
+   "eq": "![X]: (![Y]: (s(s(s(X,Y),X),Y) = s(Y,Y)))",
+   "outcome": "PROVED",
+   "step": 13
+  },
+  {
+   "cpu_s": 0.008,
+   "eq": "![X]: (![Y]: (s(s(s(X,Y),Y),Y) = s(X,Y)))",
+   "outcome": "PROVED",
+   "step": 14
+  },
+  {
+   "cpu_s": 0.008,
+   "eq": "![X]: (![Y]: (s(s(s(X,Y),Y),Y) = s(Y,X)))",
+   "outcome": "PROVED",
+   "step": 15
+  },
+  {
+   "cpu_s": 0.007,
+   "eq": "![X]: (![Y]: (s(s(X,s(X,Y)),X) = s(X,Y)))",
+   "outcome": "PROVED",
+   "step": 16
+  },
+  {
+   "cpu_s": 0.007,
+   "eq": "![X]: (![Y]: (s(s(X,s(X,Y)),X) = s(Y,X)))",
+   "outcome": "PROVED",
+   "step": 17
+  },
+  {
+   "cpu_s": 0.008,
+   "eq": "![X]: (![Y]: (s(s(X,s(Y,X)),X) = s(X,Y)))",
+   "outcome": "PROVED",
+   "step": 18
+  },
+  {
+   "cpu_s": 0.046,
+   "eq": "![X]: (![Y]: (s(s(X,s(Y,Y)),X) = s(X,Y)))",
+   "outcome": "PROVED",
+   "step": 19
+  },
+  {
+   "cpu_s": 0.014,
+   "eq": "![X]: (![Y]: (s(s(X,s(Y,Y)),X) = s(Y,X)))",
+   "outcome": "PROVED",
+   "step": 20
+  },
+  {
+   "cpu_s": 0.008,
+   "eq": "![X]: (![Y]: (s(s(X,X),Y) = s(s(X,Y),Y)))",
+   "outcome": "PROVED",
+   "step": 21
+  },
+  {
+   "cpu_s": 0.007,
+   "eq": "![X]: (![Y]: (s(s(X,X),Y) = s(s(Y,X),Y)))",
+   "outcome": "PROVED",
+   "step": 22
+  },
+  {
+   "cpu_s": 0.006,
+   "eq": "![X]: (![Y]: (s(s(X,X),Y) = s(Y,s(X,X))))",
+   "outcome": "PROVED",
+   "step": 23
+  },
+  {
+   "cpu_s": 0.04,
+   "eq": "![X]: (![Y]: (s(s(X,X),Y) = s(Y,s(X,Y))))",
+   "outcome": "PROVED",
+   "step": 24
+  },
+  {
+   "cpu_s": 0.01,
+   "eq": "![X]: (![Y]: (s(s(X,X),Y) = s(Y,s(Y,X))))",
+   "outcome": "PROVED",
+   "step": 25
+  },
+  {
+   "cpu_s": 0.008,
+   "eq": "![X]: (![Y]: (s(s(X,Y),X) = s(s(Y,X),X)))",
+   "outcome": "PROVED",
+   "step": 26
+  },
+  {
+   "cpu_s": 0.007,
+   "eq": "![X]: (![Y]: (s(s(X,Y),X) = s(X,s(X,Y))))",
+   "outcome": "PROVED",
+   "step": 27
+  },
+  {
+   "cpu_s": 0.007,
+   "eq": "![X]: (![Y]: (s(s(X,Y),X) = s(X,s(Y,X))))",
+   "outcome": "PROVED",
+   "step": 28
+  },
+  {
+   "cpu_s": 0.011,
+   "eq": "![X]: (![Y]: (s(s(X,Y),X) = s(X,s(Y,Y))))",
+   "outcome": "PROVED",
+   "step": 29
+  },
+  {
+   "cpu_s": 0.01,
+   "eq": "![X]: (![Y]: (s(s(X,Y),Y) = s(Y,s(X,X))))",
+   "outcome": "PROVED",
+   "step": 30
+  },
+  {
+   "cpu_s": 0.011,
+   "eq": "![X]: (![Y]: (s(s(X,Y),Y) = s(Y,s(X,Y))))",
+   "outcome": "PROVED",
+   "step": 31
+  },
+  {
+   "cpu_s": 0.012,
+   "eq": "![X]: (![Y]: (s(s(X,Y),Y) = s(Y,s(Y,X))))",
+   "outcome": "PROVED",
+   "step": 32
+  },
+  {
+   "cpu_s": 0.008,
+   "eq": "![X]: (![Y]: (![Z]: (s(s(X,Y),Z) = s(Z,s(Y,X)))))",
+   "outcome": "PROVED",
+   "step": 33
+  },
+  {
+   "cpu_s": 0.009,
+   "eq": "![X]: (![Y]: (s(X,s(s(X,X),Y)) = s(X,X)))",
+   "outcome": "PROVED",
+   "step": 34
+  },
+  {
+   "cpu_s": 0.008,
+   "eq": "![X]: (![Y]: (s(X,s(s(X,Y),X)) = s(X,Y)))",
+   "outcome": "PROVED",
+   "step": 35
+  },
+  {
+   "cpu_s": 0.008,
+   "eq": "![X]: (![Y]: (s(X,s(s(X,Y),X)) = s(Y,X)))",
+   "outcome": "PROVED",
+   "step": 36
+  },
+  {
+   "cpu_s": 0.008,
+   "eq": "![X]: (![Y]: (s(X,s(s(Y,X),X)) = s(X,Y)))",
+   "outcome": "PROVED",
+   "step": 37
+  },
+  {
+   "cpu_s": 0.008,
+   "eq": "![X]: (![Y]: (s(X,s(s(Y,X),X)) = s(Y,X)))",
+   "outcome": "PROVED",
+   "step": 38
+  },
+  {
+   "cpu_s": 0.017,
+   "eq": "![X]: (![Y]: (s(X,s(s(Y,Y),X)) = s(X,Y)))",
+   "outcome": "PROVED",
+   "step": 39
+  },
+  {
+   "cpu_s": 0.011,
+   "eq": "![X]: (![Y]: (s(X,s(s(Y,Y),X)) = s(Y,X)))",
+   "outcome": "PROVED",
+   "step": 40
+  },
+  {
+   "cpu_s": 0.007,
+   "eq": "![X]: (![Y]: (s(X,s(X,s(X,Y))) = s(Y,X)))",
+   "outcome": "PROVED",
+   "step": 41
+  },
+  {
+   "cpu_s": 0.007,
+   "eq": "![X]: (![Y]: (s(X,s(X,s(Y,Y))) = s(X,Y)))",
+   "outcome": "PROVED",
+   "step": 42
+  },
+  {
+   "cpu_s": 0.007,
+   "eq": "![X]: (![Y]: (s(X,s(X,s(Y,Y))) = s(Y,X)))",
+   "outcome": "PROVED",
+   "step": 43
+  },
+  {
+   "cpu_s": 0.007,
+   "eq": "![X]: (![Y]: (s(X,s(X,Y)) = s(X,s(Y,Y))))",
+   "outcome": "PROVED",
+   "step": 44
+  },
+  {
+   "cpu_s": 0.009,
+   "eq": "![X]: (![Y]: (s(X,s(Y,X)) = s(X,s(Y,Y))))",
+   "outcome": "PROVED",
+   "step": 45
+  }
+ ],
+ "summary": {
+  "empty": 0,
+  "nonstrict_lemmas": 46,
+  "nonstrict_successor": 6,
+  "note": "post hoc: non-strict expansion added after the strict transfer failed at its first step",
+  "steps_attempted": 46,
+  "strict_successor": 0,
+  "targets": 15,
+  "uncompressed_successor": 6
+ }
+}

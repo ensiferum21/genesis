@@ -175,3 +175,16 @@ Acceptance needs independent review and a custodian; see
 | B19-OPEN-5 | The W16 decision covers equational theories that E solves from the axioms alone. Lean replay of E proofs does not cover Skolem functions with arguments, or steps that the tactic cascade cannot close. | a family where E needs help; a fuller replay |
 | B19-OPEN-6 | The W17 quotes come from a summarising fetch tool and are unconfirmed (ADJ-1 to ADJ-4 pending). The search record is small. The E2 design is a draft without a sealed statement generator. | a person to adjudicate; a priority reviewer; a custodian-side generator |
 
+## B20 outcome (W18–W20; E3)
+
+The exit, "better-improver claim supported or explicitly unestablished", is met in its
+second form: **UNESTABLISHED**. B20 built and tested the research-learning machinery on
+DEV. See `docs/checkpoints/B20_REVIEW_BRIEF.md`.
+
+| ID | Residual | Needs |
+|---|---|---|
+| B20-OPEN-1 | The learned research policy does not beat fixed rules on DEV (1W/7T/0L vs fixed) and its predictions are nearly uninformative. Most systems leave research no headroom. | harder domains, better features, a sealed E3 study |
+| B20-OPEN-2 | Macros replay faithfully and compress, but they do not beat plain research on unseen seeds, and strict transfer across axiomatizations fails at the first hard step. | macro semantics robust to transfer; generative compression that helps |
+| B20-OPEN-3 | Research outcomes on Wolfram's axiom depend on load-sensitive E time limits and on the first attempts. The main budget rule starved 10-second attempts. Single runs are noisy. | repeated runs on a quiet host; budget rules per attempt cost |
+| B20-OPEN-4 | Memory and curriculum show no effect without headroom, and only parity with plain research where there is headroom. | a regime where reuse across runs matters |
+

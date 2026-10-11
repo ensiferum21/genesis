@@ -1,0 +1,23 @@
+{
+ "examples": 646,
+ "features": [
+  "bias",
+  "size",
+  "variables",
+  "imbalance",
+  "variable_side",
+  "target_overlap"
+ ],
+ "frozen_before_evaluation": true,
+ "positives": 311,
+ "training_brier": 0.2335,
+ "weights": [
+  0.23530114292435225,
+  -0.9263033870829167,
+  0.11568958185400895,
+  -0.7312583063064622,
+  -0.07487098227842186,
+  1.0732712744544626
+ ],
+ "weights_sha256": "ab778f98b521f594f34e8114d8fb1c4d78903270a0330dc6a6953be9cf3fba82"
+}

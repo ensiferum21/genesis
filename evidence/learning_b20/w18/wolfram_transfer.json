@@ -1,0 +1,243 @@
+{
+ "budget_s": 240,
+ "empty": 0,
+ "induction_charge_cpu_s": 8.56,
+ "macro_lemmas": 0,
+ "macro_log": [
+  {
+   "cpu_s": 9.982,
+   "eq": "![X]: (![Y]: (s(X,Y) = s(Y,X)))",
+   "outcome": "UNPROVED",
+   "step": 0
+  },
+  {
+   "eq": "![X]: (![Y]: (s(s(X,X),s(X,Y)) = X))",
+   "outcome": "DEPENDENCY_MISSING",
+   "step": 1
+  },
+  {
+   "eq": "![X]: (![Y]: (s(s(X,X),s(Y,X)) = X))",
+   "outcome": "DEPENDENCY_MISSING",
+   "step": 2
+  },
+  {
+   "eq": "![X]: (![Y]: (s(s(X,Y),s(X,X)) = X))",
+   "outcome": "DEPENDENCY_MISSING",
+   "step": 3
+  },
+  {
+   "eq": "![X]: (![Y]: (s(s(X,Y),s(Y,Y)) = Y))",
+   "outcome": "DEPENDENCY_MISSING",
+   "step": 4
+  },
+  {
+   "eq": "![X]: (![Y]: (s(s(s(X,X),Y),s(X,Y)) = Y))",
+   "outcome": "DEPENDENCY_MISSING",
+   "step": 5
+  },
+  {
+   "eq": "![X]: (![Y]: (s(s(s(X,X),Y),s(Y,Y)) = Y))",
+   "outcome": "DEPENDENCY_MISSING",
+   "step": 6
+  },
+  {
+   "eq": "![X]: (![Y]: (s(s(s(X,X),Y),X) = s(X,X)))",
+   "outcome": "DEPENDENCY_MISSING",
+   "step": 7
+  },
+  {
+   "eq": "![X]: (![Y]: (s(s(s(X,X),Y),Y) = s(X,Y)))",
+   "outcome": "DEPENDENCY_MISSING",
+   "step": 8
+  },
+  {
+   "eq": "![X]: (![Y]: (s(s(s(X,Y),X),s(X,Y)) = X))",
+   "outcome": "DEPENDENCY_MISSING",
+   "step": 9
+  },
+  {
+   "eq": "![X]: (![Y]: (s(s(s(X,Y),X),s(Y,X)) = X))",
+   "outcome": "DEPENDENCY_MISSING",
+   "step": 10
+  },
+  {
+   "eq": "![X]: (![Y]: (s(s(s(X,Y),X),X) = s(X,Y)))",
+   "outcome": "DEPENDENCY_MISSING",
+   "step": 11
+  },
+  {
+   "eq": "![X]: (![Y]: (s(s(s(X,Y),X),X) = s(Y,X)))",
+   "outcome": "DEPENDENCY_MISSING",
+   "step": 12
+  },
+  {
+   "eq": "![X]: (![Y]: (s(s(s(X,Y),X),Y) = s(Y,Y)))",
+   "outcome": "DEPENDENCY_MISSING",
+   "step": 13
+  },
+  {
+   "eq": "![X]: (![Y]: (s(s(s(X,Y),Y),Y) = s(X,Y)))",
+   "outcome": "DEPENDENCY_MISSING",
+   "step": 14
+  },
+  {
+   "eq": "![X]: (![Y]: (s(s(s(X,Y),Y),Y) = s(Y,X)))",
+   "outcome": "DEPENDENCY_MISSING",
+   "step": 15
+  },
+  {
+   "eq": "![X]: (![Y]: (s(s(X,s(X,Y)),X) = s(X,Y)))",
+   "outcome": "DEPENDENCY_MISSING",
+   "step": 16
+  },
+  {
+   "eq": "![X]: (![Y]: (s(s(X,s(X,Y)),X) = s(Y,X)))",
+   "outcome": "DEPENDENCY_MISSING",
+   "step": 17
+  },
+  {
+   "eq": "![X]: (![Y]: (s(s(X,s(Y,X)),X) = s(X,Y)))",
+   "outcome": "DEPENDENCY_MISSING",
+   "step": 18
+  },
+  {
+   "eq": "![X]: (![Y]: (s(s(X,s(Y,Y)),X) = s(X,Y)))",
+   "outcome": "DEPENDENCY_MISSING",
+   "step": 19
+  },
+  {
+   "eq": "![X]: (![Y]: (s(s(X,s(Y,Y)),X) = s(Y,X)))",
+   "outcome": "DEPENDENCY_MISSING",
+   "step": 20
+  },
+  {
+   "eq": "![X]: (![Y]: (s(s(X,X),Y) = s(s(X,Y),Y)))",
+   "outcome": "DEPENDENCY_MISSING",
+   "step": 21
+  },
+  {
+   "eq": "![X]: (![Y]: (s(s(X,X),Y) = s(s(Y,X),Y)))",
+   "outcome": "DEPENDENCY_MISSING",
+   "step": 22
+  },
+  {
+   "eq": "![X]: (![Y]: (s(s(X,X),Y) = s(Y,s(X,X))))",
+   "outcome": "DEPENDENCY_MISSING",
+   "step": 23
+  },
+  {
+   "eq": "![X]: (![Y]: (s(s(X,X),Y) = s(Y,s(X,Y))))",
+   "outcome": "DEPENDENCY_MISSING",
+   "step": 24
+  },
+  {
+   "eq": "![X]: (![Y]: (s(s(X,X),Y) = s(Y,s(Y,X))))",
+   "outcome": "DEPENDENCY_MISSING",
+   "step": 25
+  },
+  {
+   "eq": "![X]: (![Y]: (s(s(X,Y),X) = s(s(Y,X),X)))",
+   "outcome": "DEPENDENCY_MISSING",
+   "step": 26
+  },
+  {
+   "eq": "![X]: (![Y]: (s(s(X,Y),X) = s(X,s(X,Y))))",
+   "outcome": "DEPENDENCY_MISSING",
+   "step": 27
+  },
+  {
+   "eq": "![X]: (![Y]: (s(s(X,Y),X) = s(X,s(Y,X))))",
+   "outcome": "DEPENDENCY_MISSING",
+   "step": 28
+  },
+  {
+   "eq": "![X]: (![Y]: (s(s(X,Y),X) = s(X,s(Y,Y))))",
+   "outcome": "DEPENDENCY_MISSING",
+   "step": 29
+  },
+  {
+   "eq": "![X]: (![Y]: (s(s(X,Y),Y) = s(Y,s(X,X))))",
+   "outcome": "DEPENDENCY_MISSING",
+   "step": 30
+  },
+  {
+   "eq": "![X]: (![Y]: (s(s(X,Y),Y) = s(Y,s(X,Y))))",
+   "outcome": "DEPENDENCY_MISSING",
+   "step": 31
+  },
+  {
+   "eq": "![X]: (![Y]: (s(s(X,Y),Y) = s(Y,s(Y,X))))",
+   "outcome": "DEPENDENCY_MISSING",
+   "step": 32
+  },
+  {
+   "eq": "![X]: (![Y]: (![Z]: (s(s(X,Y),Z) = s(Z,s(Y,X)))))",
+   "outcome": "DEPENDENCY_MISSING",
+   "step": 33
+  },
+  {
+   "eq": "![X]: (![Y]: (s(X,s(s(X,X),Y)) = s(X,X)))",
+   "outcome": "DEPENDENCY_MISSING",
+   "step": 34
+  },
+  {
+   "eq": "![X]: (![Y]: (s(X,s(s(X,Y),X)) = s(X,Y)))",
+   "outcome": "DEPENDENCY_MISSING",
+   "step": 35
+  },
+  {
+   "eq": "![X]: (![Y]: (s(X,s(s(X,Y),X)) = s(Y,X)))",
+   "outcome": "DEPENDENCY_MISSING",
+   "step": 36
+  },
+  {
+   "eq": "![X]: (![Y]: (s(X,s(s(Y,X),X)) = s(X,Y)))",
+   "outcome": "DEPENDENCY_MISSING",
+   "step": 37
+  },
+  {
+   "eq": "![X]: (![Y]: (s(X,s(s(Y,X),X)) = s(Y,X)))",
+   "outcome": "DEPENDENCY_MISSING",
+   "step": 38
+  },
+  {
+   "eq": "![X]: (![Y]: (s(X,s(s(Y,Y),X)) = s(X,Y)))",
+   "outcome": "DEPENDENCY_MISSING",
+   "step": 39
+  },
+  {
+   "eq": "![X]: (![Y]: (s(X,s(s(Y,Y),X)) = s(Y,X)))",
+   "outcome": "DEPENDENCY_MISSING",
+   "step": 40
+  },
+  {
+   "eq": "![X]: (![Y]: (s(X,s(X,s(X,Y))) = s(Y,X)))",
+   "outcome": "DEPENDENCY_MISSING",
+   "step": 41
+  },
+  {
+   "eq": "![X]: (![Y]: (s(X,s(X,s(Y,Y))) = s(X,Y)))",
+   "outcome": "DEPENDENCY_MISSING",
+   "step": 42
+  },
+  {
+   "eq": "![X]: (![Y]: (s(X,s(X,s(Y,Y))) = s(Y,X)))",
+   "outcome": "DEPENDENCY_MISSING",
+   "step": 43
+  },
+  {
+   "eq": "![X]: (![Y]: (s(X,s(X,Y)) = s(X,s(Y,Y))))",
+   "outcome": "DEPENDENCY_MISSING",
+   "step": 44
+  },
+  {
+   "eq": "![X]: (![Y]: (s(X,s(Y,X)) = s(X,s(Y,Y))))",
+   "outcome": "DEPENDENCY_MISSING",
+   "step": 45
+  }
+ ],
+ "macro_successor": 0,
+ "targets": 15,
+ "uncompressed_lemmas": 89,
+ "uncompressed_successor": 6
+}

@@ -98,7 +98,10 @@ built useful discovery on DEV:
 - a Ghost Census diagnostic with Lean replay of E proofs (W16);
 - literature and priority records (W17);
 - E1/E2 drafts.
-Acceptance needs independent review and a custodian.
+Acceptance needs independent review and a custodian. B20 built learning to research on
+an equational domain with exact deciders: research policies, replayable macros, screened
+memory and curriculum, and Lean-checked lemma chains. The better-improver claim (E3, GV4)
+is explicitly unestablished.
 
 - **ENGINEERING_COMPLETE_P0** — builder's assessment only. Blocked on R-04's
   outstanding parts (second-machine run of `deployment/reproduce.sh`, image

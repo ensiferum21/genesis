@@ -1,0 +1,1685 @@
+{
+ "after_revocation": {
+  "induction": {
+   "description_length": {
+    "macro": 1164,
+    "trajectory": 4870
+   },
+   "dropped_attempts": 80,
+   "kept": 27,
+   "library_size": 96,
+   "trajectory_attempts": 107
+  },
+  "macro_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "name": "ba_huntington-macro",
+  "precondition": {
+   "ops": {
+    "n": 1,
+    "plus": 2
+   }
+  },
+  "resource_bound_s": 0,
+  "revoked": [
+   {
+    "invalidated": [
+     0,
+     1,
+     2,
+     3,
+     4,
+     5,
+     6,
+     7,
+     8,
+     9,
+     10,
+     11,
+     12,
+     13,
+     14,
+     15,
+     16,
+     17,
+     18,
+     19,
+     20,
+     21,
+     22,
+     23,
+     24,
+     25,
+     26
+    ],
+    "reason": "revocation test: the first step withdrawn",
+    "revoked_step": 0,
+    "texts": [
+     "![X]: (plus(X,X) = X)",
+     "![X]: (n(n(X)) = X)",
+     "![X]: (plus(plus(X,X),X) = X)",
+     "![X]: (n(n(plus(X,X))) = X)",
+     "![X]: (n(n(X)) = plus(X,X))",
+     "![X]: (n(plus(X,X)) = n(X))",
+     "![X]: (plus(n(n(X)),X) = X)",
+     "![X]: (plus(plus(X,X),X) = plus(X,X))",
+     "![X]: (![Y]: (plus(X,plus(X,Y)) = plus(Y,X)))",
+     "![X]: (![Y]: (plus(n(plus(n(X),X)),Y) = Y))",
+     "![X]: (![Y]: (plus(n(X),X) = plus(n(Y),Y)))",
+     "![X]: (![Y]: (plus(plus(plus(X,Y),Y),X) = plus(Y,X)))",
+     "![X]: (![Y]: (plus(plus(plus(X,Y),Y),Y) = plus(Y,X)))",
+     "![X]: (![Y]: (plus(plus(X,X),Y) = plus(X,plus(Y,Y))))",
+     "![X]: (![Y]: (plus(plus(X,X),Y) = plus(Y,plus(X,Y))))",
+     "![X]: (![Y]: (plus(plus(X,Y),Y) = plus(Y,plus(Y,X))))",
+     "![X]: (![Y]: (n(plus(X,plus(X,Y))) = n(plus(Y,X))))",
+     "![X]: (![Y]: (n(plus(X,plus(Y,X))) = n(plus(Y,X))))",
+     "![X]: (![Y]: (n(X) = plus(n(plus(X,Y)),n(X))))",
+     "![X]: (![Y]: (n(X) = plus(n(X),n(plus(X,Y)))))",
+     "![X]: (![Y]: (n(X) = plus(n(X),n(plus(Y,X)))))",
+     "![X]: (![Y]: (plus(n(plus(X,Y)),X) = plus(n(Y),X)))",
+     "![X]: (![Y]: (plus(n(plus(X,Y)),X) = plus(X,n(Y))))",
+     "![X]: (![Y]: (plus(n(plus(X,Y)),Y) = plus(Y,n(X))))",
+     "![X]: (![Y]: (plus(n(X),plus(X,Y)) = plus(n(Y),Y)))",
+     "![X]: (![Y]: (![Z]: (plus(n(X),plus(X,Y)) = plus(n(Z),Z))))",
+     "![X]: (![Y]: (plus(n(X),plus(Y,X)) = plus(n(X),X)))"
+    ]
+   }
+  ],
+  "schema": "genesis-research-macro-v1",
+  "source_system": "ba_huntington",
+  "steps": []
+ },
+ "faithful_replay": {
+  "faithful": true,
+  "log": [
+   {
+    "cpu_s": 0.291,
+    "eq": "![X]: (plus(X,X) = X)",
+    "outcome": "PROVED",
+    "step": 0
+   },
+   {
+    "cpu_s": 0.012,
+    "eq": "![X]: (n(n(X)) = X)",
+    "outcome": "PROVED",
+    "step": 1
+   },
+   {
+    "cpu_s": 0.008,
+    "eq": "![X]: (plus(plus(X,X),X) = X)",
+    "outcome": "PROVED",
+    "step": 2
+   },
+   {
+    "cpu_s": 0.008,
+    "eq": "![X]: (n(n(plus(X,X))) = X)",
+    "outcome": "PROVED",
+    "step": 3
+   },
+   {
+    "cpu_s": 0.008,
+    "eq": "![X]: (n(n(X)) = plus(X,X))",
+    "outcome": "PROVED",
+    "step": 4
+   },
+   {
+    "cpu_s": 0.014,
+    "eq": "![X]: (n(plus(X,X)) = n(X))",
+    "outcome": "PROVED",
+    "step": 5
+   },
+   {
+    "cpu_s": 0.013,
+    "eq": "![X]: (plus(n(n(X)),X) = X)",
+    "outcome": "PROVED",
+    "step": 6
+   },
+   {
+    "cpu_s": 0.009,
+    "eq": "![X]: (plus(plus(X,X),X) = plus(X,X))",
+    "outcome": "PROVED",
+    "step": 7
+   },
+   {
+    "cpu_s": 0.009,
+    "eq": "![X]: (![Y]: (plus(X,plus(X,Y)) = plus(Y,X)))",
+    "outcome": "PROVED",
+    "step": 8
+   },
+   {
+    "cpu_s": 0.016,
+    "eq": "![X]: (![Y]: (plus(n(plus(n(X),X)),Y) = Y))",
+    "outcome": "PROVED",
+    "step": 9
+   },
+   {
+    "cpu_s": 0.008,
+    "eq": "![X]: (![Y]: (plus(n(X),X) = plus(n(Y),Y)))",
+    "outcome": "PROVED",
+    "step": 10
+   },
+   {
+    "cpu_s": 0.01,
+    "eq": "![X]: (![Y]: (plus(plus(plus(X,Y),Y),X) = plus(Y,X)))",
+    "outcome": "PROVED",
+    "step": 11
+   },
+   {
+    "cpu_s": 0.008,
+    "eq": "![X]: (![Y]: (plus(plus(plus(X,Y),Y),Y) = plus(Y,X)))",
+    "outcome": "PROVED",
+    "step": 12
+   },
+   {
+    "cpu_s": 0.009,
+    "eq": "![X]: (![Y]: (plus(plus(X,X),Y) = plus(X,plus(Y,Y))))",
+    "outcome": "PROVED",
+    "step": 13
+   },
+   {
+    "cpu_s": 0.008,
+    "eq": "![X]: (![Y]: (plus(plus(X,X),Y) = plus(Y,plus(X,Y))))",
+    "outcome": "PROVED",
+    "step": 14
+   },
+   {
+    "cpu_s": 0.008,
+    "eq": "![X]: (![Y]: (plus(plus(X,Y),Y) = plus(Y,plus(Y,X))))",
+    "outcome": "PROVED",
+    "step": 15
+   },
+   {
+    "cpu_s": 0.008,
+    "eq": "![X]: (![Y]: (n(plus(X,plus(X,Y))) = n(plus(Y,X))))",
+    "outcome": "PROVED",
+    "step": 16
+   },
+   {
+    "cpu_s": 0.007,
+    "eq": "![X]: (![Y]: (n(plus(X,plus(Y,X))) = n(plus(Y,X))))",
+    "outcome": "PROVED",
+    "step": 17
+   },
+   {
+    "cpu_s": 0.013,
+    "eq": "![X]: (![Y]: (n(X) = plus(n(plus(X,Y)),n(X))))",
+    "outcome": "PROVED",
+    "step": 18
+   },
+   {
+    "cpu_s": 0.008,
+    "eq": "![X]: (![Y]: (n(X) = plus(n(X),n(plus(X,Y)))))",
+    "outcome": "PROVED",
+    "step": 19
+   },
+   {
+    "cpu_s": 0.007,
+    "eq": "![X]: (![Y]: (n(X) = plus(n(X),n(plus(Y,X)))))",
+    "outcome": "PROVED",
+    "step": 20
+   },
+   {
+    "cpu_s": 0.014,
+    "eq": "![X]: (![Y]: (plus(n(plus(X,Y)),X) = plus(n(Y),X)))",
+    "outcome": "PROVED",
+    "step": 21
+   },
+   {
+    "cpu_s": 0.008,
+    "eq": "![X]: (![Y]: (plus(n(plus(X,Y)),X) = plus(X,n(Y))))",
+    "outcome": "PROVED",
+    "step": 22
+   },
+   {
+    "cpu_s": 0.008,
+    "eq": "![X]: (![Y]: (plus(n(plus(X,Y)),Y) = plus(Y,n(X))))",
+    "outcome": "PROVED",
+    "step": 23
+   },
+   {
+    "cpu_s": 0.011,
+    "eq": "![X]: (![Y]: (plus(n(X),plus(X,Y)) = plus(n(Y),Y)))",
+    "outcome": "PROVED",
+    "step": 24
+   },
+   {
+    "cpu_s": 0.009,
+    "eq": "![X]: (![Y]: (![Z]: (plus(n(X),plus(X,Y)) = plus(n(Z),Z))))",
+    "outcome": "PROVED",
+    "step": 25
+   },
+   {
+    "cpu_s": 0.008,
+    "eq": "![X]: (![Y]: (plus(n(X),plus(Y,X)) = plus(n(X),X)))",
+    "outcome": "PROVED",
+    "step": 26
+   }
+  ],
+  "proved": 27,
+  "steps": 27
+ },
+ "macro": {
+  "induction": {
+   "description_length": {
+    "macro": 1164,
+    "trajectory": 4870
+   },
+   "dropped_attempts": 80,
+   "kept": 27,
+   "library_size": 96,
+   "trajectory_attempts": 107
+  },
+  "macro_sha256": "453f7433470d5f7752b4b08bd173360021fdda4f764403ce2763e00c89422bce",
+  "name": "ba_huntington-macro",
+  "precondition": {
+   "ops": {
+    "n": 1,
+    "plus": 2
+   }
+  },
+  "resource_bound_s": 54,
+  "revoked": [],
+  "schema": "genesis-research-macro-v1",
+  "source_system": "ba_huntington",
+  "steps": [
+   {
+    "budget_s": 2,
+    "depends_on": [],
+    "schema": [
+     [
+      "fn",
+      "plus",
+      [
+       [
+        "var",
+        "X"
+       ],
+       [
+        "var",
+        "X"
+       ]
+      ]
+     ],
+     [
+      "var",
+      "X"
+     ]
+    ],
+    "source_lemma": "L0",
+    "text": "![X]: (plus(X,X) = X)"
+   },
+   {
+    "budget_s": 2,
+    "depends_on": [
+     0
+    ],
+    "schema": [
+     [
+      "fn",
+      "n",
+      [
+       [
+        "fn",
+        "n",
+        [
+         [
+          "var",
+          "X"
+         ]
+        ]
+       ]
+      ]
+     ],
+     [
+      "var",
+      "X"
+     ]
+    ],
+    "source_lemma": "L1",
+    "text": "![X]: (n(n(X)) = X)"
+   },
+   {
+    "budget_s": 2,
+    "depends_on": [
+     0
+    ],
+    "schema": [
+     [
+      "fn",
+      "plus",
+      [
+       [
+        "fn",
+        "plus",
+        [
+         [
+          "var",
+          "X"
+         ],
+         [
+          "var",
+          "X"
+         ]
+        ]
+       ],
+       [
+        "var",
+        "X"
+       ]
+      ]
+     ],
+     [
+      "var",
+      "X"
+     ]
+    ],
+    "source_lemma": "L2",
+    "text": "![X]: (plus(plus(X,X),X) = X)"
+   },
+   {
+    "budget_s": 2,
+    "depends_on": [
+     0,
+     1
+    ],
+    "schema": [
+     [
+      "fn",
+      "n",
+      [
+       [
+        "fn",
+        "n",
+        [
+         [
+          "fn",
+          "plus",
+          [
+           [
+            "var",
+            "X"
+           ],
+           [
+            "var",
+            "X"
+           ]
+          ]
+         ]
+        ]
+       ]
+      ]
+     ],
+     [
+      "var",
+      "X"
+     ]
+    ],
+    "source_lemma": "L4",
+    "text": "![X]: (n(n(plus(X,X))) = X)"
+   },
+   {
+    "budget_s": 2,
+    "depends_on": [
+     0,
+     1
+    ],
+    "schema": [
+     [
+      "fn",
+      "n",
+      [
+       [
+        "fn",
+        "n",
+        [
+         [
+          "var",
+          "X"
+         ]
+        ]
+       ]
+      ]
+     ],
+     [
+      "fn",
+      "plus",
+      [
+       [
+        "var",
+        "X"
+       ],
+       [
+        "var",
+        "X"
+       ]
+      ]
+     ]
+    ],
+    "source_lemma": "L5",
+    "text": "![X]: (n(n(X)) = plus(X,X))"
+   },
+   {
+    "budget_s": 2,
+    "depends_on": [
+     0
+    ],
+    "schema": [
+     [
+      "fn",
+      "n",
+      [
+       [
+        "fn",
+        "plus",
+        [
+         [
+          "var",
+          "X"
+         ],
+         [
+          "var",
+          "X"
+         ]
+        ]
+       ]
+      ]
+     ],
+     [
+      "fn",
+      "n",
+      [
+       [
+        "var",
+        "X"
+       ]
+      ]
+     ]
+    ],
+    "source_lemma": "L6",
+    "text": "![X]: (n(plus(X,X)) = n(X))"
+   },
+   {
+    "budget_s": 2,
+    "depends_on": [
+     0,
+     1
+    ],
+    "schema": [
+     [
+      "fn",
+      "plus",
+      [
+       [
+        "fn",
+        "n",
+        [
+         [
+          "fn",
+          "n",
+          [
+           [
+            "var",
+            "X"
+           ]
+          ]
+         ]
+        ]
+       ],
+       [
+        "var",
+        "X"
+       ]
+      ]
+     ],
+     [
+      "var",
+      "X"
+     ]
+    ],
+    "source_lemma": "L7",
+    "text": "![X]: (plus(n(n(X)),X) = X)"
+   },
+   {
+    "budget_s": 2,
+    "depends_on": [
+     0
+    ],
+    "schema": [
+     [
+      "fn",
+      "plus",
+      [
+       [
+        "fn",
+        "plus",
+        [
+         [
+          "var",
+          "X"
+         ],
+         [
+          "var",
+          "X"
+         ]
+        ]
+       ],
+       [
+        "var",
+        "X"
+       ]
+      ]
+     ],
+     [
+      "fn",
+      "plus",
+      [
+       [
+        "var",
+        "X"
+       ],
+       [
+        "var",
+        "X"
+       ]
+      ]
+     ]
+    ],
+    "source_lemma": "L10",
+    "text": "![X]: (plus(plus(X,X),X) = plus(X,X))"
+   },
+   {
+    "budget_s": 2,
+    "depends_on": [
+     3,
+     5,
+     6
+    ],
+    "schema": [
+     [
+      "fn",
+      "plus",
+      [
+       [
+        "var",
+        "X"
+       ],
+       [
+        "fn",
+        "plus",
+        [
+         [
+          "var",
+          "X"
+         ],
+         [
+          "var",
+          "Y"
+         ]
+        ]
+       ]
+      ]
+     ],
+     [
+      "fn",
+      "plus",
+      [
+       [
+        "var",
+        "Y"
+       ],
+       [
+        "var",
+        "X"
+       ]
+      ]
+     ]
+    ],
+    "source_lemma": "L12",
+    "text": "![X]: (![Y]: (plus(X,plus(X,Y)) = plus(Y,X)))"
+   },
+   {
+    "budget_s": 2,
+    "depends_on": [
+     1,
+     4
+    ],
+    "schema": [
+     [
+      "fn",
+      "plus",
+      [
+       [
+        "fn",
+        "n",
+        [
+         [
+          "fn",
+          "plus",
+          [
+           [
+            "fn",
+            "n",
+            [
+             [
+              "var",
+              "X"
+             ]
+            ]
+           ],
+           [
+            "var",
+            "X"
+           ]
+          ]
+         ]
+        ]
+       ],
+       [
+        "var",
+        "Y"
+       ]
+      ]
+     ],
+     [
+      "var",
+      "Y"
+     ]
+    ],
+    "source_lemma": "L24",
+    "text": "![X]: (![Y]: (plus(n(plus(n(X),X)),Y) = Y))"
+   },
+   {
+    "budget_s": 2,
+    "depends_on": [
+     1,
+     9
+    ],
+    "schema": [
+     [
+      "fn",
+      "plus",
+      [
+       [
+        "fn",
+        "n",
+        [
+         [
+          "var",
+          "X"
+         ]
+        ]
+       ],
+       [
+        "var",
+        "X"
+       ]
+      ]
+     ],
+     [
+      "fn",
+      "plus",
+      [
+       [
+        "fn",
+        "n",
+        [
+         [
+          "var",
+          "Y"
+         ]
+        ]
+       ],
+       [
+        "var",
+        "Y"
+       ]
+      ]
+     ]
+    ],
+    "source_lemma": "L25",
+    "text": "![X]: (![Y]: (plus(n(X),X) = plus(n(Y),Y)))"
+   },
+   {
+    "budget_s": 2,
+    "depends_on": [
+     8
+    ],
+    "schema": [
+     [
+      "fn",
+      "plus",
+      [
+       [
+        "fn",
+        "plus",
+        [
+         [
+          "fn",
+          "plus",
+          [
+           [
+            "var",
+            "X"
+           ],
+           [
+            "var",
+            "Y"
+           ]
+          ]
+         ],
+         [
+          "var",
+          "Y"
+         ]
+        ]
+       ],
+       [
+        "var",
+        "X"
+       ]
+      ]
+     ],
+     [
+      "fn",
+      "plus",
+      [
+       [
+        "var",
+        "Y"
+       ],
+       [
+        "var",
+        "X"
+       ]
+      ]
+     ]
+    ],
+    "source_lemma": "L32",
+    "text": "![X]: (![Y]: (plus(plus(plus(X,Y),Y),X) = plus(Y,X)))"
+   },
+   {
+    "budget_s": 2,
+    "depends_on": [
+     8
+    ],
+    "schema": [
+     [
+      "fn",
+      "plus",
+      [
+       [
+        "fn",
+        "plus",
+        [
+         [
+          "fn",
+          "plus",
+          [
+           [
+            "var",
+            "X"
+           ],
+           [
+            "var",
+            "Y"
+           ]
+          ]
+         ],
+         [
+          "var",
+          "Y"
+         ]
+        ]
+       ],
+       [
+        "var",
+        "Y"
+       ]
+      ]
+     ],
+     [
+      "fn",
+      "plus",
+      [
+       [
+        "var",
+        "Y"
+       ],
+       [
+        "var",
+        "X"
+       ]
+      ]
+     ]
+    ],
+    "source_lemma": "L33",
+    "text": "![X]: (![Y]: (plus(plus(plus(X,Y),Y),Y) = plus(Y,X)))"
+   },
+   {
+    "budget_s": 2,
+    "depends_on": [
+     0
+    ],
+    "schema": [
+     [
+      "fn",
+      "plus",
+      [
+       [
+        "fn",
+        "plus",
+        [
+         [
+          "var",
+          "X"
+         ],
+         [
+          "var",
+          "X"
+         ]
+        ]
+       ],
+       [
+        "var",
+        "Y"
+       ]
+      ]
+     ],
+     [
+      "fn",
+      "plus",
+      [
+       [
+        "var",
+        "X"
+       ],
+       [
+        "fn",
+        "plus",
+        [
+         [
+          "var",
+          "Y"
+         ],
+         [
+          "var",
+          "Y"
+         ]
+        ]
+       ]
+      ]
+     ]
+    ],
+    "source_lemma": "L41",
+    "text": "![X]: (![Y]: (plus(plus(X,X),Y) = plus(X,plus(Y,Y))))"
+   },
+   {
+    "budget_s": 2,
+    "depends_on": [
+     0
+    ],
+    "schema": [
+     [
+      "fn",
+      "plus",
+      [
+       [
+        "fn",
+        "plus",
+        [
+         [
+          "var",
+          "X"
+         ],
+         [
+          "var",
+          "X"
+         ]
+        ]
+       ],
+       [
+        "var",
+        "Y"
+       ]
+      ]
+     ],
+     [
+      "fn",
+      "plus",
+      [
+       [
+        "var",
+        "Y"
+       ],
+       [
+        "fn",
+        "plus",
+        [
+         [
+          "var",
+          "X"
+         ],
+         [
+          "var",
+          "Y"
+         ]
+        ]
+       ]
+      ]
+     ]
+    ],
+    "source_lemma": "L42",
+    "text": "![X]: (![Y]: (plus(plus(X,X),Y) = plus(Y,plus(X,Y))))"
+   },
+   {
+    "budget_s": 2,
+    "depends_on": [
+     8
+    ],
+    "schema": [
+     [
+      "fn",
+      "plus",
+      [
+       [
+        "fn",
+        "plus",
+        [
+         [
+          "var",
+          "X"
+         ],
+         [
+          "var",
+          "Y"
+         ]
+        ]
+       ],
+       [
+        "var",
+        "Y"
+       ]
+      ]
+     ],
+     [
+      "fn",
+      "plus",
+      [
+       [
+        "var",
+        "Y"
+       ],
+       [
+        "fn",
+        "plus",
+        [
+         [
+          "var",
+          "Y"
+         ],
+         [
+          "var",
+          "X"
+         ]
+        ]
+       ]
+      ]
+     ]
+    ],
+    "source_lemma": "L45",
+    "text": "![X]: (![Y]: (plus(plus(X,Y),Y) = plus(Y,plus(Y,X))))"
+   },
+   {
+    "budget_s": 2,
+    "depends_on": [
+     8
+    ],
+    "schema": [
+     [
+      "fn",
+      "n",
+      [
+       [
+        "fn",
+        "plus",
+        [
+         [
+          "var",
+          "X"
+         ],
+         [
+          "fn",
+          "plus",
+          [
+           [
+            "var",
+            "X"
+           ],
+           [
+            "var",
+            "Y"
+           ]
+          ]
+         ]
+        ]
+       ]
+      ]
+     ],
+     [
+      "fn",
+      "n",
+      [
+       [
+        "fn",
+        "plus",
+        [
+         [
+          "var",
+          "Y"
+         ],
+         [
+          "var",
+          "X"
+         ]
+        ]
+       ]
+      ]
+     ]
+    ],
+    "source_lemma": "L74",
+    "text": "![X]: (![Y]: (n(plus(X,plus(X,Y))) = n(plus(Y,X))))"
+   },
+   {
+    "budget_s": 2,
+    "depends_on": [
+     16
+    ],
+    "schema": [
+     [
+      "fn",
+      "n",
+      [
+       [
+        "fn",
+        "plus",
+        [
+         [
+          "var",
+          "X"
+         ],
+         [
+          "fn",
+          "plus",
+          [
+           [
+            "var",
+            "Y"
+           ],
+           [
+            "var",
+            "X"
+           ]
+          ]
+         ]
+        ]
+       ]
+      ]
+     ],
+     [
+      "fn",
+      "n",
+      [
+       [
+        "fn",
+        "plus",
+        [
+         [
+          "var",
+          "Y"
+         ],
+         [
+          "var",
+          "X"
+         ]
+        ]
+       ]
+      ]
+     ]
+    ],
+    "source_lemma": "L76",
+    "text": "![X]: (![Y]: (n(plus(X,plus(Y,X))) = n(plus(Y,X))))"
+   },
+   {
+    "budget_s": 2,
+    "depends_on": [
+     16,
+     17
+    ],
+    "schema": [
+     [
+      "fn",
+      "n",
+      [
+       [
+        "var",
+        "X"
+       ]
+      ]
+     ],
+     [
+      "fn",
+      "plus",
+      [
+       [
+        "fn",
+        "n",
+        [
+         [
+          "fn",
+          "plus",
+          [
+           [
+            "var",
+            "X"
+           ],
+           [
+            "var",
+            "Y"
+           ]
+          ]
+         ]
+        ]
+       ],
+       [
+        "fn",
+        "n",
+        [
+         [
+          "var",
+          "X"
+         ]
+        ]
+       ]
+      ]
+     ]
+    ],
+    "source_lemma": "L81",
+    "text": "![X]: (![Y]: (n(X) = plus(n(plus(X,Y)),n(X))))"
+   },
+   {
+    "budget_s": 2,
+    "depends_on": [
+     18
+    ],
+    "schema": [
+     [
+      "fn",
+      "n",
+      [
+       [
+        "var",
+        "X"
+       ]
+      ]
+     ],
+     [
+      "fn",
+      "plus",
+      [
+       [
+        "fn",
+        "n",
+        [
+         [
+          "var",
+          "X"
+         ]
+        ]
+       ],
+       [
+        "fn",
+        "n",
+        [
+         [
+          "fn",
+          "plus",
+          [
+           [
+            "var",
+            "X"
+           ],
+           [
+            "var",
+            "Y"
+           ]
+          ]
+         ]
+        ]
+       ]
+      ]
+     ]
+    ],
+    "source_lemma": "L84",
+    "text": "![X]: (![Y]: (n(X) = plus(n(X),n(plus(X,Y)))))"
+   },
+   {
+    "budget_s": 2,
+    "depends_on": [
+     19
+    ],
+    "schema": [
+     [
+      "fn",
+      "n",
+      [
+       [
+        "var",
+        "X"
+       ]
+      ]
+     ],
+     [
+      "fn",
+      "plus",
+      [
+       [
+        "fn",
+        "n",
+        [
+         [
+          "var",
+          "X"
+         ]
+        ]
+       ],
+       [
+        "fn",
+        "n",
+        [
+         [
+          "fn",
+          "plus",
+          [
+           [
+            "var",
+            "Y"
+           ],
+           [
+            "var",
+            "X"
+           ]
+          ]
+         ]
+        ]
+       ]
+      ]
+     ]
+    ],
+    "source_lemma": "L85",
+    "text": "![X]: (![Y]: (n(X) = plus(n(X),n(plus(Y,X)))))"
+   },
+   {
+    "budget_s": 2,
+    "depends_on": [
+     19,
+     20
+    ],
+    "schema": [
+     [
+      "fn",
+      "plus",
+      [
+       [
+        "fn",
+        "n",
+        [
+         [
+          "fn",
+          "plus",
+          [
+           [
+            "var",
+            "X"
+           ],
+           [
+            "var",
+            "Y"
+           ]
+          ]
+         ]
+        ]
+       ],
+       [
+        "var",
+        "X"
+       ]
+      ]
+     ],
+     [
+      "fn",
+      "plus",
+      [
+       [
+        "fn",
+        "n",
+        [
+         [
+          "var",
+          "Y"
+         ]
+        ]
+       ],
+       [
+        "var",
+        "X"
+       ]
+      ]
+     ]
+    ],
+    "source_lemma": "L88",
+    "text": "![X]: (![Y]: (plus(n(plus(X,Y)),X) = plus(n(Y),X)))"
+   },
+   {
+    "budget_s": 2,
+    "depends_on": [
+     21
+    ],
+    "schema": [
+     [
+      "fn",
+      "plus",
+      [
+       [
+        "fn",
+        "n",
+        [
+         [
+          "fn",
+          "plus",
+          [
+           [
+            "var",
+            "X"
+           ],
+           [
+            "var",
+            "Y"
+           ]
+          ]
+         ]
+        ]
+       ],
+       [
+        "var",
+        "X"
+       ]
+      ]
+     ],
+     [
+      "fn",
+      "plus",
+      [
+       [
+        "var",
+        "X"
+       ],
+       [
+        "fn",
+        "n",
+        [
+         [
+          "var",
+          "Y"
+         ]
+        ]
+       ]
+      ]
+     ]
+    ],
+    "source_lemma": "L89",
+    "text": "![X]: (![Y]: (plus(n(plus(X,Y)),X) = plus(X,n(Y))))"
+   },
+   {
+    "budget_s": 2,
+    "depends_on": [
+     22
+    ],
+    "schema": [
+     [
+      "fn",
+      "plus",
+      [
+       [
+        "fn",
+        "n",
+        [
+         [
+          "fn",
+          "plus",
+          [
+           [
+            "var",
+            "X"
+           ],
+           [
+            "var",
+            "Y"
+           ]
+          ]
+         ]
+        ]
+       ],
+       [
+        "var",
+        "Y"
+       ]
+      ]
+     ],
+     [
+      "fn",
+      "plus",
+      [
+       [
+        "var",
+        "Y"
+       ],
+       [
+        "fn",
+        "n",
+        [
+         [
+          "var",
+          "X"
+         ]
+        ]
+       ]
+      ]
+     ]
+    ],
+    "source_lemma": "L91",
+    "text": "![X]: (![Y]: (plus(n(plus(X,Y)),Y) = plus(Y,n(X))))"
+   },
+   {
+    "budget_s": 2,
+    "depends_on": [
+     9,
+     10,
+     20
+    ],
+    "schema": [
+     [
+      "fn",
+      "plus",
+      [
+       [
+        "fn",
+        "n",
+        [
+         [
+          "var",
+          "X"
+         ]
+        ]
+       ],
+       [
+        "fn",
+        "plus",
+        [
+         [
+          "var",
+          "X"
+         ],
+         [
+          "var",
+          "Y"
+         ]
+        ]
+       ]
+      ]
+     ],
+     [
+      "fn",
+      "plus",
+      [
+       [
+        "fn",
+        "n",
+        [
+         [
+          "var",
+          "Y"
+         ]
+        ]
+       ],
+       [
+        "var",
+        "Y"
+       ]
+      ]
+     ]
+    ],
+    "source_lemma": "L93",
+    "text": "![X]: (![Y]: (plus(n(X),plus(X,Y)) = plus(n(Y),Y)))"
+   },
+   {
+    "budget_s": 2,
+    "depends_on": [
+     10,
+     24
+    ],
+    "schema": [
+     [
+      "fn",
+      "plus",
+      [
+       [
+        "fn",
+        "n",
+        [
+         [
+          "var",
+          "X"
+         ]
+        ]
+       ],
+       [
+        "fn",
+        "plus",
+        [
+         [
+          "var",
+          "X"
+         ],
+         [
+          "var",
+          "Y"
+         ]
+        ]
+       ]
+      ]
+     ],
+     [
+      "fn",
+      "plus",
+      [
+       [
+        "fn",
+        "n",
+        [
+         [
+          "var",
+          "Z"
+         ]
+        ]
+       ],
+       [
+        "var",
+        "Z"
+       ]
+      ]
+     ]
+    ],
+    "source_lemma": "L94",
+    "text": "![X]: (![Y]: (![Z]: (plus(n(X),plus(X,Y)) = plus(n(Z),Z))))"
+   },
+   {
+    "budget_s": 2,
+    "depends_on": [
+     25
+    ],
+    "schema": [
+     [
+      "fn",
+      "plus",
+      [
+       [
+        "fn",
+        "n",
+        [
+         [
+          "var",
+          "X"
+         ]
+        ]
+       ],
+       [
+        "fn",
+        "plus",
+        [
+         [
+          "var",
+          "Y"
+         ],
+         [
+          "var",
+          "X"
+         ]
+        ]
+       ]
+      ]
+     ],
+     [
+      "fn",
+      "plus",
+      [
+       [
+        "fn",
+        "n",
+        [
+         [
+          "var",
+          "X"
+         ]
+        ]
+       ],
+       [
+        "var",
+        "X"
+       ]
+      ]
+     ]
+    ],
+    "source_lemma": "L95",
+    "text": "![X]: (![Y]: (plus(n(X),plus(Y,X)) = plus(n(X),X)))"
+   }
+  ]
+ }
+}

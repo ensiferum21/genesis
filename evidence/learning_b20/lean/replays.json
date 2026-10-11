@@ -1,0 +1,546 @@
+[
+ {
+  "chain_lemmas": 11,
+  "policy": "fixed",
+  "reason": null,
+  "status": "THEOREM_CHECKED",
+  "system": "ba_sheffer",
+  "target": "![X]: (![Y]: (![Z]: (s(s(X,Y),s(s(X,s(Z,X)),X)) = s(s(X,Y),s(X,Z)))))"
+ },
+ {
+  "chain_lemmas": 1,
+  "policy": "fixed",
+  "reason": null,
+  "status": "THEOREM_CHECKED",
+  "system": "ba_sheffer",
+  "target": "![X]: (![Y]: (![Z]: (s(s(s(s(X,Y),Y),Z),Y) = s(Y,s(s(s(X,Y),Y),Z)))))"
+ },
+ {
+  "chain_lemmas": 11,
+  "policy": "fixed",
+  "reason": null,
+  "status": "THEOREM_CHECKED",
+  "system": "ba_sheffer",
+  "target": "![X]: (![Y]: (s(s(X,Y),X) = s(X,s(X,s(X,s(X,Y))))))"
+ },
+ {
+  "chain_lemmas": 1,
+  "policy": "fixed",
+  "reason": null,
+  "status": "THEOREM_CHECKED",
+  "system": "ba_sheffer",
+  "target": "![X]: (![Y]: (![Z]: (s(s(X,s(s(X,Y),Z)),X) = s(X,s(s(Z,s(X,Y)),X)))))"
+ },
+ {
+  "chain_lemmas": 7,
+  "policy": "fixed",
+  "reason": null,
+  "status": "THEOREM_CHECKED",
+  "system": "ba_sheffer",
+  "target": "![X]: (![Y]: (![Z]: (s(s(s(s(X,X),Y),Y),s(Z,Z)) = s(s(Z,Z),s(Y,X)))))"
+ },
+ {
+  "chain_lemmas": 5,
+  "policy": "fixed",
+  "reason": null,
+  "status": "THEOREM_CHECKED",
+  "system": "ba_sheffer",
+  "target": "![X]: (![Y]: (![Z]: (s(X,s(X,s(Y,s(Y,Z)))) = s(X,s(X,s(Y,s(Z,Z)))))))"
+ },
+ {
+  "chain_lemmas": 13,
+  "policy": "fixed",
+  "reason": null,
+  "status": "THEOREM_CHECKED",
+  "system": "ba_sheffer",
+  "target": "![X]: (![Y]: (![Z]: (s(s(X,X),s(s(Y,Z),Y)) = s(s(X,X),s(s(Z,Y),Y)))))"
+ },
+ {
+  "chain_lemmas": 5,
+  "policy": "fixed",
+  "reason": null,
+  "status": "THEOREM_CHECKED",
+  "system": "ba_sheffer",
+  "target": "![X]: (![Y]: (![Z]: (s(s(s(s(X,X),s(Y,X)),Y),Z) = s(s(Y,X),Z))))"
+ },
+ {
+  "chain_lemmas": 11,
+  "policy": "fixed",
+  "reason": null,
+  "status": "THEOREM_CHECKED",
+  "system": "ba_sheffer",
+  "target": "![X]: (![Y]: (![Z]: (s(s(X,s(Y,Y)),s(Z,X)) = s(s(Z,X),s(s(X,Y),X)))))"
+ },
+ {
+  "chain_lemmas": 7,
+  "policy": "fixed",
+  "reason": null,
+  "status": "THEOREM_CHECKED",
+  "system": "ba_sheffer",
+  "target": "![X]: (![Y]: (![Z]: (s(s(X,Y),s(s(s(X,X),Z),Z)) = s(s(X,Z),s(X,Y)))))"
+ },
+ {
+  "chain_lemmas": 14,
+  "policy": "fixed",
+  "reason": null,
+  "status": "THEOREM_CHECKED",
+  "system": "ba_sheffer",
+  "target": "![X]: (![Y]: (s(s(s(s(X,Y),Y),Y),X) = s(s(Y,s(X,s(Y,Y))),X)))"
+ },
+ {
+  "chain_lemmas": 7,
+  "policy": "fixed",
+  "reason": null,
+  "status": "THEOREM_CHECKED",
+  "system": "ba_sheffer",
+  "target": "![X]: (![Y]: (![Z]: (s(s(X,X),s(s(Y,Y),Z)) = s(s(X,X),s(Z,s(Z,Y))))))"
+ },
+ {
+  "chain_lemmas": 11,
+  "policy": "fixed",
+  "reason": null,
+  "status": "THEOREM_CHECKED",
+  "system": "ba_sheffer",
+  "target": "![X]: (![Y]: (s(s(X,Y),s(X,s(X,s(Y,X)))) = s(s(Y,X),s(X,Y))))"
+ },
+ {
+  "chain_lemmas": 12,
+  "policy": "fixed",
+  "reason": null,
+  "status": "THEOREM_CHECKED",
+  "system": "ba_sheffer",
+  "target": "![X]: (![Y]: (![Z]: (s(s(s(X,Y),X),s(X,Z)) = s(s(X,Z),s(s(Y,Y),X)))))"
+ },
+ {
+  "chain_lemmas": 12,
+  "policy": "fixed",
+  "reason": null,
+  "status": "THEOREM_CHECKED",
+  "system": "ba_sheffer",
+  "target": "![X]: (![Y]: (![Z]: (s(s(X,Y),s(s(Y,Z),Y)) = s(s(Y,X),s(s(Z,Z),Y)))))"
+ },
+ {
+  "chain_lemmas": 11,
+  "policy": "fixed",
+  "reason": null,
+  "status": "THEOREM_CHECKED",
+  "system": "ba_sheffer",
+  "target": "![X]: (![Y]: (s(s(X,Y),Y) = s(Y,s(s(s(Y,X),X),X))))"
+ },
+ {
+  "chain_lemmas": 11,
+  "policy": "learned",
+  "reason": null,
+  "status": "THEOREM_CHECKED",
+  "system": "ba_sheffer",
+  "target": "![X]: (![Y]: (![Z]: (s(s(X,Y),s(s(X,s(Z,X)),X)) = s(s(X,Y),s(X,Z)))))"
+ },
+ {
+  "chain_lemmas": 10,
+  "policy": "learned",
+  "reason": null,
+  "status": "THEOREM_CHECKED",
+  "system": "ba_sheffer",
+  "target": "![X]: (![Y]: (![Z]: (s(s(s(s(X,Y),Y),Z),Y) = s(Y,s(s(s(X,Y),Y),Z)))))"
+ },
+ {
+  "chain_lemmas": 6,
+  "policy": "learned",
+  "reason": null,
+  "status": "THEOREM_CHECKED",
+  "system": "ba_sheffer",
+  "target": "![X]: (![Y]: (s(s(X,Y),X) = s(X,s(X,s(X,s(X,Y))))))"
+ },
+ {
+  "chain_lemmas": 2,
+  "policy": "learned",
+  "reason": null,
+  "status": "THEOREM_CHECKED",
+  "system": "ba_sheffer",
+  "target": "![X]: (![Y]: (![Z]: (s(s(X,s(s(X,Y),Z)),X) = s(X,s(s(Z,s(X,Y)),X)))))"
+ },
+ {
+  "chain_lemmas": 8,
+  "policy": "learned",
+  "reason": null,
+  "status": "THEOREM_CHECKED",
+  "system": "ba_sheffer",
+  "target": "![X]: (![Y]: (![Z]: (s(s(s(s(X,X),Y),Y),s(Z,Z)) = s(s(Z,Z),s(Y,X)))))"
+ },
+ {
+  "chain_lemmas": 3,
+  "policy": "learned",
+  "reason": null,
+  "status": "THEOREM_CHECKED",
+  "system": "ba_sheffer",
+  "target": "![X]: (![Y]: (![Z]: (s(X,s(X,s(Y,s(Y,Z)))) = s(X,s(X,s(Y,s(Z,Z)))))))"
+ },
+ {
+  "chain_lemmas": 2,
+  "policy": "learned",
+  "reason": null,
+  "status": "THEOREM_CHECKED",
+  "system": "ba_sheffer",
+  "target": "![X]: (![Y]: (![Z]: (s(s(X,X),s(s(Y,Z),Y)) = s(s(X,X),s(s(Z,Y),Y)))))"
+ },
+ {
+  "chain_lemmas": 25,
+  "policy": "learned",
+  "reason": null,
+  "status": "THEOREM_CHECKED",
+  "system": "ba_sheffer",
+  "target": "![X]: (![Y]: (![Z]: (s(s(s(s(X,X),s(Y,X)),Y),Z) = s(s(Y,X),Z))))"
+ },
+ {
+  "chain_lemmas": 8,
+  "policy": "learned",
+  "reason": null,
+  "status": "THEOREM_CHECKED",
+  "system": "ba_sheffer",
+  "target": "![X]: (![Y]: (![Z]: (s(s(X,s(Y,Y)),s(Z,X)) = s(s(Z,X),s(s(X,Y),X)))))"
+ },
+ {
+  "chain_lemmas": 8,
+  "policy": "learned",
+  "reason": null,
+  "status": "THEOREM_CHECKED",
+  "system": "ba_sheffer",
+  "target": "![X]: (![Y]: (![Z]: (s(s(X,Y),s(s(s(X,X),Z),Z)) = s(s(X,Z),s(X,Y)))))"
+ },
+ {
+  "chain_lemmas": 17,
+  "policy": "learned",
+  "reason": null,
+  "status": "THEOREM_CHECKED",
+  "system": "ba_sheffer",
+  "target": "![X]: (![Y]: (s(s(s(s(X,Y),Y),Y),X) = s(s(Y,s(X,s(Y,Y))),X)))"
+ },
+ {
+  "chain_lemmas": 8,
+  "policy": "learned",
+  "reason": null,
+  "status": "THEOREM_CHECKED",
+  "system": "ba_sheffer",
+  "target": "![X]: (![Y]: (![Z]: (s(s(X,X),s(s(Y,Y),Z)) = s(s(X,X),s(Z,s(Z,Y))))))"
+ },
+ {
+  "chain_lemmas": 11,
+  "policy": "learned",
+  "reason": null,
+  "status": "THEOREM_CHECKED",
+  "system": "ba_sheffer",
+  "target": "![X]: (![Y]: (s(s(X,Y),s(X,s(X,s(Y,X)))) = s(s(Y,X),s(X,Y))))"
+ },
+ {
+  "chain_lemmas": 8,
+  "policy": "learned",
+  "reason": null,
+  "status": "THEOREM_CHECKED",
+  "system": "ba_sheffer",
+  "target": "![X]: (![Y]: (![Z]: (s(s(s(X,Y),X),s(X,Z)) = s(s(X,Z),s(s(Y,Y),X)))))"
+ },
+ {
+  "chain_lemmas": 8,
+  "policy": "learned",
+  "reason": null,
+  "status": "THEOREM_CHECKED",
+  "system": "ba_sheffer",
+  "target": "![X]: (![Y]: (![Z]: (s(s(X,Y),s(s(Y,Z),Y)) = s(s(Y,X),s(s(Z,Z),Y)))))"
+ },
+ {
+  "chain_lemmas": 10,
+  "policy": "learned",
+  "reason": null,
+  "status": "THEOREM_CHECKED",
+  "system": "ba_sheffer",
+  "target": "![X]: (![Y]: (s(s(X,Y),Y) = s(Y,s(s(s(Y,X),X),X))))"
+ },
+ {
+  "chain_lemmas": 9,
+  "policy": "fixed",
+  "reason": null,
+  "status": "THEOREM_CHECKED",
+  "system": "ba_huntington",
+  "target": "![X]: (![Y]: (n(plus(plus(plus(X,Y),X),Y)) = n(plus(plus(Y,plus(X,Y)),X))))"
+ },
+ {
+  "chain_lemmas": 15,
+  "policy": "fixed",
+  "reason": null,
+  "status": "THEOREM_CHECKED",
+  "system": "ba_huntington",
+  "target": "![X]: (![Y]: (plus(plus(X,X),plus(X,n(Y))) = plus(X,plus(plus(n(Y),X),X))))"
+ },
+ {
+  "chain_lemmas": 7,
+  "policy": "fixed",
+  "reason": null,
+  "status": "THEOREM_CHECKED",
+  "system": "ba_huntington",
+  "target": "![X]: (![Y]: (plus(plus(X,X),n(Y)) = plus(X,n(plus(plus(X,Y),X)))))"
+ },
+ {
+  "chain_lemmas": 9,
+  "policy": "fixed",
+  "reason": null,
+  "status": "THEOREM_CHECKED",
+  "system": "ba_huntington",
+  "target": "![X]: (![Y]: (![Z]: (plus(plus(X,plus(X,plus(X,Y))),Z) = plus(plus(Y,plus(Y,X)),plus(Z,Y)))))"
+ },
+ {
+  "chain_lemmas": 10,
+  "policy": "fixed",
+  "reason": null,
+  "status": "THEOREM_CHECKED",
+  "system": "ba_huntington",
+  "target": "![X]: (![Y]: (![Z]: (plus(plus(n(X),plus(X,X)),X) = plus(plus(plus(Y,Z),n(Y)),Z))))"
+ },
+ {
+  "chain_lemmas": 4,
+  "policy": "fixed",
+  "reason": null,
+  "status": "THEOREM_CHECKED",
+  "system": "ba_huntington",
+  "target": "![X]: (![Y]: (plus(X,plus(X,n(plus(Y,Y)))) = plus(X,plus(X,n(Y)))))"
+ },
+ {
+  "chain_lemmas": 8,
+  "policy": "fixed",
+  "reason": null,
+  "status": "THEOREM_CHECKED",
+  "system": "ba_huntington",
+  "target": "![X]: (![Y]: (![Z]: (plus(plus(X,n(Y)),plus(X,Z)) = plus(plus(X,Z),plus(Z,n(Y))))))"
+ },
+ {
+  "chain_lemmas": 9,
+  "policy": "fixed",
+  "reason": null,
+  "status": "THEOREM_CHECKED",
+  "system": "ba_huntington",
+  "target": "![X]: (![Y]: (![Z]: (plus(n(plus(X,plus(Y,Z))),Y) = plus(Y,n(plus(X,plus(X,Z)))))))"
+ },
+ {
+  "chain_lemmas": 4,
+  "policy": "fixed",
+  "reason": null,
+  "status": "THEOREM_CHECKED",
+  "system": "ba_huntington",
+  "target": "![X]: (![Y]: (plus(n(plus(X,X)),n(Y)) = plus(n(Y),n(plus(X,X)))))"
+ },
+ {
+  "chain_lemmas": 4,
+  "policy": "fixed",
+  "reason": null,
+  "status": "THEOREM_CHECKED",
+  "system": "ba_huntington",
+  "target": "![X]: (![Y]: (plus(n(plus(X,X)),n(Y)) = plus(n(Y),n(X))))"
+ },
+ {
+  "chain_lemmas": 4,
+  "policy": "fixed",
+  "reason": null,
+  "status": "THEOREM_CHECKED",
+  "system": "ba_huntington",
+  "target": "![X]: (![Y]: (plus(n(plus(X,X)),n(Y)) = plus(n(X),n(Y))))"
+ },
+ {
+  "chain_lemmas": 13,
+  "policy": "fixed",
+  "reason": "Lean: RESOURCE_LIMIT",
+  "status": "NOT_REPLAYED",
+  "system": "ba_huntington",
+  "target": "![X]: (![Y]: (plus(plus(plus(plus(X,Y),X),Y),X) = plus(X,plus(Y,n(n(X))))))"
+ },
+ {
+  "chain_lemmas": 7,
+  "policy": "fixed",
+  "reason": null,
+  "status": "THEOREM_CHECKED",
+  "system": "ba_huntington",
+  "target": "![X]: (![Y]: (n(plus(plus(X,Y),X)) = n(plus(X,plus(plus(Y,Y),Y)))))"
+ },
+ {
+  "chain_lemmas": 7,
+  "policy": "fixed",
+  "reason": null,
+  "status": "THEOREM_CHECKED",
+  "system": "ba_huntington",
+  "target": "![X]: (![Y]: (n(plus(X,plus(plus(X,Y),X))) = n(plus(X,plus(plus(Y,X),X)))))"
+ },
+ {
+  "chain_lemmas": 12,
+  "policy": "fixed",
+  "reason": null,
+  "status": "THEOREM_CHECKED",
+  "system": "ba_huntington",
+  "target": "![X]: (![Y]: (n(n(n(X))) = plus(n(X),n(plus(Y,X)))))"
+ },
+ {
+  "chain_lemmas": 18,
+  "policy": "fixed",
+  "reason": null,
+  "status": "THEOREM_CHECKED",
+  "system": "ba_huntington",
+  "target": "![X]: (![Y]: (n(plus(plus(n(X),Y),Y)) = n(plus(Y,n(plus(X,Y))))))"
+ },
+ {
+  "chain_lemmas": 12,
+  "policy": "fixed",
+  "reason": null,
+  "status": "THEOREM_CHECKED",
+  "system": "ba_huntington",
+  "target": "![X]: (![Y]: (n(n(n(X))) = plus(n(plus(Y,X)),n(X))))"
+ },
+ {
+  "chain_lemmas": 9,
+  "policy": "fixed",
+  "reason": null,
+  "status": "THEOREM_CHECKED",
+  "system": "ba_huntington",
+  "target": "![X]: (![Y]: (n(plus(X,X)) = plus(n(plus(Y,X)),n(X))))"
+ },
+ {
+  "chain_lemmas": 3,
+  "policy": "learned",
+  "reason": null,
+  "status": "THEOREM_CHECKED",
+  "system": "ba_huntington",
+  "target": "![X]: (![Y]: (n(plus(plus(plus(X,Y),X),Y)) = n(plus(plus(Y,plus(X,Y)),X))))"
+ },
+ {
+  "chain_lemmas": 3,
+  "policy": "learned",
+  "reason": null,
+  "status": "THEOREM_CHECKED",
+  "system": "ba_huntington",
+  "target": "![X]: (![Y]: (plus(plus(X,X),plus(X,n(Y))) = plus(X,plus(plus(n(Y),X),X))))"
+ },
+ {
+  "chain_lemmas": 8,
+  "policy": "learned",
+  "reason": null,
+  "status": "THEOREM_CHECKED",
+  "system": "ba_huntington",
+  "target": "![X]: (![Y]: (plus(plus(X,X),n(Y)) = plus(X,n(plus(plus(X,Y),X)))))"
+ },
+ {
+  "chain_lemmas": 3,
+  "policy": "learned",
+  "reason": null,
+  "status": "THEOREM_CHECKED",
+  "system": "ba_huntington",
+  "target": "![X]: (![Y]: (![Z]: (plus(plus(X,plus(X,plus(X,Y))),Z) = plus(plus(Y,plus(Y,X)),plus(Z,Y)))))"
+ },
+ {
+  "chain_lemmas": 8,
+  "policy": "learned",
+  "reason": null,
+  "status": "THEOREM_CHECKED",
+  "system": "ba_huntington",
+  "target": "![X]: (![Y]: (![Z]: (plus(plus(n(X),plus(X,X)),X) = plus(plus(plus(Y,Z),n(Y)),Z))))"
+ },
+ {
+  "chain_lemmas": 1,
+  "policy": "learned",
+  "reason": null,
+  "status": "THEOREM_CHECKED",
+  "system": "ba_huntington",
+  "target": "![X]: (![Y]: (plus(X,plus(X,n(plus(Y,Y)))) = plus(X,plus(X,n(Y)))))"
+ },
+ {
+  "chain_lemmas": 12,
+  "policy": "learned",
+  "reason": null,
+  "status": "THEOREM_CHECKED",
+  "system": "ba_huntington",
+  "target": "![X]: (![Y]: (![Z]: (plus(plus(X,n(Y)),plus(X,Z)) = plus(plus(X,Z),plus(Z,n(Y))))))"
+ },
+ {
+  "chain_lemmas": 4,
+  "policy": "learned",
+  "reason": null,
+  "status": "THEOREM_CHECKED",
+  "system": "ba_huntington",
+  "target": "![X]: (![Y]: (![Z]: (plus(n(plus(X,plus(Y,Z))),Y) = plus(Y,n(plus(X,plus(X,Z)))))))"
+ },
+ {
+  "chain_lemmas": 1,
+  "policy": "learned",
+  "reason": null,
+  "status": "THEOREM_CHECKED",
+  "system": "ba_huntington",
+  "target": "![X]: (![Y]: (plus(n(plus(X,X)),n(Y)) = plus(n(Y),n(plus(X,X)))))"
+ },
+ {
+  "chain_lemmas": 1,
+  "policy": "learned",
+  "reason": null,
+  "status": "THEOREM_CHECKED",
+  "system": "ba_huntington",
+  "target": "![X]: (![Y]: (plus(n(plus(X,X)),n(Y)) = plus(n(Y),n(X))))"
+ },
+ {
+  "chain_lemmas": 1,
+  "policy": "learned",
+  "reason": null,
+  "status": "THEOREM_CHECKED",
+  "system": "ba_huntington",
+  "target": "![X]: (![Y]: (plus(n(plus(X,X)),n(Y)) = plus(n(X),n(Y))))"
+ },
+ {
+  "chain_lemmas": 19,
+  "policy": "learned",
+  "reason": null,
+  "status": "THEOREM_CHECKED",
+  "system": "ba_huntington",
+  "target": "![X]: (![Y]: (plus(plus(plus(plus(X,Y),X),Y),X) = plus(X,plus(Y,n(n(X))))))"
+ },
+ {
+  "chain_lemmas": 5,
+  "policy": "learned",
+  "reason": null,
+  "status": "THEOREM_CHECKED",
+  "system": "ba_huntington",
+  "target": "![X]: (![Y]: (n(plus(plus(X,Y),X)) = n(plus(X,plus(plus(Y,Y),Y)))))"
+ },
+ {
+  "chain_lemmas": 3,
+  "policy": "learned",
+  "reason": null,
+  "status": "THEOREM_CHECKED",
+  "system": "ba_huntington",
+  "target": "![X]: (![Y]: (n(plus(X,plus(plus(X,Y),X))) = n(plus(X,plus(plus(Y,X),X)))))"
+ },
+ {
+  "chain_lemmas": 16,
+  "policy": "learned",
+  "reason": null,
+  "status": "THEOREM_CHECKED",
+  "system": "ba_huntington",
+  "target": "![X]: (![Y]: (n(n(n(X))) = plus(n(X),n(plus(Y,X)))))"
+ },
+ {
+  "chain_lemmas": 15,
+  "policy": "learned",
+  "reason": null,
+  "status": "THEOREM_CHECKED",
+  "system": "ba_huntington",
+  "target": "![X]: (![Y]: (n(plus(plus(n(X),Y),Y)) = n(plus(Y,n(plus(X,Y))))))"
+ },
+ {
+  "chain_lemmas": 16,
+  "policy": "learned",
+  "reason": null,
+  "status": "THEOREM_CHECKED",
+  "system": "ba_huntington",
+  "target": "![X]: (![Y]: (n(n(n(X))) = plus(n(plus(Y,X)),n(X))))"
+ },
+ {
+  "chain_lemmas": 19,
+  "policy": "learned",
+  "reason": null,
+  "status": "THEOREM_CHECKED",
+  "system": "ba_huntington",
+  "target": "![X]: (![Y]: (n(plus(X,X)) = plus(n(plus(Y,X)),n(X))))"
+ }
+]

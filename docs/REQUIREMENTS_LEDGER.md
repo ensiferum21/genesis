@@ -11,7 +11,7 @@ Columns keep four things apart: implementation, local execution (tests ran in th
 | Specification §1-48 | 157 | 0 | 0 | 89 | 46 | 18 | 2 | 1 | 1 |
 | Roadmap defects | 4 | 0 | 0 | 4 | 0 | 0 | 0 | 0 | 0 |
 | Gates | 9 | 0 | 0 | 0 | 0 | 9 | 0 | 0 | 0 |
-| Workstreams | 28 | 0 | 0 | 17 | 0 | 11 | 0 | 0 | 0 |
+| Workstreams | 28 | 0 | 0 | 20 | 0 | 8 | 0 | 0 | 0 |
 | Experiments | 8 | 0 | 0 | 0 | 0 | 8 | 0 | 0 | 0 |
 | Engine catalogue (137) | 137 | 0 | 0 | 5 | 0 | 117 | 0 | 0 | 15 |
 
@@ -86,7 +86,7 @@ Proposed DEFERRED_EXTENSION rows remain NOT_IMPLEMENTED until Daniel agrees the 
 | SPEC-12.1 | Improvement hypothesis | IMPLEMENTED_BOUNDED_PENDING_AUDIT | Modification records with hypothesis, prediction, rollback, authority_delta = 0 | tests_genesis/test_research_runtime.py | — | — | N/A |
 | SPEC-12.2 | Intervention hierarchy | IMPLEMENTED_BOUNDED_PENDING_AUDIT | DEV ablation/placebo controls; B19: factorial solver catalysis (removal, placebo, effort, conventional alternative) and placebo/effort concept controls on fresh DEV tasks | tests_genesis/test_research_runtime.py<br>tests_formal/test_discovery.py::Evidence | a sealed catalysis study (E2)<br>causal replay contract (B14-OPEN-4) | — | NOT_TESTED |
 | SPEC-12.3 | Self-science protocol | RESEARCH_HYPOTHESIS | self-science loop exists on DEV; no supported causal gain | tests_genesis/test_research_runtime.py | prospective causal evidence | — | UNESTABLISHED |
-| SPEC-12.4 | Better-improver test | IMPLEMENTED_BOUNDED_PENDING_AUDIT | better-improver test harness (sealed_improver_evaluation receipts, kernel rules) | tests_genesis/test_acceptance_regressions.py::RevocationAndTrust | learned vs fixed research policies (E3) | independent custodian; fresh panels | NOT_TESTED |
+| SPEC-12.4 | Better-improver test | IMPLEMENTED_BOUNDED_PENDING_AUDIT | better-improver test harness (sealed_improver_evaluation receipts, kernel rules); B20: DEV comparison of learned vs fixed research policies over independent research runs (better-improver UNESTABLISHED) | tests_genesis/test_acceptance_regressions.py::RevocationAndTrust<br>tests_formal/test_learning.py | a sealed E3 study | independent custodian; fresh panels | UNESTABLISHED |
 | SPEC-13 | Experience synthesis and developmental programs | NOT_A_REQUIREMENT | heading | — | — | — | N/A |
 | SPEC-13.1 | Minimal teaching sets | NOT_IMPLEMENTED | minimal teaching sets | — | W20 | — | NOT_TESTED |
 | SPEC-13.2 | Critical periods and ordering | NOT_IMPLEMENTED | critical periods and ordering | — | W20 | — | NOT_TESTED |
@@ -223,9 +223,9 @@ Proposed DEFERRED_EXTENSION rows remain NOT_IMPLEMENTED until Daniel agrees the 
 | W15 | Causal concept catalysis and idea combinations (DEV factorial and controls) | IMPLEMENTED_BOUNDED_PENDING_AUDIT | workstream (B14 scope delivered; acceptance pending) | tests_formal/test_discovery.py::Evidence | — | — | N/A |
 | W16 | Ghost Census beyond the small development family (DEV diagnostic; Lean replay of E proofs) | IMPLEMENTED_BOUNDED_PENDING_AUDIT | workstream (B14 scope delivered; acceptance pending) | tests_formal/test_ghost_census.py | — | — | N/A |
 | W17 | Literature, priority and faithful formalization | IMPLEMENTED_BOUNDED_PENDING_AUDIT | workstream (B14 scope delivered; acceptance pending) | tests_genesis/test_literature.py | — | — | N/A |
-| W18 | Replayable research macros and proof-carrying compression | NOT_IMPLEMENTED | workstream | — | not started in B14 | — | N/A |
-| W19 | Research-policy learning and the market | NOT_IMPLEMENTED | workstream | — | not started in B14 | — | N/A |
-| W20 | Curriculum, experience synthesis and capability memory | NOT_IMPLEMENTED | workstream | — | not started in B14 | — | N/A |
+| W18 | Replayable research macros and proof-carrying compression (equational domain: induced lemma programs with dependencies, faithful replay, revocation, transfer) | IMPLEMENTED_BOUNDED_PENDING_AUDIT | workstream (B14 scope delivered; acceptance pending) | tests_formal/test_learning.py | — | — | N/A |
+| W19 | Research-policy learning (fixed, random, heuristic, bandit and a frozen learned policy at equal research budgets) | IMPLEMENTED_BOUNDED_PENDING_AUDIT | workstream (B14 scope delivered; acceptance pending) | tests_formal/test_learning.py | — | — | N/A |
+| W20 | Curriculum, experience synthesis and capability memory (screened memory, failure-driven curriculum, demotion) | IMPLEMENTED_BOUNDED_PENDING_AUDIT | workstream (B14 scope delivered; acceptance pending) | tests_formal/test_learning.py | — | — | N/A |
 | W21 | Better-improver and multigeneration controller | NOT_IMPLEMENTED | workstream | — | not started in B14 | — | N/A |
 | W22 | New primitives, research-language evolution and trust changes | NOT_IMPLEMENTED | workstream | — | not started in B14 | — | N/A |
 | W23 | Fault-tolerant reasoning and expert interaction | NOT_IMPLEMENTED | workstream | — | not started in B14 | — | N/A |

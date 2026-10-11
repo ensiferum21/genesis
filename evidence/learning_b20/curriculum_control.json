@@ -1,0 +1,124 @@
+{
+ "rows": [
+  {
+   "curriculum_cpu_s": 30.69,
+   "curriculum_library": 38,
+   "dev_failed": 10,
+   "empty": 0,
+   "excluded": {
+    "both": [
+     "INSTANCE",
+     "INSTANCE"
+    ],
+    "curriculum": [],
+    "plain": [
+     "INSTANCE",
+     "INSTANCE"
+    ]
+   },
+   "plain_cpu_s": 11.37,
+   "plain_library": 87,
+   "scores": {
+    "both": 12,
+    "curriculum": 12,
+    "plain": 12
+   },
+   "seed": 311,
+   "targets": 15,
+   "variants": 39
+  },
+  {
+   "curriculum_cpu_s": 21.33,
+   "curriculum_library": 34,
+   "dev_failed": 10,
+   "empty": 0,
+   "excluded": {
+    "both": [],
+    "curriculum": [],
+    "plain": []
+   },
+   "plain_cpu_s": 17.72,
+   "plain_library": 87,
+   "scores": {
+    "both": 10,
+    "curriculum": 11,
+    "plain": 9
+   },
+   "seed": 312,
+   "targets": 15,
+   "variants": 35
+  },
+  {
+   "curriculum_cpu_s": 22.98,
+   "curriculum_library": 34,
+   "dev_failed": 10,
+   "empty": 0,
+   "excluded": {
+    "both": [
+     "INSTANCE",
+     "INSTANCE",
+     "INSTANCE",
+     "INSTANCE"
+    ],
+    "curriculum": [
+     "INSTANCE"
+    ],
+    "plain": [
+     "INSTANCE",
+     "INSTANCE",
+     "INSTANCE"
+    ]
+   },
+   "plain_cpu_s": 11.98,
+   "plain_library": 89,
+   "scores": {
+    "both": 8,
+    "curriculum": 8,
+    "plain": 8
+   },
+   "seed": 313,
+   "targets": 15,
+   "variants": 35
+  },
+  {
+   "curriculum_cpu_s": 20.14,
+   "curriculum_library": 36,
+   "dev_failed": 10,
+   "empty": 0,
+   "excluded": {
+    "both": [
+     "INSTANCE"
+    ],
+    "curriculum": [],
+    "plain": [
+     "INSTANCE"
+    ]
+   },
+   "plain_cpu_s": 17.93,
+   "plain_library": 89,
+   "scores": {
+    "both": 10,
+    "curriculum": 10,
+    "plain": 10
+   },
+   "seed": 314,
+   "targets": 15,
+   "variants": 37
+  }
+ ],
+ "rules": {
+  "budget_s": 60,
+  "dev_targets": 10,
+  "eval_s": 3,
+  "eval_targets": 15,
+  "false_conjectures": 30,
+  "per_bucket": 8,
+  "pool_size": 5,
+  "premise_k": 8,
+  "prove_s": 10,
+  "target_range": [
+   5,
+   8
+  ]
+ }
+}

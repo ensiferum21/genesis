@@ -1678,7 +1678,9 @@
    },
    "code": [
     "src/genesis/kernel/receipts.py",
-    "src/genesis/kernel/evidence.py"
+    "src/genesis/kernel/evidence.py",
+    "src/genesis/learning/research.py",
+    "scripts/b20_learning.py"
    ],
    "disposition": "IMPLEMENTED_BOUNDED_PENDING_AUDIT",
    "evidence": [],
@@ -1691,13 +1693,14 @@
    "local_execution": "TESTS_EXECUTED_IN_MATRIX",
    "owner": "research implementer",
    "remaining": [
-    "learned vs fixed research policies (E3)"
+    "a sealed E3 study"
    ],
-   "scientific_efficacy": "NOT_TESTED",
-   "scope": "better-improver test harness (sealed_improver_evaluation receipts, kernel rules)",
+   "scientific_efficacy": "UNESTABLISHED",
+   "scope": "better-improver test harness (sealed_improver_evaluation receipts, kernel rules); B20: DEV comparison of learned vs fixed research policies over independent research runs (better-improver UNESTABLISHED)",
    "source": "spec \u00a712.4 (p. 23)",
    "tests": [
-    "tests_genesis/test_acceptance_regressions.py::RevocationAndTrust"
+    "tests_genesis/test_acceptance_regressions.py::RevocationAndTrust",
+    "tests_formal/test_learning.py"
    ],
    "title": "Better-improver test",
    "workstream": "W21"
@@ -4967,23 +4970,26 @@
     "date": null,
     "decision": "PENDING_INDEPENDENT_ACCEPTANCE"
    },
-   "code": [],
-   "disposition": "NOT_IMPLEMENTED",
+   "code": [
+    "src/genesis/learning/macros.py",
+    "evidence/learning_b20/w18/same_system.json"
+   ],
+   "disposition": "IMPLEMENTED_BOUNDED_PENDING_AUDIT",
    "evidence": [],
    "external_blockers": [],
    "id": "W18",
-   "implementation": "NOT_IMPLEMENTED",
+   "implementation": "IMPLEMENTED_BOUNDED",
    "independent_verification": "PENDING",
-   "local_execution": "NOT_EXECUTED",
+   "local_execution": "TESTS_EXECUTED_IN_MATRIX",
    "owner": "research implementer",
-   "remaining": [
-    "not started in B14"
-   ],
+   "remaining": [],
    "scientific_efficacy": "N/A",
-   "scope": "workstream",
+   "scope": "workstream (B14 scope delivered; acceptance pending)",
    "source": "roadmap \u00a77-10",
-   "tests": [],
-   "title": "Replayable research macros and proof-carrying compression",
+   "tests": [
+    "tests_formal/test_learning.py"
+   ],
+   "title": "Replayable research macros and proof-carrying compression (equational domain: induced lemma programs with dependencies, faithful replay, revocation, transfer)",
    "workstream": "W18"
   },
   {
@@ -4991,23 +4997,26 @@
     "date": null,
     "decision": "PENDING_INDEPENDENT_ACCEPTANCE"
    },
-   "code": [],
-   "disposition": "NOT_IMPLEMENTED",
+   "code": [
+    "src/genesis/learning/research.py",
+    "evidence/learning_b20/w19/rows.json"
+   ],
+   "disposition": "IMPLEMENTED_BOUNDED_PENDING_AUDIT",
    "evidence": [],
    "external_blockers": [],
    "id": "W19",
-   "implementation": "NOT_IMPLEMENTED",
+   "implementation": "IMPLEMENTED_BOUNDED",
    "independent_verification": "PENDING",
-   "local_execution": "NOT_EXECUTED",
+   "local_execution": "TESTS_EXECUTED_IN_MATRIX",
    "owner": "research implementer",
-   "remaining": [
-    "not started in B14"
-   ],
+   "remaining": [],
    "scientific_efficacy": "N/A",
-   "scope": "workstream",
+   "scope": "workstream (B14 scope delivered; acceptance pending)",
    "source": "roadmap \u00a77-10",
-   "tests": [],
-   "title": "Research-policy learning and the market",
+   "tests": [
+    "tests_formal/test_learning.py"
+   ],
+   "title": "Research-policy learning (fixed, random, heuristic, bandit and a frozen learned policy at equal research budgets)",
    "workstream": "W19"
   },
   {
@@ -5015,23 +5024,26 @@
     "date": null,
     "decision": "PENDING_INDEPENDENT_ACCEPTANCE"
    },
-   "code": [],
-   "disposition": "NOT_IMPLEMENTED",
+   "code": [
+    "src/genesis/learning/memory.py",
+    "evidence/learning_b20/w20/rows.json"
+   ],
+   "disposition": "IMPLEMENTED_BOUNDED_PENDING_AUDIT",
    "evidence": [],
    "external_blockers": [],
    "id": "W20",
-   "implementation": "NOT_IMPLEMENTED",
+   "implementation": "IMPLEMENTED_BOUNDED",
    "independent_verification": "PENDING",
-   "local_execution": "NOT_EXECUTED",
+   "local_execution": "TESTS_EXECUTED_IN_MATRIX",
    "owner": "research implementer",
-   "remaining": [
-    "not started in B14"
-   ],
+   "remaining": [],
    "scientific_efficacy": "N/A",
-   "scope": "workstream",
+   "scope": "workstream (B14 scope delivered; acceptance pending)",
    "source": "roadmap \u00a77-10",
-   "tests": [],
-   "title": "Curriculum, experience synthesis and capability memory",
+   "tests": [
+    "tests_formal/test_learning.py"
+   ],
+   "title": "Curriculum, experience synthesis and capability memory (screened memory, failure-driven curriculum, demotion)",
    "workstream": "W20"
   },
   {

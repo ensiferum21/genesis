@@ -705,3 +705,62 @@ size 1. W16 run 1 is kept with this defect; run 2 uses the fix. A regression tes
 - An E1-capable evaluator adapter for non-DSL candidates.
 - A harder Ghost Census family.
 - Confirmation of the retrieved quotes by a person.
+
+## Batch 20 — Learning to research (W18–W20; E3)
+
+**Domain** (`learning/equational.py`). Equational research with exact deciders:
+- Boolean algebra through the 2-element algebra, free-group reduction for groups, and
+  Boolean rings and distributive lattices.
+- Five Boolean-algebra and group axiomatizations, plus a Boolean ring and a distributive
+  lattice.
+- Conjecture pools come from term enumeration bucketed by term function, with
+  canonicalization up to renaming and orientation.
+- Target sampling never touches the pool.
+
+**Research runs** (`learning/research.py`).
+- Each run spends a CPU budget on decider checks and E proof attempts. Lemmas carry proof
+  objects, the premises they were given, and the premises they used.
+- The successor is the frozen library, evaluated on unused targets.
+- Policies: fixed, random, goal-directed heuristic, UCB bandit, and a logistic policy
+  trained on other runs and frozen before use.
+- `lean_chain` assembles the lemma chain that a proof depends on.
+- `fof_lean` gained chained replay: lemmas proved from earlier lemmas, and inputs
+  addressed by their E positions. Successor proofs are therefore Lean-checked down to
+  the axioms.
+
+**W18 macros** (`learning/macros.py`).
+- Induction keeps the used lemmas and their dependency closure, and records the attempts
+  it dropped.
+- Faithful replay, revocation with transitive invalidation, and description length.
+- Strict expansion skips a step whose dependency failed. A non-strict mode was added post
+  hoc.
+
+**W20 memory** (`learning/memory.py`).
+- Contamination screening against evaluation targets (EXACT, INSTANCE), retrieval and
+  demotion.
+- Failure-driven curriculum built from development targets only: specializations and equal
+  sub-equations, checked by the decider.
+
+**Evidence** (`evidence/learning_b20/`). All of it is DEV.
+- **Main run.** Over 8 independent runs, the learned policy ties the fixed one on 7 and
+  wins 1 (+0.125 targets); it scores −0.125 against the best baseline. Calibration is
+  near-uninformative. Most systems leave research little room: Huntington sits at the
+  ceiling.
+- **Macros.** Faithful in both systems, with 2.2–4.2× description-length compression. On
+  unseen seeds they match plain research. Strict transfer to Wolfram's axiom failed at
+  its first step: 0 of 15, against 6 for plain research. Non-strict expansion matches
+  plain research at 6.
+- **Lean.** 67 of 68 successor proofs that used lemmas replay, with 583 chained lemmas.
+- **Wolfram's axiom.** This is the one system with headroom. 60 s of research raises
+  successors from 0 to 8–12 of 15. The curriculum matches plain research at equal effort
+  (+2 on one seed of 4). The main budget rule, a quarter of the exhaustion CPU, starved
+  10-second attempts and left almost every policy run with nothing.
+
+**E3 / GV4.** The better-improver claim is **explicitly UNESTABLISHED**: DEV runs only,
+with no sealed panels and no custodian.
+
+**Not done.**
+- A sealed E3 study.
+- Learned policies that beat fixed rules.
+- Macro transfer that beats plain research.
+- Research on the Lean/Mathlib domain with these tools.

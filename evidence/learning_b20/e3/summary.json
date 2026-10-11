@@ -1,0 +1,119 @@
+{
+ "paired": [
+  {
+   "bandit": 16,
+   "empty": 15,
+   "fixed": 16,
+   "heuristic": 16,
+   "learned": 16,
+   "learned_minus_best_baseline": 0,
+   "learned_minus_fixed": 0,
+   "random": 14,
+   "seed": 201,
+   "system": "ba_sheffer"
+  },
+  {
+   "bandit": 13,
+   "empty": 13,
+   "fixed": 13,
+   "heuristic": 13,
+   "learned": 13,
+   "learned_minus_best_baseline": 0,
+   "learned_minus_fixed": 0,
+   "random": 13,
+   "seed": 202,
+   "system": "ba_sheffer"
+  },
+  {
+   "bandit": 16,
+   "empty": 14,
+   "fixed": 15,
+   "heuristic": 15,
+   "learned": 15,
+   "learned_minus_best_baseline": -1,
+   "learned_minus_fixed": 0,
+   "random": 15,
+   "seed": 203,
+   "system": "ba_sheffer"
+  },
+  {
+   "bandit": 15,
+   "empty": 14,
+   "fixed": 15,
+   "heuristic": 15,
+   "learned": 15,
+   "learned_minus_best_baseline": 0,
+   "learned_minus_fixed": 0,
+   "random": 15,
+   "seed": 204,
+   "system": "ba_sheffer"
+  },
+  {
+   "bandit": 25,
+   "empty": 23,
+   "fixed": 25,
+   "heuristic": 25,
+   "learned": 25,
+   "learned_minus_best_baseline": 0,
+   "learned_minus_fixed": 0,
+   "random": 25,
+   "seed": 201,
+   "system": "ba_huntington"
+  },
+  {
+   "bandit": 24,
+   "empty": 24,
+   "fixed": 25,
+   "heuristic": 25,
+   "learned": 25,
+   "learned_minus_best_baseline": 0,
+   "learned_minus_fixed": 0,
+   "random": 25,
+   "seed": 202,
+   "system": "ba_huntington"
+  },
+  {
+   "bandit": 25,
+   "empty": 22,
+   "fixed": 25,
+   "heuristic": 25,
+   "learned": 25,
+   "learned_minus_best_baseline": 0,
+   "learned_minus_fixed": 0,
+   "random": 25,
+   "seed": 203,
+   "system": "ba_huntington"
+  },
+  {
+   "bandit": 25,
+   "empty": 20,
+   "fixed": 24,
+   "heuristic": 25,
+   "learned": 25,
+   "learned_minus_best_baseline": 0,
+   "learned_minus_fixed": 1,
+   "random": 11,
+   "seed": 204,
+   "system": "ba_huntington"
+  }
+ ],
+ "summary": {
+  "claim": "better-improver: explicitly UNESTABLISHED (DEV research runs only; no sealed panels, no custodian)",
+  "independent_runs_per_policy": 8,
+  "mean_learned_minus_best_baseline": -0.125,
+  "mean_learned_minus_fixed": 0.125,
+  "mean_successor": {
+   "bandit": 19.875,
+   "empty": 18.125,
+   "fixed": 19.75,
+   "heuristic": 19.875,
+   "learned": 19.875,
+   "random": 17.875
+  },
+  "wins_ties_losses_vs_fixed": [
+   1,
+   7,
+   0
+  ]
+ }
+}

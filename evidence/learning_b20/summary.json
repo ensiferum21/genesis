@@ -1,0 +1,109 @@
+{
+ "calibration": {
+  "ba_huntington": {
+   "budget_s": 1.0,
+   "chosen_range": [
+    6,
+    9
+   ]
+  },
+  "ba_sheffer": {
+   "budget_s": 1.57,
+   "chosen_range": [
+    5,
+    8
+   ]
+  }
+ },
+ "e3": {
+  "claim": "better-improver: explicitly UNESTABLISHED (DEV research runs only; no sealed panels, no custodian)",
+  "independent_runs_per_policy": 8,
+  "mean_learned_minus_best_baseline": -0.125,
+  "mean_learned_minus_fixed": 0.125,
+  "mean_successor": {
+   "bandit": 19.875,
+   "empty": 18.125,
+   "fixed": 19.75,
+   "heuristic": 19.875,
+   "learned": 19.875,
+   "random": 17.875
+  },
+  "wins_ties_losses_vs_fixed": [
+   1,
+   7,
+   0
+  ]
+ },
+ "lean": {
+  "chained_lemmas": 583,
+  "checked": 67,
+  "target_proofs_with_lemmas": 68
+ },
+ "policy_weights_sha256": "ab778f98b521f594f34e8114d8fb1c4d78903270a0330dc6a6953be9cf3fba82",
+ "w18": {
+  "macros": {
+   "ba_huntington": {
+    "description_length": {
+     "macro": 1164,
+     "trajectory": 4870
+    },
+    "faithful": true,
+    "induction_cpu_s": 4.31,
+    "revocation": {
+     "expanded_after_revocation": 0,
+     "invalidated": 27,
+     "remaining_steps": 0
+    },
+    "steps": 27
+   },
+   "ba_sheffer": {
+    "description_length": {
+     "macro": 1864,
+     "trajectory": 4046
+    },
+    "faithful": true,
+    "induction_cpu_s": 8.56,
+    "revocation": {
+     "expanded_after_revocation": 0,
+     "invalidated": 46,
+     "remaining_steps": 0
+    },
+    "steps": 46
+   }
+  },
+  "same_system_macro_minus_uncompressed": [
+   0,
+   0,
+   1,
+   0,
+   0,
+   -1,
+   0,
+   0
+  ],
+  "wolfram": {
+   "budget_s": 240,
+   "empty": 0,
+   "induction_charge_cpu_s": 8.56,
+   "macro_lemmas": 0,
+   "macro_successor": 0,
+   "targets": 15,
+   "uncompressed_lemmas": 89,
+   "uncompressed_successor": 6
+  }
+ },
+ "w20": {
+  "excluded": {
+   "EXACT": 0,
+   "INSTANCE": 2
+  },
+  "mean_scores": {
+   "curriculum": 19.75,
+   "none": 19.875,
+   "replay_all": 19.875,
+   "retrieval": 19.875
+  },
+  "runs": 8
+ },
+ "wall_seconds": 2457.3
+}

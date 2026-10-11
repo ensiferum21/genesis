@@ -1,0 +1,153 @@
+[
+ {
+  "curriculum_cpu_s": 1.13,
+  "curriculum_solved": 2,
+  "curriculum_variants": 3,
+  "excluded": [],
+  "memory_size": 0,
+  "scores": {
+   "curriculum": 16,
+   "none": 16,
+   "replay_all": 16,
+   "retrieval": 16
+  },
+  "seed": 201,
+  "system": "ba_sheffer",
+  "targets": 25,
+  "usable": 0
+ },
+ {
+  "curriculum_cpu_s": 1.05,
+  "curriculum_solved": 2,
+  "curriculum_variants": 3,
+  "demoted": 40,
+  "excluded": [],
+  "memory_size": 28,
+  "scores": {
+   "curriculum": 13,
+   "none": 13,
+   "replay_all": 13,
+   "retrieval": 13
+  },
+  "seed": 202,
+  "system": "ba_sheffer",
+  "targets": 25,
+  "usable": 28
+ },
+ {
+  "curriculum_cpu_s": 1.16,
+  "curriculum_solved": 6,
+  "curriculum_variants": 30,
+  "demoted": 28,
+  "excluded": [],
+  "memory_size": 16,
+  "scores": {
+   "curriculum": 14,
+   "none": 15,
+   "replay_all": 16,
+   "retrieval": 15
+  },
+  "seed": 203,
+  "system": "ba_sheffer",
+  "targets": 25,
+  "usable": 16
+ },
+ {
+  "curriculum_cpu_s": 1.03,
+  "curriculum_solved": 1,
+  "curriculum_variants": 22,
+  "demoted": 28,
+  "excluded": [],
+  "memory_size": 16,
+  "scores": {
+   "curriculum": 15,
+   "none": 15,
+   "replay_all": 15,
+   "retrieval": 15
+  },
+  "seed": 204,
+  "system": "ba_sheffer",
+  "targets": 25,
+  "usable": 16
+ },
+ {
+  "curriculum_cpu_s": 0.0,
+  "curriculum_solved": 0,
+  "curriculum_variants": 0,
+  "excluded": [],
+  "memory_size": 0,
+  "scores": {
+   "curriculum": 25,
+   "none": 25,
+   "replay_all": 25,
+   "retrieval": 25
+  },
+  "seed": 201,
+  "system": "ba_huntington",
+  "targets": 25,
+  "usable": 0
+ },
+ {
+  "curriculum_cpu_s": 0.0,
+  "curriculum_solved": 0,
+  "curriculum_variants": 0,
+  "demoted": 75,
+  "excluded": [
+   {
+    "lemma": "![X]: (![Y]: (n(plus(X,Y)) = n(plus(Y,X))))",
+    "reason": "INSTANCE"
+   },
+   {
+    "lemma": "![X]: (![Y]: (plus(n(X),Y) = plus(Y,n(X))))",
+    "reason": "INSTANCE"
+   }
+  ],
+  "memory_size": 45,
+  "scores": {
+   "curriculum": 25,
+   "none": 25,
+   "replay_all": 25,
+   "retrieval": 25
+  },
+  "seed": 202,
+  "system": "ba_huntington",
+  "targets": 25,
+  "usable": 43
+ },
+ {
+  "curriculum_cpu_s": 0.0,
+  "curriculum_solved": 0,
+  "curriculum_variants": 0,
+  "demoted": 56,
+  "excluded": [],
+  "memory_size": 16,
+  "scores": {
+   "curriculum": 25,
+   "none": 25,
+   "replay_all": 24,
+   "retrieval": 25
+  },
+  "seed": 203,
+  "system": "ba_huntington",
+  "targets": 25,
+  "usable": 16
+ },
+ {
+  "curriculum_cpu_s": 0.0,
+  "curriculum_solved": 0,
+  "curriculum_variants": 0,
+  "demoted": 56,
+  "excluded": [],
+  "memory_size": 16,
+  "scores": {
+   "curriculum": 25,
+   "none": 25,
+   "replay_all": 25,
+   "retrieval": 25
+  },
+  "seed": 204,
+  "system": "ba_huntington",
+  "targets": 25,
+  "usable": 16
+ }
+]

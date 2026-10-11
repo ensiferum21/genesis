@@ -634,18 +634,23 @@ def _render(t):
     return '(' + ' '.join([head] + [_render(a) for a in t[2]]) + ')' if t[2] else head
 
 
-def refutation_block(prefix, sig, hyps, target, proof_text):
+def refutation_block(prefix, sig, hyps, target, proof_text, positions=None):
     """Lean text for one E refutation: a lemma per inference, then
     `{prefix}_thm : ∀ binders, hyp₀ → … → target`. E's input names are ax0 … for `hyps` in
-    order and `goal` for `target`. Returns (text | None, reason, step table)."""
+    order and `goal` for `target`; `positions` gives other E input indices for the hyps
+    when only some of E's inputs are passed (B20: the inputs a proof actually uses).
+    Returns (text | None, reason, step table)."""
     try:
         steps = tstp_steps(proof_text)
     except ParseError as exc:
         return None, f'proof object does not parse: {exc}', []
-    inputs = {f'ax{i}': a for i, a in enumerate(hyps)}
+    positions = list(range(len(hyps))) if positions is None else list(positions)
+    if len(positions) != len(hyps) or len(set(positions)) != len(positions):
+        return None, 'input positions do not match the hypotheses', []
+    inputs = {f'ax{i}': a for i, a in zip(positions, hyps)}
     statement, sk_of, shape, statement_ast = {}, {}, {'goal': None}, {}
     lemmas, main, table = [], [], []
-    hyp_of = {f'ax{i}': f'ax{i}' for i in range(len(hyps))}
+    hyp_of = {f'ax{i}': f'ax{i}' for i in positions}
     hyp_of['goal'] = 'hgoal'
     sk_scope = {}
     for st in steps:
@@ -725,51 +730,67 @@ def refutation_block(prefix, sig, hyps, target, proof_text):
     last = steps[-1] if steps else None
     if not last or last['formula'] != ('const', False):
         return None, 'the proof object does not end in the empty clause', table
-    head = ' '.join(binders(sig) + [f'(ax{i} : {formula(h)})' for i, h in enumerate(hyps)])
+    head = ' '.join(binders(sig) + [f'(ax{i} : {formula(h)})' for i, h in zip(positions, hyps)])
     text = ('\n'.join(lemmas) + f'\ntheorem {prefix}_thm {head} :\n    {formula(target)} := by\n'
             '  apply Classical.byContradiction\n  intro hgoal\n' + '\n'.join(main) +
             f'\n  exact {last["name"]}\n')
     return text, None, table
 
 
-def proof_module(problem_id, axioms, goal, proof_text, lemmas=()):
-    """Untrusted: the replay of E's refutation of `goal` from `axioms` + the lemmas, each
-    lemma replayed from its own E proof first. `lemmas`: [(formula, proof text)], in the
-    order they were given to E after the axioms. Returns (module | None, reason, tables)."""
+def proof_module(problem_id, axioms, goal, proof_text, lemmas=(), goal_deps=None, goal_positions=None):
+    """Untrusted: the replay of E's refutation of `goal`, each lemma replayed from its own E
+    proof first. `lemmas`: [(formula, proof text)] or [(formula, proof text, deps)], where
+    `deps` are the indices of earlier lemmas that were given to E, after the axioms and in
+    that order, when the lemma was proved (B20: lemma chains). `goal_deps` likewise for the
+    goal; by default every lemma, in order (the B19 form). Returns (module | None, reason,
+    tables)."""
+    lemmas = [(x[0], x[1], tuple(x[2]) if len(x) > 2 else (), tuple(x[3]) if len(x) > 3 else None) for x in lemmas]
+    goal_deps = list(range(len(lemmas))) if goal_deps is None else list(goal_deps)
     sig = signature(list(axioms) + [goal])
-    lsig = signature(list(axioms) + [goal] + [l for l, _ in lemmas])
+    lsig = signature(list(axioms) + [goal] + [l for l, _, _, _ in lemmas])
     if lsig != sig:
         return None, 'a lemma uses a symbol outside the problem signature', {}
+    for j, (_, _, deps, _) in enumerate(lemmas):
+        if any(not 0 <= d < j for d in deps):
+            return None, f'lemma {j} depends on a lemma that is not earlier in the chain', {}
+    if any(not 0 <= d < len(lemmas) for d in goal_deps):
+        return None, 'the goal depends on an unknown lemma', {}
     stmt, proof = module_names(problem_id)
     blocks, tables = [], {}
-    for j, (lem, text) in enumerate(lemmas):
-        block, reason, table = refutation_block(f'L{j}', sig, list(axioms), lem, text)
+    n = len(axioms)
+    for j, (lem, text, deps, pos) in enumerate(lemmas):
+        block, reason, table = refutation_block(f'L{j}', sig, list(axioms) + [lemmas[d][0] for d in deps], lem, text,
+                                                positions=None if pos is None else list(range(n)) + list(pos))
         tables[f'L{j}'] = table
         if block is None:
             return None, f'lemma {j}: {reason}', tables
         blocks.append(block)
-    block, reason, table = refutation_block('G', sig, list(axioms) + [l for l, _ in lemmas], goal, proof_text)
+    block, reason, table = refutation_block('G', sig, list(axioms) + [lemmas[d][0] for d in goal_deps], goal,
+                                            proof_text, positions=None if goal_positions is None else
+                                            list(range(n)) + list(goal_positions))
     tables['G'] = table
     if block is None:
         return None, reason, tables
     blocks.append(block)
     names = binder_names(sig)
     axs = [f'ax{i}' for i in range(len(axioms))]
-    lemma_terms = [f'(L{j}_thm {" ".join(names + axs)})' for j in range(len(lemmas))]
+    haves = [f'  have l{j} := L{j}_thm {" ".join(names + axs + [f"l{d}" for d in deps])}'
+             for j, (_, _, deps, _) in enumerate(lemmas)]
     source = (f'import {stmt}\n\nset_option maxHeartbeats 400000\n\nnamespace {proof}\n\n' + '\n'.join(blocks) +
               f'\ntheorem proof : {stmt}.stmt := by\n  intro {" ".join(names[:1] + ["hU"] + names[1:] + axs)}\n'
-              f'  exact G_thm {" ".join(names + axs + lemma_terms)}\n\nend {proof}\n')
+              + ''.join(h + '\n' for h in haves) +
+              f'  exact G_thm {" ".join(names + axs + [f"l{d}" for d in goal_deps])}\n\nend {proof}\n')
     return {'name': proof, 'source': source, 'trusted': False}, None, tables
 
 
-def replay(problem_id, axioms, goal, proof_text, *, lemmas=(), cache=None):
+def replay(problem_id, axioms, goal, proof_text, *, lemmas=(), goal_deps=None, goal_positions=None, cache=None):
     """Lean replay of an E proof object (and of the E proofs of any lemmas it used).
     Returns a record with status THEOREM_CHECKED (kernel-checked, bound to the trusted
     statement of `axioms → goal`) or NOT_REPLAYED with the reason; the result then stays
     a prover claim."""
     from . import checker
     stmt_mod, spec, sig = statement_module(problem_id, axioms, goal)
-    pmod, reason, tables = proof_module(problem_id, axioms, goal, proof_text, lemmas)
+    pmod, reason, tables = proof_module(problem_id, axioms, goal, proof_text, lemmas, goal_deps, goal_positions)
     rec = {'problem_id': problem_id, 'statement_module': stmt_mod['name'],
            'statement_sha256': digest({'s': stmt_mod['source']}),
            'steps': sum(len(t) for t in tables.values()), 'lemmas_replayed': len(lemmas),

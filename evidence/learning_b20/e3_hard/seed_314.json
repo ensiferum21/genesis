@@ -1,0 +1,627 @@
+{
+ "empty": 0,
+ "policies": {
+  "bandit": {
+   "eval_rows": [
+    {
+     "lemmas_used": [],
+     "premise_ids": [],
+     "proof": null,
+     "status": "ERROR",
+     "target": "![X]: (![Y]: (![Z]: (s(s(s(s(X,X),Y),X),X) = s(s(Z,s(Z,s(Z,Z))),Z))))"
+    },
+    {
+     "lemmas_used": [],
+     "premise_ids": [],
+     "proof": null,
+     "status": "ERROR",
+     "target": "![X]: (![Y]: (![Z]: (s(s(s(X,Y),Y),s(X,Z)) = s(s(s(X,Y),Y),s(Z,X)))))"
+    },
+    {
+     "lemmas_used": [],
+     "premise_ids": [],
+     "proof": null,
+     "status": "ERROR",
+     "target": "![X]: (![Y]: (![Z]: (s(s(X,Y),s(Z,s(Z,s(Y,Y)))) = s(s(Y,X),s(Z,Y)))))"
+    },
+    {
+     "lemmas_used": [],
+     "premise_ids": [],
+     "proof": null,
+     "status": "ERROR",
+     "target": "![X]: (![Y]: (![Z]: (s(s(X,s(X,Y)),s(Z,Z)) = s(s(Z,Z),s(X,s(Y,Y))))))"
+    },
+    {
+     "lemmas_used": [],
+     "premise_ids": [],
+     "proof": null,
+     "status": "ERROR",
+     "target": "![X]: (![Y]: (![Z]: (s(s(s(X,Y),Z),s(X,Z)) = s(s(Z,s(X,Z)),s(Z,Z)))))"
+    },
+    {
+     "lemmas_used": [],
+     "premise_ids": [],
+     "proof": null,
+     "status": "ERROR",
+     "target": "![X]: (![Y]: (![Z]: (s(s(s(X,s(Y,Z)),X),Y) = s(Y,s(X,s(s(Z,X),Y))))))"
+    },
+    {
+     "lemmas_used": [],
+     "premise_ids": [],
+     "proof": null,
+     "status": "ERROR",
+     "target": "![X]: (![Y]: (![Z]: (s(s(X,s(Y,s(Y,Z))),X) = s(s(X,s(Y,s(Z,Z))),X))))"
+    },
+    {
+     "lemmas_used": [],
+     "premise_ids": [],
+     "proof": null,
+     "status": "ERROR",
+     "target": "![X]: (![Y]: (![Z]: (s(s(X,X),s(s(Y,Z),Y)) = s(s(X,X),s(s(Z,Y),Y)))))"
+    },
+    {
+     "lemmas_used": [],
+     "premise_ids": [],
+     "proof": null,
+     "status": "ERROR",
+     "target": "![X]: (![Y]: (![Z]: (s(X,s(Y,s(s(Z,s(Y,X)),Z))) = s(X,s(Y,s(Z,Y))))))"
+    },
+    {
+     "lemmas_used": [],
+     "premise_ids": [],
+     "proof": null,
+     "status": "ERROR",
+     "target": "![X]: (![Y]: (![Z]: (s(s(s(s(X,Y),X),X),Z) = s(Z,s(s(X,s(Y,X)),X)))))"
+    },
+    {
+     "lemmas_used": [],
+     "premise_ids": [],
+     "proof": null,
+     "status": "ERROR",
+     "target": "![X]: (![Y]: (![Z]: (s(s(X,Y),s(s(s(Y,Z),Z),Z)) = s(s(Z,Y),s(Y,X)))))"
+    },
+    {
+     "lemmas_used": [],
+     "premise_ids": [],
+     "proof": null,
+     "status": "ERROR",
+     "target": "![X]: (![Y]: (![Z]: (s(s(X,s(Y,s(Z,X))),Z) = s(Z,s(X,s(Z,s(Z,X)))))))"
+    },
+    {
+     "lemmas_used": [],
+     "premise_ids": [],
+     "proof": null,
+     "status": "ERROR",
+     "target": "![X]: (![Y]: (![Z]: (s(s(X,s(s(Y,X),X)),Z) = s(s(X,s(X,s(Y,Z))),Z))))"
+    },
+    {
+     "lemmas_used": [],
+     "premise_ids": [],
+     "proof": null,
+     "status": "ERROR",
+     "target": "![X]: (![Y]: (![Z]: (s(X,s(s(X,Y),Z)) = s(X,s(X,s(X,s(s(Z,Y),Z)))))))"
+    },
+    {
+     "lemmas_used": [],
+     "premise_ids": [],
+     "proof": null,
+     "status": "ERROR",
+     "target": "![X]: (![Y]: (![Z]: (s(s(s(X,s(s(X,Y),X)),Z),X) = s(s(Z,s(X,Y)),X))))"
+    }
+   ],
+   "lemmas_used": [],
+   "library": 0,
+   "library_entries": null,
+   "library_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+   "research_cpu_s": 4.94,
+   "successor_proved": 0,
+   "tried": 1
+  },
+  "fixed": {
+   "eval_rows": [
+    {
+     "lemmas_used": [],
+     "premise_ids": [],
+     "proof": null,
+     "status": "ERROR",
+     "target": "![X]: (![Y]: (![Z]: (s(s(s(s(X,X),Y),X),X) = s(s(Z,s(Z,s(Z,Z))),Z))))"
+    },
+    {
+     "lemmas_used": [],
+     "premise_ids": [],
+     "proof": null,
+     "status": "ERROR",
+     "target": "![X]: (![Y]: (![Z]: (s(s(s(X,Y),Y),s(X,Z)) = s(s(s(X,Y),Y),s(Z,X)))))"
+    },
+    {
+     "lemmas_used": [],
+     "premise_ids": [],
+     "proof": null,
+     "status": "ERROR",
+     "target": "![X]: (![Y]: (![Z]: (s(s(X,Y),s(Z,s(Z,s(Y,Y)))) = s(s(Y,X),s(Z,Y)))))"
+    },
+    {
+     "lemmas_used": [],
+     "premise_ids": [],
+     "proof": null,
+     "status": "ERROR",
+     "target": "![X]: (![Y]: (![Z]: (s(s(X,s(X,Y)),s(Z,Z)) = s(s(Z,Z),s(X,s(Y,Y))))))"
+    },
+    {
+     "lemmas_used": [],
+     "premise_ids": [],
+     "proof": null,
+     "status": "ERROR",
+     "target": "![X]: (![Y]: (![Z]: (s(s(s(X,Y),Z),s(X,Z)) = s(s(Z,s(X,Z)),s(Z,Z)))))"
+    },
+    {
+     "lemmas_used": [],
+     "premise_ids": [],
+     "proof": null,
+     "status": "ERROR",
+     "target": "![X]: (![Y]: (![Z]: (s(s(s(X,s(Y,Z)),X),Y) = s(Y,s(X,s(s(Z,X),Y))))))"
+    },
+    {
+     "lemmas_used": [],
+     "premise_ids": [],
+     "proof": null,
+     "status": "ERROR",
+     "target": "![X]: (![Y]: (![Z]: (s(s(X,s(Y,s(Y,Z))),X) = s(s(X,s(Y,s(Z,Z))),X))))"
+    },
+    {
+     "lemmas_used": [],
+     "premise_ids": [],
+     "proof": null,
+     "status": "ERROR",
+     "target": "![X]: (![Y]: (![Z]: (s(s(X,X),s(s(Y,Z),Y)) = s(s(X,X),s(s(Z,Y),Y)))))"
+    },
+    {
+     "lemmas_used": [],
+     "premise_ids": [],
+     "proof": null,
+     "status": "ERROR",
+     "target": "![X]: (![Y]: (![Z]: (s(X,s(Y,s(s(Z,s(Y,X)),Z))) = s(X,s(Y,s(Z,Y))))))"
+    },
+    {
+     "lemmas_used": [],
+     "premise_ids": [],
+     "proof": null,
+     "status": "ERROR",
+     "target": "![X]: (![Y]: (![Z]: (s(s(s(s(X,Y),X),X),Z) = s(Z,s(s(X,s(Y,X)),X)))))"
+    },
+    {
+     "lemmas_used": [],
+     "premise_ids": [],
+     "proof": null,
+     "status": "ERROR",
+     "target": "![X]: (![Y]: (![Z]: (s(s(X,Y),s(s(s(Y,Z),Z),Z)) = s(s(Z,Y),s(Y,X)))))"
+    },
+    {
+     "lemmas_used": [],
+     "premise_ids": [],
+     "proof": null,
+     "status": "ERROR",
+     "target": "![X]: (![Y]: (![Z]: (s(s(X,s(Y,s(Z,X))),Z) = s(Z,s(X,s(Z,s(Z,X)))))))"
+    },
+    {
+     "lemmas_used": [],
+     "premise_ids": [],
+     "proof": null,
+     "status": "ERROR",
+     "target": "![X]: (![Y]: (![Z]: (s(s(X,s(s(Y,X),X)),Z) = s(s(X,s(X,s(Y,Z))),Z))))"
+    },
+    {
+     "lemmas_used": [],
+     "premise_ids": [],
+     "proof": null,
+     "status": "ERROR",
+     "target": "![X]: (![Y]: (![Z]: (s(X,s(s(X,Y),Z)) = s(X,s(X,s(X,s(s(Z,Y),Z)))))))"
+    },
+    {
+     "lemmas_used": [],
+     "premise_ids": [],
+     "proof": null,
+     "status": "ERROR",
+     "target": "![X]: (![Y]: (![Z]: (s(s(s(X,s(s(X,Y),X)),Z),X) = s(s(Z,s(X,Y)),X))))"
+    }
+   ],
+   "lemmas_used": [],
+   "library": 0,
+   "library_entries": [],
+   "library_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+   "research_cpu_s": 4.92,
+   "successor_proved": 0,
+   "tried": 1
+  },
+  "heuristic": {
+   "eval_rows": [
+    {
+     "lemmas_used": [],
+     "premise_ids": [],
+     "proof": null,
+     "status": "ERROR",
+     "target": "![X]: (![Y]: (![Z]: (s(s(s(s(X,X),Y),X),X) = s(s(Z,s(Z,s(Z,Z))),Z))))"
+    },
+    {
+     "lemmas_used": [],
+     "premise_ids": [],
+     "proof": null,
+     "status": "ERROR",
+     "target": "![X]: (![Y]: (![Z]: (s(s(s(X,Y),Y),s(X,Z)) = s(s(s(X,Y),Y),s(Z,X)))))"
+    },
+    {
+     "lemmas_used": [],
+     "premise_ids": [],
+     "proof": null,
+     "status": "ERROR",
+     "target": "![X]: (![Y]: (![Z]: (s(s(X,Y),s(Z,s(Z,s(Y,Y)))) = s(s(Y,X),s(Z,Y)))))"
+    },
+    {
+     "lemmas_used": [],
+     "premise_ids": [],
+     "proof": null,
+     "status": "ERROR",
+     "target": "![X]: (![Y]: (![Z]: (s(s(X,s(X,Y)),s(Z,Z)) = s(s(Z,Z),s(X,s(Y,Y))))))"
+    },
+    {
+     "lemmas_used": [],
+     "premise_ids": [],
+     "proof": null,
+     "status": "ERROR",
+     "target": "![X]: (![Y]: (![Z]: (s(s(s(X,Y),Z),s(X,Z)) = s(s(Z,s(X,Z)),s(Z,Z)))))"
+    },
+    {
+     "lemmas_used": [],
+     "premise_ids": [],
+     "proof": null,
+     "status": "ERROR",
+     "target": "![X]: (![Y]: (![Z]: (s(s(s(X,s(Y,Z)),X),Y) = s(Y,s(X,s(s(Z,X),Y))))))"
+    },
+    {
+     "lemmas_used": [],
+     "premise_ids": [],
+     "proof": null,
+     "status": "ERROR",
+     "target": "![X]: (![Y]: (![Z]: (s(s(X,s(Y,s(Y,Z))),X) = s(s(X,s(Y,s(Z,Z))),X))))"
+    },
+    {
+     "lemmas_used": [],
+     "premise_ids": [],
+     "proof": null,
+     "status": "ERROR",
+     "target": "![X]: (![Y]: (![Z]: (s(s(X,X),s(s(Y,Z),Y)) = s(s(X,X),s(s(Z,Y),Y)))))"
+    },
+    {
+     "lemmas_used": [],
+     "premise_ids": [],
+     "proof": null,
+     "status": "ERROR",
+     "target": "![X]: (![Y]: (![Z]: (s(X,s(Y,s(s(Z,s(Y,X)),Z))) = s(X,s(Y,s(Z,Y))))))"
+    },
+    {
+     "lemmas_used": [],
+     "premise_ids": [],
+     "proof": null,
+     "status": "ERROR",
+     "target": "![X]: (![Y]: (![Z]: (s(s(s(s(X,Y),X),X),Z) = s(Z,s(s(X,s(Y,X)),X)))))"
+    },
+    {
+     "lemmas_used": [],
+     "premise_ids": [],
+     "proof": null,
+     "status": "ERROR",
+     "target": "![X]: (![Y]: (![Z]: (s(s(X,Y),s(s(s(Y,Z),Z),Z)) = s(s(Z,Y),s(Y,X)))))"
+    },
+    {
+     "lemmas_used": [],
+     "premise_ids": [],
+     "proof": null,
+     "status": "ERROR",
+     "target": "![X]: (![Y]: (![Z]: (s(s(X,s(Y,s(Z,X))),Z) = s(Z,s(X,s(Z,s(Z,X)))))))"
+    },
+    {
+     "lemmas_used": [],
+     "premise_ids": [],
+     "proof": null,
+     "status": "ERROR",
+     "target": "![X]: (![Y]: (![Z]: (s(s(X,s(s(Y,X),X)),Z) = s(s(X,s(X,s(Y,Z))),Z))))"
+    },
+    {
+     "lemmas_used": [],
+     "premise_ids": [],
+     "proof": null,
+     "status": "ERROR",
+     "target": "![X]: (![Y]: (![Z]: (s(X,s(s(X,Y),Z)) = s(X,s(X,s(X,s(s(Z,Y),Z)))))))"
+    },
+    {
+     "lemmas_used": [],
+     "premise_ids": [],
+     "proof": null,
+     "status": "ERROR",
+     "target": "![X]: (![Y]: (![Z]: (s(s(s(X,s(s(X,Y),X)),Z),X) = s(s(Z,s(X,Y)),X))))"
+    }
+   ],
+   "lemmas_used": [],
+   "library": 0,
+   "library_entries": null,
+   "library_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+   "research_cpu_s": 4.93,
+   "successor_proved": 0,
+   "tried": 1
+  },
+  "learned": {
+   "eval_rows": [
+    {
+     "lemmas_used": [],
+     "premise_ids": [],
+     "proof": null,
+     "status": "ERROR",
+     "target": "![X]: (![Y]: (![Z]: (s(s(s(s(X,X),Y),X),X) = s(s(Z,s(Z,s(Z,Z))),Z))))"
+    },
+    {
+     "lemmas_used": [],
+     "premise_ids": [],
+     "proof": null,
+     "status": "ERROR",
+     "target": "![X]: (![Y]: (![Z]: (s(s(s(X,Y),Y),s(X,Z)) = s(s(s(X,Y),Y),s(Z,X)))))"
+    },
+    {
+     "lemmas_used": [],
+     "premise_ids": [],
+     "proof": null,
+     "status": "ERROR",
+     "target": "![X]: (![Y]: (![Z]: (s(s(X,Y),s(Z,s(Z,s(Y,Y)))) = s(s(Y,X),s(Z,Y)))))"
+    },
+    {
+     "lemmas_used": [],
+     "premise_ids": [],
+     "proof": null,
+     "status": "ERROR",
+     "target": "![X]: (![Y]: (![Z]: (s(s(X,s(X,Y)),s(Z,Z)) = s(s(Z,Z),s(X,s(Y,Y))))))"
+    },
+    {
+     "lemmas_used": [],
+     "premise_ids": [],
+     "proof": null,
+     "status": "ERROR",
+     "target": "![X]: (![Y]: (![Z]: (s(s(s(X,Y),Z),s(X,Z)) = s(s(Z,s(X,Z)),s(Z,Z)))))"
+    },
+    {
+     "lemmas_used": [],
+     "premise_ids": [],
+     "proof": null,
+     "status": "ERROR",
+     "target": "![X]: (![Y]: (![Z]: (s(s(s(X,s(Y,Z)),X),Y) = s(Y,s(X,s(s(Z,X),Y))))))"
+    },
+    {
+     "lemmas_used": [],
+     "premise_ids": [],
+     "proof": null,
+     "status": "ERROR",
+     "target": "![X]: (![Y]: (![Z]: (s(s(X,s(Y,s(Y,Z))),X) = s(s(X,s(Y,s(Z,Z))),X))))"
+    },
+    {
+     "lemmas_used": [],
+     "premise_ids": [],
+     "proof": null,
+     "status": "ERROR",
+     "target": "![X]: (![Y]: (![Z]: (s(s(X,X),s(s(Y,Z),Y)) = s(s(X,X),s(s(Z,Y),Y)))))"
+    },
+    {
+     "lemmas_used": [],
+     "premise_ids": [],
+     "proof": null,
+     "status": "ERROR",
+     "target": "![X]: (![Y]: (![Z]: (s(X,s(Y,s(s(Z,s(Y,X)),Z))) = s(X,s(Y,s(Z,Y))))))"
+    },
+    {
+     "lemmas_used": [],
+     "premise_ids": [],
+     "proof": null,
+     "status": "ERROR",
+     "target": "![X]: (![Y]: (![Z]: (s(s(s(s(X,Y),X),X),Z) = s(Z,s(s(X,s(Y,X)),X)))))"
+    },
+    {
+     "lemmas_used": [],
+     "premise_ids": [],
+     "proof": null,
+     "status": "ERROR",
+     "target": "![X]: (![Y]: (![Z]: (s(s(X,Y),s(s(s(Y,Z),Z),Z)) = s(s(Z,Y),s(Y,X)))))"
+    },
+    {
+     "lemmas_used": [],
+     "premise_ids": [],
+     "proof": null,
+     "status": "ERROR",
+     "target": "![X]: (![Y]: (![Z]: (s(s(X,s(Y,s(Z,X))),Z) = s(Z,s(X,s(Z,s(Z,X)))))))"
+    },
+    {
+     "lemmas_used": [],
+     "premise_ids": [],
+     "proof": null,
+     "status": "ERROR",
+     "target": "![X]: (![Y]: (![Z]: (s(s(X,s(s(Y,X),X)),Z) = s(s(X,s(X,s(Y,Z))),Z))))"
+    },
+    {
+     "lemmas_used": [],
+     "premise_ids": [],
+     "proof": null,
+     "status": "ERROR",
+     "target": "![X]: (![Y]: (![Z]: (s(X,s(s(X,Y),Z)) = s(X,s(X,s(X,s(s(Z,Y),Z)))))))"
+    },
+    {
+     "lemmas_used": [],
+     "premise_ids": [],
+     "proof": null,
+     "status": "ERROR",
+     "target": "![X]: (![Y]: (![Z]: (s(s(s(X,s(s(X,Y),X)),Z),X) = s(s(Z,s(X,Y)),X))))"
+    }
+   ],
+   "lemmas_used": [],
+   "library": 0,
+   "library_entries": [],
+   "library_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+   "research_cpu_s": 4.97,
+   "successor_proved": 0,
+   "tried": 1
+  },
+  "random": {
+   "eval_rows": [
+    {
+     "lemmas_used": [],
+     "premise_ids": [],
+     "proof": null,
+     "status": "ERROR",
+     "target": "![X]: (![Y]: (![Z]: (s(s(s(s(X,X),Y),X),X) = s(s(Z,s(Z,s(Z,Z))),Z))))"
+    },
+    {
+     "lemmas_used": [],
+     "premise_ids": [],
+     "proof": null,
+     "status": "ERROR",
+     "target": "![X]: (![Y]: (![Z]: (s(s(s(X,Y),Y),s(X,Z)) = s(s(s(X,Y),Y),s(Z,X)))))"
+    },
+    {
+     "lemmas_used": [],
+     "premise_ids": [],
+     "proof": null,
+     "status": "ERROR",
+     "target": "![X]: (![Y]: (![Z]: (s(s(X,Y),s(Z,s(Z,s(Y,Y)))) = s(s(Y,X),s(Z,Y)))))"
+    },
+    {
+     "lemmas_used": [],
+     "premise_ids": [],
+     "proof": null,
+     "status": "ERROR",
+     "target": "![X]: (![Y]: (![Z]: (s(s(X,s(X,Y)),s(Z,Z)) = s(s(Z,Z),s(X,s(Y,Y))))))"
+    },
+    {
+     "lemmas_used": [],
+     "premise_ids": [],
+     "proof": null,
+     "status": "ERROR",
+     "target": "![X]: (![Y]: (![Z]: (s(s(s(X,Y),Z),s(X,Z)) = s(s(Z,s(X,Z)),s(Z,Z)))))"
+    },
+    {
+     "lemmas_used": [],
+     "premise_ids": [],
+     "proof": null,
+     "status": "ERROR",
+     "target": "![X]: (![Y]: (![Z]: (s(s(s(X,s(Y,Z)),X),Y) = s(Y,s(X,s(s(Z,X),Y))))))"
+    },
+    {
+     "lemmas_used": [],
+     "premise_ids": [],
+     "proof": null,
+     "status": "ERROR",
+     "target": "![X]: (![Y]: (![Z]: (s(s(X,s(Y,s(Y,Z))),X) = s(s(X,s(Y,s(Z,Z))),X))))"
+    },
+    {
+     "lemmas_used": [],
+     "premise_ids": [],
+     "proof": null,
+     "status": "ERROR",
+     "target": "![X]: (![Y]: (![Z]: (s(s(X,X),s(s(Y,Z),Y)) = s(s(X,X),s(s(Z,Y),Y)))))"
+    },
+    {
+     "lemmas_used": [],
+     "premise_ids": [],
+     "proof": null,
+     "status": "ERROR",
+     "target": "![X]: (![Y]: (![Z]: (s(X,s(Y,s(s(Z,s(Y,X)),Z))) = s(X,s(Y,s(Z,Y))))))"
+    },
+    {
+     "lemmas_used": [],
+     "premise_ids": [],
+     "proof": null,
+     "status": "ERROR",
+     "target": "![X]: (![Y]: (![Z]: (s(s(s(s(X,Y),X),X),Z) = s(Z,s(s(X,s(Y,X)),X)))))"
+    },
+    {
+     "lemmas_used": [],
+     "premise_ids": [],
+     "proof": null,
+     "status": "ERROR",
+     "target": "![X]: (![Y]: (![Z]: (s(s(X,Y),s(s(s(Y,Z),Z),Z)) = s(s(Z,Y),s(Y,X)))))"
+    },
+    {
+     "lemmas_used": [],
+     "premise_ids": [],
+     "proof": null,
+     "status": "ERROR",
+     "target": "![X]: (![Y]: (![Z]: (s(s(X,s(Y,s(Z,X))),Z) = s(Z,s(X,s(Z,s(Z,X)))))))"
+    },
+    {
+     "lemmas_used": [],
+     "premise_ids": [],
+     "proof": null,
+     "status": "ERROR",
+     "target": "![X]: (![Y]: (![Z]: (s(s(X,s(s(Y,X),X)),Z) = s(s(X,s(X,s(Y,Z))),Z))))"
+    },
+    {
+     "lemmas_used": [],
+     "premise_ids": [],
+     "proof": null,
+     "status": "ERROR",
+     "target": "![X]: (![Y]: (![Z]: (s(X,s(s(X,Y),Z)) = s(X,s(X,s(X,s(s(Z,Y),Z)))))))"
+    },
+    {
+     "lemmas_used": [],
+     "premise_ids": [],
+     "proof": null,
+     "status": "ERROR",
+     "target": "![X]: (![Y]: (![Z]: (s(s(s(X,s(s(X,Y),X)),Z),X) = s(s(Z,s(X,Y)),X))))"
+    }
+   ],
+   "lemmas_used": [],
+   "library": 0,
+   "library_entries": null,
+   "library_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+   "research_cpu_s": 4.93,
+   "successor_proved": 0,
+   "tried": 1
+  }
+ },
+ "policy_weights_sha256": "ab778f98b521f594f34e8114d8fb1c4d78903270a0330dc6a6953be9cf3fba82",
+ "rules": {
+  "budget_s": 4.23,
+  "dev_targets": 10,
+  "eval_s": 3,
+  "eval_targets": 15,
+  "false_conjectures": 30,
+  "per_bucket": 8,
+  "policies": [
+   "fixed",
+   "random",
+   "heuristic",
+   "bandit",
+   "learned"
+  ],
+  "pool_size": 5,
+  "premise_k": 8,
+  "prove_s": 10,
+  "target_range": [
+   5,
+   8
+  ]
+ },
+ "seed": 314,
+ "system": "ba_wolfram",
+ "targets": [
+  "![X]: (![Y]: (![Z]: (s(s(s(s(X,X),Y),X),X) = s(s(Z,s(Z,s(Z,Z))),Z))))",
+  "![X]: (![Y]: (![Z]: (s(s(s(X,Y),Y),s(X,Z)) = s(s(s(X,Y),Y),s(Z,X)))))",
+  "![X]: (![Y]: (![Z]: (s(s(X,Y),s(Z,s(Z,s(Y,Y)))) = s(s(Y,X),s(Z,Y)))))",
+  "![X]: (![Y]: (![Z]: (s(s(X,s(X,Y)),s(Z,Z)) = s(s(Z,Z),s(X,s(Y,Y))))))",
+  "![X]: (![Y]: (![Z]: (s(s(s(X,Y),Z),s(X,Z)) = s(s(Z,s(X,Z)),s(Z,Z)))))",
+  "![X]: (![Y]: (![Z]: (s(s(s(X,s(Y,Z)),X),Y) = s(Y,s(X,s(s(Z,X),Y))))))",
+  "![X]: (![Y]: (![Z]: (s(s(X,s(Y,s(Y,Z))),X) = s(s(X,s(Y,s(Z,Z))),X))))",
+  "![X]: (![Y]: (![Z]: (s(s(X,X),s(s(Y,Z),Y)) = s(s(X,X),s(s(Z,Y),Y)))))",
+  "![X]: (![Y]: (![Z]: (s(X,s(Y,s(s(Z,s(Y,X)),Z))) = s(X,s(Y,s(Z,Y))))))",
+  "![X]: (![Y]: (![Z]: (s(s(s(s(X,Y),X),X),Z) = s(Z,s(s(X,s(Y,X)),X)))))",
+  "![X]: (![Y]: (![Z]: (s(s(X,Y),s(s(s(Y,Z),Z),Z)) = s(s(Z,Y),s(Y,X)))))",
+  "![X]: (![Y]: (![Z]: (s(s(X,s(Y,s(Z,X))),Z) = s(Z,s(X,s(Z,s(Z,X)))))))",
+  "![X]: (![Y]: (![Z]: (s(s(X,s(s(Y,X),X)),Z) = s(s(X,s(X,s(Y,Z))),Z))))",
+  "![X]: (![Y]: (![Z]: (s(X,s(s(X,Y),Z)) = s(X,s(X,s(X,s(s(Z,Y),Z)))))))",
+  "![X]: (![Y]: (![Z]: (s(s(s(X,s(s(X,Y),X)),Z),X) = s(s(Z,s(X,Y)),X))))"
+ ]
+}

@@ -1,0 +1,265 @@
+[   15.2s] calibrate ba_sheffer 5-8: empty-library rate 0.5
+[   32.2s] calibrate ba_sheffer 6-9: empty-library rate 0.25
+[   41.8s] calibrate ba_sheffer 7-10: empty-library rate 0.6
+[   51.2s] calibrate ba_sheffer 8-11: empty-library rate 0.6
+[   58.3s] calibrate ba_sheffer: range [5, 8], exhaust cpu 6.29s -> budget 1.57s
+[   71.1s] calibrate ba_huntington 5-8: empty-library rate 0.8
+[   79.9s] calibrate ba_huntington 6-9: empty-library rate 0.75
+[   88.9s] calibrate ba_huntington 7-10: empty-library rate 0.75
+[   97.3s] calibrate ba_huntington 8-11: empty-library rate 0.75
+[  101.1s] calibrate ba_huntington: range [6, 9], exhaust cpu 2.63s -> budget 1.0s
+[  152.1s] train ba_sheffer@101 fixed: library 27, dev 7/10
+[  160.0s] train ba_sheffer@101 random: library 27, dev 6/10
+[  165.7s] train ba_sheffer@101 heuristic: library 27, dev 7/10
+[  174.3s] train ba_sheffer@102 fixed: library 26, dev 6/10
+[  182.1s] train ba_sheffer@102 random: library 29, dev 6/10
+[  190.6s] train ba_sheffer@102 heuristic: library 26, dev 6/10
+[  198.7s] train ba_sheffer@103 fixed: library 28, dev 7/10
+[  203.9s] train ba_sheffer@103 random: library 23, dev 7/10
+[  213.2s] train ba_sheffer@103 heuristic: library 28, dev 7/10
+[  215.2s] train ba_huntington@101 fixed: library 52, dev 10/10
+[  217.0s] train ba_huntington@101 random: library 23, dev 10/10
+[  219.1s] train ba_huntington@101 heuristic: library 49, dev 10/10
+[  221.1s] train ba_huntington@102 fixed: library 53, dev 10/10
+[  222.6s] train ba_huntington@102 random: library 34, dev 10/10
+[  224.3s] train ba_huntington@102 heuristic: library 48, dev 10/10
+[  225.9s] train ba_huntington@103 fixed: library 39, dev 10/10
+[  235.1s] train ba_huntington@103 random: library 1, dev 3/10
+[  237.2s] train ba_huntington@103 heuristic: library 40, dev 10/10
+[  241.3s] learned policy frozen ab778f98b521f594: 646 examples, 311 positive
+[  270.8s] ba_sheffer@201 fixed: successor 16/25 (empty 15), library 28, tried 29
+[  286.1s] ba_sheffer@201 random: successor 14/25 (empty 15), library 9, tried 16
+[  299.2s] ba_sheffer@201 heuristic: successor 16/25 (empty 15), library 28, tried 29
+[  317.7s] ba_sheffer@201 bandit: successor 16/25 (empty 15), library 13, tried 17
+[  331.2s] ba_sheffer@201 learned: successor 16/25 (empty 15), library 79, tried 94
+[  365.2s] ba_sheffer@202 fixed: successor 13/25 (empty 13), library 28, tried 29
+[  382.1s] ba_sheffer@202 random: successor 13/25 (empty 13), library 60, tried 78
+[  400.0s] ba_sheffer@202 heuristic: successor 13/25 (empty 13), library 28, tried 29
+[  416.2s] ba_sheffer@202 bandit: successor 13/25 (empty 13), library 13, tried 17
+[  433.9s] ba_sheffer@202 learned: successor 13/25 (empty 13), library 68, tried 78
+[  464.4s] ba_sheffer@203 fixed: successor 15/25 (empty 14), library 28, tried 29
+[  477.8s] ba_sheffer@203 random: successor 15/25 (empty 14), library 40, tried 51
+[  493.7s] ba_sheffer@203 heuristic: successor 15/25 (empty 14), library 28, tried 29
+[  506.5s] ba_sheffer@203 bandit: successor 16/25 (empty 14), library 14, tried 18
+[  522.5s] ba_sheffer@203 learned: successor 15/25 (empty 14), library 61, tried 70
+[  552.6s] ba_sheffer@204 fixed: successor 15/25 (empty 14), library 28, tried 31
+[  567.6s] ba_sheffer@204 random: successor 15/25 (empty 14), library 20, tried 28
+[  582.3s] ba_sheffer@204 heuristic: successor 15/25 (empty 14), library 28, tried 31
+[  595.4s] ba_sheffer@204 bandit: successor 15/25 (empty 14), library 25, tried 32
+[  610.5s] ba_sheffer@204 learned: successor 15/25 (empty 14), library 66, tried 80
+[  620.7s] ba_huntington@201 fixed: successor 25/25 (empty 23), library 51, tried 53
+[  623.4s] ba_huntington@201 random: successor 25/25 (empty 23), library 49, tried 59
+[  626.0s] ba_huntington@201 heuristic: successor 25/25 (empty 23), library 44, tried 46
+[  628.4s] ba_huntington@201 bandit: successor 25/25 (empty 23), library 38, tried 43
+[  631.3s] ba_huntington@201 learned: successor 25/25 (empty 23), library 49, tried 50
+[  640.0s] ba_huntington@202 fixed: successor 25/25 (empty 24), library 52, tried 55
+[  642.2s] ba_huntington@202 random: successor 25/25 (empty 24), library 40, tried 48
+[  644.8s] ba_huntington@202 heuristic: successor 25/25 (empty 24), library 54, tried 57
+[  648.2s] ba_huntington@202 bandit: successor 24/25 (empty 24), library 50, tried 56
+[  651.8s] ba_huntington@202 learned: successor 25/25 (empty 24), library 40, tried 42
+[  662.9s] ba_huntington@203 fixed: successor 25/25 (empty 22), library 55, tried 56
+[  665.2s] ba_huntington@203 random: successor 25/25 (empty 22), library 51, tried 58
+[  667.8s] ba_huntington@203 heuristic: successor 25/25 (empty 22), library 56, tried 57
+[  670.5s] ba_huntington@203 bandit: successor 25/25 (empty 22), library 53, tried 57
+[  673.4s] ba_huntington@203 learned: successor 25/25 (empty 22), library 49, tried 51
+[  686.9s] ba_huntington@204 fixed: successor 24/25 (empty 20), library 58, tried 63
+[  704.0s] ba_huntington@204 random: successor 11/25 (empty 20), library 1, tried 2
+[  707.1s] ba_huntington@204 heuristic: successor 25/25 (empty 20), library 42, tried 46
+[  710.0s] ba_huntington@204 bandit: successor 25/25 (empty 20), library 42, tried 48
+[  714.7s] ba_huntington@204 learned: successor 25/25 (empty 20), library 54, tried 59
+[  714.7s] E3: {'independent_runs_per_policy': 8, 'wins_ties_losses_vs_fixed': [1, 7, 0], 'mean_learned_minus_fixed': 0.125, 'mean_learned_minus_best_baseline': -0.125, 'mean_successor': {'fixed': 19.75, 'random': 17.875, 'heuristic': 19.875, 'bandit': 19.875, 'learned': 19.875, 'empty': 18.125}, 'claim': 'better-improver: explicitly UNESTABLISHED (DEV research runs only; no sealed panels, no custodian)'}
+[  754.5s] w18 ba_sheffer@201: macro 16 vs uncompressed 16 of 25
+[  787.6s] w18 ba_sheffer@202: macro 13 vs uncompressed 13 of 25
+[  817.1s] w18 ba_sheffer@203: macro 16 vs uncompressed 15 of 25
+[  844.6s] w18 ba_sheffer@204: macro 15 vs uncompressed 15 of 25
+[  855.7s] w18 ba_huntington@201: macro 25 vs uncompressed 25 of 25
+[  860.5s] w18 ba_huntington@202: macro 24 vs uncompressed 25 of 25
+[  864.8s] w18 ba_huntington@203: macro 25 vs uncompressed 25 of 25
+[  869.4s] w18 ba_huntington@204: macro 25 vs uncompressed 25 of 25
+[ 1025.7s] w18 transfer to ba_wolfram: macro 0 (0 lemmas) vs uncompressed 6 (89 lemmas) vs empty 0 of 15
+[ 1076.8s] w20 ba_sheffer@201: memory 0 (usable 0, excluded 0), {'none': 16, 'retrieval': 16, 'replay_all': 16, 'curriculum': 16}
+[ 1146.2s] w20 ba_sheffer@202: memory 28 (usable 28, excluded 0), {'none': 13, 'retrieval': 13, 'replay_all': 13, 'curriculum': 13}
+[ 1217.3s] w20 ba_sheffer@203: memory 16 (usable 16, excluded 0), {'none': 15, 'retrieval': 15, 'replay_all': 16, 'curriculum': 14}
+[ 1277.5s] w20 ba_sheffer@204: memory 16 (usable 16, excluded 0), {'none': 15, 'retrieval': 15, 'replay_all': 15, 'curriculum': 15}
+[ 1284.5s] w20 ba_huntington@201: memory 0 (usable 0, excluded 0), {'none': 25, 'retrieval': 25, 'replay_all': 25, 'curriculum': 25}
+[ 1292.4s] w20 ba_huntington@202: memory 45 (usable 43, excluded 2), {'none': 25, 'retrieval': 25, 'replay_all': 25, 'curriculum': 25}
+[ 1301.2s] w20 ba_huntington@203: memory 16 (usable 16, excluded 0), {'none': 25, 'retrieval': 25, 'replay_all': 24, 'curriculum': 25}
+[ 1309.9s] w20 ba_huntington@204: memory 16 (usable 16, excluded 0), {'none': 25, 'retrieval': 25, 'replay_all': 25, 'curriculum': 25}
+[ 1385.8s] lean ba_sheffer fixed: THEOREM_CHECKED (11 chained lemmas)
+[ 1389.7s] lean ba_sheffer fixed: THEOREM_CHECKED (1 chained lemmas)
+[ 1401.1s] lean ba_sheffer fixed: THEOREM_CHECKED (11 chained lemmas)
+[ 1405.1s] lean ba_sheffer fixed: THEOREM_CHECKED (1 chained lemmas)
+[ 1415.6s] lean ba_sheffer fixed: THEOREM_CHECKED (7 chained lemmas)
+[ 1424.9s] lean ba_sheffer fixed: THEOREM_CHECKED (5 chained lemmas)
+[ 1436.1s] lean ba_sheffer fixed: THEOREM_CHECKED (13 chained lemmas)
+[ 1443.7s] lean ba_sheffer fixed: THEOREM_CHECKED (5 chained lemmas)
+[ 1457.1s] lean ba_sheffer fixed: THEOREM_CHECKED (11 chained lemmas)
+[ 1467.5s] lean ba_sheffer fixed: THEOREM_CHECKED (7 chained lemmas)
+[ 1481.9s] lean ba_sheffer fixed: THEOREM_CHECKED (14 chained lemmas)
+[ 1492.4s] lean ba_sheffer fixed: THEOREM_CHECKED (7 chained lemmas)
+[ 1504.2s] lean ba_sheffer fixed: THEOREM_CHECKED (11 chained lemmas)
+[ 1516.2s] lean ba_sheffer fixed: THEOREM_CHECKED (12 chained lemmas)
+[ 1529.3s] lean ba_sheffer fixed: THEOREM_CHECKED (12 chained lemmas)
+[ 1541.8s] lean ba_sheffer fixed: THEOREM_CHECKED (11 chained lemmas)
+[ 1549.8s] lean ba_sheffer learned: THEOREM_CHECKED (11 chained lemmas)
+[ 1558.7s] lean ba_sheffer learned: THEOREM_CHECKED (10 chained lemmas)
+[ 1564.9s] lean ba_sheffer learned: THEOREM_CHECKED (6 chained lemmas)
+[ 1568.8s] lean ba_sheffer learned: THEOREM_CHECKED (2 chained lemmas)
+[ 1576.4s] lean ba_sheffer learned: THEOREM_CHECKED (8 chained lemmas)
+[ 1581.5s] lean ba_sheffer learned: THEOREM_CHECKED (3 chained lemmas)
+[ 1585.4s] lean ba_sheffer learned: THEOREM_CHECKED (2 chained lemmas)
+[ 1598.6s] lean ba_sheffer learned: THEOREM_CHECKED (25 chained lemmas)
+[ 1605.9s] lean ba_sheffer learned: THEOREM_CHECKED (8 chained lemmas)
+[ 1612.9s] lean ba_sheffer learned: THEOREM_CHECKED (8 chained lemmas)
+[ 1624.4s] lean ba_sheffer learned: THEOREM_CHECKED (17 chained lemmas)
+[ 1632.2s] lean ba_sheffer learned: THEOREM_CHECKED (8 chained lemmas)
+[ 1640.3s] lean ba_sheffer learned: THEOREM_CHECKED (11 chained lemmas)
+[ 1648.3s] lean ba_sheffer learned: THEOREM_CHECKED (8 chained lemmas)
+[ 1655.5s] lean ba_sheffer learned: THEOREM_CHECKED (8 chained lemmas)
+[ 1663.9s] lean ba_sheffer learned: THEOREM_CHECKED (10 chained lemmas)
+[ 1682.2s] lean ba_huntington fixed: THEOREM_CHECKED (9 chained lemmas)
+[ 1701.6s] lean ba_huntington fixed: THEOREM_CHECKED (15 chained lemmas)
+[ 1720.7s] lean ba_huntington fixed: THEOREM_CHECKED (7 chained lemmas)
+[ 1738.9s] lean ba_huntington fixed: THEOREM_CHECKED (9 chained lemmas)
+[ 1763.1s] lean ba_huntington fixed: THEOREM_CHECKED (10 chained lemmas)
+[ 1780.0s] lean ba_huntington fixed: THEOREM_CHECKED (4 chained lemmas)
+[ 1797.5s] lean ba_huntington fixed: THEOREM_CHECKED (8 chained lemmas)
+[ 1816.6s] lean ba_huntington fixed: THEOREM_CHECKED (9 chained lemmas)
+[ 1834.1s] lean ba_huntington fixed: THEOREM_CHECKED (4 chained lemmas)
+[ 1852.6s] lean ba_huntington fixed: THEOREM_CHECKED (4 chained lemmas)
+[ 1870.5s] lean ba_huntington fixed: THEOREM_CHECKED (4 chained lemmas)
+[ 1919.3s] lean ba_huntington fixed: NOT_REPLAYED (13 chained lemmas)
+[ 1938.2s] lean ba_huntington fixed: THEOREM_CHECKED (7 chained lemmas)
+[ 1956.5s] lean ba_huntington fixed: THEOREM_CHECKED (7 chained lemmas)
+[ 1975.3s] lean ba_huntington fixed: THEOREM_CHECKED (12 chained lemmas)
+[ 1999.6s] lean ba_huntington fixed: THEOREM_CHECKED (18 chained lemmas)
+[ 2024.2s] lean ba_huntington fixed: THEOREM_CHECKED (12 chained lemmas)
+[ 2049.4s] lean ba_huntington fixed: THEOREM_CHECKED (9 chained lemmas)
+[ 2066.7s] lean ba_huntington learned: THEOREM_CHECKED (3 chained lemmas)
+[ 2083.4s] lean ba_huntington learned: THEOREM_CHECKED (3 chained lemmas)
+[ 2103.6s] lean ba_huntington learned: THEOREM_CHECKED (8 chained lemmas)
+[ 2119.3s] lean ba_huntington learned: THEOREM_CHECKED (3 chained lemmas)
+[ 2141.4s] lean ba_huntington learned: THEOREM_CHECKED (8 chained lemmas)
+[ 2156.5s] lean ba_huntington learned: THEOREM_CHECKED (1 chained lemmas)
+[ 2180.6s] lean ba_huntington learned: THEOREM_CHECKED (12 chained lemmas)
+[ 2203.0s] lean ba_huntington learned: THEOREM_CHECKED (4 chained lemmas)
+[ 2220.6s] lean ba_huntington learned: THEOREM_CHECKED (1 chained lemmas)
+[ 2237.2s] lean ba_huntington learned: THEOREM_CHECKED (1 chained lemmas)
+[ 2255.7s] lean ba_huntington learned: THEOREM_CHECKED (1 chained lemmas)
+[ 2281.4s] lean ba_huntington learned: THEOREM_CHECKED (19 chained lemmas)
+[ 2300.6s] lean ba_huntington learned: THEOREM_CHECKED (5 chained lemmas)
+[ 2319.7s] lean ba_huntington learned: THEOREM_CHECKED (3 chained lemmas)
+[ 2352.7s] lean ba_huntington learned: THEOREM_CHECKED (16 chained lemmas)
+[ 2384.4s] lean ba_huntington learned: THEOREM_CHECKED (15 chained lemmas)
+[ 2417.2s] lean ba_huntington learned: THEOREM_CHECKED (16 chained lemmas)
+[ 2457.3s] lean ba_huntington learned: THEOREM_CHECKED (19 chained lemmas)
+{
+ "calibration": {
+  "ba_sheffer": {
+   "chosen_range": [
+    5,
+    8
+   ],
+   "budget_s": 1.57
+  },
+  "ba_huntington": {
+   "chosen_range": [
+    6,
+    9
+   ],
+   "budget_s": 1.0
+  }
+ },
+ "e3": {
+  "independent_runs_per_policy": 8,
+  "wins_ties_losses_vs_fixed": [
+   1,
+   7,
+   0
+  ],
+  "mean_learned_minus_fixed": 0.125,
+  "mean_learned_minus_best_baseline": -0.125,
+  "mean_successor": {
+   "fixed": 19.75,
+   "random": 17.875,
+   "heuristic": 19.875,
+   "bandit": 19.875,
+   "learned": 19.875,
+   "empty": 18.125
+  },
+  "claim": "better-improver: explicitly UNESTABLISHED (DEV research runs only; no sealed panels, no custodian)"
+ },
+ "w18": {
+  "macros": {
+   "ba_sheffer": {
+    "steps": 46,
+    "faithful": true,
+    "induction_cpu_s": 8.56,
+    "description_length": {
+     "trajectory": 4046,
+     "macro": 1864
+    },
+    "revocation": {
+     "invalidated": 46,
+     "remaining_steps": 0,
+     "expanded_after_revocation": 0
+    }
+   },
+   "ba_huntington": {
+    "steps": 27,
+    "faithful": true,
+    "induction_cpu_s": 4.31,
+    "description_length": {
+     "trajectory": 4870,
+     "macro": 1164
+    },
+    "revocation": {
+     "invalidated": 27,
+     "remaining_steps": 0,
+     "expanded_after_revocation": 0
+    }
+   }
+  },
+  "same_system_macro_minus_uncompressed": [
+   0,
+   0,
+   1,
+   0,
+   0,
+   -1,
+   0,
+   0
+  ],
+  "wolfram": {
+   "targets": 15,
+   "empty": 0,
+   "macro_successor": 0,
+   "macro_lemmas": 0,
+   "uncompressed_successor": 6,
+   "uncompressed_lemmas": 89,
+   "budget_s": 240,
+   "induction_charge_cpu_s": 8.56
+  }
+ },
+ "w20": {
+  "runs": 8,
+  "mean_scores": {
+   "none": 19.875,
+   "retrieval": 19.875,
+   "replay_all": 19.875,
+   "curriculum": 19.75
+  },
+  "excluded": {
+   "EXACT": 0,
+   "INSTANCE": 2
+  }
+ },
+ "lean": {
+  "target_proofs_with_lemmas": 68,
+  "checked": 67,
+  "chained_lemmas": 583
+ },
+ "policy_weights_sha256": "ab778f98b521f594f34e8114d8fb1c4d78903270a0330dc6a6953be9cf3fba82",
+ "wall_seconds": 2457.3
+}
+rc=0

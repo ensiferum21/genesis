@@ -1,0 +1,696 @@
+{
+ "empty": 0,
+ "policies": {
+  "bandit": {
+   "eval_rows": [
+    {
+     "lemmas_used": [],
+     "premise_ids": [],
+     "proof": null,
+     "status": "ERROR",
+     "target": "![X]: (![Y]: (![Z]: (s(s(s(X,Y),X),s(Z,Y)) = s(s(Z,Y),s(s(X,Y),X)))))"
+    },
+    {
+     "lemmas_used": [],
+     "premise_ids": [],
+     "proof": null,
+     "status": "ERROR",
+     "target": "![X]: (![Y]: (![Z]: (s(X,s(s(s(X,Y),Y),X)) = s(Y,s(Y,s(s(Z,Z),Z))))))"
+    },
+    {
+     "lemmas_used": [],
+     "premise_ids": [],
+     "proof": null,
+     "status": "ERROR",
+     "target": "![X]: (![Y]: (![Z]: (s(s(X,Y),s(s(s(Y,Z),Z),Z)) = s(s(Y,X),s(Z,Y)))))"
+    },
+    {
+     "lemmas_used": [],
+     "premise_ids": [],
+     "proof": null,
+     "status": "ERROR",
+     "target": "![X]: (![Y]: (![Z]: (s(X,s(X,s(s(Y,Z),X))) = s(X,s(Z,s(s(X,Y),Z))))))"
+    },
+    {
+     "lemmas_used": [],
+     "premise_ids": [],
+     "proof": null,
+     "status": "ERROR",
+     "target": "![X]: (![Y]: (![Z]: (s(s(s(X,X),s(Y,Y)),Z) = s(Z,s(s(X,Z),s(Y,Z))))))"
+    },
+    {
+     "lemmas_used": [],
+     "premise_ids": [],
+     "proof": null,
+     "status": "ERROR",
+     "target": "![X]: (![Y]: (![Z]: (s(s(s(X,s(Y,s(Z,Y))),Y),X) = s(s(s(X,Z),Y),X))))"
+    },
+    {
+     "lemmas_used": [],
+     "premise_ids": [],
+     "proof": null,
+     "status": "ERROR",
+     "target": "![X]: (![Y]: (![Z]: (s(s(s(X,X),Y),s(Z,Y)) = s(s(Y,Z),s(s(X,Y),Y)))))"
+    },
+    {
+     "lemmas_used": [],
+     "premise_ids": [],
+     "proof": null,
+     "status": "ERROR",
+     "target": "![X]: (![Y]: (![Z]: (s(s(X,s(Y,Y)),Z) = s(Z,s(s(Y,Y),s(Z,s(Z,X)))))))"
+    },
+    {
+     "lemmas_used": [],
+     "premise_ids": [],
+     "proof": null,
+     "status": "ERROR",
+     "target": "![X]: (![Y]: (![Z]: (s(s(s(X,Y),Y),s(Z,Y)) = s(s(Z,Y),s(Y,s(X,Y))))))"
+    },
+    {
+     "lemmas_used": [],
+     "premise_ids": [],
+     "proof": null,
+     "status": "ERROR",
+     "target": "![X]: (![Y]: (![Z]: (s(s(X,s(s(Y,Z),s(Y,Y))),Y) = s(Y,s(Y,X)))))"
+    },
+    {
+     "lemmas_used": [],
+     "premise_ids": [],
+     "proof": null,
+     "status": "ERROR",
+     "target": "![X]: (![Y]: (![Z]: (s(s(s(s(X,Y),X),Z),X) = s(X,s(Y,s(Y,s(Y,Z)))))))"
+    },
+    {
+     "lemmas_used": [],
+     "premise_ids": [],
+     "proof": null,
+     "status": "ERROR",
+     "target": "![X]: (![Y]: (![Z]: (s(s(X,s(Y,s(Y,X))),Z) = s(Z,s(s(Y,s(Z,Y)),X)))))"
+    },
+    {
+     "lemmas_used": [],
+     "premise_ids": [],
+     "proof": null,
+     "status": "ERROR",
+     "target": "![X]: (![Y]: (s(s(X,s(Y,s(Y,X))),Y) = s(Y,s(X,s(s(X,Y),X)))))"
+    },
+    {
+     "lemmas_used": [],
+     "premise_ids": [],
+     "proof": null,
+     "status": "ERROR",
+     "target": "![X]: (![Y]: (![Z]: (s(s(s(s(X,X),X),Y),Z) = s(Z,s(s(s(Z,Y),Z),Y)))))"
+    },
+    {
+     "lemmas_used": [],
+     "premise_ids": [],
+     "proof": null,
+     "status": "ERROR",
+     "target": "![X]: (![Y]: (![Z]: (s(X,s(s(X,s(Y,Y)),Z)) = s(X,s(Z,Y)))))"
+    }
+   ],
+   "lemmas_used": [],
+   "library": 0,
+   "library_entries": null,
+   "library_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+   "research_cpu_s": 4.89,
+   "successor_proved": 0,
+   "tried": 1
+  },
+  "fixed": {
+   "eval_rows": [
+    {
+     "lemmas_used": [],
+     "premise_ids": [],
+     "proof": null,
+     "status": "ERROR",
+     "target": "![X]: (![Y]: (![Z]: (s(s(s(X,Y),X),s(Z,Y)) = s(s(Z,Y),s(s(X,Y),X)))))"
+    },
+    {
+     "lemmas_used": [],
+     "premise_ids": [],
+     "proof": null,
+     "status": "ERROR",
+     "target": "![X]: (![Y]: (![Z]: (s(X,s(s(s(X,Y),Y),X)) = s(Y,s(Y,s(s(Z,Z),Z))))))"
+    },
+    {
+     "lemmas_used": [],
+     "premise_ids": [],
+     "proof": null,
+     "status": "ERROR",
+     "target": "![X]: (![Y]: (![Z]: (s(s(X,Y),s(s(s(Y,Z),Z),Z)) = s(s(Y,X),s(Z,Y)))))"
+    },
+    {
+     "lemmas_used": [],
+     "premise_ids": [],
+     "proof": null,
+     "status": "ERROR",
+     "target": "![X]: (![Y]: (![Z]: (s(X,s(X,s(s(Y,Z),X))) = s(X,s(Z,s(s(X,Y),Z))))))"
+    },
+    {
+     "lemmas_used": [],
+     "premise_ids": [],
+     "proof": null,
+     "status": "ERROR",
+     "target": "![X]: (![Y]: (![Z]: (s(s(s(X,X),s(Y,Y)),Z) = s(Z,s(s(X,Z),s(Y,Z))))))"
+    },
+    {
+     "lemmas_used": [],
+     "premise_ids": [],
+     "proof": null,
+     "status": "ERROR",
+     "target": "![X]: (![Y]: (![Z]: (s(s(s(X,s(Y,s(Z,Y))),Y),X) = s(s(s(X,Z),Y),X))))"
+    },
+    {
+     "lemmas_used": [],
+     "premise_ids": [],
+     "proof": null,
+     "status": "ERROR",
+     "target": "![X]: (![Y]: (![Z]: (s(s(s(X,X),Y),s(Z,Y)) = s(s(Y,Z),s(s(X,Y),Y)))))"
+    },
+    {
+     "lemmas_used": [],
+     "premise_ids": [],
+     "proof": null,
+     "status": "ERROR",
+     "target": "![X]: (![Y]: (![Z]: (s(s(X,s(Y,Y)),Z) = s(Z,s(s(Y,Y),s(Z,s(Z,X)))))))"
+    },
+    {
+     "lemmas_used": [],
+     "premise_ids": [],
+     "proof": null,
+     "status": "ERROR",
+     "target": "![X]: (![Y]: (![Z]: (s(s(s(X,Y),Y),s(Z,Y)) = s(s(Z,Y),s(Y,s(X,Y))))))"
+    },
+    {
+     "lemmas_used": [],
+     "premise_ids": [],
+     "proof": null,
+     "status": "ERROR",
+     "target": "![X]: (![Y]: (![Z]: (s(s(X,s(s(Y,Z),s(Y,Y))),Y) = s(Y,s(Y,X)))))"
+    },
+    {
+     "lemmas_used": [],
+     "premise_ids": [],
+     "proof": null,
+     "status": "ERROR",
+     "target": "![X]: (![Y]: (![Z]: (s(s(s(s(X,Y),X),Z),X) = s(X,s(Y,s(Y,s(Y,Z)))))))"
+    },
+    {
+     "lemmas_used": [],
+     "premise_ids": [],
+     "proof": null,
+     "status": "ERROR",
+     "target": "![X]: (![Y]: (![Z]: (s(s(X,s(Y,s(Y,X))),Z) = s(Z,s(s(Y,s(Z,Y)),X)))))"
+    },
+    {
+     "lemmas_used": [],
+     "premise_ids": [],
+     "proof": null,
+     "status": "ERROR",
+     "target": "![X]: (![Y]: (s(s(X,s(Y,s(Y,X))),Y) = s(Y,s(X,s(s(X,Y),X)))))"
+    },
+    {
+     "lemmas_used": [],
+     "premise_ids": [],
+     "proof": null,
+     "status": "ERROR",
+     "target": "![X]: (![Y]: (![Z]: (s(s(s(s(X,X),X),Y),Z) = s(Z,s(s(s(Z,Y),Z),Y)))))"
+    },
+    {
+     "lemmas_used": [],
+     "premise_ids": [],
+     "proof": null,
+     "status": "ERROR",
+     "target": "![X]: (![Y]: (![Z]: (s(X,s(s(X,s(Y,Y)),Z)) = s(X,s(Z,Y)))))"
+    }
+   ],
+   "lemmas_used": [],
+   "library": 0,
+   "library_entries": [],
+   "library_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+   "research_cpu_s": 4.73,
+   "successor_proved": 0,
+   "tried": 1
+  },
+  "heuristic": {
+   "eval_rows": [
+    {
+     "lemmas_used": [],
+     "premise_ids": [],
+     "proof": null,
+     "status": "ERROR",
+     "target": "![X]: (![Y]: (![Z]: (s(s(s(X,Y),X),s(Z,Y)) = s(s(Z,Y),s(s(X,Y),X)))))"
+    },
+    {
+     "lemmas_used": [],
+     "premise_ids": [],
+     "proof": null,
+     "status": "ERROR",
+     "target": "![X]: (![Y]: (![Z]: (s(X,s(s(s(X,Y),Y),X)) = s(Y,s(Y,s(s(Z,Z),Z))))))"
+    },
+    {
+     "lemmas_used": [],
+     "premise_ids": [],
+     "proof": null,
+     "status": "ERROR",
+     "target": "![X]: (![Y]: (![Z]: (s(s(X,Y),s(s(s(Y,Z),Z),Z)) = s(s(Y,X),s(Z,Y)))))"
+    },
+    {
+     "lemmas_used": [],
+     "premise_ids": [],
+     "proof": null,
+     "status": "ERROR",
+     "target": "![X]: (![Y]: (![Z]: (s(X,s(X,s(s(Y,Z),X))) = s(X,s(Z,s(s(X,Y),Z))))))"
+    },
+    {
+     "lemmas_used": [],
+     "premise_ids": [],
+     "proof": null,
+     "status": "ERROR",
+     "target": "![X]: (![Y]: (![Z]: (s(s(s(X,X),s(Y,Y)),Z) = s(Z,s(s(X,Z),s(Y,Z))))))"
+    },
+    {
+     "lemmas_used": [],
+     "premise_ids": [],
+     "proof": null,
+     "status": "ERROR",
+     "target": "![X]: (![Y]: (![Z]: (s(s(s(X,s(Y,s(Z,Y))),Y),X) = s(s(s(X,Z),Y),X))))"
+    },
+    {
+     "lemmas_used": [],
+     "premise_ids": [],
+     "proof": null,
+     "status": "ERROR",
+     "target": "![X]: (![Y]: (![Z]: (s(s(s(X,X),Y),s(Z,Y)) = s(s(Y,Z),s(s(X,Y),Y)))))"
+    },
+    {
+     "lemmas_used": [],
+     "premise_ids": [],
+     "proof": null,
+     "status": "ERROR",
+     "target": "![X]: (![Y]: (![Z]: (s(s(X,s(Y,Y)),Z) = s(Z,s(s(Y,Y),s(Z,s(Z,X)))))))"
+    },
+    {
+     "lemmas_used": [],
+     "premise_ids": [],
+     "proof": null,
+     "status": "ERROR",
+     "target": "![X]: (![Y]: (![Z]: (s(s(s(X,Y),Y),s(Z,Y)) = s(s(Z,Y),s(Y,s(X,Y))))))"
+    },
+    {
+     "lemmas_used": [],
+     "premise_ids": [],
+     "proof": null,
+     "status": "ERROR",
+     "target": "![X]: (![Y]: (![Z]: (s(s(X,s(s(Y,Z),s(Y,Y))),Y) = s(Y,s(Y,X)))))"
+    },
+    {
+     "lemmas_used": [],
+     "premise_ids": [],
+     "proof": null,
+     "status": "ERROR",
+     "target": "![X]: (![Y]: (![Z]: (s(s(s(s(X,Y),X),Z),X) = s(X,s(Y,s(Y,s(Y,Z)))))))"
+    },
+    {
+     "lemmas_used": [],
+     "premise_ids": [],
+     "proof": null,
+     "status": "ERROR",
+     "target": "![X]: (![Y]: (![Z]: (s(s(X,s(Y,s(Y,X))),Z) = s(Z,s(s(Y,s(Z,Y)),X)))))"
+    },
+    {
+     "lemmas_used": [],
+     "premise_ids": [],
+     "proof": null,
+     "status": "ERROR",
+     "target": "![X]: (![Y]: (s(s(X,s(Y,s(Y,X))),Y) = s(Y,s(X,s(s(X,Y),X)))))"
+    },
+    {
+     "lemmas_used": [],
+     "premise_ids": [],
+     "proof": null,
+     "status": "ERROR",
+     "target": "![X]: (![Y]: (![Z]: (s(s(s(s(X,X),X),Y),Z) = s(Z,s(s(s(Z,Y),Z),Y)))))"
+    },
+    {
+     "lemmas_used": [],
+     "premise_ids": [],
+     "proof": null,
+     "status": "ERROR",
+     "target": "![X]: (![Y]: (![Z]: (s(X,s(s(X,s(Y,Y)),Z)) = s(X,s(Z,Y)))))"
+    }
+   ],
+   "lemmas_used": [],
+   "library": 0,
+   "library_entries": null,
+   "library_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+   "research_cpu_s": 4.99,
+   "successor_proved": 0,
+   "tried": 1
+  },
+  "learned": {
+   "eval_rows": [
+    {
+     "lemmas_used": [],
+     "premise_ids": [],
+     "proof": null,
+     "status": "ERROR",
+     "target": "![X]: (![Y]: (![Z]: (s(s(s(X,Y),X),s(Z,Y)) = s(s(Z,Y),s(s(X,Y),X)))))"
+    },
+    {
+     "lemmas_used": [],
+     "premise_ids": [],
+     "proof": null,
+     "status": "ERROR",
+     "target": "![X]: (![Y]: (![Z]: (s(X,s(s(s(X,Y),Y),X)) = s(Y,s(Y,s(s(Z,Z),Z))))))"
+    },
+    {
+     "lemmas_used": [],
+     "premise_ids": [],
+     "proof": null,
+     "status": "ERROR",
+     "target": "![X]: (![Y]: (![Z]: (s(s(X,Y),s(s(s(Y,Z),Z),Z)) = s(s(Y,X),s(Z,Y)))))"
+    },
+    {
+     "lemmas_used": [],
+     "premise_ids": [],
+     "proof": null,
+     "status": "ERROR",
+     "target": "![X]: (![Y]: (![Z]: (s(X,s(X,s(s(Y,Z),X))) = s(X,s(Z,s(s(X,Y),Z))))))"
+    },
+    {
+     "lemmas_used": [],
+     "premise_ids": [],
+     "proof": null,
+     "status": "ERROR",
+     "target": "![X]: (![Y]: (![Z]: (s(s(s(X,X),s(Y,Y)),Z) = s(Z,s(s(X,Z),s(Y,Z))))))"
+    },
+    {
+     "lemmas_used": [],
+     "premise_ids": [],
+     "proof": null,
+     "status": "ERROR",
+     "target": "![X]: (![Y]: (![Z]: (s(s(s(X,s(Y,s(Z,Y))),Y),X) = s(s(s(X,Z),Y),X))))"
+    },
+    {
+     "lemmas_used": [],
+     "premise_ids": [],
+     "proof": null,
+     "status": "ERROR",
+     "target": "![X]: (![Y]: (![Z]: (s(s(s(X,X),Y),s(Z,Y)) = s(s(Y,Z),s(s(X,Y),Y)))))"
+    },
+    {
+     "lemmas_used": [],
+     "premise_ids": [],
+     "proof": null,
+     "status": "ERROR",
+     "target": "![X]: (![Y]: (![Z]: (s(s(X,s(Y,Y)),Z) = s(Z,s(s(Y,Y),s(Z,s(Z,X)))))))"
+    },
+    {
+     "lemmas_used": [],
+     "premise_ids": [],
+     "proof": null,
+     "status": "ERROR",
+     "target": "![X]: (![Y]: (![Z]: (s(s(s(X,Y),Y),s(Z,Y)) = s(s(Z,Y),s(Y,s(X,Y))))))"
+    },
+    {
+     "lemmas_used": [],
+     "premise_ids": [],
+     "proof": null,
+     "status": "ERROR",
+     "target": "![X]: (![Y]: (![Z]: (s(s(X,s(s(Y,Z),s(Y,Y))),Y) = s(Y,s(Y,X)))))"
+    },
+    {
+     "lemmas_used": [],
+     "premise_ids": [],
+     "proof": null,
+     "status": "ERROR",
+     "target": "![X]: (![Y]: (![Z]: (s(s(s(s(X,Y),X),Z),X) = s(X,s(Y,s(Y,s(Y,Z)))))))"
+    },
+    {
+     "lemmas_used": [],
+     "premise_ids": [],
+     "proof": null,
+     "status": "ERROR",
+     "target": "![X]: (![Y]: (![Z]: (s(s(X,s(Y,s(Y,X))),Z) = s(Z,s(s(Y,s(Z,Y)),X)))))"
+    },
+    {
+     "lemmas_used": [],
+     "premise_ids": [],
+     "proof": null,
+     "status": "ERROR",
+     "target": "![X]: (![Y]: (s(s(X,s(Y,s(Y,X))),Y) = s(Y,s(X,s(s(X,Y),X)))))"
+    },
+    {
+     "lemmas_used": [],
+     "premise_ids": [],
+     "proof": null,
+     "status": "ERROR",
+     "target": "![X]: (![Y]: (![Z]: (s(s(s(s(X,X),X),Y),Z) = s(Z,s(s(s(Z,Y),Z),Y)))))"
+    },
+    {
+     "lemmas_used": [],
+     "premise_ids": [],
+     "proof": null,
+     "status": "ERROR",
+     "target": "![X]: (![Y]: (![Z]: (s(X,s(s(X,s(Y,Y)),Z)) = s(X,s(Z,Y)))))"
+    }
+   ],
+   "lemmas_used": [],
+   "library": 0,
+   "library_entries": [],
+   "library_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+   "research_cpu_s": 4.86,
+   "successor_proved": 0,
+   "tried": 1
+  },
+  "random": {
+   "eval_rows": [
+    {
+     "lemmas_used": [
+      "L0",
+      "L1"
+     ],
+     "premise_ids": [
+      "L0",
+      "L1"
+     ],
+     "proof": "SZS output start CNFRefutation\nfof(ax1, axiom, ![X1, X2]:(s(s(s(X1,X2),X1),s(X1,X1))=X1), file('/tmp/genesis-e-gy00q68x/p.p', ax1)).\nfof(ax2, axiom, ![X1, X2]:(s(s(X1,X1),X1)=s(X2,s(X2,X2))), file('/tmp/genesis-e-gy00q68x/p.p', ax2)).\nfof(ax0, axiom, ![X1, X2, X3]:(s(s(s(X1,X2),X3),s(X1,s(s(X1,X3),X1)))=X3), file('/tmp/genesis-e-gy00q68x/p.p', ax0)).\nfof(goal, conjecture, ![X1, X2, X3]:(s(s(s(X1,X2),X1),s(X3,X2))=s(s(X3,X2),s(s(X1,X2),X1))), file('/tmp/genesis-e-gy00q68x/p.p', goal)).\nfof(c_0_4, plain, ![X7, X8]:(s(s(s(X7,X8),X7),s(X7,X7))=X7), inference(variable_rename,[status(thm)],[ax1])).\nfof(c_0_5, plain, ![X9, X10]:(s(s(X9,X9),X9)=s(X10,s(X10,X10))), inference(variable_rename,[status(thm)],[ax2])).\nfof(c_0_6, plain, ![X4, X5, X6]:(s(s(s(X4,X5),X6),s(X4,s(s(X4,X6),X4)))=X6), inference(variable_rename,[status(thm)],[ax0])).\ncnf(c_0_7, plain, (s(s(s(X1,X2),X1),s(X1,X1))=X1), inference(split_conjunct,[status(thm)],[c_0_4])).\ncnf(c_0_8, plain, (s(s(X1,X1),X1)=s(X2,s(X2,X2))), inference(split_conjunct,[status(thm)],[c_0_5])).\ncnf(c_0_9, plain, (s(s(s(X1,X2),X3),s(X1,s(s(X1,X3),X1)))=X3), inference(split_conjunct,[status(thm)],[c_0_6])).\ncnf(c_0_10, plain, (s(s(X1,s(X1,X1)),s(X2,X2))=X2), inference(spm,[status(thm)],[c_0_7, c_0_8])).\ncnf(c_0_11, plain, (s(s(s(X1,X2),X1),s(X1,s(X3,s(X3,X3))))=X1), inference(spm,[status(thm)],[c_0_9, c_0_8])).\ncnf(c_0_12, plain, (s(s(s(s(X1,X1),X2),X1),s(s(X1,X1),X1))=X1), inference(rw,[status(thm)],[inference(spm,[status(thm)],[c_0_9, c_0_8]), c_0_10])).\ncnf(c_0_13, plain, (s(s(X1,s(X1,X1)),s(X2,s(X3,s(X3,X3))))=X2), inference(spm,[status(thm)],[c_0_11, c_0_8])).\ncnf(c_0_14, plain, (s(s(s(s(X1,X1),X2),X1),s(X3,s(X3,X3)))=X1), inference(spm,[status(thm)],[c_0_12, c_0_8])).\ncnf(c_0_15, plain, (s(X1,s(X1,X1))=s(X2,s(X2,X2))), inference(spm,[status(thm)],[c_0_8, c_0_8])).\ncnf(c_0_16, plain, (s(s(X1,X2),s(s(X3,s(X3,X3)),X2))=X2), inference(rw,[status(thm)],[inference(spm,[status(thm)],[c_0_9, c_0_13]), c_0_13])).\ncnf(c_0_17, plain, (s(s(s(X1,s(X1,X1)),X2),s(X3,s(X3,X3)))=X2), inference(spm,[status(thm)],[c_0_14, c_0_15])).\ncnf(c_0_18, plain, (s(s(X1,X2),s(s(X3,X1),s(s(s(X3,X1),X2),s(X3,X1))))=X2), inference(spm,[status(thm)],[c_0_9, c_0_16])).\ncnf(c_0_19, plain, (s(s(X1,X1),s(X2,s(X2,X2)))=X1), inference(spm,[status(thm)],[c_0_14, c_0_16])).\ncnf(c_0_20, plain, (s(s(X1,X2),s(X2,X2))=X2), inference(rw,[status(thm)],[inference(rw,[status(thm)],[inference(spm,[status(thm)],[c_0_16, c_0_16]), c_0_10]), c_0_10])).\ncnf(c_0_21, plain, (s(X1,s(X2,s(s(X2,s(X1,X1)),X2)))=s(X1,X1)), inference(spm,[status(thm)],[c_0_9, c_0_10])).\ncnf(c_0_22, plain, (s(s(X1,X2),s(X2,s(X1,X2)))=X2), inference(rw,[status(thm)],[inference(rw,[status(thm)],[inference(spm,[status(thm)],[c_0_17, c_0_18]), c_0_19]), c_0_20])).\ncnf(c_0_23, plain, (s(s(X1,X1),s(X2,s(s(X2,X1),X2)))=X1), inference(spm,[status(thm)],[c_0_21, c_0_20])).\ncnf(c_0_24, plain, (s(s(X1,s(X2,X1)),X1)=s(X2,X1)), inference(spm,[status(thm)],[c_0_22, c_0_22])).\ncnf(c_0_25, plain, (s(s(X1,X1),s(X2,X1))=X1), inference(rw,[status(thm)],[inference(rw,[status(thm)],[inference(spm,[status(thm)],[c_0_23, c_0_24]), c_0_22]), c_0_24])).\ncnf(c_0_26, plain, (s(X1,s(s(X2,X3),s(s(s(X2,X3),s(X2,s(s(X2,X1),X2))),s(X2,X3))))=s(X2,s(s(X2,X1),X2))), inference(spm,[status(thm)],[c_0_9, c_0_9])).\ncnf(c_0_27, plain, (s(X1,s(X1,s(X2,X1)))=s(X2,X1)), inference(rw,[status(thm)],[inference(spm,[status(thm)],[c_0_9, c_0_25]), c_0_24])).\ncnf(c_0_28, plain, (s(X1,s(s(X2,X1),X1))=s(X2,X1)), inference(spm,[status(thm)],[c_0_22, c_0_25])).\nfof(c_0_29, negated_conjecture, ~(![X1, X2, X3]:(s(s(s(X1,X2),X1),s(X3,X2))=s(s(X3,X2),s(s(X1,X2),X1)))), inference(assume_negation,[status(cth)],[goal])).\ncnf(c_0_30, plain, (s(X1,s(s(X1,X2),X1))=s(X2,X1)), inference(rw,[status(thm)],[inference(rw,[status(thm)],[inference(rw,[status(thm)],[inference(spm,[status(thm)],[c_0_26, c_0_9]), c_0_27]), c_0_28]), c_0_22])).\nfof(c_0_31, negated_conjecture, s(s(s(esk1_0,esk2_0),esk1_0),s(esk3_0,esk2_0))!=s(s(esk3_0,esk2_0),s(s(esk1_0,esk2_0),esk1_0)), inference(fof_nnf,[status(thm)],[inference(skolemize,[status(esa)],[inference(variable_rename,[status(thm)],[inference(fof_nnf,[status(thm)],[c_0_29])])])])).\ncnf(c_0_32, plain, (s(s(X1,X1),s(X1,X2))=X1), inference(rw,[status(thm)],[c_0_23, c_0_30])).\ncnf(c_0_33, negated_conjecture, (s(s(s(esk1_0,esk2_0),esk1_0),s(esk3_0,esk2_0))!=s(s(esk3_0,esk2_0),s(s(esk1_0,esk2_0),esk1_0))), inference(split_conjunct,[status(thm)],[c_0_31])).\ncnf(c_0_34, plain, (s(X1,X2)=s(X2,X1)), inference(rw,[status(thm)],[inference(spm,[status(thm)],[c_0_22, c_0_32]), c_0_30])).\ncnf(c_0_35, negated_conjecture, ($false), inference(cn,[status(thm)],[inference(rw,[status(thm)],[inference(rw,[status(thm)],[inference(rw,[status(thm)],[inference(rw,[status(thm)],[inference(rw,[status(thm)],[c_0_33, c_0_34]), c_0_34]), c_0_34]), c_0_34]), c_0_34])]), ['proof']).\n% SZS output end CNFRefutation\n\n% -------------------------------------------------\n% Total SizeMalloc()ed memory: 4154906232 Bytes (11695711 requests)\n% Total SizeFree()ed   memory: 4154906232 Bytes (11695711 requests)\n% New requests: 564823 (564718 by SecureMalloc(),    105 by SecureRealloc())\n% Total SecureMalloc()ed memory: 46667723 Bytes\n% Returned:    564823 (564823 by FREE(),              0 by SecureRealloc())\n% SecureRealloc(ptr):    113 (   105 Allocs,      0 Frees,      8 Reallocs)\n% -------------------------------------------------\n\n",
+     "status": "PROVED",
+     "target": "![X]: (![Y]: (![Z]: (s(s(s(X,Y),X),s(Z,Y)) = s(s(Z,Y),s(s(X,Y),X)))))"
+    },
+    {
+     "lemmas_used": [
+      "L1",
+      "L0"
+     ],
+     "premise_ids": [
+      "L1",
+      "L0"
+     ],
+     "proof": "SZS output start CNFRefutation\nfof(ax2, axiom, ![X1, X2]:(s(s(s(X1,X2),X1),s(X1,X1))=X1), file('/tmp/genesis-e-wtj030mq/p.p', ax2)).\nfof(ax1, axiom, ![X1, X2]:(s(s(X1,X1),X1)=s(X2,s(X2,X2))), file('/tmp/genesis-e-wtj030mq/p.p', ax1)).\nfof(ax0, axiom, ![X1, X2, X3]:(s(s(s(X1,X2),X3),s(X1,s(s(X1,X3),X1)))=X3), file('/tmp/genesis-e-wtj030mq/p.p', ax0)).\nfof(goal, conjecture, ![X1, X2, X3]:(s(X1,s(s(s(X1,X2),X2),X1))=s(X2,s(X2,s(s(X3,X3),X3)))), file('/tmp/genesis-e-wtj030mq/p.p', goal)).\nfof(c_0_4, plain, ![X9, X10]:(s(s(s(X9,X10),X9),s(X9,X9))=X9), inference(variable_rename,[status(thm)],[ax2])).\nfof(c_0_5, plain, ![X7, X8]:(s(s(X7,X7),X7)=s(X8,s(X8,X8))), inference(variable_rename,[status(thm)],[ax1])).\nfof(c_0_6, plain, ![X4, X5, X6]:(s(s(s(X4,X5),X6),s(X4,s(s(X4,X6),X4)))=X6), inference(variable_rename,[status(thm)],[ax0])).\ncnf(c_0_7, plain, (s(s(s(X1,X2),X1),s(X1,X1))=X1), inference(split_conjunct,[status(thm)],[c_0_4])).\ncnf(c_0_8, plain, (s(s(X1,X1),X1)=s(X2,s(X2,X2))), inference(split_conjunct,[status(thm)],[c_0_5])).\ncnf(c_0_9, plain, (s(s(s(X1,X2),X3),s(X1,s(s(X1,X3),X1)))=X3), inference(split_conjunct,[status(thm)],[c_0_6])).\ncnf(c_0_10, plain, (s(s(X1,s(X1,X1)),s(X2,X2))=X2), inference(spm,[status(thm)],[c_0_7, c_0_8])).\ncnf(c_0_11, plain, (s(s(s(X1,X2),X1),s(X1,s(X3,s(X3,X3))))=X1), inference(spm,[status(thm)],[c_0_9, c_0_8])).\ncnf(c_0_12, plain, (s(s(s(s(X1,X1),X2),X1),s(s(X1,X1),X1))=X1), inference(rw,[status(thm)],[inference(spm,[status(thm)],[c_0_9, c_0_8]), c_0_10])).\ncnf(c_0_13, plain, (s(s(X1,s(X1,X1)),s(X2,s(X3,s(X3,X3))))=X2), inference(spm,[status(thm)],[c_0_11, c_0_8])).\ncnf(c_0_14, plain, (s(s(s(s(X1,X1),X2),X1),s(X3,s(X3,X3)))=X1), inference(spm,[status(thm)],[c_0_12, c_0_8])).\ncnf(c_0_15, plain, (s(X1,s(X1,X1))=s(X2,s(X2,X2))), inference(spm,[status(thm)],[c_0_8, c_0_8])).\ncnf(c_0_16, plain, (s(s(X1,X2),s(s(X3,s(X3,X3)),X2))=X2), inference(rw,[status(thm)],[inference(spm,[status(thm)],[c_0_9, c_0_13]), c_0_13])).\ncnf(c_0_17, plain, (s(s(s(X1,s(X1,X1)),X2),s(X3,s(X3,X3)))=X2), inference(spm,[status(thm)],[c_0_14, c_0_15])).\ncnf(c_0_18, plain, (s(s(X1,X2),s(s(X3,X1),s(s(s(X3,X1),X2),s(X3,X1))))=X2), inference(spm,[status(thm)],[c_0_9, c_0_16])).\ncnf(c_0_19, plain, (s(s(X1,X1),s(X2,s(X2,X2)))=X1), inference(spm,[status(thm)],[c_0_14, c_0_16])).\ncnf(c_0_20, plain, (s(s(X1,X2),s(X2,X2))=X2), inference(rw,[status(thm)],[inference(rw,[status(thm)],[inference(spm,[status(thm)],[c_0_16, c_0_16]), c_0_10]), c_0_10])).\ncnf(c_0_21, plain, (s(X1,s(X2,s(s(X2,s(X1,X1)),X2)))=s(X1,X1)), inference(spm,[status(thm)],[c_0_9, c_0_10])).\ncnf(c_0_22, plain, (s(s(X1,X2),s(X2,s(X1,X2)))=X2), inference(rw,[status(thm)],[inference(rw,[status(thm)],[inference(spm,[status(thm)],[c_0_17, c_0_18]), c_0_19]), c_0_20])).\ncnf(c_0_23, plain, (s(s(X1,X1),s(X2,s(s(X2,X1),X2)))=X1), inference(spm,[status(thm)],[c_0_21, c_0_20])).\ncnf(c_0_24, plain, (s(s(X1,s(X2,X1)),X1)=s(X2,X1)), inference(spm,[status(thm)],[c_0_22, c_0_22])).\ncnf(c_0_25, plain, (s(s(X1,X1),s(X2,X1))=X1), inference(rw,[status(thm)],[inference(rw,[status(thm)],[inference(spm,[status(thm)],[c_0_23, c_0_24]), c_0_22]), c_0_24])).\ncnf(c_0_26, plain, (s(X1,s(s(X2,X3),s(s(s(X2,X3),s(X2,s(s(X2,X1),X2))),s(X2,X3))))=s(X2,s(s(X2,X1),X2))), inference(spm,[status(thm)],[c_0_9, c_0_9])).\ncnf(c_0_27, plain, (s(X1,s(X1,s(X2,X1)))=s(X2,X1)), inference(rw,[status(thm)],[inference(spm,[status(thm)],[c_0_9, c_0_25]), c_0_24])).\ncnf(c_0_28, plain, (s(X1,s(s(X2,X1),X1))=s(X2,X1)), inference(spm,[status(thm)],[c_0_22, c_0_25])).\ncnf(c_0_29, plain, (s(X1,s(s(X1,X2),X1))=s(X2,X1)), inference(rw,[status(thm)],[inference(rw,[status(thm)],[inference(rw,[status(thm)],[inference(spm,[status(thm)],[c_0_26, c_0_9]), c_0_27]), c_0_28]), c_0_22])).\ncnf(c_0_30, plain, (s(s(X1,X1),s(X1,X2))=X1), inference(rw,[status(thm)],[c_0_23, c_0_29])).\nfof(c_0_31, negated_conjecture, ~(![X1, X2, X3]:(s(X1,s(s(s(X1,X2),X2),X1))=s(X2,s(X2,s(s(X3,X3),X3))))), inference(assume_negation,[status(cth)],[goal])).\ncnf(c_0_32, plain, (s(s(X1,X1),X1)=s(s(X2,X2),X2)), inference(spm,[status(thm)],[c_0_8, c_0_8])).\ncnf(c_0_33, plain, (s(s(s(X1,s(s(X1,X2),X1)),X3),s(X2,s(s(X2,X3),X2)))=X3), inference(spm,[status(thm)],[c_0_9, c_0_26])).\ncnf(c_0_34, plain, (s(X1,X2)=s(X2,X1)), inference(rw,[status(thm)],[inference(spm,[status(thm)],[c_0_22, c_0_30]), c_0_29])).\nfof(c_0_35, negated_conjecture, s(esk1_0,s(s(s(esk1_0,esk2_0),esk2_0),esk1_0))!=s(esk2_0,s(esk2_0,s(s(esk3_0,esk3_0),esk3_0))), inference(fof_nnf,[status(thm)],[inference(skolemize,[status(esa)],[inference(variable_rename,[status(thm)],[inference(fof_nnf,[status(thm)],[c_0_31])])])])).\ncnf(c_0_36, plain, (s(X1,s(X2,s(X2,X2)))=s(X1,X1)), inference(spm,[status(thm)],[c_0_14, c_0_10])).\ncnf(c_0_37, plain, (s(s(s(X1,X1),X1),s(X2,X2))=X2), inference(spm,[status(thm)],[c_0_7, c_0_32])).\ncnf(c_0_38, plain, (s(X1,s(X2,s(s(X2,s(s(X3,X2),s(s(s(X3,X2),X1),s(X3,X2)))),X2)))=s(s(X3,X2),s(s(s(X3,X2),X1),s(X3,X2)))), inference(spm,[status(thm)],[c_0_26, c_0_16])).\ncnf(c_0_39, plain, (s(s(X1,X2),s(s(X2,X3),X1))=X1), inference(rw,[status(thm)],[inference(rw,[status(thm)],[inference(rw,[status(thm)],[c_0_33, c_0_29]), c_0_29]), c_0_34])).\ncnf(c_0_40, negated_conjecture, (s(esk1_0,s(s(s(esk1_0,esk2_0),esk2_0),esk1_0))!=s(esk2_0,s(esk2_0,s(s(esk3_0,esk3_0),esk3_0)))), inference(split_conjunct,[status(thm)],[c_0_35])).\ncnf(c_0_41, plain, (s(X1,s(s(X2,X2),X2))=s(X1,X1)), inference(spm,[status(thm)],[c_0_36, c_0_37])).\ncnf(c_0_42, plain, (s(X1,s(X2,s(X1,s(X3,X2))))=s(X1,s(X3,X2))), inference(rw,[status(thm)],[inference(rw,[status(thm)],[inference(rw,[status(thm)],[inference(rw,[status(thm)],[c_0_38, c_0_29]), c_0_29]), c_0_29]), c_0_34])).\ncnf(c_0_43, plain, (s(s(X1,X2),s(X2,s(X1,X3)))=X2), inference(rw,[status(thm)],[inference(spm,[status(thm)],[c_0_39, c_0_39]), c_0_34])).\ncnf(c_0_44, negated_conjecture, (s(esk1_0,s(s(s(esk1_0,esk2_0),esk2_0),esk1_0))!=s(esk2_0,s(esk2_0,esk2_0))), inference(rw,[status(thm)],[c_0_40, c_0_41])).\ncnf(c_0_45, plain, (s(X1,s(X2,s(X2,X1)))=s(X1,X1)), inference(spm,[status(thm)],[c_0_42, c_0_43])).\ncnf(c_0_46, negated_conjecture, ($false), inference(sr,[status(thm)],[inference(rw,[status(thm)],[inference(rw,[status(thm)],[inference(rw,[status(thm)],[inference(rw,[status(thm)],[c_0_44, c_0_34]), c_0_34]), c_0_34]), c_0_45]), c_0_15]), ['proof']).\n% SZS output end CNFRefutation\n\n% -------------------------------------------------\n% Total SizeMalloc()ed memory: 6240471784 Bytes (17854440 requests)\n% Total SizeFree()ed   memory: 6240471784 Bytes (17854440 requests)\n% New requests: 762671 (762566 by SecureMalloc(),    105 by SecureRealloc())\n% Total SecureMalloc()ed memory: 62230867 Bytes\n% Returned:    762671 (762671 by FREE(),              0 by SecureRealloc())\n% SecureRealloc(ptr):    113 (   105 Allocs,      0 Frees,      8 Reallocs)\n% -------------------------------------------------\n\n",
+     "status": "PROVED",
+     "target": "![X]: (![Y]: (![Z]: (s(X,s(s(s(X,Y),Y),X)) = s(Y,s(Y,s(s(Z,Z),Z))))))"
+    },
+    {
+     "lemmas_used": [
+      "L0",
+      "L1"
+     ],
+     "premise_ids": [
+      "L0",
+      "L1"
+     ],
+     "proof": "SZS output start CNFRefutation\nfof(ax1, axiom, ![X1, X2]:(s(s(s(X1,X2),X1),s(X1,X1))=X1), file('/tmp/genesis-e-jdip_lcb/p.p', ax1)).\nfof(ax2, axiom, ![X1, X2]:(s(s(X1,X1),X1)=s(X2,s(X2,X2))), file('/tmp/genesis-e-jdip_lcb/p.p', ax2)).\nfof(ax0, axiom, ![X1, X2, X3]:(s(s(s(X1,X2),X3),s(X1,s(s(X1,X3),X1)))=X3), file('/tmp/genesis-e-jdip_lcb/p.p', ax0)).\nfof(goal, conjecture, ![X1, X2, X3]:(s(s(X1,X2),s(s(s(X2,X3),X3),X3))=s(s(X2,X1),s(X3,X2))), file('/tmp/genesis-e-jdip_lcb/p.p', goal)).\nfof(c_0_4, plain, ![X7, X8]:(s(s(s(X7,X8),X7),s(X7,X7))=X7), inference(variable_rename,[status(thm)],[ax1])).\nfof(c_0_5, plain, ![X9, X10]:(s(s(X9,X9),X9)=s(X10,s(X10,X10))), inference(variable_rename,[status(thm)],[ax2])).\nfof(c_0_6, plain, ![X4, X5, X6]:(s(s(s(X4,X5),X6),s(X4,s(s(X4,X6),X4)))=X6), inference(variable_rename,[status(thm)],[ax0])).\ncnf(c_0_7, plain, (s(s(s(X1,X2),X1),s(X1,X1))=X1), inference(split_conjunct,[status(thm)],[c_0_4])).\ncnf(c_0_8, plain, (s(s(X1,X1),X1)=s(X2,s(X2,X2))), inference(split_conjunct,[status(thm)],[c_0_5])).\ncnf(c_0_9, plain, (s(s(s(X1,X2),X3),s(X1,s(s(X1,X3),X1)))=X3), inference(split_conjunct,[status(thm)],[c_0_6])).\ncnf(c_0_10, plain, (s(s(X1,s(X1,X1)),s(X2,X2))=X2), inference(spm,[status(thm)],[c_0_7, c_0_8])).\ncnf(c_0_11, plain, (s(s(s(X1,X2),X1),s(X1,s(X3,s(X3,X3))))=X1), inference(spm,[status(thm)],[c_0_9, c_0_8])).\ncnf(c_0_12, plain, (s(s(s(s(X1,X1),X2),X1),s(s(X1,X1),X1))=X1), inference(rw,[status(thm)],[inference(spm,[status(thm)],[c_0_9, c_0_8]), c_0_10])).\ncnf(c_0_13, plain, (s(s(X1,s(X1,X1)),s(X2,s(X3,s(X3,X3))))=X2), inference(spm,[status(thm)],[c_0_11, c_0_8])).\ncnf(c_0_14, plain, (s(s(s(s(X1,X1),X2),X1),s(X3,s(X3,X3)))=X1), inference(spm,[status(thm)],[c_0_12, c_0_8])).\ncnf(c_0_15, plain, (s(X1,s(X1,X1))=s(X2,s(X2,X2))), inference(spm,[status(thm)],[c_0_8, c_0_8])).\ncnf(c_0_16, plain, (s(s(X1,X2),s(s(X3,s(X3,X3)),X2))=X2), inference(rw,[status(thm)],[inference(spm,[status(thm)],[c_0_9, c_0_13]), c_0_13])).\ncnf(c_0_17, plain, (s(s(s(X1,s(X1,X1)),X2),s(X3,s(X3,X3)))=X2), inference(spm,[status(thm)],[c_0_14, c_0_15])).\ncnf(c_0_18, plain, (s(s(X1,X2),s(s(X3,X1),s(s(s(X3,X1),X2),s(X3,X1))))=X2), inference(spm,[status(thm)],[c_0_9, c_0_16])).\ncnf(c_0_19, plain, (s(s(X1,X1),s(X2,s(X2,X2)))=X1), inference(spm,[status(thm)],[c_0_14, c_0_16])).\ncnf(c_0_20, plain, (s(s(X1,X2),s(X2,X2))=X2), inference(rw,[status(thm)],[inference(rw,[status(thm)],[inference(spm,[status(thm)],[c_0_16, c_0_16]), c_0_10]), c_0_10])).\ncnf(c_0_21, plain, (s(X1,s(X2,s(s(X2,s(X1,X1)),X2)))=s(X1,X1)), inference(spm,[status(thm)],[c_0_9, c_0_10])).\ncnf(c_0_22, plain, (s(s(X1,X2),s(X2,s(X1,X2)))=X2), inference(rw,[status(thm)],[inference(rw,[status(thm)],[inference(spm,[status(thm)],[c_0_17, c_0_18]), c_0_19]), c_0_20])).\ncnf(c_0_23, plain, (s(s(X1,X1),s(X2,s(s(X2,X1),X2)))=X1), inference(spm,[status(thm)],[c_0_21, c_0_20])).\ncnf(c_0_24, plain, (s(s(X1,s(X2,X1)),X1)=s(X2,X1)), inference(spm,[status(thm)],[c_0_22, c_0_22])).\ncnf(c_0_25, plain, (s(s(X1,X1),s(X2,X1))=X1), inference(rw,[status(thm)],[inference(rw,[status(thm)],[inference(spm,[status(thm)],[c_0_23, c_0_24]), c_0_22]), c_0_24])).\ncnf(c_0_26, plain, (s(X1,s(s(X2,X3),s(s(s(X2,X3),s(X2,s(s(X2,X1),X2))),s(X2,X3))))=s(X2,s(s(X2,X1),X2))), inference(spm,[status(thm)],[c_0_9, c_0_9])).\ncnf(c_0_27, plain, (s(X1,s(X1,s(X2,X1)))=s(X2,X1)), inference(rw,[status(thm)],[inference(spm,[status(thm)],[c_0_9, c_0_25]), c_0_24])).\ncnf(c_0_28, plain, (s(X1,s(s(X2,X1),X1))=s(X2,X1)), inference(spm,[status(thm)],[c_0_22, c_0_25])).\nfof(c_0_29, negated_conjecture, ~(![X1, X2, X3]:(s(s(X1,X2),s(s(s(X2,X3),X3),X3))=s(s(X2,X1),s(X3,X2)))), inference(assume_negation,[status(cth)],[goal])).\ncnf(c_0_30, plain, (s(X1,s(s(X1,X2),X1))=s(X2,X1)), inference(rw,[status(thm)],[inference(rw,[status(thm)],[inference(rw,[status(thm)],[inference(spm,[status(thm)],[c_0_26, c_0_9]), c_0_27]), c_0_28]), c_0_22])).\nfof(c_0_31, negated_conjecture, s(s(esk1_0,esk2_0),s(s(s(esk2_0,esk3_0),esk3_0),esk3_0))!=s(s(esk2_0,esk1_0),s(esk3_0,esk2_0)), inference(fof_nnf,[status(thm)],[inference(skolemize,[status(esa)],[inference(variable_rename,[status(thm)],[inference(fof_nnf,[status(thm)],[c_0_29])])])])).\ncnf(c_0_32, plain, (s(s(X1,X1),s(X1,X2))=X1), inference(rw,[status(thm)],[c_0_23, c_0_30])).\ncnf(c_0_33, negated_conjecture, (s(s(esk1_0,esk2_0),s(s(s(esk2_0,esk3_0),esk3_0),esk3_0))!=s(s(esk2_0,esk1_0),s(esk3_0,esk2_0))), inference(split_conjunct,[status(thm)],[c_0_31])).\ncnf(c_0_34, plain, (s(X1,X2)=s(X2,X1)), inference(rw,[status(thm)],[inference(spm,[status(thm)],[c_0_22, c_0_32]), c_0_30])).\ncnf(c_0_35, negated_conjecture, ($false), inference(cn,[status(thm)],[inference(rw,[status(thm)],[inference(rw,[status(thm)],[inference(rw,[status(thm)],[inference(rw,[status(thm)],[inference(rw,[status(thm)],[inference(rw,[status(thm)],[inference(rw,[status(thm)],[c_0_33, c_0_34]), c_0_34]), c_0_34]), c_0_27]), c_0_34]), c_0_34]), c_0_34])]), ['proof']).\n% SZS output end CNFRefutation\n\n% -------------------------------------------------\n% Total SizeMalloc()ed memory: 4155566056 Bytes (11697608 requests)\n% Total SizeFree()ed   memory: 4155566056 Bytes (11697608 requests)\n% New requests: 564886 (564781 by SecureMalloc(),    105 by SecureRealloc())\n% Total SecureMalloc()ed memory: 46672435 Bytes\n% Returned:    564886 (564886 by FREE(),              0 by SecureRealloc())\n% SecureRealloc(ptr):    113 (   105 Allocs,      0 Frees,      8 Reallocs)\n% -------------------------------------------------\n\n",
+     "status": "PROVED",
+     "target": "![X]: (![Y]: (![Z]: (s(s(X,Y),s(s(s(Y,Z),Z),Z)) = s(s(Y,X),s(Z,Y)))))"
+    },
+    {
+     "lemmas_used": [],
+     "premise_ids": [
+      "L0",
+      "L1"
+     ],
+     "proof": null,
+     "status": "ERROR",
+     "target": "![X]: (![Y]: (![Z]: (s(X,s(X,s(s(Y,Z),X))) = s(X,s(Z,s(s(X,Y),Z))))))"
+    },
+    {
+     "lemmas_used": [],
+     "premise_ids": [
+      "L0",
+      "L1"
+     ],
+     "proof": null,
+     "status": "ERROR",
+     "target": "![X]: (![Y]: (![Z]: (s(s(s(X,X),s(Y,Y)),Z) = s(Z,s(s(X,Z),s(Y,Z))))))"
+    },
+    {
+     "lemmas_used": [],
+     "premise_ids": [
+      "L0",
+      "L1"
+     ],
+     "proof": null,
+     "status": "ERROR",
+     "target": "![X]: (![Y]: (![Z]: (s(s(s(X,s(Y,s(Z,Y))),Y),X) = s(s(s(X,Z),Y),X))))"
+    },
+    {
+     "lemmas_used": [],
+     "premise_ids": [
+      "L0",
+      "L1"
+     ],
+     "proof": null,
+     "status": "ERROR",
+     "target": "![X]: (![Y]: (![Z]: (s(s(s(X,X),Y),s(Z,Y)) = s(s(Y,Z),s(s(X,Y),Y)))))"
+    },
+    {
+     "lemmas_used": [],
+     "premise_ids": [
+      "L0",
+      "L1"
+     ],
+     "proof": null,
+     "status": "ERROR",
+     "target": "![X]: (![Y]: (![Z]: (s(s(X,s(Y,Y)),Z) = s(Z,s(s(Y,Y),s(Z,s(Z,X)))))))"
+    },
+    {
+     "lemmas_used": [
+      "L0",
+      "L1"
+     ],
+     "premise_ids": [
+      "L0",
+      "L1"
+     ],
+     "proof": "SZS output start CNFRefutation\nfof(ax1, axiom, ![X1, X2]:(s(s(s(X1,X2),X1),s(X1,X1))=X1), file('/tmp/genesis-e-jfx6oo84/p.p', ax1)).\nfof(ax2, axiom, ![X1, X2]:(s(s(X1,X1),X1)=s(X2,s(X2,X2))), file('/tmp/genesis-e-jfx6oo84/p.p', ax2)).\nfof(ax0, axiom, ![X1, X2, X3]:(s(s(s(X1,X2),X3),s(X1,s(s(X1,X3),X1)))=X3), file('/tmp/genesis-e-jfx6oo84/p.p', ax0)).\nfof(goal, conjecture, ![X1, X2, X3]:(s(s(s(X1,X2),X2),s(X3,X2))=s(s(X3,X2),s(X2,s(X1,X2)))), file('/tmp/genesis-e-jfx6oo84/p.p', goal)).\nfof(c_0_4, plain, ![X7, X8]:(s(s(s(X7,X8),X7),s(X7,X7))=X7), inference(variable_rename,[status(thm)],[ax1])).\nfof(c_0_5, plain, ![X9, X10]:(s(s(X9,X9),X9)=s(X10,s(X10,X10))), inference(variable_rename,[status(thm)],[ax2])).\nfof(c_0_6, plain, ![X4, X5, X6]:(s(s(s(X4,X5),X6),s(X4,s(s(X4,X6),X4)))=X6), inference(variable_rename,[status(thm)],[ax0])).\ncnf(c_0_7, plain, (s(s(s(X1,X2),X1),s(X1,X1))=X1), inference(split_conjunct,[status(thm)],[c_0_4])).\ncnf(c_0_8, plain, (s(s(X1,X1),X1)=s(X2,s(X2,X2))), inference(split_conjunct,[status(thm)],[c_0_5])).\ncnf(c_0_9, plain, (s(s(s(X1,X2),X3),s(X1,s(s(X1,X3),X1)))=X3), inference(split_conjunct,[status(thm)],[c_0_6])).\ncnf(c_0_10, plain, (s(s(X1,s(X1,X1)),s(X2,X2))=X2), inference(spm,[status(thm)],[c_0_7, c_0_8])).\ncnf(c_0_11, plain, (s(s(s(X1,X2),X1),s(X1,s(X3,s(X3,X3))))=X1), inference(spm,[status(thm)],[c_0_9, c_0_8])).\ncnf(c_0_12, plain, (s(s(s(s(X1,X1),X2),X1),s(s(X1,X1),X1))=X1), inference(rw,[status(thm)],[inference(spm,[status(thm)],[c_0_9, c_0_8]), c_0_10])).\ncnf(c_0_13, plain, (s(s(X1,s(X1,X1)),s(X2,s(X3,s(X3,X3))))=X2), inference(spm,[status(thm)],[c_0_11, c_0_8])).\ncnf(c_0_14, plain, (s(s(s(s(X1,X1),X2),X1),s(X3,s(X3,X3)))=X1), inference(spm,[status(thm)],[c_0_12, c_0_8])).\ncnf(c_0_15, plain, (s(X1,s(X1,X1))=s(X2,s(X2,X2))), inference(spm,[status(thm)],[c_0_8, c_0_8])).\ncnf(c_0_16, plain, (s(s(X1,X2),s(s(X3,s(X3,X3)),X2))=X2), inference(rw,[status(thm)],[inference(spm,[status(thm)],[c_0_9, c_0_13]), c_0_13])).\ncnf(c_0_17, plain, (s(s(s(X1,s(X1,X1)),X2),s(X3,s(X3,X3)))=X2), inference(spm,[status(thm)],[c_0_14, c_0_15])).\ncnf(c_0_18, plain, (s(s(X1,X2),s(s(X3,X1),s(s(s(X3,X1),X2),s(X3,X1))))=X2), inference(spm,[status(thm)],[c_0_9, c_0_16])).\ncnf(c_0_19, plain, (s(s(X1,X1),s(X2,s(X2,X2)))=X1), inference(spm,[status(thm)],[c_0_14, c_0_16])).\ncnf(c_0_20, plain, (s(s(X1,X2),s(X2,X2))=X2), inference(rw,[status(thm)],[inference(rw,[status(thm)],[inference(spm,[status(thm)],[c_0_16, c_0_16]), c_0_10]), c_0_10])).\ncnf(c_0_21, plain, (s(X1,s(X2,s(s(X2,s(X1,X1)),X2)))=s(X1,X1)), inference(spm,[status(thm)],[c_0_9, c_0_10])).\ncnf(c_0_22, plain, (s(s(X1,X2),s(X2,s(X1,X2)))=X2), inference(rw,[status(thm)],[inference(rw,[status(thm)],[inference(spm,[status(thm)],[c_0_17, c_0_18]), c_0_19]), c_0_20])).\ncnf(c_0_23, plain, (s(s(X1,X1),s(X2,s(s(X2,X1),X2)))=X1), inference(spm,[status(thm)],[c_0_21, c_0_20])).\ncnf(c_0_24, plain, (s(s(X1,s(X2,X1)),X1)=s(X2,X1)), inference(spm,[status(thm)],[c_0_22, c_0_22])).\ncnf(c_0_25, plain, (s(s(X1,X1),s(X2,X1))=X1), inference(rw,[status(thm)],[inference(rw,[status(thm)],[inference(spm,[status(thm)],[c_0_23, c_0_24]), c_0_22]), c_0_24])).\ncnf(c_0_26, plain, (s(X1,s(s(X2,X3),s(s(s(X2,X3),s(X2,s(s(X2,X1),X2))),s(X2,X3))))=s(X2,s(s(X2,X1),X2))), inference(spm,[status(thm)],[c_0_9, c_0_9])).\ncnf(c_0_27, plain, (s(X1,s(X1,s(X2,X1)))=s(X2,X1)), inference(rw,[status(thm)],[inference(spm,[status(thm)],[c_0_9, c_0_25]), c_0_24])).\ncnf(c_0_28, plain, (s(X1,s(s(X2,X1),X1))=s(X2,X1)), inference(spm,[status(thm)],[c_0_22, c_0_25])).\nfof(c_0_29, negated_conjecture, ~(![X1, X2, X3]:(s(s(s(X1,X2),X2),s(X3,X2))=s(s(X3,X2),s(X2,s(X1,X2))))), inference(assume_negation,[status(cth)],[goal])).\ncnf(c_0_30, plain, (s(X1,s(s(X1,X2),X1))=s(X2,X1)), inference(rw,[status(thm)],[inference(rw,[status(thm)],[inference(rw,[status(thm)],[inference(spm,[status(thm)],[c_0_26, c_0_9]), c_0_27]), c_0_28]), c_0_22])).\nfof(c_0_31, negated_conjecture, s(s(s(esk1_0,esk2_0),esk2_0),s(esk3_0,esk2_0))!=s(s(esk3_0,esk2_0),s(esk2_0,s(esk1_0,esk2_0))), inference(fof_nnf,[status(thm)],[inference(skolemize,[status(esa)],[inference(variable_rename,[status(thm)],[inference(fof_nnf,[status(thm)],[c_0_29])])])])).\ncnf(c_0_32, plain, (s(s(X1,X1),s(X1,X2))=X1), inference(rw,[status(thm)],[c_0_23, c_0_30])).\ncnf(c_0_33, negated_conjecture, (s(s(s(esk1_0,esk2_0),esk2_0),s(esk3_0,esk2_0))!=s(s(esk3_0,esk2_0),s(esk2_0,s(esk1_0,esk2_0)))), inference(split_conjunct,[status(thm)],[c_0_31])).\ncnf(c_0_34, plain, (s(X1,X2)=s(X2,X1)), inference(rw,[status(thm)],[inference(spm,[status(thm)],[c_0_22, c_0_32]), c_0_30])).\ncnf(c_0_35, negated_conjecture, ($false), inference(cn,[status(thm)],[inference(rw,[status(thm)],[inference(rw,[status(thm)],[inference(rw,[status(thm)],[inference(rw,[status(thm)],[inference(rw,[status(thm)],[inference(rw,[status(thm)],[c_0_33, c_0_34]), c_0_34]), c_0_34]), c_0_34]), c_0_34]), c_0_34])]), ['proof']).\n% SZS output end CNFRefutation\n\n% -------------------------------------------------\n% Total SizeMalloc()ed memory: 4155004136 Bytes (11696176 requests)\n% Total SizeFree()ed   memory: 4155004136 Bytes (11696176 requests)\n% New requests: 564841 (564736 by SecureMalloc(),    105 by SecureRealloc())\n% Total SecureMalloc()ed memory: 46668539 Bytes\n% Returned:    564841 (564841 by FREE(),              0 by SecureRealloc())\n% SecureRealloc(ptr):    113 (   105 Allocs,      0 Frees,      8 Reallocs)\n% -------------------------------------------------\n\n",
+     "status": "PROVED",
+     "target": "![X]: (![Y]: (![Z]: (s(s(s(X,Y),Y),s(Z,Y)) = s(s(Z,Y),s(Y,s(X,Y))))))"
+    },
+    {
+     "lemmas_used": [
+      "L0",
+      "L1"
+     ],
+     "premise_ids": [
+      "L0",
+      "L1"
+     ],
+     "proof": "SZS output start CNFRefutation\nfof(ax1, axiom, ![X1, X2]:(s(s(s(X1,X2),X1),s(X1,X1))=X1), file('/tmp/genesis-e-c3tb80c4/p.p', ax1)).\nfof(ax2, axiom, ![X1, X2]:(s(s(X1,X1),X1)=s(X2,s(X2,X2))), file('/tmp/genesis-e-c3tb80c4/p.p', ax2)).\nfof(ax0, axiom, ![X1, X2, X3]:(s(s(s(X1,X2),X3),s(X1,s(s(X1,X3),X1)))=X3), file('/tmp/genesis-e-c3tb80c4/p.p', ax0)).\nfof(goal, conjecture, ![X1, X2, X3]:(s(s(X1,s(s(X2,X3),s(X2,X2))),X2)=s(X2,s(X2,X1))), file('/tmp/genesis-e-c3tb80c4/p.p', goal)).\nfof(c_0_4, plain, ![X7, X8]:(s(s(s(X7,X8),X7),s(X7,X7))=X7), inference(variable_rename,[status(thm)],[ax1])).\nfof(c_0_5, plain, ![X9, X10]:(s(s(X9,X9),X9)=s(X10,s(X10,X10))), inference(variable_rename,[status(thm)],[ax2])).\nfof(c_0_6, plain, ![X4, X5, X6]:(s(s(s(X4,X5),X6),s(X4,s(s(X4,X6),X4)))=X6), inference(variable_rename,[status(thm)],[ax0])).\ncnf(c_0_7, plain, (s(s(s(X1,X2),X1),s(X1,X1))=X1), inference(split_conjunct,[status(thm)],[c_0_4])).\ncnf(c_0_8, plain, (s(s(X1,X1),X1)=s(X2,s(X2,X2))), inference(split_conjunct,[status(thm)],[c_0_5])).\ncnf(c_0_9, plain, (s(s(s(X1,X2),X3),s(X1,s(s(X1,X3),X1)))=X3), inference(split_conjunct,[status(thm)],[c_0_6])).\ncnf(c_0_10, plain, (s(s(X1,s(X1,X1)),s(X2,X2))=X2), inference(spm,[status(thm)],[c_0_7, c_0_8])).\ncnf(c_0_11, plain, (s(s(s(X1,X2),X1),s(X1,s(X3,s(X3,X3))))=X1), inference(spm,[status(thm)],[c_0_9, c_0_8])).\ncnf(c_0_12, plain, (s(s(s(s(X1,X1),X2),X1),s(s(X1,X1),X1))=X1), inference(rw,[status(thm)],[inference(spm,[status(thm)],[c_0_9, c_0_8]), c_0_10])).\ncnf(c_0_13, plain, (s(s(X1,s(X1,X1)),s(X2,s(X3,s(X3,X3))))=X2), inference(spm,[status(thm)],[c_0_11, c_0_8])).\ncnf(c_0_14, plain, (s(s(s(s(X1,X1),X2),X1),s(X3,s(X3,X3)))=X1), inference(spm,[status(thm)],[c_0_12, c_0_8])).\ncnf(c_0_15, plain, (s(X1,s(X1,X1))=s(X2,s(X2,X2))), inference(spm,[status(thm)],[c_0_8, c_0_8])).\ncnf(c_0_16, plain, (s(s(X1,X2),s(s(X3,s(X3,X3)),X2))=X2), inference(rw,[status(thm)],[inference(spm,[status(thm)],[c_0_9, c_0_13]), c_0_13])).\ncnf(c_0_17, plain, (s(s(s(X1,s(X1,X1)),X2),s(X3,s(X3,X3)))=X2), inference(spm,[status(thm)],[c_0_14, c_0_15])).\ncnf(c_0_18, plain, (s(s(X1,X2),s(s(X3,X1),s(s(s(X3,X1),X2),s(X3,X1))))=X2), inference(spm,[status(thm)],[c_0_9, c_0_16])).\ncnf(c_0_19, plain, (s(s(X1,X1),s(X2,s(X2,X2)))=X1), inference(spm,[status(thm)],[c_0_14, c_0_16])).\ncnf(c_0_20, plain, (s(s(X1,X2),s(X2,X2))=X2), inference(rw,[status(thm)],[inference(rw,[status(thm)],[inference(spm,[status(thm)],[c_0_16, c_0_16]), c_0_10]), c_0_10])).\ncnf(c_0_21, plain, (s(X1,s(X2,s(s(X2,s(X1,X1)),X2)))=s(X1,X1)), inference(spm,[status(thm)],[c_0_9, c_0_10])).\ncnf(c_0_22, plain, (s(s(X1,X2),s(X2,s(X1,X2)))=X2), inference(rw,[status(thm)],[inference(rw,[status(thm)],[inference(spm,[status(thm)],[c_0_17, c_0_18]), c_0_19]), c_0_20])).\ncnf(c_0_23, plain, (s(s(X1,X1),s(X2,s(s(X2,X1),X2)))=X1), inference(spm,[status(thm)],[c_0_21, c_0_20])).\ncnf(c_0_24, plain, (s(s(X1,s(X2,X1)),X1)=s(X2,X1)), inference(spm,[status(thm)],[c_0_22, c_0_22])).\ncnf(c_0_25, plain, (s(s(X1,X1),s(X2,X1))=X1), inference(rw,[status(thm)],[inference(rw,[status(thm)],[inference(spm,[status(thm)],[c_0_23, c_0_24]), c_0_22]), c_0_24])).\ncnf(c_0_26, plain, (s(X1,s(s(X2,X3),s(s(s(X2,X3),s(X2,s(s(X2,X1),X2))),s(X2,X3))))=s(X2,s(s(X2,X1),X2))), inference(spm,[status(thm)],[c_0_9, c_0_9])).\ncnf(c_0_27, plain, (s(X1,s(X1,s(X2,X1)))=s(X2,X1)), inference(rw,[status(thm)],[inference(spm,[status(thm)],[c_0_9, c_0_25]), c_0_24])).\ncnf(c_0_28, plain, (s(X1,s(s(X2,X1),X1))=s(X2,X1)), inference(spm,[status(thm)],[c_0_22, c_0_25])).\ncnf(c_0_29, plain, (s(X1,s(X2,s(X2,X2)))=s(X1,X1)), inference(spm,[status(thm)],[c_0_14, c_0_10])).\nfof(c_0_30, negated_conjecture, ~(![X1, X2, X3]:(s(s(X1,s(s(X2,X3),s(X2,X2))),X2)=s(X2,s(X2,X1)))), inference(assume_negation,[status(cth)],[goal])).\ncnf(c_0_31, plain, (s(X1,s(s(X1,X2),X1))=s(X2,X1)), inference(rw,[status(thm)],[inference(rw,[status(thm)],[inference(rw,[status(thm)],[inference(spm,[status(thm)],[c_0_26, c_0_9]), c_0_27]), c_0_28]), c_0_22])).\ncnf(c_0_32, plain, (s(s(s(s(X1,X1),X2),X1),s(s(s(X1,X1),X2),X1))=X1), inference(spm,[status(thm)],[c_0_14, c_0_29])).\nfof(c_0_33, negated_conjecture, s(s(esk1_0,s(s(esk2_0,esk3_0),s(esk2_0,esk2_0))),esk2_0)!=s(esk2_0,s(esk2_0,esk1_0)), inference(fof_nnf,[status(thm)],[inference(skolemize,[status(esa)],[inference(variable_rename,[status(thm)],[inference(fof_nnf,[status(thm)],[c_0_30])])])])).\ncnf(c_0_34, plain, (s(s(X1,X1),s(X1,X2))=X1), inference(rw,[status(thm)],[c_0_23, c_0_31])).\ncnf(c_0_35, plain, (s(s(s(X1,X1),X2),X1)=s(X1,X1)), inference(rw,[status(thm)],[inference(spm,[status(thm)],[c_0_20, c_0_32]), c_0_32])).\ncnf(c_0_36, negated_conjecture, (s(s(esk1_0,s(s(esk2_0,esk3_0),s(esk2_0,esk2_0))),esk2_0)!=s(esk2_0,s(esk2_0,esk1_0))), inference(split_conjunct,[status(thm)],[c_0_33])).\ncnf(c_0_37, plain, (s(X1,X2)=s(X2,X1)), inference(rw,[status(thm)],[inference(spm,[status(thm)],[c_0_22, c_0_34]), c_0_31])).\ncnf(c_0_38, plain, (s(s(X1,X2),s(X1,X1))=X1), inference(spm,[status(thm)],[c_0_35, c_0_20])).\ncnf(c_0_39, negated_conjecture, ($false), inference(cn,[status(thm)],[inference(rw,[status(thm)],[inference(rw,[status(thm)],[inference(rw,[status(thm)],[c_0_36, c_0_37]), c_0_38]), c_0_37])]), ['proof']).\n% SZS output end CNFRefutation\n\n% -------------------------------------------------\n% Total SizeMalloc()ed memory: 4156543560 Bytes (11699941 requests)\n% Total SizeFree()ed   memory: 4156543560 Bytes (11699941 requests)\n% New requests: 564978 (564875 by SecureMalloc(),    103 by SecureRealloc())\n% Total SecureMalloc()ed memory: 46679315 Bytes\n% Returned:    564978 (564978 by FREE(),              0 by SecureRealloc())\n% SecureRealloc(ptr):    111 (   103 Allocs,      0 Frees,      8 Reallocs)\n% -------------------------------------------------\n\n",
+     "status": "PROVED",
+     "target": "![X]: (![Y]: (![Z]: (s(s(X,s(s(Y,Z),s(Y,Y))),Y) = s(Y,s(Y,X)))))"
+    },
+    {
+     "lemmas_used": [],
+     "premise_ids": [
+      "L0",
+      "L1"
+     ],
+     "proof": null,
+     "status": "ERROR",
+     "target": "![X]: (![Y]: (![Z]: (s(s(s(s(X,Y),X),Z),X) = s(X,s(Y,s(Y,s(Y,Z)))))))"
+    },
+    {
+     "lemmas_used": [],
+     "premise_ids": [
+      "L0",
+      "L1"
+     ],
+     "proof": null,
+     "status": "ERROR",
+     "target": "![X]: (![Y]: (![Z]: (s(s(X,s(Y,s(Y,X))),Z) = s(Z,s(s(Y,s(Z,Y)),X)))))"
+    },
+    {
+     "lemmas_used": [
+      "L0",
+      "L1"
+     ],
+     "premise_ids": [
+      "L0",
+      "L1"
+     ],
+     "proof": "SZS output start CNFRefutation\nfof(ax1, axiom, ![X1, X2]:(s(s(s(X1,X2),X1),s(X1,X1))=X1), file('/tmp/genesis-e-j9f9qpb1/p.p', ax1)).\nfof(ax2, axiom, ![X1, X2]:(s(s(X1,X1),X1)=s(X2,s(X2,X2))), file('/tmp/genesis-e-j9f9qpb1/p.p', ax2)).\nfof(ax0, axiom, ![X1, X2, X3]:(s(s(s(X1,X2),X3),s(X1,s(s(X1,X3),X1)))=X3), file('/tmp/genesis-e-j9f9qpb1/p.p', ax0)).\nfof(goal, conjecture, ![X1, X2]:(s(s(X1,s(X2,s(X2,X1))),X2)=s(X2,s(X1,s(s(X1,X2),X1)))), file('/tmp/genesis-e-j9f9qpb1/p.p', goal)).\nfof(c_0_4, plain, ![X7, X8]:(s(s(s(X7,X8),X7),s(X7,X7))=X7), inference(variable_rename,[status(thm)],[ax1])).\nfof(c_0_5, plain, ![X9, X10]:(s(s(X9,X9),X9)=s(X10,s(X10,X10))), inference(variable_rename,[status(thm)],[ax2])).\nfof(c_0_6, plain, ![X4, X5, X6]:(s(s(s(X4,X5),X6),s(X4,s(s(X4,X6),X4)))=X6), inference(variable_rename,[status(thm)],[ax0])).\ncnf(c_0_7, plain, (s(s(s(X1,X2),X1),s(X1,X1))=X1), inference(split_conjunct,[status(thm)],[c_0_4])).\ncnf(c_0_8, plain, (s(s(X1,X1),X1)=s(X2,s(X2,X2))), inference(split_conjunct,[status(thm)],[c_0_5])).\ncnf(c_0_9, plain, (s(s(s(X1,X2),X3),s(X1,s(s(X1,X3),X1)))=X3), inference(split_conjunct,[status(thm)],[c_0_6])).\ncnf(c_0_10, plain, (s(s(X1,s(X1,X1)),s(X2,X2))=X2), inference(spm,[status(thm)],[c_0_7, c_0_8])).\ncnf(c_0_11, plain, (s(s(s(X1,X2),X1),s(X1,s(X3,s(X3,X3))))=X1), inference(spm,[status(thm)],[c_0_9, c_0_8])).\ncnf(c_0_12, plain, (s(s(s(s(X1,X1),X2),X1),s(s(X1,X1),X1))=X1), inference(rw,[status(thm)],[inference(spm,[status(thm)],[c_0_9, c_0_8]), c_0_10])).\ncnf(c_0_13, plain, (s(s(X1,s(X1,X1)),s(X2,s(X3,s(X3,X3))))=X2), inference(spm,[status(thm)],[c_0_11, c_0_8])).\ncnf(c_0_14, plain, (s(s(s(s(X1,X1),X2),X1),s(X3,s(X3,X3)))=X1), inference(spm,[status(thm)],[c_0_12, c_0_8])).\ncnf(c_0_15, plain, (s(X1,s(X1,X1))=s(X2,s(X2,X2))), inference(spm,[status(thm)],[c_0_8, c_0_8])).\ncnf(c_0_16, plain, (s(s(X1,X2),s(s(X3,s(X3,X3)),X2))=X2), inference(rw,[status(thm)],[inference(spm,[status(thm)],[c_0_9, c_0_13]), c_0_13])).\ncnf(c_0_17, plain, (s(s(s(X1,s(X1,X1)),X2),s(X3,s(X3,X3)))=X2), inference(spm,[status(thm)],[c_0_14, c_0_15])).\ncnf(c_0_18, plain, (s(s(X1,X2),s(s(X3,X1),s(s(s(X3,X1),X2),s(X3,X1))))=X2), inference(spm,[status(thm)],[c_0_9, c_0_16])).\ncnf(c_0_19, plain, (s(s(X1,X1),s(X2,s(X2,X2)))=X1), inference(spm,[status(thm)],[c_0_14, c_0_16])).\ncnf(c_0_20, plain, (s(s(X1,X2),s(X2,X2))=X2), inference(rw,[status(thm)],[inference(rw,[status(thm)],[inference(spm,[status(thm)],[c_0_16, c_0_16]), c_0_10]), c_0_10])).\ncnf(c_0_21, plain, (s(X1,s(X2,s(s(X2,s(X1,X1)),X2)))=s(X1,X1)), inference(spm,[status(thm)],[c_0_9, c_0_10])).\ncnf(c_0_22, plain, (s(s(X1,X2),s(X2,s(X1,X2)))=X2), inference(rw,[status(thm)],[inference(rw,[status(thm)],[inference(spm,[status(thm)],[c_0_17, c_0_18]), c_0_19]), c_0_20])).\ncnf(c_0_23, plain, (s(s(X1,X1),s(X2,s(s(X2,X1),X2)))=X1), inference(spm,[status(thm)],[c_0_21, c_0_20])).\ncnf(c_0_24, plain, (s(s(X1,s(X2,X1)),X1)=s(X2,X1)), inference(spm,[status(thm)],[c_0_22, c_0_22])).\ncnf(c_0_25, plain, (s(s(X1,X1),s(X2,X1))=X1), inference(rw,[status(thm)],[inference(rw,[status(thm)],[inference(spm,[status(thm)],[c_0_23, c_0_24]), c_0_22]), c_0_24])).\ncnf(c_0_26, plain, (s(X1,s(s(X2,X3),s(s(s(X2,X3),s(X2,s(s(X2,X1),X2))),s(X2,X3))))=s(X2,s(s(X2,X1),X2))), inference(spm,[status(thm)],[c_0_9, c_0_9])).\ncnf(c_0_27, plain, (s(X1,s(X1,s(X2,X1)))=s(X2,X1)), inference(rw,[status(thm)],[inference(spm,[status(thm)],[c_0_9, c_0_25]), c_0_24])).\ncnf(c_0_28, plain, (s(X1,s(s(X2,X1),X1))=s(X2,X1)), inference(spm,[status(thm)],[c_0_22, c_0_25])).\ncnf(c_0_29, plain, (s(X1,s(s(X1,X2),X1))=s(X2,X1)), inference(rw,[status(thm)],[inference(rw,[status(thm)],[inference(rw,[status(thm)],[inference(spm,[status(thm)],[c_0_26, c_0_9]), c_0_27]), c_0_28]), c_0_22])).\ncnf(c_0_30, plain, (s(s(X1,X1),s(X1,X2))=X1), inference(rw,[status(thm)],[c_0_23, c_0_29])).\ncnf(c_0_31, plain, (s(s(s(X1,s(s(X1,X2),X1)),X3),s(X2,s(s(X2,X3),X2)))=X3), inference(spm,[status(thm)],[c_0_9, c_0_26])).\ncnf(c_0_32, plain, (s(X1,X2)=s(X2,X1)), inference(rw,[status(thm)],[inference(spm,[status(thm)],[c_0_22, c_0_30]), c_0_29])).\ncnf(c_0_33, plain, (s(X1,s(X2,s(s(X2,s(s(X3,X2),s(s(s(X3,X2),X1),s(X3,X2)))),X2)))=s(s(X3,X2),s(s(s(X3,X2),X1),s(X3,X2)))), inference(spm,[status(thm)],[c_0_26, c_0_16])).\ncnf(c_0_34, plain, (s(s(X1,X2),s(s(X2,X3),X1))=X1), inference(rw,[status(thm)],[inference(rw,[status(thm)],[inference(rw,[status(thm)],[c_0_31, c_0_29]), c_0_29]), c_0_32])).\ncnf(c_0_35, plain, (s(X1,s(X2,s(X1,s(X3,X2))))=s(X1,s(X3,X2))), inference(rw,[status(thm)],[inference(rw,[status(thm)],[inference(rw,[status(thm)],[inference(rw,[status(thm)],[c_0_33, c_0_29]), c_0_29]), c_0_29]), c_0_32])).\ncnf(c_0_36, plain, (s(s(X1,X2),s(X2,s(X1,X3)))=X2), inference(rw,[status(thm)],[inference(spm,[status(thm)],[c_0_34, c_0_34]), c_0_32])).\nfof(c_0_37, negated_conjecture, ~(![X1, X2]:(s(s(X1,s(X2,s(X2,X1))),X2)=s(X2,s(X1,s(s(X1,X2),X1))))), inference(assume_negation,[status(cth)],[goal])).\ncnf(c_0_38, plain, (s(X1,s(X2,s(X2,X1)))=s(X1,X1)), inference(spm,[status(thm)],[c_0_35, c_0_36])).\nfof(c_0_39, negated_conjecture, s(s(esk1_0,s(esk2_0,s(esk2_0,esk1_0))),esk2_0)!=s(esk2_0,s(esk1_0,s(s(esk1_0,esk2_0),esk1_0))), inference(fof_nnf,[status(thm)],[inference(skolemize,[status(esa)],[inference(variable_rename,[status(thm)],[inference(fof_nnf,[status(thm)],[c_0_37])])])])).\ncnf(c_0_40, plain, (s(X1,s(X2,X2))=s(X1,s(X1,X2))), inference(spm,[status(thm)],[c_0_35, c_0_38])).\ncnf(c_0_41, negated_conjecture, (s(s(esk1_0,s(esk2_0,s(esk2_0,esk1_0))),esk2_0)!=s(esk2_0,s(esk1_0,s(s(esk1_0,esk2_0),esk1_0)))), inference(split_conjunct,[status(thm)],[c_0_39])).\ncnf(c_0_42, plain, (s(X1,s(X2,X2))=s(X1,s(X2,X1))), inference(spm,[status(thm)],[c_0_40, c_0_32])).\ncnf(c_0_43, plain, (s(X1,s(X2,s(X1,X1)))=s(X1,X1)), inference(rw,[status(thm)],[inference(rw,[status(thm)],[inference(spm,[status(thm)],[c_0_21, c_0_24]), c_0_22]), c_0_24])).\ncnf(c_0_44, negated_conjecture, ($false), inference(cn,[status(thm)],[inference(rw,[status(thm)],[inference(rw,[status(thm)],[inference(rw,[status(thm)],[inference(rw,[status(thm)],[inference(rw,[status(thm)],[inference(rw,[status(thm)],[inference(rw,[status(thm)],[c_0_41, c_0_29]), c_0_32]), c_0_42]), c_0_43]), c_0_32]), c_0_32]), c_0_42])]), ['proof']).\n% SZS output end CNFRefutation\n\n% -------------------------------------------------\n% Total SizeMalloc()ed memory: 6236790744 Bytes (17846364 requests)\n% Total SizeFree()ed   memory: 6236790744 Bytes (17846364 requests)\n% New requests: 762753 (762649 by SecureMalloc(),    104 by SecureRealloc())\n% Total SecureMalloc()ed memory: 62222973 Bytes\n% Returned:    762753 (762753 by FREE(),              0 by SecureRealloc())\n% SecureRealloc(ptr):    112 (   104 Allocs,      0 Frees,      8 Reallocs)\n% -------------------------------------------------\n\n",
+     "status": "PROVED",
+     "target": "![X]: (![Y]: (s(s(X,s(Y,s(Y,X))),Y) = s(Y,s(X,s(s(X,Y),X)))))"
+    },
+    {
+     "lemmas_used": [
+      "L0",
+      "L1"
+     ],
+     "premise_ids": [
+      "L0",
+      "L1"
+     ],
+     "proof": "SZS output start CNFRefutation\nfof(ax1, axiom, ![X1, X2]:(s(s(s(X1,X2),X1),s(X1,X1))=X1), file('/tmp/genesis-e-_cpelhxl/p.p', ax1)).\nfof(ax2, axiom, ![X1, X2]:(s(s(X1,X1),X1)=s(X2,s(X2,X2))), file('/tmp/genesis-e-_cpelhxl/p.p', ax2)).\nfof(ax0, axiom, ![X1, X2, X3]:(s(s(s(X1,X2),X3),s(X1,s(s(X1,X3),X1)))=X3), file('/tmp/genesis-e-_cpelhxl/p.p', ax0)).\nfof(goal, conjecture, ![X1, X2, X3]:(s(s(s(s(X1,X1),X1),X2),X3)=s(X3,s(s(s(X3,X2),X3),X2))), file('/tmp/genesis-e-_cpelhxl/p.p', goal)).\nfof(c_0_4, plain, ![X7, X8]:(s(s(s(X7,X8),X7),s(X7,X7))=X7), inference(variable_rename,[status(thm)],[ax1])).\nfof(c_0_5, plain, ![X9, X10]:(s(s(X9,X9),X9)=s(X10,s(X10,X10))), inference(variable_rename,[status(thm)],[ax2])).\nfof(c_0_6, plain, ![X4, X5, X6]:(s(s(s(X4,X5),X6),s(X4,s(s(X4,X6),X4)))=X6), inference(variable_rename,[status(thm)],[ax0])).\ncnf(c_0_7, plain, (s(s(s(X1,X2),X1),s(X1,X1))=X1), inference(split_conjunct,[status(thm)],[c_0_4])).\ncnf(c_0_8, plain, (s(s(X1,X1),X1)=s(X2,s(X2,X2))), inference(split_conjunct,[status(thm)],[c_0_5])).\ncnf(c_0_9, plain, (s(s(s(X1,X2),X3),s(X1,s(s(X1,X3),X1)))=X3), inference(split_conjunct,[status(thm)],[c_0_6])).\ncnf(c_0_10, plain, (s(s(X1,s(X1,X1)),s(X2,X2))=X2), inference(spm,[status(thm)],[c_0_7, c_0_8])).\ncnf(c_0_11, plain, (s(s(s(X1,X2),X1),s(X1,s(X3,s(X3,X3))))=X1), inference(spm,[status(thm)],[c_0_9, c_0_8])).\ncnf(c_0_12, plain, (s(s(s(s(X1,X1),X2),X1),s(s(X1,X1),X1))=X1), inference(rw,[status(thm)],[inference(spm,[status(thm)],[c_0_9, c_0_8]), c_0_10])).\ncnf(c_0_13, plain, (s(s(X1,s(X1,X1)),s(X2,s(X3,s(X3,X3))))=X2), inference(spm,[status(thm)],[c_0_11, c_0_8])).\ncnf(c_0_14, plain, (s(s(s(s(X1,X1),X2),X1),s(X3,s(X3,X3)))=X1), inference(spm,[status(thm)],[c_0_12, c_0_8])).\ncnf(c_0_15, plain, (s(X1,s(X1,X1))=s(X2,s(X2,X2))), inference(spm,[status(thm)],[c_0_8, c_0_8])).\ncnf(c_0_16, plain, (s(s(X1,X2),s(s(X3,s(X3,X3)),X2))=X2), inference(rw,[status(thm)],[inference(spm,[status(thm)],[c_0_9, c_0_13]), c_0_13])).\ncnf(c_0_17, plain, (s(s(s(X1,s(X1,X1)),X2),s(X3,s(X3,X3)))=X2), inference(spm,[status(thm)],[c_0_14, c_0_15])).\ncnf(c_0_18, plain, (s(s(X1,X2),s(s(X3,X1),s(s(s(X3,X1),X2),s(X3,X1))))=X2), inference(spm,[status(thm)],[c_0_9, c_0_16])).\ncnf(c_0_19, plain, (s(s(X1,X1),s(X2,s(X2,X2)))=X1), inference(spm,[status(thm)],[c_0_14, c_0_16])).\ncnf(c_0_20, plain, (s(s(X1,X2),s(X2,X2))=X2), inference(rw,[status(thm)],[inference(rw,[status(thm)],[inference(spm,[status(thm)],[c_0_16, c_0_16]), c_0_10]), c_0_10])).\ncnf(c_0_21, plain, (s(X1,s(X2,s(s(X2,s(X1,X1)),X2)))=s(X1,X1)), inference(spm,[status(thm)],[c_0_9, c_0_10])).\ncnf(c_0_22, plain, (s(s(X1,X2),s(X2,s(X1,X2)))=X2), inference(rw,[status(thm)],[inference(rw,[status(thm)],[inference(spm,[status(thm)],[c_0_17, c_0_18]), c_0_19]), c_0_20])).\ncnf(c_0_23, plain, (s(s(X1,X1),s(X2,s(s(X2,X1),X2)))=X1), inference(spm,[status(thm)],[c_0_21, c_0_20])).\ncnf(c_0_24, plain, (s(s(X1,s(X2,X1)),X1)=s(X2,X1)), inference(spm,[status(thm)],[c_0_22, c_0_22])).\ncnf(c_0_25, plain, (s(s(X1,X1),s(X2,X1))=X1), inference(rw,[status(thm)],[inference(rw,[status(thm)],[inference(spm,[status(thm)],[c_0_23, c_0_24]), c_0_22]), c_0_24])).\ncnf(c_0_26, plain, (s(X1,s(s(X2,X3),s(s(s(X2,X3),s(X2,s(s(X2,X1),X2))),s(X2,X3))))=s(X2,s(s(X2,X1),X2))), inference(spm,[status(thm)],[c_0_9, c_0_9])).\ncnf(c_0_27, plain, (s(X1,s(X1,s(X2,X1)))=s(X2,X1)), inference(rw,[status(thm)],[inference(spm,[status(thm)],[c_0_9, c_0_25]), c_0_24])).\ncnf(c_0_28, plain, (s(X1,s(s(X2,X1),X1))=s(X2,X1)), inference(spm,[status(thm)],[c_0_22, c_0_25])).\ncnf(c_0_29, plain, (s(X1,s(s(X1,X2),X1))=s(X2,X1)), inference(rw,[status(thm)],[inference(rw,[status(thm)],[inference(rw,[status(thm)],[inference(spm,[status(thm)],[c_0_26, c_0_9]), c_0_27]), c_0_28]), c_0_22])).\ncnf(c_0_30, plain, (s(s(X1,X1),s(X1,X2))=X1), inference(rw,[status(thm)],[c_0_23, c_0_29])).\ncnf(c_0_31, plain, (s(s(s(X1,s(s(X1,X2),X1)),X3),s(X2,s(s(X2,X3),X2)))=X3), inference(spm,[status(thm)],[c_0_9, c_0_26])).\ncnf(c_0_32, plain, (s(X1,X2)=s(X2,X1)), inference(rw,[status(thm)],[inference(spm,[status(thm)],[c_0_22, c_0_30]), c_0_29])).\nfof(c_0_33, negated_conjecture, ~(![X1, X2, X3]:(s(s(s(s(X1,X1),X1),X2),X3)=s(X3,s(s(s(X3,X2),X3),X2)))), inference(assume_negation,[status(cth)],[goal])).\ncnf(c_0_34, plain, (s(X1,s(X2,s(s(X2,s(s(X3,X2),s(s(s(X3,X2),X1),s(X3,X2)))),X2)))=s(s(X3,X2),s(s(s(X3,X2),X1),s(X3,X2)))), inference(spm,[status(thm)],[c_0_26, c_0_16])).\ncnf(c_0_35, plain, (s(s(X1,X2),s(s(X2,X3),X1))=X1), inference(rw,[status(thm)],[inference(rw,[status(thm)],[inference(rw,[status(thm)],[c_0_31, c_0_29]), c_0_29]), c_0_32])).\nfof(c_0_36, negated_conjecture, s(s(s(s(esk1_0,esk1_0),esk1_0),esk2_0),esk3_0)!=s(esk3_0,s(s(s(esk3_0,esk2_0),esk3_0),esk2_0)), inference(fof_nnf,[status(thm)],[inference(skolemize,[status(esa)],[inference(variable_rename,[status(thm)],[inference(fof_nnf,[status(thm)],[c_0_33])])])])).\ncnf(c_0_37, plain, (s(X1,s(X2,s(X1,s(X3,X2))))=s(X1,s(X3,X2))), inference(rw,[status(thm)],[inference(rw,[status(thm)],[inference(rw,[status(thm)],[inference(rw,[status(thm)],[c_0_34, c_0_29]), c_0_29]), c_0_29]), c_0_32])).\ncnf(c_0_38, plain, (s(s(X1,X2),s(X2,s(X1,X3)))=X2), inference(rw,[status(thm)],[inference(spm,[status(thm)],[c_0_35, c_0_35]), c_0_32])).\ncnf(c_0_39, negated_conjecture, (s(s(s(s(esk1_0,esk1_0),esk1_0),esk2_0),esk3_0)!=s(esk3_0,s(s(s(esk3_0,esk2_0),esk3_0),esk2_0))), inference(split_conjunct,[status(thm)],[c_0_36])).\ncnf(c_0_40, plain, (s(s(s(X1,X1),X1),X2)=s(X2,X2)), inference(rw,[status(thm)],[inference(spm,[status(thm)],[c_0_16, c_0_8]), c_0_10])).\ncnf(c_0_41, plain, (s(X1,s(X2,s(X2,X1)))=s(X1,X1)), inference(spm,[status(thm)],[c_0_37, c_0_38])).\ncnf(c_0_42, negated_conjecture, (s(esk3_0,s(s(s(esk3_0,esk2_0),esk3_0),esk2_0))!=s(s(esk2_0,esk2_0),esk3_0)), inference(rw,[status(thm)],[c_0_39, c_0_40])).\ncnf(c_0_43, plain, (s(X1,s(X2,X2))=s(X1,s(X1,X2))), inference(spm,[status(thm)],[c_0_37, c_0_41])).\ncnf(c_0_44, negated_conjecture, ($false), inference(cn,[status(thm)],[inference(rw,[status(thm)],[inference(rw,[status(thm)],[inference(rw,[status(thm)],[inference(rw,[status(thm)],[inference(rw,[status(thm)],[inference(rw,[status(thm)],[c_0_42, c_0_32]), c_0_32]), c_0_32]), c_0_41]), c_0_43]), c_0_43])]), ['proof']).\n% SZS output end CNFRefutation\n\n% -------------------------------------------------\n% Total SizeMalloc()ed memory: 6241802912 Bytes (17856778 requests)\n% Total SizeFree()ed   memory: 6241802912 Bytes (17856778 requests)\n% New requests: 762811 (762706 by SecureMalloc(),    105 by SecureRealloc())\n% Total SecureMalloc()ed memory: 62242779 Bytes\n% Returned:    762811 (762811 by FREE(),              0 by SecureRealloc())\n% SecureRealloc(ptr):    113 (   105 Allocs,      0 Frees,      8 Reallocs)\n% -------------------------------------------------\n\n",
+     "status": "PROVED",
+     "target": "![X]: (![Y]: (![Z]: (s(s(s(s(X,X),X),Y),Z) = s(Z,s(s(s(Z,Y),Z),Y)))))"
+    },
+    {
+     "lemmas_used": [],
+     "premise_ids": [
+      "L0",
+      "L1"
+     ],
+     "proof": null,
+     "status": "ERROR",
+     "target": "![X]: (![Y]: (![Z]: (s(X,s(s(X,s(Y,Y)),Z)) = s(X,s(Z,Y)))))"
+    }
+   ],
+   "lemmas_used": [
+    "L0",
+    "L1"
+   ],
+   "library": 2,
+   "library_entries": null,
+   "library_sha256": "c19a41de723f9cd6887c179b5e76c95e89bfdf724eaa12a093f173580fb169ed",
+   "research_cpu_s": 4.76,
+   "successor_proved": 7,
+   "tried": 6
+  }
+ },
+ "policy_weights_sha256": "ab778f98b521f594f34e8114d8fb1c4d78903270a0330dc6a6953be9cf3fba82",
+ "rules": {
+  "budget_s": 4.23,
+  "dev_targets": 10,
+  "eval_s": 3,
+  "eval_targets": 15,
+  "false_conjectures": 30,
+  "per_bucket": 8,
+  "policies": [
+   "fixed",
+   "random",
+   "heuristic",
+   "bandit",
+   "learned"
+  ],
+  "pool_size": 5,
+  "premise_k": 8,
+  "prove_s": 10,
+  "target_range": [
+   5,
+   8
+  ]
+ },
+ "seed": 313,
+ "system": "ba_wolfram",
+ "targets": [
+  "![X]: (![Y]: (![Z]: (s(s(s(X,Y),X),s(Z,Y)) = s(s(Z,Y),s(s(X,Y),X)))))",
+  "![X]: (![Y]: (![Z]: (s(X,s(s(s(X,Y),Y),X)) = s(Y,s(Y,s(s(Z,Z),Z))))))",
+  "![X]: (![Y]: (![Z]: (s(s(X,Y),s(s(s(Y,Z),Z),Z)) = s(s(Y,X),s(Z,Y)))))",
+  "![X]: (![Y]: (![Z]: (s(X,s(X,s(s(Y,Z),X))) = s(X,s(Z,s(s(X,Y),Z))))))",
+  "![X]: (![Y]: (![Z]: (s(s(s(X,X),s(Y,Y)),Z) = s(Z,s(s(X,Z),s(Y,Z))))))",
+  "![X]: (![Y]: (![Z]: (s(s(s(X,s(Y,s(Z,Y))),Y),X) = s(s(s(X,Z),Y),X))))",
+  "![X]: (![Y]: (![Z]: (s(s(s(X,X),Y),s(Z,Y)) = s(s(Y,Z),s(s(X,Y),Y)))))",
+  "![X]: (![Y]: (![Z]: (s(s(X,s(Y,Y)),Z) = s(Z,s(s(Y,Y),s(Z,s(Z,X)))))))",
+  "![X]: (![Y]: (![Z]: (s(s(s(X,Y),Y),s(Z,Y)) = s(s(Z,Y),s(Y,s(X,Y))))))",
+  "![X]: (![Y]: (![Z]: (s(s(X,s(s(Y,Z),s(Y,Y))),Y) = s(Y,s(Y,X)))))",
+  "![X]: (![Y]: (![Z]: (s(s(s(s(X,Y),X),Z),X) = s(X,s(Y,s(Y,s(Y,Z)))))))",
+  "![X]: (![Y]: (![Z]: (s(s(X,s(Y,s(Y,X))),Z) = s(Z,s(s(Y,s(Z,Y)),X)))))",
+  "![X]: (![Y]: (s(s(X,s(Y,s(Y,X))),Y) = s(Y,s(X,s(s(X,Y),X)))))",
+  "![X]: (![Y]: (![Z]: (s(s(s(s(X,X),X),Y),Z) = s(Z,s(s(s(Z,Y),Z),Y)))))",
+  "![X]: (![Y]: (![Z]: (s(X,s(s(X,s(Y,Y)),Z)) = s(X,s(Z,Y)))))"
+ ]
+}
