@@ -2,17 +2,18 @@
 # The base image MUST be pinned by digest before use; scripts/pin_container.sh
 # resolves and writes it. This file was authored where no registry was
 # reachable, so the digest below is a placeholder that fails the build.
-ARG BASE=python:3.12-slim@sha256:PIN_REQUIRED_RUN_scripts_pin_container_sh
+ARG BASE=python:3.13-slim-bookworm@sha256:PIN_REQUIRED_RUN_scripts_pin_container_sh
 FROM ${BASE}
 RUN apt-get update && apt-get install -y --no-install-recommends \
       build-essential cmake git curl ca-certificates runc && rm -rf /var/lib/apt/lists/*
 WORKDIR /opt/genesis
 COPY requirements.lock ./
 RUN python -m pip install --no-cache-dir -r requirements.lock
+COPY environment/lock_fingerprints.json environment/
 COPY toolchain/ toolchain/
 ENV GENESIS_TOOLCHAIN=/opt/toolchain
 RUN toolchain/install_tools.sh
 COPY . .
 ENV PYTHONPATH=/opt/genesis/src
-RUN python scripts/run_test_matrix.py --profile commit
+RUN python scripts/environment_lock.py --check && python scripts/run_test_matrix.py --profile commit
 ENTRYPOINT ["python", "-m", "genesis"]

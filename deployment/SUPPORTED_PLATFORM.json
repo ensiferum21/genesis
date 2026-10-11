@@ -1,0 +1,31 @@
+{
+ "schema": "genesis-supported-platform-v1",
+ "requirements": {
+  "os": "Linux",
+  "machine": "x86_64",
+  "implementation": "CPython",
+  "python": "3.13",
+  "kernel_min": "5.15",
+  "glibc_min": "2.35",
+  "runc_min": "1.1.0",
+  "cgroup_controllers": {
+   "v1": ["cpu", "cpuacct", "memory", "pids"],
+   "v2": ["cpu", "memory", "pids"]
+  },
+  "store_filesystems": ["ext4", "ext2/ext3", "ext2", "ext3", "xfs", "btrfs"],
+  "privilege": "the sandbox launcher runs as root; research workers, custodian and verifiers do not"
+ },
+ "tested_hosts": [
+  {"label": "build host (this repository's B15 run)", "kernel": "6.18.44", "python": "3.13.16",
+   "glibc": "2.39", "runc": "1.5.1", "cgroup": "v1 hybrid", "store_filesystem": "ext2/ext3"}
+ ],
+ "container": {
+  "base_image": "python:3.13-slim-bookworm",
+  "digest": null,
+  "status": "BLOCKED: no container registry was reachable from the build host; scripts/pin_container.sh resolves the digest where one is"
+ },
+ "notes": [
+  "Store roots on tmpfs, NFS or FUSE are unsupported: durability relies on fsync and rename on a local disk.",
+  "cgroup v2 hosts are supported by the sandbox statistics reader but were not exercised on the build host."
+ ]
+}

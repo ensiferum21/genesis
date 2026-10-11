@@ -110,6 +110,8 @@ def main(argv=None):
     ap=argparse.ArgumentParser(prog='genesis');subs=ap.add_subparsers(dest='command',required=True)
     p=subs.add_parser('init');p.add_argument('root',type=Path);p.add_argument('--config',type=Path)
     subs.add_parser('doctor')
+    p=subs.add_parser('platform');p.add_argument('action',choices=['check'])
+    p.add_argument('--store-root',type=Path,default=None,help='campaign root whose filesystem must be supported')
     p=subs.add_parser('smoke');p.add_argument('root',type=Path);p.add_argument('--seed',type=int,default=20261010)
     p=subs.add_parser('campaign');p.add_argument('action',choices=['run','status']);p.add_argument('root',type=Path)
     p=subs.add_parser('world');p.add_argument('action',choices=['list']);p.add_argument('root',type=Path)
@@ -143,6 +145,11 @@ def main(argv=None):
     p.add_argument('--no-dsl-arms',action='store_true',help='run only the specialist/candidate arms')
     args=ap.parse_args(argv)
     if args.command=='doctor':result=doctor()
+    elif args.command=='platform':
+        from .deployment import platform_report
+        result=platform_report(store_root=args.store_root)
+        print(json.dumps(result,indent=2,sort_keys=True))
+        raise SystemExit({'SUPPORTED':0,'UNVERIFIED':2}.get(result['verdict'],1))
     elif args.command=='benchmark':result=run_benchmark(args)
     elif args.command=='research':
         from .worldstep import ResearchLoop,LoopConfig

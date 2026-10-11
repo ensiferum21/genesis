@@ -136,8 +136,10 @@ def _config(policy, argv, cid, ro_mounts=None, extra_env=None):
     }
 
 
-def _cgroup_stat(cid):
-    base = Path('/sys/fs/cgroup')
+def _cgroup_stat(cid, base=Path('/sys/fs/cgroup')):
+    base = Path(base)
+    if (base / 'cgroup.controllers').exists() and not (base / 'memory').is_dir():
+        return _cgroup_stat_v2(base / 'genesis-sandbox' / cid)
     out = {}
     for name, rel in (('cpu_ns', f'cpuacct/genesis-sandbox/{cid}/cpuacct.usage'),
                       ('peak_memory_bytes', f'memory/genesis-sandbox/{cid}/memory.max_usage_in_bytes'),
@@ -152,6 +154,24 @@ def _cgroup_stat(cid):
     except OSError:
         out['oom_killed'] = None
     return out
+
+
+def _cgroup_stat_v2(group):
+    """cgroup v2 unified hierarchy: cpu.stat usage_usec, memory.peak, memory.events oom_kill."""
+    def keyed(name):
+        try:
+            return dict(line.split() for line in (group / name).read_text().splitlines() if line.strip())
+        except (OSError, ValueError):
+            return None
+    cpu, events = keyed('cpu.stat'), keyed('memory.events')
+    try:
+        peak = int((group / 'memory.peak').read_text().strip())
+    except (OSError, ValueError):
+        peak = None
+    usage = cpu.get('usage_usec') if cpu else None
+    return {'cpu_ns': int(usage) * 1000 if usage is not None else None, 'peak_memory_bytes': peak,
+            'memory_failcnt': int(events['max']) if events and 'max' in events else None,
+            'oom_killed': (int(events.get('oom_kill', 0)) > 0) if events is not None else None}
 
 
 def _collect(outdir, cap):

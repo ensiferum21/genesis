@@ -1,0 +1,125 @@
+{
+ "distributions": {
+  "annotated-types": {
+   "content_sha256": "47a58722c2566685471b9390cfbda19c71e417ef8d2296699cf610e84e6391bf",
+   "top_level": [
+    "annotated_types"
+   ],
+   "version": "0.8.0"
+  },
+  "cffi": {
+   "content_sha256": "3871f1ef938a6f474a18adc9cf9430a6410dd3b46a29944196405eeb4affb269",
+   "top_level": [
+    "cffi"
+   ],
+   "version": "2.1.1"
+  },
+  "cloudpickle": {
+   "content_sha256": "c4fb666ca654aacaedbd84645dde7b7c456a612ace2e9e347990209f0ded12eb",
+   "top_level": [
+    "cloudpickle"
+   ],
+   "version": "3.1.2"
+  },
+  "cryptography": {
+   "content_sha256": "bf6b19e054af5c589fbc1c544757344fcc18014a43ccc44f9ff3240b4f582f99",
+   "top_level": [
+    "cryptography"
+   ],
+   "version": "50.0.1"
+  },
+  "joblib": {
+   "content_sha256": "5ade84a5f8179246c8f48532a535ed634e41002bb477104d887fcdb60a7650b2",
+   "top_level": [
+    "joblib"
+   ],
+   "version": "1.6.0"
+  },
+  "narwhals": {
+   "content_sha256": "8b762c51e8a6b59b2a52f0ee662c9fd315526081feb5ffe837bd81573f293254",
+   "top_level": [
+    "narwhals"
+   ],
+   "version": "2.26.0"
+  },
+  "networkx": {
+   "content_sha256": "ebfdff736631e7df4100a30a2dbcf19dc2b8619819fba9a211e1883e13375afe",
+   "top_level": [
+    "networkx"
+   ],
+   "version": "3.6.1"
+  },
+  "numpy": {
+   "content_sha256": "661570aae00f1f0dcba5cd12ec97caa42495ad4ef72b4f2eacfc801a3b6e08e4",
+   "top_level": [
+    "numpy"
+   ],
+   "version": "2.5.3"
+  },
+  "packaging": {
+   "content_sha256": "d533f942d0aefd9290cdacbdcc977aad6a925ea43fc240202f96531b465d006f",
+   "top_level": [
+    "packaging"
+   ],
+   "version": "26.3"
+  },
+  "pycparser": {
+   "content_sha256": "af716abad1627801a5069717b84e136ea1b826e36c1f6e894ff6e3b57e805dac",
+   "top_level": [
+    "pycparser"
+   ],
+   "version": "3.0"
+  },
+  "pydantic": {
+   "content_sha256": "5cfacd307fa09c79a93d4e5789f323d2edad1a395b7bed6afd7335401cf2edd7",
+   "top_level": [
+    "pydantic"
+   ],
+   "version": "2.13.5"
+  },
+  "pydantic-core": {
+   "content_sha256": "86ddab098f3b1a9b6f223d725765f752c1df82c0e2a1c9cd0d64ee9a17476c9d",
+   "top_level": [
+    "pydantic_core"
+   ],
+   "version": "2.46.5"
+  },
+  "scikit-learn": {
+   "content_sha256": "7125886e3754299ba07aaaf2be3d6afcf0c04c63d1cc1163e652a6d77a0df78d",
+   "top_level": [
+    "sklearn"
+   ],
+   "version": "1.9.1"
+  },
+  "scipy": {
+   "content_sha256": "c32c49328cdfc1c14ce376b42bc2677d20431ed689d730d6096ee626d67b7233",
+   "top_level": [
+    "scipy"
+   ],
+   "version": "1.18.1"
+  },
+  "threadpoolctl": {
+   "content_sha256": "8310c2d835434e0e9100c7b02f29ca4d9287748865dffe8e6ee552ae6bf8f7c2",
+   "top_level": [
+    "threadpoolctl"
+   ],
+   "version": "3.7.0"
+  },
+  "typing-extensions": {
+   "content_sha256": "e830429fc0980aef8a4bf0e156aadf613913098cacac5226594f3e5d8298e1a1",
+   "top_level": [
+    "typing_extensions"
+   ],
+   "version": "4.16.0"
+  },
+  "typing-inspection": {
+   "content_sha256": "8c00c7066c86c03110d69c53fc2f3b16078b81234c3107dd80cf1a171fa86611",
+   "top_level": [
+    "typing_inspection"
+   ],
+   "version": "0.4.4"
+  }
+ },
+ "python": "3.13",
+ "schema": "genesis-lock-fingerprints-v1"
+}

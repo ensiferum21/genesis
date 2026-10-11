@@ -28,6 +28,15 @@ def sha256(data):
     return hashlib.sha256(data).hexdigest()
 
 
+def _lock_check():
+    sys.path.insert(0, str(ROOT / 'src'))
+    from genesis.deployment import check_lock
+    try:
+        return check_lock()
+    except (OSError, ValueError) as exc:
+        return {'ok': False, 'problems': [f'{type(exc).__name__}: {exc}']}
+
+
 def environment():
     packages = {}
     for name in ('pydantic', 'pydantic-core', 'numpy', 'scipy', 'cryptography', 'scikit-learn', 'networkx'):
@@ -41,9 +50,7 @@ def environment():
         'platform': platform.platform(),
         'packages': packages,
         'toolchain_pins': json.loads(pins.read_text()) if pins.exists() else None,
-        'deviation': ('requirements.lock pins Python 3.12; this checkpoint was tested on the '
-                      'interpreter above because the pinned wheels were not downloadable here')
-        if not sys.version.startswith('3.12') else None,
+        'dependency_lock_check': _lock_check(),
     }
 
 
