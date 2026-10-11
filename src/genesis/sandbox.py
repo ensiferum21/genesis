@@ -66,7 +66,20 @@ class SandboxPolicy(StrictModel):
 
 
 def available():
+    """True if this process can sandbox: as root with runc, or via a launcher socket."""
+    return local_available() or launcher_socket() is not None
+
+
+def local_available():
     return RUNC is not None and os.geteuid() == 0
+
+
+def launcher_socket():
+    """The launcher socket an unprivileged worker should use, if configured and present."""
+    path = os.environ.get('GENESIS_LAUNCHER_SOCKET')
+    if os.geteuid() != 0 and path and Path(path).exists():
+        return path
+    return None
 
 
 def policy_digest(policy):
@@ -197,15 +210,30 @@ def run(files, argv, policy=None, *, grant=None, ledger=None, ro_mounts=None, en
     """Execute untrusted code. `files` (name -> bytes) are placed read-only under /work/src.
 
     Returns a receipt dict with status in SUCCESS, EXIT_NONZERO, TIMEOUT, CPU_LIMIT,
-    OOM, OUTPUT_LIMIT, SANDBOX_UNAVAILABLE or SANDBOX_ERROR, plus collected outputs.
+    OOM, OUTPUT_LIMIT, SANDBOX_UNAVAILABLE, SANDBOX_ERROR or LAUNCHER_REFUSED, plus
+    collected outputs. An unprivileged process delegates to the root launcher
+    (genesis.launcher) when GENESIS_LAUNCHER_SOCKET is set.
     """
     policy = policy or SandboxPolicy()
     if ledger is not None:
         ledger.require(grant, 'execute_sandboxed_code', cpu_seconds=policy.cpu_seconds, attempts=1)
+    sock = launcher_socket()
+    if sock is not None:
+        from .launcher import request
+        try:
+            return request(sock, files, argv, policy, ro_mounts=ro_mounts, env=env)
+        except OSError as exc:
+            return {'status': 'SANDBOX_UNAVAILABLE', 'reason': f'launcher unreachable: {type(exc).__name__}',
+                    'argv': list(argv), 'runtime': 'runc-via-launcher'}
+    return _run_local(files, argv, policy, ro_mounts=ro_mounts, env=env)
+
+
+def _run_local(files, argv, policy, *, ro_mounts=None, env=None):
+    """Drive runc directly (root only)."""
     base_receipt = {'policy': policy.model_dump(mode='json'), 'policy_sha256': policy_digest(policy),
                     'argv': list(argv), 'inputs': {k: bytes_hash(v) for k, v in sorted(files.items())},
                     'runtime': 'runc', 'sandbox': 'OCI_RUNC_NO_NETWORK_RO_ROOT_SECCOMP'}
-    if not available():
+    if not local_available():
         return dict(base_receipt, status='SANDBOX_UNAVAILABLE', reason='runc missing or not running as root')
     cid = 'g' + uuid.uuid4().hex[:24]
     bundle = Path(tempfile.mkdtemp(prefix='genesis-sbx-'))
@@ -305,8 +333,6 @@ def run(files, argv, policy=None, *, grant=None, ledger=None, ro_mounts=None, en
         if mounted:
             subprocess.run(['umount', '-l', str(work)], capture_output=True)
         shutil.rmtree(bundle, ignore_errors=True)
-        if ledger is not None:
-            pass  # charging happens in the caller once the receipt is stored
 
 
 def run_python(source, policy=None, *, args=(), **kw):
