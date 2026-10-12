@@ -136,7 +136,16 @@ class Runs(unittest.TestCase):
         res = RS.run('ba_sheffer', RS.Fixed(), pool, budget_s=2.0, dev_targets=dev, prove_s=1)
         self.assertTrue(res['library'])
         self.assertTrue(all(Q.holds(l['eq'], 'nand') for l in res['library']))     # only true lemmas enter
-        self.assertTrue(all(t['outcome'] in ('PROVED', 'UNPROVED', 'FALSE') for t in res['trajectory']))
+        # B20_R1 (Repair B): the repaired loop also records a chosen conjecture it could not
+        # afford (NOT_ATTEMPTED, last step only, with the stop reason) and proofs from attempts
+        # that were not eligible for credit (PROVED_NOT_CREDITED). SCREENED_OUT needs a screen.
+        outcomes = [t['outcome'] for t in res['trajectory']]
+        self.assertTrue(set(outcomes) <= {'PROVED', 'UNPROVED', 'FALSE', 'PROVED_NOT_CREDITED', 'NOT_ATTEMPTED'})
+        self.assertNotIn('NOT_ATTEMPTED', outcomes[:-1])
+        if outcomes[-1] == 'NOT_ATTEMPTED':
+            self.assertEqual(res['trajectory'][-1]['reason'], res['account']['stop_reason'])
+        self.assertLessEqual(res['account']['cpu_ns_total'], 2 * 10 ** 9)
+        self.assertEqual(len(res['library']), outcomes.count('PROVED'))
         ev = RS.evaluate_successor('ba_sheffer', res['library'], dev, eval_s=1)
         self.assertEqual(ev['targets'], 3)
         lab = RS.usefulness_labels(res, ev)
