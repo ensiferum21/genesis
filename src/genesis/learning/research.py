@@ -165,6 +165,145 @@ class Learned(Policy):
         return max(untried, key=lambda e: (self.score[e], -(Q.size(e[0]) + Q.size(e[1])), repr(e)))
 
 
+# ---------------------------------------------------------------- B20_R3: cost-aware learned policy (B20R-OPEN-1)
+#
+# The B20/B20_R2 learned policy computed a pool x development-target overlap on every reset
+# (≈0.6 s of a 0.65 s cap on Huntington, so it attempted nothing), and ranked by
+# P(proved and later used by anything), which rewards chains of cheap lemmas that no target
+# proof needs. The redesign keeps the arm's information the same (pool, development targets,
+# a frozen model trained on other seeds' trajectories) and changes two things:
+#   * features are linear in the pool: development-target subterms are counted once;
+#   * the ranking is expected useful lemmas per CPU second: P(proved) x P(used by an eligible
+#     development-target proof | proved) / E[attempt CPU], with the attempt cost taken from
+#     training trajectories (proved attempts by total size, failed attempts as measured).
+
+FEATURE_NAMES_V2 = ['bias', 'size', 'variables', 'imbalance', 'variable_side', 'depth', 'overlap', 'frequency']
+MODEL_V2 = 'genesis-research-policy-cost-aware-v1'
+
+
+def depth(t):
+    return 0 if t[0] == 'var' or not t[2] else 1 + max(depth(a) for a in t[2])
+
+
+def dev_context(dev_targets):
+    """Canonical subterms of the development targets, counted once (O(targets))."""
+    from collections import Counter
+    c = Counter()
+    for t in dev_targets:
+        c.update(eq_subterms(t))
+    return c
+
+
+def features_v2(eq, ctx):
+    l, r = eq
+    st = eq_subterms(eq)
+    vs = len(Q._vars(l, set()) | Q._vars(r, set()))
+    hit = sum(1 for s in st if s in ctx)
+    freq = sum(ctx[s] for s in st if s in ctx)
+    return [1.0, (Q.size(l) + Q.size(r)) / 8.0, vs / 3.0, abs(Q.size(l) - Q.size(r)) / 8.0,
+            float(l[0] == 'var' or r[0] == 'var'), max(depth(l), depth(r)) / 4.0,
+            hit / len(st) if st else 0.0, math.log1p(freq) / 4.0]
+
+
+def needed_lemmas(library, evaluation):
+    """Library ids an eligible evaluation proof needs, directly or through lemma proofs."""
+    by = {l['id']: l for l in library}
+    need, stack = set(), [u for r in evaluation['rows'] if r['status'] == 'PROVED' for u in r['lemmas_used']]
+    while stack:
+        u = stack.pop()
+        if u not in need:
+            need.add(u)
+            stack += by[u]['uses']
+    return need
+
+
+def training_examples_v2(result, evaluation, dev_targets, by_text):
+    """Per attempted true conjecture of a training run: features, total size, whether the
+    attempt was credited, its measured CPU, and whether the lemma is needed by an eligible
+    development-target proof. ``by_text`` maps statement text to the pool equation."""
+    need = needed_lemmas(result['library'], evaluation)
+    lemma_of = {l['text']: l['id'] for l in result['library']}
+    ctx = dev_context(dev_targets)
+    out = []
+    for s in result['trajectory']:
+        if s['outcome'] not in ('PROVED', 'UNPROVED', 'PROVED_NOT_CREDITED'):
+            continue
+        e = by_text[s['eq']]
+        out.append({'text': s['eq'], 'x': features_v2(e, ctx), 'size': Q.size(e[0]) + Q.size(e[1]),
+                    'proved': int(s['outcome'] == 'PROVED'), 'cpu_s': s.get('cpu_s', 0.0),
+                    'used': int(s['eq'] in lemma_of and lemma_of[s['eq']] in need)})
+    return out
+
+
+def fit_cost_aware(examples, *, l2=1e-2, steps=3000):
+    """Frozen model from training examples (each with 'x', 'size', 'proved', 'cpu_s', 'used').
+    Deterministic. P(proved) is fitted on attempted true conjectures, P(used | proved) on the
+    proved ones, cost on measured attempt CPU."""
+    X = [e['x'] for e in examples]
+    w_prove = fit_logistic(X, [e['proved'] for e in examples], l2=l2, steps=steps)
+    proved = [e for e in examples if e['proved']]
+    w_use = fit_logistic([e['x'] for e in proved], [e['used'] for e in proved], l2=l2, steps=steps) if proved \
+        else [0.0] * len(FEATURE_NAMES_V2)
+    by_size = {}
+    for e in proved:
+        by_size.setdefault(str(e['size']), []).append(e['cpu_s'])
+    failed = [e['cpu_s'] for e in examples if not e['proved']]
+    cost_ok = sum(e['cpu_s'] for e in proved) / len(proved) if proved else 1.0
+    model = {'schema': MODEL_V2, 'features': FEATURE_NAMES_V2, 'w_prove': w_prove, 'w_use': w_use,
+             'cost_ok': round(cost_ok, 4),
+             'cost_ok_by_size': {k: round(sum(v) / len(v), 4) for k, v in sorted(by_size.items()) if len(v) >= 3},
+             'cost_fail': round(sum(failed) / len(failed), 4) if failed else 1.0, 'cost_floor': 0.005,
+             'examples': len(examples), 'proved': len(proved), 'used': sum(e['used'] for e in proved)}
+    return dict(model, model_sha256=digest(model))
+
+
+def model_problems(model):
+    """Shape check for a frozen cost-aware model (the arm refuses anything else)."""
+    out = []
+    if not isinstance(model, dict) or model.get('schema') != MODEL_V2:
+        return ['MODEL_SCHEMA']
+    body = {k: v for k, v in model.items() if k != 'model_sha256'}
+    if model.get('model_sha256') != digest(body):
+        out.append('MODEL_HASH')
+    for k in ('w_prove', 'w_use'):
+        if len(model.get(k) or []) != len(FEATURE_NAMES_V2):
+            out.append(f'MODEL_{k.upper()}_SHAPE')
+    if not (model.get('cost_fail', 0) > 0 and model.get('cost_ok', 0) > 0):
+        out.append('MODEL_COST')
+    return out
+
+
+class CostAware(Policy):
+    """B20_R3 redesign: expected useful lemmas per CPU second under a frozen model."""
+    name = 'learned2'
+
+    def __init__(self, model, seed=0):
+        super().__init__(seed)
+        bad = model_problems(model)
+        if bad:
+            raise ValueError(f'cost-aware model refused: {bad}')
+        self.model = model
+
+    def value(self, e, ctx):
+        m = self.model
+        x = features_v2(e, ctx)
+        p, u = predict(m['w_prove'], x), predict(m['w_use'], x)
+        c_ok = m['cost_ok_by_size'].get(str(Q.size(e[0]) + Q.size(e[1])), m['cost_ok'])
+        return p * u / (p * c_ok + (1 - p) * m['cost_fail'] + m['cost_floor'])
+
+    def reset(self, pool, dev_targets):
+        super().reset(pool, dev_targets)
+        ctx = dev_context(dev_targets)
+        keyed = [(-self.value(e, ctx), Q.size(e[0]) + Q.size(e[1]), repr(e), e) for e in pool]
+        keyed.sort(key=lambda k: k[:3])
+        self.order, self.at = [k[3] for k in keyed], 0
+
+    def choose(self, untried):
+        while self.order[self.at] not in untried:
+            self.at += 1
+        return self.order[self.at]
+
+
 def fit_logistic(X, y, *, l2=1e-2, steps=3000, lr=0.5):
     """Plain gradient descent; returns weights. Deterministic."""
     w = [0.0] * len(X[0])
@@ -441,4 +580,6 @@ def usefulness_labels(result, evaluation):
 
 __all__ = ['run', 'evaluate_successor', 'run_legacy_b20', 'evaluate_successor_legacy_b20', 'lemma_uid',
            'usefulness_labels', 'lean_chain', 'Fixed', 'Random', 'Heuristic', 'Bandit', 'Learned',
-           'fit_logistic', 'predict', 'features', 'FEATURE_NAMES', 'premises', 'used_inputs']
+           'fit_logistic', 'predict', 'features', 'FEATURE_NAMES', 'premises', 'used_inputs',
+           'CostAware', 'features_v2', 'FEATURE_NAMES_V2', 'dev_context', 'fit_cost_aware', 'model_problems',
+           'training_examples_v2', 'needed_lemmas']
