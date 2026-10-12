@@ -1,0 +1,90 @@
+{
+ "ba_huntington": {
+  "budget_s": 0.648,
+  "chosen_range": [
+   7,
+   10
+  ],
+  "exhaust_attempts": 125,
+  "exhaust_cpu_s": 2.591,
+  "rates": [
+   {
+    "range": [
+     5,
+     8
+    ],
+    "rate": 1.0,
+    "targets": 20
+   },
+   {
+    "range": [
+     6,
+     9
+    ],
+    "rate": 0.95,
+    "targets": 20
+   },
+   {
+    "range": [
+     7,
+     10
+    ],
+    "rate": 0.9,
+    "targets": 20
+   },
+   {
+    "range": [
+     8,
+     11
+    ],
+    "rate": 0.9,
+    "targets": 20
+   }
+  ],
+  "rule": "first range with rate in (0.2, 0.6), else closest to 0.4; cap = 0.25 x exhaust"
+ },
+ "ba_sheffer": {
+  "budget_s": 1.848,
+  "chosen_range": [
+   6,
+   9
+  ],
+  "exhaust_attempts": 89,
+  "exhaust_cpu_s": 7.392,
+  "rates": [
+   {
+    "range": [
+     5,
+     8
+    ],
+    "rate": 0.75,
+    "targets": 20
+   },
+   {
+    "range": [
+     6,
+     9
+    ],
+    "rate": 0.2,
+    "targets": 20
+   },
+   {
+    "range": [
+     7,
+     10
+    ],
+    "rate": 0.55,
+    "targets": 20
+   },
+   {
+    "range": [
+     8,
+     11
+    ],
+    "rate": 0.35,
+    "targets": 20
+   }
+  ],
+  "rule": "first range with rate in (0.2, 0.6), else closest to 0.4; cap = 0.25 x exhaust"
+ }
+}

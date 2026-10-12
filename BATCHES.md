@@ -41,6 +41,7 @@ session can resume from the latest checkpoint (see `RESUME.md`).
 | 19 | Useful discovery | W13–W17; E1/E2 readiness | Prospective usefulness accepted or branch rejected (B19: DEV evidence for W13–W15, W16 decided on DEV, W17 records, E1/E2 drafts; acceptance needs independent review and a custodian) |
 | 20 | Learned research | W18–W20; E3 | Better-improver claim supported or explicitly unestablished (B20: explicitly UNESTABLISHED on DEV; macros, policies, memory and curriculum built and tested) |
 | 20_R1 | Review repairs | B20-REVIEW-01..04 (handoff H01–H03) | Findings reproduced from stored evidence; global partition, budget authority, successor proof custody and obstruction certificate custody repaired with regressions; custody-complete re-run (B20_R1: builder-run, independent review outstanding; B20 comparison stays contaminated) |
+| 20_R2 | CRPD subset, H02 exit, H05/H08 parts | CRPD-1..3; H02; H05/H08 (handoff) | Soundness modes; Lean-checked codegree (first EQ abstraction); orbit probe NOT_DETECTED; fresh DEV E3 on the repaired harness: learned vs fixed 0W/2T/6L with all runs within cap; lineage validator (stored campaign export yields no qualifying chain); trusted candidate runner (not wired). Builder-run, DEV only |
 
 Later phases (B17–B23+) follow the roadmap and its gates; numbers are labels,
 not estimates.

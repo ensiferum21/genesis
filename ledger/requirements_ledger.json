@@ -1699,7 +1699,7 @@
    "local_execution": "TESTS_EXECUTED_IN_MATRIX",
    "owner": "research implementer",
    "remaining": [
-    "a fresh DEV E3 rerun on the repaired harness (B20_R1)",
+    "a redesigned learned policy under a new study (B20R-OPEN-1: fresh DEV rerun 0W/2T/6L)",
     "a sealed E3 study"
    ],
    "scientific_efficacy": "UNESTABLISHED",
@@ -4285,7 +4285,9 @@
    },
    "code": [
     "src/genesis/learning/partitions.py",
-    "audit/review_b20/reproduce_b20_review.py"
+    "audit/review_b20/reproduce_b20_review.py",
+    "scripts/b20r_e3_fresh.py",
+    "evidence/e3_fresh_b20r/partition_evaluation.json"
    ],
    "disposition": "IMPLEMENTED_BOUNDED_PENDING_AUDIT",
    "evidence": [],
@@ -4297,9 +4299,7 @@
    "independent_verification": "PENDING",
    "local_execution": "TESTS_EXECUTED_IN_MATRIX",
    "owner": "research implementer",
-   "remaining": [
-    "a fresh frozen DEV study on the repaired harness"
-   ],
+   "remaining": [],
    "scientific_efficacy": "N/A",
    "scope": "evaluation material globally disjoint from all research-visible material: one partition builder with EXACT/ALPHA/INSTANCE/GENERALIZES screening, quarantine, explicit INSUFFICIENT_DISTINCT_MATERIAL, frozen manifest, insertion screen on every route; the B20 comparison stays contaminated (3 statements, 4 slots)",
    "source": "B20 external review (B20_R1)",
@@ -4329,9 +4329,7 @@
    "independent_verification": "PENDING",
    "local_execution": "TESTS_EXECUTED_IN_MATRIX",
    "owner": "research implementer",
-   "remaining": [
-    "a fresh policy comparison on the corrected mechanism"
-   ],
+   "remaining": [],
    "scientific_efficacy": "N/A",
    "scope": "research budget authority: account opened before preparation, every category charged, reservations before launch, cgroup-metered outer kill, no rounding up, late results never credited, interrupted reservations charged on restart, GrantLedger bridge",
    "source": "B20 external review (B20_R1)",
@@ -5174,7 +5172,8 @@
     "src/genesis/learning/research.py",
     "src/genesis/learning/budget.py",
     "src/genesis/learning/custody.py",
-    "evidence/learning_b20/w19/rows.json"
+    "evidence/learning_b20/w19/rows.json",
+    "evidence/e3_fresh_b20r/e3_summary.json"
    ],
    "disposition": "IMPLEMENTED_BOUNDED_PENDING_AUDIT",
    "evidence": [],

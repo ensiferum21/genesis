@@ -1,0 +1,29 @@
+{
+ "amortized_share_per_use_ns": 9411830323,
+ "charging": "PRIMARY comparison does not charge training (declared); see the module docstring",
+ "examples": 457,
+ "features": [
+  "bias",
+  "size",
+  "variables",
+  "imbalance",
+  "variable_side",
+  "target_overlap"
+ ],
+ "frozen_before_evaluation": true,
+ "positives": 224,
+ "training_brier": 0.231,
+ "training_cpu_ns": {
+  "fit": 2445140985,
+  "research_and_dev_evaluation": 72849501599
+ },
+ "weights": [
+  0.7134584502387631,
+  -0.7507320913981333,
+  -0.688831974478305,
+  -0.7808392174216501,
+  0.00382508468261569,
+  0.9132604050716264
+ ],
+ "weights_sha256": "5e22f38ee6b3cf432c8be5cd8814bbba577a9b1c25e95fbdeb844c5a2f59dcdf"
+}

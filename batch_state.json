@@ -133,10 +133,14 @@
     },
     "units": {
       "H01": "DONE (reproductions in audit/review_b20)",
-      "H02": "ENGINEERING DONE; fresh DEV rerun NOT_RUN",
+      "H02": "DONE on DEV: repairs A-C plus the fresh E3 run (evidence/e3_fresh_b20r)",
       "H03": "DONE for the joint certification path; custody-complete DEV re-run",
-      "H04": "BLOCKED_ENVIRONMENT for external parts (second machine, registry, PyPI hashes, time anchor)",
-      "H05-H12": "NOT_STARTED"
+      "H04": "BLOCKED_ENVIRONMENT for external parts (re-checked 2026-10-12: PyPI and Docker registry unreachable)",
+      "H05": "PART: trusted candidate runner (candidates.py); custodian wiring needs a reviewed schema extension",
+      "H06": "PART: CRPD-2a codegree EQ abstraction (Lean-checked); CRPD-2b pending a pin-revision decision",
+      "H07": "PART: fresh E3 on the repaired harness (learned vs fixed 0W/2T/6L, DEV)",
+      "H08": "PART: lineage validator and campaign-export audit (no qualifying chain in the stored export)",
+      "H09-H12": "NOT_STARTED"
     },
     "adopted_from_crpd_v3": [
       "CRPD-1 one soundness-mode field (EQ/SUFF/NEC/BOUND/HEURISTIC) across abstractions",
@@ -149,6 +153,25 @@
       "Python 3.12 (B20 requires CPython 3.13)",
       "theorem phase diagrams and a separate replay module before headroom exists"
     ],
-    "claim_ceiling": "engineering repairs on DEV material; no sealed task, no promoted scientific claim; better-improver still UNESTABLISHED"
+    "claim_ceiling": "engineering repairs on DEV material; no sealed task, no promoted scientific claim; better-improver still UNESTABLISHED",
+    "checkpoints": {
+      "B20_R1": {
+        "commit": "972dbb634f7a6c32362db9bf986ede7d8df05d0b",
+        "sha256": "b8e99c16e01c6ab93cbd0032b28f130be0e96f31372b5b8442416c22d265bbf4"
+      }
+    },
+    "adopted_from_crpd_v3_status": {
+      "CRPD-1": "DONE",
+      "CRPD-2a": "DONE",
+      "CRPD-2b": "DECISION_PENDING",
+      "CRPD-3": "DONE (NOT_DETECTED)",
+      "CRPD-4": "NOT_STARTED (needs a family with headroom)"
+    },
+    "new_open": [
+      "B20R-OPEN-1 learned policy preparation cost and no gain on the repaired harness",
+      "B20R-OPEN-2 campaign export cannot support counting generations",
+      "B20R-OPEN-3 C4 pair-count bound unchecked (pin revision decision)",
+      "B20R-OPEN-4 candidate runner not wired into the custodian"
+    ]
   }
 }

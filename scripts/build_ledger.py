@@ -191,7 +191,8 @@ SPEC.update({
              [G + 'test_acceptance_regressions.py::RevocationAndTrust', 'tests_formal/test_learning.py',
               'tests_formal/test_learning_partitions.py', G + 'test_research_resource_accounting.py',
               'tests_formal/test_successor_proof_custody.py'],
-             ['a fresh DEV E3 rerun on the repaired harness (B20_R1)', 'a sealed E3 study'],
+             ['a redesigned learned policy under a new study (B20R-OPEN-1: fresh DEV rerun 0W/2T/6L)',
+              'a sealed E3 study'],
              ['independent custodian; fresh panels'], 'UNESTABLISHED', 'W21'),
     '13': (I, 'heading', [], [], [], [], 'N/A', 'W01'),
     '13.1': (N, 'minimal teaching sets', [], [], ['W20'], [], 'NOT_TESTED', 'W20'),
@@ -436,9 +437,10 @@ REVIEW = {
                          'builder with EXACT/ALPHA/INSTANCE/GENERALIZES screening, quarantine, explicit '
                          'INSUFFICIENT_DISTINCT_MATERIAL, frozen manifest, insertion screen on every route; the B20 '
                          'comparison stays contaminated (3 statements, 4 slots)',
-                      ['src/genesis/learning/partitions.py', 'audit/review_b20/reproduce_b20_review.py'],
+                      ['src/genesis/learning/partitions.py', 'audit/review_b20/reproduce_b20_review.py',
+                       'scripts/b20r_e3_fresh.py', 'evidence/e3_fresh_b20r/partition_evaluation.json'],
                       ['tests_formal/test_learning_partitions.py'],
-                      ['a fresh frozen DEV study on the repaired harness'], ['independent source review (GV0)'], 'N/A',
+                      [], ['independent source review (GV0)'], 'N/A',
                       'W19'),
     'B20-REVIEW-02': (B, 'research budget authority: account opened before preparation, every category charged, '
                          'reservations before launch, cgroup-metered outer kill, no rounding up, late results never '
@@ -446,7 +448,7 @@ REVIEW = {
                       ['src/genesis/learning/budget.py', 'src/genesis/learning/research.py',
                        'src/genesis/learning/macros.py'],
                       [G + 'test_research_resource_accounting.py'],
-                      ['a fresh policy comparison on the corrected mechanism'], ['independent source review (GV0)'],
+                      [], ['independent source review (GV0)'],
                       'N/A', 'W19'),
     'B20-REVIEW-03': (B, 'successor proof custody: run-bound lemma uids, per-target proof records, pure validators, '
                          'replay from custody only, prover-reported / checked / eligible kept apart',
@@ -542,7 +544,7 @@ WORKSTREAMS = {
     'W19': ('Research-policy learning (fixed, random, heuristic, bandit and a frozen learned policy at equal research '
             'budgets)', B,
             ['src/genesis/learning/research.py', 'src/genesis/learning/budget.py', 'src/genesis/learning/custody.py',
-             'evidence/learning_b20/w19/rows.json'],
+             'evidence/learning_b20/w19/rows.json', 'evidence/e3_fresh_b20r/e3_summary.json'],
             ['tests_formal/test_learning.py', G + 'test_research_resource_accounting.py',
              'tests_formal/test_successor_proof_custody.py']),
     'W20': ('Curriculum, experience synthesis and capability memory (screened memory, failure-driven curriculum, '

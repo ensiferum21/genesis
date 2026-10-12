@@ -1,0 +1,72 @@
+[   96.6s] exposure: {'files_scanned': 23, 'statements': 3253, 'b20_pools_regenerated': 14}, study-visible 2332
+[  109.2s] calibrate ba_sheffer 5-8: empty-library rate 0.75
+[  126.4s] calibrate ba_sheffer 6-9: empty-library rate 0.2
+[  136.9s] calibrate ba_sheffer 7-10: empty-library rate 0.55
+[  150.9s] calibrate ba_sheffer 8-11: empty-library rate 0.35
+[  159.6s] calibrate ba_sheffer: range [6, 9], exhaust 7.392 s -> cap 1.848 s
+[  166.6s] calibrate ba_huntington 5-8: empty-library rate 1.0
+[  174.6s] calibrate ba_huntington 6-9: empty-library rate 0.95
+[  183.3s] calibrate ba_huntington 7-10: empty-library rate 0.9
+[  191.6s] calibrate ba_huntington 8-11: empty-library rate 0.9
+[  196.0s] calibrate ba_huntington: range [7, 10], exhaust 2.591 s -> cap 0.648 s
+[  201.5s] setup frozen: partition 50226cf027e88c08, rejections {'ba_sheffer@601': {'INSTANCE': 3}, 'ba_sheffer@602': {'INSTANCE': 2}, 'ba_sheffer@603': {'EXACT': 1, 'INSTANCE': 3}, 'ba_sheffer@604': {}, 'ba_huntington@601': {'CROSS_UNIT_GENERALIZES': 1, 'DUPLICATE_IN_UNIT': 13, 'EXACT': 21, 'INSTANCE': 10}, 'ba_huntington@602': {'CROSS_UNIT_INSTANCE': 1, 'DUPLICATE_IN_UNIT': 8, 'EXACT': 17, 'INSTANCE': 7}, 'ba_huntington@603': {'DUPLICATE_IN_UNIT': 3, 'EXACT': 12, 'INSTANCE': 5}, 'ba_huntington@604': {'DUPLICATE_IN_UNIT': 3, 'EXACT': 16, 'INSTANCE': 10}}
+[  209.6s] train ba_sheffer@501 fixed: library 27, dev 8/10
+[  215.4s] train ba_sheffer@501 random: library 3, dev 7/10
+[  223.2s] train ba_sheffer@501 heuristic: library 27, dev 8/10
+[  230.6s] train ba_sheffer@502 fixed: library 28, dev 6/10
+[  238.5s] train ba_sheffer@502 random: library 29, dev 5/10
+[  246.1s] train ba_sheffer@502 heuristic: library 28, dev 6/10
+[  256.9s] train ba_sheffer@503 fixed: library 26, dev 4/10
+[  266.2s] train ba_sheffer@503 random: library 37, dev 4/10
+[  277.4s] train ba_sheffer@503 heuristic: library 26, dev 4/10
+[  278.4s] train ba_huntington@501 fixed: library 14, dev 10/10
+[  279.4s] train ba_huntington@501 random: library 13, dev 10/10
+[  280.2s] train ba_huntington@501 heuristic: library 3, dev 10/10
+[  281.3s] train ba_huntington@502 fixed: library 23, dev 10/10
+[  282.4s] train ba_huntington@502 random: library 18, dev 10/10
+[  283.5s] train ba_huntington@502 heuristic: library 18, dev 10/10
+[  284.7s] train ba_huntington@503 fixed: library 22, dev 10/10
+[  285.8s] train ba_huntington@503 random: library 17, dev 10/10
+[  286.9s] train ba_huntington@503 heuristic: library 15, dev 10/10
+[  289.4s] learned policy frozen 5e22f38ee6b3cf43 (457 examples, 224 positive); training CPU 75.3 s
+[  340.2s] ba_sheffer@601 fixed: eligible 2/25 (empty 2), library 27, cpu 1.81/1.85 s
+[  364.8s] ba_sheffer@601 random: eligible 4/25 (empty 2), library 19, cpu 1.81/1.85 s
+[  391.3s] ba_sheffer@601 heuristic: eligible 2/25 (empty 2), library 27, cpu 1.81/1.85 s
+[  418.5s] ba_sheffer@601 bandit: eligible 2/25 (empty 2), library 14, cpu 1.81/1.85 s
+[  446.8s] ba_sheffer@601 learned: eligible 2/25 (empty 2), library 67, cpu 1.73/1.85 s
+[  490.0s] ba_sheffer@602 fixed: eligible 9/25 (empty 6), library 27, cpu 1.81/1.85 s
+[  510.2s] ba_sheffer@602 random: eligible 8/25 (empty 6), library 14, cpu 1.74/1.85 s
+[  531.4s] ba_sheffer@602 heuristic: eligible 9/25 (empty 6), library 27, cpu 1.82/1.85 s
+[  552.4s] ba_sheffer@602 bandit: eligible 9/25 (empty 6), library 13, cpu 1.81/1.85 s
+[  575.2s] ba_sheffer@602 learned: eligible 7/25 (empty 6), library 69, cpu 1.72/1.85 s
+[  616.2s] ba_sheffer@603 fixed: eligible 9/25 (empty 8), library 26, cpu 1.82/1.85 s
+[  635.6s] ba_sheffer@603 random: eligible 9/25 (empty 8), library 23, cpu 1.81/1.85 s
+[  657.7s] ba_sheffer@603 heuristic: eligible 9/25 (empty 8), library 26, cpu 1.81/1.85 s
+[  677.8s] ba_sheffer@603 bandit: eligible 8/25 (empty 8), library 12, cpu 1.81/1.85 s
+[  700.4s] ba_sheffer@603 learned: eligible 8/25 (empty 8), library 76, cpu 1.71/1.85 s
+[  741.2s] ba_sheffer@604 fixed: eligible 9/25 (empty 8), library 27, cpu 1.81/1.85 s
+[  763.8s] ba_sheffer@604 random: eligible 6/25 (empty 8), library 39, cpu 1.81/1.85 s
+[  784.2s] ba_sheffer@604 heuristic: eligible 9/25 (empty 8), library 27, cpu 1.81/1.85 s
+[  803.4s] ba_sheffer@604 bandit: eligible 9/25 (empty 8), library 15, cpu 1.81/1.85 s
+[  824.0s] ba_sheffer@604 learned: eligible 9/25 (empty 8), library 66, cpu 1.71/1.85 s
+[  835.8s] ba_huntington@601 fixed: eligible 25/25 (empty 22), library 19, cpu 0.51/0.65 s
+[  837.2s] ba_huntington@601 random: eligible 25/25 (empty 22), library 13, cpu 0.50/0.65 s
+[  838.8s] ba_huntington@601 heuristic: eligible 25/25 (empty 22), library 21, cpu 0.51/0.65 s
+[  842.2s] ba_huntington@601 bandit: eligible 25/25 (empty 22), library 17, cpu 0.51/0.65 s
+[  853.5s] ba_huntington@601 learned: eligible 22/25 (empty 22), library 0, cpu 0.61/0.65 s
+[  866.8s] ba_huntington@602 fixed: eligible 25/25 (empty 22), library 23, cpu 0.51/0.65 s
+[  868.0s] ba_huntington@602 random: eligible 25/25 (empty 22), library 1, cpu 0.52/0.65 s
+[  870.5s] ba_huntington@602 heuristic: eligible 24/25 (empty 22), library 17, cpu 0.51/0.65 s
+[  873.3s] ba_huntington@602 bandit: eligible 24/25 (empty 22), library 22, cpu 0.51/0.65 s
+[  886.4s] ba_huntington@602 learned: eligible 22/25 (empty 22), library 0, cpu 0.61/0.65 s
+[  899.0s] ba_huntington@603 fixed: eligible 25/25 (empty 20), library 24, cpu 0.50/0.65 s
+[  900.5s] ba_huntington@603 random: eligible 25/25 (empty 20), library 15, cpu 0.51/0.65 s
+[  902.3s] ba_huntington@603 heuristic: eligible 25/25 (empty 20), library 25, cpu 0.51/0.65 s
+[  904.0s] ba_huntington@603 bandit: eligible 25/25 (empty 20), library 25, cpu 0.50/0.65 s
+[  915.2s] ba_huntington@603 learned: eligible 20/25 (empty 20), library 0, cpu 0.61/0.65 s
+[  929.7s] ba_huntington@604 fixed: eligible 25/25 (empty 19), library 17, cpu 0.50/0.65 s
+[  942.8s] ba_huntington@604 random: eligible 20/25 (empty 19), library 3, cpu 0.60/0.65 s
+[  944.4s] ba_huntington@604 heuristic: eligible 25/25 (empty 19), library 18, cpu 0.50/0.65 s
+[  946.0s] ba_huntington@604 bandit: eligible 25/25 (empty 19), library 21, cpu 0.50/0.65 s
+[  959.1s] ba_huntington@604 learned: eligible 20/25 (empty 19), library 0, cpu 0.61/0.65 s
+[  959.1s] phase 1 done in 959 s

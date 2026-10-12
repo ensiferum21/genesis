@@ -207,3 +207,19 @@ of them makes the B20 comparison valid after the fact.
 
 B20-OPEN-1 to B20-OPEN-4 stay open. The repaired harness has not yet been used for a
 fresh E3 comparison, so nothing about the better-improver question has changed.
+
+## B20_R2 outcome (adopted CRPD subset, H02 exit run, H05/H08 first parts)
+
+Builder-run, DEV only, nothing independently reviewed. See `docs/checkpoints/B20_R2_RECORD.md`.
+
+| ID | Residual or finding | Needs |
+|---|---|---|
+| B20R-OPEN-1 | Fresh E3 on the repaired harness (`evidence/e3_fresh_b20r/`): learned vs fixed 0W/2T/6L. With preparation charged, the learned policy's feature computation (pool × development-target overlap) uses ~0.6 s of the 0.65 s Huntington cap, so it attempts no proof; on Sheffer it builds the largest libraries without gain. Training costs 75 s CPU against caps of 1.85 s / 0.65 s. | a redesigned policy (cheaper features, per-attempt cost model) under a NEW study; never a patch to this one |
+| B20R-OPEN-2 | The stored DEV campaign export cannot support counting generations (`audit/lineage_b20r/report.json`): SELECT totals not exported, candidates not bound to journal attempts, no per-run account, declared component differs from the actual version diff (generation 1 changed only its library). | campaign export carrying lineage records; then wire `lineage.lineage_problems` into request checking (B14-OPEN-3) |
+| B20R-OPEN-3 | The C4 pair-count bound (`graphs.universal_upper`) is still an unchecked THEOREM bound: proving it needs Finset big operators outside the pinned workspace import closure. | Daniel's decision on a reviewed workspace pin revision |
+| B20R-OPEN-4 | The trusted candidate runner (`candidates.py`) is not wired into the custodian; request/receipt schemas carry no candidate descriptor. | a reviewed schema extension (B19-OPEN-3) |
+| R-04 (re-checked) | From this workspace on 12 October 2026, PyPI does not resolve and the Docker registry is refused by the egress proxy: wheel hashes and the image digest remain BLOCKED_ENVIRONMENT. | registry and PyPI access, a second machine |
+
+Closed or answered in B20_R2 (DEV scope): CRPD-3 orbit-sensitivity probe NOT_DETECTED on Sheffer,
+Wolfram and Huntington (outcomes deterministic at fixed limits on a quiet host, relevant to B20-OPEN-3);
+H02's exit run executed with all runs within cap and zero custody problems.

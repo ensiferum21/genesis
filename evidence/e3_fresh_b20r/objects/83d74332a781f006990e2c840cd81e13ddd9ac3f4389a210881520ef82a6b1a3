@@ -1,0 +1,26 @@
+SZS output start CNFRefutation
+fof(goal, conjecture, ![X1, X2]:(s(s(s(X1,X1),X1),s(X2,X2))=X2), file('/tmp/genesis-e-1y9d8q5y/p.p', goal)).
+fof(ax9, axiom, ![X1, X2]:(s(X1,X2)=s(X2,X1)), file('/tmp/genesis-e-1y9d8q5y/p.p', ax9)).
+fof(ax1, axiom, ![X1, X2]:(s(X1,s(X2,s(X2,X2)))=s(X1,X1)), file('/tmp/genesis-e-1y9d8q5y/p.p', ax1)).
+fof(ax8, axiom, ![X1, X2]:(s(s(X1,X1),s(X1,X2))=X1), file('/tmp/genesis-e-1y9d8q5y/p.p', ax8)).
+fof(c_0_4, negated_conjecture, ~(![X1, X2]:(s(s(s(X1,X1),X1),s(X2,X2))=X2)), inference(assume_negation,[status(cth)],[goal])).
+fof(c_0_5, negated_conjecture, s(s(s(esk1_0,esk1_0),esk1_0),s(esk2_0,esk2_0))!=esk2_0, inference(fof_nnf,[status(thm)],[inference(skolemize,[status(esa)],[inference(variable_rename,[status(thm)],[inference(fof_nnf,[status(thm)],[c_0_4])])])])).
+fof(c_0_6, plain, ![X20, X21]:(s(X20,X21)=s(X21,X20)), inference(variable_rename,[status(thm)],[ax9])).
+fof(c_0_7, plain, ![X5, X6]:(s(X5,s(X6,s(X6,X6)))=s(X5,X5)), inference(variable_rename,[status(thm)],[ax1])).
+fof(c_0_8, plain, ![X18, X19]:(s(s(X18,X18),s(X18,X19))=X18), inference(variable_rename,[status(thm)],[ax8])).
+cnf(c_0_9, negated_conjecture, (s(s(s(esk1_0,esk1_0),esk1_0),s(esk2_0,esk2_0))!=esk2_0), inference(split_conjunct,[status(thm)],[c_0_5])).
+cnf(c_0_10, plain, (s(X1,X2)=s(X2,X1)), inference(split_conjunct,[status(thm)],[c_0_6])).
+cnf(c_0_11, plain, (s(X1,s(X2,s(X2,X2)))=s(X1,X1)), inference(split_conjunct,[status(thm)],[c_0_7])).
+cnf(c_0_12, plain, (s(s(X1,X1),s(X1,X2))=X1), inference(split_conjunct,[status(thm)],[c_0_8])).
+cnf(c_0_13, negated_conjecture, ($false), inference(cn,[status(thm)],[inference(rw,[status(thm)],[inference(rw,[status(thm)],[inference(rw,[status(thm)],[inference(rw,[status(thm)],[c_0_9, c_0_10]), c_0_10]), c_0_11]), c_0_12])]), ['proof']).
+% SZS output end CNFRefutation
+
+% -------------------------------------------------
+% Total SizeMalloc()ed memory: 72871664 Bytes (142184 requests)
+% Total SizeFree()ed   memory: 72871664 Bytes (142184 requests)
+% New requests:   2164 (  1995 by SecureMalloc(),    169 by SecureRealloc())
+% Total SecureMalloc()ed memory: 745985 Bytes
+% Returned:      2164 (  2164 by FREE(),              0 by SecureRealloc())
+% SecureRealloc(ptr):    174 (   169 Allocs,      0 Frees,      5 Reallocs)
+% -------------------------------------------------
+

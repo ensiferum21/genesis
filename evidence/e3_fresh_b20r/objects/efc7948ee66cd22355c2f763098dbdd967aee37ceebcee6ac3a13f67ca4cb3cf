@@ -1,0 +1,24 @@
+SZS output start CNFRefutation
+fof(goal, conjecture, ![X1, X2]:(plus(X1,n(n(n(X2))))=plus(X1,n(plus(X2,plus(X2,X2))))), file('/tmp/genesis-e-ye_4qpe_/p.p', goal)).
+fof(ax4, axiom, ![X1]:(n(n(X1))=plus(X1,X1)), file('/tmp/genesis-e-ye_4qpe_/p.p', ax4)).
+fof(ax9, axiom, ![X1]:(n(n(X1))=X1), file('/tmp/genesis-e-ye_4qpe_/p.p', ax9)).
+fof(c_0_3, negated_conjecture, ~(![X1, X2]:(plus(X1,n(n(n(X2))))=plus(X1,n(plus(X2,plus(X2,X2)))))), inference(assume_negation,[status(cth)],[goal])).
+fof(c_0_4, plain, ![X12]:(n(n(X12))=plus(X12,X12)), inference(variable_rename,[status(thm)],[ax4])).
+fof(c_0_5, plain, ![X17]:(n(n(X17))=X17), inference(variable_rename,[status(thm)],[ax9])).
+fof(c_0_6, negated_conjecture, plus(esk1_0,n(n(n(esk2_0))))!=plus(esk1_0,n(plus(esk2_0,plus(esk2_0,esk2_0)))), inference(fof_nnf,[status(thm)],[inference(skolemize,[status(esa)],[inference(variable_rename,[status(thm)],[inference(fof_nnf,[status(thm)],[c_0_3])])])])).
+cnf(c_0_7, plain, (n(n(X1))=plus(X1,X1)), inference(split_conjunct,[status(thm)],[c_0_4])).
+cnf(c_0_8, plain, (n(n(X1))=X1), inference(split_conjunct,[status(thm)],[c_0_5])).
+cnf(c_0_9, negated_conjecture, (plus(esk1_0,n(n(n(esk2_0))))!=plus(esk1_0,n(plus(esk2_0,plus(esk2_0,esk2_0))))), inference(split_conjunct,[status(thm)],[c_0_6])).
+cnf(c_0_10, plain, (plus(X1,X1)=X1), inference(rw,[status(thm)],[c_0_7, c_0_8])).
+cnf(c_0_11, negated_conjecture, ($false), inference(cn,[status(thm)],[inference(rw,[status(thm)],[inference(rw,[status(thm)],[inference(rw,[status(thm)],[c_0_9, c_0_8]), c_0_10]), c_0_10])]), ['proof']).
+% SZS output end CNFRefutation
+
+% -------------------------------------------------
+% Total SizeMalloc()ed memory: 73740976 Bytes (144658 requests)
+% Total SizeFree()ed   memory: 73740976 Bytes (144658 requests)
+% New requests:   2598 (  2446 by SecureMalloc(),    152 by SecureRealloc())
+% Total SecureMalloc()ed memory: 782516 Bytes
+% Returned:      2598 (  2598 by FREE(),              0 by SecureRealloc())
+% SecureRealloc(ptr):    157 (   152 Allocs,      0 Frees,      5 Reallocs)
+% -------------------------------------------------
+

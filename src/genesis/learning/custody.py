@@ -28,7 +28,10 @@ Three metrics are always reported separately (:func:`score`):
                       admitted by the exposure policy, with no revoked ancestor
 A checker timeout is CHECK_INCOMPLETE (never falsity, never credit); an infrastructure
 failure is CHECK_INFRASTRUCTURE_ERROR and is reported as missing coverage, which a frozen
-endpoint may treat as invalidating the run.
+endpoint may treat as invalidating the run. CHECK_FAILED means the replay route did not produce
+a kernel-checked proof (for example a translated step the tactic cascade cannot close); it is
+not evidence that the statement is false. CHECK_UNSUPPORTED means the translation could not
+express the proof at all.
 """
 import hashlib
 from pathlib import Path

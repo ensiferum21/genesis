@@ -1,0 +1,154 @@
+{
+ "base": {
+  "calibration_targets": 20,
+  "dev_targets": 10,
+  "eval_s": 1,
+  "eval_targets": 25,
+  "false_conjectures": 30,
+  "per_bucket": 8,
+  "pool_size": 5,
+  "premise_k": 8,
+  "prove_s": 1
+ },
+ "budget": {
+  "ba_huntington": {
+   "amortize_uses": 0,
+   "attempt_cpu_ns": 1250000000,
+   "charging": "FULL_COST",
+   "concurrency": 1,
+   "cpu_ns": 648000000,
+   "enforcement": "OUTER_SUPERVISED",
+   "late_rule": "NOT_CREDITED",
+   "max_attempts": 100000,
+   "memory_bytes": 2147483648,
+   "overhead_ns": 250000000,
+   "quantum_ns": 100000000,
+   "schema": "genesis-research-budget-v1",
+   "tolerance_ns": 50000000,
+   "wall_ns": 32592000000
+  },
+  "ba_sheffer": {
+   "amortize_uses": 0,
+   "attempt_cpu_ns": 1250000000,
+   "charging": "FULL_COST",
+   "concurrency": 1,
+   "cpu_ns": 1848000000,
+   "enforcement": "OUTER_SUPERVISED",
+   "late_rule": "NOT_CREDITED",
+   "max_attempts": 100000,
+   "memory_bytes": 2147483648,
+   "overhead_ns": 250000000,
+   "quantum_ns": 100000000,
+   "schema": "genesis-research-budget-v1",
+   "tolerance_ns": 50000000,
+   "wall_ns": 37392000000
+  }
+ },
+ "calibration": {
+  "ba_huntington": {
+   "budget_s": 0.648,
+   "chosen_range": [
+    7,
+    10
+   ],
+   "exhaust_attempts": 125,
+   "exhaust_cpu_s": 2.591,
+   "rates": [
+    {
+     "range": [
+      5,
+      8
+     ],
+     "rate": 1.0,
+     "targets": 20
+    },
+    {
+     "range": [
+      6,
+      9
+     ],
+     "rate": 0.95,
+     "targets": 20
+    },
+    {
+     "range": [
+      7,
+      10
+     ],
+     "rate": 0.9,
+     "targets": 20
+    },
+    {
+     "range": [
+      8,
+      11
+     ],
+     "rate": 0.9,
+     "targets": 20
+    }
+   ],
+   "rule": "first range with rate in (0.2, 0.6), else closest to 0.4; cap = 0.25 x exhaust"
+  },
+  "ba_sheffer": {
+   "budget_s": 1.848,
+   "chosen_range": [
+    6,
+    9
+   ],
+   "exhaust_attempts": 89,
+   "exhaust_cpu_s": 7.392,
+   "rates": [
+    {
+     "range": [
+      5,
+      8
+     ],
+     "rate": 0.75,
+     "targets": 20
+    },
+    {
+     "range": [
+      6,
+      9
+     ],
+     "rate": 0.2,
+     "targets": 20
+    },
+    {
+     "range": [
+      7,
+      10
+     ],
+     "rate": 0.55,
+     "targets": 20
+    },
+    {
+     "range": [
+      8,
+      11
+     ],
+     "rate": 0.35,
+     "targets": 20
+    }
+   ],
+   "rule": "first range with rate in (0.2, 0.6), else closest to 0.4; cap = 0.25 x exhaust"
+  }
+ },
+ "code_identity": "fd6f7703b7863e976a6f48453487e8cfd7c4cc5f542c5a1cb8a041c6c3c0f509",
+ "exposure_root": "26157325bb0bd83cc74f7584fdd0ba0e74e277a1e181ccddbcb50241eea44b60",
+ "frozen_sha256": "9c5ba7b4c936ca21d191412762cc839c33be261d2f416e36162559b373754d67",
+ "partition_id": "50226cf027e88c083e9b953820dd736ca58216abbec20ecbd7d911e03b94785f",
+ "prior_exposure": {
+  "b20_pools_regenerated": 14,
+  "files_scanned": 23,
+  "statements": 3253
+ },
+ "rules_sha256": "f417b2ff569a61b99a2e8b6926885bdc357e262e4624304afd5c932b17f443ff",
+ "screen_commitment": {
+  "algorithm": "genesis-material-partition-v1",
+  "items": 200,
+  "root": "5b4793bded222ec2a83288efdea645afad1cff10ad58d0c73c0382b4488431cb",
+  "scheme": "hmac-sha256(salt, [theory, structural repr])"
+ },
+ "study": "b20r-e3-fresh-dev"
+}

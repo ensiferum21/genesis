@@ -1,0 +1,1769 @@
+{
+ "adapter": "equational-v1",
+ "algorithm": "genesis-material-partition-v1",
+ "exposure": {
+  "adapter": "equational-v1",
+  "algorithm": "genesis-material-partition-v1",
+  "items": 2088,
+  "root": "26157325bb0bd83cc74f7584fdd0ba0e74e277a1e181ccddbcb50241eea44b60",
+  "route_counts": {
+   "development": 140,
+   "import": 2836,
+   "pool": 2192
+  },
+  "theories": 2
+ },
+ "partition_id": "50226cf027e88c083e9b953820dd736ca58216abbec20ecbd7d911e03b94785f",
+ "policy": {
+  "ALPHA": "REJECT",
+  "EXACT": "REJECT",
+  "GENERALIZES": "QUARANTINE",
+  "INSTANCE": "REJECT",
+  "cross_unit_distinct": true,
+  "max_draws_per_item": 4000
+ },
+ "policy_sha256": "a04d4a3156754c504807f9620d4cd428de37a9bb45608a902af96af2c3526bad",
+ "residual_limits": [
+  "relations are syntactic: exact text, alpha-renaming with orientation, and substitution instances in either direction; equivalence modulo theory laws (e.g. commutativity, associativity) is not detected",
+  "a statement absent from the exposure set may still be known to a pretrained model or to the operator; only Genesis-visible material is screened",
+  "false conjectures in research pools are screened like true ones (conservative); proofs are covered through the statements they prove"
+ ],
+ "rng_derivation": "random.Random(int(digest({'study_seed': S, 'unit': U})[:16], 16))",
+ "schema": "genesis-material-partition-manifest-v1",
+ "study": "b20r-e3-fresh-dev",
+ "study_seed": 600,
+ "units": {
+  "ba_huntington@601": {
+   "accepted": [
+    {
+     "axiomatization": "ba_huntington",
+     "size": 8,
+     "structural_sha256": "118f162ee1173077aa60a423e76ce803677a0bea41169c242341d719a0ae1c96",
+     "text": "![X]: (![Y]: (![Z]: (n(plus(plus(X,Y),plus(Z,Z))) = n(plus(X,plus(X,plus(Y,Z)))))))",
+     "text_sha256": "6bc3befa6c20b540dea7dcda3c730cf2b5ad9b3a795dd37c6355a53e4dd90249",
+     "theory": "4a6d0f5236d49ea51c03ba66fcc7206b42dbdc8dd930d76fa0a5bd9236910d32"
+    },
+    {
+     "axiomatization": "ba_huntington",
+     "size": 8,
+     "structural_sha256": "22905d5709fb50984909f2e772051847748e793f67f3c6f9e211274041a0a0f1",
+     "text": "![X]: (![Y]: (![Z]: (plus(plus(n(plus(X,Y)),X),Z) = plus(X,plus(plus(X,n(Y)),Z)))))",
+     "text_sha256": "333a97b0f1eccc88cc6f9c7493ba3d185a5c63b97ec5311284b9ab62b77f3d58",
+     "theory": "4a6d0f5236d49ea51c03ba66fcc7206b42dbdc8dd930d76fa0a5bd9236910d32"
+    },
+    {
+     "axiomatization": "ba_huntington",
+     "size": 8,
+     "structural_sha256": "1722e52137f97b364314d880ff4a627d50b542bb576b36bd7b235e94b144fc0e",
+     "text": "![X]: (![Y]: (![Z]: (plus(plus(X,plus(Y,plus(Y,Z))),X) = plus(X,plus(X,plus(plus(Y,Z),Z))))))",
+     "text_sha256": "594561b2a88d5a237d48dd1471d340b4a105be5d69b0bcb3d96e228b77d877c9",
+     "theory": "4a6d0f5236d49ea51c03ba66fcc7206b42dbdc8dd930d76fa0a5bd9236910d32"
+    },
+    {
+     "axiomatization": "ba_huntington",
+     "size": 8,
+     "structural_sha256": "b763ed3e1c4b20abf9f8d2168c5bc8a8f3a78e50845d2226747348a0b16dd2c1",
+     "text": "![X]: (![Y]: (![Z]: (plus(plus(n(X),plus(Y,Z)),Z) = plus(plus(plus(Y,n(X)),Z),Y))))",
+     "text_sha256": "27b04b3efb96eca014f5d124b25d0a59f0bdc5c615ce306ded75ee1bb3939950",
+     "theory": "4a6d0f5236d49ea51c03ba66fcc7206b42dbdc8dd930d76fa0a5bd9236910d32"
+    },
+    {
+     "axiomatization": "ba_huntington",
+     "size": 8,
+     "structural_sha256": "763d9b237c320e6f47a3339f1f71da16e54680a9b370b9f2343c123bf7b62b9f",
+     "text": "![X]: (![Y]: (plus(plus(plus(X,X),Y),plus(Y,X)) = plus(X,plus(plus(Y,plus(Y,X)),X))))",
+     "text_sha256": "a95502971b4a508dcd5e7e056cc390a73d05726116cd3d6580fd6b7e6886c2a3",
+     "theory": "4a6d0f5236d49ea51c03ba66fcc7206b42dbdc8dd930d76fa0a5bd9236910d32"
+    },
+    {
+     "axiomatization": "ba_huntington",
+     "size": 8,
+     "structural_sha256": "5118fee0ae2f091f1d4e6272c752fc255b4b7d7628cea4dcd1cc356d010a9a12",
+     "text": "![X]: (![Y]: (![Z]: (plus(plus(X,n(plus(X,Y))),Z) = plus(plus(X,Z),plus(n(Y),Z)))))",
+     "text_sha256": "a309b2d11aa2ce445a6b1b37adae4d4bae570ce79ccad6bb2da34484576d3de8",
+     "theory": "4a6d0f5236d49ea51c03ba66fcc7206b42dbdc8dd930d76fa0a5bd9236910d32"
+    },
+    {
+     "axiomatization": "ba_huntington",
+     "size": 8,
+     "structural_sha256": "eea315b3265bd5948bde615edf2ca35883cd68bd83c3ab4b4b1b081c905c8b0f",
+     "text": "![X]: (![Y]: (![Z]: (plus(plus(X,plus(X,Y)),plus(Z,Y)) = plus(X,plus(plus(Z,Y),plus(Y,Z))))))",
+     "text_sha256": "b3f1cd5fad411366c6df40960aca71fcef4f2ccf08c1099f9a529dbe3f6da46a",
+     "theory": "4a6d0f5236d49ea51c03ba66fcc7206b42dbdc8dd930d76fa0a5bd9236910d32"
+    },
+    {
+     "axiomatization": "ba_huntington",
+     "size": 8,
+     "structural_sha256": "190bf44fc6cba020656e37e38bf603b9982b6c1039834be0e29bb3300438b433",
+     "text": "![X]: (n(n(n(plus(X,X)))) = n(plus(plus(plus(X,X),X),X)))",
+     "text_sha256": "b6007a4077c29d3ed43408aee653420c0690f8dd315aa4715073e83a31d7d2e3",
+     "theory": "4a6d0f5236d49ea51c03ba66fcc7206b42dbdc8dd930d76fa0a5bd9236910d32"
+    },
+    {
+     "axiomatization": "ba_huntington",
+     "size": 8,
+     "structural_sha256": "b5b0da459181a5d5f336b411ee9592a6247f4462d523a31b74b5f284ce05f380",
+     "text": "![X]: (![Y]: (n(n(plus(n(X),Y))) = plus(Y,plus(Y,plus(n(X),Y)))))",
+     "text_sha256": "9065a3a6b632473a02e38003e19416b8f0c2e7913730023309b412303eea2779",
+     "theory": "4a6d0f5236d49ea51c03ba66fcc7206b42dbdc8dd930d76fa0a5bd9236910d32"
+    },
+    {
+     "axiomatization": "ba_huntington",
+     "size": 8,
+     "structural_sha256": "500c54433a7bb89feed71c0da2697633c5a308c597a82ce5442269339d7c497e",
+     "text": "![X]: (![Y]: (![Z]: (plus(plus(X,plus(X,plus(Y,X))),Z) = plus(Z,plus(plus(Y,Z),plus(Y,X))))))",
+     "text_sha256": "9bc6483df05b209d8a7b2e99a47b23e549073b8cc8317c8ee7d8ffe9e22de29e",
+     "theory": "4a6d0f5236d49ea51c03ba66fcc7206b42dbdc8dd930d76fa0a5bd9236910d32"
+    },
+    {
+     "axiomatization": "ba_huntington",
+     "size": 8,
+     "structural_sha256": "36fdf4c381324b42417bd5fee0a3b9085a28c325516473bf1963f9357d665d64",
+     "text": "![X]: (![Y]: (plus(plus(X,plus(X,X)),n(Y)) = plus(X,plus(plus(X,n(Y)),X))))",
+     "text_sha256": "313e471b79740e10ea7eca43e77e134e73f613dddeb5dd788a9a01c05249b0f1",
+     "theory": "4a6d0f5236d49ea51c03ba66fcc7206b42dbdc8dd930d76fa0a5bd9236910d32"
+    },
+    {
+     "axiomatization": "ba_huntington",
+     "size": 7,
+     "structural_sha256": "640f53a0308f3a301928b665480e3ac713e2a0554f280c7ec6cff7c0ca3d138d",
+     "text": "![X]: (![Y]: (![Z]: (plus(X,n(plus(Y,plus(Z,Z)))) = plus(X,n(plus(Z,Y))))))",
+     "text_sha256": "a7e449e156d76efa41e2b2b484a1c791cdde92e9bf7d6b9328c0218adb73a9c5",
+     "theory": "4a6d0f5236d49ea51c03ba66fcc7206b42dbdc8dd930d76fa0a5bd9236910d32"
+    },
+    {
+     "axiomatization": "ba_huntington",
+     "size": 8,
+     "structural_sha256": "38eadcfa12008c30a9959818ef0fc62c6a6586a47202abd24a30d0dab2d63031",
+     "text": "![X]: (![Y]: (plus(n(X),n(plus(X,X))) = plus(n(X),n(plus(X,Y)))))",
+     "text_sha256": "c5d6afcb95c77da4856baa53dc3746d694db5e416a61910868196540beb3bc8c",
+     "theory": "4a6d0f5236d49ea51c03ba66fcc7206b42dbdc8dd930d76fa0a5bd9236910d32"
+    },
+    {
+     "axiomatization": "ba_huntington",
+     "size": 8,
+     "structural_sha256": "11304e1b472535914620a2847dd5b1639cd09ffc65c35fab9a49afe7e1f5785e",
+     "text": "![X]: (![Y]: (![Z]: (plus(plus(n(X),plus(Y,Z)),Y) = plus(plus(plus(Z,n(X)),Y),Y))))",
+     "text_sha256": "41c354ee4b37a4ffc051f1cee7c4c1a73cc241f53e0505d8630a02d15bc8b94f",
+     "theory": "4a6d0f5236d49ea51c03ba66fcc7206b42dbdc8dd930d76fa0a5bd9236910d32"
+    },
+    {
+     "axiomatization": "ba_huntington",
+     "size": 8,
+     "structural_sha256": "ceb95839f9cfa75e20a686a203b41e1a90eaf18f34d3aea607c367b7cb62f186",
+     "text": "![X]: (![Y]: (plus(X,plus(plus(Y,plus(Y,X)),X)) = plus(X,plus(plus(Y,plus(Y,Y)),Y))))",
+     "text_sha256": "7677187510fa941b76e656fa2ae51df9842e1bf3c5c789ac9757e87db188391a",
+     "theory": "4a6d0f5236d49ea51c03ba66fcc7206b42dbdc8dd930d76fa0a5bd9236910d32"
+    },
+    {
+     "axiomatization": "ba_huntington",
+     "size": 8,
+     "structural_sha256": "497ae25ef0d2b787d14313650d7444fe1a5b406f833035ab71a78e9641276d0f",
+     "text": "![X]: (![Y]: (plus(plus(plus(X,X),Y),plus(Y,X)) = plus(plus(Y,plus(Y,Y)),plus(X,X))))",
+     "text_sha256": "a8913211dad972c6bb3c8b2411983aa3bfbcc1aa35abceaeb3a1062d30d9bb79",
+     "theory": "4a6d0f5236d49ea51c03ba66fcc7206b42dbdc8dd930d76fa0a5bd9236910d32"
+    },
+    {
+     "axiomatization": "ba_huntington",
+     "size": 7,
+     "structural_sha256": "e43e1b8c6206229948ab168ab47a5c199932fb06eaa60fb20dfaf8c65627a620",
+     "text": "![X]: (![Y]: (n(n(plus(X,Y))) = plus(X,plus(X,plus(plus(X,X),Y)))))",
+     "text_sha256": "6347a6dbcd8a7394335133dc0833552d1ec31d2c590537621c9675b021df55ae",
+     "theory": "4a6d0f5236d49ea51c03ba66fcc7206b42dbdc8dd930d76fa0a5bd9236910d32"
+    },
+    {
+     "axiomatization": "ba_huntington",
+     "size": 8,
+     "structural_sha256": "f3d61c99d38f27426539aa51a59b9f86c62e9f2c28b7d0ee2200fff603fb5e3f",
+     "text": "![X]: (![Y]: (![Z]: (plus(n(plus(X,plus(Y,X))),Z) = plus(Z,n(plus(plus(X,Y),Z))))))",
+     "text_sha256": "36e6aede52233d478a1da0212f34e36c5c1df57b1326e2816ea0c48b7003a468",
+     "theory": "4a6d0f5236d49ea51c03ba66fcc7206b42dbdc8dd930d76fa0a5bd9236910d32"
+    },
+    {
+     "axiomatization": "ba_huntington",
+     "size": 8,
+     "structural_sha256": "065651dda8dd16372906dc6574707753db15b696604285706b82c7b853f66182",
+     "text": "![X]: (![Y]: (![Z]: (plus(plus(n(X),plus(Y,Y)),Z) = plus(Z,plus(plus(Z,Y),n(X))))))",
+     "text_sha256": "e2ec7a35a8cee68df684aa57bd91f669a0481471afb36dbc1309eab3e31c3605",
+     "theory": "4a6d0f5236d49ea51c03ba66fcc7206b42dbdc8dd930d76fa0a5bd9236910d32"
+    },
+    {
+     "axiomatization": "ba_huntington",
+     "size": 8,
+     "structural_sha256": "24f4d65a6d39d64892c35c3851779a49d3f8c71afc278583a60bd105fec83e40",
+     "text": "![X]: (![Y]: (![Z]: (plus(plus(X,n(Y)),plus(Z,X)) = plus(Z,plus(plus(X,X),n(Y))))))",
+     "text_sha256": "33a8acfd540197b4826386616246aa477dae2541612d84261de9c9b59c02d44c",
+     "theory": "4a6d0f5236d49ea51c03ba66fcc7206b42dbdc8dd930d76fa0a5bd9236910d32"
+    },
+    {
+     "axiomatization": "ba_huntington",
+     "size": 8,
+     "structural_sha256": "5cc5b73176675b81fb8fdae2091a948fc664fcfddc445211e36fe3db3a4fb087",
+     "text": "![X]: (![Y]: (plus(X,n(plus(n(X),Y))) = plus(X,plus(X,plus(plus(X,X),X)))))",
+     "text_sha256": "8d086dbca7fc95628a3e402eddd72f82e80ffeb3ccad6e0f48886f7d72a3295b",
+     "theory": "4a6d0f5236d49ea51c03ba66fcc7206b42dbdc8dd930d76fa0a5bd9236910d32"
+    },
+    {
+     "axiomatization": "ba_huntington",
+     "size": 8,
+     "structural_sha256": "4b8f9a7878e0b38cc1787eae9af749b8bceebfa528bee2e41039ccf196605c8a",
+     "text": "![X]: (![Y]: (plus(X,n(plus(X,plus(Y,Y)))) = plus(X,plus(plus(n(Y),X),X))))",
+     "text_sha256": "ade028fa744e67076806c06a7697420e335a31222227eababf34d342968172b0",
+     "theory": "4a6d0f5236d49ea51c03ba66fcc7206b42dbdc8dd930d76fa0a5bd9236910d32"
+    },
+    {
+     "axiomatization": "ba_huntington",
+     "size": 8,
+     "structural_sha256": "362d7c983aa5d1d1e5eaa0220058404e54d5bc8aee5b4c3efaf0026b30070e49",
+     "text": "![X]: (![Y]: (plus(n(plus(X,plus(Y,X))),X) = plus(plus(X,plus(X,X)),n(Y))))",
+     "text_sha256": "44d97f41265fdf05309d1192222c36616fec3244ecba5a7adc77078cae2ee310",
+     "theory": "4a6d0f5236d49ea51c03ba66fcc7206b42dbdc8dd930d76fa0a5bd9236910d32"
+    },
+    {
+     "axiomatization": "ba_huntington",
+     "size": 8,
+     "structural_sha256": "8f9130251f5fcacd8ac53a049cf2eba1f60a92457b3c619cde64c243f3a6f633",
+     "text": "![X]: (![Y]: (![Z]: (plus(plus(plus(plus(X,Y),Z),X),Y) = plus(plus(X,Y),plus(Z,plus(X,X))))))",
+     "text_sha256": "c78e8620b6245184b03584300e980f2b473c65c4e5d8823b283d2fc8bd4f378c",
+     "theory": "4a6d0f5236d49ea51c03ba66fcc7206b42dbdc8dd930d76fa0a5bd9236910d32"
+    },
+    {
+     "axiomatization": "ba_huntington",
+     "size": 8,
+     "structural_sha256": "06de1247aae2c1066fafd56f4d5a19cbd91536e250c2e55f04e98eaf213b7a79",
+     "text": "![X]: (![Y]: (plus(plus(X,plus(X,X)),n(Y)) = plus(plus(X,X),n(plus(Y,X)))))",
+     "text_sha256": "320189f9986558a1ca0e0f854f4a9cf042b173130dfc718043e0a4e17cfd39f1",
+     "theory": "4a6d0f5236d49ea51c03ba66fcc7206b42dbdc8dd930d76fa0a5bd9236910d32"
+    }
+   ],
+   "draws": 73,
+   "quarantined": [
+    {
+     "against_structural_sha256": "48d7b0aa487e0958e3b2b793991e81bf68a95341ca427104663ba0cc0c4e5f1a",
+     "relation": "GENERALIZES",
+     "text": "![X]: (![Y]: (plus(plus(X,X),plus(plus(X,Y),X)) = plus(X,plus(Y,plus(plus(X,Y),Y)))))"
+    },
+    {
+     "against_structural_sha256": "ac38de79d67bf6b8f44235d2366e0f0f29348e2a2a9f007ab49f7b22fac37685",
+     "relation": "GENERALIZES",
+     "text": "![X]: (![Y]: (n(plus(X,n(n(X)))) = plus(n(X),n(plus(Y,X)))))"
+    },
+    {
+     "against_structural_sha256": "0a8474581fb26bcb02fa2ff8f5c5c31d95717cde226a38f379328e3060f2f5e9",
+     "relation": "GENERALIZES",
+     "text": "![X]: (![Y]: (![Z]: (n(plus(plus(plus(X,Y),Z),Z)) = n(plus(Z,plus(plus(Z,X),Y))))))"
+    }
+   ],
+   "rejected_counts": {
+    "CROSS_UNIT_GENERALIZES": 1,
+    "DUPLICATE_IN_UNIT": 13,
+    "EXACT": 21,
+    "INSTANCE": 10
+   },
+   "requested": 25,
+   "system": "ba_huntington",
+   "theory": "4a6d0f5236d49ea51c03ba66fcc7206b42dbdc8dd930d76fa0a5bd9236910d32"
+  },
+  "ba_huntington@602": {
+   "accepted": [
+    {
+     "axiomatization": "ba_huntington",
+     "size": 8,
+     "structural_sha256": "96ac695493b1c75d68c77e433b4ec56e4758519f69a8cdea8448d87b51d06e35",
+     "text": "![X]: (![Y]: (n(plus(X,n(plus(Y,Y)))) = n(plus(X,plus(n(Y),X)))))",
+     "text_sha256": "22052ca7891ef16d5ba3b65aa75eda84ea7d7541cc58cb8992fc559d9dbc4f18",
+     "theory": "4a6d0f5236d49ea51c03ba66fcc7206b42dbdc8dd930d76fa0a5bd9236910d32"
+    },
+    {
+     "axiomatization": "ba_huntington",
+     "size": 8,
+     "structural_sha256": "8c0345311d6c63ff851962de729413f604558563b43fe12a103786bdc2bd888c",
+     "text": "![X]: (![Y]: (![Z]: (plus(n(plus(plus(X,Y),Z)),X) = plus(X,n(plus(Y,plus(Y,Z)))))))",
+     "text_sha256": "258f06defd6313d1c8f141c666b3959e8abf67a36efdf53cc71330cebe7d29fd",
+     "theory": "4a6d0f5236d49ea51c03ba66fcc7206b42dbdc8dd930d76fa0a5bd9236910d32"
+    },
+    {
+     "axiomatization": "ba_huntington",
+     "size": 8,
+     "structural_sha256": "ff0d8dfdb50ff3600436f2c598077c65890ff59f18d941c65c77c8ea9f03751c",
+     "text": "![X]: (![Y]: (n(plus(plus(n(X),Y),Y)) = n(plus(Y,plus(Y,n(X))))))",
+     "text_sha256": "859816bb5a4d3e6da7789e8f1ad26f2ba6a54b72c97c5544550b965d564567cc",
+     "theory": "4a6d0f5236d49ea51c03ba66fcc7206b42dbdc8dd930d76fa0a5bd9236910d32"
+    },
+    {
+     "axiomatization": "ba_huntington",
+     "size": 8,
+     "structural_sha256": "ac566e76ab522cc06da68d9caa7b17d25bc75002414fe4d22128cb83860faa28",
+     "text": "![X]: (![Y]: (n(plus(X,plus(plus(X,X),Y))) = n(plus(Y,plus(Y,plus(X,Y))))))",
+     "text_sha256": "10c2254240544a2392861066227fbf865a097f1a06da7841829de27d81bffeb8",
+     "theory": "4a6d0f5236d49ea51c03ba66fcc7206b42dbdc8dd930d76fa0a5bd9236910d32"
+    },
+    {
+     "axiomatization": "ba_huntington",
+     "size": 8,
+     "structural_sha256": "4f8de9a971205ee242f34424b70f3b4bcab00d5959f702040e46375833d9900a",
+     "text": "![X]: (![Y]: (plus(plus(X,X),plus(plus(Y,X),X)) = plus(Y,plus(Y,plus(X,plus(Y,Y))))))",
+     "text_sha256": "c073b91091308e8a1b5d17effeceff81601b8c9e65cc96ec881bf33d889ee7aa",
+     "theory": "4a6d0f5236d49ea51c03ba66fcc7206b42dbdc8dd930d76fa0a5bd9236910d32"
+    },
+    {
+     "axiomatization": "ba_huntington",
+     "size": 8,
+     "structural_sha256": "10d172de9d17f43f3b4df21a865d3c128904621f047bf46dd0de102b9f315e79",
+     "text": "![X]: (![Y]: (plus(X,n(plus(plus(Y,X),Y))) = plus(X,n(plus(Y,plus(Y,Y))))))",
+     "text_sha256": "3e0664fcf8e44f0ee1f0d788dc929e4322303b644153b1d92aefc3b1eeeb3067",
+     "theory": "4a6d0f5236d49ea51c03ba66fcc7206b42dbdc8dd930d76fa0a5bd9236910d32"
+    },
+    {
+     "axiomatization": "ba_huntington",
+     "size": 7,
+     "structural_sha256": "ffe714e3d2666b00deb53f29c291711d5e2a16cb2ab800d604575804f8f5fa3d",
+     "text": "![X]: (![Y]: (plus(plus(X,X),n(Y)) = plus(X,plus(n(Y),plus(X,X)))))",
+     "text_sha256": "28a04f7e4bdcfe965a37cef8da2216f25f41135f01f25ce4f7639617f0efdabd",
+     "theory": "4a6d0f5236d49ea51c03ba66fcc7206b42dbdc8dd930d76fa0a5bd9236910d32"
+    },
+    {
+     "axiomatization": "ba_huntington",
+     "size": 8,
+     "structural_sha256": "0bde2e5e2d2637426f71fd642690ae6f85c2f45b8c6e8f0116568290f5cb5834",
+     "text": "![X]: (![Y]: (![Z]: (plus(X,plus(n(plus(Y,Y)),Z)) = plus(Z,plus(plus(n(Y),X),Z)))))",
+     "text_sha256": "17567e55f16963165b054de9a36f13cc418426635aeeebc5efe456e16490080a",
+     "theory": "4a6d0f5236d49ea51c03ba66fcc7206b42dbdc8dd930d76fa0a5bd9236910d32"
+    },
+    {
+     "axiomatization": "ba_huntington",
+     "size": 8,
+     "structural_sha256": "0d9ba0fa8ba049f040280a56eddd292f2e415b56d0e202519a1fb3f19d6442a4",
+     "text": "![X]: (![Y]: (plus(X,n(n(n(Y)))) = plus(X,n(plus(Y,plus(Y,Y))))))",
+     "text_sha256": "ccb12964c18a824b87a2affcfa05fe99b0d0e6289b22b09710623fc949855df5",
+     "theory": "4a6d0f5236d49ea51c03ba66fcc7206b42dbdc8dd930d76fa0a5bd9236910d32"
+    },
+    {
+     "axiomatization": "ba_huntington",
+     "size": 8,
+     "structural_sha256": "f9edac25b134d88286a517bc8198f119615ae6bc8552c0bbffe1138c0fca2305",
+     "text": "![X]: (![Y]: (plus(n(plus(plus(X,Y),Y)),X) = plus(X,plus(plus(X,X),n(Y)))))",
+     "text_sha256": "04a4938d652f23314e1f03161bfcfd0c6965b4081d6e6844e6d7cf7d92c261ae",
+     "theory": "4a6d0f5236d49ea51c03ba66fcc7206b42dbdc8dd930d76fa0a5bd9236910d32"
+    },
+    {
+     "axiomatization": "ba_huntington",
+     "size": 8,
+     "structural_sha256": "a83d84db74fca52fcad7bedb5108a844dde5d0d17343be7d039ea065f9d6cf41",
+     "text": "![X]: (![Y]: (plus(plus(plus(X,X),X),plus(X,Y)) = plus(plus(X,plus(Y,Y)),plus(X,Y))))",
+     "text_sha256": "fe694bb258034e26449c827072ba0b678446f50206d9d5fc4a72f3e6c4f57213",
+     "theory": "4a6d0f5236d49ea51c03ba66fcc7206b42dbdc8dd930d76fa0a5bd9236910d32"
+    },
+    {
+     "axiomatization": "ba_huntington",
+     "size": 8,
+     "structural_sha256": "788399abb84bec9bf1a1602014c75424581a28a6afb5466a8a239eed5e788cdd",
+     "text": "![X]: (![Y]: (![Z]: (plus(X,n(plus(Y,plus(Z,X)))) = plus(X,n(plus(Z,plus(Y,Z)))))))",
+     "text_sha256": "f26d8315680cf51910980774ab346887a3ba83de29955d6cd34776482d6569bd",
+     "theory": "4a6d0f5236d49ea51c03ba66fcc7206b42dbdc8dd930d76fa0a5bd9236910d32"
+    },
+    {
+     "axiomatization": "ba_huntington",
+     "size": 7,
+     "structural_sha256": "48ad6bba300196f0d128b19e30af8474a4a80ec350780910c11a6514d9a4027b",
+     "text": "![X]: (![Y]: (plus(plus(X,n(plus(X,Y))),X) = plus(X,plus(X,n(Y)))))",
+     "text_sha256": "fd6d1dc29145f3686c7ecf71578f37f82fa01d127dad41790aa720be0902cac7",
+     "theory": "4a6d0f5236d49ea51c03ba66fcc7206b42dbdc8dd930d76fa0a5bd9236910d32"
+    },
+    {
+     "axiomatization": "ba_huntington",
+     "size": 8,
+     "structural_sha256": "44c7c6eb8695991f11bfaa9ec1086c55409a672f74e7dae0f4e29d546d97ba41",
+     "text": "![X]: (![Y]: (plus(n(plus(X,plus(X,X))),Y) = plus(plus(Y,Y),plus(n(X),Y))))",
+     "text_sha256": "ad1d95a13c6f08a5d5dfaa83d1f14286e85c48fad3e14c9833622a36aed29f39",
+     "theory": "4a6d0f5236d49ea51c03ba66fcc7206b42dbdc8dd930d76fa0a5bd9236910d32"
+    },
+    {
+     "axiomatization": "ba_huntington",
+     "size": 8,
+     "structural_sha256": "6f82d79a1507cb1883de874ae73d502fe723d8a72dc0e0ab2181285838544ab4",
+     "text": "![X]: (![Y]: (![Z]: (n(plus(plus(plus(X,Y),X),Z)) = n(plus(plus(Y,X),plus(Z,X))))))",
+     "text_sha256": "f2cff771e03fb47714798ac79d38a1b7c6bc2d3e46887f561ff3859aaf22fded",
+     "theory": "4a6d0f5236d49ea51c03ba66fcc7206b42dbdc8dd930d76fa0a5bd9236910d32"
+    },
+    {
+     "axiomatization": "ba_huntington",
+     "size": 7,
+     "structural_sha256": "cdc2b63f4e7e4f17dc6722ab2c2201a1fdf3f859fc238a7b233cc49a07fb7b55",
+     "text": "![X]: (![Y]: (plus(plus(X,X),plus(Y,plus(X,Y))) = plus(plus(Y,X),plus(Y,Y))))",
+     "text_sha256": "805681c972066195dc4f0d1cc32aecfd3562edaefe66afa66bbea52ec7a4c216",
+     "theory": "4a6d0f5236d49ea51c03ba66fcc7206b42dbdc8dd930d76fa0a5bd9236910d32"
+    },
+    {
+     "axiomatization": "ba_huntington",
+     "size": 7,
+     "structural_sha256": "f67bea1577c7bf1a2cadb63e830a184b61b9e19871a28b7ca2e20ccf7873d2fe",
+     "text": "![X]: (![Y]: (plus(plus(X,plus(plus(X,Y),Y)),Y) = plus(X,n(n(Y)))))",
+     "text_sha256": "e78bd9fec2bd43c30ff87d692749d6a6c92abf02ec907d2038d18ce41b834868",
+     "theory": "4a6d0f5236d49ea51c03ba66fcc7206b42dbdc8dd930d76fa0a5bd9236910d32"
+    },
+    {
+     "axiomatization": "ba_huntington",
+     "size": 8,
+     "structural_sha256": "a4481a850ab7affe1dde1263e2e2f53c181db0a9322f570e72915e0df79189a5",
+     "text": "![X]: (![Y]: (n(plus(plus(X,n(Y)),X)) = n(plus(X,n(plus(Y,Y))))))",
+     "text_sha256": "87d4d2a93dd1adc3b1a684e8f24ef092340b0f5ba5ab673439ab6447005c2ffd",
+     "theory": "4a6d0f5236d49ea51c03ba66fcc7206b42dbdc8dd930d76fa0a5bd9236910d32"
+    },
+    {
+     "axiomatization": "ba_huntington",
+     "size": 7,
+     "structural_sha256": "b8927a1cac8a4110064f008e398fff3b28cd5bbc2011e63ac3da9b2fcae01ebb",
+     "text": "![X]: (![Y]: (![Z]: (plus(plus(plus(X,Y),Z),plus(Z,X)) = plus(plus(Y,Z),plus(X,X)))))",
+     "text_sha256": "665b41f9d002e000f15fc11d84ce63996bbe08d3ce5557c2fd41f1167adabd94",
+     "theory": "4a6d0f5236d49ea51c03ba66fcc7206b42dbdc8dd930d76fa0a5bd9236910d32"
+    },
+    {
+     "axiomatization": "ba_huntington",
+     "size": 8,
+     "structural_sha256": "f59a51816072c92209e7951f9fa227657758a3c484684b926cddc65033767619",
+     "text": "![X]: (![Y]: (![Z]: (plus(n(plus(X,Y)),plus(X,Y)) = plus(plus(Z,plus(Y,X)),n(X)))))",
+     "text_sha256": "52de787793e1ff685cbfe88b62287541e78d280429110ba47e18e8736d35712d",
+     "theory": "4a6d0f5236d49ea51c03ba66fcc7206b42dbdc8dd930d76fa0a5bd9236910d32"
+    },
+    {
+     "axiomatization": "ba_huntington",
+     "size": 8,
+     "structural_sha256": "ea637514e72919c4b9ac229a0242425e4b11c93a279365b71b32780445f6288e",
+     "text": "![X]: (![Y]: (plus(n(plus(plus(X,X),X)),Y) = plus(n(plus(Y,plus(X,Y))),Y)))",
+     "text_sha256": "cdd5f542cbaf1e555eee5a27ed6a6c97aa382807010f8c12276212ee7db7d61f",
+     "theory": "4a6d0f5236d49ea51c03ba66fcc7206b42dbdc8dd930d76fa0a5bd9236910d32"
+    },
+    {
+     "axiomatization": "ba_huntington",
+     "size": 8,
+     "structural_sha256": "c9e5a230bc542e7e9973099a7f7426c81aa8adbd48f9d70a0420296eaea4dd0d",
+     "text": "![X]: (![Y]: (plus(n(plus(plus(X,X),Y)),X) = plus(n(Y),plus(X,n(Y)))))",
+     "text_sha256": "82547de4c58d8a6d8dc46e5169915b871d72a486b0e29020f540aeb02ff96099",
+     "theory": "4a6d0f5236d49ea51c03ba66fcc7206b42dbdc8dd930d76fa0a5bd9236910d32"
+    },
+    {
+     "axiomatization": "ba_huntington",
+     "size": 8,
+     "structural_sha256": "fde0a0079b02e9af263f8709c4361673e95751096772908ed5152d8724379afc",
+     "text": "![X]: (![Y]: (plus(plus(plus(X,X),n(Y)),Y) = plus(X,plus(n(X),plus(X,Y)))))",
+     "text_sha256": "96c881ec0a6ef13faaf1de7864137ccd6f82491d048453d9e6ce0a018f655eeb",
+     "theory": "4a6d0f5236d49ea51c03ba66fcc7206b42dbdc8dd930d76fa0a5bd9236910d32"
+    },
+    {
+     "axiomatization": "ba_huntington",
+     "size": 8,
+     "structural_sha256": "aba3c5651d4fceabb8e18bd4e9929f5bc17ecd98f1e4200d99ce9ac5795f5417",
+     "text": "![X]: (![Y]: (![Z]: (plus(X,plus(plus(Y,Y),plus(Z,X))) = plus(Y,plus(X,plus(Z,plus(Z,Y)))))))",
+     "text_sha256": "f802787a71c63a23ab33503e35b4f4f29e66473532a756ee1cb4a859e816f624",
+     "theory": "4a6d0f5236d49ea51c03ba66fcc7206b42dbdc8dd930d76fa0a5bd9236910d32"
+    },
+    {
+     "axiomatization": "ba_huntington",
+     "size": 8,
+     "structural_sha256": "c63af9f184ab8efc0bc5f8d8a1efdb66e7346a092cfd02cfa5be68ac4ac9af27",
+     "text": "![X]: (![Y]: (![Z]: (plus(n(plus(X,plus(Y,Z))),X) = plus(X,n(plus(plus(Y,Z),Y))))))",
+     "text_sha256": "738f01895a29f150f411fb636788760bd2482372ffd62f8651a456b0c08fd1ef",
+     "theory": "4a6d0f5236d49ea51c03ba66fcc7206b42dbdc8dd930d76fa0a5bd9236910d32"
+    }
+   ],
+   "draws": 60,
+   "quarantined": [
+    {
+     "against_structural_sha256": "435fc8a9146203b95e54ca61cda1a56e0d04d425e602ff8e7e1868d6a1614ccc",
+     "relation": "GENERALIZES",
+     "text": "![X]: (![Y]: (![Z]: (plus(plus(X,n(plus(Y,X))),Z) = plus(plus(X,plus(X,Z)),n(Y)))))"
+    },
+    {
+     "against_structural_sha256": "44c5c7f5fe6f8a4b236c859d553d428b72e9fe32ad290a7ef939a42f6d84c423",
+     "relation": "GENERALIZES",
+     "text": "![X]: (![Y]: (n(plus(plus(X,X),X)) = plus(n(X),n(plus(Y,X)))))"
+    }
+   ],
+   "rejected_counts": {
+    "CROSS_UNIT_INSTANCE": 1,
+    "DUPLICATE_IN_UNIT": 8,
+    "EXACT": 17,
+    "INSTANCE": 7
+   },
+   "requested": 25,
+   "system": "ba_huntington",
+   "theory": "4a6d0f5236d49ea51c03ba66fcc7206b42dbdc8dd930d76fa0a5bd9236910d32"
+  },
+  "ba_huntington@603": {
+   "accepted": [
+    {
+     "axiomatization": "ba_huntington",
+     "size": 8,
+     "structural_sha256": "a9a33b992c0025b2533e5fbbb7def287439f67f8d65ae089b8ecd0069d3532b1",
+     "text": "![X]: (![Y]: (![Z]: (plus(X,plus(n(X),plus(X,Y))) = plus(Z,plus(plus(Y,Y),n(Z))))))",
+     "text_sha256": "ab888ad292b9631909534956cbb2a20bb5bacdad278439058c348d98f965cc3b",
+     "theory": "4a6d0f5236d49ea51c03ba66fcc7206b42dbdc8dd930d76fa0a5bd9236910d32"
+    },
+    {
+     "axiomatization": "ba_huntington",
+     "size": 7,
+     "structural_sha256": "541991c5fbbf46035629c7dfc0179d4120c1b92421bc711f69638ec92466173d",
+     "text": "![X]: (![Y]: (plus(n(plus(X,X)),Y) = plus(plus(Y,Y),n(plus(Y,X)))))",
+     "text_sha256": "6dee5d1301524e8e85fc4c42caaa5bd32d174d9b3579ee68c1c59ec4fb6d5e61",
+     "theory": "4a6d0f5236d49ea51c03ba66fcc7206b42dbdc8dd930d76fa0a5bd9236910d32"
+    },
+    {
+     "axiomatization": "ba_huntington",
+     "size": 8,
+     "structural_sha256": "d124805ee129b8c1899b3fbb90ea8bcc99e800deb0128e308f3d008e2cd7f9ff",
+     "text": "![X]: (![Y]: (n(plus(n(X),plus(Y,Y))) = n(plus(Y,n(plus(Y,X))))))",
+     "text_sha256": "12d7d9a9cc129cd1113c35b596e5b779605490584192051d876d2c5dedc10cc4",
+     "theory": "4a6d0f5236d49ea51c03ba66fcc7206b42dbdc8dd930d76fa0a5bd9236910d32"
+    },
+    {
+     "axiomatization": "ba_huntington",
+     "size": 8,
+     "structural_sha256": "9f86d3bfb117fa7a1ab030c2a7146652635cf4461c7ce33d1f1e469795f95f59",
+     "text": "![X]: (![Y]: (plus(plus(plus(X,X),Y),plus(X,Y)) = plus(Y,plus(plus(Y,plus(X,Y)),X))))",
+     "text_sha256": "bcb139e511d7cb4400f7614667a5e7d79953e95156fa8cb2fc92029a6d9c0ee1",
+     "theory": "4a6d0f5236d49ea51c03ba66fcc7206b42dbdc8dd930d76fa0a5bd9236910d32"
+    },
+    {
+     "axiomatization": "ba_huntington",
+     "size": 8,
+     "structural_sha256": "062fa12d45c28ce4a7cb2770b977d305ab95660ca88da7eac883c2db084f234a",
+     "text": "![X]: (![Y]: (![Z]: (plus(n(plus(X,plus(Y,Z))),Z) = plus(Z,n(plus(plus(Z,X),Y))))))",
+     "text_sha256": "289524bbc5d8e72efa19dcafdeb869f0ea18c78f830766960ae1ab4e4ec9a070",
+     "theory": "4a6d0f5236d49ea51c03ba66fcc7206b42dbdc8dd930d76fa0a5bd9236910d32"
+    },
+    {
+     "axiomatization": "ba_huntington",
+     "size": 8,
+     "structural_sha256": "e8a83297023a749b0e91bbc857e27b37d7554d5813f59d8cab940a1714db3686",
+     "text": "![X]: (![Y]: (![Z]: (plus(n(plus(plus(X,Y),Z)),X) = plus(X,n(plus(plus(Y,Z),Z))))))",
+     "text_sha256": "d4fddeb432c416ff0f0f44d8dce4e7ecef2b2303fe5b95a41ac0d0de430760aa",
+     "theory": "4a6d0f5236d49ea51c03ba66fcc7206b42dbdc8dd930d76fa0a5bd9236910d32"
+    },
+    {
+     "axiomatization": "ba_huntington",
+     "size": 8,
+     "structural_sha256": "8ec9edd9815e4244e3ee8eb14042d669e3d1dccd05636c454056ea47f260a2a6",
+     "text": "![X]: (![Y]: (n(plus(plus(X,Y),plus(X,X))) = n(plus(X,plus(Y,plus(X,Y))))))",
+     "text_sha256": "74e2e15f8606b33f17b9afef09d8837582a9a55fc8644dac5da4f0e4b8e2d918",
+     "theory": "4a6d0f5236d49ea51c03ba66fcc7206b42dbdc8dd930d76fa0a5bd9236910d32"
+    },
+    {
+     "axiomatization": "ba_huntington",
+     "size": 8,
+     "structural_sha256": "e4041ae6c340a59b957338cd45be0733bf36e22c9f158dc3eea7c4f44017a7fe",
+     "text": "![X]: (![Y]: (n(plus(n(plus(X,Y)),X)) = n(plus(plus(X,n(Y)),X))))",
+     "text_sha256": "1c4e7a0178fe46b60a70f87e057366ccb90de9642ac7118cbcfda07ec5f7a029",
+     "theory": "4a6d0f5236d49ea51c03ba66fcc7206b42dbdc8dd930d76fa0a5bd9236910d32"
+    },
+    {
+     "axiomatization": "ba_huntington",
+     "size": 8,
+     "structural_sha256": "e3dbeb21bdae19f39fc7d5d77bedf21c0406d288e6652d7da310dd7781805250",
+     "text": "![X]: (![Y]: (n(n(plus(X,n(Y)))) = plus(plus(n(Y),X),plus(X,X))))",
+     "text_sha256": "2704cc69957cb7ce4118b7dcf0564df98495a20edb7a03c343146a0a8e64b63b",
+     "theory": "4a6d0f5236d49ea51c03ba66fcc7206b42dbdc8dd930d76fa0a5bd9236910d32"
+    },
+    {
+     "axiomatization": "ba_huntington",
+     "size": 8,
+     "structural_sha256": "84463f38f24b5cd9226b612364047e31df2bcf4270bf396827baa44822df550a",
+     "text": "![X]: (![Y]: (n(plus(plus(X,plus(X,Y)),X)) = n(plus(X,plus(Y,plus(X,X))))))",
+     "text_sha256": "6f27738793b640b81d97c9627715da93e1662e40bacd9cb93eb020dee51e1e15",
+     "theory": "4a6d0f5236d49ea51c03ba66fcc7206b42dbdc8dd930d76fa0a5bd9236910d32"
+    },
+    {
+     "axiomatization": "ba_huntington",
+     "size": 8,
+     "structural_sha256": "67f93badb8806aed302af0f44d5fe3dc4219277d89b9f180b93e63895fc4ea8a",
+     "text": "![X]: (![Y]: (plus(n(plus(X,Y)),plus(X,X)) = plus(plus(X,plus(X,X)),n(Y))))",
+     "text_sha256": "f827487c5ef5018b4d6fcd096fe9dd09a37049763fc8ef6459b3c0cc2a34c16d",
+     "theory": "4a6d0f5236d49ea51c03ba66fcc7206b42dbdc8dd930d76fa0a5bd9236910d32"
+    },
+    {
+     "axiomatization": "ba_huntington",
+     "size": 7,
+     "structural_sha256": "b27597992c495739898faf56d12277de7819d5260573f9471bfd7a38cdc921e8",
+     "text": "![X]: (![Y]: (![Z]: (n(plus(n(X),X)) = n(plus(plus(Y,n(Z)),Z)))))",
+     "text_sha256": "4983d1569daf8429fe8c51349630504641a40295faa26ecccf880b37c2099c8d",
+     "theory": "4a6d0f5236d49ea51c03ba66fcc7206b42dbdc8dd930d76fa0a5bd9236910d32"
+    },
+    {
+     "axiomatization": "ba_huntington",
+     "size": 8,
+     "structural_sha256": "658668712177f7ee994678b2a21d292d7c742fc006b20b5ffcab720a649d1031",
+     "text": "![X]: (![Y]: (![Z]: (plus(n(plus(X,plus(Y,X))),Z) = plus(n(plus(Y,X)),plus(Z,Z)))))",
+     "text_sha256": "98b48522d1cae2e46b06f2a0f92f3c30d45b5f1d7f8940da09c7aa045e9c3e46",
+     "theory": "4a6d0f5236d49ea51c03ba66fcc7206b42dbdc8dd930d76fa0a5bd9236910d32"
+    },
+    {
+     "axiomatization": "ba_huntington",
+     "size": 8,
+     "structural_sha256": "475b5ec0b92e6c62b4da9dffd7b795a27dbadd6515f6bc60d5470dc4b6d457a6",
+     "text": "![X]: (![Y]: (![Z]: (n(plus(plus(plus(X,Y),Y),Z)) = n(plus(X,plus(Y,plus(Y,Z)))))))",
+     "text_sha256": "4cb5afe323e823e8c421463997026b5a79529367d421c2745de7ecbc436ddb9b",
+     "theory": "4a6d0f5236d49ea51c03ba66fcc7206b42dbdc8dd930d76fa0a5bd9236910d32"
+    },
+    {
+     "axiomatization": "ba_huntington",
+     "size": 8,
+     "structural_sha256": "3da9b1108741ef32fb8a88892f02ecb994f11f27662912c8a5e7c6df8982c0c2",
+     "text": "![X]: (![Y]: (![Z]: (plus(plus(X,Y),plus(Y,n(Z))) = plus(Y,plus(plus(Y,X),n(Z))))))",
+     "text_sha256": "753bc3171a3936e75671af102ee6d8ff11ce2b659fe4ef0d4e4f803d27bc1243",
+     "theory": "4a6d0f5236d49ea51c03ba66fcc7206b42dbdc8dd930d76fa0a5bd9236910d32"
+    },
+    {
+     "axiomatization": "ba_huntington",
+     "size": 8,
+     "structural_sha256": "9525ff379d06bb508cc859d16674162e7bf2647a8cacf9abf15e4023c8f9ab3b",
+     "text": "![X]: (![Y]: (![Z]: (plus(plus(plus(X,Y),Z),plus(Z,Y)) = plus(plus(Y,plus(X,plus(Z,Y))),X))))",
+     "text_sha256": "543d21379f0c1c038fb8423f56ffabdbf42cf912139e5c7c2c30d4df4f3201d7",
+     "theory": "4a6d0f5236d49ea51c03ba66fcc7206b42dbdc8dd930d76fa0a5bd9236910d32"
+    },
+    {
+     "axiomatization": "ba_huntington",
+     "size": 8,
+     "structural_sha256": "724f00576fe840b6182ba3aed8324f38a71bc8ca76b133f1821e54d62a60b66a",
+     "text": "![X]: (![Y]: (n(plus(n(plus(X,Y)),Y)) = n(plus(plus(Y,Y),n(X)))))",
+     "text_sha256": "82cf04f820079ccf583df62eb1c734409b47ec1a87c8736592a011b2456af09a",
+     "theory": "4a6d0f5236d49ea51c03ba66fcc7206b42dbdc8dd930d76fa0a5bd9236910d32"
+    },
+    {
+     "axiomatization": "ba_huntington",
+     "size": 8,
+     "structural_sha256": "265b4080608ccbcc1c91a7edc35af81c935041a84dfd9cab1df3726c605b9554",
+     "text": "![X]: (![Y]: (plus(X,plus(Y,plus(X,plus(X,X)))) = plus(Y,plus(X,plus(Y,plus(Y,Y))))))",
+     "text_sha256": "448a641239c5dc968e28a7195c24c7d55da462d2e9534f995c1749432da38c49",
+     "theory": "4a6d0f5236d49ea51c03ba66fcc7206b42dbdc8dd930d76fa0a5bd9236910d32"
+    },
+    {
+     "axiomatization": "ba_huntington",
+     "size": 8,
+     "structural_sha256": "b42188e9e617c229eaf0aca7a26decfb530a40c6051741b183ca4397b9097aa2",
+     "text": "![X]: (![Y]: (n(plus(plus(X,Y),plus(Y,X))) = n(plus(X,plus(Y,plus(Y,X))))))",
+     "text_sha256": "a8677dc3d78d0c24e54b80befc53b67a9be988116334d8485514e2463db5e42e",
+     "theory": "4a6d0f5236d49ea51c03ba66fcc7206b42dbdc8dd930d76fa0a5bd9236910d32"
+    },
+    {
+     "axiomatization": "ba_huntington",
+     "size": 8,
+     "structural_sha256": "8ac16995e5e8a210594e9a5b63d901995857ac962c634a78ad8069b436cf85fa",
+     "text": "![X]: (![Y]: (![Z]: (plus(n(plus(plus(X,Y),X)),Z) = plus(n(plus(Z,plus(Y,X))),Z))))",
+     "text_sha256": "e667718c6cdacdc4db595ad2e3871d4f2b8a291ff4699b8e95cc587d0dceefcc",
+     "theory": "4a6d0f5236d49ea51c03ba66fcc7206b42dbdc8dd930d76fa0a5bd9236910d32"
+    },
+    {
+     "axiomatization": "ba_huntington",
+     "size": 7,
+     "structural_sha256": "90cfc866afcac02b9717484014519f8a98ddfd3ee30b549ddcccd4b552dfdaea",
+     "text": "![X]: (![Y]: (n(plus(plus(X,Y),Y)) = n(plus(X,plus(Y,plus(Y,Y))))))",
+     "text_sha256": "a5616c765283944e19dfb02553ca2ae799a216bd0fe1c5dc269e9958d20494e5",
+     "theory": "4a6d0f5236d49ea51c03ba66fcc7206b42dbdc8dd930d76fa0a5bd9236910d32"
+    },
+    {
+     "axiomatization": "ba_huntington",
+     "size": 8,
+     "structural_sha256": "99551fd6dd21cbf45368194350ad88fe1c52b2f8d1f0dd2530f014250a4a5919",
+     "text": "![X]: (![Y]: (n(plus(plus(X,plus(X,Y)),X)) = n(plus(X,plus(plus(Y,X),X)))))",
+     "text_sha256": "a23629aeafa1c5b270850d9aba1f2b82fcd331e57768ad1e90178e130270e4b8",
+     "theory": "4a6d0f5236d49ea51c03ba66fcc7206b42dbdc8dd930d76fa0a5bd9236910d32"
+    },
+    {
+     "axiomatization": "ba_huntington",
+     "size": 7,
+     "structural_sha256": "9dfc29aa7ef2f52501032b4a3de58f735ae9584917d9a3f47d8e1517cc921c14",
+     "text": "![X]: (![Y]: (n(plus(plus(X,Y),plus(Y,X))) = n(plus(Y,plus(X,Y)))))",
+     "text_sha256": "e1dd0534b9c5415d8f2968864f9d8e1485d51bdc73201aa19bf3a3d30ce5982a",
+     "theory": "4a6d0f5236d49ea51c03ba66fcc7206b42dbdc8dd930d76fa0a5bd9236910d32"
+    },
+    {
+     "axiomatization": "ba_huntington",
+     "size": 8,
+     "structural_sha256": "c685bc1aa3d408d962eebb73e92eb275c5318db14e15a095a1e0366e2e034b42",
+     "text": "![X]: (![Y]: (plus(plus(X,plus(X,Y)),plus(X,Y)) = plus(Y,plus(plus(Y,X),plus(X,Y)))))",
+     "text_sha256": "dfdbb1e1b4dc6bfb7147fe3ff931c581b4b4deca67af43e1a259b1416935fec2",
+     "theory": "4a6d0f5236d49ea51c03ba66fcc7206b42dbdc8dd930d76fa0a5bd9236910d32"
+    },
+    {
+     "axiomatization": "ba_huntington",
+     "size": 8,
+     "structural_sha256": "40385b1cd653d62ca5d58b3262544de0a62a377131bbccd7668147397e1746b8",
+     "text": "![X]: (![Y]: (![Z]: (plus(plus(plus(X,Y),X),plus(Z,Y)) = plus(plus(Z,plus(X,plus(Y,X))),X))))",
+     "text_sha256": "ee2bc03be89be89567f45d7a5068dd6d775cd4020838d5e83b75c19ac5389e54",
+     "theory": "4a6d0f5236d49ea51c03ba66fcc7206b42dbdc8dd930d76fa0a5bd9236910d32"
+    }
+   ],
+   "draws": 45,
+   "quarantined": [],
+   "rejected_counts": {
+    "DUPLICATE_IN_UNIT": 3,
+    "EXACT": 12,
+    "INSTANCE": 5
+   },
+   "requested": 25,
+   "system": "ba_huntington",
+   "theory": "4a6d0f5236d49ea51c03ba66fcc7206b42dbdc8dd930d76fa0a5bd9236910d32"
+  },
+  "ba_huntington@604": {
+   "accepted": [
+    {
+     "axiomatization": "ba_huntington",
+     "size": 8,
+     "structural_sha256": "b5fa9ba6f6ba1cf3589974229ac7dfedf67cdb254b2b1d4cebbda41f298fef36",
+     "text": "![X]: (![Y]: (![Z]: (plus(plus(plus(X,Y),X),n(Z)) = plus(plus(X,n(plus(X,Z))),Y))))",
+     "text_sha256": "65f0ff469ea29e321b433a9d31d9f66fcb2fd3c328805246861beb236e7c0817",
+     "theory": "4a6d0f5236d49ea51c03ba66fcc7206b42dbdc8dd930d76fa0a5bd9236910d32"
+    },
+    {
+     "axiomatization": "ba_huntington",
+     "size": 8,
+     "structural_sha256": "78b68a58356b8dc982e7b971266f2e2930098391bc520243b7a3cb3343099ed4",
+     "text": "![X]: (![Y]: (plus(n(plus(X,plus(X,Y))),X) = plus(X,n(plus(Y,plus(X,X))))))",
+     "text_sha256": "c296937ca9a0b166b5be5baae7c83f7c38bc69ac712217318bebd843e84180a7",
+     "theory": "4a6d0f5236d49ea51c03ba66fcc7206b42dbdc8dd930d76fa0a5bd9236910d32"
+    },
+    {
+     "axiomatization": "ba_huntington",
+     "size": 8,
+     "structural_sha256": "f3a9bbeb70d8c3c70462689190018685f91afcbd24d971e91a1183377eb5dab6",
+     "text": "![X]: (![Y]: (plus(n(plus(X,Y)),plus(Y,Y)) = plus(Y,n(plus(Y,plus(Y,X))))))",
+     "text_sha256": "160e2d47a037aabe96244d6af750faa657674674e35f5fba3464dcde246d3eda",
+     "theory": "4a6d0f5236d49ea51c03ba66fcc7206b42dbdc8dd930d76fa0a5bd9236910d32"
+    },
+    {
+     "axiomatization": "ba_huntington",
+     "size": 8,
+     "structural_sha256": "aae63a42f416b0355429fc3f476184a42dc927663889a3ad2408b68126945410",
+     "text": "![X]: (![Y]: (![Z]: (n(plus(plus(X,n(Y)),Z)) = n(plus(Z,plus(n(Y),X))))))",
+     "text_sha256": "b5ac6f72bdc8a962b0a2c0b4e5626bbc65548d345f86dd4f32a7dfb415d82a0f",
+     "theory": "4a6d0f5236d49ea51c03ba66fcc7206b42dbdc8dd930d76fa0a5bd9236910d32"
+    },
+    {
+     "axiomatization": "ba_huntington",
+     "size": 8,
+     "structural_sha256": "8f9c562cecc791754355e982765db57170bb49155f34d6ae16466a93c7f27696",
+     "text": "![X]: (![Y]: (plus(X,n(plus(n(X),Y))) = plus(X,n(plus(n(Y),Y)))))",
+     "text_sha256": "b05ea7cb15d4a618c3920f1677933f2cc63682b6b957a5a2a69aaf48cc6c2a1f",
+     "theory": "4a6d0f5236d49ea51c03ba66fcc7206b42dbdc8dd930d76fa0a5bd9236910d32"
+    },
+    {
+     "axiomatization": "ba_huntington",
+     "size": 8,
+     "structural_sha256": "793cac5f590621d3ffc53d237b91d62424630ed14798473d323c3f851b49c948",
+     "text": "![X]: (![Y]: (n(plus(plus(X,plus(X,X)),Y)) = n(plus(Y,n(n(X))))))",
+     "text_sha256": "225aaf853f98e5d202d86f52bfa451e23ce993d4342e58a541ec940cab51be6c",
+     "theory": "4a6d0f5236d49ea51c03ba66fcc7206b42dbdc8dd930d76fa0a5bd9236910d32"
+    },
+    {
+     "axiomatization": "ba_huntington",
+     "size": 8,
+     "structural_sha256": "5e6f469fa34f1eb349c289ad1992e23ea5f52727521715d3d1b374f667a9d94c",
+     "text": "![X]: (![Y]: (n(plus(plus(n(X),Y),X)) = n(plus(Y,plus(X,n(Y))))))",
+     "text_sha256": "e3764111d3dbe8298275cc7f6bcf1e330b0fc3ffadba535919a1c5c838efa0ac",
+     "theory": "4a6d0f5236d49ea51c03ba66fcc7206b42dbdc8dd930d76fa0a5bd9236910d32"
+    },
+    {
+     "axiomatization": "ba_huntington",
+     "size": 8,
+     "structural_sha256": "cc6ab6718df7b0e517edb5b31d6a2c3f89843b472272cfd48dac6cb3cac4219d",
+     "text": "![X]: (![Y]: (n(plus(plus(plus(X,Y),X),X)) = n(plus(plus(Y,plus(Y,Y)),X))))",
+     "text_sha256": "a3b34c0481f32f2163a4056be6ec29913a5ed4a718a3f50cfaafb2220ce8680b",
+     "theory": "4a6d0f5236d49ea51c03ba66fcc7206b42dbdc8dd930d76fa0a5bd9236910d32"
+    },
+    {
+     "axiomatization": "ba_huntington",
+     "size": 8,
+     "structural_sha256": "1cee39eee86947bd5c1a84a127b8497d797be2c652e923ccaf4475afaec8c59d",
+     "text": "![X]: (![Y]: (n(plus(n(plus(X,Y)),X)) = n(plus(n(Y),plus(X,X)))))",
+     "text_sha256": "1197aea9befe94739ce4f04a511e19a0ccbb5ee93971d4d3739bdba5022f83d7",
+     "theory": "4a6d0f5236d49ea51c03ba66fcc7206b42dbdc8dd930d76fa0a5bd9236910d32"
+    },
+    {
+     "axiomatization": "ba_huntington",
+     "size": 8,
+     "structural_sha256": "874c04b788160922f8983f1650558dce81f30a744e9d0464d4af05c682e7127a",
+     "text": "![X]: (![Y]: (n(plus(plus(X,Y),plus(Y,Y))) = n(plus(Y,plus(Y,plus(X,X))))))",
+     "text_sha256": "532ae381e50b992a24c1c5990ebc525a62adb2a6e8a5c57e1406a724d2b45c8b",
+     "theory": "4a6d0f5236d49ea51c03ba66fcc7206b42dbdc8dd930d76fa0a5bd9236910d32"
+    },
+    {
+     "axiomatization": "ba_huntington",
+     "size": 8,
+     "structural_sha256": "6e85a861af48b3cd4976c582c8fb2e80ddb64bfaad6bba8b96919509ec30df04",
+     "text": "![X]: (![Y]: (n(plus(n(n(X)),Y)) = n(plus(X,plus(X,plus(X,Y))))))",
+     "text_sha256": "2745b0de670a60384962f961ca8f0cec7de8f3a3b5767ad2d9a5c0ab81d88bf4",
+     "theory": "4a6d0f5236d49ea51c03ba66fcc7206b42dbdc8dd930d76fa0a5bd9236910d32"
+    },
+    {
+     "axiomatization": "ba_huntington",
+     "size": 8,
+     "structural_sha256": "67ba8d6e213ef625ef806af608aeee98afe9b54a7210acc9783f26536de882f1",
+     "text": "![X]: (![Y]: (plus(plus(n(X),n(X)),Y) = plus(Y,n(plus(X,plus(X,Y))))))",
+     "text_sha256": "d9ad351dc9fbf43269d2e9c016d76520bf5a74fa3468692092effaf1636bd8c6",
+     "theory": "4a6d0f5236d49ea51c03ba66fcc7206b42dbdc8dd930d76fa0a5bd9236910d32"
+    },
+    {
+     "axiomatization": "ba_huntington",
+     "size": 8,
+     "structural_sha256": "a013ac6542a32b0013b90b9ccc22670bac108d75180ede55fa063704af1a5081",
+     "text": "![X]: (![Y]: (![Z]: (plus(n(X),plus(Y,plus(Y,Z))) = plus(plus(Z,Y),plus(n(X),Z)))))",
+     "text_sha256": "d4b084d6e76aa71d99c5a9fb8ead71baf68758301430ca72aaa8f5b7a7555329",
+     "theory": "4a6d0f5236d49ea51c03ba66fcc7206b42dbdc8dd930d76fa0a5bd9236910d32"
+    },
+    {
+     "axiomatization": "ba_huntington",
+     "size": 7,
+     "structural_sha256": "3c008dc6a02fbca2e33a82cc35b475246b68083ceb3620ddec3eab787c328ee9",
+     "text": "![X]: (![Y]: (n(plus(plus(plus(X,Y),Y),Y)) = n(plus(plus(Y,X),X))))",
+     "text_sha256": "57ebd9f2d1c46a1f56253869c3166880ed7c18bafe3ced68ddeb73f056a1642b",
+     "theory": "4a6d0f5236d49ea51c03ba66fcc7206b42dbdc8dd930d76fa0a5bd9236910d32"
+    },
+    {
+     "axiomatization": "ba_huntington",
+     "size": 8,
+     "structural_sha256": "719252636fe4033015e1a8244fc6eeed7e49642d79a48484d073dc9cab813154",
+     "text": "![X]: (![Y]: (![Z]: (plus(plus(plus(X,X),plus(X,Y)),Z) = plus(Z,plus(plus(plus(Z,Y),X),Y)))))",
+     "text_sha256": "f50265f8b85a8c441d7527aaea542f2949fa7dd9362a552fa8f7556ae5dc4fb9",
+     "theory": "4a6d0f5236d49ea51c03ba66fcc7206b42dbdc8dd930d76fa0a5bd9236910d32"
+    },
+    {
+     "axiomatization": "ba_huntington",
+     "size": 7,
+     "structural_sha256": "65f59e32b2d11f29c09190eacc744987d1e18c4fcf1a3b3085a2765fb88f1f8d",
+     "text": "![X]: (![Y]: (plus(plus(plus(plus(X,X),X),X),Y) = plus(plus(Y,Y),plus(X,X))))",
+     "text_sha256": "663aaeb0c6520e2116e47323796296d65f1c961c17c623b83e5f45fb8fc1d65b",
+     "theory": "4a6d0f5236d49ea51c03ba66fcc7206b42dbdc8dd930d76fa0a5bd9236910d32"
+    },
+    {
+     "axiomatization": "ba_huntington",
+     "size": 8,
+     "structural_sha256": "14554bbd903618075502c9bd7da833bd847fce9ad7bab42c1dd32231b0ab0a8b",
+     "text": "![X]: (![Y]: (plus(X,n(plus(Y,n(X)))) = plus(X,plus(X,n(n(X))))))",
+     "text_sha256": "37ee729b9f137d6f60f6909fe3aea55bc238179a008995e6753f188a31cdf7de",
+     "theory": "4a6d0f5236d49ea51c03ba66fcc7206b42dbdc8dd930d76fa0a5bd9236910d32"
+    },
+    {
+     "axiomatization": "ba_huntington",
+     "size": 8,
+     "structural_sha256": "22e054512d8a72e87e9c055850b7f1ea7a2ff02dfe8112da605f216dbb8a5ffd",
+     "text": "![X]: (![Y]: (![Z]: (plus(plus(plus(X,Y),Y),n(Z)) = plus(Y,plus(n(plus(Y,Z)),X)))))",
+     "text_sha256": "947288255ec5292aef9730ffd4b42b58777723176593a2d429d501041c2ebd2d",
+     "theory": "4a6d0f5236d49ea51c03ba66fcc7206b42dbdc8dd930d76fa0a5bd9236910d32"
+    },
+    {
+     "axiomatization": "ba_huntington",
+     "size": 8,
+     "structural_sha256": "1f86e8b305adb4b8d754e380be8d5c1a543cb6dec08ff98640eb3d8bbff27a79",
+     "text": "![X]: (![Y]: (plus(plus(n(X),Y),n(X)) = plus(Y,plus(plus(n(X),Y),Y))))",
+     "text_sha256": "13b708bf225d2a0a010721169d7bd83734160ff524a8366e737b262fcd964955",
+     "theory": "4a6d0f5236d49ea51c03ba66fcc7206b42dbdc8dd930d76fa0a5bd9236910d32"
+    },
+    {
+     "axiomatization": "ba_huntington",
+     "size": 8,
+     "structural_sha256": "e5fb1e9ec4ad95b6ac276ecea2532690333cbffb150e5e1571cff43706dd18bd",
+     "text": "![X]: (![Y]: (n(plus(n(X),plus(X,X))) = n(plus(Y,plus(X,n(Y))))))",
+     "text_sha256": "72cbd045e96164515f190d575a8d708291e87a399bac26f83bdefbeb6254e219",
+     "theory": "4a6d0f5236d49ea51c03ba66fcc7206b42dbdc8dd930d76fa0a5bd9236910d32"
+    },
+    {
+     "axiomatization": "ba_huntington",
+     "size": 8,
+     "structural_sha256": "546b7adad363351c1731c8dbacb6155dfb12f3c5522f77440d4640b8c24ba738",
+     "text": "![X]: (![Y]: (plus(n(plus(X,n(X))),X) = plus(X,n(plus(n(Y),Y)))))",
+     "text_sha256": "9908506c9fab538643d352dc9bdea5c0e32df58425aa5f8a0fc4c82a05ad3570",
+     "theory": "4a6d0f5236d49ea51c03ba66fcc7206b42dbdc8dd930d76fa0a5bd9236910d32"
+    },
+    {
+     "axiomatization": "ba_huntington",
+     "size": 8,
+     "structural_sha256": "625af603ded9998a13b4ff13a6db9c85dc48fcd78082ed2916ff5ed54fa724ed",
+     "text": "![X]: (![Y]: (![Z]: (plus(plus(n(plus(X,Y)),Z),Z) = plus(Z,n(plus(X,plus(X,Y)))))))",
+     "text_sha256": "61505c200b2bcfbc8afc18efc32e20ee1c1dd4ecab47ee5fc7a91cbb2b9aeb64",
+     "theory": "4a6d0f5236d49ea51c03ba66fcc7206b42dbdc8dd930d76fa0a5bd9236910d32"
+    },
+    {
+     "axiomatization": "ba_huntington",
+     "size": 8,
+     "structural_sha256": "86b44d4e74e100d0247d7573ab0209cd9c52f90a4dbc2c97e7084b5a5ab6e9a9",
+     "text": "![X]: (plus(n(plus(X,n(X))),X) = plus(X,plus(n(n(X)),X)))",
+     "text_sha256": "fb331c2bde427fd68b1a6ec4f269d5dbf1d23d83909d703cae73fa222d3276b1",
+     "theory": "4a6d0f5236d49ea51c03ba66fcc7206b42dbdc8dd930d76fa0a5bd9236910d32"
+    },
+    {
+     "axiomatization": "ba_huntington",
+     "size": 7,
+     "structural_sha256": "ce3bc8aa9a6ae41e79f66938ff6937bc4904752e52b1606761d1cb46d0fb61b1",
+     "text": "![X]: (![Y]: (plus(plus(plus(X,X),X),Y) = plus(Y,plus(plus(plus(X,Y),Y),X))))",
+     "text_sha256": "dd34de30b01d4d192c288a1c73e2b92a729ea7fd017db5318ac67aa75b877bc1",
+     "theory": "4a6d0f5236d49ea51c03ba66fcc7206b42dbdc8dd930d76fa0a5bd9236910d32"
+    },
+    {
+     "axiomatization": "ba_huntington",
+     "size": 8,
+     "structural_sha256": "089a4455ffce7660566e673c1a43fda0f9369ede730c007c4dd86a4778aa6ea5",
+     "text": "![X]: (![Y]: (![Z]: (n(plus(n(X),plus(X,Y))) = n(plus(plus(n(Y),Y),Z)))))",
+     "text_sha256": "0e128f852d325a87a9a07762b255b81ecb3deca50e20650b016af301679280e3",
+     "theory": "4a6d0f5236d49ea51c03ba66fcc7206b42dbdc8dd930d76fa0a5bd9236910d32"
+    }
+   ],
+   "draws": 54,
+   "quarantined": [],
+   "rejected_counts": {
+    "DUPLICATE_IN_UNIT": 3,
+    "EXACT": 16,
+    "INSTANCE": 10
+   },
+   "requested": 25,
+   "system": "ba_huntington",
+   "theory": "4a6d0f5236d49ea51c03ba66fcc7206b42dbdc8dd930d76fa0a5bd9236910d32"
+  },
+  "ba_sheffer@601": {
+   "accepted": [
+    {
+     "axiomatization": "ba_sheffer",
+     "size": 9,
+     "structural_sha256": "b79a619d3217b5373e50433d6e6d22ba4078574dd1ede36dc19521e16f86693a",
+     "text": "![X]: (![Y]: (![Z]: (s(s(X,s(s(Y,Z),Z)),s(Y,Z)) = s(s(Y,Z),s(X,s(X,Z))))))",
+     "text_sha256": "3f31414040389a8921870411d5f774b7fa93d0a3bd9c95db14c69adbddeceb8e",
+     "theory": "8273beae3cd2403d365024777445605c7899e8ccb23293c20ba9b3951e388cbd"
+    },
+    {
+     "axiomatization": "ba_sheffer",
+     "size": 9,
+     "structural_sha256": "e6474e4e3916dae3ba90e10e70626a57378702e7de9c3862a245287f9ba28444",
+     "text": "![X]: (![Y]: (![Z]: (s(s(s(X,Y),X),s(Z,Z)) = s(s(Z,Z),s(s(s(Z,Z),Y),X)))))",
+     "text_sha256": "36fd1166ddc39cf9761ab986ebd8f2e0d7057278e8e9a511b897b6dbf3ef08b0",
+     "theory": "8273beae3cd2403d365024777445605c7899e8ccb23293c20ba9b3951e388cbd"
+    },
+    {
+     "axiomatization": "ba_sheffer",
+     "size": 9,
+     "structural_sha256": "f46b109150ee2c2a5a93e01e46265e819c3d9058e2585065a9b9ef6c0fc049c4",
+     "text": "![X]: (![Y]: (![Z]: (s(s(X,s(s(Y,X),X)),Z) = s(s(Y,s(s(Z,X),s(X,Z))),Z))))",
+     "text_sha256": "4129963ac032880d51838df43e3364f1ad3115c126856acf1dc525002d348c16",
+     "theory": "8273beae3cd2403d365024777445605c7899e8ccb23293c20ba9b3951e388cbd"
+    },
+    {
+     "axiomatization": "ba_sheffer",
+     "size": 9,
+     "structural_sha256": "affb95adb0e84c94e7dffe2c28af522b40ae7b6f39c8974ba5fd7811f4b18538",
+     "text": "![X]: (![Y]: (s(X,s(s(s(Y,Y),Y),X)) = s(Y,s(Y,s(s(X,X),s(Y,Y))))))",
+     "text_sha256": "f8c03c145458baa9c069fa1d6c6046a579d53c8db4f82c66c4c4161a10a73f45",
+     "theory": "8273beae3cd2403d365024777445605c7899e8ccb23293c20ba9b3951e388cbd"
+    },
+    {
+     "axiomatization": "ba_sheffer",
+     "size": 9,
+     "structural_sha256": "cddda1f4978e6c6c7c334dcc05c24577dc2892598d128ee381cf7ece7f6d36c1",
+     "text": "![X]: (![Y]: (![Z]: (s(s(X,X),s(s(Y,Z),s(Y,X))) = s(Y,s(s(Z,s(X,Y)),Y)))))",
+     "text_sha256": "929aabf5986d3ca81c7c4e9ae0fc596da6d66c1b98767a40585f86d1c9b786a5",
+     "theory": "8273beae3cd2403d365024777445605c7899e8ccb23293c20ba9b3951e388cbd"
+    },
+    {
+     "axiomatization": "ba_sheffer",
+     "size": 9,
+     "structural_sha256": "6b992fd7b2057482948b625b2202f26d08321623b1f867c2d85599f590217f8c",
+     "text": "![X]: (![Y]: (![Z]: (s(s(s(X,s(X,Y)),Z),s(Y,X)) = s(s(Y,X),s(Z,s(X,Z))))))",
+     "text_sha256": "284bfb8ca0cd963878f3d8aa2c9ada422e19ab12d57f765ae44852013794a12e",
+     "theory": "8273beae3cd2403d365024777445605c7899e8ccb23293c20ba9b3951e388cbd"
+    },
+    {
+     "axiomatization": "ba_sheffer",
+     "size": 9,
+     "structural_sha256": "3ef625ba6f00747a76c4a2108de2c6ac8001cdab27865fd798f469505350e9b0",
+     "text": "![X]: (![Y]: (![Z]: (s(s(X,s(s(Y,X),Y)),Z) = s(Z,s(s(s(Z,Z),s(Z,Y)),X)))))",
+     "text_sha256": "57345587ba7bd2d756633a06df3603d3eb0ff7f805a5192ba7078b449f1e84b0",
+     "theory": "8273beae3cd2403d365024777445605c7899e8ccb23293c20ba9b3951e388cbd"
+    },
+    {
+     "axiomatization": "ba_sheffer",
+     "size": 9,
+     "structural_sha256": "908193d857f4e84dd97592ba5595f3183d3ae95760838b3e5ac6f195dc447e41",
+     "text": "![X]: (![Y]: (![Z]: (s(s(s(X,Y),Z),s(Z,Z)) = s(s(Z,Y),s(Z,s(s(X,Y),Y))))))",
+     "text_sha256": "a076723ad02b226dcf146ac294f6e6f78932823e1d1770727e913572ab3892d0",
+     "theory": "8273beae3cd2403d365024777445605c7899e8ccb23293c20ba9b3951e388cbd"
+    },
+    {
+     "axiomatization": "ba_sheffer",
+     "size": 9,
+     "structural_sha256": "d1e1abe1bf9a1a83a99939076545e2774f76f8ccb9adacc1c1fa0b8d90e03623",
+     "text": "![X]: (![Y]: (![Z]: (s(s(s(X,Y),Y),s(X,Z)) = s(s(X,Z),s(Y,s(X,s(Z,Y)))))))",
+     "text_sha256": "260d7e716483c3afb3859462888b3da5ade61aef99dd5de3001d97fb4e74762b",
+     "theory": "8273beae3cd2403d365024777445605c7899e8ccb23293c20ba9b3951e388cbd"
+    },
+    {
+     "axiomatization": "ba_sheffer",
+     "size": 9,
+     "structural_sha256": "d33629cf717239213cbc57415662cd1afee671f220b2570c9208f0e2efd5bc34",
+     "text": "![X]: (![Y]: (![Z]: (s(s(s(X,Y),Y),s(Y,Z)) = s(s(Y,s(s(Z,Y),X)),s(Y,Z)))))",
+     "text_sha256": "80857279788a6ee976f2716601ad7d28a4b70dc4df1d077d863e0e9868c1e050",
+     "theory": "8273beae3cd2403d365024777445605c7899e8ccb23293c20ba9b3951e388cbd"
+    },
+    {
+     "axiomatization": "ba_sheffer",
+     "size": 9,
+     "structural_sha256": "c2b4cc570ee9a101b85d37332925c9bc29020c0c08894aac4c6bfd9fcae50475",
+     "text": "![X]: (![Y]: (![Z]: (s(s(X,X),s(s(Y,s(Y,X)),Z)) = s(s(X,X),s(Z,s(Y,Z))))))",
+     "text_sha256": "e781abe16ea5392ea87384ae941f0e4359ef962a6c8c4e5b61a95f9a433c8aa6",
+     "theory": "8273beae3cd2403d365024777445605c7899e8ccb23293c20ba9b3951e388cbd"
+    },
+    {
+     "axiomatization": "ba_sheffer",
+     "size": 9,
+     "structural_sha256": "44337cdeb46d19b2e54da91394b8a5b441755d3f746faf18def58489166a8b76",
+     "text": "![X]: (![Y]: (![Z]: (s(s(s(s(X,Y),Z),X),s(Y,X)) = s(s(X,Y),s(X,s(Z,Z))))))",
+     "text_sha256": "4505df12de3fcd2a8fc2b647a97c57ac6e7b5ba57522b647be9af113a2bff566",
+     "theory": "8273beae3cd2403d365024777445605c7899e8ccb23293c20ba9b3951e388cbd"
+    },
+    {
+     "axiomatization": "ba_sheffer",
+     "size": 9,
+     "structural_sha256": "727a15f4f0e9790384d9b6fbfc285929d92a98f167fa8856254e691a75b245b8",
+     "text": "![X]: (![Y]: (![Z]: (s(s(X,X),s(s(Y,X),s(Z,X))) = s(Z,s(Z,s(Y,s(Y,Z)))))))",
+     "text_sha256": "97e35c2c56d9f86e73b212f57844417ed57eeb7fccacf2e82dcf1764f5fef40e",
+     "theory": "8273beae3cd2403d365024777445605c7899e8ccb23293c20ba9b3951e388cbd"
+    },
+    {
+     "axiomatization": "ba_sheffer",
+     "size": 9,
+     "structural_sha256": "ba75c53ff1c38b01055f8a89de7d2ecf9258010314d6b276c9f66eba3b57f2fa",
+     "text": "![X]: (![Y]: (![Z]: (s(s(X,X),s(Y,s(Z,s(X,X)))) = s(s(X,X),s(Y,s(Z,Y))))))",
+     "text_sha256": "1f11d554d84a7e6632d39ec5f09c159fe131ba71241454f15f26ec2e2fdd5a92",
+     "theory": "8273beae3cd2403d365024777445605c7899e8ccb23293c20ba9b3951e388cbd"
+    },
+    {
+     "axiomatization": "ba_sheffer",
+     "size": 9,
+     "structural_sha256": "e63efdae2482076f877cdbdf02d9059375fa363a1a6c619979fd2fe9463b2b2c",
+     "text": "![X]: (![Y]: (![Z]: (s(s(X,s(X,s(Y,Z))),Z) = s(Z,s(Y,s(s(Y,X),s(X,X)))))))",
+     "text_sha256": "fdad9c45e957cd7f81fc8bebef48b3685aaab4231bae285601e7a68d29e53ef2",
+     "theory": "8273beae3cd2403d365024777445605c7899e8ccb23293c20ba9b3951e388cbd"
+    },
+    {
+     "axiomatization": "ba_sheffer",
+     "size": 9,
+     "structural_sha256": "157b2b8ac1f6b2c3ba262deaf42ad30d2ffd800754e1924d23d456b35d271df7",
+     "text": "![X]: (![Y]: (![Z]: (s(s(X,s(s(Y,X),s(Y,X))),Y) = s(Y,s(X,s(Z,s(Y,X)))))))",
+     "text_sha256": "c2de64f90a0abc67c5669c04f55abf92c12038d8cbef3987f541cd416f8818b7",
+     "theory": "8273beae3cd2403d365024777445605c7899e8ccb23293c20ba9b3951e388cbd"
+    },
+    {
+     "axiomatization": "ba_sheffer",
+     "size": 9,
+     "structural_sha256": "b35ef66b06924657f7f79dfd57d2f1a46b7e5c658c5ab519d15c85e4ec994f10",
+     "text": "![X]: (![Y]: (![Z]: (s(s(s(s(X,Y),X),Y),s(Y,Y)) = s(s(s(X,Z),Y),s(X,Y)))))",
+     "text_sha256": "7889433b7e42534d14b3b285d549132eed3c2cf0a552483a2fe8faee9cd768f8",
+     "theory": "8273beae3cd2403d365024777445605c7899e8ccb23293c20ba9b3951e388cbd"
+    },
+    {
+     "axiomatization": "ba_sheffer",
+     "size": 9,
+     "structural_sha256": "18eb094ba1035412617fc72d6642680ebbe933fe88bae47000c8fa844eeb9891",
+     "text": "![X]: (![Y]: (![Z]: (s(s(s(X,s(Y,Z)),Z),s(Y,Y)) = s(s(Z,s(X,Z)),s(Y,Y)))))",
+     "text_sha256": "4d96c855aee872a24e3f70f8f5dd559942d924de9eecb3808cc7d81ae13754b2",
+     "theory": "8273beae3cd2403d365024777445605c7899e8ccb23293c20ba9b3951e388cbd"
+    },
+    {
+     "axiomatization": "ba_sheffer",
+     "size": 9,
+     "structural_sha256": "d7f608ad4605c8cfe52cadecebdf2bf80698696a3cd57c88c926fd406f51051a",
+     "text": "![X]: (![Y]: (![Z]: (s(X,s(s(X,Y),s(Z,s(Y,X)))) = s(X,s(s(Z,Z),s(Y,Y))))))",
+     "text_sha256": "687a0797c273349420b13b700feabefb36479276d8941b58a53f9a64a5564a6a",
+     "theory": "8273beae3cd2403d365024777445605c7899e8ccb23293c20ba9b3951e388cbd"
+    },
+    {
+     "axiomatization": "ba_sheffer",
+     "size": 9,
+     "structural_sha256": "eca29e4af1f114dfe41c94dd7e8fdf9afd94fbaebbbc4b21809376ade74d64f7",
+     "text": "![X]: (![Y]: (![Z]: (s(s(s(X,s(Y,Z)),Z),s(Y,Y)) = s(s(Z,s(X,X)),s(Y,Y)))))",
+     "text_sha256": "2980525aa1f6b246f7d18a0cb6b1c31d2ffe28b0e4f36d7abfb1733be30a0941",
+     "theory": "8273beae3cd2403d365024777445605c7899e8ccb23293c20ba9b3951e388cbd"
+    },
+    {
+     "axiomatization": "ba_sheffer",
+     "size": 9,
+     "structural_sha256": "501c4106c96b186bd36fb83a5a0b25f9f32a1aa5c31db3612ff7dc0fad9c5947",
+     "text": "![X]: (![Y]: (![Z]: (s(s(s(X,s(Y,Z)),Z),s(Y,X)) = s(s(Y,X),s(s(Z,X),Z)))))",
+     "text_sha256": "29fd848544ec8b2b676c8216434e4bd921ebcdec0b6b5b8836f113e0acd45901",
+     "theory": "8273beae3cd2403d365024777445605c7899e8ccb23293c20ba9b3951e388cbd"
+    },
+    {
+     "axiomatization": "ba_sheffer",
+     "size": 9,
+     "structural_sha256": "516e93ecd8005965c4e856ecad2c9f65dbf55c320aa78dc2165a9fbd5a9939c0",
+     "text": "![X]: (![Y]: (![Z]: (s(s(s(s(X,X),X),Y),X) = s(s(Y,s(s(Y,X),s(X,Z))),X))))",
+     "text_sha256": "095467f389a58ffa10d090955806905877da321ddae54fb9dc8885c5614c0fa2",
+     "theory": "8273beae3cd2403d365024777445605c7899e8ccb23293c20ba9b3951e388cbd"
+    },
+    {
+     "axiomatization": "ba_sheffer",
+     "size": 9,
+     "structural_sha256": "edd129b00d40e1f50b4a5e79fea80d34d908b24cc481f74190c21198fbc32e60",
+     "text": "![X]: (![Y]: (![Z]: (s(X,s(s(X,Y),s(X,Z))) = s(X,s(s(Z,s(X,Y)),s(Y,X))))))",
+     "text_sha256": "ea49f626f37a72e55d8afd257d21b20473c739914bf423a9fdb905e91e46d67d",
+     "theory": "8273beae3cd2403d365024777445605c7899e8ccb23293c20ba9b3951e388cbd"
+    },
+    {
+     "axiomatization": "ba_sheffer",
+     "size": 9,
+     "structural_sha256": "dc94469f204dbb1a36a1edb4ad5c5bccf340bcae87c91fe9df6bdb35ddd67b57",
+     "text": "![X]: (![Y]: (![Z]: (s(s(X,Y),s(s(Y,X),s(Z,X))) = s(X,s(s(Z,s(Y,X)),X)))))",
+     "text_sha256": "6e25b8819c4b9e5c37ce11394f9fa9c3b42029eaec7be220f1b4a2568855633d",
+     "theory": "8273beae3cd2403d365024777445605c7899e8ccb23293c20ba9b3951e388cbd"
+    },
+    {
+     "axiomatization": "ba_sheffer",
+     "size": 9,
+     "structural_sha256": "7bd07f705b70a99166c4333218c3344ae75da14f8a330681bbb6ade745dea893",
+     "text": "![X]: (![Y]: (![Z]: (s(s(s(X,X),Y),s(Z,Z)) = s(s(Y,s(X,s(Z,Y))),s(Z,Z)))))",
+     "text_sha256": "9466862e999915c4676b5b9bc0a8a57ef01518cda721d96666f4d47458f65b00",
+     "theory": "8273beae3cd2403d365024777445605c7899e8ccb23293c20ba9b3951e388cbd"
+    }
+   ],
+   "draws": 28,
+   "quarantined": [],
+   "rejected_counts": {
+    "INSTANCE": 3
+   },
+   "requested": 25,
+   "system": "ba_sheffer",
+   "theory": "8273beae3cd2403d365024777445605c7899e8ccb23293c20ba9b3951e388cbd"
+  },
+  "ba_sheffer@602": {
+   "accepted": [
+    {
+     "axiomatization": "ba_sheffer",
+     "size": 9,
+     "structural_sha256": "7df5ec144ab7d387adb0b57181740ce454513e78e2689bca33e761f0569fbb15",
+     "text": "![X]: (![Y]: (![Z]: (s(s(X,s(s(Y,Z),Z)),s(Y,Y)) = s(s(X,s(Z,Z)),s(Y,Y)))))",
+     "text_sha256": "e1bc6d51aee543748f604aa22b8e9ab75dbd580008907bb76f8bea083ae273dc",
+     "theory": "8273beae3cd2403d365024777445605c7899e8ccb23293c20ba9b3951e388cbd"
+    },
+    {
+     "axiomatization": "ba_sheffer",
+     "size": 9,
+     "structural_sha256": "ec931f93c50d20765cb8a6886fa64aebb2f26f6b21fec9295e93c92cb83abfdf",
+     "text": "![X]: (![Y]: (![Z]: (s(s(X,Y),s(s(X,Z),Z)) = s(s(Y,X),s(Z,s(X,s(Z,Y)))))))",
+     "text_sha256": "03b02c69ba0b7c6fba3c0ab2ae45918c12fbd57e0572c11f90c4ab49f1f5312d",
+     "theory": "8273beae3cd2403d365024777445605c7899e8ccb23293c20ba9b3951e388cbd"
+    },
+    {
+     "axiomatization": "ba_sheffer",
+     "size": 9,
+     "structural_sha256": "3923ca2145dbb7b8c1786eafb1de26d97f2b56b2a043965531fa0a6f843d6c50",
+     "text": "![X]: (![Y]: (![Z]: (s(s(X,s(s(Y,Y),Z)),s(X,Y)) = s(s(Y,X),s(s(X,Z),X)))))",
+     "text_sha256": "e0d4cc8d03a05ed43748bbdcaf48da42adf6115b15a47eaff98132b5884ded4b",
+     "theory": "8273beae3cd2403d365024777445605c7899e8ccb23293c20ba9b3951e388cbd"
+    },
+    {
+     "axiomatization": "ba_sheffer",
+     "size": 9,
+     "structural_sha256": "b91ae5616a12cfca17b14e92ea8d7ccfd46fcba395b22d7de24fd016bedfcc12",
+     "text": "![X]: (![Y]: (![Z]: (s(s(s(X,s(Y,Z)),Y),X) = s(X,s(X,s(s(Y,Z),s(Y,Z)))))))",
+     "text_sha256": "c9f33bb9c8e618dc05eb316c87f83c9f7d02a560516ba123f8afd9f8be1917de",
+     "theory": "8273beae3cd2403d365024777445605c7899e8ccb23293c20ba9b3951e388cbd"
+    },
+    {
+     "axiomatization": "ba_sheffer",
+     "size": 9,
+     "structural_sha256": "8cc2b315b54e15873c61320ed0eb7bfa954fdfaab905c1214f2c89c5551dca1d",
+     "text": "![X]: (![Y]: (![Z]: (s(s(s(X,s(Y,X)),Y),X) = s(X,s(s(s(X,X),s(Z,Z)),Y)))))",
+     "text_sha256": "d8900fb6884c7525db9f991e2eb458638a0c4701e0a8cd1926ab8f7826eb26f0",
+     "theory": "8273beae3cd2403d365024777445605c7899e8ccb23293c20ba9b3951e388cbd"
+    },
+    {
+     "axiomatization": "ba_sheffer",
+     "size": 9,
+     "structural_sha256": "e02bdbfa8c0ae9500d867151b3457bcb52a91bf411aaa1cccc789aaa3abe7522",
+     "text": "![X]: (![Y]: (![Z]: (s(s(s(X,s(Y,X)),s(Y,Z)),Z) = s(Z,s(s(X,Z),s(Y,Z))))))",
+     "text_sha256": "e62f7876a6ac05b69cb7e2a2c68a1be536530ba3244b61f891c3b7a1d36d35f0",
+     "theory": "8273beae3cd2403d365024777445605c7899e8ccb23293c20ba9b3951e388cbd"
+    },
+    {
+     "axiomatization": "ba_sheffer",
+     "size": 9,
+     "structural_sha256": "1c9f925be340e097384225ff7f7830843d59d6a818b519d093f0c5d73384d8fa",
+     "text": "![X]: (![Y]: (![Z]: (s(s(X,Y),s(s(X,X),Y)) = s(s(Z,Y),s(Y,s(Z,s(Z,Y)))))))",
+     "text_sha256": "99ae3278becbb19fac9dfd9b4ebb0ff91625e0d6717a603dc80b9ff31dec9fa4",
+     "theory": "8273beae3cd2403d365024777445605c7899e8ccb23293c20ba9b3951e388cbd"
+    },
+    {
+     "axiomatization": "ba_sheffer",
+     "size": 9,
+     "structural_sha256": "c82da81794458296614f867dfc16b53f8dff14a5bd20516b483d359f3592e6fa",
+     "text": "![X]: (![Y]: (![Z]: (s(s(s(X,s(Y,Y)),Y),X) = s(X,s(s(s(Y,Y),s(X,Z)),Y)))))",
+     "text_sha256": "8047087dbbd5633f286b60813d1820d494368e2bc091cf73b699650b1c0f3624",
+     "theory": "8273beae3cd2403d365024777445605c7899e8ccb23293c20ba9b3951e388cbd"
+    },
+    {
+     "axiomatization": "ba_sheffer",
+     "size": 8,
+     "structural_sha256": "cf1744ef7eff965dede528dd2870bcb2251fda1f4c4298ac9c16baa96d97a0b9",
+     "text": "![X]: (![Y]: (s(X,s(Y,s(s(Y,Y),X))) = s(X,s(Y,s(X,s(X,X))))))",
+     "text_sha256": "bb2a92e65d0bd52c921cbb97a66543477ee28b744f2622eb615400ee2edd0745",
+     "theory": "8273beae3cd2403d365024777445605c7899e8ccb23293c20ba9b3951e388cbd"
+    },
+    {
+     "axiomatization": "ba_sheffer",
+     "size": 9,
+     "structural_sha256": "315a933b573db5b7c54c45aedc1f833c85b0698f67de1659a3284af7af0d85c3",
+     "text": "![X]: (![Y]: (![Z]: (s(s(X,X),s(s(Y,Z),Z)) = s(s(X,X),s(Z,s(s(X,Y),Y))))))",
+     "text_sha256": "efd96fd1dc6a9b6e8092dfbdacca2c7685216ea0ccfedc5f87c4cc79bac45205",
+     "theory": "8273beae3cd2403d365024777445605c7899e8ccb23293c20ba9b3951e388cbd"
+    },
+    {
+     "axiomatization": "ba_sheffer",
+     "size": 9,
+     "structural_sha256": "aebf823228cabfd2e1063ceb44bda7def89cfeb64d294ea2dd7c2baf62bb7043",
+     "text": "![X]: (![Y]: (![Z]: (s(s(X,Y),s(s(X,s(Y,Z)),Z)) = s(s(Y,X),s(s(Z,X),Z)))))",
+     "text_sha256": "b453c8b9f3384460234d9dc0ac03ef9ae176a606dea7ab30e650285546fcf699",
+     "theory": "8273beae3cd2403d365024777445605c7899e8ccb23293c20ba9b3951e388cbd"
+    },
+    {
+     "axiomatization": "ba_sheffer",
+     "size": 8,
+     "structural_sha256": "e17795a02a338f00930efcdc86655028b571894a0cb9d6785eafd20e1b61d3b8",
+     "text": "![X]: (![Y]: (![Z]: (s(s(X,s(X,Y)),s(X,Z)) = s(s(Z,X),s(X,s(Y,Y))))))",
+     "text_sha256": "799fb1eb9656ccc6134bdfbdf67e4bddc1e1f66967d850cc80cfcf23f57a9425",
+     "theory": "8273beae3cd2403d365024777445605c7899e8ccb23293c20ba9b3951e388cbd"
+    },
+    {
+     "axiomatization": "ba_sheffer",
+     "size": 9,
+     "structural_sha256": "b06a8c50b2883dc1877864d35bc448abec7d78ebd1e154d341f8673fc806757c",
+     "text": "![X]: (![Y]: (![Z]: (s(s(s(s(X,Y),Z),Y),s(Y,X)) = s(s(Y,s(Y,Z)),s(X,Y)))))",
+     "text_sha256": "25b4a62eeb8d530019513b2c210325e51d1bf09f865657aa47aa416489e62bf2",
+     "theory": "8273beae3cd2403d365024777445605c7899e8ccb23293c20ba9b3951e388cbd"
+    },
+    {
+     "axiomatization": "ba_sheffer",
+     "size": 7,
+     "structural_sha256": "d233c5368426d0e337b543d857bf067fe9f0afc44843a83441479b36f712f473",
+     "text": "![X]: (![Y]: (![Z]: (s(s(X,s(Y,Z)),s(Z,Y)) = s(s(X,X),s(Y,Z)))))",
+     "text_sha256": "748ac7273cbb0cddca3a399d311f0a386bc6c7e8b2225f3b2cd4202729d0ab0e",
+     "theory": "8273beae3cd2403d365024777445605c7899e8ccb23293c20ba9b3951e388cbd"
+    },
+    {
+     "axiomatization": "ba_sheffer",
+     "size": 9,
+     "structural_sha256": "35a50f630f6f114ad5c75437cf7c5c9caba335ad21f7237ae2f8be41b148b69a",
+     "text": "![X]: (![Y]: (![Z]: (s(X,s(s(X,Y),s(s(Z,Y),Z))) = s(X,s(s(Z,X),s(Y,X))))))",
+     "text_sha256": "247b7992766de56c5e48eeee2a6b84e3298d92db73acb77bad7ab3b91e200e07",
+     "theory": "8273beae3cd2403d365024777445605c7899e8ccb23293c20ba9b3951e388cbd"
+    },
+    {
+     "axiomatization": "ba_sheffer",
+     "size": 9,
+     "structural_sha256": "3d884b1b5a02d794b28462058baff4a3b72f49e8ab8c7b0eba1384f5912eb098",
+     "text": "![X]: (![Y]: (![Z]: (s(s(X,X),s(Y,s(X,s(X,Z)))) = s(s(Y,Y),s(X,s(Y,Z))))))",
+     "text_sha256": "c7dd75f21d373ad974b864af14cfb710c3b6489eea6db40124c1a40ddd1ff46e",
+     "theory": "8273beae3cd2403d365024777445605c7899e8ccb23293c20ba9b3951e388cbd"
+    },
+    {
+     "axiomatization": "ba_sheffer",
+     "size": 9,
+     "structural_sha256": "a82fdbd1c9a28fce76f0f24c07911580fadd83517c08bc2ce539b9b3f4e5e8a2",
+     "text": "![X]: (![Y]: (![Z]: (s(s(X,X),s(s(Y,X),s(X,Z))) = s(Z,s(s(s(X,X),X),Z)))))",
+     "text_sha256": "f2146ba4803961d0b94a1f928d03af9668ab96f9ecbcad36e61861c750f365a9",
+     "theory": "8273beae3cd2403d365024777445605c7899e8ccb23293c20ba9b3951e388cbd"
+    },
+    {
+     "axiomatization": "ba_sheffer",
+     "size": 9,
+     "structural_sha256": "10d4b23a35361ca1c42efc968ed296acae6a70d376ef773f09a7cbe98f68cc74",
+     "text": "![X]: (![Y]: (![Z]: (s(s(X,s(Y,s(X,Z))),s(Z,Y)) = s(s(Y,Z),s(s(Y,Y),X)))))",
+     "text_sha256": "dbaac19c56ae34ea616b58ab7c0b8c5309d45d68c56fb8ea04ea05e007b82503",
+     "theory": "8273beae3cd2403d365024777445605c7899e8ccb23293c20ba9b3951e388cbd"
+    },
+    {
+     "axiomatization": "ba_sheffer",
+     "size": 9,
+     "structural_sha256": "628f422ac14eae19dc09fdbd556db70818c374ce3bff9e76a69251c49b978645",
+     "text": "![X]: (![Y]: (![Z]: (s(s(s(s(X,X),Y),Y),Z) = s(s(X,s(s(Y,Y),s(Y,Z))),Z))))",
+     "text_sha256": "e9089f862b041b1fc89c4bbd11953e91a5c9ff18a5c3b168997497e72d56364a",
+     "theory": "8273beae3cd2403d365024777445605c7899e8ccb23293c20ba9b3951e388cbd"
+    },
+    {
+     "axiomatization": "ba_sheffer",
+     "size": 9,
+     "structural_sha256": "b0c08b4944eb29b76bb9aa63f8a141d2fbb15458f6c900cd9ad5f6ab7c13f546",
+     "text": "![X]: (![Y]: (![Z]: (s(s(s(s(X,Y),Z),X),s(Y,Y)) = s(s(X,s(Z,Z)),s(Y,Y)))))",
+     "text_sha256": "c4d680d4c36f88f37c3d78a5e44792357edcb497f501a6630d1dacd65cbb001f",
+     "theory": "8273beae3cd2403d365024777445605c7899e8ccb23293c20ba9b3951e388cbd"
+    },
+    {
+     "axiomatization": "ba_sheffer",
+     "size": 9,
+     "structural_sha256": "589a721224da75d73c87e79ff98c7839c1b1eec1b1e954b6076d577de14428db",
+     "text": "![X]: (![Y]: (![Z]: (s(s(s(s(X,Y),s(X,Z)),Z),Y) = s(Y,s(s(Y,s(X,Z)),X)))))",
+     "text_sha256": "1f98d3fde536d6dd177a5b4dd0abbbe3e770105163d19561b2f15c1baf2fdd31",
+     "theory": "8273beae3cd2403d365024777445605c7899e8ccb23293c20ba9b3951e388cbd"
+    },
+    {
+     "axiomatization": "ba_sheffer",
+     "size": 9,
+     "structural_sha256": "c1c2951fa2004ada0351fdc80e9f71ee7d19e1e2ae4b037fea38cfb78beaf0d0",
+     "text": "![X]: (![Y]: (s(s(X,Y),s(Y,s(s(X,X),Y))) = s(s(Y,X),s(X,s(X,X)))))",
+     "text_sha256": "929f33c07b4303d1bef39b6cb7c3acfaffd2ac94d5ea3f3d061ddc93827b9ec2",
+     "theory": "8273beae3cd2403d365024777445605c7899e8ccb23293c20ba9b3951e388cbd"
+    },
+    {
+     "axiomatization": "ba_sheffer",
+     "size": 8,
+     "structural_sha256": "e8651a770ae83d3ee276c5054d996b8515335aa3de3901ac4628cee39a6005cb",
+     "text": "![X]: (![Y]: (![Z]: (s(s(X,s(s(X,Y),X)),Z) = s(Z,s(Z,s(Z,s(X,Y)))))))",
+     "text_sha256": "49e3eb7d7300b321ec0e681e9647d7cbe6b4d4dbed9ef6d5feda7a1c972e7ca9",
+     "theory": "8273beae3cd2403d365024777445605c7899e8ccb23293c20ba9b3951e388cbd"
+    },
+    {
+     "axiomatization": "ba_sheffer",
+     "size": 8,
+     "structural_sha256": "7c4e11342359a0b34e4fc4da6348bbdcd1f0bcce10d7effab8e2685e4f0f8787",
+     "text": "![X]: (![Y]: (![Z]: (s(s(s(X,Y),X),s(Z,Z)) = s(s(X,s(Y,Y)),s(Z,Z)))))",
+     "text_sha256": "42e3797db3f8166788ef3982cec5759734524f081094def20e4e2bc1433584ab",
+     "theory": "8273beae3cd2403d365024777445605c7899e8ccb23293c20ba9b3951e388cbd"
+    },
+    {
+     "axiomatization": "ba_sheffer",
+     "size": 9,
+     "structural_sha256": "14cd0a835408cfdbdf19d0effd76d8fdaff3e119186b2bda3e15020c7bc5698e",
+     "text": "![X]: (![Y]: (![Z]: (s(s(s(X,Y),s(Y,Z)),s(Z,Y)) = s(Y,s(Y,s(X,s(Z,Y)))))))",
+     "text_sha256": "92dea763fe3e0937bb132aa742e6a36b2cf3f405b577cec9cf35b5ca69095172",
+     "theory": "8273beae3cd2403d365024777445605c7899e8ccb23293c20ba9b3951e388cbd"
+    }
+   ],
+   "draws": 27,
+   "quarantined": [],
+   "rejected_counts": {
+    "INSTANCE": 2
+   },
+   "requested": 25,
+   "system": "ba_sheffer",
+   "theory": "8273beae3cd2403d365024777445605c7899e8ccb23293c20ba9b3951e388cbd"
+  },
+  "ba_sheffer@603": {
+   "accepted": [
+    {
+     "axiomatization": "ba_sheffer",
+     "size": 8,
+     "structural_sha256": "77da32d3380f34f59f914c37a087309db251099d9ac8fbcd9efd9027ba097edd",
+     "text": "![X]: (![Y]: (![Z]: (s(X,s(s(Y,X),s(Y,s(Y,Z)))) = s(Y,s(Y,s(X,Y))))))",
+     "text_sha256": "7f631ab88e2ec5ce7c23d2fdaed97736011fe8141da91d9d1c135f0077eef5d4",
+     "theory": "8273beae3cd2403d365024777445605c7899e8ccb23293c20ba9b3951e388cbd"
+    },
+    {
+     "axiomatization": "ba_sheffer",
+     "size": 9,
+     "structural_sha256": "89d0a30a008b195bfbee181e5e1c4cb329a8a125c032e606dca2511eb69074cf",
+     "text": "![X]: (![Y]: (![Z]: (s(s(s(X,s(Y,Y)),Z),Z) = s(s(s(Z,X),s(X,Z)),s(Y,Y)))))",
+     "text_sha256": "dccf3c231809a3ed7b682e53a7cac9f70f0a00bbbd352a0c666f6b699f7ed52d",
+     "theory": "8273beae3cd2403d365024777445605c7899e8ccb23293c20ba9b3951e388cbd"
+    },
+    {
+     "axiomatization": "ba_sheffer",
+     "size": 9,
+     "structural_sha256": "46e17aacc5ba2ff8ea7dc58c0ca67cd5153f349e0adf6bd1eb761e4bc7917652",
+     "text": "![X]: (![Y]: (![Z]: (s(s(s(X,X),Y),s(Z,Y)) = s(s(Y,Z),s(s(X,s(Y,Z)),Y)))))",
+     "text_sha256": "31d7823c997feda40d538c87e5d018f2c030c7d78998f71f2be16ebc6af80c2f",
+     "theory": "8273beae3cd2403d365024777445605c7899e8ccb23293c20ba9b3951e388cbd"
+    },
+    {
+     "axiomatization": "ba_sheffer",
+     "size": 9,
+     "structural_sha256": "24f736155bb64af5a338d3027a3b5a6812fb36f83da89a0fae2dc56c16279082",
+     "text": "![X]: (![Y]: (![Z]: (s(s(s(X,s(Y,Y)),Z),s(Y,Z)) = s(s(s(X,Z),Z),s(Z,Y)))))",
+     "text_sha256": "f65fa4269554698a941a6eff9f2ea351222ce27c9df77e32e5dfaa070c353af3",
+     "theory": "8273beae3cd2403d365024777445605c7899e8ccb23293c20ba9b3951e388cbd"
+    },
+    {
+     "axiomatization": "ba_sheffer",
+     "size": 9,
+     "structural_sha256": "92834092369940a5a7380ca11d252e37ccb14919bbda206d21b9a104e529bfcc",
+     "text": "![X]: (![Y]: (![Z]: (s(s(s(s(X,Y),Z),Y),s(Y,Y)) = s(s(Y,Y),s(s(X,X),Y)))))",
+     "text_sha256": "af7b8933fdcca9f8fc0f163996b84b48974f9b75d2d06d9648c6ad1f229137ef",
+     "theory": "8273beae3cd2403d365024777445605c7899e8ccb23293c20ba9b3951e388cbd"
+    },
+    {
+     "axiomatization": "ba_sheffer",
+     "size": 9,
+     "structural_sha256": "6c0b2aa495d40b981dfab7ea359561434341b3569ee89fb58da14dec8220de73",
+     "text": "![X]: (![Y]: (![Z]: (s(s(s(X,Y),Y),s(Y,Z)) = s(s(Z,Y),s(Y,s(s(Z,X),X))))))",
+     "text_sha256": "2daf2d744c6f6c3f5024f14f099161606f4df5a2a29ba1da3a81002a5c5b1e6b",
+     "theory": "8273beae3cd2403d365024777445605c7899e8ccb23293c20ba9b3951e388cbd"
+    },
+    {
+     "axiomatization": "ba_sheffer",
+     "size": 9,
+     "structural_sha256": "c0df324aa390cdc36f90190d294fb64b3b636b511118e515f1a75bf229476e3b",
+     "text": "![X]: (![Y]: (![Z]: (s(s(s(s(X,Y),Z),Z),X) = s(X,s(s(s(X,Z),s(Y,Z)),Y)))))",
+     "text_sha256": "3f96250151c97b7a7d985c990df6f2c5ed70946216005ea926a82de1c0306e7d",
+     "theory": "8273beae3cd2403d365024777445605c7899e8ccb23293c20ba9b3951e388cbd"
+    },
+    {
+     "axiomatization": "ba_sheffer",
+     "size": 9,
+     "structural_sha256": "e053020d35a490ba3a1352552dcd2e60f3e932efd5675898dc0b2444016bd5ea",
+     "text": "![X]: (![Y]: (![Z]: (s(s(X,Y),s(s(s(Y,Y),X),Z)) = s(s(X,Y),s(Z,s(X,Z))))))",
+     "text_sha256": "7974a7ec70505e08fc55a9211c2b47dd87b106e9467e8aee899ef22b5d7d98d6",
+     "theory": "8273beae3cd2403d365024777445605c7899e8ccb23293c20ba9b3951e388cbd"
+    },
+    {
+     "axiomatization": "ba_sheffer",
+     "size": 9,
+     "structural_sha256": "c09d616f58c3f3b5b7af0c445b2139ef025ad22452edae07701f8423ddb40050",
+     "text": "![X]: (![Y]: (![Z]: (s(s(s(s(X,X),s(Y,X)),Z),Z) = s(Z,s(X,s(X,s(Z,X)))))))",
+     "text_sha256": "a31fea1c8d6768a18eb3150bca675b1b5b2c2448b063b77bcc1eb304223604dc",
+     "theory": "8273beae3cd2403d365024777445605c7899e8ccb23293c20ba9b3951e388cbd"
+    },
+    {
+     "axiomatization": "ba_sheffer",
+     "size": 8,
+     "structural_sha256": "a9e6a4a60d26068085f1e26548106afd98e4e7ef8725768faea86770266f1d9f",
+     "text": "![X]: (![Y]: (![Z]: (s(s(X,Y),s(X,s(s(Z,X),X))) = s(s(X,Z),s(X,Y)))))",
+     "text_sha256": "39103bc2004a96b1d4afd5bad4f1f3fea1adc507bb73a09b49e9e7db4e076c2e",
+     "theory": "8273beae3cd2403d365024777445605c7899e8ccb23293c20ba9b3951e388cbd"
+    },
+    {
+     "axiomatization": "ba_sheffer",
+     "size": 8,
+     "structural_sha256": "718aa65231e00caf2633bd504a042b00ab38eaa815a2a682efc15edcb69cf926",
+     "text": "![X]: (![Y]: (![Z]: (s(s(X,s(s(X,X),Y)),Z) = s(s(X,s(s(X,Z),Y)),Z))))",
+     "text_sha256": "64e9ca61c0aca1c3da5533f6c7da3c7cb8b12604c7de7e8d69af54044301a6d4",
+     "theory": "8273beae3cd2403d365024777445605c7899e8ccb23293c20ba9b3951e388cbd"
+    },
+    {
+     "axiomatization": "ba_sheffer",
+     "size": 9,
+     "structural_sha256": "c3022f6689e720a828fd97a449413c2dbd36a2ecaeb3779f57abe90f2d861626",
+     "text": "![X]: (![Y]: (![Z]: (s(s(s(X,X),s(X,Y)),s(Y,Z)) = s(X,s(s(s(Y,Z),X),Z)))))",
+     "text_sha256": "57205f627f7ee17e13c7d0700959fe8d18433585b2dde1b91ab0b1fcd63fbb3a",
+     "theory": "8273beae3cd2403d365024777445605c7899e8ccb23293c20ba9b3951e388cbd"
+    },
+    {
+     "axiomatization": "ba_sheffer",
+     "size": 9,
+     "structural_sha256": "64a0cb01fec35d52735d9cba0f4c8e3d739bec09ce0c31012df2d17afa53d6bc",
+     "text": "![X]: (![Y]: (![Z]: (s(s(s(X,s(X,Y)),Z),s(Y,Z)) = s(s(Z,s(Z,X)),s(Y,Z)))))",
+     "text_sha256": "4ea66b793461a15347ab42a8da66aefcbfb847450d9925cc96213dba1f11c5b6",
+     "theory": "8273beae3cd2403d365024777445605c7899e8ccb23293c20ba9b3951e388cbd"
+    },
+    {
+     "axiomatization": "ba_sheffer",
+     "size": 9,
+     "structural_sha256": "214b8527d7f4c1105d781892a572d433f0e975567d48b579d24ddc2f97fe35a5",
+     "text": "![X]: (![Y]: (![Z]: (s(s(s(X,s(Y,Y)),Z),s(Y,Y)) = s(s(Y,Y),s(s(X,X),Z)))))",
+     "text_sha256": "9e7d63e82d203aed505cf653b9905eeae4729754f96076ea1eb8b032d86e9acf",
+     "theory": "8273beae3cd2403d365024777445605c7899e8ccb23293c20ba9b3951e388cbd"
+    },
+    {
+     "axiomatization": "ba_sheffer",
+     "size": 9,
+     "structural_sha256": "c2faa55e443b18acb398da7875e1b6148dec5bf2700bd336941534bd6cc6a250",
+     "text": "![X]: (![Y]: (![Z]: (s(s(X,X),s(s(s(X,X),Y),Z)) = s(s(X,X),s(s(Z,Y),Z)))))",
+     "text_sha256": "b10b919ef9a6d00a94a9a70ee27bafea4b2204a1fe253bf85fd0fb85b80c036e",
+     "theory": "8273beae3cd2403d365024777445605c7899e8ccb23293c20ba9b3951e388cbd"
+    },
+    {
+     "axiomatization": "ba_sheffer",
+     "size": 8,
+     "structural_sha256": "09f97d54ce8e4beffe99c8fad7fe7d4db4c6d4dc31c3615111fb13eb57974c5d",
+     "text": "![X]: (![Y]: (![Z]: (s(s(X,Y),s(s(Z,Y),Z)) = s(s(Y,X),s(Z,s(Z,Y))))))",
+     "text_sha256": "072d869467480cec2fd95843882a0442a11a8e32e7fb1a2a1e309627ce36497c",
+     "theory": "8273beae3cd2403d365024777445605c7899e8ccb23293c20ba9b3951e388cbd"
+    },
+    {
+     "axiomatization": "ba_sheffer",
+     "size": 8,
+     "structural_sha256": "46e0fe8b3d0aa05ff17e59a6340ebf85cffb5df5c82d637db1604894398dcdfb",
+     "text": "![X]: (![Y]: (![Z]: (s(s(X,Y),s(Z,s(X,X))) = s(s(Y,X),s(Z,s(X,Z))))))",
+     "text_sha256": "ef663e974f375a6750b534c6c431dd578b3d9aca02123ac5fbf9ec8e99a8704c",
+     "theory": "8273beae3cd2403d365024777445605c7899e8ccb23293c20ba9b3951e388cbd"
+    },
+    {
+     "axiomatization": "ba_sheffer",
+     "size": 9,
+     "structural_sha256": "563e5872c5352b3ebf8227e89b9db9c024d4fb6279e4a9d182b87a22aa404774",
+     "text": "![X]: (![Y]: (![Z]: (s(s(X,X),s(Y,s(s(Y,Z),Y))) = s(s(Z,Y),s(s(Y,Z),X)))))",
+     "text_sha256": "6f4bf4ec6b512e7ad8f3d6da9acec5f0492b64786b47f9ecb57ac9d500b84f34",
+     "theory": "8273beae3cd2403d365024777445605c7899e8ccb23293c20ba9b3951e388cbd"
+    },
+    {
+     "axiomatization": "ba_sheffer",
+     "size": 9,
+     "structural_sha256": "d01cf07787337a0588c6c09ab6882071ebf3b96e53f8250b89a9fd4efee73b49",
+     "text": "![X]: (![Y]: (![Z]: (s(s(s(s(X,X),s(X,Y)),Y),Z) = s(Z,s(s(s(Y,X),X),X)))))",
+     "text_sha256": "e611b1b0d801d85e0d37459d5b59596a9f51154c4b961a8a1554a45241709a52",
+     "theory": "8273beae3cd2403d365024777445605c7899e8ccb23293c20ba9b3951e388cbd"
+    },
+    {
+     "axiomatization": "ba_sheffer",
+     "size": 9,
+     "structural_sha256": "888c2c9fcd75856ffb1faa498c13f4b57f611c0781078ed25351bf507ee81fee",
+     "text": "![X]: (![Y]: (![Z]: (s(X,s(s(s(Y,Y),s(Z,X)),Z)) = s(X,s(s(X,s(Z,X)),X)))))",
+     "text_sha256": "c13736322bfa64b5c5f3636b848b34545f9c9419a592955743e823027ac52e8c",
+     "theory": "8273beae3cd2403d365024777445605c7899e8ccb23293c20ba9b3951e388cbd"
+    },
+    {
+     "axiomatization": "ba_sheffer",
+     "size": 9,
+     "structural_sha256": "64b58a70c49aa3229c484181ae59e6c494bc80946db5bd23288d51248bc8de82",
+     "text": "![X]: (![Y]: (s(s(X,s(X,s(X,X))),s(Y,Y)) = s(s(Y,s(X,Y)),s(X,X))))",
+     "text_sha256": "3388fd5b30a91a8188f59edf537eb033dee19ad709a19729f93b03015599b336",
+     "theory": "8273beae3cd2403d365024777445605c7899e8ccb23293c20ba9b3951e388cbd"
+    },
+    {
+     "axiomatization": "ba_sheffer",
+     "size": 9,
+     "structural_sha256": "7191d0a3a77d06b8aec6e30dc0f7a91e7d6c786928a17e38e0f7247dde39bbfc",
+     "text": "![X]: (![Y]: (![Z]: (s(s(X,s(s(Y,Z),Y)),s(X,Z)) = s(s(X,s(X,Y)),s(X,Z)))))",
+     "text_sha256": "cf641b746c1743215e979d8ef93a676e3a3a9d27903d7d8614f580598481bc78",
+     "theory": "8273beae3cd2403d365024777445605c7899e8ccb23293c20ba9b3951e388cbd"
+    },
+    {
+     "axiomatization": "ba_sheffer",
+     "size": 9,
+     "structural_sha256": "d1bb583c823174d2409bd930a2f853abcb201292dbfdf8911258f12ce2cfafb1",
+     "text": "![X]: (![Y]: (![Z]: (s(s(X,s(s(Y,Y),s(Z,Y))),Y) = s(Y,s(s(Y,s(Y,Y)),X)))))",
+     "text_sha256": "59c45134b482b9e326a612657e5ec02b6616a7cf0c148bd1434f54c838540d97",
+     "theory": "8273beae3cd2403d365024777445605c7899e8ccb23293c20ba9b3951e388cbd"
+    },
+    {
+     "axiomatization": "ba_sheffer",
+     "size": 9,
+     "structural_sha256": "b8a441d394a7afbd6e0e0456de095c5565488282b8065bdc62e6035103bc7901",
+     "text": "![X]: (![Y]: (![Z]: (s(s(X,s(Y,s(Z,X))),s(Z,Y)) = s(s(X,s(Y,Y)),s(Y,Z)))))",
+     "text_sha256": "73c59a475f28dd666ba83849bcb2fbe7d8cebab378679d47d3922a4f307cf38b",
+     "theory": "8273beae3cd2403d365024777445605c7899e8ccb23293c20ba9b3951e388cbd"
+    },
+    {
+     "axiomatization": "ba_sheffer",
+     "size": 9,
+     "structural_sha256": "8d664a5857efa436340670985b223da9c32d616f6011faaf55d0758f526e5b44",
+     "text": "![X]: (![Y]: (![Z]: (s(s(X,Y),s(s(Z,Z),X)) = s(s(Y,X),s(X,s(s(Y,X),Z))))))",
+     "text_sha256": "b5e8c2a2922cdb682164dc1bb620aa449b594586ea092408f54fea619923f9a6",
+     "theory": "8273beae3cd2403d365024777445605c7899e8ccb23293c20ba9b3951e388cbd"
+    }
+   ],
+   "draws": 29,
+   "quarantined": [],
+   "rejected_counts": {
+    "EXACT": 1,
+    "INSTANCE": 3
+   },
+   "requested": 25,
+   "system": "ba_sheffer",
+   "theory": "8273beae3cd2403d365024777445605c7899e8ccb23293c20ba9b3951e388cbd"
+  },
+  "ba_sheffer@604": {
+   "accepted": [
+    {
+     "axiomatization": "ba_sheffer",
+     "size": 9,
+     "structural_sha256": "d50aefb4821dcd951dfae0699b16b2994187b54d8a08e7f76d4b8ea2aa903ac4",
+     "text": "![X]: (![Y]: (![Z]: (s(s(s(X,Y),s(X,Z)),s(Z,X)) = s(Y,s(s(s(Z,X),X),Y)))))",
+     "text_sha256": "22efc3720bb0645ad5914b0e4f36eb9c2c215aa14b508da85530dcb4084929c7",
+     "theory": "8273beae3cd2403d365024777445605c7899e8ccb23293c20ba9b3951e388cbd"
+    },
+    {
+     "axiomatization": "ba_sheffer",
+     "size": 8,
+     "structural_sha256": "265b5a84632cd0bb5aad5e66d5b7ea2f7402e83ca91344226bb68b21f3b41e51",
+     "text": "![X]: (![Y]: (![Z]: (s(s(s(X,Y),Y),s(Z,Y)) = s(s(Z,Y),s(Y,s(X,X))))))",
+     "text_sha256": "127db13b849e16c52cf3f84536f9584b9d00e5ebf842d10481d8f56243c2fa3d",
+     "theory": "8273beae3cd2403d365024777445605c7899e8ccb23293c20ba9b3951e388cbd"
+    },
+    {
+     "axiomatization": "ba_sheffer",
+     "size": 9,
+     "structural_sha256": "0cb13a0e9e3737bbffb96f71c1451e36a382df3df5717fc75039801456f49e73",
+     "text": "![X]: (![Y]: (![Z]: (s(s(s(X,Y),X),s(Y,Z)) = s(s(Z,Y),s(s(s(Z,X),Y),X)))))",
+     "text_sha256": "47ba79a8ead4f310547e4ef1b6575c1e498f6f0f26cd9bce79022834992f3da5",
+     "theory": "8273beae3cd2403d365024777445605c7899e8ccb23293c20ba9b3951e388cbd"
+    },
+    {
+     "axiomatization": "ba_sheffer",
+     "size": 9,
+     "structural_sha256": "c811bcdf011d5975d07a1c7e92d6d6c63536dc9d591081829efc32cb9c4e3604",
+     "text": "![X]: (![Y]: (![Z]: (s(s(s(s(X,Y),s(X,Y)),Z),X) = s(X,s(Z,s(s(Y,Y),X))))))",
+     "text_sha256": "640dadc1d5f698c0198a076b2f362a920bc6c2889c0401db9c03cb5e644cae6b",
+     "theory": "8273beae3cd2403d365024777445605c7899e8ccb23293c20ba9b3951e388cbd"
+    },
+    {
+     "axiomatization": "ba_sheffer",
+     "size": 9,
+     "structural_sha256": "b0a57621797f75c9e4f6319373b262e919b5b996a3cdd4c8206a8ff3b25250ee",
+     "text": "![X]: (![Y]: (![Z]: (s(s(s(X,Y),Y),s(Z,Z)) = s(s(Y,s(X,s(Y,Z))),s(Z,Z)))))",
+     "text_sha256": "cec95122024641c133b40c3c2a1b81b2641b7b90d7895b352ac3ac58a1bd4deb",
+     "theory": "8273beae3cd2403d365024777445605c7899e8ccb23293c20ba9b3951e388cbd"
+    },
+    {
+     "axiomatization": "ba_sheffer",
+     "size": 9,
+     "structural_sha256": "ce708d7aed26ae74adf9f6f20b1c823ef7072aef9541d55c4a456ceb4603c398",
+     "text": "![X]: (![Y]: (![Z]: (s(s(s(X,Y),X),s(Z,X)) = s(s(X,Z),s(X,s(Y,s(Z,Z)))))))",
+     "text_sha256": "0fc060aa45599a5211271b37778839ce9ce976111ef855189f8801d027aa2339",
+     "theory": "8273beae3cd2403d365024777445605c7899e8ccb23293c20ba9b3951e388cbd"
+    },
+    {
+     "axiomatization": "ba_sheffer",
+     "size": 8,
+     "structural_sha256": "b726aaf126a9f737107906bff753c3dccf30605ef1e1b274a47aef8392fcf864",
+     "text": "![X]: (![Y]: (s(s(X,Y),s(s(s(X,X),Y),Y)) = s(s(Y,X),s(Y,X))))",
+     "text_sha256": "12699866016aeaafe3a0c97ac50e820f20d4c401245c5cbddc1d1fc9d6491131",
+     "theory": "8273beae3cd2403d365024777445605c7899e8ccb23293c20ba9b3951e388cbd"
+    },
+    {
+     "axiomatization": "ba_sheffer",
+     "size": 9,
+     "structural_sha256": "0999457ab697d6d5930842f6c06c24b76c27ca133b601386538317a25a71849d",
+     "text": "![X]: (![Y]: (![Z]: (s(s(s(X,X),s(X,Y)),s(Z,Z)) = s(s(Z,s(X,s(X,X))),X))))",
+     "text_sha256": "cc41b6d238f99bf06689dc377c8fb3642f1223f1639e4e239bfef128b050d4f3",
+     "theory": "8273beae3cd2403d365024777445605c7899e8ccb23293c20ba9b3951e388cbd"
+    },
+    {
+     "axiomatization": "ba_sheffer",
+     "size": 9,
+     "structural_sha256": "d8c93f7e864539455efd3598de25a5af21e36109b82582e364f868ebc012f96c",
+     "text": "![X]: (![Y]: (![Z]: (s(s(X,s(s(Y,Z),s(Z,X))),Y) = s(Y,s(s(Y,s(Y,Z)),X)))))",
+     "text_sha256": "1180f2b278039a85e44f8ad1a9397d45c395ab5006ba555cefcffdb1c8a2e0e1",
+     "theory": "8273beae3cd2403d365024777445605c7899e8ccb23293c20ba9b3951e388cbd"
+    },
+    {
+     "axiomatization": "ba_sheffer",
+     "size": 8,
+     "structural_sha256": "42f6974add5990a8a7cc97deba1beb2e32fb3c8c8a88c33a50f5134f16e04a03",
+     "text": "![X]: (![Y]: (![Z]: (s(s(s(X,s(Y,Y)),Z),Z) = s(Z,s(Z,s(s(Y,Z),X))))))",
+     "text_sha256": "fc8c001343fc0807942a3ba2ed70e6228a080fd20286e461bfcb231946238387",
+     "theory": "8273beae3cd2403d365024777445605c7899e8ccb23293c20ba9b3951e388cbd"
+    },
+    {
+     "axiomatization": "ba_sheffer",
+     "size": 9,
+     "structural_sha256": "7ad26bfee970f519f8fe7c8d9007644c61d38b3061df4a97a1156048d25b7ad3",
+     "text": "![X]: (![Y]: (![Z]: (s(s(X,X),s(s(Y,Z),s(X,Y))) = s(Y,s(s(s(Z,X),Z),Y)))))",
+     "text_sha256": "6127e8406d59db863987be662f049b2ed57b497d2f9b7b068f5cb58459386453",
+     "theory": "8273beae3cd2403d365024777445605c7899e8ccb23293c20ba9b3951e388cbd"
+    },
+    {
+     "axiomatization": "ba_sheffer",
+     "size": 9,
+     "structural_sha256": "0ce75c2fb5fdd65878f3beb6dd3b4e40297bb91719cf08bb3f5ae7f5c8c3d4ce",
+     "text": "![X]: (![Y]: (![Z]: (s(s(s(s(X,Y),X),Y),Z) = s(Z,s(Z,s(s(Y,Z),s(Y,Y)))))))",
+     "text_sha256": "cfea376d48c124415839434416a94c659a3e15c226961d29cb56c16f1c08e98e",
+     "theory": "8273beae3cd2403d365024777445605c7899e8ccb23293c20ba9b3951e388cbd"
+    },
+    {
+     "axiomatization": "ba_sheffer",
+     "size": 9,
+     "structural_sha256": "e0b860e646be5068081858d40d7c768893e62986541f4b094281991430b3040c",
+     "text": "![X]: (![Y]: (![Z]: (s(s(s(X,X),s(Y,Z)),Z) = s(s(s(Z,X),s(s(Y,X),Y)),Z))))",
+     "text_sha256": "508a2bb1927f55c505d0e7584d74faa31495093a720b87d07fdc71f7f07da2d4",
+     "theory": "8273beae3cd2403d365024777445605c7899e8ccb23293c20ba9b3951e388cbd"
+    },
+    {
+     "axiomatization": "ba_sheffer",
+     "size": 9,
+     "structural_sha256": "3fbb544d17f0f3436aedbee574af424cd6f2b1ccac03c869ec81c038dff47537",
+     "text": "![X]: (![Y]: (![Z]: (s(s(s(s(X,Y),s(Z,X)),Z),Z) = s(s(X,s(Y,s(X,X))),Z))))",
+     "text_sha256": "074d21172848a8756dbd097392f98168afe2cc5d941115f5ea9cbfd0f70a4f60",
+     "theory": "8273beae3cd2403d365024777445605c7899e8ccb23293c20ba9b3951e388cbd"
+    },
+    {
+     "axiomatization": "ba_sheffer",
+     "size": 8,
+     "structural_sha256": "70fdc12e0c636827d361ec2f7bf83e5a8054238fe4d5dc8b8fcf13b5b517726c",
+     "text": "![X]: (![Y]: (![Z]: (s(s(X,s(Y,X)),s(Z,X)) = s(s(X,Z),s(s(Y,Y),X)))))",
+     "text_sha256": "fa43351bc0472c14346d8746582dc0a7b1d548723c7b436afb99b6c4d050e024",
+     "theory": "8273beae3cd2403d365024777445605c7899e8ccb23293c20ba9b3951e388cbd"
+    },
+    {
+     "axiomatization": "ba_sheffer",
+     "size": 9,
+     "structural_sha256": "8052fb5f2efcba2fb1e8ee825cfb3e89066ad2da1b480f73396110ce3ecbc559",
+     "text": "![X]: (![Y]: (![Z]: (s(s(X,s(s(Y,Y),Z)),Y) = s(Y,s(s(s(Y,Y),s(Y,Y)),X)))))",
+     "text_sha256": "0ddd8d2badf8e1db8e7c0e5c901888374492c1ea42daff08409f86488c22bdb4",
+     "theory": "8273beae3cd2403d365024777445605c7899e8ccb23293c20ba9b3951e388cbd"
+    },
+    {
+     "axiomatization": "ba_sheffer",
+     "size": 9,
+     "structural_sha256": "a10a24964e1ef110fd8e6809372761cdca5077196f2c2017e18ec46ec7ba7c1c",
+     "text": "![X]: (![Y]: (![Z]: (s(s(X,s(s(Y,Y),Z)),Z) = s(s(X,Y),s(s(Y,X),s(Z,Z))))))",
+     "text_sha256": "dd663725b249805086270b3f6fae60854c50d545b4a521dfedd989821a501d78",
+     "theory": "8273beae3cd2403d365024777445605c7899e8ccb23293c20ba9b3951e388cbd"
+    },
+    {
+     "axiomatization": "ba_sheffer",
+     "size": 6,
+     "structural_sha256": "f48798ec97466129a6bd9a1ba0906d3b79223a04de8699d6f024be5b923647a0",
+     "text": "![X]: (![Y]: (![Z]: (s(s(s(X,s(Y,X)),Y),Z) = s(s(Y,Z),Z))))",
+     "text_sha256": "2db7153771c9c2fe28e89bc5290e0687864e3c3ec46543678deb1463198de94e",
+     "theory": "8273beae3cd2403d365024777445605c7899e8ccb23293c20ba9b3951e388cbd"
+    },
+    {
+     "axiomatization": "ba_sheffer",
+     "size": 8,
+     "structural_sha256": "5f9c46c3bb3607ab058d0a96f7ac4478d4a3a2a077390e6c9e7a7cc005bac5ce",
+     "text": "![X]: (![Y]: (![Z]: (s(s(X,s(Y,s(X,Z))),Z) = s(Z,s(s(s(Z,Z),X),X)))))",
+     "text_sha256": "42f35ee80bdf6d4083d10c121f19735b087a33676ec4a021b9e0dc169175c9ed",
+     "theory": "8273beae3cd2403d365024777445605c7899e8ccb23293c20ba9b3951e388cbd"
+    },
+    {
+     "axiomatization": "ba_sheffer",
+     "size": 9,
+     "structural_sha256": "207bdca8d39921eb808352f1ff2bd3624ad26dd29d0e9fe122d521b8000c1ee1",
+     "text": "![X]: (![Y]: (![Z]: (s(s(X,s(s(X,Y),s(Y,Y))),Z) = s(s(Y,s(s(X,Z),Z)),Z))))",
+     "text_sha256": "d69c87ed9ce49c5b5655dbe45d9d21baa632179b14c3dfb0f2e9b2c74d35765d",
+     "theory": "8273beae3cd2403d365024777445605c7899e8ccb23293c20ba9b3951e388cbd"
+    },
+    {
+     "axiomatization": "ba_sheffer",
+     "size": 8,
+     "structural_sha256": "a797fcdc7bf9a56a7f4d6fd8cf7bf48b82abcd3e6397765d15f55b459a36c0cb",
+     "text": "![X]: (![Y]: (![Z]: (s(s(X,Y),s(Z,s(Y,s(Z,Y)))) = s(s(X,Y),s(Z,Z)))))",
+     "text_sha256": "b3ece9a50ffdbf1cb95990eafc3ed8d6024ae3fdf0041afacf9316c1f628b943",
+     "theory": "8273beae3cd2403d365024777445605c7899e8ccb23293c20ba9b3951e388cbd"
+    },
+    {
+     "axiomatization": "ba_sheffer",
+     "size": 9,
+     "structural_sha256": "6f22d5ae00b0c80f823fdbdd8dfb6fb9e143707222734c1516b86c719daf9c9d",
+     "text": "![X]: (![Y]: (![Z]: (s(s(s(s(X,Y),X),X),s(X,X)) = s(s(X,s(Z,Z)),s(X,X)))))",
+     "text_sha256": "fade398ccb2db52292d10fc0e245ae2cee2e7e7ac65dabd406c1fdf98df68cfd",
+     "theory": "8273beae3cd2403d365024777445605c7899e8ccb23293c20ba9b3951e388cbd"
+    },
+    {
+     "axiomatization": "ba_sheffer",
+     "size": 9,
+     "structural_sha256": "488009d5444a6b448a1edb6ec6c4c3e3f15cf2def4166d7500b995efede4d0d9",
+     "text": "![X]: (![Y]: (s(s(X,Y),s(s(X,X),s(X,Y))) = s(X,s(s(X,s(Y,Y)),Y))))",
+     "text_sha256": "cb4b6180a26a84a99a75809b9a2bd17a8a3815e9806f2b02edd4a1c31d20c522",
+     "theory": "8273beae3cd2403d365024777445605c7899e8ccb23293c20ba9b3951e388cbd"
+    },
+    {
+     "axiomatization": "ba_sheffer",
+     "size": 9,
+     "structural_sha256": "aad2dcf3c79018d6bf0bc11f7fd0cf75b90669a181074ad0ad9d78afc3e51861",
+     "text": "![X]: (![Y]: (![Z]: (s(X,s(s(s(Y,Y),s(Y,Y)),Z)) = s(X,s(Z,s(s(Y,X),X))))))",
+     "text_sha256": "44f80e5b6137356c7d051bc6fad27f411551b8ece0abbae915fdb4ebe7f0c41f",
+     "theory": "8273beae3cd2403d365024777445605c7899e8ccb23293c20ba9b3951e388cbd"
+    },
+    {
+     "axiomatization": "ba_sheffer",
+     "size": 9,
+     "structural_sha256": "4b40ccc6e2eb664a5dddb021a0b2d56e7ae4736f1f1feba21cc1fc7aea70f36a",
+     "text": "![X]: (![Y]: (![Z]: (s(s(X,s(Y,Y)),s(Z,Y)) = s(s(Z,Y),s(X,s(s(Z,Y),Y))))))",
+     "text_sha256": "6fad543f25208ffce90e09388d5bb2b3f7fadd4fe9fe6a328b093d354a51d8c3",
+     "theory": "8273beae3cd2403d365024777445605c7899e8ccb23293c20ba9b3951e388cbd"
+    }
+   ],
+   "draws": 25,
+   "quarantined": [],
+   "rejected_counts": {},
+   "requested": 25,
+   "system": "ba_sheffer",
+   "theory": "8273beae3cd2403d365024777445605c7899e8ccb23293c20ba9b3951e388cbd"
+  }
+ }
+}

@@ -1,0 +1,40 @@
+SZS output start CNFRefutation
+fof(ax6, axiom, ![X1, X2]:(s(X1,s(s(X2,X2),X1))=s(X1,X2)), file('/tmp/genesis-e-7i30_ees/p.p', ax6)).
+fof(ax7, axiom, ![X1, X2]:(s(X1,s(s(X2,X2),X1))=s(X2,X1)), file('/tmp/genesis-e-7i30_ees/p.p', ax7)).
+fof(goal, conjecture, ![X1, X2]:(s(s(X1,X1),X1)=s(s(X2,X2),X2)), file('/tmp/genesis-e-7i30_ees/p.p', goal)).
+fof(ax0, axiom, ![X1]:(s(s(X1,X1),s(X1,X1))=X1), file('/tmp/genesis-e-7i30_ees/p.p', ax0)).
+fof(ax1, axiom, ![X1, X2]:(s(X1,s(X2,s(X2,X2)))=s(X1,X1)), file('/tmp/genesis-e-7i30_ees/p.p', ax1)).
+fof(ax2, axiom, ![X1, X2, X3]:(s(s(X1,s(X2,X3)),s(X1,s(X2,X3)))=s(s(s(X2,X2),X1),s(s(X3,X3),X1))), file('/tmp/genesis-e-7i30_ees/p.p', ax2)).
+fof(ax10, axiom, ![X1, X2]:(s(s(X1,X1),X2)=s(X2,s(X2,X1))), file('/tmp/genesis-e-7i30_ees/p.p', ax10)).
+fof(c_0_7, plain, ![X13, X14]:(s(X13,s(s(X14,X14),X13))=s(X13,X14)), inference(variable_rename,[status(thm)],[ax6])).
+fof(c_0_8, plain, ![X15, X16]:(s(X15,s(s(X16,X16),X15))=s(X16,X15)), inference(variable_rename,[status(thm)],[ax7])).
+fof(c_0_9, negated_conjecture, ~(![X1, X2]:(s(s(X1,X1),X1)=s(s(X2,X2),X2))), inference(assume_negation,[status(cth)],[goal])).
+fof(c_0_10, plain, ![X4]:(s(s(X4,X4),s(X4,X4))=X4), inference(variable_rename,[status(thm)],[ax0])).
+fof(c_0_11, plain, ![X5, X6]:(s(X5,s(X6,s(X6,X6)))=s(X5,X5)), inference(variable_rename,[status(thm)],[ax1])).
+fof(c_0_12, plain, ![X7, X8, X9]:(s(s(X7,s(X8,X9)),s(X7,s(X8,X9)))=s(s(s(X8,X8),X7),s(s(X9,X9),X7))), inference(variable_rename,[status(thm)],[ax2])).
+cnf(c_0_13, plain, (s(X1,s(s(X2,X2),X1))=s(X1,X2)), inference(split_conjunct,[status(thm)],[c_0_7])).
+cnf(c_0_14, plain, (s(X1,s(s(X2,X2),X1))=s(X2,X1)), inference(split_conjunct,[status(thm)],[c_0_8])).
+fof(c_0_15, negated_conjecture, s(s(esk1_0,esk1_0),esk1_0)!=s(s(esk2_0,esk2_0),esk2_0), inference(fof_nnf,[status(thm)],[inference(skolemize,[status(esa)],[inference(variable_rename,[status(thm)],[inference(fof_nnf,[status(thm)],[c_0_9])])])])).
+fof(c_0_16, plain, ![X21, X22]:(s(s(X21,X21),X22)=s(X22,s(X22,X21))), inference(variable_rename,[status(thm)],[ax10])).
+cnf(c_0_17, plain, (s(s(X1,X1),s(X1,X1))=X1), inference(split_conjunct,[status(thm)],[c_0_10])).
+cnf(c_0_18, plain, (s(X1,s(X2,s(X2,X2)))=s(X1,X1)), inference(split_conjunct,[status(thm)],[c_0_11])).
+cnf(c_0_19, plain, (s(s(X1,s(X2,X3)),s(X1,s(X2,X3)))=s(s(s(X2,X2),X1),s(s(X3,X3),X1))), inference(split_conjunct,[status(thm)],[c_0_12])).
+cnf(c_0_20, plain, (s(X1,X2)=s(X2,X1)), inference(rw,[status(thm)],[c_0_13, c_0_14])).
+cnf(c_0_21, negated_conjecture, (s(s(esk1_0,esk1_0),esk1_0)!=s(s(esk2_0,esk2_0),esk2_0)), inference(split_conjunct,[status(thm)],[c_0_15])).
+cnf(c_0_22, plain, (s(s(X1,X1),X2)=s(X2,s(X2,X1))), inference(split_conjunct,[status(thm)],[c_0_16])).
+cnf(c_0_23, plain, (s(s(X1,X2),s(s(X1,X1),X2))=X2), inference(rw,[status(thm)],[inference(rw,[status(thm)],[inference(rw,[status(thm)],[inference(spm,[status(thm)],[c_0_17, c_0_18]), c_0_19]), c_0_17]), c_0_20])).
+cnf(c_0_24, plain, (s(s(X1,X1),s(X2,s(X2,X2)))=X1), inference(spm,[status(thm)],[c_0_17, c_0_18])).
+cnf(c_0_25, negated_conjecture, (s(esk1_0,s(esk1_0,esk1_0))!=s(esk2_0,s(esk2_0,esk2_0))), inference(rw,[status(thm)],[inference(rw,[status(thm)],[c_0_21, c_0_22]), c_0_22])).
+cnf(c_0_26, plain, (s(X1,s(X1,X1))=s(X2,s(X2,X2))), inference(rw,[status(thm)],[inference(rw,[status(thm)],[inference(spm,[status(thm)],[c_0_23, c_0_18]), c_0_24]), c_0_22])).
+cnf(c_0_27, negated_conjecture, ($false), inference(sr,[status(thm)],[c_0_25, c_0_26]), ['proof']).
+% SZS output end CNFRefutation
+
+% -------------------------------------------------
+% Total SizeMalloc()ed memory: 150947032 Bytes (351469 requests)
+% Total SizeFree()ed   memory: 150947032 Bytes (351469 requests)
+% New requests:  14566 ( 14369 by SecureMalloc(),    197 by SecureRealloc())
+% Total SecureMalloc()ed memory: 1708090 Bytes
+% Returned:     14566 ( 14566 by FREE(),              0 by SecureRealloc())
+% SecureRealloc(ptr):    202 (   197 Allocs,      0 Frees,      5 Reallocs)
+% -------------------------------------------------
+
