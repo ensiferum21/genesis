@@ -42,7 +42,7 @@ CODES = ('VERSION_MISSING', 'VERSION_ID_MISMATCH', 'NOT_FROZEN', 'PARENT_MISMATC
          'FOREIGN_RUN', 'SELECTION_RULE_UNKNOWN', 'SELECTION_UNVERIFIABLE', 'SELECTION_RULE_VIOLATED',
          'SELECTED_MISMATCH', 'LEDGER_INCOMPLETE', 'MANUAL_INTERVENTION', 'BUDGET_REUSED', 'PANEL_REUSED',
          'RECEIPT_REUSED', 'DUPLICATE_TRANSITION', 'TRANSITION_ID_MISMATCH', 'CHAIN_ORDER', 'AMBIGUOUS_PARENT',
-         'CYCLE', 'CHRONOLOGY', 'REVOKED_ANCESTOR', 'UNKNOWN_DECISION', 'MALFORMED')
+         'CYCLE', 'CHRONOLOGY', 'REVOKED_ANCESTOR', 'UNKNOWN_DECISION', 'MALFORMED', 'BUDGET_UNACCOUNTED')
 
 
 def _p(code, **kw):
@@ -120,6 +120,9 @@ def lineage_problems(export, trust_context=None):
     seen_accounts = {}
     for rid, run in runs.items():
         acct = run.get('account_sha256')
+        if acct is None:
+            out.append(_p('BUDGET_UNACCOUNTED', run=rid))
+            continue
         if acct in seen_accounts:
             out.append(_p('BUDGET_REUSED', run=rid, other=seen_accounts[acct]))
         seen_accounts.setdefault(acct, rid)
@@ -223,5 +226,76 @@ def accepted_chain(export, trust_context=None):
                     'with sealed panels and a registered joint analysis'}
 
 
+COMPONENT_KEYS = {'solver_program': ('program', 'solver')}
+
+
+def export_from_campaign_zip(path):
+    """Lineage records from a DEV campaign export (``campaign.Campaign`` public zip).
+
+    Uses only what the export contains: content-addressed versions, freeze events,
+    generation and modification records, and the attempt journal. Where the export lacks
+    something the validator needs, the record says so instead of inventing it:
+      * the cross-policy selection used SELECT scores that are not exported (no score),
+      * research candidates are not bound to journal attempts (no attempt id),
+      * there is no per-run resource account (no account hash).
+    DEV retention is mapped to ACCEPTED/REJECTED for the chain mechanics only; it is not an
+    acceptance decision."""
+    import json
+    import zipfile
+    z = zipfile.ZipFile(path)
+    events = [json.loads(line)['event'] for line in z.read('events.jsonl').decode().splitlines() if line.strip()]
+
+    def obj(h):
+        return json.loads(z.read(f'objects/sha256/{h}'))
+    versions, frozen, runs, transitions = {}, {}, {}, []
+    gens, mods, started, attempts = {}, {}, {}, []
+    for e in events:
+        if e['kind'] == 'ENTITY_COMMITTED':
+            p = obj(e['payload'])
+            if p.get('kind') == 'system_version':
+                versions[p['id']] = obj(p['object_hash'])
+                frozen.setdefault(p['id'], e['seq'])
+            elif p.get('kind') == 'generation':
+                gens[int(p['id'])] = (e['seq'], obj(p['object_hash']))
+            elif p.get('kind') == 'modification':
+                mods[p['id']] = obj(p['object_hash'])
+        elif e['kind'] == 'DEV_SUCCESSOR_FROZEN':
+            frozen[obj(e['payload'])['version']] = e['seq']
+        elif e['kind'] == 'GENERATION_STARTED':
+            started[obj(e['payload'])['generation']] = e['seq']
+        elif e['kind'] == 'ATTEMPT_STARTED':
+            attempts.append((e['seq'], obj(e['payload'])['attempt_id']))
+    index = 0
+    for g in sorted(gens):
+        seq, res = gens[g]
+        vid = res['version']
+        mod = mods.get(vid, {})
+        parent = mod.get('parent')
+        start, end = started.get(g, -1), frozen.get(vid, 0) - 1
+        cands = []
+        for pol, summary in sorted(res['research'].items()):
+            program = summary['candidate_programs'][summary['winner']]
+            ident = vid if pol == res['selected_policy'] else digest(program)
+            cands.append({'identity': ident, 'policy': pol, 'research_dev_score': summary['scores'][summary['winner']],
+                          'attempt_id': None})
+        run = run_record(parent_version=parent, policy_identity={'selected_policy': res['selected_policy']},
+                         permitted_inputs={'public_panels': True}, seed=None, budget_sha256=None, account_sha256=None,
+                         attempts=[a for s_, a in attempts if start < s_ <= end], candidates=cands,
+                         selection={'rule': 'max_score_then_lowest_identity', 'selected': vid,
+                                    'note': 'campaign selected by SELECT totals, which the export does not contain'},
+                         interventions=[], start_event=start, end_event=end)
+        runs[run['run_id']] = run
+        retained = bool(res.get('retained_in_dev'))
+        if retained:
+            index += 1
+        transitions.append(transition_record(
+            index=index if retained else None, from_version=parent, to_version=vid, research_run=run['run_id'],
+            declared_changes=[k for k in COMPONENT_KEYS.get(mod.get('component'), (mod.get('component'),))
+                              if k in versions.get(vid, {})],
+            panel_id=None, receipt_id=None, claim_id=None, plan_id=None, receipt_event=seq,
+            decision='ACCEPTED' if retained else 'REJECTED'))
+    return {'versions': versions, 'frozen_at': frozen, 'runs': runs, 'transitions': transitions}
+
+
 __all__ = ['SCHEMA_RUN', 'SCHEMA_TRANSITION', 'DECISIONS', 'CODES', 'version_diff', 'substantive',
-           'transition_record', 'run_record', 'lineage_problems', 'accepted_chain']
+           'transition_record', 'run_record', 'lineage_problems', 'accepted_chain', 'export_from_campaign_zip']

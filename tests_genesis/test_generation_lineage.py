@@ -245,6 +245,23 @@ class Attacks(unittest.TestCase):
         self.assertRejected(ex, 'TRANSITION_ID_MISMATCH')
 
 
+class StoredCampaignExport(unittest.TestCase):
+    """The B14-era three-generation DEV campaign export, read as lineage records (audit/lineage_b20r)."""
+
+    def test_todays_export_cannot_support_counting_generations(self):
+        from pathlib import Path
+        root = Path(__file__).resolve().parents[1]
+        ex = LN.export_from_campaign_zip(root / 'evidence' / 'v2-public-campaign.zip')
+        self.assertEqual((len(ex['versions']), len(ex['transitions'])), (4, 3))
+        got = {p['code'] for p in LN.lineage_problems(ex)}
+        self.assertEqual(got, {'SELECTION_UNVERIFIABLE', 'LEDGER_INCOMPLETE', 'BUDGET_UNACCOUNTED',
+                               'DECLARED_CHANGES_MISMATCH'})
+        self.assertEqual(LN.accepted_chain(ex)['transitions'], [])
+        t2 = sorted(ex['transitions'], key=lambda t: t['index'])[1]
+        diff = LN.substantive(LN.version_diff(ex['versions'][t2['from_version']], ex['versions'][t2['to_version']]))
+        self.assertEqual(diff, ['library'])                  # generation 1 left the solver program unchanged
+
+
 class CustodianStillRefuses(unittest.TestCase):
     def test_generation_and_improver_kinds_stay_refused(self):
         from genesis import custodian

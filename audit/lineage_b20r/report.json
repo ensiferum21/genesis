@@ -1,0 +1,53 @@
+{
+ "changes": [
+  {
+   "actual_changes": [
+    "program"
+   ],
+   "decision_mapped_from_dev_retention": "ACCEPTED",
+   "declared": [
+    "program"
+   ],
+   "index": 1
+  },
+  {
+   "actual_changes": [
+    "library"
+   ],
+   "decision_mapped_from_dev_retention": "ACCEPTED",
+   "declared": [
+    "program"
+   ],
+   "index": 2
+  },
+  {
+   "actual_changes": [
+    "library",
+    "program"
+   ],
+   "decision_mapped_from_dev_retention": "ACCEPTED",
+   "declared": [
+    "program"
+   ],
+   "index": 3
+  }
+ ],
+ "conclusion": "today's campaign export cannot support counting generations: the custodian must keep refusing sealed_generation_evaluation until the export carries selection scores, attempt-bound candidates and per-run accounts (B14-OPEN-3)",
+ "export": "evidence/v2-public-campaign.zip",
+ "meaning": {
+  "BUDGET_UNACCOUNTED": "no per-run resource account is exported",
+  "DECLARED_CHANGES_MISMATCH": "the modification record names a component that differs from the actual version diff",
+  "LEDGER_INCOMPLETE": "research candidates are not bound to attempts in the journal",
+  "SELECTION_UNVERIFIABLE": "the campaign chose the child by SELECT totals that the export does not contain"
+ },
+ "problem_counts": {
+  "BUDGET_UNACCOUNTED": 3,
+  "DECLARED_CHANGES_MISMATCH": 2,
+  "LEDGER_INCOMPLETE": 6,
+  "SELECTION_UNVERIFIABLE": 3
+ },
+ "qualifying_chain_length": 0,
+ "schema": "genesis-lineage-audit-v1",
+ "transitions": 3,
+ "versions": 4
+}
