@@ -5228,14 +5228,16 @@
     "date": null,
     "decision": "PENDING_INDEPENDENT_ACCEPTANCE"
    },
-   "code": [],
+   "code": [
+    "src/genesis/lineage.py"
+   ],
    "disposition": "NOT_IMPLEMENTED",
    "evidence": [],
    "external_blockers": [],
    "id": "W21",
    "implementation": "NOT_IMPLEMENTED",
    "independent_verification": "PENDING",
-   "local_execution": "NOT_EXECUTED",
+   "local_execution": "TESTS_EXECUTED_IN_MATRIX",
    "owner": "research implementer",
    "remaining": [
     "not started in B14"
@@ -5243,8 +5245,10 @@
    "scientific_efficacy": "N/A",
    "scope": "workstream",
    "source": "roadmap \u00a77-10",
-   "tests": [],
-   "title": "Better-improver and multigeneration controller",
+   "tests": [
+    "tests_genesis/test_generation_lineage.py"
+   ],
+   "title": "Better-improver and multigeneration controller (B20_R2: pure lineage validator with every s20.7 attack and a DEV fixture only; the controller, export integration and custodian enablement are not implemented)",
    "workstream": "W21"
   },
   {

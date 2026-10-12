@@ -549,7 +549,9 @@ WORKSTREAMS = {
             ['src/genesis/learning/memory.py', 'src/genesis/learning/partitions.py',
              'evidence/learning_b20/w20/rows.json'],
             ['tests_formal/test_learning.py', 'tests_formal/test_learning_partitions.py']),
-    'W21': ('Better-improver and multigeneration controller', N, [], []),
+    'W21': ('Better-improver and multigeneration controller (B20_R2: pure lineage validator with every s20.7 attack '
+            'and a DEV fixture only; the controller, export integration and custodian enablement are not implemented)',
+            N, ['src/genesis/lineage.py'], [G + 'test_generation_lineage.py']),
     'W22': ('New primitives, research-language evolution and trust changes', N, [], []),
     'W23': ('Fault-tolerant reasoning and expert interaction', N, [], []),
     'W24': ('Transfer and independent reproduction', N, [], []),
