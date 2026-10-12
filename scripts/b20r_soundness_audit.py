@@ -57,6 +57,13 @@ def main(argv=None):
                          'mode': 'BOUND', 'lower': lo['established'], 'upper': up['established'],
                          'upper_method': bundle['upper']['method'], 'optimum_licensed': ok,
                          'source': 'evidence/obstruction_custody_b20r'})
+    cg = ev / 'codegree_b20r' / 'package.json'
+    if cg.exists():
+        from genesis.invention import codegree as CG
+        rec = CG.soundness_record(json.loads(cg.read_text()))
+        rows.append({'artifact': 'codegree <= 1 (CRPD-2)', 'scope': rec['scope'], 'mode': rec['established'],
+                     'requested': rec['requested'], 'obligations': rec['obligations'], 'licenses': licensed(rec),
+                     'source': 'evidence/codegree_b20r/package.json'})
     for comp in S.HEURISTIC_COMPONENTS:
         rec = S.heuristic(comp)
         rows.append({'artifact': comp, 'scope': 'search guidance', 'mode': rec['established'],

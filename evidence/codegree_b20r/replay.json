@@ -1,0 +1,34 @@
+{
+ "acceptance_receipt_sha256": "69c0c2c36dd20d4d609aa617bca8f5e880cba2651898cd35fe6f0cca0df09a02",
+ "bindings": [
+  [
+   "CDP1.proof",
+   "CHECKED"
+  ]
+ ],
+ "certificates": [],
+ "checked_in_lean": true,
+ "differences": [],
+ "environment": {
+  "allowed_axioms": [
+   "Classical.choice",
+   "Quot.sound",
+   "propext"
+  ],
+  "forbidden_patterns_sha256": "9fd4c6ac9bc7916090106c8d787616b03472c6dec29438513221124ba053442e",
+  "lean": "lean@e8baaa71855a616d",
+  "lean_sha256": "e8baaa71855a616dc351028f3ad2200051b0671f423a1696a100e809302d5550",
+  "workspace": {
+   "artifact_identity": "95a6ec9f1aadc0d8d1936c34bd0ce4e144b0e35c85df12543cdcafe9ebf36b41",
+   "import_roots": [
+    "Mathlib.Data.Finset.Powerset"
+   ],
+   "mathlib_rev": "d13f23b723b8a846827a245b89c10fc7d3f11612",
+   "source_identity": "a3a7569b6d7636a844c87c2b72ef2170eda0f712ff8d9a1b0f15b069e301c7ef"
+  }
+ },
+ "package_sha256": "e1545106e5757370f9f675587f97f461c1ab4ffdfc1b91daa3e2fdea031b7a14",
+ "replayed_at": "2026-10-12T11:21:16.623796+00:00",
+ "schema": "genesis-theory-replay-v1",
+ "verdict": "REPLAYED"
+}

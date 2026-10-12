@@ -1,6 +1,7 @@
 {
  "counts": {
   "BOUND": 12,
+  "EQ": 1,
   "HEURISTIC": 6,
   "REJECTED": 13,
   "SUFF": 5
@@ -376,6 +377,23 @@
    "source": "evidence/obstruction_custody_b20r",
    "upper": "BOUND",
    "upper_method": "LP_DUAL_EXACT"
+  },
+  {
+   "artifact": "codegree <= 1 (CRPD-2)",
+   "licenses": [
+    "lift_negative",
+    "lift_positive",
+    "order",
+    "prune"
+   ],
+   "mode": "EQ",
+   "obligations": {
+    "backward": "CHECKED",
+    "forward": "CHECKED"
+   },
+   "requested": "EQ",
+   "scope": "c4_host_v2 (any GT.Edges)",
+   "source": "evidence/codegree_b20r/package.json"
   },
   {
    "artifact": "research policies (fixed, random, heuristic, bandit, learned)",

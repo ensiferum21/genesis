@@ -1,0 +1,610 @@
+{
+ "acceptance": {
+  "check_stage": {
+   "check_sha256": "ca6798272f5078e98da43a94131a424ed7932898b1c4b5ed565c704ba1a152a0",
+   "cpu_ns": 3629244837,
+   "exit_code": 0,
+   "exits": {
+    "CDP1": "0",
+    "check": "0"
+   },
+   "log": "",
+   "peak_memory_bytes": 221880320,
+   "status": "SUCCESS",
+   "wall_ns": 3715465760
+  },
+  "leanchecker": {
+   "CDP1": true
+  },
+  "receipt_sha256": "31da729eb152bf823d82597dd73717214a0c9f33033022206794807df5170f73",
+  "status": "CHECKED"
+ },
+ "assumptions": {
+  "allowed_axioms": [
+   "Classical.choice",
+   "Quot.sound",
+   "propext"
+  ],
+  "axioms_used": [
+   "Classical.choice",
+   "Quot.sound",
+   "propext"
+  ],
+  "conventions": [
+   "known elementary result; statement and proof recipe are builder-written",
+   "adjacency is symmetric by definition (G4.adj)"
+  ],
+  "lean": "lean@e8baaa71855a616d",
+  "workspace": {
+   "artifact_identity": "95a6ec9f1aadc0d8d1936c34bd0ce4e144b0e35c85df12543cdcafe9ebf36b41",
+   "import_roots": [
+    "Mathlib.Data.Finset.Powerset"
+   ],
+   "mathlib_rev": "d13f23b723b8a846827a245b89c10fc7d3f11612",
+   "source_identity": "a3a7569b6d7636a844c87c2b72ef2170eda0f712ff8d9a1b0f15b069e301c7ef"
+  }
+ },
+ "bindings": [
+  {
+   "proof": "CDP1.proof",
+   "spec": "CDConj.codeg_iff_c4free"
+  }
+ ],
+ "costs": {
+  "acceptance_check_cpu_ns": 3844655548,
+  "acceptance_runs": 2,
+  "acceptances": [
+   {
+    "receipt_sha256": "dd67a294ef1f7156100909f4837ac2888a98c165f2e534a13ce8ee9093cd0dcc",
+    "statement": "codeg_iff_c4free",
+    "stats": {
+     "check_sha256": "3b2ace9190202ae2cb19562bc1ff6831f92b428a4a73d7206391af85f1678905",
+     "cpu_ns": 3844655548,
+     "exit_code": 0,
+     "exits": {
+      "CDP1": "0",
+      "check": "0"
+     },
+     "log": "",
+     "peak_memory_bytes": 794165248,
+     "status": "SUCCESS",
+     "wall_ns": 4511698738
+    },
+    "status": "CHECKED"
+   }
+  ],
+  "attempts": [
+   {
+    "attempts": [
+     {
+      "compiled": true,
+      "recipe": "codegree-two-witnesses (builder-written)",
+      "tactic_sha256": "256b4a16747d598a93b4dcefbeba641308c02a0d7f253f5140f1bb4495cbe70c",
+      "tier": 0
+     }
+    ],
+    "charged": {
+     "candidates": 1,
+     "cpu_ns": 1233300564,
+     "wall_ns": 1291293742
+    },
+    "result": "COMPILED",
+    "statement": "codeg_iff_c4free",
+    "target": "CDConj.codeg_iff_c4free"
+   }
+  ],
+  "search_candidates": 1,
+  "search_context_cpu_ns": 7164082536,
+  "search_cpu_ns": 1233300564,
+  "search_runs": 1
+ },
+ "counterexamples": [],
+ "declarations": [
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "GTDefs",
+   "name": "GT.TriangleFree",
+   "type_sha256": "c98548115419ec271dfd495799f10b35c81fad06e346ef970bd969a518c2a9f4"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "GTDefs",
+   "name": "GT.Edges",
+   "type_sha256": "baaddf70fb5d432b8bd948ef91d6f910124a6d138edae4d5f000c4610ddc8eae"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "GTDefs",
+   "name": "GT.instDecidableTriangleFree",
+   "type_sha256": "5f6ad93fcd86d217b85aa0d5ae9d8484d2f18f9af307b85f1d55bcb68ce406d1"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "G4Defs",
+   "name": "G4.verts",
+   "type_sha256": "7a1ef65cd458ebf10bcecd44c843b1710d493ee0d98e109b6abc53d948459791"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "G4Defs",
+   "name": "G4.adj",
+   "type_sha256": "af2cc6046b4db7f006731f612da96fe9072947a3524d785304d4acef542f9814"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "G4Defs",
+   "name": "G4.instDecidableAdj",
+   "type_sha256": "15bfca590acf8edebe32601b938585677ac6d2a4d3d45c318ce25da607e3af52"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "G4Defs",
+   "name": "G4.C4Free",
+   "type_sha256": "c98548115419ec271dfd495799f10b35c81fad06e346ef970bd969a518c2a9f4"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "G4Defs",
+   "name": "G4.instDecidableC4Free",
+   "type_sha256": "696d08db70be0d43900686ce88431e9640ecc9ab7d9c645364f85ffea376c365"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "CDDefs",
+   "name": "CD.commonNbrs",
+   "type_sha256": "2ae6104183f766ac74943da6441d2fdb14d66292a5dc473aa8cdaf89ce96d201"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "CDDefs",
+   "name": "CD.CodegLeOne",
+   "type_sha256": "c98548115419ec271dfd495799f10b35c81fad06e346ef970bd969a518c2a9f4"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "CDConj",
+   "name": "CDConj.codeg_iff_c4free",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "theorem",
+   "module": "CDP1",
+   "name": "CD.commonNbrs.eq_1",
+   "type_sha256": "024d2787038b4aef14995e02559da16b180a467a26c477c1351cdffb6bd8187d"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "theorem",
+   "module": "CDP1",
+   "name": "CDP1.proof",
+   "type_sha256": "653a60c3bd3c8cf6d7ff3e7acc68a71416d5c716683fe209e47fb45e088142bf"
+  }
+ ],
+ "definitions": [
+  {
+   "module": "GTDefs",
+   "name": "GT.TriangleFree",
+   "origin": "trusted-generated",
+   "type_sha256": "c98548115419ec271dfd495799f10b35c81fad06e346ef970bd969a518c2a9f4"
+  },
+  {
+   "module": "GTDefs",
+   "name": "GT.Edges",
+   "origin": "trusted-generated",
+   "type_sha256": "baaddf70fb5d432b8bd948ef91d6f910124a6d138edae4d5f000c4610ddc8eae"
+  },
+  {
+   "module": "GTDefs",
+   "name": "GT.instDecidableTriangleFree",
+   "origin": "trusted-generated",
+   "type_sha256": "5f6ad93fcd86d217b85aa0d5ae9d8484d2f18f9af307b85f1d55bcb68ce406d1"
+  },
+  {
+   "module": "G4Defs",
+   "name": "G4.verts",
+   "origin": "trusted-generated",
+   "type_sha256": "7a1ef65cd458ebf10bcecd44c843b1710d493ee0d98e109b6abc53d948459791"
+  },
+  {
+   "module": "G4Defs",
+   "name": "G4.adj",
+   "origin": "trusted-generated",
+   "type_sha256": "af2cc6046b4db7f006731f612da96fe9072947a3524d785304d4acef542f9814"
+  },
+  {
+   "module": "G4Defs",
+   "name": "G4.instDecidableAdj",
+   "origin": "trusted-generated",
+   "type_sha256": "15bfca590acf8edebe32601b938585677ac6d2a4d3d45c318ce25da607e3af52"
+  },
+  {
+   "module": "G4Defs",
+   "name": "G4.C4Free",
+   "origin": "trusted-generated",
+   "type_sha256": "c98548115419ec271dfd495799f10b35c81fad06e346ef970bd969a518c2a9f4"
+  },
+  {
+   "module": "G4Defs",
+   "name": "G4.instDecidableC4Free",
+   "origin": "trusted-generated",
+   "type_sha256": "696d08db70be0d43900686ce88431e9640ecc9ab7d9c645364f85ffea376c365"
+  },
+  {
+   "module": "CDDefs",
+   "name": "CD.commonNbrs",
+   "origin": "trusted-generated",
+   "type_sha256": "2ae6104183f766ac74943da6441d2fdb14d66292a5dc473aa8cdaf89ce96d201"
+  },
+  {
+   "module": "CDDefs",
+   "name": "CD.CodegLeOne",
+   "origin": "trusted-generated",
+   "type_sha256": "c98548115419ec271dfd495799f10b35c81fad06e346ef970bd969a518c2a9f4"
+  },
+  {
+   "module": "CDConj",
+   "name": "CDConj.codeg_iff_c4free",
+   "origin": "trusted-generated",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  }
+ ],
+ "dependencies": {
+  "CD.CodegLeOne": {
+   "package": [
+    "CD.commonNbrs",
+    "G4.adj",
+    "G4.instDecidableAdj",
+    "G4.verts",
+    "GT.Edges"
+   ],
+   "workspace_modules": [
+    "Init.Core",
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Card",
+    "Mathlib.Data.Finset.Defs",
+    "Mathlib.Data.SetLike.Basic"
+   ]
+  },
+  "CD.commonNbrs": {
+   "package": [
+    "G4.adj",
+    "G4.instDecidableAdj",
+    "G4.verts",
+    "GT.Edges"
+   ],
+   "workspace_modules": [
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Defs",
+    "Mathlib.Data.Finset.Filter"
+   ]
+  },
+  "CD.commonNbrs.eq_1": {
+   "package": [
+    "CD.commonNbrs",
+    "G4.adj",
+    "G4.instDecidableAdj",
+    "G4.verts",
+    "GT.Edges"
+   ],
+   "workspace_modules": [
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Defs",
+    "Mathlib.Data.Finset.Filter"
+   ]
+  },
+  "CDConj.codeg_iff_c4free": {
+   "package": [
+    "CD.CodegLeOne",
+    "CD.commonNbrs",
+    "G4.C4Free",
+    "G4.adj",
+    "G4.instDecidableAdj",
+    "G4.verts",
+    "GT.Edges"
+   ],
+   "workspace_modules": [
+    "Init.Core"
+   ]
+  },
+  "CDP1.proof": {
+   "package": [
+    "CD.CodegLeOne",
+    "CD.commonNbrs",
+    "CDConj.codeg_iff_c4free",
+    "CDP1.proof._proof_1_1",
+    "CDP1.proof._proof_1_4",
+    "CDP1.proof._simp_1_3",
+    "G4.C4Free",
+    "G4.adj",
+    "G4.instDecidableAdj",
+    "G4.verts",
+    "GT.Edges"
+   ],
+   "workspace_modules": [
+    "Init.Core",
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Card",
+    "Mathlib.Data.Finset.Defs",
+    "Mathlib.Data.SetLike.Basic"
+   ]
+  },
+  "CDP1.proof._proof_1_1": {
+   "package": [
+    "CD.commonNbrs",
+    "G4.adj",
+    "G4.instDecidableAdj",
+    "G4.verts",
+    "GT.Edges"
+   ],
+   "workspace_modules": [
+    "Init.Core",
+    "Init.Data.Cast",
+    "Init.Data.Int.Basic",
+    "Init.Data.Int.Order",
+    "Init.Data.Nat.Basic",
+    "Init.Omega.Coeffs",
+    "Init.Omega.Constraint",
+    "Init.Omega.Int",
+    "Init.Omega.LinearCombo",
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Card"
+   ]
+  },
+  "CDP1.proof._proof_1_4": {
+   "package": [
+    "CD.commonNbrs",
+    "G4.adj",
+    "G4.instDecidableAdj",
+    "G4.verts",
+    "GT.Edges"
+   ],
+   "workspace_modules": [
+    "Init.Core",
+    "Init.Data.Cast",
+    "Init.Data.Int.Basic",
+    "Init.Data.Int.Order",
+    "Init.Omega.Coeffs",
+    "Init.Omega.Constraint",
+    "Init.Omega.Int",
+    "Init.Omega.LinearCombo",
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Card"
+   ]
+  },
+  "CDP1.proof._simp_1_3": {
+   "package": [],
+   "workspace_modules": [
+    "Init.Core",
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Defs",
+    "Mathlib.Data.Finset.Filter",
+    "Mathlib.Data.SetLike.Basic"
+   ]
+  },
+  "G4.C4Free": {
+   "package": [
+    "G4.adj",
+    "G4.verts",
+    "GT.Edges"
+   ],
+   "workspace_modules": [
+    "Init.Core",
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Defs",
+    "Mathlib.Data.SetLike.Basic"
+   ]
+  },
+  "G4.adj": {
+   "package": [
+    "GT.Edges"
+   ],
+   "workspace_modules": [
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Defs",
+    "Mathlib.Data.SetLike.Basic"
+   ]
+  },
+  "G4.instDecidableAdj": {
+   "package": [
+    "G4.adj",
+    "GT.Edges"
+   ],
+   "workspace_modules": [
+    "Init.Core",
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Defs",
+    "Mathlib.Data.SetLike.Basic"
+   ]
+  },
+  "G4.instDecidableC4Free": {
+   "package": [
+    "G4.C4Free",
+    "G4.adj",
+    "G4.instDecidableAdj",
+    "G4.verts",
+    "GT.Edges"
+   ],
+   "workspace_modules": [
+    "Init.Core",
+    "Init.Prelude",
+    "Init.PropLemmas",
+    "Mathlib.Data.Finset.Defs",
+    "Mathlib.Data.SetLike.Basic"
+   ]
+  },
+  "G4.verts": {
+   "package": [
+    "GT.Edges"
+   ],
+   "workspace_modules": [
+    "Init.Core",
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Defs",
+    "Mathlib.Data.Finset.Image",
+    "Mathlib.Data.Finset.Lattice.Basic"
+   ]
+  },
+  "GT.Edges": {
+   "package": [],
+   "workspace_modules": [
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Defs"
+   ]
+  },
+  "GT.TriangleFree": {
+   "package": [
+    "GT.Edges"
+   ],
+   "workspace_modules": [
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Defs",
+    "Mathlib.Data.SetLike.Basic"
+   ]
+  },
+  "GT.instDecidableTriangleFree": {
+   "package": [
+    "GT.Edges",
+    "GT.TriangleFree"
+   ],
+   "workspace_modules": [
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Defs",
+    "Mathlib.Data.SetLike.Basic"
+   ]
+  }
+ },
+ "domain": "c4_host_v2",
+ "modules": [
+  {
+   "name": "GTDefs",
+   "source": "import Mathlib.Data.Finset.Powerset\n\nnamespace GT\n\n/-- Edge sets: ordered pairs (u, v), read as the edge {u, v}. Hosts list each edge once, with u < v. -/\nabbrev Edges := Finset (ℕ × ℕ)\n\n/-- No three edges (a, b), (b, c), (a, c). -/\ndef TriangleFree (S : Edges) : Prop :=\n  ∀ e ∈ S, ∀ f ∈ S, ∀ g ∈ S, ¬ (e.1 = g.1 ∧ e.2 = f.1 ∧ f.2 = g.2)\n\ninstance (S : Edges) : Decidable (TriangleFree S) := by\n  unfold TriangleFree; infer_instance\n\nend GT\n",
+   "source_sha256": "34a84d4f227cbf5a95012a37a9f263f14ca419a4959be42c674d8abc47c9e3a7",
+   "trusted": true
+  },
+  {
+   "name": "G4Defs",
+   "source": "import GTDefs\n\nnamespace G4\n\n/-- Domain contract (c4_host_v2): u and v are joined in S, in either orientation. -/\ndef adj (S : GT.Edges) (u v : ℕ) : Prop := (u, v) ∈ S ∨ (v, u) ∈ S\n\ninstance (S : GT.Edges) (u v : ℕ) : Decidable (adj S u v) := by\n  unfold adj; infer_instance\n\ndef verts (S : GT.Edges) : Finset ℕ := S.image Prod.fst ∪ S.image Prod.snd\n\n/-- No 4-cycle a-b-c-d-a with a ≠ c and b ≠ d. -/\ndef C4Free (S : GT.Edges) : Prop :=\n  ∀ a ∈ verts S, ∀ b ∈ verts S, ∀ c ∈ verts S, ∀ d ∈ verts S,\n    a ≠ c → b ≠ d → ¬ (adj S a b ∧ adj S b c ∧ adj S c d ∧ adj S d a)\n\ninstance (S : GT.Edges) : Decidable (C4Free S) := by\n  unfold C4Free; infer_instance\n\nend G4\n",
+   "source_sha256": "bf94fb5d73cc9d32e1e11167df93df0ca356b3f1a6de0b050a8efe53bae7987b",
+   "trusted": true
+  },
+  {
+   "name": "CDDefs",
+   "source": "import GTDefs\nimport G4Defs\n\nnamespace CD\n\n/-- Common neighbours of u and v in S: the vertices of S adjacent to both. -/\ndef commonNbrs (S : GT.Edges) (u v : ℕ) : Finset ℕ :=\n  (G4.verts S).filter (fun w => G4.adj S u w ∧ G4.adj S v w)\n\n/-- Every pair of distinct vertices of S has at most one common neighbour (codegree ≤ 1). -/\ndef CodegLeOne (S : GT.Edges) : Prop :=\n  ∀ u ∈ G4.verts S, ∀ v ∈ G4.verts S, u ≠ v → (commonNbrs S u v).card ≤ 1\n\nend CD\n",
+   "source_sha256": "06155e156e7e26cc20e326fc15b555a4d0e3f1d81d2c432266654d586b0941a0",
+   "trusted": true
+  },
+  {
+   "name": "CDConj",
+   "source": "import GTDefs\nimport G4Defs\nimport CDDefs\nset_option linter.unusedVariables false\n\nnamespace CDConj\n/-- Generated conjecture `codeg_iff_c4free` (builder-written (CRPD-2): known equivalence, stated over the repository definitions). -/\ndef codeg_iff_c4free : Prop := ∀ (S : GT.Edges), G4.C4Free S ↔ CD.CodegLeOne S\nend CDConj\n",
+   "source_sha256": "f6858e3a452b6e4f0abef570ae476db464d9bb54ebc7f62bd3a4a6d2f934179b",
+   "trusted": true
+  },
+  {
+   "name": "CDP1",
+   "source": "import GTDefs\nimport G4Defs\nimport CDDefs\nimport CDConj\nnamespace CDP1\ntheorem proof : CDConj.codeg_iff_c4free := by\n  unfold CDConj.codeg_iff_c4free\n  intro S\n  have symm : ∀ x y, G4.adj S x y → G4.adj S y x := by\n    intro x y h\n    unfold G4.adj at *\n    exact h.symm\n  unfold G4.C4Free CD.CodegLeOne\n  constructor\n  · intro h u hu v hv huv\n    by_contra hc\n    have hc2 : 1 < (CD.commonNbrs S u v).card := by omega\n    obtain ⟨b, hb, d, hd, hbd⟩ := Finset.one_lt_card.mp hc2\n    simp only [CD.commonNbrs, Finset.mem_filter] at hb hd\n    exact h u hu b hb.1 v hv d hd.1 huv hbd ⟨hb.2.1, symm _ _ hb.2.2, hd.2.2, symm _ _ hd.2.1⟩\n  · intro h a ha b hb c hc d hd hac hbd habcd\n    obtain ⟨h1, h2, h3, h4⟩ := habcd\n    have hcard : 1 < (CD.commonNbrs S a c).card := by\n      apply Finset.one_lt_card.mpr\n      refine ⟨b, ?_, d, ?_, hbd⟩\n      · simp only [CD.commonNbrs, Finset.mem_filter]\n        exact ⟨hb, h1, symm _ _ h2⟩\n      · simp only [CD.commonNbrs, Finset.mem_filter]\n        exact ⟨hd, symm _ _ h4, h3⟩\n    have := h a ha c hc hac\n    omega\nend CDP1\n",
+   "source_sha256": "d864972b9fa2059a9c29db9818a6e0577043ad072228d2f0db440d135a42c502",
+   "trusted": false
+  }
+ ],
+ "name": "Codegree characterisation of C4-freeness (CRPD-2)",
+ "package_sha256": "e1545106e5757370f9f675587f97f461c1ab4ffdfc1b91daa3e2fdea031b7a14",
+ "proofs": [
+  {
+   "module": "CDP1",
+   "recipe": "codegree-two-witnesses (builder-written)",
+   "statement": "codeg_iff_c4free"
+  }
+ ],
+ "provenance": {
+  "acceptance": "genesis.formal_research.checker.accept",
+  "created_at": "2026-10-12T11:21:05.218822+00:00",
+  "loop": "genesis.formal_research.loop",
+  "search": "genesis.formal_research.search (builder-written recipes, named per proof)"
+ },
+ "schema": "genesis-theory-package-v1",
+ "scope": "every finite edge set over ℕ (GT.Edges), loops and both orientations included",
+ "statements": [
+  {
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "counterexample": null,
+   "id": "codeg_iff_c4free",
+   "lean": "∀ (S : GT.Edges), G4.C4Free S ↔ CD.CodegLeOne S",
+   "origin": "builder-written (CRPD-2): known equivalence, stated over the repository definitions",
+   "proof_const": "CDP1.proof",
+   "proof_module": "CDP1",
+   "recipe": "codegree-two-witnesses (builder-written)",
+   "role": "equivalence",
+   "screened_instances": 3000,
+   "spec_const": "CDConj.codeg_iff_c4free",
+   "status": "CHECKED",
+   "subject": "codegree@c4_host_v2"
+  }
+ ]
+}
