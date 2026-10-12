@@ -4918,7 +4918,9 @@
     "src/genesis/invention/representations.py",
     "evidence/invention_b18/representations/package.json",
     "src/genesis/invention/soundness.py",
-    "evidence/soundness_b20r/modes.json"
+    "evidence/soundness_b20r/modes.json",
+    "src/genesis/invention/codegree.py",
+    "evidence/codegree_b20r/package.json"
    ],
    "disposition": "IMPLEMENTED_BOUNDED_PENDING_AUDIT",
    "evidence": [],
@@ -4934,7 +4936,8 @@
    "source": "roadmap \u00a77-10",
    "tests": [
     "tests_formal/test_invention.py",
-    "tests_formal/test_soundness_modes.py"
+    "tests_formal/test_soundness_modes.py",
+    "tests_formal/test_codegree.py"
    ],
    "title": "Representation and ontology invention (vertex-class grammar)",
    "workstream": "W10"

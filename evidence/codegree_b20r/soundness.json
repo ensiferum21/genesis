@@ -1,0 +1,17 @@
+{
+ "derived": "EQ",
+ "downgraded": false,
+ "established": "EQ",
+ "evidence": [
+  "CDP1.proof"
+ ],
+ "obligations": {
+  "backward": "CHECKED",
+  "forward": "CHECKED"
+ },
+ "record_id": "28371a875d4af21847d49975509a7c6cd521e095baad9103e2c3649ad4ff738e",
+ "requested": "EQ",
+ "schema": "genesis-soundness-mode-v1",
+ "scope": "c4_host_v2 (any GT.Edges)",
+ "subject": "codegree <= 1 for C4-freeness"
+}
