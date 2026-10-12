@@ -185,10 +185,171 @@ def predict(w, x):
     return 1 / (1 + math.exp(-max(-30, min(30, z))))
 
 
-# ---------------------------------------------------------------- runs
+# ---------------------------------------------------------------- runs (repaired: B20-REVIEW-02, -01, -03)
 
-def run(system, policy, pool, *, budget_s, dev_targets=(), prove_s=2, premise_k=8, log=None):
-    """One research run. Returns the frozen successor (library) and the full trajectory."""
+def lemma_uid(run_id, local_id, text, proof_sha256):
+    """Globally unique, run-bound identity of a library lemma (local names like L0 are not)."""
+    return digest({'run': run_id, 'local': local_id, 'statement': text, 'proof_sha256': proof_sha256})
+
+
+def _sha_text(s):
+    import hashlib
+    return hashlib.sha256(s.encode()).hexdigest() if s is not None else None
+
+
+def _default_prover(axioms, goal, *, res, label):
+    from ..verification.eprover import prove_bounded
+    return prove_bounded(axioms, goal, limit_s=res.prover_limit_s, cpu_ns=res.cpu_ns, wall_ns=res.wall_ns,
+                         mode='auto', label=label)
+
+
+def _settle(account, res, r):
+    rr = r.get('resource') or {}
+    return account.settle(res, cpu_ns=rr.get('cpu_ns'), wall_ns=rr.get('wall_ns', 0),
+                          termination=rr.get('termination', 'UNMETERED'), status=r['status'],
+                          meter=rr.get('meter', {'kind': 'none', 'lower_bound': True}),
+                          extra={'proof_sha256': _sha_text(r.get('proof'))})
+
+
+def run(system, policy, pool, *, budget_s=None, account=None, dev_targets=(), prove_s=2, premise_k=8, log=None,
+        screen=None, run_id=None, prover=None):
+    """One research run under a resource account (Repair B). Returns the frozen successor
+    (library), the full trajectory and the account record.
+
+    * The account is open before policy preparation; reset, choice, deciders and retrieval
+      are charged. Each proof attempt is reserved before launch and runs bounded; a proof
+      is admitted only from an attempt the account marks eligible (no late results).
+    * Every admitted lemma is screened through ``screen(route, system, eq)`` (a
+      ``partitions.InsertionScreen``); a BLOCK keeps it out and is logged.
+    * Lemmas carry run-bound identities (``uid``), their proof hash and attempt id, so a
+      successor manifest can be built and replayed (Repair C).
+
+    ``budget_s`` (legacy argument) builds a strict account with ``prove_s`` per attempt.
+    """
+    from .budget import Account, StudyBudget
+    if account is None:
+        if budget_s is None:
+            raise ValueError('a research run needs an account or a budget')
+        account = Account(StudyBudget.from_seconds(budget_s, attempt_s=prove_s), label=f'{system}:{policy.name}')
+    prover = prover or _default_prover
+    run_id = run_id or digest({'system': system, 'policy': policy.name, 'account': account.label,
+                               'budget': account.budget.identity(), 'pool': [Q.text(e) for e in pool]})
+    with account.measure('preparation', 'policy reset and axioms'):
+        spec = Q.SYSTEMS[system]
+        ax = Q.axioms(system)
+        policy.reset(list(pool), list(dev_targets))
+        untried = set(pool)
+    library, trajectory, screened = [], [], []
+    while untried and not account.stop_reason:
+        with account.measure('policy', 'choose'):
+            eq = policy.choose(untried)
+            untried.discard(eq)
+        with account.measure('decider'):
+            truth = Q.holds(eq, spec['decider'])
+        if account.stop_reason:
+            trajectory.append({'step': len(trajectory), 'eq': Q.text(eq), 'outcome': 'NOT_ATTEMPTED',
+                               'reason': account.stop_reason})
+            break
+        if not truth:
+            with account.measure('policy', 'observe'):
+                policy.observe(eq, 'FALSE')
+            trajectory.append({'step': len(trajectory), 'eq': Q.text(eq), 'outcome': 'FALSE'})
+            continue
+        with account.measure('retrieval'):
+            prem = premises(library, eq, premise_k)
+        res = account.reserve('prover', purpose=f'prove {Q.text(eq)}')
+        if res is None:
+            trajectory.append({'step': len(trajectory), 'eq': Q.text(eq), 'outcome': 'NOT_ATTEMPTED',
+                               'reason': account.stop_reason})
+            break
+        r = prover(ax + [Q.closed(p['eq']) for p in prem], Q.closed(eq), res=res, label=res.attempt_id)
+        settled = _settle(account, res, r)
+        proved = r['status'] == 'THEOREM' and bool(r.get('proof'))
+        rec = {'e_status': r['status'], 'premises': [p['id'] for p in prem], 'attempt_id': res.attempt_id,
+               'eligible': settled['eligible']}
+        if proved and not settled['eligible']:
+            outcome = 'PROVED_NOT_CREDITED'
+            rec['reason'] = settled['reason']
+        elif proved and screen is not None and screen('lemma', system, eq)['decision'] != 'ALLOW':
+            outcome = 'SCREENED_OUT'
+            screened.append(Q.text(eq))
+        elif proved:
+            outcome = 'PROVED'
+            used = used_inputs(r['proof'], len(ax) + len(prem))
+            local = f'L{len(library)}'
+            psha = _sha_text(r['proof'])
+            uses = [prem[i - len(ax)]['id'] for i in used if i >= len(ax)]
+            by_local = {l['id']: l['uid'] for l in library}
+            library.append({'id': local, 'eq': eq, 'text': Q.text(eq), 'proof': r['proof'], 'proof_sha256': psha,
+                            'uid': lemma_uid(run_id, local, Q.text(eq), psha), 'attempt_id': res.attempt_id,
+                            'uses': uses, 'uses_uids': [by_local[u] for u in uses],
+                            'premise_ids': [p['id'] for p in prem],
+                            'premise_uids': [by_local[p['id']] for p in prem]})
+        else:
+            outcome = 'UNPROVED'
+        with account.measure('policy', 'observe'):
+            policy.observe(eq, 'PROVED' if outcome == 'PROVED' else 'UNPROVED')
+        trajectory.append({'step': len(trajectory), 'eq': Q.text(eq), 'outcome': outcome,
+                           'cpu_s': round(settled['cpu_ns'] / 1e9, 3), **rec})
+        if log and outcome == 'PROVED':
+            log(f'  {system} {policy.name}: proved {Q.text(eq)} ({len(library)} lemmas)')
+    acct = account.record()
+    return {'system': system, 'policy': policy.name, 'run_id': run_id, 'library': library, 'trajectory': trajectory,
+            'cpu_s': round(acct['cpu_ns_total'] / 1e9, 3), 'library_sha256': digest([l['text'] for l in library]),
+            'account': acct, 'screened_out': screened, 'screen': 'INSERTION_SCREEN' if screen else 'NONE'}
+
+
+def evaluate_successor(system, library, targets, *, eval_s=3, premise_k=8, account=None, task_ids=None, prover=None,
+                       label='evaluation'):
+    """Targets proved by E with the axioms and the most relevant library lemmas, each under
+    its own bounded reservation of ``eval_s`` prover seconds (equal for every arm). A target
+    counts only if its attempt was eligible (exited within its reservation). Rows keep the
+    proof object, the premise identities in input order and the attempt record, so each
+    scored proof can be taken into custody and replayed."""
+    from .budget import Account, StudyBudget
+    prover = prover or _default_prover
+    if account is None:
+        per = StudyBudget.from_seconds(eval_s, attempt_s=eval_s)
+        n = max(1, len(targets))
+        account = Account(StudyBudget(cpu_ns=(per.attempt_cpu_ns + per.tolerance_ns) * n, wall_ns=per.wall_ns * n,
+                                      attempt_cpu_ns=per.attempt_cpu_ns, overhead_ns=per.overhead_ns), label=label)
+    ax = Q.axioms(system)
+    by_local = {l['id']: l for l in library}
+    rows, used = [], {}
+    for n, t in enumerate(targets):
+        prem = premises(library, t, premise_k)
+        res = account.reserve('evaluation', purpose=f'target {n}')
+        if res is None:
+            rows.append({'target': Q.text(t), 'eq': t, 'status': 'NOT_ATTEMPTED', 'reason': account.stop_reason,
+                         'lemmas_used': [], 'premise_ids': [], 'premise_uids': [], 'proof': None,
+                         'eligible': False, 'task_id': task_ids[n] if task_ids else n})
+            continue
+        r = prover(ax + [Q.closed(p['eq']) for p in prem], Q.closed(t), res=res, label=res.attempt_id)
+        settled = _settle(account, res, r)
+        ok = r['status'] == 'THEOREM' and bool(r.get('proof'))
+        ids = [prem[i - len(ax)]['id'] for i in used_inputs(r['proof'], len(ax) + len(prem)) if i >= len(ax)] \
+            if ok else []
+        if ok and settled['eligible']:
+            for i in ids:
+                used[i] = used.get(i, 0) + 1
+        status = ('PROVED' if settled['eligible'] else 'PROVED_NOT_CREDITED') if ok else r['status']
+        rows.append({'target': Q.text(t), 'eq': t, 'status': status, 'lemmas_used': ids,
+                     'premise_ids': [p['id'] for p in prem],
+                     'premise_uids': [by_local[p['id']].get('uid') for p in prem],
+                     'proof': r['proof'] if ok else None, 'proof_sha256': _sha_text(r['proof']) if ok else None,
+                     'attempt_id': res.attempt_id, 'eligible': settled['eligible'], 'cpu_ns': settled['cpu_ns'],
+                     'task_id': task_ids[n] if task_ids else n})
+    return {'proved': sum(r['status'] == 'PROVED' for r in rows),
+            'prover_reported': sum(r['status'] in ('PROVED', 'PROVED_NOT_CREDITED') for r in rows),
+            'targets': len(targets), 'rows': rows, 'lemma_use': used, 'account': account.record()}
+
+
+# ---------------------------------------------------------------- the original B20 loop (kept for reproduction)
+
+def run_legacy_b20(system, policy, pool, *, budget_s, dev_targets=(), prove_s=2, premise_k=8, log=None):
+    """The B20 research loop, unchanged. DEFECTIVE (B20-REVIEW-02): preparation uncharged,
+    cap checked before the action, fractional remainders rounded up to whole prover
+    seconds, late proofs accepted. Kept only so the finding stays reproducible."""
     spec = Q.SYSTEMS[system]
     ax = Q.axioms(system)
     policy.reset(list(pool), list(dev_targets))
@@ -222,8 +383,8 @@ def run(system, policy, pool, *, budget_s, dev_targets=(), prove_s=2, premise_k=
             'cpu_s': round(_cpu() - start, 2), 'library_sha256': digest([l['text'] for l in library])}
 
 
-def evaluate_successor(system, library, targets, *, eval_s=3, premise_k=8):
-    """Targets proved by E with the axioms and the most relevant library lemmas."""
+def evaluate_successor_legacy_b20(system, library, targets, *, eval_s=3, premise_k=8):
+    """The B20 successor evaluation, unchanged (kept for reproduction; no proof custody)."""
     ax = Q.axioms(system)
     rows, used = [], {}
     for t in targets:
@@ -276,5 +437,6 @@ def usefulness_labels(result, evaluation):
     return {s['eq']: int(s['eq'] in proved and proved[s['eq']] in used) for s in result['trajectory']}
 
 
-__all__ = ['run', 'evaluate_successor', 'usefulness_labels', 'lean_chain', 'Fixed', 'Random', 'Heuristic', 'Bandit', 'Learned',
+__all__ = ['run', 'evaluate_successor', 'run_legacy_b20', 'evaluate_successor_legacy_b20', 'lemma_uid',
+           'usefulness_labels', 'lean_chain', 'Fixed', 'Random', 'Heuristic', 'Bandit', 'Learned',
            'fit_logistic', 'predict', 'features', 'FEATURE_NAMES', 'premises', 'used_inputs']
