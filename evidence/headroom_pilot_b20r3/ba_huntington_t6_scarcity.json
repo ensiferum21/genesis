@@ -1,0 +1,276 @@
+{
+ "claim": "none; a design diagnostic for choosing a family to study",
+ "exhaust_cpu_s": 2.071,
+ "round": 3,
+ "rows": [
+  {
+   "cap_s": 0.041,
+   "empty": 9,
+   "exhaust": 11,
+   "fixed_library": 0,
+   "fixed_share": 9,
+   "oracle_cost_s": 0.0,
+   "oracle_library": [],
+   "oracle_share": 9,
+   "range": [
+    9,
+    12
+   ],
+   "share": 0.02,
+   "targets": [
+    "![X]: (![Y]: (![Z]: (n(plus(n(plus(n(plus(X,Y)),X)),Z)) = n(plus(plus(n(plus(n(Y),X)),Z),Z)))))",
+    "![X]: (![Y]: (plus(n(plus(plus(plus(X,X),Y),plus(Y,X))),X) = plus(X,plus(n(plus(plus(plus(X,Y),Y),X)),X))))",
+    "![X]: (![Y]: (![Z]: (n(plus(n(plus(X,Y)),n(plus(Z,Y)))) = plus(plus(Y,n(plus(n(X),n(Z)))),Y))))",
+    "![X]: (![Y]: (![Z]: (plus(n(plus(n(X),n(n(Y)))),Z) = plus(Z,n(plus(n(plus(plus(X,Y),Y)),Y))))))",
+    "![X]: (![Y]: (![Z]: (plus(n(plus(n(X),n(Y))),n(Z)) = plus(n(Z),n(plus(n(Y),n(X)))))))",
+    "![X]: (![Y]: (![Z]: (plus(n(plus(X,plus(n(Y),X))),n(Z)) = plus(n(Z),n(plus(n(Y),plus(X,X)))))))",
+    "![X]: (![Y]: (![Z]: (plus(n(plus(plus(X,Y),Y)),n(Z)) = plus(n(plus(Z,plus(Z,Z))),n(plus(Y,X))))))",
+    "![X]: (![Y]: (plus(plus(X,plus(plus(X,X),n(Y))),X) = plus(X,n(plus(plus(X,Y),n(n(X)))))))",
+    "![X]: (![Y]: (![Z]: (plus(n(plus(X,plus(X,Y))),n(plus(Z,X))) = plus(n(plus(X,Z)),n(plus(plus(X,X),Y))))))",
+    "![X]: (![Y]: (![Z]: (n(plus(n(plus(plus(X,plus(X,Y)),Z)),X)) = n(plus(X,n(plus(Y,plus(plus(Z,X),Z))))))))",
+    "![X]: (![Y]: (![Z]: (plus(n(plus(X,n(plus(Y,Y)))),n(Z)) = plus(n(Z),n(plus(X,n(Y)))))))",
+    "![X]: (![Y]: (plus(plus(X,X),n(plus(n(n(Y)),Y))) = plus(X,n(plus(plus(Y,plus(X,plus(Y,X))),X)))))"
+   ]
+  },
+  {
+   "cap_s": 0.104,
+   "empty": 9,
+   "exhaust": 11,
+   "fixed_library": 0,
+   "fixed_share": 9,
+   "oracle_cost_s": 0.0,
+   "oracle_library": [],
+   "oracle_share": 9,
+   "range": [
+    9,
+    12
+   ],
+   "share": 0.05,
+   "targets": [
+    "![X]: (![Y]: (![Z]: (n(plus(n(plus(n(plus(X,Y)),X)),Z)) = n(plus(plus(n(plus(n(Y),X)),Z),Z)))))",
+    "![X]: (![Y]: (plus(n(plus(plus(plus(X,X),Y),plus(Y,X))),X) = plus(X,plus(n(plus(plus(plus(X,Y),Y),X)),X))))",
+    "![X]: (![Y]: (![Z]: (n(plus(n(plus(X,Y)),n(plus(Z,Y)))) = plus(plus(Y,n(plus(n(X),n(Z)))),Y))))",
+    "![X]: (![Y]: (![Z]: (plus(n(plus(n(X),n(n(Y)))),Z) = plus(Z,n(plus(n(plus(plus(X,Y),Y)),Y))))))",
+    "![X]: (![Y]: (![Z]: (plus(n(plus(n(X),n(Y))),n(Z)) = plus(n(Z),n(plus(n(Y),n(X)))))))",
+    "![X]: (![Y]: (![Z]: (plus(n(plus(X,plus(n(Y),X))),n(Z)) = plus(n(Z),n(plus(n(Y),plus(X,X)))))))",
+    "![X]: (![Y]: (![Z]: (plus(n(plus(plus(X,Y),Y)),n(Z)) = plus(n(plus(Z,plus(Z,Z))),n(plus(Y,X))))))",
+    "![X]: (![Y]: (plus(plus(X,plus(plus(X,X),n(Y))),X) = plus(X,n(plus(plus(X,Y),n(n(X)))))))",
+    "![X]: (![Y]: (![Z]: (plus(n(plus(X,plus(X,Y))),n(plus(Z,X))) = plus(n(plus(X,Z)),n(plus(plus(X,X),Y))))))",
+    "![X]: (![Y]: (![Z]: (n(plus(n(plus(plus(X,plus(X,Y)),Z)),X)) = n(plus(X,n(plus(Y,plus(plus(Z,X),Z))))))))",
+    "![X]: (![Y]: (![Z]: (plus(n(plus(X,n(plus(Y,Y)))),n(Z)) = plus(n(Z),n(plus(X,n(Y)))))))",
+    "![X]: (![Y]: (plus(plus(X,X),n(plus(n(n(Y)),Y))) = plus(X,n(plus(plus(Y,plus(X,plus(Y,X))),X)))))"
+   ]
+  },
+  {
+   "cap_s": 0.207,
+   "empty": 9,
+   "exhaust": 11,
+   "fixed_library": 0,
+   "fixed_share": 9,
+   "oracle_cost_s": 0.0,
+   "oracle_library": [],
+   "oracle_share": 9,
+   "range": [
+    9,
+    12
+   ],
+   "share": 0.1,
+   "targets": [
+    "![X]: (![Y]: (![Z]: (n(plus(n(plus(n(plus(X,Y)),X)),Z)) = n(plus(plus(n(plus(n(Y),X)),Z),Z)))))",
+    "![X]: (![Y]: (plus(n(plus(plus(plus(X,X),Y),plus(Y,X))),X) = plus(X,plus(n(plus(plus(plus(X,Y),Y),X)),X))))",
+    "![X]: (![Y]: (![Z]: (n(plus(n(plus(X,Y)),n(plus(Z,Y)))) = plus(plus(Y,n(plus(n(X),n(Z)))),Y))))",
+    "![X]: (![Y]: (![Z]: (plus(n(plus(n(X),n(n(Y)))),Z) = plus(Z,n(plus(n(plus(plus(X,Y),Y)),Y))))))",
+    "![X]: (![Y]: (![Z]: (plus(n(plus(n(X),n(Y))),n(Z)) = plus(n(Z),n(plus(n(Y),n(X)))))))",
+    "![X]: (![Y]: (![Z]: (plus(n(plus(X,plus(n(Y),X))),n(Z)) = plus(n(Z),n(plus(n(Y),plus(X,X)))))))",
+    "![X]: (![Y]: (![Z]: (plus(n(plus(plus(X,Y),Y)),n(Z)) = plus(n(plus(Z,plus(Z,Z))),n(plus(Y,X))))))",
+    "![X]: (![Y]: (plus(plus(X,plus(plus(X,X),n(Y))),X) = plus(X,n(plus(plus(X,Y),n(n(X)))))))",
+    "![X]: (![Y]: (![Z]: (plus(n(plus(X,plus(X,Y))),n(plus(Z,X))) = plus(n(plus(X,Z)),n(plus(plus(X,X),Y))))))",
+    "![X]: (![Y]: (![Z]: (n(plus(n(plus(plus(X,plus(X,Y)),Z)),X)) = n(plus(X,n(plus(Y,plus(plus(Z,X),Z))))))))",
+    "![X]: (![Y]: (![Z]: (plus(n(plus(X,n(plus(Y,Y)))),n(Z)) = plus(n(Z),n(plus(X,n(Y)))))))",
+    "![X]: (![Y]: (plus(plus(X,X),n(plus(n(n(Y)),Y))) = plus(X,n(plus(plus(Y,plus(X,plus(Y,X))),X)))))"
+   ]
+  },
+  {
+   "cap_s": 0.041,
+   "empty": 5,
+   "exhaust": 11,
+   "fixed_library": 0,
+   "fixed_share": 5,
+   "oracle_cost_s": 0.0,
+   "oracle_library": [],
+   "oracle_share": 5,
+   "range": [
+    10,
+    12
+   ],
+   "share": 0.02,
+   "targets": [
+    "![X]: (![Y]: (![Z]: (plus(n(plus(X,plus(X,Y))),n(plus(X,Z))) = plus(n(plus(Y,X)),n(plus(X,plus(Z,Z)))))))",
+    "![X]: (![Y]: (![Z]: (plus(n(plus(n(plus(X,Y)),X)),n(Z)) = plus(n(plus(X,n(plus(Y,Y)))),n(Z)))))",
+    "![X]: (![Y]: (![Z]: (n(plus(plus(X,plus(X,plus(Y,n(Z)))),X)) = n(plus(plus(X,Y),plus(Y,plus(X,n(Z))))))))",
+    "![X]: (![Y]: (plus(plus(X,plus(X,X)),plus(plus(Y,Y),plus(X,X))) = plus(X,plus(Y,plus(X,plus(plus(Y,Y),plus(Y,X)))))))",
+    "![X]: (![Y]: (![Z]: (plus(n(n(n(plus(X,Y)))),n(Z)) = plus(n(Z),n(plus(plus(Y,X),n(Z)))))))",
+    "![X]: (![Y]: (plus(n(plus(n(X),plus(X,Y))),X) = plus(plus(n(plus(X,plus(n(Y),Y))),X),X)))",
+    "![X]: (![Y]: (![Z]: (n(plus(n(plus(n(plus(X,X)),Y)),Z)) = n(plus(Z,n(plus(Y,n(X))))))))",
+    "![X]: (![Y]: (![Z]: (plus(n(plus(X,Y)),n(plus(n(Y),Z))) = plus(n(plus(X,Y)),n(plus(Z,n(Y)))))))",
+    "![X]: (![Y]: (n(plus(plus(X,X),plus(X,n(n(X))))) = n(plus(X,plus(n(plus(Y,n(X))),X)))))",
+    "![X]: (![Y]: (n(plus(plus(X,plus(X,X)),plus(X,n(Y)))) = n(plus(X,n(plus(plus(plus(Y,X),X),Y))))))",
+    "![X]: (![Y]: (n(plus(n(n(plus(n(X),Y))),Y)) = n(plus(n(plus(X,plus(plus(X,X),Y))),Y))))",
+    "![X]: (![Y]: (![Z]: (plus(n(plus(plus(X,X),plus(Y,plus(Z,Y)))),Z) = plus(Z,n(plus(n(plus(n(Y),X)),X))))))"
+   ]
+  },
+  {
+   "cap_s": 0.104,
+   "empty": 5,
+   "exhaust": 11,
+   "fixed_library": 0,
+   "fixed_share": 5,
+   "oracle_cost_s": 0.0,
+   "oracle_library": [],
+   "oracle_share": 5,
+   "range": [
+    10,
+    12
+   ],
+   "share": 0.05,
+   "targets": [
+    "![X]: (![Y]: (![Z]: (plus(n(plus(X,plus(X,Y))),n(plus(X,Z))) = plus(n(plus(Y,X)),n(plus(X,plus(Z,Z)))))))",
+    "![X]: (![Y]: (![Z]: (plus(n(plus(n(plus(X,Y)),X)),n(Z)) = plus(n(plus(X,n(plus(Y,Y)))),n(Z)))))",
+    "![X]: (![Y]: (![Z]: (n(plus(plus(X,plus(X,plus(Y,n(Z)))),X)) = n(plus(plus(X,Y),plus(Y,plus(X,n(Z))))))))",
+    "![X]: (![Y]: (plus(plus(X,plus(X,X)),plus(plus(Y,Y),plus(X,X))) = plus(X,plus(Y,plus(X,plus(plus(Y,Y),plus(Y,X)))))))",
+    "![X]: (![Y]: (![Z]: (plus(n(n(n(plus(X,Y)))),n(Z)) = plus(n(Z),n(plus(plus(Y,X),n(Z)))))))",
+    "![X]: (![Y]: (plus(n(plus(n(X),plus(X,Y))),X) = plus(plus(n(plus(X,plus(n(Y),Y))),X),X)))",
+    "![X]: (![Y]: (![Z]: (n(plus(n(plus(n(plus(X,X)),Y)),Z)) = n(plus(Z,n(plus(Y,n(X))))))))",
+    "![X]: (![Y]: (![Z]: (plus(n(plus(X,Y)),n(plus(n(Y),Z))) = plus(n(plus(X,Y)),n(plus(Z,n(Y)))))))",
+    "![X]: (![Y]: (n(plus(plus(X,X),plus(X,n(n(X))))) = n(plus(X,plus(n(plus(Y,n(X))),X)))))",
+    "![X]: (![Y]: (n(plus(plus(X,plus(X,X)),plus(X,n(Y)))) = n(plus(X,n(plus(plus(plus(Y,X),X),Y))))))",
+    "![X]: (![Y]: (n(plus(n(n(plus(n(X),Y))),Y)) = n(plus(n(plus(X,plus(plus(X,X),Y))),Y))))",
+    "![X]: (![Y]: (![Z]: (plus(n(plus(plus(X,X),plus(Y,plus(Z,Y)))),Z) = plus(Z,n(plus(n(plus(n(Y),X)),X))))))"
+   ]
+  },
+  {
+   "cap_s": 0.207,
+   "empty": 5,
+   "exhaust": 11,
+   "fixed_library": 0,
+   "fixed_share": 5,
+   "oracle_cost_s": 0.0,
+   "oracle_library": [],
+   "oracle_share": 5,
+   "range": [
+    10,
+    12
+   ],
+   "share": 0.1,
+   "targets": [
+    "![X]: (![Y]: (![Z]: (plus(n(plus(X,plus(X,Y))),n(plus(X,Z))) = plus(n(plus(Y,X)),n(plus(X,plus(Z,Z)))))))",
+    "![X]: (![Y]: (![Z]: (plus(n(plus(n(plus(X,Y)),X)),n(Z)) = plus(n(plus(X,n(plus(Y,Y)))),n(Z)))))",
+    "![X]: (![Y]: (![Z]: (n(plus(plus(X,plus(X,plus(Y,n(Z)))),X)) = n(plus(plus(X,Y),plus(Y,plus(X,n(Z))))))))",
+    "![X]: (![Y]: (plus(plus(X,plus(X,X)),plus(plus(Y,Y),plus(X,X))) = plus(X,plus(Y,plus(X,plus(plus(Y,Y),plus(Y,X)))))))",
+    "![X]: (![Y]: (![Z]: (plus(n(n(n(plus(X,Y)))),n(Z)) = plus(n(Z),n(plus(plus(Y,X),n(Z)))))))",
+    "![X]: (![Y]: (plus(n(plus(n(X),plus(X,Y))),X) = plus(plus(n(plus(X,plus(n(Y),Y))),X),X)))",
+    "![X]: (![Y]: (![Z]: (n(plus(n(plus(n(plus(X,X)),Y)),Z)) = n(plus(Z,n(plus(Y,n(X))))))))",
+    "![X]: (![Y]: (![Z]: (plus(n(plus(X,Y)),n(plus(n(Y),Z))) = plus(n(plus(X,Y)),n(plus(Z,n(Y)))))))",
+    "![X]: (![Y]: (n(plus(plus(X,X),plus(X,n(n(X))))) = n(plus(X,plus(n(plus(Y,n(X))),X)))))",
+    "![X]: (![Y]: (n(plus(plus(X,plus(X,X)),plus(X,n(Y)))) = n(plus(X,n(plus(plus(plus(Y,X),X),Y))))))",
+    "![X]: (![Y]: (n(plus(n(n(plus(n(X),Y))),Y)) = n(plus(n(plus(X,plus(plus(X,X),Y))),Y))))",
+    "![X]: (![Y]: (![Z]: (plus(n(plus(plus(X,X),plus(Y,plus(Z,Y)))),Z) = plus(Z,n(plus(n(plus(n(Y),X)),X))))))"
+   ]
+  },
+  {
+   "cap_s": 0.041,
+   "empty": 9,
+   "exhaust": 12,
+   "fixed_library": 0,
+   "fixed_share": 9,
+   "oracle_cost_s": 0.0,
+   "oracle_library": [],
+   "oracle_share": 9,
+   "range": [
+    11,
+    12
+   ],
+   "share": 0.02,
+   "targets": [
+    "![X]: (![Y]: (![Z]: (plus(n(plus(plus(X,n(Y)),n(Z))),X) = plus(n(plus(plus(X,n(Z)),n(Y))),X))))",
+    "![X]: (![Y]: (n(plus(n(n(n(plus(X,Y)))),X)) = n(plus(X,plus(X,n(plus(plus(X,Y),X)))))))",
+    "![X]: (![Y]: (![Z]: (n(plus(n(plus(X,Y)),plus(X,plus(X,Z)))) = n(plus(plus(Z,plus(n(plus(X,Y)),Z)),X)))))",
+    "![X]: (![Y]: (![Z]: (plus(n(plus(X,X)),n(plus(n(Y),Z))) = plus(n(X),n(plus(n(plus(Y,Z)),Z))))))",
+    "![X]: (![Y]: (![Z]: (plus(plus(plus(n(plus(X,X)),Y),n(Z)),Y) = plus(Y,plus(n(X),plus(Y,n(Z)))))))",
+    "![X]: (![Y]: (![Z]: (plus(n(plus(n(plus(X,X)),n(Y))),Z) = plus(n(plus(Z,plus(n(Y),n(X)))),Z))))",
+    "![X]: (![Y]: (n(plus(n(plus(X,X)),n(plus(Y,Y)))) = n(plus(n(X),n(plus(Y,Y))))))",
+    "![X]: (![Y]: (n(plus(plus(X,Y),plus(Y,plus(X,plus(X,X))))) = n(plus(Y,plus(plus(X,X),plus(plus(Y,Y),X))))))",
+    "![X]: (![Y]: (![Z]: (plus(n(plus(X,plus(Y,Y))),n(plus(Y,Z))) = plus(n(plus(Y,X)),n(plus(Y,plus(Z,Z)))))))",
+    "![X]: (![Y]: (![Z]: (n(plus(X,plus(n(Y),n(n(Z))))) = n(plus(Z,plus(plus(X,X),n(Y)))))))",
+    "![X]: (![Y]: (![Z]: (plus(plus(X,n(plus(Y,plus(X,n(Z))))),X) = plus(X,n(plus(plus(Y,X),n(plus(Y,Z))))))))",
+    "![X]: (![Y]: (![Z]: (plus(n(plus(X,X)),plus(n(Y),n(Z))) = plus(n(X),plus(n(Z),n(Y))))))"
+   ]
+  },
+  {
+   "cap_s": 0.104,
+   "empty": 9,
+   "exhaust": 12,
+   "fixed_library": 0,
+   "fixed_share": 9,
+   "oracle_cost_s": 0.0,
+   "oracle_library": [],
+   "oracle_share": 9,
+   "range": [
+    11,
+    12
+   ],
+   "share": 0.05,
+   "targets": [
+    "![X]: (![Y]: (![Z]: (plus(n(plus(plus(X,n(Y)),n(Z))),X) = plus(n(plus(plus(X,n(Z)),n(Y))),X))))",
+    "![X]: (![Y]: (n(plus(n(n(n(plus(X,Y)))),X)) = n(plus(X,plus(X,n(plus(plus(X,Y),X)))))))",
+    "![X]: (![Y]: (![Z]: (n(plus(n(plus(X,Y)),plus(X,plus(X,Z)))) = n(plus(plus(Z,plus(n(plus(X,Y)),Z)),X)))))",
+    "![X]: (![Y]: (![Z]: (plus(n(plus(X,X)),n(plus(n(Y),Z))) = plus(n(X),n(plus(n(plus(Y,Z)),Z))))))",
+    "![X]: (![Y]: (![Z]: (plus(plus(plus(n(plus(X,X)),Y),n(Z)),Y) = plus(Y,plus(n(X),plus(Y,n(Z)))))))",
+    "![X]: (![Y]: (![Z]: (plus(n(plus(n(plus(X,X)),n(Y))),Z) = plus(n(plus(Z,plus(n(Y),n(X)))),Z))))",
+    "![X]: (![Y]: (n(plus(n(plus(X,X)),n(plus(Y,Y)))) = n(plus(n(X),n(plus(Y,Y))))))",
+    "![X]: (![Y]: (n(plus(plus(X,Y),plus(Y,plus(X,plus(X,X))))) = n(plus(Y,plus(plus(X,X),plus(plus(Y,Y),X))))))",
+    "![X]: (![Y]: (![Z]: (plus(n(plus(X,plus(Y,Y))),n(plus(Y,Z))) = plus(n(plus(Y,X)),n(plus(Y,plus(Z,Z)))))))",
+    "![X]: (![Y]: (![Z]: (n(plus(X,plus(n(Y),n(n(Z))))) = n(plus(Z,plus(plus(X,X),n(Y)))))))",
+    "![X]: (![Y]: (![Z]: (plus(plus(X,n(plus(Y,plus(X,n(Z))))),X) = plus(X,n(plus(plus(Y,X),n(plus(Y,Z))))))))",
+    "![X]: (![Y]: (![Z]: (plus(n(plus(X,X)),plus(n(Y),n(Z))) = plus(n(X),plus(n(Z),n(Y))))))"
+   ]
+  },
+  {
+   "cap_s": 0.207,
+   "empty": 9,
+   "exhaust": 12,
+   "fixed_library": 0,
+   "fixed_share": 9,
+   "oracle_cost_s": 0.0,
+   "oracle_library": [],
+   "oracle_share": 9,
+   "range": [
+    11,
+    12
+   ],
+   "share": 0.1,
+   "targets": [
+    "![X]: (![Y]: (![Z]: (plus(n(plus(plus(X,n(Y)),n(Z))),X) = plus(n(plus(plus(X,n(Z)),n(Y))),X))))",
+    "![X]: (![Y]: (n(plus(n(n(n(plus(X,Y)))),X)) = n(plus(X,plus(X,n(plus(plus(X,Y),X)))))))",
+    "![X]: (![Y]: (![Z]: (n(plus(n(plus(X,Y)),plus(X,plus(X,Z)))) = n(plus(plus(Z,plus(n(plus(X,Y)),Z)),X)))))",
+    "![X]: (![Y]: (![Z]: (plus(n(plus(X,X)),n(plus(n(Y),Z))) = plus(n(X),n(plus(n(plus(Y,Z)),Z))))))",
+    "![X]: (![Y]: (![Z]: (plus(plus(plus(n(plus(X,X)),Y),n(Z)),Y) = plus(Y,plus(n(X),plus(Y,n(Z)))))))",
+    "![X]: (![Y]: (![Z]: (plus(n(plus(n(plus(X,X)),n(Y))),Z) = plus(n(plus(Z,plus(n(Y),n(X)))),Z))))",
+    "![X]: (![Y]: (n(plus(n(plus(X,X)),n(plus(Y,Y)))) = n(plus(n(X),n(plus(Y,Y))))))",
+    "![X]: (![Y]: (n(plus(plus(X,Y),plus(Y,plus(X,plus(X,X))))) = n(plus(Y,plus(plus(X,X),plus(plus(Y,Y),X))))))",
+    "![X]: (![Y]: (![Z]: (plus(n(plus(X,plus(Y,Y))),n(plus(Y,Z))) = plus(n(plus(Y,X)),n(plus(Y,plus(Z,Z)))))))",
+    "![X]: (![Y]: (![Z]: (n(plus(X,plus(n(Y),n(n(Z))))) = n(plus(Z,plus(plus(X,X),n(Y)))))))",
+    "![X]: (![Y]: (![Z]: (plus(plus(X,n(plus(Y,plus(X,n(Z))))),X) = plus(X,n(plus(plus(Y,X),n(plus(Y,Z))))))))",
+    "![X]: (![Y]: (![Z]: (plus(n(plus(X,X)),plus(n(Y),n(Z))) = plus(n(X),plus(n(Z),n(Y))))))"
+   ]
+  }
+ ],
+ "shares": [
+  0.02,
+  0.05,
+  0.1
+ ],
+ "status": "DESIGN_PILOT_DEV",
+ "system": "ba_huntington",
+ "variant": "ba_huntington:t6"
+}

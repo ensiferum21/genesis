@@ -1,0 +1,204 @@
+{
+ "claim": "none; a design diagnostic for choosing a family to study",
+ "round": 5,
+ "rows": [
+  {
+   "auto_1s": 0,
+   "auto_1s_rows": [
+    "RESOURCE_OUT",
+    "RESOURCE_OUT",
+    "RESOURCE_OUT",
+    "RESOURCE_OUT",
+    "RESOURCE_OUT",
+    "RESOURCE_OUT",
+    "RESOURCE_OUT",
+    "RESOURCE_OUT",
+    "RESOURCE_OUT",
+    "RESOURCE_OUT",
+    "RESOURCE_OUT",
+    "RESOURCE_OUT"
+   ],
+   "auto_3s": 0,
+   "auto_3s_rows": [
+    "RESOURCE_OUT",
+    "RESOURCE_OUT",
+    "RESOURCE_OUT",
+    "RESOURCE_OUT",
+    "RESOURCE_OUT",
+    "RESOURCE_OUT",
+    "RESOURCE_OUT",
+    "RESOURCE_OUT",
+    "RESOURCE_OUT",
+    "RESOURCE_OUT",
+    "RESOURCE_OUT",
+    "RESOURCE_OUT"
+   ],
+   "range": [
+    5,
+    8
+   ],
+   "schedule_1s": 0,
+   "schedule_1s_rows": [
+    "GAVE_UP",
+    "GAVE_UP",
+    "GAVE_UP",
+    "GAVE_UP",
+    "GAVE_UP",
+    "GAVE_UP",
+    "GAVE_UP",
+    "GAVE_UP",
+    "GAVE_UP",
+    "GAVE_UP",
+    "GAVE_UP",
+    "GAVE_UP"
+   ],
+   "targets": [
+    "![X]: (![Y]: (![Z]: (s(X,s(Y,s(s(Z,Y),Z))) = s(X,s(Y,s(X,s(Y,Y)))))))",
+    "![X]: (![Y]: (![Z]: (s(s(X,Y),s(s(Y,s(Y,Z)),Y)) = s(s(X,Y),s(Y,Z)))))",
+    "![X]: (![Y]: (![Z]: (s(s(s(s(X,Y),X),Y),s(X,Z)) = s(s(Z,X),s(Y,Y)))))",
+    "![X]: (![Y]: (s(s(X,s(s(X,Y),X)),X) = s(X,s(X,s(s(X,Y),X)))))",
+    "![X]: (![Y]: (![Z]: (s(X,s(X,s(s(Y,Y),Z))) = s(Z,s(Z,s(s(Y,X),X))))))",
+    "![X]: (![Y]: (![Z]: (s(s(s(X,s(X,Y)),Y),X) = s(s(Y,s(Z,s(Z,Z))),X))))",
+    "![X]: (![Y]: (![Z]: (s(s(X,s(s(Y,Y),Y)),X) = s(X,s(X,s(Z,s(Z,Z)))))))",
+    "![X]: (![Y]: (![Z]: (s(s(s(X,Y),X),s(Y,Z)) = s(s(Y,Z),s(X,s(X,Y))))))",
+    "![X]: (![Y]: (![Z]: (s(s(X,s(Y,s(Y,Z))),Y) = s(Y,s(Z,s(s(X,X),Z))))))",
+    "![X]: (![Y]: (![Z]: (s(s(X,s(Y,Y)),s(Z,Y)) = s(s(Z,Y),s(X,s(Y,X))))))",
+    "![X]: (![Y]: (![Z]: (s(s(X,Y),s(s(Z,Z),Y)) = s(s(Y,X),s(Y,s(Z,Z))))))",
+    "![X]: (![Y]: (![Z]: (s(s(s(X,s(s(Y,Z),X)),X),Y) = s(s(X,s(Z,X)),Y))))"
+   ]
+  },
+  {
+   "auto_1s": 0,
+   "auto_1s_rows": [
+    "RESOURCE_OUT",
+    "RESOURCE_OUT",
+    "RESOURCE_OUT",
+    "RESOURCE_OUT",
+    "RESOURCE_OUT",
+    "RESOURCE_OUT",
+    "RESOURCE_OUT",
+    "RESOURCE_OUT",
+    "RESOURCE_OUT",
+    "RESOURCE_OUT",
+    "RESOURCE_OUT",
+    "RESOURCE_OUT"
+   ],
+   "auto_3s": 0,
+   "auto_3s_rows": [
+    "RESOURCE_OUT",
+    "RESOURCE_OUT",
+    "RESOURCE_OUT",
+    "RESOURCE_OUT",
+    "RESOURCE_OUT",
+    "RESOURCE_OUT",
+    "RESOURCE_OUT",
+    "RESOURCE_OUT",
+    "RESOURCE_OUT",
+    "RESOURCE_OUT",
+    "RESOURCE_OUT",
+    "RESOURCE_OUT"
+   ],
+   "range": [
+    6,
+    9
+   ],
+   "schedule_1s": 0,
+   "schedule_1s_rows": [
+    "GAVE_UP",
+    "GAVE_UP",
+    "GAVE_UP",
+    "GAVE_UP",
+    "GAVE_UP",
+    "GAVE_UP",
+    "GAVE_UP",
+    "GAVE_UP",
+    "GAVE_UP",
+    "GAVE_UP",
+    "GAVE_UP",
+    "GAVE_UP"
+   ],
+   "targets": [
+    "![X]: (![Y]: (![Z]: (s(s(s(s(X,Y),Y),X),Z) = s(s(X,Z),s(s(Z,Z),s(Z,Z))))))",
+    "![X]: (![Y]: (![Z]: (s(s(s(X,X),Y),s(Z,Z)) = s(s(Y,s(s(Z,Z),X)),s(Z,Z)))))",
+    "![X]: (![Y]: (![Z]: (s(s(s(s(X,Y),s(X,Y)),X),Z) = s(Z,s(Z,s(s(Y,X),Z))))))",
+    "![X]: (![Y]: (![Z]: (s(s(s(s(X,Y),Y),Z),s(X,Y)) = s(s(X,Y),s(Z,s(Z,Y))))))",
+    "![X]: (![Y]: (![Z]: (s(s(s(X,Y),s(Y,Z)),Y) = s(Y,s(s(X,X),s(s(X,Y),Z))))))",
+    "![X]: (![Y]: (![Z]: (s(s(s(X,Y),Y),s(X,Z)) = s(s(X,Z),s(Y,s(s(Z,Y),X))))))",
+    "![X]: (![Y]: (![Z]: (s(X,s(Y,s(s(Y,X),s(Y,X)))) = s(X,s(Y,s(Z,s(Y,Z)))))))",
+    "![X]: (![Y]: (![Z]: (s(s(X,Y),s(s(Z,s(X,Z)),Z)) = s(s(X,Y),s(X,Z)))))",
+    "![X]: (![Y]: (![Z]: (s(s(s(X,s(X,Y)),Z),Z) = s(s(X,Y),s(s(X,Y),s(Z,X))))))",
+    "![X]: (![Y]: (![Z]: (s(s(s(X,X),s(X,Y)),s(X,Z)) = s(s(X,s(X,s(Z,Z))),X))))",
+    "![X]: (![Y]: (s(s(s(X,s(Y,Y)),X),Y) = s(Y,s(X,Y))))",
+    "![X]: (![Y]: (![Z]: (s(s(X,s(Y,s(Z,Z))),s(Z,Z)) = s(s(Z,Z),s(s(Y,X),X)))))"
+   ]
+  },
+  {
+   "auto_1s": 0,
+   "auto_1s_rows": [
+    "RESOURCE_OUT",
+    "RESOURCE_OUT",
+    "RESOURCE_OUT",
+    "RESOURCE_OUT",
+    "RESOURCE_OUT",
+    "RESOURCE_OUT",
+    "RESOURCE_OUT",
+    "RESOURCE_OUT",
+    "RESOURCE_OUT",
+    "RESOURCE_OUT",
+    "RESOURCE_OUT",
+    "RESOURCE_OUT"
+   ],
+   "auto_3s": 0,
+   "auto_3s_rows": [
+    "RESOURCE_OUT",
+    "RESOURCE_OUT",
+    "RESOURCE_OUT",
+    "RESOURCE_OUT",
+    "RESOURCE_OUT",
+    "RESOURCE_OUT",
+    "RESOURCE_OUT",
+    "RESOURCE_OUT",
+    "RESOURCE_OUT",
+    "RESOURCE_OUT",
+    "RESOURCE_OUT",
+    "RESOURCE_OUT"
+   ],
+   "range": [
+    7,
+    10
+   ],
+   "schedule_1s": 0,
+   "schedule_1s_rows": [
+    "GAVE_UP",
+    "GAVE_UP",
+    "GAVE_UP",
+    "GAVE_UP",
+    "GAVE_UP",
+    "GAVE_UP",
+    "GAVE_UP",
+    "GAVE_UP",
+    "GAVE_UP",
+    "GAVE_UP",
+    "GAVE_UP",
+    "GAVE_UP"
+   ],
+   "targets": [
+    "![X]: (![Y]: (![Z]: (s(s(s(X,Y),X),s(s(Z,Z),Y)) = s(s(s(Z,Y),X),s(s(Z,Z),Y)))))",
+    "![X]: (![Y]: (![Z]: (s(s(s(X,X),s(Y,Y)),s(Y,Z)) = s(s(Y,Z),s(s(X,X),s(Y,Y))))))",
+    "![X]: (![Y]: (![Z]: (s(s(X,s(s(Y,Z),Y)),s(X,X)) = s(s(X,Y),s(s(Z,Y),X)))))",
+    "![X]: (![Y]: (![Z]: (s(s(s(X,Y),Y),s(s(Y,Z),Z)) = s(s(Y,s(Y,X)),s(s(X,Y),Z)))))",
+    "![X]: (![Y]: (![Z]: (s(s(X,s(Y,s(Y,Z))),s(X,Z)) = s(s(Z,X),s(X,s(Y,s(Z,Y)))))))",
+    "![X]: (![Y]: (![Z]: (s(s(X,Y),s(s(Z,X),s(Y,Y))) = s(s(Y,X),s(s(Z,X),s(Y,Y))))))",
+    "![X]: (![Y]: (s(s(s(X,Y),Y),s(s(X,Y),X)) = s(s(Y,s(Y,X)),s(s(Y,Y),X))))",
+    "![X]: (![Y]: (![Z]: (s(s(s(X,X),Y),s(s(X,Z),Z)) = s(s(Z,s(X,Z)),s(Y,s(X,Y))))))",
+    "![X]: (![Y]: (![Z]: (s(s(X,s(Y,s(Z,X))),s(Z,Z)) = s(s(Z,Z),s(s(s(Z,Y),Y),X)))))",
+    "![X]: (![Y]: (![Z]: (s(s(s(X,s(X,Y)),X),Z) = s(s(X,s(Z,s(Z,Y))),Z))))",
+    "![X]: (![Y]: (![Z]: (s(s(X,Y),s(s(X,Z),s(Z,Y))) = s(s(X,Y),s(s(Z,Y),s(X,Z))))))",
+    "![X]: (![Y]: (![Z]: (s(s(s(s(X,Y),Y),X),s(Y,Z)) = s(s(Y,Z),s(s(s(Z,Z),Z),X)))))"
+   ]
+  }
+ ],
+ "status": "DESIGN_PILOT_DEV",
+ "system": "ba_wolfram",
+ "variant": "ba_wolfram"
+}

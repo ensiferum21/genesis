@@ -1,0 +1,204 @@
+{
+ "claim": "none; a design diagnostic for choosing a family to study",
+ "round": 5,
+ "rows": [
+  {
+   "auto_1s": 7,
+   "auto_1s_rows": [
+    "RESOURCE_OUT",
+    "PROVED",
+    "PROVED",
+    "RESOURCE_OUT",
+    "PROVED",
+    "PROVED",
+    "RESOURCE_OUT",
+    "RESOURCE_OUT",
+    "PROVED",
+    "RESOURCE_OUT",
+    "PROVED",
+    "PROVED"
+   ],
+   "auto_3s": 7,
+   "auto_3s_rows": [
+    "RESOURCE_OUT",
+    "PROVED",
+    "PROVED",
+    "RESOURCE_OUT",
+    "PROVED",
+    "PROVED",
+    "RESOURCE_OUT",
+    "RESOURCE_OUT",
+    "PROVED",
+    "RESOURCE_OUT",
+    "PROVED",
+    "PROVED"
+   ],
+   "range": [
+    9,
+    12
+   ],
+   "schedule_1s": 7,
+   "schedule_1s_rows": [
+    "GAVE_UP",
+    "PROVED",
+    "PROVED",
+    "GAVE_UP",
+    "PROVED",
+    "PROVED",
+    "GAVE_UP",
+    "GAVE_UP",
+    "PROVED",
+    "GAVE_UP",
+    "PROVED",
+    "PROVED"
+   ],
+   "targets": [
+    "![X]: (![Y]: (![Z]: (s(s(s(s(X,Y),Y),s(Z,X)),s(Y,Z)) = s(s(s(Z,X),s(s(Y,Z),Y)),s(X,Y)))))",
+    "![X]: (![Y]: (![Z]: (s(s(s(s(X,Y),Y),s(Z,Z)),s(Z,Y)) = s(s(Y,Z),s(s(Z,Z),s(Y,s(X,Y)))))))",
+    "![X]: (![Y]: (![Z]: (s(s(s(X,X),s(Y,Y)),s(s(Z,X),Z)) = s(s(s(X,Z),Z),s(s(Y,Y),s(X,X))))))",
+    "![X]: (![Y]: (![Z]: (s(s(X,s(Y,Z)),s(X,s(X,X))) = s(s(X,s(Y,Z)),s(X,s(Y,Y))))))",
+    "![X]: (![Y]: (![Z]: (s(s(s(X,X),s(s(X,s(Y,Y)),Y)),Y) = s(Y,s(s(Y,s(s(Y,Z),Z)),s(Y,Z))))))",
+    "![X]: (![Y]: (s(s(s(s(s(X,Y),Y),X),X),s(X,Y)) = s(s(s(s(Y,Y),s(Y,Y)),X),s(Y,X))))",
+    "![X]: (![Y]: (![Z]: (s(s(s(X,s(s(s(X,Y),Y),Y)),X),Z) = s(Z,s(Y,s(s(Z,s(Z,Z)),s(Z,X)))))))",
+    "![X]: (![Y]: (![Z]: (s(s(s(s(X,Y),s(s(X,Z),Y)),Z),Y) = s(Y,s(Z,s(Z,s(Y,s(Z,s(Y,Y)))))))))",
+    "![X]: (![Y]: (![Z]: (s(s(s(s(X,Y),Y),s(Z,Z)),s(Y,Z)) = s(s(Z,Y),s(s(Y,s(X,Y)),s(Z,Z))))))",
+    "![X]: (![Y]: (![Z]: (s(s(s(s(X,X),X),s(Y,X)),s(X,Z)) = s(X,s(X,s(s(Z,s(X,s(X,X))),Y))))))",
+    "![X]: (![Y]: (![Z]: (s(s(s(X,s(X,Y)),s(Z,Y)),s(Y,X)) = s(s(X,Y),s(s(X,s(Y,Y)),s(Z,Y))))))",
+    "![X]: (![Y]: (![Z]: (s(s(s(X,Y),X),s(Y,s(Z,Y))) = s(s(s(Y,Z),Y),s(X,s(X,Y))))))"
+   ]
+  },
+  {
+   "auto_1s": 6,
+   "auto_1s_rows": [
+    "PROVED",
+    "PROVED",
+    "RESOURCE_OUT",
+    "PROVED",
+    "RESOURCE_OUT",
+    "RESOURCE_OUT",
+    "PROVED",
+    "PROVED",
+    "RESOURCE_OUT",
+    "PROVED",
+    "RESOURCE_OUT",
+    "RESOURCE_OUT"
+   ],
+   "auto_3s": 6,
+   "auto_3s_rows": [
+    "PROVED",
+    "PROVED",
+    "RESOURCE_OUT",
+    "PROVED",
+    "RESOURCE_OUT",
+    "RESOURCE_OUT",
+    "PROVED",
+    "PROVED",
+    "RESOURCE_OUT",
+    "PROVED",
+    "RESOURCE_OUT",
+    "RESOURCE_OUT"
+   ],
+   "range": [
+    10,
+    12
+   ],
+   "schedule_1s": 6,
+   "schedule_1s_rows": [
+    "PROVED",
+    "PROVED",
+    "GAVE_UP",
+    "PROVED",
+    "GAVE_UP",
+    "GAVE_UP",
+    "PROVED",
+    "PROVED",
+    "GAVE_UP",
+    "PROVED",
+    "GAVE_UP",
+    "GAVE_UP"
+   ],
+   "targets": [
+    "![X]: (![Y]: (![Z]: (s(s(s(X,X),s(Y,Z)),s(Y,s(Y,Y))) = s(s(s(Z,Y),s(X,X)),s(Z,s(Z,Z))))))",
+    "![X]: (![Y]: (![Z]: (s(X,s(s(X,X),s(s(s(Y,Y),X),Z))) = s(X,s(Y,s(X,s(s(Y,X),s(Y,Y))))))))",
+    "![X]: (![Y]: (![Z]: (s(s(s(s(X,s(Y,Y)),Y),Z),X) = s(X,s(Z,s(X,s(s(Y,Z),s(Y,Z))))))))",
+    "![X]: (![Y]: (![Z]: (s(s(s(X,X),s(Y,Y)),s(s(Z,X),Z)) = s(s(s(Y,Y),s(X,X)),s(Z,s(X,X))))))",
+    "![X]: (![Y]: (![Z]: (s(s(s(X,Y),X),s(s(X,Y),s(Z,Z))) = s(s(X,s(Y,Y)),s(s(X,X),s(Z,Z))))))",
+    "![X]: (![Y]: (![Z]: (s(s(X,s(s(Y,X),s(X,Y))),s(Y,X)) = s(s(X,Y),s(s(Z,Z),Z)))))",
+    "![X]: (![Y]: (![Z]: (s(s(s(X,s(Y,Y)),s(Z,Z)),s(X,Z)) = s(s(s(Z,Z),s(X,s(Y,X))),s(X,Z)))))",
+    "![X]: (![Y]: (![Z]: (s(s(s(X,X),Y),s(Y,s(X,X))) = s(s(Y,s(X,Y)),s(s(Z,Z),Z)))))",
+    "![X]: (![Y]: (![Z]: (s(s(X,s(Y,X)),s(X,s(X,s(Y,Z)))) = s(s(X,Z),s(s(s(Z,s(Y,X)),Y),X)))))",
+    "![X]: (![Y]: (![Z]: (s(s(s(X,s(s(X,X),X)),Y),s(Y,Z)) = s(s(s(X,s(Y,s(Y,X))),Y),s(Y,Z)))))",
+    "![X]: (![Y]: (![Z]: (s(s(s(X,s(Y,Z)),s(Y,Y)),s(Z,Z)) = s(s(Z,Y),s(s(Y,Y),s(s(X,Z),X))))))",
+    "![X]: (![Y]: (![Z]: (s(s(X,s(s(s(s(Y,Z),Z),Z),Z)),Z) = s(s(X,s(s(Y,s(Z,X)),s(Y,Z))),Z))))"
+   ]
+  },
+  {
+   "auto_1s": 2,
+   "auto_1s_rows": [
+    "PROVED",
+    "RESOURCE_OUT",
+    "RESOURCE_OUT",
+    "RESOURCE_OUT",
+    "RESOURCE_OUT",
+    "RESOURCE_OUT",
+    "RESOURCE_OUT",
+    "RESOURCE_OUT",
+    "RESOURCE_OUT",
+    "RESOURCE_OUT",
+    "PROVED",
+    "RESOURCE_OUT"
+   ],
+   "auto_3s": 2,
+   "auto_3s_rows": [
+    "PROVED",
+    "RESOURCE_OUT",
+    "RESOURCE_OUT",
+    "RESOURCE_OUT",
+    "RESOURCE_OUT",
+    "RESOURCE_OUT",
+    "RESOURCE_OUT",
+    "RESOURCE_OUT",
+    "RESOURCE_OUT",
+    "RESOURCE_OUT",
+    "PROVED",
+    "RESOURCE_OUT"
+   ],
+   "range": [
+    11,
+    12
+   ],
+   "schedule_1s": 2,
+   "schedule_1s_rows": [
+    "PROVED",
+    "GAVE_UP",
+    "GAVE_UP",
+    "GAVE_UP",
+    "GAVE_UP",
+    "GAVE_UP",
+    "GAVE_UP",
+    "GAVE_UP",
+    "GAVE_UP",
+    "GAVE_UP",
+    "PROVED",
+    "GAVE_UP"
+   ],
+   "targets": [
+    "![X]: (![Y]: (![Z]: (s(s(s(X,s(Y,X)),s(Z,Z)),s(Z,X)) = s(s(s(Z,Z),s(s(Y,Y),X)),s(Z,X)))))",
+    "![X]: (![Y]: (![Z]: (s(s(s(X,X),s(Y,Y)),s(X,s(X,Z))) = s(s(X,s(Z,X)),s(s(X,Z),s(Y,Y))))))",
+    "![X]: (![Y]: (![Z]: (s(s(s(X,s(Y,Z)),s(Y,Y)),s(Z,X)) = s(s(Z,X),s(s(Y,Y),s(s(Y,X),X))))))",
+    "![X]: (![Y]: (![Z]: (s(X,s(s(s(Y,X),s(Z,X)),s(Y,Z))) = s(X,s(s(Y,Z),s(s(X,Y),s(Z,Z)))))))",
+    "![X]: (![Y]: (![Z]: (s(s(s(X,X),Y),s(s(s(Z,Y),Y),X)) = s(s(s(X,Y),Y),s(X,s(Y,s(Z,X)))))))",
+    "![X]: (![Y]: (![Z]: (s(s(X,s(Y,s(Z,s(Z,Y)))),s(Y,Z)) = s(s(X,s(Y,X)),s(s(s(Y,Z),Y),Y)))))",
+    "![X]: (![Y]: (![Z]: (s(s(s(X,X),s(Y,s(Y,Z))),s(X,X)) = s(s(s(Z,Z),s(Y,s(X,X))),s(Z,Z)))))",
+    "![X]: (![Y]: (![Z]: (s(s(s(X,s(Y,Z)),s(Z,Z)),s(Z,Y)) = s(s(Z,Y),s(s(s(X,X),Z),s(X,X))))))",
+    "![X]: (![Y]: (![Z]: (s(s(X,Y),s(s(X,s(Y,s(Z,X))),X)) = s(s(Y,X),s(Z,s(Z,s(s(X,X),X)))))))",
+    "![X]: (![Y]: (![Z]: (s(s(s(s(s(X,Y),X),Y),Z),s(Y,Y)) = s(s(Z,s(s(s(Z,Y),Z),X)),s(Y,Y)))))",
+    "![X]: (![Y]: (![Z]: (s(s(s(X,X),X),s(s(Y,Y),s(X,Z))) = s(s(s(X,Z),s(Y,Y)),s(X,s(X,X))))))",
+    "![X]: (![Y]: (![Z]: (s(s(s(X,s(s(s(Y,X),Y),Y)),Z),X) = s(s(Y,Z),s(s(Z,X),s(X,s(Y,Z)))))))"
+   ]
+  }
+ ],
+ "status": "DESIGN_PILOT_DEV",
+ "system": "ba_sheffer",
+ "variant": "ba_sheffer:t6"
+}

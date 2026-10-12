@@ -1,0 +1,452 @@
+{
+ "cap_s": 0.184,
+ "claim": "none; a design diagnostic for choosing a family to study",
+ "config": {
+  "grid": [
+   [
+    10,
+    12
+   ],
+   [
+    11,
+    12
+   ]
+  ],
+  "max_term": 6,
+  "pool_max": 5,
+  "seed": 700,
+  "share": 0.25,
+  "targets": 12
+ },
+ "exhaust": {
+  "attempts": 46,
+  "cpu_s": 0.734,
+  "library": [
+   "![X]: (div(X,div(X,X)) = X)",
+   "![X]: (![Y]: (div(X,div(Y,Y)) = X))",
+   "![X]: (![Y]: (div(X,X) = div(Y,Y)))",
+   "![X]: (div(div(X,div(div(X,X),X)),X) = X)",
+   "![X]: (![Y]: (div(div(X,div(div(X,X),Y)),Y) = X))",
+   "![X]: (![Y]: (div(div(X,div(div(Y,Y),X)),X) = X))",
+   "![X]: (![Y]: (div(div(X,div(div(Y,Y),Y)),Y) = X))",
+   "![X]: (![Y]: (![Z]: (div(div(X,div(div(Y,Y),Z)),Z) = X)))",
+   "![X]: (div(div(X,div(X,X)),div(X,X)) = X)",
+   "![X]: (![Y]: (div(div(X,div(X,X)),div(Y,Y)) = X))",
+   "![X]: (![Y]: (div(div(X,div(X,X)),X) = div(Y,Y)))",
+   "![X]: (![Y]: (div(div(X,div(X,X)),Y) = div(X,Y)))",
+   "![X]: (![Y]: (div(div(X,div(X,Y)),div(Y,X)) = X))",
+   "![X]: (![Y]: (div(div(X,div(Y,X)),div(X,Y)) = X))",
+   "![X]: (![Y]: (div(div(X,div(Y,Y)),div(X,X)) = X))",
+   "![X]: (![Y]: (div(div(X,div(Y,Y)),div(Y,Y)) = X))",
+   "![X]: (![Y]: (![Z]: (div(div(X,div(Y,Y)),div(Z,Z)) = X)))",
+   "![X]: (![Y]: (![Z]: (div(div(X,div(Y,Y)),X) = div(Z,Z))))",
+   "![X]: (![Y]: (div(div(X,div(Y,Y)),Y) = div(X,Y)))",
+   "![X]: (![Y]: (![Z]: (div(div(X,div(Y,Y)),Z) = div(X,Z))))",
+   "![X]: (![Y]: (![Z]: (div(div(X,div(Y,Z)),div(Z,Y)) = X)))",
+   "![X]: (![Y]: (div(div(X,X),div(div(X,X),Y)) = Y))",
+   "![X]: (![Y]: (div(div(X,X),div(div(Y,Y),Y)) = Y))",
+   "![X]: (![Y]: (![Z]: (div(div(X,X),div(div(Y,Y),Z)) = Z)))",
+   "![X]: (div(div(X,X),div(X,X)) = div(X,X))",
+   "![X]: (![Y]: (div(div(X,X),div(X,X)) = div(Y,Y)))",
+   "![X]: (![Y]: (div(div(X,X),div(X,Y)) = div(Y,X)))",
+   "![X]: (![Y]: (div(div(X,X),div(Y,X)) = div(X,Y)))",
+   "![X]: (![Y]: (div(div(X,X),div(Y,Y)) = div(X,X)))",
+   "![X]: (![Y]: (![Z]: (div(div(X,X),div(Y,Z)) = div(Z,Y))))",
+   "![X]: (![Y]: (div(div(X,X),X) = div(div(Y,Y),X)))",
+   "![X]: (![Y]: (![Z]: (div(div(X,X),Y) = div(div(Z,Z),Y))))",
+   "![X]: (![Y]: (div(div(X,Y),div(div(X,X),Y)) = X))",
+   "![X]: (![Y]: (div(div(X,Y),div(div(Y,Y),Y)) = X))",
+   "![X]: (![Y]: (![Z]: (div(div(X,Y),div(div(Z,Z),Y)) = X)))",
+   "![X]: (![Y]: (div(div(X,Y),div(X,X)) = div(X,Y)))",
+   "![X]: (![Y]: (div(div(X,Y),div(X,Y)) = div(X,X)))",
+   "![X]: (![Y]: (![Z]: (div(div(X,Y),div(X,Y)) = div(Z,Z))))",
+   "![X]: (![Y]: (div(div(X,Y),div(Y,Y)) = div(X,Y)))",
+   "![X]: (![Y]: (![Z]: (div(div(X,Y),div(Z,Y)) = div(X,Z))))",
+   "![X]: (![Y]: (![Z]: (div(div(X,Y),div(Z,Z)) = div(X,Y))))",
+   "![X]: (![Y]: (div(X,div(X,X)) = div(X,div(Y,Y))))",
+   "![X]: (![Y]: (div(X,div(Y,div(X,X))) = div(X,Y)))",
+   "![X]: (![Y]: (div(X,div(Y,div(Y,Y))) = div(X,Y)))",
+   "![X]: (![Y]: (![Z]: (div(X,div(Y,div(Z,Z))) = div(X,Y))))",
+   "![X]: (![Y]: (![Z]: (div(X,div(Y,Y)) = div(X,div(Z,Z)))))"
+  ]
+ },
+ "fixed_cap": {
+  "cpu_s": 0.039,
+  "library": [
+   "![X]: (div(X,div(X,X)) = X)",
+   "![X]: (![Y]: (div(X,div(Y,Y)) = X))"
+  ]
+ },
+ "pool": [
+  "![X]: (![Y]: (div(div(X,X),X) = div(div(Y,Y),X)))",
+  "![X]: (![Y]: (![Z]: (div(div(X,X),Y) = div(div(Z,Z),Y))))",
+  "![X]: (![Y]: (div(div(X,div(X,X)),Y) = div(X,Y)))",
+  "![X]: (![Y]: (div(div(X,div(Y,Y)),Y) = div(X,Y)))",
+  "![X]: (![Y]: (![Z]: (div(div(X,div(Y,Y)),Z) = div(X,Z))))",
+  "![X]: (![Y]: (div(div(X,X),div(Y,X)) = div(X,Y)))",
+  "![X]: (![Y]: (div(div(X,Y),div(X,X)) = div(X,Y)))",
+  "![X]: (![Y]: (div(div(X,Y),div(Y,Y)) = div(X,Y)))",
+  "![X]: (![Y]: (![Z]: (div(div(X,Y),div(Z,Z)) = div(X,Y))))",
+  "![X]: (![Y]: (![Z]: (div(div(X,Y),div(Z,Y)) = div(X,Z))))",
+  "![X]: (![Y]: (![Z]: (div(div(X,X),div(Y,Z)) = div(Z,Y))))",
+  "![X]: (![Y]: (div(div(X,X),div(X,Y)) = div(Y,X)))",
+  "![X]: (![Y]: (div(X,div(Y,div(X,X))) = div(X,Y)))",
+  "![X]: (![Y]: (![Z]: (div(X,div(Y,div(Z,Z))) = div(X,Y))))",
+  "![X]: (![Y]: (div(X,div(Y,div(Y,Y))) = div(X,Y)))",
+  "![X]: (div(X,div(X,X)) = X)",
+  "![X]: (![Y]: (div(X,div(Y,Y)) = X))",
+  "![X]: (![Y]: (div(X,div(X,X)) = div(X,div(Y,Y))))",
+  "![X]: (![Y]: (div(div(X,div(div(X,X),Y)),Y) = X))",
+  "![X]: (![Y]: (div(div(X,div(div(Y,Y),X)),X) = X))",
+  "![X]: (![Y]: (div(div(X,div(div(Y,Y),Y)),Y) = X))",
+  "![X]: (![Y]: (![Z]: (div(div(X,div(div(Y,Y),Z)),Z) = X)))",
+  "![X]: (div(div(X,div(X,X)),div(X,X)) = X)",
+  "![X]: (![Y]: (![Z]: (div(X,div(Y,Y)) = div(X,div(Z,Z)))))",
+  "![X]: (![Y]: (div(div(X,X),div(div(X,X),Y)) = Y))",
+  "![X]: (![Y]: (![Z]: (div(div(X,X),div(div(Y,Y),Z)) = Z)))",
+  "![X]: (div(div(X,div(div(X,X),X)),X) = X)",
+  "![X]: (![Y]: (div(div(X,div(Y,Y)),div(Y,Y)) = X))",
+  "![X]: (![Y]: (div(div(X,div(Y,Y)),div(X,X)) = X))",
+  "![X]: (![Y]: (![Z]: (div(div(X,div(Y,Y)),div(Z,Z)) = X)))",
+  "![X]: (![Y]: (div(div(X,div(Y,X)),div(X,Y)) = X))",
+  "![X]: (![Y]: (div(div(X,X),div(div(Y,Y),Y)) = Y))",
+  "![X]: (![Y]: (![Z]: (div(div(X,div(Y,Z)),div(Z,Y)) = X)))",
+  "![X]: (![Y]: (div(div(X,div(X,Y)),div(Y,X)) = X))",
+  "![X]: (![Y]: (div(div(X,div(X,X)),div(Y,Y)) = X))",
+  "![X]: (![Y]: (![Z]: (div(div(X,Y),div(div(Z,Z),Y)) = X)))",
+  "![X]: (![Y]: (div(div(X,Y),div(div(Y,Y),Y)) = X))",
+  "![X]: (![Y]: (div(div(X,Y),div(div(X,X),Y)) = X))",
+  "![X]: (![Y]: (div(X,X) = div(Y,Y)))",
+  "![X]: (div(div(X,X),div(X,X)) = div(X,X))",
+  "![X]: (![Y]: (div(div(X,X),div(Y,Y)) = div(X,X)))",
+  "![X]: (![Y]: (div(div(X,Y),div(X,Y)) = div(X,X)))",
+  "![X]: (![Y]: (div(div(X,div(X,X)),X) = div(Y,Y)))",
+  "![X]: (![Y]: (![Z]: (div(div(X,Y),div(X,Y)) = div(Z,Z))))",
+  "![X]: (![Y]: (![Z]: (div(div(X,div(Y,Y)),X) = div(Z,Z))))",
+  "![X]: (![Y]: (div(div(X,X),div(X,X)) = div(Y,Y)))",
+  "![X]: (![Y]: (![Z]: (div(div(div(X,div(div(Y,X),Z)),X),Z) = Y)))",
+  "![X]: (![Y]: (![Z]: (div(div(div(div(X,Y),Y),Z),Z) = div(X,X))))",
+  "![X]: (![Y]: (![Z]: (div(div(X,div(Y,Y)),X) = div(div(Z,X),Y))))",
+  "![X]: (![Y]: (![Z]: (div(div(X,div(div(X,Y),Y)),X) = div(Z,X))))",
+  "![X]: (![Y]: (![Z]: (div(div(div(X,div(Y,Y)),Y),div(Y,X)) = Z)))",
+  "![X]: (![Y]: (![Z]: (div(X,div(Y,div(div(div(Y,Y),Y),Z))) = X)))",
+  "![X]: (![Y]: (![Z]: (div(div(X,div(div(Y,X),Z)),Z) = Y)))",
+  "![X]: (![Y]: (![Z]: (div(div(div(X,div(X,X)),Y),Y) = div(Y,Z))))",
+  "![X]: (![Y]: (div(div(div(div(X,div(X,X)),X),X),Y) = Y))",
+  "![X]: (![Y]: (![Z]: (div(div(X,div(X,X)),Y) = div(div(Z,Y),X))))",
+  "![X]: (![Y]: (![Z]: (div(div(X,Y),div(div(Z,X),X)) = Y)))",
+  "![X]: (![Y]: (![Z]: (div(div(X,Y),div(Z,div(Y,X))) = div(X,Y))))",
+  "![X]: (![Y]: (![Z]: (div(div(X,div(Y,Z)),div(X,div(X,Y))) = X)))",
+  "![X]: (![Y]: (![Z]: (div(X,div(div(Y,Z),div(div(Y,Y),X))) = Y)))",
+  "![X]: (![Y]: (![Z]: (div(div(div(X,div(Y,Z)),X),Y) = Y)))",
+  "![X]: (![Y]: (![Z]: (div(div(X,div(X,div(X,Y))),div(Y,Z)) = Y)))",
+  "![X]: (![Y]: (![Z]: (div(div(div(X,Y),div(Z,X)),div(Z,Y)) = X)))",
+  "![X]: (![Y]: (![Z]: (div(X,div(div(div(Y,Y),Z),div(X,Z))) = X)))",
+  "![X]: (![Y]: (![Z]: (div(div(X,div(div(div(Y,Z),Z),X)),Y) = Y)))",
+  "![X]: (![Y]: (![Z]: (div(div(X,Y),div(Y,div(div(Z,Y),Y))) = Z)))",
+  "![X]: (![Y]: (![Z]: (div(div(X,Y),div(div(X,Z),div(Z,Y))) = Z)))",
+  "![X]: (![Y]: (![Z]: (div(div(div(X,Y),X),X) = div(div(Z,Y),Y))))",
+  "![X]: (![Y]: (![Z]: (div(div(div(X,Y),X),div(X,X)) = div(Z,Z))))",
+  "![X]: (![Y]: (![Z]: (div(div(X,div(X,div(Y,div(Y,Z)))),X) = Z)))",
+  "![X]: (![Y]: (![Z]: (div(div(div(X,X),Y),Y) = div(Z,div(Y,Z)))))",
+  "![X]: (![Y]: (![Z]: (div(div(X,div(Y,div(div(Y,X),Y))),Z) = Y)))",
+  "![X]: (![Y]: (![Z]: (div(div(X,Y),div(Y,div(Y,Y))) = div(Y,Z))))",
+  "![X]: (![Y]: (div(div(div(div(X,Y),Y),X),Y) = div(Y,Y)))",
+  "![X]: (![Y]: (![Z]: (div(X,div(Y,div(Y,div(div(Y,Z),Y)))) = X)))",
+  "![X]: (![Y]: (div(X,div(Y,div(Y,div(Y,X)))) = div(X,X)))"
+ ],
+ "pool_sha256": "830ee3bbee85f6e10523a649dc32ce0538ee0683de37eb63fc143ef16736b0e3",
+ "ranges": [
+  {
+   "cap_s": 0.184,
+   "empty": 12,
+   "exhaust": 12,
+   "fixed_cap": 12,
+   "oracle": 12,
+   "oracle_cost_s": 0.387,
+   "oracle_lemmas": [
+    "![X]: (![Y]: (div(X,div(Y,Y)) = X))",
+    "![X]: (![Y]: (div(X,X) = div(Y,Y)))",
+    "![X]: (![Y]: (div(div(X,div(div(X,X),Y)),Y) = X))",
+    "![X]: (![Y]: (div(div(X,div(div(Y,Y),Y)),Y) = X))",
+    "![X]: (![Y]: (![Z]: (div(div(X,div(div(Y,Y),Z)),Z) = X)))",
+    "![X]: (![Y]: (div(div(X,div(X,X)),X) = div(Y,Y)))",
+    "![X]: (![Y]: (div(div(X,div(X,X)),Y) = div(X,Y)))",
+    "![X]: (![Y]: (div(div(X,div(X,Y)),div(Y,X)) = X))",
+    "![X]: (![Y]: (div(div(X,div(Y,X)),div(X,Y)) = X))",
+    "![X]: (![Y]: (![Z]: (div(div(X,div(Y,Y)),div(Z,Z)) = X)))",
+    "![X]: (![Y]: (![Z]: (div(div(X,div(Y,Y)),X) = div(Z,Z))))",
+    "![X]: (![Y]: (![Z]: (div(div(X,div(Y,Y)),Z) = div(X,Z))))",
+    "![X]: (![Y]: (![Z]: (div(div(X,div(Y,Z)),div(Z,Y)) = X)))",
+    "![X]: (![Y]: (div(div(X,X),div(div(X,X),Y)) = Y))",
+    "![X]: (![Y]: (div(div(X,X),div(div(Y,Y),Y)) = Y))",
+    "![X]: (![Y]: (![Z]: (div(div(X,X),div(div(Y,Y),Z)) = Z)))",
+    "![X]: (![Y]: (div(div(X,X),div(X,Y)) = div(Y,X)))",
+    "![X]: (![Y]: (div(div(X,X),div(Y,X)) = div(X,Y)))",
+    "![X]: (![Y]: (![Z]: (div(div(X,X),div(Y,Z)) = div(Z,Y))))",
+    "![X]: (![Y]: (div(div(X,X),X) = div(div(Y,Y),X)))",
+    "![X]: (![Y]: (![Z]: (div(div(X,X),Y) = div(div(Z,Z),Y))))",
+    "![X]: (![Y]: (div(div(X,Y),div(div(X,X),Y)) = X))",
+    "![X]: (![Y]: (div(div(X,Y),div(div(Y,Y),Y)) = X))",
+    "![X]: (![Y]: (![Z]: (div(div(X,Y),div(div(Z,Z),Y)) = X)))",
+    "![X]: (![Y]: (div(div(X,Y),div(X,X)) = div(X,Y)))",
+    "![X]: (![Y]: (div(div(X,Y),div(X,Y)) = div(X,X)))",
+    "![X]: (![Y]: (![Z]: (div(div(X,Y),div(X,Y)) = div(Z,Z))))",
+    "![X]: (![Y]: (div(div(X,Y),div(Y,Y)) = div(X,Y)))",
+    "![X]: (![Y]: (![Z]: (div(div(X,Y),div(Z,Y)) = div(X,Z))))",
+    "![X]: (![Y]: (![Z]: (div(div(X,Y),div(Z,Z)) = div(X,Y))))"
+   ],
+   "per_target": [
+    {
+     "empty": "PROVED",
+     "exhaust": "PROVED",
+     "fixed_cap": "PROVED",
+     "oracle": "PROVED",
+     "target": "![X]: (![Y]: (![Z]: (div(div(X,div(div(div(Y,div(X,Z)),X),X)),Y) = div(div(X,div(div(Y,div(X,div(Z,X))),X)),Y))))"
+    },
+    {
+     "empty": "PROVED",
+     "exhaust": "PROVED",
+     "fixed_cap": "PROVED",
+     "oracle": "PROVED",
+     "target": "![X]: (![Y]: (![Z]: (div(X,div(div(div(div(X,div(Y,Z)),Z),X),Z)) = div(X,div(div(X,div(X,div(div(Z,Y),Z))),Z)))))"
+    },
+    {
+     "empty": "PROVED",
+     "exhaust": "PROVED",
+     "fixed_cap": "PROVED",
+     "oracle": "PROVED",
+     "target": "![X]: (![Y]: (![Z]: (div(div(div(X,Y),div(div(X,div(Z,Y)),Z)),X) = div(div(X,Y),div(X,div(Z,div(X,div(Z,Y))))))))"
+    },
+    {
+     "empty": "PROVED",
+     "exhaust": "PROVED",
+     "fixed_cap": "PROVED",
+     "oracle": "PROVED",
+     "target": "![X]: (![Y]: (![Z]: (div(X,div(div(div(div(X,div(Y,X)),Z),X),Y)) = div(X,div(div(div(X,div(Z,div(X,Y))),X),Y)))))"
+    },
+    {
+     "empty": "PROVED",
+     "exhaust": "PROVED",
+     "fixed_cap": "PROVED",
+     "oracle": "PROVED",
+     "target": "![X]: (![Y]: (![Z]: (div(div(div(div(div(X,Y),div(Z,X)),Z),Z),X) = div(div(X,Y),div(X,div(div(div(X,Z),Z),Z))))))"
+    },
+    {
+     "empty": "PROVED",
+     "exhaust": "PROVED",
+     "fixed_cap": "PROVED",
+     "oracle": "PROVED",
+     "target": "![X]: (![Y]: (![Z]: (div(div(div(div(div(X,X),Y),X),div(Y,Z)),X) = div(div(div(div(X,X),Y),X),div(X,div(Z,Y))))))"
+    },
+    {
+     "empty": "PROVED",
+     "exhaust": "PROVED",
+     "fixed_cap": "PROVED",
+     "oracle": "PROVED",
+     "target": "![X]: (![Y]: (div(div(div(div(div(X,Y),div(Y,X)),Y),X),Y) = div(div(X,Y),div(Y,div(div(div(X,Y),Y),X)))))"
+    },
+    {
+     "empty": "PROVED",
+     "exhaust": "PROVED",
+     "fixed_cap": "PROVED",
+     "oracle": "PROVED",
+     "target": "![X]: (![Y]: (div(X,div(div(div(Y,div(X,div(X,Y))),X),Y)) = div(X,div(Y,div(Y,div(div(div(X,Y),X),X))))))"
+    },
+    {
+     "empty": "PROVED",
+     "exhaust": "PROVED",
+     "fixed_cap": "PROVED",
+     "oracle": "PROVED",
+     "target": "![X]: (![Y]: (div(div(X,div(X,Y)),div(div(Y,Y),Y)) = div(X,div(div(div(Y,Y),Y),div(Y,X)))))"
+    },
+    {
+     "empty": "PROVED",
+     "exhaust": "PROVED",
+     "fixed_cap": "PROVED",
+     "oracle": "PROVED",
+     "target": "![X]: (![Y]: (![Z]: (div(div(X,div(div(Y,X),Y)),div(div(Z,Y),Z)) = div(X,div(div(div(Z,Y),Z),div(Y,div(Y,X)))))))"
+    },
+    {
+     "empty": "PROVED",
+     "exhaust": "PROVED",
+     "fixed_cap": "PROVED",
+     "oracle": "PROVED",
+     "target": "![X]: (![Y]: (![Z]: (div(div(X,div(X,div(X,Y))),div(div(Z,Y),Y)) = div(X,div(div(div(Z,Y),Y),div(div(X,Y),X))))))"
+    },
+    {
+     "empty": "PROVED",
+     "exhaust": "PROVED",
+     "fixed_cap": "PROVED",
+     "oracle": "PROVED",
+     "target": "![X]: (![Y]: (![Z]: (div(X,div(div(div(Y,div(X,Y)),X),Z)) = div(X,div(div(Y,div(X,div(Y,X))),Z)))))"
+    }
+   ],
+   "range": [
+    10,
+    12
+   ],
+   "targets": [
+    "![X]: (![Y]: (![Z]: (div(div(X,div(div(div(Y,div(X,Z)),X),X)),Y) = div(div(X,div(div(Y,div(X,div(Z,X))),X)),Y))))",
+    "![X]: (![Y]: (![Z]: (div(X,div(div(div(div(X,div(Y,Z)),Z),X),Z)) = div(X,div(div(X,div(X,div(div(Z,Y),Z))),Z)))))",
+    "![X]: (![Y]: (![Z]: (div(div(div(X,Y),div(div(X,div(Z,Y)),Z)),X) = div(div(X,Y),div(X,div(Z,div(X,div(Z,Y))))))))",
+    "![X]: (![Y]: (![Z]: (div(X,div(div(div(div(X,div(Y,X)),Z),X),Y)) = div(X,div(div(div(X,div(Z,div(X,Y))),X),Y)))))",
+    "![X]: (![Y]: (![Z]: (div(div(div(div(div(X,Y),div(Z,X)),Z),Z),X) = div(div(X,Y),div(X,div(div(div(X,Z),Z),Z))))))",
+    "![X]: (![Y]: (![Z]: (div(div(div(div(div(X,X),Y),X),div(Y,Z)),X) = div(div(div(div(X,X),Y),X),div(X,div(Z,Y))))))",
+    "![X]: (![Y]: (div(div(div(div(div(X,Y),div(Y,X)),Y),X),Y) = div(div(X,Y),div(Y,div(div(div(X,Y),Y),X)))))",
+    "![X]: (![Y]: (div(X,div(div(div(Y,div(X,div(X,Y))),X),Y)) = div(X,div(Y,div(Y,div(div(div(X,Y),X),X))))))",
+    "![X]: (![Y]: (div(div(X,div(X,Y)),div(div(Y,Y),Y)) = div(X,div(div(div(Y,Y),Y),div(Y,X)))))",
+    "![X]: (![Y]: (![Z]: (div(div(X,div(div(Y,X),Y)),div(div(Z,Y),Z)) = div(X,div(div(div(Z,Y),Z),div(Y,div(Y,X)))))))",
+    "![X]: (![Y]: (![Z]: (div(div(X,div(X,div(X,Y))),div(div(Z,Y),Y)) = div(X,div(div(div(Z,Y),Y),div(div(X,Y),X))))))",
+    "![X]: (![Y]: (![Z]: (div(X,div(div(div(Y,div(X,Y)),X),Z)) = div(X,div(div(Y,div(X,div(Y,X))),Z)))))"
+   ]
+  },
+  {
+   "cap_s": 0.184,
+   "empty": 12,
+   "exhaust": 12,
+   "fixed_cap": 12,
+   "oracle": 12,
+   "oracle_cost_s": 0.391,
+   "oracle_lemmas": [
+    "![X]: (div(X,div(X,X)) = X)",
+    "![X]: (![Y]: (div(X,div(Y,Y)) = X))",
+    "![X]: (![Y]: (div(X,X) = div(Y,Y)))",
+    "![X]: (![Y]: (div(div(X,div(div(X,X),Y)),Y) = X))",
+    "![X]: (![Y]: (div(div(X,div(div(Y,Y),Y)),Y) = X))",
+    "![X]: (![Y]: (![Z]: (div(div(X,div(div(Y,Y),Z)),Z) = X)))",
+    "![X]: (![Y]: (div(div(X,div(X,X)),X) = div(Y,Y)))",
+    "![X]: (![Y]: (div(div(X,div(X,X)),Y) = div(X,Y)))",
+    "![X]: (![Y]: (div(div(X,div(X,Y)),div(Y,X)) = X))",
+    "![X]: (![Y]: (div(div(X,div(Y,X)),div(X,Y)) = X))",
+    "![X]: (![Y]: (![Z]: (div(div(X,div(Y,Y)),div(Z,Z)) = X)))",
+    "![X]: (![Y]: (![Z]: (div(div(X,div(Y,Y)),X) = div(Z,Z))))",
+    "![X]: (![Y]: (![Z]: (div(div(X,div(Y,Y)),Z) = div(X,Z))))",
+    "![X]: (![Y]: (![Z]: (div(div(X,div(Y,Z)),div(Z,Y)) = X)))",
+    "![X]: (![Y]: (div(div(X,X),div(div(X,X),Y)) = Y))",
+    "![X]: (![Y]: (div(div(X,X),div(div(Y,Y),Y)) = Y))",
+    "![X]: (![Y]: (![Z]: (div(div(X,X),div(div(Y,Y),Z)) = Z)))",
+    "![X]: (![Y]: (div(div(X,X),div(X,Y)) = div(Y,X)))",
+    "![X]: (![Y]: (div(div(X,X),div(Y,X)) = div(X,Y)))",
+    "![X]: (![Y]: (![Z]: (div(div(X,X),div(Y,Z)) = div(Z,Y))))",
+    "![X]: (![Y]: (![Z]: (div(div(X,X),Y) = div(div(Z,Z),Y))))",
+    "![X]: (![Y]: (div(div(X,Y),div(div(X,X),Y)) = X))",
+    "![X]: (![Y]: (![Z]: (div(div(X,Y),div(div(Z,Z),Y)) = X)))",
+    "![X]: (![Y]: (div(div(X,Y),div(X,X)) = div(X,Y)))",
+    "![X]: (![Y]: (div(div(X,Y),div(X,Y)) = div(X,X)))",
+    "![X]: (![Y]: (![Z]: (div(div(X,Y),div(X,Y)) = div(Z,Z))))",
+    "![X]: (![Y]: (div(div(X,Y),div(Y,Y)) = div(X,Y)))",
+    "![X]: (![Y]: (![Z]: (div(div(X,Y),div(Z,Y)) = div(X,Z))))",
+    "![X]: (![Y]: (![Z]: (div(div(X,Y),div(Z,Z)) = div(X,Y))))",
+    "![X]: (![Y]: (div(X,div(X,X)) = div(X,div(Y,Y))))"
+   ],
+   "per_target": [
+    {
+     "empty": "PROVED",
+     "exhaust": "PROVED",
+     "fixed_cap": "PROVED",
+     "oracle": "PROVED",
+     "target": "![X]: (![Y]: (![Z]: (div(div(div(div(X,div(Y,div(X,Z))),X),Z),X) = div(div(div(X,div(X,div(div(X,Z),Y))),Z),X))))"
+    },
+    {
+     "empty": "PROVED",
+     "exhaust": "PROVED",
+     "fixed_cap": "PROVED",
+     "oracle": "PROVED",
+     "target": "![X]: (![Y]: (![Z]: (div(div(div(div(X,div(Y,div(Y,Z))),Y),X),Y) = div(div(X,div(X,div(div(div(Y,Z),Y),Y))),Y))))"
+    },
+    {
+     "empty": "PROVED",
+     "exhaust": "PROVED",
+     "fixed_cap": "PROVED",
+     "oracle": "PROVED",
+     "target": "![X]: (![Y]: (![Z]: (div(div(div(X,div(Y,div(div(Z,Y),Y))),Y),Y) = div(div(X,div(Y,div(div(div(Z,Y),Y),Y))),Y))))"
+    },
+    {
+     "empty": "PROVED",
+     "exhaust": "PROVED",
+     "fixed_cap": "PROVED",
+     "oracle": "PROVED",
+     "target": "![X]: (![Y]: (![Z]: (div(div(X,div(div(div(Y,Z),div(Y,X)),X)),Z) = div(X,div(Z,div(X,div(div(Y,Z),div(Y,X))))))))"
+    },
+    {
+     "empty": "PROVED",
+     "exhaust": "PROVED",
+     "fixed_cap": "PROVED",
+     "oracle": "PROVED",
+     "target": "![X]: (![Y]: (![Z]: (div(div(div(div(X,Y),X),div(Z,div(Y,Z))),Y) = div(div(div(X,Y),X),div(Y,div(div(Y,Z),Z))))))"
+    },
+    {
+     "empty": "PROVED",
+     "exhaust": "PROVED",
+     "fixed_cap": "PROVED",
+     "oracle": "PROVED",
+     "target": "![X]: (![Y]: (![Z]: (div(div(div(div(X,Y),Y),div(div(X,Z),X)),X) = div(div(div(X,Y),Y),div(div(X,div(Z,X)),X)))))"
+    },
+    {
+     "empty": "PROVED",
+     "exhaust": "PROVED",
+     "fixed_cap": "PROVED",
+     "oracle": "PROVED",
+     "target": "![X]: (![Y]: (![Z]: (div(div(X,X),div(div(div(div(Y,Z),Y),Z),X)) = div(X,div(div(div(div(Y,div(Y,Y)),Z),Y),Z)))))"
+    },
+    {
+     "empty": "PROVED",
+     "exhaust": "PROVED",
+     "fixed_cap": "PROVED",
+     "oracle": "PROVED",
+     "target": "![X]: (![Y]: (![Z]: (div(div(div(X,div(Y,Z)),Z),div(div(Y,Z),Y)) = div(X,div(div(div(Y,Z),Y),div(div(Z,Y),Z))))))"
+    },
+    {
+     "empty": "PROVED",
+     "exhaust": "PROVED",
+     "fixed_cap": "PROVED",
+     "oracle": "PROVED",
+     "target": "![X]: (![Y]: (![Z]: (div(div(div(X,div(div(Y,Z),Z)),Z),div(Z,Y)) = div(X,div(div(div(Z,Y),div(div(Z,Y),Z)),Z)))))"
+    },
+    {
+     "empty": "PROVED",
+     "exhaust": "PROVED",
+     "fixed_cap": "PROVED",
+     "oracle": "PROVED",
+     "target": "![X]: (![Y]: (![Z]: (div(div(div(div(X,Y),Z),div(Y,X)),div(Y,X)) = div(div(div(X,Y),Z),div(div(Y,X),div(X,Y))))))"
+    },
+    {
+     "empty": "PROVED",
+     "exhaust": "PROVED",
+     "fixed_cap": "PROVED",
+     "oracle": "PROVED",
+     "target": "![X]: (![Y]: (![Z]: (div(div(div(X,Y),div(Y,div(Z,div(Y,X)))),Y) = div(div(X,Y),div(div(Y,div(div(X,Y),Y)),Z)))))"
+    },
+    {
+     "empty": "PROVED",
+     "exhaust": "PROVED",
+     "fixed_cap": "PROVED",
+     "oracle": "PROVED",
+     "target": "![X]: (![Y]: (div(X,div(div(div(div(Y,div(Y,X)),Y),X),Y)) = div(X,div(Y,div(Y,div(div(div(X,Y),Y),X))))))"
+    }
+   ],
+   "range": [
+    11,
+    12
+   ],
+   "targets": [
+    "![X]: (![Y]: (![Z]: (div(div(div(div(X,div(Y,div(X,Z))),X),Z),X) = div(div(div(X,div(X,div(div(X,Z),Y))),Z),X))))",
+    "![X]: (![Y]: (![Z]: (div(div(div(div(X,div(Y,div(Y,Z))),Y),X),Y) = div(div(X,div(X,div(div(div(Y,Z),Y),Y))),Y))))",
+    "![X]: (![Y]: (![Z]: (div(div(div(X,div(Y,div(div(Z,Y),Y))),Y),Y) = div(div(X,div(Y,div(div(div(Z,Y),Y),Y))),Y))))",
+    "![X]: (![Y]: (![Z]: (div(div(X,div(div(div(Y,Z),div(Y,X)),X)),Z) = div(X,div(Z,div(X,div(div(Y,Z),div(Y,X))))))))",
+    "![X]: (![Y]: (![Z]: (div(div(div(div(X,Y),X),div(Z,div(Y,Z))),Y) = div(div(div(X,Y),X),div(Y,div(div(Y,Z),Z))))))",
+    "![X]: (![Y]: (![Z]: (div(div(div(div(X,Y),Y),div(div(X,Z),X)),X) = div(div(div(X,Y),Y),div(div(X,div(Z,X)),X)))))",
+    "![X]: (![Y]: (![Z]: (div(div(X,X),div(div(div(div(Y,Z),Y),Z),X)) = div(X,div(div(div(div(Y,div(Y,Y)),Z),Y),Z)))))",
+    "![X]: (![Y]: (![Z]: (div(div(div(X,div(Y,Z)),Z),div(div(Y,Z),Y)) = div(X,div(div(div(Y,Z),Y),div(div(Z,Y),Z))))))",
+    "![X]: (![Y]: (![Z]: (div(div(div(X,div(div(Y,Z),Z)),Z),div(Z,Y)) = div(X,div(div(div(Z,Y),div(div(Z,Y),Z)),Z)))))",
+    "![X]: (![Y]: (![Z]: (div(div(div(div(X,Y),Z),div(Y,X)),div(Y,X)) = div(div(div(X,Y),Z),div(div(Y,X),div(X,Y))))))",
+    "![X]: (![Y]: (![Z]: (div(div(div(X,Y),div(Y,div(Z,div(Y,X)))),Y) = div(div(X,Y),div(div(Y,div(div(X,Y),Y)),Z)))))",
+    "![X]: (![Y]: (div(X,div(div(div(div(Y,div(Y,X)),Y),X),Y)) = div(X,div(Y,div(Y,div(div(div(X,Y),Y),X))))))"
+   ]
+  }
+ ],
+ "status": "DESIGN_PILOT_DEV",
+ "system": "grp_div",
+ "variant": "grp_div:t6"
+}
