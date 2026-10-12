@@ -1,0 +1,810 @@
+{
+ "baseline_archive_sha256": "44bbbbeb1b8781203af8b3489b7c1a396d7694806232193dce9e7fee46f12091",
+ "baseline_commit": "97fb23336a0a6c940193625bcc0091888b413cf2",
+ "findings": [
+  {
+   "comparison": "exact TPTP text equality (the canonical form the script stores); no renaming or instance screening was needed to find these",
+   "evaluation_slots": 4,
+   "finding": "B20-REVIEW-01",
+   "matches_review_statement": true,
+   "overlaps": [
+    {
+     "dev_index": 3,
+     "eval_index": 16,
+     "eval_location": "setup.json material['ba_huntington@201'].eval[16]",
+     "eval_seed": 201,
+     "statement": "![X]: (![Y]: (![Z]: (plus(n(plus(X,n(Y))),Z) = plus(Z,n(plus(n(Y),X))))))",
+     "system": "ba_huntington",
+     "training_location": "setup.json material['ba_huntington@103'].dev[3]",
+     "training_seed": 103
+    },
+    {
+     "dev_index": 9,
+     "eval_index": 2,
+     "eval_location": "setup.json material['ba_huntington@203'].eval[2]",
+     "eval_seed": 203,
+     "statement": "![X]: (![Y]: (![Z]: (plus(X,n(plus(n(Y),Z))) = plus(X,n(plus(Z,n(Y)))))))",
+     "system": "ba_huntington",
+     "training_location": "setup.json material['ba_huntington@103'].dev[9]",
+     "training_seed": 103
+    },
+    {
+     "dev_index": 3,
+     "eval_index": 6,
+     "eval_location": "setup.json material['ba_huntington@204'].eval[6]",
+     "eval_seed": 204,
+     "statement": "![X]: (![Y]: (![Z]: (plus(n(plus(X,n(Y))),Z) = plus(Z,n(plus(n(Y),X))))))",
+     "system": "ba_huntington",
+     "training_location": "setup.json material['ba_huntington@103'].dev[3]",
+     "training_seed": 103
+    },
+    {
+     "dev_index": 1,
+     "eval_index": 23,
+     "eval_location": "setup.json material['ba_huntington@204'].eval[23]",
+     "eval_seed": 204,
+     "statement": "![X]: (![Y]: (![Z]: (plus(n(plus(n(X),Y)),Z) = plus(n(plus(Y,n(X))),Z))))",
+     "system": "ba_huntington",
+     "training_location": "setup.json material['ba_huntington@103'].dev[1]",
+     "training_seed": 103
+    }
+   ],
+   "root_cause": "scripts/b20_learning.py::material samples eval with exclude=pool+dev of the same seed only; training dev targets of other seeds are not excluded",
+   "sources": {
+    "setup.json": "e3ba6cf61efbfa1f086d07b194cfeb5efc6253d4a70fb4d1bea22ec1240d810c"
+   },
+   "status": "REPRODUCED",
+   "title": "evaluation statements visible in training development material",
+   "unique_statements": 3
+  },
+  {
+   "additional_observation": "every ba_sheffer run (cap 1.57 s) also exceeds its cap, by up to 63%; the review named the Huntington seed-204 case, the same mechanism applies to all",
+   "by_system": {
+    "ba_huntington": {
+     "max_ratio": 1.93,
+     "over_cap": 13,
+     "runs": 20
+    },
+    "ba_sheffer": {
+     "max_ratio": 1.631,
+     "over_cap": 20,
+     "runs": 20
+    }
+   },
+   "caution": "which timing difference caused which proof is not asserted",
+   "finding": "B20-REVIEW-02",
+   "huntington_204": {
+    "bandit": [
+     1.01,
+     25
+    ],
+    "fixed": [
+     1.01,
+     24
+    ],
+    "heuristic": [
+     1.0,
+     25
+    ],
+    "learned": [
+     1.93,
+     25
+    ],
+    "random": [
+     1.37,
+     11
+    ]
+   },
+   "matches_review_statement": true,
+   "root_cause": [
+    "learning/research.py::run starts the CPU clock after policy.reset (preparation uncharged)",
+    "the cap is checked before action selection, so the last action may start with any positive remainder",
+    "the per-attempt E limit is max(1, ceil(remaining)) s: a fractional remainder is rounded up to at least one whole second of prover CPU",
+    "a PROVED result is accepted even when it finished after the cap"
+   ],
+   "rows": [
+    {
+     "cap_s": 1.57,
+     "over_cap_s": 0.29,
+     "policy": "fixed",
+     "ratio": 1.185,
+     "research_cpu_s": 1.86,
+     "seed": 201,
+     "successor_proved": 16,
+     "system": "ba_sheffer",
+     "targets": 25
+    },
+    {
+     "cap_s": 1.57,
+     "over_cap_s": 0.92,
+     "policy": "random",
+     "ratio": 1.586,
+     "research_cpu_s": 2.49,
+     "seed": 201,
+     "successor_proved": 14,
+     "system": "ba_sheffer",
+     "targets": 25
+    },
+    {
+     "cap_s": 1.57,
+     "over_cap_s": 0.32,
+     "policy": "heuristic",
+     "ratio": 1.204,
+     "research_cpu_s": 1.89,
+     "seed": 201,
+     "successor_proved": 16,
+     "system": "ba_sheffer",
+     "targets": 25
+    },
+    {
+     "cap_s": 1.57,
+     "over_cap_s": 0.55,
+     "policy": "bandit",
+     "ratio": 1.35,
+     "research_cpu_s": 2.12,
+     "seed": 201,
+     "successor_proved": 16,
+     "system": "ba_sheffer",
+     "targets": 25
+    },
+    {
+     "cap_s": 1.57,
+     "over_cap_s": 0.9,
+     "policy": "learned",
+     "ratio": 1.573,
+     "research_cpu_s": 2.47,
+     "seed": 201,
+     "successor_proved": 16,
+     "system": "ba_sheffer",
+     "targets": 25
+    },
+    {
+     "cap_s": 1.57,
+     "over_cap_s": 0.54,
+     "policy": "fixed",
+     "ratio": 1.344,
+     "research_cpu_s": 2.11,
+     "seed": 202,
+     "successor_proved": 13,
+     "system": "ba_sheffer",
+     "targets": 25
+    },
+    {
+     "cap_s": 1.57,
+     "over_cap_s": 0.01,
+     "policy": "random",
+     "ratio": 1.006,
+     "research_cpu_s": 1.58,
+     "seed": 202,
+     "successor_proved": 13,
+     "system": "ba_sheffer",
+     "targets": 25
+    },
+    {
+     "cap_s": 1.57,
+     "over_cap_s": 0.31,
+     "policy": "heuristic",
+     "ratio": 1.197,
+     "research_cpu_s": 1.88,
+     "seed": 202,
+     "successor_proved": 13,
+     "system": "ba_sheffer",
+     "targets": 25
+    },
+    {
+     "cap_s": 1.57,
+     "over_cap_s": 0.62,
+     "policy": "bandit",
+     "ratio": 1.395,
+     "research_cpu_s": 2.19,
+     "seed": 202,
+     "successor_proved": 13,
+     "system": "ba_sheffer",
+     "targets": 25
+    },
+    {
+     "cap_s": 1.57,
+     "over_cap_s": 0.01,
+     "policy": "learned",
+     "ratio": 1.006,
+     "research_cpu_s": 1.58,
+     "seed": 202,
+     "successor_proved": 13,
+     "system": "ba_sheffer",
+     "targets": 25
+    },
+    {
+     "cap_s": 1.57,
+     "over_cap_s": 0.25,
+     "policy": "fixed",
+     "ratio": 1.159,
+     "research_cpu_s": 1.82,
+     "seed": 203,
+     "successor_proved": 15,
+     "system": "ba_sheffer",
+     "targets": 25
+    },
+    {
+     "cap_s": 1.57,
+     "over_cap_s": 0.01,
+     "policy": "random",
+     "ratio": 1.006,
+     "research_cpu_s": 1.58,
+     "seed": 203,
+     "successor_proved": 15,
+     "system": "ba_sheffer",
+     "targets": 25
+    },
+    {
+     "cap_s": 1.57,
+     "over_cap_s": 0.17,
+     "policy": "heuristic",
+     "ratio": 1.108,
+     "research_cpu_s": 1.74,
+     "seed": 203,
+     "successor_proved": 15,
+     "system": "ba_sheffer",
+     "targets": 25
+    },
+    {
+     "cap_s": 1.57,
+     "over_cap_s": 0.6,
+     "policy": "bandit",
+     "ratio": 1.382,
+     "research_cpu_s": 2.17,
+     "seed": 203,
+     "successor_proved": 16,
+     "system": "ba_sheffer",
+     "targets": 25
+    },
+    {
+     "cap_s": 1.57,
+     "over_cap_s": 0.79,
+     "policy": "learned",
+     "ratio": 1.503,
+     "research_cpu_s": 2.36,
+     "seed": 203,
+     "successor_proved": 15,
+     "system": "ba_sheffer",
+     "targets": 25
+    },
+    {
+     "cap_s": 1.57,
+     "over_cap_s": 0.27,
+     "policy": "fixed",
+     "ratio": 1.172,
+     "research_cpu_s": 1.84,
+     "seed": 204,
+     "successor_proved": 15,
+     "system": "ba_sheffer",
+     "targets": 25
+    },
+    {
+     "cap_s": 1.57,
+     "over_cap_s": 0.99,
+     "policy": "random",
+     "ratio": 1.631,
+     "research_cpu_s": 2.56,
+     "seed": 204,
+     "successor_proved": 15,
+     "system": "ba_sheffer",
+     "targets": 25
+    },
+    {
+     "cap_s": 1.57,
+     "over_cap_s": 0.4,
+     "policy": "heuristic",
+     "ratio": 1.255,
+     "research_cpu_s": 1.97,
+     "seed": 204,
+     "successor_proved": 15,
+     "system": "ba_sheffer",
+     "targets": 25
+    },
+    {
+     "cap_s": 1.57,
+     "over_cap_s": 0.18,
+     "policy": "bandit",
+     "ratio": 1.115,
+     "research_cpu_s": 1.75,
+     "seed": 204,
+     "successor_proved": 15,
+     "system": "ba_sheffer",
+     "targets": 25
+    },
+    {
+     "cap_s": 1.57,
+     "over_cap_s": 0.01,
+     "policy": "learned",
+     "ratio": 1.006,
+     "research_cpu_s": 1.58,
+     "seed": 204,
+     "successor_proved": 15,
+     "system": "ba_sheffer",
+     "targets": 25
+    },
+    {
+     "cap_s": 1.0,
+     "over_cap_s": 0.0,
+     "policy": "fixed",
+     "ratio": 1.0,
+     "research_cpu_s": 1.0,
+     "seed": 201,
+     "successor_proved": 25,
+     "system": "ba_huntington",
+     "targets": 25
+    },
+    {
+     "cap_s": 1.0,
+     "over_cap_s": 0.02,
+     "policy": "random",
+     "ratio": 1.02,
+     "research_cpu_s": 1.02,
+     "seed": 201,
+     "successor_proved": 25,
+     "system": "ba_huntington",
+     "targets": 25
+    },
+    {
+     "cap_s": 1.0,
+     "over_cap_s": 0.0,
+     "policy": "heuristic",
+     "ratio": 1.0,
+     "research_cpu_s": 1.0,
+     "seed": 201,
+     "successor_proved": 25,
+     "system": "ba_huntington",
+     "targets": 25
+    },
+    {
+     "cap_s": 1.0,
+     "over_cap_s": 0.01,
+     "policy": "bandit",
+     "ratio": 1.01,
+     "research_cpu_s": 1.01,
+     "seed": 201,
+     "successor_proved": 25,
+     "system": "ba_huntington",
+     "targets": 25
+    },
+    {
+     "cap_s": 1.0,
+     "over_cap_s": 0.01,
+     "policy": "learned",
+     "ratio": 1.01,
+     "research_cpu_s": 1.01,
+     "seed": 201,
+     "successor_proved": 25,
+     "system": "ba_huntington",
+     "targets": 25
+    },
+    {
+     "cap_s": 1.0,
+     "over_cap_s": 0.0,
+     "policy": "fixed",
+     "ratio": 1.0,
+     "research_cpu_s": 1.0,
+     "seed": 202,
+     "successor_proved": 25,
+     "system": "ba_huntington",
+     "targets": 25
+    },
+    {
+     "cap_s": 1.0,
+     "over_cap_s": 0.0,
+     "policy": "random",
+     "ratio": 1.0,
+     "research_cpu_s": 1.0,
+     "seed": 202,
+     "successor_proved": 25,
+     "system": "ba_huntington",
+     "targets": 25
+    },
+    {
+     "cap_s": 1.0,
+     "over_cap_s": 0.0,
+     "policy": "heuristic",
+     "ratio": 1.0,
+     "research_cpu_s": 1.0,
+     "seed": 202,
+     "successor_proved": 25,
+     "system": "ba_huntington",
+     "targets": 25
+    },
+    {
+     "cap_s": 1.0,
+     "over_cap_s": 0.01,
+     "policy": "bandit",
+     "ratio": 1.01,
+     "research_cpu_s": 1.01,
+     "seed": 202,
+     "successor_proved": 24,
+     "system": "ba_huntington",
+     "targets": 25
+    },
+    {
+     "cap_s": 1.0,
+     "over_cap_s": 0.84,
+     "policy": "learned",
+     "ratio": 1.84,
+     "research_cpu_s": 1.84,
+     "seed": 202,
+     "successor_proved": 25,
+     "system": "ba_huntington",
+     "targets": 25
+    },
+    {
+     "cap_s": 1.0,
+     "over_cap_s": 0.0,
+     "policy": "fixed",
+     "ratio": 1.0,
+     "research_cpu_s": 1.0,
+     "seed": 203,
+     "successor_proved": 25,
+     "system": "ba_huntington",
+     "targets": 25
+    },
+    {
+     "cap_s": 1.0,
+     "over_cap_s": 0.01,
+     "policy": "random",
+     "ratio": 1.01,
+     "research_cpu_s": 1.01,
+     "seed": 203,
+     "successor_proved": 25,
+     "system": "ba_huntington",
+     "targets": 25
+    },
+    {
+     "cap_s": 1.0,
+     "over_cap_s": 0.01,
+     "policy": "heuristic",
+     "ratio": 1.01,
+     "research_cpu_s": 1.01,
+     "seed": 203,
+     "successor_proved": 25,
+     "system": "ba_huntington",
+     "targets": 25
+    },
+    {
+     "cap_s": 1.0,
+     "over_cap_s": 0.01,
+     "policy": "bandit",
+     "ratio": 1.01,
+     "research_cpu_s": 1.01,
+     "seed": 203,
+     "successor_proved": 25,
+     "system": "ba_huntington",
+     "targets": 25
+    },
+    {
+     "cap_s": 1.0,
+     "over_cap_s": 0.01,
+     "policy": "learned",
+     "ratio": 1.01,
+     "research_cpu_s": 1.01,
+     "seed": 203,
+     "successor_proved": 25,
+     "system": "ba_huntington",
+     "targets": 25
+    },
+    {
+     "cap_s": 1.0,
+     "over_cap_s": 0.01,
+     "policy": "fixed",
+     "ratio": 1.01,
+     "research_cpu_s": 1.01,
+     "seed": 204,
+     "successor_proved": 24,
+     "system": "ba_huntington",
+     "targets": 25
+    },
+    {
+     "cap_s": 1.0,
+     "over_cap_s": 0.37,
+     "policy": "random",
+     "ratio": 1.37,
+     "research_cpu_s": 1.37,
+     "seed": 204,
+     "successor_proved": 11,
+     "system": "ba_huntington",
+     "targets": 25
+    },
+    {
+     "cap_s": 1.0,
+     "over_cap_s": 0.0,
+     "policy": "heuristic",
+     "ratio": 1.0,
+     "research_cpu_s": 1.0,
+     "seed": 204,
+     "successor_proved": 25,
+     "system": "ba_huntington",
+     "targets": 25
+    },
+    {
+     "cap_s": 1.0,
+     "over_cap_s": 0.01,
+     "policy": "bandit",
+     "ratio": 1.01,
+     "research_cpu_s": 1.01,
+     "seed": 204,
+     "successor_proved": 25,
+     "system": "ba_huntington",
+     "targets": 25
+    },
+    {
+     "cap_s": 1.0,
+     "over_cap_s": 0.93,
+     "policy": "learned",
+     "ratio": 1.93,
+     "research_cpu_s": 1.93,
+     "seed": 204,
+     "successor_proved": 25,
+     "system": "ba_huntington",
+     "targets": 25
+    }
+   ],
+   "runs": 40,
+   "runs_over_cap": 33,
+   "sources": {
+    "calibration.json": "11e380821750d4c243f9fc74ac8a413f0da663c527b6261c831e52428fd5d877",
+    "w19/rows.json": "078ed5f4704d73c15310c4643faaa07425457a1c971e893deab8cca5972f4638"
+   },
+   "status": "REPRODUCED",
+   "title": "research CPU above the nominal campaign cap"
+  },
+  {
+   "checked_fraction_of_all_reported": 0.0861,
+   "finding": "B20-REVIEW-03",
+   "matches_review_statement": true,
+   "not_covered": [
+    "proofs from axioms only (no library lemma)",
+    "random, heuristic and bandit policies",
+    "evaluation seeds 202-204",
+    "empty-library baselines",
+    "W18/W20 arms and follow-ups"
+   ],
+   "persistence_gap": "proof objects of scored targets are not stored in the evidence (w19/rows.json keeps counts only), so the uncovered scores cannot be replayed retroactively",
+   "replay_attempts": 68,
+   "replay_statuses": {
+    "NOT_REPLAYED": 1,
+    "THEOREM_CHECKED": 67
+   },
+   "replayed_scope": {
+    "seed": 201,
+    "system_policy": [
+     [
+      "ba_huntington",
+      "fixed"
+     ],
+     [
+      "ba_huntington",
+      "learned"
+     ],
+     [
+      "ba_sheffer",
+      "fixed"
+     ],
+     [
+      "ba_sheffer",
+      "learned"
+     ]
+    ],
+    "targets": "successful target proofs that used at least one library lemma"
+   },
+   "reported_successes_all_runs": 778,
+   "reported_successes_fixed_learned_seed_201": 82,
+   "sources": {
+    "lean/replays.json": "0f2fa61baa5efb2d9ada0f03c0267a582ceeec6f50267f2e4eeadeed76625ed1",
+    "w19/rows.json": "078ed5f4704d73c15310c4643faaa07425457a1c971e893deab8cca5972f4638"
+   },
+   "status": "REPRODUCED",
+   "title": "Lean replay covers a subset of reported successor scores"
+  },
+  {
+   "consequence": "OPTIMALITY_CHECKED in this file cannot be replayed from artifacts; the recorded observation stays as history and a custody-complete re-run is a new execution",
+   "finding": "B20-REVIEW-04",
+   "matches_review_statement": true,
+   "optimality_checked": 11,
+   "per_row": [
+    {
+     "fields_absent": [
+      "witness",
+      "certificate",
+      "upper_certificate",
+      "cnf_sha256",
+      "proof_sha256"
+     ],
+     "lower": 99,
+     "lp_certificate_recheck": "VALID",
+     "status": "BOUNDS_ONLY",
+     "task_id": "dev-erdos-b73f6828-20261021-0000",
+     "upper": 100,
+     "upper_method": "LP_DUAL_EXACT"
+    },
+    {
+     "fields_absent": [
+      "witness",
+      "certificate",
+      "upper_certificate",
+      "cnf_sha256",
+      "proof_sha256"
+     ],
+     "lower": 107,
+     "lp_certificate_recheck": "VALID",
+     "status": "OPTIMALITY_CHECKED",
+     "task_id": "dev-erdos-b73f6828-20261021-0001",
+     "upper": 107,
+     "upper_method": "LP_DUAL_EXACT"
+    },
+    {
+     "fields_absent": [
+      "witness",
+      "certificate",
+      "upper_certificate",
+      "cnf_sha256",
+      "proof_sha256"
+     ],
+     "lower": 101,
+     "lp_certificate_recheck": "VALID",
+     "status": "OPTIMALITY_CHECKED",
+     "task_id": "dev-erdos-b73f6828-20261021-0002",
+     "upper": 101,
+     "upper_method": "LP_DUAL_EXACT"
+    },
+    {
+     "fields_absent": [
+      "witness",
+      "certificate",
+      "upper_certificate",
+      "cnf_sha256",
+      "proof_sha256"
+     ],
+     "lower": 100,
+     "lp_certificate_recheck": "VALID",
+     "status": "OPTIMALITY_CHECKED",
+     "task_id": "dev-erdos-b73f6828-20261021-0003",
+     "upper": 100,
+     "upper_method": "LP_DUAL_EXACT"
+    },
+    {
+     "fields_absent": [
+      "witness",
+      "certificate",
+      "upper_certificate",
+      "cnf_sha256",
+      "proof_sha256"
+     ],
+     "lower": 120,
+     "lp_certificate_recheck": "VALID",
+     "status": "OPTIMALITY_CHECKED",
+     "task_id": "dev-erdos-7fee9578-20261021-0000",
+     "upper": 120,
+     "upper_method": "LP_DUAL_EXACT"
+    },
+    {
+     "fields_absent": [
+      "witness",
+      "certificate",
+      "upper_certificate",
+      "cnf_sha256",
+      "proof_sha256"
+     ],
+     "lower": 122,
+     "lp_certificate_recheck": "VALID",
+     "status": "OPTIMALITY_CHECKED",
+     "task_id": "dev-erdos-7fee9578-20261021-0001",
+     "upper": 122,
+     "upper_method": "LP_DUAL_EXACT"
+    },
+    {
+     "fields_absent": [
+      "witness",
+      "certificate",
+      "upper_certificate",
+      "cnf_sha256",
+      "proof_sha256"
+     ],
+     "lower": 117,
+     "lp_certificate_recheck": "VALID",
+     "status": "OPTIMALITY_CHECKED",
+     "task_id": "dev-erdos-7fee9578-20261021-0002",
+     "upper": 117,
+     "upper_method": "LP_DUAL_EXACT"
+    },
+    {
+     "fields_absent": [
+      "witness",
+      "certificate",
+      "upper_certificate",
+      "cnf_sha256",
+      "proof_sha256"
+     ],
+     "lower": 126,
+     "lp_certificate_recheck": "VALID",
+     "status": "OPTIMALITY_CHECKED",
+     "task_id": "dev-erdos-7fee9578-20261021-0003",
+     "upper": 126,
+     "upper_method": "LP_DUAL_EXACT"
+    },
+    {
+     "fields_absent": [
+      "witness",
+      "certificate",
+      "upper_certificate",
+      "cnf_sha256",
+      "proof_sha256"
+     ],
+     "lower": 116,
+     "lp_certificate_recheck": "VALID",
+     "status": "OPTIMALITY_CHECKED",
+     "task_id": "dev-erdos-3765432f-20261021-0000",
+     "upper": 116,
+     "upper_method": "LP_DUAL_EXACT"
+    },
+    {
+     "fields_absent": [
+      "witness",
+      "certificate",
+      "upper_certificate",
+      "cnf_sha256",
+      "proof_sha256"
+     ],
+     "lower": 125,
+     "lp_certificate_recheck": "VALID",
+     "status": "OPTIMALITY_CHECKED",
+     "task_id": "dev-erdos-3765432f-20261021-0001",
+     "upper": 125,
+     "upper_method": "LP_DUAL_EXACT"
+    },
+    {
+     "fields_absent": [
+      "witness",
+      "certificate",
+      "upper_certificate",
+      "cnf_sha256",
+      "proof_sha256"
+     ],
+     "lower": 122,
+     "lp_certificate_recheck": "VALID",
+     "status": "OPTIMALITY_CHECKED",
+     "task_id": "dev-erdos-3765432f-20261021-0002",
+     "upper": 122,
+     "upper_method": "LP_DUAL_EXACT"
+    },
+    {
+     "fields_absent": [
+      "witness",
+      "certificate",
+      "upper_certificate",
+      "cnf_sha256",
+      "proof_sha256"
+     ],
+     "lower": 116,
+     "lp_certificate_recheck": "VALID",
+     "status": "OPTIMALITY_CHECKED",
+     "task_id": "dev-erdos-3765432f-20261021-0003",
+     "upper": 116,
+     "upper_method": "LP_DUAL_EXACT"
+    }
+   ],
+   "rows": 12,
+   "rows_without_certificate": 12,
+   "rows_without_witness": 12,
+   "source_defect": [
+    "discovery/obstruction.py::certify returns the certificate in memory only; scripts/b19_discovery.py::phase_obstruction exports bounds and verdict summaries",
+    "the SAT fallback discards the CNF and DRAT bytes returned by certify_upper (cert, rec, _, _ = ...); it did not supply any of these 12 upper bounds"
+   ],
+   "sources": {
+    "obstruction/evaluation.json": "436692ff20f696d5ebe9bd2c4f8b3bcbcdf1b70d8b58d820e68428a59be1ae50"
+   },
+   "status": "REPRODUCED",
+   "title": "B19 joint bounds exported without witness or exact LP certificate",
+   "upper_methods": {
+    "LP_DUAL_EXACT": 12
+   }
+  }
+ ],
+ "method": "read-only inspection of stored evidence; no prover invoked",
+ "schema": "genesis-review-reproduction-v1"
+}
