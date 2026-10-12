@@ -4800,7 +4800,8 @@
    "code": [
     "src/genesis/custody_records.py",
     "src/genesis/custodian.py",
-    "src/genesis/decision_record.py"
+    "src/genesis/decision_record.py",
+    "src/genesis/candidates.py"
    ],
    "disposition": "IMPLEMENTED_BOUNDED_PENDING_AUDIT",
    "evidence": [],
@@ -4816,7 +4817,8 @@
    "source": "roadmap \u00a77-10",
    "tests": [
     "tests_genesis/test_evaluator_readiness.py",
-    "tests_genesis/test_redteam_b16.py"
+    "tests_genesis/test_redteam_b16.py",
+    "tests_genesis/test_candidate_adapters.py"
    ],
    "title": "Independent custody and preregistration",
    "workstream": "W06"
