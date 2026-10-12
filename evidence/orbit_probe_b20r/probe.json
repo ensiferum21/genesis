@@ -1,0 +1,3972 @@
+{
+ "decision_rule": "REPORTED iff mixed(presentations) - mixed(repeats) >= 0.1",
+ "exposure": {
+  "ba_huntington": [
+   "![X]: (![Y]: (plus(plus(X,plus(X,Y)),plus(X,Y)) = plus(Y,plus(Y,plus(X,X)))))",
+   "![X]: (![Y]: (plus(X,n(plus(Y,plus(X,X)))) = plus(X,plus(X,plus(X,n(Y))))))",
+   "![X]: (![Y]: (![Z]: (plus(plus(plus(n(X),Y),Z),Y) = plus(plus(plus(Y,n(X)),Y),Z))))",
+   "![X]: (![Y]: (n(plus(plus(X,plus(Y,Y)),X)) = n(plus(X,plus(X,plus(Y,Y))))))",
+   "![X]: (![Y]: (![Z]: (plus(plus(n(X),Y),n(Z)) = plus(plus(Y,n(X)),n(Z)))))",
+   "![X]: (![Y]: (![Z]: (plus(n(X),plus(n(Y),Z)) = plus(plus(n(X),n(Y)),Z))))",
+   "![X]: (![Y]: (![Z]: (plus(X,n(plus(n(Y),Z))) = plus(X,n(plus(Z,n(Y)))))))",
+   "![X]: (![Y]: (![Z]: (plus(plus(X,X),n(plus(Y,Z))) = plus(X,n(plus(plus(Z,Y),X))))))",
+   "![X]: (![Y]: (n(plus(n(X),plus(Y,Y))) = n(plus(Y,n(plus(X,X))))))",
+   "![X]: (![Y]: (![Z]: (n(plus(n(plus(X,Y)),Z)) = n(plus(Z,n(plus(X,Y)))))))",
+   "![X]: (![Y]: (![Z]: (n(plus(plus(X,plus(X,Y)),Z)) = n(plus(Z,plus(Y,X))))))",
+   "![X]: (![Y]: (n(plus(plus(plus(X,X),X),X)) = plus(n(X),n(plus(X,Y)))))",
+   "![X]: (![Y]: (![Z]: (plus(n(X),plus(n(Y),Z)) = plus(Z,plus(n(X),n(Y))))))",
+   "![X]: (![Y]: (![Z]: (plus(plus(n(plus(X,Y)),X),Z) = plus(X,plus(Z,n(plus(Z,Y)))))))",
+   "![X]: (![Y]: (plus(n(X),n(n(Y))) = plus(plus(plus(n(X),Y),Y),Y)))",
+   "![X]: (![Y]: (plus(n(plus(plus(X,Y),X)),Y) = plus(n(X),plus(Y,plus(Y,Y)))))",
+   "![X]: (![Y]: (plus(n(plus(X,X)),n(Y)) = plus(n(plus(Y,Y)),n(X))))",
+   "![X]: (![Y]: (n(plus(X,plus(X,X))) = plus(n(plus(X,Y)),n(X))))",
+   "![X]: (plus(n(n(plus(X,X))),X) = plus(X,plus(n(n(X)),X)))",
+   "![X]: (![Y]: (![Z]: (plus(plus(X,n(Y)),n(Z)) = plus(X,plus(n(Y),n(Z))))))"
+  ],
+  "ba_sheffer": [
+   "![X]: (![Y]: (![Z]: (s(s(s(s(X,Y),X),Z),Z) = s(X,s(s(s(X,Y),Z),X)))))",
+   "![X]: (![Y]: (![Z]: (s(X,s(Y,s(s(Y,Z),X))) = s(X,s(Y,s(X,s(Z,X)))))))",
+   "![X]: (![Y]: (![Z]: (s(s(X,Y),s(s(X,s(Z,Z)),X)) = s(s(X,Z),s(X,Y)))))",
+   "![X]: (![Y]: (![Z]: (s(s(s(X,Y),Y),s(Y,Z)) = s(s(Y,Z),s(Y,s(Y,X))))))",
+   "![X]: (![Y]: (s(s(X,X),s(Y,s(s(Y,Y),Y))) = s(s(Y,Y),s(X,X))))",
+   "![X]: (![Y]: (![Z]: (s(s(s(X,X),Y),Z) = s(Z,s(s(s(Y,Z),Z),s(Y,X))))))",
+   "![X]: (![Y]: (![Z]: (s(s(X,Y),s(s(X,s(Y,Z)),X)) = s(s(X,Y),s(Y,X)))))",
+   "![X]: (![Y]: (![Z]: (s(s(s(X,s(Y,X)),X),Z) = s(s(Y,s(Z,s(Y,X))),Z))))",
+   "![X]: (![Y]: (![Z]: (s(s(s(X,s(X,X)),Y),Z) = s(Z,s(s(Y,s(Y,Z)),Y)))))",
+   "![X]: (![Y]: (![Z]: (s(s(s(s(X,X),Y),X),X) = s(Z,s(Z,s(s(Z,Z),X))))))",
+   "![X]: (![Y]: (![Z]: (s(s(X,s(s(Y,Z),Z)),Z) = s(Z,s(Y,s(Y,s(X,Z)))))))",
+   "![X]: (![Y]: (![Z]: (s(s(X,Y),s(Y,Z)) = s(s(X,Y),s(Z,s(Z,s(Y,Y)))))))",
+   "![X]: (![Y]: (![Z]: (s(s(X,s(X,s(Y,X))),s(Z,Y)) = s(s(Y,X),s(Y,Z)))))",
+   "![X]: (![Y]: (![Z]: (s(s(X,s(X,X)),Y) = s(Y,s(s(s(Z,s(Z,Z)),Y),Z)))))",
+   "![X]: (![Y]: (![Z]: (s(s(X,Y),s(s(Y,Z),Y)) = s(s(Y,X),s(s(Z,Y),Y)))))",
+   "![X]: (![Y]: (![Z]: (s(s(s(s(X,Y),Z),Y),X) = s(s(Y,s(s(X,Y),X)),X))))",
+   "![X]: (![Y]: (![Z]: (s(s(s(s(X,X),Y),Z),Z) = s(s(Z,s(s(Z,X),Y)),Z))))",
+   "![X]: (![Y]: (![Z]: (s(s(X,s(X,Y)),s(Z,Y)) = s(s(X,s(Y,Y)),s(Y,Z)))))",
+   "![X]: (![Y]: (![Z]: (s(X,s(s(X,Y),s(Z,Z))) = s(X,s(s(Z,Z),s(Y,Y))))))",
+   "![X]: (![Y]: (![Z]: (s(s(X,s(Y,X)),s(Z,Y)) = s(s(Z,Y),s(X,s(Y,X))))))"
+  ],
+  "ba_wolfram": [
+   "![X]: (![Y]: (![Z]: (s(s(X,s(Y,Y)),s(Z,X)) = s(s(X,Z),s(X,s(Y,X))))))",
+   "![X]: (![Y]: (s(s(X,s(s(Y,Y),s(X,X))),Y) = s(s(Y,X),Y)))",
+   "![X]: (![Y]: (![Z]: (s(s(X,Y),s(s(s(Z,Y),Y),Y)) = s(s(X,Y),s(Z,Y)))))",
+   "![X]: (![Y]: (s(X,s(s(s(X,X),X),X)) = s(X,s(X,s(s(X,Y),Y)))))",
+   "![X]: (![Y]: (![Z]: (s(s(s(s(X,Y),Z),X),X) = s(X,s(X,s(s(Y,X),Z))))))",
+   "![X]: (![Y]: (![Z]: (s(s(s(s(X,Y),Z),Z),X) = s(s(Z,s(s(Z,Y),X)),X))))",
+   "![X]: (![Y]: (s(s(X,Y),s(s(Y,X),s(Y,Y))) = s(s(Y,X),Y)))",
+   "![X]: (![Y]: (![Z]: (s(s(s(X,Y),X),s(X,Z)) = s(s(Z,X),s(X,s(Y,X))))))",
+   "![X]: (![Y]: (![Z]: (s(s(X,s(Y,s(Z,Z))),X) = s(Y,s(s(s(Y,Z),X),Y)))))",
+   "![X]: (![Y]: (![Z]: (s(s(X,Y),s(s(Z,X),X)) = s(s(Y,X),s(s(Z,Z),X)))))"
+  ]
+ },
+ "presentations": [
+  "p0",
+  "p1",
+  "p2",
+  "p3",
+  "p4",
+  "p5"
+ ],
+ "repeats": [
+  "r1",
+  "r2"
+ ],
+ "rows": [
+  {
+   "cpu_ratio_max_min": null,
+   "index": 0,
+   "limit_s": 1,
+   "mixed_presentations": false,
+   "mixed_repeats": false,
+   "repeat_cpu_ratio_max_min": null,
+   "runs": {
+    "p0": {
+     "cpu_ns": 1003892999,
+     "meter": "cgroup-v1-cpuacct",
+     "problem_sha256": "eec8f760807abe5075cfae4c49ea8dc26d204581133d36a3ec4f13d118e04ff0",
+     "proved": false,
+     "status": "RESOURCE_OUT",
+     "termination": "EXITED"
+    },
+    "p1": {
+     "cpu_ns": 1005557000,
+     "meter": "cgroup-v1-cpuacct",
+     "problem_sha256": "15abcb034472ae972919ea08027e8ff22a50855bd9c96e369eb210098a7aaf7b",
+     "proved": false,
+     "status": "RESOURCE_OUT",
+     "termination": "EXITED"
+    },
+    "p2": {
+     "cpu_ns": 1007624000,
+     "meter": "cgroup-v1-cpuacct",
+     "problem_sha256": "f048d9dfe2027bfaa2f6df3514d53649c56e505f85e68b8f4c5afad8e525c91c",
+     "proved": false,
+     "status": "RESOURCE_OUT",
+     "termination": "EXITED"
+    },
+    "p3": {
+     "cpu_ns": 1002060999,
+     "meter": "cgroup-v1-cpuacct",
+     "problem_sha256": "83cc66ad637455933d9309bdd1127da8e0d7a6c552295055923daefe07aa03d1",
+     "proved": false,
+     "status": "RESOURCE_OUT",
+     "termination": "EXITED"
+    },
+    "p4": {
+     "cpu_ns": 1003127999,
+     "meter": "cgroup-v1-cpuacct",
+     "problem_sha256": "75c99714ef3d818bd4c27aedb96a2691c9ceb111634f6b29cb919a0488193fc1",
+     "proved": false,
+     "status": "RESOURCE_OUT",
+     "termination": "EXITED"
+    },
+    "p5": {
+     "cpu_ns": 999586999,
+     "meter": "cgroup-v1-cpuacct",
+     "problem_sha256": "25b8ccd048a29f2dc93ee12f200d278478a2676e7a1864cec221fe8daa7b320a",
+     "proved": false,
+     "status": "RESOURCE_OUT",
+     "termination": "EXITED"
+    },
+    "r1": {
+     "cpu_ns": 1005678000,
+     "meter": "cgroup-v1-cpuacct",
+     "problem_sha256": "eec8f760807abe5075cfae4c49ea8dc26d204581133d36a3ec4f13d118e04ff0",
+     "proved": false,
+     "status": "RESOURCE_OUT",
+     "termination": "EXITED"
+    },
+    "r2": {
+     "cpu_ns": 1006268999,
+     "meter": "cgroup-v1-cpuacct",
+     "problem_sha256": "eec8f760807abe5075cfae4c49ea8dc26d204581133d36a3ec4f13d118e04ff0",
+     "proved": false,
+     "status": "RESOURCE_OUT",
+     "termination": "EXITED"
+    }
+   },
+   "system": "ba_sheffer",
+   "target": "![X]: (![Y]: (![Z]: (s(s(s(s(X,Y),X),Z),Z) = s(X,s(s(s(X,Y),Z),X)))))"
+  },
+  {
+   "cpu_ratio_max_min": null,
+   "index": 1,
+   "limit_s": 1,
+   "mixed_presentations": false,
+   "mixed_repeats": false,
+   "repeat_cpu_ratio_max_min": null,
+   "runs": {
+    "p0": {
+     "cpu_ns": 1002060999,
+     "meter": "cgroup-v1-cpuacct",
+     "problem_sha256": "bb799b1b783b6af5f3ba2e0447732bd284f5facd74aca3b9951f31b5ea7b1548",
+     "proved": false,
+     "status": "RESOURCE_OUT",
+     "termination": "EXITED"
+    },
+    "p1": {
+     "cpu_ns": 1004710999,
+     "meter": "cgroup-v1-cpuacct",
+     "problem_sha256": "5c129bd2b0b626922ab5e9fcf40e4e6a595c89066a621dd5009d5fff0d43af55",
+     "proved": false,
+     "status": "RESOURCE_OUT",
+     "termination": "EXITED"
+    },
+    "p2": {
+     "cpu_ns": 1001423000,
+     "meter": "cgroup-v1-cpuacct",
+     "problem_sha256": "67a8564ba825895528b4285323918912e0613fad363ce182cdfa03cbb204b178",
+     "proved": false,
+     "status": "RESOURCE_OUT",
+     "termination": "EXITED"
+    },
+    "p3": {
+     "cpu_ns": 1006456000,
+     "meter": "cgroup-v1-cpuacct",
+     "problem_sha256": "9c08a6d0912d3a26e2a638036072e8d318c422f0433e663ad8a677bea83b01d9",
+     "proved": false,
+     "status": "RESOURCE_OUT",
+     "termination": "EXITED"
+    },
+    "p4": {
+     "cpu_ns": 1003158999,
+     "meter": "cgroup-v1-cpuacct",
+     "problem_sha256": "540f052f9376b47b6ee77042472340d94a3979536bd506cfaead2a5a20b209ac",
+     "proved": false,
+     "status": "RESOURCE_OUT",
+     "termination": "EXITED"
+    },
+    "p5": {
+     "cpu_ns": 1000710000,
+     "meter": "cgroup-v1-cpuacct",
+     "problem_sha256": "369f4e47f63c1cbfca89db067c2c6a1ba24a4e12d331e54a8878fd8ad029addc",
+     "proved": false,
+     "status": "RESOURCE_OUT",
+     "termination": "EXITED"
+    },
+    "r1": {
+     "cpu_ns": 1000103000,
+     "meter": "cgroup-v1-cpuacct",
+     "problem_sha256": "bb799b1b783b6af5f3ba2e0447732bd284f5facd74aca3b9951f31b5ea7b1548",
+     "proved": false,
+     "status": "RESOURCE_OUT",
+     "termination": "EXITED"
+    },
+    "r2": {
+     "cpu_ns": 1005396000,
+     "meter": "cgroup-v1-cpuacct",
+     "problem_sha256": "bb799b1b783b6af5f3ba2e0447732bd284f5facd74aca3b9951f31b5ea7b1548",
+     "proved": false,
+     "status": "RESOURCE_OUT",
+     "termination": "EXITED"
+    }
+   },
+   "system": "ba_sheffer",
+   "target": "![X]: (![Y]: (![Z]: (s(X,s(Y,s(s(Y,Z),X))) = s(X,s(Y,s(X,s(Z,X)))))))"
+  },
+  {
+   "cpu_ratio_max_min": 1.304,
+   "index": 2,
+   "limit_s": 1,
+   "mixed_presentations": false,
+   "mixed_repeats": false,
+   "repeat_cpu_ratio_max_min": 1.225,
+   "runs": {
+    "p0": {
+     "cpu_ns": 193044000,
+     "meter": "cgroup-v1-cpuacct",
+     "problem_sha256": "1bd0764761b6a57d0fb16df044da2a75af79d690ddbea53b121039c2671a4ae9",
+     "proved": true,
+     "status": "THEOREM",
+     "termination": "EXITED"
+    },
+    "p1": {
+     "cpu_ns": 188982999,
+     "meter": "cgroup-v1-cpuacct",
+     "problem_sha256": "f22c20a51cd6a124105b14f7749a683bd276218cbdb018e25e32fd9de1675640",
+     "proved": true,
+     "status": "THEOREM",
+     "termination": "EXITED"
+    },
+    "p2": {
+     "cpu_ns": 180931999,
+     "meter": "cgroup-v1-cpuacct",
+     "problem_sha256": "fe4d63f0fccac989d99bca1e92d89a1cf21eefa5c1655df92455dd80cdeda8bf",
+     "proved": true,
+     "status": "THEOREM",
+     "termination": "EXITED"
+    },
+    "p3": {
+     "cpu_ns": 235874000,
+     "meter": "cgroup-v1-cpuacct",
+     "problem_sha256": "bb37ab48a61ca6af8e794743633f69821217a8cf6cd5f5e8449c2251311628ff",
+     "proved": true,
+     "status": "THEOREM",
+     "termination": "EXITED"
+    },
+    "p4": {
+     "cpu_ns": 215704000,
+     "meter": "cgroup-v1-cpuacct",
+     "problem_sha256": "c30e2efd73fcbe70b9a8b19e72c9ef5d0d7a24d8008838e02024aaf783c322c9",
+     "proved": true,
+     "status": "THEOREM",
+     "termination": "EXITED"
+    },
+    "p5": {
+     "cpu_ns": 203175000,
+     "meter": "cgroup-v1-cpuacct",
+     "problem_sha256": "f598e969cb7f35c347637811c59c1a49ca3c614db9c348e4c89045997c4574f3",
+     "proved": true,
+     "status": "THEOREM",
+     "termination": "EXITED"
+    },
+    "r1": {
+     "cpu_ns": 236425000,
+     "meter": "cgroup-v1-cpuacct",
+     "problem_sha256": "1bd0764761b6a57d0fb16df044da2a75af79d690ddbea53b121039c2671a4ae9",
+     "proved": true,
+     "status": "THEOREM",
+     "termination": "EXITED"
+    },
+    "r2": {
+     "cpu_ns": 204685999,
+     "meter": "cgroup-v1-cpuacct",
+     "problem_sha256": "1bd0764761b6a57d0fb16df044da2a75af79d690ddbea53b121039c2671a4ae9",
+     "proved": true,
+     "status": "THEOREM",
+     "termination": "EXITED"
+    }
+   },
+   "system": "ba_sheffer",
+   "target": "![X]: (![Y]: (![Z]: (s(s(X,Y),s(s(X,s(Z,Z)),X)) = s(s(X,Z),s(X,Y)))))"
+  },
+  {
+   "cpu_ratio_max_min": 1.37,
+   "index": 3,
+   "limit_s": 1,
+   "mixed_presentations": false,
+   "mixed_repeats": false,
+   "repeat_cpu_ratio_max_min": 1.097,
+   "runs": {
+    "p0": {
+     "cpu_ns": 8869000,
+     "meter": "cgroup-v1-cpuacct",
+     "problem_sha256": "169a748f66a6312be8c68762931dac6fe6f1c969d53e4bddaed226f42ab57e5a",
+     "proved": true,
+     "status": "THEOREM",
+     "termination": "EXITED"
+    },
+    "p1": {
+     "cpu_ns": 8114000,
+     "meter": "cgroup-v1-cpuacct",
+     "problem_sha256": "2581c8ae871dd7449d2be20a2231fd3c9d0a734bf9dafc4bd3363fea29558c4c",
+     "proved": true,
+     "status": "THEOREM",
+     "termination": "EXITED"
+    },
+    "p2": {
+     "cpu_ns": 8692000,
+     "meter": "cgroup-v1-cpuacct",
+     "problem_sha256": "fea27931c54356e56614615a551d69baf84318c7e527fb693bf587e6473a34fe",
+     "proved": true,
+     "status": "THEOREM",
+     "termination": "EXITED"
+    },
+    "p3": {
+     "cpu_ns": 9114000,
+     "meter": "cgroup-v1-cpuacct",
+     "problem_sha256": "899babc67122c25ec48de859a6bfda8816cc0b9123e8086b921b2813a94a0538",
+     "proved": true,
+     "status": "THEOREM",
+     "termination": "EXITED"
+    },
+    "p4": {
+     "cpu_ns": 9092000,
+     "meter": "cgroup-v1-cpuacct",
+     "problem_sha256": "33af5dbba0ea77a0046b32e216d7cd34044bc1122aa1972f4b0c3d70fa630e89",
+     "proved": true,
+     "status": "THEOREM",
+     "termination": "EXITED"
+    },
+    "p5": {
+     "cpu_ns": 11116000,
+     "meter": "cgroup-v1-cpuacct",
+     "problem_sha256": "75ef022c85dd279ab9cfd47b22240c3cbca31e94b315b0d39348cdd1a7f6956e",
+     "proved": true,
+     "status": "THEOREM",
+     "termination": "EXITED"
+    },
+    "r1": {
+     "cpu_ns": 9731000,
+     "meter": "cgroup-v1-cpuacct",
+     "problem_sha256": "169a748f66a6312be8c68762931dac6fe6f1c969d53e4bddaed226f42ab57e5a",
+     "proved": true,
+     "status": "THEOREM",
+     "termination": "EXITED"
+    },
+    "r2": {
+     "cpu_ns": 9253000,
+     "meter": "cgroup-v1-cpuacct",
+     "problem_sha256": "169a748f66a6312be8c68762931dac6fe6f1c969d53e4bddaed226f42ab57e5a",
+     "proved": true,
+     "status": "THEOREM",
+     "termination": "EXITED"
+    }
+   },
+   "system": "ba_sheffer",
+   "target": "![X]: (![Y]: (![Z]: (s(s(s(X,Y),Y),s(Y,Z)) = s(s(Y,Z),s(Y,s(Y,X))))))"
+  },
+  {
+   "cpu_ratio_max_min": 1.525,
+   "index": 4,
+   "limit_s": 1,
+   "mixed_presentations": false,
+   "mixed_repeats": false,
+   "repeat_cpu_ratio_max_min": 1.142,
+   "runs": {
+    "p0": {
+     "cpu_ns": 7875999,
+     "meter": "cgroup-v1-cpuacct",
+     "problem_sha256": "0e3e82584aef047f77672a634d46002b77d7214116a0280b6c153d63cd0cf7e9",
+     "proved": true,
+     "status": "THEOREM",
+     "termination": "EXITED"
+    },
+    "p1": {
+     "cpu_ns": 7989999,
+     "meter": "cgroup-v1-cpuacct",
+     "problem_sha256": "aafa181c496fe5b715410eb2773d2e7066b22303a3a1a8bdf58f1972bbab0881",
+     "proved": true,
+     "status": "THEOREM",
+     "termination": "EXITED"
+    },
+    "p2": {
+     "cpu_ns": 11578999,
+     "meter": "cgroup-v1-cpuacct",
+     "problem_sha256": "732fa2502160ee3769544ec09368abf1824b8e5f61b3b4dda175ba13d79691f7",
+     "proved": true,
+     "status": "THEOREM",
+     "termination": "EXITED"
+    },
+    "p3": {
+     "cpu_ns": 10764000,
+     "meter": "cgroup-v1-cpuacct",
+     "problem_sha256": "4d6cd636b6a8f087f2bf9f24aa40631d4a85609ac8b3df0934fc661e82f097f0",
+     "proved": true,
+     "status": "THEOREM",
+     "termination": "EXITED"
+    },
+    "p4": {
+     "cpu_ns": 9692000,
+     "meter": "cgroup-v1-cpuacct",
+     "problem_sha256": "0d95641d0a800f1a8febb89369c4cf34f7f4780f9423ecda0f15ec40a5d95b7f",
+     "proved": true,
+     "status": "THEOREM",
+     "termination": "EXITED"
+    },
+    "p5": {
+     "cpu_ns": 7594999,
+     "meter": "cgroup-v1-cpuacct",
+     "problem_sha256": "cfa2b7f457e5882534bee052bf1d0ae4a09a8e7bc7f02acfa4a226b97e19c100",
+     "proved": true,
+     "status": "THEOREM",
+     "termination": "EXITED"
+    },
+    "r1": {
+     "cpu_ns": 8409000,
+     "meter": "cgroup-v1-cpuacct",
+     "problem_sha256": "0e3e82584aef047f77672a634d46002b77d7214116a0280b6c153d63cd0cf7e9",
+     "proved": true,
+     "status": "THEOREM",
+     "termination": "EXITED"
+    },
+    "r2": {
+     "cpu_ns": 8995999,
+     "meter": "cgroup-v1-cpuacct",
+     "problem_sha256": "0e3e82584aef047f77672a634d46002b77d7214116a0280b6c153d63cd0cf7e9",
+     "proved": true,
+     "status": "THEOREM",
+     "termination": "EXITED"
+    }
+   },
+   "system": "ba_sheffer",
+   "target": "![X]: (![Y]: (s(s(X,X),s(Y,s(s(Y,Y),Y))) = s(s(Y,Y),s(X,X))))"
+  },
+  {
+   "cpu_ratio_max_min": null,
+   "index": 5,
+   "limit_s": 1,
+   "mixed_presentations": false,
+   "mixed_repeats": false,
+   "repeat_cpu_ratio_max_min": null,
+   "runs": {
+    "p0": {
+     "cpu_ns": 1002365000,
+     "meter": "cgroup-v1-cpuacct",
+     "problem_sha256": "15f1a802590e58795de1f614e1f7f1c607a4c9bfe28d758713984436ac24ec9e",
+     "proved": false,
+     "status": "RESOURCE_OUT",
+     "termination": "EXITED"
+    },
+    "p1": {
+     "cpu_ns": 1002202000,
+     "meter": "cgroup-v1-cpuacct",
+     "problem_sha256": "fe25dab4bfb44fd905c62d9b3df86810413b20f9bda8262b5aa3413ec4e300d3",
+     "proved": false,
+     "status": "RESOURCE_OUT",
+     "termination": "EXITED"
+    },
+    "p2": {
+     "cpu_ns": 1004405000,
+     "meter": "cgroup-v1-cpuacct",
+     "problem_sha256": "163558a6f2b9c60d713cde71dbdf38fa9c08f78436b0f473f6888a78f8f409d3",
+     "proved": false,
+     "status": "RESOURCE_OUT",
+     "termination": "EXITED"
+    },
+    "p3": {
+     "cpu_ns": 1005199000,
+     "meter": "cgroup-v1-cpuacct",
+     "problem_sha256": "893ff621ef7f635c6b17ec774ccefbc071ee4f606cde67e09c9b4e20eabe457b",
+     "proved": false,
+     "status": "RESOURCE_OUT",
+     "termination": "EXITED"
+    },
+    "p4": {
+     "cpu_ns": 1004953999,
+     "meter": "cgroup-v1-cpuacct",
+     "problem_sha256": "f164fb011e6431a8f708df3d468214f4240f6542775efae67944d68bcb927486",
+     "proved": false,
+     "status": "RESOURCE_OUT",
+     "termination": "EXITED"
+    },
+    "p5": {
+     "cpu_ns": 1000276999,
+     "meter": "cgroup-v1-cpuacct",
+     "problem_sha256": "ef0c6af1fca3410c1b141393f684f456d071eb9988cc9fa172a5b252cf191001",
+     "proved": false,
+     "status": "RESOURCE_OUT",
+     "termination": "EXITED"
+    },
+    "r1": {
+     "cpu_ns": 1005695999,
+     "meter": "cgroup-v1-cpuacct",
+     "problem_sha256": "15f1a802590e58795de1f614e1f7f1c607a4c9bfe28d758713984436ac24ec9e",
+     "proved": false,
+     "status": "RESOURCE_OUT",
+     "termination": "EXITED"
+    },
+    "r2": {
+     "cpu_ns": 1005064000,
+     "meter": "cgroup-v1-cpuacct",
+     "problem_sha256": "15f1a802590e58795de1f614e1f7f1c607a4c9bfe28d758713984436ac24ec9e",
+     "proved": false,
+     "status": "RESOURCE_OUT",
+     "termination": "EXITED"
+    }
+   },
+   "system": "ba_sheffer",
+   "target": "![X]: (![Y]: (![Z]: (s(s(s(X,X),Y),Z) = s(Z,s(s(s(Y,Z),Z),s(Y,X))))))"
+  },
+  {
+   "cpu_ratio_max_min": null,
+   "index": 6,
+   "limit_s": 1,
+   "mixed_presentations": false,
+   "mixed_repeats": false,
+   "repeat_cpu_ratio_max_min": null,
+   "runs": {
+    "p0": {
+     "cpu_ns": 1006972000,
+     "meter": "cgroup-v1-cpuacct",
+     "problem_sha256": "c3437c05549b2ce89383fb0f9bad235a623cbf2c33768c03daf28fc560b83ece",
+     "proved": false,
+     "status": "RESOURCE_OUT",
+     "termination": "EXITED"
+    },
+    "p1": {
+     "cpu_ns": 1007810000,
+     "meter": "cgroup-v1-cpuacct",
+     "problem_sha256": "813e7ebd7b755a6ac18f4647bbb9d0396010f8d8c1415ea3d76acf57d185dbb8",
+     "proved": false,
+     "status": "RESOURCE_OUT",
+     "termination": "EXITED"
+    },
+    "p2": {
+     "cpu_ns": 1005792000,
+     "meter": "cgroup-v1-cpuacct",
+     "problem_sha256": "9fcfac058b4288b53b2471376bcb40e58e740494147b3402e875e23cdd118aca",
+     "proved": false,
+     "status": "RESOURCE_OUT",
+     "termination": "EXITED"
+    },
+    "p3": {
+     "cpu_ns": 1006734999,
+     "meter": "cgroup-v1-cpuacct",
+     "problem_sha256": "d74e7d55d4b17306a823013e2649f4b04ce7423d5b7d82d0b4c35239d5befa9a",
+     "proved": false,
+     "status": "RESOURCE_OUT",
+     "termination": "EXITED"
+    },
+    "p4": {
+     "cpu_ns": 1000227999,
+     "meter": "cgroup-v1-cpuacct",
+     "problem_sha256": "6a16619e817df0438e3f761e8d28a37b6a23e7049ab32584182d5292a385ddfe",
+     "proved": false,
+     "status": "RESOURCE_OUT",
+     "termination": "EXITED"
+    },
+    "p5": {
+     "cpu_ns": 1004019999,
+     "meter": "cgroup-v1-cpuacct",
+     "problem_sha256": "7601fabf0af68afc946e3acb3731a3f49ce8220d117e20e6b4d2039725f97d7c",
+     "proved": false,
+     "status": "RESOURCE_OUT",
+     "termination": "EXITED"
+    },
+    "r1": {
+     "cpu_ns": 1004926000,
+     "meter": "cgroup-v1-cpuacct",
+     "problem_sha256": "c3437c05549b2ce89383fb0f9bad235a623cbf2c33768c03daf28fc560b83ece",
+     "proved": false,
+     "status": "RESOURCE_OUT",
+     "termination": "EXITED"
+    },
+    "r2": {
+     "cpu_ns": 1004842999,
+     "meter": "cgroup-v1-cpuacct",
+     "problem_sha256": "c3437c05549b2ce89383fb0f9bad235a623cbf2c33768c03daf28fc560b83ece",
+     "proved": false,
+     "status": "RESOURCE_OUT",
+     "termination": "EXITED"
+    }
+   },
+   "system": "ba_sheffer",
+   "target": "![X]: (![Y]: (![Z]: (s(s(X,Y),s(s(X,s(Y,Z)),X)) = s(s(X,Y),s(Y,X)))))"
+  },
+  {
+   "cpu_ratio_max_min": null,
+   "index": 7,
+   "limit_s": 1,
+   "mixed_presentations": false,
+   "mixed_repeats": false,
+   "repeat_cpu_ratio_max_min": null,
+   "runs": {
+    "p0": {
+     "cpu_ns": 1005069999,
+     "meter": "cgroup-v1-cpuacct",
+     "problem_sha256": "eb7d40464d795a02eb99f093ea7ae6701369befaa89017000530d9af93b32c88",
+     "proved": false,
+     "status": "RESOURCE_OUT",
+     "termination": "EXITED"
+    },
+    "p1": {
+     "cpu_ns": 1008594999,
+     "meter": "cgroup-v1-cpuacct",
+     "problem_sha256": "d125128290a7b9aee972474a37e7978712f26ca6f3ad202c06a028a802020684",
+     "proved": false,
+     "status": "RESOURCE_OUT",
+     "termination": "EXITED"
+    },
+    "p2": {
+     "cpu_ns": 1000321000,
+     "meter": "cgroup-v1-cpuacct",
+     "problem_sha256": "09d597f256e22878511115e4dfc93787ff88a307bf10c64d614e8d3ffafcace5",
+     "proved": false,
+     "status": "RESOURCE_OUT",
+     "termination": "EXITED"
+    },
+    "p3": {
+     "cpu_ns": 1000938000,
+     "meter": "cgroup-v1-cpuacct",
+     "problem_sha256": "439501e4f5327ea268238fc702592319bfca9e4e617415c89d85344afce3be00",
+     "proved": false,
+     "status": "RESOURCE_OUT",
+     "termination": "EXITED"
+    },
+    "p4": {
+     "cpu_ns": 1003309000,
+     "meter": "cgroup-v1-cpuacct",
+     "problem_sha256": "c7226c3f01082ac82409444aa2c669b2a143572cde7c31d818aacda642d13fee",
+     "proved": false,
+     "status": "RESOURCE_OUT",
+     "termination": "EXITED"
+    },
+    "p5": {
+     "cpu_ns": 1006764999,
+     "meter": "cgroup-v1-cpuacct",
+     "problem_sha256": "fdb27822563e200f92294401934adb47716f10d4c2ecf31ee544258af99eb83e",
+     "proved": false,
+     "status": "RESOURCE_OUT",
+     "termination": "EXITED"
+    },
+    "r1": {
+     "cpu_ns": 1007540999,
+     "meter": "cgroup-v1-cpuacct",
+     "problem_sha256": "eb7d40464d795a02eb99f093ea7ae6701369befaa89017000530d9af93b32c88",
+     "proved": false,
+     "status": "RESOURCE_OUT",
+     "termination": "EXITED"
+    },
+    "r2": {
+     "cpu_ns": 1006454999,
+     "meter": "cgroup-v1-cpuacct",
+     "problem_sha256": "eb7d40464d795a02eb99f093ea7ae6701369befaa89017000530d9af93b32c88",
+     "proved": false,
+     "status": "RESOURCE_OUT",
+     "termination": "EXITED"
+    }
+   },
+   "system": "ba_sheffer",
+   "target": "![X]: (![Y]: (![Z]: (s(s(s(X,s(Y,X)),X),Z) = s(s(Y,s(Z,s(Y,X))),Z))))"
+  },
+  {
+   "cpu_ratio_max_min": 1.212,
+   "index": 8,
+   "limit_s": 1,
+   "mixed_presentations": false,
+   "mixed_repeats": false,
+   "repeat_cpu_ratio_max_min": 1.035,
+   "runs": {
+    "p0": {
+     "cpu_ns": 61675999,
+     "meter": "cgroup-v1-cpuacct",
+     "problem_sha256": "b86399eef68a566b982ab0c1e387dbc10e8f2bc12cd1da6b8ba881080a017255",
+     "proved": true,
+     "status": "THEOREM",
+     "termination": "EXITED"
+    },
+    "p1": {
+     "cpu_ns": 74738000,
+     "meter": "cgroup-v1-cpuacct",
+     "problem_sha256": "513dc4444b8d9e0b2fec20bcaa4385a8cf5757d44edd55eb5206645c03c8a8a7",
+     "proved": true,
+     "status": "THEOREM",
+     "termination": "EXITED"
+    },
+    "p2": {
+     "cpu_ns": 67576000,
+     "meter": "cgroup-v1-cpuacct",
+     "problem_sha256": "43f23557d469e2c960d28add0d37c94d986d58598ff74cb55807bec5d2681ddd",
+     "proved": true,
+     "status": "THEOREM",
+     "termination": "EXITED"
+    },
+    "p3": {
+     "cpu_ns": 64975999,
+     "meter": "cgroup-v1-cpuacct",
+     "problem_sha256": "4fe83bc2867e158eeb84b66cea72258a49570379acb4fd84bd0f7e2016e30f5b",
+     "proved": true,
+     "status": "THEOREM",
+     "termination": "EXITED"
+    },
+    "p4": {
+     "cpu_ns": 66970999,
+     "meter": "cgroup-v1-cpuacct",
+     "problem_sha256": "0e86ab864f6bde17d3a2f516af1053a1a8b88ad7ee2900e227676d26c99aec77",
+     "proved": true,
+     "status": "THEOREM",
+     "termination": "EXITED"
+    },
+    "p5": {
+     "cpu_ns": 64356000,
+     "meter": "cgroup-v1-cpuacct",
+     "problem_sha256": "28367329ab31616580c359a1deaa53b0bf6855771d0eeae2a4b65e60dd0050cf",
+     "proved": true,
+     "status": "THEOREM",
+     "termination": "EXITED"
+    },
+    "r1": {
+     "cpu_ns": 63817000,
+     "meter": "cgroup-v1-cpuacct",
+     "problem_sha256": "b86399eef68a566b982ab0c1e387dbc10e8f2bc12cd1da6b8ba881080a017255",
+     "proved": true,
+     "status": "THEOREM",
+     "termination": "EXITED"
+    },
+    "r2": {
+     "cpu_ns": 61777000,
+     "meter": "cgroup-v1-cpuacct",
+     "problem_sha256": "b86399eef68a566b982ab0c1e387dbc10e8f2bc12cd1da6b8ba881080a017255",
+     "proved": true,
+     "status": "THEOREM",
+     "termination": "EXITED"
+    }
+   },
+   "system": "ba_sheffer",
+   "target": "![X]: (![Y]: (![Z]: (s(s(s(X,s(X,X)),Y),Z) = s(Z,s(s(Y,s(Y,Z)),Y)))))"
+  },
+  {
+   "cpu_ratio_max_min": 1.543,
+   "index": 9,
+   "limit_s": 1,
+   "mixed_presentations": false,
+   "mixed_repeats": false,
+   "repeat_cpu_ratio_max_min": 1.59,
+   "runs": {
+    "p0": {
+     "cpu_ns": 39881000,
+     "meter": "cgroup-v1-cpuacct",
+     "problem_sha256": "d281e2036b62af524fca4dc7c0d486e9827e10ffeba5d6da14257d52c52b2f5d",
+     "proved": true,
+     "status": "THEOREM",
+     "termination": "EXITED"
+    },
+    "p1": {
+     "cpu_ns": 25935999,
+     "meter": "cgroup-v1-cpuacct",
+     "problem_sha256": "cbc3995efb75ede132eb86d7c8965f5fa77935e0eec3cd69e6db519c695eca49",
+     "proved": true,
+     "status": "THEOREM",
+     "termination": "EXITED"
+    },
+    "p2": {
+     "cpu_ns": 37394000,
+     "meter": "cgroup-v1-cpuacct",
+     "problem_sha256": "5a586b7bf6f78677c618645756eff034e67fb206e81beaee9da3acb98d835963",
+     "proved": true,
+     "status": "THEOREM",
+     "termination": "EXITED"
+    },
+    "p3": {
+     "cpu_ns": 38786000,
+     "meter": "cgroup-v1-cpuacct",
+     "problem_sha256": "69c2d704dd5cf25da9c3e4fc6e596563c757ccb103b74cd297ad9aa4cecb4b20",
+     "proved": true,
+     "status": "THEOREM",
+     "termination": "EXITED"
+    },
+    "p4": {
+     "cpu_ns": 28915999,
+     "meter": "cgroup-v1-cpuacct",
+     "problem_sha256": "d35408c17242c1553572ebb147d7cde6f20ae29f94117e4d8dd1d3ca4005b096",
+     "proved": true,
+     "status": "THEOREM",
+     "termination": "EXITED"
+    },
+    "p5": {
+     "cpu_ns": 40024000,
+     "meter": "cgroup-v1-cpuacct",
+     "problem_sha256": "66d820c0caf75a9d93a0bd9d0c9b76ab8a04b904e8ae72252334a2c475c769e8",
+     "proved": true,
+     "status": "THEOREM",
+     "termination": "EXITED"
+    },
+    "r1": {
+     "cpu_ns": 25078000,
+     "meter": "cgroup-v1-cpuacct",
+     "problem_sha256": "d281e2036b62af524fca4dc7c0d486e9827e10ffeba5d6da14257d52c52b2f5d",
+     "proved": true,
+     "status": "THEOREM",
+     "termination": "EXITED"
+    },
+    "r2": {
+     "cpu_ns": 29505000,
+     "meter": "cgroup-v1-cpuacct",
+     "problem_sha256": "d281e2036b62af524fca4dc7c0d486e9827e10ffeba5d6da14257d52c52b2f5d",
+     "proved": true,
+     "status": "THEOREM",
+     "termination": "EXITED"
+    }
+   },
+   "system": "ba_sheffer",
+   "target": "![X]: (![Y]: (![Z]: (s(s(s(s(X,X),Y),X),X) = s(Z,s(Z,s(s(Z,Z),X))))))"
+  },
+  {
+   "cpu_ratio_max_min": null,
+   "index": 10,
+   "limit_s": 1,
+   "mixed_presentations": false,
+   "mixed_repeats": false,
+   "repeat_cpu_ratio_max_min": null,
+   "runs": {
+    "p0": {
+     "cpu_ns": 1009331000,
+     "meter": "cgroup-v1-cpuacct",
+     "problem_sha256": "b64291eb111ffd636364df2de7def84776e1a5c1a59ccb4cb2c5abd928f2a5c8",
+     "proved": false,
+     "status": "RESOURCE_OUT",
+     "termination": "EXITED"
+    },
+    "p1": {
+     "cpu_ns": 1001296000,
+     "meter": "cgroup-v1-cpuacct",
+     "problem_sha256": "9cb70519068b75e7282bd0492e0dc648a40631357dd79c68f77c387465af21f0",
+     "proved": false,
+     "status": "RESOURCE_OUT",
+     "termination": "EXITED"
+    },
+    "p2": {
+     "cpu_ns": 1004923999,
+     "meter": "cgroup-v1-cpuacct",
+     "problem_sha256": "9f852b4c3a7d0d0abaa67962977fdf95b4e1a7defc1ccfe6d2c21a0d3b385389",
+     "proved": false,
+     "status": "RESOURCE_OUT",
+     "termination": "EXITED"
+    },
+    "p3": {
+     "cpu_ns": 1007557000,
+     "meter": "cgroup-v1-cpuacct",
+     "problem_sha256": "e59dd62c68c47fbff18571f93080af58b08d212ad12e3526196090b2726feeda",
+     "proved": false,
+     "status": "RESOURCE_OUT",
+     "termination": "EXITED"
+    },
+    "p4": {
+     "cpu_ns": 1003677999,
+     "meter": "cgroup-v1-cpuacct",
+     "problem_sha256": "27e2063927c0a01cf8f9e0233235eb1e94679b878083add2383a5db9637bfa98",
+     "proved": false,
+     "status": "RESOURCE_OUT",
+     "termination": "EXITED"
+    },
+    "p5": {
+     "cpu_ns": 1004800999,
+     "meter": "cgroup-v1-cpuacct",
+     "problem_sha256": "242f836e738c24c864d984e5fe90347b5b3b5426d9e43110ba8d932d6a20d98b",
+     "proved": false,
+     "status": "RESOURCE_OUT",
+     "termination": "EXITED"
+    },
+    "r1": {
+     "cpu_ns": 1005684999,
+     "meter": "cgroup-v1-cpuacct",
+     "problem_sha256": "b64291eb111ffd636364df2de7def84776e1a5c1a59ccb4cb2c5abd928f2a5c8",
+     "proved": false,
+     "status": "RESOURCE_OUT",
+     "termination": "EXITED"
+    },
+    "r2": {
+     "cpu_ns": 1007319000,
+     "meter": "cgroup-v1-cpuacct",
+     "problem_sha256": "b64291eb111ffd636364df2de7def84776e1a5c1a59ccb4cb2c5abd928f2a5c8",
+     "proved": false,
+     "status": "RESOURCE_OUT",
+     "termination": "EXITED"
+    }
+   },
+   "system": "ba_sheffer",
+   "target": "![X]: (![Y]: (![Z]: (s(s(X,s(s(Y,Z),Z)),Z) = s(Z,s(Y,s(Y,s(X,Z)))))))"
+  },
+  {
+   "cpu_ratio_max_min": 1.515,
+   "index": 11,
+   "limit_s": 1,
+   "mixed_presentations": false,
+   "mixed_repeats": false,
+   "repeat_cpu_ratio_max_min": 1.15,
+   "runs": {
+    "p0": {
+     "cpu_ns": 257943999,
+     "meter": "cgroup-v1-cpuacct",
+     "problem_sha256": "599ceaf75f2425eeb824d05f6f3853aded2069be9547a45fd94b67814959c540",
+     "proved": true,
+     "status": "THEOREM",
+     "termination": "EXITED"
+    },
+    "p1": {
+     "cpu_ns": 247020000,
+     "meter": "cgroup-v1-cpuacct",
+     "problem_sha256": "aa7ef72e1f30eb6e7232965027e1e65badfda4704cf6e8ab04c302d84aa70722",
+     "proved": true,
+     "status": "THEOREM",
+     "termination": "EXITED"
+    },
+    "p2": {
+     "cpu_ns": 170214000,
+     "meter": "cgroup-v1-cpuacct",
+     "problem_sha256": "73b9e063adeedfc7f2ffa197546baec75a22086d269deb8f1aba1fe9974549bf",
+     "proved": true,
+     "status": "THEOREM",
+     "termination": "EXITED"
+    },
+    "p3": {
+     "cpu_ns": 191862999,
+     "meter": "cgroup-v1-cpuacct",
+     "problem_sha256": "aec125c86525c93b50a8502e3e93edd0d371f8874281a8f4314c27f1e4ad474a",
+     "proved": true,
+     "status": "THEOREM",
+     "termination": "EXITED"
+    },
+    "p4": {
+     "cpu_ns": 213453000,
+     "meter": "cgroup-v1-cpuacct",
+     "problem_sha256": "093f483e43745f615078ef4806ca67ee67c041fe5bb4446182cc37f54dcc5d8a",
+     "proved": true,
+     "status": "THEOREM",
+     "termination": "EXITED"
+    },
+    "p5": {
+     "cpu_ns": 192021000,
+     "meter": "cgroup-v1-cpuacct",
+     "problem_sha256": "c6c162e5528fdad63881e5e6700b88723ad950e5d32596c53dc9fd04ee2c3237",
+     "proved": true,
+     "status": "THEOREM",
+     "termination": "EXITED"
+    },
+    "r1": {
+     "cpu_ns": 296647000,
+     "meter": "cgroup-v1-cpuacct",
+     "problem_sha256": "599ceaf75f2425eeb824d05f6f3853aded2069be9547a45fd94b67814959c540",
+     "proved": true,
+     "status": "THEOREM",
+     "termination": "EXITED"
+    },
+    "r2": {
+     "cpu_ns": 262324999,
+     "meter": "cgroup-v1-cpuacct",
+     "problem_sha256": "599ceaf75f2425eeb824d05f6f3853aded2069be9547a45fd94b67814959c540",
+     "proved": true,
+     "status": "THEOREM",
+     "termination": "EXITED"
+    }
+   },
+   "system": "ba_sheffer",
+   "target": "![X]: (![Y]: (![Z]: (s(s(X,Y),s(Y,Z)) = s(s(X,Y),s(Z,s(Z,s(Y,Y)))))))"
+  },
+  {
+   "cpu_ratio_max_min": 3.315,
+   "index": 12,
+   "limit_s": 1,
+   "mixed_presentations": false,
+   "mixed_repeats": false,
+   "repeat_cpu_ratio_max_min": 1.084,
+   "runs": {
+    "p0": {
+     "cpu_ns": 66577000,
+     "meter": "cgroup-v1-cpuacct",
+     "problem_sha256": "9179c62936f7d7b0c14180f5b3f82686b9ba1be3e0f5dea4c59df0e00b6b69f9",
+     "proved": true,
+     "status": "THEOREM",
+     "termination": "EXITED"
+    },
+    "p1": {
+     "cpu_ns": 22059000,
+     "meter": "cgroup-v1-cpuacct",
+     "problem_sha256": "bf1a6bb5c5d268344759d98feff6161f7da938a7d3cdee265dca69fed6fead5d",
+     "proved": true,
+     "status": "THEOREM",
+     "termination": "EXITED"
+    },
+    "p2": {
+     "cpu_ns": 69781000,
+     "meter": "cgroup-v1-cpuacct",
+     "problem_sha256": "0e0e9a9d2bbb72416578f3aefb29381ab45cccfbd9a8294932ef6d10d0f4e9be",
+     "proved": true,
+     "status": "THEOREM",
+     "termination": "EXITED"
+    },
+    "p3": {
+     "cpu_ns": 70440000,
+     "meter": "cgroup-v1-cpuacct",
+     "problem_sha256": "0854101c8a2f950bbbbf3aadfb782022d947d6d850cafc777e2567a762f23070",
+     "proved": true,
+     "status": "THEOREM",
+     "termination": "EXITED"
+    },
+    "p4": {
+     "cpu_ns": 73117000,
+     "meter": "cgroup-v1-cpuacct",
+     "problem_sha256": "480618a8822231c1dfdc9ffc64d18c088defd9b3f22e259665982ea8d9b014d1",
+     "proved": true,
+     "status": "THEOREM",
+     "termination": "EXITED"
+    },
+    "p5": {
+     "cpu_ns": 28253000,
+     "meter": "cgroup-v1-cpuacct",
+     "problem_sha256": "cd9b78adcb4347f088947ba53785b4492d342f946d9764b804e117d3cf4c6812",
+     "proved": true,
+     "status": "THEOREM",
+     "termination": "EXITED"
+    },
+    "r1": {
+     "cpu_ns": 61416000,
+     "meter": "cgroup-v1-cpuacct",
+     "problem_sha256": "9179c62936f7d7b0c14180f5b3f82686b9ba1be3e0f5dea4c59df0e00b6b69f9",
+     "proved": true,
+     "status": "THEOREM",
+     "termination": "EXITED"
+    },
+    "r2": {
+     "cpu_ns": 61777000,
+     "meter": "cgroup-v1-cpuacct",
+     "problem_sha256": "9179c62936f7d7b0c14180f5b3f82686b9ba1be3e0f5dea4c59df0e00b6b69f9",
+     "proved": true,
+     "status": "THEOREM",
+     "termination": "EXITED"
+    }
+   },
+   "system": "ba_sheffer",
+   "target": "![X]: (![Y]: (![Z]: (s(s(X,s(X,s(Y,X))),s(Z,Y)) = s(s(Y,X),s(Y,Z)))))"
+  },
+  {
+   "cpu_ratio_max_min": 1.321,
+   "index": 13,
+   "limit_s": 1,
+   "mixed_presentations": false,
+   "mixed_repeats": false,
+   "repeat_cpu_ratio_max_min": 1.475,
+   "runs": {
+    "p0": {
+     "cpu_ns": 265830000,
+     "meter": "cgroup-v1-cpuacct",
+     "problem_sha256": "d98592feaa6822f21d96821b70770f9ced0d67f37a5c3ba64164d70b333e1d61",
+     "proved": true,
+     "status": "THEOREM",
+     "termination": "EXITED"
+    },
+    "p1": {
+     "cpu_ns": 260183000,
+     "meter": "cgroup-v1-cpuacct",
+     "problem_sha256": "04ce53c40c925dc705798f9af05028bbb697b47719c6123566218ba73b46d7a8",
+     "proved": true,
+     "status": "THEOREM",
+     "termination": "EXITED"
+    },
+    "p2": {
+     "cpu_ns": 209879999,
+     "meter": "cgroup-v1-cpuacct",
+     "problem_sha256": "b3046469980d4c7635ec78fed381506214326f173e98281904502b641cd53ad8",
+     "proved": true,
+     "status": "THEOREM",
+     "termination": "EXITED"
+    },
+    "p3": {
+     "cpu_ns": 226572000,
+     "meter": "cgroup-v1-cpuacct",
+     "problem_sha256": "2ea23767fe42b1e6704bd0eb9b78dc1eefb2e3e41b970fd087e5a538c6239e65",
+     "proved": true,
+     "status": "THEOREM",
+     "termination": "EXITED"
+    },
+    "p4": {
+     "cpu_ns": 260204000,
+     "meter": "cgroup-v1-cpuacct",
+     "problem_sha256": "62e104ad3742988a4cd74b36d90b8acc999c7623cc5f332b4b8295a7514d2e18",
+     "proved": true,
+     "status": "THEOREM",
+     "termination": "EXITED"
+    },
+    "p5": {
+     "cpu_ns": 201216000,
+     "meter": "cgroup-v1-cpuacct",
+     "problem_sha256": "3ec2f3bae7c2e510c9eba58ce828c0155796a26fc7ed7a658283f5dfedf580a6",
+     "proved": true,
+     "status": "THEOREM",
+     "termination": "EXITED"
+    },
+    "r1": {
+     "cpu_ns": 345528000,
+     "meter": "cgroup-v1-cpuacct",
+     "problem_sha256": "d98592feaa6822f21d96821b70770f9ced0d67f37a5c3ba64164d70b333e1d61",
+     "proved": true,
+     "status": "THEOREM",
+     "termination": "EXITED"
+    },
+    "r2": {
+     "cpu_ns": 234296999,
+     "meter": "cgroup-v1-cpuacct",
+     "problem_sha256": "d98592feaa6822f21d96821b70770f9ced0d67f37a5c3ba64164d70b333e1d61",
+     "proved": true,
+     "status": "THEOREM",
+     "termination": "EXITED"
+    }
+   },
+   "system": "ba_sheffer",
+   "target": "![X]: (![Y]: (![Z]: (s(s(X,s(X,X)),Y) = s(Y,s(s(s(Z,s(Z,Z)),Y),Z)))))"
+  },
+  {
+   "cpu_ratio_max_min": 1.537,
+   "index": 14,
+   "limit_s": 1,
+   "mixed_presentations": false,
+   "mixed_repeats": false,
+   "repeat_cpu_ratio_max_min": 1.502,
+   "runs": {
+    "p0": {
+     "cpu_ns": 11375999,
+     "meter": "cgroup-v1-cpuacct",
+     "problem_sha256": "61062b35c02c9b47d6e26d921d5c14839405c59163c57c7a531c2333cb5e163b",
+     "proved": true,
+     "status": "THEOREM",
+     "termination": "EXITED"
+    },
+    "p1": {
+     "cpu_ns": 8600000,
+     "meter": "cgroup-v1-cpuacct",
+     "problem_sha256": "1c4df8675c90844be652b4249ed1bd87b6c46f7fbaf1cd20cbc4ac9e76b14e8c",
+     "proved": true,
+     "status": "THEOREM",
+     "termination": "EXITED"
+    },
+    "p2": {
+     "cpu_ns": 13220000,
+     "meter": "cgroup-v1-cpuacct",
+     "problem_sha256": "342288535a77f7ac95e6d9f537d280c726dbb4b5d4a680270e8a9800571e5662",
+     "proved": true,
+     "status": "THEOREM",
+     "termination": "EXITED"
+    },
+    "p3": {
+     "cpu_ns": 12617000,
+     "meter": "cgroup-v1-cpuacct",
+     "problem_sha256": "896f356c3eb0bb4ff1329512395f4b230966ad841c961ff9a7cef29e6d9b04f7",
+     "proved": true,
+     "status": "THEOREM",
+     "termination": "EXITED"
+    },
+    "p4": {
+     "cpu_ns": 12153000,
+     "meter": "cgroup-v1-cpuacct",
+     "problem_sha256": "06e10429fb1c6708b927b64dc20643fcacc2563bc962c9fb2d9d79b264c75b0d",
+     "proved": true,
+     "status": "THEOREM",
+     "termination": "EXITED"
+    },
+    "p5": {
+     "cpu_ns": 8757000,
+     "meter": "cgroup-v1-cpuacct",
+     "problem_sha256": "a2592f4077d421e8e8a8a9ccc8831776b90d346fd99044070bfb30c3c3fe0a94",
+     "proved": true,
+     "status": "THEOREM",
+     "termination": "EXITED"
+    },
+    "r1": {
+     "cpu_ns": 8426000,
+     "meter": "cgroup-v1-cpuacct",
+     "problem_sha256": "61062b35c02c9b47d6e26d921d5c14839405c59163c57c7a531c2333cb5e163b",
+     "proved": true,
+     "status": "THEOREM",
+     "termination": "EXITED"
+    },
+    "r2": {
+     "cpu_ns": 7573000,
+     "meter": "cgroup-v1-cpuacct",
+     "problem_sha256": "61062b35c02c9b47d6e26d921d5c14839405c59163c57c7a531c2333cb5e163b",
+     "proved": true,
+     "status": "THEOREM",
+     "termination": "EXITED"
+    }
+   },
+   "system": "ba_sheffer",
+   "target": "![X]: (![Y]: (![Z]: (s(s(X,Y),s(s(Y,Z),Y)) = s(s(Y,X),s(s(Z,Y),Y)))))"
+  },
+  {
+   "cpu_ratio_max_min": null,
+   "index": 15,
+   "limit_s": 1,
+   "mixed_presentations": false,
+   "mixed_repeats": false,
+   "repeat_cpu_ratio_max_min": null,
+   "runs": {
+    "p0": {
+     "cpu_ns": 1003050999,
+     "meter": "cgroup-v1-cpuacct",
+     "problem_sha256": "cb81572ae407c87e7ae9b0b324f05391a54d70530d6355343fe3ca419a6e5271",
+     "proved": false,
+     "status": "RESOURCE_OUT",
+     "termination": "EXITED"
+    },
+    "p1": {
+     "cpu_ns": 1033999000,
+     "meter": "cgroup-v1-cpuacct",
+     "problem_sha256": "320c5c58b258e972035ee0ef718c9fd100bd70266bd65f1d437d6d67273ca8b6",
+     "proved": false,
+     "status": "RESOURCE_OUT",
+     "termination": "EXITED"
+    },
+    "p2": {
+     "cpu_ns": 1006011999,
+     "meter": "cgroup-v1-cpuacct",
+     "problem_sha256": "4eb123409e81e846b133012cdedcc841e7a0f916798ffbad9609e05abb7d63fe",
+     "proved": false,
+     "status": "RESOURCE_OUT",
+     "termination": "EXITED"
+    },
+    "p3": {
+     "cpu_ns": 1006846999,
+     "meter": "cgroup-v1-cpuacct",
+     "problem_sha256": "d03f282fa90690f69bd8a3e321c06288163c1cefe12fa01c431918cd16bf36eb",
+     "proved": false,
+     "status": "RESOURCE_OUT",
+     "termination": "EXITED"
+    },
+    "p4": {
+     "cpu_ns": 1007060000,
+     "meter": "cgroup-v1-cpuacct",
+     "problem_sha256": "13cfe036ebbf55e04c62c5bbfd4b13a3a44f7f5b6e1186b7034beda212f8694a",
+     "proved": false,
+     "status": "RESOURCE_OUT",
+     "termination": "EXITED"
+    },
+    "p5": {
+     "cpu_ns": 1004658000,
+     "meter": "cgroup-v1-cpuacct",
+     "problem_sha256": "27ce3bcd1e8bd1633181d928b5fbac972e28ceb194634e0c0b27c684196ca311",
+     "proved": false,
+     "status": "RESOURCE_OUT",
+     "termination": "EXITED"
+    },
+    "r1": {
+     "cpu_ns": 1000459000,
+     "meter": "cgroup-v1-cpuacct",
+     "problem_sha256": "cb81572ae407c87e7ae9b0b324f05391a54d70530d6355343fe3ca419a6e5271",
+     "proved": false,
+     "status": "RESOURCE_OUT",
+     "termination": "EXITED"
+    },
+    "r2": {
+     "cpu_ns": 1005045000,
+     "meter": "cgroup-v1-cpuacct",
+     "problem_sha256": "cb81572ae407c87e7ae9b0b324f05391a54d70530d6355343fe3ca419a6e5271",
+     "proved": false,
+     "status": "RESOURCE_OUT",
+     "termination": "EXITED"
+    }
+   },
+   "system": "ba_sheffer",
+   "target": "![X]: (![Y]: (![Z]: (s(s(s(s(X,Y),Z),Y),X) = s(s(Y,s(s(X,Y),X)),X))))"
+  },
+  {
+   "cpu_ratio_max_min": null,
+   "index": 16,
+   "limit_s": 1,
+   "mixed_presentations": false,
+   "mixed_repeats": false,
+   "repeat_cpu_ratio_max_min": null,
+   "runs": {
+    "p0": {
+     "cpu_ns": 1006435000,
+     "meter": "cgroup-v1-cpuacct",
+     "problem_sha256": "a2cc1d3a989bd427ea0d9d1b6c891c17c50ed032726cdca1ad2dfbe84e3ec893",
+     "proved": false,
+     "status": "RESOURCE_OUT",
+     "termination": "EXITED"
+    },
+    "p1": {
+     "cpu_ns": 1006802000,
+     "meter": "cgroup-v1-cpuacct",
+     "problem_sha256": "7756cf8d022a4a4117e7a50570ae2b44cea1adbe6e113ba526e158b271d5259c",
+     "proved": false,
+     "status": "RESOURCE_OUT",
+     "termination": "EXITED"
+    },
+    "p2": {
+     "cpu_ns": 1003874999,
+     "meter": "cgroup-v1-cpuacct",
+     "problem_sha256": "a82f1f4ea1f55fa0ab943bcf61c8d1dfe20d7fa406133e8a5354f6093cf94743",
+     "proved": false,
+     "status": "RESOURCE_OUT",
+     "termination": "EXITED"
+    },
+    "p3": {
+     "cpu_ns": 999861000,
+     "meter": "cgroup-v1-cpuacct",
+     "problem_sha256": "934a5b53a0eb4c3076045d648dc922b91bfd9134cec7185d52bebad71fc6aa92",
+     "proved": false,
+     "status": "RESOURCE_OUT",
+     "termination": "EXITED"
+    },
+    "p4": {
+     "cpu_ns": 998583999,
+     "meter": "cgroup-v1-cpuacct",
+     "problem_sha256": "d413b4c4f7ea06513d61f32b7e9e0b8a221a84ccdcacaafcd2cfa3e185cffbd0",
+     "proved": false,
+     "status": "RESOURCE_OUT",
+     "termination": "EXITED"
+    },
+    "p5": {
+     "cpu_ns": 1007782999,
+     "meter": "cgroup-v1-cpuacct",
+     "problem_sha256": "92e2aae44fd3263c6a4a3ecf6e6e44b8544b8a65bbbf7e1b8f8bd0c5f9affeae",
+     "proved": false,
+     "status": "RESOURCE_OUT",
+     "termination": "EXITED"
+    },
+    "r1": {
+     "cpu_ns": 1000953999,
+     "meter": "cgroup-v1-cpuacct",
+     "problem_sha256": "a2cc1d3a989bd427ea0d9d1b6c891c17c50ed032726cdca1ad2dfbe84e3ec893",
+     "proved": false,
+     "status": "RESOURCE_OUT",
+     "termination": "EXITED"
+    },
+    "r2": {
+     "cpu_ns": 1003439000,
+     "meter": "cgroup-v1-cpuacct",
+     "problem_sha256": "a2cc1d3a989bd427ea0d9d1b6c891c17c50ed032726cdca1ad2dfbe84e3ec893",
+     "proved": false,
+     "status": "RESOURCE_OUT",
+     "termination": "EXITED"
+    }
+   },
+   "system": "ba_sheffer",
+   "target": "![X]: (![Y]: (![Z]: (s(s(s(s(X,X),Y),Z),Z) = s(s(Z,s(s(Z,X),Y)),Z))))"
+  },
+  {
+   "cpu_ratio_max_min": 1.204,
+   "index": 17,
+   "limit_s": 1,
+   "mixed_presentations": false,
+   "mixed_repeats": false,
+   "repeat_cpu_ratio_max_min": 1.27,
+   "runs": {
+    "p0": {
+     "cpu_ns": 597866000,
+     "meter": "cgroup-v1-cpuacct",
+     "problem_sha256": "8a303729e590a2b127900fc4a6bd2efa3fcb719515bb6b3bdf2b93d789e623a7",
+     "proved": true,
+     "status": "THEOREM",
+     "termination": "EXITED"
+    },
+    "p1": {
+     "cpu_ns": 598050000,
+     "meter": "cgroup-v1-cpuacct",
+     "problem_sha256": "2626bd620f29a29751387c45c09e5268648afede813014cf6c23cbe4580ac7f8",
+     "proved": true,
+     "status": "THEOREM",
+     "termination": "EXITED"
+    },
+    "p2": {
+     "cpu_ns": 631474000,
+     "meter": "cgroup-v1-cpuacct",
+     "problem_sha256": "da996cd017446920cb504cd41c33a49af39c2a0d35a303a642c42835c7bc3c1d",
+     "proved": true,
+     "status": "THEOREM",
+     "termination": "EXITED"
+    },
+    "p3": {
+     "cpu_ns": 591616000,
+     "meter": "cgroup-v1-cpuacct",
+     "problem_sha256": "0219439e8c215063ffc1be6da1698dbb8219f8d84e3f22190e73d7c1603d7358",
+     "proved": true,
+     "status": "THEOREM",
+     "termination": "EXITED"
+    },
+    "p4": {
+     "cpu_ns": 667410999,
+     "meter": "cgroup-v1-cpuacct",
+     "problem_sha256": "2e8981d72b84392afae0ebfdf5246b8c00f3ff899fac1141eff25ecded7a3921",
+     "proved": true,
+     "status": "THEOREM",
+     "termination": "EXITED"
+    },
+    "p5": {
+     "cpu_ns": 554318000,
+     "meter": "cgroup-v1-cpuacct",
+     "problem_sha256": "d8ca4febb8d94247870bbe52f6563dd251bb688229ce806b20c027439e1b5ca7",
+     "proved": true,
+     "status": "THEOREM",
+     "termination": "EXITED"
+    },
+    "r1": {
+     "cpu_ns": 573815000,
+     "meter": "cgroup-v1-cpuacct",
+     "problem_sha256": "8a303729e590a2b127900fc4a6bd2efa3fcb719515bb6b3bdf2b93d789e623a7",
+     "proved": true,
+     "status": "THEOREM",
+     "termination": "EXITED"
+    },
+    "r2": {
+     "cpu_ns": 728696000,
+     "meter": "cgroup-v1-cpuacct",
+     "problem_sha256": "8a303729e590a2b127900fc4a6bd2efa3fcb719515bb6b3bdf2b93d789e623a7",
+     "proved": true,
+     "status": "THEOREM",
+     "termination": "EXITED"
+    }
+   },
+   "system": "ba_sheffer",
+   "target": "![X]: (![Y]: (![Z]: (s(s(X,s(X,Y)),s(Z,Y)) = s(s(X,s(Y,Y)),s(Y,Z)))))"
+  },
+  {
+   "cpu_ratio_max_min": null,
+   "index": 18,
+   "limit_s": 1,
+   "mixed_presentations": false,
+   "mixed_repeats": false,
+   "repeat_cpu_ratio_max_min": null,
+   "runs": {
+    "p0": {
+     "cpu_ns": 1004911000,
+     "meter": "cgroup-v1-cpuacct",
+     "problem_sha256": "6d352db8a4f7d6a579b3f02d64d07964541521abc9b94bae18fbe03e49241d06",
+     "proved": false,
+     "status": "RESOURCE_OUT",
+     "termination": "EXITED"
+    },
+    "p1": {
+     "cpu_ns": 1000008999,
+     "meter": "cgroup-v1-cpuacct",
+     "problem_sha256": "9742e5d67e627b63f3341424fcb6ddd93788c3ccfb61d8f578e6f8a88f2b73e8",
+     "proved": false,
+     "status": "RESOURCE_OUT",
+     "termination": "EXITED"
+    },
+    "p2": {
+     "cpu_ns": 1001841000,
+     "meter": "cgroup-v1-cpuacct",
+     "problem_sha256": "f41c448ad9d81b56f62f4e269e512918d57a1c76c30a86359fb37b639546c73e",
+     "proved": false,
+     "status": "RESOURCE_OUT",
+     "termination": "EXITED"
+    },
+    "p3": {
+     "cpu_ns": 1000108999,
+     "meter": "cgroup-v1-cpuacct",
+     "problem_sha256": "8639a5ed80beb4422a3949783f9777a9934c69527d467bdf51ff448da7449198",
+     "proved": false,
+     "status": "RESOURCE_OUT",
+     "termination": "EXITED"
+    },
+    "p4": {
+     "cpu_ns": 1005199000,
+     "meter": "cgroup-v1-cpuacct",
+     "problem_sha256": "09cfb5370383fdf30416f933d8231395fb509e054901bf3d7a26720b7dc2a76a",
+     "proved": false,
+     "status": "RESOURCE_OUT",
+     "termination": "EXITED"
+    },
+    "p5": {
+     "cpu_ns": 1003487999,
+     "meter": "cgroup-v1-cpuacct",
+     "problem_sha256": "a39490e0e0c8e58671ed95a4f293aa16c8aca8b34a0eb4b974d41322166ec69a",
+     "proved": false,
+     "status": "RESOURCE_OUT",
+     "termination": "EXITED"
+    },
+    "r1": {
+     "cpu_ns": 1002289999,
+     "meter": "cgroup-v1-cpuacct",
+     "problem_sha256": "6d352db8a4f7d6a579b3f02d64d07964541521abc9b94bae18fbe03e49241d06",
+     "proved": false,
+     "status": "RESOURCE_OUT",
+     "termination": "EXITED"
+    },
+    "r2": {
+     "cpu_ns": 999807000,
+     "meter": "cgroup-v1-cpuacct",
+     "problem_sha256": "6d352db8a4f7d6a579b3f02d64d07964541521abc9b94bae18fbe03e49241d06",
+     "proved": false,
+     "status": "RESOURCE_OUT",
+     "termination": "EXITED"
+    }
+   },
+   "system": "ba_sheffer",
+   "target": "![X]: (![Y]: (![Z]: (s(X,s(s(X,Y),s(Z,Z))) = s(X,s(s(Z,Z),s(Y,Y))))))"
+  },
+  {
+   "cpu_ratio_max_min": 1.371,
+   "index": 19,
+   "limit_s": 1,
+   "mixed_presentations": false,
+   "mixed_repeats": false,
+   "repeat_cpu_ratio_max_min": 1.199,
+   "runs": {
+    "p0": {
+     "cpu_ns": 10332000,
+     "meter": "cgroup-v1-cpuacct",
+     "problem_sha256": "a1311c7ba2236e2bec7b4ed8d64c862e62b67da58c52a8e23888fdc161359233",
+     "proved": true,
+     "status": "THEOREM",
+     "termination": "EXITED"
+    },
+    "p1": {
+     "cpu_ns": 7561000,
+     "meter": "cgroup-v1-cpuacct",
+     "problem_sha256": "4ad385fc5cff9a2f0f5de6a1c622e2f9159b7d51ea26fedea8b9e357d311ab6e",
+     "proved": true,
+     "status": "THEOREM",
+     "termination": "EXITED"
+    },
+    "p2": {
+     "cpu_ns": 8509000,
+     "meter": "cgroup-v1-cpuacct",
+     "problem_sha256": "9e0a8f4a126dc505cd39e1b1361542a8e75089ae52ae5cb5f1267435accfd9d4",
+     "proved": true,
+     "status": "THEOREM",
+     "termination": "EXITED"
+    },
+    "p3": {
+     "cpu_ns": 9013000,
+     "meter": "cgroup-v1-cpuacct",
+     "problem_sha256": "56d12d200afa9f09e5e07fe9acb8890be4206745702dcd8235bdd1ca1a09f964",
+     "proved": true,
+     "status": "THEOREM",
+     "termination": "EXITED"
+    },
+    "p4": {
+     "cpu_ns": 8132000,
+     "meter": "cgroup-v1-cpuacct",
+     "problem_sha256": "4d7d0e27408c4dd40ac126bc7426cff802a85a6e55c9966103fa19934388de4c",
+     "proved": true,
+     "status": "THEOREM",
+     "termination": "EXITED"
+    },
+    "p5": {
+     "cpu_ns": 10362999,
+     "meter": "cgroup-v1-cpuacct",
+     "problem_sha256": "3727e19ac1adcc54b5797be775a628f612db2b35285ef202b55e96757330bdb4",
+     "proved": true,
+     "status": "THEOREM",
+     "termination": "EXITED"
+    },
+    "r1": {
+     "cpu_ns": 10402000,
+     "meter": "cgroup-v1-cpuacct",
+     "problem_sha256": "a1311c7ba2236e2bec7b4ed8d64c862e62b67da58c52a8e23888fdc161359233",
+     "proved": true,
+     "status": "THEOREM",
+     "termination": "EXITED"
+    },
+    "r2": {
+     "cpu_ns": 8676999,
+     "meter": "cgroup-v1-cpuacct",
+     "problem_sha256": "a1311c7ba2236e2bec7b4ed8d64c862e62b67da58c52a8e23888fdc161359233",
+     "proved": true,
+     "status": "THEOREM",
+     "termination": "EXITED"
+    }
+   },
+   "system": "ba_sheffer",
+   "target": "![X]: (![Y]: (![Z]: (s(s(X,s(Y,X)),s(Z,Y)) = s(s(Z,Y),s(X,s(Y,X))))))"
+  },
+  {
+   "cpu_ratio_max_min": null,
+   "index": 0,
+   "limit_s": 3,
+   "mixed_presentations": false,
+   "mixed_repeats": false,
+   "repeat_cpu_ratio_max_min": null,
+   "runs": {
+    "p0": {
+     "cpu_ns": 3006929000,
+     "meter": "cgroup-v1-cpuacct",
+     "problem_sha256": "4cdfb37ca31759be9625b763403a114a32d53e241ef8d5a22f1a484ca9697725",
+     "proved": false,
+     "status": "RESOURCE_OUT",
+     "termination": "EXITED"
+    },
+    "p1": {
+     "cpu_ns": 3004879000,
+     "meter": "cgroup-v1-cpuacct",
+     "problem_sha256": "29b4ab5de5961de49fff2c30d39b7c974323687d9f3eba56afb907f7c8ecc375",
+     "proved": false,
+     "status": "RESOURCE_OUT",
+     "termination": "EXITED"
+    },
+    "p2": {
+     "cpu_ns": 3021888000,
+     "meter": "cgroup-v1-cpuacct",
+     "problem_sha256": "4cdfb37ca31759be9625b763403a114a32d53e241ef8d5a22f1a484ca9697725",
+     "proved": false,
+     "status": "RESOURCE_OUT",
+     "termination": "EXITED"
+    },
+    "p3": {
+     "cpu_ns": 3007587000,
+     "meter": "cgroup-v1-cpuacct",
+     "problem_sha256": "5870ac16a72859ba91c6e9533dc956264e88765a416910d3aa69a2592379fa57",
+     "proved": false,
+     "status": "RESOURCE_OUT",
+     "termination": "EXITED"
+    },
+    "p4": {
+     "cpu_ns": 3001302000,
+     "meter": "cgroup-v1-cpuacct",
+     "problem_sha256": "13172c0e5909a4e345ad41176aa0973837d1e30e2557838fbf0ed8eb2faa3122",
+     "proved": false,
+     "status": "RESOURCE_OUT",
+     "termination": "EXITED"
+    },
+    "p5": {
+     "cpu_ns": 3002856999,
+     "meter": "cgroup-v1-cpuacct",
+     "problem_sha256": "45e59f42ceefac92827bedb39b8523aecbedbb68da3db81cff6f5137bbb2467f",
+     "proved": false,
+     "status": "RESOURCE_OUT",
+     "termination": "EXITED"
+    },
+    "r1": {
+     "cpu_ns": 3000827000,
+     "meter": "cgroup-v1-cpuacct",
+     "problem_sha256": "4cdfb37ca31759be9625b763403a114a32d53e241ef8d5a22f1a484ca9697725",
+     "proved": false,
+     "status": "RESOURCE_OUT",
+     "termination": "EXITED"
+    },
+    "r2": {
+     "cpu_ns": 3002506999,
+     "meter": "cgroup-v1-cpuacct",
+     "problem_sha256": "4cdfb37ca31759be9625b763403a114a32d53e241ef8d5a22f1a484ca9697725",
+     "proved": false,
+     "status": "RESOURCE_OUT",
+     "termination": "EXITED"
+    }
+   },
+   "system": "ba_wolfram",
+   "target": "![X]: (![Y]: (![Z]: (s(s(X,s(Y,Y)),s(Z,X)) = s(s(X,Z),s(X,s(Y,X))))))"
+  },
+  {
+   "cpu_ratio_max_min": null,
+   "index": 1,
+   "limit_s": 3,
+   "mixed_presentations": false,
+   "mixed_repeats": false,
+   "repeat_cpu_ratio_max_min": null,
+   "runs": {
+    "p0": {
+     "cpu_ns": 3002182000,
+     "meter": "cgroup-v1-cpuacct",
+     "problem_sha256": "8750efff96c474450582402cdf356665f0b8f6f955d881ea744367fa3b904511",
+     "proved": false,
+     "status": "RESOURCE_OUT",
+     "termination": "EXITED"
+    },
+    "p1": {
+     "cpu_ns": 3000666000,
+     "meter": "cgroup-v1-cpuacct",
+     "problem_sha256": "ca3fcec60f18d6c56d85737030a59c0d474dbc131d594af63c55d36b8a011008",
+     "proved": false,
+     "status": "RESOURCE_OUT",
+     "termination": "EXITED"
+    },
+    "p2": {
+     "cpu_ns": 3007395000,
+     "meter": "cgroup-v1-cpuacct",
+     "problem_sha256": "8750efff96c474450582402cdf356665f0b8f6f955d881ea744367fa3b904511",
+     "proved": false,
+     "status": "RESOURCE_OUT",
+     "termination": "EXITED"
+    },
+    "p3": {
+     "cpu_ns": 3001155000,
+     "meter": "cgroup-v1-cpuacct",
+     "problem_sha256": "f00db23fc8504e237e6bfea5a0ed4d47e3e22a92c738fa026af7059f38ae6eee",
+     "proved": false,
+     "status": "RESOURCE_OUT",
+     "termination": "EXITED"
+    },
+    "p4": {
+     "cpu_ns": 3002583000,
+     "meter": "cgroup-v1-cpuacct",
+     "problem_sha256": "7261eead4d15c81183b3eb9aac1c08022777546210decb00970bf3f269e97dac",
+     "proved": false,
+     "status": "RESOURCE_OUT",
+     "termination": "EXITED"
+    },
+    "p5": {
+     "cpu_ns": 3003654999,
+     "meter": "cgroup-v1-cpuacct",
+     "problem_sha256": "370127266564a1ad103df41ab17037b3943894752d8c28cebc6fbd85e9dff927",
+     "proved": false,
+     "status": "RESOURCE_OUT",
+     "termination": "EXITED"
+    },
+    "r1": {
+     "cpu_ns": 2999510000,
+     "meter": "cgroup-v1-cpuacct",
+     "problem_sha256": "8750efff96c474450582402cdf356665f0b8f6f955d881ea744367fa3b904511",
+     "proved": false,
+     "status": "RESOURCE_OUT",
+     "termination": "EXITED"
+    },
+    "r2": {
+     "cpu_ns": 3001063000,
+     "meter": "cgroup-v1-cpuacct",
+     "problem_sha256": "8750efff96c474450582402cdf356665f0b8f6f955d881ea744367fa3b904511",
+     "proved": false,
+     "status": "RESOURCE_OUT",
+     "termination": "EXITED"
+    }
+   },
+   "system": "ba_wolfram",
+   "target": "![X]: (![Y]: (s(s(X,s(s(Y,Y),s(X,X))),Y) = s(s(Y,X),Y)))"
+  },
+  {
+   "cpu_ratio_max_min": null,
+   "index": 2,
+   "limit_s": 3,
+   "mixed_presentations": false,
+   "mixed_repeats": false,
+   "repeat_cpu_ratio_max_min": null,
+   "runs": {
+    "p0": {
+     "cpu_ns": 3001446000,
+     "meter": "cgroup-v1-cpuacct",
+     "problem_sha256": "0ea1e33bc8366033dd85551ddfecbe4d025c83ee414be04a4586431c9fca5e69",
+     "proved": false,
+     "status": "RESOURCE_OUT",
+     "termination": "EXITED"
+    },
+    "p1": {
+     "cpu_ns": 3003672000,
+     "meter": "cgroup-v1-cpuacct",
+     "problem_sha256": "9f6a866f62c658bf7bae63a2e50952b2bbc4398f1afb8f7b4b22fc83f1e3fd12",
+     "proved": false,
+     "status": "RESOURCE_OUT",
+     "termination": "EXITED"
+    },
+    "p2": {
+     "cpu_ns": 3006058000,
+     "meter": "cgroup-v1-cpuacct",
+     "problem_sha256": "0ea1e33bc8366033dd85551ddfecbe4d025c83ee414be04a4586431c9fca5e69",
+     "proved": false,
+     "status": "RESOURCE_OUT",
+     "termination": "EXITED"
+    },
+    "p3": {
+     "cpu_ns": 3000088000,
+     "meter": "cgroup-v1-cpuacct",
+     "problem_sha256": "d07cbaad79108db9b7381b7ae1c36daf6774ee2211763b1b1873f408c3e790d4",
+     "proved": false,
+     "status": "RESOURCE_OUT",
+     "termination": "EXITED"
+    },
+    "p4": {
+     "cpu_ns": 3003962999,
+     "meter": "cgroup-v1-cpuacct",
+     "problem_sha256": "f9d6989d2b40d267fbff9278e6a492d817a0dd35256dfcd53fc60c2ee46cc6f0",
+     "proved": false,
+     "status": "RESOURCE_OUT",
+     "termination": "EXITED"
+    },
+    "p5": {
+     "cpu_ns": 3004888999,
+     "meter": "cgroup-v1-cpuacct",
+     "problem_sha256": "fb61102cc264ba551430b89c787d1c5cbc0d50163ff7f6ec76cc93a0b59527b0",
+     "proved": false,
+     "status": "RESOURCE_OUT",
+     "termination": "EXITED"
+    },
+    "r1": {
+     "cpu_ns": 3007885000,
+     "meter": "cgroup-v1-cpuacct",
+     "problem_sha256": "0ea1e33bc8366033dd85551ddfecbe4d025c83ee414be04a4586431c9fca5e69",
+     "proved": false,
+     "status": "RESOURCE_OUT",
+     "termination": "EXITED"
+    },
+    "r2": {
+     "cpu_ns": 3022399000,
+     "meter": "cgroup-v1-cpuacct",
+     "problem_sha256": "0ea1e33bc8366033dd85551ddfecbe4d025c83ee414be04a4586431c9fca5e69",
+     "proved": false,
+     "status": "RESOURCE_OUT",
+     "termination": "EXITED"
+    }
+   },
+   "system": "ba_wolfram",
+   "target": "![X]: (![Y]: (![Z]: (s(s(X,Y),s(s(s(Z,Y),Y),Y)) = s(s(X,Y),s(Z,Y)))))"
+  },
+  {
+   "cpu_ratio_max_min": null,
+   "index": 3,
+   "limit_s": 3,
+   "mixed_presentations": false,
+   "mixed_repeats": false,
+   "repeat_cpu_ratio_max_min": null,
+   "runs": {
+    "p0": {
+     "cpu_ns": 3006180000,
+     "meter": "cgroup-v1-cpuacct",
+     "problem_sha256": "b10b2874eb97cf6096fe5224930ac5416d28c4139f29a1c8e2e1d2bb8a92942e",
+     "proved": false,
+     "status": "RESOURCE_OUT",
+     "termination": "EXITED"
+    },
+    "p1": {
+     "cpu_ns": 3005557000,
+     "meter": "cgroup-v1-cpuacct",
+     "problem_sha256": "973a91bfa47bb3b2d56294bc7f183aaa6062bf66c6a0ac05ea46645c5ecab482",
+     "proved": false,
+     "status": "RESOURCE_OUT",
+     "termination": "EXITED"
+    },
+    "p2": {
+     "cpu_ns": 3005747000,
+     "meter": "cgroup-v1-cpuacct",
+     "problem_sha256": "b10b2874eb97cf6096fe5224930ac5416d28c4139f29a1c8e2e1d2bb8a92942e",
+     "proved": false,
+     "status": "RESOURCE_OUT",
+     "termination": "EXITED"
+    },
+    "p3": {
+     "cpu_ns": 3004353000,
+     "meter": "cgroup-v1-cpuacct",
+     "problem_sha256": "1711757bf0e633cf73ca4cffb1c0f7c26bbd8acd9ffaf1ffc59c2be0d7ab1f3a",
+     "proved": false,
+     "status": "RESOURCE_OUT",
+     "termination": "EXITED"
+    },
+    "p4": {
+     "cpu_ns": 3004148000,
+     "meter": "cgroup-v1-cpuacct",
+     "problem_sha256": "31487db516ed9572e98d54c872813ef99d96b9b605de48b77f0381316621598b",
+     "proved": false,
+     "status": "RESOURCE_OUT",
+     "termination": "EXITED"
+    },
+    "p5": {
+     "cpu_ns": 3001662000,
+     "meter": "cgroup-v1-cpuacct",
+     "problem_sha256": "33fd65a9d2cd6dae429506666004a61286df1be5cc0f3c2bb3f57c197b045220",
+     "proved": false,
+     "status": "RESOURCE_OUT",
+     "termination": "EXITED"
+    },
+    "r1": {
+     "cpu_ns": 3001667000,
+     "meter": "cgroup-v1-cpuacct",
+     "problem_sha256": "b10b2874eb97cf6096fe5224930ac5416d28c4139f29a1c8e2e1d2bb8a92942e",
+     "proved": false,
+     "status": "RESOURCE_OUT",
+     "termination": "EXITED"
+    },
+    "r2": {
+     "cpu_ns": 3006577000,
+     "meter": "cgroup-v1-cpuacct",
+     "problem_sha256": "b10b2874eb97cf6096fe5224930ac5416d28c4139f29a1c8e2e1d2bb8a92942e",
+     "proved": false,
+     "status": "RESOURCE_OUT",
+     "termination": "EXITED"
+    }
+   },
+   "system": "ba_wolfram",
+   "target": "![X]: (![Y]: (s(X,s(s(s(X,X),X),X)) = s(X,s(X,s(s(X,Y),Y)))))"
+  },
+  {
+   "cpu_ratio_max_min": null,
+   "index": 4,
+   "limit_s": 3,
+   "mixed_presentations": false,
+   "mixed_repeats": false,
+   "repeat_cpu_ratio_max_min": null,
+   "runs": {
+    "p0": {
+     "cpu_ns": 3001791000,
+     "meter": "cgroup-v1-cpuacct",
+     "problem_sha256": "c08e8a5e1facba8400605e672266eef28305d8d329e98734df7b0f9f75c814a7",
+     "proved": false,
+     "status": "RESOURCE_OUT",
+     "termination": "EXITED"
+    },
+    "p1": {
+     "cpu_ns": 3003683000,
+     "meter": "cgroup-v1-cpuacct",
+     "problem_sha256": "5592234f11003cbdbdecd9c300192317c1ca06999b0154f22ddb632a2b3f6ee9",
+     "proved": false,
+     "status": "RESOURCE_OUT",
+     "termination": "EXITED"
+    },
+    "p2": {
+     "cpu_ns": 2997289000,
+     "meter": "cgroup-v1-cpuacct",
+     "problem_sha256": "c08e8a5e1facba8400605e672266eef28305d8d329e98734df7b0f9f75c814a7",
+     "proved": false,
+     "status": "RESOURCE_OUT",
+     "termination": "EXITED"
+    },
+    "p3": {
+     "cpu_ns": 3006150999,
+     "meter": "cgroup-v1-cpuacct",
+     "problem_sha256": "02e9488f094eb8b1d758c603ca0da316898b340b8b91cdd9e986f1cf4c284c26",
+     "proved": false,
+     "status": "RESOURCE_OUT",
+     "termination": "EXITED"
+    },
+    "p4": {
+     "cpu_ns": 3006682000,
+     "meter": "cgroup-v1-cpuacct",
+     "problem_sha256": "5a966f4447fac452303bdacf723e23b1d33217c9d4c658764893025b248c7740",
+     "proved": false,
+     "status": "RESOURCE_OUT",
+     "termination": "EXITED"
+    },
+    "p5": {
+     "cpu_ns": 3004045000,
+     "meter": "cgroup-v1-cpuacct",
+     "problem_sha256": "fa8997f03a84dca72d6e82c2c6e418810fe86212462b48e0460749962852236c",
+     "proved": false,
+     "status": "RESOURCE_OUT",
+     "termination": "EXITED"
+    },
+    "r1": {
+     "cpu_ns": 3006995000,
+     "meter": "cgroup-v1-cpuacct",
+     "problem_sha256": "c08e8a5e1facba8400605e672266eef28305d8d329e98734df7b0f9f75c814a7",
+     "proved": false,
+     "status": "RESOURCE_OUT",
+     "termination": "EXITED"
+    },
+    "r2": {
+     "cpu_ns": 3000748000,
+     "meter": "cgroup-v1-cpuacct",
+     "problem_sha256": "c08e8a5e1facba8400605e672266eef28305d8d329e98734df7b0f9f75c814a7",
+     "proved": false,
+     "status": "RESOURCE_OUT",
+     "termination": "EXITED"
+    }
+   },
+   "system": "ba_wolfram",
+   "target": "![X]: (![Y]: (![Z]: (s(s(s(s(X,Y),Z),X),X) = s(X,s(X,s(s(Y,X),Z))))))"
+  },
+  {
+   "cpu_ratio_max_min": null,
+   "index": 5,
+   "limit_s": 3,
+   "mixed_presentations": false,
+   "mixed_repeats": false,
+   "repeat_cpu_ratio_max_min": null,
+   "runs": {
+    "p0": {
+     "cpu_ns": 3000024000,
+     "meter": "cgroup-v1-cpuacct",
+     "problem_sha256": "262c08b92cb5855449fbf6eefd9e406064ce94dd8e93bf557dcd46977a968be0",
+     "proved": false,
+     "status": "RESOURCE_OUT",
+     "termination": "EXITED"
+    },
+    "p1": {
+     "cpu_ns": 3006787000,
+     "meter": "cgroup-v1-cpuacct",
+     "problem_sha256": "daacc08ba239e2c00c26d6401668405c4faec28ae4533719e1040fadbe974fbf",
+     "proved": false,
+     "status": "RESOURCE_OUT",
+     "termination": "EXITED"
+    },
+    "p2": {
+     "cpu_ns": 3005621000,
+     "meter": "cgroup-v1-cpuacct",
+     "problem_sha256": "262c08b92cb5855449fbf6eefd9e406064ce94dd8e93bf557dcd46977a968be0",
+     "proved": false,
+     "status": "RESOURCE_OUT",
+     "termination": "EXITED"
+    },
+    "p3": {
+     "cpu_ns": 3004400000,
+     "meter": "cgroup-v1-cpuacct",
+     "problem_sha256": "997e47fcd5d0f0544837844fb39cebf30bb66d0a0cfbb011d1d8b3befc1e4e2d",
+     "proved": false,
+     "status": "RESOURCE_OUT",
+     "termination": "EXITED"
+    },
+    "p4": {
+     "cpu_ns": 3001607000,
+     "meter": "cgroup-v1-cpuacct",
+     "problem_sha256": "c9ad16aa8ec243174bc811a09e2e4a04005f8552bbd4bc6dd277019849551691",
+     "proved": false,
+     "status": "RESOURCE_OUT",
+     "termination": "EXITED"
+    },
+    "p5": {
+     "cpu_ns": 3002958000,
+     "meter": "cgroup-v1-cpuacct",
+     "problem_sha256": "a83d358405f1e5be77bfdd79d86991140d2528707f799d30fa6a0a65412ebed0",
+     "proved": false,
+     "status": "RESOURCE_OUT",
+     "termination": "EXITED"
+    },
+    "r1": {
+     "cpu_ns": 3004188000,
+     "meter": "cgroup-v1-cpuacct",
+     "problem_sha256": "262c08b92cb5855449fbf6eefd9e406064ce94dd8e93bf557dcd46977a968be0",
+     "proved": false,
+     "status": "RESOURCE_OUT",
+     "termination": "EXITED"
+    },
+    "r2": {
+     "cpu_ns": 3000778000,
+     "meter": "cgroup-v1-cpuacct",
+     "problem_sha256": "262c08b92cb5855449fbf6eefd9e406064ce94dd8e93bf557dcd46977a968be0",
+     "proved": false,
+     "status": "RESOURCE_OUT",
+     "termination": "EXITED"
+    }
+   },
+   "system": "ba_wolfram",
+   "target": "![X]: (![Y]: (![Z]: (s(s(s(s(X,Y),Z),Z),X) = s(s(Z,s(s(Z,Y),X)),X))))"
+  },
+  {
+   "cpu_ratio_max_min": null,
+   "index": 6,
+   "limit_s": 3,
+   "mixed_presentations": false,
+   "mixed_repeats": false,
+   "repeat_cpu_ratio_max_min": null,
+   "runs": {
+    "p0": {
+     "cpu_ns": 3004900000,
+     "meter": "cgroup-v1-cpuacct",
+     "problem_sha256": "6c51e7fdf256fcb9e66990665f33424084ed8f343a08d3a357fb22f6aa4dcd3c",
+     "proved": false,
+     "status": "RESOURCE_OUT",
+     "termination": "EXITED"
+    },
+    "p1": {
+     "cpu_ns": 3000888000,
+     "meter": "cgroup-v1-cpuacct",
+     "problem_sha256": "b6409724f1a9c581c08f54e39497d3f7b75ce626cc161197ebd43a815db90f5a",
+     "proved": false,
+     "status": "RESOURCE_OUT",
+     "termination": "EXITED"
+    },
+    "p2": {
+     "cpu_ns": 3006582000,
+     "meter": "cgroup-v1-cpuacct",
+     "problem_sha256": "6c51e7fdf256fcb9e66990665f33424084ed8f343a08d3a357fb22f6aa4dcd3c",
+     "proved": false,
+     "status": "RESOURCE_OUT",
+     "termination": "EXITED"
+    },
+    "p3": {
+     "cpu_ns": 3004250000,
+     "meter": "cgroup-v1-cpuacct",
+     "problem_sha256": "712f2455bf67818ed02a2b43fd3c19041839c4262f9fc1d375d5fa16cc49321c",
+     "proved": false,
+     "status": "RESOURCE_OUT",
+     "termination": "EXITED"
+    },
+    "p4": {
+     "cpu_ns": 3007246000,
+     "meter": "cgroup-v1-cpuacct",
+     "problem_sha256": "a3bf2aca2af91be1e85f1685c3136eb43cd8117a049c24bf2b85eb94c025946e",
+     "proved": false,
+     "status": "RESOURCE_OUT",
+     "termination": "EXITED"
+    },
+    "p5": {
+     "cpu_ns": 3003589000,
+     "meter": "cgroup-v1-cpuacct",
+     "problem_sha256": "e4da9f72d6f1e17b4cc9025b5e12b852d568d3cd294788cc2453b4b8e0d5c91e",
+     "proved": false,
+     "status": "RESOURCE_OUT",
+     "termination": "EXITED"
+    },
+    "r1": {
+     "cpu_ns": 3009093000,
+     "meter": "cgroup-v1-cpuacct",
+     "problem_sha256": "6c51e7fdf256fcb9e66990665f33424084ed8f343a08d3a357fb22f6aa4dcd3c",
+     "proved": false,
+     "status": "RESOURCE_OUT",
+     "termination": "EXITED"
+    },
+    "r2": {
+     "cpu_ns": 3006763000,
+     "meter": "cgroup-v1-cpuacct",
+     "problem_sha256": "6c51e7fdf256fcb9e66990665f33424084ed8f343a08d3a357fb22f6aa4dcd3c",
+     "proved": false,
+     "status": "RESOURCE_OUT",
+     "termination": "EXITED"
+    }
+   },
+   "system": "ba_wolfram",
+   "target": "![X]: (![Y]: (s(s(X,Y),s(s(Y,X),s(Y,Y))) = s(s(Y,X),Y)))"
+  },
+  {
+   "cpu_ratio_max_min": null,
+   "index": 7,
+   "limit_s": 3,
+   "mixed_presentations": false,
+   "mixed_repeats": false,
+   "repeat_cpu_ratio_max_min": null,
+   "runs": {
+    "p0": {
+     "cpu_ns": 3000329000,
+     "meter": "cgroup-v1-cpuacct",
+     "problem_sha256": "98421d989a5919110910817c077a616e9b613a4e8c89698edae07d8eed607ba9",
+     "proved": false,
+     "status": "RESOURCE_OUT",
+     "termination": "EXITED"
+    },
+    "p1": {
+     "cpu_ns": 3002890000,
+     "meter": "cgroup-v1-cpuacct",
+     "problem_sha256": "3df1ac6057ba8fbb72229fb732b6ac34e35cef936cf081f1c663efe4b912c58d",
+     "proved": false,
+     "status": "RESOURCE_OUT",
+     "termination": "EXITED"
+    },
+    "p2": {
+     "cpu_ns": 3004771000,
+     "meter": "cgroup-v1-cpuacct",
+     "problem_sha256": "98421d989a5919110910817c077a616e9b613a4e8c89698edae07d8eed607ba9",
+     "proved": false,
+     "status": "RESOURCE_OUT",
+     "termination": "EXITED"
+    },
+    "p3": {
+     "cpu_ns": 3008159000,
+     "meter": "cgroup-v1-cpuacct",
+     "problem_sha256": "5e564323e7dc8063e3ecd9bdd2f9a1a3f877208291fc753ee2218b723997e20d",
+     "proved": false,
+     "status": "RESOURCE_OUT",
+     "termination": "EXITED"
+    },
+    "p4": {
+     "cpu_ns": 3003065000,
+     "meter": "cgroup-v1-cpuacct",
+     "problem_sha256": "a81959498d0f05caa089e1369ed28268a3bcf3708bfecb65bace667f3089f568",
+     "proved": false,
+     "status": "RESOURCE_OUT",
+     "termination": "EXITED"
+    },
+    "p5": {
+     "cpu_ns": 3006479000,
+     "meter": "cgroup-v1-cpuacct",
+     "problem_sha256": "e6babee21408fe6c8a23f60ddf4f6fb8d0fc65ff286c848c239f121197a706c2",
+     "proved": false,
+     "status": "RESOURCE_OUT",
+     "termination": "EXITED"
+    },
+    "r1": {
+     "cpu_ns": 3006618000,
+     "meter": "cgroup-v1-cpuacct",
+     "problem_sha256": "98421d989a5919110910817c077a616e9b613a4e8c89698edae07d8eed607ba9",
+     "proved": false,
+     "status": "RESOURCE_OUT",
+     "termination": "EXITED"
+    },
+    "r2": {
+     "cpu_ns": 3004022999,
+     "meter": "cgroup-v1-cpuacct",
+     "problem_sha256": "98421d989a5919110910817c077a616e9b613a4e8c89698edae07d8eed607ba9",
+     "proved": false,
+     "status": "RESOURCE_OUT",
+     "termination": "EXITED"
+    }
+   },
+   "system": "ba_wolfram",
+   "target": "![X]: (![Y]: (![Z]: (s(s(s(X,Y),X),s(X,Z)) = s(s(Z,X),s(X,s(Y,X))))))"
+  },
+  {
+   "cpu_ratio_max_min": null,
+   "index": 8,
+   "limit_s": 3,
+   "mixed_presentations": false,
+   "mixed_repeats": false,
+   "repeat_cpu_ratio_max_min": null,
+   "runs": {
+    "p0": {
+     "cpu_ns": 3003108000,
+     "meter": "cgroup-v1-cpuacct",
+     "problem_sha256": "88315b270ed33e707b54351b99529a94ed654cad057e32a58bb2b81d67f94ecc",
+     "proved": false,
+     "status": "RESOURCE_OUT",
+     "termination": "EXITED"
+    },
+    "p1": {
+     "cpu_ns": 3004639999,
+     "meter": "cgroup-v1-cpuacct",
+     "problem_sha256": "ecc202fc82c16bebbc51bd2f7fd8746d587322c205cfbf01b3d45cdce6bde634",
+     "proved": false,
+     "status": "RESOURCE_OUT",
+     "termination": "EXITED"
+    },
+    "p2": {
+     "cpu_ns": 3006320000,
+     "meter": "cgroup-v1-cpuacct",
+     "problem_sha256": "88315b270ed33e707b54351b99529a94ed654cad057e32a58bb2b81d67f94ecc",
+     "proved": false,
+     "status": "RESOURCE_OUT",
+     "termination": "EXITED"
+    },
+    "p3": {
+     "cpu_ns": 3005077999,
+     "meter": "cgroup-v1-cpuacct",
+     "problem_sha256": "6bc51786c6f0e44cf0a21164d9493d5972c815deacc5537ce29051987182b715",
+     "proved": false,
+     "status": "RESOURCE_OUT",
+     "termination": "EXITED"
+    },
+    "p4": {
+     "cpu_ns": 3002933000,
+     "meter": "cgroup-v1-cpuacct",
+     "problem_sha256": "8b7ea7bdaba87ef3beb076a14070909c481cb86953244da4566bfe4541d3a990",
+     "proved": false,
+     "status": "RESOURCE_OUT",
+     "termination": "EXITED"
+    },
+    "p5": {
+     "cpu_ns": 2999407000,
+     "meter": "cgroup-v1-cpuacct",
+     "problem_sha256": "8669bb9f17e69cda3f7877b45d464c8819b59dd169bc889e12d9d117c5cfbb9c",
+     "proved": false,
+     "status": "RESOURCE_OUT",
+     "termination": "EXITED"
+    },
+    "r1": {
+     "cpu_ns": 3007504000,
+     "meter": "cgroup-v1-cpuacct",
+     "problem_sha256": "88315b270ed33e707b54351b99529a94ed654cad057e32a58bb2b81d67f94ecc",
+     "proved": false,
+     "status": "RESOURCE_OUT",
+     "termination": "EXITED"
+    },
+    "r2": {
+     "cpu_ns": 3003806999,
+     "meter": "cgroup-v1-cpuacct",
+     "problem_sha256": "88315b270ed33e707b54351b99529a94ed654cad057e32a58bb2b81d67f94ecc",
+     "proved": false,
+     "status": "RESOURCE_OUT",
+     "termination": "EXITED"
+    }
+   },
+   "system": "ba_wolfram",
+   "target": "![X]: (![Y]: (![Z]: (s(s(X,s(Y,s(Z,Z))),X) = s(Y,s(s(s(Y,Z),X),Y)))))"
+  },
+  {
+   "cpu_ratio_max_min": null,
+   "index": 9,
+   "limit_s": 3,
+   "mixed_presentations": false,
+   "mixed_repeats": false,
+   "repeat_cpu_ratio_max_min": null,
+   "runs": {
+    "p0": {
+     "cpu_ns": 3005391000,
+     "meter": "cgroup-v1-cpuacct",
+     "problem_sha256": "64cb1f58dd357de70270e1ebdbc3c4ecdb64a7ab58c903b94bb55e2f1e88226e",
+     "proved": false,
+     "status": "RESOURCE_OUT",
+     "termination": "EXITED"
+    },
+    "p1": {
+     "cpu_ns": 2999824000,
+     "meter": "cgroup-v1-cpuacct",
+     "problem_sha256": "e661dbf0cd78c5a0a08b25a2d05cfd319eba2ba23579c7e9540d94cc34e79543",
+     "proved": false,
+     "status": "RESOURCE_OUT",
+     "termination": "EXITED"
+    },
+    "p2": {
+     "cpu_ns": 3000780000,
+     "meter": "cgroup-v1-cpuacct",
+     "problem_sha256": "64cb1f58dd357de70270e1ebdbc3c4ecdb64a7ab58c903b94bb55e2f1e88226e",
+     "proved": false,
+     "status": "RESOURCE_OUT",
+     "termination": "EXITED"
+    },
+    "p3": {
+     "cpu_ns": 3002650999,
+     "meter": "cgroup-v1-cpuacct",
+     "problem_sha256": "eabe7a530d64485a66bd03ab12b173f42fb20f24a409c57701561b9a38091a94",
+     "proved": false,
+     "status": "RESOURCE_OUT",
+     "termination": "EXITED"
+    },
+    "p4": {
+     "cpu_ns": 3008583000,
+     "meter": "cgroup-v1-cpuacct",
+     "problem_sha256": "3140903f04d5b92017d4b98902f187852aaad17fdd1211dc97507816b4ee2d92",
+     "proved": false,
+     "status": "RESOURCE_OUT",
+     "termination": "EXITED"
+    },
+    "p5": {
+     "cpu_ns": 3000874000,
+     "meter": "cgroup-v1-cpuacct",
+     "problem_sha256": "a60b352a84a047510f40a937623c2500abcddde3a4d88636d139f461c0b41f53",
+     "proved": false,
+     "status": "RESOURCE_OUT",
+     "termination": "EXITED"
+    },
+    "r1": {
+     "cpu_ns": 3005639999,
+     "meter": "cgroup-v1-cpuacct",
+     "problem_sha256": "64cb1f58dd357de70270e1ebdbc3c4ecdb64a7ab58c903b94bb55e2f1e88226e",
+     "proved": false,
+     "status": "RESOURCE_OUT",
+     "termination": "EXITED"
+    },
+    "r2": {
+     "cpu_ns": 3005222000,
+     "meter": "cgroup-v1-cpuacct",
+     "problem_sha256": "64cb1f58dd357de70270e1ebdbc3c4ecdb64a7ab58c903b94bb55e2f1e88226e",
+     "proved": false,
+     "status": "RESOURCE_OUT",
+     "termination": "EXITED"
+    }
+   },
+   "system": "ba_wolfram",
+   "target": "![X]: (![Y]: (![Z]: (s(s(X,Y),s(s(Z,X),X)) = s(s(Y,X),s(s(Z,Z),X)))))"
+  },
+  {
+   "cpu_ratio_max_min": 1.181,
+   "index": 0,
+   "limit_s": 1,
+   "mixed_presentations": false,
+   "mixed_repeats": false,
+   "repeat_cpu_ratio_max_min": 1.035,
+   "runs": {
+    "p0": {
+     "cpu_ns": 309994000,
+     "meter": "cgroup-v1-cpuacct",
+     "problem_sha256": "2471ca9f30d3d5501ef5569da7c901ff089e834c9a6216c02b376ee7132ad849",
+     "proved": true,
+     "status": "THEOREM",
+     "termination": "EXITED"
+    },
+    "p1": {
+     "cpu_ns": 312056000,
+     "meter": "cgroup-v1-cpuacct",
+     "problem_sha256": "5dfc3d2f7847e601075e6e9c011b055ae92910dc79c2b7fed1b764be3cc77b4b",
+     "proved": true,
+     "status": "THEOREM",
+     "termination": "EXITED"
+    },
+    "p2": {
+     "cpu_ns": 323038000,
+     "meter": "cgroup-v1-cpuacct",
+     "problem_sha256": "9de8e1ca9bc5c020e4988c16cfac7859ce8a76d5f916663ba9aaf9acb7af4099",
+     "proved": true,
+     "status": "THEOREM",
+     "termination": "EXITED"
+    },
+    "p3": {
+     "cpu_ns": 345666000,
+     "meter": "cgroup-v1-cpuacct",
+     "problem_sha256": "a267b5d883097e8f56183aea638a4d45f1549ab817ba1b2d0c6e9eae4404353e",
+     "proved": true,
+     "status": "THEOREM",
+     "termination": "EXITED"
+    },
+    "p4": {
+     "cpu_ns": 327443000,
+     "meter": "cgroup-v1-cpuacct",
+     "problem_sha256": "b78045b5c7d69280494ded05456553d70e5f383af2dc16f0d996fe9f615b0e07",
+     "proved": true,
+     "status": "THEOREM",
+     "termination": "EXITED"
+    },
+    "p5": {
+     "cpu_ns": 292784000,
+     "meter": "cgroup-v1-cpuacct",
+     "problem_sha256": "91695faa487e8893037b0b974e4354f429b53bee52dccd4bf4473b12429c3834",
+     "proved": true,
+     "status": "THEOREM",
+     "termination": "EXITED"
+    },
+    "r1": {
+     "cpu_ns": 307853000,
+     "meter": "cgroup-v1-cpuacct",
+     "problem_sha256": "2471ca9f30d3d5501ef5569da7c901ff089e834c9a6216c02b376ee7132ad849",
+     "proved": true,
+     "status": "THEOREM",
+     "termination": "EXITED"
+    },
+    "r2": {
+     "cpu_ns": 299525000,
+     "meter": "cgroup-v1-cpuacct",
+     "problem_sha256": "2471ca9f30d3d5501ef5569da7c901ff089e834c9a6216c02b376ee7132ad849",
+     "proved": true,
+     "status": "THEOREM",
+     "termination": "EXITED"
+    }
+   },
+   "system": "ba_huntington",
+   "target": "![X]: (![Y]: (plus(plus(X,plus(X,Y)),plus(X,Y)) = plus(Y,plus(Y,plus(X,X)))))"
+  },
+  {
+   "cpu_ratio_max_min": 1.363,
+   "index": 1,
+   "limit_s": 1,
+   "mixed_presentations": false,
+   "mixed_repeats": false,
+   "repeat_cpu_ratio_max_min": 1.217,
+   "runs": {
+    "p0": {
+     "cpu_ns": 536864000,
+     "meter": "cgroup-v1-cpuacct",
+     "problem_sha256": "af2ac145c9d537051a368f159647dec9d2199a75e6af31f64a5f8b22951fa7d6",
+     "proved": true,
+     "status": "THEOREM",
+     "termination": "EXITED"
+    },
+    "p1": {
+     "cpu_ns": 606146000,
+     "meter": "cgroup-v1-cpuacct",
+     "problem_sha256": "2e99435068148c9f428be9366fcde6c4178210981804bfca8ef9e3dffb3569d2",
+     "proved": true,
+     "status": "THEOREM",
+     "termination": "EXITED"
+    },
+    "p2": {
+     "cpu_ns": 444654000,
+     "meter": "cgroup-v1-cpuacct",
+     "problem_sha256": "3e7694e615e2e47c55182bda77e52c061432cbfbbaa41ec6aabb0b4bc32ca64b",
+     "proved": true,
+     "status": "THEOREM",
+     "termination": "EXITED"
+    },
+    "p3": {
+     "cpu_ns": 511533000,
+     "meter": "cgroup-v1-cpuacct",
+     "problem_sha256": "ecd665701d5b93f43ed9ed43b5cf81cd2b3ae4604c6e4111b954a3ac1f3ffab4",
+     "proved": true,
+     "status": "THEOREM",
+     "termination": "EXITED"
+    },
+    "p4": {
+     "cpu_ns": 524060999,
+     "meter": "cgroup-v1-cpuacct",
+     "problem_sha256": "c2323d48a040daad0c47973202b231abd062734969a54e5a2ac6d76cf507e3f7",
+     "proved": true,
+     "status": "THEOREM",
+     "termination": "EXITED"
+    },
+    "p5": {
+     "cpu_ns": 489020999,
+     "meter": "cgroup-v1-cpuacct",
+     "problem_sha256": "7f372b1c568bf416a9f524e61e4090b04747985609dcae86e6842bdcdf05db69",
+     "proved": true,
+     "status": "THEOREM",
+     "termination": "EXITED"
+    },
+    "r1": {
+     "cpu_ns": 545358999,
+     "meter": "cgroup-v1-cpuacct",
+     "problem_sha256": "af2ac145c9d537051a368f159647dec9d2199a75e6af31f64a5f8b22951fa7d6",
+     "proved": true,
+     "status": "THEOREM",
+     "termination": "EXITED"
+    },
+    "r2": {
+     "cpu_ns": 653582000,
+     "meter": "cgroup-v1-cpuacct",
+     "problem_sha256": "af2ac145c9d537051a368f159647dec9d2199a75e6af31f64a5f8b22951fa7d6",
+     "proved": true,
+     "status": "THEOREM",
+     "termination": "EXITED"
+    }
+   },
+   "system": "ba_huntington",
+   "target": "![X]: (![Y]: (plus(X,n(plus(Y,plus(X,X)))) = plus(X,plus(X,plus(X,n(Y))))))"
+  },
+  {
+   "cpu_ratio_max_min": 1.211,
+   "index": 2,
+   "limit_s": 1,
+   "mixed_presentations": false,
+   "mixed_repeats": false,
+   "repeat_cpu_ratio_max_min": 1.137,
+   "runs": {
+    "p0": {
+     "cpu_ns": 10325000,
+     "meter": "cgroup-v1-cpuacct",
+     "problem_sha256": "e55c7c531a1fed2372ca536ce5aaa2c620226bd813f1db22cdbb14a0d05010a8",
+     "proved": true,
+     "status": "THEOREM",
+     "termination": "EXITED"
+    },
+    "p1": {
+     "cpu_ns": 9122000,
+     "meter": "cgroup-v1-cpuacct",
+     "problem_sha256": "a587978f49ffea135abe50ca80dd021139fbde057938f8e099c4f3c1774d78a3",
+     "proved": true,
+     "status": "THEOREM",
+     "termination": "EXITED"
+    },
+    "p2": {
+     "cpu_ns": 8523000,
+     "meter": "cgroup-v1-cpuacct",
+     "problem_sha256": "c927968bed688b4a1cf4c0493a305d4ffbfe2b49d1411d85a826ebe3c19d7084",
+     "proved": true,
+     "status": "THEOREM",
+     "termination": "EXITED"
+    },
+    "p3": {
+     "cpu_ns": 8904000,
+     "meter": "cgroup-v1-cpuacct",
+     "problem_sha256": "67a8e9ec50f28446d6bfd2cb6f1eaaecfe55785ea1d06fb3fb5023a8e67595bb",
+     "proved": true,
+     "status": "THEOREM",
+     "termination": "EXITED"
+    },
+    "p4": {
+     "cpu_ns": 9138000,
+     "meter": "cgroup-v1-cpuacct",
+     "problem_sha256": "e8e8fc1dbf1851822944450e17ea089829f2f589c1b5b40594516d6325b2ea31",
+     "proved": true,
+     "status": "THEOREM",
+     "termination": "EXITED"
+    },
+    "p5": {
+     "cpu_ns": 9514000,
+     "meter": "cgroup-v1-cpuacct",
+     "problem_sha256": "8634c9df41803c5038b66bf782a6ad48217baa655db8848c36a7add7928b7f4a",
+     "proved": true,
+     "status": "THEOREM",
+     "termination": "EXITED"
+    },
+    "r1": {
+     "cpu_ns": 9852999,
+     "meter": "cgroup-v1-cpuacct",
+     "problem_sha256": "e55c7c531a1fed2372ca536ce5aaa2c620226bd813f1db22cdbb14a0d05010a8",
+     "proved": true,
+     "status": "THEOREM",
+     "termination": "EXITED"
+    },
+    "r2": {
+     "cpu_ns": 9081000,
+     "meter": "cgroup-v1-cpuacct",
+     "problem_sha256": "e55c7c531a1fed2372ca536ce5aaa2c620226bd813f1db22cdbb14a0d05010a8",
+     "proved": true,
+     "status": "THEOREM",
+     "termination": "EXITED"
+    }
+   },
+   "system": "ba_huntington",
+   "target": "![X]: (![Y]: (![Z]: (plus(plus(plus(n(X),Y),Z),Y) = plus(plus(plus(Y,n(X)),Y),Z))))"
+  },
+  {
+   "cpu_ratio_max_min": 1.517,
+   "index": 3,
+   "limit_s": 1,
+   "mixed_presentations": false,
+   "mixed_repeats": false,
+   "repeat_cpu_ratio_max_min": 1.407,
+   "runs": {
+    "p0": {
+     "cpu_ns": 9313000,
+     "meter": "cgroup-v1-cpuacct",
+     "problem_sha256": "29dbeb799cbf802cf037691c7c8bc51fc805a86754184aa4ddfa1425926ef90f",
+     "proved": true,
+     "status": "THEOREM",
+     "termination": "EXITED"
+    },
+    "p1": {
+     "cpu_ns": 10191000,
+     "meter": "cgroup-v1-cpuacct",
+     "problem_sha256": "7877cb9e7445b433e3b4a747337df8f415b48ac8328c8f6a8bc18687478097f3",
+     "proved": true,
+     "status": "THEOREM",
+     "termination": "EXITED"
+    },
+    "p2": {
+     "cpu_ns": 7604999,
+     "meter": "cgroup-v1-cpuacct",
+     "problem_sha256": "90c0d045173392685030b31d1f985be71e5ff68c7809801462e6424828f34ea6",
+     "proved": true,
+     "status": "THEOREM",
+     "termination": "EXITED"
+    },
+    "p3": {
+     "cpu_ns": 7025999,
+     "meter": "cgroup-v1-cpuacct",
+     "problem_sha256": "3b1e608e2e873d0a0612bac9133debe2233e10775c31f307726f3fc34465f8a4",
+     "proved": true,
+     "status": "THEOREM",
+     "termination": "EXITED"
+    },
+    "p4": {
+     "cpu_ns": 6717000,
+     "meter": "cgroup-v1-cpuacct",
+     "problem_sha256": "eef069a13ab6a9aca100f2c8a553a7904cd1cd16d13ebe7b5df95b65ca425cbc",
+     "proved": true,
+     "status": "THEOREM",
+     "termination": "EXITED"
+    },
+    "p5": {
+     "cpu_ns": 7120000,
+     "meter": "cgroup-v1-cpuacct",
+     "problem_sha256": "5da65f386415aca40be401d8f83f3e75214eb6c4bf1d988cc66725a03f9468e3",
+     "proved": true,
+     "status": "THEOREM",
+     "termination": "EXITED"
+    },
+    "r1": {
+     "cpu_ns": 7993999,
+     "meter": "cgroup-v1-cpuacct",
+     "problem_sha256": "29dbeb799cbf802cf037691c7c8bc51fc805a86754184aa4ddfa1425926ef90f",
+     "proved": true,
+     "status": "THEOREM",
+     "termination": "EXITED"
+    },
+    "r2": {
+     "cpu_ns": 6618000,
+     "meter": "cgroup-v1-cpuacct",
+     "problem_sha256": "29dbeb799cbf802cf037691c7c8bc51fc805a86754184aa4ddfa1425926ef90f",
+     "proved": true,
+     "status": "THEOREM",
+     "termination": "EXITED"
+    }
+   },
+   "system": "ba_huntington",
+   "target": "![X]: (![Y]: (n(plus(plus(X,plus(Y,Y)),X)) = n(plus(X,plus(X,plus(Y,Y))))))"
+  },
+  {
+   "cpu_ratio_max_min": 1.372,
+   "index": 4,
+   "limit_s": 1,
+   "mixed_presentations": false,
+   "mixed_repeats": false,
+   "repeat_cpu_ratio_max_min": 1.064,
+   "runs": {
+    "p0": {
+     "cpu_ns": 6914999,
+     "meter": "cgroup-v1-cpuacct",
+     "problem_sha256": "f44d2ea7b86ed085715a09c260023be1ed9d2c6f40fabea1ba87ddfad0cc1034",
+     "proved": true,
+     "status": "THEOREM",
+     "termination": "EXITED"
+    },
+    "p1": {
+     "cpu_ns": 7837999,
+     "meter": "cgroup-v1-cpuacct",
+     "problem_sha256": "d815c1415c96c45ec96b659a13edeb5071c4db2e3fa69f4ec04131ef7467c544",
+     "proved": true,
+     "status": "THEOREM",
+     "termination": "EXITED"
+    },
+    "p2": {
+     "cpu_ns": 6774000,
+     "meter": "cgroup-v1-cpuacct",
+     "problem_sha256": "fd3ab88213ed9476d72f7ccb51b40265ca54988638a37413ce2918ee3f09d872",
+     "proved": true,
+     "status": "THEOREM",
+     "termination": "EXITED"
+    },
+    "p3": {
+     "cpu_ns": 6451999,
+     "meter": "cgroup-v1-cpuacct",
+     "problem_sha256": "c943fa78a1f60b32090ccbcdaf591a8c5fa6c3e4ccba286d3d5d84664aec2034",
+     "proved": true,
+     "status": "THEOREM",
+     "termination": "EXITED"
+    },
+    "p4": {
+     "cpu_ns": 6225000,
+     "meter": "cgroup-v1-cpuacct",
+     "problem_sha256": "c4fe60c8b3ff51c5192c948555da16acd4ce014742c46cc431199a45197134d7",
+     "proved": true,
+     "status": "THEOREM",
+     "termination": "EXITED"
+    },
+    "p5": {
+     "cpu_ns": 8538000,
+     "meter": "cgroup-v1-cpuacct",
+     "problem_sha256": "0811162c14ef00d2ac67a4114d760be4c41c0e75cee26f399f414e7db46b3b36",
+     "proved": true,
+     "status": "THEOREM",
+     "termination": "EXITED"
+    },
+    "r1": {
+     "cpu_ns": 6873000,
+     "meter": "cgroup-v1-cpuacct",
+     "problem_sha256": "f44d2ea7b86ed085715a09c260023be1ed9d2c6f40fabea1ba87ddfad0cc1034",
+     "proved": true,
+     "status": "THEOREM",
+     "termination": "EXITED"
+    },
+    "r2": {
+     "cpu_ns": 6499000,
+     "meter": "cgroup-v1-cpuacct",
+     "problem_sha256": "f44d2ea7b86ed085715a09c260023be1ed9d2c6f40fabea1ba87ddfad0cc1034",
+     "proved": true,
+     "status": "THEOREM",
+     "termination": "EXITED"
+    }
+   },
+   "system": "ba_huntington",
+   "target": "![X]: (![Y]: (![Z]: (plus(plus(n(X),Y),n(Z)) = plus(plus(Y,n(X)),n(Z)))))"
+  },
+  {
+   "cpu_ratio_max_min": 1.214,
+   "index": 5,
+   "limit_s": 1,
+   "mixed_presentations": false,
+   "mixed_repeats": false,
+   "repeat_cpu_ratio_max_min": 1.311,
+   "runs": {
+    "p0": {
+     "cpu_ns": 8385000,
+     "meter": "cgroup-v1-cpuacct",
+     "problem_sha256": "16f81537348ec11133ba8f31cb1e11d46a7fec83a1c1cf0aa354a0f4c113cf1f",
+     "proved": true,
+     "status": "THEOREM",
+     "termination": "EXITED"
+    },
+    "p1": {
+     "cpu_ns": 7856999,
+     "meter": "cgroup-v1-cpuacct",
+     "problem_sha256": "5b7177aa69eb57e5ad24762b1cbc5170f76898cb87a0cb9bd1053c0cdf708a2d",
+     "proved": true,
+     "status": "THEOREM",
+     "termination": "EXITED"
+    },
+    "p2": {
+     "cpu_ns": 8048999,
+     "meter": "cgroup-v1-cpuacct",
+     "problem_sha256": "c44f59b644e9ff2e725f304bff57b052629eb61b4d3d114af2dc717b697285e7",
+     "proved": true,
+     "status": "THEOREM",
+     "termination": "EXITED"
+    },
+    "p3": {
+     "cpu_ns": 7823999,
+     "meter": "cgroup-v1-cpuacct",
+     "problem_sha256": "ae6267045304c980164da8c67631f966821d9e6f861b7a157cd3ae2a7ef42005",
+     "proved": true,
+     "status": "THEOREM",
+     "termination": "EXITED"
+    },
+    "p4": {
+     "cpu_ns": 7270000,
+     "meter": "cgroup-v1-cpuacct",
+     "problem_sha256": "4a6a2ee1214e7ed4c6e0f23705fc35251aec4a1d91604b4151eb8c5580ecaed1",
+     "proved": true,
+     "status": "THEOREM",
+     "termination": "EXITED"
+    },
+    "p5": {
+     "cpu_ns": 6906000,
+     "meter": "cgroup-v1-cpuacct",
+     "problem_sha256": "bc6e012019ed5754bd04ce05cd52c20ddd4ef97c8903538901e3d4be31736013",
+     "proved": true,
+     "status": "THEOREM",
+     "termination": "EXITED"
+    },
+    "r1": {
+     "cpu_ns": 6398000,
+     "meter": "cgroup-v1-cpuacct",
+     "problem_sha256": "16f81537348ec11133ba8f31cb1e11d46a7fec83a1c1cf0aa354a0f4c113cf1f",
+     "proved": true,
+     "status": "THEOREM",
+     "termination": "EXITED"
+    },
+    "r2": {
+     "cpu_ns": 7625999,
+     "meter": "cgroup-v1-cpuacct",
+     "problem_sha256": "16f81537348ec11133ba8f31cb1e11d46a7fec83a1c1cf0aa354a0f4c113cf1f",
+     "proved": true,
+     "status": "THEOREM",
+     "termination": "EXITED"
+    }
+   },
+   "system": "ba_huntington",
+   "target": "![X]: (![Y]: (![Z]: (plus(n(X),plus(n(Y),Z)) = plus(plus(n(X),n(Y)),Z))))"
+  },
+  {
+   "cpu_ratio_max_min": 1.33,
+   "index": 6,
+   "limit_s": 1,
+   "mixed_presentations": false,
+   "mixed_repeats": false,
+   "repeat_cpu_ratio_max_min": 1.056,
+   "runs": {
+    "p0": {
+     "cpu_ns": 7062000,
+     "meter": "cgroup-v1-cpuacct",
+     "problem_sha256": "95d0d56a6274aa6087932179653e374b97c0d307d3d33c8a8fe6ac1a4d3616ac",
+     "proved": true,
+     "status": "THEOREM",
+     "termination": "EXITED"
+    },
+    "p1": {
+     "cpu_ns": 7462000,
+     "meter": "cgroup-v1-cpuacct",
+     "problem_sha256": "9145371b33e47687451e7944ece6086b89e50b8c51f624a8df1604c3f2d5e65e",
+     "proved": true,
+     "status": "THEOREM",
+     "termination": "EXITED"
+    },
+    "p2": {
+     "cpu_ns": 7372000,
+     "meter": "cgroup-v1-cpuacct",
+     "problem_sha256": "694c9094cec047438234bc770749a0ce188531bdd6eb2d259f0195c1ecb46a6b",
+     "proved": true,
+     "status": "THEOREM",
+     "termination": "EXITED"
+    },
+    "p3": {
+     "cpu_ns": 8270000,
+     "meter": "cgroup-v1-cpuacct",
+     "problem_sha256": "713e94374a92277faf7cb28b670a4e1ed8cd4c20276d709ab97a09f5bae60abb",
+     "proved": true,
+     "status": "THEOREM",
+     "termination": "EXITED"
+    },
+    "p4": {
+     "cpu_ns": 9361000,
+     "meter": "cgroup-v1-cpuacct",
+     "problem_sha256": "506da102a57f9e52db3cd299f7e7d39cba8a0249a2985628237802c4fdfb7ff7",
+     "proved": true,
+     "status": "THEOREM",
+     "termination": "EXITED"
+    },
+    "p5": {
+     "cpu_ns": 9392000,
+     "meter": "cgroup-v1-cpuacct",
+     "problem_sha256": "2f06c0adf0d85de2b9fb051ba43d629ca3162231366557058012c5a8e0a9ef97",
+     "proved": true,
+     "status": "THEOREM",
+     "termination": "EXITED"
+    },
+    "r1": {
+     "cpu_ns": 7456000,
+     "meter": "cgroup-v1-cpuacct",
+     "problem_sha256": "95d0d56a6274aa6087932179653e374b97c0d307d3d33c8a8fe6ac1a4d3616ac",
+     "proved": true,
+     "status": "THEOREM",
+     "termination": "EXITED"
+    },
+    "r2": {
+     "cpu_ns": 7346000,
+     "meter": "cgroup-v1-cpuacct",
+     "problem_sha256": "95d0d56a6274aa6087932179653e374b97c0d307d3d33c8a8fe6ac1a4d3616ac",
+     "proved": true,
+     "status": "THEOREM",
+     "termination": "EXITED"
+    }
+   },
+   "system": "ba_huntington",
+   "target": "![X]: (![Y]: (![Z]: (plus(X,n(plus(n(Y),Z))) = plus(X,n(plus(Z,n(Y)))))))"
+  },
+  {
+   "cpu_ratio_max_min": null,
+   "index": 7,
+   "limit_s": 1,
+   "mixed_presentations": false,
+   "mixed_repeats": false,
+   "repeat_cpu_ratio_max_min": null,
+   "runs": {
+    "p0": {
+     "cpu_ns": 1005475999,
+     "meter": "cgroup-v1-cpuacct",
+     "problem_sha256": "3ba47186167b479e5d5ff81127d0bb99640c49a78a02f130a8e821ea250cc385",
+     "proved": false,
+     "status": "RESOURCE_OUT",
+     "termination": "EXITED"
+    },
+    "p1": {
+     "cpu_ns": 1007609000,
+     "meter": "cgroup-v1-cpuacct",
+     "problem_sha256": "d8f476318cdcb4457a545beba8d2f79220219ee48e0718e3f7d959874fffb506",
+     "proved": false,
+     "status": "RESOURCE_OUT",
+     "termination": "EXITED"
+    },
+    "p2": {
+     "cpu_ns": 1005123000,
+     "meter": "cgroup-v1-cpuacct",
+     "problem_sha256": "f885d104e5826fb959eaad579a0c071865eb015fc4d7787cb0b55dbc792fd0e5",
+     "proved": false,
+     "status": "RESOURCE_OUT",
+     "termination": "EXITED"
+    },
+    "p3": {
+     "cpu_ns": 1001096999,
+     "meter": "cgroup-v1-cpuacct",
+     "problem_sha256": "8756afff7f135ffb75551f37e370c0c03a5fea694d01a0a1f0fa979548ceaa59",
+     "proved": false,
+     "status": "RESOURCE_OUT",
+     "termination": "EXITED"
+    },
+    "p4": {
+     "cpu_ns": 1001707999,
+     "meter": "cgroup-v1-cpuacct",
+     "problem_sha256": "cec503c6c595bcbc792a47ca17133bc76018d24f5854908ff5c744d154ae8e5c",
+     "proved": false,
+     "status": "RESOURCE_OUT",
+     "termination": "EXITED"
+    },
+    "p5": {
+     "cpu_ns": 999230000,
+     "meter": "cgroup-v1-cpuacct",
+     "problem_sha256": "1a584a417c274b9b32a4b372d0222cd67b027df45ede024fdc01c714445e764c",
+     "proved": false,
+     "status": "RESOURCE_OUT",
+     "termination": "EXITED"
+    },
+    "r1": {
+     "cpu_ns": 1002646999,
+     "meter": "cgroup-v1-cpuacct",
+     "problem_sha256": "3ba47186167b479e5d5ff81127d0bb99640c49a78a02f130a8e821ea250cc385",
+     "proved": false,
+     "status": "RESOURCE_OUT",
+     "termination": "EXITED"
+    },
+    "r2": {
+     "cpu_ns": 1006300000,
+     "meter": "cgroup-v1-cpuacct",
+     "problem_sha256": "3ba47186167b479e5d5ff81127d0bb99640c49a78a02f130a8e821ea250cc385",
+     "proved": false,
+     "status": "RESOURCE_OUT",
+     "termination": "EXITED"
+    }
+   },
+   "system": "ba_huntington",
+   "target": "![X]: (![Y]: (![Z]: (plus(plus(X,X),n(plus(Y,Z))) = plus(X,n(plus(plus(Z,Y),X))))))"
+  },
+  {
+   "cpu_ratio_max_min": 1.415,
+   "index": 8,
+   "limit_s": 1,
+   "mixed_presentations": false,
+   "mixed_repeats": false,
+   "repeat_cpu_ratio_max_min": 1.323,
+   "runs": {
+    "p0": {
+     "cpu_ns": 377104999,
+     "meter": "cgroup-v1-cpuacct",
+     "problem_sha256": "75124acd128122dd9107682569348754cce28dac5966f518edde717fdc1d70eb",
+     "proved": true,
+     "status": "THEOREM",
+     "termination": "EXITED"
+    },
+    "p1": {
+     "cpu_ns": 396592000,
+     "meter": "cgroup-v1-cpuacct",
+     "problem_sha256": "36a0a93a6f5bfffcc25200b88f53ef59b24ebd721c57f244d96a44ce673f450f",
+     "proved": true,
+     "status": "THEOREM",
+     "termination": "EXITED"
+    },
+    "p2": {
+     "cpu_ns": 349780000,
+     "meter": "cgroup-v1-cpuacct",
+     "problem_sha256": "3debbbbc648c753b72a25528537e174c9335ab053a2aba0ef1573a4f2f2fcbb1",
+     "proved": true,
+     "status": "THEOREM",
+     "termination": "EXITED"
+    },
+    "p3": {
+     "cpu_ns": 321314000,
+     "meter": "cgroup-v1-cpuacct",
+     "problem_sha256": "91eb97187760b201c65f757205a3b7b3448a30f3afdc49911157ef924ddc62c8",
+     "proved": true,
+     "status": "THEOREM",
+     "termination": "EXITED"
+    },
+    "p4": {
+     "cpu_ns": 280348999,
+     "meter": "cgroup-v1-cpuacct",
+     "problem_sha256": "a3da3abd9a196defae9d7ca907b150bb9e4dca4105503436805db2bbb452ed75",
+     "proved": true,
+     "status": "THEOREM",
+     "termination": "EXITED"
+    },
+    "p5": {
+     "cpu_ns": 330643000,
+     "meter": "cgroup-v1-cpuacct",
+     "problem_sha256": "d611cf90f6c932bce785977255e7c740293f1588178c99be87f01623f956cb55",
+     "proved": true,
+     "status": "THEOREM",
+     "termination": "EXITED"
+    },
+    "r1": {
+     "cpu_ns": 285143000,
+     "meter": "cgroup-v1-cpuacct",
+     "problem_sha256": "75124acd128122dd9107682569348754cce28dac5966f518edde717fdc1d70eb",
+     "proved": true,
+     "status": "THEOREM",
+     "termination": "EXITED"
+    },
+    "r2": {
+     "cpu_ns": 356570000,
+     "meter": "cgroup-v1-cpuacct",
+     "problem_sha256": "75124acd128122dd9107682569348754cce28dac5966f518edde717fdc1d70eb",
+     "proved": true,
+     "status": "THEOREM",
+     "termination": "EXITED"
+    }
+   },
+   "system": "ba_huntington",
+   "target": "![X]: (![Y]: (n(plus(n(X),plus(Y,Y))) = n(plus(Y,n(plus(X,X))))))"
+  },
+  {
+   "cpu_ratio_max_min": 1.226,
+   "index": 9,
+   "limit_s": 1,
+   "mixed_presentations": false,
+   "mixed_repeats": false,
+   "repeat_cpu_ratio_max_min": 1.163,
+   "runs": {
+    "p0": {
+     "cpu_ns": 7024000,
+     "meter": "cgroup-v1-cpuacct",
+     "problem_sha256": "e78d15f3b6547c54acf0167b0d96f1679e3bcaab2cbafb70a955bde870afd672",
+     "proved": true,
+     "status": "THEOREM",
+     "termination": "EXITED"
+    },
+    "p1": {
+     "cpu_ns": 5891000,
+     "meter": "cgroup-v1-cpuacct",
+     "problem_sha256": "ea5c63bc33d2bfa3daf6b504f3ed3e2752c5102dedd00470835b2e772a02082a",
+     "proved": true,
+     "status": "THEOREM",
+     "termination": "EXITED"
+    },
+    "p2": {
+     "cpu_ns": 7225000,
+     "meter": "cgroup-v1-cpuacct",
+     "problem_sha256": "4715f6afa8783dbbdb8e4e55d0c61fc8550489e73da89be9ef962c64d3396672",
+     "proved": true,
+     "status": "THEOREM",
+     "termination": "EXITED"
+    },
+    "p3": {
+     "cpu_ns": 6692000,
+     "meter": "cgroup-v1-cpuacct",
+     "problem_sha256": "2b1f2761e3d9409a3e9adac23edde2039afbc458ee266d0778bebc3322532d60",
+     "proved": true,
+     "status": "THEOREM",
+     "termination": "EXITED"
+    },
+    "p4": {
+     "cpu_ns": 6222000,
+     "meter": "cgroup-v1-cpuacct",
+     "problem_sha256": "e13fff43001efad834f6f1d3f7e1fa71f42dae5d32aef43b9c18c0960d58357c",
+     "proved": true,
+     "status": "THEOREM",
+     "termination": "EXITED"
+    },
+    "p5": {
+     "cpu_ns": 6063000,
+     "meter": "cgroup-v1-cpuacct",
+     "problem_sha256": "f8f17be21a3844c2ac1c386accb4cb41d9a5606b11fe27ea97c5307710fb14eb",
+     "proved": true,
+     "status": "THEOREM",
+     "termination": "EXITED"
+    },
+    "r1": {
+     "cpu_ns": 7450999,
+     "meter": "cgroup-v1-cpuacct",
+     "problem_sha256": "e78d15f3b6547c54acf0167b0d96f1679e3bcaab2cbafb70a955bde870afd672",
+     "proved": true,
+     "status": "THEOREM",
+     "termination": "EXITED"
+    },
+    "r2": {
+     "cpu_ns": 6408000,
+     "meter": "cgroup-v1-cpuacct",
+     "problem_sha256": "e78d15f3b6547c54acf0167b0d96f1679e3bcaab2cbafb70a955bde870afd672",
+     "proved": true,
+     "status": "THEOREM",
+     "termination": "EXITED"
+    }
+   },
+   "system": "ba_huntington",
+   "target": "![X]: (![Y]: (![Z]: (n(plus(n(plus(X,Y)),Z)) = n(plus(Z,n(plus(X,Y)))))))"
+  },
+  {
+   "cpu_ratio_max_min": 1.509,
+   "index": 10,
+   "limit_s": 1,
+   "mixed_presentations": false,
+   "mixed_repeats": false,
+   "repeat_cpu_ratio_max_min": 1.121,
+   "runs": {
+    "p0": {
+     "cpu_ns": 322954000,
+     "meter": "cgroup-v1-cpuacct",
+     "problem_sha256": "a6514a81643efd146b7acd18800114e30a8e0d827704949f1ff86e2d9d2cc12e",
+     "proved": true,
+     "status": "THEOREM",
+     "termination": "EXITED"
+    },
+    "p1": {
+     "cpu_ns": 420021000,
+     "meter": "cgroup-v1-cpuacct",
+     "problem_sha256": "1f2137ea88bfac01ef2e2a3475798a9feb00b8291bc4e1a0d64b90e4a4d4bc07",
+     "proved": true,
+     "status": "THEOREM",
+     "termination": "EXITED"
+    },
+    "p2": {
+     "cpu_ns": 302937000,
+     "meter": "cgroup-v1-cpuacct",
+     "problem_sha256": "afdc3c0a46b30d6d76398b2179d570289e86ea4d92e401bc2ca406eb3217c480",
+     "proved": true,
+     "status": "THEOREM",
+     "termination": "EXITED"
+    },
+    "p3": {
+     "cpu_ns": 372667999,
+     "meter": "cgroup-v1-cpuacct",
+     "problem_sha256": "9d0b512684d14c690984bd15b76cf6b3e2a3e329ac14319a27a8fc61393f75ea",
+     "proved": true,
+     "status": "THEOREM",
+     "termination": "EXITED"
+    },
+    "p4": {
+     "cpu_ns": 353678000,
+     "meter": "cgroup-v1-cpuacct",
+     "problem_sha256": "657f9f0cb04d5c39b52e7b20afd66b2b01407d7d88a4835b9b50925aee54d846",
+     "proved": true,
+     "status": "THEOREM",
+     "termination": "EXITED"
+    },
+    "p5": {
+     "cpu_ns": 456989000,
+     "meter": "cgroup-v1-cpuacct",
+     "problem_sha256": "1154b808fa2ad6c971549b8c9c5802464fb571cf44ba6eccd7b5a3b22c90a18d",
+     "proved": true,
+     "status": "THEOREM",
+     "termination": "EXITED"
+    },
+    "r1": {
+     "cpu_ns": 336301000,
+     "meter": "cgroup-v1-cpuacct",
+     "problem_sha256": "a6514a81643efd146b7acd18800114e30a8e0d827704949f1ff86e2d9d2cc12e",
+     "proved": true,
+     "status": "THEOREM",
+     "termination": "EXITED"
+    },
+    "r2": {
+     "cpu_ns": 300094999,
+     "meter": "cgroup-v1-cpuacct",
+     "problem_sha256": "a6514a81643efd146b7acd18800114e30a8e0d827704949f1ff86e2d9d2cc12e",
+     "proved": true,
+     "status": "THEOREM",
+     "termination": "EXITED"
+    }
+   },
+   "system": "ba_huntington",
+   "target": "![X]: (![Y]: (![Z]: (n(plus(plus(X,plus(X,Y)),Z)) = n(plus(Z,plus(Y,X))))))"
+  },
+  {
+   "cpu_ratio_max_min": 1.19,
+   "index": 11,
+   "limit_s": 1,
+   "mixed_presentations": false,
+   "mixed_repeats": false,
+   "repeat_cpu_ratio_max_min": 1.138,
+   "runs": {
+    "p0": {
+     "cpu_ns": 447323000,
+     "meter": "cgroup-v1-cpuacct",
+     "problem_sha256": "1535060c215f92d71000b6f13807e12c387f1780c2bbbe8e50f54852f19681e6",
+     "proved": true,
+     "status": "THEOREM",
+     "termination": "EXITED"
+    },
+    "p1": {
+     "cpu_ns": 514941000,
+     "meter": "cgroup-v1-cpuacct",
+     "problem_sha256": "ebd00927b8dd1f8d18496061be0a78b529a735622963397005ee58a8798749cd",
+     "proved": true,
+     "status": "THEOREM",
+     "termination": "EXITED"
+    },
+    "p2": {
+     "cpu_ns": 509453999,
+     "meter": "cgroup-v1-cpuacct",
+     "problem_sha256": "1dee1cec3c0d0eadd812fe169102a76f763d19c5e2e70dac3378a323be57fec8",
+     "proved": true,
+     "status": "THEOREM",
+     "termination": "EXITED"
+    },
+    "p3": {
+     "cpu_ns": 508487999,
+     "meter": "cgroup-v1-cpuacct",
+     "problem_sha256": "915fd324e4881402d9acd5cdfa3d1dfd3d74e7b2d5a47891cf1d280c9a52e60b",
+     "proved": true,
+     "status": "THEOREM",
+     "termination": "EXITED"
+    },
+    "p4": {
+     "cpu_ns": 470624000,
+     "meter": "cgroup-v1-cpuacct",
+     "problem_sha256": "1588985d99faab8c2194f3c7cceb5ca252173af152a698cef0bc6dd71cb0cd71",
+     "proved": true,
+     "status": "THEOREM",
+     "termination": "EXITED"
+    },
+    "p5": {
+     "cpu_ns": 432598000,
+     "meter": "cgroup-v1-cpuacct",
+     "problem_sha256": "4143501f7eb1a463798544eff5ed663782d3766fa3f9d855c248ceda83e82157",
+     "proved": true,
+     "status": "THEOREM",
+     "termination": "EXITED"
+    },
+    "r1": {
+     "cpu_ns": 397732000,
+     "meter": "cgroup-v1-cpuacct",
+     "problem_sha256": "1535060c215f92d71000b6f13807e12c387f1780c2bbbe8e50f54852f19681e6",
+     "proved": true,
+     "status": "THEOREM",
+     "termination": "EXITED"
+    },
+    "r2": {
+     "cpu_ns": 452460000,
+     "meter": "cgroup-v1-cpuacct",
+     "problem_sha256": "1535060c215f92d71000b6f13807e12c387f1780c2bbbe8e50f54852f19681e6",
+     "proved": true,
+     "status": "THEOREM",
+     "termination": "EXITED"
+    }
+   },
+   "system": "ba_huntington",
+   "target": "![X]: (![Y]: (n(plus(plus(plus(X,X),X),X)) = plus(n(X),n(plus(X,Y)))))"
+  },
+  {
+   "cpu_ratio_max_min": 1.13,
+   "index": 12,
+   "limit_s": 1,
+   "mixed_presentations": false,
+   "mixed_repeats": false,
+   "repeat_cpu_ratio_max_min": 1.229,
+   "runs": {
+    "p0": {
+     "cpu_ns": 6305000,
+     "meter": "cgroup-v1-cpuacct",
+     "problem_sha256": "4ce9f406ce7844029f14a577916fe9bb36ec9c76ea8a46c9dc535eb38ac49a70",
+     "proved": true,
+     "status": "THEOREM",
+     "termination": "EXITED"
+    },
+    "p1": {
+     "cpu_ns": 5732999,
+     "meter": "cgroup-v1-cpuacct",
+     "problem_sha256": "a768f5dfd91e6e3bbc0334b8e550d6a5c29d8c08c5861a102b57f89c47034775",
+     "proved": true,
+     "status": "THEOREM",
+     "termination": "EXITED"
+    },
+    "p2": {
+     "cpu_ns": 5580000,
+     "meter": "cgroup-v1-cpuacct",
+     "problem_sha256": "00202f8038715e319e73daf2cf1602dc0c1a793b66c1f8c2388b016fb956611c",
+     "proved": true,
+     "status": "THEOREM",
+     "termination": "EXITED"
+    },
+    "p3": {
+     "cpu_ns": 5854000,
+     "meter": "cgroup-v1-cpuacct",
+     "problem_sha256": "c8a88c3067275f7c12918bf9c5e691c2a32268592284483ed7b06097d5dc9b42",
+     "proved": true,
+     "status": "THEOREM",
+     "termination": "EXITED"
+    },
+    "p4": {
+     "cpu_ns": 5941000,
+     "meter": "cgroup-v1-cpuacct",
+     "problem_sha256": "42f2d539d26b921f6ba5a376b54e91d093f1590071c5c4d6ce0c414ad6e24421",
+     "proved": true,
+     "status": "THEOREM",
+     "termination": "EXITED"
+    },
+    "p5": {
+     "cpu_ns": 6055000,
+     "meter": "cgroup-v1-cpuacct",
+     "problem_sha256": "a375c69bf84c3c7236b2c58c5e6133599f5efdf146c78bc28360060311776c2c",
+     "proved": true,
+     "status": "THEOREM",
+     "termination": "EXITED"
+    },
+    "r1": {
+     "cpu_ns": 7672000,
+     "meter": "cgroup-v1-cpuacct",
+     "problem_sha256": "4ce9f406ce7844029f14a577916fe9bb36ec9c76ea8a46c9dc535eb38ac49a70",
+     "proved": true,
+     "status": "THEOREM",
+     "termination": "EXITED"
+    },
+    "r2": {
+     "cpu_ns": 6242000,
+     "meter": "cgroup-v1-cpuacct",
+     "problem_sha256": "4ce9f406ce7844029f14a577916fe9bb36ec9c76ea8a46c9dc535eb38ac49a70",
+     "proved": true,
+     "status": "THEOREM",
+     "termination": "EXITED"
+    }
+   },
+   "system": "ba_huntington",
+   "target": "![X]: (![Y]: (![Z]: (plus(n(X),plus(n(Y),Z)) = plus(Z,plus(n(X),n(Y))))))"
+  },
+  {
+   "cpu_ratio_max_min": null,
+   "index": 13,
+   "limit_s": 1,
+   "mixed_presentations": false,
+   "mixed_repeats": false,
+   "repeat_cpu_ratio_max_min": null,
+   "runs": {
+    "p0": {
+     "cpu_ns": 1003196999,
+     "meter": "cgroup-v1-cpuacct",
+     "problem_sha256": "e922f549a59032a6e6ff10bc5f74b489f946ac54239c1f788afcafc7238730f6",
+     "proved": false,
+     "status": "RESOURCE_OUT",
+     "termination": "EXITED"
+    },
+    "p1": {
+     "cpu_ns": 1003263999,
+     "meter": "cgroup-v1-cpuacct",
+     "problem_sha256": "bee7c358952243f61e7d856a550fa05f6fbc1876656f379d915802e8abb4fddd",
+     "proved": false,
+     "status": "RESOURCE_OUT",
+     "termination": "EXITED"
+    },
+    "p2": {
+     "cpu_ns": 1007625000,
+     "meter": "cgroup-v1-cpuacct",
+     "problem_sha256": "3c0f35e76e3a3cfe20f5e4ed0f035cb218b4b07a9b3c63724d2194d2e985c01c",
+     "proved": false,
+     "status": "RESOURCE_OUT",
+     "termination": "EXITED"
+    },
+    "p3": {
+     "cpu_ns": 1007185000,
+     "meter": "cgroup-v1-cpuacct",
+     "problem_sha256": "d205ca045e9e069d26d89bb7b15bf513b67e9c534a19baf2f2daec80682c23cc",
+     "proved": false,
+     "status": "RESOURCE_OUT",
+     "termination": "EXITED"
+    },
+    "p4": {
+     "cpu_ns": 1001561999,
+     "meter": "cgroup-v1-cpuacct",
+     "problem_sha256": "0660205ef28988ff4b3c58944fa20b6f1292222d82891a57c134205b5f8bac8a",
+     "proved": false,
+     "status": "RESOURCE_OUT",
+     "termination": "EXITED"
+    },
+    "p5": {
+     "cpu_ns": 1004939000,
+     "meter": "cgroup-v1-cpuacct",
+     "problem_sha256": "c1e7ca7939e6c33933a7190c14685abe117d2e9371a99ddcaf9ea4e120c30fc1",
+     "proved": false,
+     "status": "RESOURCE_OUT",
+     "termination": "EXITED"
+    },
+    "r1": {
+     "cpu_ns": 1002495999,
+     "meter": "cgroup-v1-cpuacct",
+     "problem_sha256": "e922f549a59032a6e6ff10bc5f74b489f946ac54239c1f788afcafc7238730f6",
+     "proved": false,
+     "status": "RESOURCE_OUT",
+     "termination": "EXITED"
+    },
+    "r2": {
+     "cpu_ns": 1006487999,
+     "meter": "cgroup-v1-cpuacct",
+     "problem_sha256": "e922f549a59032a6e6ff10bc5f74b489f946ac54239c1f788afcafc7238730f6",
+     "proved": false,
+     "status": "RESOURCE_OUT",
+     "termination": "EXITED"
+    }
+   },
+   "system": "ba_huntington",
+   "target": "![X]: (![Y]: (![Z]: (plus(plus(n(plus(X,Y)),X),Z) = plus(X,plus(Z,n(plus(Z,Y)))))))"
+  },
+  {
+   "cpu_ratio_max_min": 1.49,
+   "index": 14,
+   "limit_s": 1,
+   "mixed_presentations": false,
+   "mixed_repeats": false,
+   "repeat_cpu_ratio_max_min": 1.157,
+   "runs": {
+    "p0": {
+     "cpu_ns": 343176000,
+     "meter": "cgroup-v1-cpuacct",
+     "problem_sha256": "86ccb1e8a2573520bc1afcc53c42a30efc6e1b631cc65ceb0fe0617b324eecff",
+     "proved": true,
+     "status": "THEOREM",
+     "termination": "EXITED"
+    },
+    "p1": {
+     "cpu_ns": 449873999,
+     "meter": "cgroup-v1-cpuacct",
+     "problem_sha256": "196e9ea70c91daa695e5859cf3804e35ac50ab20f8b32343d260d2338945a4bf",
+     "proved": true,
+     "status": "THEOREM",
+     "termination": "EXITED"
+    },
+    "p2": {
+     "cpu_ns": 388641000,
+     "meter": "cgroup-v1-cpuacct",
+     "problem_sha256": "6f5b59e8b3297f0c08e13b912830faa4cb282525deded57102f704bd93ab78d9",
+     "proved": true,
+     "status": "THEOREM",
+     "termination": "EXITED"
+    },
+    "p3": {
+     "cpu_ns": 448223000,
+     "meter": "cgroup-v1-cpuacct",
+     "problem_sha256": "7d097d2ccff87c4b8cfedf9196428e82e91141aebbc3ef06ef66605e544f782d",
+     "proved": true,
+     "status": "THEOREM",
+     "termination": "EXITED"
+    },
+    "p4": {
+     "cpu_ns": 401530000,
+     "meter": "cgroup-v1-cpuacct",
+     "problem_sha256": "90901c8960cd7104af3b3e834eea81ac687179f42804f1a8ccd2d5209be15187",
+     "proved": true,
+     "status": "THEOREM",
+     "termination": "EXITED"
+    },
+    "p5": {
+     "cpu_ns": 301967999,
+     "meter": "cgroup-v1-cpuacct",
+     "problem_sha256": "6ed94cefba7964b8ea201fa4afdbb54d41a0e44b24f17b2163d8083fc62b8789",
+     "proved": true,
+     "status": "THEOREM",
+     "termination": "EXITED"
+    },
+    "r1": {
+     "cpu_ns": 397057999,
+     "meter": "cgroup-v1-cpuacct",
+     "problem_sha256": "86ccb1e8a2573520bc1afcc53c42a30efc6e1b631cc65ceb0fe0617b324eecff",
+     "proved": true,
+     "status": "THEOREM",
+     "termination": "EXITED"
+    },
+    "r2": {
+     "cpu_ns": 373959000,
+     "meter": "cgroup-v1-cpuacct",
+     "problem_sha256": "86ccb1e8a2573520bc1afcc53c42a30efc6e1b631cc65ceb0fe0617b324eecff",
+     "proved": true,
+     "status": "THEOREM",
+     "termination": "EXITED"
+    }
+   },
+   "system": "ba_huntington",
+   "target": "![X]: (![Y]: (plus(n(X),n(n(Y))) = plus(plus(plus(n(X),Y),Y),Y)))"
+  },
+  {
+   "cpu_ratio_max_min": 1.304,
+   "index": 15,
+   "limit_s": 1,
+   "mixed_presentations": false,
+   "mixed_repeats": false,
+   "repeat_cpu_ratio_max_min": 1.307,
+   "runs": {
+    "p0": {
+     "cpu_ns": 610722999,
+     "meter": "cgroup-v1-cpuacct",
+     "problem_sha256": "89156c48d1d26756824b421cb1933339e4e494fa7c61aceae6d655cd357997b7",
+     "proved": true,
+     "status": "THEOREM",
+     "termination": "EXITED"
+    },
+    "p1": {
+     "cpu_ns": 592768000,
+     "meter": "cgroup-v1-cpuacct",
+     "problem_sha256": "8e8e29f87a833d577e59197ca20936e182c0494e74de946f960a540b49d57029",
+     "proved": true,
+     "status": "THEOREM",
+     "termination": "EXITED"
+    },
+    "p2": {
+     "cpu_ns": 600869000,
+     "meter": "cgroup-v1-cpuacct",
+     "problem_sha256": "23cbf4555e6ea80c85b45e511e9e57e743abefec433456b96f22f6564e7efa6b",
+     "proved": true,
+     "status": "THEOREM",
+     "termination": "EXITED"
+    },
+    "p3": {
+     "cpu_ns": 468246000,
+     "meter": "cgroup-v1-cpuacct",
+     "problem_sha256": "02183174b7d113c3b7e808bdee71afd5d5280146243222320117c65bb4d08902",
+     "proved": true,
+     "status": "THEOREM",
+     "termination": "EXITED"
+    },
+    "p4": {
+     "cpu_ns": 468313999,
+     "meter": "cgroup-v1-cpuacct",
+     "problem_sha256": "8f5b6eff31c608afdb412a553e84b6475981a8f2c7c4e06867c0859c7beb645c",
+     "proved": true,
+     "status": "THEOREM",
+     "termination": "EXITED"
+    },
+    "p5": {
+     "cpu_ns": 484726000,
+     "meter": "cgroup-v1-cpuacct",
+     "problem_sha256": "4cf79e053517a633e72d925bfa20bf13568cf5d57ea26be29579fa43c54b6e5c",
+     "proved": true,
+     "status": "THEOREM",
+     "termination": "EXITED"
+    },
+    "r1": {
+     "cpu_ns": 586507999,
+     "meter": "cgroup-v1-cpuacct",
+     "problem_sha256": "89156c48d1d26756824b421cb1933339e4e494fa7c61aceae6d655cd357997b7",
+     "proved": true,
+     "status": "THEOREM",
+     "termination": "EXITED"
+    },
+    "r2": {
+     "cpu_ns": 467163000,
+     "meter": "cgroup-v1-cpuacct",
+     "problem_sha256": "89156c48d1d26756824b421cb1933339e4e494fa7c61aceae6d655cd357997b7",
+     "proved": true,
+     "status": "THEOREM",
+     "termination": "EXITED"
+    }
+   },
+   "system": "ba_huntington",
+   "target": "![X]: (![Y]: (plus(n(plus(plus(X,Y),X)),Y) = plus(n(X),plus(Y,plus(Y,Y)))))"
+  },
+  {
+   "cpu_ratio_max_min": 1.421,
+   "index": 16,
+   "limit_s": 1,
+   "mixed_presentations": false,
+   "mixed_repeats": false,
+   "repeat_cpu_ratio_max_min": 1.273,
+   "runs": {
+    "p0": {
+     "cpu_ns": 320090000,
+     "meter": "cgroup-v1-cpuacct",
+     "problem_sha256": "65cd7c2bb1b2a5c392d7833f17a338b40007dbc0645d42e5691468f7113a8a09",
+     "proved": true,
+     "status": "THEOREM",
+     "termination": "EXITED"
+    },
+    "p1": {
+     "cpu_ns": 398008999,
+     "meter": "cgroup-v1-cpuacct",
+     "problem_sha256": "f9639f1f1d69bc1d5ebf6351b81dbb76bdaab8d71e0558123004a94240307e74",
+     "proved": true,
+     "status": "THEOREM",
+     "termination": "EXITED"
+    },
+    "p2": {
+     "cpu_ns": 280081999,
+     "meter": "cgroup-v1-cpuacct",
+     "problem_sha256": "65a46af1ebc9216a4d4082eb451a4b19a9b838f8e39c95f5450faa47ab68f0e8",
+     "proved": true,
+     "status": "THEOREM",
+     "termination": "EXITED"
+    },
+    "p3": {
+     "cpu_ns": 376345000,
+     "meter": "cgroup-v1-cpuacct",
+     "problem_sha256": "8755df17d480a9b6df2f3be11b8cac2b885aa1300a39523f83c82a432e8a0551",
+     "proved": true,
+     "status": "THEOREM",
+     "termination": "EXITED"
+    },
+    "p4": {
+     "cpu_ns": 373200000,
+     "meter": "cgroup-v1-cpuacct",
+     "problem_sha256": "07391478b28ede4ea416848fb967e1a5d384a0f1108b337a055df471d0011240",
+     "proved": true,
+     "status": "THEOREM",
+     "termination": "EXITED"
+    },
+    "p5": {
+     "cpu_ns": 299461000,
+     "meter": "cgroup-v1-cpuacct",
+     "problem_sha256": "5839f3af47278a518e9f27a896f729bff9ec73a1260291708e01cdd656197b94",
+     "proved": true,
+     "status": "THEOREM",
+     "termination": "EXITED"
+    },
+    "r1": {
+     "cpu_ns": 361823000,
+     "meter": "cgroup-v1-cpuacct",
+     "problem_sha256": "65cd7c2bb1b2a5c392d7833f17a338b40007dbc0645d42e5691468f7113a8a09",
+     "proved": true,
+     "status": "THEOREM",
+     "termination": "EXITED"
+    },
+    "r2": {
+     "cpu_ns": 284138000,
+     "meter": "cgroup-v1-cpuacct",
+     "problem_sha256": "65cd7c2bb1b2a5c392d7833f17a338b40007dbc0645d42e5691468f7113a8a09",
+     "proved": true,
+     "status": "THEOREM",
+     "termination": "EXITED"
+    }
+   },
+   "system": "ba_huntington",
+   "target": "![X]: (![Y]: (plus(n(plus(X,X)),n(Y)) = plus(n(plus(Y,Y)),n(X))))"
+  },
+  {
+   "cpu_ratio_max_min": 1.581,
+   "index": 17,
+   "limit_s": 1,
+   "mixed_presentations": false,
+   "mixed_repeats": false,
+   "repeat_cpu_ratio_max_min": 1.07,
+   "runs": {
+    "p0": {
+     "cpu_ns": 388827000,
+     "meter": "cgroup-v1-cpuacct",
+     "problem_sha256": "7de0cab1c7b3e2b48cd293e3d2bed5950b3806cdac5259b24e0d38c9ab67c183",
+     "proved": true,
+     "status": "THEOREM",
+     "termination": "EXITED"
+    },
+    "p1": {
+     "cpu_ns": 471323000,
+     "meter": "cgroup-v1-cpuacct",
+     "problem_sha256": "412ec1c6b5806f581f5271e6517dc80a9250265e5c98029f614d28175d9bd9af",
+     "proved": true,
+     "status": "THEOREM",
+     "termination": "EXITED"
+    },
+    "p2": {
+     "cpu_ns": 371776000,
+     "meter": "cgroup-v1-cpuacct",
+     "problem_sha256": "2a634af343335ba4eea3584a1d9376999f1998b141d9052583191df156f40ace",
+     "proved": true,
+     "status": "THEOREM",
+     "termination": "EXITED"
+    },
+    "p3": {
+     "cpu_ns": 358699000,
+     "meter": "cgroup-v1-cpuacct",
+     "problem_sha256": "dd1cafb66653f980212cbaaafeb970275fefd2045608be4e268072d8d2d1a3b5",
+     "proved": true,
+     "status": "THEOREM",
+     "termination": "EXITED"
+    },
+    "p4": {
+     "cpu_ns": 324360000,
+     "meter": "cgroup-v1-cpuacct",
+     "problem_sha256": "532bfbafdcb4efbc11d7049c9fcc9caa525b4941c43aaf87fbf00c1682a91804",
+     "proved": true,
+     "status": "THEOREM",
+     "termination": "EXITED"
+    },
+    "p5": {
+     "cpu_ns": 298071000,
+     "meter": "cgroup-v1-cpuacct",
+     "problem_sha256": "f1c834085417ba99e9d900b8a102f597700e6434bccad4b84dfb813ec7772d63",
+     "proved": true,
+     "status": "THEOREM",
+     "termination": "EXITED"
+    },
+    "r1": {
+     "cpu_ns": 363543000,
+     "meter": "cgroup-v1-cpuacct",
+     "problem_sha256": "7de0cab1c7b3e2b48cd293e3d2bed5950b3806cdac5259b24e0d38c9ab67c183",
+     "proved": true,
+     "status": "THEOREM",
+     "termination": "EXITED"
+    },
+    "r2": {
+     "cpu_ns": 381194999,
+     "meter": "cgroup-v1-cpuacct",
+     "problem_sha256": "7de0cab1c7b3e2b48cd293e3d2bed5950b3806cdac5259b24e0d38c9ab67c183",
+     "proved": true,
+     "status": "THEOREM",
+     "termination": "EXITED"
+    }
+   },
+   "system": "ba_huntington",
+   "target": "![X]: (![Y]: (n(plus(X,plus(X,X))) = plus(n(plus(X,Y)),n(X))))"
+  },
+  {
+   "cpu_ratio_max_min": 1.11,
+   "index": 18,
+   "limit_s": 1,
+   "mixed_presentations": false,
+   "mixed_repeats": false,
+   "repeat_cpu_ratio_max_min": 1.767,
+   "runs": {
+    "p0": {
+     "cpu_ns": 83964000,
+     "meter": "cgroup-v1-cpuacct",
+     "problem_sha256": "02bcdaa6f80d15fbcdaeddc69f74f0c0eb93875b69a059e9ec5fc8258a919318",
+     "proved": true,
+     "status": "THEOREM",
+     "termination": "EXITED"
+    },
+    "p1": {
+     "cpu_ns": 86806000,
+     "meter": "cgroup-v1-cpuacct",
+     "problem_sha256": "0481aaf1fa26ba92b2c25a3f3771e63fa570cb9ee38a82c5ab6f7fe72a80f38c",
+     "proved": true,
+     "status": "THEOREM",
+     "termination": "EXITED"
+    },
+    "p2": {
+     "cpu_ns": 82706000,
+     "meter": "cgroup-v1-cpuacct",
+     "problem_sha256": "f07adad5af86e85857f44a290d0529404914f90098efe53c468c4974c48a80ef",
+     "proved": true,
+     "status": "THEOREM",
+     "termination": "EXITED"
+    },
+    "p3": {
+     "cpu_ns": 86648999,
+     "meter": "cgroup-v1-cpuacct",
+     "problem_sha256": "6ac0fd7380979ce4b7d082d36d910b61d13d936538e450c80c0d990aa3d6b3c2",
+     "proved": true,
+     "status": "THEOREM",
+     "termination": "EXITED"
+    },
+    "p4": {
+     "cpu_ns": 84675000,
+     "meter": "cgroup-v1-cpuacct",
+     "problem_sha256": "77566b821fe4a7299b32cf1e2c436cacfc6e9e55269925fc97360bc2106edc9d",
+     "proved": true,
+     "status": "THEOREM",
+     "termination": "EXITED"
+    },
+    "p5": {
+     "cpu_ns": 78182000,
+     "meter": "cgroup-v1-cpuacct",
+     "problem_sha256": "05e1f395ad426dbcdca91aa25095aa9243463865456eec0b380fb09b8576c996",
+     "proved": true,
+     "status": "THEOREM",
+     "termination": "EXITED"
+    },
+    "r1": {
+     "cpu_ns": 77218000,
+     "meter": "cgroup-v1-cpuacct",
+     "problem_sha256": "02bcdaa6f80d15fbcdaeddc69f74f0c0eb93875b69a059e9ec5fc8258a919318",
+     "proved": true,
+     "status": "THEOREM",
+     "termination": "EXITED"
+    },
+    "r2": {
+     "cpu_ns": 136476000,
+     "meter": "cgroup-v1-cpuacct",
+     "problem_sha256": "02bcdaa6f80d15fbcdaeddc69f74f0c0eb93875b69a059e9ec5fc8258a919318",
+     "proved": true,
+     "status": "THEOREM",
+     "termination": "EXITED"
+    }
+   },
+   "system": "ba_huntington",
+   "target": "![X]: (plus(n(n(plus(X,X))),X) = plus(X,plus(n(n(X)),X)))"
+  },
+  {
+   "cpu_ratio_max_min": 1.2,
+   "index": 19,
+   "limit_s": 1,
+   "mixed_presentations": false,
+   "mixed_repeats": false,
+   "repeat_cpu_ratio_max_min": 1.134,
+   "runs": {
+    "p0": {
+     "cpu_ns": 6478999,
+     "meter": "cgroup-v1-cpuacct",
+     "problem_sha256": "99a1da69eafc54539c2c4c18ba27d79ba5eb8bd08c4e7483dd181823353f1d4e",
+     "proved": true,
+     "status": "THEOREM",
+     "termination": "EXITED"
+    },
+    "p1": {
+     "cpu_ns": 6822000,
+     "meter": "cgroup-v1-cpuacct",
+     "problem_sha256": "9230914b97b2dde9866e5ac949bda23ee51d843056192ad73c8117e4b0cffad5",
+     "proved": true,
+     "status": "THEOREM",
+     "termination": "EXITED"
+    },
+    "p2": {
+     "cpu_ns": 6840000,
+     "meter": "cgroup-v1-cpuacct",
+     "problem_sha256": "38f046940ee87f1a0fdba309b13efa9e5aaaed9ad54867e719552396cde6c0f2",
+     "proved": true,
+     "status": "THEOREM",
+     "termination": "EXITED"
+    },
+    "p3": {
+     "cpu_ns": 6218000,
+     "meter": "cgroup-v1-cpuacct",
+     "problem_sha256": "cc9577da8c9fa2a805774e8416f488ed1445bda5334cc6d867c14140c6664355",
+     "proved": true,
+     "status": "THEOREM",
+     "termination": "EXITED"
+    },
+    "p4": {
+     "cpu_ns": 5699999,
+     "meter": "cgroup-v1-cpuacct",
+     "problem_sha256": "2b5a913a879508b606f16c8f14948a2426d54ae462a7646025890114a2115a5f",
+     "proved": true,
+     "status": "THEOREM",
+     "termination": "EXITED"
+    },
+    "p5": {
+     "cpu_ns": 6032000,
+     "meter": "cgroup-v1-cpuacct",
+     "problem_sha256": "c9639ad17353177d74dc0936869bdc133fac7ab2cd892a21f035f31ba2d2cfb3",
+     "proved": true,
+     "status": "THEOREM",
+     "termination": "EXITED"
+    },
+    "r1": {
+     "cpu_ns": 5905000,
+     "meter": "cgroup-v1-cpuacct",
+     "problem_sha256": "99a1da69eafc54539c2c4c18ba27d79ba5eb8bd08c4e7483dd181823353f1d4e",
+     "proved": true,
+     "status": "THEOREM",
+     "termination": "EXITED"
+    },
+    "r2": {
+     "cpu_ns": 5715000,
+     "meter": "cgroup-v1-cpuacct",
+     "problem_sha256": "99a1da69eafc54539c2c4c18ba27d79ba5eb8bd08c4e7483dd181823353f1d4e",
+     "proved": true,
+     "status": "THEOREM",
+     "termination": "EXITED"
+    }
+   },
+   "system": "ba_huntington",
+   "target": "![X]: (![Y]: (![Z]: (plus(plus(X,n(Y)),n(Z)) = plus(X,plus(n(Y),n(Z))))))"
+  }
+ ],
+ "schema": "genesis-orbit-probe-v1",
+ "scope": "DEV diagnostic of E --auto on fresh targets; E outcomes are prover claims; no proof admitted",
+ "settings": {
+  "ba_huntington": {
+   "limit_s": 1,
+   "max_term": 4,
+   "range": [
+    6,
+    9
+   ],
+   "seed": 403
+  },
+  "ba_sheffer": {
+   "limit_s": 1,
+   "max_term": 5,
+   "range": [
+    5,
+    8
+   ],
+   "seed": 401
+  },
+  "ba_wolfram": {
+   "limit_s": 3,
+   "max_term": 5,
+   "range": [
+    5,
+    8
+   ],
+   "seed": 402
+  }
+ },
+ "summary": {
+  "ba_huntington": {
+   "limit_s": 1,
+   "median_cpu_ratio_presentations": 1.317,
+   "median_cpu_ratio_repeats": 1.16,
+   "proved_by_all_presentations": 18,
+   "proved_by_presentation": {
+    "p0": 18,
+    "p1": 18,
+    "p2": 18,
+    "p3": 18,
+    "p4": 18,
+    "p5": 18,
+    "r1": 18,
+    "r2": 18
+   },
+   "proved_by_some_presentation": 18,
+   "share_mixed_across_presentations": 0.0,
+   "share_mixed_across_repeats": 0.0,
+   "targets": 20,
+   "verdict": "NOT_DETECTED"
+  },
+  "ba_sheffer": {
+   "limit_s": 1,
+   "median_cpu_ratio_presentations": 1.371,
+   "median_cpu_ratio_repeats": 1.199,
+   "proved_by_all_presentations": 11,
+   "proved_by_presentation": {
+    "p0": 11,
+    "p1": 11,
+    "p2": 11,
+    "p3": 11,
+    "p4": 11,
+    "p5": 11,
+    "r1": 11,
+    "r2": 11
+   },
+   "proved_by_some_presentation": 11,
+   "share_mixed_across_presentations": 0.0,
+   "share_mixed_across_repeats": 0.0,
+   "targets": 20,
+   "verdict": "NOT_DETECTED"
+  },
+  "ba_wolfram": {
+   "limit_s": 3,
+   "median_cpu_ratio_presentations": null,
+   "median_cpu_ratio_repeats": null,
+   "proved_by_all_presentations": 0,
+   "proved_by_presentation": {
+    "p0": 0,
+    "p1": 0,
+    "p2": 0,
+    "p3": 0,
+    "p4": 0,
+    "p5": 0,
+    "r1": 0,
+    "r2": 0
+   },
+   "proved_by_some_presentation": 0,
+   "share_mixed_across_presentations": 0.0,
+   "share_mixed_across_repeats": 0.0,
+   "targets": 10,
+   "verdict": "NOT_DETECTED"
+  }
+ },
+ "wall_s": 383.9
+}
