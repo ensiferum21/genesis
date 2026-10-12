@@ -31,8 +31,8 @@ import time
 
 from ..common import digest
 from ..graphs import check_witness
-
-SCHEMA = 'genesis-lp-dual-certificate-v1'
+# The trusted exact checker lives in verification/lp_dual.py (B20_R1, Repair D); re-exported here.
+from ..verification.lp_dual import SCHEMA, check_certificate, is_motif as _is_motif  # noqa: F401
 
 
 def triangles(task):
@@ -63,37 +63,6 @@ def four_cycles(task):
 
 def motifs_of(task):
     return triangles(task) if task.domain == 'triangle_free_host_v1' else four_cycles(task)
-
-
-def _is_motif(task, edges):
-    """Does this edge set form a forbidden motif of the task's own host?"""
-    E = set(map(tuple, task.edges))
-    edges = [tuple(e) for e in edges]
-    if len(set(edges)) != len(edges) or not set(edges) <= E:
-        return False
-    if task.domain == 'triangle_free_host_v1':
-        if len(edges) != 3:
-            return False
-        vs = sorted({x for e in edges for x in e})
-        if len(vs) != 3:
-            return False
-        a, b, c = vs
-        return set(edges) == {(a, b), (b, c), (a, c)}
-    if len(edges) != 4:
-        return False
-    vs = {x for e in edges for x in e}
-    deg = {v: sum(v in e for e in edges) for v in vs}
-    if len(vs) != 4 or any(d != 2 for d in deg.values()):
-        return False
-    # connected 2-regular on 4 vertices = a 4-cycle
-    seen, stack = set(), [next(iter(vs))]
-    while stack:
-        x = stack.pop()
-        if x in seen:
-            continue
-        seen.add(x)
-        stack += [y for e in edges for y in e if x in e and y != x]
-    return seen == vs
 
 
 def lp_dual(task, *, max_denominator=10 ** 6):
@@ -136,49 +105,19 @@ def lp_dual(task, *, max_denominator=10 ** 6):
     return cert, float(r.fun)
 
 
-def check_certificate(task, cert):
-    """Independent exact check. Returns {'verdict': VALID | REJECTED, 'bound', 'reason'}."""
-    def bad(reason):
-        return {'verdict': 'REJECTED', 'bound': None, 'reason': reason}
-    if not isinstance(cert, dict) or cert.get('schema') != SCHEMA:
-        return bad('not an LP dual certificate')
-    if cert.get('task_sha256') != digest(task.model_dump(mode='json')) or cert.get('domain') != task.domain:
-        return bad('certificate names another task')
-    E = [tuple(e) for e in task.edges]
-    cover = {e: Fraction(0) for e in E}
-    total = Fraction(0)
-    try:
-        for q in cert['inequalities']:
-            edges = [tuple(e) for e in q['edges']]
-            weight = Fraction(q['weight'])
-            if weight <= 0:
-                return bad('non-positive inequality weight')
-            if not _is_motif(task, edges):
-                return bad(f'inequality on {edges} is not a motif of this host')
-            if q['rhs'] != len(edges) - 1:
-                return bad('wrong right-hand side for a motif inequality')
-            for e in edges:
-                cover[e] += weight
-            total += weight * q['rhs']
-        for e, s in cert['slack']:
-            e, s = tuple(e), Fraction(s)
-            if e not in cover or s < 0:
-                return bad('slack on a non-edge or negative slack')
-            cover[e] += s
-            total += s
-    except (KeyError, TypeError, ValueError, ZeroDivisionError) as exc:
-        return bad(f'malformed certificate ({type(exc).__name__})')
-    short = [e for e, v in cover.items() if v < 1]
-    if short:
-        return bad(f'dual infeasible: {len(short)} edges are covered less than once')
-    if Fraction(cert['objective']) != total or cert['bound'] != math.floor(total):
-        return bad('objective or bound does not match the weights')
-    return {'verdict': 'VALID', 'bound': math.floor(total), 'reason': None}
-
-
 def certify(task, witness, *, seconds=60, sat_fallback=True):
     """Joint certification: domain-checked witness (lower) against an LP dual certificate
-    (upper), then SAT/DRAT on the remaining gap within the budget. Optimum only on a match."""
+    (upper), then SAT/DRAT on the remaining gap within the budget. Optimum only on a match.
+
+    Custody (B20_R1, Repair D; finding B20-REVIEW-04): the record carries a
+    ``genesis-certificate-bundle-v2`` (``record['bundle']``) and the raw objects it names
+    (``record['objects']``: sha256 -> bytes): the final lower witness, the exact rational
+    LP certificate, and for a SAT/DRAT upper bound the original CNF and DRAT proof. Callers
+    must persist the objects before publishing any result (``certificates.persist_dir``,
+    ``certificates.persist`` or ``record_evidence``); ``certificates.replay`` re-checks the
+    bundle with the producers disabled. Every LP and SAT attempt is listed with its cost.
+    """
+    from ..verification.certificates import build_v2
     start = time.monotonic()
     checked = check_witness(task, [tuple(e) for e in witness])
     lower, best = checked['value'], checked['selected']
@@ -189,23 +128,28 @@ def certify(task, witness, *, seconds=60, sat_fallback=True):
     record['steps'].append({'step': 'lp-dual', 'lp_value': lp_value, 'verdict': v['verdict'], 'bound': v['bound'],
                             'cpu_s': round(time.process_time() - t0, 3)})
     upper, evidence = len(task.edges), {'method': 'HOST_EDGE_COUNT'}
+    upper_custody = {'method': 'HOST_EDGE_COUNT'}
     if v['verdict'] == 'VALID' and v['bound'] < upper:
         upper, evidence = v['bound'], {'method': 'LP_DUAL_EXACT', 'certificate': cert}
+        upper_custody = {'method': 'LP_DUAL_EXACT', 'certificate': cert, 'lp_value_float': lp_value}
     if lower < upper and sat_fallback:
         # SAT/DRAT on the remaining gap only: each call asks for lower+1 edges. A model
         # raises the lower bound, re-checked by the domain. An UNSAT proof, verified by
         # drat-trim, closes the gap. The search stops as soon as lower meets the LP bound.
+        # The CNF and DRAT bytes of a closing call are kept (they were discarded before B20_R1).
         from ..verification.sat import certify_upper, witness_from_model
         calls = []
         while lower < upper:
             remaining = int(seconds - (time.monotonic() - start))
             if remaining < 1:
                 break
-            cert, rec, _, _ = certify_upper(task, lower, seconds=remaining)
-            calls.append({'k': lower + 1, 'status': rec['status'], 'seconds': rec.get('seconds')})
-            if cert is not None:
-                if cert['verdict'] == 'VALID':
-                    upper, evidence = lower, {'method': 'SAT_DRAT', 'certificate': cert}
+            scert, rec, cnf, proof = certify_upper(task, lower, seconds=remaining)
+            calls.append({'k': lower + 1, 'status': rec['status'], 'seconds': rec.get('seconds'),
+                          'checker_verdict': scert.get('verdict') if scert else None})
+            if scert is not None:
+                if scert['verdict'] == 'VALID':
+                    upper, evidence = lower, {'method': 'SAT_DRAT', 'certificate': scert}
+                    upper_custody = {'method': 'SAT_DRAT', 'certificate': scert, 'cnf': cnf, 'proof': proof}
                 break
             if rec['status'] != 'SAT':
                 break
@@ -215,10 +159,60 @@ def certify(task, witness, *, seconds=60, sat_fallback=True):
             lower, best = checked2['value'], checked2['selected']
             record['witness'] = [list(e) for e in best]
         record['steps'].append({'step': 'sat-drat', 'calls': calls})
+    bundle, objects = build_v2(task, witness=record['witness'], lower=lower, upper=upper_custody,
+                               attempts=record['steps'])
     record.update(lower=lower, upper=upper, gap=upper - lower, upper_evidence=evidence,
-                  status='OPTIMALITY_CHECKED' if lower == upper else 'BOUNDS_ONLY',
-                  wall_s=round(time.monotonic() - start, 3))
+                  status=bundle['status'], wall_s=round(time.monotonic() - start, 3), bundle=bundle,
+                  objects=objects)
     return record
 
 
-__all__ = ['lp_dual', 'check_certificate', 'certify', 'triangles', 'four_cycles', 'SCHEMA']
+def record_evidence(store, kernel, task, record, *, source_hash, promote=True):
+    """Put a ``certify`` result through the shared evidence kernel (Repair D).
+
+    Mirrors the world loop (``worldstep.ResearchLoop._update_evidence``): the problem, the
+    certificate objects and the bundle go into the store's CAS first; then a replayable
+    witness check (lower) and a bound state referencing the custody-held bundle (upper).
+    An optimum claim is promoted only through ``kernel.promote``, which re-checks the
+    witness and replays the bundle with the producers disabled; a revoked checker, a
+    missing object or a changed coefficient blocks it. Returns the node ids and outcome.
+    """
+    from ..kernel.evidence import PromotionRejected
+    from ..verification.certificates import persist
+    from ..verification.lp_dual import checker_identity
+    task_sha = store.put(task.model_dump(mode='json'))
+    bundle_ref = persist(store, record['bundle'], record['objects'])
+    run = kernel.record('execution_receipt', {'task': task.task_id, 'macro': 'joint-certification',
+                                              'ir_program': None},
+                        route='genesis.discovery.obstruction', source_hash=source_hash, verdict='VALID',
+                        effects=['UNCHECKED_PROPOSAL', 'USES_DEV_DATA'])
+    check = kernel.record('witness_check', {'schema': 'genesis-witness-check-v2', 'task': task.task_id,
+                                            'task_sha256': task_sha, 'witness': record['witness'],
+                                            'value': record['lower']},
+                          parents=[run], route='genesis.discovery.obstruction', source_hash=source_hash,
+                          verdict='VALID', verifier='dual-predicates')
+    method = record['bundle']['upper']['method']
+    verifier = {'SAT_DRAT': 'drat-trim', 'HOST_EDGE_COUNT': 'host-edge-count'}.get(method) or checker_identity()
+    bound = kernel.record('bound_state', {'schema': 'genesis-bound-state-v2', 'task': task.task_id,
+                                          'task_sha256': task_sha, 'lower': record['lower'],
+                                          'upper': record['upper'], 'gap': record['gap'], 'lower_evidence': check,
+                                          'certificate_bundle': bundle_ref},
+                          parents=[check], route='genesis.discovery.obstruction', source_hash=source_hash,
+                          verdict='VALID', verifier=verifier)
+    out = {'task_sha256': task_sha, 'bundle': bundle_ref, 'witness_check': check, 'bound_state': bound,
+           'claim': None, 'promoted': False, 'rejection': None}
+    if record['gap'] == 0:
+        claim = f'optimum:{task.task_id}:{record["upper"]}'
+        problem = {'task_sha256': task_sha, 'value': record['upper'], 'claim': 'optimum'}
+        kernel.create_claim(claim, kernel.math_statement(problem), 'this finite host only', [bound], problem=problem)
+        out['claim'] = claim
+        if promote:
+            try:
+                kernel.promote(claim, 'math', 'OPTIMALITY_CHECKED')
+                out['promoted'] = True
+            except PromotionRejected as exc:
+                out['rejection'] = exc.args[0]
+    return out
+
+
+__all__ = ['lp_dual', 'check_certificate', 'certify', 'record_evidence', 'triangles', 'four_cycles', 'SCHEMA']

@@ -803,8 +803,9 @@ class EvidenceKernel:
             except Exception:
                 return False
 
+        dead_checkers = sorted(self.revoked_verifiers())
         try:
-            problems = custody_problems(bundle, has_object)
+            problems = custody_problems(bundle, has_object, dead_checkers)
         except Exception as exc:
             return f'malformed certificate bundle ({type(exc).__name__})'
         if problems:
@@ -812,12 +813,14 @@ class EvidenceKernel:
         if bundle['problem']['task_sha256'] != p['task_sha256'] or bundle['lower']['value'] != p['lower'] \
                 or bundle['upper']['value'] != p['upper']:
             return 'certificate bundle certifies a different problem or bound'
+        # Replays are cached per (bundle identity, revocation state): a cache hit under a
+        # since-revoked checker is not valid (B20_R1, Repair D).
         cache = self.__dict__.setdefault('_replays', {})
-        ref = p['certificate_bundle']
+        ref = (p['certificate_bundle'], self.revocation_head())
         if ref not in cache:
             try:
                 with checker_only():
-                    cache[ref] = replay(bundle, self.s.get_bytes)
+                    cache[ref] = replay(bundle, self.s.get_bytes, dead_checkers)
             except Exception as exc:
                 cache[ref] = {'status': 'CHECKER_ERROR', 'problems': [f'{type(exc).__name__}: {exc}']}
         r = cache[ref]
