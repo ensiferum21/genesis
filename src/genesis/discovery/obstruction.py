@@ -201,6 +201,17 @@ def record_evidence(store, kernel, task, record, *, source_hash, promote=True):
                           verdict='VALID', verifier=verifier)
     out = {'task_sha256': task_sha, 'bundle': bundle_ref, 'witness_check': check, 'bound_state': bound,
            'claim': None, 'promoted': False, 'rejection': None}
+    # CRPD-1 (B20_R2): BOUND records for both sides, from a checker-only replay of the stored bundle
+    # (the kernel's cached replay when it has one), never from the producer's own verdicts.
+    from ..invention.soundness import certificate_bound_modes, optimum_problems
+    from ..verification.certificates import checker_only, replay
+    cached = kernel.__dict__.get('_replays', {}).get((bundle_ref, kernel.revocation_head()))
+    if cached is None:
+        with checker_only():
+            cached = replay(store.get(bundle_ref), store.get_bytes, sorted(kernel.revoked_verifiers()))
+    lower_mode, upper_mode = certificate_bound_modes(store.get(bundle_ref), cached)
+    out['soundness'] = {'lower': lower_mode, 'upper': upper_mode,
+                        'optimum_problems': optimum_problems(lower_mode, upper_mode)}
     if record['gap'] == 0:
         claim = f'optimum:{task.task_id}:{record["upper"]}'
         problem = {'task_sha256': task_sha, 'value': record['upper'], 'claim': 'optimum'}

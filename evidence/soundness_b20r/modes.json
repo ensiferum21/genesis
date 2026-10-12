@@ -1,0 +1,427 @@
+{
+ "counts": {
+  "BOUND": 12,
+  "HEURISTIC": 6,
+  "REJECTED": 13,
+  "SUFF": 5
+ },
+ "module": "genesis.invention.soundness",
+ "note": "modes derived from recorded checked evidence; HEURISTIC and REJECTED never admit a proof",
+ "optima_licensed": 12,
+ "rows": [
+  {
+   "artifact": "representation adjacent_2",
+   "licenses": [],
+   "mode": "REJECTED",
+   "obligations": {
+    "backward": null,
+    "forward": "DISPROVED"
+   },
+   "requested": "EQ",
+   "scope": "c4_host_v2",
+   "source": "evidence/invention_b18/representations/package.json"
+  },
+  {
+   "artifact": "representation adjacent_2",
+   "licenses": [
+    "lift_positive",
+    "order"
+   ],
+   "mode": "SUFF",
+   "obligations": {
+    "backward": "DISPROVED",
+    "forward": "CHECKED"
+   },
+   "requested": "EQ",
+   "scope": "triangle_free_host_v1",
+   "source": "evidence/invention_b18/representations/package.json"
+  },
+  {
+   "artifact": "representation adjacent_3",
+   "licenses": [],
+   "mode": "REJECTED",
+   "obligations": {
+    "backward": null,
+    "forward": "DISPROVED"
+   },
+   "requested": "EQ",
+   "scope": "c4_host_v2",
+   "source": "evidence/invention_b18/representations/package.json"
+  },
+  {
+   "artifact": "representation adjacent_3",
+   "licenses": [
+    "lift_positive",
+    "order"
+   ],
+   "mode": "SUFF",
+   "obligations": {
+    "backward": null,
+    "forward": "CHECKED"
+   },
+   "requested": "EQ",
+   "scope": "triangle_free_host_v1",
+   "source": "evidence/invention_b18/representations/package.json"
+  },
+  {
+   "artifact": "representation cross_2",
+   "licenses": [],
+   "mode": "REJECTED",
+   "obligations": {
+    "backward": null,
+    "forward": "DISPROVED"
+   },
+   "requested": "EQ",
+   "scope": "c4_host_v2",
+   "source": "evidence/invention_b18/representations/package.json"
+  },
+  {
+   "artifact": "representation cross_2",
+   "licenses": [
+    "lift_positive",
+    "order"
+   ],
+   "mode": "SUFF",
+   "obligations": {
+    "backward": "DISPROVED",
+    "forward": "CHECKED"
+   },
+   "requested": "EQ",
+   "scope": "triangle_free_host_v1",
+   "source": "evidence/invention_b18/representations/package.json"
+  },
+  {
+   "artifact": "representation cross_3",
+   "licenses": [],
+   "mode": "REJECTED",
+   "obligations": {
+    "backward": null,
+    "forward": "DISPROVED"
+   },
+   "requested": "EQ",
+   "scope": "c4_host_v2",
+   "source": "evidence/invention_b18/representations/package.json"
+  },
+  {
+   "artifact": "representation cross_3",
+   "licenses": [],
+   "mode": "REJECTED",
+   "obligations": {
+    "backward": null,
+    "forward": "DISPROVED"
+   },
+   "requested": "EQ",
+   "scope": "triangle_free_host_v1",
+   "source": "evidence/invention_b18/representations/package.json"
+  },
+  {
+   "artifact": "representation inside_2",
+   "licenses": [],
+   "mode": "REJECTED",
+   "obligations": {
+    "backward": null,
+    "forward": "DISPROVED"
+   },
+   "requested": "EQ",
+   "scope": "c4_host_v2",
+   "source": "evidence/invention_b18/representations/package.json"
+  },
+  {
+   "artifact": "representation inside_2",
+   "licenses": [],
+   "mode": "REJECTED",
+   "obligations": {
+    "backward": null,
+    "forward": "DISPROVED"
+   },
+   "requested": "EQ",
+   "scope": "triangle_free_host_v1",
+   "source": "evidence/invention_b18/representations/package.json"
+  },
+  {
+   "artifact": "representation inside_3",
+   "licenses": [],
+   "mode": "REJECTED",
+   "obligations": {
+    "backward": null,
+    "forward": "DISPROVED"
+   },
+   "requested": "EQ",
+   "scope": "c4_host_v2",
+   "source": "evidence/invention_b18/representations/package.json"
+  },
+  {
+   "artifact": "representation inside_3",
+   "licenses": [],
+   "mode": "REJECTED",
+   "obligations": {
+    "backward": null,
+    "forward": "DISPROVED"
+   },
+   "requested": "EQ",
+   "scope": "triangle_free_host_v1",
+   "source": "evidence/invention_b18/representations/package.json"
+  },
+  {
+   "artifact": "representation ordered_2",
+   "licenses": [],
+   "mode": "REJECTED",
+   "obligations": {
+    "backward": null,
+    "forward": "DISPROVED"
+   },
+   "requested": "EQ",
+   "scope": "c4_host_v2",
+   "source": "evidence/invention_b18/representations/package.json"
+  },
+  {
+   "artifact": "representation ordered_2",
+   "licenses": [
+    "lift_positive",
+    "order"
+   ],
+   "mode": "SUFF",
+   "obligations": {
+    "backward": "DISPROVED",
+    "forward": "CHECKED"
+   },
+   "requested": "EQ",
+   "scope": "triangle_free_host_v1",
+   "source": "evidence/invention_b18/representations/package.json"
+  },
+  {
+   "artifact": "representation ordered_3",
+   "licenses": [],
+   "mode": "REJECTED",
+   "obligations": {
+    "backward": null,
+    "forward": "DISPROVED"
+   },
+   "requested": "EQ",
+   "scope": "c4_host_v2",
+   "source": "evidence/invention_b18/representations/package.json"
+  },
+  {
+   "artifact": "representation ordered_3",
+   "licenses": [],
+   "mode": "REJECTED",
+   "obligations": {
+    "backward": null,
+    "forward": "DISPROVED"
+   },
+   "requested": "EQ",
+   "scope": "triangle_free_host_v1",
+   "source": "evidence/invention_b18/representations/package.json"
+  },
+  {
+   "artifact": "transport W_tf -> W_bip",
+   "b18_verdict": "TRANSPORTED",
+   "licenses": [
+    "lift_positive",
+    "order"
+   ],
+   "mode": "SUFF",
+   "obligations": {
+    "backward": null,
+    "forward": "CHECKED"
+   },
+   "requested": "SUFF",
+   "scope": "assumptions of W_bip",
+   "source": "evidence/invention_b18/worlds/package.json"
+  },
+  {
+   "artifact": "transport W_tf -> W_deg1",
+   "b18_verdict": "REFUSED_UNPROVED_CONDITIONS",
+   "licenses": [
+    "order"
+   ],
+   "mode": "HEURISTIC",
+   "obligations": {
+    "backward": null,
+    "forward": null
+   },
+   "requested": "SUFF",
+   "scope": "assumptions of W_deg1",
+   "source": "evidence/invention_b18/worlds/package.json"
+  },
+  {
+   "artifact": "transport W_tf -> W_conflict",
+   "b18_verdict": "REFUSED_INCONSISTENT_TARGET",
+   "licenses": [],
+   "mode": "REJECTED",
+   "obligations": {
+    "backward": null,
+    "forward": "VACUOUS"
+   },
+   "requested": "SUFF",
+   "scope": "vacuous: an inconsistent world",
+   "source": "evidence/invention_b18/worlds/package.json"
+  },
+  {
+   "artifact": "certificate bundle 10f985a4ef3ddf91",
+   "lower": "BOUND",
+   "mode": "BOUND",
+   "optimum_licensed": true,
+   "scope": "dev-erdos-7fee9578-20261021-0000",
+   "source": "evidence/obstruction_custody_b20r",
+   "upper": "BOUND",
+   "upper_method": "LP_DUAL_EXACT"
+  },
+  {
+   "artifact": "certificate bundle 1656ed0be20f319f",
+   "lower": "BOUND",
+   "mode": "BOUND",
+   "optimum_licensed": true,
+   "scope": "dev-erdos-3765432f-20261021-0003",
+   "source": "evidence/obstruction_custody_b20r",
+   "upper": "BOUND",
+   "upper_method": "LP_DUAL_EXACT"
+  },
+  {
+   "artifact": "certificate bundle 3b0d6308cba0382b",
+   "lower": "BOUND",
+   "mode": "BOUND",
+   "optimum_licensed": true,
+   "scope": "dev-erdos-b73f6828-20261021-0000",
+   "source": "evidence/obstruction_custody_b20r",
+   "upper": "BOUND",
+   "upper_method": "LP_DUAL_EXACT"
+  },
+  {
+   "artifact": "certificate bundle 64793ae9384fbc56",
+   "lower": "BOUND",
+   "mode": "BOUND",
+   "optimum_licensed": true,
+   "scope": "dev-erdos-3765432f-20261021-0001",
+   "source": "evidence/obstruction_custody_b20r",
+   "upper": "BOUND",
+   "upper_method": "LP_DUAL_EXACT"
+  },
+  {
+   "artifact": "certificate bundle 8016eb4b450327f3",
+   "lower": "BOUND",
+   "mode": "BOUND",
+   "optimum_licensed": true,
+   "scope": "dev-erdos-7fee9578-20261021-0003",
+   "source": "evidence/obstruction_custody_b20r",
+   "upper": "BOUND",
+   "upper_method": "LP_DUAL_EXACT"
+  },
+  {
+   "artifact": "certificate bundle 835f5dd5188cb032",
+   "lower": "BOUND",
+   "mode": "BOUND",
+   "optimum_licensed": true,
+   "scope": "dev-erdos-b73f6828-20261021-0001",
+   "source": "evidence/obstruction_custody_b20r",
+   "upper": "BOUND",
+   "upper_method": "LP_DUAL_EXACT"
+  },
+  {
+   "artifact": "certificate bundle 926d14d894468c56",
+   "lower": "BOUND",
+   "mode": "BOUND",
+   "optimum_licensed": true,
+   "scope": "dev-erdos-3765432f-20261021-0002",
+   "source": "evidence/obstruction_custody_b20r",
+   "upper": "BOUND",
+   "upper_method": "LP_DUAL_EXACT"
+  },
+  {
+   "artifact": "certificate bundle 985f473bd41f45c6",
+   "lower": "BOUND",
+   "mode": "BOUND",
+   "optimum_licensed": true,
+   "scope": "dev-erdos-b73f6828-20261021-0002",
+   "source": "evidence/obstruction_custody_b20r",
+   "upper": "BOUND",
+   "upper_method": "LP_DUAL_EXACT"
+  },
+  {
+   "artifact": "certificate bundle b3e7cc0f41f35c8e",
+   "lower": "BOUND",
+   "mode": "BOUND",
+   "optimum_licensed": true,
+   "scope": "dev-erdos-b73f6828-20261021-0003",
+   "source": "evidence/obstruction_custody_b20r",
+   "upper": "BOUND",
+   "upper_method": "LP_DUAL_EXACT"
+  },
+  {
+   "artifact": "certificate bundle b5ab3944cb68e5cf",
+   "lower": "BOUND",
+   "mode": "BOUND",
+   "optimum_licensed": true,
+   "scope": "dev-erdos-3765432f-20261021-0000",
+   "source": "evidence/obstruction_custody_b20r",
+   "upper": "BOUND",
+   "upper_method": "LP_DUAL_EXACT"
+  },
+  {
+   "artifact": "certificate bundle cb5de7d298a3debf",
+   "lower": "BOUND",
+   "mode": "BOUND",
+   "optimum_licensed": true,
+   "scope": "dev-erdos-7fee9578-20261021-0002",
+   "source": "evidence/obstruction_custody_b20r",
+   "upper": "BOUND",
+   "upper_method": "LP_DUAL_EXACT"
+  },
+  {
+   "artifact": "certificate bundle fdf2bb2f9e0168be",
+   "lower": "BOUND",
+   "mode": "BOUND",
+   "optimum_licensed": true,
+   "scope": "dev-erdos-7fee9578-20261021-0001",
+   "source": "evidence/obstruction_custody_b20r",
+   "upper": "BOUND",
+   "upper_method": "LP_DUAL_EXACT"
+  },
+  {
+   "artifact": "research policies (fixed, random, heuristic, bandit, learned)",
+   "licenses": [
+    "order"
+   ],
+   "mode": "HEURISTIC",
+   "scope": "search guidance",
+   "source": "by construction"
+  },
+  {
+   "artifact": "research macros",
+   "licenses": [
+    "order"
+   ],
+   "mode": "HEURISTIC",
+   "scope": "search guidance",
+   "source": "by construction"
+  },
+  {
+   "artifact": "curriculum variants",
+   "licenses": [
+    "order"
+   ],
+   "mode": "HEURISTIC",
+   "scope": "search guidance",
+   "source": "by construction"
+  },
+  {
+   "artifact": "retrieval rankings",
+   "licenses": [
+    "order"
+   ],
+   "mode": "HEURISTIC",
+   "scope": "search guidance",
+   "source": "by construction"
+  },
+  {
+   "artifact": "market value-of-computation estimates",
+   "licenses": [
+    "order"
+   ],
+   "mode": "HEURISTIC",
+   "scope": "search guidance",
+   "source": "by construction"
+  }
+ ],
+ "schema": "genesis-soundness-audit-v1"
+}

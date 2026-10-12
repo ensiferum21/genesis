@@ -274,6 +274,9 @@ class KernelPath(unittest.TestCase):
         out = O.record_evidence(self.s, self.k, self.t, self.rec, source_hash='test')
         self.assertTrue(out['promoted'], out['rejection'])
         self.assertEqual(self.k.levels(out['claim'])['math'], 'OPTIMALITY_CHECKED')
+        self.assertEqual(out['soundness']['optimum_problems'], [])             # CRPD-1: BOUND on both sides
+        self.assertEqual((out['soundness']['lower']['established'], out['soundness']['upper']['established']),
+                         ('BOUND', 'BOUND'))
         reg = self.k.register_verifier(LP.checker_identity(), LP.checker_identity().split('@')[1])
         self.k.revoke(reg, 'test: LP checker withdrawn', 'test')
         self.assertNotEqual(self.k.levels(out['claim'])['math'], 'OPTIMALITY_CHECKED')
@@ -284,6 +287,7 @@ class KernelPath(unittest.TestCase):
                                       if h != self.rec['bundle']['upper']['certificate_sha256']})
         out = O.record_evidence(self.s, self.k, self.t, rec, source_hash='test')
         self.assertFalse(out['promoted'])
+        self.assertTrue(out['soundness']['optimum_problems'])                  # the upper side does not replay
         self.assertIn('LP certificate', out['rejection'][0] if isinstance(out['rejection'], list)
                       else str(out['rejection']))
 
