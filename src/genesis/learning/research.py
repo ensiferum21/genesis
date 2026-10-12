@@ -294,7 +294,9 @@ def run(system, policy, pool, *, budget_s=None, account=None, dev_targets=(), pr
         if log and outcome == 'PROVED':
             log(f'  {system} {policy.name}: proved {Q.text(eq)} ({len(library)} lemmas)')
     acct = account.record()
+    from ..invention.soundness import heuristic
     return {'system': system, 'policy': policy.name, 'run_id': run_id, 'library': library, 'trajectory': trajectory,
+            'guidance': heuristic(f'research policy {policy.name}'),     # CRPD-1: ordering only, never proof
             'cpu_s': round(acct['cpu_ns_total'] / 1e9, 3), 'library_sha256': digest([l['text'] for l in library]),
             'account': acct, 'screened_out': screened, 'screen': 'INSERTION_SCREEN' if screen else 'NONE'}
 

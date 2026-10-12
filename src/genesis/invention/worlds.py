@@ -251,6 +251,10 @@ def judge(worlds, transports, claims, statements):
         decisions.append({'from': src, 'to': dst, 'claims': [c['id'] for c in claims if c['world'] == src],
                           'verdict': verdict, 'conditions': needed, 'implication_proofs': proofs, 'missing': missing,
                           'transported_assumptions': wd['assumptions'] if verdict == 'TRANSPORTED' else None})
+    # CRPD-1 (B20_R2): the soundness mode each decision licenses, derived from the same checks.
+    from .soundness import transport_mode
+    for d in decisions:
+        d['soundness'] = transport_mode(d, status)
     claim_status = []
     for c in claims:
         s = status[c['world']]['status']

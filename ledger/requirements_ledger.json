@@ -4916,7 +4916,9 @@
    },
    "code": [
     "src/genesis/invention/representations.py",
-    "evidence/invention_b18/representations/package.json"
+    "evidence/invention_b18/representations/package.json",
+    "src/genesis/invention/soundness.py",
+    "evidence/soundness_b20r/modes.json"
    ],
    "disposition": "IMPLEMENTED_BOUNDED_PENDING_AUDIT",
    "evidence": [],
@@ -4931,7 +4933,8 @@
    "scope": "workstream (B14 scope delivered; acceptance pending)",
    "source": "roadmap \u00a77-10",
    "tests": [
-    "tests_formal/test_invention.py"
+    "tests_formal/test_invention.py",
+    "tests_formal/test_soundness_modes.py"
    ],
    "title": "Representation and ontology invention (vertex-class grammar)",
    "workstream": "W10"
@@ -4971,7 +4974,8 @@
    },
    "code": [
     "src/genesis/invention/worlds.py",
-    "evidence/invention_b18/worlds/package.json"
+    "evidence/invention_b18/worlds/package.json",
+    "src/genesis/invention/soundness.py"
    ],
    "disposition": "IMPLEMENTED_BOUNDED_PENDING_AUDIT",
    "evidence": [],
@@ -4986,7 +4990,8 @@
    "scope": "workstream (B14 scope delivered; acceptance pending)",
    "source": "roadmap \u00a77-10",
    "tests": [
-    "tests_formal/test_invention.py"
+    "tests_formal/test_invention.py",
+    "tests_formal/test_soundness_modes.py::Wiring"
    ],
    "title": "Worlds, counterfactual theories and transport",
    "workstream": "W12"
