@@ -45,7 +45,7 @@
     "9": "Leak firewall: text/structural/elaborated/near-dup screening, oracle, theorem memory rule.",
     "10": "IR overloads + replay, 5 macros, research market, world-step loop, Appendix A registry.",
     "11": "Experiment B harness: FOF parser, SAT model finder, independent evaluator, E prover, kill gate (DEV: KILL).",
-    "12": "Release bundle + verifier, §38 classes (mutation, load, golden baselines, smoke cap), CI, container recipe, env lock.",
+    "12": "Release bundle + verifier, \u00a738 classes (mutation, load, golden baselines, smoke cap), CI, container recipe, env lock.",
     "13": "SAT baseline arm, e2e walkthrough, requirements map, final matrix.",
     "14": "R-01 shared receipt semantics; R-02 effective levels and bundle re-derivation; R-03 certificate custody + checker-only replay; three internal red-team rounds (11, 12, 9 findings; 4, 2, 1 critical) all closed with regressions; only replayable evidence licenses levels; custodian checks requests against the frozen campaign export; W01 ledger (343 rows); undeclared skips fail the matrix.",
     "14R1": "External review F-01 repaired: requested vs established wording; report.md derived per claim; free prose at floor; B14-OPEN-5 closed.",
@@ -114,5 +114,41 @@
     "B20-OPEN-2 macros faithful but no gain; strict transfer brittle",
     "B20-OPEN-3 hard-system results load-sensitive and noisy",
     "B20-OPEN-4 memory/curriculum: no effect or parity only"
-  ]
+  ],
+  "continuation_b20_r1": {
+    "started": "2026-10-12",
+    "branch": "continuation-b20-repairs",
+    "parent": {
+      "checkpoint": "GENESIS_COMPLETION_CHECKPOINT_B20.zip",
+      "sha256": "44bbbbeb1b8781203af8b3489b7c1a396d7694806232193dce9e7fee46f12091",
+      "commit": "97fb23336a0a6c940193625bcc0091888b413cf2"
+    },
+    "source": "external handoff \"Genesis: B20 to the grand vision\" v1.0 (units H01-H12); B20 claims above are unchanged",
+    "review_findings": {
+      "B20-REVIEW-01": "REPAIRED_PENDING_REVIEW",
+      "B20-REVIEW-02": "REPAIRED_PENDING_REVIEW",
+      "B20-REVIEW-03": "REPAIRED_FORWARD_ONLY_PENDING_REVIEW",
+      "B20-REVIEW-04": "REPAIRED_PENDING_REVIEW",
+      "B20R-NEW-01": "REPAIRED"
+    },
+    "units": {
+      "H01": "DONE (reproductions in audit/review_b20)",
+      "H02": "ENGINEERING DONE; fresh DEV rerun NOT_RUN",
+      "H03": "DONE for the joint certification path; custody-complete DEV re-run",
+      "H04": "BLOCKED_ENVIRONMENT for external parts (second machine, registry, PyPI hashes, time anchor)",
+      "H05-H12": "NOT_STARTED"
+    },
+    "adopted_from_crpd_v3": [
+      "CRPD-1 one soundness-mode field (EQ/SUFF/NEC/BOUND/HEURISTIC) across abstractions",
+      "CRPD-2 Lean-checked C4 codegree equivalence and pair-count bound as a checked upper certificate method",
+      "CRPD-3 orbit-sensitivity probe of prover cost (DEV diagnostic)",
+      "CRPD-4 aliasing-pair abstraction refinement (after a domain with headroom)"
+    ],
+    "not_adopted_from_crpd_v3": [
+      "new top-level packages duplicating invention/, learning/memory.py, market.py, research.py",
+      "Python 3.12 (B20 requires CPython 3.13)",
+      "theorem phase diagrams and a separate replay module before headroom exists"
+    ],
+    "claim_ceiling": "engineering repairs on DEV material; no sealed task, no promoted scientific claim; better-improver still UNESTABLISHED"
+  }
 }

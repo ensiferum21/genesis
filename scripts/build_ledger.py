@@ -162,8 +162,10 @@ SPEC.update({
              'W13'),
     '10.4': (S, 'approximation -> exact via greedy witness + SAT/DRAT completion; LP relaxation -> exact via exact '
                  'rational dual certificates and SAT/DRAT on the remaining gap (B19)',
-             ['src/genesis/verification/sat.py', 'src/genesis/discovery/obstruction.py'],
-             ['tests_certificates/test_sat_certificates.py', 'tests_formal/test_discovery.py::LPCertificates'], [], [],
+             ['src/genesis/verification/sat.py', 'src/genesis/discovery/obstruction.py',
+              'src/genesis/verification/lp_dual.py', 'src/genesis/verification/certificates.py'],
+             ['tests_certificates/test_sat_certificates.py', 'tests_formal/test_discovery.py::LPCertificates',
+              'tests_certificates/test_obstruction_custody.py'], [], [],
              'N/A', 'W13'),
     '11': (I, 'heading', [], [], [], [], 'N/A', 'W01'),
     '11.1': (B, 'heterogeneous checks: dual predicates, SAT vs exhaustive, Lean comparator, model finder',
@@ -184,9 +186,13 @@ SPEC.update({
              [G + 'test_research_runtime.py'], ['prospective causal evidence'], [], 'UNESTABLISHED', 'W21'),
     '12.4': (B, 'better-improver test harness (sealed_improver_evaluation receipts, kernel rules); B20: DEV comparison of '
                  'learned vs fixed research policies over independent research runs (better-improver UNESTABLISHED)',
-             [K + 'receipts.py', K + 'evidence.py', 'src/genesis/learning/research.py', 'scripts/b20_learning.py'],
-             [G + 'test_acceptance_regressions.py::RevocationAndTrust', 'tests_formal/test_learning.py'],
-             ['a sealed E3 study'], ['independent custodian; fresh panels'], 'UNESTABLISHED', 'W21'),
+             [K + 'receipts.py', K + 'evidence.py', 'src/genesis/learning/research.py', 'scripts/b20_learning.py',
+              'src/genesis/learning/partitions.py', 'src/genesis/learning/budget.py', 'src/genesis/learning/custody.py'],
+             [G + 'test_acceptance_regressions.py::RevocationAndTrust', 'tests_formal/test_learning.py',
+              'tests_formal/test_learning_partitions.py', G + 'test_research_resource_accounting.py',
+              'tests_formal/test_successor_proof_custody.py'],
+             ['a fresh DEV E3 rerun on the repaired harness (B20_R1)', 'a sealed E3 study'],
+             ['independent custodian; fresh panels'], 'UNESTABLISHED', 'W21'),
     '13': (I, 'heading', [], [], [], [], 'N/A', 'W01'),
     '13.1': (N, 'minimal teaching sets', [], [], ['W20'], [], 'NOT_TESTED', 'W20'),
     '13.2': (N, 'critical periods and ordering', [], [], ['W20'], [], 'NOT_TESTED', 'W20'),
@@ -424,6 +430,41 @@ ROADMAP = {
              ['pinned image digest', 'wheel download hashes', 'reproduction on a second machine'],
              ['registry access', 'PyPI access', 'second machine and its operator'], 'N/A', 'W04'),
 }
+# Findings of the external B20 review (and one defect found while repairing them), B20_R1.
+REVIEW = {
+    'B20-REVIEW-01': (B, 'evaluation material globally disjoint from all research-visible material: one partition '
+                         'builder with EXACT/ALPHA/INSTANCE/GENERALIZES screening, quarantine, explicit '
+                         'INSUFFICIENT_DISTINCT_MATERIAL, frozen manifest, insertion screen on every route; the B20 '
+                         'comparison stays contaminated (3 statements, 4 slots)',
+                      ['src/genesis/learning/partitions.py', 'audit/review_b20/reproduce_b20_review.py'],
+                      ['tests_formal/test_learning_partitions.py'],
+                      ['a fresh frozen DEV study on the repaired harness'], ['independent source review (GV0)'], 'N/A',
+                      'W19'),
+    'B20-REVIEW-02': (B, 'research budget authority: account opened before preparation, every category charged, '
+                         'reservations before launch, cgroup-metered outer kill, no rounding up, late results never '
+                         'credited, interrupted reservations charged on restart, GrantLedger bridge',
+                      ['src/genesis/learning/budget.py', 'src/genesis/learning/research.py',
+                       'src/genesis/learning/macros.py'],
+                      [G + 'test_research_resource_accounting.py'],
+                      ['a fresh policy comparison on the corrected mechanism'], ['independent source review (GV0)'],
+                      'N/A', 'W19'),
+    'B20-REVIEW-03': (B, 'successor proof custody: run-bound lemma uids, per-target proof records, pure validators, '
+                         'replay from custody only, prover-reported / checked / eligible kept apart',
+                      ['src/genesis/learning/custody.py'], ['tests_formal/test_successor_proof_custody.py'],
+                      ['checked coverage of every scored success in the fresh study'],
+                      ['independent replay on another host'], 'N/A', 'W19'),
+    'B20-REVIEW-04': (B, 'joint construction/obstruction custody: certificate bundle v2 with witness, exact LP '
+                         'certificate and CNF/DRAT bytes; separate LP checker; kernel promotion and revocation; '
+                         'custody-complete DEV re-run (new execution; B19 record unchanged)',
+                      ['src/genesis/verification/lp_dual.py', 'src/genesis/verification/certificates.py',
+                       'src/genesis/discovery/obstruction.py', 'scripts/b20r_obstruction_custody.py'],
+                      ['tests_certificates/test_obstruction_custody.py'], [],
+                      ['independent replay on another host'], 'N/A', 'W13'),
+    'B20R-NEW-01': (B, "E's '%% SZS status ResourceOut' line was parsed as ERROR; timeouts are now RESOURCE_OUT "
+                       '(labels only: B20 counted PROVED from THEOREM, so recorded scores are unaffected)',
+                    ['src/genesis/verification/eprover.py'],
+                    [G + 'test_research_resource_accounting.py::ProverStatus'], [], [], 'N/A', 'W19'),
+}
 GATES = {f'GV{i}': (N, t, [], [], [], b, 'NOT_TESTED' if i >= 2 else 'N/A', w) for i, t, b, w in (
     (0, 'trust repaired: R-01..R-04 closed, no critical evidence-integrity defect open',
      ['R-04 second-machine acceptance', 'independent source review'], 'W02'),
@@ -439,8 +480,9 @@ GATES = {f'GV{i}': (N, t, [], [], [], b, 'NOT_TESTED' if i >= 2 else 'N/A', w) f
 WORKSTREAMS = {
     'W01': ('Requirements, status and specification reconciliation', B, ['scripts/build_ledger.py'], [G + 'test_ledger.py']),
     'W02': ('Evidence and release authority', B, [K + 'receipts.py', K + 'evidence.py'], [G + 'test_acceptance_regressions.py']),
-    'W03': ('Certificate custody and independent replay', B, ['src/genesis/verification/certificates.py'],
-            ['tests_certificates/test_certificate_custody.py']),
+    'W03': ('Certificate custody and independent replay', B, ['src/genesis/verification/certificates.py',
+                                                             'src/genesis/verification/lp_dual.py'],
+            ['tests_certificates/test_certificate_custody.py', 'tests_certificates/test_obstruction_custody.py']),
     'W04': ('Deployment, isolation, recovery and reproducibility', B,
             ['src/genesis/deployment.py', 'src/genesis/launcher.py', 'src/genesis/backup.py', 'src/genesis/faults.py',
              'deployment/reproduce.py'],
@@ -492,15 +534,18 @@ WORKSTREAMS = {
     'W18': ('Replayable research macros and proof-carrying compression (equational domain: induced lemma programs '
             'with dependencies, faithful replay, revocation, transfer)', B,
             ['src/genesis/learning/macros.py', 'evidence/learning_b20/w18/same_system.json'],
-            ['tests_formal/test_learning.py']),
+            ['tests_formal/test_learning.py', G + 'test_research_resource_accounting.py']),
     'W19': ('Research-policy learning (fixed, random, heuristic, bandit and a frozen learned policy at equal research '
             'budgets)', B,
-            ['src/genesis/learning/research.py', 'evidence/learning_b20/w19/rows.json'],
-            ['tests_formal/test_learning.py']),
+            ['src/genesis/learning/research.py', 'src/genesis/learning/budget.py', 'src/genesis/learning/custody.py',
+             'evidence/learning_b20/w19/rows.json'],
+            ['tests_formal/test_learning.py', G + 'test_research_resource_accounting.py',
+             'tests_formal/test_successor_proof_custody.py']),
     'W20': ('Curriculum, experience synthesis and capability memory (screened memory, failure-driven curriculum, '
             'demotion)', B,
-            ['src/genesis/learning/memory.py', 'evidence/learning_b20/w20/rows.json'],
-            ['tests_formal/test_learning.py']),
+            ['src/genesis/learning/memory.py', 'src/genesis/learning/partitions.py',
+             'evidence/learning_b20/w20/rows.json'],
+            ['tests_formal/test_learning.py', 'tests_formal/test_learning_partitions.py']),
     'W21': ('Better-improver and multigeneration controller', N, [], []),
     'W22': ('New primitives, research-language evolution and trust changes', N, [], []),
     'W23': ('Fault-tolerant reasoning and expert interaction', N, [], []),
@@ -594,6 +639,9 @@ def build():
         problems.append(f'ledger rows for sections not in the spec: {sorted(extra)}')
     for rid, (disp, scope, code, tests, remaining, blockers, eff, ws) in ROADMAP.items():
         rows.append(row(rid, scope, 'roadmap §3', disp, scope, code, tests, remaining, blockers, eff, ws))
+    for rid, (disp, scope, code, tests, remaining, blockers, eff, ws) in REVIEW.items():
+        rows.append(row(rid, scope, 'B20 external review (B20_R1)', disp, scope, code, tests, remaining, blockers,
+                        eff, ws))
     for rid, (disp, scope, code, tests, remaining, blockers, eff, ws) in GATES.items():
         rows.append(row(rid, scope, 'roadmap §5', disp, scope, code, tests, remaining, blockers, eff, ws,
                         owner='release authority'))
@@ -646,7 +694,8 @@ def render(rows):
            'matrix), independent verification, and scientific efficacy. **No row is accepted**: every acceptance '
            'decision is pending an independent auditor. The builder\'s P0-P2 labels are assessments only, and were '
            'made before the R-01/R-02 defects were reproduced.', '', '## Summary', '']
-    groups = {'Specification §1-48': 'SPEC-', 'Roadmap defects': 'R-', 'Gates': 'GV', 'Workstreams': 'W',
+    groups = {'Specification §1-48': 'SPEC-', 'Roadmap defects': 'R-', 'B20 review findings': 'B20', 'Gates': 'GV',
+              'Workstreams': 'W',
               'Experiments': 'E', 'Engine catalogue (137)': 'CAT-'}
     out += ['| Group | Rows | ' + ' | '.join(d.replace('_', ' ').title() for d in sorted(DISPOSITIONS)) + ' |',
             '|---|---:|' + '---:|' * len(DISPOSITIONS)]

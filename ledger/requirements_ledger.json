@@ -1441,7 +1441,9 @@
    },
    "code": [
     "src/genesis/verification/sat.py",
-    "src/genesis/discovery/obstruction.py"
+    "src/genesis/discovery/obstruction.py",
+    "src/genesis/verification/lp_dual.py",
+    "src/genesis/verification/certificates.py"
    ],
    "disposition": "SHARED_IMPLEMENTATION",
    "evidence": [],
@@ -1457,7 +1459,8 @@
    "source": "spec \u00a710.4 (p. 22)",
    "tests": [
     "tests_certificates/test_sat_certificates.py",
-    "tests_formal/test_discovery.py::LPCertificates"
+    "tests_formal/test_discovery.py::LPCertificates",
+    "tests_certificates/test_obstruction_custody.py"
    ],
    "title": "Approximation hierarchy",
    "workstream": "W13"
@@ -1680,7 +1683,10 @@
     "src/genesis/kernel/receipts.py",
     "src/genesis/kernel/evidence.py",
     "src/genesis/learning/research.py",
-    "scripts/b20_learning.py"
+    "scripts/b20_learning.py",
+    "src/genesis/learning/partitions.py",
+    "src/genesis/learning/budget.py",
+    "src/genesis/learning/custody.py"
    ],
    "disposition": "IMPLEMENTED_BOUNDED_PENDING_AUDIT",
    "evidence": [],
@@ -1693,6 +1699,7 @@
    "local_execution": "TESTS_EXECUTED_IN_MATRIX",
    "owner": "research implementer",
    "remaining": [
+    "a fresh DEV E3 rerun on the repaired harness (B20_R1)",
     "a sealed E3 study"
    ],
    "scientific_efficacy": "UNESTABLISHED",
@@ -1700,7 +1707,10 @@
    "source": "spec \u00a712.4 (p. 23)",
    "tests": [
     "tests_genesis/test_acceptance_regressions.py::RevocationAndTrust",
-    "tests_formal/test_learning.py"
+    "tests_formal/test_learning.py",
+    "tests_formal/test_learning_partitions.py",
+    "tests_genesis/test_research_resource_accounting.py",
+    "tests_formal/test_successor_proof_custody.py"
    ],
    "title": "Better-improver test",
    "workstream": "W21"
@@ -4273,6 +4283,156 @@
     "date": null,
     "decision": "PENDING_INDEPENDENT_ACCEPTANCE"
    },
+   "code": [
+    "src/genesis/learning/partitions.py",
+    "audit/review_b20/reproduce_b20_review.py"
+   ],
+   "disposition": "IMPLEMENTED_BOUNDED_PENDING_AUDIT",
+   "evidence": [],
+   "external_blockers": [
+    "independent source review (GV0)"
+   ],
+   "id": "B20-REVIEW-01",
+   "implementation": "IMPLEMENTED_BOUNDED",
+   "independent_verification": "PENDING",
+   "local_execution": "TESTS_EXECUTED_IN_MATRIX",
+   "owner": "research implementer",
+   "remaining": [
+    "a fresh frozen DEV study on the repaired harness"
+   ],
+   "scientific_efficacy": "N/A",
+   "scope": "evaluation material globally disjoint from all research-visible material: one partition builder with EXACT/ALPHA/INSTANCE/GENERALIZES screening, quarantine, explicit INSUFFICIENT_DISTINCT_MATERIAL, frozen manifest, insertion screen on every route; the B20 comparison stays contaminated (3 statements, 4 slots)",
+   "source": "B20 external review (B20_R1)",
+   "tests": [
+    "tests_formal/test_learning_partitions.py"
+   ],
+   "title": "evaluation material globally disjoint from all research-visible material: one partition builder with EXACT/ALPHA/INSTANCE/GENERALIZES screening, quarantine, explicit INSUFFICIENT_DISTINCT_MATERIAL, frozen manifest, insertion screen on every route; the B20 comparison stays contaminated (3 statements, 4 slots)",
+   "workstream": "W19"
+  },
+  {
+   "acceptance": {
+    "date": null,
+    "decision": "PENDING_INDEPENDENT_ACCEPTANCE"
+   },
+   "code": [
+    "src/genesis/learning/budget.py",
+    "src/genesis/learning/research.py",
+    "src/genesis/learning/macros.py"
+   ],
+   "disposition": "IMPLEMENTED_BOUNDED_PENDING_AUDIT",
+   "evidence": [],
+   "external_blockers": [
+    "independent source review (GV0)"
+   ],
+   "id": "B20-REVIEW-02",
+   "implementation": "IMPLEMENTED_BOUNDED",
+   "independent_verification": "PENDING",
+   "local_execution": "TESTS_EXECUTED_IN_MATRIX",
+   "owner": "research implementer",
+   "remaining": [
+    "a fresh policy comparison on the corrected mechanism"
+   ],
+   "scientific_efficacy": "N/A",
+   "scope": "research budget authority: account opened before preparation, every category charged, reservations before launch, cgroup-metered outer kill, no rounding up, late results never credited, interrupted reservations charged on restart, GrantLedger bridge",
+   "source": "B20 external review (B20_R1)",
+   "tests": [
+    "tests_genesis/test_research_resource_accounting.py"
+   ],
+   "title": "research budget authority: account opened before preparation, every category charged, reservations before launch, cgroup-metered outer kill, no rounding up, late results never credited, interrupted reservations charged on restart, GrantLedger bridge",
+   "workstream": "W19"
+  },
+  {
+   "acceptance": {
+    "date": null,
+    "decision": "PENDING_INDEPENDENT_ACCEPTANCE"
+   },
+   "code": [
+    "src/genesis/learning/custody.py"
+   ],
+   "disposition": "IMPLEMENTED_BOUNDED_PENDING_AUDIT",
+   "evidence": [],
+   "external_blockers": [
+    "independent replay on another host"
+   ],
+   "id": "B20-REVIEW-03",
+   "implementation": "IMPLEMENTED_BOUNDED",
+   "independent_verification": "PENDING",
+   "local_execution": "TESTS_EXECUTED_IN_MATRIX",
+   "owner": "research implementer",
+   "remaining": [
+    "checked coverage of every scored success in the fresh study"
+   ],
+   "scientific_efficacy": "N/A",
+   "scope": "successor proof custody: run-bound lemma uids, per-target proof records, pure validators, replay from custody only, prover-reported / checked / eligible kept apart",
+   "source": "B20 external review (B20_R1)",
+   "tests": [
+    "tests_formal/test_successor_proof_custody.py"
+   ],
+   "title": "successor proof custody: run-bound lemma uids, per-target proof records, pure validators, replay from custody only, prover-reported / checked / eligible kept apart",
+   "workstream": "W19"
+  },
+  {
+   "acceptance": {
+    "date": null,
+    "decision": "PENDING_INDEPENDENT_ACCEPTANCE"
+   },
+   "code": [
+    "src/genesis/verification/lp_dual.py",
+    "src/genesis/verification/certificates.py",
+    "src/genesis/discovery/obstruction.py",
+    "scripts/b20r_obstruction_custody.py"
+   ],
+   "disposition": "IMPLEMENTED_BOUNDED_PENDING_AUDIT",
+   "evidence": [],
+   "external_blockers": [
+    "independent replay on another host"
+   ],
+   "id": "B20-REVIEW-04",
+   "implementation": "IMPLEMENTED_BOUNDED",
+   "independent_verification": "PENDING",
+   "local_execution": "TESTS_EXECUTED_IN_MATRIX",
+   "owner": "research implementer",
+   "remaining": [],
+   "scientific_efficacy": "N/A",
+   "scope": "joint construction/obstruction custody: certificate bundle v2 with witness, exact LP certificate and CNF/DRAT bytes; separate LP checker; kernel promotion and revocation; custody-complete DEV re-run (new execution; B19 record unchanged)",
+   "source": "B20 external review (B20_R1)",
+   "tests": [
+    "tests_certificates/test_obstruction_custody.py"
+   ],
+   "title": "joint construction/obstruction custody: certificate bundle v2 with witness, exact LP certificate and CNF/DRAT bytes; separate LP checker; kernel promotion and revocation; custody-complete DEV re-run (new execution; B19 record unchanged)",
+   "workstream": "W13"
+  },
+  {
+   "acceptance": {
+    "date": null,
+    "decision": "PENDING_INDEPENDENT_ACCEPTANCE"
+   },
+   "code": [
+    "src/genesis/verification/eprover.py"
+   ],
+   "disposition": "IMPLEMENTED_BOUNDED_PENDING_AUDIT",
+   "evidence": [],
+   "external_blockers": [],
+   "id": "B20R-NEW-01",
+   "implementation": "IMPLEMENTED_BOUNDED",
+   "independent_verification": "PENDING",
+   "local_execution": "TESTS_EXECUTED_IN_MATRIX",
+   "owner": "research implementer",
+   "remaining": [],
+   "scientific_efficacy": "N/A",
+   "scope": "E's '%% SZS status ResourceOut' line was parsed as ERROR; timeouts are now RESOURCE_OUT (labels only: B20 counted PROVED from THEOREM, so recorded scores are unaffected)",
+   "source": "B20 external review (B20_R1)",
+   "tests": [
+    "tests_genesis/test_research_resource_accounting.py::ProverStatus"
+   ],
+   "title": "E's '%% SZS status ResourceOut' line was parsed as ERROR; timeouts are now RESOURCE_OUT (labels only: B20 counted PROVED from THEOREM, so recorded scores are unaffected)",
+   "workstream": "W19"
+  },
+  {
+   "acceptance": {
+    "date": null,
+    "decision": "PENDING_INDEPENDENT_ACCEPTANCE"
+   },
    "code": [],
    "disposition": "NOT_IMPLEMENTED",
    "evidence": [],
@@ -4548,7 +4708,8 @@
     "decision": "PENDING_INDEPENDENT_ACCEPTANCE"
    },
    "code": [
-    "src/genesis/verification/certificates.py"
+    "src/genesis/verification/certificates.py",
+    "src/genesis/verification/lp_dual.py"
    ],
    "disposition": "IMPLEMENTED_BOUNDED_PENDING_AUDIT",
    "evidence": [],
@@ -4563,7 +4724,8 @@
    "scope": "workstream (B14 scope delivered; acceptance pending)",
    "source": "roadmap \u00a77-10",
    "tests": [
-    "tests_certificates/test_certificate_custody.py"
+    "tests_certificates/test_certificate_custody.py",
+    "tests_certificates/test_obstruction_custody.py"
    ],
    "title": "Certificate custody and independent replay",
    "workstream": "W03"
@@ -4987,7 +5149,8 @@
    "scope": "workstream (B14 scope delivered; acceptance pending)",
    "source": "roadmap \u00a77-10",
    "tests": [
-    "tests_formal/test_learning.py"
+    "tests_formal/test_learning.py",
+    "tests_genesis/test_research_resource_accounting.py"
    ],
    "title": "Replayable research macros and proof-carrying compression (equational domain: induced lemma programs with dependencies, faithful replay, revocation, transfer)",
    "workstream": "W18"
@@ -4999,6 +5162,8 @@
    },
    "code": [
     "src/genesis/learning/research.py",
+    "src/genesis/learning/budget.py",
+    "src/genesis/learning/custody.py",
     "evidence/learning_b20/w19/rows.json"
    ],
    "disposition": "IMPLEMENTED_BOUNDED_PENDING_AUDIT",
@@ -5014,7 +5179,9 @@
    "scope": "workstream (B14 scope delivered; acceptance pending)",
    "source": "roadmap \u00a77-10",
    "tests": [
-    "tests_formal/test_learning.py"
+    "tests_formal/test_learning.py",
+    "tests_genesis/test_research_resource_accounting.py",
+    "tests_formal/test_successor_proof_custody.py"
    ],
    "title": "Research-policy learning (fixed, random, heuristic, bandit and a frozen learned policy at equal research budgets)",
    "workstream": "W19"
@@ -5026,6 +5193,7 @@
    },
    "code": [
     "src/genesis/learning/memory.py",
+    "src/genesis/learning/partitions.py",
     "evidence/learning_b20/w20/rows.json"
    ],
    "disposition": "IMPLEMENTED_BOUNDED_PENDING_AUDIT",
@@ -5041,7 +5209,8 @@
    "scope": "workstream (B14 scope delivered; acceptance pending)",
    "source": "roadmap \u00a77-10",
    "tests": [
-    "tests_formal/test_learning.py"
+    "tests_formal/test_learning.py",
+    "tests_formal/test_learning_partitions.py"
    ],
    "title": "Curriculum, experience synthesis and capability memory (screened memory, failure-driven curriculum, demotion)",
    "workstream": "W20"

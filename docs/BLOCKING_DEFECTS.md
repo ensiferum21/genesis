@@ -188,3 +188,22 @@ DEV. See `docs/checkpoints/B20_REVIEW_BRIEF.md`.
 | B20-OPEN-3 | Research outcomes on Wolfram's axiom depend on load-sensitive E time limits and on the first attempts. The main budget rule starved 10-second attempts. Single runs are noisy. | repeated runs on a quiet host; budget rules per attempt cost |
 | B20-OPEN-4 | Memory and curriculum show no effect without headroom, and only parity with plain research where there is headroom. | a regime where reuse across runs matters |
 
+
+## External review of B20 (B20_R1)
+
+The external B20 review (handoff "Genesis: B20 to the grand vision", 12 October 2026)
+reported four findings. Each was reproduced from the stored evidence, without a prover,
+before any repair: `python3 audit/review_b20/reproduce_b20_review.py` writes
+`audit/review_b20/findings.json`. Repairs keep the original observations as history; none
+of them makes the B20 comparison valid after the fact.
+
+| ID | Finding | Reproduced | Status |
+|---|---|---|---|
+| B20-REVIEW-01 | Three evaluation statements (four slots: Huntington 201, 203, 204 ×2) also occur in training development targets (seed 103). The global holdout property is false for those records. | yes (exact text match) | REPAIRED IN B20_R1, PENDING INDEPENDENT REVIEW. `learning/partitions.py`: one study-wide exposure set, EXACT/ALPHA/INSTANCE/GENERALIZES screening, quarantine, `INSUFFICIENT_DISTINCT_MATERIAL`, insertion screen on every route. The B20 comparison stays contaminated. |
+| B20-REVIEW-02 | Research CPU above the nominal cap: learned 1.93 s vs fixed 1.01 s under 1 s (Huntington 204); 33 of 40 W19 runs exceed their cap, every Sheffer run by up to 63%. | yes | REPAIRED IN B20_R1, PENDING INDEPENDENT REVIEW. `learning/budget.py`: account opened before preparation, reservations before launch, cgroup-metered outer kill, no rounding up, late results never credited, interrupted reservations charged. |
+| B20-REVIEW-03 | The 67/68 Lean replays cover fixed/learned on the first evaluation seed only: 67 of 778 reported target successes (8.6%). Other proof objects were not stored. | yes | REPAIRED IN B20_R1 (forward only), PENDING INDEPENDENT REVIEW. `learning/custody.py`: custody before counting, replay from custody, prover-reported / checked / eligible reported separately. Old uncovered scores cannot be checked retroactively. |
+| B20-REVIEW-04 | All 12 B19 joint upper bounds (LP_DUAL_EXACT, 11 closing the gap) were exported without the witness or the exact LP certificate; the SAT fallback discarded CNF/DRAT bytes. | yes | REPAIRED IN B20_R1, PENDING INDEPENDENT REVIEW. Certificate bundle v2, a separate LP checker, kernel promotion and revocation; a custody-complete DEV re-run is a new execution (`evidence/obstruction_custody_b20r/`). The B19 record is unchanged. |
+| B20R-NEW-01 | Found while repairing B20-REVIEW-02: E writes `%% SZS status ResourceOut`, which the wrapper parsed as `ERROR`. | yes | REPAIRED IN B20_R1. Labels only: B20 counted PROVED from THEOREM, so recorded scores are unaffected. |
+
+B20-OPEN-1 to B20-OPEN-4 stay open. The repaired harness has not yet been used for a
+fresh E3 comparison, so nothing about the better-improver question has changed.
