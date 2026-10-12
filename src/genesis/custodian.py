@@ -124,10 +124,47 @@ def registration_log(private_root,key_path):
     finally:db.close()
 
 
-# Kinds whose meaning needs evidence this custodian cannot yet check from the export
-# (a learned-vs-fixed research lineage, or frozen successor versions): refused, not trusted.
-UNSUPPORTED_KINDS={'sealed_improver_evaluation':'needs the research-lineage protocol (roadmap W21)',
-                   'sealed_generation_evaluation':'needs frozen successor versions in the export (roadmap W21)'}
+# Kinds whose meaning needs evidence this custodian cannot yet check from the export: refused,
+# not trusted. A generation evaluation is checked against the export's native research-lineage
+# records (lineage.export_from_store; B20_R4, H08); an improver evaluation needs two research
+# lineages (learned and fixed policy) evaluated jointly, which no export carries yet.
+UNSUPPORTED_KINDS={'sealed_improver_evaluation':'needs paired research lineages (learned and fixed policy) evaluated '
+                                               'jointly, which the export protocol does not carry yet (roadmap W21)'}
+
+
+def generation_problems(request,facts):
+    """Why a sealed_generation_evaluation request is not a qualifying transition of the campaign.
+
+    The transition must be one of the export's ACCEPTED transitions inside the qualifying chain
+    (``lineage.accepted_chain``: the validator found no problem on it or on any transition
+    before it); the candidate arm must run the child version's solver and the baseline arm the
+    parent version's; the transition must change the evaluated program."""
+    from . import lineage as L
+    lin=facts.get('lineage')
+    if lin is None or lin.get('source')!='native':
+        return ['sealed_generation_evaluation needs native research-lineage records in the campaign export; refused']
+    chain=L.accepted_chain(lin)
+    t=request.get('generation_transition') or {}
+    qualifying={x['transition_id']:x for x in lin['transitions'] if x['transition_id'] in chain['transitions']}
+    match=[x for x in qualifying.values() if x.get('index')==t.get('index') and x.get('from_version')==t.get('from_version')
+           and x.get('to_version')==t.get('to_version')]
+    if not match:
+        codes=sorted({p['code'] for p in chain['problems']})
+        return ['generation_transition is not a qualifying transition of the campaign lineage'
+                +(f" (lineage problems: {', '.join(codes)})" if codes else '')]
+    out=[]
+    child,parent=lin['versions'][t['to_version']],lin['versions'][t['from_version']]
+    try:
+        if R.program_identity(request['programs']['candidate'])!=R.program_identity(child['solver']):
+            out.append("the candidate arm is not the child version's solver")
+        if R.program_identity(request['programs']['baseline'])!=R.program_identity(parent['solver']):
+            out.append("the baseline arm is not the parent version's solver")
+        if R.program_identity(child['solver'])==R.program_identity(parent['solver']):
+            out.append('the transition does not change the evaluated program (nothing to evaluate)')
+    except Exception as exc:
+        out.append(f'generation programs could not be checked ({type(exc).__name__})')
+    if child.get('source')!=request['source_hash']:out.append('child version source differs from the request source')
+    return out
 
 
 def campaign_facts(export):
@@ -162,7 +199,9 @@ def campaign_facts(export):
                     upd=s.get(body['payload'])
                     if upd['key'] in ('campaign_id','source_hash'):written.setdefault(upd['key'],set()).add(canonical(upd['value']))
             summary=s.state('summary') or {}
+            from . import lineage as L
             facts={'campaign_id':s.state('campaign_id'),'source_hash':s.state('source_hash'),
+                   'lineage':L.export_from_store(s),
                    'domain':configs[0][1].get('domain') if len(configs)==1 else None,
                    'config_entities':len(configs),
                    'identity_rewritten':any(len(v)>1 for v in written.values()),
@@ -180,8 +219,10 @@ def check_request_against_export(request,facts):
     """The request must describe the frozen candidate this campaign actually produced."""
     from .dsl import baseline_programs
     problems=[]
+    generation=request['evidence_kind']=='sealed_generation_evaluation'
     if request['evidence_kind'] in UNSUPPORTED_KINDS:
         problems.append(f"{request['evidence_kind']} {UNSUPPORTED_KINDS[request['evidence_kind']]}; refused")
+    if generation:problems+=generation_problems(request,facts)
     if facts['identity_rewritten']:problems.append('campaign identity or source was rewritten in the export history')
     if facts['config_entities']!=1:problems.append('campaign export must hold exactly one resolved configuration')
     if facts['campaign_id']!=request['campaign_id']:problems.append('request campaign_id differs from the campaign export')
@@ -196,6 +237,7 @@ def check_request_against_export(request,facts):
         problems.append('request domain differs from the campaign export domain')
     if facts['phase']!='CANDIDATE_FROZEN':
         problems.append(f"campaign export is not of a frozen candidate (phase {facts['phase']})")
+    if generation:return problems     # the arms are the transition's versions, checked above
     try:
         candidate=R.program_identity(request['programs']['candidate'])
         doc=facts['candidate_versions'].get(request['candidate_version'])

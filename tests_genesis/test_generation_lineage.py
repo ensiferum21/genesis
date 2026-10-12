@@ -263,10 +263,26 @@ class StoredCampaignExport(unittest.TestCase):
 
 
 class CustodianStillRefuses(unittest.TestCase):
-    def test_generation_and_improver_kinds_stay_refused(self):
+    """B20_R4 changed this contract: the generation kind is no longer refused outright but checked
+    against native lineage records (tests_genesis/test_campaign_lineage.py); the improver kind
+    stays refused, and an export without native records (like the stored B14-era one) still
+    cannot support a generation evaluation."""
+
+    def test_improver_kind_stays_refused(self):
         from genesis import custodian
         self.assertIn('sealed_improver_evaluation', custodian.UNSUPPORTED_KINDS)
-        self.assertIn('sealed_generation_evaluation', custodian.UNSUPPORTED_KINDS)
+
+    def test_generation_kind_refused_without_native_lineage(self):
+        from pathlib import Path
+        from genesis import custodian
+        root = Path(__file__).resolve().parents[1]
+        legacy = LN.export_from_campaign_zip(root / 'evidence' / 'v2-public-campaign.zip')
+        self.assertEqual(legacy['source'], 'legacy')
+        request = {'generation_transition': {'index': 1, 'from_version': 'a' * 64, 'to_version': 'b' * 64}}
+        for facts in ({'lineage': None}, {'lineage': legacy}):
+            why = custodian.generation_problems(request, facts)
+            self.assertEqual(len(why), 1)
+            self.assertIn('native research-lineage records', why[0])
 
 
 if __name__ == '__main__':

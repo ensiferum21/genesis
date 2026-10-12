@@ -3,9 +3,10 @@
 A *generation transition* claims that a research run, started from a frozen parent
 SystemVersion, produced a frozen child that was then evaluated. Counting transitions
 (GV5) is only meaningful if the chain cannot be manufactured. This module defines the
-records and checks them; it mutates nothing and creates no claim. The custodian keeps
-refusing ``sealed_improver_evaluation`` and ``sealed_generation_evaluation`` until an
-export carries these records and this validator is wired into request checking.
+records and checks them; it mutates nothing and creates no claim. Since B20_R4 the
+custodian checks a ``sealed_generation_evaluation`` request against the native records of
+the bound export (``custodian.generation_problems``); ``sealed_improver_evaluation`` stays
+refused (it needs two research lineages evaluated jointly).
 
 Records
   * versions:  {version_id: SystemVersion dict}; the id must be the content digest.
@@ -28,6 +29,19 @@ counted under several wrapper ids; indices and edges form one acyclic, unambiguo
 no undeclared edit (source/environment) and no undeclared or manual intervention;
 chronology parent-freeze < run < child-freeze < receipt; one budget account per run;
 revocation is inherited by every later transition.
+
+Native campaign records (B20_R4). ``campaign.Campaign`` commits a ``lineage_run`` and a
+``lineage_transition`` entity with every generation. ``export_from_store`` (and
+``export_from_campaign_zip``) completes them from the hash-chained event log rather than
+trusting them:
+  * event positions come from the log: the first GENERATION_STARTED of the round, the last
+    event of a ledgered attempt, the successor freeze and the generation commit;
+  * an attempt started inside the run window but missing from the ledger is reported
+    (``unledgered_attempts``);
+  * the run's account is recomputed from the attempt receipts (``campaign_account``) and its
+    hash compared with the recorded one.
+Exports without native records fall back to the B20_R2 reconstruction, which the validator
+refuses (no selection scores, no attempt binding, no account).
 """
 from .common import digest
 
@@ -36,13 +50,15 @@ SCHEMA_TRANSITION = 'genesis-transition-v1'
 DECISIONS = ('ACCEPTED', 'REJECTED', 'INCONCLUSIVE', 'INVALID', 'DEV_BRANCH')
 LABELS = frozenset({'generation', 'parent', 'memory_snapshot'})
 ENVIRONMENT = frozenset({'dependency_lock', 'environment_digest', 'verifier_set'})
-SELECTION_RULES = ('max_score_then_lowest_identity',)
+SELECTION_RULES = ('max_score_then_lowest_identity', 'max_score_then_greatest_policy')
+ACCOUNT_SCHEMA = 'genesis-campaign-research-account-v1'
 CODES = ('VERSION_MISSING', 'VERSION_ID_MISMATCH', 'NOT_FROZEN', 'PARENT_MISMATCH', 'GENERATION_INDEX',
          'LABEL_ONLY_CHANGE', 'DECLARED_CHANGES_MISMATCH', 'UNDECLARED_ENVIRONMENT_CHANGE', 'RUN_MISSING',
          'FOREIGN_RUN', 'SELECTION_RULE_UNKNOWN', 'SELECTION_UNVERIFIABLE', 'SELECTION_RULE_VIOLATED',
          'SELECTED_MISMATCH', 'LEDGER_INCOMPLETE', 'MANUAL_INTERVENTION', 'BUDGET_REUSED', 'PANEL_REUSED',
          'RECEIPT_REUSED', 'DUPLICATE_TRANSITION', 'TRANSITION_ID_MISMATCH', 'CHAIN_ORDER', 'AMBIGUOUS_PARENT',
-         'CYCLE', 'CHRONOLOGY', 'REVOKED_ANCESTOR', 'UNKNOWN_DECISION', 'MALFORMED', 'BUDGET_UNACCOUNTED')
+         'CYCLE', 'CHRONOLOGY', 'REVOKED_ANCESTOR', 'UNKNOWN_DECISION', 'MALFORMED', 'BUDGET_UNACCOUNTED',
+         'BUDGET_EXCEEDED', 'CANDIDATE_ATTEMPT_MISMATCH')
 
 
 def _p(code, **kw):
@@ -76,6 +92,10 @@ def _select(rule, candidates):
             return None
         best = max(candidates, key=lambda c: (c['score'], [-ord(ch) for ch in c['identity']]))
         return best['identity']
+    if rule == 'max_score_then_greatest_policy':          # campaign.Campaign: max(children, key=(SELECT total, policy))
+        if any(not isinstance(c.get('score'), (int, float)) or not isinstance(c.get('policy'), str) for c in candidates):
+            return None
+        return max(candidates, key=lambda c: (c['score'], c['policy']))['identity']
     raise KeyError(rule)
 
 
@@ -98,8 +118,26 @@ def _run_problems(run, rid):
             out.append(_p('SELECTION_RULE_VIOLATED', run=rid, recomputed=chosen, recorded=sel.get('selected')))
     ledger = set(run.get('attempts') or ())
     for c in cands:
-        if c.get('attempt_id') not in ledger:
+        ids = c.get('attempt_ids') if 'attempt_ids' in c else [c.get('attempt_id')]
+        if not ids or any(i not in ledger for i in ids):
             out.append(_p('LEDGER_INCOMPLETE', run=rid, candidate=c.get('identity')))
+        if 'score_recomputed' in c and c['score_recomputed'] != c.get('score'):
+            out.append(_p('SELECTION_RULE_VIOLATED', run=rid, candidate=c.get('identity'),
+                          detail='recorded score differs from the attempt receipts'))
+        if c.get('attempt_problems'):
+            out.append(_p('CANDIDATE_ATTEMPT_MISMATCH', run=rid, candidate=c.get('identity'),
+                          detail=sorted(c['attempt_problems'])[:5]))
+    if run.get('unledgered_attempts'):
+        out.append(_p('LEDGER_INCOMPLETE', run=rid, detail='attempts inside the run window are missing from its ledger',
+                      attempts=sorted(run['unledgered_attempts'])[:10]))
+    acct = run.get('account')
+    if acct is not None:
+        if digest(acct) != run.get('account_sha256'):
+            out.append(_p('BUDGET_UNACCOUNTED', run=rid, detail='account record does not match its hash'))
+        elif acct.get('within_cap') is not True:
+            out.append(_p('BUDGET_EXCEEDED', run=rid))
+    if 'account_recomputed_sha256' in run and run['account_recomputed_sha256'] != run.get('account_sha256'):
+        out.append(_p('BUDGET_UNACCOUNTED', run=rid, detail='account differs from the attempt receipts'))
     if run.get('interventions'):
         out.append(_p('MANUAL_INTERVENTION', run=rid, count=len(run['interventions'])))
     return out
@@ -173,6 +211,9 @@ def lineage_problems(export, trust_context=None):
                 out.append(_p('FOREIGN_RUN', transition=tid))
             if (run.get('selection') or {}).get('selected') != b:
                 out.append(_p('SELECTED_MISMATCH', transition=tid))
+            chosen = [c for c in run.get('candidates') or () if c.get('identity') == b]
+            if chosen and 'program_sha256' in chosen[0] and chosen[0]['program_sha256'] != digest(vb.get('solver')):
+                out.append(_p('SELECTED_MISMATCH', transition=tid, detail='selected candidate program is not the child solver'))
             if not (frozen.get(a, 1 << 62) < run.get('start_event', -1) <= run.get('end_event', -1)
                     < frozen.get(b, -1) < t.get('receipt_event', -1)):
                 out.append(_p('CHRONOLOGY', transition=tid))
@@ -229,8 +270,115 @@ def accepted_chain(export, trust_context=None):
 COMPONENT_KEYS = {'solver_program': ('program', 'solver')}
 
 
+def campaign_account(entries, *, round_, research_trials, policies):
+    """The resource account of one campaign research run, from its attempts alone.
+
+    ``entries``: (attempt_id, request, receipt-or-None) in ledger order. Shared by the
+    campaign (which records it) and the exporter (which recomputes it from the receipts)."""
+    statuses, cpu, wall, unknown, solver, checks = {}, 0, 0, 0, 0, 0
+    per = {p: 0 for p in policies}
+    for _aid, req, rec in entries:
+        st = (rec or {}).get('status', 'RUNNING')
+        statuses[st] = statuses.get(st, 0) + 1
+        if rec is None or rec.get('cost_unknown') or 'wall_ns' not in rec:
+            unknown += 1
+        else:
+            cpu += int(rec.get('cpu_ns') or 0)
+            wall += int(rec.get('wall_ns') or 0)
+        if req.get('kind') == 'solver':
+            solver += 1
+            ctx = str(req.get('context', ''))
+            for p in policies:
+                if ctx.startswith(f'g{round_}:{p}:proposal-'):
+                    per[p] += 1
+        else:
+            checks += 1
+    return {'schema': ACCOUNT_SCHEMA, 'round': round_, 'attempts': len(entries), 'solver_attempts': solver,
+            'check_attempts': checks, 'statuses': dict(sorted(statuses.items())), 'cpu_ns': cpu, 'wall_ns': wall,
+            'cost_unknown_attempts': unknown, 'research_trials_by_policy': per, 'research_trials_cap': research_trials,
+            'within_cap': all(v <= research_trials for v in per.values()),
+            'note': 'checking attempts are ledgered and reported; they are not charged to a policy'}
+
+
+def export_native(events, get):
+    """Native lineage export from an event log (``events``: bodies with seq, kind, payload)
+    and an object getter. None when the log carries no native lineage records."""
+    versions, frozen, runs_raw, trans_raw, gen_commit, started = {}, {}, {}, {}, {}, {}
+    a_start, a_finish, a_req, a_rec = {}, {}, {}, {}
+    for e in events:
+        kind, seq = e['kind'], e['seq']
+        if kind == 'ENTITY_COMMITTED':
+            p = get(e['payload'])
+            if p.get('kind') == 'system_version':
+                versions[p['id']] = get(p['object_hash'])
+                frozen.setdefault(p['id'], seq)
+            elif p.get('kind') == 'generation':
+                gen_commit[int(p['id'])] = seq
+            elif p.get('kind') == 'lineage_run':
+                runs_raw[int(p['id'])] = get(p['object_hash'])
+            elif p.get('kind') == 'lineage_transition':
+                trans_raw[int(p['id'])] = get(p['object_hash'])
+        elif kind == 'DEV_SUCCESSOR_FROZEN':
+            frozen[get(e['payload'])['version']] = seq
+        elif kind == 'GENERATION_STARTED':
+            started.setdefault(get(e['payload'])['generation'], seq)
+        elif kind == 'ATTEMPT_STARTED':
+            p = get(e['payload'])
+            a_start[p['attempt_id']] = seq
+            a_req[p['attempt_id']] = p['request']
+        elif kind == 'ATTEMPT_FINISHED':
+            p = get(e['payload'])
+            a_finish[p['attempt_id']] = seq
+            a_rec[p['attempt_id']] = p['receipt']
+    if not runs_raw:
+        return None
+    runs, transitions = {}, []
+    for g in sorted(runs_raw):
+        r, t = runs_raw[g], trans_raw.get(g)
+        if t is None:
+            continue
+        start = started.get(g, -1)
+        ledger = list(r.get('attempts') or ())
+        end = max([a_finish.get(a, a_start.get(a, -1)) for a in ledger] or [start])
+        child_frozen = frozen.get(t.get('to_version'), -1)
+        inside = sorted(a for a, s_ in a_start.items() if start < s_ < child_frozen)
+        unledgered = sorted(set(inside) - set(ledger))
+        entries = [(a, get(a_req[a]) if a in a_req else {}, get(a_rec[a]) if a in a_rec else None) for a in ledger]
+        recomputed = campaign_account(entries, round_=g, research_trials=(r.get('budget') or {}).get('research_trials'),
+                                      policies=(r.get('policy_identity') or {}).get('policies', ()))
+        by_attempt = {a: (q, c) for a, q, c in entries}
+        cands = []
+        for c in r.get('candidates') or ():
+            score, bad = 0, []
+            for a in c.get('attempt_ids') or ():
+                q, rec = by_attempt.get(a, ({}, None))
+                if q.get('kind') != 'solver' or q.get('context') != f"g{g}:select-{c.get('policy')}":
+                    bad.append(f'{a}: not a SELECT trial of this candidate')
+                elif 'program_sha256' in c and digest(q.get('program')) != c['program_sha256']:
+                    bad.append(f'{a}: trial ran another program')
+                score += ((rec or {}).get('result') or {}).get('value', 0)      # as campaign.trial counts it
+            cands.append(dict(c, score_recomputed=score, attempt_problems=bad))
+        body = {k: v for k, v in r.items() if k not in ('run_id', 'candidates')}
+        body['candidates'] = cands
+        run = run_record(**body, start_event=start, end_event=end, unledgered_attempts=unledgered,
+                         account_recomputed_sha256=digest(recomputed))
+        runs[run['run_id']] = run
+        transitions.append(transition_record(**{k: v for k, v in t.items() if k != 'transition_id'},
+                                             research_run=run['run_id'], receipt_event=gen_commit.get(g, -1)))
+    return {'versions': versions, 'frozen_at': frozen, 'runs': runs, 'transitions': transitions, 'source': 'native',
+            'evidence_class': 'DEV_PUBLIC_PANELS'}
+
+
+def export_from_store(store):
+    """Native lineage export of an open ``store.Store`` (None without native records)."""
+    import json
+    events = [json.loads(b) for (b,) in store.db.execute('SELECT body FROM events ORDER BY seq')]
+    return export_native(events, store.get)
+
+
 def export_from_campaign_zip(path):
     """Lineage records from a DEV campaign export (``campaign.Campaign`` public zip).
+    Native records when present (``export_native``); otherwise the reconstruction below.
 
     Uses only what the export contains: content-addressed versions, freeze events,
     generation and modification records, and the attempt journal. Where the export lacks
@@ -247,6 +395,9 @@ def export_from_campaign_zip(path):
 
     def obj(h):
         return json.loads(z.read(f'objects/sha256/{h}'))
+    native = export_native(events, obj)
+    if native is not None:
+        return native
     versions, frozen, runs, transitions = {}, {}, {}, []
     gens, mods, started, attempts = {}, {}, {}, []
     for e in events:
@@ -294,8 +445,9 @@ def export_from_campaign_zip(path):
                               if k in versions.get(vid, {})],
             panel_id=None, receipt_id=None, claim_id=None, plan_id=None, receipt_event=seq,
             decision='ACCEPTED' if retained else 'REJECTED'))
-    return {'versions': versions, 'frozen_at': frozen, 'runs': runs, 'transitions': transitions}
+    return {'versions': versions, 'frozen_at': frozen, 'runs': runs, 'transitions': transitions, 'source': 'legacy'}
 
 
 __all__ = ['SCHEMA_RUN', 'SCHEMA_TRANSITION', 'DECISIONS', 'CODES', 'version_diff', 'substantive',
-           'transition_record', 'run_record', 'lineage_problems', 'accepted_chain', 'export_from_campaign_zip']
+           'transition_record', 'run_record', 'lineage_problems', 'accepted_chain', 'export_from_campaign_zip',
+           'export_native', 'export_from_store', 'campaign_account']

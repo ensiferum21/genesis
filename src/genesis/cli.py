@@ -65,6 +65,60 @@ def request_bundle(campaign,task_count=300,*,claim_id=None,evidence_kind='sealed
     return path
 
 
+def generation_request_bundle(campaign,index,task_count=300,*,claim_id=None,statement=None,scope=None):
+    """Freeze a sealed_generation_evaluation request for ACCEPTED transition `index` of the
+    campaign's native research lineage (B20_R4, H08): the candidate arm is the child version's
+    solver and the baseline arm the parent version's (each successor against its predecessor).
+
+    The transitions of one campaign form one claim (shared claim id, statement and scope); the
+    custodian gives each transition its own registration slot (generation index). The bound
+    export must carry the lineage records; a stale export is replaced before binding."""
+    from . import lineage as L
+    from .common import bytes_hash
+    from .custodian import validate_request
+    campaign._check_frozen_environment()
+    s=campaign.store
+    if s.state('phase')!='CANDIDATE_FROZEN':raise ValueError('completed campaign required')
+    lin=L.export_from_store(s)
+    if lin is None:raise ValueError('campaign has no native research-lineage records')
+    chain=L.accepted_chain(lin)
+    t=next((x for x in lin['transitions'] if x['transition_id'] in chain['transitions'] and x['index']==index),None)
+    if t is None:raise ValueError(f'no qualifying accepted transition with index {index}')
+    child,parent=lin['versions'][t['to_version']],lin['versions'][t['from_version']]
+    export=campaign.root/'exports/campaign_export.zip'
+    if export.exists():
+        bound=L.export_from_campaign_zip(export)
+        if bound is None or bound.get('source')!='native' or \
+                t['transition_id'] not in {x['transition_id'] for x in bound['transitions']}:export.unlink()
+    if not export.exists():export_replication(campaign.root,export,store=s)
+    cid=s.state('campaign_id');domain=campaign.config.domain
+    statement=statement or (f'each accepted successor of campaign {cid[:12]} has a higher paired edge count than its '
+                            f'parent version on its own sealed {domain} panel')
+    scope=scope or f'{domain} hosts; one sealed panel of {task_count} tasks per accepted transition'
+    request={'schema':'genesis-evaluation-request-v3','campaign_id':cid,
+        'claim_id':claim_id or f'generations:{cid[:16]}','evidence_kind':'sealed_generation_evaluation',
+        'statement_hash':digest(statement),'scope':scope,
+        'generation_transition':{'index':index,'from_version':t['from_version'],'to_version':t['to_version']},
+        'transfer_source_domain':None,'campaign_export_sha256':bytes_hash(export.read_bytes()),
+        'candidate_version':t['to_version'],'source_hash':child['source'],
+        'programs':{'baseline':parent['solver'],'candidate':child['solver']},
+        'limits':campaign.config.limits.model_dump(mode='json'),'seed':campaign.config.seed,
+        'task_count':task_count,'domain':domain,
+        'analysis':{'primary':'paired-edge-count','alpha':0.05,'family_sensitivity':True,'hypotheses':1},
+        'exposed_graph_fingerprints':s.state('exposure_fingerprints'),'expected_evaluator_hash':child['source']}
+    validate_request(request)
+    key=f'frozen_generation_request_{index}'
+    if s.state(key) not in (None,digest(request)):raise FileExistsError('a different request is already frozen for this transition')
+    s.save('frozen_request',digest(request),request)
+    s.save('frozen_claim_statement',digest(request),{'claim_id':request['claim_id'],'statement':statement,'scope':scope})
+    s.set_state(key,digest(request))
+    path=campaign.root/f'exports/generation_request_{index}.json'
+    if path.exists() and path.read_bytes()!=canonical(request):raise FileExistsError('request already exported with different scope')
+    from .common import atomic_write
+    if not path.exists():atomic_write(path,canonical(request))
+    return path
+
+
 def export_replication(root,destination,store=None):
     root=Path(root);destination=Path(destination)
     if destination.exists():raise FileExistsError(destination)

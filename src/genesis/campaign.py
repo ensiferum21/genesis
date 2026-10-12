@@ -66,8 +66,9 @@ class Campaign:
             self.store.close()
             raise RuntimeError('resolved_config.json differs from the configuration recorded at initialization')
         self.optima={}
-        self._journal={}      # trial_id -> completed receipt hashes reusable on resume (in start order)
+        self._journal={}      # trial_id -> completed (attempt id, receipt hash) reusable on resume (in start order)
         self.reused_from_journal=0
+        self._ledger=None     # attempt ids of the research run in progress (lineage), None outside one
 
     def close(self):self.store.close()
     def __enter__(self):return self
@@ -113,26 +114,42 @@ class Campaign:
         as a new, separately charged attempt."""
         from collections import deque
         memo={}
-        for trial,status,receipt in self.store.db.execute('SELECT trial_id,status,receipt FROM attempts ORDER BY rowid'):
-            if status not in self.REUSABLE_EXCLUDED and receipt:memo.setdefault(trial,[]).append(receipt)
+        for aid,trial,status,receipt in self.store.db.execute('SELECT id,trial_id,status,receipt FROM attempts ORDER BY rowid'):
+            if status not in self.REUSABLE_EXCLUDED and receipt:memo.setdefault(trial,[]).append((aid,receipt))
         self._journal={k:deque(v) for k,v in memo.items()}
 
     def _reuse(self,trial_id):
+        """(attempt id, receipt hash) of the next completed attempt for `trial_id`, or None."""
         queue=self._journal.get(trial_id)
         if not queue:return None
         self.reused_from_journal+=1
         return queue.popleft()
 
+    def _note(self,aid):
+        """Ledger an attempt (new or reused) to the research run in progress (B20_R4)."""
+        if self._ledger is not None:self._ledger.append(aid)
+
     def _frozen_version(self,generation):
-        """(vid, version) of a successor frozen for `generation` before an interruption.
-        The freeze precedes the FUTURE panels, so a resumed run must keep it, not re-freeze."""
+        """(vid, version) of a successor frozen in campaign round `generation` before an
+        interruption. The freeze precedes the FUTURE panels, so a resumed run must keep it,
+        not re-freeze. (Since B20_R4 a version's `generation` is its lineage depth; the round
+        is carried by the freeze event.)"""
         for (raw,) in self.store.db.execute('SELECT body FROM events ORDER BY seq'):
             body=json.loads(raw)
             if body['kind']!='DEV_SUCCESSOR_FROZEN':continue
-            vid=self.store.get(body['payload'])['version']
+            payload=self.store.get(body['payload']);vid=payload['version']
             row=self.store.db.execute("SELECT object_hash FROM entities WHERE kind='system_version' AND id=?",(vid,)).fetchone()
-            if row and self.store.get(row[0])['generation']==generation:return vid,self.store.get(row[0])
+            if row and payload.get('round',self.store.get(row[0])['generation'])==generation:return vid,self.store.get(row[0])
         return None
+
+    def _version_doc(self,vid):
+        row=self.store.db.execute("SELECT object_hash FROM entities WHERE kind='system_version' AND id=?",(vid,)).fetchone()
+        if row is None:raise RuntimeError('parent system version is not recorded')
+        return self.store.get(row[0])
+
+    def _attempt(self,aid):
+        req,rec=self.store.db.execute('SELECT request,receipt FROM attempts WHERE id=?',(aid,)).fetchone()
+        return self.store.get(req),(self.store.get(rec) if rec else None)
 
     def _initial_version(self):
         rows=[(i,self.store.get(h)) for i,h in self.store.db.execute("SELECT id,object_hash FROM entities WHERE kind='system_version'")]
@@ -144,10 +161,12 @@ class Campaign:
         key=digest({'domain':task.domain,'n':task.n,'edges':task.edges})
         reused=self._reuse('check-'+key) if key not in self.optima else None
         if reused is not None:
-            receipt=self.store.get(reused)
+            self._note(reused[0])
+            receipt=self.store.get(reused[1])
             self.optima[key]=receipt['result']['value'] if receipt['status']=='SUCCESS' else None
         if key not in self.optima:
             aid=self.store.start('check-'+key,{'kind':'exact-check','task':task.model_dump(mode='json')})
+            self._note(aid)
             start=time.perf_counter_ns()
             try:
                 result=certified_optimum(task,self.config.max_exact_edges)
@@ -170,10 +189,11 @@ class Campaign:
                  'program':program.model_dump(mode='json'),'limits':self.config.limits.model_dump(mode='json'),
                  'seed':seed,'context':context}
         trial_id=digest(request)
-        rh=self._reuse(trial_id)
-        if rh is not None:receipt=self.store.get(rh)
+        reused=self._reuse(trial_id)
+        if reused is not None:
+            aid,rh=reused;receipt=self.store.get(rh);self._note(aid)
         else:
-            aid=self.store.start(trial_id,request)
+            aid=self.store.start(trial_id,request);self._note(aid)
             point('campaign.trial')
             try:receipt=execute(task,program,self.config.limits,seed)
             except BaseException as e:
@@ -182,7 +202,7 @@ class Campaign:
             rh=self.store.finish(aid,receipt)
         optimum=self._optimum(task)
         result=receipt.get('result',{})
-        row={'task_id':task.task_id,'family':task.family,'status':receipt['status'],
+        row={'attempt_id':aid,'task_id':task.task_id,'family':task.family,'status':receipt['status'],
              'value':result.get('value',0),'queries':result.get('queries'),
              'wall_ns':receipt['wall_ns'],'cpu_ns':receipt['cpu_ns'],
              'optimum':optimum,'receipt':rh,'trace':result.get('trace',[])}
@@ -238,6 +258,7 @@ class Campaign:
         from .kernel.version import SystemVersion
         fixed=version_components(self.config)
         resuming=phase=='DEV_RUNNING'
+        interrupted=[]
         if resuming:
             if not resume:
                 raise RuntimeError('campaign was interrupted while DEV_RUNNING; resume it (`genesis campaign resume`) '
@@ -256,11 +277,12 @@ class Campaign:
         if progress:
             seen=set(progress['seen']);parent=SolverProgram.model_validate_json(canonical(progress['parent']))
             parent_version=progress['parent_version'];library=list(progress['library'])
+            accepted=progress.get('accepted',0)
             history=[self.store.get(self.store.db.execute("SELECT object_hash FROM entities WHERE kind='generation' AND id=?",
                                                           (str(g),)).fetchone()[0]) for g in range(progress['completed'])]
             first=progress['completed']
         else:
-            seen=set();parent=SolverProgram(rounds=32);history=[];library=[];first=0
+            seen=set();parent=SolverProgram(rounds=32);history=[];library=[];first=0;accepted=0
             existing=self._initial_version() if resuming else None
             if existing:parent_version=existing[0]
             else:
@@ -268,12 +290,19 @@ class Campaign:
                                       memory_snapshot=self.store.verify()['head'],research_policy={'policy':'uniform'},
                                       source=self.store.state('source_hash'),**fixed)
                 parent_version=initial.version_id();self.store.save('system_version',parent_version,initial.model_dump(mode='json'))
+        # Attempts interrupted before this round's successor was frozen belong to its research
+        # run (charged, ledgered); after the freeze they belong to its evaluation.
+        pending=list(interrupted) if interrupted and first<self.config.generations and \
+            self._frozen_version(first) is None else []
+        from . import lineage as L
         try:
             for generation in range(first,self.config.generations):
                 seed=self.config.seed+100000*generation
                 dev,seen=self._panel(seed,'DEV',seen)
                 select,seen=self._panel(seed+1,'SELECT',seen)
                 self.store.event('GENERATION_STARTED',{'generation':generation,'public_panels':True})
+                self._ledger=pending if generation==first else []
+                pending=[]
                 children={};summaries={};research_rows={}
                 for policy in ('uniform','adaptive'):
                     child,summary,rows=self.improve(dev,parent,policy,generation,seed+2)
@@ -289,20 +318,37 @@ class Campaign:
                 child_select={p:self.evaluate(select,x,f'g{generation}:select-{p}',seed+3) for p,x in children.items()}
                 policy=max(children,key=lambda p:(sum(r['value'] for r in child_select[p]),p))
                 selected=children[policy]
-                # Frozen before the subsequently generated public future panels.
+                # Frozen before the subsequently generated public future panels. Every policy's
+                # child is described as the version it would become (lineage candidates); the
+                # version's generation is its lineage depth (parent's + 1), not the round.
                 frozen=self._frozen_version(generation) if resuming else None
+                parent_doc=self._version_doc(parent_version)
+                weights_used=self.store.state('mutation_weights',[1,1,1,1])
+                head=frozen[1]['memory_snapshot'] if frozen is not None else self.store.verify()['head']
+                options={p:SystemVersion(generation=parent_doc['generation']+1,parent=parent_version,
+                                         solver=children[p].model_dump(mode='json'),tool_library=tuple(library),
+                                         memory_snapshot=head,research_policy={'policy':p,'mutation_weights':weights_used},
+                                         source=self.store.state('source_hash'),**fixed) for p in sorted(children)}
                 if frozen is not None:
                     vid,recorded=frozen
-                    if recorded['solver']!=selected.model_dump(mode='json') or recorded['parent']!=parent_version:
+                    if recorded['solver']!=selected.model_dump(mode='json') or recorded['parent']!=parent_version \
+                            or options[policy].version_id()!=vid:
                         raise RuntimeError('resumed run diverged from the successor frozen before the interruption')
                 else:
-                    version=SystemVersion(generation=generation,parent=parent_version,solver=selected.model_dump(mode='json'),
-                                          tool_library=tuple(library),memory_snapshot=self.store.verify()['head'],
-                                          research_policy={'policy':policy,'mutation_weights':self.store.state('mutation_weights',[1,1,1,1])},
-                                          source=self.store.state('source_hash'),**fixed)
+                    version=options[policy]
                     vid=version.version_id();self.store.save('system_version',vid,version.model_dump(mode='json'))
-                    self.store.event('DEV_SUCCESSOR_FROZEN',{'version':vid,'candidate':selected.model_dump(mode='json')})
+                    self.store.event('DEV_SUCCESSOR_FROZEN',{'version':vid,'candidate':selected.model_dump(mode='json'),
+                                                             'round':generation})
                     point('campaign.frozen')
+                research_attempts,self._ledger=self._ledger,None
+                parent_before=parent_version
+                mechanisms={}
+                if selected.model_dump(mode='json')!=parent_doc['solver']:
+                    mechanisms['solver']='research selection on the public SELECT panel'
+                if list(library)!=list(parent_doc['tool_library']):
+                    mechanisms['tool_library']='capability retained by an earlier generation'
+                if {'policy':policy,'mutation_weights':weights_used}!=parent_doc['research_policy']:
+                    mechanisms['research_policy']='proposal-allocation weights learned from DEV outcomes'
                 future,seen=self._panel(seed+4,'FUTURE',seen)
                 # Deterministic arm order is alternated per generation, and paired
                 # task RNG is held fixed across all arms.
@@ -360,17 +406,43 @@ class Campaign:
                     if score[0]>base_score:
                         for i,(old,new) in enumerate(zip(parent.weights,program_data['weights'])):
                             if old!=new:learned[i]=min(32,learned[i]+1)
-                if retained:parent=selected;parent_version=vid;library.append(cid)
+                if retained:parent=selected;parent_version=vid;library.append(cid);accepted+=1
+                # Research-lineage records (B20_R4, H08): completed and checked from the event log by
+                # lineage.export_from_store; the custodian reads them from the export.
+                budget={'research_trials':self.config.research_trials,'proposals_per_epoch':self.config.proposals_per_epoch,
+                        'dev_tasks':len(dev),'select_tasks':len(select),'limits':self.config.limits.model_dump(mode='json')}
+                account=L.campaign_account([(a,*self._attempt(a)) for a in research_attempts],round_=generation,
+                                           research_trials=self.config.research_trials,policies=sorted(children))
+                lineage_run={'round':generation,'parent_version':parent_before,
+                    'policy_identity':{'policies':sorted(children),'mutation_weights':weights_used,
+                                       'proposal_generator':'research.propose'},
+                    'permitted_inputs':{'dev_panel':digest(sorted(t.task_id for t in dev)),
+                                        'select_panel':digest(sorted(t.task_id for t in select)),'public_panels':True},
+                    'seed':seed,'budget':budget,'budget_sha256':digest(budget),'account':account,
+                    'account_sha256':digest(account),'attempts':research_attempts,
+                    'candidates':[{'identity':options[p].version_id(),'policy':p,
+                                   'program_sha256':digest(children[p].model_dump(mode='json')),
+                                   'score':sum(r['value'] for r in child_select[p]),
+                                   'attempt_ids':[r['attempt_id'] for r in child_select[p]]} for p in sorted(children)],
+                    'selection':{'rule':'max_score_then_greatest_policy','selected':vid},'interventions':[]}
+                lineage_transition={'round':generation,'index':accepted if retained else None,'from_version':parent_before,
+                    'to_version':vid,'declared_changes':sorted(mechanisms),'mechanisms':mechanisms,
+                    'panel_id':digest(sorted(t.task_id for t in future)),'receipt_id':digest(result),'claim_id':None,
+                    'plan_id':None,'decision':'ACCEPTED' if retained else 'REJECTED',
+                    'decision_basis':'DEV retention on the public SELECT panel; not an acceptance'}
                 # One transaction commits the generation: a crash leaves all of it or none.
                 self.store.commit_batch(
                     entities=[('generation',str(generation),result),
+                              ('lineage_run',str(generation),lineage_run),
+                              ('lineage_transition',str(generation),lineage_transition),
                               ('research_policy',str(generation),{
                                   'parent_weights':adaptive_summary['mutation_weights'],'child_weights':learned,
                                   'training_source':f'g{generation}-adaptive','effects':['USES_DEV_DATA'],
                                   'claim':'candidate future research policy, utility unconfirmed'})],
                     states=[('diagnosis',diagnosis),('mutation_weights',learned),('completed_dev_generations',generation+1),
                             ('dev_progress',{'completed':generation+1,'parent':parent.model_dump(mode='json'),
-                                             'parent_version':parent_version,'library':library,'seen':sorted(seen)})])
+                                             'parent_version':parent_version,'library':library,'seen':sorted(seen),
+                                             'accepted':accepted})])
                 history.append(result)
                 point('campaign.generation')
                 if not (self.root/'snapshots'/f'g{generation}.sqlite3').exists():
