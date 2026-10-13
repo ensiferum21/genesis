@@ -131,16 +131,17 @@
       "B20-REVIEW-04": "REPAIRED_PENDING_REVIEW",
       "B20R-NEW-01": "REPAIRED",
       "B20R-OPEN-2": "REPAIRED_PENDING_REVIEW",
-      "B20R-OPEN-4": "REPAIRED_PENDING_REVIEW"
+      "B20R-OPEN-4": "REPAIRED_PENDING_REVIEW",
+      "B20R5-OPEN-1": "REPAIRED_PENDING_REVIEW"
     },
     "units": {
       "H01": "DONE (reproductions in audit/review_b20)",
       "H02": "DONE on DEV: repairs A-C plus the fresh E3 run (evidence/e3_fresh_b20r)",
       "H03": "DONE for the joint certification path; custody-complete DEV re-run",
       "H04": "BLOCKED_ENVIRONMENT for external parts (re-checked 2026-10-12: PyPI and Docker registry unreachable)",
-      "H05": "DONE ON DEV (B20_R5): request v4/receipt v4, descriptors rebuilt from the frozen export, arms in the OCI sandbox; sealed theorem generator and formal-successor kind outstanding (B20R5-OPEN-1)",
+      "H05": "DONE ON DEV (B20_R5, B20_R7): descriptor requests v4, statement requests, sealed equational panels, three candidate kinds in the OCI sandbox; pending independent review",
       "H06": "PART: CRPD-2a codegree EQ abstraction (Lean-checked); CRPD-2b pending a pin-revision decision",
-      "H07": "PART: fresh E3 (0W/2T/6L) and the redesigned cost-aware policy study (INFERIOR_DEV; material NOT_DISCRIMINATING); a family with headroom is needed (B20R3-OPEN-1)",
+      "H07": "PART: E3 studies negative on DEV (0W/2T/6L; cost-aware INFERIOR_DEV); headroom pilots on eight systems found none (B20R3-OPEN-1); library interference replicated (B20R3-OPEN-2)",
       "H08": "PART (B20_R4): campaigns write native lineage records; custodian checks generation requests; improver kind refused; recovery/rollback/retention outstanding",
       "H09-H12": "NOT_STARTED"
     },
@@ -203,6 +204,19 @@
           "d8052df"
         ],
         "result": "executable candidates through the custodian (v4), sandboxed arms"
+      },
+      "B20_R6": {
+        "commits": [
+          "d68da75",
+          "9424e75"
+        ],
+        "result": "NO_HEADROOM on Robbins and Boolean rings; interference replicated"
+      },
+      "B20_R7": {
+        "commits": [
+          "b5388af"
+        ],
+        "result": "sealed statement panels; formal successors through the custodian"
       }
     },
     "open_after_b20_r5": [
@@ -212,6 +226,17 @@
       "B20R5-OPEN-1",
       "B20R5-OPEN-2",
       "B20R-OPEN-3",
+      "R-04"
+    ],
+    "open_after_b20_r7": [
+      "B20R3-OPEN-1",
+      "B20R3-OPEN-2",
+      "B20R3-OPEN-3",
+      "B20R5-OPEN-2",
+      "B20R7-OPEN-1",
+      "B20R7-OPEN-2",
+      "B20R-OPEN-3",
+      "B14-OPEN-4",
       "R-04"
     ]
   }

@@ -238,3 +238,15 @@ All three batches were run by the builder on DEV material and have not been inde
 | B20R-OPEN-4 / B19-OPEN-3 | REPAIRED IN B20_R5, PENDING INDEPENDENT REVIEW. Request v4, receipt v4 and claim binding v2 were added. The custodian rebuilds descriptors from the frozen export and runs every arm in the OCI sandbox. The s13.3 acceptance list passes end to end (`tests_genesis/test_candidate_custody.py`). | independent review |
 | B20R5-OPEN-1 | Handoff s13.3 is not built: there is no sealed theorem generator and no frozen formal-research-successor candidate kind. Without them, an E2/E3 study cannot be evaluated by a custodian on private statements. | custodian-side statement generation committed before candidate access, with preregistered inclusion rules; a third candidate kind |
 | B20R5-OPEN-2 | v4 requests cover `sealed_evaluation` only. Transfer, generation and improver evaluations of non-DSL candidates are refused. | a further reviewed schema step once a non-DSL lineage exists |
+
+## B20_R6 and B20_R7 outcome (family search, sealed statement panels)
+
+Both batches were run by the builder on DEV material, with fixture keys. See `docs/checkpoints/B20_R6_RECORD.md` and `B20_R7_RECORD.md`.
+
+| ID | Status or new finding | Needs |
+|---|---|---|
+| B20R3-OPEN-1 | STILL OPEN. The B20_R6 pilot (`evidence/family_search_b20r6/`) found NO_HEADROOM on Robbins' basis (floor: libraries change nothing) and on Boolean rings (near ceiling). Eight systems have now been tried. | a family where library curation or premise selection has measurable headroom, measured against a reference that searches library subsets |
+| B20R3-OPEN-2 | REPLICATED. On Boolean rings with 8–10 nodes, FIXED@CAP (34 lemmas) proves 11/12, while EXHAUST (132 lemmas) proves 8/12, the same as EMPTY. The ORACLE built from exhaust proofs inherits the interference, so it is not an upper bound. | curation and premise selection as the next action space (handoff s19.2) |
+| B20R5-OPEN-1 | REPAIRED IN B20_R7, PENDING INDEPENDENT REVIEW. The custodian now generates sealed equational panels and runs the candidate kind `formal-research-successor-v1` in the sandbox. Every claimed proof is replayed in Lean, by the custodian and again by the judge. | independent review |
+| B20R7-OPEN-1 | Verification (Lean replay) CPU is not metered; only wall time is recorded. | cgroup metering of the checker sandbox in replay receipts |
+| B20R7-OPEN-2 | The equational research loop does not call the custodian's sealed-statement screen; it only screens against its own study's reserved items. | wire `screen_for_research` (or a statement InsertionScreen fed by it) into research runs that will be evaluated by a custodian |

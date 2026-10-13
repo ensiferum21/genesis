@@ -45,6 +45,8 @@ session can resume from the latest checkpoint (see `RESUME.md`).
 | 20_R3 | Redesigned research policy, new frozen DEV study | B20R-OPEN-1 (handoff H07, moved first) | Headroom pilot: ORACLE − fixed ≤ 1/12 on six systems; cost-aware policy INFERIOR_DEV (2W/3T/3L), material NOT_DISCRIMINATING; libraries are not monotone for E (one true lemma: 7/8 → 0/8); Lean 153/208 CHECKED, failures traced to tactic-cascade steps. Builder-run, DEV only |
 | 20_R4 | Generation lineage in campaigns | H08; B20R-OPEN-2, B14-OPEN-3 | Campaigns write native lineage records (ledgered attempts, recomputable accounts, scored candidates, declared changes); custodian accepts generation requests only for qualifying transitions; improver kind still refused. Builder-run |
 | 20_R5 | Executable candidates through the custodian | H05; B19-OPEN-3, B20R-OPEN-4 | Request v4 / receipt v4 / claim binding v2; descriptors rebuilt from the frozen export; every arm in the OCI sandbox; judge re-checks every witness; s13.3 acceptance list end to end (21 tests). Builder-run, fixture keys |
+| 20_R6 | Family search for selection headroom | B20R3-OPEN-1 | Robbins' basis (floor) and Boolean rings (near ceiling) both NO_HEADROOM; lemma interference replicated (34 lemmas 11/12 vs 132 lemmas 8/12). DEV design diagnostic |
+| 20_R7 | Sealed statement panels, formal successors through the custodian | H05; B20R5-OPEN-1 | Custodian-side panel generation after freeze from a private seed with full screening; frozen research exports; kind formal-research-successor-v1 in the sandbox; Lean replay of every claim by custodian and judge; 12 tests. Builder-run, fixture keys |
 
 Later phases (B17–B23+) follow the roadmap and its gates; numbers are labels,
 not estimates.
