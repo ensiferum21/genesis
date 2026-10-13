@@ -10,6 +10,7 @@ Kept by the builder on 13 Oct 2026 so that nothing depends on one workspace. Thi
 | `GENESIS_COMPLETION_CHECKPOINT_B20_R11.zip` | `36954d6` | **The canonical line B20_R1–R11** (branch `continuation-b20-repairs`): repairs, CRPD, policy study, lineage, candidate custody, statement panels, replay contracts, curation pilot, E1 readiness |
 | `GENESIS_COMPLETION_CHECKPOINT_B20_RX1.zip` | `3456797` | Recovery branch: CRPD-2b, W22, W23, H06 search failures, B20_R13 |
 | `GENESIS_COMPLETION_CHECKPOINT_B20_RX2.zip` | `0db2e6c` | Recovery branch: B20_R14, RX3/RX3b capability pilots, RX4 E1 calibration, RX5 proposal pilot |
+| `GENESIS_COMPLETION_CHECKPOINT_B20_R16.zip` | `988c7f5` | **The current line** (branch `continuation-b20-rx`): the canonical R11 line, the recovery work ported onto it, B20_R12 (E1 redo: UNDERPOWERED), B20_R15 (replay contracts for the causal, replication and priority levels) and B20_R16 (H08 rollback). Release matrix 1,139 tests, all OK; restore-verified (5,447 manifest entries; bundle clone gives the same commit and tree) |
 
 Each zip contains the full source tree, a git bundle of the whole history, the release test-matrix report, and a SHA-256 manifest of every member.
 
@@ -39,7 +40,9 @@ Each zip contains the full source tree, a git bundle of the whole history, the r
 
 | Ref | What it is |
 |---|---|
+| `continuation-b20-rx` | **The current line**: the canonical R11 line plus the ported recovery work, B20_R12, R15 and R16, and later batches |
 | `continuation-b20-repairs` | The canonical line, up to B20_R11 (`36954d6`) |
+| `continuation-b20-r15-r16` | B20_R15 and R16 before their merge (kept for reference) |
 | `recovery-b20r1-partial` | The continuation built in this workspace: B20 + R1 repairs + CRPD + the recovery-branch work |
 | `continuation-b14` | B20 (`97fb233`) |
 | `master`, `completion-p0-p2`, `b21-wip` | Branches from the B20 history bundle |
@@ -49,7 +52,7 @@ Each zip contains the full source tree, a git bundle of the whole history, the r
 
 ```
 git clone <this repo> genesis-work && cd genesis-work
-git checkout recovery-b20r1-partial
+git checkout continuation-b20-rx
 GENESIS_TOOLCHAIN=/srv/toolchain bash toolchain/install_tools.sh     # pinned toolchain, about 30 to 60 minutes
 export GENESIS_TOOLCHAIN=/srv/toolchain PYTHONPATH=src
 python3 scripts/run_test_matrix.py --profile release --report /tmp/matrix.json   # as root (runc)
