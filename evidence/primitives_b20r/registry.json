@@ -1,0 +1,164 @@
+{
+ "contracts": [
+  {
+   "effects": [],
+   "expansion": {
+    "den": 2,
+    "kind": "scaled",
+    "num": 1,
+    "of": {
+     "expr": {
+      "op": "TracePower",
+      "params": {
+       "k": 2
+      }
+     },
+     "kind": "fixed"
+    }
+   },
+   "failure_modes": [],
+   "hypothesis": "edge budgets in representation features without the trace computation",
+   "implementation_sha256": "c9ca08f7df545dbaffcd2ff503d717d3c76cbe5d565c7609aebdd0c65b0eaae4",
+   "name": "EdgeCount",
+   "native": "edge_count_v1",
+   "output": "rational",
+   "params": {},
+   "precondition": "any host",
+   "proposer": "builder",
+   "resource_bounds": {
+    "max_nodes": 256
+   },
+   "schema": "genesis-primitive-contract-v1",
+   "semantics": "number of host edges (tr A^2 / 2)",
+   "version": 1
+  },
+  {
+   "effects": [],
+   "expansion": {
+    "kind": "sum_pairs",
+    "term": {
+     "args": [
+      {
+       "op": "Codegree",
+       "params": {
+        "u": "$u",
+        "v": "$v"
+       }
+      },
+      {
+       "args": [
+        {
+         "op": "Codegree",
+         "params": {
+          "u": "$u",
+          "v": "$v"
+         }
+        },
+        {
+         "op": "Const",
+         "params": {
+          "value": 1
+         }
+        }
+       ],
+       "op": "Sub"
+      }
+     ],
+     "op": "Mul"
+    }
+   },
+   "failure_modes": [
+    "expansion exceeds the 256-node language cap above about 7 vertices"
+   ],
+   "hypothesis": "C4 density of a host in one operation (the CRPD-2 codegree abstraction)",
+   "implementation_sha256": "da54b430456d9b8c7e8be8dd51fd1b45a70836d6982354364bf1ec2d93323e98",
+   "name": "PairCodegreeFalling2",
+   "native": "pair_codegree_falling2_v1",
+   "output": "int",
+   "params": {},
+   "precondition": "any host",
+   "proposer": "builder",
+   "resource_bounds": {
+    "max_nodes": 256
+   },
+   "schema": "genesis-primitive-contract-v1",
+   "semantics": "sum over vertex pairs u < v of codeg(u,v) * (codeg(u,v) - 1) (= 4 x the number of 4-cycles)",
+   "version": 1
+  },
+  {
+   "effects": [],
+   "expansion": {
+    "kind": "sum_vertices",
+    "term": {
+     "args": [
+      {
+       "op": "Degree",
+       "params": {
+        "u": "$v"
+       }
+      },
+      {
+       "op": "Degree",
+       "params": {
+        "u": "$v"
+       }
+      }
+     ],
+     "op": "Mul"
+    }
+   },
+   "failure_modes": [
+    "expansion exceeds the 256-node language cap above about 50 vertices"
+   ],
+   "hypothesis": "the pair-count (Cauchy-Schwarz) slack of a host in one operation",
+   "implementation_sha256": "2561f489bc3f7136f588c58f48d8afb1c3b5ceae6db1c8f075a783a4ccc50aad",
+   "name": "SumDegreeSquares",
+   "native": "sum_degree_squares_v1",
+   "output": "int",
+   "params": {},
+   "precondition": "any host",
+   "proposer": "builder",
+   "resource_bounds": {
+    "max_nodes": 256
+   },
+   "schema": "genesis-primitive-contract-v1",
+   "semantics": "sum over vertices of degree^2",
+   "version": 1
+  },
+  {
+   "effects": [],
+   "expansion": {
+    "den": 6,
+    "kind": "scaled",
+    "num": 1,
+    "of": {
+     "expr": {
+      "op": "TracePower",
+      "params": {
+       "k": 3
+      }
+     },
+     "kind": "fixed"
+    }
+   },
+   "failure_modes": [],
+   "hypothesis": "triangle-free host screening without cubing the adjacency matrix",
+   "implementation_sha256": "47544bd2ff6d8c5046c02f5db298a67ffca5afcfb9f02e1af663b89c9a4ff72c",
+   "name": "TriangleCount",
+   "native": "triangle_count_v1",
+   "output": "rational",
+   "params": {},
+   "precondition": "any host",
+   "proposer": "builder",
+   "resource_bounds": {
+    "max_nodes": 256
+   },
+   "schema": "genesis-primitive-contract-v1",
+   "semantics": "number of host triangles (tr A^3 / 6)",
+   "version": 1
+  }
+ ],
+ "history": [],
+ "identity": "946a4fb183a34f80b872cb322740f5607f940907c956cda79566597ef4c4ecd8",
+ "schema": "genesis-primitive-registry-v1"
+}

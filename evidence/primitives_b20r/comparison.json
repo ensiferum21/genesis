@@ -1,0 +1,1678 @@
+{
+ "EdgeCount": {
+  "conformance_cpu_ns": 114800975,
+  "contract_sha256": "e43ce9de21be1891499c17e326dfd23281ec108a6fca9eeb82e43ad19ab3437a",
+  "incumbent_cpu_ns": 131686088,
+  "macro_note": "the equivalent macro has the native description length and the incumbent cost",
+  "native_cpu_ns_with_conformance": 116973860,
+  "primitive": "EdgeCount",
+  "registry": "946a4fb183a34f80b872cb322740f5607f940907c956cda79566597ef4c4ecd8",
+  "rows": [
+   {
+    "agree": true,
+    "incumbent_cpu_ns": 131997,
+    "incumbent_nodes": 3,
+    "macro_nodes": 1,
+    "n": 6,
+    "native": 9,
+    "native_cpu_ns": 64257,
+    "native_error": null,
+    "reference": [
+     9,
+     1
+    ],
+    "reference_error": null,
+    "task_id": "dev-erdos-40f4e9dd-2026101302-0000"
+   },
+   {
+    "agree": true,
+    "incumbent_cpu_ns": 93885,
+    "incumbent_nodes": 3,
+    "macro_nodes": 1,
+    "n": 6,
+    "native": 12,
+    "native_cpu_ns": 44289,
+    "native_error": null,
+    "reference": [
+     12,
+     1
+    ],
+    "reference_error": null,
+    "task_id": "dev-erdos-40f4e9dd-2026101302-0001"
+   },
+   {
+    "agree": true,
+    "incumbent_cpu_ns": 105185,
+    "incumbent_nodes": 3,
+    "macro_nodes": 1,
+    "n": 6,
+    "native": 7,
+    "native_cpu_ns": 43249,
+    "native_error": null,
+    "reference": [
+     7,
+     1
+    ],
+    "reference_error": null,
+    "task_id": "dev-erdos-40f4e9dd-2026101302-0002"
+   },
+   {
+    "agree": true,
+    "incumbent_cpu_ns": 85142,
+    "incumbent_nodes": 3,
+    "macro_nodes": 1,
+    "n": 6,
+    "native": 8,
+    "native_cpu_ns": 38553,
+    "native_error": null,
+    "reference": [
+     8,
+     1
+    ],
+    "reference_error": null,
+    "task_id": "dev-erdos-40f4e9dd-2026101302-0003"
+   },
+   {
+    "agree": true,
+    "incumbent_cpu_ns": 203256,
+    "incumbent_nodes": 3,
+    "macro_nodes": 1,
+    "n": 10,
+    "native": 11,
+    "native_cpu_ns": 35410,
+    "native_error": null,
+    "reference": [
+     11,
+     1
+    ],
+    "reference_error": null,
+    "task_id": "dev-erdos-76a634c4-2026101312-0000"
+   },
+   {
+    "agree": true,
+    "incumbent_cpu_ns": 228707,
+    "incumbent_nodes": 3,
+    "macro_nodes": 1,
+    "n": 10,
+    "native": 21,
+    "native_cpu_ns": 37903,
+    "native_error": null,
+    "reference": [
+     21,
+     1
+    ],
+    "reference_error": null,
+    "task_id": "dev-erdos-76a634c4-2026101312-0001"
+   },
+   {
+    "agree": true,
+    "incumbent_cpu_ns": 423325,
+    "incumbent_nodes": 3,
+    "macro_nodes": 1,
+    "n": 10,
+    "native": 16,
+    "native_cpu_ns": 151626,
+    "native_error": null,
+    "reference": [
+     16,
+     1
+    ],
+    "reference_error": null,
+    "task_id": "dev-erdos-76a634c4-2026101312-0002"
+   },
+   {
+    "agree": true,
+    "incumbent_cpu_ns": 360687,
+    "incumbent_nodes": 3,
+    "macro_nodes": 1,
+    "n": 10,
+    "native": 22,
+    "native_cpu_ns": 109319,
+    "native_error": null,
+    "reference": [
+     22,
+     1
+    ],
+    "reference_error": null,
+    "task_id": "dev-erdos-76a634c4-2026101312-0003"
+   },
+   {
+    "agree": true,
+    "incumbent_cpu_ns": 3565361,
+    "incumbent_nodes": 3,
+    "macro_nodes": 1,
+    "n": 24,
+    "native": 82,
+    "native_cpu_ns": 110600,
+    "native_error": null,
+    "reference": [
+     82,
+     1
+    ],
+    "reference_error": null,
+    "task_id": "dev-erdos-e2553c0a-2026101322-0000"
+   },
+   {
+    "agree": true,
+    "incumbent_cpu_ns": 3593482,
+    "incumbent_nodes": 3,
+    "macro_nodes": 1,
+    "n": 24,
+    "native": 78,
+    "native_cpu_ns": 107800,
+    "native_error": null,
+    "reference": [
+     78,
+     1
+    ],
+    "reference_error": null,
+    "task_id": "dev-erdos-e2553c0a-2026101322-0001"
+   },
+   {
+    "agree": true,
+    "incumbent_cpu_ns": 3501445,
+    "incumbent_nodes": 3,
+    "macro_nodes": 1,
+    "n": 24,
+    "native": 79,
+    "native_cpu_ns": 109582,
+    "native_error": null,
+    "reference": [
+     79,
+     1
+    ],
+    "reference_error": null,
+    "task_id": "dev-erdos-e2553c0a-2026101322-0002"
+   },
+   {
+    "agree": true,
+    "incumbent_cpu_ns": 3617136,
+    "incumbent_nodes": 3,
+    "macro_nodes": 1,
+    "n": 24,
+    "native": 107,
+    "native_cpu_ns": 101906,
+    "native_error": null,
+    "reference": [
+     107,
+     1
+    ],
+    "reference_error": null,
+    "task_id": "dev-erdos-e2553c0a-2026101322-0003"
+   },
+   {
+    "agree": true,
+    "incumbent_cpu_ns": 16582667,
+    "incumbent_nodes": 3,
+    "macro_nodes": 1,
+    "n": 40,
+    "native": 234,
+    "native_cpu_ns": 119947,
+    "native_error": null,
+    "reference": [
+     234,
+     1
+    ],
+    "reference_error": null,
+    "task_id": "dev-erdos-fd92a0fd-2026101332-0000"
+   },
+   {
+    "agree": true,
+    "incumbent_cpu_ns": 15927503,
+    "incumbent_nodes": 3,
+    "macro_nodes": 1,
+    "n": 40,
+    "native": 252,
+    "native_cpu_ns": 105078,
+    "native_error": null,
+    "reference": [
+     252,
+     1
+    ],
+    "reference_error": null,
+    "task_id": "dev-erdos-fd92a0fd-2026101332-0001"
+   },
+   {
+    "agree": true,
+    "incumbent_cpu_ns": 11510925,
+    "incumbent_nodes": 3,
+    "macro_nodes": 1,
+    "n": 40,
+    "native": 216,
+    "native_cpu_ns": 146246,
+    "native_error": null,
+    "reference": [
+     216,
+     1
+    ],
+    "reference_error": null,
+    "task_id": "dev-erdos-fd92a0fd-2026101332-0002"
+   },
+   {
+    "agree": true,
+    "incumbent_cpu_ns": 10475082,
+    "incumbent_nodes": 3,
+    "macro_nodes": 1,
+    "n": 40,
+    "native": 236,
+    "native_cpu_ns": 68172,
+    "native_error": null,
+    "reference": [
+     236,
+     1
+    ],
+    "reference_error": null,
+    "task_id": "dev-erdos-fd92a0fd-2026101332-0003"
+   },
+   {
+    "agree": true,
+    "incumbent_cpu_ns": 150880,
+    "incumbent_nodes": 3,
+    "macro_nodes": 1,
+    "n": 8,
+    "native": 13,
+    "native_cpu_ns": 43059,
+    "native_error": null,
+    "reference": [
+     13,
+     1
+    ],
+    "reference_error": null,
+    "task_id": "dev-erdos-513b4634-2026101342-0000"
+   },
+   {
+    "agree": true,
+    "incumbent_cpu_ns": 157705,
+    "incumbent_nodes": 3,
+    "macro_nodes": 1,
+    "n": 8,
+    "native": 11,
+    "native_cpu_ns": 40261,
+    "native_error": null,
+    "reference": [
+     11,
+     1
+    ],
+    "reference_error": null,
+    "task_id": "dev-erdos-513b4634-2026101342-0001"
+   },
+   {
+    "agree": true,
+    "incumbent_cpu_ns": 133395,
+    "incumbent_nodes": 3,
+    "macro_nodes": 1,
+    "n": 8,
+    "native": 10,
+    "native_cpu_ns": 39627,
+    "native_error": null,
+    "reference": [
+     10,
+     1
+    ],
+    "reference_error": null,
+    "task_id": "dev-erdos-513b4634-2026101342-0002"
+   },
+   {
+    "agree": true,
+    "incumbent_cpu_ns": 132556,
+    "incumbent_nodes": 3,
+    "macro_nodes": 1,
+    "n": 8,
+    "native": 11,
+    "native_cpu_ns": 36656,
+    "native_error": null,
+    "reference": [
+     11,
+     1
+    ],
+    "reference_error": null,
+    "task_id": "dev-erdos-513b4634-2026101342-0003"
+   },
+   {
+    "agree": true,
+    "incumbent_cpu_ns": 1363268,
+    "incumbent_nodes": 3,
+    "macro_nodes": 1,
+    "n": 20,
+    "native": 64,
+    "native_cpu_ns": 44803,
+    "native_error": null,
+    "reference": [
+     64,
+     1
+    ],
+    "reference_error": null,
+    "task_id": "dev-erdos-4be97ffa-2026101352-0000"
+   },
+   {
+    "agree": true,
+    "incumbent_cpu_ns": 1357131,
+    "incumbent_nodes": 3,
+    "macro_nodes": 1,
+    "n": 20,
+    "native": 67,
+    "native_cpu_ns": 44080,
+    "native_error": null,
+    "reference": [
+     67,
+     1
+    ],
+    "reference_error": null,
+    "task_id": "dev-erdos-4be97ffa-2026101352-0001"
+   },
+   {
+    "agree": true,
+    "incumbent_cpu_ns": 1301466,
+    "incumbent_nodes": 3,
+    "macro_nodes": 1,
+    "n": 20,
+    "native": 63,
+    "native_cpu_ns": 46794,
+    "native_error": null,
+    "reference": [
+     63,
+     1
+    ],
+    "reference_error": null,
+    "task_id": "dev-erdos-4be97ffa-2026101352-0002"
+   },
+   {
+    "agree": true,
+    "incumbent_cpu_ns": 1477054,
+    "incumbent_nodes": 3,
+    "macro_nodes": 1,
+    "n": 20,
+    "native": 87,
+    "native_cpu_ns": 55587,
+    "native_error": null,
+    "reference": [
+     87,
+     1
+    ],
+    "reference_error": null,
+    "task_id": "dev-erdos-4be97ffa-2026101352-0003"
+   },
+   {
+    "agree": true,
+    "incumbent_cpu_ns": 10954263,
+    "incumbent_nodes": 3,
+    "macro_nodes": 1,
+    "n": 40,
+    "native": 236,
+    "native_cpu_ns": 101240,
+    "native_error": null,
+    "reference": [
+     236,
+     1
+    ],
+    "reference_error": null,
+    "task_id": "dev-erdos-fd92a0fd-2026101362-0000"
+   },
+   {
+    "agree": true,
+    "incumbent_cpu_ns": 11420963,
+    "incumbent_nodes": 3,
+    "macro_nodes": 1,
+    "n": 40,
+    "native": 222,
+    "native_cpu_ns": 110504,
+    "native_error": null,
+    "reference": [
+     222,
+     1
+    ],
+    "reference_error": null,
+    "task_id": "dev-erdos-fd92a0fd-2026101362-0001"
+   },
+   {
+    "agree": true,
+    "incumbent_cpu_ns": 17167399,
+    "incumbent_nodes": 3,
+    "macro_nodes": 1,
+    "n": 40,
+    "native": 215,
+    "native_cpu_ns": 118930,
+    "native_error": null,
+    "reference": [
+     215,
+     1
+    ],
+    "reference_error": null,
+    "task_id": "dev-erdos-fd92a0fd-2026101362-0002"
+   },
+   {
+    "agree": true,
+    "incumbent_cpu_ns": 15664223,
+    "incumbent_nodes": 3,
+    "macro_nodes": 1,
+    "n": 40,
+    "native": 214,
+    "native_cpu_ns": 97407,
+    "native_error": null,
+    "reference": [
+     214,
+     1
+    ],
+    "reference_error": null,
+    "task_id": "dev-erdos-fd92a0fd-2026101362-0003"
+   }
+  ],
+  "rule": "USEFUL iff the native implementation agrees with the expansion on every comparison host and its total CPU, including the conformance run, is at most half of the expanded expression's; NOT_A_CAPABILITY_GAIN if it agrees but saves less; REJECTED if they ever differ or the expansion cannot be evaluated within the language's bounds where the native one can.",
+  "verdict": "NOT_A_CAPABILITY_GAIN"
+ },
+ "PairCodegreeFalling2": {
+  "conformance_cpu_ns": 278832720,
+  "contract_sha256": "ce5377bc1975088d4372f38a9b848bd039b8dc3a71b347da3a9bbd6c6c05e8fe",
+  "incumbent_cpu_ns": 110765125,
+  "macro_note": "the equivalent macro has the native description length and the incumbent cost",
+  "native_cpu_ns_with_conformance": 284968656,
+  "primitive": "PairCodegreeFalling2",
+  "registry": "946a4fb183a34f80b872cb322740f5607f940907c956cda79566597ef4c4ecd8",
+  "rows": [
+   {
+    "agree": true,
+    "incumbent_cpu_ns": 433023,
+    "incumbent_nodes": 89,
+    "macro_nodes": 1,
+    "n": 6,
+    "native": 16,
+    "native_cpu_ns": 105315,
+    "native_error": null,
+    "reference": 16,
+    "reference_error": null,
+    "task_id": "dev-erdos-40f4e9dd-2026101302-0000"
+   },
+   {
+    "agree": true,
+    "incumbent_cpu_ns": 443822,
+    "incumbent_nodes": 89,
+    "macro_nodes": 1,
+    "n": 6,
+    "native": 64,
+    "native_cpu_ns": 104854,
+    "native_error": null,
+    "reference": 64,
+    "reference_error": null,
+    "task_id": "dev-erdos-40f4e9dd-2026101302-0001"
+   },
+   {
+    "agree": true,
+    "incumbent_cpu_ns": 382737,
+    "incumbent_nodes": 89,
+    "macro_nodes": 1,
+    "n": 6,
+    "native": 4,
+    "native_cpu_ns": 93376,
+    "native_error": null,
+    "reference": 4,
+    "reference_error": null,
+    "task_id": "dev-erdos-40f4e9dd-2026101302-0002"
+   },
+   {
+    "agree": true,
+    "incumbent_cpu_ns": 512739,
+    "incumbent_nodes": 89,
+    "macro_nodes": 1,
+    "n": 6,
+    "native": 8,
+    "native_cpu_ns": 109725,
+    "native_error": null,
+    "reference": 8,
+    "reference_error": null,
+    "task_id": "dev-erdos-40f4e9dd-2026101302-0003"
+   },
+   {
+    "agree": false,
+    "incumbent_cpu_ns": 1255999,
+    "incumbent_nodes": 269,
+    "macro_nodes": 1,
+    "n": 10,
+    "native": 8,
+    "native_cpu_ns": 109554,
+    "native_error": null,
+    "reference": null,
+    "reference_error": "ValueError: MRDL syntax bounds",
+    "task_id": "dev-erdos-76a634c4-2026101312-0000"
+   },
+   {
+    "agree": false,
+    "incumbent_cpu_ns": 1531528,
+    "incumbent_nodes": 269,
+    "macro_nodes": 1,
+    "n": 10,
+    "native": 152,
+    "native_cpu_ns": 120393,
+    "native_error": null,
+    "reference": null,
+    "reference_error": "ValueError: MRDL syntax bounds",
+    "task_id": "dev-erdos-76a634c4-2026101312-0001"
+   },
+   {
+    "agree": false,
+    "incumbent_cpu_ns": 1311381,
+    "incumbent_nodes": 269,
+    "macro_nodes": 1,
+    "n": 10,
+    "native": 20,
+    "native_cpu_ns": 104809,
+    "native_error": null,
+    "reference": null,
+    "reference_error": "ValueError: MRDL syntax bounds",
+    "task_id": "dev-erdos-76a634c4-2026101312-0002"
+   },
+   {
+    "agree": false,
+    "incumbent_cpu_ns": 1459382,
+    "incumbent_nodes": 269,
+    "macro_nodes": 1,
+    "n": 10,
+    "native": 92,
+    "native_cpu_ns": 99569,
+    "native_error": null,
+    "reference": null,
+    "reference_error": "ValueError: MRDL syntax bounds",
+    "task_id": "dev-erdos-76a634c4-2026101312-0003"
+   },
+   {
+    "agree": false,
+    "incumbent_cpu_ns": 3108726,
+    "incumbent_nodes": 1655,
+    "macro_nodes": 1,
+    "n": 24,
+    "native": 960,
+    "native_cpu_ns": 218573,
+    "native_error": null,
+    "reference": null,
+    "reference_error": "ValueError: MRDL syntax bounds",
+    "task_id": "dev-erdos-e2553c0a-2026101322-0000"
+   },
+   {
+    "agree": false,
+    "incumbent_cpu_ns": 3137008,
+    "incumbent_nodes": 1655,
+    "macro_nodes": 1,
+    "n": 24,
+    "native": 760,
+    "native_cpu_ns": 183942,
+    "native_error": null,
+    "reference": null,
+    "reference_error": "ValueError: MRDL syntax bounds",
+    "task_id": "dev-erdos-e2553c0a-2026101322-0001"
+   },
+   {
+    "agree": false,
+    "incumbent_cpu_ns": 3160130,
+    "incumbent_nodes": 1655,
+    "macro_nodes": 1,
+    "n": 24,
+    "native": 836,
+    "native_cpu_ns": 169083,
+    "native_error": null,
+    "reference": null,
+    "reference_error": "ValueError: MRDL syntax bounds",
+    "task_id": "dev-erdos-e2553c0a-2026101322-0002"
+   },
+   {
+    "agree": false,
+    "incumbent_cpu_ns": 3758975,
+    "incumbent_nodes": 1655,
+    "macro_nodes": 1,
+    "n": 24,
+    "native": 3196,
+    "native_cpu_ns": 240620,
+    "native_error": null,
+    "reference": null,
+    "reference_error": "ValueError: MRDL syntax bounds",
+    "task_id": "dev-erdos-e2553c0a-2026101322-0003"
+   },
+   {
+    "agree": false,
+    "incumbent_cpu_ns": 8125628,
+    "incumbent_nodes": 4679,
+    "macro_nodes": 1,
+    "n": 40,
+    "native": 9028,
+    "native_cpu_ns": 320256,
+    "native_error": null,
+    "reference": null,
+    "reference_error": "ValueError: MRDL syntax bounds",
+    "task_id": "dev-erdos-fd92a0fd-2026101332-0000"
+   },
+   {
+    "agree": false,
+    "incumbent_cpu_ns": 13517585,
+    "incumbent_nodes": 4679,
+    "macro_nodes": 1,
+    "n": 40,
+    "native": 10912,
+    "native_cpu_ns": 589744,
+    "native_error": null,
+    "reference": null,
+    "reference_error": "ValueError: MRDL syntax bounds",
+    "task_id": "dev-erdos-fd92a0fd-2026101332-0001"
+   },
+   {
+    "agree": false,
+    "incumbent_cpu_ns": 7673830,
+    "incumbent_nodes": 4679,
+    "macro_nodes": 1,
+    "n": 40,
+    "native": 5908,
+    "native_cpu_ns": 363194,
+    "native_error": null,
+    "reference": null,
+    "reference_error": "ValueError: MRDL syntax bounds",
+    "task_id": "dev-erdos-fd92a0fd-2026101332-0002"
+   },
+   {
+    "agree": false,
+    "incumbent_cpu_ns": 8491920,
+    "incumbent_nodes": 4679,
+    "macro_nodes": 1,
+    "n": 40,
+    "native": 10320,
+    "native_cpu_ns": 390624,
+    "native_error": null,
+    "reference": null,
+    "reference_error": "ValueError: MRDL syntax bounds",
+    "task_id": "dev-erdos-fd92a0fd-2026101332-0003"
+   },
+   {
+    "agree": true,
+    "incumbent_cpu_ns": 839358,
+    "incumbent_nodes": 167,
+    "macro_nodes": 1,
+    "n": 8,
+    "native": 16,
+    "native_cpu_ns": 176577,
+    "native_error": null,
+    "reference": 16,
+    "reference_error": null,
+    "task_id": "dev-erdos-513b4634-2026101342-0000"
+   },
+   {
+    "agree": true,
+    "incumbent_cpu_ns": 993149,
+    "incumbent_nodes": 167,
+    "macro_nodes": 1,
+    "n": 8,
+    "native": 12,
+    "native_cpu_ns": 139303,
+    "native_error": null,
+    "reference": 12,
+    "reference_error": null,
+    "task_id": "dev-erdos-513b4634-2026101342-0001"
+   },
+   {
+    "agree": true,
+    "incumbent_cpu_ns": 832962,
+    "incumbent_nodes": 167,
+    "macro_nodes": 1,
+    "n": 8,
+    "native": 12,
+    "native_cpu_ns": 113670,
+    "native_error": null,
+    "reference": 12,
+    "reference_error": null,
+    "task_id": "dev-erdos-513b4634-2026101342-0002"
+   },
+   {
+    "agree": true,
+    "incumbent_cpu_ns": 1749116,
+    "incumbent_nodes": 167,
+    "macro_nodes": 1,
+    "n": 8,
+    "native": 12,
+    "native_cpu_ns": 142412,
+    "native_error": null,
+    "reference": 12,
+    "reference_error": null,
+    "task_id": "dev-erdos-513b4634-2026101342-0003"
+   },
+   {
+    "agree": false,
+    "incumbent_cpu_ns": 2975583,
+    "incumbent_nodes": 1139,
+    "macro_nodes": 1,
+    "n": 20,
+    "native": 616,
+    "native_cpu_ns": 172945,
+    "native_error": null,
+    "reference": null,
+    "reference_error": "ValueError: MRDL syntax bounds",
+    "task_id": "dev-erdos-4be97ffa-2026101352-0000"
+   },
+   {
+    "agree": false,
+    "incumbent_cpu_ns": 4114373,
+    "incumbent_nodes": 1139,
+    "macro_nodes": 1,
+    "n": 20,
+    "native": 672,
+    "native_cpu_ns": 249580,
+    "native_error": null,
+    "reference": null,
+    "reference_error": "ValueError: MRDL syntax bounds",
+    "task_id": "dev-erdos-4be97ffa-2026101352-0001"
+   },
+   {
+    "agree": false,
+    "incumbent_cpu_ns": 4654198,
+    "incumbent_nodes": 1139,
+    "macro_nodes": 1,
+    "n": 20,
+    "native": 700,
+    "native_cpu_ns": 260031,
+    "native_error": null,
+    "reference": null,
+    "reference_error": "ValueError: MRDL syntax bounds",
+    "task_id": "dev-erdos-4be97ffa-2026101352-0002"
+   },
+   {
+    "agree": false,
+    "incumbent_cpu_ns": 4829213,
+    "incumbent_nodes": 1139,
+    "macro_nodes": 1,
+    "n": 20,
+    "native": 2492,
+    "native_cpu_ns": 245256,
+    "native_error": null,
+    "reference": null,
+    "reference_error": "ValueError: MRDL syntax bounds",
+    "task_id": "dev-erdos-4be97ffa-2026101352-0003"
+   },
+   {
+    "agree": false,
+    "incumbent_cpu_ns": 8253773,
+    "incumbent_nodes": 4679,
+    "macro_nodes": 1,
+    "n": 40,
+    "native": 8656,
+    "native_cpu_ns": 374762,
+    "native_error": null,
+    "reference": null,
+    "reference_error": "ValueError: MRDL syntax bounds",
+    "task_id": "dev-erdos-fd92a0fd-2026101362-0000"
+   },
+   {
+    "agree": false,
+    "incumbent_cpu_ns": 7428554,
+    "incumbent_nodes": 4679,
+    "macro_nodes": 1,
+    "n": 40,
+    "native": 7284,
+    "native_cpu_ns": 317550,
+    "native_error": null,
+    "reference": null,
+    "reference_error": "ValueError: MRDL syntax bounds",
+    "task_id": "dev-erdos-fd92a0fd-2026101362-0001"
+   },
+   {
+    "agree": false,
+    "incumbent_cpu_ns": 8305092,
+    "incumbent_nodes": 4679,
+    "macro_nodes": 1,
+    "n": 40,
+    "native": 6552,
+    "native_cpu_ns": 323823,
+    "native_error": null,
+    "reference": null,
+    "reference_error": "ValueError: MRDL syntax bounds",
+    "task_id": "dev-erdos-fd92a0fd-2026101362-0002"
+   },
+   {
+    "agree": false,
+    "incumbent_cpu_ns": 7485341,
+    "incumbent_nodes": 4679,
+    "macro_nodes": 1,
+    "n": 40,
+    "native": 5480,
+    "native_cpu_ns": 296396,
+    "native_error": null,
+    "reference": null,
+    "reference_error": "ValueError: MRDL syntax bounds",
+    "task_id": "dev-erdos-fd92a0fd-2026101362-0003"
+   }
+  ],
+  "rule": "USEFUL iff the native implementation agrees with the expansion on every comparison host and its total CPU, including the conformance run, is at most half of the expanded expression's; NOT_A_CAPABILITY_GAIN if it agrees but saves less; REJECTED if they ever differ or the expansion cannot be evaluated within the language's bounds where the native one can.",
+  "verdict": "REJECTED"
+ },
+ "SumDegreeSquares": {
+  "conformance_cpu_ns": 87106897,
+  "contract_sha256": "c3d3063898ac0130ebcfcc7f86755af9db5f0cbe802d21252530108deb4be5a9",
+  "incumbent_cpu_ns": 79967632,
+  "macro_note": "the equivalent macro has the native description length and the incumbent cost",
+  "native_cpu_ns_with_conformance": 90820865,
+  "primitive": "SumDegreeSquares",
+  "registry": "946a4fb183a34f80b872cb322740f5607f940907c956cda79566597ef4c4ecd8",
+  "rows": [
+   {
+    "agree": true,
+    "incumbent_cpu_ns": 172218,
+    "incumbent_nodes": 23,
+    "macro_nodes": 1,
+    "n": 6,
+    "native": 58,
+    "native_cpu_ns": 104792,
+    "native_error": null,
+    "reference": 58,
+    "reference_error": null,
+    "task_id": "dev-erdos-40f4e9dd-2026101302-0000"
+   },
+   {
+    "agree": true,
+    "incumbent_cpu_ns": 204593,
+    "incumbent_nodes": 23,
+    "macro_nodes": 1,
+    "n": 6,
+    "native": 100,
+    "native_cpu_ns": 103737,
+    "native_error": null,
+    "reference": 100,
+    "reference_error": null,
+    "task_id": "dev-erdos-40f4e9dd-2026101302-0001"
+   },
+   {
+    "agree": true,
+    "incumbent_cpu_ns": 159649,
+    "incumbent_nodes": 23,
+    "macro_nodes": 1,
+    "n": 6,
+    "native": 36,
+    "native_cpu_ns": 132882,
+    "native_error": null,
+    "reference": 36,
+    "reference_error": null,
+    "task_id": "dev-erdos-40f4e9dd-2026101302-0002"
+   },
+   {
+    "agree": true,
+    "incumbent_cpu_ns": 158961,
+    "incumbent_nodes": 23,
+    "macro_nodes": 1,
+    "n": 6,
+    "native": 44,
+    "native_cpu_ns": 93990,
+    "native_error": null,
+    "reference": 44,
+    "reference_error": null,
+    "task_id": "dev-erdos-40f4e9dd-2026101302-0003"
+   },
+   {
+    "agree": true,
+    "incumbent_cpu_ns": 317500,
+    "incumbent_nodes": 39,
+    "macro_nodes": 1,
+    "n": 10,
+    "native": 66,
+    "native_cpu_ns": 99301,
+    "native_error": null,
+    "reference": 66,
+    "reference_error": null,
+    "task_id": "dev-erdos-76a634c4-2026101312-0000"
+   },
+   {
+    "agree": true,
+    "incumbent_cpu_ns": 339456,
+    "incumbent_nodes": 39,
+    "macro_nodes": 1,
+    "n": 10,
+    "native": 208,
+    "native_cpu_ns": 131929,
+    "native_error": null,
+    "reference": 208,
+    "reference_error": null,
+    "task_id": "dev-erdos-76a634c4-2026101312-0001"
+   },
+   {
+    "agree": true,
+    "incumbent_cpu_ns": 319462,
+    "incumbent_nodes": 39,
+    "macro_nodes": 1,
+    "n": 10,
+    "native": 110,
+    "native_cpu_ns": 102121,
+    "native_error": null,
+    "reference": 110,
+    "reference_error": null,
+    "task_id": "dev-erdos-76a634c4-2026101312-0002"
+   },
+   {
+    "agree": true,
+    "incumbent_cpu_ns": 376734,
+    "incumbent_nodes": 39,
+    "macro_nodes": 1,
+    "n": 10,
+    "native": 204,
+    "native_cpu_ns": 101727,
+    "native_error": null,
+    "reference": 204,
+    "reference_error": null,
+    "task_id": "dev-erdos-76a634c4-2026101312-0003"
+   },
+   {
+    "agree": true,
+    "incumbent_cpu_ns": 1957515,
+    "incumbent_nodes": 95,
+    "macro_nodes": 1,
+    "n": 24,
+    "native": 1228,
+    "native_cpu_ns": 128742,
+    "native_error": null,
+    "reference": 1228,
+    "reference_error": null,
+    "task_id": "dev-erdos-e2553c0a-2026101322-0000"
+   },
+   {
+    "agree": true,
+    "incumbent_cpu_ns": 1924572,
+    "incumbent_nodes": 95,
+    "macro_nodes": 1,
+    "n": 24,
+    "native": 1118,
+    "native_cpu_ns": 126779,
+    "native_error": null,
+    "reference": 1118,
+    "reference_error": null,
+    "task_id": "dev-erdos-e2553c0a-2026101322-0001"
+   },
+   {
+    "agree": true,
+    "incumbent_cpu_ns": 2028742,
+    "incumbent_nodes": 95,
+    "macro_nodes": 1,
+    "n": 24,
+    "native": 1130,
+    "native_cpu_ns": 181327,
+    "native_error": null,
+    "reference": 1130,
+    "reference_error": null,
+    "task_id": "dev-erdos-e2553c0a-2026101322-0002"
+   },
+   {
+    "agree": true,
+    "incumbent_cpu_ns": 2347955,
+    "incumbent_nodes": 95,
+    "macro_nodes": 1,
+    "n": 24,
+    "native": 2084,
+    "native_cpu_ns": 128256,
+    "native_error": null,
+    "reference": 2084,
+    "reference_error": null,
+    "task_id": "dev-erdos-e2553c0a-2026101322-0003"
+   },
+   {
+    "agree": true,
+    "incumbent_cpu_ns": 8278597,
+    "incumbent_nodes": 159,
+    "macro_nodes": 1,
+    "n": 40,
+    "native": 5812,
+    "native_cpu_ns": 159121,
+    "native_error": null,
+    "reference": 5812,
+    "reference_error": null,
+    "task_id": "dev-erdos-fd92a0fd-2026101332-0000"
+   },
+   {
+    "agree": true,
+    "incumbent_cpu_ns": 8160684,
+    "incumbent_nodes": 159,
+    "macro_nodes": 1,
+    "n": 40,
+    "native": 6530,
+    "native_cpu_ns": 160499,
+    "native_error": null,
+    "reference": 6530,
+    "reference_error": null,
+    "task_id": "dev-erdos-fd92a0fd-2026101332-0001"
+   },
+   {
+    "agree": true,
+    "incumbent_cpu_ns": 7061028,
+    "incumbent_nodes": 159,
+    "macro_nodes": 1,
+    "n": 40,
+    "native": 4882,
+    "native_cpu_ns": 151462,
+    "native_error": null,
+    "reference": 4882,
+    "reference_error": null,
+    "task_id": "dev-erdos-fd92a0fd-2026101332-0002"
+   },
+   {
+    "agree": true,
+    "incumbent_cpu_ns": 7704087,
+    "incumbent_nodes": 159,
+    "macro_nodes": 1,
+    "n": 40,
+    "native": 6058,
+    "native_cpu_ns": 207319,
+    "native_error": null,
+    "reference": 6058,
+    "reference_error": null,
+    "task_id": "dev-erdos-fd92a0fd-2026101332-0003"
+   },
+   {
+    "agree": true,
+    "incumbent_cpu_ns": 255186,
+    "incumbent_nodes": 31,
+    "macro_nodes": 1,
+    "n": 8,
+    "native": 88,
+    "native_cpu_ns": 112814,
+    "native_error": null,
+    "reference": 88,
+    "reference_error": null,
+    "task_id": "dev-erdos-513b4634-2026101342-0000"
+   },
+   {
+    "agree": true,
+    "incumbent_cpu_ns": 202522,
+    "incumbent_nodes": 31,
+    "macro_nodes": 1,
+    "n": 8,
+    "native": 70,
+    "native_cpu_ns": 101288,
+    "native_error": null,
+    "reference": 70,
+    "reference_error": null,
+    "task_id": "dev-erdos-513b4634-2026101342-0001"
+   },
+   {
+    "agree": true,
+    "incumbent_cpu_ns": 202835,
+    "incumbent_nodes": 31,
+    "macro_nodes": 1,
+    "n": 8,
+    "native": 64,
+    "native_cpu_ns": 106355,
+    "native_error": null,
+    "reference": 64,
+    "reference_error": null,
+    "task_id": "dev-erdos-513b4634-2026101342-0002"
+   },
+   {
+    "agree": true,
+    "incumbent_cpu_ns": 250948,
+    "incumbent_nodes": 31,
+    "macro_nodes": 1,
+    "n": 8,
+    "native": 80,
+    "native_cpu_ns": 98492,
+    "native_error": null,
+    "reference": 80,
+    "reference_error": null,
+    "task_id": "dev-erdos-513b4634-2026101342-0003"
+   },
+   {
+    "agree": true,
+    "incumbent_cpu_ns": 1312026,
+    "incumbent_nodes": 79,
+    "macro_nodes": 1,
+    "n": 20,
+    "native": 874,
+    "native_cpu_ns": 119703,
+    "native_error": null,
+    "reference": 874,
+    "reference_error": null,
+    "task_id": "dev-erdos-4be97ffa-2026101352-0000"
+   },
+   {
+    "agree": true,
+    "incumbent_cpu_ns": 1332442,
+    "incumbent_nodes": 79,
+    "macro_nodes": 1,
+    "n": 20,
+    "native": 932,
+    "native_cpu_ns": 111570,
+    "native_error": null,
+    "reference": 932,
+    "reference_error": null,
+    "task_id": "dev-erdos-4be97ffa-2026101352-0001"
+   },
+   {
+    "agree": true,
+    "incumbent_cpu_ns": 1322689,
+    "incumbent_nodes": 79,
+    "macro_nodes": 1,
+    "n": 20,
+    "native": 870,
+    "native_cpu_ns": 113069,
+    "native_error": null,
+    "reference": 870,
+    "reference_error": null,
+    "task_id": "dev-erdos-4be97ffa-2026101352-0002"
+   },
+   {
+    "agree": true,
+    "incumbent_cpu_ns": 1644556,
+    "incumbent_nodes": 79,
+    "macro_nodes": 1,
+    "n": 20,
+    "native": 1614,
+    "native_cpu_ns": 118318,
+    "native_error": null,
+    "reference": 1614,
+    "reference_error": null,
+    "task_id": "dev-erdos-4be97ffa-2026101352-0003"
+   },
+   {
+    "agree": true,
+    "incumbent_cpu_ns": 8374792,
+    "incumbent_nodes": 159,
+    "macro_nodes": 1,
+    "n": 40,
+    "native": 5860,
+    "native_cpu_ns": 155498,
+    "native_error": null,
+    "reference": 5860,
+    "reference_error": null,
+    "task_id": "dev-erdos-fd92a0fd-2026101362-0000"
+   },
+   {
+    "agree": true,
+    "incumbent_cpu_ns": 7607045,
+    "incumbent_nodes": 159,
+    "macro_nodes": 1,
+    "n": 40,
+    "native": 5240,
+    "native_cpu_ns": 146838,
+    "native_error": null,
+    "reference": 5240,
+    "reference_error": null,
+    "task_id": "dev-erdos-fd92a0fd-2026101362-0001"
+   },
+   {
+    "agree": true,
+    "incumbent_cpu_ns": 8092240,
+    "incumbent_nodes": 159,
+    "macro_nodes": 1,
+    "n": 40,
+    "native": 4978,
+    "native_cpu_ns": 208868,
+    "native_error": null,
+    "reference": 4978,
+    "reference_error": null,
+    "task_id": "dev-erdos-fd92a0fd-2026101362-0002"
+   },
+   {
+    "agree": true,
+    "incumbent_cpu_ns": 7858598,
+    "incumbent_nodes": 159,
+    "macro_nodes": 1,
+    "n": 40,
+    "native": 4794,
+    "native_cpu_ns": 207171,
+    "native_error": null,
+    "reference": 4794,
+    "reference_error": null,
+    "task_id": "dev-erdos-fd92a0fd-2026101362-0003"
+   }
+  ],
+  "rule": "USEFUL iff the native implementation agrees with the expansion on every comparison host and its total CPU, including the conformance run, is at most half of the expanded expression's; NOT_A_CAPABILITY_GAIN if it agrees but saves less; REJECTED if they ever differ or the expansion cannot be evaluated within the language's bounds where the native one can.",
+  "verdict": "NOT_A_CAPABILITY_GAIN"
+ },
+ "TriangleCount": {
+  "conformance_cpu_ns": 161501365,
+  "contract_sha256": "8e1a7f947517640e8101974a9a354c3216c3fe3b5e0588333336b56e9a1446af",
+  "incumbent_cpu_ns": 189530859,
+  "macro_note": "the equivalent macro has the native description length and the incumbent cost",
+  "native_cpu_ns_with_conformance": 165669050,
+  "primitive": "TriangleCount",
+  "registry": "946a4fb183a34f80b872cb322740f5607f940907c956cda79566597ef4c4ecd8",
+  "rows": [
+   {
+    "agree": true,
+    "incumbent_cpu_ns": 145872,
+    "incumbent_nodes": 3,
+    "macro_nodes": 1,
+    "n": 6,
+    "native": 3,
+    "native_cpu_ns": 86611,
+    "native_error": null,
+    "reference": [
+     3,
+     1
+    ],
+    "reference_error": null,
+    "task_id": "dev-erdos-40f4e9dd-2026101302-0000"
+   },
+   {
+    "agree": true,
+    "incumbent_cpu_ns": 114843,
+    "incumbent_nodes": 3,
+    "macro_nodes": 1,
+    "n": 6,
+    "native": 10,
+    "native_cpu_ns": 71304,
+    "native_error": null,
+    "reference": [
+     10,
+     1
+    ],
+    "reference_error": null,
+    "task_id": "dev-erdos-40f4e9dd-2026101302-0001"
+   },
+   {
+    "agree": true,
+    "incumbent_cpu_ns": 106500,
+    "incumbent_nodes": 3,
+    "macro_nodes": 1,
+    "n": 6,
+    "native": 1,
+    "native_cpu_ns": 67049,
+    "native_error": null,
+    "reference": [
+     1,
+     1
+    ],
+    "reference_error": null,
+    "task_id": "dev-erdos-40f4e9dd-2026101302-0002"
+   },
+   {
+    "agree": true,
+    "incumbent_cpu_ns": 99838,
+    "incumbent_nodes": 3,
+    "macro_nodes": 1,
+    "n": 6,
+    "native": 1,
+    "native_cpu_ns": 64737,
+    "native_error": null,
+    "reference": [
+     1,
+     1
+    ],
+    "reference_error": null,
+    "task_id": "dev-erdos-40f4e9dd-2026101302-0003"
+   },
+   {
+    "agree": true,
+    "incumbent_cpu_ns": 317817,
+    "incumbent_nodes": 3,
+    "macro_nodes": 1,
+    "n": 10,
+    "native": 1,
+    "native_cpu_ns": 70436,
+    "native_error": null,
+    "reference": [
+     1,
+     1
+    ],
+    "reference_error": null,
+    "task_id": "dev-erdos-76a634c4-2026101312-0000"
+   },
+   {
+    "agree": true,
+    "incumbent_cpu_ns": 303135,
+    "incumbent_nodes": 3,
+    "macro_nodes": 1,
+    "n": 10,
+    "native": 16,
+    "native_cpu_ns": 67174,
+    "native_error": null,
+    "reference": [
+     16,
+     1
+    ],
+    "reference_error": null,
+    "task_id": "dev-erdos-76a634c4-2026101312-0001"
+   },
+   {
+    "agree": true,
+    "incumbent_cpu_ns": 305107,
+    "incumbent_nodes": 3,
+    "macro_nodes": 1,
+    "n": 10,
+    "native": 2,
+    "native_cpu_ns": 68859,
+    "native_error": null,
+    "reference": [
+     2,
+     1
+    ],
+    "reference_error": null,
+    "task_id": "dev-erdos-76a634c4-2026101312-0002"
+   },
+   {
+    "agree": true,
+    "incumbent_cpu_ns": 332916,
+    "incumbent_nodes": 3,
+    "macro_nodes": 1,
+    "n": 10,
+    "native": 12,
+    "native_cpu_ns": 72533,
+    "native_error": null,
+    "reference": [
+     12,
+     1
+    ],
+    "reference_error": null,
+    "task_id": "dev-erdos-76a634c4-2026101312-0003"
+   },
+   {
+    "agree": true,
+    "incumbent_cpu_ns": 3451089,
+    "incumbent_nodes": 3,
+    "macro_nodes": 1,
+    "n": 24,
+    "native": 53,
+    "native_cpu_ns": 119349,
+    "native_error": null,
+    "reference": [
+     53,
+     1
+    ],
+    "reference_error": null,
+    "task_id": "dev-erdos-e2553c0a-2026101322-0000"
+   },
+   {
+    "agree": true,
+    "incumbent_cpu_ns": 3251113,
+    "incumbent_nodes": 3,
+    "macro_nodes": 1,
+    "n": 24,
+    "native": 39,
+    "native_cpu_ns": 102875,
+    "native_error": null,
+    "reference": [
+     39,
+     1
+    ],
+    "reference_error": null,
+    "task_id": "dev-erdos-e2553c0a-2026101322-0001"
+   },
+   {
+    "agree": true,
+    "incumbent_cpu_ns": 3593663,
+    "incumbent_nodes": 3,
+    "macro_nodes": 1,
+    "n": 24,
+    "native": 48,
+    "native_cpu_ns": 129954,
+    "native_error": null,
+    "reference": [
+     48,
+     1
+    ],
+    "reference_error": null,
+    "task_id": "dev-erdos-e2553c0a-2026101322-0002"
+   },
+   {
+    "agree": true,
+    "incumbent_cpu_ns": 3429846,
+    "incumbent_nodes": 3,
+    "macro_nodes": 1,
+    "n": 24,
+    "native": 115,
+    "native_cpu_ns": 104246,
+    "native_error": null,
+    "reference": [
+     115,
+     1
+    ],
+    "reference_error": null,
+    "task_id": "dev-erdos-e2553c0a-2026101322-0003"
+   },
+   {
+    "agree": true,
+    "incumbent_cpu_ns": 15817341,
+    "incumbent_nodes": 3,
+    "macro_nodes": 1,
+    "n": 40,
+    "native": 273,
+    "native_cpu_ns": 156102,
+    "native_error": null,
+    "reference": [
+     273,
+     1
+    ],
+    "reference_error": null,
+    "task_id": "dev-erdos-fd92a0fd-2026101332-0000"
+   },
+   {
+    "agree": true,
+    "incumbent_cpu_ns": 15621617,
+    "incumbent_nodes": 3,
+    "macro_nodes": 1,
+    "n": 40,
+    "native": 309,
+    "native_cpu_ns": 155381,
+    "native_error": null,
+    "reference": [
+     309,
+     1
+    ],
+    "reference_error": null,
+    "task_id": "dev-erdos-fd92a0fd-2026101332-0001"
+   },
+   {
+    "agree": true,
+    "incumbent_cpu_ns": 15013787,
+    "incumbent_nodes": 3,
+    "macro_nodes": 1,
+    "n": 40,
+    "native": 201,
+    "native_cpu_ns": 142892,
+    "native_error": null,
+    "reference": [
+     201,
+     1
+    ],
+    "reference_error": null,
+    "task_id": "dev-erdos-fd92a0fd-2026101332-0002"
+   },
+   {
+    "agree": true,
+    "incumbent_cpu_ns": 22853655,
+    "incumbent_nodes": 3,
+    "macro_nodes": 1,
+    "n": 40,
+    "native": 298,
+    "native_cpu_ns": 299522,
+    "native_error": null,
+    "reference": [
+     298,
+     1
+    ],
+    "reference_error": null,
+    "task_id": "dev-erdos-fd92a0fd-2026101332-0003"
+   },
+   {
+    "agree": true,
+    "incumbent_cpu_ns": 326620,
+    "incumbent_nodes": 3,
+    "macro_nodes": 1,
+    "n": 8,
+    "native": 3,
+    "native_cpu_ns": 133773,
+    "native_error": null,
+    "reference": [
+     3,
+     1
+    ],
+    "reference_error": null,
+    "task_id": "dev-erdos-513b4634-2026101342-0000"
+   },
+   {
+    "agree": true,
+    "incumbent_cpu_ns": 294173,
+    "incumbent_nodes": 3,
+    "macro_nodes": 1,
+    "n": 8,
+    "native": 3,
+    "native_cpu_ns": 153056,
+    "native_error": null,
+    "reference": [
+     3,
+     1
+    ],
+    "reference_error": null,
+    "task_id": "dev-erdos-513b4634-2026101342-0001"
+   },
+   {
+    "agree": true,
+    "incumbent_cpu_ns": 299220,
+    "incumbent_nodes": 3,
+    "macro_nodes": 1,
+    "n": 8,
+    "native": 3,
+    "native_cpu_ns": 119208,
+    "native_error": null,
+    "reference": [
+     3,
+     1
+    ],
+    "reference_error": null,
+    "task_id": "dev-erdos-513b4634-2026101342-0002"
+   },
+   {
+    "agree": true,
+    "incumbent_cpu_ns": 637245,
+    "incumbent_nodes": 3,
+    "macro_nodes": 1,
+    "n": 8,
+    "native": 4,
+    "native_cpu_ns": 145695,
+    "native_error": null,
+    "reference": [
+     4,
+     1
+    ],
+    "reference_error": null,
+    "task_id": "dev-erdos-513b4634-2026101342-0003"
+   },
+   {
+    "agree": true,
+    "incumbent_cpu_ns": 3278216,
+    "incumbent_nodes": 3,
+    "macro_nodes": 1,
+    "n": 20,
+    "native": 35,
+    "native_cpu_ns": 192650,
+    "native_error": null,
+    "reference": [
+     35,
+     1
+    ],
+    "reference_error": null,
+    "task_id": "dev-erdos-4be97ffa-2026101352-0000"
+   },
+   {
+    "agree": true,
+    "incumbent_cpu_ns": 3195957,
+    "incumbent_nodes": 3,
+    "macro_nodes": 1,
+    "n": 20,
+    "native": 43,
+    "native_cpu_ns": 187105,
+    "native_error": null,
+    "reference": [
+     43,
+     1
+    ],
+    "reference_error": null,
+    "task_id": "dev-erdos-4be97ffa-2026101352-0001"
+   },
+   {
+    "agree": true,
+    "incumbent_cpu_ns": 3189970,
+    "incumbent_nodes": 3,
+    "macro_nodes": 1,
+    "n": 20,
+    "native": 32,
+    "native_cpu_ns": 168527,
+    "native_error": null,
+    "reference": [
+     32,
+     1
+    ],
+    "reference_error": null,
+    "task_id": "dev-erdos-4be97ffa-2026101352-0002"
+   },
+   {
+    "agree": true,
+    "incumbent_cpu_ns": 3377951,
+    "incumbent_nodes": 3,
+    "macro_nodes": 1,
+    "n": 20,
+    "native": 112,
+    "native_cpu_ns": 167766,
+    "native_error": null,
+    "reference": [
+     112,
+     1
+    ],
+    "reference_error": null,
+    "task_id": "dev-erdos-4be97ffa-2026101352-0003"
+   },
+   {
+    "agree": true,
+    "incumbent_cpu_ns": 25381989,
+    "incumbent_nodes": 3,
+    "macro_nodes": 1,
+    "n": 40,
+    "native": 264,
+    "native_cpu_ns": 342807,
+    "native_error": null,
+    "reference": [
+     264,
+     1
+    ],
+    "reference_error": null,
+    "task_id": "dev-erdos-fd92a0fd-2026101362-0000"
+   },
+   {
+    "agree": true,
+    "incumbent_cpu_ns": 25181985,
+    "incumbent_nodes": 3,
+    "macro_nodes": 1,
+    "n": 40,
+    "native": 205,
+    "native_cpu_ns": 326480,
+    "native_error": null,
+    "reference": [
+     205,
+     1
+    ],
+    "reference_error": null,
+    "task_id": "dev-erdos-fd92a0fd-2026101362-0001"
+   },
+   {
+    "agree": true,
+    "incumbent_cpu_ns": 23222624,
+    "incumbent_nodes": 3,
+    "macro_nodes": 1,
+    "n": 40,
+    "native": 208,
+    "native_cpu_ns": 232027,
+    "native_error": null,
+    "reference": [
+     208,
+     1
+    ],
+    "reference_error": null,
+    "task_id": "dev-erdos-fd92a0fd-2026101362-0002"
+   },
+   {
+    "agree": true,
+    "incumbent_cpu_ns": 16386770,
+    "incumbent_nodes": 3,
+    "macro_nodes": 1,
+    "n": 40,
+    "native": 191,
+    "native_cpu_ns": 219567,
+    "native_error": null,
+    "reference": [
+     191,
+     1
+    ],
+    "reference_error": null,
+    "task_id": "dev-erdos-fd92a0fd-2026101362-0003"
+   }
+  ],
+  "rule": "USEFUL iff the native implementation agrees with the expansion on every comparison host and its total CPU, including the conformance run, is at most half of the expanded expression's; NOT_A_CAPABILITY_GAIN if it agrees but saves less; REJECTED if they ever differ or the expansion cannot be evaluated within the language's bounds where the native one can.",
+  "verdict": "NOT_A_CAPABILITY_GAIN"
+ }
+}
