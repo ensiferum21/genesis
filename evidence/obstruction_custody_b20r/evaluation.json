@@ -1,0 +1,275 @@
+{
+ "rows": [
+  {
+   "b19_recorded": {
+    "lower": 99,
+    "status": "BOUNDS_ONLY",
+    "upper": 100,
+    "upper_method": "LP_DUAL_EXACT"
+   },
+   "bundle_sha256": "0219cb82c32f5d801c2ec7060a4633735659407b298c215ff057d94d85df6c76",
+   "edges": 142,
+   "gap": 0,
+   "lower": 100,
+   "n": 30,
+   "p": 0.3,
+   "replay": "OPTIMALITY_CHECKED",
+   "replay_problems": [],
+   "status": "OPTIMALITY_CHECKED",
+   "task_id": "dev-erdos-b73f6828-20261021-0000",
+   "upper": 100,
+   "upper_method": "LP_DUAL_EXACT",
+   "wall_s": 54.92
+  },
+  {
+   "b19_recorded": {
+    "lower": 107,
+    "status": "OPTIMALITY_CHECKED",
+    "upper": 107,
+    "upper_method": "LP_DUAL_EXACT"
+   },
+   "bundle_sha256": "e7e6e2747329c7288a397fa41719229fccfbe97914c2d5e100868b30b015b08e",
+   "edges": 152,
+   "gap": 0,
+   "lower": 107,
+   "n": 30,
+   "p": 0.3,
+   "replay": "OPTIMALITY_CHECKED",
+   "replay_problems": [],
+   "status": "OPTIMALITY_CHECKED",
+   "task_id": "dev-erdos-b73f6828-20261021-0001",
+   "upper": 107,
+   "upper_method": "LP_DUAL_EXACT",
+   "wall_s": 12.23
+  },
+  {
+   "b19_recorded": {
+    "lower": 101,
+    "status": "OPTIMALITY_CHECKED",
+    "upper": 101,
+    "upper_method": "LP_DUAL_EXACT"
+   },
+   "bundle_sha256": "2a811bfccbda23c9ba3a47bab6c765f8bd370f163d0480b17532d571db6fbf22",
+   "edges": 136,
+   "gap": 0,
+   "lower": 101,
+   "n": 30,
+   "p": 0.3,
+   "replay": "OPTIMALITY_CHECKED",
+   "replay_problems": [],
+   "status": "OPTIMALITY_CHECKED",
+   "task_id": "dev-erdos-b73f6828-20261021-0002",
+   "upper": 101,
+   "upper_method": "LP_DUAL_EXACT",
+   "wall_s": 3.18
+  },
+  {
+   "b19_recorded": {
+    "lower": 100,
+    "status": "OPTIMALITY_CHECKED",
+    "upper": 100,
+    "upper_method": "LP_DUAL_EXACT"
+   },
+   "bundle_sha256": "62377b2b413a3be8e7831dccfc383f98de41b5d0a751532dc7afe47debbea8d5",
+   "edges": 141,
+   "gap": 0,
+   "lower": 100,
+   "n": 30,
+   "p": 0.3,
+   "replay": "OPTIMALITY_CHECKED",
+   "replay_problems": [],
+   "status": "OPTIMALITY_CHECKED",
+   "task_id": "dev-erdos-b73f6828-20261021-0003",
+   "upper": 100,
+   "upper_method": "LP_DUAL_EXACT",
+   "wall_s": 8.36
+  },
+  {
+   "b19_recorded": {
+    "lower": 120,
+    "status": "OPTIMALITY_CHECKED",
+    "upper": 120,
+    "upper_method": "LP_DUAL_EXACT"
+   },
+   "bundle_sha256": "48479e51e1521f0b3aa23ff0ce4d63cd0aaf56c5eeaf9e8c58e260a03d6bf49f",
+   "edges": 151,
+   "gap": 0,
+   "lower": 120,
+   "n": 36,
+   "p": 0.25,
+   "replay": "OPTIMALITY_CHECKED",
+   "replay_problems": [],
+   "status": "OPTIMALITY_CHECKED",
+   "task_id": "dev-erdos-7fee9578-20261021-0000",
+   "upper": 120,
+   "upper_method": "LP_DUAL_EXACT",
+   "wall_s": 2.03
+  },
+  {
+   "b19_recorded": {
+    "lower": 122,
+    "status": "OPTIMALITY_CHECKED",
+    "upper": 122,
+    "upper_method": "LP_DUAL_EXACT"
+   },
+   "bundle_sha256": "5109fb85aa099ee37294b2d781cd43b97e0b4ed12e613584a5d8bdf844d31ea6",
+   "edges": 164,
+   "gap": 0,
+   "lower": 122,
+   "n": 36,
+   "p": 0.25,
+   "replay": "OPTIMALITY_CHECKED",
+   "replay_problems": [],
+   "status": "OPTIMALITY_CHECKED",
+   "task_id": "dev-erdos-7fee9578-20261021-0001",
+   "upper": 122,
+   "upper_method": "LP_DUAL_EXACT",
+   "wall_s": 1.95
+  },
+  {
+   "b19_recorded": {
+    "lower": 117,
+    "status": "OPTIMALITY_CHECKED",
+    "upper": 117,
+    "upper_method": "LP_DUAL_EXACT"
+   },
+   "bundle_sha256": "3200db39cb049aa5a865ad7445d0a5393cb8126918ddde83a16370b8ac1e0836",
+   "edges": 160,
+   "gap": 0,
+   "lower": 117,
+   "n": 36,
+   "p": 0.25,
+   "replay": "OPTIMALITY_CHECKED",
+   "replay_problems": [],
+   "status": "OPTIMALITY_CHECKED",
+   "task_id": "dev-erdos-7fee9578-20261021-0002",
+   "upper": 117,
+   "upper_method": "LP_DUAL_EXACT",
+   "wall_s": 2.26
+  },
+  {
+   "b19_recorded": {
+    "lower": 126,
+    "status": "OPTIMALITY_CHECKED",
+    "upper": 126,
+    "upper_method": "LP_DUAL_EXACT"
+   },
+   "bundle_sha256": "7078ec1042caea648a18791c0caaf59f186893ccef3f7a17e5d26a7348d97870",
+   "edges": 168,
+   "gap": 0,
+   "lower": 126,
+   "n": 36,
+   "p": 0.25,
+   "replay": "OPTIMALITY_CHECKED",
+   "replay_problems": [],
+   "status": "OPTIMALITY_CHECKED",
+   "task_id": "dev-erdos-7fee9578-20261021-0003",
+   "upper": 126,
+   "upper_method": "LP_DUAL_EXACT",
+   "wall_s": 12.19
+  },
+  {
+   "b19_recorded": {
+    "lower": 116,
+    "status": "OPTIMALITY_CHECKED",
+    "upper": 116,
+    "upper_method": "LP_DUAL_EXACT"
+   },
+   "bundle_sha256": "495dfb3021b72f1052a07c568bc9a21c9e1e28440ee676b21f4ef54cfa83d27c",
+   "edges": 145,
+   "gap": 0,
+   "lower": 116,
+   "n": 40,
+   "p": 0.2,
+   "replay": "OPTIMALITY_CHECKED",
+   "replay_problems": [],
+   "status": "OPTIMALITY_CHECKED",
+   "task_id": "dev-erdos-3765432f-20261021-0000",
+   "upper": 116,
+   "upper_method": "LP_DUAL_EXACT",
+   "wall_s": 1.4
+  },
+  {
+   "b19_recorded": {
+    "lower": 125,
+    "status": "OPTIMALITY_CHECKED",
+    "upper": 125,
+    "upper_method": "LP_DUAL_EXACT"
+   },
+   "bundle_sha256": "807cdb4d4860a3c1e39b95c8986a535fc4fa280de04ea772e520117cdca329ca",
+   "edges": 166,
+   "gap": 0,
+   "lower": 125,
+   "n": 40,
+   "p": 0.2,
+   "replay": "OPTIMALITY_CHECKED",
+   "replay_problems": [],
+   "status": "OPTIMALITY_CHECKED",
+   "task_id": "dev-erdos-3765432f-20261021-0001",
+   "upper": 125,
+   "upper_method": "LP_DUAL_EXACT",
+   "wall_s": 11.5
+  },
+  {
+   "b19_recorded": {
+    "lower": 122,
+    "status": "OPTIMALITY_CHECKED",
+    "upper": 122,
+    "upper_method": "LP_DUAL_EXACT"
+   },
+   "bundle_sha256": "b4f50b62cb6b381213b8ce4e5c2fedeb57ab9a6e264a2607978934680c6d5719",
+   "edges": 154,
+   "gap": 0,
+   "lower": 122,
+   "n": 40,
+   "p": 0.2,
+   "replay": "OPTIMALITY_CHECKED",
+   "replay_problems": [],
+   "status": "OPTIMALITY_CHECKED",
+   "task_id": "dev-erdos-3765432f-20261021-0002",
+   "upper": 122,
+   "upper_method": "LP_DUAL_EXACT",
+   "wall_s": 2.18
+  },
+  {
+   "b19_recorded": {
+    "lower": 116,
+    "status": "OPTIMALITY_CHECKED",
+    "upper": 116,
+    "upper_method": "LP_DUAL_EXACT"
+   },
+   "bundle_sha256": "77fe606151141a81668fb77e392b6dcb84d496b25a79653887f66105e085c3b4",
+   "edges": 142,
+   "gap": 0,
+   "lower": 116,
+   "n": 40,
+   "p": 0.2,
+   "replay": "OPTIMALITY_CHECKED",
+   "replay_problems": [],
+   "status": "OPTIMALITY_CHECKED",
+   "task_id": "dev-erdos-3765432f-20261021-0003",
+   "upper": 116,
+   "upper_method": "LP_DUAL_EXACT",
+   "wall_s": 1.23
+  }
+ ],
+ "seed": 20261021,
+ "split": "DEV",
+ "summary": {
+  "b19_recorded_optimality_checked": 11,
+  "budget_wall_s": 60.0,
+  "by_method": {
+   "LP_DUAL_EXACT": 12
+  },
+  "code_identity": "74291f4713461fe4a569598fa063977badb1d856604f758fe76962950d8b3783",
+  "differences_from_b19": [
+   "dev-erdos-b73f6828-20261021-0000"
+  ],
+  "lp_checker": "genesis.verification.lp_dual@472e915353a79d0304b46a3109101be1cff3c495d159ced54050360f56e55b65",
+  "optimality_checked": 12,
+  "replayed_as_recorded": 12,
+  "scope": "DEV; joint arm only; new execution; the B19 record is unchanged history",
+  "tasks": 12,
+  "wall_s": 113.7
+ }
+}
