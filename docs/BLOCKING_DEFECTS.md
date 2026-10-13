@@ -223,3 +223,18 @@ Builder-run, DEV only, nothing independently reviewed. See `docs/checkpoints/B20
 Closed or answered in B20_R2 (DEV scope): CRPD-3 orbit-sensitivity probe NOT_DETECTED on Sheffer,
 Wolfram and Huntington (outcomes deterministic at fixed limits on a quiet host, relevant to B20-OPEN-3);
 H02's exit run executed with all runs within cap and zero custody problems.
+
+## B20_R3 to B20_R5 outcome (redesigned policy study, H08 lineage in campaigns, H05 custodian wiring)
+
+All three batches were run by the builder on DEV material and have not been independently reviewed. Details are in `docs/checkpoints/B20_R3_RECORD.md`, `B20_R4_RECORD.md` and `B20_R5_RECORD.md`.
+
+| ID | Status or new finding | Needs |
+|---|---|---|
+| B20R-OPEN-1 | ANSWERED ON DEV, NEGATIVE. The redesigned cost-aware policy was run under a new frozen study (`evidence/e3_costaware_b20r3/`). It fixed the preparation cost (15 ms against 481 ms) but came out INFERIOR_DEV against the fixed policy: 2W/3T/3L, mean −5.5. The test material is NOT_DISCRIMINATING: ORACLE − fixed averages 0.125. | superseded by B20R3-OPEN-1 and B20R3-OPEN-2 |
+| B20R3-OPEN-1 | The E3 family leaves no room for a better selection policy (`evidence/headroom_pilot_b20r3/`): ORACLE − FIXED@CAP is at most 1 of 12 targets on six systems and three target ranges. On Huntington, smallest-first already picks lemmas in the oracle's order. | a task family, chosen on DEV, where the lemmas that matter are not the smallest ones and libraries change outcomes. Only then a new frozen study. |
+| B20R3-OPEN-2 | Lemma libraries are not monotone for E. Adding one true lemma took Huntington@614 from 7/8 targets to 0/8; adding idempotence restored 8/8 (`harmful_library_diagnostic.json`). Per-lemma usefulness scores, which both learned designs use, cannot see this interaction. | a library-level selection objective (interaction-aware, for example greedy marginal gain on development targets) in the next design |
+| B20R3-OPEN-3 | Diagnostic gap: the formal checker keeps only the last 6000 characters of a module log. When linter warnings flood the log, the error lines drop out of the replay record. The B20_R3 trace was recovered by re-running with full logs. Verdicts are unaffected. | keep error lines separately, or silence linters in generated proof modules; this needs a reviewed change, because the checker's identity will change |
+| B20R-OPEN-2 / B14-OPEN-3 | REPAIRED IN B20_R4, PENDING INDEPENDENT REVIEW. Campaigns now write native lineage records, and the custodian accepts a `sealed_generation_evaluation` request only for a transition in the qualifying chain. `sealed_improver_evaluation` is still refused. The stored B20 export is unchanged and still yields no qualifying chain. | independent review; fresh panels for each transition |
+| B20R-OPEN-4 / B19-OPEN-3 | REPAIRED IN B20_R5, PENDING INDEPENDENT REVIEW. Request v4, receipt v4 and claim binding v2 were added. The custodian rebuilds descriptors from the frozen export and runs every arm in the OCI sandbox. The s13.3 acceptance list passes end to end (`tests_genesis/test_candidate_custody.py`). | independent review |
+| B20R5-OPEN-1 | Handoff s13.3 is not built: there is no sealed theorem generator and no frozen formal-research-successor candidate kind. Without them, an E2/E3 study cannot be evaluated by a custodian on private statements. | custodian-side statement generation committed before candidate access, with preregistered inclusion rules; a third candidate kind |
+| B20R5-OPEN-2 | v4 requests cover `sealed_evaluation` only. Transfer, generation and improver evaluations of non-DSL candidates are refused. | a further reviewed schema step once a non-DSL lineage exists |
