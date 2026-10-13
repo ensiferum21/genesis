@@ -1,0 +1,379 @@
+{
+ "non_valid_by_status": [],
+ "non_valid_runs": 0,
+ "overall": "DEPLOYABLE_CAPABILITY_HEADROOM",
+ "rule": {
+  "D": 10,
+  "H": 16,
+  "budget_cpu_s": 2.0,
+  "mue": 0.5,
+  "over_budget_factor": 1.25,
+  "share": 0.25
+ },
+ "schema": "genesis-b20rx3-capability-v1",
+ "settings": {
+  "C1": {
+   "K_all": 30,
+   "K_menu": 24,
+   "base": "FIXED@CAP[registry]",
+   "bootstrap90_vs_base_config": {
+    "ORACLE[all]": [
+     0.875,
+     1.75
+    ],
+    "SH@CAP[all]": [
+     0.812,
+     1.688
+    ]
+   },
+   "cap_evaluations": 60,
+   "chosen": {
+    "FIXED@CAP[baselines_first]": "cross_2",
+    "FIXED@CAP[registry]": "cross_2",
+    "ORACLE[all]": "lp_greedy+sat_25_75",
+    "ORACLE[menu]": "adjacent_3",
+    "SH@CAP[all]": "lp_greedy",
+    "SH@CAP[menu]": "low_cycle_exchange_tm"
+   },
+   "config_held_out_mean": {
+    "adjacent_2": 94.312,
+    "adjacent_3": 94.375,
+    "cross_2": 94.312,
+    "exchange_tm": 91.125,
+    "greedy+sat": 94.375,
+    "head+sat_25_75": 95.188,
+    "head+sat_50_50": 94.75,
+    "low_cycle_exchange_tm": 93.312,
+    "low_cycle_tm": 93.062,
+    "lp_greedy": 95.562,
+    "lp_greedy+sat_25_75": 95.625,
+    "lp_greedy+sat_50_50": 95.562,
+    "multistart_tm": 92.125,
+    "ordered_2": 87.5,
+    "v00_tm": 89.875,
+    "v01_tm": 87,
+    "v02_tm": 88.5,
+    "v03_tm": 78.688,
+    "v04_tm": 79.875,
+    "v05_tm": 88.5,
+    "v06_tm": 82.375,
+    "v07_tm": 88.5,
+    "v08_tm": 78.688,
+    "v09_tm": 88.312,
+    "v10_tm": 89.812,
+    "v11_tm": 79.875,
+    "v12_tm": 88.5,
+    "v13_tm": 89.875,
+    "v14_tm": 87.938,
+    "v15_tm": 88.938
+   },
+   "config_mean_cpu_s": {
+    "adjacent_2": 2.001,
+    "adjacent_3": 2.001,
+    "cross_2": 2.001,
+    "exchange_tm": 2.004,
+    "greedy+sat": 1.903,
+    "head+sat_25_75": 1.924,
+    "head+sat_50_50": 1.972,
+    "low_cycle_exchange_tm": 2.004,
+    "low_cycle_tm": 2.004,
+    "lp_greedy": 2.0,
+    "lp_greedy+sat_25_75": 1.865,
+    "lp_greedy+sat_50_50": 1.939,
+    "multistart_tm": 2.005,
+    "ordered_2": 2.001,
+    "v00_tm": 2.004,
+    "v01_tm": 2.003,
+    "v02_tm": 2.003,
+    "v03_tm": 2.003,
+    "v04_tm": 2.003,
+    "v05_tm": 2.005,
+    "v06_tm": 2.003,
+    "v07_tm": 2.004,
+    "v08_tm": 2.005,
+    "v09_tm": 2.004,
+    "v10_tm": 2.004,
+    "v11_tm": 2.005,
+    "v12_tm": 2.004,
+    "v13_tm": 2.003,
+    "v14_tm": 2.003,
+    "v15_tm": 2.004
+   },
+   "domain": "triangle_free_host_v1",
+   "family": "erdos",
+   "gap_capability": 1.25,
+   "gap_deployable": 1.25,
+   "held_out_mean": {
+    "BEST_OF[all]": 95.688,
+    "FIXED@CAP[baselines_first]": 94.312,
+    "FIXED@CAP[registry]": 94.312,
+    "ORACLE[all]": 95.625,
+    "ORACLE[menu]": 94.375,
+    "ORACLE_CV[all]": 95.562,
+    "RANDOM@CAP[all]": 94.797,
+    "RANDOM@CAP[menu]": 93.559,
+    "SH@CAP[all]": 95.562,
+    "SH@CAP[menu]": 93.312
+   },
+   "params": {
+    "n": 30,
+    "p": 0.3
+   },
+   "sh_all_rungs": [
+    {
+     "configs": 30,
+     "hosts": 1,
+     "spent": 30
+    },
+    {
+     "configs": 15,
+     "hosts": 2,
+     "spent": 45
+    }
+   ],
+   "sh_all_spent": 45,
+   "verdict": "DEPLOYABLE_CAPABILITY_HEADROOM"
+  },
+  "C2": {
+   "K_all": 30,
+   "K_menu": 24,
+   "base": "FIXED@CAP[baselines_first]",
+   "bootstrap90_vs_base_config": {
+    "ORACLE[all]": [
+     0.438,
+     1.062
+    ],
+    "SH@CAP[all]": [
+     0.438,
+     1.062
+    ]
+   },
+   "cap_evaluations": 60,
+   "chosen": {
+    "FIXED@CAP[baselines_first]": "low_cycle_exchange_tm",
+    "FIXED@CAP[registry]": "low_cycle_tm",
+    "ORACLE[all]": "lp_greedy",
+    "ORACLE[menu]": "low_cycle_exchange_tm",
+    "SH@CAP[all]": "lp_greedy",
+    "SH@CAP[menu]": "low_cycle_exchange_tm"
+   },
+   "config_held_out_mean": {
+    "adjacent_2": 121.875,
+    "adjacent_3": 121.938,
+    "cross_2": 121.875,
+    "exchange_tm": 119.812,
+    "greedy+sat": 123.125,
+    "head+sat_25_75": 123.188,
+    "head+sat_50_50": 122.938,
+    "low_cycle_exchange_tm": 122.812,
+    "low_cycle_tm": 122.75,
+    "lp_greedy": 123.562,
+    "lp_greedy+sat_25_75": 123.562,
+    "lp_greedy+sat_50_50": 123.562,
+    "multistart_tm": 120.625,
+    "ordered_2": 115.625,
+    "v00_tm": 119,
+    "v01_tm": 116.25,
+    "v02_tm": 117.688,
+    "v03_tm": 106,
+    "v04_tm": 110,
+    "v05_tm": 117.688,
+    "v06_tm": 112.125,
+    "v07_tm": 117.688,
+    "v08_tm": 106,
+    "v09_tm": 117.688,
+    "v10_tm": 119.312,
+    "v11_tm": 110,
+    "v12_tm": 117.688,
+    "v13_tm": 119,
+    "v14_tm": 117.5,
+    "v15_tm": 118
+   },
+   "config_mean_cpu_s": {
+    "adjacent_2": 2.001,
+    "adjacent_3": 2.001,
+    "cross_2": 2.001,
+    "exchange_tm": 2.01,
+    "greedy+sat": 1.627,
+    "head+sat_25_75": 1.7,
+    "head+sat_50_50": 1.849,
+    "low_cycle_exchange_tm": 2.007,
+    "low_cycle_tm": 2.008,
+    "lp_greedy": 2.0,
+    "lp_greedy+sat_25_75": 1.635,
+    "lp_greedy+sat_50_50": 1.815,
+    "multistart_tm": 2.008,
+    "ordered_2": 2.001,
+    "v00_tm": 2.008,
+    "v01_tm": 2.011,
+    "v02_tm": 2.009,
+    "v03_tm": 2.007,
+    "v04_tm": 2.009,
+    "v05_tm": 2.006,
+    "v06_tm": 2.008,
+    "v07_tm": 2.009,
+    "v08_tm": 2.009,
+    "v09_tm": 2.01,
+    "v10_tm": 2.009,
+    "v11_tm": 2.008,
+    "v12_tm": 2.007,
+    "v13_tm": 2.008,
+    "v14_tm": 2.008,
+    "v15_tm": 2.008
+   },
+   "domain": "triangle_free_host_v1",
+   "family": "erdos",
+   "gap_capability": 0.75,
+   "gap_deployable": 0.75,
+   "held_out_mean": {
+    "BEST_OF[all]": 123.562,
+    "FIXED@CAP[baselines_first]": 122.812,
+    "FIXED@CAP[registry]": 122.75,
+    "ORACLE[all]": 123.562,
+    "ORACLE[menu]": 122.812,
+    "ORACLE_CV[all]": 123.562,
+    "RANDOM@CAP[all]": 122.678,
+    "RANDOM@CAP[menu]": 122.331,
+    "SH@CAP[all]": 123.562,
+    "SH@CAP[menu]": 122.812
+   },
+   "params": {
+    "n": 40,
+    "p": 0.2
+   },
+   "sh_all_rungs": [
+    {
+     "configs": 30,
+     "hosts": 1,
+     "spent": 30
+    },
+    {
+     "configs": 15,
+     "hosts": 2,
+     "spent": 45
+    }
+   ],
+   "sh_all_spent": 45,
+   "verdict": "DEPLOYABLE_CAPABILITY_HEADROOM"
+  },
+  "C3": {
+   "K_all": 26,
+   "K_menu": 20,
+   "base": "FIXED@CAP[registry]",
+   "bootstrap90_vs_base_config": {
+    "ORACLE[all]": [
+     0.812,
+     1.438
+    ],
+    "SH@CAP[all]": [
+     0.5,
+     1.125
+    ]
+   },
+   "cap_evaluations": 50,
+   "chosen": {
+    "FIXED@CAP[baselines_first]": "low_cycle_exchange_tm",
+    "FIXED@CAP[registry]": "low_cycle_exchange_tm",
+    "ORACLE[all]": "lp_greedy+sat_25_75",
+    "ORACLE[menu]": "low_cycle_exchange_tm",
+    "SH@CAP[all]": "lp_greedy",
+    "SH@CAP[menu]": "low_cycle_exchange_tm"
+   },
+   "config_held_out_mean": {
+    "exchange_tm": 56.688,
+    "greedy+sat": 60,
+    "head+sat_25_75": 60.5,
+    "head+sat_50_50": 60.25,
+    "low_cycle_exchange_tm": 59.375,
+    "low_cycle_tm": 59.25,
+    "lp_greedy": 60.188,
+    "lp_greedy+sat_25_75": 60.5,
+    "lp_greedy+sat_50_50": 60.5,
+    "multistart_tm": 57.688,
+    "v00_tm": 59.25,
+    "v01_tm": 56.5,
+    "v02_tm": 58.875,
+    "v03_tm": 48.688,
+    "v04_tm": 49.5,
+    "v05_tm": 57.812,
+    "v06_tm": 50.25,
+    "v07_tm": 57.062,
+    "v08_tm": 58.312,
+    "v09_tm": 57.188,
+    "v10_tm": 59.125,
+    "v11_tm": 47.5,
+    "v12_tm": 57.438,
+    "v13_tm": 56,
+    "v14_tm": 56,
+    "v15_tm": 51.625
+   },
+   "config_mean_cpu_s": {
+    "exchange_tm": 2.081,
+    "greedy+sat": 1.915,
+    "head+sat_25_75": 1.873,
+    "head+sat_50_50": 1.954,
+    "low_cycle_exchange_tm": 2.096,
+    "low_cycle_tm": 2.122,
+    "lp_greedy": 2.0,
+    "lp_greedy+sat_25_75": 1.756,
+    "lp_greedy+sat_50_50": 1.888,
+    "multistart_tm": 2.075,
+    "v00_tm": 2.083,
+    "v01_tm": 2.088,
+    "v02_tm": 2.092,
+    "v03_tm": 2.077,
+    "v04_tm": 2.09,
+    "v05_tm": 2.098,
+    "v06_tm": 2.089,
+    "v07_tm": 2.097,
+    "v08_tm": 2.102,
+    "v09_tm": 2.092,
+    "v10_tm": 2.084,
+    "v11_tm": 2.104,
+    "v12_tm": 2.096,
+    "v13_tm": 2.115,
+    "v14_tm": 2.107,
+    "v15_tm": 2.089
+   },
+   "domain": "c4_host_v2",
+   "family": "erdos",
+   "gap_capability": 1.125,
+   "gap_deployable": 0.812,
+   "held_out_mean": {
+    "BEST_OF[all]": 60.562,
+    "FIXED@CAP[baselines_first]": 59.375,
+    "FIXED@CAP[registry]": 59.375,
+    "ORACLE[all]": 60.5,
+    "ORACLE[menu]": 59.375,
+    "ORACLE_CV[all]": 60.438,
+    "RANDOM@CAP[all]": 60.244,
+    "RANDOM@CAP[menu]": 59.144,
+    "SH@CAP[all]": 60.188,
+    "SH@CAP[menu]": 59.375
+   },
+   "params": {
+    "n": 30,
+    "p": 0.2
+   },
+   "sh_all_rungs": [
+    {
+     "configs": 26,
+     "hosts": 1,
+     "spent": 26
+    },
+    {
+     "configs": 13,
+     "hosts": 2,
+     "spent": 39
+    }
+   ],
+   "sh_all_spent": 39,
+   "verdict": "DEPLOYABLE_CAPABILITY_HEADROOM"
+  }
+ },
+ "verdicts": {
+  "C1": "DEPLOYABLE_CAPABILITY_HEADROOM",
+  "C2": "DEPLOYABLE_CAPABILITY_HEADROOM",
+  "C3": "DEPLOYABLE_CAPABILITY_HEADROOM"
+ }
+}
