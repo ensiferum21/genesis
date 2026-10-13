@@ -362,6 +362,15 @@ def descriptor_export_problems(request,facts):
         out.append('candidate_version does not describe the frozen descriptor and source')
     if why or not isinstance(frozen,dict):return out
     rp=frozen['resource_profile'];domain=facts['domain']
+    if request['evidence_kind'] in ('ablation','placebo'):
+        # B20_R15 (B14-OPEN-4): a causal evaluation compares the frozen candidate with ONE copy of it
+        # changed by the registered ablation or placebo of exactly one component; the kernel replays
+        # the same provenance check from the arms the receipt commits to.
+        from .kernel import replay_contracts as RC
+        if set(arms)!={'candidate','baseline'}:
+            return out+['an ablation or placebo compares the frozen candidate with one intervened copy only']
+        why,_=RC.intervention_problems(request['evidence_kind'],frozen,arms['baseline'])
+        return out+[f"the baseline is not a registered {request['evidence_kind']} of the frozen candidate: "+w for w in why]
     selection=facts.get('comparator_selection')
     if selection is not None:
         # B20_R12: the comparator is the one THIS custodian selected on its own private SELECT panel
@@ -526,7 +535,8 @@ def _load_pool(pool_path):
     return pool,tasks
 
 
-def register(private_root,request,key_path,operator_id,*,exposure_manifest,campaign_export,pool,decision_record=None):
+def register(private_root,request,key_path,operator_id,*,exposure_manifest,campaign_export,pool,decision_record=None,
+             accepted_selection_keys=()):
     """Run before outcome exposure. Signed time is an operator attestation,
     not an independent public timestamp service or proof of independence.
 
@@ -557,6 +567,16 @@ def register(private_root,request,key_path,operator_id,*,exposure_manifest,campa
         raise ValueError('campaign export does not match the request binding')
     facts=campaign_facts(export)
     facts['custodian_selections']=_selections(root)
+    selection=facts.get('comparator_selection')
+    if request['evidence_kind']=='internal_replication' and selection is not None \
+            and digest(selection) not in facts['custodian_selections']:
+        # B20_R15: an internal replicator repeats an evaluation whose comparator another custodian
+        # selected. It accepts that selection only under a public key its operator names here (the
+        # registry's custodian key); the kernel checks that the replication's arms are the original's.
+        for key in accepted_selection_keys:
+            try:verify(selection,key)
+            except Exception:continue
+            facts['custodian_selections'][digest(selection)]=selection;break
     problems=check_request_against_export(request,facts)
     if problems:raise ValueError('request is not what the campaign export shows: '+'; '.join(problems))
     manifest_path=Path(exposure_manifest)

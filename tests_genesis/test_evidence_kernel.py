@@ -62,19 +62,20 @@ class MathPromotion(Base):
     def test_declared_verdicts_without_a_replay_contract_license_nothing(self):
         # B14 red team round 2 (C2): exact/formal/causal/replication nodes are producer-written verdicts
         # until a replay contract exists, however many there are. B20_R8 added contracts for exact_check,
-        # formal_check and dev_comparison (tests_genesis/test_replay_contracts.py): a declared verdict
-        # still licenses nothing there, because its payload does not replay.
+        # formal_check and dev_comparison (tests_genesis/test_replay_contracts.py); B20_R15 made ablation,
+        # placebo and internal_replication signed evaluation kinds and added the priority_check contract
+        # (tests_genesis/test_b14_open4_contracts.py). A declared verdict still licenses nothing: its
+        # payload does not replay, or it is not an envelope signed by the kind's registry role.
         a = self.check('exact_check', [self.run])
         b = self.check('exact_check', [self.run], verifier='exact-b')
         math_claim(self.k, 'two', [a, b], claim='optimum')
         self.rejects('two', 'math', 'FINITE_CERTIFIED', 'not a replayable exact check')
         for kind, axis, level, fragment in (
                 ('formal_check', 'math', 'THEOREM_CHECKED', 'not a replayable formal check'),
-                ('ablation', 'causality', 'ABLATION_SUPPORTED', 'no replay contract for ablation'),
-                ('internal_replication', 'replication', 'INTERNAL_INDEPENDENT',
-                 'no replay contract for internal_replication'),
+                ('ablation', 'causality', 'ABLATION_SUPPORTED', 'role registry'),
+                ('internal_replication', 'replication', 'INTERNAL_INDEPENDENT', 'role registry'),
                 ('dev_comparison', 'utility', 'DEV_ONLY', 'not a replayable DEV comparison'),
-                ('priority_check', 'novelty', 'REDISCOVERY', 'no replay contract for priority_check')):
+                ('priority_check', 'novelty', 'REDISCOVERY', 'not a replayable priority check')):
             n = self.check(kind, [self.run], verdict='PASS')
             math_claim(self.k, f'declared-{kind}', [n])
             self.rejects(f'declared-{kind}', axis, level, fragment)

@@ -120,9 +120,11 @@ SPEC.update({
     '7.1': (B, 'six orthogonal axes; effective levels re-derived on every read; only kernel-replayable evidence '
                 '(re-run witness checks, replayed certificates, role-signed receipts) licenses a level',
             [K + 'evidence.py', K + 'replay_contracts.py'],
-            [G + 'test_evidence_kernel.py', G + 'test_export_revocation.py', G + 'test_replay_contracts.py'],
-            ['replay contracts for causal, replication and priority kinds (B14-OPEN-4 rest; exact, formal and DEV '
-             'contracts added in B20_R8)'], [],
+            [G + 'test_evidence_kernel.py', G + 'test_export_revocation.py', G + 'test_replay_contracts.py',
+             G + 'test_b14_open4_contracts.py'],
+            ['a Lean-package route for THEOREM_CHECKED; DEV rows bound to their execution evidence (B20R8-OPEN-1); '
+             'contracts for every level exist since B20_R15 (exact, formal, DEV in B20_R8; causal, internal '
+             'replication, priority in B20_R15)'], ['independent review of the B20_R8/R15 contracts'],
             'N/A', 'W02'),
     '7.2': (B, 'ghost semantics: no-ghost is never proof', ['src/genesis/macros.py', K + 'wording.py'],
             [G + 'test_macros_market.py::Macros', 'tests_formal/test_fol_ghosts.py'], [], [], 'N/A', 'W16'),
@@ -183,8 +185,11 @@ SPEC.update({
     '12.2': (B, 'DEV ablation/placebo controls; B19: factorial solver catalysis (removal, placebo, effort, conventional '
                  'alternative) and placebo/effort concept controls on fresh DEV tasks',
              ['src/genesis/evaluation.py', 'src/genesis/campaign.py', 'scripts/b19_discovery.py'],
-             [G + 'test_research_runtime.py', 'tests_formal/test_discovery.py::Evidence'],
-             ['a sealed catalysis study (E2)', 'causal replay contract (B14-OPEN-4)'], [], 'NOT_TESTED', 'W15'),
+             [G + 'test_research_runtime.py', 'tests_formal/test_discovery.py::Evidence',
+              G + 'test_b14_open4_contracts.py::Causal'],
+             ['a sealed catalysis study (E2)', 'registered interventions beyond the DSL program components (B20_R15 '
+              'causal contract: signed ablation/placebo receipts whose arms replay as one registered intervention)'],
+             [], 'NOT_TESTED', 'W15'),
     '12.3': (H, 'self-science loop exists on DEV; no supported causal gain', ['src/genesis/campaign.py'],
              [G + 'test_research_runtime.py'], ['prospective causal evidence'], [], 'UNESTABLISHED', 'W21'),
     '12.4': (B, 'better-improver test harness (sealed_improver_evaluation receipts, kernel rules); B20: DEV comparison of '
@@ -322,8 +327,10 @@ SPEC.update({
     '28': (B, 'provenance-bearing ingestion (pinned library verbatim; retrieved text as untrusted, screened data), exact '
               'quotes, notation resolution, Lean-checked and executable links, ambiguity records, adjudication queue, '
               'scoped novelty reports that never conclude novelty (B19)',
-           ['src/genesis/literature.py', 'scripts/b19_literature.py'], [G + 'test_literature.py'],
-           ['broader ingestion (full texts, dated library snapshots)'], ['domain expert / priority reviewer'],
+           ['src/genesis/literature.py', 'scripts/b19_literature.py', K + 'replay_contracts.py'],
+           [G + 'test_literature.py', G + 'test_b14_open4_contracts.py::Priority'],
+           ['broader ingestion (full texts, dated library snapshots); relations modulo the theory\'s laws (the B20_R15 '
+            'priority contract relates statements syntactically)'], ['domain expert / priority reviewer'],
            'NOT_TESTED', 'W17'),
     '29': (I, 'heading', [], [], [], [], 'N/A', 'W01'),
     '29.1': (N, 'software research (proposed DEFERRED_EXTENSION; needs Daniel\'s scope agreement)', [], [], ['W26'], [],

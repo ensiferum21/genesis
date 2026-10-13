@@ -691,7 +691,7 @@ class EvidenceKernel:
                         reasons.append(f'execution_receipt {d[:12]}: {why}')
                         continue
                 if kind in RC.CONTRACTED:
-                    why = self._contract_problems(d, kind, claim.get('problem'))
+                    why = self._contract_problems(d, kind, claim.get('problem'), level)
                     if why:
                         reasons.append(f'{kind} {d[:12]}: {why}')
                         continue
@@ -708,6 +708,11 @@ class EvidenceKernel:
             elif len(usable) < count:
                 reasons.append(f'needs {count} valid {kind} artifact(s), found {len(usable)}')
             used_nodes |= {d for d, _ in usable}
+        if (axis, level) == ('causality', 'PLACEBO_CONTROLLED') and not reasons:
+            comps = {k: {self._intervention_cache[d][1] for d in used_nodes
+                         if self.node(d)['kind'] == k and d in self._intervention_cache} for k in ('ablation', 'placebo')}
+            if not comps['ablation'] & comps['placebo']:
+                reasons.append('PLACEBO_CONTROLLED needs an ablation and a placebo of the same component')
         memo = {}
         effects = set()
         for d in claim['dependencies']:
@@ -751,11 +756,12 @@ class EvidenceKernel:
         cache[nid] = why
         return why
 
-    def _contract_problems(self, nid, kind, problem):
-        """B20_R8 replay contracts (kernel.replay_contracts). Replays are cached per (node, problem,
-        revocation state); a formal replay also per checker identity. Returns a reason or None."""
+    def _contract_problems(self, nid, kind, problem, level=None):
+        """B20_R8/R15 replay contracts (kernel.replay_contracts). Replays are cached per (node, problem,
+        level, revocation state); a formal replay also per checker identity. Returns a reason or None."""
         cache = self.__dict__.setdefault('_contract_replays', {})
-        ref = (nid, digest(problem) if problem is not None else None, self.revocation_head())
+        ref = (nid, digest(problem) if problem is not None else None, level if kind == 'priority_check' else None,
+               self.revocation_head())
         if ref not in cache:
             p = self.payload(nid)
             try:
@@ -763,12 +769,85 @@ class EvidenceKernel:
                     why, _ = RC.exact_problems(self.s.get, p, problem)
                 elif kind == 'formal_check':
                     why, _ = RC.formal_problems(self.s.get, p, problem, revoked_verifiers=self.revoked_verifiers())
+                elif kind == 'priority_check':
+                    why, _ = RC.priority_problems(self.s.get, p, problem, level, library=self.library())
                 else:
                     why = RC.dev_problems(p)
             except Exception as exc:                   # a replay that cannot run licenses nothing
                 why = [f'replay could not run ({type(exc).__name__})']
             cache[ref] = '; '.join(why) if why else None
         return cache[ref]
+
+    def library(self):
+        """The pinned library priority searches are replayed in (None when it is not on this machine)."""
+        if '_library' not in self.__dict__:
+            self._library = RC.pinned_library()
+        return self._library
+
+    @property
+    def _intervention_cache(self):
+        return self.__dict__.setdefault('_interventions', {})
+
+    def _stored_arms(self, p):
+        """The arms of the frozen request a v4 receipt names, if stored and equal to arms_sha256."""
+        for h in (p['arms_sha256'], p['request_hash']):
+            try:
+                obj = self.s.get(h)
+            except Exception:
+                continue
+            arms = obj if h == p['arms_sha256'] else (obj.get('arms') if isinstance(obj, dict) else None)
+            if isinstance(arms, dict) and digest(arms) == p['arms_sha256']:
+                return arms
+        return None
+
+    def _intervention_problems(self, nid, kind, p):
+        """Provenance of a signed ablation/placebo: the arms the receipt commits to (arms_sha256, stored
+        directly or inside the frozen request it names) differ from each other in exactly one registered
+        component (replay_contracts.intervention_problems)."""
+        if nid not in self._intervention_cache:
+            arms = self._stored_arms(p)
+            if not isinstance(arms, dict) or set(arms) != {'candidate', 'baseline'} \
+                    or not all(isinstance(arms[a], dict) for a in arms):
+                res = (['the arms the receipt commits to (arms_sha256) are not stored as a candidate/baseline pair'],
+                       None)
+            elif (arms['candidate'].get('descriptor_id'), arms['baseline'].get('descriptor_id')) != \
+                    R.receipt_arm_ids(p):
+                res = (['the stored arms are not the descriptors the receipt names'], None)
+            else:
+                try:
+                    res = RC.intervention_problems(kind, arms['candidate'], arms['baseline'])
+                except Exception as exc:
+                    res = ([f'intervention replay could not run ({type(exc).__name__})'], None)
+            self._intervention_cache[nid] = res
+        return self._intervention_cache[nid][0]
+
+    def _replication_problems(self, claim, p, deps, ctx, level):
+        """An internal replication repeats a supporting sealed_evaluation of this claim: the same
+        arms, analysis (up to the hypothesis family the custodian assigns per evidence kind, and the
+        decision record each registration names) and domain, another panel and operator identity,
+        registered after the original completed. Returns problems (empty: it replicates one)."""
+        originals = sorted(d for d in deps if self.node(d)['kind'] == 'sealed_evaluation')
+        why, nodes, _ = self._signed_support(claim, 'sealed_evaluation', 1, level, originals, deps, ctx)
+        if not nodes:
+            return ['no supporting sealed_evaluation of this claim to replicate'] + why[:1]
+        out = []
+        for d in sorted(nodes):
+            o = ctx.opened(d, 'sealed_evaluation')[0]
+            bad = []
+            if R.receipt_arm_ids(o) != R.receipt_arm_ids(p):
+                bad.append('other arms')
+            if R.replication_plan(o['analysis']) != R.replication_plan(p['analysis']) or o['domain'] != p['domain']:
+                bad.append('another analysis or domain')
+            if o['panel_commitment'] == p['panel_commitment']:
+                bad.append('the same panel')
+            if o['operator_id'] == p['operator_id']:
+                bad.append('the same operator identity')
+            if R._time(p['registered_at']) < R._time(o['completed_at']):
+                bad.append('registered before the original completed')
+            if not bad:
+                return []
+            out.append(f'original {d[:12]}: ' + ', '.join(bad))
+        return ['does not replicate a supporting sealed_evaluation (' + '; '.join(out) + ')']
 
     def _execution_problems(self, nid):
         """EXECUTABLE needs a reference to something that ran: a finished attempt or a stored IR program."""
@@ -956,6 +1035,11 @@ class EvidenceKernel:
             if p['outcome'] != 'SUPPORTED':
                 reasons.append(f'{kind} {d[:12]} reports {p["outcome"]}: a negative or inconclusive evaluation '
                                'is not support')
+                continue
+            extra = self._intervention_problems(d, kind, p) if kind in ('ablation', 'placebo') else \
+                self._replication_problems(claim, p, deps, ctx, level) if kind == 'internal_replication' else []
+            if extra:
+                reasons.append(f'{kind} {d[:12]}: ' + '; '.join(extra[:2]))
                 continue
             if ident in good and good[ident] != p:
                 reasons.append(f'evaluation {ident[:12]} carries conflicting signed receipts')

@@ -1023,14 +1023,16 @@
    ],
    "disposition": "IMPLEMENTED_BOUNDED_PENDING_AUDIT",
    "evidence": [],
-   "external_blockers": [],
+   "external_blockers": [
+    "independent review of the B20_R8/R15 contracts"
+   ],
    "id": "SPEC-7.1",
    "implementation": "IMPLEMENTED_BOUNDED",
    "independent_verification": "PENDING",
    "local_execution": "TESTS_EXECUTED_IN_MATRIX",
    "owner": "research implementer",
    "remaining": [
-    "replay contracts for causal, replication and priority kinds (B14-OPEN-4 rest; exact, formal and DEV contracts added in B20_R8)"
+    "a Lean-package route for THEOREM_CHECKED; DEV rows bound to their execution evidence (B20R8-OPEN-1); contracts for every level exist since B20_R15 (exact, formal, DEV in B20_R8; causal, internal replication, priority in B20_R15)"
    ],
    "scientific_efficacy": "N/A",
    "scope": "six orthogonal axes; effective levels re-derived on every read; only kernel-replayable evidence (re-run witness checks, replayed certificates, role-signed receipts) licenses a level",
@@ -1038,7 +1040,8 @@
    "tests": [
     "tests_genesis/test_evidence_kernel.py",
     "tests_genesis/test_export_revocation.py",
-    "tests_genesis/test_replay_contracts.py"
+    "tests_genesis/test_replay_contracts.py",
+    "tests_genesis/test_b14_open4_contracts.py"
    ],
    "title": "Orthogonal evidence axes",
    "workstream": "W02"
@@ -1635,14 +1638,15 @@
    "owner": "research implementer",
    "remaining": [
     "a sealed catalysis study (E2)",
-    "causal replay contract (B14-OPEN-4)"
+    "registered interventions beyond the DSL program components (B20_R15 causal contract: signed ablation/placebo receipts whose arms replay as one registered intervention)"
    ],
    "scientific_efficacy": "NOT_TESTED",
    "scope": "DEV ablation/placebo controls; B19: factorial solver catalysis (removal, placebo, effort, conventional alternative) and placebo/effort concept controls on fresh DEV tasks",
    "source": "spec \u00a712.2 (p. 23)",
    "tests": [
     "tests_genesis/test_research_runtime.py",
-    "tests_formal/test_discovery.py::Evidence"
+    "tests_formal/test_discovery.py::Evidence",
+    "tests_genesis/test_b14_open4_contracts.py::Causal"
    ],
    "title": "Intervention hierarchy",
    "workstream": "W15"
@@ -3105,7 +3109,8 @@
    },
    "code": [
     "src/genesis/literature.py",
-    "scripts/b19_literature.py"
+    "scripts/b19_literature.py",
+    "src/genesis/kernel/replay_contracts.py"
    ],
    "disposition": "IMPLEMENTED_BOUNDED_PENDING_AUDIT",
    "evidence": [],
@@ -3118,13 +3123,14 @@
    "local_execution": "TESTS_EXECUTED_IN_MATRIX",
    "owner": "research implementer",
    "remaining": [
-    "broader ingestion (full texts, dated library snapshots)"
+    "broader ingestion (full texts, dated library snapshots); relations modulo the theory's laws (the B20_R15 priority contract relates statements syntactically)"
    ],
    "scientific_efficacy": "NOT_TESTED",
    "scope": "provenance-bearing ingestion (pinned library verbatim; retrieved text as untrusted, screened data), exact quotes, notation resolution, Lean-checked and executable links, ambiguity records, adjudication queue, scoped novelty reports that never conclude novelty (B19)",
    "source": "spec \u00a728 (p. 35)",
    "tests": [
-    "tests_genesis/test_literature.py"
+    "tests_genesis/test_literature.py",
+    "tests_genesis/test_b14_open4_contracts.py::Priority"
    ],
    "title": "Scientific literature and external knowledge compiler",
    "workstream": "W17"
