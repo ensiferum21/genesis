@@ -62,7 +62,7 @@
      - decompositions with verified witness composition.
 2. **Registered interventions for more candidate kinds** (causal levels), and paired research lineages once a GV4 domain has headroom. (The Lean-package route for THEOREM_CHECKED was added in B20_R20; B20R8-OPEN-1 was repaired in B20_R18.)
 3. **H08, the rest:** retention and negative-transfer measurement under a frozen protocol; paired research lineages for `sealed_improver_evaluation`.
-4. **H11:** an independent reviewer works through `docs/checkpoints/B20_R20_REVIEW_BRIEF.md`; operations documentation.
+4. **H11:** an independent reviewer works through `docs/checkpoints/B20_R20_REVIEW_BRIEF.md`; the operations runbook is `docs/OPERATIONS.md`.
 
 ## Needs external resources
 
