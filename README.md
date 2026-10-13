@@ -7,12 +7,13 @@ Kept by the builder on 13 Oct 2026 so that nothing depends on one workspace. Thi
 | File | Commit | What it is |
 |---|---|---|
 | `GENESIS_COMPLETION_CHECKPOINT_B20.zip` | `97fb233` | The B20 checkpoint you supplied: the starting point of the continuation |
+| `GENESIS_COMPLETION_CHECKPOINT_B20_R11.zip` | `36954d6` | **The canonical line B20_R1–R11** (branch `continuation-b20-repairs`): repairs, CRPD, policy study, lineage, candidate custody, statement panels, replay contracts, curation pilot, E1 readiness |
 | `GENESIS_COMPLETION_CHECKPOINT_B20_RX1.zip` | `3456797` | Recovery branch: CRPD-2b, W22, W23, H06 search failures, B20_R13 |
 | `GENESIS_COMPLETION_CHECKPOINT_B20_RX2.zip` | `0db2e6c` | Recovery branch: B20_R14, RX3/RX3b capability pilots, RX4 E1 calibration, RX5 proposal pilot |
 
 Each zip contains the full source tree, a git bundle of the whole history, the release test-matrix report, and a SHA-256 manifest of every member.
 
-**Not in this archive: `GENESIS_COMPLETION_CHECKPOINT_B20_R11.zip`** (SHA-256 `00aa4c70bf396606fc67bfd2afa2d8bd5f8582ad24f909746e54e4aa6da4cab7`). It is the only copy of the canonical history B20_R1–R11. It was sent to you in the conversation on 13 Oct; download it from there and add it here.
+`GENESIS_COMPLETION_CHECKPOINT_B20_R11.zip` (SHA-256 `00aa4c70…cab7`) was re-attached by the user on 13 Oct 2026 and restore-verified: all 5,336 manifest entries match.
 
 ## Patches (`patches/`)
 
@@ -38,6 +39,7 @@ Each zip contains the full source tree, a git bundle of the whole history, the r
 
 | Ref | What it is |
 |---|---|
+| `continuation-b20-repairs` | The canonical line, up to B20_R11 (`36954d6`) |
 | `recovery-b20r1-partial` | The continuation built in this workspace: B20 + R1 repairs + CRPD + the recovery-branch work |
 | `continuation-b14` | B20 (`97fb233`) |
 | `master`, `completion-p0-p2`, `b21-wip` | Branches from the B20 history bundle |
