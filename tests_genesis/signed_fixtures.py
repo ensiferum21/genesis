@@ -137,7 +137,8 @@ def chain_requests(fx, claim_id, n, *, versions=None, seed=0, index_order=None):
 
 
 def campaign_export(directory, *, campaign_id='a' * 64, source_hash='c' * 64, domain='c4_host_v2', hosts=(),
-                    name='export.zip', candidate_program=None, baseline_name='multistart'):
+                    name='export.zip', candidate_program=None, baseline_name='multistart', descriptor=None,
+                    descriptor_rewrites=()):
     """A minimal but real frozen campaign export: hash-chained store with campaign identity, source,
     one configuration, a frozen candidate (latest_program + candidate_version document), the
     strongest-baseline record, and optional research-visible hosts. Returns (path, frozen) where
@@ -156,6 +157,12 @@ def campaign_export(directory, *, campaign_id='a' * 64, source_hash='c' * 64, do
             s.put({'kind': 'solver', 'task': t.model_dump(mode='json')})
         s.set_state('latest_program', program)
         s.set_state('summary', {'generations': [{'baseline': baseline_name}], 'retained_dev_capabilities': []})
+        if descriptor is not None:
+            # B20_R5: a frozen executable candidate (write-once state + candidate_version document).
+            version = {'descriptor': descriptor, 'source': source_hash, 'fixture': name}
+            for earlier in descriptor_rewrites:      # fixture for a rewritten history
+                s.set_state('frozen_candidate_descriptor', earlier)
+            s.set_state('frozen_candidate_descriptor', descriptor)
         s.save('candidate_version', digest(version), version)
         s.set_state('phase', 'CANDIDATE_FROZEN')
     dest = Path(directory) / name

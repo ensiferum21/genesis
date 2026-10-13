@@ -119,6 +119,78 @@ def generation_request_bundle(campaign,index,task_count=300,*,claim_id=None,stat
     return path
 
 
+def freeze_candidate_descriptor(campaign,descriptor,*,origin):
+    """Freeze an executable-candidate descriptor (genesis.candidates) as this campaign's candidate
+    (B20_R5, H05). Write-once: a different descriptor later is refused, and a rewrite in the event
+    history makes the custodian refuse every v4 request of the campaign. `origin` states where the
+    candidate came from (it is recorded, not trusted)."""
+    from . import candidates as C
+    campaign._check_frozen_environment()
+    s=campaign.store
+    if s.state('phase')!='CANDIDATE_FROZEN':raise ValueError('completed campaign required')
+    problems=C.descriptor_problems(descriptor,domain=campaign.config.domain)
+    if problems:raise ValueError('candidate descriptor: '+', '.join(problems))
+    if not isinstance(origin,str) or not origin.strip():raise ValueError('origin required')
+    current=s.state('frozen_candidate_descriptor')
+    if current is not None and current!=descriptor:raise FileExistsError('a different candidate descriptor is already frozen')
+    version={'descriptor':descriptor,'source':s.state('source_hash'),
+             'environment':__import__('genesis.campaign',fromlist=['environment']).environment(),
+             'config':campaign.config.model_dump(mode='json'),'origin':origin}
+    s.save('candidate_version',digest(version),version)
+    if current is None:s.set_state('frozen_candidate_descriptor',descriptor)
+    return digest(version)
+
+
+def descriptor_request_bundle(campaign,task_count,*,analysis,claim_id=None,statement=None,scope=None,
+                              extra_baselines=()):
+    """Freeze a v4 evaluation request for the campaign's frozen candidate descriptor: candidate arm =
+    that descriptor; baseline arm = the campaign's strongest conventional baseline as a DSL descriptor
+    under the same resource profile (equal resource accounting); `analysis` must be a v2 plan."""
+    from . import candidates as C
+    from .common import bytes_hash
+    from .custodian import validate_request
+    campaign._check_frozen_environment()
+    s=campaign.store
+    desc=s.state('frozen_candidate_descriptor')
+    if desc is None or s.state('phase')!='CANDIDATE_FROZEN':raise ValueError('a frozen candidate descriptor is required')
+    version=next((v for _,h in s.db.execute("SELECT id,object_hash FROM entities WHERE kind='candidate_version'")
+                  for v in [s.get(h)] if v.get('descriptor')==desc),None)
+    if version is None:raise ValueError('the frozen descriptor has no candidate_version document')
+    domain=campaign.config.domain;rp=desc['resource_profile']
+    strongest_name=s.state('summary')['generations'][-1]['baseline']
+    def dsl(name):
+        return C.build_descriptor('dsl-program-v1',domain,{'program':baseline_programs()[name].model_dump(mode='json')},**rp)
+    arms={'candidate':desc,'baseline':dsl(strongest_name),**{n:dsl(n) for n in extra_baselines}}
+    export=campaign.root/'exports/campaign_export.zip'
+    if export.exists():
+        with zipfile.ZipFile(export) as z:
+            if not any(n=='objects/sha256/'+s.put(version) for n in z.namelist()):export.unlink()
+    if not export.exists():export_replication(campaign.root,export,store=s)
+    cv=digest(version)
+    statement=statement or (f'frozen candidate {cv[:12]} ({desc["kind"]}) has a higher paired edge count than the '
+                            f'frozen {strongest_name} baseline on the sealed {domain} panel')
+    scope=scope or f'{domain} hosts in one sealed panel of {task_count} tasks'
+    request={'schema':'genesis-evaluation-request-v4','campaign_id':s.state('campaign_id'),
+        'claim_id':claim_id or f'utility:{cv[:16]}','evidence_kind':'sealed_evaluation',
+        'statement_hash':digest(statement),'scope':scope,'generation_transition':None,'transfer_source_domain':None,
+        'campaign_export_sha256':bytes_hash(export.read_bytes()),'candidate_version':cv,
+        'source_hash':s.state('source_hash'),'arms':arms,'seed':campaign.config.seed,'task_count':task_count,
+        'domain':domain,'analysis':analysis,'exposed_graph_fingerprints':s.state('exposure_fingerprints') or [],
+        'expected_evaluator_hash':s.state('source_hash')}
+    validate_request(request)
+    rid=digest(request)
+    if s.state('frozen_descriptor_request_hash') not in (None,rid):
+        raise FileExistsError('a different descriptor request is already frozen')
+    s.save('frozen_request',rid,request)
+    s.save('frozen_claim_statement',rid,{'claim_id':request['claim_id'],'statement':statement,'scope':scope})
+    s.set_state('frozen_descriptor_request_hash',rid)
+    path=campaign.root/'exports/descriptor_evaluation_request.json'
+    if path.exists() and path.read_bytes()!=canonical(request):raise FileExistsError('request already exported with different scope')
+    from .common import atomic_write
+    if not path.exists():atomic_write(path,canonical(request))
+    return path
+
+
 def export_replication(root,destination,store=None):
     root=Path(root);destination=Path(destination)
     if destination.exists():raise FileExistsError(destination)

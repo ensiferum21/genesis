@@ -17,15 +17,23 @@ Kinds (closed; nothing else is accepted):
                            package by ``invention.soundness``). Every C4 decoder is
                            REJECTED there, so C4 tasks are refused for this kind.
 
-Trust level. Like the DSL runner this is NOT an arbitrary-code sandbox: no candidate source,
-module name, path, command or pickle is ever accepted. Only reviewed in-repository code runs,
-with parameters that are data. The child has rlimits (CPU, address space, no files, no
-processes), a minimal environment, and the parent meters and kills it through
-``learning.budget.run_bounded``. Arbitrary generated code still needs the container sandbox.
+Trust level. No candidate source, module name, path, command or pickle is ever accepted:
+only reviewed in-repository code runs, with parameters that are data. Two isolation levels:
 
-Status: engineering only. ``custodian.UNSUPPORTED_KINDS`` and request validation are
-unchanged; the signed request/receipt schemas do not yet carry a candidate descriptor (a
-reviewed schema extension is required, handoff s12.1).
+  isolation='runc'     (required by the custodian, B20_R5) the reviewed child runs in the OCI
+                       sandbox (``genesis.sandbox``): no network, read-only root, uid 65534,
+                       seccomp, cgroup CPU/memory/pids limits; the reviewed source tree is mounted
+                       read-only at /opt/genesis-src and the only input file is the candidate
+                       view. The custodian's private root, panels, keys and references are not
+                       mounted. Both arms of a v4 evaluation, DSL included, run this way, so they
+                       are metered by the same cgroup accounting.
+  isolation='process'  (DEV) a child process with rlimits, metered by
+                       ``learning.budget.run_bounded``; for the DSL kind, the existing
+                       ``execution.execute`` path, unchanged.
+
+Status (B20_R5): wired into the custodian through evaluation request v4 and scientific
+receipt v4 (``kernel.receipts``); the custodian rebuilds descriptors from the campaign's
+frozen export (``custodian.check_request_against_export``).
 """
 import hashlib
 import json
@@ -39,6 +47,9 @@ KINDS = ('dsl-program-v1', 'represent-and-repair-v1')
 PACKAGE = Path(__file__).resolve().parents[2] / 'evidence' / 'invention_b18' / 'representations' / 'package.json'
 MAX_OUTPUT = 1 << 20
 FIELDS = {'schema', 'kind', 'domain', 'parameters', 'implementation', 'resource_profile', 'descriptor_id'}
+PROFILE = {'cpu_seconds', 'memory_mib', 'wall_seconds', 'queries'}
+SOURCE_MOUNT = '/opt/genesis-src'
+ISOLATIONS = ('runc', 'process')
 
 
 class CandidateError(ValueError):
@@ -93,16 +104,39 @@ def representation_mode(rep_id, domain):
         'REJECTED' if rec['established'] == 'REJECTED' else rec['established'] + '_NOT_LIFTING')
 
 
-def build_descriptor(kind, domain, parameters, *, cpu_seconds, memory_mib=2048, wall_seconds=None):
-    """The descriptor a trusted party builds from frozen data (never from request facts)."""
+def _check_profile(rp):
+    if not isinstance(rp, dict) or set(rp) != PROFILE:
+        raise CandidateError('MALFORMED_RESOURCE_PROFILE', f'expected {sorted(PROFILE)}')
+    if type(rp['cpu_seconds']) not in (int, float) or not 0 < rp['cpu_seconds'] <= 60 \
+            or type(rp['memory_mib']) is not int or not 256 <= rp['memory_mib'] <= 8192 \
+            or type(rp['wall_seconds']) not in (int, float) or not 0 < rp['wall_seconds'] <= 600 \
+            or type(rp['queries']) is not int or not 1 <= rp['queries'] <= 100000:
+        raise CandidateError('MALFORMED_RESOURCE_PROFILE')
+
+
+def build_descriptor(kind, domain, parameters, *, cpu_seconds, memory_mib=2048, wall_seconds=None, queries=60):
+    """The descriptor a trusted party builds from frozen data (never from request facts).
+
+    ``queries`` caps the DSL interpreter's oracle queries (the represent-and-repair kind has no
+    query notion; it is bounded by CPU). Arms of one evaluation must share the whole profile."""
     if kind not in KINDS:
         raise CandidateError('UNKNOWN_KIND', str(kind))
     _check_parameters(kind, domain, parameters)
+    rp = {'cpu_seconds': cpu_seconds, 'memory_mib': memory_mib,
+          'wall_seconds': wall_seconds or max(10, 4 * cpu_seconds), 'queries': queries}
+    _check_profile(rp)
     body = {'schema': SCHEMA, 'kind': kind, 'domain': domain, 'parameters': json.loads(canonical(parameters)),
-            'implementation': implementation_identity(kind),
-            'resource_profile': {'cpu_seconds': cpu_seconds, 'memory_mib': memory_mib,
-                                 'wall_seconds': wall_seconds or max(10, 4 * cpu_seconds)}}
+            'implementation': implementation_identity(kind), 'resource_profile': rp}
     return dict(body, descriptor_id=digest(body))
+
+
+def rebuild(desc):
+    """The descriptor rebuilt from its data fields by this (reviewed) code; raises CandidateError."""
+    if not isinstance(desc, dict) or set(desc) != FIELDS or desc.get('schema') != SCHEMA:
+        raise CandidateError('MALFORMED_DESCRIPTOR')
+    rp = desc['resource_profile']
+    _check_profile(rp)
+    return build_descriptor(desc['kind'], desc['domain'], desc['parameters'], **rp)
 
 
 def descriptor_problems(desc, *, expected_id=None, domain=None):
@@ -126,6 +160,10 @@ def descriptor_problems(desc, *, expected_id=None, domain=None):
         out.append(exc.code)
     except Exception:
         out.append('MALFORMED_PARAMETERS')
+    try:
+        _check_profile(desc['resource_profile'])
+    except CandidateError as exc:
+        out.append(exc.code)
     return out
 
 
@@ -134,7 +172,40 @@ def child_request(task, desc, seed):
     from .domains import adapter
     view = adapter(task.domain).candidate_view(task)
     return {'view': view.model_dump(mode='json'), 'kind': desc['kind'], 'parameters': desc['parameters'],
-            'cpu_seconds': desc['resource_profile']['cpu_seconds'], 'seed': seed}
+            'cpu_seconds': desc['resource_profile']['cpu_seconds'], 'queries': desc['resource_profile']['queries'],
+            'seed': seed}
+
+
+def sandbox_policy(rp):
+    """The OCI sandbox policy for one arm with resource profile ``rp`` (same for every arm)."""
+    import math
+    from .sandbox import SandboxPolicy
+    return SandboxPolicy(wall_seconds=rp['wall_seconds'], cpu_seconds=int(math.ceil(rp['cpu_seconds'])) + 1,
+                         memory_mib=rp['memory_mib'], address_space_mib=rp['memory_mib'], pids=16,
+                         output_bytes=MAX_OUTPUT + 1, work_mib=1, tmp_mib=16, open_files=128, max_file_mib=1)
+
+
+def sandbox_mounts():
+    """Read-only mounts of the reviewed source tree (nothing else of the host is visible)."""
+    return {SOURCE_MOUNT: str(Path(__file__).resolve().parents[1])}
+
+
+CHILD_ARGV = ('-s', '-B', '-m', 'genesis.candidates', '--trusted-candidate-child', '/work/src/request.json')
+SANDBOX_STATUS = {'TIMEOUT': 'TIMEOUT', 'CPU_LIMIT': 'CPU_LIMIT', 'OOM': 'MEMORY_LIMIT', 'OUTPUT_LIMIT': 'OUTPUT_LIMIT',
+                  'EXIT_NONZERO': 'EXECUTION_ERROR'}
+
+
+def _run_sandboxed(req, rp):
+    from . import sandbox as S
+    r = S.run({'request.json': canonical(req)}, [S.PYTHON, *CHILD_ARGV], sandbox_policy(rp),
+              ro_mounts=sandbox_mounts(), env={'PYTHONPATH': SOURCE_MOUNT, 'PYTHONHASHSEED': '0'})
+    meter = {'cpu_ns': r.get('cpu_ns'), 'wall_ns': r.get('wall_ns'), 'peak_memory_bytes': r.get('peak_memory_bytes'),
+             'meter': 'cgroup', 'isolation': r.get('sandbox'), 'policy_sha256': r.get('policy_sha256'),
+             'config_sha256': r.get('config_sha256'), 'sandbox_status': r['status']}
+    if r['status'] == 'SUCCESS':
+        return meter, None, r['stdout']
+    status = SANDBOX_STATUS.get(r['status'], 'HARNESS_ERROR')
+    return meter, dict(status=status, stderr_tail=(r.get('stderr') or r.get('reason') or '')[-500:]), None
 
 
 def decode_output(raw, n_edges):
@@ -158,11 +229,13 @@ def decode_output(raw, n_edges):
     return edges, val
 
 
-def run(task, desc, *, seed, expected_id=None):
+def run(task, desc, *, seed, expected_id=None, isolation='process'):
     """Execute a frozen candidate on one task. Returns a receipt; the claimed value is never
     trusted: the domain checker recomputes it from the witness."""
     from .domains import Unsupported, adapter
     from .learning.budget import NS, run_bounded
+    if isolation not in ISOLATIONS:
+        raise ValueError(f'isolation must be one of {ISOLATIONS}')
     problems = descriptor_problems(desc, expected_id=expected_id, domain=task.domain)
     base = {'descriptor_id': desc.get('descriptor_id') if isinstance(desc, dict) else None,
             'execution_mode': 'TRUSTED_REGISTERED_RUNNER', 'arbitrary_code_sandbox': False}
@@ -172,12 +245,20 @@ def run(task, desc, *, seed, expected_id=None):
     gate = domain if isinstance(domain, Unsupported) else domain.supports(task, 'execute')
     if gate:
         return dict(base, status='UNSUPPORTED', reason=gate.reason)
+    if isolation == 'runc':
+        req = child_request(task, desc, seed)
+        meter, failure, stdout = _run_sandboxed(req, desc['resource_profile'])
+        receipt = dict(base, **meter, candidate_view_sha256=digest(req['view']), runner_sha256=_sha_file(__file__),
+                       limits=desc['resource_profile'])
+        if failure:
+            return dict(receipt, **failure)
+        return _decode_and_check(receipt, stdout, task, domain)
     if desc['kind'] == 'dsl-program-v1':
         from .execution import execute
         from .models import Limits, SolverProgram
         rp = desc['resource_profile']
         limits = Limits(cpu_seconds=max(1, int(rp['cpu_seconds'])), memory_mib=rp['memory_mib'],
-                        wall_seconds=int(rp['wall_seconds']))
+                        wall_seconds=int(rp['wall_seconds']), queries=rp['queries'])
         return dict(execute(task, SolverProgram.model_validate_json(canonical(desc['parameters']['program'])),
                             limits, seed), **base)
     req = child_request(task, desc, seed)
@@ -207,8 +288,12 @@ def run(task, desc, *, seed, expected_id=None):
         status = {'CPU_BUDGET_KILLED': 'CPU_LIMIT', 'WALL_KILLED': 'TIMEOUT', 'RLIMIT_KILLED': 'CPU_LIMIT'}.get(
             r['termination'], 'EXECUTION_ERROR')
         return dict(receipt, status=status, stderr_tail=r['stderr'][-500:])
+    return _decode_and_check(dict(receipt, isolation='PROCESS_RLIMITS'), r['stdout'], task, domain)
+
+
+def _decode_and_check(receipt, stdout, task, domain):
     try:
-        edges, claimed = decode_output(r['stdout'], len(task.edges))
+        edges, claimed = decode_output(stdout, len(task.edges))
     except CandidateError as exc:
         return dict(receipt, status='CHECKER_ERROR', reason=exc.code)
     checked = domain.validate(task, edges)
@@ -221,13 +306,20 @@ def run(task, desc, *, seed, expected_id=None):
 def _child(path):
     import resource
     req = json.loads(Path(path).read_bytes())
-    if set(req) != {'view', 'kind', 'parameters', 'cpu_seconds', 'seed'} or req['kind'] != 'represent-and-repair-v1':
+    if set(req) != {'view', 'kind', 'parameters', 'cpu_seconds', 'queries', 'seed'} or req['kind'] not in KINDS:
         raise SystemExit(2)
     from .models import CandidateGraph
     view = CandidateGraph.model_validate_json(canonical(req['view']))      # no task id, family, split or reference
     resource.setrlimit(resource.RLIMIT_FSIZE, (0, 0))
     if hasattr(resource, 'RLIMIT_NPROC'):
         resource.setrlimit(resource.RLIMIT_NPROC, (0, 0))
+    if req['kind'] == 'dsl-program-v1':
+        from .dsl import solve
+        from .models import SolverProgram
+        out = solve(view, SolverProgram.model_validate_json(canonical(req['parameters']['program'])),
+                    req['queries'], req['seed'])
+        sys.stdout.write(json.dumps({'selected': [list(e) for e in out['selected']], 'value': out['value']}))
+        return
     from .invention import representations as R
     rep = next(r for r in R.proposals() if r['id'] == req['parameters']['representation'])
     motif_ok = {'triangle_free_host_v1': R.tf_add_ok}[view.domain]
@@ -243,5 +335,6 @@ if __name__ == '__main__':
     _child(sys.argv[2])
 
 
-__all__ = ['SCHEMA', 'KINDS', 'CandidateError', 'build_descriptor', 'descriptor_problems', 'child_request',
-           'decode_output', 'run', 'implementation_identity', 'representation_mode']
+__all__ = ['SCHEMA', 'KINDS', 'CandidateError', 'build_descriptor', 'rebuild', 'descriptor_problems', 'child_request',
+           'decode_output', 'run', 'implementation_identity', 'representation_mode', 'sandbox_policy',
+           'sandbox_mounts', 'ISOLATIONS']

@@ -154,7 +154,7 @@ def receipt_log_problems(log_entries, request, receipt_envelope):
     if state['declared_sizes'] and len(state['registered']) > state['declared_sizes'][0]:
         out.append('more hypotheses were registered in the family than its declared size')
     p = receipt_envelope['payload']
-    if p.get('schema') == R.SCIENTIFIC_RECEIPT_V3:
+    if p.get('schema') in R.ANALYSIS_RECEIPTS:
         used = p['analysis_result'].get('family_p_values')
         want = [round(float(x), 10) for x in published_p_values_before(log_entries, fam, rid)]
         if used != want:

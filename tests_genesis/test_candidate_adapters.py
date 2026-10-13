@@ -114,7 +114,7 @@ class Refusals(unittest.TestCase):
     def test_no_reference_fields_reach_the_child(self):
         t, d = task(), rr()
         req = CA.child_request(t, d, 3)
-        self.assertEqual(set(req), {'view', 'kind', 'parameters', 'cpu_seconds', 'seed'})
+        self.assertEqual(set(req), {'view', 'kind', 'parameters', 'cpu_seconds', 'queries', 'seed'})   # queries: a resource cap
         self.assertEqual(set(req['view']), {'domain', 'n', 'edges'})
         raw = canonical(req).decode()
         for secret in (t.task_id, t.family, t.split):
@@ -128,11 +128,15 @@ class Refusals(unittest.TestCase):
         self.assertNotIn('result', r)
 
 
-class CustodianUnchanged(unittest.TestCase):
-    def test_custodian_still_validates_only_dsl_programs(self):
+class CustodianDispatch(unittest.TestCase):
+    def test_v3_validates_dsl_programs_and_v4_rebuilds_descriptors(self):
+        # B20_R5: v3 requests keep the DSL path; v4 requests name descriptors that the custodian
+        # rebuilds (tests_genesis/test_candidate_custody.py exercises the whole route).
         import inspect
         from genesis import custodian
         self.assertIn('SolverProgram.model_validate_json', inspect.getsource(custodian.validate_request))
+        self.assertIn('descriptor_problems', inspect.getsource(custodian._validate_v4))
+        self.assertIn('descriptor_problems', inspect.getsource(custodian.descriptor_export_problems))
 
 
 if __name__ == '__main__':

@@ -37,9 +37,18 @@ from .signing import verify
 SIGNED_EVIDENCE = 'genesis-signed-evidence-v1'      # evidence-node payload wrapper
 SCIENTIFIC_RECEIPT = 'genesis-scientific-receipt-v2'
 SCIENTIFIC_RECEIPT_V3 = 'genesis-scientific-receipt-v3'   # analysis plan v2 + its signed result (W07)
+# B20_R5 (H05, handoff s12.1/s13): executable-candidate evaluations. A v4 request names its arms as
+# candidate descriptors (genesis.candidates, closed kind registry) instead of DSL programs; its
+# receipt is v4 and binds the descriptor identities. v4 requires an analysis plan v2. Old readers
+# reject both forms (exact field sets); v3 requests and v2/v3 receipts keep their meaning.
+SCIENTIFIC_RECEIPT_V4 = 'genesis-scientific-receipt-v4'
+ANALYSIS_RECEIPTS = (SCIENTIFIC_RECEIPT_V3, SCIENTIFIC_RECEIPT_V4)
+REQUEST_V4 = 'genesis-evaluation-request-v4'
+V4_EVIDENCE_KINDS = ('sealed_evaluation',)
 PREREG_ANCHOR = 'genesis-prereg-anchor-v3'
 PRIORITY_ADJUDICATION = 'genesis-priority-adjudication-v1'
 CLAIM_BINDING = 'genesis-claim-binding-v1'
+CLAIM_BINDING_V2 = 'genesis-claim-binding-v2'     # claims evaluated by v4 (descriptor) requests
 REQUEST = 'genesis-evaluation-request-v3'
 
 # Trusted map: evidence kind -> the only registry role whose key may sign it.
@@ -78,6 +87,9 @@ RECEIPT_FIELDS = frozenset({
     'paired_p', 'family_p', 'outcome', 'operator_id', 'registered_at', 'completed_at',
     'screen', 'independence'})
 RECEIPT_FIELDS_V3 = RECEIPT_FIELDS | {'analysis_result'}
+RECEIPT_FIELDS_V4 = (RECEIPT_FIELDS_V3 - {'candidate_program_hash', 'baseline_version'}) | {
+    'candidate_descriptor_id', 'baseline_descriptor_id', 'arms_sha256', 'isolation'}
+ISOLATION_V4 = 'OCI_RUNC_NO_NETWORK_RO_ROOT_SECCOMP'
 ANCHOR_FIELDS = frozenset({
     'schema', 'request_hash', 'claim_id', 'statement_hash', 'scope', 'evidence_kind', 'registration_slot',
     'registered_at', 'operator_id', 'exposure_registry_root', 'exposure_graphs', 'declaration_unscreenable_graphs',
@@ -88,6 +100,8 @@ PRIORITY_FIELDS = frozenset({
 BINDING_FIELDS = frozenset({
     'schema', 'campaign_id', 'statement_hash', 'scope', 'candidate_version', 'candidate_program', 'baseline_versions',
     'domains', 'request_hashes', 'evaluator_hash', 'source_hashes'})
+BINDING_FIELDS_V2 = (BINDING_FIELDS - {'candidate_program', 'baseline_versions'}) | {
+    'candidate_descriptor', 'baseline_descriptors'}
 
 
 def hex64(h):
@@ -127,6 +141,33 @@ def program_identity(program):
     return digest(SolverProgram.model_validate_json(canonical(program)).model_dump(mode='json'))
 
 
+def is_v4(request):
+    return isinstance(request, dict) and request.get('schema') == REQUEST_V4
+
+
+def arm_identity(request, arm):
+    """Identity of one comparison arm: the validated program identity (v3) or the descriptor
+    identity (v4). The custodian checks a v4 descriptor (rebuilt, implementation unchanged)
+    before this identity is trusted for anything but naming."""
+    if is_v4(request):
+        desc = request['arms'][arm]
+        if not isinstance(desc, dict) or not hex64(desc.get('descriptor_id')):
+            raise ValueError('malformed candidate descriptor')
+        return desc['descriptor_id']
+    return program_identity(request['programs'][arm])
+
+
+def arm_names(request):
+    return sorted(request['arms'] if is_v4(request) else request['programs'])
+
+
+def receipt_arm_ids(p):
+    """(candidate identity, baseline identity) as a receipt of this schema states them."""
+    if p.get('schema') == SCIENTIFIC_RECEIPT_V4:
+        return p['candidate_descriptor_id'], p['baseline_descriptor_id']
+    return p['candidate_program_hash'], p['baseline_version']
+
+
 def registration_slots(request):
     """Slots a registration occupies; each may be used once at a custodian.
 
@@ -141,7 +182,7 @@ def registration_slots(request):
                 'domain': request['domain'], 'transfer_source_domain': request.get('transfer_source_domain'),
                 'generation_index': t.get('index') if isinstance(t, dict) else None}
     return sorted({digest(dict(position, claim_id=request['claim_id'])),
-                   digest(dict(position, candidate=program_identity(request['programs']['candidate'])))})
+                   digest(dict(position, candidate=arm_identity(request, 'candidate')))})
 
 
 def registration_slot(request):
@@ -195,7 +236,7 @@ def analysis_ok(analysis):
 def derive_outcome(p):
     """Outcome implied by the signed payload: under ANALYSIS_V1 from the signed counts (one-sided
     paired sign test); under a v2 plan from the signed analysis result, re-derived by the kernel."""
-    if isinstance(p, dict) and p.get('schema') == SCIENTIFIC_RECEIPT_V3:
+    if isinstance(p, dict) and p.get('schema') in ANALYSIS_RECEIPTS:
         return _derive_outcome_v3(p)
     try:
         n = p['wins'] + p['losses'] + p['ties']
@@ -236,7 +277,8 @@ def check_receipt(p, kind):
     """Strict schema and internal consistency of a scientific receipt payload."""
     if not isinstance(p, dict):
         return ['receipt payload is not an object']
-    fields = {SCIENTIFIC_RECEIPT: RECEIPT_FIELDS, SCIENTIFIC_RECEIPT_V3: RECEIPT_FIELDS_V3}.get(p.get('schema'))
+    fields = {SCIENTIFIC_RECEIPT: RECEIPT_FIELDS, SCIENTIFIC_RECEIPT_V3: RECEIPT_FIELDS_V3,
+              SCIENTIFIC_RECEIPT_V4: RECEIPT_FIELDS_V4}.get(p.get('schema'))
     if fields is None:
         return [f'unknown receipt schema {p.get("schema")!r}']
     if set(p) != fields:
@@ -247,22 +289,30 @@ def check_receipt(p, kind):
         out.append(f'receipt is for evidence kind {p["evidence_kind"]!r}, not {kind!r}')
     if not _claim_id_ok(p['claim_id']) or not isinstance(p['scope'], str) or not p['scope']:
         out.append('claim_id/scope')
-    for k in ('campaign_id', 'request_hash', 'anchor_hash', 'candidate_version', 'candidate_program_hash',
-              'baseline_version', 'source_hash', 'statement_hash', 'evaluator_hash', 'domain_contract_hash',
-              'panel_commitment', 'raw_evidence_root'):
+    v4 = p['schema'] == SCIENTIFIC_RECEIPT_V4
+    arm_fields = ('candidate_descriptor_id', 'baseline_descriptor_id', 'arms_sha256') if v4 else \
+        ('candidate_program_hash', 'baseline_version')
+    for k in ('campaign_id', 'request_hash', 'anchor_hash', 'candidate_version', 'source_hash', 'statement_hash',
+              'evaluator_hash', 'domain_contract_hash', 'panel_commitment', 'raw_evidence_root') + arm_fields:
         if not hex64(p[k]):
             out.append(f'{k} is not a sha256 identity')
+    if v4:
+        if p['evidence_kind'] not in V4_EVIDENCE_KINDS:
+            out.append(f'a v4 receipt supports {", ".join(V4_EVIDENCE_KINDS)} only')
+        if p['isolation'] != ISOLATION_V4:
+            out.append('a v4 receipt must state the sandbox its arms ran in')
     if p['domain'] not in DOMAINS:
         out.append('unknown domain')
     elif p['domain_contract_hash'] != domain_contract_hash(p['domain']):
         out.append('domain contract hash does not match the domain semantics')
     if p['schema'] == SCIENTIFIC_RECEIPT and p['analysis'] != ANALYSIS_V1:
         out.append('unregistered analysis')
-    if p['schema'] == SCIENTIFIC_RECEIPT_V3 and (not isinstance(p['analysis'], dict) or AN.check_plan(p['analysis'])):
-        out.append('a v3 receipt needs a valid v2 analysis plan')
+    if p['schema'] in ANALYSIS_RECEIPTS and (not isinstance(p['analysis'], dict) or AN.check_plan(p['analysis'])):
+        out.append('a v3/v4 receipt needs a valid v2 analysis plan')
     out += _kind_extras(kind, p['domain'], p['transfer_source_domain'], p['generation_transition'],
                         p['candidate_version'])
-    if p['candidate_program_hash'] == p['baseline_version']:
+    cand, base = receipt_arm_ids(p)
+    if cand == base:
         out.append('candidate and baseline are the same program')
     if not all(_nat(p[k]) for k in ('task_count', 'expected_rows', 'completed_rows', 'execution_failures',
                                     'wins', 'losses', 'ties')) or p['task_count'] < 1:
@@ -329,15 +379,20 @@ def check_request(r):
         out.append('claim_id')
     if not hex64(r.get('statement_hash')) or not isinstance(r.get('scope'), str) or not r.get('scope'):
         out.append('a request must commit to the claim statement (statement_hash) and scope before evaluation')
-    programs = r.get('programs')
-    if isinstance(programs, dict) and 'candidate' in programs and 'baseline' in programs:
+    arms = r.get('arms') if is_v4(r) else r.get('programs')
+    if isinstance(arms, dict) and 'candidate' in arms and 'baseline' in arms:
         try:
-            if program_identity(programs['candidate']) == program_identity(programs['baseline']):
+            if arm_identity(r, 'candidate') == arm_identity(r, 'baseline'):
                 out.append('candidate and baseline are the same program')
         except Exception:
-            out.append('candidate or baseline is not a valid program')
+            out.append('candidate or baseline is not a valid program or descriptor')
     if not analysis_ok(r.get('analysis')):
         out.append('analysis must be ANALYSIS_V1 or a valid v2 plan (kernel.analysis.check_plan)')
+    elif is_v4(r) and r['analysis'] == ANALYSIS_V1:
+        out.append('a v4 (executable-candidate) request needs an analysis plan v2')
+    if is_v4(r) and r.get('evidence_kind') not in V4_EVIDENCE_KINDS:
+        out.append(f'a v4 request supports {", ".join(V4_EVIDENCE_KINDS)} only (B20_R5); '
+                   'other kinds stay on v3 or are refused')
     if r.get('evidence_kind') not in EVALUATION_KINDS:
         out.append('evidence_kind')
     else:
@@ -409,18 +464,27 @@ def open_signed(node_payload, kind, pins, *, revoked_keys=()):
 
 # ---------- claim binding ----------
 
+def binding_arms(b):
+    """(bound candidate identity or None, bound baseline identities) of a v1 or v2 binding."""
+    if b.get('schema') == CLAIM_BINDING_V2:
+        return b['candidate_descriptor'], b['baseline_descriptors']
+    return b['candidate_program'], b['baseline_versions']
+
+
 def check_binding(b):
-    if not isinstance(b, dict) or b.get('schema') != CLAIM_BINDING or set(b) != BINDING_FIELDS:
+    if not isinstance(b, dict) or (b.get('schema'), frozenset(b)) not in ((CLAIM_BINDING, BINDING_FIELDS),
+                                                                          (CLAIM_BINDING_V2, BINDING_FIELDS_V2)):
         return ['claim binding schema']
     out = []
-    for k in ('campaign_id', 'candidate_version', 'evaluator_hash', 'statement_hash'):
+    v2 = b['schema'] == CLAIM_BINDING_V2
+    for k in ('campaign_id', 'candidate_version', 'evaluator_hash', 'statement_hash') + (('candidate_descriptor',) if v2 else ()):
         if not hex64(b[k]):
             out.append(f'binding {k}')
-    if b['candidate_program'] is not None and not hex64(b['candidate_program']):
+    if not v2 and b['candidate_program'] is not None and not hex64(b['candidate_program']):
         out.append('binding candidate_program')
     if not isinstance(b['scope'], str) or not b['scope']:
         out.append('binding scope')
-    for k in ('baseline_versions', 'request_hashes', 'source_hashes'):
+    for k in ('baseline_descriptors' if v2 else 'baseline_versions', 'request_hashes', 'source_hashes'):
         v = b[k]
         if not isinstance(v, list) or not v or v != sorted(set(v)) or not all(hex64(h) for h in v):
             out.append(f'binding {k} must be a sorted non-empty list of identities')
@@ -446,12 +510,15 @@ def binding_from_requests(requests):
             for r in requests}
     if len(keys) != 1:
         raise ValueError('requests disagree on claim, statement, scope, campaign or evaluator')
+    if len({is_v4(r) for r in requests}) != 1:
+        raise ValueError('one claim is evaluated either by v3 (program) or by v4 (descriptor) requests, not both')
+    v4 = is_v4(requests[0])
     chain = [r for r in requests if r['evidence_kind'] == 'sealed_generation_evaluation']
     if chain:
         final = max(chain, key=lambda r: r['generation_transition']['index'])['candidate_version']
         program = None  # each generation evaluates its own successor program
     else:
-        versions = {(r['candidate_version'], program_identity(r['programs']['candidate'])) for r in requests}
+        versions = {(r['candidate_version'], arm_identity(r, 'candidate')) for r in requests}
         if len(versions) != 1:
             raise ValueError('requests evaluate different candidates (version or program)')
         final, program = versions.pop()
@@ -460,10 +527,11 @@ def binding_from_requests(requests):
         for d in (r['domain'], r.get('transfer_source_domain')):
             if d is not None:
                 domains[d] = domain_contract_hash(d)
-    b = {'schema': CLAIM_BINDING, 'campaign_id': requests[0]['campaign_id'],
+    baselines = sorted({arm_identity(r, 'baseline') for r in requests})
+    b = {'schema': CLAIM_BINDING_V2 if v4 else CLAIM_BINDING, 'campaign_id': requests[0]['campaign_id'],
          'statement_hash': requests[0]['statement_hash'], 'scope': requests[0]['scope'], 'candidate_version': final,
-         'candidate_program': program,
-         'baseline_versions': sorted({program_identity(r['programs']['baseline']) for r in requests}),
+         **({'candidate_descriptor': program, 'baseline_descriptors': baselines} if v4 else
+            {'candidate_program': program, 'baseline_versions': baselines}),
          'domains': domains, 'request_hashes': sorted({digest(r) for r in requests}),
          'evaluator_hash': requests[0]['expected_evaluator_hash'],
          'source_hashes': sorted({r['source_hash'] for r in requests})}
@@ -488,14 +556,18 @@ def binding_mismatches(p, claim_id, binding, kind):
         out.append('receipt names an unbound source identity')
     if p['request_hash'] not in binding['request_hashes']:
         out.append('receipt is not for a preregistered request of this claim')
-    if p['baseline_version'] not in binding['baseline_versions']:
+    bound_candidate, bound_baselines = binding_arms(binding)
+    candidate, baseline = receipt_arm_ids(p)
+    if (p.get('schema') == SCIENTIFIC_RECEIPT_V4) != (binding.get('schema') == CLAIM_BINDING_V2):
+        out.append('receipt and claim binding disagree on the candidate form (program vs descriptor)')
+    if baseline not in bound_baselines:
         out.append('receipt compares against an unbound baseline')
     if binding['domains'].get(p['domain']) != p['domain_contract_hash']:
         out.append('receipt domain is not bound to this claim')
     if p['transfer_source_domain'] is not None and p['transfer_source_domain'] not in binding['domains']:
         out.append('transfer source domain is not bound to this claim')
     if kind != 'sealed_generation_evaluation' and (p['candidate_version'] != binding['candidate_version']
-                                                   or p['candidate_program_hash'] != binding['candidate_program']):
+                                                   or candidate != bound_candidate):
         out.append('receipt evaluates a different candidate version or program')
     return out
 

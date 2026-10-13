@@ -1686,7 +1686,11 @@
     "scripts/b20_learning.py",
     "src/genesis/learning/partitions.py",
     "src/genesis/learning/budget.py",
-    "src/genesis/learning/custody.py"
+    "src/genesis/learning/custody.py",
+    "scripts/b20r3_e3_costaware.py",
+    "evidence/e3_costaware_b20r3/e3_summary.json",
+    "scripts/b20r3_headroom_pilot.py",
+    "evidence/headroom_pilot_b20r3/README.md"
    ],
    "disposition": "IMPLEMENTED_BOUNDED_PENDING_AUDIT",
    "evidence": [],
@@ -1699,7 +1703,7 @@
    "local_execution": "TESTS_EXECUTED_IN_MATRIX",
    "owner": "research implementer",
    "remaining": [
-    "a redesigned learned policy under a new study (B20R-OPEN-1: fresh DEV rerun 0W/2T/6L)",
+    "a family with selection headroom (B20_R3 pilot: ORACLE - fixed <= 1 of 12 on six systems; the redesigned cost-aware policy is INFERIOR_DEV, 2W/3T/3L)",
     "a sealed E3 study"
    ],
    "scientific_efficacy": "UNESTABLISHED",
@@ -1708,6 +1712,7 @@
    "tests": [
     "tests_genesis/test_acceptance_regressions.py::RevocationAndTrust",
     "tests_formal/test_learning.py",
+    "tests_genesis/test_research_policy_v2.py",
     "tests_formal/test_learning_partitions.py",
     "tests_genesis/test_research_resource_accounting.py",
     "tests_formal/test_successor_proof_custody.py"
@@ -2619,7 +2624,10 @@
     "decision": "PENDING_INDEPENDENT_ACCEPTANCE"
    },
    "code": [
-    "src/genesis/kernel/receipts.py"
+    "src/genesis/kernel/receipts.py",
+    "src/genesis/lineage.py",
+    "src/genesis/campaign.py",
+    "src/genesis/custodian.py"
    ],
    "disposition": "IMPLEMENTED_BOUNDED_PENDING_AUDIT",
    "evidence": [],
@@ -2635,11 +2643,12 @@
     "E4"
    ],
    "scientific_efficacy": "NOT_TESTED",
-   "scope": "kernel rules only (consecutive, program-linked chains); custodian refuses generation kinds (B14-OPEN-3)",
+   "scope": "kernel rules (consecutive, program-linked chains); B20_R4: campaigns write native research-lineage records and the custodian accepts a generation request only for a transition in the qualifying chain",
    "source": "spec \u00a719.6 (p. 31)",
    "tests": [
     "tests_genesis/test_evidence_kernel.py::Confirmation",
-    "tests_genesis/test_redteam_b14.py::KernelFindings"
+    "tests_genesis/test_redteam_b14.py::KernelFindings",
+    "tests_genesis/test_campaign_lineage.py"
    ],
    "title": "Experiment F - multi-generation",
    "workstream": "W21"
@@ -4799,7 +4808,8 @@
     "src/genesis/custody_records.py",
     "src/genesis/custodian.py",
     "src/genesis/decision_record.py",
-    "src/genesis/candidates.py"
+    "src/genesis/candidates.py",
+    "src/genesis/judge.py"
    ],
    "disposition": "IMPLEMENTED_BOUNDED_PENDING_AUDIT",
    "evidence": [],
@@ -4816,7 +4826,8 @@
    "tests": [
     "tests_genesis/test_evaluator_readiness.py",
     "tests_genesis/test_redteam_b16.py",
-    "tests_genesis/test_candidate_adapters.py"
+    "tests_genesis/test_candidate_adapters.py",
+    "tests_genesis/test_candidate_custody.py"
    ],
    "title": "Independent custody and preregistration",
    "workstream": "W06"
@@ -5173,7 +5184,8 @@
     "src/genesis/learning/budget.py",
     "src/genesis/learning/custody.py",
     "evidence/learning_b20/w19/rows.json",
-    "evidence/e3_fresh_b20r/e3_summary.json"
+    "evidence/e3_fresh_b20r/e3_summary.json",
+    "evidence/e3_costaware_b20r3/e3_summary.json"
    ],
    "disposition": "IMPLEMENTED_BOUNDED_PENDING_AUDIT",
    "evidence": [],
@@ -5190,7 +5202,8 @@
    "tests": [
     "tests_formal/test_learning.py",
     "tests_genesis/test_research_resource_accounting.py",
-    "tests_formal/test_successor_proof_custody.py"
+    "tests_formal/test_successor_proof_custody.py",
+    "tests_genesis/test_research_policy_v2.py"
    ],
    "title": "Research-policy learning (fixed, random, heuristic, bandit and a frozen learned policy at equal research budgets)",
    "workstream": "W19"
@@ -5230,26 +5243,27 @@
     "decision": "PENDING_INDEPENDENT_ACCEPTANCE"
    },
    "code": [
-    "src/genesis/lineage.py"
+    "src/genesis/lineage.py",
+    "src/genesis/campaign.py",
+    "src/genesis/custodian.py"
    ],
-   "disposition": "NOT_IMPLEMENTED",
+   "disposition": "IMPLEMENTED_BOUNDED_PENDING_AUDIT",
    "evidence": [],
    "external_blockers": [],
    "id": "W21",
-   "implementation": "NOT_IMPLEMENTED",
+   "implementation": "IMPLEMENTED_BOUNDED",
    "independent_verification": "PENDING",
    "local_execution": "TESTS_EXECUTED_IN_MATRIX",
    "owner": "research implementer",
-   "remaining": [
-    "not started in B14"
-   ],
+   "remaining": [],
    "scientific_efficacy": "N/A",
-   "scope": "workstream",
+   "scope": "workstream (B14 scope delivered; acceptance pending)",
    "source": "roadmap \u00a77-10",
    "tests": [
-    "tests_genesis/test_generation_lineage.py"
+    "tests_genesis/test_generation_lineage.py",
+    "tests_genesis/test_campaign_lineage.py"
    ],
-   "title": "Better-improver and multigeneration controller (B20_R2: pure lineage validator with every s20.7 attack and a DEV fixture only; the controller, export integration and custodian enablement are not implemented)",
+   "title": "Better-improver and multigeneration controller (B20_R2: pure lineage validator; B20_R4: the campaign loop writes native lineage records, crash/resume charges interrupted attempts, the custodian checks generation requests against the qualifying chain; sealed improver evaluation still refused)",
    "workstream": "W21"
   },
   {

@@ -26,6 +26,9 @@ REQUEST_FIELDS={'schema','campaign_id','candidate_version','source_hash','progra
                 'task_count','domain','analysis','exposed_graph_fingerprints','expected_evaluator_hash',
                 'campaign_export_sha256','claim_id','statement_hash','scope','evidence_kind','generation_transition',
                 'transfer_source_domain'}
+# v4 (B20_R5, H05): the arms are candidate descriptors (genesis.candidates); each descriptor carries
+# its resource profile, so the request has no separate DSL `limits`.
+REQUEST_FIELDS_V4=(REQUEST_FIELDS-{'programs','limits'})|{'arms'}
 
 
 def _hex64(h):
@@ -38,7 +41,11 @@ def validate_request(request):
 
     v1/v2 requests are refused: v1 had no export binding; v2 named no claim, so
     its receipt could be presented as support for any claim.
+
+    Schema v4 (B20_R5) names its arms as candidate descriptors; returns {arm: descriptor}
+    for v4 and {arm: SolverProgram} for v3.
     """
+    if isinstance(request,dict) and request.get('schema')==R.REQUEST_V4:return _validate_v4(request)
     if not isinstance(request,dict) or set(request)!=REQUEST_FIELDS or request['schema']!=R.REQUEST:
         raise ValueError('evaluation request schema')
     problems=R.check_request(request)
@@ -50,6 +57,34 @@ def validate_request(request):
     programs={k:SolverProgram.model_validate_json(canonical(v)) for k,v in request['programs'].items()}
     if any(not k.isidentifier() for k in programs):raise ValueError('arm name')
     Limits.model_validate_json(canonical(request['limits']))
+    _validate_common(request)
+    return programs
+
+
+def _validate_v4(request):
+    """Executable-candidate request: every arm is a descriptor of a closed kind that this code
+    rebuilds and accepts (implementation unchanged, parameters licensed, profile valid), all arms
+    share one resource profile, and the analysis is a v2 plan."""
+    from . import candidates as C
+    if set(request)!=REQUEST_FIELDS_V4:raise ValueError('evaluation request schema')
+    problems=R.check_request(request)
+    if problems:raise ValueError('evaluation request binding: '+'; '.join(problems))
+    for key in ('campaign_id','candidate_version','source_hash','expected_evaluator_hash','campaign_export_sha256'):
+        if not _hex64(request[key]):raise ValueError('hash field')
+    arms=request['arms']
+    if not isinstance(arms,dict) or not {'baseline','candidate'}<=set(arms) or len(arms)>5:
+        raise ValueError('comparison arms')
+    if any(not isinstance(k,str) or not k.isidentifier() for k in arms):raise ValueError('arm name')
+    for name,desc in arms.items():
+        why=C.descriptor_problems(desc,domain=request['domain'])
+        if why:raise ValueError(f'candidate descriptor for arm {name}: '+', '.join(why))
+    if len({canonical(d['resource_profile']) for d in arms.values()})!=1:
+        raise ValueError('arms must share one resource profile (equal resource accounting)')
+    _validate_common(request)
+    return dict(arms)
+
+
+def _validate_common(request):
     if type(request['seed']) is not int or type(request['task_count']) is not int or not 1<=request['task_count']<=10000:
         raise ValueError('task count or seed')
     if request['domain'] not in R.DOMAINS:raise ValueError('domain')
@@ -58,7 +93,6 @@ def validate_request(request):
     if not isinstance(request['exposed_graph_fingerprints'],list):raise ValueError('exposure list')
     for h in request['exposed_graph_fingerprints']:
         if not _hex64(h):raise ValueError('exposure hash')
-    return programs
 
 
 def _private_root(path):
@@ -197,14 +231,17 @@ def campaign_facts(export):
                 body=json.loads(raw)
                 if body['kind']=='STATE_UPDATED':
                     upd=s.get(body['payload'])
-                    if upd['key'] in ('campaign_id','source_hash'):written.setdefault(upd['key'],set()).add(canonical(upd['value']))
+                    if upd['key'] in ('campaign_id','source_hash','frozen_candidate_descriptor'):
+                        written.setdefault(upd['key'],set()).add(canonical(upd['value']))
             summary=s.state('summary') or {}
             from . import lineage as L
             facts={'campaign_id':s.state('campaign_id'),'source_hash':s.state('source_hash'),
                    'lineage':L.export_from_store(s),
                    'domain':configs[0][1].get('domain') if len(configs)==1 else None,
                    'config_entities':len(configs),
-                   'identity_rewritten':any(len(v)>1 for v in written.values()),
+                   'identity_rewritten':any(len(v)>1 for k,v in written.items() if k!='frozen_candidate_descriptor'),
+                   'descriptor_rewritten':len(written.get('frozen_candidate_descriptor',()))>1,
+                   'frozen_descriptor':s.state('frozen_candidate_descriptor'),
                    'phase':s.state('phase'),'latest_program':s.state('latest_program'),
                    'candidate_versions':dict(entities('candidate_version')),
                    'strongest_baseline':(summary.get('generations') or [{}])[-1].get('baseline'),
@@ -238,6 +275,7 @@ def check_request_against_export(request,facts):
     if facts['phase']!='CANDIDATE_FROZEN':
         problems.append(f"campaign export is not of a frozen candidate (phase {facts['phase']})")
     if generation:return problems     # the arms are the transition's versions, checked above
+    if R.is_v4(request):return problems+descriptor_export_problems(request,facts)
     try:
         candidate=R.program_identity(request['programs']['candidate'])
         doc=facts['candidate_versions'].get(request['candidate_version'])
@@ -254,6 +292,43 @@ def check_request_against_export(request,facts):
     except Exception as exc:
         problems.append(f'candidate/baseline programs could not be checked ({type(exc).__name__})')
     return problems
+
+
+def descriptor_export_problems(request,facts):
+    """v4: the custodian rebuilds the arms from the campaign's frozen export (handoff s13.1),
+    never from the request. The candidate arm must be the descriptor the campaign froze
+    (write-once state ``frozen_candidate_descriptor``, recorded in a candidate_version document
+    with the campaign source), still valid under the current reviewed implementation; the
+    baseline arm must be the campaign's strongest conventional baseline as a DSL descriptor
+    under the same resource profile; any further arm must be another conventional baseline."""
+    from . import candidates as C
+    from .dsl import baseline_programs
+    out=[];arms=request['arms']
+    if facts.get('descriptor_rewritten'):out.append('the frozen candidate descriptor was rewritten in the export history')
+    frozen=facts.get('frozen_descriptor')
+    if frozen is None:
+        return out+['the campaign export holds no frozen candidate descriptor; a v4 request cannot be checked against it']
+    why=C.descriptor_problems(frozen,domain=facts['domain'])
+    if why:out.append('the frozen candidate descriptor is no longer valid: '+', '.join(why))
+    if not isinstance(frozen,dict) or frozen.get('descriptor_id')!=arms['candidate'].get('descriptor_id'):
+        out.append('NOT_THE_FROZEN_CANDIDATE: the candidate arm is not the descriptor the campaign froze')
+    doc=facts['candidate_versions'].get(request['candidate_version'])
+    if doc is None or digest(doc)!=request['candidate_version']:
+        out.append('candidate_version is not a frozen version recorded in the campaign export')
+    elif doc.get('descriptor')!=frozen or doc.get('source')!=request['source_hash']:
+        out.append('candidate_version does not describe the frozen descriptor and source')
+    if why or not isinstance(frozen,dict):return out
+    rp=frozen['resource_profile'];domain=facts['domain']
+    def dsl(program):
+        return C.build_descriptor('dsl-program-v1',domain,{'program':program.model_dump(mode='json')},**rp)['descriptor_id']
+    strongest=baseline_programs().get(facts['strongest_baseline'])
+    if strongest is None or dsl(strongest)!=arms['baseline'].get('descriptor_id'):
+        out.append("the baseline is not the campaign's strongest conventional baseline under the candidate's resource profile")
+    conventional={dsl(p) for p in baseline_programs().values()}
+    for name in sorted(set(arms)-{'candidate','baseline'}):
+        if arms[name].get('descriptor_id') not in conventional:
+            out.append(f'arm {name} is not a conventional baseline under the candidate resource profile')
+    return out
 
 
 def _load_pool(pool_path):
@@ -444,6 +519,13 @@ def evaluate(private_root,request_id,pool_path,key_path,operator_id):
         if any(t.domain!=request['domain'] or t.split not in ('CONFIRM','FUTURE') for t in tasks):
             raise ValueError('wrong sealed pool domain/split')
         if len({t.task_id for t in tasks})!=len(tasks):raise ValueError('duplicate task identifiers')
+        v4=R.is_v4(request)
+        if v4:
+            # Fail before the panel is reserved: without the sandbox the arms cannot run as declared.
+            from . import sandbox as S
+            if not S.available():
+                raise RuntimeError('ISOLATION_UNAVAILABLE: executable-candidate arms need the OCI sandbox '
+                                   '(root with runc, or a launcher socket); the panel was not reserved')
         from .exposure import GraphIndex
         panel=GraphIndex()
         for t in tasks:
@@ -481,7 +563,7 @@ def evaluate(private_root,request_id,pool_path,key_path,operator_id):
         point('custodian.reserve')
         work=root/'evaluations'/request_id
         work.mkdir(parents=True,mode=0o700)
-        limits=Limits.model_validate_json(canonical(request['limits']))
+        limits=None if v4 else Limits.model_validate_json(canonical(request['limits']))
         with Store(work) as evidence:
             evidence.save('request',request_id,request)
             evidence.save('pool',digest(pool),pool)
@@ -508,9 +590,16 @@ def evaluate(private_root,request_id,pool_path,key_path,operator_id):
                     names=sorted(programs);seed=int(digest({'seed':request['seed'],'task':task.task_id})[:16],16)
                     random.Random(seed).shuffle(names)
                     for name in names:
-                        aid=evidence.start(task.task_id+'-'+name,{'kind':'solver','task':task.model_dump(mode='json'),
-                            'program':programs[name].model_dump(mode='json'),'arm':name,'seed':seed,'limits':request['limits']})
-                        receipt=execute(task,programs[name],limits,seed)
+                        if v4:
+                            from . import candidates as C
+                            desc=programs[name]
+                            aid=evidence.start(task.task_id+'-'+name,{'kind':'solver','task':task.model_dump(mode='json'),
+                                'descriptor':desc,'arm':name,'seed':seed,'limits':desc['resource_profile']})
+                            receipt=C.run(task,desc,seed=seed,expected_id=desc['descriptor_id'],isolation='runc')
+                        else:
+                            aid=evidence.start(task.task_id+'-'+name,{'kind':'solver','task':task.model_dump(mode='json'),
+                                'program':programs[name].model_dump(mode='json'),'arm':name,'seed':seed,'limits':request['limits']})
+                            receipt=execute(task,programs[name],limits,seed)
                         evidence.finish(aid,receipt)
                         point('custodian.evaluate')
                         value=receipt.get('result',{}).get('value',0)
@@ -561,12 +650,20 @@ def _seal(evidence,request_id,request,anchor,commitment,identity,operator_id,key
     integrity=evidence.verify()
     unsupported=evidence.db.execute("SELECT count(*) FROM entities WHERE kind='unsupported_task'").fetchone()[0]
     expected=(len(tasks)-unsupported)*len(programs) if v2 else len(tasks)*len(programs)
-    payload={'schema':R.SCIENTIFIC_RECEIPT_V3 if v2 else R.SCIENTIFIC_RECEIPT,'evidence_kind':request['evidence_kind'],
+    if R.is_v4(request):
+        schema=R.SCIENTIFIC_RECEIPT_V4
+        arm_fields={'candidate_descriptor_id':R.arm_identity(request,'candidate'),
+                    'baseline_descriptor_id':R.arm_identity(request,'baseline'),
+                    'arms_sha256':digest(request['arms']),'isolation':R.ISOLATION_V4}
+    else:
+        schema=R.SCIENTIFIC_RECEIPT_V3 if v2 else R.SCIENTIFIC_RECEIPT
+        arm_fields={'candidate_program_hash':R.arm_identity(request,'candidate'),
+                    'baseline_version':R.arm_identity(request,'baseline')}
+    payload={'schema':schema,'evidence_kind':request['evidence_kind'],
              'claim_id':request['claim_id'],'statement_hash':request['statement_hash'],'scope':request['scope'],
              'campaign_id':request['campaign_id'],'request_hash':request_id,
              'anchor_hash':digest(anchor),'candidate_version':request['candidate_version'],
-             'candidate_program_hash':R.program_identity(request['programs']['candidate']),
-             'baseline_version':R.program_identity(request['programs']['baseline']),'source_hash':request['source_hash'],
+             **arm_fields,'source_hash':request['source_hash'],
              'evaluator_hash':identity,'analysis':request['analysis'],'domain':request['domain'],
              'domain_contract_hash':R.domain_contract_hash(request['domain']),
              'transfer_source_domain':request['transfer_source_domain'],
@@ -602,7 +699,7 @@ def _publish(db,work,request_id,receipt,request,kind='PUBLISHED'):
     p=receipt['payload']
     db.execute('BEGIN IMMEDIATE')
     try:
-        if p.get('schema')==R.SCIENTIFIC_RECEIPT_V3 and p['analysis_result'].get('decision')!='INVALID' and \
+        if p.get('schema') in R.ANALYSIS_RECEIPTS and p['analysis_result'].get('decision')!='INVALID' and \
                 p['analysis_result']['family_p_values']!=[round(float(x),10) for x in
                                                           published_p_values_before(_log_entries(db),family_of(request),request_id)]:
             raise RuntimeError('family results changed while this evaluation was sealed; run recover to re-seal')
@@ -620,7 +717,7 @@ def _publish(db,work,request_id,receipt,request,kind='PUBLISHED'):
 def _log_result(db,request,request_id,receipt,kind):
     from .custody_records import family_of
     p=receipt['payload']
-    pv=(p['analysis_result'].get('p_value') if p.get('schema')==R.SCIENTIFIC_RECEIPT_V3 else p.get('paired_p'))
+    pv=(p['analysis_result'].get('p_value') if p.get('schema') in R.ANALYSIS_RECEIPTS else p.get('paired_p'))
     _append_log(db,kind,{'request_hash':request_id,'family':family_of(request),'receipt_sha256':digest(receipt),
                          'outcome':p['outcome'],'p_value':pv if p['outcome']!='INVALID' else None})
 
@@ -725,19 +822,23 @@ def release_preflight(request,anchor,receipt,audit,*,trust_root=None,revocations
         if a is not None and r is not None:
             reasons+=R.anchor_mismatches(r,a,anchor)
             if a['request_hash']!=rid or r['request_hash']!=rid:reasons.append('unbound preregistration')
-            expected_rows=request['task_count']*len(request['programs'])
+            expected_rows=request['task_count']*len(R.arm_names(request))
+            arm_fields=((('candidate_descriptor_id',R.arm_identity(request,'candidate')),
+                         ('baseline_descriptor_id',R.arm_identity(request,'baseline')),
+                         ('arms_sha256',digest(request['arms']))) if R.is_v4(request) else
+                        (('candidate_program_hash',R.arm_identity(request,'candidate')),
+                         ('baseline_version',R.arm_identity(request,'baseline'))))
             if a['registration_slot']!=R.registration_slot(request):reasons.append('anchor registers a different slot')
             for field,want in (('claim_id',request['claim_id']),('campaign_id',request['campaign_id']),
                                ('statement_hash',request['statement_hash']),('scope',request['scope']),
-                               ('candidate_program_hash',R.program_identity(request['programs']['candidate'])),
+                               *arm_fields,
                                ('candidate_version',request['candidate_version']),
                                ('evaluator_hash',request['expected_evaluator_hash']),
                                ('source_hash',request['source_hash']),('domain',request['domain']),
-                               ('baseline_version',R.program_identity(request['programs']['baseline'])),
                                ('task_count',request['task_count']),('expected_rows',expected_rows),
                                ('generation_transition',request['generation_transition']),
                                ('transfer_source_domain',request['transfer_source_domain'])):
-                if r[field]!=want:reasons.append(f'receipt {field} differs from the preregistered request')
+                if r.get(field)!=want:reasons.append(f'receipt {field} differs from the preregistered request')
             if r['outcome']=='INVALID':reasons.append('incomplete or inconsistent evidence (outcome INVALID)')
             elif r['outcome']=='INCONCLUSIVE':reasons.append('execution failures require adjudication (outcome INCONCLUSIVE)')
             elif r['outcome']!='SUPPORTED':reasons.append('preregistered superiority not supported (outcome NOT_SUPPORTED)')
@@ -747,7 +848,7 @@ def release_preflight(request,anchor,receipt,audit,*,trust_root=None,revocations
         if review.get('raw_replay_verified') is not True:reasons.append('private evidence replay not verified')
         if review.get('formal_replay_verified') is not True:reasons.append('formal replay not verified')
         from .custody_records import check_log,independence,receipt_log_problems
-        v3=receipt.get('payload',{}).get('schema')==R.SCIENTIFIC_RECEIPT_V3
+        v3=receipt.get('payload',{}).get('schema') in R.ANALYSIS_RECEIPTS
         if registration_log is not None:
             log,why=check_log(registration_log,pins['custodian_key'],verify)
             reasons+=why

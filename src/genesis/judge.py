@@ -45,12 +45,48 @@ def analysis_rows(evidence, tasks):
     return rows
 
 
+def witness_problems(evidence, tasks, request):
+    """Re-check every scored solver result from its raw receipt (handoff s13.3: the judge
+    independently recomputes; a candidate's claimed value is never the score).
+
+    For each terminal SUCCESS solver attempt: the task must be the pool's task, the witness must
+    pass the domain checker and give the recorded value. For a v4 request the attempt must have
+    run the request's descriptor for that arm, inside the declared sandbox."""
+    from .domains import adapter
+    pool = {t.task_id: t for t in tasks}
+    out, rechecked = [], 0
+    for status, req, rec in evidence.db.execute('SELECT status,request,receipt FROM attempts ORDER BY rowid'):
+        if rec is None or status in ('RUNNING', 'INTERRUPTED'):
+            continue
+        attempt = evidence.get(req)
+        if attempt.get('kind') != 'solver':
+            continue
+        receipt = evidence.get(rec)
+        tid = (attempt.get('task') or {}).get('task_id')
+        if tid not in pool or attempt['task'] != pool[tid].model_dump(mode='json'):
+            out.append(f'solver attempt on {tid!r} is not a task of the sealed pool')
+            continue
+        if R.is_v4(request):
+            if attempt.get('descriptor') != request['arms'].get(attempt.get('arm')):
+                out.append(f'attempt {tid}/{attempt.get("arm")} did not run the descriptor the request names for its arm')
+            if receipt.get('status') == 'SUCCESS' and receipt.get('isolation') != R.ISOLATION_V4:
+                out.append(f'attempt {tid}/{attempt.get("arm")} did not run inside the declared sandbox')
+        if receipt.get('status') != 'SUCCESS':
+            continue
+        result = receipt.get('result') or {}
+        checked = adapter(pool[tid].domain).validate(pool[tid], result.get('selected') or [])
+        rechecked += 1
+        if checked['status'] != 'VALID' or checked['value'] != result.get('value'):
+            out.append(f'attempt {tid}/{attempt.get("arm")}: the recorded witness does not give the recorded value')
+    return {'problems': out, 'rechecked': rechecked}
+
+
 def recompute(evaluation_root, request, receipt, *, registration_log_entries=None):
     payload = receipt['payload']
     out = {'schema': 'genesis-judge-recomputation-v1', 'request_hash': digest(request),
            'receipt_sha256': digest(receipt), 'problems': []}
-    if payload.get('schema') != R.SCIENTIFIC_RECEIPT_V3:
-        out['problems'].append('only v3 receipts carry a recomputable v2 analysis')
+    if payload.get('schema') not in R.ANALYSIS_RECEIPTS:
+        out['problems'].append('only v3/v4 receipts carry a recomputable v2 analysis')
         out['agrees'] = False
         return out
     with tempfile.TemporaryDirectory(prefix='genesis-judge-') as d:
@@ -68,6 +104,9 @@ def recompute(evaluation_root, request, receipt, *, registration_log_entries=Non
                 return out
             tasks = [GraphTask.model_validate_json(canonical(t)) for t in pools[0]]
             rows = analysis_rows(s, tasks)
+            witnesses = witness_problems(s, tasks, request)
+            out['witnesses_rechecked'] = witnesses['rechecked']
+            out['problems'] += witnesses['problems']
             resources = account(s)
             fairness = arm_fairness(s)
             saved = s.db.execute("SELECT object_hash FROM entities WHERE kind='resource_account' AND id=?",
