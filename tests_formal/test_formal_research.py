@@ -334,5 +334,20 @@ class LeanDomainAcceptance(unittest.TestCase):
         self.assertEqual(ADAPTER.replay({'task': task.model_dump(mode='json'), 'witness': good})['status'], 'REPLAYED')
 
 
+
+class KeptLog(unittest.TestCase):
+    """B20R3-OPEN-3: error lines survive in the stored module log when linter warnings flood it."""
+
+    def test_errors_are_kept_ahead_of_the_tail(self):
+        from genesis.formal_research.checker import _kept_log
+        warnings = ''.join(f'M.lean:{i}:4: warning: This simp argument is unused\n' for i in range(400))
+        log = 'M.lean:12:9: error: `simp` made no progress\n' + warnings
+        kept = _kept_log(log)
+        self.assertIn('M.lean:12:9: error: `simp` made no progress', kept)
+        self.assertLess(len(kept), 7000)
+        self.assertTrue(kept.endswith(log[-500:]))
+        self.assertEqual(_kept_log('short log'), 'short log')
+        self.assertNotIn('omitted', _kept_log(warnings))           # no errors: just the tail
+
 if __name__ == '__main__':
     unittest.main()

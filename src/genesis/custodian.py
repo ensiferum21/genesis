@@ -907,6 +907,45 @@ def _statement_exposure(root,manifest_path,manifest,facts):
     return items
 
 
+def _screen_salt(root):
+    """A per-custodian secret salt for the statement screen's public commitment (created once)."""
+    path=root/'statement_screen_salt'
+    if not path.exists():
+        atomic_write(path,os.urandom(32).hex().encode(),mode=0o600)
+    return bytes.fromhex(path.read_text())
+
+
+def screen_statements_for_research(private_root,items,key_path,operator_id,*,query_budget=10000):
+    """Narrow, signed ALLOW/BLOCK screen of statements research wants to insert (B20R7-OPEN-2).
+
+    ``items``: [{'route', 'system', 'statement'}]. The reserved set is every statement sealed in a
+    registered panel at this custodian; relations follow the partition policy (EXACT, ALPHA,
+    INSTANCE: blocked; GENERALIZES: quarantined, hence blocked). The signed receipt carries one
+    decision per item, the digest of the items and a salted commitment to the reserved set, never
+    a reserved statement; relations and matches stay in the private ledger."""
+    from .learning import partitions as P
+    from .learning import statement_panels as SP
+    root=_private_root(private_root)
+    if not isinstance(items,list) or any(not isinstance(x,dict) or set(x)!={'route','system','statement'} for x in items):
+        raise ValueError('items must be [{route, system, statement}]')
+    reserved=[]
+    panels=root/'statement_panels'
+    if panels.is_dir():
+        for f in sorted(panels.glob('*.json')):
+            doc=load_json(f)
+            reserved+=[(doc['panel']['system'],SP.eq_of(x['statement'])) for x in doc['panel']['statements']]
+    screen=P.InsertionScreen(reserved,salt=_screen_salt(root),query_budget=query_budget)
+    decisions=[]
+    for x in items:
+        try:item=SP.eq_of(x['statement'])
+        except Exception:item=None
+        decisions.append(screen(x['route'],x['system'],item)['decision'] if item is not None else 'BLOCK')
+    with open(root/'statement_screening_ledger.jsonl','ab') as f:
+        for entry in screen.private_ledger():f.write(canonical(entry)+b'\n')
+    return sign({'schema':'genesis-statement-screening-receipt-v1','decisions':decisions,'items_sha256':digest(items),
+                 'reserved_commitment':screen.commitment(),'operator_id':operator_id,'issued_at':utcnow()},key_path)
+
+
 def statement_tasks(panel):
     """Evaluator-side task objects for a statement panel (task id and stratum)."""
     from types import SimpleNamespace
@@ -1097,7 +1136,7 @@ def _statement_rows_run(evidence,request,panel,arms,manifests,objects):
                                    name=f"st{record['record_id'][:12]}")
             ran=check['status'] in ('CHECKED','CHECK_FAILED','CHECK_UNSUPPORTED','CHECK_INCOMPLETE')
             evidence.finish(vid,{'status':'SUCCESS' if ran else 'CHECKER_ERROR','replay':check,
-                                 'wall_ns':time.monotonic_ns()-start})
+                                 'wall_ns':time.monotonic_ns()-start,'cpu_ns':check.get('cpu_ns')})
 
 
 from .kernel.roles import TRUST_ROOT_ENV,DEFAULT_TRUST_ROOT,ROLE_FIELDS,load_role_registry  # re-exported

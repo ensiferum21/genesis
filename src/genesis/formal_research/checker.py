@@ -116,6 +116,17 @@ def _closure(name, sources, names):
     return seen
 
 
+def _kept_log(log, limit=6000):
+    """The stored module log: every error line first (B20R3-OPEN-3: linter warnings used to push the
+    errors out of the last 6000 characters), then the tail of the full log. Diagnostics only; the
+    result class is decided from the full log above."""
+    if len(log) <= limit:
+        return log
+    errors = [l for l in log.splitlines() if ': error' in l][:40]
+    head = ('\n'.join(errors) + '\n[... earlier output omitted; error lines kept above ...]\n') if errors else ''
+    return head + log[-max(1000, limit - len(head)):]
+
+
 def compile_module(name, source, deps, env, policy=POLICY, heartbeats=HEARTBEATS):
     """Compile one module; `deps` maps flat file names to compiled bytes of its imports."""
     script = (f'set -u\ncd /work/src && lean -D maxHeartbeats={heartbeats} --root=/work/src '
@@ -138,7 +149,7 @@ def compile_module(name, source, deps, env, policy=POLICY, heartbeats=HEARTBEATS
         result = 'RESOURCE_LIMIT'
     else:
         result = 'ELABORATION_ERROR'
-    return {'result': result, 'stats': _stats(receipt), 'log': log[-6000:], 'artifacts': artifacts,
+    return {'result': result, 'stats': _stats(receipt), 'log': _kept_log(log), 'artifacts': artifacts,
             'artifact_sha256': {k: bytes_hash(v) for k, v in sorted(artifacts.items())},
             'reason': receipt.get('reason')}
 

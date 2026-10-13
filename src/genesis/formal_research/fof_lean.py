@@ -783,6 +783,15 @@ def proof_module(problem_id, axioms, goal, proof_text, lemmas=(), goal_deps=None
     return {'name': proof, 'source': source, 'trusted': False}, None, tables
 
 
+def _checker_cpu_ns(receipt):
+    """CPU the checker's sandboxes used (module compiles and the check stage, cgroup-metered); None
+    when any part is unmetered or came from the cache without stats (B20R7-OPEN-1)."""
+    parts = [0 if m.get('cached') else (m.get('stats') or {}).get('cpu_ns') for m in receipt.get('modules', [])]
+    if receipt.get('check_stage') is not None:
+        parts.append(receipt['check_stage'].get('cpu_ns'))
+    return sum(parts) if parts and all(type(x) is int and x >= 0 for x in parts) else None
+
+
 def replay(problem_id, axioms, goal, proof_text, *, lemmas=(), goal_deps=None, goal_positions=None, cache=None):
     """Lean replay of an E proof object (and of the E proofs of any lemmas it used).
     Returns a record with status THEOREM_CHECKED (kernel-checked, bound to the trusted
@@ -801,7 +810,8 @@ def replay(problem_id, axioms, goal, proof_text, *, lemmas=(), goal_deps=None, g
     b = receipt['bindings'][0] if receipt.get('bindings') else {'status': receipt.get('status')}
     status = b.get('status')
     out = dict(rec, lean_status=status, outcome=checker.outcome_class(status) if status else None,
-               axioms=b.get('axioms'), proof_module_sha256=digest({'s': pmod['source']}))
+               axioms=b.get('axioms'), proof_module_sha256=digest({'s': pmod['source']}),
+               cpu_ns=_checker_cpu_ns(receipt))
     if status == 'CHECKED':
         out['status'] = 'THEOREM_CHECKED'
     else:

@@ -276,6 +276,7 @@ class EndToEnd(Base):
         self.assertEqual(judged['proofs_replayed'], judged['proof_claims'])
         acct = judged['resource_account']
         self.assertEqual(acct['verification']['attempts'], judged['proof_claims'])
+        self.assertEqual(acct['verification']['cpu_unknown'], 0)          # B20R7-OPEN-1: checker CPU metered
         self.assertEqual({a: v['attempts'] for a, v in acct['inference']['by_arm'].items()}, {'baseline': 6, 'candidate': 6})
         # The judge is not fooled by a forged replay status in the raw store's interpretation.
         edited = copy.deepcopy(receipt); edited['payload']['analysis_result']['estimate'] = 99.0
@@ -309,6 +310,55 @@ class InterruptedReservation(Base):
         self.assertEqual((p['schema'], p['raw_evidence_complete'], p['outcome']),
                          (R.SCIENTIFIC_RECEIPT_V4, False, 'INVALID'))
         self.assertEqual(self.state(rid), 'COMPLETE')
+
+
+class ResearchScreen(Base):
+    """B20R7-OPEN-2: research asks the custodian before inserting a statement; sealed statements and
+    their renamings are blocked; nothing reserved leaks; an unverifiable answer blocks."""
+
+    def test_custodian_screen_blocks_sealed_statements_and_research_uses_it(self):
+        from genesis.custodian import screen_statements_for_research
+        from genesis.learning import partitions as P
+        req = self.request()
+        self.reg(req)
+        sealed = self.panel(digest(req))['statements']
+        eq = SP.eq_of(sealed[0]['statement'])
+        renamed = Q.text(Q.canon(eq))
+        swap = {'X': 'Z', 'Y': 'X', 'Z': 'Y'}
+        renamed = ''.join(swap.get(c, c) for c in renamed)          # an alpha-variant of a sealed statement
+        unrelated = Q.text(Q.sample_targets(SYSTEM, 1, min_total=3, max_total=4, max_term=3, seed=1)[0])
+        items = [{'route': 'lemma', 'system': SYSTEM, 'statement': x}
+                 for x in (sealed[0]['statement'], renamed, unrelated, 'not a statement')]
+        env = screen_statements_for_research(self.root, items, self.cust[0], 'FIXTURE')
+        p = verify(env, self.cust[1])
+        self.assertEqual(p['decisions'], ['BLOCK', 'BLOCK', 'ALLOW', 'BLOCK'])
+        self.assertEqual(p['items_sha256'], digest(items))
+        text = json.dumps(p)
+        for x in sealed:
+            self.assertNotIn(x['statement'], text)
+        self.assertTrue((self.root / 'statement_screening_ledger.jsonl').read_text().strip())
+        query = lambda its: screen_statements_for_research(self.root, its, self.cust[0], 'FIXTURE')
+        screen = P.CustodianStatementScreen(query, self.cust[1], verify=verify)
+        self.assertEqual(screen('lemma', SYSTEM, eq)['decision'], 'BLOCK')
+        self.assertEqual(screen('lemma', SYSTEM, SP.eq_of(unrelated))['decision'], 'ALLOW')
+        forged = P.CustodianStatementScreen(lambda its: screen_statements_for_research(
+            self.root, its, self.prereg[0], 'FIXTURE'), self.cust[1], verify=verify)       # wrong signer
+        self.assertEqual(forged('lemma', SYSTEM, SP.eq_of(unrelated))['decision'], 'BLOCK')
+        other = P.CustodianStatementScreen(lambda its: query([dict(its[0], route='pool')]), self.cust[1], verify=verify)
+        self.assertEqual(other('lemma', SYSTEM, SP.eq_of(unrelated))['decision'], 'BLOCK')
+        broken = P.CustodianStatementScreen(lambda its: 1 / 0, self.cust[1], verify=verify)
+        self.assertEqual(broken('lemma', SYSTEM, SP.eq_of(unrelated))['decision'], 'BLOCK')
+        # A research run that would prove a sealed statement does not admit it.
+        from genesis.verification.eprover import prove
+        provable = [SP.eq_of(x['statement']) for x in sealed
+                    if prove(Q.axioms(SYSTEM), Q.closed(SP.eq_of(x['statement'])), seconds=1)['status'] == 'THEOREM']
+        self.assertTrue(provable, 'fixture: some sealed statement is provable from the axioms in 1 s')
+        pool = provable[:1] + Q.true_equations(SYSTEM, 3, per_bucket=2, seed=3)
+        budget = StudyBudget.from_seconds(6, attempt_s=1, enforcement='OUTER_SUPERVISED', quantum_ns=100_000_000)
+        run = RS.run(SYSTEM, RS.Fixed(), pool, account=Account(budget, label='screened'), prove_s=1, premise_k=8,
+                     run_id='screened', screen=P.both(P.allow_all, screen))
+        self.assertNotIn(Q.text(provable[0]), [l['text'] for l in run['library']])
+        self.assertIn(Q.text(provable[0]), run['screened_out'])
 
 
 if __name__ == '__main__':

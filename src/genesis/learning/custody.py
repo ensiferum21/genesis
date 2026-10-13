@@ -365,7 +365,7 @@ def replay_target(record, manifest, objects, *, task_statement, trust_context=No
         status = 'CHECK_FAILED'
     return {'status': status, 'record_id': record['record_id'], 'chain_lemmas': len(entries),
             'lean_status': r.get('lean_status'), 'reason': r.get('reason'),
-            'checker': (trust_context or {}).get('checker_identity')}
+            'checker': (trust_context or {}).get('checker_identity'), 'cpu_ns': r.get('cpu_ns')}
 
 
 # ---------------------------------------------------------------- scoring

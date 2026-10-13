@@ -464,6 +464,46 @@ class InsertionScreen:
         return dict(sorted(out.items()))
 
 
+class CustodianStatementScreen:
+    """Research-side client of the custodian's signed statement screen (B20R7-OPEN-2).
+
+    ``query(items)`` sends ``[{'route', 'system', 'statement'}]`` to the custodian (for example
+    ``custodian.screen_statements_for_research``) and returns its signed envelope; ``verify`` and
+    the custodian's public key check it. Any failure (transport, signature, a receipt for other
+    items, a malformed decision) BLOCKs: research never inserts on an unverifiable answer."""
+
+    def __init__(self, query, custodian_public_key, *, verify):
+        self._query, self._key, self._verify = query, custodian_public_key, verify
+        self._log = []
+
+    def __call__(self, route, system, item):
+        try:
+            items = [{'route': route, 'system': system, 'statement': Q.text((_as_tuple(item[0]), _as_tuple(item[1])))}]
+            payload = self._verify(self._query(items), self._key)
+            ok = payload.get('schema') == 'genesis-statement-screening-receipt-v1' and \
+                payload.get('items_sha256') == digest(items) and payload.get('decisions') in (['ALLOW'], ['BLOCK'])
+            decision = payload['decisions'][0] if ok else 'BLOCK'
+            reason = None if ok else 'RECEIPT_MISMATCH'
+        except Exception as exc:
+            decision, reason = 'BLOCK', f'UNVERIFIABLE:{type(exc).__name__}'
+        self._log.append({'route': route, 'decision': decision, 'reason': reason})
+        return {'decision': decision}
+
+    def log(self):
+        return [dict(x) for x in self._log]
+
+
+def both(*screens):
+    """A screen that ALLOWs only when every given screen ALLOWs (e.g. the study's own insertion
+    screen and the custodian's)."""
+    def screen(route, system, item):
+        for s in screens:
+            if s(route, system, item)['decision'] != 'ALLOW':
+                return {'decision': 'BLOCK'}
+        return {'decision': 'ALLOW'}
+    return screen
+
+
 def allow_all(route, system, item):
     """Explicit no-screen marker for DEV code paths that have nothing reserved."""
     return {'decision': 'ALLOW'}

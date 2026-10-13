@@ -136,8 +136,9 @@ class TheoremChecked(Base):
             if ev['rows'][0]['status'] != 'PROVED' or not ev['rows'][0]['lemmas_used']:
                 continue
             record = CU.target_records(ev, manifest, objs, panel_id='r8')[0]
-            if CU.replay_target(record, manifest, objs, task_statement=record['statement'],
-                                trust_context=tc)['status'] == 'CHECKED':
+            replayed = CU.replay_target(record, manifest, objs, task_statement=record['statement'], trust_context=tc)
+            if replayed['status'] == 'CHECKED':
+                assert type(replayed['cpu_ns']) is int and replayed['cpu_ns'] > 0     # B20R7-OPEN-1: checker CPU metered
                 break
         else:
             raise AssertionError('no replayable lemma-using proof found for the fixture')
