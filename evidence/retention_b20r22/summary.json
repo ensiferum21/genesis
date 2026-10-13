@@ -1,0 +1,237 @@
+{
+ "code_identity": "d7b3f5a40a088bf9f63843f9c75461d19e76849909a8bbd6f09f8d850d39a57d",
+ "measurements": [
+  {
+   "from": "fb97ca250bd872a2e45b0566740afabc132d7356ca355ccbd3d41deaae0550bb",
+   "panels": {
+    "legacy": {
+     "interval": [
+      -0.5,
+      0.0
+     ],
+     "mean": -0.25,
+     "verdict": "INCONCLUSIVE",
+     "wins_ties_losses": [
+      1,
+      10,
+      5
+     ]
+    },
+    "transfer": {
+     "interval": [
+      -1.0,
+      -0.25
+     ],
+     "mean": -0.625,
+     "verdict": "NEGATIVE_TRANSFER",
+     "wins_ties_losses": [
+      0,
+      4,
+      4
+     ]
+    }
+   },
+   "to": "a2f416f1bdfc78ac4fc6971f8356eac9bdf08298250aeb86d562014f76c6a723",
+   "verdict": "NEGATIVE_TRANSFER"
+  },
+  {
+   "from": "a2f416f1bdfc78ac4fc6971f8356eac9bdf08298250aeb86d562014f76c6a723",
+   "panels": {
+    "legacy": {
+     "interval": [
+      0.0,
+      0.0
+     ],
+     "mean": 0.0,
+     "verdict": "RETAINED",
+     "wins_ties_losses": [
+      0,
+      16,
+      0
+     ]
+    },
+    "transfer": {
+     "interval": [
+      0.0,
+      0.0
+     ],
+     "mean": 0.0,
+     "verdict": "RETAINED",
+     "wins_ties_losses": [
+      0,
+      8,
+      0
+     ]
+    }
+   },
+   "to": "5d0a6882341370d80c6eab2c7f615659bc480e7a288fb5e3fd07bb5009792c54",
+   "verdict": "RETAINED"
+  },
+  {
+   "from": "5d0a6882341370d80c6eab2c7f615659bc480e7a288fb5e3fd07bb5009792c54",
+   "panels": {
+    "legacy": {
+     "interval": [
+      0.0,
+      0.0
+     ],
+     "mean": 0.0,
+     "verdict": "RETAINED",
+     "wins_ties_losses": [
+      0,
+      16,
+      0
+     ]
+    },
+    "transfer": {
+     "interval": [
+      0.0,
+      0.0
+     ],
+     "mean": 0.0,
+     "verdict": "RETAINED",
+     "wins_ties_losses": [
+      0,
+      8,
+      0
+     ]
+    }
+   },
+   "to": "0eb78700afb4c7d2698caeaa5154442b1d2d27199f0070e426dcbdef92d24850",
+   "verdict": "RETAINED"
+  },
+  {
+   "from": "0eb78700afb4c7d2698caeaa5154442b1d2d27199f0070e426dcbdef92d24850",
+   "panels": {
+    "legacy": {
+     "interval": [
+      0.0,
+      0.0
+     ],
+     "mean": 0.0,
+     "verdict": "RETAINED",
+     "wins_ties_losses": [
+      0,
+      16,
+      0
+     ]
+    },
+    "transfer": {
+     "interval": [
+      0.0,
+      0.0
+     ],
+     "mean": 0.0,
+     "verdict": "RETAINED",
+     "wins_ties_losses": [
+      0,
+      8,
+      0
+     ]
+    }
+   },
+   "to": "c0d16252d36dbb75eaf94da5aa5056511f1ef388ba85641977e1d990c92349cb",
+   "verdict": "RETAINED"
+  },
+  {
+   "from": "fb97ca250bd872a2e45b0566740afabc132d7356ca355ccbd3d41deaae0550bb",
+   "panels": {
+    "legacy": {
+     "interval": [
+      -0.5,
+      0.0
+     ],
+     "mean": -0.25,
+     "verdict": "INCONCLUSIVE",
+     "wins_ties_losses": [
+      1,
+      10,
+      5
+     ]
+    },
+    "transfer": {
+     "interval": [
+      -1.0,
+      -0.25
+     ],
+     "mean": -0.625,
+     "verdict": "NEGATIVE_TRANSFER",
+     "wins_ties_losses": [
+      0,
+      4,
+      4
+     ]
+    }
+   },
+   "to": "c0d16252d36dbb75eaf94da5aa5056511f1ef388ba85641977e1d990c92349cb",
+   "verdict": "NEGATIVE_TRANSFER"
+  }
+ ],
+ "panels": {
+  "legacy": 16,
+  "transfer": 8
+ },
+ "pointer": [
+  {
+   "kind": "ACTIVATE",
+   "previous": null,
+   "reason": "initial version of the campaign",
+   "seq": 0,
+   "version": "fb97ca250bd872a2e45b0566740afabc132d7356ca355ccbd3d41deaae0550bb"
+  },
+  {
+   "kind": "ACTIVATE",
+   "previous": "fb97ca250bd872a2e45b0566740afabc132d7356ca355ccbd3d41deaae0550bb",
+   "reason": "generation 0 retained on DEV (public SELECT)",
+   "seq": 1,
+   "version": "a2f416f1bdfc78ac4fc6971f8356eac9bdf08298250aeb86d562014f76c6a723"
+  },
+  {
+   "kind": "ACTIVATE",
+   "previous": "a2f416f1bdfc78ac4fc6971f8356eac9bdf08298250aeb86d562014f76c6a723",
+   "reason": "generation 1 retained on DEV (public SELECT)",
+   "seq": 2,
+   "version": "5d0a6882341370d80c6eab2c7f615659bc480e7a288fb5e3fd07bb5009792c54"
+  },
+  {
+   "kind": "ACTIVATE",
+   "previous": "5d0a6882341370d80c6eab2c7f615659bc480e7a288fb5e3fd07bb5009792c54",
+   "reason": "generation 2 retained on DEV (public SELECT)",
+   "seq": 3,
+   "version": "0eb78700afb4c7d2698caeaa5154442b1d2d27199f0070e426dcbdef92d24850"
+  },
+  {
+   "kind": "ACTIVATE",
+   "previous": "0eb78700afb4c7d2698caeaa5154442b1d2d27199f0070e426dcbdef92d24850",
+   "reason": "generation 3 retained on DEV (public SELECT)",
+   "seq": 4,
+   "version": "c0d16252d36dbb75eaf94da5aa5056511f1ef388ba85641977e1d990c92349cb"
+  }
+ ],
+ "protocol": {
+  "budget": 5,
+  "level": 0.9,
+  "limits": {
+   "cpu_seconds": 1,
+   "memory_mib": 2048,
+   "output_bytes": 8388608,
+   "queries": 60,
+   "wall_seconds": 120
+  },
+  "margin": 0.5,
+  "material": "PROTECTED",
+  "resamples": 2000,
+  "schema": "genesis-retention-protocol-v1",
+  "seed": 0
+ },
+ "protocol_sha256": "323f7a290206d4176f76badce5408bbe81bb67ed041f2431c2d70f09a0f7110d",
+ "schema": "genesis-b20r22-retention-demo-v1",
+ "status": "DEV demonstration; licenses no claim",
+ "version_status": {
+  "0eb78700afb4c7d2698caeaa5154442b1d2d27199f0070e426dcbdef92d24850": "RETAINED",
+  "5d0a6882341370d80c6eab2c7f615659bc480e7a288fb5e3fd07bb5009792c54": "RETAINED",
+  "a2f416f1bdfc78ac4fc6971f8356eac9bdf08298250aeb86d562014f76c6a723": "RETAINED",
+  "c0d16252d36dbb75eaf94da5aa5056511f1ef388ba85641977e1d990c92349cb": "ACTIVE",
+  "fb97ca250bd872a2e45b0566740afabc132d7356ca355ccbd3d41deaae0550bb": "RETAINED"
+ }
+}
