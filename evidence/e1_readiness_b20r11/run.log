@@ -1,0 +1,36 @@
+[    2.8s] dev-erdos-80a647eb-20261113-0000: optimum 60, candidate 60, exchange 52, low_cycle 60, multistart 58
+[    5.2s] dev-erdos-80a647eb-20261113-0001: optimum 54, candidate 53, exchange 50, low_cycle 53, multistart 51
+[    7.6s] dev-erdos-80a647eb-20261113-0002: optimum 59, candidate 58, exchange 51, low_cycle 57, multistart 55
+[   10.1s] dev-erdos-80a647eb-20261113-0003: optimum 64, candidate 64, exchange 53, low_cycle 62, multistart 60
+[   13.2s] dev-erdos-80a647eb-20261113-0004: optimum 63, candidate 63, exchange 55, low_cycle 59, multistart 59
+[   15.5s] dev-erdos-80a647eb-20261113-0005: optimum 55, candidate 54, exchange 50, low_cycle 54, multistart 52
+[   17.7s] dev-erdos-80a647eb-20261113-0006: optimum 57, candidate 56, exchange 55, low_cycle 55, multistart 55
+[   20.2s] dev-erdos-80a647eb-20261113-0007: optimum 57, candidate 57, exchange 52, low_cycle 55, multistart 54
+[   22.8s] dev-erdos-80a647eb-20261113-0008: optimum 60, candidate 60, exchange 50, low_cycle 59, multistart 54
+[   25.3s] dev-erdos-80a647eb-20261113-0009: optimum 56, candidate 56, exchange 50, low_cycle 55, multistart 52
+[   27.9s] dev-erdos-80a647eb-20261113-0010: optimum 62, candidate 62, exchange 58, low_cycle 61, multistart 58
+[   30.2s] dev-erdos-80a647eb-20261113-0011: optimum 56, candidate 56, exchange 48, low_cycle 55, multistart 51
+[   32.9s] dev-erdos-80a647eb-20261113-0012: optimum 61, candidate 61, exchange 54, low_cycle 59, multistart 56
+[   36.0s] dev-erdos-80a647eb-20261113-0013: optimum 62, candidate 62, exchange 55, low_cycle 58, multistart 57
+[   38.4s] dev-erdos-80a647eb-20261113-0014: optimum 57, candidate 56, exchange 50, low_cycle 55, multistart 54
+[   40.8s] dev-erdos-80a647eb-20261113-0015: optimum 60, candidate 60, exchange 54, low_cycle 57, multistart 55
+[   43.1s] dev-erdos-80a647eb-20261113-0016: optimum 59, candidate 59, exchange 50, low_cycle 58, multistart 56
+[   45.3s] dev-erdos-80a647eb-20261113-0017: optimum 55, candidate 55, exchange 53, low_cycle 54, multistart 54
+[   47.7s] dev-erdos-80a647eb-20261113-0018: optimum 55, candidate 55, exchange 53, low_cycle 52, multistart 53
+[   49.7s] dev-erdos-80a647eb-20261113-0019: optimum 56, candidate 56, exchange 51, low_cycle 56, multistart 53
+[   52.2s] dev-erdos-80a647eb-20261113-0020: optimum 56, candidate 56, exchange 48, low_cycle 55, multistart 53
+[   55.0s] dev-erdos-80a647eb-20261113-0021: optimum 60, candidate 60, exchange 54, low_cycle 59, multistart 57
+[   57.1s] dev-erdos-80a647eb-20261113-0022: optimum 50, candidate 49, exchange 46, low_cycle 50, multistart 48
+[   59.4s] dev-erdos-80a647eb-20261113-0023: optimum 57, candidate 57, exchange 47, low_cycle 56, multistart 53
+[   63.3s] dev-erdos-80a647eb-20261113-0024: optimum 64, candidate 63, exchange 57, low_cycle 62, multistart 60
+[   66.9s] dev-erdos-80a647eb-20261113-0025: optimum 64, candidate 64, exchange 59, low_cycle 62, multistart 58
+[   75.8s] dev-erdos-80a647eb-20261113-0026: optimum 71, candidate 70, exchange 61, low_cycle 67, multistart 62
+[   80.3s] dev-erdos-80a647eb-20261113-0027: optimum 67, candidate 66, exchange 57, low_cycle 66, multistart 63
+[   83.3s] dev-erdos-80a647eb-20261113-0028: optimum 62, candidate 62, exchange 53, low_cycle 60, multistart 57
+[   85.7s] dev-erdos-80a647eb-20261113-0029: optimum 60, candidate 59, exchange 54, low_cycle 58, multistart 55
+[   86.2s] pilot: mean +1.333 vs low_cycle, W/T/L [24, 5, 1], cpu ratio 3.3845, DRAFT dry run NOT_SUPPORTED -> COST_RULE_FAILS
+[  101.5s] campaign frozen in 15 s
+[  101.8s] candidate frozen (efacc108a14d); campaign strongest baseline multistart; rehearsal request 4e935eb6cb75
+/usr/local/lib/python3.13/dist-packages/networkx/algorithms/graph_hashing.py:211: UserWarning: The hashes produced for graphs without node or edge attributes changed in v3.5 due to a bugfix (see documentation).
+  node_labels = _init_node_labels(G, edge_attr, node_attr)
+[  153.1s] rehearsal: NOT_SUPPORTED (W/L/T 24/0/1), judge agrees True, 51 s

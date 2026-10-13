@@ -1,0 +1,24 @@
+{
+ "descriptor_id": "1b70ccf64e9b035462c5027aaebe06d168857b9edd9fb1b9d58a541c0f8b2999",
+ "domain": "triangle_free_host_v1",
+ "implementation": {
+  "candidates.py": "981d18d74a09ed620d53d474f44413906df76f618a384cd89014a11420a91a1b",
+  "graphs.py": "ee2bf9c52399cd22bcfea7aace1272570a4348a59e4e801fb199118245942228",
+  "invention/representations.py": "5c53e369b93db4d854c1829587202423bd81c14eafa55808b77c1852f44bfcbd",
+  "invention/soundness.py": "9565b14bcfc0fb9ebe6a2e68c3030503c49c52020ae78508bcd857d3925e2b84",
+  "models.py": "2d10c569f5de3ee209ce07525972d199bba1168ae187ffc223880491fa701d05"
+ },
+ "kind": "represent-and-repair-v1",
+ "parameters": {
+  "cpu_seconds": 0.5,
+  "representation": "cross_2",
+  "seed": 0
+ },
+ "resource_profile": {
+  "cpu_seconds": 2,
+  "memory_mib": 2048,
+  "queries": 1000,
+  "wall_seconds": 10
+ },
+ "schema": "genesis-candidate-descriptor-v1"
+}

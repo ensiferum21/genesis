@@ -145,7 +145,7 @@
       "H04": "BLOCKED_ENVIRONMENT for external parts (re-checked 2026-10-12: PyPI and Docker registry unreachable)",
       "H05": "DONE ON DEV (B20_R5, B20_R7): descriptor requests v4, statement requests, sealed equational panels, three candidate kinds in the OCI sandbox; pending independent review",
       "H06": "PART: CRPD-2a codegree EQ abstraction (Lean-checked); CRPD-2b pending a pin-revision decision",
-      "H07": "PART: E3 negative on DEV; headroom pilots (selection, strategy, curation) found no research-policy headroom on the equational domain (B20R9-OPEN-1: a GV4 domain decision is needed)",
+      "H07": "PART: E3 negative on DEV; headroom pilots (selection, strategy, curation) found no research-policy headroom on the equational domain (B20R9-OPEN-1: a GV4 domain decision is needed); E1 readiness package prepared (handoff/e1), blocked on reviewed design decisions",
       "H08": "PART (B20_R4): campaigns write native lineage records; custodian checks generation requests; improver kind refused; recovery/rollback/retention outstanding",
       "H09-H12": "NOT_STARTED"
     },
@@ -243,6 +243,12 @@
           "16d649e"
         ],
         "result": "custodian statement screen; checker CPU metering; checker logs keep errors"
+      },
+      "B20_R11": {
+        "commits": [
+          "96fdf26"
+        ],
+        "result": "E1 package; effect replicates; DRAFT cost rule fails (3.38 > 3.0)"
       }
     },
     "open_after_b20_r5": [
@@ -278,6 +284,18 @@
       "R-04"
     ],
     "open_after_b20_r10": [
+      "B20R9-OPEN-1",
+      "B20R3-OPEN-2",
+      "B20R5-OPEN-2",
+      "B20R8-OPEN-1",
+      "B14-OPEN-4 (rest)",
+      "B20R-OPEN-3",
+      "R-04"
+    ],
+    "open_after_b20_r11": [
+      "B20R11-OPEN-1",
+      "B20R11-OPEN-2",
+      "B19-OPEN-4",
       "B20R9-OPEN-1",
       "B20R3-OPEN-2",
       "B20R5-OPEN-2",

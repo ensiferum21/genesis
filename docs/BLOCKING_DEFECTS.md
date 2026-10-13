@@ -271,3 +271,13 @@ Builder-run, DEV only. See `docs/checkpoints/B20_R9_R10_RECORD.md`.
 | B20R3-OPEN-3 | REPAIRED IN B20_R10. Error lines are now kept ahead of the tail in stored checker logs. | — |
 | B20R7-OPEN-1 | REPAIRED IN B20_R10. Lean replay reports checker CPU measured by cgroup; statement replay attempts carry it. | — |
 | B20R7-OPEN-2 | REPAIRED IN B20_R10. The custodian offers a signed statement screen, and research runs can require it (`CustodianStatementScreen`, `both`). | wire it into the next custodian-evaluated research study |
+
+## B20_R11 outcome (E1 readiness, GV3 path)
+
+Builder-run; DEV material; the rehearsal used fixture keys. See `docs/checkpoints/B20_R11_RECORD.md` and `handoff/e1/README.md`.
+
+| ID | Status or new finding | Needs |
+|---|---|---|
+| B19-OPEN-3 | Exercised for E1. The custodian runs the B19 candidate in the sandbox. A same-operator rehearsal went end to end (receipt v4, the judge agrees, 50 witnesses re-checked). | — |
+| B20R11-OPEN-1 | The cost rule makes the E1 DRAFT design unwinnable. Under equal sandbox metering the candidate uses 3.38× the strongest baseline's CPU, and the plan caps the ratio at 3.0, so every outcome is NOT_SUPPORTED whatever the effect (+1.33 per task on 30 DEV hosts). | a reviewed design decision made before any panel exists (for example time-matched baselines), never a threshold raised after this result |
+| B20R11-OPEN-2 | The comparator rules disagree. The DRAFT names the strongest baseline on a custodian SELECT panel, while the custodian's v4 check uses the campaign's own strongest baseline (`multistart` for this export; the pilot's strongest is `low_cycle`). | the reviewer fixes the rule; the request and the custodian check then follow it |

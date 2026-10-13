@@ -1,0 +1,512 @@
+[
+ {
+  "baseline": {
+   "cpu_ns": 275301558,
+   "run": "SUCCESS",
+   "value": 60
+  },
+  "candidate": {
+   "cpu_ns": 715525882,
+   "run": "SUCCESS",
+   "value": 60
+  },
+  "optimum": 60,
+  "split": "DEV",
+  "status": "SCORED",
+  "stratum": "erdos:80a647eb",
+  "task_id": "dev-erdos-80a647eb-20261113-0000"
+ },
+ {
+  "baseline": {
+   "cpu_ns": 202532401,
+   "run": "SUCCESS",
+   "value": 53
+  },
+  "candidate": {
+   "cpu_ns": 724427551,
+   "run": "SUCCESS",
+   "value": 53
+  },
+  "optimum": 54,
+  "split": "DEV",
+  "status": "SCORED",
+  "stratum": "erdos:80a647eb",
+  "task_id": "dev-erdos-80a647eb-20261113-0001"
+ },
+ {
+  "baseline": {
+   "cpu_ns": 186573336,
+   "run": "SUCCESS",
+   "value": 57
+  },
+  "candidate": {
+   "cpu_ns": 719193679,
+   "run": "SUCCESS",
+   "value": 58
+  },
+  "optimum": 59,
+  "split": "DEV",
+  "status": "SCORED",
+  "stratum": "erdos:80a647eb",
+  "task_id": "dev-erdos-80a647eb-20261113-0002"
+ },
+ {
+  "baseline": {
+   "cpu_ns": 180687410,
+   "run": "SUCCESS",
+   "value": 62
+  },
+  "candidate": {
+   "cpu_ns": 685632571,
+   "run": "SUCCESS",
+   "value": 64
+  },
+  "optimum": 64,
+  "split": "DEV",
+  "status": "SCORED",
+  "stratum": "erdos:80a647eb",
+  "task_id": "dev-erdos-80a647eb-20261113-0003"
+ },
+ {
+  "baseline": {
+   "cpu_ns": 195302271,
+   "run": "SUCCESS",
+   "value": 59
+  },
+  "candidate": {
+   "cpu_ns": 701187897,
+   "run": "SUCCESS",
+   "value": 63
+  },
+  "optimum": 63,
+  "split": "DEV",
+  "status": "SCORED",
+  "stratum": "erdos:80a647eb",
+  "task_id": "dev-erdos-80a647eb-20261113-0004"
+ },
+ {
+  "baseline": {
+   "cpu_ns": 185374262,
+   "run": "SUCCESS",
+   "value": 54
+  },
+  "candidate": {
+   "cpu_ns": 745650135,
+   "run": "SUCCESS",
+   "value": 54
+  },
+  "optimum": 55,
+  "split": "DEV",
+  "status": "SCORED",
+  "stratum": "erdos:80a647eb",
+  "task_id": "dev-erdos-80a647eb-20261113-0005"
+ },
+ {
+  "baseline": {
+   "cpu_ns": 180340492,
+   "run": "SUCCESS",
+   "value": 55
+  },
+  "candidate": {
+   "cpu_ns": 746353616,
+   "run": "SUCCESS",
+   "value": 56
+  },
+  "optimum": 57,
+  "split": "DEV",
+  "status": "SCORED",
+  "stratum": "erdos:80a647eb",
+  "task_id": "dev-erdos-80a647eb-20261113-0006"
+ },
+ {
+  "baseline": {
+   "cpu_ns": 260978670,
+   "run": "SUCCESS",
+   "value": 55
+  },
+  "candidate": {
+   "cpu_ns": 691451937,
+   "run": "SUCCESS",
+   "value": 57
+  },
+  "optimum": 57,
+  "split": "DEV",
+  "status": "SCORED",
+  "stratum": "erdos:80a647eb",
+  "task_id": "dev-erdos-80a647eb-20261113-0007"
+ },
+ {
+  "baseline": {
+   "cpu_ns": 204837499,
+   "run": "SUCCESS",
+   "value": 59
+  },
+  "candidate": {
+   "cpu_ns": 683900746,
+   "run": "SUCCESS",
+   "value": 60
+  },
+  "optimum": 60,
+  "split": "DEV",
+  "status": "SCORED",
+  "stratum": "erdos:80a647eb",
+  "task_id": "dev-erdos-80a647eb-20261113-0008"
+ },
+ {
+  "baseline": {
+   "cpu_ns": 201815663,
+   "run": "SUCCESS",
+   "value": 55
+  },
+  "candidate": {
+   "cpu_ns": 739564804,
+   "run": "SUCCESS",
+   "value": 56
+  },
+  "optimum": 56,
+  "split": "DEV",
+  "status": "SCORED",
+  "stratum": "erdos:80a647eb",
+  "task_id": "dev-erdos-80a647eb-20261113-0009"
+ },
+ {
+  "baseline": {
+   "cpu_ns": 184081495,
+   "run": "SUCCESS",
+   "value": 61
+  },
+  "candidate": {
+   "cpu_ns": 683730978,
+   "run": "SUCCESS",
+   "value": 62
+  },
+  "optimum": 62,
+  "split": "DEV",
+  "status": "SCORED",
+  "stratum": "erdos:80a647eb",
+  "task_id": "dev-erdos-80a647eb-20261113-0010"
+ },
+ {
+  "baseline": {
+   "cpu_ns": 196565865,
+   "run": "SUCCESS",
+   "value": 55
+  },
+  "candidate": {
+   "cpu_ns": 716184500,
+   "run": "SUCCESS",
+   "value": 56
+  },
+  "optimum": 56,
+  "split": "DEV",
+  "status": "SCORED",
+  "stratum": "erdos:80a647eb",
+  "task_id": "dev-erdos-80a647eb-20261113-0011"
+ },
+ {
+  "baseline": {
+   "cpu_ns": 257508916,
+   "run": "SUCCESS",
+   "value": 59
+  },
+  "candidate": {
+   "cpu_ns": 735737395,
+   "run": "SUCCESS",
+   "value": 61
+  },
+  "optimum": 61,
+  "split": "DEV",
+  "status": "SCORED",
+  "stratum": "erdos:80a647eb",
+  "task_id": "dev-erdos-80a647eb-20261113-0012"
+ },
+ {
+  "baseline": {
+   "cpu_ns": 270141520,
+   "run": "SUCCESS",
+   "value": 58
+  },
+  "candidate": {
+   "cpu_ns": 683012171,
+   "run": "SUCCESS",
+   "value": 62
+  },
+  "optimum": 62,
+  "split": "DEV",
+  "status": "SCORED",
+  "stratum": "erdos:80a647eb",
+  "task_id": "dev-erdos-80a647eb-20261113-0013"
+ },
+ {
+  "baseline": {
+   "cpu_ns": 191590402,
+   "run": "SUCCESS",
+   "value": 55
+  },
+  "candidate": {
+   "cpu_ns": 697560214,
+   "run": "SUCCESS",
+   "value": 56
+  },
+  "optimum": 57,
+  "split": "DEV",
+  "status": "SCORED",
+  "stratum": "erdos:80a647eb",
+  "task_id": "dev-erdos-80a647eb-20261113-0014"
+ },
+ {
+  "baseline": {
+   "cpu_ns": 188367890,
+   "run": "SUCCESS",
+   "value": 57
+  },
+  "candidate": {
+   "cpu_ns": 731823290,
+   "run": "SUCCESS",
+   "value": 60
+  },
+  "optimum": 60,
+  "split": "DEV",
+  "status": "SCORED",
+  "stratum": "erdos:80a647eb",
+  "task_id": "dev-erdos-80a647eb-20261113-0015"
+ },
+ {
+  "baseline": {
+   "cpu_ns": 220461143,
+   "run": "SUCCESS",
+   "value": 58
+  },
+  "candidate": {
+   "cpu_ns": 686853802,
+   "run": "SUCCESS",
+   "value": 59
+  },
+  "optimum": 59,
+  "split": "DEV",
+  "status": "SCORED",
+  "stratum": "erdos:80a647eb",
+  "task_id": "dev-erdos-80a647eb-20261113-0016"
+ },
+ {
+  "baseline": {
+   "cpu_ns": 179672761,
+   "run": "SUCCESS",
+   "value": 54
+  },
+  "candidate": {
+   "cpu_ns": 691769181,
+   "run": "SUCCESS",
+   "value": 55
+  },
+  "optimum": 55,
+  "split": "DEV",
+  "status": "SCORED",
+  "stratum": "erdos:80a647eb",
+  "task_id": "dev-erdos-80a647eb-20261113-0017"
+ },
+ {
+  "baseline": {
+   "cpu_ns": 195390953,
+   "run": "SUCCESS",
+   "value": 52
+  },
+  "candidate": {
+   "cpu_ns": 693054853,
+   "run": "SUCCESS",
+   "value": 55
+  },
+  "optimum": 55,
+  "split": "DEV",
+  "status": "SCORED",
+  "stratum": "erdos:80a647eb",
+  "task_id": "dev-erdos-80a647eb-20261113-0018"
+ },
+ {
+  "baseline": {
+   "cpu_ns": 190047763,
+   "run": "SUCCESS",
+   "value": 56
+  },
+  "candidate": {
+   "cpu_ns": 719546281,
+   "run": "SUCCESS",
+   "value": 56
+  },
+  "optimum": 56,
+  "split": "DEV",
+  "status": "SCORED",
+  "stratum": "erdos:80a647eb",
+  "task_id": "dev-erdos-80a647eb-20261113-0019"
+ },
+ {
+  "baseline": {
+   "cpu_ns": 195053901,
+   "run": "SUCCESS",
+   "value": 55
+  },
+  "candidate": {
+   "cpu_ns": 689679547,
+   "run": "SUCCESS",
+   "value": 56
+  },
+  "optimum": 56,
+  "split": "DEV",
+  "status": "SCORED",
+  "stratum": "erdos:80a647eb",
+  "task_id": "dev-erdos-80a647eb-20261113-0020"
+ },
+ {
+  "baseline": {
+   "cpu_ns": 192886654,
+   "run": "SUCCESS",
+   "value": 59
+  },
+  "candidate": {
+   "cpu_ns": 771244006,
+   "run": "SUCCESS",
+   "value": 60
+  },
+  "optimum": 60,
+  "split": "DEV",
+  "status": "SCORED",
+  "stratum": "erdos:80a647eb",
+  "task_id": "dev-erdos-80a647eb-20261113-0021"
+ },
+ {
+  "baseline": {
+   "cpu_ns": 187728066,
+   "run": "SUCCESS",
+   "value": 50
+  },
+  "candidate": {
+   "cpu_ns": 736068424,
+   "run": "SUCCESS",
+   "value": 49
+  },
+  "optimum": 50,
+  "split": "DEV",
+  "status": "SCORED",
+  "stratum": "erdos:80a647eb",
+  "task_id": "dev-erdos-80a647eb-20261113-0022"
+ },
+ {
+  "baseline": {
+   "cpu_ns": 194523675,
+   "run": "SUCCESS",
+   "value": 56
+  },
+  "candidate": {
+   "cpu_ns": 749170083,
+   "run": "SUCCESS",
+   "value": 57
+  },
+  "optimum": 57,
+  "split": "DEV",
+  "status": "SCORED",
+  "stratum": "erdos:80a647eb",
+  "task_id": "dev-erdos-80a647eb-20261113-0023"
+ },
+ {
+  "baseline": {
+   "cpu_ns": 262362410,
+   "run": "SUCCESS",
+   "value": 62
+  },
+  "candidate": {
+   "cpu_ns": 709381282,
+   "run": "SUCCESS",
+   "value": 63
+  },
+  "optimum": 64,
+  "split": "DEV",
+  "status": "SCORED",
+  "stratum": "erdos:80a647eb",
+  "task_id": "dev-erdos-80a647eb-20261113-0024"
+ },
+ {
+  "baseline": {
+   "cpu_ns": 255653529,
+   "run": "SUCCESS",
+   "value": 62
+  },
+  "candidate": {
+   "cpu_ns": 722646604,
+   "run": "SUCCESS",
+   "value": 64
+  },
+  "optimum": 64,
+  "split": "DEV",
+  "status": "SCORED",
+  "stratum": "erdos:80a647eb",
+  "task_id": "dev-erdos-80a647eb-20261113-0025"
+ },
+ {
+  "baseline": {
+   "cpu_ns": 208072195,
+   "run": "SUCCESS",
+   "value": 67
+  },
+  "candidate": {
+   "cpu_ns": 713850937,
+   "run": "SUCCESS",
+   "value": 70
+  },
+  "optimum": 71,
+  "split": "DEV",
+  "status": "SCORED",
+  "stratum": "erdos:80a647eb",
+  "task_id": "dev-erdos-80a647eb-20261113-0026"
+ },
+ {
+  "baseline": {
+   "cpu_ns": 195766482,
+   "run": "SUCCESS",
+   "value": 66
+  },
+  "candidate": {
+   "cpu_ns": 701986573,
+   "run": "SUCCESS",
+   "value": 66
+  },
+  "optimum": 67,
+  "split": "DEV",
+  "status": "SCORED",
+  "stratum": "erdos:80a647eb",
+  "task_id": "dev-erdos-80a647eb-20261113-0027"
+ },
+ {
+  "baseline": {
+   "cpu_ns": 251379036,
+   "run": "SUCCESS",
+   "value": 60
+  },
+  "candidate": {
+   "cpu_ns": 682598302,
+   "run": "SUCCESS",
+   "value": 62
+  },
+  "optimum": 62,
+  "split": "DEV",
+  "status": "SCORED",
+  "stratum": "erdos:80a647eb",
+  "task_id": "dev-erdos-80a647eb-20261113-0028"
+ },
+ {
+  "baseline": {
+   "cpu_ns": 217156942,
+   "run": "SUCCESS",
+   "value": 58
+  },
+  "candidate": {
+   "cpu_ns": 681294261,
+   "run": "SUCCESS",
+   "value": 59
+  },
+  "optimum": 60,
+  "split": "DEV",
+  "status": "SCORED",
+  "stratum": "erdos:80a647eb",
+  "task_id": "dev-erdos-80a647eb-20261113-0029"
+ }
+]

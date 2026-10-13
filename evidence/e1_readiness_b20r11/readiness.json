@@ -1,0 +1,79 @@
+{
+ "code_identity": "c5fa0b2f9d12547453069ef1b5fab5bebe3ad37d8f80f555ddcd1d2437e05c6a",
+ "package": {
+  "campaign_strongest_baseline": "multistart",
+  "candidate_version": "efacc108a14d49efc3e4fe8500ef748c26a7e5743f1f8df25a043ed0d66a2dde",
+  "judge_agrees": true,
+  "rehearsal_outcome": "NOT_SUPPORTED"
+ },
+ "pilot": {
+  "baseline_optimum_hits": 3,
+  "baseline_totals": {
+   "exchange": 1580,
+   "low_cycle": 1729,
+   "multistart": 1663
+  },
+  "candidate_optimum_hits": 20,
+  "candidate_parameters": {
+   "cpu_seconds": 0.5,
+   "representation": "cross_2",
+   "seed": 0
+  },
+  "candidate_total": 1769,
+  "cpu_ns_by_arm": {
+   "candidate": 21350081502,
+   "exchange": 6262944083,
+   "low_cycle": 6308155160,
+   "multistart": 6568767444
+  },
+  "cpu_ratio_candidate_to_strongest": 3.3845,
+  "descriptors": {
+   "candidate": "1b70ccf64e9b035462c5027aaebe06d168857b9edd9fb1b9d58a541c0f8b2999",
+   "exchange": "fd95f1eb77c5fb1834e717a5afa295dfd1926815119ef762b5c87b610f729917",
+   "low_cycle": "38935724155a11dd5b033c1a3a2215626ed6b69d67bc2dd94e069ac640cbb15d",
+   "multistart": "2922bb89f7f6dc2f99754b2636e5a1616c442af2150082cee41b881cb7c84143"
+  },
+  "draft_plan_dry_run": {
+   "checks": {
+    "cost_within_bound": false,
+    "estimate_reaches_minimum_useful_effect": true,
+    "holm_rejects_no_superiority": true,
+    "interval_lower_above_zero": true,
+    "no_stratum_regression": true
+   },
+   "cost_ratio": 3.3845206658,
+   "decision": "NOT_SUPPORTED",
+   "estimate": 1.3333333333,
+   "interval": [
+    1.0,
+    1.7
+   ],
+   "p_value": 4.99975e-05
+  },
+  "failures": {
+   "candidate": 0,
+   "exchange": 0,
+   "low_cycle": 0,
+   "multistart": 0
+  },
+  "mean_difference": 1.3333,
+  "plan_max_cost_ratio": 3.0,
+  "plan_minimum_useful_effect": 0.5,
+  "profile": {
+   "cpu_seconds": 2,
+   "memory_mib": 2048,
+   "queries": 1000,
+   "wall_seconds": 10
+  },
+  "scored": 30,
+  "status": "DEV pilot under the custodian runner; no sealed task; no claim",
+  "strongest_baseline": "low_cycle",
+  "tasks": 30,
+  "verdict": "COST_RULE_FAILS",
+  "wins_ties_losses": [
+   24,
+   5,
+   1
+  ]
+ }
+}

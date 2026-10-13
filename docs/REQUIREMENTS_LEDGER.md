@@ -206,7 +206,7 @@ Proposed DEFERRED_EXTENSION rows remain NOT_IMPLEMENTED until Daniel agrees the 
 | GV0 | trust repaired: R-01..R-04 closed, no critical evidence-integrity defect open | NOT_IMPLEMENTED | trust repaired: R-01..R-04 closed, no critical evidence-integrity defect open | — | — | R-04 second-machine acceptance<br>independent source review | N/A |
 | GV1 | bounded platform accepted | NOT_IMPLEMENTED | bounded platform accepted | — | — | independent release-matrix run<br>audited bundle | N/A |
 | GV2 | real formal discovery loop | NOT_IMPLEMENTED | real formal discovery loop | — | — | independent replay of the B17 theory package<br>conjectures and proofs beyond builder templates and rediscovery | NOT_TESTED |
-| GV3 | useful verified discovery on fresh tasks | NOT_IMPLEMENTED | useful verified discovery on fresh tasks | — | — | independent custodian<br>fresh panels | NOT_TESTED |
+| GV3 | useful verified discovery on fresh tasks | NOT_IMPLEMENTED | useful verified discovery on fresh tasks | — | — | independent custodian<br>fresh panels<br>reviewed E1 design decisions (handoff/e1: power model, cost rule, comparator) | NOT_TESTED |
 | GV4 | better improver | NOT_IMPLEMENTED | better improver | — | — | independent search runs<br>sealed downstream evaluation | NOT_TESTED |
 | GV5 | three compounding generations | NOT_IMPLEMENTED | three compounding generations | — | — | fresh panels per transition | NOT_TESTED |
 | GV6 | meaningful transfer to a structurally different domain | NOT_IMPLEMENTED | meaningful transfer to a structurally different domain | — | — | different formal domain | NOT_TESTED |

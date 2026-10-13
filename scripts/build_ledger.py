@@ -488,7 +488,9 @@ GATES = {f'GV{i}': (N, t, [], [], [], b, 'NOT_TESTED' if i >= 2 else 'N/A', w) f
     (1, 'bounded platform accepted', ['independent release-matrix run', 'audited bundle'], 'W04'),
     (2, 'real formal discovery loop', ['independent replay of the B17 theory package',
                                        'conjectures and proofs beyond builder templates and rediscovery'], 'W08'),
-    (3, 'useful verified discovery on fresh tasks', ['independent custodian', 'fresh panels'], 'W13'),
+    (3, 'useful verified discovery on fresh tasks', ['independent custodian', 'fresh panels',
+                                                   'reviewed E1 design decisions (handoff/e1: power model, cost '
+                                                   'rule, comparator)'], 'W13'),
     (4, 'better improver', ['independent search runs', 'sealed downstream evaluation'], 'W21'),
     (5, 'three compounding generations', ['fresh panels per transition'], 'W21'),
     (6, 'meaningful transfer to a structurally different domain', ['different formal domain'], 'W24'),

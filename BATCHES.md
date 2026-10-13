@@ -50,6 +50,7 @@ session can resume from the latest checkpoint (see `RESUME.md`).
 | 20_R8 | Replay contracts | B14-OPEN-4 (handoff s12.2) | Kernel-replayed exact checks (FINITE_CERTIFIED, two methods), theorem claims with Lean replay from equational custody (THEOREM_CHECKED) and DEV analysis recomputation (DEV_ONLY, CORRELATED); causal, replication and priority still fail closed; 6 tests. Builder-run |
 | 20_R9 | Library curation pilot | B20R3-OPEN-1/2 | Curating which lemmas to keep: NO_CURATION_HEADROOM on four variants (at most +1/12); across B20_R3/R6/R9 no research-policy dimension reaches 2/12 on the equational domain. DEV design diagnostic |
 | 20_R10 | Small open items | B20R7-OPEN-1/2, B20R3-OPEN-3 | Custodian statement screen for research (signed, fails closed); checker CPU metered; error lines kept in checker logs |
+| 20_R11 | E1 readiness through the custodian runner | GV3 path; B19-OPEN-3/4 | E1 effect replicates under equal sandbox metering (+1.33/task, 24W/5T/1L) but the DRAFT cost rule fails (CPU ratio 3.38 > 3.0); handoff/e1 package; same-operator rehearsal end to end (NOT_SUPPORTED on cost, judge agrees). Builder-run, fixture keys |
 
 Later phases (B17–B23+) follow the roadmap and its gates; numbers are labels,
 not estimates.
