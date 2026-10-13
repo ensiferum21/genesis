@@ -13,6 +13,14 @@ from .models import GraphTask
 class SearchLimit(RuntimeError): pass
 
 
+class CheckerDisagreement(RuntimeError):
+    """Two checkers of one exact question disagree (W23): never a verdict. Carries the question, the
+    input and both results so the caller can quarantine the subject (verification.reliability)."""
+    def __init__(self,message,*,question,inputs,results):
+        super().__init__(message)
+        self.question=question;self.inputs=inputs;self.results=results
+
+
 def normalize(n,edges):
     if type(n) is not int or not 0<=n<=63: raise ValueError('vertex bound')
     if not isinstance(edges,(list,tuple)): raise ValueError('edge collection')
@@ -57,7 +65,9 @@ def check_witness(task,edges):
     es=normalize(task.n,edges)
     if not set(es)<=set(task.edges):raise ValueError('witness edge outside host')
     a,b=forbidden_a(task,es),forbidden_b(task,es)
-    if a!=b:raise RuntimeError('CHECKER_ERROR: predicate disagreement')
+    if a!=b:raise CheckerDisagreement('CHECKER_ERROR: predicate disagreement',question='motif_free',
+                                      inputs={'task':task.model_dump(mode='json'),'edges':[list(e) for e in es]},
+                                      results={'explicit-motifs-v1':not a,'neighbor-bitsets-v1':not b})
     if a:raise ValueError('forbidden motif in witness')
     return {'status':'WITNESS_VALID','selected':es,'value':len(es),
             'task_sha256':digest(task.model_dump(mode='json')),
@@ -143,7 +153,11 @@ def exact_checker(task,max_edges=24,max_nodes=1000000):
 def certified_optimum(task,max_edges=24):
     producer=exact_producer(task,max_edges)
     checker=exact_checker(task,max_edges)
-    if producer['value']!=checker['value']:raise RuntimeError('CHECKER_ERROR: exact optimizers disagree')
+    if producer['value']!=checker['value']:
+        raise CheckerDisagreement('CHECKER_ERROR: exact optimizers disagree',question='max_motif_free_edges',
+                                  inputs={'task':task.model_dump(mode='json')},
+                                  results={'motif-hitting-set':producer['value'],
+                                           'incremental-branch-bound':checker['value']})
     return {'status':'FINITE_CERTIFIED','value':checker['value'],'producer':producer,'checker':checker,
             'scope':'this finite host only','formal_proof':False,'novelty':'UNKNOWN'}
 

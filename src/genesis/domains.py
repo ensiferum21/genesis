@@ -151,7 +151,10 @@ class GraphHostAdapter(DomainAdapter):
             edges = tuple(tuple(e) for e in witness)
             checked = check_witness(task, edges)
         except RuntimeError as exc:               # dual predicates disagree: never a verdict
-            return {'status': 'CHECKER_ERROR', 'reason': str(exc)}
+            out = {'status': 'CHECKER_ERROR', 'reason': str(exc)}
+            if getattr(exc, 'results', None) is not None:      # W23: kept for quarantine
+                out['disagreement'] = {'question': exc.question, 'inputs': exc.inputs, 'results': exc.results}
+            return out
         except (ValueError, TypeError) as exc:
             return {'status': 'INVALID', 'reason': str(exc)}
         return {'status': 'VALID', 'value': checked['value'], 'checkers': checked['checkers']}
