@@ -177,6 +177,10 @@
       "B20_R8": {
         "commit": "ae50d743a857a06d604e73f743ddb05f6d583b7e",
         "sha256": "9f34fec87fa1f336475dfd29cd85eddd7e7053cf21340d26f608bc2c97a4334f"
+      },
+      "B20_R16": {
+        "commit": "988c7f5794c1395961eae6fd281eb8afd9382bd0",
+        "sha256": "c0a201b09e39b4234f8a45bec1d92466feb17567aa3f5e12f04af639df80c37a"
       }
     },
     "adopted_from_crpd_v3_status": {
@@ -324,6 +328,20 @@
           "1095e42"
         ],
         "result": "H08 s20.6 active version, rollback, version revocation, resume gate"
+      },
+      "B20_R17": {
+        "commits": [
+          "14c77be",
+          "6425ff5"
+        ],
+        "result": "generated oriented 3-cycle decoder: Lean-checked semantics/transport; NO_UTILITY_AFTER_COST on DEV"
+      },
+      "B20_R18": {
+        "commits": [
+          "35c2807",
+          "ccde553"
+        ],
+        "result": "DEV comparison v2: rows bound to journalled executions"
       }
     },
     "open_after_b20_r5": [
@@ -390,6 +408,18 @@
       "B14-OPEN-4 (pending review)",
       "B20R-OPEN-3 (pending review)",
       "R-04"
+    ],
+    "open_after_b20_r18": [
+      "B20R12-OPEN-1",
+      "B19-OPEN-4",
+      "B20R9-OPEN-1 (GV4: component invention)",
+      "B20R3-OPEN-2",
+      "B20R5-OPEN-2",
+      "H08 retention/negative transfer",
+      "B14-OPEN-4 (pending review)",
+      "B20R-OPEN-3 (pending review)",
+      "R-04",
+      "B20R8-OPEN-1 (pending review)"
     ]
   }
 }
