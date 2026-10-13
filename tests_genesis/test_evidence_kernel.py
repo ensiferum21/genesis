@@ -61,17 +61,23 @@ class MathPromotion(Base):
 
     def test_declared_verdicts_without_a_replay_contract_license_nothing(self):
         # B14 red team round 2 (C2): exact/formal/causal/replication nodes are producer-written verdicts
-        # until a replay contract exists, however many there are.
+        # until a replay contract exists, however many there are. B20_R8 added contracts for exact_check,
+        # formal_check and dev_comparison (tests_genesis/test_replay_contracts.py): a declared verdict
+        # still licenses nothing there, because its payload does not replay.
         a = self.check('exact_check', [self.run])
         b = self.check('exact_check', [self.run], verifier='exact-b')
-        math_claim(self.k, 'two', [a, b])
-        self.rejects('two', 'math', 'FINITE_CERTIFIED', 'no replay contract for exact_check')
-        for kind, axis, level in (('formal_check', 'math', 'THEOREM_CHECKED'), ('ablation', 'causality',
-                                  'ABLATION_SUPPORTED'), ('internal_replication', 'replication', 'INTERNAL_INDEPENDENT'),
-                                  ('dev_comparison', 'utility', 'DEV_ONLY'), ('priority_check', 'novelty', 'REDISCOVERY')):
+        math_claim(self.k, 'two', [a, b], claim='optimum')
+        self.rejects('two', 'math', 'FINITE_CERTIFIED', 'not a replayable exact check')
+        for kind, axis, level, fragment in (
+                ('formal_check', 'math', 'THEOREM_CHECKED', 'not a replayable formal check'),
+                ('ablation', 'causality', 'ABLATION_SUPPORTED', 'no replay contract for ablation'),
+                ('internal_replication', 'replication', 'INTERNAL_INDEPENDENT',
+                 'no replay contract for internal_replication'),
+                ('dev_comparison', 'utility', 'DEV_ONLY', 'not a replayable DEV comparison'),
+                ('priority_check', 'novelty', 'REDISCOVERY', 'no replay contract for priority_check')):
             n = self.check(kind, [self.run], verdict='PASS')
             math_claim(self.k, f'declared-{kind}', [n])
-            self.rejects(f'declared-{kind}', axis, level, f'no replay contract for {kind}')
+            self.rejects(f'declared-{kind}', axis, level, fragment)
         # A witness check is replayed: a wrong witness or a declared value does not pass.
         bad = self.check('witness_check', [self.run], payload=dict(witness_payload(self.store), value=4))
         math_claim(self.k, 'badw', [bad])

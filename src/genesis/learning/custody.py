@@ -98,6 +98,8 @@ class MemoryObjects:
         return h
 
     def get(self, h):
+        if h not in self._d:
+            raise FileNotFoundError(f'object {str(h)[:12]} is not in custody')    # like ObjectStore: an OSError
         data = self._d[h]
         if _sha(data) != h:
             raise ValueError('object corruption')

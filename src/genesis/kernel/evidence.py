@@ -25,9 +25,11 @@ import json
 from .. import eligibility
 from ..common import digest, utcnow
 from . import receipts as R
+from . import replay_contracts as RC
 from .roles import load_role_registry
 
 MATH_SCOPE = 'this finite host only'
+THEOREM_SCOPE = 'this equation under these axioms only'
 
 
 class Effect(str, Enum):
@@ -96,7 +98,7 @@ REQUIRED_EVIDENCE = {
     ('replication', 'EXTERNAL_REPRODUCTION'): [('external_reproduction', 1)],
 }
 # Kinds the kernel can re-check itself; any other unsigned kind cannot license a level.
-REPLAYABLE = {'witness_check', 'bound_state', 'execution_receipt'}
+REPLAYABLE = {'witness_check', 'bound_state', 'execution_receipt'} | set(RC.CONTRACTED)   # RC: B20_R8 contracts
 # Kinds whose meaning comes only from an envelope signed by a registry role (kernel.receipts).
 EXTERNALLY_SIGNED = set(R.KIND_ROLES) - {'preregistration_anchor'}
 SIGNED_KINDS = set(R.KIND_ROLES)
@@ -436,14 +438,23 @@ class EvidenceKernel:
                 raise ValueError('claim statement/scope differ from the ones committed before evaluation')
             claim['binding'] = binding
         if problem is not None:
-            if not isinstance(problem, dict) or set(problem) != {'task_sha256', 'value', 'claim'} \
+            theorem = isinstance(problem, dict) and problem.get('claim') == 'theorem'
+            if theorem:
+                # B20_R8: a theorem claim names a stored equation under its system's exact axioms.
+                if set(problem) != {'theorem_sha256', 'claim'} or not R.hex64(problem['theorem_sha256']):
+                    raise ValueError("a theorem problem is {theorem_sha256, claim: 'theorem'}")
+                why = RC.theorem_problems(self.s.get(problem['theorem_sha256']))
+                if why:
+                    raise ValueError('theorem problem: ' + '; '.join(why))
+            elif not isinstance(problem, dict) or set(problem) != {'task_sha256', 'value', 'claim'} \
                     or not R.hex64(problem['task_sha256']) or type(problem['value']) is not int \
                     or problem['claim'] not in ('lower_bound', 'optimum'):
                 raise ValueError("problem must be {task_sha256, value, claim: 'lower_bound' | 'optimum'}")
             if statement != self.math_statement(problem):
                 raise ValueError('a mathematical claim states exactly its problem: use EvidenceKernel.math_statement')
-            if scope != MATH_SCOPE:
-                raise ValueError(f'a mathematical claim is confined to its checked problem: scope must be {MATH_SCOPE!r}')
+            want = THEOREM_SCOPE if theorem else MATH_SCOPE
+            if scope != want:
+                raise ValueError(f'a mathematical claim is confined to its checked problem: scope must be {want!r}')
             claim['problem'] = problem
         self.s.save('claim', claim_id, claim)  # raises if the identity is reused with other content
         if self.s.state(f'claimlevels:{claim_id}') is None:
@@ -451,6 +462,9 @@ class EvidenceKernel:
         return claim
 
     def _problem_name(self, problem):
+        if problem.get('claim') == 'theorem':
+            t = self.s.get(problem['theorem_sha256'])
+            return f"the {t['system']} axioms [{problem['theorem_sha256'][:16]}]"
         task = self.s.get(problem['task_sha256'])  # the problem must be in the store
         domain, task_id = task.get('domain'), task.get('task_id')
         if not all(isinstance(x, str) and x and x.isprintable() and len(x) <= 128 for x in (domain, task_id)):
@@ -462,6 +476,8 @@ class EvidenceKernel:
         the text cannot name a different host, domain or value. Generating it does not establish
         it: what may be asserted now is `current_wording` (external B14 review, F-01)."""
         name = self._problem_name(problem)
+        if problem['claim'] == 'theorem':
+            return f"under {name}, {self.s.get(problem['theorem_sha256'])['statement']} holds"
         if problem['claim'] == 'optimum':
             return f"the optimum for {name} is {problem['value']} edges"
         return f"{name} has a valid subgraph with {problem['value']} edges"
@@ -483,8 +499,12 @@ class EvidenceKernel:
         if problem is not None:
             contract, math = 'GENERATED_FROM_PROBLEM', levels['math']
             name = self._problem_name(problem)
-            if math == 'OPTIMALITY_CHECKED' and problem['claim'] == 'optimum':
+            if problem['claim'] == 'theorem':
+                current = self.math_statement(problem) if math == 'THEOREM_CHECKED' else None
+            elif math == 'OPTIMALITY_CHECKED' and problem['claim'] == 'optimum':
                 current = f"the optimum for {name} is {problem['value']} edges"
+            elif math == 'FINITE_CERTIFIED' and problem['claim'] == 'optimum':
+                current = f"the optimum for {name} is {problem['value']} edges (two exhaustive computations)"
             elif AXES['math'].index(math) >= AXES['math'].index('WITNESS_VALID'):
                 current = f"{name} has a valid subgraph with {problem['value']} edges"
             else:
@@ -611,6 +631,9 @@ class EvidenceKernel:
             problem = claim.get('problem')
             if problem is None:
                 reasons.append('a mathematical claim must name its exact problem (create_claim(..., problem=...))')
+            elif (problem['claim'] == 'theorem') != (level == 'THEOREM_CHECKED'):
+                reasons.append('THEOREM_CHECKED is the math level of a theorem claim, and a theorem claim has no '
+                               'finite-problem levels')
             elif level == 'OPTIMALITY_CHECKED' and problem['claim'] != 'optimum':
                 reasons.append('OPTIMALITY_CHECKED needs a claim of the optimum, not of a lower bound')
         for kind, count in REQUIRED_EVIDENCE.get((axis, level), []):
@@ -658,8 +681,8 @@ class EvidenceKernel:
                         reasons.append(f'witness_check {d[:12]}: {why}')
                         continue
                     wp = self.payload(d)
-                    if claim.get('problem') is not None and (wp['task_sha256'] != claim['problem']['task_sha256']
-                                                             or wp['value'] != claim['problem']['value']):
+                    if claim.get('problem') is not None and (wp['task_sha256'] != claim['problem'].get('task_sha256')
+                                                             or wp['value'] != claim['problem'].get('value')):
                         reasons.append(f'witness_check {d[:12]} is for a different problem or value than the claim')
                         continue
                 if kind == 'execution_receipt':
@@ -667,11 +690,16 @@ class EvidenceKernel:
                     if why:
                         reasons.append(f'execution_receipt {d[:12]}: {why}')
                         continue
+                if kind in RC.CONTRACTED:
+                    why = self._contract_problems(d, kind, claim.get('problem'))
+                    if why:
+                        reasons.append(f'{kind} {d[:12]}: {why}')
+                        continue
                 usable.append((d, n))
             if kind == 'exact_check':
-                distinct = {n['verifier'] for _, n in usable}
+                distinct = {self.payload(d)['method'] for d, _ in usable}
                 if len(distinct) < count:
-                    reasons.append(f'needs {count} independent exact checkers, found {len(distinct)}')
+                    reasons.append(f'needs {count} exact checks by different methods that replay, found {len(distinct)}')
             elif kind == 'bound_state':
                 if claim.get('problem') is None:
                     pass  # reported above
@@ -722,6 +750,25 @@ class EvidenceKernel:
                 why = f'witness replay failed ({type(exc).__name__})'
         cache[nid] = why
         return why
+
+    def _contract_problems(self, nid, kind, problem):
+        """B20_R8 replay contracts (kernel.replay_contracts). Replays are cached per (node, problem,
+        revocation state); a formal replay also per checker identity. Returns a reason or None."""
+        cache = self.__dict__.setdefault('_contract_replays', {})
+        ref = (nid, digest(problem) if problem is not None else None, self.revocation_head())
+        if ref not in cache:
+            p = self.payload(nid)
+            try:
+                if kind == 'exact_check':
+                    why, _ = RC.exact_problems(self.s.get, p, problem)
+                elif kind == 'formal_check':
+                    why, _ = RC.formal_problems(self.s.get, p, problem, revoked_verifiers=self.revoked_verifiers())
+                else:
+                    why = RC.dev_problems(p)
+            except Exception as exc:                   # a replay that cannot run licenses nothing
+                why = [f'replay could not run ({type(exc).__name__})']
+            cache[ref] = '; '.join(why) if why else None
+        return cache[ref]
 
     def _execution_problems(self, nid):
         """EXECUTABLE needs a reference to something that ran: a finished attempt or a stored IR program."""
@@ -779,7 +826,7 @@ class EvidenceKernel:
             return 'bound state lacks certificate custody (genesis-bound-state-v2 with lower and upper evidence)'
         if p['gap'] != 0 or p['upper'] != p['lower']:
             return 'gap is not 0'
-        if problem is not None and (p['task_sha256'] != problem['task_sha256'] or p['upper'] != problem['value']):
+        if problem is not None and (p['task_sha256'] != problem.get('task_sha256') or p['upper'] != problem.get('value')):
             return 'bound state is for a different problem or value than the claim'
         if p['lower_evidence'] not in self.node(nid)['parents'] or not self._has_node(p['lower_evidence']):
             return 'lower evidence is not a parent of the bound state'
