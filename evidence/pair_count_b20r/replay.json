@@ -1,0 +1,40 @@
+{
+ "acceptance_receipt_sha256": "cecc1b8aef6474df4f79cc22bc412fa5fe7e9aa8e6276e7d7ec776160cd924c5",
+ "bindings": [
+  [
+   "PCP1.proof",
+   "CHECKED"
+  ],
+  [
+   "PCP2.proof",
+   "CHECKED"
+  ]
+ ],
+ "certificates": [],
+ "checked_in_lean": true,
+ "differences": [],
+ "environment": {
+  "allowed_axioms": [
+   "Classical.choice",
+   "Quot.sound",
+   "propext"
+  ],
+  "forbidden_patterns_sha256": "9fd4c6ac9bc7916090106c8d787616b03472c6dec29438513221124ba053442e",
+  "lean": "lean@e8baaa71855a616d",
+  "lean_sha256": "e8baaa71855a616dc351028f3ad2200051b0671f423a1696a100e809302d5550",
+  "workspace": {
+   "artifact_identity": "be8f86a8ad460109a1c31eb061bf99309b3d032cf5e6462938261f8e3cd840ca",
+   "import_roots": [
+    "Mathlib.Data.Finset.Powerset",
+    "Mathlib.Algebra.BigOperators.Group.Finset.Sigma",
+    "Mathlib.Algebra.Order.BigOperators.Ring.Finset"
+   ],
+   "mathlib_rev": "d13f23b723b8a846827a245b89c10fc7d3f11612",
+   "source_identity": "7f5bcfa11bd7d91dddd1bb4839a70b33bc7e3b125695d754166d343397ac50b0"
+  }
+ },
+ "package_sha256": "7e45d2889c5189f3cb50b4d037d7917fdd73ab22f002c73f0c026e8731ca55d2",
+ "replayed_at": "2026-10-13T09:13:53.940930+00:00",
+ "schema": "genesis-theory-replay-v1",
+ "verdict": "REPLAYED"
+}

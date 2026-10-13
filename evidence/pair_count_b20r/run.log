@@ -1,0 +1,13 @@
+[   23.2s] pair_count_c4: CHECKED (pair-count-injection (builder-written))
+[   32.6s] c4_quadratic_bound: CHECKED (handshake-cauchy-schwarz (builder-written))
+[   50.3s] statements {'pair_count_c4': 'CHECKED', 'c4_quadratic_bound': 'CHECKED'}; package problems []; replay REPLAYED
+[   63.4s] complete-k3: n=3 m=3 optimum=3 bound=3 replay=OPTIMALITY_CHECKED []
+[   63.5s] complete-k4: n=4 m=6 optimum=4 bound=4 replay=OPTIMALITY_CHECKED []
+[   63.6s] complete-k5: n=5 m=10 optimum=6 bound=6 replay=OPTIMALITY_CHECKED []
+[   63.8s] complete-k6: n=6 m=15 optimum=7 bound=8 replay=BOUNDS_CHECKED []
+[   64.2s] complete-k7: n=7 m=21 optimum=9 bound=10 replay=BOUNDS_CHECKED []
+[   64.7s] dense-0: n=8 m=24 optimum=11 bound=12 replay=BOUNDS_CHECKED []
+[   65.4s] dense-1: n=8 m=24 optimum=11 bound=12 replay=BOUNDS_CHECKED []
+[   65.6s] dense-2: n=7 m=19 optimum=9 bound=10 replay=BOUNDS_CHECKED []
+[   66.0s] dense-3: n=8 m=22 optimum=11 bound=12 replay=BOUNDS_CHECKED []
+[   66.0s] certificates: [('complete-k3', 'OPTIMALITY_CHECKED'), ('complete-k4', 'OPTIMALITY_CHECKED'), ('complete-k5', 'OPTIMALITY_CHECKED'), ('complete-k6', 'BOUNDS_CHECKED'), ('complete-k7', 'BOUNDS_CHECKED'), ('dense-0', 'BOUNDS_CHECKED'), ('dense-1', 'BOUNDS_CHECKED'), ('dense-2', 'BOUNDS_CHECKED'), ('dense-3', 'BOUNDS_CHECKED')]
