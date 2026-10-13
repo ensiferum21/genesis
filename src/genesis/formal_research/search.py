@@ -132,16 +132,22 @@ def search(conj, *, conj_const, context, library, unfold, counterexample=None, e
         name = f'{base}T{tier}'
         source, ranges = candidate_module(name, target, unfold_first, context['imports'], cands)
         r = C.compile_module(name, source, context['artifacts'], env, policy, heartbeats=heartbeats)
-        errors = [int(n) for n in re.findall(rf'(?m)^{name}\.lean:(\d+):\d+: error', r['log'])] \
+        found_errors = [(int(m.group(2)), m.group(1))
+                        for m in re.finditer(rf'(?m)^({name}\.lean:(\d+):\d+: error.*)$', r['log'])] \
             if r['result'] != 'COMPILED' else []
+        errors = [n for n, _ in found_errors]
         whole_failed = r['result'] in ('TIMEOUT', 'RESOURCE_LIMIT', 'CHECKER_ERROR') or \
             (r['result'] != 'COMPILED' and not errors)
         sorry = re.search(r'declaration uses .sorry.', r['log']) is not None
         for j, (rid, text) in enumerate(cands):
             lo, hi = ranges[j]
             bad = whole_failed or sorry or any(lo <= n <= hi for n in errors)
+            # handoff s15.1: every proposed tactic and its failed elaboration are preserved (bounded)
+            mine = [line[:300] for n, line in found_errors if lo <= n <= hi][:5]
             attempts.append({'recipe': rid, 'tier': tier, 'tactic_sha256': bytes_hash(text.encode()),
-                             'compiled': not bad})
+                             'compiled': not bad, 'tactic': text[:4000],
+                             'errors': mine if mine else ([f'whole module: {r["result"]}'] if whole_failed else []),
+                             'sorry': sorry})
             if not bad and found is None:
                 found = (rid, text)
         runs.append({'module_sha256': bytes_hash(source.encode()), 'result': r['result'], 'stats': r['stats']})
