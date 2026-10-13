@@ -82,20 +82,53 @@ class FiniteCertified(Base):
         self.rejects('unknown', 'math', 'FINITE_CERTIFIED', 'unknown exact method')
 
 
+def journal_trial(store, task, program, seed):
+    """One solver attempt journalled the way campaign.Campaign.trial does it (start, execute, finish)."""
+    from genesis.common import digest
+    from genesis.execution import execute
+    from genesis.models import Limits
+    request = {'kind': 'solver', 'task': task.model_dump(mode='json'), 'program': program.model_dump(mode='json'),
+               'limits': Limits().model_dump(mode='json'), 'seed': seed, 'context': 'r18-fixture'}
+    aid = store.start(digest(request), request)
+    store.finish(aid, execute(task, program, Limits(), seed))
+    return {'attempt_id': aid, 'task_id': task.task_id, 'family': task.family}
+
+
 class DevOnly(Base):
-    def dev(self, rows=None, plan=None, result=None):
-        plan = plan or base_plan()
-        rows = rows if rows is not None else pilot_rows()
-        result = result if result is not None else analyze(rows, plan)
-        return self.node('dev_comparison', {'schema': RC.DEV_SCHEMA, 'plan': plan, 'rows': rows, 'result': result},
-                         verdict='PASS')
+    """B20_R18 (B20R8-OPEN-1): DEV rows are bound to journalled executions the kernel re-reads."""
+
+    @classmethod
+    def setUpClass(cls):
+        from genesis.domains import ADAPTERS
+        from genesis.models import SolverProgram
+        a = ADAPTERS['c4_host_v2']
+        t1, seen, _ = a.generate(77, 6, 'DEV', 'erdos', {'n': 16, 'p': 0.4})
+        t2, _, _ = a.generate(78, 6, 'DEV', 'erdos', {'n': 18, 'p': 0.35}, excluded=seen)
+        cls.tasks = t1 + t2
+        cls.strong = SolverProgram(weights=(0, 0, 0, 1), rounds=32, exchange=True)
+        cls.weak = SolverProgram(rounds=1)
+
+    def setUp(self):
+        super().setUp()
+        self.cand = [journal_trial(self.store, t, self.strong, 5) for t in self.tasks]
+        self.base = [journal_trial(self.store, t, self.weak, 5) for t in self.tasks]
+        self.plan = base_plan()
+
+    def dev(self, payload):
+        return self.node('dev_comparison', payload, verdict='PASS')
+
+    def payload(self, **over):
+        p = RC.dev_comparison(self.store, self.plan, self.cand, self.base)
+        p.update(over)
+        return p
 
     def claim(self, cid, nodes):
         return self.k.create_claim(cid, 'the candidate improves on DEV material (DEV only)', 'DEV panels', nodes)
 
-    def test_dev_analysis_replays_and_stays_dev(self):
-        n = self.dev()
-        self.claim('dev', [n])
+    def test_bound_rows_replay_and_stay_dev(self):
+        p = self.payload()
+        self.assertEqual(p['result']['decision'], 'SUPPORTED')
+        self.claim('dev', [self.dev(p)])
         self.k.promote('dev', 'utility', 'DEV_ONLY')
         self.k.promote('dev', 'causality', 'CORRELATED')
         self.assertEqual(self.k.levels('dev')['utility'], 'DEV_ONLY')
@@ -103,16 +136,54 @@ class DevOnly(Base):
             self.k.promote('dev', 'utility', 'CONFIRMED_SAME_DOMAIN')
         self.assertIsNone(self.k.current_wording('dev')['current_statement'])
 
+    def test_v1_producer_rows_license_nothing(self):
+        v1 = {'schema': RC.DEV_SCHEMA_V1, 'plan': base_plan(), 'rows': pilot_rows(),
+              'result': analyze(pilot_rows(), base_plan())}
+        self.claim('v1', [self.dev(v1)])
+        self.rejects('v1', 'utility', 'DEV_ONLY', 'not bound to execution evidence')
+
+    def test_rows_that_differ_from_their_executions_fail(self):
+        p = self.payload()
+        inflated = copy.deepcopy(p)
+        inflated['rows'][0]['candidate']['value'] += 3
+        inflated['result'] = analyze(inflated['rows'], self.plan)
+        self.claim('inflated', [self.dev(inflated)])
+        self.rejects('inflated', 'utility', 'DEV_ONLY', 'is not what the attempt witness re-checks to')
+        reused = copy.deepcopy(p)
+        reused['rows'][1]['candidate']['attempt'] = reused['rows'][0]['candidate']['attempt']
+        self.claim('reused', [self.dev(reused)])
+        self.rejects('reused', 'utility', 'DEV_ONLY', 'used twice')
+        swapped = copy.deepcopy(p)
+        swapped['arms'] = {'candidate': p['arms']['baseline'], 'baseline': p['arms']['candidate']}
+        self.claim('swapped', [self.dev(swapped)])
+        self.rejects('swapped', 'utility', 'DEV_ONLY', 'ran another solver')
+        other = copy.deepcopy(p)
+        other['rows'][0]['baseline'] = copy.deepcopy(p['rows'][1]['baseline'])
+        other['result'] = analyze(other['rows'], self.plan)
+        self.claim('other', [self.dev(other)])
+        self.rejects('other', 'utility', 'DEV_ONLY', 'another task')
+        ghost = copy.deepcopy(p)
+        ghost['rows'][0]['candidate']['attempt'] = 'not-an-attempt'
+        self.claim('ghost', [self.dev(ghost)])
+        self.rejects('ghost', 'utility', 'DEV_ONLY', 'not a finished attempt')
+        cpu = copy.deepcopy(p)
+        cpu['rows'][0]['baseline']['cpu_ns'] = 1
+        cpu['result'] = analyze(cpu['rows'], self.plan)
+        self.claim('cpu', [self.dev(cpu)])
+        self.rejects('cpu', 'utility', 'DEV_ONLY', 'CPU differs')
+
     def test_forged_unsupported_or_non_dev_results_fail(self):
-        forged = analyze(pilot_rows(), base_plan()); forged = dict(forged, estimate=99.0)
-        self.claim('forged', [self.dev(result=forged)])
+        p = self.payload()
+        self.claim('forged', [self.dev(dict(p, result=dict(p['result'], estimate=99.0)))])
         self.rejects('forged', 'utility', 'DEV_ONLY', 'differs from the kernel')
-        sealed = [dict(r, split='CONFIRM') for r in pilot_rows()]
-        self.claim('sealed', [self.dev(rows=sealed)])
+        sealed = copy.deepcopy(p)
+        for r in sealed['rows']:
+            r['split'] = 'CONFIRM'
+        self.claim('sealed', [self.dev(sealed)])
         self.rejects('sealed', 'utility', 'DEV_ONLY', 'marked split DEV')
-        flat = [dict(r, candidate=dict(r['candidate'], value=r['baseline']['value'])) for r in pilot_rows()]
-        self.claim('flat', [self.dev(rows=flat)])
-        self.rejects('flat', 'utility', 'DEV_ONLY', 'not SUPPORTED')
+        flat = RC.dev_comparison(self.store, self.plan, self.base, [dict(r) for r in self.base[::-1]])
+        self.claim('flat', [self.dev(flat)])
+        self.rejects('flat', 'utility', 'DEV_ONLY', 'two different solver identities')
 
 
 class TheoremChecked(Base):
