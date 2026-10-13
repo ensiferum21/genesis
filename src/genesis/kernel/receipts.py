@@ -50,7 +50,7 @@ REQUEST_V4 = 'genesis-evaluation-request-v4'
 # so no number is reused with a different meaning.
 REQUEST_STATEMENTS = 'genesis-statement-evaluation-request-v1'
 DESCRIPTOR_REQUESTS = (REQUEST_V4, REQUEST_STATEMENTS)
-V4_EVIDENCE_KINDS = ('sealed_evaluation',)
+V4_EVIDENCE_KINDS = ('sealed_evaluation', 'ablation', 'placebo', 'internal_replication')
 PREREG_ANCHOR = 'genesis-prereg-anchor-v3'
 PRIORITY_ADJUDICATION = 'genesis-priority-adjudication-v1'
 CLAIM_BINDING = 'genesis-claim-binding-v1'
@@ -66,9 +66,19 @@ KIND_ROLES = {
     'sealed_generation_evaluation': 'custodian_key',
     'external_reproduction': 'replicator_key',
     'external_priority_adjudication': 'priority_reviewer_key',
+    # B20_R15 (B14-OPEN-4): causal and internal-replication evaluations are signed custodian
+    # evaluations of their own kind (their own registration slots); the kernel adds the
+    # intervention-provenance and replication checks (kernel.replay_contracts, evidence).
+    'ablation': 'custodian_key',
+    'placebo': 'custodian_key',
+    'internal_replication': 'internal_replicator_key',
 }
 EVALUATION_KINDS = ('sealed_evaluation', 'sealed_transfer_evaluation', 'sealed_improver_evaluation',
-                    'sealed_generation_evaluation', 'external_reproduction')
+                    'sealed_generation_evaluation', 'external_reproduction', 'ablation', 'placebo',
+                    'internal_replication')
+# Kinds that compare executable descriptors only (v4): intervention provenance and replication of
+# the same comparison are checked on descriptors, which v3 program arms do not carry.
+DESCRIPTOR_ONLY_KINDS = ('ablation', 'placebo', 'internal_replication')
 OUTCOMES = ('SUPPORTED', 'NOT_SUPPORTED', 'INCONCLUSIVE', 'INVALID')
 PRIORITY_OUTCOMES = ('NOVEL_IN_SCOPE', 'PRIOR_ART_FOUND', 'INCONCLUSIVE')
 
@@ -200,6 +210,19 @@ def receipt_arm_ids(p):
     return p['candidate_program_hash'], p['baseline_version']
 
 
+def replication_plan(plan):
+    """What an internal replication must share with the evaluation it repeats: the v2 plan without
+    the decision record it names and without the family id (the custodian assigns the family per
+    evidence kind and domain, custody_records.custodian_family). Family size and method stay."""
+    if not isinstance(plan, dict) or plan.get('schema') != AN.PLAN_SCHEMA:
+        return plan
+    core = {k: v for k, v in plan.items() if k != 'decision_record_sha256'}
+    mult = core.get('multiplicity')
+    if isinstance(mult, dict):
+        core['multiplicity'] = {k: v for k, v in mult.items() if k != 'family_id'}
+    return core
+
+
 def registration_slots(request):
     """Slots a registration occupies; each may be used once at a custodian.
 
@@ -328,6 +351,8 @@ def check_receipt(p, kind):
               'evaluator_hash', 'domain_contract_hash', 'panel_commitment', 'raw_evidence_root') + arm_fields:
         if not hex64(p[k]):
             out.append(f'{k} is not a sha256 identity')
+    if not v4 and p['evidence_kind'] in DESCRIPTOR_ONLY_KINDS:
+        out.append(f'{p["evidence_kind"]} receipts compare executable descriptors (v4) only')
     if v4:
         if p['evidence_kind'] not in V4_EVIDENCE_KINDS:
             out.append(f'a v4 receipt supports {", ".join(V4_EVIDENCE_KINDS)} only')
@@ -422,6 +447,8 @@ def check_request(r):
         out.append('analysis must be ANALYSIS_V1 or a valid v2 plan (kernel.analysis.check_plan)')
     elif descriptor_arms(r) and r['analysis'] == ANALYSIS_V1:
         out.append('a v4 (executable-candidate) request needs an analysis plan v2')
+    if r.get('evidence_kind') in DESCRIPTOR_ONLY_KINDS and r.get('schema') != REQUEST_V4:
+        out.append(f'{r["evidence_kind"]} requests compare executable descriptors (v4 requests) only')
     if descriptor_arms(r) and r.get('evidence_kind') not in V4_EVIDENCE_KINDS:
         out.append(f'a v4 request supports {", ".join(V4_EVIDENCE_KINDS)} only (B20_R5); '
                    'other kinds stay on v3 or are refused')

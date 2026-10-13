@@ -215,6 +215,46 @@ def descriptor_request_bundle(campaign,task_count,*,analysis,claim_id=None,state
     return path
 
 
+FOLLOWUP_KINDS=('ablation','placebo','internal_replication')
+
+
+def followup_request(campaign,kind,*,analysis,task_count,baseline=None,seed=None):
+    """B20_R15 (B14-OPEN-4): a v4 ablation, placebo or internal-replication request for the claim of
+    this campaign's frozen descriptor request (same claim, statement, scope, candidate and export).
+
+    ablation / placebo: ``baseline`` is the frozen candidate with ONE component changed by its
+    registered transform (replay_contracts.INTERVENTIONS); checked here, again by the custodian at
+    registration and by the kernel from the arms the receipt commits to.
+    internal_replication: the original arms; ``analysis`` is the replicator's plan, equal to the
+    original's up to the family id the custodian assigns and the decision record it names. The
+    request goes to a custodian whose key the registry pins as internal_replicator_key."""
+    from . import candidates as C
+    from .custodian import validate_request
+    from .kernel import receipts as R
+    from .kernel import replay_contracts as RC
+    s=campaign.store
+    rid=s.state('frozen_descriptor_request_hash')
+    if rid is None:raise ValueError('freeze the sealed_evaluation request first (descriptor_request_bundle)')
+    base=s.get(rid)
+    if kind not in FOLLOWUP_KINDS:raise ValueError(f'kind must be one of {FOLLOWUP_KINDS}')
+    if kind in ('ablation','placebo'):
+        if not isinstance(baseline,dict):raise ValueError(f'{kind} needs the intervened descriptor')
+        why,_=RC.intervention_problems(kind,base['arms']['candidate'],baseline)
+        if why:raise ValueError(f'not a registered {kind} of the frozen candidate: '+'; '.join(why))
+        arms={'candidate':base['arms']['candidate'],'baseline':baseline}
+    else:
+        if baseline is not None:raise ValueError('an internal replication repeats the original arms')
+        if R.replication_plan(analysis)!=R.replication_plan(base['analysis']):
+            raise ValueError('an internal replication uses the original analysis plan (up to its family id and '
+                             'decision record)')
+        arms=dict(base['arms'])
+    request=dict(base,evidence_kind=kind,arms=arms,analysis=analysis,task_count=task_count,
+                 seed=base['seed'] if seed is None else seed)
+    validate_request(request)
+    s.save('frozen_request',digest(request),request)
+    return request
+
+
 def export_replication(root,destination,store=None):
     root=Path(root);destination=Path(destination)
     if destination.exists():raise FileExistsError(destination)

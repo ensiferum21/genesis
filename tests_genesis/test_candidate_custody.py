@@ -440,6 +440,72 @@ class ComparatorSelection(Base):
                                   claim='sel-forged'), forged[0])
 
 
+class CausalAndReplicationCustody(Base):
+    """B20_R15 (B14-OPEN-4): the custodian registers ablation/placebo requests only for a registered
+    intervention of the frozen candidate, and an internal replicator accepts another custodian's
+    comparator selection only under a public key its operator names."""
+
+    def program(self, **kw):
+        from genesis.models import SolverProgram
+        base = {'weights': (0, 0, 0, 1), 'rounds': 8, 'exchange': True}
+        base.update(kw)
+        return C.build_descriptor('dsl-program-v1', TF, {'program': SolverProgram(**base).model_dump(mode='json')},
+                                  **self.desc['resource_profile'])
+
+    def register_as(self, root, req, export, record, prereg, **kw):
+        root.mkdir(exist_ok=True); root.chmod(0o700)
+        manifest = root / 'exposure_manifest.json'
+        if not manifest.exists():
+            manifest.write_text(json.dumps({'schema': 'genesis-exposure-manifest-v1', 'sources': []}))
+            manifest.chmod(0o600)
+        return register(root, req, prereg, 'FIXTURE', exposure_manifest=manifest, campaign_export=export,
+                        pool=self.pool, decision_record=record, **kw)
+
+    def test_ablation_registers_and_runs_only_for_a_registered_intervention(self):
+        cand = self.program()
+        export, frozen = self.export('causal.zip', descriptor=cand)
+        plan, record = frozen_plan_and_record(family_id=f'ablation:{TF}', family_size=3)
+        wrong = self.request(export, frozen, arms={'candidate': cand, 'baseline': self.program(weights=(0, 0, 1, 0))},
+                             evidence_kind='ablation', analysis=plan, claim='abl-wrong')
+        with self.assertRaisesRegex(ValueError, 'not a registered ablation of the frozen candidate'):
+            self.register_as(self.root, wrong, export, record, self.prereg[0])
+        req = self.request(export, frozen, arms={'candidate': cand, 'baseline': self.program(weights=(0, 0, 0, 0))},
+                           evidence_kind='ablation', analysis=plan, claim='abl-ok')
+        self.register_as(self.root, req, export, record, self.prereg[0])
+        p = verify(evaluate(self.root, digest(req), self.pool, self.cust[0], 'FIXTURE'), self.cust[1])
+        self.assertEqual((p['evidence_kind'], p['schema'], p['arms_sha256'], p['completed_rows']),
+                         ('ablation', R.SCIENTIFIC_RECEIPT_V4, digest(req['arms']), 12))
+        self.assertEqual(R.check_receipt(p, 'ablation'), [])
+
+    def test_internal_replicator_accepts_a_selection_only_under_a_named_key(self):
+        from genesis.kernel.signing import sign
+        chosen = dsl_descriptor('low_cycle', self.desc['resource_profile'])
+        payload = {'schema': 'genesis-comparator-selection-v1', 'campaign_id': 'a' * 64, 'source_hash': self.source,
+                   'domain': TF, 'baselines': {'low_cycle': chosen,
+                                               'multistart': dsl_descriptor('multistart', self.desc['resource_profile'])},
+                   'totals': {'low_cycle': 9, 'multistart': 8}, 'selected': 'low_cycle',
+                   'resource_profile': self.desc['resource_profile'], 'task_count': 4}
+        selection = sign(payload, self.cust[0])                     # made by custodian A (self.root)
+        export, frozen = self.export('replicate.zip', selection=selection)
+        plan, record = frozen_plan_and_record(family_id=f'internal_replication:{TF}', family_size=3)
+        req = self.request(export, frozen, arms={'candidate': self.desc, 'baseline': chosen},
+                           evidence_kind='internal_replication', analysis=plan, claim='rep')
+        b_root = self.root / 'replicator'
+        b_prereg = keyfile(self.root, 'replicator_prereg')
+        with self.assertRaisesRegex(ValueError, 'not made by this custodian'):
+            self.register_as(b_root, req, export, record, b_prereg[0])
+        outsider = keyfile(self.root, 'outsider')
+        with self.assertRaisesRegex(ValueError, 'not made by this custodian'):
+            self.register_as(b_root, req, export, record, b_prereg[0], accepted_selection_keys=[outsider[1]])
+        sealed_plan, sealed_record = frozen_plan_and_record(family_id=f'sealed_evaluation:{TF}', family_size=3)
+        sealed = self.request(export, frozen, arms={'candidate': self.desc, 'baseline': chosen}, analysis=sealed_plan,
+                              claim='rep')
+        with self.assertRaisesRegex(ValueError, 'not made by this custodian'):     # only replications accept it
+            self.register_as(b_root, sealed, export, sealed_record, b_prereg[0], accepted_selection_keys=[self.cust[1]])
+        anchor = self.register_as(b_root, req, export, record, b_prereg[0], accepted_selection_keys=[self.cust[1]])
+        self.assertEqual(anchor['payload']['evidence_kind'], 'internal_replication')
+
+
 class KernelV4(unittest.TestCase):
     """A v4 receipt supports a claim only through a v2 (descriptor) binding of the same arms."""
 

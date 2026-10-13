@@ -14,7 +14,7 @@ TRUST_ROOT_ENV='GENESIS_TRUST_ROOT'
 DEFAULT_TRUST_ROOT='/etc/genesis-trust'
 ROLE_FIELDS={'custodian_key','prereg_key','auditor_key','release_key','release_authority_id'}
 # Registry v2 may additionally pin these; a kind whose role is not pinned can never be accepted.
-OPTIONAL_ROLE_FIELDS={'replicator_key','priority_reviewer_key'}
+OPTIONAL_ROLE_FIELDS={'replicator_key','priority_reviewer_key','internal_replicator_key'}
 
 
 def _externally_controlled(path,euid):
