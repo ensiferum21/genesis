@@ -1,0 +1,754 @@
+{
+ "c4_host_v2": [
+  {
+   "group": "B3",
+   "name": "exchange_tm",
+   "spec": {
+    "program": {
+     "componentwise": false,
+     "exchange": true,
+     "rounds": 32,
+     "schema_version": "graph-priority-v1",
+     "weights": [
+      0,
+      0,
+      0,
+      0
+     ]
+    }
+   }
+  },
+  {
+   "group": "B3",
+   "name": "low_cycle_tm",
+   "spec": {
+    "program": {
+     "componentwise": false,
+     "exchange": false,
+     "rounds": 32,
+     "schema_version": "graph-priority-v1",
+     "weights": [
+      0,
+      0,
+      0,
+      1
+     ]
+    }
+   }
+  },
+  {
+   "group": "B3",
+   "name": "multistart_tm",
+   "spec": {
+    "program": {
+     "componentwise": false,
+     "exchange": false,
+     "rounds": 32,
+     "schema_version": "graph-priority-v1",
+     "weights": [
+      0,
+      0,
+      0,
+      0
+     ]
+    }
+   }
+  },
+  {
+   "group": "B1",
+   "name": "low_cycle_exchange_tm",
+   "spec": {
+    "program": {
+     "componentwise": false,
+     "exchange": true,
+     "rounds": 32,
+     "schema_version": "graph-priority-v1",
+     "weights": [
+      0,
+      0,
+      0,
+      1
+     ]
+    }
+   }
+  },
+  {
+   "group": "V16",
+   "name": "v00_tm",
+   "spec": {
+    "program": {
+     "componentwise": true,
+     "exchange": true,
+     "rounds": 8,
+     "schema_version": "graph-priority-v1",
+     "weights": [
+      1,
+      0,
+      -2,
+      2
+     ]
+    }
+   }
+  },
+  {
+   "group": "V16",
+   "name": "v01_tm",
+   "spec": {
+    "program": {
+     "componentwise": true,
+     "exchange": false,
+     "rounds": 4,
+     "schema_version": "graph-priority-v1",
+     "weights": [
+      1,
+      1,
+      -1,
+      -1
+     ]
+    }
+   }
+  },
+  {
+   "group": "V16",
+   "name": "v02_tm",
+   "spec": {
+    "program": {
+     "componentwise": true,
+     "exchange": true,
+     "rounds": 8,
+     "schema_version": "graph-priority-v1",
+     "weights": [
+      -2,
+      3,
+      -3,
+      2
+     ]
+    }
+   }
+  },
+  {
+   "group": "V16",
+   "name": "v03_tm",
+   "spec": {
+    "program": {
+     "componentwise": false,
+     "exchange": false,
+     "rounds": 4,
+     "schema_version": "graph-priority-v1",
+     "weights": [
+      0,
+      0,
+      0,
+      -1
+     ]
+    }
+   }
+  },
+  {
+   "group": "V16",
+   "name": "v04_tm",
+   "spec": {
+    "program": {
+     "componentwise": false,
+     "exchange": false,
+     "rounds": 8,
+     "schema_version": "graph-priority-v1",
+     "weights": [
+      -2,
+      -1,
+      -1,
+      0
+     ]
+    }
+   }
+  },
+  {
+   "group": "V16",
+   "name": "v05_tm",
+   "spec": {
+    "program": {
+     "componentwise": true,
+     "exchange": true,
+     "rounds": 2,
+     "schema_version": "graph-priority-v1",
+     "weights": [
+      1,
+      3,
+      -2,
+      -1
+     ]
+    }
+   }
+  },
+  {
+   "group": "V16",
+   "name": "v06_tm",
+   "spec": {
+    "program": {
+     "componentwise": true,
+     "exchange": false,
+     "rounds": 4,
+     "schema_version": "graph-priority-v1",
+     "weights": [
+      0,
+      -2,
+      1,
+      2
+     ]
+    }
+   }
+  },
+  {
+   "group": "V16",
+   "name": "v07_tm",
+   "spec": {
+    "program": {
+     "componentwise": true,
+     "exchange": true,
+     "rounds": 2,
+     "schema_version": "graph-priority-v1",
+     "weights": [
+      -1,
+      2,
+      -1,
+      -3
+     ]
+    }
+   }
+  },
+  {
+   "group": "V16",
+   "name": "v08_tm",
+   "spec": {
+    "program": {
+     "componentwise": true,
+     "exchange": false,
+     "rounds": 8,
+     "schema_version": "graph-priority-v1",
+     "weights": [
+      0,
+      0,
+      -2,
+      1
+     ]
+    }
+   }
+  },
+  {
+   "group": "V16",
+   "name": "v09_tm",
+   "spec": {
+    "program": {
+     "componentwise": false,
+     "exchange": false,
+     "rounds": 32,
+     "schema_version": "graph-priority-v1",
+     "weights": [
+      0,
+      2,
+      1,
+      0
+     ]
+    }
+   }
+  },
+  {
+   "group": "V16",
+   "name": "v10_tm",
+   "spec": {
+    "program": {
+     "componentwise": true,
+     "exchange": true,
+     "rounds": 32,
+     "schema_version": "graph-priority-v1",
+     "weights": [
+      -2,
+      1,
+      -1,
+      3
+     ]
+    }
+   }
+  },
+  {
+   "group": "V16",
+   "name": "v11_tm",
+   "spec": {
+    "program": {
+     "componentwise": true,
+     "exchange": false,
+     "rounds": 32,
+     "schema_version": "graph-priority-v1",
+     "weights": [
+      1,
+      -2,
+      1,
+      -2
+     ]
+    }
+   }
+  },
+  {
+   "group": "V16",
+   "name": "v12_tm",
+   "spec": {
+    "program": {
+     "componentwise": true,
+     "exchange": true,
+     "rounds": 8,
+     "schema_version": "graph-priority-v1",
+     "weights": [
+      3,
+      3,
+      -1,
+      -3
+     ]
+    }
+   }
+  },
+  {
+   "group": "V16",
+   "name": "v13_tm",
+   "spec": {
+    "program": {
+     "componentwise": false,
+     "exchange": true,
+     "rounds": 4,
+     "schema_version": "graph-priority-v1",
+     "weights": [
+      -3,
+      1,
+      2,
+      -2
+     ]
+    }
+   }
+  },
+  {
+   "group": "V16",
+   "name": "v14_tm",
+   "spec": {
+    "program": {
+     "componentwise": false,
+     "exchange": true,
+     "rounds": 32,
+     "schema_version": "graph-priority-v1",
+     "weights": [
+      -1,
+      1,
+      -1,
+      -3
+     ]
+    }
+   }
+  },
+  {
+   "group": "V16",
+   "name": "v15_tm",
+   "spec": {
+    "program": {
+     "componentwise": false,
+     "exchange": false,
+     "rounds": 4,
+     "schema_version": "graph-priority-v1",
+     "weights": [
+      2,
+      0,
+      3,
+      -3
+     ]
+    }
+   }
+  }
+ ],
+ "triangle_free_host_v1": [
+  {
+   "group": "R4",
+   "name": "cross_2",
+   "spec": {
+    "representation": "cross_2"
+   }
+  },
+  {
+   "group": "R4",
+   "name": "ordered_2",
+   "spec": {
+    "representation": "ordered_2"
+   }
+  },
+  {
+   "group": "R4",
+   "name": "adjacent_2",
+   "spec": {
+    "representation": "adjacent_2"
+   }
+  },
+  {
+   "group": "R4",
+   "name": "adjacent_3",
+   "spec": {
+    "representation": "adjacent_3"
+   }
+  },
+  {
+   "group": "B3",
+   "name": "exchange_tm",
+   "spec": {
+    "program": {
+     "componentwise": false,
+     "exchange": true,
+     "rounds": 32,
+     "schema_version": "graph-priority-v1",
+     "weights": [
+      0,
+      0,
+      0,
+      0
+     ]
+    }
+   }
+  },
+  {
+   "group": "B3",
+   "name": "low_cycle_tm",
+   "spec": {
+    "program": {
+     "componentwise": false,
+     "exchange": false,
+     "rounds": 32,
+     "schema_version": "graph-priority-v1",
+     "weights": [
+      0,
+      0,
+      0,
+      1
+     ]
+    }
+   }
+  },
+  {
+   "group": "B3",
+   "name": "multistart_tm",
+   "spec": {
+    "program": {
+     "componentwise": false,
+     "exchange": false,
+     "rounds": 32,
+     "schema_version": "graph-priority-v1",
+     "weights": [
+      0,
+      0,
+      0,
+      0
+     ]
+    }
+   }
+  },
+  {
+   "group": "B1",
+   "name": "low_cycle_exchange_tm",
+   "spec": {
+    "program": {
+     "componentwise": false,
+     "exchange": true,
+     "rounds": 32,
+     "schema_version": "graph-priority-v1",
+     "weights": [
+      0,
+      0,
+      0,
+      1
+     ]
+    }
+   }
+  },
+  {
+   "group": "V16",
+   "name": "v00_tm",
+   "spec": {
+    "program": {
+     "componentwise": true,
+     "exchange": true,
+     "rounds": 8,
+     "schema_version": "graph-priority-v1",
+     "weights": [
+      1,
+      0,
+      -2,
+      2
+     ]
+    }
+   }
+  },
+  {
+   "group": "V16",
+   "name": "v01_tm",
+   "spec": {
+    "program": {
+     "componentwise": true,
+     "exchange": false,
+     "rounds": 4,
+     "schema_version": "graph-priority-v1",
+     "weights": [
+      1,
+      1,
+      -1,
+      -1
+     ]
+    }
+   }
+  },
+  {
+   "group": "V16",
+   "name": "v02_tm",
+   "spec": {
+    "program": {
+     "componentwise": true,
+     "exchange": true,
+     "rounds": 8,
+     "schema_version": "graph-priority-v1",
+     "weights": [
+      -2,
+      3,
+      -3,
+      2
+     ]
+    }
+   }
+  },
+  {
+   "group": "V16",
+   "name": "v03_tm",
+   "spec": {
+    "program": {
+     "componentwise": false,
+     "exchange": false,
+     "rounds": 4,
+     "schema_version": "graph-priority-v1",
+     "weights": [
+      0,
+      0,
+      0,
+      -1
+     ]
+    }
+   }
+  },
+  {
+   "group": "V16",
+   "name": "v04_tm",
+   "spec": {
+    "program": {
+     "componentwise": false,
+     "exchange": false,
+     "rounds": 8,
+     "schema_version": "graph-priority-v1",
+     "weights": [
+      -2,
+      -1,
+      -1,
+      0
+     ]
+    }
+   }
+  },
+  {
+   "group": "V16",
+   "name": "v05_tm",
+   "spec": {
+    "program": {
+     "componentwise": true,
+     "exchange": true,
+     "rounds": 2,
+     "schema_version": "graph-priority-v1",
+     "weights": [
+      1,
+      3,
+      -2,
+      -1
+     ]
+    }
+   }
+  },
+  {
+   "group": "V16",
+   "name": "v06_tm",
+   "spec": {
+    "program": {
+     "componentwise": true,
+     "exchange": false,
+     "rounds": 4,
+     "schema_version": "graph-priority-v1",
+     "weights": [
+      0,
+      -2,
+      1,
+      2
+     ]
+    }
+   }
+  },
+  {
+   "group": "V16",
+   "name": "v07_tm",
+   "spec": {
+    "program": {
+     "componentwise": true,
+     "exchange": true,
+     "rounds": 2,
+     "schema_version": "graph-priority-v1",
+     "weights": [
+      -1,
+      2,
+      -1,
+      -3
+     ]
+    }
+   }
+  },
+  {
+   "group": "V16",
+   "name": "v08_tm",
+   "spec": {
+    "program": {
+     "componentwise": true,
+     "exchange": false,
+     "rounds": 8,
+     "schema_version": "graph-priority-v1",
+     "weights": [
+      0,
+      0,
+      -2,
+      1
+     ]
+    }
+   }
+  },
+  {
+   "group": "V16",
+   "name": "v09_tm",
+   "spec": {
+    "program": {
+     "componentwise": false,
+     "exchange": false,
+     "rounds": 32,
+     "schema_version": "graph-priority-v1",
+     "weights": [
+      0,
+      2,
+      1,
+      0
+     ]
+    }
+   }
+  },
+  {
+   "group": "V16",
+   "name": "v10_tm",
+   "spec": {
+    "program": {
+     "componentwise": true,
+     "exchange": true,
+     "rounds": 32,
+     "schema_version": "graph-priority-v1",
+     "weights": [
+      -2,
+      1,
+      -1,
+      3
+     ]
+    }
+   }
+  },
+  {
+   "group": "V16",
+   "name": "v11_tm",
+   "spec": {
+    "program": {
+     "componentwise": true,
+     "exchange": false,
+     "rounds": 32,
+     "schema_version": "graph-priority-v1",
+     "weights": [
+      1,
+      -2,
+      1,
+      -2
+     ]
+    }
+   }
+  },
+  {
+   "group": "V16",
+   "name": "v12_tm",
+   "spec": {
+    "program": {
+     "componentwise": true,
+     "exchange": true,
+     "rounds": 8,
+     "schema_version": "graph-priority-v1",
+     "weights": [
+      3,
+      3,
+      -1,
+      -3
+     ]
+    }
+   }
+  },
+  {
+   "group": "V16",
+   "name": "v13_tm",
+   "spec": {
+    "program": {
+     "componentwise": false,
+     "exchange": true,
+     "rounds": 4,
+     "schema_version": "graph-priority-v1",
+     "weights": [
+      -3,
+      1,
+      2,
+      -2
+     ]
+    }
+   }
+  },
+  {
+   "group": "V16",
+   "name": "v14_tm",
+   "spec": {
+    "program": {
+     "componentwise": false,
+     "exchange": true,
+     "rounds": 32,
+     "schema_version": "graph-priority-v1",
+     "weights": [
+      -1,
+      1,
+      -1,
+      -3
+     ]
+    }
+   }
+  },
+  {
+   "group": "V16",
+   "name": "v15_tm",
+   "spec": {
+    "program": {
+     "componentwise": false,
+     "exchange": false,
+     "rounds": 4,
+     "schema_version": "graph-priority-v1",
+     "weights": [
+      2,
+      0,
+      3,
+      -3
+     ]
+    }
+   }
+  }
+ ]
+}
