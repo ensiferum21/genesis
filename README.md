@@ -1,0 +1,56 @@
+# Genesis: checkpoint and input archive
+
+Kept by the builder on 13 Oct 2026 so that nothing depends on one workspace. This branch (`archive`) holds files only. The source history is on the other branches; see "Branches and tags" below.
+
+## Checkpoints (`checkpoints/`)
+
+| File | Commit | What it is |
+|---|---|---|
+| `GENESIS_COMPLETION_CHECKPOINT_B20.zip` | `97fb233` | The B20 checkpoint you supplied: the starting point of the continuation |
+| `GENESIS_COMPLETION_CHECKPOINT_B20_RX1.zip` | `3456797` | Recovery branch: CRPD-2b, W22, W23, H06 search failures, B20_R13 |
+| `GENESIS_COMPLETION_CHECKPOINT_B20_RX2.zip` | `0db2e6c` | Recovery branch: B20_R14, RX3/RX3b capability pilots, RX4 E1 calibration, RX5 proposal pilot |
+
+Each zip contains the full source tree, a git bundle of the whole history, the release test-matrix report, and a SHA-256 manifest of every member.
+
+**Not in this archive: `GENESIS_COMPLETION_CHECKPOINT_B20_R11.zip`** (SHA-256 `00aa4c70bf396606fc67bfd2afa2d8bd5f8582ad24f909746e54e4aa6da4cab7`). It is the only copy of the canonical history B20_R1–R11. It was sent to you in the conversation on 13 Oct; download it from there and add it here.
+
+## Patches (`patches/`)
+
+| File | Applies to | Content |
+|---|---|---|
+| `B20_R1_repairs_A-D.patch` | B20 `97fb233` | Review repairs A–D (4 commits) |
+| `B20_R2_crpd_batch.patch` | after R1 | CRPD-1, 2a and 3 (3 commits) |
+| `B20_R6-R8_statements_replay_contracts.patch` | canonical B20_R5 | R6–R8 (7 commits). Needs the R3–R5 history in the R11 zip |
+| `B20_R9-R11_curation_screen_e1.patch` | canonical B20_R8 | R9–R11 (6 commits) |
+| `B20_RX1_recovery.patch` | after R1 + CRPD | The recovery branch's first 11 commits |
+| `B20_RX2_capability_e1.patch` | RX1 `3456797` | The 12 commits after RX1 |
+| `B20_RX2_optimum_gap_probe.patch` | RX1 `3456797` | Superseded by `B20_RX2_capability_e1.patch` |
+
+## Inputs (`inputs/`)
+
+- The handoff "Genesis: B20 to the grand vision".
+- The CRPD v3 proposal.
+- The B20 review brief.
+- The B20 clean-room rehearsal report (JSON and PDF).
+- The two NEXT_ACTIONS files.
+
+## Branches and tags
+
+| Ref | What it is |
+|---|---|
+| `recovery-b20r1-partial` | The continuation built in this workspace: B20 + R1 repairs + CRPD + the recovery-branch work |
+| `continuation-b14` | B20 (`97fb233`) |
+| `master`, `completion-p0-p2`, `b21-wip` | Branches from the B20 history bundle |
+| tags `B20`, `B20_RX1`, `B20_RX2` | The checkpoint commits |
+
+## Restore
+
+```
+git clone <this repo> genesis-work && cd genesis-work
+git checkout recovery-b20r1-partial
+GENESIS_TOOLCHAIN=/srv/toolchain bash toolchain/install_tools.sh     # pinned toolchain, about 30 to 60 minutes
+export GENESIS_TOOLCHAIN=/srv/toolchain PYTHONPATH=src
+python3 scripts/run_test_matrix.py --profile release --report /tmp/matrix.json   # as root (runc)
+```
+
+Check the file hashes with `sha256sum -c SHA256SUMS`.

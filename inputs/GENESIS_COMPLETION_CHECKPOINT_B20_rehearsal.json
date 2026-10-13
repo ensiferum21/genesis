@@ -1,0 +1,308 @@
+{
+ "checkpoint": "GENESIS_COMPLETION_CHECKPOINT_B20.zip",
+ "checkpoint_sha256": "44bbbbeb1b8781203af8b3489b7c1a396d7694806232193dce9e7fee46f12091",
+ "commit": "97fb23336a0a6c940193625bcc0091888b413cf2",
+ "host": {
+  "platform": "Linux-6.18.44-fc-v114-x86_64-with-glibc2.39",
+  "python": "3.13.16",
+  "uid_is_root": true
+ },
+ "label": "build host clean-room rehearsal (NOT a second machine)",
+ "matrix": {
+  "all_ok": true,
+  "suites": {
+   "certificates": {
+    "errors": 0,
+    "failures": 0,
+    "ok": true,
+    "ran": 21,
+    "skipped": 0
+   },
+   "formal": {
+    "errors": 0,
+    "failures": 0,
+    "ok": true,
+    "ran": 98,
+    "skipped": 0
+   },
+   "integration": {
+    "errors": 0,
+    "failures": 0,
+    "ok": true,
+    "ran": 453,
+    "skipped": 0
+   },
+   "legacy_regression": {
+    "errors": 0,
+    "failures": 0,
+    "ok": true,
+    "ran": 282,
+    "skipped": 1
+   },
+   "sandbox_escape": {
+    "errors": 0,
+    "failures": 0,
+    "ok": true,
+    "ran": 28,
+    "skipped": 0
+   }
+  },
+  "total_ran": 882,
+  "total_skipped": 1
+ },
+ "note": "Evidence about one host, produced by this script. R-04 acceptance needs a run on a second, independently operated machine and that operator's attestation.",
+ "operator_attestation": null,
+ "platform": {
+  "checks": [
+   {
+    "check": "os",
+    "mandatory": true,
+    "observed": "Linux",
+    "required": "Linux",
+    "status": "PASS"
+   },
+   {
+    "check": "machine",
+    "mandatory": true,
+    "observed": "x86_64",
+    "required": "x86_64",
+    "status": "PASS"
+   },
+   {
+    "check": "python",
+    "mandatory": true,
+    "observed": "CPython 3.13.16",
+    "required": "CPython 3.13.x",
+    "status": "PASS"
+   },
+   {
+    "check": "kernel",
+    "mandatory": true,
+    "observed": "6.18.44-fc-v114",
+    "required": ">= 5.15",
+    "status": "PASS"
+   },
+   {
+    "check": "glibc",
+    "mandatory": true,
+    "observed": "glibc-2.39",
+    "required": ">= 2.35",
+    "status": "PASS"
+   },
+   {
+    "check": "dependency_lock",
+    "mandatory": true,
+    "observed": "17 pins match",
+    "required": "installed distributions equal requirements.lock",
+    "status": "PASS"
+   },
+   {
+    "check": "runc",
+    "mandatory": true,
+    "observed": "runc version 1.5.1",
+    "required": ">= 1.1.0",
+    "status": "PASS"
+   },
+   {
+    "check": "cgroup",
+    "mandatory": true,
+    "observed": {
+     "controllers": [
+      "cpu",
+      "cpuacct",
+      "devices",
+      "freezer",
+      "memory",
+      "pids"
+     ],
+     "layout": "v1"
+    },
+    "required": {
+     "v1": [
+      "cpu",
+      "cpuacct",
+      "memory",
+      "pids"
+     ],
+     "v2": [
+      "cpu",
+      "memory",
+      "pids"
+     ]
+    },
+    "status": "PASS"
+   },
+   {
+    "check": "seccomp",
+    "mandatory": true,
+    "observed": true,
+    "required": true,
+    "status": "PASS"
+   },
+   {
+    "check": "store_filesystem",
+    "mandatory": true,
+    "observed": "ext4",
+    "required": [
+     "ext4",
+     "ext2/ext3",
+     "ext2",
+     "ext3",
+     "xfs",
+     "btrfs"
+    ],
+    "status": "PASS"
+   },
+   {
+    "check": "toolchain_pins",
+    "mandatory": true,
+    "observed": "all pinned binaries match",
+    "required": "PINS.json binary hashes",
+    "status": "PASS"
+   },
+   {
+    "check": "toolchain_pin_history",
+    "mandatory": true,
+    "observed": "PINS.json is the last recorded revision",
+    "required": "hash-chained PINS_HISTORY.jsonl",
+    "status": "PASS"
+   },
+   {
+    "check": "fault_injection_disabled",
+    "mandatory": true,
+    "observed": "unset",
+    "required": "GENESIS_FAULT unset",
+    "status": "PASS"
+   }
+  ],
+  "failed": [],
+  "host": {
+   "node_sha256": "5bce98f73f3ed0c8",
+   "platform": "Linux-6.18.44-fc-v114-x86_64-with-glibc2.39"
+  },
+  "schema": "genesis-platform-report-v1",
+  "spec": "genesis-supported-platform-v1",
+  "unverified": [],
+  "verdict": "SUPPORTED"
+ },
+ "schema": "genesis-reproduction-report-v1",
+ "steps": [
+  {
+   "detail": "44bbbbeb1b8781203af8b3489b7c1a396d7694806232193dce9e7fee46f12091",
+   "ok": true,
+   "seconds": 0.0,
+   "step": "1 checkpoint hash"
+  },
+  {
+   "detail": {
+    "files": 843
+   },
+   "ok": true,
+   "seconds": 0.7,
+   "step": "2 extraction and manifest"
+  },
+  {
+   "detail": {
+    "commit": "97fb23336a0a6c940193625bcc0091888b413cf2",
+    "files": 841,
+    "tree": "9ab5cbf8d2f4e75325aa17c3d36a95d33d9c3922"
+   },
+   "ok": true,
+   "seconds": 3.1,
+   "step": "3 source history"
+  },
+  {
+   "detail": {
+    "built_here": true,
+    "formal_workspace": {
+     "artifact_identity": "95a6ec9f1aadc0d8d1936c34bd0ce4e144b0e35c85df12543cdcafe9ebf36b41",
+     "problems": [],
+     "source_identity": "a3a7569b6d7636a844c87c2b72ef2170eda0f712ff8d9a1b0f15b069e301c7ef"
+    },
+    "pins": [
+     "cadical    OK /tmp/genesis-repro-b20/toolchain/cadical/build/cadical 24fb99286ca1ea9ad978fc0dad9fc130dbf5a8c0f3f192908dd300be9af2e31a",
+     "drat-trim  OK /tmp/genesis-repro-b20/toolchain/drat-trim/drat-trim 92f0aa9575ed519d66a99b8b1b3dde6ece4618ae4c202a3a4b200265dda0aa7a",
+     "eprover    OK /tmp/genesis-repro-b20/toolchain/eprover/PROVER/eprover 7e94d6f2eca4b6af5e417137d94647681b9d5f97026e69a067e2fa827faeb0b1",
+     "lean       OK /tmp/genesis-repro-b20/toolchain/lean-4.34.1-linux/bin/lean e8baaa71855a616dc351028f3ad2200051b0671f423a1696a100e809302d5550",
+     "zstd       OK /tmp/genesis-repro-b20/toolchain/zstd/programs/zstd e47e9c2d3199350b79c6db3f08c1dceeee28caf4f5339123922fc6f5406dd11d",
+     "history    OK"
+    ],
+    "toolchain": "/tmp/genesis-repro-b20/toolchain"
+   },
+   "ok": true,
+   "seconds": 1682.7,
+   "step": "4 toolchain"
+  },
+  {
+   "detail": {
+    "verdict": "SUPPORTED"
+   },
+   "ok": true,
+   "seconds": 2.2,
+   "step": "5 supported host"
+  },
+  {
+   "detail": {
+    "all_ok": true,
+    "suites": {
+     "certificates": {
+      "errors": 0,
+      "failures": 0,
+      "ok": true,
+      "ran": 21,
+      "skipped": 0
+     },
+     "formal": {
+      "errors": 0,
+      "failures": 0,
+      "ok": true,
+      "ran": 98,
+      "skipped": 0
+     },
+     "integration": {
+      "errors": 0,
+      "failures": 0,
+      "ok": true,
+      "ran": 453,
+      "skipped": 0
+     },
+     "legacy_regression": {
+      "errors": 0,
+      "failures": 0,
+      "ok": true,
+      "ran": 282,
+      "skipped": 1
+     },
+     "sandbox_escape": {
+      "errors": 0,
+      "failures": 0,
+      "ok": true,
+      "ran": 28,
+      "skipped": 0
+     }
+    },
+    "total_ran": 882,
+    "total_skipped": 1
+   },
+   "ok": true,
+   "seconds": 1435.0,
+   "step": "6 release test matrix"
+  },
+  {
+   "detail": {
+    "match": true,
+    "sections": [
+     "campaign",
+     "certificate",
+     "known_answers",
+     "lean",
+     "schema"
+    ]
+   },
+   "ok": true,
+   "seconds": 58.3,
+   "step": "7 reference results"
+  }
+ ],
+ "verdict": "REPRODUCED"
+}

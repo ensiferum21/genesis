@@ -1,0 +1,681 @@
+From 331825fc27929f75ff06bf8a9fa92b3f95e02630 Mon Sep 17 00:00:00 2001
+From: Genesis builder <builder@genesis.invalid>
+Date: Tue, 13 Oct 2026 10:10:09 +0000
+Subject: [PATCH 1/3] B20_R14 setup: optimum-gap probe of the B20_R13 portfolio
+ (rule fixed before running)
+
+Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>
+Claude-Session: https://claude.ai/code/session_01FE1KQN96fx3NqLs2hyu3Ka
+---
+ scripts/b20r14_optimum_gap_probe.py | 125 ++++++++++++++++++++++++++++
+ 1 file changed, 125 insertions(+)
+ create mode 100755 scripts/b20r14_optimum_gap_probe.py
+
+diff --git a/scripts/b20r14_optimum_gap_probe.py b/scripts/b20r14_optimum_gap_probe.py
+new file mode 100755
+index 0000000..921051f
+--- /dev/null
++++ b/scripts/b20r14_optimum_gap_probe.py
+@@ -0,0 +1,125 @@
++#!/usr/bin/env python3
++"""B20_R14 design probe (DEV): is the B20_R13 solver portfolio already at the optimum?
++
++    b20r14_optimum_gap_probe.py OUT_DIR [--seconds 60]
++
++B20_R13 found no headroom in choosing among solver configurations (NO_HEADROOM in all 7
++settings). This probe asks the follow-up design question for GV4 in graph construction: on the
++same held-out hosts, how far is the portfolio's per-host best (BEST_OF, from the R13 rows) from
++the certified optimum? If the portfolio already sits at the optimum, no research process can do
++better on these families, and a GV4 study needs harder ones. If a gap remains, it is
++capability headroom (new methods), not selection headroom.
++
++Method (fixed here, before running): for every held-out host of every R13 setting, re-run the
++setting's ORACLE-chosen configuration once with the R13 seed (0.5 CPU s) to get a witness, then
++``obstruction.certify(task, witness, seconds=SECONDS)``: an exact LP dual bound, then SAT/DRAT on
++the remaining gap (SAT models can also raise the lower bound). Per host: the checked upper bound
++U (LP_DUAL_EXACT, SAT_DRAT or HOST_EDGE_COUNT), the best checked lower bound L, the R13 BEST_OF B.
++
++Verdict per setting (fixed here; MUE = 0.5 edges per host as in E1 and R13):
++  UNSETTLED_BOUNDS   fewer than 12 of the 16 hosts end with U == L (certified optimum)
++  ROOM_TO_OPTIMUM    otherwise, if mean over certified hosts of (optimum - B) >= MUE
++  AT_CEILING         otherwise
++A design diagnostic, not a study: it licenses no claim. Hosts are the R13 hosts (already exposed).
++"""
++import json
++from pathlib import Path
++import statistics
++import sys
++import time
++
++ROOT = Path(__file__).resolve().parents[1]
++sys.path.insert(0, str(ROOT / 'src'))
++sys.path.insert(0, str(ROOT / 'scripts'))
++
++from genesis.common import canonical  # noqa: E402
++from genesis.discovery import obstruction as O  # noqa: E402
++from genesis.models import GraphTask  # noqa: E402
++
++R13 = ROOT / 'evidence' / 'graph_headroom_b20r13'
++MUE, MIN_CERTIFIED = 0.5, 12
++
++
++def main(argv=None):
++    import b20r13_graph_headroom_pilot as P13
++    args = argv or sys.argv[1:]
++    out = Path(args[0])
++    seconds = float(args[args.index('--seconds') + 1]) if '--seconds' in args else 60.0
++    out.mkdir(parents=True, exist_ok=True)
++    hosts = json.loads((R13 / 'hosts.json').read_text())
++    rows = [json.loads(line) for line in (R13 / 'rows.jsonl').read_text().splitlines()]
++    summary13 = json.loads((R13 / 'summary.json').read_text())
++    value = {(r['setting'], r['config'], r['task_id']): r['value'] for r in rows}
++    done = {}
++    rows_path = out / 'rows.jsonl'
++    if rows_path.exists():
++        for line in rows_path.read_text().splitlines():
++            r = json.loads(line)
++            done[(r['setting'], r['task_id'])] = r
++    t0 = time.monotonic()
++    with rows_path.open('a') as fh:
++        for sid, domain, family, params in P13.SETTINGS:
++            configs = {n: spec for n, _, spec in P13.configurations(domain)}
++            chosen = summary13['settings'][sid]['chosen']['ORACLE']
++            for raw in hosts[sid]['held_out']:
++                task = GraphTask.model_validate_json(canonical(raw))
++                if (sid, task.task_id) in done:
++                    continue
++                seed = int(P13.digest({'pilot': 'b20r13', 'task': task.task_id})[:12], 16)
++                best_of = max(value[(sid, n, task.task_id)] for n in configs)
++                witness = _witness(task, configs[chosen], seed, P13)
++                rerun = len(witness)
++                rec = O.certify(task, witness, seconds=seconds)
++                r = {'setting': sid, 'task_id': task.task_id, 'n': task.n, 'm': len(task.edges), 'config': chosen,
++                     'rerun_value': rerun, 'best_of_r13': best_of,
++                     'lower': rec['lower'], 'upper': rec['upper'], 'upper_method': rec['upper_evidence']['method'],
++                     'status': rec['status'], 'wall_s': rec['wall_s']}
++                fh.write(json.dumps(r, sort_keys=True) + '\n')
++                fh.flush()
++                done[(sid, task.task_id)] = r
++                print(f'[{time.monotonic() - t0:7.1f}s] {sid} {task.task_id}: B={best_of} L={rec["lower"]} '
++                      f'U={rec["upper"]} ({r["upper_method"]}) {rec["status"]}', flush=True)
++    summary = {'schema': 'genesis-b20r14-optimum-gap-v1', 'seconds': seconds, 'mue': MUE,
++               'min_certified': MIN_CERTIFIED, 'settings': {}}
++    for sid, domain, family, params in P13.SETTINGS:
++        rs = [r for (s, _), r in done.items() if s == sid]
++        cert = [r for r in rs if r['lower'] == r['upper']]
++        gaps = [r['upper'] - r['best_of_r13'] for r in cert]
++        open_gaps = [r['upper'] - r['lower'] for r in rs if r['lower'] < r['upper']]
++        if len(cert) < MIN_CERTIFIED:
++            verdict = 'UNSETTLED_BOUNDS'
++        else:
++            verdict = 'ROOM_TO_OPTIMUM' if statistics.mean(gaps) >= MUE else 'AT_CEILING'
++        summary['settings'][sid] = {
++            'domain': domain, 'family': family, 'params': params, 'hosts': len(rs), 'certified_optimum': len(cert),
++            'mean_optimum_minus_best_of': round(statistics.mean(gaps), 3) if gaps else None,
++            'hosts_best_of_at_optimum': sum(1 for g in gaps if g == 0),
++            'max_optimum_minus_best_of': max(gaps) if gaps else None,
++            'open_gaps': open_gaps, 'upper_methods': sorted({r['upper_method'] for r in rs}), 'verdict': verdict}
++    summary['verdicts'] = {k: v['verdict'] for k, v in summary['settings'].items()}
++    (out / 'summary.json').write_text(json.dumps(summary, indent=1, sort_keys=True) + '\n')
++    print('verdicts', summary['verdicts'], flush=True)
++    return 0
++
++
++def _witness(task, spec, seed, P13):
++    """The witness of one R13 configuration run (same code path as P13.run_config)."""
++    import time as _t
++    from genesis.dsl import solve
++    from genesis.models import SolverProgram
++    if 'representation' in spec:
++        from genesis.invention import representations as R
++        rep = next(r for r in R.proposals() if r['id'] == spec['representation'])
++        return R.represent_and_repair(task.n, task.edges, rep, R.tf_add_ok, cpu_seconds=P13.SEARCH_S, seed=seed)['witness']
++    program = SolverProgram.model_validate_json(canonical(spec['program']))
++    start, best, k = _t.process_time_ns(), None, 0
++    while best is None or _t.process_time_ns() - start < int(P13.SEARCH_S * 1e9):
++        o = solve(task, program, P13.QUERIES, (seed + 1_000_003 * k) % (1 << 62))
++        if best is None or o['value'] > best['value']:
++            best = o
++        k += 1
++    return best['selected']
++
++
++if __name__ == '__main__':
++    sys.exit(main())
+-- 
+2.43.0
+
+
+From 01c38e657bb104229400adb2d30932ba2f951331 Mon Sep 17 00:00:00 2001
+From: Genesis builder <builder@genesis.invalid>
+Date: Tue, 13 Oct 2026 10:44:25 +0000
+Subject: [PATCH 2/3] B20_R14 probe: the R13 portfolio is below the certified
+ optimum on harder families (capability, not selection, headroom)
+
+S2 tf n30 p.3: 1.31 edges/host below the optimum (2/16 hosts optimal); S3: 0.56; S7 c4 n30: 1.36 on
+11 certified hosts; S1 (the E1 family), S4, S6 at the ceiling (0.19-0.31); S5 unsettled at 60 s.
+Supports the harder-family option for E1 and a capability-producing design for GV4.
+
+Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>
+Claude-Session: https://claude.ai/code/session_01FE1KQN96fx3NqLs2hyu3Ka
+---
+ evidence/optimum_gap_b20r14/README.md    |  36 +++++
+ evidence/optimum_gap_b20r14/rows.jsonl   | 112 +++++++++++++++
+ evidence/optimum_gap_b20r14/run.log      | 113 +++++++++++++++
+ evidence/optimum_gap_b20r14/summary.json | 170 +++++++++++++++++++++++
+ 4 files changed, 431 insertions(+)
+ create mode 100644 evidence/optimum_gap_b20r14/README.md
+ create mode 100644 evidence/optimum_gap_b20r14/rows.jsonl
+ create mode 100644 evidence/optimum_gap_b20r14/run.log
+ create mode 100644 evidence/optimum_gap_b20r14/summary.json
+
+diff --git a/evidence/optimum_gap_b20r14/README.md b/evidence/optimum_gap_b20r14/README.md
+new file mode 100644
+index 0000000..eb419b6
+--- /dev/null
++++ b/evidence/optimum_gap_b20r14/README.md
+@@ -0,0 +1,36 @@
++# B20_R14: is the B20_R13 portfolio already at the optimum? (DEV design probe)
++
++- **Script:** `scripts/b20r14_optimum_gap_probe.py`, committed as `331825f` before it ran. The rule is in its docstring.
++- **Hosts:** the 112 B20_R13 held-out hosts, which were already exposed.
++
++**Method.** For each host, the setting's ORACLE-chosen configuration is re-run once to get a witness. Then `obstruction.certify` runs with 60 s:
++1. an exact LP dual bound;
++2. SAT/DRAT on the remaining gap (SAT models can also raise the lower bound).
++
++The result is compared with the R13 per-host best over all 20–24 configurations (BEST_OF).
++
++## Result
++
++| Setting | Certified optima | Mean optimum − BEST_OF | Hosts where BEST_OF is optimal | Verdict |
++|---|---|---|---|---|
++| S1 tf n22 p.35 (E1 family) | 16/16 | 0.31 | 11 | AT_CEILING |
++| S2 tf n30 p.3 | 16/16 | **1.31** (max 3) | 2 | **ROOM_TO_OPTIMUM** |
++| S3 tf n40 p.2 | 16/16 | **0.56** (max 3) | 9 | **ROOM_TO_OPTIMUM** |
++| S4 tf planted n30 | 16/16 | 0.31 | 11 | AT_CEILING |
++| S5 tf n40 p.35 | 2/16 | — (LP gaps 1–7 remain at 60 s) | — | UNSETTLED_BOUNDS |
++| S6 c4 n20 p.25 | 16/16 | 0.19 | 13 | AT_CEILING |
++| S7 c4 n30 p.2 | 11/16 | 1.36 on the certified hosts | 0 of 11 | UNSETTLED_BOUNDS |
++
++**Reading.** B20_R13 showed that choosing among the existing configurations is saturated. B20_R14 shows that those configurations are not at the optimum everywhere. On S2, S3 and probably S7, the best of 20–24 configurations, each with 0.5 CPU s of search, stays 0.6–1.4 edges per host below the certified optimum. The LP dual bound plus SAT closes that gap within seconds on most of these hosts.
++
++So the headroom in graph construction is **capability headroom**, which a research process could earn by producing better methods. It is not **selection headroom**, which no improver can exploit here. The comparison above is not cost-matched: the certifier used up to 60 s per host against 0.5 s. Any study has to match budgets.
++
++## Consequences (design options for the user; nothing is decided here)
++
++**E1 (B20R12-OPEN-1).** The E1 family (S1) is at the ceiling: 11 of 16 hosts are already optimal. That is consistent with the underpowered E1 redo in the lost run. Of the options for E1, "a harder host family calibrated on DEV" is supported: S2-like triangle-free hosts (n30 p.3) leave 1.3 edges per host to win.
++
++**GV4 (B20R13-OPEN-1).** A better-improver study in graph construction should let research produce *new methods*, for example LP- or SAT-guided construction and repair, or representations beyond the menu (s15.3). It should run on families with room to the optimum (S2, S3, S7-like), at matched CPU budgets. Choosing among fixed configurations is not enough.
++
++## Claim ceiling
++
++A DEV design probe. It licenses no claim.
+diff --git a/evidence/optimum_gap_b20r14/rows.jsonl b/evidence/optimum_gap_b20r14/rows.jsonl
+new file mode 100644
+index 0000000..7320703
+--- /dev/null
++++ b/evidence/optimum_gap_b20r14/rows.jsonl
+@@ -0,0 +1,112 @@
++{"best_of_r13": 66, "config": "cross_2", "lower": 67, "m": 95, "n": 22, "rerun_value": 66, "setting": "S1", "status": "OPTIMALITY_CHECKED", "task_id": "dev-erdos-80a647eb-20261302-0000", "upper": 67, "upper_method": "LP_DUAL_EXACT", "wall_s": 0.739}
++{"best_of_r13": 61, "config": "cross_2", "lower": 62, "m": 85, "n": 22, "rerun_value": 61, "setting": "S1", "status": "OPTIMALITY_CHECKED", "task_id": "dev-erdos-80a647eb-20261302-0001", "upper": 62, "upper_method": "LP_DUAL_EXACT", "wall_s": 0.031}
++{"best_of_r13": 62, "config": "cross_2", "lower": 62, "m": 81, "n": 22, "rerun_value": 62, "setting": "S1", "status": "OPTIMALITY_CHECKED", "task_id": "dev-erdos-80a647eb-20261302-0002", "upper": 62, "upper_method": "LP_DUAL_EXACT", "wall_s": 0.008}
++{"best_of_r13": 61, "config": "cross_2", "lower": 62, "m": 86, "n": 22, "rerun_value": 61, "setting": "S1", "status": "OPTIMALITY_CHECKED", "task_id": "dev-erdos-80a647eb-20261302-0003", "upper": 62, "upper_method": "LP_DUAL_EXACT", "wall_s": 0.155}
++{"best_of_r13": 58, "config": "cross_2", "lower": 58, "m": 77, "n": 22, "rerun_value": 56, "setting": "S1", "status": "OPTIMALITY_CHECKED", "task_id": "dev-erdos-80a647eb-20261302-0004", "upper": 58, "upper_method": "LP_DUAL_EXACT", "wall_s": 0.061}
++{"best_of_r13": 55, "config": "cross_2", "lower": 55, "m": 70, "n": 22, "rerun_value": 55, "setting": "S1", "status": "OPTIMALITY_CHECKED", "task_id": "dev-erdos-80a647eb-20261302-0005", "upper": 55, "upper_method": "LP_DUAL_EXACT", "wall_s": 0.006}
++{"best_of_r13": 60, "config": "cross_2", "lower": 60, "m": 84, "n": 22, "rerun_value": 60, "setting": "S1", "status": "OPTIMALITY_CHECKED", "task_id": "dev-erdos-80a647eb-20261302-0006", "upper": 60, "upper_method": "LP_DUAL_EXACT", "wall_s": 0.008}
++{"best_of_r13": 58, "config": "cross_2", "lower": 59, "m": 81, "n": 22, "rerun_value": 58, "setting": "S1", "status": "OPTIMALITY_CHECKED", "task_id": "dev-erdos-80a647eb-20261302-0007", "upper": 59, "upper_method": "LP_DUAL_EXACT", "wall_s": 0.086}
++{"best_of_r13": 57, "config": "cross_2", "lower": 57, "m": 73, "n": 22, "rerun_value": 56, "setting": "S1", "status": "OPTIMALITY_CHECKED", "task_id": "dev-erdos-80a647eb-20261302-0008", "upper": 57, "upper_method": "LP_DUAL_EXACT", "wall_s": 0.034}
++{"best_of_r13": 61, "config": "cross_2", "lower": 61, "m": 83, "n": 22, "rerun_value": 61, "setting": "S1", "status": "OPTIMALITY_CHECKED", "task_id": "dev-erdos-80a647eb-20261302-0009", "upper": 61, "upper_method": "LP_DUAL_EXACT", "wall_s": 0.012}
++{"best_of_r13": 62, "config": "cross_2", "lower": 62, "m": 86, "n": 22, "rerun_value": 62, "setting": "S1", "status": "OPTIMALITY_CHECKED", "task_id": "dev-erdos-80a647eb-20261302-0010", "upper": 62, "upper_method": "SAT_DRAT", "wall_s": 0.562}
++{"best_of_r13": 56, "config": "cross_2", "lower": 57, "m": 76, "n": 22, "rerun_value": 55, "setting": "S1", "status": "OPTIMALITY_CHECKED", "task_id": "dev-erdos-80a647eb-20261302-0011", "upper": 57, "upper_method": "LP_DUAL_EXACT", "wall_s": 0.068}
++{"best_of_r13": 59, "config": "cross_2", "lower": 59, "m": 81, "n": 22, "rerun_value": 59, "setting": "S1", "status": "OPTIMALITY_CHECKED", "task_id": "dev-erdos-80a647eb-20261302-0012", "upper": 59, "upper_method": "LP_DUAL_EXACT", "wall_s": 0.009}
++{"best_of_r13": 66, "config": "cross_2", "lower": 66, "m": 96, "n": 22, "rerun_value": 66, "setting": "S1", "status": "OPTIMALITY_CHECKED", "task_id": "dev-erdos-80a647eb-20261302-0013", "upper": 66, "upper_method": "LP_DUAL_EXACT", "wall_s": 0.013}
++{"best_of_r13": 56, "config": "cross_2", "lower": 56, "m": 70, "n": 22, "rerun_value": 56, "setting": "S1", "status": "OPTIMALITY_CHECKED", "task_id": "dev-erdos-80a647eb-20261302-0014", "upper": 56, "upper_method": "LP_DUAL_EXACT", "wall_s": 0.009}
++{"best_of_r13": 59, "config": "cross_2", "lower": 59, "m": 82, "n": 22, "rerun_value": 59, "setting": "S1", "status": "OPTIMALITY_CHECKED", "task_id": "dev-erdos-80a647eb-20261302-0015", "upper": 59, "upper_method": "LP_DUAL_EXACT", "wall_s": 0.007}
++{"best_of_r13": 103, "config": "cross_2", "lower": 103, "m": 141, "n": 30, "rerun_value": 103, "setting": "S2", "status": "OPTIMALITY_CHECKED", "task_id": "dev-erdos-b73f6828-20261312-0000", "upper": 103, "upper_method": "LP_DUAL_EXACT", "wall_s": 0.012}
++{"best_of_r13": 104, "config": "cross_2", "lower": 105, "m": 143, "n": 30, "rerun_value": 104, "setting": "S2", "status": "OPTIMALITY_CHECKED", "task_id": "dev-erdos-b73f6828-20261312-0001", "upper": 105, "upper_method": "LP_DUAL_EXACT", "wall_s": 1.102}
++{"best_of_r13": 92, "config": "cross_2", "lower": 93, "m": 133, "n": 30, "rerun_value": 92, "setting": "S2", "status": "OPTIMALITY_CHECKED", "task_id": "dev-erdos-b73f6828-20261312-0002", "upper": 93, "upper_method": "LP_DUAL_EXACT", "wall_s": 1.901}
++{"best_of_r13": 95, "config": "cross_2", "lower": 98, "m": 133, "n": 30, "rerun_value": 95, "setting": "S2", "status": "OPTIMALITY_CHECKED", "task_id": "dev-erdos-b73f6828-20261312-0003", "upper": 98, "upper_method": "LP_DUAL_EXACT", "wall_s": 2.905}
++{"best_of_r13": 90, "config": "cross_2", "lower": 92, "m": 122, "n": 30, "rerun_value": 90, "setting": "S2", "status": "OPTIMALITY_CHECKED", "task_id": "dev-erdos-b73f6828-20261312-0004", "upper": 92, "upper_method": "LP_DUAL_EXACT", "wall_s": 1.108}
++{"best_of_r13": 92, "config": "cross_2", "lower": 92, "m": 124, "n": 30, "rerun_value": 91, "setting": "S2", "status": "OPTIMALITY_CHECKED", "task_id": "dev-erdos-b73f6828-20261312-0005", "upper": 92, "upper_method": "LP_DUAL_EXACT", "wall_s": 0.437}
++{"best_of_r13": 92, "config": "cross_2", "lower": 94, "m": 127, "n": 30, "rerun_value": 91, "setting": "S2", "status": "OPTIMALITY_CHECKED", "task_id": "dev-erdos-b73f6828-20261312-0006", "upper": 94, "upper_method": "LP_DUAL_EXACT", "wall_s": 1.618}
++{"best_of_r13": 101, "config": "cross_2", "lower": 102, "m": 141, "n": 30, "rerun_value": 101, "setting": "S2", "status": "OPTIMALITY_CHECKED", "task_id": "dev-erdos-b73f6828-20261312-0007", "upper": 102, "upper_method": "LP_DUAL_EXACT", "wall_s": 3.148}
++{"best_of_r13": 89, "config": "cross_2", "lower": 90, "m": 122, "n": 30, "rerun_value": 88, "setting": "S2", "status": "OPTIMALITY_CHECKED", "task_id": "dev-erdos-b73f6828-20261312-0008", "upper": 90, "upper_method": "LP_DUAL_EXACT", "wall_s": 1.208}
++{"best_of_r13": 99, "config": "cross_2", "lower": 100, "m": 139, "n": 30, "rerun_value": 99, "setting": "S2", "status": "OPTIMALITY_CHECKED", "task_id": "dev-erdos-b73f6828-20261312-0009", "upper": 100, "upper_method": "LP_DUAL_EXACT", "wall_s": 3.33}
++{"best_of_r13": 98, "config": "cross_2", "lower": 99, "m": 134, "n": 30, "rerun_value": 98, "setting": "S2", "status": "OPTIMALITY_CHECKED", "task_id": "dev-erdos-b73f6828-20261312-0010", "upper": 99, "upper_method": "LP_DUAL_EXACT", "wall_s": 0.452}
++{"best_of_r13": 94, "config": "cross_2", "lower": 95, "m": 130, "n": 30, "rerun_value": 94, "setting": "S2", "status": "OPTIMALITY_CHECKED", "task_id": "dev-erdos-b73f6828-20261312-0011", "upper": 95, "upper_method": "SAT_DRAT", "wall_s": 30.883}
++{"best_of_r13": 93, "config": "cross_2", "lower": 94, "m": 127, "n": 30, "rerun_value": 93, "setting": "S2", "status": "OPTIMALITY_CHECKED", "task_id": "dev-erdos-b73f6828-20261312-0012", "upper": 94, "upper_method": "LP_DUAL_EXACT", "wall_s": 0.323}
++{"best_of_r13": 99, "config": "cross_2", "lower": 100, "m": 139, "n": 30, "rerun_value": 99, "setting": "S2", "status": "OPTIMALITY_CHECKED", "task_id": "dev-erdos-b73f6828-20261312-0013", "upper": 100, "upper_method": "LP_DUAL_EXACT", "wall_s": 2.127}
++{"best_of_r13": 94, "config": "cross_2", "lower": 96, "m": 129, "n": 30, "rerun_value": 94, "setting": "S2", "status": "OPTIMALITY_CHECKED", "task_id": "dev-erdos-b73f6828-20261312-0014", "upper": 96, "upper_method": "LP_DUAL_EXACT", "wall_s": 2.045}
++{"best_of_r13": 95, "config": "cross_2", "lower": 98, "m": 135, "n": 30, "rerun_value": 95, "setting": "S2", "status": "OPTIMALITY_CHECKED", "task_id": "dev-erdos-b73f6828-20261312-0015", "upper": 98, "upper_method": "LP_DUAL_EXACT", "wall_s": 4.693}
++{"best_of_r13": 112, "config": "low_cycle_tm", "lower": 112, "m": 139, "n": 40, "rerun_value": 111, "setting": "S3", "status": "OPTIMALITY_CHECKED", "task_id": "dev-erdos-3765432f-20261322-0000", "upper": 112, "upper_method": "LP_DUAL_EXACT", "wall_s": 0.246}
++{"best_of_r13": 121, "config": "low_cycle_tm", "lower": 122, "m": 160, "n": 40, "rerun_value": 121, "setting": "S3", "status": "OPTIMALITY_CHECKED", "task_id": "dev-erdos-3765432f-20261322-0001", "upper": 122, "upper_method": "LP_DUAL_EXACT", "wall_s": 0.533}
++{"best_of_r13": 130, "config": "low_cycle_tm", "lower": 131, "m": 173, "n": 40, "rerun_value": 130, "setting": "S3", "status": "OPTIMALITY_CHECKED", "task_id": "dev-erdos-3765432f-20261322-0002", "upper": 131, "upper_method": "LP_DUAL_EXACT", "wall_s": 1.667}
++{"best_of_r13": 129, "config": "low_cycle_tm", "lower": 132, "m": 162, "n": 40, "rerun_value": 129, "setting": "S3", "status": "OPTIMALITY_CHECKED", "task_id": "dev-erdos-3765432f-20261322-0003", "upper": 132, "upper_method": "LP_DUAL_EXACT", "wall_s": 1.916}
++{"best_of_r13": 122, "config": "low_cycle_tm", "lower": 122, "m": 150, "n": 40, "rerun_value": 122, "setting": "S3", "status": "OPTIMALITY_CHECKED", "task_id": "dev-erdos-3765432f-20261322-0004", "upper": 122, "upper_method": "LP_DUAL_EXACT", "wall_s": 0.009}
++{"best_of_r13": 135, "config": "low_cycle_tm", "lower": 135, "m": 172, "n": 40, "rerun_value": 135, "setting": "S3", "status": "OPTIMALITY_CHECKED", "task_id": "dev-erdos-3765432f-20261322-0005", "upper": 135, "upper_method": "LP_DUAL_EXACT", "wall_s": 0.017}
++{"best_of_r13": 116, "config": "low_cycle_tm", "lower": 116, "m": 143, "n": 40, "rerun_value": 116, "setting": "S3", "status": "OPTIMALITY_CHECKED", "task_id": "dev-erdos-3765432f-20261322-0006", "upper": 116, "upper_method": "LP_DUAL_EXACT", "wall_s": 0.009}
++{"best_of_r13": 130, "config": "low_cycle_tm", "lower": 130, "m": 162, "n": 40, "rerun_value": 130, "setting": "S3", "status": "OPTIMALITY_CHECKED", "task_id": "dev-erdos-3765432f-20261322-0007", "upper": 130, "upper_method": "LP_DUAL_EXACT", "wall_s": 0.01}
++{"best_of_r13": 115, "config": "low_cycle_tm", "lower": 116, "m": 143, "n": 40, "rerun_value": 114, "setting": "S3", "status": "OPTIMALITY_CHECKED", "task_id": "dev-erdos-3765432f-20261322-0008", "upper": 116, "upper_method": "LP_DUAL_EXACT", "wall_s": 1.961}
++{"best_of_r13": 113, "config": "low_cycle_tm", "lower": 113, "m": 135, "n": 40, "rerun_value": 113, "setting": "S3", "status": "OPTIMALITY_CHECKED", "task_id": "dev-erdos-3765432f-20261322-0009", "upper": 113, "upper_method": "LP_DUAL_EXACT", "wall_s": 0.009}
++{"best_of_r13": 118, "config": "low_cycle_tm", "lower": 118, "m": 147, "n": 40, "rerun_value": 118, "setting": "S3", "status": "OPTIMALITY_CHECKED", "task_id": "dev-erdos-3765432f-20261322-0010", "upper": 118, "upper_method": "LP_DUAL_EXACT", "wall_s": 0.008}
++{"best_of_r13": 119, "config": "low_cycle_tm", "lower": 119, "m": 147, "n": 40, "rerun_value": 119, "setting": "S3", "status": "OPTIMALITY_CHECKED", "task_id": "dev-erdos-3765432f-20261322-0011", "upper": 119, "upper_method": "LP_DUAL_EXACT", "wall_s": 0.009}
++{"best_of_r13": 130, "config": "low_cycle_tm", "lower": 130, "m": 165, "n": 40, "rerun_value": 130, "setting": "S3", "status": "OPTIMALITY_CHECKED", "task_id": "dev-erdos-3765432f-20261322-0012", "upper": 130, "upper_method": "LP_DUAL_EXACT", "wall_s": 0.009}
++{"best_of_r13": 119, "config": "low_cycle_tm", "lower": 120, "m": 157, "n": 40, "rerun_value": 118, "setting": "S3", "status": "OPTIMALITY_CHECKED", "task_id": "dev-erdos-3765432f-20261322-0013", "upper": 120, "upper_method": "LP_DUAL_EXACT", "wall_s": 3.757}
++{"best_of_r13": 125, "config": "low_cycle_tm", "lower": 126, "m": 159, "n": 40, "rerun_value": 125, "setting": "S3", "status": "OPTIMALITY_CHECKED", "task_id": "dev-erdos-3765432f-20261322-0014", "upper": 126, "upper_method": "LP_DUAL_EXACT", "wall_s": 1.976}
++{"best_of_r13": 129, "config": "low_cycle_tm", "lower": 130, "m": 161, "n": 40, "rerun_value": 129, "setting": "S3", "status": "OPTIMALITY_CHECKED", "task_id": "dev-erdos-3765432f-20261322-0015", "upper": 130, "upper_method": "LP_DUAL_EXACT", "wall_s": 0.341}
++{"best_of_r13": 98, "config": "cross_2", "lower": 98, "m": 140, "n": 30, "rerun_value": 98, "setting": "S4", "status": "OPTIMALITY_CHECKED", "task_id": "dev-planted_cluster-1467febf-20261332-0000", "upper": 98, "upper_method": "LP_DUAL_EXACT", "wall_s": 0.015}
++{"best_of_r13": 94, "config": "cross_2", "lower": 94, "m": 132, "n": 30, "rerun_value": 94, "setting": "S4", "status": "OPTIMALITY_CHECKED", "task_id": "dev-planted_cluster-1467febf-20261332-0001", "upper": 94, "upper_method": "LP_DUAL_EXACT", "wall_s": 0.012}
++{"best_of_r13": 92, "config": "cross_2", "lower": 93, "m": 133, "n": 30, "rerun_value": 92, "setting": "S4", "status": "OPTIMALITY_CHECKED", "task_id": "dev-planted_cluster-1467febf-20261332-0002", "upper": 93, "upper_method": "LP_DUAL_EXACT", "wall_s": 0.914}
++{"best_of_r13": 93, "config": "cross_2", "lower": 93, "m": 130, "n": 30, "rerun_value": 93, "setting": "S4", "status": "OPTIMALITY_CHECKED", "task_id": "dev-planted_cluster-1467febf-20261332-0003", "upper": 93, "upper_method": "SAT_DRAT", "wall_s": 7.69}
++{"best_of_r13": 90, "config": "cross_2", "lower": 90, "m": 134, "n": 30, "rerun_value": 90, "setting": "S4", "status": "OPTIMALITY_CHECKED", "task_id": "dev-planted_cluster-1467febf-20261332-0004", "upper": 90, "upper_method": "SAT_DRAT", "wall_s": 43.375}
++{"best_of_r13": 88, "config": "cross_2", "lower": 89, "m": 123, "n": 30, "rerun_value": 88, "setting": "S4", "status": "OPTIMALITY_CHECKED", "task_id": "dev-planted_cluster-1467febf-20261332-0005", "upper": 89, "upper_method": "LP_DUAL_EXACT", "wall_s": 1.193}
++{"best_of_r13": 98, "config": "cross_2", "lower": 98, "m": 141, "n": 30, "rerun_value": 98, "setting": "S4", "status": "OPTIMALITY_CHECKED", "task_id": "dev-planted_cluster-1467febf-20261332-0006", "upper": 98, "upper_method": "SAT_DRAT", "wall_s": 68.377}
++{"best_of_r13": 86, "config": "cross_2", "lower": 86, "m": 121, "n": 30, "rerun_value": 86, "setting": "S4", "status": "OPTIMALITY_CHECKED", "task_id": "dev-planted_cluster-1467febf-20261332-0007", "upper": 86, "upper_method": "SAT_DRAT", "wall_s": 7.505}
++{"best_of_r13": 85, "config": "cross_2", "lower": 86, "m": 119, "n": 30, "rerun_value": 85, "setting": "S4", "status": "OPTIMALITY_CHECKED", "task_id": "dev-planted_cluster-1467febf-20261332-0008", "upper": 86, "upper_method": "LP_DUAL_EXACT", "wall_s": 0.302}
++{"best_of_r13": 90, "config": "cross_2", "lower": 90, "m": 130, "n": 30, "rerun_value": 90, "setting": "S4", "status": "OPTIMALITY_CHECKED", "task_id": "dev-planted_cluster-1467febf-20261332-0009", "upper": 90, "upper_method": "SAT_DRAT", "wall_s": 6.534}
++{"best_of_r13": 96, "config": "cross_2", "lower": 96, "m": 134, "n": 30, "rerun_value": 96, "setting": "S4", "status": "OPTIMALITY_CHECKED", "task_id": "dev-planted_cluster-1467febf-20261332-0010", "upper": 96, "upper_method": "LP_DUAL_EXACT", "wall_s": 0.015}
++{"best_of_r13": 91, "config": "cross_2", "lower": 92, "m": 128, "n": 30, "rerun_value": 91, "setting": "S4", "status": "OPTIMALITY_CHECKED", "task_id": "dev-planted_cluster-1467febf-20261332-0011", "upper": 92, "upper_method": "SAT_DRAT", "wall_s": 15.872}
++{"best_of_r13": 98, "config": "cross_2", "lower": 98, "m": 134, "n": 30, "rerun_value": 98, "setting": "S4", "status": "OPTIMALITY_CHECKED", "task_id": "dev-planted_cluster-1467febf-20261332-0012", "upper": 98, "upper_method": "LP_DUAL_EXACT", "wall_s": 0.015}
++{"best_of_r13": 100, "config": "cross_2", "lower": 100, "m": 135, "n": 30, "rerun_value": 100, "setting": "S4", "status": "OPTIMALITY_CHECKED", "task_id": "dev-planted_cluster-1467febf-20261332-0013", "upper": 100, "upper_method": "LP_DUAL_EXACT", "wall_s": 0.015}
++{"best_of_r13": 83, "config": "cross_2", "lower": 84, "m": 118, "n": 30, "rerun_value": 83, "setting": "S4", "status": "OPTIMALITY_CHECKED", "task_id": "dev-planted_cluster-1467febf-20261332-0014", "upper": 84, "upper_method": "LP_DUAL_EXACT", "wall_s": 0.761}
++{"best_of_r13": 88, "config": "cross_2", "lower": 88, "m": 124, "n": 30, "rerun_value": 88, "setting": "S4", "status": "OPTIMALITY_CHECKED", "task_id": "dev-planted_cluster-1467febf-20261332-0015", "upper": 88, "upper_method": "SAT_DRAT", "wall_s": 72.706}
++{"best_of_r13": 173, "config": "cross_2", "lower": 173, "m": 261, "n": 40, "rerun_value": 173, "setting": "S5", "status": "BOUNDS_ONLY", "task_id": "dev-erdos-dc5e7c2e-20261342-0000", "upper": 178, "upper_method": "LP_DUAL_EXACT", "wall_s": 59.233}
++{"best_of_r13": 182, "config": "cross_2", "lower": 182, "m": 274, "n": 40, "rerun_value": 182, "setting": "S5", "status": "BOUNDS_ONLY", "task_id": "dev-erdos-dc5e7c2e-20261342-0001", "upper": 185, "upper_method": "LP_DUAL_EXACT", "wall_s": 59.245}
++{"best_of_r13": 175, "config": "cross_2", "lower": 175, "m": 253, "n": 40, "rerun_value": 175, "setting": "S5", "status": "OPTIMALITY_CHECKED", "task_id": "dev-erdos-dc5e7c2e-20261342-0002", "upper": 175, "upper_method": "LP_DUAL_EXACT", "wall_s": 0.047}
++{"best_of_r13": 174, "config": "cross_2", "lower": 176, "m": 253, "n": 40, "rerun_value": 174, "setting": "S5", "status": "BOUNDS_ONLY", "task_id": "dev-erdos-dc5e7c2e-20261342-0003", "upper": 177, "upper_method": "LP_DUAL_EXACT", "wall_s": 60.037}
++{"best_of_r13": 184, "config": "cross_2", "lower": 184, "m": 276, "n": 40, "rerun_value": 184, "setting": "S5", "status": "BOUNDS_ONLY", "task_id": "dev-erdos-dc5e7c2e-20261342-0004", "upper": 186, "upper_method": "LP_DUAL_EXACT", "wall_s": 59.26}
++{"best_of_r13": 181, "config": "cross_2", "lower": 182, "m": 276, "n": 40, "rerun_value": 181, "setting": "S5", "status": "BOUNDS_ONLY", "task_id": "dev-erdos-dc5e7c2e-20261342-0005", "upper": 185, "upper_method": "LP_DUAL_EXACT", "wall_s": 59.665}
++{"best_of_r13": 192, "config": "cross_2", "lower": 192, "m": 292, "n": 40, "rerun_value": 192, "setting": "S5", "status": "BOUNDS_ONLY", "task_id": "dev-erdos-dc5e7c2e-20261342-0006", "upper": 195, "upper_method": "LP_DUAL_EXACT", "wall_s": 59.287}
++{"best_of_r13": 186, "config": "cross_2", "lower": 186, "m": 289, "n": 40, "rerun_value": 186, "setting": "S5", "status": "BOUNDS_ONLY", "task_id": "dev-erdos-dc5e7c2e-20261342-0007", "upper": 193, "upper_method": "LP_DUAL_EXACT", "wall_s": 59.269}
++{"best_of_r13": 174, "config": "cross_2", "lower": 175, "m": 260, "n": 40, "rerun_value": 174, "setting": "S5", "status": "BOUNDS_ONLY", "task_id": "dev-erdos-dc5e7c2e-20261342-0008", "upper": 177, "upper_method": "LP_DUAL_EXACT", "wall_s": 59.458}
++{"best_of_r13": 181, "config": "cross_2", "lower": 181, "m": 270, "n": 40, "rerun_value": 181, "setting": "S5", "status": "BOUNDS_ONLY", "task_id": "dev-erdos-dc5e7c2e-20261342-0009", "upper": 184, "upper_method": "LP_DUAL_EXACT", "wall_s": 59.261}
++{"best_of_r13": 186, "config": "cross_2", "lower": 186, "m": 280, "n": 40, "rerun_value": 186, "setting": "S5", "status": "BOUNDS_ONLY", "task_id": "dev-erdos-dc5e7c2e-20261342-0010", "upper": 188, "upper_method": "LP_DUAL_EXACT", "wall_s": 59.292}
++{"best_of_r13": 180, "config": "cross_2", "lower": 180, "m": 265, "n": 40, "rerun_value": 180, "setting": "S5", "status": "OPTIMALITY_CHECKED", "task_id": "dev-erdos-dc5e7c2e-20261342-0011", "upper": 180, "upper_method": "LP_DUAL_EXACT", "wall_s": 0.075}
++{"best_of_r13": 177, "config": "cross_2", "lower": 177, "m": 264, "n": 40, "rerun_value": 177, "setting": "S5", "status": "BOUNDS_ONLY", "task_id": "dev-erdos-dc5e7c2e-20261342-0012", "upper": 179, "upper_method": "LP_DUAL_EXACT", "wall_s": 59.219}
++{"best_of_r13": 189, "config": "cross_2", "lower": 189, "m": 289, "n": 40, "rerun_value": 189, "setting": "S5", "status": "BOUNDS_ONLY", "task_id": "dev-erdos-dc5e7c2e-20261342-0013", "upper": 193, "upper_method": "LP_DUAL_EXACT", "wall_s": 59.288}
++{"best_of_r13": 166, "config": "cross_2", "lower": 166, "m": 245, "n": 40, "rerun_value": 165, "setting": "S5", "status": "BOUNDS_ONLY", "task_id": "dev-erdos-dc5e7c2e-20261342-0014", "upper": 168, "upper_method": "LP_DUAL_EXACT", "wall_s": 59.687}
++{"best_of_r13": 173, "config": "cross_2", "lower": 173, "m": 259, "n": 40, "rerun_value": 173, "setting": "S5", "status": "BOUNDS_ONLY", "task_id": "dev-erdos-dc5e7c2e-20261342-0015", "upper": 178, "upper_method": "LP_DUAL_EXACT", "wall_s": 59.258}
++{"best_of_r13": 36, "config": "low_cycle_exchange_tm", "lower": 36, "m": 47, "n": 20, "rerun_value": 36, "setting": "S6", "status": "OPTIMALITY_CHECKED", "task_id": "dev-erdos-bb314e2d-20261352-0000", "upper": 36, "upper_method": "SAT_DRAT", "wall_s": 0.257}
++{"best_of_r13": 32, "config": "low_cycle_exchange_tm", "lower": 32, "m": 42, "n": 20, "rerun_value": 32, "setting": "S6", "status": "OPTIMALITY_CHECKED", "task_id": "dev-erdos-bb314e2d-20261352-0001", "upper": 32, "upper_method": "SAT_DRAT", "wall_s": 0.168}
++{"best_of_r13": 28, "config": "low_cycle_exchange_tm", "lower": 28, "m": 35, "n": 20, "rerun_value": 28, "setting": "S6", "status": "OPTIMALITY_CHECKED", "task_id": "dev-erdos-bb314e2d-20261352-0002", "upper": 28, "upper_method": "LP_DUAL_EXACT", "wall_s": 0.035}
++{"best_of_r13": 35, "config": "low_cycle_exchange_tm", "lower": 35, "m": 50, "n": 20, "rerun_value": 34, "setting": "S6", "status": "OPTIMALITY_CHECKED", "task_id": "dev-erdos-bb314e2d-20261352-0003", "upper": 35, "upper_method": "SAT_DRAT", "wall_s": 0.468}
++{"best_of_r13": 33, "config": "low_cycle_exchange_tm", "lower": 34, "m": 49, "n": 20, "rerun_value": 33, "setting": "S6", "status": "OPTIMALITY_CHECKED", "task_id": "dev-erdos-bb314e2d-20261352-0004", "upper": 34, "upper_method": "SAT_DRAT", "wall_s": 0.473}
++{"best_of_r13": 27, "config": "low_cycle_exchange_tm", "lower": 27, "m": 31, "n": 20, "rerun_value": 27, "setting": "S6", "status": "OPTIMALITY_CHECKED", "task_id": "dev-erdos-bb314e2d-20261352-0005", "upper": 27, "upper_method": "LP_DUAL_EXACT", "wall_s": 0.049}
++{"best_of_r13": 37, "config": "low_cycle_exchange_tm", "lower": 37, "m": 50, "n": 20, "rerun_value": 37, "setting": "S6", "status": "OPTIMALITY_CHECKED", "task_id": "dev-erdos-bb314e2d-20261352-0006", "upper": 37, "upper_method": "SAT_DRAT", "wall_s": 0.258}
++{"best_of_r13": 37, "config": "low_cycle_exchange_tm", "lower": 38, "m": 55, "n": 20, "rerun_value": 36, "setting": "S6", "status": "OPTIMALITY_CHECKED", "task_id": "dev-erdos-bb314e2d-20261352-0007", "upper": 38, "upper_method": "SAT_DRAT", "wall_s": 1.263}
++{"best_of_r13": 35, "config": "low_cycle_exchange_tm", "lower": 35, "m": 46, "n": 20, "rerun_value": 35, "setting": "S6", "status": "OPTIMALITY_CHECKED", "task_id": "dev-erdos-bb314e2d-20261352-0008", "upper": 35, "upper_method": "SAT_DRAT", "wall_s": 0.213}
++{"best_of_r13": 36, "config": "low_cycle_exchange_tm", "lower": 36, "m": 50, "n": 20, "rerun_value": 36, "setting": "S6", "status": "OPTIMALITY_CHECKED", "task_id": "dev-erdos-bb314e2d-20261352-0009", "upper": 36, "upper_method": "SAT_DRAT", "wall_s": 0.342}
++{"best_of_r13": 33, "config": "low_cycle_exchange_tm", "lower": 33, "m": 40, "n": 20, "rerun_value": 33, "setting": "S6", "status": "OPTIMALITY_CHECKED", "task_id": "dev-erdos-bb314e2d-20261352-0010", "upper": 33, "upper_method": "LP_DUAL_EXACT", "wall_s": 0.034}
++{"best_of_r13": 36, "config": "low_cycle_exchange_tm", "lower": 36, "m": 45, "n": 20, "rerun_value": 36, "setting": "S6", "status": "OPTIMALITY_CHECKED", "task_id": "dev-erdos-bb314e2d-20261352-0011", "upper": 36, "upper_method": "LP_DUAL_EXACT", "wall_s": 0.035}
++{"best_of_r13": 37, "config": "low_cycle_exchange_tm", "lower": 37, "m": 55, "n": 20, "rerun_value": 36, "setting": "S6", "status": "OPTIMALITY_CHECKED", "task_id": "dev-erdos-bb314e2d-20261352-0012", "upper": 37, "upper_method": "SAT_DRAT", "wall_s": 1.364}
++{"best_of_r13": 38, "config": "low_cycle_exchange_tm", "lower": 39, "m": 62, "n": 20, "rerun_value": 37, "setting": "S6", "status": "OPTIMALITY_CHECKED", "task_id": "dev-erdos-bb314e2d-20261352-0013", "upper": 39, "upper_method": "SAT_DRAT", "wall_s": 5.92}
++{"best_of_r13": 37, "config": "low_cycle_exchange_tm", "lower": 37, "m": 49, "n": 20, "rerun_value": 37, "setting": "S6", "status": "OPTIMALITY_CHECKED", "task_id": "dev-erdos-bb314e2d-20261352-0014", "upper": 37, "upper_method": "SAT_DRAT", "wall_s": 0.212}
++{"best_of_r13": 34, "config": "low_cycle_exchange_tm", "lower": 34, "m": 48, "n": 20, "rerun_value": 34, "setting": "S6", "status": "OPTIMALITY_CHECKED", "task_id": "dev-erdos-bb314e2d-20261352-0015", "upper": 34, "upper_method": "SAT_DRAT", "wall_s": 0.494}
++{"best_of_r13": 65, "config": "low_cycle_tm", "lower": 66, "m": 90, "n": 30, "rerun_value": 65, "setting": "S7", "status": "OPTIMALITY_CHECKED", "task_id": "dev-erdos-0cee043c-20261362-0000", "upper": 66, "upper_method": "SAT_DRAT", "wall_s": 20.799}
++{"best_of_r13": 59, "config": "low_cycle_tm", "lower": 60, "m": 75, "n": 30, "rerun_value": 59, "setting": "S7", "status": "OPTIMALITY_CHECKED", "task_id": "dev-erdos-0cee043c-20261362-0001", "upper": 60, "upper_method": "SAT_DRAT", "wall_s": 1.086}
++{"best_of_r13": 65, "config": "low_cycle_tm", "lower": 66, "m": 96, "n": 30, "rerun_value": 64, "setting": "S7", "status": "BOUNDS_ONLY", "task_id": "dev-erdos-0cee043c-20261362-0002", "upper": 73, "upper_method": "LP_DUAL_EXACT", "wall_s": 59.806}
++{"best_of_r13": 61, "config": "low_cycle_tm", "lower": 63, "m": 90, "n": 30, "rerun_value": 61, "setting": "S7", "status": "OPTIMALITY_CHECKED", "task_id": "dev-erdos-0cee043c-20261362-0003", "upper": 63, "upper_method": "SAT_DRAT", "wall_s": 93.506}
++{"best_of_r13": 62, "config": "low_cycle_tm", "lower": 65, "m": 96, "n": 30, "rerun_value": 62, "setting": "S7", "status": "BOUNDS_ONLY", "task_id": "dev-erdos-0cee043c-20261362-0004", "upper": 72, "upper_method": "LP_DUAL_EXACT", "wall_s": 59.848}
++{"best_of_r13": 64, "config": "low_cycle_tm", "lower": 66, "m": 91, "n": 30, "rerun_value": 64, "setting": "S7", "status": "OPTIMALITY_CHECKED", "task_id": "dev-erdos-0cee043c-20261362-0005", "upper": 66, "upper_method": "SAT_DRAT", "wall_s": 7.184}
++{"best_of_r13": 64, "config": "low_cycle_tm", "lower": 65, "m": 93, "n": 30, "rerun_value": 64, "setting": "S7", "status": "OPTIMALITY_CHECKED", "task_id": "dev-erdos-0cee043c-20261362-0006", "upper": 65, "upper_method": "SAT_DRAT", "wall_s": 86.826}
++{"best_of_r13": 62, "config": "low_cycle_tm", "lower": 63, "m": 88, "n": 30, "rerun_value": 62, "setting": "S7", "status": "OPTIMALITY_CHECKED", "task_id": "dev-erdos-0cee043c-20261362-0007", "upper": 63, "upper_method": "SAT_DRAT", "wall_s": 27.354}
++{"best_of_r13": 64, "config": "low_cycle_tm", "lower": 67, "m": 96, "n": 30, "rerun_value": 64, "setting": "S7", "status": "BOUNDS_ONLY", "task_id": "dev-erdos-0cee043c-20261362-0008", "upper": 72, "upper_method": "LP_DUAL_EXACT", "wall_s": 59.99}
++{"best_of_r13": 59, "config": "low_cycle_tm", "lower": 60, "m": 84, "n": 30, "rerun_value": 58, "setting": "S7", "status": "OPTIMALITY_CHECKED", "task_id": "dev-erdos-0cee043c-20261362-0009", "upper": 60, "upper_method": "SAT_DRAT", "wall_s": 41.581}
++{"best_of_r13": 65, "config": "low_cycle_tm", "lower": 66, "m": 101, "n": 30, "rerun_value": 64, "setting": "S7", "status": "BOUNDS_ONLY", "task_id": "dev-erdos-0cee043c-20261362-0010", "upper": 76, "upper_method": "LP_DUAL_EXACT", "wall_s": 59.663}
++{"best_of_r13": 59, "config": "low_cycle_tm", "lower": 61, "m": 86, "n": 30, "rerun_value": 59, "setting": "S7", "status": "OPTIMALITY_CHECKED", "task_id": "dev-erdos-0cee043c-20261362-0011", "upper": 61, "upper_method": "SAT_DRAT", "wall_s": 76.719}
++{"best_of_r13": 59, "config": "low_cycle_tm", "lower": 60, "m": 79, "n": 30, "rerun_value": 59, "setting": "S7", "status": "OPTIMALITY_CHECKED", "task_id": "dev-erdos-0cee043c-20261362-0012", "upper": 60, "upper_method": "SAT_DRAT", "wall_s": 2.246}
++{"best_of_r13": 63, "config": "low_cycle_tm", "lower": 66, "m": 98, "n": 30, "rerun_value": 62, "setting": "S7", "status": "BOUNDS_ONLY", "task_id": "dev-erdos-0cee043c-20261362-0013", "upper": 74, "upper_method": "LP_DUAL_EXACT", "wall_s": 59.569}
++{"best_of_r13": 62, "config": "low_cycle_tm", "lower": 64, "m": 88, "n": 30, "rerun_value": 60, "setting": "S7", "status": "OPTIMALITY_CHECKED", "task_id": "dev-erdos-0cee043c-20261362-0014", "upper": 64, "upper_method": "SAT_DRAT", "wall_s": 56.139}
++{"best_of_r13": 59, "config": "low_cycle_tm", "lower": 60, "m": 82, "n": 30, "rerun_value": 58, "setting": "S7", "status": "OPTIMALITY_CHECKED", "task_id": "dev-erdos-0cee043c-20261362-0015", "upper": 60, "upper_method": "SAT_DRAT", "wall_s": 5.263}
+diff --git a/evidence/optimum_gap_b20r14/run.log b/evidence/optimum_gap_b20r14/run.log
+new file mode 100644
+index 0000000..7717d17
+--- /dev/null
++++ b/evidence/optimum_gap_b20r14/run.log
+@@ -0,0 +1,113 @@
++[    1.3s] S1 dev-erdos-80a647eb-20261302-0000: B=66 L=67 U=67 (LP_DUAL_EXACT) OPTIMALITY_CHECKED
++[    1.8s] S1 dev-erdos-80a647eb-20261302-0001: B=61 L=62 U=62 (LP_DUAL_EXACT) OPTIMALITY_CHECKED
++[    2.3s] S1 dev-erdos-80a647eb-20261302-0002: B=62 L=62 U=62 (LP_DUAL_EXACT) OPTIMALITY_CHECKED
++[    3.0s] S1 dev-erdos-80a647eb-20261302-0003: B=61 L=62 U=62 (LP_DUAL_EXACT) OPTIMALITY_CHECKED
++[    3.5s] S1 dev-erdos-80a647eb-20261302-0004: B=58 L=58 U=58 (LP_DUAL_EXACT) OPTIMALITY_CHECKED
++[    4.0s] S1 dev-erdos-80a647eb-20261302-0005: B=55 L=55 U=55 (LP_DUAL_EXACT) OPTIMALITY_CHECKED
++[    4.6s] S1 dev-erdos-80a647eb-20261302-0006: B=60 L=60 U=60 (LP_DUAL_EXACT) OPTIMALITY_CHECKED
++[    5.2s] S1 dev-erdos-80a647eb-20261302-0007: B=58 L=59 U=59 (LP_DUAL_EXACT) OPTIMALITY_CHECKED
++[    5.7s] S1 dev-erdos-80a647eb-20261302-0008: B=57 L=57 U=57 (LP_DUAL_EXACT) OPTIMALITY_CHECKED
++[    6.2s] S1 dev-erdos-80a647eb-20261302-0009: B=61 L=61 U=61 (LP_DUAL_EXACT) OPTIMALITY_CHECKED
++[    7.3s] S1 dev-erdos-80a647eb-20261302-0010: B=62 L=62 U=62 (SAT_DRAT) OPTIMALITY_CHECKED
++[    7.9s] S1 dev-erdos-80a647eb-20261302-0011: B=56 L=57 U=57 (LP_DUAL_EXACT) OPTIMALITY_CHECKED
++[    8.4s] S1 dev-erdos-80a647eb-20261302-0012: B=59 L=59 U=59 (LP_DUAL_EXACT) OPTIMALITY_CHECKED
++[    8.9s] S1 dev-erdos-80a647eb-20261302-0013: B=66 L=66 U=66 (LP_DUAL_EXACT) OPTIMALITY_CHECKED
++[    9.4s] S1 dev-erdos-80a647eb-20261302-0014: B=56 L=56 U=56 (LP_DUAL_EXACT) OPTIMALITY_CHECKED
++[    9.9s] S1 dev-erdos-80a647eb-20261302-0015: B=59 L=59 U=59 (LP_DUAL_EXACT) OPTIMALITY_CHECKED
++[   10.4s] S2 dev-erdos-b73f6828-20261312-0000: B=103 L=103 U=103 (LP_DUAL_EXACT) OPTIMALITY_CHECKED
++[   12.0s] S2 dev-erdos-b73f6828-20261312-0001: B=104 L=105 U=105 (LP_DUAL_EXACT) OPTIMALITY_CHECKED
++[   14.5s] S2 dev-erdos-b73f6828-20261312-0002: B=92 L=93 U=93 (LP_DUAL_EXACT) OPTIMALITY_CHECKED
++[   17.9s] S2 dev-erdos-b73f6828-20261312-0003: B=95 L=98 U=98 (LP_DUAL_EXACT) OPTIMALITY_CHECKED
++[   19.5s] S2 dev-erdos-b73f6828-20261312-0004: B=90 L=92 U=92 (LP_DUAL_EXACT) OPTIMALITY_CHECKED
++[   20.5s] S2 dev-erdos-b73f6828-20261312-0005: B=92 L=92 U=92 (LP_DUAL_EXACT) OPTIMALITY_CHECKED
++[   22.6s] S2 dev-erdos-b73f6828-20261312-0006: B=92 L=94 U=94 (LP_DUAL_EXACT) OPTIMALITY_CHECKED
++[   26.3s] S2 dev-erdos-b73f6828-20261312-0007: B=101 L=102 U=102 (LP_DUAL_EXACT) OPTIMALITY_CHECKED
++[   28.0s] S2 dev-erdos-b73f6828-20261312-0008: B=89 L=90 U=90 (LP_DUAL_EXACT) OPTIMALITY_CHECKED
++[   31.8s] S2 dev-erdos-b73f6828-20261312-0009: B=99 L=100 U=100 (LP_DUAL_EXACT) OPTIMALITY_CHECKED
++[   32.8s] S2 dev-erdos-b73f6828-20261312-0010: B=98 L=99 U=99 (LP_DUAL_EXACT) OPTIMALITY_CHECKED
++[   64.2s] S2 dev-erdos-b73f6828-20261312-0011: B=94 L=95 U=95 (SAT_DRAT) OPTIMALITY_CHECKED
++[   65.0s] S2 dev-erdos-b73f6828-20261312-0012: B=93 L=94 U=94 (LP_DUAL_EXACT) OPTIMALITY_CHECKED
++[   67.6s] S2 dev-erdos-b73f6828-20261312-0013: B=99 L=100 U=100 (LP_DUAL_EXACT) OPTIMALITY_CHECKED
++[   70.2s] S2 dev-erdos-b73f6828-20261312-0014: B=94 L=96 U=96 (LP_DUAL_EXACT) OPTIMALITY_CHECKED
++[   75.4s] S2 dev-erdos-b73f6828-20261312-0015: B=95 L=98 U=98 (LP_DUAL_EXACT) OPTIMALITY_CHECKED
++[   76.2s] S3 dev-erdos-3765432f-20261322-0000: B=112 L=112 U=112 (LP_DUAL_EXACT) OPTIMALITY_CHECKED
++[   77.2s] S3 dev-erdos-3765432f-20261322-0001: B=121 L=122 U=122 (LP_DUAL_EXACT) OPTIMALITY_CHECKED
++[   79.4s] S3 dev-erdos-3765432f-20261322-0002: B=130 L=131 U=131 (LP_DUAL_EXACT) OPTIMALITY_CHECKED
++[   81.8s] S3 dev-erdos-3765432f-20261322-0003: B=129 L=132 U=132 (LP_DUAL_EXACT) OPTIMALITY_CHECKED
++[   82.4s] S3 dev-erdos-3765432f-20261322-0004: B=122 L=122 U=122 (LP_DUAL_EXACT) OPTIMALITY_CHECKED
++[   82.9s] S3 dev-erdos-3765432f-20261322-0005: B=135 L=135 U=135 (LP_DUAL_EXACT) OPTIMALITY_CHECKED
++[   83.4s] S3 dev-erdos-3765432f-20261322-0006: B=116 L=116 U=116 (LP_DUAL_EXACT) OPTIMALITY_CHECKED
++[   84.0s] S3 dev-erdos-3765432f-20261322-0007: B=130 L=130 U=130 (LP_DUAL_EXACT) OPTIMALITY_CHECKED
++[   86.5s] S3 dev-erdos-3765432f-20261322-0008: B=115 L=116 U=116 (LP_DUAL_EXACT) OPTIMALITY_CHECKED
++[   87.0s] S3 dev-erdos-3765432f-20261322-0009: B=113 L=113 U=113 (LP_DUAL_EXACT) OPTIMALITY_CHECKED
++[   87.5s] S3 dev-erdos-3765432f-20261322-0010: B=118 L=118 U=118 (LP_DUAL_EXACT) OPTIMALITY_CHECKED
++[   88.0s] S3 dev-erdos-3765432f-20261322-0011: B=119 L=119 U=119 (LP_DUAL_EXACT) OPTIMALITY_CHECKED
++[   88.6s] S3 dev-erdos-3765432f-20261322-0012: B=130 L=130 U=130 (LP_DUAL_EXACT) OPTIMALITY_CHECKED
++[   92.8s] S3 dev-erdos-3765432f-20261322-0013: B=119 L=120 U=120 (LP_DUAL_EXACT) OPTIMALITY_CHECKED
++[   95.3s] S3 dev-erdos-3765432f-20261322-0014: B=125 L=126 U=126 (LP_DUAL_EXACT) OPTIMALITY_CHECKED
++[   96.2s] S3 dev-erdos-3765432f-20261322-0015: B=129 L=130 U=130 (LP_DUAL_EXACT) OPTIMALITY_CHECKED
++[   96.7s] S4 dev-planted_cluster-1467febf-20261332-0000: B=98 L=98 U=98 (LP_DUAL_EXACT) OPTIMALITY_CHECKED
++[   97.2s] S4 dev-planted_cluster-1467febf-20261332-0001: B=94 L=94 U=94 (LP_DUAL_EXACT) OPTIMALITY_CHECKED
++[   98.7s] S4 dev-planted_cluster-1467febf-20261332-0002: B=92 L=93 U=93 (LP_DUAL_EXACT) OPTIMALITY_CHECKED
++[  106.9s] S4 dev-planted_cluster-1467febf-20261332-0003: B=93 L=93 U=93 (SAT_DRAT) OPTIMALITY_CHECKED
++[  150.8s] S4 dev-planted_cluster-1467febf-20261332-0004: B=90 L=90 U=90 (SAT_DRAT) OPTIMALITY_CHECKED
++[  152.5s] S4 dev-planted_cluster-1467febf-20261332-0005: B=88 L=89 U=89 (LP_DUAL_EXACT) OPTIMALITY_CHECKED
++[  221.3s] S4 dev-planted_cluster-1467febf-20261332-0006: B=98 L=98 U=98 (SAT_DRAT) OPTIMALITY_CHECKED
++[  229.4s] S4 dev-planted_cluster-1467febf-20261332-0007: B=86 L=86 U=86 (SAT_DRAT) OPTIMALITY_CHECKED
++[  230.2s] S4 dev-planted_cluster-1467febf-20261332-0008: B=85 L=86 U=86 (LP_DUAL_EXACT) OPTIMALITY_CHECKED
++[  237.2s] S4 dev-planted_cluster-1467febf-20261332-0009: B=90 L=90 U=90 (SAT_DRAT) OPTIMALITY_CHECKED
++[  237.7s] S4 dev-planted_cluster-1467febf-20261332-0010: B=96 L=96 U=96 (LP_DUAL_EXACT) OPTIMALITY_CHECKED
++[  254.1s] S4 dev-planted_cluster-1467febf-20261332-0011: B=91 L=92 U=92 (SAT_DRAT) OPTIMALITY_CHECKED
++[  254.6s] S4 dev-planted_cluster-1467febf-20261332-0012: B=98 L=98 U=98 (LP_DUAL_EXACT) OPTIMALITY_CHECKED
++[  255.2s] S4 dev-planted_cluster-1467febf-20261332-0013: B=100 L=100 U=100 (LP_DUAL_EXACT) OPTIMALITY_CHECKED
++[  256.4s] S4 dev-planted_cluster-1467febf-20261332-0014: B=83 L=84 U=84 (LP_DUAL_EXACT) OPTIMALITY_CHECKED
++[  329.7s] S4 dev-planted_cluster-1467febf-20261332-0015: B=88 L=88 U=88 (SAT_DRAT) OPTIMALITY_CHECKED
++[  389.4s] S5 dev-erdos-dc5e7c2e-20261342-0000: B=173 L=173 U=178 (LP_DUAL_EXACT) BOUNDS_ONLY
++[  449.2s] S5 dev-erdos-dc5e7c2e-20261342-0001: B=182 L=182 U=185 (LP_DUAL_EXACT) BOUNDS_ONLY
++[  449.7s] S5 dev-erdos-dc5e7c2e-20261342-0002: B=175 L=175 U=175 (LP_DUAL_EXACT) OPTIMALITY_CHECKED
++[  510.3s] S5 dev-erdos-dc5e7c2e-20261342-0003: B=174 L=176 U=177 (LP_DUAL_EXACT) BOUNDS_ONLY
++[  570.0s] S5 dev-erdos-dc5e7c2e-20261342-0004: B=184 L=184 U=186 (LP_DUAL_EXACT) BOUNDS_ONLY
++[  630.2s] S5 dev-erdos-dc5e7c2e-20261342-0005: B=181 L=182 U=185 (LP_DUAL_EXACT) BOUNDS_ONLY
++[  690.0s] S5 dev-erdos-dc5e7c2e-20261342-0006: B=192 L=192 U=195 (LP_DUAL_EXACT) BOUNDS_ONLY
++[  749.8s] S5 dev-erdos-dc5e7c2e-20261342-0007: B=186 L=186 U=193 (LP_DUAL_EXACT) BOUNDS_ONLY
++[  809.8s] S5 dev-erdos-dc5e7c2e-20261342-0008: B=174 L=175 U=177 (LP_DUAL_EXACT) BOUNDS_ONLY
++[  869.5s] S5 dev-erdos-dc5e7c2e-20261342-0009: B=181 L=181 U=184 (LP_DUAL_EXACT) BOUNDS_ONLY
++[  929.3s] S5 dev-erdos-dc5e7c2e-20261342-0010: B=186 L=186 U=188 (LP_DUAL_EXACT) BOUNDS_ONLY
++[  929.9s] S5 dev-erdos-dc5e7c2e-20261342-0011: B=180 L=180 U=180 (LP_DUAL_EXACT) OPTIMALITY_CHECKED
++[  989.7s] S5 dev-erdos-dc5e7c2e-20261342-0012: B=177 L=177 U=179 (LP_DUAL_EXACT) BOUNDS_ONLY
++[ 1049.5s] S5 dev-erdos-dc5e7c2e-20261342-0013: B=189 L=189 U=193 (LP_DUAL_EXACT) BOUNDS_ONLY
++[ 1109.7s] S5 dev-erdos-dc5e7c2e-20261342-0014: B=166 L=166 U=168 (LP_DUAL_EXACT) BOUNDS_ONLY
++[ 1169.5s] S5 dev-erdos-dc5e7c2e-20261342-0015: B=173 L=173 U=178 (LP_DUAL_EXACT) BOUNDS_ONLY
++[ 1170.2s] S6 dev-erdos-bb314e2d-20261352-0000: B=36 L=36 U=36 (SAT_DRAT) OPTIMALITY_CHECKED
++[ 1170.9s] S6 dev-erdos-bb314e2d-20261352-0001: B=32 L=32 U=32 (SAT_DRAT) OPTIMALITY_CHECKED
++[ 1171.5s] S6 dev-erdos-bb314e2d-20261352-0002: B=28 L=28 U=28 (LP_DUAL_EXACT) OPTIMALITY_CHECKED
++[ 1172.5s] S6 dev-erdos-bb314e2d-20261352-0003: B=35 L=35 U=35 (SAT_DRAT) OPTIMALITY_CHECKED
++[ 1173.5s] S6 dev-erdos-bb314e2d-20261352-0004: B=33 L=34 U=34 (SAT_DRAT) OPTIMALITY_CHECKED
++[ 1174.1s] S6 dev-erdos-bb314e2d-20261352-0005: B=27 L=27 U=27 (LP_DUAL_EXACT) OPTIMALITY_CHECKED
++[ 1174.9s] S6 dev-erdos-bb314e2d-20261352-0006: B=37 L=37 U=37 (SAT_DRAT) OPTIMALITY_CHECKED
++[ 1176.6s] S6 dev-erdos-bb314e2d-20261352-0007: B=37 L=38 U=38 (SAT_DRAT) OPTIMALITY_CHECKED
++[ 1177.4s] S6 dev-erdos-bb314e2d-20261352-0008: B=35 L=35 U=35 (SAT_DRAT) OPTIMALITY_CHECKED
++[ 1178.2s] S6 dev-erdos-bb314e2d-20261352-0009: B=36 L=36 U=36 (SAT_DRAT) OPTIMALITY_CHECKED
++[ 1178.8s] S6 dev-erdos-bb314e2d-20261352-0010: B=33 L=33 U=33 (LP_DUAL_EXACT) OPTIMALITY_CHECKED
++[ 1179.3s] S6 dev-erdos-bb314e2d-20261352-0011: B=36 L=36 U=36 (LP_DUAL_EXACT) OPTIMALITY_CHECKED
++[ 1181.2s] S6 dev-erdos-bb314e2d-20261352-0012: B=37 L=37 U=37 (SAT_DRAT) OPTIMALITY_CHECKED
++[ 1187.7s] S6 dev-erdos-bb314e2d-20261352-0013: B=38 L=39 U=39 (SAT_DRAT) OPTIMALITY_CHECKED
++[ 1188.4s] S6 dev-erdos-bb314e2d-20261352-0014: B=37 L=37 U=37 (SAT_DRAT) OPTIMALITY_CHECKED
++[ 1189.5s] S6 dev-erdos-bb314e2d-20261352-0015: B=34 L=34 U=34 (SAT_DRAT) OPTIMALITY_CHECKED
++[ 1210.8s] S7 dev-erdos-0cee043c-20261362-0000: B=65 L=66 U=66 (SAT_DRAT) OPTIMALITY_CHECKED
++[ 1212.6s] S7 dev-erdos-0cee043c-20261362-0001: B=59 L=60 U=60 (SAT_DRAT) OPTIMALITY_CHECKED
++[ 1273.0s] S7 dev-erdos-0cee043c-20261362-0002: B=65 L=66 U=73 (LP_DUAL_EXACT) BOUNDS_ONLY
++[ 1367.0s] S7 dev-erdos-0cee043c-20261362-0003: B=61 L=63 U=63 (SAT_DRAT) OPTIMALITY_CHECKED
++[ 1427.5s] S7 dev-erdos-0cee043c-20261362-0004: B=62 L=65 U=72 (LP_DUAL_EXACT) BOUNDS_ONLY
++[ 1435.4s] S7 dev-erdos-0cee043c-20261362-0005: B=64 L=66 U=66 (SAT_DRAT) OPTIMALITY_CHECKED
++[ 1522.8s] S7 dev-erdos-0cee043c-20261362-0006: B=64 L=65 U=65 (SAT_DRAT) OPTIMALITY_CHECKED
++[ 1550.7s] S7 dev-erdos-0cee043c-20261362-0007: B=62 L=63 U=63 (SAT_DRAT) OPTIMALITY_CHECKED
++[ 1611.4s] S7 dev-erdos-0cee043c-20261362-0008: B=64 L=67 U=72 (LP_DUAL_EXACT) BOUNDS_ONLY
++[ 1653.6s] S7 dev-erdos-0cee043c-20261362-0009: B=59 L=60 U=60 (SAT_DRAT) OPTIMALITY_CHECKED
++[ 1713.8s] S7 dev-erdos-0cee043c-20261362-0010: B=65 L=66 U=76 (LP_DUAL_EXACT) BOUNDS_ONLY
++[ 1791.1s] S7 dev-erdos-0cee043c-20261362-0011: B=59 L=61 U=61 (SAT_DRAT) OPTIMALITY_CHECKED
++[ 1793.9s] S7 dev-erdos-0cee043c-20261362-0012: B=59 L=60 U=60 (SAT_DRAT) OPTIMALITY_CHECKED
++[ 1854.0s] S7 dev-erdos-0cee043c-20261362-0013: B=63 L=66 U=74 (LP_DUAL_EXACT) BOUNDS_ONLY
++[ 1910.7s] S7 dev-erdos-0cee043c-20261362-0014: B=62 L=64 U=64 (SAT_DRAT) OPTIMALITY_CHECKED
++[ 1916.6s] S7 dev-erdos-0cee043c-20261362-0015: B=59 L=60 U=60 (SAT_DRAT) OPTIMALITY_CHECKED
++verdicts {'S1': 'AT_CEILING', 'S2': 'ROOM_TO_OPTIMUM', 'S3': 'ROOM_TO_OPTIMUM', 'S4': 'AT_CEILING', 'S5': 'UNSETTLED_BOUNDS', 'S6': 'AT_CEILING', 'S7': 'UNSETTLED_BOUNDS'}
+diff --git a/evidence/optimum_gap_b20r14/summary.json b/evidence/optimum_gap_b20r14/summary.json
+new file mode 100644
+index 0000000..8916b69
+--- /dev/null
++++ b/evidence/optimum_gap_b20r14/summary.json
+@@ -0,0 +1,170 @@
++{
++ "min_certified": 12,
++ "mue": 0.5,
++ "schema": "genesis-b20r14-optimum-gap-v1",
++ "seconds": 60.0,
++ "settings": {
++  "S1": {
++   "certified_optimum": 16,
++   "domain": "triangle_free_host_v1",
++   "family": "erdos",
++   "hosts": 16,
++   "hosts_best_of_at_optimum": 11,
++   "max_optimum_minus_best_of": 1,
++   "mean_optimum_minus_best_of": 0.312,
++   "open_gaps": [],
++   "params": {
++    "n": 22,
++    "p": 0.35
++   },
++   "upper_methods": [
++    "LP_DUAL_EXACT",
++    "SAT_DRAT"
++   ],
++   "verdict": "AT_CEILING"
++  },
++  "S2": {
++   "certified_optimum": 16,
++   "domain": "triangle_free_host_v1",
++   "family": "erdos",
++   "hosts": 16,
++   "hosts_best_of_at_optimum": 2,
++   "max_optimum_minus_best_of": 3,
++   "mean_optimum_minus_best_of": 1.312,
++   "open_gaps": [],
++   "params": {
++    "n": 30,
++    "p": 0.3
++   },
++   "upper_methods": [
++    "LP_DUAL_EXACT",
++    "SAT_DRAT"
++   ],
++   "verdict": "ROOM_TO_OPTIMUM"
++  },
++  "S3": {
++   "certified_optimum": 16,
++   "domain": "triangle_free_host_v1",
++   "family": "erdos",
++   "hosts": 16,
++   "hosts_best_of_at_optimum": 9,
++   "max_optimum_minus_best_of": 3,
++   "mean_optimum_minus_best_of": 0.562,
++   "open_gaps": [],
++   "params": {
++    "n": 40,
++    "p": 0.2
++   },
++   "upper_methods": [
++    "LP_DUAL_EXACT"
++   ],
++   "verdict": "ROOM_TO_OPTIMUM"
++  },
++  "S4": {
++   "certified_optimum": 16,
++   "domain": "triangle_free_host_v1",
++   "family": "planted_cluster",
++   "hosts": 16,
++   "hosts_best_of_at_optimum": 11,
++   "max_optimum_minus_best_of": 1,
++   "mean_optimum_minus_best_of": 0.312,
++   "open_gaps": [],
++   "params": {
++    "n": 30,
++    "p_in": 0.6,
++    "p_out": 0.2
++   },
++   "upper_methods": [
++    "LP_DUAL_EXACT",
++    "SAT_DRAT"
++   ],
++   "verdict": "AT_CEILING"
++  },
++  "S5": {
++   "certified_optimum": 2,
++   "domain": "triangle_free_host_v1",
++   "family": "erdos",
++   "hosts": 16,
++   "hosts_best_of_at_optimum": 2,
++   "max_optimum_minus_best_of": 0,
++   "mean_optimum_minus_best_of": 0,
++   "open_gaps": [
++    5,
++    3,
++    1,
++    2,
++    3,
++    3,
++    7,
++    2,
++    3,
++    2,
++    2,
++    4,
++    2,
++    5
++   ],
++   "params": {
++    "n": 40,
++    "p": 0.35
++   },
++   "upper_methods": [
++    "LP_DUAL_EXACT"
++   ],
++   "verdict": "UNSETTLED_BOUNDS"
++  },
++  "S6": {
++   "certified_optimum": 16,
++   "domain": "c4_host_v2",
++   "family": "erdos",
++   "hosts": 16,
++   "hosts_best_of_at_optimum": 13,
++   "max_optimum_minus_best_of": 1,
++   "mean_optimum_minus_best_of": 0.188,
++   "open_gaps": [],
++   "params": {
++    "n": 20,
++    "p": 0.25
++   },
++   "upper_methods": [
++    "LP_DUAL_EXACT",
++    "SAT_DRAT"
++   ],
++   "verdict": "AT_CEILING"
++  },
++  "S7": {
++   "certified_optimum": 11,
++   "domain": "c4_host_v2",
++   "family": "erdos",
++   "hosts": 16,
++   "hosts_best_of_at_optimum": 0,
++   "max_optimum_minus_best_of": 2,
++   "mean_optimum_minus_best_of": 1.364,
++   "open_gaps": [
++    7,
++    7,
++    5,
++    10,
++    8
++   ],
++   "params": {
++    "n": 30,
++    "p": 0.2
++   },
++   "upper_methods": [
++    "LP_DUAL_EXACT",
++    "SAT_DRAT"
++   ],
++   "verdict": "UNSETTLED_BOUNDS"
++  }
++ },
++ "verdicts": {
++  "S1": "AT_CEILING",
++  "S2": "ROOM_TO_OPTIMUM",
++  "S3": "ROOM_TO_OPTIMUM",
++  "S4": "AT_CEILING",
++  "S5": "UNSETTLED_BOUNDS",
++  "S6": "AT_CEILING",
++  "S7": "UNSETTLED_BOUNDS"
++ }
++}
+-- 
+2.43.0
+
+
+From e81caee08a127375b771759efe6c7f299aae377d Mon Sep 17 00:00:00 2001
+From: Genesis builder <builder@genesis.invalid>
+Date: Tue, 13 Oct 2026 10:44:37 +0000
+Subject: [PATCH 3/3] B20_RX1 record: add the B20_R14 optimum-gap probe and its
+ design consequences
+
+Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>
+Claude-Session: https://claude.ai/code/session_01FE1KQN96fx3NqLs2hyu3Ka
+---
+ docs/checkpoints/B20_RX1_RECORD.md | 18 +++++++++++++++++-
+ 1 file changed, 17 insertions(+), 1 deletion(-)
+
+diff --git a/docs/checkpoints/B20_RX1_RECORD.md b/docs/checkpoints/B20_RX1_RECORD.md
+index e2fe52e..bc58f1f 100644
+--- a/docs/checkpoints/B20_RX1_RECORD.md
++++ b/docs/checkpoints/B20_RX1_RECORD.md
+@@ -119,6 +119,22 @@ The lost run's B20_R12 SELECT-rehearsal hosts (drawn with `os.urandom`) cannot b
+ 
+ Configuration choice is saturated in graph construction, as it was on the equational systems. That makes four DEV pilots without research-policy headroom.
+ 
++### B20_R14: optimum-gap probe (after the RX1 checkpoint)
++
++Commits `331825f` (setup) and `01c38e6` (result). The probe certified the optimum on the 112 R13 held-out hosts (LP dual + SAT/DRAT, 60 s per host) and compared it with R13's per-host best over all configurations.
++
++| Settings | Verdict | Optimum − per-host best |
++|---|---|---|
++| S2 tf n30 p.3 | ROOM_TO_OPTIMUM | **1.31** |
++| S3 tf n40 p.2 | ROOM_TO_OPTIMUM | 0.56 |
++| S7 c4 n30 | unsettled (11/16 hosts certified) | 1.36 on the certified hosts |
++| S1 (the E1 family), S4, S6 | AT_CEILING | 0.19–0.31 |
++| S5 | unsettled | — |
++
++**Reading.** In graph construction the headroom is capability: better methods could earn it. It is not selection: picking among the existing configurations cannot. The comparison is not cost-matched.
++
++**For E1:** the result supports the harder-family option. **For GV4:** it points to a design where research produces new methods, on S2-, S3- and S7-like families.
++
+ ### H06 design probe (no study, nothing committed as evidence)
+ 
+ On 24 calibrated DEV hosts per domain, the motif hypergraph is essentially one component:
+@@ -154,7 +170,7 @@ None of the files these commits modify (`graphs.py`, `domains.py`, `certificates
+ | B20RX-OPEN-2 | The CRPD-2b pin revision and the pair-count package. | reviewer acceptance (pin change, builder-written known results) |
+ | B20RX-OPEN-3 | W23 is not yet wired into the custodian or evidence-kernel promotion path; this needs the R5+ custodian. Code cannot check whether two operators are independent. | the canonical line; external review |
+ | B20RX-OPEN-4 | W22: no machine-proposed primitive with prospective utility yet, and no DEV trace corpus. | a corpus from real representation research |
+-| B20R13-OPEN-1 | GV4: choosing among existing configurations leaves no headroom in graph construction either (4 pilots in total). Better-improver needs a setting where research changes capability: representations beyond the menu, harder calibrated families with per-host complementarity of at least 0.5, or multi-generation horizons. | the user's design decision |
++| B20R13-OPEN-1 | GV4: choosing among existing configurations leaves no headroom in graph construction either (4 pilots in total). B20_R14 shows capability headroom on harder families: S2 at 1.31, S3 at 0.56 and S7 at 1.36 edges per host below the certified optimum. A study should let research produce new methods (LP- or SAT-guided construction, representations beyond the menu) at matched budgets on such families. | the user's design decision |
+ | B20RX-OPEN-5 | H06 s16.3: decomposition and free-edge kernel have no headroom on the calibrated families (design probe). | a different structural method or family |
+ 
+ ## Claim ceiling
+-- 
+2.43.0
+

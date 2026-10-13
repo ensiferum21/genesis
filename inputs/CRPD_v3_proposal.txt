@@ -1,0 +1,334 @@
+Genesis CRPD v3 — Causal Renormalization & Proof-Carrying Discovery
+
+Status: Proposed research architecture and engineering handoff, 12 October 2026. Not implemented or experimentally validated as a research system. The companion genesis_crpd_reference.py demonstrates only a small known graph-theory equivalence on bounded graphs. Existing Genesis B20 infrastructure was not audited or modified during creation of this document.
+
+0. Decision
+
+Keep the current Genesis evidence kernel, resource ledger, split firewall, formal checker, fair baselines, and B20 engineering advances. Do not rewrite them. Add a small Proof-Carrying Causal Abstraction (PCCA) research loop ahead of the expensive solver. Keep brain-inspired replay and population-based discovery optional and earned by prospective ablations.
+
+Question to test: Can a research agent learn a smaller, formally justified representation that gives more transferable verified mathematical progress per unit resource than a strong non-abstraction baseline?
+
+We are not asserting that physical renormalization groups, biological evolution, or human cognition imply a universal optimum for theorem search. They inspire independently testable components; none guarantees research success.
+
+1. Novelty position and research antecedents
+
+The ingredients are not all new. Novelty, if established, would be in their particular integration and demonstrated scientific value:
+
+• Relevant-variable discovery: statistical-physics renormalization and information bottleneck identify informative coarse variables in specific physical settings. Gordon et al., PRL 2021, https://doi.org/10.1103/PhysRevLett.126.240601 . We propose a task-relative analogue for formal mathematical search, NOT an equivalence theorem between RG and mathematics.
+• Replay and consolidation: neuroscience studies support prioritized replay and memory consolidation; mechanisms are still debated. Carr et al., Nature Neuroscience 2011, https://doi.org/10.1038/nn.2732 ; van der Meer & Bendor, 2025, https://doi.org/10.1016/j.tins.2025.02.006 .
+• Learning abstractions and wake/sleep: DreamCoder learned symbolic libraries and representations. Ellis et al., https://arxiv.org/abs/2006.08381 . It is a serious baseline, not an invention of Genesis.
+• Counterexample-guided refinement: CEGAR is established in verification. Clarke et al., https://web.stanford.edu/class/cs357/cegar.pdf .
+• Diversity and stepping stones: MAP-Elites preserves alternative trajectories and can find productive stepping stones; see Nordmoen et al. 2021, https://pmc.ncbi.nlm.nih.gov/articles/PMC8115726/ .
+• Adaptive computation: rational metareasoning and value of computation are established, Russell & Wefald 1991, https://doi.org/10.1016/0004-3702(91)90015-C .
+• Proof-grounded competitive baseline: AlphaProof (Nature 2025) https://www.nature.com/articles/s41586-025-09833-y and AlphaEvolve (2025) https://arxiv.org/abs/2506.13131 .
+• Evidence pitfalls: Lean checking cannot establish specification fidelity: ICML 2026 audit https://proceedings.mlr.press/v306/ammanamanchi26a.html .
+
+Do not claim broad originality without a deeper prior-art and implementation comparison. A name, architecture diagram, or simulated result is not a research contribution.
+
+2. Proposed distinguishing hypothesis
+
+Ordinary theorem search operates in a fixed vocabulary and attempts proofs. Typical abstraction learning generates new vocabulary and tests local usefulness. PCCA instead treats the choice of abstraction and the ability to justify it as first-class mathematical search objects:
+
+1. Observe a family of repeated failures, costly proof paths, and countermodels.
+2. Generate candidate effective variables that explain what remains stable when the original mathematical objects are transformed.
+3. Attempt proof-bearing abstraction and refinement maps. An abstraction may be exact, one-directionally sound, or merely heuristic; the system must know which.
+4. Use controlled counterfactual experiments to determine whether a variable is causally useful to subsequent solving.
+5. Consolidate successful sequences into reusable concepts and research procedures; separately prove whether this improves future research.
+
+The possible research contribution is a proof-gated, multiscale, counterfactually tested architecture for discovering useful mathematical languages rather than solely generating proof terms.
+
+3. Formal core
+
+Let X be the concrete task representation and G the target proposition or optimization problem. A candidate abstraction A induces an effective state Z=A(X). Different task families may require different A; there is no assumed universal best abstraction.
+
+3.1 Soundness modes
+
+Mode EQ (exact): independent formal checker accepts a theorem of the form:
+
+forall x in scope, Goal(x) <-> AbstractGoal(A(x)).
+
+Mode SUFF (safe sufficient criterion): it accepts AbstractGoal(A(x)) -> Goal(x). Useful for valid witnesses/proofs where condition is sufficient.
+
+Mode NEC (safe necessary criterion): it accepts Goal(x) -> AbstractGoal(A(x)). Useful for sound counterexample search or pruning after clarifying the logical direction. A failed necessary condition disproves Goal(x); a satisfied necessary condition does not prove it.
+
+Mode BOUND: it accepts a proved lower_bound <= exact_optimum <= upper_bound with separate witness and upper certificate. Equality proves a finite optimum.
+
+Mode HEURISTIC: prediction only; suitable for search-order guidance, NEVER proof admission.
+
+For abstraction-interpretation implementations, use a mathematically specified concretization gamma(z) with the containment obligation x in gamma(A(x)). A proof about every member of gamma(z) may soundly transfer to x; a proof about only one member does not. Any abstract result must be lifted to a concrete proof/witness/certificate before evidence admission.
+
+3.2 Research objective
+
+At DEVELOPMENT time, candidate A is scored using a vector, not a scalar that hides invalid work:
+
+• verified_heldout_gain: improvement in independently checked outcomes on fresh DEV/SELECT tasks, compared with strong matched controls;
+• all_in_compute: API tokens, CPU/GPU time, storage, latency, verifier calls, tuning, retries and failures;
+• transfer: improvements on a related but withheld mathematical family;
+• concept_size: definition AST nodes, lemma/tool dependencies and maintenance cost;
+• soundness: one of EQ/SUFF/NEC/BOUND/HEURISTIC/REJECTED; never trade soundness for gain;
+• calibration: how reliably the model predicts when the abstraction will help;
+• diversity: unique failure family or mathematical regime covered.
+
+For optional single-number development scheduling only, estimate
+
+E[additional future verified utility | action] / E[all-in incremental cost | action]
+
+and reserve a small capped exploratory budget for uncertain valuable combinations. The predicted value of computation is heuristic; the official verdict is prospective controlled evaluation, not the predicted score.
+
+3.3 The counterexample-renormalization loop
+
+concrete task family
+   -> failure and countermodel census
+   -> candidate effective variable A
+   -> independent semantic checker
+   -> abstract solve / predict
+   -> attempt concrete lift
+        |-- lift verified --> hold-out causal utility trial
+        |-- spurious result --> counterexample / lost-detail diagnosis
+                                   -> refine abstraction A'
+        |-- no useful lift --> archive as developmental only
+   -> confirm / reject / quarantine
+
+A lost-detail diagnosis compares two concrete structures x1, x2 that map to the same abstract state but behave differently with respect to the target. If such a pair is discovered, the abstraction is insufficient for that target. Introduce the cheapest additional discriminating variable that can be expressed and checked. This is the exact mathematical meaning of “refining the coarse-grained model,” not an appeal to physical magic.
+
+An exact symbolic method should search for these pairs using finite solvers, proof-state counterexamples, and metamorphic transformations. Add only well-typed, provably admissible definitions in the trusted representation language. For unbounded claims, finite testing is not proof.
+
+4. The one genuinely new research bet to prioritize
+
+Learn the transformation under which a useful concept remains stable, not just the concept itself.
+
+Represent a proposed concept as:
+
+ConceptPackage:
+  typed_definition: AST
+  applicable_scope: theorem / graph / algebraic structures
+  abstraction_map: concrete -> effective representation
+  preserved_goal_relations: checked implications or equivalences
+  transformations: graph isomorphism, vertex/edge operations, product, quotient ...
+  positive_and_negative_examples: development only
+  refinement_witnesses: pairs with same abstract state but different outcomes
+  proof_lift: abstract certificate -> concrete certificate (if available)
+  experimental_fingerprint: task-family gains/losses, resource costs
+  representation_dependencies: concept/package digests
+  provenance: source/candidate/checker/cost/claim lineage
+
+The critical innovation to test is whether transformation-stable, proof-liftable concepts transfer more reliably to genuinely new theorems than concepts scored only by immediate training performance. Not all candidate transformations preserve a property; those that break it are informative negative examples, not silent failures.
+
+A second, harder research direction is to infer a hierarchy of concept packages from finite instances to family-level inequalities to proof tactics to research-policy macros. Inference is speculative until every level’s claim has the appropriate proof and causal confirmation.
+
+4.1 Symmetry-guided concept search (testable extension)
+
+Physics inspiration: gauge/symmetry redundancy. An object can admit multiple descriptions that differ only in labels or a proved transformation; the target theorem should not change, but a searcher’s time-to-proof often may. Build a verified transformation orbit using vertex permutations and other transformations with proved soundness. Measure variance in proof cost across the orbit under identical registered budgets. Large variance identifies avoidable representation sensitivity. Generate concept candidates intended to normalize or eliminate that sensitivity, e.g. order-independent degree/codegree histograms rather than raw adjacency list position. Do not claim any unproved transformation preserves a theorem. This is related to established symmetry reduction; the proposed research test is whether measured sensitivity can systematically lead to new, transferable concepts.
+
+4.2 Theorem phase diagrams (higher-risk, high-upside extension)
+
+Physics inspiration: transitions between regimes. Instead of asking only whether a theorem holds, vary its controlled hypotheses and parameters: host density, forbidden motifs, structural constraints, graph order, and bound thresholds. Obtain a grid of PROVED, COUNTEREXAMPLE, UNSETTLED, or CHECKER_ERROR results using independent certificates. Focus mathematical attention on the boundary where one kind of evidence changes to another; try to invent the structural invariant that explains the boundary. Then prove a parameterized theorem or construct a matching family of obstructions.
+
+A finite grid is a hypothesis generator, never a universal phase transition theorem. Counterexample boundaries can move with n; even a large finite experiment cannot establish asymptotic behavior. To be credible, report formal lifting to an infinite family or explicit finite-only bounds.
+
+The specific prediction to test: a bounded, certificate-backed phase-diagram policy should discover stronger general inequalities or construction/obstruction pairs per compute than random parameter scans, standard conjecture miners, and a fixed symbolic prover. Give this extension a strict kill switch; enable only after the smaller PCCA passes its causal test.
+
+5. Brain-inspired but not biologically literal memory
+
+Use two memories, with strict promotion rules:
+
+Episodic research store (“hippocampus analogue”): immutable proof attempts, failures, counterexamples, intermediate lemmas, execution traces, costs, versions and rejected predictions. Retrieval includes failures, avoiding survivor-only training.
+
+Semantic concept store (“cortex analogue”): compact independently verified concept packages, reusable tactics and macro-research procedures. Entries have dependencies, confidence/evidence level, rollback hooks, and task scopes.
+
+Wake: solve real tasks; update episodic store; gather countermodels; suggest candidate concepts.
+
+Replay: under bounded development-only budgets, replay surprisingly successful, failed, and contradictory cases. Generate counterfactual variants and missing-concept candidates. Synthetic replay must never be mistaken for independent confirmation.
+
+Consolidate: deduplicate, formally check, run causal ablations, calibrate when to apply a concept, and promote only if it improves fresh problem solving versus caching and retrieval.
+
+Forget: remove a low-value concept from the active library only after verifying that the remaining active concepts/procedures retain the required proofs and baseline behavior. Preserve immutable provenance, never delete evidence. Reserve a bounded dormant archive for synergy.
+
+Key negative control: ordinary retrieval + memoization + rehearsal receives equal computation. If wake/replay does not outperform it prospectively, disable the special replay module.
+
+6. Evolutionary ecology without uncontrolled agent proliferation
+
+Start with CORE and one candidate research world. Cap active worlds at existing default 8, births <= 4 per epoch, hybrid birth <= 1 per epoch, and keep budgets charged. A world is a configuration and concept library snapshot, not necessarily a separate paid autonomous agent.
+
+Niches are problem classes or mathematical regimes: small dense graphs, sparse hosts, high symmetry, high degree, certificate-heavy proof tasks, costly counterexample families, etc. Maintain a small Pareto/quality-diversity archive across verified benefit, failure novelty, compute and transfer. A stepping-stone reserve tests limited promising combinations—never an unbounded combinatorial explosion.
+
+A world can mutate research strategy only in a development sandbox. Any confirmed successor requires frozen version comparison against identical baseline information and comparable full budgets, fresh sealed tasks and separate evidence custody. Failure to improve a new generation is a scientific negative result, not grounds for moving evaluation targets.
+
+7. Active scientific experiment selection
+
+The learner should not merely sample more theorems. Maintain competing hypotheses about why a proof family is hard and propose the next discriminating task.
+
+An experiment earns priority when its outcome could credibly change the decision to preserve or reject an abstraction, and when the estimated information benefit exceeds its full resource cost. Compare active selection against random, uncertainty-only, difficult-first, and fixed curriculum controls with matched total resources.
+
+Avoid “minimum surprise at all costs”: it can select easy/predictable tasks and stop discovering. Optimize prospective research utility with an exploration floor; use predictive surprise to identify candidate problems, not as a universal objective of intelligence.
+
+8. Concrete first mathematical wedge: C4-free graphs
+
+For any simple undirected graph G, define codeg_G(u,v) = |N(u) intersect N(v)| for distinct u,v.
+
+Known exact equivalence: G has no (not necessarily induced) 4-cycle iff codeg_G(u,v) <= 1 for every distinct u,v. Two common neighbors give a four-cycle; every four-cycle provides two distinct common neighbors.
+
+Known derived upper-bound inequality: In an n-vertex C4-free graph with degrees d(v):
+
+sum_v choose(d(v),2) <= choose(n,2).
+
+Each length-2 path is a pair of neighbors with a center; C4-freeness says no endpoint pair can have two different centers. By Cauchy-Schwarz this yields
+
+m <= (n/4) * (1 + sqrt(4*n - 3)), where m is the number of edges.
+
+This is a classical demonstration, not a new theorem or a claim of exact extremal numbers. It can be a proof-carrying transition from micro-edge data to an effective codegree representation and then a family-level analytic bound. A sharper claim on particular hosts needs its own proof/certificate. Beware graph blow-ups and other operations that do not preserve C4-freeness.
+
+Prototype executed on 12 October 2026: genesis_crpd_reference.py independently compared direct 4-cycle enumeration and codegree-based detection for every labeled undirected simple graph on n=1..6, a total of 33,867 graphs. It also checked the pair-count inequality on every C4-free example. Zero discrepancies. This is finite testing, not Lean formalization, not concept invention, not prospective validation.
+
+First genuine task: autonomously recover a codegree-like concept from proof failures/counterexamples without seeding the exact desired definition, generate a Lean proposition and proof in a compatible mathlib version, and demonstrate incremental held-out advantage over explicit codegree baselines, a generic lemma miner, cache-only and evolutionary search. Since codegree is known and available in libraries, this is principally a mechanism test. Move on to authentic unseen concept families once the mechanism works.
+
+9. Recommended minimal addition to the existing software
+
+Reuse the established Python 3.12/strict Pydantic v2/SQLite content-addressed objects/isolated workers/Lean trusted-kernel convention from Genesis normative specification. Treat actual repository integration as a separate audit-first implementation task; do not assume the proposed paths exist.
+
+src/genesis/
+  ... pre-existing code unchanged except guarded adapters ...
+  abstractions/
+    schema.py                # typed concept packages; scopes; status
+    transforms.py            # admissible transforms and metamorphic checks
+    infer.py                 # cluster failures and propose effective variables
+    lift.py                  # attempt checked abstract -> concrete proof
+    refine.py                # find lost-detail pairs, propose repaired concepts
+    trial.py                 # matched developmental causal tests
+  memory/
+    episodic.py              # immutable trajectories and failure traces
+    consolidate.py           # candidate reusable concepts and macros
+    maintenance.py           # bounded archive, conditional forgetting
+  metareason/
+    allocator.py             # value-of-computation heuristics on DEV only
+  ecology/
+    diversity.py             # small bounded quality-diversity archive
+  experimental/
+    preregistration.py       # public metadata only, no evaluator permissions
+private_evaluator/
+  ... separate, pre-existing protected custody ...
+
+Strict interfaces
+
+AbstractionCandidate {
+  candidate_id, parent_concept_digests, source_trace_digests,
+  language_version, definition_ast, scope_ast,
+  map_ast, target_predicate_ast, transform_manifest,
+  requested_soundness_mode, declared_resource_budget,
+  development_fingerprint, proposal_model_manifest
+}
+
+AbstractionCertificate {
+  candidate_digest, exact_statement_digest, soundness_mode,
+  theorem_prover_build_digest, axioms_and_imports_manifest,
+  proof_term_digest, replay_receipt_digest,
+  independent_specification_audit_digest,
+  witness_lift_receipt_digest_or_null,
+  result
+}
+
+RefinementEvent {
+  old_candidate_digest, concrete_x_digest, concrete_y_digest,
+  equal_effective_state_receipt, target_difference_receipt,
+  proposed_additional_feature_digest, witness_checker_manifest
+}
+
+ConceptTrial {
+  frozen_core_digest, frozen_extended_digest, task_family_id,
+  allowlisted_information_manifest, budget_vector, order_seed,
+  controls, prospective_endpoint, task_cluster_ids,
+  full_execution_ledger_digest, results, uncertainty
+}
+
+All mutable research decisions happen outside the checker/evaluator. Schema-validated research messages are untrusted. Digests refer to immutable objects. Promotions require the independent custodian’s signed record. No generated modules can mutate accepted proof certificates or evaluator definitions.
+
+10. Candidate generation and refinement algorithm
+
+# PSEUDOCODE; NOT production runnable code.
+for epoch in bounded_epochs:
+    failures = episodic.select_mismatches_and_costly_repeats()
+    candidate_A = infer_typed_variable(failures, permitted_AST)
+    semantic_claims = attempt_independent_Lean_or_certified_checks(candidate_A)
+    if semantic_claims.invalid:
+        quarantine(candidate_A)
+        continue
+
+    for trial in cheap_dev_trials(candidate_A, matched_baselines=True):
+        abstract_prediction = run_abstract_attempt(candidate_A, trial.task)
+        lifting_result = lift_and_check(abstract_prediction, trial.task)
+        if lifting_result.spurious:
+            x1, x2 = seek_witnesses_same_abstraction_different_target(candidate_A)
+            if x1 and x2:
+                candidate_A = bounded_refine(candidate_A, x1, x2)
+        record_all_costs_and_failures(trial, lifting_result)
+
+    test_prospective_utility_on_fresh_select(candidate_A)
+    if candidate_A.passes_precommitted_selection_rule:
+        freeze_and_submit_to_independent_confirmation(candidate_A)
+    else:
+        dormant_or_retired_with_audit(candidate_A)
+
+No reading or adapting to the independent confirmation cohort in the same promotion decision. A failed CONFIRM candidate may be redesigned, but its next claim requires a different, fresh sealed cohort.
+
+11. Experimental matrix and stop rules
+
+Primary comparison is CORE vs CORE+PCCA, holding base LLM/model, visible examples, prompts, budgets, tools, and evaluator constant. Add CORE+DreamCoder-style library induction, CORE+CEGAR-style fixed abstraction, CORE+heuristic feature generator, CORE+evolutionary algorithm and CORE+cache-only as implementable challengers; do not claim full reproduction of proprietary closed systems.
+
+|Hypothesis                                |Primary endpoint                                                                                 |Kill/stop interpretation                                      |
+|------------------------------------------|-------------------------------------------------------------------------------------------------|--------------------------------------------------------------|
+|PCCA discovers usable representations     |Verified held-out theorem success / valid bound improvement at fixed full budget                 |No prospective gain => turn feature off; record negative      |
+|Refinement responds to lost details       |Fraction of deliberately aliasing abstraction pairs repaired without unsound promotions          |Incorrect lift or false proof => severity-1 integrity incident|
+|Transformation stability predicts transfer|Out-of-family verified gain compared with syntactic-feature controls                             |No transfer advantage => remove stability heuristic           |
+|Replay learns transferable procedures     |Net research gain vs cache/retrieval and equal compute                                           |No prospective gain => revert to baseline consolidation       |
+|Diversity helps multi-step discovery      |Paired/coalitional discovered useful concepts at equal compute                                   |No gains => cap or remove ecology                             |
+|Adaptive experiments save resources       |Same validated decisions with less all-in cost                                                   |No quality-cost gain => disable allocator                     |
+|Genesis becomes a better improver         |Fresh successor-policy performance vs parent, equivalent compute-only and evolution-only controls|One selected win or ties => insufficient evidence             |
+
+Use task-family clustered analysis, randomized evaluation order, independent semantics checks and a preregistered minimally worthwhile effect; do a power analysis based on development variance before choosing confirmation sample counts. Nonindependent generated variants should not inflate the effective N. Record negative results and high-variance uncertainty. Passing engineering tests never substitutes for these trials.
+
+12. Sequence of work packages after B20
+
+These are work packages, not predictions of guaranteed scientific breakthroughs.
+
+P0 — Preserve existing trust boundary. Audit the B20 source, pinned tools, theorem split firewall, evaluator isolation and costs. Repair every known leak, source mismatch and uncontrolled admission. No new research logic until passed.
+
+P1 — Concrete-to-effective representation. Typed MRDL candidate AST, codegree/motif primitives, conservative definitional extensions and bounded prover reifier. Unit/property tests, semantic differences and checker receipts.
+
+P2 — Independent abstraction lifting. Proof of equivalence/one-way implications, abstract countermodel checking, concrete witness/upper certificate verification. Inject invalid transformations and see them rejected.
+
+P3 — Failure-triggered refinement. Find two concrete problems with same abstract code but different target result; detect and refine. Measure repair efficiency vs direct solver and fixed-feature CEGAR challenger.
+
+P4 — Empirical useful-concept study. Controlled causal tests of new concepts against explicit codegree/lemmas, placebo concepts, retrieval and normal search; fresh problem families; no new claims from known graph lemmas.
+
+P5 — Development-only replay and consolidation. Learn reusable abstractions/procedures from immutable proof traces; monitor memory growth and negative transfer; make replay earn marginal utility.
+
+P6 — Rational allocator and bounded ecology. Adaptive compute with adequate exploration; paired candidate synergy within strict budgets; do not expand worlds automatically if CORE is better.
+
+P7 — Sealed confirmation and transfer. Freeze configurations; independent host/custodian; precommit resource envelopes; test graph-family-to-new-family and graph-to-algebraic-domain as appropriate.
+
+P8 — Multi-generation better-improver experiment. Only after P7 positive evidence; successor created by the predecessor’s own research policy with fresh confirmatory panels and external replication. No guaranteed number of successful generations.
+
+13. What success/failure would mean
+
+• Engineering success: valid code, trustworthy receipts, reproducible experiments, independent checker agreement. This does not imply mathematical discovery.
+• Scientific L1: new abstraction workflow delivers more verified problems at lower or equal cost on prospectively unseen tasks.
+• Scientific L2: the invented mathematical concept causes transferable gain beyond existing lemmas and placebo definitions.
+• Scientific L3: learned research method produces better successor research methods over repeated generations, with fully matched overhead and independent evaluator custody.
+• Grand vision: new mathematical theories, powerful concepts and improved research procedures repeatedly generalize across domains with independent reproducibility. Not guaranteed or presently demonstrated.
+
+Highest-value first falsification: On a broad collection of fresh graph-theory problems, run CORE versus CORE+PCCA and strongest reasonable abstraction-mining challenger with identical total budgets. If PCCA cannot produce independent causal gains, stop adding physical/brain-inspired features and improve the basic searcher instead.
+
+14. Threat model and honesty constraints
+
+• Sealed theorem leakage through generated lemmas, proof shadow mining, replay store, prompt context, model pretraining, near-duplicates, or adapted cohorts.
+• Heuristic learned feature accidentally promoted to logical equivalence, vacuous theorem, changed axioms, unsound theorem translation or false certificate lift.
+• Inflated benefit from knowledge/library accumulation, more compute, cache warmth, random seeds, cherry-picked test families, broken stopping rules or treating correlated variants as independent.
+• Apparent physical-law “principles” with no falsifiable edge over a normal solver.
+• Concept library bloat, negative transfer, repeated rediscovery of existing mathematics and inability to find useful abstractions.
+• Unsafe/generated code can never write directly to the independent evaluator, current release or immutable provenance.
+
+No guarantee that a compact representation exists for each problem family, that it is discoverable by bounded compute, or that finding it is easier than solving the original problem. Complexity-theoretic limits, identifiability and representation bias remain real. Only results under precommitted, fair tests qualify as achievements.
+
+15. Instructions to the next implementation agent
+
+Read the actual B20 repo state and this blueprint. Preserve the existing evidence kernel. Produce an audit of available functions, exact missing interfaces and version/cost manifests. Implement P0 through P2 end-to-end with tests, then P3, then a preregistered P4 experiment. Use very small changes and feature flags. No demo-mode proof admission, no claims of discovery from the reference script. Stop on an integrity violation. Export reproducible source, tests, logs, fixed seed manifests and checkpoint hashes. Continue only if the optional subsystem has measured gains over an equal-budget challenger.
