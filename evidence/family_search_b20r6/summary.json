@@ -1,0 +1,141 @@
+{
+ "rule": "see the script docstring (fixed before running)",
+ "status": "DESIGN_PILOT_DEV",
+ "variants": {
+  "ba_robbins": {
+   "cap_s": 35.352,
+   "exhaust_library": 13,
+   "fixed_cap_library": 1,
+   "pool": 155,
+   "ranges": [
+    {
+     "empty": 2,
+     "exhaust": 2,
+     "fixed_cap": 2,
+     "oracle": 2,
+     "oracle_cost_s": 0,
+     "range": [
+      5,
+      8
+     ]
+    },
+    {
+     "empty": 0,
+     "exhaust": 0,
+     "fixed_cap": 0,
+     "oracle": 0,
+     "oracle_cost_s": 0,
+     "range": [
+      6,
+      9
+     ]
+    },
+    {
+     "empty": 5,
+     "exhaust": 5,
+     "fixed_cap": 5,
+     "oracle": 5,
+     "oracle_cost_s": 0.011,
+     "range": [
+      7,
+      10
+     ]
+    }
+   ],
+   "verdict": "NO_HEADROOM"
+  },
+  "ba_robbins:t6": {
+   "cap_s": 35.357,
+   "exhaust_library": 13,
+   "fixed_cap_library": 1,
+   "pool": 155,
+   "ranges": [
+    {
+     "empty": 3,
+     "exhaust": 3,
+     "fixed_cap": 3,
+     "oracle": 3,
+     "oracle_cost_s": 0,
+     "range": [
+      9,
+      12
+     ]
+    },
+    {
+     "empty": 1,
+     "exhaust": 1,
+     "fixed_cap": 1,
+     "oracle": 1,
+     "oracle_cost_s": 0,
+     "range": [
+      10,
+      12
+     ]
+    }
+   ],
+   "verdict": "NO_HEADROOM"
+  },
+  "bool_ring": {
+   "cap_s": 0.488,
+   "exhaust_library": 132,
+   "fixed_cap_library": 40,
+   "pool": 162,
+   "ranges": [
+    {
+     "empty": 10,
+     "exhaust": 11,
+     "fixed_cap": 12,
+     "oracle": 12,
+     "oracle_cost_s": 0.45,
+     "range": [
+      5,
+      8
+     ]
+    },
+    {
+     "empty": 10,
+     "exhaust": 11,
+     "fixed_cap": 12,
+     "oracle": 11,
+     "oracle_cost_s": 0.369,
+     "range": [
+      6,
+      8
+     ]
+    }
+   ],
+   "verdict": "NO_HEADROOM"
+  },
+  "bool_ring:t5": {
+   "cap_s": 0.582,
+   "exhaust_library": 132,
+   "fixed_cap_library": 34,
+   "pool": 162,
+   "ranges": [
+    {
+     "empty": 7,
+     "exhaust": 8,
+     "fixed_cap": 9,
+     "oracle": 9,
+     "oracle_cost_s": 0.495,
+     "range": [
+      7,
+      10
+     ]
+    },
+    {
+     "empty": 8,
+     "exhaust": 8,
+     "fixed_cap": 11,
+     "oracle": 8,
+     "oracle_cost_s": 0.449,
+     "range": [
+      8,
+      10
+     ]
+    }
+   ],
+   "verdict": "NO_HEADROOM"
+  }
+ }
+}
