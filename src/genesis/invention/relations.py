@@ -36,6 +36,16 @@ from . import representations as RP
 MAX_K = RP.MAX_K
 MODULE = 'RLDefs'
 ORIGIN = 'generated:relation-enumeration-v1'
+# Versioned expansion (B20_R19). v1 (B20_R17) is kept exactly as it ran. v2 lifts the class bound
+# to 4 -- justified because the v1 space is exhausted (one NEW maximal decoder, NO_UTILITY_AFTER_COST)
+# and k = 4 is the next level of the same family, still a finite space (2^16 relations, 4^n
+# encodings) -- and strengthens equivalence: classes that are twins (identical out- and
+# in-relations, and no relation among themselves or to themselves) are merged, since splitting a
+# class into twins decodes exactly the same edge sets. v2 therefore never calls a twin-split of a
+# menu decoder NEW.
+VERSIONS = {'v1': {'max_k': 3, 'twins': False, 'origin': 'generated:relation-enumeration-v1'},
+            'v2': {'max_k': 4, 'twins': True, 'origin': 'generated:relation-enumeration-v2'}}
+MAX_K_ANY = max(v['max_k'] for v in VERSIONS.values())
 
 
 def all_relations(k):
@@ -56,9 +66,29 @@ def reduce(R, k):
     return frozenset((idx[x], idx[y]) for x, y in R), len(used)
 
 
-def canonical(R, k):
-    """(k, least relabelling) after reduction: one representative per symmetry orbit."""
+def merge_twins(R, k):
+    """Merge twin classes until none are left: x, y are twins if they relate to and from every
+    other class alike and R has none of (x,x), (y,y), (x,y), (y,x). Returns (R', k')."""
+    while True:
+        pair = next(((x, y) for x in range(k) for y in range(x + 1, k)
+                     if all(((x, z) in R) == ((y, z) in R) and ((z, x) in R) == ((z, y) in R)
+                            for z in range(k) if z not in (x, y))
+                     and not {(x, x), (y, y), (x, y), (y, x)} & R), None)
+        if pair is None:
+            return R, k
+        x, y = pair
+        keep = [z for z in range(k) if z != y]
+        idx = {z: i for i, z in enumerate(keep)}
+        R = frozenset((idx[a], idx[b]) for a, b in R if y not in (a, b))
+        k -= 1
+
+
+def canonical(R, k, twins=False):
+    """(k, least relabelling) after reduction (and, with ``twins``, twin merging): one representative
+    per symmetry orbit."""
     R, k = reduce(R, k)
+    if twins:
+        R, k = merge_twins(R, k)
     return k, min(tuple(sorted((p[x], p[y]) for x, y in R)) for p in permutations(range(k)))
 
 
@@ -67,27 +97,30 @@ def menu_relation(decoder, k):
     return frozenset((x, y) for x in range(k) for y in range(k) if py(x, y))
 
 
-def menu_forms():
+def menu_forms(twins=False):
     """{canonical form: 'name = name …'} for the hand-written menu (cross_2 and adjacent_2 coincide)."""
     forms = {}
     for d in RP.DECODERS:
         for k in range(2, MAX_K + 1):
-            forms.setdefault(canonical(menu_relation(d, k), k), []).append(f'{d}_{k}')
+            forms.setdefault(canonical(menu_relation(d, k), k, twins), []).append(f'{d}_{k}')
     return {f: ' = '.join(sorted(names)) for f, names in forms.items()}
 
 
-def generate(max_k=MAX_K):
+def generate(max_k=MAX_K, version='v1'):
     """Inclusion-maximal sound relations per k, reduced to canonical orbit representatives, each
-    marked NEW or with the menu decoder it equals. Deterministic order."""
-    if not 2 <= max_k <= MAX_K:
-        raise ValueError(f'k is bounded by the grammar: 2 <= k <= {MAX_K}')
-    menu = menu_forms()
+    marked NEW or with the menu decoder it equals. Deterministic order. ``version`` fixes the bound
+    and the equivalence (VERSIONS); v1 is exactly the B20_R17 generator."""
+    spec = VERSIONS[version]
+    if not 2 <= max_k <= spec['max_k']:
+        raise ValueError(f'k is bounded by the grammar version {version}: 2 <= k <= {spec["max_k"]}')
+    menu = menu_forms(spec['twins'])
     out, seen = [], set()
     for k in range(2, max_k + 1):
         sound = [R for R in all_relations(k) if tf_sound(R, k)]
-        maximal = [R for R in sound if not any(R < S for S in sound)]
+        sound_set = set(sound)
+        maximal = [R for R in sound if not any(R | {p} in sound_set for p in _pairs(k) if p not in R)]
         for R in sorted(maximal, key=lambda R: sorted(R)):
-            form = canonical(R, k)
+            form = canonical(R, k, spec['twins'])
             if form in seen:
                 continue
             seen.add(form)
@@ -96,14 +129,19 @@ def generate(max_k=MAX_K):
     return out
 
 
+def _pairs(k):
+    return [(x, y) for x in range(k) for y in range(k)]
+
+
 def _name(k, rel):
     return f'rel{k}_' + ''.join(f'{x}{y}' for x, y in rel)
 
 
-def proposal(k, relation):
+def proposal(k, relation, version='v1'):
     """Typed record for one relational decoder (same shape as ``representations.typecheck``)."""
-    if type(k) is not int or not 2 <= k <= MAX_K:
-        raise RP.ProposalError(f'class count k must be an integer in [2, {MAX_K}]')
+    bound = VERSIONS[version]['max_k']
+    if type(k) is not int or not 2 <= k <= bound:
+        raise RP.ProposalError(f'class count k must be an integer in [2, {bound}]')
     rel = sorted({(int(x), int(y)) for x, y in relation})
     if not rel or any(not (0 <= x < k and 0 <= y < k) for x, y in rel):
         raise RP.ProposalError('relation must be a non-empty set of class pairs below k')
@@ -117,11 +155,11 @@ def proposal(k, relation):
             'decoder_lean': f'fun e => {lean_pred}', 'semantics': f'RL.{name} c H = H.filter (fun e => {lean_pred})',
             'retained': f'host edges (u, v), u < v, whose class pair is one of {text}',
             'lost': 'every other host edge (in particular every edge inside a class)',
-            'cost': {'decode': 'O(|H|)', 'encoder_space': f'{k}^n', 'bound': f'k ≤ {MAX_K}'},
+            'cost': {'decode': 'O(|H|)', 'encoder_space': f'{k}^n', 'bound': f'k ≤ {bound}'},
             'failure_conditions': ['local search over encodings gives no optimality guarantee',
                                    'reads the host orientation: the same graph listed in another vertex order can '
                                    'decode differently'],
-            'kind': 'conservative-definition', 'origin': ORIGIN, 'tf_sound_exact': tf_sound(R, k),
+            'kind': 'conservative-definition', 'origin': VERSIONS[version]['origin'], 'tf_sound_exact': tf_sound(R, k),
             '_py': lambda cu, cv, R=R: (cu, cv) in R}
 
 
@@ -146,10 +184,10 @@ def conjectures(props):
         def sampler(rng, k=k):
             return {'c': {v: rng.randrange(k) for v in range(4)}, 'H': RP._sample_edges(rng)}
         out.append(RP._conj(f'{r["id"]}_image', [enc, host], f'RL.{r["id"]} c H ⊆ H',
-                            lambda v, r=r: RP.decode(r, v['c'], v['H']) <= v['H'], sampler, ORIGIN, 'image', r['id']))
+                            lambda v, r=r: RP.decode(r, v['c'], v['H']) <= v['H'], sampler, r['origin'], 'image', r['id']))
         out.append(RP._conj(f'{r["id"]}_sound_tf', [enc, host], f'GT.TriangleFree (RL.{r["id"]} c H)',
                             lambda v, r=r: RP.DOMAINS['triangle_free_host_v1']['model'](RP.decode(r, v['c'], v['H'])),
-                            sampler, ORIGIN, 'soundness', f'{r["id"]}@triangle_free_host_v1'))
+                            sampler, r['origin'], 'soundness', f'{r["id"]}@triangle_free_host_v1'))
     return out
 
 
@@ -181,4 +219,4 @@ def recipes(props):
 
 
 __all__ = ['generate', 'proposal', 'source', 'conjectures', 'recipes', 'tf_sound', 'canonical', 'reduce',
-           'menu_forms', 'all_relations', 'MODULE', 'ORIGIN']
+           'merge_twins', 'menu_forms', 'all_relations', 'MODULE', 'ORIGIN', 'VERSIONS']

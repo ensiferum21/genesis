@@ -56,6 +56,30 @@ class Generator(unittest.TestCase):
         with self.assertRaises(ValueError):
             RL.generate(max_k=4)                                              # the grammar bound is not lifted
 
+    def test_v2_merges_twins_and_lifts_the_bound_by_version_only(self):
+        rng = random.Random(4)
+        star = frozenset({(0, 1), (0, 2), (0, 3), (1, 0), (2, 0), (3, 0)})       # cross_2 with class 1 split three ways
+        self.assertEqual(RL.merge_twins(star, 4), (frozenset({(0, 1), (1, 0)}), 2))
+        merge = {0: 0, 1: 1, 2: 1, 3: 1}
+        for _ in range(50):                                                   # same decoded sets after merging
+            n = rng.randint(4, 9)
+            H = frozenset(p for p in combinations(range(n), 2) if rng.random() < 0.5)
+            c = {v: rng.randrange(4) for v in range(n)}
+            split = RP.decode({'_py': lambda a, b: (a, b) in star}, c, H)
+            merged = RP.decode({'_py': lambda a, b: (a, b) in {(0, 1), (1, 0)}}, {v: merge[x] for v, x in c.items()}, H)
+            self.assertEqual(split, merged)
+        out = RL.generate(4, 'v2')
+        self.assertEqual([(g['k'], g['relation'], g['equals_menu']) for g in out], [
+            (2, [[0, 1], [1, 0]], 'adjacent_2 = adjacent_3 = cross_2'),
+            (3, [[0, 1], [1, 2], [2, 0]], None),
+            (4, [[0, 1], [0, 2], [1, 0], [2, 3], [3, 0]], None)])
+        with self.assertRaises(ValueError):
+            RL.generate(5, 'v2')
+        with self.assertRaises(RP.ProposalError):
+            RL.proposal(4, [[0, 1]])                                          # v1 keeps k <= 3
+        self.assertEqual(RL.proposal(4, [[0, 1], [0, 2], [1, 0], [2, 3], [3, 0]], 'v2')['origin'],
+                         RL.VERSIONS['v2']['origin'])
+
     def test_proposals_are_typed_and_bounded(self):
         p = RL.proposal(3, [[0, 1], [1, 2], [2, 0]])
         self.assertEqual((p['id'], p['tf_sound_exact'], p['origin']), ('rel3_011220', True, RL.ORIGIN))
