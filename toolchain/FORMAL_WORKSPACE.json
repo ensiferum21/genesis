@@ -7,7 +7,9 @@
   ".ir.sig"
  ],
  "import_roots": [
-  "Mathlib.Data.Finset.Powerset"
+  "Mathlib.Data.Finset.Powerset",
+  "Mathlib.Algebra.BigOperators.Group.Finset.Sigma",
+  "Mathlib.Algebra.Order.BigOperators.Ring.Finset"
  ],
  "lean_version": "4.34.1",
  "mathlib": {

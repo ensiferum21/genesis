@@ -41,6 +41,7 @@ def main(argv=None):
     lean = lean_root / 'bin' / 'lean'
     lean_sha = hashlib.sha256(lean.read_bytes()).hexdigest() if lean.is_file() else None
     manifest, problems = W.audit(a.out, lean_sha256=lean_sha)
+    problems = problems + W.history_problems()          # CRPD-2b: pin revisions are recorded, never silent
     print(json.dumps({'problems': problems, 'source_identity': (manifest or {}).get('source_identity'),
                       'artifact_identity': (manifest or {}).get('artifact_identity')}))
     return 1 if problems else 0

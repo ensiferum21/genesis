@@ -32,6 +32,8 @@ from ..common import canonical, digest, utcnow
 
 REPO = Path(__file__).resolve().parents[3]
 PINS_PATH = REPO / 'toolchain' / 'FORMAL_WORKSPACE.json'
+HISTORY_PATH = REPO / 'toolchain' / 'FORMAL_WORKSPACE_HISTORY.jsonl'
+HISTORY_SCHEMA = 'genesis-formal-workspace-pin-history-v1'
 MANIFEST = 'WORKSPACE_MANIFEST.json'
 SCHEMA = 'genesis-formal-workspace-manifest-v1'
 ERROR_ON_BUILD = 'genesis: rebuilding the ProofWidgets widget JavaScript (npm) is not allowed'
@@ -217,6 +219,55 @@ def audit(out, *, pins_path=PINS_PATH, lean_sha256=None):
     return manifest, problems
 
 
+def history(path=HISTORY_PATH):
+    """[(raw line bytes, entry)] of the hash-chained pin history (CRPD-2b)."""
+    out = []
+    for raw in Path(path).read_bytes().splitlines():
+        if raw.strip():
+            out.append((raw, json.loads(raw)))
+    return out
+
+
+def history_entry(entries, p, *, reason, decided_by, build, recorded_at=None):
+    """The next history line for pins ``p``. ``build``: {source_identity, artifact_identity,
+    module_count, lean_sha256} of the workspace built from exactly these pins."""
+    prev = hashlib.sha256(entries[-1][0]).hexdigest() if entries else None
+    entry = {'schema': HISTORY_SCHEMA, 'seq': len(entries), 'prev_sha256': prev, 'pins': p, 'pins_sha256': digest(p),
+             'reason': reason, 'decided_by': decided_by,
+             'build': {k: build[k] for k in ('source_identity', 'artifact_identity', 'module_count', 'lean_sha256')},
+             'recorded_at': recorded_at or utcnow()}
+    return canonical(entry), entry
+
+
+def history_problems(p=None, path=HISTORY_PATH):
+    """A pin revision is reviewed and recorded, never silent: the history must be a hash chain whose
+    last entry is the current pins, and every entry's build identity must follow from its pins."""
+    p = pins() if p is None else p
+    try:
+        entries = history(path)
+    except (OSError, ValueError) as exc:
+        return [f'no readable pin history ({type(exc).__name__})']
+    out, prev = [], None
+    for i, (raw, e) in enumerate(entries):
+        if e.get('schema') != HISTORY_SCHEMA or e.get('seq') != i:
+            out.append(f'entry {i}: schema or sequence number')
+        if e.get('prev_sha256') != prev:
+            out.append(f'entry {i}: not chained to the previous entry')
+        if e.get('pins_sha256') != digest(e.get('pins')):
+            out.append(f'entry {i}: pins differ from their digest')
+        b = e.get('build') or {}
+        if b.get('source_identity') != source_identity(e.get('pins'), b.get('lean_sha256')):
+            out.append(f'entry {i}: build source identity does not follow from the pins')
+        if not e.get('reason') or not e.get('decided_by'):
+            out.append(f'entry {i}: reason and decision must be recorded')
+        prev = hashlib.sha256(raw).hexdigest()
+    if not entries:
+        out.append('empty pin history')
+    elif entries[-1][1].get('pins_sha256') != digest(p):
+        out.append('toolchain/FORMAL_WORKSPACE.json is not the last recorded revision')
+    return out
+
+
 def locate():
     """The workspace build directory: $GENESIS_FORMAL_WORKSPACE or <toolchain>/formal-workspace."""
     if os.environ.get('GENESIS_FORMAL_WORKSPACE'):
@@ -263,4 +314,5 @@ def environment(out=None):
             'modules': frozenset(manifest['modules'])}
 
 
-__all__ = ['build', 'fetch_sources', 'lake_build', 'collect', 'audit', 'environment', 'locate', 'pins', 'WorkspaceUnavailable', 'MOUNT']
+__all__ = ['build', 'fetch_sources', 'lake_build', 'collect', 'audit', 'environment', 'locate', 'pins', 'WorkspaceUnavailable', 'MOUNT',
+           'history', 'history_entry', 'history_problems', 'HISTORY_PATH']

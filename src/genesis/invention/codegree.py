@@ -16,11 +16,11 @@ This is a KNOWN elementary fact. The statement and its proof recipe are builder-
 Once Lean-checked it is Genesis's first EQ-mode abstraction (invention/soundness.py): it
 licenses lifting, refuting and pruning for the C4 feasibility predicate.
 
-Not included: the pair-count bound sum_v C(d(v), 2) <= C(n, 2) and the derived
-4m^2 - 2nm <= n^2 (n - 1) (``graphs.universal_upper``, recorded as an unchecked THEOREM
-bound). They need Finset big operators, which lie outside the pinned workspace's import
-closure (``Mathlib.Data.Finset.Powerset``); adding them is a workspace pin revision that
-needs a reviewed decision.
+Not included here: the pair-count bound sum_v C(d(v), 2) <= C(n, 2) and the derived
+4m^2 - 2nm <= n^2 (n - 1) (``graphs.universal_upper``). They need Finset big operators, outside
+the B20 workspace pin. CRPD-2b (13 Oct 2026, the user's "Go") revised the pin and checks both in
+``invention.pair_count`` (evidence/pair_count_b20r); bundle v2 can now use the bound as the
+checked upper method PAIR_COUNT_LEAN.
 """
 from ..formal_research import triangle_theory as T
 from . import representations as R
