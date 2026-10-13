@@ -66,7 +66,7 @@ def witness_problems(evidence, tasks, request):
         if tid not in pool or attempt['task'] != pool[tid].model_dump(mode='json'):
             out.append(f'solver attempt on {tid!r} is not a task of the sealed pool')
             continue
-        if R.is_v4(request):
+        if R.descriptor_arms(request):
             if attempt.get('descriptor') != request['arms'].get(attempt.get('arm')):
                 out.append(f'attempt {tid}/{attempt.get("arm")} did not run the descriptor the request names for its arm')
             if receipt.get('status') == 'SUCCESS' and receipt.get('isolation') != R.ISOLATION_V4:
@@ -81,7 +81,98 @@ def witness_problems(evidence, tasks, request):
     return {'problems': out, 'rechecked': rechecked}
 
 
-def recompute(evaluation_root, request, receipt, *, registration_log_entries=None):
+def statement_rows(evidence, tasks):
+    """Per-statement rows for a statement evaluation (B20_R7): an arm scores 1 on a statement only
+    when its solver attempt succeeded, claimed a proof, and the evaluator's Lean replay of that
+    claim from custody is CHECKED. Finding no proof is a valid 0, not an execution failure; a
+    sandbox, decoding or harness failure is a FAILED run (scored 0, keeps its cost)."""
+    solver, checked = {}, set()
+    for status, req, rec in evidence.db.execute('SELECT status,request,receipt FROM attempts ORDER BY rowid'):
+        if rec is None or status in ('RUNNING', 'INTERRUPTED'):
+            continue
+        request = evidence.get(req)
+        receipt = evidence.get(rec)
+        if request.get('kind') == 'solver' and request.get('arm') in ('candidate', 'baseline'):
+            solver[(request['task']['task_id'], request['arm'])] = receipt
+        elif request.get('kind') == 'replay' and (receipt.get('replay') or {}).get('status') == 'CHECKED':
+            checked.add((request['task_id'], request['arm']))
+    rows = []
+    for t in tasks:
+        if (t.task_id, 'candidate') not in solver or (t.task_id, 'baseline') not in solver:
+            continue
+        row = {'task_id': t.task_id, 'stratum': t.family, 'status': 'SCORED'}
+        for arm in ('candidate', 'baseline'):
+            r = solver[(t.task_id, arm)]
+            ok = r.get('status') == 'SUCCESS'
+            cpu = r.get('cpu_ns') if type(r.get('cpu_ns')) is int else r.get('wall_ns')
+            row[arm] = {'value': int(ok and (t.task_id, arm) in checked), 'run': 'SUCCESS' if ok else 'FAILED',
+                        'cpu_ns': cpu if type(cpu) is int else 0}
+        rows.append(row)
+    return rows
+
+
+def proof_problems(evidence, panel, request, *, replay=True):
+    """Re-check every proof claim of a statement evaluation from the raw store alone: the claim
+    record must be bound to the solver attempt's proof and the panel statement, the arm's manifest
+    and lemma proofs must be in the store and pass custody, and (``replay``) a fresh Lean replay
+    must give the recorded status. Returns {'problems', 'replayed', 'claims'}."""
+    from .learning import custody as CU
+    manifests = {i: evidence.get(h) for i, h in evidence.db.execute(
+        "SELECT id,object_hash FROM entities WHERE kind='successor_manifest'")}
+    objects = CU.MemoryObjects({i: evidence.get(h)['text'] for i, h in evidence.db.execute(
+        "SELECT id,object_hash FROM entities WHERE kind='proof_object'")})
+    statements = {x['task_id']: x['statement'] for x in panel['statements']}
+    attempts = {}
+    for aid, status, req, rec in evidence.db.execute('SELECT id,status,request,receipt FROM attempts ORDER BY rowid'):
+        if rec is not None and status not in ('RUNNING', 'INTERRUPTED'):
+            attempts[aid] = (evidence.get(req), evidence.get(rec))
+    out, replayed, claims = [], 0, 0
+    tc = {'checker_identity': CU.checker_identity()['identity']}
+    for aid, (req, rec) in attempts.items():
+        if req.get('kind') == 'solver' and (rec.get('result') or {}).get('claim') == 'PROOF':
+            claims += 1
+            if not any(r.get('kind') == 'replay' and r.get('solver_attempt') == aid for r, _ in attempts.values()):
+                out.append(f'proof claim {req["task"]["task_id"]}/{req["arm"]} was never replayed')
+            if req['descriptor'] != request['arms'].get(req['arm']) or req['task']['statement'] != \
+                    statements.get(req['task']['task_id']):
+                out.append(f'solver attempt {req["task"]["task_id"]}/{req["arm"]} is not the request arm on the panel')
+        if req.get('kind') != 'replay':
+            continue
+        solver = attempts.get(req.get('solver_attempt'))
+        record = req.get('record') or {}
+        tid, arm = req.get('task_id'), req.get('arm')
+        if solver is None or solver[0].get('arm') != arm or solver[0]['task']['task_id'] != tid:
+            out.append(f'replay {tid}/{arm} names no matching solver attempt')
+            continue
+        claim = solver[1].get('result') or {}
+        m = manifests.get(record.get('manifest_id'))
+        if m is None or m['manifest_id'] != request['arms'][arm]['parameters']['manifest_id']:
+            out.append(f'replay {tid}/{arm}: the arm manifest is not in the store')
+            continue
+        local = CU.MemoryObjects({l['proof_sha256']: objects.get(l['proof_sha256']) for l in m['lemmas']
+                                  if objects.has(l['proof_sha256'])})
+        if CU.successor_problems(m, local):
+            out.append(f'replay {tid}/{arm}: the arm manifest fails custody in the store')
+            continue
+        local.put(claim.get('proof') or '')
+        if record.get('proof_sha256') != CU._sha(claim.get('proof') or '') or \
+                record.get('premise_uids') != claim.get('premise_uids') or record.get('statement') != statements.get(tid):
+            out.append(f'replay {tid}/{arm}: the claim record is not bound to the solver output and the panel')
+            continue
+        if CU.target_problems(record, m, task_statement=statements[tid], objects=local):
+            out.append(f'replay {tid}/{arm}: the claim record fails custody')
+            continue
+        if replay:
+            fresh = CU.replay_target(record, m, local, task_statement=statements[tid], trust_context=tc,
+                                     name=f'jr{record["record_id"][:12]}')
+            replayed += 1
+            if fresh['status'] != (rec.get('replay') or {}).get('status'):
+                out.append(f'replay {tid}/{arm}: a fresh replay gives {fresh["status"]}, the store records '
+                           f'{(rec.get("replay") or {}).get("status")}')
+    return {'problems': out, 'replayed': replayed, 'claims': claims}
+
+
+def recompute(evaluation_root, request, receipt, *, registration_log_entries=None, replay=True):
     payload = receipt['payload']
     out = {'schema': 'genesis-judge-recomputation-v1', 'request_hash': digest(request),
            'receipt_sha256': digest(receipt), 'problems': []}
@@ -97,16 +188,27 @@ def recompute(evaluation_root, request, receipt, *, registration_log_entries=Non
             head = s.verify()['head']
             if head != payload['raw_evidence_root'] and record['head'] != payload['raw_evidence_root']:
                 out['problems'].append('the evidence store does not end at the signed raw_evidence_root')
-            pools = [s.get(h) for (h,) in s.db.execute("SELECT object_hash FROM entities WHERE kind='pool'")]
+            statements = R.is_statement_request(request)
+            pools = [s.get(h) for (h,) in s.db.execute("SELECT object_hash FROM entities WHERE kind=?",
+                                                         ('statement_panel' if statements else 'pool',))]
             if len(pools) != 1 or digest(pools[0]) is None:
                 out['problems'].append('the evidence store does not hold exactly one pool')
                 out['agrees'] = False
                 return out
-            tasks = [GraphTask.model_validate_json(canonical(t)) for t in pools[0]]
-            rows = analysis_rows(s, tasks)
-            witnesses = witness_problems(s, tasks, request)
-            out['witnesses_rechecked'] = witnesses['rechecked']
-            out['problems'] += witnesses['problems']
+            if statements:
+                from .custodian import statement_tasks
+                tasks = statement_tasks(pools[0])
+                rows = statement_rows(s, tasks)
+                proofs = proof_problems(s, pools[0], request, replay=replay)
+                out.update(proof_claims=proofs['claims'], proofs_replayed=proofs['replayed'],
+                           replay='RERUN' if replay else 'NOT_RERUN')
+                out['problems'] += proofs['problems']
+            else:
+                tasks = [GraphTask.model_validate_json(canonical(t)) for t in pools[0]]
+                rows = analysis_rows(s, tasks)
+                witnesses = witness_problems(s, tasks, request)
+                out['witnesses_rechecked'] = witnesses['rechecked']
+                out['problems'] += witnesses['problems']
             resources = account(s)
             fairness = arm_fairness(s)
             saved = s.db.execute("SELECT object_hash FROM entities WHERE kind='resource_account' AND id=?",

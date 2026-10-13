@@ -29,6 +29,10 @@ REQUEST_FIELDS={'schema','campaign_id','candidate_version','source_hash','progra
 # v4 (B20_R5, H05): the arms are candidate descriptors (genesis.candidates); each descriptor carries
 # its resource profile, so the request has no separate DSL `limits`.
 REQUEST_FIELDS_V4=(REQUEST_FIELDS-{'programs','limits'})|{'arms'}
+# Statement evaluations (B20_R7, handoff s13.3): descriptor arms on a statement domain; the custodian
+# generates the sealed panel itself from the preregistered `panel_spec` (no graph fingerprints).
+REQUEST_FIELDS_STATEMENTS=(REQUEST_FIELDS_V4-{'exposed_graph_fingerprints'})|{'panel_spec'}
+STATEMENT_KIND='formal-research-successor-v1'
 
 
 def _hex64(h):
@@ -46,6 +50,7 @@ def validate_request(request):
     for v4 and {arm: SolverProgram} for v3.
     """
     if isinstance(request,dict) and request.get('schema')==R.REQUEST_V4:return _validate_v4(request)
+    if isinstance(request,dict) and request.get('schema')==R.REQUEST_STATEMENTS:return _validate_statements(request)
     if not isinstance(request,dict) or set(request)!=REQUEST_FIELDS or request['schema']!=R.REQUEST:
         raise ValueError('evaluation request schema')
     problems=R.check_request(request)
@@ -81,6 +86,34 @@ def _validate_v4(request):
     if len({canonical(d['resource_profile']) for d in arms.values()})!=1:
         raise ValueError('arms must share one resource profile (equal resource accounting)')
     _validate_common(request)
+    return dict(arms)
+
+
+def _validate_statements(request):
+    """Statement evaluation request: formal-research-successor descriptors on one statement domain,
+    one shared resource profile and prover setting, a valid panel spec matching the task count."""
+    from . import candidates as C
+    from .learning import statement_panels as SP
+    if set(request)!=REQUEST_FIELDS_STATEMENTS:raise ValueError('evaluation request schema')
+    problems=R.check_request(request)
+    if problems:raise ValueError('evaluation request binding: '+'; '.join(problems))
+    for key in ('campaign_id','candidate_version','source_hash','expected_evaluator_hash','campaign_export_sha256'):
+        if not _hex64(request[key]):raise ValueError('hash field')
+    arms=request['arms']
+    if not isinstance(arms,dict) or set(arms)!={'baseline','candidate'}:
+        raise ValueError('comparison arms: a statement evaluation compares exactly candidate and baseline')
+    for name,desc in arms.items():
+        why=C.descriptor_problems(desc,domain=request['domain'])
+        if why:raise ValueError(f'candidate descriptor for arm {name}: '+', '.join(why))
+        if desc['kind']!=STATEMENT_KIND:raise ValueError(f'arm {name} is not a {STATEMENT_KIND} descriptor')
+    if len({canonical(d['resource_profile']) for d in arms.values()})!=1 or \
+            len({canonical({k:v for k,v in d['parameters'].items() if k!='manifest_id'}) for d in arms.values()})!=1:
+        raise ValueError('arms must share one resource profile and prover setting (equal accounting)')
+    why=SP.spec_problems(request['panel_spec'],domain=request['domain'],task_count=request['task_count'])
+    if why:raise ValueError('panel spec: '+'; '.join(why))
+    if type(request['seed']) is not int:raise ValueError('seed')
+    if request['domain'] not in R.DOMAINS:raise ValueError('domain')
+    if not R.analysis_ok(request['analysis']):raise ValueError('unsupported preregistered analysis')
     return dict(arms)
 
 
@@ -231,7 +264,7 @@ def campaign_facts(export):
                 body=json.loads(raw)
                 if body['kind']=='STATE_UPDATED':
                     upd=s.get(body['payload'])
-                    if upd['key'] in ('campaign_id','source_hash','frozen_candidate_descriptor'):
+                    if upd['key'] in ('campaign_id','source_hash','frozen_candidate_descriptor','frozen_baseline_descriptor'):
                         written.setdefault(upd['key'],set()).add(canonical(upd['value']))
             summary=s.state('summary') or {}
             from . import lineage as L
@@ -239,9 +272,14 @@ def campaign_facts(export):
                    'lineage':L.export_from_store(s),
                    'domain':configs[0][1].get('domain') if len(configs)==1 else None,
                    'config_entities':len(configs),
-                   'identity_rewritten':any(len(v)>1 for k,v in written.items() if k!='frozen_candidate_descriptor'),
-                   'descriptor_rewritten':len(written.get('frozen_candidate_descriptor',()))>1,
+                   'identity_rewritten':any(len(v)>1 for k,v in written.items() if k in ('campaign_id','source_hash')),
+                   'descriptor_rewritten':any(len(written.get(k,()))>1 for k in ('frozen_candidate_descriptor',
+                                                                                 'frozen_baseline_descriptor')),
                    'frozen_descriptor':s.state('frozen_candidate_descriptor'),
+                   'frozen_baseline_descriptor':s.state('frozen_baseline_descriptor'),
+                   'successor_manifests':dict(entities('successor_manifest')),
+                   'proof_objects':dict(entities('proof_object')),
+                   'exposed_statements':[v for _,v in entities('exposed_statement')],
                    'phase':s.state('phase'),'latest_program':s.state('latest_program'),
                    'candidate_versions':dict(entities('candidate_version')),
                    'strongest_baseline':(summary.get('generations') or [{}])[-1].get('baseline'),
@@ -275,7 +313,8 @@ def check_request_against_export(request,facts):
     if facts['phase']!='CANDIDATE_FROZEN':
         problems.append(f"campaign export is not of a frozen candidate (phase {facts['phase']})")
     if generation:return problems     # the arms are the transition's versions, checked above
-    if R.is_v4(request):return problems+descriptor_export_problems(request,facts)
+    if R.is_statement_request(request):return problems+statement_export_problems(request,facts)
+    if R.descriptor_arms(request):return problems+descriptor_export_problems(request,facts)
     try:
         candidate=R.program_identity(request['programs']['candidate'])
         doc=facts['candidate_versions'].get(request['candidate_version'])
@@ -331,6 +370,45 @@ def descriptor_export_problems(request,facts):
     return out
 
 
+def statement_export_problems(request,facts):
+    """Statement evaluations: both arms are rebuilt from the frozen research export. The candidate
+    must be the write-once frozen candidate descriptor and the baseline the write-once frozen
+    baseline descriptor (fixed before any panel existed); each arm's successor manifest must be in
+    the export, pass custody (proof objects present and unaltered, uids bound, lemmas true in the
+    variety, premises earlier) and match the descriptor."""
+    from . import candidates as C
+    from .learning import custody as CU
+    from .learning import research_export as RX
+    out=[];arms=request['arms']
+    if facts.get('descriptor_rewritten'):out.append('a frozen descriptor was rewritten in the export history')
+    frozen={'candidate':facts.get('frozen_descriptor'),'baseline':facts.get('frozen_baseline_descriptor')}
+    if None in frozen.values():
+        return out+['the export holds no frozen candidate and baseline successors; a statement request cannot be checked']
+    try:
+        manifests,objects,_=RX.research_material(facts)
+    except (ValueError,KeyError,TypeError) as exc:
+        return out+[f'research material in the export is malformed ({type(exc).__name__})']
+    for name in ('candidate','baseline'):
+        desc=frozen[name]
+        why=C.descriptor_problems(desc,domain=facts['domain'])
+        if why:out.append(f'the frozen {name} descriptor is no longer valid: '+', '.join(why));continue
+        if desc.get('kind')!=STATEMENT_KIND:out.append(f'the frozen {name} is not a {STATEMENT_KIND} descriptor');continue
+        if desc['descriptor_id']!=arms[name].get('descriptor_id'):
+            out.append(f'NOT_THE_FROZEN_{name.upper()}: the {name} arm is not the descriptor the research froze')
+        m=manifests.get(desc['parameters']['manifest_id'])
+        if m is None or m.get('manifest_id')!=desc['parameters']['manifest_id']:
+            out.append(f'the {name} successor manifest is not in the export');continue
+        codes=sorted({p['code'] for p in CU.successor_problems(m,objects)})
+        if codes:out.append(f'the {name} successor fails custody: {", ".join(codes)}')
+    doc=facts['candidate_versions'].get(request['candidate_version'])
+    if doc is None or digest(doc)!=request['candidate_version']:
+        out.append('candidate_version is not a frozen version recorded in the campaign export')
+    elif doc.get('descriptor')!=frozen['candidate'] or doc.get('baseline_descriptor')!=frozen['baseline'] or \
+            doc.get('source')!=request['source_hash']:
+        out.append('candidate_version does not describe the frozen successors and source')
+    return out
+
+
 def _load_pool(pool_path):
     pool=load_json(pool_path)
     if not isinstance(pool,list) or not pool:raise ValueError('pool must be a non-empty task list')
@@ -350,6 +428,8 @@ def register(private_root,request,key_path,operator_id,*,exposure_manifest,campa
     """
     from .exposure import build_registry,campaign_hosts
     from .graphs import SearchLimit
+    if R.is_statement_request(request):
+        raise ValueError('statement evaluation requests are registered with register_statements')
     root=_private_root(private_root);validate_request(request);rid=digest(request)
     if _is_v2(request):
         # A v2 plan must name a published (FROZEN) pre-freeze decision record that agrees with it.
@@ -507,6 +587,7 @@ def evaluate(private_root,request_id,pool_path,key_path,operator_id):
         row=db.execute('SELECT body,anchor,state FROM requests WHERE id=?',(request_id,)).fetchone()
         if not row:raise ValueError('request not preregistered')
         request=json.loads(row[0]);anchor=json.loads(row[1]);programs=validate_request(request)
+        if R.is_statement_request(request):raise ValueError('statement evaluations run through evaluate_statements')
         if row[2]!='REGISTERED':raise FileExistsError('evaluation already consumed; no automatic retry')
         identity=code_identity(Path(__file__).resolve().parents[2])['sha256']
         if identity!=request['expected_evaluator_hash']:raise ValueError('pinned evaluator source mismatch')
@@ -519,7 +600,7 @@ def evaluate(private_root,request_id,pool_path,key_path,operator_id):
         if any(t.domain!=request['domain'] or t.split not in ('CONFIRM','FUTURE') for t in tasks):
             raise ValueError('wrong sealed pool domain/split')
         if len({t.task_id for t in tasks})!=len(tasks):raise ValueError('duplicate task identifiers')
-        v4=R.is_v4(request)
+        v4=R.descriptor_arms(request)
         if v4:
             # Fail before the panel is reserved: without the sandbox the arms cannot run as declared.
             from . import sandbox as S
@@ -650,7 +731,7 @@ def _seal(evidence,request_id,request,anchor,commitment,identity,operator_id,key
     integrity=evidence.verify()
     unsupported=evidence.db.execute("SELECT count(*) FROM entities WHERE kind='unsupported_task'").fetchone()[0]
     expected=(len(tasks)-unsupported)*len(programs) if v2 else len(tasks)*len(programs)
-    if R.is_v4(request):
+    if R.descriptor_arms(request):
         schema=R.SCIENTIFIC_RECEIPT_V4
         arm_fields={'candidate_descriptor_id':R.arm_identity(request,'candidate'),
                     'baseline_descriptor_id':R.arm_identity(request,'baseline'),
@@ -679,8 +760,9 @@ def _seal(evidence,request_id,request,anchor,commitment,identity,operator_id,key
     if v2:
         from .kernel.analysis import analyze
         from .kernel.stats import sign_test
-        from .judge import analysis_rows
-        result=analyze(analysis_rows(evidence,tasks),request['analysis'],family_p_values=family_p_values)
+        from .judge import analysis_rows,statement_rows
+        rows=statement_rows(evidence,tasks) if R.is_statement_request(request) else analysis_rows(evidence,tasks)
+        result=analyze(rows,request['analysis'],family_p_values=family_p_values)
         payload['analysis_result']=result
         if result['decision']!='INVALID':
             payload.update(wins=result['wins'],losses=result['losses'],ties=result['ties'],
@@ -763,16 +845,23 @@ def recover(private_root,request_id,pool_path,key_path,operator_id):
         if row[2]!='CONSUMED_NO_RETRY':raise RuntimeError(f'unexpected request state {row[2]}')
         identity=code_identity(Path(__file__).resolve().parents[2])['sha256']
         if identity!=request['expected_evaluator_hash']:raise ValueError('pinned evaluator source mismatch')
-        pool,tasks=_load_pool(pool_path)
-        pool_hash,commitment=db.execute('SELECT pool_hash,commitment FROM panels WHERE request_id=?',(request_id,)).fetchone()
-        if digest(pool)!=pool_hash:raise ValueError('pool does not match the panel committed at registration')
+        if R.is_statement_request(request):
+            # The sealed panel never left the custodian: read it from the private root.
+            _,pool,commitment=_statement_panel(root,db,request_id)
+            tasks=statement_tasks(pool)
+        else:
+            pool,tasks=_load_pool(pool_path)
+            pool_hash,commitment=db.execute('SELECT pool_hash,commitment FROM panels WHERE request_id=?',(request_id,)).fetchone()
+            if digest(pool)!=pool_hash:raise ValueError('pool does not match the panel committed at registration')
         work.mkdir(parents=True,mode=0o700,exist_ok=True)
         from .store import rebuild_from_export
         try:evidence=Store(work)
         except RuntimeError:
             rebuild_from_export(work);evidence=Store(work)
         with evidence:
-            for kind,key,value in (('request',request_id,request),('pool',digest(pool),pool),('anchor',request_id,anchor)):
+            for kind,key,value in (('request',request_id,request),
+                                   ('statement_panel' if R.is_statement_request(request) else 'pool',digest(pool),pool),
+                                   ('anchor',request_id,anchor)):
                 evidence.save(kind,key,value)   # idempotent; records them if the crash came first
             interrupted=evidence.interrupt_running()
             complete=evidence.db.execute("SELECT 1 FROM entities WHERE kind='comparison' AND id=?",
@@ -782,6 +871,233 @@ def recover(private_root,request_id,pool_path,key_path,operator_id):
                           complete=complete,family_p_values=_family_p(db,request,request_id))
         return _publish(db,work,request_id,receipt,request,kind='RECOVERED')
     finally:db.close()
+
+
+# ---------------------------------------------------------------- sealed statement evaluations (B20_R7)
+
+STATEMENT_SCHEMA='CREATE TABLE IF NOT EXISTS statement_reservations(structural TEXT PRIMARY KEY, request_id TEXT NOT NULL);'
+
+
+def _manifest_file(path):
+    path=Path(path);st=path.stat()
+    if path.is_symlink() or st.st_uid!=os.geteuid() or st.st_mode&0o022:
+        raise ValueError('exposure manifest must be a custodian-owned, non-writable-by-others file')
+    return path,load_json(path)
+
+
+def _statement_exposure(root,manifest_path,manifest,facts):
+    """Everything a statement panel must avoid: what the requesting research saw (export), the
+    custodian's public statement sources (manifest ``statement_sources``: JSON lists of statement
+    texts, paths relative to the manifest, no '..'), and every statement already sealed in a
+    registered panel at this custodian (route 'sealed')."""
+    from .learning import research_export as RX
+    from .learning import statement_panels as SP
+    _,_,research=RX.research_material(facts)
+    items=[(system,SP.eq_of(text),route) for system,text,route in research]
+    for src in manifest.get('statement_sources',[]):
+        rel=Path(src['path'])
+        if rel.is_absolute() or '..' in rel.parts:raise ValueError('statement source paths must stay inside the manifest directory')
+        for text in load_json(manifest_path.parent/rel):
+            items.append((src['system'],SP.eq_of(text),'import'))
+    panels=root/'statement_panels'
+    if panels.is_dir():
+        for f in sorted(panels.glob('*.json')):
+            doc=load_json(f)
+            items+=[(doc['panel']['system'],SP.eq_of(x['statement']),'sealed') for x in doc['panel']['statements']]
+    return items
+
+
+def statement_tasks(panel):
+    """Evaluator-side task objects for a statement panel (task id and stratum)."""
+    from types import SimpleNamespace
+    return [SimpleNamespace(task_id=x['task_id'],family=x['stratum'],statement=x['statement'])
+            for x in panel['statements']]
+
+
+def _statement_panel(root,db,request_id):
+    """(private document, panel, commitment) for a registered statement request; the panel must
+    hash to the commitment made at registration and pass the structural check."""
+    from .learning import statement_panels as SP
+    committed=db.execute('SELECT pool_hash,commitment FROM panels WHERE request_id=?',(request_id,)).fetchone()
+    path=root/'statement_panels'/f'{request_id}.json'
+    if committed is None or not path.is_file():raise ValueError('no sealed statement panel registered for this request')
+    doc=load_json(path);panel=doc['panel']
+    if digest(panel)!=committed[0]:raise ValueError('statement panel does not match the commitment made at registration')
+    problems=SP.panel_problems(panel)
+    if problems:raise ValueError('statement panel: '+'; '.join(problems))
+    return doc,panel,committed[1]
+
+
+def register_statements(private_root,request,key_path,operator_id,*,exposure_manifest,campaign_export,decision_record):
+    """Register a statement evaluation and generate its sealed panel here, after the research froze.
+
+    The panel is drawn from a fresh private seed under the preregistered spec, screened against
+    everything the requesting research saw (rebuilt from the bound export), the custodian's public
+    statement sources and every statement already sealed at this custodian; it stays in the
+    private root, and the anchor carries a salted commitment to it. INSUFFICIENT material refuses
+    the registration (nothing is recorded)."""
+    from . import decision_record as DR
+    from .learning import statement_panels as SP
+    root=_private_root(private_root)
+    if not R.is_statement_request(request):raise ValueError('register_statements takes a statement evaluation request')
+    validate_request(request);rid=digest(request)
+    problems=DR.problems(decision_record,request['analysis'],task_count=request['task_count'],require_frozen=True)
+    if problems:raise ValueError('decision record: '+'; '.join(problems))
+    export=Path(campaign_export);data=export.read_bytes()
+    if bytes_hash(data)!=request['campaign_export_sha256']:raise ValueError('campaign export does not match the request binding')
+    facts=campaign_facts(export)
+    problems=check_request_against_export(request,facts)
+    if problems:raise ValueError('request is not what the campaign export shows: '+'; '.join(problems))
+    manifest_path,manifest=_manifest_file(exposure_manifest)
+    db=_open_custody(root);db.executescript(STATEMENT_SCHEMA)
+    try:
+        slots=R.registration_slots(request)
+        for one in slots:
+            taken=db.execute('SELECT request_id FROM slots WHERE slot=?',(one,)).fetchone()
+            if taken:raise ValueError(f'this claim or candidate slot is already registered by request {taken[0][:12]}')
+        exposure=_statement_exposure(root,manifest_path,manifest,facts)
+        seed=os.urandom(32).hex()
+        try:panel,record=SP.generate(request['panel_spec'],private_seed=seed,exposure=exposure)
+        except SP.PanelError as exc:raise ValueError(f'statement panel: {exc.code}') from None
+        salt=os.urandom(32).hex();pool_hash=digest(panel)
+        commitment=digest({'schema':'genesis-panel-commitment-v1','pool':pool_hash,'salt':salt})
+        payload={'schema':R.PREREG_ANCHOR,'request_hash':rid,'claim_id':request['claim_id'],
+                 'statement_hash':request['statement_hash'],'scope':request['scope'],
+                 'evidence_kind':request['evidence_kind'],'registration_slot':R.registration_slot(request),
+                 'registered_at':utcnow(),'operator_id':operator_id,'exposure_registry_root':record['exposure_root'],
+                 'exposure_graphs':0,'declaration_unscreenable_graphs':0,'panel_commitment':commitment}
+        problems=R.check_anchor(payload)
+        if problems:raise RuntimeError('custodian built an invalid anchor: '+'; '.join(problems))
+        anchor=sign(payload,key_path)
+        # Private files first: a crash before the commit below leaves an orphan file, never a registration
+        # without its panel.
+        for d in ('statement_panels','statement_exports','sealed_statements'):(root/d).mkdir(mode=0o700,exist_ok=True)
+        atomic_write(root/'statement_panels'/f'{rid}.json',canonical({'panel':panel,'record':record,'private_seed':seed}),
+                     mode=0o600,overwrite=True)
+        atomic_write(root/'statement_exports'/f'{rid}.zip',data,mode=0o600,overwrite=True)
+        atomic_write(root/'sealed_statements'/f'{rid}.json',canonical([x['statement'] for x in panel['statements']]),
+                     mode=0o600,overwrite=True)
+        from .custody_records import family_of,family_size_of,registration_problems
+        with db:
+            db.execute('BEGIN IMMEDIATE')
+            problems=registration_problems(_log_entries(db),request)
+            if problems:raise ValueError('hypothesis family: '+'; '.join(problems))
+            for one in slots:
+                taken=db.execute('SELECT request_id FROM slots WHERE slot=?',(one,)).fetchone()
+                if taken:raise ValueError(f'this claim or candidate slot is already registered by request {taken[0][:12]}')
+            db.executemany('INSERT INTO slots VALUES (?,?)',[(one,rid) for one in slots])
+            db.execute('INSERT INTO requests VALUES (?,?,?,?)',(rid,canonical(request),canonical(anchor),'REGISTERED'))
+            db.execute('INSERT INTO registry_builds VALUES (?,?)',(rid,canonical(record)))
+            db.execute('INSERT INTO panels VALUES (?,?,?,?)',(rid,pool_hash,salt,commitment))
+            db.execute('INSERT INTO decision_records VALUES (?,?)',(rid,canonical(decision_record)))
+            _append_log(db,'REGISTERED',{'request_hash':rid,'claim_id':request['claim_id'],
+                'statement_hash':request['statement_hash'],'evidence_kind':request['evidence_kind'],
+                'domain':request['domain'],'campaign_id':request['campaign_id'],
+                'candidate_version':request['candidate_version'],'family':family_of(request),
+                'family_size':family_size_of(request),'analysis':'v2','anchor_sha256':digest(anchor),
+                'decision_record_sha256':digest(decision_record)})
+        return anchor
+    finally:db.close()
+
+
+def evaluate_statements(private_root,request_id,key_path,operator_id):
+    """Run a registered statement evaluation: reserve the sealed statements (never reused), run each
+    arm's frozen successor in the sandbox on every statement (shuffled arm order), and replay every
+    claimed proof in Lean from custody (verification attempts, accounted separately). A statement
+    scores 1 for an arm only when its replay is CHECKED."""
+    from .learning import research_export as RX
+    root=_private_root(private_root)
+    db=_open_custody(root);db.executescript(STATEMENT_SCHEMA)
+    try:
+        row=db.execute('SELECT body,anchor,state FROM requests WHERE id=?',(request_id,)).fetchone()
+        if not row:raise ValueError('request not preregistered')
+        request=json.loads(row[0]);anchor=json.loads(row[1])
+        if not R.is_statement_request(request):raise ValueError('not a statement evaluation request')
+        arms=validate_request(request)
+        if row[2]!='REGISTERED':raise FileExistsError('evaluation already consumed; no automatic retry')
+        identity=code_identity(Path(__file__).resolve().parents[2])['sha256']
+        if identity!=request['expected_evaluator_hash']:raise ValueError('pinned evaluator source mismatch')
+        doc,panel,commitment=_statement_panel(root,db,request_id)
+        export=root/'statement_exports'/f'{request_id}.zip'
+        if bytes_hash(export.read_bytes())!=request['campaign_export_sha256']:raise ValueError('stored export differs from the binding')
+        facts=campaign_facts(export)
+        problems=check_request_against_export(request,facts)
+        if problems:raise ValueError('request is not what the campaign export shows: '+'; '.join(problems))
+        manifests,objects,_=RX.research_material(facts)
+        from . import sandbox as S
+        if not S.available():
+            raise RuntimeError('ISOLATION_UNAVAILABLE: successor arms need the OCI sandbox; the panel was not reserved')
+        db.execute('BEGIN IMMEDIATE')
+        try:
+            if db.execute('SELECT state FROM requests WHERE id=?',(request_id,)).fetchone()[0]!='REGISTERED':
+                raise FileExistsError('concurrent evaluation reservation')
+            for x in panel['statements']:
+                if db.execute('SELECT 1 FROM statement_reservations WHERE structural=?',(x['structural_sha256'],)).fetchone():
+                    raise ValueError('panel statement was already consumed by an earlier evaluation')
+                db.execute('INSERT INTO statement_reservations VALUES (?,?)',(x['structural_sha256'],request_id))
+            db.execute("UPDATE requests SET state='CONSUMED_NO_RETRY' WHERE id=?",(request_id,))
+            from .custody_records import family_of
+            _append_log(db,'RESERVED',{'request_hash':request_id,'family':family_of(request),'tasks':len(panel['statements'])})
+            db.execute('COMMIT')
+        except BaseException:
+            db.execute('ROLLBACK');raise
+        point('custodian.reserve')
+        work=root/'evaluations'/request_id
+        work.mkdir(parents=True,mode=0o700)
+        tasks=statement_tasks(panel)
+        with Store(work) as evidence:
+            evidence.save('request',request_id,request)
+            evidence.save('statement_panel',digest(panel),panel)
+            evidence.save('panel_record',request_id,doc['record'])
+            evidence.save('anchor',request_id,anchor)
+            for desc in arms.values():
+                m=manifests[desc['parameters']['manifest_id']]
+                evidence.save('successor_manifest',m['manifest_id'],m)
+                for lem in m['lemmas']:
+                    evidence.save('proof_object',lem['proof_sha256'],
+                                  {'sha256':lem['proof_sha256'],'text':objects.get(lem['proof_sha256']).decode()})
+            try:
+                _statement_rows_run(evidence,request,panel,arms,manifests,objects)
+                evidence.save('comparison',request_id,{'statements':len(tasks),'arms':sorted(arms)})
+                evidence.verify();evidence.snapshot('complete.sqlite3')
+            except BaseException as exc:
+                evidence.event('EVALUATION_FAILED',{'exception':type(exc).__name__,'message':str(exc)})
+                evidence.interrupt_running();raise
+            receipt=_seal(evidence,request_id,request,anchor,commitment,identity,operator_id,key_path,tasks,arms,
+                          complete=True,family_p_values=_family_p(db,request,request_id))
+        return _publish(db,work,request_id,receipt,request)
+    finally:db.close()
+
+
+def _statement_rows_run(evidence,request,panel,arms,manifests,objects):
+    from . import candidates as C
+    from .learning import custody as CU
+    checker={'checker_identity':CU.checker_identity()['identity']}
+    for x in panel['statements']:
+        task={'task_id':x['task_id'],'statement':x['statement'],'domain':request['domain']}
+        names=sorted(arms);seed=int(digest({'seed':request['seed'],'task':x['task_id']})[:16],16)
+        random.Random(seed).shuffle(names)
+        for name in names:
+            desc=arms[name];m=manifests[desc['parameters']['manifest_id']]
+            aid=evidence.start(f"{x['task_id']}-{name}",{'kind':'solver','task':task,'descriptor':desc,'arm':name,
+                                                          'seed':seed,'limits':desc['resource_profile']})
+            receipt=C.run(task,desc,seed=seed,expected_id=desc['descriptor_id'],isolation='runc',context={'manifest':m})
+            evidence.finish(aid,receipt)
+            point('custodian.evaluate')
+            res=receipt.get('result') or {}
+            if receipt.get('status')!='SUCCESS' or res.get('claim')!='PROOF':continue
+            local=CU.MemoryObjects({l['proof_sha256']:objects.get(l['proof_sha256']) for l in m['lemmas']})
+            record=CU.claim_record(m,local,panel_id=panel['panel_sha256'],task_id=x['task_id'],statement=x['statement'],
+                                   prover_status=res['prover_status'],proof=res['proof'],premise_uids=res['premise_uids'],
+                                   eligible=True,attempt_id=aid)
+            vid=evidence.start(f"replay-{x['task_id']}-{name}",{'kind':'replay','task_id':x['task_id'],'arm':name,
+                                                                 'solver_attempt':aid,'record':record})
+            start=time.monotonic_ns()
+            check=CU.replay_target(record,m,local,task_statement=x['statement'],trust_context=checker,
+                                   name=f"st{record['record_id'][:12]}")
+            ran=check['status'] in ('CHECKED','CHECK_FAILED','CHECK_UNSUPPORTED','CHECK_INCOMPLETE')
+            evidence.finish(vid,{'status':'SUCCESS' if ran else 'CHECKER_ERROR','replay':check,
+                                 'wall_ns':time.monotonic_ns()-start})
 
 
 from .kernel.roles import TRUST_ROOT_ENV,DEFAULT_TRUST_ROOT,ROLE_FIELDS,load_role_registry  # re-exported
@@ -825,7 +1141,7 @@ def release_preflight(request,anchor,receipt,audit,*,trust_root=None,revocations
             expected_rows=request['task_count']*len(R.arm_names(request))
             arm_fields=((('candidate_descriptor_id',R.arm_identity(request,'candidate')),
                          ('baseline_descriptor_id',R.arm_identity(request,'baseline')),
-                         ('arms_sha256',digest(request['arms']))) if R.is_v4(request) else
+                         ('arms_sha256',digest(request['arms']))) if R.descriptor_arms(request) else
                         (('candidate_program_hash',R.arm_identity(request,'candidate')),
                          ('baseline_version',R.arm_identity(request,'baseline'))))
             if a['registration_slot']!=R.registration_slot(request):reasons.append('anchor registers a different slot')

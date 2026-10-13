@@ -55,7 +55,8 @@ ALGORITHM = 'genesis-material-partition-v1'
 SCHEMA = 'genesis-material-partition-manifest-v1'
 RELATIONS = ('EXACT', 'ALPHA', 'INSTANCE', 'GENERALIZES')
 ACTIONS = ('REJECT', 'QUARANTINE', 'ALLOW')
-ROUTES = ('pool', 'development', 'lemma', 'macro_step', 'memory', 'curriculum', 'import', 'proof', 'policy_feature')
+ROUTES = ('pool', 'development', 'lemma', 'macro_step', 'memory', 'curriculum', 'import', 'proof', 'policy_feature',
+          'sealed')   # 'sealed': statements already sealed or reserved at a custodian (B20_R7)
 
 DEFAULT_POLICY = {'EXACT': 'REJECT', 'ALPHA': 'REJECT', 'INSTANCE': 'REJECT', 'GENERALIZES': 'QUARANTINE',
                   'cross_unit_distinct': True, 'max_draws_per_item': 4000}
@@ -429,7 +430,7 @@ class InsertionScreen:
             self._ledger.append({'route': route, 'decision': 'BLOCK', 'reason': 'QUERY_BUDGET_EXHAUSTED'})
             return {'decision': 'BLOCK'}
         self._budget -= 1
-        if route not in ROUTES:
+        if route not in ROUTES or route == 'sealed':      # 'sealed' is an exposure source, not an insertion route
             self._ledger.append({'route': route, 'decision': 'BLOCK', 'reason': 'UNKNOWN_ROUTE'})
             return {'decision': 'BLOCK'}
         try:

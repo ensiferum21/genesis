@@ -9,6 +9,12 @@ strict decoder whose output is re-checked by the domain checker.
 
 Kinds (closed; nothing else is accepted):
   dsl-program-v1           the existing fixed DSL (``execution.execute``), unchanged.
+  formal-research-successor-v1  (B20_R7) a frozen equational research successor: the system's
+                           axioms plus the library of a custody manifest (bound by its id), proving
+                           a statement with E under {premise_k, prove_seconds}. The child sees only
+                           the statement and the library statements; its output is a proof CLAIM,
+                           worth nothing until the evaluator replays it in Lean from custody.
+                           Statement domains only (``eq_<system>_v1``); runc isolation only.
   represent-and-repair-v1  ``invention.representations.represent_and_repair`` with
                            data-only parameters {representation, cpu_seconds, seed}. The
                            representation must be a typed grammar proposal whose soundness
@@ -43,12 +49,14 @@ import sys
 from .common import canonical, digest
 
 SCHEMA = 'genesis-candidate-descriptor-v1'
-KINDS = ('dsl-program-v1', 'represent-and-repair-v1')
+KINDS = ('dsl-program-v1', 'represent-and-repair-v1', 'formal-research-successor-v1')
 PACKAGE = Path(__file__).resolve().parents[2] / 'evidence' / 'invention_b18' / 'representations' / 'package.json'
 MAX_OUTPUT = 1 << 20
 FIELDS = {'schema', 'kind', 'domain', 'parameters', 'implementation', 'resource_profile', 'descriptor_id'}
 PROFILE = {'cpu_seconds', 'memory_mib', 'wall_seconds', 'queries'}
 SOURCE_MOUNT = '/opt/genesis-src'
+TOOLCHAIN_MOUNT = '/opt/toolchain'      # PINS.json: verification.tools resolves REPO as /opt inside the sandbox
+TOOLS_MOUNT = '/opt/tools'              # the pinned binaries (GENESIS_TOOLCHAIN inside the sandbox)
 ISOLATIONS = ('runc', 'process')
 
 
@@ -67,16 +75,33 @@ def implementation_identity(kind):
     here = Path(__file__).resolve().parent
     files = {'dsl-program-v1': ['dsl.py', 'execution.py', 'graphs.py', 'models.py'],
              'represent-and-repair-v1': ['candidates.py', 'invention/representations.py', 'graphs.py', 'models.py',
-                                         'invention/soundness.py']}[kind]
+                                         'invention/soundness.py'],
+             'formal-research-successor-v1': ['candidates.py', 'learning/equational.py', 'learning/research.py',
+                                              'verification/eprover.py', 'verification/tools.py', 'fol.py']}[kind]
     return {f: _sha_file(here / f) for f in files}
 
 
 def _check_parameters(kind, domain, params):
     from .domains import ADAPTERS
-    if domain not in ADAPTERS:
-        raise CandidateError('UNKNOWN_DOMAIN', domain)
     if not isinstance(params, dict):
         raise CandidateError('MALFORMED_PARAMETERS')
+    if kind == 'formal-research-successor-v1':
+        from .learning.statement_panels import system_of_domain
+        if set(params) != {'system', 'manifest_id', 'premise_k', 'prove_seconds'}:
+            raise CandidateError('MALFORMED_PARAMETERS',
+                                 'formal-research-successor-v1 takes {system, manifest_id, premise_k, prove_seconds}')
+        if system_of_domain(domain) is None:
+            raise CandidateError('UNKNOWN_DOMAIN', domain)
+        if params['system'] != system_of_domain(domain):
+            raise CandidateError('DOMAIN_MISMATCH', 'the successor system is not the domain system')
+        m = params['manifest_id']
+        if not (isinstance(m, str) and len(m) == 64 and all(c in '0123456789abcdef' for c in m)) or \
+                type(params['premise_k']) is not int or not 0 <= params['premise_k'] <= 32 or \
+                type(params['prove_seconds']) is not int or not 1 <= params['prove_seconds'] <= 60:
+            raise CandidateError('MALFORMED_PARAMETERS')
+        return
+    if domain not in ADAPTERS:
+        raise CandidateError('UNKNOWN_DOMAIN', domain)
     if kind == 'dsl-program-v1':
         from .models import SolverProgram
         if set(params) != {'program'}:
@@ -185,9 +210,15 @@ def sandbox_policy(rp):
                          output_bytes=MAX_OUTPUT + 1, work_mib=1, tmp_mib=16, open_files=128, max_file_mib=1)
 
 
-def sandbox_mounts():
-    """Read-only mounts of the reviewed source tree (nothing else of the host is visible)."""
-    return {SOURCE_MOUNT: str(Path(__file__).resolve().parents[1])}
+def sandbox_mounts(kind=None):
+    """Read-only mounts: the reviewed source tree; for the formal kind also the pin file and the
+    pinned prover (``verification.tools`` re-checks the binary hash inside the sandbox)."""
+    mounts = {SOURCE_MOUNT: str(Path(__file__).resolve().parents[1])}
+    if kind == 'formal-research-successor-v1':
+        from .verification.tools import toolchain_root
+        mounts[TOOLCHAIN_MOUNT] = str(Path(__file__).resolve().parents[2] / 'toolchain')
+        mounts[TOOLS_MOUNT] = str(toolchain_root())
+    return mounts
 
 
 CHILD_ARGV = ('-s', '-B', '-m', 'genesis.candidates', '--trusted-candidate-child', '/work/src/request.json')
@@ -197,8 +228,11 @@ SANDBOX_STATUS = {'TIMEOUT': 'TIMEOUT', 'CPU_LIMIT': 'CPU_LIMIT', 'OOM': 'MEMORY
 
 def _run_sandboxed(req, rp):
     from . import sandbox as S
+    env = {'PYTHONPATH': SOURCE_MOUNT, 'PYTHONHASHSEED': '0'}
+    if req['kind'] == 'formal-research-successor-v1':
+        env['GENESIS_TOOLCHAIN'] = TOOLS_MOUNT
     r = S.run({'request.json': canonical(req)}, [S.PYTHON, *CHILD_ARGV], sandbox_policy(rp),
-              ro_mounts=sandbox_mounts(), env={'PYTHONPATH': SOURCE_MOUNT, 'PYTHONHASHSEED': '0'})
+              ro_mounts=sandbox_mounts(req['kind']), env=env)
     meter = {'cpu_ns': r.get('cpu_ns'), 'wall_ns': r.get('wall_ns'), 'peak_memory_bytes': r.get('peak_memory_bytes'),
              'meter': 'cgroup', 'isolation': r.get('sandbox'), 'policy_sha256': r.get('policy_sha256'),
              'config_sha256': r.get('config_sha256'), 'sandbox_status': r['status']}
@@ -229,13 +263,16 @@ def decode_output(raw, n_edges):
     return edges, val
 
 
-def run(task, desc, *, seed, expected_id=None, isolation='process'):
+def run(task, desc, *, seed, expected_id=None, isolation='process', context=None):
     """Execute a frozen candidate on one task. Returns a receipt; the claimed value is never
-    trusted: the domain checker recomputes it from the witness."""
+    trusted: the domain checker recomputes it from the witness (for the formal kind the
+    evaluator replays the claimed proof; see ``run_formal``)."""
     from .domains import Unsupported, adapter
     from .learning.budget import NS, run_bounded
     if isolation not in ISOLATIONS:
         raise ValueError(f'isolation must be one of {ISOLATIONS}')
+    if isinstance(desc, dict) and desc.get('kind') == 'formal-research-successor-v1':
+        return run_formal(task, desc, seed=seed, expected_id=expected_id, isolation=isolation, context=context)
     problems = descriptor_problems(desc, expected_id=expected_id, domain=task.domain)
     base = {'descriptor_id': desc.get('descriptor_id') if isinstance(desc, dict) else None,
             'execution_mode': 'TRUSTED_REGISTERED_RUNNER', 'arbitrary_code_sandbox': False}
@@ -291,6 +328,69 @@ def run(task, desc, *, seed, expected_id=None, isolation='process'):
     return _decode_and_check(dict(receipt, isolation='PROCESS_RLIMITS'), r['stdout'], task, domain)
 
 
+FORMAL_STATUSES = ('THEOREM', 'COUNTERSATISFIABLE', 'RESOURCE_OUT', 'GAVE_UP', 'ERROR', 'UNKNOWN')   # eprover.SZS
+
+
+def formal_child_request(task, desc, manifest, seed):
+    """Exactly what the formal child receives: the statement, the library statements (in manifest
+    order, with their custody uids), the parameters and limits. No task id, stratum or panel."""
+    return {'view': {'domain': task['domain'], 'statement': task['statement']}, 'kind': desc['kind'],
+            'parameters': desc['parameters'],
+            'library': [{'uid': l['uid'], 'statement': l['statement']} for l in manifest['lemmas']],
+            'cpu_seconds': desc['resource_profile']['cpu_seconds'], 'queries': desc['resource_profile']['queries'],
+            'seed': seed}
+
+
+def decode_formal_output(raw, library_uids):
+    """Strict decoder for the formal child's output: {status, proof, premise_uids}."""
+    if len(raw) > MAX_OUTPUT:
+        raise CandidateError('OUTPUT_TOO_LARGE')
+    try:
+        obj = json.loads(raw)
+    except (ValueError, TypeError):
+        raise CandidateError('MALFORMED_OUTPUT', 'not JSON') from None
+    if not isinstance(obj, dict) or set(obj) != {'status', 'proof', 'premise_uids'}:
+        raise CandidateError('MALFORMED_OUTPUT', 'expected exactly {status, proof, premise_uids}')
+    if obj['status'] not in FORMAL_STATUSES or not (obj['proof'] is None or isinstance(obj['proof'], str)) or \
+            not isinstance(obj['premise_uids'], list) or not all(u in library_uids for u in obj['premise_uids']) or \
+            len(set(obj['premise_uids'])) != len(obj['premise_uids']):
+        raise CandidateError('MALFORMED_OUTPUT')
+    if (obj['status'] == 'THEOREM') != bool(obj['proof']):
+        raise CandidateError('MALFORMED_OUTPUT', 'a proof object exactly when the status is THEOREM')
+    return obj
+
+
+def run_formal(task, desc, *, seed, expected_id=None, isolation='runc', context=None):
+    """Run a frozen formal-research successor on one statement task {task_id, statement, domain}.
+    ``context['manifest']`` is the successor manifest the custodian rebuilt from the export.
+    Returns a receipt whose result is a CLAIM (a proof object with its premise uids, or no proof);
+    the value is decided by the evaluator's Lean replay, not here."""
+    base = {'descriptor_id': desc.get('descriptor_id') if isinstance(desc, dict) else None,
+            'execution_mode': 'TRUSTED_REGISTERED_RUNNER', 'arbitrary_code_sandbox': False}
+    problems = descriptor_problems(desc, expected_id=expected_id, domain=task.get('domain'))
+    manifest = (context or {}).get('manifest')
+    if not problems and (not isinstance(manifest, dict) or manifest.get('manifest_id') != desc['parameters']['manifest_id']
+                         or manifest.get('system') != desc['parameters']['system']):
+        problems = ['MANIFEST_MISMATCH']
+    if not problems and isolation != 'runc':
+        problems = ['ISOLATION_REQUIRED']
+    if problems:
+        return dict(base, status='REFUSED', problems=problems)
+    req = formal_child_request(task, desc, manifest, seed)
+    meter, failure, stdout = _run_sandboxed(req, desc['resource_profile'])
+    receipt = dict(base, **meter, candidate_view_sha256=digest(req['view']), runner_sha256=_sha_file(__file__),
+                   limits=desc['resource_profile'], library_sha256=digest(req['library']))
+    if failure:
+        return dict(receipt, **failure)
+    try:
+        out = decode_formal_output(stdout, {l['uid'] for l in req['library']})
+    except CandidateError as exc:
+        return dict(receipt, status='CHECKER_ERROR', reason=exc.code)
+    claim = 'PROOF' if out['status'] == 'THEOREM' else 'NO_PROOF'
+    return dict(receipt, status='SUCCESS', result={'claim': claim, 'prover_status': out['status'], 'proof': out['proof'],
+                                                   'premise_uids': out['premise_uids']})
+
+
 def _decode_and_check(receipt, stdout, task, domain):
     try:
         edges, claimed = decode_output(stdout, len(task.edges))
@@ -303,9 +403,36 @@ def _decode_and_check(receipt, stdout, task, domain):
                 check=checked)
 
 
+def _formal_child(req):
+    # The sandbox policy already caps file size (1 MiB) and processes (cgroup pids); E needs both.
+    from .fol import parse
+    from .learning import equational as Q
+    from .learning.research import premises
+    from .verification.eprover import prove
+
+    def eq(text):                     # as written (no renaming or orientation): replay binds these texts
+        f = parse(text)
+        while f[0] == 'all':
+            f = f[2]
+        return (f[1], f[2])
+    params = req['parameters']
+    target = eq(req['view']['statement'])
+    library = [{'id': l['uid'], 'uid': l['uid'], 'eq': eq(l['statement'])} for l in req['library']]
+    prem = premises(library, target, params['premise_k'])
+    r = prove(Q.axioms(params['system']) + [Q.closed(p['eq']) for p in prem], Q.closed(target),
+              seconds=min(params['prove_seconds'], int(req['cpu_seconds'])), mode='auto')
+    proof = r['proof'] if r['status'] == 'THEOREM' and r.get('proof') else None
+    sys.stdout.write(json.dumps({'status': r['status'] if (r['status'] != 'THEOREM' or proof) else 'UNKNOWN',
+                                 'proof': proof, 'premise_uids': [p['uid'] for p in prem]}))
+
+
 def _child(path):
     import resource
     req = json.loads(Path(path).read_bytes())
+    if req.get('kind') == 'formal-research-successor-v1':
+        if set(req) != {'view', 'kind', 'parameters', 'library', 'cpu_seconds', 'queries', 'seed'}:
+            raise SystemExit(2)
+        return _formal_child(req)
     if set(req) != {'view', 'kind', 'parameters', 'cpu_seconds', 'queries', 'seed'} or req['kind'] not in KINDS:
         raise SystemExit(2)
     from .models import CandidateGraph
@@ -337,4 +464,4 @@ if __name__ == '__main__':
 
 __all__ = ['SCHEMA', 'KINDS', 'CandidateError', 'build_descriptor', 'rebuild', 'descriptor_problems', 'child_request',
            'decode_output', 'run', 'implementation_identity', 'representation_mode', 'sandbox_policy',
-           'sandbox_mounts', 'ISOLATIONS']
+           'sandbox_mounts', 'ISOLATIONS', 'run_formal', 'formal_child_request', 'decode_formal_output']

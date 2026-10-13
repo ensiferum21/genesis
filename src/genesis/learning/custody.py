@@ -81,6 +81,32 @@ class ObjectStore:
             return False
 
 
+class MemoryObjects:
+    """The ObjectStore interface over a dict (proof objects carried inside an export or an
+    evaluation store). Reads verify the hash."""
+
+    def __init__(self, items=None):
+        self._d = {}
+        for h, data in (items or {}).items():
+            if self.put(data) != h:
+                raise ValueError('object corruption')
+
+    def put(self, data):
+        data = data if isinstance(data, bytes) else data.encode()
+        h = _sha(data)
+        self._d[h] = data
+        return h
+
+    def get(self, h):
+        data = self._d[h]
+        if _sha(data) != h:
+            raise ValueError('object corruption')
+        return data
+
+    def has(self, h):
+        return h in self._d
+
+
 def checker_identity():
     """Identity of the replay route: pinned Lean, formal workspace pins and the translator."""
     import json
@@ -159,6 +185,23 @@ def target_records(evaluation, manifest, objects, *, panel_id, task_ids=None, ex
                 'manifest_id': manifest['manifest_id']}
         out.append(dict(body, record_id=digest(body)))
     return out
+
+
+def claim_record(manifest, objects, *, panel_id, task_id, statement, prover_status, proof, premise_uids,
+                 eligible, attempt_id, exposure_ok=True):
+    """A scored-target record for a proof claimed by a sandboxed successor (B20_R7): the premise
+    identities come from the run, the used lemmas from the proof object itself."""
+    reported = prover_status == 'THEOREM' and bool(proof)
+    psha = objects.put(proof) if reported else None
+    n_ax = len(manifest['axioms'])
+    used = [premise_uids[i - n_ax] for i in used_inputs(proof, n_ax + len(premise_uids)) if i >= n_ax] \
+        if reported else []
+    body = {'schema': TARGET_SCHEMA, 'panel_id': panel_id, 'task_id': task_id, 'statement': statement,
+            'statement_sha256': _sha(statement), 'prover_status': prover_status, 'prover_reported': reported,
+            'budget_eligible': bool(eligible) and reported, 'exposure_ok': bool(exposure_ok), 'attempt_id': attempt_id,
+            'proof_sha256': psha, 'premise_uids': list(premise_uids), 'lemmas_used_uids': used,
+            'closure_uids': closure(manifest, used), 'manifest_id': manifest['manifest_id']}
+    return dict(body, record_id=digest(body))
 
 
 # ---------------------------------------------------------------- pure validation

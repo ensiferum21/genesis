@@ -44,6 +44,12 @@ SCIENTIFIC_RECEIPT_V3 = 'genesis-scientific-receipt-v3'   # analysis plan v2 + i
 SCIENTIFIC_RECEIPT_V4 = 'genesis-scientific-receipt-v4'
 ANALYSIS_RECEIPTS = (SCIENTIFIC_RECEIPT_V3, SCIENTIFIC_RECEIPT_V4)
 REQUEST_V4 = 'genesis-evaluation-request-v4'
+# B20_R7 (handoff s13.3): equational statement evaluations. The arms are descriptors (as in v4);
+# the custodian generates the sealed statement panel itself from a preregistered `panel_spec`.
+# Their receipts are scientific receipt v4. The name is new rather than a request version number,
+# so no number is reused with a different meaning.
+REQUEST_STATEMENTS = 'genesis-statement-evaluation-request-v1'
+DESCRIPTOR_REQUESTS = (REQUEST_V4, REQUEST_STATEMENTS)
 V4_EVIDENCE_KINDS = ('sealed_evaluation',)
 PREREG_ANCHOR = 'genesis-prereg-anchor-v3'
 PRIORITY_ADJUDICATION = 'genesis-priority-adjudication-v1'
@@ -76,6 +82,23 @@ DOMAINS = {
                               'witness': 'subset of the host edge set', 'score': 'edge count',
                               'checker': 'genesis.graphs.check_witness (dual predicates)', 'version': 1},
 }
+
+
+def _statement_domains():
+    """One domain per equational system (B20_R7): the contract binds the exact axioms, so a change of
+    axiomatization is a different domain contract."""
+    from ..learning.equational import SYSTEMS
+    return {f'eq_{name}_v1': {
+        'objective': 'number of sealed statements proved within the per-statement limit whose Lean replay from '
+                     'custody is kernel-checked against the trusted statement',
+        'witness': 'an E proof object and the custody of the library lemmas it depends on',
+        'score': 'checked proofs (0 or 1 per statement)',
+        'checker': 'genesis.formal_research.fof_lean.replay + formal_research.checker (pinned Lean, allowed axioms)',
+        'variety': spec['variety'], 'axioms': list(spec['axioms']), 'decider': spec['decider'], 'version': 1}
+        for name, spec in SYSTEMS.items()}
+
+
+DOMAINS.update(_statement_domains())
 ANALYSIS_V1 = {'primary': 'paired-edge-count', 'alpha': 0.05, 'family_sensitivity': True, 'hypotheses': 1}
 
 RECEIPT_FIELDS = frozenset({
@@ -141,15 +164,24 @@ def program_identity(program):
     return digest(SolverProgram.model_validate_json(canonical(program)).model_dump(mode='json'))
 
 
-def is_v4(request):
-    return isinstance(request, dict) and request.get('schema') == REQUEST_V4
+def descriptor_arms(request):
+    """True for request forms whose arms are candidate descriptors (v4, statement requests)."""
+    return isinstance(request, dict) and request.get('schema') in DESCRIPTOR_REQUESTS
+
+
+def is_statement_request(request):
+    return isinstance(request, dict) and request.get('schema') == REQUEST_STATEMENTS
+
+
+def is_statement_domain(domain):
+    return isinstance(domain, str) and domain.startswith('eq_') and domain in DOMAINS
 
 
 def arm_identity(request, arm):
     """Identity of one comparison arm: the validated program identity (v3) or the descriptor
     identity (v4). The custodian checks a v4 descriptor (rebuilt, implementation unchanged)
     before this identity is trusted for anything but naming."""
-    if is_v4(request):
+    if descriptor_arms(request):
         desc = request['arms'][arm]
         if not isinstance(desc, dict) or not hex64(desc.get('descriptor_id')):
             raise ValueError('malformed candidate descriptor')
@@ -158,7 +190,7 @@ def arm_identity(request, arm):
 
 
 def arm_names(request):
-    return sorted(request['arms'] if is_v4(request) else request['programs'])
+    return sorted(request['arms'] if descriptor_arms(request) else request['programs'])
 
 
 def receipt_arm_ids(p):
@@ -379,7 +411,7 @@ def check_request(r):
         out.append('claim_id')
     if not hex64(r.get('statement_hash')) or not isinstance(r.get('scope'), str) or not r.get('scope'):
         out.append('a request must commit to the claim statement (statement_hash) and scope before evaluation')
-    arms = r.get('arms') if is_v4(r) else r.get('programs')
+    arms = r.get('arms') if descriptor_arms(r) else r.get('programs')
     if isinstance(arms, dict) and 'candidate' in arms and 'baseline' in arms:
         try:
             if arm_identity(r, 'candidate') == arm_identity(r, 'baseline'):
@@ -388,11 +420,14 @@ def check_request(r):
             out.append('candidate or baseline is not a valid program or descriptor')
     if not analysis_ok(r.get('analysis')):
         out.append('analysis must be ANALYSIS_V1 or a valid v2 plan (kernel.analysis.check_plan)')
-    elif is_v4(r) and r['analysis'] == ANALYSIS_V1:
+    elif descriptor_arms(r) and r['analysis'] == ANALYSIS_V1:
         out.append('a v4 (executable-candidate) request needs an analysis plan v2')
-    if is_v4(r) and r.get('evidence_kind') not in V4_EVIDENCE_KINDS:
+    if descriptor_arms(r) and r.get('evidence_kind') not in V4_EVIDENCE_KINDS:
         out.append(f'a v4 request supports {", ".join(V4_EVIDENCE_KINDS)} only (B20_R5); '
                    'other kinds stay on v3 or are refused')
+    if is_statement_domain(r.get('domain')) != is_statement_request(r):
+        out.append('statement domains are evaluated only through statement evaluation requests, and statement '
+                   'requests only on statement domains')
     if r.get('evidence_kind') not in EVALUATION_KINDS:
         out.append('evidence_kind')
     else:
@@ -510,9 +545,9 @@ def binding_from_requests(requests):
             for r in requests}
     if len(keys) != 1:
         raise ValueError('requests disagree on claim, statement, scope, campaign or evaluator')
-    if len({is_v4(r) for r in requests}) != 1:
+    if len({descriptor_arms(r) for r in requests}) != 1:
         raise ValueError('one claim is evaluated either by v3 (program) or by v4 (descriptor) requests, not both')
-    v4 = is_v4(requests[0])
+    v4 = descriptor_arms(requests[0])
     chain = [r for r in requests if r['evidence_kind'] == 'sealed_generation_evaluation']
     if chain:
         final = max(chain, key=lambda r: r['generation_transition']['index'])['candidate_version']
