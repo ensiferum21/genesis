@@ -1,0 +1,294 @@
+{
+ "cells": {
+  "n26_p0.25": {
+   "baseline_means": {
+    "exchange_tm": 64,
+    "low_cycle_tm": 64.833,
+    "multistart_tm": 64.833
+   },
+   "candidate_below_optimum": 5,
+   "candidate_mean": 64.75,
+   "certified": 12,
+   "comparator": "multistart_tm",
+   "eligible": false,
+   "hosts": 12,
+   "mean_effect": -0.083,
+   "mean_room": 0.5,
+   "n": 26,
+   "p": 0.25,
+   "sd_effect": 0.289,
+   "wins_ties_losses": [
+    0,
+    11,
+    1
+   ]
+  },
+  "n26_p0.3": {
+   "baseline_means": {
+    "exchange_tm": 69.5,
+    "low_cycle_tm": 70.833,
+    "multistart_tm": 70.417
+   },
+   "candidate_below_optimum": 6,
+   "candidate_mean": 71.25,
+   "certified": 12,
+   "comparator": "low_cycle_tm",
+   "eligible": false,
+   "hosts": 12,
+   "mean_effect": 0.417,
+   "mean_room": 0.667,
+   "n": 26,
+   "p": 0.3,
+   "sd_effect": 1.505,
+   "wins_ties_losses": [
+    6,
+    3,
+    3
+   ]
+  },
+  "n26_p0.35": {
+   "baseline_means": {
+    "exchange_tm": 74.917,
+    "low_cycle_tm": 77.333,
+    "multistart_tm": 76.333
+   },
+   "candidate_below_optimum": 10,
+   "candidate_mean": 78.25,
+   "certified": 12,
+   "comparator": "low_cycle_tm",
+   "eligible": false,
+   "hosts": 12,
+   "mean_effect": 0.917,
+   "mean_room": 0.917,
+   "n": 26,
+   "p": 0.35,
+   "sd_effect": 1.443,
+   "wins_ties_losses": [
+    7,
+    4,
+    1
+   ]
+  },
+  "n30_p0.25": {
+   "baseline_means": {
+    "exchange_tm": 80.25,
+    "low_cycle_tm": 82.333,
+    "multistart_tm": 81.5
+   },
+   "candidate_below_optimum": 6,
+   "candidate_mean": 82.5,
+   "certified": 12,
+   "comparator": "low_cycle_tm",
+   "eligible": false,
+   "hosts": 12,
+   "mean_effect": 0.167,
+   "mean_room": 0.5,
+   "n": 30,
+   "p": 0.25,
+   "sd_effect": 1.337,
+   "wins_ties_losses": [
+    4,
+    3,
+    5
+   ]
+  },
+  "n30_p0.3": {
+   "baseline_means": {
+    "exchange_tm": 92.75,
+    "low_cycle_tm": 95.667,
+    "multistart_tm": 93.833
+   },
+   "candidate_below_optimum": 8,
+   "candidate_mean": 96.917,
+   "certified": 10,
+   "comparator": "low_cycle_tm",
+   "eligible": true,
+   "hosts": 12,
+   "mean_effect": 1.25,
+   "mean_room": 1.4,
+   "n": 30,
+   "p": 0.3,
+   "sd_effect": 2.527,
+   "wins_ties_losses": [
+    6,
+    3,
+    3
+   ]
+  },
+  "n30_p0.35": {
+   "baseline_means": {
+    "exchange_tm": 97.083,
+    "low_cycle_tm": 102,
+    "multistart_tm": 98.917
+   },
+   "candidate_below_optimum": 6,
+   "candidate_mean": 106.917,
+   "certified": 10,
+   "comparator": "low_cycle_tm",
+   "eligible": true,
+   "hosts": 12,
+   "mean_effect": 4.917,
+   "mean_room": 0.9,
+   "n": 30,
+   "p": 0.35,
+   "sd_effect": 2.811,
+   "wins_ties_losses": [
+    12,
+    0,
+    0
+   ]
+  },
+  "n34_p0.25": {
+   "baseline_means": {
+    "exchange_tm": 100.917,
+    "low_cycle_tm": 104.5,
+    "multistart_tm": 102.167
+   },
+   "candidate_below_optimum": 12,
+   "candidate_mean": 103.667,
+   "certified": 12,
+   "comparator": "low_cycle_tm",
+   "eligible": false,
+   "hosts": 12,
+   "mean_effect": -0.833,
+   "mean_room": 2.167,
+   "n": 34,
+   "p": 0.25,
+   "sd_effect": 1.403,
+   "wins_ties_losses": [
+    2,
+    2,
+    8
+   ]
+  },
+  "n34_p0.3": {
+   "baseline_means": {
+    "exchange_tm": 110.917,
+    "low_cycle_tm": 116.667,
+    "multistart_tm": 113.167
+   },
+   "candidate_below_optimum": 5,
+   "candidate_mean": 118.083,
+   "certified": 5,
+   "comparator": "low_cycle_tm",
+   "eligible": false,
+   "hosts": 12,
+   "mean_effect": 1.417,
+   "mean_room": 2,
+   "n": 34,
+   "p": 0.3,
+   "sd_effect": 1.832,
+   "wins_ties_losses": [
+    8,
+    2,
+    2
+   ]
+  },
+  "n34_p0.35": {
+   "baseline_means": {
+    "exchange_tm": 122,
+    "low_cycle_tm": 129.417,
+    "multistart_tm": 123.583
+   },
+   "candidate_below_optimum": 3,
+   "candidate_mean": 136.75,
+   "certified": 5,
+   "comparator": "low_cycle_tm",
+   "eligible": false,
+   "hosts": 12,
+   "mean_effect": 7.333,
+   "mean_room": 0.6,
+   "n": 34,
+   "p": 0.35,
+   "sd_effect": 1.923,
+   "wins_ties_losses": [
+    12,
+    0,
+    0
+   ]
+  },
+  "n38_p0.25": {
+   "baseline_means": {
+    "exchange_tm": 124.583,
+    "low_cycle_tm": 129.917,
+    "multistart_tm": 126.083
+   },
+   "candidate_below_optimum": 9,
+   "candidate_mean": 131.417,
+   "certified": 11,
+   "comparator": "low_cycle_tm",
+   "eligible": true,
+   "hosts": 12,
+   "mean_effect": 1.5,
+   "mean_room": 1.909,
+   "n": 38,
+   "p": 0.25,
+   "sd_effect": 2.468,
+   "wins_ties_losses": [
+    6,
+    4,
+    2
+   ]
+  },
+  "n38_p0.3": {
+   "baseline_means": {
+    "exchange_tm": 134.333,
+    "low_cycle_tm": 141,
+    "multistart_tm": 135.167
+   },
+   "candidate_below_optimum": 3,
+   "candidate_mean": 144.083,
+   "certified": 3,
+   "comparator": "low_cycle_tm",
+   "eligible": false,
+   "hosts": 12,
+   "mean_effect": 3.083,
+   "mean_room": 2.667,
+   "n": 38,
+   "p": 0.3,
+   "sd_effect": 2.275,
+   "wins_ties_losses": [
+    11,
+    0,
+    1
+   ]
+  },
+  "n38_p0.35": {
+   "baseline_means": {
+    "exchange_tm": 144.833,
+    "low_cycle_tm": 154.25,
+    "multistart_tm": 146.417
+   },
+   "candidate_below_optimum": 1,
+   "candidate_mean": 164.417,
+   "certified": 2,
+   "comparator": "low_cycle_tm",
+   "eligible": false,
+   "hosts": 12,
+   "mean_effect": 10.167,
+   "mean_room": 0.5,
+   "n": 38,
+   "p": 0.35,
+   "sd_effect": 3.099,
+   "wins_ties_losses": [
+    12,
+    0,
+    0
+   ]
+  }
+ },
+ "choice": "n30_p0.35",
+ "eligible": [
+  "n30_p0.3",
+  "n30_p0.35",
+  "n38_p0.25"
+ ],
+ "rule": {
+  "certify_seconds": 30,
+  "design_effect": 1.0,
+  "hosts_per_cell": 12,
+  "min_certified": 9,
+  "min_room": 6
+ },
+ "schema": "genesis-b20rx4-e1-calibration-v1"
+}

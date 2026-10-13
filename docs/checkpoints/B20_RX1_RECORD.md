@@ -135,6 +135,35 @@ Commits `331825f` (setup) and `01c38e6` (result). The probe certified the optimu
 
 **For E1:** the result supports the harder-family option. **For GV4:** it points to a design where research produces new methods, on S2-, S3- and S7-like families.
 
+### User decisions, 13 Oct 2026 (second set)
+
+- **R11 history:** independent work only (no rebuild).
+- **GV4:** capability study design.
+- **E1:** harder host family, once B20_R12 can be redone.
+
+### B20_RX3 and RX3b: GV4 capability pilot and its replication
+
+Commits `0dec3f6` (setup), `f2badd0`, `76aa47d` (replication setup) and `723c13d`. Rules fixed before running.
+
+**Design.** Builder-written LP- and SAT-guided construction methods (`discovery/construct.py`) were added to the R13 menu.
+- **Budget:** 2.0 CPU s per host, child processes included.
+- **Research budget:** the same for every improver.
+- **Families:** fresh S2-, S3- and S7-like.
+
+**Result.** DEPLOYABLE_CAPABILITY_HEADROOM in all 3 settings, in both the first run and the fresh-seed replication:
+
+| Setting | First run | Replication | 90% interval (replication) |
+|---|---|---|---|
+| C1 | +1.25 | +0.88 | [0.50, 1.25] |
+| C2 | +0.75 | +0.63 | [0.31, 0.94] |
+| C3 | +0.81 | +1.38 | [1.00, 1.75] |
+
+**What it does and does not show.**
+- Random proposals over the enlarged space do not reliably find the good methods; successive halving does.
+- The methods are builder-written, so this shows the value of the method space, not that research can invent the methods.
+
+**Design draft.** `handoff/gv4/README.md` (DRAFT) sets out the GV4 study these pilots point to, and what blocks it.
+
 ### H06 design probe (no study, nothing committed as evidence)
 
 On 24 calibrated DEV hosts per domain, the motif hypergraph is essentially one component:
@@ -170,6 +199,7 @@ None of the files these commits modify (`graphs.py`, `domains.py`, `certificates
 | B20RX-OPEN-2 | The CRPD-2b pin revision and the pair-count package. | reviewer acceptance (pin change, builder-written known results) |
 | B20RX-OPEN-3 | W23 is not yet wired into the custodian or evidence-kernel promotion path; this needs the R5+ custodian. Code cannot check whether two operators are independent. | the canonical line; external review |
 | B20RX-OPEN-4 | W22: no machine-proposed primitive with prospective utility yet, and no DEV trace corpus. | a corpus from real representation research |
+| B20RX3-OPEN-1 | GV4: the capability effect (LP- and SAT-guided methods, builder-written) replicates. The study must let improvers *produce* the methods (`handoff/gv4/README.md`). It needs a candidate kind and H08 lineages from the canonical line, plus statistician and custodian. | canonical history; external parties |
 | B20R13-OPEN-1 | GV4: choosing among existing configurations leaves no headroom in graph construction either (4 pilots in total). B20_R14 shows capability headroom on harder families: S2 at 1.31, S3 at 0.56 and S7 at 1.36 edges per host below the certified optimum. A study should let research produce new methods (LP- or SAT-guided construction, representations beyond the menu) at matched budgets on such families. | the user's design decision |
 | B20RX-OPEN-5 | H06 s16.3: decomposition and free-edge kernel have no headroom on the calibrated families (design probe). | a different structural method or family |
 
