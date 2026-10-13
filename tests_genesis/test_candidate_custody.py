@@ -475,6 +475,27 @@ class ConstructPipeline(Base):
         p = C.run(self.tasks[3], self.pipe(), seed=5, isolation='process')
         self.assertEqual(p['status'], 'SUCCESS', p)
 
+    def test_lp_guidance_has_a_registered_ablation_and_placebo(self):
+        from genesis.kernel import replay_contracts as RC
+        cand, abl, plc = self.pipe(), self.pipe(init='random_greedy'), self.pipe(init='lp_shuffled_greedy')
+        self.assertEqual(RC.intervention_problems('ablation', cand, abl), ([], ('init',)))
+        self.assertEqual(RC.intervention_problems('placebo', cand, plc), ([], ('init',)))
+        cases = [('placebo', cand, abl, 'is not the registered placebo'),
+                 ('ablation', cand, plc, 'is not the registered ablation'),
+                 ('ablation', self.pipe(init='dsl:low_cycle'), abl, 'does not change'),
+                 ('ablation', cand, self.pipe(init='random_greedy', seed=4), 'differ in 2 components'),
+                 ('ablation', cand, self.pipe(frac=0.5, finish='lp_restarts'), 'differ in 2 components'),
+                 ('ablation', cand, self.pipe(seed=4), 'no registered ablation for component seed')]
+        for kind, full, altered, fragment in cases:
+            why, _ = RC.intervention_problems(kind, full, altered)
+            self.assertTrue(any(fragment in w for w in why), (fragment, why))
+        r = C.run(self.tasks[3], plc, seed=5, expected_id=plc['descriptor_id'], isolation='runc')
+        self.assertEqual(r['status'], 'SUCCESS', r)
+        from genesis.graphs import check_witness
+        self.assertEqual(check_witness(self.tasks[3], [tuple(e) for e in r['result']['selected']])['value'],
+                         r['result']['value'])
+        self.assertGreaterEqual(r['cpu_ns'], int(0.5e9))
+
 
 class CausalAndReplicationCustody(Base):
     """B20_R15 (B14-OPEN-4): the custodian registers ablation/placebo requests only for a registered
