@@ -1,0 +1,138 @@
+{
+ "rule": "see the script docstring (fixed before running)",
+ "status": "DESIGN_PILOT_DEV",
+ "variants": {
+  "ba_huntington": {
+   "ranges": [
+    {
+     "all": 12,
+     "best_of": 12,
+     "dev_curated": 12,
+     "dev_curated_k": 1,
+     "empty": 9,
+     "eval_curated": 12,
+     "eval_curated_k": 1,
+     "fixed_cap": 12,
+     "range": [
+      7,
+      10
+     ]
+    },
+    {
+     "all": 12,
+     "best_of": 12,
+     "dev_curated": 12,
+     "dev_curated_k": 1,
+     "empty": 10,
+     "eval_curated": 12,
+     "eval_curated_k": 1,
+     "fixed_cap": 12,
+     "range": [
+      8,
+      10
+     ]
+    }
+   ],
+   "verdict": "NO_CURATION_HEADROOM"
+  },
+  "ba_huntington:t6": {
+   "ranges": [
+    {
+     "all": 12,
+     "best_of": 12,
+     "dev_curated": 12,
+     "dev_curated_k": 1,
+     "empty": 6,
+     "eval_curated": 12,
+     "eval_curated_k": 1,
+     "fixed_cap": 12,
+     "range": [
+      9,
+      12
+     ]
+    },
+    {
+     "all": 10,
+     "best_of": 10,
+     "dev_curated": 10,
+     "dev_curated_k": 1,
+     "empty": 7,
+     "eval_curated": 10,
+     "eval_curated_k": 1,
+     "fixed_cap": 10,
+     "range": [
+      10,
+      12
+     ]
+    }
+   ],
+   "verdict": "NO_CURATION_HEADROOM"
+  },
+  "ba_sheffer:t6": {
+   "ranges": [
+    {
+     "all": 6,
+     "best_of": 6,
+     "dev_curated": 6,
+     "dev_curated_k": 4,
+     "empty": 6,
+     "eval_curated": 6,
+     "eval_curated_k": 1,
+     "fixed_cap": 6,
+     "range": [
+      9,
+      12
+     ]
+    },
+    {
+     "all": 7,
+     "best_of": 7,
+     "dev_curated": 6,
+     "dev_curated_k": 1,
+     "empty": 6,
+     "eval_curated": 7,
+     "eval_curated_k": 16,
+     "fixed_cap": 6,
+     "range": [
+      10,
+      12
+     ]
+    }
+   ],
+   "verdict": "NO_CURATION_HEADROOM"
+  },
+  "bool_ring:t5": {
+   "ranges": [
+    {
+     "all": 10,
+     "best_of": 12,
+     "dev_curated": 12,
+     "dev_curated_k": 1,
+     "empty": 11,
+     "eval_curated": 12,
+     "eval_curated_k": 1,
+     "fixed_cap": 11,
+     "range": [
+      7,
+      10
+     ]
+    },
+    {
+     "all": 8,
+     "best_of": 11,
+     "dev_curated": 10,
+     "dev_curated_k": 16,
+     "empty": 8,
+     "eval_curated": 11,
+     "eval_curated_k": 1,
+     "fixed_cap": 10,
+     "range": [
+      8,
+      10
+     ]
+    }
+   ],
+   "verdict": "NO_CURATION_HEADROOM"
+  }
+ }
+}

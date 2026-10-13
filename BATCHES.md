@@ -48,6 +48,8 @@ session can resume from the latest checkpoint (see `RESUME.md`).
 | 20_R6 | Family search for selection headroom | B20R3-OPEN-1 | Robbins' basis (floor) and Boolean rings (near ceiling) both NO_HEADROOM; lemma interference replicated (34 lemmas 11/12 vs 132 lemmas 8/12). DEV design diagnostic |
 | 20_R7 | Sealed statement panels, formal successors through the custodian | H05; B20R5-OPEN-1 | Custodian-side panel generation after freeze from a private seed with full screening; frozen research exports; kind formal-research-successor-v1 in the sandbox; Lean replay of every claim by custodian and judge; 12 tests. Builder-run, fixture keys |
 | 20_R8 | Replay contracts | B14-OPEN-4 (handoff s12.2) | Kernel-replayed exact checks (FINITE_CERTIFIED, two methods), theorem claims with Lean replay from equational custody (THEOREM_CHECKED) and DEV analysis recomputation (DEV_ONLY, CORRELATED); causal, replication and priority still fail closed; 6 tests. Builder-run |
+| 20_R9 | Library curation pilot | B20R3-OPEN-1/2 | Curating which lemmas to keep: NO_CURATION_HEADROOM on four variants (at most +1/12); across B20_R3/R6/R9 no research-policy dimension reaches 2/12 on the equational domain. DEV design diagnostic |
+| 20_R10 | Small open items | B20R7-OPEN-1/2, B20R3-OPEN-3 | Custodian statement screen for research (signed, fails closed); checker CPU metered; error lines kept in checker logs |
 
 Later phases (B17–B23+) follow the roadmap and its gates; numbers are labels,
 not estimates.

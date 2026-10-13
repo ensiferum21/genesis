@@ -259,3 +259,15 @@ Builder-run; nothing here has been independently reviewed. See `docs/checkpoints
 |---|---|---|
 | B14-OPEN-4 | PARTLY REPAIRED IN B20_R8, PENDING INDEPENDENT REVIEW. The kernel now replays three evidence kinds itself: `exact_check` (FINITE_CERTIFIED, needing two different exhaustive methods), `formal_check` (THEOREM_CHECKED, through a theorem claim plus a Lean replay from equational custody) and `dev_comparison` (DEV_ONLY and CORRELATED, by recomputing the analysis). Ablation, placebo, internal replication and priority checks still fail closed. | contracts for the causal, replication and priority kinds; a Lean-package route for THEOREM_CHECKED |
 | B20R8-OPEN-1 | DEV comparison rows are producer data. The contract replays the analysis, not the executions behind the rows. | rows bound to attempt evidence in the store |
+
+## B20_R9 and B20_R10 outcome (curation pilot, small open items)
+
+Builder-run, DEV only. See `docs/checkpoints/B20_R9_R10_RECORD.md`.
+
+| ID | Status or new finding | Needs |
+|---|---|---|
+| B20R3-OPEN-1 | ANSWERED ON DEV: NO_HEADROOM on the equational domain. Across three pilots (B20_R3, R6, R9), no research-policy dimension tried reached the preregistered threshold of 2 out of 12 targets: which lemmas to prove (8 systems), prover strategy, or which lemmas to keep (4 variants, at most +1 out of 12). | superseded by B20R9-OPEN-1 |
+| B20R9-OPEN-1 | GV4 (better improver) cannot be answered positively on the equational domain at these settings. A different domain or setting where research outputs matter is needed, for example a formal Lean domain, graph construction (where B19's candidate gains on DEV), or longer horizons. | a reviewed design decision on the GV4 domain; then headroom first, then a frozen study |
+| B20R3-OPEN-3 | REPAIRED IN B20_R10. Error lines are now kept ahead of the tail in stored checker logs. | — |
+| B20R7-OPEN-1 | REPAIRED IN B20_R10. Lean replay reports checker CPU measured by cgroup; statement replay attempts carry it. | — |
+| B20R7-OPEN-2 | REPAIRED IN B20_R10. The custodian offers a signed statement screen, and research runs can require it (`CustodianStatementScreen`, `both`). | wire it into the next custodian-evaluated research study |

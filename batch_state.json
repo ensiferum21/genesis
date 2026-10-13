@@ -133,7 +133,10 @@
       "B20R-OPEN-2": "REPAIRED_PENDING_REVIEW",
       "B20R-OPEN-4": "REPAIRED_PENDING_REVIEW",
       "B20R5-OPEN-1": "REPAIRED_PENDING_REVIEW",
-      "B14-OPEN-4": "PARTLY_REPAIRED_PENDING_REVIEW (causal, replication, priority still fail closed)"
+      "B14-OPEN-4": "PARTLY_REPAIRED_PENDING_REVIEW (causal, replication, priority still fail closed)",
+      "B20R3-OPEN-3": "REPAIRED_PENDING_REVIEW",
+      "B20R7-OPEN-1": "REPAIRED_PENDING_REVIEW",
+      "B20R7-OPEN-2": "REPAIRED_PENDING_REVIEW"
     },
     "units": {
       "H01": "DONE (reproductions in audit/review_b20)",
@@ -142,7 +145,7 @@
       "H04": "BLOCKED_ENVIRONMENT for external parts (re-checked 2026-10-12: PyPI and Docker registry unreachable)",
       "H05": "DONE ON DEV (B20_R5, B20_R7): descriptor requests v4, statement requests, sealed equational panels, three candidate kinds in the OCI sandbox; pending independent review",
       "H06": "PART: CRPD-2a codegree EQ abstraction (Lean-checked); CRPD-2b pending a pin-revision decision",
-      "H07": "PART: E3 studies negative on DEV (0W/2T/6L; cost-aware INFERIOR_DEV); headroom pilots on eight systems found none (B20R3-OPEN-1); library interference replicated (B20R3-OPEN-2)",
+      "H07": "PART: E3 negative on DEV; headroom pilots (selection, strategy, curation) found no research-policy headroom on the equational domain (B20R9-OPEN-1: a GV4 domain decision is needed)",
       "H08": "PART (B20_R4): campaigns write native lineage records; custodian checks generation requests; improver kind refused; recovery/rollback/retention outstanding",
       "H09-H12": "NOT_STARTED"
     },
@@ -228,6 +231,18 @@
           "19d8678"
         ],
         "result": "replay contracts: exact, formal (equational custody), DEV"
+      },
+      "B20_R9": {
+        "commits": [
+          "63f7d8b"
+        ],
+        "result": "NO_CURATION_HEADROOM; equational domain has no research-policy headroom on DEV"
+      },
+      "B20_R10": {
+        "commits": [
+          "16d649e"
+        ],
+        "result": "custodian statement screen; checker CPU metering; checker logs keep errors"
       }
     },
     "open_after_b20_r5": [
@@ -257,6 +272,15 @@
       "B20R5-OPEN-2",
       "B20R7-OPEN-1",
       "B20R7-OPEN-2",
+      "B20R8-OPEN-1",
+      "B14-OPEN-4 (rest)",
+      "B20R-OPEN-3",
+      "R-04"
+    ],
+    "open_after_b20_r10": [
+      "B20R9-OPEN-1",
+      "B20R3-OPEN-2",
+      "B20R5-OPEN-2",
       "B20R8-OPEN-1",
       "B14-OPEN-4 (rest)",
       "B20R-OPEN-3",
