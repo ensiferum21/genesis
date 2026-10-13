@@ -833,11 +833,12 @@ class EvidenceKernel:
         """An internal replication repeats a supporting sealed_evaluation of this claim: the same
         arms, analysis (up to the hypothesis family the custodian assigns per evidence kind, and the
         decision record each registration names) and domain, another panel and operator identity,
-        registered after the original completed. Returns problems (empty: it replicates one)."""
+        registered after the original completed. Returns (problems, {the original node}); no problems:
+        it repeats one (B20_R21: internal_replication and external_reproduction alike)."""
         originals = sorted(d for d in deps if self.node(d)['kind'] == 'sealed_evaluation')
         why, nodes, _ = self._signed_support(claim, 'sealed_evaluation', 1, level, originals, deps, ctx)
         if not nodes:
-            return ['no supporting sealed_evaluation of this claim to replicate'] + why[:1]
+            return ['no supporting sealed_evaluation of this claim to replicate'] + why[:1], set()
         out = []
         for d in sorted(nodes):
             o = ctx.opened(d, 'sealed_evaluation')[0]
@@ -853,9 +854,9 @@ class EvidenceKernel:
             if R._time(p['registered_at']) < R._time(o['completed_at']):
                 bad.append('registered before the original completed')
             if not bad:
-                return []
+                return [], {d}
             out.append(f'original {d[:12]}: ' + ', '.join(bad))
-        return ['does not replicate a supporting sealed_evaluation (' + '; '.join(out) + ')']
+        return ['does not replicate a supporting sealed_evaluation (' + '; '.join(out) + ')'], set()
 
     def _execution_problems(self, nid):
         """EXECUTABLE needs a reference to something that ran: a finished attempt or a stored IR program."""
@@ -1044,11 +1045,17 @@ class EvidenceKernel:
                 reasons.append(f'{kind} {d[:12]} reports {p["outcome"]}: a negative or inconclusive evaluation '
                                'is not support')
                 continue
-            extra = self._intervention_problems(d, kind, p) if kind in ('ablation', 'placebo') else \
-                self._replication_problems(claim, p, deps, ctx, level) if kind == 'internal_replication' else []
+            originals = set()
+            if kind in ('ablation', 'placebo'):
+                extra = self._intervention_problems(d, kind, p)
+            elif kind in R.REPLICATION_KINDS:
+                extra, originals = self._replication_problems(claim, p, deps, ctx, level)
+            else:
+                extra = []
             if extra:
                 reasons.append(f'{kind} {d[:12]}: ' + '; '.join(extra[:2]))
                 continue
+            nodes |= originals          # the verified evaluation a repetition repeats is used evidence too
             if ident in good and good[ident] != p:
                 reasons.append(f'evaluation {ident[:12]} carries conflicting signed receipts')
                 continue

@@ -31,6 +31,7 @@
 | B20_R17 | s15.3: machine-generated relational decoders. One new decoder (the oriented 3-cycle) is Lean-checked; its DEV utility after cost is NO_UTILITY_AFTER_COST |
 | B20_R18 | B20R8-OPEN-1: DEV comparison rows are bound to journalled executions (v2); v1 is retired |
 | B20_R20 | B14-OPEN-4 remainder: THEOREM_CHECKED through a theory package (route lean-package-v1), replayed in Lean under a revocable route identity |
+| B20_R21 | W24: external reproduction must repeat a supporting evaluation (stricter); replication handoff package (blocked: nothing to replicate yet, no independent operator) |
 | B20_R19 | s15.3, second attempt: versioned k ≤ 4 relational decoders (twins merged). One new decoder is Lean-checked; NO_UTILITY_AFTER_COST (+0.125 per host against the menu). The ledger is reconciled |
 
 ## Resume

@@ -50,7 +50,9 @@ REQUEST_V4 = 'genesis-evaluation-request-v4'
 # so no number is reused with a different meaning.
 REQUEST_STATEMENTS = 'genesis-statement-evaluation-request-v1'
 DESCRIPTOR_REQUESTS = (REQUEST_V4, REQUEST_STATEMENTS)
-V4_EVIDENCE_KINDS = ('sealed_evaluation', 'ablation', 'placebo', 'internal_replication')
+V4_EVIDENCE_KINDS = ('sealed_evaluation', 'ablation', 'placebo', 'internal_replication', 'external_reproduction')
+# Kinds that repeat a supporting sealed_evaluation of the same claim (kernel.evidence checks the repetition).
+REPLICATION_KINDS = ('internal_replication', 'external_reproduction')
 PREREG_ANCHOR = 'genesis-prereg-anchor-v3'
 PRIORITY_ADJUDICATION = 'genesis-priority-adjudication-v1'
 CLAIM_BINDING = 'genesis-claim-binding-v1'

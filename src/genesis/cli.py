@@ -215,7 +215,7 @@ def descriptor_request_bundle(campaign,task_count,*,analysis,claim_id=None,state
     return path
 
 
-FOLLOWUP_KINDS=('ablation','placebo','internal_replication')
+FOLLOWUP_KINDS=('ablation','placebo','internal_replication','external_reproduction')
 
 
 def followup_request(campaign,kind,*,analysis,task_count,baseline=None,seed=None):
@@ -243,10 +243,10 @@ def followup_request(campaign,kind,*,analysis,task_count,baseline=None,seed=None
         if why:raise ValueError(f'not a registered {kind} of the frozen candidate: '+'; '.join(why))
         arms={'candidate':base['arms']['candidate'],'baseline':baseline}
     else:
-        if baseline is not None:raise ValueError('an internal replication repeats the original arms')
+        if baseline is not None:raise ValueError('a replication or reproduction repeats the original arms')
         if R.replication_plan(analysis)!=R.replication_plan(base['analysis']):
-            raise ValueError('an internal replication uses the original analysis plan (up to its family id and '
-                             'decision record)')
+            raise ValueError('a replication or reproduction uses the original analysis plan (up to its family id '
+                             'and decision record)')
         arms=dict(base['arms'])
     request=dict(base,evidence_kind=kind,arms=arms,analysis=analysis,task_count=task_count,
                  seed=base['seed'] if seed is None else seed)

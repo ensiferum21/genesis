@@ -66,6 +66,8 @@ B20_R15 adds the rest of B14-OPEN-4:
       repeats a supporting sealed_evaluation of the same claim (same arms, analysis and domain) on another
       panel, by another operator identity, registered after the original completed. Distinct keys and
       operator identities are what code can check; whether the operators are independent is not.
+      B20_R21: external_reproduction (replication EXTERNAL_REPRODUCTION, signed by the replicator role)
+      must repeat a supporting sealed_evaluation in the same way, and may compare descriptors (v4).
 """
 from ..common import canonical, digest
 

@@ -568,11 +568,12 @@ def register(private_root,request,key_path,operator_id,*,exposure_manifest,campa
     facts=campaign_facts(export)
     facts['custodian_selections']=_selections(root)
     selection=facts.get('comparator_selection')
-    if request['evidence_kind']=='internal_replication' and selection is not None \
+    if request['evidence_kind'] in R.REPLICATION_KINDS and selection is not None \
             and digest(selection) not in facts['custodian_selections']:
-        # B20_R15: an internal replicator repeats an evaluation whose comparator another custodian
-        # selected. It accepts that selection only under a public key its operator names here (the
-        # registry's custodian key); the kernel checks that the replication's arms are the original's.
+        # B20_R15/R21: an internal replicator or an external reproducer repeats an evaluation whose
+        # comparator another custodian selected. It accepts that selection only under a public key its
+        # operator names here (the registry's custodian key); the kernel checks that the repetition's
+        # arms are the original's.
         for key in accepted_selection_keys:
             try:verify(selection,key)
             except Exception:continue

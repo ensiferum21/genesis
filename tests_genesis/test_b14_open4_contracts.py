@@ -148,7 +148,7 @@ class KernelBase(unittest.TestCase):
         self.run = self.k.record('execution_receipt', {'status': 'SUCCESS'}, route='genesis.campaign',
                                  source_hash='c' * 64, verdict='VALID', effects=['UNCHECKED_PROPOSAL'])
         self.plans = {k: frozen_plan_and_record(family_id=f'{k}:{TF}', family_size=1)[0]
-                      for k in ('sealed_evaluation', 'ablation', 'placebo', 'internal_replication')}
+                      for k in ('sealed_evaluation', 'ablation', 'placebo', 'internal_replication', 'external_reproduction')}
 
     def request(self, claim, kind, baseline, *, seed=1):
         v3 = self.fx.request(claim_id=claim, domain=TF, scope=SignedFixture.SCOPE, seed=seed)
@@ -284,6 +284,36 @@ class Replication(KernelBase):
         self.claim('rep-alone', [self.evaluation(rep, operator='FIXTURE_REPLICATOR', role='internal_replicator')],
                    [rep])
         self.rejects('rep-alone', 'replication', 'INTERNAL_INDEPENDENT', 'no supporting sealed_evaluation')
+
+
+class ExternalReproduction(KernelBase):
+    """B20_R21 (W24): an external reproduction must also repeat a supporting sealed_evaluation."""
+    BASE = dsl(baseline_programs()['multistart'])
+
+    def pair(self, cid, *, original=True, operator='FIXTURE_EXTERNAL_LAB', plan=None):
+        orig = self.request(cid, 'sealed_evaluation', self.BASE)
+        rep = self.request(cid, 'external_reproduction', self.BASE, seed=3)
+        if plan is not None:
+            rep['analysis'] = plan
+        nodes = []
+        if original:
+            nodes.append(self.evaluation(orig, panel='6' * 64, completed_at='2026-10-10T12:00:00+00:00'))
+        nodes.append(self.evaluation(rep, panel='7' * 64, registered_at='2026-10-11T00:00:00+00:00', operator=operator,
+                                     role='replicator', completed_at='2026-10-11T06:00:00+00:00'))
+        self.claim(cid, nodes, [orig, rep] if original else [rep])
+
+    def test_reproduction_of_a_supporting_evaluation_licenses_external_reproduction(self):
+        self.pair('xr')
+        self.k.promote('xr', 'replication', 'EXTERNAL_REPRODUCTION')
+        self.assertEqual(self.k.levels('xr')['replication'], 'EXTERNAL_REPRODUCTION')
+
+    def test_a_reproduction_alone_or_by_the_same_operator_or_plan_does_not(self):
+        self.pair('xr-alone', original=False)
+        self.rejects('xr-alone', 'replication', 'EXTERNAL_REPRODUCTION', 'no supporting sealed_evaluation')
+        self.pair('xr-op', operator='FIXTURE_CUSTODIAN')
+        self.rejects('xr-op', 'replication', 'EXTERNAL_REPRODUCTION', 'the same operator identity')
+        self.pair('xr-plan', plan=dict(self.plans['external_reproduction'], minimum_useful_effect=0.25))
+        self.rejects('xr-plan', 'replication', 'EXTERNAL_REPRODUCTION', 'another analysis or domain')
 
 
 class FollowupRequests(KernelBase):
