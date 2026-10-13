@@ -1,0 +1,242 @@
+{
+ "code_identity": "39c1fc0dc8323224753405e67afffc7cc4cf6c344fd9e3efe92b79b73cd98111",
+ "part_a": {
+  "checker_cpu_s_reported": 44.315,
+  "construction_cpu_s": 64.323,
+  "cost_note": "construction = CPU of this process and its waited-for children (getrusage); the Lean checker also reports its own cgroup CPU (checker_cpu_s_reported); the larger is charged",
+  "generated": [
+   {
+    "equals_menu": "adjacent_2 = cross_2",
+    "id": "rel2_0110",
+    "k": 2,
+    "obligations": {
+     "image": "CHECKED",
+     "sound_tf": "CHECKED"
+    },
+    "relation": [
+     [
+      0,
+      1
+     ],
+     [
+      1,
+      0
+     ]
+    ],
+    "screen": {
+     "image": "NO_COUNTEREXAMPLE",
+     "sound_tf": "NO_COUNTEREXAMPLE"
+    }
+   },
+   {
+    "equals_menu": "adjacent_3",
+    "id": "rel3_01021020",
+    "k": 3,
+    "obligations": {
+     "image": "CHECKED",
+     "sound_tf": "CHECKED"
+    },
+    "relation": [
+     [
+      0,
+      1
+     ],
+     [
+      0,
+      2
+     ],
+     [
+      1,
+      0
+     ],
+     [
+      2,
+      0
+     ]
+    ],
+    "screen": {
+     "image": "NO_COUNTEREXAMPLE",
+     "sound_tf": "NO_COUNTEREXAMPLE"
+    }
+   },
+   {
+    "equals_menu": null,
+    "id": "rel3_011220",
+    "k": 3,
+    "obligations": {
+     "image": "CHECKED",
+     "sound_tf": "CHECKED"
+    },
+    "relation": [
+     [
+      0,
+      1
+     ],
+     [
+      1,
+      2
+     ],
+     [
+      2,
+      0
+     ]
+    ],
+    "screen": {
+     "image": "NO_COUNTEREXAMPLE",
+     "sound_tf": "NO_COUNTEREXAMPLE"
+    }
+   }
+  ],
+  "new_checked": [
+   "rel3_011220"
+  ],
+  "verdict_a": "NEW_CHECKED"
+ },
+ "part_b": {
+  "budget_s": 1.0,
+  "chosen": {
+   "conventional": "conv:low_cycle_tm",
+   "menu": "menu:adjacent_3",
+   "new": "new:rel3_011220"
+  },
+  "comparisons": {
+   "conventional": {
+    "by_setting": {
+     "S2": 0.8125,
+     "S3": -0.875
+    },
+    "interval_90": [
+     -0.4062,
+     0.3438
+    ],
+    "mean": -0.0312,
+    "passes": false,
+    "wins_ties_losses": [
+     9,
+     9,
+     14
+    ]
+   },
+   "matched": {
+    "by_setting": {
+     "S2": 0.0625,
+     "S3": 0.25
+    },
+    "interval_90": [
+     -0.0625,
+     0.4062
+    ],
+    "mean": 0.1562,
+    "passes": false,
+    "wins_ties_losses": [
+     6,
+     22,
+     4
+    ]
+   },
+   "menu": {
+    "by_setting": {
+     "S2": 0.0625,
+     "S3": 0.3125
+    },
+    "interval_90": [
+     -0.0312,
+     0.4375
+    ],
+    "mean": 0.1875,
+    "passes": false,
+    "wins_ties_losses": [
+     7,
+     21,
+     4
+    ]
+   }
+  },
+  "construction_cpu_s": 64.323,
+  "horizon": 100,
+  "hosts": {
+   "S2": {
+    "eval": [
+     "dev-erdos-b73f6828-20262102-0000",
+     "dev-erdos-b73f6828-20262102-0001",
+     "dev-erdos-b73f6828-20262102-0002",
+     "dev-erdos-b73f6828-20262102-0003",
+     "dev-erdos-b73f6828-20262102-0004",
+     "dev-erdos-b73f6828-20262102-0005",
+     "dev-erdos-b73f6828-20262102-0006",
+     "dev-erdos-b73f6828-20262102-0007",
+     "dev-erdos-b73f6828-20262102-0008",
+     "dev-erdos-b73f6828-20262102-0009",
+     "dev-erdos-b73f6828-20262102-0010",
+     "dev-erdos-b73f6828-20262102-0011",
+     "dev-erdos-b73f6828-20262102-0012",
+     "dev-erdos-b73f6828-20262102-0013",
+     "dev-erdos-b73f6828-20262102-0014",
+     "dev-erdos-b73f6828-20262102-0015"
+    ],
+    "select": [
+     "dev-erdos-b73f6828-20262101-0000",
+     "dev-erdos-b73f6828-20262101-0001",
+     "dev-erdos-b73f6828-20262101-0002",
+     "dev-erdos-b73f6828-20262101-0003",
+     "dev-erdos-b73f6828-20262101-0004",
+     "dev-erdos-b73f6828-20262101-0005",
+     "dev-erdos-b73f6828-20262101-0006",
+     "dev-erdos-b73f6828-20262101-0007"
+    ]
+   },
+   "S3": {
+    "eval": [
+     "dev-erdos-3765432f-20262112-0000",
+     "dev-erdos-3765432f-20262112-0001",
+     "dev-erdos-3765432f-20262112-0002",
+     "dev-erdos-3765432f-20262112-0003",
+     "dev-erdos-3765432f-20262112-0004",
+     "dev-erdos-3765432f-20262112-0005",
+     "dev-erdos-3765432f-20262112-0006",
+     "dev-erdos-3765432f-20262112-0007",
+     "dev-erdos-3765432f-20262112-0008",
+     "dev-erdos-3765432f-20262112-0009",
+     "dev-erdos-3765432f-20262112-0010",
+     "dev-erdos-3765432f-20262112-0011",
+     "dev-erdos-3765432f-20262112-0012",
+     "dev-erdos-3765432f-20262112-0013",
+     "dev-erdos-3765432f-20262112-0014",
+     "dev-erdos-3765432f-20262112-0015"
+    ],
+    "select": [
+     "dev-erdos-3765432f-20262111-0000",
+     "dev-erdos-3765432f-20262111-0001",
+     "dev-erdos-3765432f-20262111-0002",
+     "dev-erdos-3765432f-20262111-0003",
+     "dev-erdos-3765432f-20262111-0004",
+     "dev-erdos-3765432f-20262111-0005",
+     "dev-erdos-3765432f-20262111-0006",
+     "dev-erdos-3765432f-20262111-0007"
+    ]
+   }
+  },
+  "matched_extra_s_per_host": 0.6432,
+  "mean_cpu_s": {
+   "conventional": 1.005,
+   "matched": 1.644,
+   "menu": 1.001,
+   "new": 1.001
+  },
+  "note": "break-even horizon is not computed from edges: the matched arm shows what the construction CPU buys as extra search at HORIZON = 100 hosts",
+  "select_totals": {
+   "conv:exchange_tm": 1662,
+   "conv:low_cycle_tm": 1716,
+   "conv:multistart_tm": 1686,
+   "menu:adjacent_2": 1712,
+   "menu:adjacent_3": 1714,
+   "menu:cross_2": 1712,
+   "menu:ordered_2": 1599,
+   "new:rel3_011220": 1706
+  },
+  "verdict": "NO_UTILITY_AFTER_COST"
+ },
+ "schema": "genesis-b20r17-relation-invention-v1",
+ "status": "DEV; licenses no claim",
+ "verdict": "NO_UTILITY_AFTER_COST"
+}

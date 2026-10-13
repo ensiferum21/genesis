@@ -28,6 +28,8 @@
 | B20_R12 | E1 under the user's decisions: time-matched baselines, custodian SELECT comparator, centred power, and the separately versioned family rule `e1-hard-v1`. Fair (CPU ratio 1.00), +0.97 per host on DEV, but **UNDERPOWERED**. `handoff/e1` v2 |
 | B20_R15 | Replay contracts for the causal, internal-replication and priority levels. B14-OPEN-4 is closed pending review |
 | B20_R16 | H08 s20.6: active-version pointer, rollback, inherited version revocation, resume gate |
+| B20_R17 | s15.3: machine-generated relational decoders. One new decoder (the oriented 3-cycle) is Lean-checked; its DEV utility after cost is NO_UTILITY_AFTER_COST |
+| B20_R18 | B20R8-OPEN-1: DEV comparison rows are bound to journalled executions (v2); v1 is retired |
 
 ## Resume
 
@@ -50,8 +52,13 @@
 
 ## Next engineering, in order
 
-1. **H06 s15.3 / W10: richer representation invention.** This is GV4-critical. Extend one representation family at a time, starting with machine-generated oriented relational decoders over Fin k. Each needs checked semantics (exact finite soundness plus a Lean statement), a decoder/transport path, and a DEV utility comparison against the fixed menu, conventional features and matched extra search, after construction cost.
-2. **B20R8-OPEN-1:** bind DEV comparison rows to their attempt evidence. Also a Lean-package route for THEOREM_CHECKED.
+1. **H06 s15.3 / W10: richer representation invention.** This is GV4-critical.
+   - B20_R17 generated the first representation outside the menu, an oriented 3-cycle decoder. Its semantics and transport are Lean-checked, but its DEV utility after construction cost is NO_UTILITY_AFTER_COST.
+   - Next, each family as its own preregistered step, with all attempts counted:
+     - a versioned k ≤ 4 relational expansion;
+     - partitions/quotients with proved transport conditions;
+     - decompositions with verified witness composition.
+2. **A Lean-package route for THEOREM_CHECKED.** (B20R8-OPEN-1 was repaired in B20_R18.)
 3. **H08, the rest:** retention and negative-transfer measurement under a frozen protocol; paired research lineages for `sealed_improver_evaluation`.
 4. **H11:** operations documentation and release review packaging.
 

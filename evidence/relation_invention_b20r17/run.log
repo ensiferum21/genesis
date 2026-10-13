@@ -1,0 +1,42 @@
+[   15.0s] rel2_0110_image: CHECKED (filter-subset)
+[   22.6s] rel2_0110_sound_tf: CHECKED (class-triple-decide)
+[   31.1s] rel3_01021020_image: CHECKED (filter-subset)
+[   40.2s] rel3_01021020_sound_tf: CHECKED (class-triple-decide)
+[   50.5s] rel3_011220_image: CHECKED (filter-subset)
+[   61.6s] rel3_011220_sound_tf: CHECKED (class-triple-decide)
+[   68.8s] Part A: generated ['rel2_0110=adjacent_2 = cross_2', 'rel3_01021020=adjacent_3', 'rel3_011220 NEW']; obligations [('rel2_0110', {'image': 'CHECKED', 'sound_tf': 'CHECKED'}), ('rel3_01021020', {'image': 'CHECKED', 'sound_tf': 'CHECKED'}), ('rel3_011220', {'image': 'CHECKED', 'sound_tf': 'CHECKED'})]; construction 64.3 CPU s -> NEW_CHECKED
+[  199.6s] SELECT totals {'new:rel3_011220': 1706, 'menu:cross_2': 1712, 'menu:ordered_2': 1599, 'menu:adjacent_2': 1712, 'menu:adjacent_3': 1714, 'conv:exchange_tm': 1662, 'conv:low_cycle_tm': 1716, 'conv:multistart_tm': 1686} -> {'new': 'new:rel3_011220', 'menu': 'menu:adjacent_3', 'conventional': 'conv:low_cycle_tm'}; matched arm gets 1.643 s
+[  204.4s] S2 0000: {'new': 99, 'menu': 99, 'conventional': 98, 'matched': 99}
+[  209.2s] S2 0001: {'new': 93, 'menu': 93, 'conventional': 89, 'matched': 93}
+[  213.9s] S2 0002: {'new': 101, 'menu': 101, 'conventional': 99, 'matched': 101}
+[  218.6s] S2 0003: {'new': 97, 'menu': 97, 'conventional': 96, 'matched': 97}
+[  223.3s] S2 0004: {'new': 96, 'menu': 96, 'conventional': 97, 'matched': 96}
+[  228.0s] S2 0005: {'new': 95, 'menu': 96, 'conventional': 94, 'matched': 96}
+[  232.7s] S2 0006: {'new': 102, 'menu': 102, 'conventional': 99, 'matched': 102}
+[  237.5s] S2 0007: {'new': 92, 'menu': 90, 'conventional': 89, 'matched': 90}
+[  242.2s] S2 0008: {'new': 88, 'menu': 88, 'conventional': 88, 'matched': 88}
+[  246.9s] S2 0009: {'new': 88, 'menu': 88, 'conventional': 89, 'matched': 88}
+[  251.6s] S2 0010: {'new': 98, 'menu': 98, 'conventional': 96, 'matched': 98}
+[  256.3s] S2 0011: {'new': 88, 'menu': 88, 'conventional': 89, 'matched': 88}
+[  261.0s] S2 0012: {'new': 96, 'menu': 96, 'conventional': 96, 'matched': 96}
+[  265.8s] S2 0013: {'new': 96, 'menu': 96, 'conventional': 96, 'matched': 96}
+[  270.5s] S2 0014: {'new': 92, 'menu': 92, 'conventional': 93, 'matched': 92}
+[  275.2s] S2 0015: {'new': 85, 'menu': 85, 'conventional': 85, 'matched': 85}
+[  280.0s] S3 0000: {'new': 125, 'menu': 125, 'conventional': 125, 'matched': 125}
+[  284.7s] S3 0001: {'new': 117, 'menu': 118, 'conventional': 119, 'matched': 118}
+[  289.5s] S3 0002: {'new': 124, 'menu': 123, 'conventional': 123, 'matched': 123}
+[  294.2s] S3 0003: {'new': 120, 'menu': 120, 'conventional': 121, 'matched': 120}
+[  298.9s] S3 0004: {'new': 132, 'menu': 132, 'conventional': 134, 'matched': 132}
+[  303.7s] S3 0005: {'new': 129, 'menu': 126, 'conventional': 129, 'matched': 126}
+[  308.4s] S3 0006: {'new': 114, 'menu': 113, 'conventional': 115, 'matched': 114}
+[  313.1s] S3 0007: {'new': 131, 'menu': 132, 'conventional': 133, 'matched': 132}
+[  317.9s] S3 0008: {'new': 119, 'menu': 118, 'conventional': 121, 'matched': 118}
+[  322.7s] S3 0009: {'new': 120, 'menu': 120, 'conventional': 120, 'matched': 120}
+[  327.4s] S3 0010: {'new': 122, 'menu': 122, 'conventional': 122, 'matched': 122}
+[  332.1s] S3 0011: {'new': 114, 'menu': 113, 'conventional': 115, 'matched': 113}
+[  336.9s] S3 0012: {'new': 128, 'menu': 127, 'conventional': 129, 'matched': 127}
+[  341.6s] S3 0013: {'new': 121, 'menu': 121, 'conventional': 122, 'matched': 121}
+[  346.3s] S3 0014: {'new': 113, 'menu': 114, 'conventional': 113, 'matched': 114}
+[  351.0s] S3 0015: {'new': 127, 'menu': 127, 'conventional': 129, 'matched': 127}
+[  351.2s] Part B: {"menu": {"mean": 0.1875, "interval_90": [-0.0312, 0.4375], "by_setting": {"S2": 0.0625, "S3": 0.3125}, "wins_ties_losses": [7, 21, 4], "passes": false}, "conventional": {"mean": -0.0312, "interval_90": [-0.4062, 0.3438], "by_setting": {"S2": 0.8125, "S3": -0.875}, "wins_ties_losses": [9, 9, 14], "passes": false}, "matched": {"mean": 0.1562, "interval_90": [-0.0625, 0.4062], "by_setting": {"S2": 0.0625, "S3": 0.25}, "wins_ties_losses": [6, 22, 4], "passes": false}} -> NO_UTILITY_AFTER_COST
+[  351.2s] verdict NO_UTILITY_AFTER_COST

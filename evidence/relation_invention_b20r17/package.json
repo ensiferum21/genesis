@@ -1,0 +1,1410 @@
+{
+ "acceptance": {
+  "check_stage": {
+   "check_sha256": "18a880543ddfaff29059a56868673bfbecdf0441c328ba0a66cde81c0a9156b5",
+   "cpu_ns": 6861072728,
+   "exit_code": 0,
+   "exits": {
+    "RLP1": "0",
+    "RLP2": "0",
+    "RLP3": "0",
+    "RLP4": "0",
+    "RLP5": "0",
+    "RLP6": "0",
+    "check": "0"
+   },
+   "log": "",
+   "peak_memory_bytes": 226107392,
+   "status": "SUCCESS",
+   "wall_ns": 7015905367
+  },
+  "leanchecker": {
+   "RLP1": true,
+   "RLP2": true,
+   "RLP3": true,
+   "RLP4": true,
+   "RLP5": true,
+   "RLP6": true
+  },
+  "receipt_sha256": "2abea3008f436d58bc5b246271c2031f0664cd693acc3d084d0f8b227c6dc8d8",
+  "status": "CHECKED"
+ },
+ "assumptions": {
+  "allowed_axioms": [
+   "Classical.choice",
+   "Quot.sound",
+   "propext"
+  ],
+  "axioms_used": [
+   "Classical.choice",
+   "Quot.sound",
+   "propext"
+  ],
+  "conventions": [
+   "hosts list each edge once as (u, v) with u < v",
+   "statements quantify over all pair sets, loops and reversed pairs included"
+  ],
+  "lean": "lean@e8baaa71855a616d",
+  "workspace": {
+   "artifact_identity": "be8f86a8ad460109a1c31eb061bf99309b3d032cf5e6462938261f8e3cd840ca",
+   "import_roots": [
+    "Mathlib.Data.Finset.Powerset",
+    "Mathlib.Algebra.BigOperators.Group.Finset.Sigma",
+    "Mathlib.Algebra.Order.BigOperators.Ring.Finset"
+   ],
+   "mathlib_rev": "d13f23b723b8a846827a245b89c10fc7d3f11612",
+   "source_identity": "7f5bcfa11bd7d91dddd1bb4839a70b33bc7e3b125695d754166d343397ac50b0"
+  }
+ },
+ "bindings": [
+  {
+   "proof": "RLP1.proof",
+   "spec": "RLConj.rel2_0110_image"
+  },
+  {
+   "proof": "RLP2.proof",
+   "spec": "RLConj.rel2_0110_sound_tf"
+  },
+  {
+   "proof": "RLP3.proof",
+   "spec": "RLConj.rel3_01021020_image"
+  },
+  {
+   "proof": "RLP4.proof",
+   "spec": "RLConj.rel3_01021020_sound_tf"
+  },
+  {
+   "proof": "RLP5.proof",
+   "spec": "RLConj.rel3_011220_image"
+  },
+  {
+   "proof": "RLP6.proof",
+   "spec": "RLConj.rel3_011220_sound_tf"
+  }
+ ],
+ "costs": {
+  "acceptance_check_cpu_ns": 28385613505,
+  "acceptance_runs": 7,
+  "acceptances": [
+   {
+    "receipt_sha256": "245740e3daecac0bbee6a5f30974f889a6931921a129ea97e8a70a48df45dd60",
+    "statement": "rel2_0110_image",
+    "stats": {
+     "check_sha256": "477e74f0e15d677c1e2c06e1362e20fd0be48e8974bdb44753f626f169d9e336",
+     "cpu_ns": 2488957912,
+     "exit_code": 0,
+     "exits": {
+      "RLP1": "0",
+      "check": "0"
+     },
+     "log": "",
+     "peak_memory_bytes": 219570176,
+     "status": "SUCCESS",
+     "wall_ns": 2535139181
+    },
+    "status": "CHECKED"
+   },
+   {
+    "receipt_sha256": "009cb74b81a1a4ef30464251bcdfddef39ad39e234f07f35421d5a6f441c3869",
+    "statement": "rel2_0110_sound_tf",
+    "stats": {
+     "check_sha256": "043e1f8f3db8cb7fcb7b3fea55837ff04ed09802457f59d835d7bb2770c3e9e4",
+     "cpu_ns": 3578918537,
+     "exit_code": 0,
+     "exits": {
+      "RLP1": "0",
+      "RLP2": "0",
+      "check": "0"
+     },
+     "log": "",
+     "peak_memory_bytes": 221843456,
+     "status": "SUCCESS",
+     "wall_ns": 3706507196
+    },
+    "status": "CHECKED"
+   },
+   {
+    "receipt_sha256": "0ef4b7826f5e87c25ef8df97834cb95727b4258078dc4a667fd9f6c416398820",
+    "statement": "rel3_01021020_image",
+    "stats": {
+     "check_sha256": "9b207a37241cff257908356928ef9108b3a14dcf8dfb0eda38be78856907e91d",
+     "cpu_ns": 4324157598,
+     "exit_code": 0,
+     "exits": {
+      "RLP1": "0",
+      "RLP2": "0",
+      "RLP3": "0",
+      "check": "0"
+     },
+     "log": "",
+     "peak_memory_bytes": 221868032,
+     "status": "SUCCESS",
+     "wall_ns": 4465701812
+    },
+    "status": "CHECKED"
+   },
+   {
+    "receipt_sha256": "19fb0dc47302cd1cee67f191ef5d2863bdf5c2977e5a098f347ee32f95afe339",
+    "statement": "rel3_01021020_sound_tf",
+    "stats": {
+     "check_sha256": "77a373ffa9c7d02e44dd1a26cacf58ab84b1c42ffa9efb1ce89c88e60001d3a8",
+     "cpu_ns": 4972283463,
+     "exit_code": 0,
+     "exits": {
+      "RLP1": "0",
+      "RLP2": "0",
+      "RLP3": "0",
+      "RLP4": "0",
+      "check": "0"
+     },
+     "log": "",
+     "peak_memory_bytes": 221569024,
+     "status": "SUCCESS",
+     "wall_ns": 5105058982
+    },
+    "status": "CHECKED"
+   },
+   {
+    "receipt_sha256": "cf84a776b250c1292bfd712081637b3fb325b78c850cd5101c0a09ccc1d99672",
+    "statement": "rel3_011220_image",
+    "stats": {
+     "check_sha256": "589b133493127856f9967550a95914897c3e084c0057cdd619b3985c09f45ddb",
+     "cpu_ns": 6084615418,
+     "exit_code": 0,
+     "exits": {
+      "RLP1": "0",
+      "RLP2": "0",
+      "RLP3": "0",
+      "RLP4": "0",
+      "RLP5": "0",
+      "check": "0"
+     },
+     "log": "",
+     "peak_memory_bytes": 223911936,
+     "status": "SUCCESS",
+     "wall_ns": 6269384021
+    },
+    "status": "CHECKED"
+   },
+   {
+    "receipt_sha256": "738fa51b822a83b1890abb4684e1a0e9b9dae04d4955841aafb45270f1b4f689",
+    "statement": "rel3_011220_sound_tf",
+    "stats": {
+     "check_sha256": "40744f7c8369050d91d3ec3c5730e19edae0202ace455b81aba91ec03afe98ec",
+     "cpu_ns": 6936680577,
+     "exit_code": 0,
+     "exits": {
+      "RLP1": "0",
+      "RLP2": "0",
+      "RLP3": "0",
+      "RLP4": "0",
+      "RLP5": "0",
+      "RLP6": "0",
+      "check": "0"
+     },
+     "log": "",
+     "peak_memory_bytes": 225849344,
+     "status": "SUCCESS",
+     "wall_ns": 7111170133
+    },
+    "status": "CHECKED"
+   }
+  ],
+  "attempts": [
+   {
+    "attempts": [
+     {
+      "compiled": true,
+      "errors": [],
+      "recipe": "filter-subset",
+      "sorry": false,
+      "tactic": "intro c H\nsimp_all [RL.rel2_0110]",
+      "tactic_sha256": "1ca8947b5af67a7ab8ef0d6d3ea4561732f9c16d0592e572560f69b220d33571",
+      "tier": 0
+     },
+     {
+      "compiled": true,
+      "errors": [],
+      "recipe": "filter-subset-lemma",
+      "sorry": false,
+      "tactic": "intro c H\nunfold RL.rel2_0110\nexact Finset.filter_subset _ _",
+      "tactic_sha256": "c4b504fd0f2bd93923ff6fa61cd0dac05d6263040ae78889c5d1981789990945",
+      "tier": 0
+     }
+    ],
+    "charged": {
+     "candidates": 2,
+     "cpu_ns": 1071231005,
+     "wall_ns": 1111960120
+    },
+    "result": "COMPILED",
+    "statement": "rel2_0110_image",
+    "target": "RLConj.rel2_0110_image"
+   },
+   {
+    "attempts": [
+     {
+      "compiled": true,
+      "errors": [],
+      "recipe": "class-triple-decide",
+      "sorry": false,
+      "tactic": "intro c H\nunfold GT.TriangleFree RL.rel2_0110\nrintro ⟨a, b⟩ he ⟨b', d⟩ hf ⟨a', d'⟩ hg ⟨h1, h2, h3⟩\nsimp only [Finset.mem_filter] at he hf hg\nsimp only at h1 h2 h3\nsubst h1 h2 h3\nhave key : ∀ x y z : Fin 2, ¬ ((x.val, y.val) ∈ ([(0, 1), (1, 0)] : List (ℕ × ℕ)) ∧ (y.val, z.val) ∈ ([(0, 1), (1, 0)] : List (ℕ × ℕ)) ∧ (x.val, z.val) ∈ ([(0, 1), (1, 0)] : List (ℕ × ℕ))) := by decide\nexact key _ _ _ ⟨he.2, hf.2, hg.2⟩",
+      "tactic_sha256": "de63c7ce4eb58e6987c92faeca6c68edb8499b8e3864216d8e49e214d0e88660",
+      "tier": 0
+     },
+     {
+      "compiled": true,
+      "errors": [],
+      "recipe": "class-triple-omega",
+      "sorry": false,
+      "tactic": "intro c H\nunfold GT.TriangleFree RL.rel2_0110\nrintro ⟨a, b⟩ he ⟨b', d⟩ hf ⟨a', d'⟩ hg ⟨h1, h2, h3⟩\nsimp only [Finset.mem_filter] at he hf hg\nsimp only at h1 h2 h3\nsubst h1 h2 h3\nsimp only [List.mem_cons, List.mem_singleton, Prod.mk.injEq, List.not_mem_nil, or_false] at he hf hg\nomega",
+      "tactic_sha256": "34bbc056efe08a43170f3fd008900c28ad9a1a1c785fdfcb02a3b6fbcb9f1d01",
+      "tier": 0
+     }
+    ],
+    "charged": {
+     "candidates": 2,
+     "cpu_ns": 1079897238,
+     "wall_ns": 1127697463
+    },
+    "result": "COMPILED",
+    "statement": "rel2_0110_sound_tf",
+    "target": "RLConj.rel2_0110_sound_tf"
+   },
+   {
+    "attempts": [
+     {
+      "compiled": true,
+      "errors": [],
+      "recipe": "filter-subset",
+      "sorry": false,
+      "tactic": "intro c H\nsimp_all [RL.rel3_01021020]",
+      "tactic_sha256": "48ed08ed462752f3115d9c09863ef6fc51e4cf23951f5daf92d5d65e53eeb861",
+      "tier": 0
+     },
+     {
+      "compiled": true,
+      "errors": [],
+      "recipe": "filter-subset-lemma",
+      "sorry": false,
+      "tactic": "intro c H\nunfold RL.rel3_01021020\nexact Finset.filter_subset _ _",
+      "tactic_sha256": "c6e5fdd5281908ff1204774471a3a9de023fe6f2da2694f04a00fcc3caa66ccb",
+      "tier": 0
+     }
+    ],
+    "charged": {
+     "candidates": 2,
+     "cpu_ns": 1041293728,
+     "wall_ns": 1071013241
+    },
+    "result": "COMPILED",
+    "statement": "rel3_01021020_image",
+    "target": "RLConj.rel3_01021020_image"
+   },
+   {
+    "attempts": [
+     {
+      "compiled": true,
+      "errors": [],
+      "recipe": "class-triple-decide",
+      "sorry": false,
+      "tactic": "intro c H\nunfold GT.TriangleFree RL.rel3_01021020\nrintro ⟨a, b⟩ he ⟨b', d⟩ hf ⟨a', d'⟩ hg ⟨h1, h2, h3⟩\nsimp only [Finset.mem_filter] at he hf hg\nsimp only at h1 h2 h3\nsubst h1 h2 h3\nhave key : ∀ x y z : Fin 3, ¬ ((x.val, y.val) ∈ ([(0, 1), (0, 2), (1, 0), (2, 0)] : List (ℕ × ℕ)) ∧ (y.val, z.val) ∈ ([(0, 1), (0, 2), (1, 0), (2, 0)] : List (ℕ × ℕ)) ∧ (x.val, z.val) ∈ ([(0, 1), (0, 2), (1, 0), (2, 0)] : List (ℕ × ℕ))) := by decide\nexact key _ _ _ ⟨he.2, hf.2, hg.2⟩",
+      "tactic_sha256": "980ad89cc3e1e0f1f4cbd66b19dc26c000b7b340eab558918f73e0525805710c",
+      "tier": 0
+     },
+     {
+      "compiled": true,
+      "errors": [],
+      "recipe": "class-triple-omega",
+      "sorry": false,
+      "tactic": "intro c H\nunfold GT.TriangleFree RL.rel3_01021020\nrintro ⟨a, b⟩ he ⟨b', d⟩ hf ⟨a', d'⟩ hg ⟨h1, h2, h3⟩\nsimp only [Finset.mem_filter] at he hf hg\nsimp only at h1 h2 h3\nsubst h1 h2 h3\nsimp only [List.mem_cons, List.mem_singleton, Prod.mk.injEq, List.not_mem_nil, or_false] at he hf hg\nomega",
+      "tactic_sha256": "572568a6885eb85fb91dd6062ea2630da65d6504247b8e79b5296ae41ebf33c2",
+      "tier": 0
+     }
+    ],
+    "charged": {
+     "candidates": 2,
+     "cpu_ns": 1211297751,
+     "wall_ns": 1251245605
+    },
+    "result": "COMPILED",
+    "statement": "rel3_01021020_sound_tf",
+    "target": "RLConj.rel3_01021020_sound_tf"
+   },
+   {
+    "attempts": [
+     {
+      "compiled": true,
+      "errors": [],
+      "recipe": "filter-subset",
+      "sorry": false,
+      "tactic": "intro c H\nsimp_all [RL.rel3_011220]",
+      "tactic_sha256": "fba3f2f72dc8cff654263d9547d9853dcd5e87c87cff386aa2fa938799fb7696",
+      "tier": 0
+     },
+     {
+      "compiled": true,
+      "errors": [],
+      "recipe": "filter-subset-lemma",
+      "sorry": false,
+      "tactic": "intro c H\nunfold RL.rel3_011220\nexact Finset.filter_subset _ _",
+      "tactic_sha256": "aee2bbb48fcdecc24280c031d2069f0194e7c091e55e49cc65b0e006d1ed87c1",
+      "tier": 0
+     }
+    ],
+    "charged": {
+     "candidates": 2,
+     "cpu_ns": 1074302436,
+     "wall_ns": 1099402741
+    },
+    "result": "COMPILED",
+    "statement": "rel3_011220_image",
+    "target": "RLConj.rel3_011220_image"
+   },
+   {
+    "attempts": [
+     {
+      "compiled": true,
+      "errors": [],
+      "recipe": "class-triple-decide",
+      "sorry": false,
+      "tactic": "intro c H\nunfold GT.TriangleFree RL.rel3_011220\nrintro ⟨a, b⟩ he ⟨b', d⟩ hf ⟨a', d'⟩ hg ⟨h1, h2, h3⟩\nsimp only [Finset.mem_filter] at he hf hg\nsimp only at h1 h2 h3\nsubst h1 h2 h3\nhave key : ∀ x y z : Fin 3, ¬ ((x.val, y.val) ∈ ([(0, 1), (1, 2), (2, 0)] : List (ℕ × ℕ)) ∧ (y.val, z.val) ∈ ([(0, 1), (1, 2), (2, 0)] : List (ℕ × ℕ)) ∧ (x.val, z.val) ∈ ([(0, 1), (1, 2), (2, 0)] : List (ℕ × ℕ))) := by decide\nexact key _ _ _ ⟨he.2, hf.2, hg.2⟩",
+      "tactic_sha256": "9879886608f6d75bcb1b0ab5169a369209323c056beeb161e67bb96192efb88c",
+      "tier": 0
+     },
+     {
+      "compiled": true,
+      "errors": [],
+      "recipe": "class-triple-omega",
+      "sorry": false,
+      "tactic": "intro c H\nunfold GT.TriangleFree RL.rel3_011220\nrintro ⟨a, b⟩ he ⟨b', d⟩ hf ⟨a', d'⟩ hg ⟨h1, h2, h3⟩\nsimp only [Finset.mem_filter] at he hf hg\nsimp only at h1 h2 h3\nsubst h1 h2 h3\nsimp only [List.mem_cons, List.mem_singleton, Prod.mk.injEq, List.not_mem_nil, or_false] at he hf hg\nomega",
+      "tactic_sha256": "d01bdf9656094e08e160c153edbbe1c13905841d00e66204b0abbab49ee87a79",
+      "tier": 0
+     }
+    ],
+    "charged": {
+     "candidates": 2,
+     "cpu_ns": 1100597119,
+     "wall_ns": 1144111611
+    },
+    "result": "COMPILED",
+    "statement": "rel3_011220_sound_tf",
+    "target": "RLConj.rel3_011220_sound_tf"
+   }
+  ],
+  "search_candidates": 12,
+  "search_context_cpu_ns": 9902741865,
+  "search_cpu_ns": 6578619277,
+  "search_runs": 6
+ },
+ "counterexamples": [],
+ "declarations": [
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "GTDefs",
+   "name": "GT.TriangleFree",
+   "type_sha256": "c98548115419ec271dfd495799f10b35c81fad06e346ef970bd969a518c2a9f4"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "GTDefs",
+   "name": "GT.Edges",
+   "type_sha256": "baaddf70fb5d432b8bd948ef91d6f910124a6d138edae4d5f000c4610ddc8eae"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "GTDefs",
+   "name": "GT.instDecidableTriangleFree",
+   "type_sha256": "5f6ad93fcd86d217b85aa0d5ae9d8484d2f18f9af307b85f1d55bcb68ce406d1"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "RLDefs",
+   "name": "RL.rel3_011220",
+   "type_sha256": "0e716aaf2b7f2d52c21e4a663853505ca080a31f5ccdb8d81bf86fa4e236852e"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "RLDefs",
+   "name": "RL.rel2_0110",
+   "type_sha256": "8c0e99b76522eafc61cbc3aaaa54322b2668fe1f77e10204dc57ef1e72e5db76"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "RLDefs",
+   "name": "RL.rel3_01021020",
+   "type_sha256": "0e716aaf2b7f2d52c21e4a663853505ca080a31f5ccdb8d81bf86fa4e236852e"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "RLConj",
+   "name": "RLConj.rel2_0110_image",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "RLConj",
+   "name": "RLConj.rel2_0110_sound_tf",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "RLConj",
+   "name": "RLConj.rel3_01021020_image",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "RLConj",
+   "name": "RLConj.rel3_011220_sound_tf",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "RLConj",
+   "name": "RLConj.rel3_011220_image",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "RLConj",
+   "name": "RLConj.rel3_01021020_sound_tf",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Quot.sound"
+   ],
+   "kind": "theorem",
+   "module": "RLP1",
+   "name": "RL.rel2_0110.eq_1",
+   "type_sha256": "b9adc70617a53bc8b3ae8a76debe6da92ee4cae47b67ef2a16d098be695f2307"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "theorem",
+   "module": "RLP1",
+   "name": "RLP1.proof",
+   "type_sha256": "5f0a5911c9570cd0a5965001b51b188bdc4d7e0e2aac2b9053b92b3df1807223"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "theorem",
+   "module": "RLP2",
+   "name": "RLP2.proof",
+   "type_sha256": "fa07f7e4dc8413bb7ba109ea4b63123b5b1d968ec99ecfb89f9a3a0734cd8595"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Quot.sound"
+   ],
+   "kind": "theorem",
+   "module": "RLP3",
+   "name": "RL.rel3_01021020.eq_1",
+   "type_sha256": "7b5f613e8b4cfa2901d258e73c4f9e178a62bb74c0e0f7e3d5b8c536f75a87f8"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "theorem",
+   "module": "RLP3",
+   "name": "RLP3.proof",
+   "type_sha256": "e1ebdade1e40fbef9782620fe1a71fcfb97728de4a253c645b1bcf68fa9f0e86"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "theorem",
+   "module": "RLP4",
+   "name": "RLP4.proof",
+   "type_sha256": "6652d2359aa8fcb87f49161e1d7b761bab56e897c34430fd252ebdbeb2b268f3"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "theorem",
+   "module": "RLP5",
+   "name": "RLP5.proof",
+   "type_sha256": "562e90297c407cd8d66bf06d1f32cf2d7c90e99ada4e83a295913ca68892c63c"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Quot.sound"
+   ],
+   "kind": "theorem",
+   "module": "RLP5",
+   "name": "RL.rel3_011220.eq_1",
+   "type_sha256": "e20e632c17e65b62d421e49145223f14f8eee595307d54daa7f6d6e86333bf4e"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "theorem",
+   "module": "RLP6",
+   "name": "RLP6.proof",
+   "type_sha256": "2f3b10a9377ac8b2b205994e6b4703d4c7539a135646a1494878649135313fc5"
+  }
+ ],
+ "definitions": [
+  {
+   "module": "GTDefs",
+   "name": "GT.TriangleFree",
+   "origin": "trusted-generated",
+   "type_sha256": "c98548115419ec271dfd495799f10b35c81fad06e346ef970bd969a518c2a9f4"
+  },
+  {
+   "module": "GTDefs",
+   "name": "GT.Edges",
+   "origin": "trusted-generated",
+   "type_sha256": "baaddf70fb5d432b8bd948ef91d6f910124a6d138edae4d5f000c4610ddc8eae"
+  },
+  {
+   "module": "GTDefs",
+   "name": "GT.instDecidableTriangleFree",
+   "origin": "trusted-generated",
+   "type_sha256": "5f6ad93fcd86d217b85aa0d5ae9d8484d2f18f9af307b85f1d55bcb68ce406d1"
+  },
+  {
+   "module": "RLDefs",
+   "name": "RL.rel3_011220",
+   "origin": "trusted-generated",
+   "type_sha256": "0e716aaf2b7f2d52c21e4a663853505ca080a31f5ccdb8d81bf86fa4e236852e"
+  },
+  {
+   "module": "RLDefs",
+   "name": "RL.rel2_0110",
+   "origin": "trusted-generated",
+   "type_sha256": "8c0e99b76522eafc61cbc3aaaa54322b2668fe1f77e10204dc57ef1e72e5db76"
+  },
+  {
+   "module": "RLDefs",
+   "name": "RL.rel3_01021020",
+   "origin": "trusted-generated",
+   "type_sha256": "0e716aaf2b7f2d52c21e4a663853505ca080a31f5ccdb8d81bf86fa4e236852e"
+  },
+  {
+   "module": "RLConj",
+   "name": "RLConj.rel2_0110_image",
+   "origin": "trusted-generated",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "module": "RLConj",
+   "name": "RLConj.rel2_0110_sound_tf",
+   "origin": "trusted-generated",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "module": "RLConj",
+   "name": "RLConj.rel3_01021020_image",
+   "origin": "trusted-generated",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "module": "RLConj",
+   "name": "RLConj.rel3_011220_sound_tf",
+   "origin": "trusted-generated",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "module": "RLConj",
+   "name": "RLConj.rel3_011220_image",
+   "origin": "trusted-generated",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "module": "RLConj",
+   "name": "RLConj.rel3_01021020_sound_tf",
+   "origin": "trusted-generated",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  }
+ ],
+ "dependencies": {
+  "GT.Edges": {
+   "package": [],
+   "workspace_modules": [
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Defs"
+   ]
+  },
+  "GT.TriangleFree": {
+   "package": [
+    "GT.Edges"
+   ],
+   "workspace_modules": [
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Defs",
+    "Mathlib.Data.SetLike.Basic"
+   ]
+  },
+  "GT.instDecidableTriangleFree": {
+   "package": [
+    "GT.Edges",
+    "GT.TriangleFree"
+   ],
+   "workspace_modules": [
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Defs",
+    "Mathlib.Data.SetLike.Basic"
+   ]
+  },
+  "RL.rel2_0110": {
+   "package": [
+    "GT.Edges",
+    "RL.rel2_0110._proof_1"
+   ],
+   "workspace_modules": [
+    "Init.Core",
+    "Init.Data.List.Basic",
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Filter"
+   ]
+  },
+  "RL.rel2_0110._proof_1": {
+   "package": [],
+   "workspace_modules": [
+    "Init.Core",
+    "Init.Data.Nat.Basic",
+    "Init.Data.Prod",
+    "Init.Prelude"
+   ]
+  },
+  "RL.rel2_0110.eq_1": {
+   "package": [
+    "GT.Edges",
+    "RL.rel2_0110",
+    "RL.rel2_0110._proof_1"
+   ],
+   "workspace_modules": [
+    "Init.Core",
+    "Init.Data.List.Basic",
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Filter"
+   ]
+  },
+  "RL.rel3_01021020": {
+   "package": [
+    "GT.Edges",
+    "RL.rel2_0110._proof_1"
+   ],
+   "workspace_modules": [
+    "Init.Core",
+    "Init.Data.List.Basic",
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Filter"
+   ]
+  },
+  "RL.rel3_01021020.eq_1": {
+   "package": [
+    "GT.Edges",
+    "RL.rel2_0110._proof_1",
+    "RL.rel3_01021020"
+   ],
+   "workspace_modules": [
+    "Init.Core",
+    "Init.Data.List.Basic",
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Filter"
+   ]
+  },
+  "RL.rel3_011220": {
+   "package": [
+    "GT.Edges",
+    "RL.rel2_0110._proof_1"
+   ],
+   "workspace_modules": [
+    "Init.Core",
+    "Init.Data.List.Basic",
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Filter"
+   ]
+  },
+  "RL.rel3_011220.eq_1": {
+   "package": [
+    "GT.Edges",
+    "RL.rel2_0110._proof_1",
+    "RL.rel3_011220"
+   ],
+   "workspace_modules": [
+    "Init.Core",
+    "Init.Data.List.Basic",
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Filter"
+   ]
+  },
+  "RLConj.rel2_0110_image": {
+   "package": [
+    "GT.Edges",
+    "RL.rel2_0110",
+    "RL.rel2_0110._proof_1"
+   ],
+   "workspace_modules": [
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Defs",
+    "Mathlib.Order.Defs.PartialOrder"
+   ]
+  },
+  "RLConj.rel2_0110_sound_tf": {
+   "package": [
+    "GT.Edges",
+    "GT.TriangleFree",
+    "RL.rel2_0110",
+    "RL.rel2_0110._proof_1"
+   ],
+   "workspace_modules": [
+    "Init.Prelude"
+   ]
+  },
+  "RLConj.rel3_01021020_image": {
+   "package": [
+    "GT.Edges",
+    "RL.rel2_0110._proof_1",
+    "RL.rel3_01021020"
+   ],
+   "workspace_modules": [
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Defs",
+    "Mathlib.Order.Defs.PartialOrder"
+   ]
+  },
+  "RLConj.rel3_01021020_sound_tf": {
+   "package": [
+    "GT.Edges",
+    "GT.TriangleFree",
+    "RL.rel2_0110._proof_1",
+    "RL.rel3_01021020"
+   ],
+   "workspace_modules": [
+    "Init.Prelude"
+   ]
+  },
+  "RLConj.rel3_011220_image": {
+   "package": [
+    "GT.Edges",
+    "RL.rel2_0110._proof_1",
+    "RL.rel3_011220"
+   ],
+   "workspace_modules": [
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Defs",
+    "Mathlib.Order.Defs.PartialOrder"
+   ]
+  },
+  "RLConj.rel3_011220_sound_tf": {
+   "package": [
+    "GT.Edges",
+    "GT.TriangleFree",
+    "RL.rel2_0110._proof_1",
+    "RL.rel3_011220"
+   ],
+   "workspace_modules": [
+    "Init.Prelude"
+   ]
+  },
+  "RLP1.proof": {
+   "package": [
+    "GT.Edges",
+    "RL.rel2_0110",
+    "RL.rel2_0110._proof_1",
+    "RLConj.rel2_0110_image"
+   ],
+   "workspace_modules": [
+    "Init.Core",
+    "Init.Data.Fin.Basic",
+    "Init.Data.Fin.Lemmas",
+    "Init.Data.List.Basic",
+    "Init.Data.List.Lemmas",
+    "Init.Data.Nat.Basic",
+    "Init.Prelude",
+    "Init.SimpLemmas",
+    "Mathlib.Data.Finset.Defs",
+    "Mathlib.Data.Finset.Filter",
+    "Mathlib.Data.SetLike.Basic",
+    "Mathlib.Order.Defs.PartialOrder"
+   ]
+  },
+  "RLP2.proof": {
+   "package": [
+    "GT.Edges",
+    "GT.TriangleFree",
+    "RL.rel2_0110",
+    "RL.rel2_0110._proof_1",
+    "RLConj.rel2_0110_sound_tf",
+    "RLP2.proof._simp_1_1"
+   ],
+   "workspace_modules": [
+    "Init.Core",
+    "Init.Data.List.Basic",
+    "Init.Data.Nat.Basic",
+    "Init.Data.Nat.Lemmas",
+    "Init.Data.Prod",
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Defs",
+    "Mathlib.Data.Finset.Filter",
+    "Mathlib.Data.SetLike.Basic"
+   ]
+  },
+  "RLP2.proof._simp_1_1": {
+   "package": [],
+   "workspace_modules": [
+    "Init.Core",
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Defs",
+    "Mathlib.Data.Finset.Filter",
+    "Mathlib.Data.SetLike.Basic"
+   ]
+  },
+  "RLP3.proof": {
+   "package": [
+    "GT.Edges",
+    "RL.rel2_0110._proof_1",
+    "RL.rel3_01021020",
+    "RLConj.rel3_01021020_image"
+   ],
+   "workspace_modules": [
+    "Init.Core",
+    "Init.Data.Fin.Basic",
+    "Init.Data.Fin.Lemmas",
+    "Init.Data.List.Basic",
+    "Init.Data.List.Lemmas",
+    "Init.Data.Nat.Basic",
+    "Init.Prelude",
+    "Init.SimpLemmas",
+    "Mathlib.Data.Finset.Defs",
+    "Mathlib.Data.Finset.Filter",
+    "Mathlib.Data.SetLike.Basic",
+    "Mathlib.Order.Defs.PartialOrder"
+   ]
+  },
+  "RLP4.proof": {
+   "package": [
+    "GT.Edges",
+    "GT.TriangleFree",
+    "RL.rel2_0110._proof_1",
+    "RL.rel3_01021020",
+    "RLConj.rel3_01021020_sound_tf",
+    "RLP4.proof._simp_1_1"
+   ],
+   "workspace_modules": [
+    "Init.Core",
+    "Init.Data.List.Basic",
+    "Init.Data.Nat.Basic",
+    "Init.Data.Nat.Lemmas",
+    "Init.Data.Prod",
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Defs",
+    "Mathlib.Data.Finset.Filter",
+    "Mathlib.Data.SetLike.Basic"
+   ]
+  },
+  "RLP4.proof._simp_1_1": {
+   "package": [],
+   "workspace_modules": [
+    "Init.Core",
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Defs",
+    "Mathlib.Data.Finset.Filter",
+    "Mathlib.Data.SetLike.Basic"
+   ]
+  },
+  "RLP5.proof": {
+   "package": [
+    "GT.Edges",
+    "RL.rel2_0110._proof_1",
+    "RL.rel3_011220",
+    "RLConj.rel3_011220_image"
+   ],
+   "workspace_modules": [
+    "Init.Core",
+    "Init.Data.Fin.Basic",
+    "Init.Data.Fin.Lemmas",
+    "Init.Data.List.Basic",
+    "Init.Data.List.Lemmas",
+    "Init.Data.Nat.Basic",
+    "Init.Prelude",
+    "Init.SimpLemmas",
+    "Mathlib.Data.Finset.Defs",
+    "Mathlib.Data.Finset.Filter",
+    "Mathlib.Data.SetLike.Basic",
+    "Mathlib.Order.Defs.PartialOrder"
+   ]
+  },
+  "RLP6.proof": {
+   "package": [
+    "GT.Edges",
+    "GT.TriangleFree",
+    "RL.rel2_0110._proof_1",
+    "RL.rel3_011220",
+    "RLConj.rel3_011220_sound_tf",
+    "RLP6.proof._simp_1_1"
+   ],
+   "workspace_modules": [
+    "Init.Core",
+    "Init.Data.List.Basic",
+    "Init.Data.Nat.Basic",
+    "Init.Data.Nat.Lemmas",
+    "Init.Data.Prod",
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Defs",
+    "Mathlib.Data.Finset.Filter",
+    "Mathlib.Data.SetLike.Basic"
+   ]
+  },
+  "RLP6.proof._simp_1_1": {
+   "package": [],
+   "workspace_modules": [
+    "Init.Core",
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Defs",
+    "Mathlib.Data.Finset.Filter",
+    "Mathlib.Data.SetLike.Basic"
+   ]
+  }
+ },
+ "domain": "triangle_free_host_v1",
+ "modules": [
+  {
+   "name": "GTDefs",
+   "source": "import Mathlib.Data.Finset.Powerset\n\nnamespace GT\n\n/-- Edge sets: ordered pairs (u, v), read as the edge {u, v}. Hosts list each edge once, with u < v. -/\nabbrev Edges := Finset (ℕ × ℕ)\n\n/-- No three edges (a, b), (b, c), (a, c). -/\ndef TriangleFree (S : Edges) : Prop :=\n  ∀ e ∈ S, ∀ f ∈ S, ∀ g ∈ S, ¬ (e.1 = g.1 ∧ e.2 = f.1 ∧ f.2 = g.2)\n\ninstance (S : Edges) : Decidable (TriangleFree S) := by\n  unfold TriangleFree; infer_instance\n\nend GT\n",
+   "source_sha256": "34a84d4f227cbf5a95012a37a9f263f14ca419a4959be42c674d8abc47c9e3a7",
+   "trusted": true
+  },
+  {
+   "name": "RLDefs",
+   "source": "import GTDefs\n\nnamespace RL\n\n/-- Generated relational decoder `rel2_0110` (generated:relation-enumeration-v1): host edges (u, v), u < v, whose class pair is one of 0→1, 1→0. -/\ndef rel2_0110 (c : ℕ → Fin 2) (H : GT.Edges) : GT.Edges := H.filter fun e => ((c e.1).val, (c e.2).val) ∈ ([(0, 1), (1, 0)] : List (ℕ × ℕ))\n\n/-- Generated relational decoder `rel3_01021020` (generated:relation-enumeration-v1): host edges (u, v), u < v, whose class pair is one of 0→1, 0→2, 1→0, 2→0. -/\ndef rel3_01021020 (c : ℕ → Fin 3) (H : GT.Edges) : GT.Edges := H.filter fun e => ((c e.1).val, (c e.2).val) ∈ ([(0, 1), (0, 2), (1, 0), (2, 0)] : List (ℕ × ℕ))\n\n/-- Generated relational decoder `rel3_011220` (generated:relation-enumeration-v1): host edges (u, v), u < v, whose class pair is one of 0→1, 1→2, 2→0. -/\ndef rel3_011220 (c : ℕ → Fin 3) (H : GT.Edges) : GT.Edges := H.filter fun e => ((c e.1).val, (c e.2).val) ∈ ([(0, 1), (1, 2), (2, 0)] : List (ℕ × ℕ))\n\nend RL\n",
+   "source_sha256": "f1660aecdf485cdd5ef6567028a5bc771cd9c82b9e35dde3cb9b8a9d65bfe4e4",
+   "trusted": true
+  },
+  {
+   "name": "RLConj",
+   "source": "import GTDefs\nimport RLDefs\nset_option linter.unusedVariables false\n\nnamespace RLConj\n/-- Generated conjecture `rel2_0110_image` (generated:relation-enumeration-v1). -/\ndef rel2_0110_image : Prop := ∀ (c : ℕ → Fin 2) (H : GT.Edges), RL.rel2_0110 c H ⊆ H\n/-- Generated conjecture `rel2_0110_sound_tf` (generated:relation-enumeration-v1). -/\ndef rel2_0110_sound_tf : Prop := ∀ (c : ℕ → Fin 2) (H : GT.Edges), GT.TriangleFree (RL.rel2_0110 c H)\n/-- Generated conjecture `rel3_01021020_image` (generated:relation-enumeration-v1). -/\ndef rel3_01021020_image : Prop := ∀ (c : ℕ → Fin 3) (H : GT.Edges), RL.rel3_01021020 c H ⊆ H\n/-- Generated conjecture `rel3_01021020_sound_tf` (generated:relation-enumeration-v1). -/\ndef rel3_01021020_sound_tf : Prop := ∀ (c : ℕ → Fin 3) (H : GT.Edges), GT.TriangleFree (RL.rel3_01021020 c H)\n/-- Generated conjecture `rel3_011220_image` (generated:relation-enumeration-v1). -/\ndef rel3_011220_image : Prop := ∀ (c : ℕ → Fin 3) (H : GT.Edges), RL.rel3_011220 c H ⊆ H\n/-- Generated conjecture `rel3_011220_sound_tf` (generated:relation-enumeration-v1). -/\ndef rel3_011220_sound_tf : Prop := ∀ (c : ℕ → Fin 3) (H : GT.Edges), GT.TriangleFree (RL.rel3_011220 c H)\nend RLConj\n",
+   "source_sha256": "39d7d7161c52c1e2e92b514a3910bdbfd01742757b66880125b2b8eb4ee7f3f1",
+   "trusted": true
+  },
+  {
+   "name": "RLP1",
+   "source": "import GTDefs\nimport RLDefs\nimport RLConj\nnamespace RLP1\ntheorem proof : RLConj.rel2_0110_image := by\n  unfold RLConj.rel2_0110_image\n  intro c H\n  simp_all [RL.rel2_0110]\nend RLP1\n",
+   "source_sha256": "054346991e2759d770054e252654de83600c4104d88522ff1d9f10ca3977a69c",
+   "trusted": false
+  },
+  {
+   "name": "RLP2",
+   "source": "import GTDefs\nimport RLDefs\nimport RLConj\nimport RLP1\nnamespace RLP2\ntheorem proof : RLConj.rel2_0110_sound_tf := by\n  unfold RLConj.rel2_0110_sound_tf\n  intro c H\n  unfold GT.TriangleFree RL.rel2_0110\n  rintro ⟨a, b⟩ he ⟨b', d⟩ hf ⟨a', d'⟩ hg ⟨h1, h2, h3⟩\n  simp only [Finset.mem_filter] at he hf hg\n  simp only at h1 h2 h3\n  subst h1 h2 h3\n  have key : ∀ x y z : Fin 2, ¬ ((x.val, y.val) ∈ ([(0, 1), (1, 0)] : List (ℕ × ℕ)) ∧ (y.val, z.val) ∈ ([(0, 1), (1, 0)] : List (ℕ × ℕ)) ∧ (x.val, z.val) ∈ ([(0, 1), (1, 0)] : List (ℕ × ℕ))) := by decide\n  exact key _ _ _ ⟨he.2, hf.2, hg.2⟩\nend RLP2\n",
+   "source_sha256": "424dc7fff2ce8fbeac61ef5fff45d340683bca26794de95a38d3201d48dcc9e8",
+   "trusted": false
+  },
+  {
+   "name": "RLP3",
+   "source": "import GTDefs\nimport RLDefs\nimport RLConj\nimport RLP1\nimport RLP2\nnamespace RLP3\ntheorem proof : RLConj.rel3_01021020_image := by\n  unfold RLConj.rel3_01021020_image\n  intro c H\n  simp_all [RL.rel3_01021020]\nend RLP3\n",
+   "source_sha256": "77d41ee4fb37e83e37467a93eb98361290f52fa91e4fbc91c68afd70a970a3c5",
+   "trusted": false
+  },
+  {
+   "name": "RLP4",
+   "source": "import GTDefs\nimport RLDefs\nimport RLConj\nimport RLP1\nimport RLP2\nimport RLP3\nnamespace RLP4\ntheorem proof : RLConj.rel3_01021020_sound_tf := by\n  unfold RLConj.rel3_01021020_sound_tf\n  intro c H\n  unfold GT.TriangleFree RL.rel3_01021020\n  rintro ⟨a, b⟩ he ⟨b', d⟩ hf ⟨a', d'⟩ hg ⟨h1, h2, h3⟩\n  simp only [Finset.mem_filter] at he hf hg\n  simp only at h1 h2 h3\n  subst h1 h2 h3\n  have key : ∀ x y z : Fin 3, ¬ ((x.val, y.val) ∈ ([(0, 1), (0, 2), (1, 0), (2, 0)] : List (ℕ × ℕ)) ∧ (y.val, z.val) ∈ ([(0, 1), (0, 2), (1, 0), (2, 0)] : List (ℕ × ℕ)) ∧ (x.val, z.val) ∈ ([(0, 1), (0, 2), (1, 0), (2, 0)] : List (ℕ × ℕ))) := by decide\n  exact key _ _ _ ⟨he.2, hf.2, hg.2⟩\nend RLP4\n",
+   "source_sha256": "fa44154f38f6b3a99db7b2c62cbbbf42d2223b9a807bb599a0cb05ad19a35849",
+   "trusted": false
+  },
+  {
+   "name": "RLP5",
+   "source": "import GTDefs\nimport RLDefs\nimport RLConj\nimport RLP1\nimport RLP2\nimport RLP3\nimport RLP4\nnamespace RLP5\ntheorem proof : RLConj.rel3_011220_image := by\n  unfold RLConj.rel3_011220_image\n  intro c H\n  simp_all [RL.rel3_011220]\nend RLP5\n",
+   "source_sha256": "9a88536dfa10653720b38f9f7cabbd41aef1bd3fb36cec52b21cffeb8ed0c435",
+   "trusted": false
+  },
+  {
+   "name": "RLP6",
+   "source": "import GTDefs\nimport RLDefs\nimport RLConj\nimport RLP1\nimport RLP2\nimport RLP3\nimport RLP4\nimport RLP5\nnamespace RLP6\ntheorem proof : RLConj.rel3_011220_sound_tf := by\n  unfold RLConj.rel3_011220_sound_tf\n  intro c H\n  unfold GT.TriangleFree RL.rel3_011220\n  rintro ⟨a, b⟩ he ⟨b', d⟩ hf ⟨a', d'⟩ hg ⟨h1, h2, h3⟩\n  simp only [Finset.mem_filter] at he hf hg\n  simp only at h1 h2 h3\n  subst h1 h2 h3\n  have key : ∀ x y z : Fin 3, ¬ ((x.val, y.val) ∈ ([(0, 1), (1, 2), (2, 0)] : List (ℕ × ℕ)) ∧ (y.val, z.val) ∈ ([(0, 1), (1, 2), (2, 0)] : List (ℕ × ℕ)) ∧ (x.val, z.val) ∈ ([(0, 1), (1, 2), (2, 0)] : List (ℕ × ℕ))) := by decide\n  exact key _ _ _ ⟨he.2, hf.2, hg.2⟩\nend RLP6\n",
+   "source_sha256": "e5316df575f23fdbd7bf124720c8a2b28ca8e050f637aae67735d8f1c7d0cfab",
+   "trusted": false
+  }
+ ],
+ "name": "relational decoders (s15.3, generated)",
+ "package_sha256": "fb6f433c2d6b612d258df6d427f2190ebc78d65367376f3931db8a9e081309c1",
+ "proofs": [
+  {
+   "module": "RLP1",
+   "recipe": "filter-subset",
+   "statement": "rel2_0110_image"
+  },
+  {
+   "module": "RLP2",
+   "recipe": "class-triple-decide",
+   "statement": "rel2_0110_sound_tf"
+  },
+  {
+   "module": "RLP3",
+   "recipe": "filter-subset",
+   "statement": "rel3_01021020_image"
+  },
+  {
+   "module": "RLP4",
+   "recipe": "class-triple-decide",
+   "statement": "rel3_01021020_sound_tf"
+  },
+  {
+   "module": "RLP5",
+   "recipe": "filter-subset",
+   "statement": "rel3_011220_image"
+  },
+  {
+   "module": "RLP6",
+   "recipe": "class-triple-decide",
+   "statement": "rel3_011220_sound_tf"
+  }
+ ],
+ "provenance": {
+  "acceptance": "genesis.formal_research.checker.accept",
+  "created_at": "2026-10-13T15:56:17.758525+00:00",
+  "loop": "genesis.formal_research.loop",
+  "search": "genesis.formal_research.search (builder-written recipes, named per proof)"
+ },
+ "relations": [
+  {
+   "cost": {
+    "bound": "k ≤ 3",
+    "decode": "O(|H|)",
+    "encoder_space": "2^n"
+   },
+   "decoder": "relation",
+   "decoder_lean": "fun e => ((c e.1).val, (c e.2).val) ∈ ([(0, 1), (1, 0)] : List (ℕ × ℕ))",
+   "encoder": {
+    "space": "2^n encodings of an n-vertex host",
+    "type": "ℕ → Fin 2"
+   },
+   "enumerated_at_k": 2,
+   "equals_menu": "adjacent_2 = cross_2",
+   "failure_conditions": [
+    "local search over encodings gives no optimality guarantee",
+    "reads the host orientation: the same graph listed in another vertex order can decode differently"
+   ],
+   "id": "rel2_0110",
+   "k": 2,
+   "kind": "conservative-definition",
+   "lean_name": "RL.rel2_0110",
+   "lost": "every other host edge (in particular every edge inside a class)",
+   "obligations": {
+    "image": "CHECKED",
+    "sound_tf": "CHECKED"
+   },
+   "origin": "generated:relation-enumeration-v1",
+   "relation": [
+    [
+     0,
+     1
+    ],
+    [
+     1,
+     0
+    ]
+   ],
+   "retained": "host edges (u, v), u < v, whose class pair is one of 0→1, 1→0",
+   "screen": {
+    "image": "NO_COUNTEREXAMPLE",
+    "sound_tf": "NO_COUNTEREXAMPLE"
+   },
+   "semantics": "RL.rel2_0110 c H = H.filter (fun e => ((c e.1).val, (c e.2).val) ∈ ([(0, 1), (1, 0)] : List (ℕ × ℕ)))",
+   "tf_sound_exact": true
+  },
+  {
+   "cost": {
+    "bound": "k ≤ 3",
+    "decode": "O(|H|)",
+    "encoder_space": "3^n"
+   },
+   "decoder": "relation",
+   "decoder_lean": "fun e => ((c e.1).val, (c e.2).val) ∈ ([(0, 1), (0, 2), (1, 0), (2, 0)] : List (ℕ × ℕ))",
+   "encoder": {
+    "space": "3^n encodings of an n-vertex host",
+    "type": "ℕ → Fin 3"
+   },
+   "enumerated_at_k": 3,
+   "equals_menu": "adjacent_3",
+   "failure_conditions": [
+    "local search over encodings gives no optimality guarantee",
+    "reads the host orientation: the same graph listed in another vertex order can decode differently"
+   ],
+   "id": "rel3_01021020",
+   "k": 3,
+   "kind": "conservative-definition",
+   "lean_name": "RL.rel3_01021020",
+   "lost": "every other host edge (in particular every edge inside a class)",
+   "obligations": {
+    "image": "CHECKED",
+    "sound_tf": "CHECKED"
+   },
+   "origin": "generated:relation-enumeration-v1",
+   "relation": [
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     2
+    ],
+    [
+     1,
+     0
+    ],
+    [
+     2,
+     0
+    ]
+   ],
+   "retained": "host edges (u, v), u < v, whose class pair is one of 0→1, 0→2, 1→0, 2→0",
+   "screen": {
+    "image": "NO_COUNTEREXAMPLE",
+    "sound_tf": "NO_COUNTEREXAMPLE"
+   },
+   "semantics": "RL.rel3_01021020 c H = H.filter (fun e => ((c e.1).val, (c e.2).val) ∈ ([(0, 1), (0, 2), (1, 0), (2, 0)] : List (ℕ × ℕ)))",
+   "tf_sound_exact": true
+  },
+  {
+   "cost": {
+    "bound": "k ≤ 3",
+    "decode": "O(|H|)",
+    "encoder_space": "3^n"
+   },
+   "decoder": "relation",
+   "decoder_lean": "fun e => ((c e.1).val, (c e.2).val) ∈ ([(0, 1), (1, 2), (2, 0)] : List (ℕ × ℕ))",
+   "encoder": {
+    "space": "3^n encodings of an n-vertex host",
+    "type": "ℕ → Fin 3"
+   },
+   "enumerated_at_k": 3,
+   "equals_menu": null,
+   "failure_conditions": [
+    "local search over encodings gives no optimality guarantee",
+    "reads the host orientation: the same graph listed in another vertex order can decode differently"
+   ],
+   "id": "rel3_011220",
+   "k": 3,
+   "kind": "conservative-definition",
+   "lean_name": "RL.rel3_011220",
+   "lost": "every other host edge (in particular every edge inside a class)",
+   "obligations": {
+    "image": "CHECKED",
+    "sound_tf": "CHECKED"
+   },
+   "origin": "generated:relation-enumeration-v1",
+   "relation": [
+    [
+     0,
+     1
+    ],
+    [
+     1,
+     2
+    ],
+    [
+     2,
+     0
+    ]
+   ],
+   "retained": "host edges (u, v), u < v, whose class pair is one of 0→1, 1→2, 2→0",
+   "screen": {
+    "image": "NO_COUNTEREXAMPLE",
+    "sound_tf": "NO_COUNTEREXAMPLE"
+   },
+   "semantics": "RL.rel3_011220 c H = H.filter (fun e => ((c e.1).val, (c e.2).val) ∈ ([(0, 1), (1, 2), (2, 0)] : List (ℕ × ℕ)))",
+   "tf_sound_exact": true
+  }
+ ],
+ "schema": "genesis-theory-package-v1",
+ "scope": "Machine-generated oriented relational decoders over at most 3 classes, their checked image and triangle-free soundness. Conservative definitions only.",
+ "statements": [
+  {
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "counterexample": null,
+   "id": "rel2_0110_image",
+   "lean": "∀ (c : ℕ → Fin 2) (H : GT.Edges), RL.rel2_0110 c H ⊆ H",
+   "origin": "generated:relation-enumeration-v1",
+   "proof_const": "RLP1.proof",
+   "proof_module": "RLP1",
+   "recipe": "filter-subset",
+   "role": "image",
+   "screened_instances": 3000,
+   "spec_const": "RLConj.rel2_0110_image",
+   "status": "CHECKED",
+   "subject": "rel2_0110"
+  },
+  {
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "counterexample": null,
+   "id": "rel2_0110_sound_tf",
+   "lean": "∀ (c : ℕ → Fin 2) (H : GT.Edges), GT.TriangleFree (RL.rel2_0110 c H)",
+   "origin": "generated:relation-enumeration-v1",
+   "proof_const": "RLP2.proof",
+   "proof_module": "RLP2",
+   "recipe": "class-triple-decide",
+   "role": "soundness",
+   "screened_instances": 3000,
+   "spec_const": "RLConj.rel2_0110_sound_tf",
+   "status": "CHECKED",
+   "subject": "rel2_0110@triangle_free_host_v1"
+  },
+  {
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "counterexample": null,
+   "id": "rel3_01021020_image",
+   "lean": "∀ (c : ℕ → Fin 3) (H : GT.Edges), RL.rel3_01021020 c H ⊆ H",
+   "origin": "generated:relation-enumeration-v1",
+   "proof_const": "RLP3.proof",
+   "proof_module": "RLP3",
+   "recipe": "filter-subset",
+   "role": "image",
+   "screened_instances": 3000,
+   "spec_const": "RLConj.rel3_01021020_image",
+   "status": "CHECKED",
+   "subject": "rel3_01021020"
+  },
+  {
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "counterexample": null,
+   "id": "rel3_01021020_sound_tf",
+   "lean": "∀ (c : ℕ → Fin 3) (H : GT.Edges), GT.TriangleFree (RL.rel3_01021020 c H)",
+   "origin": "generated:relation-enumeration-v1",
+   "proof_const": "RLP4.proof",
+   "proof_module": "RLP4",
+   "recipe": "class-triple-decide",
+   "role": "soundness",
+   "screened_instances": 3000,
+   "spec_const": "RLConj.rel3_01021020_sound_tf",
+   "status": "CHECKED",
+   "subject": "rel3_01021020@triangle_free_host_v1"
+  },
+  {
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "counterexample": null,
+   "id": "rel3_011220_image",
+   "lean": "∀ (c : ℕ → Fin 3) (H : GT.Edges), RL.rel3_011220 c H ⊆ H",
+   "origin": "generated:relation-enumeration-v1",
+   "proof_const": "RLP5.proof",
+   "proof_module": "RLP5",
+   "recipe": "filter-subset",
+   "role": "image",
+   "screened_instances": 3000,
+   "spec_const": "RLConj.rel3_011220_image",
+   "status": "CHECKED",
+   "subject": "rel3_011220"
+  },
+  {
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "counterexample": null,
+   "id": "rel3_011220_sound_tf",
+   "lean": "∀ (c : ℕ → Fin 3) (H : GT.Edges), GT.TriangleFree (RL.rel3_011220 c H)",
+   "origin": "generated:relation-enumeration-v1",
+   "proof_const": "RLP6.proof",
+   "proof_module": "RLP6",
+   "recipe": "class-triple-decide",
+   "role": "soundness",
+   "screened_instances": 3000,
+   "spec_const": "RLConj.rel3_011220_sound_tf",
+   "status": "CHECKED",
+   "subject": "rel3_011220@triangle_free_host_v1"
+  }
+ ]
+}

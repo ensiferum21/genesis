@@ -1,0 +1,92 @@
+{
+ "checker_cpu_s_reported": 44.315,
+ "construction_cpu_s": 64.323,
+ "cost_note": "construction = CPU of this process and its waited-for children (getrusage); the Lean checker also reports its own cgroup CPU (checker_cpu_s_reported); the larger is charged",
+ "generated": [
+  {
+   "equals_menu": "adjacent_2 = cross_2",
+   "id": "rel2_0110",
+   "k": 2,
+   "obligations": {
+    "image": "CHECKED",
+    "sound_tf": "CHECKED"
+   },
+   "relation": [
+    [
+     0,
+     1
+    ],
+    [
+     1,
+     0
+    ]
+   ],
+   "screen": {
+    "image": "NO_COUNTEREXAMPLE",
+    "sound_tf": "NO_COUNTEREXAMPLE"
+   }
+  },
+  {
+   "equals_menu": "adjacent_3",
+   "id": "rel3_01021020",
+   "k": 3,
+   "obligations": {
+    "image": "CHECKED",
+    "sound_tf": "CHECKED"
+   },
+   "relation": [
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     2
+    ],
+    [
+     1,
+     0
+    ],
+    [
+     2,
+     0
+    ]
+   ],
+   "screen": {
+    "image": "NO_COUNTEREXAMPLE",
+    "sound_tf": "NO_COUNTEREXAMPLE"
+   }
+  },
+  {
+   "equals_menu": null,
+   "id": "rel3_011220",
+   "k": 3,
+   "obligations": {
+    "image": "CHECKED",
+    "sound_tf": "CHECKED"
+   },
+   "relation": [
+    [
+     0,
+     1
+    ],
+    [
+     1,
+     2
+    ],
+    [
+     2,
+     0
+    ]
+   ],
+   "screen": {
+    "image": "NO_COUNTEREXAMPLE",
+    "sound_tf": "NO_COUNTEREXAMPLE"
+   }
+  }
+ ],
+ "new_checked": [
+  "rel3_011220"
+ ],
+ "verdict_a": "NEW_CHECKED"
+}
