@@ -1,0 +1,27 @@
+SZS output start CNFRefutation
+fof(goal, conjecture, ![X1, X2]:(n(plus(X1,plus(X1,plus(X2,X1))))=n(plus(X1,plus(X2,X2)))), file('/tmp/genesis-e-c4_tzq7d/p.p', goal)).
+fof(ax10, axiom, ![X1, X2]:(plus(plus(X1,X2),X1)=plus(X2,X1)), file('/tmp/genesis-e-c4_tzq7d/p.p', ax10)).
+fof(ax0, axiom, ![X1, X2]:(plus(X1,X2)=plus(X2,X1)), file('/tmp/genesis-e-c4_tzq7d/p.p', ax0)).
+fof(ax6, axiom, ![X1]:(plus(X1,X1)=X1), file('/tmp/genesis-e-c4_tzq7d/p.p', ax6)).
+fof(c_0_4, negated_conjecture, ~(![X1, X2]:(n(plus(X1,plus(X1,plus(X2,X1))))=n(plus(X1,plus(X2,X2))))), inference(assume_negation,[status(cth)],[goal])).
+fof(c_0_5, plain, ![X25, X26]:(plus(plus(X25,X26),X25)=plus(X26,X25)), inference(variable_rename,[status(thm)],[ax10])).
+fof(c_0_6, plain, ![X4, X5]:(plus(X4,X5)=plus(X5,X4)), inference(variable_rename,[status(thm)],[ax0])).
+fof(c_0_7, negated_conjecture, n(plus(esk1_0,plus(esk1_0,plus(esk2_0,esk1_0))))!=n(plus(esk1_0,plus(esk2_0,esk2_0))), inference(fof_nnf,[status(thm)],[inference(skolemize,[status(esa)],[inference(variable_rename,[status(thm)],[inference(fof_nnf,[status(thm)],[c_0_4])])])])).
+cnf(c_0_8, plain, (plus(plus(X1,X2),X1)=plus(X2,X1)), inference(split_conjunct,[status(thm)],[c_0_5])).
+cnf(c_0_9, plain, (plus(X1,X2)=plus(X2,X1)), inference(split_conjunct,[status(thm)],[c_0_6])).
+fof(c_0_10, plain, ![X17]:(plus(X17,X17)=X17), inference(variable_rename,[status(thm)],[ax6])).
+cnf(c_0_11, negated_conjecture, (n(plus(esk1_0,plus(esk1_0,plus(esk2_0,esk1_0))))!=n(plus(esk1_0,plus(esk2_0,esk2_0)))), inference(split_conjunct,[status(thm)],[c_0_7])).
+cnf(c_0_12, plain, (plus(X1,plus(X1,X2))=plus(X2,X1)), inference(rw,[status(thm)],[c_0_8, c_0_9])).
+cnf(c_0_13, plain, (plus(X1,X1)=X1), inference(split_conjunct,[status(thm)],[c_0_10])).
+cnf(c_0_14, negated_conjecture, ($false), inference(cn,[status(thm)],[inference(rw,[status(thm)],[inference(rw,[status(thm)],[inference(rw,[status(thm)],[inference(rw,[status(thm)],[inference(rw,[status(thm)],[inference(rw,[status(thm)],[c_0_11, c_0_9]), c_0_12]), c_0_9]), c_0_12]), c_0_9]), c_0_13])]), ['proof']).
+% SZS output end CNFRefutation
+
+% -------------------------------------------------
+% Total SizeMalloc()ed memory: 75960696 Bytes (150931 requests)
+% Total SizeFree()ed   memory: 75960696 Bytes (150931 requests)
+% New requests:   3217 (  3040 by SecureMalloc(),    177 by SecureRealloc())
+% Total SecureMalloc()ed memory: 833204 Bytes
+% Returned:      3217 (  3217 by FREE(),              0 by SecureRealloc())
+% SecureRealloc(ptr):    182 (   177 Allocs,      0 Frees,      5 Reallocs)
+% -------------------------------------------------
+

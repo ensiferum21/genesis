@@ -1,0 +1,24 @@
+SZS output start CNFRefutation
+fof(goal, conjecture, ![X1, X2]:(s(X1,s(X1,X1))=s(X2,s(X2,X2))), file('/tmp/genesis-e-9v2xnxtu/p.p', goal)).
+fof(ax3, axiom, ![X1, X2]:(s(s(X1,X1),X1)=s(X2,s(X2,X2))), file('/tmp/genesis-e-9v2xnxtu/p.p', ax3)).
+fof(ax10, axiom, ![X1, X2]:(s(X1,X2)=s(X2,X1)), file('/tmp/genesis-e-9v2xnxtu/p.p', ax10)).
+fof(c_0_3, negated_conjecture, ~(![X1, X2]:(s(X1,s(X1,X1))=s(X2,s(X2,X2)))), inference(assume_negation,[status(cth)],[goal])).
+fof(c_0_4, plain, ![X10, X11]:(s(s(X10,X10),X10)=s(X11,s(X11,X11))), inference(variable_rename,[status(thm)],[ax3])).
+fof(c_0_5, plain, ![X23, X24]:(s(X23,X24)=s(X24,X23)), inference(variable_rename,[status(thm)],[ax10])).
+fof(c_0_6, negated_conjecture, s(esk1_0,s(esk1_0,esk1_0))!=s(esk2_0,s(esk2_0,esk2_0)), inference(fof_nnf,[status(thm)],[inference(skolemize,[status(esa)],[inference(variable_rename,[status(thm)],[inference(fof_nnf,[status(thm)],[c_0_3])])])])).
+cnf(c_0_7, plain, (s(s(X1,X1),X1)=s(X2,s(X2,X2))), inference(split_conjunct,[status(thm)],[c_0_4])).
+cnf(c_0_8, plain, (s(X1,X2)=s(X2,X1)), inference(split_conjunct,[status(thm)],[c_0_5])).
+cnf(c_0_9, negated_conjecture, (s(esk1_0,s(esk1_0,esk1_0))!=s(esk2_0,s(esk2_0,esk2_0))), inference(split_conjunct,[status(thm)],[c_0_6])).
+cnf(c_0_10, plain, (s(X1,s(X1,X1))=s(X2,s(X2,X2))), inference(rw,[status(thm)],[c_0_7, c_0_8])).
+cnf(c_0_11, negated_conjecture, ($false), inference(sr,[status(thm)],[c_0_9, c_0_10]), ['proof']).
+% SZS output end CNFRefutation
+
+% -------------------------------------------------
+% Total SizeMalloc()ed memory: 73608184 Bytes (143839 requests)
+% Total SizeFree()ed   memory: 73608184 Bytes (143839 requests)
+% New requests:   2245 (  2054 by SecureMalloc(),    191 by SecureRealloc())
+% Total SecureMalloc()ed memory: 748090 Bytes
+% Returned:      2245 (  2245 by FREE(),              0 by SecureRealloc())
+% SecureRealloc(ptr):    196 (   191 Allocs,      0 Frees,      5 Reallocs)
+% -------------------------------------------------
+

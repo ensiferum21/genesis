@@ -1,0 +1,24 @@
+SZS output start CNFRefutation
+fof(goal, conjecture, ![X1]:(s(s(X1,s(X1,X1)),X1)=s(X1,X1)), file('/tmp/genesis-e-bgw22nml/p.p', goal)).
+fof(ax5, axiom, ![X1, X2]:(s(s(s(X1,X1),X1),X2)=s(X2,X2)), file('/tmp/genesis-e-bgw22nml/p.p', ax5)).
+fof(ax4, axiom, ![X1, X2]:(s(s(X1,X2),s(X1,X1))=X1), file('/tmp/genesis-e-bgw22nml/p.p', ax4)).
+fof(c_0_3, negated_conjecture, ~(![X1]:(s(s(X1,s(X1,X1)),X1)=s(X1,X1))), inference(assume_negation,[status(cth)],[goal])).
+fof(c_0_4, plain, ![X13, X14]:(s(s(s(X13,X13),X13),X14)=s(X14,X14)), inference(variable_rename,[status(thm)],[ax5])).
+fof(c_0_5, plain, ![X11, X12]:(s(s(X11,X12),s(X11,X11))=X11), inference(variable_rename,[status(thm)],[ax4])).
+fof(c_0_6, negated_conjecture, s(s(esk1_0,s(esk1_0,esk1_0)),esk1_0)!=s(esk1_0,esk1_0), inference(fof_nnf,[status(thm)],[inference(skolemize,[status(esa)],[inference(variable_rename,[status(thm)],[inference(fof_nnf,[status(thm)],[c_0_3])])])])).
+cnf(c_0_7, plain, (s(s(s(X1,X1),X1),X2)=s(X2,X2)), inference(split_conjunct,[status(thm)],[c_0_4])).
+cnf(c_0_8, plain, (s(s(X1,X2),s(X1,X1))=X1), inference(split_conjunct,[status(thm)],[c_0_5])).
+cnf(c_0_9, negated_conjecture, (s(s(esk1_0,s(esk1_0,esk1_0)),esk1_0)!=s(esk1_0,esk1_0)), inference(split_conjunct,[status(thm)],[c_0_6])).
+cnf(c_0_10, plain, (s(s(X1,s(X1,X1)),X2)=s(X2,X2)), inference(spm,[status(thm)],[c_0_7, c_0_8])).
+cnf(c_0_11, negated_conjecture, ($false), inference(cn,[status(thm)],[inference(rw,[status(thm)],[c_0_9, c_0_10])]), ['proof']).
+% SZS output end CNFRefutation
+
+% -------------------------------------------------
+% Total SizeMalloc()ed memory: 82550256 Bytes (168730 requests)
+% Total SizeFree()ed   memory: 82550256 Bytes (168730 requests)
+% New requests:   4486 (  4299 by SecureMalloc(),    187 by SecureRealloc())
+% Total SecureMalloc()ed memory: 952780 Bytes
+% Returned:      4486 (  4486 by FREE(),              0 by SecureRealloc())
+% SecureRealloc(ptr):    192 (   187 Allocs,      0 Frees,      5 Reallocs)
+% -------------------------------------------------
+

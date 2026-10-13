@@ -1,0 +1,37 @@
+SZS output start CNFRefutation
+fof(ax9, axiom, ![X1, X2]:(s(s(s(X1,X1),X2),X2)=s(X1,X2)), file('/tmp/genesis-e-h9wf37tq/p.p', ax9)).
+fof(ax8, axiom, ![X1, X2]:(s(s(s(X1,X1),X2),X2)=s(X2,X1)), file('/tmp/genesis-e-h9wf37tq/p.p', ax8)).
+fof(goal, conjecture, ![X1, X2]:(s(s(s(X1,X2),X1),s(X1,X2))=X1), file('/tmp/genesis-e-h9wf37tq/p.p', goal)).
+fof(ax10, axiom, ![X1, X2]:(s(s(s(X1,X1),X2),s(X2,X1))=X2), file('/tmp/genesis-e-h9wf37tq/p.p', ax10)).
+fof(ax5, axiom, ![X1, X2]:(s(s(X1,X2),s(X1,X1))=X1), file('/tmp/genesis-e-h9wf37tq/p.p', ax5)).
+fof(ax7, axiom, ![X1, X2]:(s(s(X1,X1),s(X1,X2))=X1), file('/tmp/genesis-e-h9wf37tq/p.p', ax7)).
+fof(c_0_6, plain, ![X22, X23]:(s(s(s(X22,X22),X23),X23)=s(X22,X23)), inference(variable_rename,[status(thm)],[ax9])).
+fof(c_0_7, plain, ![X20, X21]:(s(s(s(X20,X20),X21),X21)=s(X21,X20)), inference(variable_rename,[status(thm)],[ax8])).
+fof(c_0_8, negated_conjecture, ~(![X1, X2]:(s(s(s(X1,X2),X1),s(X1,X2))=X1)), inference(assume_negation,[status(cth)],[goal])).
+fof(c_0_9, plain, ![X24, X25]:(s(s(s(X24,X24),X25),s(X25,X24))=X25), inference(variable_rename,[status(thm)],[ax10])).
+cnf(c_0_10, plain, (s(s(s(X1,X1),X2),X2)=s(X1,X2)), inference(split_conjunct,[status(thm)],[c_0_6])).
+cnf(c_0_11, plain, (s(s(s(X1,X1),X2),X2)=s(X2,X1)), inference(split_conjunct,[status(thm)],[c_0_7])).
+fof(c_0_12, plain, ![X14, X15]:(s(s(X14,X15),s(X14,X14))=X14), inference(variable_rename,[status(thm)],[ax5])).
+fof(c_0_13, negated_conjecture, s(s(s(esk1_0,esk2_0),esk1_0),s(esk1_0,esk2_0))!=esk1_0, inference(fof_nnf,[status(thm)],[inference(skolemize,[status(esa)],[inference(variable_rename,[status(thm)],[inference(fof_nnf,[status(thm)],[c_0_8])])])])).
+cnf(c_0_14, plain, (s(s(s(X1,X1),X2),s(X2,X1))=X2), inference(split_conjunct,[status(thm)],[c_0_9])).
+cnf(c_0_15, plain, (s(X1,X2)=s(X2,X1)), inference(rw,[status(thm)],[c_0_10, c_0_11])).
+cnf(c_0_16, plain, (s(s(X1,X2),s(X1,X1))=X1), inference(split_conjunct,[status(thm)],[c_0_12])).
+fof(c_0_17, plain, ![X18, X19]:(s(s(X18,X18),s(X18,X19))=X18), inference(variable_rename,[status(thm)],[ax7])).
+cnf(c_0_18, negated_conjecture, (s(s(s(esk1_0,esk2_0),esk1_0),s(esk1_0,esk2_0))!=esk1_0), inference(split_conjunct,[status(thm)],[c_0_13])).
+cnf(c_0_19, plain, (s(s(X1,X2),s(s(X2,X2),X1))=X1), inference(rw,[status(thm)],[c_0_14, c_0_15])).
+cnf(c_0_20, plain, (s(X1,s(s(X1,X2),s(X1,X2)))=s(X1,X2)), inference(spm,[status(thm)],[c_0_16, c_0_16])).
+cnf(c_0_21, plain, (s(s(X1,X1),s(X1,X2))=X1), inference(split_conjunct,[status(thm)],[c_0_17])).
+cnf(c_0_22, negated_conjecture, (s(s(esk1_0,esk2_0),s(esk1_0,s(esk1_0,esk2_0)))!=esk1_0), inference(rw,[status(thm)],[inference(rw,[status(thm)],[c_0_18, c_0_15]), c_0_15])).
+cnf(c_0_23, plain, (s(s(X1,X2),s(X1,s(X1,X2)))=X1), inference(rw,[status(thm)],[inference(rw,[status(thm)],[inference(spm,[status(thm)],[c_0_19, c_0_20]), c_0_21]), c_0_15])).
+cnf(c_0_24, negated_conjecture, ($false), inference(cn,[status(thm)],[inference(rw,[status(thm)],[c_0_22, c_0_23])]), ['proof']).
+% SZS output end CNFRefutation
+
+% -------------------------------------------------
+% Total SizeMalloc()ed memory: 103081048 Bytes (222101 requests)
+% Total SizeFree()ed   memory: 103081048 Bytes (222101 requests)
+% New requests:   6876 (  6685 by SecureMalloc(),    191 by SecureRealloc())
+% Total SecureMalloc()ed memory: 1150634 Bytes
+% Returned:      6876 (  6876 by FREE(),              0 by SecureRealloc())
+% SecureRealloc(ptr):    196 (   191 Allocs,      0 Frees,      5 Reallocs)
+% -------------------------------------------------
+

@@ -1,0 +1,26 @@
+SZS output start CNFRefutation
+fof(ax3, axiom, ![X1, X2]:(s(s(X1,X1),X2)=s(X2,s(X1,X1))), file('/tmp/genesis-e-nx1v59dq/p.p', ax3)).
+fof(ax5, axiom, ![X1, X2]:(s(s(X1,X2),s(X1,X1))=X1), file('/tmp/genesis-e-nx1v59dq/p.p', ax5)).
+fof(goal, conjecture, ![X1, X2]:(s(X1,s(X2,s(X1,X1)))=s(X1,X1)), file('/tmp/genesis-e-nx1v59dq/p.p', goal)).
+fof(c_0_3, plain, ![X10, X11]:(s(s(X10,X10),X11)=s(X11,s(X10,X10))), inference(variable_rename,[status(thm)],[ax3])).
+fof(c_0_4, plain, ![X14, X15]:(s(s(X14,X15),s(X14,X14))=X14), inference(variable_rename,[status(thm)],[ax5])).
+cnf(c_0_5, plain, (s(s(X1,X1),X2)=s(X2,s(X1,X1))), inference(split_conjunct,[status(thm)],[c_0_3])).
+cnf(c_0_6, plain, (s(s(X1,X2),s(X1,X1))=X1), inference(split_conjunct,[status(thm)],[c_0_4])).
+fof(c_0_7, negated_conjecture, ~(![X1, X2]:(s(X1,s(X2,s(X1,X1)))=s(X1,X1))), inference(assume_negation,[status(cth)],[goal])).
+cnf(c_0_8, plain, (s(X1,X2)=s(X2,X1)), inference(rw,[status(thm)],[inference(rw,[status(thm)],[inference(spm,[status(thm)],[c_0_5, c_0_5]), c_0_6]), c_0_6])).
+fof(c_0_9, negated_conjecture, s(esk1_0,s(esk2_0,s(esk1_0,esk1_0)))!=s(esk1_0,esk1_0), inference(fof_nnf,[status(thm)],[inference(skolemize,[status(esa)],[inference(variable_rename,[status(thm)],[inference(fof_nnf,[status(thm)],[c_0_7])])])])).
+cnf(c_0_10, plain, (s(s(X1,X2),s(X2,X2))=X2), inference(spm,[status(thm)],[c_0_6, c_0_8])).
+cnf(c_0_11, negated_conjecture, (s(esk1_0,s(esk2_0,s(esk1_0,esk1_0)))!=s(esk1_0,esk1_0)), inference(split_conjunct,[status(thm)],[c_0_9])).
+cnf(c_0_12, plain, (s(X1,s(X2,s(X1,X1)))=s(X1,X1)), inference(rw,[status(thm)],[inference(spm,[status(thm)],[c_0_10, c_0_10]), c_0_8])).
+cnf(c_0_13, negated_conjecture, ($false), inference(cn,[status(thm)],[inference(rw,[status(thm)],[c_0_11, c_0_12])]), ['proof']).
+% SZS output end CNFRefutation
+
+% -------------------------------------------------
+% Total SizeMalloc()ed memory: 77426528 Bytes (154472 requests)
+% Total SizeFree()ed   memory: 77426528 Bytes (154472 requests)
+% New requests:   3008 (  2809 by SecureMalloc(),    199 by SecureRealloc())
+% Total SecureMalloc()ed memory: 812546 Bytes
+% Returned:      3008 (  3008 by FREE(),              0 by SecureRealloc())
+% SecureRealloc(ptr):    204 (   199 Allocs,      0 Frees,      5 Reallocs)
+% -------------------------------------------------
+

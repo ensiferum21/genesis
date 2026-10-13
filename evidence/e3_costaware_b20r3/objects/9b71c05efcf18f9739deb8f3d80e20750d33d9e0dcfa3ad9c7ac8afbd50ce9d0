@@ -1,0 +1,24 @@
+SZS output start CNFRefutation
+fof(goal, conjecture, ![X1, X2]:(s(s(X1,X1),X1)=s(X2,s(X2,X2))), file('/tmp/genesis-e-73uies9z/p.p', goal)).
+fof(ax3, axiom, ![X1, X2]:(s(X1,s(X1,X1))=s(X2,s(X2,X2))), file('/tmp/genesis-e-73uies9z/p.p', ax3)).
+fof(ax5, axiom, ![X1, X2]:(s(s(X1,X2),s(X2,X2))=X2), file('/tmp/genesis-e-73uies9z/p.p', ax5)).
+fof(c_0_3, negated_conjecture, ~(![X1, X2]:(s(s(X1,X1),X1)=s(X2,s(X2,X2)))), inference(assume_negation,[status(cth)],[goal])).
+fof(c_0_4, plain, ![X10, X11]:(s(X10,s(X10,X10))=s(X11,s(X11,X11))), inference(variable_rename,[status(thm)],[ax3])).
+fof(c_0_5, plain, ![X14, X15]:(s(s(X14,X15),s(X15,X15))=X15), inference(variable_rename,[status(thm)],[ax5])).
+fof(c_0_6, negated_conjecture, s(s(esk1_0,esk1_0),esk1_0)!=s(esk2_0,s(esk2_0,esk2_0)), inference(fof_nnf,[status(thm)],[inference(skolemize,[status(esa)],[inference(variable_rename,[status(thm)],[inference(fof_nnf,[status(thm)],[c_0_3])])])])).
+cnf(c_0_7, plain, (s(X1,s(X1,X1))=s(X2,s(X2,X2))), inference(split_conjunct,[status(thm)],[c_0_4])).
+cnf(c_0_8, plain, (s(s(X1,X2),s(X2,X2))=X2), inference(split_conjunct,[status(thm)],[c_0_5])).
+cnf(c_0_9, negated_conjecture, (s(s(esk1_0,esk1_0),esk1_0)!=s(esk2_0,s(esk2_0,esk2_0))), inference(split_conjunct,[status(thm)],[c_0_6])).
+cnf(c_0_10, plain, (s(X1,s(X1,X1))=s(s(X2,X2),X2)), inference(spm,[status(thm)],[c_0_7, c_0_8])).
+cnf(c_0_11, negated_conjecture, ($false), inference(sr,[status(thm)],[c_0_9, c_0_10]), ['proof']).
+% SZS output end CNFRefutation
+
+% -------------------------------------------------
+% Total SizeMalloc()ed memory: 90078480 Bytes (187958 requests)
+% Total SizeFree()ed   memory: 90078480 Bytes (187958 requests)
+% New requests:   5323 (  5135 by SecureMalloc(),    188 by SecureRealloc())
+% Total SecureMalloc()ed memory: 1016650 Bytes
+% Returned:      5323 (  5323 by FREE(),              0 by SecureRealloc())
+% SecureRealloc(ptr):    193 (   188 Allocs,      0 Frees,      5 Reallocs)
+% -------------------------------------------------
+

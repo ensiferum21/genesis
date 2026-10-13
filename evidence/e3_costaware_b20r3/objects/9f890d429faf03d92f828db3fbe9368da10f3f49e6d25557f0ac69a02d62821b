@@ -1,0 +1,26 @@
+SZS output start CNFRefutation
+fof(goal, conjecture, ![X1]:(plus(n(n(X1)),X1)=X1), file('/tmp/genesis-e-kwdwgoml/p.p', goal)).
+fof(ax3, axiom, ![X1, X2]:(plus(n(plus(n(X1),X2)),X1)=X1), file('/tmp/genesis-e-kwdwgoml/p.p', ax3)).
+fof(ax0, axiom, ![X1, X2]:(plus(X1,X2)=plus(X2,X1)), file('/tmp/genesis-e-kwdwgoml/p.p', ax0)).
+fof(c_0_3, negated_conjecture, ~(![X1]:(plus(n(n(X1)),X1)=X1)), inference(assume_negation,[status(cth)],[goal])).
+fof(c_0_4, plain, ![X11, X12]:(plus(n(plus(n(X11),X12)),X11)=X11), inference(variable_rename,[status(thm)],[ax3])).
+fof(c_0_5, plain, ![X4, X5]:(plus(X4,X5)=plus(X5,X4)), inference(variable_rename,[status(thm)],[ax0])).
+fof(c_0_6, negated_conjecture, plus(n(n(esk1_0)),esk1_0)!=esk1_0, inference(fof_nnf,[status(thm)],[inference(skolemize,[status(esa)],[inference(variable_rename,[status(thm)],[inference(fof_nnf,[status(thm)],[c_0_3])])])])).
+cnf(c_0_7, plain, (plus(n(plus(n(X1),X2)),X1)=X1), inference(split_conjunct,[status(thm)],[c_0_4])).
+cnf(c_0_8, plain, (plus(X1,X2)=plus(X2,X1)), inference(split_conjunct,[status(thm)],[c_0_5])).
+cnf(c_0_9, negated_conjecture, (plus(n(n(esk1_0)),esk1_0)!=esk1_0), inference(split_conjunct,[status(thm)],[c_0_6])).
+cnf(c_0_10, plain, (plus(X1,n(plus(n(X1),X2)))=X1), inference(rw,[status(thm)],[c_0_7, c_0_8])).
+cnf(c_0_11, negated_conjecture, (plus(esk1_0,n(n(esk1_0)))!=esk1_0), inference(rw,[status(thm)],[c_0_9, c_0_8])).
+cnf(c_0_12, plain, (plus(X1,n(n(X1)))=X1), inference(spm,[status(thm)],[c_0_10, c_0_10])).
+cnf(c_0_13, negated_conjecture, ($false), inference(cn,[status(thm)],[inference(rw,[status(thm)],[c_0_11, c_0_12])]), ['proof']).
+% SZS output end CNFRefutation
+
+% -------------------------------------------------
+% Total SizeMalloc()ed memory: 71162584 Bytes (137610 requests)
+% Total SizeFree()ed   memory: 71162584 Bytes (137610 requests)
+% New requests:   1851 (  1718 by SecureMalloc(),    133 by SecureRealloc())
+% Total SecureMalloc()ed memory: 716465 Bytes
+% Returned:      1851 (  1851 by FREE(),              0 by SecureRealloc())
+% SecureRealloc(ptr):    141 (   133 Allocs,      0 Frees,      8 Reallocs)
+% -------------------------------------------------
+

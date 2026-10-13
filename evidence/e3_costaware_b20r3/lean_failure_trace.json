@@ -1,0 +1,47 @@
+{
+ "runs/ba_huntington@614/fixed.json": {
+  "record": "12a84e0f51218a32575491686b40cea8b48f5d406be111930eb8bb237f7d4088",
+  "errors": [
+   {
+    "line": 335,
+    "message": ": `simp` made no progress",
+    "declaration": "theorem L1_step_c_0_22 (U : Type) [Nonempty U] (s_n : U \u2192 U) (s_plus : U \u2192 U \u2192 U) (h0 : (\u2200 v_X1 v_X2 v_X3 : U, ((s_plus (s_n (s_plus v_X1 v_X2)) (s_plus v_X3 (s_n (s_plus v_X2 (s_n v_X1))))) = (s_plus v_X3 (s_n v_X2))))) (h1 : (\u2200 v_X1 v_X2 : U, ((s_plus v_X1 (s_n (s_plus v_X1 v_X2))) = (s_plus (s_n "
+   }
+  ]
+ },
+ "runs/ba_huntington@612/fixed.json": {
+  "record": "077541238f56ed357a026f9e742c10de517728d20295a299d535010079fd6e9a",
+  "errors": [
+   {
+    "line": 335,
+    "message": ": `simp` made no progress",
+    "declaration": "theorem L1_step_c_0_22 (U : Type) [Nonempty U] (s_n : U \u2192 U) (s_plus : U \u2192 U \u2192 U) (h0 : (\u2200 v_X1 v_X2 v_X3 : U, ((s_plus (s_n (s_plus v_X1 v_X2)) (s_plus v_X3 (s_n (s_plus v_X2 (s_n v_X1))))) = (s_plus v_X3 (s_n v_X2))))) (h1 : (\u2200 v_X1 v_X2 : U, ((s_plus v_X1 (s_n (s_plus v_X1 v_X2))) = (s_plus (s_n "
+   }
+  ]
+ },
+ "runs/ba_sheffer@611/learned2.json": {
+  "record": "3164a30f0e221478db66203fefc5c58617f1dc0978cd40cdd465df9420872af2",
+  "errors": [
+   {
+    "line": 2355,
+    "message": ": `simp` made no progress",
+    "declaration": "theorem L18_step_c_0_7 (U : Type) [Nonempty U] (s_s : U \u2192 U \u2192 U) (h0 : (\u2200 v_X1 v_X2 v_X3 : U, ((s_s (s_s (s_s v_X1 v_X2) v_X3) (s_s v_X3 v_X3)) = v_X3))) :"
+   },
+   {
+    "line": 2415,
+    "message": ": `simp` made no progress",
+    "declaration": "theorem L19_step_c_0_9 (U : Type) [Nonempty U] (s_s : U \u2192 U \u2192 U) (h0 : (\u2200 v_X1 v_X2 v_X3 : U, ((s_s (s_s (s_s v_X1 v_X2) v_X3) (s_s v_X3 v_X3)) = v_X3))) :"
+   }
+  ]
+ },
+ "runs/ba_huntington@613/fixed.json": {
+  "record": "000a16dd6ef6a9fb5bb0731b678791fd54945531f1e6bc873ccf16ba6515d585",
+  "errors": [
+   {
+    "line": 2141,
+    "message": ": unsolved goals",
+    "declaration": "theorem G_step_c_0_40 (U : Type) [Nonempty U] (s_n : U \u2192 U) (s_plus : U \u2192 U \u2192 U) (h0 : (\u2200 v_X1 v_X2 : U, ((s_plus (s_n (s_plus v_X1 v_X2)) (s_n (s_plus (s_n v_X2) v_X1))) = (s_n v_X1)))) (h1 : (\u2200 v_X1 v_X2 v_X3 : U, ((s_plus v_X1 (s_plus (s_n v_X1) v_X2)) = (s_plus v_X3 (s_n v_X3))))) (h2 : (\u2200 v_X1 "
+   }
+  ]
+ }
+}

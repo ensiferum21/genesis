@@ -1,0 +1,24 @@
+SZS output start CNFRefutation
+fof(goal, conjecture, ![X1, X2]:(s(s(X1,X2),s(s(X1,s(X1,X1)),X1))=s(s(X2,X1),s(X1,X1))), file('/tmp/genesis-e-h0g740hi/p.p', goal)).
+fof(ax3, axiom, ![X1, X2]:(s(s(X1,X2),s(X2,X2))=X2), file('/tmp/genesis-e-h0g740hi/p.p', ax3)).
+fof(ax8, axiom, ![X1, X2]:(s(s(X1,X2),s(X1,X1))=X1), file('/tmp/genesis-e-h0g740hi/p.p', ax8)).
+fof(c_0_3, negated_conjecture, ~(![X1, X2]:(s(s(X1,X2),s(s(X1,s(X1,X1)),X1))=s(s(X2,X1),s(X1,X1)))), inference(assume_negation,[status(cth)],[goal])).
+fof(c_0_4, plain, ![X10, X11]:(s(s(X10,X11),s(X11,X11))=X11), inference(variable_rename,[status(thm)],[ax3])).
+fof(c_0_5, negated_conjecture, s(s(esk1_0,esk2_0),s(s(esk1_0,s(esk1_0,esk1_0)),esk1_0))!=s(s(esk2_0,esk1_0),s(esk1_0,esk1_0)), inference(fof_nnf,[status(thm)],[inference(skolemize,[status(esa)],[inference(variable_rename,[status(thm)],[inference(fof_nnf,[status(thm)],[c_0_3])])])])).
+cnf(c_0_6, plain, (s(s(X1,X2),s(X2,X2))=X2), inference(split_conjunct,[status(thm)],[c_0_4])).
+fof(c_0_7, plain, ![X19, X20]:(s(s(X19,X20),s(X19,X19))=X19), inference(variable_rename,[status(thm)],[ax8])).
+cnf(c_0_8, negated_conjecture, (s(s(esk1_0,esk2_0),s(s(esk1_0,s(esk1_0,esk1_0)),esk1_0))!=s(s(esk2_0,esk1_0),s(esk1_0,esk1_0))), inference(split_conjunct,[status(thm)],[c_0_5])).
+cnf(c_0_9, plain, (s(s(X1,s(X2,X2)),X2)=s(X2,X2)), inference(spm,[status(thm)],[c_0_6, c_0_6])).
+cnf(c_0_10, plain, (s(s(X1,X2),s(X1,X1))=X1), inference(split_conjunct,[status(thm)],[c_0_7])).
+cnf(c_0_11, negated_conjecture, ($false), inference(cn,[status(thm)],[inference(rw,[status(thm)],[inference(rw,[status(thm)],[inference(rw,[status(thm)],[c_0_8, c_0_9]), c_0_10]), c_0_6])]), ['proof']).
+% SZS output end CNFRefutation
+
+% -------------------------------------------------
+% Total SizeMalloc()ed memory: 80741904 Bytes (164054 requests)
+% Total SizeFree()ed   memory: 80741904 Bytes (164054 requests)
+% New requests:   4085 (  3890 by SecureMalloc(),    195 by SecureRealloc())
+% Total SecureMalloc()ed memory: 916546 Bytes
+% Returned:      4085 (  4085 by FREE(),              0 by SecureRealloc())
+% SecureRealloc(ptr):    200 (   195 Allocs,      0 Frees,      5 Reallocs)
+% -------------------------------------------------
+

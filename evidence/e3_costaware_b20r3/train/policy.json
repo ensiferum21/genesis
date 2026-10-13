@@ -1,0 +1,134 @@
+{
+ "amortized_share_per_use_ns": 9858547848,
+ "charging": "PRIMARY comparison does not charge training (declared); see the module docstring",
+ "frozen_before_evaluation": true,
+ "learned": {
+  "examples": 414,
+  "features": [
+   "bias",
+   "size",
+   "variables",
+   "imbalance",
+   "variable_side",
+   "target_overlap"
+  ],
+  "fit_cpu_ns": 1950425452,
+  "positives": 215,
+  "training_brier": 0.2392,
+  "weights": [
+   0.633392695836791,
+   -0.7101382698239251,
+   -0.21684947679393418,
+   -0.4640687482359473,
+   -0.23762446074551843,
+   0.5459385844668846
+  ],
+  "weights_sha256": "32a2a0ffbebe503c379f640145fd0f603f925733079edb940796a212c0ac6b0f"
+ },
+ "learned2": {
+  "fit_cpu_ns": 4138842142,
+  "model_sha256": {
+   "ba_huntington": "c7531eedcc4eef66b406215b6f050d062ad5b2c8a271dab635dacf7ef7e10150",
+   "ba_sheffer": "b838bbde725c1d1dae2feaf35b04c6b80fa42589bec4dfa65d483ada9fbbf514"
+  },
+  "models": {
+   "ba_huntington": {
+    "cost_fail": 1.0,
+    "cost_floor": 0.005,
+    "cost_ok": 0.0248,
+    "cost_ok_by_size": {
+     "1": 0.2338,
+     "2": 0.0342,
+     "3": 0.0079,
+     "4": 0.0187,
+     "5": 0.0413
+    },
+    "examples": 154,
+    "features": [
+     "bias",
+     "size",
+     "variables",
+     "imbalance",
+     "variable_side",
+     "depth",
+     "overlap",
+     "frequency"
+    ],
+    "model_sha256": "c7531eedcc4eef66b406215b6f050d062ad5b2c8a271dab635dacf7ef7e10150",
+    "proved": 154,
+    "schema": "genesis-research-policy-cost-aware-v1",
+    "used": 86,
+    "w_prove": [
+     1.558440291093079,
+     0.6591135822393765,
+     0.6873889929374245,
+     0.3462685966081306,
+     0.5572633994800903,
+     0.9657456216571814,
+     0.9890551102089181,
+     0.8450045928963954
+    ],
+    "w_use": [
+     0.21855944521760812,
+     -0.701982130788116,
+     0.4780853946636749,
+     0.048310494277268905,
+     -0.08997849010285762,
+     -0.005314887092099614,
+     0.05308716002704002,
+     0.17407708344806683
+    ]
+   },
+   "ba_sheffer": {
+    "cost_fail": 1.0713,
+    "cost_floor": 0.005,
+    "cost_ok": 0.028,
+    "cost_ok_by_size": {
+     "2": 0.0092,
+     "3": 0.0155,
+     "4": 0.0315
+    },
+    "examples": 204,
+    "features": [
+     "bias",
+     "size",
+     "variables",
+     "imbalance",
+     "variable_side",
+     "depth",
+     "overlap",
+     "frequency"
+    ],
+    "model_sha256": "b838bbde725c1d1dae2feaf35b04c6b80fa42589bec4dfa65d483ada9fbbf514",
+    "proved": 195,
+    "schema": "genesis-research-policy-cost-aware-v1",
+    "used": 116,
+    "w_prove": [
+     1.5043638933898114,
+     0.5572819103558698,
+     -0.5441346788827178,
+     -0.0037561972583727084,
+     -0.5070737727516567,
+     0.6734855192373636,
+     1.026643030857228,
+     0.7852465390779098
+    ],
+    "w_use": [
+     -0.30531050928329545,
+     -0.7008489180983734,
+     0.972009800319703,
+     -0.6497627865670423,
+     -0.42286529393696975,
+     -1.2012344964769752,
+     1.5247305249542777,
+     0.9813578630669488
+    ]
+   }
+  }
+ },
+ "policy_sha256": "b31ef8d4f51ae0fed1c49289244cf50e64837e3ab26f8353bbd92eb580d9c0d4",
+ "training_cpu_ns": {
+  "fit": 6089267594,
+  "research_and_dev_evaluation": 72779115190
+ }
+}

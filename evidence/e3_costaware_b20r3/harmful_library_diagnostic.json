@@ -1,0 +1,25 @@
+{
+ "targets": [
+  "![X]: (![Y]: (![Z]: (n(plus(plus(X,n(X)),Y)) = n(plus(Z,plus(n(Z),Z))))))",
+  "![X]: (![Y]: (n(plus(plus(X,plus(X,X)),X)) = plus(n(X),n(plus(X,Y)))))",
+  "![X]: (n(n(n(X))) = n(plus(plus(X,X),X)))",
+  "![X]: (![Y]: (![Z]: (plus(plus(X,Y),plus(n(Z),Z)) = plus(Y,plus(X,plus(n(Y),Z))))))",
+  "![X]: (![Y]: (n(plus(n(n(X)),Y)) = n(plus(plus(plus(X,Y),X),Y))))",
+  "![X]: (![Y]: (plus(n(plus(X,plus(X,X))),Y) = plus(plus(Y,Y),n(plus(Y,X)))))",
+  "![X]: (![Y]: (plus(plus(n(X),plus(Y,X)),Y) = plus(plus(X,n(X)),plus(X,Y))))",
+  "![X]: (![Y]: (n(plus(plus(plus(X,X),Y),X)) = n(plus(X,plus(Y,plus(Y,Y))))))"
+ ],
+ "results": {
+  "empty@1s": 7,
+  "empty@4s": 8,
+  "harmful(L0,L1)@1s": 0,
+  "harmful(L0,L1)@4s": 0,
+  "L0 only@1s": 0,
+  "L0 only@4s": 0,
+  "idempotence@1s": 8,
+  "idempotence@4s": 8,
+  "idem+L0+L1@1s": 8,
+  "idem+L0+L1@4s": 8
+ },
+ "note": "B20_R3 post-study DEV diagnostic of the harmful learned2 library (Huntington@614); not part of the frozen study"
+}

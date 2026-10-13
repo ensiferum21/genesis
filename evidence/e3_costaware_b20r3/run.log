@@ -1,0 +1,88 @@
+[  144.0s] exposure: {'files_scanned': 435, 'statements': 12007, 'pools_regenerated': 30, 'roots': ['learning_b20', 'orbit_probe_b20r', 'e3_fresh_b20r', 'headroom_pilot_b20r3']}, study-visible 2329
+[  159.2s] calibrate ba_sheffer 5-8: empty-library rate 0.65
+[  174.6s] calibrate ba_sheffer 6-9: empty-library rate 0.3
+[  185.8s] calibrate ba_sheffer 7-10: empty-library rate 0.5
+[  200.5s] calibrate ba_sheffer 8-11: empty-library rate 0.35
+[  208.9s] calibrate ba_sheffer: range [6, 9], exhaust 7.156 s -> cap 1.789 s
+[  220.6s] calibrate ba_huntington 5-8: empty-library rate 0.7
+[  228.0s] calibrate ba_huntington 6-9: empty-library rate 0.9
+[  236.6s] calibrate ba_huntington 7-10: empty-library rate 0.85
+[  243.8s] calibrate ba_huntington 8-11: empty-library rate 0.95
+[  248.0s] calibrate ba_huntington: range [5, 8], exhaust 2.423 s -> cap 0.606 s
+[  256.7s] setup frozen: partition 38d1e5cc4703650c
+[  264.3s] train ba_sheffer@511 fixed: library 26, dev 5/10, v2 used 14
+[  271.5s] train ba_sheffer@511 random: library 10, dev 5/10, v2 used 7
+[  279.3s] train ba_sheffer@511 heuristic: library 26, dev 5/10, v2 used 14
+[  287.8s] train ba_sheffer@512 fixed: library 26, dev 6/10, v2 used 16
+[  298.6s] train ba_sheffer@512 random: library 9, dev 3/10, v2 used 7
+[  307.0s] train ba_sheffer@512 heuristic: library 26, dev 6/10, v2 used 16
+[  314.6s] train ba_sheffer@513 fixed: library 27, dev 5/10, v2 used 15
+[  323.3s] train ba_sheffer@513 random: library 18, dev 4/10, v2 used 12
+[  330.9s] train ba_sheffer@513 heuristic: library 27, dev 5/10, v2 used 15
+[  332.0s] train ba_huntington@511 fixed: library 27, dev 10/10, v2 used 13
+[  333.0s] train ba_huntington@511 random: library 14, dev 10/10, v2 used 8
+[  333.9s] train ba_huntington@511 heuristic: library 16, dev 10/10, v2 used 11
+[  334.9s] train ba_huntington@512 fixed: library 27, dev 10/10, v2 used 15
+[  335.8s] train ba_huntington@512 random: library 13, dev 10/10, v2 used 10
+[  336.8s] train ba_huntington@512 heuristic: library 26, dev 10/10, v2 used 15
+[  337.8s] train ba_huntington@513 fixed: library 18, dev 10/10, v2 used 7
+[  338.7s] train ba_huntington@513 random: library 2, dev 10/10, v2 used 2
+[  339.8s] train ba_huntington@513 heuristic: library 11, dev 10/10, v2 used 5
+[  345.9s] policies frozen: learned 32a2a0ffbebe503c, learned2 {'ba_sheffer': 'b838bbde725c', 'ba_huntington': 'c7531eedcc4e'}; training CPU 78.9 s
+[  392.2s] ba_sheffer@611 fixed: eligible 8/25 (empty 3), library 28, cpu 1.75/1.79 s, prep 0 ms
+[  414.9s] ba_sheffer@611 random: eligible 7/25 (empty 3), library 19, cpu 1.75/1.79 s, prep 0 ms
+[  438.2s] ba_sheffer@611 heuristic: eligible 8/25 (empty 3), library 28, cpu 1.76/1.79 s, prep 11 ms
+[  460.3s] ba_sheffer@611 bandit: eligible 7/25 (empty 3), library 12, cpu 1.75/1.79 s, prep 0 ms
+[  482.5s] ba_sheffer@611 learned: eligible 8/25 (empty 3), library 67, cpu 1.65/1.79 s, prep 525 ms
+[  503.9s] ba_sheffer@611 learned2: eligible 8/25 (empty 3), library 76, cpu 1.76/1.79 s, prep 13 ms
+[  549.2s] ba_sheffer@611 ORACLE diagnostic: exhaust 8, oracle 8 (47 lemmas)
+[  597.4s] ba_sheffer@612 fixed: eligible 5/25 (empty 3), library 27, cpu 1.75/1.79 s, prep 0 ms
+[  620.2s] ba_sheffer@612 random: eligible 6/25 (empty 3), library 26, cpu 1.75/1.79 s, prep 0 ms
+[  644.0s] ba_sheffer@612 heuristic: eligible 5/25 (empty 3), library 27, cpu 1.75/1.79 s, prep 10 ms
+[  669.2s] ba_sheffer@612 bandit: eligible 5/25 (empty 3), library 20, cpu 1.75/1.79 s, prep 0 ms
+[  693.1s] ba_sheffer@612 learned: eligible 6/25 (empty 3), library 73, cpu 1.67/1.79 s, prep 483 ms
+[  716.3s] ba_sheffer@612 learned2: eligible 6/25 (empty 3), library 74, cpu 1.76/1.79 s, prep 13 ms
+[  766.0s] ba_sheffer@612 ORACLE diagnostic: exhaust 6, oracle 6 (52 lemmas)
+[  814.1s] ba_sheffer@613 fixed: eligible 5/25 (empty 3), library 27, cpu 1.76/1.79 s, prep 0 ms
+[  836.8s] ba_sheffer@613 random: eligible 6/25 (empty 3), library 46, cpu 1.75/1.79 s, prep 0 ms
+[  861.3s] ba_sheffer@613 heuristic: eligible 5/25 (empty 3), library 27, cpu 1.75/1.79 s, prep 12 ms
+[  884.5s] ba_sheffer@613 bandit: eligible 5/25 (empty 3), library 13, cpu 1.75/1.79 s, prep 0 ms
+[  908.3s] ba_sheffer@613 learned: eligible 6/25 (empty 3), library 73, cpu 1.66/1.79 s, prep 507 ms
+[  932.0s] ba_sheffer@613 learned2: eligible 6/25 (empty 3), library 75, cpu 1.76/1.79 s, prep 13 ms
+[  980.6s] ba_sheffer@613 ORACLE diagnostic: exhaust 6, oracle 6 (52 lemmas)
+[ 1022.2s] ba_sheffer@614 fixed: eligible 8/25 (empty 7), library 26, cpu 1.76/1.79 s, prep 0 ms
+[ 1043.7s] ba_sheffer@614 random: eligible 8/25 (empty 7), library 32, cpu 1.65/1.79 s, prep 0 ms
+[ 1064.8s] ba_sheffer@614 heuristic: eligible 8/25 (empty 7), library 26, cpu 1.75/1.79 s, prep 11 ms
+[ 1089.4s] ba_sheffer@614 bandit: eligible 8/25 (empty 7), library 20, cpu 1.75/1.79 s, prep 0 ms
+[ 1113.4s] ba_sheffer@614 learned: eligible 7/25 (empty 7), library 75, cpu 1.66/1.79 s, prep 420 ms
+[ 1135.3s] ba_sheffer@614 learned2: eligible 7/25 (empty 7), library 51, cpu 1.76/1.79 s, prep 13 ms
+[ 1183.8s] ba_sheffer@614 ORACLE diagnostic: exhaust 6, oracle 7 (50 lemmas)
+[ 1198.5s] ba_huntington@611 fixed: eligible 25/25 (empty 18), library 20, cpu 0.46/0.61 s, prep 0 ms
+[ 1199.8s] ba_huntington@611 random: eligible 25/25 (empty 18), library 11, cpu 0.46/0.61 s, prep 0 ms
+[ 1201.4s] ba_huntington@611 heuristic: eligible 25/25 (empty 18), library 21, cpu 0.46/0.61 s, prep 12 ms
+[ 1203.0s] ba_huntington@611 bandit: eligible 25/25 (empty 18), library 20, cpu 0.46/0.61 s, prep 0 ms
+[ 1216.4s] ba_huntington@611 learned: eligible 18/25 (empty 18), library 0, cpu 0.46/0.61 s, prep 464 ms
+[ 1217.9s] ba_huntington@611 learned2: eligible 25/25 (empty 18), library 21, cpu 0.46/0.61 s, prep 17 ms
+[ 1224.4s] ba_huntington@611 ORACLE diagnostic: exhaust 25, oracle 25 (54 lemmas)
+[ 1236.6s] ba_huntington@612 fixed: eligible 25/25 (empty 20), library 34, cpu 0.46/0.61 s, prep 0 ms
+[ 1239.1s] ba_huntington@612 random: eligible 24/25 (empty 20), library 18, cpu 0.47/0.61 s, prep 0 ms
+[ 1240.8s] ba_huntington@612 heuristic: eligible 25/25 (empty 20), library 28, cpu 0.46/0.61 s, prep 12 ms
+[ 1243.0s] ba_huntington@612 bandit: eligible 25/25 (empty 20), library 32, cpu 0.47/0.61 s, prep 0 ms
+[ 1253.9s] ba_huntington@612 learned: eligible 20/25 (empty 20), library 0, cpu 0.56/0.61 s, prep 424 ms
+[ 1276.6s] ba_huntington@612 learned2: eligible 4/25 (empty 20), library 2, cpu 0.56/0.61 s, prep 16 ms
+[ 1284.9s] ba_huntington@612 ORACLE diagnostic: exhaust 24, oracle 25 (44 lemmas)
+[ 1295.7s] ba_huntington@613 fixed: eligible 25/25 (empty 23), library 13, cpu 0.46/0.61 s, prep 0 ms
+[ 1297.1s] ba_huntington@613 random: eligible 25/25 (empty 23), library 9, cpu 0.46/0.61 s, prep 0 ms
+[ 1299.2s] ba_huntington@613 heuristic: eligible 25/25 (empty 23), library 11, cpu 0.47/0.61 s, prep 12 ms
+[ 1300.5s] ba_huntington@613 bandit: eligible 25/25 (empty 23), library 8, cpu 0.46/0.61 s, prep 0 ms
+[ 1309.9s] ba_huntington@613 learned: eligible 23/25 (empty 23), library 0, cpu 0.56/0.61 s, prep 408 ms
+[ 1311.6s] ba_huntington@613 learned2: eligible 25/25 (empty 23), library 19, cpu 0.46/0.61 s, prep 15 ms
+[ 1318.5s] ba_huntington@613 ORACLE diagnostic: exhaust 25, oracle 25 (57 lemmas)
+[ 1332.1s] ba_huntington@614 fixed: eligible 25/25 (empty 21), library 29, cpu 0.46/0.61 s, prep 0 ms
+[ 1333.3s] ba_huntington@614 random: eligible 25/25 (empty 21), library 10, cpu 0.47/0.61 s, prep 0 ms
+[ 1335.3s] ba_huntington@614 heuristic: eligible 25/25 (empty 21), library 24, cpu 0.46/0.61 s, prep 12 ms
+[ 1336.9s] ba_huntington@614 bandit: eligible 25/25 (empty 21), library 28, cpu 0.46/0.61 s, prep 0 ms
+[ 1349.1s] ba_huntington@614 learned: eligible 21/25 (empty 21), library 1, cpu 0.56/0.61 s, prep 379 ms
+[ 1375.5s] ba_huntington@614 learned2: eligible 1/25 (empty 21), library 2, cpu 0.56/0.61 s, prep 16 ms
+[ 1387.7s] ba_huntington@614 ORACLE diagnostic: exhaust 25, oracle 25 (57 lemmas)
+[ 1387.7s] phase 1 done in 1388 s

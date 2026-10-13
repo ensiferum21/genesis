@@ -1,0 +1,41 @@
+SZS output start CNFRefutation
+fof(ax7, axiom, ![X1, X2]:(s(s(X1,X2),s(X2,X2))=X2), file('/tmp/genesis-e-8vq9lxrw/p.p', ax7)).
+fof(ax1, axiom, ![X1, X2]:(s(X1,s(X2,s(X2,X2)))=s(X1,X1)), file('/tmp/genesis-e-8vq9lxrw/p.p', ax1)).
+fof(ax2, axiom, ![X1, X2, X3]:(s(s(X1,s(X2,X3)),s(X1,s(X2,X3)))=s(s(s(X2,X2),X1),s(s(X3,X3),X1))), file('/tmp/genesis-e-8vq9lxrw/p.p', ax2)).
+fof(goal, conjecture, ![X1, X2]:(s(s(s(X1,X1),X2),X2)=s(X1,X2)), file('/tmp/genesis-e-8vq9lxrw/p.p', goal)).
+fof(ax10, axiom, ![X1, X2]:(s(s(X1,X1),s(X1,X2))=X1), file('/tmp/genesis-e-8vq9lxrw/p.p', ax10)).
+fof(ax9, axiom, ![X1, X2]:(s(s(X1,X1),s(X2,X1))=X1), file('/tmp/genesis-e-8vq9lxrw/p.p', ax9)).
+fof(ax8, axiom, ![X1, X2]:(s(s(X1,X2),s(X1,X1))=X1), file('/tmp/genesis-e-8vq9lxrw/p.p', ax8)).
+fof(c_0_7, plain, ![X18, X19]:(s(s(X18,X19),s(X19,X19))=X19), inference(variable_rename,[status(thm)],[ax7])).
+fof(c_0_8, plain, ![X5, X6]:(s(X5,s(X6,s(X6,X6)))=s(X5,X5)), inference(variable_rename,[status(thm)],[ax1])).
+cnf(c_0_9, plain, (s(s(X1,X2),s(X2,X2))=X2), inference(split_conjunct,[status(thm)],[c_0_7])).
+cnf(c_0_10, plain, (s(X1,s(X2,s(X2,X2)))=s(X1,X1)), inference(split_conjunct,[status(thm)],[c_0_8])).
+fof(c_0_11, plain, ![X7, X8, X9]:(s(s(X7,s(X8,X9)),s(X7,s(X8,X9)))=s(s(s(X8,X8),X7),s(s(X9,X9),X7))), inference(variable_rename,[status(thm)],[ax2])).
+cnf(c_0_12, plain, (s(s(X1,X1),s(X2,s(X2,X2)))=X1), inference(spm,[status(thm)],[c_0_9, c_0_10])).
+cnf(c_0_13, plain, (s(s(X1,s(X2,X3)),s(X1,s(X2,X3)))=s(s(s(X2,X2),X1),s(s(X3,X3),X1))), inference(split_conjunct,[status(thm)],[c_0_11])).
+fof(c_0_14, negated_conjecture, ~(![X1, X2]:(s(s(s(X1,X1),X2),X2)=s(X1,X2))), inference(assume_negation,[status(cth)],[goal])).
+fof(c_0_15, plain, ![X24, X25]:(s(s(X24,X24),s(X24,X25))=X24), inference(variable_rename,[status(thm)],[ax10])).
+fof(c_0_16, plain, ![X22, X23]:(s(s(X22,X22),s(X23,X22))=X22), inference(variable_rename,[status(thm)],[ax9])).
+cnf(c_0_17, plain, (s(X1,s(X2,X2))=s(s(X2,X2),X1)), inference(rw,[status(thm)],[inference(spm,[status(thm)],[c_0_12, c_0_13]), c_0_12])).
+fof(c_0_18, negated_conjecture, s(s(s(esk1_0,esk1_0),esk2_0),esk2_0)!=s(esk1_0,esk2_0), inference(fof_nnf,[status(thm)],[inference(skolemize,[status(esa)],[inference(variable_rename,[status(thm)],[inference(fof_nnf,[status(thm)],[c_0_14])])])])).
+cnf(c_0_19, plain, (s(s(X1,X1),s(X1,X2))=X1), inference(split_conjunct,[status(thm)],[c_0_15])).
+cnf(c_0_20, plain, (s(s(X1,X1),s(X2,X1))=X1), inference(split_conjunct,[status(thm)],[c_0_16])).
+cnf(c_0_21, plain, (s(X1,X2)=s(X2,X1)), inference(rw,[status(thm)],[inference(rw,[status(thm)],[inference(spm,[status(thm)],[c_0_17, c_0_17]), c_0_9]), c_0_9])).
+fof(c_0_22, plain, ![X20, X21]:(s(s(X20,X21),s(X20,X20))=X20), inference(variable_rename,[status(thm)],[ax8])).
+cnf(c_0_23, negated_conjecture, (s(s(s(esk1_0,esk1_0),esk2_0),esk2_0)!=s(esk1_0,esk2_0)), inference(split_conjunct,[status(thm)],[c_0_18])).
+cnf(c_0_24, plain, (s(X1,s(X2,s(s(X3,X3),X1)))=s(X1,s(X3,X2))), inference(rw,[status(thm)],[inference(rw,[status(thm)],[inference(rw,[status(thm)],[inference(rw,[status(thm)],[inference(spm,[status(thm)],[c_0_13, c_0_13]), c_0_19]), c_0_19]), c_0_20]), c_0_21])).
+cnf(c_0_25, plain, (s(s(X1,X2),s(X1,X1))=X1), inference(split_conjunct,[status(thm)],[c_0_22])).
+cnf(c_0_26, negated_conjecture, (s(esk2_0,s(esk2_0,s(esk1_0,esk1_0)))!=s(esk1_0,esk2_0)), inference(rw,[status(thm)],[inference(rw,[status(thm)],[c_0_23, c_0_17]), c_0_21])).
+cnf(c_0_27, plain, (s(X1,s(X1,s(X2,X2)))=s(X1,X2)), inference(rw,[status(thm)],[inference(rw,[status(thm)],[inference(spm,[status(thm)],[c_0_24, c_0_12]), c_0_25]), c_0_25])).
+cnf(c_0_28, negated_conjecture, ($false), inference(cn,[status(thm)],[inference(rw,[status(thm)],[inference(rw,[status(thm)],[c_0_26, c_0_27]), c_0_21])]), ['proof']).
+% SZS output end CNFRefutation
+
+% -------------------------------------------------
+% Total SizeMalloc()ed memory: 1044798456 Bytes (3033822 requests)
+% Total SizeFree()ed   memory: 1044798456 Bytes (3033822 requests)
+% New requests: 158896 (158704 by SecureMalloc(),    192 by SecureRealloc())
+% Total SecureMalloc()ed memory: 14324778 Bytes
+% Returned:    158896 (158896 by FREE(),              0 by SecureRealloc())
+% SecureRealloc(ptr):    197 (   192 Allocs,      0 Frees,      5 Reallocs)
+% -------------------------------------------------
+

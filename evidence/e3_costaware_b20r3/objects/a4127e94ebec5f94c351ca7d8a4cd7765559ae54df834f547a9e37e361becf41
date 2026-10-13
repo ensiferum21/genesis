@@ -1,0 +1,24 @@
+SZS output start CNFRefutation
+fof(goal, conjecture, ![X1, X2]:(s(s(s(X1,X2),X2),X2)=s(X1,X2)), file('/tmp/genesis-e-ze0799x5/p.p', goal)).
+fof(ax8, axiom, ![X1, X2]:(s(s(s(X1,X2),X1),X1)=s(X2,X1)), file('/tmp/genesis-e-ze0799x5/p.p', ax8)).
+fof(ax7, axiom, ![X1, X2]:(s(X1,X2)=s(X2,X1)), file('/tmp/genesis-e-ze0799x5/p.p', ax7)).
+fof(c_0_3, negated_conjecture, ~(![X1, X2]:(s(s(s(X1,X2),X2),X2)=s(X1,X2))), inference(assume_negation,[status(cth)],[goal])).
+fof(c_0_4, plain, ![X20, X21]:(s(s(s(X20,X21),X20),X20)=s(X21,X20)), inference(variable_rename,[status(thm)],[ax8])).
+fof(c_0_5, plain, ![X18, X19]:(s(X18,X19)=s(X19,X18)), inference(variable_rename,[status(thm)],[ax7])).
+fof(c_0_6, negated_conjecture, s(s(s(esk1_0,esk2_0),esk2_0),esk2_0)!=s(esk1_0,esk2_0), inference(fof_nnf,[status(thm)],[inference(skolemize,[status(esa)],[inference(variable_rename,[status(thm)],[inference(fof_nnf,[status(thm)],[c_0_3])])])])).
+cnf(c_0_7, plain, (s(s(s(X1,X2),X1),X1)=s(X2,X1)), inference(split_conjunct,[status(thm)],[c_0_4])).
+cnf(c_0_8, plain, (s(X1,X2)=s(X2,X1)), inference(split_conjunct,[status(thm)],[c_0_5])).
+cnf(c_0_9, negated_conjecture, (s(s(s(esk1_0,esk2_0),esk2_0),esk2_0)!=s(esk1_0,esk2_0)), inference(split_conjunct,[status(thm)],[c_0_6])).
+cnf(c_0_10, plain, (s(X1,s(X1,s(X1,X2)))=s(X2,X1)), inference(rw,[status(thm)],[inference(rw,[status(thm)],[c_0_7, c_0_8]), c_0_8])).
+cnf(c_0_11, negated_conjecture, ($false), inference(cn,[status(thm)],[inference(rw,[status(thm)],[inference(rw,[status(thm)],[inference(rw,[status(thm)],[inference(rw,[status(thm)],[inference(rw,[status(thm)],[inference(rw,[status(thm)],[c_0_9, c_0_8]), c_0_8]), c_0_8]), c_0_10]), c_0_8]), c_0_8])]), ['proof']).
+% SZS output end CNFRefutation
+
+% -------------------------------------------------
+% Total SizeMalloc()ed memory: 75875632 Bytes (150010 requests)
+% Total SizeFree()ed   memory: 75875632 Bytes (150010 requests)
+% New requests:   2866 (  2674 by SecureMalloc(),    192 by SecureRealloc())
+% Total SecureMalloc()ed memory: 809666 Bytes
+% Returned:      2866 (  2866 by FREE(),              0 by SecureRealloc())
+% SecureRealloc(ptr):    197 (   192 Allocs,      0 Frees,      5 Reallocs)
+% -------------------------------------------------
+
