@@ -342,6 +342,12 @@
           "ccde553"
         ],
         "result": "DEV comparison v2: rows bound to journalled executions"
+      },
+      "B20_R19": {
+        "commits": [
+          "2d35aa9"
+        ],
+        "result": "generator v2 (k<=4, twins merged): new k=4 decoder Lean-checked; NO_UTILITY_AFTER_COST (+0.125 vs menu)"
       }
     },
     "open_after_b20_r5": [

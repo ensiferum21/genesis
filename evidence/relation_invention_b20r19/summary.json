@@ -1,0 +1,253 @@
+{
+ "attempts_in_family": [
+  "B20_R17",
+  "B20_R19"
+ ],
+ "code_identity": "f47f242a57108cb8c63263166eb2ebc3e4fa372c57adb02a73e76f605488e57f",
+ "part_a": {
+  "checker_cpu_s_reported": 43.265,
+  "construction_cpu_s": 63.613,
+  "generated": [
+   {
+    "equals_menu": "adjacent_2 = adjacent_3 = cross_2",
+    "evaluated_before": false,
+    "id": "rel2_0110",
+    "k": 2,
+    "obligations": {
+     "image": "CHECKED",
+     "sound_tf": "CHECKED"
+    },
+    "relation": [
+     [
+      0,
+      1
+     ],
+     [
+      1,
+      0
+     ]
+    ],
+    "screen": {
+     "image": "NO_COUNTEREXAMPLE",
+     "sound_tf": "NO_COUNTEREXAMPLE"
+    }
+   },
+   {
+    "equals_menu": null,
+    "evaluated_before": true,
+    "id": "rel3_011220",
+    "k": 3,
+    "obligations": {
+     "image": "CHECKED",
+     "sound_tf": "CHECKED"
+    },
+    "relation": [
+     [
+      0,
+      1
+     ],
+     [
+      1,
+      2
+     ],
+     [
+      2,
+      0
+     ]
+    ],
+    "screen": {
+     "image": "NO_COUNTEREXAMPLE",
+     "sound_tf": "NO_COUNTEREXAMPLE"
+    }
+   },
+   {
+    "equals_menu": null,
+    "evaluated_before": false,
+    "id": "rel4_0102102330",
+    "k": 4,
+    "obligations": {
+     "image": "CHECKED",
+     "sound_tf": "CHECKED"
+    },
+    "relation": [
+     [
+      0,
+      1
+     ],
+     [
+      0,
+      2
+     ],
+     [
+      1,
+      0
+     ],
+     [
+      2,
+      3
+     ],
+     [
+      3,
+      0
+     ]
+    ],
+    "screen": {
+     "image": "NO_COUNTEREXAMPLE",
+     "sound_tf": "NO_COUNTEREXAMPLE"
+    }
+   }
+  ],
+  "generator_version": "v2",
+  "new_checked": [
+   "rel4_0102102330"
+  ],
+  "verdict_a": "NEW_CHECKED"
+ },
+ "part_b": {
+  "budget_s": 1.0,
+  "chosen": {
+   "conventional": "conv:low_cycle_tm",
+   "menu": "menu:adjacent_3",
+   "new": "new:rel4_0102102330"
+  },
+  "comparisons": {
+   "conventional": {
+    "by_setting": {
+     "S2": 1.625,
+     "S3": -0.9375
+    },
+    "interval_90": [
+     -0.0938,
+     0.7812
+    ],
+    "mean": 0.3438,
+    "passes": false,
+    "wins_ties_losses": [
+     10,
+     10,
+     12
+    ]
+   },
+   "matched": {
+    "by_setting": {
+     "S2": 0.1875,
+     "S3": 0.0625
+    },
+    "interval_90": [
+     0.0312,
+     0.25
+    ],
+    "mean": 0.125,
+    "passes": false,
+    "wins_ties_losses": [
+     3,
+     29,
+     0
+    ]
+   },
+   "menu": {
+    "by_setting": {
+     "S2": 0.1875,
+     "S3": 0.0625
+    },
+    "interval_90": [
+     0.0312,
+     0.25
+    ],
+    "mean": 0.125,
+    "passes": false,
+    "wins_ties_losses": [
+     3,
+     29,
+     0
+    ]
+   }
+  },
+  "construction_cpu_s": 63.613,
+  "horizon": 100,
+  "hosts": {
+   "S2": {
+    "eval": [
+     "dev-erdos-b73f6828-20262202-0000",
+     "dev-erdos-b73f6828-20262202-0001",
+     "dev-erdos-b73f6828-20262202-0002",
+     "dev-erdos-b73f6828-20262202-0003",
+     "dev-erdos-b73f6828-20262202-0004",
+     "dev-erdos-b73f6828-20262202-0005",
+     "dev-erdos-b73f6828-20262202-0006",
+     "dev-erdos-b73f6828-20262202-0007",
+     "dev-erdos-b73f6828-20262202-0008",
+     "dev-erdos-b73f6828-20262202-0009",
+     "dev-erdos-b73f6828-20262202-0010",
+     "dev-erdos-b73f6828-20262202-0011",
+     "dev-erdos-b73f6828-20262202-0012",
+     "dev-erdos-b73f6828-20262202-0013",
+     "dev-erdos-b73f6828-20262202-0014",
+     "dev-erdos-b73f6828-20262202-0015"
+    ],
+    "select": [
+     "dev-erdos-b73f6828-20262201-0000",
+     "dev-erdos-b73f6828-20262201-0001",
+     "dev-erdos-b73f6828-20262201-0002",
+     "dev-erdos-b73f6828-20262201-0003",
+     "dev-erdos-b73f6828-20262201-0004",
+     "dev-erdos-b73f6828-20262201-0005",
+     "dev-erdos-b73f6828-20262201-0006",
+     "dev-erdos-b73f6828-20262201-0007"
+    ]
+   },
+   "S3": {
+    "eval": [
+     "dev-erdos-3765432f-20262212-0000",
+     "dev-erdos-3765432f-20262212-0001",
+     "dev-erdos-3765432f-20262212-0002",
+     "dev-erdos-3765432f-20262212-0003",
+     "dev-erdos-3765432f-20262212-0004",
+     "dev-erdos-3765432f-20262212-0005",
+     "dev-erdos-3765432f-20262212-0006",
+     "dev-erdos-3765432f-20262212-0007",
+     "dev-erdos-3765432f-20262212-0008",
+     "dev-erdos-3765432f-20262212-0009",
+     "dev-erdos-3765432f-20262212-0010",
+     "dev-erdos-3765432f-20262212-0011",
+     "dev-erdos-3765432f-20262212-0012",
+     "dev-erdos-3765432f-20262212-0013",
+     "dev-erdos-3765432f-20262212-0014",
+     "dev-erdos-3765432f-20262212-0015"
+    ],
+    "select": [
+     "dev-erdos-3765432f-20262211-0000",
+     "dev-erdos-3765432f-20262211-0001",
+     "dev-erdos-3765432f-20262211-0002",
+     "dev-erdos-3765432f-20262211-0003",
+     "dev-erdos-3765432f-20262211-0004",
+     "dev-erdos-3765432f-20262211-0005",
+     "dev-erdos-3765432f-20262211-0006",
+     "dev-erdos-3765432f-20262211-0007"
+    ]
+   }
+  },
+  "matched_extra_s_per_host": 0.6361,
+  "mean_cpu_s": {
+   "conventional": 1.005,
+   "matched": 1.637,
+   "menu": 1.001,
+   "new": 1.001
+  },
+  "note": "break-even horizon is not computed from edges: the matched arm shows what the construction CPU buys as extra search at HORIZON = 100 hosts",
+  "select_totals": {
+   "conv:exchange_tm": 1725,
+   "conv:low_cycle_tm": 1780,
+   "conv:multistart_tm": 1740,
+   "menu:adjacent_2": 1771,
+   "menu:adjacent_3": 1771,
+   "menu:cross_2": 1770,
+   "menu:ordered_2": 1673,
+   "new:rel4_0102102330": 1771
+  },
+  "verdict": "NO_UTILITY_AFTER_COST"
+ },
+ "schema": "genesis-b20r19-relation-invention-v2",
+ "status": "DEV; licenses no claim",
+ "verdict": "NO_UTILITY_AFTER_COST"
+}

@@ -75,8 +75,11 @@ SPEC = {
             [K + 'evidence.py'], [G + 'test_evidence_kernel.py::MathPromotion'], [], [], 'N/A', 'W02'),
     '4.4': (B, 'MRDL bounded graph vocabulary; typed representation grammar with Lean-checked obligations (B18)',
             ['src/genesis/mrdl.py', 'src/genesis/invention/representations.py'],
-            [G + 'test_graphs.py', 'tests_formal/test_invention.py'],
-            ['representations beyond vertex-class decoders'], [], 'N/A', 'W10'),
+            [G + 'test_graphs.py', 'tests_formal/test_invention.py', G + 'test_relations.py',
+             'tests_formal/test_relation_invention.py'],
+            ['a generated representation with prospective utility (B20_R17/R19: generated relational decoders are '
+             'Lean-checked; DEV utility after cost was not shown)', 'partitions/quotients and decompositions'],
+            [], 'N/A', 'W10'),
     '5': (I, 'heading', [], [], [], [], 'N/A', 'W01'),
     '5.1': (B, 'task contracts for two graph domains through the DomainAdapter interface (parse, exposure identity, '
                 'candidate/evaluator views, validity, score, certified reference, obligations, cost, families, replay); '
@@ -496,8 +499,8 @@ GATES = {f'GV{i}': (N, t, [], [], [], b, 'NOT_TESTED' if i >= 2 else 'N/A', w) f
     (2, 'real formal discovery loop', ['independent replay of the B17 theory package',
                                        'conjectures and proofs beyond builder templates and rediscovery'], 'W08'),
     (3, 'useful verified discovery on fresh tasks', ['independent custodian', 'fresh panels',
-                                                   'reviewed E1 design decisions (handoff/e1: power model, cost '
-                                                   'rule, comparator)'], 'W13'),
+                                                   'a powered, reviewed E1 design (B20R12-OPEN-1: the decided '
+                                                   'design is UNDERPOWERED on the e1-hard-v1 family)'], 'W13'),
     (4, 'better improver', ['independent search runs', 'sealed downstream evaluation'], 'W21'),
     (5, 'three compounding generations', ['fresh panels per transition'], 'W21'),
     (6, 'meaningful transfer to a structurally different domain', ['different formal domain'], 'W24'),
@@ -514,8 +517,9 @@ WORKSTREAMS = {
              'deployment/reproduce.py'],
             [G + 'test_deployment.py', G + 'test_crash_consistency.py', G + 'test_backup_restore.py',
              'tests_sandbox/test_launcher.py', G + 'test_reproduce.py']),
-    'W05': ('Domain contracts and calibration', B, ['src/genesis/domains.py', 'src/genesis/calibration.py'],
-            [G + 'test_domain_adapters.py', G + 'test_calibration.py']),
+    'W05': ('Domain contracts and calibration (B20_R12: separately versioned study rules)', B,
+            ['src/genesis/domains.py', 'src/genesis/calibration.py', 'configs/dev_calibration.json'],
+            [G + 'test_domain_adapters.py', G + 'test_calibration.py', G + 'test_calibration_rules.py']),
     'W06': ('Independent custody and preregistration', B,
             ['src/genesis/custody_records.py', 'src/genesis/custodian.py', 'src/genesis/decision_record.py',
              'src/genesis/candidates.py', 'src/genesis/judge.py', 'src/genesis/learning/statement_panels.py',
@@ -533,11 +537,14 @@ WORKSTREAMS = {
             ['src/genesis/invention/recovery.py', 'src/genesis/invention/recovery_experiment.py',
              'evidence/invention_b18/recovery/comparison.json'],
             ['tests_formal/test_invention.py']),
-    'W10': ('Representation and ontology invention (vertex-class grammar)', B,
+    'W10': ('Representation and ontology invention (vertex-class grammar; B20_R17/R19 generated relational decoders, '
+            'Lean-checked, NO_UTILITY_AFTER_COST on DEV)', B,
             ['src/genesis/invention/representations.py', 'evidence/invention_b18/representations/package.json',
              'src/genesis/invention/soundness.py', 'evidence/soundness_b20r/modes.json',
-             'src/genesis/invention/codegree.py', 'evidence/codegree_b20r/package.json'],
-            ['tests_formal/test_invention.py', 'tests_formal/test_soundness_modes.py', 'tests_formal/test_codegree.py']),
+             'src/genesis/invention/codegree.py', 'evidence/codegree_b20r/package.json',
+             'src/genesis/invention/relations.py', 'evidence/relation_invention_b20r17/package.json'],
+            ['tests_formal/test_invention.py', 'tests_formal/test_soundness_modes.py', 'tests_formal/test_codegree.py',
+             G + 'test_relations.py', 'tests_formal/test_relation_invention.py']),
     'W11': ('Theory-centered discovery and theory packages (first package path only)', B,
             ['src/genesis/formal_research/theory_package.py', 'src/genesis/formal_research/triangle_theory.py',
              'evidence/formal_research_b17/package/package.json'],
@@ -581,11 +588,17 @@ WORKSTREAMS = {
             ['tests_formal/test_learning.py', 'tests_formal/test_learning_partitions.py']),
     'W21': ('Better-improver and multigeneration controller (B20_R2: pure lineage validator; B20_R4: the campaign '
             'loop writes native lineage records, crash/resume charges interrupted attempts, the custodian checks '
-            'generation requests against the qualifying chain; sealed improver evaluation still refused)',
-            B, ['src/genesis/lineage.py', 'src/genesis/campaign.py', 'src/genesis/custodian.py'],
-            [G + 'test_generation_lineage.py', G + 'test_campaign_lineage.py']),
-    'W22': ('New primitives, research-language evolution and trust changes', N, [], []),
-    'W23': ('Fault-tolerant reasoning and expert interaction', N, [], []),
+            'generation requests against the qualifying chain; B20_R16: active-version pointer, rollback, inherited '
+            'version revocation, resume gate; sealed improver evaluation still refused)',
+            B, ['src/genesis/lineage.py', 'src/genesis/campaign.py', 'src/genesis/custodian.py', 'src/genesis/versions.py'],
+            [G + 'test_generation_lineage.py', G + 'test_campaign_lineage.py', G + 'test_versions.py']),
+    'W22': ('New primitives, research-language evolution and trust changes (derived primitives with reference '
+            'expansions, conformance, versioned registries; DEV: none of four starting primitives is a gain)', B,
+            ['src/genesis/primitives.py', 'scripts/b20r_primitives.py'], [G + 'test_primitives.py']),
+    'W23': ('Fault-tolerant reasoning and expert interaction (heterogeneous routes, quarantine, adjudication without '
+            'majority vote; no expert-interaction channel)', B,
+            ['src/genesis/verification/reliability.py', 'src/genesis/graphs.py'],
+            [G + 'test_reliability.py', 'tests_certificates/test_reliability_routes.py']),
     'W24': ('Transfer and independent reproduction', N, [], []),
     'W25': ('Trainable model extension', N, [], []),
     'W26': ('Software research extension', N, [], []),

@@ -30,6 +30,7 @@
 | B20_R16 | H08 s20.6: active-version pointer, rollback, inherited version revocation, resume gate |
 | B20_R17 | s15.3: machine-generated relational decoders. One new decoder (the oriented 3-cycle) is Lean-checked; its DEV utility after cost is NO_UTILITY_AFTER_COST |
 | B20_R18 | B20R8-OPEN-1: DEV comparison rows are bound to journalled executions (v2); v1 is retired |
+| B20_R19 | s15.3, second attempt: versioned k ≤ 4 relational decoders (twins merged). One new decoder is Lean-checked; NO_UTILITY_AFTER_COST (+0.125 per host against the menu). The ledger is reconciled |
 
 ## Resume
 
@@ -53,9 +54,8 @@
 ## Next engineering, in order
 
 1. **H06 s15.3 / W10: richer representation invention.** This is GV4-critical.
-   - B20_R17 generated the first representation outside the menu, an oriented 3-cycle decoder. Its semantics and transport are Lean-checked, but its DEV utility after construction cost is NO_UTILITY_AFTER_COST.
+   - B20_R17 and R19 generated two representations outside the menu: an oriented 3-cycle decoder, and a k = 4 decoder from the versioned v2 generator. Their semantics and transport are Lean-checked, but both are NO_UTILITY_AFTER_COST on DEV (+0.19 and +0.125 per host against the menu). The relational family is retired as a utility source there.
    - Next, each family as its own preregistered step, with all attempts counted:
-     - a versioned k ≤ 4 relational expansion;
      - partitions/quotients with proved transport conditions;
      - decompositions with verified witness composition.
 2. **A Lean-package route for THEOREM_CHECKED.** (B20R8-OPEN-1 was repaired in B20_R18.)

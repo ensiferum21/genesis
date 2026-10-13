@@ -504,14 +504,17 @@
    "local_execution": "TESTS_EXECUTED_IN_MATRIX",
    "owner": "research implementer",
    "remaining": [
-    "representations beyond vertex-class decoders"
+    "a generated representation with prospective utility (B20_R17/R19: generated relational decoders are Lean-checked; DEV utility after cost was not shown)",
+    "partitions/quotients and decompositions"
    ],
    "scientific_efficacy": "N/A",
    "scope": "MRDL bounded graph vocabulary; typed representation grammar with Lean-checked obligations (B18)",
    "source": "spec \u00a74.4 (p. 13)",
    "tests": [
     "tests_genesis/test_graphs.py",
-    "tests_formal/test_invention.py"
+    "tests_formal/test_invention.py",
+    "tests_genesis/test_relations.py",
+    "tests_formal/test_relation_invention.py"
    ],
    "title": "MRDL: minimal representation description language",
    "workstream": "W10"
@@ -4534,7 +4537,7 @@
    "external_blockers": [
     "independent custodian",
     "fresh panels",
-    "reviewed E1 design decisions (handoff/e1: power model, cost rule, comparator)"
+    "a powered, reviewed E1 design (B20R12-OPEN-1: the decided design is UNDERPOWERED on the e1-hard-v1 family)"
    ],
    "id": "GV3",
    "implementation": "NOT_IMPLEMENTED",
@@ -4792,7 +4795,8 @@
    },
    "code": [
     "src/genesis/domains.py",
-    "src/genesis/calibration.py"
+    "src/genesis/calibration.py",
+    "configs/dev_calibration.json"
    ],
    "disposition": "IMPLEMENTED_BOUNDED_PENDING_AUDIT",
    "evidence": [],
@@ -4808,9 +4812,10 @@
    "source": "roadmap \u00a77-10",
    "tests": [
     "tests_genesis/test_domain_adapters.py",
-    "tests_genesis/test_calibration.py"
+    "tests_genesis/test_calibration.py",
+    "tests_genesis/test_calibration_rules.py"
    ],
-   "title": "Domain contracts and calibration",
+   "title": "Domain contracts and calibration (B20_R12: separately versioned study rules)",
    "workstream": "W05"
   },
   {
@@ -4948,7 +4953,9 @@
     "src/genesis/invention/soundness.py",
     "evidence/soundness_b20r/modes.json",
     "src/genesis/invention/codegree.py",
-    "evidence/codegree_b20r/package.json"
+    "evidence/codegree_b20r/package.json",
+    "src/genesis/invention/relations.py",
+    "evidence/relation_invention_b20r17/package.json"
    ],
    "disposition": "IMPLEMENTED_BOUNDED_PENDING_AUDIT",
    "evidence": [],
@@ -4965,9 +4972,11 @@
    "tests": [
     "tests_formal/test_invention.py",
     "tests_formal/test_soundness_modes.py",
-    "tests_formal/test_codegree.py"
+    "tests_formal/test_codegree.py",
+    "tests_genesis/test_relations.py",
+    "tests_formal/test_relation_invention.py"
    ],
-   "title": "Representation and ontology invention (vertex-class grammar)",
+   "title": "Representation and ontology invention (vertex-class grammar; B20_R17/R19 generated relational decoders, Lean-checked, NO_UTILITY_AFTER_COST on DEV)",
    "workstream": "W10"
   },
   {
@@ -5262,7 +5271,8 @@
    "code": [
     "src/genesis/lineage.py",
     "src/genesis/campaign.py",
-    "src/genesis/custodian.py"
+    "src/genesis/custodian.py",
+    "src/genesis/versions.py"
    ],
    "disposition": "IMPLEMENTED_BOUNDED_PENDING_AUDIT",
    "evidence": [],
@@ -5278,9 +5288,10 @@
    "source": "roadmap \u00a77-10",
    "tests": [
     "tests_genesis/test_generation_lineage.py",
-    "tests_genesis/test_campaign_lineage.py"
+    "tests_genesis/test_campaign_lineage.py",
+    "tests_genesis/test_versions.py"
    ],
-   "title": "Better-improver and multigeneration controller (B20_R2: pure lineage validator; B20_R4: the campaign loop writes native lineage records, crash/resume charges interrupted attempts, the custodian checks generation requests against the qualifying chain; sealed improver evaluation still refused)",
+   "title": "Better-improver and multigeneration controller (B20_R2: pure lineage validator; B20_R4: the campaign loop writes native lineage records, crash/resume charges interrupted attempts, the custodian checks generation requests against the qualifying chain; B20_R16: active-version pointer, rollback, inherited version revocation, resume gate; sealed improver evaluation still refused)",
    "workstream": "W21"
   },
   {
@@ -5288,23 +5299,26 @@
     "date": null,
     "decision": "PENDING_INDEPENDENT_ACCEPTANCE"
    },
-   "code": [],
-   "disposition": "NOT_IMPLEMENTED",
+   "code": [
+    "src/genesis/primitives.py",
+    "scripts/b20r_primitives.py"
+   ],
+   "disposition": "IMPLEMENTED_BOUNDED_PENDING_AUDIT",
    "evidence": [],
    "external_blockers": [],
    "id": "W22",
-   "implementation": "NOT_IMPLEMENTED",
+   "implementation": "IMPLEMENTED_BOUNDED",
    "independent_verification": "PENDING",
-   "local_execution": "NOT_EXECUTED",
+   "local_execution": "TESTS_EXECUTED_IN_MATRIX",
    "owner": "research implementer",
-   "remaining": [
-    "not started in B14"
-   ],
+   "remaining": [],
    "scientific_efficacy": "N/A",
-   "scope": "workstream",
+   "scope": "workstream (B14 scope delivered; acceptance pending)",
    "source": "roadmap \u00a77-10",
-   "tests": [],
-   "title": "New primitives, research-language evolution and trust changes",
+   "tests": [
+    "tests_genesis/test_primitives.py"
+   ],
+   "title": "New primitives, research-language evolution and trust changes (derived primitives with reference expansions, conformance, versioned registries; DEV: none of four starting primitives is a gain)",
    "workstream": "W22"
   },
   {
@@ -5312,23 +5326,27 @@
     "date": null,
     "decision": "PENDING_INDEPENDENT_ACCEPTANCE"
    },
-   "code": [],
-   "disposition": "NOT_IMPLEMENTED",
+   "code": [
+    "src/genesis/verification/reliability.py",
+    "src/genesis/graphs.py"
+   ],
+   "disposition": "IMPLEMENTED_BOUNDED_PENDING_AUDIT",
    "evidence": [],
    "external_blockers": [],
    "id": "W23",
-   "implementation": "NOT_IMPLEMENTED",
+   "implementation": "IMPLEMENTED_BOUNDED",
    "independent_verification": "PENDING",
-   "local_execution": "NOT_EXECUTED",
+   "local_execution": "TESTS_EXECUTED_IN_MATRIX",
    "owner": "research implementer",
-   "remaining": [
-    "not started in B14"
-   ],
+   "remaining": [],
    "scientific_efficacy": "N/A",
-   "scope": "workstream",
+   "scope": "workstream (B14 scope delivered; acceptance pending)",
    "source": "roadmap \u00a77-10",
-   "tests": [],
-   "title": "Fault-tolerant reasoning and expert interaction",
+   "tests": [
+    "tests_genesis/test_reliability.py",
+    "tests_certificates/test_reliability_routes.py"
+   ],
+   "title": "Fault-tolerant reasoning and expert interaction (heterogeneous routes, quarantine, adjudication without majority vote; no expert-interaction channel)",
    "workstream": "W23"
   },
   {
