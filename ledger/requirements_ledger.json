@@ -1018,7 +1018,8 @@
     "decision": "PENDING_INDEPENDENT_ACCEPTANCE"
    },
    "code": [
-    "src/genesis/kernel/evidence.py"
+    "src/genesis/kernel/evidence.py",
+    "src/genesis/kernel/replay_contracts.py"
    ],
    "disposition": "IMPLEMENTED_BOUNDED_PENDING_AUDIT",
    "evidence": [],
@@ -1029,14 +1030,15 @@
    "local_execution": "TESTS_EXECUTED_IN_MATRIX",
    "owner": "research implementer",
    "remaining": [
-    "replay contracts for exact, formal, causal, replication, DEV and priority kinds (B14-OPEN-4)"
+    "replay contracts for causal, replication and priority kinds (B14-OPEN-4 rest; exact, formal and DEV contracts added in B20_R8)"
    ],
    "scientific_efficacy": "N/A",
    "scope": "six orthogonal axes; effective levels re-derived on every read; only kernel-replayable evidence (re-run witness checks, replayed certificates, role-signed receipts) licenses a level",
    "source": "spec \u00a77.1 (p. 19)",
    "tests": [
     "tests_genesis/test_evidence_kernel.py",
-    "tests_genesis/test_export_revocation.py"
+    "tests_genesis/test_export_revocation.py",
+    "tests_genesis/test_replay_contracts.py"
    ],
    "title": "Orthogonal evidence axes",
    "workstream": "W02"
@@ -1505,15 +1507,14 @@
    "independent_verification": "PENDING",
    "local_execution": "TESTS_EXECUTED_IN_MATRIX",
    "owner": "research implementer",
-   "remaining": [
-    "kernel replay contract for exact_check so FINITE_CERTIFIED is reachable (B14-OPEN-4)"
-   ],
+   "remaining": [],
    "scientific_efficacy": "N/A",
    "scope": "heterogeneous checks: dual predicates, SAT vs exhaustive, Lean comparator, model finder",
    "source": "spec \u00a711.1 (p. 22)",
    "tests": [
     "tests_certificates/test_sat_certificates.py::AgreementWithExactSolvers",
-    "tests_formal/test_lean_checker.py"
+    "tests_formal/test_lean_checker.py",
+    "tests_genesis/test_replay_contracts.py::FiniteCertified"
    ],
    "title": "Heterogeneous redundancy",
    "workstream": "W23"
@@ -3672,14 +3673,15 @@
    "local_execution": "TESTS_EXECUTED_IN_MATRIX",
    "owner": "research implementer",
    "remaining": [
-    "kernel replay contract so THEOREM_CHECKED is reachable (B14-OPEN-4)"
+    "a Lean-package route (trusted statement modules such as the B17 theory package and the CRPD-2a codegree package) for THEOREM_CHECKED; B20_R8 covers equational custody"
    ],
    "scientific_efficacy": "N/A",
    "scope": "trusted spec / untrusted proof / trusted check; axiom audit; leanchecker; module chains with per-binding statements, declaration extraction and dependency closure (B17)",
    "source": "spec \u00a737.2 (p. 39)",
    "tests": [
     "tests_formal/test_lean_checker.py::DefenceInDepth",
-    "tests_formal/test_formal_research.py::Acceptance"
+    "tests_formal/test_formal_research.py::Acceptance",
+    "tests_genesis/test_replay_contracts.py::TheoremChecked"
    ],
    "title": "Formal checker responsibilities",
    "workstream": "W08"

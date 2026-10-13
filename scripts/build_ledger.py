@@ -119,8 +119,10 @@ SPEC.update({
     '7': (I, 'heading', [], [], [], [], 'N/A', 'W01'),
     '7.1': (B, 'six orthogonal axes; effective levels re-derived on every read; only kernel-replayable evidence '
                 '(re-run witness checks, replayed certificates, role-signed receipts) licenses a level',
-            [K + 'evidence.py'], [G + 'test_evidence_kernel.py', G + 'test_export_revocation.py'],
-            ['replay contracts for exact, formal, causal, replication, DEV and priority kinds (B14-OPEN-4)'], [],
+            [K + 'evidence.py', K + 'replay_contracts.py'],
+            [G + 'test_evidence_kernel.py', G + 'test_export_revocation.py', G + 'test_replay_contracts.py'],
+            ['replay contracts for causal, replication and priority kinds (B14-OPEN-4 rest; exact, formal and DEV '
+             'contracts added in B20_R8)'], [],
             'N/A', 'W02'),
     '7.2': (B, 'ghost semantics: no-ghost is never proof', ['src/genesis/macros.py', K + 'wording.py'],
             [G + 'test_macros_market.py::Macros', 'tests_formal/test_fol_ghosts.py'], [], [], 'N/A', 'W16'),
@@ -170,8 +172,9 @@ SPEC.update({
     '11': (I, 'heading', [], [], [], [], 'N/A', 'W01'),
     '11.1': (B, 'heterogeneous checks: dual predicates, SAT vs exhaustive, Lean comparator, model finder',
              ['src/genesis/graphs.py', 'src/genesis/verification/lean.py', 'src/genesis/modelfind.py'],
-             ['tests_certificates/test_sat_certificates.py::AgreementWithExactSolvers', 'tests_formal/test_lean_checker.py'],
-             ['kernel replay contract for exact_check so FINITE_CERTIFIED is reachable (B14-OPEN-4)'], [], 'N/A', 'W23'),
+             ['tests_certificates/test_sat_certificates.py::AgreementWithExactSolvers', 'tests_formal/test_lean_checker.py',
+              G + 'test_replay_contracts.py::FiniteCertified'],
+             [], [], 'N/A', 'W23'),
     '11.2': (N, 'semantic parity syndromes', [], [], ['parity checks across representations'], [], 'NOT_TESTED', 'W23'),
     '11.3': (N, 'adaptive verification strength', [], [], ['risk-weighted verification policy'], [], 'NOT_TESTED', 'W23'),
     '12': (I, 'heading', [], [], [], [], 'N/A', 'W01'),
@@ -372,8 +375,10 @@ SPEC.update({
     '37.2': (B, 'trusted spec / untrusted proof / trusted check; axiom audit; leanchecker; module chains with '
                 'per-binding statements, declaration extraction and dependency closure (B17)',
              ['src/genesis/verification/lean.py', 'src/genesis/formal_research/checker.py'],
-             ['tests_formal/test_lean_checker.py::DefenceInDepth', 'tests_formal/test_formal_research.py::Acceptance'],
-             ['kernel replay contract so THEOREM_CHECKED is reachable (B14-OPEN-4)'], [], 'N/A', 'W08'),
+             ['tests_formal/test_lean_checker.py::DefenceInDepth', 'tests_formal/test_formal_research.py::Acceptance',
+              G + 'test_replay_contracts.py::TheoremChecked'],
+             ['a Lean-package route (trusted statement modules such as the B17 theory package and the CRPD-2a '
+              'codegree package) for THEOREM_CHECKED; B20_R8 covers equational custody'], [], 'N/A', 'W08'),
     '37.3': (B, 'theorem-memory rule with transitive revocation', [K + 'memory.py'],
              [G + 'test_leak_firewall.py::TheoremMemoryRule'], [], [], 'N/A', 'W06'),
     '38': (B, 'test and CI matrix; skips in release-blocking suites fail; clean-room reproduction driver',

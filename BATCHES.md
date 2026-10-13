@@ -47,6 +47,7 @@ session can resume from the latest checkpoint (see `RESUME.md`).
 | 20_R5 | Executable candidates through the custodian | H05; B19-OPEN-3, B20R-OPEN-4 | Request v4 / receipt v4 / claim binding v2; descriptors rebuilt from the frozen export; every arm in the OCI sandbox; judge re-checks every witness; s13.3 acceptance list end to end (21 tests). Builder-run, fixture keys |
 | 20_R6 | Family search for selection headroom | B20R3-OPEN-1 | Robbins' basis (floor) and Boolean rings (near ceiling) both NO_HEADROOM; lemma interference replicated (34 lemmas 11/12 vs 132 lemmas 8/12). DEV design diagnostic |
 | 20_R7 | Sealed statement panels, formal successors through the custodian | H05; B20R5-OPEN-1 | Custodian-side panel generation after freeze from a private seed with full screening; frozen research exports; kind formal-research-successor-v1 in the sandbox; Lean replay of every claim by custodian and judge; 12 tests. Builder-run, fixture keys |
+| 20_R8 | Replay contracts | B14-OPEN-4 (handoff s12.2) | Kernel-replayed exact checks (FINITE_CERTIFIED, two methods), theorem claims with Lean replay from equational custody (THEOREM_CHECKED) and DEV analysis recomputation (DEV_ONLY, CORRELATED); causal, replication and priority still fail closed; 6 tests. Builder-run |
 
 Later phases (B17–B23+) follow the roadmap and its gates; numbers are labels,
 not estimates.

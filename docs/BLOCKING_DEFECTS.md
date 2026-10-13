@@ -250,3 +250,12 @@ Both batches were run by the builder on DEV material, with fixture keys. See `do
 | B20R5-OPEN-1 | REPAIRED IN B20_R7, PENDING INDEPENDENT REVIEW. The custodian now generates sealed equational panels and runs the candidate kind `formal-research-successor-v1` in the sandbox. Every claimed proof is replayed in Lean, by the custodian and again by the judge. | independent review |
 | B20R7-OPEN-1 | Verification (Lean replay) CPU is not metered; only wall time is recorded. | cgroup metering of the checker sandbox in replay receipts |
 | B20R7-OPEN-2 | The equational research loop does not call the custodian's sealed-statement screen; it only screens against its own study's reserved items. | wire `screen_for_research` (or a statement InsertionScreen fed by it) into research runs that will be evaluated by a custodian |
+
+## B20_R8 outcome (replay contracts)
+
+Builder-run; nothing here has been independently reviewed. See `docs/checkpoints/B20_R8_RECORD.md`.
+
+| ID | Status or new finding | Needs |
+|---|---|---|
+| B14-OPEN-4 | PARTLY REPAIRED IN B20_R8, PENDING INDEPENDENT REVIEW. The kernel now replays three evidence kinds itself: `exact_check` (FINITE_CERTIFIED, needing two different exhaustive methods), `formal_check` (THEOREM_CHECKED, through a theorem claim plus a Lean replay from equational custody) and `dev_comparison` (DEV_ONLY and CORRELATED, by recomputing the analysis). Ablation, placebo, internal replication and priority checks still fail closed. | contracts for the causal, replication and priority kinds; a Lean-package route for THEOREM_CHECKED |
+| B20R8-OPEN-1 | DEV comparison rows are producer data. The contract replays the analysis, not the executions behind the rows. | rows bound to attempt evidence in the store |

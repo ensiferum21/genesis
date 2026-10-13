@@ -132,7 +132,8 @@
       "B20R-NEW-01": "REPAIRED",
       "B20R-OPEN-2": "REPAIRED_PENDING_REVIEW",
       "B20R-OPEN-4": "REPAIRED_PENDING_REVIEW",
-      "B20R5-OPEN-1": "REPAIRED_PENDING_REVIEW"
+      "B20R5-OPEN-1": "REPAIRED_PENDING_REVIEW",
+      "B14-OPEN-4": "PARTLY_REPAIRED_PENDING_REVIEW (causal, replication, priority still fail closed)"
     },
     "units": {
       "H01": "DONE (reproductions in audit/review_b20)",
@@ -217,6 +218,12 @@
           "b5388af"
         ],
         "result": "sealed statement panels; formal successors through the custodian"
+      },
+      "B20_R8": {
+        "commits": [
+          "19d8678"
+        ],
+        "result": "replay contracts: exact, formal (equational custody), DEV"
       }
     },
     "open_after_b20_r5": [
@@ -237,6 +244,18 @@
       "B20R7-OPEN-2",
       "B20R-OPEN-3",
       "B14-OPEN-4",
+      "R-04"
+    ],
+    "open_after_b20_r8": [
+      "B20R3-OPEN-1",
+      "B20R3-OPEN-2",
+      "B20R3-OPEN-3",
+      "B20R5-OPEN-2",
+      "B20R7-OPEN-1",
+      "B20R7-OPEN-2",
+      "B20R8-OPEN-1",
+      "B14-OPEN-4 (rest)",
+      "B20R-OPEN-3",
       "R-04"
     ]
   }
