@@ -47,6 +47,51 @@
    "sha256": "a0c329f97da2bd750c158db1265d1c92544bffecb373138ce8ca9f5fc3299620"
   }
  },
- "note": "Family settings adopted for harder panels. Chosen on DEV material only by the frozen calibration.SELECTION_RULE; every setting tried, selected or not, is in the records.",
- "schema": "genesis-dev-calibration-adoption-v1"
+ "note": "Family settings adopted for harder panels. Domains: chosen on DEV material only by the frozen calibration.SELECTION_RULE. Studies: chosen on DEV material only by the registered rule each adoption names (calibration.RULES). Every setting tried, selected or not, is in the records.",
+ "schema": "genesis-dev-calibration-adoption-v1",
+ "studies": {
+  "e1": {
+   "triangle_free_host_v1": {
+    "note": "B20_R12: E1 only, under the separately versioned rule e1-hard-v1 (the user, 13 Oct 2026); the domain adoption above is unchanged; needs reviewer sign-off of the rule",
+    "record": "evidence/dev_calibration_e1_b20r12/calibration_triangle_free_host_v1_e1.json",
+    "rule": "e1-hard-v1",
+    "selected": [
+     {
+      "family": "planted_cluster",
+      "index": 5,
+      "params": {
+       "n": 20,
+       "p_in": 0.7,
+       "p_out": 0.3
+      }
+     },
+     {
+      "family": "erdos",
+      "index": 1,
+      "params": {
+       "n": 18,
+       "p": 0.5
+      }
+     },
+     {
+      "family": "erdos",
+      "index": 2,
+      "params": {
+       "n": 22,
+       "p": 0.35
+      }
+     },
+     {
+      "family": "erdos",
+      "index": 4,
+      "params": {
+       "n": 26,
+       "p": 0.3
+      }
+     }
+    ],
+    "sha256": "c7893f5bcfd2b002be5269a663d1caf9396ca9713978830f767ddb7b118992c6"
+   }
+  }
+ }
 }
