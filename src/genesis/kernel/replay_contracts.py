@@ -20,10 +20,15 @@ re-runs the check itself and returns problems (empty: the artifact replays):
       replay of the proof with its whole lemma chain (pinned Lean, allowed axioms) must be
       CHECKED. The replay route's identity can be revoked like any verifier.
   dev_comparison  -> utility DEV_ONLY, causality CORRELATED
-      payload genesis-dev-comparison-v1 {plan, rows, result}: a valid v2 plan, every row marked
-      DEV, and the recorded result equal to the kernel's own ``analysis.analyze`` of the rows,
-      with decision SUPPORTED. The rows themselves are producer data: this contract replays the
-      analysis, not the executions, and a DEV level never satisfies a confirmation.
+      payload genesis-dev-comparison-v2 {plan, arms, rows, result} (B20_R18; v1, whose rows were
+      producer data, is retired and licenses nothing): a valid v2 plan, every row marked DEV and
+      bound to two executions recorded in this store's attempt journal, one per arm. The kernel
+      re-reads each attempt: its request is a solver request for the row's DEV task with the arm's
+      program or descriptor (``arms``), its terminal receipt gives the row's run status and CPU,
+      and a successful run's witness re-checks (graphs.check_witness) to the row's value; a failed
+      run scores zero. No attempt is used twice. The recorded result must equal the kernel's own
+      ``analysis.analyze`` of the rows, with decision SUPPORTED. A DEV level never satisfies a
+      confirmation.
 
 B20_R15 adds the rest of B14-OPEN-4:
 
@@ -59,13 +64,16 @@ from ..common import canonical, digest
 
 EXACT_SCHEMA = 'genesis-exact-check-v1'
 FORMAL_SCHEMA = 'genesis-formal-check-v1'
-DEV_SCHEMA = 'genesis-dev-comparison-v1'
+DEV_SCHEMA = 'genesis-dev-comparison-v2'
+DEV_SCHEMA_V1 = 'genesis-dev-comparison-v1'          # retired (B20R8-OPEN-1)
 THEOREM_SCHEMA = 'genesis-theorem-statement-v1'
 EXACT_METHODS = ('exact-producer', 'exact-checker')
 FORMAL_ROUTES = ('equational-custody-v1',)
 EXACT_FIELDS = frozenset({'schema', 'task_sha256', 'value', 'method'})
 FORMAL_FIELDS = frozenset({'schema', 'route', 'theorem_sha256', 'manifest', 'record', 'proof_objects'})
-DEV_FIELDS = frozenset({'schema', 'plan', 'rows', 'result'})
+DEV_FIELDS = frozenset({'schema', 'plan', 'arms', 'rows', 'result'})
+DEV_ROW_FIELDS = frozenset({'task_id', 'stratum', 'status', 'split', 'candidate', 'baseline'})
+DEV_ARM_FIELDS = frozenset({'value', 'run', 'cpu_ns', 'attempt'})
 THEOREM_FIELDS = frozenset({'schema', 'system', 'axioms', 'statement'})
 PRIORITY_SCHEMA = 'genesis-priority-check-v1'
 PRIORITY_ROUTES = ('equational-literature-v1',)
@@ -185,21 +193,127 @@ def formal_problems(get, payload, problem, *, revoked_verifiers=()):
 
 # ---------------------------------------------------------------- dev_comparison
 
-def dev_problems(payload):
+def arm_identity_of_request(request):
+    """Identity of the solver a journalled solver request ran: a DSL program digest, or a descriptor id."""
+    if not isinstance(request, dict) or request.get('kind') != 'solver':
+        return None
+    if isinstance(request.get('descriptor'), dict):
+        return request['descriptor'].get('descriptor_id')
+    if isinstance(request.get('program'), dict):
+        return digest(request['program'])
+    return None
+
+
+def dev_problems(get, payload, attempt):
+    """``get(hash)`` reads a stored object; ``attempt(id)`` returns (status, request_hash, receipt_hash)
+    from the store's attempt journal, or None."""
     from . import analysis as AN
+    from ..graphs import check_witness
+    from ..models import GraphTask
+    if isinstance(payload, dict) and payload.get('schema') == DEV_SCHEMA_V1:
+        return ['a v1 DEV comparison carries producer rows not bound to execution evidence (B20R8-OPEN-1); '
+                'record a genesis-dev-comparison-v2']
     if not isinstance(payload, dict) or payload.get('schema') != DEV_SCHEMA or set(payload) != DEV_FIELDS:
-        return ['not a replayable DEV comparison (genesis-dev-comparison-v1 with plan, rows and result)']
+        return ['not a replayable DEV comparison (genesis-dev-comparison-v2 with plan, arms, rows and result)']
     if AN.check_plan(payload['plan']):
         return ['the DEV comparison does not carry a valid v2 analysis plan']
+    arms = payload['arms']
+    if not isinstance(arms, dict) or set(arms) != {'candidate', 'baseline'} or not all(
+            isinstance(v, str) and len(v) == 64 for v in arms.values()) or arms['candidate'] == arms['baseline']:
+        return ['arms must name two different solver identities (program digest or descriptor id)']
     rows = payload['rows']
     if not isinstance(rows, list) or not rows or any(not isinstance(r, dict) or r.get('split') != 'DEV' for r in rows):
         return ['every row of a DEV comparison must be marked split DEV']
+    used, out = set(), []
+    for i, r in enumerate(rows):
+        if set(r) != DEV_ROW_FIELDS or r['status'] != 'SCORED':
+            out.append(f'row {i}: fields or status (bound rows are SCORED)')
+            continue
+        tasks = []
+        for arm in ('candidate', 'baseline'):
+            cell = r[arm]
+            if not isinstance(cell, dict) or set(cell) != DEV_ARM_FIELDS:
+                out.append(f'row {i} {arm}: fields')
+                continue
+            aid = cell['attempt']
+            if not isinstance(aid, str) or aid in used:
+                out.append(f'row {i} {arm}: attempt missing or used twice')
+                continue
+            used.add(aid)
+            journal = attempt(aid)
+            if journal is None or journal[2] is None:
+                out.append(f'row {i} {arm}: attempt {str(aid)[:8]} is not a finished attempt in this store')
+                continue
+            status, req_h, rec_h = journal
+            try:
+                request, receipt = get(req_h), get(rec_h)
+                task = GraphTask.model_validate_json(canonical(request['task']))
+            except Exception:
+                out.append(f'row {i} {arm}: stored request or receipt unreadable')
+                continue
+            if arm_identity_of_request(request) != arms[arm]:
+                out.append(f'row {i} {arm}: the attempt ran another solver than the arm names')
+                continue
+            if task.task_id != r['task_id'] or task.split != 'DEV':
+                out.append(f'row {i} {arm}: the attempt ran another task, or a non-DEV task')
+                continue
+            tasks.append(digest(task.model_dump(mode='json')))
+            ok = status == 'SUCCESS' and receipt.get('status') == 'SUCCESS'
+            if cell['run'] != ('SUCCESS' if ok else 'FAILED') or cell['cpu_ns'] != (receipt.get('cpu_ns') or 0):
+                out.append(f'row {i} {arm}: run status or CPU differs from the attempt receipt')
+                continue
+            if ok:
+                try:
+                    value = check_witness(task, [tuple(e) for e in (receipt.get('result') or {}).get('selected', [])])['value']
+                except Exception:
+                    out.append(f'row {i} {arm}: the attempt witness does not re-check')
+                    continue
+            else:
+                value = 0
+            if value != cell['value']:
+                out.append(f'row {i} {arm}: value {cell["value"]} is not what the attempt witness re-checks to ({value})')
+        if len(tasks) == 2 and tasks[0] != tasks[1]:
+            out.append(f'row {i}: the two arms ran different tasks')
+    if out:
+        return out[:5] + ([f'... {len(out) - 5} more'] if len(out) > 5 else [])
     recomputed = AN.analyze(rows, payload['plan'])
     if recomputed != payload['result']:
         return ['the recorded result differs from the kernel\'s analysis of the rows']
     if recomputed['decision'] != 'SUPPORTED':
         return [f'the DEV analysis decides {recomputed["decision"]}, not SUPPORTED']
     return []
+
+
+def dev_comparison(store, plan, candidate_rows, baseline_rows):
+    """Build a v2 payload from two lists of journalled trial rows (``campaign.Campaign.trial`` rows:
+    attempt_id, task_id, family), paired by task. Values, runs and CPU are read back from the
+    attempt receipts, never taken from the rows."""
+    from . import analysis as AN
+    from ..graphs import check_witness
+    from ..models import GraphTask
+
+    def journal(aid):
+        return store.db.execute('SELECT status,request,receipt FROM attempts WHERE id=?', (aid,)).fetchone()
+
+    def cell(aid):
+        status, req_h, rec_h = journal(aid)
+        request, receipt = store.get(req_h), store.get(rec_h)
+        task = GraphTask.model_validate_json(canonical(request['task']))
+        ok = status == 'SUCCESS' and receipt.get('status') == 'SUCCESS'
+        value = check_witness(task, [tuple(e) for e in receipt['result']['selected']])['value'] if ok else 0
+        return ({'value': value, 'run': 'SUCCESS' if ok else 'FAILED', 'cpu_ns': receipt.get('cpu_ns') or 0,
+                 'attempt': aid}, arm_identity_of_request(request), task)
+    base = {r['task_id']: r for r in baseline_rows}
+    rows, arms = [], {}
+    for r in candidate_rows:
+        c, cid, task = cell(r['attempt_id'])
+        b, bid, _ = cell(base[r['task_id']]['attempt_id'])
+        arms.setdefault('candidate', cid); arms.setdefault('baseline', bid)
+        if (arms['candidate'], arms['baseline']) != (cid, bid):
+            raise ValueError('each arm must be one solver')
+        rows.append({'task_id': r['task_id'], 'stratum': task.family, 'status': 'SCORED', 'split': task.split,
+                     'candidate': c, 'baseline': b})
+    return {'schema': DEV_SCHEMA, 'plan': plan, 'arms': arms, 'rows': rows, 'result': AN.analyze(rows, plan)}
 
 
 # ---------------------------------------------------------------- priority_check
@@ -408,6 +522,6 @@ def intervention_problems(kind, full, altered):
     return [], path
 
 
-__all__ = ['EXACT_SCHEMA', 'FORMAL_SCHEMA', 'DEV_SCHEMA', 'THEOREM_SCHEMA', 'PRIORITY_SCHEMA', 'EXACT_METHODS',
+__all__ = ['EXACT_SCHEMA', 'FORMAL_SCHEMA', 'DEV_SCHEMA', 'DEV_SCHEMA_V1', 'dev_comparison', 'THEOREM_SCHEMA', 'PRIORITY_SCHEMA', 'EXACT_METHODS',
            'CONTRACTED', 'INTERVENTIONS', 'theorem_object', 'theorem_problems', 'exact_problems', 'formal_problems',
            'dev_problems', 'priority_problems', 'pinned_library', 'intervention_problems']

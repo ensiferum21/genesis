@@ -772,11 +772,16 @@ class EvidenceKernel:
                 elif kind == 'priority_check':
                     why, _ = RC.priority_problems(self.s.get, p, problem, level, library=self.library())
                 else:
-                    why = RC.dev_problems(p)
+                    why = RC.dev_problems(self.s.get, p, self._attempt)
             except Exception as exc:                   # a replay that cannot run licenses nothing
                 why = [f'replay could not run ({type(exc).__name__})']
             cache[ref] = '; '.join(why) if why else None
         return cache[ref]
+
+    def _attempt(self, aid):
+        """(status, request hash, receipt hash) of one attempt in this store's journal, or None."""
+        row = self.s.db.execute('SELECT status,request,receipt FROM attempts WHERE id=?', (aid,)).fetchone()
+        return tuple(row) if row else None
 
     def library(self):
         """The pinned library priority searches are replayed in (None when it is not on this machine)."""
