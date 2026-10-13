@@ -2,7 +2,7 @@
 
 ## Where things stand
 
-- **Branch:** `continuation-b20-rx` (GitHub `ensiferum21/genesis`). It is the canonical B20_R11 line (`continuation-b20-repairs`, `36954d6`), with the recovery-branch work ported onto it, plus B20_R12, B20_R15 and B20_R16.
+- **Branch:** `continuation-b20-rx` (GitHub `ensiferum21/genesis`). It is the canonical B20_R11 line (`continuation-b20-repairs`, `36954d6`), with the recovery-branch work ported onto it, plus B20_R12 and B20_R15–R21.
 - **Checkpoints:**
 
 | Checkpoint | Commit | Archive SHA-256 |
@@ -13,7 +13,8 @@
 | B20_R5 | `0989a4f` | `60d5c307…4ddb` |
 | B20_R8 | `ae50d74` | `9f34fec8…334f` |
 | B20_R11 | `36954d6` | see `archive` branch `SHA256SUMS` |
-| B20_R16 | this record's commit | see `archive` branch `SHA256SUMS` |
+| B20_R16 | `988c7f5` | `c0a201b0…c37a` |
+| B20_R21 | `0bf3a96` | `72e78fab…0796` (release matrix 1,157 tests, all OK; restore-verified) |
 
   The recovery-branch checkpoints B20_RX1 and B20_RX2 are on `recovery-b20r1-partial`; their work was ported here.
 - **Records:** `docs/checkpoints/B20_R1_RECORD.md` … `B20_R11_RECORD.md`, `B20_RX1_RECORD.md`, `B20_RX2_RECORD.md`, `B20_R12_RECORD.md`, `B20_R15_RECORD.md` and `B20_R16_RECORD.md`.
