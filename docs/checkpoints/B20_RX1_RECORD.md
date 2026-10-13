@@ -164,6 +164,21 @@ Commits `0dec3f6` (setup), `f2badd0`, `76aa47d` (replication setup) and `723c13d
 
 **Design draft.** `handoff/gv4/README.md` (DRAFT) sets out the GV4 study these pilots point to, and what blocks it.
 
+### B20_RX4: harder E1 family (DEV calibration)
+
+Commits `7b8a57e` and `4b1c2fc`. The rule's choice is **n30 p0.35**:
+- the candidate beats the strongest time-matched baseline (low_cycle_tm) by +4.92 edges per host;
+- it won on all 12 hosts (12/0/0);
+- the optimum was certified on 10 of 12 hosts, and the candidate is below it on 6 of those.
+
+The other eligible cells are n30 p0.3 and n38 p0.25. Adopting the family, the fresh pilot and the power analysis are for the B20_R12 redo, which needs the canonical code.
+
+### B20_RX5: proposal pilot over a pipeline grammar
+
+Commit `7adbece` (setup) and the result commit. **NO_PROPOSAL_HEADROOM** in all three settings. Good pipelines are plentiful once the LP/SAT components are available, so how pipelines are proposed does not matter.
+
+GV4 therefore depends on research that produces *components* (s15.3, W22). Composing components is not enough.
+
 ### H06 design probe (no study, nothing committed as evidence)
 
 On 24 calibrated DEV hosts per domain, the motif hypergraph is essentially one component:
@@ -199,7 +214,7 @@ None of the files these commits modify (`graphs.py`, `domains.py`, `certificates
 | B20RX-OPEN-2 | The CRPD-2b pin revision and the pair-count package. | reviewer acceptance (pin change, builder-written known results) |
 | B20RX-OPEN-3 | W23 is not yet wired into the custodian or evidence-kernel promotion path; this needs the R5+ custodian. Code cannot check whether two operators are independent. | the canonical line; external review |
 | B20RX-OPEN-4 | W22: no machine-proposed primitive with prospective utility yet, and no DEV trace corpus. | a corpus from real representation research |
-| B20RX3-OPEN-1 | GV4: the capability effect (LP- and SAT-guided methods, builder-written) replicates. The study must let improvers *produce* the methods (`handoff/gv4/README.md`). It needs a candidate kind and H08 lineages from the canonical line, plus statistician and custodian. | canonical history; external parties |
+| B20RX3-OPEN-1 | GV4: the capability effect (LP- and SAT-guided methods, builder-written) replicates, but composing components shows no proposal headroom (RX5). A better improver must *produce components* (s15.3, W22). The study (`handoff/gv4/README.md`) also needs a candidate kind and H08 lineages from the canonical line, plus statistician and custodian. | component-invention research; canonical history; external parties |
 | B20R13-OPEN-1 | GV4: choosing among existing configurations leaves no headroom in graph construction either (4 pilots in total). B20_R14 shows capability headroom on harder families: S2 at 1.31, S3 at 0.56 and S7 at 1.36 edges per host below the certified optimum. A study should let research produce new methods (LP- or SAT-guided construction, representations beyond the menu) at matched budgets on such families. | the user's design decision |
 | B20RX-OPEN-5 | H06 s16.3: decomposition and free-edge kernel have no headroom on the calibrated families (design probe). | a different structural method or family |
 

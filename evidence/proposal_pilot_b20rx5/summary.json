@@ -1,0 +1,371 @@
+{
+ "non_valid_runs": 0,
+ "rule": {
+  "D": 10,
+  "H": 16,
+  "budget_cpu_s": 2.0,
+  "mue": 0.5,
+  "over_budget_factor": 1.25,
+  "share": 0.25
+ },
+ "schema": "genesis-b20rx5-proposal-v1",
+ "settings": {
+  "C1": {
+   "K": 40,
+   "bootstrap90_vs_fixed_enum": {
+    "ORACLE": [
+     0,
+     0
+    ],
+    "SH": [
+     0,
+     0
+    ]
+   },
+   "cap_evaluations": 100,
+   "chosen": {
+    "FIXED_ENUM": "rep:cross_2|0.5|lp_restarts",
+    "ORACLE": "rep:cross_2|0.5|lp_restarts",
+    "SH": "rep:cross_2|0.5|lp_restarts"
+   },
+   "domain": "triangle_free_host_v1",
+   "family": "erdos",
+   "gap_adaptive": 0.0,
+   "gap_oracle_beyond": 0.0,
+   "held_out_mean": {
+    "BEST_OF": 95.5,
+    "FIXED_ENUM": 95.438,
+    "ORACLE": 95.438,
+    "ORACLE_CV": 95.438,
+    "RANDOM": 95.428,
+    "SH": 95.438
+   },
+   "params": {
+    "n": 30,
+    "p": 0.3
+   },
+   "pipeline_held_out_mean": {
+    "lp_greedy|0.25|lp_restarts": 95.438,
+    "lp_greedy|0.25|sat_climb": 95.375,
+    "lp_greedy|0.5|lp_restarts": 95.438,
+    "lp_greedy|0.5|sat_climb": 95.438,
+    "lp_greedy|1.0|none": 95.438,
+    "menu:low_cycle_tm|0.25|lp_restarts": 95.438,
+    "menu:low_cycle_tm|0.25|sat_climb": 94.562,
+    "menu:low_cycle_tm|0.5|lp_restarts": 95.438,
+    "menu:low_cycle_tm|0.5|sat_climb": 94.062,
+    "menu:low_cycle_tm|1.0|none": 92.75,
+    "menu:multistart_tm|0.25|lp_restarts": 95.438,
+    "menu:multistart_tm|0.25|sat_climb": 94.062,
+    "menu:multistart_tm|0.5|lp_restarts": 95.438,
+    "menu:multistart_tm|0.5|sat_climb": 93.688,
+    "menu:multistart_tm|1.0|none": 91.875,
+    "random_greedy|0.25|lp_restarts": 95.438,
+    "random_greedy|0.25|sat_climb": 94.438,
+    "random_greedy|0.5|lp_restarts": 95.438,
+    "random_greedy|0.5|sat_climb": 94.312,
+    "random_greedy|1.0|none": 93.188,
+    "rep:adjacent_2|0.25|lp_restarts": 95.438,
+    "rep:adjacent_2|0.25|sat_climb": 95.188,
+    "rep:adjacent_2|0.5|lp_restarts": 95.438,
+    "rep:adjacent_2|0.5|sat_climb": 94.938,
+    "rep:adjacent_2|1.0|none": 94.312,
+    "rep:adjacent_3|0.25|lp_restarts": 95.438,
+    "rep:adjacent_3|0.25|sat_climb": 95.25,
+    "rep:adjacent_3|0.5|lp_restarts": 95.438,
+    "rep:adjacent_3|0.5|sat_climb": 95,
+    "rep:adjacent_3|1.0|none": 94.312,
+    "rep:cross_2|0.25|lp_restarts": 95.438,
+    "rep:cross_2|0.25|sat_climb": 95.125,
+    "rep:cross_2|0.5|lp_restarts": 95.438,
+    "rep:cross_2|0.5|sat_climb": 94.938,
+    "rep:cross_2|1.0|none": 94.312,
+    "rep:ordered_2|0.25|lp_restarts": 95.438,
+    "rep:ordered_2|0.25|sat_climb": 93.812,
+    "rep:ordered_2|0.5|lp_restarts": 95.438,
+    "rep:ordered_2|0.5|sat_climb": 93.312,
+    "rep:ordered_2|1.0|none": 88.438
+   },
+   "pipelines_within_mue_of_oracle": 25,
+   "random_choices": [
+    "lp_greedy|0.25|sat_climb",
+    "menu:low_cycle_tm|0.5|lp_restarts",
+    "rep:adjacent_2|0.25|lp_restarts",
+    "lp_greedy|0.5|sat_climb",
+    "lp_greedy|0.5|sat_climb",
+    "menu:low_cycle_tm|0.5|lp_restarts",
+    "menu:low_cycle_tm|0.25|lp_restarts",
+    "menu:low_cycle_tm|0.25|lp_restarts",
+    "lp_greedy|0.5|sat_climb",
+    "menu:low_cycle_tm|0.25|lp_restarts",
+    "lp_greedy|0.5|lp_restarts",
+    "lp_greedy|0.25|sat_climb",
+    "lp_greedy|0.25|lp_restarts",
+    "lp_greedy|1.0|none",
+    "menu:multistart_tm|0.5|lp_restarts",
+    "menu:low_cycle_tm|0.25|lp_restarts",
+    "menu:low_cycle_tm|0.25|lp_restarts",
+    "rep:ordered_2|0.5|lp_restarts",
+    "lp_greedy|1.0|none",
+    "lp_greedy|0.25|sat_climb"
+   ],
+   "sh_rungs": [
+    {
+     "configs": 40,
+     "hosts": 1,
+     "spent": 40
+    },
+    {
+     "configs": 20,
+     "hosts": 2,
+     "spent": 60
+    },
+    {
+     "configs": 10,
+     "hosts": 4,
+     "spent": 80
+    },
+    {
+     "configs": 5,
+     "hosts": 8,
+     "spent": 100
+    }
+   ],
+   "sh_spent": 100,
+   "verdict": "NO_PROPOSAL_HEADROOM"
+  },
+  "C2": {
+   "K": 40,
+   "bootstrap90_vs_fixed_enum": {
+    "ORACLE": [
+     0,
+     0.188
+    ],
+    "SH": [
+     0,
+     0
+    ]
+   },
+   "cap_evaluations": 100,
+   "chosen": {
+    "FIXED_ENUM": "rep:cross_2|0.5|lp_restarts",
+    "ORACLE": "lp_greedy|1.0|none",
+    "SH": "rep:cross_2|0.5|lp_restarts"
+   },
+   "domain": "triangle_free_host_v1",
+   "family": "erdos",
+   "gap_adaptive": -0.019,
+   "gap_oracle_beyond": 0.044,
+   "held_out_mean": {
+    "BEST_OF": 125.062,
+    "FIXED_ENUM": 125,
+    "ORACLE": 125.062,
+    "ORACLE_CV": 125.0,
+    "RANDOM": 125.019,
+    "SH": 125
+   },
+   "params": {
+    "n": 40,
+    "p": 0.2
+   },
+   "pipeline_held_out_mean": {
+    "lp_greedy|0.25|lp_restarts": 125,
+    "lp_greedy|0.25|sat_climb": 125.062,
+    "lp_greedy|0.5|lp_restarts": 125.062,
+    "lp_greedy|0.5|sat_climb": 125.062,
+    "lp_greedy|1.0|none": 125.062,
+    "menu:low_cycle_tm|0.25|lp_restarts": 125,
+    "menu:low_cycle_tm|0.25|sat_climb": 124.75,
+    "menu:low_cycle_tm|0.5|lp_restarts": 125,
+    "menu:low_cycle_tm|0.5|sat_climb": 124.562,
+    "menu:low_cycle_tm|1.0|none": 124.125,
+    "menu:multistart_tm|0.25|lp_restarts": 125,
+    "menu:multistart_tm|0.25|sat_climb": 124.25,
+    "menu:multistart_tm|0.5|lp_restarts": 125,
+    "menu:multistart_tm|0.5|sat_climb": 124.125,
+    "menu:multistart_tm|1.0|none": 122.188,
+    "random_greedy|0.25|lp_restarts": 125,
+    "random_greedy|0.25|sat_climb": 124.562,
+    "random_greedy|0.5|lp_restarts": 125,
+    "random_greedy|0.5|sat_climb": 124.438,
+    "random_greedy|1.0|none": 123.562,
+    "rep:adjacent_2|0.25|lp_restarts": 125,
+    "rep:adjacent_2|0.25|sat_climb": 124.812,
+    "rep:adjacent_2|0.5|lp_restarts": 125,
+    "rep:adjacent_2|0.5|sat_climb": 124.625,
+    "rep:adjacent_2|1.0|none": 123.25,
+    "rep:adjacent_3|0.25|lp_restarts": 125,
+    "rep:adjacent_3|0.25|sat_climb": 124.625,
+    "rep:adjacent_3|0.5|lp_restarts": 125,
+    "rep:adjacent_3|0.5|sat_climb": 124.625,
+    "rep:adjacent_3|1.0|none": 123.375,
+    "rep:cross_2|0.25|lp_restarts": 125,
+    "rep:cross_2|0.25|sat_climb": 124.812,
+    "rep:cross_2|0.5|lp_restarts": 125,
+    "rep:cross_2|0.5|sat_climb": 124.625,
+    "rep:cross_2|1.0|none": 123.25,
+    "rep:ordered_2|0.25|lp_restarts": 125,
+    "rep:ordered_2|0.25|sat_climb": 124.312,
+    "rep:ordered_2|0.5|lp_restarts": 125,
+    "rep:ordered_2|0.5|sat_climb": 123.938,
+    "rep:ordered_2|1.0|none": 117.875
+   },
+   "pipelines_within_mue_of_oracle": 28,
+   "random_choices": [
+    "rep:cross_2|0.25|lp_restarts",
+    "lp_greedy|0.5|lp_restarts",
+    "lp_greedy|1.0|none",
+    "menu:low_cycle_tm|0.5|lp_restarts",
+    "rep:adjacent_2|0.5|lp_restarts",
+    "lp_greedy|0.25|lp_restarts",
+    "lp_greedy|1.0|none",
+    "rep:cross_2|0.25|lp_restarts",
+    "menu:low_cycle_tm|0.5|lp_restarts",
+    "lp_greedy|0.25|sat_climb",
+    "lp_greedy|0.25|sat_climb",
+    "rep:ordered_2|0.25|lp_restarts",
+    "lp_greedy|0.5|sat_climb",
+    "rep:adjacent_2|0.25|lp_restarts",
+    "rep:adjacent_2|0.5|lp_restarts",
+    "random_greedy|0.5|lp_restarts",
+    "rep:ordered_2|0.25|lp_restarts",
+    "menu:low_cycle_tm|0.5|lp_restarts",
+    "lp_greedy|0.25|lp_restarts",
+    "rep:adjacent_2|0.25|lp_restarts"
+   ],
+   "sh_rungs": [
+    {
+     "configs": 40,
+     "hosts": 1,
+     "spent": 40
+    },
+    {
+     "configs": 20,
+     "hosts": 2,
+     "spent": 60
+    },
+    {
+     "configs": 10,
+     "hosts": 4,
+     "spent": 80
+    },
+    {
+     "configs": 5,
+     "hosts": 8,
+     "spent": 100
+    }
+   ],
+   "sh_spent": 100,
+   "verdict": "NO_PROPOSAL_HEADROOM"
+  },
+  "C3": {
+   "K": 25,
+   "bootstrap90_vs_fixed_enum": {
+    "ORACLE": [
+     0.188,
+     0.688
+    ],
+    "SH": [
+     -0.688,
+     0
+    ]
+   },
+   "cap_evaluations": 62,
+   "chosen": {
+    "FIXED_ENUM": "menu:multistart_tm|0.25|lp_restarts",
+    "ORACLE": "lp_greedy|0.25|sat_climb",
+    "SH": "menu:multistart_tm|0.5|sat_climb"
+   },
+   "domain": "c4_host_v2",
+   "family": "erdos",
+   "gap_adaptive": -0.475,
+   "gap_oracle_beyond": 0.337,
+   "held_out_mean": {
+    "BEST_OF": 61.562,
+    "FIXED_ENUM": 61.062,
+    "ORACLE": 61.5,
+    "ORACLE_CV": 61.25,
+    "RANDOM": 61.163,
+    "SH": 60.688
+   },
+   "params": {
+    "n": 30,
+    "p": 0.2
+   },
+   "pipeline_held_out_mean": {
+    "lp_greedy|0.25|lp_restarts": 61.125,
+    "lp_greedy|0.25|sat_climb": 61.5,
+    "lp_greedy|0.5|lp_restarts": 61.125,
+    "lp_greedy|0.5|sat_climb": 61.438,
+    "lp_greedy|1.0|none": 61.062,
+    "menu:exchange_tm|0.25|lp_restarts": 61.062,
+    "menu:exchange_tm|0.25|sat_climb": 60.875,
+    "menu:exchange_tm|0.5|lp_restarts": 61.062,
+    "menu:exchange_tm|0.5|sat_climb": 60.188,
+    "menu:exchange_tm|1.0|none": 57.25,
+    "menu:low_cycle_tm|0.25|lp_restarts": 61.125,
+    "menu:low_cycle_tm|0.25|sat_climb": 61.25,
+    "menu:low_cycle_tm|0.5|lp_restarts": 61.125,
+    "menu:low_cycle_tm|0.5|sat_climb": 61.062,
+    "menu:low_cycle_tm|1.0|none": 59.812,
+    "menu:multistart_tm|0.25|lp_restarts": 61.062,
+    "menu:multistart_tm|0.25|sat_climb": 61,
+    "menu:multistart_tm|0.5|lp_restarts": 61.062,
+    "menu:multistart_tm|0.5|sat_climb": 60.688,
+    "menu:multistart_tm|1.0|none": 58.688,
+    "random_greedy|0.25|lp_restarts": 61.125,
+    "random_greedy|0.25|sat_climb": 61.188,
+    "random_greedy|0.5|lp_restarts": 61.125,
+    "random_greedy|0.5|sat_climb": 61.062,
+    "random_greedy|1.0|none": 60.312
+   },
+   "pipelines_within_mue_of_oracle": 18,
+   "random_choices": [
+    "menu:multistart_tm|0.25|lp_restarts",
+    "lp_greedy|0.5|sat_climb",
+    "lp_greedy|1.0|none",
+    "menu:multistart_tm|0.25|lp_restarts",
+    "random_greedy|0.5|lp_restarts",
+    "lp_greedy|0.5|sat_climb",
+    "lp_greedy|0.5|sat_climb",
+    "lp_greedy|1.0|none",
+    "menu:multistart_tm|0.25|lp_restarts",
+    "lp_greedy|0.25|lp_restarts",
+    "menu:multistart_tm|0.25|lp_restarts",
+    "lp_greedy|0.25|lp_restarts",
+    "lp_greedy|0.25|lp_restarts",
+    "menu:low_cycle_tm|0.25|lp_restarts",
+    "lp_greedy|0.5|lp_restarts",
+    "lp_greedy|0.5|lp_restarts",
+    "menu:exchange_tm|0.25|lp_restarts",
+    "lp_greedy|0.25|lp_restarts",
+    "lp_greedy|0.5|sat_climb",
+    "menu:multistart_tm|0.25|lp_restarts"
+   ],
+   "sh_rungs": [
+    {
+     "configs": 25,
+     "hosts": 1,
+     "spent": 25
+    },
+    {
+     "configs": 13,
+     "hosts": 2,
+     "spent": 38
+    },
+    {
+     "configs": 7,
+     "hosts": 4,
+     "spent": 52
+    }
+   ],
+   "sh_spent": 52,
+   "verdict": "NO_PROPOSAL_HEADROOM"
+  }
+ },
+ "verdicts": {
+  "C1": "NO_PROPOSAL_HEADROOM",
+  "C2": "NO_PROPOSAL_HEADROOM",
+  "C3": "NO_PROPOSAL_HEADROOM"
+ }
+}
