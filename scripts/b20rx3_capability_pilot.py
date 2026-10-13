@@ -43,6 +43,10 @@ Verdict per setting (means are edges per held-out host; MUE = 0.5 as in E1, R13,
   CAPABILITY_HEADROOM             otherwise ORACLE[all] - ORACLE[menu] >= MUE
   NO_CAPABILITY_HEADROOM          otherwise
 Paired bootstrap 90% intervals (2000 resamples, random.Random(1415)) are diagnostics only.
+
+Replication (--replication, added after the first run, before any replication host existed): the
+same design with fresh generator seeds 20261601 + 10 i (selection) and 20261602 + 10 i (held-out).
+Everything else, including the rule above, is unchanged. Hosts of the first run are excluded.
 """
 import json
 import math
@@ -151,12 +155,25 @@ def run_config(task, spec, seed):
     return {'value': value, 'status': status, 'cpu_ns': cpu_ns, **extra}
 
 
+SEED_BASE = 20261401
+REPLICATION_SEED_BASE = 20261601
+
+
+def _first_run_hosts(domain, family, params, i):
+    a = ADAPTERS[domain]
+    _, seen, _ = a.generate(SEED_BASE + 10 * i, D, 'DEV', family, params)
+    _, seen, _ = a.generate(SEED_BASE + 1 + 10 * i, H, 'DEV', family, params, excluded=seen)
+    return set(seen)
+
+
 def hosts():
     out = {}
+    base = REPLICATION_SEED_BASE if '--replication' in sys.argv else SEED_BASE
     for i, (sid, domain, family, params) in enumerate(SETTINGS):
         a = ADAPTERS[domain]
-        sel, seen, g1 = a.generate(20261401 + 10 * i, D, 'DEV', family, params)
-        held, _, g2 = a.generate(20261402 + 10 * i, H, 'DEV', family, params, excluded=seen)
+        excluded = _first_run_hosts(domain, family, params, i) if base != SEED_BASE else set()
+        sel, seen, g1 = a.generate(base + 10 * i, D, 'DEV', family, params, excluded=excluded)
+        held, _, g2 = a.generate(base + 1 + 10 * i, H, 'DEV', family, params, excluded=set(seen) | excluded)
         out[sid] = {'domain': domain, 'family': family, 'params': params, 'select': sel, 'held_out': held,
                     'generator': {'select': g1, 'held_out': g2}}
     return out
