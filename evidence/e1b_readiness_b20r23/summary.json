@@ -1,0 +1,417 @@
+{
+ "candidate_parameters": {
+  "cpu_seconds": 2.0,
+  "finish": "none",
+  "frac": 1.0,
+  "init": "lp_greedy",
+  "seed": 0
+ },
+ "certify_seconds": 120,
+ "code_identity": "5be1dd6742c586848571b88a7146334b21c78356d3edd855c3d41099f09678ee",
+ "descriptors": {
+  "c4_host_v2": {
+   "candidate": "74861eea2672470c1bfe4907f19f134acb088e52de648a7871f16780780202b3",
+   "exchange_tm": "8899ba9df09bbf04b6d31cc27c4b1b2107b2bab598078726d7da894e5e56d9e0",
+   "low_cycle_tm": "fbf67fb1604594a3837f5326225ecc595f97e1a38c62740b9e3c49b9ea358748",
+   "multistart_tm": "fcafc96095eddb83bd7d9432462b673fe4eb7eda778a089c38470ddbde7dad2d"
+  },
+  "triangle_free_host_v1": {
+   "candidate": "ac8f1fcb23376a7a43787987c8821652dda966922a6e0e251aa2728e340bb231",
+   "cross_2_diag": "130811a424e927cb60ed3223b3bdd0f72ce8845add7371378f26813a4d6b9097",
+   "exchange_tm": "76bd4a7cd970eacc1cff20e188aa6e7a4d7bcc10b08cac8d6406a0f8698b2438",
+   "low_cycle_tm": "69c30eb33530aec3568d32e4e462f992978c7c1bf6e68a8af1471b59fb0e8a14",
+   "multistart_tm": "1186b1d1a8aa2e33d520b4280ff9ef54f17c62ff0a7edbba1a0e17491f21e01a"
+  }
+ },
+ "domains": {
+  "c4_host_v2": {
+   "approximation_agreement": 1.0,
+   "certified_by_setting": {
+    "C3": 9
+   },
+   "comparator": "low_cycle_tm",
+   "cpu_ns_by_arm": {
+    "candidate": 26720371505,
+    "exchange_tm": 26861021986,
+    "low_cycle_tm": 27007028880,
+    "multistart_tm": 27069961419
+   },
+   "cpu_ratio_candidate_to_comparator": 0.9894,
+   "draft_plan_dry_run": {
+    "checks": {
+     "cost_within_bound": true,
+     "estimate_reaches_minimum_useful_effect": true,
+     "holm_rejects_no_superiority": false,
+     "interval_lower_above_zero": true,
+     "no_stratum_regression": true
+    },
+    "cost_ratio": 0.9919648929,
+    "decision": "NOT_SUPPORTED",
+    "estimate": 1.0,
+    "interval": [
+     0.2222222222,
+     1.7777777778
+    ],
+    "p_value": 0.0625
+   },
+   "failures": {
+    "candidate": 0,
+    "exchange_tm": 0,
+    "low_cycle_tm": 0,
+    "multistart_tm": 0
+   },
+   "hosts": 12,
+   "mean_difference": 1.0,
+   "mean_gap_to_optimum": {
+    "candidate": 0.7778,
+    "exchange_tm": 4.7778,
+    "low_cycle_tm": 1.7778,
+    "multistart_tm": 3.2222
+   },
+   "optimum_hits": {
+    "candidate": 3,
+    "exchange_tm": 0,
+    "low_cycle_tm": 2,
+    "multistart_tm": 0
+   },
+   "plan_max_cost_ratio": 3.0,
+   "plan_minimum_useful_effect": 0.5,
+   "power_centred": {
+    "chosen": {
+     "power": 0.921,
+     "tasks_per_stratum": 20,
+     "total_tasks": 20
+    },
+    "false_positive_rate_at_zero_effect": 0.006,
+    "pilot_strata": {
+     "erdos:0cee043c": {
+      "mean_difference": 1.0,
+      "sd": 1.5,
+      "share_with_headroom": 1.0,
+      "tasks": 9
+     }
+    },
+    "power_at_minimum_useful_effect": 0.102,
+    "status": "CHOSEN",
+    "table": [
+     {
+      "power": 0.238,
+      "tasks_per_stratum": 10,
+      "total_tasks": 10
+     },
+     {
+      "power": 0.428,
+      "tasks_per_stratum": 12,
+      "total_tasks": 12
+     },
+     {
+      "power": 0.74,
+      "tasks_per_stratum": 15,
+      "total_tasks": 15
+     },
+     {
+      "power": 0.921,
+      "tasks_per_stratum": 20,
+      "total_tasks": 20
+     },
+     {
+      "power": 0.959,
+      "tasks_per_stratum": 25,
+      "total_tasks": 25
+     },
+     {
+      "power": 0.984,
+      "tasks_per_stratum": 30,
+      "total_tasks": 30
+     },
+     {
+      "power": 0.994,
+      "tasks_per_stratum": 40,
+      "total_tasks": 40
+     },
+     {
+      "power": 0.997,
+      "tasks_per_stratum": 50,
+      "total_tasks": 50
+     },
+     {
+      "power": 0.999,
+      "tasks_per_stratum": 60,
+      "total_tasks": 60
+     },
+     {
+      "power": 1.0,
+      "tasks_per_stratum": 80,
+      "total_tasks": 80
+     },
+     {
+      "power": 1.0,
+      "tasks_per_stratum": 100,
+      "total_tasks": 100
+     },
+     {
+      "power": 1.0,
+      "tasks_per_stratum": 150,
+      "total_tasks": 150
+     },
+     {
+      "power": 1.0,
+      "tasks_per_stratum": 200,
+      "total_tasks": 200
+     }
+    ]
+   },
+   "scored": 9,
+   "settings": {
+    "C3": {
+     "family": "erdos",
+     "params": {
+      "n": 30,
+      "p": 0.2
+     },
+     "seed": 20262421
+    }
+   },
+   "stratum_mean_differences": {
+    "erdos:0cee043c": 1.0
+   },
+   "stratum_tasks": {
+    "erdos:0cee043c": 9
+   },
+   "totals": {
+    "candidate": 734,
+    "exchange_tm": 687,
+    "low_cycle_tm": 726,
+    "multistart_tm": 706
+   },
+   "verdict": "READY_FOR_REVIEW",
+   "wins_ties_losses": [
+    4,
+    5,
+    0
+   ]
+  },
+  "triangle_free_host_v1": {
+   "approximation_agreement": 1.0,
+   "certified_by_setting": {
+    "C1": 12,
+    "C2": 12
+   },
+   "comparator": "low_cycle_tm",
+   "cpu_ns_by_arm": {
+    "candidate": 53552541041,
+    "cross_2_diag": 52226848594,
+    "exchange_tm": 52374156762,
+    "low_cycle_tm": 52421859045,
+    "multistart_tm": 52352740758
+   },
+   "cpu_ratio_candidate_to_comparator": 1.0216,
+   "diagnostic_candidate_minus_cross_2": {
+    "mean": 1.375,
+    "wins_ties_losses": [
+     21,
+     3,
+     0
+    ]
+   },
+   "draft_plan_dry_run": {
+    "checks": {
+     "cost_within_bound": true,
+     "estimate_reaches_minimum_useful_effect": true,
+     "holm_rejects_no_superiority": true,
+     "interval_lower_above_zero": true,
+     "no_stratum_regression": true
+    },
+    "cost_ratio": 1.0215689031,
+    "decision": "SUPPORTED",
+    "estimate": 1.7916666667,
+    "interval": [
+     1.2916666667,
+     2.2916666667
+    ],
+    "p_value": 3.8147e-06
+   },
+   "failures": {
+    "candidate": 0,
+    "cross_2_diag": 0,
+    "exchange_tm": 0,
+    "low_cycle_tm": 0,
+    "multistart_tm": 0
+   },
+   "hosts": 24,
+   "mean_difference": 1.7917,
+   "mean_gap_to_optimum": {
+    "candidate": 0.0833,
+    "cross_2_diag": 1.4583,
+    "exchange_tm": 3.7917,
+    "low_cycle_tm": 1.875,
+    "multistart_tm": 2.8333
+   },
+   "optimum_hits": {
+    "candidate": 22,
+    "cross_2_diag": 1,
+    "exchange_tm": 0,
+    "low_cycle_tm": 5,
+    "multistart_tm": 0
+   },
+   "plan_max_cost_ratio": 3.0,
+   "plan_minimum_useful_effect": 0.5,
+   "power_centred": {
+    "chosen": {
+     "power": 0.88,
+     "tasks_per_stratum": 12,
+     "total_tasks": 24
+    },
+    "false_positive_rate_at_zero_effect": 0.011,
+    "pilot_strata": {
+     "erdos:3765432f": {
+      "mean_difference": 1.1667,
+      "sd": 1.0299,
+      "share_with_headroom": 1.0,
+      "tasks": 12
+     },
+     "erdos:b73f6828": {
+      "mean_difference": 2.4167,
+      "sd": 1.9287,
+      "share_with_headroom": 1.0,
+      "tasks": 12
+     }
+    },
+    "power_at_minimum_useful_effect": 0.199,
+    "status": "CHOSEN",
+    "table": [
+     {
+      "power": 0.793,
+      "tasks_per_stratum": 10,
+      "total_tasks": 20
+     },
+     {
+      "power": 0.88,
+      "tasks_per_stratum": 12,
+      "total_tasks": 24
+     },
+     {
+      "power": 0.959,
+      "tasks_per_stratum": 15,
+      "total_tasks": 30
+     },
+     {
+      "power": 0.985,
+      "tasks_per_stratum": 20,
+      "total_tasks": 40
+     },
+     {
+      "power": 0.996,
+      "tasks_per_stratum": 25,
+      "total_tasks": 50
+     },
+     {
+      "power": 0.997,
+      "tasks_per_stratum": 30,
+      "total_tasks": 60
+     },
+     {
+      "power": 0.999,
+      "tasks_per_stratum": 40,
+      "total_tasks": 80
+     },
+     {
+      "power": 1.0,
+      "tasks_per_stratum": 50,
+      "total_tasks": 100
+     },
+     {
+      "power": 1.0,
+      "tasks_per_stratum": 60,
+      "total_tasks": 120
+     },
+     {
+      "power": 1.0,
+      "tasks_per_stratum": 80,
+      "total_tasks": 160
+     },
+     {
+      "power": 1.0,
+      "tasks_per_stratum": 100,
+      "total_tasks": 200
+     },
+     {
+      "power": 1.0,
+      "tasks_per_stratum": 150,
+      "total_tasks": 300
+     },
+     {
+      "power": 1.0,
+      "tasks_per_stratum": 200,
+      "total_tasks": 400
+     }
+    ]
+   },
+   "scored": 24,
+   "settings": {
+    "C1": {
+     "family": "erdos",
+     "params": {
+      "n": 30,
+      "p": 0.3
+     },
+     "seed": 20262401
+    },
+    "C2": {
+     "family": "erdos",
+     "params": {
+      "n": 40,
+      "p": 0.2
+     },
+     "seed": 20262411
+    }
+   },
+   "stratum_mean_differences": {
+    "erdos:3765432f": 1.1667,
+    "erdos:b73f6828": 2.4167
+   },
+   "stratum_tasks": {
+    "erdos:3765432f": 12,
+    "erdos:b73f6828": 12
+   },
+   "totals": {
+    "candidate": 2615,
+    "cross_2_diag": 2582,
+    "exchange_tm": 2526,
+    "low_cycle_tm": 2572,
+    "multistart_tm": 2549
+   },
+   "verdict": "READY_FOR_REVIEW",
+   "wins_ties_losses": [
+    18,
+    6,
+    0
+   ]
+  }
+ },
+ "exposure_scan": {
+  "distinct_hosts": 1018,
+  "e1_named_hosts": 711,
+  "empty_files_skipped": [
+   "evidence/failed-wal-final-replay.json",
+   "evidence/final-replay.json"
+  ],
+  "excluded_identities": 1018,
+  "files_scanned": 800,
+  "host_records": 1503
+ },
+ "min_certified_per_stratum": 9,
+ "profile": {
+  "cpu_seconds": 4,
+  "memory_mib": 2048,
+  "queries": 1000,
+  "wall_seconds": 20
+ },
+ "schema": "genesis-b20r23-e1b-readiness-v1",
+ "search_seconds": 2.0,
+ "status": "DEV readiness diagnostic; no sealed task; licenses no claim",
+ "verdicts": {
+  "c4_host_v2": "READY_FOR_REVIEW",
+  "triangle_free_host_v1": "READY_FOR_REVIEW"
+ }
+}
