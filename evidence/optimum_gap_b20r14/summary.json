@@ -1,0 +1,170 @@
+{
+ "min_certified": 12,
+ "mue": 0.5,
+ "schema": "genesis-b20r14-optimum-gap-v1",
+ "seconds": 60.0,
+ "settings": {
+  "S1": {
+   "certified_optimum": 16,
+   "domain": "triangle_free_host_v1",
+   "family": "erdos",
+   "hosts": 16,
+   "hosts_best_of_at_optimum": 11,
+   "max_optimum_minus_best_of": 1,
+   "mean_optimum_minus_best_of": 0.312,
+   "open_gaps": [],
+   "params": {
+    "n": 22,
+    "p": 0.35
+   },
+   "upper_methods": [
+    "LP_DUAL_EXACT",
+    "SAT_DRAT"
+   ],
+   "verdict": "AT_CEILING"
+  },
+  "S2": {
+   "certified_optimum": 16,
+   "domain": "triangle_free_host_v1",
+   "family": "erdos",
+   "hosts": 16,
+   "hosts_best_of_at_optimum": 2,
+   "max_optimum_minus_best_of": 3,
+   "mean_optimum_minus_best_of": 1.312,
+   "open_gaps": [],
+   "params": {
+    "n": 30,
+    "p": 0.3
+   },
+   "upper_methods": [
+    "LP_DUAL_EXACT",
+    "SAT_DRAT"
+   ],
+   "verdict": "ROOM_TO_OPTIMUM"
+  },
+  "S3": {
+   "certified_optimum": 16,
+   "domain": "triangle_free_host_v1",
+   "family": "erdos",
+   "hosts": 16,
+   "hosts_best_of_at_optimum": 9,
+   "max_optimum_minus_best_of": 3,
+   "mean_optimum_minus_best_of": 0.562,
+   "open_gaps": [],
+   "params": {
+    "n": 40,
+    "p": 0.2
+   },
+   "upper_methods": [
+    "LP_DUAL_EXACT"
+   ],
+   "verdict": "ROOM_TO_OPTIMUM"
+  },
+  "S4": {
+   "certified_optimum": 16,
+   "domain": "triangle_free_host_v1",
+   "family": "planted_cluster",
+   "hosts": 16,
+   "hosts_best_of_at_optimum": 11,
+   "max_optimum_minus_best_of": 1,
+   "mean_optimum_minus_best_of": 0.312,
+   "open_gaps": [],
+   "params": {
+    "n": 30,
+    "p_in": 0.6,
+    "p_out": 0.2
+   },
+   "upper_methods": [
+    "LP_DUAL_EXACT",
+    "SAT_DRAT"
+   ],
+   "verdict": "AT_CEILING"
+  },
+  "S5": {
+   "certified_optimum": 2,
+   "domain": "triangle_free_host_v1",
+   "family": "erdos",
+   "hosts": 16,
+   "hosts_best_of_at_optimum": 2,
+   "max_optimum_minus_best_of": 0,
+   "mean_optimum_minus_best_of": 0,
+   "open_gaps": [
+    5,
+    3,
+    1,
+    2,
+    3,
+    3,
+    7,
+    2,
+    3,
+    2,
+    2,
+    4,
+    2,
+    5
+   ],
+   "params": {
+    "n": 40,
+    "p": 0.35
+   },
+   "upper_methods": [
+    "LP_DUAL_EXACT"
+   ],
+   "verdict": "UNSETTLED_BOUNDS"
+  },
+  "S6": {
+   "certified_optimum": 16,
+   "domain": "c4_host_v2",
+   "family": "erdos",
+   "hosts": 16,
+   "hosts_best_of_at_optimum": 13,
+   "max_optimum_minus_best_of": 1,
+   "mean_optimum_minus_best_of": 0.188,
+   "open_gaps": [],
+   "params": {
+    "n": 20,
+    "p": 0.25
+   },
+   "upper_methods": [
+    "LP_DUAL_EXACT",
+    "SAT_DRAT"
+   ],
+   "verdict": "AT_CEILING"
+  },
+  "S7": {
+   "certified_optimum": 11,
+   "domain": "c4_host_v2",
+   "family": "erdos",
+   "hosts": 16,
+   "hosts_best_of_at_optimum": 0,
+   "max_optimum_minus_best_of": 2,
+   "mean_optimum_minus_best_of": 1.364,
+   "open_gaps": [
+    7,
+    7,
+    5,
+    10,
+    8
+   ],
+   "params": {
+    "n": 30,
+    "p": 0.2
+   },
+   "upper_methods": [
+    "LP_DUAL_EXACT",
+    "SAT_DRAT"
+   ],
+   "verdict": "UNSETTLED_BOUNDS"
+  }
+ },
+ "verdicts": {
+  "S1": "AT_CEILING",
+  "S2": "ROOM_TO_OPTIMUM",
+  "S3": "ROOM_TO_OPTIMUM",
+  "S4": "AT_CEILING",
+  "S5": "UNSETTLED_BOUNDS",
+  "S6": "AT_CEILING",
+  "S7": "UNSETTLED_BOUNDS"
+ }
+}
