@@ -105,7 +105,11 @@ def persist(store, bundle, blobs):
 # inequalities are unchanged.
 
 SCHEMA_V2 = 'genesis-certificate-bundle-v2'
-CHECKED_METHODS_V2 = ('SAT_DRAT', 'HOST_EDGE_COUNT', 'LP_DUAL_EXACT')
+CHECKED_METHODS_V2 = ('SAT_DRAT', 'HOST_EDGE_COUNT', 'LP_DUAL_EXACT', 'PAIR_COUNT_LEAN')
+# PAIR_COUNT_LEAN (CRPD-2b): the C4 pair-count bound 4m^2 <= n^2 (n - 1) + 2nm, a Lean-checked theorem
+# (invention.pair_count; evidence/pair_count_b20r). The bundle carries the theory package as an
+# object; replay re-checks the host contract, recomputes the bound from n alone and replays the
+# package in the pinned workspace. v1 bundles keep recording this bound as an unchecked THEOREM.
 OBJECTIVE = 'maximum number of host edges in a motif-free subgraph (domain motif)'
 
 
@@ -114,6 +118,7 @@ def build_v2(task, *, witness, lower, upper, attempts=()):
 
     upper: {'method': 'HOST_EDGE_COUNT'}
          | {'method': 'LP_DUAL_EXACT', 'certificate': <lp dual certificate>, 'lp_value_float': float}
+         | {'method': 'PAIR_COUNT_LEAN', 'package': <checked pair-count theory package>}
          | {'method': 'SAT_DRAT', 'certificate': <sat certificate>, 'cnf': bytes, 'proof': bytes}
     A certificate whose own checker verdict is not VALID, or whose objects are missing,
     cannot be taken into custody as a checked upper bound (ValueError).
@@ -157,6 +162,22 @@ def build_v2(task, *, witness, lower, upper, attempts=()):
               'proof_sha256': _sha(proof), 'proof_bytes': len(proof), 'producer': cert.get('solver'),
               'checker': cert.get('checker'), 'checker_verdict': cert.get('verdict'),
               'checker_output_tail': cert.get('checker_output_tail')}
+    elif method == 'PAIR_COUNT_LEAN':
+        from ..invention import pair_count as PC
+        package = upper.get('package')
+        why = PC.applicability_problems(task) + PC.package_problems(package)
+        if why:
+            raise ValueError('pair-count bound cannot be taken into custody: ' + '; '.join(why))
+        verdict = PC.replay_verdict(package)
+        if verdict != 'REPLAYED':
+            raise ValueError(f'pair-count theory package does not replay: {verdict}')
+        pbytes = canonical(package)
+        blobs[_sha(pbytes)] = pbytes
+        up = {'method': 'PAIR_COUNT_LEAN', 'value': PC.quadratic_upper(task.n), 'package_sha256': _sha(pbytes),
+              'theory_package_sha256': package['package_sha256'], 'statement': PC.STATEMENT_ID,
+              'lean_statement': PC.expected_statement(), 'checker': PC.checker_identity(),
+              'checker_verdict': 'REPLAYED',
+              'justification': 'largest m with 4m^2 <= n^2 (n - 1) + 2nm, by the Lean-checked C4 pair-count bound'}
     else:
         raise ValueError(f'unsupported upper-bound method {method!r}')
     gap = up['value'] - lower
@@ -205,6 +226,11 @@ def _custody_problems_v2(bundle, has_object, revoked_checkers=()):
             out.append('LP certificate object missing or altered')
         if up.get('checker') in set(revoked_checkers):
             out.append('LP certificate checker identity is revoked')
+    if up.get('method') == 'PAIR_COUNT_LEAN':
+        if not has_object(up.get('package_sha256')):
+            out.append('pair-count theory package object missing or altered')
+        if up.get('checker') in set(revoked_checkers):
+            out.append('pair-count Lean replay identity is revoked')
     try:
         if digest(bundle['problem']['task']) != bundle['problem']['task_sha256']:
             out.append('problem hash mismatch')
@@ -279,6 +305,9 @@ def _replay_v2(bundle, get_bytes, revoked_checkers=()):
             upper = check_proof(cnf, proof)[0]
             if upper != 'VALID':
                 problems.append(f'proof checker verdict {upper}')
+    elif up['method'] == 'PAIR_COUNT_LEAN':
+        upper, why = _replay_pair_count(task, up, get_bytes, dead)
+        problems += why
     else:
         upper = 'REJECTED'
         problems.append(f'unsupported upper-bound method {up["method"]!r}')
@@ -298,6 +327,36 @@ def _replay_v2(bundle, get_bytes, revoked_checkers=()):
     if bundle.get('status') == 'OPTIMALITY_CHECKED' and status != 'OPTIMALITY_CHECKED':
         problems.append(f'recorded OPTIMALITY_CHECKED does not replay (replayed {status})')
     return {'status': status, 'lower': lower, 'upper': upper, 'gap': gap, 'problems': problems}
+
+
+def _replay_pair_count(task, up, get_bytes, dead):
+    """(verdict, problems) for a PAIR_COUNT_LEAN upper bound. The value is recomputed from n alone;
+    the stored package must be the checked statement over the repository definitions and must
+    replay in the pinned workspace (CHECKER_ERROR when that workspace is unavailable here)."""
+    from ..invention import pair_count as PC
+    if up.get('checker') in dead or PC.checker_identity() in dead:
+        return 'REJECTED', ['pair-count Lean replay identity is revoked']
+    why = PC.applicability_problems(task)
+    if up.get('value') != PC.quadratic_upper(task.n):
+        why.append('recorded value is not the pair-count bound for this n')
+    try:
+        raw = get_bytes(up['package_sha256'])
+        if _sha(raw) != up['package_sha256']:
+            raise ValueError('object hash mismatch')
+        package = json.loads(raw)
+    except Exception as exc:
+        return 'REJECTED', why + [f'pair-count theory package missing or altered ({type(exc).__name__})']
+    why += PC.package_problems(package)
+    if package.get('package_sha256') != up.get('theory_package_sha256'):
+        why.append('stored package is not the one the bundle names')
+    if why:
+        return 'REJECTED', why
+    verdict = PC.replay_verdict(package)
+    if verdict.startswith('CHECKER_ERROR'):
+        return 'CHECKER_ERROR', [verdict]
+    if verdict != 'REPLAYED':
+        return 'REJECTED', [f'pair-count theory package does not replay: {verdict}']
+    return 'VALID', []
 
 
 def custody_problems(bundle, has_object, revoked_checkers=()):

@@ -206,7 +206,8 @@ def certificate_bound_modes(bundle, replay_result):
                          value=bundle['lower']['value'], objective=obj,
                          evidence=[bundle['lower'].get('witness_sha256') or digest(bundle['lower']['witness'])])
     up = bundle['upper']
-    ev = [up.get(k) for k in ('certificate_sha256', 'cnf_sha256', 'proof_sha256') if up.get(k)] or [up['method']]
+    ev = [up.get(k) for k in ('certificate_sha256', 'cnf_sha256', 'proof_sha256', 'package_sha256') if up.get(k)] \
+        or [up['method']]
     upper = bound_record(f'{up["method"]} for {task[:12]}', side='upper', status=replay_result['upper'],
                          task_sha256=task, value=up['value'], objective=obj, evidence=ev)
     return lower, upper

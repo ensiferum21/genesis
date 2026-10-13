@@ -83,7 +83,9 @@ def universal_upper(task):
         # Keep the reference contract: Mantel certificate only on complete hosts.
         return {'value':n*n//4 if m==n*(n-1)//2 else m,
                 'method':'Mantel-complete-host' if m==n*(n-1)//2 else 'host-edge-count'}
-    # 4m^2 - 2nm <= n^2(n-1), using exact integer arithmetic.
+    # 4m^2 - 2nm <= n^2(n-1), using exact integer arithmetic. Lean-checked since CRPD-2b
+    # (invention.pair_count); v1 bundles still record it as an unchecked THEOREM bound, bundle v2
+    # can carry it as PAIR_COUNT_LEAN with the theory package.
     bound=(n+n*isqrt(max(0,4*n-3)))//4
     while 4*(bound+1)**2-2*n*(bound+1)<=n*n*(n-1):bound+=1
     while 4*bound**2-2*n*bound>n*n*(n-1):bound-=1
