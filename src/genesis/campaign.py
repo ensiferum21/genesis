@@ -290,6 +290,18 @@ class Campaign:
                                       memory_snapshot=self.store.verify()['head'],research_policy={'policy':'uniform'},
                                       source=self.store.state('source_hash'),**fixed)
                 parent_version=initial.version_id();self.store.save('system_version',parent_version,initial.model_dump(mode='json'))
+        # H08 (s20.6): the active-version pointer. The initial version is activated once; a campaign
+        # resumes only from a version that is still the active one and not revoked (versions.py).
+        from . import versions as VS
+        if VS.active(self.store) is None and VS.pointer_history(self.store)==[]:
+            VS.activate(self.store,parent_version,reason='initial version of the campaign',actor='campaign')
+        if resuming:
+            act=VS.active(self.store)
+            if act!=parent_version:
+                raise RuntimeError(f'ACTIVE_VERSION_CHANGED: the active version {str(act)[:12]} is not the version this '
+                                   f'campaign was continuing from ({parent_version[:12]}); start a new campaign from it')
+            problems=VS.resume_problems(self.store,parent_version)
+            if problems:raise RuntimeError('cannot resume: '+'; '.join(problems))
         # Attempts interrupted before this round's successor was frozen belong to its research
         # run (charged, ledgered); after the freeze they belong to its evaluation.
         pending=list(interrupted) if interrupted and first<self.config.generations and \
@@ -431,15 +443,18 @@ class Campaign:
                     'plan_id':None,'decision':'ACCEPTED' if retained else 'REJECTED',
                     'decision_basis':'DEV retention on the public SELECT panel; not an acceptance'}
                 # One transaction commits the generation: a crash leaves all of it or none.
+                from . import versions as VS
+                pointer=VS.pointer_change(self.store,vid,reason=f'generation {generation} retained on DEV (public SELECT)',
+                                          actor='campaign') if retained else ([],[])
                 self.store.commit_batch(
-                    entities=[('generation',str(generation),result),
+                    entities=pointer[0]+[('generation',str(generation),result),
                               ('lineage_run',str(generation),lineage_run),
                               ('lineage_transition',str(generation),lineage_transition),
                               ('research_policy',str(generation),{
                                   'parent_weights':adaptive_summary['mutation_weights'],'child_weights':learned,
                                   'training_source':f'g{generation}-adaptive','effects':['USES_DEV_DATA'],
                                   'claim':'candidate future research policy, utility unconfirmed'})],
-                    states=[('diagnosis',diagnosis),('mutation_weights',learned),('completed_dev_generations',generation+1),
+                    states=pointer[1]+[('diagnosis',diagnosis),('mutation_weights',learned),('completed_dev_generations',generation+1),
                             ('dev_progress',{'completed':generation+1,'parent':parent.model_dump(mode='json'),
                                              'parent_version':parent_version,'library':library,'seen':sorted(seen),
                                              'accepted':accepted})])
