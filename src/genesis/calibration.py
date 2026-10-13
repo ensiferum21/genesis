@@ -36,6 +36,27 @@ SELECTION_RULE = {
     'order': 'closest ceiling_rate to 0.35, then lower median reference_seconds, then setting order',
     'select_at_most': 4,
 }
+# B20_R12 (the user's decision of 13 Oct 2026): E1's candidate is already optimal on most hosts of
+# the family SELECTION_RULE chose, so E1 cannot be powered there; the frozen rule excludes harder
+# families by design (the fixed baselines must reach the optimum on >= 10% of hosts). A second,
+# separately versioned rule selects E1's family only. Like the first, it never looks at a candidate:
+# it bounds the fixed baselines' ceiling rate from above instead (harder for them), and keeps the
+# certification, headroom and evaluator-speed limits. SELECTION_RULE and the domain adoption are
+# unchanged; studies adopt a rule's record under configs/dev_calibration.json 'studies'.
+SELECTION_RULE_E1_HARD = {
+    'name': 'e1-hard-v1',
+    'certified_fraction_min': 0.9,
+    'ceiling_rate_min': 0.0,
+    'ceiling_rate_max': 0.25,
+    'ceiling_rate_target': 0.0,
+    'mean_headroom_min': 0.02,
+    'reference_seconds_median_max': 15.0,
+    'order': 'closest ceiling_rate to 0.0 (hardest for the fixed baselines), then lower median reference_seconds, '
+             'then setting order',
+    'select_at_most': 4,
+}
+RULES = (SELECTION_RULE, SELECTION_RULE_E1_HARD)
+RULES_BY_NAME = {r['name']: r for r in RULES if 'name' in r}     # the unnamed rule is SELECTION_RULE
 CALIBRATION_LIMITS = Limits(queries=1000, cpu_seconds=2)
 DEFAULT_GRID = {
     'c4_host_v2': [
@@ -119,7 +140,8 @@ def eligible(summary, rule=SELECTION_RULE):
 
 def select(settings, rule=SELECTION_RULE):
     ok = [s for s in settings if not s['ineligible_because']]
-    ok.sort(key=lambda s: (abs(s['summary']['ceiling_rate'] - 0.35), s['summary']['reference_seconds_median'],
+    target = rule.get('ceiling_rate_target', 0.35)
+    ok.sort(key=lambda s: (abs(s['summary']['ceiling_rate'] - target), s['summary']['reference_seconds_median'],
                            s['index']))
     return [{'family': s['family'], 'params': s['params'], 'index': s['index']} for s in ok[:rule['select_at_most']]]
 
@@ -157,8 +179,15 @@ def record_problems(record):
         return out
     if record.get('splits_used') != ['DEV']:
         out.append('calibration used material other than DEV')
-    if record.get('rule') != SELECTION_RULE:
-        out.append('selection rule differs from the frozen SELECTION_RULE')
+    rule = record.get('rule')
+    name = rule.get('name') if isinstance(rule, dict) else None
+    if name is None:
+        if rule != SELECTION_RULE:
+            out.append('selection rule differs from the frozen SELECTION_RULE')
+    elif name not in RULES_BY_NAME:
+        out.append(f'selection rule {name!r} is not a registered rule')
+    elif rule != RULES_BY_NAME[name]:
+        out.append(f'selection rule differs from the frozen, registered rule {name!r}')
     if select(record['settings'], record['rule']) != record['selected']:
         out.append('selected settings do not follow from the recorded measurements and rule')
     for s in record['settings']:
@@ -197,24 +226,29 @@ def compact(record):
 
 
 __all__ = ['calibrate', 'measure', 'summarize', 'select', 'calibrated_panel', 'record_problems', 'require_dev',
-           'compact', 'canonical']
+           'compact', 'canonical', 'SELECTION_RULE', 'SELECTION_RULE_E1_HARD', 'RULES']
 
 
 CONFIG = 'configs/dev_calibration.json'
 
 
-def load(domain, repo=None):
+def load(domain, repo=None, study=None):
     """The adopted calibration for `domain`: the evidence record named (by path and SHA-256) in
-    configs/dev_calibration.json, re-checked with record_problems before use."""
+    configs/dev_calibration.json, re-checked with record_problems before use. With ``study`` (for
+    example 'e1'), the study's own adoption under 'studies' is used instead, and its record must use
+    the rule the adoption names."""
     import json
     from pathlib import Path
     repo = Path(repo) if repo else Path(__file__).resolve().parents[2]
-    entry = json.loads((repo / CONFIG).read_text())['domains'].get(domain)
+    cfg = json.loads((repo / CONFIG).read_text())
+    entry = (cfg.get('studies', {}).get(study, {}) if study else cfg['domains']).get(domain)
     if entry is None:
-        raise ValueError(f'no adopted calibration for {domain}')
+        raise ValueError(f'no adopted calibration for {domain}' + (f' in study {study}' if study else ''))
     record = json.loads((repo / entry['record']).read_text())
     if digest(record) != entry['sha256']:
         raise ValueError('calibration record differs from the adopted one')
+    if study and (record.get('rule') or {}).get('name') != entry.get('rule'):
+        raise ValueError(f'the record for study {study} does not use the rule its adoption names')
     problems = record_problems(record)
     if problems:
         raise ValueError('calibration record: ' + '; '.join(problems))

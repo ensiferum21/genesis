@@ -138,7 +138,7 @@ def chain_requests(fx, claim_id, n, *, versions=None, seed=0, index_order=None):
 
 def campaign_export(directory, *, campaign_id='a' * 64, source_hash='c' * 64, domain='c4_host_v2', hosts=(),
                     name='export.zip', candidate_program=None, baseline_name='multistart', descriptor=None,
-                    descriptor_rewrites=()):
+                    descriptor_rewrites=(), selection=None):
     """A minimal but real frozen campaign export: hash-chained store with campaign identity, source,
     one configuration, a frozen candidate (latest_program + candidate_version document), the
     strongest-baseline record, and optional research-visible hosts. Returns (path, frozen) where
@@ -163,6 +163,9 @@ def campaign_export(directory, *, campaign_id='a' * 64, source_hash='c' * 64, do
             for earlier in descriptor_rewrites:      # fixture for a rewritten history
                 s.set_state('frozen_candidate_descriptor', earlier)
             s.set_state('frozen_candidate_descriptor', descriptor)
+        if selection is not None:          # B20_R12: a custodian-signed comparator selection
+            s.save('comparator_selection', digest(selection), selection)
+            s.set_state('comparator_selection', selection)
         s.save('candidate_version', digest(version), version)
         s.set_state('phase', 'CANDIDATE_FROZEN')
     dest = Path(directory) / name

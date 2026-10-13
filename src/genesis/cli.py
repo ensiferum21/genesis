@@ -141,6 +141,21 @@ def freeze_candidate_descriptor(campaign,descriptor,*,origin):
     return digest(version)
 
 
+def record_comparator_selection(campaign,envelope):
+    """Write the custodian's signed comparator selection into the campaign (write-once), before the
+    export the request binds. The custodian re-checks it against its own records at registration."""
+    s=campaign.store
+    p=envelope.get('payload') if isinstance(envelope,dict) else None
+    if not isinstance(p,dict) or p.get('schema')!='genesis-comparator-selection-v1':raise ValueError('not a comparator selection')
+    if (p['campaign_id'],p['source_hash'],p['domain'])!=(s.state('campaign_id'),s.state('source_hash'),campaign.config.domain):
+        raise ValueError('the comparator selection is for another campaign, source or domain')
+    current=s.state('comparator_selection')
+    if current is not None and current!=envelope:raise FileExistsError('a different comparator selection is recorded')
+    s.save('comparator_selection',digest(envelope),envelope)
+    if current is None:s.set_state('comparator_selection',envelope)
+    return digest(envelope)
+
+
 def descriptor_request_bundle(campaign,task_count,*,analysis,claim_id=None,statement=None,scope=None,
                               extra_baselines=()):
     """Freeze a v4 evaluation request for the campaign's frozen candidate descriptor: candidate arm =
@@ -160,11 +175,20 @@ def descriptor_request_bundle(campaign,task_count,*,analysis,claim_id=None,state
     strongest_name=s.state('summary')['generations'][-1]['baseline']
     def dsl(name):
         return C.build_descriptor('dsl-program-v1',domain,{'program':baseline_programs()[name].model_dump(mode='json')},**rp)
-    arms={'candidate':desc,'baseline':dsl(strongest_name),**{n:dsl(n) for n in extra_baselines}}
+    selection=s.state('comparator_selection')
+    if selection is not None:
+        # B20_R12: the custodian-selected comparator (strongest on its private SELECT panel).
+        sp=selection['payload'];strongest_name=sp['selected']
+        arms={'candidate':desc,'baseline':sp['baselines'][strongest_name],
+              **{n:sp['baselines'][n] for n in extra_baselines if n!=strongest_name}}
+    else:
+        arms={'candidate':desc,'baseline':dsl(strongest_name),**{n:dsl(n) for n in extra_baselines}}
     export=campaign.root/'exports/campaign_export.zip'
+    needed=[s.put(version)]+([s.put(selection)] if selection is not None else [])
     if export.exists():
         with zipfile.ZipFile(export) as z:
-            if not any(n=='objects/sha256/'+s.put(version) for n in z.namelist()):export.unlink()
+            names=set(z.namelist())
+        if any('objects/sha256/'+h not in names for h in needed):export.unlink()
     if not export.exists():export_replication(campaign.root,export,store=s)
     cv=digest(version)
     statement=statement or (f'frozen candidate {cv[:12]} ({desc["kind"]}) has a higher paired edge count than the '

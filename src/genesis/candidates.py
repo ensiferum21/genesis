@@ -9,6 +9,10 @@ strict decoder whose output is re-checked by the domain checker.
 
 Kinds (closed; nothing else is accepted):
   dsl-program-v1           the existing fixed DSL (``execution.execute``), unchanged.
+  dsl-time-matched-v1      (B20_R12) a conventional baseline given the same search budget as a
+                           candidate: the fixed DSL program is restarted with fresh seeds until
+                           ``cpu_seconds`` of search CPU are spent; the best witness is returned.
+                           Data-only parameters {program, cpu_seconds}.
   formal-research-successor-v1  (B20_R7) a frozen equational research successor: the system's
                            axioms plus the library of a custody manifest (bound by its id), proving
                            a statement with E under {premise_k, prove_seconds}. The child sees only
@@ -49,7 +53,8 @@ import sys
 from .common import canonical, digest
 
 SCHEMA = 'genesis-candidate-descriptor-v1'
-KINDS = ('dsl-program-v1', 'represent-and-repair-v1', 'formal-research-successor-v1')
+KINDS = ('dsl-program-v1', 'dsl-time-matched-v1', 'represent-and-repair-v1', 'formal-research-successor-v1')
+CONVENTIONAL_KINDS = ('dsl-program-v1', 'dsl-time-matched-v1')
 PACKAGE = Path(__file__).resolve().parents[2] / 'evidence' / 'invention_b18' / 'representations' / 'package.json'
 MAX_OUTPUT = 1 << 20
 FIELDS = {'schema', 'kind', 'domain', 'parameters', 'implementation', 'resource_profile', 'descriptor_id'}
@@ -74,6 +79,7 @@ def implementation_identity(kind):
     """Digests of the reviewed source files a kind runs (part of the descriptor identity)."""
     here = Path(__file__).resolve().parent
     files = {'dsl-program-v1': ['dsl.py', 'execution.py', 'graphs.py', 'models.py'],
+             'dsl-time-matched-v1': ['candidates.py', 'dsl.py', 'graphs.py', 'models.py'],
              'represent-and-repair-v1': ['candidates.py', 'invention/representations.py', 'graphs.py', 'models.py',
                                          'invention/soundness.py'],
              'formal-research-successor-v1': ['candidates.py', 'learning/equational.py', 'learning/research.py',
@@ -107,6 +113,14 @@ def _check_parameters(kind, domain, params):
         if set(params) != {'program'}:
             raise CandidateError('MALFORMED_PARAMETERS', 'dsl-program-v1 takes {program}')
         SolverProgram.model_validate_json(canonical(params['program']))
+        return
+    if kind == 'dsl-time-matched-v1':
+        from .models import SolverProgram
+        if set(params) != {'program', 'cpu_seconds'}:
+            raise CandidateError('MALFORMED_PARAMETERS', 'dsl-time-matched-v1 takes {program, cpu_seconds}')
+        SolverProgram.model_validate_json(canonical(params['program']))
+        if type(params['cpu_seconds']) not in (int, float) or not 0 < params['cpu_seconds'] <= 60:
+            raise CandidateError('MALFORMED_PARAMETERS')
         return
     if set(params) != {'representation', 'cpu_seconds', 'seed'}:
         raise CandidateError('MALFORMED_PARAMETERS', 'represent-and-repair-v1 takes {representation, cpu_seconds, seed}')
@@ -446,6 +460,20 @@ def _child(path):
         out = solve(view, SolverProgram.model_validate_json(canonical(req['parameters']['program'])),
                     req['queries'], req['seed'])
         sys.stdout.write(json.dumps({'selected': [list(e) for e in out['selected']], 'value': out['value']}))
+        return
+    if req['kind'] == 'dsl-time-matched-v1':
+        import time
+        from .dsl import solve
+        from .models import SolverProgram
+        program = SolverProgram.model_validate_json(canonical(req['parameters']['program']))
+        budget_ns = int(min(req['parameters']['cpu_seconds'], req['cpu_seconds']) * 1e9)
+        start, best, k = time.process_time_ns(), None, 0
+        while best is None or time.process_time_ns() - start < budget_ns:
+            out = solve(view, program, req['queries'], (req['seed'] + 1_000_003 * k) % (1 << 62))
+            if best is None or out['value'] > best['value']:
+                best = out
+            k += 1
+        sys.stdout.write(json.dumps({'selected': [list(e) for e in best['selected']], 'value': best['value']}))
         return
     from .invention import representations as R
     rep = next(r for r in R.proposals() if r['id'] == req['parameters']['representation'])

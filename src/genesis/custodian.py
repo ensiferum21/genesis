@@ -148,7 +148,8 @@ CREATE TABLE IF NOT EXISTS panels(request_id TEXT PRIMARY KEY, pool_hash TEXT NO
                                   commitment TEXT NOT NULL);
 CREATE TABLE IF NOT EXISTS slots(slot TEXT PRIMARY KEY, request_id TEXT NOT NULL);
 CREATE TABLE IF NOT EXISTS registration_log(seq INTEGER PRIMARY KEY, entry BLOB NOT NULL);
-CREATE TABLE IF NOT EXISTS decision_records(request_id TEXT PRIMARY KEY, record BLOB NOT NULL);'''
+CREATE TABLE IF NOT EXISTS decision_records(request_id TEXT PRIMARY KEY, record BLOB NOT NULL);
+CREATE TABLE IF NOT EXISTS comparator_selections(id TEXT PRIMARY KEY, record BLOB NOT NULL);'''
 
 
 def _open_custody(root):
@@ -264,7 +265,8 @@ def campaign_facts(export):
                 body=json.loads(raw)
                 if body['kind']=='STATE_UPDATED':
                     upd=s.get(body['payload'])
-                    if upd['key'] in ('campaign_id','source_hash','frozen_candidate_descriptor','frozen_baseline_descriptor'):
+                    if upd['key'] in ('campaign_id','source_hash','frozen_candidate_descriptor','frozen_baseline_descriptor',
+                                      'comparator_selection'):
                         written.setdefault(upd['key'],set()).add(canonical(upd['value']))
             summary=s.state('summary') or {}
             from . import lineage as L
@@ -274,9 +276,11 @@ def campaign_facts(export):
                    'config_entities':len(configs),
                    'identity_rewritten':any(len(v)>1 for k,v in written.items() if k in ('campaign_id','source_hash')),
                    'descriptor_rewritten':any(len(written.get(k,()))>1 for k in ('frozen_candidate_descriptor',
-                                                                                 'frozen_baseline_descriptor')),
+                                                                                 'frozen_baseline_descriptor',
+                                                                                 'comparator_selection')),
                    'frozen_descriptor':s.state('frozen_candidate_descriptor'),
                    'frozen_baseline_descriptor':s.state('frozen_baseline_descriptor'),
+                   'comparator_selection':s.state('comparator_selection'),
                    'successor_manifests':dict(entities('successor_manifest')),
                    'proof_objects':dict(entities('proof_object')),
                    'exposed_statements':[v for _,v in entities('exposed_statement')],
@@ -358,6 +362,26 @@ def descriptor_export_problems(request,facts):
         out.append('candidate_version does not describe the frozen descriptor and source')
     if why or not isinstance(frozen,dict):return out
     rp=frozen['resource_profile'];domain=facts['domain']
+    selection=facts.get('comparator_selection')
+    if selection is not None:
+        # B20_R12: the comparator is the one THIS custodian selected on its own private SELECT panel
+        # (signed record, recorded in its database, then written into the campaign before export).
+        known=facts.get('custodian_selections') or {}
+        if digest(selection) not in known or known[digest(selection)]!=selection:
+            return out+['the comparator selection in the export was not made by this custodian']
+        sp=selection['payload']
+        if (sp['campaign_id'],sp['source_hash'],sp['domain'])!=(facts['campaign_id'],facts['source_hash'],domain):
+            out.append('the comparator selection is for another campaign, source or domain')
+        if sp['resource_profile']!=rp:
+            out.append("the comparator selection used another resource profile than the candidate's")
+        chosen=sp['baselines'][sp['selected']]
+        if arms['baseline'].get('descriptor_id')!=chosen['descriptor_id']:
+            out.append('the baseline is not the comparator this custodian selected on its SELECT panel')
+        allowed={d['descriptor_id'] for d in sp['baselines'].values()}
+        for name in sorted(set(arms)-{'candidate','baseline'}):
+            if arms[name].get('descriptor_id') not in allowed:
+                out.append(f'arm {name} is not one of the selected-against conventional baselines')
+        return out
     def dsl(program):
         return C.build_descriptor('dsl-program-v1',domain,{'program':program.model_dump(mode='json')},**rp)['descriptor_id']
     strongest=baseline_programs().get(facts['strongest_baseline'])
@@ -409,6 +433,92 @@ def statement_export_problems(request,facts):
     return out
 
 
+COMPARATOR_SCHEMA='genesis-comparator-selection-v1'
+
+
+def _selections(root):
+    db=_open_custody(root)
+    try:return {i:json.loads(r) for i,r in db.execute('SELECT id,record FROM comparator_selections')}
+    finally:db.close()
+
+
+def select_comparator(private_root,campaign_export,baselines,key_path,operator_id,*,exposure_manifest,task_count=30,
+                      study=None):
+    """Choose the E1 comparator on a private SELECT panel (B20_R12; the DRAFT's rule "the strongest
+    fixed baseline on the SELECT panel", drawn and held by the custodian).
+
+    ``baselines``: {name: descriptor} of conventional kinds (fixed DSL programs, plain or
+    time-matched), one shared resource profile, on the campaign's domain. The custodian draws
+    ``task_count`` hosts from the adopted calibration with a private seed, screened against its
+    exposure registry (manifest and the campaign export) and every reserved host, runs every
+    baseline in the sandbox, reserves the hosts for good, and signs the selection. The research
+    operator records the signed selection in the campaign before exporting; ``register`` then
+    requires the request's baseline to be the selected one."""
+    from . import candidates as C
+    from . import calibration as CAL
+    from .dsl import baseline_programs
+    from .exposure import GraphIndex,build_registry
+    root=_private_root(private_root)
+    export=Path(campaign_export);facts=campaign_facts(export)
+    domain=facts['domain']
+    if not isinstance(baselines,dict) or len(baselines)<2:raise ValueError('at least two conventional baselines')
+    programs={canonical(p.model_dump(mode='json')) for p in baseline_programs().values()}
+    for name,d in baselines.items():
+        why=C.descriptor_problems(d,domain=domain)
+        if why or d['kind'] not in C.CONVENTIONAL_KINDS or canonical(d['parameters']['program']) not in programs:
+            raise ValueError(f'baseline {name} is not a valid conventional baseline: {why}')
+    if len({canonical(d['resource_profile']) for d in baselines.values()})!=1:
+        raise ValueError('baselines must share one resource profile')
+    from . import sandbox as S
+    if not S.available():raise RuntimeError('ISOLATION_UNAVAILABLE: baselines run in the OCI sandbox')
+    manifest_path,manifest=_manifest_file(exposure_manifest)
+    repo=Path(__file__).resolve().parents[2]
+    index,record=build_registry(manifest,manifest_path.parent,repo,
+                                extra_sources=[{'kind':'zip','path':str(export.resolve()),'label':'campaign-export'}])
+    db=_open_custody(root)
+    try:
+        reserved=GraphIndex()
+        for n,edges,rid in db.execute('SELECT n,edges,request_id FROM reservations'):
+            reserved.add(n,tuple(tuple(e) for e in json.loads(edges)),rid)
+        seed=int.from_bytes(os.urandom(8),'big')
+        calib=CAL.load(domain,repo,study=study)
+        candidates_,_=CAL.calibrated_panel(calib,seed,task_count*3,'SELECT')
+        tasks=[t for t in candidates_ if index.find(t.n,t.edges) is None and not index.near(t.n,t.edges)
+               and reserved.find(t.n,t.edges) is None][:task_count]
+        if len(tasks)<task_count:raise ValueError('INSUFFICIENT_DISTINCT_MATERIAL for the SELECT panel')
+        runs={}
+        for t in tasks:
+            tseed=int(digest({'select':seed,'task':t.task_id})[:16],16)
+            for name,d in sorted(baselines.items()):
+                r=C.run(t,d,seed=tseed,expected_id=d['descriptor_id'],isolation='runc')
+                runs[(t.task_id,name)]={'status':r['status'],'value':(r.get('result') or {}).get('value',0) if r['status']=='SUCCESS' else 0,
+                                        'cpu_ns':r.get('cpu_ns')}
+        totals={name:sum(runs[(t.task_id,name)]['value'] for t in tasks) for name in baselines}
+        selected=max(totals,key=lambda n:(totals[n],n))
+        salt=os.urandom(32).hex()
+        commitment=digest({'schema':'genesis-panel-commitment-v1','pool':digest([t.model_dump(mode='json') for t in tasks]),
+                           'salt':salt})
+        payload={'schema':COMPARATOR_SCHEMA,'campaign_id':facts['campaign_id'],'source_hash':facts['source_hash'],
+                 'domain':domain,'baselines':{k:baselines[k] for k in sorted(baselines)},'totals':totals,
+                 'selected':selected,'resource_profile':next(iter(baselines.values()))['resource_profile'],
+                 'task_count':len(tasks),'panel_commitment':commitment,'exposure_registry_root':record['root'],
+                 'rule':'strongest total on the custodian SELECT panel (ties: greatest name)',
+                 'calibration':{'study':study,'record_sha256':digest(calib),'rule':(calib.get('rule') or {}).get('name')},
+                 'operator_id':operator_id,'selected_at':utcnow()}
+        env=sign(payload,key_path)
+        (root/'comparator_selections').mkdir(mode=0o700,exist_ok=True)
+        atomic_write(root/'comparator_selections'/f'{digest(env)}.json',
+                     canonical({'tasks':[t.model_dump(mode='json') for t in tasks],'salt':salt,'seed':seed,
+                                'runs':[{'task':k[0],'arm':k[1],**v} for k,v in sorted(runs.items())]}),mode=0o600)
+        with db:
+            db.execute('BEGIN IMMEDIATE')
+            db.executemany('INSERT INTO reservations(n,edges,request_id) VALUES (?,?,?)',
+                           [(t.n,json.dumps([list(e) for e in t.edges]),'select:'+digest(env)) for t in tasks])
+            db.execute('INSERT INTO comparator_selections VALUES (?,?)',(digest(env),canonical(env)))
+        return env
+    finally:db.close()
+
+
 def _load_pool(pool_path):
     pool=load_json(pool_path)
     if not isinstance(pool,list) or not pool:raise ValueError('pool must be a non-empty task list')
@@ -445,7 +555,9 @@ def register(private_root,request,key_path,operator_id,*,exposure_manifest,campa
     export=Path(campaign_export)
     if bytes_hash(export.read_bytes())!=request['campaign_export_sha256']:
         raise ValueError('campaign export does not match the request binding')
-    problems=check_request_against_export(request,campaign_facts(export))
+    facts=campaign_facts(export)
+    facts['custodian_selections']=_selections(root)
+    problems=check_request_against_export(request,facts)
     if problems:raise ValueError('request is not what the campaign export shows: '+'; '.join(problems))
     manifest_path=Path(exposure_manifest)
     st=manifest_path.stat()

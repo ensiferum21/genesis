@@ -385,6 +385,61 @@ class InterruptedReservation(Base):
         self.assertEqual(self.state(rid), 'COMPLETE')
 
 
+class ComparatorSelection(Base):
+    """B20_R12 (E1 design): time-matched conventional baselines and the custodian's SELECT-panel
+    comparator rule."""
+
+    def time_matched(self, name, budget=0.5):
+        return C.build_descriptor('dsl-time-matched-v1', TF, {'program': baseline_programs()[name].model_dump(mode='json'),
+                                                               'cpu_seconds': budget}, **self.desc['resource_profile'])
+
+    def test_time_matched_baselines_spend_their_budget(self):
+        d = self.time_matched('multistart')
+        self.assertEqual(C.descriptor_problems(d, domain=TF), [])
+        for bad in ({'program': {'weights': [9, 0, 0, 0]}, 'cpu_seconds': 0.5},
+                    {'program': baseline_programs()['multistart'].model_dump(mode='json')},
+                    {'program': baseline_programs()['multistart'].model_dump(mode='json'), 'cpu_seconds': 0}):
+            with self.assertRaises(Exception):
+                C.build_descriptor('dsl-time-matched-v1', TF, bad, **self.desc['resource_profile'])
+        r = C.run(self.tasks[0], d, seed=3, isolation='runc')
+        self.assertEqual((r['status'], r['isolation']), ('SUCCESS', R.ISOLATION_V4))
+        self.assertGreaterEqual(r['cpu_ns'], int(0.5e9))
+        plain = C.run(self.tasks[0], dsl_descriptor('multistart', self.desc['resource_profile']), seed=3, isolation='runc')
+        self.assertGreaterEqual(r['result']['value'], plain['result']['value'])
+
+    def test_custodian_selects_the_comparator_and_registration_enforces_it(self):
+        from genesis.custodian import select_comparator
+        base, frozen = self.export('base.zip')
+        baselines = {n: self.time_matched(n) for n in baseline_programs()}
+        env = select_comparator(self.root, base, baselines, self.cust[0], 'FIXTURE', exposure_manifest=self.manifest,
+                                task_count=4)
+        p = verify(env, self.cust[1])
+        self.assertEqual((p['schema'], p['task_count'], p['domain']), ('genesis-comparator-selection-v1', 4, TF))
+        self.assertIn(p['selected'], baselines)
+        self.assertEqual(p['selected'], max(p['totals'], key=lambda n: (p['totals'][n], n)))
+        db = sqlite3.connect(self.root / 'custody.sqlite3')
+        reserved = db.execute("SELECT count(*) FROM reservations WHERE request_id LIKE 'select:%'").fetchone()[0]
+        db.close()
+        self.assertEqual(reserved, 4)                     # the SELECT hosts are never reused
+        export, frozen = self.export('selected.zip', selection=env)
+        chosen = p['baselines'][p['selected']]
+        other = next(d for n, d in p['baselines'].items() if n != p['selected'])
+        with self.assertRaisesRegex(ValueError, 'not the comparator this custodian selected'):
+            self.reg(self.request(export, frozen, arms={'candidate': self.desc, 'baseline': other}, claim='sel-wrong'), export)
+        with self.assertRaisesRegex(ValueError, 'not the comparator this custodian selected'):
+            self.reg(self.request(export, frozen, claim='sel-old-rule'), export)         # the campaign-strongest rule no longer applies
+        req = self.request(export, frozen, arms={'candidate': self.desc, 'baseline': chosen}, claim='sel-ok')
+        self.reg(req, export)
+        receipt = evaluate(self.root, digest(req), self.pool, self.cust[0], 'FIXTURE')
+        q = verify(receipt, self.cust[1])
+        self.assertEqual((q['baseline_descriptor_id'], q['completed_rows']), (chosen['descriptor_id'], 12))
+        # A selection this custodian did not make is refused.
+        forged = self.export('forged.zip', selection=dict(env, signature='0' * 88))
+        with self.assertRaisesRegex(ValueError, 'not made by this custodian'):
+            self.reg(self.request(forged[0], forged[1], arms={'candidate': self.desc, 'baseline': chosen},
+                                  claim='sel-forged'), forged[0])
+
+
 class KernelV4(unittest.TestCase):
     """A v4 receipt supports a claim only through a v2 (descriptor) binding of the same arms."""
 
