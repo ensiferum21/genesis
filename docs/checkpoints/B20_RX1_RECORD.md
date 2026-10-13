@@ -119,6 +119,22 @@ The lost run's B20_R12 SELECT-rehearsal hosts (drawn with `os.urandom`) cannot b
 
 Configuration choice is saturated in graph construction, as it was on the equational systems. That makes four DEV pilots without research-policy headroom.
 
+### B20_R14: optimum-gap probe (after the RX1 checkpoint)
+
+Commits `331825f` (setup) and `01c38e6` (result). The probe certified the optimum on the 112 R13 held-out hosts (LP dual + SAT/DRAT, 60 s per host) and compared it with R13's per-host best over all configurations.
+
+| Settings | Verdict | Optimum − per-host best |
+|---|---|---|
+| S2 tf n30 p.3 | ROOM_TO_OPTIMUM | **1.31** |
+| S3 tf n40 p.2 | ROOM_TO_OPTIMUM | 0.56 |
+| S7 c4 n30 | unsettled (11/16 hosts certified) | 1.36 on the certified hosts |
+| S1 (the E1 family), S4, S6 | AT_CEILING | 0.19–0.31 |
+| S5 | unsettled | — |
+
+**Reading.** In graph construction the headroom is capability: better methods could earn it. It is not selection: picking among the existing configurations cannot. The comparison is not cost-matched.
+
+**For E1:** the result supports the harder-family option. **For GV4:** it points to a design where research produces new methods, on S2-, S3- and S7-like families.
+
 ### H06 design probe (no study, nothing committed as evidence)
 
 On 24 calibrated DEV hosts per domain, the motif hypergraph is essentially one component:
@@ -154,7 +170,7 @@ None of the files these commits modify (`graphs.py`, `domains.py`, `certificates
 | B20RX-OPEN-2 | The CRPD-2b pin revision and the pair-count package. | reviewer acceptance (pin change, builder-written known results) |
 | B20RX-OPEN-3 | W23 is not yet wired into the custodian or evidence-kernel promotion path; this needs the R5+ custodian. Code cannot check whether two operators are independent. | the canonical line; external review |
 | B20RX-OPEN-4 | W22: no machine-proposed primitive with prospective utility yet, and no DEV trace corpus. | a corpus from real representation research |
-| B20R13-OPEN-1 | GV4: choosing among existing configurations leaves no headroom in graph construction either (4 pilots in total). Better-improver needs a setting where research changes capability: representations beyond the menu, harder calibrated families with per-host complementarity of at least 0.5, or multi-generation horizons. | the user's design decision |
+| B20R13-OPEN-1 | GV4: choosing among existing configurations leaves no headroom in graph construction either (4 pilots in total). B20_R14 shows capability headroom on harder families: S2 at 1.31, S3 at 0.56 and S7 at 1.36 edges per host below the certified optimum. A study should let research produce new methods (LP- or SAT-guided construction, representations beyond the menu) at matched budgets on such families. | the user's design decision |
 | B20RX-OPEN-5 | H06 s16.3: decomposition and free-edge kernel have no headroom on the calibrated families (design probe). | a different structural method or family |
 
 ## Claim ceiling
