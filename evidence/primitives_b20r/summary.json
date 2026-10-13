@@ -1,0 +1,43 @@
+{
+ "cognitive_kernel": "2027b439f63b7309e1565335ac5282189867392bd280bbafd41b7154dd357a81",
+ "conformance_hosts": 92,
+ "fresh_hosts": 28,
+ "label": "DEV design diagnostic; builder-written primitives; host-dependent CPU timings",
+ "primitives": {
+  "EdgeCount": {
+   "conformance": "CONFORMANT",
+   "conformance_beyond_language_bounds": 0,
+   "fresh_not_expandable": 0,
+   "incumbent_cpu_ns": 131686088,
+   "native_cpu_ns_with_conformance": 116973860,
+   "verdict": "NOT_A_CAPABILITY_GAIN"
+  },
+  "PairCodegreeFalling2": {
+   "conformance": "CONFORMANT",
+   "conformance_beyond_language_bounds": 20,
+   "fresh_not_expandable": 20,
+   "incumbent_cpu_ns": 110765125,
+   "native_cpu_ns_with_conformance": 284968656,
+   "verdict": "REJECTED"
+  },
+  "SumDegreeSquares": {
+   "conformance": "CONFORMANT",
+   "conformance_beyond_language_bounds": 0,
+   "fresh_not_expandable": 0,
+   "incumbent_cpu_ns": 79967632,
+   "native_cpu_ns_with_conformance": 90820865,
+   "verdict": "NOT_A_CAPABILITY_GAIN"
+  },
+  "TriangleCount": {
+   "conformance": "CONFORMANT",
+   "conformance_beyond_language_bounds": 0,
+   "fresh_not_expandable": 0,
+   "incumbent_cpu_ns": 189530859,
+   "native_cpu_ns_with_conformance": 165669050,
+   "verdict": "NOT_A_CAPABILITY_GAIN"
+  }
+ },
+ "registry": "946a4fb183a34f80b872cb322740f5607f940907c956cda79566597ef4c4ecd8",
+ "rule": "USEFUL iff the native implementation agrees with the expansion on every comparison host and its total CPU, including the conformance run, is at most half of the expanded expression's; NOT_A_CAPABILITY_GAIN if it agrees but saves less; REJECTED if they ever differ or the expansion cannot be evaluated within the language's bounds where the native one can.",
+ "schema": "genesis-primitive-comparison-v1"
+}
