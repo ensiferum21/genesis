@@ -30,6 +30,13 @@ SYSTEMS = {
                       'axioms': ['![X,Y]: plus(X,Y) = plus(Y,X)',
                                  '![X,Y,Z]: plus(plus(X,Y),Z) = plus(X,plus(Y,Z))',
                                  '![X,Y]: plus(n(plus(n(X),Y)),n(plus(n(X),n(Y)))) = X']},
+    # Robbins' basis (B20_R6): commutativity, associativity and Robbins' equation. Every Robbins
+    # algebra is Boolean (McCune 1997), so the two-element algebra decides truth exactly; proving
+    # even small Boolean identities from these axioms is hard for E.
+    'ba_robbins': {'variety': 'boolean', 'ops': {'plus': 2, 'n': 1}, 'decider': 'or_not',
+                   'axioms': ['![X,Y]: plus(X,Y) = plus(Y,X)',
+                              '![X,Y,Z]: plus(plus(X,Y),Z) = plus(X,plus(Y,Z))',
+                              '![X,Y]: n(plus(n(plus(X,Y)),n(plus(X,n(Y))))) = X']},
     'bool_ring': {'variety': 'boolean ring', 'ops': {'plus': 2, 'times': 2, 'neg': 1, 'zero': 0}, 'decider': 'xor_and',
                   'axioms': ['![X,Y,Z]: plus(plus(X,Y),Z) = plus(X,plus(Y,Z))', '![X,Y]: plus(X,Y) = plus(Y,X)',
                              '![X]: plus(zero,X) = X', '![X]: plus(X,neg(X)) = zero',
