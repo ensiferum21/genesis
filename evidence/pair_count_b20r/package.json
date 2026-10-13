@@ -1,0 +1,783 @@
+{
+ "acceptance": {
+  "check_stage": {
+   "check_sha256": "bba813c293e51cd703c0dd9d0ebffd6ae0a18d789da32f85b3ade76ece6689a4",
+   "cpu_ns": 4366113071,
+   "exit_code": 0,
+   "exits": {
+    "PCP1": "0",
+    "PCP2": "0",
+    "check": "0"
+   },
+   "log": "",
+   "peak_memory_bytes": 238641152,
+   "status": "SUCCESS",
+   "wall_ns": 4452265824
+  },
+  "leanchecker": {
+   "PCP1": true,
+   "PCP2": true
+  },
+  "receipt_sha256": "2d2c1406e2117f252cd36e65dd525021faad650b1d60a3bebd9821b92a60647c",
+  "status": "CHECKED"
+ },
+ "assumptions": {
+  "allowed_axioms": [
+   "Classical.choice",
+   "Quot.sound",
+   "propext"
+  ],
+  "axioms_used": [
+   "Classical.choice",
+   "Quot.sound",
+   "propext"
+  ],
+  "conventions": [
+   "known counting results; statements and proof recipes are builder-written",
+   "adjacency is symmetric by definition (G4.adj)",
+   "needs the revised workspace pin (Finset big operators)"
+  ],
+  "lean": "lean@e8baaa71855a616d",
+  "workspace": {
+   "artifact_identity": "be8f86a8ad460109a1c31eb061bf99309b3d032cf5e6462938261f8e3cd840ca",
+   "import_roots": [
+    "Mathlib.Data.Finset.Powerset",
+    "Mathlib.Algebra.BigOperators.Group.Finset.Sigma",
+    "Mathlib.Algebra.Order.BigOperators.Ring.Finset"
+   ],
+   "mathlib_rev": "d13f23b723b8a846827a245b89c10fc7d3f11612",
+   "source_identity": "7f5bcfa11bd7d91dddd1bb4839a70b33bc7e3b125695d754166d343397ac50b0"
+  }
+ },
+ "bindings": [
+  {
+   "proof": "PCP1.proof",
+   "spec": "PCConj.pair_count_c4"
+  },
+  {
+   "proof": "PCP2.proof",
+   "spec": "PCConj.c4_quadratic_bound"
+  }
+ ],
+ "costs": {
+  "acceptance_check_cpu_ns": 6739797287,
+  "acceptance_runs": 3,
+  "acceptances": [
+   {
+    "receipt_sha256": "2d5e4a992e85e531fcc6943301965f8ac2bf25150b043858b8c7b2379856d6bd",
+    "statement": "pair_count_c4",
+    "stats": {
+     "check_sha256": "61a440601783b05f4c4fba88d9bcb9c7f6e76f0d4c85ae6bda929b9b57bd2ce8",
+     "cpu_ns": 2757820297,
+     "exit_code": 0,
+     "exits": {
+      "PCP1": "0",
+      "check": "0"
+     },
+     "log": "",
+     "peak_memory_bytes": 232325120,
+     "status": "SUCCESS",
+     "wall_ns": 2814361840
+    },
+    "status": "CHECKED"
+   },
+   {
+    "receipt_sha256": "a0d9d56a855fd3cb0287e22f78be381cdd96d068fd5a56b445423bd758b8e084",
+    "statement": "c4_quadratic_bound",
+    "stats": {
+     "check_sha256": "2eddf2a916a9201c62e2194f80710b1251e3faabb52599b6105e0af7b4934732",
+     "cpu_ns": 3981976990,
+     "exit_code": 0,
+     "exits": {
+      "PCP1": "0",
+      "PCP2": "0",
+      "check": "0"
+     },
+     "log": "",
+     "peak_memory_bytes": 236331008,
+     "status": "SUCCESS",
+     "wall_ns": 4098263820
+    },
+    "status": "CHECKED"
+   }
+  ],
+  "attempts": [
+   {
+    "attempts": [
+     {
+      "compiled": true,
+      "recipe": "pair-count-injection (builder-written)",
+      "tactic_sha256": "69cd9b0caea1a90e3e2c5d7a4aca313d8cdccde5522ad4c646957a8fa20bf77d",
+      "tier": 0
+     }
+    ],
+    "charged": {
+     "candidates": 1,
+     "cpu_ns": 1216639885,
+     "wall_ns": 1254550004
+    },
+    "result": "COMPILED",
+    "statement": "pair_count_c4",
+    "target": "PCConj.pair_count_c4"
+   },
+   {
+    "attempts": [
+     {
+      "compiled": true,
+      "recipe": "handshake-cauchy-schwarz (builder-written)",
+      "tactic_sha256": "85b81eb6c16b69962f6114abb0bd381b4f2c57499f3b3fa379928c731e969c2c",
+      "tier": 0
+     }
+    ],
+    "charged": {
+     "candidates": 1,
+     "cpu_ns": 1541891303,
+     "wall_ns": 1579816085
+    },
+    "result": "COMPILED",
+    "statement": "c4_quadratic_bound",
+    "target": "PCConj.c4_quadratic_bound"
+   }
+  ],
+  "search_candidates": 2,
+  "search_context_cpu_ns": 7481429040,
+  "search_cpu_ns": 2758531188,
+  "search_runs": 2
+ },
+ "counterexamples": [],
+ "declarations": [
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "GTDefs",
+   "name": "GT.TriangleFree",
+   "type_sha256": "c98548115419ec271dfd495799f10b35c81fad06e346ef970bd969a518c2a9f4"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "GTDefs",
+   "name": "GT.Edges",
+   "type_sha256": "baaddf70fb5d432b8bd948ef91d6f910124a6d138edae4d5f000c4610ddc8eae"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "GTDefs",
+   "name": "GT.instDecidableTriangleFree",
+   "type_sha256": "5f6ad93fcd86d217b85aa0d5ae9d8484d2f18f9af307b85f1d55bcb68ce406d1"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "G4Defs",
+   "name": "G4.verts",
+   "type_sha256": "7a1ef65cd458ebf10bcecd44c843b1710d493ee0d98e109b6abc53d948459791"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "G4Defs",
+   "name": "G4.adj",
+   "type_sha256": "af2cc6046b4db7f006731f612da96fe9072947a3524d785304d4acef542f9814"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "G4Defs",
+   "name": "G4.instDecidableAdj",
+   "type_sha256": "15bfca590acf8edebe32601b938585677ac6d2a4d3d45c318ce25da607e3af52"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "G4Defs",
+   "name": "G4.C4Free",
+   "type_sha256": "c98548115419ec271dfd495799f10b35c81fad06e346ef970bd969a518c2a9f4"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "G4Defs",
+   "name": "G4.instDecidableC4Free",
+   "type_sha256": "696d08db70be0d43900686ce88431e9640ecc9ab7d9c645364f85ffea376c365"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "PCConj",
+   "name": "PCConj.pair_count_c4",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "PCConj",
+   "name": "PCConj.c4_quadratic_bound",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "theorem",
+   "module": "PCP1",
+   "name": "PCP1.proof",
+   "type_sha256": "ea03e9b3f03b79b4e6f9f34a8d5283ede2714338a6876ac0ec9e3e90ce7b5d35"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "theorem",
+   "module": "PCP2",
+   "name": "PCP2.proof",
+   "type_sha256": "573ea16bd5e2aa549824504621241a2bea90fdb013d64448669c143a7eb9a325"
+  }
+ ],
+ "definitions": [
+  {
+   "module": "GTDefs",
+   "name": "GT.TriangleFree",
+   "origin": "trusted-generated",
+   "type_sha256": "c98548115419ec271dfd495799f10b35c81fad06e346ef970bd969a518c2a9f4"
+  },
+  {
+   "module": "GTDefs",
+   "name": "GT.Edges",
+   "origin": "trusted-generated",
+   "type_sha256": "baaddf70fb5d432b8bd948ef91d6f910124a6d138edae4d5f000c4610ddc8eae"
+  },
+  {
+   "module": "GTDefs",
+   "name": "GT.instDecidableTriangleFree",
+   "origin": "trusted-generated",
+   "type_sha256": "5f6ad93fcd86d217b85aa0d5ae9d8484d2f18f9af307b85f1d55bcb68ce406d1"
+  },
+  {
+   "module": "G4Defs",
+   "name": "G4.verts",
+   "origin": "trusted-generated",
+   "type_sha256": "7a1ef65cd458ebf10bcecd44c843b1710d493ee0d98e109b6abc53d948459791"
+  },
+  {
+   "module": "G4Defs",
+   "name": "G4.adj",
+   "origin": "trusted-generated",
+   "type_sha256": "af2cc6046b4db7f006731f612da96fe9072947a3524d785304d4acef542f9814"
+  },
+  {
+   "module": "G4Defs",
+   "name": "G4.instDecidableAdj",
+   "origin": "trusted-generated",
+   "type_sha256": "15bfca590acf8edebe32601b938585677ac6d2a4d3d45c318ce25da607e3af52"
+  },
+  {
+   "module": "G4Defs",
+   "name": "G4.C4Free",
+   "origin": "trusted-generated",
+   "type_sha256": "c98548115419ec271dfd495799f10b35c81fad06e346ef970bd969a518c2a9f4"
+  },
+  {
+   "module": "G4Defs",
+   "name": "G4.instDecidableC4Free",
+   "origin": "trusted-generated",
+   "type_sha256": "696d08db70be0d43900686ce88431e9640ecc9ab7d9c645364f85ffea376c365"
+  },
+  {
+   "module": "PCConj",
+   "name": "PCConj.pair_count_c4",
+   "origin": "trusted-generated",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "module": "PCConj",
+   "name": "PCConj.c4_quadratic_bound",
+   "origin": "trusted-generated",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  }
+ ],
+ "dependencies": {
+  "G4.C4Free": {
+   "package": [
+    "G4.adj",
+    "G4.verts",
+    "GT.Edges"
+   ],
+   "workspace_modules": [
+    "Init.Core",
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Defs",
+    "Mathlib.Data.SetLike.Basic"
+   ]
+  },
+  "G4.adj": {
+   "package": [
+    "GT.Edges"
+   ],
+   "workspace_modules": [
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Defs",
+    "Mathlib.Data.SetLike.Basic"
+   ]
+  },
+  "G4.instDecidableAdj": {
+   "package": [
+    "G4.adj",
+    "GT.Edges"
+   ],
+   "workspace_modules": [
+    "Init.Core",
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Defs",
+    "Mathlib.Data.SetLike.Basic"
+   ]
+  },
+  "G4.instDecidableC4Free": {
+   "package": [
+    "G4.C4Free",
+    "G4.adj",
+    "G4.instDecidableAdj",
+    "G4.verts",
+    "GT.Edges"
+   ],
+   "workspace_modules": [
+    "Init.Core",
+    "Init.Prelude",
+    "Init.PropLemmas",
+    "Mathlib.Data.Finset.Defs",
+    "Mathlib.Data.SetLike.Basic"
+   ]
+  },
+  "G4.verts": {
+   "package": [
+    "GT.Edges"
+   ],
+   "workspace_modules": [
+    "Init.Core",
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Defs",
+    "Mathlib.Data.Finset.Image",
+    "Mathlib.Data.Finset.Lattice.Basic"
+   ]
+  },
+  "GT.Edges": {
+   "package": [],
+   "workspace_modules": [
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Defs"
+   ]
+  },
+  "GT.TriangleFree": {
+   "package": [
+    "GT.Edges"
+   ],
+   "workspace_modules": [
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Defs",
+    "Mathlib.Data.SetLike.Basic"
+   ]
+  },
+  "GT.instDecidableTriangleFree": {
+   "package": [
+    "GT.Edges",
+    "GT.TriangleFree"
+   ],
+   "workspace_modules": [
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Defs",
+    "Mathlib.Data.SetLike.Basic"
+   ]
+  },
+  "PCConj.c4_quadratic_bound": {
+   "package": [
+    "G4.C4Free",
+    "G4.adj",
+    "G4.verts",
+    "GT.Edges"
+   ],
+   "workspace_modules": [
+    "Init.Prelude",
+    "Mathlib.Algebra.Group.Monoid",
+    "Mathlib.Algebra.Group.Nat.Defs",
+    "Mathlib.Data.Finset.Card",
+    "Mathlib.Data.Finset.Defs",
+    "Mathlib.Data.SetLike.Basic"
+   ]
+  },
+  "PCConj.pair_count_c4": {
+   "package": [
+    "G4.C4Free",
+    "G4.adj",
+    "G4.instDecidableAdj",
+    "G4.verts",
+    "GT.Edges"
+   ],
+   "workspace_modules": [
+    "Init.Prelude",
+    "Mathlib.Algebra.BigOperators.Group.Finset.Defs",
+    "Mathlib.Algebra.Group.Nat.Defs",
+    "Mathlib.Data.Finset.Card",
+    "Mathlib.Data.Finset.Defs",
+    "Mathlib.Data.Finset.Filter",
+    "Mathlib.Data.Finset.Range",
+    "Mathlib.Data.Nat.Choose.Basic",
+    "Mathlib.Data.SetLike.Basic"
+   ]
+  },
+  "PCP1.proof": {
+   "package": [
+    "G4.C4Free",
+    "G4.adj",
+    "G4.instDecidableAdj",
+    "G4.verts",
+    "GT.Edges",
+    "PCConj.pair_count_c4"
+   ],
+   "workspace_modules": [
+    "Init.Core",
+    "Init.Ext",
+    "Init.Prelude",
+    "Mathlib.Algebra.BigOperators.Group.Finset.Basic",
+    "Mathlib.Algebra.BigOperators.Group.Finset.Defs",
+    "Mathlib.Algebra.BigOperators.Group.Finset.Sigma",
+    "Mathlib.Algebra.Group.Nat.Defs",
+    "Mathlib.Data.Finset.Card",
+    "Mathlib.Data.Finset.Defs",
+    "Mathlib.Data.Finset.Filter",
+    "Mathlib.Data.Finset.Image",
+    "Mathlib.Data.Finset.Insert",
+    "Mathlib.Data.Finset.Lattice.Basic",
+    "Mathlib.Data.Finset.Powerset",
+    "Mathlib.Data.Finset.Range",
+    "Mathlib.Data.Finset.Sigma",
+    "Mathlib.Data.Nat.Choose.Basic",
+    "Mathlib.Data.Set.Defs",
+    "Mathlib.Data.SetLike.Basic",
+    "Mathlib.Order.Basic",
+    "Mathlib.Order.Defs.PartialOrder"
+   ]
+  },
+  "PCP2.proof": {
+   "package": [
+    "G4.C4Free",
+    "G4.adj",
+    "G4.instDecidableAdj",
+    "G4.verts",
+    "GT.Edges",
+    "PCConj.c4_quadratic_bound",
+    "PCConj.pair_count_c4",
+    "PCP1.proof",
+    "PCP2.proof._proof_1_1",
+    "PCP2.proof._proof_1_2",
+    "PCP2.proof._proof_1_3",
+    "PCP2.proof._proof_1_4",
+    "PCP2.proof._simp_1_5"
+   ],
+   "workspace_modules": [
+    "Init.Core",
+    "Init.Data.Cast",
+    "Init.Data.Nat.Basic",
+    "Init.Data.Zero",
+    "Init.Prelude",
+    "Init.SimpLemmas",
+    "Mathlib.Algebra.BigOperators.Group.Finset.Basic",
+    "Mathlib.Algebra.BigOperators.Group.Finset.Defs",
+    "Mathlib.Algebra.BigOperators.Group.Finset.Piecewise",
+    "Mathlib.Algebra.BigOperators.Group.Finset.Sigma",
+    "Mathlib.Algebra.BigOperators.Ring.Finset",
+    "Mathlib.Algebra.Group.Monoid",
+    "Mathlib.Algebra.Group.Nat.Defs",
+    "Mathlib.Algebra.GroupWithZero.Defs",
+    "Mathlib.Algebra.Order.BigOperators.Ring.Finset",
+    "Mathlib.Algebra.Order.Group.Nat",
+    "Mathlib.Algebra.Order.Monoid.Canonical.Defs",
+    "Mathlib.Algebra.Order.Ring.Nat",
+    "Mathlib.Algebra.Ring.Defs",
+    "Mathlib.Algebra.Ring.Nat",
+    "Mathlib.Data.Finset.Card",
+    "Mathlib.Data.Finset.Defs",
+    "Mathlib.Data.Finset.Filter",
+    "Mathlib.Data.Finset.Prod",
+    "Mathlib.Data.Finset.Range",
+    "Mathlib.Data.Nat.Basic",
+    "Mathlib.Data.Nat.Cast.Basic",
+    "Mathlib.Data.Nat.Cast.Defs",
+    "Mathlib.Data.Nat.Choose.Basic",
+    "Mathlib.Data.Prod.Basic",
+    "Mathlib.Data.SProd",
+    "Mathlib.Data.SetLike.Basic",
+    "Mathlib.Order.Defs.PartialOrder",
+    "Mathlib.Order.Lattice",
+    "Mathlib.Tactic.NormNum.Basic",
+    "Mathlib.Tactic.NormNum.Pow",
+    "Mathlib.Tactic.NormNum.Result",
+    "Mathlib.Tactic.Ring.Basic",
+    "Mathlib.Tactic.Ring.Common"
+   ]
+  },
+  "PCP2.proof._proof_1_1": {
+   "package": [
+    "G4.adj",
+    "G4.instDecidableAdj",
+    "GT.Edges"
+   ],
+   "workspace_modules": [
+    "Init.Core",
+    "Init.Data.Cast",
+    "Init.Data.Int.Basic",
+    "Init.Data.Int.Order",
+    "Init.Omega.Coeffs",
+    "Init.Omega.Constraint",
+    "Init.Omega.Int",
+    "Init.Omega.LinearCombo",
+    "Init.Prelude",
+    "Mathlib.Algebra.BigOperators.Group.Finset.Defs",
+    "Mathlib.Algebra.Group.Nat.Defs",
+    "Mathlib.Data.Finset.Card",
+    "Mathlib.Data.Finset.Filter",
+    "Mathlib.Data.Finset.Range",
+    "Mathlib.Data.Nat.Choose.Basic"
+   ]
+  },
+  "PCP2.proof._proof_1_2": {
+   "package": [
+    "G4.adj",
+    "G4.instDecidableAdj",
+    "GT.Edges"
+   ],
+   "workspace_modules": [
+    "Init.Core",
+    "Init.Data.Cast",
+    "Init.Data.Int.Basic",
+    "Init.Data.Int.Order",
+    "Init.Data.Nat.Basic",
+    "Init.Omega.Coeffs",
+    "Init.Omega.Constraint",
+    "Init.Omega.Int",
+    "Init.Omega.LinearCombo",
+    "Init.Prelude",
+    "Mathlib.Algebra.BigOperators.Group.Finset.Defs",
+    "Mathlib.Algebra.Group.Nat.Defs",
+    "Mathlib.Data.Finset.Card",
+    "Mathlib.Data.Finset.Filter",
+    "Mathlib.Data.Finset.Range",
+    "Mathlib.Data.Nat.Choose.Basic"
+   ]
+  },
+  "PCP2.proof._proof_1_3": {
+   "package": [
+    "G4.adj",
+    "G4.instDecidableAdj",
+    "GT.Edges"
+   ],
+   "workspace_modules": [
+    "Init.Core",
+    "Init.Data.Cast",
+    "Init.Data.Int.Basic",
+    "Init.Data.Int.Lemmas",
+    "Init.Data.Int.Order",
+    "Init.Data.List.Basic",
+    "Init.Data.Nat.Basic",
+    "Init.Omega.Coeffs",
+    "Init.Omega.Constraint",
+    "Init.Omega.Int",
+    "Init.Omega.LinearCombo",
+    "Init.Prelude",
+    "Mathlib.Algebra.BigOperators.Group.Finset.Defs",
+    "Mathlib.Algebra.Group.Monoid",
+    "Mathlib.Algebra.Group.Nat.Defs",
+    "Mathlib.Data.Finset.Card",
+    "Mathlib.Data.Finset.Defs",
+    "Mathlib.Data.Finset.Filter",
+    "Mathlib.Data.Finset.Range",
+    "Mathlib.Data.Nat.Choose.Basic",
+    "Mathlib.Data.SetLike.Basic"
+   ]
+  },
+  "PCP2.proof._proof_1_4": {
+   "package": [
+    "G4.adj",
+    "G4.instDecidableAdj",
+    "GT.Edges"
+   ],
+   "workspace_modules": [
+    "Init.Core",
+    "Init.Data.Cast",
+    "Init.Data.Int.Basic",
+    "Init.Data.Int.Lemmas",
+    "Init.Data.Int.Order",
+    "Init.Data.List.Basic",
+    "Init.Omega.Coeffs",
+    "Init.Omega.Constraint",
+    "Init.Omega.Int",
+    "Init.Omega.LinearCombo",
+    "Init.Prelude",
+    "Mathlib.Algebra.BigOperators.Group.Finset.Defs",
+    "Mathlib.Algebra.Group.Monoid",
+    "Mathlib.Algebra.Group.Nat.Defs",
+    "Mathlib.Data.Finset.Card",
+    "Mathlib.Data.Finset.Defs",
+    "Mathlib.Data.Finset.Filter",
+    "Mathlib.Data.Finset.Range",
+    "Mathlib.Data.Nat.Choose.Basic",
+    "Mathlib.Data.SetLike.Basic"
+   ]
+  },
+  "PCP2.proof._simp_1_5": {
+   "package": [],
+   "workspace_modules": [
+    "Init.Prelude",
+    "Mathlib.Algebra.BigOperators.Group.Finset.Basic",
+    "Mathlib.Algebra.BigOperators.Group.Finset.Defs",
+    "Mathlib.Algebra.Group.Nat.Defs",
+    "Mathlib.Data.Finset.Card",
+    "Mathlib.Data.Finset.Defs"
+   ]
+  }
+ },
+ "domain": "c4_host_v2",
+ "modules": [
+  {
+   "name": "GTDefs",
+   "source": "import Mathlib.Data.Finset.Powerset\n\nnamespace GT\n\n/-- Edge sets: ordered pairs (u, v), read as the edge {u, v}. Hosts list each edge once, with u < v. -/\nabbrev Edges := Finset (ℕ × ℕ)\n\n/-- No three edges (a, b), (b, c), (a, c). -/\ndef TriangleFree (S : Edges) : Prop :=\n  ∀ e ∈ S, ∀ f ∈ S, ∀ g ∈ S, ¬ (e.1 = g.1 ∧ e.2 = f.1 ∧ f.2 = g.2)\n\ninstance (S : Edges) : Decidable (TriangleFree S) := by\n  unfold TriangleFree; infer_instance\n\nend GT\n",
+   "source_sha256": "34a84d4f227cbf5a95012a37a9f263f14ca419a4959be42c674d8abc47c9e3a7",
+   "trusted": true
+  },
+  {
+   "name": "G4Defs",
+   "source": "import GTDefs\n\nnamespace G4\n\n/-- Domain contract (c4_host_v2): u and v are joined in S, in either orientation. -/\ndef adj (S : GT.Edges) (u v : ℕ) : Prop := (u, v) ∈ S ∨ (v, u) ∈ S\n\ninstance (S : GT.Edges) (u v : ℕ) : Decidable (adj S u v) := by\n  unfold adj; infer_instance\n\ndef verts (S : GT.Edges) : Finset ℕ := S.image Prod.fst ∪ S.image Prod.snd\n\n/-- No 4-cycle a-b-c-d-a with a ≠ c and b ≠ d. -/\ndef C4Free (S : GT.Edges) : Prop :=\n  ∀ a ∈ verts S, ∀ b ∈ verts S, ∀ c ∈ verts S, ∀ d ∈ verts S,\n    a ≠ c → b ≠ d → ¬ (adj S a b ∧ adj S b c ∧ adj S c d ∧ adj S d a)\n\ninstance (S : GT.Edges) : Decidable (C4Free S) := by\n  unfold C4Free; infer_instance\n\nend G4\n",
+   "source_sha256": "bf94fb5d73cc9d32e1e11167df93df0ca356b3f1a6de0b050a8efe53bae7987b",
+   "trusted": true
+  },
+  {
+   "name": "PCImports",
+   "source": "import G4Defs\nimport Mathlib.Algebra.BigOperators.Group.Finset.Sigma\nimport Mathlib.Algebra.Order.BigOperators.Ring.Finset\n",
+   "source_sha256": "4854b8ac49dd950ec75e25a0664f26f44b5e8ea300f0765c2c5f7871f1c4e028",
+   "trusted": true
+  },
+  {
+   "name": "PCConj",
+   "source": "import GTDefs\nimport G4Defs\nimport PCImports\nset_option linter.unusedVariables false\n\nnamespace PCConj\n/-- Generated conjecture `pair_count_c4` (builder-written (CRPD-2b): known counting bound, stated over the repository definitions). -/\ndef pair_count_c4 : Prop := ∀ (n : ℕ) (S : GT.Edges) (hS : ∀ e ∈ S, e.1 < e.2 ∧ e.2 < n) (hC : G4.C4Free S), ∑ v ∈ Finset.range n, (((Finset.range n).filter (fun w => G4.adj S v w)).card).choose 2 ≤ n.choose 2\n/-- Generated conjecture `c4_quadratic_bound` (builder-written (CRPD-2b): known counting bound, stated over the repository definitions). -/\ndef c4_quadratic_bound : Prop := ∀ (n : ℕ) (S : GT.Edges) (hS : ∀ e ∈ S, e.1 < e.2 ∧ e.2 < n) (hC : G4.C4Free S), 4 * S.card ^ 2 ≤ n ^ 2 * (n - 1) + 2 * n * S.card\nend PCConj\n",
+   "source_sha256": "ea2c1ec6855cc73f2e2b5a2670d0b8f32fe67a2614f0bcab1a15f6ecc678e47f",
+   "trusted": true
+  },
+  {
+   "name": "PCP1",
+   "source": "import GTDefs\nimport G4Defs\nimport PCImports\nimport PCConj\nnamespace PCP1\ntheorem proof : PCConj.pair_count_c4 := by\n  unfold PCConj.pair_count_c4\n  intro n S hS hC\n  unfold G4.C4Free at hC\n  have hsymm : ∀ u w, G4.adj S u w → G4.adj S w u := by\n    intro u w h\n    unfold G4.adj at *\n    exact h.symm\n  have hv : ∀ u w, G4.adj S u w → u ∈ G4.verts S := by\n    intro u w h\n    unfold G4.adj at h\n    unfold G4.verts\n    rcases h with h | h\n    · exact Finset.mem_union_left _ (Finset.mem_image.mpr ⟨(u, w), h, rfl⟩)\n    · exact Finset.mem_union_right _ (Finset.mem_image.mpr ⟨(w, u), h, rfl⟩)\n  have key : ((Finset.range n).sigma (fun v => ((Finset.range n).filter (fun w => G4.adj S v w)).powersetCard 2)).card ≤ ((Finset.range n).powersetCard 2).card := by\n    apply Finset.card_le_card_of_injOn (fun x => x.2)\n    · intro x hx\n      rw [Finset.mem_coe, Finset.mem_sigma, Finset.mem_powersetCard] at hx\n      rw [Finset.mem_coe, Finset.mem_powersetCard]\n      exact ⟨hx.2.1.trans (Finset.filter_subset _ _), hx.2.2⟩\n    · intro x hx y hy hxy\n      rw [Finset.mem_coe, Finset.mem_sigma, Finset.mem_powersetCard] at hx hy\n      dsimp only at hxy\n      by_cases hfst : x.1 = y.1\n      · exact Sigma.ext hfst (heq_of_eq hxy)\n      · exfalso\n        obtain ⟨a, b, hab, hP⟩ := Finset.card_eq_two.mp hx.2.2\n        have ha : a ∈ x.2 := by rw [hP]; exact Finset.mem_insert_self a {b}\n        have hb : b ∈ x.2 := by rw [hP]; exact Finset.mem_insert_of_mem (Finset.mem_singleton_self b)\n        have hax := hx.2.1 ha\n        have hbx := hx.2.1 hb\n        rw [hxy] at ha hb\n        have hay := hy.2.1 ha\n        have hby := hy.2.1 hb\n        rw [Finset.mem_filter] at hax hbx hay hby\n        exact hC a (hv _ _ (hsymm _ _ hax.2)) x.1 (hv _ _ hax.2) b (hv _ _ (hsymm _ _ hbx.2)) y.1 (hv _ _ hby.2) hab hfst ⟨hsymm _ _ hax.2, hbx.2, hsymm _ _ hby.2, hay.2⟩\n  have hc1 : ((Finset.range n).sigma (fun v => ((Finset.range n).filter (fun w => G4.adj S v w)).powersetCard 2)).card = ∑ v ∈ Finset.range n, (((Finset.range n).filter (fun w => G4.adj S v w)).card).choose 2 := by\n    rw [Finset.card_sigma]\n    exact Finset.sum_congr rfl (fun v _ => Finset.card_powersetCard 2 _)\n  have hc2 : ((Finset.range n).powersetCard 2).card = n.choose 2 := by\n    rw [Finset.card_powersetCard, Finset.card_range]\n  rw [← hc1, ← hc2]\n  exact key\nend PCP1\n",
+   "source_sha256": "a8d0896ef15afca5d338cc34f31b16b0cea926d349f398f7a7732a2f381b5d12",
+   "trusted": false
+  },
+  {
+   "name": "PCP2",
+   "source": "import GTDefs\nimport G4Defs\nimport PCImports\nimport PCConj\nimport PCP1\nnamespace PCP2\ntheorem proof : PCConj.c4_quadratic_bound := by\n  unfold PCConj.c4_quadratic_bound\n  intro n S hS hC\n  have hpc : ∑ v ∈ Finset.range n, (((Finset.range n).filter (fun w => G4.adj S v w)).card).choose 2 ≤ n.choose 2 := PCP1.proof n S hS hC\n  have hdeg : ∀ v ∈ Finset.range n, ((Finset.range n).filter (fun w => G4.adj S v w)).card = ∑ w ∈ Finset.range n, ((if (v, w) ∈ S then 1 else 0) + (if (w, v) ∈ S then 1 else 0)) := by\n    intro v _\n    rw [Finset.card_filter]\n    refine Finset.sum_congr rfl ?_\n    intro w _\n    by_cases h1 : (v, w) ∈ S <;> by_cases h2 : (w, v) ∈ S\n    · exfalso\n      have a1 := (hS _ h1).1\n      have a2 := (hS _ h2).1\n      dsimp only at a1 a2\n      omega\n    · have h : G4.adj S v w := Or.inl h1\n      simp [h, h1, h2]\n    · have h : G4.adj S v w := Or.inr h2\n      simp [h, h1, h2]\n    · have h : ¬ G4.adj S v w := by\n        intro h\n        rcases h with h | h\n        · exact h1 h\n        · exact h2 h\n      simp [h, h1, h2]\n  have hfilt : (Finset.range n ×ˢ Finset.range n).filter (fun x => (x.1, x.2) ∈ S) = S := by\n    ext x\n    rw [Finset.mem_filter, Finset.mem_product, Finset.mem_range, Finset.mem_range, Prod.mk.eta]\n    constructor\n    · intro h\n      exact h.2\n    · intro h\n      have h' := hS x h\n      exact ⟨⟨by omega, h'.2⟩, h⟩\n  have hone : ∑ v ∈ Finset.range n, ∑ w ∈ Finset.range n, (if (v, w) ∈ S then 1 else 0) = S.card := by\n    have hp := Finset.sum_product' (Finset.range n) (Finset.range n) (fun v w => if (v, w) ∈ S then 1 else 0)\n    rw [← hp, Finset.sum_boole, Nat.cast_id, hfilt]\n  have hhand : ∑ v ∈ Finset.range n, ((Finset.range n).filter (fun w => G4.adj S v w)).card = 2 * S.card := by\n    rw [Finset.sum_congr rfl hdeg]\n    simp only [Finset.sum_add_distrib]\n    rw [hone, Finset.sum_comm, hone]\n    omega\n  have hsq : ∀ d : ℕ, d ^ 2 = 2 * d.choose 2 + d := by\n    intro d\n    induction d with\n    | zero => rfl\n    | succ k ih =>\n      have e : (k + 1).choose 2 = k.choose 1 + k.choose 2 := rfl\n      rw [e, Nat.choose_one_right]\n      calc (k + 1) ^ 2 = k ^ 2 + 2 * k + 1 := by ring\n        _ = 2 * k.choose 2 + k + 2 * k + 1 := by rw [ih]\n        _ = 2 * (k + k.choose 2) + (k + 1) := by ring\n  have hsum_sq : ∑ v ∈ Finset.range n, ((Finset.range n).filter (fun w => G4.adj S v w)).card ^ 2 = 2 * ∑ v ∈ Finset.range n, (((Finset.range n).filter (fun w => G4.adj S v w)).card).choose 2 + ∑ v ∈ Finset.range n, ((Finset.range n).filter (fun w => G4.adj S v w)).card := by\n    rw [Finset.mul_sum, ← Finset.sum_add_distrib]\n    exact Finset.sum_congr rfl (fun v _ => hsq _)\n  have h3 : 2 * n.choose 2 = n * (n - 1) := by\n    have := hsq n\n    cases n with\n    | zero => rfl\n    | succ k =>\n      show 2 * (k + 1).choose 2 = (k + 1) * k\n      have e : (k + 1) ^ 2 = (k + 1) * k + (k + 1) := by ring\n      rw [e] at this\n      exact (Nat.add_right_cancel this).symm\n  have hQ : ∑ v ∈ Finset.range n, ((Finset.range n).filter (fun w => G4.adj S v w)).card ^ 2 ≤ n * (n - 1) + 2 * S.card := by\n    rw [hsum_sq, hhand, ← h3]\n    have := Nat.mul_le_mul_left 2 hpc\n    omega\n  have hcs := Finset.sum_mul_sq_le_sq_mul_sq (Finset.range n) (fun v => ((Finset.range n).filter (fun w => G4.adj S v w)).card) (fun _ => (1 : ℕ))\n  simp only [mul_one, one_pow, ← Finset.card_eq_sum_ones, Finset.card_range] at hcs\n  rw [hhand] at hcs\n  calc 4 * S.card ^ 2 = (2 * S.card) ^ 2 := by ring\n    _ ≤ (∑ v ∈ Finset.range n, ((Finset.range n).filter (fun w => G4.adj S v w)).card ^ 2) * n := hcs\n    _ ≤ (n * (n - 1) + 2 * S.card) * n := Nat.mul_le_mul_right n hQ\n    _ = n ^ 2 * (n - 1) + 2 * n * S.card := by ring\nend PCP2\n",
+   "source_sha256": "40b080b4a188b0539aa5aa4bf5273039ae4d7d47589f74f66e9f203ff8035174",
+   "trusted": false
+  }
+ ],
+ "name": "C4 pair-count bound (CRPD-2b)",
+ "package_sha256": "7e45d2889c5189f3cb50b4d037d7917fdd73ab22f002c73f0c026e8731ca55d2",
+ "proofs": [
+  {
+   "module": "PCP1",
+   "recipe": "pair-count-injection (builder-written)",
+   "statement": "pair_count_c4"
+  },
+  {
+   "module": "PCP2",
+   "recipe": "handshake-cauchy-schwarz (builder-written)",
+   "statement": "c4_quadratic_bound"
+  }
+ ],
+ "provenance": {
+  "acceptance": "genesis.formal_research.checker.accept",
+  "created_at": "2026-10-13T09:13:40.883634+00:00",
+  "loop": "genesis.formal_research.loop",
+  "search": "genesis.formal_research.search (builder-written recipes, named per proof)"
+ },
+ "schema": "genesis-theory-package-v1",
+ "scope": "every edge set S of ordered pairs u < v < n (the c4_host_v2 host contract)",
+ "statements": [
+  {
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "counterexample": null,
+   "id": "pair_count_c4",
+   "lean": "∀ (n : ℕ) (S : GT.Edges) (hS : ∀ e ∈ S, e.1 < e.2 ∧ e.2 < n) (hC : G4.C4Free S), ∑ v ∈ Finset.range n, (((Finset.range n).filter (fun w => G4.adj S v w)).card).choose 2 ≤ n.choose 2",
+   "origin": "builder-written (CRPD-2b): known counting bound, stated over the repository definitions",
+   "proof_const": "PCP1.proof",
+   "proof_module": "PCP1",
+   "recipe": "pair-count-injection (builder-written)",
+   "role": "bound",
+   "screened_instances": 2724,
+   "spec_const": "PCConj.pair_count_c4",
+   "status": "CHECKED",
+   "subject": "pair-count@c4_host_v2"
+  },
+  {
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "counterexample": null,
+   "id": "c4_quadratic_bound",
+   "lean": "∀ (n : ℕ) (S : GT.Edges) (hS : ∀ e ∈ S, e.1 < e.2 ∧ e.2 < n) (hC : G4.C4Free S), 4 * S.card ^ 2 ≤ n ^ 2 * (n - 1) + 2 * n * S.card",
+   "origin": "builder-written (CRPD-2b): known counting bound, stated over the repository definitions",
+   "proof_const": "PCP2.proof",
+   "proof_module": "PCP2",
+   "recipe": "handshake-cauchy-schwarz (builder-written)",
+   "role": "bound",
+   "screened_instances": 2731,
+   "spec_const": "PCConj.c4_quadratic_bound",
+   "status": "CHECKED",
+   "subject": "C4-pair-count-quadratic@c4_host_v2"
+  }
+ ]
+}

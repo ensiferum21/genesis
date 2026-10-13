@@ -1,0 +1,209 @@
+{
+ "axioms_used": [
+  "Classical.choice",
+  "Quot.sound",
+  "propext"
+ ],
+ "certificates": [
+  {
+   "bundle_sha256": "0a72fce61ee97707fa6bfd21877a9e16a68f992970538e7180867facfd93fff6",
+   "exact_optimum": 3,
+   "host_edges": 3,
+   "n": 3,
+   "optimum_licensed": true,
+   "pair_count_bound": 3,
+   "recorded_status": "OPTIMALITY_CHECKED",
+   "replay": {
+    "gap": 0,
+    "lower": "VALID",
+    "status": "OPTIMALITY_CHECKED",
+    "upper": "VALID"
+   },
+   "replay_problems": [],
+   "task_id": "complete-k3",
+   "upper_mode": "BOUND"
+  },
+  {
+   "bundle_sha256": "0b7ba9ca36fa27d56a628d90ea9b2a1339a769341e8ba4b7f32d51fa65149e2f",
+   "exact_optimum": 4,
+   "host_edges": 6,
+   "n": 4,
+   "optimum_licensed": true,
+   "pair_count_bound": 4,
+   "recorded_status": "OPTIMALITY_CHECKED",
+   "replay": {
+    "gap": 0,
+    "lower": "VALID",
+    "status": "OPTIMALITY_CHECKED",
+    "upper": "VALID"
+   },
+   "replay_problems": [],
+   "task_id": "complete-k4",
+   "upper_mode": "BOUND"
+  },
+  {
+   "bundle_sha256": "bc1bb471f78a8a36c85fb4fb89803b1b81d2fd880765afa44d9f86c4459786c6",
+   "exact_optimum": 6,
+   "host_edges": 10,
+   "n": 5,
+   "optimum_licensed": true,
+   "pair_count_bound": 6,
+   "recorded_status": "OPTIMALITY_CHECKED",
+   "replay": {
+    "gap": 0,
+    "lower": "VALID",
+    "status": "OPTIMALITY_CHECKED",
+    "upper": "VALID"
+   },
+   "replay_problems": [],
+   "task_id": "complete-k5",
+   "upper_mode": "BOUND"
+  },
+  {
+   "bundle_sha256": "778b9f08c53b62dde0da055606bc5cc7bfee09ea50aec39a0b02edef1f565f43",
+   "exact_optimum": 7,
+   "host_edges": 15,
+   "n": 6,
+   "optimum_licensed": false,
+   "pair_count_bound": 8,
+   "recorded_status": "BOUNDS_ONLY",
+   "replay": {
+    "gap": 1,
+    "lower": "VALID",
+    "status": "BOUNDS_CHECKED",
+    "upper": "VALID"
+   },
+   "replay_problems": [],
+   "sat_cross_check": {
+    "method": "SAT_DRAT",
+    "status": "OPTIMALITY_CHECKED",
+    "upper": 7
+   },
+   "task_id": "complete-k6",
+   "upper_mode": "BOUND"
+  },
+  {
+   "bundle_sha256": "f6fdcf0a5e811eb60a6a808b3844f0e9900103efe1b371a8e446c4c9994fad18",
+   "exact_optimum": 9,
+   "host_edges": 21,
+   "n": 7,
+   "optimum_licensed": false,
+   "pair_count_bound": 10,
+   "recorded_status": "BOUNDS_ONLY",
+   "replay": {
+    "gap": 1,
+    "lower": "VALID",
+    "status": "BOUNDS_CHECKED",
+    "upper": "VALID"
+   },
+   "replay_problems": [],
+   "sat_cross_check": {
+    "method": "SAT_DRAT",
+    "status": "OPTIMALITY_CHECKED",
+    "upper": 9
+   },
+   "task_id": "complete-k7",
+   "upper_mode": "BOUND"
+  },
+  {
+   "bundle_sha256": "d5b54b1dc28b89d5ce3b63fb4a6c21c6e70d64f4f828c393934afe18daa049c3",
+   "exact_optimum": 11,
+   "host_edges": 24,
+   "n": 8,
+   "optimum_licensed": false,
+   "pair_count_bound": 12,
+   "recorded_status": "BOUNDS_ONLY",
+   "replay": {
+    "gap": 1,
+    "lower": "VALID",
+    "status": "BOUNDS_CHECKED",
+    "upper": "VALID"
+   },
+   "replay_problems": [],
+   "sat_cross_check": {
+    "method": "SAT_DRAT",
+    "status": "OPTIMALITY_CHECKED",
+    "upper": 11
+   },
+   "task_id": "dense-0",
+   "upper_mode": "BOUND"
+  },
+  {
+   "bundle_sha256": "e257b0b1b68d0c7b85a50337e8549fecda91fdd7fbe30ecb335828adf29b993b",
+   "exact_optimum": 11,
+   "host_edges": 24,
+   "n": 8,
+   "optimum_licensed": false,
+   "pair_count_bound": 12,
+   "recorded_status": "BOUNDS_ONLY",
+   "replay": {
+    "gap": 1,
+    "lower": "VALID",
+    "status": "BOUNDS_CHECKED",
+    "upper": "VALID"
+   },
+   "replay_problems": [],
+   "sat_cross_check": {
+    "method": "SAT_DRAT",
+    "status": "OPTIMALITY_CHECKED",
+    "upper": 11
+   },
+   "task_id": "dense-1",
+   "upper_mode": "BOUND"
+  },
+  {
+   "bundle_sha256": "40a1a2eb8717d7229572d03f663aab37253f652df5b3f54918a64807a7d2f2a2",
+   "exact_optimum": 9,
+   "host_edges": 19,
+   "n": 7,
+   "optimum_licensed": false,
+   "pair_count_bound": 10,
+   "recorded_status": "BOUNDS_ONLY",
+   "replay": {
+    "gap": 1,
+    "lower": "VALID",
+    "status": "BOUNDS_CHECKED",
+    "upper": "VALID"
+   },
+   "replay_problems": [],
+   "sat_cross_check": {
+    "method": "SAT_DRAT",
+    "status": "OPTIMALITY_CHECKED",
+    "upper": 9
+   },
+   "task_id": "dense-2",
+   "upper_mode": "BOUND"
+  },
+  {
+   "bundle_sha256": "d3c42bcdd3f3a2c1c117ff85463ac0e62548bf9a32609cb06fbf77e050a7f94c",
+   "exact_optimum": 11,
+   "host_edges": 22,
+   "n": 8,
+   "optimum_licensed": false,
+   "pair_count_bound": 12,
+   "recorded_status": "BOUNDS_ONLY",
+   "replay": {
+    "gap": 1,
+    "lower": "VALID",
+    "status": "BOUNDS_CHECKED",
+    "upper": "VALID"
+   },
+   "replay_problems": [],
+   "sat_cross_check": {
+    "method": "SAT_DRAT",
+    "status": "OPTIMALITY_CHECKED",
+    "upper": 11
+   },
+   "task_id": "dense-3",
+   "upper_mode": "BOUND"
+  }
+ ],
+ "checker_identity": "e30b53a0b59c56ba0f335ca344ce15d0f3669cd2666cebdb2fcaed593a782020",
+ "label": "DEV fixtures; known results; builder-written statements and proofs",
+ "package_sha256": "7e45d2889c5189f3cb50b4d037d7917fdd73ab22f002c73f0c026e8731ca55d2",
+ "schema": "genesis-pair-count-evidence-v1",
+ "statements": {
+  "c4_quadratic_bound": "CHECKED",
+  "pair_count_c4": "CHECKED"
+ }
+}
