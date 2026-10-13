@@ -19,6 +19,14 @@ Kinds (closed; nothing else is accepted):
                            the statement and the library statements; its output is a proof CLAIM,
                            worth nothing until the evaluator replays it in Lean from custody.
                            Statement domains only (``eq_<system>_v1``); runc isolation only.
+  construct-pipeline-v1    (B20_R23) a two-stage construction pipeline over trusted components
+                           (``discovery.construct``, the menu representations, the fixed DSL programs):
+                           data-only parameters {init, frac, finish, cpu_seconds, seed}. ``init`` runs
+                           for frac x cpu_seconds of process CPU, then ``finish`` for the rest. v1
+                           admits only in-process components (LP-ordered greedy with LP-perturbed
+                           restarts, random-order greedy, a menu representation, a time-matched DSL
+                           program); the SAT finisher needs a subprocess, which the runner forbids
+                           (RLIMIT_NPROC 0), and is not a v1 component.
   represent-and-repair-v1  ``invention.representations.represent_and_repair`` with
                            data-only parameters {representation, cpu_seconds, seed}. The
                            representation must be a typed grammar proposal whose soundness
@@ -53,7 +61,14 @@ import sys
 from .common import canonical, digest
 
 SCHEMA = 'genesis-candidate-descriptor-v1'
-KINDS = ('dsl-program-v1', 'dsl-time-matched-v1', 'represent-and-repair-v1', 'formal-research-successor-v1')
+KINDS = ('dsl-program-v1', 'dsl-time-matched-v1', 'represent-and-repair-v1', 'formal-research-successor-v1',
+         'construct-pipeline-v1')
+PIPELINE_INITS = {'triangle_free_host_v1': ('rep:cross_2', 'rep:adjacent_2', 'rep:adjacent_3', 'rep:ordered_2',
+                                            'dsl:multistart', 'dsl:low_cycle', 'dsl:exchange', 'lp_greedy',
+                                            'random_greedy'),
+                  'c4_host_v2': ('dsl:multistart', 'dsl:low_cycle', 'dsl:exchange', 'lp_greedy', 'random_greedy')}
+PIPELINE_SHAPES = ((1.0, 'none'), (0.5, 'lp_restarts'), (0.25, 'lp_restarts'))
+SINGLE_THREAD_ENV = {'OPENBLAS_NUM_THREADS': '1', 'OMP_NUM_THREADS': '1', 'MKL_NUM_THREADS': '1'}
 CONVENTIONAL_KINDS = ('dsl-program-v1', 'dsl-time-matched-v1')
 PACKAGE = Path(__file__).resolve().parents[2] / 'evidence' / 'invention_b18' / 'representations' / 'package.json'
 MAX_OUTPUT = 1 << 20
@@ -83,7 +98,9 @@ def implementation_identity(kind):
              'represent-and-repair-v1': ['candidates.py', 'invention/representations.py', 'graphs.py', 'models.py',
                                          'invention/soundness.py'],
              'formal-research-successor-v1': ['candidates.py', 'learning/equational.py', 'learning/research.py',
-                                              'verification/eprover.py', 'verification/tools.py', 'fol.py']}[kind]
+                                              'verification/eprover.py', 'verification/tools.py', 'fol.py'],
+             'construct-pipeline-v1': ['candidates.py', 'discovery/construct.py', 'invention/representations.py',
+                                       'dsl.py', 'graphs.py', 'models.py']}[kind]
     return {f: _sha_file(here / f) for f in files}
 
 
@@ -121,6 +138,20 @@ def _check_parameters(kind, domain, params):
         SolverProgram.model_validate_json(canonical(params['program']))
         if type(params['cpu_seconds']) not in (int, float) or not 0 < params['cpu_seconds'] <= 60:
             raise CandidateError('MALFORMED_PARAMETERS')
+        return
+    if kind == 'construct-pipeline-v1':
+        if set(params) != {'init', 'frac', 'finish', 'cpu_seconds', 'seed'}:
+            raise CandidateError('MALFORMED_PARAMETERS',
+                                 'construct-pipeline-v1 takes {init, frac, finish, cpu_seconds, seed}')
+        if params['init'] not in PIPELINE_INITS.get(domain, ()):
+            raise CandidateError('MALFORMED_PARAMETERS', f'init {params["init"]!r} is not a component for {domain}')
+        if (params['frac'], params['finish']) not in PIPELINE_SHAPES or type(params['frac']) is not float:
+            raise CandidateError('MALFORMED_PARAMETERS', f'(frac, finish) must be one of {PIPELINE_SHAPES}')
+        if type(params['seed']) is not int or type(params['cpu_seconds']) not in (int, float) or \
+                not 0 < params['cpu_seconds'] <= 60:
+            raise CandidateError('MALFORMED_PARAMETERS')
+        if params['init'].startswith('rep:') and representation_mode(params['init'][4:], domain) not in ('SUFF', 'EQ'):
+            raise CandidateError('REPRESENTATION_NOT_LICENSED', params['init'])
         return
     if set(params) != {'representation', 'cpu_seconds', 'seed'}:
         raise CandidateError('MALFORMED_PARAMETERS', 'represent-and-repair-v1 takes {representation, cpu_seconds, seed}')
@@ -245,6 +276,8 @@ def _run_sandboxed(req, rp):
     env = {'PYTHONPATH': SOURCE_MOUNT, 'PYTHONHASHSEED': '0'}
     if req['kind'] == 'formal-research-successor-v1':
         env['GENESIS_TOOLCHAIN'] = TOOLS_MOUNT
+    if req['kind'] == 'construct-pipeline-v1':
+        env.update(SINGLE_THREAD_ENV)          # the child may not create threads (RLIMIT_NPROC 0)
     r = S.run({'request.json': canonical(req)}, [S.PYTHON, *CHILD_ARGV], sandbox_policy(rp),
               ro_mounts=sandbox_mounts(req['kind']), env=env)
     meter = {'cpu_ns': r.get('cpu_ns'), 'wall_ns': r.get('wall_ns'), 'peak_memory_bytes': r.get('peak_memory_bytes'),
@@ -323,7 +356,7 @@ def run(task, desc, *, seed, expected_id=None, isolation='process', context=None
     try:
         os.chmod(path, 0o444)
         env = {'PATH': '/usr/bin:/bin', 'PYTHONPATH': str(Path(__file__).resolve().parents[1]), 'PYTHONHASHSEED': '0',
-               'PYTHONNOUSERSITE': '1', 'PYTHONDONTWRITEBYTECODE': '1', 'LANG': 'C.UTF-8'}
+               'PYTHONNOUSERSITE': '1', 'PYTHONDONTWRITEBYTECODE': '1', 'LANG': 'C.UTF-8', **SINGLE_THREAD_ENV}
         if sys.pycache_prefix:
             env['PYTHONPYCACHEPREFIX'] = sys.pycache_prefix
         # Like the DSL runner: minimal environment, no user site, cwd '/' (nothing importable from cwd).
@@ -440,6 +473,50 @@ def _formal_child(req):
                                  'proof': proof, 'premise_uids': [p['uid'] for p in prem]}))
 
 
+def run_pipeline(view, params, seconds, queries, seed):
+    """construct-pipeline-v1 (B20_R23): ``init`` for frac x seconds of this process's CPU, then
+    ``finish`` for the rest. Trusted components only; returns the witness edge tuple."""
+    import random
+    import time
+    from .discovery import construct as K
+    total = K.Budget(seconds)
+    stage = params['frac'] * seconds
+    init = params['init']
+    if init.startswith('rep:'):
+        from .invention import representations as R
+        rep = next(r for r in R.proposals() if r['id'] == init[4:])
+        w = tuple(map(tuple, R.represent_and_repair(view.n, view.edges, rep, R.tf_add_ok, cpu_seconds=stage,
+                                                    seed=seed)['witness']))
+    elif init.startswith('dsl:'):
+        from .dsl import baseline_programs, solve
+        program = baseline_programs()[init[4:]]
+        start, best, k = time.process_time_ns(), None, 0
+        while best is None or time.process_time_ns() - start < int(stage * 1e9):
+            o = solve(view, program, queries, (seed + 1_000_003 * k) % (1 << 62))
+            if best is None or o['value'] > best['value']:
+                best = o
+            k += 1
+        w = tuple(map(tuple, best['selected']))
+    elif init == 'lp_greedy':
+        w = K.lp_greedy(view, K.Budget(stage), seed)['witness']
+    elif init == 'random_greedy':
+        rng, sb, w = random.Random(seed), K.Budget(stage), ()
+        order = list(range(len(view.edges)))
+        while True:
+            rng.shuffle(order)
+            g = K.greedy(view, order)
+            if len(g) > len(w):
+                w = g
+            if sb.left() <= 0:
+                break
+    else:
+        raise CandidateError('MALFORMED_PARAMETERS', init)
+    if params['finish'] == 'lp_restarts' and total.left() > 0:
+        w2 = K.lp_greedy(view, total, seed + 1)['witness']
+        w = w2 if len(w2) > len(w) else w
+    return tuple(sorted(map(tuple, w)))
+
+
 def _child(path):
     import resource
     req = json.loads(Path(path).read_bytes())
@@ -460,6 +537,11 @@ def _child(path):
         out = solve(view, SolverProgram.model_validate_json(canonical(req['parameters']['program'])),
                     req['queries'], req['seed'])
         sys.stdout.write(json.dumps({'selected': [list(e) for e in out['selected']], 'value': out['value']}))
+        return
+    if req['kind'] == 'construct-pipeline-v1':
+        out = run_pipeline(view, req['parameters'], min(req['parameters']['cpu_seconds'], req['cpu_seconds']),
+                           req['queries'], req['parameters']['seed'] ^ req['seed'])
+        sys.stdout.write(json.dumps({'selected': [list(e) for e in out], 'value': len(out)}))
         return
     if req['kind'] == 'dsl-time-matched-v1':
         import time

@@ -440,6 +440,42 @@ class ComparatorSelection(Base):
                                   claim='sel-forged'), forged[0])
 
 
+class ConstructPipeline(Base):
+    """B20_R23: construct-pipeline-v1, a data-only pipeline over trusted construction components."""
+
+    def pipe(self, domain=TF, **over):
+        params = dict({'init': 'lp_greedy', 'frac': 1.0, 'finish': 'none', 'cpu_seconds': 0.5, 'seed': 3}, **over)
+        return C.build_descriptor('construct-pipeline-v1', domain, params, **self.desc['resource_profile'])
+
+    def test_parameters_are_typed_and_bounded(self):
+        for bad in ({'init': 'os.system'}, {'init': 'rep:cross_3'}, {'frac': 0.5, 'finish': 'none'},
+                    {'frac': 1, 'finish': 'none'}, {'finish': 'sat_climb', 'frac': 0.25}, {'cpu_seconds': 0},
+                    {'cpu_seconds': 61}, {'seed': 1.5}):
+            with self.assertRaises(C.CandidateError, msg=bad):
+                self.pipe(**bad)
+        with self.assertRaises(C.CandidateError):
+            self.pipe('c4_host_v2', init='rep:cross_2')                      # no licensed representation on C4
+        with self.assertRaises(C.CandidateError):
+            C.build_descriptor('construct-pipeline-v1', TF, {'init': 'lp_greedy', 'frac': 1.0, 'finish': 'none',
+                                                             'cpu_seconds': 0.5, 'seed': 3, 'code': 'x'},
+                               **self.desc['resource_profile'])
+        self.assertIn('discovery/construct.py', self.pipe()['implementation'])
+
+    def test_pipelines_run_in_the_sandbox_with_checked_witnesses(self):
+        from genesis.graphs import check_witness
+        for domain, params, task in ((TF, {}, self.tasks[3]),
+                                     (TF, {'init': 'rep:cross_2', 'frac': 0.5, 'finish': 'lp_restarts'}, self.tasks[4]),
+                                     ('c4_host_v2', {'init': 'dsl:low_cycle', 'frac': 0.25, 'finish': 'lp_restarts'},
+                                      ADAPTERS['c4_host_v2'].generate(7, 1, 'CONFIRM', 'erdos', {'n': 10, 'p': 0.5})[0][0])):
+            d = self.pipe(domain, **params)
+            r = C.run(task, d, seed=5, expected_id=d['descriptor_id'], isolation='runc')
+            self.assertEqual((r['status'], r['isolation'], r['meter']), ('SUCCESS', R.ISOLATION_V4, 'cgroup'), r)
+            self.assertEqual(check_witness(task, [tuple(e) for e in r['result']['selected']])['value'], r['result']['value'])
+            self.assertGreaterEqual(r['cpu_ns'], int(0.5e9))                # the budget is spent and charged
+        p = C.run(self.tasks[3], self.pipe(), seed=5, isolation='process')
+        self.assertEqual(p['status'], 'SUCCESS', p)
+
+
 class CausalAndReplicationCustody(Base):
     """B20_R15 (B14-OPEN-4): the custodian registers ablation/placebo requests only for a registered
     intervention of the frozen candidate, and an internal replicator accepts another custodian's
