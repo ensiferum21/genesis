@@ -26,7 +26,10 @@ Kinds (closed; nothing else is accepted):
                            admits only in-process components (LP-ordered greedy with LP-perturbed
                            restarts, random-order greedy, a menu representation, a time-matched DSL
                            program); the SAT finisher needs a subprocess, which the runner forbids
-                           (RLIMIT_NPROC 0), and is not a v1 component.
+                           (RLIMIT_NPROC 0), and is not a v1 component. ``lp_shuffled_greedy`` is the
+                           registered placebo of ``lp_greedy``: the same LP solve and restarts, with
+                           the LP values permuted among the edges (seeded), so the cost and procedure
+                           stay and the signal goes (replay_contracts.INTERVENTIONS).
   represent-and-repair-v1  ``invention.representations.represent_and_repair`` with
                            data-only parameters {representation, cpu_seconds, seed}. The
                            representation must be a typed grammar proposal whose soundness
@@ -65,8 +68,9 @@ KINDS = ('dsl-program-v1', 'dsl-time-matched-v1', 'represent-and-repair-v1', 'fo
          'construct-pipeline-v1')
 PIPELINE_INITS = {'triangle_free_host_v1': ('rep:cross_2', 'rep:adjacent_2', 'rep:adjacent_3', 'rep:ordered_2',
                                             'dsl:multistart', 'dsl:low_cycle', 'dsl:exchange', 'lp_greedy',
-                                            'random_greedy'),
-                  'c4_host_v2': ('dsl:multistart', 'dsl:low_cycle', 'dsl:exchange', 'lp_greedy', 'random_greedy')}
+                                            'random_greedy', 'lp_shuffled_greedy'),
+                  'c4_host_v2': ('dsl:multistart', 'dsl:low_cycle', 'dsl:exchange', 'lp_greedy', 'random_greedy',
+                                 'lp_shuffled_greedy')}
 PIPELINE_SHAPES = ((1.0, 'none'), (0.5, 'lp_restarts'), (0.25, 'lp_restarts'))
 SINGLE_THREAD_ENV = {'OPENBLAS_NUM_THREADS': '1', 'OMP_NUM_THREADS': '1', 'MKL_NUM_THREADS': '1'}
 CONVENTIONAL_KINDS = ('dsl-program-v1', 'dsl-time-matched-v1')
@@ -499,6 +503,11 @@ def run_pipeline(view, params, seconds, queries, seed):
         w = tuple(map(tuple, best['selected']))
     elif init == 'lp_greedy':
         w = K.lp_greedy(view, K.Budget(stage), seed)['witness']
+    elif init == 'lp_shuffled_greedy':
+        sb = K.Budget(stage)                       # the LP solve is charged to the stage, as in lp_greedy
+        x = list(K.lp_values(view))
+        random.Random(seed ^ 0x5EED).shuffle(x)
+        w = K.lp_greedy(view, sb, seed, x=x)['witness']
     elif init == 'random_greedy':
         rng, sb, w = random.Random(seed), K.Budget(stage), ()
         order = list(range(len(view.edges)))

@@ -589,6 +589,12 @@ _DSL = {('program', 'weights'): {'ablation': _zero, 'placebo': _rotate,
         ('program', 'exchange'): {'ablation': _false, 'placebo': None, 'meaning': 'no exchange moves'},
         ('program', 'componentwise'): {'ablation': _false, 'placebo': None, 'meaning': 'no component grouping'}}
 INTERVENTIONS = {(kind, path): spec for kind in ('dsl-program-v1', 'dsl-time-matched-v1') for path, spec in _DSL.items()}
+# construct-pipeline-v1 (B20_R23): the LP guidance of an lp_greedy initialiser.
+INTERVENTIONS[('construct-pipeline-v1', ('init',))] = {
+    'ablation': lambda v: 'random_greedy' if v == 'lp_greedy' else None,
+    'placebo': lambda v: 'lp_shuffled_greedy' if v == 'lp_greedy' else None,
+    'meaning': ('ablation: no LP guidance (random-order greedy restarts for the same stage budget); placebo: the '
+                'same LP solve and restarts with the LP values permuted among the edges')}
 
 
 def _leaves(x, path=()):
