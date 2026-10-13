@@ -464,6 +464,9 @@ class EvidenceKernel:
     def _problem_name(self, problem):
         if problem.get('claim') == 'theorem':
             t = self.s.get(problem['theorem_sha256'])
+            if t.get('schema') == RC.LEAN_THEOREM_SCHEMA:
+                return (f"the definitions of Lean theory package {t['package_sha256'][:16]} (statement "
+                        f"{t['statement_id']}) [{problem['theorem_sha256'][:16]}]")
             return f"the {t['system']} axioms [{problem['theorem_sha256'][:16]}]"
         task = self.s.get(problem['task_sha256'])  # the problem must be in the store
         domain, task_id = task.get('domain'), task.get('task_id')

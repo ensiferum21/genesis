@@ -19,6 +19,13 @@ re-runs the check itself and returns problems (empty: the artifact replays):
       axioms); the record must be bound to the proof object and the statement; and a fresh Lean
       replay of the proof with its whole lemma chain (pinned Lean, allowed axioms) must be
       CHECKED. The replay route's identity can be revoked like any verifier.
+  formal_check, route lean-package-v1 (B20_R20) -> math THEOREM_CHECKED for a theory-package statement
+      payload {theorem_sha256, package}: the stored genesis-lean-theorem-v1 object names the package
+      (its package_sha256 binds every definition module), the statement id and its exact Lean text.
+      The package must pass its integrity checks, hold the statement with that text, status CHECKED and
+      allowed axioms only, define its specification constant as exactly that proposition, and bind a
+      proof to it; the kernel then replays the whole package in Lean (theory_package.replay) under a
+      revocable route identity (pinned Lean, workspace, checker code, allowed axioms).
   dev_comparison  -> utility DEV_ONLY, causality CORRELATED
       payload genesis-dev-comparison-v2 {plan, arms, rows, result} (B20_R18; v1, whose rows were
       producer data, is retired and licenses nothing): a valid v2 plan, every row marked DEV and
@@ -68,7 +75,10 @@ DEV_SCHEMA = 'genesis-dev-comparison-v2'
 DEV_SCHEMA_V1 = 'genesis-dev-comparison-v1'          # retired (B20R8-OPEN-1)
 THEOREM_SCHEMA = 'genesis-theorem-statement-v1'
 EXACT_METHODS = ('exact-producer', 'exact-checker')
-FORMAL_ROUTES = ('equational-custody-v1',)
+FORMAL_ROUTES = ('equational-custody-v1', 'lean-package-v1')
+LEAN_THEOREM_SCHEMA = 'genesis-lean-theorem-v1'
+LEAN_THEOREM_FIELDS = frozenset({'schema', 'package_sha256', 'statement_id', 'statement'})
+LEAN_PACKAGE_FIELDS = frozenset({'schema', 'route', 'theorem_sha256', 'package'})
 EXACT_FIELDS = frozenset({'schema', 'task_sha256', 'value', 'method'})
 FORMAL_FIELDS = frozenset({'schema', 'route', 'theorem_sha256', 'manifest', 'record', 'proof_objects'})
 DEV_FIELDS = frozenset({'schema', 'plan', 'arms', 'rows', 'result'})
@@ -96,9 +106,31 @@ def theorem_object(system, statement):
             'axioms': [CU._formula_text(a) for a in Q.axioms(system)], 'statement': statement}
 
 
+def lean_theorem_object(package, statement_id):
+    """The stored form of a Lean-package theorem claim (B20_R20): the package identity (which binds
+    every definition module), the statement's id and its exact Lean text."""
+    s = next((x for x in package['statements'] if x['id'] == statement_id), None)
+    if s is None:
+        raise ValueError(f'no statement {statement_id!r} in the package')
+    return {'schema': LEAN_THEOREM_SCHEMA, 'package_sha256': package['package_sha256'], 'statement_id': statement_id,
+            'statement': s['lean']}
+
+
+def _lean_theorem_problems(obj):
+    if set(obj) != LEAN_THEOREM_FIELDS:
+        return ['not a stored Lean theorem statement (genesis-lean-theorem-v1)']
+    if not (isinstance(obj['package_sha256'], str) and len(obj['package_sha256']) == 64 and
+            isinstance(obj['statement_id'], str) and obj['statement_id'].isidentifier() and
+            isinstance(obj['statement'], str) and obj['statement'].strip() and '\n' not in obj['statement']):
+        return ['malformed Lean theorem statement']
+    return []
+
+
 def theorem_problems(obj):
     from ..learning import custody as CU
     from ..learning import equational as Q
+    if isinstance(obj, dict) and obj.get('schema') == LEAN_THEOREM_SCHEMA:
+        return _lean_theorem_problems(obj)
     if not isinstance(obj, dict) or obj.get('schema') != THEOREM_SCHEMA or set(obj) != THEOREM_FIELDS:
         return ['not a stored theorem statement (genesis-theorem-statement-v1)']
     if obj['system'] not in Q.SYSTEMS:
@@ -149,6 +181,8 @@ def exact_problems(get, payload, problem):
 def formal_problems(get, payload, problem, *, revoked_verifiers=()):
     """Returns (problems, replay record or None). Runs Lean (slow): callers cache by identity."""
     from ..learning import custody as CU
+    if isinstance(payload, dict) and payload.get('schema') == FORMAL_SCHEMA and payload.get('route') == 'lean-package-v1':
+        return lean_package_problems(get, payload, problem, revoked_verifiers=revoked_verifiers)
     if not isinstance(payload, dict) or payload.get('schema') != FORMAL_SCHEMA or set(payload) != FORMAL_FIELDS:
         return ['not a replayable formal check (genesis-formal-check-v1 with custody of the proof)'], None
     if payload['route'] not in FORMAL_ROUTES:
@@ -162,6 +196,8 @@ def formal_problems(get, payload, problem, *, revoked_verifiers=()):
     why = theorem_problems(theorem)
     if why:
         return why, None
+    if theorem.get('schema') != THEOREM_SCHEMA:
+        return ['the equational custody route proves equational theorems only'], None
     checker = CU.checker_identity()['identity']
     if checker in set(revoked_verifiers):
         return [f'the Lean replay route {checker[:12]} is revoked'], None
@@ -188,6 +224,76 @@ def formal_problems(get, payload, problem, *, revoked_verifiers=()):
                          trust_context={'checker_identity': checker}, name=f'kr{record["record_id"][:12]}')
     if r['status'] != 'CHECKED':
         return [f'the proof does not replay in Lean ({r["status"]}: {r.get("reason") or r.get("problems")})'], r
+    return [], r
+
+
+def package_checker_identity():
+    """Identity of the Lean-package replay route: pinned Lean, the formal workspace's source and
+    artifact identities, the checker and package-replay code, and the allowed axioms."""
+    import hashlib
+    from pathlib import Path
+    from ..formal_research import checker as C
+    from ..formal_research import workspace as W
+    from ..verification.tools import tool
+    here = Path(__file__).resolve().parents[1] / 'formal_research'
+    ws = W.environment()
+    ident = {'lean': tool('lean')['identity'],
+             'workspace': {k: ws[k] for k in ('source_identity', 'artifact_identity')},
+             'checker_sha256': hashlib.sha256((here / 'checker.py').read_bytes()).hexdigest(),
+             'theory_package_sha256': hashlib.sha256((here / 'theory_package.py').read_bytes()).hexdigest(),
+             'allowed_axioms': sorted(C.ALLOWED_AXIOMS)}
+    return dict(ident, identity=digest(ident))
+
+
+def lean_package_problems(get, payload, problem, *, revoked_verifiers=(), replay=None):
+    """Route lean-package-v1 (B20_R20): THEOREM_CHECKED for a statement of a theory package
+    (formal_research.theory_package). Returns (problems, replay report or None). Runs Lean (slow)."""
+    from ..formal_research import checker as C
+    from ..formal_research import theory_package as TP
+    if set(payload) != LEAN_PACKAGE_FIELDS:
+        return ['not a replayable Lean-package check (route lean-package-v1 with the whole package)'], None
+    if problem is None or problem.get('claim') != 'theorem' or problem.get('theorem_sha256') != payload['theorem_sha256']:
+        return ['the formal check proves a different statement than the claim names'], None
+    try:
+        theorem = get(payload['theorem_sha256'])
+    except Exception:
+        return ['stored theorem statement missing'], None
+    if not isinstance(theorem, dict) or theorem.get('schema') != LEAN_THEOREM_SCHEMA:
+        return ['the Lean-package route proves Lean theorem statements (genesis-lean-theorem-v1) only'], None
+    why = theorem_problems(theorem)
+    if why:
+        return why, None
+    pkg = payload['package']
+    why = TP.integrity_problems(pkg) if isinstance(pkg, dict) else ['not a theory package']
+    if why:
+        return ['the package fails its integrity checks: ' + '; '.join(why)], None
+    if pkg['package_sha256'] != theorem['package_sha256']:
+        return ['the package is not the one the theorem names'], None
+    s = next((x for x in pkg['statements'] if x.get('id') == theorem['statement_id']), None)
+    if s is None or s.get('lean') != theorem['statement']:
+        return ['the package does not hold this statement with this exact Lean text'], None
+    if s.get('status') != 'CHECKED':
+        return [f'the package records the statement as {s.get("status")}, not CHECKED'], None
+    if set(s.get('axioms') or ()) - set(C.ALLOWED_AXIOMS):
+        return ['the proof uses axioms outside the allowed set'], None
+    module, _, name = str(s.get('spec_const')).partition('.')
+    spec = next((m for m in pkg['modules'] if m['name'] == module), None)
+    if spec is None or f'def {name} : Prop := {s["lean"]}' not in spec['source'].splitlines():
+        return ['the specification constant is not defined as the stated proposition'], None
+    if not any(b.get('spec') == s['spec_const'] and b.get('proof') == s.get('proof_const') for b in pkg['bindings']):
+        return ['no binding of a proof to the specification constant'], None
+    try:
+        checker = package_checker_identity()['identity']
+    except Exception as exc:
+        return [f'the Lean-package replay route is unavailable here ({type(exc).__name__})'], None
+    if checker in set(revoked_verifiers):
+        return [f'the Lean-package replay route {checker[:12]} is revoked'], None
+    r = (replay or TP.replay)(pkg)
+    if r.get('verdict') != 'REPLAYED':
+        return [f'the package does not replay in Lean ({"; ".join(r.get("differences", []))[:200]})'], r
+    if (s['proof_const'].split('.')[0], 'CHECKED') not in {tuple(x) for x in r.get('bindings', [])} and \
+            (s['proof_const'], 'CHECKED') not in {tuple(x) for x in r.get('bindings', [])}:
+        return ['the replay did not check this statement\'s proof'], r
     return [], r
 
 
@@ -522,6 +628,6 @@ def intervention_problems(kind, full, altered):
     return [], path
 
 
-__all__ = ['EXACT_SCHEMA', 'FORMAL_SCHEMA', 'DEV_SCHEMA', 'DEV_SCHEMA_V1', 'dev_comparison', 'THEOREM_SCHEMA', 'PRIORITY_SCHEMA', 'EXACT_METHODS',
+__all__ = ['EXACT_SCHEMA', 'FORMAL_SCHEMA', 'DEV_SCHEMA', 'DEV_SCHEMA_V1', 'dev_comparison', 'LEAN_THEOREM_SCHEMA', 'lean_theorem_object', 'lean_package_problems', 'package_checker_identity', 'THEOREM_SCHEMA', 'PRIORITY_SCHEMA', 'EXACT_METHODS',
            'CONTRACTED', 'INTERVENTIONS', 'theorem_object', 'theorem_problems', 'exact_problems', 'formal_problems',
            'dev_problems', 'priority_problems', 'pinned_library', 'intervention_problems']

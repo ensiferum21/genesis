@@ -30,6 +30,7 @@
 | B20_R16 | H08 s20.6: active-version pointer, rollback, inherited version revocation, resume gate |
 | B20_R17 | s15.3: machine-generated relational decoders. One new decoder (the oriented 3-cycle) is Lean-checked; its DEV utility after cost is NO_UTILITY_AFTER_COST |
 | B20_R18 | B20R8-OPEN-1: DEV comparison rows are bound to journalled executions (v2); v1 is retired |
+| B20_R20 | B14-OPEN-4 remainder: THEOREM_CHECKED through a theory package (route lean-package-v1), replayed in Lean under a revocable route identity |
 | B20_R19 | s15.3, second attempt: versioned k ≤ 4 relational decoders (twins merged). One new decoder is Lean-checked; NO_UTILITY_AFTER_COST (+0.125 per host against the menu). The ledger is reconciled |
 
 ## Resume
@@ -58,7 +59,7 @@
    - Next, each family as its own preregistered step, with all attempts counted:
      - partitions/quotients with proved transport conditions;
      - decompositions with verified witness composition.
-2. **A Lean-package route for THEOREM_CHECKED.** (B20R8-OPEN-1 was repaired in B20_R18.)
+2. **Registered interventions for more candidate kinds** (causal levels), and paired research lineages once a GV4 domain has headroom. (The Lean-package route for THEOREM_CHECKED was added in B20_R20; B20R8-OPEN-1 was repaired in B20_R18.)
 3. **H08, the rest:** retention and negative-transfer measurement under a frozen protocol; paired research lineages for `sealed_improver_evaluation`.
 4. **H11:** operations documentation and release review packaging.
 

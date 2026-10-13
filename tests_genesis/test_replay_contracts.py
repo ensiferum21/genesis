@@ -267,5 +267,67 @@ class TheoremChecked(Base):
             self.k.create_claim('wrong-axioms', 'x', THEOREM_SCOPE, [self.run], problem=problem)
 
 
+class LeanPackage(Base):
+    """B20_R20 (B14-OPEN-4 remainder): THEOREM_CHECKED through a theory package (route lean-package-v1).
+    The package is the committed B20_R17 relational-decoder package; the kernel replays it in Lean."""
+
+    PKG = Path(__file__).resolve().parents[1] / 'evidence' / 'relation_invention_b20r17' / 'package.json'
+
+    def setUp(self):
+        super().setUp()
+        import json
+        self.pkg = json.loads(self.PKG.read_text())
+
+    def theorem(self, sid='rel3_011220_sound_tf', **over):
+        obj = dict(RC.lean_theorem_object(self.pkg, sid), **over)
+        return self.store.put(obj)
+
+    def check(self, tsha, package=None):
+        return self.node('formal_check', {'schema': RC.FORMAL_SCHEMA, 'route': 'lean-package-v1', 'theorem_sha256': tsha,
+                                          'package': package if package is not None else self.pkg})
+
+    def claim(self, cid, nodes, tsha):
+        problem = {'theorem_sha256': tsha, 'claim': 'theorem'}
+        return self.k.create_claim(cid, self.k.math_statement(problem), THEOREM_SCOPE, nodes, problem=problem)
+
+    def test_a_checked_package_statement_replays_and_is_worded_from_the_package(self):
+        tsha = self.theorem()
+        self.claim('pkg', [self.check(tsha)], tsha)
+        self.k.promote('pkg', 'math', 'THEOREM_CHECKED')
+        self.assertEqual(self.k.levels('pkg')['math'], 'THEOREM_CHECKED')
+        text = self.k.current_wording('pkg')['current_statement']
+        self.assertIn('GT.TriangleFree (RL.rel3_011220 c H)', text)
+        self.assertIn(self.pkg['package_sha256'][:16], text)
+
+    def test_refusals_before_any_replay(self):
+        import copy
+        bad_text = self.theorem(statement='∀ (c : ℕ → Fin 3) (H : GT.Edges), RL.rel3_011220 c H = H')
+        self.claim('text', [self.check(bad_text)], bad_text)
+        self.rejects('text', 'math', 'THEOREM_CHECKED', 'exact Lean text')
+        tampered = copy.deepcopy(self.pkg)
+        tampered['statements'][-1]['status'] = 'DISPROVED'
+        tsha = self.theorem()
+        self.claim('tampered', [self.check(tsha, tampered)], tsha)
+        self.rejects('tampered', 'math', 'THEOREM_CHECKED', 'integrity')
+        other = self.theorem(package_sha256='0' * 64)
+        self.claim('other', [self.check(other)], other)
+        self.rejects('other', 'math', 'THEOREM_CHECKED', 'not the one the theorem names')
+        eq = self.store.put(RC.theorem_object('ba_huntington', '![X]: (plus(X,n(n(X))) = X)'))
+        self.claim('eq', [self.check(eq)], eq)
+        self.rejects('eq', 'math', 'THEOREM_CHECKED', 'Lean theorem statements')
+        lean = self.theorem()
+        self.claim('route', [self.node('formal_check', {'schema': RC.FORMAL_SCHEMA, 'route': 'equational-custody-v1',
+                                                        'theorem_sha256': lean, 'manifest': {}, 'record': {},
+                                                        'proof_objects': {}})], lean)
+        self.rejects('route', 'math', 'THEOREM_CHECKED', 'equational theorems only')
+
+    def test_a_revoked_route_licenses_nothing(self):
+        tsha = self.theorem('rel3_011220_image')
+        self.claim('rev', [self.check(tsha)], tsha)
+        reg = self.k.register_verifier(RC.package_checker_identity()['identity'], 'f' * 64)
+        self.k.revoke(reg, 'fixture: the package replay route is withdrawn', 'FIXTURE')
+        self.rejects('rev', 'math', 'THEOREM_CHECKED', 'is revoked')
+
+
 if __name__ == '__main__':
     unittest.main()
