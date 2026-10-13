@@ -272,6 +272,11 @@ class Acceptance(unittest.TestCase):
         self.assertIsNotNone(res['found'])
         self.assertNotIn('status', res)                  # a search has no acceptance verdict
         self.assertFalse(all(a['compiled'] for a in res['attempts']))     # failures are kept and charged
+        # handoff s15.1: every proposed tactic and its failed elaboration are preserved
+        failed = [a for a in res['attempts'] if not a['compiled']]
+        self.assertTrue(all(a['tactic'] and a['errors'] for a in failed))
+        self.assertTrue(all(': error' in e or e.startswith('whole module') for a in failed for e in a['errors']))
+        self.assertTrue(all(a['errors'] == [] for a in res['attempts'] if a['compiled']))
 
 
 @unittest.skipUnless(READY, 'pinned Lean toolchain, formal workspace or sandbox unavailable')
