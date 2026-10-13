@@ -1,0 +1,36 @@
+[    0.7s] E1 study calibration c7893f5bcfd2 (e1-hard-v1) selected [{'family': 'planted_cluster', 'index': 5, 'params': {'n': 20, 'p_in': 0.7, 'p_out': 0.3}}, {'family': 'erdos', 'index': 1, 'params': {'n': 18, 'p': 0.5}}, {'family': 'erdos', 'index': 2, 'params': {'n': 22, 'p': 0.35}}, {'family': 'erdos', 'index': 4, 'params': {'n': 26, 'p': 0.3}}]; 711 host identities excluded
+[    5.5s] dev-planted_cluster-91e61c9b-20261921-0000: optimum 51, candidate 50, exchange_tm 51, low_cycle_tm 51, multistart_tm 51, exchange 46, low_cycle 50, multistart 47
+[   10.3s] dev-planted_cluster-91e61c9b-20261921-0001: optimum 51, candidate 51, exchange_tm 49, low_cycle_tm 49, multistart_tm 51, exchange 45, low_cycle 49, multistart 48
+[   15.3s] dev-planted_cluster-91e61c9b-20261921-0002: optimum 48, candidate 48, exchange_tm 46, low_cycle_tm 46, multistart_tm 47, exchange 41, low_cycle 45, multistart 44
+[   20.2s] dev-planted_cluster-91e61c9b-20261921-0003: optimum 53, candidate 53, exchange_tm 51, low_cycle_tm 51, multistart_tm 52, exchange 45, low_cycle 50, multistart 48
+[   25.5s] dev-planted_cluster-91e61c9b-20261921-0004: optimum 56, candidate 56, exchange_tm 54, low_cycle_tm 55, multistart_tm 55, exchange 47, low_cycle 55, multistart 51
+[   30.5s] dev-planted_cluster-91e61c9b-20261921-0005: optimum 50, candidate 50, exchange_tm 48, low_cycle_tm 47, multistart_tm 50, exchange 45, low_cycle 47, multistart 46
+[   35.1s] dev-planted_cluster-91e61c9b-20261921-0006: optimum 53, candidate 53, exchange_tm 52, low_cycle_tm 47, multistart_tm 52, exchange 45, low_cycle 47, multistart 49
+[   39.9s] dev-planted_cluster-91e61c9b-20261921-0007: optimum 50, candidate 50, exchange_tm 48, low_cycle_tm 45, multistart_tm 50, exchange 45, low_cycle 45, multistart 46
+[   44.5s] dev-erdos-a1b8a28d-20269840-0000: optimum 48, candidate 48, exchange_tm 47, low_cycle_tm 45, multistart_tm 47, exchange 44, low_cycle 45, multistart 44
+[   49.4s] dev-erdos-a1b8a28d-20269840-0001: optimum 55, candidate 55, exchange_tm 50, low_cycle_tm 50, multistart_tm 53, exchange 43, low_cycle 50, multistart 46
+[   54.2s] dev-erdos-a1b8a28d-20269840-0002: optimum 48, candidate 48, exchange_tm 46, low_cycle_tm 48, multistart_tm 48, exchange 42, low_cycle 47, multistart 43
+[   60.0s] dev-erdos-a1b8a28d-20269840-0003: optimum 53, candidate 53, exchange_tm 48, low_cycle_tm 48, multistart_tm 50, exchange 42, low_cycle 48, multistart 46
+[   65.2s] dev-erdos-a1b8a28d-20269840-0004: optimum 55, candidate 55, exchange_tm 53, low_cycle_tm 51, multistart_tm 53, exchange 41, low_cycle 51, multistart 50
+[   70.7s] dev-erdos-a1b8a28d-20269840-0005: optimum 52, candidate 52, exchange_tm 50, low_cycle_tm 51, multistart_tm 50, exchange 47, low_cycle 51, multistart 47
+[   75.6s] dev-erdos-a1b8a28d-20269840-0006: optimum 53, candidate 53, exchange_tm 49, low_cycle_tm 51, multistart_tm 50, exchange 41, low_cycle 50, multistart 48
+[   81.3s] dev-erdos-a1b8a28d-20269840-0007: optimum 53, candidate 53, exchange_tm 50, low_cycle_tm 50, multistart_tm 50, exchange 43, low_cycle 49, multistart 46
+[   86.4s] dev-erdos-80a647eb-20277759-0000: optimum 64, candidate 64, exchange_tm 61, low_cycle_tm 63, multistart_tm 62, exchange 56, low_cycle 63, multistart 56
+[   93.7s] dev-erdos-80a647eb-20277759-0001: optimum 67, candidate 66, exchange_tm 65, low_cycle_tm 65, multistart_tm 65, exchange 60, low_cycle 65, multistart 62
+[   98.5s] dev-erdos-80a647eb-20277759-0002: optimum 57, candidate 57, exchange_tm 55, low_cycle_tm 56, multistart_tm 56, exchange 51, low_cycle 56, multistart 52
+[  103.8s] dev-erdos-80a647eb-20277759-0003: optimum 58, candidate 57, exchange_tm 57, low_cycle_tm 57, multistart_tm 57, exchange 54, low_cycle 56, multistart 55
+[  109.1s] dev-erdos-80a647eb-20277759-0004: optimum 60, candidate 59, exchange_tm 58, low_cycle_tm 60, multistart_tm 58, exchange 48, low_cycle 58, multistart 55
+[  113.9s] dev-erdos-80a647eb-20277759-0005: optimum 54, candidate 53, exchange_tm 53, low_cycle_tm 52, multistart_tm 54, exchange 48, low_cycle 52, multistart 51
+[  118.5s] dev-erdos-80a647eb-20277759-0006: optimum 57, candidate 56, exchange_tm 56, low_cycle_tm 57, multistart_tm 56, exchange 51, low_cycle 57, multistart 54
+[  123.4s] dev-erdos-4b389647-20285678-0000: optimum 71, candidate 71, exchange_tm 71, low_cycle_tm 70, multistart_tm 71, exchange 66, low_cycle 70, multistart 70
+[  128.1s] dev-erdos-4b389647-20285678-0001: optimum 71, candidate 70, exchange_tm 69, low_cycle_tm 71, multistart_tm 70, exchange 63, low_cycle 71, multistart 69
+[  133.5s] dev-erdos-4b389647-20285678-0002: optimum 70, candidate 68, exchange_tm 68, low_cycle_tm 69, multistart_tm 68, exchange 65, low_cycle 68, multistart 65
+[  138.5s] dev-erdos-4b389647-20285678-0003: optimum 73, candidate 73, exchange_tm 69, low_cycle_tm 72, multistart_tm 71, exchange 63, low_cycle 71, multistart 67
+[  148.5s] dev-erdos-4b389647-20285678-0004: optimum 69, candidate 68, exchange_tm 66, low_cycle_tm 68, multistart_tm 66, exchange 61, low_cycle 67, multistart 66
+[  154.4s] dev-erdos-4b389647-20285678-0005: optimum 74, candidate 74, exchange_tm 72, low_cycle_tm 73, multistart_tm 73, exchange 64, low_cycle 73, multistart 72
+[  162.9s] dev-erdos-4b389647-20285678-0006: optimum 76, candidate 74, exchange_tm 74, low_cycle_tm 76, multistart_tm 73, exchange 70, low_cycle 76, multistart 70
+[  164.6s] pilot: mean +0.967 vs multistart_tm, W/T/L [19, 9, 2], cpu ratio 0.9972, power INFEASIBLE n=None, DRAFT dry run SUPPORTED -> UNDERPOWERED
+[  178.0s] campaign frozen in 13 s
+[  263.1s] SELECT panel: {'exchange_tm': 1538, 'low_cycle_tm': 1535, 'multistart_tm': 1582} -> comparator multistart_tm (85 s)
+[  263.1s] stopped after SELECT: the pilot verdict is not READY_FOR_REVIEW, so the DRAFT has no chosen sample size and cannot pass the decision-record check
+[  263.3s] done

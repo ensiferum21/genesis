@@ -1,0 +1,146 @@
+{
+ "approximation_agreement": null,
+ "calibration": {
+  "record_sha256": "c7893f5bcfd2b002be5269a663d1caf9396ca9713978830f767ddb7b118992c6",
+  "rule": "e1-hard-v1",
+  "selected": [
+   {
+    "family": "planted_cluster",
+    "index": 5,
+    "params": {
+     "n": 20,
+     "p_in": 0.7,
+     "p_out": 0.3
+    }
+   },
+   {
+    "family": "erdos",
+    "index": 1,
+    "params": {
+     "n": 18,
+     "p": 0.5
+    }
+   },
+   {
+    "family": "erdos",
+    "index": 2,
+    "params": {
+     "n": 22,
+     "p": 0.35
+    }
+   },
+   {
+    "family": "erdos",
+    "index": 4,
+    "params": {
+     "n": 26,
+     "p": 0.3
+    }
+   }
+  ],
+  "study": "e1"
+ },
+ "comparator": "multistart_tm",
+ "cpu_ns_by_arm": {
+  "candidate": 20902753120,
+  "exchange": 5736572924,
+  "exchange_tm": 20938185754,
+  "low_cycle": 5725337953,
+  "low_cycle_tm": 20817313080,
+  "multistart": 6015512228,
+  "multistart_tm": 20962136543
+ },
+ "cpu_ratio_candidate_to_comparator": 0.9972,
+ "descriptors": {
+  "candidate": "beb4088bd1d313f8a518815d85f50fe4197fa235ef34d9380703b4327e8f5659",
+  "exchange": "50bb275e2da7dc6a301fb923986ef8f7d4dd8882033032d265134491e3d5df85",
+  "exchange_tm": "e22ee2d9a6b94d1a51c19ec5e03544a79522fc951a5703ffc4bdf07891a65156",
+  "low_cycle": "74c1e5be181d1fda309deb712afc812a15952d733393dc149049d83f510f30f2",
+  "low_cycle_tm": "7bd04f25cf7124b138e30428bdca68335fcdcc6e133e73c797eac77900adc036",
+  "multistart": "625a68d406b2e1986397bcdd87fbf85c4c2c66e90a8c9c27ca37117ee779d901",
+  "multistart_tm": "ebb64b763927d912a992be8ad2c6e2af9f1d47391ef34d9ca970dba95d01e25e"
+ },
+ "draft_plan_dry_run": {
+  "checks": {
+   "cost_within_bound": true,
+   "estimate_reaches_minimum_useful_effect": true,
+   "holm_rejects_no_superiority": true,
+   "interval_lower_above_zero": true,
+   "no_stratum_regression": true
+  },
+  "cost_ratio": 0.9971671102,
+  "decision": "SUPPORTED",
+  "estimate": 0.9508928571,
+  "interval": [
+   0.6919642857,
+   1.2142857143
+  ],
+  "p_value": 4.99975e-05
+ },
+ "failures": {
+  "candidate": 0,
+  "exchange": 0,
+  "exchange_tm": 0,
+  "low_cycle": 0,
+  "low_cycle_tm": 0,
+  "multistart": 0,
+  "multistart_tm": 0
+ },
+ "mean_difference": 0.9667,
+ "optimum_hits": {
+  "candidate": 20,
+  "exchange": 0,
+  "exchange_tm": 2,
+  "low_cycle": 3,
+  "low_cycle_tm": 6,
+  "multistart": 0,
+  "multistart_tm": 7
+ },
+ "pilot_seed": 20261921,
+ "plan_max_cost_ratio": 3.0,
+ "plan_minimum_useful_effect": 0.5,
+ "power_centred": {
+  "chosen": null,
+  "false_positive_rate_at_zero_effect": 0.0,
+  "power_at_minimum_useful_effect": null,
+  "status": "INFEASIBLE"
+ },
+ "profile": {
+  "cpu_seconds": 2,
+  "memory_mib": 2048,
+  "queries": 1000,
+  "wall_seconds": 10
+ },
+ "scored": 30,
+ "search_seconds": 0.5,
+ "status": "DEV re-pilot under the decided design; no sealed task; no claim",
+ "stratum_mean_differences": {
+  "erdos:4b389647": 0.8571,
+  "erdos:80a647eb": 0.5714,
+  "erdos:a1b8a28d": 2.0,
+  "planted_cluster:91e61c9b": 0.375
+ },
+ "stratum_tasks": {
+  "erdos:4b389647": 7,
+  "erdos:80a647eb": 7,
+  "erdos:a1b8a28d": 8,
+  "planted_cluster:91e61c9b": 8
+ },
+ "tasks": 30,
+ "totals": {
+  "candidate": 1738,
+  "exchange": 1522,
+  "exchange_tm": 1686,
+  "low_cycle": 1682,
+  "low_cycle_tm": 1694,
+  "multistart": 1613,
+  "multistart_tm": 1709
+ },
+ "unsupported_reference": 0,
+ "verdict": "UNDERPOWERED",
+ "wins_ties_losses": [
+  19,
+  9,
+  2
+ ]
+}

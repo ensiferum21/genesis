@@ -1,0 +1,143 @@
+{
+ "comparator": "multistart_tm",
+ "comparator_selection": {
+  "baselines": {
+   "exchange_tm": {
+    "descriptor_id": "e22ee2d9a6b94d1a51c19ec5e03544a79522fc951a5703ffc4bdf07891a65156",
+    "domain": "triangle_free_host_v1",
+    "implementation": {
+     "candidates.py": "36d95e2b1af741c1adc1b5e4f43ce9452ababef29c9eb1814d8a07ee048238b5",
+     "dsl.py": "b1576f320cf7e689250771c484f95f3aa16ab853059d01ffabc1802a2c730508",
+     "graphs.py": "e0e8e089a240a2fc3a422d29c6fe65a6031d06264eab29fb8a991ad60213261d",
+     "models.py": "2d10c569f5de3ee209ce07525972d199bba1168ae187ffc223880491fa701d05"
+    },
+    "kind": "dsl-time-matched-v1",
+    "parameters": {
+     "cpu_seconds": 0.5,
+     "program": {
+      "componentwise": false,
+      "exchange": true,
+      "rounds": 32,
+      "schema_version": "graph-priority-v1",
+      "weights": [
+       0,
+       0,
+       0,
+       0
+      ]
+     }
+    },
+    "resource_profile": {
+     "cpu_seconds": 2,
+     "memory_mib": 2048,
+     "queries": 1000,
+     "wall_seconds": 10
+    },
+    "schema": "genesis-candidate-descriptor-v1"
+   },
+   "low_cycle_tm": {
+    "descriptor_id": "7bd04f25cf7124b138e30428bdca68335fcdcc6e133e73c797eac77900adc036",
+    "domain": "triangle_free_host_v1",
+    "implementation": {
+     "candidates.py": "36d95e2b1af741c1adc1b5e4f43ce9452ababef29c9eb1814d8a07ee048238b5",
+     "dsl.py": "b1576f320cf7e689250771c484f95f3aa16ab853059d01ffabc1802a2c730508",
+     "graphs.py": "e0e8e089a240a2fc3a422d29c6fe65a6031d06264eab29fb8a991ad60213261d",
+     "models.py": "2d10c569f5de3ee209ce07525972d199bba1168ae187ffc223880491fa701d05"
+    },
+    "kind": "dsl-time-matched-v1",
+    "parameters": {
+     "cpu_seconds": 0.5,
+     "program": {
+      "componentwise": false,
+      "exchange": false,
+      "rounds": 32,
+      "schema_version": "graph-priority-v1",
+      "weights": [
+       0,
+       0,
+       0,
+       1
+      ]
+     }
+    },
+    "resource_profile": {
+     "cpu_seconds": 2,
+     "memory_mib": 2048,
+     "queries": 1000,
+     "wall_seconds": 10
+    },
+    "schema": "genesis-candidate-descriptor-v1"
+   },
+   "multistart_tm": {
+    "descriptor_id": "ebb64b763927d912a992be8ad2c6e2af9f1d47391ef34d9ca970dba95d01e25e",
+    "domain": "triangle_free_host_v1",
+    "implementation": {
+     "candidates.py": "36d95e2b1af741c1adc1b5e4f43ce9452ababef29c9eb1814d8a07ee048238b5",
+     "dsl.py": "b1576f320cf7e689250771c484f95f3aa16ab853059d01ffabc1802a2c730508",
+     "graphs.py": "e0e8e089a240a2fc3a422d29c6fe65a6031d06264eab29fb8a991ad60213261d",
+     "models.py": "2d10c569f5de3ee209ce07525972d199bba1168ae187ffc223880491fa701d05"
+    },
+    "kind": "dsl-time-matched-v1",
+    "parameters": {
+     "cpu_seconds": 0.5,
+     "program": {
+      "componentwise": false,
+      "exchange": false,
+      "rounds": 32,
+      "schema_version": "graph-priority-v1",
+      "weights": [
+       0,
+       0,
+       0,
+       0
+      ]
+     }
+    },
+    "resource_profile": {
+     "cpu_seconds": 2,
+     "memory_mib": 2048,
+     "queries": 1000,
+     "wall_seconds": 10
+    },
+    "schema": "genesis-candidate-descriptor-v1"
+   }
+  },
+  "calibration": {
+   "record_sha256": "c7893f5bcfd2b002be5269a663d1caf9396ca9713978830f767ddb7b118992c6",
+   "rule": "e1-hard-v1",
+   "study": "e1"
+  },
+  "campaign_id": "a248b84969f074fde5df31d88a507eed0f2290bf87e23b6a13a7696ef65c45f0",
+  "domain": "triangle_free_host_v1",
+  "exposure_registry_root": "e0c2c8f0b76ed50809f1198c6f867b6cdee07ca4afafbaebbe7675569261895a",
+  "operator_id": "BUILDER_REHEARSAL_NOT_INDEPENDENT",
+  "panel_commitment": "cf2b736a050eadddfcf16ff4da8ce4ab48c48d53dba64ec1f73592a5c4ae6211",
+  "resource_profile": {
+   "cpu_seconds": 2,
+   "memory_mib": 2048,
+   "queries": 1000,
+   "wall_seconds": 10
+  },
+  "rule": "strongest total on the custodian SELECT panel (ties: greatest name)",
+  "schema": "genesis-comparator-selection-v1",
+  "selected": "multistart_tm",
+  "selected_at": "2026-10-13T15:21:13.798528+00:00",
+  "source_hash": "ed7da5b286eae9b8da280cc93559f658bc9c0f99bf7132cfe6e77b2ebf569945",
+  "task_count": 30,
+  "totals": {
+   "exchange_tm": 1538,
+   "low_cycle_tm": 1535,
+   "multistart_tm": 1582
+  }
+ },
+ "decision_record_problems": [
+  "the power analysis found no sample size reaching the power target"
+ ],
+ "label": "REHEARSAL_SAME_OPERATOR_FIXTURE_KEYS: not independent, licenses nothing",
+ "rehearsal": "stopped after SELECT: the pilot verdict is not READY_FOR_REVIEW, so the DRAFT has no chosen sample size and cannot pass the decision-record check",
+ "select_totals": {
+  "exchange_tm": 1538,
+  "low_cycle_tm": 1535,
+  "multistart_tm": 1582
+ }
+}

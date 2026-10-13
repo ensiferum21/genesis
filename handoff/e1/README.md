@@ -1,71 +1,81 @@
-# E1 handoff package: represent-and-repair (cross_2) on triangle-free hosts (GV3 path)
+# E1 handoff package v2: represent-and-repair (cross_2) on triangle-free hosts (GV3 path)
 
-This package was prepared by the builder on 13 October 2026 (B20_R11). It is **not** registered with any custodian. Nothing here is an evaluation result. The rehearsal in `evidence/e1_readiness_b20r11/` was run by the same operator with fixture keys, so it licenses nothing.
+The builder regenerated this package on 13 October 2026 (B20_R12, redone on the canonical line). It is **not** registered with any custodian, and nothing here is an evaluation result.
 
-## What is being tested
+**Status: the decided design is UNDERPOWERED. No sealed E1 run should be registered under it.**
 
-The B19 E1 claim is in `decision_record_DRAFT.json`, field `exact_claim`. It says that a frozen solver beats the strongest frozen fixed baseline on a CONFIRM panel held by a custodian, by at least the minimum useful effect of 0.5 edges per task.
+## The claim
 
-The frozen solver is B18's represent-and-repair solver: the cut representation `cross_2`, greedy triangle-free repair, and 0.5 CPU seconds inside the solver.
+E1 claims that a frozen solver beats the strongest time-matched fixed baseline on a CONFIRM panel held by a custodian, by at least the minimum useful effect of 0.5 edges per task. The exact claim is in `decision_record_DRAFT_v2.json`, field `exact_claim`.
+
+The frozen solver is B18's represent-and-repair solver:
+- the cut representation `cross_2`;
+- greedy triangle-free repair;
+- 0.5 CPU seconds inside the solver.
+
+## Decisions already made (the user, 13 Oct 2026), still needing reviewers
+
+| Decision | What | Who must still sign off |
+|---|---|---|
+| Cost (B20R11-OPEN-1) | Conventional baselines get the candidate's search budget. `dsl-time-matched-v1` restarts the fixed program until 0.5 CPU s are spent. The plan's cost rule (max ratio 3.0) is unchanged. | reviewer |
+| Comparator (B20R11-OPEN-2) | The custodian selects the strongest time-matched baseline on its own private SELECT panel (`custodian.select_comparator`). `register` refuses any other baseline. | reviewer |
+| Power model (B19-OPEN-4) | Centred-headroom model, at least 10 tasks per stratum. | independent statistician |
+| Host family | E1's hosts come from a study calibration made under a separately versioned rule, `e1-hard-v1`: fixed-baseline ceiling rate at most 0.25, with the other limits unchanged and no candidate input. The rule selected four settings: planted_cluster n20, erdos n18 p0.5, erdos n22 p0.35 and erdos n26 p0.3 (`evidence/dev_calibration_e1_b20r12/`). | reviewer (the rule) |
+
+## What the B20_R12 pilot found (DEV, 30 fresh hosts, `evidence/e1_redo_b20r12/`)
+
+| Quantity | Value |
+|---|---|
+| Comparator (strongest time-matched baseline on the pilot) | `multistart_tm` |
+| Mean difference per host | +0.97 (wins / ties / losses 19 / 9 / 2) |
+| CPU ratio, candidate to comparator | 1.00 (the cost rule now holds) |
+| DRAFT plan dry run on the pilot | SUPPORTED (estimate 0.95, 90% interval [0.69, 1.21]) |
+| Centred power model | INFEASIBLE |
+| **Verdict (rule fixed before running)** | **UNDERPOWERED** |
+
+Why INFEASIBLE: the power model gives each host with headroom whole extra edges, enough to make each stratum's expected gain equal the design effect of 1.0 edge. Two strata cannot carry that, so no panel size reaches the power target:
+- planted_cluster: the candidate already reaches the certified optimum on 7 of 8 hosts, and the remaining host has 1 edge of headroom;
+- erdos n22 p0.35: 5 of 7 hosts have 1 edge of headroom each, at most 0.71 per host.
+
+The dry-run SUPPORTED on the pilot is not evidence: it is DEV material, and it was looked at only after the verdict rule was fixed.
+
+The custodian's SELECT rehearsal also chose `multistart_tm` (totals over 30 private hosts: exchange_tm 1538, low_cycle_tm 1535, multistart_tm 1582). Because no panel size was chosen, the amended DRAFT cannot pass the decision-record check, and the rehearsal stopped there, as its rule said it would.
+
+## What a reviewer could decide (design grounds only, before any panel exists)
+
+Nothing here may be chosen because it produces a stronger label.
+
+1. **Power model.** Whether a single design effect per stratum is the right model when strata differ in headroom. Alternatives are a design effect set per stratum from the design rather than from this pilot, or an estimand over strata with headroom. The statistician decides.
+2. **Calibration rule.** Whether `e1-hard-v1` should also bound a candidate-independent headroom, so that strata like planted_cluster and n22 p0.35 are not selected. In those strata the fixed baselines miss the optimum by little, and the optimum is easy for a stronger solver to reach. Any change is a new rule version (`e1-hard-v2`), registered before a new calibration run.
+3. **Retire E1 at this design.** The decided design cannot be powered on the selected family. That is a fair result, and it stays recorded.
 
 ## Contents
 
 | File | What |
 |---|---|
-| `candidate_descriptor.json` | The candidate, as a `represent-and-repair-v1` descriptor. Its implementation digests are bound into the descriptor identity. |
-| `campaign_export.zip` | A real frozen triangle-free campaign export, with the descriptor frozen in it (write-once). It is bound to the code identity of the commit that made it (see `readiness.json`). |
-| `decision_record_DRAFT.json` | The B19 DRAFT decision record. It is unchanged and not frozen. |
-| `b19_*.json` | The B19 pilot rows, its summary and both power analyses: the B16 model (INFEASIBLE) and the centred model (n = 25). |
-| `exposure_hosts_to_exclude.json` | Every host the builder generated for E1 (B19 pilot, B20_R11 pilot and rehearsal). The custodian must exclude them. |
+| `candidate_descriptor.json` | The candidate as a `represent-and-repair-v1` descriptor. Its identity binds the reviewed source files, so it changed with this commit's `candidates.py`. |
+| `time_matched_baselines.json` | The three `dsl-time-matched-v1` baselines (0.5 CPU s of restarts each). |
+| `campaign_export.zip` | A real frozen triangle-free campaign export, with the candidate descriptor frozen in it. |
+| `decision_record_DRAFT_v2.json` | The amended DRAFT. It names the E1 calibration, the time-matched comparator rule and the B20_R12 power analysis (INFEASIBLE). It is not frozen. |
+| `decision_record_DRAFT.json` | The B19 DRAFT, unchanged. |
+| `pilot_summary_b20r12.json`, `power_analysis_centred_b20r12.json` | The B20_R12 pilot and its power analysis. |
+| `b19_*.json` | The B19 pilot, its summary and both B19 power analyses. |
+| `exposure_hosts_to_exclude.json` | Every host the builder generated for E1, by seed or as tasks: the B19 and B20_R11 pilots, the B20_R11 rehearsal, the lost B20_R12 run (its SELECT hosts cannot be named), the E1 calibration, the B20_R12 pilot and its SELECT rehearsal. |
+| `exposure_hosts_all.json` | The same hosts plus every triangle-free DEV host in the B20_R13, RX3, RX3b, RX4 and RX5 evidence, as tasks: 771 in all. A custodian can list this file as a `json` source in its exposure manifest. |
 
-## Decisions a reviewer must make before anything is frozen
+## Steps if a reviewer accepts a powered design
 
-These are design choices. Each must be decided on design grounds, recorded, and fixed before any sealed panel exists. None may be set to whatever value produces a stronger label.
-
-**1. Power model (B19-OPEN-4).**
-- The B16 model reports INFEASIBLE.
-- The centred-headroom correction gives 25 tasks: power 0.83 at the design effect and 0.23 at the minimum useful effect.
-
-**2. Cost rule (new, B20R11-OPEN-1).** Under the custodian's equal sandbox metering (B20_R5), the candidate uses about 3.4 times the strongest baseline's CPU. Each arm costs about 0.21 s of interpreter start-up; the candidate adds its 0.5 s search. The DRAFT plan's `cost.max_ratio` is 3.0, so under the DRAFT every outcome is NOT_SUPPORTED, whatever the effect:
-
-| Run | Opponent | Effect per task | CPU ratio | Result under the DRAFT |
-|---|---|---|---|---|
-| DEV pilot (30 hosts) | `low_cycle` | +1.33 | 3.38 | cost check fails |
-| Rehearsal | `multistart` | +3.04 | 3.43 | NOT_SUPPORTED |
-
-Options:
-- time-matched baselines that receive the same CPU budget (for example restarts until the budget is spent);
-- a smaller candidate budget;
-- a different cost contract.
-
-The choice, and the reason for it, belongs in the frozen record.
-
-**3. Comparator (new, B20R11-OPEN-2).**
-- The DRAFT names "the strongest fixed DSL baseline on the SELECT panel".
-- The custodian currently requires the campaign's own strongest conventional baseline, which is recorded by the campaign's DEV panels. For this export that is `multistart`; the 30-host pilot's strongest is `low_cycle`.
-- The reviewer fixes the rule, and the request and the custodian check must agree with it.
-
-## Steps once the decisions are made
-
-1. **Regenerate the package at the accepted commit.** The campaign export and the custodian check the evaluator's code identity, so the package must be rebuilt with the reviewed code:
-
-       export GENESIS_TOOLCHAIN=/srv/toolchain PYTHONPATH=src
-       python3 scripts/b20r11_e1_readiness.py OUT_DIR
-
-   If the reviewer changes the candidate budget or the comparator rule, the script and this README change first, in a reviewed commit.
-2. **Reviewer:** amend the DRAFT with the decisions above, then freeze it with `genesis.decision_record.freeze(record)`. Publish the frozen record and its hash.
-3. **Research operator:** build the v4 request with the frozen plan:
-   - `cli.descriptor_request_bundle(campaign, task_count, analysis=plan_with_decision_record_hash)`;
-   - the campaign is restored from the export with `store.rebuild_from_export`;
-   - the request binds the export by hash.
+1. **Change the design first.** Change the plan and/or the rule in a reviewed commit, re-run the pilot on fresh DEV hosts (`scripts/b20r12_e1_redo.py` is the template), and regenerate this package at that commit.
+2. **Reviewer:** freeze the amended record (`decision_record.freeze`), then publish it and its hash.
+3. **Research operator:** record the custodian's signed comparator selection in the campaign (`cli.record_comparator_selection`). Then build the v4 request (`cli.descriptor_request_bundle`) with the frozen plan.
 4. **Independent custodian, on its own machine and with its own keys:**
-   1. Build an exposure manifest covering every DEV panel named in the B16–B20 evidence, plus `exposure_hosts_to_exclude.json`.
-   2. Draw a CONFIRM panel from the adopted triangle-free calibration with a private seed.
-   3. Run `custodian.register(...)` with the frozen decision record.
-   4. Run `custodian.evaluate(...)`, which uses the sandbox. Both arms run under one resource profile; the judge re-checks every witness.
-   5. Publish the signed registration log.
-5. **Judge and auditor:** run `judge.recompute` from the custodian's raw evidence, then `custodian.release_preflight` with the externally pinned trust root and control declarations.
+   1. Write an exposure manifest that lists every DEV panel named in the B16–B20 evidence and `exposure_hosts_all.json`.
+   2. Run `select_comparator(..., study='e1')`.
+   3. Draw the CONFIRM pool from the E1 study calibration with a private seed.
+   4. Run `register`, then `evaluate`.
+   5. Publish the registration log.
+5. **Judge and auditor:** run `judge.recompute`, then `custodian.release_preflight` against the externally pinned trust root.
 
 ## What a SUPPORTED outcome would and would not mean
 
-It would support a scoped better-solver statement for triangle-free hosts from the calibrated family, on that panel only. Per the DRAFT's `allowed_conclusion`, it would not establish a better improver, transfer, or novelty.
+It would support a scoped better-solver statement for triangle-free hosts from the E1 calibrated settings, on that panel only, against time-matched fixed baselines. It would not establish a better improver, transfer, novelty, or anything about the domain-adopted family.
