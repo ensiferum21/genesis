@@ -117,7 +117,7 @@
   ],
   "continuation_b20_r1": {
     "started": "2026-10-12",
-    "branch": "continuation-b20-repairs",
+    "branch": "continuation-b20-rx",
     "parent": {
       "checkpoint": "GENESIS_COMPLETION_CHECKPOINT_B20.zip",
       "sha256": "44bbbbeb1b8781203af8b3489b7c1a396d7694806232193dce9e7fee46f12091",
@@ -182,7 +182,7 @@
     "adopted_from_crpd_v3_status": {
       "CRPD-1": "DONE",
       "CRPD-2a": "DONE",
-      "CRPD-2b": "DECISION_PENDING",
+      "CRPD-2b": "DONE (pin revision + PAIR_COUNT_LEAN; pending review)",
       "CRPD-3": "DONE (NOT_DETECTED)",
       "CRPD-4": "NOT_STARTED (needs a family with headroom)"
     },
@@ -249,6 +249,81 @@
           "96fdf26"
         ],
         "result": "E1 package; effect replicates; DRAFT cost rule fails (3.38 > 3.0)"
+      },
+      "CRPD-2b": {
+        "commits": [
+          "923577c",
+          "a87c861"
+        ],
+        "result": "workspace pin revision; C4 pair-count bound Lean-checked"
+      },
+      "W22_W23_H06": {
+        "commits": [
+          "cbbcb63",
+          "e1acaf3",
+          "63f80df",
+          "0c42b98",
+          "5c87f6b"
+        ],
+        "result": "derived primitives (no capability gain on DEV); fault-tolerant routes with quarantine; search failures kept"
+      },
+      "B20_R13": {
+        "commits": [
+          "511e6b3",
+          "bb18742"
+        ],
+        "result": "NO_HEADROOM (selection) in graph construction"
+      },
+      "B20_R14": {
+        "commits": [
+          "b1603a6",
+          "59f2277"
+        ],
+        "result": "capability headroom to the optimum on harder families"
+      },
+      "B20_RX3": {
+        "commits": [
+          "83640c8",
+          "dd649ad",
+          "3447b18",
+          "fad4aa6"
+        ],
+        "result": "LP/SAT components: deployable headroom +0.63..+1.38, replicated"
+      },
+      "B20_RX4": {
+        "commits": [
+          "d6d1d24",
+          "ea8322e"
+        ],
+        "result": "harder E1 family probe (candidate-selected; not usable)"
+      },
+      "B20_RX5": {
+        "commits": [
+          "ff3af29",
+          "36ae78e"
+        ],
+        "result": "NO_PROPOSAL_HEADROOM; GV4 reduces to component invention"
+      },
+      "B20_R12": {
+        "commits": [
+          "7b598c0",
+          "02de690",
+          "0d7caaf",
+          "56c3c10"
+        ],
+        "result": "E1 under the decided design: +0.97/host, CPU ratio 1.00, power INFEASIBLE -> UNDERPOWERED"
+      },
+      "B20_R15": {
+        "commits": [
+          "73493b4"
+        ],
+        "result": "replay contracts for causal, internal-replication and priority levels"
+      },
+      "B20_R16": {
+        "commits": [
+          "1095e42"
+        ],
+        "result": "H08 s20.6 active version, rollback, version revocation, resume gate"
       }
     },
     "open_after_b20_r5": [
@@ -302,6 +377,18 @@
       "B20R8-OPEN-1",
       "B14-OPEN-4 (rest)",
       "B20R-OPEN-3",
+      "R-04"
+    ],
+    "open_after_b20_r16": [
+      "B20R12-OPEN-1",
+      "B19-OPEN-4",
+      "B20R9-OPEN-1 (GV4: component invention)",
+      "B20R3-OPEN-2",
+      "B20R5-OPEN-2",
+      "B20R8-OPEN-1",
+      "H08 retention/negative transfer",
+      "B14-OPEN-4 (pending review)",
+      "B20R-OPEN-3 (pending review)",
       "R-04"
     ]
   }
