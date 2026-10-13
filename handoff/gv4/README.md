@@ -14,6 +14,14 @@
 | B20_RX3 | making LP- and SAT-guided construction methods available | deployable capability headroom of +0.75 to +1.25 edges per host at matched budgets |
 | B20_RX3b | fresh-seed replication of RX3 | **replicated**: +0.88, +0.63 and +1.38 edges per host, every 90% interval above 0. Random proposals over the enlarged space do *not* reliably find the good methods (−0.27 on C2); successive halving does |
 
+## Update after B20_RX5 (proposal pilot)
+
+Over a typed pipeline grammar of these components, **NO_PROPOSAL_HEADROOM** in all three settings. 18–28 of 25–40 pipelines are within 0.5 edges of the best. Fixed enumeration and random sampling find one as reliably as successive halving does.
+
+The capability gain lives in the *components*, not in how they are composed. The study below is therefore only meaningful if the improvers' research *produces components*: new construction orders, relaxations, representations or derived primitives, as in handoff s15.3 and W22. A learned composer of builder-written components would have nothing to win.
+
+The design below is kept for the component-level version. Its step 1 (proposal headroom over compositions) is answered: there is none.
+
 ## The question
 
 Does a *learned* research process produce better successor solvers than a *fixed* research process, when both may build methods from the same components and spend the same research budget? Each successor solver gets the same CPU per host, and the comparison is on sealed fresh hosts.
