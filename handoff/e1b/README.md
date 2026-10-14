@@ -1,66 +1,70 @@
-# E1b handoff package: an LP-guided construction pipeline (GV3 path), DRAFT
+# E1b handoff package v2: an LP-guided construction pipeline on triangle-free hosts (GV3 path)
 
-The builder prepared this package on 14 October 2026 (B20_R23) with `scripts/b20r23_e1b_package.py`. It is **not** registered with any custodian, and nothing here is an evaluation result.
+The builder regenerated this package on 14 October 2026 (B20_R24) with `scripts/b20r24_packages.py`. It is **not** registered with any custodian, and nothing here is an evaluation result.
 
-**Status: READY_FOR_REVIEW on DEV.** The host family needs a decision before the custodian's SELECT step can run.
+**Status: READY_FOR_REVIEW on the `e1-hard-v2` family, triangle-free only.** A same-operator rehearsal of the whole custody path came out SUPPORTED, and the judge agrees.
 
 ## The claim
 
-E1b claims that a frozen solver beats the strongest time-matched fixed DSL baseline on a CONFIRM panel held by a custodian, by at least the minimum useful effect of 0.5 edges per host. The exact claim, per domain, is in `decision_record_DRAFT_<domain>.json`, field `exact_claim`.
+A frozen solver beats the strongest time-matched fixed DSL baseline on a CONFIRM panel held by a custodian, by at least the minimum useful effect of 0.5 edges per host. The exact claim is in `decision_record_DRAFT.json`.
 
 The frozen solver is a `construct-pipeline-v1` descriptor:
-- `{init lp_greedy, frac 1.0, finish none, cpu_seconds 2.0, seed 0}`;
-- that is, LP-ordered greedy followed by LP-perturbed restarts, with 2.0 CPU s of search;
-- the profile is 4 CPU s, 2048 MiB, 20 s wall and 1000 queries, the same for every arm;
-- the custodian runs it in the OCI sandbox through the trusted runner.
+- `{init lp_greedy, frac 1.0, finish none, cpu_seconds 2.0, seed 0}`, that is, LP-ordered greedy followed by LP-perturbed restarts;
+- the profile is 4 CPU s, 2048 MiB, 20 s wall and 1000 queries, the same for every arm.
 
-**It is a builder-written method** (`discovery/construct.py`, B20_RX3). A supported E1b would therefore be a scoped better-solver statement (GV3). It would say nothing about research ability (GV4).
+**It is a builder-written method** (`discovery/construct.py`, B20_RX3). A supported E1b is a scoped better-solver statement (GV3). It is not evidence of research ability (GV4).
 
-## Evidence (DEV, builder-run, rules fixed before each run)
+## Decisions (the user), still needing reviewers
 
-| Pilot | Triangle-free (C1 erdos n30 p0.3 + C2 erdos n40 p0.2) | C4 (C3 erdos n30 p0.2) |
-|---|---|---|
-| Readiness, `evidence/e1b_readiness_b20r23/`: candidate − strongest time-matched baseline (`low_cycle_tm`) | +1.79 per host, 18 / 6 / 0, CPU ratio 1.02; candidate at the certified optimum on 22/24; centred power: 12 per stratum (0.88). **READY_FOR_REVIEW** | +1.00, 4 / 5 / 0, ratio 0.99, 9/12 certified (at the threshold); power: 20 (0.92). **READY_FOR_REVIEW** |
-| Causal readiness, `evidence/e1b_causal_readiness_b20r23/`: candidate − ablation (`random_greedy`) | +1.42, 15 / 4 / 0, power: 10 per stratum (0.99). **READY_FOR_REVIEW** | 7/10 certified. **UNSETTLED_REFERENCE** |
-| Causal readiness: candidate − placebo (`lp_shuffled_greedy`) | +2.53, 19 / 0 / 0, power: 10 per stratum (0.85). **READY_FOR_REVIEW** | **UNSETTLED_REFERENCE** |
+| Decision | What |
+|---|---|
+| Family (14 Oct, B20R23-OPEN-1) | Study `e1b` under the versioned rule `e1-hard-v2`, the same calibration as E1's study `e1-v2`. It selected planted_cluster n30 p_in 0.6 p_out 0.2, erdos n26 p0.35 and erdos n30 p0.3. On C4 no setting is eligible: the small settings are at the time-matched ceiling, and erdos n30 p0.2 fails the certification limit. **E1b on C4 is therefore not pursued at this rule.** |
+| Cost, comparator, power | As for E1 (time-matched; the custodian's SELECT step; the centred model). |
 
-The basis is the same as E1's: B20_RX3 and RX3b (capability headroom, replicated), and B20_R14 (room to the optimum on these settings).
+## Evidence (DEV, builder-run, every rule fixed before its run)
 
-**Descriptor identity.** The candidate's identity binds the reviewed source files. It changed once during B20_R23, when `candidates.py` gained the placebo component. The readiness pilot ran under the earlier identity (`ac8f1fcb…` triangle-free, `74861eea…` C4). The causal pilot and this package use the current identity (`f5a3d7ff…`, `64a9890b…`), and the `lp_greedy` code path did not change between them.
+**B20_R23, on builder-chosen settings** (`evidence/e1b_readiness_b20r23/`, `evidence/e1b_causal_readiness_b20r23/`).
+- Readiness: +1.79 per host on triangle-free hosts.
+- Causal readiness: ablation +1.42 and placebo +2.53, both ready for review.
 
-## Decisions needed (before any panel exists; on design grounds only)
+**Re-pilot on the `e1b` calibration** (`evidence/repilots_b20r24/`): 30 fresh hosts, all certified.
 
-1. **The host family (new: B20R23-OPEN-1).** The custodian's SELECT step draws from a study calibration (`calibration.load(domain, study='e1b')`), and none exists. `e1-hard-v1` applies to E1 only, by the user's decision of 13 Oct 2026. The options are:
-   - extend `e1-hard-v1` to E1b, or register a new versioned rule. Either way the rule must not read the candidate. A calibration run then selects the settings, and the pilot is repeated on them if they differ from C1–C3;
-   - adopt C1/C2 (and C3) as builder-chosen settings, recorded as such, with a reviewer's approval;
-   - do not proceed with E1b.
-2. **C4.** Keep C4 only with a certification budget fixed in advance (120 s certified 9/12 and 7/10). Otherwise run E1b on triangle-free hosts only.
-3. **Reviewer and statistician sign-off.** The same decisions as for E1: time-matched cost, the SELECT comparator, the centred power model (B19-OPEN-4), and the Holm family (family_size 3, family_id per domain).
+| Quantity | Value |
+|---|---|
+| Comparator | `multistart_tm` |
+| Mean difference per host | **+2.63** (wins / ties / losses 29 / 1 / 0) |
+| CPU ratio | 1.02 |
+| Candidate at the optimum | 25 / 30 |
+| DRAFT plan dry run | SUPPORTED, estimate 2.63 [2.27, 3.00] |
+| Centred power | **10 per stratum, 30 in total (power 0.97)** |
+| Verdict | **READY_FOR_REVIEW** |
+
+**Rehearsals.**
+- **First rehearsal: INVALID.** 2 of 30 hosts were unsupported, from the evaluator defect B20R24-OPEN-1, since repaired.
+- **After the repair** (`evidence/rehearsal_rerun_b20r24/`): the custodian's SELECT chose `multistart_tm`. On 30 CONFIRM hosts, 29 were certified and 1 unsupported, within the 5% limit. Wins / losses / ties were 29 / 0 / 0. The estimate was **3.55** [3.03, 4.05] at a cost ratio of 1.019. Outcome **SUPPORTED**; `judge.recompute` agrees.
+
+The rehearsals license nothing. One operator played every role, with fixture keys.
+
+**The causal follow-ups were measured on the B20_R23 settings, not on this family.** Before an ablation or placebo request, re-pilot them on the `e1b` calibration (the template is `scripts/b20r23_e1b_causal_readiness.py`).
 
 ## Contents
 
 | File | What |
 |---|---|
-| `candidate_descriptor_<domain>.json` | The frozen candidate. |
-| `time_matched_baselines_<domain>.json` | The three `dsl-time-matched-v1` baselines (2.0 CPU s of restarts). |
-| `interventions_<domain>.json` | The registered ablation and placebo descriptors, checked with `intervention_problems`. |
-| `campaign_export_<domain>.zip` | A real frozen DEV campaign (1 generation) with the candidate descriptor frozen in it. |
-| `decision_record_DRAFT_<domain>.json` | The DRAFT: the B19 plan core with a per-domain family_id, and the readiness pilot's centred power analysis. A frozen copy has no structural problems (`package_index.json`). It still names an undecided family. |
-| `power_analysis_centred_<domain>.json` | From the readiness pilot. |
-| `exposure_hosts_all.json` | 1,084 hosts, as tasks: every graph host named in `evidence/` and `handoff/` (both E1b pilots included) plus the regenerated E1 exposure set. A custodian lists it as a `json` source in its exposure manifest. |
-| `package_index.json` | Descriptor ids, the problems a frozen copy would have, the SELECT step's state (BLOCKED: no study calibration), and the pilot summaries' hashes. |
+| `candidate_descriptor.json`, `time_matched_baselines.json` | The frozen candidate and its three baselines (2.0 CPU s each). |
+| `interventions.json` | The registered ablation (`random_greedy`) and placebo (`lp_shuffled_greedy`), checked with `intervention_problems`. |
+| `campaign_export.zip` | A fresh frozen DEV campaign with the candidate frozen in it. |
+| `decision_record_DRAFT.json` | Names the `e1b` calibration and the re-pilot's power analysis. A frozen copy has no structural problems. |
+| `power_analysis_centred_b20r24.json`, `pilot_summary_b20r24.json`, `rehearsal_summary_b20r24.json` | The re-pilot and both rehearsals. |
+| `exposure_hosts_all.json` | Every host the builder named or generated (1,544). |
+| `package_index.json` | Identities, the calibration and the outcomes. |
 
-## Steps once the family is decided
+The B20_R23 version of this package (builder-chosen settings, both domains) is in the git history at `e7fad0e`.
 
-1. **Builder.** Make the calibration under the decided rule, in a reviewed commit, and adopt it as study `e1b` in `configs/dev_calibration.json`. If its settings differ from C1–C3, repeat the readiness pilot on fresh hosts (the template is `scripts/b20r23_e1b_readiness.py`). Then regenerate this package.
-2. **Reviewer.** Freeze the record (`decision_record.freeze`), then publish it and its hash.
-3. **Independent custodian, on its own machine and with its own keys:**
-   1. Run `select_comparator(..., study='e1b')`.
-   2. The research operator records the signed selection in the campaign (`cli.record_comparator_selection`) and builds the v4 request (`cli.descriptor_request_bundle`).
-   3. The custodian runs `register`, then `evaluate`, and publishes the registration log.
-4. **Judge.** Run `judge.recompute`.
-5. **Causal follow-ups, if E1b is SUPPORTED.** `cli.followup_request(campaign, 'ablation' | 'placebo', ...)` with the descriptors in `interventions_<domain>.json`. The custodian re-checks the intervention at registration, and the kernel replays it before ABLATION_SUPPORTED or PLACEBO_CONTROLLED.
+## Steps for an independent run
+
+The steps are E1's (`handoff/e1/README.md`), with `study='e1b'` and this package's files. The causal follow-ups, if E1b is SUPPORTED, use `cli.followup_request(campaign, 'ablation' | 'placebo', ...)` with the descriptors in `interventions.json`.
 
 ## What a SUPPORTED outcome would and would not mean
 
-It would support a scoped better-solver statement for the decided family, on that panel only, against time-matched fixed DSL baselines. It would not establish a better improver, research ability, transfer, novelty, or anything about other families. The placebo used here falls below random order on DEV, so PLACEBO_CONTROLLED would show that this placebo does not reproduce the effect, not that every cost-matched procedure falls short.
+It would support a scoped better-solver statement for triangle-free hosts from the `e1b` calibrated settings, on that panel only, against time-matched fixed DSL baselines. It would not establish a better improver, research ability, transfer, novelty, or anything about other families.

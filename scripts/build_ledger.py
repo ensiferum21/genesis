@@ -499,10 +499,9 @@ GATES = {f'GV{i}': (N, t, [], [], [], b, 'NOT_TESTED' if i >= 2 else 'N/A', w) f
     (2, 'real formal discovery loop', ['independent replay of the B17 theory package',
                                        'conjectures and proofs beyond builder templates and rediscovery'], 'W08'),
     (3, 'useful verified discovery on fresh tasks', ['independent custodian', 'fresh panels',
-                                                   'a powered, reviewed E1 design (B20R12-OPEN-1: the decided '
-                                                   'design is UNDERPOWERED on the e1-hard-v1 family) or E1b '
-                                                   '(B20_R23: READY_FOR_REVIEW on DEV; its host family is '
-                                                   'undecided, B20R23-OPEN-1)'], 'W13'),
+                                                   'reviewer and statistician sign-off of e1-hard-v2 and the E1/E1b '
+                                                   'DRAFTs (B20_R24: both READY_FOR_REVIEW on DEV; same-operator '
+                                                   'rehearsals SUPPORTED, judge agrees)'], 'W13'),
     (4, 'better improver', ['independent search runs', 'sealed downstream evaluation'], 'W21'),
     (5, 'three compounding generations', ['fresh panels per transition'], 'W21'),
     (6, 'meaningful transfer to a structurally different domain', ['different formal domain'], 'W24'),
@@ -519,7 +518,7 @@ WORKSTREAMS = {
              'deployment/reproduce.py'],
             [G + 'test_deployment.py', G + 'test_crash_consistency.py', G + 'test_backup_restore.py',
              'tests_sandbox/test_launcher.py', G + 'test_reproduce.py']),
-    'W05': ('Domain contracts and calibration (B20_R12: separately versioned study rules)', B,
+    'W05': ('Domain contracts and calibration (B20_R12/R24: separately versioned study rules e1-hard-v1/v2)', B,
             ['src/genesis/domains.py', 'src/genesis/calibration.py', 'configs/dev_calibration.json'],
             [G + 'test_domain_adapters.py', G + 'test_calibration.py', G + 'test_calibration_rules.py']),
     'W06': ('Independent custody and preregistration', B,

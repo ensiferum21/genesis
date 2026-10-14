@@ -1,0 +1,231 @@
+{
+ "approximation_agreement": 1.0,
+ "calibration": {
+  "record_sha256": "bc26782a0c5916e9e1246e5351f617a3006ffece99451c57ead5ee39b41ee633",
+  "rule": "e1-hard-v2",
+  "selected": [
+   {
+    "family": "planted_cluster",
+    "index": 18,
+    "params": {
+     "n": 30,
+     "p_in": 0.6,
+     "p_out": 0.2
+    }
+   },
+   {
+    "family": "erdos",
+    "index": 7,
+    "params": {
+     "n": 26,
+     "p": 0.35
+    }
+   },
+   {
+    "family": "erdos",
+    "index": 9,
+    "params": {
+     "n": 30,
+     "p": 0.3
+    }
+   }
+  ]
+ },
+ "certified_by_stratum": {
+  "erdos:70960071": [
+   10,
+   10
+  ],
+  "erdos:b73f6828": [
+   10,
+   10
+  ],
+  "planted_cluster:1467febf": [
+   10,
+   10
+  ]
+ },
+ "comparator": "multistart_tm",
+ "cpu_ns_by_arm": {
+  "candidate": 66566611565,
+  "cross_2_diag": 65432343084,
+  "exchange_tm": 65330879563,
+  "low_cycle_tm": 65257009472,
+  "multistart_tm": 65394572536
+ },
+ "cpu_ratio_candidate_to_comparator": 1.0179,
+ "descriptors": {
+  "candidate": "f5a3d7ffd69c014e28aacc6550a41118c25cf7bfbc13145cb9fbed7892f6f06e",
+  "cross_2_diag": "582ff2e39dcf7f2beb894d5256d61ecfe5d479b1c0c77fc2b2a3548ddbaba0b2",
+  "exchange_tm": "0a3cd7611875c3d63fa22ce1a4d52e0590c309d381a13c338b5de71e3d312dd5",
+  "low_cycle_tm": "790da2a7f570888af408cc53ac918b614e8ab8bccf7d8d73d4162f7a3a25ca3c",
+  "multistart_tm": "6ff23ed1bcc3785bf444571226eb6d1a5dfa84a99bc11af0589ef9f2a27d82f1"
+ },
+ "diagnostic_candidate_minus_cross_2": {
+  "mean": 0.4667,
+  "wins_ties_losses": [
+   15,
+   11,
+   4
+  ]
+ },
+ "domain": "triangle_free_host_v1",
+ "draft_plan_dry_run": {
+  "checks": {
+   "cost_within_bound": true,
+   "estimate_reaches_minimum_useful_effect": true,
+   "holm_rejects_no_superiority": true,
+   "interval_lower_above_zero": true,
+   "no_stratum_regression": true
+  },
+  "cost_ratio": 1.0179225734,
+  "decision": "SUPPORTED",
+  "estimate": 2.6333333333,
+  "interval": [
+   2.2666666667,
+   3.0
+  ],
+  "p_value": 4.99975e-05
+ },
+ "failures": {
+  "candidate": 0,
+  "cross_2_diag": 0,
+  "exchange_tm": 0,
+  "low_cycle_tm": 0,
+  "multistart_tm": 0
+ },
+ "hosts": 30,
+ "mean_difference": 2.6333,
+ "mean_gap_to_optimum": {
+  "candidate": 0.1667,
+  "cross_2_diag": 0.6333,
+  "exchange_tm": 4.0667,
+  "low_cycle_tm": 3.1333,
+  "multistart_tm": 2.8
+ },
+ "optimum_hits": {
+  "candidate": 25,
+  "cross_2_diag": 15,
+  "exchange_tm": 0,
+  "low_cycle_tm": 2,
+  "multistart_tm": 0
+ },
+ "power_centred": {
+  "chosen": {
+   "power": 0.974,
+   "tasks_per_stratum": 10,
+   "total_tasks": 30
+  },
+  "false_positive_rate_at_zero_effect": 0.018,
+  "pilot_strata": {
+   "erdos:70960071": {
+    "mean_difference": 2.3,
+    "sd": 1.0593,
+    "share_with_headroom": 1.0,
+    "tasks": 10
+   },
+   "erdos:b73f6828": {
+    "mean_difference": 3.0,
+    "sd": 1.2472,
+    "share_with_headroom": 1.0,
+    "tasks": 10
+   },
+   "planted_cluster:1467febf": {
+    "mean_difference": 2.6,
+    "sd": 1.5055,
+    "share_with_headroom": 1.0,
+    "tasks": 10
+   }
+  },
+  "power_at_minimum_useful_effect": 0.444,
+  "status": "CHOSEN",
+  "table": [
+   {
+    "power": 0.974,
+    "tasks_per_stratum": 10,
+    "total_tasks": 30
+   },
+   {
+    "power": 0.99,
+    "tasks_per_stratum": 12,
+    "total_tasks": 36
+   },
+   {
+    "power": 0.995,
+    "tasks_per_stratum": 15,
+    "total_tasks": 45
+   },
+   {
+    "power": 0.999,
+    "tasks_per_stratum": 20,
+    "total_tasks": 60
+   },
+   {
+    "power": 1.0,
+    "tasks_per_stratum": 25,
+    "total_tasks": 75
+   },
+   {
+    "power": 1.0,
+    "tasks_per_stratum": 30,
+    "total_tasks": 90
+   },
+   {
+    "power": 1.0,
+    "tasks_per_stratum": 40,
+    "total_tasks": 120
+   },
+   {
+    "power": 1.0,
+    "tasks_per_stratum": 50,
+    "total_tasks": 150
+   },
+   {
+    "power": 1.0,
+    "tasks_per_stratum": 60,
+    "total_tasks": 180
+   },
+   {
+    "power": 1.0,
+    "tasks_per_stratum": 80,
+    "total_tasks": 240
+   },
+   {
+    "power": 1.0,
+    "tasks_per_stratum": 100,
+    "total_tasks": 300
+   },
+   {
+    "power": 1.0,
+    "tasks_per_stratum": 150,
+    "total_tasks": 450
+   },
+   {
+    "power": 1.0,
+    "tasks_per_stratum": 200,
+    "total_tasks": 600
+   }
+  ]
+ },
+ "scored": 30,
+ "seed": 20262911,
+ "stratum_mean_differences": {
+  "erdos:70960071": 2.3,
+  "erdos:b73f6828": 3.0,
+  "planted_cluster:1467febf": 2.6
+ },
+ "study": "e1b",
+ "totals": {
+  "candidate": 2673,
+  "cross_2_diag": 2659,
+  "exchange_tm": 2556,
+  "low_cycle_tm": 2584,
+  "multistart_tm": 2594
+ },
+ "verdict": "READY_FOR_REVIEW",
+ "wins_ties_losses": [
+  29,
+  1,
+  0
+ ]
+}

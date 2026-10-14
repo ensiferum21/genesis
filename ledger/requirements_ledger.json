@@ -4537,7 +4537,7 @@
    "external_blockers": [
     "independent custodian",
     "fresh panels",
-    "a powered, reviewed E1 design (B20R12-OPEN-1: the decided design is UNDERPOWERED on the e1-hard-v1 family) or E1b (B20_R23: READY_FOR_REVIEW on DEV; its host family is undecided, B20R23-OPEN-1)"
+    "reviewer and statistician sign-off of e1-hard-v2 and the E1/E1b DRAFTs (B20_R24: both READY_FOR_REVIEW on DEV; same-operator rehearsals SUPPORTED, judge agrees)"
    ],
    "id": "GV3",
    "implementation": "NOT_IMPLEMENTED",
@@ -4815,7 +4815,7 @@
     "tests_genesis/test_calibration.py",
     "tests_genesis/test_calibration_rules.py"
    ],
-   "title": "Domain contracts and calibration (B20_R12: separately versioned study rules)",
+   "title": "Domain contracts and calibration (B20_R12/R24: separately versioned study rules e1-hard-v1/v2)",
    "workstream": "W05"
   },
   {

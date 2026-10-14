@@ -1,6 +1,6 @@
 # Operations runbook (H11)
 
-This runbook covers the continuation line as of B20_R23. It says how to run, recover and check each part. The supported platform and its roles are in `deployment/DEPLOYMENT.md`, and what is and is not established is in `docs/REQUIREMENTS_LEDGER.md` and `docs/BLOCKING_DEFECTS.md`.
+This runbook covers the continuation line as of B20_R24. It says how to run, recover and check each part. The supported platform and its roles are in `deployment/DEPLOYMENT.md`, and what is and is not established is in `docs/REQUIREMENTS_LEDGER.md` and `docs/BLOCKING_DEFECTS.md`.
 
 Every command assumes:
 
@@ -32,9 +32,9 @@ Every command assumes:
 
 | Action | Function | Refuses |
 |---|---|---|
-| Comparator selection | `custodian.select_comparator(root, export, baselines, key, operator, exposure_manifest=..., study=...)` | baselines that are not conventional, mixed resource profiles, too little distinct material, a study with no adopted calibration (E1b until B20R23-OPEN-1 is decided) |
+| Comparator selection | `custodian.select_comparator(root, export, baselines, key, operator, exposure_manifest=..., study=...)` | baselines that are not conventional, mixed resource profiles, too little distinct material, a study with no adopted calibration. The adopted studies are `e1` (`e1-hard-v1`, B20_R12), and `e1-v2` and `e1b` (`e1-hard-v2`, B20_R24; triangle-free) |
 | Register | `custodian.register(root, request, prereg_key, operator, exposure_manifest=..., campaign_export=..., pool=..., decision_record=frozen, accepted_selection_keys=())` | a request the export does not show; an unfrozen or underpowered decision record; a used claim or candidate slot; a full hypothesis family; an ablation or placebo baseline that is not a registered intervention; a comparator this custodian did not select. A repetition kind may instead name the selecting custodian's key. |
-| Evaluate | `custodian.evaluate(root, request_hash, pool, custodian_key, operator)` | — (every arm runs in the OCI sandbox under one profile, metered by cgroup) |
+| Evaluate | `custodian.evaluate(root, request_hash, pool, custodian_key, operator)` | — (every arm runs in the OCI sandbox under one profile, metered by cgroup; since B20_R24 a v4 evaluation certifies each graph host's optimum with the joint LP/SAT reference and keeps its certificate bundle) |
 | Recover | `scripts/genesis_custodian.py recover` | — (an interrupted evaluation publishes `raw_evidence_complete=false`, which is INVALID) |
 | Publish | `custodian.registration_log(root, key)` | — |
 

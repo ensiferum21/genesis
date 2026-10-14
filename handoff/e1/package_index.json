@@ -1,0 +1,78 @@
+{
+ "baselines": {
+  "exchange_tm": "70660ab94e35f0fa3692886355ec6a62a6ef9f0d2f57e16074b68669061c4809",
+  "low_cycle_tm": "ae110999483196446cefbcad9b3cd232383ff3a26ec9eff3b288a94b9a40a36e",
+  "multistart_tm": "3642c93cd02d0979ea8928b65c27848512f4a44fa7e5ae0ebe56b98994e13983"
+ },
+ "calibration": {
+  "record": "evidence/dev_calibration_e1_hard_v2_b20r24/calibration_triangle_free_host_v1_e1_hard_v2.json",
+  "rule": "e1-hard-v2",
+  "selected": [
+   {
+    "family": "planted_cluster",
+    "index": 18,
+    "params": {
+     "n": 30,
+     "p_in": 0.6,
+     "p_out": 0.2
+    }
+   },
+   {
+    "family": "erdos",
+    "index": 7,
+    "params": {
+     "n": 26,
+     "p": 0.35
+    }
+   },
+   {
+    "family": "erdos",
+    "index": 9,
+    "params": {
+     "n": 30,
+     "p": 0.3
+    }
+   }
+  ],
+  "sha256": "bc26782a0c5916e9e1246e5351f617a3006ffece99451c57ead5ee39b41ee633"
+ },
+ "campaign_candidate_version": "66c0cd9988996aa5cd4f8580123154fea78321c5780ed1953aa35b4ae3441df8",
+ "candidate_descriptor_id": "f4c7f4b0e5ced594f014dff8bc66703f2f545a52c1972a3d2a3cac42a8f195b1",
+ "code_identity": "88eef89757e93aea7e5f4a4efd04d2e8952a26d0f2582bc3836272e92a14ceee",
+ "decision_record_draft_sha256": "17b058a213ecdabd0a306ec4d61258e3a59a9939edeec15afba88e2ac17279b3",
+ "domain": "triangle_free_host_v1",
+ "exposure_hosts_all": {
+  "hosts": 1544,
+  "scan": {
+   "calibration_hosts": 456,
+   "distinct_hosts": 1384,
+   "e1_named_hosts": 711,
+   "empty_files_skipped": [
+    "evidence/failed-wal-final-replay.json",
+    "evidence/final-replay.json"
+   ],
+   "excluded_identities": 1544,
+   "files_scanned": 849,
+   "host_records": 2953
+  }
+ },
+ "pilot_verdict": "READY_FOR_REVIEW",
+ "problems_of_a_frozen_copy": [],
+ "rehearsals": {
+  "first": {
+   "comparator": "low_cycle_tm",
+   "judge_agrees": true,
+   "outcome": "INVALID",
+   "panel_size": 30
+  },
+  "rerun": {
+   "comparator": "multistart_tm",
+   "judge_agrees": true,
+   "outcome": "SUPPORTED",
+   "panel_size": 30
+  }
+ },
+ "schema": "genesis-gv3-package-v1",
+ "status": "DRAFT; not registered; licenses nothing",
+ "study": "e1-v2"
+}

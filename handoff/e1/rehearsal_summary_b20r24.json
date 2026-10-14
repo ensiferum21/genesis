@@ -1,0 +1,298 @@
+{
+ "comparator_selection": {
+  "baselines": {
+   "exchange_tm": {
+    "descriptor_id": "70660ab94e35f0fa3692886355ec6a62a6ef9f0d2f57e16074b68669061c4809",
+    "domain": "triangle_free_host_v1",
+    "implementation": {
+     "candidates.py": "a04d3fe0792113ec9527bdf16fccc8f8580179b9a6b567c4cd30486d6d2696f2",
+     "dsl.py": "b1576f320cf7e689250771c484f95f3aa16ab853059d01ffabc1802a2c730508",
+     "graphs.py": "e0e8e089a240a2fc3a422d29c6fe65a6031d06264eab29fb8a991ad60213261d",
+     "models.py": "2d10c569f5de3ee209ce07525972d199bba1168ae187ffc223880491fa701d05"
+    },
+    "kind": "dsl-time-matched-v1",
+    "parameters": {
+     "cpu_seconds": 0.5,
+     "program": {
+      "componentwise": false,
+      "exchange": true,
+      "rounds": 32,
+      "schema_version": "graph-priority-v1",
+      "weights": [
+       0,
+       0,
+       0,
+       0
+      ]
+     }
+    },
+    "resource_profile": {
+     "cpu_seconds": 2,
+     "memory_mib": 2048,
+     "queries": 1000,
+     "wall_seconds": 10
+    },
+    "schema": "genesis-candidate-descriptor-v1"
+   },
+   "low_cycle_tm": {
+    "descriptor_id": "ae110999483196446cefbcad9b3cd232383ff3a26ec9eff3b288a94b9a40a36e",
+    "domain": "triangle_free_host_v1",
+    "implementation": {
+     "candidates.py": "a04d3fe0792113ec9527bdf16fccc8f8580179b9a6b567c4cd30486d6d2696f2",
+     "dsl.py": "b1576f320cf7e689250771c484f95f3aa16ab853059d01ffabc1802a2c730508",
+     "graphs.py": "e0e8e089a240a2fc3a422d29c6fe65a6031d06264eab29fb8a991ad60213261d",
+     "models.py": "2d10c569f5de3ee209ce07525972d199bba1168ae187ffc223880491fa701d05"
+    },
+    "kind": "dsl-time-matched-v1",
+    "parameters": {
+     "cpu_seconds": 0.5,
+     "program": {
+      "componentwise": false,
+      "exchange": false,
+      "rounds": 32,
+      "schema_version": "graph-priority-v1",
+      "weights": [
+       0,
+       0,
+       0,
+       1
+      ]
+     }
+    },
+    "resource_profile": {
+     "cpu_seconds": 2,
+     "memory_mib": 2048,
+     "queries": 1000,
+     "wall_seconds": 10
+    },
+    "schema": "genesis-candidate-descriptor-v1"
+   },
+   "multistart_tm": {
+    "descriptor_id": "3642c93cd02d0979ea8928b65c27848512f4a44fa7e5ae0ebe56b98994e13983",
+    "domain": "triangle_free_host_v1",
+    "implementation": {
+     "candidates.py": "a04d3fe0792113ec9527bdf16fccc8f8580179b9a6b567c4cd30486d6d2696f2",
+     "dsl.py": "b1576f320cf7e689250771c484f95f3aa16ab853059d01ffabc1802a2c730508",
+     "graphs.py": "e0e8e089a240a2fc3a422d29c6fe65a6031d06264eab29fb8a991ad60213261d",
+     "models.py": "2d10c569f5de3ee209ce07525972d199bba1168ae187ffc223880491fa701d05"
+    },
+    "kind": "dsl-time-matched-v1",
+    "parameters": {
+     "cpu_seconds": 0.5,
+     "program": {
+      "componentwise": false,
+      "exchange": false,
+      "rounds": 32,
+      "schema_version": "graph-priority-v1",
+      "weights": [
+       0,
+       0,
+       0,
+       0
+      ]
+     }
+    },
+    "resource_profile": {
+     "cpu_seconds": 2,
+     "memory_mib": 2048,
+     "queries": 1000,
+     "wall_seconds": 10
+    },
+    "schema": "genesis-candidate-descriptor-v1"
+   }
+  },
+  "calibration": {
+   "record_sha256": "bc26782a0c5916e9e1246e5351f617a3006ffece99451c57ead5ee39b41ee633",
+   "rule": "e1-hard-v2",
+   "study": "e1-v2"
+  },
+  "campaign_id": "d86d603644bedc06bbd6e758b8cb40ad58080bce11f437cbf97de13bde067d5e",
+  "domain": "triangle_free_host_v1",
+  "exposure_registry_root": "0c302bd02ae6a0bbb9eede238e909ae10f76214c072b15a9ec49cb795c371621",
+  "operator_id": "BUILDER_REHEARSAL_NOT_INDEPENDENT",
+  "panel_commitment": "c51b1526bf55871c2ceec4c1379380588e26938326b506df967d6915a2726fe7",
+  "resource_profile": {
+   "cpu_seconds": 2,
+   "memory_mib": 2048,
+   "queries": 1000,
+   "wall_seconds": 10
+  },
+  "rule": "strongest total on the custodian SELECT panel (ties: greatest name)",
+  "schema": "genesis-comparator-selection-v1",
+  "selected": "multistart_tm",
+  "selected_at": "2026-10-14T03:03:50.669257+00:00",
+  "source_hash": "57f1f04885f3dc0bf12f38fbb834a7518d1c9a690262d0ac46cbc7ce83580e8c",
+  "task_count": 30,
+  "totals": {
+   "exchange_tm": 2553,
+   "low_cycle_tm": 2600,
+   "multistart_tm": 2606
+  }
+ },
+ "fairness": {
+  "cpu_ns_by_arm": {
+   "baseline": 20262536407,
+   "candidate": 20314205251
+  },
+  "cpu_ratio": 1.00255,
+  "ground_truth_charged_to_arm": false,
+  "information": "each arm receives only the candidate view (domain, n, edges) built from the same task",
+  "paired_tasks": 30,
+  "problems": [],
+  "same_limits": true
+ },
+ "first_rehearsal": {
+  "comparator": "low_cycle_tm",
+  "judge_agrees": true,
+  "outcome": "INVALID",
+  "panel_size": 30
+ },
+ "judge": {
+  "agrees": true,
+  "problems": [],
+  "recomputed_outcome": "SUPPORTED",
+  "witnesses_rechecked": 60
+ },
+ "label": "REHEARSAL_SAME_OPERATOR_FIXTURE_KEYS: not independent, not a CONFIRM result, licenses nothing",
+ "receipt_payload": {
+  "analysis": {
+   "alpha": 0.05,
+   "cost": {
+    "max_ratio": 3.0,
+    "measure": "cpu_ns"
+   },
+   "decision_record_sha256": "b30256e1cc6c9ab0a33adb7cee786d13f76935dfd3a19e477154ec75a09b8cc0",
+   "decision_rule": "superiority-with-minimum-useful-effect",
+   "design_effect": 1.0,
+   "estimand": "mean-of-stratum-means",
+   "failures": "score-zero",
+   "interval": {
+    "level": 0.9,
+    "method": "stratified-bootstrap-percentile",
+    "resamples": 4000
+   },
+   "max_unsupported_fraction": 0.05,
+   "minimum_useful_effect": 0.5,
+   "multiplicity": {
+    "family_id": "sealed_evaluation:triangle_free_host_v1",
+    "family_size": 3,
+    "method": "holm"
+   },
+   "power_target": 0.8,
+   "primary": "paired-edge-difference",
+   "regression": {
+    "max_stratum_loss": 1.0
+   },
+   "schema": "genesis-analysis-plan-v2",
+   "sensitivity": [
+    "task-sign-test",
+    "leave-one-stratum-out",
+    "failures-excluded",
+    "stratum-level-sign-flip"
+   ],
+   "stopping": {
+    "rule": "single-analysis"
+   },
+   "strata": "family",
+   "test": "stratified-sign-flip",
+   "unsupported": "exclude-and-report"
+  },
+  "analysis_result": {
+   "checks": {
+    "cost_within_bound": true,
+    "estimate_reaches_minimum_useful_effect": true,
+    "holm_rejects_no_superiority": true,
+    "interval_lower_above_zero": true,
+    "no_stratum_regression": true
+   },
+   "cost_cpu_ns": {
+    "baseline": 20262536407,
+    "candidate": 20314205251
+   },
+   "cost_ratio": 1.0025499692,
+   "decision": "SUPPORTED",
+   "estimate": 3.0,
+   "failures": {
+    "baseline": 0,
+    "candidate": 0
+   },
+   "family_p_values": [],
+   "holm_threshold": 0.0166666667,
+   "interval": [
+    2.5333333333,
+    3.4666666667
+   ],
+   "interval_level": 0.9,
+   "losses": 0,
+   "p_method": "monte-carlo-20000",
+   "p_value": 4.99975e-05,
+   "plan_sha256": "56d2fcf0903691af393666c45e8b3922ee38c9619f67ad8c2addce7a5275f880",
+   "reasons": [],
+   "schema": "genesis-analysis-result-v2",
+   "scored": 30,
+   "sensitivity": {
+    "failures-excluded": 3.0,
+    "leave-one-stratum-out": {
+     "erdos:70960071": 3.3,
+     "erdos:b73f6828": 3.25,
+     "planted_cluster:1467febf": 2.45
+    },
+    "stratum-level-sign-flip": 0.125,
+    "task-sign-test": 1.9e-09
+   },
+   "strata": 3,
+   "stratum_means": {
+    "erdos:70960071": 2.4,
+    "erdos:b73f6828": 2.5,
+    "planted_cluster:1467febf": 4.1
+   },
+   "tasks": 30,
+   "ties": 1,
+   "unsupported": [],
+   "wins": 29
+  },
+  "anchor_hash": "972ff7684f8032253815d588ea312caa227a49750620eb3db17abfc4213bde17",
+  "arms_sha256": "77bfd29fdfe44dd17a98d40b41e6daddaf9920bf795d47bf4971c79caf35f5fb",
+  "baseline_descriptor_id": "3642c93cd02d0979ea8928b65c27848512f4a44fa7e5ae0ebe56b98994e13983",
+  "campaign_id": "d86d603644bedc06bbd6e758b8cb40ad58080bce11f437cbf97de13bde067d5e",
+  "candidate_descriptor_id": "f4c7f4b0e5ced594f014dff8bc66703f2f545a52c1972a3d2a3cac42a8f195b1",
+  "candidate_version": "064514f594601c320df1b5e589b2986e0d3f4579f67b50adfe715c07cc8a3be4",
+  "claim_id": "e1-rehearsal-b20r24",
+  "completed_at": "2026-10-14T03:07:38.134420+00:00",
+  "completed_rows": 60,
+  "domain": "triangle_free_host_v1",
+  "domain_contract_hash": "522ee2f43e81120f4b180e4f3630f9278d26f8ebb65aafb0e4040159f9e3f150",
+  "evaluator_hash": "57f1f04885f3dc0bf12f38fbb834a7518d1c9a690262d0ac46cbc7ce83580e8c",
+  "evidence_kind": "sealed_evaluation",
+  "execution_failures": 0,
+  "expected_rows": 60,
+  "family_p": 4.99975e-05,
+  "generation_transition": null,
+  "independence": "OPERATOR_ATTESTATION_REQUIRED",
+  "isolation": "OCI_RUNC_NO_NETWORK_RO_ROOT_SECCOMP",
+  "losses": 0,
+  "operator_id": "BUILDER_REHEARSAL_NOT_INDEPENDENT",
+  "outcome": "SUPPORTED",
+  "paired_p": 1.862645149230957e-09,
+  "panel_commitment": "417f9ce6e322a6d4ec8b5b7e7bfabadb2346385d27c55b5f129cf7d340c441fa",
+  "raw_evidence_complete": true,
+  "raw_evidence_root": "d58191471dd193fb895e94f00966b7b50d1745501f05baeadf9a9d0b86a897a5",
+  "registered_at": "2026-10-14T03:03:52.743121+00:00",
+  "request_hash": "82177a0e15441e13f75ded991f429adaf5a67ede97c993f5f38f7409c0b09f78",
+  "schema": "genesis-scientific-receipt-v4",
+  "scope": "rehearsal panel of 30 triangle_free_host_v1 hosts (same operator)",
+  "screen": "CUSTODIAN_BUILT_REGISTRY_ISOMORPHISM_AND_NEAR_DUPLICATE",
+  "source_hash": "57f1f04885f3dc0bf12f38fbb834a7518d1c9a690262d0ac46cbc7ce83580e8c",
+  "statement_hash": "2395351a4be20f6fef1406bf724757cefff7d7b6315f170af2daaca2bf582a63",
+  "task_count": 30,
+  "ties": 1,
+  "transfer_source_domain": null,
+  "wins": 29
+ },
+ "rerun": {
+  "comparator": "multistart_tm",
+  "judge_agrees": true,
+  "outcome": "SUPPORTED",
+  "panel_size": 30
+ }
+}
