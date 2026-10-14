@@ -185,6 +185,20 @@
       "B20_R21": {
         "commit": "0bf3a96d3e8f7e96c69a74baf37f4d528c5184b4",
         "sha256": "72e78fab9f256f99652be194b810320b24a191f194de9e8d26c652eccc830796"
+      },
+      "B20_R23": {
+        "commit": "e7fad0e793c60af56f10ac62083c8d42c6deaac6",
+        "sha256": "da3eb0fd9d9534a88edb553289917aa6f167e5ce003e6cfde35ee0598d91a354",
+        "release_matrix": {
+          "integration": 654,
+          "legacy_regression": 282,
+          "sandbox_escape": 28,
+          "certificates": 43,
+          "formal": 157,
+          "failures": 0,
+          "declared_skips": 1
+        },
+        "restore_verified": "5521 manifest entries match; bundle clone gives the same commit and tree"
       }
     },
     "adopted_from_crpd_v3_status": {

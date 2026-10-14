@@ -55,7 +55,35 @@ SELECTION_RULE_E1_HARD = {
              'then setting order',
     'select_at_most': 4,
 }
-RULES = (SELECTION_RULE, SELECTION_RULE_E1_HARD)
+# B20_R24 (the user's decision of 14 Oct 2026, after B20R12-OPEN-1 and B20R23-OPEN-1): a second version of
+# the E1 rule, for E1 and E1b alike. It still never reads a candidate. Three changes, each motivated by a
+# design need and fixed before any run:
+#   * the fixed baselines are measured as the studies run them: time-matched (dsl-time-matched-v1, restarted
+#     for search_cpu_seconds) in the OCI sandbox, at the larger of the two studies' budgets (2.0 CPU s;
+#     conservative for E1, whose baselines get 0.5 s);
+#   * a certification limit: the reference is obstruction.certify (exact LP dual, then SAT/DRAT on the gap),
+#     seeded with the best baseline witness, with a fixed per-host budget; a host not certified within it
+#     counts as uncertified (certified_fraction_min unchanged);
+#   * a candidate-independent headroom bound in edges: the mean of (certified optimum - best time-matched
+#     baseline) must reach the analysis plan's design effect (1.0 edge), so a powered study can carry it
+#     (B20R12-OPEN-1: two v1 strata could not).
+SELECTION_RULE_E1_HARD_V2 = {
+    'name': 'e1-hard-v2',
+    'certified_fraction_min': 0.9,
+    'ceiling_rate_min': 0.0,
+    'ceiling_rate_max': 0.25,
+    'ceiling_rate_target': 0.0,
+    'mean_headroom_min': 0.02,
+    'mean_gap_edges_min': 1.0,
+    'reference_seconds_median_max': 15.0,
+    'measurement': {'baselines': 'dsl-time-matched-v1', 'search_cpu_seconds': 2.0, 'isolation': 'runc',
+                    'profile': {'cpu_seconds': 4, 'memory_mib': 2048, 'wall_seconds': 20, 'queries': 1000},
+                    'reference': 'obstruction.certify', 'reference_seconds': 60},
+    'order': 'closest ceiling_rate to 0.0 (hardest for the fixed baselines), then lower median reference_seconds, '
+             'then setting order',
+    'select_at_most': 4,
+}
+RULES = (SELECTION_RULE, SELECTION_RULE_E1_HARD, SELECTION_RULE_E1_HARD_V2)
 RULES_BY_NAME = {r['name']: r for r in RULES if 'name' in r}     # the unnamed rule is SELECTION_RULE
 CALIBRATION_LIMITS = Limits(queries=1000, cpu_seconds=2)
 DEFAULT_GRID = {
@@ -107,16 +135,56 @@ def measure(tasks, *, limits=CALIBRATION_LIMITS, reference_seconds=30, seed=0):
     return rows
 
 
-def summarize(rows):
+def measure_time_matched(tasks, measurement, *, seed=0):
+    """Rows as ``measure`` writes them, under a rule's ``measurement`` (e1-hard-v2): the fixed baselines as
+    dsl-time-matched-v1 descriptors through ``candidates.run`` in the given isolation, and the reference from
+    ``obstruction.certify`` seeded with the best baseline witness. Uncertified hosts are UNSUPPORTED rows."""
+    from . import candidates as C
+    from .discovery import obstruction as O
+    require_dev(tasks)
+    if measurement.get('baselines') != 'dsl-time-matched-v1' or measurement.get('reference') != 'obstruction.certify':
+        raise ValueError('unknown calibration measurement')
+    rows = []
+    for t in tasks:
+        tseed = int(digest({'seed': seed, 'task': t.task_id})[:12], 16)
+        values, cpu, best = {}, {}, None
+        for name, program in sorted(baseline_programs().items()):
+            d = C.build_descriptor('dsl-time-matched-v1', t.domain,
+                                   {'program': program.model_dump(mode='json'),
+                                    'cpu_seconds': measurement['search_cpu_seconds']}, **measurement['profile'])
+            r = C.run(t, d, seed=tseed, expected_id=d['descriptor_id'], isolation=measurement['isolation'])
+            ok = r['status'] == 'SUCCESS'
+            values[f'{name}_tm'] = r['result']['value'] if ok else None
+            cpu[f'{name}_tm'] = r.get('cpu_ns') if type(r.get('cpu_ns')) is int else None
+            if ok and (best is None or r['result']['value'] > best[0]):
+                best = (r['result']['value'], [tuple(e) for e in r['result']['selected']])
+        start = time.monotonic()
+        rec = O.certify(t, best[1] if best else [], seconds=measurement['reference_seconds'])
+        seconds = round(time.monotonic() - start, 3)
+        if rec['lower'] == rec['upper']:
+            ref = {'status': 'FINITE_CERTIFIED', 'value': rec['lower'], 'method': rec['upper_evidence']['method']}
+        else:
+            ref = Unsupported(f'optimum not certified within {measurement["reference_seconds"]}s '
+                              f'(bounds {rec["lower"]}..{rec["upper"]})').record()
+        rows.append({'task_sha256': digest(t.model_dump(mode='json')), 'edges': len(t.edges), 'reference': ref,
+                     'reference_seconds': seconds, 'baselines': values, 'baseline_cpu_ns': cpu})
+    return rows
+
+
+def summarize(rows, rule=None):
     certified = [r for r in rows if r['reference']['status'] == 'FINITE_CERTIFIED']
-    ceilings, headrooms = [], []
+    ceilings, headrooms, gaps = [], [], []
     for r in certified:
         best = max((v for v in r['baselines'].values() if v is not None), default=0)
         opt = r['reference']['value']
         ceilings.append(best == opt)
         headrooms.append((opt - best) / opt if opt else 0.0)
+        gaps.append(opt - best)
     n = len(rows)
-    return {'tasks': n, 'certified': len(certified),
+    extra = {}
+    if rule is not None and 'mean_gap_edges_min' in rule:          # e1-hard-v2 onwards; older summaries unchanged
+        extra = {'mean_gap_edges': round(statistics.fmean(gaps), 4) if gaps else None}
+    return {**extra, 'tasks': n, 'certified': len(certified),
             'certified_fraction': round(len(certified) / n, 4) if n else 0.0,
             'ceiling_rate': round(sum(ceilings) / len(ceilings), 4) if ceilings else None,
             'mean_headroom': round(statistics.fmean(headrooms), 4) if headrooms else None,
@@ -135,6 +203,9 @@ def eligible(summary, rule=SELECTION_RULE):
         reasons.append('too little headroom')
     if s['reference_seconds_median'] is None or s['reference_seconds_median'] > rule['reference_seconds_median_max']:
         reasons.append('evaluator too slow')
+    if 'mean_gap_edges_min' in rule and (s.get('mean_gap_edges') is None or
+                                         s['mean_gap_edges'] < rule['mean_gap_edges_min']):
+        reasons.append('too little headroom in edges for the design effect')
     return reasons
 
 
@@ -151,10 +222,17 @@ def calibrate(domain, grid=None, *, seed=20261101, tasks_per_setting=8, limits=C
     a = ADAPTERS[domain]
     grid = grid if grid is not None else DEFAULT_GRID[domain]
     seen, settings, task_hashes = set(), [], []
+    if 'measurement' in rule:                        # the rule fixes how it measures (e1-hard-v2)
+        limits = Limits.model_validate(dict(CALIBRATION_LIMITS.model_dump(),
+                                            cpu_seconds=rule['measurement']['profile']['cpu_seconds']))
+        reference_seconds = rule['measurement']['reference_seconds']
     for i, (family, params) in enumerate(grid):
         tasks, seen, gen = a.generate(seed + 1000 * i, tasks_per_setting, 'DEV', family, params, excluded=seen)
-        rows = measure(tasks, limits=limits, reference_seconds=reference_seconds, seed=seed)
-        summary = summarize(rows)
+        if 'measurement' in rule:
+            rows = measure_time_matched(tasks, rule['measurement'], seed=seed)
+        else:
+            rows = measure(tasks, limits=limits, reference_seconds=reference_seconds, seed=seed)
+        summary = summarize(rows, rule)
         settings.append({'index': i, 'family': family, 'params': params, 'generator': gen, 'summary': summary,
                          'ineligible_because': eligible(summary, rule), 'rows': rows})
         task_hashes += [r['task_sha256'] for r in rows]
@@ -191,7 +269,8 @@ def record_problems(record):
     if select(record['settings'], record['rule']) != record['selected']:
         out.append('selected settings do not follow from the recorded measurements and rule')
     for s in record['settings']:
-        if summarize(s['rows']) != s['summary'] or eligible(s['summary'], record['rule']) != s['ineligible_because']:
+        if summarize(s['rows'], record['rule']) != s['summary'] or \
+                eligible(s['summary'], record['rule']) != s['ineligible_because']:
             out.append(f"setting {s['index']} summary does not follow from its rows")
     return out
 
@@ -225,8 +304,9 @@ def compact(record):
             'full_record_sha256': digest(record)}
 
 
-__all__ = ['calibrate', 'measure', 'summarize', 'select', 'calibrated_panel', 'record_problems', 'require_dev',
-           'compact', 'canonical', 'SELECTION_RULE', 'SELECTION_RULE_E1_HARD', 'RULES']
+__all__ = ['calibrate', 'measure', 'measure_time_matched', 'summarize', 'select', 'calibrated_panel', 'record_problems',
+           'require_dev', 'compact', 'canonical', 'SELECTION_RULE', 'SELECTION_RULE_E1_HARD', 'SELECTION_RULE_E1_HARD_V2',
+           'RULES']
 
 
 CONFIG = 'configs/dev_calibration.json'
