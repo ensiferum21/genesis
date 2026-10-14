@@ -1,0 +1,840 @@
+{
+ "domains": {
+  "c4_host_v2": {
+   "problems": [],
+   "record": "evidence/dev_calibration_e1_hard_v2_b20r24/calibration_c4_host_v2_e1_hard_v2.json",
+   "selected": [],
+   "settings": [
+    {
+     "family": "erdos",
+     "index": 0,
+     "ineligible_because": [
+      "ceiling rate outside the band",
+      "too little headroom",
+      "too little headroom in edges for the design effect"
+     ],
+     "params": {
+      "n": 10,
+      "p": 0.45
+     },
+     "summary": {
+      "ceiling_rate": 1.0,
+      "certified": 8,
+      "certified_fraction": 1.0,
+      "mean_edges": 19.62,
+      "mean_gap_edges": 0.0,
+      "mean_headroom": 0.0,
+      "reference_seconds_median": 0.093,
+      "tasks": 8
+     }
+    },
+    {
+     "family": "erdos",
+     "index": 1,
+     "ineligible_because": [
+      "ceiling rate outside the band",
+      "too little headroom",
+      "too little headroom in edges for the design effect"
+     ],
+     "params": {
+      "n": 12,
+      "p": 0.3
+     },
+     "summary": {
+      "ceiling_rate": 1.0,
+      "certified": 8,
+      "certified_fraction": 1.0,
+      "mean_edges": 20.38,
+      "mean_gap_edges": 0.0,
+      "mean_headroom": 0.0,
+      "reference_seconds_median": 0.05,
+      "tasks": 8
+     }
+    },
+    {
+     "family": "erdos",
+     "index": 2,
+     "ineligible_because": [
+      "ceiling rate outside the band",
+      "too little headroom",
+      "too little headroom in edges for the design effect"
+     ],
+     "params": {
+      "n": 12,
+      "p": 0.45
+     },
+     "summary": {
+      "ceiling_rate": 1.0,
+      "certified": 8,
+      "certified_fraction": 1.0,
+      "mean_edges": 29.88,
+      "mean_gap_edges": 0.0,
+      "mean_headroom": 0.0,
+      "reference_seconds_median": 0.108,
+      "tasks": 8
+     }
+    },
+    {
+     "family": "erdos",
+     "index": 3,
+     "ineligible_because": [
+      "ceiling rate outside the band",
+      "too little headroom",
+      "too little headroom in edges for the design effect"
+     ],
+     "params": {
+      "n": 12,
+      "p": 0.6
+     },
+     "summary": {
+      "ceiling_rate": 1.0,
+      "certified": 8,
+      "certified_fraction": 1.0,
+      "mean_edges": 40.12,
+      "mean_gap_edges": 0.0,
+      "mean_headroom": 0.0,
+      "reference_seconds_median": 2.532,
+      "tasks": 8
+     }
+    },
+    {
+     "family": "erdos",
+     "index": 4,
+     "ineligible_because": [
+      "ceiling rate outside the band",
+      "too little headroom",
+      "too little headroom in edges for the design effect"
+     ],
+     "params": {
+      "n": 14,
+      "p": 0.3
+     },
+     "summary": {
+      "ceiling_rate": 1.0,
+      "certified": 8,
+      "certified_fraction": 1.0,
+      "mean_edges": 28.5,
+      "mean_gap_edges": 0.0,
+      "mean_headroom": 0.0,
+      "reference_seconds_median": 0.066,
+      "tasks": 8
+     }
+    },
+    {
+     "family": "erdos",
+     "index": 5,
+     "ineligible_because": [
+      "ceiling rate outside the band",
+      "too little headroom",
+      "too little headroom in edges for the design effect"
+     ],
+     "params": {
+      "n": 14,
+      "p": 0.45
+     },
+     "summary": {
+      "ceiling_rate": 0.75,
+      "certified": 8,
+      "certified_fraction": 1.0,
+      "mean_edges": 41.5,
+      "mean_gap_edges": 0.25,
+      "mean_headroom": 0.0096,
+      "reference_seconds_median": 0.891,
+      "tasks": 8
+     }
+    },
+    {
+     "family": "erdos",
+     "index": 6,
+     "ineligible_because": [
+      "ceiling rate outside the band",
+      "too little headroom",
+      "too little headroom in edges for the design effect"
+     ],
+     "params": {
+      "n": 16,
+      "p": 0.3
+     },
+     "summary": {
+      "ceiling_rate": 0.875,
+      "certified": 8,
+      "certified_fraction": 1.0,
+      "mean_edges": 38.25,
+      "mean_gap_edges": 0.125,
+      "mean_headroom": 0.004,
+      "reference_seconds_median": 0.176,
+      "tasks": 8
+     }
+    },
+    {
+     "family": "erdos",
+     "index": 7,
+     "ineligible_because": [
+      "ceiling rate outside the band",
+      "too little headroom in edges for the design effect"
+     ],
+     "params": {
+      "n": 16,
+      "p": 0.4
+     },
+     "summary": {
+      "ceiling_rate": 0.5,
+      "certified": 8,
+      "certified_fraction": 1.0,
+      "mean_edges": 47.25,
+      "mean_gap_edges": 0.625,
+      "mean_headroom": 0.0201,
+      "reference_seconds_median": 0.883,
+      "tasks": 8
+     }
+    },
+    {
+     "family": "erdos",
+     "index": 8,
+     "ineligible_because": [
+      "ceiling rate outside the band",
+      "too little headroom",
+      "too little headroom in edges for the design effect"
+     ],
+     "params": {
+      "n": 20,
+      "p": 0.25
+     },
+     "summary": {
+      "ceiling_rate": 0.75,
+      "certified": 8,
+      "certified_fraction": 1.0,
+      "mean_edges": 45.38,
+      "mean_gap_edges": 0.25,
+      "mean_headroom": 0.0068,
+      "reference_seconds_median": 0.181,
+      "tasks": 8
+     }
+    },
+    {
+     "family": "bipartite",
+     "index": 9,
+     "ineligible_because": [
+      "ceiling rate outside the band",
+      "too little headroom",
+      "too little headroom in edges for the design effect"
+     ],
+     "params": {
+      "n": 12,
+      "p": 0.6
+     },
+     "summary": {
+      "ceiling_rate": 1.0,
+      "certified": 8,
+      "certified_fraction": 1.0,
+      "mean_edges": 21.38,
+      "mean_gap_edges": 0.0,
+      "mean_headroom": 0.0,
+      "reference_seconds_median": 0.099,
+      "tasks": 8
+     }
+    },
+    {
+     "family": "bipartite",
+     "index": 10,
+     "ineligible_because": [
+      "ceiling rate outside the band",
+      "too little headroom",
+      "too little headroom in edges for the design effect"
+     ],
+     "params": {
+      "n": 16,
+      "p": 0.5
+     },
+     "summary": {
+      "ceiling_rate": 1.0,
+      "certified": 8,
+      "certified_fraction": 1.0,
+      "mean_edges": 30.88,
+      "mean_gap_edges": 0.0,
+      "mean_headroom": 0.0,
+      "reference_seconds_median": 0.122,
+      "tasks": 8
+     }
+    },
+    {
+     "family": "planted_cluster",
+     "index": 11,
+     "ineligible_because": [
+      "ceiling rate outside the band",
+      "too little headroom",
+      "too little headroom in edges for the design effect"
+     ],
+     "params": {
+      "n": 12,
+      "p_in": 0.8,
+      "p_out": 0.25
+     },
+     "summary": {
+      "ceiling_rate": 1.0,
+      "certified": 8,
+      "certified_fraction": 1.0,
+      "mean_edges": 24.75,
+      "mean_gap_edges": 0.0,
+      "mean_headroom": 0.0,
+      "reference_seconds_median": 0.106,
+      "tasks": 8
+     }
+    },
+    {
+     "family": "planted_cluster",
+     "index": 12,
+     "ineligible_because": [
+      "ceiling rate outside the band",
+      "too little headroom",
+      "too little headroom in edges for the design effect"
+     ],
+     "params": {
+      "n": 16,
+      "p_in": 0.7,
+      "p_out": 0.2
+     },
+     "summary": {
+      "ceiling_rate": 0.75,
+      "certified": 8,
+      "certified_fraction": 1.0,
+      "mean_edges": 40.38,
+      "mean_gap_edges": 0.25,
+      "mean_headroom": 0.0091,
+      "reference_seconds_median": 0.233,
+      "tasks": 8
+     }
+    },
+    {
+     "family": "erdos",
+     "index": 13,
+     "ineligible_because": [
+      "too few certified optima",
+      "evaluator too slow"
+     ],
+     "params": {
+      "n": 30,
+      "p": 0.2
+     },
+     "summary": {
+      "ceiling_rate": 0.0,
+      "certified": 6,
+      "certified_fraction": 0.75,
+      "mean_edges": 87.12,
+      "mean_gap_edges": 2.1667,
+      "mean_headroom": 0.0348,
+      "reference_seconds_median": 23.989,
+      "tasks": 8
+     }
+    }
+   ],
+   "sha256": "8c261907dd4b432db0c1d9ce96dbc835c727e1568d85e293146cbb64a5d9b124",
+   "verdict": "NO_ELIGIBLE_SETTING"
+  },
+  "triangle_free_host_v1": {
+   "problems": [],
+   "record": "evidence/dev_calibration_e1_hard_v2_b20r24/calibration_triangle_free_host_v1_e1_hard_v2.json",
+   "selected": [
+    {
+     "family": "planted_cluster",
+     "index": 18,
+     "params": {
+      "n": 30,
+      "p_in": 0.6,
+      "p_out": 0.2
+     }
+    },
+    {
+     "family": "erdos",
+     "index": 7,
+     "params": {
+      "n": 26,
+      "p": 0.35
+     }
+    },
+    {
+     "family": "erdos",
+     "index": 9,
+     "params": {
+      "n": 30,
+      "p": 0.3
+     }
+    }
+   ],
+   "settings": [
+    {
+     "family": "erdos",
+     "index": 0,
+     "ineligible_because": [
+      "ceiling rate outside the band",
+      "too little headroom",
+      "too little headroom in edges for the design effect"
+     ],
+     "params": {
+      "n": 18,
+      "p": 0.35
+     },
+     "summary": {
+      "ceiling_rate": 1.0,
+      "certified": 8,
+      "certified_fraction": 1.0,
+      "mean_edges": 52.88,
+      "mean_gap_edges": 0.0,
+      "mean_headroom": 0.0,
+      "reference_seconds_median": 0.006,
+      "tasks": 8
+     }
+    },
+    {
+     "family": "erdos",
+     "index": 1,
+     "ineligible_because": [
+      "ceiling rate outside the band",
+      "too little headroom",
+      "too little headroom in edges for the design effect"
+     ],
+     "params": {
+      "n": 18,
+      "p": 0.5
+     },
+     "summary": {
+      "ceiling_rate": 0.375,
+      "certified": 8,
+      "certified_fraction": 1.0,
+      "mean_edges": 73.88,
+      "mean_gap_edges": 0.75,
+      "mean_headroom": 0.0144,
+      "reference_seconds_median": 0.078,
+      "tasks": 8
+     }
+    },
+    {
+     "family": "erdos",
+     "index": 2,
+     "ineligible_because": [
+      "ceiling rate outside the band",
+      "too little headroom",
+      "too little headroom in edges for the design effect"
+     ],
+     "params": {
+      "n": 22,
+      "p": 0.35
+     },
+     "summary": {
+      "ceiling_rate": 0.875,
+      "certified": 8,
+      "certified_fraction": 1.0,
+      "mean_edges": 77.75,
+      "mean_gap_edges": 0.125,
+      "mean_headroom": 0.0022,
+      "reference_seconds_median": 0.007,
+      "tasks": 8
+     }
+    },
+    {
+     "family": "erdos",
+     "index": 3,
+     "ineligible_because": [
+      "evaluator too slow"
+     ],
+     "params": {
+      "n": 22,
+      "p": 0.5
+     },
+     "summary": {
+      "ceiling_rate": 0.0,
+      "certified": 8,
+      "certified_fraction": 1.0,
+      "mean_edges": 112.5,
+      "mean_gap_edges": 3.625,
+      "mean_headroom": 0.0475,
+      "reference_seconds_median": 16.041,
+      "tasks": 8
+     }
+    },
+    {
+     "family": "erdos",
+     "index": 4,
+     "ineligible_because": [
+      "ceiling rate outside the band",
+      "too little headroom"
+     ],
+     "params": {
+      "n": 26,
+      "p": 0.3
+     },
+     "summary": {
+      "ceiling_rate": 0.375,
+      "certified": 8,
+      "certified_fraction": 1.0,
+      "mean_edges": 96.75,
+      "mean_gap_edges": 1.125,
+      "mean_headroom": 0.015,
+      "reference_seconds_median": 0.161,
+      "tasks": 8
+     }
+    },
+    {
+     "family": "planted_cluster",
+     "index": 5,
+     "ineligible_because": [
+      "ceiling rate outside the band",
+      "too little headroom",
+      "too little headroom in edges for the design effect"
+     ],
+     "params": {
+      "n": 20,
+      "p_in": 0.7,
+      "p_out": 0.3
+     },
+     "summary": {
+      "ceiling_rate": 0.625,
+      "certified": 8,
+      "certified_fraction": 1.0,
+      "mean_edges": 73.25,
+      "mean_gap_edges": 0.375,
+      "mean_headroom": 0.0068,
+      "reference_seconds_median": 0.009,
+      "tasks": 8
+     }
+    },
+    {
+     "family": "erdos",
+     "index": 6,
+     "ineligible_because": [
+      "ceiling rate outside the band",
+      "too little headroom",
+      "too little headroom in edges for the design effect"
+     ],
+     "params": {
+      "n": 26,
+      "p": 0.25
+     },
+     "summary": {
+      "ceiling_rate": 1.0,
+      "certified": 8,
+      "certified_fraction": 1.0,
+      "mean_edges": 77.75,
+      "mean_gap_edges": 0.0,
+      "mean_headroom": 0.0,
+      "reference_seconds_median": 0.007,
+      "tasks": 8
+     }
+    },
+    {
+     "family": "erdos",
+     "index": 7,
+     "ineligible_because": [],
+     "params": {
+      "n": 26,
+      "p": 0.35
+     },
+     "summary": {
+      "ceiling_rate": 0.125,
+      "certified": 8,
+      "certified_fraction": 1.0,
+      "mean_edges": 103.88,
+      "mean_gap_edges": 1.625,
+      "mean_headroom": 0.021,
+      "reference_seconds_median": 0.53,
+      "tasks": 8
+     }
+    },
+    {
+     "family": "erdos",
+     "index": 8,
+     "ineligible_because": [
+      "ceiling rate outside the band",
+      "too little headroom",
+      "too little headroom in edges for the design effect"
+     ],
+     "params": {
+      "n": 30,
+      "p": 0.25
+     },
+     "summary": {
+      "ceiling_rate": 0.5,
+      "certified": 8,
+      "certified_fraction": 1.0,
+      "mean_edges": 115.5,
+      "mean_gap_edges": 0.875,
+      "mean_headroom": 0.0099,
+      "reference_seconds_median": 0.074,
+      "tasks": 8
+     }
+    },
+    {
+     "family": "erdos",
+     "index": 9,
+     "ineligible_because": [],
+     "params": {
+      "n": 30,
+      "p": 0.3
+     },
+     "summary": {
+      "ceiling_rate": 0.125,
+      "certified": 8,
+      "certified_fraction": 1.0,
+      "mean_edges": 128.5,
+      "mean_gap_edges": 2.0,
+      "mean_headroom": 0.0207,
+      "reference_seconds_median": 0.85,
+      "tasks": 8
+     }
+    },
+    {
+     "family": "erdos",
+     "index": 10,
+     "ineligible_because": [
+      "too few certified optima"
+     ],
+     "params": {
+      "n": 30,
+      "p": 0.35
+     },
+     "summary": {
+      "ceiling_rate": 0.0,
+      "certified": 6,
+      "certified_fraction": 0.75,
+      "mean_edges": 150.62,
+      "mean_gap_edges": 4.3333,
+      "mean_headroom": 0.0399,
+      "reference_seconds_median": 9.064,
+      "tasks": 8
+     }
+    },
+    {
+     "family": "erdos",
+     "index": 11,
+     "ineligible_because": [
+      "ceiling rate outside the band",
+      "too little headroom"
+     ],
+     "params": {
+      "n": 34,
+      "p": 0.25
+     },
+     "summary": {
+      "ceiling_rate": 0.375,
+      "certified": 8,
+      "certified_fraction": 1.0,
+      "mean_edges": 141.5,
+      "mean_gap_edges": 1.0,
+      "mean_headroom": 0.0091,
+      "reference_seconds_median": 0.995,
+      "tasks": 8
+     }
+    },
+    {
+     "family": "erdos",
+     "index": 12,
+     "ineligible_because": [
+      "too few certified optima",
+      "evaluator too slow"
+     ],
+     "params": {
+      "n": 34,
+      "p": 0.3
+     },
+     "summary": {
+      "ceiling_rate": 0.0,
+      "certified": 5,
+      "certified_fraction": 0.625,
+      "mean_edges": 169.12,
+      "mean_gap_edges": 3.0,
+      "mean_headroom": 0.0252,
+      "reference_seconds_median": 16.552,
+      "tasks": 8
+     }
+    },
+    {
+     "family": "erdos",
+     "index": 13,
+     "ineligible_because": [
+      "too few certified optima",
+      "evaluator too slow"
+     ],
+     "params": {
+      "n": 34,
+      "p": 0.35
+     },
+     "summary": {
+      "ceiling_rate": 0.0,
+      "certified": 2,
+      "certified_fraction": 0.25,
+      "mean_edges": 194.12,
+      "mean_gap_edges": 7.0,
+      "mean_headroom": 0.053,
+      "reference_seconds_median": 59.74,
+      "tasks": 8
+     }
+    },
+    {
+     "family": "erdos",
+     "index": 14,
+     "ineligible_because": [
+      "too few certified optima",
+      "too little headroom"
+     ],
+     "params": {
+      "n": 38,
+      "p": 0.25
+     },
+     "summary": {
+      "ceiling_rate": 0.0,
+      "certified": 7,
+      "certified_fraction": 0.875,
+      "mean_edges": 173.25,
+      "mean_gap_edges": 2.5714,
+      "mean_headroom": 0.0197,
+      "reference_seconds_median": 9.152,
+      "tasks": 8
+     }
+    },
+    {
+     "family": "erdos",
+     "index": 15,
+     "ineligible_because": [
+      "too few certified optima",
+      "evaluator too slow"
+     ],
+     "params": {
+      "n": 38,
+      "p": 0.3
+     },
+     "summary": {
+      "ceiling_rate": 0.0,
+      "certified": 2,
+      "certified_fraction": 0.25,
+      "mean_edges": 209.75,
+      "mean_gap_edges": 7.0,
+      "mean_headroom": 0.046,
+      "reference_seconds_median": 59.353,
+      "tasks": 8
+     }
+    },
+    {
+     "family": "erdos",
+     "index": 16,
+     "ineligible_because": [
+      "too few certified optima",
+      "ceiling rate outside the band",
+      "too little headroom",
+      "evaluator too slow",
+      "too little headroom in edges for the design effect"
+     ],
+     "params": {
+      "n": 38,
+      "p": 0.35
+     },
+     "summary": {
+      "ceiling_rate": null,
+      "certified": 0,
+      "certified_fraction": 0.0,
+      "mean_edges": 240.75,
+      "mean_gap_edges": null,
+      "mean_headroom": null,
+      "reference_seconds_median": 59.704,
+      "tasks": 8
+     }
+    },
+    {
+     "family": "erdos",
+     "index": 17,
+     "ineligible_because": [
+      "ceiling rate outside the band",
+      "too little headroom",
+      "too little headroom in edges for the design effect"
+     ],
+     "params": {
+      "n": 40,
+      "p": 0.2
+     },
+     "summary": {
+      "ceiling_rate": 0.5,
+      "certified": 8,
+      "certified_fraction": 1.0,
+      "mean_edges": 151.5,
+      "mean_gap_edges": 0.625,
+      "mean_headroom": 0.0052,
+      "reference_seconds_median": 0.037,
+      "tasks": 8
+     }
+    },
+    {
+     "family": "planted_cluster",
+     "index": 18,
+     "ineligible_because": [],
+     "params": {
+      "n": 30,
+      "p_in": 0.6,
+      "p_out": 0.2
+     },
+     "summary": {
+      "ceiling_rate": 0.0,
+      "certified": 8,
+      "certified_fraction": 1.0,
+      "mean_edges": 127.62,
+      "mean_gap_edges": 2.875,
+      "mean_headroom": 0.0312,
+      "reference_seconds_median": 1.336,
+      "tasks": 8
+     }
+    },
+    {
+     "family": "erdos",
+     "index": 19,
+     "ineligible_because": [
+      "too few certified optima",
+      "ceiling rate outside the band",
+      "too little headroom",
+      "evaluator too slow",
+      "too little headroom in edges for the design effect"
+     ],
+     "params": {
+      "n": 40,
+      "p": 0.35
+     },
+     "summary": {
+      "ceiling_rate": null,
+      "certified": 0,
+      "certified_fraction": 0.0,
+      "mean_edges": 275.75,
+      "mean_gap_edges": null,
+      "mean_headroom": null,
+      "reference_seconds_median": 59.586,
+      "tasks": 8
+     }
+    }
+   ],
+   "sha256": "bc26782a0c5916e9e1246e5351f617a3006ffece99451c57ead5ee39b41ee633",
+   "verdict": "SELECTED"
+  }
+ },
+ "rule": {
+  "ceiling_rate_max": 0.25,
+  "ceiling_rate_min": 0.0,
+  "ceiling_rate_target": 0.0,
+  "certified_fraction_min": 0.9,
+  "mean_gap_edges_min": 1.0,
+  "mean_headroom_min": 0.02,
+  "measurement": {
+   "baselines": "dsl-time-matched-v1",
+   "isolation": "runc",
+   "profile": {
+    "cpu_seconds": 4,
+    "memory_mib": 2048,
+    "queries": 1000,
+    "wall_seconds": 20
+   },
+   "reference": "obstruction.certify",
+   "reference_seconds": 60,
+   "search_cpu_seconds": 2.0
+  },
+  "name": "e1-hard-v2",
+  "order": "closest ceiling_rate to 0.0 (hardest for the fixed baselines), then lower median reference_seconds, then setting order",
+  "reference_seconds_median_max": 15.0,
+  "select_at_most": 4
+ },
+ "schema": "genesis-b20r24-calibration-v1"
+}

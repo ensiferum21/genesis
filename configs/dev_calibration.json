@@ -92,6 +92,76 @@
     ],
     "sha256": "c7893f5bcfd2b002be5269a663d1caf9396ca9713978830f767ddb7b118992c6"
    }
+  },
+  "e1-v2": {
+   "triangle_free_host_v1": {
+    "note": "B20_R24: under the versioned rule e1-hard-v2 (the user, 14 Oct 2026); needs reviewer sign-off of the rule; the domain adoption and study e1 (e1-hard-v1) are unchanged",
+    "record": "evidence/dev_calibration_e1_hard_v2_b20r24/calibration_triangle_free_host_v1_e1_hard_v2.json",
+    "rule": "e1-hard-v2",
+    "selected": [
+     {
+      "family": "planted_cluster",
+      "index": 18,
+      "params": {
+       "n": 30,
+       "p_in": 0.6,
+       "p_out": 0.2
+      }
+     },
+     {
+      "family": "erdos",
+      "index": 7,
+      "params": {
+       "n": 26,
+       "p": 0.35
+      }
+     },
+     {
+      "family": "erdos",
+      "index": 9,
+      "params": {
+       "n": 30,
+       "p": 0.3
+      }
+     }
+    ],
+    "sha256": "bc26782a0c5916e9e1246e5351f617a3006ffece99451c57ead5ee39b41ee633"
+   }
+  },
+  "e1b": {
+   "triangle_free_host_v1": {
+    "note": "B20_R24: under the versioned rule e1-hard-v2 (the user, 14 Oct 2026); needs reviewer sign-off of the rule; the domain adoption and study e1 (e1-hard-v1) are unchanged",
+    "record": "evidence/dev_calibration_e1_hard_v2_b20r24/calibration_triangle_free_host_v1_e1_hard_v2.json",
+    "rule": "e1-hard-v2",
+    "selected": [
+     {
+      "family": "planted_cluster",
+      "index": 18,
+      "params": {
+       "n": 30,
+       "p_in": 0.6,
+       "p_out": 0.2
+      }
+     },
+     {
+      "family": "erdos",
+      "index": 7,
+      "params": {
+       "n": 26,
+       "p": 0.35
+      }
+     },
+     {
+      "family": "erdos",
+      "index": 9,
+      "params": {
+       "n": 30,
+       "p": 0.3
+      }
+     }
+    ],
+    "sha256": "bc26782a0c5916e9e1246e5351f617a3006ffece99451c57ead5ee39b41ee633"
+   }
   }
  }
 }
