@@ -1,0 +1,51 @@
+{
+ "code_identity": "57f1f04885f3dc0bf12f38fbb834a7518d1c9a690262d0ac46cbc7ce83580e8c",
+ "exposure_scan": {
+  "calibration_hosts": 456,
+  "distinct_hosts": 1264,
+  "e1_named_hosts": 711,
+  "empty_files_skipped": [
+   "evidence/failed-wal-final-replay.json",
+   "evidence/final-replay.json"
+  ],
+  "excluded_identities": 1424,
+  "files_scanned": 842,
+  "host_records": 2833
+ },
+ "first_rehearsals": {
+  "e1": {
+   "comparator": "low_cycle_tm",
+   "judge_agrees": true,
+   "outcome": "INVALID",
+   "panel_size": 30
+  },
+  "e1b_c4": "not run: verdict NOT_RUN",
+  "e1b_tf": {
+   "comparator": "multistart_tm",
+   "judge_agrees": true,
+   "outcome": "INVALID",
+   "panel_size": 30
+  }
+ },
+ "rehearsals": {
+  "e1": {
+   "comparator": "multistart_tm",
+   "judge_agrees": true,
+   "outcome": "SUPPORTED",
+   "panel_size": 30
+  },
+  "e1b_c4": "not run: pilot verdict NOT_RUN",
+  "e1b_tf": {
+   "comparator": "multistart_tm",
+   "judge_agrees": true,
+   "outcome": "SUPPORTED",
+   "panel_size": 30
+  }
+ },
+ "schema": "genesis-b20r24-rehearsal-rerun-v1",
+ "seeds": {
+  "campaign": 20262971,
+  "confirm": 20262961
+ },
+ "status": "same-operator rehearsal with fixture keys; licenses nothing"
+}

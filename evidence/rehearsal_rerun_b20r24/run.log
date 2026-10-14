@@ -1,0 +1,6 @@
+[    2.6s] exposure: 1424 identities (1264 named hosts, 711 E1 hosts, 456 calibration hosts)
+[  107.4s] e1: SELECT panel {'exchange_tm': 2553, 'low_cycle_tm': 2600, 'multistart_tm': 2606} -> comparator multistart_tm (92 s)
+[  335.8s] e1: rehearsal SUPPORTED (W/L/T 29/0/1), estimate 3.0, cost ratio 1.0025499692, judge agrees True (228 s)
+[  577.6s] e1b_tf: SELECT panel {'exchange_tm': 2602, 'low_cycle_tm': 2618, 'multistart_tm': 2638} -> comparator multistart_tm (229 s)
+[ 1453.7s] e1b_tf: rehearsal SUPPORTED (W/L/T 29/0/0), estimate 3.5481481481, cost ratio 1.0185936616, judge agrees True (876 s)
+[ 1453.9s] rehearsals {"e1": {"outcome": "SUPPORTED", "judge_agrees": true, "panel_size": 30, "comparator": "multistart_tm"}, "e1b_tf": {"outcome": "SUPPORTED", "judge_agrees": true, "panel_size": 30, "comparator": "multistart_tm"}, "e1b_c4": "not run: pilot verdict NOT_RUN"}
