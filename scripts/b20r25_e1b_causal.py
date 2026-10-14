@@ -78,6 +78,7 @@ PILOT_SEED, PILOT_TASKS, CERTIFY_S = 20263101, 30, 120
 CAMPAIGN_SEED, MAIN_SEED, FOLLOW_SEED, SELECT_TASKS = 20263111, 20263121, 20263131, 30
 CONTRASTS = (('ablation', 'random_greedy'), ('placebo', 'lp_shuffled_greedy'))
 CLAIM_ID = 'e1b-causal-rehearsal-b20r25'
+HOSTS_PER_SOURCE = 400
 
 
 def arms():
@@ -265,12 +266,18 @@ def part_b(out, log, excluded, named, pilot):
     reh.chmod(0o700)
     keys = {n: R11.keyfile(reh, f'{n}_FIXTURE') for n in ('prereg', 'custodian', 'auditor', 'release', 'replicator',
                                                          'priority_reviewer')}
-    hosts_file = reh / 'builder_named_hosts.json'
-    hosts_file.write_bytes(canonical([t.model_dump(mode='json') for t in named]))
-    hosts_file.chmod(0o600)
+    # The custodian screens each JSON source up to 1,000,000 values and refuses larger ones ("adjudicate
+    # externally"); the first run of this script stopped there with all named hosts in one file. The same
+    # hosts are now split across several sources (fix after the crash, before any Part B result; rules unchanged).
+    named = [t.model_dump(mode='json') for t in named]
+    sources = []
+    for i in range(0, len(named), HOSTS_PER_SOURCE):
+        f = reh / f'builder_named_hosts_{i // HOSTS_PER_SOURCE:02d}.json'
+        f.write_bytes(canonical(named[i:i + HOSTS_PER_SOURCE]))
+        f.chmod(0o600)
+        sources.append({'kind': 'json', 'path': f.name, 'label': f'builder-named hosts, part {i // HOSTS_PER_SOURCE}'})
     manifest = reh / 'exposure_manifest.json'
-    manifest.write_text(json.dumps({'schema': 'genesis-exposure-manifest-v1', 'sources': [
-        {'kind': 'json', 'path': hosts_file.name, 'label': 'every host the builder named or generated'}]}))
+    manifest.write_text(json.dumps({'schema': 'genesis-exposure-manifest-v1', 'sources': sources}))
     manifest.chmod(0o600)
     op = 'BUILDER_REHEARSAL_NOT_INDEPENDENT'
     export = camp_root / 'exports' / 'campaign_export.zip'
