@@ -199,6 +199,20 @@
           "declared_skips": 1
         },
         "restore_verified": "5521 manifest entries match; bundle clone gives the same commit and tree"
+      },
+      "B20_R24": {
+        "commit": "77a7b7828a171a97079a620a06fc13662709e4d4",
+        "sha256": "8dcf993742ee9482210dfeccb5ef7ebf223b3f5fda71a602533f3566e74d3633",
+        "release_matrix": {
+          "integration": 658,
+          "legacy_regression": 282,
+          "sandbox_escape": 28,
+          "certificates": 43,
+          "formal": 157,
+          "failures": 0,
+          "declared_skips": 1
+        },
+        "restore_verified": "5567 manifest entries match; bundle clone gives the same commit and tree"
       }
     },
     "adopted_from_crpd_v3_status": {

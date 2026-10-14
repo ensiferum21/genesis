@@ -16,6 +16,7 @@
 | B20_R16 | `988c7f5` | `c0a201b0…c37a` |
 | B20_R21 | `0bf3a96` | `72e78fab…0796` (release matrix 1,157 tests, all OK; restore-verified) |
 | B20_R23 | `e7fad0e` | `da3eb0fd…a354` (release matrix 1,164 tests, all OK; restore-verified; sent to Daniel directly while GitHub was disconnected) |
+| B20_R24 | `77a7b78` | `8dcf9937…3633` (release matrix 1,168 tests, all OK; restore-verified; sent to Daniel directly) |
 
   The recovery-branch checkpoints B20_RX1 and B20_RX2 are on `recovery-b20r1-partial`; their work was ported here.
 - **Records:** `docs/checkpoints/B20_R1_RECORD.md` … `B20_R11_RECORD.md`, `B20_RX1_RECORD.md`, `B20_RX2_RECORD.md`, `B20_R12_RECORD.md` and `B20_R15_RECORD.md` … `B20_R24_RECORD.md`.
