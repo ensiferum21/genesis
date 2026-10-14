@@ -132,6 +132,29 @@ class Conformance(unittest.TestCase):
         with tempfile.TemporaryDirectory() as empty, mock.patch.dict(os.environ, {'GENESIS_TOOLCHAIN': empty}):
             self.assertIsInstance(a.reference(big[0], seconds=5), DM.Unsupported)
 
+    def test_joint_reference_certifies_mid_size_hosts_with_custody(self):
+        """B20_R24: the joint LP/SAT reference the custodian uses for v4 evaluations."""
+        from genesis.store import Store
+        from genesis.verification.certificates import replay
+        a = DM.ADAPTERS['triangle_free_host_v1']
+        host = a.generate(20262451, 1, 'DEV', 'erdos', {'n': 30, 'p': 0.3})[0][0]
+        self.assertGreater(len(host.edges), 100)
+        with tempfile.TemporaryDirectory() as d, Store(Path(d) / 's') as store:
+            r = a.reference(host, seconds=60, joint=True, evidence=store)
+            self.assertEqual(r['status'], 'FINITE_CERTIFIED', r)
+            self.assertIn(r['method'], ('JOINT_LP_DUAL_EXACT', 'JOINT_SAT_DRAT', 'JOINT_HOST_EDGE_COUNT'))
+            self.assertEqual(a.validate(host, r['witness'])['value'], r['value'])
+            rep = replay(store.get(r['certificate_bundle']), store.get_bytes)
+            self.assertEqual((rep['lower'], rep['upper'], rep['problems']), ('VALID', 'VALID', []), rep)
+        small = task_for(a)                                         # the exact-search range is unchanged
+        self.assertEqual(a.reference(small, joint=True)['method'], 'DUAL_EXACT_SEARCH')
+        from genesis import custodian as CU
+        from genesis.formal_research.lean_domain import LeanStatementAdapter
+        v4 = {'schema': R.REQUEST_V4}
+        self.assertEqual(CU.reference_options(v4, a), {'joint': True})
+        self.assertEqual(CU.reference_options({'schema': 'genesis-evaluation-request-v3'}, a), {})   # v3 keeps its own
+        self.assertEqual(CU.reference_options(v4, LeanStatementAdapter.__new__(LeanStatementAdapter)), {})
+
     def test_certificate_obligations(self):
         for a in self.each():
             self.assertEqual([o['obligation'] for o in a.certificate_obligations('lower_bound', 3)], ['lower_bound'])

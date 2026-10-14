@@ -159,11 +159,23 @@ class GraphHostAdapter(DomainAdapter):
             return {'status': 'INVALID', 'reason': str(exc)}
         return {'status': 'VALID', 'value': checked['value'], 'checkers': checked['checkers']}
 
-    def reference(self, task, *, evidence=None, seconds=600):
-        """Evaluator-only certified optimum, or UNSUPPORTED with the reason."""
+    JOINT_REFERENCE = True          # B20_R24: the custodian asks v4 evaluations for the joint LP/SAT reference
+
+    def reference(self, task, *, evidence=None, seconds=600, joint=False):
+        """Evaluator-only certified optimum, or UNSUPPORTED with the reason.
+
+        ``joint`` (B20_R24, used by the custodian for v4 evaluations): above the exact-search range, certify
+        with ``obstruction.certify`` (exact LP dual certificate, then SAT/DRAT on the remaining gap with the whole
+        remaining budget), seeded with the better of an 8-round DSL solution and 1 CPU s of LP-ordered greedy,
+        and keep the certificate bundle v2 (witness, LP certificate, CNF/DRAT bytes) in ``evidence``. The SAT-only
+        path below (the default, kept for existing callers) stops at the first SAT call that returns UNKNOWN
+        within its 60 s limit; on B20_R24's rehearsal panels it left 4 of 30 and 2 of 30 hosts unsupported, of
+        which the joint certification closed 5 of 6 within 120 s (evidence/repilots_b20r24)."""
         gate = self.supports(task, 'exact_reference')
         if gate:
             return gate
+        if joint and len(task.edges) > self.EXACT_MAX_EDGES:
+            return self._joint_reference(task, evidence=evidence, seconds=seconds)
         if len(task.edges) <= self.EXACT_MAX_EDGES:
             try:
                 r = certified_optimum(task, self.EXACT_MAX_EDGES)
@@ -180,12 +192,37 @@ class GraphHostAdapter(DomainAdapter):
         except ToolUnavailable as exc:
             return Unsupported(f'certificate tools unavailable: {exc}')
         if bounds['status'] != 'OPTIMALITY_CHECKED':
-            return Unsupported(f'optimum not certified within {seconds}s (bounds {bounds.get("lower")}..{bounds.get("upper")})')
+            stop = ('; stopped when a SAT call returned UNKNOWN within its 60 s limit'
+                    if bounds.get('calls') and bounds['calls'][-1]['status'] not in ('SAT', 'UNSAT') else '')
+            return Unsupported(f'optimum not certified within {seconds}s (bounds {bounds.get("lower")}..'
+                               f'{bounds.get("upper")}{stop})')
         out = {'status': 'FINITE_CERTIFIED', 'value': bounds['upper'], 'method': 'SAT_DRAT_UPPER+CHECKED_WITNESS',
                'witness': [list(e) for e in bounds['witness']]}
         if evidence is not None:
             from .verification.certificates import build, persist
             out['certificate_bundle'] = persist(evidence, *build(task, bounds))
+        return out
+
+    def _joint_reference(self, task, *, evidence, seconds):
+        from .discovery import construct as K
+        from .discovery import obstruction as O
+        from .dsl import solve
+        from .models import SolverProgram
+        from .verification.tools import ToolUnavailable
+        start = tuple(map(tuple, solve(task, SolverProgram(rounds=8), 100000, 0)['selected']))
+        lp = tuple(map(tuple, K.lp_greedy(task, K.Budget(1.0), 0)['witness']))
+        try:
+            rec = O.certify(task, max((start, lp), key=len), seconds=seconds)
+        except ToolUnavailable as exc:
+            return Unsupported(f'certificate tools unavailable: {exc}')
+        if rec['lower'] != rec['upper']:
+            return Unsupported(f'optimum not certified within {seconds}s by the joint LP/SAT certification '
+                               f'(bounds {rec["lower"]}..{rec["upper"]})')
+        out = {'status': 'FINITE_CERTIFIED', 'value': rec['upper'], 'method': 'JOINT_' + rec['upper_evidence']['method'],
+               'witness': [list(e) for e in rec['witness']], 'certificate_status': rec['status']}
+        if evidence is not None:
+            from .verification.certificates import persist
+            out['certificate_bundle'] = persist(evidence, rec['bundle'], rec['objects'])
         return out
 
     def certificate_obligations(self, claim, value):

@@ -713,6 +713,12 @@ def reference_optimum(task,evidence=None):
             'method':'SAT_DRAT_UPPER+CHECKED_WITNESS'}
 
 
+def reference_options(request,adp):
+    """B20_R24: a v4 evaluation (descriptor arms) asks a graph adapter for the joint LP/SAT reference, which
+    certifies the hosts the SAT-only path gives up on; older request versions keep their reference."""
+    return {'joint':True} if R.descriptor_arms(request) and getattr(adp,'JOINT_REFERENCE',False) else {}
+
+
 def evaluate(private_root,request_id,pool_path,key_path,operator_id):
     root=_private_root(private_root)
     db=_open_custody(root)
@@ -790,7 +796,8 @@ def evaluate(private_root,request_id,pool_path,key_path,operator_id):
                         # W05: what the evaluator cannot certify is an explicit UNSUPPORTED row,
                         # handled by the preregistered policy; it is never dropped silently.
                         from .domains import Unsupported,adapter
-                        optimum=adapter(task.domain).reference(task,evidence=evidence)
+                        adp=adapter(task.domain)
+                        optimum=adp.reference(task,evidence=evidence,**reference_options(request,adp))
                         if isinstance(optimum,Unsupported):
                             evidence.finish(opt_aid,{'status':'UNSUPPORTED','reason':optimum.reason,
                                                      'wall_ns':time.monotonic_ns()-start})
