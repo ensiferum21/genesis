@@ -22,6 +22,10 @@ The capability gain lives in the *components*, not in how they are composed. The
 
 The design below is kept for the component-level version. Its step 1 (proposal headroom over compositions) is answered: there is none.
 
+## Update after B20_R23 (E1b)
+
+The LP-guided candidate is now a `construct-pipeline-v1` descriptor. It ran through the custodian's runner, under E1's decided design, on fresh DEV hosts of the settings below: **READY_FOR_REVIEW** on both domains (`evidence/e1b_readiness_b20r23/`, `handoff/e1b/`). That is a GV3 (better-solver) path for a builder-written method. It does not touch the GV4 question, which still needs components that a research process invents.
+
 ## The question
 
 Does a *learned* research process produce better successor solvers than a *fixed* research process, when both may build methods from the same components and spend the same research budget? Each successor solver gets the same CPU per host, and the comparison is on sealed fresh hosts.
@@ -69,8 +73,8 @@ The components are trusted code in `discovery/construct.py` and the menu modules
 
 | Item | Blocked on |
 |---|---|
-| The `construct-pipeline-v1` candidate kind, custody and sandbox | the canonical B20_R5/R7 code (B20_R11 history) |
-| Paired research lineages for `sealed_improver_evaluation` | H08 in the canonical line (B20_R11 history) |
+| The `construct-pipeline-v1` candidate kind, custody and sandbox | **DONE in B20_R23** (pending review). In-process components only: the SAT finisher needs a subprocess, which the runner forbids. The LP guidance of `lp_greedy` is a registered intervention (ablation `random_greedy`, placebo `lp_shuffled_greedy`). |
+| Paired research lineages for `sealed_improver_evaluation` | H08 remainder: the export format and the custodian path are not built; they need this study design first |
 | The learned proposal policy | a DEV training corpus of pipeline research runs; can be built on DEV here |
 | Statistician sign-off and power model | an external reviewer |
 | Independent custodian, second machine | external parties (BLOCKED_ENVIRONMENT) |

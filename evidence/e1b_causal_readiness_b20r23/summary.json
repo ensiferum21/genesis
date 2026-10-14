@@ -1,0 +1,237 @@
+{
+ "certify_seconds": 120,
+ "code_identity": "2c1746cbc88d70eca6dd2ea579b110ff72f84f305fd7128530b36701f898149a",
+ "descriptors": {
+  "c4_host_v2": {
+   "ablation": "c8698c885e81d01136b76918c0e7dee267ce3c75ce0290263e44320bf11f064a",
+   "candidate": "64a9890b264df3e89ad4183a6a13b41c1d3fe8f18022e0308007ce74ad339fb0",
+   "placebo": "361895ff9b0c9cd293d6fc61ec30c93eee46d0cb06447000cd59c53bfeba810d"
+  },
+  "triangle_free_host_v1": {
+   "ablation": "c1a3928eb9142cdbdc7de177ea391cc592eb914a3c91be0dfe55770ca68e8b44",
+   "candidate": "f5a3d7ffd69c014e28aacc6550a41118c25cf7bfbc13145cb9fbed7892f6f06e",
+   "placebo": "a05fc4eb7a6ffdc52d0f181105f8d573fd285ef18125fbc5c9cb83908b37e7ab"
+  }
+ },
+ "domains": {
+  "c4_host_v2": {
+   "ablation": {
+    "cpu_ns": {
+     "ablation": 21705579553,
+     "candidate": 22224052631
+    },
+    "cpu_ratio_candidate_to_intervened": 1.0239,
+    "failures": {
+     "ablation": 0,
+     "candidate": 0
+    },
+    "verdict": "UNSETTLED_REFERENCE"
+   },
+   "certified_by_setting": {
+    "C3": 7
+   },
+   "hosts": 10,
+   "optimum_hits": {
+    "ablation": 0,
+    "candidate": 1,
+    "placebo": 0
+   },
+   "placebo": {
+    "cpu_ns": {
+     "candidate": 22224052631,
+     "placebo": 22208383578
+    },
+    "cpu_ratio_candidate_to_intervened": 1.0007,
+    "failures": {
+     "candidate": 0,
+     "placebo": 0
+    },
+    "verdict": "UNSETTLED_REFERENCE"
+   },
+   "placebo_minus_ablation_mean": -2.0,
+   "scored": 7,
+   "totals": {
+    "ablation": 608,
+    "candidate": 615,
+    "placebo": 593
+   }
+  },
+  "triangle_free_host_v1": {
+   "ablation": {
+    "approximation_agreement": 1.0,
+    "cpu_ns": {
+     "ablation": 43584726127,
+     "candidate": 44371076380
+    },
+    "cpu_ratio_candidate_to_intervened": 1.018,
+    "draft_plan_dry_run": {
+     "checks": {
+      "cost_within_bound": true,
+      "estimate_reaches_minimum_useful_effect": true,
+      "holm_rejects_no_superiority": true,
+      "interval_lower_above_zero": true,
+      "no_stratum_regression": true
+     },
+     "cost_ratio": 1.017910916,
+     "decision": "SUPPORTED",
+     "estimate": 1.4111111111,
+     "interval": [
+      1.0277777778,
+      1.8277777778
+     ],
+     "p_value": 3.05176e-05
+    },
+    "failures": {
+     "ablation": 0,
+     "candidate": 0
+    },
+    "mean_difference": 1.4211,
+    "power_centred": {
+     "chosen": {
+      "power": 0.991,
+      "tasks_per_stratum": 10,
+      "total_tasks": 20
+     },
+     "false_positive_rate_at_zero_effect": 0.001,
+     "pilot_strata": {
+      "erdos:3765432f": {
+       "mean_difference": 1.2222,
+       "sd": 1.3017,
+       "share_with_headroom": 1.0,
+       "tasks": 9
+      },
+      "erdos:b73f6828": {
+       "mean_difference": 1.6,
+       "sd": 0.8433,
+       "share_with_headroom": 1.0,
+       "tasks": 10
+      }
+     },
+     "power_at_minimum_useful_effect": 0.309,
+     "status": "CHOSEN"
+    },
+    "stratum_mean_differences": {
+     "erdos:3765432f": 1.2222,
+     "erdos:b73f6828": 1.6
+    },
+    "verdict": "READY_FOR_REVIEW",
+    "wins_ties_losses": [
+     15,
+     4,
+     0
+    ]
+   },
+   "certified_by_setting": {
+    "C1": 10,
+    "C2": 9
+   },
+   "hosts": 20,
+   "optimum_hits": {
+    "ablation": 4,
+    "candidate": 17,
+    "placebo": 0
+   },
+   "placebo": {
+    "approximation_agreement": 1.0,
+    "cpu_ns": {
+     "candidate": 44371076380,
+     "placebo": 44312245352
+    },
+    "cpu_ratio_candidate_to_intervened": 1.0013,
+    "draft_plan_dry_run": {
+     "checks": {
+      "cost_within_bound": true,
+      "estimate_reaches_minimum_useful_effect": true,
+      "holm_rejects_no_superiority": true,
+      "interval_lower_above_zero": true,
+      "no_stratum_regression": true
+     },
+     "cost_ratio": 1.0016492109,
+     "decision": "SUPPORTED",
+     "estimate": 2.5,
+     "interval": [
+      2.0111111111,
+      3.0333333333
+     ],
+     "p_value": 4.99975e-05
+    },
+    "failures": {
+     "candidate": 0,
+     "placebo": 0
+    },
+    "mean_difference": 2.5263,
+    "power_centred": {
+     "chosen": {
+      "power": 0.847,
+      "tasks_per_stratum": 10,
+      "total_tasks": 20
+     },
+     "false_positive_rate_at_zero_effect": 0.003,
+     "pilot_strata": {
+      "erdos:3765432f": {
+       "mean_difference": 2.0,
+       "sd": 1.0,
+       "share_with_headroom": 1.0,
+       "tasks": 9
+      },
+      "erdos:b73f6828": {
+       "mean_difference": 3.0,
+       "sd": 1.8257,
+       "share_with_headroom": 1.0,
+       "tasks": 10
+      }
+     },
+     "power_at_minimum_useful_effect": 0.16,
+     "status": "CHOSEN"
+    },
+    "stratum_mean_differences": {
+     "erdos:3765432f": 2.0,
+     "erdos:b73f6828": 3.0
+    },
+    "verdict": "READY_FOR_REVIEW",
+    "wins_ties_losses": [
+     19,
+     0,
+     0
+    ]
+   },
+   "placebo_minus_ablation_mean": -1.1053,
+   "scored": 19,
+   "totals": {
+    "ablation": 2178,
+    "candidate": 2208,
+    "placebo": 2156
+   }
+  }
+ },
+ "exposure_scan": {
+  "distinct_hosts": 1054,
+  "e1_named_hosts": 711,
+  "empty_files_skipped": [
+   "evidence/failed-wal-final-replay.json",
+   "evidence/final-replay.json"
+  ],
+  "excluded_identities": 1054,
+  "files_scanned": 807,
+  "host_records": 1539,
+  "readiness_pilot_hosts": 36
+ },
+ "interventions": {
+  "meaning": "ablation: no LP guidance (random-order greedy restarts for the same stage budget); placebo: the same LP solve and restarts with the LP values permuted among the edges"
+ },
+ "min_certified_per_stratum": 8,
+ "profile": {
+  "cpu_seconds": 4,
+  "memory_mib": 2048,
+  "queries": 1000,
+  "wall_seconds": 20
+ },
+ "schema": "genesis-b20r23-e1b-causal-readiness-v1",
+ "status": "DEV causal readiness diagnostic; no sealed task; licenses no claim",
+ "verdicts": {
+  "c4_host_v2:ablation": "UNSETTLED_REFERENCE",
+  "c4_host_v2:placebo": "UNSETTLED_REFERENCE",
+  "triangle_free_host_v1:ablation": "READY_FOR_REVIEW",
+  "triangle_free_host_v1:placebo": "READY_FOR_REVIEW"
+ }
+}
