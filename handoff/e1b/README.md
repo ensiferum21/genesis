@@ -45,7 +45,18 @@ The frozen solver is a `construct-pipeline-v1` descriptor:
 
 The rehearsals license nothing. One operator played every role, with fixture keys.
 
-**The causal follow-ups were measured on the B20_R23 settings, not on this family.** Before an ablation or placebo request, re-pilot them on the `e1b` calibration (the template is `scripts/b20r23_e1b_causal_readiness.py`).
+**Causal follow-ups on this family (B20_R25, `evidence/e1b_causal_b20r25/`).** The re-pilot on 30 fresh `e1b` hosts gives:
+- ablation (`random_greedy`): +1.80 per host, 27 / 3 / 0, power 0.996 at 30 hosts, **READY_FOR_REVIEW**;
+- placebo (`lp_shuffled_greedy`): +3.70 per host, 28 / 2 / 0, power 0.865 at 36 hosts, **READY_FOR_REVIEW**.
+
+A same-operator rehearsal of the whole causal path, with fixture keys, then ran in one campaign:
+- the custodian's SELECT chose `multistart_tm`;
+- the main evaluation was **SUPPORTED** (30 / 0 / 0, 3.03);
+- the ablation follow-up was **SUPPORTED** (28 / 0 / 2, 1.97);
+- the placebo follow-up was **SUPPORTED** (35 / 0 / 1, 3.19);
+- the judge agreed on all three.
+
+The evidence kernel, under a FIXTURE registry, promoted the claim to utility CONFIRMED_SAME_DOMAIN and causality PLACEBO_CONTROLLED. Fixture grants never reach a release path. The follow-up DRAFTs are `decision_record_DRAFT_ablation.json` and `decision_record_DRAFT_placebo.json`.
 
 ## Contents
 
@@ -56,7 +67,8 @@ The rehearsals license nothing. One operator played every role, with fixture key
 | `campaign_export.zip` | A fresh frozen DEV campaign with the candidate frozen in it. |
 | `decision_record_DRAFT.json` | Names the `e1b` calibration and the re-pilot's power analysis. A frozen copy has no structural problems. |
 | `power_analysis_centred_b20r24.json`, `pilot_summary_b20r24.json`, `rehearsal_summary_b20r24.json` | The re-pilot and both rehearsals. |
-| `exposure_hosts_all.json` | Every host the builder named or generated (1,544). |
+| `decision_record_DRAFT_ablation.json`, `decision_record_DRAFT_placebo.json`, `power_analysis_centred_<contrast>_b20r25.json` | The causal follow-ups (B20_R25). |
+| `exposure_hosts_part_NN.json`, `exposure_sources.json` | Every host the builder named or generated, as of B20_R25 (1,760), in files of at most 400 hosts, with a manifest fragment. |
 | `package_index.json` | Identities, the calibration and the outcomes. |
 
 The B20_R23 version of this package (builder-chosen settings, both domains) is in the git history at `e7fad0e`.

@@ -501,7 +501,8 @@ GATES = {f'GV{i}': (N, t, [], [], [], b, 'NOT_TESTED' if i >= 2 else 'N/A', w) f
     (3, 'useful verified discovery on fresh tasks', ['independent custodian', 'fresh panels',
                                                    'reviewer and statistician sign-off of e1-hard-v2 and the E1/E1b '
                                                    'DRAFTs (B20_R24: both READY_FOR_REVIEW on DEV; same-operator '
-                                                   'rehearsals SUPPORTED, judge agrees)'], 'W13'),
+                                                   'rehearsals SUPPORTED, judge agrees; B20_R25: E1b causal ladder '
+                                                   'rehearsed to PLACEBO_CONTROLLED under a FIXTURE registry)'], 'W13'),
     (4, 'better improver', ['independent search runs', 'sealed downstream evaluation'], 'W21'),
     (5, 'three compounding generations', ['fresh panels per transition'], 'W21'),
     (6, 'meaningful transfer to a structurally different domain', ['different formal domain'], 'W24'),

@@ -63,7 +63,7 @@ The rehearsal licenses nothing. Every role was played by one operator, and the b
 | `decision_record_DRAFT_v3.json` | The DRAFT. It names the `e1-v2` calibration (record SHA-256 in `package_index.json`) and the re-pilot's power analysis. A frozen copy has no structural problems. |
 | `power_analysis_centred_b20r24.json`, `pilot_summary_b20r24.json` | The re-pilot. |
 | `rehearsal_summary_b20r24.json` | Both rehearsals: the payload, the judge, fairness and the SELECT totals. |
-| `exposure_hosts_all.json` | Every host the builder named or generated, as tasks: 1,544 hosts. This covers both domains, the E1 history, both calibrations, the pilots and both rounds of rehearsals. A custodian lists it as a `json` source in its exposure manifest. |
+| `exposure_hosts_part_NN.json`, `exposure_sources.json` | Every host the builder named or generated, as tasks: 1,760 hosts as of B20_R25. This covers both domains, the E1 history, both calibrations, the pilots and every rehearsal. The hosts are in files of at most 400, so each stays well under the custodian's per-source screening limit. `exposure_sources.json` is the manifest fragment to add. |
 | `package_index.json` | Identities, the calibration, the verdicts and the rehearsal outcomes. |
 | `decision_record_DRAFT_v2.json`, `pilot_summary_b20r12.json`, `power_analysis_centred_b20r12.json` | B20_R12 (`e1-hard-v1`: UNDERPOWERED). Kept. |
 | `decision_record_DRAFT.json`, `b19_*.json`, `exposure_hosts_to_exclude.json` | B19 and the earlier exposure list. Kept. |
@@ -73,7 +73,7 @@ The rehearsal licenses nothing. Every role was played by one operator, and the b
 1. **Reviewer.** Sign off the rule `e1-hard-v2` and the three earlier decisions, then freeze `decision_record_DRAFT_v3.json` (`decision_record.freeze`). Publish the record and its hash.
 2. **Statistician.** Sign off the centred power model (B19-OPEN-4).
 3. **Independent custodian, on its own machine and with its own keys:**
-   1. Write an exposure manifest that includes `exposure_hosts_all.json`.
+   1. Write an exposure manifest that includes every `exposure_hosts_part_NN.json` (the entries are in `exposure_sources.json`).
    2. Run `select_comparator(..., study='e1-v2')`.
    3. The research operator records the signed selection (`cli.record_comparator_selection`) and builds the v4 request (`cli.descriptor_request_bundle`, 30 hosts).
    4. The custodian runs `register`, then `evaluate` on a CONFIRM pool drawn from study `e1-v2` with a private seed, and publishes the registration log.

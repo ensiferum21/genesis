@@ -1,0 +1,133 @@
+{
+ "analysis": {
+  "alpha": 0.05,
+  "cost": {
+   "max_ratio": 3.0,
+   "measure": "cpu_ns"
+  },
+  "decision_record_sha256": "df62f1d9339c28ed0ea76f077da55660f20fa189a8b7c580d5988928a2d29206",
+  "decision_rule": "superiority-with-minimum-useful-effect",
+  "design_effect": 1.0,
+  "estimand": "mean-of-stratum-means",
+  "failures": "score-zero",
+  "interval": {
+   "level": 0.9,
+   "method": "stratified-bootstrap-percentile",
+   "resamples": 4000
+  },
+  "max_unsupported_fraction": 0.05,
+  "minimum_useful_effect": 0.5,
+  "multiplicity": {
+   "family_id": "placebo:triangle_free_host_v1",
+   "family_size": 3,
+   "method": "holm"
+  },
+  "power_target": 0.8,
+  "primary": "paired-edge-difference",
+  "regression": {
+   "max_stratum_loss": 1.0
+  },
+  "schema": "genesis-analysis-plan-v2",
+  "sensitivity": [
+   "task-sign-test",
+   "leave-one-stratum-out",
+   "failures-excluded",
+   "stratum-level-sign-flip"
+  ],
+  "stopping": {
+   "rule": "single-analysis"
+  },
+  "strata": "family",
+  "test": "stratified-sign-flip",
+  "unsupported": "exclude-and-report"
+ },
+ "arms": {
+  "baseline": {
+   "descriptor_id": "a05fc4eb7a6ffdc52d0f181105f8d573fd285ef18125fbc5c9cb83908b37e7ab",
+   "domain": "triangle_free_host_v1",
+   "implementation": {
+    "candidates.py": "a04d3fe0792113ec9527bdf16fccc8f8580179b9a6b567c4cd30486d6d2696f2",
+    "discovery/construct.py": "eae08e083fe24f6c49f9d1bf508691d77a6e2e9a4ca9b15ae669de6779de5509",
+    "dsl.py": "b1576f320cf7e689250771c484f95f3aa16ab853059d01ffabc1802a2c730508",
+    "graphs.py": "e0e8e089a240a2fc3a422d29c6fe65a6031d06264eab29fb8a991ad60213261d",
+    "invention/representations.py": "5c53e369b93db4d854c1829587202423bd81c14eafa55808b77c1852f44bfcbd",
+    "models.py": "2d10c569f5de3ee209ce07525972d199bba1168ae187ffc223880491fa701d05"
+   },
+   "kind": "construct-pipeline-v1",
+   "parameters": {
+    "cpu_seconds": 2.0,
+    "finish": "none",
+    "frac": 1.0,
+    "init": "lp_shuffled_greedy",
+    "seed": 0
+   },
+   "resource_profile": {
+    "cpu_seconds": 4,
+    "memory_mib": 2048,
+    "queries": 1000,
+    "wall_seconds": 20
+   },
+   "schema": "genesis-candidate-descriptor-v1"
+  },
+  "candidate": {
+   "descriptor_id": "f5a3d7ffd69c014e28aacc6550a41118c25cf7bfbc13145cb9fbed7892f6f06e",
+   "domain": "triangle_free_host_v1",
+   "implementation": {
+    "candidates.py": "a04d3fe0792113ec9527bdf16fccc8f8580179b9a6b567c4cd30486d6d2696f2",
+    "discovery/construct.py": "eae08e083fe24f6c49f9d1bf508691d77a6e2e9a4ca9b15ae669de6779de5509",
+    "dsl.py": "b1576f320cf7e689250771c484f95f3aa16ab853059d01ffabc1802a2c730508",
+    "graphs.py": "e0e8e089a240a2fc3a422d29c6fe65a6031d06264eab29fb8a991ad60213261d",
+    "invention/representations.py": "5c53e369b93db4d854c1829587202423bd81c14eafa55808b77c1852f44bfcbd",
+    "models.py": "2d10c569f5de3ee209ce07525972d199bba1168ae187ffc223880491fa701d05"
+   },
+   "kind": "construct-pipeline-v1",
+   "parameters": {
+    "cpu_seconds": 2.0,
+    "finish": "none",
+    "frac": 1.0,
+    "init": "lp_greedy",
+    "seed": 0
+   },
+   "resource_profile": {
+    "cpu_seconds": 4,
+    "memory_mib": 2048,
+    "queries": 1000,
+    "wall_seconds": 20
+   },
+   "schema": "genesis-candidate-descriptor-v1"
+  }
+ },
+ "campaign_export_sha256": "9d04af1da31aeb2b5a175e1144b244cab901e37d36b5623b93b04fc97a3dde64",
+ "campaign_id": "3354fa7655d93c75134fa4f9d358e93db26f2ca35195e2624b868c3f77e72db1",
+ "candidate_version": "1b2ca9a881798cf381084418df532c536685a64d676c941161f112432362d382",
+ "claim_id": "e1b-causal-rehearsal-b20r25",
+ "domain": "triangle_free_host_v1",
+ "evidence_kind": "placebo",
+ "expected_evaluator_hash": "536d2c064fd3848c999f85986197f91b8f49e09d52ff6eae5e6aa5efd7010d67",
+ "exposed_graph_fingerprints": [
+  "01810c843723568f309d5780d10703e5b6d7711b15e86496943cb4f8fb4868f0",
+  "02e346bc5a34c073df207feb0bb8fb9a7129a2c0911868c4d1653c5c0ebd4bf9",
+  "3870e9521e9189b0f6e1d8c7767f80066aa0d31883c9ae1357ec047eea3cbebb",
+  "5bb24b7b108170e82f94e2028aef0e3600967c138015b757fff8e1aac715412e",
+  "65b264d1bcb7a49d9240ba54b207343235dec62ab20a376c51a42e4423cf2b74",
+  "6930cb77c68d6173e97262d19d2246b98fa3418b8c7fb1f221835d92505ff27a",
+  "6beccf26579a487687d8f85609e7abf213b4f96155af37e541734f26f8d8dbcc",
+  "78bb3db9d961bedbadb6773c86b089c68354bbdf4480051a05585c2af202e007",
+  "87a585e4596570f56d399363857de046b1922ea21dde3a12cb32880e54f63b62",
+  "8e276553f81a3b8aa5859624f34e07fd331a293aa725c2b925148f2d5ebce61e",
+  "95723c87af117128a4482ac31183371e5a7b90db7431a508d1188d2847dc8da6",
+  "a206a8414cbb164739804c67db5133153d0077571e521b12c4b7fe39a745ced8",
+  "b5ba1f771c800d19c15f1a3683bd3b8bb035b6c120244c4e96f82406c71e6200",
+  "b92a9796e0e87f3549cd0cf1e5b0f116045277ede3257cf4bb8dd2c8b729775c",
+  "c20e1f1ff7a51b34a659937dbe435f8b0abb6842d30f7a848c04bc3b08675b4b",
+  "e6a893a2de21a88b22c77b09b7c5ae613e17b1bc30f8f9ddb0e92444185c2dba"
+ ],
+ "generation_transition": null,
+ "schema": "genesis-evaluation-request-v4",
+ "scope": "rehearsal panels of triangle_free_host_v1 hosts from the e1b calibration (same operator)",
+ "seed": 20263111,
+ "source_hash": "536d2c064fd3848c999f85986197f91b8f49e09d52ff6eae5e6aa5efd7010d67",
+ "statement_hash": "2bc69ed41ddc0f942dbc9bc416d341025fa9b2876648c7609766442d10f1dd2e",
+ "task_count": 36,
+ "transfer_source_domain": null
+}

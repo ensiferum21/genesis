@@ -1,0 +1,214 @@
+{
+ "allowed_conclusion": "If SUPPORTED: on that panel only, the LP guidance contributes at least the minimum useful effect (ablation). Not a statement about other components, families or domains.",
+ "analysis_plan_core": {
+  "alpha": 0.05,
+  "cost": {
+   "max_ratio": 3.0,
+   "measure": "cpu_ns"
+  },
+  "decision_rule": "superiority-with-minimum-useful-effect",
+  "design_effect": 1.0,
+  "estimand": "mean-of-stratum-means",
+  "failures": "score-zero",
+  "interval": {
+   "level": 0.9,
+   "method": "stratified-bootstrap-percentile",
+   "resamples": 4000
+  },
+  "max_unsupported_fraction": 0.05,
+  "minimum_useful_effect": 0.5,
+  "multiplicity": {
+   "family_id": "ablation:triangle_free_host_v1",
+   "family_size": 3,
+   "method": "holm"
+  },
+  "power_target": 0.8,
+  "primary": "paired-edge-difference",
+  "regression": {
+   "max_stratum_loss": 1.0
+  },
+  "schema": "genesis-analysis-plan-v2",
+  "sensitivity": [
+   "task-sign-test",
+   "leave-one-stratum-out",
+   "failures-excluded",
+   "stratum-level-sign-flip"
+  ],
+  "stopping": {
+   "rule": "single-analysis"
+  },
+  "strata": "family",
+  "test": "stratified-sign-flip",
+  "unsupported": "exclude-and-report"
+ },
+ "baselines": {
+  "comparator": "the registered ablation of the frozen candidate (replay_contracts.INTERVENTIONS)",
+  "meaning": "ablation: no LP guidance (random-order greedy restarts for the same stage budget); placebo: the same LP solve and restarts with the LP values permuted among the edges"
+ },
+ "capability_changes": "None: a causal follow-up of the E1b claim; the arms differ in one registered component.",
+ "created_at": "2026-10-14T04:43:46.204589+00:00",
+ "exact_claim": "The frozen construction-pipeline candidate (descriptor f5a3d7ffd69c014e) scores more edges than the same candidate after removing its LP guidance (the registered ablation: init random_greedy, the same budget) (descriptor c1a3928eb9142cdb), on a custodian-held CONFIRM panel of triangle_free_host_v1 hosts drawn from the e1b study calibration (rule e1-hard-v2, record SHA-256 bc26782a0c5916e9, settings planted_cluster {'n': 30, 'p_in': 0.6, 'p_out': 0.2}, erdos {'n': 26, 'p': 0.35}, erdos {'n': 30, 'p': 0.3}), by at least the minimum useful effect, under the registered analysis.",
+ "exposure_policy": "Custodian-built exposure registry; every host the builder named or generated; a CONFIRM panel is retired after its one use.",
+ "minimum_useful_effect": 0.5,
+ "permissible_information": "The candidate sees only the candidate view (domain, n, edges). Development used public DEV panels only. SELECT and CONFIRM are drawn and held by the custodian.",
+ "primary_outcome": {
+  "endpoint": "paired-edge-difference",
+  "estimand": "mean-of-stratum-means",
+  "strata": "family"
+ },
+ "raw_evidence_custody": "Custodian private evidence store; the judge recomputes the analysis; the custodian publishes a signed registration log.",
+ "rejection_criteria": "Any decision-record or plan check failing; an evaluator that cannot run the candidate; registration beyond the declared family size; an INVALID or NOT_SUPPORTED outcome. An intervened arm that is not the registered intervention of the frozen candidate.",
+ "roles": {
+  "auditor": "TO BE ASSIGNED",
+  "custodian": "TO BE ASSIGNED (independent operator)",
+  "release_authority": "TO BE ASSIGNED",
+  "research_operator": "Genesis builder"
+ },
+ "sample_size_justification": {
+  "assumed_holm_rank_alpha": 0.016666666666666666,
+  "chosen": {
+   "power": 0.996,
+   "tasks_per_stratum": 10,
+   "total_tasks": 30
+  },
+  "design_effect": 1.0,
+  "false_positive_rate_at_zero_effect": 0.005,
+  "headroom_reference": "centred",
+  "min_tasks_per_stratum": 10,
+  "minimum_useful_effect": 0.5,
+  "model": "headroom-limited integer improvements over centred DEV pilot differences",
+  "note": "pilot effect sizes are reported but never used to set the effect; only spread and headroom are",
+  "pilot_rows_sha256": "92d9fb9323801df8c06270bbed1b1afc287d8d95b638861a431629a20ae4a989",
+  "pilot_strata": {
+   "erdos:70960071": {
+    "mean_difference": 1.5,
+    "sd": 1.354,
+    "share_with_headroom": 1.0,
+    "tasks": 10
+   },
+   "erdos:b73f6828": {
+    "mean_difference": 2.0,
+    "sd": 1.2472,
+    "share_with_headroom": 1.0,
+    "tasks": 10
+   },
+   "planted_cluster:1467febf": {
+    "mean_difference": 1.9,
+    "sd": 0.8756,
+    "share_with_headroom": 1.0,
+    "tasks": 10
+   }
+  },
+  "plan_core_sha256": "378339d558f8c2bca6ea1438ca1a5a1f229f4e8ee3f35ac613add0d9d0bea583",
+  "power_at_minimum_useful_effect": 0.448,
+  "power_target": 0.8,
+  "schema": "genesis-power-analysis-v1",
+  "status": "CHOSEN",
+  "table": [
+   {
+    "power": 0.996,
+    "tasks_per_stratum": 10,
+    "total_tasks": 30
+   },
+   {
+    "power": 0.999,
+    "tasks_per_stratum": 12,
+    "total_tasks": 36
+   },
+   {
+    "power": 1.0,
+    "tasks_per_stratum": 15,
+    "total_tasks": 45
+   },
+   {
+    "power": 1.0,
+    "tasks_per_stratum": 20,
+    "total_tasks": 60
+   },
+   {
+    "power": 1.0,
+    "tasks_per_stratum": 25,
+    "total_tasks": 75
+   },
+   {
+    "power": 1.0,
+    "tasks_per_stratum": 30,
+    "total_tasks": 90
+   },
+   {
+    "power": 1.0,
+    "tasks_per_stratum": 40,
+    "total_tasks": 120
+   },
+   {
+    "power": 1.0,
+    "tasks_per_stratum": 50,
+    "total_tasks": 150
+   },
+   {
+    "power": 1.0,
+    "tasks_per_stratum": 60,
+    "total_tasks": 180
+   },
+   {
+    "power": 1.0,
+    "tasks_per_stratum": 80,
+    "total_tasks": 240
+   },
+   {
+    "power": 1.0,
+    "tasks_per_stratum": 100,
+    "total_tasks": 300
+   },
+   {
+    "power": 1.0,
+    "tasks_per_stratum": 150,
+    "total_tasks": 450
+   },
+   {
+    "power": 1.0,
+    "tasks_per_stratum": 200,
+    "total_tasks": 600
+   }
+  ]
+ },
+ "schema": "genesis-decision-record-v1",
+ "statistical_rules": {
+  "alpha": 0.05,
+  "failures": "score-zero",
+  "interval": {
+   "level": 0.9,
+   "method": "stratified-bootstrap-percentile",
+   "resamples": 4000
+  },
+  "multiplicity": {
+   "family_id": "ablation:triangle_free_host_v1",
+   "family_size": 3,
+   "method": "holm"
+  },
+  "sensitivity": [
+   "task-sign-test",
+   "leave-one-stratum-out",
+   "failures-excluded",
+   "stratum-level-sign-flip"
+  ],
+  "test": "stratified-sign-flip",
+  "unsupported": "exclude-and-report"
+ },
+ "status": "DRAFT",
+ "stopping_rule": {
+  "rule": "single-analysis"
+ },
+ "total_budget": {
+  "arms": 2,
+  "charge": "every attempt, retry, timeout and failure",
+  "equal_accounting": "one sandbox, one profile, cgroup CPU per arm",
+  "profile": {
+   "cpu_seconds": 4,
+   "memory_mib": 2048,
+   "queries": 1000,
+   "wall_seconds": 20
+  },
+  "search_seconds_per_arm": 2.0
+ }
+}

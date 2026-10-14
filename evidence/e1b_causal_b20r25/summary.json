@@ -1,0 +1,405 @@
+{
+ "code_identity": "536d2c064fd3848c999f85986197f91b8f49e09d52ff6eae5e6aa5efd7010d67",
+ "exposure_scan": {
+  "calibration_hosts": 456,
+  "distinct_hosts": 1634,
+  "e1_named_hosts": 711,
+  "empty_files_skipped": [
+   "evidence/failed-wal-final-replay.json",
+   "evidence/final-replay.json"
+  ],
+  "excluded_identities": 1634,
+  "files_scanned": 870,
+  "host_records": 7047
+ },
+ "pilot": {
+  "calibration": {
+   "record_sha256": "bc26782a0c5916e9e1246e5351f617a3006ffece99451c57ead5ee39b41ee633",
+   "selected": [
+    {
+     "family": "planted_cluster",
+     "index": 18,
+     "params": {
+      "n": 30,
+      "p_in": 0.6,
+      "p_out": 0.2
+     }
+    },
+    {
+     "family": "erdos",
+     "index": 7,
+     "params": {
+      "n": 26,
+      "p": 0.35
+     }
+    },
+    {
+     "family": "erdos",
+     "index": 9,
+     "params": {
+      "n": 30,
+      "p": 0.3
+     }
+    }
+   ]
+  },
+  "contrasts": {
+   "ablation": {
+    "approximation_agreement": 1.0,
+    "certified_by_stratum": {
+     "erdos:70960071": [
+      10,
+      10
+     ],
+     "erdos:b73f6828": [
+      10,
+      10
+     ],
+     "planted_cluster:1467febf": [
+      10,
+      10
+     ]
+    },
+    "cpu_ns": {
+     "ablation": 65437848702,
+     "candidate": 66780838591
+    },
+    "cpu_ratio_candidate_to_intervened": 1.0205,
+    "draft_plan_dry_run": {
+     "checks": {
+      "cost_within_bound": true,
+      "estimate_reaches_minimum_useful_effect": true,
+      "holm_rejects_no_superiority": true,
+      "interval_lower_above_zero": true,
+      "no_stratum_regression": true
+     },
+     "cost_ratio": 1.0205231363,
+     "decision": "SUPPORTED",
+     "estimate": 1.8,
+     "interval": [
+      1.4666666667,
+      2.1666666667
+     ],
+     "p_value": 4.99975e-05
+    },
+    "failures": {
+     "ablation": 0,
+     "candidate": 0
+    },
+    "mean_difference": 1.8,
+    "power_centred": {
+     "chosen": {
+      "power": 0.996,
+      "tasks_per_stratum": 10,
+      "total_tasks": 30
+     },
+     "false_positive_rate_at_zero_effect": 0.005,
+     "pilot_strata": {
+      "erdos:70960071": {
+       "mean_difference": 1.5,
+       "sd": 1.354,
+       "share_with_headroom": 1.0,
+       "tasks": 10
+      },
+      "erdos:b73f6828": {
+       "mean_difference": 2.0,
+       "sd": 1.2472,
+       "share_with_headroom": 1.0,
+       "tasks": 10
+      },
+      "planted_cluster:1467febf": {
+       "mean_difference": 1.9,
+       "sd": 0.8756,
+       "share_with_headroom": 1.0,
+       "tasks": 10
+      }
+     },
+     "power_at_minimum_useful_effect": 0.448,
+     "status": "CHOSEN",
+     "table": [
+      {
+       "power": 0.996,
+       "tasks_per_stratum": 10,
+       "total_tasks": 30
+      },
+      {
+       "power": 0.999,
+       "tasks_per_stratum": 12,
+       "total_tasks": 36
+      },
+      {
+       "power": 1.0,
+       "tasks_per_stratum": 15,
+       "total_tasks": 45
+      },
+      {
+       "power": 1.0,
+       "tasks_per_stratum": 20,
+       "total_tasks": 60
+      },
+      {
+       "power": 1.0,
+       "tasks_per_stratum": 25,
+       "total_tasks": 75
+      },
+      {
+       "power": 1.0,
+       "tasks_per_stratum": 30,
+       "total_tasks": 90
+      },
+      {
+       "power": 1.0,
+       "tasks_per_stratum": 40,
+       "total_tasks": 120
+      },
+      {
+       "power": 1.0,
+       "tasks_per_stratum": 50,
+       "total_tasks": 150
+      },
+      {
+       "power": 1.0,
+       "tasks_per_stratum": 60,
+       "total_tasks": 180
+      },
+      {
+       "power": 1.0,
+       "tasks_per_stratum": 80,
+       "total_tasks": 240
+      },
+      {
+       "power": 1.0,
+       "tasks_per_stratum": 100,
+       "total_tasks": 300
+      },
+      {
+       "power": 1.0,
+       "tasks_per_stratum": 150,
+       "total_tasks": 450
+      },
+      {
+       "power": 1.0,
+       "tasks_per_stratum": 200,
+       "total_tasks": 600
+      }
+     ]
+    },
+    "scored": 30,
+    "stratum_mean_differences": {
+     "erdos:70960071": 1.5,
+     "erdos:b73f6828": 2.0,
+     "planted_cluster:1467febf": 1.9
+    },
+    "verdict": "READY_FOR_REVIEW",
+    "wins_ties_losses": [
+     27,
+     3,
+     0
+    ]
+   },
+   "placebo": {
+    "approximation_agreement": 1.0,
+    "certified_by_stratum": {
+     "erdos:70960071": [
+      10,
+      10
+     ],
+     "erdos:b73f6828": [
+      10,
+      10
+     ],
+     "planted_cluster:1467febf": [
+      10,
+      10
+     ]
+    },
+    "cpu_ns": {
+     "candidate": 66780838591,
+     "placebo": 66722808514
+    },
+    "cpu_ratio_candidate_to_intervened": 1.0009,
+    "draft_plan_dry_run": {
+     "checks": {
+      "cost_within_bound": true,
+      "estimate_reaches_minimum_useful_effect": true,
+      "holm_rejects_no_superiority": true,
+      "interval_lower_above_zero": true,
+      "no_stratum_regression": true
+     },
+     "cost_ratio": 1.0008697187,
+     "decision": "SUPPORTED",
+     "estimate": 3.7,
+     "interval": [
+      3.1666666667,
+      4.2666666667
+     ],
+     "p_value": 4.99975e-05
+    },
+    "failures": {
+     "candidate": 0,
+     "placebo": 0
+    },
+    "mean_difference": 3.7,
+    "power_centred": {
+     "chosen": {
+      "power": 0.865,
+      "tasks_per_stratum": 12,
+      "total_tasks": 36
+     },
+     "false_positive_rate_at_zero_effect": 0.008,
+     "pilot_strata": {
+      "erdos:70960071": {
+       "mean_difference": 3.0,
+       "sd": 1.5635,
+       "share_with_headroom": 1.0,
+       "tasks": 10
+      },
+      "erdos:b73f6828": {
+       "mean_difference": 4.7,
+       "sd": 1.8886,
+       "share_with_headroom": 1.0,
+       "tasks": 10
+      },
+      "planted_cluster:1467febf": {
+       "mean_difference": 3.4,
+       "sd": 2.2706,
+       "share_with_headroom": 1.0,
+       "tasks": 10
+      }
+     },
+     "power_at_minimum_useful_effect": 0.239,
+     "status": "CHOSEN",
+     "table": [
+      {
+       "power": 0.783,
+       "tasks_per_stratum": 10,
+       "total_tasks": 30
+      },
+      {
+       "power": 0.865,
+       "tasks_per_stratum": 12,
+       "total_tasks": 36
+      },
+      {
+       "power": 0.936,
+       "tasks_per_stratum": 15,
+       "total_tasks": 45
+      },
+      {
+       "power": 0.984,
+       "tasks_per_stratum": 20,
+       "total_tasks": 60
+      },
+      {
+       "power": 0.992,
+       "tasks_per_stratum": 25,
+       "total_tasks": 75
+      },
+      {
+       "power": 0.997,
+       "tasks_per_stratum": 30,
+       "total_tasks": 90
+      },
+      {
+       "power": 1.0,
+       "tasks_per_stratum": 40,
+       "total_tasks": 120
+      },
+      {
+       "power": 1.0,
+       "tasks_per_stratum": 50,
+       "total_tasks": 150
+      },
+      {
+       "power": 1.0,
+       "tasks_per_stratum": 60,
+       "total_tasks": 180
+      },
+      {
+       "power": 1.0,
+       "tasks_per_stratum": 80,
+       "total_tasks": 240
+      },
+      {
+       "power": 1.0,
+       "tasks_per_stratum": 100,
+       "total_tasks": 300
+      },
+      {
+       "power": 1.0,
+       "tasks_per_stratum": 150,
+       "total_tasks": 450
+      },
+      {
+       "power": 1.0,
+       "tasks_per_stratum": 200,
+       "total_tasks": 600
+      }
+     ]
+    },
+    "scored": 30,
+    "stratum_mean_differences": {
+     "erdos:70960071": 3.0,
+     "erdos:b73f6828": 4.7,
+     "planted_cluster:1467febf": 3.4
+    },
+    "verdict": "READY_FOR_REVIEW",
+    "wins_ties_losses": [
+     28,
+     2,
+     0
+    ]
+   }
+  },
+  "descriptors": {
+   "ablation": "c1a3928eb9142cdbdc7de177ea391cc592eb914a3c91be0dfe55770ca68e8b44",
+   "candidate": "f5a3d7ffd69c014e28aacc6550a41118c25cf7bfbc13145cb9fbed7892f6f06e",
+   "placebo": "a05fc4eb7a6ffdc52d0f181105f8d573fd285ef18125fbc5c9cb83908b37e7ab"
+  },
+  "hosts": 30,
+  "optimum_hits": {
+   "ablation": 3,
+   "candidate": 25,
+   "placebo": 2
+  },
+  "placebo_minus_ablation_mean": -1.9
+ },
+ "rehearsal": {
+  "evaluations": {
+   "ablation": "SUPPORTED",
+   "placebo": "SUPPORTED",
+   "sealed_evaluation": "SUPPORTED"
+  },
+  "kernel_levels": {
+   "causality": "PLACEBO_CONTROLLED",
+   "improver": "NOT_TESTED",
+   "math": "UNCHECKED",
+   "novelty": "UNKNOWN",
+   "replication": "NONE",
+   "utility": "CONFIRMED_SAME_DOMAIN"
+  },
+  "promotions": [
+   [
+    "utility",
+    "CONFIRMED_SAME_DOMAIN",
+    "PROMOTED"
+   ],
+   [
+    "causality",
+    "ABLATION_SUPPORTED",
+    "PROMOTED"
+   ],
+   [
+    "causality",
+    "PLACEBO_CONTROLLED",
+    "PROMOTED"
+   ]
+  ]
+ },
+ "schema": "genesis-b20r25-e1b-causal-v1",
+ "status": "DEV re-pilot and a same-operator rehearsal with fixture keys; licenses no claim",
+ "verdicts": {
+  "ablation": "READY_FOR_REVIEW",
+  "placebo": "READY_FOR_REVIEW"
+ }
+}

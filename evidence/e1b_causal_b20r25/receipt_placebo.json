@@ -1,0 +1,138 @@
+{
+ "payload": {
+  "analysis": {
+   "alpha": 0.05,
+   "cost": {
+    "max_ratio": 3.0,
+    "measure": "cpu_ns"
+   },
+   "decision_record_sha256": "df62f1d9339c28ed0ea76f077da55660f20fa189a8b7c580d5988928a2d29206",
+   "decision_rule": "superiority-with-minimum-useful-effect",
+   "design_effect": 1.0,
+   "estimand": "mean-of-stratum-means",
+   "failures": "score-zero",
+   "interval": {
+    "level": 0.9,
+    "method": "stratified-bootstrap-percentile",
+    "resamples": 4000
+   },
+   "max_unsupported_fraction": 0.05,
+   "minimum_useful_effect": 0.5,
+   "multiplicity": {
+    "family_id": "placebo:triangle_free_host_v1",
+    "family_size": 3,
+    "method": "holm"
+   },
+   "power_target": 0.8,
+   "primary": "paired-edge-difference",
+   "regression": {
+    "max_stratum_loss": 1.0
+   },
+   "schema": "genesis-analysis-plan-v2",
+   "sensitivity": [
+    "task-sign-test",
+    "leave-one-stratum-out",
+    "failures-excluded",
+    "stratum-level-sign-flip"
+   ],
+   "stopping": {
+    "rule": "single-analysis"
+   },
+   "strata": "family",
+   "test": "stratified-sign-flip",
+   "unsupported": "exclude-and-report"
+  },
+  "analysis_result": {
+   "checks": {
+    "cost_within_bound": true,
+    "estimate_reaches_minimum_useful_effect": true,
+    "holm_rejects_no_superiority": true,
+    "interval_lower_above_zero": true,
+    "no_stratum_regression": true
+   },
+   "cost_cpu_ns": {
+    "baseline": 79985699623,
+    "candidate": 80124192049
+   },
+   "cost_ratio": 1.0017314648,
+   "decision": "SUPPORTED",
+   "estimate": 3.1944444444,
+   "failures": {
+    "baseline": 0,
+    "candidate": 0
+   },
+   "family_p_values": [],
+   "holm_threshold": 0.0166666667,
+   "interval": [
+    2.7777777778,
+    3.6388888889
+   ],
+   "interval_level": 0.9,
+   "losses": 0,
+   "p_method": "monte-carlo-20000",
+   "p_value": 4.99975e-05,
+   "plan_sha256": "eb2153cf75be17363776300ca9f61f18f0a2e71e6ba553c132edb6fb8b9dc53e",
+   "reasons": [],
+   "schema": "genesis-analysis-result-v2",
+   "scored": 36,
+   "sensitivity": {
+    "failures-excluded": 3.1944444444,
+    "leave-one-stratum-out": {
+     "erdos:70960071": 3.25,
+     "erdos:b73f6828": 3.375,
+     "planted_cluster:1467febf": 2.9583333333
+    },
+    "stratum-level-sign-flip": 0.125,
+    "task-sign-test": 0.0
+   },
+   "strata": 3,
+   "stratum_means": {
+    "erdos:70960071": 3.0833333333,
+    "erdos:b73f6828": 2.8333333333,
+    "planted_cluster:1467febf": 3.6666666667
+   },
+   "tasks": 36,
+   "ties": 1,
+   "unsupported": [],
+   "wins": 35
+  },
+  "anchor_hash": "f6500bf54627c1ed7fe1bf4a447b92241a3ad4442ee007f6452b65bf639a8b10",
+  "arms_sha256": "0bb3dea9f7a87aec1b20c134fc6eded62d71fb2f14764387843b149556be889b",
+  "baseline_descriptor_id": "a05fc4eb7a6ffdc52d0f181105f8d573fd285ef18125fbc5c9cb83908b37e7ab",
+  "campaign_id": "3354fa7655d93c75134fa4f9d358e93db26f2ca35195e2624b868c3f77e72db1",
+  "candidate_descriptor_id": "f5a3d7ffd69c014e28aacc6550a41118c25cf7bfbc13145cb9fbed7892f6f06e",
+  "candidate_version": "1b2ca9a881798cf381084418df532c536685a64d676c941161f112432362d382",
+  "claim_id": "e1b-causal-rehearsal-b20r25",
+  "completed_at": "2026-10-14T05:08:47.789231+00:00",
+  "completed_rows": 72,
+  "domain": "triangle_free_host_v1",
+  "domain_contract_hash": "522ee2f43e81120f4b180e4f3630f9278d26f8ebb65aafb0e4040159f9e3f150",
+  "evaluator_hash": "536d2c064fd3848c999f85986197f91b8f49e09d52ff6eae5e6aa5efd7010d67",
+  "evidence_kind": "placebo",
+  "execution_failures": 0,
+  "expected_rows": 72,
+  "family_p": 4.99975e-05,
+  "generation_transition": null,
+  "independence": "OPERATOR_ATTESTATION_REQUIRED",
+  "isolation": "OCI_RUNC_NO_NETWORK_RO_ROOT_SECCOMP",
+  "losses": 0,
+  "operator_id": "BUILDER_REHEARSAL_NOT_INDEPENDENT",
+  "outcome": "SUPPORTED",
+  "paired_p": 2.9103830456733704e-11,
+  "panel_commitment": "9220d6473f9252c2cc9c48cd4d60da71c1d70d358dc239d9e64e6386e4b86173",
+  "raw_evidence_complete": true,
+  "raw_evidence_root": "1b5a8183749cd7f91e974662cf0423be2e624b142575582cf2b888abfc261f1b",
+  "registered_at": "2026-10-14T04:59:09.140801+00:00",
+  "request_hash": "6e017c8e8196da13991e95305b5eeb4e9320f593a5ecd7769e5041f025e73bf0",
+  "schema": "genesis-scientific-receipt-v4",
+  "scope": "rehearsal panels of triangle_free_host_v1 hosts from the e1b calibration (same operator)",
+  "screen": "CUSTODIAN_BUILT_REGISTRY_ISOMORPHISM_AND_NEAR_DUPLICATE",
+  "source_hash": "536d2c064fd3848c999f85986197f91b8f49e09d52ff6eae5e6aa5efd7010d67",
+  "statement_hash": "2bc69ed41ddc0f942dbc9bc416d341025fa9b2876648c7609766442d10f1dd2e",
+  "task_count": 36,
+  "ties": 1,
+  "transfer_source_domain": null,
+  "wins": 35
+ },
+ "signature": "YQDsTYASRomCdMqN9hFn1mWkgjrIMPdqnnsMLxsg5VAkuFUa72ZEeWzZghEG9mq/djfyFXtQiJXAuaWpCqk+BA=="
+}

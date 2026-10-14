@@ -2,7 +2,7 @@
 
 ## Where things stand
 
-- **Branch:** `continuation-b20-rx` (GitHub `ensiferum21/genesis`). It is the canonical B20_R11 line (`continuation-b20-repairs`, `36954d6`), with the recovery-branch work ported onto it, plus B20_R12 and B20_R15–R24.
+- **Branch:** `continuation-b20-rx` (GitHub `ensiferum21/genesis`). It is the canonical B20_R11 line (`continuation-b20-repairs`, `36954d6`), with the recovery-branch work ported onto it, plus B20_R12 and B20_R15–R25.
 - **Checkpoints:**
 
 | Checkpoint | Commit | Archive SHA-256 |
@@ -19,7 +19,7 @@
 | B20_R24 | `77a7b78` | `8dcf9937…3633` (release matrix 1,168 tests, all OK; restore-verified; sent to Daniel directly) |
 
   The recovery-branch checkpoints B20_RX1 and B20_RX2 are on `recovery-b20r1-partial`; their work was ported here.
-- **Records:** `docs/checkpoints/B20_R1_RECORD.md` … `B20_R11_RECORD.md`, `B20_RX1_RECORD.md`, `B20_RX2_RECORD.md`, `B20_R12_RECORD.md` and `B20_R15_RECORD.md` … `B20_R24_RECORD.md`.
+- **Records:** `docs/checkpoints/B20_R1_RECORD.md` … `B20_R11_RECORD.md`, `B20_RX1_RECORD.md`, `B20_RX2_RECORD.md`, `B20_R12_RECORD.md` and `B20_R15_RECORD.md` … `B20_R25_RECORD.md`.
 
 ## Completed since B20_R11
 
@@ -39,6 +39,7 @@
 | B20_R22 | H08 s20.6 complete in engineering terms: retention and negative transfer under a frozen protocol (protected material, measured once, within budget); a DEV demonstration finds NEGATIVE_TRANSFER of a campaign's first retained change |
 | B20_R23 | Candidate kind `construct-pipeline-v1` (GV4 draft item 1) with a registered ablation and placebo of its LP guidance. **E1b** (the LP-guided candidate, under E1's decided design) is READY_FOR_REVIEW on DEV: triangle-free +1.79 per host (power: 12 per stratum), with causal follow-ups ready (ablation +1.42, placebo +2.53); C4 +1.00, but its causal pilot is UNSETTLED_REFERENCE. DRAFT package `handoff/e1b`; its SELECT step waits on a family decision |
 | B20_R24 | The user's family decision: versioned rule `e1-hard-v2` (time-matched baselines in the sandbox, a certification limit, a headroom bound of one design effect; no candidate input). It selects 3 triangle-free settings and no C4 setting. **E1 and E1b are both READY_FOR_REVIEW** (+2.57 and +2.63 per host, power 0.88 and 0.97 at 30 hosts). The first same-operator rehearsals were INVALID, from an evaluator defect (B20R24-OPEN-1, repaired: joint LP/SAT reference). The re-run rehearsals are **SUPPORTED** for both, and the judge agrees. Packages `handoff/e1` v3, `handoff/e1b` v2 |
+| B20_R25 | E1b's causal follow-ups on the `e1b` family are READY_FOR_REVIEW (ablation +1.80 per host, placebo +3.70). A same-operator rehearsal of the whole causal path is SUPPORTED for the main, ablation and placebo evaluations, and the judge agrees. The kernel, under a FIXTURE registry, promotes the claim to utility CONFIRMED_SAME_DOMAIN and causality PLACEBO_CONTROLLED. The package exposure lists are split into sources of at most 400 hosts |
 
 ## Resume
 
@@ -65,7 +66,7 @@
    - Next, each family as its own preregistered step, with all attempts counted:
      - partitions/quotients with proved transport conditions;
      - decompositions with verified witness composition.
-2. **E1b causal re-pilot on the `e1b` family** (ablation `random_greedy`, placebo `lp_shuffled_greedy`). The template is `scripts/b20r23_e1b_causal_readiness.py`; the B20_R23 pilot used builder-chosen settings.
+2. **E1's causal follow-ups.** `represent-and-repair-v1` has no registered intervention yet. A candidate is the representation (`cross_2`) against a null or random partition. That needs a soundness-licensed null representation in the B18 package, which is a design question for the reviewer.
 3. **Registered interventions for the remaining candidate kinds** (`represent-and-repair-v1`, the formal successor kind), and a supervised child process in the runner, so that the SAT finisher can become a pipeline component. (B20_R23 registered the LP guidance of `construct-pipeline-v1`; the Lean-package route for THEOREM_CHECKED was added in B20_R20.)
 4. **H08, the rest:** paired research lineages for `sealed_improver_evaluation` (needs a GV4 domain with headroom); custodian-held retention material. (Retention and negative transfer were added in B20_R22.)
 5. **H11:** an independent reviewer works through `docs/checkpoints/B20_R20_REVIEW_BRIEF.md`; the operations runbook is `docs/OPERATIONS.md`.

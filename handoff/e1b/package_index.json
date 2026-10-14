@@ -41,19 +41,30 @@
  "code_identity": "88eef89757e93aea7e5f4a4efd04d2e8952a26d0f2582bc3836272e92a14ceee",
  "decision_record_draft_sha256": "3e82490c0f5525366b802cbb27a6d868f7b8e35b04af71e6fdd12cab9bb11ced",
  "domain": "triangle_free_host_v1",
- "exposure_hosts_all": {
-  "hosts": 1544,
+ "exposure_hosts": {
+  "distinct_graphs": 1760,
+  "hosts": 1760,
+  "one_file_screen": "accepted",
+  "parts": [
+   "exposure_hosts_part_00.json",
+   "exposure_hosts_part_01.json",
+   "exposure_hosts_part_02.json",
+   "exposure_hosts_part_03.json",
+   "exposure_hosts_part_04.json"
+  ],
+  "per_part_max": 400,
+  "registry_root": "9a8a4e8ef87ebf3e65d90c2b720231cbf893157f3cf428a685b3645a5b737b63",
   "scan": {
    "calibration_hosts": 456,
-   "distinct_hosts": 1384,
+   "distinct_hosts": 1760,
    "e1_named_hosts": 711,
    "empty_files_skipped": [
     "evidence/failed-wal-final-replay.json",
     "evidence/final-replay.json"
    ],
-   "excluded_identities": 1544,
-   "files_scanned": 849,
-   "host_records": 2953
+   "excluded_identities": 1760,
+   "files_scanned": 869,
+   "host_records": 4402
   }
  },
  "pilot_verdict": "READY_FOR_REVIEW",

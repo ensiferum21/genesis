@@ -422,6 +422,19 @@
         ],
         "decision": "user, 14 Oct 2026: versioned rule e1-hard-v2 picks the E1 and E1b families; both re-piloted",
         "result": "e1-hard-v2: 3 triangle-free settings, no C4; E1 READY_FOR_REVIEW (+2.57, power 0.88 at 30), E1b READY_FOR_REVIEW (+2.63, power 0.97); first rehearsals INVALID (evaluator SAT-only reference, B20R24-OPEN-1, repaired with the joint LP/SAT reference); re-run rehearsals SUPPORTED for both, judge agrees; packages handoff/e1 v3, handoff/e1b v2"
+      },
+      "B20_R25": {
+        "commits": [
+          "14acc23",
+          "1132f16"
+        ],
+        "result": "E1b causal re-pilot on the e1b family READY_FOR_REVIEW (ablation +1.80, placebo +3.70); same-operator causal rehearsal: main, ablation and placebo SUPPORTED, judge agrees; kernel (FIXTURE registry) utility CONFIRMED_SAME_DOMAIN, causality PLACEBO_CONTROLLED; package exposure lists split",
+        "incidents": [
+          "anchor sent ~30 s after the first run started",
+          "single unsplit, undeduplicated exposure source refused by the custodian screen",
+          "source changed during a run (campaign guard)",
+          "pilot_hosts.json overwritten on resume; restored and verified 30/30"
+        ]
       }
     },
     "open_after_b20_r5": [
@@ -518,6 +531,20 @@
       "B20R24-OPEN-2 (certification limit vs unsupported limit)",
       "B20R24-OPEN-1 (repaired, pending review)",
       "E1b causal re-pilot on the e1b family",
+      "B20R9-OPEN-1 (GV4: component invention)",
+      "B20R3-OPEN-2",
+      "B20R5-OPEN-2",
+      "B14-OPEN-4 (pending review)",
+      "B20R-OPEN-3 (pending review)",
+      "R-04",
+      "B20R8-OPEN-1 (pending review)"
+    ],
+    "open_after_b20_r25": [
+      "GV3 sign-off (reviewer: e1-hard-v2 and DRAFTs; statistician B19-OPEN-4; independent custodian)",
+      "B20R24-OPEN-2",
+      "B20R24-OPEN-1 (repaired, pending review)",
+      "replication levels (second operator)",
+      "E1 causal interventions (represent-and-repair-v1)",
       "B20R9-OPEN-1 (GV4: component invention)",
       "B20R3-OPEN-2",
       "B20R5-OPEN-2",

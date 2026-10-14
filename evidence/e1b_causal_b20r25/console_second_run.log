@@ -1,0 +1,22 @@
+[    3.6s] exposure: 1574 identities (1574 named hosts, 711 E1 hosts, 456 calibration hosts)
+[   22.4s] ablation: READY_FOR_REVIEW; mean 1.8 {'erdos:70960071': 1.5, 'erdos:b73f6828': 2.0, 'planted_cluster:1467febf': 1.9}; W/T/L [27, 3, 0]; cpu 1.0205; power CHOSEN {'tasks_per_stratum': 10, 'total_tasks': 30, 'power': 0.996}; dry run SUPPORTED
+[   39.0s] placebo: READY_FOR_REVIEW; mean 3.7 {'erdos:70960071': 3.0, 'erdos:b73f6828': 4.7, 'planted_cluster:1467febf': 3.4}; W/T/L [28, 2, 0]; cpu 1.0009; power CHOSEN {'tasks_per_stratum': 12, 'total_tasks': 36, 'power': 0.865}; dry run SUPPORTED
+/usr/local/lib/python3.13/dist-packages/networkx/algorithms/graph_hashing.py:211: UserWarning: The hashes produced for graphs without node or edge attributes changed in v3.5 due to a bugfix (see documentation).
+  node_labels = _init_node_labels(G, edge_attr, node_attr)
+[  280.6s] SELECT panel {'exchange_tm': 2607, 'low_cycle_tm': 2627, 'multistart_tm': 2647} -> comparator multistart_tm (229 s)
+Traceback (most recent call last):
+  File "/home/claude/dev-wt/scripts/b20r25_e1b_causal.py", line 431, in <module>
+    sys.exit(main())
+             ~~~~^^
+  File "/home/claude/dev-wt/scripts/b20r25_e1b_causal.py", line 412, in main
+    rehearsal = part_b(out, log, excluded, list(named) + list(tasks), pilot)
+  File "/home/claude/dev-wt/scripts/b20r25_e1b_causal.py", line 332, in part_b
+    path = descriptor_request_bundle(camp, total_main, analysis=dict(main_draft['analysis_plan_core'],
+                                                                     decision_record_sha256=h_main),
+                                     claim_id=CLAIM_ID, statement=statement, scope=scope)
+  File "/home/claude/dev-wt/src/genesis/cli.py", line 167, in descriptor_request_bundle
+    campaign._check_frozen_environment()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "/home/claude/dev-wt/src/genesis/campaign.py", line 96, in _check_frozen_environment
+    raise RuntimeError('source changed after campaign initialization; create a new campaign')
+RuntimeError: source changed after campaign initialization; create a new campaign

@@ -1,0 +1,30 @@
+{
+ "note": "add these entries to the custodian exposure manifest \"sources\"; paths are relative to the manifest directory, so copy the part files next to it",
+ "sources": [
+  {
+   "kind": "json",
+   "label": "builder-named hosts (exposure_hosts_part_00.json)",
+   "path": "exposure_hosts_part_00.json"
+  },
+  {
+   "kind": "json",
+   "label": "builder-named hosts (exposure_hosts_part_01.json)",
+   "path": "exposure_hosts_part_01.json"
+  },
+  {
+   "kind": "json",
+   "label": "builder-named hosts (exposure_hosts_part_02.json)",
+   "path": "exposure_hosts_part_02.json"
+  },
+  {
+   "kind": "json",
+   "label": "builder-named hosts (exposure_hosts_part_03.json)",
+   "path": "exposure_hosts_part_03.json"
+  },
+  {
+   "kind": "json",
+   "label": "builder-named hosts (exposure_hosts_part_04.json)",
+   "path": "exposure_hosts_part_04.json"
+  }
+ ]
+}

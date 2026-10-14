@@ -21,7 +21,7 @@ Distinct keys and operator identities are what code can check. Whether the peopl
    The request keeps the claim id, statement, scope, candidate and export binding. Hand it over together with the campaign export (`exports/campaign_export.zip`).
 
 2. **Replicator, on its own machine, with its own keys and custodian store:**
-   1. Build an exposure manifest that lists every DEV panel named in the evidence and every host the original custodian published. Include its registration log, and for E1 also `handoff/e1/exposure_hosts_all.json`.
+   1. Build an exposure manifest that lists every DEV panel named in the evidence and every host the original custodian published. Include its registration log, and for E1 and E1b also the package host lists (`handoff/e1/exposure_sources.json`, `handoff/e1b/exposure_sources.json`).
    2. Draw a fresh CONFIRM pool from the same calibration with a private seed.
    3. Freeze the decision record (`decision_record.freeze`) and publish its hash.
    4. Register:

@@ -1,0 +1,60 @@
+[    4.2s] exposure: 1544 identities (1544 named hosts, 711 E1 hosts, 456 calibration hosts)
+[   12.4s] dev-planted_cluster-1467febf-20263101-0000: opt 83 (L83/U83 0s) candidate 83, ablation 82, placebo 83 [8s]
+[   19.6s] dev-planted_cluster-1467febf-20263101-0001: opt 94 (L94/U94 0s) candidate 94, ablation 92, placebo 91 [15s]
+[   26.7s] dev-planted_cluster-1467febf-20263101-0002: opt 94 (L94/U94 0s) candidate 94, ablation 92, placebo 90 [22s]
+[   33.8s] dev-planted_cluster-1467febf-20263101-0003: opt 98 (L98/U98 0s) candidate 98, ablation 95, placebo 90 [30s]
+[   43.0s] dev-planted_cluster-1467febf-20263101-0004: opt 96 (L96/U96 2s) candidate 95, ablation 93, placebo 94 [39s]
+[   53.9s] dev-planted_cluster-1467febf-20263101-0005: opt 87 (L87/U87 4s) candidate 87, ablation 87, placebo 84 [50s]
+[   61.1s] dev-planted_cluster-1467febf-20263101-0006: opt 96 (L96/U96 0s) candidate 96, ablation 94, placebo 93 [57s]
+[   68.3s] dev-planted_cluster-1467febf-20263101-0007: opt 96 (L96/U96 0s) candidate 96, ablation 94, placebo 90 [64s]
+[   75.5s] dev-planted_cluster-1467febf-20263101-0008: opt 88 (L88/U88 0s) candidate 88, ablation 85, placebo 85 [71s]
+[   82.7s] dev-planted_cluster-1467febf-20263101-0009: opt 91 (L91/U91 0s) candidate 91, ablation 89, placebo 88 [78s]
+[   89.8s] dev-erdos-70960071-20271020-0000: opt 75 (L75/U75 0s) candidate 75, ablation 74, placebo 71 [86s]
+[   96.9s] dev-erdos-70960071-20271020-0001: opt 85 (L85/U85 0s) candidate 85, ablation 84, placebo 81 [93s]
+[  104.0s] dev-erdos-70960071-20271020-0002: opt 76 (L76/U76 0s) candidate 76, ablation 75, placebo 73 [100s]
+[  129.2s] dev-erdos-70960071-20271020-0003: opt 82 (L82/U82 18s) candidate 82, ablation 81, placebo 79 [125s]
+[  138.7s] dev-erdos-70960071-20271020-0004: opt 86 (L86/U86 2s) candidate 84, ablation 83, placebo 82 [134s]
+[  145.8s] dev-erdos-70960071-20271020-0005: opt 90 (L90/U90 0s) candidate 90, ablation 85, placebo 86 [142s]
+[  152.9s] dev-erdos-70960071-20271020-0006: opt 83 (L83/U83 0s) candidate 83, ablation 81, placebo 78 [149s]
+[  160.0s] dev-erdos-70960071-20271020-0007: opt 88 (L88/U88 0s) candidate 88, ablation 86, placebo 84 [156s]
+[  244.0s] dev-erdos-70960071-20271020-0008: opt 84 (L84/U84 77s) candidate 83, ablation 82, placebo 82 [240s]
+[  252.7s] dev-erdos-70960071-20271020-0009: opt 75 (L75/U75 2s) candidate 75, ablation 75, placebo 75 [248s]
+[  262.1s] dev-erdos-b73f6828-20278939-0000: opt 93 (L93/U93 2s) candidate 92, ablation 91, placebo 89 [258s]
+[  269.3s] dev-erdos-b73f6828-20278939-0001: opt 85 (L85/U85 0s) candidate 85, ablation 84, placebo 82 [265s]
+[  276.3s] dev-erdos-b73f6828-20278939-0002: opt 108 (L108/U108 0s) candidate 108, ablation 105, placebo 100 [272s]
+[  283.5s] dev-erdos-b73f6828-20278939-0003: opt 98 (L98/U98 0s) candidate 98, ablation 96, placebo 94 [279s]
+[  290.5s] dev-erdos-b73f6828-20278939-0004: opt 97 (L97/U97 0s) candidate 97, ablation 93, placebo 93 [286s]
+[  297.6s] dev-erdos-b73f6828-20278939-0005: opt 99 (L99/U99 0s) candidate 99, ablation 96, placebo 91 [293s]
+[  304.7s] dev-erdos-b73f6828-20278939-0006: opt 90 (L90/U90 0s) candidate 90, ablation 89, placebo 87 [300s]
+[  314.1s] dev-erdos-b73f6828-20278939-0007: opt 102 (L102/U102 2s) candidate 101, ablation 98, placebo 96 [310s]
+[  327.3s] dev-erdos-b73f6828-20278939-0008: opt 91 (L91/U91 6s) candidate 91, ablation 89, placebo 86 [323s]
+[  334.6s] dev-erdos-b73f6828-20278939-0009: opt 86 (L86/U86 0s) candidate 86, ablation 86, placebo 82 [330s]
+[  353.5s] ablation: READY_FOR_REVIEW; mean 1.8 {'erdos:70960071': 1.5, 'erdos:b73f6828': 2.0, 'planted_cluster:1467febf': 1.9}; W/T/L [27, 3, 0]; cpu 1.0205; power CHOSEN {'tasks_per_stratum': 10, 'total_tasks': 30, 'power': 0.996}; dry run SUPPORTED
+[  370.9s] placebo: READY_FOR_REVIEW; mean 3.7 {'erdos:70960071': 3.0, 'erdos:b73f6828': 4.7, 'planted_cluster:1467febf': 3.4}; W/T/L [28, 2, 0]; cpu 1.0009; power CHOSEN {'tasks_per_stratum': 12, 'total_tasks': 36, 'power': 0.865}; dry run SUPPORTED
+/usr/local/lib/python3.13/dist-packages/networkx/algorithms/graph_hashing.py:211: UserWarning: The hashes produced for graphs without node or edge attributes changed in v3.5 due to a bugfix (see documentation).
+  node_labels = _init_node_labels(G, edge_attr, node_attr)
+Traceback (most recent call last):
+  File "/home/claude/dev-wt/scripts/b20r25_e1b_causal.py", line 424, in <module>
+    sys.exit(main())
+             ~~~~^^
+  File "/home/claude/dev-wt/scripts/b20r25_e1b_causal.py", line 405, in main
+    rehearsal = part_b(out, log, excluded, list(named) + list(tasks), pilot)
+  File "/home/claude/dev-wt/scripts/b20r25_e1b_causal.py", line 278, in part_b
+    sel = select_comparator(reh, export, tm, keys['custodian'][0], op, exposure_manifest=manifest,
+                            task_count=SELECT_TASKS, study=STUDY)
+  File "/home/claude/dev-wt/src/genesis/custodian.py", line 485, in select_comparator
+    index,record=build_registry(manifest,manifest_path.parent,repo,
+                 ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                                extra_sources=[{'kind':'zip','path':str(export.resolve()),'label':'campaign-export'}])
+                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/claude/dev-wt/src/genesis/exposure.py", line 200, in build_registry
+    added, h = ingest_json_bytes(index, path.read_bytes(), label), _file_digest(path)
+               ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/claude/dev-wt/src/genesis/exposure.py", line 135, in ingest_json_bytes
+    return sum(index.add(n, es, source) for n, es in extract_hosts(value))
+  File "/home/claude/dev-wt/src/genesis/exposure.py", line 135, in <genexpr>
+    return sum(index.add(n, es, source) for n, es in extract_hosts(value))
+                                                     ~~~~~~~~~~~~~^^^^^^^
+  File "/home/claude/dev-wt/src/genesis/exposure.py", line 73, in extract_hosts
+    raise ValueError('JSON structure too large to screen; adjudicate externally')
+ValueError: JSON structure too large to screen; adjudicate externally

@@ -1,0 +1,20 @@
+[    3.5s] exposure: 1634 identities (1634 named hosts, 711 E1 hosts, 456 calibration hosts)
+[   22.3s] ablation: READY_FOR_REVIEW; mean 1.8 {'erdos:70960071': 1.5, 'erdos:b73f6828': 2.0, 'planted_cluster:1467febf': 1.9}; W/T/L [27, 3, 0]; cpu 1.0205; power CHOSEN {'tasks_per_stratum': 10, 'total_tasks': 30, 'power': 0.996}; dry run SUPPORTED
+[   38.5s] placebo: READY_FOR_REVIEW; mean 3.7 {'erdos:70960071': 3.0, 'erdos:b73f6828': 4.7, 'planted_cluster:1467febf': 3.4}; W/T/L [28, 2, 0]; cpu 1.0009; power CHOSEN {'tasks_per_stratum': 12, 'total_tasks': 36, 'power': 0.865}; dry run SUPPORTED
+/usr/local/lib/python3.13/dist-packages/networkx/algorithms/graph_hashing.py:211: UserWarning: The hashes produced for graphs without node or edge attributes changed in v3.5 due to a bugfix (see documentation).
+  node_labels = _init_node_labels(G, edge_attr, node_attr)
+[  280.7s] SELECT panel {'exchange_tm': 2628, 'low_cycle_tm': 2663, 'multistart_tm': 2676} -> comparator multistart_tm (229 s)
+/usr/local/lib/python3.13/dist-packages/networkx/algorithms/graph_hashing.py:211: UserWarning: The hashes produced for graphs without node or edge attributes changed in v3.5 due to a bugfix (see documentation).
+  node_labels = _init_node_labels(G, edge_attr, node_attr)
+[  576.1s] sealed_evaluation: SUPPORTED (W/L/T 30/0/0; scored 30/30), estimate 3.0333333333 [2.6666666667, 3.4333333333], cost ratio 1.022621319, judge agrees True (295 s)
+/usr/local/lib/python3.13/dist-packages/networkx/algorithms/graph_hashing.py:211: UserWarning: The hashes produced for graphs without node or edge attributes changed in v3.5 due to a bugfix (see documentation).
+  node_labels = _init_node_labels(G, edge_attr, node_attr)
+[ 1496.3s] ablation: SUPPORTED (W/L/T 28/0/2; scored 30/30), estimate 1.9666666667 [1.7, 2.2333333333], cost ratio 1.0193447211, judge agrees True (920 s)
+/usr/local/lib/python3.13/dist-packages/networkx/algorithms/graph_hashing.py:211: UserWarning: The hashes produced for graphs without node or edge attributes changed in v3.5 due to a bugfix (see documentation).
+  node_labels = _init_node_labels(G, edge_attr, node_attr)
+[ 2079.1s] placebo: SUPPORTED (W/L/T 35/0/1; scored 36/36), estimate 3.1944444444 [2.7777777778, 3.6388888889], cost ratio 1.0017314648, judge agrees True (583 s)
+[ 2079.2s] kernel: utility CONFIRMED_SAME_DOMAIN: PROMOTED
+[ 2079.2s] kernel: causality ABLATION_SUPPORTED: PROMOTED
+[ 2079.3s] kernel: causality PLACEBO_CONTROLLED: PROMOTED
+[ 2079.4s] kernel levels {'math': 'UNCHECKED', 'utility': 'CONFIRMED_SAME_DOMAIN', 'causality': 'PLACEBO_CONTROLLED', 'improver': 'NOT_TESTED', 'novelty': 'UNKNOWN', 'replication': 'NONE'}
+[ 2080.7s] verdicts {'ablation': 'READY_FOR_REVIEW', 'placebo': 'READY_FOR_REVIEW'}; rehearsal {"evaluations": {"sealed_evaluation": "SUPPORTED", "ablation": "SUPPORTED", "placebo": "SUPPORTED"}, "kernel_levels": {"math": "UNCHECKED", "utility": "CONFIRMED_SAME_DOMAIN", "causality": "PLACEBO_CONTROLLED", "improver": "NOT_TESTED", "novelty": "UNKNOWN", "replication": "NONE"}, "promotions": [["utility", "CONFIRMED_SAME_DOMAIN", "PROMOTED"], ["causality", "ABLATION_SUPPORTED", "PROMOTED"], ["causality", "PLACEBO_CONTROLLED", "PROMOTED"]]}
