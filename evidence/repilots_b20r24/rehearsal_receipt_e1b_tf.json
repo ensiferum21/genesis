@@ -1,0 +1,98 @@
+{
+ "payload": {
+  "analysis": {
+   "alpha": 0.05,
+   "cost": {
+    "max_ratio": 3.0,
+    "measure": "cpu_ns"
+   },
+   "decision_record_sha256": "0a2f46f7c39ae6d27effddb55aaa5ba7b18929247e78aeee3695cb4b9f5836d4",
+   "decision_rule": "superiority-with-minimum-useful-effect",
+   "design_effect": 1.0,
+   "estimand": "mean-of-stratum-means",
+   "failures": "score-zero",
+   "interval": {
+    "level": 0.9,
+    "method": "stratified-bootstrap-percentile",
+    "resamples": 4000
+   },
+   "max_unsupported_fraction": 0.05,
+   "minimum_useful_effect": 0.5,
+   "multiplicity": {
+    "family_id": "sealed_evaluation:triangle_free_host_v1",
+    "family_size": 3,
+    "method": "holm"
+   },
+   "power_target": 0.8,
+   "primary": "paired-edge-difference",
+   "regression": {
+    "max_stratum_loss": 1.0
+   },
+   "schema": "genesis-analysis-plan-v2",
+   "sensitivity": [
+    "task-sign-test",
+    "leave-one-stratum-out",
+    "failures-excluded",
+    "stratum-level-sign-flip"
+   ],
+   "stopping": {
+    "rule": "single-analysis"
+   },
+   "strata": "family",
+   "test": "stratified-sign-flip",
+   "unsupported": "exclude-and-report"
+  },
+  "analysis_result": {
+   "decision": "INVALID",
+   "plan_sha256": "11049c39f9886e141a666033a8d436879463f7d38626a352ac9eb9c3473628cb",
+   "reasons": [
+    "2 of 30 tasks unsupported (more than the plan allows)"
+   ],
+   "schema": "genesis-analysis-result-v2",
+   "scored": 28,
+   "tasks": 30,
+   "unsupported": [
+    "confirm-erdos-70960071-20270860-0005",
+    "confirm-erdos-b73f6828-20278779-0009"
+   ]
+  },
+  "anchor_hash": "32e42f1de003b2403a854acab8e8c227ba54740672d56954c8717fe759cf8d07",
+  "arms_sha256": "f4ef25c9324041d809372437dd04a884e123b22fc0ed3027ab5bbdc6bac8c960",
+  "baseline_descriptor_id": "6ff23ed1bcc3785bf444571226eb6d1a5dfa84a99bc11af0589ef9f2a27d82f1",
+  "campaign_id": "1b7cd65770c58d63faabc734fcd953ee5df4a37c03ac5c71369b1e7a544c93d7",
+  "candidate_descriptor_id": "f5a3d7ffd69c014e28aacc6550a41118c25cf7bfbc13145cb9fbed7892f6f06e",
+  "candidate_version": "5b9309c330f82dc829c2e94365307daa86565e12c44b4eeb0bf2c6e0d1731a88",
+  "claim_id": "e1b_tf-rehearsal-b20r24",
+  "completed_at": "2026-10-14T02:33:02.449827+00:00",
+  "completed_rows": 56,
+  "domain": "triangle_free_host_v1",
+  "domain_contract_hash": "522ee2f43e81120f4b180e4f3630f9278d26f8ebb65aafb0e4040159f9e3f150",
+  "evaluator_hash": "37be0c8f197f028b8452e753ebe1aa44866099b67f92d87c3294b7ff9febe195",
+  "evidence_kind": "sealed_evaluation",
+  "execution_failures": 0,
+  "expected_rows": 56,
+  "family_p": 0.125,
+  "generation_transition": null,
+  "independence": "OPERATOR_ATTESTATION_REQUIRED",
+  "isolation": "OCI_RUNC_NO_NETWORK_RO_ROOT_SECCOMP",
+  "losses": 0,
+  "operator_id": "BUILDER_REHEARSAL_NOT_INDEPENDENT",
+  "outcome": "INVALID",
+  "paired_p": 1.4901161193847656e-08,
+  "panel_commitment": "7e06dab938aca24425036215d1256580b9251c6fa5b8b3fdd34979336ad311b3",
+  "raw_evidence_complete": true,
+  "raw_evidence_root": "b016f6b47c14f63cef99119a28605a6543a588e25166d9e700cec817adf6428a",
+  "registered_at": "2026-10-14T02:21:03.371181+00:00",
+  "request_hash": "4a02f4031f0ccf8f8c7e4f3ec539fd80113bd0ff28b542ee00c613042e2bf205",
+  "schema": "genesis-scientific-receipt-v4",
+  "scope": "rehearsal panel of 30 triangle_free_host_v1 hosts (same operator)",
+  "screen": "CUSTODIAN_BUILT_REGISTRY_ISOMORPHISM_AND_NEAR_DUPLICATE",
+  "source_hash": "37be0c8f197f028b8452e753ebe1aa44866099b67f92d87c3294b7ff9febe195",
+  "statement_hash": "2bc69ed41ddc0f942dbc9bc416d341025fa9b2876648c7609766442d10f1dd2e",
+  "task_count": 30,
+  "ties": 2,
+  "transfer_source_domain": null,
+  "wins": 26
+ },
+ "signature": "AUPgZtdSp3DUIpgtqYYg++GlCgj7hpRl7YClm+qScqgqivRAD4sBerAJLMtfYh5Tx/SzD2s6XOqyAsjIPZk1AA=="
+}
