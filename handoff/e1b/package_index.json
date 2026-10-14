@@ -1,0 +1,80 @@
+{
+ "causal_readiness_pilot": {
+  "summary_sha256": "4d74c1ded7769c9840505645aa4f31668d8d18b41a3a65dc6324c4b4d476f014",
+  "verdicts": {
+   "c4_host_v2:ablation": "UNSETTLED_REFERENCE",
+   "c4_host_v2:placebo": "UNSETTLED_REFERENCE",
+   "triangle_free_host_v1:ablation": "READY_FOR_REVIEW",
+   "triangle_free_host_v1:placebo": "READY_FOR_REVIEW"
+  }
+ },
+ "code_identity": "0722ed79caab74c161d9657fc35355b5eea3f88df6ff8f7e1786d4e2561f4ce7",
+ "domains": {
+  "c4_host_v2": {
+   "baselines": {
+    "exchange_tm": "f4714fd0e1ec23c7d8cf8c644f64ad1f838e8729311a8b983ff0f6f14aa48ed5",
+    "low_cycle_tm": "9d35d180fde8b61e917ba4db3cf8c10b20a22529ea96a6fc80cfd54bc51a6cc7",
+    "multistart_tm": "e3d828ca53fe62e9e8d22953fd1c0bd0a504e1dd79ac759815a4b3155461ddf4"
+   },
+   "campaign_candidate_version": "c826594706d78d4de97761af10d1bdb6b82621f233dbbf28c1ca1c84075fbd97",
+   "candidate_descriptor_id": "64a9890b264df3e89ad4183a6a13b41c1d3fe8f18022e0308007ce74ad339fb0",
+   "decision_record_draft_sha256": "3331049dc9046cb038fea37bed4ccec64cf9be3632b66075f208cdc556726f82",
+   "interventions": {
+    "ablation": "c8698c885e81d01136b76918c0e7dee267ce3c75ce0290263e44320bf11f064a",
+    "placebo": "361895ff9b0c9cd293d6fc61ec30c93eee46d0cb06447000cd59c53bfeba810d"
+   },
+   "power_chosen": {
+    "power": 0.921,
+    "tasks_per_stratum": 20,
+    "total_tasks": 20
+   },
+   "problems_of_a_frozen_copy": [],
+   "readiness_pilot_descriptor_id": "74861eea2672470c1bfe4907f19f134acb088e52de648a7871f16780780202b3",
+   "select_step": "BLOCKED: no adopted calibration for c4_host_v2 in study e1b"
+  },
+  "triangle_free_host_v1": {
+   "baselines": {
+    "exchange_tm": "0a3cd7611875c3d63fa22ce1a4d52e0590c309d381a13c338b5de71e3d312dd5",
+    "low_cycle_tm": "790da2a7f570888af408cc53ac918b614e8ab8bccf7d8d73d4162f7a3a25ca3c",
+    "multistart_tm": "6ff23ed1bcc3785bf444571226eb6d1a5dfa84a99bc11af0589ef9f2a27d82f1"
+   },
+   "campaign_candidate_version": "2de6c1314b6084665709f9339d624b5d8cdff6943831da31d8fbdf408ca1110f",
+   "candidate_descriptor_id": "f5a3d7ffd69c014e28aacc6550a41118c25cf7bfbc13145cb9fbed7892f6f06e",
+   "decision_record_draft_sha256": "aea930583095e048640b96ac7c11b5302233315f90fff51feb33a26000538647",
+   "interventions": {
+    "ablation": "c1a3928eb9142cdbdc7de177ea391cc592eb914a3c91be0dfe55770ca68e8b44",
+    "placebo": "a05fc4eb7a6ffdc52d0f181105f8d573fd285ef18125fbc5c9cb83908b37e7ab"
+   },
+   "power_chosen": {
+    "power": 0.88,
+    "tasks_per_stratum": 12,
+    "total_tasks": 24
+   },
+   "problems_of_a_frozen_copy": [],
+   "readiness_pilot_descriptor_id": "ac8f1fcb23376a7a43787987c8821652dda966922a6e0e251aa2728e340bb231",
+   "select_step": "BLOCKED: no adopted calibration for triangle_free_host_v1 in study e1b"
+  }
+ },
+ "exposure_hosts_all": {
+  "e1_regenerated": 711,
+  "hosts": 1084,
+  "scan": {
+   "distinct_hosts": 1084,
+   "empty_files_skipped": [
+    "evidence/failed-wal-final-replay.json",
+    "evidence/final-replay.json"
+   ],
+   "files_scanned": 824,
+   "host_records": 1569
+  }
+ },
+ "readiness_pilot": {
+  "summary_sha256": "b6d9265befd72e3b525930d51d8ad78e45b770de064dab204a68e6a1c715670d",
+  "verdicts": {
+   "c4_host_v2": "READY_FOR_REVIEW",
+   "triangle_free_host_v1": "READY_FOR_REVIEW"
+  }
+ },
+ "schema": "genesis-e1b-package-v1",
+ "status": "DRAFT; not registered; licenses nothing"
+}

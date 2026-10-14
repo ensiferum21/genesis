@@ -500,7 +500,9 @@ GATES = {f'GV{i}': (N, t, [], [], [], b, 'NOT_TESTED' if i >= 2 else 'N/A', w) f
                                        'conjectures and proofs beyond builder templates and rediscovery'], 'W08'),
     (3, 'useful verified discovery on fresh tasks', ['independent custodian', 'fresh panels',
                                                    'a powered, reviewed E1 design (B20R12-OPEN-1: the decided '
-                                                   'design is UNDERPOWERED on the e1-hard-v1 family)'], 'W13'),
+                                                   'design is UNDERPOWERED on the e1-hard-v1 family) or E1b '
+                                                   '(B20_R23: READY_FOR_REVIEW on DEV; its host family is '
+                                                   'undecided, B20R23-OPEN-1)'], 'W13'),
     (4, 'better improver', ['independent search runs', 'sealed downstream evaluation'], 'W21'),
     (5, 'three compounding generations', ['fresh panels per transition'], 'W21'),
     (6, 'meaningful transfer to a structurally different domain', ['different formal domain'], 'W24'),

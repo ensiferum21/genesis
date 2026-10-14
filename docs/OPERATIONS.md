@@ -1,6 +1,6 @@
 # Operations runbook (H11)
 
-This runbook covers the continuation line as of B20_R21. It says how to run, recover and check each part. The supported platform and its roles are in `deployment/DEPLOYMENT.md`, and what is and is not established is in `docs/REQUIREMENTS_LEDGER.md` and `docs/BLOCKING_DEFECTS.md`.
+This runbook covers the continuation line as of B20_R23. It says how to run, recover and check each part. The supported platform and its roles are in `deployment/DEPLOYMENT.md`, and what is and is not established is in `docs/REQUIREMENTS_LEDGER.md` and `docs/BLOCKING_DEFECTS.md`.
 
 Every command assumes:
 
@@ -24,7 +24,7 @@ Every command assumes:
 | Active version (B20_R16) | `versions.active(store)` and `versions.status(store)`. A retained generation moves the pointer inside its own commit. |
 | Roll back | `versions.rollback(store, ancestor_id, reason=..., actor=...)`. The child is kept and reported ROLLED_BACK. Sideways switches are refused, so roll back to the common ancestor first. |
 | Revoke a version | `versions.revoke(store, vid, reason=..., actor=..., kernel=EvidenceKernel(store))`. Descendants inherit the revocation, and kernel nodes naming an affected version are revoked. A campaign whose active version is revoked refuses to resume until you roll back. |
-| Freeze a candidate | `cli.freeze_candidate_descriptor(campaign, descriptor, origin=...)` (write-once), then `cli.export_replication(...)`. |
+| Freeze a candidate | `cli.freeze_candidate_descriptor(campaign, descriptor, origin=...)` (write-once), then `cli.export_replication(...)`. The descriptor kinds are in `candidates.KINDS`: DSL programs (plain and time-matched), represent-and-repair, the formal successor and, since B20_R23, `construct-pipeline-v1`. |
 | Comparator selection | The custodian signs it (§3). Record it with `cli.record_comparator_selection(campaign, envelope)` (write-once) before building the request. |
 | Requests | `cli.descriptor_request_bundle(campaign, n, analysis=plan)` builds the sealed evaluation. `cli.followup_request(campaign, kind, ...)` builds ablation, placebo, internal replication and external reproduction requests, which keep the claim, the candidate and the export binding. |
 
@@ -32,7 +32,7 @@ Every command assumes:
 
 | Action | Function | Refuses |
 |---|---|---|
-| Comparator selection | `custodian.select_comparator(root, export, baselines, key, operator, exposure_manifest=..., study=...)` | baselines that are not conventional, mixed resource profiles, too little distinct material |
+| Comparator selection | `custodian.select_comparator(root, export, baselines, key, operator, exposure_manifest=..., study=...)` | baselines that are not conventional, mixed resource profiles, too little distinct material, a study with no adopted calibration (E1b until B20R23-OPEN-1 is decided) |
 | Register | `custodian.register(root, request, prereg_key, operator, exposure_manifest=..., campaign_export=..., pool=..., decision_record=frozen, accepted_selection_keys=())` | a request the export does not show; an unfrozen or underpowered decision record; a used claim or candidate slot; a full hypothesis family; an ablation or placebo baseline that is not a registered intervention; a comparator this custodian did not select. A repetition kind may instead name the selecting custodian's key. |
 | Evaluate | `custodian.evaluate(root, request_hash, pool, custodian_key, operator)` | — (every arm runs in the OCI sandbox under one profile, metered by cgroup) |
 | Recover | `scripts/genesis_custodian.py recover` | — (an interrupted evaluation publishes `raw_evidence_complete=false`, which is INVALID) |
@@ -52,8 +52,8 @@ The exposure manifest is a custodian-owned file that no one else can write. List
 
 ## 5. DEV studies (builder)
 
-- Each study is one script whose rules, seeds and verdicts are in its docstring. The script is committed, and pushed, before it runs. Its evidence goes to `evidence/<study>/`, together with a README, the console log and the rows.
-- Hosts are always fresh DEV hosts. Each study excludes the hosts named in earlier evidence (see `scripts/b20r12_e1_redo.py` for the lists). Budgets are matched in CPU, counting child processes where they exist (`discovery.construct.Budget`).
+- Each study is one script whose rules, seeds and verdicts are in its docstring. The script is committed, and pushed, before it runs. If the push is unavailable, send the commit and the script's SHA-256 to Daniel before running, as an external anchor, and say so in the evidence README. Its evidence goes to `evidence/<study>/`, together with a README, the console log and the rows.
+- Hosts are always fresh DEV hosts. Each study excludes the hosts named in earlier evidence: `scripts/b20r23_e1b_readiness.py` (`named_hosts`) scans every JSON and JSONL file under `evidence/` and `handoff/`, and `scripts/b20r12_e1_redo.py` regenerates the E1 hosts. Budgets are matched in CPU, counting child processes where they exist (`discovery.construct.Budget`).
 - A fair negative result is kept, and so is every attempt in a family. A follow-up is a new, separately preregistered step. A threshold is never changed after a result.
 
 ## 6. Storage

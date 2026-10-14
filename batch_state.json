@@ -366,8 +366,23 @@
         "result": "external reproduction repeats a supporting evaluation; replication handoff package"
       },
       "B20_R22": {
-        "commits": [],
+        "commits": [
+          "a2f40af",
+          "782d326"
+        ],
         "result": "retention and negative transfer under a frozen protocol; DEV demo: first retained change is NEGATIVE_TRANSFER on tf hosts"
+      },
+      "B20_R23": {
+        "commits": [
+          "6be8197",
+          "8d47cf8",
+          "5d0d48f",
+          "eb4ff11",
+          "9510f31",
+          "d1f415a",
+          "49faa20"
+        ],
+        "result": "construct-pipeline-v1 candidate kind with a registered ablation/placebo of its LP guidance; E1b READY_FOR_REVIEW on DEV (tf +1.79, power 12/stratum; c4 +1.00, power 20); causal follow-ups READY_FOR_REVIEW on tf (ablation +1.42, placebo +2.53), UNSETTLED_REFERENCE on c4; DRAFT handoff/e1b, SELECT blocked on the family decision (B20R23-OPEN-1)"
       }
     },
     "open_after_b20_r5": [
@@ -442,6 +457,18 @@
       "B20R3-OPEN-2",
       "B20R5-OPEN-2",
       "H08 retention/negative transfer",
+      "B14-OPEN-4 (pending review)",
+      "B20R-OPEN-3 (pending review)",
+      "R-04",
+      "B20R8-OPEN-1 (pending review)"
+    ],
+    "open_after_b20_r23": [
+      "B20R23-OPEN-1 (E1b host family)",
+      "B20R12-OPEN-1",
+      "B19-OPEN-4",
+      "B20R9-OPEN-1 (GV4: component invention)",
+      "B20R3-OPEN-2",
+      "B20R5-OPEN-2",
       "B14-OPEN-4 (pending review)",
       "B20R-OPEN-3 (pending review)",
       "R-04",

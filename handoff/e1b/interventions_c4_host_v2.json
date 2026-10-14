@@ -1,0 +1,56 @@
+{
+ "ablation": {
+  "descriptor_id": "c8698c885e81d01136b76918c0e7dee267ce3c75ce0290263e44320bf11f064a",
+  "domain": "c4_host_v2",
+  "implementation": {
+   "candidates.py": "a04d3fe0792113ec9527bdf16fccc8f8580179b9a6b567c4cd30486d6d2696f2",
+   "discovery/construct.py": "eae08e083fe24f6c49f9d1bf508691d77a6e2e9a4ca9b15ae669de6779de5509",
+   "dsl.py": "b1576f320cf7e689250771c484f95f3aa16ab853059d01ffabc1802a2c730508",
+   "graphs.py": "e0e8e089a240a2fc3a422d29c6fe65a6031d06264eab29fb8a991ad60213261d",
+   "invention/representations.py": "5c53e369b93db4d854c1829587202423bd81c14eafa55808b77c1852f44bfcbd",
+   "models.py": "2d10c569f5de3ee209ce07525972d199bba1168ae187ffc223880491fa701d05"
+  },
+  "kind": "construct-pipeline-v1",
+  "parameters": {
+   "cpu_seconds": 2.0,
+   "finish": "none",
+   "frac": 1.0,
+   "init": "random_greedy",
+   "seed": 0
+  },
+  "resource_profile": {
+   "cpu_seconds": 4,
+   "memory_mib": 2048,
+   "queries": 1000,
+   "wall_seconds": 20
+  },
+  "schema": "genesis-candidate-descriptor-v1"
+ },
+ "placebo": {
+  "descriptor_id": "361895ff9b0c9cd293d6fc61ec30c93eee46d0cb06447000cd59c53bfeba810d",
+  "domain": "c4_host_v2",
+  "implementation": {
+   "candidates.py": "a04d3fe0792113ec9527bdf16fccc8f8580179b9a6b567c4cd30486d6d2696f2",
+   "discovery/construct.py": "eae08e083fe24f6c49f9d1bf508691d77a6e2e9a4ca9b15ae669de6779de5509",
+   "dsl.py": "b1576f320cf7e689250771c484f95f3aa16ab853059d01ffabc1802a2c730508",
+   "graphs.py": "e0e8e089a240a2fc3a422d29c6fe65a6031d06264eab29fb8a991ad60213261d",
+   "invention/representations.py": "5c53e369b93db4d854c1829587202423bd81c14eafa55808b77c1852f44bfcbd",
+   "models.py": "2d10c569f5de3ee209ce07525972d199bba1168ae187ffc223880491fa701d05"
+  },
+  "kind": "construct-pipeline-v1",
+  "parameters": {
+   "cpu_seconds": 2.0,
+   "finish": "none",
+   "frac": 1.0,
+   "init": "lp_shuffled_greedy",
+   "seed": 0
+  },
+  "resource_profile": {
+   "cpu_seconds": 4,
+   "memory_mib": 2048,
+   "queries": 1000,
+   "wall_seconds": 20
+  },
+  "schema": "genesis-candidate-descriptor-v1"
+ }
+}
