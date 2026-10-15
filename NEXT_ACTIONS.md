@@ -18,6 +18,8 @@
 | B20_R21 | `0bf3a96` | `72e78fab…0796` (release matrix 1,157 tests, all OK; restore-verified) |
 | B20_R23 | `e7fad0e` | `da3eb0fd…a354` (release matrix 1,164 tests, all OK; restore-verified; sent to Daniel directly while GitHub was disconnected) |
 | B20_R24 | `77a7b78` | `8dcf9937…3633` (as received from Daniel on 15 Oct 2026; its history bundle is the base of B20_R25–R28) |
+| B20_R28 | `72f6d87` | `06615761…3897` (release matrix 1,196 tests, all OK; restore-verified; driver rehearsal NOT_REPRODUCED at step 7, the stale reference repaired in B20_R29) |
+| B20_R29 | `ba5318a` | `67fd8796…0ba8` (release matrix 1,197 tests, all OK; restore-verified; driver rehearsal on the build host **REPRODUCED**, not a second machine) |
 
   The recovery-branch checkpoints B20_RX1 and B20_RX2 are on `recovery-b20r1-partial`; their work was ported here.
 - **Records:** `docs/checkpoints/B20_R1_RECORD.md` … `B20_R11_RECORD.md`, `B20_RX1_RECORD.md`, `B20_RX2_RECORD.md`, `B20_R12_RECORD.md` and `B20_R15_RECORD.md` … `B20_R28_RECORD.md`.

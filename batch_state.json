@@ -203,6 +203,18 @@
           "declared_skips": 1
         },
         "restore_verified": "5521 manifest entries match; bundle clone gives the same commit and tree"
+      },
+      "B20_R24": {
+        "commit": "77a7b7828a171a97079a620a06fc13662709e4d4",
+        "sha256": "8dcf993742ee9482210dfeccb5ef7ebf223b3f5fda71a602533f3566e74d3633"
+      },
+      "B20_R28": {
+        "commit": "72f6d87477be8b86124d072071404c29d69d1b74",
+        "sha256": "0661576184a06ee3fb0b8189ce19281bca301e970ae0611f648320ad144f3897"
+      },
+      "B20_R29": {
+        "commit": "ba5318a6a7272abb58c90bc577d200c279d7ef5b",
+        "sha256": "67fd879681703ca890535046705eeb3b25c1b366c55c17d856b0bfa407250ba8"
       }
     },
     "adopted_from_crpd_v3_status": {
@@ -442,7 +454,9 @@
         "result": "E1b causal re-pilot on the e1b family: ablation +1.25 (24/3/1) and placebo +2.61 (27/1/0), both READY_FOR_REVIEW (power 10/stratum); handoff exposure addenda (126 hosts from B20_R26-R28)"
       },
       "B20_R29": {
-        "commits": [],
+        "commits": [
+          "ba5318a"
+        ],
         "result": "second-machine reference results repaired: the B20_R28 rehearsal was NOT_REPRODUCED at step 7 (campaign.restored_events 345 vs 339); bisected to B20_R16 (version-pointer events), unnoticed because R16-R24 were restore-verified, not rehearsed; EXPECTED_RESULTS.json updated (only that value) and a matrix test now compares the reference campaign"
       }
     },
