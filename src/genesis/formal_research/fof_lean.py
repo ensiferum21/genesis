@@ -482,6 +482,163 @@ def _vars_of(t, out):
 def _overlaps(parents):
     """Superposition overlaps between parents: for a positive equation side l of one parent
     and a non-variable subterm u of another (or the same, renamed apart), the most general
+    unifier. Returns ([{parent index: {variable: term with variables}}], [(overlap index,
+    result sides)]): the result sides are B's literal after the rewrite, under the unifier."""
+    out, results = [], []
+    for i, A in enumerate(parents):
+        if not A:
+            continue
+        for j, B in enumerate(parents):
+            if not B:
+                continue
+            ta, tb = '@a', '@b'
+            for ca in A[1]:
+                for pos, l, r in ca:
+                    if not pos:
+                        continue
+                    for lhs in (l, r):
+                        if lhs[0] == 'var':
+                            continue
+                        lhs_r = _rename_vars(lhs, ta)
+                        for cb in B[1]:
+                            for _, x, y in cb:
+                                for side in (x, y):
+                                    for u in _nonvar_subterms(side, []) + ([side] if side[0] == 'fn' and
+                                                                           not _vars_of(side, set()) else []):
+                                        sg = _unify(lhs_r, _rename_vars(u, tb), {})
+                                        if sg is None:
+                                            continue
+                                        rhs = r if lhs is l else l
+                                        res = [(_resolve(_replace(_rename_vars(z, tb), _rename_vars(u, tb),
+                                                                  _rename_vars(rhs, ta)), sg))
+                                               for z in (x, y)]
+                                        results.append((len(out), tuple(res)))
+                                        out.append({i: {v: _resolve(('var', v + ta), sg) for v in A[0]},
+                                                    j: {**({v: _resolve(('var', v + ta), sg) for v in A[0]}
+                                                           if i == j else {}),
+                                                        **{v: _resolve(('var', v + tb), sg) for v in B[0]}}}
+                                                   if i != j else
+                                                   {i: {v: _resolve(('var', v + ta), sg) for v in A[0]},
+                                                    -1 - j: {v: _resolve(('var', v + tb), sg) for v in B[0]}})
+    return out, results
+
+
+def _replace(t, old, new):
+    if t == old:
+        return new
+    if t[0] == 'var':
+        return t
+    return ('fn', t[1], tuple(_replace(a, old, new) for a in t[2]))
+
+
+def _rules(parents, exclude=()):
+    """Unit positive equations among the parents, oriented as size-decreasing rewrite
+    rules (E rewrites with its term ordering, which under unit weights never increases
+    size): [(parent index, lhs, rhs)]."""
+    out = []
+    for i, P in enumerate(parents):
+        if i in exclude or not P or len(P[1]) != 1 or len(P[1][0]) != 1 or not P[1][0][0][0]:
+            continue
+        _, l, r = P[1][0][0]
+        for a, b in ((l, r), (r, l)):
+            if a[0] != 'var' and _size(a) > _size(b) and _vars_of(b, set()) <= _vars_of(a, set()):
+                out.append((i, a, b))
+    return out
+
+
+def _commutative(parents):
+    """{symbol: (parent index, first variable, second variable)} for parents that are a
+    commutativity law f(V1,V2) = f(V2,V1)."""
+    out = {}
+    for i, P in enumerate(parents):
+        if not P or len(P[1]) != 1 or len(P[1][0]) != 1 or not P[1][0][0][0]:
+            continue
+        _, l, r = P[1][0][0]
+        if (l[0] == r[0] == 'fn' and l[1] == r[1] and len(l[2]) == 2 and all(a[0] == 'var' for a in l[2])
+                and l[2][0] != l[2][1] and r[2] == (l[2][1], l[2][0])):
+            out.setdefault(l[1], (i, l[2][0][1], l[2][1][1]))
+    return out
+
+
+def _match_c(p, t, s, comm, swaps=()):
+    """Matches of pattern p against t modulo commutativity of the symbols in `comm`
+    (B21): yields (substitution, the subterms of t whose arguments were swapped)."""
+    if p[0] == 'var':
+        if p[1] in s:
+            if s[p[1]] == t:
+                yield s, swaps
+            return
+        yield {**s, p[1]: t}, swaps
+        return
+    if t[0] != 'fn' or p[1] != t[1] or len(p[2]) != len(t[2]):
+        return
+    orders = [(t[2], swaps)]
+    if p[1] in comm and len(t[2]) == 2 and t[2][0] != t[2][1]:
+        orders.append(((t[2][1], t[2][0]), swaps + (t,)))
+    for args, sw in orders:
+        yield from _match_args(p[2], args, s, comm, sw)
+
+
+def _match_args(ps, ts, s, comm, swaps):
+    if not ps:
+        yield s, swaps
+        return
+    for s1, sw1 in _match_c(ps[0], ts[0], s, comm, swaps):
+        yield from _match_args(ps[1:], ts[1:], s1, comm, sw1)
+
+
+def _swap_instances(swaps, comm):
+    """Commutativity instances that justify the swapped subterms: [(parent index, substitution)]."""
+    out = []
+    for u in swaps:
+        i, v1, v2 = comm[u[1]]
+        out.append((i, {v1: u[2][0], v2: u[2][1]}))
+    return out
+
+
+def _rewrite_once(t, rules, comm=None):
+    """One leftmost-outermost rewrite step, matching modulo commutativity when `comm` is
+    given: (new term, [(parent index, substitution)] for the rule and any swaps)."""
+    for i, l, r in rules:
+        m = next(_match_c(l, t, {}, comm or {}), None)
+        if m is not None:
+            return _subst(r, m[0]), [(i, m[0])] + _swap_instances(m[1], comm or {})
+    if t[0] == 'fn':
+        for k, a in enumerate(t[2]):
+            s = _rewrite_once(a, rules, comm)
+            if s is not None:
+                args = list(t[2])
+                args[k] = s[0]
+                return ('fn', t[1], tuple(args)), s[1]
+    return None
+
+
+def _ground_all(t, g):
+    if t[0] == 'var':
+        return g
+    return ('fn', t[1], tuple(_ground_all(a, g) for a in t[2]))
+
+
+def _rewrite_path(sides, rules, comm=None, steps=12):
+    """Every state on the way to a normal form of an equation's sides under `rules`, with
+    the rule instances used so far: [((side, side), [(parent index, substitution)])]."""
+    out, used, cur = [], [], list(sides)
+    for _ in range(steps):
+        for k in (0, 1):
+            s = _rewrite_once(cur[k], rules, comm)
+            if s is not None:
+                cur[k] = s[0]
+                used = used + s[1]
+                out.append((tuple(cur), used))
+                break
+        else:
+            break
+    return out
+
+
+def _overlaps_v1(parents):
+    """Superposition overlaps between parents: for a positive equation side l of one parent
+    and a non-variable subterm u of another (or the same, renamed apart), the most general
     unifier. Yields {parent index: {variable: term with variables}} pairs."""
     out = []
     for i, A in enumerate(parents):
@@ -517,7 +674,7 @@ def _overlaps(parents):
     return out
 
 
-def ground_hints(parents, conclusion, constants, *, rounds=3, cap=1500, max_terms=250, seconds=1.5):
+def _ground_hints_v1(parents, conclusion, constants, *, rounds=3, cap=1500, max_terms=250, seconds=1.5):
     """parents: [(variable order, clauses)] (None for a parent that cannot be instantiated);
     conclusion: (variable order, [one clause]). Returns [(parent index, [terms in order])]
     whose instances, with the ground parents and the negated conclusion, are
@@ -549,7 +706,7 @@ def ground_hints(parents, conclusion, constants, *, rounds=3, cap=1500, max_term
     # round 0: instances from superposition overlaps, free variables grounded over T
     terms = sorted(T, key=lambda t: (_size(t), repr(t)))[:max_terms]
     seeded = []
-    for ov in _overlaps(parents):
+    for ov in _overlaps_v1(parents):
         free = sorted({x for m in ov.values() for t in m.values() for x in _vars_of(t, set())})
         combos = [{}]
         for v in free:
@@ -565,6 +722,188 @@ def ground_hints(parents, conclusion, constants, *, rounds=3, cap=1500, max_term
                     seen.add(key); seeded.append(key)
         if len(seeded) > cap or time.monotonic() > deadline:
             break
+    if seeded:
+        inst += seeded
+        for i, args in seeded:
+            m = dict(zip(parents[i][0], args))
+            for c in parents[i][1]:
+                for _, a, b in c:
+                    _terms(_subst(a, m), T); _terms(_subst(b, m), T)
+        if _unsat(clauses(inst)):
+            return _minimise(inst, lambda ks: time.monotonic() < deadline + 2 and _unsat(clauses(ks)))
+    for _ in range(rounds):
+        added = []
+        terms = sorted(T, key=lambda t: (_size(t), repr(t)))[:max_terms]
+        for i, sh in enumerate(parents):
+            if not sh or not sh[0]:
+                continue
+            vs, cls = sh
+            pats = []
+            for c in cls:
+                for _, a, b in c:
+                    _nonvar_subterms(a, pats); _nonvar_subterms(b, pats)
+            subs = []
+            for pat in pats:
+                for t in terms:
+                    m = _match(pat, t, {})
+                    if m is not None:
+                        subs.append(m)
+            if len(vs) == 1:
+                subs += [{vs[0]: t} for t in terms]
+            for m in subs:
+                combos = [m]
+                for v in [v for v in vs if v not in m]:
+                    if len(combos) * len(terms) > 200:
+                        combos = []
+                        break
+                    combos = [{**c, v: t} for c in combos for t in terms]
+                for c in combos:
+                    key = (i, tuple(c[v] for v in vs))
+                    if key in seen:
+                        continue
+                    seen.add(key)
+                    inst_sides = [_subst(x, c) for cl in cls for _, a, b in cl for x in (a, b)]
+                    if max(_size(x) for x in inst_sides) <= limit:
+                        added.append(key)
+                if len(added) > cap or time.monotonic() > deadline:
+                    break
+            if len(added) > cap or time.monotonic() > deadline:
+                break
+        if not added:
+            break
+        inst += added
+        for i, args in added:
+            m = dict(zip(parents[i][0], args))
+            for c in parents[i][1]:
+                for _, a, b in c:
+                    _terms(_subst(a, m), T); _terms(_subst(b, m), T)
+        if time.monotonic() > deadline:
+            return None
+        if _unsat(clauses(inst)):
+            return _minimise(inst, lambda ks: time.monotonic() < deadline + 2 and _unsat(clauses(ks)))
+    return None
+
+
+# Ground-hint generator versions (B20_R25). v1 is the generator as it ran up to B20_R24, kept
+# verbatim so earlier replays stay reproducible. v2 (ported from the B21 side branch) also
+# matches each superposition result to the conclusion, rewrites it towards a normal form under
+# the other parents first (size-decreasing rules, matching modulo a commutativity parent: E's
+# `rw` after `spm`, often by a derived commutativity law), hands the rule and commutativity
+# instances to Lean, and seeds matched overlaps before blind enumeration. Hints are only
+# instances given to Lean, which checks every step: a wrong hint can make a step fail, never
+# make a false step pass.
+HINT_VERSIONS = ('v1', 'v2')
+HINTS = 'v2'
+
+
+def ground_hints(parents, conclusion, constants, *, version=None, **kw):
+    """parents: [(variable order, clauses)] (None for a parent that cannot be instantiated);
+    conclusion: (variable order, [one clause]). Returns [(parent index, [terms in order])]
+    whose instances, with the ground parents and the negated conclusion, are
+    unsatisfiable, [] if no instance is needed, or None when none were found in budget.
+    `version` (default: the module's HINTS) selects the generator."""
+    version = version or HINTS
+    if version not in HINT_VERSIONS:
+        raise ValueError(f'unknown ground-hint version {version!r}')
+    return (_ground_hints_v1 if version == 'v1' else _ground_hints_v2)(parents, conclusion, constants, **kw)
+
+
+def _ground_hints_v2(parents, conclusion, constants, *, rounds=3, cap=1500, max_terms=250, seconds=1.5):
+    """parents: [(variable order, clauses)] (None for a parent that cannot be instantiated);
+    conclusion: (variable order, [one clause]). Returns [(parent index, [terms in order])]
+    whose instances, with the ground parents and the negated conclusion, are
+    unsatisfiable, [] if no instance is needed, or None when none were found in budget."""
+    deadline = time.monotonic() + seconds
+    cvars, ccl = conclusion
+    if len(ccl) != 1:
+        return None
+    sk = {v: ('fn', '#' + v, ()) for v in cvars}
+    neg = [[(not pos, _subst(a, sk), _subst(b, sk))] for pos, a, b in ccl[0]]
+    ground = [c for sh in parents if sh and not sh[0] for c in sh[1]]
+    sides = [x for sh in parents if sh for c in sh[1] for _, a, b in c for x in (a, b)] + \
+            [x for c in neg for _, a, b in c for x in (a, b)]
+    limit = 2 * max(_size(x) for x in sides) + 2 if sides else 16
+    T = set(constants)
+    for c in neg + ground:
+        for _, a, b in c:
+            _terms(a, T); _terms(b, T)
+    if _unsat(neg + ground):
+        return []
+
+    def clauses(keys):
+        out = list(neg + ground)
+        for i, args in keys:
+            m = dict(zip(parents[i][0], args))
+            out += [[(q, _subst(a, m), _subst(b, m)) for q, a, b in c] for c in parents[i][1]]
+        return out
+    inst, seen = [], set()
+    # round 0: instances from superposition overlaps, free variables grounded over T
+    terms = sorted(T, key=lambda t: (_size(t), repr(t)))[:max_terms]
+    seeded = []
+    overlaps, results = _overlaps(parents)
+    goal_sides = [(a, b) for c in neg for _, a, b in c]
+    by_overlap = {}
+    all_rules = _rules(parents)
+    comm = _commutative(parents)
+    for k, (s1, s2) in results:
+        # the overlap result, and (B21) the states on its way to a normal form under the
+        # other parents (E's `rw` after `spm`), matched to the conclusion; with a
+        # commutativity parent, rewriting and matching work modulo commutativity
+        cands = [((s1, s2), [])]
+        if all_rules and time.monotonic() < deadline:
+            own = {i if i >= 0 else -1 - i for i in overlaps[k]}
+            for rules in (_rules(parents, exclude=own), all_rules):
+                cands += _rewrite_path((s1, s2), rules)
+                if comm:
+                    cands += _rewrite_path((s1, s2), rules, comm)
+        for (r1, r2), extra in cands:
+            for a, b in goal_sides:
+                for x, y in ((a, b), (b, a)):
+                    found = 0
+                    for m1, sw1 in _match_c(r1, x, {}, comm):
+                        for m, sw in _match_c(r2, y, m1, comm, sw1):
+                            by_overlap.setdefault(k, []).append((m, extra + _swap_instances(sw, comm)))
+                            found += 1
+                            break
+                        if found >= 2:
+                            break
+    def seed(ks):
+        out = []
+        for k in ks:
+            ov = overlaps[k]
+            free = sorted({x for m in ov.values() for t in m.values() for x in _vars_of(t, set())})
+            # variables the result does not mention are arbitrary: any ground term will do
+            combos = [({**{v: terms[0] for v in free if v not in c}, **c}, extra)
+                      for c, extra in by_overlap.get(k, [])] if terms else []
+            if not combos:
+                combos = [{}]
+                for v in free:
+                    if len(combos) * len(terms) > 300:
+                        combos = []
+                        break
+                    combos = [{**c, v: t} for c in combos for t in terms]
+                combos = [(c, []) for c in combos]
+            for c, extra in combos:
+                keys = []
+                for idx, m in ov.items():
+                    i = idx if idx >= 0 else -1 - idx
+                    keys.append((i, tuple(_subst(m[v], c) for v in parents[i][0])))
+                for i, rm in extra:                # the rewrite-rule instances, grounded alike
+                    keys.append((i, tuple(_ground_all(_subst(rm.get(v, terms[0]), c), terms[0])
+                                          for v in parents[i][0])))
+                for key in keys:
+                    if key not in seen:
+                        seen.add(key); out.append(key)
+            if len(out) > cap or time.monotonic() > deadline:
+                break
+        return out
+    # overlaps whose result matched the conclusion first (B21): enumerating the others
+    # can exhaust the cap before a matched one is reached
+    matched = [k for k in range(len(overlaps)) if k in by_overlap]
+    first = seed(matched)
+    if first and _unsat(clauses(first)):
+        return _minimise(first, lambda ks: time.monotonic() < deadline + 2 and _unsat(clauses(ks)))
+    seeded = first + seed([k for k in range(len(overlaps)) if k not in by_overlap])
     if seeded:
         inst += seeded
         for i, args in seeded:
@@ -803,7 +1142,7 @@ def replay(problem_id, axioms, goal, proof_text, *, lemmas=(), goal_deps=None, g
     rec = {'problem_id': problem_id, 'statement_module': stmt_mod['name'],
            'statement_sha256': digest({'s': stmt_mod['source']}),
            'steps': sum(len(t) for t in tables.values()), 'lemmas_replayed': len(lemmas),
-           'hinted_steps': sum(x['ground_hints'] for t in tables.values() for x in t)}
+           'hinted_steps': sum(x['ground_hints'] for t in tables.values() for x in t), 'hints': HINTS}
     if pmod is None:
         return dict(rec, status='NOT_REPLAYED', reason=reason)
     receipt = checker.accept([stmt_mod, pmod], [{'spec': spec, 'proof': f'{pmod["name"]}.proof'}], cache=cache)
