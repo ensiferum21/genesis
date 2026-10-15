@@ -70,7 +70,11 @@
     "ghost_census_b19": "evidence/ghost_census_b19",
     "literature_b19": "evidence/literature_b19",
     "readiness_b19": "evidence/readiness_b19",
-    "learning_b20": "evidence/learning_b20"
+    "learning_b20": "evidence/learning_b20",
+    "hint_ab_b20r25": "evidence/hint_ab_b20r25",
+    "quotient_invention_b20r26": "evidence/quotient_invention_b20r26",
+    "decomposition_invention_b20r27": "evidence/decomposition_invention_b20r27",
+    "e1b_causal_repilot_b20r28": "evidence/e1b_causal_repilot_b20r28"
   },
   "remaining_external": [
     "external release authority",
@@ -408,6 +412,33 @@
         ],
         "decision": "user, 14 Oct 2026: versioned rule e1-hard-v2 picks the E1 and E1b families; both re-piloted",
         "result": "e1-hard-v2: 3 triangle-free settings, no C4; E1 READY_FOR_REVIEW (+2.57, power 0.88 at 30), E1b READY_FOR_REVIEW (+2.63, power 0.97); first rehearsals INVALID (evaluator SAT-only reference, B20R24-OPEN-1, repaired with the joint LP/SAT reference); re-run rehearsals SUPPORTED for both, judge agrees; packages handoff/e1 v3, handoff/e1b v2"
+      },
+      "B20_R25": {
+        "commits": [
+          "db73275",
+          "57c011d"
+        ],
+        "result": "fof_lean ground-hint generator v2 (ported from side branch side-b21-equational; v1 kept verbatim, v2 default): Lean replay of Wolfram-axiom lemma chains 0/19 -> 19/19 on identical proof objects; Sheffer 11/11 under both (no regression)"
+      },
+      "B20_R26": {
+        "commits": [
+          "3679ec3",
+          "1e48521"
+        ],
+        "result": "s15.3 quotient family attempt 1: per-host partition + exact transitive-triple-free block pattern; one parametric Lean transport theorem CHECKED; DEV NO_UTILITY_AFTER_COST (vs menu -0.22 [-0.38, -0.06])"
+      },
+      "B20_R27": {
+        "commits": [
+          "fb1703f",
+          "e85fd7d"
+        ],
+        "result": "s15.3 decomposition family attempt 1: balanced partition, exact parts (LP greedy + CaDiCaL), Lean composition theorem CHECKED; DEV NO_UTILITY_AFTER_COST (vs the same components on the whole host -2.53, vs menu -1.25)"
+      },
+      "B20_R28": {
+        "commits": [
+          "df20d32"
+        ],
+        "result": "E1b causal re-pilot on the e1b family: ablation +1.25 (24/3/1) and placebo +2.61 (27/1/0), both READY_FOR_REVIEW (power 10/stratum); handoff exposure addenda (126 hosts from B20_R26-R28)"
       }
     },
     "open_after_b20_r5": [
@@ -505,6 +536,22 @@
       "B20R24-OPEN-1 (repaired, pending review)",
       "E1b causal re-pilot on the e1b family",
       "B20R9-OPEN-1 (GV4: component invention)",
+      "B20R3-OPEN-2",
+      "B20R5-OPEN-2",
+      "B14-OPEN-4 (pending review)",
+      "B20R-OPEN-3 (pending review)",
+      "R-04",
+      "B20R8-OPEN-1 (pending review)"
+    ],
+    "open_after_b20_r28": [
+      "GV3 sign-off (reviewer: e1-hard-v2 and DRAFTs; statistician B19-OPEN-4; independent custodian)",
+      "B20R24-OPEN-2 (certification limit vs unsupported limit)",
+      "B20R24-OPEN-1 (repaired, pending review)",
+      "B20R9-OPEN-1 (GV4: component invention; four representation attempts in three families without DEV utility)",
+      "B20R25-OPEN-1 (hint generator v2 heuristic; pending review)",
+      "B20R26-OPEN-1 (quotient family: one attempt)",
+      "B20R27-OPEN-1 (decomposition family: one attempt)",
+      "registered interventions for represent-and-repair-v1 and the formal successor kind; supervised SAT child (needs a versioned kind so frozen E1 descriptors do not change)",
       "B20R3-OPEN-2",
       "B20R5-OPEN-2",
       "B14-OPEN-4 (pending review)",

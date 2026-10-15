@@ -2,7 +2,8 @@
 
 ## Where things stand
 
-- **Branch:** `continuation-b20-rx` (GitHub `ensiferum21/genesis`). It is the canonical B20_R11 line (`continuation-b20-repairs`, `36954d6`), with the recovery-branch work ported onto it, plus B20_R12 and B20_R15–R24.
+- **Branch:** `continuation-b20-rx` (GitHub `ensiferum21/genesis`). It is the canonical B20_R11 line (`continuation-b20-repairs`, `36954d6`), with the recovery-branch work ported onto it, plus B20_R12 and B20_R15–R28. B20_R25–R28 were built from the B20_R24 checkpoint's history bundle while GitHub was not linked; GitHub's branch is an ancestor.
+- **Side branch:** `side-b21-equational` (`710d26d`) keeps work done on plain B20 in parallel with this line (equational generations W21/E4, definitional primitives, fault routes). It is not canonical. Only its Lean-replay hint repair was ported (B20_R25).
 - **Checkpoints:**
 
 | Checkpoint | Commit | Archive SHA-256 |
@@ -16,9 +17,10 @@
 | B20_R16 | `988c7f5` | `c0a201b0…c37a` |
 | B20_R21 | `0bf3a96` | `72e78fab…0796` (release matrix 1,157 tests, all OK; restore-verified) |
 | B20_R23 | `e7fad0e` | `da3eb0fd…a354` (release matrix 1,164 tests, all OK; restore-verified; sent to Daniel directly while GitHub was disconnected) |
+| B20_R24 | `77a7b78` | `8dcf9937…3633` (as received from Daniel on 15 Oct 2026; its history bundle is the base of B20_R25–R28) |
 
   The recovery-branch checkpoints B20_RX1 and B20_RX2 are on `recovery-b20r1-partial`; their work was ported here.
-- **Records:** `docs/checkpoints/B20_R1_RECORD.md` … `B20_R11_RECORD.md`, `B20_RX1_RECORD.md`, `B20_RX2_RECORD.md`, `B20_R12_RECORD.md` and `B20_R15_RECORD.md` … `B20_R24_RECORD.md`.
+- **Records:** `docs/checkpoints/B20_R1_RECORD.md` … `B20_R11_RECORD.md`, `B20_RX1_RECORD.md`, `B20_RX2_RECORD.md`, `B20_R12_RECORD.md` and `B20_R15_RECORD.md` … `B20_R28_RECORD.md`.
 
 ## Completed since B20_R11
 
@@ -38,6 +40,10 @@
 | B20_R22 | H08 s20.6 complete in engineering terms: retention and negative transfer under a frozen protocol (protected material, measured once, within budget); a DEV demonstration finds NEGATIVE_TRANSFER of a campaign's first retained change |
 | B20_R23 | Candidate kind `construct-pipeline-v1` (GV4 draft item 1) with a registered ablation and placebo of its LP guidance. **E1b** (the LP-guided candidate, under E1's decided design) is READY_FOR_REVIEW on DEV: triangle-free +1.79 per host (power: 12 per stratum), with causal follow-ups ready (ablation +1.42, placebo +2.53); C4 +1.00, but its causal pilot is UNSETTLED_REFERENCE. DRAFT package `handoff/e1b`; its SELECT step waits on a family decision |
 | B20_R24 | The user's family decision: versioned rule `e1-hard-v2` (time-matched baselines in the sandbox, a certification limit, a headroom bound of one design effect; no candidate input). It selects 3 triangle-free settings and no C4 setting. **E1 and E1b are both READY_FOR_REVIEW** (+2.57 and +2.63 per host, power 0.88 and 0.97 at 30 hosts). The first same-operator rehearsals were INVALID, from an evaluator defect (B20R24-OPEN-1, repaired: joint LP/SAT reference). The re-run rehearsals are **SUPPORTED** for both, and the judge agrees. Packages `handoff/e1` v3, `handoff/e1b` v2 |
+| B20_R25 | Lean replay of E proofs: ground-hint generator v2 (ported from the side branch; v1 kept verbatim). On identical proof objects, Wolfram-axiom lemma chains go from 0/19 to **19/19**; Sheffer 11/11 under both |
+| B20_R26 | s15.3 quotient family, attempt 1: per-host partition + exact block pattern, one parametric Lean transport theorem (CHECKED). DEV **NO_UTILITY_AFTER_COST** (−0.22 vs the menu) |
+| B20_R27 | s15.3 decomposition family, attempt 1: exact parts + Lean composition theorem (CHECKED). DEV **NO_UTILITY_AFTER_COST** (−2.53 vs the same components on the whole host) |
+| B20_R28 | E1b causal re-pilot on the `e1b` family: ablation +1.25, placebo +2.61, both **READY_FOR_REVIEW** (power 10 per stratum). Exposure addenda (126 hosts) next to the frozen E1/E1b packages |
 
 ## Resume
 
@@ -54,20 +60,27 @@
    - a statistician signs off the centred power model (B19-OPEN-4);
    - an independent custodian runs SELECT, register and evaluate on its own machine.
 2. **B20R24-OPEN-2:** align the calibration's certification limit (at least 90% certified within 60 s) with the plan's unsupported limit (at most 5% at 600 s) before a real run.
-3. **GV4 study design** (`handoff/gv4/README.md`, DRAFT). The question is what counts as an invented component. The decision is needed before the s15.3 work below can become a study.
+3. **GV4 study design** (`handoff/gv4/README.md`, DRAFT). The question is what counts as an invented component. The decision is needed before the s15.3 work below can become a study. After B20_R26/R27, no invented component has DEV utility yet.
 4. **CRPD-2b pin revision:** review.
 
 ## Next engineering, in order
 
-1. **H06 s15.3 / W10: richer representation invention.** This is GV4-critical.
-   - B20_R17 and R19 generated two representations outside the menu: an oriented 3-cycle decoder, and a k = 4 decoder from the versioned v2 generator. Their semantics and transport are Lean-checked, but both are NO_UTILITY_AFTER_COST on DEV (+0.19 and +0.125 per host against the menu). The relational family is retired as a utility source there.
-   - Next, each family as its own preregistered step, with all attempts counted:
-     - partitions/quotients with proved transport conditions;
-     - decompositions with verified witness composition.
-2. **E1b causal re-pilot on the `e1b` family** (ablation `random_greedy`, placebo `lp_shuffled_greedy`). The template is `scripts/b20r23_e1b_causal_readiness.py`; the B20_R23 pilot used builder-chosen settings.
-3. **Registered interventions for the remaining candidate kinds** (`represent-and-repair-v1`, the formal successor kind), and a supervised child process in the runner, so that the SAT finisher can become a pipeline component. (B20_R23 registered the LP guidance of `construct-pipeline-v1`; the Lean-package route for THEOREM_CHECKED was added in B20_R20.)
-4. **H08, the rest:** paired research lineages for `sealed_improver_evaluation` (needs a GV4 domain with headroom); custodian-held retention material. (Retention and negative transfer were added in B20_R22.)
-5. **H11:** an independent reviewer works through `docs/checkpoints/B20_R20_REVIEW_BRIEF.md`; the operations runbook is `docs/OPERATIONS.md`.
+1. **GV4: a component family with utility.** Four representation attempts in three families now have Lean-checked semantics and transport, and none has DEV utility after cost:
+   - relational ×2 (B20_R17, R19), retired;
+   - quotient ×1 (B20_R26);
+   - decomposition ×1 (B20_R27).
+
+   Each further attempt is its own preregistered step, and every attempt counts. Candidates:
+   - a quotient attempt 2 on families whose best triangle-free subgraph is far from bipartite;
+   - a decomposition that keeps the cut small or solves it jointly;
+   - a different kind of component altogether (for example, symmetry or dominance rules; B20_RX1 H06 probe).
+
+   The GV4 study design (`handoff/gv4/README.md`) waits on such a family.
+2. **Registered interventions for the remaining candidate kinds** (`represent-and-repair-v1`, the formal successor kind), and a supervised child process in the runner, so the SAT finisher can become a pipeline component. Changing `invention/representations.py` or `candidates.py` changes the implementation identity, and so the descriptor ids, of the frozen E1/E1b candidates. This needs a versioned kind (for example `represent-and-repair-v2`), not an edit of v1.
+3. **H08, the rest:** paired research lineages for `sealed_improver_evaluation` (needs a GV4 domain with headroom); custodian-held retention material.
+4. **H11:** an independent reviewer works through `docs/checkpoints/B20_R20_REVIEW_BRIEF.md`; the operations runbook is `docs/OPERATIONS.md`.
+
+Done since B20_R24: the E1b causal re-pilot on the `e1b` family (B20_R28).
 
 ## Needs external resources
 

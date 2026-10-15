@@ -45,7 +45,14 @@ The frozen solver is a `construct-pipeline-v1` descriptor:
 
 The rehearsals license nothing. One operator played every role, with fixture keys.
 
-**The causal follow-ups were measured on the B20_R23 settings, not on this family.** Before an ablation or placebo request, re-pilot them on the `e1b` calibration (the template is `scripts/b20r23_e1b_causal_readiness.py`).
+**Causal follow-ups, re-piloted on this family (B20_R28; `evidence/e1b_causal_repilot_b20r28/`).** The setup is 30 fresh hosts from the `e1b` calibration, with 28 certified (at least 8 of 10 per stratum). Every arm ran in the runc sandbox. The intervened descriptors are the registered ones in `interventions.json`.
+
+| Contrast | Mean per host | W / T / L | CPU ratio | DRAFT dry run | Centred power | Verdict |
+|---|---|---|---|---|---|---|
+| candidate − ablation (`random_greedy`) | **+1.25** | 24 / 3 / 1 | 1.03 | SUPPORTED, 1.26 [1.02, 1.48] | 10 per stratum (30) | **READY_FOR_REVIEW** |
+| candidate − placebo (`lp_shuffled_greedy`) | **+2.61** | 27 / 1 / 0 | 1.00 | SUPPORTED, 2.58 [2.23, 2.95] | 10 per stratum (30) | **READY_FOR_REVIEW** |
+
+The placebo scores 1.36 per host *below* the ablation: shuffled LP values are worse than no LP order. On DEV, the LP signal is the active ingredient. A causal level still needs signed custodian ablation and placebo evaluations. The B20_R23 pilot on builder-chosen settings stays in the history.
 
 ## Contents
 
@@ -57,6 +64,7 @@ The rehearsals license nothing. One operator played every role, with fixture key
 | `decision_record_DRAFT.json` | Names the `e1b` calibration and the re-pilot's power analysis. A frozen copy has no structural problems. |
 | `power_analysis_centred_b20r24.json`, `pilot_summary_b20r24.json`, `rehearsal_summary_b20r24.json` | The re-pilot and both rehearsals. |
 | `exposure_hosts_all.json` | Every host the builder named or generated (1,544). |
+| `exposure_hosts_addendum_b20r28.json` | B20_R28: the 126 DEV hosts named after this package was frozen (B20_R26–R28). A custodian lists **both** exposure files. |
 | `package_index.json` | Identities, the calibration and the outcomes. |
 
 The B20_R23 version of this package (builder-chosen settings, both domains) is in the git history at `e7fad0e`.

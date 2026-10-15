@@ -504,8 +504,7 @@
    "local_execution": "TESTS_EXECUTED_IN_MATRIX",
    "owner": "research implementer",
    "remaining": [
-    "a generated representation with prospective utility (B20_R17/R19: generated relational decoders are Lean-checked; DEV utility after cost was not shown)",
-    "partitions/quotients and decompositions"
+    "a generated representation with prospective utility (B20_R17/R19 relational decoders, B20_R26 quotients and B20_R27 decompositions are Lean-checked; DEV utility after cost was not shown in any of the four attempts)"
    ],
    "scientific_efficacy": "N/A",
    "scope": "MRDL bounded graph vocabulary; typed representation grammar with Lean-checked obligations (B18)",
@@ -514,7 +513,11 @@
     "tests_genesis/test_graphs.py",
     "tests_formal/test_invention.py",
     "tests_genesis/test_relations.py",
-    "tests_formal/test_relation_invention.py"
+    "tests_formal/test_relation_invention.py",
+    "tests_genesis/test_quotients.py",
+    "tests_genesis/test_decompositions.py",
+    "tests_formal/test_quotient_invention.py",
+    "tests_formal/test_decomposition_invention.py"
    ],
    "title": "MRDL: minimal representation description language",
    "workstream": "W10"
@@ -4955,7 +4958,11 @@
     "src/genesis/invention/codegree.py",
     "evidence/codegree_b20r/package.json",
     "src/genesis/invention/relations.py",
-    "evidence/relation_invention_b20r17/package.json"
+    "evidence/relation_invention_b20r17/package.json",
+    "src/genesis/invention/quotients.py",
+    "evidence/quotient_invention_b20r26/package.json",
+    "src/genesis/invention/decompositions.py",
+    "evidence/decomposition_invention_b20r27/package.json"
    ],
    "disposition": "IMPLEMENTED_BOUNDED_PENDING_AUDIT",
    "evidence": [],
@@ -4974,9 +4981,13 @@
     "tests_formal/test_soundness_modes.py",
     "tests_formal/test_codegree.py",
     "tests_genesis/test_relations.py",
-    "tests_formal/test_relation_invention.py"
+    "tests_formal/test_relation_invention.py",
+    "tests_genesis/test_quotients.py",
+    "tests_genesis/test_decompositions.py",
+    "tests_formal/test_quotient_invention.py",
+    "tests_formal/test_decomposition_invention.py"
    ],
-   "title": "Representation and ontology invention (vertex-class grammar; B20_R17/R19 generated relational decoders, Lean-checked, NO_UTILITY_AFTER_COST on DEV)",
+   "title": "Representation and ontology invention (vertex-class grammar; B20_R17/R19 generated relational decoders, B20_R26 quotients with a parametric transport theorem, B20_R27 decompositions with a composition theorem; all Lean-checked, all NO_UTILITY_AFTER_COST on DEV)",
    "workstream": "W10"
   },
   {
@@ -5125,7 +5136,8 @@
    "code": [
     "src/genesis/discovery/ghost_census.py",
     "src/genesis/formal_research/fof_lean.py",
-    "evidence/ghost_census_b19/run2/summary.json"
+    "evidence/ghost_census_b19/run2/summary.json",
+    "evidence/hint_ab_b20r25/ab.json"
    ],
    "disposition": "IMPLEMENTED_BOUNDED_PENDING_AUDIT",
    "evidence": [],
@@ -5140,9 +5152,10 @@
    "scope": "workstream (B14 scope delivered; acceptance pending)",
    "source": "roadmap \u00a77-10",
    "tests": [
-    "tests_formal/test_ghost_census.py"
+    "tests_formal/test_ghost_census.py",
+    "tests_formal/test_hint_versions.py"
    ],
-   "title": "Ghost Census beyond the small development family (DEV diagnostic; Lean replay of E proofs)",
+   "title": "Ghost Census beyond the small development family (DEV diagnostic; Lean replay of E proofs; B20_R25 ground-hint generator v2: Wolfram-axiom chains 0/19 -> 19/19 on identical proof objects)",
    "workstream": "W16"
   },
   {

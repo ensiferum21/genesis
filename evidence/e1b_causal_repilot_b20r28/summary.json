@@ -1,0 +1,244 @@
+{
+ "c4": {
+  "reason": "no adopted e1b calibration for c4_host_v2 (B20_R24)",
+  "verdict": "NOT_RUN"
+ },
+ "calibration": {
+  "record_sha256": "bc26782a0c5916e9e1246e5351f617a3006ffece99451c57ead5ee39b41ee633",
+  "rule": "e1-hard-v2",
+  "selected": [
+   {
+    "family": "planted_cluster",
+    "index": 18,
+    "params": {
+     "n": 30,
+     "p_in": 0.6,
+     "p_out": 0.2
+    }
+   },
+   {
+    "family": "erdos",
+    "index": 7,
+    "params": {
+     "n": 26,
+     "p": 0.35
+    }
+   },
+   {
+    "family": "erdos",
+    "index": 9,
+    "params": {
+     "n": 30,
+     "p": 0.3
+    }
+   }
+  ]
+ },
+ "certified_gate": "75% per stratum, rounded up",
+ "certify_seconds": 120,
+ "code_identity": "0dcf2538397251f88bf6f3427e2ec57d543dc5e8559e26da1b5d53b9132bf8c6",
+ "descriptors": {
+  "ablation": "c1a3928eb9142cdbdc7de177ea391cc592eb914a3c91be0dfe55770ca68e8b44",
+  "candidate": "f5a3d7ffd69c014e28aacc6550a41118c25cf7bfbc13145cb9fbed7892f6f06e",
+  "placebo": "a05fc4eb7a6ffdc52d0f181105f8d573fd285ef18125fbc5c9cb83908b37e7ab"
+ },
+ "domain": "triangle_free_host_v1",
+ "exposure_scan": {
+  "calibration_hosts": 456,
+  "distinct_hosts": 1640,
+  "e1_named_hosts": 711,
+  "empty_files_skipped": [
+   "evidence/failed-wal-final-replay.json",
+   "evidence/final-replay.json"
+  ],
+  "excluded_identities": 1640,
+  "files_scanned": 865,
+  "host_records": 4282
+ },
+ "profile": {
+  "cpu_seconds": 4,
+  "memory_mib": 2048,
+  "queries": 1000,
+  "wall_seconds": 20
+ },
+ "r23_builder_settings_pilot": "evidence/e1b_causal_readiness_b20r23 (kept; builder-chosen settings)",
+ "schema": "genesis-b20r28-e1b-causal-repilot-v1",
+ "seed": 20262951,
+ "status": "DEV causal readiness diagnostic; no sealed task; licenses no claim",
+ "study": "e1b",
+ "triangle_free": {
+  "ablation": {
+   "approximation_agreement": 1.0,
+   "cpu_ns": {
+    "ablation": 66557774226,
+    "candidate": 68491072831
+   },
+   "cpu_ratio_candidate_to_intervened": 1.029,
+   "draft_plan_dry_run": {
+    "checks": {
+     "cost_within_bound": true,
+     "estimate_reaches_minimum_useful_effect": true,
+     "holm_rejects_no_superiority": true,
+     "interval_lower_above_zero": true,
+     "no_stratum_regression": true
+    },
+    "cost_ratio": 1.0282228358,
+    "decision": "SUPPORTED",
+    "estimate": 1.2583333333,
+    "interval": [
+     1.0166666667,
+     1.475
+    ],
+    "p_value": 4.99975e-05
+   },
+   "failures": {
+    "ablation": 0,
+    "candidate": 0
+   },
+   "mean_difference": 1.25,
+   "power_centred": {
+    "chosen": {
+     "power": 1.0,
+     "tasks_per_stratum": 10,
+     "total_tasks": 30
+    },
+    "false_positive_rate_at_zero_effect": 0.0,
+    "pilot_strata": {
+     "erdos:70960071": {
+      "mean_difference": 1.0,
+      "sd": 0.8165,
+      "share_with_headroom": 1.0,
+      "tasks": 10
+     },
+     "erdos:b73f6828": {
+      "mean_difference": 1.375,
+      "sd": 0.5175,
+      "share_with_headroom": 1.0,
+      "tasks": 8
+     },
+     "planted_cluster:1467febf": {
+      "mean_difference": 1.4,
+      "sd": 0.9661,
+      "share_with_headroom": 1.0,
+      "tasks": 10
+     }
+    },
+    "power_at_minimum_useful_effect": 0.523,
+    "status": "CHOSEN"
+   },
+   "stratum_mean_differences": {
+    "erdos:70960071": 1.0,
+    "erdos:b73f6828": 1.375,
+    "planted_cluster:1467febf": 1.4
+   },
+   "verdict": "READY_FOR_REVIEW",
+   "wins_ties_losses": [
+    24,
+    3,
+    1
+   ]
+  },
+  "certified_by_stratum": {
+   "erdos:70960071": [
+    10,
+    10
+   ],
+   "erdos:b73f6828": [
+    8,
+    10
+   ],
+   "planted_cluster:1467febf": [
+    10,
+    10
+   ]
+  },
+  "hosts": 30,
+  "optimum_hits": {
+   "ablation": 1,
+   "candidate": 18,
+   "placebo": 1
+  },
+  "placebo": {
+   "approximation_agreement": 1.0,
+   "cpu_ns": {
+    "candidate": 68491072831,
+    "placebo": 68543430693
+   },
+   "cpu_ratio_candidate_to_intervened": 0.9992,
+   "draft_plan_dry_run": {
+    "checks": {
+     "cost_within_bound": true,
+     "estimate_reaches_minimum_useful_effect": true,
+     "holm_rejects_no_superiority": true,
+     "interval_lower_above_zero": true,
+     "no_stratum_regression": true
+    },
+    "cost_ratio": 0.9980815355,
+    "decision": "SUPPORTED",
+    "estimate": 2.575,
+    "interval": [
+     2.225,
+     2.95
+    ],
+    "p_value": 4.99975e-05
+   },
+   "failures": {
+    "candidate": 0,
+    "placebo": 0
+   },
+   "mean_difference": 2.6071,
+   "power_centred": {
+    "chosen": {
+     "power": 0.985,
+     "tasks_per_stratum": 10,
+     "total_tasks": 30
+    },
+    "false_positive_rate_at_zero_effect": 0.003,
+    "pilot_strata": {
+     "erdos:70960071": {
+      "mean_difference": 2.5,
+      "sd": 0.9718,
+      "share_with_headroom": 1.0,
+      "tasks": 10
+     },
+     "erdos:b73f6828": {
+      "mean_difference": 2.125,
+      "sd": 1.3562,
+      "share_with_headroom": 1.0,
+      "tasks": 8
+     },
+     "planted_cluster:1467febf": {
+      "mean_difference": 3.1,
+      "sd": 1.3703,
+      "share_with_headroom": 1.0,
+      "tasks": 10
+     }
+    },
+    "power_at_minimum_useful_effect": 0.427,
+    "status": "CHOSEN"
+   },
+   "stratum_mean_differences": {
+    "erdos:70960071": 2.5,
+    "erdos:b73f6828": 2.125,
+    "planted_cluster:1467febf": 3.1
+   },
+   "verdict": "READY_FOR_REVIEW",
+   "wins_ties_losses": [
+    27,
+    1,
+    0
+   ]
+  },
+  "placebo_minus_ablation_mean": -1.3571,
+  "scored": 28,
+  "totals": {
+   "ablation": 2588,
+   "candidate": 2627,
+   "placebo": 2548
+  }
+ },
+ "verdicts": {
+  "ablation": "READY_FOR_REVIEW",
+  "placebo": "READY_FOR_REVIEW"
+ }
+}

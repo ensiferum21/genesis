@@ -51,6 +51,11 @@ session can resume from the latest checkpoint (see `RESUME.md`).
 | 20_R9 | Library curation pilot | B20R3-OPEN-1/2 | Curating which lemmas to keep: NO_CURATION_HEADROOM on four variants (at most +1/12); across B20_R3/R6/R9 no research-policy dimension reaches 2/12 on the equational domain. DEV design diagnostic |
 | 20_R10 | Small open items | B20R7-OPEN-1/2, B20R3-OPEN-3 | Custodian statement screen for research (signed, fails closed); checker CPU metered; error lines kept in checker logs |
 | 20_R11 | E1 readiness through the custodian runner | GV3 path; B19-OPEN-3/4 | E1 effect replicates under equal sandbox metering (+1.33/task, 24W/5T/1L) but the DRAFT cost rule fails (CPU ratio 3.38 > 3.0); handoff/e1 package; same-operator rehearsal end to end (NOT_SUPPORTED on cost, judge agrees). Builder-run, fixture keys |
+| 20_R12–R24, RX1–RX5 | Recorded in `NEXT_ACTIONS.md` and `docs/checkpoints/` | — | — |
+| 20_R25 | Lean replay hint generator v2 | B21 side-branch port; W16 | Wolfram-axiom chains 0/19 → 19/19 on identical proof objects; no regression on Sheffer (11/11) |
+| 20_R26 | Quotient representations | s15.3 / W10 (GV4) | Parametric Lean transport theorem CHECKED; DEV NO_UTILITY_AFTER_COST (attempt 1) |
+| 20_R27 | Decompositions | s15.3 / W10 (GV4) | Lean composition theorem CHECKED; DEV NO_UTILITY_AFTER_COST, −2.53 vs the same components on the whole host (attempt 1) |
+| 20_R28 | E1b causal re-pilot on the e1b family | GV3 path | Ablation +1.25 and placebo +2.61, both READY_FOR_REVIEW; handoff exposure addenda |
 
 Later phases (B17–B23+) follow the roadmap and its gates; numbers are labels,
 not estimates.
