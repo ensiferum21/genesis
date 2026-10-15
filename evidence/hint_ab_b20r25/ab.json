@@ -1,0 +1,94 @@
+{
+ "by_system": {
+  "ba_sheffer": {
+   "attempted": 11,
+   "paired": {
+    "both": 11,
+    "neither": 0,
+    "v1_only": 0,
+    "v2_only": 0
+   },
+   "v1_checked": 11,
+   "v2_checked": 11
+  },
+  "ba_wolfram": {
+   "attempted": 19,
+   "paired": {
+    "both": 0,
+    "neither": 0,
+    "v1_only": 0,
+    "v2_only": 19
+   },
+   "v1_checked": 0,
+   "v2_checked": 19
+  }
+ },
+ "code_identity": "b6e04197fcaedcb4474d29c28927e2b0e622f7e07bb052492eee54e7f1751ce2",
+ "rules": {
+  "dev_targets": 10,
+  "eval_s": 3,
+  "eval_targets": 15,
+  "false_conjectures": 30,
+  "per_bucket": 8,
+  "pool_size": 5,
+  "premise_k": 8,
+  "prove_s": 10,
+  "target_range": [
+   5,
+   8
+  ]
+ },
+ "runs": [
+  {
+   "budget_s": 60,
+   "library": 89,
+   "library_sha256": "5d2567bc89a4bde8d8d3ca4d736dcfc3b7834ccb31755b6c206c0cba59cf9b97",
+   "panel_sha256": "e5013f2bc2c6264121616243ee0137c2a5cfe7567e6fcdc9741db357c4f3cf7c",
+   "seed": 2026251,
+   "successor": 9,
+   "system": "ba_wolfram",
+   "targets": 15
+  },
+  {
+   "budget_s": 60,
+   "library": 88,
+   "library_sha256": "6500a32cffdcf2cc844ea18cb7810d9a8c26659b2c7abaa9c4f8213d403e7906",
+   "panel_sha256": "a2215cfecb64fd6707ce13dd58277a4de1965623b333fe8392d8dd3ab91b1a2e",
+   "seed": 2026252,
+   "successor": 10,
+   "system": "ba_wolfram",
+   "targets": 15
+  },
+  {
+   "budget_s": 10,
+   "library": 28,
+   "library_sha256": "3ef3de01edd175b03e8c72dbeb9f2c885d8db7247f04c3c70c0199985711b892",
+   "panel_sha256": "ddae66c125a7fc84e42cdd206610ad8cfd6e7599267064f54bf89b5cb59fd99a",
+   "seed": 2026253,
+   "successor": 11,
+   "system": "ba_sheffer",
+   "targets": 15
+  }
+ ],
+ "schema": "genesis-b20r25-hint-ab-v1",
+ "seeds": [
+  [
+   "ba_wolfram",
+   2026251,
+   60
+  ],
+  [
+   "ba_wolfram",
+   2026252,
+   60
+  ],
+  [
+   "ba_sheffer",
+   2026253,
+   10
+  ]
+ ],
+ "status": "DEV; licenses no claim",
+ "v2_regressions": [],
+ "wall_seconds": 1490.4
+}

@@ -1,0 +1,819 @@
+[
+ {
+  "chain_lemmas": 27,
+  "proof_sha256": "0173c1c9006c13a7410155f831d1c871e0e5c4822d26da0f0644c91e98ce8b92",
+  "seed": 2026251,
+  "system": "ba_wolfram",
+  "target": "![X]: (![Y]: (![Z]: (s(X,s(s(X,s(Y,Z)),X)) = s(X,s(s(Y,s(Z,Y)),Y)))))",
+  "v1": {
+   "errors": [
+    "FOFP0A5A32222D.lean:524:15: error: `simp` made no progress",
+    "FOFP0A5A32222D.lean:1665:15: error: `simp` made no progress"
+   ],
+   "hinted_steps": 312,
+   "hints": "v1",
+   "reason": "Lean: ELABORATION_ERROR",
+   "seconds": 40.0,
+   "status": "NOT_REPLAYED",
+   "steps": 408
+  },
+  "v2": {
+   "errors": [],
+   "hinted_steps": 323,
+   "hints": "v2",
+   "reason": null,
+   "seconds": 15.6,
+   "status": "THEOREM_CHECKED",
+   "steps": 408
+  }
+ },
+ {
+  "chain_lemmas": 33,
+  "proof_sha256": "ef61dc829e0f99124eb1f4d57ea28828225ed4399650299c284d6ade013b0ff2",
+  "seed": 2026251,
+  "system": "ba_wolfram",
+  "target": "![X]: (![Y]: (![Z]: (s(s(s(s(X,X),s(Y,X)),X),Z) = s(s(X,X),Z))))",
+  "v1": {
+   "errors": [
+    "FOFP83EAB165C5.lean:523:15: error: `simp` made no progress",
+    "FOFP83EAB165C5.lean:1664:15: error: `simp` made no progress"
+   ],
+   "hinted_steps": 473,
+   "hints": "v1",
+   "reason": "Lean: ELABORATION_ERROR",
+   "seconds": 49.6,
+   "status": "NOT_REPLAYED",
+   "steps": 593
+  },
+  "v2": {
+   "errors": [],
+   "hinted_steps": 489,
+   "hints": "v2",
+   "reason": null,
+   "seconds": 19.4,
+   "status": "THEOREM_CHECKED",
+   "steps": 593
+  }
+ },
+ {
+  "chain_lemmas": 38,
+  "proof_sha256": "073094ccb47eca4da22c5fafc598ee0fb948a840878904d90e68eeda15edb554",
+  "seed": 2026251,
+  "system": "ba_wolfram",
+  "target": "![X]: (![Y]: (![Z]: (s(s(X,Y),s(X,Y)) = s(s(X,Y),s(Z,s(Z,Z))))))",
+  "v1": {
+   "errors": [
+    "FOFP6F10D069C6.lean:524:15: error: `simp` made no progress",
+    "FOFP6F10D069C6.lean:1318:15: error: `simp` made no progress"
+   ],
+   "hinted_steps": 503,
+   "hints": "v1",
+   "reason": "Lean: ELABORATION_ERROR",
+   "seconds": 54.8,
+   "status": "NOT_REPLAYED",
+   "steps": 640
+  },
+  "v2": {
+   "errors": [],
+   "hinted_steps": 521,
+   "hints": "v2",
+   "reason": null,
+   "seconds": 18.9,
+   "status": "THEOREM_CHECKED",
+   "steps": 640
+  }
+ },
+ {
+  "chain_lemmas": 25,
+  "proof_sha256": "5cde514d9c5cadda22d63939324af093195fcda80cdbe261f68d78fe00253cc6",
+  "seed": 2026251,
+  "system": "ba_wolfram",
+  "target": "![X]: (![Y]: (![Z]: (s(s(s(X,Y),Y),s(Z,Y)) = s(s(Y,s(Y,X)),s(Y,Z)))))",
+  "v1": {
+   "errors": [
+    "FOFPF3F836E258.lean:524:15: error: `simp` made no progress",
+    "FOFPF3F836E258.lean:1665:15: error: `simp` made no progress"
+   ],
+   "hinted_steps": 286,
+   "hints": "v1",
+   "reason": "Lean: ELABORATION_ERROR",
+   "seconds": 36.7,
+   "status": "NOT_REPLAYED",
+   "steps": 376
+  },
+  "v2": {
+   "errors": [],
+   "hinted_steps": 297,
+   "hints": "v2",
+   "reason": null,
+   "seconds": 14.1,
+   "status": "THEOREM_CHECKED",
+   "steps": 376
+  }
+ },
+ {
+  "chain_lemmas": 40,
+  "proof_sha256": "af158704bfa0ed82898275e9c870a0fe099de1f938ee683a5815538af230e825",
+  "seed": 2026251,
+  "system": "ba_wolfram",
+  "target": "![X]: (![Y]: (![Z]: (s(s(s(X,X),Y),s(Z,Y)) = s(s(Y,s(X,Y)),s(Y,Z)))))",
+  "v1": {
+   "errors": [
+    "FOFP75AB913DC4.lean:524:15: error: `simp` made no progress",
+    "FOFP75AB913DC4.lean:956:15: error: `simp` made no progress"
+   ],
+   "hinted_steps": 541,
+   "hints": "v1",
+   "reason": "Lean: ELABORATION_ERROR",
+   "seconds": 50.2,
+   "status": "NOT_REPLAYED",
+   "steps": 681
+  },
+  "v2": {
+   "errors": [],
+   "hinted_steps": 556,
+   "hints": "v2",
+   "reason": null,
+   "seconds": 19.5,
+   "status": "THEOREM_CHECKED",
+   "steps": 681
+  }
+ },
+ {
+  "chain_lemmas": 38,
+  "proof_sha256": "6e5a5cd15aa33880098b5821a1aaf63b4ceea9b67149f8a6e4af59b9378b647a",
+  "seed": 2026251,
+  "system": "ba_wolfram",
+  "target": "![X]: (![Y]: (![Z]: (s(s(X,s(s(Y,X),X)),Y) = s(s(X,s(Z,s(X,X))),Y))))",
+  "v1": {
+   "errors": [
+    "FOFPBAA0382F0E.lean:523:15: error: `simp` made no progress",
+    "FOFPBAA0382F0E.lean:955:15: error: `simp` made no progress"
+   ],
+   "hinted_steps": 510,
+   "hints": "v1",
+   "reason": "Lean: ELABORATION_ERROR",
+   "seconds": 47.4,
+   "status": "NOT_REPLAYED",
+   "steps": 645
+  },
+  "v2": {
+   "errors": [],
+   "hinted_steps": 526,
+   "hints": "v2",
+   "reason": null,
+   "seconds": 20.3,
+   "status": "THEOREM_CHECKED",
+   "steps": 645
+  }
+ },
+ {
+  "chain_lemmas": 39,
+  "proof_sha256": "88191da089bd1daa59b03d26094ee0b5e2b80d5217898e82908d872df2744d25",
+  "seed": 2026251,
+  "system": "ba_wolfram",
+  "target": "![X]: (![Y]: (![Z]: (s(s(s(X,X),Y),s(Z,Y)) = s(s(Y,Z),s(Y,s(Y,X))))))",
+  "v1": {
+   "errors": [
+    "FOFP6E6F4D5283.lean:523:15: error: `simp` made no progress",
+    "FOFP6E6F4D5283.lean:955:15: error: `simp` made no progress"
+   ],
+   "hinted_steps": 531,
+   "hints": "v1",
+   "reason": "Lean: ELABORATION_ERROR",
+   "seconds": 50.8,
+   "status": "NOT_REPLAYED",
+   "steps": 669
+  },
+  "v2": {
+   "errors": [],
+   "hinted_steps": 547,
+   "hints": "v2",
+   "reason": null,
+   "seconds": 20.3,
+   "status": "THEOREM_CHECKED",
+   "steps": 669
+  }
+ },
+ {
+  "chain_lemmas": 35,
+  "proof_sha256": "26eae2f08d791c525bca0f98f93a79f6da0adfd755979ad98657efe42ba2b9ae",
+  "seed": 2026251,
+  "system": "ba_wolfram",
+  "target": "![X]: (![Y]: (![Z]: (s(s(s(s(X,Y),Y),X),s(Z,Z)) = s(s(X,X),s(Z,Z)))))",
+  "v1": {
+   "errors": [
+    "FOFP7D5D12D6A8.lean:524:15: error: `simp` made no progress",
+    "FOFP7D5D12D6A8.lean:1665:15: error: `simp` made no progress"
+   ],
+   "hinted_steps": 495,
+   "hints": "v1",
+   "reason": "Lean: ELABORATION_ERROR",
+   "seconds": 51.6,
+   "status": "NOT_REPLAYED",
+   "steps": 620
+  },
+  "v2": {
+   "errors": [],
+   "hinted_steps": 510,
+   "hints": "v2",
+   "reason": null,
+   "seconds": 20.3,
+   "status": "THEOREM_CHECKED",
+   "steps": 620
+  }
+ },
+ {
+  "chain_lemmas": 36,
+  "proof_sha256": "7f63fd686f88b6b8181b6e09dfa1cfd0150a7a504aad7a8cc6b2f9a90fa70341",
+  "seed": 2026251,
+  "system": "ba_wolfram",
+  "target": "![X]: (![Y]: (![Z]: (s(s(s(X,Y),X),s(Z,Z)) = s(s(Z,Z),s(s(Y,Y),X)))))",
+  "v1": {
+   "errors": [
+    "FOFPE57CCF2284.lean:524:15: error: `simp` made no progress",
+    "FOFPE57CCF2284.lean:1665:15: error: `simp` made no progress"
+   ],
+   "hinted_steps": 507,
+   "hints": "v1",
+   "reason": "Lean: ELABORATION_ERROR",
+   "seconds": 45.9,
+   "status": "NOT_REPLAYED",
+   "steps": 635
+  },
+  "v2": {
+   "errors": [],
+   "hinted_steps": 522,
+   "hints": "v2",
+   "reason": null,
+   "seconds": 18.5,
+   "status": "THEOREM_CHECKED",
+   "steps": 635
+  }
+ },
+ {
+  "chain_lemmas": 40,
+  "proof_sha256": "e210387941db5a4dea9db20ad42b7e8a5794d41e666308ada1a33a0e5dba1c2e",
+  "seed": 2026252,
+  "system": "ba_wolfram",
+  "target": "![X]: (![Y]: (s(s(s(X,s(Y,X)),X),Y) = s(s(s(Y,s(X,X)),X),Y)))",
+  "v1": {
+   "errors": [
+    "FOFP5FD849DAE5.lean:524:15: error: `simp` made no progress",
+    "FOFP5FD849DAE5.lean:956:15: error: `simp` made no progress",
+    "FOFP5FD849DAE5.lean:1222:15: error: `simp` made no progress"
+   ],
+   "hinted_steps": 514,
+   "hints": "v1",
+   "reason": "Lean: ELABORATION_ERROR",
+   "seconds": 46.8,
+   "status": "NOT_REPLAYED",
+   "steps": 656
+  },
+  "v2": {
+   "errors": [],
+   "hinted_steps": 532,
+   "hints": "v2",
+   "reason": null,
+   "seconds": 18.6,
+   "status": "THEOREM_CHECKED",
+   "steps": 656
+  }
+ },
+ {
+  "chain_lemmas": 22,
+  "proof_sha256": "fc6acf42a7c48877538ed62f1711d0438b9e72403183b63a7c9a2bbd453ed679",
+  "seed": 2026252,
+  "system": "ba_wolfram",
+  "target": "![X]: (![Y]: (![Z]: (s(s(s(X,X),Y),s(Z,Z)) = s(s(Z,Z),s(s(Y,X),Y)))))",
+  "v1": {
+   "errors": [
+    "FOFPA6F9B84B58.lean:524:15: error: `simp` made no progress",
+    "FOFPA6F9B84B58.lean:956:15: error: `simp` made no progress",
+    "FOFPA6F9B84B58.lean:1281:15: error: `simp` made no progress"
+   ],
+   "hinted_steps": 299,
+   "hints": "v1",
+   "reason": "Lean: ELABORATION_ERROR",
+   "seconds": 36.3,
+   "status": "NOT_REPLAYED",
+   "steps": 384
+  },
+  "v2": {
+   "errors": [],
+   "hinted_steps": 314,
+   "hints": "v2",
+   "reason": null,
+   "seconds": 12.4,
+   "status": "THEOREM_CHECKED",
+   "steps": 384
+  }
+ },
+ {
+  "chain_lemmas": 37,
+  "proof_sha256": "1482a72b9c46f139f96f6bff11a0ebeb8801365f305719c8be16fafb32bb3885",
+  "seed": 2026252,
+  "system": "ba_wolfram",
+  "target": "![X]: (![Y]: (![Z]: (s(s(X,X),s(Y,X)) = s(s(Y,X),s(X,s(Y,s(Z,Z)))))))",
+  "v1": {
+   "errors": [
+    "FOFP0060AF1166.lean:524:15: error: `simp` made no progress",
+    "FOFP0060AF1166.lean:956:15: error: `simp` made no progress",
+    "FOFP0060AF1166.lean:1222:15: error: `simp` made no progress"
+   ],
+   "hinted_steps": 494,
+   "hints": "v1",
+   "reason": "Lean: ELABORATION_ERROR",
+   "seconds": 49.9,
+   "status": "NOT_REPLAYED",
+   "steps": 627
+  },
+  "v2": {
+   "errors": [],
+   "hinted_steps": 512,
+   "hints": "v2",
+   "reason": null,
+   "seconds": 17.9,
+   "status": "THEOREM_CHECKED",
+   "steps": 627
+  }
+ },
+ {
+  "chain_lemmas": 22,
+  "proof_sha256": "ccfc01a3127e8734af8f0b24a52f7b3ab4fd7197162cb402a5d9db9c27fbe36c",
+  "seed": 2026252,
+  "system": "ba_wolfram",
+  "target": "![X]: (![Y]: (s(s(X,Y),s(s(s(Y,X),Y),Y)) = s(s(X,Y),s(X,Y))))",
+  "v1": {
+   "errors": [
+    "FOFP2B5D51642E.lean:524:15: error: `simp` made no progress",
+    "FOFP2B5D51642E.lean:1120:15: error: `simp` made no progress",
+    "FOFP2B5D51642E.lean:2049:15: error: `simp` made no progress"
+   ],
+   "hinted_steps": 297,
+   "hints": "v1",
+   "reason": "Lean: ELABORATION_ERROR",
+   "seconds": 36.2,
+   "status": "NOT_REPLAYED",
+   "steps": 382
+  },
+  "v2": {
+   "errors": [],
+   "hinted_steps": 312,
+   "hints": "v2",
+   "reason": null,
+   "seconds": 12.9,
+   "status": "THEOREM_CHECKED",
+   "steps": 382
+  }
+ },
+ {
+  "chain_lemmas": 43,
+  "proof_sha256": "8f6b592637aadccdde61551408ba405ed2e00171cda12bdbcb9c87460392f56e",
+  "seed": 2026252,
+  "system": "ba_wolfram",
+  "target": "![X]: (![Y]: (![Z]: (s(s(X,s(Y,s(Y,Y))),Z) = s(Z,s(X,Z)))))",
+  "v1": {
+   "errors": [
+    "FOFP6EA6BFE83F.lean:524:15: error: `simp` made no progress",
+    "FOFP6EA6BFE83F.lean:1318:15: error: `simp` made no progress",
+    "FOFP6EA6BFE83F.lean:2789:15: error: `simp` made no progress"
+   ],
+   "hinted_steps": 477,
+   "hints": "v1",
+   "reason": "Lean: ELABORATION_ERROR",
+   "seconds": 48.3,
+   "status": "NOT_REPLAYED",
+   "steps": 628
+  },
+  "v2": {
+   "errors": [],
+   "hinted_steps": 495,
+   "hints": "v2",
+   "reason": null,
+   "seconds": 17.5,
+   "status": "THEOREM_CHECKED",
+   "steps": 628
+  }
+ },
+ {
+  "chain_lemmas": 30,
+  "proof_sha256": "e999a3ed9399870b70c8da96c57d892a8e30fa9108d8a6852abec28850e689cf",
+  "seed": 2026252,
+  "system": "ba_wolfram",
+  "target": "![X]: (![Y]: (![Z]: (s(s(X,Y),Z) = s(Z,s(X,s(s(Y,Z),s(Y,X)))))))",
+  "v1": {
+   "errors": [
+    "FOFP7C37A79538.lean:524:15: error: `simp` made no progress",
+    "FOFP7C37A79538.lean:1120:15: error: `simp` made no progress",
+    "FOFP7C37A79538.lean:2049:15: error: `simp` made no progress"
+   ],
+   "hinted_steps": 374,
+   "hints": "v1",
+   "reason": "Lean: RESOURCE_LIMIT",
+   "seconds": 43.8,
+   "status": "NOT_REPLAYED",
+   "steps": 486
+  },
+  "v2": {
+   "errors": [],
+   "hinted_steps": 392,
+   "hints": "v2",
+   "reason": null,
+   "seconds": 16.9,
+   "status": "THEOREM_CHECKED",
+   "steps": 486
+  }
+ },
+ {
+  "chain_lemmas": 27,
+  "proof_sha256": "38ea2c141beeda68ef4652e1190e089ce64b32fc7afa9d86d9fbd52dd3316c72",
+  "seed": 2026252,
+  "system": "ba_wolfram",
+  "target": "![X]: (![Y]: (![Z]: (s(s(X,s(Y,Z)),Y) = s(Y,s(s(s(Z,s(Y,Y)),Z),X)))))",
+  "v1": {
+   "errors": [
+    "FOFP30739B7BDE.lean:524:15: error: `simp` made no progress",
+    "FOFP30739B7BDE.lean:956:15: error: `simp` made no progress",
+    "FOFP30739B7BDE.lean:1222:15: error: `simp` made no progress"
+   ],
+   "hinted_steps": 386,
+   "hints": "v1",
+   "reason": "Lean: ELABORATION_ERROR",
+   "seconds": 47.0,
+   "status": "NOT_REPLAYED",
+   "steps": 489
+  },
+  "v2": {
+   "errors": [],
+   "hinted_steps": 404,
+   "hints": "v2",
+   "reason": null,
+   "seconds": 17.1,
+   "status": "THEOREM_CHECKED",
+   "steps": 489
+  }
+ },
+ {
+  "chain_lemmas": 35,
+  "proof_sha256": "2163d966e2b8aa68ac1a50953044b4d3d633c0fc0066aed861f09b15078c7315",
+  "seed": 2026252,
+  "system": "ba_wolfram",
+  "target": "![X]: (![Y]: (![Z]: (s(s(s(s(X,X),Y),Y),X) = s(s(Y,s(Z,s(Y,Y))),X))))",
+  "v1": {
+   "errors": [
+    "FOFPC02F39B791.lean:524:15: error: `simp` made no progress",
+    "FOFPC02F39B791.lean:1218:15: error: `simp` made no progress",
+    "FOFPC02F39B791.lean:1674:15: error: `simp` made no progress"
+   ],
+   "hinted_steps": 472,
+   "hints": "v1",
+   "reason": "Lean: ELABORATION_ERROR",
+   "seconds": 48.1,
+   "status": "NOT_REPLAYED",
+   "steps": 599
+  },
+  "v2": {
+   "errors": [],
+   "hinted_steps": 490,
+   "hints": "v2",
+   "reason": null,
+   "seconds": 18.0,
+   "status": "THEOREM_CHECKED",
+   "steps": 599
+  }
+ },
+ {
+  "chain_lemmas": 38,
+  "proof_sha256": "b7eb0ff7cf4a16fc9f2976fc7d2bd1f1b349c209548649488d7e564cb83b7394",
+  "seed": 2026252,
+  "system": "ba_wolfram",
+  "target": "![X]: (![Y]: (s(s(s(X,s(X,s(Y,Y))),Y),Y) = s(X,s(s(X,Y),X))))",
+  "v1": {
+   "errors": [
+    "FOFP6128A64E9C.lean:524:15: error: `simp` made no progress",
+    "FOFP6128A64E9C.lean:956:15: error: `simp` made no progress",
+    "FOFP6128A64E9C.lean:1222:15: error: `simp` made no progress"
+   ],
+   "hinted_steps": 500,
+   "hints": "v1",
+   "reason": "Lean: ELABORATION_ERROR",
+   "seconds": 49.3,
+   "status": "NOT_REPLAYED",
+   "steps": 636
+  },
+  "v2": {
+   "errors": [],
+   "hinted_steps": 518,
+   "hints": "v2",
+   "reason": null,
+   "seconds": 19.7,
+   "status": "THEOREM_CHECKED",
+   "steps": 636
+  }
+ },
+ {
+  "chain_lemmas": 27,
+  "proof_sha256": "28f1172bf8576933ab4e545f09b70617fff312d8dd2e696749edb2e6ec0b35c9",
+  "seed": 2026252,
+  "system": "ba_wolfram",
+  "target": "![X]: (![Y]: (![Z]: (s(s(s(X,Y),X),s(Z,X)) = s(s(X,s(X,Y)),s(X,Z)))))",
+  "v1": {
+   "errors": [
+    "FOFPEE26A4F7D9.lean:524:15: error: `simp` made no progress",
+    "FOFPEE26A4F7D9.lean:1120:15: error: `simp` made no progress",
+    "FOFPEE26A4F7D9.lean:2049:15: error: `simp` made no progress"
+   ],
+   "hinted_steps": 329,
+   "hints": "v1",
+   "reason": "Lean: ELABORATION_ERROR",
+   "seconds": 42.2,
+   "status": "NOT_REPLAYED",
+   "steps": 429
+  },
+  "v2": {
+   "errors": [],
+   "hinted_steps": 344,
+   "hints": "v2",
+   "reason": null,
+   "seconds": 15.3,
+   "status": "THEOREM_CHECKED",
+   "steps": 429
+  }
+ },
+ {
+  "chain_lemmas": 13,
+  "proof_sha256": "91b2748e235b30ff8652b52617b8364bab5cbdf3133ea49c6cf48a3be45b5212",
+  "seed": 2026253,
+  "system": "ba_sheffer",
+  "target": "![X]: (![Y]: (s(s(X,s(s(X,Y),s(Y,X))),X) = s(s(X,Y),X)))",
+  "v1": {
+   "errors": [],
+   "hinted_steps": 134,
+   "hints": "v1",
+   "reason": null,
+   "seconds": 12.1,
+   "status": "THEOREM_CHECKED",
+   "steps": 176
+  },
+  "v2": {
+   "errors": [],
+   "hinted_steps": 134,
+   "hints": "v2",
+   "reason": null,
+   "seconds": 7.3,
+   "status": "THEOREM_CHECKED",
+   "steps": 176
+  }
+ },
+ {
+  "chain_lemmas": 5,
+  "proof_sha256": "7c4aea20aa98bb4bd53a8dcba0d74da83cc56fb02df8efc6e6ad91c4d2b33c8d",
+  "seed": 2026253,
+  "system": "ba_sheffer",
+  "target": "![X]: (![Y]: (![Z]: (s(s(X,s(s(X,X),X)),s(Y,Z)) = s(s(Z,Y),s(X,X)))))",
+  "v1": {
+   "errors": [],
+   "hinted_steps": 51,
+   "hints": "v1",
+   "reason": null,
+   "seconds": 7.6,
+   "status": "THEOREM_CHECKED",
+   "steps": 69
+  },
+  "v2": {
+   "errors": [],
+   "hinted_steps": 51,
+   "hints": "v2",
+   "reason": null,
+   "seconds": 5.3,
+   "status": "THEOREM_CHECKED",
+   "steps": 69
+  }
+ },
+ {
+  "chain_lemmas": 11,
+  "proof_sha256": "b4e7e8c60aa201714f697c4cf4e83ae22ed5910452121d9dcb75cd7067ee0c81",
+  "seed": 2026253,
+  "system": "ba_sheffer",
+  "target": "![X]: (![Y]: (![Z]: (s(s(X,s(s(Y,Z),Y)),X) = s(s(X,s(Y,s(Z,Z))),X))))",
+  "v1": {
+   "errors": [],
+   "hinted_steps": 126,
+   "hints": "v1",
+   "reason": null,
+   "seconds": 12.7,
+   "status": "THEOREM_CHECKED",
+   "steps": 163
+  },
+  "v2": {
+   "errors": [],
+   "hinted_steps": 127,
+   "hints": "v2",
+   "reason": null,
+   "seconds": 6.8,
+   "status": "THEOREM_CHECKED",
+   "steps": 163
+  }
+ },
+ {
+  "chain_lemmas": 12,
+  "proof_sha256": "c84f0774c6dc7eca4a3e4e10b3090ed0d9596e2020ce97bb3f87a2d2dad2a996",
+  "seed": 2026253,
+  "system": "ba_sheffer",
+  "target": "![X]: (![Y]: (s(X,s(s(X,s(X,Y)),Y)) = s(X,s(s(Y,s(X,X)),Y))))",
+  "v1": {
+   "errors": [],
+   "hinted_steps": 150,
+   "hints": "v1",
+   "reason": null,
+   "seconds": 16.6,
+   "status": "THEOREM_CHECKED",
+   "steps": 189
+  },
+  "v2": {
+   "errors": [],
+   "hinted_steps": 150,
+   "hints": "v2",
+   "reason": null,
+   "seconds": 8.4,
+   "status": "THEOREM_CHECKED",
+   "steps": 189
+  }
+ },
+ {
+  "chain_lemmas": 7,
+  "proof_sha256": "d77a6ace36d75a9a6d52dea7565f9980c6882c6db2986ce5c20d333564aa6664",
+  "seed": 2026253,
+  "system": "ba_sheffer",
+  "target": "![X]: (![Y]: (![Z]: (s(s(X,s(Y,X)),s(Y,Z)) = s(s(Z,Y),s(s(Y,Y),X)))))",
+  "v1": {
+   "errors": [],
+   "hinted_steps": 80,
+   "hints": "v1",
+   "reason": null,
+   "seconds": 9.4,
+   "status": "THEOREM_CHECKED",
+   "steps": 104
+  },
+  "v2": {
+   "errors": [],
+   "hinted_steps": 80,
+   "hints": "v2",
+   "reason": null,
+   "seconds": 5.3,
+   "status": "THEOREM_CHECKED",
+   "steps": 104
+  }
+ },
+ {
+  "chain_lemmas": 11,
+  "proof_sha256": "7e9915ec16cd188957bbb17dccd894a1f27d39ccb039b8e93b4d6c887afdb828",
+  "seed": 2026253,
+  "system": "ba_sheffer",
+  "target": "![X]: (![Y]: (![Z]: (s(s(s(X,s(X,Y)),X),s(Z,X)) = s(s(X,Z),s(Y,X)))))",
+  "v1": {
+   "errors": [],
+   "hinted_steps": 111,
+   "hints": "v1",
+   "reason": null,
+   "seconds": 10.6,
+   "status": "THEOREM_CHECKED",
+   "steps": 147
+  },
+  "v2": {
+   "errors": [],
+   "hinted_steps": 111,
+   "hints": "v2",
+   "reason": null,
+   "seconds": 6.3,
+   "status": "THEOREM_CHECKED",
+   "steps": 147
+  }
+ },
+ {
+  "chain_lemmas": 14,
+  "proof_sha256": "4eb5b8c846c2bc7edd311bd9a1075c12dbabf8554c72e6abb596f422a70ebdbe",
+  "seed": 2026253,
+  "system": "ba_sheffer",
+  "target": "![X]: (![Y]: (![Z]: (s(s(s(s(X,Y),X),Y),Y) = s(s(X,s(s(X,Z),Z)),X))))",
+  "v1": {
+   "errors": [],
+   "hinted_steps": 158,
+   "hints": "v1",
+   "reason": null,
+   "seconds": 14.3,
+   "status": "THEOREM_CHECKED",
+   "steps": 203
+  },
+  "v2": {
+   "errors": [],
+   "hinted_steps": 158,
+   "hints": "v2",
+   "reason": null,
+   "seconds": 8.1,
+   "status": "THEOREM_CHECKED",
+   "steps": 203
+  }
+ },
+ {
+  "chain_lemmas": 14,
+  "proof_sha256": "445a97eea1d06ca264f10b5b63fd3fc80971eacc82ce7393d6a1b6321bb943fc",
+  "seed": 2026253,
+  "system": "ba_sheffer",
+  "target": "![X]: (![Y]: (![Z]: (s(s(s(X,Y),Y),Y) = s(X,s(s(Y,Y),s(Y,s(Y,Z)))))))",
+  "v1": {
+   "errors": [],
+   "hinted_steps": 137,
+   "hints": "v1",
+   "reason": null,
+   "seconds": 11.9,
+   "status": "THEOREM_CHECKED",
+   "steps": 182
+  },
+  "v2": {
+   "errors": [],
+   "hinted_steps": 137,
+   "hints": "v2",
+   "reason": null,
+   "seconds": 7.4,
+   "status": "THEOREM_CHECKED",
+   "steps": 182
+  }
+ },
+ {
+  "chain_lemmas": 11,
+  "proof_sha256": "70910e18971c71459f76e3b9da3416e0713245e7d4571b39b1d681c1614aaff1",
+  "seed": 2026253,
+  "system": "ba_sheffer",
+  "target": "![X]: (![Y]: (![Z]: (s(s(s(s(X,Y),X),X),Z) = s(s(Y,s(s(X,X),Y)),Z))))",
+  "v1": {
+   "errors": [],
+   "hinted_steps": 117,
+   "hints": "v1",
+   "reason": null,
+   "seconds": 10.9,
+   "status": "THEOREM_CHECKED",
+   "steps": 153
+  },
+  "v2": {
+   "errors": [],
+   "hinted_steps": 117,
+   "hints": "v2",
+   "reason": null,
+   "seconds": 7.0,
+   "status": "THEOREM_CHECKED",
+   "steps": 153
+  }
+ },
+ {
+  "chain_lemmas": 11,
+  "proof_sha256": "2c25129d7ce07beddd01a2e0dd4e76b501152c6a35d8e7ca777a7946189ab939",
+  "seed": 2026253,
+  "system": "ba_sheffer",
+  "target": "![X]: (![Y]: (s(X,s(s(s(s(Y,Y),X),X),Y)) = s(X,s(Y,s(X,X)))))",
+  "v1": {
+   "errors": [],
+   "hinted_steps": 135,
+   "hints": "v1",
+   "reason": null,
+   "seconds": 15.6,
+   "status": "THEOREM_CHECKED",
+   "steps": 171
+  },
+  "v2": {
+   "errors": [],
+   "hinted_steps": 135,
+   "hints": "v2",
+   "reason": null,
+   "seconds": 8.5,
+   "status": "THEOREM_CHECKED",
+   "steps": 171
+  }
+ },
+ {
+  "chain_lemmas": 1,
+  "proof_sha256": "b36b618403982031c2ebc48e6b6e09b70f3fff24a3ad1ac98323a5ed918d12ed",
+  "seed": 2026253,
+  "system": "ba_sheffer",
+  "target": "![X]: (![Y]: (![Z]: (s(s(X,s(X,Y)),s(X,Z)) = s(s(X,Z),s(s(X,Y),X)))))",
+  "v1": {
+   "errors": [],
+   "hinted_steps": 10,
+   "hints": "v1",
+   "reason": null,
+   "seconds": 4.2,
+   "status": "THEOREM_CHECKED",
+   "steps": 16
+  },
+  "v2": {
+   "errors": [],
+   "hinted_steps": 10,
+   "hints": "v2",
+   "reason": null,
+   "seconds": 3.6,
+   "status": "THEOREM_CHECKED",
+   "steps": 16
+  }
+ }
+]
