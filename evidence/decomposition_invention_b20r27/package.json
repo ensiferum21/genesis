@@ -1,0 +1,455 @@
+{
+ "acceptance": {
+  "check_stage": {
+   "check_sha256": "f899506b7074cf0ca8d124aae8358eb1741b8cabadd55bec8d9c47c25f0b1e6c",
+   "cpu_ns": 2757765352,
+   "exit_code": 0,
+   "exits": {
+    "DCP1": "0",
+    "check": "0"
+   },
+   "log": "",
+   "peak_memory_bytes": 222064640,
+   "status": "SUCCESS",
+   "wall_ns": 2831132348
+  },
+  "leanchecker": {
+   "DCP1": true
+  },
+  "receipt_sha256": "297a433268492537eb3ea7ac808252234961396eca7eb50a3511e6c9e914ce6c",
+  "status": "CHECKED"
+ },
+ "assumptions": {
+  "allowed_axioms": [
+   "Classical.choice",
+   "Quot.sound",
+   "propext"
+  ],
+  "axioms_used": [
+   "Classical.choice",
+   "Quot.sound",
+   "propext"
+  ],
+  "conventions": [
+   "hosts list each edge once as (u, v) with u < v",
+   "statements quantify over all pair sets, loops and reversed pairs included"
+  ],
+  "lean": "lean@e8baaa71855a616d",
+  "workspace": {
+   "artifact_identity": "be8f86a8ad460109a1c31eb061bf99309b3d032cf5e6462938261f8e3cd840ca",
+   "import_roots": [
+    "Mathlib.Data.Finset.Powerset",
+    "Mathlib.Algebra.BigOperators.Group.Finset.Sigma",
+    "Mathlib.Algebra.Order.BigOperators.Ring.Finset"
+   ],
+   "mathlib_rev": "d13f23b723b8a846827a245b89c10fc7d3f11612",
+   "source_identity": "7f5bcfa11bd7d91dddd1bb4839a70b33bc7e3b125695d754166d343397ac50b0"
+  }
+ },
+ "bindings": [
+  {
+   "proof": "DCP1.proof",
+   "spec": "DCConj.decomposition_union"
+  }
+ ],
+ "candidates": [
+  {
+   "composition": "DCConj.decomposition_union (vertex-disjoint union)",
+   "cost": {
+    "partition": "O(n² · passes)",
+    "parts": "LP + CaDiCaL per part"
+   },
+   "encoder": {
+    "space": "partitions of the host",
+    "type": "a balanced 2-way vertex partition"
+   },
+   "failure_conditions": [
+    "the partition is a local optimum of the cut",
+    "cut edges are only repaired greedily"
+   ],
+   "family": "decomposition",
+   "id": "decomp_2",
+   "kind": "conservative-definition",
+   "lost": "every edge between parts (restored only by repair)",
+   "origin": "generated:decomposition-v1",
+   "parts": 2,
+   "retained": "every edge inside a part that the part solver keeps",
+   "semantics": "union of the parts' witnesses (vertex-disjoint), then greedy repair of the cut edges"
+  },
+  {
+   "composition": "DCConj.decomposition_union (vertex-disjoint union)",
+   "cost": {
+    "partition": "O(n² · passes)",
+    "parts": "LP + CaDiCaL per part"
+   },
+   "encoder": {
+    "space": "partitions of the host",
+    "type": "a balanced 3-way vertex partition"
+   },
+   "failure_conditions": [
+    "the partition is a local optimum of the cut",
+    "cut edges are only repaired greedily"
+   ],
+   "family": "decomposition",
+   "id": "decomp_3",
+   "kind": "conservative-definition",
+   "lost": "every edge between parts (restored only by repair)",
+   "origin": "generated:decomposition-v1",
+   "parts": 3,
+   "retained": "every edge inside a part that the part solver keeps",
+   "semantics": "union of the parts' witnesses (vertex-disjoint), then greedy repair of the cut edges"
+  },
+  {
+   "composition": "DCConj.decomposition_union (vertex-disjoint union)",
+   "cost": {
+    "partition": "O(n² · passes)",
+    "parts": "LP + CaDiCaL per part"
+   },
+   "encoder": {
+    "space": "partitions of the host",
+    "type": "a balanced 4-way vertex partition"
+   },
+   "failure_conditions": [
+    "the partition is a local optimum of the cut",
+    "cut edges are only repaired greedily"
+   ],
+   "family": "decomposition",
+   "id": "decomp_4",
+   "kind": "conservative-definition",
+   "lost": "every edge between parts (restored only by repair)",
+   "origin": "generated:decomposition-v1",
+   "parts": 4,
+   "retained": "every edge inside a part that the part solver keeps",
+   "semantics": "union of the parts' witnesses (vertex-disjoint), then greedy repair of the cut edges"
+  }
+ ],
+ "costs": {
+  "acceptance_check_cpu_ns": 3073647222,
+  "acceptance_runs": 2,
+  "acceptances": [
+   {
+    "receipt_sha256": "894f95876aa3ccf0100d665fa346f40ceb22c343027b41901913b4122047a362",
+    "statement": "decomposition_union",
+    "stats": {
+     "check_sha256": "878c3299e35525c49904568f9c23411e95b92d3f406e64f90b37c59cf41f8949",
+     "cpu_ns": 3073647222,
+     "exit_code": 0,
+     "exits": {
+      "DCP1": "0",
+      "check": "0"
+     },
+     "log": "",
+     "peak_memory_bytes": 221851648,
+     "status": "SUCCESS",
+     "wall_ns": 3151232057
+    },
+    "status": "CHECKED"
+   }
+  ],
+  "attempts": [
+   {
+    "attempts": [
+     {
+      "compiled": true,
+      "errors": [],
+      "recipe": "union-cases-omega",
+      "sorry": false,
+      "tactic": "intro S T hS hT hd\nunfold GT.TriangleFree at *\nintro e he f hf g hg h\nsimp only [Finset.mem_union] at he hf hg\nrcases he with he | he <;> rcases hf with hf | hf <;> rcases hg with hg | hg\nall_goals first\n  | exact hS e he f hf g hg h\n  | exact hT e he f hf g hg h\n  | (have h1 := hd e he f hf; omega)\n  | (have h1 := hd e he g hg; omega)\n  | (have h1 := hd f hf e he; omega)\n  | (have h1 := hd f hf g hg; omega)\n  | (have h1 := hd g hg e he; omega)\n  | (have h1 := hd g hg f hf; omega)",
+      "tactic_sha256": "959e1287c02fb12a0f42b5a95d4ae0742a2d39a73fc84f5618d2c7d0d3a25bb7",
+      "tier": 0
+     }
+    ],
+    "charged": {
+     "candidates": 1,
+     "cpu_ns": 1376231001,
+     "wall_ns": 1408477140
+    },
+    "result": "COMPILED",
+    "statement": "decomposition_union",
+    "target": "DCConj.decomposition_union"
+   }
+  ],
+  "search_candidates": 1,
+  "search_context_cpu_ns": 3962455543,
+  "search_cpu_ns": 1376231001,
+  "search_runs": 1
+ },
+ "counterexamples": [],
+ "declarations": [
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "GTDefs",
+   "name": "GT.TriangleFree",
+   "type_sha256": "c98548115419ec271dfd495799f10b35c81fad06e346ef970bd969a518c2a9f4"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "GTDefs",
+   "name": "GT.Edges",
+   "type_sha256": "baaddf70fb5d432b8bd948ef91d6f910124a6d138edae4d5f000c4610ddc8eae"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "GTDefs",
+   "name": "GT.instDecidableTriangleFree",
+   "type_sha256": "5f6ad93fcd86d217b85aa0d5ae9d8484d2f18f9af307b85f1d55bcb68ce406d1"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "DCConj",
+   "name": "DCConj.decomposition_union",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "theorem",
+   "module": "DCP1",
+   "name": "DCP1.proof",
+   "type_sha256": "e8603c52812379d947806356a8a75c7f7048dc6f7cf03a09be7f92f83a879262"
+  }
+ ],
+ "definitions": [
+  {
+   "module": "GTDefs",
+   "name": "GT.TriangleFree",
+   "origin": "trusted-generated",
+   "type_sha256": "c98548115419ec271dfd495799f10b35c81fad06e346ef970bd969a518c2a9f4"
+  },
+  {
+   "module": "GTDefs",
+   "name": "GT.Edges",
+   "origin": "trusted-generated",
+   "type_sha256": "baaddf70fb5d432b8bd948ef91d6f910124a6d138edae4d5f000c4610ddc8eae"
+  },
+  {
+   "module": "GTDefs",
+   "name": "GT.instDecidableTriangleFree",
+   "origin": "trusted-generated",
+   "type_sha256": "5f6ad93fcd86d217b85aa0d5ae9d8484d2f18f9af307b85f1d55bcb68ce406d1"
+  },
+  {
+   "module": "DCConj",
+   "name": "DCConj.decomposition_union",
+   "origin": "trusted-generated",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  }
+ ],
+ "dependencies": {
+  "DCConj.decomposition_union": {
+   "package": [
+    "GT.Edges",
+    "GT.TriangleFree"
+   ],
+   "workspace_modules": [
+    "Init.Core",
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Defs",
+    "Mathlib.Data.Finset.Lattice.Basic",
+    "Mathlib.Data.SetLike.Basic"
+   ]
+  },
+  "DCP1.proof": {
+   "package": [
+    "DCConj.decomposition_union",
+    "DCP1.proof._proof_1_2",
+    "DCP1.proof._proof_1_3",
+    "DCP1.proof._proof_1_4",
+    "DCP1.proof._proof_1_5",
+    "DCP1.proof._simp_1_1",
+    "GT.Edges",
+    "GT.TriangleFree"
+   ],
+   "workspace_modules": [
+    "Init.Core",
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Defs",
+    "Mathlib.Data.Finset.Lattice.Basic",
+    "Mathlib.Data.SetLike.Basic"
+   ]
+  },
+  "DCP1.proof._proof_1_2": {
+   "package": [],
+   "workspace_modules": [
+    "Init.Core",
+    "Init.Data.Cast",
+    "Init.Data.Int.Basic",
+    "Init.Data.Int.Lemmas",
+    "Init.Data.Int.Order",
+    "Init.Data.Nat.Basic",
+    "Init.Omega.Coeffs",
+    "Init.Omega.Constraint",
+    "Init.Omega.Int",
+    "Init.Omega.LinearCombo",
+    "Init.Prelude"
+   ]
+  },
+  "DCP1.proof._proof_1_3": {
+   "package": [],
+   "workspace_modules": [
+    "Init.Core",
+    "Init.Data.Cast",
+    "Init.Data.Int.Basic",
+    "Init.Data.Int.Lemmas",
+    "Init.Data.Int.Order",
+    "Init.Data.Nat.Basic",
+    "Init.Omega.Coeffs",
+    "Init.Omega.Constraint",
+    "Init.Omega.Int",
+    "Init.Omega.LinearCombo",
+    "Init.Prelude"
+   ]
+  },
+  "DCP1.proof._proof_1_4": {
+   "package": [],
+   "workspace_modules": [
+    "Init.Core",
+    "Init.Data.Cast",
+    "Init.Data.Int.Basic",
+    "Init.Data.Int.Lemmas",
+    "Init.Data.Int.Order",
+    "Init.Data.Nat.Basic",
+    "Init.Omega.Coeffs",
+    "Init.Omega.Constraint",
+    "Init.Omega.Int",
+    "Init.Omega.LinearCombo",
+    "Init.Prelude"
+   ]
+  },
+  "DCP1.proof._proof_1_5": {
+   "package": [],
+   "workspace_modules": [
+    "Init.Core",
+    "Init.Data.Cast",
+    "Init.Data.Int.Basic",
+    "Init.Data.Int.Lemmas",
+    "Init.Data.Int.Order",
+    "Init.Data.Nat.Basic",
+    "Init.Omega.Coeffs",
+    "Init.Omega.Constraint",
+    "Init.Omega.Int",
+    "Init.Omega.LinearCombo",
+    "Init.Prelude"
+   ]
+  },
+  "DCP1.proof._simp_1_1": {
+   "package": [],
+   "workspace_modules": [
+    "Init.Core",
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Defs",
+    "Mathlib.Data.Finset.Lattice.Basic",
+    "Mathlib.Data.SetLike.Basic"
+   ]
+  },
+  "GT.Edges": {
+   "package": [],
+   "workspace_modules": [
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Defs"
+   ]
+  },
+  "GT.TriangleFree": {
+   "package": [
+    "GT.Edges"
+   ],
+   "workspace_modules": [
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Defs",
+    "Mathlib.Data.SetLike.Basic"
+   ]
+  },
+  "GT.instDecidableTriangleFree": {
+   "package": [
+    "GT.Edges",
+    "GT.TriangleFree"
+   ],
+   "workspace_modules": [
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Defs",
+    "Mathlib.Data.SetLike.Basic"
+   ]
+  }
+ },
+ "domain": "triangle_free_host_v1",
+ "modules": [
+  {
+   "name": "GTDefs",
+   "source": "import Mathlib.Data.Finset.Powerset\n\nnamespace GT\n\n/-- Edge sets: ordered pairs (u, v), read as the edge {u, v}. Hosts list each edge once, with u < v. -/\nabbrev Edges := Finset (ℕ × ℕ)\n\n/-- No three edges (a, b), (b, c), (a, c). -/\ndef TriangleFree (S : Edges) : Prop :=\n  ∀ e ∈ S, ∀ f ∈ S, ∀ g ∈ S, ¬ (e.1 = g.1 ∧ e.2 = f.1 ∧ f.2 = g.2)\n\ninstance (S : Edges) : Decidable (TriangleFree S) := by\n  unfold TriangleFree; infer_instance\n\nend GT\n",
+   "source_sha256": "34a84d4f227cbf5a95012a37a9f263f14ca419a4959be42c674d8abc47c9e3a7",
+   "trusted": true
+  },
+  {
+   "name": "DCConj",
+   "source": "import GTDefs\nset_option linter.unusedVariables false\n\nnamespace DCConj\n/-- Generated conjecture `decomposition_union` (generated:decomposition-v1). -/\ndef decomposition_union : Prop := ∀ (S : GT.Edges) (T : GT.Edges) (hS : GT.TriangleFree S) (hT : GT.TriangleFree T) (hd : ∀ e ∈ S, ∀ f ∈ T, e.1 ≠ f.1 ∧ e.1 ≠ f.2 ∧ e.2 ≠ f.1 ∧ e.2 ≠ f.2), GT.TriangleFree (S ∪ T)\nend DCConj\n",
+   "source_sha256": "5009d0bf45c964731f7d075d4b864aafd88d4d3ebf1df1162e43221503077ae1",
+   "trusted": true
+  },
+  {
+   "name": "DCP1",
+   "source": "import GTDefs\nimport DCConj\nnamespace DCP1\ntheorem proof : DCConj.decomposition_union := by\n  unfold DCConj.decomposition_union\n  intro S T hS hT hd\n  unfold GT.TriangleFree at *\n  intro e he f hf g hg h\n  simp only [Finset.mem_union] at he hf hg\n  rcases he with he | he <;> rcases hf with hf | hf <;> rcases hg with hg | hg\n  all_goals first\n    | exact hS e he f hf g hg h\n    | exact hT e he f hf g hg h\n    | (have h1 := hd e he f hf; omega)\n    | (have h1 := hd e he g hg; omega)\n    | (have h1 := hd f hf e he; omega)\n    | (have h1 := hd f hf g hg; omega)\n    | (have h1 := hd g hg e he; omega)\n    | (have h1 := hd g hg f hf; omega)\nend DCP1\n",
+   "source_sha256": "1f072b3ce18ac7165fd4cc029b9e30dfeb26840f34ecf8d0f02fdf9f50922b58",
+   "trusted": false
+  }
+ ],
+ "name": "decompositions (s15.3, attempt 1 of the family)",
+ "package_sha256": "e85a6b774c02d5499e6a7dadfd4758fab0354fcf0b2d69e0bd32be618bf7653b",
+ "proofs": [
+  {
+   "module": "DCP1",
+   "recipe": "union-cases-omega",
+   "statement": "decomposition_union"
+  }
+ ],
+ "provenance": {
+  "acceptance": "genesis.formal_research.checker.accept",
+  "created_at": "2026-10-15T13:51:03.373837+00:00",
+  "loop": "genesis.formal_research.loop",
+  "search": "genesis.formal_research.search (builder-written recipes, named per proof)"
+ },
+ "schema": "genesis-theory-package-v1",
+ "scope": "Vertex-disjoint triangle-free edge sets have a triangle-free union: the composition step of a decomposition, proved once for all edge sets.",
+ "statements": [
+  {
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "counterexample": null,
+   "id": "decomposition_union",
+   "lean": "∀ (S : GT.Edges) (T : GT.Edges) (hS : GT.TriangleFree S) (hT : GT.TriangleFree T) (hd : ∀ e ∈ S, ∀ f ∈ T, e.1 ≠ f.1 ∧ e.1 ≠ f.2 ∧ e.2 ≠ f.1 ∧ e.2 ≠ f.2), GT.TriangleFree (S ∪ T)",
+   "origin": "generated:decomposition-v1",
+   "proof_const": "DCP1.proof",
+   "proof_module": "DCP1",
+   "recipe": "union-cases-omega",
+   "role": "composition",
+   "screened_instances": 1182,
+   "spec_const": "DCConj.decomposition_union",
+   "status": "CHECKED",
+   "subject": "decomposition"
+  }
+ ]
+}

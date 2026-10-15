@@ -1,0 +1,197 @@
+{
+ "attempts_in_family": [
+  "B20_R27"
+ ],
+ "code_identity": "b6e04197fcaedcb4474d29c28927e2b0e622f7e07bb052492eee54e7f1751ce2",
+ "family": "decomposition",
+ "part_a": {
+  "candidates": [
+   "decomp_2",
+   "decomp_3",
+   "decomp_4"
+  ],
+  "checker_cpu_s_reported": 7.968,
+  "construction_cpu_s": 17.957,
+  "obligations": {
+   "composition": "CHECKED"
+  },
+  "screen": {
+   "decomposition_union": "NO_COUNTEREXAMPLE"
+  },
+  "verdict_a": "NEW_CHECKED"
+ },
+ "part_b": {
+  "budget_s": 1.0,
+  "chosen": {
+   "conventional": "conv:low_cycle_tm",
+   "menu": "menu:adjacent_2",
+   "new": "new:decomp_2",
+   "whole": "whole:exact_components"
+  },
+  "comparisons": {
+   "conventional": {
+    "by_setting": {
+     "S2": -1.1875,
+     "S3": -1.4375
+    },
+    "interval_90": [
+     -1.8438,
+     -0.8125
+    ],
+    "mean": -1.3125,
+    "passes": false,
+    "wins_ties_losses": [
+     4,
+     8,
+     20
+    ]
+   },
+   "matched": {
+    "by_setting": {
+     "S2": -1.5,
+     "S3": -1.0
+    },
+    "interval_90": [
+     -1.6562,
+     -0.8438
+    ],
+    "mean": -1.25,
+    "passes": false,
+    "wins_ties_losses": [
+     3,
+     7,
+     22
+    ]
+   },
+   "menu": {
+    "by_setting": {
+     "S2": -1.5,
+     "S3": -1.0
+    },
+    "interval_90": [
+     -1.6562,
+     -0.8438
+    ],
+    "mean": -1.25,
+    "passes": false,
+    "wins_ties_losses": [
+     3,
+     7,
+     22
+    ]
+   },
+   "whole": {
+    "by_setting": {
+     "S2": -2.5625,
+     "S3": -2.5
+    },
+    "interval_90": [
+     -2.9688,
+     -2.125
+    ],
+    "mean": -2.5312,
+    "passes": false,
+    "wins_ties_losses": [
+     0,
+     3,
+     29
+    ]
+   }
+  },
+  "construction_cpu_s": 17.957,
+  "excluded_named_hosts": 3488,
+  "horizon": 100,
+  "hosts": {
+   "S2": {
+    "eval": [
+     "dev-erdos-b73f6828-20262702-0000",
+     "dev-erdos-b73f6828-20262702-0001",
+     "dev-erdos-b73f6828-20262702-0002",
+     "dev-erdos-b73f6828-20262702-0003",
+     "dev-erdos-b73f6828-20262702-0004",
+     "dev-erdos-b73f6828-20262702-0005",
+     "dev-erdos-b73f6828-20262702-0006",
+     "dev-erdos-b73f6828-20262702-0007",
+     "dev-erdos-b73f6828-20262702-0008",
+     "dev-erdos-b73f6828-20262702-0009",
+     "dev-erdos-b73f6828-20262702-0010",
+     "dev-erdos-b73f6828-20262702-0011",
+     "dev-erdos-b73f6828-20262702-0012",
+     "dev-erdos-b73f6828-20262702-0013",
+     "dev-erdos-b73f6828-20262702-0014",
+     "dev-erdos-b73f6828-20262702-0015"
+    ],
+    "select": [
+     "dev-erdos-b73f6828-20262701-0000",
+     "dev-erdos-b73f6828-20262701-0001",
+     "dev-erdos-b73f6828-20262701-0002",
+     "dev-erdos-b73f6828-20262701-0003",
+     "dev-erdos-b73f6828-20262701-0004",
+     "dev-erdos-b73f6828-20262701-0005",
+     "dev-erdos-b73f6828-20262701-0006",
+     "dev-erdos-b73f6828-20262701-0007"
+    ]
+   },
+   "S3": {
+    "eval": [
+     "dev-erdos-3765432f-20262712-0000",
+     "dev-erdos-3765432f-20262712-0001",
+     "dev-erdos-3765432f-20262712-0002",
+     "dev-erdos-3765432f-20262712-0003",
+     "dev-erdos-3765432f-20262712-0004",
+     "dev-erdos-3765432f-20262712-0005",
+     "dev-erdos-3765432f-20262712-0006",
+     "dev-erdos-3765432f-20262712-0007",
+     "dev-erdos-3765432f-20262712-0008",
+     "dev-erdos-3765432f-20262712-0009",
+     "dev-erdos-3765432f-20262712-0010",
+     "dev-erdos-3765432f-20262712-0011",
+     "dev-erdos-3765432f-20262712-0012",
+     "dev-erdos-3765432f-20262712-0013",
+     "dev-erdos-3765432f-20262712-0014",
+     "dev-erdos-3765432f-20262712-0015"
+    ],
+    "select": [
+     "dev-erdos-3765432f-20262711-0000",
+     "dev-erdos-3765432f-20262711-0001",
+     "dev-erdos-3765432f-20262711-0002",
+     "dev-erdos-3765432f-20262711-0003",
+     "dev-erdos-3765432f-20262711-0004",
+     "dev-erdos-3765432f-20262711-0005",
+     "dev-erdos-3765432f-20262711-0006",
+     "dev-erdos-3765432f-20262711-0007"
+    ]
+   }
+  },
+  "matched_extra_s_per_host": 0.1796,
+  "mean_cpu_s": {
+   "conventional": 1.007,
+   "matched": 1.18,
+   "menu": 1.001,
+   "new": 1.0,
+   "whole": 0.931
+  },
+  "select_totals": {
+   "conv:exchange_tm": 1702,
+   "conv:low_cycle_tm": 1743,
+   "conv:multistart_tm": 1709,
+   "menu:adjacent_2": 1749,
+   "menu:adjacent_3": 1747,
+   "menu:cross_2": 1748,
+   "menu:ordered_2": 1650,
+   "new:decomp_2": 1723,
+   "new:decomp_3": 1718,
+   "new:decomp_4": 1719
+  },
+  "verdict": "NO_UTILITY_AFTER_COST"
+ },
+ "retired_families": {
+  "relational": [
+   "B20_R17",
+   "B20_R19"
+  ]
+ },
+ "schema": "genesis-b20r27-decomposition-invention-v1",
+ "status": "DEV; licenses no claim",
+ "verdict": "NO_UTILITY_AFTER_COST"
+}
