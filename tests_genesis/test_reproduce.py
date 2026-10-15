@@ -121,6 +121,19 @@ class Reproduce(unittest.TestCase):
         self.assertEqual(expected['lean'], {'status': 'CHECKED', 'axioms': []})
         self.assertTrue(expected['known_answers']['ok'])
 
+    def test_reference_campaign_matches_the_expected_results(self):
+        """B20_R29: B20_R16 added six store events to the reference campaign (the active-version
+        pointer) without updating EXPECTED_RESULTS.json, so every second-machine rehearsal from
+        B20_R16 on failed at step 7. This keeps the campaign section of the reference in step with
+        the code."""
+        import sys
+        import tempfile
+        sys.path.insert(0, str(ROOT / 'deployment'))
+        import reference_run
+        expected = json.loads((ROOT / 'deployment/EXPECTED_RESULTS.json').read_text())['campaign']
+        with tempfile.TemporaryDirectory() as d:
+            self.assertEqual(reference_run.campaign(Path(d)), expected)
+
 
 if __name__ == '__main__':
     unittest.main()

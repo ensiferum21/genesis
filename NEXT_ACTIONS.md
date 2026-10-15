@@ -44,6 +44,7 @@
 | B20_R26 | s15.3 quotient family, attempt 1: per-host partition + exact block pattern, one parametric Lean transport theorem (CHECKED). DEV **NO_UTILITY_AFTER_COST** (−0.22 vs the menu) |
 | B20_R27 | s15.3 decomposition family, attempt 1: exact parts + Lean composition theorem (CHECKED). DEV **NO_UTILITY_AFTER_COST** (−2.53 vs the same components on the whole host) |
 | B20_R28 | E1b causal re-pilot on the `e1b` family: ablation +1.25, placebo +2.61, both **READY_FOR_REVIEW** (power 10 per stratum). Exposure addenda (126 hosts) next to the frozen E1/E1b packages |
+| B20_R29 | The B20_R28 clean-room rehearsal found a stale second-machine reference: the reference campaign has 345 store events since B20_R16, `EXPECTED_RESULTS.json` still said 339 (NOT_REPRODUCED at step 7). Value updated, drift test added; the B20_R29 checkpoint is rehearsed with the driver |
 
 ## Resume
 

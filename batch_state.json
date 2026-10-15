@@ -436,9 +436,14 @@
       },
       "B20_R28": {
         "commits": [
-          "df20d32"
+          "df20d32",
+          "72f6d87"
         ],
         "result": "E1b causal re-pilot on the e1b family: ablation +1.25 (24/3/1) and placebo +2.61 (27/1/0), both READY_FOR_REVIEW (power 10/stratum); handoff exposure addenda (126 hosts from B20_R26-R28)"
+      },
+      "B20_R29": {
+        "commits": [],
+        "result": "second-machine reference results repaired: the B20_R28 rehearsal was NOT_REPRODUCED at step 7 (campaign.restored_events 345 vs 339); bisected to B20_R16 (version-pointer events), unnoticed because R16-R24 were restore-verified, not rehearsed; EXPECTED_RESULTS.json updated (only that value) and a matrix test now compares the reference campaign"
       }
     },
     "open_after_b20_r5": [
