@@ -1,0 +1,151 @@
+{
+ "budget_s": 1.0,
+ "chosen": {
+  "conventional": "conv:low_cycle_tm",
+  "menu": "menu:cross_2",
+  "new": "new:quotient_5"
+ },
+ "comparisons": {
+  "conventional": {
+   "by_setting": {
+    "S2": 1.0625,
+    "S3": -1.125
+   },
+   "interval_90": [
+    -0.375,
+    0.3125
+   ],
+   "mean": -0.0312,
+   "passes": false,
+   "wins_ties_losses": [
+    9,
+    10,
+    13
+   ]
+  },
+  "matched": {
+   "by_setting": {
+    "S2": -0.125,
+    "S3": -0.4375
+   },
+   "interval_90": [
+    -0.4375,
+    -0.1562
+   ],
+   "mean": -0.2812,
+   "passes": false,
+   "wins_ties_losses": [
+    0,
+    24,
+    8
+   ]
+  },
+  "menu": {
+   "by_setting": {
+    "S2": -0.0625,
+    "S3": -0.375
+   },
+   "interval_90": [
+    -0.375,
+    -0.0625
+   ],
+   "mean": -0.2188,
+   "passes": false,
+   "wins_ties_losses": [
+    1,
+    24,
+    7
+   ]
+  }
+ },
+ "construction_cpu_s": 28.957,
+ "diagnostics": {
+  "mean_decoded_before_repair": 99.781,
+  "mean_pattern_arcs": 11.5
+ },
+ "excluded_named_hosts": 3437,
+ "horizon": 100,
+ "hosts": {
+  "S2": {
+   "eval": [
+    "dev-erdos-b73f6828-20262602-0000",
+    "dev-erdos-b73f6828-20262602-0001",
+    "dev-erdos-b73f6828-20262602-0002",
+    "dev-erdos-b73f6828-20262602-0003",
+    "dev-erdos-b73f6828-20262602-0004",
+    "dev-erdos-b73f6828-20262602-0005",
+    "dev-erdos-b73f6828-20262602-0006",
+    "dev-erdos-b73f6828-20262602-0007",
+    "dev-erdos-b73f6828-20262602-0008",
+    "dev-erdos-b73f6828-20262602-0009",
+    "dev-erdos-b73f6828-20262602-0010",
+    "dev-erdos-b73f6828-20262602-0011",
+    "dev-erdos-b73f6828-20262602-0012",
+    "dev-erdos-b73f6828-20262602-0013",
+    "dev-erdos-b73f6828-20262602-0014",
+    "dev-erdos-b73f6828-20262602-0015"
+   ],
+   "select": [
+    "dev-erdos-b73f6828-20262601-0000",
+    "dev-erdos-b73f6828-20262601-0001",
+    "dev-erdos-b73f6828-20262601-0002",
+    "dev-erdos-b73f6828-20262601-0003",
+    "dev-erdos-b73f6828-20262601-0004",
+    "dev-erdos-b73f6828-20262601-0005",
+    "dev-erdos-b73f6828-20262601-0006",
+    "dev-erdos-b73f6828-20262601-0007"
+   ]
+  },
+  "S3": {
+   "eval": [
+    "dev-erdos-3765432f-20262612-0000",
+    "dev-erdos-3765432f-20262612-0001",
+    "dev-erdos-3765432f-20262612-0002",
+    "dev-erdos-3765432f-20262612-0003",
+    "dev-erdos-3765432f-20262612-0004",
+    "dev-erdos-3765432f-20262612-0005",
+    "dev-erdos-3765432f-20262612-0006",
+    "dev-erdos-3765432f-20262612-0007",
+    "dev-erdos-3765432f-20262612-0008",
+    "dev-erdos-3765432f-20262612-0009",
+    "dev-erdos-3765432f-20262612-0010",
+    "dev-erdos-3765432f-20262612-0011",
+    "dev-erdos-3765432f-20262612-0012",
+    "dev-erdos-3765432f-20262612-0013",
+    "dev-erdos-3765432f-20262612-0014",
+    "dev-erdos-3765432f-20262612-0015"
+   ],
+   "select": [
+    "dev-erdos-3765432f-20262611-0000",
+    "dev-erdos-3765432f-20262611-0001",
+    "dev-erdos-3765432f-20262611-0002",
+    "dev-erdos-3765432f-20262611-0003",
+    "dev-erdos-3765432f-20262611-0004",
+    "dev-erdos-3765432f-20262611-0005",
+    "dev-erdos-3765432f-20262611-0006",
+    "dev-erdos-3765432f-20262611-0007"
+   ]
+  }
+ },
+ "matched_extra_s_per_host": 0.2896,
+ "mean_cpu_s": {
+  "conventional": 1.009,
+  "matched": 1.29,
+  "menu": 1.001,
+  "new": 1.001
+ },
+ "select_totals": {
+  "conv:exchange_tm": 1667,
+  "conv:low_cycle_tm": 1714,
+  "conv:multistart_tm": 1688,
+  "menu:adjacent_2": 1718,
+  "menu:adjacent_3": 1718,
+  "menu:cross_2": 1718,
+  "menu:ordered_2": 1624,
+  "new:quotient_3": 1717,
+  "new:quotient_4": 1714,
+  "new:quotient_5": 1718,
+  "new:quotient_6": 1715
+ },
+ "verdict": "NO_UTILITY_AFTER_COST"
+}

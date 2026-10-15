@@ -1,0 +1,602 @@
+{
+ "acceptance": {
+  "check_stage": {
+   "check_sha256": "76109bf7213be85fcec7ce7f63f594dfa7cef429033952dfd2be50af9cd5a1c1",
+   "cpu_ns": 3807212021,
+   "exit_code": 0,
+   "exits": {
+    "QTP1": "0",
+    "QTP2": "0",
+    "check": "0"
+   },
+   "log": "",
+   "peak_memory_bytes": 219779072,
+   "status": "SUCCESS",
+   "wall_ns": 3925679107
+  },
+  "leanchecker": {
+   "QTP1": true,
+   "QTP2": true
+  },
+  "receipt_sha256": "c25757e57b36f52ed7c01f555fbca76e6fbe8e26bea474c37fef5d7ec0cbda1b",
+  "status": "CHECKED"
+ },
+ "assumptions": {
+  "allowed_axioms": [
+   "Classical.choice",
+   "Quot.sound",
+   "propext"
+  ],
+  "axioms_used": [
+   "Classical.choice",
+   "Quot.sound",
+   "propext"
+  ],
+  "conventions": [
+   "hosts list each edge once as (u, v) with u < v",
+   "statements quantify over all pair sets, loops and reversed pairs included"
+  ],
+  "lean": "lean@e8baaa71855a616d",
+  "workspace": {
+   "artifact_identity": "be8f86a8ad460109a1c31eb061bf99309b3d032cf5e6462938261f8e3cd840ca",
+   "import_roots": [
+    "Mathlib.Data.Finset.Powerset",
+    "Mathlib.Algebra.BigOperators.Group.Finset.Sigma",
+    "Mathlib.Algebra.Order.BigOperators.Ring.Finset"
+   ],
+   "mathlib_rev": "d13f23b723b8a846827a245b89c10fc7d3f11612",
+   "source_identity": "7f5bcfa11bd7d91dddd1bb4839a70b33bc7e3b125695d754166d343397ac50b0"
+  }
+ },
+ "bindings": [
+  {
+   "proof": "QTP1.proof",
+   "spec": "QTConj.quotient_image"
+  },
+  {
+   "proof": "QTP2.proof",
+   "spec": "QTConj.quotient_sound_tf"
+  }
+ ],
+ "candidates": [
+  {
+   "cost": {
+    "decode": "O(|H|)",
+    "pattern": "branch and bound over ≤ 6 arcs per partition"
+   },
+   "encoder": {
+    "space": "3^n partitions × the transitive-triple-free relations on 3 blocks",
+    "type": "ℕ → ℕ (blocks below K) and a pattern Q ⊆ ℕ × ℕ"
+   },
+   "failure_conditions": [
+    "local search over partitions gives no optimality guarantee",
+    "branch and bound grows exponentially with the block count (bounded by K ≤ 6)",
+    "reads the host orientation, like the relational decoders"
+   ],
+   "family": "quotient",
+   "id": "quotient_3",
+   "k": 3,
+   "kind": "conservative-definition",
+   "lean_name": "QT.lift",
+   "lost": "edges inside a block and edges between blocks the pattern leaves out (restored only by repair)",
+   "origin": "generated:quotient-pattern-v1",
+   "retained": "host edges (u, v), u < v, whose block pair is in the per-host optimal pattern",
+   "semantics": "QT.lift q Q H = H.filter (fun e => (q e.1, q e.2) ∈ Q)",
+   "transport": "QT.lift_sound (one theorem for all q, Q, H)"
+  },
+  {
+   "cost": {
+    "decode": "O(|H|)",
+    "pattern": "branch and bound over ≤ 12 arcs per partition"
+   },
+   "encoder": {
+    "space": "4^n partitions × the transitive-triple-free relations on 4 blocks",
+    "type": "ℕ → ℕ (blocks below K) and a pattern Q ⊆ ℕ × ℕ"
+   },
+   "failure_conditions": [
+    "local search over partitions gives no optimality guarantee",
+    "branch and bound grows exponentially with the block count (bounded by K ≤ 6)",
+    "reads the host orientation, like the relational decoders"
+   ],
+   "family": "quotient",
+   "id": "quotient_4",
+   "k": 4,
+   "kind": "conservative-definition",
+   "lean_name": "QT.lift",
+   "lost": "edges inside a block and edges between blocks the pattern leaves out (restored only by repair)",
+   "origin": "generated:quotient-pattern-v1",
+   "retained": "host edges (u, v), u < v, whose block pair is in the per-host optimal pattern",
+   "semantics": "QT.lift q Q H = H.filter (fun e => (q e.1, q e.2) ∈ Q)",
+   "transport": "QT.lift_sound (one theorem for all q, Q, H)"
+  },
+  {
+   "cost": {
+    "decode": "O(|H|)",
+    "pattern": "branch and bound over ≤ 20 arcs per partition"
+   },
+   "encoder": {
+    "space": "5^n partitions × the transitive-triple-free relations on 5 blocks",
+    "type": "ℕ → ℕ (blocks below K) and a pattern Q ⊆ ℕ × ℕ"
+   },
+   "failure_conditions": [
+    "local search over partitions gives no optimality guarantee",
+    "branch and bound grows exponentially with the block count (bounded by K ≤ 6)",
+    "reads the host orientation, like the relational decoders"
+   ],
+   "family": "quotient",
+   "id": "quotient_5",
+   "k": 5,
+   "kind": "conservative-definition",
+   "lean_name": "QT.lift",
+   "lost": "edges inside a block and edges between blocks the pattern leaves out (restored only by repair)",
+   "origin": "generated:quotient-pattern-v1",
+   "retained": "host edges (u, v), u < v, whose block pair is in the per-host optimal pattern",
+   "semantics": "QT.lift q Q H = H.filter (fun e => (q e.1, q e.2) ∈ Q)",
+   "transport": "QT.lift_sound (one theorem for all q, Q, H)"
+  },
+  {
+   "cost": {
+    "decode": "O(|H|)",
+    "pattern": "branch and bound over ≤ 30 arcs per partition"
+   },
+   "encoder": {
+    "space": "6^n partitions × the transitive-triple-free relations on 6 blocks",
+    "type": "ℕ → ℕ (blocks below K) and a pattern Q ⊆ ℕ × ℕ"
+   },
+   "failure_conditions": [
+    "local search over partitions gives no optimality guarantee",
+    "branch and bound grows exponentially with the block count (bounded by K ≤ 6)",
+    "reads the host orientation, like the relational decoders"
+   ],
+   "family": "quotient",
+   "id": "quotient_6",
+   "k": 6,
+   "kind": "conservative-definition",
+   "lean_name": "QT.lift",
+   "lost": "edges inside a block and edges between blocks the pattern leaves out (restored only by repair)",
+   "origin": "generated:quotient-pattern-v1",
+   "retained": "host edges (u, v), u < v, whose block pair is in the per-host optimal pattern",
+   "semantics": "QT.lift q Q H = H.filter (fun e => (q e.1, q e.2) ∈ Q)",
+   "transport": "QT.lift_sound (one theorem for all q, Q, H)"
+  }
+ ],
+ "costs": {
+  "acceptance_check_cpu_ns": 6679414746,
+  "acceptance_runs": 3,
+  "acceptances": [
+   {
+    "receipt_sha256": "2d5d17d78812c5ea43c10621fdf9deb9db28bf8c06da81fcc2ac7cd9ffa54949",
+    "statement": "quotient_image",
+    "stats": {
+     "check_sha256": "ff764143b413b9aba5f1fd75805d3d9cb26d65eee4187375eaf6f15a502a4d7d",
+     "cpu_ns": 3180999973,
+     "exit_code": 0,
+     "exits": {
+      "QTP1": "0",
+      "check": "0"
+     },
+     "log": "",
+     "peak_memory_bytes": 220008448,
+     "status": "SUCCESS",
+     "wall_ns": 3243177811
+    },
+    "status": "CHECKED"
+   },
+   {
+    "receipt_sha256": "c6f17cf9101da1ee43f0f28a62841b6a8212d9aa8a287855672fa872eca9b6c5",
+    "statement": "quotient_sound_tf",
+    "stats": {
+     "check_sha256": "1e240ebc0b5f38bbb6fc507e7ec2924f47d96370ecdf2c24c282c6d87bbf4bc4",
+     "cpu_ns": 3498414773,
+     "exit_code": 0,
+     "exits": {
+      "QTP1": "0",
+      "QTP2": "0",
+      "check": "0"
+     },
+     "log": "",
+     "peak_memory_bytes": 219545600,
+     "status": "SUCCESS",
+     "wall_ns": 3577172818
+    },
+    "status": "CHECKED"
+   }
+  ],
+  "attempts": [
+   {
+    "attempts": [
+     {
+      "compiled": true,
+      "errors": [],
+      "recipe": "filter-subset",
+      "sorry": false,
+      "tactic": "intro q Q H\nunfold QT.lift\nexact Finset.filter_subset _ _",
+      "tactic_sha256": "5626754c6ac334333cf8b64cb439810dd56ab9f784448b415371da8a01e45e46",
+      "tier": 0
+     },
+     {
+      "compiled": true,
+      "errors": [],
+      "recipe": "filter-subset-simp",
+      "sorry": false,
+      "tactic": "intro q Q H\nsimp_all [QT.lift]",
+      "tactic_sha256": "cb2dd08a6897a05c6e86f5d11446e4946710a617a202586dc5ba7f027af18904",
+      "tier": 0
+     }
+    ],
+    "charged": {
+     "candidates": 2,
+     "cpu_ns": 1530339457,
+     "wall_ns": 1537770113
+    },
+    "result": "COMPILED",
+    "statement": "quotient_image",
+    "target": "QTConj.quotient_image"
+   },
+   {
+    "attempts": [
+     {
+      "compiled": true,
+      "errors": [],
+      "recipe": "pattern-triple",
+      "sorry": false,
+      "tactic": "intro q Q H hQ\nunfold GT.TriangleFree QT.lift\nrintro ⟨a, b⟩ he ⟨b', d⟩ hf ⟨a', d'⟩ hg ⟨h1, h2, h3⟩\nsimp only [Finset.mem_filter] at he hf hg\nsimp only at h1 h2 h3\nsubst h1 h2 h3\nexact hQ _ he.2 _ hf.2 _ hg.2 ⟨rfl, rfl, rfl⟩",
+      "tactic_sha256": "233688cad5fd76e3b142cd764e0f8bf3f84ce5eceb7a8fa293a7471097d2b93d",
+      "tier": 0
+     },
+     {
+      "compiled": true,
+      "errors": [],
+      "recipe": "pattern-triple-unfold",
+      "sorry": false,
+      "tactic": "intro q Q H hQ\nunfold GT.TriangleFree QT.lift\nrintro ⟨a, b⟩ he ⟨b', d⟩ hf ⟨a', d'⟩ hg ⟨h1, h2, h3⟩\nsimp only [Finset.mem_filter] at he hf hg\nsimp only at h1 h2 h3\nsubst h1 h2 h3\nunfold GT.TriangleFree at hQ\nexact hQ _ he.2 _ hf.2 _ hg.2 ⟨rfl, rfl, rfl⟩",
+      "tactic_sha256": "0e588745e94679e60290f7a182f07da5db7359fb55f2b7c1e96f6aac4693c4a5",
+      "tier": 0
+     }
+    ],
+    "charged": {
+     "candidates": 2,
+     "cpu_ns": 1020561738,
+     "wall_ns": 1049388254
+    },
+    "result": "COMPILED",
+    "statement": "quotient_sound_tf",
+    "target": "QTConj.quotient_sound_tf"
+   }
+  ],
+  "search_candidates": 4,
+  "search_context_cpu_ns": 6129084644,
+  "search_cpu_ns": 2550901195,
+  "search_runs": 2
+ },
+ "counterexamples": [],
+ "declarations": [
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "GTDefs",
+   "name": "GT.TriangleFree",
+   "type_sha256": "c98548115419ec271dfd495799f10b35c81fad06e346ef970bd969a518c2a9f4"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "GTDefs",
+   "name": "GT.Edges",
+   "type_sha256": "baaddf70fb5d432b8bd948ef91d6f910124a6d138edae4d5f000c4610ddc8eae"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "GTDefs",
+   "name": "GT.instDecidableTriangleFree",
+   "type_sha256": "5f6ad93fcd86d217b85aa0d5ae9d8484d2f18f9af307b85f1d55bcb68ce406d1"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "QTDefs",
+   "name": "QT.lift",
+   "type_sha256": "6114122ce7f6d86de6c38a93bdad14281b8fd9cd0b0b5b4dd3905ac57f27d71f"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "QTConj",
+   "name": "QTConj.quotient_image",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "QTConj",
+   "name": "QTConj.quotient_sound_tf",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "theorem",
+   "module": "QTP1",
+   "name": "QTP1.proof",
+   "type_sha256": "561f4c1714a0385ae1f4037844849a223c5b35082e851dea9b8d6edb53cee8bc"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "theorem",
+   "module": "QTP2",
+   "name": "QTP2.proof",
+   "type_sha256": "0cc5d5a5bfc8138f34195d2971c1adf87a5879579b58b1ce036559a09e5f1646"
+  }
+ ],
+ "definitions": [
+  {
+   "module": "GTDefs",
+   "name": "GT.TriangleFree",
+   "origin": "trusted-generated",
+   "type_sha256": "c98548115419ec271dfd495799f10b35c81fad06e346ef970bd969a518c2a9f4"
+  },
+  {
+   "module": "GTDefs",
+   "name": "GT.Edges",
+   "origin": "trusted-generated",
+   "type_sha256": "baaddf70fb5d432b8bd948ef91d6f910124a6d138edae4d5f000c4610ddc8eae"
+  },
+  {
+   "module": "GTDefs",
+   "name": "GT.instDecidableTriangleFree",
+   "origin": "trusted-generated",
+   "type_sha256": "5f6ad93fcd86d217b85aa0d5ae9d8484d2f18f9af307b85f1d55bcb68ce406d1"
+  },
+  {
+   "module": "QTDefs",
+   "name": "QT.lift",
+   "origin": "trusted-generated",
+   "type_sha256": "6114122ce7f6d86de6c38a93bdad14281b8fd9cd0b0b5b4dd3905ac57f27d71f"
+  },
+  {
+   "module": "QTConj",
+   "name": "QTConj.quotient_image",
+   "origin": "trusted-generated",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "module": "QTConj",
+   "name": "QTConj.quotient_sound_tf",
+   "origin": "trusted-generated",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  }
+ ],
+ "dependencies": {
+  "GT.Edges": {
+   "package": [],
+   "workspace_modules": [
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Defs"
+   ]
+  },
+  "GT.TriangleFree": {
+   "package": [
+    "GT.Edges"
+   ],
+   "workspace_modules": [
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Defs",
+    "Mathlib.Data.SetLike.Basic"
+   ]
+  },
+  "GT.instDecidableTriangleFree": {
+   "package": [
+    "GT.Edges",
+    "GT.TriangleFree"
+   ],
+   "workspace_modules": [
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Defs",
+    "Mathlib.Data.SetLike.Basic"
+   ]
+  },
+  "QT.lift": {
+   "package": [
+    "GT.Edges"
+   ],
+   "workspace_modules": [
+    "Init.Core",
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Defs",
+    "Mathlib.Data.Finset.Filter",
+    "Mathlib.Data.SetLike.Basic"
+   ]
+  },
+  "QTConj.quotient_image": {
+   "package": [
+    "GT.Edges",
+    "QT.lift"
+   ],
+   "workspace_modules": [
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Defs",
+    "Mathlib.Order.Defs.PartialOrder"
+   ]
+  },
+  "QTConj.quotient_sound_tf": {
+   "package": [
+    "GT.Edges",
+    "GT.TriangleFree",
+    "QT.lift"
+   ],
+   "workspace_modules": [
+    "Init.Prelude"
+   ]
+  },
+  "QTP1.proof": {
+   "package": [
+    "GT.Edges",
+    "QT.lift",
+    "QTConj.quotient_image"
+   ],
+   "workspace_modules": [
+    "Init.Core",
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Defs",
+    "Mathlib.Data.Finset.Filter",
+    "Mathlib.Data.SetLike.Basic",
+    "Mathlib.Order.Defs.PartialOrder"
+   ]
+  },
+  "QTP2.proof": {
+   "package": [
+    "GT.Edges",
+    "GT.TriangleFree",
+    "QT.lift",
+    "QTConj.quotient_sound_tf",
+    "QTP2.proof._simp_1_1"
+   ],
+   "workspace_modules": [
+    "Init.Core",
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Defs",
+    "Mathlib.Data.Finset.Filter",
+    "Mathlib.Data.SetLike.Basic"
+   ]
+  },
+  "QTP2.proof._simp_1_1": {
+   "package": [],
+   "workspace_modules": [
+    "Init.Core",
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Defs",
+    "Mathlib.Data.Finset.Filter",
+    "Mathlib.Data.SetLike.Basic"
+   ]
+  }
+ },
+ "domain": "triangle_free_host_v1",
+ "excluded": {
+  "quotient_2": "equals cross_2 (two blocks: the best pattern is both arcs)"
+ },
+ "modules": [
+  {
+   "name": "GTDefs",
+   "source": "import Mathlib.Data.Finset.Powerset\n\nnamespace GT\n\n/-- Edge sets: ordered pairs (u, v), read as the edge {u, v}. Hosts list each edge once, with u < v. -/\nabbrev Edges := Finset (ℕ × ℕ)\n\n/-- No three edges (a, b), (b, c), (a, c). -/\ndef TriangleFree (S : Edges) : Prop :=\n  ∀ e ∈ S, ∀ f ∈ S, ∀ g ∈ S, ¬ (e.1 = g.1 ∧ e.2 = f.1 ∧ f.2 = g.2)\n\ninstance (S : Edges) : Decidable (TriangleFree S) := by\n  unfold TriangleFree; infer_instance\n\nend GT\n",
+   "source_sha256": "34a84d4f227cbf5a95012a37a9f263f14ca419a4959be42c674d8abc47c9e3a7",
+   "trusted": true
+  },
+  {
+   "name": "QTDefs",
+   "source": "import GTDefs\n\nnamespace QT\n\n/-- Quotient lift: the host edges whose block pair lies in the pattern `Q` (B20_R26, generated:quotient-pattern-v1). -/\ndef lift (q : ℕ → ℕ) (Q : GT.Edges) (H : GT.Edges) : GT.Edges := H.filter (fun e => (q e.1, q e.2) ∈ Q)\n\nend QT\n",
+   "source_sha256": "eb70f05ce33c9df686313be697f814a1655c5272fe77e6a868284a5fecb80aad",
+   "trusted": true
+  },
+  {
+   "name": "QTConj",
+   "source": "import GTDefs\nimport QTDefs\nset_option linter.unusedVariables false\n\nnamespace QTConj\n/-- Generated conjecture `quotient_image` (generated:quotient-pattern-v1). -/\ndef quotient_image : Prop := ∀ (q : ℕ → ℕ) (Q : GT.Edges) (H : GT.Edges), QT.lift q Q H ⊆ H\n/-- Generated conjecture `quotient_sound_tf` (generated:quotient-pattern-v1). -/\ndef quotient_sound_tf : Prop := ∀ (q : ℕ → ℕ) (Q : GT.Edges) (H : GT.Edges) (hQ : GT.TriangleFree Q), GT.TriangleFree (QT.lift q Q H)\nend QTConj\n",
+   "source_sha256": "60909c6667f6425fff43c4cfeae38461d71158cd623e2c84e54479c94b1c7016",
+   "trusted": true
+  },
+  {
+   "name": "QTP1",
+   "source": "import GTDefs\nimport QTDefs\nimport QTConj\nnamespace QTP1\ntheorem proof : QTConj.quotient_image := by\n  unfold QTConj.quotient_image\n  intro q Q H\n  unfold QT.lift\n  exact Finset.filter_subset _ _\nend QTP1\n",
+   "source_sha256": "846b983ce78a00806aeac0e5d714a153119952095a63446aabc7a8d2a4b24a4b",
+   "trusted": false
+  },
+  {
+   "name": "QTP2",
+   "source": "import GTDefs\nimport QTDefs\nimport QTConj\nimport QTP1\nnamespace QTP2\ntheorem proof : QTConj.quotient_sound_tf := by\n  unfold QTConj.quotient_sound_tf\n  intro q Q H hQ\n  unfold GT.TriangleFree QT.lift\n  rintro ⟨a, b⟩ he ⟨b', d⟩ hf ⟨a', d'⟩ hg ⟨h1, h2, h3⟩\n  simp only [Finset.mem_filter] at he hf hg\n  simp only at h1 h2 h3\n  subst h1 h2 h3\n  exact hQ _ he.2 _ hf.2 _ hg.2 ⟨rfl, rfl, rfl⟩\nend QTP2\n",
+   "source_sha256": "a0b2599e8cfc99a6ba0dc29c45b49c3c7f3d2445596d7615df36cf6b14971024",
+   "trusted": false
+  }
+ ],
+ "name": "quotient representations (s15.3, attempt 1 of the family)",
+ "package_sha256": "f457f1fbcaf5f43b4d2cb0733377d42fb5b0240db880c50b656421bb250d074a",
+ "proofs": [
+  {
+   "module": "QTP1",
+   "recipe": "filter-subset",
+   "statement": "quotient_image"
+  },
+  {
+   "module": "QTP2",
+   "recipe": "pattern-triple",
+   "statement": "quotient_sound_tf"
+  }
+ ],
+ "provenance": {
+  "acceptance": "genesis.formal_research.checker.accept",
+  "created_at": "2026-10-15T13:45:04.572821+00:00",
+  "loop": "genesis.formal_research.loop",
+  "search": "genesis.formal_research.search (builder-written recipes, named per proof)"
+ },
+ "schema": "genesis-theory-package-v1",
+ "scope": "The quotient lift of a host by a block map and a pattern, with its image and the transport condition (a triangle-free pattern lifts to a triangle-free edge set), proved once for every block map, pattern and host. Conservative definitions only.",
+ "statements": [
+  {
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "counterexample": null,
+   "id": "quotient_image",
+   "lean": "∀ (q : ℕ → ℕ) (Q : GT.Edges) (H : GT.Edges), QT.lift q Q H ⊆ H",
+   "origin": "generated:quotient-pattern-v1",
+   "proof_const": "QTP1.proof",
+   "proof_module": "QTP1",
+   "recipe": "filter-subset",
+   "role": "image",
+   "screened_instances": 3000,
+   "spec_const": "QTConj.quotient_image",
+   "status": "CHECKED",
+   "subject": "quotient"
+  },
+  {
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "counterexample": null,
+   "id": "quotient_sound_tf",
+   "lean": "∀ (q : ℕ → ℕ) (Q : GT.Edges) (H : GT.Edges) (hQ : GT.TriangleFree Q), GT.TriangleFree (QT.lift q Q H)",
+   "origin": "generated:quotient-pattern-v1",
+   "proof_const": "QTP2.proof",
+   "proof_module": "QTP2",
+   "recipe": "pattern-triple",
+   "role": "soundness",
+   "screened_instances": 775,
+   "spec_const": "QTConj.quotient_sound_tf",
+   "status": "CHECKED",
+   "subject": "quotient"
+  }
+ ]
+}
