@@ -1,0 +1,35 @@
+{
+ "fixed_before_looks_2_and_3": "reference_seconds_median_max = 30 s (from B20_R38 recorded wall times)",
+ "looks": [
+  {
+   "hosts": "development_look_hosts.json (8 new DEV hosts)",
+   "id": 1,
+   "outcome": "pipeline ran end to end; resume reloaded the saved hosts; a 3-host pilot exposed that the power model needs >= 2 scored hosts per stratum (the study has >= 7 per stratum)",
+   "what": "smoke run of the script on a tiny grid (planted_cluster n14 (0.8,0.2), erdos n12 p0.5; 2 hosts each, then 4 pilot hosts) with other seeds and relaxed thresholds so Part B runs; resumed once from its saved hosts"
+  },
+  {
+   "hosts": "none new",
+   "id": 2,
+   "output": [
+    "dev-planted_cluster-9491bde8-20263801-0000 {\"exchange_tm\": [97, \"SUCCESS\", 0.71], \"low_cycle_tm\": [99, \"SUCCESS\", 0.7], \"multistart_tm\": [101, \"SUCCESS\", 0.74], \"milp_highs_tm\": [26, \"SUCCESS\", 0.91], \"milp_highs_4x\": [105, \"SUCCESS\", 2.22]} {\"lower\": 122, \"upper\": 122, \"method\": \"LP_DUAL_GENERATED_EXACT\", \"seeded_from\": \"evaluator\", \"seed_value\": 111, \"evaluator_seed_value\": 111, \"lp_bound\": 122, \"lp_rows\": 80631, \"route_wall_s\": 53.468, \"wall_s\": 54.524} 122",
+    "dev-erdos-17db5902-20263811-0000 {\"exchange_tm\": [109, \"SUCCESS\", 0.75], \"low_cycle_tm\": [118, \"SUCCESS\", 0.7], \"multistart_tm\": [112, \"SUCCESS\", 0.78], \"milp_highs_tm\": [9, \"SUCCESS\", 0.96], \"milp_highs_4x\": [130, \"SUCCESS\", 1.81]} {\"lower\": 130, \"upper\": 130, \"method\": \"LP_DUAL_GENERATED_EXACT\", \"seeded_from\": \"milp_highs_4x\", \"seed_value\": 130, \"evaluator_seed_value\": 119, \"lp_bound\": 130, \"lp_rows\": 80345, \"route_wall_s\": 13.423, \"wall_s\": 14.506} 130"
+   ],
+   "what": "every baseline arm plus the Part A reference on two already-exposed B20_R38 hosts (dev-planted_cluster-9491bde8-20263801-0000, dev-erdos-17db5902-20263811-0000); both cores busy with a checkpoint rehearsal"
+  },
+  {
+   "consequence": "generated_certify.certify_with_rows gained lp_rounding_seconds (off by default); the study fixes it at 1.0 s",
+   "hosts": "none new",
+   "id": 3,
+   "output": [
+    "cluster-9491bde8-20263801-0000 opt 122 lp 122.0 rounded 122 evaluator 111 fractional 0/190 lp 23.1s round 3.2s",
+    "cluster-9491bde8-20263801-0001 opt 126 lp 126.0 rounded 126 evaluator 114 fractional 0/200 lp 24.2s round 3.1s",
+    "cluster-9491bde8-20263801-0002 opt 131 lp 131.0 rounded 131 evaluator 118 fractional 0/195 lp 22.3s round 3.4s",
+    "cluster-9491bde8-20263801-0003 opt 125 lp 125.0 rounded 125 evaluator 115 fractional 0/192 lp 23.6s round 3.1s",
+    "v-erdos-17db5902-20263811-0000 opt 130 lp 130.0 rounded 130 evaluator 119 fractional 0/196 lp 11.5s round 3.2s",
+    "v-erdos-17db5902-20263811-0001 opt 118 lp 118.789 rounded 114 evaluator 114 fractional 158/175 lp 9.9s round 3.2s"
+   ],
+   "what": "rounding the generated-rows LP's edge values with lp_greedy on six already-exposed B20_R38 hosts (4 planted, 2 erdos); both cores busy"
+  }
+ ],
+ "schema": "genesis-b20r41-development-looks-v1"
+}

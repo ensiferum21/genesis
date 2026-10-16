@@ -80,9 +80,15 @@ def rows(task, registry, *, stop=None, max_rows=None, order=None, enumerator=Non
     return out
 
 
-def lp_dual_rows(task, registry, *, max_denominator=10 ** 6, stop=None, max_rows=None, order=None, enumerator=None,
-                 max_total=None):
+def lp_dual_rows(task, registry, **kw):
     """(certificate, float LP value, number of rows) from the untrusted LP producer."""
+    return lp_dual_rows_x(task, registry, **kw)[:3]
+
+
+def lp_dual_rows_x(task, registry, *, max_denominator=10 ** 6, stop=None, max_rows=None, order=None, enumerator=None,
+                   max_total=None):
+    """As lp_dual_rows, plus the LP's edge values x (HiGHS's duals of the cover rows; untrusted
+    floats, used only to guide a primal heuristic, never as evidence; B20_R41)."""
     import numpy as np
     from scipy.optimize import linprog
     from scipy.sparse import lil_matrix
@@ -93,7 +99,7 @@ def lp_dual_rows(task, registry, *, max_denominator=10 ** 6, stop=None, max_rows
             'registry_sha256': digest(registry)}
     if not R:
         return dict(base, inequalities=[], slack=[[list(e), '1'] for e in E], objective=str(len(E)),
-                    bound=len(E)), float(len(E)), 0
+                    bound=len(E)), float(len(E)), 0, [1.0] * len(E)
     nR, nE = len(R), len(E)
     A = lil_matrix((nE, nR + nE))
     for j, (_, es, _, _) in enumerate(R):
@@ -122,15 +128,20 @@ def lp_dual_rows(task, registry, *, max_denominator=10 ** 6, stop=None, max_rows
         ineq.append(q)
     cert = dict(base, inequalities=ineq, slack=[[list(E[i]), str(w[i])] for i in range(nE) if w[i]],
                 objective=str(objective), bound=math.floor(objective))
-    return cert, float(res.fun), nR
+    x = [max(0.0, -float(m)) for m in res.ineqlin.marginals]
+    return cert, float(res.fun), nR, x
 
 
 def certify_with_rows(task, witness, registry, *, seconds=600, sat_fallback=True, separation_seconds=None,
-                      max_rows=None, order=None, enumerator=None, max_total=None):
+                      max_rows=None, order=None, enumerator=None, max_total=None, lp_rounding_seconds=None):
     """Joint certification as `obstruction.certify`, with the generated rows in the LP step.
     With `separation_seconds` (wall) and/or `max_rows` (per pattern), copies are enumerated
     smallest pattern first and enumeration stops at either limit (B20_R35); by default every copy
     of every pattern is used (B20_R32). B20_R37 adds `order`, `enumerator` and `max_total` (see rows).
+    B20_R41 adds `lp_rounding_seconds`: after the LP step, construct.lp_greedy guided by the LP's own
+    edge values for that many CPU seconds, kept if the checked witness is larger. It uses nothing
+    but the host and the route's LP, so it stays candidate-blind; off by default (earlier results
+    unchanged).
     Returns {'lower', 'upper', 'method', 'steps', 'wall_s', 'certificate'}; optimum iff lower == upper."""
     from ..verification.sat import certify_upper, witness_from_model
     start = time.monotonic()
@@ -140,13 +151,22 @@ def certify_with_rows(task, witness, registry, *, seconds=600, sat_fallback=True
     t0, w0 = time.process_time(), time.monotonic()
     limited = separation_seconds is not None or max_rows is not None
     stop = (lambda: time.monotonic() - w0 >= separation_seconds) if separation_seconds is not None else None
-    cert, lp_value, n_rows = lp_dual_rows(task, registry, stop=stop, max_rows=max_rows,
-                                          order=order or ('size' if limited else None), enumerator=enumerator,
-                                          max_total=max_total)
+    cert, lp_value, n_rows, x = lp_dual_rows_x(task, registry, stop=stop, max_rows=max_rows,
+                                               order=order or ('size' if limited else None), enumerator=enumerator,
+                                               max_total=max_total)
     v = V.check_certificate(task, cert, registry)
     steps.append({'step': 'lp-dual-rows', 'rows': n_rows, 'lp_value': lp_value, 'verdict': v['verdict'],
                   'bound': v['bound'], 'reason': v['reason'], 'cpu_s': round(time.process_time() - t0, 3),
                   'wall_s': round(time.monotonic() - w0, 3)})
+    if lp_rounding_seconds:
+        from .construct import Budget, lp_greedy
+        t1, w1 = time.process_time(), time.monotonic()
+        rounded = check_witness(task, [tuple(e) for e in lp_greedy(task, Budget(lp_rounding_seconds), 0, x=x)['witness']])
+        steps.append({'step': 'lp-rounding', 'value': rounded['value'], 'improved': rounded['value'] > lower,
+                      'fractional_edges': sum(1e-6 < xi < 1 - 1e-6 for xi in x),
+                      'cpu_s': round(time.process_time() - t1, 3), 'wall_s': round(time.monotonic() - w1, 3)})
+        if rounded['value'] > lower:
+            lower, best = rounded['value'], rounded['selected']
     upper, method, certificate, sat_custody = len(task.edges), 'HOST_EDGE_COUNT', None, None
     if v['verdict'] == 'VALID' and v['bound'] < upper:
         upper, method, certificate = v['bound'], 'LP_DUAL_GENERATED_EXACT', cert
