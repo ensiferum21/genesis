@@ -1,0 +1,13 @@
+[   81.6s] seed 5301: pool 118, exhaust 88 lemmas in 9.119 s (None); empty 0, exhaust 11, oracle 12 (54 lemmas, 8.406 s)
+[  156.4s] seed 5301 cap 60: fixed 11 (88 lemmas), oracle 12 (54 lemmas, 8.406 s), gap 12 (1 kept, 87 cheaply derivable), repeat 11
+[  218.4s] seed 5301 cap 30: fixed 11 (88 lemmas), oracle 12 (54 lemmas, 8.406 s), gap 12 (1 kept, 87 cheaply derivable)
+[  325.9s] seed 5302: pool 119, exhaust 89 lemmas in 5.399 s (None); empty 0, exhaust 7, oracle 7 (50 lemmas, 3.728 s)
+[  478.8s] seed 5302 cap 60: fixed 7 (89 lemmas), oracle 7 (50 lemmas, 3.728 s), gap 7 (3 kept, 86 cheaply derivable), repeat 7
+[  596.2s] seed 5302 cap 30: fixed 7 (89 lemmas), oracle 7 (50 lemmas, 3.728 s), gap 7 (3 kept, 86 cheaply derivable)
+[  668.1s] seed 5303: pool 119, exhaust 89 lemmas in 4.886 s (None); empty 1, exhaust 12, oracle 13 (64 lemmas, 4.323 s)
+[  745.1s] seed 5303 cap 60: fixed 12 (89 lemmas), oracle 13 (64 lemmas, 4.323 s), gap 13 (3 kept, 86 cheaply derivable), repeat 12
+[  811.3s] seed 5303 cap 30: fixed 12 (89 lemmas), oracle 13 (64 lemmas, 4.323 s), gap 13 (3 kept, 86 cheaply derivable)
+[  894.9s] seed 5304: pool 119, exhaust 89 lemmas in 8.857 s (None); empty 0, exhaust 11, oracle 11 (52 lemmas, 8.155 s)
+[  977.6s] seed 5304 cap 60: fixed 11 (89 lemmas), oracle 11 (52 lemmas, 8.155 s), gap 11 (1 kept, 88 cheaply derivable), repeat 11
+[ 1046.5s] seed 5304 cap 30: fixed 11 (89 lemmas), oracle 11 (52 lemmas, 8.155 s), gap 11 (1 kept, 88 cheaply derivable)
+[ 1046.5s] verdict NO_HEADROOM; per cap {"60": {"selection_headroom": [1, 0, 1, 0], "mean": 0.5, "passes": false, "gap_minus_fixed": [1, 0, 1, 0], "gap_mean": 0.5}, "30": {"selection_headroom": [1, 0, 1, 0], "mean": 0.5, "passes": false, "gap_minus_fixed": [1, 0, 1, 0], "gap_mean": 0.5}}; noise [0, 0, 0, 0]

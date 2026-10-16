@@ -691,6 +691,12 @@
           "c73f310"
         ],
         "result": "E1b-C4 DRAFT package (handoff/e1b_c4) and same-operator rehearsal through the v5 C4 tree route: B20_R50 Part A as a calibration record under the registered DRAFT rule (clean, same selection); custodian SELECT chose low_cycle_tm; 20-host CONFIRM, all certified by the tree reference at 600 s (median 4.2 s); +1.15 [0.70, 1.65], 12/1/7, cost ratio 0.92: SUPPORTED, judge agrees. Disclosed smoke at 120 s INVALID (one reference unsupported)"
+      },
+      "B20_R53": {
+        "commits": [
+          "45ed113"
+        ],
+        "result": "Design pilot: research-selection headroom on Wolfram's axiom at B20's hard settings (10 s attempts, 3 s per target, 15 targets), fresh seeds 5301-5304. ORACLE@cap - FIXED@cap 1, 0, 1, 0 at caps 60 and 30 (non-binding: the pool exhausts in 4.9-9.1 s), noise 0: NO_HEADROOM. EXHAUST - EMPTY 11, 7, 11, 11; ceiling gap 4, 8, 3, 4. Descriptive GAP (the GV6 draft's transferred keep rule) equals ORACLE on every seed with 1-3 lemmas; GAP - FIXED +1, 0, +1, 0; research CPU 16.5-29.5 s"
       }
     },
     "open_after_b20_r5": [
@@ -1060,6 +1066,9 @@
     ],
     "open_after_b20_r52": [
       "B20R50-OPEN-1 updated: package and rehearsal done; reviewer, statistician, independent custodian remain"
+    ],
+    "open_after_b20_r53": [
+      "B20R9-OPEN-1 updated: Wolfram at the hard settings has no selection headroom; the ceiling is the limit (B20_R54 asks whether research beyond the pool reaches it)"
     ]
   }
 }

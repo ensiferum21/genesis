@@ -206,13 +206,15 @@ SPEC.update({
               'src/genesis/learning/partitions.py', 'src/genesis/learning/budget.py', 'src/genesis/learning/custody.py',
               'scripts/b20r3_e3_costaware.py', 'evidence/e3_costaware_b20r3/e3_summary.json',
               'scripts/b20r3_headroom_pilot.py', 'evidence/headroom_pilot_b20r3/README.md',
-              'scripts/b20r6_family_search.py', 'evidence/family_search_b20r6/README.md'],
+              'scripts/b20r6_family_search.py', 'evidence/family_search_b20r6/README.md',
+              'scripts/b20r53_wolfram_headroom.py', 'evidence/wolfram_headroom_b20r53/README.md'],
              [G + 'test_acceptance_regressions.py::RevocationAndTrust', 'tests_formal/test_learning.py',
-              G + 'test_research_policy_v2.py',
+              G + 'test_research_policy_v2.py', G + 'test_wolfram_headroom.py',
               'tests_formal/test_learning_partitions.py', G + 'test_research_resource_accounting.py',
               'tests_formal/test_successor_proof_custody.py'],
              ['a family with selection headroom (B20_R3 pilot: ORACLE - fixed <= 1 of 12 on six systems; the '
-              'redesigned cost-aware policy is INFERIOR_DEV, 2W/3T/3L)', 'a sealed E3 study'],
+              'redesigned cost-aware policy is INFERIOR_DEV, 2W/3T/3L; B20_R53: Wolfram at the hard settings '
+              'NO_HEADROOM, 1, 0, 1, 0 of 15)', 'a sealed E3 study'],
              ['independent custodian; fresh panels'], 'UNESTABLISHED', 'W21'),
     '13': (I, 'heading', [], [], [], [], 'N/A', 'W01'),
     '13.1': (N, 'minimal teaching sets', [], [], ['W20'], [], 'NOT_TESTED', 'W20'),

@@ -1,0 +1,3092 @@
+{
+ "caps": {
+  "30": {
+   "fixed": {
+    "cpu_s": 4.781,
+    "lemma_use": {
+     "L1": 1,
+     "L19": 1,
+     "L2": 1,
+     "L23": 2,
+     "L25": 1,
+     "L3": 1,
+     "L33": 1,
+     "L34": 3,
+     "L35": 1,
+     "L4": 1,
+     "L44": 2,
+     "L48": 1,
+     "L49": 1,
+     "L50": 2,
+     "L51": 2,
+     "L52": 1,
+     "L53": 1,
+     "L54": 1,
+     "L55": 1,
+     "L61": 2,
+     "L62": 2,
+     "L63": 2,
+     "L64": 1,
+     "L65": 1,
+     "L66": 1,
+     "L67": 1,
+     "L68": 2,
+     "L70": 1,
+     "L71": 1,
+     "L72": 2,
+     "L73": 2,
+     "L76": 2,
+     "L79": 1,
+     "L81": 2
+    },
+    "library": [
+     "![X]: (s(s(X,X),s(X,X)) = X)",
+     "![X]: (![Y]: (s(s(X,X),s(X,Y)) = X))",
+     "![X]: (![Y]: (s(s(X,X),s(Y,X)) = X))",
+     "![X]: (![Y]: (s(s(X,Y),s(X,X)) = X))",
+     "![X]: (![Y]: (s(s(X,Y),s(Y,Y)) = Y))",
+     "![X]: (s(s(s(X,X),X),s(X,X)) = X)",
+     "![X]: (![Y]: (s(s(s(X,X),X),s(Y,Y)) = Y))",
+     "![X]: (s(s(s(X,X),X),X) = s(X,X))",
+     "![X]: (![Y]: (s(s(s(X,X),X),Y) = s(Y,Y)))",
+     "![X]: (![Y]: (s(s(s(X,X),Y),s(X,Y)) = Y))",
+     "![X]: (![Y]: (s(s(s(X,X),Y),s(Y,X)) = Y))",
+     "![X]: (![Y]: (s(s(s(X,X),Y),s(Y,Y)) = Y))",
+     "![X]: (![Y]: (s(s(s(X,X),Y),X) = s(X,X)))",
+     "![X]: (![Y]: (s(s(s(X,X),Y),Y) = s(X,Y)))",
+     "![X]: (![Y]: (s(s(s(X,X),Y),Y) = s(Y,X)))",
+     "![X]: (![Y]: (s(s(s(X,Y),X),s(X,X)) = X))",
+     "![X]: (![Y]: (s(s(s(X,Y),X),s(X,Y)) = X))",
+     "![X]: (![Y]: (s(s(s(X,Y),X),s(Y,X)) = X))",
+     "![X]: (![Y]: (s(s(s(X,Y),X),X) = s(X,Y)))",
+     "![X]: (![Y]: (s(s(s(X,Y),X),X) = s(Y,X)))",
+     "![X]: (![Y]: (s(s(s(X,Y),X),Y) = s(Y,Y)))",
+     "![X]: (![Y]: (s(s(s(X,Y),Y),s(X,Y)) = Y))",
+     "![X]: (![Y]: (s(s(s(X,Y),Y),s(Y,X)) = Y))",
+     "![X]: (![Y]: (s(s(s(X,Y),Y),s(Y,Y)) = Y))",
+     "![X]: (![Y]: (s(s(s(X,Y),Y),X) = s(X,X)))",
+     "![X]: (![Y]: (s(s(s(X,Y),Y),Y) = s(X,Y)))",
+     "![X]: (![Y]: (![Z]: (s(s(s(X,Y),Z),s(X,Z)) = Z)))",
+     "![X]: (![Y]: (![Z]: (s(s(s(X,Y),Z),s(Y,Z)) = Z)))",
+     "![X]: (![Y]: (![Z]: (s(s(s(X,Y),Z),s(Z,X)) = Z)))",
+     "![X]: (![Y]: (![Z]: (s(s(s(X,Y),Z),s(Z,Y)) = Z)))",
+     "![X]: (![Y]: (![Z]: (s(s(s(X,Y),Z),s(Z,Z)) = Z)))",
+     "![X]: (s(s(X,s(X,X)),X) = s(X,X))",
+     "![X]: (![Y]: (s(s(X,s(X,X)),Y) = s(Y,Y)))",
+     "![X]: (![Y]: (s(s(X,s(X,Y)),X) = s(X,Y)))",
+     "![X]: (![Y]: (s(s(X,s(X,Y)),X) = s(Y,X)))",
+     "![X]: (![Y]: (s(s(X,s(X,Y)),Y) = s(Y,Y)))",
+     "![X]: (![Y]: (s(s(X,s(Y,X)),X) = s(Y,X)))",
+     "![X]: (![Y]: (s(s(X,s(Y,X)),Y) = s(Y,Y)))",
+     "![X]: (![Y]: (s(s(X,s(Y,Y)),X) = s(X,Y)))",
+     "![X]: (![Y]: (s(s(X,s(Y,Y)),X) = s(Y,X)))",
+     "![X]: (![Y]: (s(s(X,s(Y,Y)),Y) = s(Y,Y)))",
+     "![X]: (![Y]: (s(s(X,X),X) = s(s(Y,Y),Y)))",
+     "![X]: (s(s(X,X),X) = s(X,s(X,X)))",
+     "![X]: (![Y]: (s(s(X,X),X) = s(Y,s(Y,Y))))",
+     "![X]: (![Y]: (s(s(X,X),Y) = s(s(X,Y),Y)))",
+     "![X]: (![Y]: (s(s(X,X),Y) = s(s(Y,X),Y)))",
+     "![X]: (![Y]: (s(s(X,X),Y) = s(Y,s(X,X))))",
+     "![X]: (![Y]: (s(s(X,X),Y) = s(Y,s(X,Y))))",
+     "![X]: (![Y]: (s(s(X,X),Y) = s(Y,s(Y,X))))",
+     "![X]: (![Y]: (s(s(X,Y),X) = s(s(Y,X),X)))",
+     "![X]: (![Y]: (s(s(X,Y),X) = s(X,s(X,Y))))",
+     "![X]: (![Y]: (s(s(X,Y),X) = s(X,s(Y,X))))",
+     "![X]: (![Y]: (s(s(X,Y),X) = s(X,s(Y,Y))))",
+     "![X]: (![Y]: (s(s(X,Y),Y) = s(Y,s(X,X))))",
+     "![X]: (![Y]: (s(s(X,Y),Y) = s(Y,s(X,Y))))",
+     "![X]: (![Y]: (s(s(X,Y),Y) = s(Y,s(Y,X))))",
+     "![X]: (![Y]: (![Z]: (s(s(X,Y),Z) = s(s(Y,X),Z))))",
+     "![X]: (![Y]: (![Z]: (s(s(X,Y),Z) = s(Z,s(X,Y)))))",
+     "![X]: (![Y]: (![Z]: (s(s(X,Y),Z) = s(Z,s(Y,X)))))",
+     "![X]: (s(X,s(s(X,X),X)) = s(X,X))",
+     "![X]: (![Y]: (s(X,s(s(X,X),Y)) = s(X,X)))",
+     "![X]: (![Y]: (s(X,s(s(X,Y),X)) = s(X,Y)))",
+     "![X]: (![Y]: (s(X,s(s(X,Y),X)) = s(Y,X)))",
+     "![X]: (![Y]: (s(X,s(s(X,Y),Y)) = s(X,X)))",
+     "![X]: (![Y]: (s(X,s(s(Y,X),X)) = s(X,Y)))",
+     "![X]: (![Y]: (s(X,s(s(Y,X),Y)) = s(X,X)))",
+     "![X]: (![Y]: (s(X,s(s(Y,Y),X)) = s(X,Y)))",
+     "![X]: (![Y]: (s(X,s(s(Y,Y),X)) = s(Y,X)))",
+     "![X]: (![Y]: (s(X,s(s(Y,Y),Y)) = s(X,X)))",
+     "![X]: (s(X,s(X,s(X,X))) = s(X,X))",
+     "![X]: (![Y]: (s(X,s(X,s(Y,X))) = s(X,Y)))",
+     "![X]: (![Y]: (s(X,s(X,s(Y,X))) = s(Y,X)))",
+     "![X]: (![Y]: (s(X,s(X,s(Y,Y))) = s(X,Y)))",
+     "![X]: (![Y]: (s(X,s(X,s(Y,Y))) = s(Y,X)))",
+     "![X]: (![Y]: (s(X,s(X,X)) = s(Y,s(Y,Y))))",
+     "![X]: (![Y]: (s(X,s(X,Y)) = s(X,s(Y,X))))",
+     "![X]: (![Y]: (s(X,s(X,Y)) = s(X,s(Y,Y))))",
+     "![X]: (![Y]: (s(X,s(Y,s(X,X))) = s(X,X)))",
+     "![X]: (![Y]: (s(X,s(Y,s(X,Y))) = s(X,X)))",
+     "![X]: (![Y]: (s(X,s(Y,s(Y,X))) = s(X,X)))",
+     "![X]: (![Y]: (s(X,s(Y,s(Y,Y))) = s(X,X)))",
+     "![X]: (![Y]: (s(X,s(Y,X)) = s(X,s(Y,Y))))",
+     "![X]: (![Y]: (![Z]: (s(X,s(Y,Z)) = s(X,s(Z,Y)))))",
+     "![X]: (![Y]: (s(s(s(X,X),s(X,X)),Y) = s(X,Y)))",
+     "![X]: (![Y]: (s(s(s(X,X),s(X,Y)),X) = s(X,X)))",
+     "![X]: (![Y]: (![Z]: (s(s(s(X,X),s(Y,X)),Z) = s(X,Z))))",
+     "![X]: (![Y]: (s(s(s(X,Y),s(X,Y)),X) = s(X,Y)))",
+     "![X]: (![Y]: (s(s(s(X,Y),s(X,Y)),Y) = s(X,Y)))",
+     "![X]: (![Y]: (![Z]: (s(s(s(X,Y),s(X,Z)),Y) = s(X,Y))))"
+    ],
+    "proved": 12,
+    "statuses": [
+     "RESOURCE_OUT",
+     "PROVED",
+     "PROVED",
+     "PROVED",
+     "PROVED",
+     "PROVED",
+     "PROVED",
+     "PROVED",
+     "PROVED",
+     "PROVED",
+     "PROVED",
+     "PROVED",
+     "PROVED",
+     "RESOURCE_OUT",
+     "RESOURCE_OUT"
+    ]
+   },
+   "gap": {
+    "cheap_derivable": 86,
+    "cpu_s": 28.525,
+    "lemma_use": {
+     "G0": 13,
+     "G1": 13,
+     "G2": 13
+    },
+    "library": [
+     "![X]: (s(s(X,X),s(X,X)) = X)",
+     "![X]: (![Y]: (s(s(s(X,X),X),s(Y,Y)) = Y))",
+     "![X]: (![Y]: (s(s(s(X,X),Y),s(X,Y)) = Y))"
+    ],
+    "proved": 13,
+    "statuses": [
+     "RESOURCE_OUT",
+     "PROVED",
+     "PROVED",
+     "PROVED",
+     "PROVED",
+     "PROVED",
+     "PROVED",
+     "PROVED",
+     "PROVED",
+     "PROVED",
+     "PROVED",
+     "PROVED",
+     "PROVED",
+     "PROVED",
+     "RESOURCE_OUT"
+    ],
+    "trajectory": [
+     {
+      "cheap_cpu_s": 1.255,
+      "cpu_s": 2.445,
+      "eq": "![X]: (s(s(X,X),s(X,X)) = X)",
+      "outcome": "PROVED",
+      "step": 0
+     },
+     {
+      "cpu_s": 0.429,
+      "eq": "![X]: (![Y]: (s(s(X,X),s(X,Y)) = X))",
+      "outcome": "CHEAP_DERIVABLE",
+      "step": 1
+     },
+     {
+      "cpu_s": 0.407,
+      "eq": "![X]: (![Y]: (s(s(X,X),s(Y,X)) = X))",
+      "outcome": "CHEAP_DERIVABLE",
+      "step": 2
+     },
+     {
+      "cpu_s": 0.437,
+      "eq": "![X]: (![Y]: (s(s(X,Y),s(X,X)) = X))",
+      "outcome": "CHEAP_DERIVABLE",
+      "step": 3
+     },
+     {
+      "cpu_s": 0.363,
+      "eq": "![X]: (![Y]: (s(s(X,Y),s(Y,Y)) = Y))",
+      "outcome": "CHEAP_DERIVABLE",
+      "step": 4
+     },
+     {
+      "cpu_s": 0.028,
+      "eq": "![X]: (s(s(s(X,X),X),s(X,X)) = X)",
+      "outcome": "CHEAP_DERIVABLE",
+      "step": 5
+     },
+     {
+      "cheap_cpu_s": 1.257,
+      "cpu_s": 1.578,
+      "eq": "![X]: (![Y]: (s(s(s(X,X),X),s(Y,Y)) = Y))",
+      "outcome": "PROVED",
+      "step": 6
+     },
+     {
+      "cpu_s": 0.004,
+      "eq": "![X]: (s(s(s(X,X),X),X) = s(X,X))",
+      "outcome": "CHEAP_DERIVABLE",
+      "step": 7
+     },
+     {
+      "cpu_s": 0.004,
+      "eq": "![X]: (![Y]: (s(s(s(X,X),X),Y) = s(Y,Y)))",
+      "outcome": "CHEAP_DERIVABLE",
+      "step": 8
+     },
+     {
+      "cheap_cpu_s": 1.257,
+      "cpu_s": 3.439,
+      "eq": "![X]: (![Y]: (s(s(s(X,X),Y),s(X,Y)) = Y))",
+      "outcome": "PROVED",
+      "step": 9
+     },
+     {
+      "cpu_s": 0.125,
+      "eq": "![X]: (![Y]: (s(s(s(X,X),Y),s(Y,X)) = Y))",
+      "outcome": "CHEAP_DERIVABLE",
+      "step": 10
+     },
+     {
+      "cpu_s": 0.059,
+      "eq": "![X]: (![Y]: (s(s(s(X,X),Y),s(Y,Y)) = Y))",
+      "outcome": "CHEAP_DERIVABLE",
+      "step": 11
+     },
+     {
+      "cpu_s": 0.117,
+      "eq": "![X]: (![Y]: (s(s(s(X,X),Y),X) = s(X,X)))",
+      "outcome": "CHEAP_DERIVABLE",
+      "step": 12
+     },
+     {
+      "cpu_s": 0.408,
+      "eq": "![X]: (![Y]: (s(s(s(X,X),Y),Y) = s(X,Y)))",
+      "outcome": "CHEAP_DERIVABLE",
+      "step": 13
+     },
+     {
+      "cpu_s": 0.402,
+      "eq": "![X]: (![Y]: (s(s(s(X,X),Y),Y) = s(Y,X)))",
+      "outcome": "CHEAP_DERIVABLE",
+      "step": 14
+     },
+     {
+      "cpu_s": 0.022,
+      "eq": "![X]: (![Y]: (s(s(s(X,Y),X),s(X,X)) = X))",
+      "outcome": "CHEAP_DERIVABLE",
+      "step": 15
+     },
+     {
+      "cpu_s": 0.133,
+      "eq": "![X]: (![Y]: (s(s(s(X,Y),X),s(X,Y)) = X))",
+      "outcome": "CHEAP_DERIVABLE",
+      "step": 16
+     },
+     {
+      "cpu_s": 0.152,
+      "eq": "![X]: (![Y]: (s(s(s(X,Y),X),s(Y,X)) = X))",
+      "outcome": "CHEAP_DERIVABLE",
+      "step": 17
+     },
+     {
+      "cpu_s": 0.135,
+      "eq": "![X]: (![Y]: (s(s(s(X,Y),X),X) = s(X,Y)))",
+      "outcome": "CHEAP_DERIVABLE",
+      "step": 18
+     },
+     {
+      "cpu_s": 0.134,
+      "eq": "![X]: (![Y]: (s(s(s(X,Y),X),X) = s(Y,X)))",
+      "outcome": "CHEAP_DERIVABLE",
+      "step": 19
+     },
+     {
+      "cpu_s": 0.405,
+      "eq": "![X]: (![Y]: (s(s(s(X,Y),X),Y) = s(Y,Y)))",
+      "outcome": "CHEAP_DERIVABLE",
+      "step": 20
+     },
+     {
+      "cpu_s": 0.111,
+      "eq": "![X]: (![Y]: (s(s(s(X,Y),Y),s(X,Y)) = Y))",
+      "outcome": "CHEAP_DERIVABLE",
+      "step": 21
+     },
+     {
+      "cpu_s": 0.127,
+      "eq": "![X]: (![Y]: (s(s(s(X,Y),Y),s(Y,X)) = Y))",
+      "outcome": "CHEAP_DERIVABLE",
+      "step": 22
+     },
+     {
+      "cpu_s": 0.022,
+      "eq": "![X]: (![Y]: (s(s(s(X,Y),Y),s(Y,Y)) = Y))",
+      "outcome": "CHEAP_DERIVABLE",
+      "step": 23
+     },
+     {
+      "cpu_s": 0.389,
+      "eq": "![X]: (![Y]: (s(s(s(X,Y),Y),X) = s(X,X)))",
+      "outcome": "CHEAP_DERIVABLE",
+      "step": 24
+     },
+     {
+      "cpu_s": 0.114,
+      "eq": "![X]: (![Y]: (s(s(s(X,Y),Y),Y) = s(X,Y)))",
+      "outcome": "CHEAP_DERIVABLE",
+      "step": 25
+     },
+     {
+      "cpu_s": 0.136,
+      "eq": "![X]: (![Y]: (![Z]: (s(s(s(X,Y),Z),s(X,Z)) = Z)))",
+      "outcome": "CHEAP_DERIVABLE",
+      "step": 26
+     },
+     {
+      "cpu_s": 0.144,
+      "eq": "![X]: (![Y]: (![Z]: (s(s(s(X,Y),Z),s(Y,Z)) = Z)))",
+      "outcome": "CHEAP_DERIVABLE",
+      "step": 27
+     },
+     {
+      "cpu_s": 0.129,
+      "eq": "![X]: (![Y]: (![Z]: (s(s(s(X,Y),Z),s(Z,X)) = Z)))",
+      "outcome": "CHEAP_DERIVABLE",
+      "step": 28
+     },
+     {
+      "eq": "![X]: (![Y]: (![Z]: (s(s(s(X,Y),Z),s(Z,Y)) = Y)))",
+      "outcome": "FALSE",
+      "step": 29
+     },
+     {
+      "cpu_s": 0.137,
+      "eq": "![X]: (![Y]: (![Z]: (s(s(s(X,Y),Z),s(Z,Y)) = Z)))",
+      "outcome": "CHEAP_DERIVABLE",
+      "step": 30
+     },
+     {
+      "cpu_s": 0.06,
+      "eq": "![X]: (![Y]: (![Z]: (s(s(s(X,Y),Z),s(Z,Z)) = Z)))",
+      "outcome": "CHEAP_DERIVABLE",
+      "step": 31
+     },
+     {
+      "cpu_s": 0.004,
+      "eq": "![X]: (s(s(X,s(X,X)),X) = s(X,X))",
+      "outcome": "CHEAP_DERIVABLE",
+      "step": 32
+     },
+     {
+      "cpu_s": 0.005,
+      "eq": "![X]: (![Y]: (s(s(X,s(X,X)),Y) = s(Y,Y)))",
+      "outcome": "CHEAP_DERIVABLE",
+      "step": 33
+     },
+     {
+      "cpu_s": 0.129,
+      "eq": "![X]: (![Y]: (s(s(X,s(X,Y)),X) = s(X,Y)))",
+      "outcome": "CHEAP_DERIVABLE",
+      "step": 34
+     },
+     {
+      "cpu_s": 0.136,
+      "eq": "![X]: (![Y]: (s(s(X,s(X,Y)),X) = s(Y,X)))",
+      "outcome": "CHEAP_DERIVABLE",
+      "step": 35
+     },
+     {
+      "cpu_s": 0.42,
+      "eq": "![X]: (![Y]: (s(s(X,s(X,Y)),Y) = s(Y,Y)))",
+      "outcome": "CHEAP_DERIVABLE",
+      "step": 36
+     },
+     {
+      "cpu_s": 0.103,
+      "eq": "![X]: (![Y]: (s(s(X,s(Y,X)),X) = s(Y,X)))",
+      "outcome": "CHEAP_DERIVABLE",
+      "step": 37
+     },
+     {
+      "cpu_s": 0.37,
+      "eq": "![X]: (![Y]: (s(s(X,s(Y,X)),Y) = s(Y,Y)))",
+      "outcome": "CHEAP_DERIVABLE",
+      "step": 38
+     },
+     {
+      "cpu_s": 0.386,
+      "eq": "![X]: (![Y]: (s(s(X,s(Y,Y)),X) = s(X,Y)))",
+      "outcome": "CHEAP_DERIVABLE",
+      "step": 39
+     },
+     {
+      "cpu_s": 0.417,
+      "eq": "![X]: (![Y]: (s(s(X,s(Y,Y)),X) = s(Y,X)))",
+      "outcome": "CHEAP_DERIVABLE",
+      "step": 40
+     },
+     {
+      "cpu_s": 0.063,
+      "eq": "![X]: (![Y]: (s(s(X,s(Y,Y)),Y) = s(Y,Y)))",
+      "outcome": "CHEAP_DERIVABLE",
+      "step": 41
+     },
+     {
+      "cpu_s": 0.081,
+      "eq": "![X]: (![Y]: (s(s(X,X),X) = s(s(Y,Y),Y)))",
+      "outcome": "CHEAP_DERIVABLE",
+      "step": 42
+     },
+     {
+      "cpu_s": 0.026,
+      "eq": "![X]: (s(s(X,X),X) = s(X,s(X,X)))",
+      "outcome": "CHEAP_DERIVABLE",
+      "step": 43
+     },
+     {
+      "cpu_s": 0.085,
+      "eq": "![X]: (![Y]: (s(s(X,X),X) = s(Y,s(Y,Y))))",
+      "outcome": "CHEAP_DERIVABLE",
+      "step": 44
+     },
+     {
+      "cpu_s": 0.406,
+      "eq": "![X]: (![Y]: (s(s(X,X),Y) = s(s(X,Y),Y)))",
+      "outcome": "CHEAP_DERIVABLE",
+      "step": 45
+     },
+     {
+      "cpu_s": 0.396,
+      "eq": "![X]: (![Y]: (s(s(X,X),Y) = s(s(Y,X),Y)))",
+      "outcome": "CHEAP_DERIVABLE",
+      "step": 46
+     },
+     {
+      "cpu_s": 0.126,
+      "eq": "![X]: (![Y]: (s(s(X,X),Y) = s(Y,s(X,X))))",
+      "outcome": "CHEAP_DERIVABLE",
+      "step": 47
+     },
+     {
+      "cpu_s": 0.401,
+      "eq": "![X]: (![Y]: (s(s(X,X),Y) = s(Y,s(X,Y))))",
+      "outcome": "CHEAP_DERIVABLE",
+      "step": 48
+     },
+     {
+      "cpu_s": 0.388,
+      "eq": "![X]: (![Y]: (s(s(X,X),Y) = s(Y,s(Y,X))))",
+      "outcome": "CHEAP_DERIVABLE",
+      "step": 49
+     },
+     {
+      "eq": "![X]: (![Y]: (![Z]: (s(s(X,Y),s(s(X,Y),Z)) = Z)))",
+      "outcome": "FALSE",
+      "step": 50
+     },
+     {
+      "cpu_s": 0.117,
+      "eq": "![X]: (![Y]: (s(s(X,Y),X) = s(s(Y,X),X)))",
+      "outcome": "CHEAP_DERIVABLE",
+      "step": 51
+     },
+     {
+      "eq": "![X]: (![Y]: (![Z]: (s(s(X,Y),X) = s(s(Y,X),Z))))",
+      "outcome": "FALSE",
+      "step": 52
+     },
+     {
+      "cpu_s": 0.125,
+      "eq": "![X]: (![Y]: (s(s(X,Y),X) = s(X,s(X,Y))))",
+      "outcome": "CHEAP_DERIVABLE",
+      "step": 53
+     },
+     {
+      "cpu_s": 0.136,
+      "eq": "![X]: (![Y]: (s(s(X,Y),X) = s(X,s(Y,X))))",
+      "outcome": "CHEAP_DERIVABLE",
+      "step": 54
+     },
+     {
+      "cpu_s": 0.412,
+      "eq": "![X]: (![Y]: (s(s(X,Y),X) = s(X,s(Y,Y))))",
+      "outcome": "CHEAP_DERIVABLE",
+      "step": 55
+     },
+     {
+      "cpu_s": 0.442,
+      "eq": "![X]: (![Y]: (s(s(X,Y),Y) = s(Y,s(X,X))))",
+      "outcome": "CHEAP_DERIVABLE",
+      "step": 56
+     },
+     {
+      "cpu_s": 0.112,
+      "eq": "![X]: (![Y]: (s(s(X,Y),Y) = s(Y,s(X,Y))))",
+      "outcome": "CHEAP_DERIVABLE",
+      "step": 57
+     },
+     {
+      "cpu_s": 0.123,
+      "eq": "![X]: (![Y]: (s(s(X,Y),Y) = s(Y,s(Y,X))))",
+      "outcome": "CHEAP_DERIVABLE",
+      "step": 58
+     },
+     {
+      "cpu_s": 0.123,
+      "eq": "![X]: (![Y]: (![Z]: (s(s(X,Y),Z) = s(s(Y,X),Z))))",
+      "outcome": "CHEAP_DERIVABLE",
+      "step": 59
+     },
+     {
+      "cpu_s": 0.127,
+      "eq": "![X]: (![Y]: (![Z]: (s(s(X,Y),Z) = s(Z,s(X,Y)))))",
+      "outcome": "CHEAP_DERIVABLE",
+      "step": 60
+     },
+     {
+      "cpu_s": 0.124,
+      "eq": "![X]: (![Y]: (![Z]: (s(s(X,Y),Z) = s(Z,s(Y,X)))))",
+      "outcome": "CHEAP_DERIVABLE",
+      "step": 61
+     },
+     {
+      "cpu_s": 0.029,
+      "eq": "![X]: (s(X,s(s(X,X),X)) = s(X,X))",
+      "outcome": "CHEAP_DERIVABLE",
+      "step": 62
+     },
+     {
+      "cpu_s": 0.181,
+      "eq": "![X]: (![Y]: (s(X,s(s(X,X),Y)) = s(X,X)))",
+      "outcome": "CHEAP_DERIVABLE",
+      "step": 63
+     },
+     {
+      "cpu_s": 0.12,
+      "eq": "![X]: (![Y]: (s(X,s(s(X,Y),X)) = s(X,Y)))",
+      "outcome": "CHEAP_DERIVABLE",
+      "step": 64
+     },
+     {
+      "cpu_s": 0.126,
+      "eq": "![X]: (![Y]: (s(X,s(s(X,Y),X)) = s(Y,X)))",
+      "outcome": "CHEAP_DERIVABLE",
+      "step": 65
+     },
+     {
+      "cpu_s": 0.42,
+      "eq": "![X]: (![Y]: (s(X,s(s(X,Y),Y)) = s(X,X)))",
+      "outcome": "CHEAP_DERIVABLE",
+      "step": 66
+     },
+     {
+      "cpu_s": 0.124,
+      "eq": "![X]: (![Y]: (s(X,s(s(Y,X),X)) = s(X,Y)))",
+      "outcome": "CHEAP_DERIVABLE",
+      "step": 67
+     },
+     {
+      "cpu_s": 0.377,
+      "eq": "![X]: (![Y]: (s(X,s(s(Y,X),Y)) = s(X,X)))",
+      "outcome": "CHEAP_DERIVABLE",
+      "step": 68
+     },
+     {
+      "cpu_s": 0.387,
+      "eq": "![X]: (![Y]: (s(X,s(s(Y,Y),X)) = s(X,Y)))",
+      "outcome": "CHEAP_DERIVABLE",
+      "step": 69
+     },
+     {
+      "cpu_s": 0.424,
+      "eq": "![X]: (![Y]: (s(X,s(s(Y,Y),X)) = s(Y,X)))",
+      "outcome": "CHEAP_DERIVABLE",
+      "step": 70
+     },
+     {
+      "cpu_s": 0.082,
+      "eq": "![X]: (![Y]: (s(X,s(s(Y,Y),Y)) = s(X,X)))",
+      "outcome": "CHEAP_DERIVABLE",
+      "step": 71
+     },
+     {
+      "cpu_s": 0.005,
+      "eq": "![X]: (s(X,s(X,s(X,X))) = s(X,X))",
+      "outcome": "CHEAP_DERIVABLE",
+      "step": 72
+     },
+     {
+      "cpu_s": 0.12,
+      "eq": "![X]: (![Y]: (s(X,s(X,s(Y,X))) = s(X,Y)))",
+      "outcome": "CHEAP_DERIVABLE",
+      "step": 73
+     },
+     {
+      "cpu_s": 0.111,
+      "eq": "![X]: (![Y]: (s(X,s(X,s(Y,X))) = s(Y,X)))",
+      "outcome": "CHEAP_DERIVABLE",
+      "step": 74
+     },
+     {
+      "cpu_s": 0.374,
+      "eq": "![X]: (![Y]: (s(X,s(X,s(Y,Y))) = s(X,Y)))",
+      "outcome": "CHEAP_DERIVABLE",
+      "step": 75
+     },
+     {
+      "cpu_s": 0.382,
+      "eq": "![X]: (![Y]: (s(X,s(X,s(Y,Y))) = s(Y,X)))",
+      "outcome": "CHEAP_DERIVABLE",
+      "step": 76
+     },
+     {
+      "cpu_s": 0.112,
+      "eq": "![X]: (![Y]: (s(X,s(X,X)) = s(Y,s(Y,Y))))",
+      "outcome": "CHEAP_DERIVABLE",
+      "step": 77
+     },
+     {
+      "cpu_s": 0.129,
+      "eq": "![X]: (![Y]: (s(X,s(X,Y)) = s(X,s(Y,X))))",
+      "outcome": "CHEAP_DERIVABLE",
+      "step": 78
+     },
+     {
+      "cpu_s": 0.393,
+      "eq": "![X]: (![Y]: (s(X,s(X,Y)) = s(X,s(Y,Y))))",
+      "outcome": "CHEAP_DERIVABLE",
+      "step": 79
+     },
+     {
+      "cpu_s": 0.108,
+      "eq": "![X]: (![Y]: (s(X,s(Y,s(X,X))) = s(X,X)))",
+      "outcome": "CHEAP_DERIVABLE",
+      "step": 80
+     },
+     {
+      "cpu_s": 0.402,
+      "eq": "![X]: (![Y]: (s(X,s(Y,s(X,Y))) = s(X,X)))",
+      "outcome": "CHEAP_DERIVABLE",
+      "step": 81
+     },
+     {
+      "cpu_s": 0.402,
+      "eq": "![X]: (![Y]: (s(X,s(Y,s(Y,X))) = s(X,X)))",
+      "outcome": "CHEAP_DERIVABLE",
+      "step": 82
+     },
+     {
+      "cpu_s": 0.087,
+      "eq": "![X]: (![Y]: (s(X,s(Y,s(Y,Y))) = s(X,X)))",
+      "outcome": "CHEAP_DERIVABLE",
+      "step": 83
+     },
+     {
+      "cpu_s": 0.429,
+      "eq": "![X]: (![Y]: (s(X,s(Y,X)) = s(X,s(Y,Y))))",
+      "outcome": "CHEAP_DERIVABLE",
+      "step": 84
+     },
+     {
+      "cpu_s": 0.136,
+      "eq": "![X]: (![Y]: (![Z]: (s(X,s(Y,Z)) = s(X,s(Z,Y)))))",
+      "outcome": "CHEAP_DERIVABLE",
+      "step": 85
+     },
+     {
+      "eq": "![X]: (![Y]: (s(s(s(s(s(X,X),Y),X),X),X) = X))",
+      "outcome": "FALSE",
+      "step": 86
+     },
+     {
+      "eq": "![X]: (![Y]: (![Z]: (s(s(s(s(s(X,Y),Z),X),Y),Y) = X)))",
+      "outcome": "FALSE",
+      "step": 87
+     },
+     {
+      "eq": "![X]: (![Y]: (![Z]: (s(s(s(s(s(X,Y),Z),Z),X),Z) = Y)))",
+      "outcome": "FALSE",
+      "step": 88
+     },
+     {
+      "eq": "![X]: (![Y]: (![Z]: (s(s(s(s(X,Y),Y),X),s(X,Z)) = Z)))",
+      "outcome": "FALSE",
+      "step": 89
+     },
+     {
+      "eq": "![X]: (![Y]: (![Z]: (s(s(s(s(X,Y),Z),X),s(Y,Z)) = Y)))",
+      "outcome": "FALSE",
+      "step": 90
+     },
+     {
+      "eq": "![X]: (![Y]: (![Z]: (s(s(s(X,s(s(Y,Z),X)),X),Z) = Z)))",
+      "outcome": "FALSE",
+      "step": 91
+     },
+     {
+      "cpu_s": 0.006,
+      "eq": "![X]: (![Y]: (s(s(s(X,X),s(X,X)),Y) = s(X,Y)))",
+      "outcome": "CHEAP_DERIVABLE",
+      "step": 92
+     },
+     {
+      "cpu_s": 0.15,
+      "eq": "![X]: (![Y]: (s(s(s(X,X),s(X,Y)),X) = s(X,X)))",
+      "outcome": "CHEAP_DERIVABLE",
+      "step": 93
+     },
+     {
+      "cpu_s": 0.121,
+      "eq": "![X]: (![Y]: (![Z]: (s(s(s(X,X),s(Y,X)),Z) = s(X,Z))))",
+      "outcome": "CHEAP_DERIVABLE",
+      "step": 94
+     },
+     {
+      "eq": "![X]: (![Y]: (![Z]: (s(s(s(X,X),Y),s(s(Z,X),Z)) = Z)))",
+      "outcome": "FALSE",
+      "step": 95
+     },
+     {
+      "eq": "![X]: (![Y]: (![Z]: (s(s(s(X,Y),s(s(X,Z),Y)),X) = X)))",
+      "outcome": "FALSE",
+      "step": 96
+     },
+     {
+      "cpu_s": 0.174,
+      "eq": "![X]: (![Y]: (s(s(s(X,Y),s(X,Y)),X) = s(X,Y)))",
+      "outcome": "CHEAP_DERIVABLE",
+      "step": 97
+     },
+     {
+      "cpu_s": 0.173,
+      "eq": "![X]: (![Y]: (s(s(s(X,Y),s(X,Y)),Y) = s(X,Y)))",
+      "outcome": "CHEAP_DERIVABLE",
+      "step": 98
+     },
+     {
+      "cpu_s": 0.214,
+      "eq": "![X]: (![Y]: (![Z]: (s(s(s(X,Y),s(X,Z)),Y) = s(X,Y))))",
+      "outcome": "CHEAP_DERIVABLE",
+      "step": 99
+     },
+     {
+      "eq": "![X]: (![Y]: (![Z]: (s(s(s(X,Y),s(Y,Y)),Z) = s(Y,X))))",
+      "outcome": "FALSE",
+      "step": 100
+     },
+     {
+      "eq": "![X]: (![Y]: (![Z]: (s(s(s(X,Y),s(Z,s(X,X))),Y) = Y)))",
+      "outcome": "FALSE",
+      "step": 101
+     },
+     {
+      "eq": "![X]: (![Y]: (![Z]: (s(s(s(X,Y),s(Z,s(Y,X))),Y) = Z)))",
+      "outcome": "FALSE",
+      "step": 102
+     },
+     {
+      "eq": "![X]: (![Y]: (![Z]: (s(s(s(X,Y),Z),Z) = s(X,s(X,Z)))))",
+      "outcome": "FALSE",
+      "step": 103
+     },
+     {
+      "eq": "![X]: (![Y]: (s(s(X,s(X,Y)),s(s(X,Y),X)) = Y))",
+      "outcome": "FALSE",
+      "step": 104
+     },
+     {
+      "eq": "![X]: (![Y]: (![Z]: (s(s(X,s(X,Y)),s(Z,s(X,Z))) = X)))",
+      "outcome": "FALSE",
+      "step": 105
+     },
+     {
+      "eq": "![X]: (![Y]: (s(s(X,s(Y,X)),s(X,s(Y,Y))) = X))",
+      "outcome": "FALSE",
+      "step": 106
+     },
+     {
+      "eq": "![X]: (![Y]: (![Z]: (s(s(X,X),s(s(s(X,Y),X),X)) = Z)))",
+      "outcome": "FALSE",
+      "step": 107
+     },
+     {
+      "eq": "![X]: (![Y]: (![Z]: (s(s(X,X),Y) = s(s(Z,X),s(X,Y)))))",
+      "outcome": "FALSE",
+      "step": 108
+     },
+     {
+      "eq": "![X]: (![Y]: (![Z]: (s(s(X,Y),s(s(X,Y),s(Y,Z))) = X)))",
+      "outcome": "FALSE",
+      "step": 109
+     },
+     {
+      "eq": "![X]: (![Y]: (![Z]: (s(s(X,Y),Y) = s(Z,s(s(Z,X),Y)))))",
+      "outcome": "FALSE",
+      "step": 110
+     },
+     {
+      "eq": "![X]: (![Y]: (![Z]: (s(X,s(s(s(s(Y,X),X),Z),X)) = X)))",
+      "outcome": "FALSE",
+      "step": 111
+     },
+     {
+      "eq": "![X]: (![Y]: (![Z]: (s(X,s(s(s(X,s(Y,Z)),Z),Z)) = Y)))",
+      "outcome": "FALSE",
+      "step": 112
+     },
+     {
+      "eq": "![X]: (![Y]: (s(X,s(s(X,s(s(X,Y),X)),X)) = X))",
+      "outcome": "FALSE",
+      "step": 113
+     },
+     {
+      "eq": "![X]: (![Y]: (![Z]: (s(X,s(s(X,s(s(Y,Y),Z)),Y)) = X)))",
+      "outcome": "FALSE",
+      "step": 114
+     },
+     {
+      "eq": "![X]: (![Y]: (s(X,s(s(X,Y),s(s(X,X),X))) = X))",
+      "outcome": "FALSE",
+      "step": 115
+     },
+     {
+      "eq": "![X]: (![Y]: (![Z]: (s(X,s(s(Y,s(s(Y,X),X)),Y)) = Z)))",
+      "outcome": "FALSE",
+      "step": 116
+     },
+     {
+      "eq": "![X]: (![Y]: (![Z]: (s(X,s(s(Y,Y),s(X,s(Z,Y)))) = Y)))",
+      "outcome": "FALSE",
+      "step": 117
+     },
+     {
+      "eq": "![X]: (![Y]: (![Z]: (s(X,s(Y,s(s(s(X,Y),Y),Z))) = Z)))",
+      "outcome": "FALSE",
+      "step": 118
+     }
+    ]
+   },
+   "oracle": {
+    "cost_s": 4.323,
+    "lemma_use": {
+     "L0": 2,
+     "L19": 1,
+     "L23": 2,
+     "L25": 1,
+     "L33": 2,
+     "L34": 3,
+     "L4": 1,
+     "L40": 1,
+     "L44": 2,
+     "L46": 2,
+     "L48": 1,
+     "L49": 1,
+     "L50": 2,
+     "L51": 2,
+     "L52": 1,
+     "L53": 1,
+     "L54": 1,
+     "L55": 1,
+     "L61": 2,
+     "L62": 2,
+     "L63": 2,
+     "L64": 1,
+     "L65": 1,
+     "L66": 1,
+     "L67": 1,
+     "L68": 2,
+     "L70": 1,
+     "L71": 1,
+     "L72": 2,
+     "L73": 3,
+     "L76": 2,
+     "L79": 1,
+     "L81": 1
+    },
+    "library": [
+     "![X]: (s(s(X,X),s(X,X)) = X)",
+     "![X]: (![Y]: (s(s(X,X),s(X,Y)) = X))",
+     "![X]: (![Y]: (s(s(X,X),s(Y,X)) = X))",
+     "![X]: (![Y]: (s(s(X,Y),s(X,X)) = X))",
+     "![X]: (![Y]: (s(s(X,Y),s(Y,Y)) = Y))",
+     "![X]: (![Y]: (s(s(s(X,X),X),s(Y,Y)) = Y))",
+     "![X]: (![Y]: (s(s(s(X,X),X),Y) = s(Y,Y)))",
+     "![X]: (![Y]: (s(s(s(X,X),Y),s(X,Y)) = Y))",
+     "![X]: (![Y]: (s(s(s(X,X),Y),s(Y,X)) = Y))",
+     "![X]: (![Y]: (s(s(s(X,X),Y),s(Y,Y)) = Y))",
+     "![X]: (![Y]: (s(s(s(X,X),Y),X) = s(X,X)))",
+     "![X]: (![Y]: (s(s(s(X,X),Y),Y) = s(X,Y)))",
+     "![X]: (![Y]: (s(s(s(X,X),Y),Y) = s(Y,X)))",
+     "![X]: (![Y]: (s(s(s(X,Y),X),s(X,X)) = X))",
+     "![X]: (![Y]: (s(s(s(X,Y),X),s(X,Y)) = X))",
+     "![X]: (![Y]: (s(s(s(X,Y),X),s(Y,X)) = X))",
+     "![X]: (![Y]: (s(s(s(X,Y),X),X) = s(X,Y)))",
+     "![X]: (![Y]: (s(s(s(X,Y),X),X) = s(Y,X)))",
+     "![X]: (![Y]: (s(s(s(X,Y),X),Y) = s(Y,Y)))",
+     "![X]: (![Y]: (s(s(s(X,Y),Y),s(Y,X)) = Y))",
+     "![X]: (![Y]: (s(s(s(X,Y),Y),s(Y,Y)) = Y))",
+     "![X]: (![Y]: (s(s(s(X,Y),Y),X) = s(X,X)))",
+     "![X]: (![Y]: (s(s(s(X,Y),Y),Y) = s(X,Y)))",
+     "![X]: (![Y]: (![Z]: (s(s(s(X,Y),Z),s(Y,Z)) = Z)))",
+     "![X]: (![Y]: (![Z]: (s(s(s(X,Y),Z),s(Z,X)) = Z)))",
+     "![X]: (![Y]: (![Z]: (s(s(s(X,Y),Z),s(Z,Y)) = Z)))",
+     "![X]: (![Y]: (s(s(X,s(X,X)),Y) = s(Y,Y)))",
+     "![X]: (![Y]: (s(s(X,s(X,Y)),X) = s(X,Y)))",
+     "![X]: (![Y]: (s(s(X,s(X,Y)),X) = s(Y,X)))",
+     "![X]: (![Y]: (s(s(X,s(X,Y)),Y) = s(Y,Y)))",
+     "![X]: (![Y]: (s(s(X,s(Y,X)),X) = s(Y,X)))",
+     "![X]: (![Y]: (s(s(X,s(Y,X)),Y) = s(Y,Y)))",
+     "![X]: (![Y]: (s(s(X,s(Y,Y)),X) = s(X,Y)))",
+     "![X]: (![Y]: (s(s(X,s(Y,Y)),X) = s(Y,X)))",
+     "![X]: (![Y]: (s(s(X,s(Y,Y)),Y) = s(Y,Y)))",
+     "![X]: (![Y]: (s(s(X,X),X) = s(s(Y,Y),Y)))",
+     "![X]: (![Y]: (s(s(X,X),Y) = s(s(X,Y),Y)))",
+     "![X]: (![Y]: (s(s(X,X),Y) = s(s(Y,X),Y)))",
+     "![X]: (![Y]: (s(s(X,X),Y) = s(Y,s(X,X))))",
+     "![X]: (![Y]: (s(s(X,X),Y) = s(Y,s(X,Y))))",
+     "![X]: (![Y]: (s(s(X,X),Y) = s(Y,s(Y,X))))",
+     "![X]: (![Y]: (s(s(X,Y),X) = s(s(Y,X),X)))",
+     "![X]: (![Y]: (s(s(X,Y),X) = s(X,s(X,Y))))",
+     "![X]: (![Y]: (s(s(X,Y),X) = s(X,s(Y,X))))",
+     "![X]: (![Y]: (s(s(X,Y),X) = s(X,s(Y,Y))))",
+     "![X]: (![Y]: (s(s(X,Y),Y) = s(Y,s(X,X))))",
+     "![X]: (![Y]: (s(s(X,Y),Y) = s(Y,s(X,Y))))",
+     "![X]: (![Y]: (s(s(X,Y),Y) = s(Y,s(Y,X))))",
+     "![X]: (s(X,s(s(X,X),X)) = s(X,X))",
+     "![X]: (![Y]: (s(X,s(s(X,Y),X)) = s(X,Y)))",
+     "![X]: (![Y]: (s(X,s(s(X,Y),X)) = s(Y,X)))",
+     "![X]: (![Y]: (s(X,s(s(X,Y),Y)) = s(X,X)))",
+     "![X]: (![Y]: (s(X,s(s(Y,X),X)) = s(X,Y)))",
+     "![X]: (![Y]: (s(X,s(s(Y,X),Y)) = s(X,X)))",
+     "![X]: (![Y]: (s(X,s(s(Y,Y),X)) = s(X,Y)))",
+     "![X]: (![Y]: (s(X,s(s(Y,Y),X)) = s(Y,X)))",
+     "![X]: (![Y]: (s(X,s(s(Y,Y),Y)) = s(X,X)))",
+     "![X]: (![Y]: (s(X,s(X,s(Y,X))) = s(X,Y)))",
+     "![X]: (![Y]: (s(X,s(X,s(Y,X))) = s(Y,X)))",
+     "![X]: (![Y]: (s(X,s(X,s(Y,Y))) = s(X,Y)))",
+     "![X]: (![Y]: (s(X,s(X,s(Y,Y))) = s(Y,X)))",
+     "![X]: (![Y]: (s(X,s(X,Y)) = s(X,s(Y,Y))))",
+     "![X]: (![Y]: (s(X,s(Y,s(Y,X))) = s(X,X)))",
+     "![X]: (![Y]: (s(X,s(Y,X)) = s(X,s(Y,Y))))"
+    ],
+    "proved": 13,
+    "statuses": [
+     "RESOURCE_OUT",
+     "PROVED",
+     "PROVED",
+     "PROVED",
+     "PROVED",
+     "PROVED",
+     "PROVED",
+     "PROVED",
+     "PROVED",
+     "PROVED",
+     "PROVED",
+     "PROVED",
+     "PROVED",
+     "PROVED",
+     "RESOURCE_OUT"
+    ]
+   }
+  },
+  "60": {
+   "fixed": {
+    "cpu_s": 4.924,
+    "lemma_use": {
+     "L1": 1,
+     "L19": 1,
+     "L2": 1,
+     "L23": 2,
+     "L25": 1,
+     "L3": 1,
+     "L33": 1,
+     "L34": 3,
+     "L35": 1,
+     "L4": 1,
+     "L44": 2,
+     "L48": 1,
+     "L49": 1,
+     "L50": 2,
+     "L51": 2,
+     "L52": 1,
+     "L53": 1,
+     "L54": 1,
+     "L55": 1,
+     "L61": 2,
+     "L62": 2,
+     "L63": 2,
+     "L64": 1,
+     "L65": 1,
+     "L66": 1,
+     "L67": 1,
+     "L68": 2,
+     "L70": 1,
+     "L71": 1,
+     "L72": 2,
+     "L73": 2,
+     "L76": 2,
+     "L79": 1,
+     "L81": 2
+    },
+    "library": [
+     "![X]: (s(s(X,X),s(X,X)) = X)",
+     "![X]: (![Y]: (s(s(X,X),s(X,Y)) = X))",
+     "![X]: (![Y]: (s(s(X,X),s(Y,X)) = X))",
+     "![X]: (![Y]: (s(s(X,Y),s(X,X)) = X))",
+     "![X]: (![Y]: (s(s(X,Y),s(Y,Y)) = Y))",
+     "![X]: (s(s(s(X,X),X),s(X,X)) = X)",
+     "![X]: (![Y]: (s(s(s(X,X),X),s(Y,Y)) = Y))",
+     "![X]: (s(s(s(X,X),X),X) = s(X,X))",
+     "![X]: (![Y]: (s(s(s(X,X),X),Y) = s(Y,Y)))",
+     "![X]: (![Y]: (s(s(s(X,X),Y),s(X,Y)) = Y))",
+     "![X]: (![Y]: (s(s(s(X,X),Y),s(Y,X)) = Y))",
+     "![X]: (![Y]: (s(s(s(X,X),Y),s(Y,Y)) = Y))",
+     "![X]: (![Y]: (s(s(s(X,X),Y),X) = s(X,X)))",
+     "![X]: (![Y]: (s(s(s(X,X),Y),Y) = s(X,Y)))",
+     "![X]: (![Y]: (s(s(s(X,X),Y),Y) = s(Y,X)))",
+     "![X]: (![Y]: (s(s(s(X,Y),X),s(X,X)) = X))",
+     "![X]: (![Y]: (s(s(s(X,Y),X),s(X,Y)) = X))",
+     "![X]: (![Y]: (s(s(s(X,Y),X),s(Y,X)) = X))",
+     "![X]: (![Y]: (s(s(s(X,Y),X),X) = s(X,Y)))",
+     "![X]: (![Y]: (s(s(s(X,Y),X),X) = s(Y,X)))",
+     "![X]: (![Y]: (s(s(s(X,Y),X),Y) = s(Y,Y)))",
+     "![X]: (![Y]: (s(s(s(X,Y),Y),s(X,Y)) = Y))",
+     "![X]: (![Y]: (s(s(s(X,Y),Y),s(Y,X)) = Y))",
+     "![X]: (![Y]: (s(s(s(X,Y),Y),s(Y,Y)) = Y))",
+     "![X]: (![Y]: (s(s(s(X,Y),Y),X) = s(X,X)))",
+     "![X]: (![Y]: (s(s(s(X,Y),Y),Y) = s(X,Y)))",
+     "![X]: (![Y]: (![Z]: (s(s(s(X,Y),Z),s(X,Z)) = Z)))",
+     "![X]: (![Y]: (![Z]: (s(s(s(X,Y),Z),s(Y,Z)) = Z)))",
+     "![X]: (![Y]: (![Z]: (s(s(s(X,Y),Z),s(Z,X)) = Z)))",
+     "![X]: (![Y]: (![Z]: (s(s(s(X,Y),Z),s(Z,Y)) = Z)))",
+     "![X]: (![Y]: (![Z]: (s(s(s(X,Y),Z),s(Z,Z)) = Z)))",
+     "![X]: (s(s(X,s(X,X)),X) = s(X,X))",
+     "![X]: (![Y]: (s(s(X,s(X,X)),Y) = s(Y,Y)))",
+     "![X]: (![Y]: (s(s(X,s(X,Y)),X) = s(X,Y)))",
+     "![X]: (![Y]: (s(s(X,s(X,Y)),X) = s(Y,X)))",
+     "![X]: (![Y]: (s(s(X,s(X,Y)),Y) = s(Y,Y)))",
+     "![X]: (![Y]: (s(s(X,s(Y,X)),X) = s(Y,X)))",
+     "![X]: (![Y]: (s(s(X,s(Y,X)),Y) = s(Y,Y)))",
+     "![X]: (![Y]: (s(s(X,s(Y,Y)),X) = s(X,Y)))",
+     "![X]: (![Y]: (s(s(X,s(Y,Y)),X) = s(Y,X)))",
+     "![X]: (![Y]: (s(s(X,s(Y,Y)),Y) = s(Y,Y)))",
+     "![X]: (![Y]: (s(s(X,X),X) = s(s(Y,Y),Y)))",
+     "![X]: (s(s(X,X),X) = s(X,s(X,X)))",
+     "![X]: (![Y]: (s(s(X,X),X) = s(Y,s(Y,Y))))",
+     "![X]: (![Y]: (s(s(X,X),Y) = s(s(X,Y),Y)))",
+     "![X]: (![Y]: (s(s(X,X),Y) = s(s(Y,X),Y)))",
+     "![X]: (![Y]: (s(s(X,X),Y) = s(Y,s(X,X))))",
+     "![X]: (![Y]: (s(s(X,X),Y) = s(Y,s(X,Y))))",
+     "![X]: (![Y]: (s(s(X,X),Y) = s(Y,s(Y,X))))",
+     "![X]: (![Y]: (s(s(X,Y),X) = s(s(Y,X),X)))",
+     "![X]: (![Y]: (s(s(X,Y),X) = s(X,s(X,Y))))",
+     "![X]: (![Y]: (s(s(X,Y),X) = s(X,s(Y,X))))",
+     "![X]: (![Y]: (s(s(X,Y),X) = s(X,s(Y,Y))))",
+     "![X]: (![Y]: (s(s(X,Y),Y) = s(Y,s(X,X))))",
+     "![X]: (![Y]: (s(s(X,Y),Y) = s(Y,s(X,Y))))",
+     "![X]: (![Y]: (s(s(X,Y),Y) = s(Y,s(Y,X))))",
+     "![X]: (![Y]: (![Z]: (s(s(X,Y),Z) = s(s(Y,X),Z))))",
+     "![X]: (![Y]: (![Z]: (s(s(X,Y),Z) = s(Z,s(X,Y)))))",
+     "![X]: (![Y]: (![Z]: (s(s(X,Y),Z) = s(Z,s(Y,X)))))",
+     "![X]: (s(X,s(s(X,X),X)) = s(X,X))",
+     "![X]: (![Y]: (s(X,s(s(X,X),Y)) = s(X,X)))",
+     "![X]: (![Y]: (s(X,s(s(X,Y),X)) = s(X,Y)))",
+     "![X]: (![Y]: (s(X,s(s(X,Y),X)) = s(Y,X)))",
+     "![X]: (![Y]: (s(X,s(s(X,Y),Y)) = s(X,X)))",
+     "![X]: (![Y]: (s(X,s(s(Y,X),X)) = s(X,Y)))",
+     "![X]: (![Y]: (s(X,s(s(Y,X),Y)) = s(X,X)))",
+     "![X]: (![Y]: (s(X,s(s(Y,Y),X)) = s(X,Y)))",
+     "![X]: (![Y]: (s(X,s(s(Y,Y),X)) = s(Y,X)))",
+     "![X]: (![Y]: (s(X,s(s(Y,Y),Y)) = s(X,X)))",
+     "![X]: (s(X,s(X,s(X,X))) = s(X,X))",
+     "![X]: (![Y]: (s(X,s(X,s(Y,X))) = s(X,Y)))",
+     "![X]: (![Y]: (s(X,s(X,s(Y,X))) = s(Y,X)))",
+     "![X]: (![Y]: (s(X,s(X,s(Y,Y))) = s(X,Y)))",
+     "![X]: (![Y]: (s(X,s(X,s(Y,Y))) = s(Y,X)))",
+     "![X]: (![Y]: (s(X,s(X,X)) = s(Y,s(Y,Y))))",
+     "![X]: (![Y]: (s(X,s(X,Y)) = s(X,s(Y,X))))",
+     "![X]: (![Y]: (s(X,s(X,Y)) = s(X,s(Y,Y))))",
+     "![X]: (![Y]: (s(X,s(Y,s(X,X))) = s(X,X)))",
+     "![X]: (![Y]: (s(X,s(Y,s(X,Y))) = s(X,X)))",
+     "![X]: (![Y]: (s(X,s(Y,s(Y,X))) = s(X,X)))",
+     "![X]: (![Y]: (s(X,s(Y,s(Y,Y))) = s(X,X)))",
+     "![X]: (![Y]: (s(X,s(Y,X)) = s(X,s(Y,Y))))",
+     "![X]: (![Y]: (![Z]: (s(X,s(Y,Z)) = s(X,s(Z,Y)))))",
+     "![X]: (![Y]: (s(s(s(X,X),s(X,X)),Y) = s(X,Y)))",
+     "![X]: (![Y]: (s(s(s(X,X),s(X,Y)),X) = s(X,X)))",
+     "![X]: (![Y]: (![Z]: (s(s(s(X,X),s(Y,X)),Z) = s(X,Z))))",
+     "![X]: (![Y]: (s(s(s(X,Y),s(X,Y)),X) = s(X,Y)))",
+     "![X]: (![Y]: (s(s(s(X,Y),s(X,Y)),Y) = s(X,Y)))",
+     "![X]: (![Y]: (![Z]: (s(s(s(X,Y),s(X,Z)),Y) = s(X,Y))))"
+    ],
+    "proved": 12,
+    "statuses": [
+     "RESOURCE_OUT",
+     "PROVED",
+     "PROVED",
+     "PROVED",
+     "PROVED",
+     "PROVED",
+     "PROVED",
+     "PROVED",
+     "PROVED",
+     "PROVED",
+     "PROVED",
+     "PROVED",
+     "PROVED",
+     "RESOURCE_OUT",
+     "RESOURCE_OUT"
+    ]
+   },
+   "gap": {
+    "cheap_derivable": 86,
+    "cpu_s": 29.408,
+    "lemma_use": {
+     "G0": 13,
+     "G1": 13,
+     "G2": 13
+    },
+    "library": [
+     "![X]: (s(s(X,X),s(X,X)) = X)",
+     "![X]: (![Y]: (s(s(s(X,X),X),s(Y,Y)) = Y))",
+     "![X]: (![Y]: (s(s(s(X,X),Y),s(X,Y)) = Y))"
+    ],
+    "proved": 13,
+    "statuses": [
+     "RESOURCE_OUT",
+     "PROVED",
+     "PROVED",
+     "PROVED",
+     "PROVED",
+     "PROVED",
+     "PROVED",
+     "PROVED",
+     "PROVED",
+     "PROVED",
+     "PROVED",
+     "PROVED",
+     "PROVED",
+     "PROVED",
+     "RESOURCE_OUT"
+    ],
+    "trajectory": [
+     {
+      "cheap_cpu_s": 1.253,
+      "cpu_s": 2.589,
+      "eq": "![X]: (s(s(X,X),s(X,X)) = X)",
+      "outcome": "PROVED",
+      "step": 0
+     },
+     {
+      "cpu_s": 0.495,
+      "eq": "![X]: (![Y]: (s(s(X,X),s(X,Y)) = X))",
+      "outcome": "CHEAP_DERIVABLE",
+      "step": 1
+     },
+     {
+      "cpu_s": 0.431,
+      "eq": "![X]: (![Y]: (s(s(X,X),s(Y,X)) = X))",
+      "outcome": "CHEAP_DERIVABLE",
+      "step": 2
+     },
+     {
+      "cpu_s": 0.436,
+      "eq": "![X]: (![Y]: (s(s(X,Y),s(X,X)) = X))",
+      "outcome": "CHEAP_DERIVABLE",
+      "step": 3
+     },
+     {
+      "cpu_s": 0.375,
+      "eq": "![X]: (![Y]: (s(s(X,Y),s(Y,Y)) = Y))",
+      "outcome": "CHEAP_DERIVABLE",
+      "step": 4
+     },
+     {
+      "cpu_s": 0.028,
+      "eq": "![X]: (s(s(s(X,X),X),s(X,X)) = X)",
+      "outcome": "CHEAP_DERIVABLE",
+      "step": 5
+     },
+     {
+      "cheap_cpu_s": 1.256,
+      "cpu_s": 1.667,
+      "eq": "![X]: (![Y]: (s(s(s(X,X),X),s(Y,Y)) = Y))",
+      "outcome": "PROVED",
+      "step": 6
+     },
+     {
+      "cpu_s": 0.005,
+      "eq": "![X]: (s(s(s(X,X),X),X) = s(X,X))",
+      "outcome": "CHEAP_DERIVABLE",
+      "step": 7
+     },
+     {
+      "cpu_s": 0.004,
+      "eq": "![X]: (![Y]: (s(s(s(X,X),X),Y) = s(Y,Y)))",
+      "outcome": "CHEAP_DERIVABLE",
+      "step": 8
+     },
+     {
+      "cheap_cpu_s": 1.255,
+      "cpu_s": 3.64,
+      "eq": "![X]: (![Y]: (s(s(s(X,X),Y),s(X,Y)) = Y))",
+      "outcome": "PROVED",
+      "step": 9
+     },
+     {
+      "cpu_s": 0.127,
+      "eq": "![X]: (![Y]: (s(s(s(X,X),Y),s(Y,X)) = Y))",
+      "outcome": "CHEAP_DERIVABLE",
+      "step": 10
+     },
+     {
+      "cpu_s": 0.059,
+      "eq": "![X]: (![Y]: (s(s(s(X,X),Y),s(Y,Y)) = Y))",
+      "outcome": "CHEAP_DERIVABLE",
+      "step": 11
+     },
+     {
+      "cpu_s": 0.127,
+      "eq": "![X]: (![Y]: (s(s(s(X,X),Y),X) = s(X,X)))",
+      "outcome": "CHEAP_DERIVABLE",
+      "step": 12
+     },
+     {
+      "cpu_s": 0.429,
+      "eq": "![X]: (![Y]: (s(s(s(X,X),Y),Y) = s(X,Y)))",
+      "outcome": "CHEAP_DERIVABLE",
+      "step": 13
+     },
+     {
+      "cpu_s": 0.41,
+      "eq": "![X]: (![Y]: (s(s(s(X,X),Y),Y) = s(Y,X)))",
+      "outcome": "CHEAP_DERIVABLE",
+      "step": 14
+     },
+     {
+      "cpu_s": 0.022,
+      "eq": "![X]: (![Y]: (s(s(s(X,Y),X),s(X,X)) = X))",
+      "outcome": "CHEAP_DERIVABLE",
+      "step": 15
+     },
+     {
+      "cpu_s": 0.135,
+      "eq": "![X]: (![Y]: (s(s(s(X,Y),X),s(X,Y)) = X))",
+      "outcome": "CHEAP_DERIVABLE",
+      "step": 16
+     },
+     {
+      "cpu_s": 0.145,
+      "eq": "![X]: (![Y]: (s(s(s(X,Y),X),s(Y,X)) = X))",
+      "outcome": "CHEAP_DERIVABLE",
+      "step": 17
+     },
+     {
+      "cpu_s": 0.133,
+      "eq": "![X]: (![Y]: (s(s(s(X,Y),X),X) = s(X,Y)))",
+      "outcome": "CHEAP_DERIVABLE",
+      "step": 18
+     },
+     {
+      "cpu_s": 0.124,
+      "eq": "![X]: (![Y]: (s(s(s(X,Y),X),X) = s(Y,X)))",
+      "outcome": "CHEAP_DERIVABLE",
+      "step": 19
+     },
+     {
+      "cpu_s": 0.414,
+      "eq": "![X]: (![Y]: (s(s(s(X,Y),X),Y) = s(Y,Y)))",
+      "outcome": "CHEAP_DERIVABLE",
+      "step": 20
+     },
+     {
+      "cpu_s": 0.119,
+      "eq": "![X]: (![Y]: (s(s(s(X,Y),Y),s(X,Y)) = Y))",
+      "outcome": "CHEAP_DERIVABLE",
+      "step": 21
+     },
+     {
+      "cpu_s": 0.139,
+      "eq": "![X]: (![Y]: (s(s(s(X,Y),Y),s(Y,X)) = Y))",
+      "outcome": "CHEAP_DERIVABLE",
+      "step": 22
+     },
+     {
+      "cpu_s": 0.032,
+      "eq": "![X]: (![Y]: (s(s(s(X,Y),Y),s(Y,Y)) = Y))",
+      "outcome": "CHEAP_DERIVABLE",
+      "step": 23
+     },
+     {
+      "cpu_s": 0.484,
+      "eq": "![X]: (![Y]: (s(s(s(X,Y),Y),X) = s(X,X)))",
+      "outcome": "CHEAP_DERIVABLE",
+      "step": 24
+     },
+     {
+      "cpu_s": 0.129,
+      "eq": "![X]: (![Y]: (s(s(s(X,Y),Y),Y) = s(X,Y)))",
+      "outcome": "CHEAP_DERIVABLE",
+      "step": 25
+     },
+     {
+      "cpu_s": 0.14,
+      "eq": "![X]: (![Y]: (![Z]: (s(s(s(X,Y),Z),s(X,Z)) = Z)))",
+      "outcome": "CHEAP_DERIVABLE",
+      "step": 26
+     },
+     {
+      "cpu_s": 0.145,
+      "eq": "![X]: (![Y]: (![Z]: (s(s(s(X,Y),Z),s(Y,Z)) = Z)))",
+      "outcome": "CHEAP_DERIVABLE",
+      "step": 27
+     },
+     {
+      "cpu_s": 0.168,
+      "eq": "![X]: (![Y]: (![Z]: (s(s(s(X,Y),Z),s(Z,X)) = Z)))",
+      "outcome": "CHEAP_DERIVABLE",
+      "step": 28
+     },
+     {
+      "eq": "![X]: (![Y]: (![Z]: (s(s(s(X,Y),Z),s(Z,Y)) = Y)))",
+      "outcome": "FALSE",
+      "step": 29
+     },
+     {
+      "cpu_s": 0.143,
+      "eq": "![X]: (![Y]: (![Z]: (s(s(s(X,Y),Z),s(Z,Y)) = Z)))",
+      "outcome": "CHEAP_DERIVABLE",
+      "step": 30
+     },
+     {
+      "cpu_s": 0.067,
+      "eq": "![X]: (![Y]: (![Z]: (s(s(s(X,Y),Z),s(Z,Z)) = Z)))",
+      "outcome": "CHEAP_DERIVABLE",
+      "step": 31
+     },
+     {
+      "cpu_s": 0.005,
+      "eq": "![X]: (s(s(X,s(X,X)),X) = s(X,X))",
+      "outcome": "CHEAP_DERIVABLE",
+      "step": 32
+     },
+     {
+      "cpu_s": 0.006,
+      "eq": "![X]: (![Y]: (s(s(X,s(X,X)),Y) = s(Y,Y)))",
+      "outcome": "CHEAP_DERIVABLE",
+      "step": 33
+     },
+     {
+      "cpu_s": 0.15,
+      "eq": "![X]: (![Y]: (s(s(X,s(X,Y)),X) = s(X,Y)))",
+      "outcome": "CHEAP_DERIVABLE",
+      "step": 34
+     },
+     {
+      "cpu_s": 0.142,
+      "eq": "![X]: (![Y]: (s(s(X,s(X,Y)),X) = s(Y,X)))",
+      "outcome": "CHEAP_DERIVABLE",
+      "step": 35
+     },
+     {
+      "cpu_s": 0.398,
+      "eq": "![X]: (![Y]: (s(s(X,s(X,Y)),Y) = s(Y,Y)))",
+      "outcome": "CHEAP_DERIVABLE",
+      "step": 36
+     },
+     {
+      "cpu_s": 0.1,
+      "eq": "![X]: (![Y]: (s(s(X,s(Y,X)),X) = s(Y,X)))",
+      "outcome": "CHEAP_DERIVABLE",
+      "step": 37
+     },
+     {
+      "cpu_s": 0.374,
+      "eq": "![X]: (![Y]: (s(s(X,s(Y,X)),Y) = s(Y,Y)))",
+      "outcome": "CHEAP_DERIVABLE",
+      "step": 38
+     },
+     {
+      "cpu_s": 0.401,
+      "eq": "![X]: (![Y]: (s(s(X,s(Y,Y)),X) = s(X,Y)))",
+      "outcome": "CHEAP_DERIVABLE",
+      "step": 39
+     },
+     {
+      "cpu_s": 0.4,
+      "eq": "![X]: (![Y]: (s(s(X,s(Y,Y)),X) = s(Y,X)))",
+      "outcome": "CHEAP_DERIVABLE",
+      "step": 40
+     },
+     {
+      "cpu_s": 0.064,
+      "eq": "![X]: (![Y]: (s(s(X,s(Y,Y)),Y) = s(Y,Y)))",
+      "outcome": "CHEAP_DERIVABLE",
+      "step": 41
+     },
+     {
+      "cpu_s": 0.078,
+      "eq": "![X]: (![Y]: (s(s(X,X),X) = s(s(Y,Y),Y)))",
+      "outcome": "CHEAP_DERIVABLE",
+      "step": 42
+     },
+     {
+      "cpu_s": 0.025,
+      "eq": "![X]: (s(s(X,X),X) = s(X,s(X,X)))",
+      "outcome": "CHEAP_DERIVABLE",
+      "step": 43
+     },
+     {
+      "cpu_s": 0.079,
+      "eq": "![X]: (![Y]: (s(s(X,X),X) = s(Y,s(Y,Y))))",
+      "outcome": "CHEAP_DERIVABLE",
+      "step": 44
+     },
+     {
+      "cpu_s": 0.394,
+      "eq": "![X]: (![Y]: (s(s(X,X),Y) = s(s(X,Y),Y)))",
+      "outcome": "CHEAP_DERIVABLE",
+      "step": 45
+     },
+     {
+      "cpu_s": 0.407,
+      "eq": "![X]: (![Y]: (s(s(X,X),Y) = s(s(Y,X),Y)))",
+      "outcome": "CHEAP_DERIVABLE",
+      "step": 46
+     },
+     {
+      "cpu_s": 0.121,
+      "eq": "![X]: (![Y]: (s(s(X,X),Y) = s(Y,s(X,X))))",
+      "outcome": "CHEAP_DERIVABLE",
+      "step": 47
+     },
+     {
+      "cpu_s": 0.395,
+      "eq": "![X]: (![Y]: (s(s(X,X),Y) = s(Y,s(X,Y))))",
+      "outcome": "CHEAP_DERIVABLE",
+      "step": 48
+     },
+     {
+      "cpu_s": 0.419,
+      "eq": "![X]: (![Y]: (s(s(X,X),Y) = s(Y,s(Y,X))))",
+      "outcome": "CHEAP_DERIVABLE",
+      "step": 49
+     },
+     {
+      "eq": "![X]: (![Y]: (![Z]: (s(s(X,Y),s(s(X,Y),Z)) = Z)))",
+      "outcome": "FALSE",
+      "step": 50
+     },
+     {
+      "cpu_s": 0.12,
+      "eq": "![X]: (![Y]: (s(s(X,Y),X) = s(s(Y,X),X)))",
+      "outcome": "CHEAP_DERIVABLE",
+      "step": 51
+     },
+     {
+      "eq": "![X]: (![Y]: (![Z]: (s(s(X,Y),X) = s(s(Y,X),Z))))",
+      "outcome": "FALSE",
+      "step": 52
+     },
+     {
+      "cpu_s": 0.124,
+      "eq": "![X]: (![Y]: (s(s(X,Y),X) = s(X,s(X,Y))))",
+      "outcome": "CHEAP_DERIVABLE",
+      "step": 53
+     },
+     {
+      "cpu_s": 0.125,
+      "eq": "![X]: (![Y]: (s(s(X,Y),X) = s(X,s(Y,X))))",
+      "outcome": "CHEAP_DERIVABLE",
+      "step": 54
+     },
+     {
+      "cpu_s": 0.387,
+      "eq": "![X]: (![Y]: (s(s(X,Y),X) = s(X,s(Y,Y))))",
+      "outcome": "CHEAP_DERIVABLE",
+      "step": 55
+     },
+     {
+      "cpu_s": 0.43,
+      "eq": "![X]: (![Y]: (s(s(X,Y),Y) = s(Y,s(X,X))))",
+      "outcome": "CHEAP_DERIVABLE",
+      "step": 56
+     },
+     {
+      "cpu_s": 0.122,
+      "eq": "![X]: (![Y]: (s(s(X,Y),Y) = s(Y,s(X,Y))))",
+      "outcome": "CHEAP_DERIVABLE",
+      "step": 57
+     },
+     {
+      "cpu_s": 0.126,
+      "eq": "![X]: (![Y]: (s(s(X,Y),Y) = s(Y,s(Y,X))))",
+      "outcome": "CHEAP_DERIVABLE",
+      "step": 58
+     },
+     {
+      "cpu_s": 0.15,
+      "eq": "![X]: (![Y]: (![Z]: (s(s(X,Y),Z) = s(s(Y,X),Z))))",
+      "outcome": "CHEAP_DERIVABLE",
+      "step": 59
+     },
+     {
+      "cpu_s": 0.134,
+      "eq": "![X]: (![Y]: (![Z]: (s(s(X,Y),Z) = s(Z,s(X,Y)))))",
+      "outcome": "CHEAP_DERIVABLE",
+      "step": 60
+     },
+     {
+      "cpu_s": 0.121,
+      "eq": "![X]: (![Y]: (![Z]: (s(s(X,Y),Z) = s(Z,s(Y,X)))))",
+      "outcome": "CHEAP_DERIVABLE",
+      "step": 61
+     },
+     {
+      "cpu_s": 0.026,
+      "eq": "![X]: (s(X,s(s(X,X),X)) = s(X,X))",
+      "outcome": "CHEAP_DERIVABLE",
+      "step": 62
+     },
+     {
+      "cpu_s": 0.128,
+      "eq": "![X]: (![Y]: (s(X,s(s(X,X),Y)) = s(X,X)))",
+      "outcome": "CHEAP_DERIVABLE",
+      "step": 63
+     },
+     {
+      "cpu_s": 0.145,
+      "eq": "![X]: (![Y]: (s(X,s(s(X,Y),X)) = s(X,Y)))",
+      "outcome": "CHEAP_DERIVABLE",
+      "step": 64
+     },
+     {
+      "cpu_s": 0.137,
+      "eq": "![X]: (![Y]: (s(X,s(s(X,Y),X)) = s(Y,X)))",
+      "outcome": "CHEAP_DERIVABLE",
+      "step": 65
+     },
+     {
+      "cpu_s": 0.477,
+      "eq": "![X]: (![Y]: (s(X,s(s(X,Y),Y)) = s(X,X)))",
+      "outcome": "CHEAP_DERIVABLE",
+      "step": 66
+     },
+     {
+      "cpu_s": 0.135,
+      "eq": "![X]: (![Y]: (s(X,s(s(Y,X),X)) = s(X,Y)))",
+      "outcome": "CHEAP_DERIVABLE",
+      "step": 67
+     },
+     {
+      "cpu_s": 0.44,
+      "eq": "![X]: (![Y]: (s(X,s(s(Y,X),Y)) = s(X,X)))",
+      "outcome": "CHEAP_DERIVABLE",
+      "step": 68
+     },
+     {
+      "cpu_s": 0.399,
+      "eq": "![X]: (![Y]: (s(X,s(s(Y,Y),X)) = s(X,Y)))",
+      "outcome": "CHEAP_DERIVABLE",
+      "step": 69
+     },
+     {
+      "cpu_s": 0.417,
+      "eq": "![X]: (![Y]: (s(X,s(s(Y,Y),X)) = s(Y,X)))",
+      "outcome": "CHEAP_DERIVABLE",
+      "step": 70
+     },
+     {
+      "cpu_s": 0.082,
+      "eq": "![X]: (![Y]: (s(X,s(s(Y,Y),Y)) = s(X,X)))",
+      "outcome": "CHEAP_DERIVABLE",
+      "step": 71
+     },
+     {
+      "cpu_s": 0.005,
+      "eq": "![X]: (s(X,s(X,s(X,X))) = s(X,X))",
+      "outcome": "CHEAP_DERIVABLE",
+      "step": 72
+     },
+     {
+      "cpu_s": 0.133,
+      "eq": "![X]: (![Y]: (s(X,s(X,s(Y,X))) = s(X,Y)))",
+      "outcome": "CHEAP_DERIVABLE",
+      "step": 73
+     },
+     {
+      "cpu_s": 0.126,
+      "eq": "![X]: (![Y]: (s(X,s(X,s(Y,X))) = s(Y,X)))",
+      "outcome": "CHEAP_DERIVABLE",
+      "step": 74
+     },
+     {
+      "cpu_s": 0.41,
+      "eq": "![X]: (![Y]: (s(X,s(X,s(Y,Y))) = s(X,Y)))",
+      "outcome": "CHEAP_DERIVABLE",
+      "step": 75
+     },
+     {
+      "cpu_s": 0.434,
+      "eq": "![X]: (![Y]: (s(X,s(X,s(Y,Y))) = s(Y,X)))",
+      "outcome": "CHEAP_DERIVABLE",
+      "step": 76
+     },
+     {
+      "cpu_s": 0.089,
+      "eq": "![X]: (![Y]: (s(X,s(X,X)) = s(Y,s(Y,Y))))",
+      "outcome": "CHEAP_DERIVABLE",
+      "step": 77
+     },
+     {
+      "cpu_s": 0.141,
+      "eq": "![X]: (![Y]: (s(X,s(X,Y)) = s(X,s(Y,X))))",
+      "outcome": "CHEAP_DERIVABLE",
+      "step": 78
+     },
+     {
+      "cpu_s": 0.39,
+      "eq": "![X]: (![Y]: (s(X,s(X,Y)) = s(X,s(Y,Y))))",
+      "outcome": "CHEAP_DERIVABLE",
+      "step": 79
+     },
+     {
+      "cpu_s": 0.115,
+      "eq": "![X]: (![Y]: (s(X,s(Y,s(X,X))) = s(X,X)))",
+      "outcome": "CHEAP_DERIVABLE",
+      "step": 80
+     },
+     {
+      "cpu_s": 0.389,
+      "eq": "![X]: (![Y]: (s(X,s(Y,s(X,Y))) = s(X,X)))",
+      "outcome": "CHEAP_DERIVABLE",
+      "step": 81
+     },
+     {
+      "cpu_s": 0.416,
+      "eq": "![X]: (![Y]: (s(X,s(Y,s(Y,X))) = s(X,X)))",
+      "outcome": "CHEAP_DERIVABLE",
+      "step": 82
+     },
+     {
+      "cpu_s": 0.08,
+      "eq": "![X]: (![Y]: (s(X,s(Y,s(Y,Y))) = s(X,X)))",
+      "outcome": "CHEAP_DERIVABLE",
+      "step": 83
+     },
+     {
+      "cpu_s": 0.385,
+      "eq": "![X]: (![Y]: (s(X,s(Y,X)) = s(X,s(Y,Y))))",
+      "outcome": "CHEAP_DERIVABLE",
+      "step": 84
+     },
+     {
+      "cpu_s": 0.121,
+      "eq": "![X]: (![Y]: (![Z]: (s(X,s(Y,Z)) = s(X,s(Z,Y)))))",
+      "outcome": "CHEAP_DERIVABLE",
+      "step": 85
+     },
+     {
+      "eq": "![X]: (![Y]: (s(s(s(s(s(X,X),Y),X),X),X) = X))",
+      "outcome": "FALSE",
+      "step": 86
+     },
+     {
+      "eq": "![X]: (![Y]: (![Z]: (s(s(s(s(s(X,Y),Z),X),Y),Y) = X)))",
+      "outcome": "FALSE",
+      "step": 87
+     },
+     {
+      "eq": "![X]: (![Y]: (![Z]: (s(s(s(s(s(X,Y),Z),Z),X),Z) = Y)))",
+      "outcome": "FALSE",
+      "step": 88
+     },
+     {
+      "eq": "![X]: (![Y]: (![Z]: (s(s(s(s(X,Y),Y),X),s(X,Z)) = Z)))",
+      "outcome": "FALSE",
+      "step": 89
+     },
+     {
+      "eq": "![X]: (![Y]: (![Z]: (s(s(s(s(X,Y),Z),X),s(Y,Z)) = Y)))",
+      "outcome": "FALSE",
+      "step": 90
+     },
+     {
+      "eq": "![X]: (![Y]: (![Z]: (s(s(s(X,s(s(Y,Z),X)),X),Z) = Z)))",
+      "outcome": "FALSE",
+      "step": 91
+     },
+     {
+      "cpu_s": 0.005,
+      "eq": "![X]: (![Y]: (s(s(s(X,X),s(X,X)),Y) = s(X,Y)))",
+      "outcome": "CHEAP_DERIVABLE",
+      "step": 92
+     },
+     {
+      "cpu_s": 0.135,
+      "eq": "![X]: (![Y]: (s(s(s(X,X),s(X,Y)),X) = s(X,X)))",
+      "outcome": "CHEAP_DERIVABLE",
+      "step": 93
+     },
+     {
+      "cpu_s": 0.109,
+      "eq": "![X]: (![Y]: (![Z]: (s(s(s(X,X),s(Y,X)),Z) = s(X,Z))))",
+      "outcome": "CHEAP_DERIVABLE",
+      "step": 94
+     },
+     {
+      "eq": "![X]: (![Y]: (![Z]: (s(s(s(X,X),Y),s(s(Z,X),Z)) = Z)))",
+      "outcome": "FALSE",
+      "step": 95
+     },
+     {
+      "eq": "![X]: (![Y]: (![Z]: (s(s(s(X,Y),s(s(X,Z),Y)),X) = X)))",
+      "outcome": "FALSE",
+      "step": 96
+     },
+     {
+      "cpu_s": 0.161,
+      "eq": "![X]: (![Y]: (s(s(s(X,Y),s(X,Y)),X) = s(X,Y)))",
+      "outcome": "CHEAP_DERIVABLE",
+      "step": 97
+     },
+     {
+      "cpu_s": 0.161,
+      "eq": "![X]: (![Y]: (s(s(s(X,Y),s(X,Y)),Y) = s(X,Y)))",
+      "outcome": "CHEAP_DERIVABLE",
+      "step": 98
+     },
+     {
+      "cpu_s": 0.214,
+      "eq": "![X]: (![Y]: (![Z]: (s(s(s(X,Y),s(X,Z)),Y) = s(X,Y))))",
+      "outcome": "CHEAP_DERIVABLE",
+      "step": 99
+     },
+     {
+      "eq": "![X]: (![Y]: (![Z]: (s(s(s(X,Y),s(Y,Y)),Z) = s(Y,X))))",
+      "outcome": "FALSE",
+      "step": 100
+     },
+     {
+      "eq": "![X]: (![Y]: (![Z]: (s(s(s(X,Y),s(Z,s(X,X))),Y) = Y)))",
+      "outcome": "FALSE",
+      "step": 101
+     },
+     {
+      "eq": "![X]: (![Y]: (![Z]: (s(s(s(X,Y),s(Z,s(Y,X))),Y) = Z)))",
+      "outcome": "FALSE",
+      "step": 102
+     },
+     {
+      "eq": "![X]: (![Y]: (![Z]: (s(s(s(X,Y),Z),Z) = s(X,s(X,Z)))))",
+      "outcome": "FALSE",
+      "step": 103
+     },
+     {
+      "eq": "![X]: (![Y]: (s(s(X,s(X,Y)),s(s(X,Y),X)) = Y))",
+      "outcome": "FALSE",
+      "step": 104
+     },
+     {
+      "eq": "![X]: (![Y]: (![Z]: (s(s(X,s(X,Y)),s(Z,s(X,Z))) = X)))",
+      "outcome": "FALSE",
+      "step": 105
+     },
+     {
+      "eq": "![X]: (![Y]: (s(s(X,s(Y,X)),s(X,s(Y,Y))) = X))",
+      "outcome": "FALSE",
+      "step": 106
+     },
+     {
+      "eq": "![X]: (![Y]: (![Z]: (s(s(X,X),s(s(s(X,Y),X),X)) = Z)))",
+      "outcome": "FALSE",
+      "step": 107
+     },
+     {
+      "eq": "![X]: (![Y]: (![Z]: (s(s(X,X),Y) = s(s(Z,X),s(X,Y)))))",
+      "outcome": "FALSE",
+      "step": 108
+     },
+     {
+      "eq": "![X]: (![Y]: (![Z]: (s(s(X,Y),s(s(X,Y),s(Y,Z))) = X)))",
+      "outcome": "FALSE",
+      "step": 109
+     },
+     {
+      "eq": "![X]: (![Y]: (![Z]: (s(s(X,Y),Y) = s(Z,s(s(Z,X),Y)))))",
+      "outcome": "FALSE",
+      "step": 110
+     },
+     {
+      "eq": "![X]: (![Y]: (![Z]: (s(X,s(s(s(s(Y,X),X),Z),X)) = X)))",
+      "outcome": "FALSE",
+      "step": 111
+     },
+     {
+      "eq": "![X]: (![Y]: (![Z]: (s(X,s(s(s(X,s(Y,Z)),Z),Z)) = Y)))",
+      "outcome": "FALSE",
+      "step": 112
+     },
+     {
+      "eq": "![X]: (![Y]: (s(X,s(s(X,s(s(X,Y),X)),X)) = X))",
+      "outcome": "FALSE",
+      "step": 113
+     },
+     {
+      "eq": "![X]: (![Y]: (![Z]: (s(X,s(s(X,s(s(Y,Y),Z)),Y)) = X)))",
+      "outcome": "FALSE",
+      "step": 114
+     },
+     {
+      "eq": "![X]: (![Y]: (s(X,s(s(X,Y),s(s(X,X),X))) = X))",
+      "outcome": "FALSE",
+      "step": 115
+     },
+     {
+      "eq": "![X]: (![Y]: (![Z]: (s(X,s(s(Y,s(s(Y,X),X)),Y)) = Z)))",
+      "outcome": "FALSE",
+      "step": 116
+     },
+     {
+      "eq": "![X]: (![Y]: (![Z]: (s(X,s(s(Y,Y),s(X,s(Z,Y)))) = Y)))",
+      "outcome": "FALSE",
+      "step": 117
+     },
+     {
+      "eq": "![X]: (![Y]: (![Z]: (s(X,s(Y,s(s(s(X,Y),Y),Z))) = Z)))",
+      "outcome": "FALSE",
+      "step": 118
+     }
+    ]
+   },
+   "oracle": {
+    "cost_s": 4.323,
+    "lemma_use": {
+     "L0": 2,
+     "L19": 1,
+     "L23": 2,
+     "L25": 1,
+     "L33": 2,
+     "L34": 3,
+     "L4": 1,
+     "L40": 1,
+     "L44": 2,
+     "L46": 2,
+     "L48": 1,
+     "L49": 1,
+     "L50": 2,
+     "L51": 2,
+     "L52": 1,
+     "L53": 1,
+     "L54": 1,
+     "L55": 1,
+     "L61": 2,
+     "L62": 2,
+     "L63": 2,
+     "L64": 1,
+     "L65": 1,
+     "L66": 1,
+     "L67": 1,
+     "L68": 2,
+     "L70": 1,
+     "L71": 1,
+     "L72": 2,
+     "L73": 3,
+     "L76": 2,
+     "L79": 1,
+     "L81": 1
+    },
+    "library": [
+     "![X]: (s(s(X,X),s(X,X)) = X)",
+     "![X]: (![Y]: (s(s(X,X),s(X,Y)) = X))",
+     "![X]: (![Y]: (s(s(X,X),s(Y,X)) = X))",
+     "![X]: (![Y]: (s(s(X,Y),s(X,X)) = X))",
+     "![X]: (![Y]: (s(s(X,Y),s(Y,Y)) = Y))",
+     "![X]: (![Y]: (s(s(s(X,X),X),s(Y,Y)) = Y))",
+     "![X]: (![Y]: (s(s(s(X,X),X),Y) = s(Y,Y)))",
+     "![X]: (![Y]: (s(s(s(X,X),Y),s(X,Y)) = Y))",
+     "![X]: (![Y]: (s(s(s(X,X),Y),s(Y,X)) = Y))",
+     "![X]: (![Y]: (s(s(s(X,X),Y),s(Y,Y)) = Y))",
+     "![X]: (![Y]: (s(s(s(X,X),Y),X) = s(X,X)))",
+     "![X]: (![Y]: (s(s(s(X,X),Y),Y) = s(X,Y)))",
+     "![X]: (![Y]: (s(s(s(X,X),Y),Y) = s(Y,X)))",
+     "![X]: (![Y]: (s(s(s(X,Y),X),s(X,X)) = X))",
+     "![X]: (![Y]: (s(s(s(X,Y),X),s(X,Y)) = X))",
+     "![X]: (![Y]: (s(s(s(X,Y),X),s(Y,X)) = X))",
+     "![X]: (![Y]: (s(s(s(X,Y),X),X) = s(X,Y)))",
+     "![X]: (![Y]: (s(s(s(X,Y),X),X) = s(Y,X)))",
+     "![X]: (![Y]: (s(s(s(X,Y),X),Y) = s(Y,Y)))",
+     "![X]: (![Y]: (s(s(s(X,Y),Y),s(Y,X)) = Y))",
+     "![X]: (![Y]: (s(s(s(X,Y),Y),s(Y,Y)) = Y))",
+     "![X]: (![Y]: (s(s(s(X,Y),Y),X) = s(X,X)))",
+     "![X]: (![Y]: (s(s(s(X,Y),Y),Y) = s(X,Y)))",
+     "![X]: (![Y]: (![Z]: (s(s(s(X,Y),Z),s(Y,Z)) = Z)))",
+     "![X]: (![Y]: (![Z]: (s(s(s(X,Y),Z),s(Z,X)) = Z)))",
+     "![X]: (![Y]: (![Z]: (s(s(s(X,Y),Z),s(Z,Y)) = Z)))",
+     "![X]: (![Y]: (s(s(X,s(X,X)),Y) = s(Y,Y)))",
+     "![X]: (![Y]: (s(s(X,s(X,Y)),X) = s(X,Y)))",
+     "![X]: (![Y]: (s(s(X,s(X,Y)),X) = s(Y,X)))",
+     "![X]: (![Y]: (s(s(X,s(X,Y)),Y) = s(Y,Y)))",
+     "![X]: (![Y]: (s(s(X,s(Y,X)),X) = s(Y,X)))",
+     "![X]: (![Y]: (s(s(X,s(Y,X)),Y) = s(Y,Y)))",
+     "![X]: (![Y]: (s(s(X,s(Y,Y)),X) = s(X,Y)))",
+     "![X]: (![Y]: (s(s(X,s(Y,Y)),X) = s(Y,X)))",
+     "![X]: (![Y]: (s(s(X,s(Y,Y)),Y) = s(Y,Y)))",
+     "![X]: (![Y]: (s(s(X,X),X) = s(s(Y,Y),Y)))",
+     "![X]: (![Y]: (s(s(X,X),Y) = s(s(X,Y),Y)))",
+     "![X]: (![Y]: (s(s(X,X),Y) = s(s(Y,X),Y)))",
+     "![X]: (![Y]: (s(s(X,X),Y) = s(Y,s(X,X))))",
+     "![X]: (![Y]: (s(s(X,X),Y) = s(Y,s(X,Y))))",
+     "![X]: (![Y]: (s(s(X,X),Y) = s(Y,s(Y,X))))",
+     "![X]: (![Y]: (s(s(X,Y),X) = s(s(Y,X),X)))",
+     "![X]: (![Y]: (s(s(X,Y),X) = s(X,s(X,Y))))",
+     "![X]: (![Y]: (s(s(X,Y),X) = s(X,s(Y,X))))",
+     "![X]: (![Y]: (s(s(X,Y),X) = s(X,s(Y,Y))))",
+     "![X]: (![Y]: (s(s(X,Y),Y) = s(Y,s(X,X))))",
+     "![X]: (![Y]: (s(s(X,Y),Y) = s(Y,s(X,Y))))",
+     "![X]: (![Y]: (s(s(X,Y),Y) = s(Y,s(Y,X))))",
+     "![X]: (s(X,s(s(X,X),X)) = s(X,X))",
+     "![X]: (![Y]: (s(X,s(s(X,Y),X)) = s(X,Y)))",
+     "![X]: (![Y]: (s(X,s(s(X,Y),X)) = s(Y,X)))",
+     "![X]: (![Y]: (s(X,s(s(X,Y),Y)) = s(X,X)))",
+     "![X]: (![Y]: (s(X,s(s(Y,X),X)) = s(X,Y)))",
+     "![X]: (![Y]: (s(X,s(s(Y,X),Y)) = s(X,X)))",
+     "![X]: (![Y]: (s(X,s(s(Y,Y),X)) = s(X,Y)))",
+     "![X]: (![Y]: (s(X,s(s(Y,Y),X)) = s(Y,X)))",
+     "![X]: (![Y]: (s(X,s(s(Y,Y),Y)) = s(X,X)))",
+     "![X]: (![Y]: (s(X,s(X,s(Y,X))) = s(X,Y)))",
+     "![X]: (![Y]: (s(X,s(X,s(Y,X))) = s(Y,X)))",
+     "![X]: (![Y]: (s(X,s(X,s(Y,Y))) = s(X,Y)))",
+     "![X]: (![Y]: (s(X,s(X,s(Y,Y))) = s(Y,X)))",
+     "![X]: (![Y]: (s(X,s(X,Y)) = s(X,s(Y,Y))))",
+     "![X]: (![Y]: (s(X,s(Y,s(Y,X))) = s(X,X)))",
+     "![X]: (![Y]: (s(X,s(Y,X)) = s(X,s(Y,Y))))"
+    ],
+    "proved": 13,
+    "statuses": [
+     "RESOURCE_OUT",
+     "PROVED",
+     "PROVED",
+     "PROVED",
+     "PROVED",
+     "PROVED",
+     "PROVED",
+     "PROVED",
+     "PROVED",
+     "PROVED",
+     "PROVED",
+     "PROVED",
+     "PROVED",
+     "PROVED",
+     "RESOURCE_OUT"
+    ]
+   },
+   "repeat": {
+    "lemma_use": {
+     "L1": 1,
+     "L19": 1,
+     "L2": 1,
+     "L23": 2,
+     "L25": 1,
+     "L3": 1,
+     "L33": 1,
+     "L34": 3,
+     "L35": 1,
+     "L4": 1,
+     "L44": 2,
+     "L48": 1,
+     "L49": 1,
+     "L50": 2,
+     "L51": 2,
+     "L52": 1,
+     "L53": 1,
+     "L54": 1,
+     "L55": 1,
+     "L61": 2,
+     "L62": 2,
+     "L63": 2,
+     "L64": 1,
+     "L65": 1,
+     "L66": 1,
+     "L67": 1,
+     "L68": 2,
+     "L70": 1,
+     "L71": 1,
+     "L72": 2,
+     "L73": 2,
+     "L76": 2,
+     "L79": 1,
+     "L81": 2
+    },
+    "proved": 12,
+    "statuses": [
+     "RESOURCE_OUT",
+     "PROVED",
+     "PROVED",
+     "PROVED",
+     "PROVED",
+     "PROVED",
+     "PROVED",
+     "PROVED",
+     "PROVED",
+     "PROVED",
+     "PROVED",
+     "PROVED",
+     "PROVED",
+     "RESOURCE_OUT",
+     "RESOURCE_OUT"
+    ]
+   }
+  }
+ },
+ "dev": [
+  "![X]: (![Y]: (![Z]: (s(s(X,s(X,Y)),Z) = s(Z,s(s(Z,s(X,Z)),s(Y,X))))))",
+  "![X]: (![Y]: (s(s(X,s(s(X,Y),X)),X) = s(X,s(Y,s(s(Y,Y),Y)))))",
+  "![X]: (![Y]: (s(s(X,s(Y,X)),s(Y,Y)) = s(s(X,X),s(s(X,Y),Y))))",
+  "![X]: (![Y]: (![Z]: (s(s(X,s(s(X,X),Y)),Z) = s(s(Z,s(Z,s(X,X))),Z))))",
+  "![X]: (![Y]: (s(s(X,s(s(X,X),Y)),Y) = s(Y,s(s(s(X,Y),Y),Y))))",
+  "![X]: (![Y]: (![Z]: (s(s(s(X,s(Y,Z)),Y),X) = s(X,s(Y,s(s(Z,X),X))))))",
+  "![X]: (![Y]: (![Z]: (s(s(s(X,Y),s(Y,Z)),Y) = s(s(s(Z,Y),s(X,X)),Y))))",
+  "![X]: (![Y]: (![Z]: (s(X,s(s(X,Y),s(X,s(Z,X)))) = s(X,s(s(Y,X),Z)))))",
+  "![X]: (![Y]: (![Z]: (s(s(X,s(X,s(Y,Z))),s(X,Y)) = s(s(Y,X),s(X,Y)))))",
+  "![X]: (![Y]: (s(s(s(s(X,X),X),X),X) = s(s(s(X,s(X,X)),Y),Y)))"
+ ],
+ "empty": {
+  "lemma_use": {},
+  "proved": 1,
+  "statuses": [
+   "RESOURCE_OUT",
+   "RESOURCE_OUT",
+   "RESOURCE_OUT",
+   "RESOURCE_OUT",
+   "RESOURCE_OUT",
+   "RESOURCE_OUT",
+   "RESOURCE_OUT",
+   "RESOURCE_OUT",
+   "RESOURCE_OUT",
+   "RESOURCE_OUT",
+   "RESOURCE_OUT",
+   "RESOURCE_OUT",
+   "PROVED",
+   "RESOURCE_OUT",
+   "RESOURCE_OUT"
+  ]
+ },
+ "exhaust": {
+  "lemma_use": {
+   "L1": 1,
+   "L19": 1,
+   "L2": 1,
+   "L23": 2,
+   "L25": 1,
+   "L3": 1,
+   "L33": 1,
+   "L34": 3,
+   "L35": 1,
+   "L4": 1,
+   "L44": 2,
+   "L48": 1,
+   "L49": 1,
+   "L50": 2,
+   "L51": 2,
+   "L52": 1,
+   "L53": 1,
+   "L54": 1,
+   "L55": 1,
+   "L61": 2,
+   "L62": 2,
+   "L63": 2,
+   "L64": 1,
+   "L65": 1,
+   "L66": 1,
+   "L67": 1,
+   "L68": 2,
+   "L70": 1,
+   "L71": 1,
+   "L72": 2,
+   "L73": 2,
+   "L76": 2,
+   "L79": 1,
+   "L81": 2
+  },
+  "proved": 12,
+  "statuses": [
+   "RESOURCE_OUT",
+   "PROVED",
+   "PROVED",
+   "PROVED",
+   "PROVED",
+   "PROVED",
+   "PROVED",
+   "PROVED",
+   "PROVED",
+   "PROVED",
+   "PROVED",
+   "PROVED",
+   "PROVED",
+   "RESOURCE_OUT",
+   "RESOURCE_OUT"
+  ]
+ },
+ "exhaust_run": {
+  "cpu_s": 4.886,
+  "library": [
+   "![X]: (s(s(X,X),s(X,X)) = X)",
+   "![X]: (![Y]: (s(s(X,X),s(X,Y)) = X))",
+   "![X]: (![Y]: (s(s(X,X),s(Y,X)) = X))",
+   "![X]: (![Y]: (s(s(X,Y),s(X,X)) = X))",
+   "![X]: (![Y]: (s(s(X,Y),s(Y,Y)) = Y))",
+   "![X]: (s(s(s(X,X),X),s(X,X)) = X)",
+   "![X]: (![Y]: (s(s(s(X,X),X),s(Y,Y)) = Y))",
+   "![X]: (s(s(s(X,X),X),X) = s(X,X))",
+   "![X]: (![Y]: (s(s(s(X,X),X),Y) = s(Y,Y)))",
+   "![X]: (![Y]: (s(s(s(X,X),Y),s(X,Y)) = Y))",
+   "![X]: (![Y]: (s(s(s(X,X),Y),s(Y,X)) = Y))",
+   "![X]: (![Y]: (s(s(s(X,X),Y),s(Y,Y)) = Y))",
+   "![X]: (![Y]: (s(s(s(X,X),Y),X) = s(X,X)))",
+   "![X]: (![Y]: (s(s(s(X,X),Y),Y) = s(X,Y)))",
+   "![X]: (![Y]: (s(s(s(X,X),Y),Y) = s(Y,X)))",
+   "![X]: (![Y]: (s(s(s(X,Y),X),s(X,X)) = X))",
+   "![X]: (![Y]: (s(s(s(X,Y),X),s(X,Y)) = X))",
+   "![X]: (![Y]: (s(s(s(X,Y),X),s(Y,X)) = X))",
+   "![X]: (![Y]: (s(s(s(X,Y),X),X) = s(X,Y)))",
+   "![X]: (![Y]: (s(s(s(X,Y),X),X) = s(Y,X)))",
+   "![X]: (![Y]: (s(s(s(X,Y),X),Y) = s(Y,Y)))",
+   "![X]: (![Y]: (s(s(s(X,Y),Y),s(X,Y)) = Y))",
+   "![X]: (![Y]: (s(s(s(X,Y),Y),s(Y,X)) = Y))",
+   "![X]: (![Y]: (s(s(s(X,Y),Y),s(Y,Y)) = Y))",
+   "![X]: (![Y]: (s(s(s(X,Y),Y),X) = s(X,X)))",
+   "![X]: (![Y]: (s(s(s(X,Y),Y),Y) = s(X,Y)))",
+   "![X]: (![Y]: (![Z]: (s(s(s(X,Y),Z),s(X,Z)) = Z)))",
+   "![X]: (![Y]: (![Z]: (s(s(s(X,Y),Z),s(Y,Z)) = Z)))",
+   "![X]: (![Y]: (![Z]: (s(s(s(X,Y),Z),s(Z,X)) = Z)))",
+   "![X]: (![Y]: (![Z]: (s(s(s(X,Y),Z),s(Z,Y)) = Z)))",
+   "![X]: (![Y]: (![Z]: (s(s(s(X,Y),Z),s(Z,Z)) = Z)))",
+   "![X]: (s(s(X,s(X,X)),X) = s(X,X))",
+   "![X]: (![Y]: (s(s(X,s(X,X)),Y) = s(Y,Y)))",
+   "![X]: (![Y]: (s(s(X,s(X,Y)),X) = s(X,Y)))",
+   "![X]: (![Y]: (s(s(X,s(X,Y)),X) = s(Y,X)))",
+   "![X]: (![Y]: (s(s(X,s(X,Y)),Y) = s(Y,Y)))",
+   "![X]: (![Y]: (s(s(X,s(Y,X)),X) = s(Y,X)))",
+   "![X]: (![Y]: (s(s(X,s(Y,X)),Y) = s(Y,Y)))",
+   "![X]: (![Y]: (s(s(X,s(Y,Y)),X) = s(X,Y)))",
+   "![X]: (![Y]: (s(s(X,s(Y,Y)),X) = s(Y,X)))",
+   "![X]: (![Y]: (s(s(X,s(Y,Y)),Y) = s(Y,Y)))",
+   "![X]: (![Y]: (s(s(X,X),X) = s(s(Y,Y),Y)))",
+   "![X]: (s(s(X,X),X) = s(X,s(X,X)))",
+   "![X]: (![Y]: (s(s(X,X),X) = s(Y,s(Y,Y))))",
+   "![X]: (![Y]: (s(s(X,X),Y) = s(s(X,Y),Y)))",
+   "![X]: (![Y]: (s(s(X,X),Y) = s(s(Y,X),Y)))",
+   "![X]: (![Y]: (s(s(X,X),Y) = s(Y,s(X,X))))",
+   "![X]: (![Y]: (s(s(X,X),Y) = s(Y,s(X,Y))))",
+   "![X]: (![Y]: (s(s(X,X),Y) = s(Y,s(Y,X))))",
+   "![X]: (![Y]: (s(s(X,Y),X) = s(s(Y,X),X)))",
+   "![X]: (![Y]: (s(s(X,Y),X) = s(X,s(X,Y))))",
+   "![X]: (![Y]: (s(s(X,Y),X) = s(X,s(Y,X))))",
+   "![X]: (![Y]: (s(s(X,Y),X) = s(X,s(Y,Y))))",
+   "![X]: (![Y]: (s(s(X,Y),Y) = s(Y,s(X,X))))",
+   "![X]: (![Y]: (s(s(X,Y),Y) = s(Y,s(X,Y))))",
+   "![X]: (![Y]: (s(s(X,Y),Y) = s(Y,s(Y,X))))",
+   "![X]: (![Y]: (![Z]: (s(s(X,Y),Z) = s(s(Y,X),Z))))",
+   "![X]: (![Y]: (![Z]: (s(s(X,Y),Z) = s(Z,s(X,Y)))))",
+   "![X]: (![Y]: (![Z]: (s(s(X,Y),Z) = s(Z,s(Y,X)))))",
+   "![X]: (s(X,s(s(X,X),X)) = s(X,X))",
+   "![X]: (![Y]: (s(X,s(s(X,X),Y)) = s(X,X)))",
+   "![X]: (![Y]: (s(X,s(s(X,Y),X)) = s(X,Y)))",
+   "![X]: (![Y]: (s(X,s(s(X,Y),X)) = s(Y,X)))",
+   "![X]: (![Y]: (s(X,s(s(X,Y),Y)) = s(X,X)))",
+   "![X]: (![Y]: (s(X,s(s(Y,X),X)) = s(X,Y)))",
+   "![X]: (![Y]: (s(X,s(s(Y,X),Y)) = s(X,X)))",
+   "![X]: (![Y]: (s(X,s(s(Y,Y),X)) = s(X,Y)))",
+   "![X]: (![Y]: (s(X,s(s(Y,Y),X)) = s(Y,X)))",
+   "![X]: (![Y]: (s(X,s(s(Y,Y),Y)) = s(X,X)))",
+   "![X]: (s(X,s(X,s(X,X))) = s(X,X))",
+   "![X]: (![Y]: (s(X,s(X,s(Y,X))) = s(X,Y)))",
+   "![X]: (![Y]: (s(X,s(X,s(Y,X))) = s(Y,X)))",
+   "![X]: (![Y]: (s(X,s(X,s(Y,Y))) = s(X,Y)))",
+   "![X]: (![Y]: (s(X,s(X,s(Y,Y))) = s(Y,X)))",
+   "![X]: (![Y]: (s(X,s(X,X)) = s(Y,s(Y,Y))))",
+   "![X]: (![Y]: (s(X,s(X,Y)) = s(X,s(Y,X))))",
+   "![X]: (![Y]: (s(X,s(X,Y)) = s(X,s(Y,Y))))",
+   "![X]: (![Y]: (s(X,s(Y,s(X,X))) = s(X,X)))",
+   "![X]: (![Y]: (s(X,s(Y,s(X,Y))) = s(X,X)))",
+   "![X]: (![Y]: (s(X,s(Y,s(Y,X))) = s(X,X)))",
+   "![X]: (![Y]: (s(X,s(Y,s(Y,Y))) = s(X,X)))",
+   "![X]: (![Y]: (s(X,s(Y,X)) = s(X,s(Y,Y))))",
+   "![X]: (![Y]: (![Z]: (s(X,s(Y,Z)) = s(X,s(Z,Y)))))",
+   "![X]: (![Y]: (s(s(s(X,X),s(X,X)),Y) = s(X,Y)))",
+   "![X]: (![Y]: (s(s(s(X,X),s(X,Y)),X) = s(X,X)))",
+   "![X]: (![Y]: (![Z]: (s(s(s(X,X),s(Y,X)),Z) = s(X,Z))))",
+   "![X]: (![Y]: (s(s(s(X,Y),s(X,Y)),X) = s(X,Y)))",
+   "![X]: (![Y]: (s(s(s(X,Y),s(X,Y)),Y) = s(X,Y)))",
+   "![X]: (![Y]: (![Z]: (s(s(s(X,Y),s(X,Z)),Y) = s(X,Y))))"
+  ],
+  "outcomes": [
+   [
+    "![X]: (s(s(X,X),s(X,X)) = X)",
+    "PROVED",
+    2.55
+   ],
+   [
+    "![X]: (![Y]: (s(s(X,X),s(X,Y)) = X))",
+    "PROVED",
+    0.436
+   ],
+   [
+    "![X]: (![Y]: (s(s(X,X),s(Y,X)) = X))",
+    "PROVED",
+    0.005
+   ],
+   [
+    "![X]: (![Y]: (s(s(X,Y),s(X,X)) = X))",
+    "PROVED",
+    0.006
+   ],
+   [
+    "![X]: (![Y]: (s(s(X,Y),s(Y,Y)) = Y))",
+    "PROVED",
+    0.005
+   ],
+   [
+    "![X]: (s(s(s(X,X),X),s(X,X)) = X)",
+    "PROVED",
+    0.004
+   ],
+   [
+    "![X]: (![Y]: (s(s(s(X,X),X),s(Y,Y)) = Y))",
+    "PROVED",
+    0.802
+   ],
+   [
+    "![X]: (s(s(s(X,X),X),X) = s(X,X))",
+    "PROVED",
+    0.005
+   ],
+   [
+    "![X]: (![Y]: (s(s(s(X,X),X),Y) = s(Y,Y)))",
+    "PROVED",
+    0.005
+   ],
+   [
+    "![X]: (![Y]: (s(s(s(X,X),Y),s(X,Y)) = Y))",
+    "PROVED",
+    0.057
+   ],
+   [
+    "![X]: (![Y]: (s(s(s(X,X),Y),s(Y,X)) = Y))",
+    "PROVED",
+    0.007
+   ],
+   [
+    "![X]: (![Y]: (s(s(s(X,X),Y),s(Y,Y)) = Y))",
+    "PROVED",
+    0.005
+   ],
+   [
+    "![X]: (![Y]: (s(s(s(X,X),Y),X) = s(X,X)))",
+    "PROVED",
+    0.009
+   ],
+   [
+    "![X]: (![Y]: (s(s(s(X,X),Y),Y) = s(X,Y)))",
+    "PROVED",
+    0.025
+   ],
+   [
+    "![X]: (![Y]: (s(s(s(X,X),Y),Y) = s(Y,X)))",
+    "PROVED",
+    0.014
+   ],
+   [
+    "![X]: (![Y]: (s(s(s(X,Y),X),s(X,X)) = X))",
+    "PROVED",
+    0.004
+   ],
+   [
+    "![X]: (![Y]: (s(s(s(X,Y),X),s(X,Y)) = X))",
+    "PROVED",
+    0.006
+   ],
+   [
+    "![X]: (![Y]: (s(s(s(X,Y),X),s(Y,X)) = X))",
+    "PROVED",
+    0.004
+   ],
+   [
+    "![X]: (![Y]: (s(s(s(X,Y),X),X) = s(X,Y)))",
+    "PROVED",
+    0.007
+   ],
+   [
+    "![X]: (![Y]: (s(s(s(X,Y),X),X) = s(Y,X)))",
+    "PROVED",
+    0.01
+   ],
+   [
+    "![X]: (![Y]: (s(s(s(X,Y),X),Y) = s(Y,Y)))",
+    "PROVED",
+    0.029
+   ],
+   [
+    "![X]: (![Y]: (s(s(s(X,Y),Y),s(X,Y)) = Y))",
+    "PROVED",
+    0.004
+   ],
+   [
+    "![X]: (![Y]: (s(s(s(X,Y),Y),s(Y,X)) = Y))",
+    "PROVED",
+    0.005
+   ],
+   [
+    "![X]: (![Y]: (s(s(s(X,Y),Y),s(Y,Y)) = Y))",
+    "PROVED",
+    0.005
+   ],
+   [
+    "![X]: (![Y]: (s(s(s(X,Y),Y),X) = s(X,X)))",
+    "PROVED",
+    0.013
+   ],
+   [
+    "![X]: (![Y]: (s(s(s(X,Y),Y),Y) = s(X,Y)))",
+    "PROVED",
+    0.005
+   ],
+   [
+    "![X]: (![Y]: (![Z]: (s(s(s(X,Y),Z),s(X,Z)) = Z)))",
+    "PROVED",
+    0.006
+   ],
+   [
+    "![X]: (![Y]: (![Z]: (s(s(s(X,Y),Z),s(Y,Z)) = Z)))",
+    "PROVED",
+    0.008
+   ],
+   [
+    "![X]: (![Y]: (![Z]: (s(s(s(X,Y),Z),s(Z,X)) = Z)))",
+    "PROVED",
+    0.008
+   ],
+   [
+    "![X]: (![Y]: (![Z]: (s(s(s(X,Y),Z),s(Z,Y)) = Y)))",
+    "FALSE",
+    null
+   ],
+   [
+    "![X]: (![Y]: (![Z]: (s(s(s(X,Y),Z),s(Z,Y)) = Z)))",
+    "PROVED",
+    0.006
+   ],
+   [
+    "![X]: (![Y]: (![Z]: (s(s(s(X,Y),Z),s(Z,Z)) = Z)))",
+    "PROVED",
+    0.004
+   ],
+   [
+    "![X]: (s(s(X,s(X,X)),X) = s(X,X))",
+    "PROVED",
+    0.004
+   ],
+   [
+    "![X]: (![Y]: (s(s(X,s(X,X)),Y) = s(Y,Y)))",
+    "PROVED",
+    0.004
+   ],
+   [
+    "![X]: (![Y]: (s(s(X,s(X,Y)),X) = s(X,Y)))",
+    "PROVED",
+    0.008
+   ],
+   [
+    "![X]: (![Y]: (s(s(X,s(X,Y)),X) = s(Y,X)))",
+    "PROVED",
+    0.014
+   ],
+   [
+    "![X]: (![Y]: (s(s(X,s(X,Y)),Y) = s(Y,Y)))",
+    "PROVED",
+    0.004
+   ],
+   [
+    "![X]: (![Y]: (s(s(X,s(Y,X)),X) = s(Y,X)))",
+    "PROVED",
+    0.005
+   ],
+   [
+    "![X]: (![Y]: (s(s(X,s(Y,X)),Y) = s(Y,Y)))",
+    "PROVED",
+    0.007
+   ],
+   [
+    "![X]: (![Y]: (s(s(X,s(Y,Y)),X) = s(X,Y)))",
+    "PROVED",
+    0.022
+   ],
+   [
+    "![X]: (![Y]: (s(s(X,s(Y,Y)),X) = s(Y,X)))",
+    "PROVED",
+    0.008
+   ],
+   [
+    "![X]: (![Y]: (s(s(X,s(Y,Y)),Y) = s(Y,Y)))",
+    "PROVED",
+    0.005
+   ],
+   [
+    "![X]: (![Y]: (s(s(X,X),X) = s(s(Y,Y),Y)))",
+    "PROVED",
+    0.049
+   ],
+   [
+    "![X]: (s(s(X,X),X) = s(X,s(X,X)))",
+    "PROVED",
+    0.006
+   ],
+   [
+    "![X]: (![Y]: (s(s(X,X),X) = s(Y,s(Y,Y))))",
+    "PROVED",
+    0.004
+   ],
+   [
+    "![X]: (![Y]: (s(s(X,X),Y) = s(s(X,Y),Y)))",
+    "PROVED",
+    0.009
+   ],
+   [
+    "![X]: (![Y]: (s(s(X,X),Y) = s(s(Y,X),Y)))",
+    "PROVED",
+    0.004
+   ],
+   [
+    "![X]: (![Y]: (s(s(X,X),Y) = s(Y,s(X,X))))",
+    "PROVED",
+    0.004
+   ],
+   [
+    "![X]: (![Y]: (s(s(X,X),Y) = s(Y,s(X,Y))))",
+    "PROVED",
+    0.006
+   ],
+   [
+    "![X]: (![Y]: (s(s(X,X),Y) = s(Y,s(Y,X))))",
+    "PROVED",
+    0.005
+   ],
+   [
+    "![X]: (![Y]: (![Z]: (s(s(X,Y),s(s(X,Y),Z)) = Z)))",
+    "FALSE",
+    null
+   ],
+   [
+    "![X]: (![Y]: (s(s(X,Y),X) = s(s(Y,X),X)))",
+    "PROVED",
+    0.004
+   ],
+   [
+    "![X]: (![Y]: (![Z]: (s(s(X,Y),X) = s(s(Y,X),Z))))",
+    "FALSE",
+    null
+   ],
+   [
+    "![X]: (![Y]: (s(s(X,Y),X) = s(X,s(X,Y))))",
+    "PROVED",
+    0.005
+   ],
+   [
+    "![X]: (![Y]: (s(s(X,Y),X) = s(X,s(Y,X))))",
+    "PROVED",
+    0.004
+   ],
+   [
+    "![X]: (![Y]: (s(s(X,Y),X) = s(X,s(Y,Y))))",
+    "PROVED",
+    0.006
+   ],
+   [
+    "![X]: (![Y]: (s(s(X,Y),Y) = s(Y,s(X,X))))",
+    "PROVED",
+    0.004
+   ],
+   [
+    "![X]: (![Y]: (s(s(X,Y),Y) = s(Y,s(X,Y))))",
+    "PROVED",
+    0.004
+   ],
+   [
+    "![X]: (![Y]: (s(s(X,Y),Y) = s(Y,s(Y,X))))",
+    "PROVED",
+    0.004
+   ],
+   [
+    "![X]: (![Y]: (![Z]: (s(s(X,Y),Z) = s(s(Y,X),Z))))",
+    "PROVED",
+    0.007
+   ],
+   [
+    "![X]: (![Y]: (![Z]: (s(s(X,Y),Z) = s(Z,s(X,Y)))))",
+    "PROVED",
+    0.008
+   ],
+   [
+    "![X]: (![Y]: (![Z]: (s(s(X,Y),Z) = s(Z,s(Y,X)))))",
+    "PROVED",
+    0.004
+   ],
+   [
+    "![X]: (s(X,s(s(X,X),X)) = s(X,X))",
+    "PROVED",
+    0.006
+   ],
+   [
+    "![X]: (![Y]: (s(X,s(s(X,X),Y)) = s(X,X)))",
+    "PROVED",
+    0.007
+   ],
+   [
+    "![X]: (![Y]: (s(X,s(s(X,Y),X)) = s(X,Y)))",
+    "PROVED",
+    0.005
+   ],
+   [
+    "![X]: (![Y]: (s(X,s(s(X,Y),X)) = s(Y,X)))",
+    "PROVED",
+    0.004
+   ],
+   [
+    "![X]: (![Y]: (s(X,s(s(X,Y),Y)) = s(X,X)))",
+    "PROVED",
+    0.006
+   ],
+   [
+    "![X]: (![Y]: (s(X,s(s(Y,X),X)) = s(X,Y)))",
+    "PROVED",
+    0.005
+   ],
+   [
+    "![X]: (![Y]: (s(X,s(s(Y,X),Y)) = s(X,X)))",
+    "PROVED",
+    0.006
+   ],
+   [
+    "![X]: (![Y]: (s(X,s(s(Y,Y),X)) = s(X,Y)))",
+    "PROVED",
+    0.009
+   ],
+   [
+    "![X]: (![Y]: (s(X,s(s(Y,Y),X)) = s(Y,X)))",
+    "PROVED",
+    0.005
+   ],
+   [
+    "![X]: (![Y]: (s(X,s(s(Y,Y),Y)) = s(X,X)))",
+    "PROVED",
+    0.005
+   ],
+   [
+    "![X]: (s(X,s(X,s(X,X))) = s(X,X))",
+    "PROVED",
+    0.005
+   ],
+   [
+    "![X]: (![Y]: (s(X,s(X,s(Y,X))) = s(X,Y)))",
+    "PROVED",
+    0.005
+   ],
+   [
+    "![X]: (![Y]: (s(X,s(X,s(Y,X))) = s(Y,X)))",
+    "PROVED",
+    0.005
+   ],
+   [
+    "![X]: (![Y]: (s(X,s(X,s(Y,Y))) = s(X,Y)))",
+    "PROVED",
+    0.005
+   ],
+   [
+    "![X]: (![Y]: (s(X,s(X,s(Y,Y))) = s(Y,X)))",
+    "PROVED",
+    0.007
+   ],
+   [
+    "![X]: (![Y]: (s(X,s(X,X)) = s(Y,s(Y,Y))))",
+    "PROVED",
+    0.005
+   ],
+   [
+    "![X]: (![Y]: (s(X,s(X,Y)) = s(X,s(Y,X))))",
+    "PROVED",
+    0.004
+   ],
+   [
+    "![X]: (![Y]: (s(X,s(X,Y)) = s(X,s(Y,Y))))",
+    "PROVED",
+    0.004
+   ],
+   [
+    "![X]: (![Y]: (s(X,s(Y,s(X,X))) = s(X,X)))",
+    "PROVED",
+    0.004
+   ],
+   [
+    "![X]: (![Y]: (s(X,s(Y,s(X,Y))) = s(X,X)))",
+    "PROVED",
+    0.004
+   ],
+   [
+    "![X]: (![Y]: (s(X,s(Y,s(Y,X))) = s(X,X)))",
+    "PROVED",
+    0.021
+   ],
+   [
+    "![X]: (![Y]: (s(X,s(Y,s(Y,Y))) = s(X,X)))",
+    "PROVED",
+    0.005
+   ],
+   [
+    "![X]: (![Y]: (s(X,s(Y,X)) = s(X,s(Y,Y))))",
+    "PROVED",
+    0.004
+   ],
+   [
+    "![X]: (![Y]: (![Z]: (s(X,s(Y,Z)) = s(X,s(Z,Y)))))",
+    "PROVED",
+    0.004
+   ],
+   [
+    "![X]: (![Y]: (s(s(s(s(s(X,X),Y),X),X),X) = X))",
+    "FALSE",
+    null
+   ],
+   [
+    "![X]: (![Y]: (![Z]: (s(s(s(s(s(X,Y),Z),X),Y),Y) = X)))",
+    "FALSE",
+    null
+   ],
+   [
+    "![X]: (![Y]: (![Z]: (s(s(s(s(s(X,Y),Z),Z),X),Z) = Y)))",
+    "FALSE",
+    null
+   ],
+   [
+    "![X]: (![Y]: (![Z]: (s(s(s(s(X,Y),Y),X),s(X,Z)) = Z)))",
+    "FALSE",
+    null
+   ],
+   [
+    "![X]: (![Y]: (![Z]: (s(s(s(s(X,Y),Z),X),s(Y,Z)) = Y)))",
+    "FALSE",
+    null
+   ],
+   [
+    "![X]: (![Y]: (![Z]: (s(s(s(X,s(s(Y,Z),X)),X),Z) = Z)))",
+    "FALSE",
+    null
+   ],
+   [
+    "![X]: (![Y]: (s(s(s(X,X),s(X,X)),Y) = s(X,Y)))",
+    "PROVED",
+    0.005
+   ],
+   [
+    "![X]: (![Y]: (s(s(s(X,X),s(X,Y)),X) = s(X,X)))",
+    "PROVED",
+    0.005
+   ],
+   [
+    "![X]: (![Y]: (![Z]: (s(s(s(X,X),s(Y,X)),Z) = s(X,Z))))",
+    "PROVED",
+    0.005
+   ],
+   [
+    "![X]: (![Y]: (![Z]: (s(s(s(X,X),Y),s(s(Z,X),Z)) = Z)))",
+    "FALSE",
+    null
+   ],
+   [
+    "![X]: (![Y]: (![Z]: (s(s(s(X,Y),s(s(X,Z),Y)),X) = X)))",
+    "FALSE",
+    null
+   ],
+   [
+    "![X]: (![Y]: (s(s(s(X,Y),s(X,Y)),X) = s(X,Y)))",
+    "PROVED",
+    0.022
+   ],
+   [
+    "![X]: (![Y]: (s(s(s(X,Y),s(X,Y)),Y) = s(X,Y)))",
+    "PROVED",
+    0.004
+   ],
+   [
+    "![X]: (![Y]: (![Z]: (s(s(s(X,Y),s(X,Z)),Y) = s(X,Y))))",
+    "PROVED",
+    0.012
+   ],
+   [
+    "![X]: (![Y]: (![Z]: (s(s(s(X,Y),s(Y,Y)),Z) = s(Y,X))))",
+    "FALSE",
+    null
+   ],
+   [
+    "![X]: (![Y]: (![Z]: (s(s(s(X,Y),s(Z,s(X,X))),Y) = Y)))",
+    "FALSE",
+    null
+   ],
+   [
+    "![X]: (![Y]: (![Z]: (s(s(s(X,Y),s(Z,s(Y,X))),Y) = Z)))",
+    "FALSE",
+    null
+   ],
+   [
+    "![X]: (![Y]: (![Z]: (s(s(s(X,Y),Z),Z) = s(X,s(X,Z)))))",
+    "FALSE",
+    null
+   ],
+   [
+    "![X]: (![Y]: (s(s(X,s(X,Y)),s(s(X,Y),X)) = Y))",
+    "FALSE",
+    null
+   ],
+   [
+    "![X]: (![Y]: (![Z]: (s(s(X,s(X,Y)),s(Z,s(X,Z))) = X)))",
+    "FALSE",
+    null
+   ],
+   [
+    "![X]: (![Y]: (s(s(X,s(Y,X)),s(X,s(Y,Y))) = X))",
+    "FALSE",
+    null
+   ],
+   [
+    "![X]: (![Y]: (![Z]: (s(s(X,X),s(s(s(X,Y),X),X)) = Z)))",
+    "FALSE",
+    null
+   ],
+   [
+    "![X]: (![Y]: (![Z]: (s(s(X,X),Y) = s(s(Z,X),s(X,Y)))))",
+    "FALSE",
+    null
+   ],
+   [
+    "![X]: (![Y]: (![Z]: (s(s(X,Y),s(s(X,Y),s(Y,Z))) = X)))",
+    "FALSE",
+    null
+   ],
+   [
+    "![X]: (![Y]: (![Z]: (s(s(X,Y),Y) = s(Z,s(s(Z,X),Y)))))",
+    "FALSE",
+    null
+   ],
+   [
+    "![X]: (![Y]: (![Z]: (s(X,s(s(s(s(Y,X),X),Z),X)) = X)))",
+    "FALSE",
+    null
+   ],
+   [
+    "![X]: (![Y]: (![Z]: (s(X,s(s(s(X,s(Y,Z)),Z),Z)) = Y)))",
+    "FALSE",
+    null
+   ],
+   [
+    "![X]: (![Y]: (s(X,s(s(X,s(s(X,Y),X)),X)) = X))",
+    "FALSE",
+    null
+   ],
+   [
+    "![X]: (![Y]: (![Z]: (s(X,s(s(X,s(s(Y,Y),Z)),Y)) = X)))",
+    "FALSE",
+    null
+   ],
+   [
+    "![X]: (![Y]: (s(X,s(s(X,Y),s(s(X,X),X))) = X))",
+    "FALSE",
+    null
+   ],
+   [
+    "![X]: (![Y]: (![Z]: (s(X,s(s(Y,s(s(Y,X),X)),Y)) = Z)))",
+    "FALSE",
+    null
+   ],
+   [
+    "![X]: (![Y]: (![Z]: (s(X,s(s(Y,Y),s(X,s(Z,Y)))) = Y)))",
+    "FALSE",
+    null
+   ],
+   [
+    "![X]: (![Y]: (![Z]: (s(X,s(Y,s(s(s(X,Y),Y),Z))) = Z)))",
+    "FALSE",
+    null
+   ]
+  ],
+  "stop_reason": null,
+  "untried": 0
+ },
+ "oracle": {
+  "cost_s": 4.323,
+  "lemma_use": {
+   "L0": 2,
+   "L19": 1,
+   "L23": 2,
+   "L25": 1,
+   "L33": 2,
+   "L34": 3,
+   "L4": 1,
+   "L40": 1,
+   "L44": 2,
+   "L46": 2,
+   "L48": 1,
+   "L49": 1,
+   "L50": 2,
+   "L51": 2,
+   "L52": 1,
+   "L53": 1,
+   "L54": 1,
+   "L55": 1,
+   "L61": 2,
+   "L62": 2,
+   "L63": 2,
+   "L64": 1,
+   "L65": 1,
+   "L66": 1,
+   "L67": 1,
+   "L68": 2,
+   "L70": 1,
+   "L71": 1,
+   "L72": 2,
+   "L73": 3,
+   "L76": 2,
+   "L79": 1,
+   "L81": 1
+  },
+  "library": [
+   "![X]: (s(s(X,X),s(X,X)) = X)",
+   "![X]: (![Y]: (s(s(X,X),s(X,Y)) = X))",
+   "![X]: (![Y]: (s(s(X,X),s(Y,X)) = X))",
+   "![X]: (![Y]: (s(s(X,Y),s(X,X)) = X))",
+   "![X]: (![Y]: (s(s(X,Y),s(Y,Y)) = Y))",
+   "![X]: (![Y]: (s(s(s(X,X),X),s(Y,Y)) = Y))",
+   "![X]: (![Y]: (s(s(s(X,X),X),Y) = s(Y,Y)))",
+   "![X]: (![Y]: (s(s(s(X,X),Y),s(X,Y)) = Y))",
+   "![X]: (![Y]: (s(s(s(X,X),Y),s(Y,X)) = Y))",
+   "![X]: (![Y]: (s(s(s(X,X),Y),s(Y,Y)) = Y))",
+   "![X]: (![Y]: (s(s(s(X,X),Y),X) = s(X,X)))",
+   "![X]: (![Y]: (s(s(s(X,X),Y),Y) = s(X,Y)))",
+   "![X]: (![Y]: (s(s(s(X,X),Y),Y) = s(Y,X)))",
+   "![X]: (![Y]: (s(s(s(X,Y),X),s(X,X)) = X))",
+   "![X]: (![Y]: (s(s(s(X,Y),X),s(X,Y)) = X))",
+   "![X]: (![Y]: (s(s(s(X,Y),X),s(Y,X)) = X))",
+   "![X]: (![Y]: (s(s(s(X,Y),X),X) = s(X,Y)))",
+   "![X]: (![Y]: (s(s(s(X,Y),X),X) = s(Y,X)))",
+   "![X]: (![Y]: (s(s(s(X,Y),X),Y) = s(Y,Y)))",
+   "![X]: (![Y]: (s(s(s(X,Y),Y),s(Y,X)) = Y))",
+   "![X]: (![Y]: (s(s(s(X,Y),Y),s(Y,Y)) = Y))",
+   "![X]: (![Y]: (s(s(s(X,Y),Y),X) = s(X,X)))",
+   "![X]: (![Y]: (s(s(s(X,Y),Y),Y) = s(X,Y)))",
+   "![X]: (![Y]: (![Z]: (s(s(s(X,Y),Z),s(Y,Z)) = Z)))",
+   "![X]: (![Y]: (![Z]: (s(s(s(X,Y),Z),s(Z,X)) = Z)))",
+   "![X]: (![Y]: (![Z]: (s(s(s(X,Y),Z),s(Z,Y)) = Z)))",
+   "![X]: (![Y]: (s(s(X,s(X,X)),Y) = s(Y,Y)))",
+   "![X]: (![Y]: (s(s(X,s(X,Y)),X) = s(X,Y)))",
+   "![X]: (![Y]: (s(s(X,s(X,Y)),X) = s(Y,X)))",
+   "![X]: (![Y]: (s(s(X,s(X,Y)),Y) = s(Y,Y)))",
+   "![X]: (![Y]: (s(s(X,s(Y,X)),X) = s(Y,X)))",
+   "![X]: (![Y]: (s(s(X,s(Y,X)),Y) = s(Y,Y)))",
+   "![X]: (![Y]: (s(s(X,s(Y,Y)),X) = s(X,Y)))",
+   "![X]: (![Y]: (s(s(X,s(Y,Y)),X) = s(Y,X)))",
+   "![X]: (![Y]: (s(s(X,s(Y,Y)),Y) = s(Y,Y)))",
+   "![X]: (![Y]: (s(s(X,X),X) = s(s(Y,Y),Y)))",
+   "![X]: (![Y]: (s(s(X,X),Y) = s(s(X,Y),Y)))",
+   "![X]: (![Y]: (s(s(X,X),Y) = s(s(Y,X),Y)))",
+   "![X]: (![Y]: (s(s(X,X),Y) = s(Y,s(X,X))))",
+   "![X]: (![Y]: (s(s(X,X),Y) = s(Y,s(X,Y))))",
+   "![X]: (![Y]: (s(s(X,X),Y) = s(Y,s(Y,X))))",
+   "![X]: (![Y]: (s(s(X,Y),X) = s(s(Y,X),X)))",
+   "![X]: (![Y]: (s(s(X,Y),X) = s(X,s(X,Y))))",
+   "![X]: (![Y]: (s(s(X,Y),X) = s(X,s(Y,X))))",
+   "![X]: (![Y]: (s(s(X,Y),X) = s(X,s(Y,Y))))",
+   "![X]: (![Y]: (s(s(X,Y),Y) = s(Y,s(X,X))))",
+   "![X]: (![Y]: (s(s(X,Y),Y) = s(Y,s(X,Y))))",
+   "![X]: (![Y]: (s(s(X,Y),Y) = s(Y,s(Y,X))))",
+   "![X]: (s(X,s(s(X,X),X)) = s(X,X))",
+   "![X]: (![Y]: (s(X,s(s(X,Y),X)) = s(X,Y)))",
+   "![X]: (![Y]: (s(X,s(s(X,Y),X)) = s(Y,X)))",
+   "![X]: (![Y]: (s(X,s(s(X,Y),Y)) = s(X,X)))",
+   "![X]: (![Y]: (s(X,s(s(Y,X),X)) = s(X,Y)))",
+   "![X]: (![Y]: (s(X,s(s(Y,X),Y)) = s(X,X)))",
+   "![X]: (![Y]: (s(X,s(s(Y,Y),X)) = s(X,Y)))",
+   "![X]: (![Y]: (s(X,s(s(Y,Y),X)) = s(Y,X)))",
+   "![X]: (![Y]: (s(X,s(s(Y,Y),Y)) = s(X,X)))",
+   "![X]: (![Y]: (s(X,s(X,s(Y,X))) = s(X,Y)))",
+   "![X]: (![Y]: (s(X,s(X,s(Y,X))) = s(Y,X)))",
+   "![X]: (![Y]: (s(X,s(X,s(Y,Y))) = s(X,Y)))",
+   "![X]: (![Y]: (s(X,s(X,s(Y,Y))) = s(Y,X)))",
+   "![X]: (![Y]: (s(X,s(X,Y)) = s(X,s(Y,Y))))",
+   "![X]: (![Y]: (s(X,s(Y,s(Y,X))) = s(X,X)))",
+   "![X]: (![Y]: (s(X,s(Y,X)) = s(X,s(Y,Y))))"
+  ],
+  "proved": 13,
+  "statuses": [
+   "RESOURCE_OUT",
+   "PROVED",
+   "PROVED",
+   "PROVED",
+   "PROVED",
+   "PROVED",
+   "PROVED",
+   "PROVED",
+   "PROVED",
+   "PROVED",
+   "PROVED",
+   "PROVED",
+   "PROVED",
+   "PROVED",
+   "RESOURCE_OUT"
+  ]
+ },
+ "pool": [
+  "![X]: (![Y]: (s(s(X,X),s(X,Y)) = X))",
+  "![X]: (![Y]: (s(s(X,X),s(Y,X)) = X))",
+  "![X]: (![Y]: (s(s(X,Y),s(X,X)) = X))",
+  "![X]: (![Y]: (s(s(X,Y),s(Y,Y)) = Y))",
+  "![X]: (s(s(s(X,X),X),s(X,X)) = X)",
+  "![X]: (![Y]: (s(s(s(X,Y),X),s(X,X)) = X))",
+  "![X]: (![Y]: (s(s(s(X,Y),X),s(X,Y)) = X))",
+  "![X]: (![Y]: (s(s(s(X,Y),X),s(Y,X)) = X))",
+  "![X]: (s(s(X,X),s(X,X)) = X)",
+  "![X]: (![Y]: (s(s(s(X,X),X),s(Y,Y)) = Y))",
+  "![X]: (![Y]: (s(s(s(X,X),Y),s(X,Y)) = Y))",
+  "![X]: (![Y]: (s(s(s(X,X),Y),s(Y,Y)) = Y))",
+  "![X]: (![Y]: (s(s(s(X,Y),Y),s(X,Y)) = Y))",
+  "![X]: (![Y]: (s(s(s(X,Y),Y),s(Y,X)) = Y))",
+  "![X]: (![Y]: (![Z]: (s(s(s(X,Y),Z),s(X,Z)) = Z)))",
+  "![X]: (![Y]: (![Z]: (s(s(s(X,Y),Z),s(Z,Z)) = Z)))",
+  "![X]: (![Y]: (s(s(s(X,X),Y),s(Y,X)) = Y))",
+  "![X]: (![Y]: (![Z]: (s(s(s(X,Y),Z),s(Y,Z)) = Z)))",
+  "![X]: (![Y]: (![Z]: (s(s(s(X,Y),Z),s(Z,X)) = Z)))",
+  "![X]: (![Y]: (s(s(s(X,Y),Y),s(Y,Y)) = Y))",
+  "![X]: (![Y]: (![Z]: (s(s(s(X,Y),Z),s(Z,Y)) = Z)))",
+  "![X]: (![Y]: (s(s(s(X,X),X),Y) = s(Y,Y)))",
+  "![X]: (![Y]: (s(s(s(X,Y),X),Y) = s(Y,Y)))",
+  "![X]: (![Y]: (s(s(s(X,Y),Y),X) = s(X,X)))",
+  "![X]: (![Y]: (s(s(s(X,X),Y),X) = s(X,X)))",
+  "![X]: (s(s(s(X,X),X),X) = s(X,X))",
+  "![X]: (![Y]: (s(s(X,s(X,X)),Y) = s(Y,Y)))",
+  "![X]: (![Y]: (s(s(X,s(X,Y)),Y) = s(Y,Y)))",
+  "![X]: (![Y]: (s(s(X,s(Y,X)),Y) = s(Y,Y)))",
+  "![X]: (![Y]: (![Z]: (s(s(X,Y),Z) = s(s(Y,X),Z))))",
+  "![X]: (![Y]: (![Z]: (s(s(X,Y),Z) = s(Z,s(X,Y)))))",
+  "![X]: (![Y]: (![Z]: (s(s(X,Y),Z) = s(Z,s(Y,X)))))",
+  "![X]: (![Y]: (![Z]: (s(X,s(Y,Z)) = s(X,s(Z,Y)))))",
+  "![X]: (![Y]: (s(s(X,X),Y) = s(s(X,Y),Y)))",
+  "![X]: (![Y]: (s(s(X,X),Y) = s(s(Y,X),Y)))",
+  "![X]: (![Y]: (s(s(X,X),Y) = s(Y,s(X,X))))",
+  "![X]: (![Y]: (s(s(X,X),Y) = s(Y,s(X,Y))))",
+  "![X]: (![Y]: (s(s(X,X),Y) = s(Y,s(Y,X))))",
+  "![X]: (![Y]: (s(s(X,Y),X) = s(s(Y,X),X)))",
+  "![X]: (![Y]: (s(s(X,Y),Y) = s(Y,s(X,X))))",
+  "![X]: (![Y]: (s(s(X,Y),Y) = s(Y,s(X,Y))))",
+  "![X]: (![Y]: (s(s(X,Y),Y) = s(Y,s(Y,X))))",
+  "![X]: (![Y]: (s(s(X,Y),X) = s(X,s(Y,Y))))",
+  "![X]: (![Y]: (s(s(X,Y),X) = s(X,s(Y,X))))",
+  "![X]: (![Y]: (s(s(X,Y),X) = s(X,s(X,Y))))",
+  "![X]: (![Y]: (s(X,s(Y,X)) = s(X,s(Y,Y))))",
+  "![X]: (![Y]: (s(X,s(X,Y)) = s(X,s(Y,Y))))",
+  "![X]: (![Y]: (s(X,s(X,Y)) = s(X,s(Y,X))))",
+  "![X]: (![Y]: (s(s(X,s(Y,Y)),Y) = s(Y,Y)))",
+  "![X]: (s(s(X,s(X,X)),X) = s(X,X))",
+  "![X]: (![Y]: (s(X,s(s(Y,Y),Y)) = s(X,X)))",
+  "![X]: (![Y]: (s(X,s(s(Y,X),Y)) = s(X,X)))",
+  "![X]: (![Y]: (s(X,s(s(X,Y),Y)) = s(X,X)))",
+  "![X]: (![Y]: (s(X,s(s(X,X),Y)) = s(X,X)))",
+  "![X]: (![Y]: (s(X,s(Y,s(Y,Y))) = s(X,X)))",
+  "![X]: (![Y]: (s(X,s(Y,s(Y,X))) = s(X,X)))",
+  "![X]: (![Y]: (s(s(s(X,X),Y),Y) = s(X,Y)))",
+  "![X]: (![Y]: (s(s(X,s(X,Y)),X) = s(X,Y)))",
+  "![X]: (![Y]: (s(s(X,s(Y,X)),X) = s(Y,X)))",
+  "![X]: (![Y]: (s(X,s(s(X,Y),X)) = s(X,Y)))",
+  "![X]: (![Y]: (s(X,s(s(Y,X),X)) = s(X,Y)))",
+  "![X]: (![Y]: (s(X,s(s(Y,Y),X)) = s(X,Y)))",
+  "![X]: (![Y]: (s(X,s(X,s(Y,X))) = s(X,Y)))",
+  "![X]: (![Y]: (s(X,s(s(Y,Y),X)) = s(Y,X)))",
+  "![X]: (s(X,s(s(X,X),X)) = s(X,X))",
+  "![X]: (s(X,s(X,s(X,X))) = s(X,X))",
+  "![X]: (![Y]: (s(X,s(Y,s(X,X))) = s(X,X)))",
+  "![X]: (![Y]: (s(X,s(Y,s(X,Y))) = s(X,X)))",
+  "![X]: (![Y]: (s(s(s(X,X),s(X,Y)),X) = s(X,X)))",
+  "![X]: (![Y]: (s(s(s(X,Y),X),X) = s(X,Y)))",
+  "![X]: (![Y]: (s(s(s(X,Y),Y),Y) = s(X,Y)))",
+  "![X]: (![Y]: (s(s(X,s(Y,Y)),X) = s(X,Y)))",
+  "![X]: (![Y]: (s(s(X,s(X,Y)),X) = s(Y,X)))",
+  "![X]: (![Y]: (s(X,s(X,s(Y,Y))) = s(X,Y)))",
+  "![X]: (![Y]: (s(X,s(s(X,Y),X)) = s(Y,X)))",
+  "![X]: (![Y]: (s(s(s(X,X),Y),Y) = s(Y,X)))",
+  "![X]: (![Y]: (s(s(s(X,Y),X),X) = s(Y,X)))",
+  "![X]: (![Y]: (s(s(X,s(Y,Y)),X) = s(Y,X)))",
+  "![X]: (![Y]: (s(X,s(X,s(Y,X))) = s(Y,X)))",
+  "![X]: (![Y]: (s(X,s(X,s(Y,Y))) = s(Y,X)))",
+  "![X]: (![Y]: (s(s(s(X,X),s(X,X)),Y) = s(X,Y)))",
+  "![X]: (![Y]: (![Z]: (s(s(s(X,X),s(Y,X)),Z) = s(X,Z))))",
+  "![X]: (![Y]: (s(s(s(X,Y),s(X,Y)),X) = s(X,Y)))",
+  "![X]: (![Y]: (s(s(s(X,Y),s(X,Y)),Y) = s(X,Y)))",
+  "![X]: (![Y]: (![Z]: (s(s(s(X,Y),s(X,Z)),Y) = s(X,Y))))",
+  "![X]: (![Y]: (s(s(X,X),X) = s(s(Y,Y),Y)))",
+  "![X]: (s(s(X,X),X) = s(X,s(X,X)))",
+  "![X]: (![Y]: (s(s(X,X),X) = s(Y,s(Y,Y))))",
+  "![X]: (![Y]: (s(X,s(X,X)) = s(Y,s(Y,Y))))",
+  "![X]: (![Y]: (![Z]: (s(s(X,s(X,Y)),s(Z,s(X,Z))) = X)))",
+  "![X]: (![Y]: (![Z]: (s(X,s(Y,s(s(s(X,Y),Y),Z))) = Z)))",
+  "![X]: (![Y]: (![Z]: (s(s(s(X,Y),s(Y,Y)),Z) = s(Y,X))))",
+  "![X]: (![Y]: (![Z]: (s(X,s(s(s(X,s(Y,Z)),Z),Z)) = Y)))",
+  "![X]: (![Y]: (![Z]: (s(s(X,Y),Y) = s(Z,s(s(Z,X),Y)))))",
+  "![X]: (![Y]: (![Z]: (s(s(s(X,Y),Z),Z) = s(X,s(X,Z)))))",
+  "![X]: (![Y]: (![Z]: (s(X,s(s(Y,s(s(Y,X),X)),Y)) = Z)))",
+  "![X]: (![Y]: (![Z]: (s(s(X,X),s(s(s(X,Y),X),X)) = Z)))",
+  "![X]: (![Y]: (s(s(X,s(Y,X)),s(X,s(Y,Y))) = X))",
+  "![X]: (![Y]: (![Z]: (s(s(X,Y),X) = s(s(Y,X),Z))))",
+  "![X]: (![Y]: (![Z]: (s(s(X,Y),s(s(X,Y),Z)) = Z)))",
+  "![X]: (![Y]: (s(s(s(s(s(X,X),Y),X),X),X) = X))",
+  "![X]: (![Y]: (![Z]: (s(s(s(X,Y),Z),s(Z,Y)) = Y)))",
+  "![X]: (![Y]: (![Z]: (s(s(s(s(s(X,Y),Z),X),Y),Y) = X)))",
+  "![X]: (![Y]: (![Z]: (s(s(X,Y),s(s(X,Y),s(Y,Z))) = X)))",
+  "![X]: (![Y]: (![Z]: (s(s(X,X),Y) = s(s(Z,X),s(X,Y)))))",
+  "![X]: (![Y]: (s(s(X,s(X,Y)),s(s(X,Y),X)) = Y))",
+  "![X]: (![Y]: (s(X,s(s(X,Y),s(s(X,X),X))) = X))",
+  "![X]: (![Y]: (![Z]: (s(X,s(s(Y,Y),s(X,s(Z,Y)))) = Y)))",
+  "![X]: (![Y]: (![Z]: (s(X,s(s(s(s(Y,X),X),Z),X)) = X)))",
+  "![X]: (![Y]: (![Z]: (s(s(s(X,Y),s(s(X,Z),Y)),X) = X)))",
+  "![X]: (![Y]: (s(X,s(s(X,s(s(X,Y),X)),X)) = X))",
+  "![X]: (![Y]: (![Z]: (s(s(s(s(X,Y),Y),X),s(X,Z)) = Z)))",
+  "![X]: (![Y]: (![Z]: (s(s(s(s(X,Y),Z),X),s(Y,Z)) = Y)))",
+  "![X]: (![Y]: (![Z]: (s(s(s(X,Y),s(Z,s(Y,X))),Y) = Z)))",
+  "![X]: (![Y]: (![Z]: (s(s(s(X,X),Y),s(s(Z,X),Z)) = Z)))",
+  "![X]: (![Y]: (![Z]: (s(s(s(s(s(X,Y),Z),Z),X),Z) = Y)))",
+  "![X]: (![Y]: (![Z]: (s(s(s(X,Y),s(Z,s(X,X))),Y) = Y)))",
+  "![X]: (![Y]: (![Z]: (s(s(s(X,s(s(Y,Z),X)),X),Z) = Z)))",
+  "![X]: (![Y]: (![Z]: (s(X,s(s(X,s(s(Y,Y),Z)),Y)) = X)))"
+ ],
+ "pool_sha256": "dce5307878c47ac6011680bc349db6bb112ac270ecfd033816c24adb46967799",
+ "seed": 5303,
+ "status": "DESIGN_PILOT_DEV",
+ "targets": [
+  "![X]: (![Y]: (![Z]: (s(s(X,s(Y,X)),Z) = s(Z,s(X,s(Y,s(X,s(Z,Z))))))))",
+  "![X]: (![Y]: (![Z]: (s(X,s(s(Y,X),s(Z,Z))) = s(X,s(s(Z,Z),s(X,Y))))))",
+  "![X]: (![Y]: (![Z]: (s(s(X,X),s(s(Y,s(Z,Y)),Y)) = s(s(Y,Z),s(X,X)))))",
+  "![X]: (![Y]: (![Z]: (s(s(s(X,X),Y),s(Z,Z)) = s(s(s(Y,X),Y),s(Z,Z)))))",
+  "![X]: (![Y]: (![Z]: (s(s(X,s(X,s(X,Y))),s(Z,Z)) = s(s(Z,Z),s(X,Y)))))",
+  "![X]: (![Y]: (s(s(s(X,Y),s(s(X,Y),X)),Y) = s(s(Y,s(Y,X)),Y)))",
+  "![X]: (![Y]: (![Z]: (s(s(s(X,X),Y),s(Z,X)) = s(s(Y,s(X,X)),s(X,Z)))))",
+  "![X]: (![Y]: (![Z]: (s(s(s(s(s(X,Y),Y),Y),Y),X) = s(X,s(s(Z,Z),Z)))))",
+  "![X]: (![Y]: (s(s(X,X),s(s(s(Y,X),X),Y)) = s(s(Y,Y),s(X,X))))",
+  "![X]: (![Y]: (![Z]: (s(X,s(s(Y,Z),Y)) = s(X,s(Y,s(Z,s(s(X,Z),X)))))))",
+  "![X]: (![Y]: (![Z]: (s(X,s(s(X,s(Y,Y)),Z)) = s(X,s(Z,s(X,s(X,Y)))))))",
+  "![X]: (![Y]: (![Z]: (s(X,s(s(Y,s(Y,X)),X)) = s(Z,s(Z,s(Y,s(Y,Z)))))))",
+  "![X]: (![Y]: (s(s(X,X),s(Y,s(s(Y,Y),Y))) = s(s(X,X),s(Y,Y))))",
+  "![X]: (![Y]: (s(s(s(X,s(X,X)),Y),s(X,X)) = s(s(X,X),s(Y,Y))))",
+  "![X]: (![Y]: (![Z]: (s(X,s(s(X,s(Y,Z)),Y)) = s(X,s(Z,s(s(Y,Y),X))))))"
+ ],
+ "wall_s": 213.5
+}

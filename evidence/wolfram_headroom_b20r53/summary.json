@@ -1,0 +1,152 @@
+{
+ "caps": [
+  60,
+  30
+ ],
+ "ceiling_gap": [
+  4,
+  8,
+  3,
+  4
+ ],
+ "cheap_s": 1,
+ "claim": "none; a design diagnostic for GV4 and the GV6 equational target",
+ "exhaust_s": 1800,
+ "library_headroom": [
+  11,
+  7,
+  11,
+  11
+ ],
+ "mean_noise": 0,
+ "noise": [
+  0,
+  0,
+  0,
+  0
+ ],
+ "per_cap": {
+  "30": {
+   "gap_mean": 0.5,
+   "gap_minus_fixed": [
+    1,
+    0,
+    1,
+    0
+   ],
+   "mean": 0.5,
+   "passes": false,
+   "selection_headroom": [
+    1,
+    0,
+    1,
+    0
+   ]
+  },
+  "60": {
+   "gap_mean": 0.5,
+   "gap_minus_fixed": [
+    1,
+    0,
+    1,
+    0
+   ],
+   "mean": 0.5,
+   "passes": false,
+   "selection_headroom": [
+    1,
+    0,
+    1,
+    0
+   ]
+  }
+ },
+ "rule": {
+  "min_mean": 2,
+  "min_seed": 2,
+  "min_seeds": 3,
+  "noise_margin": 1,
+  "none_max": 1
+ },
+ "rules": {
+  "dev_targets": 10,
+  "eval_s": 3,
+  "eval_targets": 15,
+  "false_conjectures": 30,
+  "per_bucket": 8,
+  "pool_size": 5,
+  "premise_k": 8,
+  "prove_s": 10,
+  "target_range": [
+   5,
+   8
+  ]
+ },
+ "seeds": [
+  5301,
+  5302,
+  5303,
+  5304
+ ],
+ "status": "DESIGN_PILOT_DEV",
+ "system": "ba_wolfram",
+ "table": [
+  {
+   "empty": 0,
+   "exhaust": 11,
+   "exhaust_cpu_s": 9.119,
+   "fixed@30": 11,
+   "fixed@60": 11,
+   "gap@30": 12,
+   "gap@60": 12,
+   "oracle": 12,
+   "oracle@30": 12,
+   "oracle@60": 12,
+   "repeat@60": 11,
+   "seed": 5301
+  },
+  {
+   "empty": 0,
+   "exhaust": 7,
+   "exhaust_cpu_s": 5.399,
+   "fixed@30": 7,
+   "fixed@60": 7,
+   "gap@30": 7,
+   "gap@60": 7,
+   "oracle": 7,
+   "oracle@30": 7,
+   "oracle@60": 7,
+   "repeat@60": 7,
+   "seed": 5302
+  },
+  {
+   "empty": 1,
+   "exhaust": 12,
+   "exhaust_cpu_s": 4.886,
+   "fixed@30": 12,
+   "fixed@60": 12,
+   "gap@30": 13,
+   "gap@60": 13,
+   "oracle": 13,
+   "oracle@30": 13,
+   "oracle@60": 13,
+   "repeat@60": 12,
+   "seed": 5303
+  },
+  {
+   "empty": 0,
+   "exhaust": 11,
+   "exhaust_cpu_s": 8.857,
+   "fixed@30": 11,
+   "fixed@60": 11,
+   "gap@30": 11,
+   "gap@60": 11,
+   "oracle": 11,
+   "oracle@30": 11,
+   "oracle@60": 11,
+   "repeat@60": 11,
+   "seed": 5304
+  }
+ ],
+ "verdict": "NO_HEADROOM"
+}

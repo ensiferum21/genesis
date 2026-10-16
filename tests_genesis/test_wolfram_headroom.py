@@ -1,7 +1,12 @@
 """B20_R53: the Wolfram hard-setting headroom pilot. Design: B20's hard rules unchanged; fresh seeds; the evaluation
 targets avoid each seed's pool and development targets; ORACLE@cap is B20_R3's; the GAP arm keeps only conjectures
 its cheap attempt cannot prove and charges both attempts; the verdict follows the preregistered rule. Record tests
-are added with the result."""
+are added with the result.
+
+Record (B20_R53): the summary recomputes from the seed files (NO_HEADROOM; ORACLE - FIXED is 1, 0, 1, 0 at both caps);
+each seed file's material is the material the script derives; every kept GAP lemma is true in the variety; the
+caps did not bind (each exhaust run tried the whole pool well under 60 s)."""
+import json
 from pathlib import Path
 import sys
 import unittest
@@ -100,6 +105,46 @@ class Verdict(unittest.TestCase):
         self.assertEqual(v['per_cap']['30']['gap_minus_fixed'], [-1] * 4)
         self.assertEqual(v['library_headroom'], [12] * 4)
         self.assertEqual(v['ceiling_gap'], [3] * 4)
+
+
+EV = ROOT / 'evidence' / 'wolfram_headroom_b20r53'
+
+
+class Record(unittest.TestCase):
+    @classmethod
+    def setUpClass(cls):
+        cls.rows = [json.loads((EV / f'seed_{s}.json').read_text()) for s in M.SEEDS]
+        cls.summary = json.loads((EV / 'summary.json').read_text())
+
+    def test_the_verdict_recomputes(self):
+        v = M.verdict(self.rows)
+        self.assertEqual(v['verdict'], 'NO_HEADROOM')
+        self.assertEqual(v['verdict'], self.summary['verdict'])
+        for cap in ('60', '30'):
+            self.assertEqual(v['per_cap'][cap]['selection_headroom'], [1, 0, 1, 0])
+            self.assertEqual(v['per_cap'][cap]['gap_minus_fixed'], [1, 0, 1, 0])
+            self.assertEqual(v['per_cap'][cap], self.summary['per_cap'][cap])
+        self.assertEqual(v['noise'], [0, 0, 0, 0])
+        self.assertEqual(v['ceiling_gap'], [4, 8, 3, 4])
+
+    def test_material_is_what_the_script_derives(self):
+        for r in self.rows:
+            pool, dev, ev = M.material(r['seed'])
+            self.assertEqual((r['pool'], r['dev'], r['targets']),
+                             ([Q.text(e) for e in pool], [Q.text(e) for e in dev], [Q.text(e) for e in ev]))
+
+    def test_gap_lemmas_are_true_and_caps_did_not_bind(self):
+        texts = {Q.text(e): e for s in M.SEEDS for e in M.material(s)[0]}
+        for r in self.rows:
+            self.assertIsNone(r['exhaust_run']['stop_reason'])
+            self.assertEqual(r['exhaust_run']['untried'], 0)
+            self.assertLess(r['exhaust_run']['cpu_s'], min(M.CAPS))
+            for cap in ('60', '30'):
+                g = r['caps'][cap]['gap']
+                self.assertTrue(1 <= len(g['library']) <= 3)
+                self.assertTrue(all(Q.holds(texts[t], 'nand') for t in g['library']))
+                self.assertEqual(r['caps'][cap]['fixed']['library'], r['exhaust_run']['library'])
+                self.assertEqual(g['proved'], r['oracle']['proved'])
 
 
 if __name__ == '__main__':
