@@ -458,6 +458,12 @@
           "ba5318a"
         ],
         "result": "second-machine reference results repaired: the B20_R28 rehearsal was NOT_REPRODUCED at step 7 (campaign.restored_events 345 vs 339); bisected to B20_R16 (version-pointer events), unnoticed because R16-R24 were restore-verified, not rehearsed; EXPECTED_RESULTS.json updated (only that value) and a matrix test now compares the reference campaign"
+      },
+      "B20_R30": {
+        "commits": [
+          "ece1999"
+        ],
+        "result": "B20R24-OPEN-2 measured on 90 fresh e1b hosts: calibration 86/90 certified within 60 s (85/90 strictly; one certify overran to 104.8 s), evaluator 90/90 at 600 s (72 LP dual, 18 SAT/DRAT), unsupported 0 with one-sided 95% upper bound 0.0327, no value disagreements: LIMITS_CONSISTENT on the decided family; no limit changed"
       }
     },
     "open_after_b20_r5": [

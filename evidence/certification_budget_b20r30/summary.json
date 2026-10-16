@@ -1,0 +1,120 @@
+{
+ "by_stratum": {
+  "erdos:70960071": {
+   "certified_600s_evaluator": 30,
+   "certified_60s_calibration": 30,
+   "certified_fraction_600s": 1.0,
+   "certified_fraction_60s": 1.0,
+   "certified_only_at_600s": 0,
+   "evaluator_unsupported": 0,
+   "evaluator_wall_s": {
+    "max": 27.534,
+    "median": 1.03,
+    "p90": 6.541
+   },
+   "hosts": 30,
+   "value_disagreements": []
+  },
+  "erdos:b73f6828": {
+   "certified_600s_evaluator": 30,
+   "certified_60s_calibration": 28,
+   "certified_fraction_600s": 1.0,
+   "certified_fraction_60s": 0.9333,
+   "certified_only_at_600s": 2,
+   "evaluator_unsupported": 0,
+   "evaluator_wall_s": {
+    "max": 338.336,
+    "median": 1.03,
+    "p90": 22.014
+   },
+   "hosts": 30,
+   "value_disagreements": []
+  },
+  "planted_cluster:1467febf": {
+   "certified_600s_evaluator": 30,
+   "certified_60s_calibration": 28,
+   "certified_fraction_600s": 1.0,
+   "certified_fraction_60s": 0.9333,
+   "certified_only_at_600s": 2,
+   "evaluator_unsupported": 0,
+   "evaluator_wall_s": {
+    "max": 334.229,
+    "median": 1.43,
+    "p90": 23.728
+   },
+   "hosts": 30,
+   "value_disagreements": []
+  }
+ },
+ "calibration": {
+  "record_sha256": "bc26782a0c5916e9e1246e5351f617a3006ffece99451c57ead5ee39b41ee633",
+  "rule": "e1-hard-v2",
+  "selected": [
+   {
+    "family": "planted_cluster",
+    "index": 18,
+    "params": {
+     "n": 30,
+     "p_in": 0.6,
+     "p_out": 0.2
+    }
+   },
+   {
+    "family": "erdos",
+    "index": 7,
+    "params": {
+     "n": 26,
+     "p": 0.35
+    }
+   },
+   {
+    "family": "erdos",
+    "index": 9,
+    "params": {
+     "n": 30,
+     "p": 0.3
+    }
+   }
+  ]
+ },
+ "code_identity": "43dbdc05fdbcdab7cce49adca67650f8606739d43dcc92657767c3ad57d405ef",
+ "domain": "triangle_free_host_v1",
+ "evaluator_unsupported_rate": 0.0,
+ "evaluator_unsupported_upper95": 0.0327,
+ "exposure_scan": {
+  "calibration_hosts": 456,
+  "distinct_hosts": 1670,
+  "e1_named_hosts": 711,
+  "empty_files_skipped": [
+   "evidence/failed-wal-final-replay.json",
+   "evidence/final-replay.json"
+  ],
+  "excluded_identities": 1670,
+  "files_scanned": 874,
+  "host_records": 4564
+ },
+ "limits": {
+  "calibration": "certified_fraction_min 0.9 at 60 s (e1-hard-v2)",
+  "plan": "at most 5% unsupported CONFIRM tasks at the evaluator's 600 s"
+ },
+ "pooled": {
+  "certified_600s_evaluator": 90,
+  "certified_60s_calibration": 86,
+  "certified_fraction_600s": 1.0,
+  "certified_fraction_60s": 0.9556,
+  "certified_only_at_600s": 4,
+  "evaluator_unsupported": 0,
+  "evaluator_wall_s": {
+   "max": 338.336,
+   "median": 1.03,
+   "p90": 11.395
+  },
+  "hosts": 90,
+  "value_disagreements": []
+ },
+ "schema": "genesis-b20r30-certification-budget-v1",
+ "seed": 20263001,
+ "status": "DEV measurement for a reviewer (B20R24-OPEN-2); licenses no claim; changes no limit",
+ "study": "e1b",
+ "verdict": "LIMITS_CONSISTENT"
+}
