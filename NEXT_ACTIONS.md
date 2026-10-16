@@ -2,7 +2,7 @@
 
 ## Where things stand
 
-- **Branch:** `continuation-b20-rx` (GitHub `ensiferum21/genesis`). It is the canonical B20_R11 line (`continuation-b20-repairs`, `36954d6`), with the recovery-branch work ported onto it, plus B20_R12 and B20_R15–R40. B20_R25–R28 were built from the B20_R24 checkpoint's history bundle while GitHub was not linked; GitHub's branch is an ancestor.
+- **Branch:** `continuation-b20-rx` (GitHub `ensiferum21/genesis`). It is the canonical B20_R11 line (`continuation-b20-repairs`, `36954d6`), with the recovery-branch work ported onto it, plus B20_R12 and B20_R15–R41. B20_R25–R28 were built from the B20_R24 checkpoint's history bundle while GitHub was not linked; GitHub's branch is an ancestor.
 - **Side branch:** `side-b21-equational` (`710d26d`) keeps work done on plain B20 in parallel with this line (equational generations W21/E4, definitional primitives, fault routes). It is not canonical. Only its Lean-replay hint repair was ported (B20_R25).
 - **Checkpoints:**
 
@@ -24,7 +24,7 @@
 | B20_R35 | `fdaf849` | `9aace6d1…54ea` (B20_R34–R35; release matrix 1,239 tests, all OK, one declared skip; restore-verified, 5,713 manifest entries; driver rehearsal on the build host **REPRODUCED**, not a second machine) |
 
   The recovery-branch checkpoints B20_RX1 and B20_RX2 are on `recovery-b20r1-partial`; their work was ported here.
-- **Records:** `docs/checkpoints/B20_R1_RECORD.md` … `B20_R11_RECORD.md`, `B20_RX1_RECORD.md`, `B20_RX2_RECORD.md`, `B20_R12_RECORD.md` and `B20_R15_RECORD.md` … `B20_R40_RECORD.md`.
+- **Records:** `docs/checkpoints/B20_R1_RECORD.md` … `B20_R11_RECORD.md`, `B20_RX1_RECORD.md`, `B20_RX2_RECORD.md`, `B20_R12_RECORD.md` and `B20_R15_RECORD.md` … `B20_R41_RECORD.md`.
 
 ## Completed since B20_R11
 
@@ -60,6 +60,7 @@
 | B20_R38 | Frozen E1/E1b candidates vs an exact MIP in the dense regime (40 fresh hosts, all certified by the generated-rows route): E1 at 0.5 s is optimal on 19/20 per setting and **+14.6 per host above HiGHS at 2.0 s** on dense planted hosts (20/0/0); verdicts E1 CANDIDATE_BEYOND_MIP ×2 (inflated at 0.5 s), E1b BEYOND_MIP on planted, MIP_DOMINATES on erdos |
 | B20_R39 | Custody for certificates over generated rows (`verification/certificates_rows.py`, own schema, checker-only replay with registry re-derivation and revocation) and a generated-rows joint reference (`generated_certify.reference`); built, **not wired**; adoption steps in `docs/GENERATED_ROWS_REFERENCE.md` |
 | B20_R40 | Candidate registry v2 (`candidates_v2.py`, one module per kind, identity per kind and independent of registry v1, so the frozen E1/E1b descriptors are untouched) with the first kind `milp-highs-v1` (exact HiGHS MILP, time-matched, one core); built, **not wired**; `docs/CANDIDATE_REGISTRY_V2.md` |
+| B20_R41 | **E1d readiness** under a DRAFT rule `e1-hard-v3-draft` (strongest baseline = best of E1's DSL baselines and HiGHS at 0.5 s and 2.0 s; candidate-blind generated-rows reference with rounding of its own LP): calibration selects 3 planted settings (erdos fails: HiGHS at 2 s optimal on 20/21); on a 30-host re-pilot the comparator is **HiGHS at four times the budget**, E1's frozen candidate is optimal on 30/30 and **+10.6 per host [9.1, 12.1]**, cost ratio 0.34: **READY_FOR_REVIEW** (B20R41-OPEN-1) |
 
 ## Resume
 
@@ -71,7 +72,7 @@
 
 ## Decisions needed from Daniel or a reviewer
 
-1. **GV3 sign-off: E1 and E1b** (`handoff/e1/README.md` v3, `handoff/e1b/README.md` v2). Both are READY_FOR_REVIEW on the `e1-hard-v2` family, and both same-operator rehearsals are SUPPORTED. **First decide B20R33-OPEN-1:** on this family an exact MIP solver is always optimal within 0.36 CPU s, so E1 (dominated) and E1b (within 0.2) cannot be "beyond strong baselines"; a SUPPORTED result would be scoped to time-matched DSL baselines. B20_R38 found a dense regime where E1's frozen candidate is optimal on 19/20 hosts and beats HiGHS at 4× its budget (planted); it is certifiable only with the generated-rows reference (B20_R39 builds its custody; adoption is the reviewer's). Options: accept that scope; add a MIP comparator; or move to a regime an exact solver cannot finish within budget. B20_R34 mapped the certifiable range: no such setting exists there (where the evaluator certifies, the MIP is optimal); the dense regime where the candidate beats the MIP is uncertifiable by the current evaluator and certifiable with the generated rows (B20_R35–R38). To move to a real run:
+1. **GV3 sign-off: E1 and E1b** (`handoff/e1/README.md` v3, `handoff/e1b/README.md` v2). Both are READY_FOR_REVIEW on the `e1-hard-v2` family, and both same-operator rehearsals are SUPPORTED. **First decide B20R33-OPEN-1:** on this family an exact MIP solver is always optimal within 0.36 CPU s, so E1 (dominated) and E1b (within 0.2) cannot be "beyond strong baselines"; a SUPPORTED result would be scoped to time-matched DSL baselines. B20_R38 found a dense regime where E1's frozen candidate is optimal on 19/20 hosts and beats HiGHS at 4× its budget (planted); it is certifiable only with the generated-rows reference (B20_R39 builds its custody; adoption is the reviewer's). Options: accept that scope; add a MIP comparator; or move to a regime an exact solver cannot finish within budget. **B20_R41 did the last on DEV: E1d is READY_FOR_REVIEW against HiGHS at 4× budget (item 7).** B20_R34 mapped the certifiable range: no such setting exists there (where the evaluator certifies, the MIP is optimal); the dense regime where the candidate beats the MIP is uncertifiable by the current evaluator and certifiable with the generated rows (B20_R35–R38). To move to a real run:
    - a reviewer signs off the rule `e1-hard-v2`, the cost and comparator decisions, and freezes the DRAFTs;
    - a statistician signs off the centred power model (B19-OPEN-4);
    - an independent custodian runs SELECT, register and evaluate on its own machine.
@@ -80,6 +81,7 @@
 4. **GV4 study design** (`handoff/gv4/README.md`, DRAFT). The question is what counts as an invented component, and now also whether a component that helps *certification* counts toward a better improver: B20_R35 gives the first preregistered positive DEV utility of a generated, Lean-checked component, in certification (B20R35-OPEN-1); also whether to wire its checker into the evaluator (a trust-path change). The decision is needed before the s15.3 work below can become a study. After B20_R31, no invented component has DEV construction utility yet.
 5. **CRPD-2b pin revision:** review.
 6. **B20R33-OPEN-1** (see item 1).
+7. **E1d** (B20R41-OPEN-1; `evidence/e1d_readiness_b20r41/`). E1's frozen candidate is READY_FOR_REVIEW on DEV against every registered baseline including an exact MIP at four times its budget, on three calibrated dense planted settings. A real run needs the rule `e1-hard-v3-draft`, the generated-rows reference (item 2) and registry v2 wiring (B20R40-OPEN-1) adopted, an E1d package, a statistician and an independent custodian. The reference itself solves these hosts in about 20 s; a claim should say so.
 
 ## Next engineering, in order
 

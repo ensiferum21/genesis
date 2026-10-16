@@ -100,5 +100,72 @@ class Rounding(unittest.TestCase):
         self.assertTrue(all(-1e-9 <= v <= 1 + 1e-9 for v in x))
 
 
+class Record(unittest.TestCase):
+    """The run's evidence: the selection and the verdict follow from the rows by the preregistered rule."""
+    @classmethod
+    def setUpClass(cls):
+        import b20r41_e1d_readiness as M
+        cls.M = M
+        cls.s = json.loads((EVIDENCE / 'summary.json').read_text())
+        cls.cal = json.loads((EVIDENCE / 'calibration_record.json').read_text())
+        cls.crows = [json.loads(l) for l in (EVIDENCE / 'calibration_rows.jsonl').read_text().splitlines() if l.strip()]
+        cls.prows = [json.loads(l) for l in (EVIDENCE / 'pilot_rows.jsonl').read_text().splitlines() if l.strip()]
+
+    def test_calibration_hosts_match_rows_and_selection_follows_the_rule(self):
+        from genesis.common import canonical, digest
+        hosts = json.loads((EVIDENCE / 'calibration_hosts.json').read_text())
+        tasks = [GraphTask.model_validate_json(canonical(t)) for s in hosts['settings'] for t in s['tasks']]
+        self.assertEqual([digest(t.model_dump(mode='json')) for t in tasks], self.cal['task_sha256s'])
+        self.assertEqual(len(self.crows), 64)
+        settings = []
+        for s in self.cal['settings']:
+            summary = CAL.summarize([r for r in self.crows if r['setting'] == s['index']], self.M.RULE)
+            self.assertEqual(summary, s['summary'])
+            self.assertEqual(CAL.eligible(summary, self.M.RULE), s['ineligible_because'])
+            settings.append(dict(s, summary=summary))
+        self.assertEqual(CAL.select(settings, self.M.RULE), self.cal['selected'])
+        self.assertEqual([s['index'] for s in self.cal['selected']], [1, 2, 3])
+
+    def test_calibration_was_candidate_blind(self):
+        for r in self.crows:
+            self.assertEqual(set(r['baselines']), set(self.M.BASELINES))
+            self.assertNotEqual(r['ref']['seeded_from'], 'candidate')
+
+    def test_pilot_verdict_follows_from_the_rows(self):
+        self.assertEqual(len(self.prows), 30)
+        analysis, _ = self.M.analyse(self.prows, ['candidate', *self.M.BASELINES], list(self.M.BASELINES))
+        stored = json.loads((EVIDENCE / 'pilot_summary.json').read_text())
+        for k in ('comparator', 'totals', 'certified_by_stratum', 'mean_difference', 'wins_ties_losses', 'optimum_hits',
+                  'candidate_minus_each_baseline', 'cpu_ratio_candidate_to_comparator', 'verdict'):
+            self.assertEqual(analysis[k], stored[k], k)
+        self.assertEqual((stored['verdict'], stored['comparator']), ('READY_FOR_REVIEW', 'milp_highs_4x'))
+        self.assertEqual(self.s['verdict'], stored['verdict'])
+
+    def test_no_arm_exceeds_a_certified_optimum_and_arms_are_as_registered(self):
+        for r in self.crows:
+            if r['reference']['status'] == 'FINITE_CERTIFIED':
+                self.assertTrue(all(v is None or v <= r['reference']['value'] for v in r['baselines'].values()))
+        for r in self.prows:
+            self.assertTrue(all(a['value'] <= r['optimum'] for a in r['arms'].values()))
+            self.assertTrue(all(a['isolation'] == 'OCI_RUNC_NO_NETWORK_RO_ROOT_SECCOMP' for a in r['arms'].values()))
+        arms = self.M.arms()
+        self.assertEqual(self.s['descriptors'], {n: d['descriptor_id'] for n, (_, d) in arms.items()})
+
+    def test_hosts_are_fresh_and_in_the_addenda(self):
+        import b20r23_e1b_readiness as RD
+        from genesis.common import canonical
+        hosts = json.loads((EVIDENCE / 'calibration_hosts.json').read_text())
+        tasks = [GraphTask.model_validate_json(canonical(t)) for s in hosts['settings'] for t in s['tasks']]
+        tasks += [GraphTask.model_validate_json(canonical(t))
+                  for t in json.loads((EVIDENCE / 'pilot_hosts.json').read_text())['tasks']]
+        tasks += [GraphTask.model_validate_json(canonical(t))
+                  for t in json.loads((EVIDENCE / 'development_look_hosts.json').read_text())['tasks']]
+        self.assertEqual(len(RD.identities(tasks)), 64 + 30 + 8)
+        for pkg in ('e1', 'e1b'):
+            add = json.loads((ROOT / 'handoff' / pkg / 'exposure_hosts_addendum_b20r41.json').read_text())
+            listed = RD.identities([GraphTask.model_validate_json(canonical(t)) for t in add])
+            self.assertTrue(RD.identities(tasks) <= listed)
+
+
 if __name__ == '__main__':
     unittest.main()

@@ -1,0 +1,108 @@
+[    0.0s] pinned to CPU 0; pid 241
+[    0.4s] SAT tools: cadical@24fb99286ca1ea9a, drat-trim@92f0aa9575ed519d
+[   13.3s] exposure: 2268 identities (2268 named hosts, 711 E1 hosts, 456 calibration hosts)
+[   36.6s] A0 0000: {"exchange_tm": 89, "low_cycle_tm": 93, "multistart_tm": 89, "milp_highs_tm": 30, "milp_highs_4x": 102} opt 102 [102..102] LP_DUAL_GENERATED_EXACT 17.9s
+[   57.6s] A0 0001: {"exchange_tm": 87, "low_cycle_tm": 93, "multistart_tm": 88, "milp_highs_tm": 36, "milp_highs_4x": 103} opt 103 [103..103] LP_DUAL_GENERATED_EXACT 15.6s
+[   79.0s] A0 0002: {"exchange_tm": 84, "low_cycle_tm": 89, "multistart_tm": 92, "milp_highs_tm": 27, "milp_highs_4x": 95} opt 96 [96..96] LP_DUAL_GENERATED_EXACT 15.3s
+[  107.5s] A0 0003: {"exchange_tm": 95, "low_cycle_tm": 86, "multistart_tm": 95, "milp_highs_tm": 32, "milp_highs_4x": 93} opt 106 [106..106] LP_DUAL_GENERATED_EXACT 22.3s
+[  124.3s] A0 0004: {"exchange_tm": 95, "low_cycle_tm": 93, "multistart_tm": 95, "milp_highs_tm": 32, "milp_highs_4x": 102} opt 102 [102..102] LP_DUAL_GENERATED_EXACT 12.0s
+[  147.5s] A0 0005: {"exchange_tm": 83, "low_cycle_tm": 79, "multistart_tm": 90, "milp_highs_tm": 24, "milp_highs_4x": 95} opt 102 [102..102] LP_DUAL_GENERATED_EXACT 17.0s
+[  165.6s] A0 0006: {"exchange_tm": 84, "low_cycle_tm": 86, "multistart_tm": 84, "milp_highs_tm": 29, "milp_highs_4x": 96} opt 96 [96..96] LP_DUAL_GENERATED_EXACT 12.1s
+[  186.6s] A0 0007: {"exchange_tm": 92, "low_cycle_tm": 97, "multistart_tm": 101, "milp_highs_tm": 37, "milp_highs_4x": 95} opt 106 [106..106] LP_DUAL_GENERATED_EXACT 15.1s
+[  214.8s] A1 0000: {"exchange_tm": 92, "low_cycle_tm": 103, "multistart_tm": 98, "milp_highs_tm": 29, "milp_highs_4x": 98} opt 113 [113..113] LP_DUAL_GENERATED_EXACT 22.1s
+[  241.1s] A1 0001: {"exchange_tm": 103, "low_cycle_tm": 113, "multistart_tm": 105, "milp_highs_tm": 36, "milp_highs_4x": 109} opt 122 [122..122] LP_DUAL_GENERATED_EXACT 20.4s
+[  264.2s] A1 0002: {"exchange_tm": 95, "low_cycle_tm": 104, "multistart_tm": 97, "milp_highs_tm": 36, "milp_highs_4x": 102} opt 112 [112..112] LP_DUAL_GENERATED_EXACT 17.1s
+[  287.6s] A1 0003: {"exchange_tm": 91, "low_cycle_tm": 104, "multistart_tm": 93, "milp_highs_tm": 34, "milp_highs_4x": 96} opt 112 [112..112] LP_DUAL_GENERATED_EXACT 17.2s
+[  309.3s] A1 0004: {"exchange_tm": 87, "low_cycle_tm": 92, "multistart_tm": 92, "milp_highs_tm": 27, "milp_highs_4x": 93} opt 107 [107..107] LP_DUAL_GENERATED_EXACT 15.7s
+[  337.7s] A1 0005: {"exchange_tm": 102, "low_cycle_tm": 102, "multistart_tm": 102, "milp_highs_tm": 40, "milp_highs_4x": 106} opt 121 [121..121] LP_DUAL_GENERATED_EXACT 22.2s
+[  360.0s] A1 0006: {"exchange_tm": 95, "low_cycle_tm": 109, "multistart_tm": 96, "milp_highs_tm": 34, "milp_highs_4x": 106} opt 113 [113..113] LP_DUAL_GENERATED_EXACT 16.2s
+[  389.5s] A1 0007: {"exchange_tm": 99, "low_cycle_tm": 108, "multistart_tm": 108, "milp_highs_tm": 40, "milp_highs_4x": 105} opt 120 [120..120] LP_DUAL_GENERATED_EXACT 23.2s
+[  420.5s] A2 0000: {"exchange_tm": 100, "low_cycle_tm": 105, "multistart_tm": 100, "milp_highs_tm": 33, "milp_highs_4x": 108} opt 123 [123..123] LP_DUAL_GENERATED_EXACT 25.0s
+[  446.1s] A2 0001: {"exchange_tm": 98, "low_cycle_tm": 97, "multistart_tm": 102, "milp_highs_tm": 31, "milp_highs_4x": 113} opt 121 [121..121] LP_DUAL_GENERATED_EXACT 19.6s
+[  474.8s] A2 0002: {"exchange_tm": 102, "low_cycle_tm": 111, "multistart_tm": 103, "milp_highs_tm": 33, "milp_highs_4x": 105} opt 124 [124..124] LP_DUAL_GENERATED_EXACT 22.7s
+[  499.4s] A2 0003: {"exchange_tm": 106, "low_cycle_tm": 109, "multistart_tm": 106, "milp_highs_tm": 37, "milp_highs_4x": 110} opt 127 [127..127] LP_DUAL_GENERATED_EXACT 18.6s
+[  523.7s] A2 0004: {"exchange_tm": 103, "low_cycle_tm": 111, "multistart_tm": 105, "milp_highs_tm": 34, "milp_highs_4x": 110} opt 124 [124..124] LP_DUAL_GENERATED_EXACT 18.2s
+[  548.3s] A2 0005: {"exchange_tm": 106, "low_cycle_tm": 111, "multistart_tm": 105, "milp_highs_tm": 33, "milp_highs_4x": 115} opt 127 [127..127] LP_DUAL_GENERATED_EXACT 18.4s
+[  574.9s] A2 0006: {"exchange_tm": 104, "low_cycle_tm": 114, "multistart_tm": 107, "milp_highs_tm": 36, "milp_highs_4x": 108} opt 125 [125..125] LP_DUAL_GENERATED_EXACT 20.4s
+[  607.3s] A2 0007: {"exchange_tm": 115, "low_cycle_tm": 114, "multistart_tm": 115, "milp_highs_tm": 43, "milp_highs_4x": 117} opt 132 [132..132] LP_DUAL_GENERATED_EXACT 26.3s
+[  629.2s] A3 0000: {"exchange_tm": 94, "low_cycle_tm": 98, "multistart_tm": 99, "milp_highs_tm": 31, "milp_highs_4x": 114} opt 114 [114..114] LP_DUAL_GENERATED_EXACT 16.7s
+[  650.2s] A3 0001: {"exchange_tm": 96, "low_cycle_tm": 102, "multistart_tm": 96, "milp_highs_tm": 32, "milp_highs_4x": 114} opt 114 [114..114] LP_DUAL_GENERATED_EXACT 15.7s
+[  670.4s] A3 0002: {"exchange_tm": 98, "low_cycle_tm": 103, "multistart_tm": 106, "milp_highs_tm": 38, "milp_highs_4x": 111} opt 115 [115..115] LP_DUAL_GENERATED_EXACT 14.1s
+[  694.0s] A3 0003: {"exchange_tm": 107, "low_cycle_tm": 109, "multistart_tm": 112, "milp_highs_tm": 42, "milp_highs_4x": 108} opt 121 [121..121] LP_DUAL_GENERATED_EXACT 17.6s
+[  715.2s] A3 0004: {"exchange_tm": 97, "low_cycle_tm": 107, "multistart_tm": 96, "milp_highs_tm": 35, "milp_highs_4x": 104} opt 115 [115..115] LP_DUAL_GENERATED_EXACT 15.1s
+[  735.1s] A3 0005: {"exchange_tm": 92, "low_cycle_tm": 104, "multistart_tm": 97, "milp_highs_tm": 27, "milp_highs_4x": 96} opt 109 [109..109] LP_DUAL_GENERATED_EXACT 13.9s
+[  757.0s] A3 0006: {"exchange_tm": 96, "low_cycle_tm": 103, "multistart_tm": 103, "milp_highs_tm": 37, "milp_highs_4x": 105} opt 115 [115..115] LP_DUAL_GENERATED_EXACT 15.8s
+[  776.4s] A3 0007: {"exchange_tm": 89, "low_cycle_tm": 95, "multistart_tm": 96, "milp_highs_tm": 30, "milp_highs_4x": 105} opt 106 [106..106] LP_DUAL_GENERATED_EXACT 13.4s
+[  809.9s] A4 0000: {"exchange_tm": 116, "low_cycle_tm": 133, "multistart_tm": 117, "milp_highs_tm": 44, "milp_highs_4x": 123} opt 141 [141..141] LP_DUAL_GENERATED_EXACT 27.4s
+[  876.3s] A4 0001: {"exchange_tm": 105, "low_cycle_tm": 98, "multistart_tm": 105, "milp_highs_tm": 33, "milp_highs_4x": 112} opt None [131..132] LP_DUAL_GENERATED_EXACT 60.4s
+[  912.2s] A4 0002: {"exchange_tm": 95, "low_cycle_tm": 118, "multistart_tm": 99, "milp_highs_tm": 28, "milp_highs_4x": 103} opt 122 [122..122] LP_DUAL_GENERATED_EXACT 29.9s
+[  947.5s] A4 0003: {"exchange_tm": 100, "low_cycle_tm": 120, "multistart_tm": 105, "milp_highs_tm": 28, "milp_highs_4x": 108} opt 123 [123..123] LP_DUAL_GENERATED_EXACT 29.2s
+[  984.2s] A4 0004: {"exchange_tm": 101, "low_cycle_tm": 104, "multistart_tm": 97, "milp_highs_tm": 26, "milp_highs_4x": 103} opt 121 [121..121] LP_DUAL_GENERATED_EXACT 30.6s
+[ 1016.3s] A4 0005: {"exchange_tm": 111, "low_cycle_tm": 113, "multistart_tm": 111, "milp_highs_tm": 33, "milp_highs_4x": 115} opt 130 [130..130] LP_DUAL_GENERATED_EXACT 26.1s
+[ 1082.8s] A4 0006: {"exchange_tm": 97, "low_cycle_tm": 110, "multistart_tm": 99, "milp_highs_tm": 23, "milp_highs_4x": 86} opt None [122..123] LP_DUAL_GENERATED_EXACT 60.5s
+[ 1126.0s] A4 0007: {"exchange_tm": 106, "low_cycle_tm": 124, "multistart_tm": 104, "milp_highs_tm": 26, "milp_highs_4x": 105} opt 127 [127..127] LP_DUAL_GENERATED_EXACT 37.0s
+[ 1142.7s] A5 0000: {"exchange_tm": 94, "low_cycle_tm": 102, "multistart_tm": 97, "milp_highs_tm": 77, "milp_highs_4x": 110} opt 110 [110..110] LP_DUAL_GENERATED_EXACT 11.8s
+[ 1163.4s] A5 0001: {"exchange_tm": 102, "low_cycle_tm": 105, "multistart_tm": 103, "milp_highs_tm": 10, "milp_highs_4x": 121} opt 121 [121..121] LP_DUAL_GENERATED_EXACT 15.0s
+[ 1180.2s] A5 0002: {"exchange_tm": 99, "low_cycle_tm": 106, "multistart_tm": 100, "milp_highs_tm": 19, "milp_highs_4x": 114} opt 114 [114..114] LP_DUAL_GENERATED_EXACT 11.7s
+[ 1196.4s] A5 0003: {"exchange_tm": 96, "low_cycle_tm": 100, "multistart_tm": 96, "milp_highs_tm": 110, "milp_highs_4x": 110} opt 110 [110..110] LP_DUAL_GENERATED_EXACT 12.1s
+[ 1215.0s] A5 0004: {"exchange_tm": 98, "low_cycle_tm": 101, "multistart_tm": 99, "milp_highs_tm": 16, "milp_highs_4x": 113} opt 114 [114..114] LP_DUAL_GENERATED_EXACT 12.7s
+[ 1233.0s] A5 0005: {"exchange_tm": 98, "low_cycle_tm": 107, "multistart_tm": 102, "milp_highs_tm": 120, "milp_highs_4x": 120} opt 120 [120..120] LP_DUAL_GENERATED_EXACT 13.8s
+[ 1247.6s] A5 0006: {"exchange_tm": 97, "low_cycle_tm": 101, "multistart_tm": 99, "milp_highs_tm": 9, "milp_highs_4x": 112} opt 112 [112..112] LP_DUAL_GENERATED_EXACT 10.2s
+[ 1263.2s] A5 0007: {"exchange_tm": 92, "low_cycle_tm": 99, "multistart_tm": 95, "milp_highs_tm": 15, "milp_highs_4x": 109} opt 109 [109..109] LP_DUAL_GENERATED_EXACT 11.1s
+[ 1279.1s] A6 0000: {"exchange_tm": 106, "low_cycle_tm": 114, "multistart_tm": 107, "milp_highs_tm": 127, "milp_highs_4x": 127} opt 127 [127..127] LP_DUAL_GENERATED_EXACT 11.9s
+[ 1298.1s] A6 0001: {"exchange_tm": 106, "low_cycle_tm": 114, "multistart_tm": 109, "milp_highs_tm": 8, "milp_highs_4x": 127} opt 127 [127..127] LP_DUAL_GENERATED_EXACT 13.6s
+[ 1316.5s] A6 0002: {"exchange_tm": 108, "low_cycle_tm": 118, "multistart_tm": 110, "milp_highs_tm": 9, "milp_highs_4x": 128} opt 128 [128..128] LP_DUAL_GENERATED_EXACT 12.9s
+[ 1383.1s] A6 0003: {"exchange_tm": 103, "low_cycle_tm": 112, "multistart_tm": 107, "milp_highs_tm": 32, "milp_highs_4x": 118} opt None [118..119] LP_DUAL_GENERATED_EXACT 60.6s
+[ 1397.0s] A6 0004: {"exchange_tm": 100, "low_cycle_tm": 110, "multistart_tm": 104, "milp_highs_tm": 119, "milp_highs_4x": 119} opt 119 [119..119] LP_DUAL_GENERATED_EXACT 9.5s
+[ 1411.8s] A6 0005: {"exchange_tm": 107, "low_cycle_tm": 114, "multistart_tm": 109, "milp_highs_tm": 13, "milp_highs_4x": 124} opt 124 [124..124] LP_DUAL_GENERATED_EXACT 9.4s
+[ 1426.7s] A6 0006: {"exchange_tm": 105, "low_cycle_tm": 110, "multistart_tm": 106, "milp_highs_tm": 121, "milp_highs_4x": 121} opt 121 [121..121] LP_DUAL_GENERATED_EXACT 10.6s
+[ 1444.9s] A6 0007: {"exchange_tm": 109, "low_cycle_tm": 115, "multistart_tm": 111, "milp_highs_tm": 15, "milp_highs_4x": 125} opt 125 [125..125] LP_DUAL_GENERATED_EXACT 12.6s
+[ 1456.3s] A7 0000: {"exchange_tm": 110, "low_cycle_tm": 118, "multistart_tm": 112, "milp_highs_tm": 28, "milp_highs_4x": 126} opt 126 [126..126] LP_DUAL_GENERATED_EXACT 6.1s
+[ 1522.6s] A7 0001: {"exchange_tm": 114, "low_cycle_tm": 116, "multistart_tm": 116, "milp_highs_tm": 19, "milp_highs_4x": 127} opt None [127..129] LP_DUAL_GENERATED_EXACT 60.3s
+[ 1589.2s] A7 0002: {"exchange_tm": 114, "low_cycle_tm": 120, "multistart_tm": 114, "milp_highs_tm": 33, "milp_highs_4x": 127} opt None [127..129] LP_DUAL_GENERATED_EXACT 60.5s
+[ 1607.5s] A7 0003: {"exchange_tm": 112, "low_cycle_tm": 118, "multistart_tm": 116, "milp_highs_tm": 128, "milp_highs_4x": 128} opt 128 [128..128] LP_DUAL_GENERATED_EXACT 14.0s
+[ 1619.8s] A7 0004: {"exchange_tm": 112, "low_cycle_tm": 122, "multistart_tm": 114, "milp_highs_tm": 128, "milp_highs_4x": 128} opt 128 [128..128] LP_DUAL_GENERATED_EXACT 7.9s
+[ 1630.0s] A7 0005: {"exchange_tm": 107, "low_cycle_tm": 112, "multistart_tm": 107, "milp_highs_tm": 120, "milp_highs_4x": 120} opt 120 [120..120] LP_DUAL_GENERATED_EXACT 5.7s
+[ 1642.3s] A7 0006: {"exchange_tm": 112, "low_cycle_tm": 117, "multistart_tm": 112, "milp_highs_tm": 34, "milp_highs_4x": 126} opt 126 [126..126] LP_DUAL_GENERATED_EXACT 6.8s
+[ 1661.4s] A7 0007: {"exchange_tm": 112, "low_cycle_tm": 124, "multistart_tm": 117, "milp_highs_tm": 59, "milp_highs_4x": 131} opt 131 [131..131] LP_DUAL_GENERATED_EXACT 13.8s
+[ 1661.4s] A0 planted_cluster {'n': 36, 'p_in': 0.8, 'p_out': 0.08}: {"mean_gap_edges": 3.0, "tasks": 8, "certified": 8, "certified_fraction": 1.0, "ceiling_rate": 0.5, "mean_headroom": 0.0287, "reference_seconds_median": 15.445, "mean_edges": 150.62} -> ['ceiling rate outside the band']
+[ 1661.4s] A1 planted_cluster {'n': 38, 'p_in': 0.8, 'p_out': 0.07}: {"mean_gap_edges": 10.0, "tasks": 8, "certified": 8, "certified_fraction": 1.0, "ceiling_rate": 0.0, "mean_headroom": 0.0869, "reference_seconds_median": 18.805, "mean_edges": 173.75} -> []
+[ 1661.4s] A2 planted_cluster {'n': 40, 'p_in': 0.8, 'p_out': 0.06}: {"mean_gap_edges": 13.0, "tasks": 8, "certified": 8, "certified_fraction": 1.0, "ceiling_rate": 0.0, "mean_headroom": 0.1035, "reference_seconds_median": 20.024, "mean_edges": 191.12} -> []
+[ 1661.4s] A3 planted_cluster {'n': 40, 'p_in': 0.7, 'p_out': 0.06}: {"mean_gap_edges": 4.625, "tasks": 8, "certified": 8, "certified_fraction": 1.0, "ceiling_rate": 0.25, "mean_headroom": 0.0401, "reference_seconds_median": 15.437, "mean_edges": 167.12} -> []
+[ 1661.4s] A4 planted_cluster {'n': 40, 'p_in': 0.9, 'p_out': 0.05}: {"mean_gap_edges": 8.3333, "tasks": 8, "certified": 6, "certified_fraction": 0.75, "ceiling_rate": 0.0, "mean_headroom": 0.0656, "reference_seconds_median": 30.235, "mean_edges": 203.88} -> ['too few certified optima', 'evaluator too slow']
+[ 1661.4s] A5 erdos {'n': 28, 'p': 0.45}: {"mean_gap_edges": 0.125, "tasks": 8, "certified": 8, "certified_fraction": 1.0, "ceiling_rate": 0.875, "mean_headroom": 0.0011, "reference_seconds_median": 11.942, "mean_edges": 171.62} -> ['ceiling rate outside the band', 'too little headroom', 'too little headroom in edges for the design effect']
+[ 1661.4s] A6 erdos {'n': 30, 'p': 0.42}: {"mean_gap_edges": 0.0, "tasks": 8, "certified": 7, "certified_fraction": 0.875, "ceiling_rate": 1.0, "mean_headroom": 0.0, "reference_seconds_median": 12.22, "mean_edges": 184.12} -> ['too few certified optima', 'ceiling rate outside the band', 'too little headroom', 'too little headroom in edges for the design effect']
+[ 1661.4s] A7 erdos {'n': 32, 'p': 0.38}: {"mean_gap_edges": 0.0, "tasks": 8, "certified": 6, "certified_fraction": 0.75, "ceiling_rate": 1.0, "mean_headroom": 0.0, "reference_seconds_median": 10.818, "mean_edges": 186.5} -> ['too few certified optima', 'ceiling rate outside the band', 'too little headroom', 'too little headroom in edges for the design effect']
+[ 1661.4s] Part A selected [{'family': 'planted_cluster', 'params': {'n': 38, 'p_in': 0.8, 'p_out': 0.07}, 'index': 1}, {'family': 'planted_cluster', 'params': {'n': 40, 'p_in': 0.8, 'p_out': 0.06}, 'index': 2}, {'family': 'planted_cluster', 'params': {'n': 40, 'p_in': 0.7, 'p_out': 0.06}, 'index': 3}]
+[ 1692.1s] B 0000: {"candidate": 117, "exchange_tm": 94, "low_cycle_tm": 96, "multistart_tm": 96, "milp_highs_tm": 30, "milp_highs_4x": 102} opt 117 [117..117] 23.0s
+[ 1723.0s] B 0001: {"candidate": 126, "exchange_tm": 104, "low_cycle_tm": 111, "multistart_tm": 105, "milp_highs_tm": 35, "milp_highs_4x": 110} opt 126 [126..126] 24.0s
+[ 1742.8s] B 0002: {"candidate": 115, "exchange_tm": 96, "low_cycle_tm": 105, "multistart_tm": 97, "milp_highs_tm": 35, "milp_highs_4x": 115} opt 115 [115..115] 13.6s
+[ 1769.0s] B 0003: {"candidate": 115, "exchange_tm": 96, "low_cycle_tm": 99, "multistart_tm": 99, "milp_highs_tm": 33, "milp_highs_4x": 103} opt 115 [115..115] 19.3s
+[ 1795.7s] B 0004: {"candidate": 106, "exchange_tm": 86, "low_cycle_tm": 104, "multistart_tm": 91, "milp_highs_tm": 27, "milp_highs_4x": 91} opt 106 [106..106] 19.7s
+[ 1828.7s] B 0005: {"candidate": 123, "exchange_tm": 104, "low_cycle_tm": 113, "multistart_tm": 106, "milp_highs_tm": 32, "milp_highs_4x": 110} opt 123 [123..123] 25.8s
+[ 1863.3s] B 0006: {"candidate": 118, "exchange_tm": 99, "low_cycle_tm": 102, "multistart_tm": 102, "milp_highs_tm": 28, "milp_highs_4x": 107} opt 118 [118..118] 27.5s
+[ 1890.8s] B 0007: {"candidate": 124, "exchange_tm": 103, "low_cycle_tm": 113, "multistart_tm": 104, "milp_highs_tm": 38, "milp_highs_4x": 115} opt 124 [124..124] 20.5s
+[ 1923.6s] B 0008: {"candidate": 120, "exchange_tm": 102, "low_cycle_tm": 102, "multistart_tm": 102, "milp_highs_tm": 34, "milp_highs_4x": 111} opt 120 [120..120] 25.5s
+[ 1957.9s] B 0009: {"candidate": 120, "exchange_tm": 99, "low_cycle_tm": 113, "multistart_tm": 103, "milp_highs_tm": 35, "milp_highs_4x": 111} opt 120 [120..120] 27.3s
+[ 1988.8s] B 0000: {"candidate": 126, "exchange_tm": 99, "low_cycle_tm": 97, "multistart_tm": 106, "milp_highs_tm": 30, "milp_highs_4x": 109} opt 126 [126..126] 23.9s
+[ 2020.7s] B 0001: {"candidate": 109, "exchange_tm": 87, "low_cycle_tm": 106, "multistart_tm": 89, "milp_highs_tm": 21, "milp_highs_4x": 93} opt 109 [109..109] 24.8s
+[ 2051.7s] B 0002: {"candidate": 126, "exchange_tm": 110, "low_cycle_tm": 110, "multistart_tm": 110, "milp_highs_tm": 36, "milp_highs_4x": 112} opt 126 [126..126] 23.8s
+[ 2079.2s] B 0003: {"candidate": 128, "exchange_tm": 104, "low_cycle_tm": 108, "multistart_tm": 113, "milp_highs_tm": 35, "milp_highs_4x": 120} opt 128 [128..128] 20.5s
+[ 2108.8s] B 0004: {"candidate": 125, "exchange_tm": 103, "low_cycle_tm": 104, "multistart_tm": 105, "milp_highs_tm": 34, "milp_highs_4x": 93} opt 125 [125..125] 22.2s
+[ 2141.9s] B 0005: {"candidate": 119, "exchange_tm": 100, "low_cycle_tm": 103, "multistart_tm": 102, "milp_highs_tm": 31, "milp_highs_4x": 103} opt 119 [119..119] 25.9s
+[ 2171.2s] B 0006: {"candidate": 124, "exchange_tm": 100, "low_cycle_tm": 108, "multistart_tm": 105, "milp_highs_tm": 35, "milp_highs_4x": 106} opt 124 [124..124] 22.3s
+[ 2199.0s] B 0007: {"candidate": 125, "exchange_tm": 100, "low_cycle_tm": 114, "multistart_tm": 102, "milp_highs_tm": 29, "milp_highs_4x": 110} opt 125 [125..125] 20.7s
+[ 2226.4s] B 0008: {"candidate": 120, "exchange_tm": 99, "low_cycle_tm": 109, "multistart_tm": 100, "milp_highs_tm": 31, "milp_highs_4x": 108} opt 120 [120..120] 20.3s
+[ 2258.2s] B 0009: {"candidate": 123, "exchange_tm": 101, "low_cycle_tm": 106, "multistart_tm": 101, "milp_highs_tm": 35, "milp_highs_4x": 107} opt 123 [123..123] 24.8s
+[ 2284.3s] B 0000: {"candidate": 125, "exchange_tm": 107, "low_cycle_tm": 114, "multistart_tm": 107, "milp_highs_tm": 36, "milp_highs_4x": 111} opt 125 [125..125] 18.8s
+[ 2308.0s] B 0001: {"candidate": 118, "exchange_tm": 101, "low_cycle_tm": 99, "multistart_tm": 100, "milp_highs_tm": 32, "milp_highs_4x": 110} opt 118 [118..118] 16.5s
+[ 2328.3s] B 0002: {"candidate": 106, "exchange_tm": 92, "low_cycle_tm": 95, "multistart_tm": 95, "milp_highs_tm": 38, "milp_highs_4x": 106} opt 106 [106..106] 14.1s
+[ 2352.5s] B 0003: {"candidate": 107, "exchange_tm": 93, "low_cycle_tm": 99, "multistart_tm": 94, "milp_highs_tm": 32, "milp_highs_4x": 96} opt 107 [107..107] 17.1s
+[ 2372.4s] B 0004: {"candidate": 116, "exchange_tm": 97, "low_cycle_tm": 103, "multistart_tm": 99, "milp_highs_tm": 36, "milp_highs_4x": 116} opt 116 [116..116] 13.5s
+[ 2394.0s] B 0005: {"candidate": 114, "exchange_tm": 94, "low_cycle_tm": 108, "multistart_tm": 94, "milp_highs_tm": 29, "milp_highs_4x": 114} opt 114 [114..114] 15.3s
+[ 2413.3s] B 0006: {"candidate": 104, "exchange_tm": 90, "low_cycle_tm": 95, "multistart_tm": 92, "milp_highs_tm": 29, "milp_highs_4x": 97} opt 104 [104..104] 12.4s
+[ 2433.7s] B 0007: {"candidate": 116, "exchange_tm": 96, "low_cycle_tm": 101, "multistart_tm": 101, "milp_highs_tm": 29, "milp_highs_4x": 116} opt 116 [116..116] 14.4s
+[ 2453.7s] B 0008: {"candidate": 117, "exchange_tm": 106, "low_cycle_tm": 111, "multistart_tm": 106, "milp_highs_tm": 38, "milp_highs_4x": 117} opt 117 [117..117] 13.9s
+[ 2476.1s] B 0009: {"candidate": 114, "exchange_tm": 96, "low_cycle_tm": 102, "multistart_tm": 97, "milp_highs_tm": 34, "milp_highs_4x": 109} opt 114 [114..114] 15.4s
+[ 2588.1s] Part B: READY_FOR_REVIEW; comparator milp_highs_4x; mean 10.6; cpu ratio 0.3444
+[ 2590.6s] verdict READY_FOR_REVIEW

@@ -1,0 +1,292 @@
+{
+ "code_identity": "e165c3c881d1f62ee5a92923b98f009b5b983bc0f65379201f415615604e59a6",
+ "descriptors": {
+  "candidate": "f4c7f4b0e5ced594f014dff8bc66703f2f545a52c1972a3d2a3cac42a8f195b1",
+  "exchange_tm": "70660ab94e35f0fa3692886355ec6a62a6ef9f0d2f57e16074b68669061c4809",
+  "low_cycle_tm": "ae110999483196446cefbcad9b3cd232383ff3a26ec9eff3b288a94b9a40a36e",
+  "milp_highs_4x": "f7d8f6cbc23e8b9f130d7d774849679eded8650f2fee0eb69656aa0d555695c8",
+  "milp_highs_tm": "4242e56b5c8bc676d28a808b9097706cfd8961040c4618db42314775f45911de",
+  "multistart_tm": "3642c93cd02d0979ea8928b65c27848512f4a44fa7e5ae0ebe56b98994e13983"
+ },
+ "exposure_scan": {
+  "calibration_hosts": 456,
+  "distinct_hosts": 2268,
+  "e1_named_hosts": 711,
+  "empty_files_skipped": [
+   "evidence/failed-wal-final-replay.json",
+   "evidence/final-replay.json"
+  ],
+  "excluded_identities": 2268,
+  "files_scanned": 957,
+  "host_records": 6350
+ },
+ "pilot": {
+  "approximation_agreement": 1.0,
+  "candidate_minus_each_baseline": {
+   "exchange_tm": {
+    "mean": 19.6,
+    "wins_ties_losses": [
+     30,
+     0,
+     0
+    ]
+   },
+   "low_cycle_tm": {
+    "mean": 13.2,
+    "wins_ties_losses": [
+     30,
+     0,
+     0
+    ]
+   },
+   "milp_highs_4x": {
+    "mean": 10.6,
+    "wins_ties_losses": [
+     24,
+     6,
+     0
+    ]
+   },
+   "milp_highs_tm": {
+    "mean": 85.6333,
+    "wins_ties_losses": [
+     30,
+     0,
+     0
+    ]
+   },
+   "multistart_tm": {
+    "mean": 17.4333,
+    "wins_ties_losses": [
+     30,
+     0,
+     0
+    ]
+   }
+  },
+  "certified_by_stratum": {
+   "planted_cluster:2269386b": [
+    10,
+    10
+   ],
+   "planted_cluster:6493e4fc": [
+    10,
+    10
+   ],
+   "planted_cluster:9491bde8": [
+    10,
+    10
+   ]
+  },
+  "comparator": "milp_highs_4x",
+  "comparator_set": [
+   "exchange_tm",
+   "low_cycle_tm",
+   "multistart_tm",
+   "milp_highs_tm",
+   "milp_highs_4x"
+  ],
+  "cpu_ns_by_arm": {
+   "candidate": 21745071477,
+   "exchange_tm": 21706956348,
+   "low_cycle_tm": 21899440663,
+   "milp_highs_4x": 63144164984,
+   "milp_highs_tm": 24148001779,
+   "multistart_tm": 21829224037
+  },
+  "cpu_ratio_candidate_to_comparator": 0.3444,
+  "draft_plan_dry_run": {
+   "checks": {
+    "cost_within_bound": true,
+    "estimate_reaches_minimum_useful_effect": true,
+    "holm_rejects_no_superiority": true,
+    "interval_lower_above_zero": true,
+    "no_stratum_regression": true
+   },
+   "cost_ratio": 0.3443718273,
+   "decision": "SUPPORTED",
+   "estimate": 10.6,
+   "interval": [
+    9.1,
+    12.1
+   ],
+   "p_value": 4.99975e-05
+  },
+  "failures": {
+   "candidate": 0,
+   "exchange_tm": 0,
+   "low_cycle_tm": 0,
+   "milp_highs_4x": 0,
+   "milp_highs_tm": 0,
+   "multistart_tm": 0
+  },
+  "hosts": 30,
+  "mean_difference": 10.6,
+  "mean_gap_to_optimum": {
+   "candidate": 0.0,
+   "exchange_tm": 19.6,
+   "low_cycle_tm": 13.2,
+   "milp_highs_4x": 10.6,
+   "milp_highs_tm": 85.6333,
+   "multistart_tm": 17.4333
+  },
+  "optimum_hits": {
+   "candidate": 30,
+   "exchange_tm": 0,
+   "low_cycle_tm": 0,
+   "milp_highs_4x": 6,
+   "milp_highs_tm": 0,
+   "multistart_tm": 0
+  },
+  "power_centred": {
+   "chosen": {
+    "power": 0.814,
+    "tasks_per_stratum": 80,
+    "total_tasks": 240
+   },
+   "false_positive_rate_at_zero_effect": 0.012,
+   "pilot_strata": {
+    "planted_cluster:2269386b": {
+     "mean_difference": 10.9,
+     "sd": 4.6536,
+     "share_with_headroom": 1.0,
+     "tasks": 10
+    },
+    "planted_cluster:6493e4fc": {
+     "mean_difference": 4.5,
+     "sd": 5.2967,
+     "share_with_headroom": 1.0,
+     "tasks": 10
+    },
+    "planted_cluster:9491bde8": {
+     "mean_difference": 16.4,
+     "sd": 6.186,
+     "share_with_headroom": 1.0,
+     "tasks": 10
+    }
+   },
+   "power_at_minimum_useful_effect": 0.238,
+   "status": "CHOSEN",
+   "table": [
+    {
+     "power": 0.107,
+     "tasks_per_stratum": 10,
+     "total_tasks": 30
+    },
+    {
+     "power": 0.143,
+     "tasks_per_stratum": 12,
+     "total_tasks": 36
+    },
+    {
+     "power": 0.187,
+     "tasks_per_stratum": 15,
+     "total_tasks": 45
+    },
+    {
+     "power": 0.22,
+     "tasks_per_stratum": 20,
+     "total_tasks": 60
+    },
+    {
+     "power": 0.291,
+     "tasks_per_stratum": 25,
+     "total_tasks": 75
+    },
+    {
+     "power": 0.367,
+     "tasks_per_stratum": 30,
+     "total_tasks": 90
+    },
+    {
+     "power": 0.472,
+     "tasks_per_stratum": 40,
+     "total_tasks": 120
+    },
+    {
+     "power": 0.612,
+     "tasks_per_stratum": 50,
+     "total_tasks": 150
+    },
+    {
+     "power": 0.703,
+     "tasks_per_stratum": 60,
+     "total_tasks": 180
+    },
+    {
+     "power": 0.814,
+     "tasks_per_stratum": 80,
+     "total_tasks": 240
+    },
+    {
+     "power": 0.915,
+     "tasks_per_stratum": 100,
+     "total_tasks": 300
+    },
+    {
+     "power": 0.985,
+     "tasks_per_stratum": 150,
+     "total_tasks": 450
+    },
+    {
+     "power": 0.991,
+     "tasks_per_stratum": 200,
+     "total_tasks": 600
+    }
+   ]
+  },
+  "scored": 30,
+  "stratum_mean_differences": {
+   "planted_cluster:2269386b": 10.9,
+   "planted_cluster:6493e4fc": 4.5,
+   "planted_cluster:9491bde8": 16.4
+  },
+  "totals": {
+   "candidate": 3546,
+   "exchange_tm": 2958,
+   "low_cycle_tm": 3150,
+   "milp_highs_4x": 3228,
+   "milp_highs_tm": 977,
+   "multistart_tm": 3023
+  },
+  "verdict": "READY_FOR_REVIEW",
+  "wins_ties_losses": [
+   24,
+   6,
+   0
+  ]
+ },
+ "rule": "e1-hard-v3-draft",
+ "schema": "genesis-b20r41-e1d-readiness-v1",
+ "selected": [
+  {
+   "family": "planted_cluster",
+   "index": 1,
+   "params": {
+    "n": 38,
+    "p_in": 0.8,
+    "p_out": 0.07
+   }
+  },
+  {
+   "family": "planted_cluster",
+   "index": 2,
+   "params": {
+    "n": 40,
+    "p_in": 0.8,
+    "p_out": 0.06
+   }
+  },
+  {
+   "family": "planted_cluster",
+   "index": 3,
+   "params": {
+    "n": 40,
+    "p_in": 0.7,
+    "p_out": 0.06
+   }
+  }
+ ],
+ "status": "DEV readiness under a DRAFT rule; licenses no claim; adopts nothing",
+ "verdict": "READY_FOR_REVIEW"
+}

@@ -1,0 +1,410 @@
+{
+ "grid": [
+  {
+   "family": "planted_cluster",
+   "params": {
+    "n": 36,
+    "p_in": 0.8,
+    "p_out": 0.08
+   }
+  },
+  {
+   "family": "planted_cluster",
+   "params": {
+    "n": 38,
+    "p_in": 0.8,
+    "p_out": 0.07
+   }
+  },
+  {
+   "family": "planted_cluster",
+   "params": {
+    "n": 40,
+    "p_in": 0.8,
+    "p_out": 0.06
+   }
+  },
+  {
+   "family": "planted_cluster",
+   "params": {
+    "n": 40,
+    "p_in": 0.7,
+    "p_out": 0.06
+   }
+  },
+  {
+   "family": "planted_cluster",
+   "params": {
+    "n": 40,
+    "p_in": 0.9,
+    "p_out": 0.05
+   }
+  },
+  {
+   "family": "erdos",
+   "params": {
+    "n": 28,
+    "p": 0.45
+   }
+  },
+  {
+   "family": "erdos",
+   "params": {
+    "n": 30,
+    "p": 0.42
+   }
+  },
+  {
+   "family": "erdos",
+   "params": {
+    "n": 32,
+    "p": 0.38
+   }
+  }
+ ],
+ "note": "DEV material only; DRAFT rule; not adopted; candidate-blind",
+ "rule": {
+  "ceiling_rate_max": 0.25,
+  "ceiling_rate_min": 0.0,
+  "ceiling_rate_target": 0.0,
+  "certified_fraction_min": 0.9,
+  "mean_gap_edges_min": 1.0,
+  "mean_headroom_min": 0.02,
+  "measurement": {
+   "baselines": "E1's frozen dsl-time-matched-v1 programs at 0.5 s + milp-highs-v1 (registry v2) at 0.5 s and 2.0 s; strongest = per-host maximum of the five",
+   "isolation": "runc",
+   "reference": "generated_certify.certify_with_rows with the B20_R37 v2 registry and R37.V2, seeded by the evaluator's seed witness and the best baseline witness",
+   "reference_seconds": 60,
+   "search_cpu_seconds": 0.5
+  },
+  "name": "e1-hard-v3-draft",
+  "order": "closest ceiling_rate to 0.0 (hardest for the fixed baselines), then lower median reference_seconds, then setting order",
+  "reference_seconds_median_max": 30.0,
+  "select_at_most": 4,
+  "status": "DRAFT (builder); not adopted; not in calibration.RULES"
+ },
+ "schema": "genesis-b20r41-calibration-draft-v1",
+ "seed": 20264101,
+ "selected": [
+  {
+   "family": "planted_cluster",
+   "index": 1,
+   "params": {
+    "n": 38,
+    "p_in": 0.8,
+    "p_out": 0.07
+   }
+  },
+  {
+   "family": "planted_cluster",
+   "index": 2,
+   "params": {
+    "n": 40,
+    "p_in": 0.8,
+    "p_out": 0.06
+   }
+  },
+  {
+   "family": "planted_cluster",
+   "index": 3,
+   "params": {
+    "n": 40,
+    "p_in": 0.7,
+    "p_out": 0.06
+   }
+  }
+ ],
+ "settings": [
+  {
+   "best_dsl_at_optimum": 0,
+   "family": "planted_cluster",
+   "generator": {
+    "draws": 8,
+    "skipped_unsupported_identity": 0
+   },
+   "index": 0,
+   "ineligible_because": [
+    "ceiling rate outside the band"
+   ],
+   "mip_4x_at_optimum": 4,
+   "params": {
+    "n": 36,
+    "p_in": 0.8,
+    "p_out": 0.08
+   },
+   "summary": {
+    "ceiling_rate": 0.5,
+    "certified": 8,
+    "certified_fraction": 1.0,
+    "mean_edges": 150.62,
+    "mean_gap_edges": 3.0,
+    "mean_headroom": 0.0287,
+    "reference_seconds_median": 15.445,
+    "tasks": 8
+   }
+  },
+  {
+   "best_dsl_at_optimum": 0,
+   "family": "planted_cluster",
+   "generator": {
+    "draws": 8,
+    "skipped_unsupported_identity": 0
+   },
+   "index": 1,
+   "ineligible_because": [],
+   "mip_4x_at_optimum": 0,
+   "params": {
+    "n": 38,
+    "p_in": 0.8,
+    "p_out": 0.07
+   },
+   "summary": {
+    "ceiling_rate": 0.0,
+    "certified": 8,
+    "certified_fraction": 1.0,
+    "mean_edges": 173.75,
+    "mean_gap_edges": 10.0,
+    "mean_headroom": 0.0869,
+    "reference_seconds_median": 18.805,
+    "tasks": 8
+   }
+  },
+  {
+   "best_dsl_at_optimum": 0,
+   "family": "planted_cluster",
+   "generator": {
+    "draws": 8,
+    "skipped_unsupported_identity": 0
+   },
+   "index": 2,
+   "ineligible_because": [],
+   "mip_4x_at_optimum": 0,
+   "params": {
+    "n": 40,
+    "p_in": 0.8,
+    "p_out": 0.06
+   },
+   "summary": {
+    "ceiling_rate": 0.0,
+    "certified": 8,
+    "certified_fraction": 1.0,
+    "mean_edges": 191.12,
+    "mean_gap_edges": 13.0,
+    "mean_headroom": 0.1035,
+    "reference_seconds_median": 20.024,
+    "tasks": 8
+   }
+  },
+  {
+   "best_dsl_at_optimum": 0,
+   "family": "planted_cluster",
+   "generator": {
+    "draws": 8,
+    "skipped_unsupported_identity": 0
+   },
+   "index": 3,
+   "ineligible_because": [],
+   "mip_4x_at_optimum": 2,
+   "params": {
+    "n": 40,
+    "p_in": 0.7,
+    "p_out": 0.06
+   },
+   "summary": {
+    "ceiling_rate": 0.25,
+    "certified": 8,
+    "certified_fraction": 1.0,
+    "mean_edges": 167.12,
+    "mean_gap_edges": 4.625,
+    "mean_headroom": 0.0401,
+    "reference_seconds_median": 15.437,
+    "tasks": 8
+   }
+  },
+  {
+   "best_dsl_at_optimum": 0,
+   "family": "planted_cluster",
+   "generator": {
+    "draws": 8,
+    "skipped_unsupported_identity": 0
+   },
+   "index": 4,
+   "ineligible_because": [
+    "too few certified optima",
+    "evaluator too slow"
+   ],
+   "mip_4x_at_optimum": 0,
+   "params": {
+    "n": 40,
+    "p_in": 0.9,
+    "p_out": 0.05
+   },
+   "summary": {
+    "ceiling_rate": 0.0,
+    "certified": 6,
+    "certified_fraction": 0.75,
+    "mean_edges": 203.88,
+    "mean_gap_edges": 8.3333,
+    "mean_headroom": 0.0656,
+    "reference_seconds_median": 30.235,
+    "tasks": 8
+   }
+  },
+  {
+   "best_dsl_at_optimum": 0,
+   "family": "erdos",
+   "generator": {
+    "draws": 8,
+    "skipped_unsupported_identity": 0
+   },
+   "index": 5,
+   "ineligible_because": [
+    "ceiling rate outside the band",
+    "too little headroom",
+    "too little headroom in edges for the design effect"
+   ],
+   "mip_4x_at_optimum": 7,
+   "params": {
+    "n": 28,
+    "p": 0.45
+   },
+   "summary": {
+    "ceiling_rate": 0.875,
+    "certified": 8,
+    "certified_fraction": 1.0,
+    "mean_edges": 171.62,
+    "mean_gap_edges": 0.125,
+    "mean_headroom": 0.0011,
+    "reference_seconds_median": 11.942,
+    "tasks": 8
+   }
+  },
+  {
+   "best_dsl_at_optimum": 0,
+   "family": "erdos",
+   "generator": {
+    "draws": 8,
+    "skipped_unsupported_identity": 0
+   },
+   "index": 6,
+   "ineligible_because": [
+    "too few certified optima",
+    "ceiling rate outside the band",
+    "too little headroom",
+    "too little headroom in edges for the design effect"
+   ],
+   "mip_4x_at_optimum": 7,
+   "params": {
+    "n": 30,
+    "p": 0.42
+   },
+   "summary": {
+    "ceiling_rate": 1.0,
+    "certified": 7,
+    "certified_fraction": 0.875,
+    "mean_edges": 184.12,
+    "mean_gap_edges": 0.0,
+    "mean_headroom": 0.0,
+    "reference_seconds_median": 12.22,
+    "tasks": 8
+   }
+  },
+  {
+   "best_dsl_at_optimum": 0,
+   "family": "erdos",
+   "generator": {
+    "draws": 8,
+    "skipped_unsupported_identity": 0
+   },
+   "index": 7,
+   "ineligible_because": [
+    "too few certified optima",
+    "ceiling rate outside the band",
+    "too little headroom",
+    "too little headroom in edges for the design effect"
+   ],
+   "mip_4x_at_optimum": 6,
+   "params": {
+    "n": 32,
+    "p": 0.38
+   },
+   "summary": {
+    "ceiling_rate": 1.0,
+    "certified": 6,
+    "certified_fraction": 0.75,
+    "mean_edges": 186.5,
+    "mean_gap_edges": 0.0,
+    "mean_headroom": 0.0,
+    "reference_seconds_median": 10.818,
+    "tasks": 8
+   }
+  }
+ ],
+ "task_sha256s": [
+  "d81c20e5e08806a265d13e9aeecb0148fc2a336eda5b6d2e0c4eb5bd37f0f14a",
+  "8a129007521d9c93212b5621f5cd9759d45572d326eca6f8091daec8f66b45ab",
+  "802e28212283f02602d15652ab02b16c18150b19f0919299561c0f4c5493fbe1",
+  "27f4a75399496a2dfa432edce91911abcefcd2f5d306a01f11f47de397217b2f",
+  "131ba2f7210054727e92854d57d5798b99fb0d89db8398b355713165e502b149",
+  "2eb934a8d357db6a2e776805a1da244b4270b58301659b275b3d16bff7c68a04",
+  "55e6dfa62242b2cc1bc962fa30547cfd4df294f3b706967b2f1e01b7eb7f5ea0",
+  "0078a730270f5c804bee2333048a9b945e5fbac79e82dfcc95438f0b6badd3e4",
+  "f36e154d37a12156f473bf8b62e7895ecf8b41335f6bc7a15fe9f3882f6a4de7",
+  "8a560f4eb3291001e3a4c42d8ea0572a616098ff426e9426b2a54f63d44152bf",
+  "06ae14e8a81bc7c5322659017a04423f68d9b0a9904814f00a88c7904695393f",
+  "97b3bf49b30184f973668b2093ccb462d423a3e6e5d433de68475c002c1f85f9",
+  "93e4feed1caa89d9a31eb63fd0824a745e462a472a3ea6ccd8a4a2c6a140868d",
+  "d34ced22ac86d0949c706fd1f58c12afa981cae34013502e9c6ad86aa36e2242",
+  "7c163876d39899965b8b87ca47864c029bead618fdca83d0af304de156deaf25",
+  "88ae73e395ab34f16fc1876282584a25cd36557e434644d4c8c65475506a1a2d",
+  "5e0d281be698192b7d5633d72ccfc9f3d701a5e6849f67f43eb729df867b28b6",
+  "f80434bb14bc1dd46f100484d237119757d580bbc29262c0025b2b54e28e4810",
+  "75a7ee0cb71dec7776b749c5c9a5980f60003b57e0afa30cc494774325fa3103",
+  "7326cd3560da84f66d3b2fe44aa298e0df5ac9258ee525fcfe104efd23a777b6",
+  "8ad578c0bd92fe88a889d2bfe966e7471406aac0e6a2112a8144358e5b7bfbfe",
+  "03661342b52aef3aa6330670140112bb66e15e5054b6b93e94131cf76ccd207d",
+  "88c4d8b2f23d70158310c9e5291f94ec7b67d636940588e4e0b9eefeb2b3576f",
+  "1805f8a4f3b32bfa199340ff54d99c06cf364aae72f91c1e120386e1c85d8cf7",
+  "e69d58a678aa04bf1af5a4df7599fe1fea7a1ab392b94ccfa97ff4f7fd82783f",
+  "67e19bf63d37a79726fc7a74d4840baffaa2c0fffacc87865caa7f73b01f7565",
+  "dc6cf88855571a74d8602afdcc6cfc9f485942498637138d494aaaaf7c396185",
+  "89146dd7825db4bd389b89f522b3e199109674dc202bb608aa2961fec6677bd7",
+  "5f4416603955e43b3584940b7127e379a725d02ad1b4752bcf352216abcf3132",
+  "28adbd4124312715c600b4c2440d280971b41435adfd0d060f384e409408f087",
+  "0b3c014e67e351e821a1b0a89146b9cb936e4cf2d5c92d897afe8ec1c0571892",
+  "7a00429f022517bc6dd4730a092b008dcf6af161f4d4784f00938a4209703d7d",
+  "7c01372ab4763c4e70ca044a37c78aa298661a55400e75b4bceab58d91cf13d8",
+  "045e2e501586071db4519f4934c1164bd8c89bf65dc3e9f38a84f3130e61304b",
+  "dd8b13bd0f1e5e159a007685ce271e40acad205e9e692fea4520afb2c497cbc8",
+  "8bd5337bcc1075aeb47a0e6315f9c772af2110d6b6c50870537ccb8f2a3e19ee",
+  "f4ba1aa43ba3ab9c088e37fd3e31408011366c46317a979adfcdb5dc98a27cea",
+  "a9e0d727175abff598aae35e3d8ba8869abed845bd8f0d3e8fb86fa5066a544e",
+  "82c1597c6f3170d8c877d0913cb365c54dd2f45b3c7b91a62c55d2c1180ad1db",
+  "5948c970be52ffcef792d55580d749d9d513abce4cc5123e1a95aac8385bf259",
+  "d35c319532f5a33ee899f1538db6258234df606a478a5e80a8ab179a72d3d1cd",
+  "0788e1bdc168f7056f33de64ee32e2f15ddb289228088a5edc5ede223eab6084",
+  "00facea5a19775ba580dd73ba3e906f81564450a24210819a6962e9babc49606",
+  "7f4a7b3845fd5a9faa9403e4cfba88241581448562bf39a4bef5663c765880c8",
+  "bff55b69f5cd178afaa80d02206180484cde776742779edb9633851c001e3581",
+  "9e8eaf1eaaa3254b6fa82ef237aee20b8ea69dcbd6eb24089ea2fcb0288da3f0",
+  "b31bdc2f0d3c63ab1b7f7b21b64541c00ce569bc7bbd27300c98774bca6b0300",
+  "7a8174a341af9465e18e0b889172d9d58df164cf1bf9767e0faa66281eadb69c",
+  "c7e9996a702b22015a6578297bda05501388c7739de95201b5dc51e8291dbb70",
+  "0c4e2dfabf9fb18fc0fc74638d47fd4787733ab610420d00062298fb2beea4c0",
+  "8ff539d77b68674eb9f3a40fc570c32744eb907e97cc4c7c83d308fcce7af357",
+  "e348114f438760f694046b2f9626a2a29995958784f2e4e59a14834f3c665d73",
+  "600cba5ceaa515c2530fc66e1ce3681622233cfa37915c05693721409a29222f",
+  "f270b7ce3d0ef691a84ff5bf18356065ed92026978554500f31e8933047b5da7",
+  "01b92db42f27a634749af63b2ba9cbda483b00c01bcf4a021b045aa5cdc78fb1",
+  "6fdc792a9de7528de6229d7b747bff9021048c15a8ec463eb77f026a68fce618",
+  "7034af33acd50215de049fe811baee00ca554dda3a0e702ea3840bbadac5b7e5",
+  "656bb87efe1c5ee15b9141b1c0bdc6226ef9b982b3e04086002454ac77ea5cee",
+  "6cedcac0f2911a1df845e22cd44ed47e277630c4a13493a6f897b82446e58d96",
+  "e8c47a0fdfaaee6a55bc95fb1ce6822072425ee29281451d95cbc4d539058d0f",
+  "cb2281905f17ffb2f9411c805395aeac04470fe87d0518fc659c524937ddee6f",
+  "2a4188ca8afc147bbeb832e6721033e4a0ca3ad2a859a203a1e9b0a047a89b20",
+  "bc924e4be4c71863978cb1e272e3c63997f1b9a70f8f6430751a78fb43bef793",
+  "fb55f3a086d30e28b87bdbc7270179b86b2b79437d703c0935626dd144fcdc37"
+ ],
+ "tasks_per_setting": 8
+}
