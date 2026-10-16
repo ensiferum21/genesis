@@ -260,6 +260,21 @@
         },
         "restore_verified": "5756 manifest entries match; bundle clone gives the same commit and tree",
         "rehearsal": "deployment/reproduce.sh on the build host (clean room, not a second machine): REPRODUCED, all 7 steps; first attempt lost to a container restart, re-run from the same archive pinned to one core"
+      },
+      "B20_R44": {
+        "commit": "5d4bb61ea189c056804921f3e8e162c3b9bf346f",
+        "sha256": "010ce477b1b363a011fead033d6b1de0e7c891f9db68fc2b56940d04f759f55f",
+        "release_matrix": {
+          "integration": 775,
+          "legacy_regression": 282,
+          "sandbox_escape": 28,
+          "certificates": 43,
+          "formal": 178,
+          "failures": 0,
+          "declared_skips": 1
+        },
+        "restore_verified": "5824 manifest entries match; bundle clone gives the same commit and tree",
+        "rehearsal": "deployment/reproduce.sh on the build host (clean room, not a second machine): REPRODUCED, all 7 steps"
       }
     },
     "adopted_from_crpd_v3_status": {
