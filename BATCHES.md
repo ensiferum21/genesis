@@ -63,6 +63,7 @@ session can resume from the latest checkpoint (see `RESUME.md`).
 | 20_R33 | Strong-baseline audit of E1/E1b | GV3 path (B20R32-OPEN-2) | Exact MIP proves every optimum ≤ 0.36 CPU s; E1 MIP_DOMINATES (+0.75), E1b NO_MATERIAL_DIFFERENCE (+0.20); both +~2 over DSL baselines |
 | 20_R34 | MIP-hard certifiable settings probe | GV3 path (B20R33-OPEN-1) | NO_MIP_HARD_CERTIFIABLE_SETTING: where the evaluator certifies, the MIP is optimal; dense planted regime uncertifiable (candidate beats MIP incumbent there, exploratory); resume defect repaired in the record |
 | 20_R35 | Generated-row certification, enriched | W13, s15.3 (GV4); GV3 path | CERTIFICATION_UTILITY: 27/40 vs 7/40 certified at 60 s, McNemar p ≈ 1e-6, +18.5 s saved per host; sound |
+| 20_R36 | K5 rows for construction, dense regime | s15.3 / W10 (GV4) | NO_UTILITY_AFTER_COST: +3.94 vs plain LP greedy, +4.31 vs MIP, −2.97 vs menu `cross_2` (attempt 2) |
 
 Later phases (B17–B23+) follow the roadmap and its gates; numbers are labels,
 not estimates.

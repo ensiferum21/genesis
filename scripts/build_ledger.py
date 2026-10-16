@@ -80,8 +80,8 @@ SPEC = {
              'tests_formal/test_quotient_invention.py', 'tests_formal/test_decomposition_invention.py',
              G + 'test_cuts.py', 'tests_formal/test_relaxation_invention.py'],
             ['a generated representation with prospective utility (B20_R17/R19 relational decoders, B20_R26 quotients, '
-             'B20_R27 decompositions and B20_R31 generated inequalities are Lean-checked; DEV utility after cost was '
-             'not shown in any of the five attempts)'],
+             'B20_R27 decompositions and B20_R31/R36 generated inequalities are Lean-checked; DEV construction '
+             'utility after cost was not shown in any of the six attempts)'],
             [], 'N/A', 'W10'),
     '5': (I, 'heading', [], [], [], [], 'N/A', 'W01'),
     '5.1': (B, 'task contracts for two graph domains through the DomainAdapter interface (parse, exposure identity, '
@@ -549,8 +549,8 @@ WORKSTREAMS = {
             ['tests_formal/test_invention.py']),
     'W10': ('Representation and ontology invention (vertex-class grammar; B20_R17/R19 generated relational decoders, '
             'B20_R26 quotients with a parametric transport theorem, B20_R27 decompositions with a composition theorem, '
-            'B20_R31 generated pattern inequalities with Lean-checked validity; all Lean-checked, all '
-            'NO_UTILITY_AFTER_COST on DEV)', B,
+            'B20_R31/R36 generated pattern inequalities with Lean-checked validity; all Lean-checked, all '
+            'NO_UTILITY_AFTER_COST on DEV in construction)', B,
             ['src/genesis/invention/representations.py', 'evidence/invention_b18/representations/package.json',
              'src/genesis/invention/soundness.py', 'evidence/soundness_b20r/modes.json',
              'src/genesis/invention/codegree.py', 'evidence/codegree_b20r/package.json',
@@ -562,7 +562,7 @@ WORKSTREAMS = {
              G + 'test_relations.py', 'tests_formal/test_relation_invention.py', G + 'test_quotients.py',
              G + 'test_decompositions.py', 'tests_formal/test_quotient_invention.py',
              'tests_formal/test_decomposition_invention.py', G + 'test_cuts.py',
-             'tests_formal/test_relaxation_invention.py']),
+             'tests_formal/test_relaxation_invention.py', G + 'test_dense_construction.py']),
     'W11': ('Theory-centered discovery and theory packages (first package path only)', B,
             ['src/genesis/formal_research/theory_package.py', 'src/genesis/formal_research/triangle_theory.py',
              'evidence/formal_research_b17/package/package.json'],

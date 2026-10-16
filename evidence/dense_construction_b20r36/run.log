@@ -1,0 +1,36 @@
+[    0.0s] pinned to CPU 0
+[    6.9s] exposure: 2132 identities (2132 named hosts, 711 E1 hosts, 456 calibration hosts)
+[  234.4s] SELECT totals {'menu:cross_2': 1951, 'menu:ordered_2': 1798, 'menu:adjacent_2': 1951, 'menu:adjacent_3': 1951, 'conv:exchange_tm': 1703, 'conv:low_cycle_tm': 1767, 'conv:multistart_tm': 1731} -> {'new': 'new:cut_lp_greedy_k5', 'control': 'control:lp_greedy', 'menu': 'menu:cross_2', 'conventional': 'conv:low_cycle_tm', 'mip': 'mip:highs'}; matched arm gets 2.4666 s
+[  308.1s] planted_cluster:9491bde8 0000: {'new': 116, 'control': 110, 'menu': 119, 'conventional': 102, 'mip': 110, 'matched': 111} opt None
+[  345.9s] planted_cluster:9491bde8 0001: {'new': 118, 'control': 109, 'menu': 118, 'conventional': 99, 'mip': 104, 'matched': 109} opt 118
+[  398.8s] planted_cluster:9491bde8 0002: {'new': 127, 'control': 117, 'menu': 127, 'conventional': 119, 'mip': 115, 'matched': 117} opt 127
+[  451.5s] planted_cluster:9491bde8 0003: {'new': 120, 'control': 118, 'menu': 128, 'conventional': 118, 'mip': 111, 'matched': 118} opt 128
+[  516.1s] planted_cluster:9491bde8 0004: {'new': 122, 'control': 124, 'menu': 124, 'conventional': 114, 'mip': 112, 'matched': 124} opt 124
+[  546.6s] planted_cluster:9491bde8 0005: {'new': 125, 'control': 117, 'menu': 125, 'conventional': 104, 'mip': 120, 'matched': 117} opt 125
+[  619.5s] planted_cluster:9491bde8 0006: {'new': 115, 'control': 114, 'menu': 123, 'conventional': 105, 'mip': 110, 'matched': 114} opt None
+[  666.7s] planted_cluster:9491bde8 0007: {'new': 122, 'control': 118, 'menu': 128, 'conventional': 108, 'mip': 115, 'matched': 121} opt 128
+[  703.1s] planted_cluster:9491bde8 0008: {'new': 116, 'control': 108, 'menu': 116, 'conventional': 100, 'mip': 103, 'matched': 110} opt 116
+[  747.2s] planted_cluster:9491bde8 0009: {'new': 111, 'control': 108, 'menu': 121, 'conventional': 108, 'mip': 104, 'matched': 112} opt 121
+[  787.7s] planted_cluster:9491bde8 0010: {'new': 111, 'control': 114, 'menu': 121, 'conventional': 103, 'mip': 105, 'matched': 114} opt 121
+[  860.6s] planted_cluster:9491bde8 0011: {'new': 121, 'control': 117, 'menu': 122, 'conventional': 108, 'mip': 105, 'matched': 117} opt None
+[  933.6s] planted_cluster:9491bde8 0012: {'new': 117, 'control': 117, 'menu': 127, 'conventional': 101, 'mip': 110, 'matched': 124} opt None
+[ 1007.4s] planted_cluster:9491bde8 0013: {'new': 129, 'control': 116, 'menu': 129, 'conventional': 121, 'mip': 114, 'matched': 118} opt None
+[ 1080.3s] planted_cluster:9491bde8 0014: {'new': 120, 'control': 128, 'menu': 133, 'conventional': 105, 'mip': 115, 'matched': 128} opt None
+[ 1121.0s] planted_cluster:9491bde8 0015: {'new': 125, 'control': 115, 'menu': 125, 'conventional': 100, 'mip': 105, 'matched': 115} opt 125
+[ 1135.3s] erdos:17db5902 0000: {'new': 117, 'control': 117, 'menu': 119, 'conventional': 113, 'mip': 120, 'matched': 117} opt 120
+[ 1148.3s] erdos:17db5902 0001: {'new': 127, 'control': 127, 'menu': 127, 'conventional': 118, 'mip': 127, 'matched': 127} opt 127
+[ 1221.8s] erdos:17db5902 0002: {'new': 125, 'control': 117, 'menu': 131, 'conventional': 116, 'mip': 127, 'matched': 117} opt None
+[ 1235.1s] erdos:17db5902 0003: {'new': 131, 'control': 131, 'menu': 131, 'conventional': 116, 'mip': 131, 'matched': 131} opt 131
+[ 1248.7s] erdos:17db5902 0004: {'new': 120, 'control': 112, 'menu': 121, 'conventional': 111, 'mip': 121, 'matched': 112} opt 121
+[ 1273.7s] erdos:17db5902 0005: {'new': 121, 'control': 112, 'menu': 123, 'conventional': 110, 'mip': 122, 'matched': 112} opt 124
+[ 1288.3s] erdos:17db5902 0006: {'new': 128, 'control': 113, 'menu': 128, 'conventional': 112, 'mip': 128, 'matched': 113} opt 128
+[ 1300.8s] erdos:17db5902 0007: {'new': 117, 'control': 116, 'menu': 118, 'conventional': 109, 'mip': 119, 'matched': 117} opt 119
+[ 1374.5s] erdos:17db5902 0008: {'new': 119, 'control': 113, 'menu': 125, 'conventional': 112, 'mip': 123, 'matched': 113} opt None
+[ 1447.8s] erdos:17db5902 0009: {'new': 115, 'control': 113, 'menu': 118, 'conventional': 111, 'mip': 117, 'matched': 113} opt None
+[ 1460.8s] erdos:17db5902 0010: {'new': 126, 'control': 125, 'menu': 125, 'conventional': 110, 'mip': 126, 'matched': 125} opt 126
+[ 1473.6s] erdos:17db5902 0011: {'new': 120, 'control': 120, 'menu': 120, 'conventional': 111, 'mip': 120, 'matched': 120} opt 120
+[ 1487.8s] erdos:17db5902 0012: {'new': 127, 'control': 127, 'menu': 127, 'conventional': 114, 'mip': 127, 'matched': 127} opt 127
+[ 1502.3s] erdos:17db5902 0013: {'new': 126, 'control': 126, 'menu': 128, 'conventional': 118, 'mip': 128, 'matched': 126} opt 128
+[ 1516.6s] erdos:17db5902 0014: {'new': 126, 'control': 115, 'menu': 128, 'conventional': 117, 'mip': 128, 'matched': 115} opt 128
+[ 1529.1s] erdos:17db5902 0015: {'new': 116, 'control': 116, 'menu': 116, 'conventional': 111, 'mip': 116, 'matched': 116} opt 116
+[ 1529.5s] verdict NO_UTILITY_AFTER_COST; beyond_mip True: {"control": [3.9375, [2.4062, 5.4062]], "menu": [-2.9688, [-4.0312, -1.9375]], "conventional": [11.0, [9.5312, 12.5]], "matched": [3.3125, [1.75, 4.8438]], "mip": [4.3125, [3.3438, 5.2812]]}

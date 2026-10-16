@@ -30,6 +30,7 @@
 | Strong-baseline audit (B20_R33) | the arms are the frozen E1/E1b descriptors, contrasts and verdicts follow from the rows, no arm exceeds a certified optimum, overrun flags, fresh hosts in the addenda (`tests_genesis/test_strong_baseline_audit.py`) | nightly / release | failure **or skip** blocks release |
 | MIP-hard probe (B20_R34) | preregistered settings and arms, classification and verdict from the rows, no arm above a certified optimum, hosts over 200 edges uncertified, the record repair matches every row, hosts in the addenda (`tests_genesis/test_mip_hard_probe.py`) | nightly / release | failure **or skip** blocks release |
 | Dense certification (B20_R35) | preregistered settings and hosts, summary and verdict from the rows, the kept certificates re-check VALID at the certified value, fresh hosts in the addenda (`tests_genesis/test_dense_certification.py`); limited separation stays valid (`tests_genesis/test_lp_dual_rows.py`) | nightly / release | failure **or skip** blocks release |
+| Dense construction (B20_R36) | the component is the CHECKED K5 bound, comparisons and verdict follow from the rows, no arm above a certified optimum, fresh hosts in the addenda (`tests_genesis/test_dense_construction.py`) | nightly / release | failure **or skip** blocks release |
 | Requirements ledger | every spec section, roadmap item and catalogue entry has a disposition with resolvable tests (`test_ledger.py`) | commit | must pass |
 
 Run: `python3 scripts/run_test_matrix.py --profile commit|nightly|release --report out.json`.
