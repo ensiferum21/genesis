@@ -69,6 +69,49 @@ The components are trusted code in `discovery/construct.py` and the menu modules
 
 `sealed_improver_evaluation` stays refused until the export carries paired research lineages (handoff s20.5, H08). That export is blocked on the canonical B20_R11 code.
 
+## Proposed additions after B20_R44 (from design material the user supplied, MISSING-BIT-1; DRAFT)
+
+Two controls from that report. Both are cheap, and both address the way this programme could fool
+itself.
+
+1. **False-discovery control across attempts.**
+   - **The risk.** Nine component attempts have been run so far, and more will follow. With enough
+     attempts, one will pass a 5% test by chance. They are six construction attempts in four
+     families (B20_R17, R19, R26, R27, R31, R36) and three certification attempts (B20_R32, R35,
+     R37).
+   - **Where B20_R35 stands.** Its CERTIFICATION_UTILITY (McNemar p ≈ 1e-6) survives BY at any
+     plausible family size.
+   - **The control.** Treat every preregistered component attempt as one hypothesis in a running
+     family, and promote only attempts that survive Benjamini–Yekutieli control at q = 0.1 over all
+     attempts so far.
+   - **Why BY.** BY is valid under arbitrary dependence. The attempts share hosts, components and
+     code, so they are dependent.
+   - **What it means for each verdict.** An attempt's own preregistered verdict still stands as
+     recorded. BY decides only whether a positive verdict may count toward GV4.
+2. **Null worlds.**
+   - **The control.** Every invention pipeline that can promote a component is also run, at the same
+     budget, on a null world, where the truth is known to be "nothing to promote".
+   - **Examples.** Hosts already triangle-free, where every method is optimal. Or a component that a
+     Lean check shows is equal to its baseline (B20_R44's null arm, `adjacent_2` = `cross_2`).
+   - **Acceptance.** The pipeline must promote nothing there. A promotion on a null world blocks the
+     pipeline, whatever it found elsewhere.
+
+3. **Stepping stones and combinations** (from the Genesis-Ω² concept, "Gap Engine: combination gaps"). A
+   component that fails alone is archived as a stepping stone, not discarded.
+   - **What is archived.** Its verdict, its effect estimate and interval, and the hosts on which it
+     helped.
+   - **What a combination attempt is.** A preregistered test of the *combination* of two archived
+     components, against the better of the two alone, at matched budget. It requires a stated
+     mechanism for why they should interact. Each one is its own attempt, inside the BY family
+     above.
+   - **The candidates so far:**
+     - K5/K7 row guidance (B20_R31/R36) as the initialiser of the `cross_2` representation search;
+     - the quotient attempt (B20_R26) with the relaxation rows.
+   - **A note on scale.** Lean checks the rows themselves (B20_R37). The generated-rows LP, rounded,
+     already reaches the optimum on 38 of 38 certified planted hosts at about 20 s (B20_R41). That is
+     a construction signal at a large budget, which a matched-budget combination would have to turn
+     into utility.
+
 ## What is blocked, and on what
 
 | Item | Blocked on |
