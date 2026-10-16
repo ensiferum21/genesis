@@ -80,12 +80,27 @@ def disproof_recipe(conj, counterexample):
     return f'intro h\nexact absurd (h {args}) (by decide +kernel)'
 
 
+OPTION_LINE = re.compile(r'^set_option maxHeartbeats (\d+) in$')
+
+
+def split_options(text):
+    """(declaration options, tactic): a recipe may begin with `set_option maxHeartbeats N in` on
+    its own line (B20_R37); that line is placed before the theorem, where it governs the whole
+    declaration. maxHeartbeats is an allowed option (checker.ALLOWED_OPTIONS)."""
+    first, _, rest = text.partition('\n')
+    if OPTION_LINE.match(first.strip()):
+        return [first.strip()], rest
+    return [], text
+
+
 def candidate_module(name, target, unfold_first, imports, candidates):
     """One module holding every candidate as its own theorem; returns (source, line ranges)."""
     lines = [f'import {m}' for m in imports] + [f'namespace {name}']
     ranges = {}
     for j, (rid, text) in enumerate(candidates):
         start = len(lines) + 1
+        opts, text = split_options(text)
+        lines += opts
         lines.append(f'theorem cand_{j} : {target} := by')
         lines.append(f'  unfold {" ".join(unfold_first)}')
         lines += ['  ' + t for t in text.split('\n')]
@@ -96,8 +111,9 @@ def candidate_module(name, target, unfold_first, imports, candidates):
 
 def proof_module(name, target, unfold_first, imports, tactic):
     """The proof module submitted for acceptance: `theorem proof : target := by ...`."""
-    lines = [f'import {m}' for m in imports] + [f'namespace {name}', f'theorem proof : {target} := by',
-                                                f'  unfold {" ".join(unfold_first)}']
+    opts, tactic = split_options(tactic)
+    lines = [f'import {m}' for m in imports] + [f'namespace {name}'] + opts + [f'theorem proof : {target} := by',
+                                                                         f'  unfold {" ".join(unfold_first)}']
     lines += ['  ' + t for t in tactic.split('\n')] + [f'end {name}']
     return '\n'.join(lines) + '\n'
 

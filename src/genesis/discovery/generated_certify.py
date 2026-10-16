@@ -39,39 +39,56 @@ def load_registry(path=PACKAGE):
     return V.registry_from_package(pkg, defs_source=DEFS_SOURCE)
 
 
-def pattern_order(registry):
-    """Registry patterns, smallest first (vertices, edges, id): the order copies are enumerated in."""
-    return sorted(registry['patterns'], key=lambda k: (registry['patterns'][k]['vertices'],
-                                                        len(registry['patterns'][k]['edges']), k))
+def pattern_order(registry, order='size'):
+    """Registry pattern ids in enumeration order: 'size' is smallest first (vertices, edges, id;
+    B20_R35); 'dense-first' is highest edge density first, then more vertices (B20_R37)."""
+    P = registry['patterns']
+    if order == 'dense-first':
+        dens = lambda k: len(P[k]['edges']) / (P[k]['vertices'] * (P[k]['vertices'] - 1) / 2)
+        return sorted(P, key=lambda k: (-dens(k), -P[k]['vertices'], k))
+    return sorted(P, key=lambda k: (P[k]['vertices'], len(P[k]['edges']), k))
 
 
-def rows(task, registry, *, stop=None, max_rows=None, order=None):
+def rows(task, registry, *, stop=None, max_rows=None, order=None, enumerator=None, max_total=None):
     """[(kind, edges, rhs, extra)] for the host's triangles and the copies of the registry patterns.
-    By default every copy of every pattern, patterns in id order. With `order='size'` patterns are
-    taken smallest first; `max_rows` caps the copies per pattern and `stop()` ends enumeration.
+    By default every copy of every pattern, patterns in id order, by invention.cuts.maps. With
+    `order` ('size' or 'dense-first') patterns are taken in that order; `max_rows` caps the copies
+    per pattern, `max_total` all pattern copies, and `stop()` ends enumeration;
+    `enumerator='fast'` uses invention.cuts_v2.maps_fast (one map per copy, by symmetry breaking).
     Any subset of copies gives valid rows, so a cap only weakens the bound."""
-    from ..invention.cuts import maps
+    from ..invention.cuts import maps as generic
     out = [('triangle', list(t), 2, None) for t in triangles(task)]
-    ids = pattern_order(registry) if order == 'size' else sorted(registry['patterns'])
+    ids = pattern_order(registry, order) if order in ('size', 'dense-first') else sorted(registry['patterns'])
+    total = 0
     for pid in ids:
         if stop is not None and stop():
             break
+        if max_total is not None and total >= max_total:
+            break
         p = registry['patterns'][pid]
         pat = {'vertices': p['vertices'], 'edges': [tuple(e) for e in p['edges']]}
-        for phi in maps(task, pat, stop=stop, limit=max_rows):
+        cap = max_rows if max_total is None else min(x for x in (max_rows, max_total - total) if x is not None)
+        if enumerator == 'fast':
+            from ..invention.cuts_v2 import maps_fast
+            found = maps_fast(task, pat, stop=stop, limit=cap)[0]
+        else:
+            found = generic(task, pat, stop=stop, limit=cap)
+        total += len(found)
+        for phi in found:
             es = sorted(tuple(sorted((phi[a], phi[b]))) for a, b in pat['edges'])
             out.append(('pattern', es, p['ex'], {'pattern': pid, 'map': list(phi)}))
     return out
 
 
-def lp_dual_rows(task, registry, *, max_denominator=10 ** 6, stop=None, max_rows=None, order=None):
+def lp_dual_rows(task, registry, *, max_denominator=10 ** 6, stop=None, max_rows=None, order=None, enumerator=None,
+                 max_total=None):
     """(certificate, float LP value, number of rows) from the untrusted LP producer."""
     import numpy as np
     from scipy.optimize import linprog
     from scipy.sparse import lil_matrix
     E = [tuple(e) for e in task.edges]
     idx = {e: i for i, e in enumerate(E)}
-    R = rows(task, registry, stop=stop, max_rows=max_rows, order=order)
+    R = rows(task, registry, stop=stop, max_rows=max_rows, order=order, enumerator=enumerator, max_total=max_total)
     base = {'schema': V.SCHEMA, 'task_sha256': digest(task.model_dump(mode='json')), 'domain': task.domain,
             'registry_sha256': digest(registry)}
     if not R:
@@ -109,11 +126,11 @@ def lp_dual_rows(task, registry, *, max_denominator=10 ** 6, stop=None, max_rows
 
 
 def certify_with_rows(task, witness, registry, *, seconds=600, sat_fallback=True, separation_seconds=None,
-                      max_rows=None):
+                      max_rows=None, order=None, enumerator=None, max_total=None):
     """Joint certification as `obstruction.certify`, with the generated rows in the LP step.
     With `separation_seconds` (wall) and/or `max_rows` (per pattern), copies are enumerated
     smallest pattern first and enumeration stops at either limit (B20_R35); by default every copy
-    of every pattern is used (B20_R32).
+    of every pattern is used (B20_R32). B20_R37 adds `order`, `enumerator` and `max_total` (see rows).
     Returns {'lower', 'upper', 'method', 'steps', 'wall_s', 'certificate'}; optimum iff lower == upper."""
     from ..verification.sat import certify_upper, witness_from_model
     start = time.monotonic()
@@ -124,7 +141,8 @@ def certify_with_rows(task, witness, registry, *, seconds=600, sat_fallback=True
     limited = separation_seconds is not None or max_rows is not None
     stop = (lambda: time.monotonic() - w0 >= separation_seconds) if separation_seconds is not None else None
     cert, lp_value, n_rows = lp_dual_rows(task, registry, stop=stop, max_rows=max_rows,
-                                          order='size' if limited else None)
+                                          order=order or ('size' if limited else None), enumerator=enumerator,
+                                          max_total=max_total)
     v = V.check_certificate(task, cert, registry)
     steps.append({'step': 'lp-dual-rows', 'rows': n_rows, 'lp_value': lp_value, 'verdict': v['verdict'],
                   'bound': v['bound'], 'reason': v['reason'], 'cpu_s': round(time.process_time() - t0, 3),
