@@ -230,6 +230,21 @@
         },
         "restore_verified": "5670 manifest entries match; bundle clone gives the same commit and tree",
         "rehearsal": "deployment/reproduce.sh on the build host (clean room, not a second machine): REPRODUCED, all 7 steps"
+      },
+      "B20_R35": {
+        "commit": "fdaf849119020f9592c30fb4dc8435470a7a4ef3",
+        "sha256": "9aace6d19a7c0f6051a9e39024efe740f85a3d0e2b5ffb709b355d5344a054ea",
+        "release_matrix": {
+          "integration": 712,
+          "legacy_regression": 282,
+          "sandbox_escape": 28,
+          "certificates": 43,
+          "formal": 174,
+          "failures": 0,
+          "declared_skips": 1
+        },
+        "restore_verified": "5713 manifest entries match; bundle clone gives the same commit and tree",
+        "rehearsal": "deployment/reproduce.sh on the build host (clean room, not a second machine): REPRODUCED, all 7 steps"
       }
     },
     "adopted_from_crpd_v3_status": {
@@ -511,7 +526,8 @@
       },
       "B20_R35": {
         "commits": [
-          "50e567a"
+          "50e567a",
+          "fdaf849"
         ],
         "result": "generated-row certification enriched by setting (planted n40 0.8/0.06 and erdos n30 p0.42, 20 fresh hosts each, 60 s per route from the evaluator seed witness): certified 27/40 (rows) vs 7/40 (evaluator), discordant 20 vs 0, McNemar p 9.5e-07, wall saving +18.5 s [13.9, 23.3], sound: CERTIFICATION_UTILITY; first preregistered positive DEV utility of a machine-generated Lean-checked component (certification; classical bounds, no novelty claim)"
       }
