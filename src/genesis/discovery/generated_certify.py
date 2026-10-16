@@ -39,27 +39,39 @@ def load_registry(path=PACKAGE):
     return V.registry_from_package(pkg, defs_source=DEFS_SOURCE)
 
 
-def rows(task, registry, *, stop=None):
-    """[(kind, edges, rhs, extra)] for the host's triangles and every copy of every registry pattern."""
+def pattern_order(registry):
+    """Registry patterns, smallest first (vertices, edges, id): the order copies are enumerated in."""
+    return sorted(registry['patterns'], key=lambda k: (registry['patterns'][k]['vertices'],
+                                                        len(registry['patterns'][k]['edges']), k))
+
+
+def rows(task, registry, *, stop=None, max_rows=None, order=None):
+    """[(kind, edges, rhs, extra)] for the host's triangles and the copies of the registry patterns.
+    By default every copy of every pattern, patterns in id order. With `order='size'` patterns are
+    taken smallest first; `max_rows` caps the copies per pattern and `stop()` ends enumeration.
+    Any subset of copies gives valid rows, so a cap only weakens the bound."""
     from ..invention.cuts import maps
     out = [('triangle', list(t), 2, None) for t in triangles(task)]
-    for pid in sorted(registry['patterns']):
+    ids = pattern_order(registry) if order == 'size' else sorted(registry['patterns'])
+    for pid in ids:
+        if stop is not None and stop():
+            break
         p = registry['patterns'][pid]
         pat = {'vertices': p['vertices'], 'edges': [tuple(e) for e in p['edges']]}
-        for phi in maps(task, pat, stop=stop):
+        for phi in maps(task, pat, stop=stop, limit=max_rows):
             es = sorted(tuple(sorted((phi[a], phi[b]))) for a, b in pat['edges'])
             out.append(('pattern', es, p['ex'], {'pattern': pid, 'map': list(phi)}))
     return out
 
 
-def lp_dual_rows(task, registry, *, max_denominator=10 ** 6):
+def lp_dual_rows(task, registry, *, max_denominator=10 ** 6, stop=None, max_rows=None, order=None):
     """(certificate, float LP value, number of rows) from the untrusted LP producer."""
     import numpy as np
     from scipy.optimize import linprog
     from scipy.sparse import lil_matrix
     E = [tuple(e) for e in task.edges]
     idx = {e: i for i, e in enumerate(E)}
-    R = rows(task, registry)
+    R = rows(task, registry, stop=stop, max_rows=max_rows, order=order)
     base = {'schema': V.SCHEMA, 'task_sha256': digest(task.model_dump(mode='json')), 'domain': task.domain,
             'registry_sha256': digest(registry)}
     if not R:
@@ -96,8 +108,12 @@ def lp_dual_rows(task, registry, *, max_denominator=10 ** 6):
     return cert, float(res.fun), nR
 
 
-def certify_with_rows(task, witness, registry, *, seconds=600, sat_fallback=True):
+def certify_with_rows(task, witness, registry, *, seconds=600, sat_fallback=True, separation_seconds=None,
+                      max_rows=None):
     """Joint certification as `obstruction.certify`, with the generated rows in the LP step.
+    With `separation_seconds` (wall) and/or `max_rows` (per pattern), copies are enumerated
+    smallest pattern first and enumeration stops at either limit (B20_R35); by default every copy
+    of every pattern is used (B20_R32).
     Returns {'lower', 'upper', 'method', 'steps', 'wall_s', 'certificate'}; optimum iff lower == upper."""
     from ..verification.sat import certify_upper, witness_from_model
     start = time.monotonic()
@@ -105,7 +121,10 @@ def certify_with_rows(task, witness, registry, *, seconds=600, sat_fallback=True
     lower = checked['value']
     steps = []
     t0, w0 = time.process_time(), time.monotonic()
-    cert, lp_value, n_rows = lp_dual_rows(task, registry)
+    limited = separation_seconds is not None or max_rows is not None
+    stop = (lambda: time.monotonic() - w0 >= separation_seconds) if separation_seconds is not None else None
+    cert, lp_value, n_rows = lp_dual_rows(task, registry, stop=stop, max_rows=max_rows,
+                                          order='size' if limited else None)
     v = V.check_certificate(task, cert, registry)
     steps.append({'step': 'lp-dual-rows', 'rows': n_rows, 'lp_value': lp_value, 'verdict': v['verdict'],
                   'bound': v['bound'], 'reason': v['reason'], 'cpu_s': round(time.process_time() - t0, 3),
@@ -137,4 +156,4 @@ def certify_with_rows(task, witness, registry, *, seconds=600, sat_fallback=True
             'wall_s': round(time.monotonic() - start, 3), 'certificate': certificate}
 
 
-__all__ = ['load_registry', 'rows', 'lp_dual_rows', 'certify_with_rows', 'PACKAGE']
+__all__ = ['load_registry', 'rows', 'pattern_order', 'lp_dual_rows', 'certify_with_rows', 'PACKAGE']

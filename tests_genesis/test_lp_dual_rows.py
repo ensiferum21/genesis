@@ -113,6 +113,17 @@ class Certificates(unittest.TestCase):
         smaller = dict(self.reg, patterns={k: v for k, v in self.reg['patterns'].items() if v['vertices'] == 6})
         self.assertEqual(V.check_certificate(K6, self.k6, smaller)['verdict'], 'REJECTED')
 
+    def test_limited_separation_stays_valid(self):
+        self.assertEqual(GC.pattern_order(self.reg)[0], next(k for k, v in self.reg['patterns'].items() if v['vertices'] == 5))
+        none, _, n0 = GC.lp_dual_rows(K6, self.reg, max_rows=0, order='size')
+        self.assertEqual(V.check_certificate(K6, none, self.reg)['bound'], 10)
+        self.assertEqual(n0, 20)                                          # the 20 triangles of K6 only
+        stopped, _, _ = GC.lp_dual_rows(K6, self.reg, stop=lambda: True, order='size')
+        self.assertEqual(V.check_certificate(K6, stopped, self.reg)['bound'], 10)
+        witness = [(u, v) for u, v in K6.edges if (u < 3) != (v < 3)]
+        rec = GC.certify_with_rows(K6, witness, self.reg, seconds=30, separation_seconds=30, max_rows=50000)
+        self.assertEqual((rec['lower'], rec['upper'], rec['method']), (9, 9, 'LP_DUAL_GENERATED_EXACT'))
+
     def test_route_certifies_without_sat_when_the_bound_meets_the_witness(self):
         witness = [(u, v) for u, v in K6.edges if (u < 3) != (v < 3)]                    # K_{3,3}: 9 edges
         rec = GC.certify_with_rows(K6, witness, self.reg, seconds=30)
