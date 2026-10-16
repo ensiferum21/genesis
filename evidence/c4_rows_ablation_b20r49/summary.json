@@ -1,0 +1,120 @@
+{
+ "ablation_registry_sha256": "f64668f57c3af26d0ece817414766aa4e68e8a31845706a4fe36b8c65e55644f",
+ "budget_s": 60,
+ "by_setting": {
+  "erdos:0cee043c": {
+   "certified_c": 20,
+   "certified_c0": 12,
+   "certified_c0_not_c": 0,
+   "certified_c_not_c0": 8,
+   "hosts": 20,
+   "nodes_total": {
+    "c": 5954,
+    "c0": 97723
+   },
+   "rate_c": 1.0,
+   "rate_c0": 0.6,
+   "wall_total_s": {
+    "c": 162.18,
+    "c0": 603.92
+   }
+  },
+  "erdos:fa6fa189": {
+   "certified_c": 16,
+   "certified_c0": 12,
+   "certified_c0_not_c": 0,
+   "certified_c_not_c0": 4,
+   "hosts": 20,
+   "nodes_total": {
+    "c": 7340,
+    "c0": 88851
+   },
+   "rate_c": 0.8,
+   "rate_c0": 0.6,
+   "wall_total_s": {
+    "c": 278.26,
+    "c0": 621.94
+   }
+  }
+ },
+ "checker_identity": "genesis.verification.lp_dual_tree_c4@58ef641ed428eec04a54cfad752e0422aa92840bff713f8b36f18420c0851a08",
+ "code_identity": "6a1ccaa93866a27bbf9d888a0d82f43dfa6c13a7c38895826d60f9402e129dd1",
+ "exposure_scan": {
+  "calibration_hosts": 456,
+  "distinct_hosts": 2796,
+  "e1_named_hosts": 711,
+  "empty_files_skipped": [
+   "evidence/failed-wal-final-replay.json",
+   "evidence/final-replay.json"
+  ],
+  "excluded_identities": 2796,
+  "files_scanned": 1015,
+  "host_records": 10591
+ },
+ "mcnemar_p_one_sided": 0.00024414,
+ "passes": {
+  "coverage": true,
+  "mcnemar": true,
+  "sound": true
+ },
+ "pooled": {
+  "certified_c": 36,
+  "certified_c0": 24,
+  "certified_c0_not_c": 0,
+  "certified_c_not_c0": 12,
+  "hosts": 40,
+  "nodes_total": {
+   "c": 13294,
+   "c0": 186574
+  },
+  "rate_c": 0.9,
+  "rate_c0": 0.6,
+  "wall_total_s": {
+   "c": 440.45,
+   "c0": 1225.86
+  }
+ },
+ "registry": {
+  "package_sha256": "7a081e4a957503da29d728f94d67793eea1404a2aacda8199d4c90cf8cbf0865",
+  "patterns": 34,
+  "sha256": "e82b6ea62384e1369c5d63c7b6bdc59c673150b67bb7e75350eb0888f2846b91"
+ },
+ "route": {
+  "lp_rounding_seconds": 1.0,
+  "max_rows": 50000,
+  "max_total": 80000,
+  "order": "dense-first",
+  "separation_seconds": 15
+ },
+ "schema": "genesis-b20r49-c4-rows-ablation-v1",
+ "seeds": [
+  20264901,
+  20264911
+ ],
+ "settings": [
+  {
+   "family": "erdos",
+   "params": {
+    "n": 30,
+    "p": 0.2
+   }
+  },
+  {
+   "family": "erdos",
+   "params": {
+    "n": 36,
+    "p": 0.17
+   }
+  }
+ ],
+ "status": "DEV measurement; licenses nothing; route and checker not wired into the evaluator",
+ "unsound_rows": [],
+ "verdict": "ROWS_RESPONSIBLE",
+ "wall_saving_c0_minus_c": {
+  "interval_90": [
+   14.224825000000001,
+   25.311275000000002
+  ],
+  "mean": 19.635225
+ }
+}

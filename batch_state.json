@@ -648,6 +648,12 @@
           "7bf1723"
         ],
         "result": "certified branch and bound over the transferred C4 rows: exact tree checker verification/lp_dual_tree_c4.py, producer discovery/generated_bnb_c4.py (not wired). Preregistered on 40 fresh C4 hosts (erdos n30 p0.2, n36 p0.17) at 60 s: tree route 38 vs evaluator 26, 12/0 discordant, McNemar p 0.00024, wall saving +27.8 s [20.7, 35.6], median 2.1 s vs 46.9 s, every certificate VALID: CERTIFICATION_UTILITY; both settings meet the 90% calibration limit under the tree route (n36 90% vs 35%). Attribution to the rows: B20_R49"
+      },
+      "B20_R49": {
+        "commits": [
+          "c6eae14"
+        ],
+        "result": "registered ablation of the transferred rows in the tree route (empty registry: 4-cycle rows only), 40 fresh C4 hosts at 60 s: with the rows 36, without 24, 12/0 discordant, McNemar p 0.00024, nodes 13,294 vs 186,574, wall saving +19.6 s [14.2, 25.3]: ROWS_RESPONSIBLE. Completes the preregistered DEV chain B20_R46 -> R49 (near-domain transfer, roadmap E5)"
       }
     },
     "open_after_b20_r5": [
@@ -1004,6 +1010,9 @@
     ],
     "open_after_b20_r48": [
       "B20R48-OPEN-1 (new): adopt the tree checker as a c4_host_v2 certification route (trust-path change); makes C4 settings calibratable"
+    ],
+    "open_after_b20_r49": [
+      "B20R46-OPEN-1 and B20R48-OPEN-1 updated: utility attributable to the transferred rows; GV6 needs a structurally different formal domain"
     ]
   }
 }
