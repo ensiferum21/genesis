@@ -119,6 +119,8 @@
 
 Done since B20_R24: the E1b causal re-pilot on the `e1b` family (B20_R28); the certification-limit measurement for B20R24-OPEN-2 (B20_R30).
 
+**Probed and not pursued (B20_R50–R52, disclosed).** 7-vertex C4 rows: no headroom at 60 s, so no GV4 generator pilot on C4. Triangle-free branch and bound: node LPs too heavy on dense hosts. Lazy C4 rows help only small dense hosts. Dense C4 settings: not certifiable at 120 s, and the exact MIP at 4x budget dominates E1b there. Details in `evidence/e1b_c4_readiness_b20r50/README.md` and `docs/checkpoints/B20_R52_RECORD.md`.
+
 ## Needs external resources
 
 These are BLOCKED_ENVIRONMENT here:
