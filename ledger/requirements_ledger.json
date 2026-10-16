@@ -5062,7 +5062,10 @@
    },
    "code": [
     "src/genesis/discovery/obstruction.py",
-    "evidence/discovery_b19/obstruction/evaluation.json"
+    "evidence/discovery_b19/obstruction/evaluation.json",
+    "src/genesis/verification/lp_dual_rows.py",
+    "src/genesis/discovery/generated_certify.py",
+    "evidence/generated_certification_b20r32/summary.json"
    ],
    "disposition": "IMPLEMENTED_BOUNDED_PENDING_AUDIT",
    "evidence": [],
@@ -5077,9 +5080,11 @@
    "scope": "workstream (B14 scope delivered; acceptance pending)",
    "source": "roadmap \u00a77-10",
    "tests": [
-    "tests_formal/test_discovery.py"
+    "tests_formal/test_discovery.py",
+    "tests_genesis/test_lp_dual_rows.py",
+    "tests_genesis/test_generated_certification.py"
    ],
-   "title": "Construction, obstruction and certified reductions (LP relaxation with exact dual certificates; no symmetry reduction, kernelization or continuation yet)",
+   "title": "Construction, obstruction and certified reductions (LP relaxation with exact dual certificates; B20_R32: exact certificates over generated rows with a Lean-bound registry, DEV only, NO_CERTIFICATION_UTILITY prospectively; no symmetry reduction, kernelization or continuation yet)",
    "workstream": "W13"
   },
   {

@@ -1,0 +1,165 @@
+{
+ "budget_s": 600,
+ "by_stratum": {
+  "erdos:70960071": {
+   "b_lp_rows_median": 551.0,
+   "b_lp_step_cpu_s_median": 0.051,
+   "certified_a": 30,
+   "certified_b": 30,
+   "hosts": 30,
+   "lp_upper_a": 27,
+   "lp_upper_a_not_b": 0,
+   "lp_upper_b": 29,
+   "lp_upper_b_not_a": 2,
+   "wall_median_s": {
+    "a": 0.011,
+    "b": 0.064
+   },
+   "wall_total_s": {
+    "a": 161.66,
+    "b": 48.72
+   }
+  },
+  "erdos:b73f6828": {
+   "b_lp_rows_median": 213.5,
+   "b_lp_step_cpu_s_median": 0.025,
+   "certified_a": 30,
+   "certified_b": 30,
+   "hosts": 30,
+   "lp_upper_a": 30,
+   "lp_upper_a_not_b": 0,
+   "lp_upper_b": 30,
+   "lp_upper_b_not_a": 0,
+   "wall_median_s": {
+    "a": 0.009,
+    "b": 0.026
+   },
+   "wall_total_s": {
+    "a": 18.54,
+    "b": 18.61
+   }
+  },
+  "planted_cluster:1467febf": {
+   "b_lp_rows_median": 2161.0,
+   "b_lp_step_cpu_s_median": 0.207,
+   "certified_a": 30,
+   "certified_b": 30,
+   "hosts": 30,
+   "lp_upper_a": 30,
+   "lp_upper_a_not_b": 0,
+   "lp_upper_b": 30,
+   "lp_upper_b_not_a": 0,
+   "wall_median_s": {
+    "a": 0.013,
+    "b": 0.428
+   },
+   "wall_total_s": {
+    "a": 11.71,
+    "b": 19.55
+   }
+  }
+ },
+ "calibration": {
+  "record_sha256": "bc26782a0c5916e9e1246e5351f617a3006ffece99451c57ead5ee39b41ee633",
+  "selected": [
+   {
+    "family": "planted_cluster",
+    "index": 18,
+    "params": {
+     "n": 30,
+     "p_in": 0.6,
+     "p_out": 0.2
+    }
+   },
+   {
+    "family": "erdos",
+    "index": 7,
+    "params": {
+     "n": 26,
+     "p": 0.35
+    }
+   },
+   {
+    "family": "erdos",
+    "index": 9,
+    "params": {
+     "n": 30,
+     "p": 0.3
+    }
+   }
+  ]
+ },
+ "checker_identity": "genesis.verification.lp_dual_rows@1dea801e540518e2963477002a2ae68cf6d6a392400dd5afeb10cd95b45743d8",
+ "code_identity": "bfc12198a6e6abdb58bc170954657480eb4109fed4b1dd5dae5396dc6c83ecf6",
+ "exposure_scan": {
+  "calibration_hosts": 456,
+  "distinct_hosts": 1838,
+  "e1_named_hosts": 711,
+  "empty_files_skipped": [
+   "evidence/failed-wal-final-replay.json",
+   "evidence/final-replay.json"
+  ],
+  "excluded_identities": 1838,
+  "files_scanned": 888,
+  "host_records": 5068
+ },
+ "invalid_b_certificates": [],
+ "mcnemar_p_one_sided": 0.25,
+ "passes": {
+  "coverage": true,
+  "mcnemar": false,
+  "sound": true,
+  "time": false
+ },
+ "pooled": {
+  "b_lp_rows_median": 516.0,
+  "b_lp_step_cpu_s_median": 0.051,
+  "certified_a": 90,
+  "certified_b": 90,
+  "hosts": 90,
+  "lp_upper_a": 87,
+  "lp_upper_a_not_b": 0,
+  "lp_upper_b": 89,
+  "lp_upper_b_not_a": 2,
+  "wall_median_s": {
+   "a": 0.011,
+   "b": 0.077
+  },
+  "wall_total_s": {
+   "a": 191.91,
+   "b": 86.88
+  }
+ },
+ "registry": {
+  "package_sha256": "e373ab41a5136bbab88560e6d2c2c0b0f4873e5a14441bcf6b6ba692b79cb78f",
+  "patterns": {
+   "pc_pat5_10_01020304121314232434": {
+    "ex": 6,
+    "vertices": 5
+   },
+   "pc_pat6_10_01040512152325343545": {
+    "ex": 7,
+    "vertices": 6
+   }
+  },
+  "sha256": "6aa8359877e52637897451114f3c7879a7cbe0ac295748b6e2c3abfbbfd35f83"
+ },
+ "schema": "genesis-b20r32-generated-certification-v1",
+ "seed": 20263201,
+ "status": "DEV measurement of a certification component; licenses no claim; no evaluator change",
+ "study": "e1b",
+ "value_disagreements": [],
+ "verdict": "NO_CERTIFICATION_UTILITY",
+ "wall_saving_a_minus_b": {
+  "by_stratum": {
+   "erdos:70960071": 3.765,
+   "erdos:b73f6828": -0.002,
+   "planted_cluster:1467febf": -0.262
+  },
+  "interval_90": [
+   -0.103,
+   3.218
+  ],
+  "mean": 1.167
+ }
+}

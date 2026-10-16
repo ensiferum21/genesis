@@ -468,9 +468,16 @@
       },
       "B20_R31": {
         "commits": [
-          "c90f00f"
+          "c90f00f",
+          "3e33e78"
         ],
         "result": "s15.3 relaxation family attempt 1: generated pattern inequalities over every graph on <= 6 vertices (kept K5 <= 6 and W5 <= 7; K6, K6-e implied by K5), Lean-CHECKED validity over 0/1 adjacency (adj <= 1, triangle bridge, pattern bounds by omega); DEV NO_UTILITY_AFTER_COST as a construction component (vs plain LP greedy +0.19 [0.06, 0.31]; menu +0.98; conventional +3.21; matched = control); certification diagnostic on B20_R30 hosts: LP floor meets the optimum on 82/90 with the rows vs 72/90 without (10 of 18 SAT-certified hosts); exposure addenda b20r31 (168 hosts)"
+      },
+      "B20_R32": {
+        "commits": [
+          "d695705"
+        ],
+        "result": "exact certification over the B20_R31 generated rows (verification/lp_dual_rows.py: checker + registry bound to CHECKED pattern statements and trusted definitions; discovery/generated_certify.py; evaluator unchanged): on 90 fresh e1b hosts both routes certify 90/90, LP-dual upper bounds 87 -> 89, total wall 192 s -> 87 s, but McNemar p 0.25 and wall saving +1.17 s [-0.10, 3.22]: NO_CERTIFICATION_UTILITY (only 3 SAT-needing hosts vs 18 in B20_R30; planted 0/30 vs 10/30). Post hoc: HiGHS MILP confirms all 21 SAT-certified optima (B20_R30 and R32) in <= 0.72 s each; strong-baseline question for E1/E1b raised (B20R32-OPEN-2)"
       }
     },
     "open_after_b20_r5": [
@@ -600,6 +607,25 @@
       "B20R26-OPEN-1 (quotient family: one attempt)",
       "B20R27-OPEN-1 (decomposition family: one attempt)",
       "B20R31-OPEN-1 (relaxation family: one attempt; exact certification route next)",
+      "registered interventions for represent-and-repair-v1 and the formal successor kind; supervised SAT child (needs a versioned kind so frozen E1 descriptors do not change)",
+      "B20R3-OPEN-2",
+      "B20R5-OPEN-2",
+      "B14-OPEN-4 (pending review)",
+      "B20R-OPEN-3 (pending review)",
+      "R-04",
+      "B20R8-OPEN-1 (pending review)"
+    ],
+    "open_after_b20_r32": [
+      "GV3 sign-off (reviewer: e1-hard-v2 and DRAFTs; statistician B19-OPEN-4; independent custodian)",
+      "B20R32-OPEN-2 (strong baselines for E1/E1b: an exact MILP solves e1b hosts in under a second)",
+      "B20R24-OPEN-2 (certification limit vs unsupported limit; B20_R30: LIMITS_CONSISTENT on the e1b family; reviewer decision)",
+      "B20R24-OPEN-1 (repaired, pending review)",
+      "B20R9-OPEN-1 (GV4: component invention; five attempts in four families without DEV construction utility; relaxation family has a certification signal)",
+      "B20R25-OPEN-1 (hint generator v2 heuristic; pending review)",
+      "B20R26-OPEN-1 (quotient family: one attempt)",
+      "B20R27-OPEN-1 (decomposition family: one attempt)",
+      "B20R31-OPEN-1 (relaxation family: one attempt)",
+      "B20R32-OPEN-1 (generated-row certification: sound, no prospective utility on an unenriched sample)",
       "registered interventions for represent-and-repair-v1 and the formal successor kind; supervised SAT child (needs a versioned kind so frozen E1 descriptors do not change)",
       "B20R3-OPEN-2",
       "B20R5-OPEN-2",

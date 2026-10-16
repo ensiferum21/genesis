@@ -63,6 +63,8 @@ The placebo scores 1.36 per host *below* the ablation: shuffled LP values are wo
 
 On this family the calibration's limit and the plan's 5% unsupported limit agree (LIMITS_CONSISTENT). How to align them in general is still the reviewer's choice (B20R24-OPEN-2).
 
+**A strong-baseline question (B20_R32; B20R32-OPEN-2).** An off-the-shelf exact MILP solver (HiGHS, through the pinned scipy) found and proved the optimum of each of the 21 hardest `e1b` hosts tried in under 0.72 s wall. E1b's comparator is the time-matched fixed DSL programs. A reviewer should weigh whether "beyond strong baselines" needs a MIP comparator. B20_R33 measures a MIP arm at the candidate's budget.
+
 ## Contents
 
 | File | What |
@@ -75,6 +77,7 @@ On this family the calibration's limit and the plan's 5% unsupported limit agree
 | `exposure_hosts_all.json` | Every host the builder named or generated (1,544). |
 | `exposure_hosts_addendum_b20r28.json` | B20_R28: the 126 DEV hosts named after this package was frozen (B20_R26–R28). |
 | `exposure_hosts_addendum_b20r31.json` | B20_R31: the 168 DEV hosts named after that, all in this package's settings: B20_R30's certification-budget hosts, B20_R31's study hosts and its six development-look hosts. A custodian lists **every** exposure file: `exposure_hosts_all.json` and each addendum. |
+| `exposure_hosts_addendum_b20r32.json` | B20_R32: the 90 DEV hosts of the generated-row certification study, all in the `e1b` settings. |
 | `package_index.json` | Identities, the calibration and the outcomes. |
 
 The B20_R23 version of this package (builder-chosen settings, both domains) is in the git history at `e7fad0e`.

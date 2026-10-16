@@ -1,0 +1,283 @@
+{
+ "agree": 21,
+ "hosts": 21,
+ "milp_wall_s_max": 0.718,
+ "post_hoc": true,
+ "refuted": [],
+ "rows": [
+  {
+   "agrees": true,
+   "batch": "B20_R30",
+   "certified_optimum": 95,
+   "milp": {
+    "dual_bound": 95.0,
+    "message": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+    "status": 0,
+    "value": 95,
+    "wall_s": 0.718
+   },
+   "task_id": "dev-planted_cluster-1467febf-20263001-0004"
+  },
+  {
+   "agrees": true,
+   "batch": "B20_R30",
+   "certified_optimum": 96,
+   "milp": {
+    "dual_bound": 96.0,
+    "message": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+    "status": 0,
+    "value": 96,
+    "wall_s": 0.262
+   },
+   "task_id": "dev-planted_cluster-1467febf-20263001-0006"
+  },
+  {
+   "agrees": true,
+   "batch": "B20_R30",
+   "certified_optimum": 94,
+   "milp": {
+    "dual_bound": 94.0,
+    "message": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+    "status": 0,
+    "value": 94,
+    "wall_s": 0.448
+   },
+   "task_id": "dev-planted_cluster-1467febf-20263001-0008"
+  },
+  {
+   "agrees": true,
+   "batch": "B20_R30",
+   "certified_optimum": 88,
+   "milp": {
+    "dual_bound": 88.0,
+    "message": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+    "status": 0,
+    "value": 88,
+    "wall_s": 0.179
+   },
+   "task_id": "dev-planted_cluster-1467febf-20263001-0013"
+  },
+  {
+   "agrees": true,
+   "batch": "B20_R30",
+   "certified_optimum": 93,
+   "milp": {
+    "dual_bound": 93.0,
+    "message": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+    "status": 0,
+    "value": 93,
+    "wall_s": 0.149
+   },
+   "task_id": "dev-planted_cluster-1467febf-20263001-0017"
+  },
+  {
+   "agrees": true,
+   "batch": "B20_R30",
+   "certified_optimum": 93,
+   "milp": {
+    "dual_bound": 93.0,
+    "message": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+    "status": 0,
+    "value": 93,
+    "wall_s": 0.291
+   },
+   "task_id": "dev-planted_cluster-1467febf-20263001-0018"
+  },
+  {
+   "agrees": true,
+   "batch": "B20_R30",
+   "certified_optimum": 103,
+   "milp": {
+    "dual_bound": 103.0,
+    "message": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+    "status": 0,
+    "value": 103,
+    "wall_s": 0.489
+   },
+   "task_id": "dev-planted_cluster-1467febf-20263001-0020"
+  },
+  {
+   "agrees": true,
+   "batch": "B20_R30",
+   "certified_optimum": 86,
+   "milp": {
+    "dual_bound": 86.0,
+    "message": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+    "status": 0,
+    "value": 86,
+    "wall_s": 0.188
+   },
+   "task_id": "dev-planted_cluster-1467febf-20263001-0026"
+  },
+  {
+   "agrees": true,
+   "batch": "B20_R30",
+   "certified_optimum": 84,
+   "milp": {
+    "dual_bound": 84.0,
+    "message": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+    "status": 0,
+    "value": 84,
+    "wall_s": 0.018
+   },
+   "task_id": "dev-planted_cluster-1467febf-20263001-0028"
+  },
+  {
+   "agrees": true,
+   "batch": "B20_R30",
+   "certified_optimum": 95,
+   "milp": {
+    "dual_bound": 95.0,
+    "message": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+    "status": 0,
+    "value": 95,
+    "wall_s": 0.106
+   },
+   "task_id": "dev-planted_cluster-1467febf-20263001-0029"
+  },
+  {
+   "agrees": true,
+   "batch": "B20_R30",
+   "certified_optimum": 89,
+   "milp": {
+    "dual_bound": 89.0,
+    "message": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+    "status": 0,
+    "value": 89,
+    "wall_s": 0.299
+   },
+   "task_id": "dev-erdos-70960071-20270920-0004"
+  },
+  {
+   "agrees": true,
+   "batch": "B20_R30",
+   "certified_optimum": 81,
+   "milp": {
+    "dual_bound": 81.0,
+    "message": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+    "status": 0,
+    "value": 81,
+    "wall_s": 0.056
+   },
+   "task_id": "dev-erdos-70960071-20270920-0012"
+  },
+  {
+   "agrees": true,
+   "batch": "B20_R30",
+   "certified_optimum": 74,
+   "milp": {
+    "dual_bound": 74.0,
+    "message": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+    "status": 0,
+    "value": 74,
+    "wall_s": 0.421
+   },
+   "task_id": "dev-erdos-70960071-20270920-0019"
+  },
+  {
+   "agrees": true,
+   "batch": "B20_R30",
+   "certified_optimum": 78,
+   "milp": {
+    "dual_bound": 78.0,
+    "message": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+    "status": 0,
+    "value": 78,
+    "wall_s": 0.138
+   },
+   "task_id": "dev-erdos-70960071-20270920-0026"
+  },
+  {
+   "agrees": true,
+   "batch": "B20_R30",
+   "certified_optimum": 98,
+   "milp": {
+    "dual_bound": 98.0,
+    "message": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+    "status": 0,
+    "value": 98,
+    "wall_s": 0.459
+   },
+   "task_id": "dev-erdos-b73f6828-20278839-0006"
+  },
+  {
+   "agrees": true,
+   "batch": "B20_R30",
+   "certified_optimum": 97,
+   "milp": {
+    "dual_bound": 97.0,
+    "message": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+    "status": 0,
+    "value": 97,
+    "wall_s": 0.151
+   },
+   "task_id": "dev-erdos-b73f6828-20278839-0015"
+  },
+  {
+   "agrees": true,
+   "batch": "B20_R30",
+   "certified_optimum": 101,
+   "milp": {
+    "dual_bound": 101.0,
+    "message": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+    "status": 0,
+    "value": 101,
+    "wall_s": 0.313
+   },
+   "task_id": "dev-erdos-b73f6828-20278839-0018"
+  },
+  {
+   "agrees": true,
+   "batch": "B20_R30",
+   "certified_optimum": 95,
+   "milp": {
+    "dual_bound": 95.0,
+    "message": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+    "status": 0,
+    "value": 95,
+    "wall_s": 0.072
+   },
+   "task_id": "dev-erdos-b73f6828-20278839-0024"
+  },
+  {
+   "agrees": true,
+   "batch": "B20_R32",
+   "certified_optimum": 78,
+   "milp": {
+    "dual_bound": 78.0,
+    "message": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+    "status": 0,
+    "value": 78,
+    "wall_s": 0.204
+   },
+   "task_id": "dev-erdos-70960071-20271120-0005"
+  },
+  {
+   "agrees": true,
+   "batch": "B20_R32",
+   "certified_optimum": 83,
+   "milp": {
+    "dual_bound": 83.0,
+    "message": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+    "status": 0,
+    "value": 83,
+    "wall_s": 0.225
+   },
+   "task_id": "dev-erdos-70960071-20271120-0007"
+  },
+  {
+   "agrees": true,
+   "batch": "B20_R32",
+   "certified_optimum": 85,
+   "milp": {
+    "dual_bound": 85.0,
+    "message": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+    "status": 0,
+    "value": 85,
+    "wall_s": 0.483
+   },
+   "task_id": "dev-erdos-70960071-20271120-0008"
+  }
+ ],
+ "schema": "genesis-b20r32-milp-crosscheck-v1"
+}
