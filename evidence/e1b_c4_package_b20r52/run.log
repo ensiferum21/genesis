@@ -1,0 +1,10 @@
+[    0.0s] SAT tools: cadical@24fb99286ca1ea9a, drat-trim@92f0aa9575ed519d
+[    0.0s] calibration record 77d811925f77ce15: selected [3, 0]
+[    0.6s] throwaway copy at /tmp/genesis-e1b-c4-rehearsal-b20r52; study e1b-c4 adopted there only
+[    0.0s] rehearsal in the copy /tmp/genesis-e1b-c4-rehearsal-b20r52 (pid 27894)
+[    6.5s] exposure: 2907 identities (2907 named hosts, 711 E1 hosts, 456 calibration hosts)
+[  331.9s] SELECT panel totals {'exchange_tm': 2408, 'low_cycle_tm': 2572, 'multistart_tm': 2457} -> comparator low_cycle_tm (306 s)
+[  338.3s] registered the v5 request (20 hosts); evaluating
+[  650.1s] rehearsal SUPPORTED (W/L/T 12/1/7), estimate 1.15, cost ratio 0.9220533036, judge agrees True (318 s)
+[  675.8s] package written: 2957 exposure hosts; decision record problems if frozen: []
+[  675.9s] done: rehearsal SUPPORTED, judge agrees True

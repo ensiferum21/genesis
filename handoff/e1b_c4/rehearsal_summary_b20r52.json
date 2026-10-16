@@ -1,0 +1,494 @@
+{
+ "adoption_in_the_copy": {
+  "note": "configs/dev_calibration.json of a throwaway copy only",
+  "record_sha256": "77d811925f77ce1531a867e49c7cd9c5ba65e3134dabf0069b0eb239fe0556c1",
+  "rule": "e1-hard-v2-c4tree-draft",
+  "study": "e1b-c4"
+ },
+ "anchor_payload": {
+  "claim_id": "e1b-c4-rehearsal-b20r52",
+  "declaration_unscreenable_graphs": 0,
+  "evidence_kind": "sealed_evaluation",
+  "exposure_graphs": 2922,
+  "exposure_registry_root": "c83617d344670a145f78702d1120b91c9dcc5dc67d5e6bbd5194f20f948d6b8a",
+  "operator_id": "BUILDER_REHEARSAL_NOT_INDEPENDENT",
+  "panel_commitment": "31fdd2c578937b6778fdb2935cd791043150c535cab6aeaa80e26d447e99727f",
+  "registered_at": "2026-10-16T18:37:10.907571+00:00",
+  "registration_slot": "8e2d4dc42bfc2a6be0b3849fd472c1480fd9fb6e0dd935a7b2b9beb779169baa",
+  "request_hash": "d066fd24120da97685e756dc88d6aa3c3ded107e55dfcc4cfeb1e438cde356d7",
+  "schema": "genesis-prereg-anchor-v3",
+  "scope": "rehearsal panel of 20 c4_host_v2 hosts (same operator)",
+  "statement_hash": "3b0ccd82089ef40e043482e0ec96e5ed5d5feedffb05987f1dc170c5519e33f1"
+ },
+ "campaign_candidate_version": "c18e0484fcd8ac4bc4ae7ca1299fd44a3f541227f77f223f5593437f03b35957",
+ "code_identity": "b767fdfb359c006aa137143dd3da5e728742eb3062f01f022bdf2ff512283f82",
+ "comparator_selection": {
+  "baselines": {
+   "exchange_tm": {
+    "descriptor_id": "f4714fd0e1ec23c7d8cf8c644f64ad1f838e8729311a8b983ff0f6f14aa48ed5",
+    "domain": "c4_host_v2",
+    "implementation": {
+     "candidates.py": "a04d3fe0792113ec9527bdf16fccc8f8580179b9a6b567c4cd30486d6d2696f2",
+     "dsl.py": "b1576f320cf7e689250771c484f95f3aa16ab853059d01ffabc1802a2c730508",
+     "graphs.py": "e0e8e089a240a2fc3a422d29c6fe65a6031d06264eab29fb8a991ad60213261d",
+     "models.py": "2d10c569f5de3ee209ce07525972d199bba1168ae187ffc223880491fa701d05"
+    },
+    "kind": "dsl-time-matched-v1",
+    "parameters": {
+     "cpu_seconds": 2.0,
+     "program": {
+      "componentwise": false,
+      "exchange": true,
+      "rounds": 32,
+      "schema_version": "graph-priority-v1",
+      "weights": [
+       0,
+       0,
+       0,
+       0
+      ]
+     }
+    },
+    "resource_profile": {
+     "cpu_seconds": 4,
+     "memory_mib": 2048,
+     "queries": 1000,
+     "wall_seconds": 20
+    },
+    "schema": "genesis-candidate-descriptor-v1"
+   },
+   "low_cycle_tm": {
+    "descriptor_id": "9d35d180fde8b61e917ba4db3cf8c10b20a22529ea96a6fc80cfd54bc51a6cc7",
+    "domain": "c4_host_v2",
+    "implementation": {
+     "candidates.py": "a04d3fe0792113ec9527bdf16fccc8f8580179b9a6b567c4cd30486d6d2696f2",
+     "dsl.py": "b1576f320cf7e689250771c484f95f3aa16ab853059d01ffabc1802a2c730508",
+     "graphs.py": "e0e8e089a240a2fc3a422d29c6fe65a6031d06264eab29fb8a991ad60213261d",
+     "models.py": "2d10c569f5de3ee209ce07525972d199bba1168ae187ffc223880491fa701d05"
+    },
+    "kind": "dsl-time-matched-v1",
+    "parameters": {
+     "cpu_seconds": 2.0,
+     "program": {
+      "componentwise": false,
+      "exchange": false,
+      "rounds": 32,
+      "schema_version": "graph-priority-v1",
+      "weights": [
+       0,
+       0,
+       0,
+       1
+      ]
+     }
+    },
+    "resource_profile": {
+     "cpu_seconds": 4,
+     "memory_mib": 2048,
+     "queries": 1000,
+     "wall_seconds": 20
+    },
+    "schema": "genesis-candidate-descriptor-v1"
+   },
+   "multistart_tm": {
+    "descriptor_id": "e3d828ca53fe62e9e8d22953fd1c0bd0a504e1dd79ac759815a4b3155461ddf4",
+    "domain": "c4_host_v2",
+    "implementation": {
+     "candidates.py": "a04d3fe0792113ec9527bdf16fccc8f8580179b9a6b567c4cd30486d6d2696f2",
+     "dsl.py": "b1576f320cf7e689250771c484f95f3aa16ab853059d01ffabc1802a2c730508",
+     "graphs.py": "e0e8e089a240a2fc3a422d29c6fe65a6031d06264eab29fb8a991ad60213261d",
+     "models.py": "2d10c569f5de3ee209ce07525972d199bba1168ae187ffc223880491fa701d05"
+    },
+    "kind": "dsl-time-matched-v1",
+    "parameters": {
+     "cpu_seconds": 2.0,
+     "program": {
+      "componentwise": false,
+      "exchange": false,
+      "rounds": 32,
+      "schema_version": "graph-priority-v1",
+      "weights": [
+       0,
+       0,
+       0,
+       0
+      ]
+     }
+    },
+    "resource_profile": {
+     "cpu_seconds": 4,
+     "memory_mib": 2048,
+     "queries": 1000,
+     "wall_seconds": 20
+    },
+    "schema": "genesis-candidate-descriptor-v1"
+   }
+  },
+  "calibration": {
+   "record_sha256": "77d811925f77ce1531a867e49c7cd9c5ba65e3134dabf0069b0eb239fe0556c1",
+   "rule": "e1-hard-v2-c4tree-draft",
+   "study": "e1b-c4"
+  },
+  "campaign_id": "f8880b63267cfca33c3fe71c395bce5114a66c3c0f5ef658f2843a3e10f65e58",
+  "domain": "c4_host_v2",
+  "exposure_registry_root": "eb4dd913143e56fba3b3e59dfaf8955ac9d52cdf7e354b4524b8a04e395c11ce",
+  "operator_id": "BUILDER_REHEARSAL_NOT_INDEPENDENT",
+  "panel_commitment": "5e37f175cd511008167c571b7f16369f2db57af0ac14e598f7571eb78079b5b6",
+  "resource_profile": {
+   "cpu_seconds": 4,
+   "memory_mib": 2048,
+   "queries": 1000,
+   "wall_seconds": 20
+  },
+  "rule": "strongest total on the custodian SELECT panel (ties: greatest name)",
+  "schema": "genesis-comparator-selection-v1",
+  "selected": "low_cycle_tm",
+  "selected_at": "2026-10-16T18:37:06.205058+00:00",
+  "source_hash": "b767fdfb359c006aa137143dd3da5e728742eb3062f01f022bdf2ff512283f82",
+  "task_count": 30,
+  "totals": {
+   "exchange_tm": 2408,
+   "low_cycle_tm": 2572,
+   "multistart_tm": 2457
+  }
+ },
+ "decision_record_rehearsal_sha256": "a7bcf3041ee6b4e850ab560761b3373d6275057bfda6fad044aaa7911c33f4d7",
+ "exposure_scan": {
+  "calibration_hosts": 456,
+  "distinct_hosts": 2907,
+  "e1_named_hosts": 711,
+  "empty_files_skipped": [
+   "evidence/failed-wal-final-replay.json",
+   "evidence/final-replay.json"
+  ],
+  "excluded_identities": 2907,
+  "files_scanned": 1034,
+  "host_records": 10906
+ },
+ "fairness": {
+  "cpu_ns_by_arm": {
+   "baseline": 49506871183,
+   "candidate": 45647974126
+  },
+  "cpu_ratio": 0.922053,
+  "ground_truth_charged_to_arm": false,
+  "information": "each arm receives only the candidate view (domain, n, edges) built from the same task",
+  "paired_tasks": 20,
+  "problems": [],
+  "same_limits": true
+ },
+ "judge": {
+  "agrees": true,
+  "problems": [],
+  "recomputed_outcome": "SUPPORTED",
+  "witnesses_rechecked": 40
+ },
+ "label": "REHEARSAL_SAME_OPERATOR_FIXTURE_KEYS: not independent, not a CONFIRM result, licenses nothing",
+ "log_problems": [],
+ "receipt_payload": {
+  "analysis": {
+   "alpha": 0.05,
+   "cost": {
+    "max_ratio": 3.0,
+    "measure": "cpu_ns"
+   },
+   "decision_record_sha256": "a7bcf3041ee6b4e850ab560761b3373d6275057bfda6fad044aaa7911c33f4d7",
+   "decision_rule": "superiority-with-minimum-useful-effect",
+   "design_effect": 1.0,
+   "estimand": "mean-of-stratum-means",
+   "failures": "score-zero",
+   "interval": {
+    "level": 0.9,
+    "method": "stratified-bootstrap-percentile",
+    "resamples": 4000
+   },
+   "max_unsupported_fraction": 0.05,
+   "minimum_useful_effect": 0.5,
+   "multiplicity": {
+    "family_id": "sealed_evaluation:c4_host_v2",
+    "family_size": 3,
+    "method": "holm"
+   },
+   "power_target": 0.8,
+   "primary": "paired-edge-difference",
+   "regression": {
+    "max_stratum_loss": 1.0
+   },
+   "schema": "genesis-analysis-plan-v2",
+   "sensitivity": [
+    "task-sign-test",
+    "leave-one-stratum-out",
+    "failures-excluded",
+    "stratum-level-sign-flip"
+   ],
+   "stopping": {
+    "rule": "single-analysis"
+   },
+   "strata": "family",
+   "test": "stratified-sign-flip",
+   "unsupported": "exclude-and-report"
+  },
+  "analysis_result": {
+   "checks": {
+    "cost_within_bound": true,
+    "estimate_reaches_minimum_useful_effect": true,
+    "holm_rejects_no_superiority": true,
+    "interval_lower_above_zero": true,
+    "no_stratum_regression": true
+   },
+   "cost_cpu_ns": {
+    "baseline": 49506871183,
+    "candidate": 45647974126
+   },
+   "cost_ratio": 0.9220533036,
+   "decision": "SUPPORTED",
+   "estimate": 1.15,
+   "failures": {
+    "baseline": 0,
+    "candidate": 0
+   },
+   "family_p_values": [],
+   "holm_threshold": 0.0166666667,
+   "interval": [
+    0.7,
+    1.65
+   ],
+   "interval_level": 0.9,
+   "losses": 1,
+   "p_method": "exact",
+   "p_value": 0.0007324219,
+   "plan_sha256": "11c0f11da736f5f6d05db0bf7766c00e277cc095810e181e6f49aed409223067",
+   "reasons": [],
+   "schema": "genesis-analysis-result-v2",
+   "scored": 20,
+   "sensitivity": {
+    "failures-excluded": 1.15,
+    "leave-one-stratum-out": {
+     "erdos:0cee043c": 1.4,
+     "erdos:362e94b0": 0.9
+    },
+    "stratum-level-sign-flip": 0.25,
+    "task-sign-test": 0.0017089844
+   },
+   "strata": 2,
+   "stratum_means": {
+    "erdos:0cee043c": 0.9,
+    "erdos:362e94b0": 1.4
+   },
+   "tasks": 20,
+   "ties": 7,
+   "unsupported": [],
+   "wins": 12
+  },
+  "anchor_hash": "2d09aea303f22c849a83283067a08e9ac49e45465d45948164c6e90a63c92113",
+  "arms_sha256": "879963388b78eb8383b02c60afc63869b7abd1adb74842c6cf8dfe9a8ef8d3b9",
+  "baseline_descriptor_id": "9d35d180fde8b61e917ba4db3cf8c10b20a22529ea96a6fc80cfd54bc51a6cc7",
+  "campaign_id": "f8880b63267cfca33c3fe71c395bce5114a66c3c0f5ef658f2843a3e10f65e58",
+  "candidate_descriptor_id": "64a9890b264df3e89ad4183a6a13b41c1d3fe8f18022e0308007ce74ad339fb0",
+  "candidate_version": "c18e0484fcd8ac4bc4ae7ca1299fd44a3f541227f77f223f5593437f03b35957",
+  "claim_id": "e1b-c4-rehearsal-b20r52",
+  "completed_at": "2026-10-16T18:42:18.446980+00:00",
+  "completed_rows": 40,
+  "domain": "c4_host_v2",
+  "domain_contract_hash": "db43a9c26d0fbe9864efe089919a6ebe1e877046fc26669cfab9736bfbcd2046",
+  "evaluator_hash": "b767fdfb359c006aa137143dd3da5e728742eb3062f01f022bdf2ff512283f82",
+  "evidence_kind": "sealed_evaluation",
+  "execution_failures": 0,
+  "expected_rows": 40,
+  "family_p": 0.0007324219,
+  "generation_transition": null,
+  "independence": "OPERATOR_ATTESTATION_REQUIRED",
+  "isolation": "OCI_RUNC_NO_NETWORK_RO_ROOT_SECCOMP",
+  "losses": 1,
+  "operator_id": "BUILDER_REHEARSAL_NOT_INDEPENDENT",
+  "outcome": "SUPPORTED",
+  "paired_p": 0.001708984375,
+  "panel_commitment": "31fdd2c578937b6778fdb2935cd791043150c535cab6aeaa80e26d447e99727f",
+  "raw_evidence_complete": true,
+  "raw_evidence_root": "4d94b6fa39709cf6c50e4fdb6858e71610e9a0988b478f29545060ef1d4b3694",
+  "registered_at": "2026-10-16T18:37:10.907571+00:00",
+  "request_hash": "d066fd24120da97685e756dc88d6aa3c3ded107e55dfcc4cfeb1e438cde356d7",
+  "schema": "genesis-scientific-receipt-v4",
+  "scope": "rehearsal panel of 20 c4_host_v2 hosts (same operator)",
+  "screen": "CUSTODIAN_BUILT_REGISTRY_ISOMORPHISM_AND_NEAR_DUPLICATE",
+  "source_hash": "b767fdfb359c006aa137143dd3da5e728742eb3062f01f022bdf2ff512283f82",
+  "statement_hash": "3b0ccd82089ef40e043482e0ec96e5ed5d5feedffb05987f1dc170c5519e33f1",
+  "task_count": 20,
+  "ties": 7,
+  "transfer_source_domain": null,
+  "wins": 12
+ },
+ "reference": {
+  "enumerator": "fast",
+  "lp_rounding_seconds": 1.0,
+  "max_rows": 50000,
+  "max_total": 80000,
+  "order": "dense-first",
+  "package_sha256": "011061f7eb71350dfa605c82d3110703151539ed0bf6f8e39408027b2e40d800",
+  "route": "generated-rows-tree-c4-v1",
+  "seconds": 600,
+  "separation_seconds": 15
+ },
+ "reference_methods": {
+  "methods": {
+   "GENERATED_ROWS_LP_DUAL_GENERATED_C4_EXACT": 4,
+   "GENERATED_ROWS_LP_DUAL_TREE_C4_EXACT": 16
+  },
+  "unsupported": 0,
+  "wall_s": [
+   10.222,
+   4.927,
+   4.002,
+   4.788,
+   4.48,
+   7.79,
+   7.425,
+   4.001,
+   4.398,
+   3.814,
+   2.668,
+   30.918,
+   3.057,
+   2.887,
+   2.622,
+   2.752,
+   3.027,
+   68.869,
+   11.913,
+   2.61
+  ]
+ },
+ "request_schema": "genesis-evaluation-request-v5",
+ "request_sha256": "d066fd24120da97685e756dc88d6aa3c3ded107e55dfcc4cfeb1e438cde356d7",
+ "resource_account": {
+  "charged": "every attempt, including failures, timeouts, interrupted and harness-error attempts",
+  "discovery": {
+   "attempts": 0,
+   "by_status": {},
+   "cpu_ns": 0,
+   "cpu_unknown": 0,
+   "failures": 0,
+   "peak_memory_bytes": null,
+   "queries": 0,
+   "status": "NONE_RECORDED",
+   "wall_ns": 0,
+   "wall_unknown": 0
+  },
+  "ground_truth": {
+   "attempts": 20,
+   "by_status": {
+    "SUCCESS": 20
+   },
+   "charged_to_arm": false,
+   "cpu_ns": 0,
+   "cpu_unknown": 20,
+   "failures": 0,
+   "peak_memory_bytes": null,
+   "queries": 0,
+   "status": "MEASURED",
+   "wall_ns": 187168106413,
+   "wall_unknown": 0
+  },
+  "human_time": {
+   "declared_by": null,
+   "seconds": null,
+   "status": "NOT_MEASURED"
+  },
+  "inference": {
+   "attempts": 40,
+   "by_arm": {
+    "baseline": {
+     "attempts": 20,
+     "by_status": {
+      "SUCCESS": 20
+     },
+     "cpu_ns": 49506871183,
+     "cpu_unknown": 0,
+     "failures": 0,
+     "peak_memory_bytes": 17178624,
+     "queries": 0,
+     "wall_ns": 51252255104,
+     "wall_unknown": 0
+    },
+    "candidate": {
+     "attempts": 20,
+     "by_status": {
+      "SUCCESS": 20
+     },
+     "cpu_ns": 45647974126,
+     "cpu_unknown": 0,
+     "failures": 0,
+     "peak_memory_bytes": 54706176,
+     "queries": 0,
+     "wall_ns": 47381757714,
+     "wall_unknown": 0
+    }
+   },
+   "by_status": {
+    "SUCCESS": 40
+   },
+   "cpu_ns": 95154845309,
+   "cpu_unknown": 0,
+   "failures": 0,
+   "peak_memory_bytes": 54706176,
+   "queries": 0,
+   "status": "MEASURED",
+   "wall_ns": 98634012818,
+   "wall_unknown": 0
+  },
+  "memory": {
+   "peak_bytes_by_category": {
+    "inference": 54706176
+   },
+   "status": "MEASURED"
+  },
+  "model_calls": {
+   "attempts": 0,
+   "by_status": {},
+   "cpu_ns": 0,
+   "cpu_unknown": 0,
+   "failures": 0,
+   "peak_memory_bytes": null,
+   "queries": 0,
+   "status": "NONE_RECORDED",
+   "wall_ns": 0,
+   "wall_unknown": 0
+  },
+  "retrieval": {
+   "attempts": 0,
+   "by_status": {},
+   "cpu_ns": 0,
+   "cpu_unknown": 0,
+   "failures": 0,
+   "peak_memory_bytes": null,
+   "queries": 0,
+   "status": "NONE_RECORDED",
+   "wall_ns": 0,
+   "wall_unknown": 0
+  },
+  "schema": "genesis-resource-account-v1",
+  "unclassified": {
+   "attempts": 0,
+   "by_status": {},
+   "cpu_ns": 0,
+   "cpu_unknown": 0,
+   "failures": 0,
+   "peak_memory_bytes": null,
+   "queries": 0,
+   "wall_ns": 0,
+   "wall_unknown": 0
+  },
+  "verification": {
+   "attempts": 0,
+   "by_status": {},
+   "cpu_ns": 0,
+   "cpu_unknown": 0,
+   "failures": 0,
+   "peak_memory_bytes": null,
+   "queries": 0,
+   "status": "NONE_RECORDED",
+   "wall_ns": 0,
+   "wall_unknown": 0
+  }
+ }
+}

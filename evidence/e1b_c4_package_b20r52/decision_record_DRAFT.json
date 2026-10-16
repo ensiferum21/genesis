@@ -1,0 +1,216 @@
+{
+ "allowed_conclusion": "If SUPPORTED: a scoped better-solver statement for c4_host_v2 hosts from the e1b-c4 calibrated settings on that panel only, against time-matched fixed DSL baselines. Not beyond an exact MIP, not better-improver (GV4), transfer, novelty, or any statement about other families.",
+ "analysis_plan_core": {
+  "alpha": 0.05,
+  "cost": {
+   "max_ratio": 3.0,
+   "measure": "cpu_ns"
+  },
+  "decision_rule": "superiority-with-minimum-useful-effect",
+  "design_effect": 1.0,
+  "estimand": "mean-of-stratum-means",
+  "failures": "score-zero",
+  "interval": {
+   "level": 0.9,
+   "method": "stratified-bootstrap-percentile",
+   "resamples": 4000
+  },
+  "max_unsupported_fraction": 0.05,
+  "minimum_useful_effect": 0.5,
+  "multiplicity": {
+   "family_id": "sealed_evaluation:c4_host_v2",
+   "family_size": 3,
+   "method": "holm"
+  },
+  "power_target": 0.8,
+  "primary": "paired-edge-difference",
+  "regression": {
+   "max_stratum_loss": 1.0
+  },
+  "schema": "genesis-analysis-plan-v2",
+  "sensitivity": [
+   "task-sign-test",
+   "leave-one-stratum-out",
+   "failures-excluded",
+   "stratum-level-sign-flip"
+  ],
+  "stopping": {
+   "rule": "single-analysis"
+  },
+  "strata": "family",
+  "test": "stratified-sign-flip",
+  "unsupported": "exclude-and-report"
+ },
+ "baselines": {
+  "all_fixed_baselines": [
+   "exchange (time-matched)",
+   "low_cycle (time-matched)",
+   "multistart (time-matched)"
+  ],
+  "comparator": "the strongest time-matched fixed DSL baseline (dsl-time-matched-v1, 2.0 CPU s of restarts) on the custodian SELECT panel (custodian.select_comparator)",
+  "not_a_competitor": "the C4 tree reference (branch and bound over Lean-checked rows with exact LP-dual leaves) is evaluator ground truth",
+  "registered_interventions": "ablation: no LP guidance (random-order greedy restarts for the same stage budget); placebo: the same LP solve and restarts with the LP values permuted among the edges",
+  "strong_baseline_note": "an exact C4 MIP (HiGHS over the 4-cycle rows) is optimal within 2 s on these settings and dominates the candidate (B20_R50, descriptive); it is not a registered comparator, so the claim is scoped to the DSL baselines"
+ },
+ "capability_changes": "Candidate: builder-written LP-guided construction (discovery/construct.py, B20_RX3) run as the data-only candidate kind construct-pipeline-v1 (B20_R23), unchanged. Evaluator: the C4 tree reference over Lean-checked transferred rows (B20_R46-R51 wiring, evaluation request v5); every arm in the OCI sandbox through the trusted runner.",
+ "created_at": "2026-10-16T18:37:06.278833+00:00",
+ "exact_claim": "The construction-pipeline candidate (descriptor 64a9890b264df3e8: construct-pipeline-v1 with E1b's frozen parameters, LP-ordered greedy with LP-perturbed restarts, 2.0 CPU s of search) scores more edges than the strongest time-matched fixed DSL baseline (2.0 CPU s of restarts), selected by the custodian on its private SELECT panel, on a custodian-held CONFIRM panel of c4_host_v2 hosts drawn from the e1b-c4 study calibration (rule e1-hard-v2-c4tree-draft, record SHA-256 77d811925f77ce15, settings erdos {'n': 40, 'p': 0.15}, erdos {'n': 30, 'p': 0.2}), with optima certified by the C4 tree reference (generated-rows-tree-c4-v1, theory package SHA-256 011061f7eb71350d), by at least the minimum useful effect, under the registered analysis.",
+ "exposure_policy": "Custodian-built exposure registry; isomorphism and near-duplicate screening against every DEV panel named in the evidence and every host the builder generated (handoff/e1b_c4/exposure_hosts_all_part_*.json); a SELECT or CONFIRM panel is retired after its one use.",
+ "minimum_useful_effect": 0.5,
+ "permissible_information": "The candidate sees only the candidate view (domain, n, edges). Development used public DEV panels only. SELECT and CONFIRM are drawn and held by the custodian.",
+ "primary_outcome": {
+  "endpoint": "paired-edge-difference",
+  "estimand": "mean-of-stratum-means",
+  "strata": "family"
+ },
+ "raw_evidence_custody": "Custodian private evidence store; the judge recomputes the analysis; the custodian publishes a signed registration log.",
+ "rejection_criteria": "Any decision-record or plan check failing; an evaluator that cannot run the candidate; registration beyond the declared family size; an INVALID or NOT_SUPPORTED outcome. A comparator not selected by the custodian on its SELECT panel. A panel not drawn from the e1b-c4 study calibration named in the claim. A reference other than the route the request names.",
+ "roles": {
+  "auditor": "TO BE ASSIGNED",
+  "custodian": "TO BE ASSIGNED (independent operator)",
+  "release_authority": "TO BE ASSIGNED",
+  "research_operator": "Genesis builder"
+ },
+ "sample_size_justification": {
+  "assumed_holm_rank_alpha": 0.016666666666666666,
+  "chosen": {
+   "power": 0.841,
+   "tasks_per_stratum": 10,
+   "total_tasks": 20
+  },
+  "design_effect": 1.0,
+  "false_positive_rate_at_zero_effect": 0.012,
+  "headroom_reference": "centred",
+  "min_tasks_per_stratum": 10,
+  "minimum_useful_effect": 0.5,
+  "model": "headroom-limited integer improvements over centred DEV pilot differences",
+  "note": "pilot effect sizes are reported but never used to set the effect; only spread and headroom are",
+  "pilot_rows_sha256": "82f91ba4381901b969b894ba424b380bf4158c870b6bb372cd9f7c1170a30108",
+  "pilot_strata": {
+   "erdos:0cee043c": {
+    "mean_difference": 0.8,
+    "sd": 1.2071,
+    "share_with_headroom": 0.7333,
+    "tasks": 15
+   },
+   "erdos:362e94b0": {
+    "mean_difference": 1.5333,
+    "sd": 1.1872,
+    "share_with_headroom": 1.0,
+    "tasks": 15
+   }
+  },
+  "plan_core_sha256": "563835743acf14187e5b406c99ead4c79aeb05225101c671976440620990bc24",
+  "power_at_minimum_useful_effect": 0.321,
+  "power_target": 0.8,
+  "schema": "genesis-power-analysis-v1",
+  "status": "CHOSEN",
+  "table": [
+   {
+    "power": 0.841,
+    "tasks_per_stratum": 10,
+    "total_tasks": 20
+   },
+   {
+    "power": 0.92,
+    "tasks_per_stratum": 12,
+    "total_tasks": 24
+   },
+   {
+    "power": 0.962,
+    "tasks_per_stratum": 15,
+    "total_tasks": 30
+   },
+   {
+    "power": 0.989,
+    "tasks_per_stratum": 20,
+    "total_tasks": 40
+   },
+   {
+    "power": 0.994,
+    "tasks_per_stratum": 25,
+    "total_tasks": 50
+   },
+   {
+    "power": 0.997,
+    "tasks_per_stratum": 30,
+    "total_tasks": 60
+   },
+   {
+    "power": 0.999,
+    "tasks_per_stratum": 40,
+    "total_tasks": 80
+   },
+   {
+    "power": 0.999,
+    "tasks_per_stratum": 50,
+    "total_tasks": 100
+   },
+   {
+    "power": 1.0,
+    "tasks_per_stratum": 60,
+    "total_tasks": 120
+   },
+   {
+    "power": 1.0,
+    "tasks_per_stratum": 80,
+    "total_tasks": 160
+   },
+   {
+    "power": 1.0,
+    "tasks_per_stratum": 100,
+    "total_tasks": 200
+   },
+   {
+    "power": 1.0,
+    "tasks_per_stratum": 150,
+    "total_tasks": 300
+   },
+   {
+    "power": 1.0,
+    "tasks_per_stratum": 200,
+    "total_tasks": 400
+   }
+  ]
+ },
+ "schema": "genesis-decision-record-v1",
+ "statistical_rules": {
+  "alpha": 0.05,
+  "failures": "score-zero",
+  "interval": {
+   "level": 0.9,
+   "method": "stratified-bootstrap-percentile",
+   "resamples": 4000
+  },
+  "multiplicity": {
+   "family_id": "sealed_evaluation:c4_host_v2",
+   "family_size": 3,
+   "method": "holm"
+  },
+  "sensitivity": [
+   "task-sign-test",
+   "leave-one-stratum-out",
+   "failures-excluded",
+   "stratum-level-sign-flip"
+  ],
+  "test": "stratified-sign-flip",
+  "unsupported": "exclude-and-report"
+ },
+ "status": "DRAFT",
+ "stopping_rule": {
+  "rule": "single-analysis"
+ },
+ "total_budget": {
+  "arms": 2,
+  "charge": "every attempt, retry, timeout and failure",
+  "equal_accounting": "one sandbox, one profile, cgroup CPU per arm",
+  "profile": {
+   "cpu_seconds": 4,
+   "memory_mib": 2048,
+   "queries": 1000,
+   "wall_seconds": 20
+  },
+  "reference_seconds_per_task": 600,
+  "search_seconds_per_arm": 2.0
+ }
+}

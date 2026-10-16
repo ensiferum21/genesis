@@ -2,7 +2,8 @@
 registered DRAFT rule and checks clean, selecting what B20_R50 selected; no study in the repository adopts it; the
 arms are B20_R50's candidate and the three DSL baselines under one profile; the reference route is the C4 tree route
 over B20_R46's package at 600 s and passes the custodian's checks; the DRAFT decision record, frozen, has no
-problems. Record tests are added with the result."""
+problems. Record: the record on disk is the derived one, the rehearsal went through the v5 C4 tree route, the
+package files match the index, and the rehearsal hosts are in the package exposure and the addenda."""
 import json
 from pathlib import Path
 import sys
@@ -18,6 +19,8 @@ ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / 'scripts'))
 import b20r50_e1b_c4_readiness as R50  # noqa: E402
 import b20r52_e1b_c4_package as M  # noqa: E402
+
+EVIDENCE = ROOT / 'evidence' / 'e1b_c4_package_b20r52'
 
 
 class Design(unittest.TestCase):
@@ -52,6 +55,73 @@ class Design(unittest.TestCase):
         self.assertEqual(DR.problems(frozen), [])
         self.assertIn(self.cand['descriptor_id'][:16], d['exact_claim'])
         self.assertIn('generated-rows-tree-c4-v1', d['exact_claim'])
+
+
+class Record(unittest.TestCase):
+    """The run's evidence and the package."""
+    @classmethod
+    def setUpClass(cls):
+        cls.s = json.loads((EVIDENCE / 'rehearsal_summary.json').read_text())
+        cls.index = json.loads((ROOT / 'handoff' / 'e1b_c4' / 'package_index.json').read_text())
+
+    def test_the_record_on_disk_is_the_derived_record(self):
+        on_disk = json.loads((EVIDENCE / M.RECORD_NAME).read_text())
+        self.assertEqual(on_disk, M.calibration_record())
+        self.assertEqual(digest(on_disk), self.s['adoption_in_the_copy']['record_sha256'])
+        self.assertEqual(self.index['calibration']['sha256'], digest(on_disk))
+        self.assertFalse(self.index['calibration']['adopted'])
+
+    def test_the_rehearsal_went_through_the_v5_c4_tree_route(self):
+        p = self.s['receipt_payload']
+        self.assertEqual(self.s['request_schema'], 'genesis-evaluation-request-v5')
+        self.assertEqual(self.s['reference'], M.reference_spec())
+        self.assertIn(self.s['comparator_selection']['selected'], self.s['comparator_selection']['baselines'])
+        self.assertEqual(self.s['comparator_selection']['calibration']['rule'], 'e1-hard-v2-c4tree-draft')
+        self.assertEqual(p['completed_rows'], p['expected_rows'])
+        self.assertTrue(self.s['judge']['agrees'], self.s['judge']['problems'])
+        self.assertEqual(self.s['log_problems'], [])
+        refs = self.s['reference_methods']
+        self.assertEqual(sum(refs['methods'].values()) + refs['unsupported'], p['task_count'])
+        self.assertTrue(all(m.startswith('GENERATED_ROWS_LP_DUAL_') and 'C4' in m for m in refs['methods']))
+        self.assertIn('REHEARSAL', self.s['label'])
+        self.assertEqual(self.index['rehearsal']['outcome'], p['outcome'])
+
+    def test_package_files_match_the_index(self):
+        d = ROOT / 'handoff' / 'e1b_c4'
+        self.assertEqual(json.loads((d / 'candidate_descriptor.json').read_text())['descriptor_id'],
+                         self.index['candidate_descriptor_id'])
+        base = json.loads((d / 'baselines.json').read_text())
+        self.assertEqual({n: b['descriptor_id'] for n, b in base.items()}, self.index['baselines'])
+        draft = json.loads((d / 'decision_record_DRAFT.json').read_text())
+        self.assertEqual(digest(draft), self.index['decision_record_draft_sha256'])
+        frozen, _ = DR.freeze(draft)
+        self.assertEqual(DR.problems(frozen), [])
+        self.assertEqual(json.loads((d / 'reference_route.json').read_text()), M.reference_spec())
+        hosts = 0
+        for name in self.index['exposure_hosts_all']['files']:
+            part = json.loads((d / name).read_text())
+            self.assertLessEqual(len(part), M.CHUNK)
+            hosts += len(part)
+        self.assertEqual(hosts, self.index['exposure_hosts_all']['hosts'])
+
+    def test_rehearsal_hosts_are_in_the_package_exposure_and_the_addenda(self):
+        import b20r23_e1b_readiness as RD
+        from genesis.common import canonical
+        from genesis.models import GraphTask
+        d = ROOT / 'handoff' / 'e1b_c4'
+        listed = set()
+        for name in self.index['exposure_hosts_all']['files']:
+            listed |= RD.identities([GraphTask.model_validate_json(canonical(t)) for t in json.loads((d / name).read_text())])
+        mine = [GraphTask.model_validate_json(canonical(t)) for t in self.s['select_hosts'] + self.s['confirm_hosts']]
+        dev = json.loads((EVIDENCE / 'development_look_hosts.json').read_text())
+        mine += [GraphTask.model_validate_json(canonical(t)) for t in dev['select_hosts'] + dev['confirm_hosts']]
+        self.assertEqual(len(mine), 59)
+        self.assertTrue(RD.identities(mine) <= listed)
+        for pkg in ('e1', 'e1b'):
+            addenda = set()
+            for p in sorted((ROOT / 'handoff' / pkg).glob('exposure_hosts_addendum_*.json')):
+                addenda |= RD.identities([GraphTask.model_validate_json(canonical(t)) for t in json.loads(p.read_text())])
+            self.assertTrue(RD.identities(mine) <= addenda, pkg)
 
 
 if __name__ == '__main__':

@@ -669,6 +669,12 @@
           "cf64ca1"
         ],
         "result": "C4 tree route wired opt-in with custody: verification/certificates_tree_c4.py (bundle genesis-certificate-bundle-tree-c4-v1, checker-only replay with registry re-derivation, revocation, optional Lean replay); generated_certify_c4.KNOWN_PACKAGES/known_package; generated_bnb_c4.reference_record; custodian route generated-rows-tree-c4-v1 (known C4 package, fast enumerator); adapters' ROWS_ROUTES (TF generated-rows-v1, C4 generated-rows-tree-c4-v1); calibration.SELECTION_RULE_E1_HARD_V2_C4TREE_DRAFT listed in DRAFT_RULES_BY_NAME (no study adopts it). 9 new tests; full tests_genesis passes. Not adopted"
+      },
+      "B20_R52": {
+        "commits": [
+          "75d91fa"
+        ],
+        "result": "E1b-C4 DRAFT package (handoff/e1b_c4) and same-operator rehearsal through the v5 C4 tree route: B20_R50 Part A as a calibration record under the registered DRAFT rule (clean, same selection); custodian SELECT chose low_cycle_tm; 20-host CONFIRM, all certified by the tree reference at 600 s (median 4.2 s); +1.15 [0.70, 1.65], 12/1/7, cost ratio 0.92: SUPPORTED, judge agrees. Disclosed smoke at 120 s INVALID (one reference unsupported)"
       }
     },
     "open_after_b20_r5": [
@@ -1035,6 +1041,9 @@
     ],
     "open_after_b20_r51": [
       "B20R48-OPEN-1 and B20R50-OPEN-1 updated: custody and opt-in wiring exist; adoption is the reviewer's"
+    ],
+    "open_after_b20_r52": [
+      "B20R50-OPEN-1 updated: package and rehearsal done; reviewer, statistician, independent custodian remain"
     ]
   }
 }

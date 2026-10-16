@@ -26,7 +26,7 @@
 | B20_R44 | `5d4bb61` | `010ce477…f55f` (B20_R40–R44; release matrix 1,306 tests, all OK, one declared skip; restore-verified, 5,824 manifest entries; driver rehearsal on the build host **REPRODUCED**, not a second machine) |
 
   The recovery-branch checkpoints B20_RX1 and B20_RX2 are on `recovery-b20r1-partial`; their work was ported here.
-- **Records:** `docs/checkpoints/B20_R1_RECORD.md` … `B20_R11_RECORD.md`, `B20_RX1_RECORD.md`, `B20_RX2_RECORD.md`, `B20_R12_RECORD.md` and `B20_R15_RECORD.md` … `B20_R51_RECORD.md`.
+- **Records:** `docs/checkpoints/B20_R1_RECORD.md` … `B20_R11_RECORD.md`, `B20_RX1_RECORD.md`, `B20_RX2_RECORD.md`, `B20_R12_RECORD.md` and `B20_R15_RECORD.md` … `B20_R52_RECORD.md`.
 
 ## Completed since B20_R11
 
@@ -73,6 +73,7 @@
 | B20_R49 | **Attribution: the transferred rows cause the utility.** Registered ablation of the tree route's registry (4-cycle rows only) on 40 fresh C4 hosts at 60 s: **36 vs 24 certified**, 12/0 discordant (p 0.00024), 13,294 vs 186,574 search nodes, +19.6 s per host: **ROWS_RESPONSIBLE**. Completes a preregistered DEV chain B20_R46 → R49 for one system-invented, Lean-checked component in a near domain (roadmap E5) |
 | B20_R50 | **E1b's C4 arm made scorable by the transferred rows** (DRAFT rule `e1-hard-v2-c4tree-draft`: e1-hard-v2 with the tree route as reference): calibration selects erdos n40 p0.15 and n30 p0.2, the first eligible C4 settings; on 30 fresh hosts, all certified, E1b is **READY_FOR_REVIEW** against the strongest DSL baseline (+1.17) and in both causal contrasts (ablation +1.43, placebo +2.73). Descriptive: an exact C4 MIP at 2 s is optimal on 30/30, E1b −0.93 (B20R33-OPEN-1 holds on C4 too) |
 | B20_R51 | **C4 tree route wired opt-in with custody**: `verification/certificates_tree_c4.py` (bundle `genesis-certificate-bundle-tree-c4-v1`, checker-only replay with registry re-derivation and revocation), v5 route `generated-rows-tree-c4-v1` over a known C4 package, each adapter offers only its own route (`ROWS_ROUTES`), the DRAFT `e1-hard-v2-c4tree-draft` listed for record checks; built for review, **not adopted** (`docs/GENERATED_ROWS_REFERENCE.md`) |
+| B20_R52 | **E1b-C4 DRAFT package** (`handoff/e1b_c4`, evidence card) and a same-operator rehearsal through the v5 C4 tree route (draft rule adopted only in a throwaway copy): custodian SELECT chose low_cycle_tm; 20-host CONFIRM, all certified (median 4.2 s); **+1.15 per host [0.70, 1.65], 12/1/7, SUPPORTED**, judge agrees. Every builder-side step for E1b's C4 arm is done; the claim is scoped to DSL baselines (an exact C4 MIP dominates) |
 
 ## Resume
 

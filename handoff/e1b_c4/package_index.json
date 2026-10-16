@@ -1,0 +1,77 @@
+{
+ "baselines": {
+  "exchange_tm": "f4714fd0e1ec23c7d8cf8c644f64ad1f838e8729311a8b983ff0f6f14aa48ed5",
+  "low_cycle_tm": "9d35d180fde8b61e917ba4db3cf8c10b20a22529ea96a6fc80cfd54bc51a6cc7",
+  "multistart_tm": "e3d828ca53fe62e9e8d22953fd1c0bd0a504e1dd79ac759815a4b3155461ddf4"
+ },
+ "calibration": {
+  "adopted": false,
+  "record": "evidence/e1b_c4_package_b20r52/calibration_c4_host_v2_e1_hard_v2_c4tree_draft.json",
+  "rule": "e1-hard-v2-c4tree-draft",
+  "selected": [
+   {
+    "family": "erdos",
+    "index": 3,
+    "params": {
+     "n": 40,
+     "p": 0.15
+    }
+   },
+   {
+    "family": "erdos",
+    "index": 0,
+    "params": {
+     "n": 30,
+     "p": 0.2
+    }
+   }
+  ],
+  "sha256": "77d811925f77ce1531a867e49c7cd9c5ba65e3134dabf0069b0eb239fe0556c1"
+ },
+ "campaign_candidate_version": "3e562162a7d6fa6c59008d7d5f411650698a3f4ab264065cddfca11deca5920d",
+ "candidate_descriptor_id": "64a9890b264df3e89ad4183a6a13b41c1d3fe8f18022e0308007ce74ad339fb0",
+ "code_identity": "b767fdfb359c006aa137143dd3da5e728742eb3062f01f022bdf2ff512283f82",
+ "decision_record_draft_sha256": "34b2ab8f30438a45db052f3b48fea2f4f2031cba1245edb6c7b91817f5e60548",
+ "decision_record_problems_if_frozen": [],
+ "domain": "c4_host_v2",
+ "exposure_hosts_all": {
+  "files": [
+   "exposure_hosts_all_part_01.json",
+   "exposure_hosts_all_part_02.json",
+   "exposure_hosts_all_part_03.json",
+   "exposure_hosts_all_part_04.json",
+   "exposure_hosts_all_part_05.json",
+   "exposure_hosts_all_part_06.json"
+  ],
+  "hosts": 2957,
+  "scan": {
+   "distinct_hosts": 2957,
+   "empty_files_skipped": [
+    "evidence/failed-wal-final-replay.json",
+    "evidence/final-replay.json"
+   ],
+   "files_scanned": 1046,
+   "host_records": 10956
+  }
+ },
+ "package": "E1b-C4 (DRAFT)",
+ "reference_route": {
+  "enumerator": "fast",
+  "lp_rounding_seconds": 1.0,
+  "max_rows": 50000,
+  "max_total": 80000,
+  "order": "dense-first",
+  "package_sha256": "011061f7eb71350dfa605c82d3110703151539ed0bf6f8e39408027b2e40d800",
+  "route": "generated-rows-tree-c4-v1",
+  "seconds": 600,
+  "separation_seconds": 15
+ },
+ "rehearsal": {
+  "comparator": "low_cycle_tm",
+  "judge_agrees": true,
+  "outcome": "SUPPORTED",
+  "request_sha256": "d066fd24120da97685e756dc88d6aa3c3ded107e55dfcc4cfeb1e438cde356d7"
+ },
+ "schema": "genesis-handoff-package-index-v1",
+ "status": "DRAFT; not registered with any custodian"
+}
