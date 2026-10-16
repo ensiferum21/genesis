@@ -26,7 +26,7 @@
 | B20_R44 | `5d4bb61` | `010ce477…f55f` (B20_R40–R44; release matrix 1,306 tests, all OK, one declared skip; restore-verified, 5,824 manifest entries; driver rehearsal on the build host **REPRODUCED**, not a second machine) |
 
   The recovery-branch checkpoints B20_RX1 and B20_RX2 are on `recovery-b20r1-partial`; their work was ported here.
-- **Records:** `docs/checkpoints/B20_R1_RECORD.md` … `B20_R11_RECORD.md`, `B20_RX1_RECORD.md`, `B20_RX2_RECORD.md`, `B20_R12_RECORD.md` and `B20_R15_RECORD.md` … `B20_R47_RECORD.md`.
+- **Records:** `docs/checkpoints/B20_R1_RECORD.md` … `B20_R11_RECORD.md`, `B20_RX1_RECORD.md`, `B20_RX2_RECORD.md`, `B20_R12_RECORD.md` and `B20_R15_RECORD.md` … `B20_R48_RECORD.md`.
 
 ## Completed since B20_R11
 
@@ -69,6 +69,7 @@
 | B20_R45 | **E1d ablation evaluation rehearsed through the v5 custody path**: v5 ablation request (intervention re-checked at registration), 45-host CONFIRM: **44/0/0, +6.64 per host [6.03, 7.29], SUPPORTED**, judge agrees. Every builder-side GV3 step for E1d is done |
 | B20_R46 | **GV6 path: the row-invention procedure transferred to C4-free subgraphs** (`invention/cuts_c4.py`, a registered adaptation of generator v2): 34 patterns on 4–6 vertices, **all 37 obligations Lean-CHECKED**; the rows are far stronger than the evaluator's 4-cycle rows on dense patterns (K6: 11.25 → 7.5, ex 7). Procedural transfer only (B20R46-OPEN-1); utility on C4 hosts is B20_R47 |
 | B20_R47 | **Utility of the transferred C4 rows** (exact checker `verification/lp_dual_rows_c4.py`, route `discovery/generated_certify_c4.py`, not wired): on 40 fresh C4 hosts at 60 s the rows route certifies 22 vs the evaluator's 22, no discordant host: **NO_CERTIFICATION_UTILITY**; the rows close 80% of the LP gap and save 2.24 s per host. Post-run diagnostics (disclosed): the open gap is global (MILP optima at the witness; local rows on ≤ 8 vertices move the LP by ≤ 0.4); a certified branch-and-bound prototype closes 10 of 13 open hosts. Near-domain evidence only (roadmap E5) |
+| B20_R48 | **Certified branch and bound over the transferred C4 rows** (exact tree checker `verification/lp_dual_tree_c4.py`, producer `discovery/generated_bnb_c4.py`, not wired): on 40 fresh C4 hosts at 60 s, **38 certified vs the evaluator's 26** (12/0 discordant, McNemar p 0.00024), median 2.1 s vs 46.9 s, every certificate VALID: **CERTIFICATION_UTILITY**. Both C4 settings meet the 90% calibration limit under the tree route (B20R48-OPEN-1). Attribution to the invented rows is B20_R49 |
 
 ## Resume
 

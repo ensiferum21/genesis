@@ -1,0 +1,149 @@
+{
+ "budget_s": 60,
+ "by_setting": {
+  "erdos:0cee043c": {
+   "by_method_c": {
+    "LP_DUAL_GENERATED_C4_EXACT": 6,
+    "LP_DUAL_TREE_C4_EXACT": 14
+   },
+   "certificate_bytes_max": 857276,
+   "certified_a": 19,
+   "certified_a_not_c": 0,
+   "certified_c": 20,
+   "certified_c_not_a": 1,
+   "check_s_max": 0.142,
+   "hosts": 20,
+   "nodes_median_certified_c": 22.0,
+   "rate_a": 0.95,
+   "rate_c": 1.0,
+   "wall_median_s": {
+    "a": 7.174,
+    "c": 1.628
+   },
+   "wall_total_s": {
+    "a": 532.08,
+    "c": 51.54
+   }
+  },
+  "erdos:fa6fa189": {
+   "by_method_c": {
+    "LP_DUAL_GENERATED_C4_EXACT": 1,
+    "LP_DUAL_TREE_C4_EXACT": 17
+   },
+   "certificate_bytes_max": 9310347,
+   "certified_a": 7,
+   "certified_a_not_c": 0,
+   "certified_c": 18,
+   "certified_c_not_a": 11,
+   "check_s_max": 1.741,
+   "hosts": 20,
+   "nodes_median_certified_c": 141.0,
+   "rate_a": 0.35,
+   "rate_c": 0.9,
+   "wall_median_s": {
+    "a": 59.685,
+    "c": 5.529
+   },
+   "wall_total_s": {
+    "a": 1001.14,
+    "c": 367.71
+   }
+  }
+ },
+ "calibration_limit_met_by_a": {
+  "erdos:0cee043c": true,
+  "erdos:fa6fa189": false
+ },
+ "calibration_limit_met_by_c": {
+  "erdos:0cee043c": true,
+  "erdos:fa6fa189": true
+ },
+ "checker_identity": "genesis.verification.lp_dual_tree_c4@58ef641ed428eec04a54cfad752e0422aa92840bff713f8b36f18420c0851a08",
+ "code_identity": "09006a1a625a0ae8a56148f3744cbeb73a5e104fd243876565fdd90274256d2f",
+ "exposure_scan": {
+  "calibration_hosts": 456,
+  "distinct_hosts": 2756,
+  "e1_named_hosts": 711,
+  "empty_files_skipped": [
+   "evidence/failed-wal-final-replay.json",
+   "evidence/final-replay.json"
+  ],
+  "excluded_identities": 2756,
+  "files_scanned": 1010,
+  "host_records": 10471
+ },
+ "mcnemar_p_one_sided": 0.00024414,
+ "passes": {
+  "coverage": true,
+  "mcnemar": true,
+  "sound": true,
+  "time": true
+ },
+ "pooled": {
+  "by_method_c": {
+   "LP_DUAL_GENERATED_C4_EXACT": 7,
+   "LP_DUAL_TREE_C4_EXACT": 31
+  },
+  "certificate_bytes_max": 9310347,
+  "certified_a": 26,
+  "certified_a_not_c": 0,
+  "certified_c": 38,
+  "certified_c_not_a": 12,
+  "check_s_max": 1.741,
+  "hosts": 40,
+  "nodes_median_certified_c": 35.0,
+  "rate_a": 0.65,
+  "rate_c": 0.95,
+  "wall_median_s": {
+   "a": 46.908,
+   "c": 2.139
+  },
+  "wall_total_s": {
+   "a": 1533.22,
+   "c": 419.25
+  }
+ },
+ "registry": {
+  "package_sha256": "7a081e4a957503da29d728f94d67793eea1404a2aacda8199d4c90cf8cbf0865",
+  "patterns": 34,
+  "sha256": "e82b6ea62384e1369c5d63c7b6bdc59c673150b67bb7e75350eb0888f2846b91"
+ },
+ "route_c": {
+  "lp_rounding_seconds": 1.0,
+  "max_rows": 50000,
+  "max_total": 80000,
+  "order": "dense-first",
+  "separation_seconds": 15
+ },
+ "schema": "genesis-b20r48-c4-tree-certification-v1",
+ "seeds": [
+  20264801,
+  20264811
+ ],
+ "settings": [
+  {
+   "family": "erdos",
+   "params": {
+    "n": 30,
+    "p": 0.2
+   }
+  },
+  {
+   "family": "erdos",
+   "params": {
+    "n": 36,
+    "p": 0.17
+   }
+  }
+ ],
+ "status": "DEV measurement; licenses nothing; route and checker not wired into the evaluator",
+ "unsound_rows": [],
+ "verdict": "CERTIFICATION_UTILITY",
+ "wall_saving_a_minus_c": {
+  "interval_90": [
+   20.651775,
+   35.584575
+  ],
+  "mean": 27.849325
+ }
+}
