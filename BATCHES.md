@@ -73,6 +73,7 @@ session can resume from the latest checkpoint (see `RESUME.md`).
 | 20_R43 | E1d DRAFT package; same-operator rehearsal through the v5 path | GV3 path (B20R41-OPEN-1) | Custodian SELECT chose HiGHS at 4x budget; 240-host CONFIRM, 237 certified; W/L/T 198/0/39, +9.80 [9.30, 10.35], cost ratio 0.34: **SUPPORTED**, judge agrees; package `handoff/e1d` |
 | 20_R44 | Registered ablation of E1's discovered representation (cross_2 -> ordered_2, Lean-weaker decoder); E1d ablation re-pilot with a Lean-certified null control | GV3 path, causal control (B20R41-OPEN-1, B20R44-OPEN-1) | Candidate − ablation +7.07 [6.47, 7.70], 30/0/0, cost ratio 1.00: **READY_FOR_REVIEW** (45 hosts for power 0.86); null control (adjacent_2, Lean-equal) +0.03: NULL_CONTROL_CLEAN |
 | 20_R45 | Same-operator rehearsal of the E1d ablation evaluation through the v5 path | GV3 path, causal control (B20R41-OPEN-1) | v5 ablation request, custodian re-checked the intervention; 45-host CONFIRM, 44 certified; 44/0/0, +6.64 [6.03, 7.29], cost ratio 1.00: **SUPPORTED**, judge agrees |
+| 20_R46 | The row-invention procedure transferred to C4-free subgraphs: generator, Lean obligations, recipes | GV6 path, transfer (B20R46-OPEN-1) | 34 patterns kept from 201 graphs on 4–6 vertices (K6: 4-cycle LP 11.25 → 7.5, ex 7); **37/37 obligations Lean-CHECKED** (34 bounds by integer rounding certificates); procedural transfer only, utility is B20_R47 |
 
 Later phases (B17–B23+) follow the roadmap and its gates; numbers are labels,
 not estimates.

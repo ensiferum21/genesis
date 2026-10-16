@@ -25,7 +25,7 @@
 | B20_R39 | `41101a6` | `88f6ed6d…3cee` (B20_R36–R39; release matrix 1,262 tests, all OK, one declared skip; restore-verified, 5,756 manifest entries; driver rehearsal on the build host **REPRODUCED**, not a second machine; the first rehearsal attempt was lost to a container restart and re-run from the same archive) |
 
   The recovery-branch checkpoints B20_RX1 and B20_RX2 are on `recovery-b20r1-partial`; their work was ported here.
-- **Records:** `docs/checkpoints/B20_R1_RECORD.md` … `B20_R11_RECORD.md`, `B20_RX1_RECORD.md`, `B20_RX2_RECORD.md`, `B20_R12_RECORD.md` and `B20_R15_RECORD.md` … `B20_R45_RECORD.md`.
+- **Records:** `docs/checkpoints/B20_R1_RECORD.md` … `B20_R11_RECORD.md`, `B20_RX1_RECORD.md`, `B20_RX2_RECORD.md`, `B20_R12_RECORD.md` and `B20_R15_RECORD.md` … `B20_R46_RECORD.md`.
 
 ## Completed since B20_R11
 
@@ -66,6 +66,7 @@
 | B20_R43 | **E1d DRAFT package** (`handoff/e1d`, evidence card in five dimensions) and a same-operator rehearsal through the v5 path (draft rule adopted only in a throwaway copy): custodian SELECT chose **HiGHS at 4x budget**; 240-host CONFIRM, 237 certified; W/L/T **198/0/39**, **+9.80 per host [9.30, 10.35]**, cost ratio 0.34: **SUPPORTED**, judge agrees |
 | B20_R44 | **Causal control for E1d**: a registered ablation of the discovered representation (cross_2 -> ordered_2, a Lean-checked strictly weaker decoder; B20R44-OPEN-1): candidate − ablation **+7.07 per host [6.47, 7.70], 30/0/0**, cost ratio 1.00, **READY_FOR_REVIEW**; a Lean-certified null arm (adjacent_2 = cross_2) shows +0.03: **NULL_CONTROL_CLEAN** |
 | B20_R45 | **E1d ablation evaluation rehearsed through the v5 custody path**: v5 ablation request (intervention re-checked at registration), 45-host CONFIRM: **44/0/0, +6.64 per host [6.03, 7.29], SUPPORTED**, judge agrees. Every builder-side GV3 step for E1d is done |
+| B20_R46 | **GV6 path: the row-invention procedure transferred to C4-free subgraphs** (`invention/cuts_c4.py`, a registered adaptation of generator v2): 34 patterns on 4–6 vertices, **all 37 obligations Lean-CHECKED**; the rows are far stronger than the evaluator's 4-cycle rows on dense patterns (K6: 11.25 → 7.5, ex 7). Procedural transfer only (B20R46-OPEN-1); utility on C4 hosts is B20_R47 |
 
 ## Resume
 

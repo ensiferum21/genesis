@@ -504,7 +504,7 @@
    "local_execution": "TESTS_EXECUTED_IN_MATRIX",
    "owner": "research implementer",
    "remaining": [
-    "a generated representation with prospective utility (B20_R17/R19 relational decoders, B20_R26 quotients, B20_R27 decompositions and B20_R31/R36 generated inequalities are Lean-checked; DEV construction utility after cost was not shown in any of the six attempts)"
+    "a generated representation with prospective utility (B20_R17/R19 relational decoders, B20_R26 quotients, B20_R27 decompositions and B20_R31/R36 generated inequalities are Lean-checked; DEV construction utility after cost was not shown in any of the six attempts; B20_R46 transferred the inequality generator to C4-free subgraphs, Lean-checked, utility untested)"
    ],
    "scientific_efficacy": "N/A",
    "scope": "MRDL bounded graph vocabulary; typed representation grammar with Lean-checked obligations (B18)",
@@ -519,7 +519,9 @@
     "tests_formal/test_quotient_invention.py",
     "tests_formal/test_decomposition_invention.py",
     "tests_genesis/test_cuts.py",
-    "tests_formal/test_relaxation_invention.py"
+    "tests_formal/test_relaxation_invention.py",
+    "tests_genesis/test_cuts_c4.py",
+    "tests_formal/test_c4_generator.py"
    ],
    "title": "MRDL: minimal representation description language",
    "workstream": "W10"
@@ -5410,14 +5412,17 @@
     "date": null,
     "decision": "PENDING_INDEPENDENT_ACCEPTANCE"
    },
-   "code": [],
-   "disposition": "NOT_IMPLEMENTED",
+   "code": [
+    "src/genesis/invention/cuts_c4.py",
+    "scripts/b20r46_c4_generator.py"
+   ],
+   "disposition": "RESEARCH_HYPOTHESIS",
    "evidence": [],
    "external_blockers": [],
    "id": "W24",
-   "implementation": "NOT_IMPLEMENTED",
+   "implementation": "IMPLEMENTED_BOUNDED",
    "independent_verification": "PENDING",
-   "local_execution": "NOT_EXECUTED",
+   "local_execution": "TESTS_EXECUTED_IN_MATRIX",
    "owner": "research implementer",
    "remaining": [
     "not started in B14"
@@ -5425,8 +5430,11 @@
    "scientific_efficacy": "N/A",
    "scope": "workstream",
    "source": "roadmap \u00a77-10",
-   "tests": [],
-   "title": "Transfer and independent reproduction",
+   "tests": [
+    "tests_genesis/test_cuts_c4.py",
+    "tests_formal/test_c4_generator.py"
+   ],
+   "title": "Transfer and independent reproduction (B20_R46: the row-invention procedure transferred to C4-free subgraphs with a registered adaptation, 37/37 obligations Lean-CHECKED; utility in the new domain not established; independent reproduction not started)",
    "workstream": "W24"
   },
   {

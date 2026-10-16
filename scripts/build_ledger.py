@@ -78,10 +78,12 @@ SPEC = {
             [G + 'test_graphs.py', 'tests_formal/test_invention.py', G + 'test_relations.py',
              'tests_formal/test_relation_invention.py', G + 'test_quotients.py', G + 'test_decompositions.py',
              'tests_formal/test_quotient_invention.py', 'tests_formal/test_decomposition_invention.py',
-             G + 'test_cuts.py', 'tests_formal/test_relaxation_invention.py'],
+             G + 'test_cuts.py', 'tests_formal/test_relaxation_invention.py', G + 'test_cuts_c4.py',
+             'tests_formal/test_c4_generator.py'],
             ['a generated representation with prospective utility (B20_R17/R19 relational decoders, B20_R26 quotients, '
              'B20_R27 decompositions and B20_R31/R36 generated inequalities are Lean-checked; DEV construction '
-             'utility after cost was not shown in any of the six attempts)'],
+             'utility after cost was not shown in any of the six attempts; B20_R46 transferred the inequality '
+             'generator to C4-free subgraphs, Lean-checked, utility untested)'],
             [], 'N/A', 'W10'),
     '5': (I, 'heading', [], [], [], [], 'N/A', 'W01'),
     '5.1': (B, 'task contracts for two graph domains through the DomainAdapter interface (parse, exposure identity, '
@@ -639,7 +641,11 @@ WORKSTREAMS = {
             'majority vote; no expert-interaction channel)', B,
             ['src/genesis/verification/reliability.py', 'src/genesis/graphs.py'],
             [G + 'test_reliability.py', 'tests_certificates/test_reliability_routes.py']),
-    'W24': ('Transfer and independent reproduction', N, [], []),
+    'W24': ('Transfer and independent reproduction (B20_R46: the row-invention procedure transferred to C4-free '
+            'subgraphs with a registered adaptation, 37/37 obligations Lean-CHECKED; utility in the new domain not '
+            'established; independent reproduction not started)', H,
+            ['src/genesis/invention/cuts_c4.py', 'scripts/b20r46_c4_generator.py'],
+            [G + 'test_cuts_c4.py', 'tests_formal/test_c4_generator.py']),
     'W25': ('Trainable model extension', N, [], []),
     'W26': ('Software research extension', N, [], []),
     'W27': ('Numerical, empirical and instrument extension', N, [], []),

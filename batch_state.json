@@ -608,9 +608,16 @@
       },
       "B20_R45": {
         "commits": [
-          "5981c21"
+          "5981c21",
+          "11176f3"
         ],
         "result": "same-operator rehearsal of the E1d ablation evaluation through the opt-in v5 path: campaign with the frozen E1 candidate; v5 ablation request via cli.followup_request (baseline = registered ablation cross_2 -> ordered_2, re-checked by the custodian at registration); power recomputed for the ablation plan (custodian family ablation:triangle_free_host_v1): 15 per stratum; 45-host CONFIRM, 44 certified; 44/0/0, +6.64 [6.03, 7.29], cost ratio 1.00: SUPPORTED; judge agrees"
+      },
+      "B20_R46": {
+        "commits": [
+          "9413087"
+        ],
+        "result": "GV6 path: the triangle-free row-invention procedure transferred to C4-free subgraphs (invention/cuts_c4.py, registered adaptation of generator v2: 4-cycle rows, bridge with distinct opposite vertices, statements over pairwise-distinct vertices). 201 graphs on 4-6 vertices, 48 cycle-covered, 10 implied by cycle rows, 4 by earlier patterns, 34 kept (K4 4, K_{2,3} 4, K5 6, K_{2,4} 5, K6 7; K6 LP 11.25 -> 7.5). Screen: 0 counterexamples among 37 obligations; Lean: 37/37 CHECKED (34 bounds by integer rounding certificates). Construction 1366.6 CPU s. Procedural transfer only; utility is B20_R47"
       }
     },
     "open_after_b20_r5": [
@@ -957,6 +964,9 @@
     ],
     "open_after_b20_r45": [
       "B20R41-OPEN-1 updated: every builder-side E1d step done; reviewer, statistician, independent custodian remain"
+    ],
+    "open_after_b20_r46": [
+      "B20R46-OPEN-1 (new): whether procedural transfer to C4-free subgraphs counts toward GV6, and the acceptable adaptation budget; utility tested in B20_R47"
     ]
   }
 }
