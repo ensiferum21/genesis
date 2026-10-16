@@ -2,7 +2,7 @@
 
 ## Where things stand
 
-- **Branch:** `continuation-b20-rx` (GitHub `ensiferum21/genesis`). It is the canonical B20_R11 line (`continuation-b20-repairs`, `36954d6`), with the recovery-branch work ported onto it, plus B20_R12 and B20_R15–R38. B20_R25–R28 were built from the B20_R24 checkpoint's history bundle while GitHub was not linked; GitHub's branch is an ancestor.
+- **Branch:** `continuation-b20-rx` (GitHub `ensiferum21/genesis`). It is the canonical B20_R11 line (`continuation-b20-repairs`, `36954d6`), with the recovery-branch work ported onto it, plus B20_R12 and B20_R15–R39. B20_R25–R28 were built from the B20_R24 checkpoint's history bundle while GitHub was not linked; GitHub's branch is an ancestor.
 - **Side branch:** `side-b21-equational` (`710d26d`) keeps work done on plain B20 in parallel with this line (equational generations W21/E4, definitional primitives, fault routes). It is not canonical. Only its Lean-replay hint repair was ported (B20_R25).
 - **Checkpoints:**
 
@@ -24,7 +24,7 @@
 | B20_R35 | `fdaf849` | `9aace6d1…54ea` (B20_R34–R35; release matrix 1,239 tests, all OK, one declared skip; restore-verified, 5,713 manifest entries; driver rehearsal on the build host **REPRODUCED**, not a second machine) |
 
   The recovery-branch checkpoints B20_RX1 and B20_RX2 are on `recovery-b20r1-partial`; their work was ported here.
-- **Records:** `docs/checkpoints/B20_R1_RECORD.md` … `B20_R11_RECORD.md`, `B20_RX1_RECORD.md`, `B20_RX2_RECORD.md`, `B20_R12_RECORD.md` and `B20_R15_RECORD.md` … `B20_R38_RECORD.md`.
+- **Records:** `docs/checkpoints/B20_R1_RECORD.md` … `B20_R11_RECORD.md`, `B20_RX1_RECORD.md`, `B20_RX2_RECORD.md`, `B20_R12_RECORD.md` and `B20_R15_RECORD.md` … `B20_R39_RECORD.md`.
 
 ## Completed since B20_R11
 
@@ -58,6 +58,7 @@
 | B20_R36 | Relaxation family, attempt 2 (construction) in the dense regime: K5 rows give +3.94 over the plain LP greedy, +3.31 after cost, +4.31 over an exact MIP at 2 s, but −2.97 against the menu's `cross_2`: **NO_UTILITY_AFTER_COST**. Exploratory: `cross_2` (E1's representation) is optimal on 10/10 certified dense planted hosts where the MIP at 2 s is 13.9 below |
 | B20_R37 | Generator v2: every graph on ≤ 7 vertices, 9 patterns (K7 ≤ 12, K7−e ≤ 12, …), all 12 obligations Lean-CHECKED by integer rounding certificates. Coverage on 40 fresh dense hosts at 60 s: 33 vs v1's 30 (McNemar p 0.19): **NO_COVERAGE_GAIN**; dense planted 19/20 with v2, 17/20 with v1 |
 | B20_R38 | Frozen E1/E1b candidates vs an exact MIP in the dense regime (40 fresh hosts, all certified by the generated-rows route): E1 at 0.5 s is optimal on 19/20 per setting and **+14.6 per host above HiGHS at 2.0 s** on dense planted hosts (20/0/0); verdicts E1 CANDIDATE_BEYOND_MIP ×2 (inflated at 0.5 s), E1b BEYOND_MIP on planted, MIP_DOMINATES on erdos |
+| B20_R39 | Custody for certificates over generated rows (`verification/certificates_rows.py`, own schema, checker-only replay with registry re-derivation and revocation) and a generated-rows joint reference (`generated_certify.reference`); built, **not wired**; adoption steps in `docs/GENERATED_ROWS_REFERENCE.md` |
 
 ## Resume
 
@@ -69,18 +70,19 @@
 
 ## Decisions needed from Daniel or a reviewer
 
-1. **GV3 sign-off: E1 and E1b** (`handoff/e1/README.md` v3, `handoff/e1b/README.md` v2). Both are READY_FOR_REVIEW on the `e1-hard-v2` family, and both same-operator rehearsals are SUPPORTED. **First decide B20R33-OPEN-1:** on this family an exact MIP solver is always optimal within 0.36 CPU s, so E1 (dominated) and E1b (within 0.2) cannot be "beyond strong baselines"; a SUPPORTED result would be scoped to time-matched DSL baselines. B20_R38 found a dense regime where E1's frozen candidate is optimal on 19/20 hosts and beats HiGHS at 4× its budget (planted); it is certifiable only with the generated-rows reference (B20_R39 builds its custody; adoption is the reviewer's). Options: accept that scope; add a MIP comparator; or move to a regime an exact solver cannot finish within budget. B20_R34 mapped the certifiable range: no such setting exists there (where the evaluator certifies, the MIP is optimal); a dense planted regime where the candidate beats the MIP's 2 s incumbent is uncertifiable by the current evaluator, so it would need a stronger certification route (branch-and-bound with exact LP-dual leaves, buildable here) or a plan without certified optima. To move to a real run:
+1. **GV3 sign-off: E1 and E1b** (`handoff/e1/README.md` v3, `handoff/e1b/README.md` v2). Both are READY_FOR_REVIEW on the `e1-hard-v2` family, and both same-operator rehearsals are SUPPORTED. **First decide B20R33-OPEN-1:** on this family an exact MIP solver is always optimal within 0.36 CPU s, so E1 (dominated) and E1b (within 0.2) cannot be "beyond strong baselines"; a SUPPORTED result would be scoped to time-matched DSL baselines. B20_R38 found a dense regime where E1's frozen candidate is optimal on 19/20 hosts and beats HiGHS at 4× its budget (planted); it is certifiable only with the generated-rows reference (B20_R39 builds its custody; adoption is the reviewer's). Options: accept that scope; add a MIP comparator; or move to a regime an exact solver cannot finish within budget. B20_R34 mapped the certifiable range: no such setting exists there (where the evaluator certifies, the MIP is optimal); the dense regime where the candidate beats the MIP is uncertifiable by the current evaluator and certifiable with the generated rows (B20_R35–R38). To move to a real run:
    - a reviewer signs off the rule `e1-hard-v2`, the cost and comparator decisions, and freezes the DRAFTs;
    - a statistician signs off the centred power model (B19-OPEN-4);
    - an independent custodian runs SELECT, register and evaluate on its own machine.
-2. **B20R24-OPEN-2:** align the calibration's certification limit (at least 90% certified within 60 s) with the plan's unsupported limit (at most 5% at 600 s) before a real run. B20_R30 measured both on 90 fresh `e1b` hosts: 86/90 at 60 s, 90/90 at 600 s (unsupported upper bound 3.27%), **LIMITS_CONSISTENT** on this family (`evidence/certification_budget_b20r30/`). The choice stays the reviewer's.
-3. **GV4 study design** (`handoff/gv4/README.md`, DRAFT). The question is what counts as an invented component, and now also whether a component that helps *certification* counts toward a better improver: B20_R35 gives the first preregistered positive DEV utility of a generated, Lean-checked component, in certification (B20R35-OPEN-1); also whether to wire its checker into the evaluator (a trust-path change). The decision is needed before the s15.3 work below can become a study. After B20_R31, no invented component has DEV construction utility yet.
-4. **CRPD-2b pin revision:** review.
-5. **B20R33-OPEN-1** (see item 1).
+2. **Adopt or decline the generated-rows reference** (B20R35-OPEN-1; `docs/GENERATED_ROWS_REFERENCE.md`). It is what makes the dense regime of B20_R38 certifiable, and so the only path found so far to a "beyond strong baselines" GV3 run.
+3. **B20R24-OPEN-2:** align the calibration's certification limit (at least 90% certified within 60 s) with the plan's unsupported limit (at most 5% at 600 s) before a real run. B20_R30 measured both on 90 fresh `e1b` hosts: 86/90 at 60 s, 90/90 at 600 s (unsupported upper bound 3.27%), **LIMITS_CONSISTENT** on this family (`evidence/certification_budget_b20r30/`). The choice stays the reviewer's.
+4. **GV4 study design** (`handoff/gv4/README.md`, DRAFT). The question is what counts as an invented component, and now also whether a component that helps *certification* counts toward a better improver: B20_R35 gives the first preregistered positive DEV utility of a generated, Lean-checked component, in certification (B20R35-OPEN-1); also whether to wire its checker into the evaluator (a trust-path change). The decision is needed before the s15.3 work below can become a study. After B20_R31, no invented component has DEV construction utility yet.
+5. **CRPD-2b pin revision:** review.
+6. **B20R33-OPEN-1** (see item 1).
 
 ## Next engineering, in order
 
-1. **GV4: a component family with utility.** Five attempts in four families now have Lean-checked semantics, and none has DEV construction utility after cost:
+1. **GV4: a component family with utility.** Six attempts in four families now have Lean-checked semantics, and none has DEV construction utility after cost (relaxation attempt 2, B20_R36, lost only to the menu):
    - relational ×2 (B20_R17, R19), retired;
    - quotient ×1 (B20_R26);
    - decomposition ×1 (B20_R27);

@@ -66,6 +66,7 @@ session can resume from the latest checkpoint (see `RESUME.md`).
 | 20_R36 | K5 rows for construction, dense regime | s15.3 / W10 (GV4) | NO_UTILITY_AFTER_COST: +3.94 vs plain LP greedy, +4.31 vs MIP, −2.97 vs menu `cross_2` (attempt 2) |
 | 20_R37 | Generator v2 (≤ 7 vertices) | s15.3 / W10, W13 | 9 patterns, 12 obligations Lean-CHECKED (K7, K7−e with a hoisted heartbeat option); NO_COVERAGE_GAIN at 60 s (33 vs 30 of 40); dense planted 19/20 |
 | 20_R38 | Frozen E1/E1b vs exact MIP, dense regime | GV3 path (B20R33-OPEN-1) | E1 optimal 19/20 per setting; +14.6 vs HiGHS at 4× budget on planted; E1b beyond MIP on planted, dominated on erdos; all 40 hosts certified by generated rows |
+| 20_R39 | Custody for generated-row certificates; generated-rows reference | W03, W13; B20R35-OPEN-1 | Built and tested, not wired; adoption steps documented for a reviewer |
 
 Later phases (B17–B23+) follow the roadmap and its gates; numbers are labels,
 not estimates.

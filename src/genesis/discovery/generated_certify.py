@@ -135,7 +135,7 @@ def certify_with_rows(task, witness, registry, *, seconds=600, sat_fallback=True
     from ..verification.sat import certify_upper, witness_from_model
     start = time.monotonic()
     checked = check_witness(task, [tuple(e) for e in witness])
-    lower = checked['value']
+    lower, best = checked['value'], checked['selected']
     steps = []
     t0, w0 = time.process_time(), time.monotonic()
     limited = separation_seconds is not None or max_rows is not None
@@ -147,7 +147,7 @@ def certify_with_rows(task, witness, registry, *, seconds=600, sat_fallback=True
     steps.append({'step': 'lp-dual-rows', 'rows': n_rows, 'lp_value': lp_value, 'verdict': v['verdict'],
                   'bound': v['bound'], 'reason': v['reason'], 'cpu_s': round(time.process_time() - t0, 3),
                   'wall_s': round(time.monotonic() - w0, 3)})
-    upper, method, certificate = len(task.edges), 'HOST_EDGE_COUNT', None
+    upper, method, certificate, sat_custody = len(task.edges), 'HOST_EDGE_COUNT', None, None
     if v['verdict'] == 'VALID' and v['bound'] < upper:
         upper, method, certificate = v['bound'], 'LP_DUAL_GENERATED_EXACT', cert
     if lower < upper and sat_fallback:
@@ -156,22 +156,60 @@ def certify_with_rows(task, witness, registry, *, seconds=600, sat_fallback=True
             remaining = int(seconds - (time.monotonic() - start))
             if remaining < 1:
                 break
-            scert, rec, _, _ = certify_upper(task, lower, seconds=remaining)
+            scert, rec, cnf, proof = certify_upper(task, lower, seconds=remaining)
             calls.append({'k': lower + 1, 'status': rec['status'], 'seconds': rec.get('seconds'),
                           'checker_verdict': scert.get('verdict') if scert else None})
             if scert is not None:
                 if scert['verdict'] == 'VALID':
                     upper, method, certificate = lower, 'SAT_DRAT', None
+                    sat_custody = {'method': 'SAT_DRAT', 'certificate': scert, 'cnf': cnf, 'proof': proof}
                 break
             if rec['status'] != 'SAT':
                 break
             checked2 = check_witness(task, witness_from_model(task, rec['model']))
             if checked2['value'] <= lower:
                 break
-            lower = checked2['value']
+            lower, best = checked2['value'], checked2['selected']
         steps.append({'step': 'sat-drat', 'calls': calls})
-    return {'lower': lower, 'upper': upper, 'method': method, 'steps': steps,
+    return {'lower': lower, 'upper': upper, 'method': method, 'steps': steps, 'sat_custody': sat_custody,
+            'witness': [list(e) for e in best],
             'wall_s': round(time.monotonic() - start, 3), 'certificate': certificate}
 
 
-__all__ = ['load_registry', 'rows', 'pattern_order', 'lp_dual_rows', 'certify_with_rows', 'PACKAGE']
+def reference(task, package, *, seconds=600, evidence=None, **route):
+    """A joint reference over generated rows (B20_R39; built, not wired into the evaluator). It
+    mirrors domains.GraphHostAdapter._joint_reference: the evaluator's seed witness, then
+    certify_with_rows with the package's registry. A certified result is taken into custody:
+    LP_DUAL_GENERATED_EXACT in a certificates_rows bundle, SAT_DRAT in an ordinary v2 bundle.
+    With `evidence` (a directory), the objects and bundle are written there. Returns the
+    reference record (FINITE_CERTIFIED with value and method, or UNSUPPORTED with a reason)."""
+    from ..dsl import solve
+    from ..formal_research.triangle_theory import DEFS_SOURCE
+    from ..models import SolverProgram
+    from ..verification import certificates as CB
+    from ..verification import certificates_rows as CR
+    from .construct import Budget, lp_greedy
+    registry = V.registry_from_package(package, defs_source=DEFS_SOURCE)
+    start = tuple(map(tuple, solve(task, SolverProgram(rounds=8), 100000, 0)['selected']))
+    lp = tuple(map(tuple, lp_greedy(task, Budget(1.0), 0)['witness']))
+    rec = certify_with_rows(task, max((start, lp), key=len), registry, seconds=seconds, **route)
+    if rec['lower'] != rec['upper']:
+        return {'status': 'UNSUPPORTED', 'reason': f'optimum not certified within {seconds}s by the generated-rows '
+                                                    f'route (bounds {rec["lower"]}..{rec["upper"]})'}
+    if rec['method'] == 'LP_DUAL_GENERATED_EXACT':
+        bundle, blobs = CR.build(task, witness=rec['witness'], lower=rec['lower'], certificate=rec['certificate'],
+                                 package=package, attempts=rec['steps'])
+    elif rec['method'] == 'SAT_DRAT':
+        bundle, blobs = CB.build_v2(task, witness=rec['witness'], lower=rec['lower'], upper=rec['sat_custody'],
+                                    attempts=rec['steps'])
+    else:
+        bundle, blobs = CB.build_v2(task, witness=rec['witness'], lower=rec['lower'],
+                                    upper={'method': 'HOST_EDGE_COUNT'}, attempts=rec['steps'])
+    out = {'status': 'FINITE_CERTIFIED', 'value': rec['upper'], 'method': 'GENERATED_ROWS_' + rec['method'],
+           'witness': rec['witness'], 'certificate_status': bundle['status'], 'bundle_schema': bundle['schema']}
+    if evidence is not None:
+        out['certificate_bundle'] = CB.persist_dir(evidence, bundle, blobs)
+    return out
+
+
+__all__ = ['load_registry', 'rows', 'pattern_order', 'lp_dual_rows', 'certify_with_rows', 'reference', 'PACKAGE']
