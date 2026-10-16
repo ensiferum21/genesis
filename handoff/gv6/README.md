@@ -72,6 +72,36 @@ pattern statements.
    - **Risk.** Delsarte's LP is very strong, so headroom may be small. The Lean definitions are
      larger.
 
+## A structural caveat, added on reflection (17 Oct 2026)
+
+All three targets fit the procedure because they are, abstractly, the same problem: the largest subset
+of a ground set that contains no hyperedge of a given uniform hypergraph.
+- **Triangle-free subgraphs.** The ground set is the host's edges, and the hyperedges are its
+  triangles (3-uniform).
+- **C4-free subgraphs.** The ground set is the edges again, and the hyperedges are the 4-cycles
+  (4-uniform, at most 3 of 4).
+- **Sum-free subsets of a host set of integers.** The ground set is the host's elements, and the
+  hyperedges are its Schur triples {a, b, a + b} (3-uniform). The 2-element hyperedges {a, 2a} are a
+  degenerate case.
+- **Codes with minimum distance d.** The ground set is the words, and the hyperedges are pairs at
+  distance below d (2-uniform: independent sets).
+
+A pattern row is a bound on a small sub-hypergraph, and the procedure's search, kept rule, proof
+method and tree certificate all live at that level. So targets 1 and 3 are different theorem families
+in their *objects*, but not in their *abstract structure*. A reviewer could reasonably call them near
+again, and the builder now thinks they are.
+
+Of the three, only target 2, equational theories, is structurally different. There the procedure maps
+only by analogy, onto failure-driven lemma invention, which B20 already has as a baseline.
+
+**Consequence.** GV6 proper may need a transferable capability that is not tied to hypergraph-free
+packing. One example is a research policy or a proof-search heuristic learned in one formal domain and
+used in another. The infrastructure exists: B20's learned conjecture-selection policy, the generic
+formal-research loop, and B20_R22's retention and negative-transfer protocol. No such capability has
+shown utility in its own domain yet: B20's learned policy was 1W/7T/0L against the fixed one. This is
+the reviewer's decision (item 1 below), and the builder's recommendation is to say so plainly rather
+than to count a hypergraph re-encoding as structural transfer.
+
 ## Proposed protocol (to be reviewed; nothing frozen)
 
 - **Freeze.** The source procedure and code at a named commit. The target adaptation is one module,
@@ -96,7 +126,8 @@ pattern statements.
 
 ## What is needed from a reviewer
 
-1. Whether target 1, 2 or 3 (or another) counts as structurally different for GV6.
+1. Whether target 1, 2 or 3 (or another) counts as structurally different for GV6. Note that 1 and 3 share the
+   source's abstract structure (see the caveat above).
 2. The adaptation budget: code size and CPU.
 3. Whether certification utility counts as "helps" for GV6, or only construction utility. This
    parallels B20R35-OPEN-1 for GV4.
