@@ -665,7 +665,9 @@
         "result": "E1b's C4 arm under DRAFT rule e1-hard-v2-c4tree-draft (e1-hard-v2 with the B20_R48 tree route as reference): calibration (candidate-blind, 4 settings x 8) selects erdos n40 p0.15 and n30 p0.2 (8/8 certified, medians 4.8 and 6.0 s), the first eligible C4 settings; 30-host re-pilot, all certified: readiness +1.17 vs low_cycle_tm, ablation +1.43, placebo +2.73, all READY_FOR_REVIEW; descriptive: exact C4 MIP at 2 s optimal 30/30, E1b -0.93"
       },
       "B20_R51": {
-        "commits": [],
+        "commits": [
+          "cf64ca1"
+        ],
         "result": "C4 tree route wired opt-in with custody: verification/certificates_tree_c4.py (bundle genesis-certificate-bundle-tree-c4-v1, checker-only replay with registry re-derivation, revocation, optional Lean replay); generated_certify_c4.KNOWN_PACKAGES/known_package; generated_bnb_c4.reference_record; custodian route generated-rows-tree-c4-v1 (known C4 package, fast enumerator); adapters' ROWS_ROUTES (TF generated-rows-v1, C4 generated-rows-tree-c4-v1); calibration.SELECTION_RULE_E1_HARD_V2_C4TREE_DRAFT listed in DRAFT_RULES_BY_NAME (no study adopts it). 9 new tests; full tests_genesis passes. Not adopted"
       }
     },
