@@ -1,0 +1,28 @@
+{
+ "hosts": "none new: three already-exposed B20_R41 pilot hosts (the first three of evidence/e1d_readiness_b20r41/pilot_rows.jsonl)",
+ "looks": [
+  {
+   "arm": "ablation (ordered_2)",
+   "candidate_optima": [
+    117,
+    126,
+    115
+   ],
+   "values": [
+    106,
+    116,
+    107
+   ]
+  },
+  {
+   "arm": "null control (adjacent_2)",
+   "values": [
+    117,
+    126,
+    115
+   ]
+  }
+ ],
+ "note": "both new descriptors rebuild and run in runc; disclosed in the script docstring",
+ "schema": "genesis-b20r44-development-looks-v1"
+}

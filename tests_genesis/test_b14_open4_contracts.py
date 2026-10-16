@@ -79,12 +79,18 @@ class Interventions(unittest.TestCase):
         forged['descriptor_id'] = '0' * 64
         self.assertIn('does not rebuild', RC.intervention_problems('ablation', dsl(CAND), forged)[0][0])
 
-    def test_represent_and_repair_has_no_registered_intervention(self):
+    def test_represent_and_repair_has_only_the_b20r44_ablation(self):
+        # B20_R15 asserted that this kind had no registered intervention; B20_R44 registered exactly one:
+        # the ablation cross_2 -> ordered_2 (Lean-checked dominated decoder), and no placebo.
         a = C.build_descriptor('represent-and-repair-v1', TF, {'representation': 'cross_2', 'cpu_seconds': 0.3, 'seed': 5},
                                **RP)
         b = C.build_descriptor('represent-and-repair-v1', TF, {'representation': 'ordered_2', 'cpu_seconds': 0.3, 'seed': 5},
                                **RP)
-        self.assertIn('no registered ablation', RC.intervention_problems('ablation', a, b)[0][0])
+        self.assertEqual(RC.intervention_problems('ablation', a, b), ([], ('representation',)))
+        self.assertIn('no registered placebo', RC.intervention_problems('placebo', a, b)[0][0])
+        c = C.build_descriptor('represent-and-repair-v1', TF, {'representation': 'adjacent_3', 'cpu_seconds': 0.3,
+                                                                 'seed': 5}, **RP)
+        self.assertTrue(RC.intervention_problems('ablation', a, c)[0])       # any other representation is refused
 
 
 class Schema(unittest.TestCase):

@@ -595,6 +595,17 @@ INTERVENTIONS[('construct-pipeline-v1', ('init',))] = {
     'placebo': lambda v: 'lp_shuffled_greedy' if v == 'lp_greedy' else None,
     'meaning': ('ablation: no LP guidance (random-order greedy restarts for the same stage budget); placebo: the '
                 'same LP solve and restarts with the LP values permuted among the edges')}
+# represent-and-repair-v1 (B20_R44): the decoder of the discovered representation. The ablation is the grammar's
+# dominated decoder at the same k and encoder space, ordered_2: B18's package has ordered_2_within_cross_2 CHECKED
+# (for every encoding its decoded edges are a subset of cross_2's), cross_2_within_ordered_2 DISPROVED, and
+# ordered_2_sound_tf CHECKED. No placebo: the only other sound k = 2 decoder, adjacent_2, is Lean-checked equal to
+# cross_2 (both inclusions CHECKED), so it would be an identical arm, not an inert one.
+INTERVENTIONS[('represent-and-repair-v1', ('representation',))] = {
+    'ablation': lambda v: 'ordered_2' if v == 'cross_2' else None,
+    'placebo': None,
+    'meaning': ('ablation: the discovered cross decoder replaced by the same grammar\'s ordered decoder at k = 2 '
+                '(same encoder space, search, repair and budget; Lean-checked to decode a strict subset of cross_2 for '
+                'every encoding)')}
 
 
 def _leaves(x, path=()):
