@@ -24,6 +24,7 @@
 | B20_R35 | `fdaf849` | `9aace6d1…54ea` (B20_R34–R35; release matrix 1,239 tests, all OK, one declared skip; restore-verified, 5,713 manifest entries; driver rehearsal on the build host **REPRODUCED**, not a second machine) |
 | B20_R39 | `41101a6` | `88f6ed6d…3cee` (B20_R36–R39; release matrix 1,262 tests, all OK, one declared skip; restore-verified, 5,756 manifest entries; driver rehearsal on the build host **REPRODUCED**, not a second machine; the first rehearsal attempt was lost to a container restart and re-run from the same archive) |
 | B20_R44 | `5d4bb61` | `010ce477…f55f` (B20_R40–R44; release matrix 1,306 tests, all OK, one declared skip; restore-verified, 5,824 manifest entries; driver rehearsal on the build host **REPRODUCED**, not a second machine) |
+| B20_R49 | `1c19b07` | `aa5526ef…31dd6` (B20_R45–R49, at the B20_R50 setup commit; release matrix 1,349 tests, all OK, one declared skip; restore-verified, 5,906 manifest entries; driver rehearsal on the build host **REPRODUCED**, not a second machine; two earlier rehearsal attempts were lost, one to the 2-hour background limit and one to a container restart, and it was re-run from the same archive) |
 
   The recovery-branch checkpoints B20_RX1 and B20_RX2 are on `recovery-b20r1-partial`; their work was ported here.
 - **Records:** `docs/checkpoints/B20_R1_RECORD.md` … `B20_R11_RECORD.md`, `B20_RX1_RECORD.md`, `B20_RX2_RECORD.md`, `B20_R12_RECORD.md` and `B20_R15_RECORD.md` … `B20_R52_RECORD.md`.

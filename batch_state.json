@@ -275,6 +275,21 @@
         },
         "restore_verified": "5824 manifest entries match; bundle clone gives the same commit and tree",
         "rehearsal": "deployment/reproduce.sh on the build host (clean room, not a second machine): REPRODUCED, all 7 steps"
+      },
+      "B20_R49": {
+        "commit": "1c19b077638e0f8134743a2c806958611eb6cb77",
+        "sha256": "aa5526ef8330d119c25956410421c28c45e6172616c4cb48ea9c0ede4dd31dd6",
+        "release_matrix": {
+          "integration": 815,
+          "legacy_regression": 282,
+          "sandbox_escape": 28,
+          "certificates": 43,
+          "formal": 181,
+          "failures": 0,
+          "declared_skips": 1
+        },
+        "restore_verified": "5906 manifest entries match; bundle clone gives the same commit and tree",
+        "rehearsal": "deployment/reproduce.sh on the build host (clean room, not a second machine): REPRODUCED, all 7 steps; two earlier attempts lost (background time limit, container restart), re-run from the same archive"
       }
     },
     "adopted_from_crpd_v3_status": {
@@ -672,7 +687,8 @@
       },
       "B20_R52": {
         "commits": [
-          "75d91fa"
+          "75d91fa",
+          "c73f310"
         ],
         "result": "E1b-C4 DRAFT package (handoff/e1b_c4) and same-operator rehearsal through the v5 C4 tree route: B20_R50 Part A as a calibration record under the registered DRAFT rule (clean, same selection); custodian SELECT chose low_cycle_tm; 20-host CONFIRM, all certified by the tree reference at 600 s (median 4.2 s); +1.15 [0.70, 1.65], 12/1/7, cost ratio 0.92: SUPPORTED, judge agrees. Disclosed smoke at 120 s INVALID (one reference unsupported)"
       }
