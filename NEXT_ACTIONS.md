@@ -2,7 +2,7 @@
 
 ## Where things stand
 
-- **Branch:** `continuation-b20-rx` (GitHub `ensiferum21/genesis`). It is the canonical B20_R11 line (`continuation-b20-repairs`, `36954d6`), with the recovery-branch work ported onto it, plus B20_R12 and B20_R15–R44. B20_R25–R28 were built from the B20_R24 checkpoint's history bundle while GitHub was not linked; GitHub's branch is an ancestor.
+- **Branch:** `continuation-b20-rx` (GitHub `ensiferum21/genesis`). It is the canonical B20_R11 line (`continuation-b20-repairs`, `36954d6`), with the recovery-branch work ported onto it, plus B20_R12 and B20_R15–R45. B20_R25–R28 were built from the B20_R24 checkpoint's history bundle while GitHub was not linked; GitHub's branch is an ancestor.
 - **Side branch:** `side-b21-equational` (`710d26d`) keeps work done on plain B20 in parallel with this line (equational generations W21/E4, definitional primitives, fault routes). It is not canonical. Only its Lean-replay hint repair was ported (B20_R25).
 - **Checkpoints:**
 
@@ -25,7 +25,7 @@
 | B20_R39 | `41101a6` | `88f6ed6d…3cee` (B20_R36–R39; release matrix 1,262 tests, all OK, one declared skip; restore-verified, 5,756 manifest entries; driver rehearsal on the build host **REPRODUCED**, not a second machine; the first rehearsal attempt was lost to a container restart and re-run from the same archive) |
 
   The recovery-branch checkpoints B20_RX1 and B20_RX2 are on `recovery-b20r1-partial`; their work was ported here.
-- **Records:** `docs/checkpoints/B20_R1_RECORD.md` … `B20_R11_RECORD.md`, `B20_RX1_RECORD.md`, `B20_RX2_RECORD.md`, `B20_R12_RECORD.md` and `B20_R15_RECORD.md` … `B20_R44_RECORD.md`.
+- **Records:** `docs/checkpoints/B20_R1_RECORD.md` … `B20_R11_RECORD.md`, `B20_RX1_RECORD.md`, `B20_RX2_RECORD.md`, `B20_R12_RECORD.md` and `B20_R15_RECORD.md` … `B20_R45_RECORD.md`.
 
 ## Completed since B20_R11
 
@@ -65,6 +65,7 @@
 | B20_R42 | **Opt-in wiring** for E1d: one registry dispatcher (v1 path unchanged), evaluation request **v5** (v4 plus a closed generated-rows reference route; registry-v2 arms), exact v2 baselines in the custodian's SELECT only under a rule that names them (today the DRAFT `e1-hard-v3-draft`, adopted by no study), the triangle-free adapter's rows reference with custody; v3/v4, receipts, adopted rules and frozen ids unchanged; built for review, **not adopted** (`docs/GENERATED_ROWS_REFERENCE.md`, `docs/CANDIDATE_REGISTRY_V2.md`) |
 | B20_R43 | **E1d DRAFT package** (`handoff/e1d`, evidence card in five dimensions) and a same-operator rehearsal through the v5 path (draft rule adopted only in a throwaway copy): custodian SELECT chose **HiGHS at 4x budget**; 240-host CONFIRM, 237 certified; W/L/T **198/0/39**, **+9.80 per host [9.30, 10.35]**, cost ratio 0.34: **SUPPORTED**, judge agrees |
 | B20_R44 | **Causal control for E1d**: a registered ablation of the discovered representation (cross_2 -> ordered_2, a Lean-checked strictly weaker decoder; B20R44-OPEN-1): candidate − ablation **+7.07 per host [6.47, 7.70], 30/0/0**, cost ratio 1.00, **READY_FOR_REVIEW**; a Lean-certified null arm (adjacent_2 = cross_2) shows +0.03: **NULL_CONTROL_CLEAN** |
+| B20_R45 | **E1d ablation evaluation rehearsed through the v5 custody path**: v5 ablation request (intervention re-checked at registration), 45-host CONFIRM: **44/0/0, +6.64 per host [6.03, 7.29], SUPPORTED**, judge agrees. Every builder-side GV3 step for E1d is done |
 
 ## Resume
 
@@ -85,7 +86,7 @@
 4. **GV4 study design** (`handoff/gv4/README.md`, DRAFT). The question is what counts as an invented component, and now also whether a component that helps *certification* counts toward a better improver: B20_R35 gives the first preregistered positive DEV utility of a generated, Lean-checked component, in certification (B20R35-OPEN-1); also whether to wire its checker into the evaluator (a trust-path change). The decision is needed before the s15.3 work below can become a study. After B20_R31, no invented component has DEV construction utility yet.
 5. **CRPD-2b pin revision:** review.
 6. **B20R33-OPEN-1** (see item 1).
-7. **E1d** (B20R41-OPEN-1; package `handoff/e1d`, B20_R43 rehearsal SUPPORTED with the judge agreeing: +9.80 per host against HiGHS at 4x budget on 237 certified hosts; B20_R44 causal control: the discovered representation's ablation costs +7.07 per host, null control clean; the transform awaits review, B20R44-OPEN-1). E1's frozen candidate is READY_FOR_REVIEW on DEV against every registered baseline including an exact MIP at four times its budget, on three calibrated dense planted settings. A real run needs the rule `e1-hard-v3-draft`, the generated-rows reference (item 2) and the registry v2 wiring (B20R40-OPEN-1; built opt-in in B20_R42 as request v5) adopted, an E1d package, a statistician and an independent custodian. The reference itself solves these hosts in about 20 s; a claim should say so.
+7. **E1d** (B20R41-OPEN-1; package `handoff/e1d`, B20_R43 rehearsal SUPPORTED with the judge agreeing: +9.80 per host against HiGHS at 4x budget on 237 certified hosts; B20_R44 causal control: the discovered representation's ablation costs +7.07 per host, null control clean; B20_R45 rehearsed the ablation evaluation through custody: SUPPORTED, +6.64; the transform awaits review, B20R44-OPEN-1). E1's frozen candidate is READY_FOR_REVIEW on DEV against every registered baseline including an exact MIP at four times its budget, on three calibrated dense planted settings. A real run needs the rule `e1-hard-v3-draft`, the generated-rows reference (item 2) and the registry v2 wiring (B20R40-OPEN-1; built opt-in in B20_R42 as request v5) adopted, an E1d package, a statistician and an independent custodian. The reference itself solves these hosts in about 20 s; a claim should say so.
 
 ## Next engineering, in order
 

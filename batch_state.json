@@ -601,9 +601,16 @@
       },
       "B20_R44": {
         "commits": [
-          "c68d0bc"
+          "c68d0bc",
+          "5d4bb61"
         ],
         "result": "registered ablation of E1's discovered representation in kernel/replay_contracts (represent-and-repair-v1 representation cross_2 -> ordered_2; B18 Lean checks: ordered_2 within cross_2 CHECKED, converse DISPROVED; no placebo since adjacent_2 is Lean-equal to cross_2). E1d ablation re-pilot on 30 fresh hosts: candidate - ablation +7.07 [6.47, 7.70], 30/0/0, cost ratio 1.00, dry run SUPPORTED, power 15 per stratum: READY_FOR_REVIEW. Null control adjacent_2 (Lean-equal): +0.03 [-0.02, +0.09], 29 ties: NULL_CONTROL_CLEAN"
+      },
+      "B20_R45": {
+        "commits": [
+          "5981c21"
+        ],
+        "result": "same-operator rehearsal of the E1d ablation evaluation through the opt-in v5 path: campaign with the frozen E1 candidate; v5 ablation request via cli.followup_request (baseline = registered ablation cross_2 -> ordered_2, re-checked by the custodian at registration); power recomputed for the ablation plan (custodian family ablation:triangle_free_host_v1): 15 per stratum; 45-host CONFIRM, 44 certified; 44/0/0, +6.64 [6.03, 7.29], cost ratio 1.00: SUPPORTED; judge agrees"
       }
     },
     "open_after_b20_r5": [
@@ -947,6 +954,9 @@
     "open_after_b20_r44": [
       "B20R44-OPEN-1: review of the registered representation ablation",
       "B20R41-OPEN-1 updated: E1d causal control READY_FOR_REVIEW, null control clean"
+    ],
+    "open_after_b20_r45": [
+      "B20R41-OPEN-1 updated: every builder-side E1d step done; reviewer, statistician, independent custodian remain"
     ]
   }
 }

@@ -1,0 +1,7 @@
+[    0.0s] pinned to CPU 0
+[    6.1s] power recomputed for the ablation plan: {'tasks_per_stratum': 15, 'total_tasks': 45, 'power': 0.838}
+[   12.4s] exposure: 2671 identities (2671 named hosts, 711 E1 hosts, 456 calibration hosts)
+[   31.0s] v5 ablation request frozen (genesis-evaluation-request-v5, 45 hosts); baseline 5093b6fbb2d11783
+[   37.8s] registered (the custodian re-checked the intervention); evaluating
+[ 1037.3s] rehearsal SUPPORTED (W/L/T 44/0/0), estimate 6.6396825397, cost ratio 1.0031560742, judge agrees True (1006 s)
+[ 1037.7s] done: SUPPORTED, judge agrees True

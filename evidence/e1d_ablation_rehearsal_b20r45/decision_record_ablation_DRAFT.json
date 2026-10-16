@@ -1,0 +1,215 @@
+{
+ "allowed_conclusion": "If SUPPORTED: on that panel only, the discovered representation's decoder is causally responsible for an effect of at least the minimum useful effect (ABLATION_SUPPORTED at most; no placebo exists for this component). Not novelty, transfer or improver claims.",
+ "analysis_plan_core": {
+  "alpha": 0.05,
+  "cost": {
+   "max_ratio": 3.0,
+   "measure": "cpu_ns"
+  },
+  "decision_rule": "superiority-with-minimum-useful-effect",
+  "design_effect": 1.0,
+  "estimand": "mean-of-stratum-means",
+  "failures": "score-zero",
+  "interval": {
+   "level": 0.9,
+   "method": "stratified-bootstrap-percentile",
+   "resamples": 4000
+  },
+  "max_unsupported_fraction": 0.05,
+  "minimum_useful_effect": 0.5,
+  "multiplicity": {
+   "family_id": "ablation:triangle_free_host_v1",
+   "family_size": 3,
+   "method": "holm"
+  },
+  "power_target": 0.8,
+  "primary": "paired-edge-difference",
+  "regression": {
+   "max_stratum_loss": 1.0
+  },
+  "schema": "genesis-analysis-plan-v2",
+  "sensitivity": [
+   "task-sign-test",
+   "leave-one-stratum-out",
+   "failures-excluded",
+   "stratum-level-sign-flip"
+  ],
+  "stopping": {
+   "rule": "single-analysis"
+  },
+  "strata": "family",
+  "test": "stratified-sign-flip",
+  "unsupported": "exclude-and-report"
+ },
+ "baselines": {
+  "comparator": "the registered ablation of the candidate (replay_contracts.intervention_problems)",
+  "not_a_competitor": "the generated-rows reference is evaluator ground truth"
+ },
+ "capability_changes": "None beyond E1d: the comparison isolates one registered component (the decoder of the discovered representation) of the frozen candidate.",
+ "created_at": "2026-10-16T13:20:37.311376+00:00",
+ "exact_claim": "The frozen representation-and-repair candidate (descriptor f4c7f4b0e5ced594, cut representation cross_2, 0.5 CPU s of search) scores more edges than its registered ablation (descriptor 5093b6fbb2d11783: the same candidate with the discovered cross_2 decoder replaced by the Lean-checked strictly weaker ordered_2 decoder, kernel replay_contracts INTERVENTIONS) on a custodian-held CONFIRM panel of triangle_free_host_v1 hosts drawn from the e1d study calibration (rule e1-hard-v3-draft, record SHA-256 a4673c748ec23a89, settings planted_cluster {'n': 38, 'p_in': 0.8, 'p_out': 0.07}, planted_cluster {'n': 40, 'p_in': 0.8, 'p_out': 0.06}, planted_cluster {'n': 40, 'p_in': 0.7, 'p_out': 0.06}), with optima certified by the generated-rows reference (generated-rows-v1), by at least the minimum useful effect, under the registered analysis.",
+ "exposure_policy": "Custodian-built exposure registry; isomorphism and near-duplicate screening against every DEV panel named in the evidence and every host the builder generated; a CONFIRM panel is retired after its one use.",
+ "minimum_useful_effect": 0.5,
+ "permissible_information": "The candidate sees only the candidate view (domain, n, edges). Development used public DEV panels only. SELECT and CONFIRM are drawn and held by the custodian.",
+ "primary_outcome": {
+  "endpoint": "paired-edge-difference",
+  "estimand": "mean-of-stratum-means",
+  "strata": "family"
+ },
+ "raw_evidence_custody": "Custodian private evidence store; the judge recomputes the analysis; the custodian publishes a signed registration log.",
+ "rejection_criteria": "Any decision-record or plan check failing; an evaluator that cannot run the candidate; registration beyond the declared family size; an INVALID or NOT_SUPPORTED outcome. A baseline that is not the registered ablation of the frozen candidate. A panel not drawn from the e1d study calibration named in the claim.",
+ "roles": {
+  "auditor": "TO BE ASSIGNED",
+  "custodian": "TO BE ASSIGNED (independent operator)",
+  "release_authority": "TO BE ASSIGNED",
+  "research_operator": "Genesis builder"
+ },
+ "sample_size_justification": {
+  "assumed_holm_rank_alpha": 0.016666666666666666,
+  "chosen": {
+   "power": 0.838,
+   "tasks_per_stratum": 15,
+   "total_tasks": 45
+  },
+  "design_effect": 1.0,
+  "false_positive_rate_at_zero_effect": 0.016,
+  "headroom_reference": "centred",
+  "min_tasks_per_stratum": 10,
+  "minimum_useful_effect": 0.5,
+  "model": "headroom-limited integer improvements over centred DEV pilot differences",
+  "note": "pilot effect sizes are reported but never used to set the effect; only spread and headroom are",
+  "pilot_rows_sha256": "6c0bc69c5fefe97ea4496f4fcf97414bbdc9045928c6826440d5813938d04d15",
+  "pilot_strata": {
+   "planted_cluster:2269386b": {
+    "mean_difference": 7.1,
+    "sd": 1.8529,
+    "share_with_headroom": 1.0,
+    "tasks": 10
+   },
+   "planted_cluster:6493e4fc": {
+    "mean_difference": 6.5,
+    "sd": 2.0138,
+    "share_with_headroom": 1.0,
+    "tasks": 10
+   },
+   "planted_cluster:9491bde8": {
+    "mean_difference": 7.6,
+    "sd": 2.6331,
+    "share_with_headroom": 1.0,
+    "tasks": 10
+   }
+  },
+  "plan_core_sha256": "378339d558f8c2bca6ea1438ca1a5a1f229f4e8ee3f35ac613add0d9d0bea583",
+  "power_at_minimum_useful_effect": 0.272,
+  "power_target": 0.8,
+  "schema": "genesis-power-analysis-v1",
+  "status": "CHOSEN",
+  "table": [
+   {
+    "power": 0.639,
+    "tasks_per_stratum": 10,
+    "total_tasks": 30
+   },
+   {
+    "power": 0.745,
+    "tasks_per_stratum": 12,
+    "total_tasks": 36
+   },
+   {
+    "power": 0.838,
+    "tasks_per_stratum": 15,
+    "total_tasks": 45
+   },
+   {
+    "power": 0.933,
+    "tasks_per_stratum": 20,
+    "total_tasks": 60
+   },
+   {
+    "power": 0.975,
+    "tasks_per_stratum": 25,
+    "total_tasks": 75
+   },
+   {
+    "power": 0.984,
+    "tasks_per_stratum": 30,
+    "total_tasks": 90
+   },
+   {
+    "power": 1.0,
+    "tasks_per_stratum": 40,
+    "total_tasks": 120
+   },
+   {
+    "power": 1.0,
+    "tasks_per_stratum": 50,
+    "total_tasks": 150
+   },
+   {
+    "power": 0.998,
+    "tasks_per_stratum": 60,
+    "total_tasks": 180
+   },
+   {
+    "power": 1.0,
+    "tasks_per_stratum": 80,
+    "total_tasks": 240
+   },
+   {
+    "power": 1.0,
+    "tasks_per_stratum": 100,
+    "total_tasks": 300
+   },
+   {
+    "power": 1.0,
+    "tasks_per_stratum": 150,
+    "total_tasks": 450
+   },
+   {
+    "power": 1.0,
+    "tasks_per_stratum": 200,
+    "total_tasks": 600
+   }
+  ]
+ },
+ "schema": "genesis-decision-record-v1",
+ "statistical_rules": {
+  "alpha": 0.05,
+  "failures": "score-zero",
+  "interval": {
+   "level": 0.9,
+   "method": "stratified-bootstrap-percentile",
+   "resamples": 4000
+  },
+  "multiplicity": {
+   "family_id": "ablation:triangle_free_host_v1",
+   "family_size": 3,
+   "method": "holm"
+  },
+  "sensitivity": [
+   "task-sign-test",
+   "leave-one-stratum-out",
+   "failures-excluded",
+   "stratum-level-sign-flip"
+  ],
+  "test": "stratified-sign-flip",
+  "unsupported": "exclude-and-report"
+ },
+ "status": "DRAFT",
+ "stopping_rule": {
+  "rule": "single-analysis"
+ },
+ "total_budget": {
+  "arms": 2,
+  "charge": "every attempt, retry, timeout and failure",
+  "equal_accounting": "one sandbox, one profile, cgroup CPU per arm",
+  "profile": {
+   "cpu_seconds": 2,
+   "memory_mib": 2048,
+   "queries": 1000,
+   "wall_seconds": 10
+  },
+  "reference_seconds_per_task": 120,
+  "search_seconds_per_arm": 0.5
+ }
+}
