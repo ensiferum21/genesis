@@ -5422,7 +5422,8 @@
     "src/genesis/discovery/generated_bnb_c4.py",
     "scripts/b20r48_c4_tree_certification.py",
     "scripts/b20r49_c4_rows_ablation.py",
-    "scripts/b20r50_e1b_c4_readiness.py"
+    "scripts/b20r50_e1b_c4_readiness.py",
+    "src/genesis/verification/certificates_tree_c4.py"
    ],
    "disposition": "RESEARCH_HYPOTHESIS",
    "evidence": [],
@@ -5446,7 +5447,8 @@
     "tests_genesis/test_lp_dual_tree_c4.py",
     "tests_genesis/test_c4_tree_certification.py",
     "tests_genesis/test_c4_rows_ablation.py",
-    "tests_genesis/test_e1b_c4_readiness.py"
+    "tests_genesis/test_e1b_c4_readiness.py",
+    "tests_genesis/test_wiring_tree_c4.py"
    ],
    "title": "Transfer and independent reproduction (B20_R46: the row-invention procedure transferred to C4-free subgraphs with a registered adaptation, 37/37 obligations Lean-CHECKED; B20_R47: no certification coverage gain from the rows alone (22 vs 22); B20_R48: with certified branch and bound, CERTIFICATION_UTILITY on fresh C4 hosts, 38 vs 26 of 40; B20_R49: a registered ablation attributes it to the transferred rows (36 vs 24 of 40, p 0.00024); B20_R50: the rows make E1b's C4 arm scorable (two calibrated C4 settings, READY_FOR_REVIEW, MIP-dominated); near-domain evidence only; independent reproduction not started)",
    "workstream": "W24"

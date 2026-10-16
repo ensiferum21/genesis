@@ -1,5 +1,6 @@
 """B20_R50: E1b's C4 readiness under the DRAFT rule e1-hard-v2-c4tree-draft. Design: the draft changes only the
-reference (and its name and note) relative to e1-hard-v2; no study adopts it; the arms are B20_R23's C4
+reference (and its name and note) relative to e1-hard-v2; no study adopts it (B20_R51 lists it as a DRAFT so that
+records using it can be checked); the arms are B20_R23's C4
 candidate, its three DSL baselines and the registered ablation and placebo of that same candidate; the C4 MIP
 and the tree reference agree on a small host's optimum. Record: the calibration and the selection recompute
 from the rows, the pilot's verdicts recompute, and the hosts are fresh and in the exposure addenda."""
@@ -29,7 +30,9 @@ class Design(unittest.TestCase):
                          {'name', 'measurement', 'note'})
         self.assertEqual({k for k in base['measurement'] if base['measurement'][k] != R50.RULE['measurement'][k]},
                          {'reference'})
-        self.assertNotIn(R50.RULE['name'], CAL.DRAFT_RULES_BY_NAME)        # not registered, so no study can adopt it
+        self.assertNotIn(R50.RULE['name'], CAL.RULES_BY_NAME)              # a DRAFT (registered as such in B20_R51)
+        cfg = json.loads((ROOT / CAL.CONFIG).read_text())
+        self.assertNotIn(R50.RULE['name'], {e.get('rule') for s in cfg.get('studies', {}).values() for e in s.values()})
         self.assertEqual(R50.GRID[:2], [('erdos', {'n': 30, 'p': 0.2}), ('erdos', {'n': 36, 'p': 0.17})])
         self.assertEqual((R50.PER, R50.CAL_SEED, R50.PILOT_N, R50.PILOT_SEED), (8, 20265001, 30, 20265051))
 

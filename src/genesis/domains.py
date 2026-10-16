@@ -161,6 +161,7 @@ class GraphHostAdapter(DomainAdapter):
 
     JOINT_REFERENCE = True          # B20_R24: the custodian asks v4 evaluations for the joint LP/SAT reference
     ROWS_REFERENCE = False          # B20_R42: only the triangle-free adapter offers the generated-rows reference
+    ROWS_ROUTES = ()                # B20_R51: the v5 reference routes an adapter offers, by name
 
     def reference(self, task, *, evidence=None, seconds=600, joint=False, rows=None):
         """Evaluator-only certified optimum, or UNSUPPORTED with the reason.
@@ -176,9 +177,10 @@ class GraphHostAdapter(DomainAdapter):
         if gate:
             return gate
         if rows is not None:
-            # B20_R42 (v5 requests, opt-in): the named generated-rows route above the exact-search range
-            if not self.ROWS_REFERENCE:
-                return Unsupported(f'{self.name} offers no generated-rows reference')
+            # B20_R42 (v5 requests, opt-in): the named generated-rows route above the exact-search range;
+            # B20_R51: each adapter offers only its own routes
+            if not self.ROWS_REFERENCE or rows.get('route') not in self.ROWS_ROUTES:
+                return Unsupported(f'{self.name} offers no {rows.get("route")} reference')
             if len(task.edges) > self.EXACT_MAX_EDGES:
                 return self._rows_reference(task, evidence=evidence, rows=rows)
         if joint and len(task.edges) > self.EXACT_MAX_EDGES:
@@ -236,6 +238,8 @@ class GraphHostAdapter(DomainAdapter):
         """generated_certify.reference_record over the request's package and limits; the custody bundle
         (a certificates_rows bundle for an LP certificate over generated rows, else a v2 bundle) goes into
         the evidence store."""
+        if rows['route'] == 'generated-rows-tree-c4-v1':
+            return self._tree_c4_reference(task, evidence=evidence, rows=rows)
         from .discovery import generated_certify as GC
         from .verification.tools import ToolUnavailable
         try:
@@ -248,6 +252,26 @@ class GraphHostAdapter(DomainAdapter):
             out, bundle, blobs = GC.reference_record(task, package, seconds=rows['seconds'], **route)
         except ToolUnavailable as exc:
             return Unsupported(f'certificate tools unavailable: {exc}')
+        if bundle is None:
+            return Unsupported(out['reason'])
+        out = dict(out, witness=[list(e) for e in out['witness']], route=rows['route'],
+                   package_sha256=rows['package_sha256'])
+        if evidence is not None:
+            from .verification.certificates import persist
+            out['certificate_bundle'] = persist(evidence, bundle, blobs)
+        return out
+
+    def _tree_c4_reference(self, task, *, evidence, rows):
+        """B20_R51: generated_bnb_c4.reference_record over the request's C4 package and limits; the
+        certificates_tree_c4 bundle goes into the evidence store. No SAT step."""
+        from .discovery import generated_bnb_c4 as GB
+        from .discovery import generated_certify_c4 as GC4
+        try:
+            package, _ = GC4.known_package(rows['package_sha256'])
+        except ValueError as exc:
+            return Unsupported(f'C4 tree reference: {exc}')
+        route = {k: rows[k] for k in ('separation_seconds', 'max_rows', 'max_total', 'order', 'lp_rounding_seconds')}
+        out, bundle, blobs = GB.reference_record(task, package, seconds=rows['seconds'], **route)
         if bundle is None:
             return Unsupported(out['reason'])
         out = dict(out, witness=[list(e) for e in out['witness']], route=rows['route'],
@@ -324,11 +348,14 @@ class GraphHostAdapter(DomainAdapter):
 
 class C4HostAdapter(GraphHostAdapter):
     name = 'c4_host_v2'
+    ROWS_REFERENCE = True           # B20_R51: the C4 tree route over B20_R46's Lean-checked rows (opt-in, v5)
+    ROWS_ROUTES = ('generated-rows-tree-c4-v1',)
 
 
 class TriangleFreeHostAdapter(GraphHostAdapter):
     name = 'triangle_free_host_v1'
     ROWS_REFERENCE = True           # the generated rows are triangle-free pattern bounds (B20_R31/R37)
+    ROWS_ROUTES = ('generated-rows-v1',)
 
 
 ADAPTERS = {a.name: a for a in (C4HostAdapter(), TriangleFreeHostAdapter())}

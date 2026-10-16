@@ -97,7 +97,17 @@ SELECTION_RULE_E1_HARD_V3_DRAFT = dict(
                               "seeded by the evaluator's seed witness and the best baseline witness",
                  'reference_seconds': 60},
     status='DRAFT (builder); not adopted; not in calibration.RULES')
-DRAFT_RULES_BY_NAME = {SELECTION_RULE_E1_HARD_V3_DRAFT['name']: SELECTION_RULE_E1_HARD_V3_DRAFT}
+# B20_R51: the DRAFT C4 rule B20_R50 measured (scripts/b20r50_e1b_c4_readiness.RULE, identical by test): e1-hard-v2
+# with the C4 tree route over B20_R46's Lean-checked rows as reference. Listed for record_problems only, as above.
+SELECTION_RULE_E1_HARD_V2_C4TREE_DRAFT = dict(
+    SELECTION_RULE_E1_HARD_V2, name='e1-hard-v2-c4tree-draft',
+    measurement=dict(SELECTION_RULE_E1_HARD_V2['measurement'],
+                     reference='generated_bnb_c4.certify_with_tree with the B20_R46 registry and B20_R47 limits, '
+                               'seeded with the better of the evaluator seed and the best baseline witness; '
+                               'certified iff the exact tree check accepts with lower == upper',
+                     reference_seconds=60),
+    note='DRAFT (B20_R50): e1-hard-v2 with the tree route as reference; not adopted by any study')
+DRAFT_RULES_BY_NAME = {r['name']: r for r in (SELECTION_RULE_E1_HARD_V3_DRAFT, SELECTION_RULE_E1_HARD_V2_C4TREE_DRAFT)}
 CALIBRATION_LIMITS = Limits(queries=1000, cpu_seconds=2)
 DEFAULT_GRID = {
     'c4_host_v2': [

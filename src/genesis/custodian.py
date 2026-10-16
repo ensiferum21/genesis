@@ -35,7 +35,7 @@ REQUEST_FIELDS_STATEMENTS=(REQUEST_FIELDS_V4-{'exposed_graph_fingerprints'})|{'p
 # v5 (B20_R42; wiring built for review, opt-in): v4 plus the evaluator's reference route, named in a closed
 # `reference` field. Arms may be registry-v1 or registry-v2 descriptors (genesis.candidate_registry).
 REQUEST_FIELDS_V5=REQUEST_FIELDS_V4|{'reference'}
-REFERENCE_ROUTES=('generated-rows-v1',)
+REFERENCE_ROUTES=('generated-rows-v1','generated-rows-tree-c4-v1')
 REFERENCE_FIELDS={'route','package_sha256','seconds','separation_seconds','max_rows','max_total','order','enumerator',
                   'lp_rounding_seconds'}
 STATEMENT_KIND='formal-research-successor-v1'
@@ -106,7 +106,8 @@ def reference_problems(ref):
     """[] for a v5 reference route this code supports, else the reasons it is refused (B20_R42).
     'generated-rows-v1': generated_certify.certify_with_rows over the rows of a known theory package
     (named by digest, integrity-checked, rows derived only from its CHECKED statements), with the
-    route's limits fixed in the request."""
+    route's limits fixed in the request. B20_R51: 'generated-rows-tree-c4-v1': generated_bnb_c4's tree
+    route over a known C4 theory package (generated_certify_c4.known_package), fast enumerator only."""
     out=[]
     if not isinstance(ref,dict) or set(ref)!=REFERENCE_FIELDS:return ['the reference names exactly '+', '.join(sorted(REFERENCE_FIELDS))]
     if ref['route'] not in REFERENCE_ROUTES:out.append(f"unknown route {ref['route']!r}")
@@ -119,11 +120,18 @@ def reference_problems(ref):
     if ref['enumerator'] not in ('fast','generic'):out.append("enumerator is 'fast' or 'generic'")
     if ref['lp_rounding_seconds'] is not None and not num(ref['lp_rounding_seconds'],0,60):
         out.append('lp_rounding_seconds is null or in (0, 60]')
+    if ref['route']=='generated-rows-tree-c4-v1' and ref['enumerator']!='fast':
+        out.append("the C4 tree route enumerates copies with the fast enumerator only")
     if not _hex64(ref['package_sha256']):out.append('package_sha256')
     elif not out:
-        from .discovery import generated_certify as GC
-        try:GC.known_package(ref['package_sha256'])
-        except ValueError as exc:out.append(str(exc))
+        if ref['route']=='generated-rows-tree-c4-v1':
+            from .discovery import generated_certify_c4 as GC4
+            try:GC4.known_package(ref['package_sha256'])
+            except ValueError as exc:out.append(str(exc))
+        else:
+            from .discovery import generated_certify as GC
+            try:GC.known_package(ref['package_sha256'])
+            except ValueError as exc:out.append(str(exc))
     return out
 
 
@@ -761,10 +769,13 @@ def reference_options(request,adp):
     certifies the hosts the SAT-only path gives up on; older request versions keep their reference.
     B20_R42: a v5 request names its route; 'generated-rows-v1' asks an adapter that offers it
     (ROWS_REFERENCE) for the reference over the named package's generated rows. An adapter without it
-    cannot honour the request, which is refused rather than evaluated with another reference."""
+    cannot honour the request, which is refused rather than evaluated with another reference.
+    B20_R51: each adapter lists the routes it offers (ROWS_ROUTES): the triangle-free adapter
+    'generated-rows-v1', the C4 adapter 'generated-rows-tree-c4-v1'."""
     if isinstance(request,dict) and request.get('schema')==R.REQUEST_V5:
-        if not getattr(adp,'ROWS_REFERENCE',False):
-            raise ValueError(f'the {adp.name} adapter offers no {request["reference"]["route"]} reference')
+        route=request['reference']['route']
+        if not getattr(adp,'ROWS_REFERENCE',False) or route not in getattr(adp,'ROWS_ROUTES',()):
+            raise ValueError(f'the {adp.name} adapter offers no {route} reference')
         return {'joint':True,'rows':dict(request['reference'])}
     return {'joint':True} if R.descriptor_arms(request) and getattr(adp,'JOINT_REFERENCE',False) else {}
 

@@ -170,4 +170,29 @@ def certify_with_tree(task, witness, registry, *, seconds=60, separation_seconds
     return finish(lower, METHOD_TREE, tree, nodes, leaves, False)
 
 
-__all__ = ['certify_with_tree', 'node_lp', 'METHOD_TREE', 'METHOD_ROOT']
+def reference_record(task, package, *, seconds=120, **route):
+    """(record, bundle, blobs): the tree route as a reference (B20_R51, opt-in through v5 requests that name
+    'generated-rows-tree-c4-v1'). The seed is the evaluator's own: the better of the DSL rounds=8 solve and
+    1 CPU s of LP-ordered greedy. A certified result is taken into custody in a certificates_tree_c4 bundle;
+    the objects are returned unwritten (the custodian persists them). An uncertified host gives
+    (UNSUPPORTED record, None, None)."""
+    from ..dsl import solve
+    from ..models import SolverProgram
+    from ..verification import certificates_tree_c4 as CT
+    from .construct import Budget, lp_greedy
+    registry = CT._registry(package)
+    start = tuple(map(tuple, solve(task, SolverProgram(rounds=8), 100000, 0)['selected']))
+    lp = tuple(map(tuple, lp_greedy(task, Budget(1.0), 0)['witness']))
+    rec = certify_with_tree(task, max((start, lp), key=len), registry, seconds=seconds, **route)
+    if rec['lower'] != rec['upper'] or rec['certificate'] is None:
+        return ({'status': 'UNSUPPORTED', 'reason': f'optimum not certified within {seconds}s by the C4 tree route '
+                                                     f'(bounds {rec["lower"]}..{rec["upper"]})'}, None, None)
+    bundle, blobs = CT.build(task, witness=rec['witness'], lower=rec['lower'], certificate=rec['certificate'],
+                             package=package, attempts=rec['steps'])
+    out = {'status': 'FINITE_CERTIFIED', 'value': rec['upper'], 'method': 'GENERATED_ROWS_' + rec['method'],
+           'witness': rec['witness'], 'certificate_status': bundle['status'], 'bundle_schema': bundle['schema'],
+           'nodes': rec['nodes']}
+    return out, bundle, blobs
+
+
+__all__ = ['certify_with_tree', 'node_lp', 'reference_record', 'METHOD_TREE', 'METHOD_ROOT']

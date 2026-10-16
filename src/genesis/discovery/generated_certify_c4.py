@@ -23,6 +23,25 @@ from .obstruction import four_cycles
 
 ROOT = Path(__file__).resolve().parents[3]
 PACKAGE = ROOT / 'evidence' / 'c4_generator_b20r46' / 'package.json'
+# B20_R51: the C4 theory packages a v5 request may name for its 'generated-rows-tree-c4-v1' reference, by digest.
+# A closed list of files in this repository; the digest the request names must match one of them.
+KNOWN_PACKAGES = (PACKAGE,)
+
+
+def known_package(sha256):
+    """(package, path) for a known C4 theory package with this digest, after its integrity checks and a
+    non-empty registry of CHECKED pattern statements; ValueError otherwise."""
+    from ..common import digest as _digest
+    for path in KNOWN_PACKAGES:
+        if not path.exists():
+            continue
+        pkg = json.loads(path.read_text())
+        if _digest(pkg) != sha256:
+            continue
+        if not load_registry(path)['patterns']:
+            raise ValueError(f'C4 theory package {sha256[:16]} has no CHECKED pattern statement')
+        return pkg, path
+    raise ValueError(f'no known C4 theory package has digest {sha256[:16]}')
 
 
 def load_registry(path=PACKAGE):
@@ -188,4 +207,4 @@ def certify_with_rows(task, witness, registry, *, seconds=600, sat_fallback=True
             'wall_s': round(time.monotonic() - start, 3), 'certificate': certificate}
 
 
-__all__ = ['search_order', 'rows', 'lp_dual_rows_x', 'certify_with_rows', 'vertex_cycle', 'load_registry', 'PACKAGE']
+__all__ = ['known_package', 'KNOWN_PACKAGES', 'search_order', 'rows', 'lp_dual_rows_x', 'certify_with_rows', 'vertex_cycle', 'load_registry', 'PACKAGE']

@@ -95,3 +95,35 @@ the reviewer's decision.
 - **The certification is no more trusted than its parts.** It rests on the Lean statements, the
   exact checker and the witness checker. The LP producer and the MILP that generates ex(F) are
   untrusted. Their outputs are re-checked, and Lean proves each bound.
+
+## The C4 counterpart: a tree route over transferred rows (B20_R46–R51; DRAFT for a reviewer)
+
+The same discipline now exists for c4_host_v2. It is built and wired opt-in, and it is not adopted.
+
+| Part | Module | Batch |
+|---|---|---|
+| Rows | 34 C4 patterns from the transferred procedure, all Lean-CHECKED (`evidence/c4_generator_b20r46/package.json`) | B20_R46 |
+| Row checker | `verification/lp_dual_rows_c4.py`: registry from CHECKED statements only, with the trusted GTDefs, the c4_host_v2 G4Defs and a 0/1 `P4.adj` | B20_R47 |
+| Tree checker | `verification/lp_dual_tree_c4.py`: branch-and-bound certificates. Each node fixes an edge out or in, and each leaf has an exact LP dual or an overfilled row. The soundness argument is in its docstring | B20_R48 |
+| Producer | `discovery/generated_bnb_c4.py`: depth-first branch and bound, with no SAT step. It is untrusted, and every certificate is checked | B20_R48 |
+| Custody | `verification/certificates_tree_c4.py`: schema `genesis-certificate-bundle-tree-c4-v1`. Checker-only replay with registry re-derivation, revocation of checker or package, and optional Lean replay of the package | B20_R51 |
+| Wiring | v5 route `generated-rows-tree-c4-v1`, over a known C4 package (`generated_certify_c4.KNOWN_PACKAGES`) with the fast enumerator; the C4 adapter offers it, and the triangle-free adapter refuses it (`ROWS_ROUTES`) | B20_R51 |
+| Rule | DRAFT `e1-hard-v2-c4tree-draft` (e1-hard-v2 with this reference), known to `calibration.DRAFT_RULES_BY_NAME`, adopted by no study | B20_R50, R51 |
+
+**Evidence (DEV, preregistered).**
+- **Coverage.** The tree route certifies 38 vs 26 of 40 fresh C4 hosts against the evaluator,
+  p = 0.00024 (B20_R48).
+- **Attribution.** A registered ablation gives the utility to the transferred rows: 36 vs 24 of
+  40 (B20_R49).
+- **Calibration.** Under the DRAFT rule, two C4 settings calibrate, and E1b's C4 arm is
+  READY_FOR_REVIEW in readiness and both causal contrasts (B20_R50).
+
+**Limits.**
+- **Small dense hosts.** The route is slow there: K8 is not certified in 30 s, because tens of
+  thousands of pattern copies make every node LP large (B20_R51 test).
+- **Calibrated settings.** The calibrated settings are sparse erdos hosts. On those, an exact C4 MIP
+  is optimal within 2 s (B20_R50; B20R33-OPEN-1 on C4).
+
+**A reviewer's decisions** follow the six steps above, with this package, these checkers, this
+custody, and B20R48-OPEN-1 and B20R50-OPEN-1. B20R46-OPEN-1 adds whether near-domain transfer
+counts toward GV6.
