@@ -41,3 +41,20 @@ path in the new domain (B20_R52) is complete on DEV.
 
 B20R50-OPEN-1 is updated: package `handoff/e1b_c4`, rehearsal SUPPORTED. The rest is the reviewer's,
 plus a statistician and an independent custodian.
+
+## Development probes after the run (disclosed; scratch scripts; nothing committed as code)
+
+1. **Lazy pattern rows in the tree route.** Each node keeps only the 4-cycle rows plus the pattern
+   copies its LP violates, added in rounds. The certificate format and checker would be unchanged.
+   - It certified K8 in 85 s, where the committed route is open at 120 s.
+   - On the sparse hard hosts of the R52 smoke run it took about the same time (108 s against 105 s;
+     119 s against still open at 120 s).
+   - It helps only where pattern copies number in the tens of thousands.
+2. **Dense C4 settings** (erdos n20 p0.4, planted n24 (0.6, 0.15), erdos n24 p0.35; 3 hosts each).
+   - Lazy tree certification at 120 s: 1 of 9 hosts.
+   - Exact C4 MIP at 2 s: below E1b's candidate on 4 of 9 hosts.
+   - Exact C4 MIP at 8 s: at least 1–3 edges above the candidate on every host.
+   - There is no dense C4 regime where E1b beats an exact MIP at four times its budget, and none of
+     these settings is certifiable at this budget.
+   - **Not pursued.** A C4 counterpart of E1d would need a candidate built for dense C4 hosts and a
+     stronger certifier.
