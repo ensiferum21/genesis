@@ -102,7 +102,7 @@ e1-hard-v2-type rule.
    - none of them proved in Lean.
    A synthetic registry of all 166 was then used, DEV only, in B20_R48's tree route on the six hosts
    left open in B20_R48 and B20_R49, at 60 s. It certified none of them, and its upper bounds were
-   equal or one edge better. Its node LPs were 3–9 times larger, so it explored 4–8 times fewer nodes.
+   equal or one edge better. Its node LPs had 3–5 times more rows, so it explored 4–8 times fewer nodes.
    **There is no headroom from larger rows at this budget.** A GV4-style pilot comparing a fixed and a
    usage-driven generator of C4 rows would therefore have nothing to win, and is not pursued.
 2. **Does branch and bound help on dense triangle-free hosts?** A triangle-free version of the tree
