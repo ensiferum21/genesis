@@ -642,10 +642,14 @@ WORKSTREAMS = {
             ['src/genesis/verification/reliability.py', 'src/genesis/graphs.py'],
             [G + 'test_reliability.py', 'tests_certificates/test_reliability_routes.py']),
     'W24': ('Transfer and independent reproduction (B20_R46: the row-invention procedure transferred to C4-free '
-            'subgraphs with a registered adaptation, 37/37 obligations Lean-CHECKED; utility in the new domain not '
-            'established; independent reproduction not started)', H,
-            ['src/genesis/invention/cuts_c4.py', 'scripts/b20r46_c4_generator.py'],
-            [G + 'test_cuts_c4.py', 'tests_formal/test_c4_generator.py']),
+            'subgraphs with a registered adaptation, 37/37 obligations Lean-CHECKED; B20_R47: no certification '
+            'coverage gain in the new domain (22 vs 22), faster, 80% of the LP gap closed; near-domain evidence only; '
+            'independent reproduction not started)', H,
+            ['src/genesis/invention/cuts_c4.py', 'scripts/b20r46_c4_generator.py',
+             'src/genesis/verification/lp_dual_rows_c4.py', 'src/genesis/discovery/generated_certify_c4.py',
+             'scripts/b20r47_c4_certification.py'],
+            [G + 'test_cuts_c4.py', 'tests_formal/test_c4_generator.py', G + 'test_lp_dual_rows_c4.py',
+             G + 'test_c4_certification.py']),
     'W25': ('Trainable model extension', N, [], []),
     'W26': ('Software research extension', N, [], []),
     'W27': ('Numerical, empirical and instrument extension', N, [], []),

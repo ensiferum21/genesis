@@ -634,6 +634,12 @@
           "d4bd7d6"
         ],
         "result": "GV6 path: the triangle-free row-invention procedure transferred to C4-free subgraphs (invention/cuts_c4.py, registered adaptation of generator v2: 4-cycle rows, bridge with distinct opposite vertices, statements over pairwise-distinct vertices). 201 graphs on 4-6 vertices, 48 cycle-covered, 10 implied by cycle rows, 4 by earlier patterns, 34 kept (K4 4, K_{2,3} 4, K5 6, K_{2,4} 5, K6 7; K6 LP 11.25 -> 7.5). Screen: 0 counterexamples among 37 obligations; Lean: 37/37 CHECKED (34 bounds by integer rounding certificates). Construction 1366.6 CPU s. Procedural transfer only; utility is B20_R47"
+      },
+      "B20_R47": {
+        "commits": [
+          "73ecc52"
+        ],
+        "result": "exact checker verification/lp_dual_rows_c4.py and route discovery/generated_certify_c4.py (not wired); preregistered coverage on 40 fresh C4 hosts (erdos n30 p0.2, n36 p0.17) at 60 s: certified 22 vs 22, no discordant host, McNemar p 1.0: NO_CERTIFICATION_UTILITY; sound; wall saving +2.24 s [0.23, 4.74]; rows close 80% of the LP gap, LP alone certifies 10. Interrupted once at the 30-min background limit after 25 hosts, resumed. Post-run diagnostics (disclosed): MILP optima at the witness (gap in the bound); failure-driven rows on <= 8 vertices move the LP <= 0.4 (gap global); certified branch-and-bound prototype certifies 10 of 13 open hosts (-> B20_R48). Near-domain evidence (roadmap E5)"
       }
     },
     "open_after_b20_r5": [
@@ -983,6 +989,10 @@
     ],
     "open_after_b20_r46": [
       "B20R46-OPEN-1 (new): whether procedural transfer to C4-free subgraphs counts toward GV6, and the acceptable adaptation budget; utility tested in B20_R47"
+    ],
+    "open_after_b20_r47": [
+      "B20R47-OPEN-1 (new): adopt the C4 rows checker in the evaluator C4 path? speed benefit only so far",
+      "B20R46-OPEN-1 updated: near-domain evidence; GV6 needs a structurally different formal domain"
     ]
   }
 }

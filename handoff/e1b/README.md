@@ -88,6 +88,7 @@ On this family the calibration's limit and the plan's 5% unsupported limit agree
 | `exposure_hosts_addendum_b20r43.json` | B20_R43: the 279 hosts of the E1d same-operator rehearsal (30 SELECT, 240 CONFIRM, 9 from a disclosed development look), all in the dense planted E1d settings; none is in this package's settings. |
 | `exposure_hosts_addendum_b20r44.json` | B20_R44: the 30 DEV hosts of the E1d ablation re-pilot, in the dense planted E1d settings; none is in this package's settings. |
 | `exposure_hosts_addendum_b20r45.json` | B20_R45: the 45 CONFIRM hosts of the E1d ablation rehearsal, in the dense planted E1d settings; none is in this package's settings. |
+| `exposure_hosts_addendum_b20r47.json` | B20_R47: the 40 DEV C4 hosts of the C4 certification study (c4_host_v2, erdos n30 p0.2 and n36 p0.17); none is in this package's settings. erdos n30 p0.2 is the C4 setting that failed this package's calibration. |
 | `package_index.json` | Identities, the calibration and the outcomes. |
 
 The B20_R23 version of this package (builder-chosen settings, both domains) is in the git history at `e7fad0e`.

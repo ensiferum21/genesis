@@ -77,6 +77,7 @@ The rehearsal licenses nothing. Every role was played by one operator, and the b
 | `exposure_hosts_addendum_b20r43.json` | B20_R43: the 279 hosts of the E1d same-operator rehearsal (30 SELECT, 240 CONFIRM, 9 from a disclosed development look), all in the dense planted E1d settings; none is in this package's settings. |
 | `exposure_hosts_addendum_b20r44.json` | B20_R44: the 30 DEV hosts of the E1d ablation re-pilot, in the dense planted E1d settings; none is in this package's settings. |
 | `exposure_hosts_addendum_b20r45.json` | B20_R45: the 45 CONFIRM hosts of the E1d ablation rehearsal, in the dense planted E1d settings; none is in this package's settings. |
+| `exposure_hosts_addendum_b20r47.json` | B20_R47: the 40 DEV C4 hosts of the C4 certification study (c4_host_v2, erdos n30 p0.2 and n36 p0.17); none is in this package's settings. |
 | `package_index.json` | Identities, the calibration, the verdicts and the rehearsal outcomes. |
 | `decision_record_DRAFT_v2.json`, `pilot_summary_b20r12.json`, `power_analysis_centred_b20r12.json` | B20_R12 (`e1-hard-v1`: UNDERPOWERED). Kept. |
 | `decision_record_DRAFT.json`, `b19_*.json`, `exposure_hosts_to_exclude.json` | B19 and the earlier exposure list. Kept. |

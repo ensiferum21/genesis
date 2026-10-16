@@ -1,0 +1,166 @@
+{
+ "budget_s": 60,
+ "by_setting": {
+  "erdos:0cee043c": {
+   "certified_a": 15,
+   "certified_a_not_b": 0,
+   "certified_b": 15,
+   "certified_b_not_a": 0,
+   "gap_closure": {
+    "cycle_lp_meets_optimum": 0,
+    "hosts_with_lp_gap": 15,
+    "hosts_with_optimum": 15,
+    "mean_fraction_closed": 0.75,
+    "rows_lp_meets_optimum": 5
+   },
+   "hosts": 20,
+   "lp_bound_mean": {
+    "a": 66.4,
+    "b": 63.2
+   },
+   "lp_upper_a": 0,
+   "lp_upper_b": 5,
+   "upper_bound_mean": {
+    "a": 63.9,
+    "b": 62.5
+   },
+   "wall_median_s": {
+    "a": 8.001,
+    "b": 8.947
+   },
+   "wall_total_s": {
+    "a": 512.38,
+    "b": 510.65
+   }
+  },
+  "erdos:fa6fa189": {
+   "certified_a": 7,
+   "certified_a_not_b": 0,
+   "certified_b": 7,
+   "certified_b_not_a": 0,
+   "gap_closure": {
+    "cycle_lp_meets_optimum": 0,
+    "hosts_with_lp_gap": 7,
+    "hosts_with_optimum": 7,
+    "mean_fraction_closed": 0.9048,
+    "rows_lp_meets_optimum": 5
+   },
+   "hosts": 20,
+   "lp_bound_mean": {
+    "a": 83.55,
+    "b": 79.65
+   },
+   "lp_upper_a": 0,
+   "lp_upper_b": 5,
+   "upper_bound_mean": {
+    "a": 82.65,
+    "b": 79.55
+   },
+   "wall_median_s": {
+    "a": 59.922,
+    "b": 59.93
+   },
+   "wall_total_s": {
+    "a": 1071.13,
+    "b": 983.41
+   }
+  }
+ },
+ "checker_identity": "genesis.verification.lp_dual_rows_c4@a2da6a9c97cfa8aa963d5d90be5605185b82b77c1098ff2740064c8c210cba4d",
+ "code_identity": "f8c400eddacb2d316ee702d6bda55434bffaf3443253865bdbe4f2055b78cede",
+ "disagreements": [],
+ "exposure_scan": {
+  "calibration_hosts": 456,
+  "distinct_hosts": 2756,
+  "e1_named_hosts": 711,
+  "empty_files_skipped": [
+   "evidence/failed-wal-final-replay.json",
+   "evidence/final-replay.json"
+  ],
+  "excluded_identities": 2756,
+  "files_scanned": 1007,
+  "host_records": 10391
+ },
+ "invalid_certificates": [],
+ "mcnemar_p_one_sided": 1.0,
+ "passes": {
+  "coverage": true,
+  "mcnemar": false,
+  "sound": true,
+  "time": true
+ },
+ "pooled": {
+  "certified_a": 22,
+  "certified_a_not_b": 0,
+  "certified_b": 22,
+  "certified_b_not_a": 0,
+  "gap_closure": {
+   "cycle_lp_meets_optimum": 0,
+   "hosts_with_lp_gap": 22,
+   "hosts_with_optimum": 22,
+   "mean_fraction_closed": 0.7992,
+   "rows_lp_meets_optimum": 10
+  },
+  "hosts": 40,
+  "lp_bound_mean": {
+   "a": 74.975,
+   "b": 71.425
+  },
+  "lp_upper_a": 0,
+  "lp_upper_b": 10,
+  "upper_bound_mean": {
+   "a": 73.275,
+   "b": 71.025
+  },
+  "wall_median_s": {
+   "a": 59.404,
+   "b": 59.392
+  },
+  "wall_total_s": {
+   "a": 1583.51,
+   "b": 1494.06
+  }
+ },
+ "registry": {
+  "package_sha256": "7a081e4a957503da29d728f94d67793eea1404a2aacda8199d4c90cf8cbf0865",
+  "patterns": 34,
+  "sha256": "e82b6ea62384e1369c5d63c7b6bdc59c673150b67bb7e75350eb0888f2846b91"
+ },
+ "route_b": {
+  "lp_rounding_seconds": 1.0,
+  "max_rows": 50000,
+  "max_total": 80000,
+  "order": "dense-first",
+  "separation_seconds": 15
+ },
+ "schema": "genesis-b20r47-c4-certification-v1",
+ "seeds": [
+  20264701,
+  20264711
+ ],
+ "settings": [
+  {
+   "family": "erdos",
+   "params": {
+    "n": 30,
+    "p": 0.2
+   }
+  },
+  {
+   "family": "erdos",
+   "params": {
+    "n": 36,
+    "p": 0.17
+   }
+  }
+ ],
+ "status": "DEV measurement; licenses nothing; route and checker not wired into the evaluator",
+ "verdict": "NO_CERTIFICATION_UTILITY",
+ "wall_saving_a_minus_b": {
+  "interval_90": [
+   0.22894999999999957,
+   4.735
+  ],
+  "mean": 2.236225
+ }
+}
