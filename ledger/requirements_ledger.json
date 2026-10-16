@@ -4843,7 +4843,10 @@
     "src/genesis/candidates.py",
     "src/genesis/judge.py",
     "src/genesis/learning/statement_panels.py",
-    "src/genesis/learning/research_export.py"
+    "src/genesis/learning/research_export.py",
+    "src/genesis/candidates_v2.py",
+    "src/genesis/candidate_kinds/milp_highs.py",
+    "docs/CANDIDATE_REGISTRY_V2.md"
    ],
    "disposition": "IMPLEMENTED_BOUNDED_PENDING_AUDIT",
    "evidence": [],
@@ -4862,9 +4865,10 @@
     "tests_genesis/test_redteam_b16.py",
     "tests_genesis/test_candidate_adapters.py",
     "tests_genesis/test_candidate_custody.py",
-    "tests_genesis/test_statement_custody.py"
+    "tests_genesis/test_statement_custody.py",
+    "tests_genesis/test_candidates_v2.py"
    ],
-   "title": "Independent custody and preregistration",
+   "title": "Independent custody and preregistration (B20_R40: candidate registry v2 with per-kind identity and an exact-MIP baseline kind, built and not wired)",
    "workstream": "W06"
   },
   {

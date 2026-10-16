@@ -2,7 +2,7 @@
 
 ## Where things stand
 
-- **Branch:** `continuation-b20-rx` (GitHub `ensiferum21/genesis`). It is the canonical B20_R11 line (`continuation-b20-repairs`, `36954d6`), with the recovery-branch work ported onto it, plus B20_R12 and B20_R15–R39. B20_R25–R28 were built from the B20_R24 checkpoint's history bundle while GitHub was not linked; GitHub's branch is an ancestor.
+- **Branch:** `continuation-b20-rx` (GitHub `ensiferum21/genesis`). It is the canonical B20_R11 line (`continuation-b20-repairs`, `36954d6`), with the recovery-branch work ported onto it, plus B20_R12 and B20_R15–R40. B20_R25–R28 were built from the B20_R24 checkpoint's history bundle while GitHub was not linked; GitHub's branch is an ancestor.
 - **Side branch:** `side-b21-equational` (`710d26d`) keeps work done on plain B20 in parallel with this line (equational generations W21/E4, definitional primitives, fault routes). It is not canonical. Only its Lean-replay hint repair was ported (B20_R25).
 - **Checkpoints:**
 
@@ -24,7 +24,7 @@
 | B20_R35 | `fdaf849` | `9aace6d1…54ea` (B20_R34–R35; release matrix 1,239 tests, all OK, one declared skip; restore-verified, 5,713 manifest entries; driver rehearsal on the build host **REPRODUCED**, not a second machine) |
 
   The recovery-branch checkpoints B20_RX1 and B20_RX2 are on `recovery-b20r1-partial`; their work was ported here.
-- **Records:** `docs/checkpoints/B20_R1_RECORD.md` … `B20_R11_RECORD.md`, `B20_RX1_RECORD.md`, `B20_RX2_RECORD.md`, `B20_R12_RECORD.md` and `B20_R15_RECORD.md` … `B20_R39_RECORD.md`.
+- **Records:** `docs/checkpoints/B20_R1_RECORD.md` … `B20_R11_RECORD.md`, `B20_RX1_RECORD.md`, `B20_RX2_RECORD.md`, `B20_R12_RECORD.md` and `B20_R15_RECORD.md` … `B20_R40_RECORD.md`.
 
 ## Completed since B20_R11
 
@@ -59,6 +59,7 @@
 | B20_R37 | Generator v2: every graph on ≤ 7 vertices, 9 patterns (K7 ≤ 12, K7−e ≤ 12, …), all 12 obligations Lean-CHECKED by integer rounding certificates. Coverage on 40 fresh dense hosts at 60 s: 33 vs v1's 30 (McNemar p 0.19): **NO_COVERAGE_GAIN**; dense planted 19/20 with v2, 17/20 with v1 |
 | B20_R38 | Frozen E1/E1b candidates vs an exact MIP in the dense regime (40 fresh hosts, all certified by the generated-rows route): E1 at 0.5 s is optimal on 19/20 per setting and **+14.6 per host above HiGHS at 2.0 s** on dense planted hosts (20/0/0); verdicts E1 CANDIDATE_BEYOND_MIP ×2 (inflated at 0.5 s), E1b BEYOND_MIP on planted, MIP_DOMINATES on erdos |
 | B20_R39 | Custody for certificates over generated rows (`verification/certificates_rows.py`, own schema, checker-only replay with registry re-derivation and revocation) and a generated-rows joint reference (`generated_certify.reference`); built, **not wired**; adoption steps in `docs/GENERATED_ROWS_REFERENCE.md` |
+| B20_R40 | Candidate registry v2 (`candidates_v2.py`, one module per kind, identity per kind and independent of registry v1, so the frozen E1/E1b descriptors are untouched) with the first kind `milp-highs-v1` (exact HiGHS MILP, time-matched, one core); built, **not wired**; `docs/CANDIDATE_REGISTRY_V2.md` |
 
 ## Resume
 
@@ -96,7 +97,7 @@
    - a different kind of component altogether (for example, symmetry or dominance rules; B20_RX1 H06 probe).
 
    The GV4 study design (`handoff/gv4/README.md`) waits on such a family.
-2. **Registered interventions for the remaining candidate kinds** (`represent-and-repair-v1`, the formal successor kind), and a supervised child process in the runner, so the SAT finisher can become a pipeline component. Changing `invention/representations.py` or `candidates.py` changes the implementation identity, and so the descriptor ids, of the frozen E1/E1b candidates. This needs a versioned kind (for example `represent-and-repair-v2`), not an edit of v1.
+2. **Registered interventions for the remaining candidate kinds, and a supervised SAT child.** B20_R40 built candidate registry v2 (per-kind identity, independent of v1), so these can now be added as v2 kind modules (for example `represent-and-repair-v2` with registered interventions, `construct-pipeline-v2` with a supervised SAT finisher) without changing the frozen E1/E1b descriptor ids. Wiring v2 into requests, receipts and the custodian is a reviewed step (B20R40-OPEN-1).
 3. **H08, the rest:** paired research lineages for `sealed_improver_evaluation` (needs a GV4 domain with headroom); custodian-held retention material.
 4. **H11:** an independent reviewer works through `docs/checkpoints/B20_R20_REVIEW_BRIEF.md`; the operations runbook is `docs/OPERATIONS.md`.
 

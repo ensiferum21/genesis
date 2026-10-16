@@ -553,8 +553,14 @@
         "result": "frozen E1/E1b descriptors vs exact HiGHS MILP in the dense regime (planted n40 0.8/0.06, erdos n30 0.42; 20 fresh hosts each; one pinned core; all 40 certified by the generated-rows route): E1 (0.5 s) optimal on 19/20 per setting, CANDIDATE_BEYOND_MIP on both (inflated: MIP barely starts in 0.5 s), descriptive E1 0.5 s minus MIP 2.0 s +14.6 on planted (20/0/0), +0.45 on erdos; E1b (2.0 s) BEYOND_MIP on planted (+4.75), MIP_DOMINATES on erdos (-6.75)"
       },
       "B20_R39": {
-        "commits": [],
+        "commits": [
+          "41101a6"
+        ],
         "result": "engineering only: verification/certificates_rows.py (custody for LP_DUAL_GENERATED_EXACT under its own schema; checker-only replay re-deriving the registry from the Lean package, exact certificate check, revocation of checker and package identities, optional Lean replay) and generated_certify.reference (joint reference with generated rows, producing custody); built, not wired: CHECKED_METHODS_V2, the evaluator and the custodian unchanged; adoption steps in docs/GENERATED_ROWS_REFERENCE.md"
+      },
+      "B20_R40": {
+        "commits": [],
+        "result": "engineering only: candidate registry v2 (candidates_v2.py; one module per kind under candidate_kinds/; descriptor identity = v2 core + kind files + graphs.py + models.py, independent of registry v1, so frozen E1/E1b descriptor ids are unchanged; runner with runc/cgroup or process rlimits, view-only child, strict decoder, domain re-check; mutual refusal between registries) and the first kind milp-highs-v1 (exact HiGHS MILP, one core, time-matched); built and tested, not wired into requests, receipts or the custodian"
       }
     },
     "open_after_b20_r5": [
@@ -861,6 +867,29 @@
       "B20R-OPEN-3 (pending review)",
       "R-04",
       "B20R8-OPEN-1 (pending review)"
+    ],
+    "open_after_b20_r40": [
+      "GV3 sign-off (reviewer: e1-hard-v2 and DRAFTs; statistician B19-OPEN-4; independent custodian)",
+      "B20R35-OPEN-1 (generated-row certification: CERTIFICATION_UTILITY on DEV; custody and reference built in B20_R39, not wired; reviewer decision)",
+      "B20R37-OPEN-1 (generator v2: no coverage gain at 60 s)",
+      "B20R33-OPEN-1 (E1/E1b not beyond strong baselines on the e1b family; B20_R38: E1 beyond the exact MIP in a dense regime certifiable only with generated rows; reviewer decisions)",
+      "B20R34-OPEN-1 (resume regenerates hosts in the R30-R34 study scripts; R34 record repaired; pending review)",
+      "B20R24-OPEN-2 (certification limit vs unsupported limit; B20_R30: LIMITS_CONSISTENT on the e1b family; reviewer decision)",
+      "B20R24-OPEN-1 (repaired, pending review)",
+      "B20R9-OPEN-1 (GV4: six attempts in four families without construction utility; certification utility in B20_R35)",
+      "B20R25-OPEN-1 (hint generator v2 heuristic; pending review)",
+      "B20R26-OPEN-1 (quotient family: one attempt)",
+      "B20R27-OPEN-1 (decomposition family: one attempt)",
+      "B20R36-OPEN-1 (relaxation family attempt 2: construction gains except against the menu)",
+      "B20R31-OPEN-1 (relaxation family: attempt 1)",
+      "B20R32-OPEN-1 (answered by B20_R35)",
+      "B20R3-OPEN-2",
+      "B20R5-OPEN-2",
+      "B14-OPEN-4 (pending review)",
+      "B20R-OPEN-3 (pending review)",
+      "R-04",
+      "B20R8-OPEN-1 (pending review)",
+      "B20R40-OPEN-1 (candidate registry v2 built, not wired; next: v2 kinds with registered interventions and a supervised SAT child)"
     ]
   }
 }
