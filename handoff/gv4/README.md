@@ -112,6 +112,47 @@ itself.
      a construction signal at a large budget, which a matched-budget combination would have to turn
      into utility.
 
+## Update after B20_R49 (a certification attempt that combines a stepping stone)
+
+This section is DRAFT. It records results and changes no design.
+
+**The chain (all preregistered, all DEV).**
+- **B20_R46.** The row-invention procedure transferred to C4-free subgraphs, and all 37 obligations
+  are Lean-CHECKED.
+- **B20_R47.** The transferred rows alone added no certification coverage (22 vs 22 of 40). This
+  attempt failed, and was archived as a stepping stone.
+- **B20_R48.** The same rows combined with branching, with exact LP-dual leaf certificates, gave
+  **CERTIFICATION_UTILITY**: 38 vs 26 of 40, p = 0.00024.
+- **B20_R49.** A registered ablation attributes that utility to the rows: 36 vs 24 of 40 with vs
+  without them, p = 0.00024.
+
+**In this draft's terms**, B20_R48 is the first combination attempt: a stepping stone (B20_R47's rows)
+with a stated mechanism. B20_R47's disclosed diagnostics showed the remaining gap is global, which
+branching addresses. Note, though, that the partner component, branching, was written by the builder,
+not invented.
+
+**False-discovery control.** The attempt family is now:
+- six construction attempts: B20_R17, R19, R26, R27, R31, R36;
+- five certification attempts: B20_R32, R35, R37, R47, R48.
+
+B20_R49 is an attribution test of B20_R48, not a new attempt. Under Benjamini–Yekutieli at q = 0.1,
+the two smallest p-values survive whatever the others are: B20_R35 at 9.5e-7, and B20_R48 at 0.00024.
+B20_R48 survives for any family of up to 147 attempts.
+
+**What this does and does not give GV4.**
+- **What it gives.** A research *procedure* (generate, keep by LP gap, prove in Lean) that produced a
+  component with a prospective, causally attributed utility in a domain it was not built for.
+- **What it does not give.** It is not a better-improver comparison. No learned research process has
+  been compared with a fixed one. The utility is in certification, and whether certification utility
+  counts toward GV4 is still B20R35-OPEN-1.
+- **A candidate GV4 pilot this enables.** Two research processes would generate C4 rows under one
+  Lean proof budget:
+  - a fixed enumerator over all graphs on at most 7 vertices, in atlas order;
+  - a usage-driven process that proves first the patterns the tree route's certificates use most on
+    DEV failures.
+  Their successors, the registries, would be compared by tree-route coverage and time on fresh hosts.
+  Headroom is unknown: B20_R37 found no coverage gain from 7-vertex triangle-free rows at 60 s.
+
 ## What is blocked, and on what
 
 | Item | Blocked on |

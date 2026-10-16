@@ -1,0 +1,103 @@
+# GV6 (meaningful transfer): study design, DRAFT
+
+**Status.** A DRAFT by the builder, 17 Oct 2026. It is not frozen and not registered with any
+custodian, and it licenses no claim. The choice of target domain is a reviewer's (B20R46-OPEN-1).
+
+**Gate (roadmap).** A learned capability helps in a structurally different domain within a
+registered adaptation budget. The evaluation has to include:
+- fresh target-domain evaluation;
+- transfer controls;
+- retention checks.
+
+W24 adds: "Begin with a structurally different formal domain rather than only changing the forbidden
+graph motif." E5 adds three requirements:
+- freeze transferable components before seeing the target confirmation panel;
+- compare transferred capability, target-only learning and conventional reuse with equal adaptation
+  resources;
+- inspect whether gains come from a shared duplicate or a memorized solution.
+
+## Evidence so far: near-domain transfer (all DEV, builder-run, preregistered)
+
+| Batch | Step | Result |
+|---|---|---|
+| B20_R46 | The triangle-free row-invention procedure (generate small graphs, keep by LP gap, prove each bound in Lean from the LP's dual), with a registered C4 adaptation of about 300 lines; search and kept rule unchanged | 34 patterns, **37/37 obligations Lean-CHECKED** |
+| B20_R47 | The rows alone, as a certification route on 40 fresh C4 hosts | no coverage gain (22 vs 22); 80% of the LP gap closed; faster |
+| B20_R48 | The rows with certified branch and bound (exact tree checker) | **38 vs 26 of 40**, p = 0.00024, median 2.1 s vs 46.9 s |
+| B20_R49 | Registered ablation: the same route without the rows | **36 vs 24 of 40**, p = 0.00024: the utility is the rows' |
+| B20_R50 | The rows make C4 settings calibratable; E1b's C4 arm under a DRAFT rule | running |
+
+**What this shows.** A capability the system invented, the procedure and its Lean-checked output,
+carries over to a different forbidden motif and causes a measured utility there.
+
+**What it does not show.** By W24 and E5, a motif change is near-domain transfer. Three things are
+missing:
+- a structurally different target;
+- a target-only learning control at equal adaptation resources;
+- sealed target panels from a custodian.
+
+## Candidate structurally different targets
+
+The source capability is frozen as follows:
+- the procedure in `invention/cuts_v2.py` (generator v2) and `invention/cuts_c4.py`;
+- the proof method (`lp-certificate-sum` recipes);
+- the tree certificate (`verification/lp_dual_tree_c4.py`).
+
+Each target below needs a registered adaptation: its motif rows, its Lean definitions, and its
+pattern statements.
+
+1. **Additive combinatorics: sum-free or Sidon subsets of [n] or Z_n.**
+   - **The problem.** A sum-free set has no solution of a + b = c. Its rows are Schur triples,
+     x_a + x_b + x_{a+b} ≤ 2. The patterns are small sets of integers with additive relations.
+   - **Lean.** It needs a new definitions module (sets of naturals, sums). Statements become "for
+     every sum-free S, and every injective, sum-preserving assignment…".
+   - **Why it fits.** It is a different theorem family (Schur, Erdős–Moser). The objects are
+     integers under addition, not edges of a host graph, and the symmetry group differs
+     (translations and dilations).
+   - **Risk.** The constraint structure is again a 3-uniform packing, close to triangle-freeness. A
+     reviewer may judge it "near" too.
+2. **Equational theories (the B20 environment, `learning/equational.py`).**
+   - **The setting.** Boolean algebras and groups in several axiomatizations, with exact deciders, E
+     proofs and Lean replay. This is a structurally different formal domain by any reading.
+   - **Mapping the procedure.** "Keep a fact that is true but not derivable by the cheap relaxation"
+     becomes "keep an equation that the decider says is true but bounded E with the current library
+     cannot prove". It is then proved with a larger budget and replayed in Lean.
+   - **Risk.** B20's research-policy studies found no headroom there (B20_R3, R6, R9), and the
+     failure-driven curriculum is already a B20 baseline. The transferred procedure may be the same
+     thing in disguise, which a reviewer must judge.
+3. **Coding theory: binary codes with minimum distance d.**
+   - **Rows.** A clique-type packing over the Hamming graph, with Delsarte's LP as the conventional
+     bound.
+   - **What would transfer.** The patterns are small code configurations whose LP exceeds their
+     maximum.
+   - **Risk.** Delsarte's LP is very strong, so headroom may be small. The Lean definitions are
+     larger.
+
+## Proposed protocol (to be reviewed; nothing frozen)
+
+- **Freeze.** The source procedure and code at a named commit. The target adaptation is one module,
+  with its line count and CPU budget registered before any target data is seen.
+- **Arms**, at equal adaptation resources (builder hours are not measurable, so the budget is code
+  size and CPU):
+  - **transferred:** the frozen procedure with the registered adaptation;
+  - **target-only:** a generator written for the target alone at the same code budget, for example
+    the target's own conventional relaxation tightened by standard cuts;
+  - **conventional reuse:** the target's standard LP and solver (for example HiGHS on the
+    target's MILP, or Delsarte's LP).
+- **Endpoint.** Certification coverage and time on sealed fresh target instances, with the tree
+  certificate's checker adapted to the target's rows and re-reviewed. A second endpoint is the
+  construction value, if the rows are used for rounding.
+- **Retention.** The source domain's certification coverage (B20_R48's design, fresh hosts), re-run
+  after the transfer, must not drop.
+- **Duplication check.** No target instance or pattern may be a relabelled copy of a source pattern.
+  The patterns are compared up to isomorphism of their constraint hypergraphs.
+- **Decision rule.** SUPPORTED only if the transferred arm beats both controls with the clustered
+  lower bound above a minimum useful effect fixed in advance, and retention holds. The attempt is one
+  hypothesis in the BY family of the GV4 draft.
+
+## What is needed from a reviewer
+
+1. Whether target 1, 2 or 3 (or another) counts as structurally different for GV6.
+2. The adaptation budget: code size and CPU.
+3. Whether certification utility counts as "helps" for GV6, or only construction utility. This
+   parallels B20R35-OPEN-1 for GV4.
+4. A custodian for the sealed target panels.
