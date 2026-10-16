@@ -2,7 +2,7 @@
 
 ## Where things stand
 
-- **Branch:** `continuation-b20-rx` (GitHub `ensiferum21/genesis`). It is the canonical B20_R11 line (`continuation-b20-repairs`, `36954d6`), with the recovery-branch work ported onto it, plus B20_R12 and B20_R15–R34. B20_R25–R28 were built from the B20_R24 checkpoint's history bundle while GitHub was not linked; GitHub's branch is an ancestor.
+- **Branch:** `continuation-b20-rx` (GitHub `ensiferum21/genesis`). It is the canonical B20_R11 line (`continuation-b20-repairs`, `36954d6`), with the recovery-branch work ported onto it, plus B20_R12 and B20_R15–R35. B20_R25–R28 were built from the B20_R24 checkpoint's history bundle while GitHub was not linked; GitHub's branch is an ancestor.
 - **Side branch:** `side-b21-equational` (`710d26d`) keeps work done on plain B20 in parallel with this line (equational generations W21/E4, definitional primitives, fault routes). It is not canonical. Only its Lean-replay hint repair was ported (B20_R25).
 - **Checkpoints:**
 
@@ -23,7 +23,7 @@
 | B20_R33 | `f09988e` | `1a2f6624…f496` (B20_R30–R33; release matrix 1,229 tests, all OK, one declared skip; restore-verified, 5,670 manifest entries; driver rehearsal on the build host **REPRODUCED**, not a second machine) |
 
   The recovery-branch checkpoints B20_RX1 and B20_RX2 are on `recovery-b20r1-partial`; their work was ported here.
-- **Records:** `docs/checkpoints/B20_R1_RECORD.md` … `B20_R11_RECORD.md`, `B20_RX1_RECORD.md`, `B20_RX2_RECORD.md`, `B20_R12_RECORD.md` and `B20_R15_RECORD.md` … `B20_R34_RECORD.md`.
+- **Records:** `docs/checkpoints/B20_R1_RECORD.md` … `B20_R11_RECORD.md`, `B20_RX1_RECORD.md`, `B20_RX2_RECORD.md`, `B20_R12_RECORD.md` and `B20_R15_RECORD.md` … `B20_R35_RECORD.md`.
 
 ## Completed since B20_R11
 
@@ -53,6 +53,7 @@
 | B20_R32 | Exact certification over the generated rows (new checker with a Lean-bound registry; evaluator unchanged): sound, closes 2 of the 3 SAT-needing hosts of a fresh sample, but **NO_CERTIFICATION_UTILITY** prospectively (the sample had 3 such hosts against B20_R30's 18). Post hoc: an exact MILP (HiGHS) confirms all 21 SAT-certified optima in under 0.72 s each, which raises a strong-baseline question for E1/E1b |
 | B20_R33 | Strong-baseline audit (B20R32-OPEN-2): on 60 fresh e1b hosts an exact MIP (HiGHS) proves every optimum within 0.36 CPU s. Against it E1 is **MIP_DOMINATES** (+0.75 per host) and E1b **NO_MATERIAL_DIFFERENCE** (+0.20, never above); both still beat their DSL baselines by ~2. Neither can be "beyond strong baselines" on this family (B20R33-OPEN-1) |
 | B20_R34 | Probe for MIP-hard certifiable triangle-free settings (B20R33-OPEN-1): **NO_MIP_HARD_CERTIFIABLE_SETTING** in 7 settings near the 200-edge bound. Where the evaluator certifies, the exact MIP is optimal; where the MIP fails (dense planted), the evaluator certifies nothing, and (exploratory) the E1b candidate beats the MIP's 2 s incumbent there. A resume defect in the study scripts was found and R34's record repaired (B20R34-OPEN-1) |
+| B20_R35 | Generated-row certification, enriched by setting (B20R32-OPEN-1): on 40 fresh hosts of the two settings the evaluator mostly fails, the route certifies **27/40 vs 7/40** within 60 s (McNemar p ≈ 1e-6; +18.5 s per host saved): **CERTIFICATION_UTILITY**. The first preregistered positive DEV utility of a machine-generated, Lean-checked component (in certification; classical bounds, no novelty claim) |
 
 ## Resume
 
@@ -69,7 +70,7 @@
    - a statistician signs off the centred power model (B19-OPEN-4);
    - an independent custodian runs SELECT, register and evaluate on its own machine.
 2. **B20R24-OPEN-2:** align the calibration's certification limit (at least 90% certified within 60 s) with the plan's unsupported limit (at most 5% at 600 s) before a real run. B20_R30 measured both on 90 fresh `e1b` hosts: 86/90 at 60 s, 90/90 at 600 s (unsupported upper bound 3.27%), **LIMITS_CONSISTENT** on this family (`evidence/certification_budget_b20r30/`). The choice stays the reviewer's.
-3. **GV4 study design** (`handoff/gv4/README.md`, DRAFT). The question is what counts as an invented component, and now also whether a component that helps *certification* (B20_R31's generated inequalities) counts toward a better improver. The decision is needed before the s15.3 work below can become a study. After B20_R31, no invented component has DEV construction utility yet.
+3. **GV4 study design** (`handoff/gv4/README.md`, DRAFT). The question is what counts as an invented component, and now also whether a component that helps *certification* counts toward a better improver: B20_R35 gives the first preregistered positive DEV utility of a generated, Lean-checked component, in certification (B20R35-OPEN-1); also whether to wire its checker into the evaluator (a trust-path change). The decision is needed before the s15.3 work below can become a study. After B20_R31, no invented component has DEV construction utility yet.
 4. **CRPD-2b pin revision:** review.
 5. **B20R33-OPEN-1** (see item 1).
 
@@ -81,7 +82,7 @@
    - decomposition ×1 (B20_R27);
    - relaxation ×1 (B20_R31): +0.19 over the LP it strengthens, interval above 0, below 0.5; a certification signal (10 of 18 SAT-certified hosts become LP-floor certifiable, float diagnostic).
 
-   B20_R32 built the exact certification route over the generated rows: sound, but NO_CERTIFICATION_UTILITY on an unenriched fresh sample (B20R32-OPEN-1).
+   B20_R32 built the exact certification route over the generated rows: sound, but NO_CERTIFICATION_UTILITY on an unenriched fresh sample (B20R32-OPEN-1). B20_R35, enriched by setting, found **CERTIFICATION_UTILITY** (27/40 vs 7/40 certified at 60 s; B20R35-OPEN-1). Candidates now: generated rows on 7 vertices (to lift coverage toward the 90% limit), and a construction use of the K5 rows in the dense regime.
 
    Each further attempt is its own preregistered step, and every attempt counts. Candidates:
    - a quotient attempt 2 on families whose best triangle-free subgraph is far from bipartite;

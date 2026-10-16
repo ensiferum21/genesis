@@ -573,11 +573,13 @@ WORKSTREAMS = {
             ['tests_formal/test_invention.py', 'tests_formal/test_soundness_modes.py::Wiring']),
     'W13': ('Construction, obstruction and certified reductions (LP relaxation with exact dual certificates; B20_R32: '
             'exact certificates over generated rows with a Lean-bound registry, DEV only, NO_CERTIFICATION_UTILITY '
-            'prospectively; no symmetry reduction, kernelization or continuation yet)', B,
+            'on an unenriched sample; B20_R35: CERTIFICATION_UTILITY on enriched settings, 27/40 vs 7/40; no symmetry '
+            'reduction, kernelization or continuation yet)', B,
             ['src/genesis/discovery/obstruction.py', 'evidence/discovery_b19/obstruction/evaluation.json',
              'src/genesis/verification/lp_dual_rows.py', 'src/genesis/discovery/generated_certify.py',
-             'evidence/generated_certification_b20r32/summary.json'],
-            ['tests_formal/test_discovery.py', G + 'test_lp_dual_rows.py', G + 'test_generated_certification.py']),
+             'evidence/generated_certification_b20r32/summary.json', 'evidence/dense_certification_b20r35/summary.json'],
+            ['tests_formal/test_discovery.py', G + 'test_lp_dual_rows.py', G + 'test_generated_certification.py',
+             G + 'test_dense_certification.py']),
     'W14': ('Active experiments and identifiability', B,
             ['src/genesis/discovery/active.py', 'evidence/discovery_b19/active/evaluation.json'],
             ['tests_formal/test_discovery.py::ActiveSelection']),

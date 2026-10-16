@@ -5069,7 +5069,8 @@
     "evidence/discovery_b19/obstruction/evaluation.json",
     "src/genesis/verification/lp_dual_rows.py",
     "src/genesis/discovery/generated_certify.py",
-    "evidence/generated_certification_b20r32/summary.json"
+    "evidence/generated_certification_b20r32/summary.json",
+    "evidence/dense_certification_b20r35/summary.json"
    ],
    "disposition": "IMPLEMENTED_BOUNDED_PENDING_AUDIT",
    "evidence": [],
@@ -5086,9 +5087,10 @@
    "tests": [
     "tests_formal/test_discovery.py",
     "tests_genesis/test_lp_dual_rows.py",
-    "tests_genesis/test_generated_certification.py"
+    "tests_genesis/test_generated_certification.py",
+    "tests_genesis/test_dense_certification.py"
    ],
-   "title": "Construction, obstruction and certified reductions (LP relaxation with exact dual certificates; B20_R32: exact certificates over generated rows with a Lean-bound registry, DEV only, NO_CERTIFICATION_UTILITY prospectively; no symmetry reduction, kernelization or continuation yet)",
+   "title": "Construction, obstruction and certified reductions (LP relaxation with exact dual certificates; B20_R32: exact certificates over generated rows with a Lean-bound registry, DEV only, NO_CERTIFICATION_UTILITY on an unenriched sample; B20_R35: CERTIFICATION_UTILITY on enriched settings, 27/40 vs 7/40; no symmetry reduction, kernelization or continuation yet)",
    "workstream": "W13"
   },
   {

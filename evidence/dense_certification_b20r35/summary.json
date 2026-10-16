@@ -1,0 +1,129 @@
+{
+ "budget_s": 60,
+ "by_stratum": {
+  "erdos:17db5902": {
+   "b_lp_rows_median": 4420.0,
+   "b_lp_step_wall_s_max": 1.574,
+   "certified_a": 6,
+   "certified_a_not_b": 0,
+   "certified_b": 12,
+   "certified_b_not_a": 6,
+   "hosts": 20,
+   "lp_upper_a": 6,
+   "lp_upper_b": 12,
+   "wall_median_s": {
+    "a": 59.685,
+    "b": 25.053
+   },
+   "wall_total_s": {
+    "a": 845.23,
+    "b": 598.29
+   }
+  },
+  "planted_cluster:9491bde8": {
+   "b_lp_rows_median": 52291.5,
+   "b_lp_step_wall_s_max": 9.369,
+   "certified_a": 1,
+   "certified_a_not_b": 0,
+   "certified_b": 15,
+   "certified_b_not_a": 14,
+   "hosts": 20,
+   "lp_upper_a": 0,
+   "lp_upper_b": 15,
+   "wall_median_s": {
+    "a": 59.473,
+    "b": 30.441
+   },
+   "wall_total_s": {
+    "a": 1208.5,
+    "b": 716.42
+   }
+  }
+ },
+ "checker_identity": "genesis.verification.lp_dual_rows@1dea801e540518e2963477002a2ae68cf6d6a392400dd5afeb10cd95b45743d8",
+ "code_identity": "0d0f16444341ecc065bbf842e0bd7b662c6bf921b394b903ffc71d02e400987a",
+ "exposure_scan": {
+  "calibration_hosts": 456,
+  "distinct_hosts": 2092,
+  "e1_named_hosts": 711,
+  "empty_files_skipped": [
+   "evidence/failed-wal-final-replay.json",
+   "evidence/final-replay.json"
+  ],
+  "excluded_identities": 2092,
+  "files_scanned": 908,
+  "host_records": 5838
+ },
+ "invalid_b_certificates": [],
+ "mcnemar_p_one_sided": 9.5e-07,
+ "passes": {
+  "coverage": true,
+  "mcnemar": true,
+  "sound": true,
+  "time": true
+ },
+ "pooled": {
+  "b_lp_rows_median": 31052.5,
+  "b_lp_step_wall_s_max": 9.369,
+  "certified_a": 7,
+  "certified_a_not_b": 0,
+  "certified_b": 27,
+  "certified_b_not_a": 20,
+  "hosts": 40,
+  "lp_upper_a": 6,
+  "lp_upper_b": 27,
+  "wall_median_s": {
+   "a": 59.508,
+   "b": 28.306
+  },
+  "wall_total_s": {
+   "a": 2053.73,
+   "b": 1314.71
+  }
+ },
+ "registry": {
+  "package_sha256": "e373ab41a5136bbab88560e6d2c2c0b0f4873e5a14441bcf6b6ba692b79cb78f",
+  "sha256": "6aa8359877e52637897451114f3c7879a7cbe0ac295748b6e2c3abfbbfd35f83"
+ },
+ "schema": "genesis-b20r35-dense-certification-v1",
+ "seeds": [
+  20263501,
+  20263511
+ ],
+ "separation": {
+  "max_rows_per_pattern": 50000,
+  "order": "smallest first",
+  "seconds": 10
+ },
+ "settings": [
+  {
+   "family": "planted_cluster",
+   "params": {
+    "n": 40,
+    "p_in": 0.8,
+    "p_out": 0.06
+   }
+  },
+  {
+   "family": "erdos",
+   "params": {
+    "n": 30,
+    "p": 0.42
+   }
+  }
+ ],
+ "status": "DEV measurement of a certification component; licenses no claim; no evaluator change",
+ "value_disagreements": [],
+ "verdict": "CERTIFICATION_UTILITY",
+ "wall_saving_a_minus_b": {
+  "by_stratum": {
+   "erdos:17db5902": 12.347,
+   "planted_cluster:9491bde8": 24.604
+  },
+  "interval_90": [
+   13.864,
+   23.335
+  ],
+  "mean": 18.475
+ }
+}
