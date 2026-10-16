@@ -644,7 +644,8 @@
       },
       "B20_R48": {
         "commits": [
-          "08b7e41"
+          "08b7e41",
+          "7bf1723"
         ],
         "result": "certified branch and bound over the transferred C4 rows: exact tree checker verification/lp_dual_tree_c4.py, producer discovery/generated_bnb_c4.py (not wired). Preregistered on 40 fresh C4 hosts (erdos n30 p0.2, n36 p0.17) at 60 s: tree route 38 vs evaluator 26, 12/0 discordant, McNemar p 0.00024, wall saving +27.8 s [20.7, 35.6], median 2.1 s vs 46.9 s, every certificate VALID: CERTIFICATION_UTILITY; both settings meet the 90% calibration limit under the tree route (n36 90% vs 35%). Attribution to the rows: B20_R49"
       }
