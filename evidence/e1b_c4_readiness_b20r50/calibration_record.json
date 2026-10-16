@@ -1,0 +1,233 @@
+{
+ "grid": [
+  {
+   "family": "erdos",
+   "params": {
+    "n": 30,
+    "p": 0.2
+   }
+  },
+  {
+   "family": "erdos",
+   "params": {
+    "n": 36,
+    "p": 0.17
+   }
+  },
+  {
+   "family": "erdos",
+   "params": {
+    "n": 32,
+    "p": 0.2
+   }
+  },
+  {
+   "family": "erdos",
+   "params": {
+    "n": 40,
+    "p": 0.15
+   }
+  }
+ ],
+ "note": "DEV material only; DRAFT rule; not adopted; candidate-blind",
+ "rule": {
+  "ceiling_rate_max": 0.25,
+  "ceiling_rate_min": 0.0,
+  "ceiling_rate_target": 0.0,
+  "certified_fraction_min": 0.9,
+  "mean_gap_edges_min": 1.0,
+  "mean_headroom_min": 0.02,
+  "measurement": {
+   "baselines": "dsl-time-matched-v1",
+   "isolation": "runc",
+   "profile": {
+    "cpu_seconds": 4,
+    "memory_mib": 2048,
+    "queries": 1000,
+    "wall_seconds": 20
+   },
+   "reference": "generated_bnb_c4.certify_with_tree with the B20_R46 registry and B20_R47 limits, seeded with the better of the evaluator seed and the best baseline witness; certified iff the exact tree check accepts with lower == upper",
+   "reference_seconds": 60,
+   "search_cpu_seconds": 2.0
+  },
+  "name": "e1-hard-v2-c4tree-draft",
+  "note": "DRAFT (B20_R50): e1-hard-v2 with the tree route as reference; not adopted by any study",
+  "order": "closest ceiling_rate to 0.0 (hardest for the fixed baselines), then lower median reference_seconds, then setting order",
+  "reference_seconds_median_max": 15.0,
+  "select_at_most": 4
+ },
+ "schema": "genesis-b20r50-calibration-draft-v1",
+ "seed": 20265001,
+ "selected": [
+  {
+   "family": "erdos",
+   "index": 3,
+   "params": {
+    "n": 40,
+    "p": 0.15
+   }
+  },
+  {
+   "family": "erdos",
+   "index": 0,
+   "params": {
+    "n": 30,
+    "p": 0.2
+   }
+  }
+ ],
+ "settings": [
+  {
+   "best_dsl_at_optimum": 0,
+   "family": "erdos",
+   "generator": {
+    "draws": 8,
+    "skipped_unsupported_identity": 0
+   },
+   "index": 0,
+   "ineligible_because": [],
+   "mip_at_optimum": {
+    "mip_4x": 8,
+    "mip_tm": 7
+   },
+   "params": {
+    "n": 30,
+    "p": 0.2
+   },
+   "summary": {
+    "ceiling_rate": 0.0,
+    "certified": 8,
+    "certified_fraction": 1.0,
+    "mean_edges": 89.5,
+    "mean_gap_edges": 2.5,
+    "mean_headroom": 0.0396,
+    "reference_seconds_median": 6.037,
+    "tasks": 8
+   }
+  },
+  {
+   "best_dsl_at_optimum": 0,
+   "family": "erdos",
+   "generator": {
+    "draws": 8,
+    "skipped_unsupported_identity": 0
+   },
+   "index": 1,
+   "ineligible_because": [
+    "too few certified optima"
+   ],
+   "mip_at_optimum": {
+    "mip_4x": 7,
+    "mip_tm": 6
+   },
+   "params": {
+    "n": 36,
+    "p": 0.17
+   },
+   "summary": {
+    "ceiling_rate": 0.0,
+    "certified": 7,
+    "certified_fraction": 0.875,
+    "mean_edges": 106.25,
+    "mean_gap_edges": 2.2857,
+    "mean_headroom": 0.0298,
+    "reference_seconds_median": 5.655,
+    "tasks": 8
+   }
+  },
+  {
+   "best_dsl_at_optimum": 0,
+   "family": "erdos",
+   "generator": {
+    "draws": 8,
+    "skipped_unsupported_identity": 0
+   },
+   "index": 2,
+   "ineligible_because": [
+    "too few certified optima",
+    "evaluator too slow"
+   ],
+   "mip_at_optimum": {
+    "mip_4x": 4,
+    "mip_tm": 3
+   },
+   "params": {
+    "n": 32,
+    "p": 0.2
+   },
+   "summary": {
+    "ceiling_rate": 0.0,
+    "certified": 4,
+    "certified_fraction": 0.5,
+    "mean_edges": 102.62,
+    "mean_gap_edges": 3.25,
+    "mean_headroom": 0.0471,
+    "reference_seconds_median": 37.793,
+    "tasks": 8
+   }
+  },
+  {
+   "best_dsl_at_optimum": 0,
+   "family": "erdos",
+   "generator": {
+    "draws": 8,
+    "skipped_unsupported_identity": 0
+   },
+   "index": 3,
+   "ineligible_because": [],
+   "mip_at_optimum": {
+    "mip_4x": 8,
+    "mip_tm": 6
+   },
+   "params": {
+    "n": 40,
+    "p": 0.15
+   },
+   "summary": {
+    "ceiling_rate": 0.0,
+    "certified": 8,
+    "certified_fraction": 1.0,
+    "mean_edges": 116.75,
+    "mean_gap_edges": 2.25,
+    "mean_headroom": 0.0258,
+    "reference_seconds_median": 4.761,
+    "tasks": 8
+   }
+  }
+ ],
+ "task_sha256s": [
+  "6de8d005938c7e4e3534458385aab8df68f738072d9d306c5f546574eef413bb",
+  "861d7254ba4cc669b14715544117a6d659f4e8a1b3108e6113688cca287e7b8d",
+  "b2275bb5748cbcd3e87533ff4995bf910bedfb9322f8028d212e4920df96f548",
+  "f413638ea10b4d6b3fd1edd44cf97e603ec0ebc21364ac61d7ac45a1714f6236",
+  "fdf72d47e6947ee4b433a364d6ac0ad860b90e7020976f3eb3066271ad8b8b3b",
+  "a579378e9dc4a98b966070848d2c3dcb9e65f19e09fe6839f1d6564b1c118072",
+  "8e381cd1de26363d1f3b352750d47d0c34579cf9348bafca3de0766727ad3116",
+  "da8816fe805abf9b467cda3c4d8e4df0fddfe21b2ebce3f6becb3d53acbeb31b",
+  "10dc9f444f22eb86bf4c08fd1beb2519cd1b433387aca072aa9d47f0ddecb89c",
+  "56d794ea45111fefae3d67685ea147ddb6cf768f384bd7eaa9e332bbaa9fc58e",
+  "16309b1c55455c80f9d1f31ddd548d94d13008382bdd2d9a5151bf915adebdcd",
+  "338d683acecae6a36be928285a5fe2607e0da8b880c6cdbcc18d3e9e78a66c87",
+  "129c2a1c06fafaa3d71cf9c664322f64e10ab564f6ffb0dbf7fa136550968d77",
+  "69c1fe634ac27041c4b7ac6f91516d83affcb8281e5d99d5fc5c6de356d6ddb5",
+  "a40a45855758f790d82731e9f3f43a9a41cd842ecef127283cba9d8e7cc60ad7",
+  "027876a8f0eec791f9077db1e00dc085e8ad9cad9e980a6c6218ebd706dfe22e",
+  "ed2fa97bac4c87a27a1810d3c4612c0c45cb093df5507aac2c149d762a9f0513",
+  "1a478cbf3c5a118e53fbfd41f47a707a6a6d0a83f7961f2e5d5101d62b36f7cb",
+  "9b1501c43f51a5a59d8345a15c3e8b453f167bb3847a30079af4569d2a7439eb",
+  "2f2a026f5fe6c9c79ec4bbb9d7cedede22925454e3c07963c185296f0ee441b9",
+  "85e921dee7e7f4b920ab57adec4125e67718a1f4c6ba906ddcbccfb2fbf57b0c",
+  "dab1ee0ccc8e91774ede97e2a106f7bd9c2becb31f67da3a06dd3254e48aa8a9",
+  "d607151a4fee6ede33365f7ef306a0c93295761c1d2211eb4163e54d2bf03902",
+  "0e67d12ebeb0d911075ff72ec2663419e6d1cf9ef7513c8db82a1d04b0faa24b",
+  "06a1d16bf88cff35b7780584677c685d28b03a7489450bf42d1b3ea9c434f79b",
+  "387d9033977ba5400e2edc52e9012b548c523e3335a5bd112f5353c51c95c1b7",
+  "0667f6eb34c71ed7c463eff770182eae25d19b9d0d5c6319da3b10eb662baea5",
+  "7b536242f2c09237710155b3cea8e6cd29f811e48fb5d5225b81c7e05c896f77",
+  "2e816803f160fb4ba2e2563b05460f84beffd11b5774fee71fa75e66b98d2c44",
+  "2b9c83b3c3f5dcfbca252be12ca6380d4f2b7830a83ea950492aff51244f55ea",
+  "8750375307f5101158646cec099031ef72d917657611a184ab022380d4a6f938",
+  "c90699377fa6a58c91d8c40346da88bcc38ab4e58bae40c43c1ac24c3d3e5a36"
+ ],
+ "tasks_per_setting": 8
+}

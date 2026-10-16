@@ -655,6 +655,12 @@
           "85f08bf"
         ],
         "result": "registered ablation of the transferred rows in the tree route (empty registry: 4-cycle rows only), 40 fresh C4 hosts at 60 s: with the rows 36, without 24, 12/0 discordant, McNemar p 0.00024, nodes 13,294 vs 186,574, wall saving +19.6 s [14.2, 25.3]: ROWS_RESPONSIBLE. Completes the preregistered DEV chain B20_R46 -> R49 (near-domain transfer, roadmap E5)"
+      },
+      "B20_R50": {
+        "commits": [
+          "1c19b07"
+        ],
+        "result": "E1b's C4 arm under DRAFT rule e1-hard-v2-c4tree-draft (e1-hard-v2 with the B20_R48 tree route as reference): calibration (candidate-blind, 4 settings x 8) selects erdos n40 p0.15 and n30 p0.2 (8/8 certified, medians 4.8 and 6.0 s), the first eligible C4 settings; 30-host re-pilot, all certified: readiness +1.17 vs low_cycle_tm, ablation +1.43, placebo +2.73, all READY_FOR_REVIEW; descriptive: exact C4 MIP at 2 s optimal 30/30, E1b -0.93"
       }
     },
     "open_after_b20_r5": [
@@ -1014,6 +1020,10 @@
     ],
     "open_after_b20_r49": [
       "B20R46-OPEN-1 and B20R48-OPEN-1 updated: utility attributable to the transferred rows; GV6 needs a structurally different formal domain"
+    ],
+    "open_after_b20_r50": [
+      "B20R50-OPEN-1 (new): adopt the DRAFT C4 rule for E1b (depends on B20R48-OPEN-1 and B20R33-OPEN-1)",
+      "B20_R23's C4 causal pilot settled on DEV (READY_FOR_REVIEW both contrasts)"
     ]
   }
 }

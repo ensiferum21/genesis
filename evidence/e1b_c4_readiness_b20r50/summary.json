@@ -1,0 +1,615 @@
+{
+ "checker_identity": "genesis.verification.lp_dual_tree_c4@58ef641ed428eec04a54cfad752e0422aa92840bff713f8b36f18420c0851a08",
+ "code_identity": "f755bcf2d5e9610adb7f28882e1f6a69059644db849c8711743bad7ff09a579f",
+ "descriptors": {
+  "ablation": "c8698c885e81d01136b76918c0e7dee267ce3c75ce0290263e44320bf11f064a",
+  "candidate": "64a9890b264df3e89ad4183a6a13b41c1d3fe8f18022e0308007ce74ad339fb0",
+  "exchange_tm": "f4714fd0e1ec23c7d8cf8c644f64ad1f838e8729311a8b983ff0f6f14aa48ed5",
+  "low_cycle_tm": "9d35d180fde8b61e917ba4db3cf8c10b20a22529ea96a6fc80cfd54bc51a6cc7",
+  "multistart_tm": "e3d828ca53fe62e9e8d22953fd1c0bd0a504e1dd79ac759815a4b3155461ddf4",
+  "placebo": "361895ff9b0c9cd293d6fc61ec30c93eee46d0cb06447000cd59c53bfeba810d"
+ },
+ "exposure_scan": {
+  "calibration_hosts": 456,
+  "distinct_hosts": 2836,
+  "e1_named_hosts": 711,
+  "empty_files_skipped": [
+   "evidence/failed-wal-final-replay.json",
+   "evidence/final-replay.json"
+  ],
+  "excluded_identities": 2836,
+  "files_scanned": 1020,
+  "host_records": 10711
+ },
+ "pilot": {
+  "contrasts": {
+   "ablation": {
+    "approximation_agreement": 1.0,
+    "certified_by_stratum": {
+     "erdos:0cee043c": [
+      15,
+      15
+     ],
+     "erdos:362e94b0": [
+      15,
+      15
+     ]
+    },
+    "comparator": "ablation",
+    "comparator_set": [
+     "ablation"
+    ],
+    "cpu_ratio_candidate_to_comparator": 1.0401,
+    "draft_plan_dry_run": {
+     "checks": {
+      "cost_within_bound": true,
+      "estimate_reaches_minimum_useful_effect": true,
+      "holm_rejects_no_superiority": true,
+      "interval_lower_above_zero": true,
+      "no_stratum_regression": true
+     },
+     "cost_ratio": 1.0400747053,
+     "decision": "SUPPORTED",
+     "estimate": 1.4333333333,
+     "interval": [
+      1.2,
+      1.6333333333
+     ],
+     "p_value": 4.99975e-05
+    },
+    "failures": {
+     "ablation": 0,
+     "candidate": 0,
+     "exchange_tm": 0,
+     "low_cycle_tm": 0,
+     "mip_4x": 0,
+     "mip_tm": 0,
+     "multistart_tm": 0,
+     "placebo": 0
+    },
+    "hosts": 30,
+    "mean_difference": 1.4333,
+    "power_centred": {
+     "chosen": {
+      "power": 0.991,
+      "tasks_per_stratum": 10,
+      "total_tasks": 20
+     },
+     "false_positive_rate_at_zero_effect": 0.0,
+     "pilot_strata": {
+      "erdos:0cee043c": {
+       "mean_difference": 0.8667,
+       "sd": 0.7432,
+       "share_with_headroom": 0.7333,
+       "tasks": 15
+      },
+      "erdos:362e94b0": {
+       "mean_difference": 2.0,
+       "sd": 0.7559,
+       "share_with_headroom": 1.0,
+       "tasks": 15
+      }
+     },
+     "power_at_minimum_useful_effect": 0.52,
+     "status": "CHOSEN",
+     "table": [
+      {
+       "power": 0.991,
+       "tasks_per_stratum": 10,
+       "total_tasks": 20
+      },
+      {
+       "power": 0.995,
+       "tasks_per_stratum": 12,
+       "total_tasks": 24
+      },
+      {
+       "power": 0.999,
+       "tasks_per_stratum": 15,
+       "total_tasks": 30
+      },
+      {
+       "power": 1.0,
+       "tasks_per_stratum": 20,
+       "total_tasks": 40
+      },
+      {
+       "power": 1.0,
+       "tasks_per_stratum": 25,
+       "total_tasks": 50
+      },
+      {
+       "power": 1.0,
+       "tasks_per_stratum": 30,
+       "total_tasks": 60
+      },
+      {
+       "power": 1.0,
+       "tasks_per_stratum": 40,
+       "total_tasks": 80
+      },
+      {
+       "power": 1.0,
+       "tasks_per_stratum": 50,
+       "total_tasks": 100
+      },
+      {
+       "power": 1.0,
+       "tasks_per_stratum": 60,
+       "total_tasks": 120
+      },
+      {
+       "power": 1.0,
+       "tasks_per_stratum": 80,
+       "total_tasks": 160
+      },
+      {
+       "power": 1.0,
+       "tasks_per_stratum": 100,
+       "total_tasks": 200
+      },
+      {
+       "power": 1.0,
+       "tasks_per_stratum": 150,
+       "total_tasks": 300
+      },
+      {
+       "power": 1.0,
+       "tasks_per_stratum": 200,
+       "total_tasks": 400
+      }
+     ]
+    },
+    "scored": 30,
+    "stratum_mean_differences": {
+     "erdos:0cee043c": 0.8667,
+     "erdos:362e94b0": 2.0
+    },
+    "totals": {
+     "ablation": 2167,
+     "candidate": 2210,
+     "exchange_tm": 2050,
+     "low_cycle_tm": 2175,
+     "mip_4x": 2238,
+     "mip_tm": 2238,
+     "multistart_tm": 2096,
+     "placebo": 2128
+    },
+    "verdict": "READY_FOR_REVIEW",
+    "wins_ties_losses": [
+     24,
+     6,
+     0
+    ]
+   },
+   "placebo": {
+    "approximation_agreement": 0.85,
+    "certified_by_stratum": {
+     "erdos:0cee043c": [
+      15,
+      15
+     ],
+     "erdos:362e94b0": [
+      15,
+      15
+     ]
+    },
+    "comparator": "placebo",
+    "comparator_set": [
+     "placebo"
+    ],
+    "cpu_ratio_candidate_to_comparator": 1.0023,
+    "draft_plan_dry_run": {
+     "checks": {
+      "cost_within_bound": true,
+      "estimate_reaches_minimum_useful_effect": true,
+      "holm_rejects_no_superiority": true,
+      "interval_lower_above_zero": true,
+      "no_stratum_regression": true
+     },
+     "cost_ratio": 1.0023111093,
+     "decision": "SUPPORTED",
+     "estimate": 2.7333333333,
+     "interval": [
+      2.3,
+      3.1666666667
+     ],
+     "p_value": 4.99975e-05
+    },
+    "failures": {
+     "ablation": 0,
+     "candidate": 0,
+     "exchange_tm": 0,
+     "low_cycle_tm": 0,
+     "mip_4x": 0,
+     "mip_tm": 0,
+     "multistart_tm": 0,
+     "placebo": 0
+    },
+    "hosts": 30,
+    "mean_difference": 2.7333,
+    "power_centred": {
+     "chosen": {
+      "power": 0.8,
+      "tasks_per_stratum": 10,
+      "total_tasks": 20
+     },
+     "false_positive_rate_at_zero_effect": 0.009,
+     "pilot_strata": {
+      "erdos:0cee043c": {
+       "mean_difference": 1.8667,
+       "sd": 1.7265,
+       "share_with_headroom": 1.0,
+       "tasks": 15
+      },
+      "erdos:362e94b0": {
+       "mean_difference": 3.6,
+       "sd": 1.2421,
+       "share_with_headroom": 1.0,
+       "tasks": 15
+      }
+     },
+     "power_at_minimum_useful_effect": 0.18,
+     "status": "CHOSEN",
+     "table": [
+      {
+       "power": 0.8,
+       "tasks_per_stratum": 10,
+       "total_tasks": 20
+      },
+      {
+       "power": 0.877,
+       "tasks_per_stratum": 12,
+       "total_tasks": 24
+      },
+      {
+       "power": 0.941,
+       "tasks_per_stratum": 15,
+       "total_tasks": 30
+      },
+      {
+       "power": 0.987,
+       "tasks_per_stratum": 20,
+       "total_tasks": 40
+      },
+      {
+       "power": 0.993,
+       "tasks_per_stratum": 25,
+       "total_tasks": 50
+      },
+      {
+       "power": 0.998,
+       "tasks_per_stratum": 30,
+       "total_tasks": 60
+      },
+      {
+       "power": 1.0,
+       "tasks_per_stratum": 40,
+       "total_tasks": 80
+      },
+      {
+       "power": 1.0,
+       "tasks_per_stratum": 50,
+       "total_tasks": 100
+      },
+      {
+       "power": 0.999,
+       "tasks_per_stratum": 60,
+       "total_tasks": 120
+      },
+      {
+       "power": 1.0,
+       "tasks_per_stratum": 80,
+       "total_tasks": 160
+      },
+      {
+       "power": 1.0,
+       "tasks_per_stratum": 100,
+       "total_tasks": 200
+      },
+      {
+       "power": 1.0,
+       "tasks_per_stratum": 150,
+       "total_tasks": 300
+      },
+      {
+       "power": 1.0,
+       "tasks_per_stratum": 200,
+       "total_tasks": 400
+      }
+     ]
+    },
+    "scored": 30,
+    "stratum_mean_differences": {
+     "erdos:0cee043c": 1.8667,
+     "erdos:362e94b0": 3.6
+    },
+    "totals": {
+     "ablation": 2167,
+     "candidate": 2210,
+     "exchange_tm": 2050,
+     "low_cycle_tm": 2175,
+     "mip_4x": 2238,
+     "mip_tm": 2238,
+     "multistart_tm": 2096,
+     "placebo": 2128
+    },
+    "verdict": "READY_FOR_REVIEW",
+    "wins_ties_losses": [
+     25,
+     5,
+     0
+    ]
+   },
+   "readiness": {
+    "approximation_agreement": 0.95,
+    "certified_by_stratum": {
+     "erdos:0cee043c": [
+      15,
+      15
+     ],
+     "erdos:362e94b0": [
+      15,
+      15
+     ]
+    },
+    "comparator": "low_cycle_tm",
+    "comparator_set": [
+     "exchange_tm",
+     "low_cycle_tm",
+     "multistart_tm"
+    ],
+    "cpu_ratio_candidate_to_comparator": 0.9382,
+    "draft_plan_dry_run": {
+     "checks": {
+      "cost_within_bound": true,
+      "estimate_reaches_minimum_useful_effect": true,
+      "holm_rejects_no_superiority": true,
+      "interval_lower_above_zero": true,
+      "no_stratum_regression": true
+     },
+     "cost_ratio": 0.9382115435,
+     "decision": "SUPPORTED",
+     "estimate": 1.1666666667,
+     "interval": [
+      0.8333333333,
+      1.5
+     ],
+     "p_value": 4.99975e-05
+    },
+    "failures": {
+     "ablation": 0,
+     "candidate": 0,
+     "exchange_tm": 0,
+     "low_cycle_tm": 0,
+     "mip_4x": 0,
+     "mip_tm": 0,
+     "multistart_tm": 0,
+     "placebo": 0
+    },
+    "hosts": 30,
+    "mean_difference": 1.1667,
+    "power_centred": {
+     "chosen": {
+      "power": 0.841,
+      "tasks_per_stratum": 10,
+      "total_tasks": 20
+     },
+     "false_positive_rate_at_zero_effect": 0.012,
+     "pilot_strata": {
+      "erdos:0cee043c": {
+       "mean_difference": 0.8,
+       "sd": 1.2071,
+       "share_with_headroom": 0.7333,
+       "tasks": 15
+      },
+      "erdos:362e94b0": {
+       "mean_difference": 1.5333,
+       "sd": 1.1872,
+       "share_with_headroom": 1.0,
+       "tasks": 15
+      }
+     },
+     "power_at_minimum_useful_effect": 0.321,
+     "status": "CHOSEN",
+     "table": [
+      {
+       "power": 0.841,
+       "tasks_per_stratum": 10,
+       "total_tasks": 20
+      },
+      {
+       "power": 0.92,
+       "tasks_per_stratum": 12,
+       "total_tasks": 24
+      },
+      {
+       "power": 0.962,
+       "tasks_per_stratum": 15,
+       "total_tasks": 30
+      },
+      {
+       "power": 0.989,
+       "tasks_per_stratum": 20,
+       "total_tasks": 40
+      },
+      {
+       "power": 0.994,
+       "tasks_per_stratum": 25,
+       "total_tasks": 50
+      },
+      {
+       "power": 0.997,
+       "tasks_per_stratum": 30,
+       "total_tasks": 60
+      },
+      {
+       "power": 0.999,
+       "tasks_per_stratum": 40,
+       "total_tasks": 80
+      },
+      {
+       "power": 0.999,
+       "tasks_per_stratum": 50,
+       "total_tasks": 100
+      },
+      {
+       "power": 1.0,
+       "tasks_per_stratum": 60,
+       "total_tasks": 120
+      },
+      {
+       "power": 1.0,
+       "tasks_per_stratum": 80,
+       "total_tasks": 160
+      },
+      {
+       "power": 1.0,
+       "tasks_per_stratum": 100,
+       "total_tasks": 200
+      },
+      {
+       "power": 1.0,
+       "tasks_per_stratum": 150,
+       "total_tasks": 300
+      },
+      {
+       "power": 1.0,
+       "tasks_per_stratum": 200,
+       "total_tasks": 400
+      }
+     ]
+    },
+    "scored": 30,
+    "stratum_mean_differences": {
+     "erdos:0cee043c": 0.8,
+     "erdos:362e94b0": 1.5333
+    },
+    "totals": {
+     "ablation": 2167,
+     "candidate": 2210,
+     "exchange_tm": 2050,
+     "low_cycle_tm": 2175,
+     "mip_4x": 2238,
+     "mip_tm": 2238,
+     "multistart_tm": 2096,
+     "placebo": 2128
+    },
+    "verdict": "READY_FOR_REVIEW",
+    "wins_ties_losses": [
+     22,
+     6,
+     2
+    ]
+   }
+  },
+  "descriptive": {
+   "candidate_minus": {
+    "ablation": {
+     "mean": 1.4333,
+     "wins_ties_losses": [
+      24,
+      6,
+      0
+     ]
+    },
+    "exchange_tm": {
+     "mean": 5.3333,
+     "wins_ties_losses": [
+      30,
+      0,
+      0
+     ]
+    },
+    "low_cycle_tm": {
+     "mean": 1.1667,
+     "wins_ties_losses": [
+      22,
+      6,
+      2
+     ]
+    },
+    "mip_4x": {
+     "mean": -0.9333,
+     "wins_ties_losses": [
+      0,
+      11,
+      19
+     ]
+    },
+    "mip_tm": {
+     "mean": -0.9333,
+     "wins_ties_losses": [
+      0,
+      11,
+      19
+     ]
+    },
+    "multistart_tm": {
+     "mean": 3.8,
+     "wins_ties_losses": [
+      29,
+      1,
+      0
+     ]
+    },
+    "placebo": {
+     "mean": 2.7333,
+     "wins_ties_losses": [
+      25,
+      5,
+      0
+     ]
+    }
+   },
+   "mean_gap_to_optimum": {
+    "ablation": 2.3667,
+    "candidate": 0.9333,
+    "exchange_tm": 6.2667,
+    "low_cycle_tm": 2.1,
+    "mip_4x": 0.0,
+    "mip_tm": 0.0,
+    "multistart_tm": 4.7333,
+    "placebo": 3.6667
+   },
+   "optimum_hits": {
+    "ablation": 1,
+    "candidate": 11,
+    "exchange_tm": 0,
+    "low_cycle_tm": 3,
+    "mip_4x": 30,
+    "mip_tm": 30,
+    "multistart_tm": 1,
+    "placebo": 1
+   },
+   "scored": 30
+  }
+ },
+ "registry_package_sha256": "7a081e4a957503da29d728f94d67793eea1404a2aacda8199d4c90cf8cbf0865",
+ "rule": "e1-hard-v2-c4tree-draft",
+ "schema": "genesis-b20r50-e1b-c4-readiness-v1",
+ "selected": [
+  {
+   "family": "erdos",
+   "index": 3,
+   "params": {
+    "n": 40,
+    "p": 0.15
+   }
+  },
+  {
+   "family": "erdos",
+   "index": 0,
+   "params": {
+    "n": 30,
+    "p": 0.2
+   }
+  }
+ ],
+ "status": "DEV readiness; DRAFT rule; licenses nothing",
+ "verdicts": {
+  "ablation": "READY_FOR_REVIEW",
+  "placebo": "READY_FOR_REVIEW",
+  "readiness": "READY_FOR_REVIEW"
+ }
+}

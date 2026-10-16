@@ -645,16 +645,17 @@ WORKSTREAMS = {
             'subgraphs with a registered adaptation, 37/37 obligations Lean-CHECKED; B20_R47: no certification '
             'coverage gain from the rows alone (22 vs 22); B20_R48: with certified branch and bound, CERTIFICATION_UTILITY '
             'on fresh C4 hosts, 38 vs 26 of 40; B20_R49: a registered ablation attributes it to the transferred rows '
-            '(36 vs 24 of 40, p 0.00024); near-domain evidence only; '
+            '(36 vs 24 of 40, p 0.00024); B20_R50: the rows make E1b\'s C4 arm scorable (two calibrated C4 settings, '
+            'READY_FOR_REVIEW, MIP-dominated); near-domain evidence only; '
             'independent reproduction not started)', H,
             ['src/genesis/invention/cuts_c4.py', 'scripts/b20r46_c4_generator.py',
              'src/genesis/verification/lp_dual_rows_c4.py', 'src/genesis/discovery/generated_certify_c4.py',
              'scripts/b20r47_c4_certification.py', 'src/genesis/verification/lp_dual_tree_c4.py',
              'src/genesis/discovery/generated_bnb_c4.py', 'scripts/b20r48_c4_tree_certification.py',
-             'scripts/b20r49_c4_rows_ablation.py'],
+             'scripts/b20r49_c4_rows_ablation.py', 'scripts/b20r50_e1b_c4_readiness.py'],
             [G + 'test_cuts_c4.py', 'tests_formal/test_c4_generator.py', G + 'test_lp_dual_rows_c4.py',
              G + 'test_c4_certification.py', G + 'test_lp_dual_tree_c4.py', G + 'test_c4_tree_certification.py',
-             G + 'test_c4_rows_ablation.py']),
+             G + 'test_c4_rows_ablation.py', G + 'test_e1b_c4_readiness.py']),
     'W25': ('Trainable model extension', N, [], []),
     'W26': ('Software research extension', N, [], []),
     'W27': ('Numerical, empirical and instrument extension', N, [], []),

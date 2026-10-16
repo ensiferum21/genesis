@@ -1,0 +1,75 @@
+[    0.0s] pinned to CPU 0
+[    0.0s] SAT tools: cadical@24fb99286ca1ea9a, drat-trim@92f0aa9575ed519d
+[    0.0s] arms ['ablation', 'candidate', 'exchange_tm', 'low_cycle_tm', 'multistart_tm', 'placebo']; registry 34 patterns from 7a081e4a957503da
+[    6.0s] exposure: 2836 identities (2836 named hosts, 711 E1 hosts, 456 calibration hosts)
+[   17.5s] A0 0000: {"exchange_tm": 57, "low_cycle_tm": 60, "multistart_tm": 58} mip 62/62 opt 62 [62..62] LP_DUAL_GENERATED_C4_EXACT 3.1s
+[   45.4s] A0 0001: {"exchange_tm": 57, "low_cycle_tm": 59, "multistart_tm": 58} mip 61/62 opt 62 [62..62] LP_DUAL_TREE_C4_EXACT 15.3s
+[   83.0s] A0 0002: {"exchange_tm": 56, "low_cycle_tm": 60, "multistart_tm": 57} mip 63/63 opt 63 [63..63] LP_DUAL_TREE_C4_EXACT 21.5s
+[  101.6s] A0 0003: {"exchange_tm": 62, "low_cycle_tm": 63, "multistart_tm": 62} mip 65/65 opt 65 [65..65] LP_DUAL_TREE_C4_EXACT 6.9s
+[  114.3s] A0 0004: {"exchange_tm": 59, "low_cycle_tm": 61, "multistart_tm": 59} mip 62/62 opt 62 [62..62] LP_DUAL_TREE_C4_EXACT 3.5s
+[  140.4s] A0 0005: {"exchange_tm": 59, "low_cycle_tm": 61, "multistart_tm": 60} mip 64/64 opt 64 [64..64] LP_DUAL_TREE_C4_EXACT 11.5s
+[  155.7s] A0 0006: {"exchange_tm": 57, "low_cycle_tm": 59, "multistart_tm": 59} mip 62/62 opt 62 [62..62] LP_DUAL_TREE_C4_EXACT 5.2s
+[  168.8s] A0 0007: {"exchange_tm": 61, "low_cycle_tm": 62, "multistart_tm": 61} mip 65/65 opt 65 [65..65] LP_DUAL_TREE_C4_EXACT 3.3s
+[  181.0s] A1 0000: {"exchange_tm": 68, "low_cycle_tm": 73, "multistart_tm": 71} mip 75/75 opt 75 [75..75] LP_DUAL_GENERATED_C4_EXACT 3.2s
+[  213.9s] A1 0001: {"exchange_tm": 73, "low_cycle_tm": 80, "multistart_tm": 76} mip 81/81 opt 81 [81..81] LP_DUAL_TREE_C4_EXACT 18.7s
+[  234.4s] A1 0002: {"exchange_tm": 69, "low_cycle_tm": 73, "multistart_tm": 70} mip 75/75 opt 75 [75..75] LP_DUAL_TREE_C4_EXACT 6.4s
+[  247.1s] A1 0003: {"exchange_tm": 70, "low_cycle_tm": 71, "multistart_tm": 70} mip 74/74 opt 74 [74..74] LP_DUAL_TREE_C4_EXACT 3.1s
+[  327.0s] A1 0004: {"exchange_tm": 74, "low_cycle_tm": 78, "multistart_tm": 74} mip 81/82 opt None [81..85] LP_DUAL_GENERATED_C4_EXACT 61.5s
+[  343.2s] A1 0005: {"exchange_tm": 72, "low_cycle_tm": 77, "multistart_tm": 74} mip 80/80 opt 80 [80..80] LP_DUAL_TREE_C4_EXACT 5.0s
+[  364.6s] A1 0006: {"exchange_tm": 73, "low_cycle_tm": 76, "multistart_tm": 73} mip 77/78 opt 78 [78..78] LP_DUAL_TREE_C4_EXACT 6.7s
+[  383.5s] A1 0007: {"exchange_tm": 69, "low_cycle_tm": 73, "multistart_tm": 70} mip 76/76 opt 76 [76..76] LP_DUAL_TREE_C4_EXACT 4.4s
+[  467.3s] A2 0000: {"exchange_tm": 63, "low_cycle_tm": 67, "multistart_tm": 67} mip 69/71 opt None [71..75] LP_DUAL_GENERATED_C4_EXACT 61.3s
+[  479.0s] A2 0001: {"exchange_tm": 59, "low_cycle_tm": 62, "multistart_tm": 61} mip 65/65 opt 65 [65..65] LP_DUAL_GENERATED_C4_EXACT 2.9s
+[  558.4s] A2 0002: {"exchange_tm": 63, "low_cycle_tm": 66, "multistart_tm": 64} mip 71/72 opt None [70..76] LP_DUAL_GENERATED_C4_EXACT 61.3s
+[  570.9s] A2 0003: {"exchange_tm": 64, "low_cycle_tm": 68, "multistart_tm": 66} mip 71/71 opt 71 [71..71] LP_DUAL_TREE_C4_EXACT 2.8s
+[  650.4s] A2 0004: {"exchange_tm": 64, "low_cycle_tm": 68, "multistart_tm": 65} mip 70/72 opt None [71..76] LP_DUAL_GENERATED_C4_EXACT 61.3s
+[  729.7s] A2 0005: {"exchange_tm": 64, "low_cycle_tm": 68, "multistart_tm": 65} mip 70/71 opt None [70..73] LP_DUAL_GENERATED_C4_EXACT 61.3s
+[  745.2s] A2 0006: {"exchange_tm": 65, "low_cycle_tm": 67, "multistart_tm": 65} mip 70/70 opt 70 [70..70] LP_DUAL_TREE_C4_EXACT 4.3s
+[  776.2s] A2 0007: {"exchange_tm": 62, "low_cycle_tm": 66, "multistart_tm": 64} mip 69/70 opt 70 [70..70] LP_DUAL_TREE_C4_EXACT 14.3s
+[  799.1s] A3 0000: {"exchange_tm": 84, "low_cycle_tm": 91, "multistart_tm": 84} mip 93/93 opt 93 [93..93] LP_DUAL_TREE_C4_EXACT 7.0s
+[  813.3s] A3 0001: {"exchange_tm": 76, "low_cycle_tm": 77, "multistart_tm": 76} mip 80/80 opt 80 [80..80] LP_DUAL_GENERATED_C4_EXACT 3.6s
+[  827.4s] A3 0002: {"exchange_tm": 78, "low_cycle_tm": 83, "multistart_tm": 79} mip 84/84 opt 84 [84..84] LP_DUAL_TREE_C4_EXACT 3.8s
+[  842.4s] A3 0003: {"exchange_tm": 79, "low_cycle_tm": 86, "multistart_tm": 81} mip 88/88 opt 88 [88..88] LP_DUAL_TREE_C4_EXACT 4.1s
+[  890.6s] A3 0004: {"exchange_tm": 79, "low_cycle_tm": 85, "multistart_tm": 82} mip 89/90 opt 90 [90..90] LP_DUAL_TREE_C4_EXACT 28.9s
+[  905.8s] A3 0005: {"exchange_tm": 78, "low_cycle_tm": 83, "multistart_tm": 79} mip 84/84 opt 84 [84..84] LP_DUAL_TREE_C4_EXACT 4.7s
+[  930.1s] A3 0006: {"exchange_tm": 81, "low_cycle_tm": 87, "multistart_tm": 82} mip 89/89 opt 89 [89..89] LP_DUAL_TREE_C4_EXACT 8.8s
+[  949.6s] A3 0007: {"exchange_tm": 77, "low_cycle_tm": 85, "multistart_tm": 79} mip 86/87 opt 87 [87..87] LP_DUAL_TREE_C4_EXACT 4.9s
+[  949.6s] A0 erdos {'n': 30, 'p': 0.2}: {"mean_gap_edges": 2.5, "tasks": 8, "certified": 8, "certified_fraction": 1.0, "ceiling_rate": 0.0, "mean_headroom": 0.0396, "reference_seconds_median": 6.037, "mean_edges": 89.5} -> []
+[  949.6s] A1 erdos {'n': 36, 'p': 0.17}: {"mean_gap_edges": 2.2857, "tasks": 8, "certified": 7, "certified_fraction": 0.875, "ceiling_rate": 0.0, "mean_headroom": 0.0298, "reference_seconds_median": 5.655, "mean_edges": 106.25} -> ['too few certified optima']
+[  949.6s] A2 erdos {'n': 32, 'p': 0.2}: {"mean_gap_edges": 3.25, "tasks": 8, "certified": 4, "certified_fraction": 0.5, "ceiling_rate": 0.0, "mean_headroom": 0.0471, "reference_seconds_median": 37.793, "mean_edges": 102.62} -> ['too few certified optima', 'evaluator too slow']
+[  949.6s] A3 erdos {'n': 40, 'p': 0.15}: {"mean_gap_edges": 2.25, "tasks": 8, "certified": 8, "certified_fraction": 1.0, "ceiling_rate": 0.0, "mean_headroom": 0.0258, "reference_seconds_median": 4.761, "mean_edges": 116.75} -> []
+[  949.6s] Part A selected [{'family': 'erdos', 'params': {'n': 40, 'p': 0.15}, 'index': 3}, {'family': 'erdos', 'params': {'n': 30, 'p': 0.2}, 'index': 0}]
+[ 1015.5s] B 0000: {"candidate": 88, "exchange_tm": 82, "low_cycle_tm": 86, "multistart_tm": 84, "ablation": 86, "placebo": 85, "mip_tm": 90, "mip_4x": 90} opt 90 [90..90] 39.7s
+[ 1041.7s] B 0001: {"candidate": 86, "exchange_tm": 77, "low_cycle_tm": 85, "multistart_tm": 80, "ablation": 84, "placebo": 82, "mip_tm": 87, "mip_4x": 87} opt 87 [87..87] 3.9s
+[ 1069.8s] B 0002: {"candidate": 84, "exchange_tm": 77, "low_cycle_tm": 85, "multistart_tm": 79, "ablation": 82, "placebo": 80, "mip_tm": 85, "mip_4x": 85} opt 85 [85..85] 4.3s
+[ 1093.5s] B 0003: {"candidate": 84, "exchange_tm": 79, "low_cycle_tm": 83, "multistart_tm": 79, "ablation": 82, "placebo": 80, "mip_tm": 84, "mip_4x": 84} opt 84 [84..84] 3.9s
+[ 1116.4s] B 0004: {"candidate": 84, "exchange_tm": 78, "low_cycle_tm": 82, "multistart_tm": 79, "ablation": 82, "placebo": 82, "mip_tm": 84, "mip_4x": 84} opt 84 [84..84] 3.8s
+[ 1140.4s] B 0005: {"candidate": 87, "exchange_tm": 82, "low_cycle_tm": 85, "multistart_tm": 82, "ablation": 85, "placebo": 85, "mip_tm": 88, "mip_4x": 88} opt 88 [88..88] 4.0s
+[ 1168.3s] B 0006: {"candidate": 91, "exchange_tm": 84, "low_cycle_tm": 90, "multistart_tm": 84, "ablation": 88, "placebo": 88, "mip_tm": 93, "mip_4x": 93} opt 93 [93..93] 4.8s
+[ 1193.6s] B 0007: {"candidate": 90, "exchange_tm": 82, "low_cycle_tm": 86, "multistart_tm": 84, "ablation": 88, "placebo": 85, "mip_tm": 91, "mip_4x": 91} opt 91 [91..91] 4.4s
+[ 1215.8s] B 0008: {"candidate": 84, "exchange_tm": 81, "low_cycle_tm": 82, "multistart_tm": 81, "ablation": 83, "placebo": 82, "mip_tm": 84, "mip_4x": 84} opt 84 [84..84] 3.7s
+[ 1238.9s] B 0009: {"candidate": 87, "exchange_tm": 83, "low_cycle_tm": 86, "multistart_tm": 83, "ablation": 85, "placebo": 85, "mip_tm": 87, "mip_4x": 87} opt 87 [87..87] 4.1s
+[ 1264.2s] B 0010: {"candidate": 83, "exchange_tm": 76, "low_cycle_tm": 81, "multistart_tm": 77, "ablation": 81, "placebo": 78, "mip_tm": 83, "mip_4x": 83} opt 83 [83..83] 4.6s
+[ 1287.3s] B 0011: {"candidate": 83, "exchange_tm": 75, "low_cycle_tm": 83, "multistart_tm": 80, "ablation": 83, "placebo": 80, "mip_tm": 85, "mip_4x": 85} opt 85 [85..85] 3.8s
+[ 1311.5s] B 0012: {"candidate": 86, "exchange_tm": 81, "low_cycle_tm": 84, "multistart_tm": 81, "ablation": 83, "placebo": 81, "mip_tm": 86, "mip_4x": 86} opt 86 [86..86] 4.1s
+[ 1336.2s] B 0013: {"candidate": 89, "exchange_tm": 83, "low_cycle_tm": 88, "multistart_tm": 84, "ablation": 87, "placebo": 84, "mip_tm": 91, "mip_4x": 91} opt 91 [91..91] 3.9s
+[ 1359.4s] B 0014: {"candidate": 83, "exchange_tm": 76, "low_cycle_tm": 80, "multistart_tm": 77, "ablation": 80, "placebo": 78, "mip_tm": 83, "mip_4x": 83} opt 83 [83..83] 4.1s
+[ 1396.7s] B 0000: {"candidate": 61, "exchange_tm": 58, "low_cycle_tm": 63, "multistart_tm": 59, "ablation": 61, "placebo": 61, "mip_tm": 64, "mip_4x": 64} opt 64 [64..64] 13.4s
+[ 1415.3s] B 0001: {"candidate": 55, "exchange_tm": 54, "low_cycle_tm": 55, "multistart_tm": 55, "ablation": 55, "placebo": 55, "mip_tm": 55, "mip_4x": 55} opt 55 [55..55] 2.6s
+[ 1436.1s] B 0002: {"candidate": 59, "exchange_tm": 54, "low_cycle_tm": 58, "multistart_tm": 55, "ablation": 58, "placebo": 56, "mip_tm": 59, "mip_4x": 59} opt 59 [59..59] 3.2s
+[ 1460.6s] B 0003: {"candidate": 63, "exchange_tm": 58, "low_cycle_tm": 62, "multistart_tm": 60, "ablation": 62, "placebo": 63, "mip_tm": 64, "mip_4x": 64} opt 64 [64..64] 4.7s
+[ 1484.7s] B 0004: {"candidate": 61, "exchange_tm": 58, "low_cycle_tm": 60, "multistart_tm": 59, "ablation": 60, "placebo": 60, "mip_tm": 62, "mip_4x": 62} opt 62 [62..62] 5.1s
+[ 1508.1s] B 0005: {"candidate": 62, "exchange_tm": 56, "low_cycle_tm": 62, "multistart_tm": 59, "ablation": 60, "placebo": 60, "mip_tm": 63, "mip_4x": 63} opt 63 [63..63] 3.3s
+[ 1533.6s] B 0006: {"candidate": 64, "exchange_tm": 59, "low_cycle_tm": 62, "multistart_tm": 61, "ablation": 63, "placebo": 61, "mip_tm": 66, "mip_4x": 66} opt 66 [66..66] 4.7s
+[ 1552.8s] B 0007: {"candidate": 59, "exchange_tm": 56, "low_cycle_tm": 58, "multistart_tm": 58, "ablation": 59, "placebo": 58, "mip_tm": 60, "mip_4x": 60} opt 60 [60..60] 2.6s
+[ 1610.0s] B 0008: {"candidate": 64, "exchange_tm": 59, "low_cycle_tm": 62, "multistart_tm": 60, "ablation": 64, "placebo": 61, "mip_tm": 66, "mip_4x": 66} opt 66 [66..66] 32.5s
+[ 1634.6s] B 0009: {"candidate": 64, "exchange_tm": 57, "low_cycle_tm": 61, "multistart_tm": 60, "ablation": 62, "placebo": 59, "mip_tm": 64, "mip_4x": 64} opt 64 [64..64] 4.2s
+[ 1657.2s] B 0010: {"candidate": 58, "exchange_tm": 52, "low_cycle_tm": 56, "multistart_tm": 56, "ablation": 57, "placebo": 56, "mip_tm": 59, "mip_4x": 59} opt 59 [59..59] 2.6s
+[ 1679.6s] B 0011: {"candidate": 63, "exchange_tm": 58, "low_cycle_tm": 63, "multistart_tm": 59, "ablation": 62, "placebo": 59, "mip_tm": 64, "mip_4x": 64} opt 64 [64..64] 2.7s
+[ 1708.0s] B 0012: {"candidate": 60, "exchange_tm": 56, "low_cycle_tm": 59, "multistart_tm": 58, "ablation": 59, "placebo": 60, "mip_tm": 61, "mip_4x": 61} opt 61 [61..61] 7.4s
+[ 1744.1s] B 0013: {"candidate": 64, "exchange_tm": 60, "low_cycle_tm": 64, "multistart_tm": 62, "ablation": 64, "placebo": 64, "mip_tm": 66, "mip_4x": 66} opt 66 [66..66] 14.2s
+[ 1764.2s] B 0014: {"candidate": 64, "exchange_tm": 59, "low_cycle_tm": 64, "multistart_tm": 61, "ablation": 62, "placebo": 60, "mip_tm": 64, "mip_4x": 64} opt 64 [64..64] 3.0s
+[ 1846.6s] Part B readiness: READY_FOR_REVIEW; comparator low_cycle_tm; mean 1.1667; cpu ratio 0.9382
+[ 1846.6s] Part B ablation: READY_FOR_REVIEW; comparator ablation; mean 1.4333; cpu ratio 1.0401
+[ 1846.6s] Part B placebo: READY_FOR_REVIEW; comparator placebo; mean 2.7333; cpu ratio 1.0023
+[ 1846.6s] verdicts {'readiness': 'READY_FOR_REVIEW', 'ablation': 'READY_FOR_REVIEW', 'placebo': 'READY_FOR_REVIEW'}
