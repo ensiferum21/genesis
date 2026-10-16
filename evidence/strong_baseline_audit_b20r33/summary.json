@@ -1,0 +1,203 @@
+{
+ "calibration": {
+  "record_sha256": "bc26782a0c5916e9e1246e5351f617a3006ffece99451c57ead5ee39b41ee633",
+  "selected": [
+   {
+    "family": "planted_cluster",
+    "index": 18,
+    "params": {
+     "n": 30,
+     "p_in": 0.6,
+     "p_out": 0.2
+    }
+   },
+   {
+    "family": "erdos",
+    "index": 7,
+    "params": {
+     "n": 26,
+     "p": 0.35
+    }
+   },
+   {
+    "family": "erdos",
+    "index": 9,
+    "params": {
+     "n": 30,
+     "p": 0.3
+    }
+   }
+  ]
+ },
+ "certified_hosts": 60,
+ "code_identity": "c42ff3080fddd9b0c1613c62bdca2c74c017e78e377bc6e3d5bf2203ae198e03",
+ "descriptors": {
+  "e1:candidate": "f4c7f4b0e5ced594f014dff8bc66703f2f545a52c1972a3d2a3cac42a8f195b1",
+  "e1:exchange_tm": "70660ab94e35f0fa3692886355ec6a62a6ef9f0d2f57e16074b68669061c4809",
+  "e1:low_cycle_tm": "ae110999483196446cefbcad9b3cd232383ff3a26ec9eff3b288a94b9a40a36e",
+  "e1:multistart_tm": "3642c93cd02d0979ea8928b65c27848512f4a44fa7e5ae0ebe56b98994e13983",
+  "e1b:candidate": "f5a3d7ffd69c014e28aacc6550a41118c25cf7bfbc13145cb9fbed7892f6f06e",
+  "e1b:exchange_tm": "0a3cd7611875c3d63fa22ce1a4d52e0590c309d381a13c338b5de71e3d312dd5",
+  "e1b:low_cycle_tm": "790da2a7f570888af408cc53ac918b614e8ab8bccf7d8d73d4162f7a3a25ca3c",
+  "e1b:multistart_tm": "6ff23ed1bcc3785bf444571226eb6d1a5dfa84a99bc11af0589ef9f2a27d82f1"
+ },
+ "exposure_scan": {
+  "calibration_hosts": 456,
+  "distinct_hosts": 1928,
+  "e1_named_hosts": 711,
+  "empty_files_skipped": [
+   "evidence/failed-wal-final-replay.json",
+   "evidence/final-replay.json"
+  ],
+  "excluded_identities": 1928,
+  "files_scanned": 896,
+  "host_records": 5338
+ },
+ "hosts": 60,
+ "schema": "genesis-b20r33-strong-baseline-audit-v1",
+ "seed": 20263301,
+ "status": "DEV audit; licenses no claim; changes no package or comparator",
+ "studies": {
+  "e1": {
+   "at_certified_optimum": {
+    "best_baseline": 6,
+    "candidate": 27,
+    "mip": 60,
+    "of": 60
+   },
+   "budget_s": 0.5,
+   "candidate_minus_best_baseline": {
+    "by_stratum": {
+     "erdos:70960071": 1.7,
+     "erdos:b73f6828": 1.2,
+     "planted_cluster:1467febf": 3.35
+    },
+    "interval_90": [
+     1.7,
+     2.45
+    ],
+    "mean": 2.0833,
+    "wins_ties_losses": [
+     46,
+     5,
+     9
+    ]
+   },
+   "failed_runs": {
+    "e1:candidate": 0,
+    "e1:exchange_tm": 0,
+    "e1:low_cycle_tm": 0,
+    "e1:multistart_tm": 0
+   },
+   "mip_cpu_s_max": 0.331,
+   "mip_minus_best_baseline": {
+    "by_stratum": {
+     "erdos:70960071": 2.25,
+     "erdos:b73f6828": 2.3,
+     "planted_cluster:1467febf": 3.95
+    },
+    "interval_90": [
+     2.5333,
+     3.1333
+    ],
+    "mean": 2.8333,
+    "wins_ties_losses": [
+     54,
+     6,
+     0
+    ]
+   },
+   "mip_minus_candidate": {
+    "by_stratum": {
+     "erdos:70960071": 0.55,
+     "erdos:b73f6828": 1.1,
+     "planted_cluster:1467febf": 0.6
+    },
+    "interval_90": [
+     0.5833,
+     0.9167
+    ],
+    "mean": 0.75,
+    "wins_ties_losses": [
+     33,
+     27,
+     0
+    ]
+   },
+   "mip_overruns": 0,
+   "mip_proved_optimal": 60,
+   "verdict": "MIP_DOMINATES"
+  },
+  "e1b": {
+   "at_certified_optimum": {
+    "best_baseline": 6,
+    "candidate": 49,
+    "mip": 60,
+    "of": 60
+   },
+   "budget_s": 2.0,
+   "candidate_minus_best_baseline": {
+    "by_stratum": {
+     "erdos:70960071": 1.7,
+     "erdos:b73f6828": 1.85,
+     "planted_cluster:1467febf": 3.25
+    },
+    "interval_90": [
+     2.0167,
+     2.5167
+    ],
+    "mean": 2.2667,
+    "wins_ties_losses": [
+     53,
+     7,
+     0
+    ]
+   },
+   "failed_runs": {
+    "e1b:candidate": 0,
+    "e1b:exchange_tm": 0,
+    "e1b:low_cycle_tm": 0,
+    "e1b:multistart_tm": 0
+   },
+   "mip_cpu_s_max": 0.355,
+   "mip_minus_best_baseline": {
+    "by_stratum": {
+     "erdos:70960071": 1.95,
+     "erdos:b73f6828": 2.1,
+     "planted_cluster:1467febf": 3.35
+    },
+    "interval_90": [
+     2.2,
+     2.7333
+    ],
+    "mean": 2.4667,
+    "wins_ties_losses": [
+     54,
+     6,
+     0
+    ]
+   },
+   "mip_minus_candidate": {
+    "by_stratum": {
+     "erdos:70960071": 0.25,
+     "erdos:b73f6828": 0.25,
+     "planted_cluster:1467febf": 0.1
+    },
+    "interval_90": [
+     0.1167,
+     0.3
+    ],
+    "mean": 0.2,
+    "wins_ties_losses": [
+     11,
+     49,
+     0
+    ]
+   },
+   "mip_overruns": 0,
+   "mip_proved_optimal": 60,
+   "verdict": "NO_MATERIAL_DIFFERENCE"
+  }
+ },
+ "study_hosts": "e1b"
+}

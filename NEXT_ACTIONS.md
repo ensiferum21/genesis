@@ -2,7 +2,7 @@
 
 ## Where things stand
 
-- **Branch:** `continuation-b20-rx` (GitHub `ensiferum21/genesis`). It is the canonical B20_R11 line (`continuation-b20-repairs`, `36954d6`), with the recovery-branch work ported onto it, plus B20_R12 and B20_R15–R32. B20_R25–R28 were built from the B20_R24 checkpoint's history bundle while GitHub was not linked; GitHub's branch is an ancestor.
+- **Branch:** `continuation-b20-rx` (GitHub `ensiferum21/genesis`). It is the canonical B20_R11 line (`continuation-b20-repairs`, `36954d6`), with the recovery-branch work ported onto it, plus B20_R12 and B20_R15–R33. B20_R25–R28 were built from the B20_R24 checkpoint's history bundle while GitHub was not linked; GitHub's branch is an ancestor.
 - **Side branch:** `side-b21-equational` (`710d26d`) keeps work done on plain B20 in parallel with this line (equational generations W21/E4, definitional primitives, fault routes). It is not canonical. Only its Lean-replay hint repair was ported (B20_R25).
 - **Checkpoints:**
 
@@ -22,7 +22,7 @@
 | B20_R29 | `ba5318a` | `67fd8796…0ba8` (release matrix 1,197 tests, all OK; restore-verified; driver rehearsal on the build host **REPRODUCED**, not a second machine) |
 
   The recovery-branch checkpoints B20_RX1 and B20_RX2 are on `recovery-b20r1-partial`; their work was ported here.
-- **Records:** `docs/checkpoints/B20_R1_RECORD.md` … `B20_R11_RECORD.md`, `B20_RX1_RECORD.md`, `B20_RX2_RECORD.md`, `B20_R12_RECORD.md` and `B20_R15_RECORD.md` … `B20_R32_RECORD.md`.
+- **Records:** `docs/checkpoints/B20_R1_RECORD.md` … `B20_R11_RECORD.md`, `B20_RX1_RECORD.md`, `B20_RX2_RECORD.md`, `B20_R12_RECORD.md` and `B20_R15_RECORD.md` … `B20_R33_RECORD.md`.
 
 ## Completed since B20_R11
 
@@ -50,6 +50,7 @@
 | B20_R30 | B20R24-OPEN-2 measured: on 90 fresh `e1b` hosts the calibration certifies 86/90 within 60 s and the evaluator 90/90 at 600 s (unsupported upper bound 3.27%). **LIMITS_CONSISTENT** on the decided family; the decision stays with the reviewer |
 | B20_R31 | s15.3 relaxation family, attempt 1: generated pattern inequalities (K5, W5) with Lean-checked validity. As a construction component **NO_UTILITY_AFTER_COST** (+0.19 per host over the plain LP greedy, below 0.5). Certification diagnostic: the LP floor meets the optimum on 82/90 hosts with the rows vs 72/90 without (10 of the 18 SAT-certified hosts) |
 | B20_R32 | Exact certification over the generated rows (new checker with a Lean-bound registry; evaluator unchanged): sound, closes 2 of the 3 SAT-needing hosts of a fresh sample, but **NO_CERTIFICATION_UTILITY** prospectively (the sample had 3 such hosts against B20_R30's 18). Post hoc: an exact MILP (HiGHS) confirms all 21 SAT-certified optima in under 0.72 s each, which raises a strong-baseline question for E1/E1b |
+| B20_R33 | Strong-baseline audit (B20R32-OPEN-2): on 60 fresh e1b hosts an exact MIP (HiGHS) proves every optimum within 0.36 CPU s. Against it E1 is **MIP_DOMINATES** (+0.75 per host) and E1b **NO_MATERIAL_DIFFERENCE** (+0.20, never above); both still beat their DSL baselines by ~2. Neither can be "beyond strong baselines" on this family (B20R33-OPEN-1) |
 
 ## Resume
 
@@ -61,14 +62,14 @@
 
 ## Decisions needed from Daniel or a reviewer
 
-1. **GV3 sign-off: E1 and E1b** (`handoff/e1/README.md` v3, `handoff/e1b/README.md` v2). Both are READY_FOR_REVIEW on the `e1-hard-v2` family, and both same-operator rehearsals are SUPPORTED. To move to a real run:
+1. **GV3 sign-off: E1 and E1b** (`handoff/e1/README.md` v3, `handoff/e1b/README.md` v2). Both are READY_FOR_REVIEW on the `e1-hard-v2` family, and both same-operator rehearsals are SUPPORTED. **First decide B20R33-OPEN-1:** on this family an exact MIP solver is always optimal within 0.36 CPU s, so E1 (dominated) and E1b (within 0.2) cannot be "beyond strong baselines"; a SUPPORTED result would be scoped to time-matched DSL baselines. Options: accept that scope; add a MIP comparator; or calibrate settings an exact solver cannot finish within budget (a DEV probe here can map them). To move to a real run:
    - a reviewer signs off the rule `e1-hard-v2`, the cost and comparator decisions, and freezes the DRAFTs;
    - a statistician signs off the centred power model (B19-OPEN-4);
    - an independent custodian runs SELECT, register and evaluate on its own machine.
 2. **B20R24-OPEN-2:** align the calibration's certification limit (at least 90% certified within 60 s) with the plan's unsupported limit (at most 5% at 600 s) before a real run. B20_R30 measured both on 90 fresh `e1b` hosts: 86/90 at 60 s, 90/90 at 600 s (unsupported upper bound 3.27%), **LIMITS_CONSISTENT** on this family (`evidence/certification_budget_b20r30/`). The choice stays the reviewer's.
 3. **GV4 study design** (`handoff/gv4/README.md`, DRAFT). The question is what counts as an invented component, and now also whether a component that helps *certification* (B20_R31's generated inequalities) counts toward a better improver. The decision is needed before the s15.3 work below can become a study. After B20_R31, no invented component has DEV construction utility yet.
 4. **CRPD-2b pin revision:** review.
-5. **B20R32-OPEN-2, strong baselines for E1/E1b (GV3):** an off-the-shelf exact MILP solves the e1b hosts it was tried on in under a second. B20_R33 measures a MIP arm at the candidate's budget; the reviewer then decides whether E1/E1b need it as a comparator, or harder families.
+5. **B20R33-OPEN-1** (see item 1).
 
 ## Next engineering, in order
 

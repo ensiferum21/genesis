@@ -60,6 +60,7 @@ session can resume from the latest checkpoint (see `RESUME.md`).
 | 20_R30 | Certification at 60 s and at 600 s | B20R24-OPEN-2 (GV3 path) | 90 fresh e1b hosts: 86/90 at 60 s, 90/90 at 600 s; LIMITS_CONSISTENT (upper bound 3.27%); decision stays with the reviewer |
 | 20_R31 | Generated valid inequalities | s15.3 / W10 (GV4) | K5 and W5 bounds Lean-CHECKED; DEV NO_UTILITY_AFTER_COST in construction (+0.19 vs the plain LP greedy); certification diagnostic 72 → 82 of 90 LP-floor certifiable (attempt 1) |
 | 20_R32 | Exact certification over generated rows | W13, s15.3 (GV4); GV3 path | Sound; NO_CERTIFICATION_UTILITY on a fresh sample (2 of its 3 SAT-needing hosts closed; McNemar p 0.25); post-hoc MILP cross-check confirms all SAT-certified optima and raises a strong-baseline question |
+| 20_R33 | Strong-baseline audit of E1/E1b | GV3 path (B20R32-OPEN-2) | Exact MIP proves every optimum ≤ 0.36 CPU s; E1 MIP_DOMINATES (+0.75), E1b NO_MATERIAL_DIFFERENCE (+0.20); both +~2 over DSL baselines |
 
 Later phases (B17–B23+) follow the roadmap and its gates; numbers are labels,
 not estimates.
