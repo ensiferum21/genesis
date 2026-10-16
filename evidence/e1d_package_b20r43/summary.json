@@ -1,0 +1,98 @@
+{
+ "calibration_record_sha256": "a4673c748ec23a8947750419ca5820dbc445db256603dea0aff3a6ae548e1154",
+ "code_identity": "b246226f2c91fc4a0f9f3c2990765535b754dd751ff1c9fb9217338d6b7c89d1",
+ "judge_agrees": true,
+ "package_index": {
+  "baselines": {
+   "exchange_tm": "70660ab94e35f0fa3692886355ec6a62a6ef9f0d2f57e16074b68669061c4809",
+   "low_cycle_tm": "ae110999483196446cefbcad9b3cd232383ff3a26ec9eff3b288a94b9a40a36e",
+   "milp_highs_4x": "1815deba84df4e578fbd7555f8cdf4d601e8c0e25d623f55ee80ef3ce319e976",
+   "milp_highs_tm": "9b737159afd479116463669257d7df4aac0c0a43525c7b26f1a75e5bf2173c39",
+   "multistart_tm": "3642c93cd02d0979ea8928b65c27848512f4a44fa7e5ae0ebe56b98994e13983"
+  },
+  "calibration": {
+   "adopted": false,
+   "record": "evidence/e1d_package_b20r43/calibration_triangle_free_host_v1_e1_hard_v3_draft.json",
+   "rule": "e1-hard-v3-draft",
+   "selected": [
+    {
+     "family": "planted_cluster",
+     "index": 1,
+     "params": {
+      "n": 38,
+      "p_in": 0.8,
+      "p_out": 0.07
+     }
+    },
+    {
+     "family": "planted_cluster",
+     "index": 2,
+     "params": {
+      "n": 40,
+      "p_in": 0.8,
+      "p_out": 0.06
+     }
+    },
+    {
+     "family": "planted_cluster",
+     "index": 3,
+     "params": {
+      "n": 40,
+      "p_in": 0.7,
+      "p_out": 0.06
+     }
+    }
+   ],
+   "sha256": "a4673c748ec23a8947750419ca5820dbc445db256603dea0aff3a6ae548e1154"
+  },
+  "campaign_candidate_version": "8d465bdb2e835a4e88ae9e67c61d33af60fe093f7b6cda5eb43d7ea1e1052142",
+  "candidate_descriptor_id": "f4c7f4b0e5ced594f014dff8bc66703f2f545a52c1972a3d2a3cac42a8f195b1",
+  "code_identity": "b246226f2c91fc4a0f9f3c2990765535b754dd751ff1c9fb9217338d6b7c89d1",
+  "decision_record_draft_sha256": "8d9a8585ab951eddfda3c3f1a4b77386774d05b38d12bdc12b339e3872dfbff9",
+  "decision_record_problems_if_frozen": [],
+  "domain": "triangle_free_host_v1",
+  "exposure_hosts_all": {
+   "files": [
+    "exposure_hosts_all_part_01.json",
+    "exposure_hosts_all_part_02.json",
+    "exposure_hosts_all_part_03.json",
+    "exposure_hosts_all_part_04.json",
+    "exposure_hosts_all_part_05.json",
+    "exposure_hosts_all_part_06.json"
+   ],
+   "hosts": 2641,
+   "scan": {
+    "distinct_hosts": 2641,
+    "empty_files_skipped": [
+     "evidence/failed-wal-final-replay.json",
+     "evidence/final-replay.json"
+    ],
+    "files_scanned": 979,
+    "host_records": 6927
+   }
+  },
+  "package": "E1d (DRAFT)",
+  "reference_route": {
+   "enumerator": "fast",
+   "lp_rounding_seconds": 1.0,
+   "max_rows": 50000,
+   "max_total": 80000,
+   "order": "dense-first",
+   "package_sha256": "21b296d01c7d46ab22d11a61e984378854c77b775479a119597e70447bafbaf0",
+   "route": "generated-rows-v1",
+   "seconds": 120,
+   "separation_seconds": 15
+  },
+  "rehearsal": {
+   "comparator": "milp_highs_4x",
+   "judge_agrees": true,
+   "outcome": "SUPPORTED",
+   "request_sha256": "df1df0c09e6e29b67f0498de2c142accc1e808e191987b30940eed67d693df2b"
+  },
+  "schema": "genesis-handoff-package-index-v1",
+  "status": "DRAFT; not registered with any custodian"
+ },
+ "rehearsal_outcome": "SUPPORTED",
+ "schema": "genesis-b20r43-e1d-package-v1",
+ "status": "DRAFT package and same-operator rehearsal; licenses nothing"
+}

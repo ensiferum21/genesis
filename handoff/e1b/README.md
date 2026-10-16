@@ -85,6 +85,7 @@ On this family the calibration's limit and the plan's 5% unsupported limit agree
 | `exposure_hosts_addendum_b20r37.json` | B20_R37: the 40 DEV hosts of the generator-v2 coverage study; none is in this package's settings. |
 | `exposure_hosts_addendum_b20r38.json` | B20_R38: the 40 DEV hosts of the dense strong-baseline audit; none is in this package's settings. |
 | `exposure_hosts_addendum_b20r41.json` | B20_R41: the 102 DEV hosts of the E1d readiness study (64 calibration, 30 pilot, 8 from a disclosed development look); none is in this package's settings. |
+| `exposure_hosts_addendum_b20r43.json` | B20_R43: the 279 hosts of the E1d same-operator rehearsal (30 SELECT, 240 CONFIRM, 9 from a disclosed development look), all in the dense planted E1d settings; none is in this package's settings. |
 | `package_index.json` | Identities, the calibration and the outcomes. |
 
 The B20_R23 version of this package (builder-chosen settings, both domains) is in the git history at `e7fad0e`.

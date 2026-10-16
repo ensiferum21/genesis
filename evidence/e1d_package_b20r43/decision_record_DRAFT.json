@@ -1,0 +1,228 @@
+{
+ "allowed_conclusion": "If SUPPORTED: a scoped better-solver statement for triangle_free_host_v1 hosts from the e1d calibrated settings on that panel only, against the five registered baselines including an exact MILP at four times the candidate budget. Not better-improver, transfer, novelty, or any statement about other families or other exact methods.",
+ "analysis_plan_core": {
+  "alpha": 0.05,
+  "cost": {
+   "max_ratio": 3.0,
+   "measure": "cpu_ns"
+  },
+  "decision_rule": "superiority-with-minimum-useful-effect",
+  "design_effect": 1.0,
+  "estimand": "mean-of-stratum-means",
+  "failures": "score-zero",
+  "interval": {
+   "level": 0.9,
+   "method": "stratified-bootstrap-percentile",
+   "resamples": 4000
+  },
+  "max_unsupported_fraction": 0.05,
+  "minimum_useful_effect": 0.5,
+  "multiplicity": {
+   "family_id": "sealed_evaluation:triangle_free_host_v1",
+   "family_size": 3,
+   "method": "holm"
+  },
+  "power_target": 0.8,
+  "primary": "paired-edge-difference",
+  "regression": {
+   "max_stratum_loss": 1.0
+  },
+  "schema": "genesis-analysis-plan-v2",
+  "sensitivity": [
+   "task-sign-test",
+   "leave-one-stratum-out",
+   "failures-excluded",
+   "stratum-level-sign-flip"
+  ],
+  "stopping": {
+   "rule": "single-analysis"
+  },
+  "strata": "family",
+  "test": "stratified-sign-flip",
+  "unsupported": "exclude-and-report"
+ },
+ "baselines": {
+  "all_registered_baselines": [
+   "exchange_tm",
+   "low_cycle_tm",
+   "milp_highs_4x",
+   "milp_highs_tm",
+   "multistart_tm"
+  ],
+  "comparator": "the strongest of the five registered baselines on the custodian SELECT panel (custodian.select_comparator under rule e1-hard-v3-draft)",
+  "exact_baseline_note": "milp-highs-v1 is HiGHS through the pinned scipy, one core, best incumbent at its time limit; at 2.0 s it has four times the candidate search budget",
+  "not_a_competitor": "the generated-rows reference (LP over Lean-checked rows, rounding of its own LP, SAT/DRAT) is evaluator ground truth; it solves these hosts exactly in about 20 s of wall time, which the claim must state"
+ },
+ "capability_changes": "Candidate: B18 W10 representation grammar (cross_2) with greedy repair, unchanged from E1. Evaluator: registry-v2 exact baselines and the generated-rows reference over Lean-checked rows (B20_R39/R42 wiring, evaluation request v5); every arm in the OCI sandbox through the trusted runners.",
+ "created_at": "2026-10-16T10:53:48.992528+00:00",
+ "exact_claim": "The frozen representation-and-repair candidate (descriptor f4c7f4b0e5ced594, cut representation cross_2, 0.5 CPU s of search) scores more edges than the strongest of five registered baselines (the three time-matched fixed DSL programs at 0.5 CPU s, and the exact MILP milp-highs-v1 at 0.5 and at 2.0 CPU s), selected by the custodian on its private SELECT panel, on a custodian-held CONFIRM panel of triangle_free_host_v1 hosts drawn from the e1d study calibration (rule e1-hard-v3-draft, record SHA-256 a4673c748ec23a89, settings planted_cluster {'n': 38, 'p_in': 0.8, 'p_out': 0.07}, planted_cluster {'n': 40, 'p_in': 0.8, 'p_out': 0.06}, planted_cluster {'n': 40, 'p_in': 0.7, 'p_out': 0.06}), with optima certified by the generated-rows reference (generated-rows-v1, theory package SHA-256 21b296d01c7d46ab), by at least the minimum useful effect, under the registered analysis.",
+ "exposure_policy": "Custodian-built exposure registry; isomorphism and near-duplicate screening against every DEV panel named in the evidence and every host the builder generated (handoff/e1d/exposure_hosts_all_part_*.json); a SELECT or CONFIRM panel is retired after its one use.",
+ "minimum_useful_effect": 0.5,
+ "permissible_information": "The candidate sees only the candidate view (domain, n, edges). Development used public DEV panels only. SELECT and CONFIRM are drawn and held by the custodian.",
+ "primary_outcome": {
+  "endpoint": "paired-edge-difference",
+  "estimand": "mean-of-stratum-means",
+  "strata": "family"
+ },
+ "raw_evidence_custody": "Custodian private evidence store; the judge recomputes the analysis; the custodian publishes a signed registration log.",
+ "rejection_criteria": "Any decision-record or plan check failing; an evaluator that cannot run the candidate; registration beyond the declared family size; an INVALID or NOT_SUPPORTED outcome. A comparator not selected by the custodian on its SELECT panel. A panel not drawn from the e1d study calibration named in the claim. A reference other than the route the request names.",
+ "roles": {
+  "auditor": "TO BE ASSIGNED",
+  "custodian": "TO BE ASSIGNED (independent operator)",
+  "release_authority": "TO BE ASSIGNED",
+  "research_operator": "Genesis builder"
+ },
+ "sample_size_justification": {
+  "assumed_holm_rank_alpha": 0.016666666666666666,
+  "chosen": {
+   "power": 0.814,
+   "tasks_per_stratum": 80,
+   "total_tasks": 240
+  },
+  "design_effect": 1.0,
+  "false_positive_rate_at_zero_effect": 0.012,
+  "headroom_reference": "centred",
+  "min_tasks_per_stratum": 10,
+  "minimum_useful_effect": 0.5,
+  "model": "headroom-limited integer improvements over centred DEV pilot differences",
+  "note": "pilot effect sizes are reported but never used to set the effect; only spread and headroom are",
+  "pilot_rows_sha256": "baf60a4c6d6a416aff38e9b3dfcd4b86b4fc27306cfe063810e12ee9cf162459",
+  "pilot_strata": {
+   "planted_cluster:2269386b": {
+    "mean_difference": 10.9,
+    "sd": 4.6536,
+    "share_with_headroom": 1.0,
+    "tasks": 10
+   },
+   "planted_cluster:6493e4fc": {
+    "mean_difference": 4.5,
+    "sd": 5.2967,
+    "share_with_headroom": 1.0,
+    "tasks": 10
+   },
+   "planted_cluster:9491bde8": {
+    "mean_difference": 16.4,
+    "sd": 6.186,
+    "share_with_headroom": 1.0,
+    "tasks": 10
+   }
+  },
+  "plan_core_sha256": "00907f25a5efb05408a63a2646fbef7bf19dd3b2ab9094143cc7d788b521458a",
+  "power_at_minimum_useful_effect": 0.238,
+  "power_target": 0.8,
+  "schema": "genesis-power-analysis-v1",
+  "status": "CHOSEN",
+  "table": [
+   {
+    "power": 0.107,
+    "tasks_per_stratum": 10,
+    "total_tasks": 30
+   },
+   {
+    "power": 0.143,
+    "tasks_per_stratum": 12,
+    "total_tasks": 36
+   },
+   {
+    "power": 0.187,
+    "tasks_per_stratum": 15,
+    "total_tasks": 45
+   },
+   {
+    "power": 0.22,
+    "tasks_per_stratum": 20,
+    "total_tasks": 60
+   },
+   {
+    "power": 0.291,
+    "tasks_per_stratum": 25,
+    "total_tasks": 75
+   },
+   {
+    "power": 0.367,
+    "tasks_per_stratum": 30,
+    "total_tasks": 90
+   },
+   {
+    "power": 0.472,
+    "tasks_per_stratum": 40,
+    "total_tasks": 120
+   },
+   {
+    "power": 0.612,
+    "tasks_per_stratum": 50,
+    "total_tasks": 150
+   },
+   {
+    "power": 0.703,
+    "tasks_per_stratum": 60,
+    "total_tasks": 180
+   },
+   {
+    "power": 0.814,
+    "tasks_per_stratum": 80,
+    "total_tasks": 240
+   },
+   {
+    "power": 0.915,
+    "tasks_per_stratum": 100,
+    "total_tasks": 300
+   },
+   {
+    "power": 0.985,
+    "tasks_per_stratum": 150,
+    "total_tasks": 450
+   },
+   {
+    "power": 0.991,
+    "tasks_per_stratum": 200,
+    "total_tasks": 600
+   }
+  ]
+ },
+ "schema": "genesis-decision-record-v1",
+ "statistical_rules": {
+  "alpha": 0.05,
+  "failures": "score-zero",
+  "interval": {
+   "level": 0.9,
+   "method": "stratified-bootstrap-percentile",
+   "resamples": 4000
+  },
+  "multiplicity": {
+   "family_id": "sealed_evaluation:triangle_free_host_v1",
+   "family_size": 3,
+   "method": "holm"
+  },
+  "sensitivity": [
+   "task-sign-test",
+   "leave-one-stratum-out",
+   "failures-excluded",
+   "stratum-level-sign-flip"
+  ],
+  "test": "stratified-sign-flip",
+  "unsupported": "exclude-and-report"
+ },
+ "status": "DRAFT",
+ "stopping_rule": {
+  "rule": "single-analysis"
+ },
+ "total_budget": {
+  "arms": 2,
+  "charge": "every attempt, retry, timeout and failure",
+  "equal_accounting": "one sandbox, one profile, cgroup CPU per arm",
+  "profile": {
+   "cpu_seconds": 2,
+   "memory_mib": 2048,
+   "queries": 1000,
+   "wall_seconds": 10
+  },
+  "reference_seconds_per_task": 120,
+  "search_seconds_per_arm": {
+   "candidate": 0.5,
+   "dsl_baselines": 0.5,
+   "milp_highs_4x": 2.0,
+   "milp_highs_tm": 0.5
+  }
+ }
+}

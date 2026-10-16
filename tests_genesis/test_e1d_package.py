@@ -63,6 +63,72 @@ class Design(unittest.TestCase):
         self.assertIn('about 20 s', d['baselines']['not_a_competitor'])
 
 
+class Record(unittest.TestCase):
+    """The run's evidence and the package."""
+    @classmethod
+    def setUpClass(cls):
+        import b20r43_e1d_package as M
+        cls.M = M
+        cls.s = json.loads((EVIDENCE / 'rehearsal_summary.json').read_text())
+        cls.index = json.loads((ROOT / 'handoff' / 'e1d' / 'package_index.json').read_text())
+
+    def test_the_record_on_disk_is_the_derived_record(self):
+        on_disk = json.loads((EVIDENCE / self.M.RECORD_NAME).read_text())
+        self.assertEqual(on_disk, self.M.calibration_record())
+        self.assertEqual(digest(on_disk), self.s['adoption_in_the_copy']['record_sha256'])
+        self.assertEqual(self.index['calibration']['sha256'], digest(on_disk))
+        self.assertFalse(self.index['calibration']['adopted'])
+
+    def test_the_rehearsal_went_through_the_v5_path(self):
+        p = self.s['receipt_payload']
+        self.assertEqual(self.s['request_schema'], 'genesis-evaluation-request-v5')
+        self.assertEqual(self.s['reference'], self.M.reference_spec())
+        self.assertIn(self.s['comparator_selection']['selected'], self.s['comparator_selection']['baselines'])
+        self.assertEqual(self.s['comparator_selection']['calibration']['rule'], 'e1-hard-v3-draft')
+        self.assertEqual(p['completed_rows'], p['expected_rows'])
+        self.assertTrue(self.s['judge']['agrees'], self.s['judge']['problems'])
+        self.assertEqual(self.s['log_problems'], [])
+        refs = self.s['reference_methods']
+        self.assertEqual(sum(refs['methods'].values()) + refs['unsupported'], p['task_count'])
+        self.assertTrue(all(m.startswith('GENERATED_ROWS_') for m in refs['methods']))
+        self.assertIn('REHEARSAL', self.s['label'])
+        self.assertEqual(self.index['rehearsal']['outcome'], p['outcome'])
+
+    def test_package_files_match_the_index(self):
+        d = ROOT / 'handoff' / 'e1d'
+        self.assertEqual(json.loads((d / 'candidate_descriptor.json').read_text())['descriptor_id'],
+                         self.index['candidate_descriptor_id'])
+        base = json.loads((d / 'baselines.json').read_text())
+        self.assertEqual({n: b['descriptor_id'] for n, b in base.items()}, self.index['baselines'])
+        draft = json.loads((d / 'decision_record_DRAFT.json').read_text())
+        self.assertEqual(digest(draft), self.index['decision_record_draft_sha256'])
+        frozen, _ = DR.freeze(draft)
+        self.assertEqual(DR.problems(frozen), [])
+        hosts = 0
+        for name in self.index['exposure_hosts_all']['files']:
+            part = json.loads((d / name).read_text())
+            self.assertLessEqual(len(part), self.M.CHUNK)
+            hosts += len(part)
+        self.assertEqual(hosts, self.index['exposure_hosts_all']['hosts'])
+
+    def test_rehearsal_hosts_are_in_the_package_exposure_and_the_addenda(self):
+        import b20r23_e1b_readiness as RD
+        from genesis.common import canonical
+        from genesis.models import GraphTask
+        d = ROOT / 'handoff' / 'e1d'
+        listed = set()
+        for name in self.index['exposure_hosts_all']['files']:
+            listed |= RD.identities([GraphTask.model_validate_json(canonical(t)) for t in json.loads((d / name).read_text())])
+        mine = [GraphTask.model_validate_json(canonical(t)) for t in self.s['select_hosts'] + self.s['confirm_hosts']]
+        dev = json.loads((EVIDENCE / 'development_look_hosts.json').read_text())['tasks']
+        mine += [GraphTask.model_validate_json(canonical(t)) for t in dev]
+        self.assertTrue(RD.identities(mine) <= listed)
+        for pkg in ('e1', 'e1b'):
+            add = json.loads((ROOT / 'handoff' / pkg / 'exposure_hosts_addendum_b20r43.json').read_text())
+            got = RD.identities([GraphTask.model_validate_json(canonical(t)) for t in add])
+            self.assertTrue(RD.identities(mine) <= got)
+
+
 def canonical_profile(desc):
     return json.dumps(desc['resource_profile'], sort_keys=True)
 

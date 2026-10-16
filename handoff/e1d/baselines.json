@@ -1,0 +1,143 @@
+{
+ "exchange_tm": {
+  "descriptor_id": "70660ab94e35f0fa3692886355ec6a62a6ef9f0d2f57e16074b68669061c4809",
+  "domain": "triangle_free_host_v1",
+  "implementation": {
+   "candidates.py": "a04d3fe0792113ec9527bdf16fccc8f8580179b9a6b567c4cd30486d6d2696f2",
+   "dsl.py": "b1576f320cf7e689250771c484f95f3aa16ab853059d01ffabc1802a2c730508",
+   "graphs.py": "e0e8e089a240a2fc3a422d29c6fe65a6031d06264eab29fb8a991ad60213261d",
+   "models.py": "2d10c569f5de3ee209ce07525972d199bba1168ae187ffc223880491fa701d05"
+  },
+  "kind": "dsl-time-matched-v1",
+  "parameters": {
+   "cpu_seconds": 0.5,
+   "program": {
+    "componentwise": false,
+    "exchange": true,
+    "rounds": 32,
+    "schema_version": "graph-priority-v1",
+    "weights": [
+     0,
+     0,
+     0,
+     0
+    ]
+   }
+  },
+  "resource_profile": {
+   "cpu_seconds": 2,
+   "memory_mib": 2048,
+   "queries": 1000,
+   "wall_seconds": 10
+  },
+  "schema": "genesis-candidate-descriptor-v1"
+ },
+ "low_cycle_tm": {
+  "descriptor_id": "ae110999483196446cefbcad9b3cd232383ff3a26ec9eff3b288a94b9a40a36e",
+  "domain": "triangle_free_host_v1",
+  "implementation": {
+   "candidates.py": "a04d3fe0792113ec9527bdf16fccc8f8580179b9a6b567c4cd30486d6d2696f2",
+   "dsl.py": "b1576f320cf7e689250771c484f95f3aa16ab853059d01ffabc1802a2c730508",
+   "graphs.py": "e0e8e089a240a2fc3a422d29c6fe65a6031d06264eab29fb8a991ad60213261d",
+   "models.py": "2d10c569f5de3ee209ce07525972d199bba1168ae187ffc223880491fa701d05"
+  },
+  "kind": "dsl-time-matched-v1",
+  "parameters": {
+   "cpu_seconds": 0.5,
+   "program": {
+    "componentwise": false,
+    "exchange": false,
+    "rounds": 32,
+    "schema_version": "graph-priority-v1",
+    "weights": [
+     0,
+     0,
+     0,
+     1
+    ]
+   }
+  },
+  "resource_profile": {
+   "cpu_seconds": 2,
+   "memory_mib": 2048,
+   "queries": 1000,
+   "wall_seconds": 10
+  },
+  "schema": "genesis-candidate-descriptor-v1"
+ },
+ "milp_highs_4x": {
+  "descriptor_id": "1815deba84df4e578fbd7555f8cdf4d601e8c0e25d623f55ee80ef3ce319e976",
+  "domain": "triangle_free_host_v1",
+  "implementation": {
+   "candidate_kinds/milp_highs.py": "42dddbc29345201ac01c34d3cc148970e1b90239c37178f9c966ae817edbca92",
+   "candidates_v2.py": "2f0d7341e01eb5b02aef45105b48601d3a865bd4617a841a0dd1097ffe0c41ed",
+   "graphs.py": "e0e8e089a240a2fc3a422d29c6fe65a6031d06264eab29fb8a991ad60213261d",
+   "models.py": "2d10c569f5de3ee209ce07525972d199bba1168ae187ffc223880491fa701d05"
+  },
+  "kind": "milp-highs-v1",
+  "parameters": {
+   "cpu_seconds": 2.0
+  },
+  "resource_profile": {
+   "cpu_seconds": 2,
+   "memory_mib": 2048,
+   "queries": 1000,
+   "wall_seconds": 10
+  },
+  "schema": "genesis-candidate-descriptor-v2"
+ },
+ "milp_highs_tm": {
+  "descriptor_id": "9b737159afd479116463669257d7df4aac0c0a43525c7b26f1a75e5bf2173c39",
+  "domain": "triangle_free_host_v1",
+  "implementation": {
+   "candidate_kinds/milp_highs.py": "42dddbc29345201ac01c34d3cc148970e1b90239c37178f9c966ae817edbca92",
+   "candidates_v2.py": "2f0d7341e01eb5b02aef45105b48601d3a865bd4617a841a0dd1097ffe0c41ed",
+   "graphs.py": "e0e8e089a240a2fc3a422d29c6fe65a6031d06264eab29fb8a991ad60213261d",
+   "models.py": "2d10c569f5de3ee209ce07525972d199bba1168ae187ffc223880491fa701d05"
+  },
+  "kind": "milp-highs-v1",
+  "parameters": {
+   "cpu_seconds": 0.5
+  },
+  "resource_profile": {
+   "cpu_seconds": 2,
+   "memory_mib": 2048,
+   "queries": 1000,
+   "wall_seconds": 10
+  },
+  "schema": "genesis-candidate-descriptor-v2"
+ },
+ "multistart_tm": {
+  "descriptor_id": "3642c93cd02d0979ea8928b65c27848512f4a44fa7e5ae0ebe56b98994e13983",
+  "domain": "triangle_free_host_v1",
+  "implementation": {
+   "candidates.py": "a04d3fe0792113ec9527bdf16fccc8f8580179b9a6b567c4cd30486d6d2696f2",
+   "dsl.py": "b1576f320cf7e689250771c484f95f3aa16ab853059d01ffabc1802a2c730508",
+   "graphs.py": "e0e8e089a240a2fc3a422d29c6fe65a6031d06264eab29fb8a991ad60213261d",
+   "models.py": "2d10c569f5de3ee209ce07525972d199bba1168ae187ffc223880491fa701d05"
+  },
+  "kind": "dsl-time-matched-v1",
+  "parameters": {
+   "cpu_seconds": 0.5,
+   "program": {
+    "componentwise": false,
+    "exchange": false,
+    "rounds": 32,
+    "schema_version": "graph-priority-v1",
+    "weights": [
+     0,
+     0,
+     0,
+     0
+    ]
+   }
+  },
+  "resource_profile": {
+   "cpu_seconds": 2,
+   "memory_mib": 2048,
+   "queries": 1000,
+   "wall_seconds": 10
+  },
+  "schema": "genesis-candidate-descriptor-v1"
+ }
+}

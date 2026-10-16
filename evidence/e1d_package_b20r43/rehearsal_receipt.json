@@ -1,0 +1,142 @@
+{
+ "payload": {
+  "analysis": {
+   "alpha": 0.05,
+   "cost": {
+    "max_ratio": 3.0,
+    "measure": "cpu_ns"
+   },
+   "decision_record_sha256": "6dc8cc13e51ba2f9f965b847ba27632a651e8cd6d588458205ce50126947d2f7",
+   "decision_rule": "superiority-with-minimum-useful-effect",
+   "design_effect": 1.0,
+   "estimand": "mean-of-stratum-means",
+   "failures": "score-zero",
+   "interval": {
+    "level": 0.9,
+    "method": "stratified-bootstrap-percentile",
+    "resamples": 4000
+   },
+   "max_unsupported_fraction": 0.05,
+   "minimum_useful_effect": 0.5,
+   "multiplicity": {
+    "family_id": "sealed_evaluation:triangle_free_host_v1",
+    "family_size": 3,
+    "method": "holm"
+   },
+   "power_target": 0.8,
+   "primary": "paired-edge-difference",
+   "regression": {
+    "max_stratum_loss": 1.0
+   },
+   "schema": "genesis-analysis-plan-v2",
+   "sensitivity": [
+    "task-sign-test",
+    "leave-one-stratum-out",
+    "failures-excluded",
+    "stratum-level-sign-flip"
+   ],
+   "stopping": {
+    "rule": "single-analysis"
+   },
+   "strata": "family",
+   "test": "stratified-sign-flip",
+   "unsupported": "exclude-and-report"
+  },
+  "analysis_result": {
+   "checks": {
+    "cost_within_bound": true,
+    "estimate_reaches_minimum_useful_effect": true,
+    "holm_rejects_no_superiority": true,
+    "interval_lower_above_zero": true,
+    "no_stratum_regression": true
+   },
+   "cost_cpu_ns": {
+    "baseline": 502301814096,
+    "candidate": 169862302497
+   },
+   "cost_ratio": 0.3381678061,
+   "decision": "SUPPORTED",
+   "estimate": 9.8041666667,
+   "failures": {
+    "baseline": 0,
+    "candidate": 0
+   },
+   "family_p_values": [],
+   "holm_threshold": 0.0166666667,
+   "interval": [
+    9.2997835498,
+    10.3468614719
+   ],
+   "interval_level": 0.9,
+   "losses": 0,
+   "p_method": "monte-carlo-20000",
+   "p_value": 4.99975e-05,
+   "plan_sha256": "9bd488297025968b42ecea87f6af260065227c8fd20713f4591f4961b6411c1a",
+   "reasons": [],
+   "schema": "genesis-analysis-result-v2",
+   "scored": 237,
+   "sensitivity": {
+    "failures-excluded": 9.8041666667,
+    "leave-one-stratum-out": {
+     "planted_cluster:2269386b": 9.29375,
+     "planted_cluster:6493e4fc": 12.4125,
+     "planted_cluster:9491bde8": 7.70625
+    },
+    "stratum-level-sign-flip": 0.125,
+    "task-sign-test": 0.0
+   },
+   "strata": 3,
+   "stratum_means": {
+    "planted_cluster:2269386b": 10.825,
+    "planted_cluster:6493e4fc": 4.5875,
+    "planted_cluster:9491bde8": 14.0
+   },
+   "tasks": 240,
+   "ties": 39,
+   "unsupported": [
+    "confirm-planted_cluster-9491bde8-20272220-0000",
+    "confirm-planted_cluster-9491bde8-20272220-0004",
+    "confirm-planted_cluster-9491bde8-20272220-0020"
+   ],
+   "wins": 198
+  },
+  "anchor_hash": "362cb12dcc648c765401abff22e42ece9f5f4bf178f6b3e0eb540c3d21dad2f9",
+  "arms_sha256": "94fd36204bcde81e4dc4ca17fc007f4ae7ee1bba4e7a9a5ab002f857d4a9a000",
+  "baseline_descriptor_id": "1815deba84df4e578fbd7555f8cdf4d601e8c0e25d623f55ee80ef3ce319e976",
+  "campaign_id": "338b49400ab1404658b08f4391e90cdbdd4c1f939f81cc7d06c014db5bf83bbb",
+  "candidate_descriptor_id": "f4c7f4b0e5ced594f014dff8bc66703f2f545a52c1972a3d2a3cac42a8f195b1",
+  "candidate_version": "7ee22430f5243a22d6396b81bc2e4d58ae4aad032e6f8f6de633809330c95676",
+  "claim_id": "e1d-rehearsal-b20r43",
+  "completed_at": "2026-10-16T12:21:04.510324+00:00",
+  "completed_rows": 474,
+  "domain": "triangle_free_host_v1",
+  "domain_contract_hash": "522ee2f43e81120f4b180e4f3630f9278d26f8ebb65aafb0e4040159f9e3f150",
+  "evaluator_hash": "b246226f2c91fc4a0f9f3c2990765535b754dd751ff1c9fb9217338d6b7c89d1",
+  "evidence_kind": "sealed_evaluation",
+  "execution_failures": 0,
+  "expected_rows": 474,
+  "family_p": 4.99975e-05,
+  "generation_transition": null,
+  "independence": "OPERATOR_ATTESTATION_REQUIRED",
+  "isolation": "OCI_RUNC_NO_NETWORK_RO_ROOT_SECCOMP",
+  "losses": 0,
+  "operator_id": "BUILDER_REHEARSAL_NOT_INDEPENDENT",
+  "outcome": "SUPPORTED",
+  "paired_p": 2.4892061111444567e-60,
+  "panel_commitment": "85c88f8599022acd3902d0174b05b66ba2f5bcfd283af5d2a97962ca300957ea",
+  "raw_evidence_complete": true,
+  "raw_evidence_root": "f00669df4bb985672ab096cf76ce6dc6c2fd10ff0cb4fbc8e6dfcfb803fdb983",
+  "registered_at": "2026-10-16T10:53:53.036413+00:00",
+  "request_hash": "df1df0c09e6e29b67f0498de2c142accc1e808e191987b30940eed67d693df2b",
+  "schema": "genesis-scientific-receipt-v4",
+  "scope": "rehearsal panel of 240 triangle_free_host_v1 hosts (same operator)",
+  "screen": "CUSTODIAN_BUILT_REGISTRY_ISOMORPHISM_AND_NEAR_DUPLICATE",
+  "source_hash": "b246226f2c91fc4a0f9f3c2990765535b754dd751ff1c9fb9217338d6b7c89d1",
+  "statement_hash": "e427c4cf91f470ee0775f16c11289961df813a9720e9841f55b3161ed3a963d7",
+  "task_count": 240,
+  "ties": 39,
+  "transfer_source_domain": null,
+  "wins": 198
+ },
+ "signature": "9ufU7pU8gKflBeLQOzx26nqK6q3K60/m7J9L1qL2W3+vP1mVs+inpOBHXKtPUrvjO6MF4DD6hXrN2a1y2wF2BA=="
+}

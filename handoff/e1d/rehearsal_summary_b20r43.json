@@ -1,0 +1,764 @@
+{
+ "adoption_in_the_copy": {
+  "note": "configs/dev_calibration.json of a throwaway copy only",
+  "record_sha256": "a4673c748ec23a8947750419ca5820dbc445db256603dea0aff3a6ae548e1154",
+  "rule": "e1-hard-v3-draft",
+  "study": "e1d"
+ },
+ "anchor_payload": {
+  "claim_id": "e1d-rehearsal-b20r43",
+  "declaration_unscreenable_graphs": 0,
+  "evidence_kind": "sealed_evaluation",
+  "exposure_graphs": 2386,
+  "exposure_registry_root": "4b3b31a3b65979fb3131a67a0ccd44a574ffe191eff79750a92e17e3ed52e368",
+  "operator_id": "BUILDER_REHEARSAL_NOT_INDEPENDENT",
+  "panel_commitment": "85c88f8599022acd3902d0174b05b66ba2f5bcfd283af5d2a97962ca300957ea",
+  "registered_at": "2026-10-16T10:53:53.036413+00:00",
+  "registration_slot": "dd0ccafaad484b63b1343541b90f01ba03b003d255ec739fa4c8dcf29636b2c6",
+  "request_hash": "df1df0c09e6e29b67f0498de2c142accc1e808e191987b30940eed67d693df2b",
+  "schema": "genesis-prereg-anchor-v3",
+  "scope": "rehearsal panel of 240 triangle_free_host_v1 hosts (same operator)",
+  "statement_hash": "e427c4cf91f470ee0775f16c11289961df813a9720e9841f55b3161ed3a963d7"
+ },
+ "campaign_candidate_version": "7ee22430f5243a22d6396b81bc2e4d58ae4aad032e6f8f6de633809330c95676",
+ "code_identity": "b246226f2c91fc4a0f9f3c2990765535b754dd751ff1c9fb9217338d6b7c89d1",
+ "comparator_selection": {
+  "baselines": {
+   "exchange_tm": {
+    "descriptor_id": "70660ab94e35f0fa3692886355ec6a62a6ef9f0d2f57e16074b68669061c4809",
+    "domain": "triangle_free_host_v1",
+    "implementation": {
+     "candidates.py": "a04d3fe0792113ec9527bdf16fccc8f8580179b9a6b567c4cd30486d6d2696f2",
+     "dsl.py": "b1576f320cf7e689250771c484f95f3aa16ab853059d01ffabc1802a2c730508",
+     "graphs.py": "e0e8e089a240a2fc3a422d29c6fe65a6031d06264eab29fb8a991ad60213261d",
+     "models.py": "2d10c569f5de3ee209ce07525972d199bba1168ae187ffc223880491fa701d05"
+    },
+    "kind": "dsl-time-matched-v1",
+    "parameters": {
+     "cpu_seconds": 0.5,
+     "program": {
+      "componentwise": false,
+      "exchange": true,
+      "rounds": 32,
+      "schema_version": "graph-priority-v1",
+      "weights": [
+       0,
+       0,
+       0,
+       0
+      ]
+     }
+    },
+    "resource_profile": {
+     "cpu_seconds": 2,
+     "memory_mib": 2048,
+     "queries": 1000,
+     "wall_seconds": 10
+    },
+    "schema": "genesis-candidate-descriptor-v1"
+   },
+   "low_cycle_tm": {
+    "descriptor_id": "ae110999483196446cefbcad9b3cd232383ff3a26ec9eff3b288a94b9a40a36e",
+    "domain": "triangle_free_host_v1",
+    "implementation": {
+     "candidates.py": "a04d3fe0792113ec9527bdf16fccc8f8580179b9a6b567c4cd30486d6d2696f2",
+     "dsl.py": "b1576f320cf7e689250771c484f95f3aa16ab853059d01ffabc1802a2c730508",
+     "graphs.py": "e0e8e089a240a2fc3a422d29c6fe65a6031d06264eab29fb8a991ad60213261d",
+     "models.py": "2d10c569f5de3ee209ce07525972d199bba1168ae187ffc223880491fa701d05"
+    },
+    "kind": "dsl-time-matched-v1",
+    "parameters": {
+     "cpu_seconds": 0.5,
+     "program": {
+      "componentwise": false,
+      "exchange": false,
+      "rounds": 32,
+      "schema_version": "graph-priority-v1",
+      "weights": [
+       0,
+       0,
+       0,
+       1
+      ]
+     }
+    },
+    "resource_profile": {
+     "cpu_seconds": 2,
+     "memory_mib": 2048,
+     "queries": 1000,
+     "wall_seconds": 10
+    },
+    "schema": "genesis-candidate-descriptor-v1"
+   },
+   "milp_highs_4x": {
+    "descriptor_id": "1815deba84df4e578fbd7555f8cdf4d601e8c0e25d623f55ee80ef3ce319e976",
+    "domain": "triangle_free_host_v1",
+    "implementation": {
+     "candidate_kinds/milp_highs.py": "42dddbc29345201ac01c34d3cc148970e1b90239c37178f9c966ae817edbca92",
+     "candidates_v2.py": "2f0d7341e01eb5b02aef45105b48601d3a865bd4617a841a0dd1097ffe0c41ed",
+     "graphs.py": "e0e8e089a240a2fc3a422d29c6fe65a6031d06264eab29fb8a991ad60213261d",
+     "models.py": "2d10c569f5de3ee209ce07525972d199bba1168ae187ffc223880491fa701d05"
+    },
+    "kind": "milp-highs-v1",
+    "parameters": {
+     "cpu_seconds": 2.0
+    },
+    "resource_profile": {
+     "cpu_seconds": 2,
+     "memory_mib": 2048,
+     "queries": 1000,
+     "wall_seconds": 10
+    },
+    "schema": "genesis-candidate-descriptor-v2"
+   },
+   "milp_highs_tm": {
+    "descriptor_id": "9b737159afd479116463669257d7df4aac0c0a43525c7b26f1a75e5bf2173c39",
+    "domain": "triangle_free_host_v1",
+    "implementation": {
+     "candidate_kinds/milp_highs.py": "42dddbc29345201ac01c34d3cc148970e1b90239c37178f9c966ae817edbca92",
+     "candidates_v2.py": "2f0d7341e01eb5b02aef45105b48601d3a865bd4617a841a0dd1097ffe0c41ed",
+     "graphs.py": "e0e8e089a240a2fc3a422d29c6fe65a6031d06264eab29fb8a991ad60213261d",
+     "models.py": "2d10c569f5de3ee209ce07525972d199bba1168ae187ffc223880491fa701d05"
+    },
+    "kind": "milp-highs-v1",
+    "parameters": {
+     "cpu_seconds": 0.5
+    },
+    "resource_profile": {
+     "cpu_seconds": 2,
+     "memory_mib": 2048,
+     "queries": 1000,
+     "wall_seconds": 10
+    },
+    "schema": "genesis-candidate-descriptor-v2"
+   },
+   "multistart_tm": {
+    "descriptor_id": "3642c93cd02d0979ea8928b65c27848512f4a44fa7e5ae0ebe56b98994e13983",
+    "domain": "triangle_free_host_v1",
+    "implementation": {
+     "candidates.py": "a04d3fe0792113ec9527bdf16fccc8f8580179b9a6b567c4cd30486d6d2696f2",
+     "dsl.py": "b1576f320cf7e689250771c484f95f3aa16ab853059d01ffabc1802a2c730508",
+     "graphs.py": "e0e8e089a240a2fc3a422d29c6fe65a6031d06264eab29fb8a991ad60213261d",
+     "models.py": "2d10c569f5de3ee209ce07525972d199bba1168ae187ffc223880491fa701d05"
+    },
+    "kind": "dsl-time-matched-v1",
+    "parameters": {
+     "cpu_seconds": 0.5,
+     "program": {
+      "componentwise": false,
+      "exchange": false,
+      "rounds": 32,
+      "schema_version": "graph-priority-v1",
+      "weights": [
+       0,
+       0,
+       0,
+       0
+      ]
+     }
+    },
+    "resource_profile": {
+     "cpu_seconds": 2,
+     "memory_mib": 2048,
+     "queries": 1000,
+     "wall_seconds": 10
+    },
+    "schema": "genesis-candidate-descriptor-v1"
+   }
+  },
+  "calibration": {
+   "record_sha256": "a4673c748ec23a8947750419ca5820dbc445db256603dea0aff3a6ae548e1154",
+   "rule": "e1-hard-v3-draft",
+   "study": "e1d"
+  },
+  "campaign_id": "338b49400ab1404658b08f4391e90cdbdd4c1f939f81cc7d06c014db5bf83bbb",
+  "domain": "triangle_free_host_v1",
+  "exposure_registry_root": "b34354b69616562d15072bcf0d92211e1c12b5cbd997398d4d31cc7c489e71de",
+  "operator_id": "BUILDER_REHEARSAL_NOT_INDEPENDENT",
+  "panel_commitment": "9b14eaeec1d7217e40a29efb18cbd09f07bd11e6aa76f3e3903ed5a4af6f32da",
+  "resource_profile": {
+   "cpu_seconds": 2,
+   "memory_mib": 2048,
+   "queries": 1000,
+   "wall_seconds": 10
+  },
+  "rule": "strongest total on the custodian SELECT panel (ties: greatest name)",
+  "schema": "genesis-comparator-selection-v1",
+  "selected": "milp_highs_4x",
+  "selected_at": "2026-10-16T10:53:48.930341+00:00",
+  "source_hash": "b246226f2c91fc4a0f9f3c2990765535b754dd751ff1c9fb9217338d6b7c89d1",
+  "task_count": 30,
+  "totals": {
+   "exchange_tm": 2899,
+   "low_cycle_tm": 3053,
+   "milp_highs_4x": 3123,
+   "milp_highs_tm": 987,
+   "multistart_tm": 2986
+  }
+ },
+ "decision_record_rehearsal_sha256": "6dc8cc13e51ba2f9f965b847ba27632a651e8cd6d588458205ce50126947d2f7",
+ "exposure_scan": {
+  "calibration_hosts": 456,
+  "distinct_hosts": 2371,
+  "e1_named_hosts": 711,
+  "empty_files_skipped": [
+   "evidence/failed-wal-final-replay.json",
+   "evidence/final-replay.json"
+  ],
+  "excluded_identities": 2371,
+  "files_scanned": 969,
+  "host_records": 6657
+ },
+ "fairness": {
+  "cpu_ns_by_arm": {
+   "baseline": 502301814096,
+   "candidate": 169862302497
+  },
+  "cpu_ratio": 0.338168,
+  "ground_truth_charged_to_arm": false,
+  "information": "each arm receives only the candidate view (domain, n, edges) built from the same task",
+  "paired_tasks": 237,
+  "problems": [],
+  "same_limits": true
+ },
+ "judge": {
+  "agrees": true,
+  "problems": [],
+  "recomputed_outcome": "SUPPORTED",
+  "witnesses_rechecked": 474
+ },
+ "label": "REHEARSAL_SAME_OPERATOR_FIXTURE_KEYS: not independent, not a CONFIRM result, licenses nothing",
+ "log_problems": [],
+ "receipt_payload": {
+  "analysis": {
+   "alpha": 0.05,
+   "cost": {
+    "max_ratio": 3.0,
+    "measure": "cpu_ns"
+   },
+   "decision_record_sha256": "6dc8cc13e51ba2f9f965b847ba27632a651e8cd6d588458205ce50126947d2f7",
+   "decision_rule": "superiority-with-minimum-useful-effect",
+   "design_effect": 1.0,
+   "estimand": "mean-of-stratum-means",
+   "failures": "score-zero",
+   "interval": {
+    "level": 0.9,
+    "method": "stratified-bootstrap-percentile",
+    "resamples": 4000
+   },
+   "max_unsupported_fraction": 0.05,
+   "minimum_useful_effect": 0.5,
+   "multiplicity": {
+    "family_id": "sealed_evaluation:triangle_free_host_v1",
+    "family_size": 3,
+    "method": "holm"
+   },
+   "power_target": 0.8,
+   "primary": "paired-edge-difference",
+   "regression": {
+    "max_stratum_loss": 1.0
+   },
+   "schema": "genesis-analysis-plan-v2",
+   "sensitivity": [
+    "task-sign-test",
+    "leave-one-stratum-out",
+    "failures-excluded",
+    "stratum-level-sign-flip"
+   ],
+   "stopping": {
+    "rule": "single-analysis"
+   },
+   "strata": "family",
+   "test": "stratified-sign-flip",
+   "unsupported": "exclude-and-report"
+  },
+  "analysis_result": {
+   "checks": {
+    "cost_within_bound": true,
+    "estimate_reaches_minimum_useful_effect": true,
+    "holm_rejects_no_superiority": true,
+    "interval_lower_above_zero": true,
+    "no_stratum_regression": true
+   },
+   "cost_cpu_ns": {
+    "baseline": 502301814096,
+    "candidate": 169862302497
+   },
+   "cost_ratio": 0.3381678061,
+   "decision": "SUPPORTED",
+   "estimate": 9.8041666667,
+   "failures": {
+    "baseline": 0,
+    "candidate": 0
+   },
+   "family_p_values": [],
+   "holm_threshold": 0.0166666667,
+   "interval": [
+    9.2997835498,
+    10.3468614719
+   ],
+   "interval_level": 0.9,
+   "losses": 0,
+   "p_method": "monte-carlo-20000",
+   "p_value": 4.99975e-05,
+   "plan_sha256": "9bd488297025968b42ecea87f6af260065227c8fd20713f4591f4961b6411c1a",
+   "reasons": [],
+   "schema": "genesis-analysis-result-v2",
+   "scored": 237,
+   "sensitivity": {
+    "failures-excluded": 9.8041666667,
+    "leave-one-stratum-out": {
+     "planted_cluster:2269386b": 9.29375,
+     "planted_cluster:6493e4fc": 12.4125,
+     "planted_cluster:9491bde8": 7.70625
+    },
+    "stratum-level-sign-flip": 0.125,
+    "task-sign-test": 0.0
+   },
+   "strata": 3,
+   "stratum_means": {
+    "planted_cluster:2269386b": 10.825,
+    "planted_cluster:6493e4fc": 4.5875,
+    "planted_cluster:9491bde8": 14.0
+   },
+   "tasks": 240,
+   "ties": 39,
+   "unsupported": [
+    "confirm-planted_cluster-9491bde8-20272220-0000",
+    "confirm-planted_cluster-9491bde8-20272220-0004",
+    "confirm-planted_cluster-9491bde8-20272220-0020"
+   ],
+   "wins": 198
+  },
+  "anchor_hash": "362cb12dcc648c765401abff22e42ece9f5f4bf178f6b3e0eb540c3d21dad2f9",
+  "arms_sha256": "94fd36204bcde81e4dc4ca17fc007f4ae7ee1bba4e7a9a5ab002f857d4a9a000",
+  "baseline_descriptor_id": "1815deba84df4e578fbd7555f8cdf4d601e8c0e25d623f55ee80ef3ce319e976",
+  "campaign_id": "338b49400ab1404658b08f4391e90cdbdd4c1f939f81cc7d06c014db5bf83bbb",
+  "candidate_descriptor_id": "f4c7f4b0e5ced594f014dff8bc66703f2f545a52c1972a3d2a3cac42a8f195b1",
+  "candidate_version": "7ee22430f5243a22d6396b81bc2e4d58ae4aad032e6f8f6de633809330c95676",
+  "claim_id": "e1d-rehearsal-b20r43",
+  "completed_at": "2026-10-16T12:21:04.510324+00:00",
+  "completed_rows": 474,
+  "domain": "triangle_free_host_v1",
+  "domain_contract_hash": "522ee2f43e81120f4b180e4f3630f9278d26f8ebb65aafb0e4040159f9e3f150",
+  "evaluator_hash": "b246226f2c91fc4a0f9f3c2990765535b754dd751ff1c9fb9217338d6b7c89d1",
+  "evidence_kind": "sealed_evaluation",
+  "execution_failures": 0,
+  "expected_rows": 474,
+  "family_p": 4.99975e-05,
+  "generation_transition": null,
+  "independence": "OPERATOR_ATTESTATION_REQUIRED",
+  "isolation": "OCI_RUNC_NO_NETWORK_RO_ROOT_SECCOMP",
+  "losses": 0,
+  "operator_id": "BUILDER_REHEARSAL_NOT_INDEPENDENT",
+  "outcome": "SUPPORTED",
+  "paired_p": 2.4892061111444567e-60,
+  "panel_commitment": "85c88f8599022acd3902d0174b05b66ba2f5bcfd283af5d2a97962ca300957ea",
+  "raw_evidence_complete": true,
+  "raw_evidence_root": "f00669df4bb985672ab096cf76ce6dc6c2fd10ff0cb4fbc8e6dfcfb803fdb983",
+  "registered_at": "2026-10-16T10:53:53.036413+00:00",
+  "request_hash": "df1df0c09e6e29b67f0498de2c142accc1e808e191987b30940eed67d693df2b",
+  "schema": "genesis-scientific-receipt-v4",
+  "scope": "rehearsal panel of 240 triangle_free_host_v1 hosts (same operator)",
+  "screen": "CUSTODIAN_BUILT_REGISTRY_ISOMORPHISM_AND_NEAR_DUPLICATE",
+  "source_hash": "b246226f2c91fc4a0f9f3c2990765535b754dd751ff1c9fb9217338d6b7c89d1",
+  "statement_hash": "e427c4cf91f470ee0775f16c11289961df813a9720e9841f55b3161ed3a963d7",
+  "task_count": 240,
+  "ties": 39,
+  "transfer_source_domain": null,
+  "wins": 198
+ },
+ "reference": {
+  "enumerator": "fast",
+  "lp_rounding_seconds": 1.0,
+  "max_rows": 50000,
+  "max_total": 80000,
+  "order": "dense-first",
+  "package_sha256": "21b296d01c7d46ab22d11a61e984378854c77b775479a119597e70447bafbaf0",
+  "route": "generated-rows-v1",
+  "seconds": 120,
+  "separation_seconds": 15
+ },
+ "reference_methods": {
+  "methods": {
+   "GENERATED_ROWS_LP_DUAL_GENERATED_EXACT": 237
+  },
+  "unsupported": 3,
+  "wall_s": [
+   16.076,
+   27.821,
+   21.958,
+   16.237,
+   26.548,
+   15.49,
+   15.534,
+   24.903,
+   21.657,
+   21.477,
+   13.489,
+   17.307,
+   16.542,
+   17.506,
+   14.059,
+   16.669,
+   22.08,
+   17.847,
+   19.832,
+   14.43,
+   24.784,
+   22.1,
+   18.791,
+   20.59,
+   17.258,
+   14.547,
+   24.179,
+   19.056,
+   26.922,
+   28.826,
+   18.677,
+   17.798,
+   20.789,
+   23.946,
+   19.788,
+   17.685,
+   16.039,
+   22.881,
+   17.438,
+   18.766,
+   16.343,
+   19.953,
+   24.162,
+   20.545,
+   23.374,
+   18.919,
+   27.307,
+   20.544,
+   23.511,
+   18.216,
+   14.701,
+   14.749,
+   16.131,
+   14.859,
+   22.303,
+   19.033,
+   19.162,
+   24.18,
+   14.79,
+   21.119,
+   16.389,
+   24.637,
+   19.247,
+   20.202,
+   21.303,
+   17.605,
+   26.553,
+   14.528,
+   15.463,
+   16.274,
+   21.495,
+   16.87,
+   18.337,
+   22.584,
+   22.606,
+   17.326,
+   24.226,
+   15.322,
+   19.141,
+   18.254,
+   0.0,
+   33.54,
+   15.377,
+   15.488,
+   0.0,
+   23.373,
+   15.936,
+   24.163,
+   23.71,
+   18.062,
+   21.183,
+   21.057,
+   23.706,
+   25.317,
+   21.965,
+   17.835,
+   17.685,
+   18.119,
+   21.037,
+   21.849,
+   0.0,
+   21.332,
+   17.13,
+   28.396,
+   27.494,
+   17.057,
+   20.493,
+   27.403,
+   19.224,
+   22.033,
+   24.18,
+   23.028,
+   19.797,
+   19.988,
+   19.46,
+   17.441,
+   22.022,
+   18.274,
+   23.039,
+   19.976,
+   23.428,
+   24.201,
+   19.21,
+   18.404,
+   14.872,
+   22.232,
+   17.551,
+   19.194,
+   28.528,
+   27.487,
+   23.172,
+   21.096,
+   18.465,
+   28.514,
+   19.241,
+   17.935,
+   20.924,
+   22.85,
+   22.531,
+   21.711,
+   26.647,
+   18.946,
+   16.548,
+   16.455,
+   12.968,
+   24.314,
+   14.214,
+   21.845,
+   27.254,
+   14.848,
+   24.359,
+   16.361,
+   22.83,
+   14.361,
+   26.54,
+   22.658,
+   23.859,
+   21.977,
+   20.273,
+   19.453,
+   13.536,
+   12.695,
+   14.97,
+   16.189,
+   12.494,
+   14.695,
+   13.532,
+   15.971,
+   14.995,
+   15.788,
+   14.44,
+   15.363,
+   14.318,
+   13.899,
+   16.163,
+   14.704,
+   14.251,
+   14.95,
+   12.423,
+   14.609,
+   15.166,
+   15.013,
+   11.914,
+   15.568,
+   15.902,
+   15.389,
+   13.093,
+   14.417,
+   12.29,
+   14.666,
+   15.441,
+   13.338,
+   14.719,
+   13.971,
+   14.197,
+   15.404,
+   12.637,
+   12.84,
+   11.956,
+   12.248,
+   12.375,
+   15.78,
+   17.281,
+   11.702,
+   12.072,
+   18.308,
+   12.175,
+   14.113,
+   15.743,
+   12.99,
+   12.368,
+   18.561,
+   13.084,
+   13.539,
+   13.44,
+   18.176,
+   10.851,
+   13.283,
+   15.52,
+   15.303,
+   20.342,
+   13.464,
+   14.575,
+   13.617,
+   14.617,
+   15.526,
+   12.279,
+   16.112,
+   19.409,
+   11.65,
+   14.77,
+   12.654,
+   12.42,
+   14.385,
+   12.599,
+   11.539,
+   11.661,
+   14.242,
+   15.106,
+   15.101
+  ]
+ },
+ "request_schema": "genesis-evaluation-request-v5",
+ "request_sha256": "df1df0c09e6e29b67f0498de2c142accc1e808e191987b30940eed67d693df2b",
+ "resource_account": {
+  "charged": "every attempt, including failures, timeouts, interrupted and harness-error attempts",
+  "discovery": {
+   "attempts": 0,
+   "by_status": {},
+   "cpu_ns": 0,
+   "cpu_unknown": 0,
+   "failures": 0,
+   "peak_memory_bytes": null,
+   "queries": 0,
+   "status": "NONE_RECORDED",
+   "wall_ns": 0,
+   "wall_unknown": 0
+  },
+  "ground_truth": {
+   "attempts": 240,
+   "by_status": {
+    "SUCCESS": 237,
+    "UNSUPPORTED": 3
+   },
+   "charged_to_arm": false,
+   "cpu_ns": 0,
+   "cpu_unknown": 240,
+   "failures": 3,
+   "peak_memory_bytes": null,
+   "queries": 0,
+   "status": "MEASURED",
+   "wall_ns": 4338901322331,
+   "wall_unknown": 0
+  },
+  "human_time": {
+   "declared_by": null,
+   "seconds": null,
+   "status": "NOT_MEASURED"
+  },
+  "inference": {
+   "attempts": 474,
+   "by_arm": {
+    "baseline": {
+     "attempts": 237,
+     "by_status": {
+      "SUCCESS": 237
+     },
+     "cpu_ns": 502301814096,
+     "cpu_unknown": 0,
+     "failures": 0,
+     "peak_memory_bytes": 112242688,
+     "queries": 0,
+     "wall_ns": 517239332596,
+     "wall_unknown": 0
+    },
+    "candidate": {
+     "attempts": 237,
+     "by_status": {
+      "SUCCESS": 237
+     },
+     "cpu_ns": 169862302497,
+     "cpu_unknown": 0,
+     "failures": 0,
+     "peak_memory_bytes": 17793024,
+     "queries": 0,
+     "wall_ns": 179104462714,
+     "wall_unknown": 0
+    }
+   },
+   "by_status": {
+    "SUCCESS": 474
+   },
+   "cpu_ns": 672164116593,
+   "cpu_unknown": 0,
+   "failures": 0,
+   "peak_memory_bytes": 112242688,
+   "queries": 0,
+   "status": "MEASURED",
+   "wall_ns": 696343795310,
+   "wall_unknown": 0
+  },
+  "memory": {
+   "peak_bytes_by_category": {
+    "inference": 112242688
+   },
+   "status": "MEASURED"
+  },
+  "model_calls": {
+   "attempts": 0,
+   "by_status": {},
+   "cpu_ns": 0,
+   "cpu_unknown": 0,
+   "failures": 0,
+   "peak_memory_bytes": null,
+   "queries": 0,
+   "status": "NONE_RECORDED",
+   "wall_ns": 0,
+   "wall_unknown": 0
+  },
+  "retrieval": {
+   "attempts": 0,
+   "by_status": {},
+   "cpu_ns": 0,
+   "cpu_unknown": 0,
+   "failures": 0,
+   "peak_memory_bytes": null,
+   "queries": 0,
+   "status": "NONE_RECORDED",
+   "wall_ns": 0,
+   "wall_unknown": 0
+  },
+  "schema": "genesis-resource-account-v1",
+  "unclassified": {
+   "attempts": 0,
+   "by_status": {},
+   "cpu_ns": 0,
+   "cpu_unknown": 0,
+   "failures": 0,
+   "peak_memory_bytes": null,
+   "queries": 0,
+   "wall_ns": 0,
+   "wall_unknown": 0
+  },
+  "verification": {
+   "attempts": 0,
+   "by_status": {},
+   "cpu_ns": 0,
+   "cpu_unknown": 0,
+   "failures": 0,
+   "peak_memory_bytes": null,
+   "queries": 0,
+   "status": "NONE_RECORDED",
+   "wall_ns": 0,
+   "wall_unknown": 0
+  }
+ }
+}
