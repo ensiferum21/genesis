@@ -245,6 +245,21 @@
         },
         "restore_verified": "5713 manifest entries match; bundle clone gives the same commit and tree",
         "rehearsal": "deployment/reproduce.sh on the build host (clean room, not a second machine): REPRODUCED, all 7 steps"
+      },
+      "B20_R39": {
+        "commit": "41101a67db792287bbce58e71ae4302a9ce88511",
+        "sha256": "88f6ed6de31f7cd1875f8fa3df49bc431a45ba64476ce68194b779ba1cfa3cee",
+        "release_matrix": {
+          "integration": 731,
+          "legacy_regression": 282,
+          "sandbox_escape": 28,
+          "certificates": 43,
+          "formal": 178,
+          "failures": 0,
+          "declared_skips": 1
+        },
+        "restore_verified": "5756 manifest entries match; bundle clone gives the same commit and tree",
+        "rehearsal": "deployment/reproduce.sh on the build host (clean room, not a second machine): REPRODUCED, all 7 steps; first attempt lost to a container restart, re-run from the same archive pinned to one core"
       }
     },
     "adopted_from_crpd_v3_status": {
@@ -559,7 +574,9 @@
         "result": "engineering only: verification/certificates_rows.py (custody for LP_DUAL_GENERATED_EXACT under its own schema; checker-only replay re-deriving the registry from the Lean package, exact certificate check, revocation of checker and package identities, optional Lean replay) and generated_certify.reference (joint reference with generated rows, producing custody); built, not wired: CHECKED_METHODS_V2, the evaluator and the custodian unchanged; adoption steps in docs/GENERATED_ROWS_REFERENCE.md"
       },
       "B20_R40": {
-        "commits": [],
+        "commits": [
+          "d65e73c"
+        ],
         "result": "engineering only: candidate registry v2 (candidates_v2.py; one module per kind under candidate_kinds/; descriptor identity = v2 core + kind files + graphs.py + models.py, independent of registry v1, so frozen E1/E1b descriptor ids are unchanged; runner with runc/cgroup or process rlimits, view-only child, strict decoder, domain re-check; mutual refusal between registries) and the first kind milp-highs-v1 (exact HiGHS MILP, one core, time-matched); built and tested, not wired into requests, receipts or the custodian"
       },
       "B20_R41": {
