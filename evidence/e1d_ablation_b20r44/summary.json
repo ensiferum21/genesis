@@ -1,0 +1,231 @@
+{
+ "code_identity": "052f93ae5e46518800406254940f336ff57e98e19d45f5e07f6ea127492d60fb",
+ "descriptors": {
+  "ablation": "5093b6fbb2d1178315dd4fc8087c7f7173b0895f88290082b85f5b0f36dde94f",
+  "candidate": "f4c7f4b0e5ced594f014dff8bc66703f2f545a52c1972a3d2a3cac42a8f195b1",
+  "null_control": "ad5c6e3e9f69b6a85585aea14b490ad649931290569af99f9831a49489d7f0fc"
+ },
+ "exposure_scan": {
+  "calibration_hosts": 456,
+  "distinct_hosts": 2641,
+  "e1_named_hosts": 711,
+  "empty_files_skipped": [
+   "evidence/failed-wal-final-replay.json",
+   "evidence/final-replay.json"
+  ],
+  "excluded_identities": 2641,
+  "files_scanned": 990,
+  "host_records": 10126
+ },
+ "intervention": {
+  "component": "representation",
+  "from": "cross_2",
+  "kind": "ablation",
+  "meaning": "ablation: the discovered cross decoder replaced by the same grammar's ordered decoder at k = 2 (same encoder space, search, repair and budget; Lean-checked to decode a strict subset of cross_2 for every encoding)",
+  "to": "ordered_2"
+ },
+ "negative_control": "NULL_CONTROL_CLEAN",
+ "pilot": {
+  "approximation_agreement": 0.95,
+  "candidate_minus_each_baseline": {
+   "ablation": {
+    "mean": 7.0667,
+    "wins_ties_losses": [
+     30,
+     0,
+     0
+    ]
+   }
+  },
+  "certified_by_stratum": {
+   "planted_cluster:2269386b": [
+    10,
+    10
+   ],
+   "planted_cluster:6493e4fc": [
+    10,
+    10
+   ],
+   "planted_cluster:9491bde8": [
+    10,
+    10
+   ]
+  },
+  "comparator": "ablation",
+  "comparator_set": [
+   "ablation"
+  ],
+  "cpu_ns_by_arm": {
+   "ablation": 21098479513,
+   "candidate": 21121750591,
+   "null_control": 21070663941
+  },
+  "cpu_ratio_candidate_to_comparator": 1.0011,
+  "draft_plan_dry_run": {
+   "checks": {
+    "cost_within_bound": true,
+    "estimate_reaches_minimum_useful_effect": true,
+    "holm_rejects_no_superiority": true,
+    "interval_lower_above_zero": true,
+    "no_stratum_regression": true
+   },
+   "cost_ratio": 1.0011029742,
+   "decision": "SUPPORTED",
+   "estimate": 7.0666666667,
+   "interval": [
+    6.4666666667,
+    7.7
+   ],
+   "p_value": 4.99975e-05
+  },
+  "failures": {
+   "ablation": 0,
+   "candidate": 0,
+   "null_control": 0
+  },
+  "hosts": 30,
+  "mean_difference": 7.0667,
+  "mean_gap_to_optimum": {
+   "ablation": 7.1,
+   "candidate": 0.0333,
+   "null_control": 0.0667
+  },
+  "negative_control": {
+   "equivalence_margin": 0.5,
+   "interval_90": [
+    -0.0233,
+    0.09
+   ],
+   "mean": 0.0333,
+   "sd": 0.1826,
+   "verdict": "NULL_CONTROL_CLEAN",
+   "wins_ties_losses": [
+    1,
+    29,
+    0
+   ]
+  },
+  "optimum_hits": {
+   "ablation": 0,
+   "candidate": 29,
+   "null_control": 28
+  },
+  "power_centred": {
+   "chosen": {
+    "power": 0.859,
+    "tasks_per_stratum": 15,
+    "total_tasks": 45
+   },
+   "false_positive_rate_at_zero_effect": 0.015,
+   "pilot_strata": {
+    "planted_cluster:2269386b": {
+     "mean_difference": 7.1,
+     "sd": 1.8529,
+     "share_with_headroom": 1.0,
+     "tasks": 10
+    },
+    "planted_cluster:6493e4fc": {
+     "mean_difference": 6.5,
+     "sd": 2.0138,
+     "share_with_headroom": 1.0,
+     "tasks": 10
+    },
+    "planted_cluster:9491bde8": {
+     "mean_difference": 7.6,
+     "sd": 2.6331,
+     "share_with_headroom": 1.0,
+     "tasks": 10
+    }
+   },
+   "power_at_minimum_useful_effect": 0.248,
+   "status": "CHOSEN",
+   "table": [
+    {
+     "power": 0.642,
+     "tasks_per_stratum": 10,
+     "total_tasks": 30
+    },
+    {
+     "power": 0.724,
+     "tasks_per_stratum": 12,
+     "total_tasks": 36
+    },
+    {
+     "power": 0.859,
+     "tasks_per_stratum": 15,
+     "total_tasks": 45
+    },
+    {
+     "power": 0.943,
+     "tasks_per_stratum": 20,
+     "total_tasks": 60
+    },
+    {
+     "power": 0.971,
+     "tasks_per_stratum": 25,
+     "total_tasks": 75
+    },
+    {
+     "power": 0.991,
+     "tasks_per_stratum": 30,
+     "total_tasks": 90
+    },
+    {
+     "power": 0.998,
+     "tasks_per_stratum": 40,
+     "total_tasks": 120
+    },
+    {
+     "power": 0.998,
+     "tasks_per_stratum": 50,
+     "total_tasks": 150
+    },
+    {
+     "power": 1.0,
+     "tasks_per_stratum": 60,
+     "total_tasks": 180
+    },
+    {
+     "power": 1.0,
+     "tasks_per_stratum": 80,
+     "total_tasks": 240
+    },
+    {
+     "power": 1.0,
+     "tasks_per_stratum": 100,
+     "total_tasks": 300
+    },
+    {
+     "power": 1.0,
+     "tasks_per_stratum": 150,
+     "total_tasks": 450
+    },
+    {
+     "power": 1.0,
+     "tasks_per_stratum": 200,
+     "total_tasks": 600
+    }
+   ]
+  },
+  "scored": 30,
+  "stratum_mean_differences": {
+   "planted_cluster:2269386b": 7.1,
+   "planted_cluster:6493e4fc": 6.5,
+   "planted_cluster:9491bde8": 7.6
+  },
+  "totals": {
+   "ablation": 3291,
+   "candidate": 3503,
+   "null_control": 3502
+  },
+  "verdict": "READY_FOR_REVIEW",
+  "wins_ties_losses": [
+   30,
+   0,
+   0
+  ]
+ },
+ "schema": "genesis-b20r44-e1d-ablation-v1",
+ "status": "DEV causal-readiness pilot; licenses nothing; the transform awaits review",
+ "verdict": "READY_FOR_REVIEW"
+}

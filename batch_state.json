@@ -594,9 +594,16 @@
       },
       "B20_R43": {
         "commits": [
-          "ab11467"
+          "ab11467",
+          "f9f4ee2"
         ],
         "result": "E1d DRAFT package (handoff/e1d; evidence card in five dimensions) and a same-operator rehearsal through the opt-in v5 path, with the DRAFT rule adopted only in a throwaway copy: custodian SELECT on 30 private hosts chose milp_highs_4x (HiGHS at 2.0 s); v5 request for 240 hosts with the generated-rows reference; 237 certified (3 unsupported, 1.25%); W/L/T 198/0/39, estimate +9.80 [9.30, 10.35], cost ratio 0.338: SUPPORTED; judge agrees (474 witnesses re-checked, fairness clean)"
+      },
+      "B20_R44": {
+        "commits": [
+          "c68d0bc"
+        ],
+        "result": "registered ablation of E1's discovered representation in kernel/replay_contracts (represent-and-repair-v1 representation cross_2 -> ordered_2; B18 Lean checks: ordered_2 within cross_2 CHECKED, converse DISPROVED; no placebo since adjacent_2 is Lean-equal to cross_2). E1d ablation re-pilot on 30 fresh hosts: candidate - ablation +7.07 [6.47, 7.70], 30/0/0, cost ratio 1.00, dry run SUPPORTED, power 15 per stratum: READY_FOR_REVIEW. Null control adjacent_2 (Lean-equal): +0.03 [-0.02, +0.09], 29 ties: NULL_CONTROL_CLEAN"
       }
     },
     "open_after_b20_r5": [
@@ -936,6 +943,10 @@
     ],
     "open_after_b20_r43": [
       "B20R41-OPEN-1 updated: E1d package and SUPPORTED same-operator rehearsal; causal control pending (B20_R44)"
+    ],
+    "open_after_b20_r44": [
+      "B20R44-OPEN-1: review of the registered representation ablation",
+      "B20R41-OPEN-1 updated: E1d causal control READY_FOR_REVIEW, null control clean"
     ]
   }
 }

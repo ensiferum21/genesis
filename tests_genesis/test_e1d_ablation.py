@@ -77,5 +77,44 @@ class NullControl(unittest.TestCase):
         self.assertEqual(M.null_control(wide)['verdict'], 'NULL_CONTROL_FLAGGED')
 
 
+class Record(unittest.TestCase):
+    """The run's evidence: the verdicts follow from the rows."""
+    @classmethod
+    def setUpClass(cls):
+        import b20r44_e1d_ablation as M
+        cls.M = M
+        cls.s = json.loads((EVIDENCE / 'summary.json').read_text())
+        cls.rows = [json.loads(l) for l in (EVIDENCE / 'rows.jsonl').read_text().splitlines() if l.strip()]
+
+    def test_verdicts_follow_from_the_rows(self):
+        import b20r41_e1d_readiness as R41
+        self.assertEqual(len(self.rows), 30)
+        analysis, _ = R41.analyse(self.rows, ['candidate', 'ablation', 'null_control'], ['ablation'])
+        stored = json.loads((EVIDENCE / 'pilot_summary.json').read_text())
+        for k in ('comparator', 'totals', 'mean_difference', 'wins_ties_losses', 'cpu_ratio_candidate_to_comparator',
+                  'certified_by_stratum', 'verdict'):
+            self.assertEqual(analysis[k], stored[k], k)
+        self.assertEqual(self.M.null_control(self.rows), stored['negative_control'])
+        self.assertEqual((self.s['verdict'], self.s['negative_control']),
+                         (stored['verdict'], stored['negative_control']['verdict']))
+
+    def test_arms_are_the_registered_ones(self):
+        A = self.M.arms()
+        self.assertEqual(self.s['descriptors'], {n: d['descriptor_id'] for n, d in A.items()})
+        for r in self.rows:
+            if r['optimum'] is not None:
+                self.assertTrue(all(a['value'] <= r['optimum'] for a in r['arms'].values()))
+
+    def test_hosts_are_fresh_and_in_the_addenda(self):
+        import b20r23_e1b_readiness as RD
+        from genesis.common import canonical
+        from genesis.models import GraphTask
+        tasks = [GraphTask.model_validate_json(canonical(t)) for t in json.loads((EVIDENCE / 'hosts.json').read_text())['tasks']]
+        self.assertEqual(len(RD.identities(tasks)), 30)
+        for pkg in ('e1', 'e1b'):
+            add = json.loads((ROOT / 'handoff' / pkg / 'exposure_hosts_addendum_b20r44.json').read_text())
+            self.assertTrue(RD.identities(tasks) <= RD.identities([GraphTask.model_validate_json(canonical(t)) for t in add]))
+
+
 if __name__ == '__main__':
     unittest.main()

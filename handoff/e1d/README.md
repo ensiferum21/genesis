@@ -16,7 +16,7 @@ The builder wrote this package on 16 October 2026 (B20_R43) with `scripts/b20r43
 | **Validity** | Every witness is re-checked by the domain checker. Every optimum is certified: an exact LP certificate over Lean-checked generated inequalities, checked by an exact checker; or SAT/DRAT. | B20_R35/R37/R39; the rehearsal re-checked 474 witnesses |
 | **Utility, fresh DEV hosts** | +10.6 per host [9.1, 12.1] over the strongest of five baselines, which was HiGHS at 4× budget. Candidate optimal on 30/30. | B20_R41 (`pilot_summary_b20r41.json`) |
 | **Utility, rehearsal panel, same operator** | +9.80 per host [9.30, 10.35]; W/L/T 198/0/39 on 237 certified hosts. Comparator HiGHS at 4× budget, selected by the custodian's SELECT. | B20_R43 (`rehearsal_summary_b20r43.json`) |
-| **Causal contribution** | Not yet established. B20_R44 tests the registered ablation of the discovered representation (`cross_2` → `ordered_2`) with a Lean-certified null control. | pending (B20_R44) |
+| **Causal contribution** | **DEV: READY_FOR_REVIEW.** Weakening only the discovered representation's decoder (`cross_2` → `ordered_2`, which Lean shows is strictly weaker) costs **+7.07 per host [6.47, 7.70], 30/0/0**. A Lean-certified *equal* decoder (`adjacent_2`, the null control) shows +0.03 [−0.02, +0.09]: NULL_CONTROL_CLEAN. Licensing ABLATION_SUPPORTED needs a custodian-signed ablation evaluation (45 hosts by the power choice). | B20_R44 (`evidence/e1d_ablation_b20r44/`) |
 | **Improver capability** | None claimed. This is a better-*solver* package. | n/a |
 | **Novelty / replication** | None claimed: the representation is a cut decoder, and the bounds are classical. **No independent replication.** | needs an independent custodian (GV7) |
 
@@ -105,4 +105,4 @@ The rehearsal licenses nothing. One operator played every role, and the builder 
    `docs/CANDIDATE_REGISTRY_V2.md`).
 4. A statistician signs off the centred power model (B19-OPEN-4).
 5. An independent custodian runs SELECT, register and evaluate on its own machine, for 240 hosts.
-6. For a causal level: the ablation re-pilot (B20_R44) and a custodian-signed ablation evaluation.
+6. For a causal level: the registered transform reviewed (B20R44-OPEN-1), then a custodian-signed ablation evaluation; the B20_R44 re-pilot is READY_FOR_REVIEW.

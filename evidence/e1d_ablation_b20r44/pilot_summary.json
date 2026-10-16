@@ -1,0 +1,200 @@
+{
+ "approximation_agreement": 0.95,
+ "candidate_minus_each_baseline": {
+  "ablation": {
+   "mean": 7.0667,
+   "wins_ties_losses": [
+    30,
+    0,
+    0
+   ]
+  }
+ },
+ "certified_by_stratum": {
+  "planted_cluster:2269386b": [
+   10,
+   10
+  ],
+  "planted_cluster:6493e4fc": [
+   10,
+   10
+  ],
+  "planted_cluster:9491bde8": [
+   10,
+   10
+  ]
+ },
+ "comparator": "ablation",
+ "comparator_set": [
+  "ablation"
+ ],
+ "cpu_ns_by_arm": {
+  "ablation": 21098479513,
+  "candidate": 21121750591,
+  "null_control": 21070663941
+ },
+ "cpu_ratio_candidate_to_comparator": 1.0011,
+ "draft_plan_dry_run": {
+  "checks": {
+   "cost_within_bound": true,
+   "estimate_reaches_minimum_useful_effect": true,
+   "holm_rejects_no_superiority": true,
+   "interval_lower_above_zero": true,
+   "no_stratum_regression": true
+  },
+  "cost_ratio": 1.0011029742,
+  "decision": "SUPPORTED",
+  "estimate": 7.0666666667,
+  "interval": [
+   6.4666666667,
+   7.7
+  ],
+  "p_value": 4.99975e-05
+ },
+ "failures": {
+  "ablation": 0,
+  "candidate": 0,
+  "null_control": 0
+ },
+ "hosts": 30,
+ "mean_difference": 7.0667,
+ "mean_gap_to_optimum": {
+  "ablation": 7.1,
+  "candidate": 0.0333,
+  "null_control": 0.0667
+ },
+ "negative_control": {
+  "equivalence_margin": 0.5,
+  "interval_90": [
+   -0.0233,
+   0.09
+  ],
+  "mean": 0.0333,
+  "sd": 0.1826,
+  "verdict": "NULL_CONTROL_CLEAN",
+  "wins_ties_losses": [
+   1,
+   29,
+   0
+  ]
+ },
+ "optimum_hits": {
+  "ablation": 0,
+  "candidate": 29,
+  "null_control": 28
+ },
+ "power_centred": {
+  "chosen": {
+   "power": 0.859,
+   "tasks_per_stratum": 15,
+   "total_tasks": 45
+  },
+  "false_positive_rate_at_zero_effect": 0.015,
+  "pilot_strata": {
+   "planted_cluster:2269386b": {
+    "mean_difference": 7.1,
+    "sd": 1.8529,
+    "share_with_headroom": 1.0,
+    "tasks": 10
+   },
+   "planted_cluster:6493e4fc": {
+    "mean_difference": 6.5,
+    "sd": 2.0138,
+    "share_with_headroom": 1.0,
+    "tasks": 10
+   },
+   "planted_cluster:9491bde8": {
+    "mean_difference": 7.6,
+    "sd": 2.6331,
+    "share_with_headroom": 1.0,
+    "tasks": 10
+   }
+  },
+  "power_at_minimum_useful_effect": 0.248,
+  "status": "CHOSEN",
+  "table": [
+   {
+    "power": 0.642,
+    "tasks_per_stratum": 10,
+    "total_tasks": 30
+   },
+   {
+    "power": 0.724,
+    "tasks_per_stratum": 12,
+    "total_tasks": 36
+   },
+   {
+    "power": 0.859,
+    "tasks_per_stratum": 15,
+    "total_tasks": 45
+   },
+   {
+    "power": 0.943,
+    "tasks_per_stratum": 20,
+    "total_tasks": 60
+   },
+   {
+    "power": 0.971,
+    "tasks_per_stratum": 25,
+    "total_tasks": 75
+   },
+   {
+    "power": 0.991,
+    "tasks_per_stratum": 30,
+    "total_tasks": 90
+   },
+   {
+    "power": 0.998,
+    "tasks_per_stratum": 40,
+    "total_tasks": 120
+   },
+   {
+    "power": 0.998,
+    "tasks_per_stratum": 50,
+    "total_tasks": 150
+   },
+   {
+    "power": 1.0,
+    "tasks_per_stratum": 60,
+    "total_tasks": 180
+   },
+   {
+    "power": 1.0,
+    "tasks_per_stratum": 80,
+    "total_tasks": 240
+   },
+   {
+    "power": 1.0,
+    "tasks_per_stratum": 100,
+    "total_tasks": 300
+   },
+   {
+    "power": 1.0,
+    "tasks_per_stratum": 150,
+    "total_tasks": 450
+   },
+   {
+    "power": 1.0,
+    "tasks_per_stratum": 200,
+    "total_tasks": 600
+   }
+  ]
+ },
+ "scored": 30,
+ "stratum_mean_differences": {
+  "planted_cluster:2269386b": 7.1,
+  "planted_cluster:6493e4fc": 6.5,
+  "planted_cluster:9491bde8": 7.6
+ },
+ "totals": {
+  "ablation": 3291,
+  "candidate": 3503,
+  "null_control": 3502
+ },
+ "verdict": "READY_FOR_REVIEW",
+ "wins_ties_losses": [
+  30,
+  0,
+  0
+ ]
+}

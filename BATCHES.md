@@ -71,6 +71,7 @@ session can resume from the latest checkpoint (see `RESUME.md`).
 | 20_R41 | E1d readiness: DRAFT dense rule, candidate-blind calibration, re-pilot vs exact MIP | GV3 path (B20R33-OPEN-1, B20R41-OPEN-1) | 3 planted settings selected; 30/30 certified; comparator HiGHS at 4× budget; candidate optimal 30/30, +10.6 [9.1, 12.1]; READY_FOR_REVIEW |
 | 20_R42 | Registry v2 and the generated-rows reference wired into the custodian path, opt-in (request v5) | W06, W03; B20R40-OPEN-1, B20R35-OPEN-1 | Built and tested (11 new tests; full tests_genesis passes); v3/v4 requests, receipts, adopted rules and frozen ids unchanged; not adopted |
 | 20_R43 | E1d DRAFT package; same-operator rehearsal through the v5 path | GV3 path (B20R41-OPEN-1) | Custodian SELECT chose HiGHS at 4x budget; 240-host CONFIRM, 237 certified; W/L/T 198/0/39, +9.80 [9.30, 10.35], cost ratio 0.34: **SUPPORTED**, judge agrees; package `handoff/e1d` |
+| 20_R44 | Registered ablation of E1's discovered representation (cross_2 -> ordered_2, Lean-weaker decoder); E1d ablation re-pilot with a Lean-certified null control | GV3 path, causal control (B20R41-OPEN-1, B20R44-OPEN-1) | Candidate − ablation +7.07 [6.47, 7.70], 30/0/0, cost ratio 1.00: **READY_FOR_REVIEW** (45 hosts for power 0.86); null control (adjacent_2, Lean-equal) +0.03: NULL_CONTROL_CLEAN |
 
 Later phases (B17–B23+) follow the roadmap and its gates; numbers are labels,
 not estimates.

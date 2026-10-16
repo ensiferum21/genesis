@@ -1,0 +1,34 @@
+[    0.0s] pinned to CPU 0
+[    0.0s] SAT tools: cadical@24fb99286ca1ea9a, drat-trim@92f0aa9575ed519d
+[    6.1s] exposure: 2641 identities (2641 named hosts, 711 E1 hosts, 456 calibration hosts)
+[   27.0s] 0000: candidate 111 ablation 104 null 111 opt 111 [111..111] 18.2s
+[   46.7s] 0001: candidate 113 ablation 105 null 113 opt 113 [113..113] 17.1s
+[   67.2s] 0002: candidate 115 ablation 110 null 115 opt 115 [115..115] 17.9s
+[   93.3s] 0003: candidate 117 ablation 110 null 117 opt 117 [117..117] 23.5s
+[  117.6s] 0004: candidate 114 ablation 108 null 114 opt 114 [114..114] 21.6s
+[  145.0s] 0005: candidate 116 ablation 107 null 116 opt 116 [116..116] 24.8s
+[  163.6s] 0006: candidate 114 ablation 103 null 113 opt 114 [114..114] 16.1s
+[  182.3s] 0007: candidate 111 ablation 104 null 111 opt 111 [111..111] 16.2s
+[  203.4s] 0008: candidate 118 ablation 113 null 118 opt 118 [118..118] 18.4s
+[  222.6s] 0009: candidate 119 ablation 113 null 119 opt 119 [119..119] 16.6s
+[  248.2s] 0000: candidate 122 ablation 112 null 122 opt 122 [122..122] 22.9s
+[  274.1s] 0001: candidate 132 ablation 124 null 132 opt 132 [132..132] 23.3s
+[  300.0s] 0002: candidate 123 ablation 116 null 123 opt 123 [123..123] 23.1s
+[  324.5s] 0003: candidate 127 ablation 118 null 127 opt 127 [127..127] 21.9s
+[  350.5s] 0004: candidate 119 ablation 114 null 119 opt 119 [119..119] 23.3s
+[  378.2s] 0005: candidate 123 ablation 119 null 123 opt 124 [124..124] 25.0s
+[  402.8s] 0006: candidate 130 ablation 122 null 130 opt 130 [130..130] 22.1s
+[  421.5s] 0007: candidate 126 ablation 114 null 126 opt 126 [126..126] 16.1s
+[  449.5s] 0008: candidate 120 ablation 116 null 120 opt 120 [120..120] 25.4s
+[  467.7s] 0009: candidate 122 ablation 113 null 122 opt 122 [122..122] 15.5s
+[  482.1s] 0000: candidate 96 ablation 89 null 96 opt 96 [96..96] 11.8s
+[  498.3s] 0001: candidate 119 ablation 111 null 119 opt 119 [119..119] 13.7s
+[  514.2s] 0002: candidate 122 ablation 115 null 122 opt 122 [122..122] 13.3s
+[  528.2s] 0003: candidate 110 ablation 102 null 110 opt 110 [110..110] 11.4s
+[  544.8s] 0004: candidate 109 ablation 103 null 109 opt 109 [109..109] 13.9s
+[  561.5s] 0005: candidate 113 ablation 109 null 113 opt 113 [113..113] 14.1s
+[  576.5s] 0006: candidate 112 ablation 106 null 112 opt 112 [112..112] 12.5s
+[  591.4s] 0007: candidate 104 ablation 101 null 104 opt 104 [104..104] 12.3s
+[  608.0s] 0008: candidate 120 ablation 110 null 120 opt 120 [120..120] 14.1s
+[  622.1s] 0009: candidate 106 ablation 100 null 106 opt 106 [106..106] 11.5s
+[  646.3s] verdict READY_FOR_REVIEW; mean 7.0667; cpu ratio 1.0011; negative control {'mean': 0.0333, 'interval_90': [np.float64(-0.0233), np.float64(0.09)], 'sd': 0.1826, 'wins_ties_losses': [1, 29, 0], 'equivalence_margin': 0.5, 'verdict': 'NULL_CONTROL_CLEAN'}
