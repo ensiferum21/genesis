@@ -2,7 +2,7 @@
 
 ## Where things stand
 
-- **Branch:** `continuation-b20-rx` (GitHub `ensiferum21/genesis`). It is the canonical B20_R11 line (`continuation-b20-repairs`, `36954d6`), with the recovery-branch work ported onto it, plus B20_R12 and B20_R15–R41. B20_R25–R28 were built from the B20_R24 checkpoint's history bundle while GitHub was not linked; GitHub's branch is an ancestor.
+- **Branch:** `continuation-b20-rx` (GitHub `ensiferum21/genesis`). It is the canonical B20_R11 line (`continuation-b20-repairs`, `36954d6`), with the recovery-branch work ported onto it, plus B20_R12 and B20_R15–R42. B20_R25–R28 were built from the B20_R24 checkpoint's history bundle while GitHub was not linked; GitHub's branch is an ancestor.
 - **Side branch:** `side-b21-equational` (`710d26d`) keeps work done on plain B20 in parallel with this line (equational generations W21/E4, definitional primitives, fault routes). It is not canonical. Only its Lean-replay hint repair was ported (B20_R25).
 - **Checkpoints:**
 
@@ -25,7 +25,7 @@
 | B20_R39 | `41101a6` | `88f6ed6d…3cee` (B20_R36–R39; release matrix 1,262 tests, all OK, one declared skip; restore-verified, 5,756 manifest entries; driver rehearsal on the build host **REPRODUCED**, not a second machine; the first rehearsal attempt was lost to a container restart and re-run from the same archive) |
 
   The recovery-branch checkpoints B20_RX1 and B20_RX2 are on `recovery-b20r1-partial`; their work was ported here.
-- **Records:** `docs/checkpoints/B20_R1_RECORD.md` … `B20_R11_RECORD.md`, `B20_RX1_RECORD.md`, `B20_RX2_RECORD.md`, `B20_R12_RECORD.md` and `B20_R15_RECORD.md` … `B20_R41_RECORD.md`.
+- **Records:** `docs/checkpoints/B20_R1_RECORD.md` … `B20_R11_RECORD.md`, `B20_RX1_RECORD.md`, `B20_RX2_RECORD.md`, `B20_R12_RECORD.md` and `B20_R15_RECORD.md` … `B20_R42_RECORD.md`.
 
 ## Completed since B20_R11
 
@@ -62,6 +62,7 @@
 | B20_R39 | Custody for certificates over generated rows (`verification/certificates_rows.py`, own schema, checker-only replay with registry re-derivation and revocation) and a generated-rows joint reference (`generated_certify.reference`); built, **not wired**; adoption steps in `docs/GENERATED_ROWS_REFERENCE.md` |
 | B20_R40 | Candidate registry v2 (`candidates_v2.py`, one module per kind, identity per kind and independent of registry v1, so the frozen E1/E1b descriptors are untouched) with the first kind `milp-highs-v1` (exact HiGHS MILP, time-matched, one core); built, **not wired**; `docs/CANDIDATE_REGISTRY_V2.md` |
 | B20_R41 | **E1d readiness** under a DRAFT rule `e1-hard-v3-draft` (strongest baseline = best of E1's DSL baselines and HiGHS at 0.5 s and 2.0 s; candidate-blind generated-rows reference with rounding of its own LP): calibration selects 3 planted settings (erdos fails: HiGHS at 2 s optimal on 20/21); on a 30-host re-pilot the comparator is **HiGHS at four times the budget**, E1's frozen candidate is optimal on 30/30 and **+10.6 per host [9.1, 12.1]**, cost ratio 0.34: **READY_FOR_REVIEW** (B20R41-OPEN-1) |
+| B20_R42 | **Opt-in wiring** for E1d: one registry dispatcher (v1 path unchanged), evaluation request **v5** (v4 plus a closed generated-rows reference route; registry-v2 arms), exact v2 baselines in the custodian's SELECT only under a rule that names them (today the DRAFT `e1-hard-v3-draft`, adopted by no study), the triangle-free adapter's rows reference with custody; v3/v4, receipts, adopted rules and frozen ids unchanged; built for review, **not adopted** (`docs/GENERATED_ROWS_REFERENCE.md`, `docs/CANDIDATE_REGISTRY_V2.md`) |
 
 ## Resume
 
@@ -82,7 +83,7 @@
 4. **GV4 study design** (`handoff/gv4/README.md`, DRAFT). The question is what counts as an invented component, and now also whether a component that helps *certification* counts toward a better improver: B20_R35 gives the first preregistered positive DEV utility of a generated, Lean-checked component, in certification (B20R35-OPEN-1); also whether to wire its checker into the evaluator (a trust-path change). The decision is needed before the s15.3 work below can become a study. After B20_R31, no invented component has DEV construction utility yet.
 5. **CRPD-2b pin revision:** review.
 6. **B20R33-OPEN-1** (see item 1).
-7. **E1d** (B20R41-OPEN-1; `evidence/e1d_readiness_b20r41/`). E1's frozen candidate is READY_FOR_REVIEW on DEV against every registered baseline including an exact MIP at four times its budget, on three calibrated dense planted settings. A real run needs the rule `e1-hard-v3-draft`, the generated-rows reference (item 2) and registry v2 wiring (B20R40-OPEN-1) adopted, an E1d package, a statistician and an independent custodian. The reference itself solves these hosts in about 20 s; a claim should say so.
+7. **E1d** (B20R41-OPEN-1; `evidence/e1d_readiness_b20r41/`). E1's frozen candidate is READY_FOR_REVIEW on DEV against every registered baseline including an exact MIP at four times its budget, on three calibrated dense planted settings. A real run needs the rule `e1-hard-v3-draft`, the generated-rows reference (item 2) and the registry v2 wiring (B20R40-OPEN-1; built opt-in in B20_R42 as request v5) adopted, an E1d package, a statistician and an independent custodian. The reference itself solves these hosts in about 20 s; a claim should say so.
 
 ## Next engineering, in order
 
@@ -100,7 +101,7 @@
    - a different kind of component altogether (for example, symmetry or dominance rules; B20_RX1 H06 probe).
 
    The GV4 study design (`handoff/gv4/README.md`) waits on such a family.
-2. **Registered interventions for the remaining candidate kinds, and a supervised SAT child.** B20_R40 built candidate registry v2 (per-kind identity, independent of v1), so these can now be added as v2 kind modules (for example `represent-and-repair-v2` with registered interventions, `construct-pipeline-v2` with a supervised SAT finisher) without changing the frozen E1/E1b descriptor ids. Wiring v2 into requests, receipts and the custodian is a reviewed step (B20R40-OPEN-1).
+2. **Registered interventions for the remaining candidate kinds, and a supervised SAT child.** B20_R40 built candidate registry v2 (per-kind identity, independent of v1), so these can now be added as v2 kind modules (for example `represent-and-repair-v2` with registered interventions, `construct-pipeline-v2` with a supervised SAT finisher) without changing the frozen E1/E1b descriptor ids. B20_R42 wired v2 in opt-in (request v5, the exact-baseline policy per rule); adopting it is a reviewed step (B20R40-OPEN-1).
 3. **H08, the rest:** paired research lineages for `sealed_improver_evaluation` (needs a GV4 domain with headroom); custodian-held retention material.
 4. **H11:** an independent reviewer works through `docs/checkpoints/B20_R20_REVIEW_BRIEF.md`; the operations runbook is `docs/OPERATIONS.md`.
 

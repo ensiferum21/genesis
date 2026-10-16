@@ -85,6 +85,19 @@ SELECTION_RULE_E1_HARD_V2 = {
 }
 RULES = (SELECTION_RULE, SELECTION_RULE_E1_HARD, SELECTION_RULE_E1_HARD_V2)
 RULES_BY_NAME = {r['name']: r for r in RULES if 'name' in r}     # the unnamed rule is SELECTION_RULE
+# B20_R42: the DRAFT rule B20_R41 measured (scripts/b20r41_e1d_readiness.RULE, identical by test). It is
+# listed so that record_problems can check a record that uses it; it is NOT in RULES, and using it for a
+# study still needs that study's adoption in configs/dev_calibration.json, which is a reviewer's decision.
+SELECTION_RULE_E1_HARD_V3_DRAFT = dict(
+    SELECTION_RULE_E1_HARD_V2, name='e1-hard-v3-draft', reference_seconds_median_max=30.0,
+    measurement={'baselines': "E1's frozen dsl-time-matched-v1 programs at 0.5 s + milp-highs-v1 (registry v2) "
+                              'at 0.5 s and 2.0 s; strongest = per-host maximum of the five',
+                 'search_cpu_seconds': 0.5, 'isolation': 'runc',
+                 'reference': 'generated_certify.certify_with_rows with the B20_R37 v2 registry and R37.V2, '
+                              "seeded by the evaluator's seed witness and the best baseline witness",
+                 'reference_seconds': 60},
+    status='DRAFT (builder); not adopted; not in calibration.RULES')
+DRAFT_RULES_BY_NAME = {SELECTION_RULE_E1_HARD_V3_DRAFT['name']: SELECTION_RULE_E1_HARD_V3_DRAFT}
 CALIBRATION_LIMITS = Limits(queries=1000, cpu_seconds=2)
 DEFAULT_GRID = {
     'c4_host_v2': [
@@ -262,9 +275,9 @@ def record_problems(record):
     if name is None:
         if rule != SELECTION_RULE:
             out.append('selection rule differs from the frozen SELECTION_RULE')
-    elif name not in RULES_BY_NAME:
+    elif name not in RULES_BY_NAME and name not in DRAFT_RULES_BY_NAME:
         out.append(f'selection rule {name!r} is not a registered rule')
-    elif rule != RULES_BY_NAME[name]:
+    elif rule != RULES_BY_NAME.get(name, DRAFT_RULES_BY_NAME.get(name)):
         out.append(f'selection rule differs from the frozen, registered rule {name!r}')
     if select(record['settings'], record['rule']) != record['selected']:
         out.append('selected settings do not follow from the recorded measurements and rule')

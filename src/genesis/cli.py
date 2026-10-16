@@ -157,10 +157,13 @@ def record_comparator_selection(campaign,envelope):
 
 
 def descriptor_request_bundle(campaign,task_count,*,analysis,claim_id=None,statement=None,scope=None,
-                              extra_baselines=()):
+                              extra_baselines=(),reference=None):
     """Freeze a v4 evaluation request for the campaign's frozen candidate descriptor: candidate arm =
     that descriptor; baseline arm = the campaign's strongest conventional baseline as a DSL descriptor
-    under the same resource profile (equal resource accounting); `analysis` must be a v2 plan."""
+    under the same resource profile (equal resource accounting); `analysis` must be a v2 plan.
+    B20_R42: with `reference` (a route spec, custodian.reference_problems), the request is v5 and names
+    the evaluator's reference route; its arms may then include registry-v2 baselines the custodian
+    selected (opt-in, pending review)."""
     from . import candidates as C
     from .common import bytes_hash
     from .custodian import validate_request
@@ -194,13 +197,15 @@ def descriptor_request_bundle(campaign,task_count,*,analysis,claim_id=None,state
     statement=statement or (f'frozen candidate {cv[:12]} ({desc["kind"]}) has a higher paired edge count than the '
                             f'frozen {strongest_name} baseline on the sealed {domain} panel')
     scope=scope or f'{domain} hosts in one sealed panel of {task_count} tasks'
-    request={'schema':'genesis-evaluation-request-v4','campaign_id':s.state('campaign_id'),
+    request={'schema':'genesis-evaluation-request-v4' if reference is None else 'genesis-evaluation-request-v5',
+        'campaign_id':s.state('campaign_id'),
         'claim_id':claim_id or f'utility:{cv[:16]}','evidence_kind':'sealed_evaluation',
         'statement_hash':digest(statement),'scope':scope,'generation_transition':None,'transfer_source_domain':None,
         'campaign_export_sha256':bytes_hash(export.read_bytes()),'candidate_version':cv,
         'source_hash':s.state('source_hash'),'arms':arms,'seed':campaign.config.seed,'task_count':task_count,
         'domain':domain,'analysis':analysis,'exposed_graph_fingerprints':s.state('exposure_fingerprints') or [],
         'expected_evaluator_hash':s.state('source_hash')}
+    if reference is not None:request['reference']=dict(reference)
     validate_request(request)
     rid=digest(request)
     if s.state('frozen_descriptor_request_hash') not in (None,rid):

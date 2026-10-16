@@ -1,4 +1,4 @@
-# Candidate registry v2 (B20_R40; built, not wired)
+# Candidate registry v2 (B20_R40; built; wired opt-in in B20_R42, not adopted)
 
 ## Why
 
@@ -51,3 +51,26 @@ The exact MILP for the largest triangle-free subgraph, run by HiGHS through the 
 4. **Exposure.** Exposure and leak checks are unchanged: the child sees only the candidate view.
 
 None of this changes the frozen E1/E1b packages or their descriptor ids.
+
+## The wiring (B20_R42; opt-in, pending review)
+
+- **One entry point.** `genesis/candidate_registry.py` picks the registry by the descriptor's
+  schema. The custodian runs every evaluation arm and every SELECT-panel baseline through it. A
+  v1 descriptor takes exactly the v1 path.
+- **Requests.** A v4 request still takes registry-v1 arms only. An evaluation request v5 (a v4
+  request plus a named reference route) also takes registry-v2 arms. All arms share one resource
+  profile, as before.
+- **Comparators.** `custodian.select_comparator` accepts an exact registry-v2 baseline
+  (`candidate_registry.EXACT_BASELINE_KINDS`, today `milp-highs-v1`) only when the study's
+  adopted calibration rule names it (`EXACT_BASELINES_BY_RULE`).
+  - The only rule that names it is the DRAFT `e1-hard-v3-draft` (B20_R41), and no study adopts
+    it.
+  - Under every adopted rule, selection is unchanged.
+  - A request's baseline must still be the custodian's selected comparator, checked by
+    descriptor id at registration.
+- **Fairness.** In an evaluation, a v2 arm must share the candidate's resource profile. So a "4×
+  budget" MIP is expressed by its `cpu_seconds` parameter within that profile: 2.0 s inside E1's
+  2 s profile, whose sandbox limit is 3 s.
+- **What stays unchanged.** `candidates_v2.py` still says "not wired". Its text is part of every
+  v2 identity, so the B20_R41 descriptor ids are kept and the wiring lives in
+  `candidate_registry.py`.

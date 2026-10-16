@@ -32,6 +32,12 @@ REQUEST_FIELDS_V4=(REQUEST_FIELDS-{'programs','limits'})|{'arms'}
 # Statement evaluations (B20_R7, handoff s13.3): descriptor arms on a statement domain; the custodian
 # generates the sealed panel itself from the preregistered `panel_spec` (no graph fingerprints).
 REQUEST_FIELDS_STATEMENTS=(REQUEST_FIELDS_V4-{'exposed_graph_fingerprints'})|{'panel_spec'}
+# v5 (B20_R42; wiring built for review, opt-in): v4 plus the evaluator's reference route, named in a closed
+# `reference` field. Arms may be registry-v1 or registry-v2 descriptors (genesis.candidate_registry).
+REQUEST_FIELDS_V5=REQUEST_FIELDS_V4|{'reference'}
+REFERENCE_ROUTES=('generated-rows-v1',)
+REFERENCE_FIELDS={'route','package_sha256','seconds','separation_seconds','max_rows','max_total','order','enumerator',
+                  'lp_rounding_seconds'}
 STATEMENT_KIND='formal-research-successor-v1'
 
 
@@ -50,6 +56,7 @@ def validate_request(request):
     for v4 and {arm: SolverProgram} for v3.
     """
     if isinstance(request,dict) and request.get('schema')==R.REQUEST_V4:return _validate_v4(request)
+    if isinstance(request,dict) and request.get('schema')==R.REQUEST_V5:return _validate_v4(request,v5=True)
     if isinstance(request,dict) and request.get('schema')==R.REQUEST_STATEMENTS:return _validate_statements(request)
     if not isinstance(request,dict) or set(request)!=REQUEST_FIELDS or request['schema']!=R.REQUEST:
         raise ValueError('evaluation request schema')
@@ -66,12 +73,18 @@ def validate_request(request):
     return programs
 
 
-def _validate_v4(request):
+def _validate_v4(request,v5=False):
     """Executable-candidate request: every arm is a descriptor of a closed kind that this code
     rebuilds and accepts (implementation unchanged, parameters licensed, profile valid), all arms
-    share one resource profile, and the analysis is a v2 plan."""
+    share one resource profile, and the analysis is a v2 plan. A v4 request takes registry-v1
+    descriptors only, as before; a v5 request (B20_R42) also takes registry-v2 descriptors and names
+    its reference route (reference_problems)."""
+    from . import candidate_registry as CR
     from . import candidates as C
-    if set(request)!=REQUEST_FIELDS_V4:raise ValueError('evaluation request schema')
+    if set(request)!=(REQUEST_FIELDS_V5 if v5 else REQUEST_FIELDS_V4):raise ValueError('evaluation request schema')
+    if v5:
+        why=reference_problems(request['reference'])
+        if why:raise ValueError('reference route: '+'; '.join(why))
     problems=R.check_request(request)
     if problems:raise ValueError('evaluation request binding: '+'; '.join(problems))
     for key in ('campaign_id','candidate_version','source_hash','expected_evaluator_hash','campaign_export_sha256'):
@@ -81,12 +94,37 @@ def _validate_v4(request):
         raise ValueError('comparison arms')
     if any(not isinstance(k,str) or not k.isidentifier() for k in arms):raise ValueError('arm name')
     for name,desc in arms.items():
-        why=C.descriptor_problems(desc,domain=request['domain'])
+        why=(CR if v5 else C).descriptor_problems(desc,domain=request['domain'])
         if why:raise ValueError(f'candidate descriptor for arm {name}: '+', '.join(why))
     if len({canonical(d['resource_profile']) for d in arms.values()})!=1:
         raise ValueError('arms must share one resource profile (equal resource accounting)')
     _validate_common(request)
     return dict(arms)
+
+
+def reference_problems(ref):
+    """[] for a v5 reference route this code supports, else the reasons it is refused (B20_R42).
+    'generated-rows-v1': generated_certify.certify_with_rows over the rows of a known theory package
+    (named by digest, integrity-checked, rows derived only from its CHECKED statements), with the
+    route's limits fixed in the request."""
+    out=[]
+    if not isinstance(ref,dict) or set(ref)!=REFERENCE_FIELDS:return ['the reference names exactly '+', '.join(sorted(REFERENCE_FIELDS))]
+    if ref['route'] not in REFERENCE_ROUTES:out.append(f"unknown route {ref['route']!r}")
+    num=lambda v,lo,hi:type(v) in (int,float) and not isinstance(v,bool) and lo<v<=hi
+    count=lambda v:type(v) is int and 0<v<=10**6
+    if not num(ref['seconds'],0,3600):out.append('seconds in (0, 3600]')
+    if not num(ref['separation_seconds'],0,600):out.append('separation_seconds in (0, 600]')
+    if not count(ref['max_rows']) or not count(ref['max_total']):out.append('max_rows and max_total are counts in [1, 10^6]')
+    if ref['order'] not in ('size','dense-first'):out.append("order is 'size' or 'dense-first'")
+    if ref['enumerator'] not in ('fast','generic'):out.append("enumerator is 'fast' or 'generic'")
+    if ref['lp_rounding_seconds'] is not None and not num(ref['lp_rounding_seconds'],0,60):
+        out.append('lp_rounding_seconds is null or in (0, 60]')
+    if not _hex64(ref['package_sha256']):out.append('package_sha256')
+    elif not out:
+        from .discovery import generated_certify as GC
+        try:GC.known_package(ref['package_sha256'])
+        except ValueError as exc:out.append(str(exc))
+    return out
 
 
 def _validate_statements(request):
@@ -463,7 +501,7 @@ def select_comparator(private_root,campaign_export,baselines,key_path,operator_i
     baseline in the sandbox, reserves the hosts for good, and signs the selection. The research
     operator records the signed selection in the campaign before exporting; ``register`` then
     requires the request's baseline to be the selected one."""
-    from . import candidates as C
+    from . import candidate_registry as CR
     from . import calibration as CAL
     from .dsl import baseline_programs
     from .exposure import GraphIndex,build_registry
@@ -471,17 +509,23 @@ def select_comparator(private_root,campaign_export,baselines,key_path,operator_i
     export=Path(campaign_export);facts=campaign_facts(export)
     domain=facts['domain']
     if not isinstance(baselines,dict) or len(baselines)<2:raise ValueError('at least two conventional baselines')
+    repo=Path(__file__).resolve().parents[2]
+    calib=CAL.load(domain,repo,study=study)
+    rule=(calib.get('rule') or {}).get('name')
     programs={canonical(p.model_dump(mode='json')) for p in baseline_programs().values()}
     for name,d in baselines.items():
-        why=C.descriptor_problems(d,domain=domain)
-        if why or d['kind'] not in C.CONVENTIONAL_KINDS or canonical(d['parameters']['program']) not in programs:
-            raise ValueError(f'baseline {name} is not a valid conventional baseline: {why}')
+        why=CR.descriptor_problems(d,domain=domain)
+        conventional=not why and CR.is_conventional(d) and canonical(d['parameters'].get('program')) in programs
+        # B20_R42: an exact registry-v2 baseline only where the study's calibration rule names it
+        if not conventional and (why or not CR.is_exact_baseline(d,rule)):
+            raise ValueError(f'baseline {name} is not a valid conventional baseline'
+                             +(f' or an exact baseline of rule {rule!r}' if rule in CR.EXACT_BASELINES_BY_RULE else '')
+                             +f': {why}')
     if len({canonical(d['resource_profile']) for d in baselines.values()})!=1:
         raise ValueError('baselines must share one resource profile')
     from . import sandbox as S
     if not S.available():raise RuntimeError('ISOLATION_UNAVAILABLE: baselines run in the OCI sandbox')
     manifest_path,manifest=_manifest_file(exposure_manifest)
-    repo=Path(__file__).resolve().parents[2]
     index,record=build_registry(manifest,manifest_path.parent,repo,
                                 extra_sources=[{'kind':'zip','path':str(export.resolve()),'label':'campaign-export'}])
     db=_open_custody(root)
@@ -490,7 +534,6 @@ def select_comparator(private_root,campaign_export,baselines,key_path,operator_i
         for n,edges,rid in db.execute('SELECT n,edges,request_id FROM reservations'):
             reserved.add(n,tuple(tuple(e) for e in json.loads(edges)),rid)
         seed=int.from_bytes(os.urandom(8),'big')
-        calib=CAL.load(domain,repo,study=study)
         candidates_,_=CAL.calibrated_panel(calib,seed,task_count*3,'SELECT')
         tasks=[t for t in candidates_ if index.find(t.n,t.edges) is None and not index.near(t.n,t.edges)
                and reserved.find(t.n,t.edges) is None][:task_count]
@@ -499,7 +542,7 @@ def select_comparator(private_root,campaign_export,baselines,key_path,operator_i
         for t in tasks:
             tseed=int(digest({'select':seed,'task':t.task_id})[:16],16)
             for name,d in sorted(baselines.items()):
-                r=C.run(t,d,seed=tseed,expected_id=d['descriptor_id'],isolation='runc')
+                r=CR.run(t,d,seed=tseed,expected_id=d['descriptor_id'],isolation='runc')
                 runs[(t.task_id,name)]={'status':r['status'],'value':(r.get('result') or {}).get('value',0) if r['status']=='SUCCESS' else 0,
                                         'cpu_ns':r.get('cpu_ns')}
         totals={name:sum(runs[(t.task_id,name)]['value'] for t in tasks) for name in baselines}
@@ -715,7 +758,14 @@ def reference_optimum(task,evidence=None):
 
 def reference_options(request,adp):
     """B20_R24: a v4 evaluation (descriptor arms) asks a graph adapter for the joint LP/SAT reference, which
-    certifies the hosts the SAT-only path gives up on; older request versions keep their reference."""
+    certifies the hosts the SAT-only path gives up on; older request versions keep their reference.
+    B20_R42: a v5 request names its route; 'generated-rows-v1' asks an adapter that offers it
+    (ROWS_REFERENCE) for the reference over the named package's generated rows. An adapter without it
+    cannot honour the request, which is refused rather than evaluated with another reference."""
+    if isinstance(request,dict) and request.get('schema')==R.REQUEST_V5:
+        if not getattr(adp,'ROWS_REFERENCE',False):
+            raise ValueError(f'the {adp.name} adapter offers no {request["reference"]["route"]} reference')
+        return {'joint':True,'rows':dict(request['reference'])}
     return {'joint':True} if R.descriptor_arms(request) and getattr(adp,'JOINT_REFERENCE',False) else {}
 
 
@@ -812,11 +862,11 @@ def evaluate(private_root,request_id,pool_path,key_path,operator_id):
                     random.Random(seed).shuffle(names)
                     for name in names:
                         if v4:
-                            from . import candidates as C
+                            from . import candidate_registry as CR
                             desc=programs[name]
                             aid=evidence.start(task.task_id+'-'+name,{'kind':'solver','task':task.model_dump(mode='json'),
                                 'descriptor':desc,'arm':name,'seed':seed,'limits':desc['resource_profile']})
-                            receipt=C.run(task,desc,seed=seed,expected_id=desc['descriptor_id'],isolation='runc')
+                            receipt=CR.run(task,desc,seed=seed,expected_id=desc['descriptor_id'],isolation='runc')
                         else:
                             aid=evidence.start(task.task_id+'-'+name,{'kind':'solver','task':task.model_dump(mode='json'),
                                 'program':programs[name].model_dump(mode='json'),'arm':name,'seed':seed,'limits':request['limits']})

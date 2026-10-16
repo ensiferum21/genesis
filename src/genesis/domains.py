@@ -160,8 +160,9 @@ class GraphHostAdapter(DomainAdapter):
         return {'status': 'VALID', 'value': checked['value'], 'checkers': checked['checkers']}
 
     JOINT_REFERENCE = True          # B20_R24: the custodian asks v4 evaluations for the joint LP/SAT reference
+    ROWS_REFERENCE = False          # B20_R42: only the triangle-free adapter offers the generated-rows reference
 
-    def reference(self, task, *, evidence=None, seconds=600, joint=False):
+    def reference(self, task, *, evidence=None, seconds=600, joint=False, rows=None):
         """Evaluator-only certified optimum, or UNSUPPORTED with the reason.
 
         ``joint`` (B20_R24, used by the custodian for v4 evaluations): above the exact-search range, certify
@@ -174,6 +175,12 @@ class GraphHostAdapter(DomainAdapter):
         gate = self.supports(task, 'exact_reference')
         if gate:
             return gate
+        if rows is not None:
+            # B20_R42 (v5 requests, opt-in): the named generated-rows route above the exact-search range
+            if not self.ROWS_REFERENCE:
+                return Unsupported(f'{self.name} offers no generated-rows reference')
+            if len(task.edges) > self.EXACT_MAX_EDGES:
+                return self._rows_reference(task, evidence=evidence, rows=rows)
         if joint and len(task.edges) > self.EXACT_MAX_EDGES:
             return self._joint_reference(task, evidence=evidence, seconds=seconds)
         if len(task.edges) <= self.EXACT_MAX_EDGES:
@@ -223,6 +230,31 @@ class GraphHostAdapter(DomainAdapter):
         if evidence is not None:
             from .verification.certificates import persist
             out['certificate_bundle'] = persist(evidence, rec['bundle'], rec['objects'])
+        return out
+
+    def _rows_reference(self, task, *, evidence, rows):
+        """generated_certify.reference_record over the request's package and limits; the custody bundle
+        (a certificates_rows bundle for an LP certificate over generated rows, else a v2 bundle) goes into
+        the evidence store."""
+        from .discovery import generated_certify as GC
+        from .verification.tools import ToolUnavailable
+        try:
+            package, _ = GC.known_package(rows['package_sha256'])
+        except ValueError as exc:
+            return Unsupported(f'generated-rows reference: {exc}')
+        route = {k: rows[k] for k in ('separation_seconds', 'max_rows', 'max_total', 'order', 'lp_rounding_seconds')}
+        route['enumerator'] = None if rows['enumerator'] == 'generic' else rows['enumerator']
+        try:
+            out, bundle, blobs = GC.reference_record(task, package, seconds=rows['seconds'], **route)
+        except ToolUnavailable as exc:
+            return Unsupported(f'certificate tools unavailable: {exc}')
+        if bundle is None:
+            return Unsupported(out['reason'])
+        out = dict(out, witness=[list(e) for e in out['witness']], route=rows['route'],
+                   package_sha256=rows['package_sha256'])
+        if evidence is not None:
+            from .verification.certificates import persist
+            out['certificate_bundle'] = persist(evidence, bundle, blobs)
         return out
 
     def certificate_obligations(self, claim, value):
@@ -296,6 +328,7 @@ class C4HostAdapter(GraphHostAdapter):
 
 class TriangleFreeHostAdapter(GraphHostAdapter):
     name = 'triangle_free_host_v1'
+    ROWS_REFERENCE = True           # the generated rows are triangle-free pattern bounds (B20_R31/R37)
 
 
 ADAPTERS = {a.name: a for a in (C4HostAdapter(), TriangleFreeHostAdapter())}

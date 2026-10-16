@@ -69,6 +69,7 @@ session can resume from the latest checkpoint (see `RESUME.md`).
 | 20_R39 | Custody for generated-row certificates; generated-rows reference | W03, W13; B20R35-OPEN-1 | Built and tested, not wired; adoption steps documented for a reviewer |
 | 20_R40 | Candidate registry v2; exact-MIP baseline kind | W06; NEXT_ACTIONS item 2; GV3 comparator | Built and tested, not wired; frozen E1/E1b descriptors unchanged |
 | 20_R41 | E1d readiness: DRAFT dense rule, candidate-blind calibration, re-pilot vs exact MIP | GV3 path (B20R33-OPEN-1, B20R41-OPEN-1) | 3 planted settings selected; 30/30 certified; comparator HiGHS at 4× budget; candidate optimal 30/30, +10.6 [9.1, 12.1]; READY_FOR_REVIEW |
+| 20_R42 | Registry v2 and the generated-rows reference wired into the custodian path, opt-in (request v5) | W06, W03; B20R40-OPEN-1, B20R35-OPEN-1 | Built and tested (11 new tests; full tests_genesis passes); v3/v4 requests, receipts, adopted rules and frozen ids unchanged; not adopted |
 
 Later phases (B17–B23+) follow the roadmap and its gates; numbers are labels,
 not estimates.

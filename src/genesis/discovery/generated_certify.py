@@ -26,6 +26,29 @@ from .obstruction import triangles
 
 ROOT = Path(__file__).resolve().parents[3]
 PACKAGE = ROOT / 'evidence' / 'relaxation_invention_b20r31' / 'package.json'
+# B20_R42: the theory packages a v5 request may name for its 'generated-rows-v1' reference, by digest.
+# A closed list of files in this repository; the digest the request names must match one of them.
+KNOWN_PACKAGES = (PACKAGE, ROOT / 'evidence' / 'generator_v2_b20r37' / 'package.json')
+
+
+def known_package(sha256):
+    """(package, path) for a known theory package with this digest, after its integrity checks and a
+    non-empty registry of CHECKED pattern statements; ValueError otherwise."""
+    from ..formal_research import theory_package as TP
+    from ..formal_research.triangle_theory import DEFS_SOURCE
+    for path in KNOWN_PACKAGES:
+        if not path.exists():
+            continue
+        pkg = json.loads(path.read_text())
+        if digest(pkg) != sha256:
+            continue
+        problems = TP.integrity_problems(pkg)
+        if problems:
+            raise ValueError(f'theory package {sha256[:16]} fails its integrity checks: {problems}')
+        if not V.registry_from_package(pkg, defs_source=DEFS_SOURCE)['patterns']:
+            raise ValueError(f'theory package {sha256[:16]} has no CHECKED pattern statement')
+        return pkg, path
+    raise ValueError(f'no known theory package has digest {sha256[:16]}')
 
 
 def load_registry(path=PACKAGE):
@@ -196,13 +219,10 @@ def certify_with_rows(task, witness, registry, *, seconds=600, sat_fallback=True
             'wall_s': round(time.monotonic() - start, 3), 'certificate': certificate}
 
 
-def reference(task, package, *, seconds=600, evidence=None, **route):
-    """A joint reference over generated rows (B20_R39; built, not wired into the evaluator). It
-    mirrors domains.GraphHostAdapter._joint_reference: the evaluator's seed witness, then
-    certify_with_rows with the package's registry. A certified result is taken into custody:
-    LP_DUAL_GENERATED_EXACT in a certificates_rows bundle, SAT_DRAT in an ordinary v2 bundle.
-    With `evidence` (a directory), the objects and bundle are written there. Returns the
-    reference record (FINITE_CERTIFIED with value and method, or UNSUPPORTED with a reason)."""
+def reference_record(task, package, *, seconds=600, **route):
+    """(record, bundle, blobs): the generated-rows reference as `reference` computes it, with the
+    custody bundle and its objects unwritten (the custodian persists them into its evidence store;
+    B20_R42). For an uncertified host: (UNSUPPORTED record, None, None)."""
     from ..dsl import solve
     from ..formal_research.triangle_theory import DEFS_SOURCE
     from ..models import SolverProgram
@@ -214,8 +234,8 @@ def reference(task, package, *, seconds=600, evidence=None, **route):
     lp = tuple(map(tuple, lp_greedy(task, Budget(1.0), 0)['witness']))
     rec = certify_with_rows(task, max((start, lp), key=len), registry, seconds=seconds, **route)
     if rec['lower'] != rec['upper']:
-        return {'status': 'UNSUPPORTED', 'reason': f'optimum not certified within {seconds}s by the generated-rows '
-                                                    f'route (bounds {rec["lower"]}..{rec["upper"]})'}
+        return ({'status': 'UNSUPPORTED', 'reason': f'optimum not certified within {seconds}s by the generated-rows '
+                                                     f'route (bounds {rec["lower"]}..{rec["upper"]})'}, None, None)
     if rec['method'] == 'LP_DUAL_GENERATED_EXACT':
         bundle, blobs = CR.build(task, witness=rec['witness'], lower=rec['lower'], certificate=rec['certificate'],
                                  package=package, attempts=rec['steps'])
@@ -227,9 +247,23 @@ def reference(task, package, *, seconds=600, evidence=None, **route):
                                     upper={'method': 'HOST_EDGE_COUNT'}, attempts=rec['steps'])
     out = {'status': 'FINITE_CERTIFIED', 'value': rec['upper'], 'method': 'GENERATED_ROWS_' + rec['method'],
            'witness': rec['witness'], 'certificate_status': bundle['status'], 'bundle_schema': bundle['schema']}
-    if evidence is not None:
+    return out, bundle, blobs
+
+
+def reference(task, package, *, seconds=600, evidence=None, **route):
+    """A joint reference over generated rows (B20_R39; since B20_R42 the evaluator computes it through
+    `reference_record` for v5 requests that name it, opt-in and pending review). It
+    mirrors domains.GraphHostAdapter._joint_reference: the evaluator's seed witness, then
+    certify_with_rows with the package's registry. A certified result is taken into custody:
+    LP_DUAL_GENERATED_EXACT in a certificates_rows bundle, SAT_DRAT in an ordinary v2 bundle.
+    With `evidence` (a directory), the objects and bundle are written there. Returns the
+    reference record (FINITE_CERTIFIED with value and method, or UNSUPPORTED with a reason)."""
+    from ..verification import certificates as CB
+    out, bundle, blobs = reference_record(task, package, seconds=seconds, **route)
+    if bundle is not None and evidence is not None:
         out['certificate_bundle'] = CB.persist_dir(evidence, bundle, blobs)
     return out
 
 
-__all__ = ['load_registry', 'rows', 'pattern_order', 'lp_dual_rows', 'certify_with_rows', 'reference', 'PACKAGE']
+__all__ = ['load_registry', 'rows', 'pattern_order', 'lp_dual_rows', 'lp_dual_rows_x', 'certify_with_rows', 'reference',
+           'reference_record', 'known_package', 'KNOWN_PACKAGES', 'PACKAGE']

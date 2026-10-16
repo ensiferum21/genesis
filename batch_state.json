@@ -581,9 +581,14 @@
       },
       "B20_R41": {
         "commits": [
-          "39b0999"
+          "39b0999",
+          "eb3e561"
         ],
         "result": "E1d readiness (DEV, DRAFT rule e1-hard-v3-draft: strongest baseline = per-host best of E1's three DSL baselines and milp-highs-v1 at 0.5 s and 2.0 s; candidate-blind generated-rows reference with lp_rounding_seconds=1.0, median limit 30 s). Calibration (64 hosts, candidate-blind) selects planted n38 (0.8,0.07), n40 (0.8,0.06), n40 (0.7,0.06); erdos settings fail (HiGHS at 2 s optimal on 20/21 certified). Re-pilot (30 hosts, all certified, ref median 20.5 s): comparator HiGHS at 4x budget; candidate optimal 30/30, +10.6 [9.1, 12.1], W/T/L 24/6/0, cost ratio 0.34, dry run SUPPORTED, 80 per stratum for power 0.81: READY_FOR_REVIEW. New: certify_with_rows(lp_rounding_seconds) off by default"
+      },
+      "B20_R42": {
+        "commits": [],
+        "result": "engineering only: opt-in wiring of registry v2 and the generated-rows reference into the custodian path. candidate_registry.py dispatches by schema (v1 path unchanged); evaluation request v5 = v4 + a closed reference route (generated-rows-v1, known integrity-checked package by digest, bounded limits) and takes registry-v2 arms; select_comparator accepts an exact v2 baseline only under a rule that names it (the DRAFT e1-hard-v3-draft, registered for record checks only, adopted by no study); the triangle-free adapter computes the rows reference with custody; v3/v4 requests, receipts, adopted rules and frozen descriptor ids unchanged; 11 new tests, full tests_genesis passes; not adopted"
       }
     },
     "open_after_b20_r5": [
@@ -917,6 +922,9 @@
     "open_after_b20_r41": [
       "B20R41-OPEN-1: E1d package decision (rule e1-hard-v3-draft, generated-rows reference, registry v2 wiring, statistician, custodian)",
       "B20R33-OPEN-1 updated: READY_FOR_REVIEW DEV readiness beyond an exact MIP at 4x budget on dense planted settings"
+    ],
+    "open_after_b20_r42": [
+      "B20R40-OPEN-1 and B20R35-OPEN-1 updated: wiring built opt-in (request v5); adoption with B20R41-OPEN-1"
     ]
   }
 }

@@ -1,8 +1,13 @@
-# A generated-rows reference: built, not adopted (B20_R39, DRAFT for a reviewer)
+# A generated-rows reference: built and wired opt-in, not adopted (B20_R39, B20_R42; DRAFT for a reviewer)
 
-**Status.** DEV engineering by the builder. Nothing here is wired into the evaluator, the
-custodian or the certificate replay that a custodian runs. Adoption is a reviewed trust-path
-change: B20R35-OPEN-1 and B20R33-OPEN-1.
+**Status.** DEV engineering by the builder. Adoption is a reviewed trust-path change
+(B20R35-OPEN-1, B20R33-OPEN-1, B20R41-OPEN-1).
+- **B20_R39** built the custody and the reference.
+- **B20_R42** wired them into the custodian, but only for evaluation requests v5 that name the
+  route explicitly, under rules this code knows. Requests v3 and v4, receipts, the adopted rules
+  and the frozen packages behave exactly as before. No study adopts the route.
+- **B20_R41** calibrated a dense family under the DRAFT rule `e1-hard-v3-draft` with this
+  reference, and found E1 READY_FOR_REVIEW against an exact MIP at four times its budget.
 
 ## Why it exists
 
@@ -44,7 +49,27 @@ certified result is taken into custody:
 - LP_DUAL_GENERATED_EXACT in a rows bundle;
 - SAT_DRAT in an ordinary v2 bundle.
 
+`reference_record` (B20_R42) returns the bundle and its objects unwritten, so that the custodian
+can persist them into its evidence store. B20_R41 adds `lp_rounding_seconds`, off by default: it
+rounds the route's own LP solution, which is integral on most dense planted hosts.
+
+**The wiring (B20_R42, opt-in).**
+- **Request v5** (`kernel.receipts.REQUEST_V5`) is a v4 request plus a closed `reference` field.
+  The field holds the route `generated-rows-v1`, the theory package by digest, and every route
+  limit.
+- **The custodian checks the route before registration** (`custodian.reference_problems`). The
+  package must be one of `generated_certify.KNOWN_PACKAGES` and must pass its integrity checks.
+  Its rows are derived only from CHECKED statements.
+- **The reference.** `reference_options` asks the domain adapter for exactly that route. Only the
+  triangle-free adapter offers it, and a C4 request is refused.
+- **Custody.** The bundle goes into the evaluation's evidence store.
+- **Binding.** The receipt stays scientific receipt v4. It binds the whole request, route
+  included, by hash.
+
 ## What a reviewer would have to decide and do to adopt it
+
+Steps 3 and 4 are built (B20_R42), and step 5 has a DRAFT measurement (B20_R41). Each still needs
+the reviewer's decision.
 
 1. **The package.** Accept the theory package, generator v1 (`evidence/relaxation_invention_b20r31/package.json`)
    or v2 (`evidence/generator_v2_b20r37/package.json`), and put it in custody. Its statements are

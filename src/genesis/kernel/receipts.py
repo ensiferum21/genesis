@@ -49,7 +49,12 @@ REQUEST_V4 = 'genesis-evaluation-request-v4'
 # Their receipts are scientific receipt v4. The name is new rather than a request version number,
 # so no number is reused with a different meaning.
 REQUEST_STATEMENTS = 'genesis-statement-evaluation-request-v1'
-DESCRIPTOR_REQUESTS = (REQUEST_V4, REQUEST_STATEMENTS)
+# B20_R42 (wiring built for review; opt-in): a v5 request is a v4 request that also names the evaluator's
+# reference route in a closed `reference` field (today only 'generated-rows-v1', the B20_R39 reference over
+# Lean-checked generated rows). Its receipt is scientific receipt v4, which binds the whole request by hash.
+# v4 requests keep their meaning and their reference.
+REQUEST_V5 = 'genesis-evaluation-request-v5'
+DESCRIPTOR_REQUESTS = (REQUEST_V4, REQUEST_STATEMENTS, REQUEST_V5)
 V4_EVIDENCE_KINDS = ('sealed_evaluation', 'ablation', 'placebo', 'internal_replication', 'external_reproduction')
 # Kinds that repeat a supporting sealed_evaluation of the same claim (kernel.evidence checks the repetition).
 REPLICATION_KINDS = ('internal_replication', 'external_reproduction')
@@ -449,7 +454,7 @@ def check_request(r):
         out.append('analysis must be ANALYSIS_V1 or a valid v2 plan (kernel.analysis.check_plan)')
     elif descriptor_arms(r) and r['analysis'] == ANALYSIS_V1:
         out.append('a v4 (executable-candidate) request needs an analysis plan v2')
-    if r.get('evidence_kind') in DESCRIPTOR_ONLY_KINDS and r.get('schema') != REQUEST_V4:
+    if r.get('evidence_kind') in DESCRIPTOR_ONLY_KINDS and r.get('schema') not in (REQUEST_V4, REQUEST_V5):
         out.append(f'{r["evidence_kind"]} requests compare executable descriptors (v4 requests) only')
     if descriptor_arms(r) and r.get('evidence_kind') not in V4_EVIDENCE_KINDS:
         out.append(f'a v4 request supports {", ".join(V4_EVIDENCE_KINDS)} only (B20_R5); '
