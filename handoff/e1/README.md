@@ -68,6 +68,7 @@ The rehearsal licenses nothing. Every role was played by one operator, and the b
 | `exposure_hosts_addendum_b20r31.json` | B20_R31: the 168 DEV hosts named after that, all in the `e1b` settings, one of which (erdos n30 p0.3) is the e1-v2 setting: B20_R30's certification-budget hosts, B20_R31's study hosts and its six development-look hosts. Written by `scripts/exposure_addendum.py`. A custodian lists it as a further `json` source. |
 | `exposure_hosts_addendum_b20r32.json` | B20_R32: the 90 DEV hosts of the generated-row certification study, all in the `e1b` settings (one setting, erdos n30 p0.3, is the e1-v2 setting). |
 | `exposure_hosts_addendum_b20r33.json` | B20_R33: the 60 DEV hosts of the strong-baseline audit, all in the `e1b` settings (one setting, erdos n30 p0.3, is the e1-v2 setting). |
+| `exposure_hosts_addendum_b20r34.json` | B20_R34: the 104 DEV graphs named by the MIP-hard probe (56 run, plus the 48 never-run graphs of the listing regenerated on resume); none is in this package's settings. |
 | `package_index.json` | Identities, the calibration, the verdicts and the rehearsal outcomes. |
 | `decision_record_DRAFT_v2.json`, `pilot_summary_b20r12.json`, `power_analysis_centred_b20r12.json` | B20_R12 (`e1-hard-v1`: UNDERPOWERED). Kept. |
 | `decision_record_DRAFT.json`, `b19_*.json`, `exposure_hosts_to_exclude.json` | B19 and the earlier exposure list. Kept. |

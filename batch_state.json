@@ -501,6 +501,12 @@
           "f09988e"
         ],
         "result": "strong-baseline audit of the frozen E1/E1b descriptors on 60 fresh e1b hosts, one pinned core: an exact HiGHS MILP arm proves every optimum within 0.36 CPU s; E1 (0.5 s) MIP - candidate +0.75 [0.58, 0.92] MIP_DOMINATES (candidate optimal 27/60); E1b (2.0 s) +0.20 [0.12, 0.30] NO_MATERIAL_DIFFERENCE (candidate optimal 49/60, never above); both beat their DSL baselines by ~2.1-2.3; neither can be beyond strong baselines on this family"
+      },
+      "B20_R34": {
+        "commits": [
+          "0aeea98"
+        ],
+        "result": "probe for MIP-hard certifiable triangle-free settings (7 settings near the 200-edge bound, n <= 40, 8 hosts each, one pinned core): NO_MIP_HARD_CERTIFIABLE_SETTING; where the evaluator certifies the exact MIP is optimal (erdos n40 p0.23: 8/8 certified, MIP proofs <= 0.16 CPU s); in five settings the MIP proves 38/40 optima within 2 s while 60 s certification fails on 3-6 of 8; planted n40 (0.8, 0.06): neither finishes, E1b candidate beats the MIP 2 s incumbent on 7/8 (exploratory, uncertified). A container restart and resume exposed a host-regeneration defect (B20R34-OPEN-1); record repaired (rows and verdict unchanged)"
       }
     },
     "open_after_b20_r5": [
@@ -660,6 +666,26 @@
     "open_after_b20_r33": [
       "GV3 sign-off (reviewer: e1-hard-v2 and DRAFTs; statistician B19-OPEN-4; independent custodian)",
       "B20R33-OPEN-1 (E1/E1b not beyond strong baselines on the e1b family: exact MIP always optimal; scope, MIP comparator or MIP-hard settings)",
+      "B20R24-OPEN-2 (certification limit vs unsupported limit; B20_R30: LIMITS_CONSISTENT on the e1b family; reviewer decision)",
+      "B20R24-OPEN-1 (repaired, pending review)",
+      "B20R9-OPEN-1 (GV4: component invention; five attempts in four families without DEV construction utility; relaxation family has a certification signal)",
+      "B20R25-OPEN-1 (hint generator v2 heuristic; pending review)",
+      "B20R26-OPEN-1 (quotient family: one attempt)",
+      "B20R27-OPEN-1 (decomposition family: one attempt)",
+      "B20R31-OPEN-1 (relaxation family: one attempt)",
+      "B20R32-OPEN-1 (generated-row certification: sound, no prospective utility on an unenriched sample)",
+      "registered interventions for represent-and-repair-v1 and the formal successor kind; supervised SAT child (needs a versioned kind so frozen E1 descriptors do not change)",
+      "B20R3-OPEN-2",
+      "B20R5-OPEN-2",
+      "B14-OPEN-4 (pending review)",
+      "B20R-OPEN-3 (pending review)",
+      "R-04",
+      "B20R8-OPEN-1 (pending review)"
+    ],
+    "open_after_b20_r34": [
+      "GV3 sign-off (reviewer: e1-hard-v2 and DRAFTs; statistician B19-OPEN-4; independent custodian)",
+      "B20R33-OPEN-1 (E1/E1b not beyond strong baselines on the e1b family; B20_R34: no MIP-hard certifiable setting in range; scope, MIP comparator, stronger certification route, plan without certified optima, or another domain)",
+      "B20R34-OPEN-1 (resume regenerates hosts in the R30-R34 study scripts; R34 record repaired; pending review)",
       "B20R24-OPEN-2 (certification limit vs unsupported limit; B20_R30: LIMITS_CONSISTENT on the e1b family; reviewer decision)",
       "B20R24-OPEN-1 (repaired, pending review)",
       "B20R9-OPEN-1 (GV4: component invention; five attempts in four families without DEV construction utility; relaxation family has a certification signal)",

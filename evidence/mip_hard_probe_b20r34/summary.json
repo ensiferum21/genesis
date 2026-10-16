@@ -1,0 +1,166 @@
+{
+ "budget_s": 2.0,
+ "code_identity": "8944da6c320985ad05af1145e21dd19478f205b9cf60b7cbd9ccd08ea2e2ea3d",
+ "descriptors": {
+  "candidate": "f5a3d7ffd69c014e28aacc6550a41118c25cf7bfbc13145cb9fbed7892f6f06e",
+  "exchange_tm": "0a3cd7611875c3d63fa22ce1a4d52e0590c309d381a13c338b5de71e3d312dd5",
+  "low_cycle_tm": "790da2a7f570888af408cc53ac918b614e8ab8bccf7d8d73d4162f7a3a25ca3c",
+  "multistart_tm": "6ff23ed1bcc3785bf444571226eb6d1a5dfa84a99bc11af0589ef9f2a27d82f1"
+ },
+ "exposure_scan": {
+  "calibration_hosts": 456,
+  "distinct_hosts": 2044,
+  "e1_named_hosts": 711,
+  "empty_files_skipped": [
+   "evidence/failed-wal-final-replay.json",
+   "evidence/final-replay.json"
+  ],
+  "excluded_identities": 2044,
+  "files_scanned": 904,
+  "host_records": 5574
+ },
+ "found": [],
+ "reference_s": 60,
+ "schema": "genesis-b20r34-mip-hard-probe-v1",
+ "seed": 20263401,
+ "settings": {
+  "erdos:17db5902": {
+   "certified": 0.25,
+   "certified_hosts": 2,
+   "class": "NOT_MIP_HARD_CERTIFIABLE",
+   "edges_mean": 183.0,
+   "gap_best_baseline": 8.5,
+   "gap_candidate": 3.0,
+   "gap_mip": 0.0,
+   "headroom": 1.0,
+   "hosts": 8,
+   "mip_cpu_s_max": 1.99,
+   "mip_proved_optimal": 6,
+   "mip_suboptimal": 0.0,
+   "over_edge_bound": 1,
+   "params": {
+    "n": 30,
+    "p": 0.42
+   }
+  },
+  "erdos:265eb8bd": {
+   "certified": 1.0,
+   "certified_hosts": 8,
+   "class": "NOT_MIP_HARD_CERTIFIABLE",
+   "edges_mean": 173.4,
+   "gap_best_baseline": 1.75,
+   "gap_candidate": 0.125,
+   "gap_mip": 0.0,
+   "headroom": 0.875,
+   "hosts": 8,
+   "mip_cpu_s_max": 0.152,
+   "mip_proved_optimal": 8,
+   "mip_suboptimal": 0.0,
+   "over_edge_bound": 0,
+   "params": {
+    "n": 40,
+    "p": 0.23
+   }
+  },
+  "erdos:c06ebda9": {
+   "certified": 0.625,
+   "certified_hosts": 5,
+   "class": "NOT_MIP_HARD_CERTIFIABLE",
+   "edges_mean": 183.2,
+   "gap_best_baseline": 2.6,
+   "gap_candidate": 0.0,
+   "gap_mip": 0.0,
+   "headroom": 1.0,
+   "hosts": 8,
+   "mip_cpu_s_max": 0.354,
+   "mip_proved_optimal": 8,
+   "mip_suboptimal": 0.0,
+   "over_edge_bound": 1,
+   "params": {
+    "n": 37,
+    "p": 0.27
+   }
+  },
+  "erdos:d4a45b33": {
+   "certified": 0.625,
+   "certified_hosts": 5,
+   "class": "NOT_MIP_HARD_CERTIFIABLE",
+   "edges_mean": 183.1,
+   "gap_best_baseline": 4.2,
+   "gap_candidate": 0.0,
+   "gap_mip": 0.0,
+   "headroom": 1.0,
+   "hosts": 8,
+   "mip_cpu_s_max": 1.081,
+   "mip_proved_optimal": 8,
+   "mip_suboptimal": 0.0,
+   "over_edge_bound": 1,
+   "params": {
+    "n": 34,
+    "p": 0.33
+   }
+  },
+  "planted_cluster:1009f3e3": {
+   "certified": 0.5,
+   "certified_hosts": 4,
+   "class": "NOT_MIP_HARD_CERTIFIABLE",
+   "edges_mean": 163.2,
+   "gap_best_baseline": 7.25,
+   "gap_candidate": 0.5,
+   "gap_mip": 0.0,
+   "headroom": 1.0,
+   "hosts": 8,
+   "mip_cpu_s_max": 0.363,
+   "mip_proved_optimal": 8,
+   "mip_suboptimal": 0.0,
+   "over_edge_bound": 0,
+   "params": {
+    "n": 36,
+    "p_in": 0.6,
+    "p_out": 0.15
+   }
+  },
+  "planted_cluster:5825a3a5": {
+   "certified": 0.625,
+   "certified_hosts": 5,
+   "class": "NOT_MIP_HARD_CERTIFIABLE",
+   "edges_mean": 181.6,
+   "gap_best_baseline": 6.8,
+   "gap_candidate": 0.0,
+   "gap_mip": 0.0,
+   "headroom": 1.0,
+   "hosts": 8,
+   "mip_cpu_s_max": 0.924,
+   "mip_proved_optimal": 8,
+   "mip_suboptimal": 0.0,
+   "over_edge_bound": 0,
+   "params": {
+    "n": 40,
+    "p_in": 0.6,
+    "p_out": 0.12
+   }
+  },
+  "planted_cluster:9491bde8": {
+   "certified": 0.0,
+   "certified_hosts": 0,
+   "class": "NOT_MIP_HARD_CERTIFIABLE",
+   "edges_mean": 187.6,
+   "gap_best_baseline": null,
+   "gap_candidate": null,
+   "gap_mip": null,
+   "headroom": null,
+   "hosts": 8,
+   "mip_cpu_s_max": 2.003,
+   "mip_proved_optimal": 0,
+   "mip_suboptimal": null,
+   "over_edge_bound": 0,
+   "params": {
+    "n": 40,
+    "p_in": 0.8,
+    "p_out": 0.06
+   }
+  }
+ },
+ "status": "DEV probe for a reviewer decision (B20R33-OPEN-1); not a calibration; licenses no claim",
+ "verdict": "NO_MIP_HARD_CERTIFIABLE_SETTING"
+}

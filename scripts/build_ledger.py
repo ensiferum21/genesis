@@ -523,11 +523,13 @@ WORKSTREAMS = {
              'tests_sandbox/test_launcher.py', G + 'test_reproduce.py']),
     'W05': ('Domain contracts and calibration (B20_R12/R24: separately versioned study rules e1-hard-v1/v2; B20_R30: '
             'the calibration\'s 60 s certification limit and the evaluator\'s 600 s measured on the e1b family; B20_R33: '
-            'an exact MIP baseline proves every e1b optimum within 0.36 CPU s)', B,
+            'an exact MIP baseline proves every e1b optimum within 0.36 CPU s; B20_R34: no MIP-hard certifiable setting '
+            'within the 200-edge bound)', B,
             ['src/genesis/domains.py', 'src/genesis/calibration.py', 'configs/dev_calibration.json',
-             'evidence/certification_budget_b20r30/summary.json', 'evidence/strong_baseline_audit_b20r33/summary.json'],
+             'evidence/certification_budget_b20r30/summary.json', 'evidence/strong_baseline_audit_b20r33/summary.json',
+             'evidence/mip_hard_probe_b20r34/summary.json'],
             [G + 'test_domain_adapters.py', G + 'test_calibration.py', G + 'test_calibration_rules.py',
-             G + 'test_certification_budget.py', G + 'test_strong_baseline_audit.py']),
+             G + 'test_certification_budget.py', G + 'test_strong_baseline_audit.py', G + 'test_mip_hard_probe.py']),
     'W06': ('Independent custody and preregistration', B,
             ['src/genesis/custody_records.py', 'src/genesis/custodian.py', 'src/genesis/decision_record.py',
              'src/genesis/candidates.py', 'src/genesis/judge.py', 'src/genesis/learning/statement_panels.py',

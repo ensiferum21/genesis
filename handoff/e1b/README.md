@@ -79,6 +79,7 @@ On this family the calibration's limit and the plan's 5% unsupported limit agree
 | `exposure_hosts_addendum_b20r31.json` | B20_R31: the 168 DEV hosts named after that, all in this package's settings: B20_R30's certification-budget hosts, B20_R31's study hosts and its six development-look hosts. A custodian lists **every** exposure file: `exposure_hosts_all.json` and each addendum. |
 | `exposure_hosts_addendum_b20r32.json` | B20_R32: the 90 DEV hosts of the generated-row certification study, all in the `e1b` settings. |
 | `exposure_hosts_addendum_b20r33.json` | B20_R33: the 60 DEV hosts of the strong-baseline audit, all in the `e1b` settings. |
+| `exposure_hosts_addendum_b20r34.json` | B20_R34: the 104 DEV graphs named by the MIP-hard probe (56 run, plus the 48 never-run graphs of the listing regenerated on resume); none is in this package's settings. |
 | `package_index.json` | Identities, the calibration and the outcomes. |
 
 The B20_R23 version of this package (builder-chosen settings, both domains) is in the git history at `e7fad0e`.
