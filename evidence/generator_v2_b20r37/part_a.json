@@ -1,0 +1,162 @@
+{
+ "checker_cpu_s_reported": 170.825,
+ "construction_cpu_s": 233.741,
+ "generation": {
+  "connected_triangle_covered": 258,
+  "graphs_in_range": 1245,
+  "implied_by_earlier_patterns": [
+   {
+    "ex": 9,
+    "id": "pat6_14_0102040512131415232425343545",
+    "lp_triangle_rows": 9.333333
+   },
+   {
+    "ex": 9,
+    "id": "pat6_15_010203040512131415232425343545",
+    "lp_triangle_rows": 10.0
+   },
+   {
+    "ex": 8,
+    "id": "pat7_13_01020304121314151623243456",
+    "lp_triangle_rows": 8.666667
+   },
+   {
+    "ex": 9,
+    "id": "pat7_13_03041213142324252634364556",
+    "lp_triangle_rows": 9.5
+   },
+   {
+    "ex": 9,
+    "id": "pat7_14_0102030412131423243435454656",
+    "lp_triangle_rows": 9.666667
+   },
+   {
+    "ex": 10,
+    "id": "pat7_15_010203050612131623263436454656",
+    "lp_triangle_rows": 10.5
+   },
+   {
+    "ex": 11,
+    "id": "pat7_17_0102030405121314151623242526343545",
+    "lp_triangle_rows": 11.333333
+   },
+   {
+    "ex": 11,
+    "id": "pat7_17_0103040506131516242526343536454656",
+    "lp_triangle_rows": 11.333333
+   },
+   {
+    "ex": 11,
+    "id": "pat7_17_0103050614151623242526343536454656",
+    "lp_triangle_rows": 11.333333
+   },
+   {
+    "ex": 12,
+    "id": "pat7_19_01020304050612131415162324343536454656",
+    "lp_triangle_rows": 12.666667
+   },
+   {
+    "ex": 12,
+    "id": "pat7_19_01020305061213141516232425263436454656",
+    "lp_triangle_rows": 12.666667
+   }
+  ],
+  "implied_by_triangle_rows": 238,
+  "kept": 9
+ },
+ "new_usable": [
+  "pat7_13_01040512152325343536454656",
+  "pat7_13_01050612151623242526343546",
+  "pat7_14_0102050612131623243435454656",
+  "pat7_15_010305061314162425263435364656",
+  "pat7_16_01020304050612131415162526343645",
+  "pat7_20_0102030506121314151623242526343536454656",
+  "pat7_21_010203040506121314151623242526343536454656"
+ ],
+ "obligations": {
+  "pc_adj_comm": "CHECKED",
+  "pc_adj_le_one": "CHECKED",
+  "pc_bridge": "CHECKED",
+  "pc_pat5_10_01020304121314232434": "CHECKED",
+  "pc_pat6_10_01040512152325343545": "CHECKED",
+  "pc_pat7_13_01040512152325343536454656": "CHECKED",
+  "pc_pat7_13_01050612151623242526343546": "CHECKED",
+  "pc_pat7_14_0102050612131623243435454656": "CHECKED",
+  "pc_pat7_15_010305061314162425263435364656": "CHECKED",
+  "pc_pat7_16_01020304050612131415162526343645": "CHECKED",
+  "pc_pat7_20_0102030506121314151623242526343536454656": "CHECKED",
+  "pc_pat7_21_010203040506121314151623242526343536454656": "CHECKED"
+ },
+ "patterns": [
+  "pat5_10_01020304121314232434",
+  "pat6_10_01040512152325343545",
+  "pat7_13_01040512152325343536454656",
+  "pat7_13_01050612151623242526343546",
+  "pat7_14_0102050612131623243435454656",
+  "pat7_15_010305061314162425263435364656",
+  "pat7_16_01020304050612131415162526343645",
+  "pat7_20_0102030506121314151623242526343536454656",
+  "pat7_21_010203040506121314151623242526343536454656"
+ ],
+ "screen": {
+  "pc_adj_comm": {
+   "instances_meeting_hypotheses": 3000,
+   "result": "NO_COUNTEREXAMPLE"
+  },
+  "pc_adj_le_one": {
+   "instances_meeting_hypotheses": 3000,
+   "result": "NO_COUNTEREXAMPLE"
+  },
+  "pc_bridge": {
+   "instances_meeting_hypotheses": 1710,
+   "result": "NO_COUNTEREXAMPLE"
+  },
+  "pc_pat5_10_01020304121314232434": {
+   "instances_meeting_hypotheses": 1662,
+   "result": "NO_COUNTEREXAMPLE"
+  },
+  "pc_pat6_10_01040512152325343545": {
+   "instances_meeting_hypotheses": 1696,
+   "result": "NO_COUNTEREXAMPLE"
+  },
+  "pc_pat7_13_01040512152325343536454656": {
+   "instances_meeting_hypotheses": 1729,
+   "result": "NO_COUNTEREXAMPLE"
+  },
+  "pc_pat7_13_01050612151623242526343546": {
+   "instances_meeting_hypotheses": 1710,
+   "result": "NO_COUNTEREXAMPLE"
+  },
+  "pc_pat7_14_0102050612131623243435454656": {
+   "instances_meeting_hypotheses": 1710,
+   "result": "NO_COUNTEREXAMPLE"
+  },
+  "pc_pat7_15_010305061314162425263435364656": {
+   "instances_meeting_hypotheses": 1663,
+   "result": "NO_COUNTEREXAMPLE"
+  },
+  "pc_pat7_16_01020304050612131415162526343645": {
+   "instances_meeting_hypotheses": 1685,
+   "result": "NO_COUNTEREXAMPLE"
+  },
+  "pc_pat7_20_0102030506121314151623242526343536454656": {
+   "instances_meeting_hypotheses": 1733,
+   "result": "NO_COUNTEREXAMPLE"
+  },
+  "pc_pat7_21_010203040506121314151623242526343536454656": {
+   "instances_meeting_hypotheses": 1700,
+   "result": "NO_COUNTEREXAMPLE"
+  }
+ },
+ "usable": [
+  "pat5_10_01020304121314232434",
+  "pat6_10_01040512152325343545",
+  "pat7_13_01040512152325343536454656",
+  "pat7_13_01050612151623242526343546",
+  "pat7_14_0102050612131623243435454656",
+  "pat7_15_010305061314162425263435364656",
+  "pat7_16_01020304050612131415162526343645",
+  "pat7_20_0102030506121314151623242526343536454656",
+  "pat7_21_010203040506121314151623242526343536454656"
+ ]
+}

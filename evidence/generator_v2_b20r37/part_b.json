@@ -1,0 +1,118 @@
+{
+ "budget_s": 60,
+ "by_stratum": {
+  "erdos:17db5902": {
+   "certified_v1": 13,
+   "certified_v1_not_v2": 1,
+   "certified_v2": 14,
+   "certified_v2_not_v1": 2,
+   "hosts": 20,
+   "lp_rows_median": {
+    "v1": 6286.5,
+    "v2": 80289.5
+   },
+   "lp_step_wall_s_max": {
+    "v1": 2.469,
+    "v2": 13.441
+   },
+   "reaches_limit_v2": false,
+   "wall_median_s": {
+    "v1": 34.791,
+    "v2": 27.476
+   },
+   "wall_total_s": {
+    "v1": 683.75,
+    "v2": 692.32
+   }
+  },
+  "planted_cluster:9491bde8": {
+   "certified_v1": 17,
+   "certified_v1_not_v2": 0,
+   "certified_v2": 19,
+   "certified_v2_not_v1": 2,
+   "hosts": 20,
+   "lp_rows_median": {
+    "v1": 51918.5,
+    "v2": 80546.5
+   },
+   "lp_step_wall_s_max": {
+    "v1": 10.496,
+    "v2": 28.419
+   },
+   "reaches_limit_v2": true,
+   "wall_median_s": {
+    "v1": 24.991,
+    "v2": 35.409
+   },
+   "wall_total_s": {
+    "v1": 621.19,
+    "v2": 760.41
+   }
+  }
+ },
+ "exposure_scan": {
+  "calibration_hosts": 456,
+  "distinct_hosts": 2180,
+  "e1_named_hosts": 711,
+  "empty_files_skipped": [
+   "evidence/failed-wal-final-replay.json",
+   "evidence/final-replay.json"
+  ],
+  "excluded_identities": 2180,
+  "files_scanned": 940,
+  "host_records": 6102
+ },
+ "invalid_certificates": [],
+ "mcnemar_p_one_sided": 0.1875,
+ "pooled": {
+  "certified_v1": 30,
+  "certified_v1_not_v2": 1,
+  "certified_v2": 33,
+  "certified_v2_not_v1": 4,
+  "hosts": 40,
+  "lp_rows_median": {
+   "v1": 34420.0,
+   "v2": 80325.0
+  },
+  "lp_step_wall_s_max": {
+   "v1": 10.496,
+   "v2": 28.419
+  },
+  "reaches_limit_v2": null,
+  "wall_median_s": {
+   "v1": 26.462,
+   "v2": 33.97
+  },
+  "wall_total_s": {
+   "v1": 1304.94,
+   "v2": 1452.73
+  }
+ },
+ "routes": {
+  "v1": {
+   "max_rows": 50000,
+   "separation_seconds": 10
+  },
+  "v2": {
+   "enumerator": "fast",
+   "max_rows": 50000,
+   "max_total": 80000,
+   "order": "dense-first",
+   "separation_seconds": 15
+  }
+ },
+ "sound": true,
+ "value_disagreements": [],
+ "verdict": "NO_COVERAGE_GAIN",
+ "wall_saving_v1_minus_v2": {
+  "by_stratum": {
+   "erdos:17db5902": -0.428,
+   "planted_cluster:9491bde8": -6.961
+  },
+  "interval_90": [
+   -6.939,
+   0.238
+  ],
+  "mean": -3.695
+ }
+}

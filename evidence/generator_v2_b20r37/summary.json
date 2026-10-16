@@ -1,0 +1,301 @@
+{
+ "checker_identity": "genesis.verification.lp_dual_rows@1dea801e540518e2963477002a2ae68cf6d6a392400dd5afeb10cd95b45743d8",
+ "code_identity": "303872c5762c6cf26b8c6c78bc8ca68d28ec011a5bad1783cbb043544c9128aa",
+ "part_a": {
+  "checker_cpu_s_reported": 170.825,
+  "construction_cpu_s": 233.741,
+  "generation": {
+   "connected_triangle_covered": 258,
+   "graphs_in_range": 1245,
+   "implied_by_earlier_patterns": [
+    {
+     "ex": 9,
+     "id": "pat6_14_0102040512131415232425343545",
+     "lp_triangle_rows": 9.333333
+    },
+    {
+     "ex": 9,
+     "id": "pat6_15_010203040512131415232425343545",
+     "lp_triangle_rows": 10.0
+    },
+    {
+     "ex": 8,
+     "id": "pat7_13_01020304121314151623243456",
+     "lp_triangle_rows": 8.666667
+    },
+    {
+     "ex": 9,
+     "id": "pat7_13_03041213142324252634364556",
+     "lp_triangle_rows": 9.5
+    },
+    {
+     "ex": 9,
+     "id": "pat7_14_0102030412131423243435454656",
+     "lp_triangle_rows": 9.666667
+    },
+    {
+     "ex": 10,
+     "id": "pat7_15_010203050612131623263436454656",
+     "lp_triangle_rows": 10.5
+    },
+    {
+     "ex": 11,
+     "id": "pat7_17_0102030405121314151623242526343545",
+     "lp_triangle_rows": 11.333333
+    },
+    {
+     "ex": 11,
+     "id": "pat7_17_0103040506131516242526343536454656",
+     "lp_triangle_rows": 11.333333
+    },
+    {
+     "ex": 11,
+     "id": "pat7_17_0103050614151623242526343536454656",
+     "lp_triangle_rows": 11.333333
+    },
+    {
+     "ex": 12,
+     "id": "pat7_19_01020304050612131415162324343536454656",
+     "lp_triangle_rows": 12.666667
+    },
+    {
+     "ex": 12,
+     "id": "pat7_19_01020305061213141516232425263436454656",
+     "lp_triangle_rows": 12.666667
+    }
+   ],
+   "implied_by_triangle_rows": 238,
+   "kept": 9
+  },
+  "new_usable": [
+   "pat7_13_01040512152325343536454656",
+   "pat7_13_01050612151623242526343546",
+   "pat7_14_0102050612131623243435454656",
+   "pat7_15_010305061314162425263435364656",
+   "pat7_16_01020304050612131415162526343645",
+   "pat7_20_0102030506121314151623242526343536454656",
+   "pat7_21_010203040506121314151623242526343536454656"
+  ],
+  "obligations": {
+   "pc_adj_comm": "CHECKED",
+   "pc_adj_le_one": "CHECKED",
+   "pc_bridge": "CHECKED",
+   "pc_pat5_10_01020304121314232434": "CHECKED",
+   "pc_pat6_10_01040512152325343545": "CHECKED",
+   "pc_pat7_13_01040512152325343536454656": "CHECKED",
+   "pc_pat7_13_01050612151623242526343546": "CHECKED",
+   "pc_pat7_14_0102050612131623243435454656": "CHECKED",
+   "pc_pat7_15_010305061314162425263435364656": "CHECKED",
+   "pc_pat7_16_01020304050612131415162526343645": "CHECKED",
+   "pc_pat7_20_0102030506121314151623242526343536454656": "CHECKED",
+   "pc_pat7_21_010203040506121314151623242526343536454656": "CHECKED"
+  },
+  "patterns": [
+   "pat5_10_01020304121314232434",
+   "pat6_10_01040512152325343545",
+   "pat7_13_01040512152325343536454656",
+   "pat7_13_01050612151623242526343546",
+   "pat7_14_0102050612131623243435454656",
+   "pat7_15_010305061314162425263435364656",
+   "pat7_16_01020304050612131415162526343645",
+   "pat7_20_0102030506121314151623242526343536454656",
+   "pat7_21_010203040506121314151623242526343536454656"
+  ],
+  "screen": {
+   "pc_adj_comm": {
+    "instances_meeting_hypotheses": 3000,
+    "result": "NO_COUNTEREXAMPLE"
+   },
+   "pc_adj_le_one": {
+    "instances_meeting_hypotheses": 3000,
+    "result": "NO_COUNTEREXAMPLE"
+   },
+   "pc_bridge": {
+    "instances_meeting_hypotheses": 1710,
+    "result": "NO_COUNTEREXAMPLE"
+   },
+   "pc_pat5_10_01020304121314232434": {
+    "instances_meeting_hypotheses": 1662,
+    "result": "NO_COUNTEREXAMPLE"
+   },
+   "pc_pat6_10_01040512152325343545": {
+    "instances_meeting_hypotheses": 1696,
+    "result": "NO_COUNTEREXAMPLE"
+   },
+   "pc_pat7_13_01040512152325343536454656": {
+    "instances_meeting_hypotheses": 1729,
+    "result": "NO_COUNTEREXAMPLE"
+   },
+   "pc_pat7_13_01050612151623242526343546": {
+    "instances_meeting_hypotheses": 1710,
+    "result": "NO_COUNTEREXAMPLE"
+   },
+   "pc_pat7_14_0102050612131623243435454656": {
+    "instances_meeting_hypotheses": 1710,
+    "result": "NO_COUNTEREXAMPLE"
+   },
+   "pc_pat7_15_010305061314162425263435364656": {
+    "instances_meeting_hypotheses": 1663,
+    "result": "NO_COUNTEREXAMPLE"
+   },
+   "pc_pat7_16_01020304050612131415162526343645": {
+    "instances_meeting_hypotheses": 1685,
+    "result": "NO_COUNTEREXAMPLE"
+   },
+   "pc_pat7_20_0102030506121314151623242526343536454656": {
+    "instances_meeting_hypotheses": 1733,
+    "result": "NO_COUNTEREXAMPLE"
+   },
+   "pc_pat7_21_010203040506121314151623242526343536454656": {
+    "instances_meeting_hypotheses": 1700,
+    "result": "NO_COUNTEREXAMPLE"
+   }
+  },
+  "usable": [
+   "pat5_10_01020304121314232434",
+   "pat6_10_01040512152325343545",
+   "pat7_13_01040512152325343536454656",
+   "pat7_13_01050612151623242526343546",
+   "pat7_14_0102050612131623243435454656",
+   "pat7_15_010305061314162425263435364656",
+   "pat7_16_01020304050612131415162526343645",
+   "pat7_20_0102030506121314151623242526343536454656",
+   "pat7_21_010203040506121314151623242526343536454656"
+  ]
+ },
+ "part_b": {
+  "budget_s": 60,
+  "by_stratum": {
+   "erdos:17db5902": {
+    "certified_v1": 13,
+    "certified_v1_not_v2": 1,
+    "certified_v2": 14,
+    "certified_v2_not_v1": 2,
+    "hosts": 20,
+    "lp_rows_median": {
+     "v1": 6286.5,
+     "v2": 80289.5
+    },
+    "lp_step_wall_s_max": {
+     "v1": 2.469,
+     "v2": 13.441
+    },
+    "reaches_limit_v2": false,
+    "wall_median_s": {
+     "v1": 34.791,
+     "v2": 27.476
+    },
+    "wall_total_s": {
+     "v1": 683.75,
+     "v2": 692.32
+    }
+   },
+   "planted_cluster:9491bde8": {
+    "certified_v1": 17,
+    "certified_v1_not_v2": 0,
+    "certified_v2": 19,
+    "certified_v2_not_v1": 2,
+    "hosts": 20,
+    "lp_rows_median": {
+     "v1": 51918.5,
+     "v2": 80546.5
+    },
+    "lp_step_wall_s_max": {
+     "v1": 10.496,
+     "v2": 28.419
+    },
+    "reaches_limit_v2": true,
+    "wall_median_s": {
+     "v1": 24.991,
+     "v2": 35.409
+    },
+    "wall_total_s": {
+     "v1": 621.19,
+     "v2": 760.41
+    }
+   }
+  },
+  "exposure_scan": {
+   "calibration_hosts": 456,
+   "distinct_hosts": 2180,
+   "e1_named_hosts": 711,
+   "empty_files_skipped": [
+    "evidence/failed-wal-final-replay.json",
+    "evidence/final-replay.json"
+   ],
+   "excluded_identities": 2180,
+   "files_scanned": 940,
+   "host_records": 6102
+  },
+  "invalid_certificates": [],
+  "mcnemar_p_one_sided": 0.1875,
+  "pooled": {
+   "certified_v1": 30,
+   "certified_v1_not_v2": 1,
+   "certified_v2": 33,
+   "certified_v2_not_v1": 4,
+   "hosts": 40,
+   "lp_rows_median": {
+    "v1": 34420.0,
+    "v2": 80325.0
+   },
+   "lp_step_wall_s_max": {
+    "v1": 10.496,
+    "v2": 28.419
+   },
+   "reaches_limit_v2": null,
+   "wall_median_s": {
+    "v1": 26.462,
+    "v2": 33.97
+   },
+   "wall_total_s": {
+    "v1": 1304.94,
+    "v2": 1452.73
+   }
+  },
+  "routes": {
+   "v1": {
+    "max_rows": 50000,
+    "separation_seconds": 10
+   },
+   "v2": {
+    "enumerator": "fast",
+    "max_rows": 50000,
+    "max_total": 80000,
+    "order": "dense-first",
+    "separation_seconds": 15
+   }
+  },
+  "sound": true,
+  "value_disagreements": [],
+  "verdict": "NO_COVERAGE_GAIN",
+  "wall_saving_v1_minus_v2": {
+   "by_stratum": {
+    "erdos:17db5902": -0.428,
+    "planted_cluster:9491bde8": -6.961
+   },
+   "interval_90": [
+    -6.939,
+    0.238
+   ],
+   "mean": -3.695
+  }
+ },
+ "registry_v2": {
+  "patterns": [
+   "pc_pat5_10_01020304121314232434",
+   "pc_pat6_10_01040512152325343545",
+   "pc_pat7_13_01040512152325343536454656",
+   "pc_pat7_13_01050612151623242526343546",
+   "pc_pat7_14_0102050612131623243435454656",
+   "pc_pat7_15_010305061314162425263435364656",
+   "pc_pat7_16_01020304050612131415162526343645",
+   "pc_pat7_20_0102030506121314151623242526343536454656",
+   "pc_pat7_21_010203040506121314151623242526343536454656"
+  ],
+  "sha256": "e411b2bd8efa72988578d0528d4e766ad3a79bc02059c784b2768af945bc858f"
+ },
+ "schema": "genesis-b20r37-generator-v2-v1",
+ "status": "DEV; licenses no claim; no evaluator change",
+ "verdict": "NO_COVERAGE_GAIN"
+}
