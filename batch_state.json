@@ -215,6 +215,21 @@
       "B20_R29": {
         "commit": "ba5318a6a7272abb58c90bc577d200c279d7ef5b",
         "sha256": "67fd879681703ca890535046705eeb3b25c1b366c55c17d856b0bfa407250ba8"
+      },
+      "B20_R33": {
+        "commit": "f09988e2f60b9d58f6b379880df84c878a8c6985",
+        "sha256": "1a2f66244fb2348dd088c9b218dea6d38bf5b39fd6c0ca6d414b652b83acf496",
+        "release_matrix": {
+          "integration": 702,
+          "legacy_regression": 282,
+          "sandbox_escape": 28,
+          "certificates": 43,
+          "formal": 174,
+          "failures": 0,
+          "declared_skips": 1
+        },
+        "restore_verified": "5670 manifest entries match; bundle clone gives the same commit and tree",
+        "rehearsal": "deployment/reproduce.sh on the build host (clean room, not a second machine): REPRODUCED, all 7 steps"
       }
     },
     "adopted_from_crpd_v3_status": {
@@ -482,7 +497,8 @@
       },
       "B20_R33": {
         "commits": [
-          "b03e429"
+          "b03e429",
+          "f09988e"
         ],
         "result": "strong-baseline audit of the frozen E1/E1b descriptors on 60 fresh e1b hosts, one pinned core: an exact HiGHS MILP arm proves every optimum within 0.36 CPU s; E1 (0.5 s) MIP - candidate +0.75 [0.58, 0.92] MIP_DOMINATES (candidate optimal 27/60); E1b (2.0 s) +0.20 [0.12, 0.30] NO_MATERIAL_DIFFERENCE (candidate optimal 49/60, never above); both beat their DSL baselines by ~2.1-2.3; neither can be beyond strong baselines on this family"
       }
