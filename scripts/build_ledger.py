@@ -77,9 +77,11 @@ SPEC = {
             ['src/genesis/mrdl.py', 'src/genesis/invention/representations.py'],
             [G + 'test_graphs.py', 'tests_formal/test_invention.py', G + 'test_relations.py',
              'tests_formal/test_relation_invention.py', G + 'test_quotients.py', G + 'test_decompositions.py',
-             'tests_formal/test_quotient_invention.py', 'tests_formal/test_decomposition_invention.py'],
-            ['a generated representation with prospective utility (B20_R17/R19 relational decoders, B20_R26 quotients and '
-             'B20_R27 decompositions are Lean-checked; DEV utility after cost was not shown in any of the four attempts)'],
+             'tests_formal/test_quotient_invention.py', 'tests_formal/test_decomposition_invention.py',
+             G + 'test_cuts.py', 'tests_formal/test_relaxation_invention.py'],
+            ['a generated representation with prospective utility (B20_R17/R19 relational decoders, B20_R26 quotients, '
+             'B20_R27 decompositions and B20_R31 generated inequalities are Lean-checked; DEV utility after cost was '
+             'not shown in any of the five attempts)'],
             [], 'N/A', 'W10'),
     '5': (I, 'heading', [], [], [], [], 'N/A', 'W01'),
     '5.1': (B, 'task contracts for two graph domains through the DomainAdapter interface (parse, exposure identity, '
@@ -519,9 +521,12 @@ WORKSTREAMS = {
              'deployment/reproduce.py'],
             [G + 'test_deployment.py', G + 'test_crash_consistency.py', G + 'test_backup_restore.py',
              'tests_sandbox/test_launcher.py', G + 'test_reproduce.py']),
-    'W05': ('Domain contracts and calibration (B20_R12/R24: separately versioned study rules e1-hard-v1/v2)', B,
-            ['src/genesis/domains.py', 'src/genesis/calibration.py', 'configs/dev_calibration.json'],
-            [G + 'test_domain_adapters.py', G + 'test_calibration.py', G + 'test_calibration_rules.py']),
+    'W05': ('Domain contracts and calibration (B20_R12/R24: separately versioned study rules e1-hard-v1/v2; B20_R30: '
+            'the calibration\'s 60 s certification limit and the evaluator\'s 600 s measured on the e1b family)', B,
+            ['src/genesis/domains.py', 'src/genesis/calibration.py', 'configs/dev_calibration.json',
+             'evidence/certification_budget_b20r30/summary.json'],
+            [G + 'test_domain_adapters.py', G + 'test_calibration.py', G + 'test_calibration_rules.py',
+             G + 'test_certification_budget.py']),
     'W06': ('Independent custody and preregistration', B,
             ['src/genesis/custody_records.py', 'src/genesis/custodian.py', 'src/genesis/decision_record.py',
              'src/genesis/candidates.py', 'src/genesis/judge.py', 'src/genesis/learning/statement_panels.py',
@@ -540,18 +545,21 @@ WORKSTREAMS = {
              'evidence/invention_b18/recovery/comparison.json'],
             ['tests_formal/test_invention.py']),
     'W10': ('Representation and ontology invention (vertex-class grammar; B20_R17/R19 generated relational decoders, '
-            'B20_R26 quotients with a parametric transport theorem, B20_R27 decompositions with a composition theorem; '
-            'all Lean-checked, all NO_UTILITY_AFTER_COST on DEV)', B,
+            'B20_R26 quotients with a parametric transport theorem, B20_R27 decompositions with a composition theorem, '
+            'B20_R31 generated pattern inequalities with Lean-checked validity; all Lean-checked, all '
+            'NO_UTILITY_AFTER_COST on DEV)', B,
             ['src/genesis/invention/representations.py', 'evidence/invention_b18/representations/package.json',
              'src/genesis/invention/soundness.py', 'evidence/soundness_b20r/modes.json',
              'src/genesis/invention/codegree.py', 'evidence/codegree_b20r/package.json',
              'src/genesis/invention/relations.py', 'evidence/relation_invention_b20r17/package.json',
              'src/genesis/invention/quotients.py', 'evidence/quotient_invention_b20r26/package.json',
-             'src/genesis/invention/decompositions.py', 'evidence/decomposition_invention_b20r27/package.json'],
+             'src/genesis/invention/decompositions.py', 'evidence/decomposition_invention_b20r27/package.json',
+             'src/genesis/invention/cuts.py', 'evidence/relaxation_invention_b20r31/package.json'],
             ['tests_formal/test_invention.py', 'tests_formal/test_soundness_modes.py', 'tests_formal/test_codegree.py',
              G + 'test_relations.py', 'tests_formal/test_relation_invention.py', G + 'test_quotients.py',
              G + 'test_decompositions.py', 'tests_formal/test_quotient_invention.py',
-             'tests_formal/test_decomposition_invention.py']),
+             'tests_formal/test_decomposition_invention.py', G + 'test_cuts.py',
+             'tests_formal/test_relaxation_invention.py']),
     'W11': ('Theory-centered discovery and theory packages (first package path only)', B,
             ['src/genesis/formal_research/theory_package.py', 'src/genesis/formal_research/triangle_theory.py',
              'evidence/formal_research_b17/package/package.json'],

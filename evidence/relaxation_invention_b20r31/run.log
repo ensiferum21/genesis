@@ -1,0 +1,58 @@
+[   16.5s] pc_adj_le_one: CHECKED (adj-split)
+[   24.8s] pc_bridge: CHECKED (adjacency-orientation-cases)
+[   34.0s] pc_pat5_10_01020304121314232434: CHECKED (bridge-instances-omega)
+[   43.5s] pc_pat6_10_01040512152325343545: CHECKED (bridge-instances-omega)
+[   49.4s] Part A: {'pc_adj_le_one': 'CHECKED', 'pc_bridge': 'CHECKED', 'pc_pat5_10_01020304121314232434': 'CHECKED', 'pc_pat6_10_01040512152325343545': 'CHECKED'}; construction 46.7 CPU s -> NEW_CHECKED
+[   51.8s] exposure: 1760 identities (1760 named hosts, 711 E1 hosts, 456 calibration hosts)
+[  221.8s] SELECT totals {'menu:cross_2': 2169, 'menu:ordered_2': 2024, 'menu:adjacent_2': 2169, 'menu:adjacent_3': 2169, 'conv:exchange_tm': 2054, 'conv:low_cycle_tm': 2097, 'conv:multistart_tm': 2088} -> {'new': 'new:cut_lp_greedy', 'control': 'control:lp_greedy', 'menu': 'menu:cross_2', 'conventional': 'conv:low_cycle_tm'}; matched arm gets 1.467 s
+[  227.3s] planted_cluster:1467febf 0000: {'new': 92, 'control': 92, 'menu': 92, 'conventional': 87, 'matched': 92}
+[  232.8s] planted_cluster:1467febf 0001: {'new': 89, 'control': 89, 'menu': 87, 'conventional': 87, 'matched': 89}
+[  238.4s] planted_cluster:1467febf 0002: {'new': 87, 'control': 87, 'menu': 87, 'conventional': 83, 'matched': 87}
+[  243.9s] planted_cluster:1467febf 0003: {'new': 96, 'control': 96, 'menu': 95, 'conventional': 92, 'matched': 96}
+[  249.5s] planted_cluster:1467febf 0004: {'new': 90, 'control': 89, 'menu': 90, 'conventional': 87, 'matched': 89}
+[  255.0s] planted_cluster:1467febf 0005: {'new': 89, 'control': 89, 'menu': 88, 'conventional': 84, 'matched': 89}
+[  260.5s] planted_cluster:1467febf 0006: {'new': 81, 'control': 81, 'menu': 81, 'conventional': 80, 'matched': 81}
+[  266.0s] planted_cluster:1467febf 0007: {'new': 96, 'control': 96, 'menu': 96, 'conventional': 91, 'matched': 96}
+[  271.6s] planted_cluster:1467febf 0008: {'new': 87, 'control': 87, 'menu': 86, 'conventional': 86, 'matched': 87}
+[  277.1s] planted_cluster:1467febf 0009: {'new': 87, 'control': 88, 'menu': 87, 'conventional': 84, 'matched': 88}
+[  282.6s] planted_cluster:1467febf 0010: {'new': 101, 'control': 101, 'menu': 100, 'conventional': 97, 'matched': 101}
+[  288.2s] planted_cluster:1467febf 0011: {'new': 94, 'control': 94, 'menu': 93, 'conventional': 87, 'matched': 94}
+[  293.8s] planted_cluster:1467febf 0012: {'new': 96, 'control': 96, 'menu': 95, 'conventional': 91, 'matched': 96}
+[  299.3s] planted_cluster:1467febf 0013: {'new': 104, 'control': 104, 'menu': 103, 'conventional': 98, 'matched': 104}
+[  304.8s] planted_cluster:1467febf 0014: {'new': 91, 'control': 89, 'menu': 91, 'conventional': 86, 'matched': 89}
+[  310.3s] planted_cluster:1467febf 0015: {'new': 102, 'control': 102, 'menu': 101, 'conventional': 96, 'matched': 102}
+[  315.8s] erdos:70960071 0000: {'new': 76, 'control': 76, 'menu': 74, 'conventional': 75, 'matched': 76}
+[  321.4s] erdos:70960071 0001: {'new': 81, 'control': 81, 'menu': 81, 'conventional': 79, 'matched': 81}
+[  327.0s] erdos:70960071 0002: {'new': 91, 'control': 91, 'menu': 90, 'conventional': 83, 'matched': 91}
+[  332.5s] erdos:70960071 0003: {'new': 76, 'control': 76, 'menu': 76, 'conventional': 75, 'matched': 76}
+[  338.0s] erdos:70960071 0004: {'new': 85, 'control': 85, 'menu': 83, 'conventional': 81, 'matched': 85}
+[  343.5s] erdos:70960071 0005: {'new': 87, 'control': 87, 'menu': 87, 'conventional': 84, 'matched': 87}
+[  349.1s] erdos:70960071 0006: {'new': 90, 'control': 89, 'menu': 90, 'conventional': 85, 'matched': 89}
+[  354.6s] erdos:70960071 0007: {'new': 88, 'control': 88, 'menu': 87, 'conventional': 84, 'matched': 88}
+[  360.2s] erdos:70960071 0008: {'new': 82, 'control': 82, 'menu': 82, 'conventional': 78, 'matched': 82}
+[  365.7s] erdos:70960071 0009: {'new': 73, 'control': 73, 'menu': 73, 'conventional': 73, 'matched': 73}
+[  371.2s] erdos:70960071 0010: {'new': 84, 'control': 83, 'menu': 83, 'conventional': 82, 'matched': 83}
+[  376.8s] erdos:70960071 0011: {'new': 84, 'control': 84, 'menu': 83, 'conventional': 83, 'matched': 84}
+[  382.3s] erdos:70960071 0012: {'new': 82, 'control': 82, 'menu': 81, 'conventional': 77, 'matched': 82}
+[  387.8s] erdos:70960071 0013: {'new': 77, 'control': 76, 'menu': 77, 'conventional': 74, 'matched': 76}
+[  393.3s] erdos:70960071 0014: {'new': 82, 'control': 82, 'menu': 80, 'conventional': 80, 'matched': 82}
+[  398.8s] erdos:70960071 0015: {'new': 79, 'control': 78, 'menu': 78, 'conventional': 78, 'matched': 78}
+[  404.3s] erdos:b73f6828 0000: {'new': 101, 'control': 101, 'menu': 101, 'conventional': 99, 'matched': 101}
+[  409.9s] erdos:b73f6828 0001: {'new': 93, 'control': 93, 'menu': 91, 'conventional': 91, 'matched': 93}
+[  415.4s] erdos:b73f6828 0002: {'new': 99, 'control': 99, 'menu': 97, 'conventional': 95, 'matched': 99}
+[  420.9s] erdos:b73f6828 0003: {'new': 92, 'control': 92, 'menu': 91, 'conventional': 91, 'matched': 92}
+[  426.4s] erdos:b73f6828 0004: {'new': 96, 'control': 96, 'menu': 94, 'conventional': 93, 'matched': 96}
+[  431.9s] erdos:b73f6828 0005: {'new': 104, 'control': 104, 'menu': 103, 'conventional': 100, 'matched': 104}
+[  437.5s] erdos:b73f6828 0006: {'new': 97, 'control': 97, 'menu': 95, 'conventional': 94, 'matched': 97}
+[  443.0s] erdos:b73f6828 0007: {'new': 93, 'control': 93, 'menu': 93, 'conventional': 89, 'matched': 93}
+[  448.6s] erdos:b73f6828 0008: {'new': 92, 'control': 92, 'menu': 90, 'conventional': 90, 'matched': 92}
+[  454.1s] erdos:b73f6828 0009: {'new': 93, 'control': 93, 'menu': 90, 'conventional': 92, 'matched': 93}
+[  459.6s] erdos:b73f6828 0010: {'new': 94, 'control': 93, 'menu': 93, 'conventional': 90, 'matched': 93}
+[  465.1s] erdos:b73f6828 0011: {'new': 93, 'control': 93, 'menu': 90, 'conventional': 92, 'matched': 93}
+[  470.6s] erdos:b73f6828 0012: {'new': 94, 'control': 94, 'menu': 93, 'conventional': 89, 'matched': 94}
+[  476.2s] erdos:b73f6828 0013: {'new': 94, 'control': 94, 'menu': 93, 'conventional': 93, 'matched': 94}
+[  481.7s] erdos:b73f6828 0014: {'new': 96, 'control': 96, 'menu': 94, 'conventional': 94, 'matched': 96}
+[  487.2s] erdos:b73f6828 0015: {'new': 97, 'control': 95, 'menu': 95, 'conventional': 94, 'matched': 95}
+[  487.6s] Part B: {"control": {"mean": 0.1875, "interval_90": [0.0625, 0.3125], "by_setting": {"erdos:70960071": 0.25, "erdos:b73f6828": 0.1875, "planted_cluster:1467febf": 0.125}, "wins_ties_losses": [8, 39, 1], "passes": false}, "menu": {"mean": 0.9792, "interval_90": [0.8125, 1.1458], "by_setting": {"erdos:70960071": 0.75, "erdos:b73f6828": 1.5625, "planted_cluster:1467febf": 0.625}, "wins_ties_losses": [32, 16, 0], "passes": true}, "conventional": {"mean": 3.2083, "interval_90": [2.8125, 3.5833], "by_setting": {"erdos:70960071": 2.875, "erdos:b73f6828": 2.625, "planted_cluster:1467febf": 4.125}, "wins_ties_losses": [47, 1, 0], "passes": true}, "matched": {"mean": 0.1875, "interval_90": [0.0625, 0.3125], "by_setting": {"erdos:70960071": 0.25, "erdos:b73f6828": 0.1875, "planted_cluster:1467febf": 0.125}, "wins_ties_losses": [8, 39, 1], "passes": false}} -> NO_UTILITY_AFTER_COST
+[  499.8s] Part C: {'certified_hosts': 90, 'floor_meets_optimum_triangle': 72, 'floor_meets_optimum_generated': 82, 'newly_met_by_generated_rows': 10, 'mean_gap_triangle': 0.5474, 'mean_gap_generated': 0.3196, 'median_cpu_s': 0.061}
+[  499.9s] verdict NO_UTILITY_AFTER_COST

@@ -504,7 +504,7 @@
    "local_execution": "TESTS_EXECUTED_IN_MATRIX",
    "owner": "research implementer",
    "remaining": [
-    "a generated representation with prospective utility (B20_R17/R19 relational decoders, B20_R26 quotients and B20_R27 decompositions are Lean-checked; DEV utility after cost was not shown in any of the four attempts)"
+    "a generated representation with prospective utility (B20_R17/R19 relational decoders, B20_R26 quotients, B20_R27 decompositions and B20_R31 generated inequalities are Lean-checked; DEV utility after cost was not shown in any of the five attempts)"
    ],
    "scientific_efficacy": "N/A",
    "scope": "MRDL bounded graph vocabulary; typed representation grammar with Lean-checked obligations (B18)",
@@ -517,7 +517,9 @@
     "tests_genesis/test_quotients.py",
     "tests_genesis/test_decompositions.py",
     "tests_formal/test_quotient_invention.py",
-    "tests_formal/test_decomposition_invention.py"
+    "tests_formal/test_decomposition_invention.py",
+    "tests_genesis/test_cuts.py",
+    "tests_formal/test_relaxation_invention.py"
    ],
    "title": "MRDL: minimal representation description language",
    "workstream": "W10"
@@ -4799,7 +4801,8 @@
    "code": [
     "src/genesis/domains.py",
     "src/genesis/calibration.py",
-    "configs/dev_calibration.json"
+    "configs/dev_calibration.json",
+    "evidence/certification_budget_b20r30/summary.json"
    ],
    "disposition": "IMPLEMENTED_BOUNDED_PENDING_AUDIT",
    "evidence": [],
@@ -4816,9 +4819,10 @@
    "tests": [
     "tests_genesis/test_domain_adapters.py",
     "tests_genesis/test_calibration.py",
-    "tests_genesis/test_calibration_rules.py"
+    "tests_genesis/test_calibration_rules.py",
+    "tests_genesis/test_certification_budget.py"
    ],
-   "title": "Domain contracts and calibration (B20_R12/R24: separately versioned study rules e1-hard-v1/v2)",
+   "title": "Domain contracts and calibration (B20_R12/R24: separately versioned study rules e1-hard-v1/v2; B20_R30: the calibration's 60 s certification limit and the evaluator's 600 s measured on the e1b family)",
    "workstream": "W05"
   },
   {
@@ -4962,7 +4966,9 @@
     "src/genesis/invention/quotients.py",
     "evidence/quotient_invention_b20r26/package.json",
     "src/genesis/invention/decompositions.py",
-    "evidence/decomposition_invention_b20r27/package.json"
+    "evidence/decomposition_invention_b20r27/package.json",
+    "src/genesis/invention/cuts.py",
+    "evidence/relaxation_invention_b20r31/package.json"
    ],
    "disposition": "IMPLEMENTED_BOUNDED_PENDING_AUDIT",
    "evidence": [],
@@ -4985,9 +4991,11 @@
     "tests_genesis/test_quotients.py",
     "tests_genesis/test_decompositions.py",
     "tests_formal/test_quotient_invention.py",
-    "tests_formal/test_decomposition_invention.py"
+    "tests_formal/test_decomposition_invention.py",
+    "tests_genesis/test_cuts.py",
+    "tests_formal/test_relaxation_invention.py"
    ],
-   "title": "Representation and ontology invention (vertex-class grammar; B20_R17/R19 generated relational decoders, B20_R26 quotients with a parametric transport theorem, B20_R27 decompositions with a composition theorem; all Lean-checked, all NO_UTILITY_AFTER_COST on DEV)",
+   "title": "Representation and ontology invention (vertex-class grammar; B20_R17/R19 generated relational decoders, B20_R26 quotients with a parametric transport theorem, B20_R27 decompositions with a composition theorem, B20_R31 generated pattern inequalities with Lean-checked validity; all Lean-checked, all NO_UTILITY_AFTER_COST on DEV)",
    "workstream": "W10"
   },
   {

@@ -1,0 +1,225 @@
+{
+ "budget_s": 1.0,
+ "calibration": {
+  "record_sha256": "bc26782a0c5916e9e1246e5351f617a3006ffece99451c57ead5ee39b41ee633",
+  "selected": [
+   {
+    "family": "planted_cluster",
+    "index": 18,
+    "params": {
+     "n": 30,
+     "p_in": 0.6,
+     "p_out": 0.2
+    }
+   },
+   {
+    "family": "erdos",
+    "index": 7,
+    "params": {
+     "n": 26,
+     "p": 0.35
+    }
+   },
+   {
+    "family": "erdos",
+    "index": 9,
+    "params": {
+     "n": 30,
+     "p": 0.3
+    }
+   }
+  ],
+  "study": "e1b"
+ },
+ "chosen": {
+  "control": "control:lp_greedy",
+  "conventional": "conv:low_cycle_tm",
+  "menu": "menu:cross_2",
+  "new": "new:cut_lp_greedy"
+ },
+ "comparisons": {
+  "control": {
+   "by_setting": {
+    "erdos:70960071": 0.25,
+    "erdos:b73f6828": 0.1875,
+    "planted_cluster:1467febf": 0.125
+   },
+   "interval_90": [
+    0.0625,
+    0.3125
+   ],
+   "mean": 0.1875,
+   "passes": false,
+   "wins_ties_losses": [
+    8,
+    39,
+    1
+   ]
+  },
+  "conventional": {
+   "by_setting": {
+    "erdos:70960071": 2.875,
+    "erdos:b73f6828": 2.625,
+    "planted_cluster:1467febf": 4.125
+   },
+   "interval_90": [
+    2.8125,
+    3.5833
+   ],
+   "mean": 3.2083,
+   "passes": true,
+   "wins_ties_losses": [
+    47,
+    1,
+    0
+   ]
+  },
+  "matched": {
+   "by_setting": {
+    "erdos:70960071": 0.25,
+    "erdos:b73f6828": 0.1875,
+    "planted_cluster:1467febf": 0.125
+   },
+   "interval_90": [
+    0.0625,
+    0.3125
+   ],
+   "mean": 0.1875,
+   "passes": false,
+   "wins_ties_losses": [
+    8,
+    39,
+    1
+   ]
+  },
+  "menu": {
+   "by_setting": {
+    "erdos:70960071": 0.75,
+    "erdos:b73f6828": 1.5625,
+    "planted_cluster:1467febf": 0.625
+   },
+   "interval_90": [
+    0.8125,
+    1.1458
+   ],
+   "mean": 0.9792,
+   "passes": true,
+   "wins_ties_losses": [
+    32,
+    16,
+    0
+   ]
+  }
+ },
+ "construction_cpu_s": 46.661,
+ "exposure_scan": {
+  "calibration_hosts": 456,
+  "development_look_hosts": 6,
+  "distinct_hosts": 1760,
+  "e1_named_hosts": 711,
+  "empty_files_skipped": [
+   "evidence/failed-wal-final-replay.json",
+   "evidence/final-replay.json"
+  ],
+  "excluded_identities": 1760,
+  "files_scanned": 879,
+  "host_records": 4654
+ },
+ "horizon": 100,
+ "hosts": {
+  "eval": [
+   "dev-planted_cluster-1467febf-20263102-0000",
+   "dev-planted_cluster-1467febf-20263102-0001",
+   "dev-planted_cluster-1467febf-20263102-0002",
+   "dev-planted_cluster-1467febf-20263102-0003",
+   "dev-planted_cluster-1467febf-20263102-0004",
+   "dev-planted_cluster-1467febf-20263102-0005",
+   "dev-planted_cluster-1467febf-20263102-0006",
+   "dev-planted_cluster-1467febf-20263102-0007",
+   "dev-planted_cluster-1467febf-20263102-0008",
+   "dev-planted_cluster-1467febf-20263102-0009",
+   "dev-planted_cluster-1467febf-20263102-0010",
+   "dev-planted_cluster-1467febf-20263102-0011",
+   "dev-planted_cluster-1467febf-20263102-0012",
+   "dev-planted_cluster-1467febf-20263102-0013",
+   "dev-planted_cluster-1467febf-20263102-0014",
+   "dev-planted_cluster-1467febf-20263102-0015",
+   "dev-erdos-70960071-20271021-0000",
+   "dev-erdos-70960071-20271021-0001",
+   "dev-erdos-70960071-20271021-0002",
+   "dev-erdos-70960071-20271021-0003",
+   "dev-erdos-70960071-20271021-0004",
+   "dev-erdos-70960071-20271021-0005",
+   "dev-erdos-70960071-20271021-0006",
+   "dev-erdos-70960071-20271021-0007",
+   "dev-erdos-70960071-20271021-0008",
+   "dev-erdos-70960071-20271021-0009",
+   "dev-erdos-70960071-20271021-0010",
+   "dev-erdos-70960071-20271021-0011",
+   "dev-erdos-70960071-20271021-0012",
+   "dev-erdos-70960071-20271021-0013",
+   "dev-erdos-70960071-20271021-0014",
+   "dev-erdos-70960071-20271021-0015",
+   "dev-erdos-b73f6828-20278940-0000",
+   "dev-erdos-b73f6828-20278940-0001",
+   "dev-erdos-b73f6828-20278940-0002",
+   "dev-erdos-b73f6828-20278940-0003",
+   "dev-erdos-b73f6828-20278940-0004",
+   "dev-erdos-b73f6828-20278940-0005",
+   "dev-erdos-b73f6828-20278940-0006",
+   "dev-erdos-b73f6828-20278940-0007",
+   "dev-erdos-b73f6828-20278940-0008",
+   "dev-erdos-b73f6828-20278940-0009",
+   "dev-erdos-b73f6828-20278940-0010",
+   "dev-erdos-b73f6828-20278940-0011",
+   "dev-erdos-b73f6828-20278940-0012",
+   "dev-erdos-b73f6828-20278940-0013",
+   "dev-erdos-b73f6828-20278940-0014",
+   "dev-erdos-b73f6828-20278940-0015"
+  ],
+  "select": [
+   "dev-planted_cluster-1467febf-20263101-0000",
+   "dev-planted_cluster-1467febf-20263101-0001",
+   "dev-planted_cluster-1467febf-20263101-0002",
+   "dev-planted_cluster-1467febf-20263101-0003",
+   "dev-planted_cluster-1467febf-20263101-0004",
+   "dev-planted_cluster-1467febf-20263101-0005",
+   "dev-planted_cluster-1467febf-20263101-0006",
+   "dev-planted_cluster-1467febf-20263101-0007",
+   "dev-erdos-70960071-20271020-0000",
+   "dev-erdos-70960071-20271020-0001",
+   "dev-erdos-70960071-20271020-0002",
+   "dev-erdos-70960071-20271020-0003",
+   "dev-erdos-70960071-20271020-0004",
+   "dev-erdos-70960071-20271020-0005",
+   "dev-erdos-70960071-20271020-0006",
+   "dev-erdos-70960071-20271020-0007",
+   "dev-erdos-b73f6828-20278939-0000",
+   "dev-erdos-b73f6828-20278939-0001",
+   "dev-erdos-b73f6828-20278939-0002",
+   "dev-erdos-b73f6828-20278939-0003",
+   "dev-erdos-b73f6828-20278939-0004",
+   "dev-erdos-b73f6828-20278939-0005",
+   "dev-erdos-b73f6828-20278939-0006",
+   "dev-erdos-b73f6828-20278939-0007"
+  ]
+ },
+ "matched_extra_s_per_host": 0.4666,
+ "mean_cpu_s": {
+  "control": 1.0,
+  "conventional": 1.003,
+  "matched": 1.467,
+  "menu": 1.0,
+  "new": 1.0
+ },
+ "select_totals": {
+  "conv:exchange_tm": 2054,
+  "conv:low_cycle_tm": 2097,
+  "conv:multistart_tm": 2088,
+  "menu:adjacent_2": 2169,
+  "menu:adjacent_3": 2169,
+  "menu:cross_2": 2169,
+  "menu:ordered_2": 2024
+ },
+ "verdict": "NO_UTILITY_AFTER_COST"
+}

@@ -54,6 +54,15 @@ The rehearsals license nothing. One operator played every role, with fixture key
 
 The placebo scores 1.36 per host *below* the ablation: shuffled LP values are worse than no LP order. On DEV, the LP signal is the active ingredient. A causal level still needs signed custodian ablation and placebo evaluations. The B20_R23 pilot on builder-chosen settings stays in the history.
 
+**Certification limits on this family (B20_R30; `evidence/certification_budget_b20r30/`).** 90 fresh hosts were measured under both limits:
+
+| Limit | Certified |
+|---|---|
+| Calibration, 60 s | 86/90 |
+| Evaluator reference, 600 s | 90/90 (unsupported upper bound 3.27%) |
+
+On this family the calibration's limit and the plan's 5% unsupported limit agree (LIMITS_CONSISTENT). How to align them in general is still the reviewer's choice (B20R24-OPEN-2).
+
 ## Contents
 
 | File | What |
@@ -64,7 +73,8 @@ The placebo scores 1.36 per host *below* the ablation: shuffled LP values are wo
 | `decision_record_DRAFT.json` | Names the `e1b` calibration and the re-pilot's power analysis. A frozen copy has no structural problems. |
 | `power_analysis_centred_b20r24.json`, `pilot_summary_b20r24.json`, `rehearsal_summary_b20r24.json` | The re-pilot and both rehearsals. |
 | `exposure_hosts_all.json` | Every host the builder named or generated (1,544). |
-| `exposure_hosts_addendum_b20r28.json` | B20_R28: the 126 DEV hosts named after this package was frozen (B20_R26–R28). A custodian lists **both** exposure files. |
+| `exposure_hosts_addendum_b20r28.json` | B20_R28: the 126 DEV hosts named after this package was frozen (B20_R26–R28). |
+| `exposure_hosts_addendum_b20r31.json` | B20_R31: the 168 DEV hosts named after that, all in this package's settings: B20_R30's certification-budget hosts, B20_R31's study hosts and its six development-look hosts. A custodian lists **every** exposure file: `exposure_hosts_all.json` and each addendum. |
 | `package_index.json` | Identities, the calibration and the outcomes. |
 
 The B20_R23 version of this package (builder-chosen settings, both domains) is in the git history at `e7fad0e`.

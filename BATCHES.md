@@ -58,6 +58,7 @@ session can resume from the latest checkpoint (see `RESUME.md`).
 | 20_R28 | E1b causal re-pilot on the e1b family | GV3 path | Ablation +1.25 and placebo +2.61, both READY_FOR_REVIEW; handoff exposure addenda |
 | 20_R29 | Second-machine reference repaired | R-04 driver; found by the B20_R28 rehearsal | `restored_events` 339 → 345 (B20_R16 drift, bisected); drift test in the matrix |
 | 20_R30 | Certification at 60 s and at 600 s | B20R24-OPEN-2 (GV3 path) | 90 fresh e1b hosts: 86/90 at 60 s, 90/90 at 600 s; LIMITS_CONSISTENT (upper bound 3.27%); decision stays with the reviewer |
+| 20_R31 | Generated valid inequalities | s15.3 / W10 (GV4) | K5 and W5 bounds Lean-CHECKED; DEV NO_UTILITY_AFTER_COST in construction (+0.19 vs the plain LP greedy); certification diagnostic 72 → 82 of 90 LP-floor certifiable (attempt 1) |
 
 Later phases (B17–B23+) follow the roadmap and its gates; numbers are labels,
 not estimates.

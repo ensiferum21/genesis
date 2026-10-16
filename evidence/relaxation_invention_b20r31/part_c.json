@@ -1,0 +1,42 @@
+{
+ "by_setting": {
+  "erdos:70960071": {
+   "certified_hosts": 30,
+   "floor_meets_optimum_generated": 28,
+   "floor_meets_optimum_triangle": 26,
+   "mean_gap_generated": 0.2982,
+   "mean_gap_triangle": 0.4404,
+   "median_cpu_s": 0.041,
+   "newly_met_by_generated_rows": 2
+  },
+  "erdos:b73f6828": {
+   "certified_hosts": 30,
+   "floor_meets_optimum_generated": 28,
+   "floor_meets_optimum_triangle": 26,
+   "mean_gap_generated": 0.2972,
+   "mean_gap_triangle": 0.4715,
+   "median_cpu_s": 0.033,
+   "newly_met_by_generated_rows": 2
+  },
+  "planted_cluster:1467febf": {
+   "certified_hosts": 30,
+   "floor_meets_optimum_generated": 26,
+   "floor_meets_optimum_triangle": 20,
+   "mean_gap_generated": 0.3633,
+   "mean_gap_triangle": 0.7303,
+   "median_cpu_s": 0.214,
+   "newly_met_by_generated_rows": 6
+  }
+ },
+ "pooled": {
+  "certified_hosts": 90,
+  "floor_meets_optimum_generated": 82,
+  "floor_meets_optimum_triangle": 72,
+  "mean_gap_generated": 0.3196,
+  "mean_gap_triangle": 0.5474,
+  "median_cpu_s": 0.061,
+  "newly_met_by_generated_rows": 10
+ },
+ "source": "evidence/certification_budget_b20r30 (evaluator at 600 s)",
+ "status": "diagnostic; float LP values are measurements, not certificates; no evaluator change"
+}

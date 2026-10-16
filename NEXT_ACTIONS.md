@@ -22,7 +22,7 @@
 | B20_R29 | `ba5318a` | `67fd8796…0ba8` (release matrix 1,197 tests, all OK; restore-verified; driver rehearsal on the build host **REPRODUCED**, not a second machine) |
 
   The recovery-branch checkpoints B20_RX1 and B20_RX2 are on `recovery-b20r1-partial`; their work was ported here.
-- **Records:** `docs/checkpoints/B20_R1_RECORD.md` … `B20_R11_RECORD.md`, `B20_RX1_RECORD.md`, `B20_RX2_RECORD.md`, `B20_R12_RECORD.md` and `B20_R15_RECORD.md` … `B20_R30_RECORD.md`.
+- **Records:** `docs/checkpoints/B20_R1_RECORD.md` … `B20_R11_RECORD.md`, `B20_RX1_RECORD.md`, `B20_RX2_RECORD.md`, `B20_R12_RECORD.md` and `B20_R15_RECORD.md` … `B20_R31_RECORD.md`.
 
 ## Completed since B20_R11
 
@@ -48,6 +48,7 @@
 | B20_R28 | E1b causal re-pilot on the `e1b` family: ablation +1.25, placebo +2.61, both **READY_FOR_REVIEW** (power 10 per stratum). Exposure addenda (126 hosts) next to the frozen E1/E1b packages |
 | B20_R29 | The B20_R28 clean-room rehearsal found a stale second-machine reference: the reference campaign has 345 store events since B20_R16, `EXPECTED_RESULTS.json` still said 339 (NOT_REPRODUCED at step 7). Value updated, drift test added; the B20_R29 checkpoint is rehearsed with the driver |
 | B20_R30 | B20R24-OPEN-2 measured: on 90 fresh `e1b` hosts the calibration certifies 86/90 within 60 s and the evaluator 90/90 at 600 s (unsupported upper bound 3.27%). **LIMITS_CONSISTENT** on the decided family; the decision stays with the reviewer |
+| B20_R31 | s15.3 relaxation family, attempt 1: generated pattern inequalities (K5, W5) with Lean-checked validity. As a construction component **NO_UTILITY_AFTER_COST** (+0.19 per host over the plain LP greedy, below 0.5). Certification diagnostic: the LP floor meets the optimum on 82/90 hosts with the rows vs 72/90 without (10 of the 18 SAT-certified hosts) |
 
 ## Resume
 
@@ -64,15 +65,18 @@
    - a statistician signs off the centred power model (B19-OPEN-4);
    - an independent custodian runs SELECT, register and evaluate on its own machine.
 2. **B20R24-OPEN-2:** align the calibration's certification limit (at least 90% certified within 60 s) with the plan's unsupported limit (at most 5% at 600 s) before a real run. B20_R30 measured both on 90 fresh `e1b` hosts: 86/90 at 60 s, 90/90 at 600 s (unsupported upper bound 3.27%), **LIMITS_CONSISTENT** on this family (`evidence/certification_budget_b20r30/`). The choice stays the reviewer's.
-3. **GV4 study design** (`handoff/gv4/README.md`, DRAFT). The question is what counts as an invented component. The decision is needed before the s15.3 work below can become a study. After B20_R26/R27, no invented component has DEV utility yet.
+3. **GV4 study design** (`handoff/gv4/README.md`, DRAFT). The question is what counts as an invented component, and now also whether a component that helps *certification* (B20_R31's generated inequalities) counts toward a better improver. The decision is needed before the s15.3 work below can become a study. After B20_R31, no invented component has DEV construction utility yet.
 4. **CRPD-2b pin revision:** review.
 
 ## Next engineering, in order
 
-1. **GV4: a component family with utility.** Four representation attempts in three families now have Lean-checked semantics and transport, and none has DEV utility after cost:
+1. **GV4: a component family with utility.** Five attempts in four families now have Lean-checked semantics, and none has DEV construction utility after cost:
    - relational ×2 (B20_R17, R19), retired;
    - quotient ×1 (B20_R26);
-   - decomposition ×1 (B20_R27).
+   - decomposition ×1 (B20_R27);
+   - relaxation ×1 (B20_R31): +0.19 over the LP it strengthens, interval above 0, below 0.5; a certification signal (10 of 18 SAT-certified hosts become LP-floor certifiable, float diagnostic).
+
+   **Next: B20_R32**, an exact certification route over the generated rows (rational LP dual, row validity from the Lean lemmas), preregistered on fresh hosts against the evaluator's joint LP/SAT reference.
 
    Each further attempt is its own preregistered step, and every attempt counts. Candidates:
    - a quotient attempt 2 on families whose best triangle-free subgraph is far from bipartite;

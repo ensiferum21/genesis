@@ -1,0 +1,1206 @@
+{
+ "acceptance": {
+  "check_stage": {
+   "check_sha256": "131f951b3eab80531d74a9fd1e88d73948e1e80d1ed48f0e6b4b599fd885f0ce",
+   "cpu_ns": 5658602671,
+   "exit_code": 0,
+   "exits": {
+    "PCP1": "0",
+    "PCP2": "0",
+    "PCP3": "0",
+    "PCP4": "0",
+    "check": "0"
+   },
+   "log": "",
+   "peak_memory_bytes": 228192256,
+   "status": "SUCCESS",
+   "wall_ns": 5759944712
+  },
+  "leanchecker": {
+   "PCP1": true,
+   "PCP2": true,
+   "PCP3": true,
+   "PCP4": true
+  },
+  "receipt_sha256": "68e55b8b1ebc03e807cb423a2688ad62902a289a049b9f50b5e1082ba6f23a2e",
+  "status": "CHECKED"
+ },
+ "assumptions": {
+  "allowed_axioms": [
+   "Classical.choice",
+   "Quot.sound",
+   "propext"
+  ],
+  "axioms_used": [
+   "Classical.choice",
+   "Quot.sound",
+   "propext"
+  ],
+  "conventions": [
+   "hosts list each edge once as (u, v) with u < v",
+   "pattern statements quantify over every assignment of the pattern vertices, degenerate ones included"
+  ],
+  "lean": "lean@e8baaa71855a616d",
+  "workspace": {
+   "artifact_identity": "be8f86a8ad460109a1c31eb061bf99309b3d032cf5e6462938261f8e3cd840ca",
+   "import_roots": [
+    "Mathlib.Data.Finset.Powerset",
+    "Mathlib.Algebra.BigOperators.Group.Finset.Sigma",
+    "Mathlib.Algebra.Order.BigOperators.Ring.Finset"
+   ],
+   "mathlib_rev": "d13f23b723b8a846827a245b89c10fc7d3f11612",
+   "source_identity": "7f5bcfa11bd7d91dddd1bb4839a70b33bc7e3b125695d754166d343397ac50b0"
+  }
+ },
+ "bindings": [
+  {
+   "proof": "PCP1.proof",
+   "spec": "PCConj.pc_adj_le_one"
+  },
+  {
+   "proof": "PCP2.proof",
+   "spec": "PCConj.pc_bridge"
+  },
+  {
+   "proof": "PCP3.proof",
+   "spec": "PCConj.pc_pat5_10_01020304121314232434"
+  },
+  {
+   "proof": "PCP4.proof",
+   "spec": "PCConj.pc_pat6_10_01040512152325343545"
+  }
+ ],
+ "candidates": [
+  {
+   "family": "relaxation",
+   "id": "cut_lp_greedy",
+   "ingredients": [
+    "generated pattern inequalities x(copy of F) <= ex(F) (validity: PCDefs lemmas)",
+    "triangle LP strengthened by every copy found within half the budget",
+    "LP-ordered greedy with LP-perturbed restarts (B20_RX3 lp_greedy), checker-validated"
+   ],
+   "kind": "conservative-definition",
+   "origin": "generated:pattern-inequalities-v1",
+   "patterns": [
+    {
+     "edges": [
+      [
+       0,
+       1
+      ],
+      [
+       0,
+       2
+      ],
+      [
+       0,
+       3
+      ],
+      [
+       0,
+       4
+      ],
+      [
+       1,
+       2
+      ],
+      [
+       1,
+       3
+      ],
+      [
+       1,
+       4
+      ],
+      [
+       2,
+       3
+      ],
+      [
+       2,
+       4
+      ],
+      [
+       3,
+       4
+      ]
+     ],
+     "ex": 6,
+     "id": "pat5_10_01020304121314232434",
+     "lp": 6.666667
+    },
+    {
+     "edges": [
+      [
+       0,
+       1
+      ],
+      [
+       0,
+       4
+      ],
+      [
+       0,
+       5
+      ],
+      [
+       1,
+       2
+      ],
+      [
+       1,
+       5
+      ],
+      [
+       2,
+       3
+      ],
+      [
+       2,
+       5
+      ],
+      [
+       3,
+       4
+      ],
+      [
+       3,
+       5
+      ],
+      [
+       4,
+       5
+      ]
+     ],
+     "ex": 7,
+     "id": "pat6_10_01040512152325343545",
+     "lp": 7.5
+    }
+   ],
+   "validity": "one Lean lemma per pattern over PC.adj"
+  }
+ ],
+ "costs": {
+  "acceptance_check_cpu_ns": 16048404395,
+  "acceptance_runs": 5,
+  "acceptances": [
+   {
+    "receipt_sha256": "7304b9a29595931b242238fd24bbbfd4690e0238f1b6b9aaa5b54f72f327e602",
+    "statement": "pc_adj_le_one",
+    "stats": {
+     "check_sha256": "51a0f56d8a6bf134759ee440708a2596948e61cfd298bf2027824d15f84895c3",
+     "cpu_ns": 2524910114,
+     "exit_code": 0,
+     "exits": {
+      "PCP1": "0",
+      "check": "0"
+     },
+     "log": "",
+     "peak_memory_bytes": 222085120,
+     "status": "SUCCESS",
+     "wall_ns": 2554546609
+    },
+    "status": "CHECKED"
+   },
+   {
+    "receipt_sha256": "fbc8cc096734110687f747ec22d12200b4fb41c5459656cfda47dd166cb21bfd",
+    "statement": "pc_bridge",
+    "stats": {
+     "check_sha256": "8dbb234d0966fd335ce607c10f91d17eedb2aba2f625c7442571496ef8b3871a",
+     "cpu_ns": 3650472411,
+     "exit_code": 0,
+     "exits": {
+      "PCP1": "0",
+      "PCP2": "0",
+      "check": "0"
+     },
+     "log": "",
+     "peak_memory_bytes": 222105600,
+     "status": "SUCCESS",
+     "wall_ns": 3748536794
+    },
+    "status": "CHECKED"
+   },
+   {
+    "receipt_sha256": "f397b18385f6324b97024649bf56ffc4504f7b652ba4f24118707f121ca944bf",
+    "statement": "pc_pat5_10_01020304121314232434",
+    "stats": {
+     "check_sha256": "0f30cdb665d1a2b1e296d35caa4348f615092d7b475f7397880ba7216e6356ca",
+     "cpu_ns": 4664974613,
+     "exit_code": 0,
+     "exits": {
+      "PCP1": "0",
+      "PCP2": "0",
+      "PCP3": "0",
+      "check": "0"
+     },
+     "log": "",
+     "peak_memory_bytes": 224202752,
+     "status": "SUCCESS",
+     "wall_ns": 4780100464
+    },
+    "status": "CHECKED"
+   },
+   {
+    "receipt_sha256": "d92562eee86ed792695fed59f7a6cda4cf2808993f32d5b2c6c602268b5acade",
+    "statement": "pc_pat6_10_01040512152325343545",
+    "stats": {
+     "check_sha256": "da62f823d00e2db9e39e284954e25436870524763705336712eb40a83ed33bf9",
+     "cpu_ns": 5208047257,
+     "exit_code": 0,
+     "exits": {
+      "PCP1": "0",
+      "PCP2": "0",
+      "PCP3": "0",
+      "PCP4": "0",
+      "check": "0"
+     },
+     "log": "",
+     "peak_memory_bytes": 223731712,
+     "status": "SUCCESS",
+     "wall_ns": 5341131887
+    },
+    "status": "CHECKED"
+   }
+  ],
+  "attempts": [
+   {
+    "attempts": [
+     {
+      "compiled": true,
+      "errors": [],
+      "recipe": "adj-split",
+      "sorry": false,
+      "tactic": "intro S u v\nunfold PC.adj\nsplit <;> omega",
+      "tactic_sha256": "bfcf43377e62f69b7a75e9f018f79102a2c03807c05e78a531b49660d4529586",
+      "tier": 0
+     },
+     {
+      "compiled": true,
+      "errors": [],
+      "recipe": "adj-split-ifs",
+      "sorry": false,
+      "tactic": "intro S u v\nunfold PC.adj\nsplit_ifs <;> omega",
+      "tactic_sha256": "0b7c94807fb23bf471b20996e56c26656b4a1197aeb07b22c9dd9dd0e23347f9",
+      "tier": 0
+     }
+    ],
+    "charged": {
+     "candidates": 2,
+     "cpu_ns": 987759725,
+     "wall_ns": 1004882792
+    },
+    "result": "COMPILED",
+    "statement": "pc_adj_le_one",
+    "target": "PCConj.pc_adj_le_one"
+   },
+   {
+    "attempts": [
+     {
+      "compiled": true,
+      "errors": [],
+      "recipe": "adjacency-orientation-cases",
+      "sorry": false,
+      "tactic": "intro S hS hH x y z\nunfold PC.adj\nsplit_ifs with h1 h2 h3 <;> try omega\nexfalso\nunfold GT.TriangleFree at hS\nrcases h1 with h1 | h1 <;> rcases h2 with h2 | h2 <;> rcases h3 with h3 | h3\nall_goals first\n  | exact hS _ h1 _ h2 _ h3 ⟨rfl, rfl, rfl⟩\n  | exact hS _ h1 _ h3 _ h2 ⟨rfl, rfl, rfl⟩\n  | exact hS _ h2 _ h1 _ h3 ⟨rfl, rfl, rfl⟩\n  | exact hS _ h2 _ h3 _ h1 ⟨rfl, rfl, rfl⟩\n  | exact hS _ h3 _ h1 _ h2 ⟨rfl, rfl, rfl⟩\n  | exact hS _ h3 _ h2 _ h1 ⟨rfl, rfl, rfl⟩\n  | (have o1 := hH _ h1; have o2 := hH _ h2; have o3 := hH _ h3; (try simp only at o1 o2 o3); omega)",
+      "tactic_sha256": "e47ca0f36793e17309493402ec226e6dd01892fad609a760122e3506d84d1234",
+      "tier": 0
+     },
+     {
+      "compiled": true,
+      "errors": [],
+      "recipe": "adjacency-orientation-by-cases",
+      "sorry": false,
+      "tactic": "intro S hS hH x y z\nunfold PC.adj\nby_cases h1 : (x, y) ∈ S ∨ (y, x) ∈ S <;> by_cases h2 : (y, z) ∈ S ∨ (z, y) ∈ S <;> by_cases h3 : (x, z) ∈ S ∨ (z, x) ∈ S <;> simp only [h1, h2, h3, if_true, if_false] <;> try omega\nexfalso\nunfold GT.TriangleFree at hS\nrcases h1 with h1 | h1 <;> rcases h2 with h2 | h2 <;> rcases h3 with h3 | h3\nall_goals first\n  | exact hS _ h1 _ h2 _ h3 ⟨rfl, rfl, rfl⟩\n  | exact hS _ h1 _ h3 _ h2 ⟨rfl, rfl, rfl⟩\n  | exact hS _ h2 _ h1 _ h3 ⟨rfl, rfl, rfl⟩\n  | exact hS _ h2 _ h3 _ h1 ⟨rfl, rfl, rfl⟩\n  | exact hS _ h3 _ h1 _ h2 ⟨rfl, rfl, rfl⟩\n  | exact hS _ h3 _ h2 _ h1 ⟨rfl, rfl, rfl⟩\n  | (have o1 := hH _ h1; have o2 := hH _ h2; have o3 := hH _ h3; (try simp only at o1 o2 o3); omega)",
+      "tactic_sha256": "d298837cb4116cbd74fa05f84219ad2fadccdb58e6da6eff56711546b1925e44",
+      "tier": 0
+     }
+    ],
+    "charged": {
+     "candidates": 2,
+     "cpu_ns": 1577727134,
+     "wall_ns": 1604217692
+    },
+    "result": "COMPILED",
+    "statement": "pc_bridge",
+    "target": "PCConj.pc_bridge"
+   },
+   {
+    "attempts": [
+     {
+      "compiled": true,
+      "errors": [],
+      "recipe": "bridge-instances-omega",
+      "sorry": false,
+      "tactic": "intro S hS hH v0 v1 v2 v3 v4\nhave t0 := PCP2.proof S hS hH v0 v1 v2\nhave t1 := PCP2.proof S hS hH v0 v1 v3\nhave t2 := PCP2.proof S hS hH v0 v1 v4\nhave t3 := PCP2.proof S hS hH v0 v2 v3\nhave t4 := PCP2.proof S hS hH v0 v2 v4\nhave t5 := PCP2.proof S hS hH v0 v3 v4\nhave t6 := PCP2.proof S hS hH v1 v2 v3\nhave t7 := PCP2.proof S hS hH v1 v2 v4\nhave t8 := PCP2.proof S hS hH v1 v3 v4\nhave t9 := PCP2.proof S hS hH v2 v3 v4\nhave b0 := PCP1.proof S v0 v1\nhave b1 := PCP1.proof S v0 v2\nhave b2 := PCP1.proof S v0 v3\nhave b3 := PCP1.proof S v0 v4\nhave b4 := PCP1.proof S v1 v2\nhave b5 := PCP1.proof S v1 v3\nhave b6 := PCP1.proof S v1 v4\nhave b7 := PCP1.proof S v2 v3\nhave b8 := PCP1.proof S v2 v4\nhave b9 := PCP1.proof S v3 v4\nomega",
+      "tactic_sha256": "bd09d2ce98ffb4afad5c98f6174a60f54f0db7310540d1b2f825ff8265c8a4f1",
+      "tier": 0
+     }
+    ],
+    "charged": {
+     "candidates": 1,
+     "cpu_ns": 1278074918,
+     "wall_ns": 1299810810
+    },
+    "result": "COMPILED",
+    "statement": "pc_pat5_10_01020304121314232434",
+    "target": "PCConj.pc_pat5_10_01020304121314232434"
+   },
+   {
+    "attempts": [
+     {
+      "compiled": true,
+      "errors": [],
+      "recipe": "bridge-instances-omega",
+      "sorry": false,
+      "tactic": "intro S hS hH v0 v1 v2 v3 v4 v5\nhave t0 := PCP2.proof S hS hH v0 v1 v5\nhave t1 := PCP2.proof S hS hH v0 v4 v5\nhave t2 := PCP2.proof S hS hH v1 v2 v5\nhave t3 := PCP2.proof S hS hH v2 v3 v5\nhave t4 := PCP2.proof S hS hH v3 v4 v5\nhave b0 := PCP1.proof S v0 v1\nhave b1 := PCP1.proof S v0 v4\nhave b2 := PCP1.proof S v0 v5\nhave b3 := PCP1.proof S v1 v2\nhave b4 := PCP1.proof S v1 v5\nhave b5 := PCP1.proof S v2 v3\nhave b6 := PCP1.proof S v2 v5\nhave b7 := PCP1.proof S v3 v4\nhave b8 := PCP1.proof S v3 v5\nhave b9 := PCP1.proof S v4 v5\nomega",
+      "tactic_sha256": "30d431253da2c1a8df5d1f0035687c261527cf0106dad95622991a64df3a0a36",
+      "tier": 0
+     }
+    ],
+    "charged": {
+     "candidates": 1,
+     "cpu_ns": 1064981394,
+     "wall_ns": 1143365702
+    },
+    "result": "COMPILED",
+    "statement": "pc_pat6_10_01040512152325343545",
+    "target": "PCConj.pc_pat6_10_01040512152325343545"
+   }
+  ],
+  "search_candidates": 6,
+  "search_context_cpu_ns": 8324351591,
+  "search_cpu_ns": 4908543171,
+  "search_runs": 4
+ },
+ "counterexamples": [],
+ "declarations": [
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "GTDefs",
+   "name": "GT.TriangleFree",
+   "type_sha256": "c98548115419ec271dfd495799f10b35c81fad06e346ef970bd969a518c2a9f4"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "GTDefs",
+   "name": "GT.Edges",
+   "type_sha256": "baaddf70fb5d432b8bd948ef91d6f910124a6d138edae4d5f000c4610ddc8eae"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "GTDefs",
+   "name": "GT.instDecidableTriangleFree",
+   "type_sha256": "5f6ad93fcd86d217b85aa0d5ae9d8484d2f18f9af307b85f1d55bcb68ce406d1"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "PCDefs",
+   "name": "PC.adj",
+   "type_sha256": "2c39e95c30cae9766e865a7eac9a1017c2d7bdcb7e980b82e6ff7b98170d3218"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "PCConj",
+   "name": "PCConj.pc_pat5_10_01020304121314232434",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "PCConj",
+   "name": "PCConj.pc_bridge",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "PCConj",
+   "name": "PCConj.pc_adj_le_one",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "PCConj",
+   "name": "PCConj.pc_pat6_10_01040512152325343545",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "theorem",
+   "module": "PCP1",
+   "name": "PCP1.proof",
+   "type_sha256": "87cb16816f57a88e9858c25756872e9e9501d5dc936a7f793a3d9ba8ed3fa4e1"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "theorem",
+   "module": "PCP2",
+   "name": "PCP2.proof",
+   "type_sha256": "a8a659c1d5895a64509e46e1d7357ae06bfdd574d75e60fc60c933839c68ea0d"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "theorem",
+   "module": "PCP3",
+   "name": "PCP3.proof",
+   "type_sha256": "1250fbe87bf08533b8f688f89bebda253a895c20dae7a0bb5666b4635fcf434a"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "theorem",
+   "module": "PCP4",
+   "name": "PCP4.proof",
+   "type_sha256": "601d4e1b68b3677a5e8581d42f6872a0411a336fa2d349890007d99cba0b763f"
+  }
+ ],
+ "definitions": [
+  {
+   "module": "GTDefs",
+   "name": "GT.TriangleFree",
+   "origin": "trusted-generated",
+   "type_sha256": "c98548115419ec271dfd495799f10b35c81fad06e346ef970bd969a518c2a9f4"
+  },
+  {
+   "module": "GTDefs",
+   "name": "GT.Edges",
+   "origin": "trusted-generated",
+   "type_sha256": "baaddf70fb5d432b8bd948ef91d6f910124a6d138edae4d5f000c4610ddc8eae"
+  },
+  {
+   "module": "GTDefs",
+   "name": "GT.instDecidableTriangleFree",
+   "origin": "trusted-generated",
+   "type_sha256": "5f6ad93fcd86d217b85aa0d5ae9d8484d2f18f9af307b85f1d55bcb68ce406d1"
+  },
+  {
+   "module": "PCDefs",
+   "name": "PC.adj",
+   "origin": "trusted-generated",
+   "type_sha256": "2c39e95c30cae9766e865a7eac9a1017c2d7bdcb7e980b82e6ff7b98170d3218"
+  },
+  {
+   "module": "PCConj",
+   "name": "PCConj.pc_pat5_10_01020304121314232434",
+   "origin": "trusted-generated",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "module": "PCConj",
+   "name": "PCConj.pc_bridge",
+   "origin": "trusted-generated",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "module": "PCConj",
+   "name": "PCConj.pc_adj_le_one",
+   "origin": "trusted-generated",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "module": "PCConj",
+   "name": "PCConj.pc_pat6_10_01040512152325343545",
+   "origin": "trusted-generated",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  }
+ ],
+ "dependencies": {
+  "GT.Edges": {
+   "package": [],
+   "workspace_modules": [
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Defs"
+   ]
+  },
+  "GT.TriangleFree": {
+   "package": [
+    "GT.Edges"
+   ],
+   "workspace_modules": [
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Defs",
+    "Mathlib.Data.SetLike.Basic"
+   ]
+  },
+  "GT.instDecidableTriangleFree": {
+   "package": [
+    "GT.Edges",
+    "GT.TriangleFree"
+   ],
+   "workspace_modules": [
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Defs",
+    "Mathlib.Data.SetLike.Basic"
+   ]
+  },
+  "PC.adj": {
+   "package": [
+    "GT.Edges"
+   ],
+   "workspace_modules": [
+    "Init.Core",
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Defs",
+    "Mathlib.Data.SetLike.Basic"
+   ]
+  },
+  "PCConj.pc_adj_le_one": {
+   "package": [
+    "GT.Edges",
+    "PC.adj"
+   ],
+   "workspace_modules": [
+    "Init.Prelude"
+   ]
+  },
+  "PCConj.pc_bridge": {
+   "package": [
+    "GT.Edges",
+    "GT.TriangleFree",
+    "PC.adj"
+   ],
+   "workspace_modules": [
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Defs",
+    "Mathlib.Data.SetLike.Basic"
+   ]
+  },
+  "PCConj.pc_pat5_10_01020304121314232434": {
+   "package": [
+    "GT.Edges",
+    "GT.TriangleFree",
+    "PC.adj"
+   ],
+   "workspace_modules": [
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Defs",
+    "Mathlib.Data.SetLike.Basic"
+   ]
+  },
+  "PCConj.pc_pat6_10_01040512152325343545": {
+   "package": [
+    "GT.Edges",
+    "GT.TriangleFree",
+    "PC.adj"
+   ],
+   "workspace_modules": [
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Defs",
+    "Mathlib.Data.SetLike.Basic"
+   ]
+  },
+  "PCP1.proof": {
+   "package": [
+    "GT.Edges",
+    "PC.adj",
+    "PCConj.pc_adj_le_one",
+    "PCP1.proof._proof_1_1",
+    "PCP1.proof._proof_1_2"
+   ],
+   "workspace_modules": [
+    "Init.Core",
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Defs",
+    "Mathlib.Data.SetLike.Basic"
+   ]
+  },
+  "PCP1.proof._proof_1_1": {
+   "package": [],
+   "workspace_modules": [
+    "Init.Core",
+    "Init.Data.Cast",
+    "Init.Data.Int.Basic",
+    "Init.Data.Int.Order",
+    "Init.Omega.Coeffs",
+    "Init.Omega.Constraint",
+    "Init.Omega.Int",
+    "Init.Omega.LinearCombo",
+    "Init.Prelude"
+   ]
+  },
+  "PCP1.proof._proof_1_2": {
+   "package": [],
+   "workspace_modules": [
+    "Init.Core",
+    "Init.Data.Cast",
+    "Init.Data.Int.Basic",
+    "Init.Data.Int.Order",
+    "Init.Omega.Coeffs",
+    "Init.Omega.Constraint",
+    "Init.Omega.Int",
+    "Init.Omega.LinearCombo",
+    "Init.Prelude"
+   ]
+  },
+  "PCP2.proof": {
+   "package": [
+    "GT.Edges",
+    "GT.TriangleFree",
+    "PC.adj",
+    "PCConj.pc_bridge",
+    "PCP2.proof._proof_1_1",
+    "PCP2.proof._proof_1_2",
+    "PCP2.proof._proof_1_3",
+    "PCP2.proof._proof_1_4",
+    "PCP2.proof._proof_1_5",
+    "PCP2.proof._proof_1_6",
+    "PCP2.proof._proof_1_7",
+    "PCP2.proof._proof_1_8",
+    "PCP2.proof._proof_1_9"
+   ],
+   "workspace_modules": [
+    "Init.Core",
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Defs",
+    "Mathlib.Data.SetLike.Basic"
+   ]
+  },
+  "PCP2.proof._proof_1_1": {
+   "package": [],
+   "workspace_modules": [
+    "Init.Core",
+    "Init.Data.Cast",
+    "Init.Data.Int.Basic",
+    "Init.Data.Int.Order",
+    "Init.Omega.Coeffs",
+    "Init.Omega.Constraint",
+    "Init.Omega.Int",
+    "Init.Omega.LinearCombo",
+    "Init.Prelude"
+   ]
+  },
+  "PCP2.proof._proof_1_2": {
+   "package": [],
+   "workspace_modules": [
+    "Init.Core",
+    "Init.Data.Cast",
+    "Init.Data.Int.Basic",
+    "Init.Data.Int.Order",
+    "Init.Omega.Coeffs",
+    "Init.Omega.Constraint",
+    "Init.Omega.Int",
+    "Init.Omega.LinearCombo",
+    "Init.Prelude"
+   ]
+  },
+  "PCP2.proof._proof_1_3": {
+   "package": [],
+   "workspace_modules": [
+    "Init.Core",
+    "Init.Data.Cast",
+    "Init.Data.Int.Basic",
+    "Init.Data.Int.Order",
+    "Init.Omega.Coeffs",
+    "Init.Omega.Constraint",
+    "Init.Omega.Int",
+    "Init.Omega.LinearCombo",
+    "Init.Prelude"
+   ]
+  },
+  "PCP2.proof._proof_1_4": {
+   "package": [],
+   "workspace_modules": [
+    "Init.Core",
+    "Init.Data.Cast",
+    "Init.Data.Int.Basic",
+    "Init.Data.Int.Order",
+    "Init.Omega.Coeffs",
+    "Init.Omega.Constraint",
+    "Init.Omega.Int",
+    "Init.Omega.LinearCombo",
+    "Init.Prelude"
+   ]
+  },
+  "PCP2.proof._proof_1_5": {
+   "package": [],
+   "workspace_modules": [
+    "Init.Core",
+    "Init.Data.Cast",
+    "Init.Data.Int.Basic",
+    "Init.Data.Int.Order",
+    "Init.Omega.Coeffs",
+    "Init.Omega.Constraint",
+    "Init.Omega.Int",
+    "Init.Omega.LinearCombo",
+    "Init.Prelude"
+   ]
+  },
+  "PCP2.proof._proof_1_6": {
+   "package": [],
+   "workspace_modules": [
+    "Init.Core",
+    "Init.Data.Cast",
+    "Init.Data.Int.Basic",
+    "Init.Data.Int.Order",
+    "Init.Omega.Coeffs",
+    "Init.Omega.Constraint",
+    "Init.Omega.Int",
+    "Init.Omega.LinearCombo",
+    "Init.Prelude"
+   ]
+  },
+  "PCP2.proof._proof_1_7": {
+   "package": [],
+   "workspace_modules": [
+    "Init.Core",
+    "Init.Data.Cast",
+    "Init.Data.Int.Basic",
+    "Init.Data.Int.Order",
+    "Init.Omega.Coeffs",
+    "Init.Omega.Constraint",
+    "Init.Omega.Int",
+    "Init.Omega.LinearCombo",
+    "Init.Prelude"
+   ]
+  },
+  "PCP2.proof._proof_1_8": {
+   "package": [],
+   "workspace_modules": [
+    "Init.Core",
+    "Init.Data.Cast",
+    "Init.Data.Int.Basic",
+    "Init.Data.Int.Order",
+    "Init.Omega.Coeffs",
+    "Init.Omega.Constraint",
+    "Init.Omega.Int",
+    "Init.Omega.LinearCombo",
+    "Init.Prelude"
+   ]
+  },
+  "PCP2.proof._proof_1_9": {
+   "package": [],
+   "workspace_modules": [
+    "Init.Core",
+    "Init.Data.Cast",
+    "Init.Data.Int.Basic",
+    "Init.Data.Int.Order",
+    "Init.Omega.Coeffs",
+    "Init.Omega.Constraint",
+    "Init.Omega.Int",
+    "Init.Omega.LinearCombo",
+    "Init.Prelude"
+   ]
+  },
+  "PCP3.proof": {
+   "package": [
+    "GT.Edges",
+    "GT.TriangleFree",
+    "PC.adj",
+    "PCConj.pc_adj_le_one",
+    "PCConj.pc_bridge",
+    "PCConj.pc_pat5_10_01020304121314232434",
+    "PCP1.proof",
+    "PCP1.proof._proof_1_1",
+    "PCP1.proof._proof_1_2",
+    "PCP2.proof",
+    "PCP2.proof._proof_1_1",
+    "PCP2.proof._proof_1_2",
+    "PCP2.proof._proof_1_3",
+    "PCP2.proof._proof_1_4",
+    "PCP2.proof._proof_1_5",
+    "PCP2.proof._proof_1_6",
+    "PCP2.proof._proof_1_7",
+    "PCP2.proof._proof_1_8",
+    "PCP2.proof._proof_1_9",
+    "PCP3.proof._proof_1_1"
+   ],
+   "workspace_modules": [
+    "Init.Core",
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Defs",
+    "Mathlib.Data.SetLike.Basic"
+   ]
+  },
+  "PCP3.proof._proof_1_1": {
+   "package": [
+    "GT.Edges",
+    "PC.adj"
+   ],
+   "workspace_modules": [
+    "Init.Core",
+    "Init.Data.Cast",
+    "Init.Data.Int.Basic",
+    "Init.Data.Int.Lemmas",
+    "Init.Data.Int.Order",
+    "Init.Omega.Coeffs",
+    "Init.Omega.Constraint",
+    "Init.Omega.Int",
+    "Init.Omega.LinearCombo",
+    "Init.Prelude"
+   ]
+  },
+  "PCP4.proof": {
+   "package": [
+    "GT.Edges",
+    "GT.TriangleFree",
+    "PC.adj",
+    "PCConj.pc_adj_le_one",
+    "PCConj.pc_bridge",
+    "PCConj.pc_pat6_10_01040512152325343545",
+    "PCP1.proof",
+    "PCP1.proof._proof_1_1",
+    "PCP1.proof._proof_1_2",
+    "PCP2.proof",
+    "PCP2.proof._proof_1_1",
+    "PCP2.proof._proof_1_2",
+    "PCP2.proof._proof_1_3",
+    "PCP2.proof._proof_1_4",
+    "PCP2.proof._proof_1_5",
+    "PCP2.proof._proof_1_6",
+    "PCP2.proof._proof_1_7",
+    "PCP2.proof._proof_1_8",
+    "PCP2.proof._proof_1_9",
+    "PCP4.proof._proof_1_1"
+   ],
+   "workspace_modules": [
+    "Init.Core",
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Defs",
+    "Mathlib.Data.SetLike.Basic"
+   ]
+  },
+  "PCP4.proof._proof_1_1": {
+   "package": [
+    "GT.Edges",
+    "PC.adj"
+   ],
+   "workspace_modules": [
+    "Init.Core",
+    "Init.Data.Cast",
+    "Init.Data.Int.Basic",
+    "Init.Data.Int.Lemmas",
+    "Init.Data.Int.Order",
+    "Init.Omega.Coeffs",
+    "Init.Omega.Constraint",
+    "Init.Omega.Int",
+    "Init.Omega.LinearCombo",
+    "Init.Prelude"
+   ]
+  }
+ },
+ "domain": "triangle_free_host_v1",
+ "generation": {
+  "connected_triangle_covered": 40,
+  "graphs_in_range": 201,
+  "implied_by_earlier_patterns": [
+   {
+    "ex": 9,
+    "id": "pat6_14_0102040512131415232425343545",
+    "lp_triangle_rows": 9.333333
+   },
+   {
+    "ex": 9,
+    "id": "pat6_15_010203040512131415232425343545",
+    "lp_triangle_rows": 10.0
+   }
+  ],
+  "implied_by_triangle_rows": 36,
+  "kept": 2
+ },
+ "modules": [
+  {
+   "name": "GTDefs",
+   "source": "import Mathlib.Data.Finset.Powerset\n\nnamespace GT\n\n/-- Edge sets: ordered pairs (u, v), read as the edge {u, v}. Hosts list each edge once, with u < v. -/\nabbrev Edges := Finset (ℕ × ℕ)\n\n/-- No three edges (a, b), (b, c), (a, c). -/\ndef TriangleFree (S : Edges) : Prop :=\n  ∀ e ∈ S, ∀ f ∈ S, ∀ g ∈ S, ¬ (e.1 = g.1 ∧ e.2 = f.1 ∧ f.2 = g.2)\n\ninstance (S : Edges) : Decidable (TriangleFree S) := by\n  unfold TriangleFree; infer_instance\n\nend GT\n",
+   "source_sha256": "34a84d4f227cbf5a95012a37a9f263f14ca419a4959be42c674d8abc47c9e3a7",
+   "trusted": true
+  },
+  {
+   "name": "PCDefs",
+   "source": "import GTDefs\n\nnamespace PC\n\n/-- 0/1 adjacency of an edge set, either orientation (B20_R31, generated:pattern-inequalities-v1). -/\ndef adj (S : GT.Edges) (u v : ℕ) : ℕ := if (u, v) ∈ S ∨ (v, u) ∈ S then 1 else 0\n\nend PC\n",
+   "source_sha256": "f077048e259ca3a99bd240cb6650bf5e6fc8472b1d566b4c184c179f7733a7a7",
+   "trusted": true
+  },
+  {
+   "name": "PCConj",
+   "source": "import GTDefs\nimport PCDefs\nset_option linter.unusedVariables false\n\nnamespace PCConj\n/-- Generated conjecture `pc_adj_le_one` (generated:pattern-inequalities-v1). -/\ndef pc_adj_le_one : Prop := ∀ (S : GT.Edges) (u : ℕ) (v : ℕ), PC.adj S u v ≤ 1\n/-- Generated conjecture `pc_bridge` (generated:pattern-inequalities-v1). -/\ndef pc_bridge : Prop := ∀ (S : GT.Edges) (hS : GT.TriangleFree S) (hH : ∀ e ∈ S, e.1 < e.2) (x : ℕ) (y : ℕ) (z : ℕ), PC.adj S x y + PC.adj S y z + PC.adj S x z ≤ 2\n/-- Generated conjecture `pc_pat5_10_01020304121314232434` (generated:pattern-inequalities-v1). -/\ndef pc_pat5_10_01020304121314232434 : Prop := ∀ (S : GT.Edges) (hS : GT.TriangleFree S) (hH : ∀ e ∈ S, e.1 < e.2) (v0 : ℕ) (v1 : ℕ) (v2 : ℕ) (v3 : ℕ) (v4 : ℕ), PC.adj S v0 v1 + PC.adj S v0 v2 + PC.adj S v0 v3 + PC.adj S v0 v4 + PC.adj S v1 v2 + PC.adj S v1 v3 + PC.adj S v1 v4 + PC.adj S v2 v3 + PC.adj S v2 v4 + PC.adj S v3 v4 ≤ 6\n/-- Generated conjecture `pc_pat6_10_01040512152325343545` (generated:pattern-inequalities-v1). -/\ndef pc_pat6_10_01040512152325343545 : Prop := ∀ (S : GT.Edges) (hS : GT.TriangleFree S) (hH : ∀ e ∈ S, e.1 < e.2) (v0 : ℕ) (v1 : ℕ) (v2 : ℕ) (v3 : ℕ) (v4 : ℕ) (v5 : ℕ), PC.adj S v0 v1 + PC.adj S v0 v4 + PC.adj S v0 v5 + PC.adj S v1 v2 + PC.adj S v1 v5 + PC.adj S v2 v3 + PC.adj S v2 v5 + PC.adj S v3 v4 + PC.adj S v3 v5 + PC.adj S v4 v5 ≤ 7\nend PCConj\n",
+   "source_sha256": "e912718627bd9dc7c439127e5c9d749d34b06d89d60ef56d81ffee5bfcd94f71",
+   "trusted": true
+  },
+  {
+   "name": "PCP1",
+   "source": "import GTDefs\nimport PCDefs\nimport PCConj\nnamespace PCP1\ntheorem proof : PCConj.pc_adj_le_one := by\n  unfold PCConj.pc_adj_le_one\n  intro S u v\n  unfold PC.adj\n  split <;> omega\nend PCP1\n",
+   "source_sha256": "addbe7c09fd1e49d0a00e328e0136cd694ab0c9e415f2d184a51ecfe798c983f",
+   "trusted": false
+  },
+  {
+   "name": "PCP2",
+   "source": "import GTDefs\nimport PCDefs\nimport PCConj\nimport PCP1\nnamespace PCP2\ntheorem proof : PCConj.pc_bridge := by\n  unfold PCConj.pc_bridge\n  intro S hS hH x y z\n  unfold PC.adj\n  split_ifs with h1 h2 h3 <;> try omega\n  exfalso\n  unfold GT.TriangleFree at hS\n  rcases h1 with h1 | h1 <;> rcases h2 with h2 | h2 <;> rcases h3 with h3 | h3\n  all_goals first\n    | exact hS _ h1 _ h2 _ h3 ⟨rfl, rfl, rfl⟩\n    | exact hS _ h1 _ h3 _ h2 ⟨rfl, rfl, rfl⟩\n    | exact hS _ h2 _ h1 _ h3 ⟨rfl, rfl, rfl⟩\n    | exact hS _ h2 _ h3 _ h1 ⟨rfl, rfl, rfl⟩\n    | exact hS _ h3 _ h1 _ h2 ⟨rfl, rfl, rfl⟩\n    | exact hS _ h3 _ h2 _ h1 ⟨rfl, rfl, rfl⟩\n    | (have o1 := hH _ h1; have o2 := hH _ h2; have o3 := hH _ h3; (try simp only at o1 o2 o3); omega)\nend PCP2\n",
+   "source_sha256": "27fe079d6e189cabc362e4a69bede90d21f8f3c46db0b9a14e77007f06a3ac68",
+   "trusted": false
+  },
+  {
+   "name": "PCP3",
+   "source": "import GTDefs\nimport PCDefs\nimport PCConj\nimport PCP1\nimport PCP2\nnamespace PCP3\ntheorem proof : PCConj.pc_pat5_10_01020304121314232434 := by\n  unfold PCConj.pc_pat5_10_01020304121314232434\n  intro S hS hH v0 v1 v2 v3 v4\n  have t0 := PCP2.proof S hS hH v0 v1 v2\n  have t1 := PCP2.proof S hS hH v0 v1 v3\n  have t2 := PCP2.proof S hS hH v0 v1 v4\n  have t3 := PCP2.proof S hS hH v0 v2 v3\n  have t4 := PCP2.proof S hS hH v0 v2 v4\n  have t5 := PCP2.proof S hS hH v0 v3 v4\n  have t6 := PCP2.proof S hS hH v1 v2 v3\n  have t7 := PCP2.proof S hS hH v1 v2 v4\n  have t8 := PCP2.proof S hS hH v1 v3 v4\n  have t9 := PCP2.proof S hS hH v2 v3 v4\n  have b0 := PCP1.proof S v0 v1\n  have b1 := PCP1.proof S v0 v2\n  have b2 := PCP1.proof S v0 v3\n  have b3 := PCP1.proof S v0 v4\n  have b4 := PCP1.proof S v1 v2\n  have b5 := PCP1.proof S v1 v3\n  have b6 := PCP1.proof S v1 v4\n  have b7 := PCP1.proof S v2 v3\n  have b8 := PCP1.proof S v2 v4\n  have b9 := PCP1.proof S v3 v4\n  omega\nend PCP3\n",
+   "source_sha256": "a690778de192139f51f7faca69dd1e3938692bee2c0a7018923b571b01439c43",
+   "trusted": false
+  },
+  {
+   "name": "PCP4",
+   "source": "import GTDefs\nimport PCDefs\nimport PCConj\nimport PCP1\nimport PCP2\nimport PCP3\nnamespace PCP4\ntheorem proof : PCConj.pc_pat6_10_01040512152325343545 := by\n  unfold PCConj.pc_pat6_10_01040512152325343545\n  intro S hS hH v0 v1 v2 v3 v4 v5\n  have t0 := PCP2.proof S hS hH v0 v1 v5\n  have t1 := PCP2.proof S hS hH v0 v4 v5\n  have t2 := PCP2.proof S hS hH v1 v2 v5\n  have t3 := PCP2.proof S hS hH v2 v3 v5\n  have t4 := PCP2.proof S hS hH v3 v4 v5\n  have b0 := PCP1.proof S v0 v1\n  have b1 := PCP1.proof S v0 v4\n  have b2 := PCP1.proof S v0 v5\n  have b3 := PCP1.proof S v1 v2\n  have b4 := PCP1.proof S v1 v5\n  have b5 := PCP1.proof S v2 v3\n  have b6 := PCP1.proof S v2 v5\n  have b7 := PCP1.proof S v3 v4\n  have b8 := PCP1.proof S v3 v5\n  have b9 := PCP1.proof S v4 v5\n  omega\nend PCP4\n",
+   "source_sha256": "8511da8d25d48da072e06037e509b83baf8d2e51d25cf7367da88eb58eb86d97",
+   "trusted": false
+  }
+ ],
+ "name": "generated pattern inequalities (s15.3, attempt 1 of the relaxation family)",
+ "package_sha256": "e373ab41a5136bbab88560e6d2c2c0b0f4873e5a14441bcf6b6ba692b79cb78f",
+ "patterns": [
+  {
+   "edges": [
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     2
+    ],
+    [
+     0,
+     3
+    ],
+    [
+     0,
+     4
+    ],
+    [
+     1,
+     2
+    ],
+    [
+     1,
+     3
+    ],
+    [
+     1,
+     4
+    ],
+    [
+     2,
+     3
+    ],
+    [
+     2,
+     4
+    ],
+    [
+     3,
+     4
+    ]
+   ],
+   "ex": 6,
+   "id": "pat5_10_01020304121314232434",
+   "lp": 6.666667,
+   "lp_triangle_rows": 6.666667,
+   "vertices": 5
+  },
+  {
+   "edges": [
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     4
+    ],
+    [
+     0,
+     5
+    ],
+    [
+     1,
+     2
+    ],
+    [
+     1,
+     5
+    ],
+    [
+     2,
+     3
+    ],
+    [
+     2,
+     5
+    ],
+    [
+     3,
+     4
+    ],
+    [
+     3,
+     5
+    ],
+    [
+     4,
+     5
+    ]
+   ],
+   "ex": 7,
+   "id": "pat6_10_01040512152325343545",
+   "lp": 7.5,
+   "lp_triangle_rows": 7.5,
+   "vertices": 6
+  }
+ ],
+ "proofs": [
+  {
+   "module": "PCP1",
+   "recipe": "adj-split",
+   "statement": "pc_adj_le_one"
+  },
+  {
+   "module": "PCP2",
+   "recipe": "adjacency-orientation-cases",
+   "statement": "pc_bridge"
+  },
+  {
+   "module": "PCP3",
+   "recipe": "bridge-instances-omega",
+   "statement": "pc_pat5_10_01020304121314232434"
+  },
+  {
+   "module": "PCP4",
+   "recipe": "bridge-instances-omega",
+   "statement": "pc_pat6_10_01040512152325343545"
+  }
+ ],
+ "provenance": {
+  "acceptance": "genesis.formal_research.checker.accept",
+  "created_at": "2026-10-16T00:03:47.326021+00:00",
+  "loop": "genesis.formal_research.loop",
+  "search": "genesis.formal_research.search (builder-written recipes, named per proof)"
+ },
+ "schema": "genesis-theory-package-v1",
+ "scope": "0/1 adjacency of an edge set, the triangle bridge, and one bound per generated pattern: on every assignment of the pattern's vertices, a triangle-free edge set in host form has at most ex(F) of the pattern's edges. Conservative definitions only.",
+ "statements": [
+  {
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "counterexample": null,
+   "id": "pc_adj_le_one",
+   "lean": "∀ (S : GT.Edges) (u : ℕ) (v : ℕ), PC.adj S u v ≤ 1",
+   "origin": "generated:pattern-inequalities-v1",
+   "proof_const": "PCP1.proof",
+   "proof_module": "PCP1",
+   "recipe": "adj-split",
+   "role": "adj",
+   "screened_instances": 3000,
+   "spec_const": "PCConj.pc_adj_le_one",
+   "status": "CHECKED",
+   "subject": "adj"
+  },
+  {
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "counterexample": null,
+   "id": "pc_bridge",
+   "lean": "∀ (S : GT.Edges) (hS : GT.TriangleFree S) (hH : ∀ e ∈ S, e.1 < e.2) (x : ℕ) (y : ℕ) (z : ℕ), PC.adj S x y + PC.adj S y z + PC.adj S x z ≤ 2",
+   "origin": "generated:pattern-inequalities-v1",
+   "proof_const": "PCP2.proof",
+   "proof_module": "PCP2",
+   "recipe": "adjacency-orientation-cases",
+   "role": "bridge",
+   "screened_instances": 1710,
+   "spec_const": "PCConj.pc_bridge",
+   "status": "CHECKED",
+   "subject": "bridge"
+  },
+  {
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "counterexample": null,
+   "id": "pc_pat5_10_01020304121314232434",
+   "lean": "∀ (S : GT.Edges) (hS : GT.TriangleFree S) (hH : ∀ e ∈ S, e.1 < e.2) (v0 : ℕ) (v1 : ℕ) (v2 : ℕ) (v3 : ℕ) (v4 : ℕ), PC.adj S v0 v1 + PC.adj S v0 v2 + PC.adj S v0 v3 + PC.adj S v0 v4 + PC.adj S v1 v2 + PC.adj S v1 v3 + PC.adj S v1 v4 + PC.adj S v2 v3 + PC.adj S v2 v4 + PC.adj S v3 v4 ≤ 6",
+   "origin": "generated:pattern-inequalities-v1",
+   "proof_const": "PCP3.proof",
+   "proof_module": "PCP3",
+   "recipe": "bridge-instances-omega",
+   "role": "pattern",
+   "screened_instances": 1662,
+   "spec_const": "PCConj.pc_pat5_10_01020304121314232434",
+   "status": "CHECKED",
+   "subject": "pat5_10_01020304121314232434"
+  },
+  {
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "counterexample": null,
+   "id": "pc_pat6_10_01040512152325343545",
+   "lean": "∀ (S : GT.Edges) (hS : GT.TriangleFree S) (hH : ∀ e ∈ S, e.1 < e.2) (v0 : ℕ) (v1 : ℕ) (v2 : ℕ) (v3 : ℕ) (v4 : ℕ) (v5 : ℕ), PC.adj S v0 v1 + PC.adj S v0 v4 + PC.adj S v0 v5 + PC.adj S v1 v2 + PC.adj S v1 v5 + PC.adj S v2 v3 + PC.adj S v2 v5 + PC.adj S v3 v4 + PC.adj S v3 v5 + PC.adj S v4 v5 ≤ 7",
+   "origin": "generated:pattern-inequalities-v1",
+   "proof_const": "PCP4.proof",
+   "proof_module": "PCP4",
+   "recipe": "bridge-instances-omega",
+   "role": "pattern",
+   "screened_instances": 1696,
+   "spec_const": "PCConj.pc_pat6_10_01040512152325343545",
+   "status": "CHECKED",
+   "subject": "pat6_10_01040512152325343545"
+  }
+ ]
+}

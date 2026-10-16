@@ -461,9 +461,16 @@
       },
       "B20_R30": {
         "commits": [
-          "ece1999"
+          "ece1999",
+          "e0b4491"
         ],
         "result": "B20R24-OPEN-2 measured on 90 fresh e1b hosts: calibration 86/90 certified within 60 s (85/90 strictly; one certify overran to 104.8 s), evaluator 90/90 at 600 s (72 LP dual, 18 SAT/DRAT), unsupported 0 with one-sided 95% upper bound 0.0327, no value disagreements: LIMITS_CONSISTENT on the decided family; no limit changed"
+      },
+      "B20_R31": {
+        "commits": [
+          "c90f00f"
+        ],
+        "result": "s15.3 relaxation family attempt 1: generated pattern inequalities over every graph on <= 6 vertices (kept K5 <= 6 and W5 <= 7; K6, K6-e implied by K5), Lean-CHECKED validity over 0/1 adjacency (adj <= 1, triangle bridge, pattern bounds by omega); DEV NO_UTILITY_AFTER_COST as a construction component (vs plain LP greedy +0.19 [0.06, 0.31]; menu +0.98; conventional +3.21; matched = control); certification diagnostic on B20_R30 hosts: LP floor meets the optimum on 82/90 with the rows vs 72/90 without (10 of 18 SAT-certified hosts); exposure addenda b20r31 (168 hosts)"
       }
     },
     "open_after_b20_r5": [
@@ -576,6 +583,23 @@
       "B20R25-OPEN-1 (hint generator v2 heuristic; pending review)",
       "B20R26-OPEN-1 (quotient family: one attempt)",
       "B20R27-OPEN-1 (decomposition family: one attempt)",
+      "registered interventions for represent-and-repair-v1 and the formal successor kind; supervised SAT child (needs a versioned kind so frozen E1 descriptors do not change)",
+      "B20R3-OPEN-2",
+      "B20R5-OPEN-2",
+      "B14-OPEN-4 (pending review)",
+      "B20R-OPEN-3 (pending review)",
+      "R-04",
+      "B20R8-OPEN-1 (pending review)"
+    ],
+    "open_after_b20_r31": [
+      "GV3 sign-off (reviewer: e1-hard-v2 and DRAFTs; statistician B19-OPEN-4; independent custodian)",
+      "B20R24-OPEN-2 (certification limit vs unsupported limit; B20_R30: LIMITS_CONSISTENT on the e1b family; reviewer decision)",
+      "B20R24-OPEN-1 (repaired, pending review)",
+      "B20R9-OPEN-1 (GV4: component invention; five attempts in four families without DEV construction utility; relaxation family has a certification signal)",
+      "B20R25-OPEN-1 (hint generator v2 heuristic; pending review)",
+      "B20R26-OPEN-1 (quotient family: one attempt)",
+      "B20R27-OPEN-1 (decomposition family: one attempt)",
+      "B20R31-OPEN-1 (relaxation family: one attempt; exact certification route next)",
       "registered interventions for represent-and-repair-v1 and the formal successor kind; supervised SAT child (needs a versioned kind so frozen E1 descriptors do not change)",
       "B20R3-OPEN-2",
       "B20R5-OPEN-2",
