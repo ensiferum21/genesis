@@ -1,0 +1,203 @@
+{
+ "code_identity": "e1ddc821e4936d1feb2e917e74e74c822f78579251c1608e47323d7338f98cb8",
+ "descriptors": {
+  "e1:candidate": "f4c7f4b0e5ced594f014dff8bc66703f2f545a52c1972a3d2a3cac42a8f195b1",
+  "e1:exchange_tm": "70660ab94e35f0fa3692886355ec6a62a6ef9f0d2f57e16074b68669061c4809",
+  "e1:low_cycle_tm": "ae110999483196446cefbcad9b3cd232383ff3a26ec9eff3b288a94b9a40a36e",
+  "e1:multistart_tm": "3642c93cd02d0979ea8928b65c27848512f4a44fa7e5ae0ebe56b98994e13983",
+  "e1b:candidate": "f5a3d7ffd69c014e28aacc6550a41118c25cf7bfbc13145cb9fbed7892f6f06e",
+  "e1b:exchange_tm": "0a3cd7611875c3d63fa22ce1a4d52e0590c309d381a13c338b5de71e3d312dd5",
+  "e1b:low_cycle_tm": "790da2a7f570888af408cc53ac918b614e8ab8bccf7d8d73d4162f7a3a25ca3c",
+  "e1b:multistart_tm": "6ff23ed1bcc3785bf444571226eb6d1a5dfa84a99bc11af0589ef9f2a27d82f1"
+ },
+ "exposure_scan": {
+  "calibration_hosts": 456,
+  "distinct_hosts": 2220,
+  "e1_named_hosts": 711,
+  "empty_files_skipped": [
+   "evidence/failed-wal-final-replay.json",
+   "evidence/final-replay.json"
+  ],
+  "excluded_identities": 2220,
+  "files_scanned": 950,
+  "host_records": 6222
+ },
+ "reference": {
+  "registry_sha256": "e411b2bd8efa72988578d0528d4e766ad3a79bc02059c784b2768af945bc858f",
+  "route": "generator v2 (B20_R37)",
+  "seconds": 60
+ },
+ "results": {
+  "e1b|erdos:17db5902": {
+   "at_certified_optimum": {
+    "best_baseline": 0,
+    "candidate": 5,
+    "mip": 17
+   },
+   "budget_s": 2.0,
+   "candidate_minus_best_baseline": {
+    "interval_90": [
+     1.15,
+     4.75
+    ],
+    "mean": 2.9,
+    "wins_ties_losses": [
+     15,
+     0,
+     5
+    ]
+   },
+   "candidate_minus_mip": {
+    "interval_90": [
+     -8.85,
+     -4.6
+    ],
+    "mean": -6.75,
+    "wins_ties_losses": [
+     0,
+     5,
+     15
+    ]
+   },
+   "certified_hosts": 20,
+   "failed_runs": 0,
+   "mip_overruns": 0,
+   "mip_proved_optimal": 15,
+   "verdict": "MIP_DOMINATES"
+  },
+  "e1b|planted_cluster:9491bde8": {
+   "at_certified_optimum": {
+    "best_baseline": 0,
+    "candidate": 0,
+    "mip": 0
+   },
+   "budget_s": 2.0,
+   "candidate_minus_best_baseline": {
+    "interval_90": [
+     0.05,
+     3.9
+    ],
+    "mean": 2.0,
+    "wins_ties_losses": [
+     14,
+     0,
+     6
+    ]
+   },
+   "candidate_minus_mip": {
+    "interval_90": [
+     2.85,
+     6.35
+    ],
+    "mean": 4.75,
+    "wins_ties_losses": [
+     17,
+     0,
+     3
+    ]
+   },
+   "certified_hosts": 20,
+   "failed_runs": 0,
+   "mip_overruns": 0,
+   "mip_proved_optimal": 0,
+   "verdict": "CANDIDATE_BEYOND_MIP"
+  },
+  "e1|erdos:17db5902": {
+   "at_certified_optimum": {
+    "best_baseline": 0,
+    "candidate": 19,
+    "mip": 6
+   },
+   "budget_s": 0.5,
+   "candidate_minus_best_baseline": {
+    "interval_90": [
+     9.3,
+     11.65
+    ],
+    "mean": 10.45,
+    "wins_ties_losses": [
+     20,
+     0,
+     0
+    ]
+   },
+   "candidate_minus_mip": {
+    "interval_90": [
+     55.9,
+     94.15
+    ],
+    "mean": 75.8,
+    "wins_ties_losses": [
+     14,
+     6,
+     0
+    ]
+   },
+   "certified_hosts": 20,
+   "failed_runs": 0,
+   "mip_overruns": 0,
+   "mip_proved_optimal": 6,
+   "verdict": "CANDIDATE_BEYOND_MIP"
+  },
+  "e1|planted_cluster:9491bde8": {
+   "at_certified_optimum": {
+    "best_baseline": 0,
+    "candidate": 19,
+    "mip": 0
+   },
+   "budget_s": 0.5,
+   "candidate_minus_best_baseline": {
+    "interval_90": [
+     10.8,
+     14.65
+    ],
+    "mean": 12.75,
+    "wins_ties_losses": [
+     20,
+     0,
+     0
+    ]
+   },
+   "candidate_minus_mip": {
+    "interval_90": [
+     89.8,
+     92.3
+    ],
+    "mean": 91.05,
+    "wins_ties_losses": [
+     20,
+     0,
+     0
+    ]
+   },
+   "certified_hosts": 20,
+   "failed_runs": 0,
+   "mip_overruns": 0,
+   "mip_proved_optimal": 0,
+   "verdict": "CANDIDATE_BEYOND_MIP"
+  }
+ },
+ "schema": "genesis-b20r38-dense-strong-baseline-v1",
+ "seeds": [
+  20263801,
+  20263811
+ ],
+ "settings": [
+  {
+   "family": "planted_cluster",
+   "params": {
+    "n": 40,
+    "p_in": 0.8,
+    "p_out": 0.06
+   }
+  },
+  {
+   "family": "erdos",
+   "params": {
+    "n": 30,
+    "p": 0.42
+   }
+  }
+ ],
+ "status": "DEV audit; licenses no claim; changes no package, comparator or rule"
+}

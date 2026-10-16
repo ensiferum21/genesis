@@ -2,7 +2,7 @@
 
 ## Where things stand
 
-- **Branch:** `continuation-b20-rx` (GitHub `ensiferum21/genesis`). It is the canonical B20_R11 line (`continuation-b20-repairs`, `36954d6`), with the recovery-branch work ported onto it, plus B20_R12 and B20_R15–R37. B20_R25–R28 were built from the B20_R24 checkpoint's history bundle while GitHub was not linked; GitHub's branch is an ancestor.
+- **Branch:** `continuation-b20-rx` (GitHub `ensiferum21/genesis`). It is the canonical B20_R11 line (`continuation-b20-repairs`, `36954d6`), with the recovery-branch work ported onto it, plus B20_R12 and B20_R15–R38. B20_R25–R28 were built from the B20_R24 checkpoint's history bundle while GitHub was not linked; GitHub's branch is an ancestor.
 - **Side branch:** `side-b21-equational` (`710d26d`) keeps work done on plain B20 in parallel with this line (equational generations W21/E4, definitional primitives, fault routes). It is not canonical. Only its Lean-replay hint repair was ported (B20_R25).
 - **Checkpoints:**
 
@@ -24,7 +24,7 @@
 | B20_R35 | `fdaf849` | `9aace6d1…54ea` (B20_R34–R35; release matrix 1,239 tests, all OK, one declared skip; restore-verified, 5,713 manifest entries; driver rehearsal on the build host **REPRODUCED**, not a second machine) |
 
   The recovery-branch checkpoints B20_RX1 and B20_RX2 are on `recovery-b20r1-partial`; their work was ported here.
-- **Records:** `docs/checkpoints/B20_R1_RECORD.md` … `B20_R11_RECORD.md`, `B20_RX1_RECORD.md`, `B20_RX2_RECORD.md`, `B20_R12_RECORD.md` and `B20_R15_RECORD.md` … `B20_R37_RECORD.md`.
+- **Records:** `docs/checkpoints/B20_R1_RECORD.md` … `B20_R11_RECORD.md`, `B20_RX1_RECORD.md`, `B20_RX2_RECORD.md`, `B20_R12_RECORD.md` and `B20_R15_RECORD.md` … `B20_R38_RECORD.md`.
 
 ## Completed since B20_R11
 
@@ -57,6 +57,7 @@
 | B20_R35 | Generated-row certification, enriched by setting (B20R32-OPEN-1): on 40 fresh hosts of the two settings the evaluator mostly fails, the route certifies **27/40 vs 7/40** within 60 s (McNemar p ≈ 1e-6; +18.5 s per host saved): **CERTIFICATION_UTILITY**. The first preregistered positive DEV utility of a machine-generated, Lean-checked component (in certification; classical bounds, no novelty claim) |
 | B20_R36 | Relaxation family, attempt 2 (construction) in the dense regime: K5 rows give +3.94 over the plain LP greedy, +3.31 after cost, +4.31 over an exact MIP at 2 s, but −2.97 against the menu's `cross_2`: **NO_UTILITY_AFTER_COST**. Exploratory: `cross_2` (E1's representation) is optimal on 10/10 certified dense planted hosts where the MIP at 2 s is 13.9 below |
 | B20_R37 | Generator v2: every graph on ≤ 7 vertices, 9 patterns (K7 ≤ 12, K7−e ≤ 12, …), all 12 obligations Lean-CHECKED by integer rounding certificates. Coverage on 40 fresh dense hosts at 60 s: 33 vs v1's 30 (McNemar p 0.19): **NO_COVERAGE_GAIN**; dense planted 19/20 with v2, 17/20 with v1 |
+| B20_R38 | Frozen E1/E1b candidates vs an exact MIP in the dense regime (40 fresh hosts, all certified by the generated-rows route): E1 at 0.5 s is optimal on 19/20 per setting and **+14.6 per host above HiGHS at 2.0 s** on dense planted hosts (20/0/0); verdicts E1 CANDIDATE_BEYOND_MIP ×2 (inflated at 0.5 s), E1b BEYOND_MIP on planted, MIP_DOMINATES on erdos |
 
 ## Resume
 
@@ -68,7 +69,7 @@
 
 ## Decisions needed from Daniel or a reviewer
 
-1. **GV3 sign-off: E1 and E1b** (`handoff/e1/README.md` v3, `handoff/e1b/README.md` v2). Both are READY_FOR_REVIEW on the `e1-hard-v2` family, and both same-operator rehearsals are SUPPORTED. **First decide B20R33-OPEN-1:** on this family an exact MIP solver is always optimal within 0.36 CPU s, so E1 (dominated) and E1b (within 0.2) cannot be "beyond strong baselines"; a SUPPORTED result would be scoped to time-matched DSL baselines. Options: accept that scope; add a MIP comparator; or move to a regime an exact solver cannot finish within budget. B20_R34 mapped the certifiable range: no such setting exists there (where the evaluator certifies, the MIP is optimal); a dense planted regime where the candidate beats the MIP's 2 s incumbent is uncertifiable by the current evaluator, so it would need a stronger certification route (branch-and-bound with exact LP-dual leaves, buildable here) or a plan without certified optima. To move to a real run:
+1. **GV3 sign-off: E1 and E1b** (`handoff/e1/README.md` v3, `handoff/e1b/README.md` v2). Both are READY_FOR_REVIEW on the `e1-hard-v2` family, and both same-operator rehearsals are SUPPORTED. **First decide B20R33-OPEN-1:** on this family an exact MIP solver is always optimal within 0.36 CPU s, so E1 (dominated) and E1b (within 0.2) cannot be "beyond strong baselines"; a SUPPORTED result would be scoped to time-matched DSL baselines. B20_R38 found a dense regime where E1's frozen candidate is optimal on 19/20 hosts and beats HiGHS at 4× its budget (planted); it is certifiable only with the generated-rows reference (B20_R39 builds its custody; adoption is the reviewer's). Options: accept that scope; add a MIP comparator; or move to a regime an exact solver cannot finish within budget. B20_R34 mapped the certifiable range: no such setting exists there (where the evaluator certifies, the MIP is optimal); a dense planted regime where the candidate beats the MIP's 2 s incumbent is uncertifiable by the current evaluator, so it would need a stronger certification route (branch-and-bound with exact LP-dual leaves, buildable here) or a plan without certified optima. To move to a real run:
    - a reviewer signs off the rule `e1-hard-v2`, the cost and comparator decisions, and freezes the DRAFTs;
    - a statistician signs off the centred power model (B19-OPEN-4);
    - an independent custodian runs SELECT, register and evaluate on its own machine.
@@ -85,7 +86,7 @@
    - decomposition ×1 (B20_R27);
    - relaxation ×1 (B20_R31): +0.19 over the LP it strengthens, interval above 0, below 0.5; a certification signal (10 of 18 SAT-certified hosts become LP-floor certifiable, float diagnostic).
 
-   B20_R32 built the exact certification route over the generated rows: sound, but NO_CERTIFICATION_UTILITY on an unenriched fresh sample (B20R32-OPEN-1). B20_R35, enriched by setting, found **CERTIFICATION_UTILITY** (27/40 vs 7/40 certified at 60 s; B20R35-OPEN-1). B20_R36 tried the K5 rows for construction in the dense regime: large gains over every comparator but the menu's `cross_2` (NO_UTILITY_AFTER_COST, B20R36-OPEN-1). B20_R37 extended the generator to 7 vertices (all rows Lean-checked) but found no coverage gain at 60 s over K5/W5 (B20R37-OPEN-1); with either route the dense planted regime is certifiable at about 90%. **Next: B20_R38**, a preregistered strong-baseline audit of the frozen E1/E1b candidates against the exact MIP in the dense regime (B20R33-OPEN-1).
+   B20_R32 built the exact certification route over the generated rows: sound, but NO_CERTIFICATION_UTILITY on an unenriched fresh sample (B20R32-OPEN-1). B20_R35, enriched by setting, found **CERTIFICATION_UTILITY** (27/40 vs 7/40 certified at 60 s; B20R35-OPEN-1). B20_R36 tried the K5 rows for construction in the dense regime: large gains over every comparator but the menu's `cross_2` (NO_UTILITY_AFTER_COST, B20R36-OPEN-1). B20_R37 extended the generator to 7 vertices (all rows Lean-checked) but found no coverage gain at 60 s over K5/W5 (B20R37-OPEN-1); with either route the dense planted regime is certifiable at about 90%. B20_R38 found E1's frozen candidate beyond the exact MIP in that regime (B20R33-OPEN-1); B20_R39 builds custody for generated-row certificates and a generated-rows reference (not wired).
 
    Each further attempt is its own preregistered step, and every attempt counts. Candidates:
    - a quotient attempt 2 on families whose best triangle-free subgraph is far from bipartite;

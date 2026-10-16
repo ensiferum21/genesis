@@ -32,6 +32,7 @@
 | Dense certification (B20_R35) | preregistered settings and hosts, summary and verdict from the rows, the kept certificates re-check VALID at the certified value, fresh hosts in the addenda (`tests_genesis/test_dense_certification.py`); limited separation stays valid (`tests_genesis/test_lp_dual_rows.py`) | nightly / release | failure **or skip** blocks release |
 | Dense construction (B20_R36) | the component is the CHECKED K5 bound, comparisons and verdict follow from the rows, no arm above a certified optimum, fresh hosts in the addenda (`tests_genesis/test_dense_construction.py`) | nightly / release | failure **or skip** blocks release |
 | Generator v2 (B20_R37) | kept patterns, exact ex values, exact rounding certificates, fast copies equal v1's, heartbeat-option hoisting (`tests_genesis/test_cuts_v2.py`); the v2 package replays and its registry is the CHECKED patterns, verdict from the rows, kept certificates re-check, fresh hosts in the addenda (`tests_formal/test_generator_v2.py`) | nightly / release | failure **or skip** blocks release |
+| Dense strong-baseline audit (B20_R38) | frozen descriptors, verdicts from the rows, no arm above a certified optimum, fresh hosts in the addenda (`tests_genesis/test_dense_strong_baseline.py`) | nightly / release | failure **or skip** blocks release |
 | Requirements ledger | every spec section, roadmap item and catalogue entry has a disposition with resolvable tests (`test_ledger.py`) | commit | must pass |
 
 Run: `python3 scripts/run_test_matrix.py --profile commit|nightly|release --report out.json`.

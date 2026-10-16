@@ -83,6 +83,7 @@ On this family the calibration's limit and the plan's 5% unsupported limit agree
 | `exposure_hosts_addendum_b20r35.json` | B20_R35: the 40 DEV hosts of the dense certification study; none is in this package's settings. |
 | `exposure_hosts_addendum_b20r36.json` | B20_R36: the 48 DEV hosts of the dense construction study; none is in this package's settings. |
 | `exposure_hosts_addendum_b20r37.json` | B20_R37: the 40 DEV hosts of the generator-v2 coverage study; none is in this package's settings. |
+| `exposure_hosts_addendum_b20r38.json` | B20_R38: the 40 DEV hosts of the dense strong-baseline audit; none is in this package's settings. |
 | `package_index.json` | Identities, the calibration and the outcomes. |
 
 The B20_R23 version of this package (builder-chosen settings, both domains) is in the git history at `e7fad0e`.
