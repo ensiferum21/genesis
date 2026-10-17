@@ -1,0 +1,126 @@
+# GV4 fallback claim, DRAFT: a useful solver, and no better-improver claim
+
+**Status.** Drafted by the builder on 17 Oct 2026 (B20_R60).
+- **Not adopted.** It takes effect only if a reviewer accepts the roadmap's fallback for GV4: decision 6 of
+  `docs/checkpoints/B20_R57_REVIEW_BRIEF.md` (B20R9-OPEN-1).
+- **No claim yet.** Nothing here has been run on a sealed panel or reviewed.
+- **Numbers are tested.** `tests_genesis/test_gv4_fallback.py` checks every number quoted below against the
+  committed evidence (`scripts/b20r60_gv4_fallback.py`, `CITATIONS`). It also checks the false-discovery table
+  (`attempt_family.json`).
+
+## Why the fallback
+
+GV4 asks for a *better improver*: a research policy that produces better future improvements than a fixed one
+(spec 12.4 and 19.5). That comparison can only show a difference where a research decision has headroom: where
+choosing well beats a fixed policy by more than the minimum useful effect.
+
+No probed domain has such a decision:
+- **Equational theories:** six systems (B20_R3), the family search (B20_R6, R9), and Wolfram's axiom at the hard
+  settings, for selection, keeping and 6-node conjectures (B20_R53, R54).
+- **Graph construction:** choosing among existing configurations (B20_R13) and proposing pipelines over the LP-
+  and SAT-guided components (B20_RX5).
+- **Certification rows:** 7-vertex rows add no coverage (B20_R37). For sum-free pattern selection (B20_R58) the
+  certified counts are all 13, none 10, best subset 11 of 16, so the patterns' value is joint.
+
+Running a sealed learned-versus-fixed study now would spend an independent custodian on a foregone null. The
+roadmap's fallback is to report a useful solver without claiming a better improver. This draft says exactly what
+that report would contain.
+
+## Part A: a useful solver (a GV3 claim): E1d
+
+**Wording**, from the E1d decision record (`handoff/e1d/decision_record_DRAFT.json`, `exact_claim`), in short:
+
+> On a custodian-held CONFIRM panel of triangle-free host graphs from three dense planted-cluster settings,
+> Genesis's frozen represent-and-repair solver (0.5 CPU s of search) scores more edges per host than the
+> strongest of five registered baselines, by at least 0.5. The baselines include the exact MILP solver HiGHS at
+> four times the candidate's budget, and optima are certified by the generated-rows reference.
+
+**Evidence so far.** All DEV, builder-run, same operator, every rule fixed before its run.
+
+| Step | Result |
+|---|---|
+| Re-pilot, 30 fresh hosts (B20_R41) | +10.6 per host [9.1, 12.1] over the strongest baseline, `milp_highs_4x`; the candidate is optimal on 30/30 |
+| Same-operator rehearsal of the whole custody path (B20_R43) | **SUPPORTED**: +9.80 per host [9.30, 10.35] on 237 certified hosts; W/T/L 198/39/0; CPU cost ratio 0.34; the judge agrees and re-checked 474 witnesses |
+
+**What must be said with it.**
+- **The solver is classical.** Its representation, `cross_2`, is a bipartite cut chosen from a builder-written
+  typed grammar whose soundness Lean checks (B18, W10/W11). No novelty is claimed.
+- **Why it wins (the builder's reading, not measured).** On dense planted clusters the largest triangle-free
+  subgraph is close to a maximum cut, which is what the representation searches. The MILP's triangle constraints
+  give a weak relaxation on dense hosts, and HiGHS at 2 s reached the optimum on only 6 of 30 re-pilot hosts.
+- **It does not beat every exact method.** The scoring reference, an exact method using the generated rows,
+  solves these hosts in about 20 s of wall time. The claim is "a 0.5 s solver beats an exact MILP at 2 s".
+- **Its scope is narrow.** Only these three settings, on that panel.
+
+**What it needs:**
+- a reviewer adopts the DRAFT rule `e1-hard-v3-draft`, the generated-rows reference (decision 3) and the registry
+  v2 wiring (B20R40-OPEN-1);
+- a statistician signs off the power model (B19-OPEN-4);
+- an independent custodian runs SELECT, registration and evaluation on its own machine.
+
+**Optional extension.** If the reviewer accepts claims scoped to time-matched DSL baselines (decision 1), E1, E1b
+and E1b-C4 (`handoff/e1`, `e1b`, `e1b_c4`) can join Part A on their own settings. All three are dominated by the
+exact MILP there and must say so.
+
+## Part B: why the solver wins (causal attribution of Part A)
+
+| Step | Result |
+|---|---|
+| Registered ablation (B20_R44): the decoder weakened from `cross_2` to `ordered_2`, which Lean shows is strictly weaker | +7.07 per host [6.47, 7.70] lost; the null control, a Lean-certified *equal* decoder, gives +0.03 [-0.02, 0.09] |
+| Same-operator rehearsal of the custodian-signed ablation through v5 custody (B20_R45) | **SUPPORTED**: +6.64 [6.03, 7.29], W/T/L 44/0/0, the judge agrees |
+
+**Wording, if a custodian's run supports it:** the representation's decoder is causally responsible for at least
+0.5 edges per host of Part A's effect (ABLATION_SUPPORTED). It needs the same people as Part A, and the reviewer's
+acceptance of the intervention (B20R44-OPEN-1).
+
+## Part C, only if certification utility counts (decision 4): generated, Lean-checked inequalities
+
+A generate-screen-prove procedure produced inequalities, each one a theorem checked by Lean. With them, an exact
+checker certifies optima that the conventional relaxation leaves open.
+
+| Motif | Result (DEV, 60 s per host) |
+|---|---|
+| Triangle-free, dense hosts (B20_R35) | 27 vs 7 of 40 certified |
+| C4-free, the procedure transferred (B20_R48) | 38 vs 26 of 40 certified, with certified branch and bound |
+| C4-free, attribution (B20_R49) | 36 vs 24 of 40 with vs without the rows: the rows are responsible |
+| Sum-free sets of integers (B20_R57, then B20_R59) | 22 vs 14 of 40, **not replicated** (23 vs 21 of 40, p 0.25). The certified-bound advantage did replicate: +6.875 [5.375, 8.475], then +3.875 [2.675, 5.125] |
+
+**False-discovery control** (`attempt_family.json`). This is Benjamini–Yekutieli at q = 0.1 over all 13
+preregistered component attempts, failures included. The six construction attempts count at p = 1.
+- **Survivors:** B20_R35, B20_R48 and B20_R57.
+- **How far each would hold.** B20_R35 still survives at any family size this test searched (up to 10,000), B20_R48
+  up to 147 attempts, and B20_R57 up to 21.
+- **B20_R57 does not count.** It survives the correction but failed its internal replication, so this draft does
+  not count it as a coverage result. Sum-free contributes stronger certified bounds only.
+
+**Wording, if counted:**
+
+> On DEV hosts of two motifs, triangle-free and C4-free, inequalities that Genesis generated and Lean
+> proved let an exact checker certify optima the conventional relaxation could not.
+
+As written this is a DEV statement. A sealed certification study under custody would be needed for more, and the
+trust-path change (decision 3) for any evaluator use. Every row of it is a checked theorem; the producer is never
+trusted.
+
+## What the fallback does not claim
+
+- **A better improver (GV4).** No learned research process has been compared with a fixed one.
+- **Compounding generations (GV5).** That gate depends on GV4.
+- **Structural transfer (GV6).** The C4 and sum-free transfers share the source's abstract structure, a
+  hypergraph-free packing (`handoff/gv6/README.md`, structural caveat).
+- **Independent replication (GV7).** That needs a second operator.
+- **Novelty.** The representation and the bounds are classical.
+- **Anything outside the named settings.**
+
+## What would reopen GV4
+
+- **A new domain.** A domain named by the reviewer whose headroom pilot (the B20_R3/R53 pattern) finds a research
+  decision worth more than the minimum useful effect between the oracle and a fixed policy.
+- **A construction component with utility.** A component family with construction utility after cost, so that
+  research has something to produce. Six attempts have none (B20_R17, R19, R26, R27, R31, R36).
+
+## For the reviewer
+
+1. **The fallback.** Accept it for GV4, or name a domain to pilot.
+2. **The parts.** Which of Parts A–C go forward. Part C goes forward only if certification utility counts.
+3. **The report wording.** Whether the final report states GV4 as "not established; fallback taken".

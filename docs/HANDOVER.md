@@ -113,6 +113,7 @@ needs people: a reviewer, a statistician, an independent custodian on its own ma
 | B20_R57 | Sum-free on hosts hard for the conventional route: **CERTIFICATION_UTILITY**, 22 vs 14 of 40, p 0.0039; certified bound 6.9 lower |
 | B20_R58 | Sum-free pattern selection (GV4 pilot): **NO_HEADROOM**; all 17 patterns beat every subset |
 | B20_R59 | Internal replication of B20_R57: **NOT_REPLICATED** on coverage (23 vs 21, p 0.25); the bound advantage replicates (+3.9) |
+| B20_R60 | GV4 fallback claim **drafted** (`handoff/gv4/FALLBACK_CLAIM_DRAFT.md`): E1d as a useful solver, its ablation, and (if certification counts) the generated rows; BY table derived from the evidence |
 
 ## 6. Next steps, in order
 
@@ -128,7 +129,8 @@ needs people: a reviewer, a statistician, an independent custodian on its own ma
    - have an independent custodian run SELECT, register and evaluate for E1d (and E1/E1b/E1b-C4 within scope);
    - with a statistician, sign off the power models.
 4. **GV4:** if a new domain is chosen, run a headroom pilot first (the B20_R3/R53 pattern) before any study.
-   Otherwise write the fallback claim.
+   Otherwise the fallback claim is drafted (`handoff/gv4/FALLBACK_CLAIM_DRAFT.md`, B20_R60) for the reviewer to accept,
+   narrow or reject.
 5. **GV7:** give `handoff/replication/` and a checkpoint to a second operator.
 
 ## 7. Package contents (the handover zip)

@@ -1,0 +1,179 @@
+{
+ "attempts": [
+  {
+   "batch": "B20_R17",
+   "component": "generated relational decoders v1",
+   "evidence": "evidence/relation_invention_b20r17/summary.json",
+   "kind": "construction",
+   "p_for_family": 1.0,
+   "p_one_sided": null,
+   "rank": 7,
+   "survives_by": false,
+   "survives_up_to_family_size": null,
+   "verdict": "NO_UTILITY_AFTER_COST"
+  },
+  {
+   "batch": "B20_R19",
+   "component": "generated relational decoders v2",
+   "evidence": "evidence/relation_invention_b20r19/summary.json",
+   "kind": "construction",
+   "p_for_family": 1.0,
+   "p_one_sided": null,
+   "rank": 8,
+   "survives_by": false,
+   "survives_up_to_family_size": null,
+   "verdict": "NO_UTILITY_AFTER_COST"
+  },
+  {
+   "batch": "B20_R26",
+   "component": "quotient representation",
+   "evidence": "evidence/quotient_invention_b20r26/summary.json",
+   "kind": "construction",
+   "p_for_family": 1.0,
+   "p_one_sided": null,
+   "rank": 9,
+   "survives_by": false,
+   "survives_up_to_family_size": null,
+   "verdict": "NO_UTILITY_AFTER_COST"
+  },
+  {
+   "batch": "B20_R27",
+   "component": "decomposition",
+   "evidence": "evidence/decomposition_invention_b20r27/summary.json",
+   "kind": "construction",
+   "p_for_family": 1.0,
+   "p_one_sided": null,
+   "rank": 10,
+   "survives_by": false,
+   "survives_up_to_family_size": null,
+   "verdict": "NO_UTILITY_AFTER_COST"
+  },
+  {
+   "batch": "B20_R31",
+   "component": "generated relaxation rows (K5/W5)",
+   "evidence": "evidence/relaxation_invention_b20r31/summary.json",
+   "kind": "construction",
+   "p_for_family": 1.0,
+   "p_one_sided": null,
+   "rank": 11,
+   "survives_by": false,
+   "survives_up_to_family_size": null,
+   "verdict": "NO_UTILITY_AFTER_COST"
+  },
+  {
+   "batch": "B20_R36",
+   "component": "K5 rows in the dense regime",
+   "evidence": "evidence/dense_construction_b20r36/summary.json",
+   "kind": "construction",
+   "p_for_family": 1.0,
+   "p_one_sided": null,
+   "rank": 12,
+   "survives_by": false,
+   "survives_up_to_family_size": null,
+   "verdict": "NO_UTILITY_AFTER_COST"
+  },
+  {
+   "batch": "B20_R32",
+   "component": "generated rows, exact LP certificates (unenriched)",
+   "evidence": "evidence/generated_certification_b20r32/summary.json",
+   "kind": "certification",
+   "p_for_family": 0.25,
+   "p_one_sided": 0.25,
+   "rank": 5,
+   "survives_by": false,
+   "survives_up_to_family_size": null,
+   "verdict": "NO_CERTIFICATION_UTILITY"
+  },
+  {
+   "batch": "B20_R35",
+   "component": "generated rows, enriched by setting",
+   "evidence": "evidence/dense_certification_b20r35/summary.json",
+   "kind": "certification",
+   "p_for_family": 9.5e-07,
+   "p_one_sided": 9.5e-07,
+   "rank": 1,
+   "survives_by": true,
+   "survives_up_to_family_size": 10000,
+   "verdict": "CERTIFICATION_UTILITY"
+  },
+  {
+   "batch": "B20_R37",
+   "component": "generator v2, 7-vertex rows",
+   "evidence": "evidence/generator_v2_b20r37/summary.json",
+   "kind": "certification",
+   "p_for_family": 0.1875,
+   "p_one_sided": 0.1875,
+   "rank": 4,
+   "survives_by": false,
+   "survives_up_to_family_size": null,
+   "verdict": "NO_COVERAGE_GAIN"
+  },
+  {
+   "batch": "B20_R47",
+   "component": "transferred C4 rows alone",
+   "evidence": "evidence/c4_certification_b20r47/summary.json",
+   "kind": "certification",
+   "p_for_family": 1.0,
+   "p_one_sided": 1.0,
+   "rank": 13,
+   "survives_by": false,
+   "survives_up_to_family_size": null,
+   "verdict": "NO_CERTIFICATION_UTILITY"
+  },
+  {
+   "batch": "B20_R48",
+   "component": "transferred C4 rows with certified branch and bound",
+   "evidence": "evidence/c4_tree_certification_b20r48/summary.json",
+   "kind": "certification",
+   "p_for_family": 0.00024414,
+   "p_one_sided": 0.00024414,
+   "rank": 2,
+   "survives_by": true,
+   "survives_up_to_family_size": 147,
+   "verdict": "CERTIFICATION_UTILITY"
+  },
+  {
+   "batch": "B20_R56",
+   "component": "transferred sum-free rows (unenriched)",
+   "evidence": "evidence/sf_tree_certification_b20r56/summary.json",
+   "kind": "certification",
+   "p_for_family": 0.25,
+   "p_one_sided": 0.25,
+   "rank": 6,
+   "survives_by": false,
+   "survives_up_to_family_size": null,
+   "verdict": "NO_CERTIFICATION_UTILITY"
+  },
+  {
+   "batch": "B20_R57",
+   "component": "transferred sum-free rows, hosts hard for the conventional route",
+   "evidence": "evidence/sf_hard_certification_b20r57/summary.json",
+   "kind": "certification",
+   "p_for_family": 0.00390625,
+   "p_one_sided": 0.00390625,
+   "rank": 3,
+   "survives_by": true,
+   "survives_up_to_family_size": 21,
+   "verdict": "CERTIFICATION_UTILITY"
+  }
+ ],
+ "family_size": 13,
+ "family_size_search_cap": 10000,
+ "harmonic_c_m": 3.180134,
+ "method": "Benjamini-Yekutieli step-up",
+ "no_p_value_rule": "construction attempts were decided by multi-comparison interval rules; they count in the family size at p = 1, which is conservative for every other attempt",
+ "not_attempts": {
+  "B20_R44": "registered ablation of E1d (attribution of a GV3 effect)",
+  "B20_R45": "custody rehearsal of the B20_R44 ablation",
+  "B20_R49": "registered ablation of B20_R48 (attribution of the same attempt)",
+  "B20_R58": "research-decision headroom pilot (no component)",
+  "B20_R59": "internal replication of B20_R57 (the same hypothesis on fresh hosts): NOT_REPLICATED"
+ },
+ "q": 0.1,
+ "schema": "genesis-b20r60-gv4-attempt-family-v1",
+ "survivors": [
+  "B20_R35",
+  "B20_R48",
+  "B20_R57"
+ ]
+}

@@ -54,6 +54,7 @@
 | Sum-free hard-host certification (B20_R57) | constants; the screen runs route a only, includes on non-certification, stops at 20 per setting and resumes; both verdict rules; the screen's inclusion and candidates, both verdicts recompute, witnesses sum-free, kept certificates re-check VALID (`tests_genesis/test_sf_hard_certification.py`) | nightly / release | failure **or skip** blocks release |
 | Sum-free pattern selection (B20_R58) | constants and fresh hosts, subsets and sets, the verdict rule; the record recomputes (NO_HEADROOM), the hosts are the script's (`tests_genesis/test_sf_pattern_selection.py`) | nightly / release | failure **or skip** blocks release |
 | Sum-free replication (B20_R59) | fresh seeds only, the replication rule; the verdicts recompute (NO_CERTIFICATION_UTILITY, BOUND_UTILITY), the replication record follows the rule, the screen's candidates and inclusion (`tests_genesis/test_sf_replication.py`) | nightly / release | failure **or skip** blocks release |
+| GV4 fallback draft (B20_R60) | every quoted number renders from its cited evidence and appears verbatim, the BY family file is derived from the evidence, BY step-up, survivor statements, DRAFT wording (`tests_genesis/test_gv4_fallback.py`) | commit | must pass |
 | Requirements ledger | every spec section, roadmap item and catalogue entry has a disposition with resolvable tests (`test_ledger.py`) | commit | must pass |
 
 Run: `python3 scripts/run_test_matrix.py --profile commit|nightly|release --report out.json`.

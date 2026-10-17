@@ -1715,7 +1715,9 @@
     "scripts/b20r54_wolfram_ceiling.py",
     "evidence/wolfram_ceiling_b20r54/README.md",
     "scripts/b20r58_sf_pattern_selection.py",
-    "evidence/sf_pattern_selection_b20r58/README.md"
+    "evidence/sf_pattern_selection_b20r58/README.md",
+    "scripts/b20r60_gv4_fallback.py",
+    "handoff/gv4/FALLBACK_CLAIM_DRAFT.md"
    ],
    "disposition": "IMPLEMENTED_BOUNDED_PENDING_AUDIT",
    "evidence": [],
@@ -1728,7 +1730,7 @@
    "local_execution": "TESTS_EXECUTED_IN_MATRIX",
    "owner": "research implementer",
    "remaining": [
-    "a family with selection headroom (B20_R3 pilot: ORACLE - fixed <= 1 of 12 on six systems; the redesigned cost-aware policy is INFERIOR_DEV, 2W/3T/3L; B20_R53: Wolfram at the hard settings NO_HEADROOM, 1, 0, 1, 0 of 15; B20_R54: 6-node conjectures do not reach the ceiling, NO_CEILING_HEADROOM; B20_R58: sum-free pattern selection NO_HEADROOM)",
+    "a family with selection headroom (B20_R3 pilot: ORACLE - fixed <= 1 of 12 on six systems; the redesigned cost-aware policy is INFERIOR_DEV, 2W/3T/3L; B20_R53: Wolfram at the hard settings NO_HEADROOM, 1, 0, 1, 0 of 15; B20_R54: 6-node conjectures do not reach the ceiling, NO_CEILING_HEADROOM; B20_R58: sum-free pattern selection NO_HEADROOM; B20_R60: the fallback claim is drafted for the reviewer)",
     "a sealed E3 study"
    ],
    "scientific_efficacy": "UNESTABLISHED",
@@ -1741,6 +1743,7 @@
     "tests_genesis/test_wolfram_headroom.py",
     "tests_genesis/test_wolfram_ceiling.py",
     "tests_genesis/test_sf_pattern_selection.py",
+    "tests_genesis/test_gv4_fallback.py",
     "tests_formal/test_learning_partitions.py",
     "tests_genesis/test_research_resource_accounting.py",
     "tests_formal/test_successor_proof_custody.py"

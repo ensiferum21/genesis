@@ -183,3 +183,13 @@ conventional relaxation is the bottleneck (B20_R57). With graph construction (B2
 the builder now recommends the roadmap's fallback for GV4: report a useful solver without claiming a better
 improver, unless a reviewer names a new domain to pilot.
 
+## The fallback, drafted (B20_R60)
+
+`FALLBACK_CLAIM_DRAFT.md` writes out what the fallback would report, in three parts:
+- **Part A:** E1d as a useful solver.
+- **Part B:** its causal attribution.
+- **Part C:** the generated, Lean-checked rows, only if certification utility counts.
+
+It claims no better improver. The false-discovery family above is now derived from the evidence in
+`attempt_family.json`, by `scripts/b20r60_gv4_fallback.py`.
+

@@ -209,15 +209,18 @@ SPEC.update({
               'scripts/b20r6_family_search.py', 'evidence/family_search_b20r6/README.md',
               'scripts/b20r53_wolfram_headroom.py', 'evidence/wolfram_headroom_b20r53/README.md',
               'scripts/b20r54_wolfram_ceiling.py', 'evidence/wolfram_ceiling_b20r54/README.md',
-              'scripts/b20r58_sf_pattern_selection.py', 'evidence/sf_pattern_selection_b20r58/README.md'],
+              'scripts/b20r58_sf_pattern_selection.py', 'evidence/sf_pattern_selection_b20r58/README.md',
+              'scripts/b20r60_gv4_fallback.py', 'handoff/gv4/FALLBACK_CLAIM_DRAFT.md'],
              [G + 'test_acceptance_regressions.py::RevocationAndTrust', 'tests_formal/test_learning.py',
               G + 'test_research_policy_v2.py', G + 'test_wolfram_headroom.py', G + 'test_wolfram_ceiling.py', G + 'test_sf_pattern_selection.py',
+              G + 'test_gv4_fallback.py',
               'tests_formal/test_learning_partitions.py', G + 'test_research_resource_accounting.py',
               'tests_formal/test_successor_proof_custody.py'],
              ['a family with selection headroom (B20_R3 pilot: ORACLE - fixed <= 1 of 12 on six systems; the '
               'redesigned cost-aware policy is INFERIOR_DEV, 2W/3T/3L; B20_R53: Wolfram at the hard settings '
               'NO_HEADROOM, 1, 0, 1, 0 of 15; B20_R54: 6-node conjectures do not reach the ceiling, '
-              'NO_CEILING_HEADROOM; B20_R58: sum-free pattern selection NO_HEADROOM)', 'a sealed E3 study'],
+              'NO_CEILING_HEADROOM; B20_R58: sum-free pattern selection NO_HEADROOM; B20_R60: the fallback claim is '
+              'drafted for the reviewer)', 'a sealed E3 study'],
              ['independent custodian; fresh panels'], 'UNESTABLISHED', 'W21'),
     '13': (I, 'heading', [], [], [], [], 'N/A', 'W01'),
     '13.1': (N, 'minimal teaching sets', [], [], ['W20'], [], 'NOT_TESTED', 'W20'),

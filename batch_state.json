@@ -766,9 +766,14 @@
       },
       "B20_R59": {
         "commits": [
-          "02415a8"
+          "02415a8",
+          "928c236"
         ],
         "result": "Internal replication of B20_R57 (same script, fresh seeds 20265901/20265911): screen 40 of 69; a 21, c 23 certified (0/2, McNemar p 0.25), wall saving +2.76 s [0.04, 5.37]: NO_CERTIFICATION_UTILITY, NOT_REPLICATED. Certified bound +3.875 [2.675, 5.125]: BOUND_UTILITY replicates. Interrupted once at host 23 by disk exhaustion (ENOSPC), resumed from intact rows"
+      },
+      "B20_R60": {
+        "commits": [],
+        "result": "GV4 fallback claim DRAFT (handoff/gv4/FALLBACK_CLAIM_DRAFT.md): Part A E1d useful solver (+9.80 [9.30, 10.35] same-operator rehearsal vs HiGHS at 4x), Part B ablation (+7.07, null clean; +6.64 through custody), Part C generated Lean-checked rows only if certification counts. BY at q 0.1 over 13 attempts derived from evidence: B20_R35, R48, R57 survive (R57 not replicated). Documentation only; nothing adopted"
       }
     },
     "open_after_b20_r5": [
@@ -1160,6 +1165,9 @@
     ],
     "open_after_b20_r59": [
       "B20R46-OPEN-1 and B20R35-OPEN-1 updated: sum-free coverage effect not replicated; bound advantage replicated"
+    ],
+    "open_after_b20_r60": [
+      "B20R9-OPEN-1 updated: the GV4 fallback is drafted; the reviewer accepts, narrows or rejects it"
     ]
   }
 }
