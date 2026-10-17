@@ -716,9 +716,16 @@
       },
       "B20_R54": {
         "commits": [
-          "5eaf4e9"
+          "5eaf4e9",
+          "e0e8a45"
         ],
         "result": "Design pilot: does research beyond the pool reach Wolfram's ceiling? Fresh seeds 5401-5404, POOL5 (B20_R53's) and POOL6 (true equations up to 6 nodes, 233), targets screened against every pool and development item. ORACLE6 - ORACLE5 0, 0, 0, 0, noise 0: NO_CEILING_HEADROOM. EXHAUST6 (174-183 lemmas, 523-615 CPU-s) - EXHAUST5 -1, 0, 0, 0; GAP6 (1-5 lemmas) equals EXHAUST6; GAP5 - EXHAUST5 -1, 0, 0, +1. A first R54 design (GAP vs curated/random/complement libraries) was drafted and set aside unrun (disclosed)"
+      },
+      "B20_R55": {
+        "commits": [
+          "565e36b"
+        ],
+        "result": "GV6 second target: the row-invention procedure (generator v2; search, kept rule and proof method unchanged) transferred to sum-free sets of integers (invention/cuts_sf.py; structures P subset of {1..m}, m <= 8; Schur rows; Freiman-type copies; new trusted SFDefs with SF.SumFree and SF.ind). 17 patterns kept of 214 candidates; screen clean; all 20 obligations Lean-CHECKED (3 base, 17 patterns); package replays (identity 7f19273f...). Procedural transfer only; structural caveat stated; utility on hosts is B20_R56"
       }
     },
     "open_after_b20_r5": [
@@ -1095,6 +1102,9 @@
     "open_after_b20_r54": [
       "B20R9-OPEN-1 updated: the equational domain is closed for GV4 at these scales",
       "B20R46-OPEN-1 updated: the equational GV6 target has no research headroom"
+    ],
+    "open_after_b20_r55": [
+      "B20R46-OPEN-1 updated: second transfer target (sum-free, a different theorem family) with the procedural step done; SFDefs needs review as a domain contract"
     ]
   }
 }

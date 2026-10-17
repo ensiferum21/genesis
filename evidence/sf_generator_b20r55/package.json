@@ -1,0 +1,4726 @@
+{
+ "acceptance": {
+  "check_stage": {
+   "check_sha256": "6d6d9f2c34b3959762ddb868d768f6d525d1db4bb03ca9cc37388c444ce36cb7",
+   "cpu_ns": 16354404811,
+   "exit_code": 0,
+   "exits": {
+    "SFP1": "0",
+    "SFP10": "0",
+    "SFP11": "0",
+    "SFP12": "0",
+    "SFP13": "0",
+    "SFP14": "0",
+    "SFP15": "0",
+    "SFP16": "0",
+    "SFP17": "0",
+    "SFP18": "0",
+    "SFP19": "0",
+    "SFP2": "0",
+    "SFP20": "0",
+    "SFP3": "0",
+    "SFP4": "0",
+    "SFP5": "0",
+    "SFP6": "0",
+    "SFP7": "0",
+    "SFP8": "0",
+    "SFP9": "0",
+    "check": "0"
+   },
+   "log": "",
+   "peak_memory_bytes": 232656896,
+   "status": "SUCCESS",
+   "wall_ns": 16872713802
+  },
+  "leanchecker": {
+   "SFP1": true,
+   "SFP10": true,
+   "SFP11": true,
+   "SFP12": true,
+   "SFP13": true,
+   "SFP14": true,
+   "SFP15": true,
+   "SFP16": true,
+   "SFP17": true,
+   "SFP18": true,
+   "SFP19": true,
+   "SFP2": true,
+   "SFP20": true,
+   "SFP3": true,
+   "SFP4": true,
+   "SFP5": true,
+   "SFP6": true,
+   "SFP7": true,
+   "SFP8": true,
+   "SFP9": true
+  },
+  "receipt_sha256": "504a510f82252e443a874c460fa8fc76427a31971c47e03c015efc89133c174d",
+  "status": "CHECKED"
+ },
+ "assumptions": {
+  "allowed_axioms": [
+   "Classical.choice",
+   "Quot.sound",
+   "propext"
+  ],
+  "axioms_used": [
+   "Classical.choice",
+   "Quot.sound",
+   "propext"
+  ],
+  "conventions": [
+   "hosts are finite sets of positive integers",
+   "a set is sum-free when no a + b (a = b allowed) of it lies in it",
+   "pattern statements quantify over values satisfying the pattern's Schur relations; they need no distinctness"
+  ],
+  "lean": "lean@e8baaa71855a616d",
+  "workspace": {
+   "artifact_identity": "be8f86a8ad460109a1c31eb061bf99309b3d032cf5e6462938261f8e3cd840ca",
+   "import_roots": [
+    "Mathlib.Data.Finset.Powerset",
+    "Mathlib.Algebra.BigOperators.Group.Finset.Sigma",
+    "Mathlib.Algebra.Order.BigOperators.Ring.Finset"
+   ],
+   "mathlib_rev": "d13f23b723b8a846827a245b89c10fc7d3f11612",
+   "source_identity": "7f5bcfa11bd7d91dddd1bb4839a70b33bc7e3b125695d754166d343397ac50b0"
+  }
+ },
+ "bindings": [
+  {
+   "proof": "SFP1.proof",
+   "spec": "SFConj.sf_ind_le_one"
+  },
+  {
+   "proof": "SFP2.proof",
+   "spec": "SFConj.sf_bridge"
+  },
+  {
+   "proof": "SFP3.proof",
+   "spec": "SFConj.sf_bridge_double"
+  },
+  {
+   "proof": "SFP4.proof",
+   "spec": "SFConj.sf_sfpat_1_2_3_4"
+  },
+  {
+   "proof": "SFP5.proof",
+   "spec": "SFConj.sf_sfpat_1_2_4_5"
+  },
+  {
+   "proof": "SFP6.proof",
+   "spec": "SFConj.sf_sfpat_1_2_5_6_7"
+  },
+  {
+   "proof": "SFP7.proof",
+   "spec": "SFConj.sf_sfpat_1_2_3_4_6_7"
+  },
+  {
+   "proof": "SFP8.proof",
+   "spec": "SFConj.sf_sfpat_1_2_5_6_8"
+  },
+  {
+   "proof": "SFP9.proof",
+   "spec": "SFConj.sf_sfpat_1_2_5_7_8"
+  },
+  {
+   "proof": "SFP10.proof",
+   "spec": "SFConj.sf_sfpat_1_3_4_5_8"
+  },
+  {
+   "proof": "SFP11.proof",
+   "spec": "SFConj.sf_sfpat_1_3_5_6_8"
+  },
+  {
+   "proof": "SFP12.proof",
+   "spec": "SFConj.sf_sfpat_1_2_3_4_5_8"
+  },
+  {
+   "proof": "SFP13.proof",
+   "spec": "SFConj.sf_sfpat_1_2_3_5_6_8"
+  },
+  {
+   "proof": "SFP14.proof",
+   "spec": "SFConj.sf_sfpat_1_2_4_5_6_8"
+  },
+  {
+   "proof": "SFP15.proof",
+   "spec": "SFConj.sf_sfpat_1_2_4_5_7_8"
+  },
+  {
+   "proof": "SFP16.proof",
+   "spec": "SFConj.sf_sfpat_1_2_4_6_7_8"
+  },
+  {
+   "proof": "SFP17.proof",
+   "spec": "SFConj.sf_sfpat_1_3_4_5_6_8"
+  },
+  {
+   "proof": "SFP18.proof",
+   "spec": "SFConj.sf_sfpat_1_3_4_6_7_8"
+  },
+  {
+   "proof": "SFP19.proof",
+   "spec": "SFConj.sf_sfpat_2_3_4_5_6_8"
+  },
+  {
+   "proof": "SFP20.proof",
+   "spec": "SFConj.sf_sfpat_1_2_3_4_5_6_8"
+  }
+ ],
+ "costs": {
+  "acceptance_check_cpu_ns": 184808160381,
+  "acceptance_runs": 21,
+  "acceptances": [
+   {
+    "receipt_sha256": "8a95adc29734e048ede525abd50b581a847e52d2e52062274729fe4edccfd1d1",
+    "statement": "sf_ind_le_one",
+    "stats": {
+     "check_sha256": "ec38c687eb970367ec816fd9c38bd89cd5092cb8ad374e00dd25f03293b09472",
+     "cpu_ns": 2151462087,
+     "exit_code": 0,
+     "exits": {
+      "SFP1": "0",
+      "check": "0"
+     },
+     "log": "",
+     "peak_memory_bytes": 233574400,
+     "status": "SUCCESS",
+     "wall_ns": 2252752366
+    },
+    "status": "CHECKED"
+   },
+   {
+    "receipt_sha256": "b34a9acd0d500406a9c22a1b4018df44295f73b83251fa052af678966cd9c069",
+    "statement": "sf_bridge",
+    "stats": {
+     "check_sha256": "2f1388009cedc8b3319f220b6f5d9861d9c1ad5d2c544d09bc354516ef0d3dc4",
+     "cpu_ns": 3008725178,
+     "exit_code": 0,
+     "exits": {
+      "SFP1": "0",
+      "SFP2": "0",
+      "check": "0"
+     },
+     "log": "",
+     "peak_memory_bytes": 221843456,
+     "status": "SUCCESS",
+     "wall_ns": 3056481623
+    },
+    "status": "CHECKED"
+   },
+   {
+    "receipt_sha256": "0ee23c78d5e4647a9ca4a2e90bb84fb4f22604311001c61b9b67b51873c2ef39",
+    "statement": "sf_bridge_double",
+    "stats": {
+     "check_sha256": "917507887edfd969b5151d9c1b9e4f8176be96a4044fbfd92fa727e7fa472fbb",
+     "cpu_ns": 3533859512,
+     "exit_code": 0,
+     "exits": {
+      "SFP1": "0",
+      "SFP2": "0",
+      "SFP3": "0",
+      "check": "0"
+     },
+     "log": "",
+     "peak_memory_bytes": 223940608,
+     "status": "SUCCESS",
+     "wall_ns": 3589737350
+    },
+    "status": "CHECKED"
+   },
+   {
+    "receipt_sha256": "d45b57cd4cb4a43461b9c524f13c57ec414e97afe0a0acb10a4a4e5f0cd4e216",
+    "statement": "sf_sfpat_1_2_3_4",
+    "stats": {
+     "check_sha256": "669125e373074d63e1001865c1698baa43e06de43ba0130abfcda73dba52e609",
+     "cpu_ns": 4369834040,
+     "exit_code": 0,
+     "exits": {
+      "SFP1": "0",
+      "SFP2": "0",
+      "SFP3": "0",
+      "SFP4": "0",
+      "check": "0"
+     },
+     "log": "",
+     "peak_memory_bytes": 223977472,
+     "status": "SUCCESS",
+     "wall_ns": 4503387883
+    },
+    "status": "CHECKED"
+   },
+   {
+    "receipt_sha256": "aee12e63e04712902578dddb8421eeab16765dd275534b429959f9efbdd5e392",
+    "statement": "sf_sfpat_1_2_4_5",
+    "stats": {
+     "check_sha256": "8171c0b758bc5e35fd61e924ecae0b90a86ea9c89882c19b02be4097658e938a",
+     "cpu_ns": 4963378586,
+     "exit_code": 0,
+     "exits": {
+      "SFP1": "0",
+      "SFP2": "0",
+      "SFP3": "0",
+      "SFP4": "0",
+      "SFP5": "0",
+      "check": "0"
+     },
+     "log": "",
+     "peak_memory_bytes": 223973376,
+     "status": "SUCCESS",
+     "wall_ns": 5098670092
+    },
+    "status": "CHECKED"
+   },
+   {
+    "receipt_sha256": "91bd6988bd220b88b89b03070002102f4ebf9f2ecca74be5ce8aa915f3680a8a",
+    "statement": "sf_sfpat_1_2_5_6_7",
+    "stats": {
+     "check_sha256": "8b1fe0a88544aab879705df806fe4b1ed8dbf888c6bdd2ac5d341f191078028f",
+     "cpu_ns": 5907323667,
+     "exit_code": 0,
+     "exits": {
+      "SFP1": "0",
+      "SFP2": "0",
+      "SFP3": "0",
+      "SFP4": "0",
+      "SFP5": "0",
+      "SFP6": "0",
+      "check": "0"
+     },
+     "log": "",
+     "peak_memory_bytes": 223694848,
+     "status": "SUCCESS",
+     "wall_ns": 6125208960
+    },
+    "status": "CHECKED"
+   },
+   {
+    "receipt_sha256": "621dc3747b81620c477194769d785aa0e47e5943ac7928b0e3b8f10b56ac9fd3",
+    "statement": "sf_sfpat_1_2_3_4_6_7",
+    "stats": {
+     "check_sha256": "9d0ff4c863d21f3fbfc2854ba8a8abc441b03939cc647c281d22686d9859e548",
+     "cpu_ns": 6622427236,
+     "exit_code": 0,
+     "exits": {
+      "SFP1": "0",
+      "SFP2": "0",
+      "SFP3": "0",
+      "SFP4": "0",
+      "SFP5": "0",
+      "SFP6": "0",
+      "SFP7": "0",
+      "check": "0"
+     },
+     "log": "",
+     "peak_memory_bytes": 223956992,
+     "status": "SUCCESS",
+     "wall_ns": 6826978897
+    },
+    "status": "CHECKED"
+   },
+   {
+    "receipt_sha256": "adc6e55a8067624540d4859eaaffdcabd5e7ac0a2453460a678076600df221cc",
+    "statement": "sf_sfpat_1_2_5_6_8",
+    "stats": {
+     "check_sha256": "d1999ed73319e738d1ecd1ee5c831cdf5025074874c074f0d25d5b995d07ea43",
+     "cpu_ns": 7424676978,
+     "exit_code": 0,
+     "exits": {
+      "SFP1": "0",
+      "SFP2": "0",
+      "SFP3": "0",
+      "SFP4": "0",
+      "SFP5": "0",
+      "SFP6": "0",
+      "SFP7": "0",
+      "SFP8": "0",
+      "check": "0"
+     },
+     "log": "",
+     "peak_memory_bytes": 226119680,
+     "status": "SUCCESS",
+     "wall_ns": 7637860213
+    },
+    "status": "CHECKED"
+   },
+   {
+    "receipt_sha256": "fb4a97e7e0abbbc1ccbbb2ae0ad02accafa30e64a4b20faedaed7c84f7fff82d",
+    "statement": "sf_sfpat_1_2_5_7_8",
+    "stats": {
+     "check_sha256": "f051e72a38b3d324529369a5a432a7a86d01fa3630ec85b5ec46dca3f2747148",
+     "cpu_ns": 8688840692,
+     "exit_code": 0,
+     "exits": {
+      "SFP1": "0",
+      "SFP2": "0",
+      "SFP3": "0",
+      "SFP4": "0",
+      "SFP5": "0",
+      "SFP6": "0",
+      "SFP7": "0",
+      "SFP8": "0",
+      "SFP9": "0",
+      "check": "0"
+     },
+     "log": "",
+     "peak_memory_bytes": 221859840,
+     "status": "SUCCESS",
+     "wall_ns": 9059460838
+    },
+    "status": "CHECKED"
+   },
+   {
+    "receipt_sha256": "4a638268cebdaf2a6ed746f0504b57161736ea06b15dab2028befb8882065603",
+    "statement": "sf_sfpat_1_3_4_5_8",
+    "stats": {
+     "check_sha256": "ebe3bfe60bb60f86a6d8aa027277a96a66870a934ffbdb7500d3611a5655e0bb",
+     "cpu_ns": 8863242604,
+     "exit_code": 0,
+     "exits": {
+      "SFP1": "0",
+      "SFP10": "0",
+      "SFP2": "0",
+      "SFP3": "0",
+      "SFP4": "0",
+      "SFP5": "0",
+      "SFP6": "0",
+      "SFP7": "0",
+      "SFP8": "0",
+      "SFP9": "0",
+      "check": "0"
+     },
+     "log": "",
+     "peak_memory_bytes": 228192256,
+     "status": "SUCCESS",
+     "wall_ns": 9092116668
+    },
+    "status": "CHECKED"
+   },
+   {
+    "receipt_sha256": "785962e195a6dcf60d2e425c81399e28df6935b5b32e1626770ec30e506ee392",
+    "statement": "sf_sfpat_1_3_5_6_8",
+    "stats": {
+     "check_sha256": "cdb9861aa880cb6afe72eb06c8eff7d62a4e625a02683a7f85d9dd8e3b8147a5",
+     "cpu_ns": 9635010917,
+     "exit_code": 0,
+     "exits": {
+      "SFP1": "0",
+      "SFP10": "0",
+      "SFP11": "0",
+      "SFP2": "0",
+      "SFP3": "0",
+      "SFP4": "0",
+      "SFP5": "0",
+      "SFP6": "0",
+      "SFP7": "0",
+      "SFP8": "0",
+      "SFP9": "0",
+      "check": "0"
+     },
+     "log": "",
+     "peak_memory_bytes": 226058240,
+     "status": "SUCCESS",
+     "wall_ns": 9956275337
+    },
+    "status": "CHECKED"
+   },
+   {
+    "receipt_sha256": "67270c91d6f137135378e8e59e242708bae1b39c788feaefbd6ec82881f09db0",
+    "statement": "sf_sfpat_1_2_3_4_5_8",
+    "stats": {
+     "check_sha256": "948dd3d4f62a552e7b84ac988d186844256e0b211b399d044aeb18519cf6aa43",
+     "cpu_ns": 10145568868,
+     "exit_code": 0,
+     "exits": {
+      "SFP1": "0",
+      "SFP10": "0",
+      "SFP11": "0",
+      "SFP12": "0",
+      "SFP2": "0",
+      "SFP3": "0",
+      "SFP4": "0",
+      "SFP5": "0",
+      "SFP6": "0",
+      "SFP7": "0",
+      "SFP8": "0",
+      "SFP9": "0",
+      "check": "0"
+     },
+     "log": "",
+     "peak_memory_bytes": 228450304,
+     "status": "SUCCESS",
+     "wall_ns": 10471625358
+    },
+    "status": "CHECKED"
+   },
+   {
+    "receipt_sha256": "4ce5b7c5cb9492de74248a84e2ab935c3d9157121362e6bcd6ccfb5c5d14cd14",
+    "statement": "sf_sfpat_1_2_3_5_6_8",
+    "stats": {
+     "check_sha256": "bbf764f062e3b132176e59c94dcca448d00a97044537b054c226744ea96e53fb",
+     "cpu_ns": 11598068735,
+     "exit_code": 0,
+     "exits": {
+      "SFP1": "0",
+      "SFP10": "0",
+      "SFP11": "0",
+      "SFP12": "0",
+      "SFP13": "0",
+      "SFP2": "0",
+      "SFP3": "0",
+      "SFP4": "0",
+      "SFP5": "0",
+      "SFP6": "0",
+      "SFP7": "0",
+      "SFP8": "0",
+      "SFP9": "0",
+      "check": "0"
+     },
+     "log": "",
+     "peak_memory_bytes": 232361984,
+     "status": "SUCCESS",
+     "wall_ns": 11977976638
+    },
+    "status": "CHECKED"
+   },
+   {
+    "receipt_sha256": "a320c21e699a0f19cdb12fd43e363d522bba32de856ce265ff37c184f3d05df8",
+    "statement": "sf_sfpat_1_2_4_5_6_8",
+    "stats": {
+     "check_sha256": "9c67e449df5b407de9e82bdbb96a6fbefa7ecc721f74d3732eabe01b2679506a",
+     "cpu_ns": 11738141435,
+     "exit_code": 0,
+     "exits": {
+      "SFP1": "0",
+      "SFP10": "0",
+      "SFP11": "0",
+      "SFP12": "0",
+      "SFP13": "0",
+      "SFP14": "0",
+      "SFP2": "0",
+      "SFP3": "0",
+      "SFP4": "0",
+      "SFP5": "0",
+      "SFP6": "0",
+      "SFP7": "0",
+      "SFP8": "0",
+      "SFP9": "0",
+      "check": "0"
+     },
+     "log": "",
+     "peak_memory_bytes": 232591360,
+     "status": "SUCCESS",
+     "wall_ns": 12077954550
+    },
+    "status": "CHECKED"
+   },
+   {
+    "receipt_sha256": "f2a27e4b2a8bf0afb32ff6f925c371121e967db523856e12b2851de7b397f076",
+    "statement": "sf_sfpat_1_2_4_5_7_8",
+    "stats": {
+     "check_sha256": "8d4e0837e89c371e55aec6878c325663a96f923cf633b32c893edfbd06b1e8d0",
+     "cpu_ns": 12357897368,
+     "exit_code": 0,
+     "exits": {
+      "SFP1": "0",
+      "SFP10": "0",
+      "SFP11": "0",
+      "SFP12": "0",
+      "SFP13": "0",
+      "SFP14": "0",
+      "SFP15": "0",
+      "SFP2": "0",
+      "SFP3": "0",
+      "SFP4": "0",
+      "SFP5": "0",
+      "SFP6": "0",
+      "SFP7": "0",
+      "SFP8": "0",
+      "SFP9": "0",
+      "check": "0"
+     },
+     "log": "",
+     "peak_memory_bytes": 232603648,
+     "status": "SUCCESS",
+     "wall_ns": 12706598906
+    },
+    "status": "CHECKED"
+   },
+   {
+    "receipt_sha256": "bf43731f5274f23dec72254d60d9d3ac3d3a4c8a985f2c1d0d9b4ea2a1ae6bf5",
+    "statement": "sf_sfpat_1_2_4_6_7_8",
+    "stats": {
+     "check_sha256": "0e3420b072996129b10c01e3baebd39d0c331e8012ff5e575cd7cc7f5cec9868",
+     "cpu_ns": 13129821541,
+     "exit_code": 0,
+     "exits": {
+      "SFP1": "0",
+      "SFP10": "0",
+      "SFP11": "0",
+      "SFP12": "0",
+      "SFP13": "0",
+      "SFP14": "0",
+      "SFP15": "0",
+      "SFP16": "0",
+      "SFP2": "0",
+      "SFP3": "0",
+      "SFP4": "0",
+      "SFP5": "0",
+      "SFP6": "0",
+      "SFP7": "0",
+      "SFP8": "0",
+      "SFP9": "0",
+      "check": "0"
+     },
+     "log": "",
+     "peak_memory_bytes": 232607744,
+     "status": "SUCCESS",
+     "wall_ns": 13527846241
+    },
+    "status": "CHECKED"
+   },
+   {
+    "receipt_sha256": "d1fa9170cbe46c89c97370e6b6f3798064e24c1af7f9488a7e0d4108160dcd4a",
+    "statement": "sf_sfpat_1_3_4_5_6_8",
+    "stats": {
+     "check_sha256": "b8a0cc2a236aade06152efdf3ca8aaf686db5accd961a75fb8adfd51524a1138",
+     "cpu_ns": 14048726439,
+     "exit_code": 0,
+     "exits": {
+      "SFP1": "0",
+      "SFP10": "0",
+      "SFP11": "0",
+      "SFP12": "0",
+      "SFP13": "0",
+      "SFP14": "0",
+      "SFP15": "0",
+      "SFP16": "0",
+      "SFP17": "0",
+      "SFP2": "0",
+      "SFP3": "0",
+      "SFP4": "0",
+      "SFP5": "0",
+      "SFP6": "0",
+      "SFP7": "0",
+      "SFP8": "0",
+      "SFP9": "0",
+      "check": "0"
+     },
+     "log": "",
+     "peak_memory_bytes": 232579072,
+     "status": "SUCCESS",
+     "wall_ns": 14374041719
+    },
+    "status": "CHECKED"
+   },
+   {
+    "receipt_sha256": "baf0589835dac8678cf1c49a7063871bc88fa061b9aedc4b5764dda83c733f1f",
+    "statement": "sf_sfpat_1_3_4_6_7_8",
+    "stats": {
+     "check_sha256": "dbf20245fc634b05f97e98b729cb788003896697fd13e1dedf43e14be6814c40",
+     "cpu_ns": 14672937172,
+     "exit_code": 0,
+     "exits": {
+      "SFP1": "0",
+      "SFP10": "0",
+      "SFP11": "0",
+      "SFP12": "0",
+      "SFP13": "0",
+      "SFP14": "0",
+      "SFP15": "0",
+      "SFP16": "0",
+      "SFP17": "0",
+      "SFP18": "0",
+      "SFP2": "0",
+      "SFP3": "0",
+      "SFP4": "0",
+      "SFP5": "0",
+      "SFP6": "0",
+      "SFP7": "0",
+      "SFP8": "0",
+      "SFP9": "0",
+      "check": "0"
+     },
+     "log": "",
+     "peak_memory_bytes": 232546304,
+     "status": "SUCCESS",
+     "wall_ns": 15033824465
+    },
+    "status": "CHECKED"
+   },
+   {
+    "receipt_sha256": "2a68a4f9fc5ca65c045b26a902043812452c7892f83149c34c36a94c80428d00",
+    "statement": "sf_sfpat_2_3_4_5_6_8",
+    "stats": {
+     "check_sha256": "a15be39d72ffee9ae66e080e21835e45d38329c9cd35b18228e36d7b6c85ecfd",
+     "cpu_ns": 15762653975,
+     "exit_code": 0,
+     "exits": {
+      "SFP1": "0",
+      "SFP10": "0",
+      "SFP11": "0",
+      "SFP12": "0",
+      "SFP13": "0",
+      "SFP14": "0",
+      "SFP15": "0",
+      "SFP16": "0",
+      "SFP17": "0",
+      "SFP18": "0",
+      "SFP19": "0",
+      "SFP2": "0",
+      "SFP3": "0",
+      "SFP4": "0",
+      "SFP5": "0",
+      "SFP6": "0",
+      "SFP7": "0",
+      "SFP8": "0",
+      "SFP9": "0",
+      "check": "0"
+     },
+     "log": "",
+     "peak_memory_bytes": 232611840,
+     "status": "SUCCESS",
+     "wall_ns": 16251715298
+    },
+    "status": "CHECKED"
+   },
+   {
+    "receipt_sha256": "ac71345a988d55086ab7be9f5f84929fc3c1b456ab5c5ec30dfb6a8fad451b99",
+    "statement": "sf_sfpat_1_2_3_4_5_6_8",
+    "stats": {
+     "check_sha256": "e857bee5047f57c82d1d931afa5fb72f5000c21618da8455f6754215782b02e4",
+     "cpu_ns": 16185563351,
+     "exit_code": 0,
+     "exits": {
+      "SFP1": "0",
+      "SFP10": "0",
+      "SFP11": "0",
+      "SFP12": "0",
+      "SFP13": "0",
+      "SFP14": "0",
+      "SFP15": "0",
+      "SFP16": "0",
+      "SFP17": "0",
+      "SFP18": "0",
+      "SFP19": "0",
+      "SFP2": "0",
+      "SFP20": "0",
+      "SFP3": "0",
+      "SFP4": "0",
+      "SFP5": "0",
+      "SFP6": "0",
+      "SFP7": "0",
+      "SFP8": "0",
+      "SFP9": "0",
+      "check": "0"
+     },
+     "log": "",
+     "peak_memory_bytes": 232640512,
+     "status": "SUCCESS",
+     "wall_ns": 16633901075
+    },
+    "status": "CHECKED"
+   }
+  ],
+  "attempts": [
+   {
+    "attempts": [
+     {
+      "compiled": true,
+      "errors": [],
+      "recipe": "ind-split",
+      "sorry": false,
+      "tactic": "intro S x\nunfold SF.ind\nsplit <;> omega",
+      "tactic_sha256": "65d826147eab43fe488dc31c6d4b3300bc8dac0875cf7fe0d28f755698d3a117",
+      "tier": 0
+     },
+     {
+      "compiled": true,
+      "errors": [],
+      "recipe": "ind-split-ifs",
+      "sorry": false,
+      "tactic": "intro S x\nunfold SF.ind\nsplit_ifs <;> omega",
+      "tactic_sha256": "01de3451f72c48fdc7fce63414d8b798e769e0fcc6b57b703eb08460d628a39d",
+      "tier": 0
+     }
+    ],
+    "charged": {
+     "candidates": 2,
+     "cpu_ns": 843747201,
+     "wall_ns": 871721247
+    },
+    "result": "COMPILED",
+    "statement": "sf_ind_le_one",
+    "target": "SFConj.sf_ind_le_one"
+   },
+   {
+    "attempts": [
+     {
+      "compiled": true,
+      "errors": [],
+      "recipe": "sf-bridge-subst",
+      "sorry": false,
+      "tactic": "intro S hS a b c r0\nunfold SF.ind\nsplit_ifs with h1 h2 h3 <;> try omega\nexfalso\nexact hS a h1 b h2 (by subst r0; exact h3)",
+      "tactic_sha256": "b45e817158ae67956b5dfbfea6dc1e8afc70705d3aa0087e03dd55a65277488f",
+      "tier": 0
+     },
+     {
+      "compiled": true,
+      "errors": [],
+      "recipe": "sf-bridge-rw",
+      "sorry": false,
+      "tactic": "intro S hS a b c r0\nunfold SF.ind\nsplit_ifs with h1 h2 h3 <;> try omega\nexfalso\nexact hS a h1 b h2 (by rw [r0]; exact h3)",
+      "tactic_sha256": "0c84a1d6b372fd7eae0a2769fc0264ac0408f45ecef27533dca7258fe05326c8",
+      "tier": 0
+     }
+    ],
+    "charged": {
+     "candidates": 2,
+     "cpu_ns": 997188910,
+     "wall_ns": 1032039208
+    },
+    "result": "COMPILED",
+    "statement": "sf_bridge",
+    "target": "SFConj.sf_bridge"
+   },
+   {
+    "attempts": [
+     {
+      "compiled": true,
+      "errors": [],
+      "recipe": "sf-bridge-double-subst",
+      "sorry": false,
+      "tactic": "intro S hS a c r0\nunfold SF.ind\nsplit_ifs with h1 h2 <;> try omega\nexfalso\nexact hS a h1 a h1 (by subst r0; exact h2)",
+      "tactic_sha256": "a5bdde8fb4cc6bb9e0627090b4f740acfa5c7e7d07029e93676fb94e5324461e",
+      "tier": 0
+     },
+     {
+      "compiled": true,
+      "errors": [],
+      "recipe": "sf-bridge-double-rw",
+      "sorry": false,
+      "tactic": "intro S hS a c r0\nunfold SF.ind\nsplit_ifs with h1 h2 <;> try omega\nexfalso\nexact hS a h1 a h1 (by rw [r0]; exact h2)",
+      "tactic_sha256": "ed6aef964d0c9ed07ede6960524c230de1da59b5ee2979826774a04b0e8dee06",
+      "tier": 0
+     }
+    ],
+    "charged": {
+     "candidates": 2,
+     "cpu_ns": 915413728,
+     "wall_ns": 936305087
+    },
+    "result": "COMPILED",
+    "statement": "sf_bridge_double",
+    "target": "SFConj.sf_bridge_double"
+   },
+   {
+    "attempts": [
+     {
+      "compiled": true,
+      "errors": [],
+      "recipe": "lp-certificate-sum",
+      "sorry": false,
+      "tactic": "intro S hS v0 v1 v2 v3 r0 r1 r2 r3\nhave k0 := SFP3.proof S hS v0 v1 (by omega)\nhave k1 := SFP2.proof S hS v0 v2 v3 (by omega)\nhave k2 := SFP3.proof S hS v1 v3 (by omega)\nhave e0 := SFP1.proof S v2\nhave key := Nat.add_le_add k0 (Nat.add_le_add k1 (Nat.add_le_add k2 (e0)))\nclear k0 k1 k2 e0\nomega",
+      "tactic_sha256": "7cc0b2dda6fc71a571b3e93fba8cb227ccdd5243cbd3e40b25bba654840fae80",
+      "tier": 0
+     }
+    ],
+    "charged": {
+     "candidates": 1,
+     "cpu_ns": 862537447,
+     "wall_ns": 899336571
+    },
+    "result": "COMPILED",
+    "statement": "sf_sfpat_1_2_3_4",
+    "target": "SFConj.sf_sfpat_1_2_3_4"
+   },
+   {
+    "attempts": [
+     {
+      "compiled": true,
+      "errors": [],
+      "recipe": "lp-certificate-sum",
+      "sorry": false,
+      "tactic": "intro S hS v0 v1 v2 v3 r0 r1 r2\nhave k0 := SFP3.proof S hS v0 v1 (by omega)\nhave k1 := SFP2.proof S hS v0 v2 v3 (by omega)\nhave k2 := SFP3.proof S hS v1 v2 (by omega)\nhave e0 := SFP1.proof S v3\nhave key := Nat.add_le_add k0 (Nat.add_le_add k1 (Nat.add_le_add k2 (e0)))\nclear k0 k1 k2 e0\nomega",
+      "tactic_sha256": "ba1a8f04e1f2184e691893d564b78ff6667b67774fd106543ee1c029b304cb28",
+      "tier": 0
+     }
+    ],
+    "charged": {
+     "candidates": 1,
+     "cpu_ns": 837099197,
+     "wall_ns": 878009542
+    },
+    "result": "COMPILED",
+    "statement": "sf_sfpat_1_2_4_5",
+    "target": "SFConj.sf_sfpat_1_2_4_5"
+   },
+   {
+    "attempts": [
+     {
+      "compiled": true,
+      "errors": [],
+      "recipe": "lp-certificate-sum",
+      "sorry": false,
+      "tactic": "intro S hS v0 v1 v2 v3 v4 r0 r1 r2 r3\nhave k0 := SFP3.proof S hS v0 v1 (by omega)\nhave k1 := SFP2.proof S hS v0 v2 v3 (by omega)\nhave k2 := SFP2.proof S hS v0 v3 v4 (by omega)\nhave k3 := Nat.mul_le_mul (Nat.le_refl 2) (SFP2.proof S hS v1 v2 v4 (by omega))\nhave e0 := SFP1.proof S v3\nhave key := Nat.add_le_add k0 (Nat.add_le_add k1 (Nat.add_le_add k2 (Nat.add_le_add k3 (e0))))\nclear k0 k1 k2 k3 e0\nomega",
+      "tactic_sha256": "a622e36e39ec09be4c8297a0afa16aa3479287f3aeb8f8188563f2319bd43ca6",
+      "tier": 0
+     }
+    ],
+    "charged": {
+     "candidates": 1,
+     "cpu_ns": 912668044,
+     "wall_ns": 969737606
+    },
+    "result": "COMPILED",
+    "statement": "sf_sfpat_1_2_5_6_7",
+    "target": "SFConj.sf_sfpat_1_2_5_6_7"
+   },
+   {
+    "attempts": [
+     {
+      "compiled": true,
+      "errors": [],
+      "recipe": "lp-certificate-sum",
+      "sorry": false,
+      "tactic": "intro S hS v0 v1 v2 v3 v4 v5 r0 r1 r2 r3 r4 r5 r6 r7\nhave k0 := SFP2.proof S hS v0 v4 v5 (by omega)\nhave k1 := SFP3.proof S hS v1 v3 (by omega)\nhave k2 := SFP3.proof S hS v2 v4 (by omega)\nhave k3 := SFP4.proof S hS v0 v1 v2 v3 (by omega) (by omega) (by omega) (by omega)\nhave e0 := SFP1.proof S v5\nhave key := Nat.add_le_add k0 (Nat.add_le_add k1 (Nat.add_le_add k2 (Nat.add_le_add k3 (e0))))\nclear k0 k1 k2 k3 e0\nomega",
+      "tactic_sha256": "f6ddf456868052d061aa7c8bf6569312e00312211e00a9b9c236cbb2d331b337",
+      "tier": 0
+     }
+    ],
+    "charged": {
+     "candidates": 1,
+     "cpu_ns": 940388307,
+     "wall_ns": 998664442
+    },
+    "result": "COMPILED",
+    "statement": "sf_sfpat_1_2_3_4_6_7",
+    "target": "SFConj.sf_sfpat_1_2_3_4_6_7"
+   },
+   {
+    "attempts": [
+     {
+      "compiled": true,
+      "errors": [],
+      "recipe": "lp-certificate-sum",
+      "sorry": false,
+      "tactic": "intro S hS v0 v1 v2 v3 v4 r0 r1 r2\nhave k0 := SFP3.proof S hS v0 v1 (by omega)\nhave k1 := SFP2.proof S hS v0 v2 v3 (by omega)\nhave k2 := SFP2.proof S hS v1 v3 v4 (by omega)\nhave e0 := SFP1.proof S v2\nhave e1 := SFP1.proof S v4\nhave key := Nat.add_le_add k0 (Nat.add_le_add k1 (Nat.add_le_add k2 (Nat.add_le_add e0 (e1))))\nclear k0 k1 k2 e0 e1\nomega",
+      "tactic_sha256": "979a668a94b5a8d5a9fd39e9f6e13da4c36c8630f69c58cfae80557f234da3e7",
+      "tier": 0
+     }
+    ],
+    "charged": {
+     "candidates": 1,
+     "cpu_ns": 933071861,
+     "wall_ns": 965459190
+    },
+    "result": "COMPILED",
+    "statement": "sf_sfpat_1_2_5_6_8",
+    "target": "SFConj.sf_sfpat_1_2_5_6_8"
+   },
+   {
+    "attempts": [
+     {
+      "compiled": true,
+      "errors": [],
+      "recipe": "lp-certificate-sum",
+      "sorry": false,
+      "tactic": "intro S hS v0 v1 v2 v3 v4 r0 r1 r2\nhave k0 := SFP3.proof S hS v0 v1 (by omega)\nhave k1 := SFP2.proof S hS v0 v3 v4 (by omega)\nhave k2 := SFP2.proof S hS v1 v2 v3 (by omega)\nhave e0 := SFP1.proof S v2\nhave e1 := SFP1.proof S v4\nhave key := Nat.add_le_add k0 (Nat.add_le_add k1 (Nat.add_le_add k2 (Nat.add_le_add e0 (e1))))\nclear k0 k1 k2 e0 e1\nomega",
+      "tactic_sha256": "6d7be55165de9400cbeb9c917b08f8a8cb575603dc5f3fd34fa2774ac7a24917",
+      "tier": 0
+     }
+    ],
+    "charged": {
+     "candidates": 1,
+     "cpu_ns": 945834489,
+     "wall_ns": 1000412199
+    },
+    "result": "COMPILED",
+    "statement": "sf_sfpat_1_2_5_7_8",
+    "target": "SFConj.sf_sfpat_1_2_5_7_8"
+   },
+   {
+    "attempts": [
+     {
+      "compiled": true,
+      "errors": [],
+      "recipe": "lp-certificate-sum",
+      "sorry": false,
+      "tactic": "intro S hS v0 v1 v2 v3 v4 r0 r1 r2 r3\nhave k0 := SFP2.proof S hS v0 v1 v2 (by omega)\nhave k1 := SFP2.proof S hS v0 v2 v3 (by omega)\nhave k2 := Nat.mul_le_mul (Nat.le_refl 2) (SFP2.proof S hS v1 v3 v4 (by omega))\nhave k3 := SFP3.proof S hS v2 v4 (by omega)\nhave e0 := SFP1.proof S v0\nhave key := Nat.add_le_add k0 (Nat.add_le_add k1 (Nat.add_le_add k2 (Nat.add_le_add k3 (e0))))\nclear k0 k1 k2 k3 e0\nomega",
+      "tactic_sha256": "a595c85e46e596fb6de5dbb92f807801f2fd70858fdb247e7d6776d1f3727cf5",
+      "tier": 0
+     }
+    ],
+    "charged": {
+     "candidates": 1,
+     "cpu_ns": 884997262,
+     "wall_ns": 940672401
+    },
+    "result": "COMPILED",
+    "statement": "sf_sfpat_1_3_4_5_8",
+    "target": "SFConj.sf_sfpat_1_3_4_5_8"
+   },
+   {
+    "attempts": [
+     {
+      "compiled": true,
+      "errors": [],
+      "recipe": "lp-certificate-sum",
+      "sorry": false,
+      "tactic": "intro S hS v0 v1 v2 v3 v4 r0 r1 r2\nhave k0 := SFP2.proof S hS v0 v2 v3 (by omega)\nhave k1 := SFP3.proof S hS v1 v3 (by omega)\nhave k2 := SFP2.proof S hS v1 v2 v4 (by omega)\nhave e0 := SFP1.proof S v0\nhave e1 := SFP1.proof S v4\nhave key := Nat.add_le_add k0 (Nat.add_le_add k1 (Nat.add_le_add k2 (Nat.add_le_add e0 (e1))))\nclear k0 k1 k2 e0 e1\nomega",
+      "tactic_sha256": "51d7f3984b32febc70444840c05337931cb0df35a09f55ac160a6ff8826fe6b7",
+      "tier": 0
+     }
+    ],
+    "charged": {
+     "candidates": 1,
+     "cpu_ns": 919801923,
+     "wall_ns": 983663082
+    },
+    "result": "COMPILED",
+    "statement": "sf_sfpat_1_3_5_6_8",
+    "target": "SFConj.sf_sfpat_1_3_5_6_8"
+   },
+   {
+    "attempts": [
+     {
+      "compiled": true,
+      "errors": [],
+      "recipe": "lp-certificate-sum",
+      "sorry": false,
+      "tactic": "intro S hS v0 v1 v2 v3 v4 v5 r0 r1 r2 r3 r4 r5 r6 r7\nhave k0 := SFP3.proof S hS v0 v1 (by omega)\nhave k1 := Nat.mul_le_mul (Nat.le_refl 2) (SFP2.proof S hS v2 v4 v5 (by omega))\nhave k2 := SFP3.proof S hS v3 v5 (by omega)\nhave k3 := SFP4.proof S hS v0 v1 v2 v3 (by omega) (by omega) (by omega) (by omega)\nhave k4 := SFP5.proof S hS v0 v1 v3 v4 (by omega) (by omega) (by omega)\nhave key := Nat.add_le_add k0 (Nat.add_le_add k1 (Nat.add_le_add k2 (Nat.add_le_add k3 (k4))))\nclear k0 k1 k2 k3 k4\nomega",
+      "tactic_sha256": "815c2661eed2255eaced05022a9a4150eec631fce94fecd516a9e8a2d770c76a",
+      "tier": 0
+     }
+    ],
+    "charged": {
+     "candidates": 1,
+     "cpu_ns": 888853982,
+     "wall_ns": 944548732
+    },
+    "result": "COMPILED",
+    "statement": "sf_sfpat_1_2_3_4_5_8",
+    "target": "SFConj.sf_sfpat_1_2_3_4_5_8"
+   },
+   {
+    "attempts": [
+     {
+      "compiled": true,
+      "errors": [],
+      "recipe": "lp-certificate-sum",
+      "sorry": false,
+      "tactic": "intro S hS v0 v1 v2 v3 v4 v5 r0 r1 r2 r3 r4 r5 r6\nhave k0 := SFP3.proof S hS v0 v1 (by omega)\nhave k1 := SFP3.proof S hS v2 v4 (by omega)\nhave k2 := SFP2.proof S hS v2 v3 v5 (by omega)\nhave k3 := SFP8.proof S hS v0 v1 v3 v4 v5 (by omega) (by omega) (by omega)\nhave key := Nat.add_le_add k0 (Nat.add_le_add k1 (Nat.add_le_add k2 (k3)))\nclear k0 k1 k2 k3\nomega",
+      "tactic_sha256": "11224f1649c177a4aaaa55ad3f2f6141c978f9ae259fdb1da1722d5703a8f894",
+      "tier": 0
+     }
+    ],
+    "charged": {
+     "candidates": 1,
+     "cpu_ns": 898196150,
+     "wall_ns": 962881111
+    },
+    "result": "COMPILED",
+    "statement": "sf_sfpat_1_2_3_5_6_8",
+    "target": "SFConj.sf_sfpat_1_2_3_5_6_8"
+   },
+   {
+    "attempts": [
+     {
+      "compiled": true,
+      "errors": [],
+      "recipe": "lp-certificate-sum",
+      "sorry": false,
+      "tactic": "intro S hS v0 v1 v2 v3 v4 v5 r0 r1 r2 r3 r4 r5 r6\nhave k0 := SFP2.proof S hS v0 v3 v4 (by omega)\nhave k1 := SFP3.proof S hS v2 v5 (by omega)\nhave k2 := SFP4.proof S hS v1 v2 v4 v5 (by omega) (by omega) (by omega) (by omega)\nhave k3 := SFP5.proof S hS v0 v1 v2 v3 (by omega) (by omega) (by omega)\nhave k4 := SFP8.proof S hS v0 v1 v3 v4 v5 (by omega) (by omega) (by omega)\nhave key := Nat.add_le_add k0 (Nat.add_le_add k1 (Nat.add_le_add k2 (Nat.add_le_add k3 (k4))))\nclear k0 k1 k2 k3 k4\nomega",
+      "tactic_sha256": "1edb8c51869bd4f5e54459c8b78a16b21234fffd1fdbc1efe448011717e21abc",
+      "tier": 0
+     }
+    ],
+    "charged": {
+     "candidates": 1,
+     "cpu_ns": 955458872,
+     "wall_ns": 1030249376
+    },
+    "result": "COMPILED",
+    "statement": "sf_sfpat_1_2_4_5_6_8",
+    "target": "SFConj.sf_sfpat_1_2_4_5_6_8"
+   },
+   {
+    "attempts": [
+     {
+      "compiled": true,
+      "errors": [],
+      "recipe": "lp-certificate-sum",
+      "sorry": false,
+      "tactic": "intro S hS v0 v1 v2 v3 v4 v5 r0 r1 r2 r3 r4 r5\nhave k0 := SFP3.proof S hS v2 v5 (by omega)\nhave k1 := SFP5.proof S hS v0 v1 v2 v3 (by omega) (by omega) (by omega)\nhave k2 := SFP9.proof S hS v0 v1 v3 v4 v5 (by omega) (by omega) (by omega)\nhave e0 := SFP1.proof S v4\nhave key := Nat.add_le_add k0 (Nat.add_le_add k1 (Nat.add_le_add k2 (e0)))\nclear k0 k1 k2 e0\nomega",
+      "tactic_sha256": "247254c84c34454ad86f46aa25c542798ca93b084868503f1da6f43cef580c05",
+      "tier": 0
+     }
+    ],
+    "charged": {
+     "candidates": 1,
+     "cpu_ns": 881025681,
+     "wall_ns": 934585595
+    },
+    "result": "COMPILED",
+    "statement": "sf_sfpat_1_2_4_5_7_8",
+    "target": "SFConj.sf_sfpat_1_2_4_5_7_8"
+   },
+   {
+    "attempts": [
+     {
+      "compiled": true,
+      "errors": [],
+      "recipe": "lp-certificate-sum",
+      "sorry": false,
+      "tactic": "intro S hS v0 v1 v2 v3 v4 v5 r0 r1 r2 r3 r4 r5 r6\nhave k0 := SFP2.proof S hS v0 v4 v5 (by omega)\nhave k1 := SFP4.proof S hS v1 v2 v3 v5 (by omega) (by omega) (by omega) (by omega)\nhave k2 := SFP9.proof S hS v0 v1 v2 v3 v4 (by omega) (by omega) (by omega)\nhave key := Nat.add_le_add k0 (Nat.add_le_add k1 (k2))\nclear k0 k1 k2\nomega",
+      "tactic_sha256": "814299a8dc07b7fdd2a0d6668e75a1fbe360127d2f5a464edd5a9b590ad4caad",
+      "tier": 0
+     }
+    ],
+    "charged": {
+     "candidates": 1,
+     "cpu_ns": 869854056,
+     "wall_ns": 940572987
+    },
+    "result": "COMPILED",
+    "statement": "sf_sfpat_1_2_4_6_7_8",
+    "target": "SFConj.sf_sfpat_1_2_4_6_7_8"
+   },
+   {
+    "attempts": [
+     {
+      "compiled": true,
+      "errors": [],
+      "recipe": "lp-certificate-sum",
+      "sorry": false,
+      "tactic": "intro S hS v0 v1 v2 v3 v4 v5 r0 r1 r2 r3 r4 r5\nhave k0 := SFP2.proof S hS v0 v3 v4 (by omega)\nhave k1 := SFP3.proof S hS v1 v4 (by omega)\nhave k2 := SFP3.proof S hS v2 v5 (by omega)\nhave k3 := SFP10.proof S hS v0 v1 v2 v3 v5 (by omega) (by omega) (by omega) (by omega)\nhave key := Nat.add_le_add k0 (Nat.add_le_add k1 (Nat.add_le_add k2 (k3)))\nclear k0 k1 k2 k3\nomega",
+      "tactic_sha256": "f5b1188da8f06fd9a697b331e1367a14eafc7c9cdc987c9b6954c5f45825af6f",
+      "tier": 0
+     }
+    ],
+    "charged": {
+     "candidates": 1,
+     "cpu_ns": 946256387,
+     "wall_ns": 1000889667
+    },
+    "result": "COMPILED",
+    "statement": "sf_sfpat_1_3_4_5_6_8",
+    "target": "SFConj.sf_sfpat_1_3_4_5_6_8"
+   },
+   {
+    "attempts": [
+     {
+      "compiled": true,
+      "errors": [],
+      "recipe": "lp-certificate-sum",
+      "sorry": false,
+      "tactic": "intro S hS v0 v1 v2 v3 v4 v5 r0 r1 r2 r3 r4 r5\nhave k0 := SFP2.proof S hS v0 v3 v4 (by omega)\nhave k1 := SFP3.proof S hS v1 v3 (by omega)\nhave k2 := SFP3.proof S hS v2 v5 (by omega)\nhave k3 := SFP10.proof S hS v1 v0 v2 v4 v5 (by omega) (by omega) (by omega) (by omega)\nhave key := Nat.add_le_add k0 (Nat.add_le_add k1 (Nat.add_le_add k2 (k3)))\nclear k0 k1 k2 k3\nomega",
+      "tactic_sha256": "eedb0ceda7287fa253b10ed282713694152e84dff33b0b28a6c6638473c1e471",
+      "tier": 0
+     }
+    ],
+    "charged": {
+     "candidates": 1,
+     "cpu_ns": 903142889,
+     "wall_ns": 953042518
+    },
+    "result": "COMPILED",
+    "statement": "sf_sfpat_1_3_4_6_7_8",
+    "target": "SFConj.sf_sfpat_1_3_4_6_7_8"
+   },
+   {
+    "attempts": [
+     {
+      "compiled": true,
+      "errors": [],
+      "recipe": "lp-certificate-sum",
+      "sorry": false,
+      "tactic": "intro S hS v0 v1 v2 v3 v4 v5 r0 r1 r2 r3 r4 r5 r6\nhave k0 := SFP3.proof S hS v0 v2 (by omega)\nhave k1 := SFP3.proof S hS v1 v4 (by omega)\nhave k2 := SFP2.proof S hS v1 v3 v5 (by omega)\nhave k3 := SFP4.proof S hS v0 v2 v4 v5 (by omega) (by omega) (by omega) (by omega)\nhave e0 := SFP1.proof S v3\nhave key := Nat.add_le_add k0 (Nat.add_le_add k1 (Nat.add_le_add k2 (Nat.add_le_add k3 (e0))))\nclear k0 k1 k2 k3 e0\nomega",
+      "tactic_sha256": "8a6dd24674a551026531f7dda9e6fd815a1214954cdf4d6f80e853de6f2839a0",
+      "tier": 0
+     }
+    ],
+    "charged": {
+     "candidates": 1,
+     "cpu_ns": 974288065,
+     "wall_ns": 1017716878
+    },
+    "result": "COMPILED",
+    "statement": "sf_sfpat_2_3_4_5_6_8",
+    "target": "SFConj.sf_sfpat_2_3_4_5_6_8"
+   },
+   {
+    "attempts": [
+     {
+      "compiled": true,
+      "errors": [],
+      "recipe": "lp-certificate-sum",
+      "sorry": false,
+      "tactic": "set_option maxHeartbeats 4000000 in\nintro S hS v0 v1 v2 v3 v4 v5 v6 r0 r1 r2 r3 r4 r5 r6 r7 r8 r9 r10 r11\nhave k0 := SFP3.proof S hS v2 v5 (by omega)\nhave k1 := SFP12.proof S hS v0 v1 v2 v3 v4 v6 (by omega) (by omega) (by omega) (by omega) (by omega) (by omega) (by omega) (by omega)\nhave k2 := SFP14.proof S hS v0 v1 v3 v4 v5 v6 (by omega) (by omega) (by omega) (by omega) (by omega) (by omega) (by omega)\nhave key := Nat.add_le_add k0 (Nat.add_le_add k1 (k2))\nclear k0 k1 k2\nomega",
+      "tactic_sha256": "6ed23fddc54806647d909cc432843232b4c4483e74e8c8706163eb7b67bb6933",
+      "tier": 0
+     }
+    ],
+    "charged": {
+     "candidates": 1,
+     "cpu_ns": 972558471,
+     "wall_ns": 1025963415
+    },
+    "result": "COMPILED",
+    "statement": "sf_sfpat_1_2_3_4_5_6_8",
+    "target": "SFConj.sf_sfpat_1_2_3_4_5_6_8"
+   }
+  ],
+  "search_candidates": 23,
+  "search_context_cpu_ns": 19845739858,
+  "search_cpu_ns": 18282382922,
+  "search_runs": 20
+ },
+ "counterexamples": [],
+ "declarations": [
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "SFDefs",
+   "name": "SF.instDecidableSumFree",
+   "type_sha256": "06f4c4284ca253b8c28f3fa2de27fbcdb50072a79509628e5925efb4759a6728"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "SFDefs",
+   "name": "SF.ind",
+   "type_sha256": "6b7b20b60e69ecbddc58e3e187c57eaaf3ca9194ff363933352c016e965546b1"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "SFDefs",
+   "name": "SF.SumFree",
+   "type_sha256": "167dfe12589b0978bb0d25ae0a58bc79604ab4c90e7b3749282789a9847587d5"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "SFConj",
+   "name": "SFConj.sf_sfpat_1_2_4_5_7_8",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "SFConj",
+   "name": "SFConj.sf_sfpat_1_2_5_6_8",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "SFConj",
+   "name": "SFConj.sf_bridge",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "SFConj",
+   "name": "SFConj.sf_sfpat_1_3_5_6_8",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "SFConj",
+   "name": "SFConj.sf_sfpat_1_3_4_5_8",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "SFConj",
+   "name": "SFConj.sf_sfpat_2_3_4_5_6_8",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "SFConj",
+   "name": "SFConj.sf_sfpat_1_2_5_6_7",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "SFConj",
+   "name": "SFConj.sf_sfpat_1_2_3_5_6_8",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "SFConj",
+   "name": "SFConj.sf_sfpat_1_2_4_5",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "SFConj",
+   "name": "SFConj.sf_sfpat_1_2_4_5_6_8",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "SFConj",
+   "name": "SFConj.sf_sfpat_1_3_4_6_7_8",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "SFConj",
+   "name": "SFConj.sf_sfpat_1_2_3_4_5_8",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "SFConj",
+   "name": "SFConj.sf_sfpat_1_3_4_5_6_8",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "SFConj",
+   "name": "SFConj.sf_bridge_double",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "SFConj",
+   "name": "SFConj.sf_sfpat_1_2_3_4",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "SFConj",
+   "name": "SFConj.sf_sfpat_1_2_3_4_6_7",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "SFConj",
+   "name": "SFConj.sf_ind_le_one",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "SFConj",
+   "name": "SFConj.sf_sfpat_1_2_5_7_8",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "SFConj",
+   "name": "SFConj.sf_sfpat_1_2_4_6_7_8",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "def",
+   "module": "SFConj",
+   "name": "SFConj.sf_sfpat_1_2_3_4_5_6_8",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "theorem",
+   "module": "SFP1",
+   "name": "SFP1.proof",
+   "type_sha256": "9c4cd6ecae5ff0251f072d864339d924ba50de38114dc2213d6c6ea783bf8c60"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "theorem",
+   "module": "SFP2",
+   "name": "SFP2.proof",
+   "type_sha256": "e92ab0344a1768fc0a60f35822936807a1651d7961fc44f940cc809774caf892"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "theorem",
+   "module": "SFP3",
+   "name": "SFP3.proof",
+   "type_sha256": "50029f1648c530a5c8305e54e4de492500300b563ba18ff1349f8e6f3218bc43"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "theorem",
+   "module": "SFP4",
+   "name": "SFP4.proof",
+   "type_sha256": "016d2b4de11cc3e291d1324718f16801e15c33e25504f68ad1519a122ca04125"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "theorem",
+   "module": "SFP5",
+   "name": "SFP5.proof",
+   "type_sha256": "f9f3f110f4465e574f090ff0b2e46ccf1593f2642223d0a5b8409899ff4ff203"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "theorem",
+   "module": "SFP6",
+   "name": "SFP6.proof",
+   "type_sha256": "ac0cff3763595c6bb2c943d868227b2dd1a36200c00c46789cf3c5bd22aaf402"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "theorem",
+   "module": "SFP7",
+   "name": "SFP7.proof",
+   "type_sha256": "c8c28fdc2b34e02d044304e9c0793d413fb6b7abb30be45d740e810870715652"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "theorem",
+   "module": "SFP8",
+   "name": "SFP8.proof",
+   "type_sha256": "6b810d3f56cebaa48ef33c98c40e5c6905cc2f76d514b0fa7d56d58aea9d3454"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "theorem",
+   "module": "SFP9",
+   "name": "SFP9.proof",
+   "type_sha256": "0682e09df5a0cf26d04fae90bfcf38ff5e216a6f875194812fba80d7618c12a3"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "theorem",
+   "module": "SFP10",
+   "name": "SFP10.proof",
+   "type_sha256": "2e7d3f4e58222113666558a5df9e554ff18c44a50914fe81b06ffefbf7c70213"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "theorem",
+   "module": "SFP11",
+   "name": "SFP11.proof",
+   "type_sha256": "9ec02f756d1b4d089a5cb9eafe1b0d4b5b2eac8d09c53651c4a36041a3450685"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "theorem",
+   "module": "SFP12",
+   "name": "SFP12.proof",
+   "type_sha256": "8046a18f1f408f803809a2088ba15965dfa0fd594abf0cccec7db65c27991c85"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "theorem",
+   "module": "SFP13",
+   "name": "SFP13.proof",
+   "type_sha256": "0db2836dfb2540794c15bfd19b01f765aa856daaec670353337c438231acabf8"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "theorem",
+   "module": "SFP14",
+   "name": "SFP14.proof",
+   "type_sha256": "29da857be5411a8df53aad67c84c3bfe69d3a6e8b8bfac351d152f1c2935ea1f"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "theorem",
+   "module": "SFP15",
+   "name": "SFP15.proof",
+   "type_sha256": "99d083805180a85c6a66682d21b4d6bbf75f9957aee2d4cca89485ed8cf26cfd"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "theorem",
+   "module": "SFP16",
+   "name": "SFP16.proof",
+   "type_sha256": "fa2605a8c2832a3b7dfda651164b53cf52a6fd7e28785d6637f60c07299b1858"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "theorem",
+   "module": "SFP17",
+   "name": "SFP17.proof",
+   "type_sha256": "c6ac72c7293c07c4f9c0bec968ec4e9c793e95a1b410499d4952651af9b6dce8"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "theorem",
+   "module": "SFP18",
+   "name": "SFP18.proof",
+   "type_sha256": "ce946b91aaadc142c9413546302065fb196e49e28c718b7b5ec33d2cd96fe032"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "theorem",
+   "module": "SFP19",
+   "name": "SFP19.proof",
+   "type_sha256": "e3391f5c109e4b0d1a3c1831c2ae76b13883257c90c63e19f4b3c9b2d3625681"
+  },
+  {
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "kind": "theorem",
+   "module": "SFP20",
+   "name": "SFP20.proof",
+   "type_sha256": "3c8db1e01be7c81af2269d922a31e320d8f45ed1a36448cd0b682f840a509063"
+  }
+ ],
+ "definitions": [
+  {
+   "module": "SFDefs",
+   "name": "SF.instDecidableSumFree",
+   "origin": "trusted-generated",
+   "type_sha256": "06f4c4284ca253b8c28f3fa2de27fbcdb50072a79509628e5925efb4759a6728"
+  },
+  {
+   "module": "SFDefs",
+   "name": "SF.ind",
+   "origin": "trusted-generated",
+   "type_sha256": "6b7b20b60e69ecbddc58e3e187c57eaaf3ca9194ff363933352c016e965546b1"
+  },
+  {
+   "module": "SFDefs",
+   "name": "SF.SumFree",
+   "origin": "trusted-generated",
+   "type_sha256": "167dfe12589b0978bb0d25ae0a58bc79604ab4c90e7b3749282789a9847587d5"
+  },
+  {
+   "module": "SFConj",
+   "name": "SFConj.sf_sfpat_1_2_4_5_7_8",
+   "origin": "trusted-generated",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "module": "SFConj",
+   "name": "SFConj.sf_sfpat_1_2_5_6_8",
+   "origin": "trusted-generated",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "module": "SFConj",
+   "name": "SFConj.sf_bridge",
+   "origin": "trusted-generated",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "module": "SFConj",
+   "name": "SFConj.sf_sfpat_1_3_5_6_8",
+   "origin": "trusted-generated",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "module": "SFConj",
+   "name": "SFConj.sf_sfpat_1_3_4_5_8",
+   "origin": "trusted-generated",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "module": "SFConj",
+   "name": "SFConj.sf_sfpat_2_3_4_5_6_8",
+   "origin": "trusted-generated",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "module": "SFConj",
+   "name": "SFConj.sf_sfpat_1_2_5_6_7",
+   "origin": "trusted-generated",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "module": "SFConj",
+   "name": "SFConj.sf_sfpat_1_2_3_5_6_8",
+   "origin": "trusted-generated",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "module": "SFConj",
+   "name": "SFConj.sf_sfpat_1_2_4_5",
+   "origin": "trusted-generated",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "module": "SFConj",
+   "name": "SFConj.sf_sfpat_1_2_4_5_6_8",
+   "origin": "trusted-generated",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "module": "SFConj",
+   "name": "SFConj.sf_sfpat_1_3_4_6_7_8",
+   "origin": "trusted-generated",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "module": "SFConj",
+   "name": "SFConj.sf_sfpat_1_2_3_4_5_8",
+   "origin": "trusted-generated",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "module": "SFConj",
+   "name": "SFConj.sf_sfpat_1_3_4_5_6_8",
+   "origin": "trusted-generated",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "module": "SFConj",
+   "name": "SFConj.sf_bridge_double",
+   "origin": "trusted-generated",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "module": "SFConj",
+   "name": "SFConj.sf_sfpat_1_2_3_4",
+   "origin": "trusted-generated",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "module": "SFConj",
+   "name": "SFConj.sf_sfpat_1_2_3_4_6_7",
+   "origin": "trusted-generated",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "module": "SFConj",
+   "name": "SFConj.sf_ind_le_one",
+   "origin": "trusted-generated",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "module": "SFConj",
+   "name": "SFConj.sf_sfpat_1_2_5_7_8",
+   "origin": "trusted-generated",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "module": "SFConj",
+   "name": "SFConj.sf_sfpat_1_2_4_6_7_8",
+   "origin": "trusted-generated",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  },
+  {
+   "module": "SFConj",
+   "name": "SFConj.sf_sfpat_1_2_3_4_5_6_8",
+   "origin": "trusted-generated",
+   "type_sha256": "57d968860fabe1008d2c72342adec04b70f4bae48b7bcf6ebca915624100c353"
+  }
+ ],
+ "dependencies": {
+  "SF.SumFree": {
+   "package": [],
+   "workspace_modules": [
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Defs",
+    "Mathlib.Data.SetLike.Basic"
+   ]
+  },
+  "SF.ind": {
+   "package": [],
+   "workspace_modules": [
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Defs",
+    "Mathlib.Data.SetLike.Basic"
+   ]
+  },
+  "SF.instDecidableSumFree": {
+   "package": [
+    "SF.SumFree"
+   ],
+   "workspace_modules": [
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Defs",
+    "Mathlib.Data.SetLike.Basic"
+   ]
+  },
+  "SFConj.sf_bridge": {
+   "package": [
+    "SF.SumFree",
+    "SF.ind"
+   ],
+   "workspace_modules": [
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Defs"
+   ]
+  },
+  "SFConj.sf_bridge_double": {
+   "package": [
+    "SF.SumFree",
+    "SF.ind"
+   ],
+   "workspace_modules": [
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Defs"
+   ]
+  },
+  "SFConj.sf_ind_le_one": {
+   "package": [
+    "SF.ind"
+   ],
+   "workspace_modules": [
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Defs"
+   ]
+  },
+  "SFConj.sf_sfpat_1_2_3_4": {
+   "package": [
+    "SF.SumFree",
+    "SF.ind"
+   ],
+   "workspace_modules": [
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Defs"
+   ]
+  },
+  "SFConj.sf_sfpat_1_2_3_4_5_6_8": {
+   "package": [
+    "SF.SumFree",
+    "SF.ind"
+   ],
+   "workspace_modules": [
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Defs"
+   ]
+  },
+  "SFConj.sf_sfpat_1_2_3_4_5_8": {
+   "package": [
+    "SF.SumFree",
+    "SF.ind"
+   ],
+   "workspace_modules": [
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Defs"
+   ]
+  },
+  "SFConj.sf_sfpat_1_2_3_4_6_7": {
+   "package": [
+    "SF.SumFree",
+    "SF.ind"
+   ],
+   "workspace_modules": [
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Defs"
+   ]
+  },
+  "SFConj.sf_sfpat_1_2_3_5_6_8": {
+   "package": [
+    "SF.SumFree",
+    "SF.ind"
+   ],
+   "workspace_modules": [
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Defs"
+   ]
+  },
+  "SFConj.sf_sfpat_1_2_4_5": {
+   "package": [
+    "SF.SumFree",
+    "SF.ind"
+   ],
+   "workspace_modules": [
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Defs"
+   ]
+  },
+  "SFConj.sf_sfpat_1_2_4_5_6_8": {
+   "package": [
+    "SF.SumFree",
+    "SF.ind"
+   ],
+   "workspace_modules": [
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Defs"
+   ]
+  },
+  "SFConj.sf_sfpat_1_2_4_5_7_8": {
+   "package": [
+    "SF.SumFree",
+    "SF.ind"
+   ],
+   "workspace_modules": [
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Defs"
+   ]
+  },
+  "SFConj.sf_sfpat_1_2_4_6_7_8": {
+   "package": [
+    "SF.SumFree",
+    "SF.ind"
+   ],
+   "workspace_modules": [
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Defs"
+   ]
+  },
+  "SFConj.sf_sfpat_1_2_5_6_7": {
+   "package": [
+    "SF.SumFree",
+    "SF.ind"
+   ],
+   "workspace_modules": [
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Defs"
+   ]
+  },
+  "SFConj.sf_sfpat_1_2_5_6_8": {
+   "package": [
+    "SF.SumFree",
+    "SF.ind"
+   ],
+   "workspace_modules": [
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Defs"
+   ]
+  },
+  "SFConj.sf_sfpat_1_2_5_7_8": {
+   "package": [
+    "SF.SumFree",
+    "SF.ind"
+   ],
+   "workspace_modules": [
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Defs"
+   ]
+  },
+  "SFConj.sf_sfpat_1_3_4_5_6_8": {
+   "package": [
+    "SF.SumFree",
+    "SF.ind"
+   ],
+   "workspace_modules": [
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Defs"
+   ]
+  },
+  "SFConj.sf_sfpat_1_3_4_5_8": {
+   "package": [
+    "SF.SumFree",
+    "SF.ind"
+   ],
+   "workspace_modules": [
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Defs"
+   ]
+  },
+  "SFConj.sf_sfpat_1_3_4_6_7_8": {
+   "package": [
+    "SF.SumFree",
+    "SF.ind"
+   ],
+   "workspace_modules": [
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Defs"
+   ]
+  },
+  "SFConj.sf_sfpat_1_3_5_6_8": {
+   "package": [
+    "SF.SumFree",
+    "SF.ind"
+   ],
+   "workspace_modules": [
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Defs"
+   ]
+  },
+  "SFConj.sf_sfpat_2_3_4_5_6_8": {
+   "package": [
+    "SF.SumFree",
+    "SF.ind"
+   ],
+   "workspace_modules": [
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Defs"
+   ]
+  },
+  "SFP1.proof": {
+   "package": [
+    "SF.ind",
+    "SFConj.sf_ind_le_one",
+    "SFP1.proof._proof_1_1",
+    "SFP1.proof._proof_1_2"
+   ],
+   "workspace_modules": [
+    "Init.Core",
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Defs",
+    "Mathlib.Data.SetLike.Basic"
+   ]
+  },
+  "SFP1.proof._proof_1_1": {
+   "package": [],
+   "workspace_modules": [
+    "Init.Core",
+    "Init.Data.Cast",
+    "Init.Data.Int.Basic",
+    "Init.Data.Int.Order",
+    "Init.Omega.Coeffs",
+    "Init.Omega.Constraint",
+    "Init.Omega.Int",
+    "Init.Omega.LinearCombo",
+    "Init.Prelude"
+   ]
+  },
+  "SFP1.proof._proof_1_2": {
+   "package": [],
+   "workspace_modules": [
+    "Init.Core",
+    "Init.Data.Cast",
+    "Init.Data.Int.Basic",
+    "Init.Data.Int.Order",
+    "Init.Omega.Coeffs",
+    "Init.Omega.Constraint",
+    "Init.Omega.Int",
+    "Init.Omega.LinearCombo",
+    "Init.Prelude"
+   ]
+  },
+  "SFP10.proof": {
+   "package": [
+    "SF.SumFree",
+    "SF.ind",
+    "SFConj.sf_bridge",
+    "SFConj.sf_bridge_double",
+    "SFConj.sf_ind_le_one",
+    "SFConj.sf_sfpat_1_3_4_5_8",
+    "SFP1.proof",
+    "SFP1.proof._proof_1_1",
+    "SFP1.proof._proof_1_2",
+    "SFP10.proof._proof_1_1",
+    "SFP2.proof",
+    "SFP2.proof._proof_1_1",
+    "SFP2.proof._proof_1_2",
+    "SFP2.proof._proof_1_3",
+    "SFP2.proof._proof_1_4",
+    "SFP2.proof._proof_1_5",
+    "SFP2.proof._proof_1_6",
+    "SFP2.proof._proof_1_7",
+    "SFP3.proof",
+    "SFP3.proof._proof_1_1",
+    "SFP3.proof._proof_1_2",
+    "SFP3.proof._proof_1_3"
+   ],
+   "workspace_modules": [
+    "Init.Core",
+    "Init.Data.Nat.Basic",
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Defs"
+   ]
+  },
+  "SFP10.proof._proof_1_1": {
+   "package": [
+    "SF.ind"
+   ],
+   "workspace_modules": [
+    "Init.Core",
+    "Init.Data.Cast",
+    "Init.Data.Int.Basic",
+    "Init.Data.Int.Lemmas",
+    "Init.Data.Int.Order",
+    "Init.Data.List.Basic",
+    "Init.Omega.Coeffs",
+    "Init.Omega.Constraint",
+    "Init.Omega.Int",
+    "Init.Omega.LinearCombo",
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Defs"
+   ]
+  },
+  "SFP11.proof": {
+   "package": [
+    "SF.SumFree",
+    "SF.ind",
+    "SFConj.sf_bridge",
+    "SFConj.sf_bridge_double",
+    "SFConj.sf_ind_le_one",
+    "SFConj.sf_sfpat_1_3_5_6_8",
+    "SFP1.proof",
+    "SFP1.proof._proof_1_1",
+    "SFP1.proof._proof_1_2",
+    "SFP11.proof._proof_1_1",
+    "SFP2.proof",
+    "SFP2.proof._proof_1_1",
+    "SFP2.proof._proof_1_2",
+    "SFP2.proof._proof_1_3",
+    "SFP2.proof._proof_1_4",
+    "SFP2.proof._proof_1_5",
+    "SFP2.proof._proof_1_6",
+    "SFP2.proof._proof_1_7",
+    "SFP3.proof",
+    "SFP3.proof._proof_1_1",
+    "SFP3.proof._proof_1_2",
+    "SFP3.proof._proof_1_3"
+   ],
+   "workspace_modules": [
+    "Init.Core",
+    "Init.Data.Nat.Basic",
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Defs"
+   ]
+  },
+  "SFP11.proof._proof_1_1": {
+   "package": [
+    "SF.ind"
+   ],
+   "workspace_modules": [
+    "Init.Core",
+    "Init.Data.Cast",
+    "Init.Data.Int.Basic",
+    "Init.Data.Int.Lemmas",
+    "Init.Data.Int.Order",
+    "Init.Omega.Coeffs",
+    "Init.Omega.Constraint",
+    "Init.Omega.Int",
+    "Init.Omega.LinearCombo",
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Defs"
+   ]
+  },
+  "SFP12.proof": {
+   "package": [
+    "SF.SumFree",
+    "SF.ind",
+    "SFConj.sf_bridge",
+    "SFConj.sf_bridge_double",
+    "SFConj.sf_ind_le_one",
+    "SFConj.sf_sfpat_1_2_3_4",
+    "SFConj.sf_sfpat_1_2_3_4_5_8",
+    "SFConj.sf_sfpat_1_2_4_5",
+    "SFP1.proof",
+    "SFP1.proof._proof_1_1",
+    "SFP1.proof._proof_1_2",
+    "SFP12.proof._proof_1_1",
+    "SFP2.proof",
+    "SFP2.proof._proof_1_1",
+    "SFP2.proof._proof_1_2",
+    "SFP2.proof._proof_1_3",
+    "SFP2.proof._proof_1_4",
+    "SFP2.proof._proof_1_5",
+    "SFP2.proof._proof_1_6",
+    "SFP2.proof._proof_1_7",
+    "SFP3.proof",
+    "SFP3.proof._proof_1_1",
+    "SFP3.proof._proof_1_2",
+    "SFP3.proof._proof_1_3",
+    "SFP4.proof",
+    "SFP4.proof._proof_1_1",
+    "SFP5.proof",
+    "SFP5.proof._proof_1_1"
+   ],
+   "workspace_modules": [
+    "Init.Core",
+    "Init.Data.Nat.Basic",
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Defs"
+   ]
+  },
+  "SFP12.proof._proof_1_1": {
+   "package": [
+    "SF.ind"
+   ],
+   "workspace_modules": [
+    "Init.Core",
+    "Init.Data.Cast",
+    "Init.Data.Int.Basic",
+    "Init.Data.Int.Lemmas",
+    "Init.Data.Int.Order",
+    "Init.Data.List.Basic",
+    "Init.Omega.Coeffs",
+    "Init.Omega.Constraint",
+    "Init.Omega.Int",
+    "Init.Omega.LinearCombo",
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Defs"
+   ]
+  },
+  "SFP13.proof": {
+   "package": [
+    "SF.SumFree",
+    "SF.ind",
+    "SFConj.sf_bridge",
+    "SFConj.sf_bridge_double",
+    "SFConj.sf_ind_le_one",
+    "SFConj.sf_sfpat_1_2_3_5_6_8",
+    "SFConj.sf_sfpat_1_2_5_6_8",
+    "SFP1.proof",
+    "SFP1.proof._proof_1_1",
+    "SFP1.proof._proof_1_2",
+    "SFP13.proof._proof_1_1",
+    "SFP2.proof",
+    "SFP2.proof._proof_1_1",
+    "SFP2.proof._proof_1_2",
+    "SFP2.proof._proof_1_3",
+    "SFP2.proof._proof_1_4",
+    "SFP2.proof._proof_1_5",
+    "SFP2.proof._proof_1_6",
+    "SFP2.proof._proof_1_7",
+    "SFP3.proof",
+    "SFP3.proof._proof_1_1",
+    "SFP3.proof._proof_1_2",
+    "SFP3.proof._proof_1_3",
+    "SFP8.proof",
+    "SFP8.proof._proof_1_1"
+   ],
+   "workspace_modules": [
+    "Init.Core",
+    "Init.Data.Nat.Basic",
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Defs"
+   ]
+  },
+  "SFP13.proof._proof_1_1": {
+   "package": [
+    "SF.ind"
+   ],
+   "workspace_modules": [
+    "Init.Core",
+    "Init.Data.Cast",
+    "Init.Data.Int.Basic",
+    "Init.Data.Int.Lemmas",
+    "Init.Data.Int.Order",
+    "Init.Omega.Coeffs",
+    "Init.Omega.Constraint",
+    "Init.Omega.Int",
+    "Init.Omega.LinearCombo",
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Defs"
+   ]
+  },
+  "SFP14.proof": {
+   "package": [
+    "SF.SumFree",
+    "SF.ind",
+    "SFConj.sf_bridge",
+    "SFConj.sf_bridge_double",
+    "SFConj.sf_ind_le_one",
+    "SFConj.sf_sfpat_1_2_3_4",
+    "SFConj.sf_sfpat_1_2_4_5",
+    "SFConj.sf_sfpat_1_2_4_5_6_8",
+    "SFConj.sf_sfpat_1_2_5_6_8",
+    "SFP1.proof",
+    "SFP1.proof._proof_1_1",
+    "SFP1.proof._proof_1_2",
+    "SFP14.proof._proof_1_1",
+    "SFP2.proof",
+    "SFP2.proof._proof_1_1",
+    "SFP2.proof._proof_1_2",
+    "SFP2.proof._proof_1_3",
+    "SFP2.proof._proof_1_4",
+    "SFP2.proof._proof_1_5",
+    "SFP2.proof._proof_1_6",
+    "SFP2.proof._proof_1_7",
+    "SFP3.proof",
+    "SFP3.proof._proof_1_1",
+    "SFP3.proof._proof_1_2",
+    "SFP3.proof._proof_1_3",
+    "SFP4.proof",
+    "SFP4.proof._proof_1_1",
+    "SFP5.proof",
+    "SFP5.proof._proof_1_1",
+    "SFP8.proof",
+    "SFP8.proof._proof_1_1"
+   ],
+   "workspace_modules": [
+    "Init.Core",
+    "Init.Data.Nat.Basic",
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Defs"
+   ]
+  },
+  "SFP14.proof._proof_1_1": {
+   "package": [
+    "SF.ind"
+   ],
+   "workspace_modules": [
+    "Init.Core",
+    "Init.Data.Cast",
+    "Init.Data.Int.Basic",
+    "Init.Data.Int.Lemmas",
+    "Init.Data.Int.Order",
+    "Init.Omega.Coeffs",
+    "Init.Omega.Constraint",
+    "Init.Omega.Int",
+    "Init.Omega.LinearCombo",
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Defs"
+   ]
+  },
+  "SFP15.proof": {
+   "package": [
+    "SF.SumFree",
+    "SF.ind",
+    "SFConj.sf_bridge",
+    "SFConj.sf_bridge_double",
+    "SFConj.sf_ind_le_one",
+    "SFConj.sf_sfpat_1_2_4_5",
+    "SFConj.sf_sfpat_1_2_4_5_7_8",
+    "SFConj.sf_sfpat_1_2_5_7_8",
+    "SFP1.proof",
+    "SFP1.proof._proof_1_1",
+    "SFP1.proof._proof_1_2",
+    "SFP15.proof._proof_1_1",
+    "SFP2.proof",
+    "SFP2.proof._proof_1_1",
+    "SFP2.proof._proof_1_2",
+    "SFP2.proof._proof_1_3",
+    "SFP2.proof._proof_1_4",
+    "SFP2.proof._proof_1_5",
+    "SFP2.proof._proof_1_6",
+    "SFP2.proof._proof_1_7",
+    "SFP3.proof",
+    "SFP3.proof._proof_1_1",
+    "SFP3.proof._proof_1_2",
+    "SFP3.proof._proof_1_3",
+    "SFP5.proof",
+    "SFP5.proof._proof_1_1",
+    "SFP9.proof",
+    "SFP9.proof._proof_1_1"
+   ],
+   "workspace_modules": [
+    "Init.Core",
+    "Init.Data.Nat.Basic",
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Defs"
+   ]
+  },
+  "SFP15.proof._proof_1_1": {
+   "package": [
+    "SF.ind"
+   ],
+   "workspace_modules": [
+    "Init.Core",
+    "Init.Data.Cast",
+    "Init.Data.Int.Basic",
+    "Init.Data.Int.Lemmas",
+    "Init.Data.Int.Order",
+    "Init.Omega.Coeffs",
+    "Init.Omega.Constraint",
+    "Init.Omega.Int",
+    "Init.Omega.LinearCombo",
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Defs"
+   ]
+  },
+  "SFP16.proof": {
+   "package": [
+    "SF.SumFree",
+    "SF.ind",
+    "SFConj.sf_bridge",
+    "SFConj.sf_bridge_double",
+    "SFConj.sf_ind_le_one",
+    "SFConj.sf_sfpat_1_2_3_4",
+    "SFConj.sf_sfpat_1_2_4_6_7_8",
+    "SFConj.sf_sfpat_1_2_5_7_8",
+    "SFP1.proof",
+    "SFP1.proof._proof_1_1",
+    "SFP1.proof._proof_1_2",
+    "SFP16.proof._proof_1_1",
+    "SFP2.proof",
+    "SFP2.proof._proof_1_1",
+    "SFP2.proof._proof_1_2",
+    "SFP2.proof._proof_1_3",
+    "SFP2.proof._proof_1_4",
+    "SFP2.proof._proof_1_5",
+    "SFP2.proof._proof_1_6",
+    "SFP2.proof._proof_1_7",
+    "SFP3.proof",
+    "SFP3.proof._proof_1_1",
+    "SFP3.proof._proof_1_2",
+    "SFP3.proof._proof_1_3",
+    "SFP4.proof",
+    "SFP4.proof._proof_1_1",
+    "SFP9.proof",
+    "SFP9.proof._proof_1_1"
+   ],
+   "workspace_modules": [
+    "Init.Core",
+    "Init.Data.Nat.Basic",
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Defs"
+   ]
+  },
+  "SFP16.proof._proof_1_1": {
+   "package": [
+    "SF.ind"
+   ],
+   "workspace_modules": [
+    "Init.Core",
+    "Init.Data.Cast",
+    "Init.Data.Int.Basic",
+    "Init.Data.Int.Lemmas",
+    "Init.Data.Int.Order",
+    "Init.Omega.Coeffs",
+    "Init.Omega.Constraint",
+    "Init.Omega.Int",
+    "Init.Omega.LinearCombo",
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Defs"
+   ]
+  },
+  "SFP17.proof": {
+   "package": [
+    "SF.SumFree",
+    "SF.ind",
+    "SFConj.sf_bridge",
+    "SFConj.sf_bridge_double",
+    "SFConj.sf_ind_le_one",
+    "SFConj.sf_sfpat_1_3_4_5_6_8",
+    "SFConj.sf_sfpat_1_3_4_5_8",
+    "SFP1.proof",
+    "SFP1.proof._proof_1_1",
+    "SFP1.proof._proof_1_2",
+    "SFP10.proof",
+    "SFP10.proof._proof_1_1",
+    "SFP17.proof._proof_1_1",
+    "SFP2.proof",
+    "SFP2.proof._proof_1_1",
+    "SFP2.proof._proof_1_2",
+    "SFP2.proof._proof_1_3",
+    "SFP2.proof._proof_1_4",
+    "SFP2.proof._proof_1_5",
+    "SFP2.proof._proof_1_6",
+    "SFP2.proof._proof_1_7",
+    "SFP3.proof",
+    "SFP3.proof._proof_1_1",
+    "SFP3.proof._proof_1_2",
+    "SFP3.proof._proof_1_3"
+   ],
+   "workspace_modules": [
+    "Init.Core",
+    "Init.Data.Nat.Basic",
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Defs"
+   ]
+  },
+  "SFP17.proof._proof_1_1": {
+   "package": [
+    "SF.ind"
+   ],
+   "workspace_modules": [
+    "Init.Core",
+    "Init.Data.Cast",
+    "Init.Data.Int.Basic",
+    "Init.Data.Int.Lemmas",
+    "Init.Data.Int.Order",
+    "Init.Omega.Coeffs",
+    "Init.Omega.Constraint",
+    "Init.Omega.Int",
+    "Init.Omega.LinearCombo",
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Defs"
+   ]
+  },
+  "SFP18.proof": {
+   "package": [
+    "SF.SumFree",
+    "SF.ind",
+    "SFConj.sf_bridge",
+    "SFConj.sf_bridge_double",
+    "SFConj.sf_ind_le_one",
+    "SFConj.sf_sfpat_1_3_4_5_8",
+    "SFConj.sf_sfpat_1_3_4_6_7_8",
+    "SFP1.proof",
+    "SFP1.proof._proof_1_1",
+    "SFP1.proof._proof_1_2",
+    "SFP10.proof",
+    "SFP10.proof._proof_1_1",
+    "SFP18.proof._proof_1_1",
+    "SFP18.proof._proof_1_2",
+    "SFP2.proof",
+    "SFP2.proof._proof_1_1",
+    "SFP2.proof._proof_1_2",
+    "SFP2.proof._proof_1_3",
+    "SFP2.proof._proof_1_4",
+    "SFP2.proof._proof_1_5",
+    "SFP2.proof._proof_1_6",
+    "SFP2.proof._proof_1_7",
+    "SFP3.proof",
+    "SFP3.proof._proof_1_1",
+    "SFP3.proof._proof_1_2",
+    "SFP3.proof._proof_1_3"
+   ],
+   "workspace_modules": [
+    "Init.Core",
+    "Init.Data.Nat.Basic",
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Defs"
+   ]
+  },
+  "SFP18.proof._proof_1_1": {
+   "package": [
+    "SF.ind"
+   ],
+   "workspace_modules": [
+    "Init.Core",
+    "Init.Data.Cast",
+    "Init.Data.Int.Basic",
+    "Init.Data.Int.Lemmas",
+    "Init.Data.Int.Order",
+    "Init.Data.Nat.Basic",
+    "Init.Omega.Coeffs",
+    "Init.Omega.Constraint",
+    "Init.Omega.Int",
+    "Init.Omega.LinearCombo",
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Defs"
+   ]
+  },
+  "SFP18.proof._proof_1_2": {
+   "package": [
+    "SF.ind"
+   ],
+   "workspace_modules": [
+    "Init.Core",
+    "Init.Data.Cast",
+    "Init.Data.Int.Basic",
+    "Init.Data.Int.Lemmas",
+    "Init.Data.Int.Order",
+    "Init.Omega.Coeffs",
+    "Init.Omega.Constraint",
+    "Init.Omega.Int",
+    "Init.Omega.LinearCombo",
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Defs"
+   ]
+  },
+  "SFP19.proof": {
+   "package": [
+    "SF.SumFree",
+    "SF.ind",
+    "SFConj.sf_bridge",
+    "SFConj.sf_bridge_double",
+    "SFConj.sf_ind_le_one",
+    "SFConj.sf_sfpat_1_2_3_4",
+    "SFConj.sf_sfpat_2_3_4_5_6_8",
+    "SFP1.proof",
+    "SFP1.proof._proof_1_1",
+    "SFP1.proof._proof_1_2",
+    "SFP19.proof._proof_1_1",
+    "SFP2.proof",
+    "SFP2.proof._proof_1_1",
+    "SFP2.proof._proof_1_2",
+    "SFP2.proof._proof_1_3",
+    "SFP2.proof._proof_1_4",
+    "SFP2.proof._proof_1_5",
+    "SFP2.proof._proof_1_6",
+    "SFP2.proof._proof_1_7",
+    "SFP3.proof",
+    "SFP3.proof._proof_1_1",
+    "SFP3.proof._proof_1_2",
+    "SFP3.proof._proof_1_3",
+    "SFP4.proof",
+    "SFP4.proof._proof_1_1"
+   ],
+   "workspace_modules": [
+    "Init.Core",
+    "Init.Data.Nat.Basic",
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Defs"
+   ]
+  },
+  "SFP19.proof._proof_1_1": {
+   "package": [
+    "SF.ind"
+   ],
+   "workspace_modules": [
+    "Init.Core",
+    "Init.Data.Cast",
+    "Init.Data.Int.Basic",
+    "Init.Data.Int.Lemmas",
+    "Init.Data.Int.Order",
+    "Init.Omega.Coeffs",
+    "Init.Omega.Constraint",
+    "Init.Omega.Int",
+    "Init.Omega.LinearCombo",
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Defs"
+   ]
+  },
+  "SFP2.proof": {
+   "package": [
+    "SF.SumFree",
+    "SF.ind",
+    "SFConj.sf_bridge",
+    "SFP2.proof._proof_1_1",
+    "SFP2.proof._proof_1_2",
+    "SFP2.proof._proof_1_3",
+    "SFP2.proof._proof_1_4",
+    "SFP2.proof._proof_1_5",
+    "SFP2.proof._proof_1_6",
+    "SFP2.proof._proof_1_7"
+   ],
+   "workspace_modules": [
+    "Init.Core",
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Defs",
+    "Mathlib.Data.SetLike.Basic"
+   ]
+  },
+  "SFP2.proof._proof_1_1": {
+   "package": [],
+   "workspace_modules": [
+    "Init.Core",
+    "Init.Data.Cast",
+    "Init.Data.Int.Basic",
+    "Init.Data.Int.Order",
+    "Init.Omega.Coeffs",
+    "Init.Omega.Constraint",
+    "Init.Omega.Int",
+    "Init.Omega.LinearCombo",
+    "Init.Prelude"
+   ]
+  },
+  "SFP2.proof._proof_1_2": {
+   "package": [],
+   "workspace_modules": [
+    "Init.Core",
+    "Init.Data.Cast",
+    "Init.Data.Int.Basic",
+    "Init.Data.Int.Order",
+    "Init.Omega.Coeffs",
+    "Init.Omega.Constraint",
+    "Init.Omega.Int",
+    "Init.Omega.LinearCombo",
+    "Init.Prelude"
+   ]
+  },
+  "SFP2.proof._proof_1_3": {
+   "package": [],
+   "workspace_modules": [
+    "Init.Core",
+    "Init.Data.Cast",
+    "Init.Data.Int.Basic",
+    "Init.Data.Int.Order",
+    "Init.Omega.Coeffs",
+    "Init.Omega.Constraint",
+    "Init.Omega.Int",
+    "Init.Omega.LinearCombo",
+    "Init.Prelude"
+   ]
+  },
+  "SFP2.proof._proof_1_4": {
+   "package": [],
+   "workspace_modules": [
+    "Init.Core",
+    "Init.Data.Cast",
+    "Init.Data.Int.Basic",
+    "Init.Data.Int.Order",
+    "Init.Omega.Coeffs",
+    "Init.Omega.Constraint",
+    "Init.Omega.Int",
+    "Init.Omega.LinearCombo",
+    "Init.Prelude"
+   ]
+  },
+  "SFP2.proof._proof_1_5": {
+   "package": [],
+   "workspace_modules": [
+    "Init.Core",
+    "Init.Data.Cast",
+    "Init.Data.Int.Basic",
+    "Init.Data.Int.Order",
+    "Init.Omega.Coeffs",
+    "Init.Omega.Constraint",
+    "Init.Omega.Int",
+    "Init.Omega.LinearCombo",
+    "Init.Prelude"
+   ]
+  },
+  "SFP2.proof._proof_1_6": {
+   "package": [],
+   "workspace_modules": [
+    "Init.Core",
+    "Init.Data.Cast",
+    "Init.Data.Int.Basic",
+    "Init.Data.Int.Order",
+    "Init.Omega.Coeffs",
+    "Init.Omega.Constraint",
+    "Init.Omega.Int",
+    "Init.Omega.LinearCombo",
+    "Init.Prelude"
+   ]
+  },
+  "SFP2.proof._proof_1_7": {
+   "package": [],
+   "workspace_modules": [
+    "Init.Core",
+    "Init.Data.Cast",
+    "Init.Data.Int.Basic",
+    "Init.Data.Int.Order",
+    "Init.Omega.Coeffs",
+    "Init.Omega.Constraint",
+    "Init.Omega.Int",
+    "Init.Omega.LinearCombo",
+    "Init.Prelude"
+   ]
+  },
+  "SFP20.proof": {
+   "package": [
+    "SF.SumFree",
+    "SF.ind",
+    "SFConj.sf_bridge",
+    "SFConj.sf_bridge_double",
+    "SFConj.sf_ind_le_one",
+    "SFConj.sf_sfpat_1_2_3_4",
+    "SFConj.sf_sfpat_1_2_3_4_5_6_8",
+    "SFConj.sf_sfpat_1_2_3_4_5_8",
+    "SFConj.sf_sfpat_1_2_4_5",
+    "SFConj.sf_sfpat_1_2_4_5_6_8",
+    "SFConj.sf_sfpat_1_2_5_6_8",
+    "SFP1.proof",
+    "SFP1.proof._proof_1_1",
+    "SFP1.proof._proof_1_2",
+    "SFP12.proof",
+    "SFP12.proof._proof_1_1",
+    "SFP14.proof",
+    "SFP14.proof._proof_1_1",
+    "SFP2.proof",
+    "SFP2.proof._proof_1_1",
+    "SFP2.proof._proof_1_2",
+    "SFP2.proof._proof_1_3",
+    "SFP2.proof._proof_1_4",
+    "SFP2.proof._proof_1_5",
+    "SFP2.proof._proof_1_6",
+    "SFP2.proof._proof_1_7",
+    "SFP20.proof._proof_1_1",
+    "SFP3.proof",
+    "SFP3.proof._proof_1_1",
+    "SFP3.proof._proof_1_2",
+    "SFP3.proof._proof_1_3",
+    "SFP4.proof",
+    "SFP4.proof._proof_1_1",
+    "SFP5.proof",
+    "SFP5.proof._proof_1_1",
+    "SFP8.proof",
+    "SFP8.proof._proof_1_1"
+   ],
+   "workspace_modules": [
+    "Init.Core",
+    "Init.Data.Nat.Basic",
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Defs"
+   ]
+  },
+  "SFP20.proof._proof_1_1": {
+   "package": [
+    "SF.ind"
+   ],
+   "workspace_modules": [
+    "Init.Core",
+    "Init.Data.Cast",
+    "Init.Data.Int.Basic",
+    "Init.Data.Int.Lemmas",
+    "Init.Data.Int.Order",
+    "Init.Omega.Coeffs",
+    "Init.Omega.Constraint",
+    "Init.Omega.Int",
+    "Init.Omega.LinearCombo",
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Defs"
+   ]
+  },
+  "SFP3.proof": {
+   "package": [
+    "SF.SumFree",
+    "SF.ind",
+    "SFConj.sf_bridge_double",
+    "SFP3.proof._proof_1_1",
+    "SFP3.proof._proof_1_2",
+    "SFP3.proof._proof_1_3"
+   ],
+   "workspace_modules": [
+    "Init.Core",
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Defs",
+    "Mathlib.Data.SetLike.Basic"
+   ]
+  },
+  "SFP3.proof._proof_1_1": {
+   "package": [],
+   "workspace_modules": [
+    "Init.Core",
+    "Init.Data.Cast",
+    "Init.Data.Int.Basic",
+    "Init.Data.Int.Order",
+    "Init.Omega.Coeffs",
+    "Init.Omega.Constraint",
+    "Init.Omega.Int",
+    "Init.Omega.LinearCombo",
+    "Init.Prelude"
+   ]
+  },
+  "SFP3.proof._proof_1_2": {
+   "package": [],
+   "workspace_modules": [
+    "Init.Core",
+    "Init.Data.Cast",
+    "Init.Data.Int.Basic",
+    "Init.Data.Int.Order",
+    "Init.Omega.Coeffs",
+    "Init.Omega.Constraint",
+    "Init.Omega.Int",
+    "Init.Omega.LinearCombo",
+    "Init.Prelude"
+   ]
+  },
+  "SFP3.proof._proof_1_3": {
+   "package": [],
+   "workspace_modules": [
+    "Init.Core",
+    "Init.Data.Cast",
+    "Init.Data.Int.Basic",
+    "Init.Data.Int.Order",
+    "Init.Omega.Coeffs",
+    "Init.Omega.Constraint",
+    "Init.Omega.Int",
+    "Init.Omega.LinearCombo",
+    "Init.Prelude"
+   ]
+  },
+  "SFP4.proof": {
+   "package": [
+    "SF.SumFree",
+    "SF.ind",
+    "SFConj.sf_bridge",
+    "SFConj.sf_bridge_double",
+    "SFConj.sf_ind_le_one",
+    "SFConj.sf_sfpat_1_2_3_4",
+    "SFP1.proof",
+    "SFP1.proof._proof_1_1",
+    "SFP1.proof._proof_1_2",
+    "SFP2.proof",
+    "SFP2.proof._proof_1_1",
+    "SFP2.proof._proof_1_2",
+    "SFP2.proof._proof_1_3",
+    "SFP2.proof._proof_1_4",
+    "SFP2.proof._proof_1_5",
+    "SFP2.proof._proof_1_6",
+    "SFP2.proof._proof_1_7",
+    "SFP3.proof",
+    "SFP3.proof._proof_1_1",
+    "SFP3.proof._proof_1_2",
+    "SFP3.proof._proof_1_3",
+    "SFP4.proof._proof_1_1"
+   ],
+   "workspace_modules": [
+    "Init.Core",
+    "Init.Data.Nat.Basic",
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Defs"
+   ]
+  },
+  "SFP4.proof._proof_1_1": {
+   "package": [
+    "SF.ind"
+   ],
+   "workspace_modules": [
+    "Init.Core",
+    "Init.Data.Cast",
+    "Init.Data.Int.Basic",
+    "Init.Data.Int.Lemmas",
+    "Init.Data.Int.Order",
+    "Init.Omega.Coeffs",
+    "Init.Omega.Constraint",
+    "Init.Omega.Int",
+    "Init.Omega.LinearCombo",
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Defs"
+   ]
+  },
+  "SFP5.proof": {
+   "package": [
+    "SF.SumFree",
+    "SF.ind",
+    "SFConj.sf_bridge",
+    "SFConj.sf_bridge_double",
+    "SFConj.sf_ind_le_one",
+    "SFConj.sf_sfpat_1_2_4_5",
+    "SFP1.proof",
+    "SFP1.proof._proof_1_1",
+    "SFP1.proof._proof_1_2",
+    "SFP2.proof",
+    "SFP2.proof._proof_1_1",
+    "SFP2.proof._proof_1_2",
+    "SFP2.proof._proof_1_3",
+    "SFP2.proof._proof_1_4",
+    "SFP2.proof._proof_1_5",
+    "SFP2.proof._proof_1_6",
+    "SFP2.proof._proof_1_7",
+    "SFP3.proof",
+    "SFP3.proof._proof_1_1",
+    "SFP3.proof._proof_1_2",
+    "SFP3.proof._proof_1_3",
+    "SFP5.proof._proof_1_1"
+   ],
+   "workspace_modules": [
+    "Init.Core",
+    "Init.Data.Nat.Basic",
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Defs"
+   ]
+  },
+  "SFP5.proof._proof_1_1": {
+   "package": [
+    "SF.ind"
+   ],
+   "workspace_modules": [
+    "Init.Core",
+    "Init.Data.Cast",
+    "Init.Data.Int.Basic",
+    "Init.Data.Int.Lemmas",
+    "Init.Data.Int.Order",
+    "Init.Omega.Coeffs",
+    "Init.Omega.Constraint",
+    "Init.Omega.Int",
+    "Init.Omega.LinearCombo",
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Defs"
+   ]
+  },
+  "SFP6.proof": {
+   "package": [
+    "SF.SumFree",
+    "SF.ind",
+    "SFConj.sf_bridge",
+    "SFConj.sf_bridge_double",
+    "SFConj.sf_ind_le_one",
+    "SFConj.sf_sfpat_1_2_5_6_7",
+    "SFP1.proof",
+    "SFP1.proof._proof_1_1",
+    "SFP1.proof._proof_1_2",
+    "SFP2.proof",
+    "SFP2.proof._proof_1_1",
+    "SFP2.proof._proof_1_2",
+    "SFP2.proof._proof_1_3",
+    "SFP2.proof._proof_1_4",
+    "SFP2.proof._proof_1_5",
+    "SFP2.proof._proof_1_6",
+    "SFP2.proof._proof_1_7",
+    "SFP3.proof",
+    "SFP3.proof._proof_1_1",
+    "SFP3.proof._proof_1_2",
+    "SFP3.proof._proof_1_3",
+    "SFP6.proof._proof_1_1"
+   ],
+   "workspace_modules": [
+    "Init.Core",
+    "Init.Data.Nat.Basic",
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Defs"
+   ]
+  },
+  "SFP6.proof._proof_1_1": {
+   "package": [
+    "SF.ind"
+   ],
+   "workspace_modules": [
+    "Init.Core",
+    "Init.Data.Cast",
+    "Init.Data.Int.Basic",
+    "Init.Data.Int.Lemmas",
+    "Init.Data.Int.Order",
+    "Init.Data.List.Basic",
+    "Init.Omega.Coeffs",
+    "Init.Omega.Constraint",
+    "Init.Omega.Int",
+    "Init.Omega.LinearCombo",
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Defs"
+   ]
+  },
+  "SFP7.proof": {
+   "package": [
+    "SF.SumFree",
+    "SF.ind",
+    "SFConj.sf_bridge",
+    "SFConj.sf_bridge_double",
+    "SFConj.sf_ind_le_one",
+    "SFConj.sf_sfpat_1_2_3_4",
+    "SFConj.sf_sfpat_1_2_3_4_6_7",
+    "SFP1.proof",
+    "SFP1.proof._proof_1_1",
+    "SFP1.proof._proof_1_2",
+    "SFP2.proof",
+    "SFP2.proof._proof_1_1",
+    "SFP2.proof._proof_1_2",
+    "SFP2.proof._proof_1_3",
+    "SFP2.proof._proof_1_4",
+    "SFP2.proof._proof_1_5",
+    "SFP2.proof._proof_1_6",
+    "SFP2.proof._proof_1_7",
+    "SFP3.proof",
+    "SFP3.proof._proof_1_1",
+    "SFP3.proof._proof_1_2",
+    "SFP3.proof._proof_1_3",
+    "SFP4.proof",
+    "SFP4.proof._proof_1_1",
+    "SFP7.proof._proof_1_1"
+   ],
+   "workspace_modules": [
+    "Init.Core",
+    "Init.Data.Nat.Basic",
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Defs"
+   ]
+  },
+  "SFP7.proof._proof_1_1": {
+   "package": [
+    "SF.ind"
+   ],
+   "workspace_modules": [
+    "Init.Core",
+    "Init.Data.Cast",
+    "Init.Data.Int.Basic",
+    "Init.Data.Int.Lemmas",
+    "Init.Data.Int.Order",
+    "Init.Omega.Coeffs",
+    "Init.Omega.Constraint",
+    "Init.Omega.Int",
+    "Init.Omega.LinearCombo",
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Defs"
+   ]
+  },
+  "SFP8.proof": {
+   "package": [
+    "SF.SumFree",
+    "SF.ind",
+    "SFConj.sf_bridge",
+    "SFConj.sf_bridge_double",
+    "SFConj.sf_ind_le_one",
+    "SFConj.sf_sfpat_1_2_5_6_8",
+    "SFP1.proof",
+    "SFP1.proof._proof_1_1",
+    "SFP1.proof._proof_1_2",
+    "SFP2.proof",
+    "SFP2.proof._proof_1_1",
+    "SFP2.proof._proof_1_2",
+    "SFP2.proof._proof_1_3",
+    "SFP2.proof._proof_1_4",
+    "SFP2.proof._proof_1_5",
+    "SFP2.proof._proof_1_6",
+    "SFP2.proof._proof_1_7",
+    "SFP3.proof",
+    "SFP3.proof._proof_1_1",
+    "SFP3.proof._proof_1_2",
+    "SFP3.proof._proof_1_3",
+    "SFP8.proof._proof_1_1"
+   ],
+   "workspace_modules": [
+    "Init.Core",
+    "Init.Data.Nat.Basic",
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Defs"
+   ]
+  },
+  "SFP8.proof._proof_1_1": {
+   "package": [
+    "SF.ind"
+   ],
+   "workspace_modules": [
+    "Init.Core",
+    "Init.Data.Cast",
+    "Init.Data.Int.Basic",
+    "Init.Data.Int.Lemmas",
+    "Init.Data.Int.Order",
+    "Init.Omega.Coeffs",
+    "Init.Omega.Constraint",
+    "Init.Omega.Int",
+    "Init.Omega.LinearCombo",
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Defs"
+   ]
+  },
+  "SFP9.proof": {
+   "package": [
+    "SF.SumFree",
+    "SF.ind",
+    "SFConj.sf_bridge",
+    "SFConj.sf_bridge_double",
+    "SFConj.sf_ind_le_one",
+    "SFConj.sf_sfpat_1_2_5_7_8",
+    "SFP1.proof",
+    "SFP1.proof._proof_1_1",
+    "SFP1.proof._proof_1_2",
+    "SFP2.proof",
+    "SFP2.proof._proof_1_1",
+    "SFP2.proof._proof_1_2",
+    "SFP2.proof._proof_1_3",
+    "SFP2.proof._proof_1_4",
+    "SFP2.proof._proof_1_5",
+    "SFP2.proof._proof_1_6",
+    "SFP2.proof._proof_1_7",
+    "SFP3.proof",
+    "SFP3.proof._proof_1_1",
+    "SFP3.proof._proof_1_2",
+    "SFP3.proof._proof_1_3",
+    "SFP9.proof._proof_1_1"
+   ],
+   "workspace_modules": [
+    "Init.Core",
+    "Init.Data.Nat.Basic",
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Defs"
+   ]
+  },
+  "SFP9.proof._proof_1_1": {
+   "package": [
+    "SF.ind"
+   ],
+   "workspace_modules": [
+    "Init.Core",
+    "Init.Data.Cast",
+    "Init.Data.Int.Basic",
+    "Init.Data.Int.Lemmas",
+    "Init.Data.Int.Order",
+    "Init.Omega.Coeffs",
+    "Init.Omega.Constraint",
+    "Init.Omega.Int",
+    "Init.Omega.LinearCombo",
+    "Init.Prelude",
+    "Mathlib.Data.Finset.Defs"
+   ]
+  }
+ },
+ "domain": "sumfree_host_v1",
+ "generation": {
+  "candidates": 214,
+  "implied_by_earlier_patterns": [
+   {
+    "ex": 3,
+    "id": "sfpat_1_2_3_4_5",
+    "lp_schur_rows": 3.2
+   },
+   {
+    "ex": 3,
+    "id": "sfpat_1_2_3_4_5_6",
+    "lp_schur_rows": 3.5
+   },
+   {
+    "ex": 3,
+    "id": "sfpat_1_2_4_5_7",
+    "lp_schur_rows": 3.333333
+   },
+   {
+    "ex": 3,
+    "id": "sfpat_1_3_4_6_7",
+    "lp_schur_rows": 3.333333
+   },
+   {
+    "ex": 3,
+    "id": "sfpat_2_3_4_5_7",
+    "lp_schur_rows": 3.333333
+   },
+   {
+    "ex": 4,
+    "id": "sfpat_1_2_3_4_5_6_7",
+    "lp_schur_rows": 4.25
+   },
+   {
+    "ex": 3,
+    "id": "sfpat_1_2_6_7_8",
+    "lp_schur_rows": 3.333333
+   },
+   {
+    "ex": 3,
+    "id": "sfpat_1_3_4_7_8",
+    "lp_schur_rows": 3.333333
+   },
+   {
+    "ex": 3,
+    "id": "sfpat_1_4_5_7_8",
+    "lp_schur_rows": 3.5
+   },
+   {
+    "ex": 3,
+    "id": "sfpat_2_3_5_6_8",
+    "lp_schur_rows": 3.333333
+   },
+   {
+    "ex": 3,
+    "id": "sfpat_3_4_5_7_8",
+    "lp_schur_rows": 3.5
+   },
+   {
+    "ex": 4,
+    "id": "sfpat_1_2_3_4_5_7_8",
+    "lp_schur_rows": 4.333333
+   },
+   {
+    "ex": 4,
+    "id": "sfpat_1_2_3_5_6_7_8",
+    "lp_schur_rows": 4.333333
+   },
+   {
+    "ex": 4,
+    "id": "sfpat_1_2_4_5_6_7_8",
+    "lp_schur_rows": 4.285714
+   },
+   {
+    "ex": 4,
+    "id": "sfpat_1_3_4_5_6_7_8",
+    "lp_schur_rows": 4.5
+   },
+   {
+    "ex": 4,
+    "id": "sfpat_1_2_3_4_5_6_7_8",
+    "lp_schur_rows": 4.666667
+   }
+  ],
+  "implied_by_schur_rows": 100,
+  "kept": 17,
+  "triple_covered": 133
+ },
+ "modules": [
+  {
+   "name": "SFDefs",
+   "source": "import Mathlib.Data.Finset.Powerset\n\nnamespace SF\n\n/-- Domain contract (sumfree_host_v1, generated:pattern-inequalities-sumfree-v1): no a + b (a = b allowed) of S lies in S. -/\ndef SumFree (S : Finset ℕ) : Prop := ∀ a ∈ S, ∀ b ∈ S, a + b ∉ S\n\ninstance (S : Finset ℕ) : Decidable (SumFree S) := by\n  unfold SumFree; infer_instance\n\n/-- 0/1 membership indicator. -/\ndef ind (S : Finset ℕ) (x : ℕ) : ℕ := if x ∈ S then 1 else 0\n\nend SF\n",
+   "source_sha256": "9dd30c96bc3ee09be0b92e62f207c241c76de09d53352d9e0a521c2811cc153b",
+   "trusted": true
+  },
+  {
+   "name": "SFConj",
+   "source": "import SFDefs\nset_option linter.unusedVariables false\n\nnamespace SFConj\n/-- Generated conjecture `sf_ind_le_one` (generated:pattern-inequalities-sumfree-v1). -/\ndef sf_ind_le_one : Prop := ∀ (S : Finset ℕ) (x : ℕ), SF.ind S x ≤ 1\n/-- Generated conjecture `sf_bridge` (generated:pattern-inequalities-sumfree-v1). -/\ndef sf_bridge : Prop := ∀ (S : Finset ℕ) (hS : SF.SumFree S) (a : ℕ) (b : ℕ) (c : ℕ) (r0 : a + b = c), SF.ind S a + SF.ind S b + SF.ind S c ≤ 2\n/-- Generated conjecture `sf_bridge_double` (generated:pattern-inequalities-sumfree-v1). -/\ndef sf_bridge_double : Prop := ∀ (S : Finset ℕ) (hS : SF.SumFree S) (a : ℕ) (c : ℕ) (r0 : a + a = c), SF.ind S a + SF.ind S c ≤ 1\n/-- Generated conjecture `sf_sfpat_1_2_3_4` (generated:pattern-inequalities-sumfree-v1). -/\ndef sf_sfpat_1_2_3_4 : Prop := ∀ (S : Finset ℕ) (hS : SF.SumFree S) (v0 : ℕ) (v1 : ℕ) (v2 : ℕ) (v3 : ℕ) (r0 : v0 + v0 = v1) (r1 : v0 + v1 = v2) (r2 : v0 + v2 = v3) (r3 : v1 + v1 = v3), SF.ind S v0 + SF.ind S v1 + SF.ind S v2 + SF.ind S v3 ≤ 2\n/-- Generated conjecture `sf_sfpat_1_2_4_5` (generated:pattern-inequalities-sumfree-v1). -/\ndef sf_sfpat_1_2_4_5 : Prop := ∀ (S : Finset ℕ) (hS : SF.SumFree S) (v0 : ℕ) (v1 : ℕ) (v2 : ℕ) (v3 : ℕ) (r0 : v0 + v0 = v1) (r1 : v0 + v2 = v3) (r2 : v1 + v1 = v2), SF.ind S v0 + SF.ind S v1 + SF.ind S v2 + SF.ind S v3 ≤ 2\n/-- Generated conjecture `sf_sfpat_1_2_5_6_7` (generated:pattern-inequalities-sumfree-v1). -/\ndef sf_sfpat_1_2_5_6_7 : Prop := ∀ (S : Finset ℕ) (hS : SF.SumFree S) (v0 : ℕ) (v1 : ℕ) (v2 : ℕ) (v3 : ℕ) (v4 : ℕ) (r0 : v0 + v0 = v1) (r1 : v0 + v2 = v3) (r2 : v0 + v3 = v4) (r3 : v1 + v2 = v4), SF.ind S v0 + SF.ind S v1 + SF.ind S v2 + SF.ind S v3 + SF.ind S v4 ≤ 3\n/-- Generated conjecture `sf_sfpat_1_2_3_4_6_7` (generated:pattern-inequalities-sumfree-v1). -/\ndef sf_sfpat_1_2_3_4_6_7 : Prop := ∀ (S : Finset ℕ) (hS : SF.SumFree S) (v0 : ℕ) (v1 : ℕ) (v2 : ℕ) (v3 : ℕ) (v4 : ℕ) (v5 : ℕ) (r0 : v0 + v0 = v1) (r1 : v0 + v1 = v2) (r2 : v0 + v2 = v3) (r3 : v0 + v4 = v5) (r4 : v1 + v1 = v3) (r5 : v1 + v3 = v4) (r6 : v2 + v2 = v4) (r7 : v2 + v3 = v5), SF.ind S v0 + SF.ind S v1 + SF.ind S v2 + SF.ind S v3 + SF.ind S v4 + SF.ind S v5 ≤ 3\n/-- Generated conjecture `sf_sfpat_1_2_5_6_8` (generated:pattern-inequalities-sumfree-v1). -/\ndef sf_sfpat_1_2_5_6_8 : Prop := ∀ (S : Finset ℕ) (hS : SF.SumFree S) (v0 : ℕ) (v1 : ℕ) (v2 : ℕ) (v3 : ℕ) (v4 : ℕ) (r0 : v0 + v0 = v1) (r1 : v0 + v2 = v3) (r2 : v1 + v3 = v4), SF.ind S v0 + SF.ind S v1 + SF.ind S v2 + SF.ind S v3 + SF.ind S v4 ≤ 3\n/-- Generated conjecture `sf_sfpat_1_2_5_7_8` (generated:pattern-inequalities-sumfree-v1). -/\ndef sf_sfpat_1_2_5_7_8 : Prop := ∀ (S : Finset ℕ) (hS : SF.SumFree S) (v0 : ℕ) (v1 : ℕ) (v2 : ℕ) (v3 : ℕ) (v4 : ℕ) (r0 : v0 + v0 = v1) (r1 : v0 + v3 = v4) (r2 : v1 + v2 = v3), SF.ind S v0 + SF.ind S v1 + SF.ind S v2 + SF.ind S v3 + SF.ind S v4 ≤ 3\n/-- Generated conjecture `sf_sfpat_1_3_4_5_8` (generated:pattern-inequalities-sumfree-v1). -/\ndef sf_sfpat_1_3_4_5_8 : Prop := ∀ (S : Finset ℕ) (hS : SF.SumFree S) (v0 : ℕ) (v1 : ℕ) (v2 : ℕ) (v3 : ℕ) (v4 : ℕ) (r0 : v0 + v1 = v2) (r1 : v0 + v2 = v3) (r2 : v1 + v3 = v4) (r3 : v2 + v2 = v4), SF.ind S v0 + SF.ind S v1 + SF.ind S v2 + SF.ind S v3 + SF.ind S v4 ≤ 3\n/-- Generated conjecture `sf_sfpat_1_3_5_6_8` (generated:pattern-inequalities-sumfree-v1). -/\ndef sf_sfpat_1_3_5_6_8 : Prop := ∀ (S : Finset ℕ) (hS : SF.SumFree S) (v0 : ℕ) (v1 : ℕ) (v2 : ℕ) (v3 : ℕ) (v4 : ℕ) (r0 : v0 + v2 = v3) (r1 : v1 + v1 = v3) (r2 : v1 + v2 = v4), SF.ind S v0 + SF.ind S v1 + SF.ind S v2 + SF.ind S v3 + SF.ind S v4 ≤ 3\n/-- Generated conjecture `sf_sfpat_1_2_3_4_5_8` (generated:pattern-inequalities-sumfree-v1). -/\ndef sf_sfpat_1_2_3_4_5_8 : Prop := ∀ (S : Finset ℕ) (hS : SF.SumFree S) (v0 : ℕ) (v1 : ℕ) (v2 : ℕ) (v3 : ℕ) (v4 : ℕ) (v5 : ℕ) (r0 : v0 + v0 = v1) (r1 : v0 + v1 = v2) (r2 : v0 + v2 = v3) (r3 : v0 + v3 = v4) (r4 : v1 + v1 = v3) (r5 : v1 + v2 = v4) (r6 : v2 + v4 = v5) (r7 : v3 + v3 = v5), SF.ind S v0 + SF.ind S v1 + SF.ind S v2 + SF.ind S v3 + SF.ind S v4 + SF.ind S v5 ≤ 3\n/-- Generated conjecture `sf_sfpat_1_2_3_5_6_8` (generated:pattern-inequalities-sumfree-v1). -/\ndef sf_sfpat_1_2_3_5_6_8 : Prop := ∀ (S : Finset ℕ) (hS : SF.SumFree S) (v0 : ℕ) (v1 : ℕ) (v2 : ℕ) (v3 : ℕ) (v4 : ℕ) (v5 : ℕ) (r0 : v0 + v0 = v1) (r1 : v0 + v1 = v2) (r2 : v0 + v3 = v4) (r3 : v1 + v2 = v3) (r4 : v1 + v4 = v5) (r5 : v2 + v2 = v4) (r6 : v2 + v3 = v5), SF.ind S v0 + SF.ind S v1 + SF.ind S v2 + SF.ind S v3 + SF.ind S v4 + SF.ind S v5 ≤ 3\n/-- Generated conjecture `sf_sfpat_1_2_4_5_6_8` (generated:pattern-inequalities-sumfree-v1). -/\ndef sf_sfpat_1_2_4_5_6_8 : Prop := ∀ (S : Finset ℕ) (hS : SF.SumFree S) (v0 : ℕ) (v1 : ℕ) (v2 : ℕ) (v3 : ℕ) (v4 : ℕ) (v5 : ℕ) (r0 : v0 + v0 = v1) (r1 : v0 + v2 = v3) (r2 : v0 + v3 = v4) (r3 : v1 + v1 = v2) (r4 : v1 + v2 = v4) (r5 : v1 + v4 = v5) (r6 : v2 + v2 = v5), SF.ind S v0 + SF.ind S v1 + SF.ind S v2 + SF.ind S v3 + SF.ind S v4 + SF.ind S v5 ≤ 3\n/-- Generated conjecture `sf_sfpat_1_2_4_5_7_8` (generated:pattern-inequalities-sumfree-v1). -/\ndef sf_sfpat_1_2_4_5_7_8 : Prop := ∀ (S : Finset ℕ) (hS : SF.SumFree S) (v0 : ℕ) (v1 : ℕ) (v2 : ℕ) (v3 : ℕ) (v4 : ℕ) (v5 : ℕ) (r0 : v0 + v0 = v1) (r1 : v0 + v2 = v3) (r2 : v0 + v4 = v5) (r3 : v1 + v1 = v2) (r4 : v1 + v3 = v4) (r5 : v2 + v2 = v5), SF.ind S v0 + SF.ind S v1 + SF.ind S v2 + SF.ind S v3 + SF.ind S v4 + SF.ind S v5 ≤ 3\n/-- Generated conjecture `sf_sfpat_1_2_4_6_7_8` (generated:pattern-inequalities-sumfree-v1). -/\ndef sf_sfpat_1_2_4_6_7_8 : Prop := ∀ (S : Finset ℕ) (hS : SF.SumFree S) (v0 : ℕ) (v1 : ℕ) (v2 : ℕ) (v3 : ℕ) (v4 : ℕ) (v5 : ℕ) (r0 : v0 + v0 = v1) (r1 : v0 + v3 = v4) (r2 : v0 + v4 = v5) (r3 : v1 + v1 = v2) (r4 : v1 + v2 = v3) (r5 : v1 + v3 = v5) (r6 : v2 + v2 = v5), SF.ind S v0 + SF.ind S v1 + SF.ind S v2 + SF.ind S v3 + SF.ind S v4 + SF.ind S v5 ≤ 3\n/-- Generated conjecture `sf_sfpat_1_3_4_5_6_8` (generated:pattern-inequalities-sumfree-v1). -/\ndef sf_sfpat_1_3_4_5_6_8 : Prop := ∀ (S : Finset ℕ) (hS : SF.SumFree S) (v0 : ℕ) (v1 : ℕ) (v2 : ℕ) (v3 : ℕ) (v4 : ℕ) (v5 : ℕ) (r0 : v0 + v1 = v2) (r1 : v0 + v2 = v3) (r2 : v0 + v3 = v4) (r3 : v1 + v1 = v4) (r4 : v1 + v3 = v5) (r5 : v2 + v2 = v5), SF.ind S v0 + SF.ind S v1 + SF.ind S v2 + SF.ind S v3 + SF.ind S v4 + SF.ind S v5 ≤ 3\n/-- Generated conjecture `sf_sfpat_1_3_4_6_7_8` (generated:pattern-inequalities-sumfree-v1). -/\ndef sf_sfpat_1_3_4_6_7_8 : Prop := ∀ (S : Finset ℕ) (hS : SF.SumFree S) (v0 : ℕ) (v1 : ℕ) (v2 : ℕ) (v3 : ℕ) (v4 : ℕ) (v5 : ℕ) (r0 : v0 + v1 = v2) (r1 : v0 + v3 = v4) (r2 : v0 + v4 = v5) (r3 : v1 + v1 = v3) (r4 : v1 + v2 = v4) (r5 : v2 + v2 = v5), SF.ind S v0 + SF.ind S v1 + SF.ind S v2 + SF.ind S v3 + SF.ind S v4 + SF.ind S v5 ≤ 3\n/-- Generated conjecture `sf_sfpat_2_3_4_5_6_8` (generated:pattern-inequalities-sumfree-v1). -/\ndef sf_sfpat_2_3_4_5_6_8 : Prop := ∀ (S : Finset ℕ) (hS : SF.SumFree S) (v0 : ℕ) (v1 : ℕ) (v2 : ℕ) (v3 : ℕ) (v4 : ℕ) (v5 : ℕ) (r0 : v0 + v0 = v2) (r1 : v0 + v1 = v3) (r2 : v0 + v2 = v4) (r3 : v0 + v4 = v5) (r4 : v1 + v1 = v4) (r5 : v1 + v3 = v5) (r6 : v2 + v2 = v5), SF.ind S v0 + SF.ind S v1 + SF.ind S v2 + SF.ind S v3 + SF.ind S v4 + SF.ind S v5 ≤ 3\n/-- Generated conjecture `sf_sfpat_1_2_3_4_5_6_8` (generated:pattern-inequalities-sumfree-v1). -/\ndef sf_sfpat_1_2_3_4_5_6_8 : Prop := ∀ (S : Finset ℕ) (hS : SF.SumFree S) (v0 : ℕ) (v1 : ℕ) (v2 : ℕ) (v3 : ℕ) (v4 : ℕ) (v5 : ℕ) (v6 : ℕ) (r0 : v0 + v0 = v1) (r1 : v0 + v1 = v2) (r2 : v0 + v2 = v3) (r3 : v0 + v3 = v4) (r4 : v0 + v4 = v5) (r5 : v1 + v1 = v3) (r6 : v1 + v2 = v4) (r7 : v1 + v3 = v5) (r8 : v1 + v5 = v6) (r9 : v2 + v2 = v5) (r10 : v2 + v4 = v6) (r11 : v3 + v3 = v6), SF.ind S v0 + SF.ind S v1 + SF.ind S v2 + SF.ind S v3 + SF.ind S v4 + SF.ind S v5 + SF.ind S v6 ≤ 3\nend SFConj\n",
+   "source_sha256": "8429edeb9d6d417c52a692499e85808dcb4d53928ae5cae2bfef4ca2047e64dc",
+   "trusted": true
+  },
+  {
+   "name": "SFP1",
+   "source": "import SFDefs\nimport SFConj\nnamespace SFP1\ntheorem proof : SFConj.sf_ind_le_one := by\n  unfold SFConj.sf_ind_le_one\n  intro S x\n  unfold SF.ind\n  split <;> omega\nend SFP1\n",
+   "source_sha256": "c5207ce0fbd47bc55baa9680e61ec22b93adcb780c6249ac33ed12a87efb7dd3",
+   "trusted": false
+  },
+  {
+   "name": "SFP2",
+   "source": "import SFDefs\nimport SFConj\nimport SFP1\nnamespace SFP2\ntheorem proof : SFConj.sf_bridge := by\n  unfold SFConj.sf_bridge\n  intro S hS a b c r0\n  unfold SF.ind\n  split_ifs with h1 h2 h3 <;> try omega\n  exfalso\n  exact hS a h1 b h2 (by subst r0; exact h3)\nend SFP2\n",
+   "source_sha256": "808c1e6e233e793b8b5f3579bf13d3d9f066e3dc6bc4579e92940b3417c1be7a",
+   "trusted": false
+  },
+  {
+   "name": "SFP3",
+   "source": "import SFDefs\nimport SFConj\nimport SFP1\nimport SFP2\nnamespace SFP3\ntheorem proof : SFConj.sf_bridge_double := by\n  unfold SFConj.sf_bridge_double\n  intro S hS a c r0\n  unfold SF.ind\n  split_ifs with h1 h2 <;> try omega\n  exfalso\n  exact hS a h1 a h1 (by subst r0; exact h2)\nend SFP3\n",
+   "source_sha256": "ec304ea816d0cd58493b539b9c9b2c7996486e2f35975e538c2a3eb72c931cb0",
+   "trusted": false
+  },
+  {
+   "name": "SFP4",
+   "source": "import SFDefs\nimport SFConj\nimport SFP1\nimport SFP2\nimport SFP3\nnamespace SFP4\ntheorem proof : SFConj.sf_sfpat_1_2_3_4 := by\n  unfold SFConj.sf_sfpat_1_2_3_4\n  intro S hS v0 v1 v2 v3 r0 r1 r2 r3\n  have k0 := SFP3.proof S hS v0 v1 (by omega)\n  have k1 := SFP2.proof S hS v0 v2 v3 (by omega)\n  have k2 := SFP3.proof S hS v1 v3 (by omega)\n  have e0 := SFP1.proof S v2\n  have key := Nat.add_le_add k0 (Nat.add_le_add k1 (Nat.add_le_add k2 (e0)))\n  clear k0 k1 k2 e0\n  omega\nend SFP4\n",
+   "source_sha256": "fa4cdcb497650f39215e565be0e92935235efe6fa7ca170d29cd1a2cdbe1e32f",
+   "trusted": false
+  },
+  {
+   "name": "SFP5",
+   "source": "import SFDefs\nimport SFConj\nimport SFP1\nimport SFP2\nimport SFP3\nimport SFP4\nnamespace SFP5\ntheorem proof : SFConj.sf_sfpat_1_2_4_5 := by\n  unfold SFConj.sf_sfpat_1_2_4_5\n  intro S hS v0 v1 v2 v3 r0 r1 r2\n  have k0 := SFP3.proof S hS v0 v1 (by omega)\n  have k1 := SFP2.proof S hS v0 v2 v3 (by omega)\n  have k2 := SFP3.proof S hS v1 v2 (by omega)\n  have e0 := SFP1.proof S v3\n  have key := Nat.add_le_add k0 (Nat.add_le_add k1 (Nat.add_le_add k2 (e0)))\n  clear k0 k1 k2 e0\n  omega\nend SFP5\n",
+   "source_sha256": "67637bf5d0f66ef40da15bb35915387a9870a0e46d4d31e3e17ce6efb5d5cef1",
+   "trusted": false
+  },
+  {
+   "name": "SFP6",
+   "source": "import SFDefs\nimport SFConj\nimport SFP1\nimport SFP2\nimport SFP3\nimport SFP4\nimport SFP5\nnamespace SFP6\ntheorem proof : SFConj.sf_sfpat_1_2_5_6_7 := by\n  unfold SFConj.sf_sfpat_1_2_5_6_7\n  intro S hS v0 v1 v2 v3 v4 r0 r1 r2 r3\n  have k0 := SFP3.proof S hS v0 v1 (by omega)\n  have k1 := SFP2.proof S hS v0 v2 v3 (by omega)\n  have k2 := SFP2.proof S hS v0 v3 v4 (by omega)\n  have k3 := Nat.mul_le_mul (Nat.le_refl 2) (SFP2.proof S hS v1 v2 v4 (by omega))\n  have e0 := SFP1.proof S v3\n  have key := Nat.add_le_add k0 (Nat.add_le_add k1 (Nat.add_le_add k2 (Nat.add_le_add k3 (e0))))\n  clear k0 k1 k2 k3 e0\n  omega\nend SFP6\n",
+   "source_sha256": "3b5f2c5c5a6c939ffac1e4b32554886203ee6e68ea833024ba2689885a616b87",
+   "trusted": false
+  },
+  {
+   "name": "SFP7",
+   "source": "import SFDefs\nimport SFConj\nimport SFP1\nimport SFP2\nimport SFP3\nimport SFP4\nimport SFP5\nimport SFP6\nnamespace SFP7\ntheorem proof : SFConj.sf_sfpat_1_2_3_4_6_7 := by\n  unfold SFConj.sf_sfpat_1_2_3_4_6_7\n  intro S hS v0 v1 v2 v3 v4 v5 r0 r1 r2 r3 r4 r5 r6 r7\n  have k0 := SFP2.proof S hS v0 v4 v5 (by omega)\n  have k1 := SFP3.proof S hS v1 v3 (by omega)\n  have k2 := SFP3.proof S hS v2 v4 (by omega)\n  have k3 := SFP4.proof S hS v0 v1 v2 v3 (by omega) (by omega) (by omega) (by omega)\n  have e0 := SFP1.proof S v5\n  have key := Nat.add_le_add k0 (Nat.add_le_add k1 (Nat.add_le_add k2 (Nat.add_le_add k3 (e0))))\n  clear k0 k1 k2 k3 e0\n  omega\nend SFP7\n",
+   "source_sha256": "66baf22010f4a737079ea5208f818047528a36f5d273b3f2ff6e1470408c09e2",
+   "trusted": false
+  },
+  {
+   "name": "SFP8",
+   "source": "import SFDefs\nimport SFConj\nimport SFP1\nimport SFP2\nimport SFP3\nimport SFP4\nimport SFP5\nimport SFP6\nimport SFP7\nnamespace SFP8\ntheorem proof : SFConj.sf_sfpat_1_2_5_6_8 := by\n  unfold SFConj.sf_sfpat_1_2_5_6_8\n  intro S hS v0 v1 v2 v3 v4 r0 r1 r2\n  have k0 := SFP3.proof S hS v0 v1 (by omega)\n  have k1 := SFP2.proof S hS v0 v2 v3 (by omega)\n  have k2 := SFP2.proof S hS v1 v3 v4 (by omega)\n  have e0 := SFP1.proof S v2\n  have e1 := SFP1.proof S v4\n  have key := Nat.add_le_add k0 (Nat.add_le_add k1 (Nat.add_le_add k2 (Nat.add_le_add e0 (e1))))\n  clear k0 k1 k2 e0 e1\n  omega\nend SFP8\n",
+   "source_sha256": "1e5b48c71bcdbc2581f21b4ad9c9c59e25a30d81f6627ea72e98fd1d3176b755",
+   "trusted": false
+  },
+  {
+   "name": "SFP9",
+   "source": "import SFDefs\nimport SFConj\nimport SFP1\nimport SFP2\nimport SFP3\nimport SFP4\nimport SFP5\nimport SFP6\nimport SFP7\nimport SFP8\nnamespace SFP9\ntheorem proof : SFConj.sf_sfpat_1_2_5_7_8 := by\n  unfold SFConj.sf_sfpat_1_2_5_7_8\n  intro S hS v0 v1 v2 v3 v4 r0 r1 r2\n  have k0 := SFP3.proof S hS v0 v1 (by omega)\n  have k1 := SFP2.proof S hS v0 v3 v4 (by omega)\n  have k2 := SFP2.proof S hS v1 v2 v3 (by omega)\n  have e0 := SFP1.proof S v2\n  have e1 := SFP1.proof S v4\n  have key := Nat.add_le_add k0 (Nat.add_le_add k1 (Nat.add_le_add k2 (Nat.add_le_add e0 (e1))))\n  clear k0 k1 k2 e0 e1\n  omega\nend SFP9\n",
+   "source_sha256": "203d83bd32932427653db115f40a7baab09b6d339577e1de541205103a1fd270",
+   "trusted": false
+  },
+  {
+   "name": "SFP10",
+   "source": "import SFDefs\nimport SFConj\nimport SFP1\nimport SFP2\nimport SFP3\nimport SFP4\nimport SFP5\nimport SFP6\nimport SFP7\nimport SFP8\nimport SFP9\nnamespace SFP10\ntheorem proof : SFConj.sf_sfpat_1_3_4_5_8 := by\n  unfold SFConj.sf_sfpat_1_3_4_5_8\n  intro S hS v0 v1 v2 v3 v4 r0 r1 r2 r3\n  have k0 := SFP2.proof S hS v0 v1 v2 (by omega)\n  have k1 := SFP2.proof S hS v0 v2 v3 (by omega)\n  have k2 := Nat.mul_le_mul (Nat.le_refl 2) (SFP2.proof S hS v1 v3 v4 (by omega))\n  have k3 := SFP3.proof S hS v2 v4 (by omega)\n  have e0 := SFP1.proof S v0\n  have key := Nat.add_le_add k0 (Nat.add_le_add k1 (Nat.add_le_add k2 (Nat.add_le_add k3 (e0))))\n  clear k0 k1 k2 k3 e0\n  omega\nend SFP10\n",
+   "source_sha256": "75988f8d01168afb79949fccb971a78e8c61eb9106ba84ba8d4b3ef53efcb294",
+   "trusted": false
+  },
+  {
+   "name": "SFP11",
+   "source": "import SFDefs\nimport SFConj\nimport SFP1\nimport SFP2\nimport SFP3\nimport SFP4\nimport SFP5\nimport SFP6\nimport SFP7\nimport SFP8\nimport SFP9\nimport SFP10\nnamespace SFP11\ntheorem proof : SFConj.sf_sfpat_1_3_5_6_8 := by\n  unfold SFConj.sf_sfpat_1_3_5_6_8\n  intro S hS v0 v1 v2 v3 v4 r0 r1 r2\n  have k0 := SFP2.proof S hS v0 v2 v3 (by omega)\n  have k1 := SFP3.proof S hS v1 v3 (by omega)\n  have k2 := SFP2.proof S hS v1 v2 v4 (by omega)\n  have e0 := SFP1.proof S v0\n  have e1 := SFP1.proof S v4\n  have key := Nat.add_le_add k0 (Nat.add_le_add k1 (Nat.add_le_add k2 (Nat.add_le_add e0 (e1))))\n  clear k0 k1 k2 e0 e1\n  omega\nend SFP11\n",
+   "source_sha256": "ea257b2f3121ee2e01ffa9761e165f72c555fc96c5762980c4f37d76ecf2831f",
+   "trusted": false
+  },
+  {
+   "name": "SFP12",
+   "source": "import SFDefs\nimport SFConj\nimport SFP1\nimport SFP2\nimport SFP3\nimport SFP4\nimport SFP5\nimport SFP6\nimport SFP7\nimport SFP8\nimport SFP9\nimport SFP10\nimport SFP11\nnamespace SFP12\ntheorem proof : SFConj.sf_sfpat_1_2_3_4_5_8 := by\n  unfold SFConj.sf_sfpat_1_2_3_4_5_8\n  intro S hS v0 v1 v2 v3 v4 v5 r0 r1 r2 r3 r4 r5 r6 r7\n  have k0 := SFP3.proof S hS v0 v1 (by omega)\n  have k1 := Nat.mul_le_mul (Nat.le_refl 2) (SFP2.proof S hS v2 v4 v5 (by omega))\n  have k2 := SFP3.proof S hS v3 v5 (by omega)\n  have k3 := SFP4.proof S hS v0 v1 v2 v3 (by omega) (by omega) (by omega) (by omega)\n  have k4 := SFP5.proof S hS v0 v1 v3 v4 (by omega) (by omega) (by omega)\n  have key := Nat.add_le_add k0 (Nat.add_le_add k1 (Nat.add_le_add k2 (Nat.add_le_add k3 (k4))))\n  clear k0 k1 k2 k3 k4\n  omega\nend SFP12\n",
+   "source_sha256": "1b97ccbf3a5e5705e6199fc636218f95d675aff2a0b55c3ca7c5e935257fe5e8",
+   "trusted": false
+  },
+  {
+   "name": "SFP13",
+   "source": "import SFDefs\nimport SFConj\nimport SFP1\nimport SFP2\nimport SFP3\nimport SFP4\nimport SFP5\nimport SFP6\nimport SFP7\nimport SFP8\nimport SFP9\nimport SFP10\nimport SFP11\nimport SFP12\nnamespace SFP13\ntheorem proof : SFConj.sf_sfpat_1_2_3_5_6_8 := by\n  unfold SFConj.sf_sfpat_1_2_3_5_6_8\n  intro S hS v0 v1 v2 v3 v4 v5 r0 r1 r2 r3 r4 r5 r6\n  have k0 := SFP3.proof S hS v0 v1 (by omega)\n  have k1 := SFP3.proof S hS v2 v4 (by omega)\n  have k2 := SFP2.proof S hS v2 v3 v5 (by omega)\n  have k3 := SFP8.proof S hS v0 v1 v3 v4 v5 (by omega) (by omega) (by omega)\n  have key := Nat.add_le_add k0 (Nat.add_le_add k1 (Nat.add_le_add k2 (k3)))\n  clear k0 k1 k2 k3\n  omega\nend SFP13\n",
+   "source_sha256": "b19bbafeacb3a110cc8e54f9941e0e765ee542980ee0875fbdda9964b70442ec",
+   "trusted": false
+  },
+  {
+   "name": "SFP14",
+   "source": "import SFDefs\nimport SFConj\nimport SFP1\nimport SFP2\nimport SFP3\nimport SFP4\nimport SFP5\nimport SFP6\nimport SFP7\nimport SFP8\nimport SFP9\nimport SFP10\nimport SFP11\nimport SFP12\nimport SFP13\nnamespace SFP14\ntheorem proof : SFConj.sf_sfpat_1_2_4_5_6_8 := by\n  unfold SFConj.sf_sfpat_1_2_4_5_6_8\n  intro S hS v0 v1 v2 v3 v4 v5 r0 r1 r2 r3 r4 r5 r6\n  have k0 := SFP2.proof S hS v0 v3 v4 (by omega)\n  have k1 := SFP3.proof S hS v2 v5 (by omega)\n  have k2 := SFP4.proof S hS v1 v2 v4 v5 (by omega) (by omega) (by omega) (by omega)\n  have k3 := SFP5.proof S hS v0 v1 v2 v3 (by omega) (by omega) (by omega)\n  have k4 := SFP8.proof S hS v0 v1 v3 v4 v5 (by omega) (by omega) (by omega)\n  have key := Nat.add_le_add k0 (Nat.add_le_add k1 (Nat.add_le_add k2 (Nat.add_le_add k3 (k4))))\n  clear k0 k1 k2 k3 k4\n  omega\nend SFP14\n",
+   "source_sha256": "89f0b0982e2e15f9ac97d015488734c9364b128b5475671cd02e868b170ad470",
+   "trusted": false
+  },
+  {
+   "name": "SFP15",
+   "source": "import SFDefs\nimport SFConj\nimport SFP1\nimport SFP2\nimport SFP3\nimport SFP4\nimport SFP5\nimport SFP6\nimport SFP7\nimport SFP8\nimport SFP9\nimport SFP10\nimport SFP11\nimport SFP12\nimport SFP13\nimport SFP14\nnamespace SFP15\ntheorem proof : SFConj.sf_sfpat_1_2_4_5_7_8 := by\n  unfold SFConj.sf_sfpat_1_2_4_5_7_8\n  intro S hS v0 v1 v2 v3 v4 v5 r0 r1 r2 r3 r4 r5\n  have k0 := SFP3.proof S hS v2 v5 (by omega)\n  have k1 := SFP5.proof S hS v0 v1 v2 v3 (by omega) (by omega) (by omega)\n  have k2 := SFP9.proof S hS v0 v1 v3 v4 v5 (by omega) (by omega) (by omega)\n  have e0 := SFP1.proof S v4\n  have key := Nat.add_le_add k0 (Nat.add_le_add k1 (Nat.add_le_add k2 (e0)))\n  clear k0 k1 k2 e0\n  omega\nend SFP15\n",
+   "source_sha256": "f121b5b5ce31a333bbde541ea58f68678bf46f6a7a9df65ebc4cdb071d2abaf9",
+   "trusted": false
+  },
+  {
+   "name": "SFP16",
+   "source": "import SFDefs\nimport SFConj\nimport SFP1\nimport SFP2\nimport SFP3\nimport SFP4\nimport SFP5\nimport SFP6\nimport SFP7\nimport SFP8\nimport SFP9\nimport SFP10\nimport SFP11\nimport SFP12\nimport SFP13\nimport SFP14\nimport SFP15\nnamespace SFP16\ntheorem proof : SFConj.sf_sfpat_1_2_4_6_7_8 := by\n  unfold SFConj.sf_sfpat_1_2_4_6_7_8\n  intro S hS v0 v1 v2 v3 v4 v5 r0 r1 r2 r3 r4 r5 r6\n  have k0 := SFP2.proof S hS v0 v4 v5 (by omega)\n  have k1 := SFP4.proof S hS v1 v2 v3 v5 (by omega) (by omega) (by omega) (by omega)\n  have k2 := SFP9.proof S hS v0 v1 v2 v3 v4 (by omega) (by omega) (by omega)\n  have key := Nat.add_le_add k0 (Nat.add_le_add k1 (k2))\n  clear k0 k1 k2\n  omega\nend SFP16\n",
+   "source_sha256": "508599827d68ff4673d01eb87319ca238713e37647930bcd648237476df0cc18",
+   "trusted": false
+  },
+  {
+   "name": "SFP17",
+   "source": "import SFDefs\nimport SFConj\nimport SFP1\nimport SFP2\nimport SFP3\nimport SFP4\nimport SFP5\nimport SFP6\nimport SFP7\nimport SFP8\nimport SFP9\nimport SFP10\nimport SFP11\nimport SFP12\nimport SFP13\nimport SFP14\nimport SFP15\nimport SFP16\nnamespace SFP17\ntheorem proof : SFConj.sf_sfpat_1_3_4_5_6_8 := by\n  unfold SFConj.sf_sfpat_1_3_4_5_6_8\n  intro S hS v0 v1 v2 v3 v4 v5 r0 r1 r2 r3 r4 r5\n  have k0 := SFP2.proof S hS v0 v3 v4 (by omega)\n  have k1 := SFP3.proof S hS v1 v4 (by omega)\n  have k2 := SFP3.proof S hS v2 v5 (by omega)\n  have k3 := SFP10.proof S hS v0 v1 v2 v3 v5 (by omega) (by omega) (by omega) (by omega)\n  have key := Nat.add_le_add k0 (Nat.add_le_add k1 (Nat.add_le_add k2 (k3)))\n  clear k0 k1 k2 k3\n  omega\nend SFP17\n",
+   "source_sha256": "a9a1436a5cf7df700a5b52d8d1c6b9664cc6122d685adeb4614433377cc6b304",
+   "trusted": false
+  },
+  {
+   "name": "SFP18",
+   "source": "import SFDefs\nimport SFConj\nimport SFP1\nimport SFP2\nimport SFP3\nimport SFP4\nimport SFP5\nimport SFP6\nimport SFP7\nimport SFP8\nimport SFP9\nimport SFP10\nimport SFP11\nimport SFP12\nimport SFP13\nimport SFP14\nimport SFP15\nimport SFP16\nimport SFP17\nnamespace SFP18\ntheorem proof : SFConj.sf_sfpat_1_3_4_6_7_8 := by\n  unfold SFConj.sf_sfpat_1_3_4_6_7_8\n  intro S hS v0 v1 v2 v3 v4 v5 r0 r1 r2 r3 r4 r5\n  have k0 := SFP2.proof S hS v0 v3 v4 (by omega)\n  have k1 := SFP3.proof S hS v1 v3 (by omega)\n  have k2 := SFP3.proof S hS v2 v5 (by omega)\n  have k3 := SFP10.proof S hS v1 v0 v2 v4 v5 (by omega) (by omega) (by omega) (by omega)\n  have key := Nat.add_le_add k0 (Nat.add_le_add k1 (Nat.add_le_add k2 (k3)))\n  clear k0 k1 k2 k3\n  omega\nend SFP18\n",
+   "source_sha256": "b658ed519b5f862f7962939c0718aa54df257ffbc4688e7a20e4b9ad050fb09d",
+   "trusted": false
+  },
+  {
+   "name": "SFP19",
+   "source": "import SFDefs\nimport SFConj\nimport SFP1\nimport SFP2\nimport SFP3\nimport SFP4\nimport SFP5\nimport SFP6\nimport SFP7\nimport SFP8\nimport SFP9\nimport SFP10\nimport SFP11\nimport SFP12\nimport SFP13\nimport SFP14\nimport SFP15\nimport SFP16\nimport SFP17\nimport SFP18\nnamespace SFP19\ntheorem proof : SFConj.sf_sfpat_2_3_4_5_6_8 := by\n  unfold SFConj.sf_sfpat_2_3_4_5_6_8\n  intro S hS v0 v1 v2 v3 v4 v5 r0 r1 r2 r3 r4 r5 r6\n  have k0 := SFP3.proof S hS v0 v2 (by omega)\n  have k1 := SFP3.proof S hS v1 v4 (by omega)\n  have k2 := SFP2.proof S hS v1 v3 v5 (by omega)\n  have k3 := SFP4.proof S hS v0 v2 v4 v5 (by omega) (by omega) (by omega) (by omega)\n  have e0 := SFP1.proof S v3\n  have key := Nat.add_le_add k0 (Nat.add_le_add k1 (Nat.add_le_add k2 (Nat.add_le_add k3 (e0))))\n  clear k0 k1 k2 k3 e0\n  omega\nend SFP19\n",
+   "source_sha256": "7645f70b32f36db4bee4be4886c9eec3c1cd0185778289c97f7d215512993fe2",
+   "trusted": false
+  },
+  {
+   "name": "SFP20",
+   "source": "import SFDefs\nimport SFConj\nimport SFP1\nimport SFP2\nimport SFP3\nimport SFP4\nimport SFP5\nimport SFP6\nimport SFP7\nimport SFP8\nimport SFP9\nimport SFP10\nimport SFP11\nimport SFP12\nimport SFP13\nimport SFP14\nimport SFP15\nimport SFP16\nimport SFP17\nimport SFP18\nimport SFP19\nnamespace SFP20\nset_option maxHeartbeats 4000000 in\ntheorem proof : SFConj.sf_sfpat_1_2_3_4_5_6_8 := by\n  unfold SFConj.sf_sfpat_1_2_3_4_5_6_8\n  intro S hS v0 v1 v2 v3 v4 v5 v6 r0 r1 r2 r3 r4 r5 r6 r7 r8 r9 r10 r11\n  have k0 := SFP3.proof S hS v2 v5 (by omega)\n  have k1 := SFP12.proof S hS v0 v1 v2 v3 v4 v6 (by omega) (by omega) (by omega) (by omega) (by omega) (by omega) (by omega) (by omega)\n  have k2 := SFP14.proof S hS v0 v1 v3 v4 v5 v6 (by omega) (by omega) (by omega) (by omega) (by omega) (by omega) (by omega)\n  have key := Nat.add_le_add k0 (Nat.add_le_add k1 (k2))\n  clear k0 k1 k2\n  omega\nend SFP20\n",
+   "source_sha256": "d6f3048ead45a91625ac1e71b7e8f817f63e07aabe447d01843737513fd532f6",
+   "trusted": false
+  }
+ ],
+ "name": "generated sum-free pattern inequalities v1 (s15.3 relaxation family, transferred)",
+ "package_sha256": "7f19273f9078d9bb016d93488f29fbef9070c52bffa78fed599e798b6457e070",
+ "patterns": [
+  {
+   "elements": [
+    1,
+    2,
+    3,
+    4
+   ],
+   "ex": 2,
+   "ex_witness": [
+    3,
+    4
+   ],
+   "id": "sfpat_1_2_3_4",
+   "lp": 2.5,
+   "lp_schur_rows": 2.5,
+   "triples": [
+    [
+     1,
+     1,
+     2
+    ],
+    [
+     1,
+     2,
+     3
+    ],
+    [
+     1,
+     3,
+     4
+    ],
+    [
+     2,
+     2,
+     4
+    ]
+   ]
+  },
+  {
+   "elements": [
+    1,
+    2,
+    4,
+    5
+   ],
+   "ex": 2,
+   "ex_witness": [
+    4,
+    5
+   ],
+   "id": "sfpat_1_2_4_5",
+   "lp": 2.5,
+   "lp_schur_rows": 2.5,
+   "triples": [
+    [
+     1,
+     1,
+     2
+    ],
+    [
+     1,
+     4,
+     5
+    ],
+    [
+     2,
+     2,
+     4
+    ]
+   ]
+  },
+  {
+   "elements": [
+    1,
+    2,
+    5,
+    6,
+    7
+   ],
+   "ex": 3,
+   "ex_witness": [
+    2,
+    5,
+    6
+   ],
+   "id": "sfpat_1_2_5_6_7",
+   "lp": 3.333333,
+   "lp_schur_rows": 3.333333,
+   "triples": [
+    [
+     1,
+     1,
+     2
+    ],
+    [
+     1,
+     5,
+     6
+    ],
+    [
+     1,
+     6,
+     7
+    ],
+    [
+     2,
+     5,
+     7
+    ]
+   ]
+  },
+  {
+   "elements": [
+    1,
+    2,
+    3,
+    4,
+    6,
+    7
+   ],
+   "ex": 3,
+   "ex_witness": [
+    1,
+    4,
+    7
+   ],
+   "id": "sfpat_1_2_3_4_6_7",
+   "lp": 3.5,
+   "lp_schur_rows": 3.5,
+   "triples": [
+    [
+     1,
+     1,
+     2
+    ],
+    [
+     1,
+     2,
+     3
+    ],
+    [
+     1,
+     3,
+     4
+    ],
+    [
+     1,
+     6,
+     7
+    ],
+    [
+     2,
+     2,
+     4
+    ],
+    [
+     2,
+     4,
+     6
+    ],
+    [
+     3,
+     3,
+     6
+    ],
+    [
+     3,
+     4,
+     7
+    ]
+   ]
+  },
+  {
+   "elements": [
+    1,
+    2,
+    5,
+    6,
+    8
+   ],
+   "ex": 3,
+   "ex_witness": [
+    5,
+    6,
+    8
+   ],
+   "id": "sfpat_1_2_5_6_8",
+   "lp": 3.5,
+   "lp_schur_rows": 3.5,
+   "triples": [
+    [
+     1,
+     1,
+     2
+    ],
+    [
+     1,
+     5,
+     6
+    ],
+    [
+     2,
+     6,
+     8
+    ]
+   ]
+  },
+  {
+   "elements": [
+    1,
+    2,
+    5,
+    7,
+    8
+   ],
+   "ex": 3,
+   "ex_witness": [
+    5,
+    7,
+    8
+   ],
+   "id": "sfpat_1_2_5_7_8",
+   "lp": 3.5,
+   "lp_schur_rows": 3.5,
+   "triples": [
+    [
+     1,
+     1,
+     2
+    ],
+    [
+     1,
+     7,
+     8
+    ],
+    [
+     2,
+     5,
+     7
+    ]
+   ]
+  },
+  {
+   "elements": [
+    1,
+    3,
+    4,
+    5,
+    8
+   ],
+   "ex": 3,
+   "ex_witness": [
+    1,
+    3,
+    5
+   ],
+   "id": "sfpat_1_3_4_5_8",
+   "lp": 3.333333,
+   "lp_schur_rows": 3.333333,
+   "triples": [
+    [
+     1,
+     3,
+     4
+    ],
+    [
+     1,
+     4,
+     5
+    ],
+    [
+     3,
+     5,
+     8
+    ],
+    [
+     4,
+     4,
+     8
+    ]
+   ]
+  },
+  {
+   "elements": [
+    1,
+    3,
+    5,
+    6,
+    8
+   ],
+   "ex": 3,
+   "ex_witness": [
+    1,
+    6,
+    8
+   ],
+   "id": "sfpat_1_3_5_6_8",
+   "lp": 3.5,
+   "lp_schur_rows": 3.5,
+   "triples": [
+    [
+     1,
+     5,
+     6
+    ],
+    [
+     3,
+     3,
+     6
+    ],
+    [
+     3,
+     5,
+     8
+    ]
+   ]
+  },
+  {
+   "elements": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    8
+   ],
+   "ex": 3,
+   "ex_witness": [
+    3,
+    4,
+    5
+   ],
+   "id": "sfpat_1_2_3_4_5_8",
+   "lp": 3.333333,
+   "lp_schur_rows": 3.6,
+   "triples": [
+    [
+     1,
+     1,
+     2
+    ],
+    [
+     1,
+     2,
+     3
+    ],
+    [
+     1,
+     3,
+     4
+    ],
+    [
+     1,
+     4,
+     5
+    ],
+    [
+     2,
+     2,
+     4
+    ],
+    [
+     2,
+     3,
+     5
+    ],
+    [
+     3,
+     5,
+     8
+    ],
+    [
+     4,
+     4,
+     8
+    ]
+   ]
+  },
+  {
+   "elements": [
+    1,
+    2,
+    3,
+    5,
+    6,
+    8
+   ],
+   "ex": 3,
+   "ex_witness": [
+    1,
+    5,
+    8
+   ],
+   "id": "sfpat_1_2_3_5_6_8",
+   "lp": 3.5,
+   "lp_schur_rows": 3.666667,
+   "triples": [
+    [
+     1,
+     1,
+     2
+    ],
+    [
+     1,
+     2,
+     3
+    ],
+    [
+     1,
+     5,
+     6
+    ],
+    [
+     2,
+     3,
+     5
+    ],
+    [
+     2,
+     6,
+     8
+    ],
+    [
+     3,
+     3,
+     6
+    ],
+    [
+     3,
+     5,
+     8
+    ]
+   ]
+  },
+  {
+   "elements": [
+    1,
+    2,
+    4,
+    5,
+    6,
+    8
+   ],
+   "ex": 3,
+   "ex_witness": [
+    5,
+    6,
+    8
+   ],
+   "id": "sfpat_1_2_4_5_6_8",
+   "lp": 3.333333,
+   "lp_schur_rows": 3.666667,
+   "triples": [
+    [
+     1,
+     1,
+     2
+    ],
+    [
+     1,
+     4,
+     5
+    ],
+    [
+     1,
+     5,
+     6
+    ],
+    [
+     2,
+     2,
+     4
+    ],
+    [
+     2,
+     4,
+     6
+    ],
+    [
+     2,
+     6,
+     8
+    ],
+    [
+     4,
+     4,
+     8
+    ]
+   ]
+  },
+  {
+   "elements": [
+    1,
+    2,
+    4,
+    5,
+    7,
+    8
+   ],
+   "ex": 3,
+   "ex_witness": [
+    5,
+    7,
+    8
+   ],
+   "id": "sfpat_1_2_4_5_7_8",
+   "lp": 3.5,
+   "lp_schur_rows": 3.666667,
+   "triples": [
+    [
+     1,
+     1,
+     2
+    ],
+    [
+     1,
+     4,
+     5
+    ],
+    [
+     1,
+     7,
+     8
+    ],
+    [
+     2,
+     2,
+     4
+    ],
+    [
+     2,
+     5,
+     7
+    ],
+    [
+     4,
+     4,
+     8
+    ]
+   ]
+  },
+  {
+   "elements": [
+    1,
+    2,
+    4,
+    6,
+    7,
+    8
+   ],
+   "ex": 3,
+   "ex_witness": [
+    4,
+    6,
+    7
+   ],
+   "id": "sfpat_1_2_4_6_7_8",
+   "lp": 3.5,
+   "lp_schur_rows": 3.666667,
+   "triples": [
+    [
+     1,
+     1,
+     2
+    ],
+    [
+     1,
+     6,
+     7
+    ],
+    [
+     1,
+     7,
+     8
+    ],
+    [
+     2,
+     2,
+     4
+    ],
+    [
+     2,
+     4,
+     6
+    ],
+    [
+     2,
+     6,
+     8
+    ],
+    [
+     4,
+     4,
+     8
+    ]
+   ]
+  },
+  {
+   "elements": [
+    1,
+    3,
+    4,
+    5,
+    6,
+    8
+   ],
+   "ex": 3,
+   "ex_witness": [
+    1,
+    6,
+    8
+   ],
+   "id": "sfpat_1_3_4_5_6_8",
+   "lp": 3.5,
+   "lp_schur_rows": 3.666667,
+   "triples": [
+    [
+     1,
+     3,
+     4
+    ],
+    [
+     1,
+     4,
+     5
+    ],
+    [
+     1,
+     5,
+     6
+    ],
+    [
+     3,
+     3,
+     6
+    ],
+    [
+     3,
+     5,
+     8
+    ],
+    [
+     4,
+     4,
+     8
+    ]
+   ]
+  },
+  {
+   "elements": [
+    1,
+    3,
+    4,
+    6,
+    7,
+    8
+   ],
+   "ex": 3,
+   "ex_witness": [
+    1,
+    6,
+    8
+   ],
+   "id": "sfpat_1_3_4_6_7_8",
+   "lp": 3.5,
+   "lp_schur_rows": 3.6,
+   "triples": [
+    [
+     1,
+     3,
+     4
+    ],
+    [
+     1,
+     6,
+     7
+    ],
+    [
+     1,
+     7,
+     8
+    ],
+    [
+     3,
+     3,
+     6
+    ],
+    [
+     3,
+     4,
+     7
+    ],
+    [
+     4,
+     4,
+     8
+    ]
+   ]
+  },
+  {
+   "elements": [
+    2,
+    3,
+    4,
+    5,
+    6,
+    8
+   ],
+   "ex": 3,
+   "ex_witness": [
+    2,
+    5,
+    8
+   ],
+   "id": "sfpat_2_3_4_5_6_8",
+   "lp": 3.5,
+   "lp_schur_rows": 3.666667,
+   "triples": [
+    [
+     2,
+     2,
+     4
+    ],
+    [
+     2,
+     3,
+     5
+    ],
+    [
+     2,
+     4,
+     6
+    ],
+    [
+     2,
+     6,
+     8
+    ],
+    [
+     3,
+     3,
+     6
+    ],
+    [
+     3,
+     5,
+     8
+    ],
+    [
+     4,
+     4,
+     8
+    ]
+   ]
+  },
+  {
+   "elements": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    8
+   ],
+   "ex": 3,
+   "ex_witness": [
+    5,
+    6,
+    8
+   ],
+   "id": "sfpat_1_2_3_4_5_6_8",
+   "lp": 3.5,
+   "lp_schur_rows": 4.0,
+   "triples": [
+    [
+     1,
+     1,
+     2
+    ],
+    [
+     1,
+     2,
+     3
+    ],
+    [
+     1,
+     3,
+     4
+    ],
+    [
+     1,
+     4,
+     5
+    ],
+    [
+     1,
+     5,
+     6
+    ],
+    [
+     2,
+     2,
+     4
+    ],
+    [
+     2,
+     3,
+     5
+    ],
+    [
+     2,
+     4,
+     6
+    ],
+    [
+     2,
+     6,
+     8
+    ],
+    [
+     3,
+     3,
+     6
+    ],
+    [
+     3,
+     5,
+     8
+    ],
+    [
+     4,
+     4,
+     8
+    ]
+   ]
+  }
+ ],
+ "proofs": [
+  {
+   "module": "SFP1",
+   "recipe": "ind-split",
+   "statement": "sf_ind_le_one"
+  },
+  {
+   "module": "SFP2",
+   "recipe": "sf-bridge-subst",
+   "statement": "sf_bridge"
+  },
+  {
+   "module": "SFP3",
+   "recipe": "sf-bridge-double-subst",
+   "statement": "sf_bridge_double"
+  },
+  {
+   "module": "SFP4",
+   "recipe": "lp-certificate-sum",
+   "statement": "sf_sfpat_1_2_3_4"
+  },
+  {
+   "module": "SFP5",
+   "recipe": "lp-certificate-sum",
+   "statement": "sf_sfpat_1_2_4_5"
+  },
+  {
+   "module": "SFP6",
+   "recipe": "lp-certificate-sum",
+   "statement": "sf_sfpat_1_2_5_6_7"
+  },
+  {
+   "module": "SFP7",
+   "recipe": "lp-certificate-sum",
+   "statement": "sf_sfpat_1_2_3_4_6_7"
+  },
+  {
+   "module": "SFP8",
+   "recipe": "lp-certificate-sum",
+   "statement": "sf_sfpat_1_2_5_6_8"
+  },
+  {
+   "module": "SFP9",
+   "recipe": "lp-certificate-sum",
+   "statement": "sf_sfpat_1_2_5_7_8"
+  },
+  {
+   "module": "SFP10",
+   "recipe": "lp-certificate-sum",
+   "statement": "sf_sfpat_1_3_4_5_8"
+  },
+  {
+   "module": "SFP11",
+   "recipe": "lp-certificate-sum",
+   "statement": "sf_sfpat_1_3_5_6_8"
+  },
+  {
+   "module": "SFP12",
+   "recipe": "lp-certificate-sum",
+   "statement": "sf_sfpat_1_2_3_4_5_8"
+  },
+  {
+   "module": "SFP13",
+   "recipe": "lp-certificate-sum",
+   "statement": "sf_sfpat_1_2_3_5_6_8"
+  },
+  {
+   "module": "SFP14",
+   "recipe": "lp-certificate-sum",
+   "statement": "sf_sfpat_1_2_4_5_6_8"
+  },
+  {
+   "module": "SFP15",
+   "recipe": "lp-certificate-sum",
+   "statement": "sf_sfpat_1_2_4_5_7_8"
+  },
+  {
+   "module": "SFP16",
+   "recipe": "lp-certificate-sum",
+   "statement": "sf_sfpat_1_2_4_6_7_8"
+  },
+  {
+   "module": "SFP17",
+   "recipe": "lp-certificate-sum",
+   "statement": "sf_sfpat_1_3_4_5_6_8"
+  },
+  {
+   "module": "SFP18",
+   "recipe": "lp-certificate-sum",
+   "statement": "sf_sfpat_1_3_4_6_7_8"
+  },
+  {
+   "module": "SFP19",
+   "recipe": "lp-certificate-sum",
+   "statement": "sf_sfpat_2_3_4_5_6_8"
+  },
+  {
+   "module": "SFP20",
+   "recipe": "lp-certificate-sum",
+   "statement": "sf_sfpat_1_2_3_4_5_6_8"
+  }
+ ],
+ "provenance": {
+  "acceptance": "genesis.formal_research.checker.accept",
+  "created_at": "2026-10-17T01:36:11.081838+00:00",
+  "loop": "genesis.formal_research.loop",
+  "search": "genesis.formal_research.search (builder-written recipes, named per proof)"
+ },
+ "schema": "genesis-theory-package-v1",
+ "scope": "the 0/1 membership indicator, the two Schur bridges, and one bound per pattern generated over every set P of positive integers with max P <= 8, gcd 1 and every element in a Schur triple, for values satisfying the pattern's additive relations. Conservative definitions only.",
+ "statements": [
+  {
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "counterexample": null,
+   "id": "sf_ind_le_one",
+   "lean": "∀ (S : Finset ℕ) (x : ℕ), SF.ind S x ≤ 1",
+   "origin": "generated:pattern-inequalities-sumfree-v1",
+   "proof_const": "SFP1.proof",
+   "proof_module": "SFP1",
+   "recipe": "ind-split",
+   "role": "ind",
+   "screened_instances": 3000,
+   "spec_const": "SFConj.sf_ind_le_one",
+   "status": "CHECKED",
+   "subject": "ind"
+  },
+  {
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "counterexample": null,
+   "id": "sf_bridge",
+   "lean": "∀ (S : Finset ℕ) (hS : SF.SumFree S) (a : ℕ) (b : ℕ) (c : ℕ) (r0 : a + b = c), SF.ind S a + SF.ind S b + SF.ind S c ≤ 2",
+   "origin": "generated:pattern-inequalities-sumfree-v1",
+   "proof_const": "SFP2.proof",
+   "proof_module": "SFP2",
+   "recipe": "sf-bridge-subst",
+   "role": "bridge",
+   "screened_instances": 45,
+   "spec_const": "SFConj.sf_bridge",
+   "status": "CHECKED",
+   "subject": "bridge"
+  },
+  {
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "counterexample": null,
+   "id": "sf_bridge_double",
+   "lean": "∀ (S : Finset ℕ) (hS : SF.SumFree S) (a : ℕ) (c : ℕ) (r0 : a + a = c), SF.ind S a + SF.ind S c ≤ 1",
+   "origin": "generated:pattern-inequalities-sumfree-v1",
+   "proof_const": "SFP3.proof",
+   "proof_module": "SFP3",
+   "recipe": "sf-bridge-double-subst",
+   "role": "bridge_double",
+   "screened_instances": 36,
+   "spec_const": "SFConj.sf_bridge_double",
+   "status": "CHECKED",
+   "subject": "bridge_double"
+  },
+  {
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "counterexample": null,
+   "id": "sf_sfpat_1_2_3_4",
+   "lean": "∀ (S : Finset ℕ) (hS : SF.SumFree S) (v0 : ℕ) (v1 : ℕ) (v2 : ℕ) (v3 : ℕ) (r0 : v0 + v0 = v1) (r1 : v0 + v1 = v2) (r2 : v0 + v2 = v3) (r3 : v1 + v1 = v3), SF.ind S v0 + SF.ind S v1 + SF.ind S v2 + SF.ind S v3 ≤ 2",
+   "origin": "generated:pattern-inequalities-sumfree-v1",
+   "proof_const": "SFP4.proof",
+   "proof_module": "SFP4",
+   "recipe": "lp-certificate-sum",
+   "role": "pattern",
+   "screened_instances": 1444,
+   "spec_const": "SFConj.sf_sfpat_1_2_3_4",
+   "status": "CHECKED",
+   "subject": "sfpat_1_2_3_4"
+  },
+  {
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "counterexample": null,
+   "id": "sf_sfpat_1_2_4_5",
+   "lean": "∀ (S : Finset ℕ) (hS : SF.SumFree S) (v0 : ℕ) (v1 : ℕ) (v2 : ℕ) (v3 : ℕ) (r0 : v0 + v0 = v1) (r1 : v0 + v2 = v3) (r2 : v1 + v1 = v2), SF.ind S v0 + SF.ind S v1 + SF.ind S v2 + SF.ind S v3 ≤ 2",
+   "origin": "generated:pattern-inequalities-sumfree-v1",
+   "proof_const": "SFP5.proof",
+   "proof_module": "SFP5",
+   "recipe": "lp-certificate-sum",
+   "role": "pattern",
+   "screened_instances": 1442,
+   "spec_const": "SFConj.sf_sfpat_1_2_4_5",
+   "status": "CHECKED",
+   "subject": "sfpat_1_2_4_5"
+  },
+  {
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "counterexample": null,
+   "id": "sf_sfpat_1_2_5_6_7",
+   "lean": "∀ (S : Finset ℕ) (hS : SF.SumFree S) (v0 : ℕ) (v1 : ℕ) (v2 : ℕ) (v3 : ℕ) (v4 : ℕ) (r0 : v0 + v0 = v1) (r1 : v0 + v2 = v3) (r2 : v0 + v3 = v4) (r3 : v1 + v2 = v4), SF.ind S v0 + SF.ind S v1 + SF.ind S v2 + SF.ind S v3 + SF.ind S v4 ≤ 3",
+   "origin": "generated:pattern-inequalities-sumfree-v1",
+   "proof_const": "SFP6.proof",
+   "proof_module": "SFP6",
+   "recipe": "lp-certificate-sum",
+   "role": "pattern",
+   "screened_instances": 1461,
+   "spec_const": "SFConj.sf_sfpat_1_2_5_6_7",
+   "status": "CHECKED",
+   "subject": "sfpat_1_2_5_6_7"
+  },
+  {
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "counterexample": null,
+   "id": "sf_sfpat_1_2_3_4_6_7",
+   "lean": "∀ (S : Finset ℕ) (hS : SF.SumFree S) (v0 : ℕ) (v1 : ℕ) (v2 : ℕ) (v3 : ℕ) (v4 : ℕ) (v5 : ℕ) (r0 : v0 + v0 = v1) (r1 : v0 + v1 = v2) (r2 : v0 + v2 = v3) (r3 : v0 + v4 = v5) (r4 : v1 + v1 = v3) (r5 : v1 + v3 = v4) (r6 : v2 + v2 = v4) (r7 : v2 + v3 = v5), SF.ind S v0 + SF.ind S v1 + SF.ind S v2 + SF.ind S v3 + SF.ind S v4 + SF.ind S v5 ≤ 3",
+   "origin": "generated:pattern-inequalities-sumfree-v1",
+   "proof_const": "SFP7.proof",
+   "proof_module": "SFP7",
+   "recipe": "lp-certificate-sum",
+   "role": "pattern",
+   "screened_instances": 1476,
+   "spec_const": "SFConj.sf_sfpat_1_2_3_4_6_7",
+   "status": "CHECKED",
+   "subject": "sfpat_1_2_3_4_6_7"
+  },
+  {
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "counterexample": null,
+   "id": "sf_sfpat_1_2_5_6_8",
+   "lean": "∀ (S : Finset ℕ) (hS : SF.SumFree S) (v0 : ℕ) (v1 : ℕ) (v2 : ℕ) (v3 : ℕ) (v4 : ℕ) (r0 : v0 + v0 = v1) (r1 : v0 + v2 = v3) (r2 : v1 + v3 = v4), SF.ind S v0 + SF.ind S v1 + SF.ind S v2 + SF.ind S v3 + SF.ind S v4 ≤ 3",
+   "origin": "generated:pattern-inequalities-sumfree-v1",
+   "proof_const": "SFP8.proof",
+   "proof_module": "SFP8",
+   "recipe": "lp-certificate-sum",
+   "role": "pattern",
+   "screened_instances": 1479,
+   "spec_const": "SFConj.sf_sfpat_1_2_5_6_8",
+   "status": "CHECKED",
+   "subject": "sfpat_1_2_5_6_8"
+  },
+  {
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "counterexample": null,
+   "id": "sf_sfpat_1_2_5_7_8",
+   "lean": "∀ (S : Finset ℕ) (hS : SF.SumFree S) (v0 : ℕ) (v1 : ℕ) (v2 : ℕ) (v3 : ℕ) (v4 : ℕ) (r0 : v0 + v0 = v1) (r1 : v0 + v3 = v4) (r2 : v1 + v2 = v3), SF.ind S v0 + SF.ind S v1 + SF.ind S v2 + SF.ind S v3 + SF.ind S v4 ≤ 3",
+   "origin": "generated:pattern-inequalities-sumfree-v1",
+   "proof_const": "SFP9.proof",
+   "proof_module": "SFP9",
+   "recipe": "lp-certificate-sum",
+   "role": "pattern",
+   "screened_instances": 1474,
+   "spec_const": "SFConj.sf_sfpat_1_2_5_7_8",
+   "status": "CHECKED",
+   "subject": "sfpat_1_2_5_7_8"
+  },
+  {
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "counterexample": null,
+   "id": "sf_sfpat_1_3_4_5_8",
+   "lean": "∀ (S : Finset ℕ) (hS : SF.SumFree S) (v0 : ℕ) (v1 : ℕ) (v2 : ℕ) (v3 : ℕ) (v4 : ℕ) (r0 : v0 + v1 = v2) (r1 : v0 + v2 = v3) (r2 : v1 + v3 = v4) (r3 : v2 + v2 = v4), SF.ind S v0 + SF.ind S v1 + SF.ind S v2 + SF.ind S v3 + SF.ind S v4 ≤ 3",
+   "origin": "generated:pattern-inequalities-sumfree-v1",
+   "proof_const": "SFP10.proof",
+   "proof_module": "SFP10",
+   "recipe": "lp-certificate-sum",
+   "role": "pattern",
+   "screened_instances": 1462,
+   "spec_const": "SFConj.sf_sfpat_1_3_4_5_8",
+   "status": "CHECKED",
+   "subject": "sfpat_1_3_4_5_8"
+  },
+  {
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "counterexample": null,
+   "id": "sf_sfpat_1_3_5_6_8",
+   "lean": "∀ (S : Finset ℕ) (hS : SF.SumFree S) (v0 : ℕ) (v1 : ℕ) (v2 : ℕ) (v3 : ℕ) (v4 : ℕ) (r0 : v0 + v2 = v3) (r1 : v1 + v1 = v3) (r2 : v1 + v2 = v4), SF.ind S v0 + SF.ind S v1 + SF.ind S v2 + SF.ind S v3 + SF.ind S v4 ≤ 3",
+   "origin": "generated:pattern-inequalities-sumfree-v1",
+   "proof_const": "SFP11.proof",
+   "proof_module": "SFP11",
+   "recipe": "lp-certificate-sum",
+   "role": "pattern",
+   "screened_instances": 1453,
+   "spec_const": "SFConj.sf_sfpat_1_3_5_6_8",
+   "status": "CHECKED",
+   "subject": "sfpat_1_3_5_6_8"
+  },
+  {
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "counterexample": null,
+   "id": "sf_sfpat_1_2_3_4_5_8",
+   "lean": "∀ (S : Finset ℕ) (hS : SF.SumFree S) (v0 : ℕ) (v1 : ℕ) (v2 : ℕ) (v3 : ℕ) (v4 : ℕ) (v5 : ℕ) (r0 : v0 + v0 = v1) (r1 : v0 + v1 = v2) (r2 : v0 + v2 = v3) (r3 : v0 + v3 = v4) (r4 : v1 + v1 = v3) (r5 : v1 + v2 = v4) (r6 : v2 + v4 = v5) (r7 : v3 + v3 = v5), SF.ind S v0 + SF.ind S v1 + SF.ind S v2 + SF.ind S v3 + SF.ind S v4 + SF.ind S v5 ≤ 3",
+   "origin": "generated:pattern-inequalities-sumfree-v1",
+   "proof_const": "SFP12.proof",
+   "proof_module": "SFP12",
+   "recipe": "lp-certificate-sum",
+   "role": "pattern",
+   "screened_instances": 1535,
+   "spec_const": "SFConj.sf_sfpat_1_2_3_4_5_8",
+   "status": "CHECKED",
+   "subject": "sfpat_1_2_3_4_5_8"
+  },
+  {
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "counterexample": null,
+   "id": "sf_sfpat_1_2_3_5_6_8",
+   "lean": "∀ (S : Finset ℕ) (hS : SF.SumFree S) (v0 : ℕ) (v1 : ℕ) (v2 : ℕ) (v3 : ℕ) (v4 : ℕ) (v5 : ℕ) (r0 : v0 + v0 = v1) (r1 : v0 + v1 = v2) (r2 : v0 + v3 = v4) (r3 : v1 + v2 = v3) (r4 : v1 + v4 = v5) (r5 : v2 + v2 = v4) (r6 : v2 + v3 = v5), SF.ind S v0 + SF.ind S v1 + SF.ind S v2 + SF.ind S v3 + SF.ind S v4 + SF.ind S v5 ≤ 3",
+   "origin": "generated:pattern-inequalities-sumfree-v1",
+   "proof_const": "SFP13.proof",
+   "proof_module": "SFP13",
+   "recipe": "lp-certificate-sum",
+   "role": "pattern",
+   "screened_instances": 1443,
+   "spec_const": "SFConj.sf_sfpat_1_2_3_5_6_8",
+   "status": "CHECKED",
+   "subject": "sfpat_1_2_3_5_6_8"
+  },
+  {
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "counterexample": null,
+   "id": "sf_sfpat_1_2_4_5_6_8",
+   "lean": "∀ (S : Finset ℕ) (hS : SF.SumFree S) (v0 : ℕ) (v1 : ℕ) (v2 : ℕ) (v3 : ℕ) (v4 : ℕ) (v5 : ℕ) (r0 : v0 + v0 = v1) (r1 : v0 + v2 = v3) (r2 : v0 + v3 = v4) (r3 : v1 + v1 = v2) (r4 : v1 + v2 = v4) (r5 : v1 + v4 = v5) (r6 : v2 + v2 = v5), SF.ind S v0 + SF.ind S v1 + SF.ind S v2 + SF.ind S v3 + SF.ind S v4 + SF.ind S v5 ≤ 3",
+   "origin": "generated:pattern-inequalities-sumfree-v1",
+   "proof_const": "SFP14.proof",
+   "proof_module": "SFP14",
+   "recipe": "lp-certificate-sum",
+   "role": "pattern",
+   "screened_instances": 1453,
+   "spec_const": "SFConj.sf_sfpat_1_2_4_5_6_8",
+   "status": "CHECKED",
+   "subject": "sfpat_1_2_4_5_6_8"
+  },
+  {
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "counterexample": null,
+   "id": "sf_sfpat_1_2_4_5_7_8",
+   "lean": "∀ (S : Finset ℕ) (hS : SF.SumFree S) (v0 : ℕ) (v1 : ℕ) (v2 : ℕ) (v3 : ℕ) (v4 : ℕ) (v5 : ℕ) (r0 : v0 + v0 = v1) (r1 : v0 + v2 = v3) (r2 : v0 + v4 = v5) (r3 : v1 + v1 = v2) (r4 : v1 + v3 = v4) (r5 : v2 + v2 = v5), SF.ind S v0 + SF.ind S v1 + SF.ind S v2 + SF.ind S v3 + SF.ind S v4 + SF.ind S v5 ≤ 3",
+   "origin": "generated:pattern-inequalities-sumfree-v1",
+   "proof_const": "SFP15.proof",
+   "proof_module": "SFP15",
+   "recipe": "lp-certificate-sum",
+   "role": "pattern",
+   "screened_instances": 1451,
+   "spec_const": "SFConj.sf_sfpat_1_2_4_5_7_8",
+   "status": "CHECKED",
+   "subject": "sfpat_1_2_4_5_7_8"
+  },
+  {
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "counterexample": null,
+   "id": "sf_sfpat_1_2_4_6_7_8",
+   "lean": "∀ (S : Finset ℕ) (hS : SF.SumFree S) (v0 : ℕ) (v1 : ℕ) (v2 : ℕ) (v3 : ℕ) (v4 : ℕ) (v5 : ℕ) (r0 : v0 + v0 = v1) (r1 : v0 + v3 = v4) (r2 : v0 + v4 = v5) (r3 : v1 + v1 = v2) (r4 : v1 + v2 = v3) (r5 : v1 + v3 = v5) (r6 : v2 + v2 = v5), SF.ind S v0 + SF.ind S v1 + SF.ind S v2 + SF.ind S v3 + SF.ind S v4 + SF.ind S v5 ≤ 3",
+   "origin": "generated:pattern-inequalities-sumfree-v1",
+   "proof_const": "SFP16.proof",
+   "proof_module": "SFP16",
+   "recipe": "lp-certificate-sum",
+   "role": "pattern",
+   "screened_instances": 1460,
+   "spec_const": "SFConj.sf_sfpat_1_2_4_6_7_8",
+   "status": "CHECKED",
+   "subject": "sfpat_1_2_4_6_7_8"
+  },
+  {
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "counterexample": null,
+   "id": "sf_sfpat_1_3_4_5_6_8",
+   "lean": "∀ (S : Finset ℕ) (hS : SF.SumFree S) (v0 : ℕ) (v1 : ℕ) (v2 : ℕ) (v3 : ℕ) (v4 : ℕ) (v5 : ℕ) (r0 : v0 + v1 = v2) (r1 : v0 + v2 = v3) (r2 : v0 + v3 = v4) (r3 : v1 + v1 = v4) (r4 : v1 + v3 = v5) (r5 : v2 + v2 = v5), SF.ind S v0 + SF.ind S v1 + SF.ind S v2 + SF.ind S v3 + SF.ind S v4 + SF.ind S v5 ≤ 3",
+   "origin": "generated:pattern-inequalities-sumfree-v1",
+   "proof_const": "SFP17.proof",
+   "proof_module": "SFP17",
+   "recipe": "lp-certificate-sum",
+   "role": "pattern",
+   "screened_instances": 1465,
+   "spec_const": "SFConj.sf_sfpat_1_3_4_5_6_8",
+   "status": "CHECKED",
+   "subject": "sfpat_1_3_4_5_6_8"
+  },
+  {
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "counterexample": null,
+   "id": "sf_sfpat_1_3_4_6_7_8",
+   "lean": "∀ (S : Finset ℕ) (hS : SF.SumFree S) (v0 : ℕ) (v1 : ℕ) (v2 : ℕ) (v3 : ℕ) (v4 : ℕ) (v5 : ℕ) (r0 : v0 + v1 = v2) (r1 : v0 + v3 = v4) (r2 : v0 + v4 = v5) (r3 : v1 + v1 = v3) (r4 : v1 + v2 = v4) (r5 : v2 + v2 = v5), SF.ind S v0 + SF.ind S v1 + SF.ind S v2 + SF.ind S v3 + SF.ind S v4 + SF.ind S v5 ≤ 3",
+   "origin": "generated:pattern-inequalities-sumfree-v1",
+   "proof_const": "SFP18.proof",
+   "proof_module": "SFP18",
+   "recipe": "lp-certificate-sum",
+   "role": "pattern",
+   "screened_instances": 1479,
+   "spec_const": "SFConj.sf_sfpat_1_3_4_6_7_8",
+   "status": "CHECKED",
+   "subject": "sfpat_1_3_4_6_7_8"
+  },
+  {
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "counterexample": null,
+   "id": "sf_sfpat_2_3_4_5_6_8",
+   "lean": "∀ (S : Finset ℕ) (hS : SF.SumFree S) (v0 : ℕ) (v1 : ℕ) (v2 : ℕ) (v3 : ℕ) (v4 : ℕ) (v5 : ℕ) (r0 : v0 + v0 = v2) (r1 : v0 + v1 = v3) (r2 : v0 + v2 = v4) (r3 : v0 + v4 = v5) (r4 : v1 + v1 = v4) (r5 : v1 + v3 = v5) (r6 : v2 + v2 = v5), SF.ind S v0 + SF.ind S v1 + SF.ind S v2 + SF.ind S v3 + SF.ind S v4 + SF.ind S v5 ≤ 3",
+   "origin": "generated:pattern-inequalities-sumfree-v1",
+   "proof_const": "SFP19.proof",
+   "proof_module": "SFP19",
+   "recipe": "lp-certificate-sum",
+   "role": "pattern",
+   "screened_instances": 1466,
+   "spec_const": "SFConj.sf_sfpat_2_3_4_5_6_8",
+   "status": "CHECKED",
+   "subject": "sfpat_2_3_4_5_6_8"
+  },
+  {
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "counterexample": null,
+   "id": "sf_sfpat_1_2_3_4_5_6_8",
+   "lean": "∀ (S : Finset ℕ) (hS : SF.SumFree S) (v0 : ℕ) (v1 : ℕ) (v2 : ℕ) (v3 : ℕ) (v4 : ℕ) (v5 : ℕ) (v6 : ℕ) (r0 : v0 + v0 = v1) (r1 : v0 + v1 = v2) (r2 : v0 + v2 = v3) (r3 : v0 + v3 = v4) (r4 : v0 + v4 = v5) (r5 : v1 + v1 = v3) (r6 : v1 + v2 = v4) (r7 : v1 + v3 = v5) (r8 : v1 + v5 = v6) (r9 : v2 + v2 = v5) (r10 : v2 + v4 = v6) (r11 : v3 + v3 = v6), SF.ind S v0 + SF.ind S v1 + SF.ind S v2 + SF.ind S v3 + SF.ind S v4 + SF.ind S v5 + SF.ind S v6 ≤ 3",
+   "origin": "generated:pattern-inequalities-sumfree-v1",
+   "proof_const": "SFP20.proof",
+   "proof_module": "SFP20",
+   "recipe": "lp-certificate-sum",
+   "role": "pattern",
+   "screened_instances": 1457,
+   "spec_const": "SFConj.sf_sfpat_1_2_3_4_5_6_8",
+   "status": "CHECKED",
+   "subject": "sfpat_1_2_3_4_5_6_8"
+  }
+ ]
+}

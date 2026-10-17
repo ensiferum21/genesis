@@ -1,0 +1,24 @@
+[    0.0s] pinned to CPU 0
+[    1.9s] generated 17 patterns: 214 candidates, 133 covered by triples, 100 implied by Schur rows, 16 by earlier patterns
+[    2.9s] screen: 0 counterexamples among 20 obligations
+[   14.8s] sf_ind_le_one: CHECKED (ind-split)
+[   21.4s] sf_bridge: CHECKED (sf-bridge-subst)
+[   28.2s] sf_bridge_double: CHECKED (sf-bridge-double-subst)
+[   35.9s] sf_sfpat_1_2_3_4: CHECKED (lp-certificate-sum)
+[   44.3s] sf_sfpat_1_2_4_5: CHECKED (lp-certificate-sum)
+[   53.8s] sf_sfpat_1_2_5_6_7: CHECKED (lp-certificate-sum)
+[   64.1s] sf_sfpat_1_2_3_4_6_7: CHECKED (lp-certificate-sum)
+[   75.0s] sf_sfpat_1_2_5_6_8: CHECKED (lp-certificate-sum)
+[   87.6s] sf_sfpat_1_2_5_7_8: CHECKED (lp-certificate-sum)
+[   99.9s] sf_sfpat_1_3_4_5_8: CHECKED (lp-certificate-sum)
+[  113.2s] sf_sfpat_1_3_5_6_8: CHECKED (lp-certificate-sum)
+[  126.9s] sf_sfpat_1_2_3_4_5_8: CHECKED (lp-certificate-sum)
+[  142.4s] sf_sfpat_1_2_3_5_6_8: CHECKED (lp-certificate-sum)
+[  158.0s] sf_sfpat_1_2_4_5_6_8: CHECKED (lp-certificate-sum)
+[  174.1s] sf_sfpat_1_2_4_5_7_8: CHECKED (lp-certificate-sum)
+[  190.9s] sf_sfpat_1_2_4_6_7_8: CHECKED (lp-certificate-sum)
+[  208.7s] sf_sfpat_1_3_4_5_6_8: CHECKED (lp-certificate-sum)
+[  227.1s] sf_sfpat_1_3_4_6_7_8: CHECKED (lp-certificate-sum)
+[  246.8s] sf_sfpat_2_3_4_5_6_8: CHECKED (lp-certificate-sum)
+[  267.0s] sf_sfpat_1_2_3_4_5_6_8: CHECKED (lp-certificate-sum)
+[  284.1s] usable 17 of 17; base checked True; construction 267.5 CPU s
