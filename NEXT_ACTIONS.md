@@ -29,7 +29,7 @@
 | B20_R56 | `010e507` | `f40380aa…6e622` (B20_R53–R56 and the B20_R52 checkpoint record; release matrix 1,404 tests, all OK, one declared skip; restore-verified, 5,998 manifest entries; driver rehearsal on the build host **REPRODUCED**, not a second machine) |
 
   The recovery-branch checkpoints B20_RX1 and B20_RX2 are on `recovery-b20r1-partial`; their work was ported here.
-- **Records:** `docs/checkpoints/B20_R1_RECORD.md` … `B20_R11_RECORD.md`, `B20_RX1_RECORD.md`, `B20_RX2_RECORD.md`, `B20_R12_RECORD.md` and `B20_R15_RECORD.md` … `B20_R60_RECORD.md`.
+- **Records:** `docs/checkpoints/B20_R1_RECORD.md` … `B20_R11_RECORD.md`, `B20_RX1_RECORD.md`, `B20_RX2_RECORD.md`, `B20_R12_RECORD.md` and `B20_R15_RECORD.md` … `B20_R61_RECORD.md`.
 
 ## Completed since B20_R11
 
@@ -85,6 +85,7 @@
 | B20_R58 | **No pattern-selection headroom (GV4 pilot).** On 16 fresh sum-free hosts at 30 s, all 17 patterns certify 13, none 10, and every development-ranked subset 9–11 (H −2): the patterns' value is joint. With every earlier headroom pilot, no probed setting has a research decision with headroom; the builder recommends the roadmap's GV4 fallback for the reviewer's decision |
 | B20_R59 | **B20_R57 does not replicate on coverage; the bound result does.** Same protocol on fresh hosts: 23 vs 21 certified (0/2, p 0.25; the sample was easier for the conventional route, 21 vs R57's 14), wall saving +2.76 s [0.04, 5.37], certified bound +3.875 [2.675, 5.125]. The sum-free transfer's robust result is stronger certified bounds, not more certified optima |
 | B20_R60 | **GV4 fallback claim drafted.** `handoff/gv4/FALLBACK_CLAIM_DRAFT.md` proposes what the roadmap's fallback would report: E1d as a useful solver (Part A) with its causal attribution (Part B), and, only if certification utility counts, the generated Lean-checked rows (Part C). It claims no better improver. The false-discovery table is now derived from the evidence (`attempt_family.json`): B20_R35, R48 and R57 survive BY at q 0.1 over 13 attempts; R57 did not replicate. Every quoted number is tested against its source |
+| B20_R61 | **Statistician's brief written** (`docs/STATISTICIAN_BRIEF.md`, B19-OPEN-4). All nine stored power analyses reproduce exactly from their pilot rows. Flagged for the statistician: E1b-C4's placebo design is underpowered at its chosen 10 per stratum (0.764 at 10,000 simulations; 12 needed); four causal power analyses (E1b and E1b-C4 ablation/placebo) are bound to the sealed-evaluation family, which the custodian would refuse, and must be recomputed before freezing; each claim says "by at least the MUE" while the rule tests a point estimate; the stratum-level sign flip cannot fall below 0.125; unsupported hosts cluster in one stratum |
 
 ## Resume
 
@@ -98,7 +99,7 @@
 
 1. **GV3 sign-off: E1 and E1b** (`handoff/e1/README.md` v3, `handoff/e1b/README.md` v2). Both are READY_FOR_REVIEW on the `e1-hard-v2` family, and both same-operator rehearsals are SUPPORTED. **First decide B20R33-OPEN-1:** on this family an exact MIP solver is always optimal within 0.36 CPU s, so E1 (dominated) and E1b (within 0.2) cannot be "beyond strong baselines"; a SUPPORTED result would be scoped to time-matched DSL baselines. B20_R38 found a dense regime where E1's frozen candidate is optimal on 19/20 hosts and beats HiGHS at 4× its budget (planted); it is certifiable only with the generated-rows reference (B20_R39 builds its custody; adoption is the reviewer's). Options: accept that scope; add a MIP comparator; or move to a regime an exact solver cannot finish within budget. **B20_R41 did the last on DEV: E1d is READY_FOR_REVIEW against HiGHS at 4× budget (item 7).** B20_R34 mapped the certifiable range: no such setting exists there (where the evaluator certifies, the MIP is optimal); the dense regime where the candidate beats the MIP is uncertifiable by the current evaluator and certifiable with the generated rows (B20_R35–R38). To move to a real run:
    - a reviewer signs off the rule `e1-hard-v2`, the cost and comparator decisions, and freezes the DRAFTs;
-   - a statistician signs off the centred power model (B19-OPEN-4);
+   - a statistician signs off the centred power model (B19-OPEN-4; brief: `docs/STATISTICIAN_BRIEF.md`, B20_R61);
    - an independent custodian runs SELECT, register and evaluate on its own machine.
 2. **Adopt or decline the generated-rows reference** (B20R35-OPEN-1; `docs/GENERATED_ROWS_REFERENCE.md`). It is what makes the dense regime of B20_R38 certifiable, and so the only path found so far to a "beyond strong baselines" GV3 run.
 3. **B20R24-OPEN-2:** align the calibration's certification limit (at least 90% certified within 60 s) with the plan's unsupported limit (at most 5% at 600 s) before a real run. B20_R30 measured both on 90 fresh `e1b` hosts: 86/90 at 60 s, 90/90 at 600 s (unsupported upper bound 3.27%), **LIMITS_CONSISTENT** on this family (`evidence/certification_budget_b20r30/`). The choice stays the reviewer's.

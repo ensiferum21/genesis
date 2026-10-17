@@ -114,6 +114,7 @@ needs people: a reviewer, a statistician, an independent custodian on its own ma
 | B20_R58 | Sum-free pattern selection (GV4 pilot): **NO_HEADROOM**; all 17 patterns beat every subset |
 | B20_R59 | Internal replication of B20_R57: **NOT_REPLICATED** on coverage (23 vs 21, p 0.25); the bound advantage replicates (+3.9) |
 | B20_R60 | GV4 fallback claim **drafted** (`handoff/gv4/FALLBACK_CLAIM_DRAFT.md`): E1d as a useful solver, its ablation, and (if certification counts) the generated rows; BY table derived from the evidence |
+| B20_R61 | Statistician's brief (`docs/STATISTICIAN_BRIEF.md`): every power analysis reproduces; flags E1b-C4's underpowered placebo size, four causal power analyses bound to the wrong family, and the claim-vs-rule wording |
 
 ## 6. Next steps, in order
 
@@ -127,7 +128,7 @@ needs people: a reviewer, a statistician, an independent custodian on its own ma
 3. **After decisions:**
    - freeze the adopted DRAFT rules and packages;
    - have an independent custodian run SELECT, register and evaluate for E1d (and E1/E1b/E1b-C4 within scope);
-   - with a statistician, sign off the power models.
+   - with a statistician, sign off the power models (`docs/STATISTICIAN_BRIEF.md`; fix its findings 1–3 at the freeze).
 4. **GV4:** if a new domain is chosen, run a headroom pilot first (the B20_R3/R53 pattern) before any study.
    Otherwise the fallback claim is drafted (`handoff/gv4/FALLBACK_CLAIM_DRAFT.md`, B20_R60) for the reviewer to accept,
    narrow or reject.
