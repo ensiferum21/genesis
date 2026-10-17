@@ -538,16 +538,18 @@ WORKSTREAMS = {
             'B20_R41: E1d readiness under the DRAFT rule e1-hard-v3-draft, READY_FOR_REVIEW against HiGHS at 4x budget; '
             'B20_R43: E1d DRAFT package and a SUPPORTED same-operator rehearsal through the v5 path; '
             'B20_R44: registered ablation of the discovered representation, READY_FOR_REVIEW, null control clean; '
-            'B20_R45: the ablation evaluation rehearsed through the v5 custody path, SUPPORTED)', B,
+            'B20_R45: the ablation evaluation rehearsed through the v5 custody path, SUPPORTED; '
+            'B20_R63: the advantage over HiGHS ends between 8x and 16x its budget, CROSSOVER_AT_8S)', B,
             ['src/genesis/domains.py', 'src/genesis/calibration.py', 'configs/dev_calibration.json',
              'evidence/certification_budget_b20r30/summary.json', 'evidence/strong_baseline_audit_b20r33/summary.json',
              'evidence/mip_hard_probe_b20r34/summary.json', 'evidence/dense_strong_baseline_b20r38/summary.json',
              'evidence/e1d_readiness_b20r41/summary.json', 'evidence/e1d_package_b20r43/summary.json',
-             'evidence/e1d_ablation_b20r44/summary.json', 'evidence/e1d_ablation_rehearsal_b20r45/rehearsal_summary.json'],
+             'evidence/e1d_ablation_b20r44/summary.json', 'evidence/e1d_ablation_rehearsal_b20r45/rehearsal_summary.json',
+             'scripts/b20r63_e1d_crossover.py', 'evidence/e1d_crossover_b20r63/summary.json'],
             [G + 'test_domain_adapters.py', G + 'test_calibration.py', G + 'test_calibration_rules.py',
              G + 'test_certification_budget.py', G + 'test_strong_baseline_audit.py', G + 'test_mip_hard_probe.py',
              G + 'test_dense_strong_baseline.py', G + 'test_e1d_readiness.py', G + 'test_e1d_package.py',
-             G + 'test_e1d_ablation.py', G + 'test_e1d_ablation_rehearsal.py']),
+             G + 'test_e1d_ablation.py', G + 'test_e1d_ablation_rehearsal.py', G + 'test_e1d_crossover.py']),
     'W06': ('Independent custody and preregistration (B20_R40: candidate registry v2 with per-kind identity and an '
             'exact-MIP baseline kind; B20_R42: wired opt-in through request v5 and a registry dispatcher, not adopted)', B,
             ['src/genesis/custody_records.py', 'src/genesis/custodian.py', 'src/genesis/decision_record.py',

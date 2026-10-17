@@ -82,6 +82,7 @@ The rehearsal licenses nothing. Every role was played by one operator, and the b
 | `exposure_hosts_addendum_b20r49.json` | B20_R49: the 40 DEV C4 hosts of the C4 rows ablation study (c4_host_v2, erdos n30 p0.2 and n36 p0.17); none is in this package's settings. |
 | `exposure_hosts_addendum_b20r50.json` | B20_R50: the 62 DEV C4 hosts of the E1b-C4 readiness study (32 calibration hosts in four erdos settings, 30 pilot hosts in erdos n30 p0.2 and n40 p0.15); none is in this package's settings. |
 | `exposure_hosts_addendum_b20r52.json` | B20_R52: the C4 hosts of the E1b-C4 same-operator rehearsal (30 SELECT, 20 CONFIRM, 9 from a disclosed development look) in erdos n30 p0.2 and n40 p0.15; none is in this package's settings. |
+| `exposure_hosts_addendum_b20r63.json` | B20_R63: the 30 DEV hosts of the E1d budget-crossover study, in the dense planted E1d settings; none is in this package's settings. |
 | `package_index.json` | Identities, the calibration, the verdicts and the rehearsal outcomes. |
 | `decision_record_DRAFT_v2.json`, `pilot_summary_b20r12.json`, `power_analysis_centred_b20r12.json` | B20_R12 (`e1-hard-v1`: UNDERPOWERED). Kept. |
 | `decision_record_DRAFT.json`, `b19_*.json`, `exposure_hosts_to_exclude.json` | B19 and the earlier exposure list. Kept. |

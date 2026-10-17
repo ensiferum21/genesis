@@ -76,7 +76,7 @@ bash deployment/reproduce.sh <zip> <sha256> <out> --build-toolchain
 | Gate | State | Key evidence |
 |---|---|---|
 | GV0–GV2 (foundations, custody, reproducibility) | Built; release matrix green (about 1,400 tests, one declared skip); checkpoints reproduce on the build host. Independent review and a second machine are missing | `NEXT_ACTIONS.md` checkpoints; `deployment/` |
-| GV3 (useful discovery beyond strong baselines) | Builder side done for E1, E1b, E1b-C4 and E1d. **E1d** beats HiGHS at 4× budget (+9.80 per host, SUPPORTED rehearsal; ablation +7.07, null clean). E1, E1b and E1b-C4 are READY_FOR_REVIEW against DSL baselines but MIP-dominated (B20R33-OPEN-1) | `handoff/e1`, `e1b`, `e1b_c4`, `e1d` |
+| GV3 (useful discovery beyond strong baselines) | Builder side done for E1, E1b, E1b-C4 and E1d. **E1d** beats HiGHS at 4× budget (+9.80 per host, SUPPORTED rehearsal; ablation +7.07, null clean); the advantage ends between 8× and 16× (B20_R63: HiGHS ties from 32×, proving every optimum in about 6 CPU s). E1, E1b and E1b-C4 are READY_FOR_REVIEW against DSL baselines but MIP-dominated (B20R33-OPEN-1) | `handoff/e1`, `e1b`, `e1b_c4`, `e1d` |
 | GV4 (better improver) | **UNESTABLISHED; the main risk.** No probed domain has research-policy headroom: graph construction (selection, proposal), the equational systems (nine settings, including Wolfram at hard settings: selection, keeping, larger conjecture spaces), larger C4 rows, sum-free pattern selection (B20_R58). The builder recommends the roadmap's fallback. Six invented components have no construction utility after cost. Two certification utilities survive false-discovery control (B20_R35, B20_R48) | `handoff/gv4/README.md` (DRAFT) |
 | GV5 (compounding generations) | Not started (depends on GV4) | — |
 | GV6 (structural transfer) | A positive near-domain chain in C4 (B20_R46–R52: invented, Lean-checked rows; utility attributed to them, 36 vs 24 of 40). Equational target: no headroom (B20_R53–R54). Sum-free target (a different theorem family): the procedure transfers, 20/20 Lean (B20_R55); NO_CERTIFICATION_UTILITY unenriched (B20_R56), **CERTIFICATION_UTILITY** on hosts hard for the conventional route (B20_R57, 22 vs 14, p 0.0039), **not replicated** (B20_R59, 23 vs 21, p 0.25); the certified-bound advantage replicated | `handoff/gv6/README.md` (DRAFT) |
@@ -116,6 +116,7 @@ needs people: a reviewer, a statistician, an independent custodian on its own ma
 | B20_R60 | GV4 fallback claim **drafted** (`handoff/gv4/FALLBACK_CLAIM_DRAFT.md`): E1d as a useful solver, its ablation, and (if certification counts) the generated rows; BY table derived from the evidence |
 | B20_R61 | Statistician's brief (`docs/STATISTICIAN_BRIEF.md`): every power analysis reproduces; flags E1b-C4's underpowered placebo size, four causal power analyses bound to the wrong family, and the claim-vs-rule wording |
 | B20_R62 | Causal power analyses rebound to the custodian's families; at 10,000 simulations only E1b-C4's placebo changes size (10 -> 12 per stratum) |
+| B20_R63 | E1d budget crossover: **CROSSOVER_AT_8S**. Candidate − HiGHS +10.30 at 4×, +6.37 at 8×, +0.43 at 16× (not material), tie at 32×–64× (HiGHS proves every optimum in about 6 CPU s). The 4× claim replicates; the advantage is speed, not quality at any budget |
 
 ## 6. Next steps, in order
 

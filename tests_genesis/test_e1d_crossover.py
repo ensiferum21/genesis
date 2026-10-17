@@ -1,6 +1,11 @@
 """B20_R63: the E1d crossover study. Design: fresh seeds, the arms (the 2 s arm is the E1d package's HiGHS
-baseline, the candidate is the package's), the budget profiles, and the verdict rule."""
+baseline, the candidate is the package's), the budget profiles, and the verdict rule.
+
+Record (B20_R63): CROSSOVER_AT_8S. The verdict recomputes from the rows (4x +10.30 and 8x +6.37 ADVANTAGE; 16x
++0.43 UNRESOLVED; 32x and 64x NO_MATERIAL_DIFFERENCE); no arm exceeds a certified optimum; the arms are the
+registered descriptors; the 30 hosts are distinct and in the e1/e1b exposure addenda."""
 from pathlib import Path
+import json
 import re
 import sys
 import unittest
@@ -49,6 +54,45 @@ class Design(unittest.TestCase):
         self.assertAlmostEqual(est, 6.0)
         self.assertEqual(M.boot(by), (est, ci))
         self.assertTrue(ci[0] <= est <= ci[1])
+
+
+
+EV = ROOT / 'evidence' / 'e1d_crossover_b20r63'
+
+
+class Record(unittest.TestCase):
+    @classmethod
+    def setUpClass(cls):
+        cls.s = json.loads((EV / 'summary.json').read_text())
+        cls.rows = [json.loads(l) for l in (EV / 'rows.jsonl').read_text().splitlines() if l.strip()]
+
+    def test_verdict_recomputes_from_the_rows(self):
+        self.assertEqual(len(self.rows), 30)
+        v = M.verdict(self.rows)
+        for k in ('verdict', 'crossover_budget_s', 'per_budget', 'descriptive', 'certified', 'candidate_failures'):
+            self.assertEqual(v[k], self.s[k], k)
+        self.assertEqual((v['verdict'], v['crossover_budget_s']), ('CROSSOVER_AT_8S', 8.0))
+        got = {a: p['verdict'] for a, p in v['per_budget'].items()}
+        self.assertEqual(got, {'highs_2s': 'ADVANTAGE', 'highs_4s': 'ADVANTAGE', 'highs_8s': 'UNRESOLVED',
+                               'highs_16s': 'NO_MATERIAL_DIFFERENCE', 'highs_32s': 'NO_MATERIAL_DIFFERENCE'})
+
+    def test_arms_and_optima(self):
+        self.assertEqual(self.s['descriptors'], {n: d['descriptor_id'] for n, (_, d) in M.arms().items()})
+        for r in self.rows:
+            self.assertIsNotNone(r['optimum'])
+            self.assertTrue(all(a['value'] <= r['optimum'] for a in r['arms'].values()))
+
+    def test_hosts_are_distinct_and_in_the_addenda(self):
+        import b20r23_e1b_readiness as RD
+        from genesis.common import canonical
+        from genesis.models import GraphTask
+        tasks = [GraphTask.model_validate_json(canonical(t)) for t in json.loads((EV / 'hosts.json').read_text())['tasks']]
+        self.assertEqual(len(RD.identities(tasks)), 30)
+        self.assertEqual([t.task_id for t in tasks], [r['task_id'] for r in self.rows])
+        for pkg in ('e1', 'e1b'):
+            add = json.loads((ROOT / 'handoff' / pkg / 'exposure_hosts_addendum_b20r63.json').read_text())
+            self.assertTrue(RD.identities(tasks) <= RD.identities([GraphTask.model_validate_json(canonical(t))
+                                                                    for t in add]))
 
 
 if __name__ == '__main__':

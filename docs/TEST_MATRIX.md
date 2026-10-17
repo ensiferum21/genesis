@@ -57,6 +57,7 @@
 | GV4 fallback draft (B20_R60) | every quoted number renders from its cited evidence and appears verbatim, the BY family file is derived from the evidence, BY step-up, survivor statements, DRAFT wording (`tests_genesis/test_gv4_fallback.py`) | commit | must pass |
 | Statistician's brief (B20_R61) | every stored power analysis reproduces from its pilot rows, decision records carry their power analyses, the brief's tables and derived numbers appear verbatim, family mismatches, sign-flip floor, Monte Carlo rule (`tests_genesis/test_statistician_brief.py`) | commit | must pass |
 | Power rebind (B20_R62) | family binding of every written power analysis, the rebound analyses against an exact recomputation, the 10,000-simulation choices against their grids, a re-simulation of the flagged analysis, the summary against the files (`tests_genesis/test_power_rebind.py`) | commit | must pass |
+| E1d crossover (B20_R63) | fresh seeds, the arms (the 2 s arm is the package's), budget profiles, the rule; the verdict recomputes from the rows (CROSSOVER_AT_8S), no arm exceeds a certified optimum, the hosts are in the exposure addenda (`tests_genesis/test_e1d_crossover.py`) | commit | must pass |
 | Requirements ledger | every spec section, roadmap item and catalogue entry has a disposition with resolvable tests (`test_ledger.py`) | commit | must pass |
 
 Run: `python3 scripts/run_test_matrix.py --profile commit|nightly|release --report out.json`.

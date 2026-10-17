@@ -1,0 +1,186 @@
+{
+ "boot_seed": 20266399,
+ "candidate_failures": 0,
+ "certified": 30,
+ "code_identity": "c01c1873bb257c4ddb64c2349889ec5694203ad532e5dcef64f96c184f824192",
+ "crossover_budget_s": 8.0,
+ "descriptive": {
+  "certified_by_stratum": {
+   "planted_cluster:2269386b": [
+    10,
+    10
+   ],
+   "planted_cluster:6493e4fc": [
+    10,
+    10
+   ],
+   "planted_cluster:9491bde8": [
+    10,
+    10
+   ]
+  },
+  "exceeds_optimum": {
+   "candidate": 0,
+   "highs_16s": 0,
+   "highs_2s": 0,
+   "highs_32s": 0,
+   "highs_4s": 0,
+   "highs_8s": 0
+  },
+  "mean_gap_to_optimum": {
+   "candidate": 0.0333,
+   "highs_16s": 0.0,
+   "highs_2s": 10.3333,
+   "highs_32s": 0.0,
+   "highs_4s": 6.4,
+   "highs_8s": 0.4667
+  },
+  "non_monotone_highs": 0,
+  "optimum_hits": {
+   "candidate": 29,
+   "highs_16s": 30,
+   "highs_2s": 7,
+   "highs_32s": 30,
+   "highs_4s": 10,
+   "highs_8s": 26
+  },
+  "reference_wall_s_median": 13.922
+ },
+ "descriptors": {
+  "candidate": "f4c7f4b0e5ced594f014dff8bc66703f2f545a52c1972a3d2a3cac42a8f195b1",
+  "highs_16s": "3017b7cbb6811ca985d2439ac605a406f07c2a1f5dcd32991040b68cd7f42410",
+  "highs_2s": "1815deba84df4e578fbd7555f8cdf4d601e8c0e25d623f55ee80ef3ce319e976",
+  "highs_32s": "eb311e972550aaeb063aaf0c1ead5769d8f86c8ca8194bf2e1e9907f946225e1",
+  "highs_4s": "b633485a02b843321a466c7b6bbeb8b9bb0f15fa0d934603d993493edd39de4c",
+  "highs_8s": "f7b4a9250ac5fd5511141e97c4a866774077bc2caf6a1535ad02d930d99ee4e9"
+ },
+ "exposure_scan": {
+  "calibration_hosts": 456,
+  "distinct_hosts": 2957,
+  "e1_named_hosts": 711,
+  "empty_files_skipped": [
+   "evidence/failed-wal-final-replay.json",
+   "evidence/final-replay.json"
+  ],
+  "excluded_identities": 2957,
+  "files_scanned": 1097,
+  "host_records": 14031
+ },
+ "hosts": 30,
+ "per_budget": {
+  "highs_16s": {
+   "budget_s": 16.0,
+   "cpu_s_median": 5.966,
+   "estimate": -0.0333,
+   "failures": 0,
+   "interval_90": [
+    -0.1,
+    0.0
+   ],
+   "ratio_to_candidate": 32.0,
+   "stratum_means": {
+    "planted_cluster:2269386b": 0.0,
+    "planted_cluster:6493e4fc": 0.0,
+    "planted_cluster:9491bde8": -0.1
+   },
+   "verdict": "NO_MATERIAL_DIFFERENCE",
+   "wins_ties_losses": [
+    0,
+    29,
+    1
+   ]
+  },
+  "highs_2s": {
+   "budget_s": 2.0,
+   "cpu_s_median": 2.197,
+   "estimate": 10.3,
+   "failures": 0,
+   "interval_90": [
+    8.7667,
+    11.8333
+   ],
+   "ratio_to_candidate": 4.0,
+   "stratum_means": {
+    "planted_cluster:2269386b": 11.4,
+    "planted_cluster:6493e4fc": 5.3,
+    "planted_cluster:9491bde8": 14.2
+   },
+   "verdict": "ADVANTAGE",
+   "wins_ties_losses": [
+    23,
+    7,
+    0
+   ]
+  },
+  "highs_32s": {
+   "budget_s": 32.0,
+   "cpu_s_median": 6.363,
+   "estimate": -0.0333,
+   "failures": 0,
+   "interval_90": [
+    -0.1,
+    0.0
+   ],
+   "ratio_to_candidate": 64.0,
+   "stratum_means": {
+    "planted_cluster:2269386b": 0.0,
+    "planted_cluster:6493e4fc": 0.0,
+    "planted_cluster:9491bde8": -0.1
+   },
+   "verdict": "NO_MATERIAL_DIFFERENCE",
+   "wins_ties_losses": [
+    0,
+    29,
+    1
+   ]
+  },
+  "highs_4s": {
+   "budget_s": 4.0,
+   "cpu_s_median": 4.157,
+   "estimate": 6.3667,
+   "failures": 0,
+   "interval_90": [
+    4.7333,
+    8.0
+   ],
+   "ratio_to_candidate": 8.0,
+   "stratum_means": {
+    "planted_cluster:2269386b": 7.8,
+    "planted_cluster:6493e4fc": 0.3,
+    "planted_cluster:9491bde8": 11.0
+   },
+   "verdict": "ADVANTAGE",
+   "wins_ties_losses": [
+    20,
+    10,
+    0
+   ]
+  },
+  "highs_8s": {
+   "budget_s": 8.0,
+   "cpu_s_median": 6.146,
+   "estimate": 0.4333,
+   "failures": 0,
+   "interval_90": [
+    0.0333,
+    0.9
+   ],
+   "ratio_to_candidate": 16.0,
+   "stratum_means": {
+    "planted_cluster:2269386b": 0.2,
+    "planted_cluster:6493e4fc": 0.0,
+    "planted_cluster:9491bde8": 1.1
+   },
+   "verdict": "UNRESOLVED",
+   "wins_ties_losses": [
+    4,
+    25,
+    1
+   ]
+  }
+ },
+ "schema": "genesis-b20r63-e1d-crossover-v1",
+ "seed": 20266301,
+ "status": "DEV diagnostic for the comparator decision; licenses nothing; no package changed",
+ "verdict": "CROSSOVER_AT_8S"
+}

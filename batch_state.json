@@ -800,14 +800,16 @@
         "result": "Statistician's brief (docs/STATISTICIAN_BRIEF.md, B19-OPEN-4): all nine stored power analyses reproduce exactly from pilot rows. Flags: E1b-C4 placebo underpowered at n 10 (0.764 at 10,000 sims; n 12 needed); four causal power analyses bound to sealed_evaluation instead of ablation/placebo (recomputed 1.000, 0.980, 0.992, n 12 0.879); claim wording vs point-estimate rule; stratum-level sign flip floored at 0.125; unsupported hosts cluster in one stratum. Documentation only; packages unchanged"
       },
       "B20_R62": {
-        "commits": [],
+        "commits": [
+          "02d7873"
+        ],
         "result": "Causal power analyses (E1b, E1b-C4 ablation/placebo) recomputed under the custodian's ablation:/placebo: families: 1.000, 0.980, 0.992, E1b-C4 placebo n 12 at 0.879. All nine re-sized at 10,000 simulations: only E1b-C4 placebo changes (10 -> 12). evidence/power_rebind_b20r62/. Packages unchanged except README pointers"
       },
       "B20_R63": {
         "commits": [
           "fca3c47"
         ],
-        "result": "running"
+        "result": "E1d budget crossover (30 fresh hosts): candidate - HiGHS +10.30 [8.77, 11.83] at 2 s (4x), +6.37 at 4 s (8x), +0.43 [0.03, 0.90] at 8 s (16x, UNRESOLVED), tie at 16 s and 32 s (HiGHS optimal 30/30, about 6 CPU s). CROSSOVER_AT_8S. The builder's expectation (advantage through 16x) and its relaxation reading were wrong; the advantage is speed. Fallback draft, E1d README, review brief updated. Exposure addenda (30 hosts)"
       }
     },
     "open_after_b20_r5": [
@@ -1208,6 +1210,9 @@
     ],
     "open_after_b20_r62": [
       "B19-OPEN-4 updated: rebound causal power analyses and 10,000-simulation sizing ready for the freeze"
+    ],
+    "open_after_b20_r63": [
+      "B20R41-OPEN-1 updated: the comparator budget is measured (crossover between 8x and 16x)"
     ]
   }
 }

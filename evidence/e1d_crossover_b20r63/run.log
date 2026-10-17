@@ -1,0 +1,34 @@
+[    0.0s] pinned to CPU 0
+[    0.0s] SAT tools: cadical@24fb99286ca1ea9a, drat-trim@92f0aa9575ed519d
+[    6.5s] exposure: 2957 identities (2957 named hosts, 711 E1 hosts, 456 calibration hosts)
+[   68.6s] 0000: candidate 118 highs 104 104 118 118 118 opt 118 [118..118] 28.5s
+[  115.9s] 0001: candidate 118 highs 99 99 118 118 118 opt 118 [118..118] 17.7s
+[  157.7s] 0002: candidate 115 highs 105 105 115 115 115 opt 115 [115..115] 13.2s
+[  216.4s] 0003: candidate 127 highs 110 110 125 127 127 opt 127 [127..127] 22.1s
+[  263.1s] 0004: candidate 128 highs 113 127 128 128 128 opt 128 [128..128] 17.2s
+[  284.9s] 0005: candidate 120 highs 120 120 120 120 120 opt 120 [120..120] 12.9s
+[  333.3s] 0006: candidate 117 highs 105 115 117 117 117 opt 117 [117..117] 20.0s
+[  383.6s] 0007: candidate 118 highs 104 104 118 118 118 opt 118 [118..118] 18.8s
+[  421.4s] 0008: candidate 122 highs 109 121 122 122 122 opt 122 [122..122] 13.8s
+[  436.4s] 0009: candidate 119 highs 119 119 119 119 119 opt 119 [119..119] 9.9s
+[  482.5s] 0000: candidate 117 highs 102 102 117 117 117 opt 117 [117..117] 14.5s
+[  522.0s] 0001: candidate 116 highs 99 113 116 116 116 opt 116 [116..116] 14.3s
+[  590.7s] 0002: candidate 131 highs 115 115 128 131 131 opt 131 [131..131] 22.7s
+[  646.3s] 0003: candidate 121 highs 112 112 121 121 121 opt 121 [121..121] 22.9s
+[  697.0s] 0004: candidate 110 highs 95 95 110 110 110 opt 110 [110..110] 16.3s
+[  762.2s] 0005: candidate 126 highs 112 112 125 126 126 opt 126 [126..126] 23.7s
+[  804.5s] 0006: candidate 119 highs 103 114 119 119 119 opt 119 [119..119] 12.7s
+[  844.0s] 0007: candidate 115 highs 107 114 115 115 115 opt 115 [115..115] 14.0s
+[  889.6s] 0008: candidate 120 highs 106 106 121 121 121 opt 121 [121..121] 13.7s
+[  954.7s] 0009: candidate 115 highs 97 97 107 115 115 opt 115 [115..115] 26.3s
+[  992.2s] 0000: candidate 114 highs 102 113 114 114 114 opt 114 [114..114] 13.7s
+[ 1025.4s] 0001: candidate 115 highs 105 115 115 115 115 opt 115 [115..115] 12.3s
+[ 1063.6s] 0002: candidate 102 highs 88 100 102 102 102 opt 102 [102..102] 16.1s
+[ 1081.7s] 0003: candidate 109 highs 109 109 109 109 109 opt 109 [109..109] 10.7s
+[ 1110.5s] 0004: candidate 109 highs 103 109 109 109 109 opt 109 [109..109] 11.4s
+[ 1130.6s] 0005: candidate 111 highs 111 111 111 111 111 opt 111 [111..111] 10.0s
+[ 1153.2s] 0006: candidate 125 highs 125 125 125 125 125 opt 125 [125..125] 13.9s
+[ 1172.0s] 0007: candidate 115 highs 115 115 115 115 115 opt 115 [115..115] 10.3s
+[ 1192.4s] 0008: candidate 104 highs 104 104 104 104 104 opt 104 [104..104] 10.2s
+[ 1226.4s] 0009: candidate 114 highs 103 114 114 114 114 opt 114 [114..114] 13.5s
+[ 1226.7s] verdict CROSSOVER_AT_8S; highs_2s 10.3 [8.7667, 11.8333] ADVANTAGE; highs_4s 6.3667 [4.7333, 8.0] ADVANTAGE; highs_8s 0.4333 [0.0333, 0.9] UNRESOLVED; highs_16s -0.0333 [-0.1, 0.0] NO_MATERIAL_DIFFERENCE; highs_32s -0.0333 [-0.1, 0.0] NO_MATERIAL_DIFFERENCE
