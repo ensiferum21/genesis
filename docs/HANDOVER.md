@@ -28,7 +28,7 @@ describes that zip's own contents (see "Package contents").
 ```
 unzip GENESIS_COMPLETION_CHECKPOINT_B20_R<k>.zip -d ckpt && cd ckpt
 git clone genesis/source-history.bundle genesis-work && cd genesis-work && git checkout continuation-b20-rx
-#   or: git clone genesis-all-branches.bundle genesis-work   (the handover's bundle has every branch)
+#   or: git clone genesis-all-branches.bundle genesis-work   (the handover's bundle has both code branches)
 GENESIS_TOOLCHAIN=/srv/toolchain bash toolchain/install_tools.sh     # pinned, byte-reproducible E/CaDiCaL/drat-trim/zstd; Lean
 export GENESIS_TOOLCHAIN=/srv/toolchain PYTHONPATH=src
 python3 scripts/run_test_matrix.py --profile release --report /tmp/matrix.json   # as root (runc); ~45 min on 2 cores
@@ -137,7 +137,7 @@ needs people: a reviewer, a statistician, an independent custodian on its own ma
 |---|---|
 | `HANDOVER.md` | this file |
 | `GENESIS_COMPLETION_CHECKPOINT_B20_R<k>.zip` and `.sha256` | the latest checkpoint: source tree, history bundle, release-matrix report, SHA-256 manifest |
-| `genesis-all-branches.bundle` | a git bundle with `continuation-b20-rx`, `side-b21-equational` and `archive` (verify with `git bundle verify`) |
+| `genesis-all-branches.bundle` | a self-contained git bundle (no prerequisites) of `continuation-b20-rx` and `side-b21-equational`; verify with `git bundle verify`. The `archive` branch (16 checkpoint zips, about 410 MB) is not included; its checkpoints were delivered one by one |
 | `NEXT_ACTIONS.md`, `B20_R57_REVIEW_BRIEF.md` | status, decisions |
 | `*.rehearsal.json` | driver rehearsal reports for the checkpoints in the zip (when present) |
 | `SHA256SUMS` | the checksums of everything above |
