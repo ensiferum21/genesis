@@ -1,0 +1,251 @@
+{
+ "boot_seed": 20266499,
+ "by_n": {
+  "40": {
+   "at_best_known": {
+    "candidate": 10,
+    "highs_2s": 0,
+    "highs_32s": 10,
+    "highs_8s": 1
+   },
+   "candidate_failures": 0,
+   "certified": 9,
+   "crossover_budget_s": 32.0,
+   "edges": [
+    177,
+    194
+   ],
+   "hosts": 10,
+   "mean_gap_to_best_known": {
+    "candidate": 0.0,
+    "highs_2s": 33.6,
+    "highs_32s": 0.0,
+    "highs_8s": 11.3
+   },
+   "non_monotone_highs": 0,
+   "per_budget": {
+    "highs_2s": {
+     "budget_s": 2.0,
+     "cpu_s_median": 1.442,
+     "estimate": 33.6,
+     "failures": 0,
+     "interval_90": [
+      18.5,
+      49.9
+     ],
+     "verdict": "ADVANTAGE",
+     "wins_ties_losses": [
+      10,
+      0,
+      0
+     ]
+    },
+    "highs_32s": {
+     "budget_s": 32.0,
+     "cpu_s_median": 7.849,
+     "estimate": 0.0,
+     "failures": 0,
+     "interval_90": [
+      0.0,
+      0.0
+     ],
+     "verdict": "NO_MATERIAL_DIFFERENCE",
+     "wins_ties_losses": [
+      0,
+      10,
+      0
+     ]
+    },
+    "highs_8s": {
+     "budget_s": 8.0,
+     "cpu_s_median": 4.429,
+     "estimate": 11.3,
+     "failures": 0,
+     "interval_90": [
+      7.5,
+      14.7
+     ],
+     "verdict": "ADVANTAGE",
+     "wins_ties_losses": [
+      9,
+      1,
+      0
+     ]
+    }
+   },
+   "reference_wall_s_median": 20.461
+  },
+  "50": {
+   "at_best_known": {
+    "candidate": 7,
+    "highs_2s": 0,
+    "highs_32s": 6,
+    "highs_8s": 0
+   },
+   "candidate_failures": 0,
+   "certified": 9,
+   "crossover_budget_s": 32.0,
+   "edges": [
+    277,
+    312
+   ],
+   "hosts": 10,
+   "mean_gap_to_best_known": {
+    "candidate": 0.4,
+    "highs_2s": 142.4,
+    "highs_32s": 0.7,
+    "highs_8s": 25.8
+   },
+   "non_monotone_highs": 0,
+   "per_budget": {
+    "highs_2s": {
+     "budget_s": 2.0,
+     "cpu_s_median": 1.561,
+     "estimate": 142.0,
+     "failures": 0,
+     "interval_90": [
+      139.3,
+      145.0
+     ],
+     "verdict": "ADVANTAGE",
+     "wins_ties_losses": [
+      10,
+      0,
+      0
+     ]
+    },
+    "highs_32s": {
+     "budget_s": 32.0,
+     "cpu_s_median": 20.86,
+     "estimate": 0.3,
+     "failures": 0,
+     "interval_90": [
+      -0.3,
+      0.8
+     ],
+     "verdict": "UNRESOLVED",
+     "wins_ties_losses": [
+      4,
+      5,
+      1
+     ]
+    },
+    "highs_8s": {
+     "budget_s": 8.0,
+     "cpu_s_median": 5.157,
+     "estimate": 25.4,
+     "failures": 0,
+     "interval_90": [
+      24.3,
+      26.5
+     ],
+     "verdict": "ADVANTAGE",
+     "wins_ties_losses": [
+      10,
+      0,
+      0
+     ]
+    }
+   },
+   "reference_wall_s_median": 26.812
+  },
+  "60": {
+   "at_best_known": {
+    "candidate": 7,
+    "highs_2s": 0,
+    "highs_32s": 0,
+    "highs_8s": 0
+   },
+   "candidate_failures": 0,
+   "certified": 5,
+   "crossover_budget_s": null,
+   "edges": [
+    409,
+    440
+   ],
+   "hosts": 10,
+   "mean_gap_to_best_known": {
+    "candidate": 0.5,
+    "highs_2s": 209.4,
+    "highs_32s": 39.5,
+    "highs_8s": 113.1
+   },
+   "non_monotone_highs": 0,
+   "per_budget": {
+    "highs_2s": {
+     "budget_s": 2.0,
+     "cpu_s_median": 1.53,
+     "estimate": 208.9,
+     "failures": 0,
+     "interval_90": [
+      205.2,
+      212.8
+     ],
+     "verdict": "ADVANTAGE",
+     "wins_ties_losses": [
+      10,
+      0,
+      0
+     ]
+    },
+    "highs_32s": {
+     "budget_s": 32.0,
+     "cpu_s_median": 22.071,
+     "estimate": 39.0,
+     "failures": 0,
+     "interval_90": [
+      29.8,
+      48.0
+     ],
+     "verdict": "ADVANTAGE",
+     "wins_ties_losses": [
+      10,
+      0,
+      0
+     ]
+    },
+    "highs_8s": {
+     "budget_s": 8.0,
+     "cpu_s_median": 6.868,
+     "estimate": 112.6,
+     "failures": 0,
+     "interval_90": [
+      74.1,
+      154.6
+     ],
+     "verdict": "ADVANTAGE",
+     "wins_ties_losses": [
+      10,
+      0,
+      0
+     ]
+    }
+   },
+   "reference_wall_s_median": 82.859
+  }
+ },
+ "code_identity": "c056b21bd39dfeaa498d6f0f487129bcc290e4e50624931f0d3b136411caaad7",
+ "descriptors": {
+  "candidate": "f4c7f4b0e5ced594f014dff8bc66703f2f545a52c1972a3d2a3cac42a8f195b1",
+  "highs_2s": "1815deba84df4e578fbd7555f8cdf4d601e8c0e25d623f55ee80ef3ce319e976",
+  "highs_32s": "eb311e972550aaeb063aaf0c1ead5769d8f86c8ca8194bf2e1e9907f946225e1",
+  "highs_8s": "f7b4a9250ac5fd5511141e97c4a866774077bc2caf6a1535ad02d930d99ee4e9"
+ },
+ "exposure_scan": {
+  "calibration_hosts": 456,
+  "distinct_hosts": 2987,
+  "e1_named_hosts": 711,
+  "empty_files_skipped": [
+   "evidence/failed-wal-final-replay.json",
+   "evidence/final-replay.json"
+  ],
+  "excluded_identities": 2987,
+  "files_scanned": 1102,
+  "host_records": 14121
+ },
+ "hosts": 30,
+ "schema": "genesis-b20r64-e1d-scaling-v1",
+ "seed": 20266401,
+ "status": "DEV pilot outside the calibrated settings and the 200-edge custody bound; licenses nothing",
+ "verdict": "ADVANTAGE_GROWS"
+}
