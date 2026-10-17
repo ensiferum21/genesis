@@ -1,0 +1,41 @@
+[    0.0s] pinned to CPU 0
+[  325.8s] pattern sf_sfpat_1_2_3_4: gain 0.62, rows 5, score 125.000
+[  332.5s] pattern sf_sfpat_1_2_3_4_5_6_8: gain 0.19, rows 1, score 187.500
+[  338.7s] pattern sf_sfpat_1_2_3_4_5_8: gain 0.06, rows 1, score 62.500
+[  346.2s] pattern sf_sfpat_1_2_3_4_6_7: gain 0.06, rows 1, score 62.500
+[  353.4s] pattern sf_sfpat_1_2_3_5_6_8: gain 0.06, rows 1, score 62.500
+[  362.4s] pattern sf_sfpat_1_2_4_5: gain 0.50, rows 4, score 114.286
+[  368.4s] pattern sf_sfpat_1_2_4_5_6_8: gain 0.06, rows 0, score 62.500
+[  374.6s] pattern sf_sfpat_1_2_4_5_7_8: gain 0.12, rows 1, score 125.000
+[  381.1s] pattern sf_sfpat_1_2_4_6_7_8: gain 0.06, rows 1, score 62.500
+[  388.3s] pattern sf_sfpat_1_2_5_6_7: gain 0.50, rows 231, score 2.162
+[  395.2s] pattern sf_sfpat_1_2_5_6_8: gain 0.50, rows 175, score 2.854
+[  402.5s] pattern sf_sfpat_1_2_5_7_8: gain 0.50, rows 184, score 2.721
+[  409.9s] pattern sf_sfpat_1_3_4_5_6_8: gain 0.12, rows 1, score 125.000
+[  416.1s] pattern sf_sfpat_1_3_4_5_8: gain 0.00, rows 17, score 0.000
+[  439.5s] pattern sf_sfpat_1_3_4_6_7_8: gain 4.94, rows 292, score 16.909
+[  560.4s] pattern sf_sfpat_1_3_5_6_8: gain 0.06, rows 55, score 1.143
+[  567.2s] pattern sf_sfpat_2_3_4_5_6_8: gain 0.19, rows 1, score 187.500
+[  574.0s] dev mean root bound with top-1: 115.69
+[  581.8s] dev mean root bound with top-2: 115.62
+[  593.2s] dev mean root bound with top-4: 114.75
+[  605.0s] dev mean root bound with top-8: 114.19
+[  758.4s] dev mean root bound with top-17: 108.94
+[  758.4s] ranked ['sf_sfpat_1_2_3_4_5_6_8', 'sf_sfpat_2_3_4_5_6_8', 'sf_sfpat_1_2_3_4', 'sf_sfpat_1_2_4_5_7_8', 'sf_sfpat_1_3_4_5_6_8', 'sf_sfpat_1_2_4_5', 'sf_sfpat_1_2_3_4_5_8', 'sf_sfpat_1_2_3_4_6_7']; dev k 8
+[  844.5s] eval sf_N300_p0.6_20265821 done
+[  984.3s] eval sf_N300_p0.6_20265822 done
+[ 1002.2s] eval sf_N300_p0.6_20265823 done
+[ 1020.2s] eval sf_N300_p0.6_20265824 done
+[ 1054.4s] eval sf_N300_p0.6_20265825 done
+[ 1102.3s] eval sf_N300_p0.6_20265826 done
+[ 1278.0s] eval sf_N300_p0.6_20265827 done
+[ 1321.4s] eval sf_N300_p0.6_20265828 done
+[ 1497.4s] eval sf_N360_p0.6_20265831 done
+[ 1677.8s] eval sf_N360_p0.6_20265832 done
+[ 1858.2s] eval sf_N360_p0.6_20265833 done
+[ 1953.6s] eval sf_N360_p0.6_20265834 done
+[ 2110.8s] eval sf_N360_p0.6_20265835 done
+[ 2291.3s] eval sf_N360_p0.6_20265836 done
+[ 2402.0s] eval sf_N360_p0.6_20265837 done
+[ 2494.8s] eval sf_N360_p0.6_20265838 done
+[ 2494.8s] verdict NO_HEADROOM: H -2 (oracle TOP8 vs base ALL); dev TOP8 - base -2; table {"NONE": [10, 283.179], "ALL": [13, 321.781], "TOP1": [9, 300.425], "TOP2": [10, 285.0], "TOP4": [10, 277.083], "TOP8": [11, 268.558]}

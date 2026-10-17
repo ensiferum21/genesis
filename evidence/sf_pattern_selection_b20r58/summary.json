@@ -1,0 +1,146 @@
+{
+ "H": -2,
+ "base": "ALL",
+ "budget_s": 30,
+ "by_setting": {
+  "random_subset_N300_p0.6": {
+   "ALL": {
+    "certified": 8,
+    "hosts": 8,
+    "sound": true,
+    "wall_s": 114.141
+   },
+   "NONE": {
+    "certified": 7,
+    "hosts": 8,
+    "sound": true,
+    "wall_s": 91.368
+   },
+   "TOP1": {
+    "certified": 7,
+    "hosts": 8,
+    "sound": true,
+    "wall_s": 90.476
+   },
+   "TOP2": {
+    "certified": 7,
+    "hosts": 8,
+    "sound": true,
+    "wall_s": 90.696
+   },
+   "TOP4": {
+    "certified": 7,
+    "hosts": 8,
+    "sound": true,
+    "wall_s": 88.927
+   },
+   "TOP8": {
+    "certified": 7,
+    "hosts": 8,
+    "sound": true,
+    "wall_s": 87.203
+   }
+  },
+  "random_subset_N360_p0.6": {
+   "ALL": {
+    "certified": 5,
+    "hosts": 8,
+    "sound": true,
+    "wall_s": 207.64
+   },
+   "NONE": {
+    "certified": 3,
+    "hosts": 8,
+    "sound": true,
+    "wall_s": 191.811
+   },
+   "TOP1": {
+    "certified": 2,
+    "hosts": 8,
+    "sound": true,
+    "wall_s": 209.949
+   },
+   "TOP2": {
+    "certified": 3,
+    "hosts": 8,
+    "sound": true,
+    "wall_s": 194.304
+   },
+   "TOP4": {
+    "certified": 3,
+    "hosts": 8,
+    "sound": true,
+    "wall_s": 188.156
+   },
+   "TOP8": {
+    "certified": 4,
+    "hosts": 8,
+    "sound": true,
+    "wall_s": 181.355
+   }
+  }
+ },
+ "claim": "none; a GV4 headroom diagnostic in the certification setting",
+ "code_identity": "08689a1a919a9649c7e8db4c56db449962e07a38d75387e1fddb90a8c0c006c8",
+ "dev_k": 8,
+ "dev_minus_base": -2,
+ "dev_set": "TOP8",
+ "ks": [
+  1,
+  2,
+  4,
+  8
+ ],
+ "oracle": "TOP8",
+ "registry": {
+  "package_sha256": "7f19273f9078d9bb016d93488f29fbef9070c52bffa78fed599e798b6457e070",
+  "sha256": "37be30f13720f38b954c5ad0b279586852dad8c93ea4bb5f97980cf178cecc35"
+ },
+ "rule": {
+  "headroom": 3,
+  "time_share": 0.75
+ },
+ "schema": "genesis-b20r58-sf-pattern-selection-v1",
+ "status": "DESIGN_PILOT_DEV",
+ "table": {
+  "ALL": {
+   "certified": 13,
+   "hosts": 16,
+   "sound": true,
+   "wall_s": 321.781
+  },
+  "NONE": {
+   "certified": 10,
+   "hosts": 16,
+   "sound": true,
+   "wall_s": 283.179
+  },
+  "TOP1": {
+   "certified": 9,
+   "hosts": 16,
+   "sound": true,
+   "wall_s": 300.425
+  },
+  "TOP2": {
+   "certified": 10,
+   "hosts": 16,
+   "sound": true,
+   "wall_s": 285.0
+  },
+  "TOP4": {
+   "certified": 10,
+   "hosts": 16,
+   "sound": true,
+   "wall_s": 277.083
+  },
+  "TOP8": {
+   "certified": 11,
+   "hosts": 16,
+   "sound": true,
+   "wall_s": 268.558
+  }
+ },
+ "values_agree": true,
+ "verdict": "NO_HEADROOM",
+ "within": 0.5
+}

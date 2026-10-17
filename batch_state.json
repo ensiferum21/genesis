@@ -752,9 +752,16 @@
       },
       "B20_R57": {
         "commits": [
-          "a64952b"
+          "a64952b",
+          "1544b14"
         ],
         "result": "Hardness-enriched follow-up to B20_R56: fresh candidates screened by route a alone (Schur rows, 20 s, from the 10 s witness); 40 of 72 included. Both routes 60 s: certified a 14, c 22 (0/8 discordant, McNemar p 0.0039); wall saving +6.02 s [2.50, 9.88]; all sound: CERTIFICATION_UTILITY. Secondary: certified upper bound a - c +6.875 [5.375, 8.475]: BOUND_UTILITY. Survives BY at q = 0.1 over 13 attempts"
+      },
+      "B20_R58": {
+        "commits": [
+          "641ff38"
+        ],
+        "result": "Design pilot (GV4 headroom): sum-free pattern selection. Patterns scored on 16 development hosts (root-bound gain per separation row); on 16 fresh evaluation hosts at 30 s: ALL 13 certified, NONE 10, TOP-1/2/4/8 9/10/10/11; ORACLE-K TOP8 vs BASE ALL: H -2; DEV-K TOP8 -2; all sound: NO_HEADROOM. Patterns alone move the root bound 0.1-0.6, together 7: their value is joint"
       }
     },
     "open_after_b20_r5": [
@@ -1140,6 +1147,9 @@
     ],
     "open_after_b20_r57": [
       "B20R46-OPEN-1 and B20R35-OPEN-1 updated: positive enriched result in the sum-free target; reviewer decisions stand"
+    ],
+    "open_after_b20_r58": [
+      "B20R9-OPEN-1 updated: no probed setting has research-decision headroom; builder recommends the GV4 fallback for the reviewer"
     ]
   }
 }

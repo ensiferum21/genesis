@@ -1,0 +1,1783 @@
+{
+ "dev_k": 8,
+ "mean_root": {
+  "1": 115.6875,
+  "17": 108.9375,
+  "2": 115.625,
+  "4": 114.75,
+  "8": 114.1875
+ },
+ "mean_root_none": 115.875,
+ "per_pattern": {
+  "sf_sfpat_1_2_3_4": {
+   "gain": 0.625,
+   "hosts": [
+    {
+     "gain": 0,
+     "root": 109,
+     "rows_added": 5,
+     "task_id": "sf_N300_p0.6_20265801"
+    },
+    {
+     "gain": 0,
+     "root": 100,
+     "rows_added": 2,
+     "task_id": "sf_N300_p0.6_20265802"
+    },
+    {
+     "gain": 1,
+     "root": 101,
+     "rows_added": 6,
+     "task_id": "sf_N300_p0.6_20265803"
+    },
+    {
+     "gain": 0,
+     "root": 108,
+     "rows_added": 2,
+     "task_id": "sf_N300_p0.6_20265804"
+    },
+    {
+     "gain": 1,
+     "root": 112,
+     "rows_added": 10,
+     "task_id": "sf_N300_p0.6_20265805"
+    },
+    {
+     "gain": 0,
+     "root": 107,
+     "rows_added": 4,
+     "task_id": "sf_N300_p0.6_20265806"
+    },
+    {
+     "gain": 2,
+     "root": 93,
+     "rows_added": 6,
+     "task_id": "sf_N300_p0.6_20265807"
+    },
+    {
+     "gain": 1,
+     "root": 111,
+     "rows_added": 5,
+     "task_id": "sf_N300_p0.6_20265808"
+    },
+    {
+     "gain": 0,
+     "root": 119,
+     "rows_added": 6,
+     "task_id": "sf_N360_p0.6_20265811"
+    },
+    {
+     "gain": 1,
+     "root": 127,
+     "rows_added": 6,
+     "task_id": "sf_N360_p0.6_20265812"
+    },
+    {
+     "gain": 0,
+     "root": 120,
+     "rows_added": 2,
+     "task_id": "sf_N360_p0.6_20265813"
+    },
+    {
+     "gain": 1,
+     "root": 120,
+     "rows_added": 8,
+     "task_id": "sf_N360_p0.6_20265814"
+    },
+    {
+     "gain": 1,
+     "root": 134,
+     "rows_added": 5,
+     "task_id": "sf_N360_p0.6_20265815"
+    },
+    {
+     "gain": 0,
+     "root": 120,
+     "rows_added": 2,
+     "task_id": "sf_N360_p0.6_20265816"
+    },
+    {
+     "gain": 1,
+     "root": 131,
+     "rows_added": 4,
+     "task_id": "sf_N360_p0.6_20265817"
+    },
+    {
+     "gain": 1,
+     "root": 132,
+     "rows_added": 7,
+     "task_id": "sf_N360_p0.6_20265818"
+    }
+   ],
+   "rows_added": 5,
+   "score": 125.0
+  },
+  "sf_sfpat_1_2_3_4_5_6_8": {
+   "gain": 0.1875,
+   "hosts": [
+    {
+     "gain": 0,
+     "root": 109,
+     "rows_added": 0,
+     "task_id": "sf_N300_p0.6_20265801"
+    },
+    {
+     "gain": 0,
+     "root": 100,
+     "rows_added": 1,
+     "task_id": "sf_N300_p0.6_20265802"
+    },
+    {
+     "gain": 0,
+     "root": 102,
+     "rows_added": 1,
+     "task_id": "sf_N300_p0.6_20265803"
+    },
+    {
+     "gain": 0,
+     "root": 108,
+     "rows_added": 1,
+     "task_id": "sf_N300_p0.6_20265804"
+    },
+    {
+     "gain": 1,
+     "root": 112,
+     "rows_added": 2,
+     "task_id": "sf_N300_p0.6_20265805"
+    },
+    {
+     "gain": 0,
+     "root": 107,
+     "rows_added": 0,
+     "task_id": "sf_N300_p0.6_20265806"
+    },
+    {
+     "gain": 0,
+     "root": 95,
+     "rows_added": 0,
+     "task_id": "sf_N300_p0.6_20265807"
+    },
+    {
+     "gain": 0,
+     "root": 112,
+     "rows_added": 3,
+     "task_id": "sf_N300_p0.6_20265808"
+    },
+    {
+     "gain": 0,
+     "root": 119,
+     "rows_added": 1,
+     "task_id": "sf_N360_p0.6_20265811"
+    },
+    {
+     "gain": 0,
+     "root": 128,
+     "rows_added": 1,
+     "task_id": "sf_N360_p0.6_20265812"
+    },
+    {
+     "gain": 0,
+     "root": 120,
+     "rows_added": 0,
+     "task_id": "sf_N360_p0.6_20265813"
+    },
+    {
+     "gain": 1,
+     "root": 120,
+     "rows_added": 1,
+     "task_id": "sf_N360_p0.6_20265814"
+    },
+    {
+     "gain": 0,
+     "root": 135,
+     "rows_added": 0,
+     "task_id": "sf_N360_p0.6_20265815"
+    },
+    {
+     "gain": 0,
+     "root": 120,
+     "rows_added": 1,
+     "task_id": "sf_N360_p0.6_20265816"
+    },
+    {
+     "gain": 1,
+     "root": 131,
+     "rows_added": 1,
+     "task_id": "sf_N360_p0.6_20265817"
+    },
+    {
+     "gain": 0,
+     "root": 133,
+     "rows_added": 0,
+     "task_id": "sf_N360_p0.6_20265818"
+    }
+   ],
+   "rows_added": 0.8125,
+   "score": 187.5
+  },
+  "sf_sfpat_1_2_3_4_5_8": {
+   "gain": 0.0625,
+   "hosts": [
+    {
+     "gain": 0,
+     "root": 109,
+     "rows_added": 0,
+     "task_id": "sf_N300_p0.6_20265801"
+    },
+    {
+     "gain": 0,
+     "root": 100,
+     "rows_added": 0,
+     "task_id": "sf_N300_p0.6_20265802"
+    },
+    {
+     "gain": 0,
+     "root": 102,
+     "rows_added": 1,
+     "task_id": "sf_N300_p0.6_20265803"
+    },
+    {
+     "gain": 0,
+     "root": 108,
+     "rows_added": 0,
+     "task_id": "sf_N300_p0.6_20265804"
+    },
+    {
+     "gain": 1,
+     "root": 112,
+     "rows_added": 4,
+     "task_id": "sf_N300_p0.6_20265805"
+    },
+    {
+     "gain": 0,
+     "root": 107,
+     "rows_added": 1,
+     "task_id": "sf_N300_p0.6_20265806"
+    },
+    {
+     "gain": 0,
+     "root": 95,
+     "rows_added": 0,
+     "task_id": "sf_N300_p0.6_20265807"
+    },
+    {
+     "gain": 0,
+     "root": 112,
+     "rows_added": 0,
+     "task_id": "sf_N300_p0.6_20265808"
+    },
+    {
+     "gain": 0,
+     "root": 119,
+     "rows_added": 0,
+     "task_id": "sf_N360_p0.6_20265811"
+    },
+    {
+     "gain": 0,
+     "root": 128,
+     "rows_added": 1,
+     "task_id": "sf_N360_p0.6_20265812"
+    },
+    {
+     "gain": 0,
+     "root": 120,
+     "rows_added": 1,
+     "task_id": "sf_N360_p0.6_20265813"
+    },
+    {
+     "gain": 0,
+     "root": 121,
+     "rows_added": 0,
+     "task_id": "sf_N360_p0.6_20265814"
+    },
+    {
+     "gain": 0,
+     "root": 135,
+     "rows_added": 0,
+     "task_id": "sf_N360_p0.6_20265815"
+    },
+    {
+     "gain": 0,
+     "root": 120,
+     "rows_added": 0,
+     "task_id": "sf_N360_p0.6_20265816"
+    },
+    {
+     "gain": 0,
+     "root": 132,
+     "rows_added": 1,
+     "task_id": "sf_N360_p0.6_20265817"
+    },
+    {
+     "gain": 0,
+     "root": 133,
+     "rows_added": 0,
+     "task_id": "sf_N360_p0.6_20265818"
+    }
+   ],
+   "rows_added": 0.5625,
+   "score": 62.5
+  },
+  "sf_sfpat_1_2_3_4_6_7": {
+   "gain": 0.0625,
+   "hosts": [
+    {
+     "gain": 0,
+     "root": 109,
+     "rows_added": 1,
+     "task_id": "sf_N300_p0.6_20265801"
+    },
+    {
+     "gain": 0,
+     "root": 100,
+     "rows_added": 0,
+     "task_id": "sf_N300_p0.6_20265802"
+    },
+    {
+     "gain": 0,
+     "root": 102,
+     "rows_added": 1,
+     "task_id": "sf_N300_p0.6_20265803"
+    },
+    {
+     "gain": 0,
+     "root": 108,
+     "rows_added": 1,
+     "task_id": "sf_N300_p0.6_20265804"
+    },
+    {
+     "gain": 1,
+     "root": 112,
+     "rows_added": 5,
+     "task_id": "sf_N300_p0.6_20265805"
+    },
+    {
+     "gain": 0,
+     "root": 107,
+     "rows_added": 1,
+     "task_id": "sf_N300_p0.6_20265806"
+    },
+    {
+     "gain": 0,
+     "root": 95,
+     "rows_added": 0,
+     "task_id": "sf_N300_p0.6_20265807"
+    },
+    {
+     "gain": 0,
+     "root": 112,
+     "rows_added": 3,
+     "task_id": "sf_N300_p0.6_20265808"
+    },
+    {
+     "gain": 0,
+     "root": 119,
+     "rows_added": 0,
+     "task_id": "sf_N360_p0.6_20265811"
+    },
+    {
+     "gain": 0,
+     "root": 128,
+     "rows_added": 1,
+     "task_id": "sf_N360_p0.6_20265812"
+    },
+    {
+     "gain": 0,
+     "root": 120,
+     "rows_added": 0,
+     "task_id": "sf_N360_p0.6_20265813"
+    },
+    {
+     "gain": 0,
+     "root": 121,
+     "rows_added": 1,
+     "task_id": "sf_N360_p0.6_20265814"
+    },
+    {
+     "gain": 0,
+     "root": 135,
+     "rows_added": 1,
+     "task_id": "sf_N360_p0.6_20265815"
+    },
+    {
+     "gain": 0,
+     "root": 120,
+     "rows_added": 0,
+     "task_id": "sf_N360_p0.6_20265816"
+    },
+    {
+     "gain": 0,
+     "root": 132,
+     "rows_added": 0,
+     "task_id": "sf_N360_p0.6_20265817"
+    },
+    {
+     "gain": 0,
+     "root": 133,
+     "rows_added": 1,
+     "task_id": "sf_N360_p0.6_20265818"
+    }
+   ],
+   "rows_added": 1,
+   "score": 62.5
+  },
+  "sf_sfpat_1_2_3_5_6_8": {
+   "gain": 0.0625,
+   "hosts": [
+    {
+     "gain": 0,
+     "root": 109,
+     "rows_added": 0,
+     "task_id": "sf_N300_p0.6_20265801"
+    },
+    {
+     "gain": 0,
+     "root": 100,
+     "rows_added": 0,
+     "task_id": "sf_N300_p0.6_20265802"
+    },
+    {
+     "gain": 0,
+     "root": 102,
+     "rows_added": 1,
+     "task_id": "sf_N300_p0.6_20265803"
+    },
+    {
+     "gain": 0,
+     "root": 108,
+     "rows_added": 1,
+     "task_id": "sf_N300_p0.6_20265804"
+    },
+    {
+     "gain": 1,
+     "root": 112,
+     "rows_added": 3,
+     "task_id": "sf_N300_p0.6_20265805"
+    },
+    {
+     "gain": 0,
+     "root": 107,
+     "rows_added": 0,
+     "task_id": "sf_N300_p0.6_20265806"
+    },
+    {
+     "gain": 0,
+     "root": 95,
+     "rows_added": 0,
+     "task_id": "sf_N300_p0.6_20265807"
+    },
+    {
+     "gain": 0,
+     "root": 112,
+     "rows_added": 2,
+     "task_id": "sf_N300_p0.6_20265808"
+    },
+    {
+     "gain": 0,
+     "root": 119,
+     "rows_added": 0,
+     "task_id": "sf_N360_p0.6_20265811"
+    },
+    {
+     "gain": 0,
+     "root": 128,
+     "rows_added": 1,
+     "task_id": "sf_N360_p0.6_20265812"
+    },
+    {
+     "gain": 0,
+     "root": 120,
+     "rows_added": 0,
+     "task_id": "sf_N360_p0.6_20265813"
+    },
+    {
+     "gain": 0,
+     "root": 121,
+     "rows_added": 1,
+     "task_id": "sf_N360_p0.6_20265814"
+    },
+    {
+     "gain": 0,
+     "root": 135,
+     "rows_added": 0,
+     "task_id": "sf_N360_p0.6_20265815"
+    },
+    {
+     "gain": 0,
+     "root": 120,
+     "rows_added": 0,
+     "task_id": "sf_N360_p0.6_20265816"
+    },
+    {
+     "gain": 0,
+     "root": 132,
+     "rows_added": 1,
+     "task_id": "sf_N360_p0.6_20265817"
+    },
+    {
+     "gain": 0,
+     "root": 133,
+     "rows_added": 1,
+     "task_id": "sf_N360_p0.6_20265818"
+    }
+   ],
+   "rows_added": 0.6875,
+   "score": 62.5
+  },
+  "sf_sfpat_1_2_4_5": {
+   "gain": 0.5,
+   "hosts": [
+    {
+     "gain": 1,
+     "root": 108,
+     "rows_added": 6,
+     "task_id": "sf_N300_p0.6_20265801"
+    },
+    {
+     "gain": 0,
+     "root": 100,
+     "rows_added": 1,
+     "task_id": "sf_N300_p0.6_20265802"
+    },
+    {
+     "gain": 0,
+     "root": 102,
+     "rows_added": 4,
+     "task_id": "sf_N300_p0.6_20265803"
+    },
+    {
+     "gain": 0,
+     "root": 108,
+     "rows_added": 5,
+     "task_id": "sf_N300_p0.6_20265804"
+    },
+    {
+     "gain": 1,
+     "root": 112,
+     "rows_added": 9,
+     "task_id": "sf_N300_p0.6_20265805"
+    },
+    {
+     "gain": 0,
+     "root": 107,
+     "rows_added": 4,
+     "task_id": "sf_N300_p0.6_20265806"
+    },
+    {
+     "gain": 1,
+     "root": 94,
+     "rows_added": 3,
+     "task_id": "sf_N300_p0.6_20265807"
+    },
+    {
+     "gain": 1,
+     "root": 111,
+     "rows_added": 8,
+     "task_id": "sf_N300_p0.6_20265808"
+    },
+    {
+     "gain": 0,
+     "root": 119,
+     "rows_added": 3,
+     "task_id": "sf_N360_p0.6_20265811"
+    },
+    {
+     "gain": 1,
+     "root": 127,
+     "rows_added": 4,
+     "task_id": "sf_N360_p0.6_20265812"
+    },
+    {
+     "gain": 0,
+     "root": 120,
+     "rows_added": 1,
+     "task_id": "sf_N360_p0.6_20265813"
+    },
+    {
+     "gain": 1,
+     "root": 120,
+     "rows_added": 5,
+     "task_id": "sf_N360_p0.6_20265814"
+    },
+    {
+     "gain": 1,
+     "root": 134,
+     "rows_added": 5,
+     "task_id": "sf_N360_p0.6_20265815"
+    },
+    {
+     "gain": 0,
+     "root": 120,
+     "rows_added": 2,
+     "task_id": "sf_N360_p0.6_20265816"
+    },
+    {
+     "gain": 0,
+     "root": 132,
+     "rows_added": 5,
+     "task_id": "sf_N360_p0.6_20265817"
+    },
+    {
+     "gain": 1,
+     "root": 132,
+     "rows_added": 5,
+     "task_id": "sf_N360_p0.6_20265818"
+    }
+   ],
+   "rows_added": 4.375,
+   "score": 114.28571428571428
+  },
+  "sf_sfpat_1_2_4_5_6_8": {
+   "gain": 0.0625,
+   "hosts": [
+    {
+     "gain": 0,
+     "root": 109,
+     "rows_added": 0,
+     "task_id": "sf_N300_p0.6_20265801"
+    },
+    {
+     "gain": 0,
+     "root": 100,
+     "rows_added": 0,
+     "task_id": "sf_N300_p0.6_20265802"
+    },
+    {
+     "gain": 0,
+     "root": 102,
+     "rows_added": 0,
+     "task_id": "sf_N300_p0.6_20265803"
+    },
+    {
+     "gain": 0,
+     "root": 108,
+     "rows_added": 0,
+     "task_id": "sf_N300_p0.6_20265804"
+    },
+    {
+     "gain": 0,
+     "root": 113,
+     "rows_added": 0,
+     "task_id": "sf_N300_p0.6_20265805"
+    },
+    {
+     "gain": 0,
+     "root": 107,
+     "rows_added": 0,
+     "task_id": "sf_N300_p0.6_20265806"
+    },
+    {
+     "gain": 0,
+     "root": 95,
+     "rows_added": 0,
+     "task_id": "sf_N300_p0.6_20265807"
+    },
+    {
+     "gain": 1,
+     "root": 111,
+     "rows_added": 1,
+     "task_id": "sf_N300_p0.6_20265808"
+    },
+    {
+     "gain": 0,
+     "root": 119,
+     "rows_added": 1,
+     "task_id": "sf_N360_p0.6_20265811"
+    },
+    {
+     "gain": 0,
+     "root": 128,
+     "rows_added": 1,
+     "task_id": "sf_N360_p0.6_20265812"
+    },
+    {
+     "gain": 0,
+     "root": 120,
+     "rows_added": 0,
+     "task_id": "sf_N360_p0.6_20265813"
+    },
+    {
+     "gain": 0,
+     "root": 121,
+     "rows_added": 2,
+     "task_id": "sf_N360_p0.6_20265814"
+    },
+    {
+     "gain": 0,
+     "root": 135,
+     "rows_added": 1,
+     "task_id": "sf_N360_p0.6_20265815"
+    },
+    {
+     "gain": 0,
+     "root": 120,
+     "rows_added": 1,
+     "task_id": "sf_N360_p0.6_20265816"
+    },
+    {
+     "gain": 0,
+     "root": 132,
+     "rows_added": 0,
+     "task_id": "sf_N360_p0.6_20265817"
+    },
+    {
+     "gain": 0,
+     "root": 133,
+     "rows_added": 0,
+     "task_id": "sf_N360_p0.6_20265818"
+    }
+   ],
+   "rows_added": 0.4375,
+   "score": 62.5
+  },
+  "sf_sfpat_1_2_4_5_7_8": {
+   "gain": 0.125,
+   "hosts": [
+    {
+     "gain": 0,
+     "root": 109,
+     "rows_added": 0,
+     "task_id": "sf_N300_p0.6_20265801"
+    },
+    {
+     "gain": 0,
+     "root": 100,
+     "rows_added": 0,
+     "task_id": "sf_N300_p0.6_20265802"
+    },
+    {
+     "gain": 0,
+     "root": 102,
+     "rows_added": 0,
+     "task_id": "sf_N300_p0.6_20265803"
+    },
+    {
+     "gain": 0,
+     "root": 108,
+     "rows_added": 2,
+     "task_id": "sf_N300_p0.6_20265804"
+    },
+    {
+     "gain": 0,
+     "root": 113,
+     "rows_added": 2,
+     "task_id": "sf_N300_p0.6_20265805"
+    },
+    {
+     "gain": 0,
+     "root": 107,
+     "rows_added": 1,
+     "task_id": "sf_N300_p0.6_20265806"
+    },
+    {
+     "gain": 0,
+     "root": 95,
+     "rows_added": 0,
+     "task_id": "sf_N300_p0.6_20265807"
+    },
+    {
+     "gain": 1,
+     "root": 111,
+     "rows_added": 2,
+     "task_id": "sf_N300_p0.6_20265808"
+    },
+    {
+     "gain": 0,
+     "root": 119,
+     "rows_added": 0,
+     "task_id": "sf_N360_p0.6_20265811"
+    },
+    {
+     "gain": 0,
+     "root": 128,
+     "rows_added": 0,
+     "task_id": "sf_N360_p0.6_20265812"
+    },
+    {
+     "gain": 0,
+     "root": 120,
+     "rows_added": 0,
+     "task_id": "sf_N360_p0.6_20265813"
+    },
+    {
+     "gain": 1,
+     "root": 120,
+     "rows_added": 3,
+     "task_id": "sf_N360_p0.6_20265814"
+    },
+    {
+     "gain": 0,
+     "root": 135,
+     "rows_added": 1,
+     "task_id": "sf_N360_p0.6_20265815"
+    },
+    {
+     "gain": 0,
+     "root": 120,
+     "rows_added": 0,
+     "task_id": "sf_N360_p0.6_20265816"
+    },
+    {
+     "gain": 0,
+     "root": 132,
+     "rows_added": 0,
+     "task_id": "sf_N360_p0.6_20265817"
+    },
+    {
+     "gain": 0,
+     "root": 133,
+     "rows_added": 0,
+     "task_id": "sf_N360_p0.6_20265818"
+    }
+   ],
+   "rows_added": 0.6875,
+   "score": 125.0
+  },
+  "sf_sfpat_1_2_4_6_7_8": {
+   "gain": 0.0625,
+   "hosts": [
+    {
+     "gain": 0,
+     "root": 109,
+     "rows_added": 1,
+     "task_id": "sf_N300_p0.6_20265801"
+    },
+    {
+     "gain": 0,
+     "root": 100,
+     "rows_added": 0,
+     "task_id": "sf_N300_p0.6_20265802"
+    },
+    {
+     "gain": 0,
+     "root": 102,
+     "rows_added": 0,
+     "task_id": "sf_N300_p0.6_20265803"
+    },
+    {
+     "gain": 0,
+     "root": 108,
+     "rows_added": 0,
+     "task_id": "sf_N300_p0.6_20265804"
+    },
+    {
+     "gain": 0,
+     "root": 113,
+     "rows_added": 4,
+     "task_id": "sf_N300_p0.6_20265805"
+    },
+    {
+     "gain": 0,
+     "root": 107,
+     "rows_added": 1,
+     "task_id": "sf_N300_p0.6_20265806"
+    },
+    {
+     "gain": 0,
+     "root": 95,
+     "rows_added": 0,
+     "task_id": "sf_N300_p0.6_20265807"
+    },
+    {
+     "gain": 1,
+     "root": 111,
+     "rows_added": 2,
+     "task_id": "sf_N300_p0.6_20265808"
+    },
+    {
+     "gain": 0,
+     "root": 119,
+     "rows_added": 0,
+     "task_id": "sf_N360_p0.6_20265811"
+    },
+    {
+     "gain": 0,
+     "root": 128,
+     "rows_added": 0,
+     "task_id": "sf_N360_p0.6_20265812"
+    },
+    {
+     "gain": 0,
+     "root": 120,
+     "rows_added": 0,
+     "task_id": "sf_N360_p0.6_20265813"
+    },
+    {
+     "gain": 0,
+     "root": 121,
+     "rows_added": 2,
+     "task_id": "sf_N360_p0.6_20265814"
+    },
+    {
+     "gain": 0,
+     "root": 135,
+     "rows_added": 1,
+     "task_id": "sf_N360_p0.6_20265815"
+    },
+    {
+     "gain": 0,
+     "root": 120,
+     "rows_added": 0,
+     "task_id": "sf_N360_p0.6_20265816"
+    },
+    {
+     "gain": 0,
+     "root": 132,
+     "rows_added": 0,
+     "task_id": "sf_N360_p0.6_20265817"
+    },
+    {
+     "gain": 0,
+     "root": 133,
+     "rows_added": 1,
+     "task_id": "sf_N360_p0.6_20265818"
+    }
+   ],
+   "rows_added": 0.75,
+   "score": 62.5
+  },
+  "sf_sfpat_1_2_5_6_7": {
+   "gain": 0.5,
+   "hosts": [
+    {
+     "gain": 1,
+     "root": 108,
+     "rows_added": 400,
+     "task_id": "sf_N300_p0.6_20265801"
+    },
+    {
+     "gain": 0,
+     "root": 100,
+     "rows_added": 192,
+     "task_id": "sf_N300_p0.6_20265802"
+    },
+    {
+     "gain": 0,
+     "root": 102,
+     "rows_added": 212,
+     "task_id": "sf_N300_p0.6_20265803"
+    },
+    {
+     "gain": 0,
+     "root": 108,
+     "rows_added": 280,
+     "task_id": "sf_N300_p0.6_20265804"
+    },
+    {
+     "gain": 0,
+     "root": 113,
+     "rows_added": 0,
+     "task_id": "sf_N300_p0.6_20265805"
+    },
+    {
+     "gain": 1,
+     "root": 106,
+     "rows_added": 277,
+     "task_id": "sf_N300_p0.6_20265806"
+    },
+    {
+     "gain": 0,
+     "root": 95,
+     "rows_added": 0,
+     "task_id": "sf_N300_p0.6_20265807"
+    },
+    {
+     "gain": 1,
+     "root": 111,
+     "rows_added": 400,
+     "task_id": "sf_N300_p0.6_20265808"
+    },
+    {
+     "gain": 0,
+     "root": 119,
+     "rows_added": 0,
+     "task_id": "sf_N360_p0.6_20265811"
+    },
+    {
+     "gain": 0,
+     "root": 128,
+     "rows_added": 340,
+     "task_id": "sf_N360_p0.6_20265812"
+    },
+    {
+     "gain": 0,
+     "root": 120,
+     "rows_added": 0,
+     "task_id": "sf_N360_p0.6_20265813"
+    },
+    {
+     "gain": 0,
+     "root": 121,
+     "rows_added": 0,
+     "task_id": "sf_N360_p0.6_20265814"
+    },
+    {
+     "gain": 1,
+     "root": 134,
+     "rows_added": 400,
+     "task_id": "sf_N360_p0.6_20265815"
+    },
+    {
+     "gain": 2,
+     "root": 118,
+     "rows_added": 400,
+     "task_id": "sf_N360_p0.6_20265816"
+    },
+    {
+     "gain": 2,
+     "root": 130,
+     "rows_added": 400,
+     "task_id": "sf_N360_p0.6_20265817"
+    },
+    {
+     "gain": 0,
+     "root": 133,
+     "rows_added": 400,
+     "task_id": "sf_N360_p0.6_20265818"
+    }
+   ],
+   "rows_added": 231.3125,
+   "score": 2.1615779519048903
+  },
+  "sf_sfpat_1_2_5_6_8": {
+   "gain": 0.5,
+   "hosts": [
+    {
+     "gain": 1,
+     "root": 108,
+     "rows_added": 263,
+     "task_id": "sf_N300_p0.6_20265801"
+    },
+    {
+     "gain": 0,
+     "root": 100,
+     "rows_added": 128,
+     "task_id": "sf_N300_p0.6_20265802"
+    },
+    {
+     "gain": 0,
+     "root": 102,
+     "rows_added": 127,
+     "task_id": "sf_N300_p0.6_20265803"
+    },
+    {
+     "gain": 0,
+     "root": 108,
+     "rows_added": 183,
+     "task_id": "sf_N300_p0.6_20265804"
+    },
+    {
+     "gain": 0,
+     "root": 113,
+     "rows_added": 0,
+     "task_id": "sf_N300_p0.6_20265805"
+    },
+    {
+     "gain": 1,
+     "root": 106,
+     "rows_added": 178,
+     "task_id": "sf_N300_p0.6_20265806"
+    },
+    {
+     "gain": 0,
+     "root": 95,
+     "rows_added": 0,
+     "task_id": "sf_N300_p0.6_20265807"
+    },
+    {
+     "gain": 1,
+     "root": 111,
+     "rows_added": 299,
+     "task_id": "sf_N300_p0.6_20265808"
+    },
+    {
+     "gain": 0,
+     "root": 119,
+     "rows_added": 0,
+     "task_id": "sf_N360_p0.6_20265811"
+    },
+    {
+     "gain": 0,
+     "root": 128,
+     "rows_added": 177,
+     "task_id": "sf_N360_p0.6_20265812"
+    },
+    {
+     "gain": 0,
+     "root": 120,
+     "rows_added": 0,
+     "task_id": "sf_N360_p0.6_20265813"
+    },
+    {
+     "gain": 0,
+     "root": 121,
+     "rows_added": 0,
+     "task_id": "sf_N360_p0.6_20265814"
+    },
+    {
+     "gain": 1,
+     "root": 134,
+     "rows_added": 377,
+     "task_id": "sf_N360_p0.6_20265815"
+    },
+    {
+     "gain": 2,
+     "root": 118,
+     "rows_added": 364,
+     "task_id": "sf_N360_p0.6_20265816"
+    },
+    {
+     "gain": 2,
+     "root": 130,
+     "rows_added": 400,
+     "task_id": "sf_N360_p0.6_20265817"
+    },
+    {
+     "gain": 0,
+     "root": 133,
+     "rows_added": 307,
+     "task_id": "sf_N360_p0.6_20265818"
+    }
+   ],
+   "rows_added": 175.1875,
+   "score": 2.8540849090260436
+  },
+  "sf_sfpat_1_2_5_7_8": {
+   "gain": 0.5,
+   "hosts": [
+    {
+     "gain": 1,
+     "root": 108,
+     "rows_added": 286,
+     "task_id": "sf_N300_p0.6_20265801"
+    },
+    {
+     "gain": 0,
+     "root": 100,
+     "rows_added": 128,
+     "task_id": "sf_N300_p0.6_20265802"
+    },
+    {
+     "gain": 0,
+     "root": 102,
+     "rows_added": 169,
+     "task_id": "sf_N300_p0.6_20265803"
+    },
+    {
+     "gain": 0,
+     "root": 108,
+     "rows_added": 178,
+     "task_id": "sf_N300_p0.6_20265804"
+    },
+    {
+     "gain": 0,
+     "root": 113,
+     "rows_added": 0,
+     "task_id": "sf_N300_p0.6_20265805"
+    },
+    {
+     "gain": 1,
+     "root": 106,
+     "rows_added": 197,
+     "task_id": "sf_N300_p0.6_20265806"
+    },
+    {
+     "gain": 0,
+     "root": 95,
+     "rows_added": 0,
+     "task_id": "sf_N300_p0.6_20265807"
+    },
+    {
+     "gain": 1,
+     "root": 111,
+     "rows_added": 275,
+     "task_id": "sf_N300_p0.6_20265808"
+    },
+    {
+     "gain": 0,
+     "root": 119,
+     "rows_added": 0,
+     "task_id": "sf_N360_p0.6_20265811"
+    },
+    {
+     "gain": 0,
+     "root": 128,
+     "rows_added": 177,
+     "task_id": "sf_N360_p0.6_20265812"
+    },
+    {
+     "gain": 0,
+     "root": 120,
+     "rows_added": 0,
+     "task_id": "sf_N360_p0.6_20265813"
+    },
+    {
+     "gain": 0,
+     "root": 121,
+     "rows_added": 0,
+     "task_id": "sf_N360_p0.6_20265814"
+    },
+    {
+     "gain": 1,
+     "root": 134,
+     "rows_added": 371,
+     "task_id": "sf_N360_p0.6_20265815"
+    },
+    {
+     "gain": 2,
+     "root": 118,
+     "rows_added": 366,
+     "task_id": "sf_N360_p0.6_20265816"
+    },
+    {
+     "gain": 2,
+     "root": 130,
+     "rows_added": 400,
+     "task_id": "sf_N360_p0.6_20265817"
+    },
+    {
+     "gain": 0,
+     "root": 133,
+     "rows_added": 393,
+     "task_id": "sf_N360_p0.6_20265818"
+    }
+   ],
+   "rows_added": 183.75,
+   "score": 2.7210884353741496
+  },
+  "sf_sfpat_1_3_4_5_6_8": {
+   "gain": 0.125,
+   "hosts": [
+    {
+     "gain": 0,
+     "root": 109,
+     "rows_added": 0,
+     "task_id": "sf_N300_p0.6_20265801"
+    },
+    {
+     "gain": 0,
+     "root": 100,
+     "rows_added": 0,
+     "task_id": "sf_N300_p0.6_20265802"
+    },
+    {
+     "gain": 0,
+     "root": 102,
+     "rows_added": 1,
+     "task_id": "sf_N300_p0.6_20265803"
+    },
+    {
+     "gain": 0,
+     "root": 108,
+     "rows_added": 0,
+     "task_id": "sf_N300_p0.6_20265804"
+    },
+    {
+     "gain": 1,
+     "root": 112,
+     "rows_added": 1,
+     "task_id": "sf_N300_p0.6_20265805"
+    },
+    {
+     "gain": 0,
+     "root": 107,
+     "rows_added": 0,
+     "task_id": "sf_N300_p0.6_20265806"
+    },
+    {
+     "gain": 0,
+     "root": 95,
+     "rows_added": 0,
+     "task_id": "sf_N300_p0.6_20265807"
+    },
+    {
+     "gain": 0,
+     "root": 112,
+     "rows_added": 1,
+     "task_id": "sf_N300_p0.6_20265808"
+    },
+    {
+     "gain": 0,
+     "root": 119,
+     "rows_added": 1,
+     "task_id": "sf_N360_p0.6_20265811"
+    },
+    {
+     "gain": 1,
+     "root": 127,
+     "rows_added": 3,
+     "task_id": "sf_N360_p0.6_20265812"
+    },
+    {
+     "gain": 0,
+     "root": 120,
+     "rows_added": 1,
+     "task_id": "sf_N360_p0.6_20265813"
+    },
+    {
+     "gain": 0,
+     "root": 121,
+     "rows_added": 0,
+     "task_id": "sf_N360_p0.6_20265814"
+    },
+    {
+     "gain": 0,
+     "root": 135,
+     "rows_added": 0,
+     "task_id": "sf_N360_p0.6_20265815"
+    },
+    {
+     "gain": 0,
+     "root": 120,
+     "rows_added": 0,
+     "task_id": "sf_N360_p0.6_20265816"
+    },
+    {
+     "gain": 0,
+     "root": 132,
+     "rows_added": 1,
+     "task_id": "sf_N360_p0.6_20265817"
+    },
+    {
+     "gain": 0,
+     "root": 133,
+     "rows_added": 1,
+     "task_id": "sf_N360_p0.6_20265818"
+    }
+   ],
+   "rows_added": 0.625,
+   "score": 125.0
+  },
+  "sf_sfpat_1_3_4_5_8": {
+   "gain": 0,
+   "hosts": [
+    {
+     "gain": 0,
+     "root": 109,
+     "rows_added": 0,
+     "task_id": "sf_N300_p0.6_20265801"
+    },
+    {
+     "gain": 0,
+     "root": 100,
+     "rows_added": 0,
+     "task_id": "sf_N300_p0.6_20265802"
+    },
+    {
+     "gain": 0,
+     "root": 102,
+     "rows_added": 0,
+     "task_id": "sf_N300_p0.6_20265803"
+    },
+    {
+     "gain": 0,
+     "root": 108,
+     "rows_added": 0,
+     "task_id": "sf_N300_p0.6_20265804"
+    },
+    {
+     "gain": 0,
+     "root": 113,
+     "rows_added": 0,
+     "task_id": "sf_N300_p0.6_20265805"
+    },
+    {
+     "gain": 0,
+     "root": 107,
+     "rows_added": 76,
+     "task_id": "sf_N300_p0.6_20265806"
+    },
+    {
+     "gain": 0,
+     "root": 95,
+     "rows_added": 0,
+     "task_id": "sf_N300_p0.6_20265807"
+    },
+    {
+     "gain": 0,
+     "root": 112,
+     "rows_added": 0,
+     "task_id": "sf_N300_p0.6_20265808"
+    },
+    {
+     "gain": 0,
+     "root": 119,
+     "rows_added": 0,
+     "task_id": "sf_N360_p0.6_20265811"
+    },
+    {
+     "gain": 0,
+     "root": 128,
+     "rows_added": 191,
+     "task_id": "sf_N360_p0.6_20265812"
+    },
+    {
+     "gain": 0,
+     "root": 120,
+     "rows_added": 0,
+     "task_id": "sf_N360_p0.6_20265813"
+    },
+    {
+     "gain": 0,
+     "root": 121,
+     "rows_added": 0,
+     "task_id": "sf_N360_p0.6_20265814"
+    },
+    {
+     "gain": 0,
+     "root": 135,
+     "rows_added": 0,
+     "task_id": "sf_N360_p0.6_20265815"
+    },
+    {
+     "gain": 0,
+     "root": 120,
+     "rows_added": 0,
+     "task_id": "sf_N360_p0.6_20265816"
+    },
+    {
+     "gain": 0,
+     "root": 132,
+     "rows_added": 0,
+     "task_id": "sf_N360_p0.6_20265817"
+    },
+    {
+     "gain": 0,
+     "root": 133,
+     "rows_added": 0,
+     "task_id": "sf_N360_p0.6_20265818"
+    }
+   ],
+   "rows_added": 16.6875,
+   "score": 0.0
+  },
+  "sf_sfpat_1_3_4_6_7_8": {
+   "gain": 4.9375,
+   "hosts": [
+    {
+     "gain": 5,
+     "root": 104,
+     "rows_added": 392,
+     "task_id": "sf_N300_p0.6_20265801"
+    },
+    {
+     "gain": 4,
+     "root": 96,
+     "rows_added": 148,
+     "task_id": "sf_N300_p0.6_20265802"
+    },
+    {
+     "gain": 5,
+     "root": 97,
+     "rows_added": 294,
+     "task_id": "sf_N300_p0.6_20265803"
+    },
+    {
+     "gain": 4,
+     "root": 104,
+     "rows_added": 215,
+     "task_id": "sf_N300_p0.6_20265804"
+    },
+    {
+     "gain": 6,
+     "root": 107,
+     "rows_added": 416,
+     "task_id": "sf_N300_p0.6_20265805"
+    },
+    {
+     "gain": 4,
+     "root": 103,
+     "rows_added": 223,
+     "task_id": "sf_N300_p0.6_20265806"
+    },
+    {
+     "gain": 5,
+     "root": 90,
+     "rows_added": 150,
+     "task_id": "sf_N300_p0.6_20265807"
+    },
+    {
+     "gain": 4,
+     "root": 108,
+     "rows_added": 249,
+     "task_id": "sf_N300_p0.6_20265808"
+    },
+    {
+     "gain": 5,
+     "root": 114,
+     "rows_added": 252,
+     "task_id": "sf_N360_p0.6_20265811"
+    },
+    {
+     "gain": 8,
+     "root": 120,
+     "rows_added": 423,
+     "task_id": "sf_N360_p0.6_20265812"
+    },
+    {
+     "gain": 5,
+     "root": 115,
+     "rows_added": 281,
+     "task_id": "sf_N360_p0.6_20265813"
+    },
+    {
+     "gain": 5,
+     "root": 116,
+     "rows_added": 315,
+     "task_id": "sf_N360_p0.6_20265814"
+    },
+    {
+     "gain": 6,
+     "root": 129,
+     "rows_added": 420,
+     "task_id": "sf_N360_p0.6_20265815"
+    },
+    {
+     "gain": 3,
+     "root": 117,
+     "rows_added": 141,
+     "task_id": "sf_N360_p0.6_20265816"
+    },
+    {
+     "gain": 5,
+     "root": 127,
+     "rows_added": 353,
+     "task_id": "sf_N360_p0.6_20265817"
+    },
+    {
+     "gain": 5,
+     "root": 128,
+     "rows_added": 400,
+     "task_id": "sf_N360_p0.6_20265818"
+    }
+   ],
+   "rows_added": 292,
+   "score": 16.90924657534247
+  },
+  "sf_sfpat_1_3_5_6_8": {
+   "gain": 0.0625,
+   "hosts": [
+    {
+     "gain": 0,
+     "root": 109,
+     "rows_added": 13,
+     "task_id": "sf_N300_p0.6_20265801"
+    },
+    {
+     "gain": 0,
+     "root": 100,
+     "rows_added": 0,
+     "task_id": "sf_N300_p0.6_20265802"
+    },
+    {
+     "gain": 0,
+     "root": 102,
+     "rows_added": 96,
+     "task_id": "sf_N300_p0.6_20265803"
+    },
+    {
+     "gain": 0,
+     "root": 108,
+     "rows_added": 3,
+     "task_id": "sf_N300_p0.6_20265804"
+    },
+    {
+     "gain": 0,
+     "root": 113,
+     "rows_added": 0,
+     "task_id": "sf_N300_p0.6_20265805"
+    },
+    {
+     "gain": 1,
+     "root": 106,
+     "rows_added": 200,
+     "task_id": "sf_N300_p0.6_20265806"
+    },
+    {
+     "gain": 0,
+     "root": 95,
+     "rows_added": 0,
+     "task_id": "sf_N300_p0.6_20265807"
+    },
+    {
+     "gain": 0,
+     "root": 112,
+     "rows_added": 0,
+     "task_id": "sf_N300_p0.6_20265808"
+    },
+    {
+     "gain": 0,
+     "root": 119,
+     "rows_added": 0,
+     "task_id": "sf_N360_p0.6_20265811"
+    },
+    {
+     "gain": 0,
+     "root": 128,
+     "rows_added": 363,
+     "task_id": "sf_N360_p0.6_20265812"
+    },
+    {
+     "gain": 0,
+     "root": 120,
+     "rows_added": 0,
+     "task_id": "sf_N360_p0.6_20265813"
+    },
+    {
+     "gain": 0,
+     "root": 121,
+     "rows_added": 0,
+     "task_id": "sf_N360_p0.6_20265814"
+    },
+    {
+     "gain": 0,
+     "root": 135,
+     "rows_added": 2,
+     "task_id": "sf_N360_p0.6_20265815"
+    },
+    {
+     "gain": 0,
+     "root": 120,
+     "rows_added": 0,
+     "task_id": "sf_N360_p0.6_20265816"
+    },
+    {
+     "gain": 0,
+     "root": 132,
+     "rows_added": 5,
+     "task_id": "sf_N360_p0.6_20265817"
+    },
+    {
+     "gain": 0,
+     "root": 133,
+     "rows_added": 193,
+     "task_id": "sf_N360_p0.6_20265818"
+    }
+   ],
+   "rows_added": 54.6875,
+   "score": 1.142857142857143
+  },
+  "sf_sfpat_2_3_4_5_6_8": {
+   "gain": 0.1875,
+   "hosts": [
+    {
+     "gain": 0,
+     "root": 109,
+     "rows_added": 1,
+     "task_id": "sf_N300_p0.6_20265801"
+    },
+    {
+     "gain": 0,
+     "root": 100,
+     "rows_added": 0,
+     "task_id": "sf_N300_p0.6_20265802"
+    },
+    {
+     "gain": 0,
+     "root": 102,
+     "rows_added": 1,
+     "task_id": "sf_N300_p0.6_20265803"
+    },
+    {
+     "gain": 0,
+     "root": 108,
+     "rows_added": 0,
+     "task_id": "sf_N300_p0.6_20265804"
+    },
+    {
+     "gain": 1,
+     "root": 112,
+     "rows_added": 1,
+     "task_id": "sf_N300_p0.6_20265805"
+    },
+    {
+     "gain": 0,
+     "root": 107,
+     "rows_added": 0,
+     "task_id": "sf_N300_p0.6_20265806"
+    },
+    {
+     "gain": 1,
+     "root": 94,
+     "rows_added": 2,
+     "task_id": "sf_N300_p0.6_20265807"
+    },
+    {
+     "gain": 0,
+     "root": 112,
+     "rows_added": 0,
+     "task_id": "sf_N300_p0.6_20265808"
+    },
+    {
+     "gain": 0,
+     "root": 119,
+     "rows_added": 0,
+     "task_id": "sf_N360_p0.6_20265811"
+    },
+    {
+     "gain": 0,
+     "root": 128,
+     "rows_added": 0,
+     "task_id": "sf_N360_p0.6_20265812"
+    },
+    {
+     "gain": 0,
+     "root": 120,
+     "rows_added": 0,
+     "task_id": "sf_N360_p0.6_20265813"
+    },
+    {
+     "gain": 1,
+     "root": 120,
+     "rows_added": 2,
+     "task_id": "sf_N360_p0.6_20265814"
+    },
+    {
+     "gain": 0,
+     "root": 135,
+     "rows_added": 1,
+     "task_id": "sf_N360_p0.6_20265815"
+    },
+    {
+     "gain": 0,
+     "root": 120,
+     "rows_added": 0,
+     "task_id": "sf_N360_p0.6_20265816"
+    },
+    {
+     "gain": 0,
+     "root": 132,
+     "rows_added": 0,
+     "task_id": "sf_N360_p0.6_20265817"
+    },
+    {
+     "gain": 0,
+     "root": 133,
+     "rows_added": 1,
+     "task_id": "sf_N360_p0.6_20265818"
+    }
+   ],
+   "rows_added": 0.5625,
+   "score": 187.5
+  }
+ },
+ "ranked": [
+  "sf_sfpat_1_2_3_4_5_6_8",
+  "sf_sfpat_2_3_4_5_6_8",
+  "sf_sfpat_1_2_3_4",
+  "sf_sfpat_1_2_4_5_7_8",
+  "sf_sfpat_1_3_4_5_6_8",
+  "sf_sfpat_1_2_4_5",
+  "sf_sfpat_1_2_3_4_5_8",
+  "sf_sfpat_1_2_3_4_6_7",
+  "sf_sfpat_1_2_3_5_6_8",
+  "sf_sfpat_1_2_4_5_6_8",
+  "sf_sfpat_1_2_4_6_7_8",
+  "sf_sfpat_1_3_4_6_7_8",
+  "sf_sfpat_1_2_5_6_8",
+  "sf_sfpat_1_2_5_7_8",
+  "sf_sfpat_1_2_5_6_7",
+  "sf_sfpat_1_3_5_6_8",
+  "sf_sfpat_1_3_4_5_8"
+ ]
+}

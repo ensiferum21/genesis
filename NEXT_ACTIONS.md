@@ -29,7 +29,7 @@
 | B20_R56 | `010e507` | `f40380aa…6e622` (B20_R53–R56 and the B20_R52 checkpoint record; release matrix 1,404 tests, all OK, one declared skip; restore-verified, 5,998 manifest entries; driver rehearsal on the build host **REPRODUCED**, not a second machine) |
 
   The recovery-branch checkpoints B20_RX1 and B20_RX2 are on `recovery-b20r1-partial`; their work was ported here.
-- **Records:** `docs/checkpoints/B20_R1_RECORD.md` … `B20_R11_RECORD.md`, `B20_RX1_RECORD.md`, `B20_RX2_RECORD.md`, `B20_R12_RECORD.md` and `B20_R15_RECORD.md` … `B20_R57_RECORD.md`.
+- **Records:** `docs/checkpoints/B20_R1_RECORD.md` … `B20_R11_RECORD.md`, `B20_RX1_RECORD.md`, `B20_RX2_RECORD.md`, `B20_R12_RECORD.md` and `B20_R15_RECORD.md` … `B20_R58_RECORD.md`.
 
 ## Completed since B20_R11
 
@@ -82,6 +82,7 @@
 | B20_R55 | **GV6 second target: the row-invention procedure transferred to sum-free sets of integers** (additive combinatorics, a different theorem family; `invention/cuts_sf.py`, new trusted definitions `SFDefs`): 17 patterns, **all 20 obligations Lean-CHECKED**, package replays. Procedural transfer only; the structural caveat (abstractly a hypergraph-free packing, like the source) is stated for the reviewer |
 | B20_R56 | **Sum-free certification utility: NO_CERTIFICATION_UTILITY.** On 40 fresh hosts at 60 s the tree with the transferred rows certifies 28 against the Schur-only tree's 26 (2/0, p 0.25), wall saving −1.61 s [−4.14, +1.37]. The rows lower the root bound by 5–10 and cut nodes 3×, but slow node LPs on easy hosts; after the fact their benefit concentrates on hosts hard for the conventional route (6 of 8 better). Unlike C4, no preregistered utility in the second target |
 | B20_R57 | **Sum-free, hardness-enriched: CERTIFICATION_UTILITY.** On 40 fresh hosts the conventional route cannot certify in 20 s (a candidate-blind screen), the tree with the transferred rows certifies 22 against 14 (8/0, p 0.0039), saves 6.02 s per host [2.50, 9.88] and certifies bounds 6.9 lower [5.4, 8.5]. With B20_R55–R56: the procedure transfers to a different theorem family, and its rows help exactly where the conventional relaxation is the bottleneck (the C4 and B20_R32 → R35 profile); survives BY at q = 0.1 over 13 attempts |
+| B20_R58 | **No pattern-selection headroom (GV4 pilot).** On 16 fresh sum-free hosts at 30 s, all 17 patterns certify 13, none 10, and every development-ranked subset 9–11 (H −2): the patterns' value is joint. With every earlier headroom pilot, no probed setting has a research decision with headroom; the builder recommends the roadmap's GV4 fallback for the reviewer's decision |
 
 ## Resume
 

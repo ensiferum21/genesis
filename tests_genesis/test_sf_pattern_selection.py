@@ -1,6 +1,10 @@
 """B20_R58: the sum-free pattern-selection pilot. Design: R56's settings with fresh development and evaluation seeds;
 subsets keep only the named patterns; the pattern sets are NONE, ALL and TOP-k by development score; the verdict
-follows the preregistered rule. Record tests are added with the result."""
+follows the preregistered rule.
+
+Record (B20_R58): the verdict recomputes from the rows (NO_HEADROOM: ALL certifies 13 of 16, more than NONE's 10 and
+every TOP-k's 9-11); every (host, set) pair ran and every certificate is VALID; the hosts are the script's."""
+import json
 from pathlib import Path
 import sys
 import unittest
@@ -72,6 +76,30 @@ class Verdict(unittest.TestCase):
         bad = grid(base)
         bad[0]['side']['check']['verdict'] = 'REJECTED'
         self.assertEqual(M.verdict(bad, sc)['verdict'], 'DEFECT_FOUND')
+
+
+
+EV = ROOT / 'evidence' / 'sf_pattern_selection_b20r58'
+
+
+class Record(unittest.TestCase):
+    def test_the_verdict_recomputes(self):
+        rows = [json.loads(l) for l in (EV / 'rows.jsonl').read_text().splitlines() if l.strip()]
+        sc = json.loads((EV / 'scores.json').read_text())
+        summary = json.loads((EV / 'summary.json').read_text())
+        v = M.verdict(rows, sc)
+        for k in ('verdict', 'H', 'base', 'oracle', 'dev_k', 'dev_minus_base', 'table'):
+            self.assertEqual(v[k], summary[k], k)
+        self.assertEqual((v['verdict'], v['base'], v['H']), ('NO_HEADROOM', 'ALL', -2))
+        self.assertEqual({k: x['certified'] for k, x in v['table'].items()},
+                         {'NONE': 10, 'ALL': 13, 'TOP1': 9, 'TOP2': 10, 'TOP4': 10, 'TOP8': 11})
+        self.assertEqual(len(rows), 16 * 6)
+
+    def test_hosts_are_the_scripts(self):
+        tasks = json.loads((EV / 'hosts.json').read_text())['tasks']
+        made = M.make_hosts(M.DEV_SEEDS, 'dev') + M.make_hosts(M.EVAL_SEEDS, 'eval')
+        self.assertEqual([{k: t[k] for k in ('task_id', 'elements', 'role')} for t in tasks],
+                         [{k: t[k] for k in ('task_id', 'elements', 'role')} for t in made])
 
 
 if __name__ == '__main__':

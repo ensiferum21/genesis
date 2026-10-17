@@ -169,3 +169,16 @@ B20_R48 survives for any family of up to 147 attempts.
 
 1. The pipeline grammar and a fixed enumerating improver, on DEV, in process. Measure how much of the RX3 headroom a fixed proposer recovers by itself. If the fixed improver finds the good pipelines as easily as RX3's successive halving did, a learned improver has little room. That would be another fair negative, to be preserved.
 2. A learned proposer (for example, a bandit or regression over pipeline features) against the fixed one, on DEV, with matched research budgets and the rule fixed in advance.
+
+## Update after B20_R53–R58 (headroom)
+
+No probed setting has a research decision with headroom:
+- Wolfram's axiom at hard settings, for selection, keeping and 6-node conjectures (B20_R53, R54);
+- sum-free pattern selection (B20_R58): all 17 patterns certify 13 of 16, against 9–11 for any development-ranked
+  subset; the patterns' value is joint.
+
+Two certification utilities of invented components were added: transferred, and positive only where the
+conventional relaxation is the bottleneck (B20_R57). With graph construction (B20_R13, RX5) and larger C4 rows,
+the builder now recommends the roadmap's fallback for GV4: report a useful solver without claiming a better
+improver, unless a reviewer names a new domain to pilot.
+
