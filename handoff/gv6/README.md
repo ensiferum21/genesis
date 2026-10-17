@@ -64,6 +64,11 @@ pattern statements.
    - **Risk.** B20's research-policy studies found no headroom there (B20_R3, R6, R9), and the
      failure-driven curriculum is already a B20 baseline. The transferred procedure may be the same
      thing in disguise, which a reviewer must judge.
+   - **Measured (B20_R53, R54; DEV design pilots).** On Wolfram's axiom at B20's hard settings, the one
+     equational setting where research matters, no library-building research moves the successor by more
+     than 1 of 15 on eight fresh seeds: selection, keeping, 6-node conjectures, or this mapping of the keep
+     rule (which reaches the oracle with 1-5 lemmas). The target has nothing to transfer into at these
+     scales.
 3. **Coding theory: binary codes with minimum distance d.**
    - **Rows.** A clique-type packing over the Hamming graph, with Delsarte's LP as the conventional
      bound.

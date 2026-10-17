@@ -1709,7 +1709,9 @@
     "scripts/b20r6_family_search.py",
     "evidence/family_search_b20r6/README.md",
     "scripts/b20r53_wolfram_headroom.py",
-    "evidence/wolfram_headroom_b20r53/README.md"
+    "evidence/wolfram_headroom_b20r53/README.md",
+    "scripts/b20r54_wolfram_ceiling.py",
+    "evidence/wolfram_ceiling_b20r54/README.md"
    ],
    "disposition": "IMPLEMENTED_BOUNDED_PENDING_AUDIT",
    "evidence": [],
@@ -1722,7 +1724,7 @@
    "local_execution": "TESTS_EXECUTED_IN_MATRIX",
    "owner": "research implementer",
    "remaining": [
-    "a family with selection headroom (B20_R3 pilot: ORACLE - fixed <= 1 of 12 on six systems; the redesigned cost-aware policy is INFERIOR_DEV, 2W/3T/3L; B20_R53: Wolfram at the hard settings NO_HEADROOM, 1, 0, 1, 0 of 15)",
+    "a family with selection headroom (B20_R3 pilot: ORACLE - fixed <= 1 of 12 on six systems; the redesigned cost-aware policy is INFERIOR_DEV, 2W/3T/3L; B20_R53: Wolfram at the hard settings NO_HEADROOM, 1, 0, 1, 0 of 15; B20_R54: 6-node conjectures do not reach the ceiling, NO_CEILING_HEADROOM)",
     "a sealed E3 study"
    ],
    "scientific_efficacy": "UNESTABLISHED",
@@ -1733,6 +1735,7 @@
     "tests_formal/test_learning.py",
     "tests_genesis/test_research_policy_v2.py",
     "tests_genesis/test_wolfram_headroom.py",
+    "tests_genesis/test_wolfram_ceiling.py",
     "tests_formal/test_learning_partitions.py",
     "tests_genesis/test_research_resource_accounting.py",
     "tests_formal/test_successor_proof_custody.py"

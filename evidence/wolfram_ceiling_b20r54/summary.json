@@ -1,0 +1,157 @@
+{
+ "cap": 1800,
+ "ceiling_headroom": [
+  0,
+  0,
+  0,
+  0
+ ],
+ "cheap_s": 1,
+ "claim": "none; a design diagnostic for GV4 and the GV6 equational target",
+ "descriptive": {
+  "exhaust6-exhaust5": [
+   -1,
+   0,
+   0,
+   0
+  ],
+  "gap5-exhaust5": [
+   -1,
+   0,
+   0,
+   1
+  ],
+  "gap6-exhaust5": [
+   -1,
+   0,
+   0,
+   0
+  ],
+  "gap6-exhaust6": [
+   0,
+   0,
+   0,
+   0
+  ],
+  "gap6-oracle6": [
+   -1,
+   0,
+   0,
+   0
+  ]
+ },
+ "mean": 0,
+ "noise": [
+  0,
+  0,
+  0,
+  0
+ ],
+ "pools": {
+  "5": 5,
+  "6": 6
+ },
+ "rule": {
+  "min_mean": 2,
+  "min_seed": 2,
+  "min_seeds": 3,
+  "none_max": 1
+ },
+ "rules": {
+  "dev_targets": 10,
+  "eval_s": 3,
+  "eval_targets": 15,
+  "false_conjectures": 30,
+  "per_bucket": 8,
+  "pool_size": 5,
+  "premise_k": 8,
+  "prove_s": 10,
+  "target_range": [
+   5,
+   8
+  ]
+ },
+ "seeds": [
+  5401,
+  5402,
+  5403,
+  5404
+ ],
+ "status": "DESIGN_PILOT_DEV",
+ "system": "ba_wolfram",
+ "table": [
+  {
+   "empty": 0,
+   "exhaust5": 9,
+   "exhaust5_cpu_s": 4.66,
+   "exhaust6": 8,
+   "exhaust6_cpu_s": 550.393,
+   "exhaust6_lemmas": 181,
+   "gap5": 8,
+   "gap5_cpu_s": 28.747,
+   "gap5_kept": 3,
+   "gap6": 8,
+   "gap6_cpu_s": 630.002,
+   "gap6_kept": 4,
+   "oracle5": 9,
+   "oracle6": 9,
+   "repeat5": 9,
+   "seed": 5401
+  },
+  {
+   "empty": 0,
+   "exhaust5": 12,
+   "exhaust5_cpu_s": 9.132,
+   "exhaust6": 12,
+   "exhaust6_cpu_s": 523.145,
+   "exhaust6_lemmas": 183,
+   "gap5": 12,
+   "gap5_cpu_s": 16.206,
+   "gap5_kept": 1,
+   "gap6": 12,
+   "gap6_cpu_s": 630.836,
+   "gap6_kept": 5,
+   "oracle5": 12,
+   "oracle6": 12,
+   "repeat5": 12,
+   "seed": 5402
+  },
+  {
+   "empty": 0,
+   "exhaust5": 11,
+   "exhaust5_cpu_s": 8.868,
+   "exhaust6": 11,
+   "exhaust6_cpu_s": 615.184,
+   "exhaust6_lemmas": 174,
+   "gap5": 11,
+   "gap5_cpu_s": 16.826,
+   "gap5_kept": 1,
+   "gap6": 11,
+   "gap6_cpu_s": 714.493,
+   "gap6_kept": 5,
+   "oracle5": 11,
+   "oracle6": 11,
+   "repeat5": 11,
+   "seed": 5403
+  },
+  {
+   "empty": 0,
+   "exhaust5": 12,
+   "exhaust5_cpu_s": 9.075,
+   "exhaust6": 12,
+   "exhaust6_cpu_s": 538.596,
+   "exhaust6_lemmas": 182,
+   "gap5": 13,
+   "gap5_cpu_s": 16.779,
+   "gap5_kept": 1,
+   "gap6": 12,
+   "gap6_cpu_s": 616.483,
+   "gap6_kept": 1,
+   "oracle5": 12,
+   "oracle6": 12,
+   "repeat5": 12,
+   "seed": 5404
+  }
+ ],
+ "verdict": "NO_CEILING_HEADROOM"
+}

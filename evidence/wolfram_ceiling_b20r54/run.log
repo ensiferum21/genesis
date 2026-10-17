@@ -1,0 +1,14 @@
+[  186.7s] seed 5401 pool5: 119 items; exhaust 9 (89 lemmas, 4.66 s), oracle 9 (58), gap 8 (3 kept, 86 cheaply derivable, 28.747 s)
+[ 1485.6s] seed 5401 pool6: 263 items; exhaust 8 (181 lemmas, 550.393 s), oracle 9 (102), gap 8 (4 kept, 178 cheaply derivable, 630.002 s)
+[ 1485.6s] seed 5401: empty 0, repeat5 9 [1466.2 s]
+[ 1622.5s] seed 5402 pool5: 120 items; exhaust 12 (90 lemmas, 9.132 s), oracle 12 (67), gap 12 (1 kept, 89 cheaply derivable, 16.206 s)
+[ 2855.4s] seed 5402 pool6: 263 items; exhaust 12 (183 lemmas, 523.145 s), oracle 12 (108), gap 12 (5 kept, 178 cheaply derivable, 630.836 s)
+[ 2855.4s] seed 5402: empty 0, repeat5 12 [1352.5 s]
+[ 3004.7s] seed 5403 pool5: 118 items; exhaust 11 (88 lemmas, 8.868 s), oracle 11 (56), gap 11 (1 kept, 87 cheaply derivable, 16.826 s)
+[ 4481.0s] seed 5403 pool6: 263 items; exhaust 11 (174 lemmas, 615.184 s), oracle 11 (60), gap 11 (5 kept, 169 cheaply derivable, 714.493 s)
+[ 4481.0s] seed 5403: empty 0, repeat5 11 [1609.0 s]
+[ 4612.5s] seed 5404 pool5: 120 items; exhaust 12 (90 lemmas, 9.075 s), oracle 12 (58), gap 13 (1 kept, 89 cheaply derivable, 16.779 s)
+[ 5844.7s] seed 5404 pool6: 263 items; exhaust 12 (182 lemmas, 538.596 s), oracle 12 (79), gap 12 (1 kept, 181 cheaply derivable, 616.483 s)
+[ 5844.7s] seed 5404: empty 0, repeat5 12 [1347.0 s]
+[ 5844.7s] verdict NO_CEILING_HEADROOM; ceiling headroom [0, 0, 0, 0] (mean 0); descriptive {"exhaust6-exhaust5": [-1, 0, 0, 0], "gap6-exhaust5": [-1, 0, 0, 0], "gap6-exhaust6": [0, 0, 0, 0], "gap6-oracle6": [-1, 0, 0, 0], "gap5-exhaust5": [-1, 0, 0, 1]}; noise [0, 0, 0, 0]
+rc=0

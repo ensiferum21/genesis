@@ -59,8 +59,10 @@ so far cannot prove it in 1 s; then prove it with 10 s.
 
 ## Consequence
 
-This adds a ninth system to B20_R3/R6/R9's equational headroom pilots, and the first at hard settings. Choosing
-which pool lemmas to prove or keep has at most 1 of 15 headroom here too.
+B20_R3 and R6 covered eight equational systems with 1 s attempts, Wolfram's axiom among them at its floor. This
+pilot adds the first measurement at hard settings, on the one system where research matters there. Choosing which
+pool lemmas to prove or keep has at most 1 of 15 headroom here too. (Corrected after commit: an earlier wording
+called Wolfram a ninth system; it is one of the eight, measured here at new settings.)
 - **What limits the successor.** The limit is the ceiling: targets that no pool library proves. Selection is not
   the limit.
 - **Equational GV6 target.** A transferred procedure can matter here only if it reaches beyond the pool's

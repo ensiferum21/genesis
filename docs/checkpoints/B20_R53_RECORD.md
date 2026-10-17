@@ -64,8 +64,10 @@ lemmas cannot prove it in 1 s, then prove it in 10 s.
 
 ## Consequence
 
-- **No selection headroom on any of nine systems.** Wolfram at the hard settings joins the eight systems of
-  B20_R3/R6/R9: choosing which pool lemmas to prove or keep has at most 1 of 15 headroom.
+- **No selection headroom at the hard settings either.** B20_R3/R6/R9 covered eight systems with 1 s attempts,
+  Wolfram among them at its floor. At the hard settings, where research matters on Wolfram, choosing which pool
+  lemmas to prove or keep still has at most 1 of 15 headroom. (Corrected after commit: an earlier wording called
+  Wolfram a ninth system.)
 - **For GV4 (B20R9-OPEN-1).** GV4 still cannot be answered positively on this domain at pool scale.
 - **For GV6.** The equational target can show transfer only if the transferred procedure reaches beyond the
   pool, into the ceiling. The keep rule's compression (1–3 lemmas, with no loss) suggests it could screen much

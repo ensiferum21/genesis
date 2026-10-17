@@ -713,6 +713,12 @@
           "62f35c7"
         ],
         "result": "Design pilot: research-selection headroom on Wolfram's axiom at B20's hard settings (10 s attempts, 3 s per target, 15 targets), fresh seeds 5301-5304. ORACLE@cap - FIXED@cap 1, 0, 1, 0 at caps 60 and 30 (non-binding: the pool exhausts in 4.9-9.1 s), noise 0: NO_HEADROOM. EXHAUST - EMPTY 11, 7, 11, 11; ceiling gap 4, 8, 3, 4. Descriptive GAP (the GV6 draft's transferred keep rule) equals ORACLE on every seed with 1-3 lemmas; GAP - FIXED +1, 0, +1, 0; research CPU 16.5-29.5 s"
+      },
+      "B20_R54": {
+        "commits": [
+          "5eaf4e9"
+        ],
+        "result": "Design pilot: does research beyond the pool reach Wolfram's ceiling? Fresh seeds 5401-5404, POOL5 (B20_R53's) and POOL6 (true equations up to 6 nodes, 233), targets screened against every pool and development item. ORACLE6 - ORACLE5 0, 0, 0, 0, noise 0: NO_CEILING_HEADROOM. EXHAUST6 (174-183 lemmas, 523-615 CPU-s) - EXHAUST5 -1, 0, 0, 0; GAP6 (1-5 lemmas) equals EXHAUST6; GAP5 - EXHAUST5 -1, 0, 0, +1. A first R54 design (GAP vs curated/random/complement libraries) was drafted and set aside unrun (disclosed)"
       }
     },
     "open_after_b20_r5": [
@@ -1085,6 +1091,10 @@
     ],
     "open_after_b20_r53": [
       "B20R9-OPEN-1 updated: Wolfram at the hard settings has no selection headroom; the ceiling is the limit (B20_R54 asks whether research beyond the pool reaches it)"
+    ],
+    "open_after_b20_r54": [
+      "B20R9-OPEN-1 updated: the equational domain is closed for GV4 at these scales",
+      "B20R46-OPEN-1 updated: the equational GV6 target has no research headroom"
     ]
   }
 }
