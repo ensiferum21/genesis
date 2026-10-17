@@ -759,9 +759,16 @@
       },
       "B20_R58": {
         "commits": [
-          "641ff38"
+          "641ff38",
+          "98dbf6f"
         ],
         "result": "Design pilot (GV4 headroom): sum-free pattern selection. Patterns scored on 16 development hosts (root-bound gain per separation row); on 16 fresh evaluation hosts at 30 s: ALL 13 certified, NONE 10, TOP-1/2/4/8 9/10/10/11; ORACLE-K TOP8 vs BASE ALL: H -2; DEV-K TOP8 -2; all sound: NO_HEADROOM. Patterns alone move the root bound 0.1-0.6, together 7: their value is joint"
+      },
+      "B20_R59": {
+        "commits": [
+          "02415a8"
+        ],
+        "result": "Internal replication of B20_R57 (same script, fresh seeds 20265901/20265911): screen 40 of 69; a 21, c 23 certified (0/2, McNemar p 0.25), wall saving +2.76 s [0.04, 5.37]: NO_CERTIFICATION_UTILITY, NOT_REPLICATED. Certified bound +3.875 [2.675, 5.125]: BOUND_UTILITY replicates. Interrupted once at host 23 by disk exhaustion (ENOSPC), resumed from intact rows"
       }
     },
     "open_after_b20_r5": [
@@ -1150,6 +1157,9 @@
     ],
     "open_after_b20_r58": [
       "B20R9-OPEN-1 updated: no probed setting has research-decision headroom; builder recommends the GV4 fallback for the reviewer"
+    ],
+    "open_after_b20_r59": [
+      "B20R46-OPEN-1 and B20R35-OPEN-1 updated: sum-free coverage effect not replicated; bound advantage replicated"
     ]
   }
 }

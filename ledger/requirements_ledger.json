@@ -5441,7 +5441,8 @@
     "src/genesis/verification/lp_dual_tree_sf.py",
     "src/genesis/discovery/generated_bnb_sf.py",
     "scripts/b20r56_sf_tree_certification.py",
-    "scripts/b20r57_sf_hard_certification.py"
+    "scripts/b20r57_sf_hard_certification.py",
+    "scripts/b20r59_sf_replication.py"
    ],
    "disposition": "RESEARCH_HYPOTHESIS",
    "evidence": [],
@@ -5472,9 +5473,10 @@
     "tests_formal/test_sf_generator.py",
     "tests_genesis/test_lp_dual_tree_sf.py",
     "tests_genesis/test_sf_tree_certification.py",
-    "tests_genesis/test_sf_hard_certification.py"
+    "tests_genesis/test_sf_hard_certification.py",
+    "tests_genesis/test_sf_replication.py"
    ],
-   "title": "Transfer and independent reproduction (B20_R46: the row-invention procedure transferred to C4-free subgraphs with a registered adaptation, 37/37 obligations Lean-CHECKED; B20_R47: no certification coverage gain from the rows alone (22 vs 22); B20_R48: with certified branch and bound, CERTIFICATION_UTILITY on fresh C4 hosts, 38 vs 26 of 40; B20_R49: a registered ablation attributes it to the transferred rows (36 vs 24 of 40, p 0.00024); B20_R50: the rows make E1b's C4 arm scorable (two calibrated C4 settings, READY_FOR_REVIEW, MIP-dominated); near-domain evidence only; B20_R53/R54: the equational target has no research headroom; B20_R55: the procedure transferred to sum-free sets of integers, a different theorem family, 20/20 obligations Lean-CHECKED; B20_R56: NO_CERTIFICATION_UTILITY there (28 vs 26 of 40, p 0.25); B20_R57: CERTIFICATION_UTILITY on hosts hard for the conventional route (22 vs 14 of 40, p 0.0039); independent reproduction not started)",
+   "title": "Transfer and independent reproduction (B20_R46: the row-invention procedure transferred to C4-free subgraphs with a registered adaptation, 37/37 obligations Lean-CHECKED; B20_R47: no certification coverage gain from the rows alone (22 vs 22); B20_R48: with certified branch and bound, CERTIFICATION_UTILITY on fresh C4 hosts, 38 vs 26 of 40; B20_R49: a registered ablation attributes it to the transferred rows (36 vs 24 of 40, p 0.00024); B20_R50: the rows make E1b's C4 arm scorable (two calibrated C4 settings, READY_FOR_REVIEW, MIP-dominated); near-domain evidence only; B20_R53/R54: the equational target has no research headroom; B20_R55: the procedure transferred to sum-free sets of integers, a different theorem family, 20/20 obligations Lean-CHECKED; B20_R56: NO_CERTIFICATION_UTILITY there (28 vs 26 of 40, p 0.25); B20_R57: CERTIFICATION_UTILITY on hosts hard for the conventional route (22 vs 14 of 40, p 0.0039), NOT_REPLICATED on fresh hosts (B20_R59: 23 vs 21, p 0.25) while its bound advantage replicated; independent reproduction not started)",
    "workstream": "W24"
   },
   {

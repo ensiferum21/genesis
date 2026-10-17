@@ -135,7 +135,8 @@ not invented.
 - six construction attempts: B20_R17, R19, R26, R27, R31, R36;
 - seven certification attempts: B20_R32, R35, R37, R47, R48, and, added after B20_R49, B20_R56 (sum-free rows,
   p = 0.25) and B20_R57 (sum-free rows on hosts hard for the conventional route, p = 0.0039; it survives
-  Benjamini–Yekutieli at q = 0.1 over all 13 attempts).
+  Benjamini–Yekutieli at q = 0.1 over all 13 attempts, but its internal replication B20_R59 did not reproduce the
+  coverage effect, p = 0.25).
 
 B20_R49 is an attribution test of B20_R48, not a new attempt. Under Benjamini–Yekutieli at q = 0.1,
 the two smallest p-values survive whatever the others are: B20_R35 at 9.5e-7, and B20_R48 at 0.00024.

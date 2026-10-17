@@ -79,7 +79,7 @@ bash deployment/reproduce.sh <zip> <sha256> <out> --build-toolchain
 | GV3 (useful discovery beyond strong baselines) | Builder side done for E1, E1b, E1b-C4 and E1d. **E1d** beats HiGHS at 4× budget (+9.80 per host, SUPPORTED rehearsal; ablation +7.07, null clean). E1, E1b and E1b-C4 are READY_FOR_REVIEW against DSL baselines but MIP-dominated (B20R33-OPEN-1) | `handoff/e1`, `e1b`, `e1b_c4`, `e1d` |
 | GV4 (better improver) | **UNESTABLISHED; the main risk.** No probed domain has research-policy headroom: graph construction (selection, proposal), the equational systems (nine settings, including Wolfram at hard settings: selection, keeping, larger conjecture spaces), larger C4 rows, sum-free pattern selection (B20_R58). The builder recommends the roadmap's fallback. Six invented components have no construction utility after cost. Two certification utilities survive false-discovery control (B20_R35, B20_R48) | `handoff/gv4/README.md` (DRAFT) |
 | GV5 (compounding generations) | Not started (depends on GV4) | — |
-| GV6 (structural transfer) | A positive near-domain chain in C4 (B20_R46–R52: invented, Lean-checked rows; utility attributed to them, 36 vs 24 of 40). Equational target: no headroom (B20_R53–R54). Sum-free target (a different theorem family): the procedure transfers, 20/20 Lean (B20_R55); NO_CERTIFICATION_UTILITY unenriched (B20_R56), **CERTIFICATION_UTILITY** on hosts hard for the conventional route (B20_R57, 22 vs 14, p 0.0039) | `handoff/gv6/README.md` (DRAFT) |
+| GV6 (structural transfer) | A positive near-domain chain in C4 (B20_R46–R52: invented, Lean-checked rows; utility attributed to them, 36 vs 24 of 40). Equational target: no headroom (B20_R53–R54). Sum-free target (a different theorem family): the procedure transfers, 20/20 Lean (B20_R55); NO_CERTIFICATION_UTILITY unenriched (B20_R56), **CERTIFICATION_UTILITY** on hosts hard for the conventional route (B20_R57, 22 vs 14, p 0.0039), **not replicated** (B20_R59, 23 vs 21, p 0.25); the certified-bound advantage replicated | `handoff/gv6/README.md` (DRAFT) |
 | GV7 (independent replication) | Handoff package exists (B20_R21); needs a second operator and machine | `handoff/replication/` |
 | GV8 (extended domains) | Out of scope so far | — |
 
@@ -112,10 +112,11 @@ needs people: a reviewer, a statistician, an independent custodian on its own ma
 | B20_R56 | Sum-free certification: NO_CERTIFICATION_UTILITY (28 vs 26, p 0.25) |
 | B20_R57 | Sum-free on hosts hard for the conventional route: **CERTIFICATION_UTILITY**, 22 vs 14 of 40, p 0.0039; certified bound 6.9 lower |
 | B20_R58 | Sum-free pattern selection (GV4 pilot): **NO_HEADROOM**; all 17 patterns beat every subset |
+| B20_R59 | Internal replication of B20_R57: **NOT_REPLICATED** on coverage (23 vs 21, p 0.25); the bound advantage replicates (+3.9) |
 
 ## 6. Next steps, in order
 
-1. **Checkpoint B20_R58** (covers B20_R57–R58 and the handover docs): `scripts/make_checkpoint.py --batch 20 --suffix _R58 --parent GENESIS_COMPLETION_CHECKPOINT_B20_R56.zip --parent-ref 010e507`, then restore-verify, rehearse and archive.
+1. **Checkpoint after B20_R59.** B20_R58 (at `02415a8`) is built and restore-verified; record its rehearsal, then checkpoint again after B20_R59's record. Keep the session's disk allowance in mind: delete old `/tmp/genesis-repro-*` trees after each rehearsal (B20_R59 and one B20_R58 rehearsal were interrupted by disk exhaustion).
 2. **Get the decisions in the review brief.** Most remaining work depends on them. In particular:
    - item 1, the strong-baseline scope;
    - item 3, generated-rows certification as a trust path;

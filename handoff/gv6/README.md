@@ -49,7 +49,9 @@ utility on an unenriched sample. **B20_R57** tested the after-the-fact pattern p
 route cannot certify within 20 s (a candidate-blind screen): **CERTIFICATION_UTILITY**, 22 vs 14 of 40 (8/0, p 0.0039),
 wall saving +6.02 s [2.50, 9.88], certified bound 6.875 lower [5.375, 8.475]: **BOUND_UTILITY**. That is the C4 and
 triangle-free profile (the rows pay off where the conventional relaxation is the bottleneck), now in a different
-theorem family with the same abstract structure.
+theorem family with the same abstract structure. **B20_R59**, an internal replication on fresh hosts, did **not**
+replicate the coverage effect (23 vs 21, p 0.25; an easier sample for the conventional route) but did replicate
+the bound advantage (+3.875 [2.675, 5.125]). The defensible sum-free result is stronger certified bounds.
 
 ## Candidate structurally different targets
 
