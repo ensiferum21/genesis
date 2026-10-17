@@ -335,6 +335,21 @@
         },
         "restore_verified": "6027 manifest entries match; bundle clone gives the same commit and tree",
         "rehearsal": "deployment/reproduce.sh on the build host (clean room, not a second machine): REPRODUCED, all 7 steps; two earlier attempts lost (disk exhaustion at the toolchain build: NOT_REPRODUCED; a container restart), re-run from the same archive"
+      },
+      "B20_R65": {
+        "commit": "821b74310913484ca3618f5af9af9ee713ce9e71",
+        "sha256": "0730aad4798a10ae309fe57cd19240d9bde32eeacd3d4fa68cd9c70beccbbf43",
+        "release_matrix": {
+          "integration": 918,
+          "legacy_regression": 282,
+          "sandbox_escape": 28,
+          "certificates": 43,
+          "formal": 184,
+          "failures": 0,
+          "declared_skips": 1
+        },
+        "restore_verified": "6093 manifest entries match; bundle clone gives the same commit and tree",
+        "rehearsal": "deployment/reproduce.sh on the build host (clean room, not a second machine): REPRODUCED, all 7 steps"
       }
     },
     "adopted_from_crpd_v3_status": {
@@ -825,6 +840,12 @@
           "feac48d"
         ],
         "result": "E1d scaling pilot (DEV, planted (0.8, 0.06) at n40/50/60): ADVANTAGE_GROWS. Crossover 8 s (16x) at n40, 32 s (64x) at n50, none within 64x at n60 (+17.6 [8.1, 28.8] at 32 s, 10/0/0; candidate within one edge of a proven upper bound on 9/10). Run 1 invalid (HiGHS CPU-starved, 0.55-0.86 of budget, by a concurrent release matrix); criterion (>= 0.9) stated before a re-run alone, which meets it"
+      },
+      "B20_R66": {
+        "commits": [
+          "f2731ba"
+        ],
+        "result": "pending (runs alone)"
       }
     },
     "open_after_b20_r5": [
