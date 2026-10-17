@@ -807,7 +807,8 @@
       },
       "B20_R63": {
         "commits": [
-          "fca3c47"
+          "fca3c47",
+          "232b0db"
         ],
         "result": "E1d budget crossover (30 fresh hosts): candidate - HiGHS +10.30 [8.77, 11.83] at 2 s (4x), +6.37 at 4 s (8x), +0.43 [0.03, 0.90] at 8 s (16x, UNRESOLVED), tie at 16 s and 32 s (HiGHS optimal 30/30, about 6 CPU s). CROSSOVER_AT_8S. The builder's expectation (advantage through 16x) and its relaxation reading were wrong; the advantage is speed. Fallback draft, E1d README, review brief updated. Exposure addenda (30 hosts)"
       }

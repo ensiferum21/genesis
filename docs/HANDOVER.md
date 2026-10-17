@@ -144,5 +144,7 @@ needs people: a reviewer, a statistician, an independent custodian on its own ma
 | `GENESIS_COMPLETION_CHECKPOINT_B20_R<k>.zip` and `.sha256` | the latest checkpoint: source tree, history bundle, release-matrix report, SHA-256 manifest |
 | `genesis-all-branches.bundle` | a self-contained git bundle (no prerequisites) of `continuation-b20-rx` and `side-b21-equational`; verify with `git bundle verify`. The `archive` branch (16 checkpoint zips, about 410 MB) is not included; its checkpoints were delivered one by one |
 | `NEXT_ACTIONS.md`, `B20_R57_REVIEW_BRIEF.md` | status, decisions |
+| `STATISTICIAN_BRIEF.md` | the statistician's brief (B20_R61, B19-OPEN-4) |
+| `FALLBACK_CLAIM_DRAFT.md` | the GV4 fallback claim, DRAFT (B20_R60; updated with B20_R63's crossover) |
 | `*.rehearsal.json` | driver rehearsal reports for the checkpoints in the zip (when present) |
 | `SHA256SUMS` | the checksums of everything above |
