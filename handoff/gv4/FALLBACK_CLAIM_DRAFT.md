@@ -15,8 +15,8 @@ GV4 asks for a *better improver*: a research policy that produces better future 
 choosing well beats a fixed policy by more than the minimum useful effect.
 
 No probed domain has such a decision:
-- **Equational theories:** six systems (B20_R3), the family search (B20_R6, R9), and Wolfram's axiom at the hard
-  settings, for selection, keeping and 6-node conjectures (B20_R53, R54).
+- **Equational theories:** six systems (B20_R3), the family search (B20_R6), library curation (B20_R9), and
+  Wolfram's axiom at the hard settings, for selection, keeping and 6-node conjectures (B20_R53, R54).
 - **Graph construction:** choosing among existing configurations (B20_R13) and proposing pipelines over the LP-
   and SAT-guided components (B20_RX5).
 - **Certification rows:** 7-vertex rows add no coverage (B20_R37). For sum-free pattern selection (B20_R58) the
