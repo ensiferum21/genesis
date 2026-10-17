@@ -1,0 +1,191 @@
+{
+ "bound": {
+  "interval_90": [
+   5.375,
+   8.475
+  ],
+  "mean": 6.875,
+  "min": 2,
+  "per_host": [
+   17,
+   0,
+   0,
+   0,
+   0,
+   6,
+   7,
+   7,
+   7,
+   0,
+   0,
+   14,
+   0,
+   7,
+   7,
+   0,
+   19,
+   7,
+   12,
+   0,
+   0,
+   9,
+   0,
+   8,
+   19,
+   8,
+   0,
+   0,
+   8,
+   16,
+   18,
+   7,
+   10,
+   0,
+   8,
+   8,
+   19,
+   10,
+   9,
+   8
+  ],
+  "sound": true,
+  "verdict": "BOUND_UTILITY"
+ },
+ "budget_s": 60,
+ "by_setting": {
+  "random_subset_N300_p0.6": {
+   "certificate_bytes_max": 2435983,
+   "certified_a": 9,
+   "certified_a_not_c": 0,
+   "certified_c": 13,
+   "certified_c_not_a": 4,
+   "check_s_max": 0.297,
+   "hosts": 20,
+   "nodes_median": {
+    "a": 986.0,
+    "c": 156.0
+   },
+   "rate_a": 0.45,
+   "rate_c": 0.65,
+   "root_bound_a_minus_c_median": 7.0,
+   "wall_median_s": {
+    "a": 60.002,
+    "c": 40.613
+   },
+   "wall_total_s": {
+    "a": 951.44,
+    "c": 787.62
+   },
+   "witness_mip_optimal": 0
+  },
+  "random_subset_N360_p0.6": {
+   "certificate_bytes_max": 1271567,
+   "certified_a": 5,
+   "certified_a_not_c": 0,
+   "certified_c": 9,
+   "certified_c_not_a": 4,
+   "check_s_max": 0.164,
+   "hosts": 20,
+   "nodes_median": {
+    "a": 445.0,
+    "c": 95.5
+   },
+   "rate_a": 0.25,
+   "rate_c": 0.45,
+   "root_bound_a_minus_c_median": 8.0,
+   "wall_median_s": {
+    "a": 60.017,
+    "c": 60.035
+   },
+   "wall_total_s": {
+    "a": 1058.86,
+    "c": 981.71
+   },
+   "witness_mip_optimal": 0
+  }
+ },
+ "checker_identity": "genesis.verification.lp_dual_tree_sf@a4a7e2c941cca7bc32543e370f7a45868f10797f1cecff6a1903eb944cde52fd",
+ "code_identity": "d72ef9cdaac2c97788029b9b087cb7e211c50e6cff6132ba5c120f1af259076f",
+ "mcnemar_p_one_sided": 0.00390625,
+ "passes": {
+  "coverage": true,
+  "mcnemar": true,
+  "sound": true,
+  "time": true
+ },
+ "pooled": {
+  "certificate_bytes_max": 2435983,
+  "certified_a": 14,
+  "certified_a_not_c": 0,
+  "certified_c": 22,
+  "certified_c_not_a": 8,
+  "check_s_max": 0.297,
+  "hosts": 40,
+  "nodes_median": {
+   "a": 520.5,
+   "c": 121.0
+  },
+  "rate_a": 0.35,
+  "rate_c": 0.55,
+  "root_bound_a_minus_c_median": 8.0,
+  "wall_median_s": {
+   "a": 60.013,
+   "c": 49.631
+  },
+  "wall_total_s": {
+   "a": 2010.3,
+   "c": 1769.33
+  },
+  "witness_mip_optimal": 0
+ },
+ "registry": {
+  "package_sha256": "7f19273f9078d9bb016d93488f29fbef9070c52bffa78fed599e798b6457e070",
+  "patterns": 17,
+  "sha256": "37be30f13720f38b954c5ad0b279586852dad8c93ea4bb5f97980cf178cecc35"
+ },
+ "schema": "genesis-b20r57-sf-hard-certification-v1",
+ "screen": {
+  "by_setting": {
+   "random_subset_N300_p0.6": {
+    "candidates": 43,
+    "included": 20
+   },
+   "random_subset_N360_p0.6": {
+    "candidates": 29,
+    "included": 20
+   }
+  },
+  "candidates": 72,
+  "included": 40
+ },
+ "screen_s": 20,
+ "seeds": [
+  20265701,
+  20265711
+ ],
+ "separation": {
+  "per_round": 400,
+  "rounds": 30
+ },
+ "settings": [
+  {
+   "N": 300,
+   "p": 0.6
+  },
+  {
+   "N": 360,
+   "p": 0.6
+  }
+ ],
+ "status": "DEV measurement; licenses nothing; route and checker not wired into anything",
+ "unsound_rows": [],
+ "verdict": "CERTIFICATION_UTILITY",
+ "wall_saving_a_minus_c": {
+  "interval_90": [
+   2.503075,
+   9.87735
+  ],
+  "mean": 6.02425
+ },
+ "witness_s": 10
+}

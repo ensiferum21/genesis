@@ -45,8 +45,11 @@ missing:
 
 **What this adds.** The procedure transfers to a different theorem family (its search, kept rule and proof method
 unchanged), and its rows strengthen the relaxation there too. On these settings they give no preregistered
-utility. After the fact, the benefit concentrates on hosts that are hard for the conventional route. B20_R57 tests
-that, preregistered.
+utility on an unenriched sample. **B20_R57** tested the after-the-fact pattern prospectively, on hosts the conventional
+route cannot certify within 20 s (a candidate-blind screen): **CERTIFICATION_UTILITY**, 22 vs 14 of 40 (8/0, p 0.0039),
+wall saving +6.02 s [2.50, 9.88], certified bound 6.875 lower [5.375, 8.475]: **BOUND_UTILITY**. That is the C4 and
+triangle-free profile (the rows pay off where the conventional relaxation is the bottleneck), now in a different
+theorem family with the same abstract structure.
 
 ## Candidate structurally different targets
 

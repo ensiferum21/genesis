@@ -749,6 +749,12 @@
           "010e507"
         ],
         "result": "Certified branch and bound over the transferred sum-free rows (verification/lp_dual_tree_sf.py exact checker; discovery/generated_bnb_sf.py with root separation) vs the same tree over Schur rows only (conventional route and registered ablation): 40 fresh random-subset hosts (300/0.6, 360/0.6), shared 10 s HiGHS witness, 60 s per route. Certified a 26, c 28 (0/2 discordant, McNemar p 0.25); wall saving a - c -1.61 s [-4.14, +1.37]; all sound: NO_CERTIFICATION_UTILITY. Root bound 5-10 lower with the rows, median nodes 85 vs 278; slower on easy hosts (median 18.8 vs 8.5 s); after the fact better on 6 of 8 hosts hard for route a"
+      },
+      "B20_R57": {
+        "commits": [
+          "a64952b"
+        ],
+        "result": "Hardness-enriched follow-up to B20_R56: fresh candidates screened by route a alone (Schur rows, 20 s, from the 10 s witness); 40 of 72 included. Both routes 60 s: certified a 14, c 22 (0/8 discordant, McNemar p 0.0039); wall saving +6.02 s [2.50, 9.88]; all sound: CERTIFICATION_UTILITY. Secondary: certified upper bound a - c +6.875 [5.375, 8.475]: BOUND_UTILITY. Survives BY at q = 0.1 over 13 attempts"
       }
     },
     "open_after_b20_r5": [
@@ -1131,6 +1137,9 @@
     ],
     "open_after_b20_r56": [
       "B20R46-OPEN-1 updated: second target negative on these settings (NO_CERTIFICATION_UTILITY); hardness-enriched follow-up is B20_R57"
+    ],
+    "open_after_b20_r57": [
+      "B20R46-OPEN-1 and B20R35-OPEN-1 updated: positive enriched result in the sum-free target; reviewer decisions stand"
     ]
   }
 }

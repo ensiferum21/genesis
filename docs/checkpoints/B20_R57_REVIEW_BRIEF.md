@@ -31,7 +31,7 @@ Checkpoints:
 | 2 | **E1d (B20R41-OPEN-1, B20R44-OPEN-1).** E1's frozen candidate beats HiGHS at four times its budget on three dense planted settings: +10.6 per host on the re-pilot, and +9.80 in the same-operator rehearsal (SUPPORTED). The registered ablation of its discovered representation costs +7.07 per host, with a clean null control. Adopting it needs the DRAFT rule `e1-hard-v3-draft`, the generated-rows reference (item 3), the v5 and registry-v2 wiring (B20R40-OPEN-1), and the `cross_2 → ordered_2` intervention. | The only GV3 path found that is beyond an exact solver | `handoff/e1d/`, `evidence/e1d_*` |
 | 3 | **Generated-rows certification as a trust-path change (B20R35-OPEN-1, B20R48-OPEN-1).** Should the evaluator accept certificates whose rows are Lean-checked theorems of a generated theory package? The checkers are exact (`verification/lp_dual_rows*.py`, `lp_dual_tree_*.py`), custody exists (`certificates_rows.py`, `certificates_tree_c4.py`), and the wiring is opt-in through v5. | Makes the dense regime (E1d) and the C4 settings certifiable | `docs/GENERATED_ROWS_REFERENCE.md` |
 | 4 | **Does certification utility count as "helps"?** This is asked for GV4 (B20R35-OPEN-1) and for GV6. Every positive invention result is in certification: B20_R35 (27 vs 7 of 40) and B20_R48 (38 vs 26 of 40, attributed to the rows by B20_R49). No invented component has construction utility after cost (six attempts). | Without it, GV4 and GV6 have no positive evidence | `handoff/gv4/README.md`, `handoff/gv6/README.md` |
-| 5 | **GV6 target (B20R46-OPEN-1).** Results by target:<br>• **C4:** a positive near-domain chain (B20_R46–R52).<br>• **Equational:** no research headroom (B20_R53, R54).<br>• **Sum-free sets** (a different theorem family): the procedure transfers, 20/20 Lean-CHECKED (B20_R55), but there is no certification utility on the first settings (B20_R56). B20_R57's hardness-enriched result is pending.<br>The builder's view is that sum-free and codes share the source's abstract structure, a hypergraph-free packing. | Decides whether any existing evidence can count toward GV6 | `handoff/gv6/README.md` |
+| 5 | **GV6 target (B20R46-OPEN-1).** Results by target:<br>• **C4:** a positive near-domain chain (B20_R46–R52).<br>• **Equational:** no research headroom (B20_R53, R54).<br>• **Sum-free sets** (a different theorem family): the procedure transfers, 20/20 Lean-CHECKED (B20_R55). There is no certification utility on an unenriched sample (B20_R56), but there is CERTIFICATION_UTILITY on hosts hard for the conventional route (B20_R57: 22 vs 14, p 0.0039).<br>The builder's view is that sum-free and codes share the source's abstract structure, a hypergraph-free packing. | Decides whether any existing evidence can count toward GV6 | `handoff/gv6/README.md` |
 | 6 | **GV4 domain and fallback (B20R9-OPEN-1).** No probed domain has research-policy headroom:<br>• graph construction: selection and proposal;<br>• nine equational settings, including Wolfram at hard settings: selection, keeping and larger conjecture spaces;<br>• larger C4 rows.<br>The roadmap's fallback is "a useful solver, not a better improver". The reviewer should say whether to pursue a new domain or accept the fallback. | GV4 is the main risk to the grand vision | `evidence/headroom_pilot_b20r3/`, `evidence/wolfram_*_b20r53/54/`, `handoff/gv4/README.md` |
 | 7 | **E1, E1b, E1b-C4 sign-off.** The rule `e1-hard-v2`, the cost and comparator decisions, and the statistician's sign-off of the centred power model (B19-OPEN-4). For C4: the DRAFT rule `e1-hard-v2-c4tree-draft` and the tree reference (B20R50-OPEN-1). All are READY_FOR_REVIEW, and their rehearsals are SUPPORTED. | GV3 within scope (item 1) | `handoff/e1/`, `handoff/e1b/`, `handoff/e1b_c4/` |
 | 8 | **Certification limits (B20R24-OPEN-2).** Align the calibration limit (≥ 90% certified within 60 s) with the plan's limit (≤ 5% unsupported at 600 s). Measured LIMITS_CONSISTENT on `e1b` (B20_R30). | Needed before any real run | `evidence/certification_budget_b20r30/` |
@@ -67,6 +67,7 @@ Questions:
 | Generated-row certification utility on triangle-free hosts | B20_R35 |
 | The C4 transfer chain: an invented, Lean-checked component whose certification utility is attributed to it in a new graph domain | B20_R46–R49 |
 | E1b scorable on C4, READY_FOR_REVIEW against DSL baselines | B20_R50, R52 |
+| Sum-free transfer: certification utility on hosts hard for the conventional route | B20_R55, R57 |
 
 **Negative or limiting:**
 
@@ -76,11 +77,11 @@ Questions:
 | MIP dominance on the certifiable settings | B20_R33, R34, R50 |
 | No coverage gain from 7-vertex rows | B20_R37 |
 | No equational research headroom | B20_R53, R54 |
-| No sum-free certification utility on the first settings | B20_R56 |
+| No sum-free certification utility on an unenriched sample (positive when enriched, B20_R57) | B20_R56 |
 
-**False discovery.** The attempt family has six construction and six certification attempts. Under
+**False discovery.** The attempt family has six construction and seven certification attempts. Under
 Benjamini–Yekutieli at q = 0.1, B20_R35 (p 9.5e-7) and B20_R48 (p 0.00024) survive whatever the other p-values
-are, for any family of up to 147 attempts.
+are, and B20_R57 (p 0.0039) survives over the current 13.
 
 ## 4. Known limits
 

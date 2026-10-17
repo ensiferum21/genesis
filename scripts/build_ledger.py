@@ -653,6 +653,7 @@ WORKSTREAMS = {
             'READY_FOR_REVIEW, MIP-dominated); near-domain evidence only; B20_R53/R54: the equational target has no '
             'research headroom; B20_R55: the procedure transferred to sum-free sets of integers, a different theorem '
             'family, 20/20 obligations Lean-CHECKED; B20_R56: NO_CERTIFICATION_UTILITY there (28 vs 26 of 40, p 0.25); '
+            'B20_R57: CERTIFICATION_UTILITY on hosts hard for the conventional route (22 vs 14 of 40, p 0.0039); '
             'independent reproduction not started)', H,
             ['src/genesis/invention/cuts_c4.py', 'scripts/b20r46_c4_generator.py',
              'src/genesis/verification/lp_dual_rows_c4.py', 'src/genesis/discovery/generated_certify_c4.py',
@@ -662,12 +663,12 @@ WORKSTREAMS = {
              'src/genesis/verification/certificates_tree_c4.py', 'scripts/b20r52_e1b_c4_package.py',
              'src/genesis/invention/cuts_sf.py', 'scripts/b20r55_sf_generator.py',
              'src/genesis/verification/lp_dual_tree_sf.py', 'src/genesis/discovery/generated_bnb_sf.py',
-             'scripts/b20r56_sf_tree_certification.py'],
+             'scripts/b20r56_sf_tree_certification.py', 'scripts/b20r57_sf_hard_certification.py'],
             [G + 'test_cuts_c4.py', 'tests_formal/test_c4_generator.py', G + 'test_lp_dual_rows_c4.py',
              G + 'test_c4_certification.py', G + 'test_lp_dual_tree_c4.py', G + 'test_c4_tree_certification.py',
              G + 'test_c4_rows_ablation.py', G + 'test_e1b_c4_readiness.py', G + 'test_wiring_tree_c4.py',
              G + 'test_e1b_c4_package.py', G + 'test_cuts_sf.py', 'tests_formal/test_sf_generator.py',
-             G + 'test_lp_dual_tree_sf.py', G + 'test_sf_tree_certification.py']),
+             G + 'test_lp_dual_tree_sf.py', G + 'test_sf_tree_certification.py', G + 'test_sf_hard_certification.py']),
     'W25': ('Trainable model extension', N, [], []),
     'W26': ('Software research extension', N, [], []),
     'W27': ('Numerical, empirical and instrument extension', N, [], []),
