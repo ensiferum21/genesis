@@ -63,3 +63,9 @@ and causally attributed (B20_R48, R49).
 3. **Strong baselines.** A reviewer decides B20R33-OPEN-1, the scope of "strong baselines", given
    that the exact MIP dominates here.
 4. **People.** A statistician, and an independent custodian on its own machine.
+
+## Power analyses for the causal follow-ups (B20_R62)
+
+The causal power analyses of B20_R50 are bound to the `sealed_evaluation` family. The custodian assigns `ablation:c4_host_v2` and `placebo:c4_host_v2` and refuses any other. A freeze must therefore use the rebound analyses in `evidence/power_rebind_b20r62/`.
+- **Ablation:** still 10 per stratum.
+- **Placebo:** it needs **12 per stratum**, not 10. Its stored choice of 10 has power 0.764 when re-simulated with 10,000 simulations (`docs/STATISTICIAN_BRIEF.md`, findings 1 and 2).

@@ -115,6 +115,7 @@ needs people: a reviewer, a statistician, an independent custodian on its own ma
 | B20_R59 | Internal replication of B20_R57: **NOT_REPLICATED** on coverage (23 vs 21, p 0.25); the bound advantage replicates (+3.9) |
 | B20_R60 | GV4 fallback claim **drafted** (`handoff/gv4/FALLBACK_CLAIM_DRAFT.md`): E1d as a useful solver, its ablation, and (if certification counts) the generated rows; BY table derived from the evidence |
 | B20_R61 | Statistician's brief (`docs/STATISTICIAN_BRIEF.md`): every power analysis reproduces; flags E1b-C4's underpowered placebo size, four causal power analyses bound to the wrong family, and the claim-vs-rule wording |
+| B20_R62 | Causal power analyses rebound to the custodian's families; at 10,000 simulations only E1b-C4's placebo changes size (10 -> 12 per stratum) |
 
 ## 6. Next steps, in order
 

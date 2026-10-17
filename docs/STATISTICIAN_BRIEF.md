@@ -135,6 +135,9 @@ asked whether their positives count (`handoff/gv4/FALLBACK_CLAIM_DRAFT.md`, Part
    - E1b-C4 ablation: n 10 per stratum, power 0.992
    - E1b-C4 placebo: n 12 per stratum, power 0.879
 
+   B20_R62 writes these four analyses to `evidence/power_rebind_b20r62/`, and re-sizes all nine analyses at
+   10,000 simulations under the assigned families. Only E1b-C4's placebo changes, from 10 to 12 per stratum.
+
    Only the random stream changes: the simulation is seeded from the plan core. The same data and size give
    0.859 under the `sealed_evaluation` family and 0.838 under the `ablation` family (E1d ablation, 15 per
    stratum).

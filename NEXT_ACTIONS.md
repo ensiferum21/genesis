@@ -30,7 +30,7 @@
 | B20_R58 | `02415a8` | `976ba869…ac19` (B20_R57–R58, the B20_R59 setup, the handover document and review brief, and the B20_R56 checkpoint record; release matrix 1,418 tests, all OK, one declared skip; restore-verified, 6,027 manifest entries; driver rehearsal on the build host **REPRODUCED**, not a second machine; two earlier rehearsal attempts were lost, one NOT_REPRODUCED at the toolchain build when the session's disk allowance ran out and one to a container restart, and it was re-run from the same archive) |
 
   The recovery-branch checkpoints B20_RX1 and B20_RX2 are on `recovery-b20r1-partial`; their work was ported here.
-- **Records:** `docs/checkpoints/B20_R1_RECORD.md` … `B20_R11_RECORD.md`, `B20_RX1_RECORD.md`, `B20_RX2_RECORD.md`, `B20_R12_RECORD.md` and `B20_R15_RECORD.md` … `B20_R61_RECORD.md`.
+- **Records:** `docs/checkpoints/B20_R1_RECORD.md` … `B20_R11_RECORD.md`, `B20_RX1_RECORD.md`, `B20_RX2_RECORD.md`, `B20_R12_RECORD.md` and `B20_R15_RECORD.md` … `B20_R62_RECORD.md`.
 
 ## Completed since B20_R11
 
@@ -87,6 +87,7 @@
 | B20_R59 | **B20_R57 does not replicate on coverage; the bound result does.** Same protocol on fresh hosts: 23 vs 21 certified (0/2, p 0.25; the sample was easier for the conventional route, 21 vs R57's 14), wall saving +2.76 s [0.04, 5.37], certified bound +3.875 [2.675, 5.125]. The sum-free transfer's robust result is stronger certified bounds, not more certified optima |
 | B20_R60 | **GV4 fallback claim drafted.** `handoff/gv4/FALLBACK_CLAIM_DRAFT.md` proposes what the roadmap's fallback would report: E1d as a useful solver (Part A) with its causal attribution (Part B), and, only if certification utility counts, the generated Lean-checked rows (Part C). It claims no better improver. The false-discovery table is now derived from the evidence (`attempt_family.json`): B20_R35, R48 and R57 survive BY at q 0.1 over 13 attempts; R57 did not replicate. Every quoted number is tested against its source |
 | B20_R61 | **Statistician's brief written** (`docs/STATISTICIAN_BRIEF.md`, B19-OPEN-4). All nine stored power analyses reproduce exactly from their pilot rows. Flagged for the statistician: E1b-C4's placebo design is underpowered at its chosen 10 per stratum (0.764 at 10,000 simulations; 12 needed); four causal power analyses (E1b and E1b-C4 ablation/placebo) are bound to the sealed-evaluation family, which the custodian would refuse, and must be recomputed before freezing; each claim says "by at least the MUE" while the rule tests a point estimate; the stratum-level sign flip cannot fall below 0.125; unsupported hosts cluster in one stratum |
+| B20_R62 | **Causal power analyses rebound; sizing checked at 10,000 simulations.** The four causal power analyses bound to the wrong family are recomputed under the custodian's `ablation:`/`placebo:` families (`evidence/power_rebind_b20r62/`). At 10,000 simulations every package size holds except E1b-C4's placebo, which needs 12 hosts per stratum, not 10. A freeze takes these files |
 
 ## Resume
 

@@ -1,0 +1,216 @@
+{
+ "analyses": [
+  {
+   "analysis": "E1",
+   "assigned_family": "sealed_evaluation",
+   "fine": "evidence/power_rebind_b20r62/power_analysis_centred_e1_sealed_evaluation_10k.json",
+   "fine_choice": {
+    "power": 0.8881,
+    "tasks_per_stratum": 10,
+    "total_tasks": 30
+   },
+   "fine_power_at_mue": 0.2601,
+   "fine_rate_at_zero": 0.0118,
+   "size_changes": false,
+   "stored": "handoff/e1/power_analysis_centred_b20r24.json",
+   "stored_choice": {
+    "power": 0.881,
+    "tasks_per_stratum": 10,
+    "total_tasks": 30
+   },
+   "stored_family": "sealed_evaluation"
+  },
+  {
+   "analysis": "E1b",
+   "assigned_family": "sealed_evaluation",
+   "fine": "evidence/power_rebind_b20r62/power_analysis_centred_e1b_sealed_evaluation_10k.json",
+   "fine_choice": {
+    "power": 0.9817,
+    "tasks_per_stratum": 10,
+    "total_tasks": 30
+   },
+   "fine_power_at_mue": 0.4334,
+   "fine_rate_at_zero": 0.0132,
+   "size_changes": false,
+   "stored": "handoff/e1b/power_analysis_centred_b20r24.json",
+   "stored_choice": {
+    "power": 0.974,
+    "tasks_per_stratum": 10,
+    "total_tasks": 30
+   },
+   "stored_family": "sealed_evaluation"
+  },
+  {
+   "analysis": "E1b ablation",
+   "assigned_family": "ablation",
+   "fine": "evidence/power_rebind_b20r62/power_analysis_centred_e1b_ablation_ablation_10k.json",
+   "fine_choice": {
+    "power": 0.9999,
+    "tasks_per_stratum": 10,
+    "total_tasks": 30
+   },
+   "fine_power_at_mue": 0.5281,
+   "fine_rate_at_zero": 0.0,
+   "rebound": "evidence/power_rebind_b20r62/power_analysis_centred_e1b_ablation_ablation.json",
+   "rebound_choice": {
+    "power": 1.0,
+    "tasks_per_stratum": 10,
+    "total_tasks": 30
+   },
+   "size_changes": false,
+   "stored": "evidence/e1b_causal_repilot_b20r28/power_analysis_centred_ablation.json",
+   "stored_choice": {
+    "power": 1.0,
+    "tasks_per_stratum": 10,
+    "total_tasks": 30
+   },
+   "stored_family": "sealed_evaluation"
+  },
+  {
+   "analysis": "E1b placebo",
+   "assigned_family": "placebo",
+   "fine": "evidence/power_rebind_b20r62/power_analysis_centred_e1b_placebo_placebo_10k.json",
+   "fine_choice": {
+    "power": 0.9807,
+    "tasks_per_stratum": 10,
+    "total_tasks": 30
+   },
+   "fine_power_at_mue": 0.442,
+   "fine_rate_at_zero": 0.0065,
+   "rebound": "evidence/power_rebind_b20r62/power_analysis_centred_e1b_placebo_placebo.json",
+   "rebound_choice": {
+    "power": 0.98,
+    "tasks_per_stratum": 10,
+    "total_tasks": 30
+   },
+   "size_changes": false,
+   "stored": "evidence/e1b_causal_repilot_b20r28/power_analysis_centred_placebo.json",
+   "stored_choice": {
+    "power": 0.985,
+    "tasks_per_stratum": 10,
+    "total_tasks": 30
+   },
+   "stored_family": "sealed_evaluation"
+  },
+  {
+   "analysis": "E1b-C4",
+   "assigned_family": "sealed_evaluation",
+   "fine": "evidence/power_rebind_b20r62/power_analysis_centred_e1b_c4_sealed_evaluation_10k.json",
+   "fine_choice": {
+    "power": 0.8393,
+    "tasks_per_stratum": 10,
+    "total_tasks": 20
+   },
+   "fine_power_at_mue": 0.305,
+   "fine_rate_at_zero": 0.0131,
+   "size_changes": false,
+   "stored": "handoff/e1b_c4/power_analysis_centred_readiness_b20r50.json",
+   "stored_choice": {
+    "power": 0.841,
+    "tasks_per_stratum": 10,
+    "total_tasks": 20
+   },
+   "stored_family": "sealed_evaluation"
+  },
+  {
+   "analysis": "E1b-C4 ablation",
+   "assigned_family": "ablation",
+   "fine": "evidence/power_rebind_b20r62/power_analysis_centred_e1b_c4_ablation_ablation_10k.json",
+   "fine_choice": {
+    "power": 0.9921,
+    "tasks_per_stratum": 10,
+    "total_tasks": 20
+   },
+   "fine_power_at_mue": 0.5082,
+   "fine_rate_at_zero": 0.0005,
+   "rebound": "evidence/power_rebind_b20r62/power_analysis_centred_e1b_c4_ablation_ablation.json",
+   "rebound_choice": {
+    "power": 0.992,
+    "tasks_per_stratum": 10,
+    "total_tasks": 20
+   },
+   "size_changes": false,
+   "stored": "handoff/e1b_c4/power_analysis_centred_ablation_b20r50.json",
+   "stored_choice": {
+    "power": 0.991,
+    "tasks_per_stratum": 10,
+    "total_tasks": 20
+   },
+   "stored_family": "sealed_evaluation"
+  },
+  {
+   "analysis": "E1b-C4 placebo",
+   "assigned_family": "placebo",
+   "fine": "evidence/power_rebind_b20r62/power_analysis_centred_e1b_c4_placebo_placebo_10k.json",
+   "fine_choice": {
+    "power": 0.8626,
+    "tasks_per_stratum": 12,
+    "total_tasks": 24
+   },
+   "fine_power_at_mue": 0.2422,
+   "fine_rate_at_zero": 0.0145,
+   "rebound": "evidence/power_rebind_b20r62/power_analysis_centred_e1b_c4_placebo_placebo.json",
+   "rebound_choice": {
+    "power": 0.879,
+    "tasks_per_stratum": 12,
+    "total_tasks": 24
+   },
+   "size_changes": true,
+   "stored": "handoff/e1b_c4/power_analysis_centred_placebo_b20r50.json",
+   "stored_choice": {
+    "power": 0.8,
+    "tasks_per_stratum": 10,
+    "total_tasks": 20
+   },
+   "stored_family": "sealed_evaluation"
+  },
+  {
+   "analysis": "E1d",
+   "assigned_family": "sealed_evaluation",
+   "fine": "evidence/power_rebind_b20r62/power_analysis_centred_e1d_sealed_evaluation_10k.json",
+   "fine_choice": {
+    "power": 0.8207,
+    "tasks_per_stratum": 80,
+    "total_tasks": 240
+   },
+   "fine_power_at_mue": 0.25,
+   "fine_rate_at_zero": 0.0124,
+   "size_changes": false,
+   "stored": "handoff/e1d/power_analysis_centred_b20r41.json",
+   "stored_choice": {
+    "power": 0.814,
+    "tasks_per_stratum": 80,
+    "total_tasks": 240
+   },
+   "stored_family": "sealed_evaluation"
+  },
+  {
+   "analysis": "E1d ablation",
+   "assigned_family": "ablation",
+   "fine": "evidence/power_rebind_b20r62/power_analysis_centred_e1d_ablation_ablation_10k.json",
+   "fine_choice": {
+    "power": 0.8452,
+    "tasks_per_stratum": 15,
+    "total_tasks": 45
+   },
+   "fine_power_at_mue": 0.2575,
+   "fine_rate_at_zero": 0.0132,
+   "size_changes": false,
+   "stored": "evidence/e1d_ablation_rehearsal_b20r45/power_analysis_centred_ablation_plan.json",
+   "stored_choice": {
+    "power": 0.838,
+    "tasks_per_stratum": 15,
+    "total_tasks": 45
+   },
+   "stored_family": "ablation"
+  }
+ ],
+ "changes": [
+  "E1b-C4 placebo"
+ ],
+ "schema": "genesis-b20r62-power-rebind-v1",
+ "sims_fine": 10000,
+ "sims_registered": 1000,
+ "status": "DEV recomputation for the statistician; nothing adopted, packages unchanged",
+ "target": 0.8
+}

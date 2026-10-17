@@ -104,3 +104,7 @@ The steps are E1's (`handoff/e1/README.md`), with `study='e1b'` and this package
 ## What a SUPPORTED outcome would and would not mean
 
 It would support a scoped better-solver statement for triangle-free hosts from the `e1b` calibrated settings, on that panel only, against time-matched fixed DSL baselines. It would not establish a better improver, research ability, transfer, novelty, or anything about other families.
+
+## Power analyses for the causal follow-ups (B20_R62)
+
+The causal power analyses of B20_R28 are bound to the `sealed_evaluation` family. The custodian assigns `ablation:triangle_free_host_v1` and `placebo:triangle_free_host_v1` and refuses any other, so a freeze must use the rebound analyses in `evidence/power_rebind_b20r62/` (both still choose 10 per stratum; `docs/STATISTICIAN_BRIEF.md`, finding 2).
