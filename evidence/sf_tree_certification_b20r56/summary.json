@@ -1,0 +1,124 @@
+{
+ "budget_s": 60,
+ "by_setting": {
+  "random_subset_N300_p0.6": {
+   "certificate_bytes_max": 2920908,
+   "certified_a": 13,
+   "certified_a_not_c": 0,
+   "certified_c": 14,
+   "certified_c_not_a": 1,
+   "check_s_max": 0.366,
+   "hosts": 20,
+   "nodes_median": {
+    "a": 336.0,
+    "c": 126.0
+   },
+   "rate_a": 0.65,
+   "rate_c": 0.7,
+   "root_bound_a_minus_c_median": 7.0,
+   "wall_median_s": {
+    "a": 22.864,
+    "c": 25.285
+   },
+   "wall_total_s": {
+    "a": 632.78,
+    "c": 634.31
+   },
+   "witness_mip_optimal": 4
+  },
+  "random_subset_N360_p0.6": {
+   "certificate_bytes_max": 1916586,
+   "certified_a": 13,
+   "certified_a_not_c": 0,
+   "certified_c": 14,
+   "certified_c_not_a": 1,
+   "check_s_max": 0.222,
+   "hosts": 20,
+   "nodes_median": {
+    "a": 219.0,
+    "c": 80.0
+   },
+   "rate_a": 0.65,
+   "rate_c": 0.7,
+   "root_bound_a_minus_c_median": 8.5,
+   "wall_median_s": {
+    "a": 36.725,
+    "c": 35.482
+   },
+   "wall_total_s": {
+    "a": 708.65,
+    "c": 771.58
+   },
+   "witness_mip_optimal": 1
+  }
+ },
+ "checker_identity": "genesis.verification.lp_dual_tree_sf@a4a7e2c941cca7bc32543e370f7a45868f10797f1cecff6a1903eb944cde52fd",
+ "code_identity": "46d762970e556727323938c6868bc5e8d9bd32c0bc3abede9fc9f35ce8eb08d8",
+ "mcnemar_p_one_sided": 0.25,
+ "passes": {
+  "coverage": true,
+  "mcnemar": false,
+  "sound": true,
+  "time": false
+ },
+ "pooled": {
+  "certificate_bytes_max": 2920908,
+  "certified_a": 26,
+  "certified_a_not_c": 0,
+  "certified_c": 28,
+  "certified_c_not_a": 2,
+  "check_s_max": 0.366,
+  "hosts": 40,
+  "nodes_median": {
+   "a": 278.0,
+   "c": 85.0
+  },
+  "rate_a": 0.65,
+  "rate_c": 0.7,
+  "root_bound_a_minus_c_median": 7.0,
+  "wall_median_s": {
+   "a": 30.69,
+   "c": 28.676
+  },
+  "wall_total_s": {
+   "a": 1341.43,
+   "c": 1405.88
+  },
+  "witness_mip_optimal": 5
+ },
+ "registry": {
+  "package_sha256": "7f19273f9078d9bb016d93488f29fbef9070c52bffa78fed599e798b6457e070",
+  "patterns": 17,
+  "sha256": "37be30f13720f38b954c5ad0b279586852dad8c93ea4bb5f97980cf178cecc35"
+ },
+ "schema": "genesis-b20r56-sf-tree-certification-v1",
+ "seeds": [
+  20265601,
+  20265611
+ ],
+ "separation": {
+  "per_round": 400,
+  "rounds": 30
+ },
+ "settings": [
+  {
+   "N": 300,
+   "p": 0.6
+  },
+  {
+   "N": 360,
+   "p": 0.6
+  }
+ ],
+ "status": "DEV measurement; licenses nothing; route and checker not wired into anything",
+ "unsound_rows": [],
+ "verdict": "NO_CERTIFICATION_UTILITY",
+ "wall_saving_a_minus_c": {
+  "interval_90": [
+   -4.137025,
+   1.368875
+  ],
+  "mean": -1.6114749999999998
+ },
+ "witness_s": 10
+}

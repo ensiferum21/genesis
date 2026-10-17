@@ -723,9 +723,16 @@
       },
       "B20_R55": {
         "commits": [
-          "565e36b"
+          "565e36b",
+          "61e15af"
         ],
         "result": "GV6 second target: the row-invention procedure (generator v2; search, kept rule and proof method unchanged) transferred to sum-free sets of integers (invention/cuts_sf.py; structures P subset of {1..m}, m <= 8; Schur rows; Freiman-type copies; new trusted SFDefs with SF.SumFree and SF.ind). 17 patterns kept of 214 candidates; screen clean; all 20 obligations Lean-CHECKED (3 base, 17 patterns); package replays (identity 7f19273f...). Procedural transfer only; structural caveat stated; utility on hosts is B20_R56"
+      },
+      "B20_R56": {
+        "commits": [
+          "b7c9d1c"
+        ],
+        "result": "Certified branch and bound over the transferred sum-free rows (verification/lp_dual_tree_sf.py exact checker; discovery/generated_bnb_sf.py with root separation) vs the same tree over Schur rows only (conventional route and registered ablation): 40 fresh random-subset hosts (300/0.6, 360/0.6), shared 10 s HiGHS witness, 60 s per route. Certified a 26, c 28 (0/2 discordant, McNemar p 0.25); wall saving a - c -1.61 s [-4.14, +1.37]; all sound: NO_CERTIFICATION_UTILITY. Root bound 5-10 lower with the rows, median nodes 85 vs 278; slower on easy hosts (median 18.8 vs 8.5 s); after the fact better on 6 of 8 hosts hard for route a"
       }
     },
     "open_after_b20_r5": [
@@ -1105,6 +1112,9 @@
     ],
     "open_after_b20_r55": [
       "B20R46-OPEN-1 updated: second transfer target (sum-free, a different theorem family) with the procedural step done; SFDefs needs review as a domain contract"
+    ],
+    "open_after_b20_r56": [
+      "B20R46-OPEN-1 updated: second target negative on these settings (NO_CERTIFICATION_UTILITY); hardness-enriched follow-up is B20_R57"
     ]
   }
 }

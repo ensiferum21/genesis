@@ -24,7 +24,7 @@ graph motif." E5 adds three requirements:
 | B20_R47 | The rows alone, as a certification route on 40 fresh C4 hosts | no coverage gain (22 vs 22); 80% of the LP gap closed; faster |
 | B20_R48 | The rows with certified branch and bound (exact tree checker) | **38 vs 26 of 40**, p = 0.00024, median 2.1 s vs 46.9 s |
 | B20_R49 | Registered ablation: the same route without the rows | **36 vs 24 of 40**, p = 0.00024: the utility is the rows' |
-| B20_R50 | The rows make C4 settings calibratable; E1b's C4 arm under a DRAFT rule | running |
+| B20_R50 | The rows make C4 settings calibratable; E1b's C4 arm under a DRAFT rule | two calibrated C4 settings; E1b READY_FOR_REVIEW against DSL baselines (an exact C4 MIP dominates) |
 
 **What this shows.** A capability the system invented, the procedure and its Lean-checked output,
 carries over to a different forbidden motif and causes a measured utility there.
@@ -34,6 +34,19 @@ missing:
 - a structurally different target;
 - a target-only learning control at equal adaptation resources;
 - sealed target panels from a custodian.
+
+## Second target: sum-free sets of integers (B20_R55, R56; DEV, builder-run, preregistered)
+
+| Batch | Step | Result |
+|---|---|---|
+| B20_R53, R54 | Equational target first: is there research headroom on Wolfram's axiom at B20's hard settings? | **NO_HEADROOM** and **NO_CEILING_HEADROOM**: no library research moves the successor by more than 1 of 15; nothing to transfer into |
+| B20_R55 | The same procedure, with a registered adaptation to sum-free sets (additive combinatorics; `invention/cuts_sf.py`, new trusted `SFDefs`) | 17 patterns, **20/20 obligations Lean-CHECKED** |
+| B20_R56 | The rows with certified branch and bound on 40 fresh hosts, against the same tree over Schur rows only (the conventional route and the ablation) | **NO_CERTIFICATION_UTILITY**: 28 vs 26 certified (p 0.25), wall saving −1.6 s [−4.1, +1.4]; the rows lower the root bound by 5–10 and cut nodes 3×, but slow easy hosts |
+
+**What this adds.** The procedure transfers to a different theorem family (its search, kept rule and proof method
+unchanged), and its rows strengthen the relaxation there too. On these settings they give no preregistered
+utility. After the fact, the benefit concentrates on hosts that are hard for the conventional route. B20_R57 tests
+that, preregistered.
 
 ## Candidate structurally different targets
 
@@ -55,6 +68,9 @@ pattern statements.
      (translations and dilations).
    - **Risk.** The constraint structure is again a 3-uniform packing, close to triangle-freeness. A
      reviewer may judge it "near" too.
+   - **Measured (B20_R55, R56).** Built on sets of positive integers (hosts are random subsets of {1..N}). The
+     procedure transfers (20/20 Lean-CHECKED); certification utility is not shown on the first two settings (see
+     the section above).
 2. **Equational theories (the B20 environment, `learning/equational.py`).**
    - **The setting.** Boolean algebras and groups in several axiomatizations, with exact deciders, E
      proofs and Lean replay. This is a structurally different formal domain by any reading.

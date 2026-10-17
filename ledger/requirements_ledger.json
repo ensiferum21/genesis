@@ -5434,7 +5434,10 @@
     "src/genesis/verification/certificates_tree_c4.py",
     "scripts/b20r52_e1b_c4_package.py",
     "src/genesis/invention/cuts_sf.py",
-    "scripts/b20r55_sf_generator.py"
+    "scripts/b20r55_sf_generator.py",
+    "src/genesis/verification/lp_dual_tree_sf.py",
+    "src/genesis/discovery/generated_bnb_sf.py",
+    "scripts/b20r56_sf_tree_certification.py"
    ],
    "disposition": "RESEARCH_HYPOTHESIS",
    "evidence": [],
@@ -5462,9 +5465,11 @@
     "tests_genesis/test_wiring_tree_c4.py",
     "tests_genesis/test_e1b_c4_package.py",
     "tests_genesis/test_cuts_sf.py",
-    "tests_formal/test_sf_generator.py"
+    "tests_formal/test_sf_generator.py",
+    "tests_genesis/test_lp_dual_tree_sf.py",
+    "tests_genesis/test_sf_tree_certification.py"
    ],
-   "title": "Transfer and independent reproduction (B20_R46: the row-invention procedure transferred to C4-free subgraphs with a registered adaptation, 37/37 obligations Lean-CHECKED; B20_R47: no certification coverage gain from the rows alone (22 vs 22); B20_R48: with certified branch and bound, CERTIFICATION_UTILITY on fresh C4 hosts, 38 vs 26 of 40; B20_R49: a registered ablation attributes it to the transferred rows (36 vs 24 of 40, p 0.00024); B20_R50: the rows make E1b's C4 arm scorable (two calibrated C4 settings, READY_FOR_REVIEW, MIP-dominated); near-domain evidence only; B20_R53/R54: the equational target has no research headroom; B20_R55: the procedure transferred to sum-free sets of integers, a different theorem family, 20/20 obligations Lean-CHECKED, utility untested; independent reproduction not started)",
+   "title": "Transfer and independent reproduction (B20_R46: the row-invention procedure transferred to C4-free subgraphs with a registered adaptation, 37/37 obligations Lean-CHECKED; B20_R47: no certification coverage gain from the rows alone (22 vs 22); B20_R48: with certified branch and bound, CERTIFICATION_UTILITY on fresh C4 hosts, 38 vs 26 of 40; B20_R49: a registered ablation attributes it to the transferred rows (36 vs 24 of 40, p 0.00024); B20_R50: the rows make E1b's C4 arm scorable (two calibrated C4 settings, READY_FOR_REVIEW, MIP-dominated); near-domain evidence only; B20_R53/R54: the equational target has no research headroom; B20_R55: the procedure transferred to sum-free sets of integers, a different theorem family, 20/20 obligations Lean-CHECKED; B20_R56: NO_CERTIFICATION_UTILITY there (28 vs 26 of 40, p 0.25); independent reproduction not started)",
    "workstream": "W24"
   },
   {

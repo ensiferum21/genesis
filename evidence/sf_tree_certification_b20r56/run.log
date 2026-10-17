@@ -1,0 +1,43 @@
+[    0.0s] pinned to CPU 0
+[    0.0s] registry: 17 sum-free patterns from 7f19273f9078d9bb
+[  131.1s] 00 sf_N300_p0.6_20265601 |A|=179 w 78: a 82..105 60.0s (2052 nodes, root 105); c 78..98 60.0s (534 nodes, root 98, 5462 rows); checks VALID/VALID
+[  261.3s] 01 sf_N300_p0.6_20265602 |A|=177 w 79: a 79..102 60.0s (1953 nodes, root 102); c 79..95 60.1s (423 nodes, root 95, 5604 rows); checks VALID/VALID
+[  293.6s] 02 sf_N300_p0.6_20265603 |A|=189 w 99: a 100..100 7.5s (75 nodes, root 113); c 100..100 14.8s (35 nodes, root 105, 5921 rows); checks VALID/VALID
+[  423.7s] 03 sf_N300_p0.6_20265604 |A|=179 w 81: a 81..105 60.0s (1991 nodes, root 105); c 81..99 60.0s (393 nodes, root 99, 5675 rows); checks VALID/VALID
+[  553.7s] 04 sf_N300_p0.6_20265605 |A|=171 w 81: a 82..98 60.0s (965 nodes, root 98); c 82..91 60.0s (407 nodes, root 91, 5105 rows); checks VALID/VALID
+[  589.1s] 05 sf_N300_p0.6_20265606 |A|=191 w 98: a 98..98 8.2s (77 nodes, root 112); c 98..98 17.0s (33 nodes, root 104, 6913 rows); checks VALID/VALID
+[  719.1s] 06 sf_N300_p0.6_20265607 |A|=165 w 72: a 72..97 60.0s (1831 nodes, root 97); c 72..92 60.0s (741 nodes, root 92, 4696 rows); checks VALID/VALID
+[  740.5s] 07 sf_N300_p0.6_20265608 |A|=179 w 97: a 97..97 3.6s (47 nodes, root 108); c 97..97 9.7s (25 nodes, root 102, 5206 rows); checks VALID/VALID
+[  820.3s] 08 sf_N300_p0.6_20265609 |A|=172 w 84: a 87..87 39.9s (555 nodes, root 103); c 87..87 29.8s (193 nodes, root 97, 4933 rows); checks VALID/VALID
+[  905.1s] 09 sf_N300_p0.6_20265610 |A|=168 w 83: a 83..83 50.5s (795 nodes, root 99); c 83..83 24.1s (165 nodes, root 92, 4368 rows); checks VALID/VALID
+[ 1035.2s] 10 sf_N300_p0.6_20265611 |A|=172 w 63: a 63..101 60.0s (3360 nodes, root 101); c 64..94 60.0s (1406 nodes, root 94, 5014 rows); checks VALID/VALID
+[ 1054.8s] 11 sf_N300_p0.6_20265612 |A|=174 w 95: a 95..95 3.7s (47 nodes, root 105); c 95..95 9.2s (23 nodes, root 99, 4963 rows); checks VALID/VALID
+[ 1108.0s] 12 sf_N300_p0.6_20265613 |A|=185 w 90: a 98..98 19.9s (269 nodes, root 109); c 98..98 23.2s (87 nodes, root 103, 5858 rows); checks VALID/VALID
+[ 1142.9s] 13 sf_N300_p0.6_20265614 |A|=182 w 95: a 95..95 10.9s (101 nodes, root 108); c 95..95 14.1s (37 nodes, root 101, 5827 rows); checks VALID/VALID
+[ 1176.9s] 14 sf_N300_p0.6_20265615 |A|=186 w 96: a 96..96 8.8s (93 nodes, root 110); c 96..96 15.1s (39 nodes, root 103, 6369 rows); checks VALID/VALID
+[ 1284.5s] 15 sf_N300_p0.6_20265616 |A|=181 w 75: a 75..105 60.0s (2288 nodes, root 105); c 94..94 37.4s (305 nodes, root 99, 5616 rows); checks VALID/VALID
+[ 1342.6s] 16 sf_N300_p0.6_20265617 |A|=159 w 79: a 79..79 20.4s (385 nodes, root 95); c 79..79 27.6s (259 nodes, root 90, 3924 rows); checks VALID/VALID
+[ 1376.8s] 17 sf_N300_p0.6_20265618 |A|=176 w 90: a 92..92 7.9s (117 nodes, root 106); c 92..92 16.3s (79 nodes, root 100, 5010 rows); checks VALID/VALID
+[ 1400.1s] 18 sf_N300_p0.6_20265619 |A|=179 w 95: a 95..95 6.1s (69 nodes, root 106); c 95..95 9.3s (21 nodes, root 99, 5224 rows); checks VALID/VALID
+[ 1462.0s] 19 sf_N300_p0.6_20265620 |A|=193 w 94: a 96..96 25.4s (287 nodes, root 113); c 96..96 26.5s (69 nodes, root 104, 7258 rows); checks VALID/VALID
+[ 1565.6s] 20 sf_N360_p0.6_20265611 |A|=207 w 102: a 105..105 44.1s (439 nodes, root 121); c 105..105 49.4s (167 nodes, root 114, 7028 rows); checks VALID/VALID
+[ 1594.9s] 21 sf_N360_p0.6_20265612 |A|=210 w 114: a 114..114 5.9s (49 nodes, root 126); c 114..114 15.2s (23 nodes, root 118, 6968 rows); checks VALID/VALID
+[ 1638.9s] 22 sf_N360_p0.6_20265613 |A|=216 w 115: a 115..115 8.0s (55 nodes, root 128); c 115..115 26.0s (45 nodes, root 121, 7948 rows); checks VALID/VALID
+[ 1695.0s] 23 sf_N360_p0.6_20265614 |A|=217 w 111: a 111..111 19.0s (127 nodes, root 128); c 111..111 27.1s (51 nodes, root 119, 8149 rows); checks VALID/VALID
+[ 1773.8s] 24 sf_N360_p0.6_20265615 |A|=217 w 110: a 110..110 29.1s (191 nodes, root 129); c 110..110 39.5s (89 nodes, root 120, 8283 rows); checks VALID/VALID
+[ 1903.9s] 25 sf_N360_p0.6_20265616 |A|=218 w 3: a 63..127 60.0s (2215 nodes, root 127); c 68..118 60.0s (1159 nodes, root 118, 8100 rows); checks VALID/VALID
+[ 2034.1s] 26 sf_N360_p0.6_20265617 |A|=195 w 90: a 90..116 60.0s (1608 nodes, root 116); c 90..111 60.1s (350 nodes, root 111, 5715 rows); checks VALID/VALID
+[ 2164.3s] 27 sf_N360_p0.6_20265618 |A|=213 w 96: a 96..127 60.0s (1581 nodes, root 127); c 96..120 60.2s (315 nodes, root 120, 7210 rows); checks VALID/VALID
+[ 2232.5s] 28 sf_N360_p0.6_20265619 |A|=216 w 110: a 110..110 26.6s (185 nodes, root 126); c 110..110 31.4s (59 nodes, root 117, 7758 rows); checks VALID/VALID
+[ 2362.7s] 29 sf_N360_p0.6_20265620 |A|=226 w 107: a 107..132 60.1s (755 nodes, root 132); c 111..123 60.1s (117 nodes, root 123, 9288 rows); checks VALID/VALID
+[ 2465.4s] 30 sf_N360_p0.6_20265621 |A|=218 w 108: a 108..108 48.1s (349 nodes, root 128); c 108..108 44.4s (105 nodes, root 119, 8693 rows); checks VALID/VALID
+[ 2537.5s] 31 sf_N360_p0.6_20265622 |A|=203 w 104: a 104..104 32.3s (233 nodes, root 120); c 104..104 29.8s (83 nodes, root 113, 7024 rows); checks VALID/VALID
+[ 2565.6s] 32 sf_N360_p0.6_20265623 |A|=202 w 111: a 111..111 5.4s (39 nodes, root 120); c 111..111 12.6s (19 nodes, root 114, 6156 rows); checks VALID/VALID
+[ 2695.9s] 33 sf_N360_p0.6_20265624 |A|=226 w 107: a 107..131 60.0s (842 nodes, root 131); c 107..122 60.3s (128 nodes, root 122, 9281 rows); checks VALID/VALID
+[ 2739.5s] 34 sf_N360_p0.6_20265625 |A|=221 w 119: a 119..119 10.2s (53 nodes, root 132); c 119..119 23.3s (33 nodes, root 123, 8558 rows); checks VALID/VALID
+[ 2777.6s] 35 sf_N360_p0.6_20265626 |A|=218 w 118: a 118..118 7.6s (53 nodes, root 130); c 118..118 20.5s (19 nodes, root 121, 7816 rows); checks VALID/VALID
+[ 2822.2s] 36 sf_N360_p0.6_20265627 |A|=212 w 111: a 111..111 11.0s (77 nodes, root 125); c 111..111 23.6s (43 nodes, root 118, 7328 rows); checks VALID/VALID
+[ 2952.5s] 37 sf_N360_p0.6_20265628 |A|=207 w 101: a 104..121 60.0s (490 nodes, root 121); c 104..114 60.2s (204 nodes, root 114, 7066 rows); checks VALID/VALID
+[ 3054.7s] 38 sf_N360_p0.6_20265629 |A|=236 w 119: a 120..120 41.2s (205 nodes, root 138); c 120..120 50.9s (69 nodes, root 128, 10429 rows); checks VALID/VALID
+[ 3141.7s] 39 sf_N360_p0.6_20265630 |A|=186 w 46: a 63..112 60.0s (3308 nodes, root 112); c 97..97 16.9s (77 nodes, root 106, 4681 rows); checks VALID/VALID
+[ 3141.8s] verdict NO_CERTIFICATION_UTILITY: certified a 26 c 28; McNemar p 0.25; wall saving {'mean': -1.6114749999999998, 'interval_90': [-4.137025, 1.368875]}; passes {'sound': True, 'coverage': True, 'mcnemar': False, 'time': False}

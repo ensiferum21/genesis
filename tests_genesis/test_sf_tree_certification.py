@@ -1,6 +1,10 @@
 """B20_R56: the sum-free certification study. Design: the preregistered constants; the hosts are deterministic, valid
 checker records, distinct, and of the two settings; the conventional route is the empty registry (the ablation); the
-soundness rule and the verdict follow B20_R35/R48's rule. Record tests are added with the result."""
+soundness rule and the verdict follow B20_R35/R48's rule.
+
+Record (B20_R56): the hosts are the script's; the verdict recomputes from the rows (NO_CERTIFICATION_UTILITY: 26 vs 28
+certified, 0/2 discordant, wall saving interval includes 0); every witness is sum-free with its value; the kept
+certificates (hosts certified by one route only) re-check VALID with their bound and digest."""
 from pathlib import Path
 import sys
 import unittest
@@ -65,6 +69,48 @@ class Verdict(unittest.TestCase):
         r = rows(good)
         r[1]['a'] = side(8, 8, 1.0)
         self.assertEqual(M.verdict_of(r)['verdict'], 'DEFECT_FOUND')     # values disagree when both certify
+
+
+EV = ROOT / 'evidence' / 'sf_tree_certification_b20r56'
+VERDICT = 'NO_CERTIFICATION_UTILITY'
+
+
+class Record(unittest.TestCase):
+    @classmethod
+    def setUpClass(cls):
+        import json
+        cls.rows = [json.loads(l) for l in (EV / 'rows.jsonl').read_text().splitlines() if l.strip()]
+        cls.summary = json.loads((EV / 'summary.json').read_text())
+        cls.hosts = json.loads((EV / 'hosts.json').read_text())['tasks']
+
+    def test_hosts_are_the_scripts(self):
+        self.assertEqual(self.hosts, M.make_hosts())
+        self.assertEqual(sorted(r['task_id'] for r in self.rows), sorted(t['task_id'] for t in self.hosts))
+
+    def test_the_verdict_recomputes(self):
+        v = M.verdict_of(self.rows)
+        for k in ('verdict', 'passes', 'pooled', 'mcnemar_p_one_sided', 'wall_saving_a_minus_c', 'unsound_rows'):
+            self.assertEqual(v[k], self.summary[k], k)
+        self.assertEqual(v['verdict'], VERDICT)
+
+    def test_witnesses_and_kept_certificates_recheck(self):
+        import gzip
+        import json
+        from genesis.common import digest
+        by = {t['task_id']: t for t in self.hosts}
+        reg = GB.load_registry()
+        regs = {'a': GB.empty_registry(reg), 'c': reg}
+        for r in self.rows:
+            task = M.task_of(by[r['task_id']])
+            self.assertEqual(VT.check_witness(task, r['witness']['elements']), r['witness']['value'])
+        kept = sorted((EV / 'certificates').glob('*.json.gz'))
+        for path in kept:
+            tid, side = path.name[:-len('.json.gz')].rsplit('.', 1)
+            cert = json.loads(gzip.decompress(path.read_bytes()))
+            row = next(r for r in self.rows if r['task_id'] == tid)
+            self.assertEqual(digest(cert), row[side]['certificate_sha256'])
+            v = VT.check_certificate(M.task_of(by[tid]), cert, regs[side])
+            self.assertEqual((v['verdict'], v['bound']), ('VALID', row[side]['upper']), path.name)
 
 
 if __name__ == '__main__':
