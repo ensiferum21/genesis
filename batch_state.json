@@ -305,6 +305,21 @@
         },
         "restore_verified": "5956 manifest entries match; bundle clone gives the same commit and tree",
         "rehearsal": "deployment/reproduce.sh on the build host (clean room, not a second machine): REPRODUCED, all 7 steps"
+      },
+      "B20_R56": {
+        "commit": "010e507ab434b0aea951cfeb20ed5a5888c27b55",
+        "sha256": "f40380aa41490648600953fdbf4a565093c9d5ae33528045f1bc5bd5b8c6e622",
+        "release_matrix": {
+          "integration": 867,
+          "legacy_regression": 282,
+          "sandbox_escape": 28,
+          "certificates": 43,
+          "formal": 184,
+          "failures": 0,
+          "declared_skips": 1
+        },
+        "restore_verified": "5998 manifest entries match; bundle clone gives the same commit and tree",
+        "rehearsal": "deployment/reproduce.sh on the build host (clean room, not a second machine): REPRODUCED, all 7 steps"
       }
     },
     "adopted_from_crpd_v3_status": {
@@ -730,7 +745,8 @@
       },
       "B20_R56": {
         "commits": [
-          "b7c9d1c"
+          "b7c9d1c",
+          "010e507"
         ],
         "result": "Certified branch and bound over the transferred sum-free rows (verification/lp_dual_tree_sf.py exact checker; discovery/generated_bnb_sf.py with root separation) vs the same tree over Schur rows only (conventional route and registered ablation): 40 fresh random-subset hosts (300/0.6, 360/0.6), shared 10 s HiGHS witness, 60 s per route. Certified a 26, c 28 (0/2 discordant, McNemar p 0.25); wall saving a - c -1.61 s [-4.14, +1.37]; all sound: NO_CERTIFICATION_UTILITY. Root bound 5-10 lower with the rows, median nodes 85 vs 278; slower on easy hosts (median 18.8 vs 8.5 s); after the fact better on 6 of 8 hosts hard for route a"
       }
