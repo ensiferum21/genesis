@@ -1,0 +1,24 @@
+[    0.0s] pinned to CPU 0
+[    0.0s] SAT tools: cadical@24fb99286ca1ea9a, drat-trim@92f0aa9575ed519d
+[    8.9s] exposure: 3017 identities (3017 named hosts, 711 E1 hosts, 456 calibration hosts)
+[  134.3s] 0000 (420 edges): candidate 262 highs 255 261 [264..264] 31.7s; cpu 32s 31.9 60s 59.5
+[  349.2s] 0001 (446 edges): candidate 279 highs 265 274 [279..280] 121.3s; cpu 32s 31.9 60s 59.5
+[  490.3s] 0002 (415 edges): candidate 266 highs 266 266 [267..267] 47.4s; cpu 32s 31.9 60s 59.6
+[  704.6s] 0003 (454 edges): candidate 281 highs 241 278 [283..284] 120.7s; cpu 32s 31.8 60s 59.7
+[  919.1s] 0004 (428 edges): candidate 266 highs 260 266 [266..268] 120.9s; cpu 32s 31.9 60s 59.6
+[ 1047.8s] 0005 (419 edges): candidate 262 highs 254 259 [262..262] 35.0s; cpu 32s 31.8 60s 59.7
+[ 1182.9s] 0006 (416 edges): candidate 262 highs 246 260 [262..262] 41.4s; cpu 32s 31.8 60s 59.5
+[ 1307.9s] 0007 (426 edges): candidate 262 highs 217 260 [265..265] 31.4s; cpu 32s 31.9 60s 59.5
+[ 1522.7s] 0008 (430 edges): candidate 268 highs 260 267 [268..269] 121.2s; cpu 32s 31.8 60s 59.5
+[ 1737.5s] 0009 (440 edges): candidate 274 highs 271 273 [274..276] 121.0s; cpu 32s 31.8 60s 59.4
+[ 1867.8s] 0010 (425 edges): candidate 267 highs 242 266 [270..270] 36.5s; cpu 32s 31.8 60s 59.5
+[ 1993.4s] 0011 (442 edges): candidate 276 highs 232 271 [276..276] 32.0s; cpu 32s 31.7 60s 59.4
+[ 2208.4s] 0012 (416 edges): candidate 261 highs 259 259 [261..263] 121.3s; cpu 32s 31.9 60s 59.5
+[ 2422.9s] 0013 (426 edges): candidate 262 highs 230 260 [262..264] 120.8s; cpu 32s 31.8 60s 59.4
+[ 2637.6s] 0014 (437 edges): candidate 269 highs 263 267 [269..271] 121.1s; cpu 32s 31.8 60s 59.4
+[ 2770.0s] 0015 (433 edges): candidate 271 highs 230 268 [272..272] 38.7s; cpu 32s 31.8 60s 59.3
+[ 2900.6s] 0016 (421 edges): candidate 264 highs 259 261 [264..264] 37.0s; cpu 32s 31.8 60s 59.5
+[ 3115.1s] 0017 (448 edges): candidate 284 highs 283 284 [285..287] 120.8s; cpu 32s 31.9 60s 59.4
+[ 3329.9s] 0018 (465 edges): candidate 289 highs 255 287 [289..291] 121.1s; cpu 32s 31.9 60s 59.6
+[ 3471.7s] 0019 (451 edges): candidate 281 highs 243 275 [284..284] 48.1s; cpu 32s 31.8 60s 59.3
+[ 3472.0s] verdict REPLICATED_ADVANTAGE_THROUGH_120X; highs_32s 18.75 [12.85, 24.8] ADVANTAGE; highs_60s 2.2 [1.6, 2.8] ADVANTAGE; delivery {'highs_32s': (20, 0.9945), 'highs_60s': (19, 0.991)}

@@ -57,8 +57,10 @@ that report would contain.
   not imply an advantage beyond it.
 - **On larger hosts the advantage grows** (B20_R64, a DEV pilot outside the calibrated settings): **ADVANTAGE_GROWS**.
   The crossover is 16× at n40 and 64× at n50. At n60 (about 430 edges) the candidate still leads HiGHS at 64× its
-  budget, +17.6 [8.1, 28.8], 10/0/0, while staying within about one edge of a proven upper bound. Claiming that
-  needs a family-space extension and the 200-edge certificate bound lifted for the exact LP-dual route.
+  budget, +17.6 [8.1, 28.8], 10/0/0, while staying within about one edge of a proven upper bound. An internal
+  replication on 20 fresh n60 hosts (B20_R66) gives **REPLICATED_ADVANTAGE_THROUGH_120X**: +18.75 [12.85, 24.80] at
+  32 s and still +2.20 [1.60, 2.80] at 60 s (120×), where HiGHS nearly catches up. Claiming that needs a
+  family-space extension and the 200-edge certificate bound lifted for the exact LP-dual route.
 - **Its scope is narrow.** Only these three settings, on that panel.
 
 **What it needs:**

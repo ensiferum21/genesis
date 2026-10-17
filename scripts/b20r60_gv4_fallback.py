@@ -195,6 +195,11 @@ CITATIONS = (
     ('B20_R64 n60 at 64x', 'evidence/e1d_scaling_b20r64/summary.json', ('by_n', '60', 'per_budget', 'highs_32s'),
      lambda v: f'+{v["estimate"]:.1f} [{v["interval_90"][0]:.1f}, {v["interval_90"][1]:.1f}], '
                f'{v["wins_ties_losses"][0]}/{v["wins_ties_losses"][1]}/{v["wins_ties_losses"][2]}'),
+    ('B20_R66 verdict', 'evidence/e1d_n60_b20r66/summary.json', ('verdict',), lambda v: f'**{v}**'),
+    ('B20_R66 at 64x', 'evidence/e1d_n60_b20r66/summary.json', ('per_budget', 'highs_32s'),
+     lambda v: f'+{v["estimate"]:.2f} [{v["interval_90"][0]:.2f}, {v["interval_90"][1]:.2f}]'),
+    ('B20_R66 at 120x', 'evidence/e1d_n60_b20r66/summary.json', ('per_budget', 'highs_60s'),
+     lambda v: f'+{v["estimate"]:.2f} [{v["interval_90"][0]:.2f}, {v["interval_90"][1]:.2f}]'),
     ('B20_R58 table', 'evidence/sf_pattern_selection_b20r58/summary.json', ('table',),
      lambda v: f'all {v["ALL"]["certified"]}, none {v["NONE"]["certified"]}, best subset '
                f'{max(v[k]["certified"] for k in v if k.startswith("TOP"))} of {v["ALL"]["hosts"]}'),

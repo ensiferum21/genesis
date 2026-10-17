@@ -95,6 +95,7 @@ On this family the calibration's limit and the plan's 5% unsupported limit agree
 | `exposure_hosts_addendum_b20r52.json` | B20_R52: the C4 hosts of the E1b-C4 same-operator rehearsal (30 SELECT, 20 CONFIRM, 9 from a disclosed development look) in erdos n30 p0.2 and n40 p0.15; none is in this package's adopted settings; they are the C4 settings of the DRAFT E1b-C4 package (handoff/e1b_c4). |
 | `exposure_hosts_addendum_b20r63.json` | B20_R63: the 30 DEV hosts of the E1d budget-crossover study, in the dense planted E1d settings; none is in this package's settings. |
 | `exposure_hosts_addendum_b20r64.json` | B20_R64: the 30 DEV hosts of the E1d scaling pilot (planted (0.8, 0.06) at n40, n50, n60; n50/n60 drawn beyond the registered family space); none is in this package's settings. |
+| `exposure_hosts_addendum_b20r66.json` | B20_R66: the 20 DEV hosts of the E1d n60 replication (planted (0.8, 0.06), n60, beyond the registered family space); none is in this package's settings. |
 | `package_index.json` | Identities, the calibration and the outcomes. |
 
 The B20_R23 version of this package (builder-chosen settings, both domains) is in the git history at `e7fad0e`.

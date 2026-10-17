@@ -845,7 +845,7 @@
         "commits": [
           "f2731ba"
         ],
-        "result": "pending (runs alone)"
+        "result": "E1d at n60, internal replication of B20_R64 (20 fresh hosts, run alone, CPU delivery 0.99): +18.75 [12.85, 24.80] at 32 s (64x), +2.20 [1.60, 2.80] at 60 s (120x): REPLICATED_ADVANTAGE_THROUGH_120X. Crossover at n60 just beyond 120x"
       }
     },
     "open_after_b20_r5": [
@@ -1255,6 +1255,9 @@
     ],
     "open_after_b20_r64": [
       "B20R41-OPEN-1 updated: the E1d advantage grows with host size; a claim there needs the family space extended and the 200-edge bound lifted for the LP-dual route"
+    ],
+    "open_after_b20_r66": [
+      "B20R41-OPEN-1 updated: the n60 lead replicates through 120x; a larger-host E1d study needs the family space, the 200-edge bound and a reference budget decided"
     ]
   }
 }
