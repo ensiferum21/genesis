@@ -1,0 +1,84 @@
+{
+ "bound_edges": 200,
+ "rehearsals": {
+  "E1 (B20_R24)": {
+   "confirm_hosts_over_bound": {},
+   "every_over_bound_host_is_unsupported": true,
+   "evidence": "evidence/rehearsal_rerun_b20r24/rehearsal_e1.json",
+   "max_edges": 140,
+   "tasks": 30,
+   "unsupported": []
+  },
+  "E1b (B20_R24)": {
+   "confirm_hosts_over_bound": {},
+   "every_over_bound_host_is_unsupported": true,
+   "evidence": "evidence/rehearsal_rerun_b20r24/rehearsal_e1b_tf.json",
+   "max_edges": 166,
+   "tasks": 30,
+   "unsupported": [
+    {
+     "edges": 166,
+     "reason": "REFERENCE_LIMIT",
+     "stratum": "erdos:b73f6828",
+     "task_id": "confirm-erdos-b73f6828-20278809-0004"
+    }
+   ]
+  },
+  "E1b-C4 (B20_R52)": {
+   "confirm_hosts_over_bound": {},
+   "every_over_bound_host_is_unsupported": true,
+   "evidence": "evidence/e1b_c4_package_b20r52/rehearsal_summary.json",
+   "max_edges": 125,
+   "tasks": 20,
+   "unsupported": []
+  },
+  "E1d (B20_R43)": {
+   "confirm_hosts_over_bound": {
+    "planted_cluster:9491bde8": 3
+   },
+   "every_over_bound_host_is_unsupported": true,
+   "evidence": "evidence/e1d_package_b20r43/rehearsal_summary.json",
+   "max_edges": 204,
+   "tasks": 240,
+   "unsupported": [
+    {
+     "edges": 204,
+     "reason": "SIZE_BOUND",
+     "stratum": "planted_cluster:9491bde8",
+     "task_id": "confirm-planted_cluster-9491bde8-20272220-0000"
+    },
+    {
+     "edges": 202,
+     "reason": "SIZE_BOUND",
+     "stratum": "planted_cluster:9491bde8",
+     "task_id": "confirm-planted_cluster-9491bde8-20272220-0004"
+    },
+    {
+     "edges": 202,
+     "reason": "SIZE_BOUND",
+     "stratum": "planted_cluster:9491bde8",
+     "task_id": "confirm-planted_cluster-9491bde8-20272220-0020"
+    }
+   ]
+  },
+  "E1d ablation (B20_R45)": {
+   "confirm_hosts_over_bound": {
+    "planted_cluster:9491bde8": 1
+   },
+   "every_over_bound_host_is_unsupported": true,
+   "evidence": "evidence/e1d_ablation_rehearsal_b20r45/rehearsal_summary.json",
+   "max_edges": 202,
+   "tasks": 45,
+   "unsupported": [
+    {
+     "edges": 202,
+     "reason": "SIZE_BOUND",
+     "stratum": "planted_cluster:9491bde8",
+     "task_id": "confirm-planted_cluster-9491bde8-20272420-0003"
+    }
+   ]
+  }
+ },
+ "schema": "genesis-b20r65-unsupported-hosts-v1",
+ "status": "diagnosis from committed evidence; nothing re-run"
+}

@@ -30,7 +30,7 @@
 | B20_R58 | `02415a8` | `976ba869…ac19` (B20_R57–R58, the B20_R59 setup, the handover document and review brief, and the B20_R56 checkpoint record; release matrix 1,418 tests, all OK, one declared skip; restore-verified, 6,027 manifest entries; driver rehearsal on the build host **REPRODUCED**, not a second machine; two earlier rehearsal attempts were lost, one NOT_REPRODUCED at the toolchain build when the session's disk allowance ran out and one to a container restart, and it was re-run from the same archive) |
 
   The recovery-branch checkpoints B20_RX1 and B20_RX2 are on `recovery-b20r1-partial`; their work was ported here.
-- **Records:** `docs/checkpoints/B20_R1_RECORD.md` … `B20_R11_RECORD.md`, `B20_RX1_RECORD.md`, `B20_RX2_RECORD.md`, `B20_R12_RECORD.md` and `B20_R15_RECORD.md` … `B20_R63_RECORD.md`.
+- **Records:** `docs/checkpoints/B20_R1_RECORD.md` … `B20_R11_RECORD.md`, `B20_RX1_RECORD.md`, `B20_RX2_RECORD.md`, `B20_R12_RECORD.md` and `B20_R15_RECORD.md` … `B20_R65_RECORD.md`.
 
 ## Completed since B20_R11
 
@@ -89,6 +89,7 @@
 | B20_R61 | **Statistician's brief written** (`docs/STATISTICIAN_BRIEF.md`, B19-OPEN-4). All nine stored power analyses reproduce exactly from their pilot rows. Flagged for the statistician: E1b-C4's placebo design is underpowered at its chosen 10 per stratum (0.764 at 10,000 simulations; 12 needed); four causal power analyses (E1b and E1b-C4 ablation/placebo) are bound to the sealed-evaluation family, which the custodian would refuse, and must be recomputed before freezing; each claim says "by at least the MUE" while the rule tests a point estimate; the stratum-level sign flip cannot fall below 0.125; unsupported hosts cluster in one stratum |
 | B20_R62 | **Causal power analyses rebound; sizing checked at 10,000 simulations.** The four causal power analyses bound to the wrong family are recomputed under the custodian's `ablation:`/`placebo:` families (`evidence/power_rebind_b20r62/`). At 10,000 simulations every package size holds except E1b-C4's placebo, which needs 12 hosts per stratum, not 10. A freeze takes these files |
 | B20_R63 | **E1d's advantage ends between 8× and 16× HiGHS budget (CROSSOVER_AT_8S).** On 30 fresh hosts: candidate − HiGHS +10.30 [8.77, 11.83] at 2 s (4×, replicating B20_R41/R43), +6.37 at 4 s (8×), +0.43 [0.03, 0.90] at 8 s (16×), and a tie at 16 s and 32 s, where HiGHS proves all 30 optima in about 6 CPU s. The builder's expectation (an advantage through 16×) and its reading of the MILP's weakness (a weak relaxation) were wrong: the advantage is speed. The GV4 fallback draft and the E1d package now state the crossover |
+| B20_R65 | **E1d's unsupported hosts are the 200-edge certificate bound.** All four exclusions in the E1d rehearsals are hosts above 200 edges, and every such host was excluded: a host-size cut applied before either arm runs, which removes the hosts where the candidate leads most. The statistician's brief now offers a stated eligibility rule or lifting the bound for the LP-dual route |
 
 ## Resume
 

@@ -4912,7 +4912,8 @@
     "src/genesis/resources.py",
     "docs/STATISTICIAN_BRIEF.md",
     "scripts/b20r61_statistician_brief.py",
-    "scripts/b20r62_power_rebind.py"
+    "scripts/b20r62_power_rebind.py",
+    "scripts/b20r65_unsupported_hosts.py"
    ],
    "disposition": "IMPLEMENTED_BOUNDED_PENDING_AUDIT",
    "evidence": [],
@@ -4931,7 +4932,8 @@
     "tests_genesis/test_evaluator_readiness.py",
     "tests_genesis/test_resources.py",
     "tests_genesis/test_statistician_brief.py",
-    "tests_genesis/test_power_rebind.py"
+    "tests_genesis/test_power_rebind.py",
+    "tests_genesis/test_unsupported_hosts.py"
    ],
    "title": "Statistics, fairness and decision rules",
    "workstream": "W07"

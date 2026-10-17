@@ -155,6 +155,28 @@ asked whether their positives count (`handoff/gv4/FALLBACK_CLAIM_DRAFT.md`, Part
    reference's failures correlate with the outcome, exclusion biases that stratum's mean. Options:
    - a per-stratum cap;
    - a registered worst-case sensitivity that scores excluded hosts as the stratum's largest observed loss.
+
+   **Diagnosed in B20_R65** (`scripts/b20r65_unsupported_hosts.py`, from each rehearsal's own CONFIRM hosts):
+
+| Rehearsal | CONFIRM hosts | Unsupported: task (edges) and reason | Hosts above 200 edges | All of them unsupported |
+|---|---|---|---|---|
+| E1 (B20_R24) | 30 | none | none | yes |
+| E1b (B20_R24) | 30 | `confirm-erdos-b73f6828-20278809-0004` (166) REFERENCE_LIMIT | none | yes |
+| E1b-C4 (B20_R52) | 20 | none | none | yes |
+| E1d (B20_R43) | 240 | `confirm-planted_cluster-9491bde8-20272220-0000` (204) SIZE_BOUND; `confirm-planted_cluster-9491bde8-20272220-0004` (202) SIZE_BOUND; `confirm-planted_cluster-9491bde8-20272220-0020` (202) SIZE_BOUND | planted_cluster:9491bde8: 3 | yes |
+| E1d ablation (B20_R45) | 45 | `confirm-planted_cluster-9491bde8-20272420-0003` (202) SIZE_BOUND | planted_cluster:9491bde8: 1 | yes |
+
+   Every E1d exclusion is a host above the custody path's 200-edge certificate bound
+   (`GraphHostAdapter.CERTIFICATE_MAX_EDGES`), and every such host was excluded.
+   - **The mechanism.** The rule depends on the host alone. It is applied before any search, so it is blind to
+     both arms: a size eligibility cut, not a reference failure that could track the outcome.
+   - **Its cost.** It removes the largest hosts of the densest setting, where the candidate's lead is largest, so
+     on E1d it works against the candidate.
+   - **The cleaner fix.** State the cut as a panel eligibility rule (draw CONFIRM hosts with at most 200 edges),
+     or lift the bound for the exact LP-dual route, whose certificate check does not depend on size. Either way the
+     population is stated, not left to post-hoc exclusion.
+   - **E1b's single exclusion** is a 166-edge host the reference did not certify in time: a reference limit, too
+     rare here to assess.
 6. **The test's null is symmetry, not a zero mean.** The sign-flip test treats each host's difference as
    symmetric about zero under H0. Is that acceptable for integer differences with many ties at zero (zeros carry
    no sign information and are dropped from the flips)?
@@ -181,8 +203,9 @@ asked whether their positives count (`handoff/gv4/FALLBACK_CLAIM_DRAFT.md`, Part
    freezing.
 4. **The claim wording against the rule** (finding 3). Choose one of the two fixes.
 5. **The stratum-level sign flip** (finding 4). Drop or replace it.
-6. **Unsupported hosts** (finding 5). Choose a per-stratum cap, a worst-case sensitivity, or accept the current
-   rule.
+6. **Unsupported hosts** (finding 5). E1d's exclusions are a host-size cut (B20_R65). Should the cut become a
+   stated panel eligibility rule, or the bound be lifted for the LP-dual route? Separately, choose a per-stratum cap
+   or a worst-case sensitivity for reference failures, or accept the current rule.
 7. **The test, interval and family** (findings 6–8). Accept them, or amend.
 8. **The certification studies' rules and the attempt family** (section 5). Are McNemar on discordant hosts,
    Benjamini–Yekutieli at q = 0.1, and counting interval-rule attempts at p = 1 an acceptable gate for counting a

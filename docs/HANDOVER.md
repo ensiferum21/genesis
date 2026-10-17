@@ -117,6 +117,7 @@ needs people: a reviewer, a statistician, an independent custodian on its own ma
 | B20_R61 | Statistician's brief (`docs/STATISTICIAN_BRIEF.md`): every power analysis reproduces; flags E1b-C4's underpowered placebo size, four causal power analyses bound to the wrong family, and the claim-vs-rule wording |
 | B20_R62 | Causal power analyses rebound to the custodian's families; at 10,000 simulations only E1b-C4's placebo changes size (10 -> 12 per stratum) |
 | B20_R63 | E1d budget crossover: **CROSSOVER_AT_8S**. Candidate − HiGHS +10.30 at 4×, +6.37 at 8×, +0.43 at 16× (not material), tie at 32×–64× (HiGHS proves every optimum in about 6 CPU s). The 4× claim replicates; the advantage is speed, not quality at any budget |
+| B20_R65 | E1d's unsupported rehearsal hosts are exactly those above the 200-edge certificate bound: a host-size cut, blind to both arms |
 
 ## 6. Next steps, in order
 
