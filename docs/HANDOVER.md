@@ -118,7 +118,7 @@ needs people: a reviewer, a statistician, an independent custodian on its own ma
 
 ## 6. Next steps, in order
 
-1. **Checkpoint after B20_R59.** B20_R58 (at `02415a8`) is built and restore-verified; record its rehearsal, then checkpoint again after B20_R59's record. Keep the session's disk allowance in mind: delete old `/tmp/genesis-repro-*` trees after each rehearsal (B20_R59 and one B20_R58 rehearsal were interrupted by disk exhaustion).
+1. **Checkpoint after B20_R63.** B20_R58 (at `02415a8`) is recorded: release matrix 1,418 OK, restore-verified, build-host rehearsal REPRODUCED, archived. The next checkpoint covers B20_R59–R63. Keep the session's disk allowance in mind: delete old `/tmp/genesis-repro-*` trees after each rehearsal (B20_R59 and one B20_R58 rehearsal were interrupted by disk exhaustion).
 2. **Get the decisions in the review brief.** Most remaining work depends on them. In particular:
    - item 1, the strong-baseline scope;
    - item 3, generated-rows certification as a trust path;

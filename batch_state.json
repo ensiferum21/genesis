@@ -320,6 +320,21 @@
         },
         "restore_verified": "5998 manifest entries match; bundle clone gives the same commit and tree",
         "rehearsal": "deployment/reproduce.sh on the build host (clean room, not a second machine): REPRODUCED, all 7 steps"
+      },
+      "B20_R58": {
+        "commit": "02415a8e622fed68e43f6098a7e3a6ac1902498b",
+        "sha256": "976ba869c97dcfcd7391750d1694a6131e9d93c8b89437636d89babae695ac19",
+        "release_matrix": {
+          "integration": 881,
+          "legacy_regression": 282,
+          "sandbox_escape": 28,
+          "certificates": 43,
+          "formal": 184,
+          "failures": 0,
+          "declared_skips": 1
+        },
+        "restore_verified": "6027 manifest entries match; bundle clone gives the same commit and tree",
+        "rehearsal": "deployment/reproduce.sh on the build host (clean room, not a second machine): REPRODUCED, all 7 steps; two earlier attempts lost (disk exhaustion at the toolchain build: NOT_REPRODUCED; a container restart), re-run from the same archive"
       }
     },
     "adopted_from_crpd_v3_status": {
@@ -778,7 +793,10 @@
         "result": "GV4 fallback claim DRAFT (handoff/gv4/FALLBACK_CLAIM_DRAFT.md): Part A E1d useful solver (+9.80 [9.30, 10.35] same-operator rehearsal vs HiGHS at 4x), Part B ablation (+7.07, null clean; +6.64 through custody), Part C generated Lean-checked rows only if certification counts. BY at q 0.1 over 13 attempts derived from evidence: B20_R35, R48, R57 survive (R57 not replicated). Documentation only; nothing adopted"
       },
       "B20_R61": {
-        "commits": [],
+        "commits": [
+          "8d684c7",
+          "2263bd0"
+        ],
         "result": "Statistician's brief (docs/STATISTICIAN_BRIEF.md, B19-OPEN-4): all nine stored power analyses reproduce exactly from pilot rows. Flags: E1b-C4 placebo underpowered at n 10 (0.764 at 10,000 sims; n 12 needed); four causal power analyses bound to sealed_evaluation instead of ablation/placebo (recomputed 1.000, 0.980, 0.992, n 12 0.879); claim wording vs point-estimate rule; stratum-level sign flip floored at 0.125; unsupported hosts cluster in one stratum. Documentation only; packages unchanged"
       }
     },
