@@ -191,6 +191,10 @@ CITATIONS = (
      ('descriptive', 'optimum_hits', 'highs_16s'), lambda v: f'optimal on {v} of 30 at 16 s'),
     ('B20_R63 HiGHS CPU at 16 s', 'evidence/e1d_crossover_b20r63/summary.json', ('per_budget', 'highs_16s', 'cpu_s_median'),
      lambda v: f'about {v:.0f} CPU s per host'),
+    ('B20_R64 verdict', 'evidence/e1d_scaling_b20r64/summary.json', ('verdict',), lambda v: f'**{v}**'),
+    ('B20_R64 n60 at 64x', 'evidence/e1d_scaling_b20r64/summary.json', ('by_n', '60', 'per_budget', 'highs_32s'),
+     lambda v: f'+{v["estimate"]:.1f} [{v["interval_90"][0]:.1f}, {v["interval_90"][1]:.1f}], '
+               f'{v["wins_ties_losses"][0]}/{v["wins_ties_losses"][1]}/{v["wins_ties_losses"][2]}'),
     ('B20_R58 table', 'evidence/sf_pattern_selection_b20r58/summary.json', ('table',),
      lambda v: f'all {v["ALL"]["certified"]}, none {v["NONE"]["certified"]}, best subset '
                f'{max(v[k]["certified"] for k in v if k.startswith("TOP"))} of {v["ALL"]["hosts"]}'),

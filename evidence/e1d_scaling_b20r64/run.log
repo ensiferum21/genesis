@@ -1,0 +1,35 @@
+[    0.0s] pinned to CPU 0
+[    0.0s] SAT tools: cadical@24fb99286ca1ea9a, drat-trim@92f0aa9575ed519d
+[    7.3s] exposure: 3017 identities (3017 named hosts, 711 E1 hosts, 456 calibration hosts)
+[    7.3s] hosts reloaded from hosts.json
+[   41.7s] n40 0000 (184 edges): candidate 121 highs 104 121 121 opt 121 [121..121] 16.8s
+[   80.2s] n40 0001 (185 edges): candidate 121 highs 105 121 121 opt 121 [121..121] 19.4s
+[  122.7s] n40 0002 (194 edges): candidate 125 highs 108 125 125 opt 125 [125..125] 21.9s
+[  262.2s] n40 0003 (179 edges): candidate 117 highs 109 117 117 opt None [117..118] 120.7s
+[  303.8s] n40 0004 (177 edges): candidate 116 highs 97 116 116 opt 116 [116..116] 21.4s
+[  339.5s] n40 0005 (180 edges): candidate 119 highs 102 119 119 opt 119 [119..119] 15.7s
+[  369.0s] n40 0006 (188 edges): candidate 128 highs 115 128 128 opt 128 [128..128] 14.6s
+[  397.4s] n40 0007 (185 edges): candidate 126 highs 111 126 126 opt 126 [126..126] 14.4s
+[  445.7s] n40 0008 (191 edges): candidate 124 highs 109 123 124 opt 124 [124..124] 26.4s
+[  480.9s] n40 0009 (183 edges): candidate 120 highs 105 120 120 opt 120 [120..120] 17.2s
+[  534.2s] n50 0000 (297 edges): candidate 194 highs 57 167 194 opt 194 [194..194] 23.9s
+[  601.1s] n50 0001 (290 edges): candidate 188 highs 47 159 188 opt 188 [188..188] 25.0s
+[  659.4s] n50 0002 (277 edges): candidate 181 highs 44 157 181 opt 181 [181..181] 22.6s
+[  824.0s] n50 0003 (312 edges): candidate 197 highs 48 172 196 opt None [197..198] 120.6s
+[  887.9s] n50 0004 (288 edges): candidate 185 highs 49 164 186 opt 186 [186..186] 25.9s
+[  952.5s] n50 0005 (312 edges): candidate 204 highs 51 179 204 opt 204 [204..204] 24.9s
+[ 1024.6s] n50 0006 (307 edges): candidate 195 highs 49 170 195 opt 195 [195..195] 28.0s
+[ 1096.4s] n50 0007 (286 edges): candidate 184 highs 47 158 186 opt 186 [186..186] 27.7s
+[ 1162.3s] n50 0008 (302 edges): candidate 196 highs 54 168 196 opt 196 [196..196] 26.1s
+[ 1234.1s] n50 0009 (296 edges): candidate 191 highs 50 167 192 opt 192 [192..192] 27.7s
+[ 1316.4s] n60 0000 (409 edges): candidate 258 highs 57 218 254 opt 258 [258..258] 38.2s
+[ 1481.7s] n60 0001 (424 edges): candidate 263 highs 53 198 256 opt None [263..264] 121.3s
+[ 1646.6s] n60 0002 (429 edges): candidate 272 highs 63 235 263 opt None [272..273] 120.9s
+[ 1811.2s] n60 0003 (419 edges): candidate 266 highs 59 229 253 opt None [266..267] 120.5s
+[ 1886.2s] n60 0004 (421 edges): candidate 269 highs 72 230 265 opt 273 [273..273] 30.9s
+[ 1970.9s] n60 0005 (432 edges): candidate 267 highs 49 182 199 opt 268 [268..268] 40.6s
+[ 2056.0s] n60 0006 (431 edges): candidate 272 highs 64 231 265 opt 273 [273..273] 41.1s
+[ 2221.2s] n60 0007 (418 edges): candidate 260 highs 51 216 249 opt None [260..261] 121.1s
+[ 2308.7s] n60 0008 (422 edges): candidate 267 highs 62 224 256 opt 267 [267..267] 43.4s
+[ 2473.8s] n60 0009 (440 edges): candidate 274 highs 50 230 232 opt None [274..275] 120.8s
+[ 2474.0s] verdict ADVANTAGE_GROWS; n40: crossover 8.0; n50: crossover 32.0; n60: crossover None

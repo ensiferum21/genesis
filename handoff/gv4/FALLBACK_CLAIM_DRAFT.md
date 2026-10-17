@@ -55,6 +55,10 @@ that report would contain.
   the generated-rows reference also solves every host. The claim is "a 0.5 s solver beats an exact MILP at 2 s,
   and matches what that MILP needs several seconds to reach". The report must state the crossover (16× here) and
   not imply an advantage beyond it.
+- **On larger hosts the advantage grows** (B20_R64, a DEV pilot outside the calibrated settings): **ADVANTAGE_GROWS**.
+  The crossover is 16× at n40 and 64× at n50. At n60 (about 430 edges) the candidate still leads HiGHS at 64× its
+  budget, +17.6 [8.1, 28.8], 10/0/0, while staying within about one edge of a proven upper bound. Claiming that
+  needs a family-space extension and the 200-edge certificate bound lifted for the exact LP-dual route.
 - **Its scope is narrow.** Only these three settings, on that panel.
 
 **What it needs:**

@@ -813,8 +813,17 @@
         "result": "E1d budget crossover (30 fresh hosts): candidate - HiGHS +10.30 [8.77, 11.83] at 2 s (4x), +6.37 at 4 s (8x), +0.43 [0.03, 0.90] at 8 s (16x, UNRESOLVED), tie at 16 s and 32 s (HiGHS optimal 30/30, about 6 CPU s). CROSSOVER_AT_8S. The builder's expectation (advantage through 16x) and its relaxation reading were wrong; the advantage is speed. Fallback draft, E1d README, review brief updated. Exposure addenda (30 hosts)"
       },
       "B20_R65": {
-        "commits": [],
+        "commits": [
+          "74de319"
+        ],
         "result": "Diagnosis: every E1d rehearsal exclusion (B20_R43: 3, B20_R45: 1) is a host above the 200-edge certificate bound and every such host was excluded; E1b's one exclusion is a reference limit. Statistician brief finding 5 updated"
+      },
+      "B20_R64": {
+        "commits": [
+          "6feb780",
+          "3bceee2"
+        ],
+        "result": "E1d scaling pilot (DEV, planted (0.8, 0.06) at n40/50/60): ADVANTAGE_GROWS. Crossover 8 s (16x) at n40, 32 s (64x) at n50, none within 64x at n60 (+17.6 [8.1, 28.8] at 32 s, 10/0/0; candidate within one edge of a proven upper bound on 9/10). Run 1 invalid (HiGHS CPU-starved, 0.55-0.86 of budget, by a concurrent release matrix); criterion (>= 0.9) stated before a re-run alone, which meets it"
       }
     },
     "open_after_b20_r5": [
@@ -1221,6 +1230,9 @@
     ],
     "checkpoint_attempts_after_b20_r63": [
       "checkpoint build at 550ae43 FAILED its release matrix (2 integration errors, 'source changed after campaign initialization'): the builder created and edited files in the working tree during the run; no checkpoint written; to be rebuilt on a quiet tree"
+    ],
+    "open_after_b20_r64": [
+      "B20R41-OPEN-1 updated: the E1d advantage grows with host size; a claim there needs the family space extended and the 200-edge bound lifted for the LP-dual route"
     ]
   }
 }
