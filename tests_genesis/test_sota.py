@@ -60,7 +60,7 @@ class Design(unittest.TestCase):
                 rows.append(synth(n, 300, {'burer': {0.05: 3}, 'system': {0.5: 3}, 'candidate': {2.0: 3},
                                            'dsb': {0.1: 3}, 'tabu': {0.05: 3}}))
         by_n = M.analyse(rows)
-        v = by_n['80']['versus_sota']
+        v = by_n['63']['versus_sota']
         self.assertEqual((v['system']['verdict'], v['candidate']['verdict'], v['tabu']['verdict']),
                          ('SOTA_FASTER', 'SOTA_FASTER', 'COMPARABLE'))
         self.assertEqual(v['highs']['verdict'], 'SOTA_FASTER')        # never solves: +10 cap

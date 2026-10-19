@@ -11,12 +11,12 @@ relaxation heuristic of Burer, Monteiro and Zhang; B20_R74 built it from MQLib a
 B20_R70's fastest method was discrete simulated bifurcation. Google OR-Tools CP-SAT (gold in the MiniZinc
 Challenge 2025) and the MaxSAT solver RC2 were also planned, but PyPI was not reachable from this workspace (the
 egress proxy refused it); they are left for a follow-up if their wheels are supplied, and this study does not
-claim to cover them. This study puts the system against BURER2002, dSB, tabu search and HiGHS at n60 and at larger
-n80 hosts, on two questions: how fast does each method reach the best known value (Part A), and how fast can an
+claim to cover them. This study puts the system against BURER2002, dSB, tabu search and HiGHS at n60 and at n63, the
+largest size the domain's task model accepts, on two questions: how fast does each method reach the best known value (Part A), and how fast can an
 exact method prove it optimal (Part B)?
 
 **Design (fixed before running).**
-  * **Hosts.** planted_cluster (p_in 0.8, p_out 0.06), 6 fresh DEV hosts at n60 and 6 at n80 (seed 20267501), drawn
+  * **Hosts.** planted_cluster (p_in 0.8, p_out 0.06), 6 fresh DEV hosts at n60 and 6 at n63 (seed 20267501), drawn
     by `b20r64_e1d_scaling.generate_beyond_space`, excluding every identity `b20r24_repilots.exposure` excludes.
   * **Part A, anytime, all in runc under E1's profile** (2 CPU s, 2048 MiB, 10 s wall), at each run time t in
     (0.05, 0.1, 0.25, 0.5, 2.0) CPU s, REPS = 3 seeds per (host, arm, t):
@@ -36,7 +36,7 @@ exact method prove it optimal (Part B)?
     system), TTS* at the optimal run time, infinite where never reached (±10 caps); the median over hosts with a
     bootstrap 90% interval (4,000 resamples, seed 20267599). Verdict per (n, x): X_FASTER (lower end > 1),
     SOTA_FASTER (upper end < −1), COMPARABLE (inside (−1, 1)), UNRESOLVED.
-  * **Overall (at n80):** SYSTEM_BEATS_SOTA if `system` is X_FASTER than BURER2002; SOTA_BEATS_SYSTEM if
+  * **Overall (at the largest size, n63):** SYSTEM_BEATS_SOTA if `system` is X_FASTER than BURER2002; SOTA_BEATS_SYSTEM if
     SOTA_FASTER;
     SYSTEM_MATCHES_SOTA if COMPARABLE; else UNRESOLVED. Validity first: INVALID_CPU_DELIVERY if any Part A arm's
     median cgroup CPU at t = 0.5 is below 0.45 s; INVALID_FAILURES if more than 1% of an arm's runs failed.
@@ -49,8 +49,13 @@ for the remaining budget (MQLib's -r, a wall-clock limit; the run is alone on a 
 
 **Expectation, stated before running.** BURER2002 optimizes the cut, not the repaired subgraph, and returns one
 best cut per run, so the builder expects it to be no faster than dSB, and comparable with or slower than the
-system's engine: overall SYSTEM_MATCHES_SOTA or UNRESOLVED at n80. HiGHS proves few n80 hosts within 60 s; the
-generated-rows reference certifies more n60 than n80 hosts.
+system's engine: overall SYSTEM_MATCHES_SOTA or UNRESOLVED at n63. HiGHS proves few n63 hosts within 60 s; the
+generated-rows reference certifies fewer hosts at n63 than at n60.
+
+**Amendment, before any arm ran (disclosed).** As first committed (`fc8f950`) the design named n80. The domain's task
+model caps hosts at 63 vertices (`models.GraphTask.n <= 63`, part of every identity), so the first run stopped while
+drawing the n80 hosts: no host was saved and no arm ran (its log is kept in `run1_stopped/`). The larger size is now
+n63, the largest the model accepts; nothing else changed.
 
 **Development looks.** One, disclosed in the B20_R74 record: BURER2002 at 0.1 and 0.5 s in process on the first
 three B20_R66 hosts gave 261, 279, 266 (dSB in B20_R69's look: 264, 280, 267). No host of this study's seed has
@@ -91,7 +96,7 @@ import b20r64_e1d_scaling as R64  # noqa: E402
 import b20r70_tts_scaling as R70  # noqa: E402
 
 TF = RD.TF
-SEED, PER_N, NS, REF_S, EXACT_S = 20267501, 6, (60, 80), 120, 60
+SEED, PER_N, NS, REF_S, EXACT_S = 20267501, 6, (60, 63), 120, 60
 P_IN, P_OUT = 0.8, 0.06
 LADDER = (0.05, 0.1, 0.25, 0.5, 2.0)
 REPS = 3
@@ -356,7 +361,7 @@ def main(argv=None):
     invalid, cpu_half, fail = validity(rows)
     by_n = analyse(rows)
     summary = {'schema': 'genesis-b20r75-sota-v1', 'verdict': overall(by_n, invalid),
-               'n80_versus_sota': {x: by_n[str(NS[-1])]['versus_sota'][x]['verdict'] for x in PRIMARY + SECONDARY},
+               'largest_n_versus_sota': {x: by_n[str(NS[-1])]['versus_sota'][x]['verdict'] for x in PRIMARY + SECONDARY},
                'by_n': by_n,
                'validity': {'cpu_s_median_at_0.5': {a: round(v, 3) for a, v in cpu_half.items()},
                             'failure_share': {a: round(v, 5) for a, v in fail.items()}},
@@ -366,7 +371,7 @@ def main(argv=None):
                'exposure_scan': scan, 'code_identity': code_identity(ROOT)['sha256'],
                'status': 'DEV comparison with state-of-the-art tools; licenses nothing; no package changed'}
     R11.dump(out / 'summary.json', summary)
-    log(f"verdict {summary['verdict']}; n80 vs BURER2002 {summary['n80_versus_sota']}")
+    log(f"verdict {summary['verdict']}; n63 vs BURER2002 {summary['largest_n_versus_sota']}")
     return 0
 
 
