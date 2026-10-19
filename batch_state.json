@@ -926,9 +926,14 @@
       "B20_R75": {
         "commits": [
           "fc8f950",
-          "1f04796"
+          "1f04796",
+          "0f1af14"
         ],
         "result": "State-of-the-art comparison (DEV, n60/n63, alone pinned): INVALID_CPU_DELIVERY. All BURER2002 runs returned empty witnesses (MQLib seeds limited to 0..65535; the kind failed silently); caught by the preregistered CPU check. Descriptive: dSB fastest, the system engine 1.2 s, candidate 1.2/3.0 s; HiGHS 60 s proved none; checked route certified 6/12. Repeated in B20_R76"
+      },
+      "B20_R76": {
+        "commits": [],
+        "result": "Engineering: mqlib-v1 fixed (seed mod 65536, loud failure); cpsat-v1 from the supplied OR-Tools 9.15 cp313 wheel (hash ebd5aea0), pinned tree fb5ef9ac, 8 workers on one core. Study pending"
       }
     },
     "open_after_b20_r5": [

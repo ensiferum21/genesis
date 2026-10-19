@@ -128,3 +128,9 @@ MQLib's BURER2002 as a domain baseline. External tools live under `/usr/local/ge
 sandbox bind-mounts read-only; outside every Python path and the locked environment). The kind pins the binary's
 SHA-256 and refuses any other; `scripts/b20r74_sota_tools.py` rebuilds it reproducibly from the pinned commit. A fresh
 machine must run that script before `mqlib-v1` can be used; until then the kind refuses, and its tests fail.
+
+## B20_R76: `cpsat-v1`, and `mqlib-v1` fixed
+
+`cpsat-v1` runs Google OR-Tools CP-SAT 9.15 (8 portfolio workers on the child's one core) from a pinned tree under
+`/usr/local/genesis-sota/py313`, installed from a hash-checked wheel by `scripts/b20r74_sota_tools.py --ortools-wheel`.
+`mqlib-v1` now takes seeds modulo 65,536 (MQLib's limit) and fails loudly when MQLib fails (B20_R75's defect).

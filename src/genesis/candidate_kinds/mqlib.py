@@ -1,4 +1,4 @@
-"""Candidate kind `mqlib-v1` (registry v2, B20_R74): MQLib's BURER2002, the best single max-cut heuristic in the
+"""Candidate kind `mqlib-v1` (registry v2, B20_R74; fixed in B20_R76): MQLib's BURER2002, the best single max-cut heuristic in the
 largest independent comparison of max-cut/QUBO heuristics, as a state-of-the-art domain baseline.
 
 Why. Dunning, Gupta and Silberholz (INFORMS J. Computing 2018) implemented 37 max-cut and QUBO heuristics in one
@@ -18,6 +18,10 @@ runc sandbox bind-mounts the host's /usr read-only) and outside every Python pat
 `check_parameters` refuses unless the installed binary hashes to it, and this file, which holds the pin, is in the
 kind's identity.
 
+Fix (B20_R76). MQLib accepts seeds 0..65535 only; B20_R75's seeds were larger, MQLib exited with a usage error and
+the kind returned an empty witness, so every run scored 0 (caught by that study's CPU check). The seed is now taken
+modulo 65,536, and any MQLib failure fails the run instead of returning an empty answer.
+
 Parameters (data only): {heuristic, cpu_seconds}; heuristic in HEURISTICS. Domain: triangle_free_host_v1.
 """
 import hashlib
@@ -36,6 +40,7 @@ SOURCE = {'repository': 'https://github.com/MQLib/MQLib', 'commit': '585496274af
           'command': 'cd <tmp>; g++ -IMQLib/include -std=c++11 -O2 -w -ffile-prefix-map=<tmp>=. -o MQLib.bin '
                      '<every MQLib/src/**/*.cpp, relative, sorted> -lm'}
 HEURISTICS = ('BURER2002',)
+MAX_SEED = 65536
 _PIN = {}
 
 
@@ -103,11 +108,12 @@ def solve(view, params, cpu_seconds, seed):
     budget = max(0.01, min(params['cpu_seconds'], cpu_seconds) - (time.process_time() - start))
     # the child may not write files (RLIMIT_FSIZE 0), so the instance goes to MQLib through a pipe
     instance = f'{n} {len(E)}\n' + ''.join(f'{u + 1} {v + 1} 1\n' for u, v in E)
+    # MQLib accepts seeds 0..65535 only (B20_R75: larger ones made it exit with a usage error)
     p = subprocess.run([BINARY, '-fM', '/proc/self/fd/0', '-h', params['heuristic'], '-r', f'{budget:.4f}', '-ps',
-                        '-s', str(seed % (1 << 31))], input=instance, capture_output=True, text=True,
+                        '-s', str(seed % MAX_SEED)], input=instance, capture_output=True, text=True,
                        timeout=budget + 5)
     side = parse_cut(p.stdout, n) if p.returncode == 0 else None
-    if side is None:
-        return {'selected': [], 'value': 0}
+    if side is None:                    # fail loudly: an empty answer would score 0 as if MQLib had run (B20_R75)
+        raise RuntimeError(f'MQLib failed (exit {p.returncode}): {(p.stdout + p.stderr)[-300:]}')
     best = complete(E, n, side, random.Random(seed))
     return {'selected': [list(e) for e in sorted(best)], 'value': len(best)}

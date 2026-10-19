@@ -110,7 +110,8 @@
     git checkout continuation-b20-rx
     GENESIS_TOOLCHAIN=/srv/toolchain bash toolchain/install_tools.sh     # pinned sources; the formal workspace uses the CRPD-2b pin
     export GENESIS_TOOLCHAIN=/srv/toolchain PYTHONPATH=src
-    python3 scripts/b20r74_sota_tools.py                               # MQLib BURER2002 at its pinned commit (B20_R74; needs g++ and GitHub)
+    python3 scripts/b20r74_sota_tools.py --ortools-wheel ortools-9.15.6755-cp313-cp313-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl
+                                     # MQLib BURER2002 at its pinned commit (needs g++ and GitHub) and CP-SAT from the archived wheel
     python3 scripts/run_test_matrix.py --profile release --report /tmp/matrix.json   # as root (runc)
 
 ## Decisions needed from Daniel or a reviewer

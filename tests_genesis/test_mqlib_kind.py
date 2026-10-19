@@ -53,11 +53,21 @@ class Solving(unittest.TestCase):
         self.assertEqual(out['value'], 25)
         self.assertEqual(check_witness(task(10, k10), [tuple(e) for e in out['selected']])['value'], 25)
 
+    def test_study_sized_seeds_work_and_failures_are_loud(self):
+        # B20_R75: seeds above 65535 made MQLib exit, and the kind returned an empty answer
+        k10 = tuple(combinations(range(10), 2))
+        out = MQ.solve(CandidateGraph(domain=TF, n=10, edges=k10), {'heuristic': 'BURER2002', 'cpu_seconds': 0.1},
+                       2, 123456789012345)
+        self.assertEqual(out['value'], 25)
+        with mock.patch.object(MQ, 'BINARY', '/bin/false'):
+            with self.assertRaises(RuntimeError):
+                MQ.solve(CandidateGraph(domain=TF, n=10, edges=k10), {'heuristic': 'BURER2002', 'cpu_seconds': 0.1}, 2, 1)
+
     def test_runs_in_the_sandbox_with_a_checked_witness(self):
         from genesis.domains import ADAPTERS
         t = ADAPTERS[TF].generate(20267401, 1, 'DEV', 'planted_cluster', {'n': 30, 'p_in': 0.8, 'p_out': 0.06})[0][0]
         d = C2.build_descriptor('mqlib-v1', TF, {'heuristic': 'BURER2002', 'cpu_seconds': 0.5}, **PROFILE)
-        r = C2.run(t, d, seed=3, expected_id=d['descriptor_id'], isolation='runc')
+        r = C2.run(t, d, seed=987654321987, expected_id=d['descriptor_id'], isolation='runc')       # a study-sized seed
         self.assertEqual((r['status'], r['meter']), ('SUCCESS', 'cgroup'), r)
         self.assertGreater(r['result']['value'], 0)
         self.assertEqual(check_witness(t, [tuple(e) for e in r['result']['selected']])['value'], r['result']['value'])

@@ -19,4 +19,5 @@ KINDS = {
     'maxcut-eo-v1': 'maxcut_eo',          # B20_R69: tau-extremal optimization (self-organized-criticality search)
     'represent-search-v1': 'represent_search',  # B20_R71: the representation engine with a choice of move rule
     'mqlib-v1': 'mqlib',                  # B20_R74: MQLib's BURER2002, the best single max-cut heuristic of Dunning et al.
+    'cpsat-v1': 'cpsat',                  # B20_R76: Google OR-Tools CP-SAT, one worker (MiniZinc Challenge 2025 gold)
 }
