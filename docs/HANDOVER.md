@@ -130,6 +130,7 @@ needs people: a reviewer, a statistician, an independent custodian on its own ma
 | B20_R74 | MQLib's BURER2002 built reproducibly from a pinned commit as `mqlib-v1`; CP-SAT and MaxSAT blocked (PyPI refused; B20R74-OPEN-1). The MQLib binary must be built on a fresh machine with `scripts/b20r74_sota_tools.py` |
 | B20_R75 | State-of-the-art comparison (DEV): **INVALID_CPU_DELIVERY**, BURER2002 kind defect (seed range, silent empty answers) caught by the preregistered check; repeated in B20_R76 |
 | B20_R76 | Against OR-Tools CP-SAT and the fixed BURER2002 (DEV): **UNRESOLVED**; only simulated bifurcation resolves (faster than CP-SAT at n63). At ≤ 2 s the heuristics reach targets CP-SAT does not; CP-SAT at 60 s finds an optimum they miss |
+| B20_R77 | New engine `hybrid-swap-v1` from B20_R76's diagnosis; against CP-SAT and BURER2002 on 24 fresh n63 hosts (DEV): **ENGINE_BEATS_SOTA** (24/24 targets within 2 s; BURER2002 10, CP-SAT 0). dSB alone also beats both; scope: anytime ≤ 2 s, one family; claim path B20R77-OPEN-1 |
 
 ## 6. Next steps, in order
 

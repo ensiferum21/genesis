@@ -28,6 +28,11 @@ for up to 2 s never reached the best known value; BURER2002 is the fastest metho
 5 of 12 hosts; simulated bifurcation and the system's engine succeed most often (11 and 10 of 12). So no speed
 claim against the best known methods can be made yet; a powered replication is the next step.
 
+**B20_R77: ENGINE_BEATS_SOTA.** On 24 fresh n63 hosts the system's new engine `hybrid-swap-v1` (dSB and descent as a
+portfolio, then (1,2)-swap local search on the problem itself) is more than twice as fast as CP-SAT and BURER2002
+at the typical and the hard host (Rønnow's speedup of quantiles, preregistered); dSB alone also beats both. The
+diagnosis behind it: the hardest optimum is not a cut plus a completion, so the cut objective is the wrong one there.
+
 ## 2. Physics-inspired solvers as strong domain baselines
 
 **Weakness.** Until B20_R67 E1d had no baseline from its own field. Dunning, Gupta and Silberholz (2018) found

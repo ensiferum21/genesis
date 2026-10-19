@@ -10,8 +10,8 @@ The first commit matrix after the B20_R76 record ran 1,007 tests with 15 errors 
 (E prover, CaDiCaL, DRAT-trim, Lean, zstd) was intact at `/srv/toolchain`, but the link to it from the home directory
 (`~/toolchain`, where `verification/tools.py` looks) had disappeared from the workspace after B20_R76 had run (its log
 records the CaDiCaL and DRAT-trim identities). The link was restored; every pinned tool resolves to its pinned
-identity (CaDiCaL `24fb9928…`, as in B20_R76's log). The erroring module and the failing test pass, and the matrix was
-re-run (result in part 2).
+identity (CaDiCaL `24fb9928…`, as in B20_R76's log). The erroring module and the failing test pass, and the matrix
+re-run passed: 1,009 tests, no failure, no skip.
 
 ## Diagnosis: why every fast arm missed the hardest B20_R76 host (development looks, disclosed)
 
@@ -77,3 +77,49 @@ resample can have BURER2002 solve half.
 at q = 0.75, unsure at q = 0.5; overall ENGINE_BEATS_SOTA or MIXED, MIXED slightly more likely.
 
 **Tests:** `tests_genesis/test_engine_vs_sota.py` (7, design).
+
+# B20_R77 record (part 2, the study): the new engine against CP-SAT and BURER2002, **ENGINE_BEATS_SOTA**
+
+- **Run by:** the builder. DEV only.
+- **Before the run:** the commit matrix re-run with the toolchain link restored passed (1,009 tests, no failure, no
+  skip). **Setup:** `b295c2a`; script SHA-256 `9da9935d…c1e0`, sent before the run. Alone, pinned to CPU 0, 5,475 s;
+  `code_identity` equals the committed tree's. **Evidence:** `evidence/engine_vs_sota_b20r77/` (README with tables).
+
+## Result: **ENGINE_BEATS_SOTA**
+
+Valid (CPU delivered, no failed run). On 24 fresh n63 hosts the engine is more than twice as fast as both tools at
+both quantiles: against BURER2002 log2 10.0 [1.32, 10.0] (typical host) and 10.0 [10.0, 10.0] (hard host); against
+CP-SAT run anytime 10.0 [10.0, 10.0] at both. B20_R76's per-host statistic agrees. An independent recomputation from
+the rows (no study code) reproduces every value, interval and verdict; 20 other bootstrap seeds give the same
+primary verdicts.
+
+Descriptive: the engine reached the best known value within 2 s on 24 of 24 hosts (median TTS* 0.1 s, 75th
+percentile 0.25 s); dSB 21, the system's B20_R76 engine 19, tabu 15, E1d's candidate 15, BURER2002 10, CP-SAT 0.
+On 3 hosts only the engine reached it (two certified optimal), CP-SAT with 60 s included; CP-SAT at 60 s reached 3
+targets and proved none optimal.
+
+**What the result does not say.**
+- **dSB alone also beats both tools** on this statistic; the engine's lead over dSB is UNRESOLVED (more targets, 24
+  against 21, but not resolved as faster). Over the system's B20_R76 engine the improvement is resolved: about 12
+  times faster on the typical host and 40 times on the hard host.
+- **The edge is the last edge:** with "within one edge of the best known value" as the target (exploratory), the
+  typical-host comparison with BURER2002 is UNRESOLVED.
+- **The arena is the engine's:** anytime, up to 2 CPU s on one core; CP-SAT is built for proofs with time and cores,
+  and BURER2002 solves max-cut, a relaxation. One host family, n63, builder-run DEV; the target includes the engine's
+  own values (certified on 16 hosts).
+
+**Against the expectation.** The builder expected ENGINE_BEATS_SOTA or MIXED, MIXED slightly more likely. During
+the run the builder gave Daniel a running tally of hosts reached, explicitly not a verdict.
+
+## Consequence
+
+- The first preregistered DEV result in which a solver of the system beats the state-of-the-art tools tested, on
+  their shared measure (time to the best known value), in this regime. It licenses nothing; a claim needs a frozen
+  descriptor, a calibration under a rule whose strong baselines include these tools, an independent custodian and
+  replication (B20R77-OPEN-1).
+- Physics plan idea 2 (physics-inspired solvers) is confirmed again: simulated bifurcation carries much of the
+  advantage. The diagnosis-led addition (portfolio and (1,2)-swaps) is what reaches the targets dSB misses.
+
+## Tests
+
+`tests_genesis/test_engine_vs_sota.py`: Design (7); Record (5).

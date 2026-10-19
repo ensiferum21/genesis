@@ -113,5 +113,88 @@ class Design(unittest.TestCase):
         self.assertIn('R33.pinned_core()', (ROOT / 'scripts' / 'b20r77_engine_vs_sota.py').read_text())
 
 
+EV = ROOT / 'evidence' / 'engine_vs_sota_b20r77'
+
+
+class Record(unittest.TestCase):
+    """B20_R77's saved rows: valid; the analysis and the verdict (ENGINE_BEATS_SOTA) recompute; the engine reached the
+    best known value on every host; values are bounded and isolated; the tools and descriptors are the pinned and
+    recorded ones; the hosts are fresh and in the exposure addenda."""
+
+    @classmethod
+    def setUpClass(cls):
+        import json
+        cls.s = json.loads((EV / 'summary.json').read_text())
+        cls.rows = [json.loads(l) for l in (EV / 'rows.jsonl').read_text().splitlines() if l.strip()]
+
+    def test_valid_and_the_verdict_recomputes(self):
+        import json
+        self.assertEqual(len(self.rows), M.PER_N)
+        invalid, cpu, fail = M.validity(self.rows)
+        self.assertIsNone(invalid)
+        self.assertEqual(set(fail.values()), {0.0})
+        a = json.loads(json.dumps(M.analyse(self.rows)))
+        for k in ('primary', 'secondary', 'improvement', 'arms', 'exact', 'certified', 'hosts', 'edges'):
+            self.assertEqual(a[k], self.s[k], k)
+        self.assertEqual(M.overall(M.analyse(self.rows), invalid), self.s['verdict'])
+        self.assertEqual(self.s['verdict'], 'ENGINE_BEATS_SOTA')
+        self.assertEqual(self.s['primary_verdicts'], {S: {'q0.5': 'ENGINE_FASTER', 'q0.75': 'ENGINE_FASTER'}
+                                                      for S in M.SOTAS})
+        # the narrowest primary margin: BURER2002 on the typical host
+        self.assertEqual(self.s['primary']['burer']['q0.5']['interval_90'], [1.3219, 10.0])
+        # B20_R76's statistic agrees for both tools
+        for S in M.SOTAS:
+            self.assertEqual(self.s['primary'][S]['b20r76_per_host_median']['verdict'], 'ENGINE_FASTER', S)
+
+    def test_who_reached_the_target_within_2_s(self):
+        self.assertEqual({a: v['reached_within_2s'] for a, v in self.s['arms'].items()},
+                         {'engine': 24, 'dsb': 21, 'system': 19, 'tabu': 15, 'candidate': 15, 'burer': 10, 'cpsat': 0})
+        for r in self.rows:     # the engine's best equals the best known value on every host
+            self.assertEqual(max(x['value'] for t in M.LADDER for x in r['runs']['engine'][str(t)]), r['target'])
+        others = ('system', 'dsb', 'tabu', 'candidate', 'burer', 'cpsat')
+        alone = [r for r in self.rows if r['exact']['cpsat']['value'] < r['target']
+                 and all(x['value'] < r['target'] for a in others for t in M.LADDER for x in r['runs'][a][str(t)])]
+        self.assertEqual(sorted((r['target'], r['target_certified']) for r in alone),
+                         [(292, True), (297, False), (303, True)])
+        self.assertEqual((self.s['exact']['cpsat_60s']['claims_optimal'], self.s['exact']['cpsat_60s']['reaches_target']),
+                         (0, 3))
+        self.assertEqual(self.s['certified'], 16)
+
+    def test_values_are_bounded_and_isolated(self):
+        for r in self.rows:
+            self.assertLessEqual(r['target'], r['reference']['upper'])
+            self.assertEqual(r['target'], max(r['best_witness_value'], r['reference']['lower']))
+            self.assertEqual(r['target_certified'], r['reference']['upper'] == r['target'])
+            self.assertEqual(r['exact']['cpsat']['status'], 'SUCCESS')
+            for a in M.ARMS:
+                for t in M.LADDER:
+                    for x in r['runs'][a][str(t)]:
+                        self.assertLessEqual(x['value'], r['target'])
+                        self.assertEqual(x['isolation'], 'OCI_RUNC_NO_NETWORK_RO_ROOT_SECCOMP')
+
+    def test_the_tools_and_arms_are_the_pinned_ones(self):
+        import json
+        from genesis.candidate_kinds import cpsat as K, mqlib as MQ
+        self.assertEqual((self.s['mqlib']['sha256'], self.s['mqlib']['source']), (MQ.BINARY_SHA256, MQ.SOURCE))
+        self.assertEqual((self.s['ortools']['sha256'], self.s['ortools']['workers']), (K.SOTA_TREE_SHA256, K.WORKERS))
+        self.assertEqual(self.s['descriptors'], json.loads(json.dumps(
+            {f'{a}@{t}': d['descriptor_id'] for (a, t), (_, d) in M.arm_descriptors().items()})))
+
+    def test_hosts_are_fresh_and_in_the_addenda(self):
+        import json
+        import b20r23_e1b_readiness as RD
+        from genesis.common import canonical
+        from genesis.models import GraphTask
+        tasks = [GraphTask.model_validate_json(canonical(t)) for t in json.loads((EV / 'hosts.json').read_text())['tasks']]
+        self.assertEqual([t.task_id for t in tasks], [r['task_id'] for r in self.rows])
+        self.assertEqual(len(RD.identities(tasks)), len(tasks))
+        old = json.loads((ROOT / 'evidence' / 'sota_b20r76' / 'hosts.json').read_text())['tasks']
+        self.assertFalse(RD.identities(tasks) & RD.identities([GraphTask.model_validate_json(canonical(t)) for t in old]))
+        for pkg in ('e1', 'e1b'):
+            add = json.loads((ROOT / 'handoff' / pkg / 'exposure_hosts_addendum_b20r77.json').read_text())
+            self.assertTrue(RD.identities(tasks) <= RD.identities([GraphTask.model_validate_json(canonical(t))
+                                                                    for t in add]))
+
+
 if __name__ == '__main__':
     unittest.main()

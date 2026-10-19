@@ -90,6 +90,7 @@ The rehearsal licenses nothing. Every role was played by one operator, and the b
 | `exposure_hosts_addendum_b20r72.json` | B20_R72: the 20 DEV hosts of the representation-engine move-rule study (planted (0.8, 0.06) at n60, drawn beyond the registered family space); none is in this package's settings. |
 | `exposure_hosts_addendum_b20r75.json` | B20_R75: the 12 DEV hosts of the state-of-the-art comparison (planted (0.8, 0.06) at n60 and n63, drawn beyond the registered family space); none is in this package's settings. |
 | `exposure_hosts_addendum_b20r76.json` | B20_R76: the 12 DEV hosts of the state-of-the-art comparison with CP-SAT (planted (0.8, 0.06) at n60 and n63, drawn beyond the registered family space); none is in this package's settings. |
+| `exposure_hosts_addendum_b20r77.json` | B20_R77: the 24 DEV hosts of the engine's comparison with CP-SAT and BURER2002 (planted (0.8, 0.06) at n63, drawn beyond the registered family space); none is in this package's settings. |
 | `package_index.json` | Identities, the calibration, the verdicts and the rehearsal outcomes. |
 | `decision_record_DRAFT_v2.json`, `pilot_summary_b20r12.json`, `power_analysis_centred_b20r12.json` | B20_R12 (`e1-hard-v1`: UNDERPOWERED). Kept. |
 | `decision_record_DRAFT.json`, `b19_*.json`, `exposure_hosts_to_exclude.json` | B19 and the earlier exposure list. Kept. |

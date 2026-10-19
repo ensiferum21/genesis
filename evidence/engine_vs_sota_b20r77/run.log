@@ -1,0 +1,28 @@
+[    0.0s] pinned to CPU 0
+[    0.1s] SAT tools: cadical@24fb99286ca1ea9a, drat-trim@92f0aa9575ed519d; MQLib /usr/local/genesis-sota/bin/MQLib sha256 9e760cb75ab9a989 (commit 5854962); OR-Tools tree /usr/local/genesis-sota/py313 sha256 fb5ef9ac7eddfbf8 {'ortools': '9.15.6755'} workers 8
+[    6.9s] exposure: 3155 identities (3155 named hosts, 711 E1 hosts, 456 calibration hosts)
+[  289.1s] 0000 (459 edges) target 290 (uncertified): engine 0.1 system 1.2 dsb 0.1 tabu 0.05 candidate 3 burer 0.1 cpsat inf | cpsat-60s 284 | ref 121s
+[  486.0s] 0001 (468 edges) target 295: engine 0.1 system 2 dsb 0.1 tabu 0.05 candidate 24 burer 1.2 cpsat inf | cpsat-60s 290 | ref 35s
+[  692.2s] 0002 (476 edges) target 304: engine 3 system 6 dsb 24 tabu inf candidate inf burer inf cpsat inf | cpsat-60s 302 | ref 43s
+[  896.6s] 0003 (467 edges) target 296: engine 0.1 system 0.25 dsb 0.1 tabu 0.1 candidate 2 burer 0.05 cpsat inf | cpsat-60s 295 | ref 42s
+[ 1180.9s] 0004 (467 edges) target 295 (uncertified): engine 0.1 system 1.2 dsb 0.1 tabu 2.5 candidate 6 burer inf cpsat inf | cpsat-60s 293 | ref 121s
+[ 1379.5s] 0005 (464 edges) target 292: engine 0.1 system inf dsb inf tabu inf candidate inf burer inf cpsat inf | cpsat-60s 289 | ref 36s
+[ 1662.5s] 0006 (474 edges) target 302 (uncertified): engine 10 system 10 dsb 24 tabu inf candidate inf burer inf cpsat inf | cpsat-60s 300 | ref 121s
+[ 1857.4s] 0007 (473 edges) target 299: engine 0.25 system 1.2 dsb 0.1 tabu 6 candidate inf burer inf cpsat inf | cpsat-60s 297 | ref 33s
+[ 2054.3s] 0008 (440 edges) target 280: engine 0.1 system 0.25 dsb 0.1 tabu 0.1 candidate 2 burer 0.25 cpsat inf | cpsat-60s 280 | ref 35s
+[ 2257.4s] 0009 (455 edges) target 290: engine 0.25 system 6 dsb 0.25 tabu inf candidate 10 burer inf cpsat inf | cpsat-60s 287 | ref 40s
+[ 2540.5s] 0010 (478 edges) target 301 (uncertified): engine 1.2 system 24 dsb 2.5 tabu inf candidate inf burer inf cpsat inf | cpsat-60s 298 | ref 121s
+[ 2822.9s] 0011 (472 edges) target 297 (uncertified): engine 0.5 system 3 dsb 0.25 tabu 2 candidate inf burer inf cpsat inf | cpsat-60s 295 | ref 121s
+[ 3105.5s] 0012 (486 edges) target 301 (uncertified): engine 0.1 system 0.5 dsb 0.1 tabu 0.05 candidate 2 burer 0.1 cpsat inf | cpsat-60s 296 | ref 121s
+[ 3306.1s] 0013 (470 edges) target 298: engine 0.25 system inf dsb 24 tabu inf candidate inf burer inf cpsat inf | cpsat-60s 297 | ref 38s
+[ 3503.3s] 0014 (455 edges) target 284: engine 0.25 system 0.5 dsb 0.1 tabu 0.05 candidate 24 burer 0.25 cpsat inf | cpsat-60s 281 | ref 35s
+[ 3708.0s] 0015 (474 edges) target 301: engine 0.1 system 2 dsb 0.1 tabu 6 candidate 0.6 burer inf cpsat inf | cpsat-60s 299 | ref 42s
+[ 3912.5s] 0016 (471 edges) target 303: engine 1.25 system inf dsb inf tabu inf candidate inf burer inf cpsat inf | cpsat-60s 297 | ref 42s
+[ 4107.3s] 0017 (463 edges) target 290: engine 0.25 system 1.25 dsb 0.5 tabu inf candidate 24 burer inf cpsat inf | cpsat-60s 284 | ref 33s
+[ 4389.9s] 0018 (468 edges) target 297 (uncertified): engine 0.25 system inf dsb inf tabu inf candidate inf burer inf cpsat inf | cpsat-60s 296 | ref 121s
+[ 4588.9s] 0019 (458 edges) target 296: engine 0.1 system 0.25 dsb 0.1 tabu 0.05 candidate 1.25 burer 2.5 cpsat inf | cpsat-60s 296 | ref 38s
+[ 4870.8s] 0020 (486 edges) target 300 (uncertified): engine 0.1 system 0.5 dsb 0.1 tabu 0.05 candidate 3 burer 0.05 cpsat inf | cpsat-60s 297 | ref 121s
+[ 5068.7s] 0021 (474 edges) target 301: engine 0.1 system 1.2 dsb 0.1 tabu 0.05 candidate 1.2 burer 0.05 cpsat inf | cpsat-60s 299 | ref 37s
+[ 5274.1s] 0022 (458 edges) target 290: engine 0.25 system inf dsb 0.25 tabu 0.25 candidate 6 burer inf cpsat inf | cpsat-60s 287 | ref 43s
+[ 5473.9s] 0023 (463 edges) target 294: engine 0.1 system 0.1 dsb 0.1 tabu 0.05 candidate 0.5 burer 0.05 cpsat inf | cpsat-60s 294 | ref 38s
+[ 5475.4s] verdict ENGINE_BEATS_SOTA; primary {'burer': {'q0.5': 'ENGINE_FASTER', 'q0.75': 'ENGINE_FASTER'}, 'cpsat': {'q0.5': 'ENGINE_FASTER', 'q0.75': 'ENGINE_FASTER'}}
