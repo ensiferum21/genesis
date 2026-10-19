@@ -23,7 +23,10 @@ B20_R33/R38 show a GV3 comparison needs.
         rlimits (DEV);
       - output is strictly decoded, and the domain checker recomputes the value from the witness.
   * The registry is closed: KINDS maps kind names to modules. No module name, path or code
-    comes from data.
+    comes from data. Since B20_R67 the map lives in `candidate_kinds/kinds.py`, outside every
+    identity, so adding a kind really leaves the other kinds' identities unchanged (before, the map
+    was in this core file, and adding a kind changed every v2 descriptor id). A kind's identity
+    hashes the module actually dispatched for it: its first declared file must be its own source.
 
 **Not wired.** The custodian, evaluation requests v4 and receipts still use registry v1 only. A
 v2 descriptor in a request would be refused today. Wiring v2 in is a reviewed change; see
@@ -38,7 +41,7 @@ import sys
 from .common import canonical, digest
 
 SCHEMA = 'genesis-candidate-descriptor-v2'
-KINDS = {'milp-highs-v1': 'milp_highs'}
+from .candidate_kinds.kinds import KINDS  # noqa: E402  (B20_R67: the kind map, outside every identity)
 CORE_FILES = ('candidates_v2.py', 'graphs.py', 'models.py')
 FIELDS = {'schema', 'kind', 'domain', 'parameters', 'implementation', 'resource_profile', 'descriptor_id'}
 PROFILE = {'cpu_seconds', 'memory_mib', 'wall_seconds', 'queries'}
@@ -67,8 +70,14 @@ def _kind(kind):
 
 
 def implementation_identity(kind):
-    """Digests of this core, the kind's own files and the domain files its child imports."""
-    files = list(CORE_FILES) + list(_kind(kind).FILES)
+    """Digests of this core, the kind's own files and the domain files its child imports. The kind's first
+    declared file must be the source of the module dispatched for it (B20_R67), so a kind name pointed at
+    another module gets another identity."""
+    mod = _kind(kind)
+    own = f'candidate_kinds/{KINDS[kind]}.py'
+    if not mod.FILES or mod.FILES[0] != own or Path(mod.__file__).resolve() != (_here() / own).resolve():
+        raise CandidateError('MALFORMED_KIND', f'{kind}: the first declared file must be its own module, {own}')
+    files = list(CORE_FILES) + list(mod.FILES)
     return {f: hashlib.sha256((_here() / f).read_bytes()).hexdigest() for f in files}
 
 

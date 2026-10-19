@@ -66,11 +66,11 @@
   "schema": "genesis-candidate-descriptor-v1"
  },
  "milp_highs_4x": {
-  "descriptor_id": "1815deba84df4e578fbd7555f8cdf4d601e8c0e25d623f55ee80ef3ce319e976",
+  "descriptor_id": "a95b8040f56c0f028e85dbc42758114ecbf6ac4ffaa7fde08f8f349a25d6cb5c",
   "domain": "triangle_free_host_v1",
   "implementation": {
    "candidate_kinds/milp_highs.py": "42dddbc29345201ac01c34d3cc148970e1b90239c37178f9c966ae817edbca92",
-   "candidates_v2.py": "2f0d7341e01eb5b02aef45105b48601d3a865bd4617a841a0dd1097ffe0c41ed",
+   "candidates_v2.py": "b9d7a43efcbb6b64bbf5c723602f95a88bd3907454a8ba31706bf116de8cbc6a",
    "graphs.py": "e0e8e089a240a2fc3a422d29c6fe65a6031d06264eab29fb8a991ad60213261d",
    "models.py": "2d10c569f5de3ee209ce07525972d199bba1168ae187ffc223880491fa701d05"
   },
@@ -87,11 +87,11 @@
   "schema": "genesis-candidate-descriptor-v2"
  },
  "milp_highs_tm": {
-  "descriptor_id": "9b737159afd479116463669257d7df4aac0c0a43525c7b26f1a75e5bf2173c39",
+  "descriptor_id": "5aa4cc68ee3ac70ce4281cc0c6044ae6c501f3184521c41c7dc80a05dde4df26",
   "domain": "triangle_free_host_v1",
   "implementation": {
    "candidate_kinds/milp_highs.py": "42dddbc29345201ac01c34d3cc148970e1b90239c37178f9c966ae817edbca92",
-   "candidates_v2.py": "2f0d7341e01eb5b02aef45105b48601d3a865bd4617a841a0dd1097ffe0c41ed",
+   "candidates_v2.py": "b9d7a43efcbb6b64bbf5c723602f95a88bd3907454a8ba31706bf116de8cbc6a",
    "graphs.py": "e0e8e089a240a2fc3a422d29c6fe65a6031d06264eab29fb8a991ad60213261d",
    "models.py": "2d10c569f5de3ee209ce07525972d199bba1168ae187ffc223880491fa701d05"
   },

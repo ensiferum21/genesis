@@ -13,6 +13,7 @@ import unittest
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / 'scripts'))
 import b20r63_e1d_crossover as M  # noqa: E402
+import b20r67_refresh_v2_ids as R67  # noqa: E402
 
 
 class Design(unittest.TestCase):
@@ -77,7 +78,7 @@ class Record(unittest.TestCase):
                                'highs_16s': 'NO_MATERIAL_DIFFERENCE', 'highs_32s': 'NO_MATERIAL_DIFFERENCE'})
 
     def test_arms_and_optima(self):
-        self.assertEqual(self.s['descriptors'], {n: d['descriptor_id'] for n, (_, d) in M.arms().items()})
+        self.assertEqual(self.s['descriptors'], R67.pre_r67_ids(M.arms()))     # recorded before B20_R67
         for r in self.rows:
             self.assertIsNotNone(r['optimum'])
             self.assertTrue(all(a['value'] <= r['optimum'] for a in r['arms'].values()))

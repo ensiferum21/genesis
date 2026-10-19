@@ -148,8 +148,8 @@ class Record(unittest.TestCase):
         for r in self.prows:
             self.assertTrue(all(a['value'] <= r['optimum'] for a in r['arms'].values()))
             self.assertTrue(all(a['isolation'] == 'OCI_RUNC_NO_NETWORK_RO_ROOT_SECCOMP' for a in r['arms'].values()))
-        arms = self.M.arms()
-        self.assertEqual(self.s['descriptors'], {n: d['descriptor_id'] for n, (_, d) in arms.items()})
+        import b20r67_refresh_v2_ids as R67
+        self.assertEqual(self.s['descriptors'], R67.pre_r67_ids(self.M.arms()))    # recorded before B20_R67
 
     def test_hosts_are_fresh_and_in_the_addenda(self):
         import b20r23_e1b_readiness as RD

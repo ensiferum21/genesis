@@ -2,8 +2,8 @@
  "baselines": {
   "exchange_tm": "70660ab94e35f0fa3692886355ec6a62a6ef9f0d2f57e16074b68669061c4809",
   "low_cycle_tm": "ae110999483196446cefbcad9b3cd232383ff3a26ec9eff3b288a94b9a40a36e",
-  "milp_highs_4x": "1815deba84df4e578fbd7555f8cdf4d601e8c0e25d623f55ee80ef3ce319e976",
-  "milp_highs_tm": "9b737159afd479116463669257d7df4aac0c0a43525c7b26f1a75e5bf2173c39",
+  "milp_highs_4x": "a95b8040f56c0f028e85dbc42758114ecbf6ac4ffaa7fde08f8f349a25d6cb5c",
+  "milp_highs_tm": "5aa4cc68ee3ac70ce4281cc0c6044ae6c501f3184521c41c7dc80a05dde4df26",
   "multistart_tm": "3642c93cd02d0979ea8928b65c27848512f4a44fa7e5ae0ebe56b98994e13983"
  },
  "calibration": {
@@ -86,5 +86,12 @@
   "request_sha256": "df1df0c09e6e29b67f0498de2c142accc1e808e191987b30940eed67d693df2b"
  },
  "schema": "genesis-handoff-package-index-v1",
- "status": "DRAFT; not registered with any custodian"
+ "status": "DRAFT; not registered with any custodian",
+ "v2_identity_refresh_b20r67": {
+  "old_to_new": {
+   "1815deba84df4e578fbd7555f8cdf4d601e8c0e25d623f55ee80ef3ce319e976": "a95b8040f56c0f028e85dbc42758114ecbf6ac4ffaa7fde08f8f349a25d6cb5c",
+   "9b737159afd479116463669257d7df4aac0c0a43525c7b26f1a75e5bf2173c39": "5aa4cc68ee3ac70ce4281cc0c6044ae6c501f3184521c41c7dc80a05dde4df26"
+  },
+  "why": "B20_R67 moved the registry-v2 kind map out of candidates_v2.py (a core file in every v2 identity); the one-time core change re-identifies every stored v2 descriptor; what each runs is unchanged"
+ }
 }

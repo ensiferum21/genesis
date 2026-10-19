@@ -15,6 +15,7 @@ ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / 'scripts'))
 import b20r63_e1d_crossover as R63  # noqa: E402
 import b20r64_e1d_scaling as M  # noqa: E402
+import b20r67_refresh_v2_ids as R67  # noqa: E402
 
 
 class Design(unittest.TestCase):
@@ -95,7 +96,7 @@ class Record(unittest.TestCase):
         self.assertEqual(v['verdict'], self.s['verdict'])
         self.assertEqual(v['verdict'], 'ADVANTAGE_GROWS')
         self.assertEqual({n: x['crossover_budget_s'] for n, x in v['by_n'].items()}, {'40': 8.0, '50': 32.0, '60': None})
-        self.assertEqual(self.s['descriptors'], {n: d['descriptor_id'] for n, (_, d) in M.arms().items()})
+        self.assertEqual(self.s['descriptors'], R67.pre_r67_ids(M.arms()))     # recorded before B20_R67
 
     def test_validity_criterion(self):
         rerun, first = cpu_delivery(self.rows), cpu_delivery(self.run1)

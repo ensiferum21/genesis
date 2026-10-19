@@ -120,6 +120,7 @@ needs people: a reviewer, a statistician, an independent custodian on its own ma
 | B20_R64 | E1d on larger hosts (DEV pilot): **ADVANTAGE_GROWS**. Crossover 16× at n40, 64× at n50, beyond 64× at n60 (+17.6 at 32 s, 10/0/0). Run 1 invalid (HiGHS CPU-starved); re-run alone |
 | B20_R65 | E1d's unsupported rehearsal hosts are exactly those above the 200-edge certificate bound: a host-size cut, blind to both arms |
 | B20_R66 | E1d at n60 (DEV replication of B20_R64): **REPLICATED_ADVANTAGE_THROUGH_120X**. +16.65 at 32 s (64×, 19/1/0), +2.00 at 60 s (120×, 17/2/1); HiGHS closing fast. Run alone after the checkpoint matrix |
+| B20_R67 | Registry v2's kind map out of the hashed core (adding a kind no longer re-identifies the others); the E1d v2 baselines re-identified once, pre-R67 evidence checked through `pre_r67_id`; new domain baseline kind `maxcut-tabu-v1` |
 
 ## 6. Next steps, in order
 

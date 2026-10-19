@@ -20,7 +20,8 @@ blocked by this:
   `check_parameters`, the child `solve(view, params, cpu_seconds, seed)`, and `FILES`.
 - **Identity.** A v2 descriptor's identity covers `candidates_v2.py`, the kind's own files,
   `graphs.py` and `models.py`.
-  - Adding a kind module changes no other kind's identity.
+  - Adding a kind module changes no other kind's identity. (Until B20_R67 this was not true: the
+    kind map sat in `candidates_v2.py`, so adding a kind edited the core. See below.)
   - Changing the v2 core changes every v2 identity, on purpose.
   - v1 files are not part of v2 identities.
 - **Runner.** v1's discipline, re-implemented in `candidates_v2.py`:
@@ -74,3 +75,32 @@ None of this changes the frozen E1/E1b packages or their descriptor ids.
 - **What stays unchanged.** `candidates_v2.py` still says "not wired". Its text is part of every
   v2 identity, so the B20_R41 descriptor ids are kept and the wiring lives in
   `candidate_registry.py`.
+
+## B20_R67: the kind map leaves the core; a second kind
+
+- **The defect.** The kind map `KINDS` was a dict in `candidates_v2.py`, and that file is hashed
+  into every v2 identity. Adding a kind therefore changed the core, and with it every v2 descriptor
+  id, including the E1d package's `milp_highs_4x` and `milp_highs_tm`. The design statement above
+  was false in practice.
+- **The fix.** The map moved to `candidate_kinds/kinds.py`, which is in no identity. To keep the
+  map from silently re-pointing a kind, `implementation_identity` now requires a kind module's
+  first declared file to be its own source (`candidate_kinds/<module>.py`, resolved against the
+  imported module) and hashes it. A kind name pointed at another module gets another identity, so
+  every frozen descriptor of that kind is refused; a module declaring another module's file is
+  `MALFORMED_KIND`. Tests: `tests_genesis/test_maxcut_tabu.py::KindMap`.
+- **The one-time cost.** Moving the map edited the core once, so every stored v2 descriptor was
+  re-identified once. What each runs is unchanged (`candidate_kinds/milp_highs.py`, `graphs.py`
+  and `models.py` have the same digests). `scripts/b20r67_refresh_v2_ids.py` rebuilt the two
+  stored descriptors in `handoff/e1d/baselines.json` and recorded old -> new in
+  `handoff/e1d/package_index.json` (`v2_identity_refresh_b20r67`). Evidence is never rewritten:
+  record tests of pre-R67 evidence compare the ids they recorded with
+  `b20r67_refresh_v2_ids.pre_r67_id(descriptor)`, the id of exactly this descriptor with the
+  pre-R67 core digest (`git show 4341806:src/genesis/candidates_v2.py`).
+- **The second kind, `maxcut-tabu-v1`** (`candidate_kinds/maxcut_tabu.py`): a standard max-cut
+  tabu search over one-vertex flips (aspiration; tenure n/10 + U{0..n/10}; restart after 10n
+  steps without a new best), each run's cut completed greedily to a triangle-free subgraph, as E1's
+  candidate completes its cut. Parameters `{cpu_seconds}`; triangle-free domain only (a bipartite
+  graph can contain 4-cycles). It is a domain baseline for E1d, which the B20_R65 review found
+  lacked one: the frozen candidate is itself one-flip max-cut local search plus the same greedy
+  completion. It is not an exact baseline and is not in `EXACT_BASELINE_KINDS`, so no comparator
+  selection changes.

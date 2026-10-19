@@ -846,6 +846,10 @@
           "f2731ba"
         ],
         "result": "E1d at n60, DEV replication of B20_R64 (20 fresh hosts, HiGHS at 32 s and 60 s, run alone pinned): REPLICATED_ADVANTAGE_THROUGH_120X. candidate - HiGHS +16.65 [11.0, 22.6] at 32 s (64x, 19/1/0), +2.00 [1.35, 2.65] at 60 s (120x, 17/2/1); CPU delivery 0.994/0.990; gap to the proven bound candidate 1.65, HiGHS 18.3/3.65; candidate optimal on 4/10 certified hosts. Exposure addenda (20 hosts)"
+      },
+      "B20_R67": {
+        "commits": [],
+        "result": "Engineering: registry v2 kind map moved to candidate_kinds/kinds.py (outside every identity); implementation_identity binds a kind to its dispatched module (MALFORMED_KIND otherwise); the two stored E1d v2 descriptors re-identified once (milp_highs_4x 1815deba -> a95b8040, milp_highs_tm 9b737159 -> 5aa4cc68; only candidates_v2.py changed), mapping in handoff/e1d/package_index.json; pre-R67 evidence compared through pre_r67_id; new kind maxcut-tabu-v1 (domain baseline)"
       }
     },
     "open_after_b20_r5": [
@@ -1258,6 +1262,9 @@
     ],
     "open_after_b20_r66": [
       "B20R41-OPEN-1 updated: the n60 lead replicates and holds at 120x HiGHS budget, closing; reviewer decisions unchanged"
+    ],
+    "open_after_b20_r67": [
+      "B20R40-OPEN-1 updated: kind-map defect fixed; whether maxcut-tabu-v1 joins the strong-baseline set is a reviewer question (B20_R68 informs it)"
     ]
   }
 }

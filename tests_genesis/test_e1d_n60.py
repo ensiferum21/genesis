@@ -66,7 +66,8 @@ class Record(unittest.TestCase):
         self.assertEqual(v['verdict'], 'REPLICATED_ADVANTAGE_THROUGH_120X')
 
     def test_arms_are_the_recorded_ones(self):
-        self.assertEqual(self.s['descriptors'], {n: d['descriptor_id'] for n, (_, d) in M.arms().items()})
+        import b20r67_refresh_v2_ids as R67
+        self.assertEqual(self.s['descriptors'], R67.pre_r67_ids(M.arms()))      # B20_R66 ran before B20_R67
 
     def test_hosts_are_fresh_and_in_the_addenda(self):
         import json
