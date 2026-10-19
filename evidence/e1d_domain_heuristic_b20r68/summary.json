@@ -1,0 +1,229 @@
+{
+ "code_identity": "f0ce6ac7ae5ac342d0eb97cd7e82703be730f5a1248e12f30919ea0f25df0911",
+ "descriptors": {
+  "candidate": "f4c7f4b0e5ced594f014dff8bc66703f2f545a52c1972a3d2a3cac42a8f195b1",
+  "highs_2s": "a95b8040f56c0f028e85dbc42758114ecbf6ac4ffaa7fde08f8f349a25d6cb5c",
+  "tabu_0.5s": "58e4f605042fa71eca1a353489c22d92a97f973eed7f2fece7053210f042cbe3",
+  "tabu_2s": "5cd96bd4c8e2ba8f55afe9ba8e3a7f32bbde0e5e445e7829057e8d0ac7ead340"
+ },
+ "exposure_scan": {
+  "calibration_hosts": 456,
+  "distinct_hosts": 3037,
+  "e1_named_hosts": 711,
+  "empty_files_skipped": [
+   "evidence/failed-wal-final-replay.json",
+   "evidence/final-replay.json"
+  ],
+  "excluded_identities": 3037,
+  "files_scanned": 1115,
+  "host_records": 14271
+ },
+ "part_verdicts": {
+  "A": "NO_MATERIAL_DIFFERENCE",
+  "B": "HEURISTIC_AHEAD"
+ },
+ "parts": {
+  "A": {
+   "certified": 30,
+   "cpu_delivered": true,
+   "cpu_s_median": {
+    "candidate": 0.667,
+    "highs_2s": 2.196,
+    "tabu_0.5s": 0.671,
+    "tabu_2s": 2.172
+   },
+   "failures": {
+    "candidate": 0,
+    "highs_2s": 0,
+    "tabu_0.5s": 0,
+    "tabu_2s": 0
+   },
+   "hosts": 30,
+   "mean_gap_to_upper_bound": {
+    "candidate": 0.0333,
+    "highs_2s": 8.6667,
+    "tabu_0.5s": 0.0667,
+    "tabu_2s": 0.0667
+   },
+   "optimum_hits": {
+    "candidate": 29,
+    "highs_2s": 5,
+    "tabu_0.5s": 28,
+    "tabu_2s": 28
+   },
+   "primary_candidate_minus_tabu_0.5s": {
+    "estimate": 0.0333,
+    "interval_90": [
+     0.0,
+     0.1
+    ],
+    "stratum_means": {
+     "planted_cluster:2269386b": 0.1,
+     "planted_cluster:6493e4fc": 0.0,
+     "planted_cluster:9491bde8": 0.0
+    },
+    "verdict": "NO_MATERIAL_DIFFERENCE",
+    "wins_ties_losses": [
+     1,
+     29,
+     0
+    ]
+   },
+   "reference_wall_s_median": 14.821,
+   "secondary": {
+    "candidate_minus_highs_2s": {
+     "estimate": 8.6333,
+     "interval_90": [
+      7.2333,
+      10.0
+     ],
+     "stratum_means": {
+      "planted_cluster:2269386b": 8.5,
+      "planted_cluster:6493e4fc": 5.0,
+      "planted_cluster:9491bde8": 12.4
+     },
+     "wins_ties_losses": [
+      25,
+      5,
+      0
+     ]
+    },
+    "candidate_minus_tabu_2s": {
+     "estimate": 0.0333,
+     "interval_90": [
+      0.0,
+      0.1
+     ],
+     "stratum_means": {
+      "planted_cluster:2269386b": 0.1,
+      "planted_cluster:6493e4fc": 0.0,
+      "planted_cluster:9491bde8": 0.0
+     },
+     "wins_ties_losses": [
+      1,
+      29,
+      0
+     ]
+    },
+    "tabu_0.5s_minus_highs_2s": {
+     "estimate": 8.6,
+     "interval_90": [
+      7.2,
+      9.9333
+     ],
+     "stratum_means": {
+      "planted_cluster:2269386b": 8.4,
+      "planted_cluster:6493e4fc": 5.0,
+      "planted_cluster:9491bde8": 12.4
+     },
+     "wins_ties_losses": [
+      25,
+      5,
+      0
+     ]
+    }
+   }
+  },
+  "B": {
+   "certified": 13,
+   "cpu_delivered": true,
+   "cpu_s_median": {
+    "candidate": 0.678,
+    "highs_2s": 2.229,
+    "tabu_0.5s": 0.675,
+    "tabu_2s": 2.187
+   },
+   "failures": {
+    "candidate": 0,
+    "highs_2s": 0,
+    "tabu_0.5s": 0,
+    "tabu_2s": 0
+   },
+   "hosts": 20,
+   "mean_gap_to_upper_bound": {
+    "candidate": 1.95,
+    "highs_2s": 208.75,
+    "tabu_0.5s": 0.8,
+    "tabu_2s": 0.7
+   },
+   "optimum_hits": {
+    "candidate": 3,
+    "highs_2s": 0,
+    "tabu_0.5s": 7,
+    "tabu_2s": 8
+   },
+   "primary_candidate_minus_tabu_0.5s": {
+    "estimate": -1.15,
+    "interval_90": [
+     -1.65,
+     -0.7
+    ],
+    "stratum_means": {
+     "planted_cluster:aaab9859": -1.15
+    },
+    "verdict": "HEURISTIC_AHEAD",
+    "wins_ties_losses": [
+     1,
+     6,
+     13
+    ]
+   },
+   "reference_wall_s_median": 43.159,
+   "secondary": {
+    "candidate_minus_highs_2s": {
+     "estimate": 206.8,
+     "interval_90": [
+      204.75,
+      209.0
+     ],
+     "stratum_means": {
+      "planted_cluster:aaab9859": 206.8
+     },
+     "wins_ties_losses": [
+      20,
+      0,
+      0
+     ]
+    },
+    "candidate_minus_tabu_2s": {
+     "estimate": -1.25,
+     "interval_90": [
+      -1.75,
+      -0.75
+     ],
+     "stratum_means": {
+      "planted_cluster:aaab9859": -1.25
+     },
+     "wins_ties_losses": [
+      1,
+      5,
+      14
+     ]
+    },
+    "tabu_0.5s_minus_highs_2s": {
+     "estimate": 207.95,
+     "interval_90": [
+      205.75,
+      210.3
+     ],
+     "stratum_means": {
+      "planted_cluster:aaab9859": 207.95
+     },
+     "wins_ties_losses": [
+      20,
+      0,
+      0
+     ]
+    }
+   }
+  }
+ },
+ "schema": "genesis-b20r68-e1d-domain-heuristic-v1",
+ "seeds": {
+  "A": 20266801,
+  "B": 20266811,
+  "boot": 20266899
+ },
+ "status": "DEV diagnostic for the strong-baseline decision; licenses nothing; no package changed",
+ "verdict": "E1D_MATCHES_DOMAIN_HEURISTIC"
+}

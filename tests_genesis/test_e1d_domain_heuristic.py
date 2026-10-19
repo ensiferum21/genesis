@@ -1,5 +1,5 @@
 """B20_R68: E1d's candidate against a standard max-cut heuristic. Design: fresh seeds, the arms, the verdict rule,
-the CPU-delivery criterion and the analysis on synthetic rows."""
+the CPU-delivery criterion and the analysis on synthetic rows. Record: the verdict recomputes from the saved rows."""
 from pathlib import Path
 import re
 import sys
@@ -66,6 +66,48 @@ class Design(unittest.TestCase):
 
     def test_the_study_is_pinned(self):
         self.assertIn('R33.pinned_core()', (ROOT / 'scripts' / 'b20r68_e1d_domain_heuristic.py').read_text())
+
+
+EV = ROOT / 'evidence' / 'e1d_domain_heuristic_b20r68'
+
+
+class Record(unittest.TestCase):
+    """B20_R68's saved rows: the verdict recomputes, the arms are the recorded ones, the hosts are fresh."""
+
+    @classmethod
+    def setUpClass(cls):
+        import json
+        cls.s = json.loads((EV / 'summary.json').read_text())
+        cls.rows = [json.loads(l) for l in (EV / 'rows.jsonl').read_text().splitlines() if l.strip()]
+
+    def test_verdict_recomputes_from_the_rows(self):
+        names = list(self.s['descriptors'])
+        self.assertEqual([sum(r['part'] == p for r in self.rows) for p in 'AB'], [M.N_A, M.N_B])
+        for p in 'AB':
+            self.assertEqual(M.analyse_part([r for r in self.rows if r['part'] == p], names), self.s['parts'][p], p)
+        self.assertEqual(self.s['part_verdicts'], {'A': 'NO_MATERIAL_DIFFERENCE', 'B': 'HEURISTIC_AHEAD'})
+        self.assertEqual(self.s['verdict'], 'E1D_MATCHES_DOMAIN_HEURISTIC')
+
+    def test_arms_are_the_recorded_ones(self):
+        self.assertEqual(self.s['descriptors'], {n: d['descriptor_id'] for n, (_, d) in M.arms().items()})
+        for r in self.rows:
+            self.assertEqual({a['isolation'] for a in r['arms'].values()}, {'OCI_RUNC_NO_NETWORK_RO_ROOT_SECCOMP'})
+            if r['optimum'] is not None:
+                self.assertTrue(all(a['value'] <= r['optimum'] for a in r['arms'].values()))
+
+    def test_hosts_are_fresh_and_in_the_addenda(self):
+        import json
+        import b20r23_e1b_readiness as RD
+        from genesis.common import canonical
+        from genesis.models import GraphTask
+        d = json.loads((EV / 'hosts.json').read_text())
+        tasks = [GraphTask.model_validate_json(canonical(t)) for p in ('A', 'B') for t in d[p]]
+        self.assertEqual([t.task_id for t in tasks], [r['task_id'] for r in self.rows])
+        self.assertEqual(len(RD.identities(tasks)), M.N_A + M.N_B)
+        for pkg in ('e1', 'e1b'):
+            add = json.loads((ROOT / 'handoff' / pkg / 'exposure_hosts_addendum_b20r68.json').read_text())
+            self.assertTrue(RD.identities(tasks) <= RD.identities([GraphTask.model_validate_json(canonical(t))
+                                                                    for t in add]))
 
 
 if __name__ == '__main__':

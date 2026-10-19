@@ -42,8 +42,16 @@ that report would contain.
 | Re-pilot, 30 fresh hosts (B20_R41) | +10.6 per host [9.1, 12.1] over the strongest baseline, `milp_highs_4x`; the candidate is optimal on 30/30 |
 | Same-operator rehearsal of the whole custody path (B20_R43) | **SUPPORTED**: +9.80 per host [9.30, 10.35] on 237 certified hosts; W/T/L 198/39/0; CPU cost ratio 0.34; the judge agrees and re-checked 474 witnesses |
 | How much CPU HiGHS needs to catch up, 30 fresh hosts (B20_R63) | **CROSSOVER_AT_8S**. At 2 s (4×): +10.30 [8.77, 11.83] again. At 4 s (8×): +6.37 [4.73, 8.00]. At 8 s (16×): +0.43, no longer a material advantage. At 16 s and 32 s HiGHS ties: it is optimal on 30 of 30 at 16 s, using about 6 CPU s per host |
+| A textbook max-cut heuristic at the same budget: 30 fresh calibrated hosts, and 20 at n60 (B20_R68) | **E1D_MATCHES_DOMAIN_HEURISTIC**. Candidate − tabu search on the calibrated settings: +0.03 [0.00, 0.10], 1/29/0, and tabu search beats HiGHS at 2 s by +8.60, as the candidate does. At n60: -1.15 [-1.65, -0.70], 1/6/13, tabu search ahead |
 
 **What must be said with it.**
+- **A standard max-cut heuristic does as well, so the advantage over HiGHS is not an advantage over the field
+  (B20_R68).** Tabu search over one-vertex flips, with the same greedy completion and the same 0.5 s, ties the
+  candidate on the calibrated settings and beats it on n60 hosts. The candidate's lead over HiGHS is the lead of
+  the max-cut reduction plus local search over a generic MILP at short budgets: a *potential* speedup in the sense
+  of Rønnow et al. (2014), against one chosen baseline. The claim must name its comparator class. If the
+  reviewer's strong-baseline set includes domain heuristics (review brief item 1), Part A has no claim; what
+  remains is that the system's representation search rediscovered the max-cut reduction on its own.
 - **The solver is classical.** Its representation, `cross_2`, is a bipartite cut chosen from a builder-written
   typed grammar whose soundness Lean checks (B18, W10/W11). No novelty is claimed.
 - **Why it wins: speed, not quality at any budget (measured in B20_R63).** On dense planted clusters the largest
@@ -62,7 +70,8 @@ that report would contain.
 - **The n60 result replicates, and holds at 120×** (B20_R66, a DEV replication on 20 fresh hosts):
   **REPLICATED_ADVANTAGE_THROUGH_120X**. Against HiGHS at 64× the lead is +16.65 [11.0, 22.6], 19/1/0; at 120×,
   `milp-highs-v1`'s ceiling, it is +2.00 [1.35, 2.65], 17/2/1. HiGHS is closing fast (its gap to a proven upper
-  bound falls from 18.3 to 3.65 between the two budgets), so here too the report must state the budget.
+  bound falls from 18.3 to 3.65 between the two budgets), so here too the report must state the budget. These
+  larger-host results are against HiGHS only; against tabu search the candidate is behind at n60 (B20_R68).
 - **Its scope is narrow.** Only these three settings, on that panel.
 
 **What it needs:**
