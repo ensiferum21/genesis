@@ -15,4 +15,6 @@ The map is closed and code-controlled: no module name, path or code comes from d
 KINDS = {
     'milp-highs-v1': 'milp_highs',        # B20_R40: exact HiGHS MILP, a time-matched exact baseline
     'maxcut-tabu-v1': 'maxcut_tabu',      # B20_R67: a standard max-cut tabu search with triangle-free completion
+    'ising-dsb-v1': 'ising_dsb',          # B20_R69: discrete simulated bifurcation (classical-mechanics Ising solver)
+    'maxcut-eo-v1': 'maxcut_eo',          # B20_R69: tau-extremal optimization (self-organized-criticality search)
 }

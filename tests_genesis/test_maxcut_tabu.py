@@ -24,7 +24,7 @@ def task(n, edges, tid='t'):
 
 class KindMap(unittest.TestCase):
     def test_the_kind_map_is_outside_every_identity_and_dispatch_is_bound(self):
-        self.assertEqual(set(C2.KINDS), {'milp-highs-v1', 'maxcut-tabu-v1'})
+        self.assertLessEqual({'milp-highs-v1', 'maxcut-tabu-v1'}, set(C2.KINDS))      # later batches add kinds
         for kind in C2.KINDS:
             ident = C2.implementation_identity(kind)
             self.assertNotIn('candidate_kinds/kinds.py', ident)

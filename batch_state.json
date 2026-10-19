@@ -856,9 +856,14 @@
       },
       "B20_R68": {
         "commits": [
-          "980794c"
+          "980794c",
+          "e2085a9"
         ],
         "result": "E1d against a domain heuristic (DEV, run alone pinned): E1D_MATCHES_DOMAIN_HEURISTIC. candidate - maxcut-tabu-v1 (same 0.5 s) +0.03 [0.00, 0.10] (1/29/0) on 30 calibrated hosts; tabu also beats HiGHS 2 s by +8.60; at n60 HEURISTIC_AHEAD, -1.15 [-1.65, -0.70] (1/6/13), tabu optimal on 7/13 certified vs 3. The lead over HiGHS is the max-cut reduction plus local search; GV4 fallback Part A and the review brief corrected. Exposure addenda (50 hosts)"
+      },
+      "B20_R69": {
+        "commits": [],
+        "result": "Engineering: physics-inspired domain-baseline kinds ising-dsb-v1 (discrete simulated bifurcation) and maxcut-eo-v1 (tau-extremal optimization), both with the candidate completion; docs/PHYSICS_INSPIRED_PLAN.md (Daniel request). SB dt=1 found unstable on dense hosts and fixed to 0.5 before any study; disclosed 3-host look (dSB optimal on 3/3)"
       }
     },
     "open_after_b20_r5": [

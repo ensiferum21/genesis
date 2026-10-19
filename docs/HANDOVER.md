@@ -122,6 +122,7 @@ needs people: a reviewer, a statistician, an independent custodian on its own ma
 | B20_R66 | E1d at n60 (DEV replication of B20_R64): **REPLICATED_ADVANTAGE_THROUGH_120X**. +16.65 at 32 s (64×, 19/1/0), +2.00 at 60 s (120×, 17/2/1); HiGHS closing fast. Run alone after the checkpoint matrix |
 | B20_R67 | Registry v2's kind map out of the hashed core (adding a kind no longer re-identifies the others); the E1d v2 baselines re-identified once, pre-R67 evidence checked through `pre_r67_id`; new domain baseline kind `maxcut-tabu-v1` |
 | B20_R68 | E1d against a textbook max-cut tabu search (DEV): **E1D_MATCHES_DOMAIN_HEURISTIC** on the calibrated settings (+0.03), **HEURISTIC_AHEAD** at n60 (−1.15). E1d's lead over HiGHS is the max-cut reduction's; the GV4 fallback and review brief are corrected |
+| B20_R69 | Physics-inspired domain baselines (`ising-dsb-v1` simulated bifurcation, `maxcut-eo-v1` extremal optimization) and `docs/PHYSICS_INSPIRED_PLAN.md`; an unstable SB step fixed before use |
 
 ## 6. Next steps, in order
 

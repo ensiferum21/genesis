@@ -104,3 +104,13 @@ None of this changes the frozen E1/E1b packages or their descriptor ids.
   lacked one: the frozen candidate is itself one-flip max-cut local search plus the same greedy
   completion. It is not an exact baseline and is not in `EXACT_BASELINE_KINDS`, so no comparator
   selection changes.
+
+## B20_R69: physics-inspired kinds
+
+- **`ising-dsb-v1`** (`candidate_kinds/ising_dsb.py`): discrete simulated bifurcation (Goto et al. 2019, 2021) on the
+  antiferromagnetic Ising model of the host (J = −A), 32 replicas, 400 steps, dt = 0.5, c0 = 0.5 / (rms(J) √n), spins
+  read as sgn(x), the candidate's completion. One CPU, BLAS limited to one thread. dt = 1 is unstable on dense hosts
+  (B20_R69 record).
+- **`maxcut-eo-v1`** (`candidate_kinds/maxcut_eo.py`): τ-extremal optimization (Boettcher and Percus), τ = 1 + 1/ln n,
+  the same completion.
+- Both are domain baselines with parameters `{cpu_seconds}` on the triangle-free domain; neither is an exact baseline.
