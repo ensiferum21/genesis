@@ -957,7 +957,7 @@
           "49d34ec",
           "943cc6d"
         ],
-        "result": "Setup: program search on 16 fresh n63 training hosts, 6,000 CPU s, frozen winner. Pending"
+        "result": "Program search from random programs (16 fresh n63 training hosts, 6,000 CPU s, 149 generations, 1,497 evaluations): froze a 10-statement program on adjacent_2: descent, a swap-like sweep (drop, refill, keep if no smaller) and annealed-perturbation + descent loops. Fitness 265.4 (random mean) -> 287.34. Swap-like 94% of the last 300. Run 1 stopped at 6 min (generator fix). Tested in B20_R81"
       },
       "B20_R80": {
         "commits": [
@@ -978,19 +978,27 @@
         "result": "Engineering: solver_library (macros calling earlier generations), library_search, solver-library-v1. Tests (9). Found the B20_R78 generator defect"
       },
       "B20_R83": {
-        "commits": [],
+        "commits": [
+          "9aad649"
+        ],
         "result": "Setup: generation 2 search (library: generation 1). Pending"
       },
       "B20_R84": {
-        "commits": [],
+        "commits": [
+          "9aad649"
+        ],
         "result": "Setup: no-library control for generation 2. Pending"
       },
       "B20_R85": {
-        "commits": [],
+        "commits": [
+          "9aad649"
+        ],
         "result": "Setup: generation 3 search (library: generations 1, 2). Pending"
       },
       "B20_R86": {
-        "commits": [],
+        "commits": [
+          "9aad649"
+        ],
         "result": "Setup: test of compounding generations on fresh hosts. Pending"
       }
     },

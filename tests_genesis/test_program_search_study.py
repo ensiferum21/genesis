@@ -41,5 +41,63 @@ class Design(unittest.TestCase):
         self.assertIn('not resumable', text)
 
 
+EV = ROOT / 'evidence' / 'program_search_b20r79'
+
+
+class Record(unittest.TestCase):
+    """B20_R79's outputs: the frozen program, its descriptor, the history and the anatomy."""
+
+    @classmethod
+    def setUpClass(cls):
+        import json
+        cls.s = json.loads((EV / 'search_summary.json').read_text())
+        cls.frozen = json.loads((EV / 'discovered_program.json').read_text())
+        cls.hist = [json.loads(l) for l in (EV / 'history.jsonl').read_text().splitlines() if l.strip()]
+
+    def test_the_frozen_program(self):
+        from genesis import candidates_v2 as C2
+        from genesis.candidate_kinds import solver_program as KP
+        from genesis.invention import solver_programs as SP
+        prog = self.frozen['program']
+        self.assertEqual(prog, self.s['program'])
+        self.assertEqual(SP.problems(prog, KP.licensed_reps('triangle_free_host_v1')), [])
+        d = self.frozen['descriptor_at_0.5s']
+        self.assertEqual(C2.descriptor_problems(d, domain='triangle_free_host_v1'), [])
+        self.assertEqual(d['parameters'], {'program': prog, 'cpu_seconds': 0.5})
+        best = max(self.s['finalists'], key=lambda f: (f['final_mean'], -f['size']))
+        self.assertEqual(best['program'], prog)
+        self.assertEqual((best['final_mean'], SP.size(prog)), (287.3438, 10))
+
+    def test_the_history(self):
+        import json
+        self.assertEqual(len(self.hist), self.s['search']['evaluations'])
+        self.assertEqual(len({json.dumps(h['program'], sort_keys=True) for h in self.hist}),
+                         self.s['search']['distinct_programs'])
+        self.assertTrue(all(h['round'] == 0 for h in self.hist[:SS.POP]))
+        self.assertEqual(round(sum(h['mean'] for h in self.hist[:SS.POP]) / SS.POP, 4),
+                         self.s['initial_population_mean_fitness'])
+        self.assertTrue(all(len(h['values']) == M.PER_N for h in self.hist))
+
+    def test_the_anatomy(self):
+        a = SS.anatomy(self.frozen['program'])
+        self.assertEqual(a, self.s['anatomy'])
+        self.assertEqual((a['swap_like'], a['kick'], a['cut_search'], a['phases'], a['restarts']),
+                         (True, False, True, True, False))
+        share = sum(SS.anatomy(h['program'])['swap_like'] for h in self.hist[-300:]) / 300
+        self.assertGreater(share, 0.9)
+
+    def test_hosts_are_fresh_and_in_the_addenda(self):
+        import json
+        import b20r23_e1b_readiness as RD
+        from genesis.common import canonical
+        from genesis.models import GraphTask
+        tasks = [GraphTask.model_validate_json(canonical(t)) for t in json.loads((EV / 'hosts.json').read_text())['tasks']]
+        self.assertEqual(len(RD.identities(tasks)), M.PER_N)
+        for pkg in ('e1', 'e1b'):
+            add = json.loads((ROOT / 'handoff' / pkg / 'exposure_hosts_addendum_b20r79.json').read_text())
+            self.assertTrue(RD.identities(tasks) <= RD.identities([GraphTask.model_validate_json(canonical(t))
+                                                                    for t in add]))
+
+
 if __name__ == '__main__':
     unittest.main()
