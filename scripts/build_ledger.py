@@ -574,7 +574,8 @@ WORKSTREAMS = {
             'powered comparison with CP-SAT and BURER2002, ENGINE_BEATS_SOTA on DEV; B20_R78: a closed solver language, '
             'solver-program-v1 and a program search; B20_R79: the system searches for its own solver; B20_R80: a '
             'random-program control; B20_R81: the self-found solver against the builder engine and the tools; B20_R82: '
-            'a library language so that generations compound)', B,
+            'a library language so that generations compound; B20_R83-R86: three generations, a control and '
+            'their test)', B,
             ['src/genesis/custody_records.py', 'src/genesis/custodian.py', 'src/genesis/decision_record.py',
              'src/genesis/candidates.py', 'src/genesis/judge.py', 'src/genesis/learning/statement_panels.py',
              'src/genesis/learning/research_export.py', 'src/genesis/candidates_v2.py',
@@ -592,14 +593,16 @@ WORKSTREAMS = {
              'src/genesis/invention/solver_search.py', 'src/genesis/candidate_kinds/solver_program.py',
              'scripts/b20r79_program_search.py', 'scripts/b20r80_random_program_control.py',
              'scripts/b20r81_self_found_solver.py', 'src/genesis/invention/solver_library.py',
-             'src/genesis/invention/library_search.py', 'src/genesis/candidate_kinds/solver_library_program.py'],
+             'src/genesis/invention/library_search.py', 'src/genesis/candidate_kinds/solver_library_program.py',
+             'scripts/b20r83_generation_search.py', 'scripts/b20r86_generations_eval.py'],
             [G + 'test_evaluator_readiness.py', G + 'test_redteam_b16.py', G + 'test_candidate_adapters.py',
              G + 'test_candidate_custody.py', G + 'test_statement_custody.py', G + 'test_candidates_v2.py',
              G + 'test_wiring_v5.py', G + 'test_maxcut_tabu.py', G + 'test_physics_kinds.py',
              G + 'test_represent_search.py', G + 'test_mqlib_kind.py',
              G + 'test_cpsat_kind.py', G + 'test_sota.py', G + 'test_sota_v2.py',
              G + 'test_hybrid_swap.py', G + 'test_engine_vs_sota.py', G + 'test_solver_programs.py',
-             G + 'test_program_search_study.py', G + 'test_self_found_solver.py', G + 'test_solver_library.py']),
+             G + 'test_program_search_study.py', G + 'test_self_found_solver.py', G + 'test_solver_library.py',
+             G + 'test_generations.py']),
     'W07': ('Statistics, fairness and decision rules', B,
             [K + 'analysis.py', 'src/genesis/power.py', 'src/genesis/judge.py', 'src/genesis/resources.py',
              'docs/STATISTICIAN_BRIEF.md', 'scripts/b20r61_statistician_brief.py', 'scripts/b20r62_power_rebind.py',

@@ -947,12 +947,51 @@
         "result": "hybrid-swap-v1 (dSB + descent portfolio, then (1,2)-swap ILS), designed from B20_R76's diagnosis. Powered study (24 fresh n63 hosts, alone pinned, 5,475 s): ENGINE_BEATS_SOTA, valid. Primary (Ronnow speedup of TTS quantiles): vs BURER2002 q0.5 10.0 [1.32, 10], q0.75 10 [10, 10]; vs CP-SAT 10 [10, 10] both. Reached within 2 s: engine 24, dSB 21, system 19, tabu 15, candidate 15, BURER2002 10, CP-SAT 0. dSB alone also beats both; engine vs dSB UNRESOLVED; vs system engine ~12x/40x. Exploratory: within one edge, typical-host vs BURER2002 UNRESOLVED. Toolchain link restored; commit matrix 1,009 OK"
       },
       "B20_R78": {
-        "commits": [],
+        "commits": [
+          "49d34ec"
+        ],
         "result": "Engineering: a closed solver language (invention/solver_programs.py) of low-level steps over B18's licensed representations (no dSB, no swap move, no portfolio), the solver-program-v1 kind and an evolutionary program search from random programs (invention/solver_search.py). Tests (11)"
       },
       "B20_R79": {
-        "commits": [],
+        "commits": [
+          "49d34ec",
+          "943cc6d"
+        ],
         "result": "Setup: program search on 16 fresh n63 training hosts, 6,000 CPU s, frozen winner. Pending"
+      },
+      "B20_R80": {
+        "commits": [
+          "e579deb"
+        ],
+        "result": "Setup: random-program control. Pending"
+      },
+      "B20_R81": {
+        "commits": [
+          "e579deb"
+        ],
+        "result": "Setup: the self-found solver against the builder engine, random control, dSB, system, BURER2002, CP-SAT. Pending"
+      },
+      "B20_R82": {
+        "commits": [
+          "943cc6d"
+        ],
+        "result": "Engineering: solver_library (macros calling earlier generations), library_search, solver-library-v1. Tests (9). Found the B20_R78 generator defect"
+      },
+      "B20_R83": {
+        "commits": [],
+        "result": "Setup: generation 2 search (library: generation 1). Pending"
+      },
+      "B20_R84": {
+        "commits": [],
+        "result": "Setup: no-library control for generation 2. Pending"
+      },
+      "B20_R85": {
+        "commits": [],
+        "result": "Setup: generation 3 search (library: generations 1, 2). Pending"
+      },
+      "B20_R86": {
+        "commits": [],
+        "result": "Setup: test of compounding generations on fresh hosts. Pending"
       }
     },
     "open_after_b20_r5": [

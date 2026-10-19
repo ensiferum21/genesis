@@ -4913,7 +4913,9 @@
     "scripts/b20r81_self_found_solver.py",
     "src/genesis/invention/solver_library.py",
     "src/genesis/invention/library_search.py",
-    "src/genesis/candidate_kinds/solver_library_program.py"
+    "src/genesis/candidate_kinds/solver_library_program.py",
+    "scripts/b20r83_generation_search.py",
+    "scripts/b20r86_generations_eval.py"
    ],
    "disposition": "IMPLEMENTED_BOUNDED_PENDING_AUDIT",
    "evidence": [],
@@ -4947,9 +4949,10 @@
     "tests_genesis/test_solver_programs.py",
     "tests_genesis/test_program_search_study.py",
     "tests_genesis/test_self_found_solver.py",
-    "tests_genesis/test_solver_library.py"
+    "tests_genesis/test_solver_library.py",
+    "tests_genesis/test_generations.py"
    ],
-   "title": "Independent custody and preregistration (B20_R40: candidate registry v2 with per-kind identity and an exact-MIP baseline kind; B20_R42: wired opt-in through request v5 and a registry dispatcher, not adopted; B20_R67: the kind map moved out of the hashed core, a kind bound to its dispatched module, and a max-cut tabu domain-baseline kind; B20_R69: simulated-bifurcation and extremal-optimization kinds; B20_R71: the representation engine with physics move rules; B20_R72: they do not improve it, NO_GENERAL_IMPROVEMENT, DEV; B20_R74: MQLib BURER2002 as a pinned external baseline; B20_R75: the state-of-the-art comparison INVALID_CPU_DELIVERY, a kind defect caught by the validity check; B20_R76: CP-SAT installed from a supplied wheel as cpsat-v1, and the comparison with CP-SAT and the fixed BURER2002 UNRESOLVED; B20_R77: hybrid-swap-v1, a cut portfolio with (1,2)-swap local search, and its powered comparison with CP-SAT and BURER2002, ENGINE_BEATS_SOTA on DEV; B20_R78: a closed solver language, solver-program-v1 and a program search; B20_R79: the system searches for its own solver; B20_R80: a random-program control; B20_R81: the self-found solver against the builder engine and the tools; B20_R82: a library language so that generations compound)",
+   "title": "Independent custody and preregistration (B20_R40: candidate registry v2 with per-kind identity and an exact-MIP baseline kind; B20_R42: wired opt-in through request v5 and a registry dispatcher, not adopted; B20_R67: the kind map moved out of the hashed core, a kind bound to its dispatched module, and a max-cut tabu domain-baseline kind; B20_R69: simulated-bifurcation and extremal-optimization kinds; B20_R71: the representation engine with physics move rules; B20_R72: they do not improve it, NO_GENERAL_IMPROVEMENT, DEV; B20_R74: MQLib BURER2002 as a pinned external baseline; B20_R75: the state-of-the-art comparison INVALID_CPU_DELIVERY, a kind defect caught by the validity check; B20_R76: CP-SAT installed from a supplied wheel as cpsat-v1, and the comparison with CP-SAT and the fixed BURER2002 UNRESOLVED; B20_R77: hybrid-swap-v1, a cut portfolio with (1,2)-swap local search, and its powered comparison with CP-SAT and BURER2002, ENGINE_BEATS_SOTA on DEV; B20_R78: a closed solver language, solver-program-v1 and a program search; B20_R79: the system searches for its own solver; B20_R80: a random-program control; B20_R81: the self-found solver against the builder engine and the tools; B20_R82: a library language so that generations compound; B20_R83-R86: three generations, a control and their test)",
    "workstream": "W06"
   },
   {
