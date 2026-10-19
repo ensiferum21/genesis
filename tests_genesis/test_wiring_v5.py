@@ -154,6 +154,8 @@ class SchemaV5(unittest.TestCase):
         cfg = json.loads((ROOT / CAL.CONFIG).read_text())
         adopted = {e.get('rule') for s in cfg.get('studies', {}).values() for e in s.values()}
         self.assertNotIn('e1-hard-v3-draft', adopted)
+        import sys
+        sys.path.insert(0, str(ROOT / 'scripts'))           # B20_R71: no longer relies on another module's path
         import b20r41_e1d_readiness as M
         self.assertEqual(M.RULE, rule)
 

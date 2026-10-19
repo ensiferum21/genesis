@@ -869,9 +869,14 @@
       },
       "B20_R70": {
         "commits": [
-          "e48c5e7"
+          "e48c5e7",
+          "594ed67"
         ],
         "result": "TTS scaling (DEV, run alone pinned, 2,688 runs): E1D_SLOWER_THAN_SOME. Median log2(TTS*_H/TTS*_cand) at n60: dSB -3.20 [-4.59, -2.56] HEURISTIC_FASTER, tabu -3.32 [-4.89, 0.24] and EO -1.32 UNRESOLVED; at n50 tabu and dSB faster, at n40 tabu faster. Candidate median TTS 0.14/0.5/0.85 s, heuristics flat. Biases (tabu floors, dSB start-up) understate the heuristics. Exposure addenda (24 hosts)"
+      },
+      "B20_R71": {
+        "commits": [],
+        "result": "Engineering: represent-search-v1, the representation engine with descent / tau-EO / simulated-annealing move rules and one shared repair for any licensed B18 representation; frozen v1 engine untouched"
       }
     },
     "open_after_b20_r5": [

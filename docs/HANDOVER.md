@@ -124,6 +124,7 @@ needs people: a reviewer, a statistician, an independent custodian on its own ma
 | B20_R68 | E1d against a textbook max-cut tabu search (DEV): **E1D_MATCHES_DOMAIN_HEURISTIC** on the calibrated settings (+0.03), **HEURISTIC_AHEAD** at n60 (−1.15). E1d's lead over HiGHS is the max-cut reduction's; the GV4 fallback and review brief are corrected |
 | B20_R69 | Physics-inspired domain baselines (`ising-dsb-v1` simulated bifurcation, `maxcut-eo-v1` extremal optimization) and `docs/PHYSICS_INSPIRED_PLAN.md`; an unstable SB step fixed before use |
 | B20_R70 | Time-to-solution scaling (DEV): **E1D_SLOWER_THAN_SOME**. Simulated bifurcation about 9× faster than the candidate at n60, tabu about 10× at n50; the candidate scales worst |
+| B20_R71 | `represent-search-v1`: the representation engine with descent, extremal-optimization or annealing moves for any licensed invented representation |
 
 ## 6. Next steps, in order
 

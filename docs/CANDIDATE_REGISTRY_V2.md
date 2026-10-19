@@ -114,3 +114,10 @@ None of this changes the frozen E1/E1b packages or their descriptor ids.
 - **`maxcut-eo-v1`** (`candidate_kinds/maxcut_eo.py`): τ-extremal optimization (Boettcher and Percus), τ = 1 + 1/ln n,
   the same completion.
 - Both are domain baselines with parameters `{cpu_seconds}` on the triangle-free domain; neither is an exact baseline.
+
+## B20_R71: `represent-search-v1`
+
+The system's representation-and-repair engine with a closed move rule (`descent`, the frozen rule; `eo`; `anneal`)
+for any B18 proposal licensed SUFF or EQ on the domain by the checked package. Parameters
+`{representation, move, cpu_seconds}`. Its identity also covers `invention/representations.py`,
+`invention/soundness.py` and `formal_research/triangle_theory.py`. The frozen v1 candidate is unchanged.

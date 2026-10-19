@@ -17,4 +17,5 @@ KINDS = {
     'maxcut-tabu-v1': 'maxcut_tabu',      # B20_R67: a standard max-cut tabu search with triangle-free completion
     'ising-dsb-v1': 'ising_dsb',          # B20_R69: discrete simulated bifurcation (classical-mechanics Ising solver)
     'maxcut-eo-v1': 'maxcut_eo',          # B20_R69: tau-extremal optimization (self-organized-criticality search)
+    'represent-search-v1': 'represent_search',  # B20_R71: the representation engine with a choice of move rule
 }
