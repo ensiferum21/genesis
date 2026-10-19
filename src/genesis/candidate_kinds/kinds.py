@@ -22,4 +22,5 @@ KINDS = {
     'cpsat-v1': 'cpsat',                  # B20_R76: Google OR-Tools CP-SAT, 8 workers on one core (MiniZinc Challenge 2025 gold)
     'hybrid-swap-v1': 'hybrid_swap',      # B20_R77: cut portfolio (dSB + descent), then (1,2)-swap local search
     'solver-program-v1': 'solver_program',  # B20_R78: a program in the closed solver language, found by program search
+    'solver-library-v1': 'solver_library_program',  # B20_R82: a solver program calling earlier generations' programs
 }

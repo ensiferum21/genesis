@@ -69,9 +69,10 @@ class Grammar(unittest.TestCase):
 
     def test_generation_mutation_and_crossover_stay_in_the_language(self):
         rng = random.Random(3)
-        progs = [SP.random_program(rng, REPS) for _ in range(300)]
+        progs = [SP.random_program(rng, REPS) for _ in range(3000)]       # 1 in ~300 drafts exceeds MAX_NODES
         for p in progs:
             self.assertEqual(SP.problems(p, REPS), [], p)
+        self.assertGreater(max(SP.size(p) for p in progs), 20)             # large programs are still drawn
         for i in range(600):
             a, b = rng.choice(progs), rng.choice(progs)
             for child in (SP.mutate(a, rng, REPS), SP.crossover(a, b, rng, REPS)):
@@ -157,7 +158,7 @@ class Kind(unittest.TestCase):
         self.assertIn('invention/solver_programs.py', ident)
         self.assertNotIn('candidate_kinds/kinds.py', ident)
         for other in K.KINDS:
-            if other != KIND:
+            if other not in (KIND, 'solver-library-v1'):          # B20_R82's library kind builds on this language
                 self.assertNotIn('invention/solver_programs.py', C2.implementation_identity(other), other)
         self.assertIsNone(KP.check_parameters(TF, {'program': SWAP_ILS, 'cpu_seconds': 0.5}))
         for bad in ({'program': SWAP_ILS}, {'program': SWAP_ILS, 'cpu_seconds': 0},

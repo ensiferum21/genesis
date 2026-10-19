@@ -370,7 +370,12 @@ def random_block(rng, depth, length=None):
 
 
 def random_program(rng, reps):
-    return {'rep': rng.choice(sorted(reps)), 'body': random_block(rng, 0)}
+    """A random program in the language. Drawn again until it is in it: nested blocks can exceed MAX_NODES (found
+    by a B20_R82 test before B20_R79's search had produced anything; B20_R79 was restarted with this fix)."""
+    while True:
+        p = {'rep': rng.choice(sorted(reps)), 'body': random_block(rng, 0)}
+        if not problems(p, reps):
+            return p
 
 
 def _blocks(program):

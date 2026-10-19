@@ -79,3 +79,15 @@ on fresh hosts against B20_R77's engine, simulated bifurcation, BURER2002 and CP
   art; plus a replication of B20_R77. Expectation: the found program beats the B20_R76 engine and random search,
   loses to the builder's engine, and is MIXED against the state of the art; the engine replicates B20_R77.
 - Tests: `tests_genesis/test_self_found_solver.py` (7, design).
+
+# B20_R79 amendment before any output: the random-program generator could draw programs outside the language
+
+A test written for B20_R82's library language (`test_solver_library.py`, 300 random B20_R78 programs) found that
+`solver_programs.random_program` could draw a program with more than 30 statements (`MAX_NODES`), about 1 in 300
+drafts: nested blocks were not counted while drawing. Mutation and crossover only return programs in the language,
+but such a program could have entered the search's first population, and if it had won, B20_R79 would have refused
+its own result. **B20_R79's first run was stopped 6 minutes in** (16:12 to 16:18 UTC, during its first population,
+before any generation was logged or anything frozen; its log is kept as `run1_stopped/run.log`). The generator now
+draws again until the program is in the language (the same fix in `solver_library`), and the test draws 3,000
+programs (`tests_genesis/test_solver_programs.py`). B20_R79's script, constants, hosts (reloaded from the same
+`hosts.json`) and seeds are unchanged; it was restarted with the fix. B20_R80 and B20_R81 are unchanged.

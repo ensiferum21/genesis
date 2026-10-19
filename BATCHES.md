@@ -109,6 +109,7 @@ session can resume from the latest checkpoint (see `RESUME.md`).
 | 20_R79 | The system's program search on 16 fresh n63 training hosts, 6,000 CPU s, frozen winner (preregistered DEV) | GV4 component invention | setup; result pending |
 | 20_R80 | Random-program control: random programs from the same language, same budget, same training hosts, same final choice (preregistered before B20_R79's result) | GV4 component invention | setup; result pending |
 | 20_R81 | The self-found solver against the builder's engine (GV4 headline), the random control, dSB, the B20_R76 system engine, BURER2002 and CP-SAT on 24 fresh n63 hosts; also replicates B20_R77 (preregistered before B20_R79 and R80 ran) | GV4, GV3 | setup; result pending |
+| 20_R82 | GV5 engineering: a library language (each generation's discovered program becomes a callable block for the next, as in library learning), the library search (B20_R78's algorithm; an empty library is the exact control) and `solver-library-v1` | GV5 compounding | engineering; tests (9). Its first test found a generator defect in B20_R78 (1 in ~300 random programs over the size limit); B20_R79 was stopped 6 minutes in, fixed and restarted |
 
 Later phases (B17–B23+) follow the roadmap and its gates; numbers are labels,
 not estimates.
