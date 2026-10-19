@@ -74,5 +74,47 @@ class Design(unittest.TestCase):
         self.assertIn('R33.pinned_core()', (ROOT / 'scripts' / 'b20r75_sota.py').read_text())
 
 
+EV = ROOT / 'evidence' / 'sota_b20r75'
+
+
+class Record(unittest.TestCase):
+    """B20_R75's saved rows: the validity check fails (BURER2002 never ran), and the summary recomputes."""
+
+    @classmethod
+    def setUpClass(cls):
+        import json
+        cls.s = json.loads((EV / 'summary.json').read_text())
+        cls.rows = [json.loads(l) for l in (EV / 'rows.jsonl').read_text().splitlines() if l.strip()]
+
+    def test_the_verdict_is_invalid_and_recomputes(self):
+        import json
+        self.assertEqual(len(self.rows), M.PER_N * len(M.NS))
+        invalid, cpu, fail = M.validity(self.rows)
+        self.assertEqual(invalid, 'INVALID_CPU_DELIVERY')
+        self.assertLess(cpu['burer'], M.MIN_CPU_AT_HALF)
+        self.assertTrue(all(cpu[a] >= M.MIN_CPU_AT_HALF for a in M.ARMS if a != 'burer'))
+        self.assertEqual(M.overall(M.analyse(self.rows), invalid), self.s['verdict'])
+        self.assertEqual(json.loads(json.dumps(M.analyse(self.rows))), self.s['by_n'])
+
+    def test_the_cause_burer2002_returned_nothing(self):
+        # every BURER2002 run returned an empty witness: MQLib rejects seeds above 65535 (B20_R75 record)
+        vals = {x['value'] for r in self.rows for t in M.LADDER for x in r['runs']['burer'][str(t)]}
+        self.assertEqual(vals, {0})
+        self.assertTrue(all(x['value'] > 0 for r in self.rows for a in M.ARMS if a not in ('burer', 'highs')
+                            for t in M.LADDER for x in r['runs'][a][str(t)]))
+
+    def test_hosts_are_fresh_and_in_the_addenda(self):
+        import json
+        import b20r23_e1b_readiness as RD
+        from genesis.common import canonical
+        from genesis.models import GraphTask
+        tasks = [GraphTask.model_validate_json(canonical(t)) for t in json.loads((EV / 'hosts.json').read_text())['tasks']]
+        self.assertEqual([t.task_id for t in tasks], [r['task_id'] for r in self.rows])
+        for pkg in ('e1', 'e1b'):
+            add = json.loads((ROOT / 'handoff' / pkg / 'exposure_hosts_addendum_b20r75.json').read_text())
+            self.assertTrue(RD.identities(tasks) <= RD.identities([GraphTask.model_validate_json(canonical(t))
+                                                                    for t in add]))
+
+
 if __name__ == '__main__':
     unittest.main()

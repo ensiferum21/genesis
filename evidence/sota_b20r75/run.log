@@ -1,0 +1,16 @@
+[    0.0s] pinned to CPU 0
+[    0.0s] SAT tools: cadical@24fb99286ca1ea9a, drat-trim@92f0aa9575ed519d; MQLib /usr/local/genesis-sota/bin/MQLib sha256 9e760cb75ab9a989 (commit 5854962)
+[    6.4s] exposure: 3131 identities (3131 named hosts, 711 E1 hosts, 456 calibration hosts)
+[  263.6s] n60 0000 (434 edges) target 273 (uncertified): candidate 1.2 system 1.25 dsb 0.1 tabu 2 burer inf highs inf | exact highs 269@59.7s | ref 121s
+[  520.3s] n60 0001 (416 edges) target 256 (uncertified): candidate 2 system 0.5 dsb 0.1 tabu 0.5 burer inf highs inf | exact highs 255@59.7s | ref 121s
+[  690.6s] n60 0002 (430 edges) target 268: candidate 1.2 system 0.25 dsb 0.1 tabu 0.05 burer inf highs inf | exact highs 264@59.6s | ref 34s
+[  863.4s] n60 0003 (433 edges) target 276: candidate 0.5 system 1.25 dsb 0.1 tabu inf burer inf highs inf | exact highs 276@59.8s | ref 37s
+[ 1032.2s] n60 0004 (434 edges) target 270: candidate 10 system 6 dsb 0.1 tabu inf burer inf highs inf | exact highs 266@59.8s | ref 32s
+[ 1196.9s] n60 0005 (404 edges) target 258: candidate 1.2 system 1.2 dsb 0.1 tabu 0.1 burer inf highs inf | exact highs 257@59.9s | ref 28s
+[ 1454.2s] n63 0000 (473 edges) target 298 (uncertified): candidate 24 system 10 dsb 0.25 tabu 0.5 burer inf highs inf | exact highs 296@59.9s | ref 121s
+[ 1622.1s] n63 0001 (433 edges) target 276: candidate 10 system 1.2 dsb 0.1 tabu 0.5 burer inf highs inf | exact highs 274@59.8s | ref 31s
+[ 1796.8s] n63 0002 (456 edges) target 293: candidate 24 system 3 dsb 24 tabu inf burer inf highs inf | exact highs 289@59.8s | ref 38s
+[ 2054.4s] n63 0003 (469 edges) target 291 (uncertified): candidate 3 system 3 dsb 1.25 tabu inf burer inf highs inf | exact highs 288@59.6s | ref 121s
+[ 2311.2s] n63 0004 (477 edges) target 301 (uncertified): candidate 2 system 1.2 dsb 0.25 tabu inf burer inf highs inf | exact highs 295@59.8s | ref 121s
+[ 2569.5s] n63 0005 (462 edges) target 287 (uncertified): candidate 3 system 0.5 dsb 0.1 tabu 0.05 burer inf highs inf | exact highs 284@60.1s | ref 121s
+[ 2569.6s] verdict INVALID_CPU_DELIVERY; n63 vs BURER2002 {'candidate': 'X_FASTER', 'system': 'X_FASTER', 'dsb': 'X_FASTER', 'tabu': 'UNRESOLVED', 'highs': 'COMPARABLE'}

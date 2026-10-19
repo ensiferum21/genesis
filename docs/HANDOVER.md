@@ -128,6 +128,7 @@ needs people: a reviewer, a statistician, an independent custodian on its own ma
 | B20_R72 | Physics move rules in the invention engine (DEV): **NO_GENERAL_IMPROVEMENT**; speed (faster repair, +0.45) and whole-configuration dynamics (simulated bifurcation) are what help |
 | B20_R73 | Multiverse analysis of E1d's verdicts: 12 ROBUST, 5 MIXED, 1 FRAGILE (B20_R68 Part B); crossover points move with MUE and the estimator |
 | B20_R74 | MQLib's BURER2002 built reproducibly from a pinned commit as `mqlib-v1`; CP-SAT and MaxSAT blocked (PyPI refused; B20R74-OPEN-1). The MQLib binary must be built on a fresh machine with `scripts/b20r74_sota_tools.py` |
+| B20_R75 | State-of-the-art comparison (DEV): **INVALID_CPU_DELIVERY**, BURER2002 kind defect (seed range, silent empty answers) caught by the preregistered check; repeated in B20_R76 |
 
 ## 6. Next steps, in order
 

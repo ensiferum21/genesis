@@ -918,8 +918,17 @@
         "result": "Multiverse analysis of E1d DEV verdicts (B20_R63/R64/R66/R68, 18 contrasts, 54-108 analyses each): 12 ROBUST, 5 MIXED, 1 FRAGILE (B20_R68 Part B). Study level: R64, R68 ROBUST; R63, R66 MIXED. MUE and mean-vs-median drive the changes"
       },
       "B20_R74": {
-        "commits": [],
+        "commits": [
+          "e067439"
+        ],
         "result": "Engineering: mqlib-v1 (MQLib BURER2002) built reproducibly from commit 5854962, pinned binary 9e760cb7, runc-tested. CP-SAT and RC2 blocked: PyPI refused by the egress proxy (B20R74-OPEN-1)"
+      },
+      "B20_R75": {
+        "commits": [
+          "fc8f950",
+          "1f04796"
+        ],
+        "result": "State-of-the-art comparison (DEV, n60/n63, alone pinned): INVALID_CPU_DELIVERY. All BURER2002 runs returned empty witnesses (MQLib seeds limited to 0..65535; the kind failed silently); caught by the preregistered CPU check. Descriptive: dSB fastest, the system engine 1.2 s, candidate 1.2/3.0 s; HiGHS 60 s proved none; checked route certified 6/12. Repeated in B20_R76"
       }
     },
     "open_after_b20_r5": [
