@@ -570,7 +570,8 @@ WORKSTREAMS = {
             'NO_GENERAL_IMPROVEMENT, DEV; B20_R74: MQLib BURER2002 as a pinned external baseline; B20_R75: the '
             'state-of-the-art comparison INVALID_CPU_DELIVERY, a kind defect caught by the validity check; B20_R76: '
             'CP-SAT installed from a supplied wheel as cpsat-v1, and the comparison with CP-SAT and the fixed '
-            'BURER2002 UNRESOLVED)', B,
+            'BURER2002 UNRESOLVED; B20_R77: hybrid-swap-v1, a cut portfolio with (1,2)-swap local search, and its '
+            'powered comparison with CP-SAT and BURER2002)', B,
             ['src/genesis/custody_records.py', 'src/genesis/custodian.py', 'src/genesis/decision_record.py',
              'src/genesis/candidates.py', 'src/genesis/judge.py', 'src/genesis/learning/statement_panels.py',
              'src/genesis/learning/research_export.py', 'src/genesis/candidates_v2.py',
@@ -582,12 +583,14 @@ WORKSTREAMS = {
              'scripts/b20r72_represent_moves.py', 'evidence/represent_moves_b20r72/summary.json',
              'src/genesis/candidate_kinds/mqlib.py', 'scripts/b20r74_sota_tools.py',
              'scripts/b20r75_sota.py', 'evidence/sota_b20r75/summary.json',
-             'src/genesis/candidate_kinds/cpsat.py', 'scripts/b20r76_sota.py', 'evidence/sota_b20r76/summary.json'],
+             'src/genesis/candidate_kinds/cpsat.py', 'scripts/b20r76_sota.py', 'evidence/sota_b20r76/summary.json',
+             'src/genesis/candidate_kinds/hybrid_swap.py', 'scripts/b20r77_engine_vs_sota.py'],
             [G + 'test_evaluator_readiness.py', G + 'test_redteam_b16.py', G + 'test_candidate_adapters.py',
              G + 'test_candidate_custody.py', G + 'test_statement_custody.py', G + 'test_candidates_v2.py',
              G + 'test_wiring_v5.py', G + 'test_maxcut_tabu.py', G + 'test_physics_kinds.py',
              G + 'test_represent_search.py', G + 'test_mqlib_kind.py',
-             G + 'test_cpsat_kind.py', G + 'test_sota.py', G + 'test_sota_v2.py']),
+             G + 'test_cpsat_kind.py', G + 'test_sota.py', G + 'test_sota_v2.py',
+             G + 'test_hybrid_swap.py', G + 'test_engine_vs_sota.py']),
     'W07': ('Statistics, fairness and decision rules', B,
             [K + 'analysis.py', 'src/genesis/power.py', 'src/genesis/judge.py', 'src/genesis/resources.py',
              'docs/STATISTICIAN_BRIEF.md', 'scripts/b20r61_statistician_brief.py', 'scripts/b20r62_power_rebind.py',

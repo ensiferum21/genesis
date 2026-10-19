@@ -134,3 +134,12 @@ machine must run that script before `mqlib-v1` can be used; until then the kind 
 `cpsat-v1` runs Google OR-Tools CP-SAT 9.15 (8 portfolio workers on the child's one core) from a pinned tree under
 `/usr/local/genesis-sota/py313`, installed from a hash-checked wheel by `scripts/b20r74_sota_tools.py --ortools-wheel`.
 `mqlib-v1` now takes seeds modulo 65,536 (MQLib's limit) and fails loudly when MQLib fails (B20_R75's defect).
+
+## B20_R77: `hybrid-swap-v1`
+
+A portfolio of cut searches (simulated bifurcation, exactly `ising-dsb-v1`'s dynamics, alternating with one-flip
+descent from random colourings) for 80% of the budget, then (1,2)-swap iterated local search on the triangle-free
+problem itself (Andrade, Resende and Werneck 2012's move for independent sets, on the hypergraph of host triangles)
+over the 4 best distinct completed colourings. Parameters `{cpu_seconds}`; triangle-free only. Designed by the builder
+after B20_R76 showed that every cut-based arm misses optima that are not a cut plus a completion; registering it
+changed no other identity.
