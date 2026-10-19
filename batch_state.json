@@ -916,6 +916,10 @@
           "5f3dd5e"
         ],
         "result": "Multiverse analysis of E1d DEV verdicts (B20_R63/R64/R66/R68, 18 contrasts, 54-108 analyses each): 12 ROBUST, 5 MIXED, 1 FRAGILE (B20_R68 Part B). Study level: R64, R68 ROBUST; R63, R66 MIXED. MUE and mean-vs-median drive the changes"
+      },
+      "B20_R74": {
+        "commits": [],
+        "result": "Engineering: mqlib-v1 (MQLib BURER2002) built reproducibly from commit 5854962, pinned binary 9e760cb7, runc-tested. CP-SAT and RC2 blocked: PyPI refused by the egress proxy (B20R74-OPEN-1)"
       }
     },
     "open_after_b20_r5": [
@@ -1340,6 +1344,9 @@
     ],
     "open_after_b20_r73": [
       "B19-OPEN-4 updated: the MUE and mean-vs-median are the concrete questions for the statistician"
+    ],
+    "open_after_b20_r74": [
+      "B20R74-OPEN-1 new: CP-SAT and MaxSAT unavailable (PyPI refused); comparisons cover BURER2002, dSB, tabu, HiGHS only"
     ]
   }
 }

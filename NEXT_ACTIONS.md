@@ -38,6 +38,7 @@
 | B20_R71 | **Physics move rules for the system's own invention engine.** `represent-search-v1` runs any Lean-licensed invented representation with descent (the frozen rule), extremal optimization or simulated annealing, with one shared repair; B20_R72 tests whether a physics rule improves every representation |
 | B20_R72 | **Physics move rules do not improve the invention engine (DEV, a fair negative).** Extremal optimization and annealing tie descent on cross_2 and adjacent_3 and are worse on ordered_2; what helps is speed (the faster repair alone: +0.45 over the frozen candidate) and whole-configuration dynamics (simulated bifurcation, best overall). Idea 3 of the physics plan is revised accordingly |
 | B20_R73 | **E1d's central conclusions are robust; the boundaries move.** Under 54–108 reasonable analyses per contrast, the candidate's lead over HiGHS at short budgets, its growth with size and its tie with tabu search on the calibrated settings hold in every analysis; the crossover budgets move (B20_R63: 8 s, sometimes 4 s); B20_R68 Part B (tabu ahead at n60) is FRAGILE. Questions for the statistician: the MUE, and mean vs median |
+| B20_R74 | **A state-of-the-art max-cut heuristic joins the baselines; CP-SAT is blocked.** MQLib's BURER2002 (the best single heuristic of 37 in Dunning et al. 2018) is built from a pinned GitHub commit, reproducibly, and run in the sandbox. OR-Tools CP-SAT (MiniZinc Challenge 2025 gold) and RC2 need PyPI, which this workspace cannot reach; supplying their wheels would let B20_R75 be repeated with them |
 
   The recovery-branch checkpoints B20_RX1 and B20_RX2 are on `recovery-b20r1-partial`; their work was ported here.
 - **Records:** `docs/checkpoints/B20_R1_RECORD.md` … `B20_R11_RECORD.md`, `B20_RX1_RECORD.md`, `B20_RX2_RECORD.md`, `B20_R12_RECORD.md` and `B20_R15_RECORD.md` … `B20_R65_RECORD.md`.
@@ -108,6 +109,7 @@
     git checkout continuation-b20-rx
     GENESIS_TOOLCHAIN=/srv/toolchain bash toolchain/install_tools.sh     # pinned sources; the formal workspace uses the CRPD-2b pin
     export GENESIS_TOOLCHAIN=/srv/toolchain PYTHONPATH=src
+    python3 scripts/b20r74_sota_tools.py                               # MQLib BURER2002 at its pinned commit (B20_R74; needs g++ and GitHub)
     python3 scripts/run_test_matrix.py --profile release --report /tmp/matrix.json   # as root (runc)
 
 ## Decisions needed from Daniel or a reviewer

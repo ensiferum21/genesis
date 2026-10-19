@@ -68,6 +68,7 @@
 | Representation engine move rules (B20_R71) | `represent-search-v1`: licensing from the checked B18 package and closed fields, identity covers the engine, kept-edge counts equal the frozen decoder's, descent ends at a local optimum, K10 for every licensed representation and move, metered runc runs (`tests_genesis/test_represent_search.py`) | commit | must pass |
 | Move rules in the representation engine (B20_R72) | fresh seeds, the arms, the verdict and overall rules on synthetic rows including CPU delivery, pinning; the analysis and every verdict recompute from the rows (NO_GENERAL_IMPROVEMENT), the arms are the recorded ones, the hosts are in the addenda (`tests_genesis/test_represent_moves.py`) | commit | must pass |
 | Multiverse analysis (B20_R73) | fresh seeds, the 18 contrasts are the studies' own, the preregistered analysis reproduces every study's verdict, the rule and labels, universe sizes, the t interval; the whole summary recomputes (`tests_genesis/test_multiverse.py`) | commit | must pass |
+| MQLib BURER2002 kind (B20_R74) | the installed binary is the pinned one and in the kind's identity, a changed or missing binary is refused, closed parameters, output parsing, K10, a metered runc run with a checked witness (`tests_genesis/test_mqlib_kind.py`) | commit | must pass |
 | Requirements ledger | every spec section, roadmap item and catalogue entry has a disposition with resolvable tests (`test_ledger.py`) | commit | must pass |
 
 Run: `python3 scripts/run_test_matrix.py --profile commit|nightly|release --report out.json`.

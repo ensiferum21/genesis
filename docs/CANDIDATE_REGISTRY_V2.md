@@ -121,3 +121,10 @@ The system's representation-and-repair engine with a closed move rule (`descent`
 for any B18 proposal licensed SUFF or EQ on the domain by the checked package. Parameters
 `{representation, move, cpu_seconds}`. Its identity also covers `invention/representations.py`,
 `invention/soundness.py` and `formal_research/triangle_theory.py`. The frozen v1 candidate is unchanged.
+
+## B20_R74: `mqlib-v1` and pinned external tools
+
+MQLib's BURER2002 as a domain baseline. External tools live under `/usr/local/genesis-sota/` (inside `/usr`, which the
+sandbox bind-mounts read-only; outside every Python path and the locked environment). The kind pins the binary's
+SHA-256 and refuses any other; `scripts/b20r74_sota_tools.py` rebuilds it reproducibly from the pinned commit. A fresh
+machine must run that script before `mqlib-v1` can be used; until then the kind refuses, and its tests fail.

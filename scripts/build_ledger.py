@@ -567,7 +567,7 @@ WORKSTREAMS = {
             'B20_R67: the kind map moved out of the hashed core, a kind bound to its dispatched module, and a '
             'max-cut tabu domain-baseline kind; B20_R69: simulated-bifurcation and extremal-optimization kinds; '
             'B20_R71: the representation engine with physics move rules; B20_R72: they do not improve it, '
-            'NO_GENERAL_IMPROVEMENT, DEV)', B,
+            'NO_GENERAL_IMPROVEMENT, DEV; B20_R74: MQLib BURER2002 as a pinned external baseline)', B,
             ['src/genesis/custody_records.py', 'src/genesis/custodian.py', 'src/genesis/decision_record.py',
              'src/genesis/candidates.py', 'src/genesis/judge.py', 'src/genesis/learning/statement_panels.py',
              'src/genesis/learning/research_export.py', 'src/genesis/candidates_v2.py',
@@ -576,11 +576,12 @@ WORKSTREAMS = {
              'src/genesis/candidate_kinds/maxcut_tabu.py', 'scripts/b20r67_refresh_v2_ids.py',
              'src/genesis/candidate_kinds/ising_dsb.py', 'src/genesis/candidate_kinds/maxcut_eo.py',
              'docs/PHYSICS_INSPIRED_PLAN.md', 'src/genesis/candidate_kinds/represent_search.py',
-             'scripts/b20r72_represent_moves.py', 'evidence/represent_moves_b20r72/summary.json'],
+             'scripts/b20r72_represent_moves.py', 'evidence/represent_moves_b20r72/summary.json',
+             'src/genesis/candidate_kinds/mqlib.py', 'scripts/b20r74_sota_tools.py'],
             [G + 'test_evaluator_readiness.py', G + 'test_redteam_b16.py', G + 'test_candidate_adapters.py',
              G + 'test_candidate_custody.py', G + 'test_statement_custody.py', G + 'test_candidates_v2.py',
              G + 'test_wiring_v5.py', G + 'test_maxcut_tabu.py', G + 'test_physics_kinds.py',
-             G + 'test_represent_search.py']),
+             G + 'test_represent_search.py', G + 'test_mqlib_kind.py']),
     'W07': ('Statistics, fairness and decision rules', B,
             [K + 'analysis.py', 'src/genesis/power.py', 'src/genesis/judge.py', 'src/genesis/resources.py',
              'docs/STATISTICIAN_BRIEF.md', 'scripts/b20r61_statistician_brief.py', 'scripts/b20r62_power_rebind.py',
