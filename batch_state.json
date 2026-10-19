@@ -862,8 +862,16 @@
         "result": "E1d against a domain heuristic (DEV, run alone pinned): E1D_MATCHES_DOMAIN_HEURISTIC. candidate - maxcut-tabu-v1 (same 0.5 s) +0.03 [0.00, 0.10] (1/29/0) on 30 calibrated hosts; tabu also beats HiGHS 2 s by +8.60; at n60 HEURISTIC_AHEAD, -1.15 [-1.65, -0.70] (1/6/13), tabu optimal on 7/13 certified vs 3. The lead over HiGHS is the max-cut reduction plus local search; GV4 fallback Part A and the review brief corrected. Exposure addenda (50 hosts)"
       },
       "B20_R69": {
-        "commits": [],
+        "commits": [
+          "b60c914"
+        ],
         "result": "Engineering: physics-inspired domain-baseline kinds ising-dsb-v1 (discrete simulated bifurcation) and maxcut-eo-v1 (tau-extremal optimization), both with the candidate completion; docs/PHYSICS_INSPIRED_PLAN.md (Daniel request). SB dt=1 found unstable on dense hosts and fixed to 0.5 before any study; disclosed 3-host look (dSB optimal on 3/3)"
+      },
+      "B20_R70": {
+        "commits": [
+          "e48c5e7"
+        ],
+        "result": "TTS scaling (DEV, run alone pinned, 2,688 runs): E1D_SLOWER_THAN_SOME. Median log2(TTS*_H/TTS*_cand) at n60: dSB -3.20 [-4.59, -2.56] HEURISTIC_FASTER, tabu -3.32 [-4.89, 0.24] and EO -1.32 UNRESOLVED; at n50 tabu and dSB faster, at n40 tabu faster. Candidate median TTS 0.14/0.5/0.85 s, heuristics flat. Biases (tabu floors, dSB start-up) understate the heuristics. Exposure addenda (24 hosts)"
       }
     },
     "open_after_b20_r5": [
@@ -1282,6 +1290,9 @@
     ],
     "open_after_b20_r68": [
       "B20R41-OPEN-1 updated: E1d matches a standard max-cut heuristic on its calibrated settings and trails it at n60; the reviewer must decide whether domain heuristics are strong baselines"
+    ],
+    "open_after_b20_r70": [
+      "B20R41-OPEN-1 updated: by time-to-solution the candidate is slower than domain heuristics and scales worst"
     ]
   }
 }

@@ -52,6 +52,10 @@ that report would contain.
   of Rønnow et al. (2014), against one chosen baseline. The claim must name its comparator class. If the
   reviewer's strong-baseline set includes domain heuristics (review brief item 1), Part A has no claim; what
   remains is that the system's representation search rediscovered the max-cut reduction on its own.
+- **By time-to-solution it is the slowest of the field's methods (B20_R70).** At the optimal run time per size,
+  simulated bifurcation reaches the best known value faster than the candidate at n60 (median log2 ratio
+  -3.20 [-4.59, -2.56], **E1D_SLOWER_THAN_SOME**), and the candidate's median time grows with host size while the
+  heuristics' stay flat. A speed claim cannot be made against the best-known methods.
 - **The solver is classical.** Its representation, `cross_2`, is a bipartite cut chosen from a builder-written
   typed grammar whose soundness Lean checks (B18, W10/W11). No novelty is claimed.
 - **Why it wins: speed, not quality at any budget (measured in B20_R63).** On dense planted clusters the largest

@@ -213,6 +213,9 @@ CITATIONS = (
                f'{v["wins_ties_losses"][0]}/{v["wins_ties_losses"][1]}/{v["wins_ties_losses"][2]}'),
     ('B20_R68 tabu over HiGHS', 'evidence/e1d_domain_heuristic_b20r68/summary.json',
      ('parts', 'A', 'secondary', 'tabu_0.5s_minus_highs_2s', 'estimate'), lambda v: f'by +{v:.2f}'),
+    ('B20_R70 verdict', 'evidence/tts_scaling_b20r70/summary.json', ('verdict',), lambda v: f'**{v}**'),
+    ('B20_R70 dSB at n60', 'evidence/tts_scaling_b20r70/summary.json', ('by_n', '60', 'per_heuristic', 'dsb'),
+     lambda v: f'{v["median_log2_ratio"]:.2f} [{v["interval_90"][0]:.2f}, {v["interval_90"][1]:.2f}]'),
     ('B20_R58 table', 'evidence/sf_pattern_selection_b20r58/summary.json', ('table',),
      lambda v: f'all {v["ALL"]["certified"]}, none {v["NONE"]["certified"]}, best subset '
                f'{max(v[k]["certified"] for k in v if k.startswith("TOP"))} of {v["ALL"]["hosts"]}'),

@@ -1,0 +1,28 @@
+[    0.0s] pinned to CPU 0
+[    0.0s] SAT tools: cadical@24fb99286ca1ea9a, drat-trim@92f0aa9575ed519d
+[    6.9s] exposure: 3087 identities (3087 named hosts, 711 E1 hosts, 456 calibration hosts)
+[  127.6s] n40 0000 (188 edges) target 121: candidate 0.2@0.2 tabu 0.1@0.1 dsb 0.1@0.1 eo 34@2.0 ref 21s
+[  239.8s] n40 0001 (198 edges) target 131: candidate 0.14@0.02 tabu 0.02@0.02 dsb 0.1@0.1 eo 0.05@0.05 ref 13s
+[  355.9s] n40 0002 (181 edges) target 118: candidate 0.05@0.05 tabu 0.02@0.02 dsb 0.1@0.1 eo 0.08@0.02 ref 17s
+[  576.1s] n40 0003 (196 edges) target 124 (uncertified): candidate 0.05@0.05 tabu 0.02@0.02 dsb 0.1@0.1 eo 0.02@0.02 ref 121s
+[  695.8s] n40 0004 (184 edges) target 120: candidate 0.2@0.2 tabu 0.02@0.02 dsb 0.1@0.1 eo 0.08@0.02 ref 20s
+[  817.3s] n40 0005 (183 edges) target 117: candidate 0.34@0.02 tabu 0.02@0.02 dsb 0.1@0.1 eo 0.02@0.02 ref 21s
+[  931.0s] n40 0006 (176 edges) target 118: candidate 0.5@0.5 tabu 0.05@0.05 dsb 0.1@0.1 eo 0.34@0.02 ref 13s
+[ 1152.4s] n40 0007 (181 edges) target 122 (uncertified): candidate 0.02@0.02 tabu 0.02@0.02 dsb 0.1@0.1 eo 0.02@0.02 ref 121s
+[ 1275.3s] n50 0000 (276 edges) target 183: candidate 0.2@0.2 tabu 0.02@0.02 dsb 0.1@0.1 eo 0.02@0.02 ref 23s
+[ 1402.2s] n50 0001 (299 edges) target 187: candidate 0.5@0.5 tabu 0.02@0.02 dsb 0.1@0.1 eo 0.05@0.05 ref 26s
+[ 1532.6s] n50 0002 (292 edges) target 185: candidate 0.05@0.05 tabu 0.02@0.02 dsb 0.1@0.1 eo 0.02@0.02 ref 30s
+[ 1657.9s] n50 0003 (306 edges) target 197: candidate 0.5@0.5 tabu 0.05@0.05 dsb 0.1@0.1 eo 0.1@0.1 ref 25s
+[ 1785.0s] n50 0004 (298 edges) target 190: candidate 0.5@0.5 tabu 0.08@0.02 dsb 0.1@0.1 eo 0.2@0.05 ref 27s
+[ 1912.3s] n50 0005 (285 edges) target 183: candidate 2@0.5 tabu 0.05@0.05 dsb 0.1@0.1 eo 2@2.0 ref 27s
+[ 2038.2s] n50 0006 (312 edges) target 203: candidate 0.5@0.5 tabu 0.05@0.05 dsb 0.1@0.1 eo 0.7@0.1 ref 25s
+[ 2164.6s] n50 0007 (311 edges) target 203: candidate 0.5@0.5 tabu 0.02@0.02 dsb 0.1@0.1 eo 0.02@0.02 ref 27s
+[ 2298.2s] n60 0000 (404 edges) target 257: candidate 0.5@0.5 tabu 0.02@0.02 dsb 0.1@0.1 eo 0.2@0.2 ref 34s
+[ 2431.4s] n60 0001 (413 edges) target 265: candidate 0.7@0.1 tabu 0.02@0.02 dsb 0.1@0.1 eo 0.02@0.02 ref 33s
+[ 2565.8s] n60 0002 (419 edges) target 267: candidate 0.85@0.05 tabu 7@1.0 dsb 0.1@0.1 eo 14@2.0 ref 31s
+[ 2790.3s] n60 0003 (427 edges) target 270 (uncertified): candidate 3.4@0.2 tabu 0.34@0.02 dsb 0.1@0.1 eo inf@None ref 121s
+[ 2931.5s] n60 0004 (405 edges) target 256: candidate 0.2@0.2 tabu 0.02@0.02 dsb 0.1@0.1 eo 0.02@0.02 ref 38s
+[ 3157.6s] n60 0005 (444 edges) target 277 (uncertified): candidate 4@1.0 tabu 0.02@0.02 dsb 0.1@0.1 eo 0.1@0.1 ref 121s
+[ 3292.7s] n60 0006 (422 edges) target 266: candidate 2@2.0 tabu 0.34@0.02 dsb 0.2@0.2 eo 1.7@0.1 ref 34s
+[ 3423.8s] n60 0007 (433 edges) target 273: candidate 8.5@0.5 tabu inf@None dsb 0.5@0.5 eo 3.4@0.2 ref 31s
+[ 3424.0s] verdict E1D_SLOWER_THAN_SOME; n60 {'tabu': 'UNRESOLVED', 'dsb': 'HEURISTIC_FASTER', 'eo': 'UNRESOLVED'}; slopes {'candidate': 0.03916, 'tabu': 0.0, 'dsb': 0.0, 'eo': 0.0301}

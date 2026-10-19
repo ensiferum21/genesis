@@ -1,0 +1,479 @@
+{
+ "by_n": {
+  "40": {
+   "arms": {
+    "candidate": {
+     "floors": 1,
+     "optimal_t": [
+      0.2,
+      0.02,
+      0.05,
+      0.05,
+      0.2,
+      0.02,
+      0.5,
+      0.02
+     ],
+     "solved": 8,
+     "tts_median": 0.14,
+     "tts_q75": 0.2
+    },
+    "dsb": {
+     "floors": 0,
+     "optimal_t": [
+      0.1,
+      0.1,
+      0.1,
+      0.1,
+      0.1,
+      0.1,
+      0.1,
+      0.1
+     ],
+     "solved": 8,
+     "tts_median": 0.1,
+     "tts_q75": 0.1
+    },
+    "eo": {
+     "floors": 3,
+     "optimal_t": [
+      2.0,
+      0.05,
+      0.02,
+      0.02,
+      0.02,
+      0.02,
+      0.02,
+      0.02
+     ],
+     "solved": 8,
+     "tts_median": 0.05,
+     "tts_q75": 0.08
+    },
+    "tabu": {
+     "floors": 6,
+     "optimal_t": [
+      0.1,
+      0.02,
+      0.02,
+      0.02,
+      0.02,
+      0.02,
+      0.05,
+      0.02
+     ],
+     "solved": 8,
+     "tts_median": 0.02,
+     "tts_q75": 0.02
+    }
+   },
+   "certified": 6,
+   "edges": [
+    176,
+    198
+   ],
+   "hosts": 8,
+   "per_heuristic": {
+    "dsb": {
+     "host_log2_ratios": [
+      -1.0,
+      -0.4854,
+      1.0,
+      1.0,
+      -1.0,
+      -1.7655,
+      -2.3219,
+      2.3219
+     ],
+     "interval_90": [
+      -1.3828,
+      1.0
+     ],
+     "median_log2_ratio": -0.7427,
+     "verdict": "UNRESOLVED"
+    },
+    "eo": {
+     "host_log2_ratios": [
+      7.4094,
+      -1.4854,
+      0.6781,
+      -1.3219,
+      -1.3219,
+      -4.0875,
+      -0.5564,
+      0.0
+     ],
+     "interval_90": [
+      -1.4037,
+      0.339
+     ],
+     "median_log2_ratio": -0.9392,
+     "verdict": "UNRESOLVED"
+    },
+    "tabu": {
+     "host_log2_ratios": [
+      -1.0,
+      -2.8074,
+      -1.3219,
+      -1.3219,
+      -3.3219,
+      -4.0875,
+      -3.3219,
+      0.0
+     ],
+     "interval_90": [
+      -3.3219,
+      -1.161
+     ],
+     "median_log2_ratio": -2.0646,
+     "verdict": "HEURISTIC_FASTER"
+    }
+   }
+  },
+  "50": {
+   "arms": {
+    "candidate": {
+     "floors": 0,
+     "optimal_t": [
+      0.2,
+      0.5,
+      0.05,
+      0.5,
+      0.5,
+      0.5,
+      0.5,
+      0.5
+     ],
+     "solved": 8,
+     "tts_median": 0.5,
+     "tts_q75": 0.5
+    },
+    "dsb": {
+     "floors": 0,
+     "optimal_t": [
+      0.1,
+      0.1,
+      0.1,
+      0.1,
+      0.1,
+      0.1,
+      0.1,
+      0.1
+     ],
+     "solved": 8,
+     "tts_median": 0.1,
+     "tts_q75": 0.1
+    },
+    "eo": {
+     "floors": 3,
+     "optimal_t": [
+      0.02,
+      0.05,
+      0.02,
+      0.1,
+      0.05,
+      2.0,
+      0.1,
+      0.02
+     ],
+     "solved": 8,
+     "tts_median": 0.05,
+     "tts_q75": 0.2
+    },
+    "tabu": {
+     "floors": 4,
+     "optimal_t": [
+      0.02,
+      0.02,
+      0.02,
+      0.05,
+      0.02,
+      0.05,
+      0.05,
+      0.02
+     ],
+     "solved": 8,
+     "tts_median": 0.02,
+     "tts_q75": 0.05
+    }
+   },
+   "certified": 8,
+   "edges": [
+    276,
+    312
+   ],
+   "hosts": 8,
+   "per_heuristic": {
+    "dsb": {
+     "host_log2_ratios": [
+      -1.0,
+      -2.3219,
+      1.0,
+      -2.3219,
+      -2.3219,
+      -4.3219,
+      -2.3219,
+      -2.3219
+     ],
+     "interval_90": [
+      -2.3219,
+      -1.661
+     ],
+     "median_log2_ratio": -2.3219,
+     "verdict": "HEURISTIC_FASTER"
+    },
+    "eo": {
+     "host_log2_ratios": [
+      -3.3219,
+      -3.3219,
+      -1.3219,
+      -2.3219,
+      -1.3219,
+      0.0,
+      0.4854,
+      -4.6439
+     ],
+     "interval_90": [
+      -3.3219,
+      -0.661
+     ],
+     "median_log2_ratio": -1.8219,
+     "verdict": "UNRESOLVED"
+    },
+    "tabu": {
+     "host_log2_ratios": [
+      -3.3219,
+      -4.6439,
+      -1.3219,
+      -3.3219,
+      -2.6439,
+      -5.3219,
+      -3.3219,
+      -4.6439
+     ],
+     "interval_90": [
+      -4.6439,
+      -2.9829
+     ],
+     "median_log2_ratio": -3.3219,
+     "verdict": "HEURISTIC_FASTER"
+    }
+   }
+  },
+  "60": {
+   "arms": {
+    "candidate": {
+     "floors": 0,
+     "optimal_t": [
+      0.5,
+      0.1,
+      0.05,
+      0.2,
+      0.2,
+      1.0,
+      2.0,
+      0.5
+     ],
+     "solved": 8,
+     "tts_median": 0.85,
+     "tts_q75": 3.4
+    },
+    "dsb": {
+     "floors": 0,
+     "optimal_t": [
+      0.1,
+      0.1,
+      0.1,
+      0.1,
+      0.1,
+      0.1,
+      0.2,
+      0.5
+     ],
+     "solved": 8,
+     "tts_median": 0.1,
+     "tts_q75": 0.1
+    },
+    "eo": {
+     "floors": 2,
+     "optimal_t": [
+      0.2,
+      0.02,
+      2.0,
+      null,
+      0.02,
+      0.1,
+      0.1,
+      0.2
+     ],
+     "solved": 7,
+     "tts_median": 0.2,
+     "tts_q75": 3.4
+    },
+    "tabu": {
+     "floors": 4,
+     "optimal_t": [
+      0.02,
+      0.02,
+      1.0,
+      0.02,
+      0.02,
+      0.02,
+      0.02,
+      null
+     ],
+     "solved": 7,
+     "tts_median": 0.02,
+     "tts_q75": 0.34
+    }
+   },
+   "certified": 6,
+   "edges": [
+    404,
+    444
+   ],
+   "hosts": 8,
+   "per_heuristic": {
+    "dsb": {
+     "host_log2_ratios": [
+      -2.3219,
+      -2.8074,
+      -3.0875,
+      -5.0875,
+      -1.0,
+      -5.3219,
+      -3.3219,
+      -4.0875
+     ],
+     "interval_90": [
+      -4.5875,
+      -2.5646
+     ],
+     "median_log2_ratio": -3.2047,
+     "verdict": "HEURISTIC_FASTER"
+    },
+    "eo": {
+     "host_log2_ratios": [
+      -1.3219,
+      -5.1293,
+      4.0418,
+      10.0,
+      -3.3219,
+      -5.3219,
+      -0.2345,
+      -1.3219
+     ],
+     "interval_90": [
+      -4.2256,
+      1.9037
+     ],
+     "median_log2_ratio": -1.3219,
+     "verdict": "UNRESOLVED"
+    },
+    "tabu": {
+     "host_log2_ratios": [
+      -4.6439,
+      -5.1293,
+      3.0418,
+      -3.3219,
+      -3.3219,
+      -7.6439,
+      -2.5564,
+      10.0
+     ],
+     "interval_90": [
+      -4.8866,
+      0.2427
+     ],
+     "median_log2_ratio": -3.3219,
+     "verdict": "UNRESOLVED"
+    }
+   }
+  }
+ },
+ "code_identity": "9a4c5dbae6b4b937bbf9107f1f72ba774172cf41f6548e454dcbd68534b2066a",
+ "descriptors": {
+  "candidate@0.02": "58a842ef58e22d9fc115c6844d6de67c1306fba032e6ba419a088b9a03e81418",
+  "candidate@0.05": "2f77d6053ae99ea33e115cdf04a0c1c6fa4fbd205fb78e540eed26c1e3aa501e",
+  "candidate@0.1": "6f2963582e8420ec07f790fd7edf00812ff543370313091af3c71a631c56bad2",
+  "candidate@0.2": "3df658822cbb96d7da6dc68bbbf2003459a4398443ba862be9e393d5f6d9cd7f",
+  "candidate@0.5": "f4c7f4b0e5ced594f014dff8bc66703f2f545a52c1972a3d2a3cac42a8f195b1",
+  "candidate@1.0": "c467ac1bd057122f3be065134e9829760ac1041fce13b9932e4df1df479ff22b",
+  "candidate@2.0": "87810a557ce7fe01634b74cd34f53a895ea80dae55db20a3e65441565d58f161",
+  "dsb@0.02": "0b1d08db230b9a3fb115e0e7d9cb8a6d900ea70fdaea2a97c3e1fb5fe979b61c",
+  "dsb@0.05": "544cf6a033969cf36329257819c7af6f3036b4ec396e187b6e88af4377dc63cf",
+  "dsb@0.1": "07d54f01f4466e8bad263899d6559ddcef9628eabb3eb97b6818a3db8a8a4043",
+  "dsb@0.2": "019bc750ffd79a55e856f4c6b3c2a59b8b737b480cf24a062c7c1ab9ea4a1b6d",
+  "dsb@0.5": "f2ca67a992453b7659726a08f346adb323ee9c90b8af215bb28959a58798a227",
+  "dsb@1.0": "6d2524dd6d933d327da32c059aef59b80c4a5aab937c3dcdec1a2d798b9fb619",
+  "dsb@2.0": "a9a916e22e7a4eae5d12a5b2a58f2707988a3b3d21926d72d4761502bfc259a1",
+  "eo@0.02": "ca02a21cd120836dc4e90f752aacd4a5678f5657ca994a083c2022b14d198f31",
+  "eo@0.05": "8c0998bf5e6659fc3d619a5f6ddc6257c48afa7227ecc88785a3dc1fd7500681",
+  "eo@0.1": "f201a74b3150dbd5da96019a14f945956fe5d49493fcec2d73d93b5c72deb9fe",
+  "eo@0.2": "381729654500d6bcfa23a98594c38ed8faa800d5130aeae6285c2566f109d6c8",
+  "eo@0.5": "c93cda8111cd942d1b2cd0a71cf0ef733f63ab5217613fe379e6c69d63698ea1",
+  "eo@1.0": "edfa3e1999f9efb850a6216244b7e96bcc413b411f36b1d0097a7e94b0def2b1",
+  "eo@2.0": "99e16689822b71a4624dd64fc7754776c477cacb2a6c82809c40723bda03a7c2",
+  "tabu@0.02": "2ede01f47bdf725fd4daca284b026a888c9f0d86c19b06b55d7bd93548ddadb4",
+  "tabu@0.05": "edd2d5fce778095a20c604d482ea9243016cb08cf6f90072de7fb91cca684bf0",
+  "tabu@0.1": "c9f95967793e295dd9b53fdb29adf45605f2a8965d1a2bc791a2d90448e57c39",
+  "tabu@0.2": "b5f1685ee35347e5d661ff4568f5464143d01bff9dfcb2443bb6bba502970d54",
+  "tabu@0.5": "58e4f605042fa71eca1a353489c22d92a97f973eed7f2fece7053210f042cbe3",
+  "tabu@1.0": "3f4681881e8bbc7422a2743025d77e906e3a2b7f58374020134a4df63d3a8f48",
+  "tabu@2.0": "5cd96bd4c8e2ba8f55afe9ba8e3a7f32bbde0e5e445e7829057e8d0ac7ead340"
+ },
+ "exposure_scan": {
+  "calibration_hosts": 456,
+  "distinct_hosts": 3087,
+  "e1_named_hosts": 711,
+  "empty_files_skipped": [
+   "evidence/failed-wal-final-replay.json",
+   "evidence/final-replay.json"
+  ],
+  "excluded_identities": 3087,
+  "files_scanned": 1120,
+  "host_records": 14421
+ },
+ "ladder": [
+  0.02,
+  0.05,
+  0.1,
+  0.2,
+  0.5,
+  1.0,
+  2.0
+ ],
+ "n60_verdicts": {
+  "dsb": "HEURISTIC_FASTER",
+  "eo": "UNRESOLVED",
+  "tabu": "UNRESOLVED"
+ },
+ "reps": 4,
+ "scaling_slope_log10_tts_per_vertex": {
+  "candidate": 0.03916,
+  "dsb": 0.0,
+  "eo": 0.0301,
+  "tabu": 0.0
+ },
+ "schema": "genesis-b20r70-tts-scaling-v1",
+ "seeds": {
+  "boot": 20267099,
+  "hosts": 20267001
+ },
+ "status": "DEV diagnostic of TTS scaling; licenses nothing; no package changed",
+ "validity": {
+  "cpu_s_median_at_0.5": {
+   "candidate": 0.682,
+   "dsb": 0.696,
+   "eo": 0.682,
+   "tabu": 0.676
+  },
+  "failure_share": {
+   "candidate": 0.0,
+   "dsb": 0.0,
+   "eo": 0.0,
+   "tabu": 0.0
+  }
+ },
+ "verdict": "E1D_SLOWER_THAN_SOME"
+}

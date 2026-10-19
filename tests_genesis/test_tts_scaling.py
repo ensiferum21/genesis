@@ -1,6 +1,6 @@
 """B20_R70: time-to-solution scaling of E1d's candidate against three domain heuristics. Design: fresh seeds, the
 arms and their shared profile, TTS99 and the optimal-run-time rule, the log-ratio and verdict rules, validity, and
-the analysis on synthetic rows."""
+the analysis on synthetic rows. Record: the verdict recomputes from the saved rows."""
 import math
 from pathlib import Path
 import re
@@ -99,6 +99,56 @@ class Design(unittest.TestCase):
 
     def test_the_study_is_pinned(self):
         self.assertIn('R33.pinned_core()', (ROOT / 'scripts' / 'b20r70_tts_scaling.py').read_text())
+
+
+EV = ROOT / 'evidence' / 'tts_scaling_b20r70'
+
+
+class Record(unittest.TestCase):
+    """B20_R70's saved rows: the analysis and verdict recompute, the arms are the recorded ones, the hosts are fresh."""
+
+    @classmethod
+    def setUpClass(cls):
+        import json
+        cls.s = json.loads((EV / 'summary.json').read_text())
+        cls.rows = [json.loads(l) for l in (EV / 'rows.jsonl').read_text().splitlines() if l.strip()]
+
+    def test_verdict_recomputes_from_the_rows(self):
+        import json
+        self.assertEqual(len(self.rows), M.PER_N * len(M.NS))
+        by_n, slopes = M.analyse(self.rows)
+        self.assertEqual(json.loads(json.dumps(by_n)), self.s['by_n'])
+        self.assertEqual(slopes, self.s['scaling_slope_log10_tts_per_vertex'])
+        invalid, cpu, fail = M.validity(self.rows)
+        self.assertIsNone(invalid)
+        self.assertEqual(M.overall(by_n, invalid), self.s['verdict'])
+        self.assertEqual(self.s['verdict'], 'E1D_SLOWER_THAN_SOME')
+        self.assertEqual(self.s['n60_verdicts'], {'tabu': 'UNRESOLVED', 'dsb': 'HEURISTIC_FASTER', 'eo': 'UNRESOLVED'})
+
+    def test_runs_are_as_designed(self):
+        for r in self.rows:
+            for a in M.ARMS:
+                self.assertEqual(sorted(r['runs'][a]), sorted(str(t) for t in M.LADDER))
+                for t in M.LADDER:
+                    runs = r['runs'][a][str(t)]
+                    self.assertEqual(len(runs), M.REPS)
+                    self.assertTrue(all(x['isolation'] == 'OCI_RUNC_NO_NETWORK_RO_ROOT_SECCOMP' for x in runs))
+                    self.assertTrue(all(x['value'] <= r['target'] for x in runs))     # the target is the best known
+            self.assertGreaterEqual(r['target'], r['best_run_value'])
+        self.assertEqual(self.s['descriptors'], {f'{a}@{t}': d['descriptor_id'] for (a, t), (_, d) in M.arm_descriptors().items()})
+
+    def test_hosts_are_fresh_and_in_the_addenda(self):
+        import json
+        import b20r23_e1b_readiness as RD
+        from genesis.common import canonical
+        from genesis.models import GraphTask
+        tasks = [GraphTask.model_validate_json(canonical(t)) for t in json.loads((EV / 'hosts.json').read_text())['tasks']]
+        self.assertEqual([t.task_id for t in tasks], [r['task_id'] for r in self.rows])
+        self.assertEqual(len(RD.identities(tasks)), M.PER_N * len(M.NS))
+        for pkg in ('e1', 'e1b'):
+            add = json.loads((ROOT / 'handoff' / pkg / 'exposure_hosts_addendum_b20r70.json').read_text())
+            self.assertTrue(RD.identities(tasks) <= RD.identities([GraphTask.model_validate_json(canonical(t))
+                                                                    for t in add]))
 
 
 if __name__ == '__main__':
