@@ -350,6 +350,29 @@
         },
         "restore_verified": "6093 manifest entries match; bundle clone gives the same commit and tree",
         "rehearsal": "deployment/reproduce.sh on the build host (clean room, not a second machine): REPRODUCED, all 7 steps"
+      },
+      "B20_R73": {
+        "commit": "5f3dd5e",
+        "zip": "GENESIS_COMPLETION_CHECKPOINT_B20_R73.zip",
+        "sha256": "256bb34280b491a3d1708ad277c59755009aa99a46a76dd0dd449bf9d1453afb",
+        "parent": {
+          "zip": "GENESIS_COMPLETION_CHECKPOINT_B20_R65.zip",
+          "sha256": "0730aad4798a10ae309fe57cd19240d9bde32eeacd3d4fa68cd9c70beccbbf43",
+          "commit": "821b743"
+        },
+        "release_matrix": {
+          "total": 1515,
+          "skipped": 1,
+          "all_ok": true
+        },
+        "restore_verified": {
+          "manifest_entries": 6151,
+          "mismatches": 0,
+          "bundle_commit": "5f3dd5e",
+          "tree": "3d62870"
+        },
+        "archived": "archive d8c8f28",
+        "build_host_rehearsal": "not run"
       }
     },
     "adopted_from_crpd_v3_status": {
@@ -889,7 +912,8 @@
       },
       "B20_R73": {
         "commits": [
-          "b8e4fba"
+          "b8e4fba",
+          "5f3dd5e"
         ],
         "result": "Multiverse analysis of E1d DEV verdicts (B20_R63/R64/R66/R68, 18 contrasts, 54-108 analyses each): 12 ROBUST, 5 MIXED, 1 FRAGILE (B20_R68 Part B). Study level: R64, R68 ROBUST; R63, R66 MIXED. MUE and mean-vs-median drive the changes"
       }
