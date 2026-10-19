@@ -56,6 +56,13 @@ that report would contain.
   simulated bifurcation reaches the best known value faster than the candidate at n60 (median log2 ratio
   -3.20 [-4.59, -2.56], **E1D_SLOWER_THAN_SOME**), and the candidate's median time grows with host size while the
   heuristics' stay flat. A speed claim cannot be made against the best-known methods.
+- **Against state-of-the-art tools nothing is resolved (B20_R76).** With OR-Tools CP-SAT and MQLib's BURER2002 (the
+  best single max-cut heuristic of Dunning et al. 2018) added, by time-to-solution on 6 fresh hosts per size,
+  the preregistered verdict is **UNRESOLVED**. CP-SAT, run anytime for up to 2 CPU s, reached the best known value
+  on 0 of 12 hosts, so the candidate is faster than it at n60 (X_FASTER, log2 interval [5.0, 10.0]) but not
+  resolved at n63; against BURER2002 it is UNRESOLVED, [-1.79, 10.00] at n63, because each method reaches the
+  target quickly on some hosts and never on others. Given 60 s, CP-SAT found an optimum on one host that no
+  heuristic found within 2 s. No claim may say the candidate beats the state of the art.
 - **The solver is classical.** Its representation, `cross_2`, is a bipartite cut chosen from a builder-written
   typed grammar whose soundness Lean checks (B18, W10/W11). No novelty is claimed.
 - **Why it wins: speed, not quality at any budget (measured in B20_R63).** On dense planted clusters the largest

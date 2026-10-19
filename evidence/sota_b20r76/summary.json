@@ -1,0 +1,710 @@
+{
+ "by_n": {
+  "60": {
+   "arms": {
+    "burer": {
+     "floors": 2,
+     "optimal_t": [
+      0.05,
+      0.05,
+      null,
+      null,
+      null,
+      0.1
+     ],
+     "solved": 3,
+     "tts_median": 0.1,
+     "tts_q75": null
+    },
+    "candidate": {
+     "floors": 0,
+     "optimal_t": [
+      0.05,
+      2.0,
+      0.05,
+      null,
+      2.0,
+      0.1
+     ],
+     "solved": 5,
+     "tts_median": 1.2,
+     "tts_q75": 24.0
+    },
+    "cpsat": {
+     "floors": 0,
+     "optimal_t": [
+      null,
+      null,
+      null,
+      null,
+      null,
+      null
+     ],
+     "solved": 0,
+     "tts_median": null,
+     "tts_q75": null
+    },
+    "dsb": {
+     "floors": 0,
+     "optimal_t": [
+      0.1,
+      0.1,
+      0.25,
+      2.0,
+      0.1,
+      0.1
+     ],
+     "solved": 6,
+     "tts_median": 0.1,
+     "tts_q75": 0.25
+    },
+    "highs": {
+     "floors": 0,
+     "optimal_t": [
+      null,
+      null,
+      null,
+      null,
+      null,
+      null
+     ],
+     "solved": 0,
+     "tts_median": null,
+     "tts_q75": null
+    },
+    "system": {
+     "floors": 0,
+     "optimal_t": [
+      0.25,
+      0.5,
+      0.05,
+      0.25,
+      0.5,
+      0.1
+     ],
+     "solved": 6,
+     "tts_median": 0.5,
+     "tts_q75": 3.0
+    },
+    "tabu": {
+     "floors": 3,
+     "optimal_t": [
+      0.05,
+      0.05,
+      null,
+      null,
+      0.5,
+      0.05
+     ],
+     "solved": 4,
+     "tts_median": 0.05,
+     "tts_q75": null
+    }
+   },
+   "certified": 5,
+   "edges": [
+    405,
+    438
+   ],
+   "exact": {
+    "cpsat": {
+     "claims_optimal": 0,
+     "cpu_s_median_when_claimed": null,
+     "reaches_target": 1,
+     "timeouts": 0
+    },
+    "generated_rows_reference": {
+     "certified": 5,
+     "wall_s_median": 34.239
+    },
+    "highs": {
+     "claims_optimal": 0,
+     "cpu_s_median_when_claimed": null,
+     "reaches_target": 0,
+     "timeouts": 0
+    }
+   },
+   "hosts": 6,
+   "versus_sota": {
+    "burer": {
+     "candidate": {
+      "host_log2_ratios": [
+       -3.585,
+       -5.3219,
+       10.0,
+       0.0,
+       10.0,
+       -3.585
+      ],
+      "interval_90": [
+       -3.585,
+       10.0
+      ],
+      "median_log2_ratio_sota_over_x": -1.7925,
+      "verdict": "UNRESOLVED"
+     },
+     "dsb": {
+      "host_log2_ratios": [
+       -1.0,
+       -1.0,
+       10.0,
+       10.0,
+       10.0,
+       0.0
+      ],
+      "interval_90": [
+       -1.0,
+       10.0
+      ],
+      "median_log2_ratio_sota_over_x": 5.0,
+      "verdict": "UNRESOLVED"
+     },
+     "highs": {
+      "host_log2_ratios": [
+       -10.0,
+       -10.0,
+       0.0,
+       0.0,
+       0.0,
+       -10.0
+      ],
+      "interval_90": [
+       -10.0,
+       0.0
+      ],
+      "median_log2_ratio_sota_over_x": -5.0,
+      "verdict": "UNRESOLVED"
+     },
+     "system": {
+      "host_log2_ratios": [
+       -2.3219,
+       -3.3219,
+       10.0,
+       10.0,
+       10.0,
+       0.0
+      ],
+      "interval_90": [
+       -2.3219,
+       10.0
+      ],
+      "median_log2_ratio_sota_over_x": 5.0,
+      "verdict": "UNRESOLVED"
+     },
+     "tabu": {
+      "host_log2_ratios": [
+       0.0,
+       0.0,
+       0.0,
+       0.0,
+       10.0,
+       1.0
+      ],
+      "interval_90": [
+       0.0,
+       5.0
+      ],
+      "median_log2_ratio_sota_over_x": 0.0,
+      "verdict": "UNRESOLVED"
+     }
+    },
+    "cpsat": {
+     "candidate": {
+      "host_log2_ratios": [
+       10.0,
+       10.0,
+       10.0,
+       0.0,
+       10.0,
+       10.0
+      ],
+      "interval_90": [
+       5.0,
+       10.0
+      ],
+      "median_log2_ratio_sota_over_x": 10.0,
+      "verdict": "X_FASTER"
+     },
+     "dsb": {
+      "host_log2_ratios": [
+       10.0,
+       10.0,
+       10.0,
+       10.0,
+       10.0,
+       10.0
+      ],
+      "interval_90": [
+       10.0,
+       10.0
+      ],
+      "median_log2_ratio_sota_over_x": 10.0,
+      "verdict": "X_FASTER"
+     },
+     "highs": {
+      "host_log2_ratios": [
+       0.0,
+       0.0,
+       0.0,
+       0.0,
+       0.0,
+       0.0
+      ],
+      "interval_90": [
+       0.0,
+       0.0
+      ],
+      "median_log2_ratio_sota_over_x": 0.0,
+      "verdict": "COMPARABLE"
+     },
+     "system": {
+      "host_log2_ratios": [
+       10.0,
+       10.0,
+       10.0,
+       10.0,
+       10.0,
+       10.0
+      ],
+      "interval_90": [
+       10.0,
+       10.0
+      ],
+      "median_log2_ratio_sota_over_x": 10.0,
+      "verdict": "X_FASTER"
+     },
+     "tabu": {
+      "host_log2_ratios": [
+       10.0,
+       10.0,
+       0.0,
+       0.0,
+       10.0,
+       10.0
+      ],
+      "interval_90": [
+       0.0,
+       10.0
+      ],
+      "median_log2_ratio_sota_over_x": 10.0,
+      "verdict": "UNRESOLVED"
+     }
+    }
+   }
+  },
+  "63": {
+   "arms": {
+    "burer": {
+     "floors": 1,
+     "optimal_t": [
+      null,
+      null,
+      0.05,
+      null,
+      0.05,
+      null
+     ],
+     "solved": 2,
+     "tts_median": null,
+     "tts_q75": null
+    },
+    "candidate": {
+     "floors": 0,
+     "optimal_t": [
+      0.5,
+      2.0,
+      0.05,
+      null,
+      2.0,
+      null
+     ],
+     "solved": 4,
+     "tts_median": 6.0,
+     "tts_q75": null
+    },
+    "cpsat": {
+     "floors": 0,
+     "optimal_t": [
+      null,
+      null,
+      null,
+      null,
+      null,
+      null
+     ],
+     "solved": 0,
+     "tts_median": null,
+     "tts_q75": null
+    },
+    "dsb": {
+     "floors": 0,
+     "optimal_t": [
+      0.5,
+      0.5,
+      0.1,
+      0.1,
+      0.1,
+      null
+     ],
+     "solved": 5,
+     "tts_median": 1.2,
+     "tts_q75": 6.0
+    },
+    "highs": {
+     "floors": 0,
+     "optimal_t": [
+      null,
+      null,
+      null,
+      null,
+      null,
+      null
+     ],
+     "solved": 0,
+     "tts_median": null,
+     "tts_q75": null
+    },
+    "system": {
+     "floors": 0,
+     "optimal_t": [
+      0.25,
+      null,
+      0.1,
+      0.25,
+      0.05,
+      null
+     ],
+     "solved": 4,
+     "tts_median": 3.0,
+     "tts_q75": null
+    },
+    "tabu": {
+     "floors": 1,
+     "optimal_t": [
+      null,
+      null,
+      0.05,
+      0.25,
+      0.1,
+      null
+     ],
+     "solved": 3,
+     "tts_median": 1.25,
+     "tts_q75": null
+    }
+   },
+   "certified": 5,
+   "edges": [
+    444,
+    490
+   ],
+   "exact": {
+    "cpsat": {
+     "claims_optimal": 0,
+     "cpu_s_median_when_claimed": null,
+     "reaches_target": 1,
+     "timeouts": 0
+    },
+    "generated_rows_reference": {
+     "certified": 5,
+     "wall_s_median": 34.389
+    },
+    "highs": {
+     "claims_optimal": 0,
+     "cpu_s_median_when_claimed": null,
+     "reaches_target": 0,
+     "timeouts": 0
+    }
+   },
+   "hosts": 6,
+   "versus_sota": {
+    "burer": {
+     "candidate": {
+      "host_log2_ratios": [
+       10.0,
+       10.0,
+       -3.585,
+       0.0,
+       -1.737,
+       0.0
+      ],
+      "interval_90": [
+       -1.7925,
+       10.0
+      ],
+      "median_log2_ratio_sota_over_x": 0.0,
+      "verdict": "UNRESOLVED"
+     },
+     "dsb": {
+      "host_log2_ratios": [
+       10.0,
+       10.0,
+       -1.0,
+       10.0,
+       2.585,
+       0.0
+      ],
+      "interval_90": [
+       0.0,
+       10.0
+      ],
+      "median_log2_ratio_sota_over_x": 6.2925,
+      "verdict": "UNRESOLVED"
+     },
+     "highs": {
+      "host_log2_ratios": [
+       0.0,
+       0.0,
+       -10.0,
+       0.0,
+       -10.0,
+       0.0
+      ],
+      "interval_90": [
+       -10.0,
+       0.0
+      ],
+      "median_log2_ratio_sota_over_x": 0.0,
+      "verdict": "UNRESOLVED"
+     },
+     "system": {
+      "host_log2_ratios": [
+       10.0,
+       0.0,
+       -1.0,
+       10.0,
+       0.0,
+       0.0
+      ],
+      "interval_90": [
+       -0.5,
+       10.0
+      ],
+      "median_log2_ratio_sota_over_x": 0.0,
+      "verdict": "UNRESOLVED"
+     },
+     "tabu": {
+      "host_log2_ratios": [
+       0.0,
+       0.0,
+       0.0,
+       10.0,
+       2.585,
+       0.0
+      ],
+      "interval_90": [
+       0.0,
+       5.0
+      ],
+      "median_log2_ratio_sota_over_x": 0.0,
+      "verdict": "UNRESOLVED"
+     }
+    },
+    "cpsat": {
+     "candidate": {
+      "host_log2_ratios": [
+       10.0,
+       10.0,
+       10.0,
+       0.0,
+       10.0,
+       0.0
+      ],
+      "interval_90": [
+       0.0,
+       10.0
+      ],
+      "median_log2_ratio_sota_over_x": 10.0,
+      "verdict": "UNRESOLVED"
+     },
+     "dsb": {
+      "host_log2_ratios": [
+       10.0,
+       10.0,
+       10.0,
+       10.0,
+       10.0,
+       0.0
+      ],
+      "interval_90": [
+       5.0,
+       10.0
+      ],
+      "median_log2_ratio_sota_over_x": 10.0,
+      "verdict": "X_FASTER"
+     },
+     "highs": {
+      "host_log2_ratios": [
+       0.0,
+       0.0,
+       0.0,
+       0.0,
+       0.0,
+       0.0
+      ],
+      "interval_90": [
+       0.0,
+       0.0
+      ],
+      "median_log2_ratio_sota_over_x": 0.0,
+      "verdict": "COMPARABLE"
+     },
+     "system": {
+      "host_log2_ratios": [
+       10.0,
+       0.0,
+       10.0,
+       10.0,
+       10.0,
+       0.0
+      ],
+      "interval_90": [
+       0.0,
+       10.0
+      ],
+      "median_log2_ratio_sota_over_x": 10.0,
+      "verdict": "UNRESOLVED"
+     },
+     "tabu": {
+      "host_log2_ratios": [
+       0.0,
+       0.0,
+       10.0,
+       10.0,
+       10.0,
+       0.0
+      ],
+      "interval_90": [
+       0.0,
+       10.0
+      ],
+      "median_log2_ratio_sota_over_x": 5.0,
+      "verdict": "UNRESOLVED"
+     }
+    }
+   }
+  }
+ },
+ "code_identity": "f8d7c3b93c342dc61b535c414571e325389ea2ae588912bfdbd2f17208f1ef0c",
+ "descriptors": {
+  "burer@0.05": "1758c5a4ab050cba4fdfe50ba698fadfb9f6f8f8f4e7154bba4789c650abf449",
+  "burer@0.1": "604217a8557811e3b2d70f8ac3327fd1a7bb4bdc2e33df4bd883c10fb12ca240",
+  "burer@0.25": "0165c8d94e740af1715cace82ae8df3506a362eb4c857299c84f2f3940e6547c",
+  "burer@0.5": "7602ecebbee0428c9017175d7626a42b1adac5b13547021232177108ddfd379c",
+  "burer@2.0": "83752c56451353e348197c7dadbd6b00dfb9ff5231aaed1aefa9b16cfff39ad0",
+  "candidate@0.05": "2f77d6053ae99ea33e115cdf04a0c1c6fa4fbd205fb78e540eed26c1e3aa501e",
+  "candidate@0.1": "6f2963582e8420ec07f790fd7edf00812ff543370313091af3c71a631c56bad2",
+  "candidate@0.25": "2441b10473f65fe072a2cb60cbec63fef4593bfb9245b59d9457eb24ba7d1469",
+  "candidate@0.5": "f4c7f4b0e5ced594f014dff8bc66703f2f545a52c1972a3d2a3cac42a8f195b1",
+  "candidate@2.0": "87810a557ce7fe01634b74cd34f53a895ea80dae55db20a3e65441565d58f161",
+  "cpsat@0.05": "1c29346be05fbffd5addd96f405abf509837ad59c7719291e2777ff4687d5ecc",
+  "cpsat@0.1": "9b3ab7fb9dbe651106d1eba7a0557d89536690d88d1d9354ddc915aeb478465c",
+  "cpsat@0.25": "2dbc054f2d9c9dd87f012760a4b537ad6733154e577704261cec2a79327680d9",
+  "cpsat@0.5": "edd148bf2a97ce82cd3db3f2b6f98b7af246db786b87cdce97fb42a63366efbf",
+  "cpsat@2.0": "b64f192b82164666592dd67a1bacd83bdfbf7d9a82708522041632a0cedb2555",
+  "dsb@0.05": "544cf6a033969cf36329257819c7af6f3036b4ec396e187b6e88af4377dc63cf",
+  "dsb@0.1": "07d54f01f4466e8bad263899d6559ddcef9628eabb3eb97b6818a3db8a8a4043",
+  "dsb@0.25": "bc41a9e9b6a55285961cbdac9a2d087c8041a953ce1b4f813566c980872cdf70",
+  "dsb@0.5": "f2ca67a992453b7659726a08f346adb323ee9c90b8af215bb28959a58798a227",
+  "dsb@2.0": "a9a916e22e7a4eae5d12a5b2a58f2707988a3b3d21926d72d4761502bfc259a1",
+  "highs@0.05": "c14320e9f5a60052457eeee41b42e15d61c1427dea8c4149fd1a89c4009b386d",
+  "highs@0.1": "7631b66de8317aed5137ab7b3ff4ad57781d736ef15e0a8bca1c7390bf9a1b3a",
+  "highs@0.25": "53393d07aa6eb35edfe815826f786baf9114a7f93853f8280640cf84527d3df7",
+  "highs@0.5": "5aa4cc68ee3ac70ce4281cc0c6044ae6c501f3184521c41c7dc80a05dde4df26",
+  "highs@2.0": "a95b8040f56c0f028e85dbc42758114ecbf6ac4ffaa7fde08f8f349a25d6cb5c",
+  "system@0.05": "c5e1c413fc6b4b89f80525c9639fab635b65b31dc93a8d8c2ae4eb8229901114",
+  "system@0.1": "adfa26efcf0527e3f2b0c4e2ab823f5f74efb06b1d87c8856299bdb45c9522f7",
+  "system@0.25": "98592188db6b4bf0ed4705a96c586e1267e7cfc1e5c86020ad4f58bcaa48d930",
+  "system@0.5": "2d682650c3132af422782228f78d1f6249ce12072792ba34e0588d5b554ce9c4",
+  "system@2.0": "8d6424fd28f73213ff901c2dcccd9ce16efbf0b54fc383201caf0f65806b1d2b",
+  "tabu@0.05": "edd2d5fce778095a20c604d482ea9243016cb08cf6f90072de7fb91cca684bf0",
+  "tabu@0.1": "c9f95967793e295dd9b53fdb29adf45605f2a8965d1a2bc791a2d90448e57c39",
+  "tabu@0.25": "70938f365e0b1b7ede8cf5df1bcf521ce9a7e01b9ae07e8a12da1c7c07c16fd6",
+  "tabu@0.5": "58e4f605042fa71eca1a353489c22d92a97f973eed7f2fece7053210f042cbe3",
+  "tabu@2.0": "5cd96bd4c8e2ba8f55afe9ba8e3a7f32bbde0e5e445e7829057e8d0ac7ead340"
+ },
+ "exposure_scan": {
+  "calibration_hosts": 456,
+  "distinct_hosts": 3143,
+  "e1_named_hosts": 711,
+  "empty_files_skipped": [
+   "evidence/failed-wal-final-replay.json",
+   "evidence/final-replay.json"
+  ],
+  "excluded_identities": 3143,
+  "files_scanned": 1136,
+  "host_records": 14589
+ },
+ "ladder": [
+  0.05,
+  0.1,
+  0.25,
+  0.5,
+  2.0
+ ],
+ "largest_n_versus_sota": {
+  "burer": {
+   "candidate": "UNRESOLVED",
+   "dsb": "UNRESOLVED",
+   "highs": "UNRESOLVED",
+   "system": "UNRESOLVED",
+   "tabu": "UNRESOLVED"
+  },
+  "cpsat": {
+   "candidate": "UNRESOLVED",
+   "dsb": "X_FASTER",
+   "highs": "COMPARABLE",
+   "system": "UNRESOLVED",
+   "tabu": "UNRESOLVED"
+  }
+ },
+ "mqlib": {
+  "binary": "/usr/local/genesis-sota/bin/MQLib",
+  "sha256": "9e760cb75ab9a989a6a714bb0a357ce591e50bbd80ac1100fac253f7913ec4e3",
+  "source": {
+   "command": "cd <tmp>; g++ -IMQLib/include -std=c++11 -O2 -w -ffile-prefix-map=<tmp>=. -o MQLib.bin <every MQLib/src/**/*.cpp, relative, sorted> -lm",
+   "commit": "585496274af5abb0849d0d47e135496b4688680b",
+   "compiler": "g++ (Ubuntu 13.3.0-6ubuntu2~24.04.1) 13.3.0",
+   "repository": "https://github.com/MQLib/MQLib"
+  }
+ },
+ "ortools": {
+  "dir": "/usr/local/genesis-sota/py313",
+  "packages": {
+   "ortools": "9.15.6755"
+  },
+  "sha256": "fb5ef9ac7eddfbf80c9e27678df204400c6f913d41c500f24a50f9f4996d67f9",
+  "wheels": {
+   "ortools-9.15.6755-cp313-cp313-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl": "ebd5aea00374e3aad7a78de59058aca5e871a26a3c385cd0860ef1d685d03c9a"
+  },
+  "workers": 8
+ },
+ "reps": 3,
+ "schema": "genesis-b20r76-sota-v1",
+ "seeds": {
+  "boot": 20267699,
+  "hosts": 20267601
+ },
+ "status": "DEV comparison with state-of-the-art tools; licenses nothing; no package changed",
+ "validity": {
+  "cpu_s_median_at_0.5": {
+   "burer": 0.674,
+   "candidate": 0.674,
+   "cpsat": 1.0,
+   "dsb": 0.691,
+   "highs": 0.736,
+   "system": 0.68,
+   "tabu": 0.675
+  },
+  "failure_share": {
+   "burer": 0.0,
+   "candidate": 0.0,
+   "cpsat": 0.0,
+   "dsb": 0.0,
+   "highs": 0.0,
+   "system": 0.0,
+   "tabu": 0.0
+  }
+ },
+ "verdict": "UNRESOLVED"
+}

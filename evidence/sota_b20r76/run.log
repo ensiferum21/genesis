@@ -1,0 +1,16 @@
+[    0.0s] pinned to CPU 0
+[    0.1s] SAT tools: cadical@24fb99286ca1ea9a, drat-trim@92f0aa9575ed519d; MQLib /usr/local/genesis-sota/bin/MQLib sha256 9e760cb75ab9a989 (commit 5854962); OR-Tools tree /usr/local/genesis-sota/py313 sha256 fb5ef9ac7eddfbf8 {'ortools': '9.15.6755'} workers 8
+[    6.9s] exposure: 3143 identities (3143 named hosts, 711 E1 hosts, 456 calibration hosts)
+[  270.8s] n60 0000 (425 edges) target 265: candidate 0.6 system 0.25 dsb 0.1 tabu 0.05 burer 0.05 cpsat inf highs inf | exact cpsat 259@59.6s highs 263@59.9s | ref 39s
+[  617.0s] n60 0001 (405 edges) target 251 (uncertified): candidate 2 system 0.5 dsb 0.1 tabu 0.05 burer 0.05 cpsat inf highs inf | exact cpsat 249@60.1s highs 250@59.6s | ref 121s
+[  872.1s] n60 0002 (438 edges) target 273: candidate 0.6 system 0.6 dsb 0.25 tabu inf burer inf cpsat inf highs inf | exact cpsat 266@59.7s highs 267@60.2s | ref 31s
+[ 1132.5s] n60 0003 (437 edges) target 279: candidate inf system 3 dsb 2 tabu inf burer inf cpsat inf highs inf | exact cpsat 276@59.8s highs 276@59.9s | ref 36s
+[ 1389.6s] n60 0004 (434 edges) target 275: candidate 24 system 6 dsb 0.1 tabu 0.5 burer inf cpsat inf highs inf | exact cpsat 273@59.9s highs 274@60.0s | ref 33s
+[ 1646.9s] n60 0005 (430 edges) target 275: candidate 1.2 system 0.1 dsb 0.1 tabu 0.05 burer 0.1 cpsat inf highs inf | exact cpsat 275@59.7s highs 267@59.9s | ref 33s
+[ 1914.0s] n63 0000 (462 edges) target 295: candidate 6 system 3 dsb 6 tabu inf burer inf cpsat inf highs inf | exact cpsat 291@59.9s highs 293@59.8s | ref 38s
+[ 2266.3s] n63 0001 (468 edges) target 298 (uncertified): candidate 24 system inf dsb 6 tabu inf burer inf cpsat inf highs inf | exact cpsat 296@60.1s highs 295@59.9s | ref 121s
+[ 2522.8s] n63 0002 (452 edges) target 289: candidate 0.6 system 0.1 dsb 0.1 tabu 0.05 burer 0.05 cpsat inf highs inf | exact cpsat 286@60.2s highs 285@59.8s | ref 29s
+[ 2781.2s] n63 0003 (444 edges) target 278: candidate inf system 3 dsb 1.2 tabu 1.25 burer inf cpsat inf highs inf | exact cpsat 275@59.8s highs 273@59.7s | ref 33s
+[ 3042.3s] n63 0004 (459 edges) target 288: candidate 2 system 0.6 dsb 0.1 tabu 0.1 burer 0.6 cpsat inf highs inf | exact cpsat 285@59.8s highs 284@59.8s | ref 33s
+[ 3305.5s] n63 0005 (490 edges) target 315: candidate inf system inf dsb inf tabu inf burer inf cpsat inf highs inf | exact cpsat 315@59.9s highs 309@59.8s | ref 35s
+[ 3305.7s] verdict UNRESOLVED; n63 vs state of the art {'burer': {'candidate': 'UNRESOLVED', 'system': 'UNRESOLVED', 'dsb': 'UNRESOLVED', 'tabu': 'UNRESOLVED', 'highs': 'UNRESOLVED'}, 'cpsat': {'candidate': 'UNRESOLVED', 'system': 'UNRESOLVED', 'dsb': 'X_FASTER', 'tabu': 'UNRESOLVED', 'highs': 'COMPARABLE'}}

@@ -22,6 +22,12 @@ n = 40, 50, 60 with a ladder of run times and repeated seeds, take the optimal r
 median and upper-quartile TTS and their growth with n. This replaces "advantage up to k× budget" with a scaling
 statement, which is the form a speed claim should take (GV3).
 
+**Against the best known methods (B20_R75, R76).** The same measure against MQLib's BURER2002 and OR-Tools CP-SAT
+(B20_R76, after B20_R75 was invalidated by a kind defect) is **UNRESOLVED** on 6 hosts per size: CP-SAT run anytime
+for up to 2 s never reached the best known value; BURER2002 is the fastest method when it succeeds but succeeds on
+5 of 12 hosts; simulated bifurcation and the system's engine succeed most often (11 and 10 of 12). So no speed
+claim against the best known methods can be made yet; a powered replication is the next step.
+
 ## 2. Physics-inspired solvers as strong domain baselines
 
 **Weakness.** Until B20_R67 E1d had no baseline from its own field. Dunning, Gupta and Silberholz (2018) found

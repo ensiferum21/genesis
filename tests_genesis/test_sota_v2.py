@@ -74,5 +74,81 @@ class Design(unittest.TestCase):
         self.assertIn('R33.pinned_core()', (ROOT / 'scripts' / 'b20r76_sota.py').read_text())
 
 
+EV = ROOT / 'evidence' / 'sota_b20r76'
+
+
+class Record(unittest.TestCase):
+    """B20_R76's saved rows: valid, the analysis and the verdict (UNRESOLVED) recompute, the tools are the pinned ones,
+    every value is a checked one below the target, and the hosts are fresh and in the exposure addenda."""
+
+    @classmethod
+    def setUpClass(cls):
+        import json
+        cls.s = json.loads((EV / 'summary.json').read_text())
+        cls.rows = [json.loads(l) for l in (EV / 'rows.jsonl').read_text().splitlines() if l.strip()]
+
+    def test_valid_and_the_verdict_recomputes(self):
+        import json
+        self.assertEqual(len(self.rows), M.PER_N * len(M.NS))
+        invalid, cpu, fail = M.validity(self.rows)
+        self.assertIsNone(invalid)
+        self.assertTrue(all(cpu[a] >= M.MIN_CPU_AT_HALF for a in M.ARMS))
+        self.assertEqual(set(fail.values()), {0.0})                    # BURER2002 now runs: no failures at all
+        by_n = M.analyse(self.rows)
+        self.assertEqual(json.loads(json.dumps(by_n)), self.s['by_n'])
+        self.assertEqual(M.overall(by_n, invalid), self.s['verdict'])
+        self.assertEqual(self.s['verdict'], 'UNRESOLVED')
+        self.assertEqual(self.s['largest_n_versus_sota'],
+                         {'burer': dict.fromkeys(('candidate', 'system', 'dsb', 'tabu', 'highs'), 'UNRESOLVED'),
+                          'cpsat': {'candidate': 'UNRESOLVED', 'system': 'UNRESOLVED', 'dsb': 'X_FASTER',
+                                    'tabu': 'UNRESOLVED', 'highs': 'COMPARABLE'}})
+
+    def test_who_reached_the_target_within_2_s(self):
+        # hosts (of 12) where some rung reached the target: the point the record makes, recomputed from the rows
+        solved = {a: sum(not __import__('math').isinf(M.host_tts(r, a)[0]) for r in self.rows) for a in M.ARMS}
+        self.assertEqual(solved, {'dsb': 11, 'system': 10, 'candidate': 9, 'tabu': 7, 'burer': 5, 'cpsat': 0,
+                                  'highs': 0})
+        last = next(r for r in self.rows if r['n'] == 63 and r['edges'] == 490)
+        self.assertEqual((last['target'], last['target_certified'], last['exact']['cpsat']['value']), (315, True, 315))
+        self.assertTrue(all(x['value'] < 315 for a in M.ARMS for t in M.LADDER for x in last['runs'][a][str(t)]))
+        self.assertEqual(sum(r['exact'][s]['claims_optimal'] for r in self.rows for s in M.EXACT), 0)
+        self.assertEqual(sum(r['target_certified'] for r in self.rows), 10)
+
+    def test_values_are_bounded_and_isolated(self):
+        for r in self.rows:
+            self.assertLessEqual(r['target'], r['reference']['upper'])
+            self.assertEqual(r['target'], max(r['best_witness_value'], r['reference']['lower']))
+            for a in M.ARMS:
+                for t in M.LADDER:
+                    for x in r['runs'][a][str(t)]:
+                        self.assertLessEqual(x['value'], r['target'])
+                        self.assertEqual(x['isolation'], 'OCI_RUNC_NO_NETWORK_RO_ROOT_SECCOMP')
+            for s in M.EXACT:
+                self.assertEqual(r['exact'][s]['status'], 'SUCCESS')
+                self.assertLessEqual(r['exact'][s]['value'], r['target'])
+
+    def test_the_tools_are_the_pinned_ones(self):
+        import json
+        from genesis.candidate_kinds import cpsat as K, mqlib as MQ
+        self.assertEqual((self.s['mqlib']['sha256'], self.s['mqlib']['source']), (MQ.BINARY_SHA256, MQ.SOURCE))
+        self.assertEqual((self.s['ortools']['sha256'], self.s['ortools']['workers']), (K.SOTA_TREE_SHA256, K.WORKERS))
+        self.assertEqual(self.s['ortools']['wheels'], K.WHEELS)
+        self.assertEqual(self.s['descriptors'], json.loads(json.dumps(
+            {f'{a}@{t}': d['descriptor_id'] for (a, t), (_, d) in M.arm_descriptors().items()})))
+
+    def test_hosts_are_fresh_and_in_the_addenda(self):
+        import json
+        import b20r23_e1b_readiness as RD
+        from genesis.common import canonical
+        from genesis.models import GraphTask
+        tasks = [GraphTask.model_validate_json(canonical(t)) for t in json.loads((EV / 'hosts.json').read_text())['tasks']]
+        self.assertEqual([t.task_id for t in tasks], [r['task_id'] for r in self.rows])
+        self.assertEqual(len(RD.identities(tasks)), len(tasks))
+        for pkg in ('e1', 'e1b'):
+            add = json.loads((ROOT / 'handoff' / pkg / 'exposure_hosts_addendum_b20r76.json').read_text())
+            self.assertTrue(RD.identities(tasks) <= RD.identities([GraphTask.model_validate_json(canonical(t))
+                                                                    for t in add]))
+
+
 if __name__ == '__main__':
     unittest.main()

@@ -932,8 +932,11 @@
         "result": "State-of-the-art comparison (DEV, n60/n63, alone pinned): INVALID_CPU_DELIVERY. All BURER2002 runs returned empty witnesses (MQLib seeds limited to 0..65535; the kind failed silently); caught by the preregistered CPU check. Descriptive: dSB fastest, the system engine 1.2 s, candidate 1.2/3.0 s; HiGHS 60 s proved none; checked route certified 6/12. Repeated in B20_R76"
       },
       "B20_R76": {
-        "commits": [],
-        "result": "Engineering: mqlib-v1 fixed (seed mod 65536, loud failure); cpsat-v1 from the supplied OR-Tools 9.15 cp313 wheel (hash ebd5aea0), pinned tree fb5ef9ac, 8 workers on one core. Study pending"
+        "commits": [
+          "7e9d822",
+          "1b01159"
+        ],
+        "result": "Engineering: mqlib-v1 fixed (seed mod 65536, loud failure); cpsat-v1 from the supplied OR-Tools 9.15 cp313 wheel (hash ebd5aea0), pinned tree fb5ef9ac, 8 workers on one core. Study (DEV, n60/n63, alone pinned, 3,306 s): UNRESOLVED, valid. n63: the system unresolved vs BURER2002 and CP-SAT; dSB X_FASTER than CP-SAT. n60: system, candidate, dSB X_FASTER than CP-SAT; nothing resolved vs BURER2002. Targets within 2 s: dSB 11/12, system 10, candidate 9, tabu 7, BURER2002 5, CP-SAT 0, HiGHS 0; CP-SAT 60 s found the 315 optimum no heuristic found; checked route certified 10/12"
       }
     },
     "open_after_b20_r5": [
