@@ -1,5 +1,5 @@
 """B20_R66: E1d at n60, internal replication of B20_R64's n60 result with HiGHS up to 60 s. Design: fresh seeds,
-the arms, the validity criterion and the verdict rule."""
+the arms, the validity criterion and the verdict rule. Record: the verdict recomputes from the saved rows."""
 from pathlib import Path
 import re
 import sys
@@ -43,6 +43,43 @@ class Design(unittest.TestCase):
         d = M.delivery([row(90, 32.0, 95, 60.0), row(91, 16.0, 100, 1.0)])
         self.assertEqual(d['highs_32s'], (2, 0.75))
         self.assertEqual(d['highs_60s'], (1, 1.0))           # the 60 s arm reached the best known on the 2nd host
+
+
+EV = ROOT / 'evidence' / 'e1d_n60_b20r66'
+
+
+class Record(unittest.TestCase):
+    """B20_R66's saved rows: the verdict recomputes, the arms are the recorded ones, the hosts are fresh."""
+
+    @classmethod
+    def setUpClass(cls):
+        import json
+        cls.s = json.loads((EV / 'summary.json').read_text())
+        cls.rows = [json.loads(l) for l in (EV / 'rows.jsonl').read_text().splitlines() if l.strip()]
+
+    def test_verdict_recomputes_from_the_rows(self):
+        import json
+        self.assertEqual(len(self.rows), M.HOSTS)
+        v = json.loads(json.dumps(M.verdict(self.rows)))
+        for k in ('verdict', 'per_budget', 'cpu_delivery', 'valid', 'candidate_failures', 'hosts', 'descriptive'):
+            self.assertEqual(v[k], self.s[k], k)
+        self.assertEqual(v['verdict'], 'REPLICATED_ADVANTAGE_THROUGH_120X')
+
+    def test_arms_are_the_recorded_ones(self):
+        self.assertEqual(self.s['descriptors'], {n: d['descriptor_id'] for n, (_, d) in M.arms().items()})
+
+    def test_hosts_are_fresh_and_in_the_addenda(self):
+        import json
+        import b20r23_e1b_readiness as RD
+        from genesis.common import canonical
+        from genesis.models import GraphTask
+        tasks = [GraphTask.model_validate_json(canonical(t)) for t in json.loads((EV / 'hosts.json').read_text())['tasks']]
+        self.assertEqual([t.task_id for t in tasks], [r['task_id'] for r in self.rows])
+        self.assertEqual(len(RD.identities(tasks)), M.HOSTS)
+        for pkg in ('e1', 'e1b'):
+            add = json.loads((ROOT / 'handoff' / pkg / 'exposure_hosts_addendum_b20r66.json').read_text())
+            self.assertTrue(RD.identities(tasks) <= RD.identities([GraphTask.model_validate_json(canonical(t))
+                                                                    for t in add]))
 
 
 if __name__ == '__main__':

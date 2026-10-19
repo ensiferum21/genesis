@@ -60,6 +60,7 @@
 | E1d crossover (B20_R63) | fresh seeds, the arms (the 2 s arm is the package's), budget profiles, the rule; the verdict recomputes from the rows (CROSSOVER_AT_8S), no arm exceeds a certified optimum, the hosts are in the exposure addenda (`tests_genesis/test_e1d_crossover.py`) | commit | must pass |
 | E1d scaling (B20_R64) | fresh seeds, the arms (B20_R63's), the settings, the beyond-space generator equals the adapter inside the space, the rule; the verdict recomputes from the rows (ADVANTAGE_GROWS), the CPU-delivery criterion holds for the re-run and fails for run 1, the hosts are in the addenda (`tests_genesis/test_e1d_scaling.py`) | commit | must pass |
 | Unsupported hosts (B20_R65) | E1d exclusions are exactly the hosts above the certificate bound, E1b's is a reference limit, the brief quotes the derived table (`tests_genesis/test_unsupported_hosts.py`) | commit | must pass |
+| E1d at n60 (B20_R66) | fresh seeds, the arms (B20_R63's candidate and 32 s HiGHS, a 60 s HiGHS), the rule, the CPU-delivery measure; the verdict, per-budget results, delivery and descriptive figures recompute from the rows (REPLICATED_ADVANTAGE_THROUGH_120X), the arms are the recorded ones, the hosts are in the addenda (`tests_genesis/test_e1d_n60.py`) | commit | must pass |
 | Requirements ledger | every spec section, roadmap item and catalogue entry has a disposition with resolvable tests (`test_ledger.py`) | commit | must pass |
 
 Run: `python3 scripts/run_test_matrix.py --profile commit|nightly|release --report out.json`.

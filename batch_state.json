@@ -45,7 +45,7 @@
     "9": "Leak firewall: text/structural/elaborated/near-dup screening, oracle, theorem memory rule.",
     "10": "IR overloads + replay, 5 macros, research market, world-step loop, Appendix A registry.",
     "11": "Experiment B harness: FOF parser, SAT model finder, independent evaluator, E prover, kill gate (DEV: KILL).",
-    "12": "Release bundle + verifier, \u00a738 classes (mutation, load, golden baselines, smoke cap), CI, container recipe, env lock.",
+    "12": "Release bundle + verifier, §38 classes (mutation, load, golden baselines, smoke cap), CI, container recipe, env lock.",
     "13": "SAT baseline arm, e2e walkthrough, requirements map, final matrix.",
     "14": "R-01 shared receipt semantics; R-02 effective levels and bundle re-derivation; R-03 certificate custody + checker-only replay; three internal red-team rounds (11, 12, 9 findings; 4, 2, 1 critical) all closed with regressions; only replayable evidence licenses levels; custodian checks requests against the frozen campaign export; W01 ledger (343 rows); undeclared skips fail the matrix.",
     "14R1": "External review F-01 repaired: requested vs established wording; report.md derived per claim; free prose at floor; B14-OPEN-5 closed.",
@@ -845,7 +845,7 @@
         "commits": [
           "f2731ba"
         ],
-        "result": "pending (runs alone)"
+        "result": "E1d at n60, DEV replication of B20_R64 (20 fresh hosts, HiGHS at 32 s and 60 s, run alone pinned): REPLICATED_ADVANTAGE_THROUGH_120X. candidate - HiGHS +16.65 [11.0, 22.6] at 32 s (64x, 19/1/0), +2.00 [1.35, 2.65] at 60 s (120x, 17/2/1); CPU delivery 0.994/0.990; gap to the proven bound candidate 1.65, HiGHS 18.3/3.65; candidate optimal on 4/10 certified hosts. Exposure addenda (20 hosts)"
       }
     },
     "open_after_b20_r5": [
@@ -1255,6 +1255,9 @@
     ],
     "open_after_b20_r64": [
       "B20R41-OPEN-1 updated: the E1d advantage grows with host size; a claim there needs the family space extended and the 200-edge bound lifted for the LP-dual route"
+    ],
+    "open_after_b20_r66": [
+      "B20R41-OPEN-1 updated: the n60 lead replicates and holds at 120x HiGHS budget, closing; reviewer decisions unchanged"
     ]
   }
 }

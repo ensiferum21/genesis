@@ -59,6 +59,10 @@ that report would contain.
   The crossover is 16× at n40 and 64× at n50. At n60 (about 430 edges) the candidate still leads HiGHS at 64× its
   budget, +17.6 [8.1, 28.8], 10/0/0, while staying within about one edge of a proven upper bound. Claiming that
   needs a family-space extension and the 200-edge certificate bound lifted for the exact LP-dual route.
+- **The n60 result replicates, and holds at 120×** (B20_R66, a DEV replication on 20 fresh hosts):
+  **REPLICATED_ADVANTAGE_THROUGH_120X**. Against HiGHS at 64× the lead is +16.65 [11.0, 22.6], 19/1/0; at 120×,
+  `milp-highs-v1`'s ceiling, it is +2.00 [1.35, 2.65], 17/2/1. HiGHS is closing fast (its gap to a proven upper
+  bound falls from 18.3 to 3.65 between the two budgets), so here too the report must state the budget.
 - **Its scope is narrow.** Only these three settings, on that panel.
 
 **What it needs:**

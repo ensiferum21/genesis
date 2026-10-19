@@ -1,0 +1,95 @@
+{
+ "boot_seed": 20266699,
+ "candidate_failures": 0,
+ "code_identity": "f6a8dcf98bc2922d92e88db48b9b5a8b7fc29ca8ce5a7b3c35508f0bfd5e137b",
+ "cpu_delivery": {
+  "highs_32s": [
+   20,
+   0.9937
+  ],
+  "highs_60s": [
+   18,
+   0.9897
+  ]
+ },
+ "descriptive": {
+  "certified": 10,
+  "edges": [
+   415,
+   465
+  ],
+  "gap_to_upper_bound": {
+   "candidate": {
+    "max": 3,
+    "mean": 1.65
+   },
+   "highs_32s": {
+    "max": 46,
+    "mean": 18.3
+   },
+   "highs_60s": {
+    "max": 9,
+    "mean": 3.65
+   }
+  },
+  "highs_60s_below_32s": 0,
+  "reference_wall_s_median": 91.636
+ },
+ "descriptors": {
+  "candidate": "f4c7f4b0e5ced594f014dff8bc66703f2f545a52c1972a3d2a3cac42a8f195b1",
+  "highs_32s": "eb311e972550aaeb063aaf0c1ead5769d8f86c8ca8194bf2e1e9907f946225e1",
+  "highs_60s": "bf1a3f063e153ec5ae9925208e65a158616057a5eb53f92ed87d12e97846e7ed"
+ },
+ "exposure_scan": {
+  "calibration_hosts": 456,
+  "distinct_hosts": 3017,
+  "e1_named_hosts": 711,
+  "empty_files_skipped": [
+   "evidence/failed-wal-final-replay.json",
+   "evidence/final-replay.json"
+  ],
+  "excluded_identities": 3017,
+  "files_scanned": 1110,
+  "host_records": 14211
+ },
+ "hosts": 20,
+ "per_budget": {
+  "highs_32s": {
+   "budget_s": 32.0,
+   "estimate": 16.65,
+   "failures": 0,
+   "interval_90": [
+    11.0,
+    22.6
+   ],
+   "ratio_to_candidate": 64.0,
+   "verdict": "ADVANTAGE",
+   "wins_ties_losses": [
+    19,
+    1,
+    0
+   ]
+  },
+  "highs_60s": {
+   "budget_s": 60.0,
+   "estimate": 2.0,
+   "failures": 0,
+   "interval_90": [
+    1.35,
+    2.65
+   ],
+   "ratio_to_candidate": 120.0,
+   "verdict": "ADVANTAGE",
+   "wins_ties_losses": [
+    17,
+    2,
+    1
+   ]
+  }
+ },
+ "schema": "genesis-b20r66-e1d-n60-v1",
+ "seed": 20266601,
+ "status": "DEV replication outside the calibrated settings and the 200-edge custody bound; licenses nothing",
+ "valid": true,
+ "verdict": "REPLICATED_ADVANTAGE_THROUGH_120X"
+}
