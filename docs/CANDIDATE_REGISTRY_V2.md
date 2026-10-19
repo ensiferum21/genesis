@@ -143,3 +143,11 @@ problem itself (Andrade, Resende and Werneck 2012's move for independent sets, o
 over the 4 best distinct completed colourings. Parameters `{cpu_seconds}`; triangle-free only. Designed by the builder
 after B20_R76 showed that every cut-based arm misses optima that are not a cut plus a completion; registering it
 changed no other identity.
+
+## B20_R78: `solver-program-v1`
+
+Runs a program in the closed solver language of `invention/solver_programs.py` (relabel, descent, drop or force an
+edge, sweeps, acceptance rules, repeat, loop, split, return to the best) over one of B18's licensed
+representations. Parameters `{program, cpu_seconds}`; `check_parameters` refuses any program outside the grammar.
+It exists so that a program found by the system's own program search (`invention/solver_search.py`, B20_R79) can be
+frozen and evaluated like any other kind.
