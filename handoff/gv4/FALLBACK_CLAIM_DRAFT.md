@@ -47,7 +47,7 @@ that report would contain.
 **What must be said with it.**
 - **A standard max-cut heuristic does as well, so the advantage over HiGHS is not an advantage over the field
   (B20_R68).** Tabu search over one-vertex flips, with the same greedy completion and the same 0.5 s, ties the
-  candidate on the calibrated settings and beats it on n60 hosts. The candidate's lead over HiGHS is the lead of
+  candidate on the calibrated settings and beats it on n60 hosts (the n60 part is fragile to the analysis: B20_R73). The candidate's lead over HiGHS is the lead of
   the max-cut reduction plus local search over a generic MILP at short budgets: a *potential* speedup in the sense
   of Rønnow et al. (2014), against one chosen baseline. The claim must name its comparator class. If the
   reviewer's strong-baseline set includes domain heuristics (review brief item 1), Part A has no claim; what

@@ -1,0 +1,764 @@
+{
+ "code_identity": "93f9033903275382b3b57288e66d76975a0c4b749c11ea5e1fdfa2e4a0edd740",
+ "contrast_labels": {
+  "FRAGILE": 1,
+  "MIXED": 5,
+  "ROBUST": 12
+ },
+ "contrasts": {
+  "B20_R63 highs_16s": {
+   "agreement": 1.0,
+   "analyses": 108,
+   "by_choice": {
+    "level": {
+     "0.9": 1.0,
+     "0.95": 1.0
+    },
+    "method": {
+     "boot-mean": 1.0,
+     "boot-median": 1.0,
+     "t-mean": 1.0
+    },
+    "mue": {
+     "0.25": 1.0,
+     "0.5": 1.0,
+     "1.0": 1.0
+    },
+    "seed": {
+     "20266399": 1.0,
+     "20267301": 1.0,
+     "20267302": 1.0,
+     "20267303": 1.0,
+     "None": 1.0
+    },
+    "strat": {
+     "pooled": 1.0,
+     "preregistered": 1.0
+    }
+   },
+   "label": "ROBUST",
+   "preregistered": "NO_MATERIAL_DIFFERENCE",
+   "verdicts": {
+    "NO_MATERIAL_DIFFERENCE": 108
+   }
+  },
+  "B20_R63 highs_2s": {
+   "agreement": 1.0,
+   "analyses": 108,
+   "by_choice": {
+    "level": {
+     "0.9": 1.0,
+     "0.95": 1.0
+    },
+    "method": {
+     "boot-mean": 1.0,
+     "boot-median": 1.0,
+     "t-mean": 1.0
+    },
+    "mue": {
+     "0.25": 1.0,
+     "0.5": 1.0,
+     "1.0": 1.0
+    },
+    "seed": {
+     "20266399": 1.0,
+     "20267301": 1.0,
+     "20267302": 1.0,
+     "20267303": 1.0,
+     "None": 1.0
+    },
+    "strat": {
+     "pooled": 1.0,
+     "preregistered": 1.0
+    }
+   },
+   "label": "ROBUST",
+   "preregistered": "AHEAD",
+   "verdicts": {
+    "AHEAD": 108
+   }
+  },
+  "B20_R63 highs_32s": {
+   "agreement": 1.0,
+   "analyses": 108,
+   "by_choice": {
+    "level": {
+     "0.9": 1.0,
+     "0.95": 1.0
+    },
+    "method": {
+     "boot-mean": 1.0,
+     "boot-median": 1.0,
+     "t-mean": 1.0
+    },
+    "mue": {
+     "0.25": 1.0,
+     "0.5": 1.0,
+     "1.0": 1.0
+    },
+    "seed": {
+     "20266399": 1.0,
+     "20267301": 1.0,
+     "20267302": 1.0,
+     "20267303": 1.0,
+     "None": 1.0
+    },
+    "strat": {
+     "pooled": 1.0,
+     "preregistered": 1.0
+    }
+   },
+   "label": "ROBUST",
+   "preregistered": "NO_MATERIAL_DIFFERENCE",
+   "verdicts": {
+    "NO_MATERIAL_DIFFERENCE": 108
+   }
+  },
+  "B20_R63 highs_4s": {
+   "agreement": 0.8889,
+   "analyses": 108,
+   "by_choice": {
+    "level": {
+     "0.9": 0.926,
+     "0.95": 0.852
+    },
+    "method": {
+     "boot-mean": 1.0,
+     "boot-median": 0.75,
+     "t-mean": 1.0
+    },
+    "mue": {
+     "0.25": 1.0,
+     "0.5": 0.889,
+     "1.0": 0.778
+    },
+    "seed": {
+     "20266399": 0.875,
+     "20267301": 0.875,
+     "20267302": 0.875,
+     "20267303": 0.875,
+     "None": 1.0
+    },
+    "strat": {
+     "pooled": 0.778,
+     "preregistered": 1.0
+    }
+   },
+   "label": "MIXED",
+   "preregistered": "AHEAD",
+   "verdicts": {
+    "AHEAD": 96,
+    "UNRESOLVED": 12
+   }
+  },
+  "B20_R63 highs_8s": {
+   "agreement": 0.5741,
+   "analyses": 108,
+   "by_choice": {
+    "level": {
+     "0.9": 0.444,
+     "0.95": 0.704
+    },
+    "method": {
+     "boot-mean": 0.833,
+     "boot-median": 0.25,
+     "t-mean": 0.833
+    },
+    "mue": {
+     "0.25": 0.778,
+     "0.5": 0.667,
+     "1.0": 0.278
+    },
+    "seed": {
+     "20266399": 0.542,
+     "20267301": 0.542,
+     "20267302": 0.542,
+     "20267303": 0.542,
+     "None": 0.833
+    },
+    "strat": {
+     "pooled": 0.463,
+     "preregistered": 0.685
+    }
+   },
+   "label": "MIXED",
+   "preregistered": "UNRESOLVED",
+   "verdicts": {
+    "NO_MATERIAL_DIFFERENCE": 46,
+    "UNRESOLVED": 62
+   }
+  },
+  "B20_R64 n40 highs_2s": {
+   "agreement": 1.0,
+   "analyses": 54,
+   "by_choice": {
+    "level": {
+     "0.9": 1.0,
+     "0.95": 1.0
+    },
+    "method": {
+     "boot-mean": 1.0,
+     "boot-median": 1.0,
+     "t-mean": 1.0
+    },
+    "mue": {
+     "0.25": 1.0,
+     "0.5": 1.0,
+     "1.0": 1.0
+    },
+    "seed": {
+     "20266499": 1.0,
+     "20267301": 1.0,
+     "20267302": 1.0,
+     "20267303": 1.0,
+     "None": 1.0
+    }
+   },
+   "label": "ROBUST",
+   "preregistered": "AHEAD",
+   "verdicts": {
+    "AHEAD": 54
+   }
+  },
+  "B20_R64 n40 highs_32s": {
+   "agreement": 1.0,
+   "analyses": 54,
+   "by_choice": {
+    "level": {
+     "0.9": 1.0,
+     "0.95": 1.0
+    },
+    "method": {
+     "boot-mean": 1.0,
+     "boot-median": 1.0,
+     "t-mean": 1.0
+    },
+    "mue": {
+     "0.25": 1.0,
+     "0.5": 1.0,
+     "1.0": 1.0
+    },
+    "seed": {
+     "20266499": 1.0,
+     "20267301": 1.0,
+     "20267302": 1.0,
+     "20267303": 1.0,
+     "None": 1.0
+    }
+   },
+   "label": "ROBUST",
+   "preregistered": "NO_MATERIAL_DIFFERENCE",
+   "verdicts": {
+    "NO_MATERIAL_DIFFERENCE": 54
+   }
+  },
+  "B20_R64 n40 highs_8s": {
+   "agreement": 0.8148,
+   "analyses": 54,
+   "by_choice": {
+    "level": {
+     "0.9": 0.815,
+     "0.95": 0.815
+    },
+    "method": {
+     "boot-mean": 0.667,
+     "boot-median": 1.0,
+     "t-mean": 0.667
+    },
+    "mue": {
+     "0.25": 0.444,
+     "0.5": 1.0,
+     "1.0": 1.0
+    },
+    "seed": {
+     "20266499": 0.833,
+     "20267301": 0.833,
+     "20267302": 0.833,
+     "20267303": 0.833,
+     "None": 0.667
+    }
+   },
+   "label": "MIXED",
+   "preregistered": "NO_MATERIAL_DIFFERENCE",
+   "verdicts": {
+    "NO_MATERIAL_DIFFERENCE": 44,
+    "UNRESOLVED": 10
+   }
+  },
+  "B20_R64 n50 highs_2s": {
+   "agreement": 1.0,
+   "analyses": 54,
+   "by_choice": {
+    "level": {
+     "0.9": 1.0,
+     "0.95": 1.0
+    },
+    "method": {
+     "boot-mean": 1.0,
+     "boot-median": 1.0,
+     "t-mean": 1.0
+    },
+    "mue": {
+     "0.25": 1.0,
+     "0.5": 1.0,
+     "1.0": 1.0
+    },
+    "seed": {
+     "20266499": 1.0,
+     "20267301": 1.0,
+     "20267302": 1.0,
+     "20267303": 1.0,
+     "None": 1.0
+    }
+   },
+   "label": "ROBUST",
+   "preregistered": "AHEAD",
+   "verdicts": {
+    "AHEAD": 54
+   }
+  },
+  "B20_R64 n50 highs_32s": {
+   "agreement": 0.7778,
+   "analyses": 54,
+   "by_choice": {
+    "level": {
+     "0.9": 0.741,
+     "0.95": 0.815
+    },
+    "method": {
+     "boot-mean": 0.667,
+     "boot-median": 0.917,
+     "t-mean": 0.667
+    },
+    "mue": {
+     "0.25": 1.0,
+     "0.5": 1.0,
+     "1.0": 0.333
+    },
+    "seed": {
+     "20266499": 0.75,
+     "20267301": 0.833,
+     "20267302": 0.75,
+     "20267303": 0.833,
+     "None": 0.667
+    }
+   },
+   "label": "MIXED",
+   "preregistered": "UNRESOLVED",
+   "verdicts": {
+    "NO_MATERIAL_DIFFERENCE": 12,
+    "UNRESOLVED": 42
+   }
+  },
+  "B20_R64 n50 highs_8s": {
+   "agreement": 1.0,
+   "analyses": 54,
+   "by_choice": {
+    "level": {
+     "0.9": 1.0,
+     "0.95": 1.0
+    },
+    "method": {
+     "boot-mean": 1.0,
+     "boot-median": 1.0,
+     "t-mean": 1.0
+    },
+    "mue": {
+     "0.25": 1.0,
+     "0.5": 1.0,
+     "1.0": 1.0
+    },
+    "seed": {
+     "20266499": 1.0,
+     "20267301": 1.0,
+     "20267302": 1.0,
+     "20267303": 1.0,
+     "None": 1.0
+    }
+   },
+   "label": "ROBUST",
+   "preregistered": "AHEAD",
+   "verdicts": {
+    "AHEAD": 54
+   }
+  },
+  "B20_R64 n60 highs_2s": {
+   "agreement": 1.0,
+   "analyses": 54,
+   "by_choice": {
+    "level": {
+     "0.9": 1.0,
+     "0.95": 1.0
+    },
+    "method": {
+     "boot-mean": 1.0,
+     "boot-median": 1.0,
+     "t-mean": 1.0
+    },
+    "mue": {
+     "0.25": 1.0,
+     "0.5": 1.0,
+     "1.0": 1.0
+    },
+    "seed": {
+     "20266499": 1.0,
+     "20267301": 1.0,
+     "20267302": 1.0,
+     "20267303": 1.0,
+     "None": 1.0
+    }
+   },
+   "label": "ROBUST",
+   "preregistered": "AHEAD",
+   "verdicts": {
+    "AHEAD": 54
+   }
+  },
+  "B20_R64 n60 highs_32s": {
+   "agreement": 1.0,
+   "analyses": 54,
+   "by_choice": {
+    "level": {
+     "0.9": 1.0,
+     "0.95": 1.0
+    },
+    "method": {
+     "boot-mean": 1.0,
+     "boot-median": 1.0,
+     "t-mean": 1.0
+    },
+    "mue": {
+     "0.25": 1.0,
+     "0.5": 1.0,
+     "1.0": 1.0
+    },
+    "seed": {
+     "20266499": 1.0,
+     "20267301": 1.0,
+     "20267302": 1.0,
+     "20267303": 1.0,
+     "None": 1.0
+    }
+   },
+   "label": "ROBUST",
+   "preregistered": "AHEAD",
+   "verdicts": {
+    "AHEAD": 54
+   }
+  },
+  "B20_R64 n60 highs_8s": {
+   "agreement": 1.0,
+   "analyses": 54,
+   "by_choice": {
+    "level": {
+     "0.9": 1.0,
+     "0.95": 1.0
+    },
+    "method": {
+     "boot-mean": 1.0,
+     "boot-median": 1.0,
+     "t-mean": 1.0
+    },
+    "mue": {
+     "0.25": 1.0,
+     "0.5": 1.0,
+     "1.0": 1.0
+    },
+    "seed": {
+     "20266499": 1.0,
+     "20267301": 1.0,
+     "20267302": 1.0,
+     "20267303": 1.0,
+     "None": 1.0
+    }
+   },
+   "label": "ROBUST",
+   "preregistered": "AHEAD",
+   "verdicts": {
+    "AHEAD": 54
+   }
+  },
+  "B20_R66 highs_32s": {
+   "agreement": 1.0,
+   "analyses": 54,
+   "by_choice": {
+    "level": {
+     "0.9": 1.0,
+     "0.95": 1.0
+    },
+    "method": {
+     "boot-mean": 1.0,
+     "boot-median": 1.0,
+     "t-mean": 1.0
+    },
+    "mue": {
+     "0.25": 1.0,
+     "0.5": 1.0,
+     "1.0": 1.0
+    },
+    "seed": {
+     "20266699": 1.0,
+     "20267301": 1.0,
+     "20267302": 1.0,
+     "20267303": 1.0,
+     "None": 1.0
+    }
+   },
+   "label": "ROBUST",
+   "preregistered": "AHEAD",
+   "verdicts": {
+    "AHEAD": 54
+   }
+  },
+  "B20_R66 highs_60s": {
+   "agreement": 0.8519,
+   "analyses": 54,
+   "by_choice": {
+    "level": {
+     "0.9": 0.852,
+     "0.95": 0.852
+    },
+    "method": {
+     "boot-mean": 1.0,
+     "boot-median": 0.667,
+     "t-mean": 1.0
+    },
+    "mue": {
+     "0.25": 1.0,
+     "0.5": 1.0,
+     "1.0": 0.556
+    },
+    "seed": {
+     "20266699": 0.833,
+     "20267301": 0.833,
+     "20267302": 0.833,
+     "20267303": 0.833,
+     "None": 1.0
+    }
+   },
+   "label": "MIXED",
+   "preregistered": "AHEAD",
+   "verdicts": {
+    "AHEAD": 46,
+    "UNRESOLVED": 8
+   }
+  },
+  "B20_R68 Part A": {
+   "agreement": 1.0,
+   "analyses": 108,
+   "by_choice": {
+    "level": {
+     "0.9": 1.0,
+     "0.95": 1.0
+    },
+    "method": {
+     "boot-mean": 1.0,
+     "boot-median": 1.0,
+     "t-mean": 1.0
+    },
+    "mue": {
+     "0.25": 1.0,
+     "0.5": 1.0,
+     "1.0": 1.0
+    },
+    "seed": {
+     "20266899": 1.0,
+     "20267301": 1.0,
+     "20267302": 1.0,
+     "20267303": 1.0,
+     "None": 1.0
+    },
+    "strat": {
+     "pooled": 1.0,
+     "preregistered": 1.0
+    }
+   },
+   "label": "ROBUST",
+   "preregistered": "NO_MATERIAL_DIFFERENCE",
+   "verdicts": {
+    "NO_MATERIAL_DIFFERENCE": 108
+   }
+  },
+  "B20_R68 Part B": {
+   "agreement": 0.3704,
+   "analyses": 54,
+   "by_choice": {
+    "level": {
+     "0.9": 0.37,
+     "0.95": 0.37
+    },
+    "method": {
+     "boot-mean": 0.667,
+     "boot-median": 0.0,
+     "t-mean": 0.667
+    },
+    "mue": {
+     "0.25": 0.556,
+     "0.5": 0.556,
+     "1.0": 0.0
+    },
+    "seed": {
+     "20266899": 0.333,
+     "20267301": 0.333,
+     "20267302": 0.333,
+     "20267303": 0.333,
+     "None": 0.667
+    }
+   },
+   "label": "FRAGILE",
+   "preregistered": "BEHIND",
+   "verdicts": {
+    "BEHIND": 20,
+    "UNRESOLVED": 34
+   }
+  }
+ },
+ "schema": "genesis-b20r73-multiverse-v1",
+ "status": "robustness of committed DEV verdicts; changes no verdict; licenses nothing",
+ "study_level": {
+  "B20_R63": {
+   "agreement": 0.8889,
+   "analyses": 108,
+   "by_choice": {
+    "level": {
+     "0.9": 0.926,
+     "0.95": 0.852
+    },
+    "method": {
+     "boot-mean": 1.0,
+     "boot-median": 0.75,
+     "t-mean": 1.0
+    },
+    "mue": {
+     "0.25": 1.0,
+     "0.5": 0.889,
+     "1.0": 0.778
+    },
+    "strat": {
+     "pooled": 0.778,
+     "preregistered": 1.0
+    }
+   },
+   "label": "MIXED",
+   "preregistered": "crossover 8.0",
+   "verdicts": {
+    "crossover 4.0": 12,
+    "crossover 8.0": 96
+   }
+  },
+  "B20_R64": {
+   "agreement": 1.0,
+   "analyses": 108,
+   "by_choice": {
+    "level": {
+     "0.9": 1.0,
+     "0.95": 1.0
+    },
+    "method": {
+     "boot-mean": 1.0,
+     "boot-median": 1.0,
+     "t-mean": 1.0
+    },
+    "mue": {
+     "0.25": 1.0,
+     "0.5": 1.0,
+     "1.0": 1.0
+    },
+    "strat": {
+     "pooled": 1.0,
+     "preregistered": 1.0
+    }
+   },
+   "label": "ROBUST",
+   "preregistered": "ADVANTAGE_GROWS",
+   "verdicts": {
+    "ADVANTAGE_GROWS": 108
+   }
+  },
+  "B20_R66": {
+   "agreement": 0.8519,
+   "analyses": 108,
+   "by_choice": {
+    "level": {
+     "0.9": 0.852,
+     "0.95": 0.852
+    },
+    "method": {
+     "boot-mean": 1.0,
+     "boot-median": 0.667,
+     "t-mean": 1.0
+    },
+    "mue": {
+     "0.25": 1.0,
+     "0.5": 1.0,
+     "1.0": 0.556
+    },
+    "strat": {
+     "pooled": 0.852,
+     "preregistered": 0.852
+    }
+   },
+   "label": "MIXED",
+   "preregistered": "REPLICATED_ADVANTAGE_THROUGH_120X",
+   "verdicts": {
+    "REPLICATED_ADVANTAGE_THROUGH_120X": 92,
+    "REPLICATED_CROSSOVER_BY_120X": 16
+   }
+  },
+  "B20_R68": {
+   "agreement": 1.0,
+   "analyses": 108,
+   "by_choice": {
+    "level": {
+     "0.9": 1.0,
+     "0.95": 1.0
+    },
+    "method": {
+     "boot-mean": 1.0,
+     "boot-median": 1.0,
+     "t-mean": 1.0
+    },
+    "mue": {
+     "0.25": 1.0,
+     "0.5": 1.0,
+     "1.0": 1.0
+    },
+    "strat": {
+     "pooled": 1.0,
+     "preregistered": 1.0
+    }
+   },
+   "label": "ROBUST",
+   "preregistered": "E1D_MATCHES_DOMAIN_HEURISTIC",
+   "verdicts": {
+    "E1D_MATCHES_DOMAIN_HEURISTIC": 108
+   }
+  }
+ },
+ "universe": {
+  "boot": 4000,
+  "extra_seeds": [
+   20267301,
+   20267302,
+   20267303
+  ],
+  "levels": [
+   0.9,
+   0.95
+  ],
+  "methods": [
+   "boot-mean",
+   "t-mean",
+   "boot-median"
+  ],
+  "mue": [
+   0.25,
+   0.5,
+   1.0
+  ],
+  "stratification": [
+   "preregistered",
+   "pooled"
+  ]
+ }
+}

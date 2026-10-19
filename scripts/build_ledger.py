@@ -544,7 +544,8 @@ WORKSTREAMS = {
             'B20_R66: the n60 lead replicates on fresh hosts and holds at 120x, REPLICATED_ADVANTAGE_THROUGH_120X, DEV; '
             'B20_R68: a standard max-cut tabu search ties the candidate on the calibrated settings and beats it at n60, '
             'E1D_MATCHES_DOMAIN_HEURISTIC, DEV; B20_R70: by time-to-solution the candidate is slower than simulated '
-            'bifurcation and tabu search and scales worst, E1D_SLOWER_THAN_SOME, DEV)', B,
+            'bifurcation and tabu search and scales worst, E1D_SLOWER_THAN_SOME, DEV; B20_R73: multiverse analysis, '
+            '12 of 18 contrasts robust, B20_R68 Part B fragile)', B,
             ['src/genesis/domains.py', 'src/genesis/calibration.py', 'configs/dev_calibration.json',
              'evidence/certification_budget_b20r30/summary.json', 'evidence/strong_baseline_audit_b20r33/summary.json',
              'evidence/mip_hard_probe_b20r34/summary.json', 'evidence/dense_strong_baseline_b20r38/summary.json',
@@ -554,7 +555,8 @@ WORKSTREAMS = {
              'scripts/b20r64_e1d_scaling.py', 'evidence/e1d_scaling_b20r64/summary.json',
              'scripts/b20r66_e1d_n60.py', 'evidence/e1d_n60_b20r66/summary.json',
              'scripts/b20r68_e1d_domain_heuristic.py', 'evidence/e1d_domain_heuristic_b20r68/summary.json',
-             'scripts/b20r70_tts_scaling.py', 'evidence/tts_scaling_b20r70/summary.json'],
+             'scripts/b20r70_tts_scaling.py', 'evidence/tts_scaling_b20r70/summary.json',
+             'scripts/b20r73_multiverse.py', 'evidence/multiverse_b20r73/summary.json'],
             [G + 'test_domain_adapters.py', G + 'test_calibration.py', G + 'test_calibration_rules.py',
              G + 'test_certification_budget.py', G + 'test_strong_baseline_audit.py', G + 'test_mip_hard_probe.py',
              G + 'test_dense_strong_baseline.py', G + 'test_e1d_readiness.py', G + 'test_e1d_package.py',

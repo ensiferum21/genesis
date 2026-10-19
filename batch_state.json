@@ -882,9 +882,16 @@
       },
       "B20_R72": {
         "commits": [
-          "3d69ae5"
+          "3d69ae5",
+          "4bfdc41"
         ],
         "result": "Physics move rules in the representation engine (DEV, n60, alone pinned): NO_GENERAL_IMPROVEMENT. eo/anneal - descent: cross_2 -0.15/-0.20, adjacent_3 -0.05/-0.05 (no material difference), ordered_2 -1.25/-2.50 (worse). The builder expected annealing to help everywhere. Same descent with faster repair - frozen candidate +0.45 [0.25, 0.65]; dSB best overall. Exposure addenda (20 hosts)"
+      },
+      "B20_R73": {
+        "commits": [
+          "b8e4fba"
+        ],
+        "result": "Multiverse analysis of E1d DEV verdicts (B20_R63/R64/R66/R68, 18 contrasts, 54-108 analyses each): 12 ROBUST, 5 MIXED, 1 FRAGILE (B20_R68 Part B). Study level: R64, R68 ROBUST; R63, R66 MIXED. MUE and mean-vs-median drive the changes"
       }
     },
     "open_after_b20_r5": [
@@ -1306,6 +1313,9 @@
     ],
     "open_after_b20_r70": [
       "B20R41-OPEN-1 updated: by time-to-solution the candidate is slower than domain heuristics and scales worst"
+    ],
+    "open_after_b20_r73": [
+      "B19-OPEN-4 updated: the MUE and mean-vs-median are the concrete questions for the statistician"
     ]
   }
 }

@@ -1,5 +1,5 @@
 """B20_R73: the multiverse analysis of E1d's DEV verdicts. Design: the contrasts are the studies' own, the
-preregistered analysis reproduces each study's verdict, the rule, the universe and the labels."""
+preregistered analysis reproduces each study's verdict, the rule, the universe and the labels. Record: the summary recomputes."""
 from pathlib import Path
 import re
 import sys
@@ -60,6 +60,27 @@ class Design(unittest.TestCase):
         pre = M.preregistered_study_verdicts()
         self.assertEqual(pre, {'B20_R63': 'crossover 8.0', 'B20_R64': 'ADVANTAGE_GROWS',
                                'B20_R66': 'REPLICATED_ADVANTAGE_THROUGH_120X', 'B20_R68': 'E1D_MATCHES_DOMAIN_HEURISTIC'})
+
+
+EV = ROOT / 'evidence' / 'multiverse_b20r73'
+
+
+class Record(unittest.TestCase):
+    """B20_R73's summary recomputes from the committed rows of the four studies."""
+
+    def test_summary_recomputes(self):
+        import json
+        import tempfile
+        s = json.loads((EV / 'summary.json').read_text())
+        with tempfile.TemporaryDirectory() as d:
+            M.main([d])
+            again = json.loads((Path(d) / 'summary.json').read_text())
+        for k in ('contrast_labels', 'contrasts', 'study_level', 'universe'):
+            self.assertEqual(again[k], s[k], k)
+        self.assertEqual(s['contrast_labels'], {'FRAGILE': 1, 'MIXED': 5, 'ROBUST': 12})
+        self.assertEqual(s['contrasts']['B20_R68 Part B']['label'], 'FRAGILE')
+        self.assertEqual({k: v['label'] for k, v in s['study_level'].items()},
+                         {'B20_R63': 'MIXED', 'B20_R64': 'ROBUST', 'B20_R66': 'MIXED', 'B20_R68': 'ROBUST'})
 
 
 if __name__ == '__main__':

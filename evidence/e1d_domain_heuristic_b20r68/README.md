@@ -50,7 +50,8 @@ local search over a generic MILP at a short budget. In the terms of Rønnow et a
 speedup, against one chosen baseline; against the best-known class of methods for the problem there is no
 advantage.
 
-**On larger hosts the standard heuristic is ahead.** At n60 tabu search is better on 13 hosts and worse on 1, by
+**On larger hosts the standard heuristic is ahead** (later labelled FRAGILE by the B20_R73 multiverse analysis: it holds
+only with the mean and MUE ≤ 0.5; the direction, 13 of 20 hosts against 1, is not in doubt). At n60 tabu search is better on 13 hosts and worse on 1, by
 1.15 edges per host, and it reaches the optimum on 7 of 13 certified hosts against the candidate's 3. Four times
 more time for tabu changes little (−1.25), so the gap is in the search, not the budget: one-flip descent stops at
 local optima that tabu search's moves escape.
