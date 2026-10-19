@@ -1,5 +1,5 @@
 """B20_R72: physics move rules in the system's representation engine. Design: fresh seeds, the arms and their
-shared profile, the verdict rule and the overall rule on synthetic rows."""
+shared profile, the verdict rule and the overall rule on synthetic rows. Record: the verdict recomputes from the saved rows."""
 from pathlib import Path
 import re
 import sys
@@ -68,6 +68,53 @@ class Design(unittest.TestCase):
 
     def test_the_study_is_pinned(self):
         self.assertIn('R33.pinned_core()', (ROOT / 'scripts' / 'b20r72_represent_moves.py').read_text())
+
+
+EV = ROOT / 'evidence' / 'represent_moves_b20r72'
+
+
+class Record(unittest.TestCase):
+    """B20_R72's saved rows: the analysis and verdict recompute, the arms are the recorded ones, the hosts are fresh."""
+
+    @classmethod
+    def setUpClass(cls):
+        import json
+        cls.s = json.loads((EV / 'summary.json').read_text())
+        cls.rows = [json.loads(l) for l in (EV / 'rows.jsonl').read_text().splitlines() if l.strip()]
+
+    def test_verdict_recomputes_from_the_rows(self):
+        self.assertEqual(len(self.rows), M.HOSTS)
+        a = M.analyse(self.rows, list(self.s['descriptors']))
+        for k in ('verdict', 'improving_moves', 'primary', 'secondary', 'failures', 'cpu_s_median', 'hosts'):
+            self.assertEqual(a[k], self.s[k], k)
+        self.assertEqual(self.s['verdict'], 'NO_GENERAL_IMPROVEMENT')
+        self.assertEqual({k: v['verdict'] for k, v in self.s['primary'].items()},
+                         {'cross_2/eo - cross_2/descent': 'NO_MATERIAL_DIFFERENCE',
+                          'cross_2/anneal - cross_2/descent': 'UNRESOLVED',
+                          'adjacent_3/eo - adjacent_3/descent': 'NO_MATERIAL_DIFFERENCE',
+                          'adjacent_3/anneal - adjacent_3/descent': 'NO_MATERIAL_DIFFERENCE',
+                          'ordered_2/eo - ordered_2/descent': 'WORSENS',
+                          'ordered_2/anneal - ordered_2/descent': 'WORSENS'})
+
+    def test_arms_are_the_recorded_ones(self):
+        self.assertEqual(self.s['descriptors'], {n: d['descriptor_id'] for n, (_, d) in M.arms().items()})
+        for r in self.rows:
+            self.assertEqual({a['isolation'] for a in r['arms'].values()}, {'OCI_RUNC_NO_NETWORK_RO_ROOT_SECCOMP'})
+            if r['optimum'] is not None:
+                self.assertTrue(all(a['value'] <= r['optimum'] for a in r['arms'].values()))
+
+    def test_hosts_are_fresh_and_in_the_addenda(self):
+        import json
+        import b20r23_e1b_readiness as RD
+        from genesis.common import canonical
+        from genesis.models import GraphTask
+        tasks = [GraphTask.model_validate_json(canonical(t)) for t in json.loads((EV / 'hosts.json').read_text())['tasks']]
+        self.assertEqual([t.task_id for t in tasks], [r['task_id'] for r in self.rows])
+        self.assertEqual(len(RD.identities(tasks)), M.HOSTS)
+        for pkg in ('e1', 'e1b'):
+            add = json.loads((ROOT / 'handoff' / pkg / 'exposure_hosts_addendum_b20r72.json').read_text())
+            self.assertTrue(RD.identities(tasks) <= RD.identities([GraphTask.model_validate_json(canonical(t))
+                                                                    for t in add]))
 
 
 if __name__ == '__main__':

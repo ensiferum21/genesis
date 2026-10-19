@@ -52,6 +52,11 @@ annealed move rule in place of descent, leaving the frozen v1 candidate untouche
 representation menu (cross_2, adjacent_k, ordered_k), that is a component improvement the system can apply to
 whatever it invents next, rather than a fix for one problem.
 
+**Result (B20_R72): NO_GENERAL_IMPROVEMENT.** Neither move rule helps (cross_2, adjacent_3: no material difference;
+ordered_2: worse). What helps is speed (the same descent with a faster repair: +0.45 over the frozen candidate) and
+whole-configuration dynamics (simulated bifurcation, best overall). Revised next step: a faster engine or an
+SB-style search over encodings.
+
 ## 4. Where hard problems live: phase transitions and finite-size scaling
 
 **Weakness.** Several families had no headroom (E3, the equational target, MIP-dominated E1/E1b settings), and the

@@ -125,6 +125,7 @@ needs people: a reviewer, a statistician, an independent custodian on its own ma
 | B20_R69 | Physics-inspired domain baselines (`ising-dsb-v1` simulated bifurcation, `maxcut-eo-v1` extremal optimization) and `docs/PHYSICS_INSPIRED_PLAN.md`; an unstable SB step fixed before use |
 | B20_R70 | Time-to-solution scaling (DEV): **E1D_SLOWER_THAN_SOME**. Simulated bifurcation about 9× faster than the candidate at n60, tabu about 10× at n50; the candidate scales worst |
 | B20_R71 | `represent-search-v1`: the representation engine with descent, extremal-optimization or annealing moves for any licensed invented representation |
+| B20_R72 | Physics move rules in the invention engine (DEV): **NO_GENERAL_IMPROVEMENT**; speed (faster repair, +0.45) and whole-configuration dynamics (simulated bifurcation) are what help |
 
 ## 6. Next steps, in order
 
