@@ -572,7 +572,8 @@ WORKSTREAMS = {
             'CP-SAT installed from a supplied wheel as cpsat-v1, and the comparison with CP-SAT and the fixed '
             'BURER2002 UNRESOLVED; B20_R77: hybrid-swap-v1, a cut portfolio with (1,2)-swap local search, and its '
             'powered comparison with CP-SAT and BURER2002, ENGINE_BEATS_SOTA on DEV; B20_R78: a closed solver language, '
-            'solver-program-v1 and a program search; B20_R79: the system searches for its own solver)', B,
+            'solver-program-v1 and a program search; B20_R79: the system searches for its own solver; B20_R80: a '
+            'random-program control; B20_R81: the self-found solver against the builder engine and the tools)', B,
             ['src/genesis/custody_records.py', 'src/genesis/custodian.py', 'src/genesis/decision_record.py',
              'src/genesis/candidates.py', 'src/genesis/judge.py', 'src/genesis/learning/statement_panels.py',
              'src/genesis/learning/research_export.py', 'src/genesis/candidates_v2.py',
@@ -588,14 +589,15 @@ WORKSTREAMS = {
              'src/genesis/candidate_kinds/hybrid_swap.py', 'scripts/b20r77_engine_vs_sota.py',
              'evidence/engine_vs_sota_b20r77/summary.json', 'src/genesis/invention/solver_programs.py',
              'src/genesis/invention/solver_search.py', 'src/genesis/candidate_kinds/solver_program.py',
-             'scripts/b20r79_program_search.py'],
+             'scripts/b20r79_program_search.py', 'scripts/b20r80_random_program_control.py',
+             'scripts/b20r81_self_found_solver.py'],
             [G + 'test_evaluator_readiness.py', G + 'test_redteam_b16.py', G + 'test_candidate_adapters.py',
              G + 'test_candidate_custody.py', G + 'test_statement_custody.py', G + 'test_candidates_v2.py',
              G + 'test_wiring_v5.py', G + 'test_maxcut_tabu.py', G + 'test_physics_kinds.py',
              G + 'test_represent_search.py', G + 'test_mqlib_kind.py',
              G + 'test_cpsat_kind.py', G + 'test_sota.py', G + 'test_sota_v2.py',
              G + 'test_hybrid_swap.py', G + 'test_engine_vs_sota.py', G + 'test_solver_programs.py',
-             G + 'test_program_search_study.py']),
+             G + 'test_program_search_study.py', G + 'test_self_found_solver.py']),
     'W07': ('Statistics, fairness and decision rules', B,
             [K + 'analysis.py', 'src/genesis/power.py', 'src/genesis/judge.py', 'src/genesis/resources.py',
              'docs/STATISTICIAN_BRIEF.md', 'scripts/b20r61_statistician_brief.py', 'scripts/b20r62_power_rebind.py',

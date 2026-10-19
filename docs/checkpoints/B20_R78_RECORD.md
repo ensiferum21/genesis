@@ -66,3 +66,16 @@ runs in runc with a checked witness. `tests_genesis/test_program_search_study.py
 anatomy. **Expectation:** an iterated local search over cuts like the development look's, better than B20_R76's
 system engine; about one chance in three that it also uses a swap-like edge step. B20_R80 will test the frozen program
 on fresh hosts against B20_R77's engine, simulated bifurcation, BURER2002 and CP-SAT.
+
+# B20_R80 and B20_R81 setup (preregistered before B20_R79 has run)
+
+- **B20_R80, a control** (`scripts/b20r80_random_program_control.py`): random programs from the same language for the
+  same 6,000 CPU s on B20_R79's training hosts, chosen as the search chooses (Bergstra and Bengio 2012: random search
+  is the standard control). Expectation: weaker than the search's program.
+- **B20_R81, the test** (`scripts/b20r81_self_found_solver.py`): the two frozen programs, read from B20_R79's and
+  B20_R80's evidence (their SHA-256 recorded), against B20_R77's engine, dSB, the system's B20_R76 engine, BURER2002
+  and CP-SAT on 24 fresh n63 hosts, by B20_R77's quantile statistic. Three labels: the GV4 headline (self-found
+  against the builder's engine), whether the search does the work (against random), and against the state of the
+  art; plus a replication of B20_R77. Expectation: the found program beats the B20_R76 engine and random search,
+  loses to the builder's engine, and is MIXED against the state of the art; the engine replicates B20_R77.
+- Tests: `tests_genesis/test_self_found_solver.py` (7, design).
