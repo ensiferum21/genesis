@@ -1,0 +1,113 @@
+{
+ "schema": "genesis-baseline-catalog-v1",
+ "note": "The strongest published solvers per problem class, with when their results were published. 'leading' marks the ones a study claiming to beat the state of the art must include (or explicitly defer). Sources are the Evaluations' own rankings. 'solver_key' is the solver's key in the candidate kinds (maxsat-anytime-v1, maxsat-anytime-2026-v1); a study includes a solver when its summary's 'champions' records that key (with the pinned binary's SHA-256). 'as_of' is when the catalog was last checked against the field and 'refresh' when the field next publishes results; after that date the cell's autoreceptor reports STALE_KNOWLEDGE until the catalog is checked again.",
+ "problem_classes": {
+  "unweighted_partial_maxsat_anytime": {
+   "source": "MaxSAT Evaluation 2024 talk (Berg, Jarvisalo); MaxSAT Evaluation 2026 slides and results.zip (Zenodo 21358014); ECAI 2025 (DeepDist); SOFT 2026 (Aperture)",
+   "as_of": "2026-10-20",
+   "refresh": {
+    "month": 7,
+    "day": 1,
+    "event": "MaxSAT Evaluation results, presented each summer at the SAT conference (checked from 1 July, before they are announced, so the cell never runs on a stale catalog)"
+   },
+   "home_budgets_s": [
+    60,
+    300,
+    1707
+   ],
+   "entries": [
+    {
+     "name": "SPB-MaxSAT-c-FPS",
+     "published": "2024-07",
+     "leading": true,
+     "note": "MSE 2024 unweighted anytime winner (with SPB-MaxSAT-c-Band)",
+     "solver_key": "spb-maxsat-c-fps"
+    },
+    {
+     "name": "NuWLS-c-IBR",
+     "published": "2024-07",
+     "leading": true,
+     "note": "MSE 2024 podium",
+     "solver_key": "nuwls-c-ibr"
+    },
+    {
+     "name": "TT-Open-WBO-Inc",
+     "published": "2024-07",
+     "leading": true,
+     "note": "MSE 2024 podium",
+     "solver_key": "tt-open-wbo-inc"
+    },
+    {
+     "name": "DeepDist",
+     "published": "2025-10",
+     "leading": true,
+     "note": "ECAI 2025; reports beating SPB-MaxSAT",
+     "solver_key": "deepdist"
+    },
+    {
+     "name": "Aperture (hermax)",
+     "published": "2026-04",
+     "leading": false,
+     "note": "SOFT 2026 workshop version, via hermax",
+     "solver_key": "aperture"
+    },
+    {
+     "name": "PASMaxSAT-c",
+     "published": "2026-07",
+     "leading": true,
+     "note": "MSE 2026: 1st at 60 s and 1707 s",
+     "solver_key": "pasmaxsat-c"
+    },
+    {
+     "name": "Aperture-KBG",
+     "published": "2026-07",
+     "leading": true,
+     "note": "MSE 2026: 1st at 300 s",
+     "solver_key": "aperture-kbg"
+    },
+    {
+     "name": "SGAT-NuWLS-c",
+     "published": "2026-07",
+     "leading": true,
+     "note": "MSE 2026: 2nd-4th",
+     "solver_key": "sgat-nuwls-c"
+    },
+    {
+     "name": "Aperture-GBG",
+     "published": "2026-07",
+     "leading": true,
+     "note": "MSE 2026: 3rd-4th",
+     "solver_key": "aperture-gbg"
+    },
+    {
+     "name": "NuWLS-c-2026-UB",
+     "published": "2026-07",
+     "leading": true,
+     "note": "MSE 2026: 4th-6th",
+     "solver_key": "nuwls-c-2026-ub"
+    },
+    {
+     "name": "Aperture-IBI",
+     "published": "2026-07",
+     "leading": false,
+     "note": "MSE 2026: 5th-6th",
+     "solver_key": "aperture-ibi"
+    },
+    {
+     "name": "DeepDist-c",
+     "published": "2026-07",
+     "leading": false,
+     "note": "MSE 2026: 7th-9th",
+     "solver_key": "deepdist-c"
+    },
+    {
+     "name": "NuWLS-c-2026",
+     "published": "2026-07",
+     "leading": false,
+     "note": "MSE 2026: 7th-8th",
+     "solver_key": "nuwls-c-2026"
+    }
+   ]
+  }
+ }
+}
