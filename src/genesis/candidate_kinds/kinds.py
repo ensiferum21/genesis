@@ -23,4 +23,6 @@ KINDS = {
     'hybrid-swap-v1': 'hybrid_swap',      # B20_R77: cut portfolio (dSB + descent), then (1,2)-swap local search
     'solver-program-v1': 'solver_program',  # B20_R78: a program in the closed solver language, found by program search
     'solver-library-v1': 'solver_library_program',  # B20_R82: a solver program calling earlier generations' programs
+    'maxsat-anytime-v1': 'maxsat',        # B20_R87: the strongest anytime MaxSAT solvers on the exact MaxSAT encoding
+    'mqlib-heuristic-v1': 'mqlib_heuristic',  # B20_R87: any of MQLib's 37 heuristics (for the per-host virtual best)
 }
