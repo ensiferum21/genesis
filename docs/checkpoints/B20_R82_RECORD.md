@@ -42,3 +42,11 @@ program on cross_2 that calls generation 1 three times and adds a kick (force on
 edge drops and relabels around it; final mean 291.59 on its own 16 training hosts (not comparable with B20_R79's
 hosts). All 16 programs of its final population call generation 1. Judged against generation 1 and the control in
 B20_R86. Record tests (2); exposure addenda (16 hosts).
+
+## B20_R84 result (generation 2's control)
+
+Alone, pinned, 6,241 s (`evidence/generation2_control_b20r84/`); light builder work on the other core in its last
+~40 minutes, disclosed. With no library, on B20_R83's hosts and budget, the search froze an iterated local search over
+cuts with an annealed edge sweep; final mean 291.61 against generation 2's 291.59. The library made no difference on
+the training hosts. B20_R85 and B20_R86 are deferred, not withdrawn: Daniel asked for the comparison with the
+strongest tuned solvers first (B20_R87 onward).

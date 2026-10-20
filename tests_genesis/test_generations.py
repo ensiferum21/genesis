@@ -127,5 +127,22 @@ class RecordB20R83(unittest.TestCase):
         self.assertEqual(self.s['search']['macro_use_in_final_population'], 16)
 
 
+class RecordB20R84(unittest.TestCase):
+    def test_the_frozen_control_has_no_library_and_used_b20r83_s_hosts(self):
+        import json
+        from genesis.candidate_kinds import solver_program as KP
+        from genesis.invention import solver_library as SL
+        d = G.STUDIES['b20r84']['out']
+        frozen = json.loads((d / 'program.json').read_text())
+        s = json.loads((d / 'summary.json').read_text())
+        self.assertEqual(frozen['program']['library'], [])
+        self.assertEqual(SL.problems(frozen['program'], KP.licensed_reps('triangle_free_host_v1')), [])
+        best = max(s['search']['finalists'], key=lambda f: (f['final_mean'], -f['size']))
+        self.assertEqual((best['body'], best['final_mean']), (frozen['program']['body'], 291.6094))
+        a = json.loads((d / 'hosts.json').read_text())['tasks']
+        b = json.loads((G.STUDIES['b20r83']['out'] / 'hosts.json').read_text())['tasks']
+        self.assertEqual([t['task_id'] for t in a], [t['task_id'] for t in b])
+
+
 if __name__ == '__main__':
     unittest.main()

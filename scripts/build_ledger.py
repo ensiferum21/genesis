@@ -597,6 +597,7 @@ WORKSTREAMS = {
              'src/genesis/invention/solver_library.py',
              'src/genesis/invention/library_search.py', 'src/genesis/candidate_kinds/solver_library_program.py',
              'scripts/b20r83_generation_search.py', 'evidence/generation2_b20r83/summary.json',
+             'evidence/generation2_control_b20r84/summary.json',
              'scripts/b20r86_generations_eval.py'],
             [G + 'test_evaluator_readiness.py', G + 'test_redteam_b16.py', G + 'test_candidate_adapters.py',
              G + 'test_candidate_custody.py', G + 'test_statement_custody.py', G + 'test_candidates_v2.py',

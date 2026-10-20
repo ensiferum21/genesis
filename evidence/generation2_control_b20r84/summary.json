@@ -1,0 +1,640 @@
+{
+ "code_identity": "225ed65203cb018d5be3a30af67b985b114088c559e5e0f13a4145e654f0c208",
+ "constants": {
+  "BUDGET": 0.25,
+  "CHILDREN": 8,
+  "POP": 16,
+  "SEARCH_S": 6000.0
+ },
+ "cpu_s": 6163.7,
+ "descriptor_at_0.5s": {
+  "descriptor_id": "491d7ac93897679dcd6979edc051ecf313002b9b387f00095a393e666acd8487",
+  "domain": "triangle_free_host_v1",
+  "implementation": {
+   "candidate_kinds/solver_library_program.py": "b438e37a774d2490c608f769bcb6476c41136f7ea8fc513453088f4818dcf3bb",
+   "candidate_kinds/solver_program.py": "077f2443ff209496e8923120597acfe49572ea97b2542f7046a6f6ced723c85e",
+   "candidates_v2.py": "b9d7a43efcbb6b64bbf5c723602f95a88bd3907454a8ba31706bf116de8cbc6a",
+   "formal_research/triangle_theory.py": "32768094b0f8c58f0ac09492c9538000a4ef61af611962f077f56823d520db58",
+   "graphs.py": "e0e8e089a240a2fc3a422d29c6fe65a6031d06264eab29fb8a991ad60213261d",
+   "invention/representations.py": "5c53e369b93db4d854c1829587202423bd81c14eafa55808b77c1852f44bfcbd",
+   "invention/solver_library.py": "ae56d8ab152b134322ff6cf2ff7679e7b680fed18bafafa722ae4be933d5034a",
+   "invention/solver_programs.py": "6700866deae0810d68df9f0460ec3a0211aadc42345ffd02e7c5aadc046346e2",
+   "invention/soundness.py": "d50071a54da40ebf2c707824b0dfd497ecb589d489dc78b579ec28a8fb8835da",
+   "models.py": "2d10c569f5de3ee209ce07525972d199bba1168ae187ffc223880491fa701d05"
+  },
+  "kind": "solver-library-v1",
+  "parameters": {
+   "cpu_seconds": 0.5,
+   "program": {
+    "body": [
+     [
+      "split",
+      0.9,
+      [
+       [
+        "sweep",
+        "drop",
+        "anneal"
+       ],
+       [
+        "relabel",
+        "random",
+        "anneal",
+        1000
+       ]
+      ],
+      [
+       [
+        "split",
+        0.1,
+        [
+         [
+          "split",
+          0.1,
+          [
+           [
+            "relabel",
+            "random",
+            "anneal",
+            1000
+           ],
+           [
+            "init"
+           ],
+           [
+            "best"
+           ]
+          ],
+          [
+           [
+            "init"
+           ]
+          ]
+         ],
+         [
+          "descent"
+         ],
+         [
+          "relabel",
+          "random",
+          "anneal",
+          1000
+         ]
+        ],
+        [
+         [
+          "descent"
+         ],
+         [
+          "relabel",
+          "random",
+          "anneal",
+          1000
+         ]
+        ]
+       ],
+       [
+        "descent"
+       ],
+       [
+        "relabel",
+        "random",
+        "anneal",
+        1000
+       ]
+      ]
+     ],
+     [
+      "descent"
+     ],
+     [
+      "relabel",
+      "random",
+      "anneal",
+      1000
+     ]
+    ],
+    "library": [],
+    "rep": "adjacent_2"
+   }
+  },
+  "resource_profile": {
+   "cpu_seconds": 2,
+   "memory_mib": 2048,
+   "queries": 1000,
+   "wall_seconds": 10
+  },
+  "schema": "genesis-candidate-descriptor-v2"
+ },
+ "exposure_scan": {
+  "calibration_hosts": 456,
+  "distinct_hosts": 3235,
+  "e1_named_hosts": 711,
+  "empty_files_skipped": [
+   "evidence/failed-wal-final-replay.json",
+   "evidence/final-replay.json"
+  ],
+  "excluded_identities": 3235,
+  "files_scanned": 1166,
+  "host_records": 14865
+ },
+ "library_sources": [],
+ "macros_used": [],
+ "program": {
+  "body": [
+   [
+    "split",
+    0.9,
+    [
+     [
+      "sweep",
+      "drop",
+      "anneal"
+     ],
+     [
+      "relabel",
+      "random",
+      "anneal",
+      1000
+     ]
+    ],
+    [
+     [
+      "split",
+      0.1,
+      [
+       [
+        "split",
+        0.1,
+        [
+         [
+          "relabel",
+          "random",
+          "anneal",
+          1000
+         ],
+         [
+          "init"
+         ],
+         [
+          "best"
+         ]
+        ],
+        [
+         [
+          "init"
+         ]
+        ]
+       ],
+       [
+        "descent"
+       ],
+       [
+        "relabel",
+        "random",
+        "anneal",
+        1000
+       ]
+      ],
+      [
+       [
+        "descent"
+       ],
+       [
+        "relabel",
+        "random",
+        "anneal",
+        1000
+       ]
+      ]
+     ],
+     [
+      "descent"
+     ],
+     [
+      "relabel",
+      "random",
+      "anneal",
+      1000
+     ]
+    ]
+   ],
+   [
+    "descent"
+   ],
+   [
+    "relabel",
+    "random",
+    "anneal",
+    1000
+   ]
+  ],
+  "library": [],
+  "rep": "adjacent_2"
+ },
+ "role": "control for generation 2 (no library)",
+ "schema": "genesis-b20r83-generation-search-v1",
+ "search": {
+  "distinct_programs": 1201,
+  "evaluations": 1497,
+  "finalists": [
+   {
+    "body": [
+     [
+      "split",
+      0.1,
+      [
+       [
+        "repeat",
+        1,
+        [
+         [
+          "split",
+          0.25,
+          [
+           [
+            "relabel",
+            "random",
+            "anneal",
+            1000
+           ],
+           [
+            "init"
+           ],
+           [
+            "best"
+           ]
+          ],
+          [
+           [
+            "sweep",
+            "drop",
+            "sideways"
+           ]
+          ]
+         ]
+        ]
+       ],
+       [
+        "relabel",
+        "best",
+        "anneal",
+        1000
+       ]
+      ],
+      [
+       [
+        "split",
+        0.75,
+        [
+         [
+          "descent"
+         ],
+         [
+          "relabel",
+          "random",
+          "anneal",
+          1000
+         ]
+        ],
+        [
+         [
+          "descent"
+         ],
+         [
+          "relabel",
+          "random",
+          "anneal",
+          1000
+         ]
+        ]
+       ],
+       [
+        "descent"
+       ],
+       [
+        "relabel",
+        "random",
+        "anneal",
+        1000
+       ]
+      ]
+     ],
+     [
+      "descent"
+     ],
+     [
+      "relabel",
+      "random",
+      "anneal",
+      1000
+     ]
+    ],
+    "final_mean": 291.5781,
+    "rep": "adjacent_2",
+    "search_fitness": 291.5938,
+    "size": 17
+   },
+   {
+    "body": [
+     [
+      "split",
+      0.1,
+      [
+       [
+        "sweep",
+        "drop",
+        "anneal"
+       ],
+       [
+        "relabel",
+        "random",
+        "anneal",
+        1000
+       ]
+      ],
+      [
+       [
+        "split",
+        0.1,
+        [
+         [
+          "split",
+          0.1,
+          [
+           [
+            "relabel",
+            "random",
+            "anneal",
+            1000
+           ],
+           [
+            "init"
+           ],
+           [
+            "best"
+           ]
+          ],
+          [
+           [
+            "init"
+           ]
+          ]
+         ],
+         [
+          "descent"
+         ],
+         [
+          "relabel",
+          "random",
+          "anneal",
+          1000
+         ]
+        ],
+        [
+         [
+          "descent"
+         ],
+         [
+          "relabel",
+          "random",
+          "anneal",
+          1000
+         ]
+        ]
+       ],
+       [
+        "descent"
+       ],
+       [
+        "relabel",
+        "random",
+        "anneal",
+        1000
+       ]
+      ]
+     ],
+     [
+      "descent"
+     ],
+     [
+      "relabel",
+      "random",
+      "anneal",
+      1000
+     ]
+    ],
+    "final_mean": 291.5469,
+    "rep": "adjacent_2",
+    "search_fitness": 291.5625,
+    "size": 17
+   },
+   {
+    "body": [
+     [
+      "split",
+      0.9,
+      [
+       [
+        "sweep",
+        "drop",
+        "anneal"
+       ],
+       [
+        "relabel",
+        "random",
+        "anneal",
+        1000
+       ]
+      ],
+      [
+       [
+        "split",
+        0.1,
+        [
+         [
+          "split",
+          0.1,
+          [
+           [
+            "relabel",
+            "random",
+            "anneal",
+            1000
+           ],
+           [
+            "init"
+           ],
+           [
+            "best"
+           ]
+          ],
+          [
+           [
+            "init"
+           ]
+          ]
+         ],
+         [
+          "descent"
+         ],
+         [
+          "relabel",
+          "random",
+          "anneal",
+          1000
+         ]
+        ],
+        [
+         [
+          "descent"
+         ],
+         [
+          "relabel",
+          "random",
+          "anneal",
+          1000
+         ]
+        ]
+       ],
+       [
+        "descent"
+       ],
+       [
+        "relabel",
+        "random",
+        "anneal",
+        1000
+       ]
+      ]
+     ],
+     [
+      "descent"
+     ],
+     [
+      "relabel",
+      "random",
+      "anneal",
+      1000
+     ]
+    ],
+    "final_mean": 291.6094,
+    "rep": "adjacent_2",
+    "search_fitness": 291.5625,
+    "size": 17
+   },
+   {
+    "body": [
+     [
+      "split",
+      0.1,
+      [
+       [
+        "repeat",
+        1,
+        [
+         [
+          "split",
+          0.1,
+          [
+           [
+            "relabel",
+            "random",
+            "anneal",
+            1000
+           ],
+           [
+            "init"
+           ],
+           [
+            "best"
+           ]
+          ],
+          [
+           [
+            "sweep",
+            "drop",
+            "sideways"
+           ],
+           [
+            "edges",
+            "drop",
+            "always",
+            1
+           ]
+          ]
+         ]
+        ]
+       ],
+       [
+        "relabel",
+        "best",
+        "anneal",
+        1000
+       ]
+      ],
+      [
+       [
+        "split",
+        0.1,
+        [
+         [
+          "descent"
+         ],
+         [
+          "relabel",
+          "random",
+          "anneal",
+          1000
+         ]
+        ],
+        [
+         [
+          "descent"
+         ],
+         [
+          "relabel",
+          "random",
+          "anneal",
+          1000
+         ]
+        ]
+       ],
+       [
+        "descent"
+       ],
+       [
+        "relabel",
+        "random",
+        "anneal",
+        1000
+       ]
+      ]
+     ],
+     [
+      "descent"
+     ],
+     [
+      "relabel",
+      "random",
+      "anneal",
+      1000
+     ]
+    ],
+    "final_mean": 291.5156,
+    "rep": "adjacent_2",
+    "search_fitness": 291.5625,
+    "size": 18
+   }
+  ],
+  "generations": 149,
+  "macro_use_in_final_population": 0
+ },
+ "seeds": {
+  "hosts": null,
+  "search": 20268402
+ },
+ "size": 17,
+ "status": "DEV generation of the program search; judged in B20_R86; licenses nothing",
+ "study": "b20r84"
+}

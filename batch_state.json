@@ -983,7 +983,8 @@
       },
       "B20_R83": {
         "commits": [
-          "9aad649"
+          "9aad649",
+          "71094f9"
         ],
         "result": "Generation 2 (library: generation 1), 16 fresh n63 training hosts, 6,000 CPU s: froze a 13-statement program on cross_2 calling generation 1 three times plus a kick and edge drops; final mean 291.59 (own hosts); all 16 of the final population use the macro. Judged in B20_R86"
       },
@@ -991,7 +992,7 @@
         "commits": [
           "9aad649"
         ],
-        "result": "Setup: no-library control for generation 2. Pending"
+        "result": "No-library control on B20_R83's hosts: froze an ILS over cuts with an annealed edge sweep, final mean 291.61 vs generation 2's 291.59: the library made no difference on the training hosts. R85/R86 deferred for the state-of-the-art comparison (B20_R87+)"
       },
       "B20_R85": {
         "commits": [
