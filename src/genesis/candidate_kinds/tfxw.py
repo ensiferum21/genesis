@@ -5,9 +5,11 @@ DEV-only large domain `triangle_free_large_v1` and, for comparison with `tfx-v1`
 Binary. Built from that source by `scripts/b20r94_build_tfxw.py` (gcc 13.3, `-O3 -std=gnu11 -static`,
 deterministic), installed as /usr/local/genesis-sota/bin/tfxw, pinned here by SHA-256, refused if missing or different.
 
-Parameters (data only): {cpu_seconds, config}; config gives every key of `tfx.SPACE` a value from its list (the same
-operators with the same meaning, so B20_R89's configuration is a valid starting point). The best edge set is decoded
-and re-checked here (triangle-free, a subset of the host); the domain checker re-checks it again.
+Parameters (data only): {cpu_seconds, config}; config gives every key of `SPACE` a value from its list: tfx-v1's
+keys (the same operators with the same meaning, so B20_R89's configuration with kpick 1 is tfx-v1's search) and
+`kpick`, the number of sampled unchosen edges of which the least tight is forced in by a kick (1: uniform, as tfx-v1).
+The best edge set is decoded and re-checked here (triangle-free, a subset of the host); the domain checker re-checks it
+again.
 """
 import hashlib
 import os
@@ -20,10 +22,21 @@ from . import tfx as T
 DOMAINS = ('triangle_free_large_v1', 'triangle_free_host_v1')
 FILES = ('candidate_kinds/tfxw.py', 'candidate_kinds/native/tfxw.c', 'candidate_kinds/tfx.py')
 BINARY = '/usr/local/genesis-sota/bin/tfxw'
-BINARY_SHA256 = 'UNBUILT'
-SPACE, DEFAULT = T.SPACE, T.DEFAULT
-check_config = T.check_config
+BINARY_SHA256 = '9e6ac3d6cdfae8ed778d5fe2349360106857b7898a7a0827c0cf43e7d2195311'
+SPACE = dict(T.SPACE, kpick=(1, 2, 4, 8, 16))
+DEFAULT = dict(T.DEFAULT, kpick=1)
 _DIGEST = {}
+
+
+def check_config(config):
+    """None, or the reason a configuration is refused."""
+    if not isinstance(config, dict) or set(config) != set(SPACE):
+        return f'config must give exactly the keys {sorted(SPACE)}'
+    for k, allowed in SPACE.items():
+        v = config[k]
+        if isinstance(v, bool) or type(v) not in (int, float) or v not in allowed:
+            return f'config[{k!r}] must be one of {allowed}'
+    return None
 
 
 def binary_digest(path=None):
@@ -40,8 +53,8 @@ def check_parameters(domain, params):
     if not isinstance(params, dict) or set(params) != {'cpu_seconds', 'config'}:
         return 'tfxw-v1 takes {cpu_seconds, config}'
     c = params['cpu_seconds']
-    if type(c) not in (int, float) or isinstance(c, bool) or not 0 < c <= 60:
-        return 'cpu_seconds must be in (0, 60]'
+    if type(c) not in (int, float) or isinstance(c, bool) or not 0 < c <= 600:
+        return 'cpu_seconds must be in (0, 600]'
     why = check_config(params['config'])
     if why:
         return why

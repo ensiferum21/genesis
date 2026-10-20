@@ -10,7 +10,8 @@ ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / 'src'))
 
 from genesis import domains as DM, graphs_large as GL                                     # noqa: E402
-from genesis.models import GraphTask, LargeCandidateGraph, LargeGraphTask                 # noqa: E402
+from genesis.models import GraphTask                                                     # noqa: E402
+from genesis.models_large import LargeCandidateGraph, LargeGraphTask                      # noqa: E402
 from genesis.candidate_kinds import maxsat_large as ML, tfx as T, tfxw as TW              # noqa: E402
 
 LARGE = 'triangle_free_large_v1'
@@ -135,11 +136,13 @@ class Adapter(unittest.TestCase):
 
 class Kinds(unittest.TestCase):
     def test_tfxw_parameters(self):
-        p = {'cpu_seconds': 1.0, 'config': dict(T.DEFAULT)}
+        p = {'cpu_seconds': 1.0, 'config': dict(TW.DEFAULT)}
+        self.assertEqual(set(TW.SPACE), set(T.SPACE) | {'kpick'})
+        self.assertIn('config', TW.check_parameters(LARGE, dict(p, config=dict(T.DEFAULT))))
         self.assertIn('supports', TW.check_parameters('c4_host_v2', p))
-        bad = dict(p, config=dict(T.DEFAULT, K=99))
+        bad = dict(p, config=dict(TW.DEFAULT, K=99))
         self.assertIn('config', TW.check_parameters(LARGE, bad))
-        self.assertIn('cpu_seconds', TW.check_parameters(LARGE, dict(p, cpu_seconds=61)))
+        self.assertIn('cpu_seconds', TW.check_parameters(LARGE, dict(p, cpu_seconds=601)))
         self.assertEqual(TW.FILES[0], 'candidate_kinds/tfxw.py')
 
     def test_maxsat_large_parameters(self):

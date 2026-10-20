@@ -379,7 +379,7 @@ class TriangleFreeLargeAdapter(DomainAdapter):
                 'bound': 'graphs_large.check_packing (edge-disjoint host triangles)'}
 
     def parse(self, raw):
-        from .models import LargeGraphTask
+        from .models_large import LargeGraphTask
         if isinstance(raw, LargeGraphTask):
             return raw
         if not isinstance(raw, dict):
@@ -393,7 +393,7 @@ class TriangleFreeLargeAdapter(DomainAdapter):
             return Unsupported(f'malformed task: {type(exc).__name__}')
 
     def supports(self, task, purpose):
-        from .models import LargeGraphTask
+        from .models_large import LargeGraphTask
         if purpose not in PURPOSES:
             return Unsupported(f'unknown purpose {purpose!r}')
         if not isinstance(task, LargeGraphTask) or task.domain != self.name:
@@ -407,7 +407,7 @@ class TriangleFreeLargeAdapter(DomainAdapter):
         return {'canonical': wl_identity(task.n, task.edges), 'method': 'color-refinement-invariant'}
 
     def candidate_view(self, task):
-        from .models import LargeCandidateGraph
+        from .models_large import LargeCandidateGraph
         return LargeCandidateGraph(domain=task.domain, n=task.n, edges=task.edges)
 
     def validate(self, task, witness):
@@ -454,7 +454,7 @@ class TriangleFreeLargeAdapter(DomainAdapter):
 
     def generate(self, seed, count, split, family, params, excluded=()):
         """`count` hosts of one family setting whose identities are not in `excluded` (nor repeated)."""
-        from .models import LargeGraphTask
+        from .models_large import LargeGraphTask
         if split != 'DEV':
             raise ValueError('the large domain is DEV only')
         if family not in self.FAMILY_SPACE:

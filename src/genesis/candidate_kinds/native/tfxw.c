@@ -10,7 +10,9 @@
  *   - (1,2)-swaps run from a work list: after a perturbation only the member's edges near the touched vertices are
  *     re-examined, not all of them (local search confined to the perturbation, as in ARW's iterated local search);
  *   - a rejected iteration is undone from a log of its additions and removals instead of copying the member back;
- *   - kicks sample the forced-in edge instead of listing every unchosen edge.
+ *   - kicks sample the forced-in edge instead of listing every unchosen edge; with kpick = k > 1 the least tight of k
+ *     samples is forced in (in a dense host, forcing in a tight edge removes dozens of edges and the local search
+ *     that follows is long; kpick = 1 is tfx-v1's uniform choice).
  * Every operator of tfx-v1 is kept with the same parameters and meaning (warm starts: discrete simulated bifurcation,
  * cut descent, three-body mean-field annealing; then iterated local search with acceptance by probability or
  * Metropolis with replica exchange, crossover, an edge-frequency memory, path relinking and restarts); see tfx.c.
@@ -40,7 +42,7 @@ static u64 *A;
 
 static double FRAC = 0.3, PW = 0.1, TMIN = 0.3, TMAX = 2.0, RHO = 0.0, PHERW = 0.0, FEMLAM = 1.5;
 static int K = 4, ACC = 0, XCHG = 50, CROSS = 0, WS = 3, REPL = 32, STEPS = 400, KICKS = 1, FEMSTEPS = 300;
-static int RESTART = 0, RELINK = 0;
+static int RESTART = 0, RELINK = 0, KPICK = 1;
 static double FEMLR = 0.0, DESC_SHARE = 0.5;
 
 static u64 rs[2];
@@ -73,6 +75,7 @@ typedef struct {
     u64 *N;              /* n x W: the member's adjacency */
     unsigned char *in;   /* m */
     int *t;              /* m: tightness */
+    int *c1;             /* m: for a member edge, how many 1-tight edges its triangle alone blocks */
     int size;
 } Sol;
 
@@ -81,6 +84,7 @@ static Sol s_new(void) {
     S.N = xcalloc((size_t)n * W, sizeof(u64));
     S.in = xcalloc(m, 1);
     S.t = xcalloc(m, sizeof(int));
+    S.c1 = xcalloc(m, sizeof(int));
     S.size = 0;
     return S;
 }
@@ -88,6 +92,7 @@ static void s_clear(Sol *S) {
     memset(S->N, 0, (size_t)n * W * sizeof(u64));
     memset(S->in, 0, m);
     memset(S->t, 0, (size_t)m * sizeof(int));
+    memset(S->c1, 0, (size_t)m * sizeof(int));
     S->size = 0;
 }
 
@@ -103,40 +108,116 @@ static inline void u_push(int x) {
     ulog[ulen++] = x;
 }
 
-/* t changes for the host edges (x, w), w a member neighbour of y, by d */
-static inline void bump(Sol *S, int x, int y, int d) {
-    const u64 *r = ROW(S->N, y);
+/* A non-member edge with t = 1 is a swap candidate of the two member edges of the one triangle that blocks it; c1
+   counts, for every member edge, the candidates it blocks, so the local search skips members with fewer than two
+   (where no (1,2)-swap can exist) without looking at their neighbourhood. Adding or removing (u, v) changes t, and so
+   candidacy, only on the host edges J = {(v, w): w a member neighbour of u} and {(u, w): w a member neighbour of v}. */
+static inline int is_cand(const Sol *S, int j) { return !S->in[j] && S->t[j] == 1; }
+static inline void cand_set(Sol *S, int j, int d) {
+    int a = eu[j], b = ev[j];
+    const u64 *ra = ROW(S->N, a), *rb = ROW(S->N, b);
     for (int k = 0; k < W; k++) {
-        u64 b = r[k];
-        while (b) {
-            int w = (k << 6) | ctz(b);
-            b &= b - 1;
-            if (w == x) continue;
-            int j = eid(x, w);
-            if (j >= 0) S->t[j] += d;
+        u64 c = ra[k] & rb[k];
+        if (c) {
+            int w = (k << 6) | ctz(c);
+            S->c1[eid(a, w)] += d;
+            S->c1[eid(b, w)] += d;
+            return;
         }
     }
 }
+static int *jbuf;
+static int collect(const Sol *S, int u, int v) {
+    int nj = 0;
+    for (int side = 0; side < 2; side++) {
+        int x = side ? u : v, y = side ? v : u;          /* edges (x, w) for w a member neighbour of y */
+        const u64 *r = ROW(S->N, y);
+        for (int k = 0; k < W; k++) {
+            u64 b = r[k];
+            while (b) {
+                int w = (k << 6) | ctz(b);
+                b &= b - 1;
+                if (w == x) continue;
+                int q = eid(x, w);
+                if (q >= 0) jbuf[nj++] = q;
+            }
+        }
+    }
+    return nj;
+}
 static void s_add(Sol *S, int i) {
-    int u = eu[i], v = ev[i];
-    bump(S, v, u, +1);
-    bump(S, u, v, +1);
+    int u = eu[i], v = ev[i], nj = collect(S, u, v);
+    for (int q = 0; q < nj; q++)
+        if (is_cand(S, jbuf[q])) cand_set(S, jbuf[q], -1);
+    if (is_cand(S, i)) cand_set(S, i, -1);
+    for (int q = 0; q < nj; q++) S->t[jbuf[q]]++;
     ROW(S->N, u)[v >> 6] |= 1ULL << (v & 63);
     ROW(S->N, v)[u >> 6] |= 1ULL << (u & 63);
     S->in[i] = 1;
     S->size++;
+    for (int q = 0; q < nj; q++)
+        if (is_cand(S, jbuf[q])) cand_set(S, jbuf[q], +1);
     u_push(i);
 }
 static void s_rem(Sol *S, int i) {
-    int u = eu[i], v = ev[i];
+    int u = eu[i], v = ev[i], nj = collect(S, u, v);
+    for (int q = 0; q < nj; q++)
+        if (is_cand(S, jbuf[q])) cand_set(S, jbuf[q], -1);
     ROW(S->N, u)[v >> 6] &= ~(1ULL << (v & 63));
     ROW(S->N, v)[u >> 6] &= ~(1ULL << (u & 63));
-    bump(S, v, u, -1);
-    bump(S, u, v, -1);
     S->in[i] = 0;
     S->size--;
+    for (int q = 0; q < nj; q++) S->t[jbuf[q]]--;
+    for (int q = 0; q < nj; q++)
+        if (is_cand(S, jbuf[q])) cand_set(S, jbuf[q], +1);
+    if (is_cand(S, i)) cand_set(S, i, +1);
     u_push(-(i + 1));
 }
+/* load a member from a membership array in bulk: N, then t = |N(u) & N(v)| and c1 for every host edge, O(m W)
+   (adding edge by edge costs O(degree) each; building from scratch is what crossover, restarts and cut completion do) */
+static void s_load(Sol *S, const unsigned char *in) {
+    memset(S->N, 0, (size_t)n * W * sizeof(u64));
+    memset(S->c1, 0, (size_t)m * sizeof(int));
+    S->size = 0;
+    for (int i = 0; i < m; i++) {
+        S->in[i] = in[i] ? 1 : 0;
+        if (S->in[i]) {
+            ROW(S->N, eu[i])[ev[i] >> 6] |= 1ULL << (ev[i] & 63);
+            ROW(S->N, ev[i])[eu[i] >> 6] |= 1ULL << (eu[i] & 63);
+            S->size++;
+        }
+    }
+    for (int i = 0; i < m; i++) {
+        const u64 *ra = ROW(S->N, eu[i]), *rb = ROW(S->N, ev[i]);
+        int t = 0;
+        for (int k = 0; k < W; k++) t += pc(ra[k] & rb[k]);
+        S->t[i] = t;
+    }
+    for (int i = 0; i < m; i++)
+        if (is_cand(S, i)) cand_set(S, i, +1);
+}
+#ifdef TFXW_CHECK
+/* recompute t and c1 from scratch and abort on any difference (tests only) */
+static void verify(const Sol *S) {
+    int *c = calloc(m, sizeof(int)), size = 0;
+    for (int i = 0; i < m; i++) {
+        int a = eu[i], b = ev[i], t = 0;
+        size += S->in[i];
+        if (((ROW(S->N, a)[b >> 6] >> (b & 63)) & 1) != S->in[i]) abort();
+        for (int k = 0; k < W; k++) t += pc(ROW(S->N, a)[k] & ROW(S->N, b)[k]);
+        if (t != S->t[i]) abort();
+        if (!S->in[i] && t == 1)
+            for (int k = 0; k < W; k++) {
+                u64 x = ROW(S->N, a)[k] & ROW(S->N, b)[k];
+                if (x) { int w = (k << 6) | ctz(x); c[eid(a, w)]++; c[eid(b, w)]++; break; }
+            }
+    }
+    if (size != S->size) abort();
+    for (int i = 0; i < m; i++)
+        if (c[i] != S->c1[i]) abort();
+    free(c);
+}
+#endif
 static void undo(Sol *S) {
     int was = logging;
     logging = 0;
@@ -266,7 +347,7 @@ static int swaps(Sol *S, double deadline) {
         int q = rndn(wlen), e = wl[q];
         wl[q] = wl[--wlen];
         inwl[e] = 0;
-        if (!S->in[e]) continue;
+        if (!S->in[e] || S->c1[e] < 2) continue;
         if ((++steps & 1023) == 0 && cpu_ms() >= deadline) break;
         int a = eu[e], b = ev[e];
         int nc = cands(S, a, b, cand);
@@ -324,10 +405,15 @@ static void kick(Sol *S) {
                 break;
             }
         }
-    } else if (PHERW > 0)
+    } else if (PHERW > 0) {
         for (int r = 0; r < 2; r++) {
             int j = sample_out(S);
             if (j >= 0 && tau[j] > tau[i]) i = j;
+        }
+    } else
+        for (int r = 1; r < KPICK; r++) {          /* the least tight of kpick samples: a smaller perturbation */
+            int j = sample_out(S);
+            if (j >= 0 && S->t[j] < S->t[i]) i = j;
         }
     int u = eu[i], v = ev[i];
     int *touched = cbuf2, nt = 0;
@@ -385,10 +471,11 @@ static void pool_offer(const Sol *S, u64 h) {
     st_starts++;
 }
 static u64 *sidebuf, *posbuf;
+static unsigned char *loadbuf;
 static void complete_cut(const u64 *side, Sol *S) {
-    s_clear(S);
     for (int i = 0; i < m; i++)
-        if (((side[eu[i] >> 6] >> (eu[i] & 63)) & 1) != ((side[ev[i] >> 6] >> (ev[i] & 63)) & 1)) s_add(S, i);
+        loadbuf[i] = ((side[eu[i] >> 6] >> (eu[i] & 63)) & 1) != ((side[ev[i] >> 6] >> (ev[i] & 63)) & 1);
+    s_load(S, loadbuf);
     fill_all(S);
 }
 static void offer_side(u64 *side) {
@@ -542,9 +629,8 @@ static int same_set(const Sol *a, const Sol *b) { return a->size == b->size && !
 static void crossover(int k, double deadline) {
     int a = rndn(k), b = rndn(k - 1);
     if (b >= a) b++;
-    s_clear(&scratch);
-    for (int i = 0; i < m; i++)
-        if (mem[a].in[i] && mem[b].in[i]) s_add(&scratch, i);
+    for (int i = 0; i < m; i++) loadbuf[i] = mem[a].in[i] && mem[b].in[i];
+    s_load(&scratch, loadbuf);
     fill_all(&scratch);
     local_search_all(&scratch, deadline);
     offer_best(&scratch);
@@ -588,9 +674,10 @@ int main(int argc, char **argv) {
         else if (!strcmp(k, "restart")) RESTART = (int)v;
         else if (!strcmp(k, "relink")) RELINK = (int)v;
         else if (!strcmp(k, "femlr")) FEMLR = v;
+        else if (!strcmp(k, "kpick")) KPICK = (int)v;
         else return 2;
     }
-    if (K < 1 || K > MAXK || FEMSTEPS < 2) return 2;
+    if (K < 1 || K > MAXK || FEMSTEPS < 2 || KPICK < 1 || KPICK > 64) return 2;
     long long seed;
     double budget;
     if (scanf("%d %d %lld %lf", &n, &m, &seed, &budget) != 4 || n < 1 || n > MAXN || m < 0 ||
@@ -634,6 +721,8 @@ int main(int argc, char **argv) {
     cbuf = xcalloc(m + 1, sizeof(int));
     cbuf2 = xcalloc(m + MAXN + 1, sizeof(int));
     cand = xcalloc(2 * (size_t)n + 2, sizeof(int));
+    jbuf = xcalloc(2 * (size_t)n + 2, sizeof(int));
+    loadbuf = xcalloc(m + 1, 1);
     vmark = xcalloc(m, 1);
     wl = xcalloc(m + 1, sizeof(int));
     inwl = xcalloc(m, 1);
@@ -715,8 +804,7 @@ int main(int argc, char **argv) {
         int k = npool < K ? npool : K;
         for (int j = 0; j < k; j++) {
             mem[j] = s_new();
-            for (int i = 0; i < m; i++)
-                if (pool[j].in[i]) s_add(&mem[j], i);
+            s_load(&mem[j], pool[j].in);
             local_search_all(&mem[j], deadline);
             offer_best(&mem[j]);
             temp_of[j] = k > 1 ? TMIN * pow(TMAX / TMIN, (double)j / (k - 1)) : TMIN;
@@ -745,6 +833,9 @@ int main(int argc, char **argv) {
             }
             it++;
             st_iters++;
+#ifdef TFXW_CHECK
+            verify(S);
+#endif
             if (ACC == 1 && k > 1 && it % XCHG == 0) {
                 for (int a = 0; a + 1 < k; a++) {
                     double d = (mem[a + 1].size - mem[a].size) * (1.0 / temp_of[a] - 1.0 / temp_of[a + 1]);
