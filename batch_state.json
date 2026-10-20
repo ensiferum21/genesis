@@ -1050,6 +1050,16 @@
           "71df48c"
         ],
         "result": "Engineering: the adaptation cell (discovery, 12 receptors + an autoreceptor, caveats, responses with doses and noise bands, ledger inferring attempts from design changes, response memory, cost model from its own run logs, composition with membrane triage, work orders, checkpoint) and genesis.anytime (MSE 2026 anytime score, paired bootstrap, sequential looks). Retrospective: the hand-found R90 caveats exactly. Preregistered prospective check on B20_R92: 9/9. Next proposal: the large-graph milestone (over its growth limit; split at the 60 s budgets)"
+      },
+      "B20_R94": {
+        "commits": [
+          "78b8645"
+        ],
+        "result": "Engineering: the DEV-only large triangle-free domain (models_large, graphs_large, TriangleFreeLargeAdapter, candidates_large; every existing identity unchanged), tfxw-v1 (pinned 9e6ac3d6...5311; verified), maxsat-anytime-large-v1. Tests (14 + 5). B20_R95 preregistered"
+      },
+      "B20_R95": {
+        "commits": [],
+        "result": "Setup: configuration race for tfxw-v1 on 16 fresh large hosts by anytime score at 1 and 5 s. Pending"
       }
     },
     "open_after_b20_r5": [

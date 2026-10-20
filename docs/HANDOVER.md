@@ -142,6 +142,7 @@ needs people: a reviewer, a statistician, an independent custodian on its own ma
 | B20_R91 | MSE 2026 anytime entrants built from their archives (Daniel's download) as `maxsat-anytime-2026-v1`; B20_R92 preregistered |
 | B20_R92 | Head-to-head with all 13 champions (DEV): TFX_BEATS_EVERY_CHAMPION on both families, TFX_BEATS_VBS on G(63, 0.5) (~200×), vbs_P UNRESOLVED (3× at the median); NO_CHAMPION_FINDS_MORE; ablations UNRESOLVED; interrupted twice and resumed (disclosed) |
 | B20_R93 | The adaptation cell (`src/genesis/adaptation/`, `scripts/b20r93_cell.py`, `docs/CAVEATS.md`); prospective check on B20_R92 9/9; quality at equal time and sequential stopping (`genesis.anytime`) |
+| B20_R94 | Large triangle-free domain (DEV), `tfxw-v1`, `maxsat-anytime-large-v1`, `candidates_large`; B20_R95 (configuration race on large hosts) preregistered |
 
 ## 6. Next steps, in order
 
