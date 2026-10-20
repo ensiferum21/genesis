@@ -119,5 +119,35 @@ class Design(unittest.TestCase):
         self.assertEqual(R92.validity({'P': rs, 'D': rd})[0], 'INVALID_FAILURES')     # 3 of 144 + 24 at >= 0.5
 
 
+
+class RecordB20R92(unittest.TestCase):
+    def test_the_labels_follow_from_the_rows(self):
+        d = ROOT / 'evidence' / 'vs_mse2026_b20r92'
+        s = json.loads((d / 'summary.json').read_text())
+        rs = [json.loads(l) for l in (d / 'rows.jsonl').read_text().splitlines() if l.strip()]
+        by = {f: [r for r in rs if r['family'] == f] for f in R92.FAMILIES}
+        self.assertEqual({f: len(v) for f, v in by.items()}, {'P': 24, 'D': 12})
+        self.assertEqual(len({r['task_id'] for r in rs}), 36)
+        self.assertIsNone(R92.validity(by)[0])
+        labels, fam = R92.analyse(by)
+        self.assertEqual(labels, s['labels'])
+        self.assertEqual(labels, {
+            'champions_P': 'TFX_BEATS_EVERY_CHAMPION', 'champions2026_P': 'TFX_BEATS_EVERY_CHAMPION',
+            'vbs_P': 'UNRESOLVED', 'champions_D': 'TFX_BEATS_EVERY_CHAMPION',
+            'champions2026_D': 'TFX_BEATS_EVERY_CHAMPION', 'vbs_D': 'TFX_BEATS_VBS',
+            'long_budget': 'NO_CHAMPION_FINDS_MORE',
+            **{f'ablation_{a}': 'UNRESOLVED' for a in R92.ABLATIONS}})
+        # the floor B20_R90 had is gone: tfx at the shortest run time on 3 of 24 and 2 of 12 hosts
+        self.assertEqual((fam['P']['arms']['tfx']['at_floor'], fam['D']['arms']['tfx']['at_floor']), (3, 2))
+        # no run of any arm above its host's target, and tfx's 10 s value is the target everywhere
+        for r in rs:
+            vals = [x['value'] for a in r['runs'] for xs in r['runs'][a].values() for x in xs if x['run'] == 'SUCCESS']
+            vals += [x['value'] for x in r['long'].values() if x['run'] == 'SUCCESS']
+            self.assertLessEqual(max(vals), r['target'])
+            self.assertEqual(r['long']['tfx']['value'], r['target'])
+        cfg = json.loads((ROOT / 'evidence' / 'configure_tfx_b20r89' / 'config.json').read_text())['config']
+        self.assertEqual(s['tfx']['config'], cfg)
+
+
 if __name__ == '__main__':
     unittest.main()
