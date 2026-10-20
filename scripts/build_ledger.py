@@ -602,7 +602,7 @@ WORKSTREAMS = {
              'src/genesis/candidate_kinds/mqlib_heuristic.py', 'scripts/b20r87_maxsat_tools.py',
              'src/genesis/candidate_kinds/tfx.py', 'src/genesis/candidate_kinds/native/tfx.c',
              'scripts/b20r88_build_tfx.py', 'scripts/b20r89_configure_tfx.py', 'scripts/b20r90_beat_the_champions.py',
-             'evidence/configure_tfx_b20r89/summary.json'],
+             'evidence/configure_tfx_b20r89/summary.json', 'evidence/beat_the_champions_b20r90/summary.json'],
             [G + 'test_evaluator_readiness.py', G + 'test_redteam_b16.py', G + 'test_candidate_adapters.py',
              G + 'test_candidate_custody.py', G + 'test_statement_custody.py', G + 'test_candidates_v2.py',
              G + 'test_wiring_v5.py', G + 'test_maxcut_tabu.py', G + 'test_physics_kinds.py',

@@ -138,6 +138,7 @@ needs people: a reviewer, a statistician, an independent custodian on its own ma
 | B20_R87 | DeepDist, SPB-MaxSAT-c-FPS, NuWLS-c-IBR, TT-Open-WBO-Inc, Aperture built from pinned sources as `maxsat-anytime-v1`; `mqlib-heuristic-v1` |
 | B20_R88 | `tfx-v1` (native, operators by data); development looks ahead of every champion up to 0.5 s on old hosts |
 | B20_R89 | Configuration race: froze #76 (dSB + descent starts, K 12, parallel tempering, crossover, relinking, restarts); judged in B20_R90 |
+| B20_R90 | Head-to-head (DEV): TFX_BEATS_EVERY_CHAMPION and TFX_BEATS_VBS on planted and G(63, 0.5) hosts, NO_CHAMPION_FINDS_MORE at 10 s; ratios are lower bounds (floor 0.05 s); claim path B20R90-OPEN-1 |
 
 ## 6. Next steps, in order
 

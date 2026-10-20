@@ -192,5 +192,25 @@ class RecordB20R89(unittest.TestCase):
         self.assertEqual([r['round'] for r in s['rounds']], [0, 1, 2, 3, 4])
 
 
+class RecordB20R90(unittest.TestCase):
+    def test_the_labels_follow_from_the_rows(self):
+        d = ROOT / 'evidence' / 'beat_the_champions_b20r90'
+        s = json.loads((d / 'summary.json').read_text())
+        rows = [json.loads(l) for l in (d / 'rows.jsonl').read_text().splitlines() if l.strip()]
+        by = {f: [r for r in rows if r['family'] == f] for f in R90.FAMILIES}
+        self.assertEqual({f: len(v) for f, v in by.items()}, {'P': 24, 'D': 12})
+        self.assertEqual(len({r['task_id'] for r in rows}), 36)
+        self.assertIsNone(R90.validity(by)[0])
+        labels, fam = R90.analyse(by)
+        self.assertEqual(labels, s['labels'])
+        self.assertEqual(labels, {'champions_P': 'TFX_BEATS_EVERY_CHAMPION', 'vbs_P': 'TFX_BEATS_VBS',
+                                  'champions_D': 'TFX_BEATS_EVERY_CHAMPION', 'vbs_D': 'TFX_BEATS_VBS',
+                                  'long_budget': 'NO_CHAMPION_FINDS_MORE'})
+        floor = sum(R90.R76.host_tts(r, 'tfx')[0] == R90.LADDER[0] for r in rows)
+        self.assertEqual(floor, 33)                                          # the disclosed floor
+        cfg = json.loads((ROOT / 'evidence' / 'configure_tfx_b20r89' / 'config.json').read_text())['config']
+        self.assertEqual(s['tfx']['config'], cfg)
+
+
 if __name__ == '__main__':
     unittest.main()

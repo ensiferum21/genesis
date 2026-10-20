@@ -1021,7 +1021,8 @@
       },
       "B20_R89": {
         "commits": [
-          "9f8eecc"
+          "9f8eecc",
+          "15aa2a3"
         ],
         "result": "Race over 128 tfx-v1 configurations on 32 fresh training hosts: froze #76 (dSB + descent warm starts, K 12, parallel tempering, crossover, relinking, restarts; mean gap 0.053); DEFAULT out in round 1, the dev pick 4th of the final four"
       },
@@ -1029,7 +1030,7 @@
         "commits": [
           "9f8eecc"
         ],
-        "result": "Setup: tfx against the five champions, their VBS, MQLib, CP-SAT and B20_R77 engine on fresh planted and G(63, 0.5) hosts, with a long-budget part. Pending"
+        "result": "TFX_BEATS_EVERY_CHAMPION and TFX_BEATS_VBS on planted (24) and G(63, 0.5) (12) fresh n63 hosts; NO_CHAMPION_FINDS_MORE at 10 s; valid, recomputed. >=5x (planted) and 40-50x (G(63,0.5)) faster than DeepDist; tfx at the 0.05 s floor on 33/36 hosts (lower bounds); interrupted once by the session limit and resumed. Claim path B20R90-OPEN-1"
       }
     },
     "open_after_b20_r5": [

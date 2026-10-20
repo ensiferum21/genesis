@@ -90,6 +90,19 @@ scaling picture rather than one calibrated size. B20_R70's design follows this.
   arm is the candidate. Genesis already preregisters; blinding the arm labels would remove the last analyst
   degree of freedom on DEV studies.
 
+## Outcome against the most tuned solvers (B20_R87–R90)
+
+- In C, at budgets of 0.05–0.25 s, simulated bifurcation alone made worse warm starts than greedy cut descent
+  (B20_R88's looks); the ant-colony memory hurt; three-body mean-field annealing (after the free-energy machine) did
+  not help.
+- Asked to choose, the system's configuration race (B20_R89) kept simulated bifurcation **together with** descent,
+  and added parallel tempering (replica exchange) and crossover, with relinking and restarts; the margin over
+  configurations without simulated bifurcation was small.
+- That engine beat DeepDist, SPB-MaxSAT-c-FPS, NuWLS-c-IBR, TT-Open-WBO-Inc and Aperture, and their per-host virtual
+  best, by time to solution on fresh hosts of two families (B20_R90, DEV; limits in its record). The physics and
+  biology operators are part of the winning configuration, but the result does not isolate their contribution: no
+  ablation was preregistered.
+
 ## What none of this changes
 
 No frozen package, rule, comparator, bound or threshold changes. New kinds are baselines or DEV tools until a
