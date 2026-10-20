@@ -990,7 +990,8 @@
       },
       "B20_R84": {
         "commits": [
-          "9aad649"
+          "9aad649",
+          "3af43ba"
         ],
         "result": "No-library control on B20_R83's hosts: froze an ILS over cuts with an annealed edge sweep, final mean 291.61 vs generation 2's 291.59: the library made no difference on the training hosts. R85/R86 deferred for the state-of-the-art comparison (B20_R87+)"
       },
@@ -1005,6 +1006,22 @@
           "9aad649"
         ],
         "result": "Setup: test of compounding generations on fresh hosts. Pending"
+      },
+      "B20_R87": {
+        "commits": [],
+        "result": "Engineering: DeepDist, SPB-MaxSAT-c-FPS, NuWLS-c-IBR, TT-Open-WBO-Inc (IntelSAT), Aperture built from pinned sources and pinned; maxsat-anytime-v1 (exact encoding, isomorphic-copy seeds) and mqlib-heuristic-v1. Tests (10)"
+      },
+      "B20_R88": {
+        "commits": [],
+        "result": "Engineering: tfx-v1 (native population search; physics, biology and independent-set operators chosen by data). Dev looks on R76 hosts: ahead of every champion up to 0.5 s, ties DeepDist at 2 s; dSB warm starts do not pay in C. Tests (10)"
+      },
+      "B20_R89": {
+        "commits": [],
+        "result": "Setup: successive-halving configuration race of tfx-v1 on 32 fresh training hosts. Pending"
+      },
+      "B20_R90": {
+        "commits": [],
+        "result": "Setup: tfx against the five champions, their VBS, MQLib, CP-SAT and B20_R77 engine on fresh planted and G(63, 0.5) hosts, with a long-budget part. Pending"
       }
     },
     "open_after_b20_r5": [

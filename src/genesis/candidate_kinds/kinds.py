@@ -24,5 +24,6 @@ KINDS = {
     'solver-program-v1': 'solver_program',  # B20_R78: a program in the closed solver language, found by program search
     'solver-library-v1': 'solver_library_program',  # B20_R82: a solver program calling earlier generations' programs
     'maxsat-anytime-v1': 'maxsat',        # B20_R87: the strongest anytime MaxSAT solvers on the exact MaxSAT encoding
-    'mqlib-heuristic-v1': 'mqlib_heuristic',  # B20_R87: any of MQLib's 37 heuristics (for the per-host virtual best)
+    'mqlib-heuristic-v1': 'mqlib_heuristic',  # B20_R87: any of MQLib's 38 heuristics (for the per-host virtual best)
+    'tfx-v1': 'tfx',                      # B20_R88: native population search on edge sets, operators chosen by data
 }

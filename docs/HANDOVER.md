@@ -134,6 +134,9 @@ needs people: a reviewer, a statistician, an independent custodian on its own ma
 | B20_R79 | The system's own program search (from random programs, B20_R78's language): an iterated local search over cuts with a swap-like edge sweep, found without being given one; tested in B20_R81 |
 | B20_R80 | Random-program control: 287.30 against the search's 287.34 on the training hosts (a two-statement iterated local search, no swap); decided on fresh hosts in B20_R81 |
 | B20_R81 | Fresh hosts: the self-found solver beats CP-SAT and BURER2002 (SELF_FOUND_BEATS_SOTA) and B20_R77 replicates; against the builder's engine and against random programs UNRESOLVED (the engine ~5x faster; random equal) |
+| B20_R82–R84 | Library language and search (GV5); generation 2 (291.59) ties its no-library control (291.61) on the training hosts; R85/R86 deferred |
+| B20_R87 | DeepDist, SPB-MaxSAT-c-FPS, NuWLS-c-IBR, TT-Open-WBO-Inc, Aperture built from pinned sources as `maxsat-anytime-v1`; `mqlib-heuristic-v1` |
+| B20_R88 | `tfx-v1` (native, operators by data); development looks ahead of every champion up to 0.5 s on old hosts |
 
 ## 6. Next steps, in order
 

@@ -8,14 +8,27 @@ year since 2018, so its best solvers are the most tuned general tools for this p
 `scripts/b20r87_maxsat_tools.py` for the choice and the sources).
 
 Solvers (fixed; each a binary built from a pinned source by `scripts/b20r87_maxsat_tools.py`, under
-/usr/local/genesis-sota/bin, pinned here by SHA-256, refused if missing or different):
-  * `deepdist`: DeepDist (ECAI 2025; local search with deep differentiation clause weighting, built on SPB-MaxSAT).
+/usr/local/genesis-sota/bin, pinned here by SHA-256, refused if missing or different), each run with its published
+configuration for unweighted instances:
+  * `deepdist`: DeepDist (ECAI 2025; local search with deep differentiation clause weighting, built on SPB-MaxSAT);
+  * `spb-maxsat-c-fps`: SPB-MaxSAT-c-FPS (MaxSAT Evaluation 2024 anytime winner, with SPB-MaxSAT-c-Band);
+  * `nuwls-c-ibr`: NuWLS-c-IBR (MSE 2024 anytime podium; NuWLS local search inside TT-Open-WBO-Inc);
+  * `tt-open-wbo-inc`: TT-Open-WBO-Inc 2024 with IntelSAT (Nadel; SAT-based anytime search, the code base of the
+    recent winners);
+  * `aperture`: Aperture (Nadel, Slonimski and Strichman, SOFT 2026; `-s glucose`, its unweighted configuration).
 
-Run. The instance, in the classic WCNF format ("p wcnf V C TOP"), is piped to the solver as /proc/self/fd/0 (the
+Run. The instance, in the classic WCNF format ("p wcnf V C TOP") after the comment header of the MaxSAT
+Evaluation's standardised instances (`c "nvars": V,` and `c "ncls": C,`; DeepDist sizes its arrays from these lines
+alone and, without them, reads no clause and crashes; the other solvers skip comments), is piped to the solver as /proc/self/fd/0 (the
 sandbox child may not write files). The solver runs for the remaining budget (wall clock; the child is alone on a
 pinned core), then receives SIGTERM, on which MaxSAT Evaluation solvers print their best assignment ("v" line). The
 assignment is decoded to the chosen edges; a violated hard clause or a missing "v" line fails the run. The domain
 checker re-checks the witness; the solver's reported cost is never trusted.
+
+Seeds. These solvers fix their own random seeds, so the same input gives the same run. The seed instead picks an
+isomorphic copy of the instance: a seeded random order of the variables, of the clauses and of the literals within
+each clause (the usual way to sample a deterministic solver's run-to-run spread; nothing about the problem
+changes). The model is mapped back to the original edges.
 
 Parameters (data only): {solver, cpu_seconds}. Domain: triangle_free_host_v1.
 """
@@ -28,9 +41,18 @@ import time
 
 DOMAINS = ('triangle_free_host_v1',)
 FILES = ('candidate_kinds/maxsat.py',)
+_BIN = '/usr/local/genesis-sota/bin/'
 SOLVERS = {
-    'deepdist': {'binary': '/usr/local/genesis-sota/bin/DeepDist',
-                 'sha256': 'PIN_AFTER_BUILD', 'args': ()},
+    'deepdist': {'binary': _BIN + 'DeepDist',
+                         'sha256': 'b06627366a58402fa9d8ec1ebfb7206d3d9a023c0c12f944c06c4b3b571f5adc', 'args': ()},
+    'spb-maxsat-c-fps': {'binary': _BIN + 'SPB-MaxSAT-c-FPS',
+                         'sha256': '3f55ae480e0c0c353edf152f32f6749e1ca273537181339b708a7d4dd405b221', 'args': ()},
+    'nuwls-c-ibr': {'binary': _BIN + 'NuWLS-c-IBR',
+                         'sha256': 'c8567c3949753d310a4fb284d1ccde8bc3881f0b36347e2f0ac1894afc24d2f1', 'args': ()},
+    'tt-open-wbo-inc': {'binary': _BIN + 'TT-Open-WBO-Inc-IntelSAT',
+                         'sha256': 'f54cfaa62ff5a120aa495d93f8d2072b8ae7c9f02143f363dcc63d8f1da7ddcf', 'args': ()},
+    'aperture': {'binary': _BIN + 'Aperture',
+                         'sha256': 'd2d8155ede698f5615466990bd6f067080624bbe4c605abb052e0fe49a74c45d', 'args': ('-s', 'glucose')},
 }
 _DIGEST = {}
 
@@ -68,15 +90,27 @@ def triangles(E):
     return [(u, v, w) for u, v in E for w in sorted(adj[u] & adj[v]) if w > v]
 
 
-def wcnf(E):
-    """The classic WCNF text: variable i+1 is edge i; hard clauses (weight TOP) forbid each triangle."""
-    eid = {e: i + 1 for i, e in enumerate(E)}
+def wcnf(E, seed=None):
+    """The classic WCNF text: one variable per edge; hard clauses (weight TOP) forbid each triangle. Without a seed,
+    variable i+1 is edge i, in order. With a seed, an isomorphic copy: variable k+1 is edge order[k] for a seeded
+    random permutation, and clauses and literals are shuffled. Returns the text, or (text, order) with a seed."""
+    import random
+    m = len(E)
+    order = list(range(m))
+    rng = random.Random(seed) if seed is not None else None
+    if rng:
+        rng.shuffle(order)
+    var = {E[j]: k + 1 for k, j in enumerate(order)}
     T = triangles(E)
-    top = len(E) + 1
-    lines = [f'p wcnf {len(E)} {len(T) + len(E)} {top}']
-    lines += [f'{top} -{eid[(u, v)]} -{eid[(v, w)]} -{eid[(u, w)]} 0' for u, v, w in T]
-    lines += [f'1 {i + 1} 0' for i in range(len(E))]
-    return '\n'.join(lines) + '\n'
+    top = m + 1
+    hard = [[var[(u, v)], var[(v, w)], var[(u, w)]] for u, v, w in T]
+    clauses = [f'{top} ' + ' '.join(f'-{x}' for x in (rng.sample(h, 3) if rng else h)) + ' 0' for h in hard]
+    clauses += [f'1 {k + 1} 0' for k in range(m)]
+    if rng:
+        rng.shuffle(clauses)
+    head = ['c {', f'c "nvars": {m},', f'c "ncls": {len(clauses)},', 'c }', f'p wcnf {m} {len(clauses)} {top}']
+    text = '\n'.join(head + clauses) + '\n'
+    return text if seed is None else (text, order)
 
 
 def parse_model(out, m):
@@ -108,7 +142,7 @@ def solve(view, params, cpu_seconds, seed):
     if not E:
         return {'selected': [], 'value': 0}
     s = SOLVERS[params['solver']]
-    text = wcnf(E)
+    text, order = wcnf(E, seed)
     budget = max(0.01, min(params['cpu_seconds'], cpu_seconds) - (time.process_time() - start))
     p = subprocess.Popen([s['binary'], '/proc/self/fd/0', *s['args']], stdin=subprocess.PIPE,
                          stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
@@ -124,7 +158,7 @@ def solve(view, params, cpu_seconds, seed):
     true = parse_model(out, len(E))
     if true is None:
         raise RuntimeError(f'{params["solver"]} printed no assignment (exit {p.returncode}): {(out + err)[-300:]}')
-    chosen = [E[i - 1] for i in sorted(true) if 1 <= i <= len(E)]
+    chosen = sorted(E[order[k - 1]] for k in true if 1 <= k <= len(E))
     picked = set(chosen)
     for u, v, w in triangles(E):
         if (u, v) in picked and (v, w) in picked and (u, w) in picked:
