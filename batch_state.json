@@ -1028,9 +1028,18 @@
       },
       "B20_R90": {
         "commits": [
-          "9f8eecc"
+          "9f8eecc",
+          "0b7c922"
         ],
         "result": "TFX_BEATS_EVERY_CHAMPION and TFX_BEATS_VBS on planted (24) and G(63, 0.5) (12) fresh n63 hosts; NO_CHAMPION_FINDS_MORE at 10 s; valid, recomputed. >=5x (planted) and 40-50x (G(63,0.5)) faster than DeepDist; tfx at the 0.05 s floor on 33/36 hosts (lower bounds); interrupted once by the session limit and resumed. Claim path B20R90-OPEN-1"
+      },
+      "B20_R91": {
+        "commits": [],
+        "result": "Engineering: MSE 2026 anytime entrants (PASMaxSAT-c, SGAT-NuWLS-c, NuWLS-c-2026, NuWLS-c-2026-UB, DeepDist-c, Aperture 2026 GBG/KBG/IBI) built from Daniel-supplied archives (MD5 = Zenodo) as maxsat-anytime-2026-v1. Tests (7)"
+      },
+      "B20_R92": {
+        "commits": [],
+        "result": "Setup: tfx vs 13 champions and their VBS, ladder 0.005-2 s, long budget, ablations; fresh planted and G(63,0.5) hosts. Pending"
       }
     },
     "open_after_b20_r5": [
