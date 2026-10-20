@@ -955,7 +955,9 @@
       "B20_R79": {
         "commits": [
           "49d34ec",
-          "943cc6d"
+          "943cc6d",
+          "14bfe59",
+          "f3c81f4"
         ],
         "result": "Program search from random programs (16 fresh n63 training hosts, 6,000 CPU s, 149 generations, 1,497 evaluations): froze a 10-statement program on adjacent_2: descent, a swap-like sweep (drop, refill, keep if no smaller) and annealed-perturbation + descent loops. Fitness 265.4 (random mean) -> 287.34. Swap-like 94% of the last 300. Run 1 stopped at 6 min (generator fix). Tested in B20_R81"
       },
@@ -963,7 +965,7 @@
         "commits": [
           "e579deb"
         ],
-        "result": "Setup: random-program control. Pending"
+        "result": "Random-program control on B20_R79's training hosts (1,495 programs, 6,000 CPU s, same final choice): froze relabel 100 random (anneal); relabel best (sideways) on adjacent_2, final mean 287.30 vs the search's 287.34. No swap-like step. Decided on fresh hosts in B20_R81"
       },
       "B20_R81": {
         "commits": [

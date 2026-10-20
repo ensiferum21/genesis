@@ -592,7 +592,7 @@ WORKSTREAMS = {
              'evidence/engine_vs_sota_b20r77/summary.json', 'src/genesis/invention/solver_programs.py',
              'src/genesis/invention/solver_search.py', 'src/genesis/candidate_kinds/solver_program.py',
              'scripts/b20r79_program_search.py', 'evidence/program_search_b20r79/search_summary.json',
-             'scripts/b20r80_random_program_control.py',
+             'scripts/b20r80_random_program_control.py', 'evidence/random_program_control_b20r80/control_summary.json',
              'scripts/b20r81_self_found_solver.py', 'src/genesis/invention/solver_library.py',
              'src/genesis/invention/library_search.py', 'src/genesis/candidate_kinds/solver_library_program.py',
              'scripts/b20r83_generation_search.py', 'scripts/b20r86_generations_eval.py'],

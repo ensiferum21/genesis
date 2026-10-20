@@ -108,5 +108,33 @@ class Design(unittest.TestCase):
             self.assertIn('R33.pinned_core()', (ROOT / 'scripts' / name).read_text())
 
 
+class RecordB20R80(unittest.TestCase):
+    """B20_R80's outputs: the frozen random-search program and its history."""
+
+    @classmethod
+    def setUpClass(cls):
+        d = ROOT / 'evidence' / 'random_program_control_b20r80'
+        cls.s = json.loads((d / 'control_summary.json').read_text())
+        cls.frozen = json.loads((d / 'random_program.json').read_text())
+        cls.hist = [json.loads(l) for l in (d / 'history.jsonl').read_text().splitlines() if l.strip()]
+
+    def test_the_frozen_program(self):
+        from genesis import candidates_v2 as C2
+        prog = self.frozen['program']
+        self.assertEqual(prog, self.s['program'])
+        self.assertEqual(SP.problems(prog, KP.licensed_reps(TF)), [])
+        self.assertEqual(C2.descriptor_problems(self.frozen['descriptor_at_0.5s'], domain=TF), [])
+        best = max(self.s['finalists'], key=lambda f: (f['final_mean'], -f['size']))
+        self.assertEqual((best['program'], best['final_mean']), (prog, 287.2969))
+        self.assertFalse(SS.anatomy(prog)['swap_like'])
+
+    def test_the_history(self):
+        self.assertEqual(len(self.hist), self.s['programs'])
+        self.assertEqual(len({json.dumps(h['program'], sort_keys=True) for h in self.hist}), len(self.hist))
+        self.assertTrue(all(h['round'] == 0 for h in self.hist))
+        hosts = json.loads((ROOT / 'evidence' / 'program_search_b20r79' / 'hosts.json').read_text())['tasks']
+        self.assertEqual(self.s['training_host_ids'], [t['task_id'] for t in hosts])
+
+
 if __name__ == '__main__':
     unittest.main()

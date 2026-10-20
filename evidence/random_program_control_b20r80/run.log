@@ -1,0 +1,21 @@
+[    0.0s] pinned to CPU 0
+[    0.0s] 16 training hosts from evidence/program_search_b20r79/hosts.json
+[  406.0s] 100 programs, best 287.06 (size 9) {"body": [["split", 0.9, [["sweep", "drop", "improve"], ["edges", "force", "anneal", 1], ["split", 0.25, [["descent"]], [["edges", "drop", "sideways", 1]]]], [["init"], ["descent"]]], ["relabel", "random", "anneal", 1000]], "rep": "adjacent_3"}
+[  813.5s] 200 programs, best 287.12 (size 2) {"body": [["relabel", "random", "anneal", 100], ["edges", "drop", "anneal", 1]], "rep": "adjacent_2"}
+[ 1221.9s] 300 programs, best 287.12 (size 2) {"body": [["relabel", "random", "anneal", 100], ["edges", "drop", "anneal", 1]], "rep": "adjacent_2"}
+[ 1629.6s] 400 programs, best 287.12 (size 2) {"body": [["relabel", "random", "anneal", 100], ["edges", "drop", "anneal", 1]], "rep": "adjacent_2"}
+[ 2038.2s] 500 programs, best 287.19 (size 2) {"body": [["relabel", "random", "anneal", 1000], ["descent"]], "rep": "cross_2"}
+[ 2446.7s] 600 programs, best 287.19 (size 2) {"body": [["relabel", "random", "anneal", 1000], ["descent"]], "rep": "cross_2"}
+[ 2854.7s] 700 programs, best 287.19 (size 2) {"body": [["relabel", "random", "anneal", 1000], ["descent"]], "rep": "cross_2"}
+[ 3262.8s] 800 programs, best 287.19 (size 2) {"body": [["relabel", "random", "anneal", 1000], ["descent"]], "rep": "cross_2"}
+[ 3670.6s] 900 programs, best 287.19 (size 2) {"body": [["relabel", "random", "anneal", 1000], ["descent"]], "rep": "cross_2"}
+[ 4078.4s] 1000 programs, best 287.19 (size 2) {"body": [["relabel", "random", "anneal", 1000], ["descent"]], "rep": "cross_2"}
+[ 4485.7s] 1100 programs, best 287.19 (size 2) {"body": [["relabel", "random", "anneal", 1000], ["descent"]], "rep": "cross_2"}
+[ 4893.4s] 1200 programs, best 287.19 (size 2) {"body": [["relabel", "random", "anneal", 1000], ["descent"]], "rep": "cross_2"}
+[ 5300.9s] 1300 programs, best 287.31 (size 2) {"body": [["relabel", "random", "anneal", 100], ["relabel", "best", "sideways", 1]], "rep": "adjacent_2"}
+[ 5708.6s] 1400 programs, best 287.31 (size 2) {"body": [["relabel", "random", "anneal", 100], ["relabel", "best", "sideways", 1]], "rep": "adjacent_2"}
+[ 6135.8s] finalist 287.30 (sample fitness 287.31, size 2) {"body": [["relabel", "random", "anneal", 100], ["relabel", "best", "sideways", 1]], "rep": "adjacent_2"}
+[ 6176.5s] finalist 287.28 (sample fitness 287.19, size 2) {"body": [["relabel", "random", "anneal", 1000], ["descent"]], "rep": "cross_2"}
+[ 6217.1s] finalist 287.22 (sample fitness 287.12, size 2) {"body": [["relabel", "random", "anneal", 100], ["edges", "drop", "anneal", 1]], "rep": "adjacent_2"}
+[ 6257.7s] finalist 287.19 (sample fitness 287.12, size 9) {"body": [["repeat", 3, [["relabel", "random", "sideways", 1000], ["repeat", 3, [["relabel", "best", "improve", 1], ["init"]]]]], ["init"], ["split", 0.75, [["relabel", "random", "always", 100]], [["init"]]]], "rep": "cross_2"}
+[ 6257.7s] frozen random-search program (size 2): {"body": [["relabel", "random", "anneal", 100], ["relabel", "best", "sideways", 1]], "rep": "adjacent_2"}
