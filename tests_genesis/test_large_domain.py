@@ -153,5 +153,68 @@ class Kinds(unittest.TestCase):
         self.assertEqual(ML.FILES[0], 'candidate_kinds/maxsat_large.py')
 
 
+
+class Runner(unittest.TestCase):
+    """The large runner: its own schema and identity, the view only, strict decoding, the domain's re-check."""
+
+    def test_existing_identities_are_untouched(self):
+        import json
+        sys.path.insert(0, str(ROOT / 'scripts'))
+        import importlib
+        R92 = importlib.import_module('b20r92_vs_mse2026')
+        cfg = json.loads((ROOT / 'evidence/configure_tfx_b20r89/config.json').read_text())['config']
+        D = R92.arm_descriptors(cfg)
+        recorded = json.loads((ROOT / 'evidence/vs_mse2026_b20r92/summary.json').read_text())['descriptors']
+        now = {f'{x}@{t}': d['descriptor_id'] for (x, t), (_, d) in D.items()}
+        self.assertEqual(now, recorded)                    # every frozen v2 descriptor of B20_R92 still builds
+
+    def test_descriptors(self):
+        from genesis import candidates_large as CL
+        d = CL.build_descriptor('tfxw-v1', {'cpu_seconds': 0.5, 'config': dict(TW.DEFAULT)}, cpu_seconds=0.5)
+        self.assertEqual(d['schema'], 'genesis-candidate-descriptor-large-v1')
+        self.assertEqual(CL.descriptor_problems(d), [])
+        self.assertIn('candidates_large.py', d['implementation'])
+        self.assertIn('candidate_kinds/native/tfxw.c', d['implementation'])
+        bad = dict(d, parameters={'cpu_seconds': 0.5, 'config': dict(TW.DEFAULT, kpick=4)})
+        self.assertIn('descriptor_id does not match the descriptor', CL.descriptor_problems(bad))
+        with self.assertRaises(Exception):
+            CL.build_descriptor('tfx-v1', {'cpu_seconds': 0.5, 'config': dict(T.DEFAULT)}, cpu_seconds=0.5)
+        m = CL.build_descriptor('maxsat-anytime-large-v1', {'solver': 'deepdist', 'cpu_seconds': 60},
+                                cpu_seconds=60 + ML.ENCODING_ALLOWANCE_S)
+        self.assertEqual(CL.descriptor_problems(m), [])
+
+    def run_both(self, task, desc):
+        from genesis import candidates_large as CL
+        out = {}
+        for iso in ('process', 'runc'):
+            r = CL.run(task, desc, seed=3, isolation=iso)
+            self.assertEqual(r['status'], 'SUCCESS', (iso, r))
+            out[iso] = r['result']['value']
+        return out
+
+    def test_tfxw_end_to_end(self):
+        from genesis import candidates_large as CL
+        t = rand_task(200, 0.3, 11)
+        d = CL.build_descriptor('tfxw-v1', {'cpu_seconds': 1.0, 'config': dict(TW.DEFAULT)}, cpu_seconds=1.0)
+        vals = self.run_both(t, d)
+        ub = DM.adapter(LARGE).upper_bound(t)['upper']
+        for v in vals.values():
+            self.assertLessEqual(v, ub)
+            self.assertGreater(v, len(t.edges) // 2)          # at least a max-cut-sized answer
+        small = DM.ADAPTERS['triangle_free_host_v1']
+        self.assertEqual(CL.run(small.parse({'task_id': 'x', 'domain': 'triangle_free_host_v1', 'n': 3,
+                                             'edges': [[0, 1]], 'family': 'f'}), d, seed=1)['status'], 'UNSUPPORTED')
+
+    def test_champions_end_to_end(self):
+        from genesis import candidates_large as CL
+        t = rand_task(90, 0.2, 12)
+        for solver in ('deepdist', 'pasmaxsat-c'):
+            d = CL.build_descriptor('maxsat-anytime-large-v1', {'solver': solver, 'cpu_seconds': 1.0},
+                                    cpu_seconds=1.0 + ML.ENCODING_ALLOWANCE_S)
+            vals = self.run_both(t, d)
+            for v in vals.values():
+                self.assertLessEqual(v, DM.adapter(LARGE).upper_bound(t)['upper'])
+
+
 if __name__ == '__main__':
     unittest.main()
