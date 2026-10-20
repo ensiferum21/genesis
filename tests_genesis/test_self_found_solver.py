@@ -136,5 +136,59 @@ class RecordB20R80(unittest.TestCase):
         self.assertEqual(self.s['training_host_ids'], [t['task_id'] for t in hosts])
 
 
+class RecordB20R81(unittest.TestCase):
+    """B20_R81's saved rows: valid; the labels recompute; the programs are the frozen ones; the hosts are in the addenda."""
+
+    @classmethod
+    def setUpClass(cls):
+        d = ROOT / 'evidence' / 'self_found_solver_b20r81'
+        cls.s = json.loads((d / 'summary.json').read_text())
+        cls.rows = [json.loads(l) for l in (d / 'rows.jsonl').read_text().splitlines() if l.strip()]
+
+    def test_valid_and_the_labels_recompute(self):
+        self.assertEqual(len(self.rows), M.PER_N)
+        invalid, _, fail = M.validity(self.rows)
+        self.assertIsNone(invalid)
+        self.assertEqual(set(fail.values()), {0.0})
+        a = json.loads(json.dumps(M.analyse(self.rows)))
+        for k in ('labels', 'found_vs_engine', 'found_vs_random', 'found_vs_sota', 'engine_vs_sota', 'arms'):
+            self.assertEqual(a[k] if k != 'labels' else a['labels'], self.s[k], k)
+        self.assertEqual(self.s['labels'], {'gv4_found_vs_builder': 'UNRESOLVED', 'found_vs_random': 'UNRESOLVED',
+                                            'found_vs_sota': 'SELF_FOUND_BEATS_SOTA',
+                                            'b20r77_replication': 'ENGINE_BEATS_SOTA'})
+        # the builder's engine is faster, but the interval ends exactly at the boundary
+        self.assertEqual([self.s['found_vs_engine'][q]['interval_90'][1] for q in ('q0.5', 'q0.75')], [-1.0, -1.0])
+        self.assertEqual(self.s['found_vs_engine']['b20r76_per_host_median']['verdict'], 'B_FASTER')
+
+    def test_the_programs_are_the_frozen_ones(self):
+        import hashlib
+        for arm, path in (('found', M.FOUND), ('random', M.RANDOM)):
+            self.assertEqual(self.s['programs'][arm]['file_sha256'], hashlib.sha256(path.read_bytes()).hexdigest())
+            self.assertEqual(self.s['programs'][arm]['program'], json.loads(path.read_text())['program'])
+
+    def test_values_bounded_and_isolated(self):
+        for r in self.rows:
+            self.assertLessEqual(r['target'], r['reference']['upper'])
+            for a in M.ARMS:
+                for t in M.LADDER:
+                    for x in r['runs'][a][str(t)]:
+                        self.assertLessEqual(x['value'], r['target'])
+                        self.assertEqual(x['isolation'], 'OCI_RUNC_NO_NETWORK_RO_ROOT_SECCOMP')
+
+    def test_hosts_are_fresh_and_in_the_addenda(self):
+        import b20r23_e1b_readiness as RD
+        from genesis.common import canonical
+        from genesis.models import GraphTask
+        d = ROOT / 'evidence' / 'self_found_solver_b20r81'
+        tasks = [GraphTask.model_validate_json(canonical(t)) for t in json.loads((d / 'hosts.json').read_text())['tasks']]
+        self.assertEqual([t.task_id for t in tasks], [r['task_id'] for r in self.rows])
+        train = json.loads((ROOT / 'evidence' / 'program_search_b20r79' / 'hosts.json').read_text())['tasks']
+        self.assertFalse(RD.identities(tasks) & RD.identities([GraphTask.model_validate_json(canonical(t)) for t in train]))
+        for pkg in ('e1', 'e1b'):
+            add = json.loads((ROOT / 'handoff' / pkg / 'exposure_hosts_addendum_b20r81.json').read_text())
+            self.assertTrue(RD.identities(tasks) <= RD.identities([GraphTask.model_validate_json(canonical(t))
+                                                                    for t in add]))
+
+
 if __name__ == '__main__':
     unittest.main()

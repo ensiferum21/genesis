@@ -1,0 +1,660 @@
+{
+ "arms": {
+  "burer": {
+   "reached_within_2s": 6,
+   "tts_median": null,
+   "tts_q75": null
+  },
+  "cpsat": {
+   "reached_within_2s": 0,
+   "tts_median": null,
+   "tts_q75": null
+  },
+  "dsb": {
+   "reached_within_2s": 24,
+   "tts_median": 0.1,
+   "tts_q75": 0.5
+  },
+  "engine": {
+   "reached_within_2s": 24,
+   "tts_median": 0.1,
+   "tts_q75": 0.25
+  },
+  "found": {
+   "reached_within_2s": 24,
+   "tts_median": 0.5,
+   "tts_q75": 1.2
+  },
+  "random": {
+   "reached_within_2s": 24,
+   "tts_median": 0.5,
+   "tts_q75": 1.25
+  },
+  "system": {
+   "reached_within_2s": 20,
+   "tts_median": 1.25,
+   "tts_q75": 2.0
+  }
+ },
+ "certified": 18,
+ "code_identity": "538e9ff73ca601be4ef68b718f63f544b1dece098d3a66de8295764bf13a6c3b",
+ "descriptors": {
+  "burer@0.05": "1758c5a4ab050cba4fdfe50ba698fadfb9f6f8f8f4e7154bba4789c650abf449",
+  "burer@0.1": "604217a8557811e3b2d70f8ac3327fd1a7bb4bdc2e33df4bd883c10fb12ca240",
+  "burer@0.25": "0165c8d94e740af1715cace82ae8df3506a362eb4c857299c84f2f3940e6547c",
+  "burer@0.5": "7602ecebbee0428c9017175d7626a42b1adac5b13547021232177108ddfd379c",
+  "burer@2.0": "83752c56451353e348197c7dadbd6b00dfb9ff5231aaed1aefa9b16cfff39ad0",
+  "cpsat@0.05": "1c29346be05fbffd5addd96f405abf509837ad59c7719291e2777ff4687d5ecc",
+  "cpsat@0.1": "9b3ab7fb9dbe651106d1eba7a0557d89536690d88d1d9354ddc915aeb478465c",
+  "cpsat@0.25": "2dbc054f2d9c9dd87f012760a4b537ad6733154e577704261cec2a79327680d9",
+  "cpsat@0.5": "edd148bf2a97ce82cd3db3f2b6f98b7af246db786b87cdce97fb42a63366efbf",
+  "cpsat@2.0": "b64f192b82164666592dd67a1bacd83bdfbf7d9a82708522041632a0cedb2555",
+  "dsb@0.05": "544cf6a033969cf36329257819c7af6f3036b4ec396e187b6e88af4377dc63cf",
+  "dsb@0.1": "07d54f01f4466e8bad263899d6559ddcef9628eabb3eb97b6818a3db8a8a4043",
+  "dsb@0.25": "bc41a9e9b6a55285961cbdac9a2d087c8041a953ce1b4f813566c980872cdf70",
+  "dsb@0.5": "f2ca67a992453b7659726a08f346adb323ee9c90b8af215bb28959a58798a227",
+  "dsb@2.0": "a9a916e22e7a4eae5d12a5b2a58f2707988a3b3d21926d72d4761502bfc259a1",
+  "engine@0.05": "91c4f1b05c13b978724b26459b06136247895fe1622c77ce48cbcaf9a5d645d3",
+  "engine@0.1": "d329d5a5ec136605d2d96736152c5bbeb6946a5988581ae084d50e1fae6b9b1e",
+  "engine@0.25": "dab24a4cd09eff7717b3ea8a66b69fd2adfba99ffcb8197dc8c079bff66b4344",
+  "engine@0.5": "e2554bb0d4ddec1499df885c02e20bd2281da16a85f2d68d64287315e7e14d57",
+  "engine@2.0": "edd91c1735ea2036c53d744b445b6a107408064cbfe665bea8cae6a8e5536bec",
+  "found@0.05": "2ebba6b45ec26c2ffec5782b893c768a30d41fc9388b8de8c2f4c4f59a26b136",
+  "found@0.1": "b323f4c72499deb4131baa590c412137ca9323617b20d675a1f6a10e6bf6c515",
+  "found@0.25": "a32f897b0036e1300e99d84f43f985b98c0d71499a87217ff988408b20ec52c7",
+  "found@0.5": "4718468926d4831a73f71b4fda595f1bedb71304c2a2a6f557bed0656aaa8de2",
+  "found@2.0": "b0f33c553a99ea58a83451c9c9b21a58c2a5f0f0699f8af254e13a7a90276b28",
+  "random@0.05": "b268f13498ff8c6f15ecc2be1f84d43d9e6a24bc550e85f7cb99faa69d6bbc6f",
+  "random@0.1": "bd8a3c988f149f25820462cfb84e7402a0bcacba2d0301f3a7d623cc0b2d4598",
+  "random@0.25": "3344b22194d3cf04c8f8c036e6c3af6b1b5709c8cb63c00f9d8df5fdf01814c8",
+  "random@0.5": "f0c4924779403f4ad7f5faf204581ba0da66f615a9317bcd6416c80bf29c410a",
+  "random@2.0": "4d1230a5963a881efb18450c8279635b5c3b3b2ee18705a1b2dd26df529bb466",
+  "system@0.05": "c5e1c413fc6b4b89f80525c9639fab635b65b31dc93a8d8c2ae4eb8229901114",
+  "system@0.1": "adfa26efcf0527e3f2b0c4e2ab823f5f74efb06b1d87c8856299bdb45c9522f7",
+  "system@0.25": "98592188db6b4bf0ed4705a96c586e1267e7cfc1e5c86020ad4f58bcaa48d930",
+  "system@0.5": "2d682650c3132af422782228f78d1f6249ce12072792ba34e0588d5b554ce9c4",
+  "system@2.0": "8d6424fd28f73213ff901c2dcccd9ce16efbf0b54fc383201caf0f65806b1d2b"
+ },
+ "edges": [
+  433,
+  499
+ ],
+ "engine_vs_sota": {
+  "burer": {
+   "b20r76_per_host_median": {
+    "host_log2_ratios": [
+     4.585,
+     10.0,
+     -1.0,
+     -1.0,
+     10.0,
+     10.0,
+     2.585,
+     10.0,
+     10.0,
+     0.0,
+     10.0,
+     10.0,
+     10.0,
+     10.0,
+     10.0,
+     10.0,
+     10.0,
+     10.0,
+     10.0,
+     10.0,
+     10.0,
+     2.3219,
+     10.0,
+     10.0
+    ],
+    "interval_90": [
+     10.0,
+     10.0
+    ],
+    "log2_ratio": 10.0,
+    "verdict": "A_FASTER"
+   },
+   "q0.5": {
+    "interval_90": [
+     10.0,
+     10.0
+    ],
+    "log2_ratio": 10.0,
+    "verdict": "A_FASTER"
+   },
+   "q0.75": {
+    "interval_90": [
+     10.0,
+     10.0
+    ],
+    "log2_ratio": 10.0,
+    "verdict": "A_FASTER"
+   }
+  },
+  "cpsat": {
+   "b20r76_per_host_median": {
+    "host_log2_ratios": [
+     10.0,
+     10.0,
+     10.0,
+     10.0,
+     10.0,
+     10.0,
+     10.0,
+     10.0,
+     10.0,
+     10.0,
+     10.0,
+     10.0,
+     10.0,
+     10.0,
+     10.0,
+     10.0,
+     10.0,
+     10.0,
+     10.0,
+     10.0,
+     10.0,
+     10.0,
+     10.0,
+     10.0
+    ],
+    "interval_90": [
+     10.0,
+     10.0
+    ],
+    "log2_ratio": 10.0,
+    "verdict": "A_FASTER"
+   },
+   "q0.5": {
+    "interval_90": [
+     10.0,
+     10.0
+    ],
+    "log2_ratio": 10.0,
+    "verdict": "A_FASTER"
+   },
+   "q0.75": {
+    "interval_90": [
+     10.0,
+     10.0
+    ],
+    "log2_ratio": 10.0,
+    "verdict": "A_FASTER"
+   }
+  }
+ },
+ "exact": {
+  "cpsat_60s": {
+   "claims_optimal": 0,
+   "reaches_target": 2
+  },
+  "generated_rows_reference": {
+   "certified": 18
+  }
+ },
+ "exposure_scan": {
+  "calibration_hosts": 456,
+  "distinct_hosts": 3219,
+  "e1_named_hosts": 711,
+  "empty_files_skipped": [
+   "evidence/failed-wal-final-replay.json",
+   "evidence/final-replay.json"
+  ],
+  "excluded_identities": 3219,
+  "files_scanned": 1157,
+  "host_records": 14769
+ },
+ "found_vs_dsb": {
+  "b20r76_per_host_median": {
+   "host_log2_ratios": [
+    -1.263,
+    2.263,
+    -1.3219,
+    -1.3219,
+    1.0,
+    -4.3219,
+    -1.3219,
+    -2.3219,
+    2.263,
+    -1.3219,
+    -1.263,
+    -3.0,
+    -1.3219,
+    -1.263,
+    -2.3219,
+    -2.3219,
+    -2.0,
+    -4.3219,
+    -2.3219,
+    -2.0,
+    -2.3219,
+    -1.3219,
+    0.0,
+    -1.0
+   ],
+   "interval_90": [
+    -2.161,
+    -1.2925
+   ],
+   "log2_ratio": -1.3219,
+   "verdict": "B_FASTER"
+  },
+  "q0.5": {
+   "interval_90": [
+    -2.3219,
+    0.0
+   ],
+   "log2_ratio": -2.3219,
+   "verdict": "UNRESOLVED"
+  },
+  "q0.75": {
+   "interval_90": [
+    -2.3219,
+    1.0
+   ],
+   "log2_ratio": -1.263,
+   "verdict": "UNRESOLVED"
+  }
+ },
+ "found_vs_engine": {
+  "b20r76_per_host_median": {
+   "host_log2_ratios": [
+    -1.263,
+    0.0,
+    -1.3219,
+    -1.3219,
+    1.737,
+    -5.585,
+    -1.3219,
+    -2.3219,
+    -1.3219,
+    -1.3219,
+    -2.263,
+    -2.0,
+    -1.3219,
+    -1.0,
+    -1.0,
+    -2.3219,
+    -3.0,
+    -4.3219,
+    -1.0,
+    -2.0,
+    -2.3219,
+    -1.3219,
+    -1.3219,
+    -1.0
+   ],
+   "interval_90": [
+    -2.0,
+    -1.3219
+   ],
+   "log2_ratio": -1.3219,
+   "verdict": "B_FASTER"
+  },
+  "q0.5": {
+   "interval_90": [
+    -2.3219,
+    -1.0
+   ],
+   "log2_ratio": -2.3219,
+   "verdict": "UNRESOLVED"
+  },
+  "q0.75": {
+   "interval_90": [
+    -3.0,
+    -1.0
+   ],
+   "log2_ratio": -2.263,
+   "verdict": "UNRESOLVED"
+  }
+ },
+ "found_vs_random": {
+  "b20r76_per_host_median": {
+   "host_log2_ratios": [
+    1.0,
+    1.263,
+    -1.3219,
+    -1.3219,
+    3.3219,
+    0.0,
+    0.0,
+    1.3219,
+    3.0,
+    0.0,
+    0.0589,
+    -1.737,
+    0.0,
+    -1.585,
+    0.0,
+    -3.3219,
+    1.585,
+    -2.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0
+   ],
+   "interval_90": [
+    0.0,
+    0.0
+   ],
+   "log2_ratio": 0.0,
+   "verdict": "COMPARABLE"
+  },
+  "q0.5": {
+   "interval_90": [
+    0.0,
+    1.263
+   ],
+   "log2_ratio": 0.0,
+   "verdict": "UNRESOLVED"
+  },
+  "q0.75": {
+   "interval_90": [
+    -0.737,
+    1.737
+   ],
+   "log2_ratio": 0.0589,
+   "verdict": "UNRESOLVED"
+  }
+ },
+ "found_vs_sota": {
+  "burer": {
+   "b20r76_per_host_median": {
+    "host_log2_ratios": [
+     3.3219,
+     10.0,
+     -2.3219,
+     -2.3219,
+     10.0,
+     10.0,
+     1.263,
+     10.0,
+     10.0,
+     -1.3219,
+     10.0,
+     10.0,
+     10.0,
+     10.0,
+     10.0,
+     10.0,
+     10.0,
+     10.0,
+     10.0,
+     10.0,
+     10.0,
+     1.0,
+     10.0,
+     10.0
+    ],
+    "interval_90": [
+     10.0,
+     10.0
+    ],
+    "log2_ratio": 10.0,
+    "verdict": "A_FASTER"
+   },
+   "q0.5": {
+    "interval_90": [
+     10.0,
+     10.0
+    ],
+    "log2_ratio": 10.0,
+    "verdict": "A_FASTER"
+   },
+   "q0.75": {
+    "interval_90": [
+     10.0,
+     10.0
+    ],
+    "log2_ratio": 10.0,
+    "verdict": "A_FASTER"
+   }
+  },
+  "cpsat": {
+   "b20r76_per_host_median": {
+    "host_log2_ratios": [
+     10.0,
+     10.0,
+     10.0,
+     10.0,
+     10.0,
+     10.0,
+     10.0,
+     10.0,
+     10.0,
+     10.0,
+     10.0,
+     10.0,
+     10.0,
+     10.0,
+     10.0,
+     10.0,
+     10.0,
+     10.0,
+     10.0,
+     10.0,
+     10.0,
+     10.0,
+     10.0,
+     10.0
+    ],
+    "interval_90": [
+     10.0,
+     10.0
+    ],
+    "log2_ratio": 10.0,
+    "verdict": "A_FASTER"
+   },
+   "q0.5": {
+    "interval_90": [
+     10.0,
+     10.0
+    ],
+    "log2_ratio": 10.0,
+    "verdict": "A_FASTER"
+   },
+   "q0.75": {
+    "interval_90": [
+     10.0,
+     10.0
+    ],
+    "log2_ratio": 10.0,
+    "verdict": "A_FASTER"
+   }
+  }
+ },
+ "found_vs_system": {
+  "b20r76_per_host_median": {
+   "host_log2_ratios": [
+    1.0,
+    10.0,
+    1.0,
+    1.0,
+    1.737,
+    -2.0,
+    3.0,
+    1.3219,
+    10.0,
+    1.0,
+    0.737,
+    -3.0,
+    1.0,
+    10.0,
+    1.3219,
+    0.0,
+    10.0,
+    1.585,
+    0.0,
+    -0.737,
+    -2.3219,
+    3.0,
+    2.263,
+    1.3219
+   ],
+   "interval_90": [
+    1.0,
+    1.661
+   ],
+   "log2_ratio": 1.161,
+   "verdict": "UNRESOLVED"
+  },
+  "q0.5": {
+   "interval_90": [
+    0.0,
+    2.3219
+   ],
+   "log2_ratio": 1.3219,
+   "verdict": "UNRESOLVED"
+  },
+  "q0.75": {
+   "interval_90": [
+    0.0,
+    10.0
+   ],
+   "log2_ratio": 0.737,
+   "verdict": "UNRESOLVED"
+  }
+ },
+ "hosts": 24,
+ "labels": {
+  "b20r77_replication": "ENGINE_BEATS_SOTA",
+  "found_vs_random": "UNRESOLVED",
+  "found_vs_sota": "SELF_FOUND_BEATS_SOTA",
+  "gv4_found_vs_builder": "UNRESOLVED"
+ },
+ "ladder": [
+  0.05,
+  0.1,
+  0.25,
+  0.5,
+  2.0
+ ],
+ "mqlib": {
+  "sha256": "9e760cb75ab9a989a6a714bb0a357ce591e50bbd80ac1100fac253f7913ec4e3"
+ },
+ "ortools": {
+  "sha256": "fb5ef9ac7eddfbf80c9e27678df204400c6f913d41c500f24a50f9f4996d67f9",
+  "workers": 8
+ },
+ "programs": {
+  "found": {
+   "file_sha256": "513e5e7b49e7303e91a23ec08c9d2a64b773267815978f1f1afcb12fda8efbc4",
+   "program": {
+    "body": [
+     [
+      "descent"
+     ],
+     [
+      "split",
+      0.1,
+      [
+       [
+        "sweep",
+        "drop",
+        "sideways"
+       ],
+       [
+        "loop",
+        [
+         [
+          "split",
+          0.1,
+          [
+           [
+            "relabel",
+            "random",
+            "anneal",
+            1000
+           ]
+          ],
+          [
+           [
+            "descent"
+           ]
+          ]
+         ]
+        ]
+       ]
+      ],
+      [
+       [
+        "split",
+        0.75,
+        [
+         [
+          "relabel",
+          "random",
+          "anneal",
+          1000
+         ]
+        ],
+        [
+         [
+          "descent"
+         ]
+        ]
+       ]
+      ]
+     ]
+    ],
+    "rep": "adjacent_2"
+   }
+  },
+  "random": {
+   "file_sha256": "1dd0b89528104b1ae7781a0767b138d184758df4bc376ecf7910b2ab2f993467",
+   "program": {
+    "body": [
+     [
+      "relabel",
+      "random",
+      "anneal",
+      100
+     ],
+     [
+      "relabel",
+      "best",
+      "sideways",
+      1
+     ]
+    ],
+    "rep": "adjacent_2"
+   }
+  }
+ },
+ "quantiles": [
+  0.5,
+  0.75
+ ],
+ "reps": 3,
+ "schema": "genesis-b20r81-self-found-solver-v1",
+ "seeds": {
+  "boot": 20268199,
+  "hosts": 20268101
+ },
+ "status": "DEV comparison; licenses nothing; no package changed",
+ "validity": {
+  "cpu_s_median_at_0.5": {
+   "burer": 0.667,
+   "cpsat": 0.973,
+   "dsb": 0.68,
+   "engine": 0.674,
+   "found": 0.666,
+   "random": 0.669,
+   "system": 0.666
+  },
+  "failure_share": {
+   "burer": 0.0,
+   "cpsat": 0.0,
+   "dsb": 0.0,
+   "engine": 0.0,
+   "found": 0.0,
+   "random": 0.0,
+   "system": 0.0
+  }
+ }
+}

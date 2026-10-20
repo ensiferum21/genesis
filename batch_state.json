@@ -963,7 +963,8 @@
       },
       "B20_R80": {
         "commits": [
-          "e579deb"
+          "e579deb",
+          "03cb9d0"
         ],
         "result": "Random-program control on B20_R79's training hosts (1,495 programs, 6,000 CPU s, same final choice): froze relabel 100 random (anneal); relabel best (sideways) on adjacent_2, final mean 287.30 vs the search's 287.34. No swap-like step. Decided on fresh hosts in B20_R81"
       },
@@ -971,7 +972,7 @@
         "commits": [
           "e579deb"
         ],
-        "result": "Setup: the self-found solver against the builder engine, random control, dSB, system, BURER2002, CP-SAT. Pending"
+        "result": "24 fresh n63 hosts (resumed after a container restart at 7/24): SELF_FOUND_BEATS_SOTA (found 24/24 within 2 s; BURER2002 6, CP-SAT 0); B20_R77 replicated (ENGINE_BEATS_SOTA); found vs builder engine UNRESOLVED (engine ~5x faster, intervals end at -1.00; per-host secondary: engine faster); found vs random UNRESOLVED (indistinguishable; random also beats both tools)"
       },
       "B20_R82": {
         "commits": [

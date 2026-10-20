@@ -133,6 +133,7 @@ needs people: a reviewer, a statistician, an independent custodian on its own ma
 | B20_R77 | New engine `hybrid-swap-v1` from B20_R76's diagnosis; against CP-SAT and BURER2002 on 24 fresh n63 hosts (DEV): **ENGINE_BEATS_SOTA** (24/24 targets within 2 s; BURER2002 10, CP-SAT 0). dSB alone also beats both; scope: anytime ≤ 2 s, one family; claim path B20R77-OPEN-1 |
 | B20_R79 | The system's own program search (from random programs, B20_R78's language): an iterated local search over cuts with a swap-like edge sweep, found without being given one; tested in B20_R81 |
 | B20_R80 | Random-program control: 287.30 against the search's 287.34 on the training hosts (a two-statement iterated local search, no swap); decided on fresh hosts in B20_R81 |
+| B20_R81 | Fresh hosts: the self-found solver beats CP-SAT and BURER2002 (SELF_FOUND_BEATS_SOTA) and B20_R77 replicates; against the builder's engine and against random programs UNRESOLVED (the engine ~5x faster; random equal) |
 
 ## 6. Next steps, in order
 

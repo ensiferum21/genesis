@@ -1,0 +1,36 @@
+[    0.0s] pinned to CPU 0
+[    0.0s] found program sha256 513e5e7b49e7303e: {"body": [["descent"], ["split", 0.1, [["sweep", "drop", "sideways"], ["loop", [["split", 0.1, [["relabel", "random", "anneal", 1000]], [["descent"]]]]]], [["split", 0.75, [["relabel", "random", "anneal", 1000]], [["descent"]]]]]], "rep": "adjacent_2"}
+[    0.0s] random program sha256 1dd0b89528104b1a: {"body": [["relabel", "random", "anneal", 100], ["relabel", "best", "sideways", 1]], "rep": "adjacent_2"}
+[    0.7s] SAT tools: cadical@24fb99286ca1ea9a, drat-trim@92f0aa9575ed519d; MQLib sha256 9e760cb75ab9a989; OR-Tools tree sha256 fb5ef9ac7eddfbf8 workers 8
+[    7.9s] exposure: 3195 identities (3195 named hosts, 711 E1 hosts, 456 calibration hosts)
+[  200.1s] 0000 (454 edges) target 289: found 0.6 random 1.2 engine 0.25 dsb 0.25 system 1.2 burer 6 cpsat inf | cpsat-60s 286 | ref 30s
+[  396.9s] 0001 (469 edges) target 297: found 0.25 random 0.6 engine 0.25 dsb 1.2 system inf burer inf cpsat inf | cpsat-60s 295 | ref 35s
+[  590.0s] 0002 (472 edges) target 298: found 0.25 random 0.1 engine 0.1 dsb 0.1 system 0.5 burer 0.05 cpsat inf | cpsat-60s 294 | ref 32s
+[  785.9s] 0003 (450 edges) target 288: found 0.25 random 0.1 engine 0.1 dsb 0.1 system 0.5 burer 0.05 cpsat inf | cpsat-60s 287 | ref 36s
+[  978.9s] 0004 (441 edges) target 276: found 0.6 random 6 engine 2 dsb 1.2 system 2 burer inf cpsat inf | cpsat-60s 275 | ref 34s
+[ 1169.3s] 0005 (456 edges) target 291: found 24 random 24 engine 0.5 dsb 1.2 system 6 burer inf cpsat inf | cpsat-60s 288 | ref 30s
+[ 1362.1s] 0006 (476 edges) target 300: found 0.25 random 0.25 engine 0.1 dsb 0.1 system 2 burer 0.6 cpsat inf | cpsat-60s 296 | ref 33s
+[    0.0s] pinned to CPU 0
+[    0.0s] found program sha256 513e5e7b49e7303e: {"body": [["descent"], ["split", 0.1, [["sweep", "drop", "sideways"], ["loop", [["split", 0.1, [["relabel", "random", "anneal", 1000]], [["descent"]]]]]], [["split", 0.75, [["relabel", "random", "anneal", 1000]], [["descent"]]]]]], "rep": "adjacent_2"}
+[    0.0s] random program sha256 1dd0b89528104b1a: {"body": [["relabel", "random", "anneal", 100], ["relabel", "best", "sideways", 1]], "rep": "adjacent_2"}
+[    0.3s] SAT tools: cadical@24fb99286ca1ea9a, drat-trim@92f0aa9575ed519d; MQLib sha256 9e760cb75ab9a989; OR-Tools tree sha256 fb5ef9ac7eddfbf8 workers 8
+[   10.0s] exposure: 3219 identities (3219 named hosts, 711 E1 hosts, 456 calibration hosts)
+[   10.0s] hosts reloaded from hosts.json
+[  293.3s] 0007 (448 edges) target 283 (uncertified): found 0.5 random 1.25 engine 0.1 dsb 0.1 system 1.25 burer inf cpsat inf | cpsat-60s 282 | ref 122s
+[  486.9s] 0008 (433 edges) target 273: found 0.25 random 2 engine 0.1 dsb 1.2 system inf burer inf cpsat inf | cpsat-60s 271 | ref 33s
+[  682.8s] 0009 (461 edges) target 289: found 0.25 random 0.25 engine 0.1 dsb 0.1 system 0.5 burer 0.1 cpsat inf | cpsat-60s 285 | ref 36s
+[  882.8s] 0010 (461 edges) target 289: found 1.2 random 1.25 engine 0.25 dsb 0.5 system 2 burer inf cpsat inf | cpsat-60s 284 | ref 40s
+[ 1083.9s] 0011 (457 edges) target 290: found 2 random 0.6 engine 0.5 dsb 0.25 system 0.25 burer inf cpsat inf | cpsat-60s 285 | ref 41s
+[ 1295.1s] 0012 (451 edges) target 284: found 0.25 random 0.25 engine 0.1 dsb 0.1 system 0.5 burer inf cpsat inf | cpsat-60s 284 | ref 50s
+[ 1489.1s] 0013 (484 edges) target 306: found 6 random 2 engine 3 dsb 2.5 system inf burer inf cpsat inf | cpsat-60s 302 | ref 33s
+[ 1770.4s] 0014 (465 edges) target 293 (uncertified): found 0.5 random 0.5 engine 0.25 dsb 0.1 system 1.25 burer inf cpsat inf | cpsat-60s 290 | ref 120s
+[ 1964.3s] 0015 (442 edges) target 286: found 0.5 random 0.05 engine 0.1 dsb 0.1 system 0.5 burer inf cpsat inf | cpsat-60s 281 | ref 34s
+[ 2245.6s] 0016 (472 edges) target 293 (uncertified): found 2 random 6 engine 0.25 dsb 0.5 system inf burer inf cpsat inf | cpsat-60s 290 | ref 121s
+[ 2439.5s] 0017 (499 edges) target 317: found 2 random 0.5 engine 0.1 dsb 0.1 system 6 burer inf cpsat inf | cpsat-60s 315 | ref 33s
+[ 2721.1s] 0018 (482 edges) target 302 (uncertified): found 0.5 random 0.5 engine 0.25 dsb 0.1 system 0.5 burer inf cpsat inf | cpsat-60s 299 | ref 121s
+[ 2915.8s] 0019 (466 edges) target 295: found 2 random 2 engine 0.5 dsb 0.5 system 1.2 burer inf cpsat inf | cpsat-60s 288 | ref 33s
+[ 3198.8s] 0020 (460 edges) target 289 (uncertified): found 0.5 random 0.5 engine 0.1 dsb 0.1 system 0.1 burer inf cpsat inf | cpsat-60s 288 | ref 121s
+[ 3400.0s] 0021 (458 edges) target 285: found 0.25 random 0.25 engine 0.1 dsb 0.1 system 2 burer 0.5 cpsat inf | cpsat-60s 285 | ref 40s
+[ 3597.6s] 0022 (465 edges) target 299: found 0.25 random 0.25 engine 0.1 dsb 0.25 system 1.2 burer inf cpsat inf | cpsat-60s 298 | ref 36s
+[ 3879.9s] 0023 (477 edges) target 296 (uncertified): found 0.5 random 0.5 engine 0.25 dsb 0.25 system 1.25 burer inf cpsat inf | cpsat-60s 294 | ref 121s
+[ 3881.2s] labels {'gv4_found_vs_builder': 'UNRESOLVED', 'found_vs_random': 'UNRESOLVED', 'found_vs_sota': 'SELF_FOUND_BEATS_SOTA', 'b20r77_replication': 'ENGINE_BEATS_SOTA'}
