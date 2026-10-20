@@ -1,0 +1,102 @@
+{
+ "ablation": {
+  "hosts": 48
+ },
+ "arm_names": [
+  "aperture",
+  "aperture_gbg",
+  "aperture_ibi",
+  "aperture_kbg",
+  "deepdist",
+  "deepdistc",
+  "first_design",
+  "no_cross",
+  "no_dsb",
+  "no_pt",
+  "no_relink_restart",
+  "nuwls",
+  "nuwls26",
+  "nuwls26ub",
+  "pasmaxsat",
+  "sgat",
+  "spb",
+  "tfx",
+  "tt"
+ ],
+ "arms": 19,
+ "catalog_as_of": "2026-10-20",
+ "certification_mean_s": 159.2,
+ "certification_s": 183,
+ "competitors": [
+  "aperture",
+  "aperture-gbg",
+  "aperture-ibi",
+  "aperture-kbg",
+  "deepdist",
+  "deepdist-c",
+  "nuwls-c-2026",
+  "nuwls-c-2026-ub",
+  "nuwls-c-ibr",
+  "pasmaxsat-c",
+  "sgat-nuwls-c",
+  "spb-maxsat-c-fps",
+  "tt-open-wbo-inc"
+ ],
+ "cost_extrapolated": true,
+ "estimated_runtime_s": 68473,
+ "excluded": {},
+ "focal": "tfx",
+ "focal_identity": "b67cb25c3afc6289",
+ "fresh_hosts": true,
+ "hosts": 54,
+ "internal_tts": false,
+ "ladder": [
+  0.005,
+  0.01,
+  0.02,
+  0.05,
+  0.1,
+  0.25,
+  0.5,
+  2.0
+ ],
+ "long_arm_names": [
+  "aperture_gbg",
+  "aperture_kbg",
+  "deepdist",
+  "nuwls",
+  "nuwls26",
+  "nuwls26ub",
+  "pasmaxsat",
+  "sgat",
+  "spb",
+  "tfx",
+  "tt"
+ ],
+ "long_budgets": [
+  10.0,
+  60.0
+ ],
+ "probes": {
+  "deepdistc": {
+   "budget_s": 60.0,
+   "hosts": 4
+  }
+ },
+ "quality_at_equal_time": true,
+ "reps": 3,
+ "resumable": true,
+ "sequential_stopping": true,
+ "sizes": [
+  63,
+  128,
+  256
+ ],
+ "study": "next",
+ "upper_bounds": true,
+ "valid": true,
+ "validity": {
+  "max_fail_share": 0.01,
+  "min_cpu_at_half": 0.45
+ }
+}

@@ -102,6 +102,12 @@ scaling picture rather than one calibrated size. B20_R70's design follows this.
   best, by time to solution on fresh hosts of two families (B20_R90, DEV; limits in its record). The physics and
   biology operators are part of the winning configuration, but the result does not isolate their contribution: no
   ablation was preregistered.
+- B20_R92 preregistered that ablation (24 fresh planted hosts, ladder down to 0.005 s). None of the five ablations
+  resolved, and the estimates lean against the operators at these budgets: without simulated bifurcation the engine
+  was faster on 12 hosts and slower on 4; without crossover 13 against 8; without parallel tempering 11 against 8;
+  without relinking and restarts 11 against 6; the builder's first design was slower on 13 hosts and faster on 1.
+  So on n = 63 hosts at under 2 s, the physics and biology operators are not shown to help, and may cost time; whether
+  they matter where there is room to search (larger hosts, longer budgets) is the large-graph milestone's question.
 
 ## What none of this changes
 

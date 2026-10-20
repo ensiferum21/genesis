@@ -92,6 +92,36 @@ hold, and each failure is recorded as such:
    (19 ladder arms, 3 seeds, 8 rungs, 8 arms at 10 s, B20_R90's certification time) is **18,763 s**; the observed time
    is the sum of the run log's segments (which counts the host rerun after each interruption twice).
 
+## Outcome of the prospective check: all nine hold
+
+B20_R92 finished (`c3af5a7`), the cell was merged unchanged (the concatenated digest of its script, modules and
+catalog is still `b5254e60…317a`) and run once: `python3 scripts/b20r93_cell.py . evidence/adaptation_cell_b20r93
+--today 2026-10-20`. The nine preregistered checks (`ProspectiveB20R92`) pass:
+
+1. FLOOR_EFFECT@B20_R90 RESOLVED by `extend_ladder_down` (tfx at the shortest run time on 5 of 36 hosts).
+2. MISSING_BASELINE@B20_R70 RESOLVED by `acquire_baseline` (dose 1.0: all nine leading solvers).
+3. REGIME_GAP@B20_R70 recurs without an attempt (10 s again).
+4. SATURATION, UNCERTIFIED_TARGETS and SIZE_CAP recur unanswered and stay CHRONIC.
+5. INTERRUPTED CHRONIC (two unanswered recurrences; severity raised to medium).
+6. ARM_NOT_RESPONDING[deepdistc] first seen.
+7. OUTPERFORMED does not fire.
+8. The proposal passes the checkpoint and B20_R92's own design does not; it keeps the 60 s budget and n = 128 and 256,
+   and probes DeepDist-c at 60 s on 4 hosts.
+9. Cost: predicted 18,763 s from B20_R70–R90; observed 17,626 s (the sum of the run log's segments): 6.4% off.
+
+It also saw, unprompted, two things the prospective list did not name: **UNRESOLVED_VERDICT relapsed** (vbs_P), so it
+proposes 1.5 times the hosts (54); and **COMPONENT_EFFECT_UNRESOLVED** (the five ablations), so it proposes a dedicated
+ablation with twice the hosts. Its proposal now costs an estimated 68,473 s against its growth limit of 35,253 s;
+only high-severity or chronic caveats are left, so it defers nothing and says the study should be split at the 60 s
+budgets (35,847 s of the cost). Work orders: a task model and engine beyond n = 63, quality at equal time, sequential
+stopping, the DeepDist-c probe, budgets beyond 10 s.
+
+**Limits seen in this run, for the cell's next version (not changed: the version above is the preregistered one):**
+it reads the size cap from the n <= 63 task model only (a large domain needs a per-domain cap); `more_hosts` adds
+hosts to every family although only the planted family's VBS label is unresolved; and an unresolved ablation whose
+estimates lean against the component (B20_R92: the stripped-down engines were faster on more hosts) should also
+propose racing without that component, which the library cannot yet express.
+
 ## Tests
 
 `tests_genesis/test_adaptation_cell.py` (34, and 9 prospective checks that run once B20_R92 is in the tree): discovery by shape and batch order; each receptor on synthetic studies

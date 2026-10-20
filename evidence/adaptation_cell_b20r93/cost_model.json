@@ -1,0 +1,67 @@
+{
+ "model": {
+  "fitted_on": {
+   "B20_R70": {
+    "overhead_s": 0.3495,
+    "wall_s": 3424.0
+   },
+   "B20_R75": {
+    "overhead_s": 0.2693,
+    "wall_s": 2569.6
+   },
+   "B20_R76": {
+    "overhead_s": 0.4264,
+    "wall_s": 3305.7
+   },
+   "B20_R77": {
+    "overhead_s": 0.3899,
+    "wall_s": 5475.4
+   },
+   "B20_R81": {
+    "overhead_s": 0.3816,
+    "wall_s": 5243.3
+   },
+   "B20_R90": {
+    "overhead_s": 0.222,
+    "wall_s": 11159.5
+   },
+   "B20_R92": {
+    "overhead_s": 0.2936,
+    "wall_s": 17626.5
+   }
+  },
+  "largest_n_seen": 63,
+  "largest_study_s": 17626.5,
+  "overhead_s": 0.3495
+ },
+ "residuals": {
+  "B20_R70": {
+   "observed_s": 3424,
+   "predicted_s": 3424
+  },
+  "B20_R75": {
+   "observed_s": 2570,
+   "predicted_s": 2656
+  },
+  "B20_R76": {
+   "observed_s": 3306,
+   "predicted_s": 3209
+  },
+  "B20_R77": {
+   "observed_s": 5475,
+   "predicted_s": 5374
+  },
+  "B20_R81": {
+   "observed_s": 5243,
+   "predicted_s": 5162
+  },
+  "B20_R90": {
+   "observed_s": 11160,
+   "predicted_s": 12013
+  },
+  "B20_R92": {
+   "observed_s": 17626,
+   "predicted_s": 18560
+  }
+ }
+}

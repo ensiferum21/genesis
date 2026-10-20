@@ -1038,8 +1038,18 @@
         "result": "Engineering: MSE 2026 anytime entrants (PASMaxSAT-c, SGAT-NuWLS-c, NuWLS-c-2026, NuWLS-c-2026-UB, DeepDist-c, Aperture 2026 GBG/KBG/IBI) built from Daniel-supplied archives (MD5 = Zenodo) as maxsat-anytime-2026-v1. Tests (7)"
       },
       "B20_R92": {
-        "commits": [],
-        "result": "Setup: tfx vs 13 champions and their VBS, ladder 0.005-2 s, long budget, ablations; fresh planted and G(63,0.5) hosts. Pending"
+        "commits": [
+          "c3af5a7"
+        ],
+        "result": "DEV, valid, recomputed: TFX_BEATS_EVERY_CHAMPION on both families (all 13 champions of 2026 and 2024, and the eight 2026 entrants alone); vbs_D TFX_BEATS_VBS (~200x); vbs_P UNRESOLVED (3x at the median, q0.75 interval down to 1.2x); NO_CHAMPION_FINDS_MORE at 10 s; five ablations UNRESOLVED (estimates lean against the operators); floor gone (5/36 at 0.005 s); DeepDist-c does not respond to run time below 2 s. Interrupted twice by the session limit and resumed (Daniel chose to resume). B20R90-OPEN-1 updated"
+      },
+      "B20_R93": {
+        "commits": [
+          "7dbc1b1",
+          "4aef243",
+          "71df48c"
+        ],
+        "result": "Engineering: the adaptation cell (discovery, 12 receptors + an autoreceptor, caveats, responses with doses and noise bands, ledger inferring attempts from design changes, response memory, cost model from its own run logs, composition with membrane triage, work orders, checkpoint) and genesis.anytime (MSE 2026 anytime score, paired bootstrap, sequential looks). Retrospective: the hand-found R90 caveats exactly. Preregistered prospective check on B20_R92: 9/9. Next proposal: the large-graph milestone (over its growth limit; split at the 60 s budgets)"
       }
     },
     "open_after_b20_r5": [
@@ -1467,6 +1477,9 @@
     ],
     "open_after_b20_r74": [
       "B20R74-OPEN-1 new: CP-SAT and MaxSAT unavailable (PyPI refused); comparisons cover BURER2002, dSB, tabu, HiGHS only"
+    ],
+    "open_after_b20_r92": [
+      "B20R90-OPEN-1 updated: the 2026 entrants included and the floor gone; tfx beats each of the 13 champions on both families and their VBS on G(63, 0.5); vbs_P UNRESOLVED at q0.75; operators UNRESOLVED"
     ]
   }
 }
