@@ -173,5 +173,24 @@ class Design90(unittest.TestCase):
         self.assertEqual(R90.validity({'P': rs, 'D': rd})[0], 'INVALID_CPU_DELIVERY')
 
 
+class RecordB20R89(unittest.TestCase):
+    def test_the_frozen_configuration(self):
+        from genesis.candidate_kinds import tfx as T
+        d = ROOT / 'evidence' / 'configure_tfx_b20r89'
+        cfg = json.loads((d / 'config.json').read_text())
+        s = json.loads((d / 'summary.json').read_text())
+        self.assertIsNone(T.check_config(cfg['config']))
+        self.assertEqual((cfg['config'], cfg['index']), (s['frozen'], s['frozen_index']))
+        final = {int(k): v['mean_gap'] for k, v in s['final_four'].items()}
+        self.assertEqual(min(final, key=lambda c: (final[c], c)), cfg['index'])
+        self.assertEqual(cfg['config'], R89.configurations()[cfg['index']])
+        rows = [json.loads(l) for l in (d / 'race.jsonl').read_text().splitlines() if l.strip()]
+        self.assertEqual(len(rows), s['evaluations'])
+        self.assertEqual(len({(r['config'], r['host'], r['seed']) for r in rows}), len(rows))
+        self.assertEqual(len(json.loads((d / 'hosts.json').read_text())['tasks']), 32)
+        self.assertEqual(len(json.loads((d / 'targets.json').read_text())['targets']), 32)
+        self.assertEqual([r['round'] for r in s['rounds']], [0, 1, 2, 3, 4])
+
+
 if __name__ == '__main__':
     unittest.main()

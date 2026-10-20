@@ -137,6 +137,7 @@ needs people: a reviewer, a statistician, an independent custodian on its own ma
 | B20_R82–R84 | Library language and search (GV5); generation 2 (291.59) ties its no-library control (291.61) on the training hosts; R85/R86 deferred |
 | B20_R87 | DeepDist, SPB-MaxSAT-c-FPS, NuWLS-c-IBR, TT-Open-WBO-Inc, Aperture built from pinned sources as `maxsat-anytime-v1`; `mqlib-heuristic-v1` |
 | B20_R88 | `tfx-v1` (native, operators by data); development looks ahead of every champion up to 0.5 s on old hosts |
+| B20_R89 | Configuration race: froze #76 (dSB + descent starts, K 12, parallel tempering, crossover, relinking, restarts); judged in B20_R90 |
 
 ## 6. Next steps, in order
 
