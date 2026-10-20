@@ -691,10 +691,14 @@ WORKSTREAMS = {
             ['tests_formal/test_learning.py', G + 'test_research_resource_accounting.py',
              'tests_formal/test_successor_proof_custody.py', G + 'test_research_policy_v2.py']),
     'W20': ('Curriculum, experience synthesis and capability memory (screened memory, failure-driven curriculum, '
-            'demotion)', B,
+            'demotion; B20_R93: the adaptation cell, which senses weaknesses in studies, remembers what answered '
+            'them and gates the next design)', B,
             ['src/genesis/learning/memory.py', 'src/genesis/learning/partitions.py',
-             'evidence/learning_b20/w20/rows.json'],
-            ['tests_formal/test_learning.py', 'tests_formal/test_learning_partitions.py']),
+             'evidence/learning_b20/w20/rows.json', 'src/genesis/adaptation/receptors.py',
+             'src/genesis/adaptation/ledger.py', 'src/genesis/adaptation/design.py',
+             'src/genesis/adaptation/checkpoint.py', 'scripts/b20r93_cell.py'],
+            ['tests_formal/test_learning.py', 'tests_formal/test_learning_partitions.py',
+             G + 'test_adaptation_cell.py']),
     'W21': ('Better-improver and multigeneration controller (B20_R2: pure lineage validator; B20_R4: the campaign '
             'loop writes native lineage records, crash/resume charges interrupted attempts, the custodian checks '
             'generation requests against the qualifying chain; B20_R16: active-version pointer, rollback, inherited '

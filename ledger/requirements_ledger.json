@@ -5403,7 +5403,12 @@
    "code": [
     "src/genesis/learning/memory.py",
     "src/genesis/learning/partitions.py",
-    "evidence/learning_b20/w20/rows.json"
+    "evidence/learning_b20/w20/rows.json",
+    "src/genesis/adaptation/receptors.py",
+    "src/genesis/adaptation/ledger.py",
+    "src/genesis/adaptation/design.py",
+    "src/genesis/adaptation/checkpoint.py",
+    "scripts/b20r93_cell.py"
    ],
    "disposition": "IMPLEMENTED_BOUNDED_PENDING_AUDIT",
    "evidence": [],
@@ -5419,9 +5424,10 @@
    "source": "roadmap \u00a77-10",
    "tests": [
     "tests_formal/test_learning.py",
-    "tests_formal/test_learning_partitions.py"
+    "tests_formal/test_learning_partitions.py",
+    "tests_genesis/test_adaptation_cell.py"
    ],
-   "title": "Curriculum, experience synthesis and capability memory (screened memory, failure-driven curriculum, demotion)",
+   "title": "Curriculum, experience synthesis and capability memory (screened memory, failure-driven curriculum, demotion; B20_R93: the adaptation cell, which senses weaknesses in studies, remembers what answered them and gates the next design)",
    "workstream": "W20"
   },
   {
