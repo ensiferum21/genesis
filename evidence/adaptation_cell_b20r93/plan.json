@@ -1,0 +1,68 @@
+{
+ "applied": {
+  "ARM_NOT_RESPONDING[deepdistc]@B20_R92": "probe_at_home_budget",
+  "COMPONENT_EFFECT_UNRESOLVED@B20_R92": "dedicated_ablation_with_more_power",
+  "INTERRUPTED@B20_R81": "sequential_stopping",
+  "REGIME_GAP@B20_R70": "add_home_budgets",
+  "SATURATION@B20_R70": "quality_at_equal_time_on_larger_instances",
+  "UNCERTIFIED_TARGETS@B20_R75": "longer_certification",
+  "UNRESOLVED_VERDICT@B20_R76": "more_hosts"
+ },
+ "chosen": {
+  "ARM_NOT_RESPONDING[deepdistc]@B20_R92": "probe_at_home_budget",
+  "COMPONENT_EFFECT_UNRESOLVED@B20_R92": "dedicated_ablation_with_more_power",
+  "INTERRUPTED@B20_R81": "sequential_stopping",
+  "REGIME_GAP@B20_R70": "add_home_budgets",
+  "SATURATION@B20_R70": "quality_at_equal_time_on_larger_instances",
+  "SIZE_CAP@B20_R75": "extend_domain",
+  "UNCERTIFIED_TARGETS@B20_R75": "longer_certification",
+  "UNRESOLVED_VERDICT@B20_R76": "more_hosts"
+ },
+ "deferred": {},
+ "escalate": {},
+ "estimated_runtime_s": 68473,
+ "limit_s": 35253,
+ "marginal_cost_s": {
+  "ARM_NOT_RESPONDING[deepdistc]@B20_R92": 241,
+  "COMPONENT_EFFECT_UNRESOLVED@B20_R92": 0,
+  "INTERRUPTED@B20_R81": 0,
+  "REGIME_GAP@B20_R70": 35847,
+  "SATURATION@B20_R70": 0,
+  "UNCERTIFIED_TARGETS@B20_R75": 2867,
+  "UNRESOLVED_VERDICT@B20_R76": 22744
+ },
+ "over_budget": "68473 s against a limit of 35253 s, and deferring every caveat the membrane lets the cell defer would not bring it within the limit (high-severity and chronic caveats are not deferred to save time); the largest share is REGIME_GAP@B20_R70 (35847 s): split the study there or raise the limit",
+ "skipped": {
+  "INTERRUPTED@B20_R81": [
+   "resumable_design: already in the design"
+  ],
+  "SIZE_CAP@B20_R75": [
+   "extend_domain: already in the design"
+  ],
+  "UNCERTIFIED_TARGETS@B20_R75": [
+   "upper_bounds: already in the design"
+  ]
+ },
+ "work_orders": [
+  {
+   "need": "extend_domain",
+   "what": "instances up to n = 256: the task model stops at n = 63 and the native engine's vertex sets are 64-bit; a larger model and an engine with multiword sets are needed"
+  },
+  {
+   "need": "quality_at_equal_time",
+   "what": "a quality-at-equal-time analysis (values at equal budgets, with intervals): no earlier study has done it"
+  },
+  {
+   "need": "sequential_stopping",
+   "what": "preregistered interim looks with stopping boundaries in the runner: no earlier study has done it"
+  },
+  {
+   "need": "probe_at_home_budget",
+   "what": "runs of the flagged arms at their home budget: deepdistc"
+  },
+  {
+   "need": "long_budgets",
+   "what": "budgets up to 60.0 s: the longest run so far was 10.0 s; cost and resumption must be planned"
+  }
+ ]
+}

@@ -1,0 +1,837 @@
+{
+ "B20_R70": [
+  {
+   "evidence": {
+    "hosts": 24,
+    "hosts_with_equal_best_values": 24,
+    "largest_n": 60
+   },
+   "meaning": "every strong method ends at the same value on (almost) every host, so the instances can only separate methods by speed, never by solution quality",
+   "severity": "medium",
+   "study": "B20_R70",
+   "type": "SATURATION"
+  },
+  {
+   "evidence": {
+    "catalog": "MaxSAT Evaluation 2024 talk (Berg, Jarvisalo); MaxSAT Evaluation 2026 slides and results.zip (Zenodo 21358014); ECAI 2025 (DeepDist); SOFT 2026 (Aperture)",
+    "missing": [
+     "SPB-MaxSAT-c-FPS",
+     "NuWLS-c-IBR",
+     "TT-Open-WBO-Inc",
+     "DeepDist",
+     "PASMaxSAT-c",
+     "Aperture-KBG",
+     "SGAT-NuWLS-c",
+     "Aperture-GBG",
+     "NuWLS-c-2026-UB"
+    ],
+    "missing_keys": [
+     "spb-maxsat-c-fps",
+     "nuwls-c-ibr",
+     "tt-open-wbo-inc",
+     "deepdist",
+     "pasmaxsat-c",
+     "aperture-kbg",
+     "sgat-nuwls-c",
+     "aperture-gbg",
+     "nuwls-c-2026-ub"
+    ]
+   },
+   "meaning": "a stronger published solver for this problem class was not among the competitors",
+   "severity": "high",
+   "study": "B20_R70",
+   "type": "MISSING_BASELINE"
+  },
+  {
+   "evidence": {
+    "competitors_home_budgets_s": [
+     60,
+     300,
+     1707
+    ],
+    "longest_budget_s": 2.0
+   },
+   "meaning": "the study's longest budget is below the competitors' home regime (the budgets they were tuned for)",
+   "severity": "medium",
+   "study": "B20_R70",
+   "type": "REGIME_GAP"
+  },
+  {
+   "evidence": {
+    "arms": {
+     "dsb": {
+      "families": {
+       "?": 15
+      },
+      "hosts": 24,
+      "lost_hosts": 15,
+      "native": false,
+      "sizes": {
+       "40": 2,
+       "50": 6,
+       "60": 7
+      }
+     },
+     "eo": {
+      "families": {
+       "?": 15
+      },
+      "hosts": 24,
+      "lost_hosts": 15,
+      "native": false,
+      "sizes": {
+       "40": 4,
+       "50": 6,
+       "60": 5
+      }
+     },
+     "tabu": {
+      "families": {
+       "?": 20
+      },
+      "hosts": 24,
+      "lost_hosts": 20,
+      "native": false,
+      "sizes": {
+       "40": 6,
+       "50": 8,
+       "60": 6
+      }
+     }
+    },
+    "focal": "candidate",
+    "focal_identity": "00f3043ba283b9ad",
+    "worst_share": 0.8333
+   },
+   "meaning": "a competitor reaches the targets more than twice as fast as the system's own method on a quarter of the hosts or more: the method has a weakness there (or, if the competitor is one of the system's earlier methods, a regression)",
+   "severity": "high",
+   "study": "B20_R70",
+   "type": "OUTPERFORMED"
+  }
+ ],
+ "B20_R75": [
+  {
+   "evidence": {
+    "hosts": 12,
+    "hosts_with_equal_best_values": 12,
+    "largest_n": 63
+   },
+   "meaning": "every strong method ends at the same value on (almost) every host, so the instances can only separate methods by speed, never by solution quality",
+   "severity": "medium",
+   "study": "B20_R75",
+   "type": "SATURATION"
+  },
+  {
+   "evidence": {
+    "certification_s": 121,
+    "hosts": 12,
+    "uncertified": 6
+   },
+   "meaning": "many targets are best-known values rather than certified optima, so \"reached the target\" may not mean \"solved\"",
+   "severity": "medium",
+   "study": "B20_R75",
+   "type": "UNCERTIFIED_TARGETS"
+  },
+  {
+   "evidence": {
+    "focal": "system",
+    "labels": [
+     "INVALID_CPU_DELIVERY"
+    ]
+   },
+   "meaning": "the study failed its own validity check; nothing it measured can be read",
+   "severity": "high",
+   "study": "B20_R75",
+   "type": "INVALID_RUN"
+  },
+  {
+   "evidence": {
+    "catalog": "MaxSAT Evaluation 2024 talk (Berg, Jarvisalo); MaxSAT Evaluation 2026 slides and results.zip (Zenodo 21358014); ECAI 2025 (DeepDist); SOFT 2026 (Aperture)",
+    "missing": [
+     "SPB-MaxSAT-c-FPS",
+     "NuWLS-c-IBR",
+     "TT-Open-WBO-Inc",
+     "DeepDist",
+     "PASMaxSAT-c",
+     "Aperture-KBG",
+     "SGAT-NuWLS-c",
+     "Aperture-GBG",
+     "NuWLS-c-2026-UB"
+    ],
+    "missing_keys": [
+     "spb-maxsat-c-fps",
+     "nuwls-c-ibr",
+     "tt-open-wbo-inc",
+     "deepdist",
+     "pasmaxsat-c",
+     "aperture-kbg",
+     "sgat-nuwls-c",
+     "aperture-gbg",
+     "nuwls-c-2026-ub"
+    ]
+   },
+   "meaning": "a stronger published solver for this problem class was not among the competitors",
+   "severity": "high",
+   "study": "B20_R75",
+   "type": "MISSING_BASELINE"
+  },
+  {
+   "evidence": {
+    "competitors_home_budgets_s": [
+     60,
+     300,
+     1707
+    ],
+    "longest_budget_s": 2.0
+   },
+   "meaning": "the study's longest budget is below the competitors' home regime (the budgets they were tuned for)",
+   "severity": "medium",
+   "study": "B20_R75",
+   "type": "REGIME_GAP"
+  },
+  {
+   "evidence": {
+    "largest_n": 63,
+    "model_cap": 63
+   },
+   "meaning": "the instances sit at the task model's maximum size, so the study cannot say what happens beyond it",
+   "severity": "medium",
+   "study": "B20_R75",
+   "type": "SIZE_CAP"
+  },
+  {
+   "evidence": {
+    "arms": [
+     "burer"
+    ],
+    "detail": {
+     "flat_hosts": 12,
+     "hosts": 12,
+     "median_share_of_target": 0.0,
+     "run_times_s": [
+      0.05,
+      2.0
+     ]
+    },
+    "subject": "burer"
+   },
+   "meaning": "a competitor ends at about the same value at every run time on most hosts, well short of the target: either the budgets are outside its regime or its harness is wrong, and the comparison with it means nothing until one of the two is known",
+   "severity": "high",
+   "study": "B20_R75",
+   "type": "ARM_NOT_RESPONDING"
+  },
+  {
+   "evidence": {
+    "arms": [
+     "highs"
+    ],
+    "detail": {
+     "flat_hosts": 12,
+     "hosts": 12,
+     "median_share_of_target": 0.236,
+     "run_times_s": [
+      0.05,
+      2.0
+     ]
+    },
+    "subject": "highs"
+   },
+   "meaning": "a competitor ends at about the same value at every run time on most hosts, well short of the target: either the budgets are outside its regime or its harness is wrong, and the comparison with it means nothing until one of the two is known",
+   "severity": "high",
+   "study": "B20_R75",
+   "type": "ARM_NOT_RESPONDING"
+  },
+  {
+   "evidence": {
+    "arms": {
+     "dsb": {
+      "families": {
+       "?": 11
+      },
+      "hosts": 12,
+      "lost_hosts": 11,
+      "native": false,
+      "sizes": {
+       "60": 6,
+       "63": 5
+      }
+     },
+     "tabu": {
+      "families": {
+       "?": 5
+      },
+      "hosts": 12,
+      "lost_hosts": 5,
+      "native": false,
+      "sizes": {
+       "60": 2,
+       "63": 3
+      }
+     }
+    },
+    "focal": "system",
+    "focal_identity": "5fcdf80625907b24",
+    "worst_share": 0.9167
+   },
+   "meaning": "a competitor reaches the targets more than twice as fast as the system's own method on a quarter of the hosts or more: the method has a weakness there (or, if the competitor is one of the system's earlier methods, a regression)",
+   "severity": "high",
+   "study": "B20_R75",
+   "type": "OUTPERFORMED"
+  }
+ ],
+ "B20_R76": [
+  {
+   "evidence": {
+    "hosts": 12,
+    "hosts_with_equal_best_values": 11,
+    "largest_n": 63
+   },
+   "meaning": "every strong method ends at the same value on (almost) every host, so the instances can only separate methods by speed, never by solution quality",
+   "severity": "medium",
+   "study": "B20_R76",
+   "type": "SATURATION"
+  },
+  {
+   "evidence": {
+    "hosts": 12,
+    "labels": {
+     "verdict": "UNRESOLVED"
+    },
+    "ladder_points": 5
+   },
+   "meaning": "a preregistered comparison ended UNRESOLVED or MIXED: the study lacked the power or the resolution to decide it",
+   "severity": "medium",
+   "study": "B20_R76",
+   "type": "UNRESOLVED_VERDICT"
+  },
+  {
+   "evidence": {
+    "catalog": "MaxSAT Evaluation 2024 talk (Berg, Jarvisalo); MaxSAT Evaluation 2026 slides and results.zip (Zenodo 21358014); ECAI 2025 (DeepDist); SOFT 2026 (Aperture)",
+    "missing": [
+     "SPB-MaxSAT-c-FPS",
+     "NuWLS-c-IBR",
+     "TT-Open-WBO-Inc",
+     "DeepDist",
+     "PASMaxSAT-c",
+     "Aperture-KBG",
+     "SGAT-NuWLS-c",
+     "Aperture-GBG",
+     "NuWLS-c-2026-UB"
+    ],
+    "missing_keys": [
+     "spb-maxsat-c-fps",
+     "nuwls-c-ibr",
+     "tt-open-wbo-inc",
+     "deepdist",
+     "pasmaxsat-c",
+     "aperture-kbg",
+     "sgat-nuwls-c",
+     "aperture-gbg",
+     "nuwls-c-2026-ub"
+    ]
+   },
+   "meaning": "a stronger published solver for this problem class was not among the competitors",
+   "severity": "high",
+   "study": "B20_R76",
+   "type": "MISSING_BASELINE"
+  },
+  {
+   "evidence": {
+    "competitors_home_budgets_s": [
+     60,
+     300,
+     1707
+    ],
+    "longest_budget_s": 2.0
+   },
+   "meaning": "the study's longest budget is below the competitors' home regime (the budgets they were tuned for)",
+   "severity": "medium",
+   "study": "B20_R76",
+   "type": "REGIME_GAP"
+  },
+  {
+   "evidence": {
+    "largest_n": 63,
+    "model_cap": 63
+   },
+   "meaning": "the instances sit at the task model's maximum size, so the study cannot say what happens beyond it",
+   "severity": "medium",
+   "study": "B20_R76",
+   "type": "SIZE_CAP"
+  },
+  {
+   "evidence": {
+    "arms": [
+     "highs"
+    ],
+    "detail": {
+     "flat_hosts": 12,
+     "hosts": 12,
+     "median_share_of_target": 0.226,
+     "run_times_s": [
+      0.05,
+      2.0
+     ]
+    },
+    "subject": "highs"
+   },
+   "meaning": "a competitor ends at about the same value at every run time on most hosts, well short of the target: either the budgets are outside its regime or its harness is wrong, and the comparison with it means nothing until one of the two is known",
+   "severity": "high",
+   "study": "B20_R76",
+   "type": "ARM_NOT_RESPONDING"
+  },
+  {
+   "evidence": {
+    "arms": {
+     "dsb": {
+      "families": {
+       "?": 7
+      },
+      "hosts": 12,
+      "lost_hosts": 7,
+      "native": false,
+      "sizes": {
+       "60": 4,
+       "63": 3
+      }
+     },
+     "tabu": {
+      "families": {
+       "?": 5
+      },
+      "hosts": 12,
+      "lost_hosts": 5,
+      "native": false,
+      "sizes": {
+       "60": 3,
+       "63": 2
+      }
+     }
+    },
+    "focal": "system",
+    "focal_identity": "5fcdf80625907b24",
+    "worst_share": 0.5833
+   },
+   "meaning": "a competitor reaches the targets more than twice as fast as the system's own method on a quarter of the hosts or more: the method has a weakness there (or, if the competitor is one of the system's earlier methods, a regression)",
+   "severity": "high",
+   "study": "B20_R76",
+   "type": "OUTPERFORMED"
+  }
+ ],
+ "B20_R77": [
+  {
+   "evidence": {
+    "certification_s": 121,
+    "hosts": 24,
+    "uncertified": 8
+   },
+   "meaning": "many targets are best-known values rather than certified optima, so \"reached the target\" may not mean \"solved\"",
+   "severity": "medium",
+   "study": "B20_R77",
+   "type": "UNCERTIFIED_TARGETS"
+  },
+  {
+   "evidence": {
+    "catalog": "MaxSAT Evaluation 2024 talk (Berg, Jarvisalo); MaxSAT Evaluation 2026 slides and results.zip (Zenodo 21358014); ECAI 2025 (DeepDist); SOFT 2026 (Aperture)",
+    "missing": [
+     "SPB-MaxSAT-c-FPS",
+     "NuWLS-c-IBR",
+     "TT-Open-WBO-Inc",
+     "DeepDist",
+     "PASMaxSAT-c",
+     "Aperture-KBG",
+     "SGAT-NuWLS-c",
+     "Aperture-GBG",
+     "NuWLS-c-2026-UB"
+    ],
+    "missing_keys": [
+     "spb-maxsat-c-fps",
+     "nuwls-c-ibr",
+     "tt-open-wbo-inc",
+     "deepdist",
+     "pasmaxsat-c",
+     "aperture-kbg",
+     "sgat-nuwls-c",
+     "aperture-gbg",
+     "nuwls-c-2026-ub"
+    ]
+   },
+   "meaning": "a stronger published solver for this problem class was not among the competitors",
+   "severity": "high",
+   "study": "B20_R77",
+   "type": "MISSING_BASELINE"
+  },
+  {
+   "evidence": {
+    "competitors_home_budgets_s": [
+     60,
+     300,
+     1707
+    ],
+    "longest_budget_s": 2.0
+   },
+   "meaning": "the study's longest budget is below the competitors' home regime (the budgets they were tuned for)",
+   "severity": "medium",
+   "study": "B20_R77",
+   "type": "REGIME_GAP"
+  },
+  {
+   "evidence": {
+    "largest_n": 63,
+    "model_cap": 63
+   },
+   "meaning": "the instances sit at the task model's maximum size, so the study cannot say what happens beyond it",
+   "severity": "medium",
+   "study": "B20_R77",
+   "type": "SIZE_CAP"
+  }
+ ],
+ "B20_R81": [
+  {
+   "evidence": {
+    "hosts": 24,
+    "hosts_with_equal_best_values": 24,
+    "largest_n": 63
+   },
+   "meaning": "every strong method ends at the same value on (almost) every host, so the instances can only separate methods by speed, never by solution quality",
+   "severity": "medium",
+   "study": "B20_R81",
+   "type": "SATURATION"
+  },
+  {
+   "evidence": {
+    "certification_s": 122,
+    "hosts": 24,
+    "uncertified": 6
+   },
+   "meaning": "many targets are best-known values rather than certified optima, so \"reached the target\" may not mean \"solved\"",
+   "severity": "medium",
+   "study": "B20_R81",
+   "type": "UNCERTIFIED_TARGETS"
+  },
+  {
+   "evidence": {
+    "hosts": 24,
+    "labels": {
+     "found_vs_random": "UNRESOLVED",
+     "gv4_found_vs_builder": "UNRESOLVED"
+    },
+    "ladder_points": 5
+   },
+   "meaning": "a preregistered comparison ended UNRESOLVED or MIXED: the study lacked the power or the resolution to decide it",
+   "severity": "medium",
+   "study": "B20_R81",
+   "type": "UNRESOLVED_VERDICT"
+  },
+  {
+   "evidence": {
+    "starts_in_run_log": 2
+   },
+   "meaning": "the run was interrupted and resumed; the resume must be disclosed and the design should expect it",
+   "severity": "low",
+   "study": "B20_R81",
+   "type": "INTERRUPTED"
+  },
+  {
+   "evidence": {
+    "catalog": "MaxSAT Evaluation 2024 talk (Berg, Jarvisalo); MaxSAT Evaluation 2026 slides and results.zip (Zenodo 21358014); ECAI 2025 (DeepDist); SOFT 2026 (Aperture)",
+    "missing": [
+     "SPB-MaxSAT-c-FPS",
+     "NuWLS-c-IBR",
+     "TT-Open-WBO-Inc",
+     "DeepDist",
+     "PASMaxSAT-c",
+     "Aperture-KBG",
+     "SGAT-NuWLS-c",
+     "Aperture-GBG",
+     "NuWLS-c-2026-UB"
+    ],
+    "missing_keys": [
+     "spb-maxsat-c-fps",
+     "nuwls-c-ibr",
+     "tt-open-wbo-inc",
+     "deepdist",
+     "pasmaxsat-c",
+     "aperture-kbg",
+     "sgat-nuwls-c",
+     "aperture-gbg",
+     "nuwls-c-2026-ub"
+    ]
+   },
+   "meaning": "a stronger published solver for this problem class was not among the competitors",
+   "severity": "high",
+   "study": "B20_R81",
+   "type": "MISSING_BASELINE"
+  },
+  {
+   "evidence": {
+    "competitors_home_budgets_s": [
+     60,
+     300,
+     1707
+    ],
+    "longest_budget_s": 2.0
+   },
+   "meaning": "the study's longest budget is below the competitors' home regime (the budgets they were tuned for)",
+   "severity": "medium",
+   "study": "B20_R81",
+   "type": "REGIME_GAP"
+  },
+  {
+   "evidence": {
+    "largest_n": 63,
+    "model_cap": 63
+   },
+   "meaning": "the instances sit at the task model's maximum size, so the study cannot say what happens beyond it",
+   "severity": "medium",
+   "study": "B20_R81",
+   "type": "SIZE_CAP"
+  },
+  {
+   "evidence": {
+    "arms": {
+     "dsb": {
+      "families": {
+       "?": 19
+      },
+      "hosts": 24,
+      "lost_hosts": 19,
+      "native": false,
+      "sizes": {
+       "63": 19
+      }
+     },
+     "engine": {
+      "families": {
+       "?": 18
+      },
+      "hosts": 24,
+      "lost_hosts": 18,
+      "native": true,
+      "sizes": {
+       "63": 18
+      }
+     },
+     "random": {
+      "families": {
+       "?": 6
+      },
+      "hosts": 24,
+      "lost_hosts": 6,
+      "native": false,
+      "sizes": {
+       "63": 6
+      }
+     }
+    },
+    "focal": "found",
+    "focal_identity": "d32fcb7b93235303",
+    "worst_share": 0.7917
+   },
+   "meaning": "a competitor reaches the targets more than twice as fast as the system's own method on a quarter of the hosts or more: the method has a weakness there (or, if the competitor is one of the system's earlier methods, a regression)",
+   "severity": "high",
+   "study": "B20_R81",
+   "type": "OUTPERFORMED"
+  }
+ ],
+ "B20_R90": [
+  {
+   "evidence": {
+    "floor_s": 0.05,
+    "focal": "tfx",
+    "hosts": 36,
+    "hosts_at_floor": 33
+   },
+   "meaning": "the focal method reaches its targets at the shortest run time tested on most hosts, so its margin is censored: the ladder cannot show how much faster it is",
+   "severity": "medium",
+   "study": "B20_R90",
+   "type": "FLOOR_EFFECT"
+  },
+  {
+   "evidence": {
+    "hosts": 36,
+    "hosts_with_equal_best_values": 36,
+    "largest_n": 63
+   },
+   "meaning": "every strong method ends at the same value on (almost) every host, so the instances can only separate methods by speed, never by solution quality",
+   "severity": "medium",
+   "study": "B20_R90",
+   "type": "SATURATION"
+  },
+  {
+   "evidence": {
+    "certification_s": 121,
+    "hosts": 36,
+    "uncertified": 20
+   },
+   "meaning": "many targets are best-known values rather than certified optima, so \"reached the target\" may not mean \"solved\"",
+   "severity": "medium",
+   "study": "B20_R90",
+   "type": "UNCERTIFIED_TARGETS"
+  },
+  {
+   "evidence": {
+    "starts_in_run_log": 2
+   },
+   "meaning": "the run was interrupted and resumed; the resume must be disclosed and the design should expect it",
+   "severity": "low",
+   "study": "B20_R90",
+   "type": "INTERRUPTED"
+  },
+  {
+   "evidence": {
+    "catalog": "MaxSAT Evaluation 2024 talk (Berg, Jarvisalo); MaxSAT Evaluation 2026 slides and results.zip (Zenodo 21358014); ECAI 2025 (DeepDist); SOFT 2026 (Aperture)",
+    "missing": [
+     "PASMaxSAT-c",
+     "Aperture-KBG",
+     "SGAT-NuWLS-c",
+     "Aperture-GBG",
+     "NuWLS-c-2026-UB"
+    ],
+    "missing_keys": [
+     "pasmaxsat-c",
+     "aperture-kbg",
+     "sgat-nuwls-c",
+     "aperture-gbg",
+     "nuwls-c-2026-ub"
+    ]
+   },
+   "meaning": "a stronger published solver for this problem class was not among the competitors",
+   "severity": "high",
+   "study": "B20_R90",
+   "type": "MISSING_BASELINE"
+  },
+  {
+   "evidence": {
+    "competitors_home_budgets_s": [
+     60,
+     300,
+     1707
+    ],
+    "longest_budget_s": 10.0
+   },
+   "meaning": "the study's longest budget is below the competitors' home regime (the budgets they were tuned for)",
+   "severity": "medium",
+   "study": "B20_R90",
+   "type": "REGIME_GAP"
+  },
+  {
+   "evidence": {
+    "largest_n": 63,
+    "model_cap": 63
+   },
+   "meaning": "the instances sit at the task model's maximum size, so the study cannot say what happens beyond it",
+   "severity": "medium",
+   "study": "B20_R90",
+   "type": "SIZE_CAP"
+  }
+ ],
+ "B20_R92": [
+  {
+   "evidence": {
+    "hosts": 36,
+    "hosts_with_equal_best_values": 36,
+    "largest_n": 63
+   },
+   "meaning": "every strong method ends at the same value on (almost) every host, so the instances can only separate methods by speed, never by solution quality",
+   "severity": "medium",
+   "study": "B20_R92",
+   "type": "SATURATION"
+  },
+  {
+   "evidence": {
+    "certification_s": 122,
+    "hosts": 36,
+    "uncertified": 21
+   },
+   "meaning": "many targets are best-known values rather than certified optima, so \"reached the target\" may not mean \"solved\"",
+   "severity": "medium",
+   "study": "B20_R92",
+   "type": "UNCERTIFIED_TARGETS"
+  },
+  {
+   "evidence": {
+    "hosts": 36,
+    "labels": {
+     "vbs_P": "UNRESOLVED"
+    },
+    "ladder_points": 8
+   },
+   "meaning": "a preregistered comparison ended UNRESOLVED or MIXED: the study lacked the power or the resolution to decide it",
+   "severity": "medium",
+   "study": "B20_R92",
+   "type": "UNRESOLVED_VERDICT"
+  },
+  {
+   "evidence": {
+    "components": {
+     "first_design": "UNRESOLVED",
+     "no_cross": "UNRESOLVED",
+     "no_dsb": "UNRESOLVED",
+     "no_pt": "UNRESOLVED",
+     "no_relink_restart": "UNRESOLVED"
+    },
+    "hosts": 24,
+    "largest_n": 63
+   },
+   "meaning": "removing a component of the method had no measurable (or no resolved) effect, so whether it matters is unknown",
+   "severity": "low",
+   "study": "B20_R92",
+   "type": "COMPONENT_EFFECT_UNRESOLVED"
+  },
+  {
+   "evidence": {
+    "starts_in_run_log": 3
+   },
+   "meaning": "the run was interrupted and resumed; the resume must be disclosed and the design should expect it",
+   "severity": "low",
+   "study": "B20_R92",
+   "type": "INTERRUPTED"
+  },
+  {
+   "evidence": {
+    "competitors_home_budgets_s": [
+     60,
+     300,
+     1707
+    ],
+    "longest_budget_s": 10.0
+   },
+   "meaning": "the study's longest budget is below the competitors' home regime (the budgets they were tuned for)",
+   "severity": "medium",
+   "study": "B20_R92",
+   "type": "REGIME_GAP"
+  },
+  {
+   "evidence": {
+    "largest_n": 63,
+    "model_cap": 63
+   },
+   "meaning": "the instances sit at the task model's maximum size, so the study cannot say what happens beyond it",
+   "severity": "medium",
+   "study": "B20_R92",
+   "type": "SIZE_CAP"
+  },
+  {
+   "evidence": {
+    "arms": [
+     "deepdistc"
+    ],
+    "detail": {
+     "flat_hosts": 25,
+     "hosts": 36,
+     "median_share_of_target": 0.69,
+     "run_times_s": [
+      0.005,
+      2.0
+     ]
+    },
+    "subject": "deepdistc"
+   },
+   "meaning": "a competitor ends at about the same value at every run time on most hosts, well short of the target: either the budgets are outside its regime or its harness is wrong, and the comparison with it means nothing until one of the two is known",
+   "severity": "high",
+   "study": "B20_R92",
+   "type": "ARM_NOT_RESPONDING"
+  }
+ ]
+}

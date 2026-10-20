@@ -141,6 +141,7 @@ needs people: a reviewer, a statistician, an independent custodian on its own ma
 | B20_R90 | Head-to-head (DEV): TFX_BEATS_EVERY_CHAMPION and TFX_BEATS_VBS on planted and G(63, 0.5) hosts, NO_CHAMPION_FINDS_MORE at 10 s; ratios are lower bounds (floor 0.05 s); claim path B20R90-OPEN-1 |
 | B20_R91 | MSE 2026 anytime entrants built from their archives (Daniel's download) as `maxsat-anytime-2026-v1`; B20_R92 preregistered |
 | B20_R92 | Head-to-head with all 13 champions (DEV): TFX_BEATS_EVERY_CHAMPION on both families, TFX_BEATS_VBS on G(63, 0.5) (~200×), vbs_P UNRESOLVED (3× at the median); NO_CHAMPION_FINDS_MORE; ablations UNRESOLVED; interrupted twice and resumed (disclosed) |
+| B20_R93 | The adaptation cell (`src/genesis/adaptation/`, `scripts/b20r93_cell.py`, `docs/CAVEATS.md`); prospective check on B20_R92 9/9; quality at equal time and sequential stopping (`genesis.anytime`) |
 
 ## 6. Next steps, in order
 
