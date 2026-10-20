@@ -96,5 +96,36 @@ class Design(unittest.TestCase):
             self.assertIn('R33.pinned_core()', (ROOT / 'scripts' / name).read_text())
 
 
+class RecordB20R83(unittest.TestCase):
+    """B20_R83's outputs: the frozen generation-2 program and its history."""
+
+    @classmethod
+    def setUpClass(cls):
+        import json
+        d = G.STUDIES['b20r83']['out']
+        cls.s = json.loads((d / 'summary.json').read_text())
+        cls.frozen = json.loads((d / 'program.json').read_text())
+        cls.hist = [json.loads(l) for l in (d / 'history.jsonl').read_text().splitlines() if l.strip()]
+
+    def test_the_frozen_program(self):
+        import json
+        from genesis import candidates_v2 as C2
+        from genesis.candidate_kinds import solver_program as KP
+        from genesis.invention import solver_library as SL
+        prog = self.frozen['program']
+        self.assertEqual(SL.problems(prog, KP.licensed_reps('triangle_free_host_v1')), [])
+        gen1 = json.loads(G.GEN1.read_text())['program']
+        self.assertEqual(prog['library'], [SL.as_library_entry(gen1)])
+        self.assertEqual(self.frozen['macros_used'], [0])
+        self.assertEqual(C2.descriptor_problems(self.frozen['descriptor_at_0.5s'], domain='triangle_free_host_v1'), [])
+        best = max(self.s['search']['finalists'], key=lambda f: (f['final_mean'], -f['size']))
+        self.assertEqual((best['body'], best['rep'], best['final_mean']), (prog['body'], prog['rep'], 291.5938))
+
+    def test_the_history(self):
+        self.assertEqual(len(self.hist), self.s['search']['evaluations'])
+        self.assertTrue(all(h['round'] == 0 for h in self.hist[:16]))
+        self.assertEqual(self.s['search']['macro_use_in_final_population'], 16)
+
+
 if __name__ == '__main__':
     unittest.main()

@@ -970,7 +970,8 @@
       },
       "B20_R81": {
         "commits": [
-          "e579deb"
+          "e579deb",
+          "4dfac10"
         ],
         "result": "24 fresh n63 hosts (resumed after a container restart at 7/24): SELF_FOUND_BEATS_SOTA (found 24/24 within 2 s; BURER2002 6, CP-SAT 0); B20_R77 replicated (ENGINE_BEATS_SOTA); found vs builder engine UNRESOLVED (engine ~5x faster, intervals end at -1.00; per-host secondary: engine faster); found vs random UNRESOLVED (indistinguishable; random also beats both tools)"
       },
@@ -984,7 +985,7 @@
         "commits": [
           "9aad649"
         ],
-        "result": "Setup: generation 2 search (library: generation 1). Pending"
+        "result": "Generation 2 (library: generation 1), 16 fresh n63 training hosts, 6,000 CPU s: froze a 13-statement program on cross_2 calling generation 1 three times plus a kick and edge drops; final mean 291.59 (own hosts); all 16 of the final population use the macro. Judged in B20_R86"
       },
       "B20_R84": {
         "commits": [

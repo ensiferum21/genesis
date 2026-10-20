@@ -104,6 +104,7 @@ On this family the calibration's limit and the plan's 5% unsupported limit agree
 | `exposure_hosts_addendum_b20r77.json` | B20_R77: the 24 DEV hosts of the engine's comparison with CP-SAT and BURER2002 (planted (0.8, 0.06) at n63, drawn beyond the registered family space); none is in this package's settings. |
 | `exposure_hosts_addendum_b20r79.json` | B20_R79: the 16 DEV training hosts of the system's program search (planted (0.8, 0.06) at n63, drawn beyond the registered family space); none is in this package's settings. |
 | `exposure_hosts_addendum_b20r81.json` | B20_R81: the 24 DEV hosts of the self-found-solver test (planted (0.8, 0.06) at n63, drawn beyond the registered family space); none is in this package's settings. |
+| `exposure_hosts_addendum_b20r83.json` | B20_R83: the 16 DEV training hosts of generation 2 of the program search (planted (0.8, 0.06) at n63, drawn beyond the registered family space; B20_R84 uses the same); none is in this package's settings. |
 | `package_index.json` | Identities, the calibration and the outcomes. |
 
 The B20_R23 version of this package (builder-chosen settings, both domains) is in the git history at `e7fad0e`.

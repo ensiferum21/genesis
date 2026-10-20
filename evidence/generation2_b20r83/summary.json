@@ -1,0 +1,650 @@
+{
+ "code_identity": "03353700f7addfbb8f8bbb3a246e71e58eb9dd1e51687d3560c1a73e9ac0546c",
+ "constants": {
+  "BUDGET": 0.25,
+  "CHILDREN": 8,
+  "POP": 16,
+  "SEARCH_S": 6000.0
+ },
+ "cpu_s": 6162.4,
+ "descriptor_at_0.5s": {
+  "descriptor_id": "caa5b5195506d630a7b3ffe99445f303e68f3f717633d32165cf88ca16614a64",
+  "domain": "triangle_free_host_v1",
+  "implementation": {
+   "candidate_kinds/solver_library_program.py": "b438e37a774d2490c608f769bcb6476c41136f7ea8fc513453088f4818dcf3bb",
+   "candidate_kinds/solver_program.py": "077f2443ff209496e8923120597acfe49572ea97b2542f7046a6f6ced723c85e",
+   "candidates_v2.py": "b9d7a43efcbb6b64bbf5c723602f95a88bd3907454a8ba31706bf116de8cbc6a",
+   "formal_research/triangle_theory.py": "32768094b0f8c58f0ac09492c9538000a4ef61af611962f077f56823d520db58",
+   "graphs.py": "e0e8e089a240a2fc3a422d29c6fe65a6031d06264eab29fb8a991ad60213261d",
+   "invention/representations.py": "5c53e369b93db4d854c1829587202423bd81c14eafa55808b77c1852f44bfcbd",
+   "invention/solver_library.py": "ae56d8ab152b134322ff6cf2ff7679e7b680fed18bafafa722ae4be933d5034a",
+   "invention/solver_programs.py": "6700866deae0810d68df9f0460ec3a0211aadc42345ffd02e7c5aadc046346e2",
+   "invention/soundness.py": "d50071a54da40ebf2c707824b0dfd497ecb589d489dc78b579ec28a8fb8835da",
+   "models.py": "2d10c569f5de3ee209ce07525972d199bba1168ae187ffc223880491fa701d05"
+  },
+  "kind": "solver-library-v1",
+  "parameters": {
+   "cpu_seconds": 0.5,
+   "program": {
+    "body": [
+     [
+      "split",
+      0.25,
+      [
+       [
+        "descent"
+       ],
+       [
+        "macro",
+        0
+       ],
+       [
+        "edges",
+        "force",
+        "improve",
+        1
+       ]
+      ],
+      [
+       [
+        "split",
+        0.9,
+        [
+         [
+          "edges",
+          "drop",
+          "anneal",
+          1
+         ]
+        ],
+        [
+         [
+          "descent"
+         ],
+         [
+          "macro",
+          0
+         ]
+        ]
+       ],
+       [
+        "relabel",
+        "random",
+        "sideways",
+        100
+       ],
+       [
+        "loop",
+        [
+         [
+          "macro",
+          0
+         ],
+         [
+          "relabel",
+          "best",
+          "anneal",
+          1
+         ],
+         [
+          "descent"
+         ]
+        ]
+       ]
+      ]
+     ]
+    ],
+    "library": [
+     [
+      [
+       "descent"
+      ],
+      [
+       "split",
+       0.1,
+       [
+        [
+         "sweep",
+         "drop",
+         "sideways"
+        ],
+        [
+         "loop",
+         [
+          [
+           "split",
+           0.1,
+           [
+            [
+             "relabel",
+             "random",
+             "anneal",
+             1000
+            ]
+           ],
+           [
+            [
+             "descent"
+            ]
+           ]
+          ]
+         ]
+        ]
+       ],
+       [
+        [
+         "split",
+         0.75,
+         [
+          [
+           "relabel",
+           "random",
+           "anneal",
+           1000
+          ]
+         ],
+         [
+          [
+           "descent"
+          ]
+         ]
+        ]
+       ]
+      ]
+     ]
+    ],
+    "rep": "cross_2"
+   }
+  },
+  "resource_profile": {
+   "cpu_seconds": 2,
+   "memory_mib": 2048,
+   "queries": 1000,
+   "wall_seconds": 10
+  },
+  "schema": "genesis-candidate-descriptor-v2"
+ },
+ "exposure_scan": {
+  "calibration_hosts": 456,
+  "distinct_hosts": 3219,
+  "e1_named_hosts": 711,
+  "empty_files_skipped": [
+   "evidence/failed-wal-final-replay.json",
+   "evidence/final-replay.json"
+  ],
+  "excluded_identities": 3219,
+  "files_scanned": 1160,
+  "host_records": 14817
+ },
+ "library_sources": [
+  "evidence/program_search_b20r79/discovered_program.json"
+ ],
+ "macros_used": [
+  0
+ ],
+ "program": {
+  "body": [
+   [
+    "split",
+    0.25,
+    [
+     [
+      "descent"
+     ],
+     [
+      "macro",
+      0
+     ],
+     [
+      "edges",
+      "force",
+      "improve",
+      1
+     ]
+    ],
+    [
+     [
+      "split",
+      0.9,
+      [
+       [
+        "edges",
+        "drop",
+        "anneal",
+        1
+       ]
+      ],
+      [
+       [
+        "descent"
+       ],
+       [
+        "macro",
+        0
+       ]
+      ]
+     ],
+     [
+      "relabel",
+      "random",
+      "sideways",
+      100
+     ],
+     [
+      "loop",
+      [
+       [
+        "macro",
+        0
+       ],
+       [
+        "relabel",
+        "best",
+        "anneal",
+        1
+       ],
+       [
+        "descent"
+       ]
+      ]
+     ]
+    ]
+   ]
+  ],
+  "library": [
+   [
+    [
+     "descent"
+    ],
+    [
+     "split",
+     0.1,
+     [
+      [
+       "sweep",
+       "drop",
+       "sideways"
+      ],
+      [
+       "loop",
+       [
+        [
+         "split",
+         0.1,
+         [
+          [
+           "relabel",
+           "random",
+           "anneal",
+           1000
+          ]
+         ],
+         [
+          [
+           "descent"
+          ]
+         ]
+        ]
+       ]
+      ]
+     ],
+     [
+      [
+       "split",
+       0.75,
+       [
+        [
+         "relabel",
+         "random",
+         "anneal",
+         1000
+        ]
+       ],
+       [
+        [
+         "descent"
+        ]
+       ]
+      ]
+     ]
+    ]
+   ]
+  ],
+  "rep": "cross_2"
+ },
+ "role": "generation 2",
+ "schema": "genesis-b20r83-generation-search-v1",
+ "search": {
+  "distinct_programs": 1202,
+  "evaluations": 1498,
+  "finalists": [
+   {
+    "body": [
+     [
+      "macro",
+      0
+     ],
+     [
+      "split",
+      0.25,
+      [
+       [
+        "descent"
+       ],
+       [
+        "macro",
+        0
+       ],
+       [
+        "edges",
+        "force",
+        "improve",
+        1
+       ]
+      ],
+      [
+       [
+        "split",
+        0.9,
+        [
+         [
+          "edges",
+          "drop",
+          "anneal",
+          1
+         ]
+        ],
+        [
+         [
+          "descent"
+         ],
+         [
+          "macro",
+          0
+         ]
+        ]
+       ],
+       [
+        "relabel",
+        "random",
+        "sideways",
+        100
+       ],
+       [
+        "loop",
+        [
+         [
+          "macro",
+          0
+         ],
+         [
+          "relabel",
+          "best",
+          "anneal",
+          1
+         ],
+         [
+          "descent"
+         ]
+        ]
+       ]
+      ]
+     ]
+    ],
+    "final_mean": 291.5938,
+    "rep": "cross_2",
+    "search_fitness": 291.6875,
+    "size": 14
+   },
+   {
+    "body": [
+     [
+      "split",
+      0.75,
+      [
+       [
+        "descent"
+       ],
+       [
+        "macro",
+        0
+       ],
+       [
+        "edges",
+        "force",
+        "improve",
+        1
+       ]
+      ],
+      [
+       [
+        "repeat",
+        1,
+        [
+         [
+          "split",
+          0.1,
+          [
+           [
+            "edges",
+            "drop",
+            "anneal",
+            100
+           ]
+          ],
+          [
+           [
+            "descent"
+           ],
+           [
+            "macro",
+            0
+           ]
+          ]
+         ],
+         [
+          "relabel",
+          "random",
+          "sideways",
+          100
+         ]
+        ]
+       ],
+       [
+        "loop",
+        [
+         [
+          "split",
+          0.75,
+          [
+           [
+            "macro",
+            0
+           ],
+           [
+            "relabel",
+            "best",
+            "anneal",
+            1
+           ],
+           [
+            "descent"
+           ]
+          ],
+          [
+           [
+            "macro",
+            0
+           ]
+          ]
+         ]
+        ]
+       ]
+      ]
+     ]
+    ],
+    "final_mean": 291.5781,
+    "rep": "cross_2",
+    "search_fitness": 291.625,
+    "size": 16
+   },
+   {
+    "body": [
+     [
+      "split",
+      0.25,
+      [
+       [
+        "descent"
+       ],
+       [
+        "macro",
+        0
+       ],
+       [
+        "edges",
+        "force",
+        "improve",
+        1
+       ]
+      ],
+      [
+       [
+        "split",
+        0.1,
+        [
+         [
+          "edges",
+          "drop",
+          "anneal",
+          1
+         ]
+        ],
+        [
+         [
+          "descent"
+         ],
+         [
+          "macro",
+          0
+         ]
+        ]
+       ],
+       [
+        "relabel",
+        "random",
+        "sideways",
+        100
+       ],
+       [
+        "loop",
+        [
+         [
+          "macro",
+          0
+         ],
+         [
+          "relabel",
+          "best",
+          "anneal",
+          1
+         ],
+         [
+          "descent"
+         ]
+        ]
+       ]
+      ]
+     ]
+    ],
+    "final_mean": 291.5781,
+    "rep": "cross_2",
+    "search_fitness": 291.5938,
+    "size": 13
+   },
+   {
+    "body": [
+     [
+      "split",
+      0.25,
+      [
+       [
+        "descent"
+       ],
+       [
+        "macro",
+        0
+       ],
+       [
+        "edges",
+        "force",
+        "improve",
+        1
+       ]
+      ],
+      [
+       [
+        "split",
+        0.9,
+        [
+         [
+          "edges",
+          "drop",
+          "anneal",
+          1
+         ]
+        ],
+        [
+         [
+          "descent"
+         ],
+         [
+          "macro",
+          0
+         ]
+        ]
+       ],
+       [
+        "relabel",
+        "random",
+        "sideways",
+        100
+       ],
+       [
+        "loop",
+        [
+         [
+          "macro",
+          0
+         ],
+         [
+          "relabel",
+          "best",
+          "anneal",
+          1
+         ],
+         [
+          "descent"
+         ]
+        ]
+       ]
+      ]
+     ]
+    ],
+    "final_mean": 291.5938,
+    "rep": "cross_2",
+    "search_fitness": 291.5938,
+    "size": 13
+   }
+  ],
+  "generations": 149,
+  "macro_use_in_final_population": 16
+ },
+ "seeds": {
+  "hosts": 20268301,
+  "search": 20268302
+ },
+ "size": 13,
+ "status": "DEV generation of the program search; judged in B20_R86; licenses nothing",
+ "study": "b20r83"
+}

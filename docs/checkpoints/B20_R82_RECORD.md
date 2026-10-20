@@ -34,3 +34,11 @@ can call the earlier discovery, combine it and build around it.
 - **Expectation:** PARTIAL or NO_COMPOUNDING, PARTIAL slightly more likely; generation 2 can only show a gain if
   generation 1 leaves room at the shortest run times.
 - Tests: `tests_genesis/test_generations.py` (7, design).
+
+## B20_R83 result (generation 2)
+
+Alone, pinned, 6,237 s (`evidence/generation2_b20r83/`). The search, with generation 1 callable, froze a 13-statement
+program on cross_2 that calls generation 1 three times and adds a kick (force one edge, keep if improved), annealed
+edge drops and relabels around it; final mean 291.59 on its own 16 training hosts (not comparable with B20_R79's
+hosts). All 16 programs of its final population call generation 1. Judged against generation 1 and the control in
+B20_R86. Record tests (2); exposure addenda (16 hosts).
