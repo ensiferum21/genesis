@@ -233,8 +233,10 @@ def _child(path):
     req = json.loads(Path(path).read_bytes())
     if set(req) != {'view', 'kind', 'parameters', 'cpu_seconds', 'queries', 'seed'} or req['kind'] not in KINDS:
         raise SystemExit(2)
-    from .models import CandidateGraph
-    view = CandidateGraph.model_validate_json(canonical(req['view']))
+    from .models import CandidateGraph, LargeCandidateGraph
+    model = LargeCandidateGraph if isinstance(req['view'], dict) and req['view'].get('domain') == \
+        'triangle_free_large_v1' else CandidateGraph
+    view = model.model_validate_json(canonical(req['view']))
     resource.setrlimit(resource.RLIMIT_FSIZE, (0, 0))
     out = _kind(req['kind']).solve(view, req['parameters'], req['cpu_seconds'], req['seed'])
     sys.stdout.write(json.dumps(out))

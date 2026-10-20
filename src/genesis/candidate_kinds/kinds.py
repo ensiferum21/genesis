@@ -27,4 +27,6 @@ KINDS = {
     'mqlib-heuristic-v1': 'mqlib_heuristic',  # B20_R87: any of MQLib's 38 heuristics (for the per-host virtual best)
     'tfx-v1': 'tfx',                      # B20_R88: native population search on edge sets, operators chosen by data
     'maxsat-anytime-2026-v1': 'maxsat2026',  # B20_R91: the MaxSAT Evaluation 2026 anytime entrants, from their sources
+    'tfxw-v1': 'tfxw',                    # B20_R94: tfx-v1's search scaled past 64 vertices (multiword, tightness)
+    'maxsat-anytime-large-v1': 'maxsat_large',  # B20_R94: the 2024 and 2026 champions on the DEV large domain
 }

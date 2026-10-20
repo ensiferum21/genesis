@@ -358,9 +358,134 @@ class TriangleFreeHostAdapter(GraphHostAdapter):
     ROWS_ROUTES = ('generated-rows-v1',)
 
 
+class TriangleFreeLargeAdapter(DomainAdapter):
+    """The DEV-only large triangle-free domain (B20_R94): hosts with up to 1023 vertices, for studies of quality at
+    equal time where no method reaches the optimum (B20_R93's work order extend_domain). Its tasks are
+    `LargeGraphTask`s, so no code of the n <= 63 domains can receive one; its witnesses are checked by two
+    independent edge-driven predicates (`graphs_large`); it offers no certified reference, only a certified upper
+    bound (an edge-disjoint triangle packing); it is not a sealed domain (not in kernel.receipts.DOMAINS, not in
+    ADAPTERS): only DEV studies can use it."""
+    name = 'triangle_free_large_v1'
+    SEALED = False
+    FAMILY_SPACE = {
+        'erdos': {'n': (64, 1023), 'p': (0.01, 0.95)},
+        'planted_cluster': {'n': (64, 1023), 'p_in': (0.05, 0.98), 'p_out': (0.0, 0.9)},
+    }
+
+    def contract(self):
+        return {'schema': 'genesis-domain-contract-v1', 'domain': self.name, 'sealed': False,
+                'objective': 'maximum number of host edges in a subgraph containing no triangle',
+                'checker': 'graphs_large.check_witness (adjacency-merge-v1, neighbor-bitsets-v1)',
+                'bound': 'graphs_large.check_packing (edge-disjoint host triangles)'}
+
+    def parse(self, raw):
+        from .models import LargeGraphTask
+        if isinstance(raw, LargeGraphTask):
+            return raw
+        if not isinstance(raw, dict):
+            return Unsupported('task is not an object')
+        if raw.get('domain') != self.name:
+            return Unsupported(f'task domain {raw.get("domain")!r} is not {self.name}')
+        try:
+            from .common import canonical
+            return LargeGraphTask.model_validate_json(canonical(raw))
+        except Exception as exc:
+            return Unsupported(f'malformed task: {type(exc).__name__}')
+
+    def supports(self, task, purpose):
+        from .models import LargeGraphTask
+        if purpose not in PURPOSES:
+            return Unsupported(f'unknown purpose {purpose!r}')
+        if not isinstance(task, LargeGraphTask) or task.domain != self.name:
+            return Unsupported('not a task of this domain')
+        if purpose in ('exact_reference', 'certificate'):
+            return Unsupported('no certified optimum in the large domain: only witness checks and packing bounds')
+        return None
+
+    def exposure_identity(self, task):
+        from .graphs_large import wl_identity
+        return {'canonical': wl_identity(task.n, task.edges), 'method': 'color-refinement-invariant'}
+
+    def candidate_view(self, task):
+        from .models import LargeCandidateGraph
+        return LargeCandidateGraph(domain=task.domain, n=task.n, edges=task.edges)
+
+    def validate(self, task, witness):
+        from .graphs_large import CheckerDisagreement, check_witness as check_large
+        try:
+            checked = check_large(task, tuple(tuple(e) for e in witness))
+        except CheckerDisagreement as exc:
+            return {'status': 'CHECKER_ERROR', 'reason': str(exc),
+                    'disagreement': {'question': exc.question, 'inputs': exc.inputs, 'results': exc.results}}
+        except (ValueError, TypeError) as exc:
+            return {'status': 'INVALID', 'reason': str(exc)}
+        return {'status': 'VALID', 'value': checked['value'], 'checkers': checked['checkers']}
+
+    def reference(self, task, *, evidence=None, seconds=600):
+        return Unsupported('no certified optimum in the large domain')
+
+    def upper_bound(self, task):
+        """A certified upper bound and its certificate (the packing), re-checked before it is returned."""
+        from .graphs_large import check_packing, triangle_packing_bound
+        b = triangle_packing_bound(task)
+        if check_packing(task, b['packing']) != b['upper']:
+            raise RuntimeError('the packing bound did not re-check')
+        return b
+
+    def certificate_obligations(self, claim, value):
+        if claim == 'lower_bound':
+            return [{'obligation': 'lower_bound', 'evidence': 'witness_check', 'checker': self.contract()['checker'],
+                     'value': value}]
+        return [Unsupported(f'no certificate obligations for claim {claim!r} in the large domain').record()]
+
+    def families(self):
+        return {k: dict(v) for k, v in self.FAMILY_SPACE.items()}
+
+    def _edges(self, rng, family, params):
+        n = params['n']
+        edges = []
+        half = n // 2
+        for u in range(n):
+            for v in range(u + 1, n):
+                p = params['p'] if family == 'erdos' else (params['p_in'] if v < half else params['p_out'])
+                if rng.random() < p:
+                    edges.append((u, v))
+        return tuple(edges)
+
+    def generate(self, seed, count, split, family, params, excluded=()):
+        """`count` hosts of one family setting whose identities are not in `excluded` (nor repeated)."""
+        from .models import LargeGraphTask
+        if split != 'DEV':
+            raise ValueError('the large domain is DEV only')
+        if family not in self.FAMILY_SPACE:
+            raise ValueError(f'unknown family {family!r}')
+        space = self.FAMILY_SPACE[family]
+        if set(params) != set(space) or any(not lo <= params[k] <= hi for k, (lo, hi) in space.items()):
+            raise ValueError(f'parameters {params} outside the family space {space}')
+        rng = random.Random(digest({'seed': seed, 'family': family, 'params': params, 'domain': self.name}))
+        seen, out, tries = set(excluded), [], 0
+        tag = digest({'family': family, 'params': params})[:8]
+        while len(out) < count and tries < count * 20:
+            tries += 1
+            edges = self._edges(rng, family, params)
+            if not edges:
+                continue
+            task = LargeGraphTask(task_id=f'dev-{family}-{tag}-{seed}-{len(out):04}', n=params['n'], edges=edges,
+                                  family=f'{family}:{tag}')
+            identity = self.exposure_identity(task)['canonical']
+            if identity in seen:
+                continue
+            seen.add(identity)
+            out.append(task)
+        if len(out) != count:
+            raise RuntimeError(f'only {len(out)} of {count} distinct tasks within the generator budget')
+        return out, seen, {'draws': tries}
+
+
 ADAPTERS = {a.name: a for a in (C4HostAdapter(), TriangleFreeHostAdapter())}
+DEV_ADAPTERS = {a.name: a for a in (TriangleFreeLargeAdapter(),)}   # not sealed domains; DEV studies only
 
 
 def adapter(name):
     """The adapter for `name`, or Unsupported (callers record it; they never guess)."""
-    return ADAPTERS.get(name) or Unsupported(f'no domain adapter for {name!r}')
+    return ADAPTERS.get(name) or DEV_ADAPTERS.get(name) or Unsupported(f'no domain adapter for {name!r}')
