@@ -1,0 +1,1644 @@
+{
+ "anatomy": {
+  "cut_search": true,
+  "kick": false,
+  "phases": true,
+  "representation": "adjacent_2",
+  "restarts": false,
+  "returns_to_best": false,
+  "steps": [
+   "descent",
+   "loop",
+   "relabel random anneal",
+   "split",
+   "sweep drop sideways"
+  ],
+  "swap_like": true
+ },
+ "code_identity": "116263255592968d567f411ac83bbb898c635987bcd47199edb933a204b89776",
+ "constants": {
+  "BUDGET": 0.25,
+  "CHILDREN": 8,
+  "FINALISTS": 4,
+  "FINAL_BUDGETS": [
+   0.25,
+   1.0
+  ],
+  "FINAL_SEEDS": 2,
+  "LEADERS": 2,
+  "POP": 16,
+  "P_CROSS": 0.25,
+  "SEARCH_S": 6000.0,
+  "TOURNAMENT": 3
+ },
+ "cpu_s": 6160.5,
+ "descriptor_at_0.5s": {
+  "descriptor_id": "4718468926d4831a73f71b4fda595f1bedb71304c2a2a6f557bed0656aaa8de2",
+  "domain": "triangle_free_host_v1",
+  "implementation": {
+   "candidate_kinds/solver_program.py": "077f2443ff209496e8923120597acfe49572ea97b2542f7046a6f6ced723c85e",
+   "candidates_v2.py": "b9d7a43efcbb6b64bbf5c723602f95a88bd3907454a8ba31706bf116de8cbc6a",
+   "formal_research/triangle_theory.py": "32768094b0f8c58f0ac09492c9538000a4ef61af611962f077f56823d520db58",
+   "graphs.py": "e0e8e089a240a2fc3a422d29c6fe65a6031d06264eab29fb8a991ad60213261d",
+   "invention/representations.py": "5c53e369b93db4d854c1829587202423bd81c14eafa55808b77c1852f44bfcbd",
+   "invention/solver_programs.py": "6700866deae0810d68df9f0460ec3a0211aadc42345ffd02e7c5aadc046346e2",
+   "invention/soundness.py": "d50071a54da40ebf2c707824b0dfd497ecb589d489dc78b579ec28a8fb8835da",
+   "models.py": "2d10c569f5de3ee209ce07525972d199bba1168ae187ffc223880491fa701d05"
+  },
+  "kind": "solver-program-v1",
+  "parameters": {
+   "cpu_seconds": 0.5,
+   "program": {
+    "body": [
+     [
+      "descent"
+     ],
+     [
+      "split",
+      0.1,
+      [
+       [
+        "sweep",
+        "drop",
+        "sideways"
+       ],
+       [
+        "loop",
+        [
+         [
+          "split",
+          0.1,
+          [
+           [
+            "relabel",
+            "random",
+            "anneal",
+            1000
+           ]
+          ],
+          [
+           [
+            "descent"
+           ]
+          ]
+         ]
+        ]
+       ]
+      ],
+      [
+       [
+        "split",
+        0.75,
+        [
+         [
+          "relabel",
+          "random",
+          "anneal",
+          1000
+         ]
+        ],
+        [
+         [
+          "descent"
+         ]
+        ]
+       ]
+      ]
+     ]
+    ],
+    "rep": "adjacent_2"
+   }
+  },
+  "resource_profile": {
+   "cpu_seconds": 2,
+   "memory_mib": 2048,
+   "queries": 1000,
+   "wall_seconds": 10
+  },
+  "schema": "genesis-candidate-descriptor-v2"
+ },
+ "exposure_scan": {
+  "calibration_hosts": 456,
+  "distinct_hosts": 3195,
+  "e1_named_hosts": 711,
+  "empty_files_skipped": [
+   "evidence/failed-wal-final-replay.json",
+   "evidence/final-replay.json"
+  ],
+  "excluded_identities": 3195,
+  "files_scanned": 1147,
+  "host_records": 14713
+ },
+ "finalists": [
+  {
+   "final_mean": 287.3125,
+   "program": {
+    "body": [
+     [
+      "descent"
+     ],
+     [
+      "split",
+      0.1,
+      [
+       [
+        "sweep",
+        "drop",
+        "sideways"
+       ],
+       [
+        "loop",
+        [
+         [
+          "split",
+          0.5,
+          [
+           [
+            "relabel",
+            "random",
+            "anneal",
+            1000
+           ]
+          ],
+          [
+           [
+            "descent"
+           ]
+          ]
+         ]
+        ]
+       ]
+      ],
+      [
+       [
+        "split",
+        0.25,
+        [
+         [
+          "relabel",
+          "random",
+          "anneal",
+          1000
+         ]
+        ],
+        [
+         [
+          "edges",
+          "drop",
+          "anneal",
+          1
+         ]
+        ]
+       ]
+      ]
+     ]
+    ],
+    "rep": "adjacent_2"
+   },
+   "search_evaluations": 3,
+   "search_fitness": 287.3333,
+   "size": 10
+  },
+  {
+   "final_mean": 287.3438,
+   "program": {
+    "body": [
+     [
+      "descent"
+     ],
+     [
+      "split",
+      0.1,
+      [
+       [
+        "sweep",
+        "drop",
+        "sideways"
+       ],
+       [
+        "loop",
+        [
+         [
+          "split",
+          0.1,
+          [
+           [
+            "relabel",
+            "random",
+            "anneal",
+            1000
+           ]
+          ],
+          [
+           [
+            "descent"
+           ]
+          ]
+         ]
+        ]
+       ]
+      ],
+      [
+       [
+        "split",
+        0.75,
+        [
+         [
+          "relabel",
+          "random",
+          "anneal",
+          1000
+         ]
+        ],
+        [
+         [
+          "descent"
+         ]
+        ]
+       ]
+      ]
+     ]
+    ],
+    "rep": "adjacent_2"
+   },
+   "search_evaluations": 2,
+   "search_fitness": 287.2812,
+   "size": 10
+  },
+  {
+   "final_mean": 287.3125,
+   "program": {
+    "body": [
+     [
+      "descent"
+     ],
+     [
+      "split",
+      0.1,
+      [
+       [
+        "sweep",
+        "drop",
+        "sideways"
+       ],
+       [
+        "loop",
+        [
+         [
+          "split",
+          0.25,
+          [
+           [
+            "relabel",
+            "random",
+            "anneal",
+            1000
+           ]
+          ],
+          [
+           [
+            "descent"
+           ]
+          ]
+         ]
+        ]
+       ]
+      ],
+      [
+       [
+        "split",
+        0.25,
+        [
+         [
+          "relabel",
+          "random",
+          "anneal",
+          1000
+         ]
+        ],
+        [
+         [
+          "descent"
+         ],
+         [
+          "edges",
+          "force",
+          "sideways",
+          10
+         ]
+        ]
+       ]
+      ]
+     ]
+    ],
+    "rep": "adjacent_2"
+   },
+   "search_evaluations": 2,
+   "search_fitness": 287.2812,
+   "size": 11
+  },
+  {
+   "final_mean": 287.25,
+   "program": {
+    "body": [
+     [
+      "descent"
+     ],
+     [
+      "split",
+      0.1,
+      [
+       [
+        "sweep",
+        "drop",
+        "sideways"
+       ],
+       [
+        "loop",
+        [
+         [
+          "split",
+          0.5,
+          [
+           [
+            "relabel",
+            "random",
+            "anneal",
+            1000
+           ]
+          ],
+          [
+           [
+            "descent"
+           ]
+          ]
+         ]
+        ]
+       ]
+      ],
+      [
+       [
+        "split",
+        0.25,
+        [
+         [
+          "relabel",
+          "random",
+          "anneal",
+          1000
+         ]
+        ],
+        [
+         [
+          "descent"
+         ],
+         [
+          "edges",
+          "force",
+          "sideways",
+          10
+         ]
+        ]
+       ]
+      ]
+     ]
+    ],
+    "rep": "adjacent_2"
+   },
+   "search_evaluations": 2,
+   "search_fitness": 287.2812,
+   "size": 11
+  }
+ ],
+ "initial_population_best_fitness": 279.875,
+ "initial_population_mean_fitness": 265.4102,
+ "population": [
+  {
+   "evaluations": 3,
+   "fitness": 287.3333,
+   "program": {
+    "body": [
+     [
+      "descent"
+     ],
+     [
+      "split",
+      0.1,
+      [
+       [
+        "sweep",
+        "drop",
+        "sideways"
+       ],
+       [
+        "loop",
+        [
+         [
+          "split",
+          0.5,
+          [
+           [
+            "relabel",
+            "random",
+            "anneal",
+            1000
+           ]
+          ],
+          [
+           [
+            "descent"
+           ]
+          ]
+         ]
+        ]
+       ]
+      ],
+      [
+       [
+        "split",
+        0.25,
+        [
+         [
+          "relabel",
+          "random",
+          "anneal",
+          1000
+         ]
+        ],
+        [
+         [
+          "edges",
+          "drop",
+          "anneal",
+          1
+         ]
+        ]
+       ]
+      ]
+     ]
+    ],
+    "rep": "adjacent_2"
+   }
+  },
+  {
+   "evaluations": 2,
+   "fitness": 287.2812,
+   "program": {
+    "body": [
+     [
+      "descent"
+     ],
+     [
+      "split",
+      0.1,
+      [
+       [
+        "sweep",
+        "drop",
+        "sideways"
+       ],
+       [
+        "loop",
+        [
+         [
+          "split",
+          0.1,
+          [
+           [
+            "relabel",
+            "random",
+            "anneal",
+            1000
+           ]
+          ],
+          [
+           [
+            "descent"
+           ]
+          ]
+         ]
+        ]
+       ]
+      ],
+      [
+       [
+        "split",
+        0.75,
+        [
+         [
+          "relabel",
+          "random",
+          "anneal",
+          1000
+         ]
+        ],
+        [
+         [
+          "descent"
+         ]
+        ]
+       ]
+      ]
+     ]
+    ],
+    "rep": "adjacent_2"
+   }
+  },
+  {
+   "evaluations": 2,
+   "fitness": 287.2812,
+   "program": {
+    "body": [
+     [
+      "descent"
+     ],
+     [
+      "split",
+      0.1,
+      [
+       [
+        "sweep",
+        "drop",
+        "sideways"
+       ],
+       [
+        "loop",
+        [
+         [
+          "split",
+          0.25,
+          [
+           [
+            "relabel",
+            "random",
+            "anneal",
+            1000
+           ]
+          ],
+          [
+           [
+            "descent"
+           ]
+          ]
+         ]
+        ]
+       ]
+      ],
+      [
+       [
+        "split",
+        0.25,
+        [
+         [
+          "relabel",
+          "random",
+          "anneal",
+          1000
+         ]
+        ],
+        [
+         [
+          "descent"
+         ],
+         [
+          "edges",
+          "force",
+          "sideways",
+          10
+         ]
+        ]
+       ]
+      ]
+     ]
+    ],
+    "rep": "adjacent_2"
+   }
+  },
+  {
+   "evaluations": 2,
+   "fitness": 287.2812,
+   "program": {
+    "body": [
+     [
+      "descent"
+     ],
+     [
+      "split",
+      0.1,
+      [
+       [
+        "sweep",
+        "drop",
+        "sideways"
+       ],
+       [
+        "loop",
+        [
+         [
+          "split",
+          0.5,
+          [
+           [
+            "relabel",
+            "random",
+            "anneal",
+            1000
+           ]
+          ],
+          [
+           [
+            "descent"
+           ]
+          ]
+         ]
+        ]
+       ]
+      ],
+      [
+       [
+        "split",
+        0.25,
+        [
+         [
+          "relabel",
+          "random",
+          "anneal",
+          1000
+         ]
+        ],
+        [
+         [
+          "descent"
+         ],
+         [
+          "edges",
+          "force",
+          "sideways",
+          10
+         ]
+        ]
+       ]
+      ]
+     ]
+    ],
+    "rep": "adjacent_2"
+   }
+  },
+  {
+   "evaluations": 2,
+   "fitness": 287.2812,
+   "program": {
+    "body": [
+     [
+      "split",
+      0.1,
+      [
+       [
+        "sweep",
+        "drop",
+        "sideways"
+       ],
+       [
+        "loop",
+        [
+         [
+          "split",
+          0.1,
+          [
+           [
+            "relabel",
+            "random",
+            "anneal",
+            1000
+           ]
+          ],
+          [
+           [
+            "descent"
+           ]
+          ]
+         ]
+        ]
+       ]
+      ],
+      [
+       [
+        "split",
+        0.25,
+        [
+         [
+          "relabel",
+          "random",
+          "anneal",
+          1000
+         ]
+        ],
+        [
+         [
+          "split",
+          0.25,
+          [
+           [
+            "relabel",
+            "random",
+            "anneal",
+            1000
+           ]
+          ],
+          [
+           [
+            "descent"
+           ]
+          ]
+         ]
+        ]
+       ]
+      ]
+     ]
+    ],
+    "rep": "adjacent_2"
+   }
+  },
+  {
+   "evaluations": 2,
+   "fitness": 287.2812,
+   "program": {
+    "body": [
+     [
+      "split",
+      0.1,
+      [
+       [
+        "sweep",
+        "drop",
+        "sideways"
+       ],
+       [
+        "loop",
+        [
+         [
+          "split",
+          0.1,
+          [
+           [
+            "relabel",
+            "random",
+            "anneal",
+            1000
+           ]
+          ],
+          [
+           [
+            "descent"
+           ]
+          ]
+         ]
+        ]
+       ]
+      ],
+      [
+       [
+        "split",
+        0.25,
+        [
+         [
+          "relabel",
+          "random",
+          "anneal",
+          1000
+         ]
+        ],
+        [
+         [
+          "split",
+          0.25,
+          [
+           [
+            "relabel",
+            "random",
+            "anneal",
+            1000
+           ]
+          ],
+          [
+           [
+            "descent"
+           ]
+          ]
+         ]
+        ]
+       ]
+      ]
+     ]
+    ],
+    "rep": "cross_2"
+   }
+  },
+  {
+   "evaluations": 6,
+   "fitness": 287.2812,
+   "program": {
+    "body": [
+     [
+      "split",
+      0.1,
+      [
+       [
+        "sweep",
+        "drop",
+        "sideways"
+       ],
+       [
+        "loop",
+        [
+         [
+          "split",
+          0.1,
+          [
+           [
+            "relabel",
+            "random",
+            "sideways",
+            1000
+           ]
+          ],
+          [
+           [
+            "descent"
+           ]
+          ]
+         ]
+        ]
+       ]
+      ],
+      [
+       [
+        "split",
+        0.25,
+        [
+         [
+          "relabel",
+          "random",
+          "anneal",
+          1000
+         ]
+        ],
+        [
+         [
+          "split",
+          0.25,
+          [
+           [
+            "relabel",
+            "random",
+            "anneal",
+            1000
+           ]
+          ],
+          [
+           [
+            "descent"
+           ]
+          ]
+         ]
+        ]
+       ]
+      ]
+     ]
+    ],
+    "rep": "adjacent_2"
+   }
+  },
+  {
+   "evaluations": 2,
+   "fitness": 287.2812,
+   "program": {
+    "body": [
+     [
+      "split",
+      0.25,
+      [
+       [
+        "sweep",
+        "drop",
+        "sideways"
+       ],
+       [
+        "loop",
+        [
+         [
+          "split",
+          0.1,
+          [
+           [
+            "relabel",
+            "random",
+            "anneal",
+            1000
+           ]
+          ],
+          [
+           [
+            "relabel",
+            "best",
+            "always",
+            1
+           ]
+          ]
+         ]
+        ]
+       ]
+      ],
+      [
+       [
+        "split",
+        0.25,
+        [
+         [
+          "relabel",
+          "random",
+          "anneal",
+          1000
+         ]
+        ],
+        [
+         [
+          "split",
+          0.25,
+          [
+           [
+            "relabel",
+            "random",
+            "anneal",
+            1000
+           ]
+          ],
+          [
+           [
+            "descent"
+           ]
+          ]
+         ]
+        ]
+       ]
+      ]
+     ]
+    ],
+    "rep": "adjacent_2"
+   }
+  },
+  {
+   "evaluations": 2,
+   "fitness": 287.2812,
+   "program": {
+    "body": [
+     [
+      "descent"
+     ],
+     [
+      "split",
+      0.1,
+      [
+       [
+        "sweep",
+        "drop",
+        "sideways"
+       ],
+       [
+        "split",
+        0.75,
+        [
+         [
+          "split",
+          0.1,
+          [
+           [
+            "relabel",
+            "random",
+            "anneal",
+            1000
+           ]
+          ],
+          [
+           [
+            "relabel",
+            "best",
+            "always",
+            1
+           ],
+           [
+            "best"
+           ]
+          ]
+         ]
+        ],
+        [
+         [
+          "descent"
+         ]
+        ]
+       ]
+      ],
+      [
+       [
+        "split",
+        0.75,
+        [
+         [
+          "relabel",
+          "random",
+          "anneal",
+          1000
+         ]
+        ],
+        [
+         [
+          "descent"
+         ]
+        ]
+       ]
+      ]
+     ]
+    ],
+    "rep": "adjacent_2"
+   }
+  },
+  {
+   "evaluations": 2,
+   "fitness": 287.2812,
+   "program": {
+    "body": [
+     [
+      "edges",
+      "drop",
+      "sideways",
+      100
+     ],
+     [
+      "split",
+      0.1,
+      [
+       [
+        "sweep",
+        "drop",
+        "sideways"
+       ],
+       [
+        "loop",
+        [
+         [
+          "split",
+          0.1,
+          [
+           [
+            "relabel",
+            "random",
+            "anneal",
+            1000
+           ]
+          ],
+          [
+           [
+            "relabel",
+            "best",
+            "always",
+            1
+           ]
+          ]
+         ]
+        ]
+       ]
+      ],
+      [
+       [
+        "split",
+        0.25,
+        [
+         [
+          "relabel",
+          "random",
+          "anneal",
+          1000
+         ]
+        ],
+        [
+         [
+          "split",
+          0.25,
+          [
+           [
+            "relabel",
+            "random",
+            "anneal",
+            1000
+           ]
+          ],
+          [
+           [
+            "descent"
+           ]
+          ]
+         ]
+        ]
+       ]
+      ]
+     ]
+    ],
+    "rep": "adjacent_2"
+   }
+  },
+  {
+   "evaluations": 4,
+   "fitness": 287.2812,
+   "program": {
+    "body": [
+     [
+      "split",
+      0.25,
+      [
+       [
+        "sweep",
+        "drop",
+        "sideways"
+       ],
+       [
+        "loop",
+        [
+         [
+          "split",
+          0.1,
+          [
+           [
+            "relabel",
+            "random",
+            "anneal",
+            1000
+           ]
+          ],
+          [
+           [
+            "relabel",
+            "best",
+            "always",
+            1
+           ],
+           [
+            "best"
+           ]
+          ]
+         ]
+        ]
+       ]
+      ],
+      [
+       [
+        "split",
+        0.25,
+        [
+         [
+          "relabel",
+          "random",
+          "anneal",
+          1000
+         ]
+        ],
+        [
+         [
+          "split",
+          0.25,
+          [
+           [
+            "relabel",
+            "random",
+            "anneal",
+            1000
+           ]
+          ],
+          [
+           [
+            "descent"
+           ]
+          ]
+         ]
+        ]
+       ]
+      ]
+     ]
+    ],
+    "rep": "adjacent_2"
+   }
+  },
+  {
+   "evaluations": 2,
+   "fitness": 287.2812,
+   "program": {
+    "body": [
+     [
+      "descent"
+     ],
+     [
+      "split",
+      0.1,
+      [
+       [
+        "sweep",
+        "drop",
+        "sideways"
+       ],
+       [
+        "split",
+        0.1,
+        [
+         [
+          "split",
+          0.75,
+          [
+           [
+            "edges",
+            "drop",
+            "always",
+            1
+           ]
+          ],
+          [
+           [
+            "edges",
+            "drop",
+            "always",
+            100
+           ]
+          ]
+         ]
+        ],
+        [
+         [
+          "split",
+          0.1,
+          [
+           [
+            "descent"
+           ]
+          ],
+          [
+           [
+            "init"
+           ],
+           [
+            "sweep",
+            "force",
+            "always"
+           ],
+           [
+            "relabel",
+            "best",
+            "always",
+            100
+           ]
+          ]
+         ]
+        ]
+       ]
+      ],
+      [
+       [
+        "split",
+        0.25,
+        [
+         [
+          "relabel",
+          "random",
+          "anneal",
+          1000
+         ]
+        ],
+        [
+         [
+          "descent"
+         ]
+        ]
+       ]
+      ]
+     ]
+    ],
+    "rep": "adjacent_2"
+   }
+  },
+  {
+   "evaluations": 17,
+   "fitness": 287.2757,
+   "program": {
+    "body": [
+     [
+      "descent"
+     ],
+     [
+      "split",
+      0.1,
+      [
+       [
+        "sweep",
+        "drop",
+        "sideways"
+       ],
+       [
+        "loop",
+        [
+         [
+          "split",
+          0.1,
+          [
+           [
+            "relabel",
+            "random",
+            "anneal",
+            1000
+           ]
+          ],
+          [
+           [
+            "descent"
+           ]
+          ]
+         ]
+        ]
+       ]
+      ],
+      [
+       [
+        "split",
+        0.25,
+        [
+         [
+          "relabel",
+          "random",
+          "anneal",
+          1000
+         ]
+        ],
+        [
+         [
+          "descent"
+         ]
+        ]
+       ]
+      ]
+     ]
+    ],
+    "rep": "adjacent_2"
+   }
+  },
+  {
+   "evaluations": 3,
+   "fitness": 287.2708,
+   "program": {
+    "body": [
+     [
+      "descent"
+     ],
+     [
+      "split",
+      0.1,
+      [
+       [
+        "sweep",
+        "drop",
+        "sideways"
+       ],
+       [
+        "loop",
+        [
+         [
+          "split",
+          0.5,
+          [
+           [
+            "relabel",
+            "random",
+            "anneal",
+            1000
+           ]
+          ],
+          [
+           [
+            "relabel",
+            "random",
+            "anneal",
+            1000
+           ]
+          ]
+         ]
+        ]
+       ]
+      ],
+      [
+       [
+        "relabel",
+        "random",
+        "anneal",
+        1000
+       ]
+      ]
+     ]
+    ],
+    "rep": "adjacent_2"
+   }
+  },
+  {
+   "evaluations": 1,
+   "fitness": 287.25,
+   "program": {
+    "body": [
+     [
+      "descent"
+     ],
+     [
+      "split",
+      0.1,
+      [
+       [
+        "sweep",
+        "drop",
+        "sideways"
+       ],
+       [
+        "loop",
+        [
+         [
+          "split",
+          0.5,
+          [
+           [
+            "relabel",
+            "random",
+            "anneal",
+            1000
+           ]
+          ],
+          [
+           [
+            "relabel",
+            "random",
+            "anneal",
+            1000
+           ]
+          ]
+         ],
+         [
+          "sweep",
+          "drop",
+          "anneal"
+         ]
+        ]
+       ]
+      ],
+      [
+       [
+        "relabel",
+        "random",
+        "anneal",
+        1000
+       ]
+      ]
+     ]
+    ],
+    "rep": "adjacent_2"
+   }
+  },
+  {
+   "evaluations": 1,
+   "fitness": 287.1875,
+   "program": {
+    "body": [
+     [
+      "descent"
+     ],
+     [
+      "split",
+      0.1,
+      [
+       [
+        "sweep",
+        "drop",
+        "sideways"
+       ],
+       [
+        "loop",
+        [
+         [
+          "split",
+          0.1,
+          [
+           [
+            "relabel",
+            "best",
+            "anneal",
+            1000
+           ]
+          ],
+          [
+           [
+            "descent"
+           ]
+          ]
+         ]
+        ]
+       ]
+      ],
+      [
+       [
+        "split",
+        0.75,
+        [
+         [
+          "relabel",
+          "random",
+          "anneal",
+          1000
+         ]
+        ],
+        [
+         [
+          "descent"
+         ]
+        ]
+       ]
+      ]
+     ]
+    ],
+    "rep": "adjacent_2"
+   }
+  }
+ ],
+ "program": {
+  "body": [
+   [
+    "descent"
+   ],
+   [
+    "split",
+    0.1,
+    [
+     [
+      "sweep",
+      "drop",
+      "sideways"
+     ],
+     [
+      "loop",
+      [
+       [
+        "split",
+        0.1,
+        [
+         [
+          "relabel",
+          "random",
+          "anneal",
+          1000
+         ]
+        ],
+        [
+         [
+          "descent"
+         ]
+        ]
+       ]
+      ]
+     ]
+    ],
+    [
+     [
+      "split",
+      0.75,
+      [
+       [
+        "relabel",
+        "random",
+        "anneal",
+        1000
+       ]
+      ],
+      [
+       [
+        "descent"
+       ]
+      ]
+     ]
+    ]
+   ]
+  ],
+  "rep": "adjacent_2"
+ },
+ "schema": "genesis-b20r79-program-search-v1",
+ "search": {
+  "distinct_programs": 1201,
+  "evaluations": 1497,
+  "generations": 149
+ },
+ "seeds": {
+  "hosts": 20267901,
+  "search": 20267902
+ },
+ "size": 10,
+ "status": "DEV program search; the frozen program is tested on fresh hosts in B20_R80; licenses nothing"
+}
