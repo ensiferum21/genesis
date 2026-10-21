@@ -1,0 +1,23 @@
+[    0.0s] pinned to CPU 0; tfxw sha256 9e6ac3d6cdfae8ed (pinned 9e6ac3d6cdfae8ed)
+[    0.3s] large-domain exposure: 0 identities
+[   40.8s] target dev-planted_cluster-2a71ea9a-20269501-0000 (128 vertices, 1996 edges): 1180 {'tfxw-r89-s0': 1180, 'tfxw-r89-s1': 1180, 'pasmaxsat-c': 1179, 'deepdist': 1177}
+[   81.3s] target dev-erdos-2be53d3d-20269502-0000 (128 vertices, 4059 edges): 2312 {'tfxw-r89-s0': 2312, 'tfxw-r89-s1': 2312, 'pasmaxsat-c': 2303, 'deepdist': 2288}
+[  122.8s] target dev-planted_cluster-ffd8075f-20269503-0000 (256 vertices, 7964 edges): 4518 {'tfxw-r89-s0': 4517, 'tfxw-r89-s1': 4518, 'pasmaxsat-c': 4475, 'deepdist': 4479}
+[  165.4s] target dev-erdos-c45c7693-20269504-0000 (256 vertices, 16212 edges): 8887 {'tfxw-r89-s0': 8887, 'tfxw-r89-s1': 8878, 'pasmaxsat-c': 8723, 'deepdist': 8733}
+[  205.7s] target dev-planted_cluster-2a71ea9a-20269501-0001 (128 vertices, 1977 edges): 1169 {'tfxw-r89-s0': 1169, 'tfxw-r89-s1': 1169, 'pasmaxsat-c': 1165, 'deepdist': 1165}
+[  246.1s] target dev-erdos-2be53d3d-20269502-0001 (128 vertices, 4047 edges): 2308 {'tfxw-r89-s0': 2308, 'tfxw-r89-s1': 2308, 'pasmaxsat-c': 2295, 'deepdist': 2293}
+[  287.6s] target dev-planted_cluster-ffd8075f-20269503-0001 (256 vertices, 7991 edges): 4545 {'tfxw-r89-s0': 4545, 'tfxw-r89-s1': 4535, 'pasmaxsat-c': 4489, 'deepdist': 4504}
+[  330.2s] target dev-erdos-c45c7693-20269504-0001 (256 vertices, 16350 edges): 8966 {'tfxw-r89-s0': 8966, 'tfxw-r89-s1': 8954, 'pasmaxsat-c': 8822, 'deepdist': 8743}
+[  370.5s] target dev-planted_cluster-2a71ea9a-20269501-0002 (128 vertices, 1992 edges): 1178 {'tfxw-r89-s0': 1178, 'tfxw-r89-s1': 1178, 'pasmaxsat-c': 1177, 'deepdist': 1178}
+[  411.0s] target dev-erdos-2be53d3d-20269502-0002 (128 vertices, 4025 edges): 2300 {'tfxw-r89-s0': 2300, 'tfxw-r89-s1': 2300, 'pasmaxsat-c': 2277, 'deepdist': 2292}
+[  452.4s] target dev-planted_cluster-ffd8075f-20269503-0002 (256 vertices, 8005 edges): 4539 {'tfxw-r89-s0': 4534, 'tfxw-r89-s1': 4539, 'pasmaxsat-c': 4488, 'deepdist': 4508}
+[  495.2s] target dev-erdos-c45c7693-20269504-0002 (256 vertices, 16323 edges): 8936 {'tfxw-r89-s0': 8936, 'tfxw-r89-s1': 8932, 'pasmaxsat-c': 8718, 'deepdist': 8464}
+[  535.6s] target dev-planted_cluster-2a71ea9a-20269501-0003 (128 vertices, 1933 edges): 1150 {'tfxw-r89-s0': 1150, 'tfxw-r89-s1': 1150, 'pasmaxsat-c': 1146, 'deepdist': 1146}
+[  576.0s] target dev-erdos-2be53d3d-20269502-0003 (128 vertices, 4062 edges): 2320 {'tfxw-r89-s0': 2320, 'tfxw-r89-s1': 2320, 'pasmaxsat-c': 2302, 'deepdist': 2292}
+[  617.4s] target dev-planted_cluster-ffd8075f-20269503-0003 (256 vertices, 8003 edges): 4544 {'tfxw-r89-s0': 4544, 'tfxw-r89-s1': 4541, 'pasmaxsat-c': 4507, 'deepdist': 4503}
+[  660.3s] target dev-erdos-c45c7693-20269504-0003 (256 vertices, 16407 edges): 8972 {'tfxw-r89-s0': 8962, 'tfxw-r89-s1': 8972, 'pasmaxsat-c': 8572, 'deepdist': 8808}
+[ 2211.0s] round 0 (4 hosts x 1 seeds): kept 16; best #14 0.99962, #29 0.99948, #63 0.99921, #33 0.99912, #25 0.99908, #3 0.99898
+[ 2599.3s] round 1 (8 hosts x 1 seeds): kept 8; best #14 0.99899, #29 0.99897, #63 0.99873, #50 0.99855, #33 0.99842, #25 0.99833
+[ 3763.7s] round 2 (16 hosts x 2 seeds): kept 4; best #29 0.99908, #14 0.99895, #63 0.99876, #62 0.99865
+[ 4151.6s] round 3 (16 hosts x 3 seeds): kept 4; best #29 0.99913, #14 0.99905, #63 0.99880, #62 0.99849
+[ 4151.6s] frozen #29 (mean score 0.99913): {"K": 6, "acc": 0, "cross": 5, "dshare": 0.5, "femlam": 2.0, "femlr": 0.1, "femsteps": 300, "frac": 0.3, "kicks": 2, "kpick": 4, "pherw": 0.0, "pw": 0.2, "relink": 20, "repl": 16, "restart": 200, "rho": 0.0, "steps": 100, "tmax": 4.0, "tmin": 0.3, "ws": 2, "xchg": 200}; uses {'simulated_bifurcation': False, 'cut_descent': True, 'mean_field_annealing': False, 'parallel_tempering': False, 'crossover': True, 'ant_colony_memory': False, 'path_relinking': True, 'restarts': True, 'least_tight_kicks': True}
