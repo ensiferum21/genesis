@@ -180,7 +180,7 @@ runc sandbox through `candidates_large`; the system's method ({focal_kind}, `{fo
 encoding); extra arms {extra}; probes {probes}. The analysis, labels, validity rule and stopping rule are
 `genesis.autonomy.qet`'s (its docstring): the MaxSAT Evaluation 2026 anytime score against each host's best known value,
 paired bootstrap of mean score differences at level 1 - {alpha} / {n_looks} at each look ({looks} hosts), margin
-{delta}; a certified clique-packing bound per host ({bound} s). The study stops at the first look where the
+{delta}; a certified bound per host (the better of a clique packing and a triangle packing; {bound} s). The study stops at the first look where the
 comparisons named in `decide` ({decide}) are decided. Budgets left for a later study: {later}. **Cost (estimate):** about
 {per_host:g} s per host; about {first_look} s if it stops at the first look, {all_hosts} s if it runs every host.
 
