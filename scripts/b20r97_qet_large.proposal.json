@@ -1,0 +1,470 @@
+{
+ "batch": 97,
+ "cell_design": {
+  "ablation": {
+   "hosts": 48
+  },
+  "arm_names": [
+   "aperture",
+   "aperture_gbg",
+   "aperture_ibi",
+   "aperture_kbg",
+   "deepdist",
+   "deepdistc",
+   "first_design",
+   "no_cross",
+   "no_dsb",
+   "no_pt",
+   "no_relink_restart",
+   "nuwls",
+   "nuwls26",
+   "nuwls26ub",
+   "pasmaxsat",
+   "sgat",
+   "spb",
+   "tfx",
+   "tt"
+  ],
+  "arms": 19,
+  "catalog_as_of": "2026-10-20",
+  "certification_mean_s": 159.2,
+  "certification_s": 183,
+  "competitors": [
+   "aperture",
+   "aperture-gbg",
+   "aperture-ibi",
+   "aperture-kbg",
+   "deepdist",
+   "deepdist-c",
+   "nuwls-c-2026",
+   "nuwls-c-2026-ub",
+   "nuwls-c-ibr",
+   "pasmaxsat-c",
+   "sgat-nuwls-c",
+   "spb-maxsat-c-fps",
+   "tt-open-wbo-inc"
+  ],
+  "cost_extrapolated": true,
+  "estimated_runtime_s": 68473,
+  "excluded": {},
+  "focal": "tfx",
+  "focal_identity": "b67cb25c3afc6289",
+  "fresh_hosts": true,
+  "hosts": 54,
+  "internal_tts": false,
+  "ladder": [
+   0.005,
+   0.01,
+   0.02,
+   0.05,
+   0.1,
+   0.25,
+   0.5,
+   2.0
+  ],
+  "long_arm_names": [
+   "aperture_gbg",
+   "aperture_kbg",
+   "deepdist",
+   "nuwls",
+   "nuwls26",
+   "nuwls26ub",
+   "pasmaxsat",
+   "sgat",
+   "spb",
+   "tfx",
+   "tt"
+  ],
+  "long_budgets": [
+   10.0,
+   60.0
+  ],
+  "probes": {
+   "deepdistc": {
+    "budget_s": 60.0,
+    "hosts": 4
+   }
+  },
+  "quality_at_equal_time": true,
+  "reps": 3,
+  "resumable": true,
+  "sequential_stopping": true,
+  "sizes": [
+   63,
+   128,
+   256
+  ],
+  "study": "next",
+  "upper_bounds": true,
+  "valid": true,
+  "validity": {
+   "max_fail_share": 0.01,
+   "min_cpu_at_half": 0.45
+  }
+ },
+ "checkpoint": {
+  "addressed": {
+   "ARM_NOT_RESPONDING[deepdistc]@B20_R92": "probe_at_home_budget",
+   "COMPONENT_EFFECT_UNRESOLVED@B20_R92": "dedicated_ablation_with_more_power",
+   "INTERRUPTED@B20_R81": "sequential_stopping",
+   "REGIME_GAP@B20_R70": "add_home_budgets",
+   "SATURATION@B20_R70": "quality_at_equal_time_on_larger_instances",
+   "SIZE_CAP@B20_R75": "extend_domain",
+   "UNCERTIFIED_TARGETS@B20_R75": "longer_certification",
+   "UNRESOLVED_VERDICT@B20_R76": "more_hosts"
+  },
+  "deferred": {},
+  "membrane": [],
+  "partial": {},
+  "pass": true,
+  "unaddressed": {}
+ },
+ "design": {
+  "alpha": 0.1,
+  "asked_by": {
+   "ARM_NOT_RESPONDING[deepdistc]@B20_R92": "probe_at_home_budget",
+   "COMPONENT_EFFECT_UNRESOLVED@B20_R92": "dedicated_ablation_with_more_power",
+   "INTERRUPTED@B20_R81": "sequential_stopping",
+   "REGIME_GAP@B20_R70": "add_home_budgets",
+   "SATURATION@B20_R70": "quality_at_equal_time_on_larger_instances",
+   "SIZE_CAP@B20_R75": "extend_domain",
+   "UNCERTIFIED_TARGETS@B20_R75": "longer_certification",
+   "UNRESOLVED_VERDICT@B20_R76": "more_hosts"
+  },
+  "boot": 4000,
+  "boot_seed": 20269710,
+  "bound_seconds": 60,
+  "budget": 10.0,
+  "cells": [
+   [
+    "planted_cluster",
+    {
+     "n": 128,
+     "p_in": 0.8,
+     "p_out": 0.06
+    }
+   ],
+   [
+    "erdos",
+    {
+     "n": 128,
+     "p": 0.5
+    }
+   ],
+   [
+    "planted_cluster",
+    {
+     "n": 256,
+     "p_in": 0.8,
+     "p_out": 0.06
+    }
+   ],
+   [
+    "erdos",
+    {
+     "n": 256,
+     "p": 0.5
+    }
+   ]
+  ],
+  "champions": [
+   [
+    "aperture",
+    "aperture"
+   ],
+   [
+    "aperture_gbg",
+    "aperture-gbg"
+   ],
+   [
+    "aperture_ibi",
+    "aperture-ibi"
+   ],
+   [
+    "aperture_kbg",
+    "aperture-kbg"
+   ],
+   [
+    "deepdist",
+    "deepdist"
+   ],
+   [
+    "deepdistc",
+    "deepdist-c"
+   ],
+   [
+    "nuwls",
+    "nuwls-c-ibr"
+   ],
+   [
+    "nuwls26",
+    "nuwls-c-2026"
+   ],
+   [
+    "nuwls26ub",
+    "nuwls-c-2026-ub"
+   ],
+   [
+    "pasmaxsat",
+    "pasmaxsat-c"
+   ],
+   [
+    "sgat",
+    "sgat-nuwls-c"
+   ],
+   [
+    "spb",
+    "spb-maxsat-c-fps"
+   ],
+   [
+    "tt",
+    "tt-open-wbo-inc"
+   ]
+  ],
+  "components_already_off": [
+   "no_dsb",
+   "no_pt"
+  ],
+  "decide": [
+   "champions",
+   "vbs",
+   "extra"
+  ],
+  "delta": 0.002,
+  "domain": "triangle_free_large_v1",
+  "extra": [
+   {
+    "arm": "previous_generation",
+    "config": {
+     "K": 12,
+     "acc": 1,
+     "cross": 5,
+     "dshare": 0.5,
+     "femlam": 1.2,
+     "femlr": 0.3,
+     "femsteps": 300,
+     "frac": 0.3,
+     "kicks": 3,
+     "kpick": 1,
+     "pherw": 0.0,
+     "pw": 0.05,
+     "relink": 20,
+     "repl": 8,
+     "restart": 50,
+     "rho": 0.1,
+     "steps": 400,
+     "tmax": 4.0,
+     "tmin": 0.3,
+     "ws": 3,
+     "xchg": 20
+    },
+    "from": "evidence/configure_tfx_b20r89/config.json",
+    "kind": "tfxw-v1"
+   },
+   {
+    "arm": "no_cross",
+    "config": {
+     "K": 6,
+     "acc": 0,
+     "cross": 0,
+     "dshare": 0.5,
+     "femlam": 2.0,
+     "femlr": 0.1,
+     "femsteps": 300,
+     "frac": 0.3,
+     "kicks": 2,
+     "kpick": 4,
+     "pherw": 0.0,
+     "pw": 0.2,
+     "relink": 20,
+     "repl": 16,
+     "restart": 200,
+     "rho": 0.0,
+     "steps": 100,
+     "tmax": 4.0,
+     "tmin": 0.3,
+     "ws": 2,
+     "xchg": 200
+    },
+    "from": "evidence/configure_tfxw_b20r95/config.json with {'cross': 0}",
+    "kind": "tfxw-v1"
+   },
+   {
+    "arm": "no_relink_restart",
+    "config": {
+     "K": 6,
+     "acc": 0,
+     "cross": 5,
+     "dshare": 0.5,
+     "femlam": 2.0,
+     "femlr": 0.1,
+     "femsteps": 300,
+     "frac": 0.3,
+     "kicks": 2,
+     "kpick": 4,
+     "pherw": 0.0,
+     "pw": 0.2,
+     "relink": 0,
+     "repl": 16,
+     "restart": 0,
+     "rho": 0.0,
+     "steps": 100,
+     "tmax": 4.0,
+     "tmin": 0.3,
+     "ws": 2,
+     "xchg": 200
+    },
+    "from": "evidence/configure_tfxw_b20r95/config.json with {'relink': 0, 'restart': 0}",
+    "kind": "tfxw-v1"
+   },
+   {
+    "arm": "first_design",
+    "config": {
+     "K": 4,
+     "acc": 0,
+     "cross": 0,
+     "dshare": 0.5,
+     "femlam": 1.5,
+     "femlr": 0.0,
+     "femsteps": 300,
+     "frac": 0.3,
+     "kicks": 1,
+     "kpick": 1,
+     "pherw": 0.0,
+     "pw": 0.1,
+     "relink": 0,
+     "repl": 32,
+     "restart": 0,
+     "rho": 0.0,
+     "steps": 400,
+     "tmax": 2.0,
+     "tmin": 0.3,
+     "ws": 3,
+     "xchg": 50
+    },
+    "from": "tfxw-v1 DEFAULT",
+    "kind": "tfxw-v1"
+   }
+  ],
+  "focal": {
+   "arm": "tfxw",
+   "config": {
+    "K": 6,
+    "acc": 0,
+    "cross": 5,
+    "dshare": 0.5,
+    "femlam": 2.0,
+    "femlr": 0.1,
+    "femsteps": 300,
+    "frac": 0.3,
+    "kicks": 2,
+    "kpick": 4,
+    "pherw": 0.0,
+    "pw": 0.2,
+    "relink": 20,
+    "repl": 16,
+    "restart": 200,
+    "rho": 0.0,
+    "steps": 100,
+    "tmax": 4.0,
+    "tmin": 0.3,
+    "ws": 2,
+    "xchg": 200
+   },
+   "from": "evidence/configure_tfxw_b20r95/config.json",
+   "kind": "tfxw-v1"
+  },
+  "focal_short": [
+   1.0
+  ],
+  "host_seed": 20269701,
+  "later_budgets": [
+   60.0
+  ],
+  "looks": [
+   19,
+   38,
+   56
+  ],
+  "per_cell": 14,
+  "probes": [
+   {
+    "arm": "probe_deepdistc",
+    "budget": 60.0,
+    "hosts": 4,
+    "solver": "deepdist-c"
+   }
+  ],
+  "study": "B20_R97"
+ },
+ "plan": {
+  "applied": {
+   "ARM_NOT_RESPONDING[deepdistc]@B20_R92": "probe_at_home_budget",
+   "COMPONENT_EFFECT_UNRESOLVED@B20_R92": "dedicated_ablation_with_more_power",
+   "INTERRUPTED@B20_R81": "sequential_stopping",
+   "REGIME_GAP@B20_R70": "add_home_budgets",
+   "SATURATION@B20_R70": "quality_at_equal_time_on_larger_instances",
+   "UNCERTIFIED_TARGETS@B20_R75": "longer_certification",
+   "UNRESOLVED_VERDICT@B20_R76": "more_hosts"
+  },
+  "chosen": {
+   "ARM_NOT_RESPONDING[deepdistc]@B20_R92": "probe_at_home_budget",
+   "COMPONENT_EFFECT_UNRESOLVED@B20_R92": "dedicated_ablation_with_more_power",
+   "INTERRUPTED@B20_R81": "sequential_stopping",
+   "REGIME_GAP@B20_R70": "add_home_budgets",
+   "SATURATION@B20_R70": "quality_at_equal_time_on_larger_instances",
+   "SIZE_CAP@B20_R75": "extend_domain",
+   "UNCERTIFIED_TARGETS@B20_R75": "longer_certification",
+   "UNRESOLVED_VERDICT@B20_R76": "more_hosts"
+  },
+  "deferred": {},
+  "escalate": {},
+  "estimated_runtime_s": 68473,
+  "limit_s": 35253,
+  "marginal_cost_s": {
+   "ARM_NOT_RESPONDING[deepdistc]@B20_R92": 241,
+   "COMPONENT_EFFECT_UNRESOLVED@B20_R92": 0,
+   "INTERRUPTED@B20_R81": 0,
+   "REGIME_GAP@B20_R70": 35847,
+   "SATURATION@B20_R70": 0,
+   "UNCERTIFIED_TARGETS@B20_R75": 2867,
+   "UNRESOLVED_VERDICT@B20_R76": 22744
+  },
+  "over_budget": "68473 s against a limit of 35253 s, and deferring every caveat the membrane lets the cell defer would not bring it within the limit (high-severity and chronic caveats are not deferred to save time); the largest share is REGIME_GAP@B20_R70 (35847 s): split the study there or raise the limit",
+  "skipped": {
+   "INTERRUPTED@B20_R81": [
+    "resumable_design: already in the design"
+   ],
+   "SIZE_CAP@B20_R75": [
+    "extend_domain: already in the design"
+   ],
+   "UNCERTIFIED_TARGETS@B20_R75": [
+    "upper_bounds: already in the design"
+   ]
+  },
+  "work_orders": [
+   {
+    "need": "extend_domain",
+    "what": "instances up to n = 256: the task model stops at n = 63 and the native engine's vertex sets are 64-bit; a larger model and an engine with multiword sets are needed"
+   },
+   {
+    "need": "quality_at_equal_time",
+    "what": "a quality-at-equal-time analysis (values at equal budgets, with intervals): no earlier study has done it"
+   },
+   {
+    "need": "sequential_stopping",
+    "what": "preregistered interim looks with stopping boundaries in the runner: no earlier study has done it"
+   },
+   {
+    "need": "probe_at_home_budget",
+    "what": "runs of the flagged arms at their home budget: deepdistc"
+   },
+   {
+    "need": "long_budgets",
+    "what": "budgets up to 60.0 s: the longest run so far was 10.0 s; cost and resumption must be planned"
+   }
+  ]
+ },
+ "script": "scripts/b20r97_qet_large.py",
+ "today": "2026-10-21"
+}
