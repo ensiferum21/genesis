@@ -20,7 +20,7 @@ DOMAINS = TW.DOMAINS
 FILES = ('candidate_kinds/tfxw2.py', 'candidate_kinds/native/tfxw2.c', 'candidate_kinds/tfxw.py',
          'candidate_kinds/tfx.py')
 BINARY = '/usr/local/genesis-sota/bin/tfxw2'
-BINARY_SHA256 = 'UNBUILT'
+BINARY_SHA256 = '9e67421719ac63248b024db07fa50eb83537bee665b94444d7e14c43af2beab9'
 SPACE = dict(TW.SPACE, acc=(0, 1, 2, 3, 4), lahc=(20, 5, 100, 500), pa=(0, 10, 50), levy=(0, 1.5, 2.0, 3.0),
              rem=(0, 1), rr=(1.0, 0.5, 2.0, 5.0))
 DEFAULT = dict(TW.DEFAULT, lahc=20, pa=0, levy=0, rem=0, rr=1.0)

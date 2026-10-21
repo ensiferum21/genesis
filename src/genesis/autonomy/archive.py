@@ -103,7 +103,7 @@ def mutate(config, space, rng, changes=None):
     """`config` with 1-3 keys (or `changes`) set to another value of their range in `space`."""
     out = dict(config)
     keys = sorted(space)
-    for k in rng.sample(keys, changes or rng.choice((1, 1, 2, 3))):
+    for k in rng.sample(keys, min(len(keys), changes or rng.choice((1, 1, 2, 3)))):
         others = [v for v in space[k] if v != out[k]]
         if others:
             out[k] = rng.choice(others)

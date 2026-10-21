@@ -141,11 +141,10 @@ def run_host(design, task, D, *, isolation='runc', with_probe=False):
     row = {'task_id': task.task_id, 'family': task.family.split(':')[0], 'n': task.n, 'edges': len(task.edges),
            'runs': runs, 'probes': probes, 'best_value': max(vals) if vals else None}
     if design.get('bound_seconds'):
-        from ..bounds_large import clique_packing_bound
-        cert = clique_packing_bound(task, seconds=design['bound_seconds'], seed=run_seed(design, task.task_id,
-                                                                                          'bound', 0))
-        row['upper'] = {'value': cert['upper'], 'method': cert['method'], 'cliques': len(cert['cliques']),
-                        'certificate_sha256': digest(cert)}
+        from ..bounds_large import best_bound
+        cert = best_bound(task, seconds=design['bound_seconds'], seed=run_seed(design, task.task_id, 'bound', 0))
+        row['upper'] = {'value': cert['upper'], 'method': cert['method'],
+                        'certificate_sha256': digest(cert['certificate'])}
         if row['best_value'] is not None and row['best_value'] > cert['upper']:
             raise RuntimeError('a value above the certified bound: the bound or a checker is wrong')
     return row
@@ -192,7 +191,8 @@ def analyse(rows, design, level):
         lab = 'MIXED'
     vbs = AT.compare(f, _vbs_scores(rows, design), design['delta'], **kw)
     labels = {'qet_champions': lab,
-              'qet_vbs': _four(vbs['verdict'], 'FOCAL_BETTER_THAN_VBS', 'VBS_BETTER', 'FOCAL_MATCHES_VBS', 'UNRESOLVED')}
+              'qet_vbs': _four(vbs['verdict'], 'FOCAL_BETTER_THAN_VBS', 'VBS_BETTER', 'FOCAL_MATCHES_VBS',
+                               'UNRESOLVED')}
     short = {}
     for s in design.get('focal_short', ()):
         c = AT.compare(_scores(rows, focal, s), _vbs_scores(rows, design), design['delta'], **kw)
@@ -242,7 +242,7 @@ def validity(rows, design):
 
 # ------------------------------------------------------------------------------------------------- run
 
-def main(design, out, root, *, slice_s=6600, isolation='runc'):
+def main(design, out, root, *, slice_s=6600, isolation='runc', one_core=True):
     """Run (or resume) the study into `out`; returns 0 when finished, PAUSED (3) when the time slice ran out."""
     from ..candidate_kinds import tfxw as TW
     from ..common import code_identity
@@ -258,7 +258,7 @@ def main(design, out, root, *, slice_s=6600, isolation='runc'):
         logf.flush()
     import os
     cores = os.sched_getaffinity(0)
-    if len(cores) != 1:
+    if one_core and len(cores) != 1:
         raise SystemExit(f'the study must run on one core, not {sorted(cores)}')
     log(f'pinned to CPU {min(cores)}; design sha256 {digest(design)[:16]}; tfxw {TW.binary_digest()[:16]}')
     D = descriptors(design)

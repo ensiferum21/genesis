@@ -57,6 +57,9 @@ class Bound(unittest.TestCase):
         from genesis import graphs_large as GL
         t = rand_task(60, 0.5, 3)
         self.assertLess(B.clique_packing_bound(t, seconds=20)['upper'], GL.triangle_packing_bound(t)['upper'])
+        best = B.best_bound(t, seconds=20)
+        self.assertTrue(best['method'].startswith('mantel-clique-packing-lp-colgen'))
+        self.assertEqual(B.check(t, best['certificate']), best['upper'])
 
     def test_tampering_is_refused(self):
         t = LargeGraphTask(task_id='k', n=5, edges=tuple(combinations(range(5), 2)), family='f')
@@ -65,7 +68,7 @@ class Bound(unittest.TestCase):
                     dict(c, weights=[-1] + c['weights'][1:]), dict(c, denominator=0)):
             with self.assertRaises(ValueError):
                 B.check(t, bad)
-        t2 = LargeGraphTask(task_id='p', n=4, edges=((0, 1), (1, 2), (0, 2), (2, 3)), family='f')
+        t2 = LargeGraphTask(task_id='p', n=4, edges=((0, 1), (0, 2), (1, 2), (2, 3)), family='f')
         with self.assertRaises(ValueError):
             B.check(t2, {'cliques': [[0, 2, 3]], 'weights': [1], 'denominator': 1})
 
@@ -78,7 +81,8 @@ class Archive(unittest.TestCase):
         z = a.add('k', {'p': 3}, {AR.cell('erdos', 128, 10): 0.90, AR.cell('erdos', 256, 10): 0.90}, parents=[x])
         self.assertEqual(a.elites[AR.cell('erdos', 128, 10)], x)
         self.assertEqual(a.elites[AR.cell('erdos', 256, 10)], y)
-        self.assertEqual(a.pareto(), sorted([x, y]))                     # z is dominated
+        self.assertEqual(a.pareto(), sorted([y, z]))       # x is dominated by y; z scales best
+        self.assertNotIn(x, a.pareto())
         self.assertEqual(a.entries[x]['children'], 2)
         self.assertAlmostEqual(a.objectives(y)['scaling'], -0.01)
         rng = random.Random(1)
@@ -129,7 +133,7 @@ class QETStudy(unittest.TestCase):
         d = tiny_design()
         with tempfile.TemporaryDirectory() as root, tempfile.TemporaryDirectory() as out:
             (Path(root) / 'evidence').mkdir()
-            rc = Q.main(d, out, root, isolation='process')
+            rc = Q.main(d, out, root, isolation='process', one_core=False)
             self.assertEqual(rc, 0)
             s = json.loads((Path(out) / 'summary.json').read_text())
             rows = [json.loads(l) for l in (Path(out) / 'rows.jsonl').read_text().splitlines()]
@@ -141,13 +145,13 @@ class QETStudy(unittest.TestCase):
                 self.assertEqual(set(r['runs']), {'tfxw', 'kp4', 'deepdist', 'pasmaxsat'})
             self.assertIn('probe_deepdistc', rows[0]['probes'])
             # resumes: a second call finds the rows and the summary unchanged in substance
-            self.assertEqual(Q.main(d, out, root, isolation='process'), 0)
+            self.assertEqual(Q.main(d, out, root, isolation='process', one_core=False), 0)
 
     def test_pause_before_the_limit(self):
         d = tiny_design(91919111)
         with tempfile.TemporaryDirectory() as root, tempfile.TemporaryDirectory() as out:
             (Path(root) / 'evidence').mkdir()
-            self.assertEqual(Q.main(d, out, root, isolation='process', slice_s=0), Q.PAUSED)
+            self.assertEqual(Q.main(d, out, root, isolation='process', slice_s=0, one_core=False), Q.PAUSED)
             self.assertFalse((Path(out) / 'summary.json').exists())
 
     def test_labels_on_synthetic_rows(self):
@@ -192,8 +196,8 @@ class StudyGen(unittest.TestCase):
             SG.write_script(d, path, title='t', why='w', expectation='e')
             r = subprocess.run([sys.executable, '-c', f'import runpy; m = runpy.run_path({str(path)!r}); '
                                 'import json; print(json.dumps(m["DESIGN"], sort_keys=True))'],
-                               capture_output=True, text=True)
-            self.assertEqual(json.loads(r.stdout), json.loads(json.dumps(d)))
+                               capture_output=True, text=True, env={'PYTHONPATH': str(ROOT / 'src'), 'PATH': '/usr/bin:/bin'})
+            self.assertEqual(json.loads(r.stdout), json.loads(json.dumps(d)), r.stderr[-500:])
 
 
 class Grammar(unittest.TestCase):

@@ -1060,6 +1060,10 @@
       "B20_R95": {
         "commits": [],
         "result": "DEV, recomputed: froze #29 (ws 2 descent starts, K 6, acc 0 pw 0.2, kicks 2, kpick 4, cross 5, relink 20, restart 200); final four #29 0.999133, #14 0.999051, DEFAULT 0.998802, B20_R89 0.998486. Targets (descriptive): at 10 s B20_R89 config ahead of PASMaxSAT-c and DeepDist on every host but one tie"
+      },
+      "B20_R96": {
+        "commits": [],
+        "result": "Engineering: autonomy layer (studygen, loop, qet, archive, adversary), tfxw-v2 (pinned 9e674217...eab9; verified), cell v2 (quality-at-equal-time studies, per-domain caps), bounds_large (fractional Mantel clique packing with column generation, exactly re-checked). Tests (13). GV4 test designed; GV6 not started"
       }
     },
     "open_after_b20_r5": [

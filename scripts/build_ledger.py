@@ -608,7 +608,8 @@ WORKSTREAMS = {
              'src/genesis/graphs_large.py', 'src/genesis/candidates_large.py', 'src/genesis/candidate_kinds/tfxw.py',
              'src/genesis/candidate_kinds/native/tfxw.c', 'src/genesis/candidate_kinds/maxsat_large.py',
              'scripts/b20r94_build_tfxw.py', 'scripts/b20r95_configure_tfxw.py',
-             'evidence/configure_tfxw_b20r95/summary.json'],
+             'evidence/configure_tfxw_b20r95/summary.json', 'src/genesis/candidate_kinds/tfxw2.py',
+             'src/genesis/candidate_kinds/native/tfxw2.c', 'scripts/b20r96_build_tfxw2.py', 'src/genesis/bounds_large.py'],
             [G + 'test_evaluator_readiness.py', G + 'test_redteam_b16.py', G + 'test_candidate_adapters.py',
              G + 'test_candidate_custody.py', G + 'test_statement_custody.py', G + 'test_candidates_v2.py',
              G + 'test_wiring_v5.py', G + 'test_maxcut_tabu.py', G + 'test_physics_kinds.py',
@@ -703,9 +704,11 @@ WORKSTREAMS = {
              'evidence/learning_b20/w20/rows.json', 'src/genesis/adaptation/receptors.py',
              'src/genesis/adaptation/ledger.py', 'src/genesis/adaptation/design.py',
              'src/genesis/adaptation/checkpoint.py', 'scripts/b20r93_cell.py',
-             'evidence/adaptation_cell_b20r93/ledger.json', 'docs/CAVEATS.md'],
+             'evidence/adaptation_cell_b20r93/ledger.json', 'docs/CAVEATS.md', 'src/genesis/autonomy/loop.py',
+             'src/genesis/autonomy/studygen.py', 'src/genesis/autonomy/qet.py', 'src/genesis/autonomy/archive.py',
+             'src/genesis/autonomy/adversary.py', 'docs/AUTONOMY.md'],
             ['tests_formal/test_learning.py', 'tests_formal/test_learning_partitions.py',
-             G + 'test_adaptation_cell.py']),
+             G + 'test_adaptation_cell.py', G + 'test_autonomy.py']),
     'W21': ('Better-improver and multigeneration controller (B20_R2: pure lineage validator; B20_R4: the campaign '
             'loop writes native lineage records, crash/resume charges interrupted attempts, the custodian checks '
             'generation requests against the qualifying chain; B20_R16: active-version pointer, rollback, inherited '

@@ -24,6 +24,7 @@ beyond n = 63, it is a study of `genesis.autonomy.qet` in the large domain; this
 import json
 import math
 from pathlib import Path
+import pprint
 import re
 
 PLANTED = {'p_in': 0.8, 'p_out': 0.06}
@@ -104,7 +105,7 @@ def qet_design(cell_design, plan, root, batch, *, budget=None):
     return {'study': f'B20_R{batch}', 'domain': 'triangle_free_large_v1', 'cells': cells, 'per_cell': per_cell,
             'host_seed': seed, 'focal': focal, 'extra': extra, 'champions': champions, 'budget': float(b),
             'focal_short': [float(b) / 10], 'probes': probes, 'looks': looks, 'alpha': ALPHA, 'delta': DELTA,
-            'boot': BOOT, 'boot_seed': seed + 9, 'bound_seconds': 30,
+            'boot': BOOT, 'boot_seed': seed + 9, 'bound_seconds': 60,
             'later_budgets': [x for x in longs if x != b],
             'asked_by': {k: v for k, v in plan.get('chosen', {}).items()}}
 
@@ -128,7 +129,6 @@ paired bootstrap of mean score differences at level 1 - {alpha} / {n_looks} at e
 
 **What it decides.** Nothing about packages, rules or comparators. **Status.** A DEV diagnostic; licenses nothing.
 """
-import json
 from pathlib import Path
 import sys
 
@@ -137,7 +137,7 @@ sys.path.insert(0, str(ROOT / 'src'))
 
 from genesis.autonomy import qet  # noqa: E402
 
-DESIGN = json.loads(r'''{design}''')
+DESIGN = {design}
 
 
 def main(argv=None):
@@ -162,6 +162,6 @@ def write_script(design, path, *, title, why, expectation):
         alpha=design['alpha'], n_looks=len(design['looks']), looks=', '.join(map(str, design['looks'])),
         delta=design['delta'], bound=design['bound_seconds'],
         later=', '.join(f'{b:g} s' for b in design['later_budgets']) or 'none', expectation=expectation,
-        design=json.dumps(design, indent=1, sort_keys=True))
+        design=pprint.pformat(design, width=110, sort_dicts=True))
     Path(path).write_text(text)
     return text

@@ -16,15 +16,19 @@ since every edge contributes at most 1 - sum_{C ∋ e} y_C outside the cliques a
 sum_C y_C ex(C). A triangle gives 1 per 3 edges; K5 and K6 give 0.4 per edge; K8 3/7; large cliques approach 1/2, which
 is what dense random hosts need (their best triangle-free subgraphs keep about half the edges).
 
-How. Cliques are grown greedily at random from every edge (neighbour bitsets), the packing weights are found by a
-linear program (scipy's HiGHS) or, as a fallback, by proportional scaling (each clique scaled by its most loaded
-edge: always feasible, monotone), and then rounded down to integers over a common denominator so the certificate
+How. Cliques are grown greedily at random from every edge (neighbour bitsets), with up to three triangles through
+each edge; the packing weights are found by a linear program (scipy's HiGHS, interior point) with column generation:
+after each solve, cliques are grown greedily against the edge duals and added while their reduced cost is positive
+(Gilmore and Gomory's method for cutting-stock LPs, 1961); if no solver is available the weights come from
+proportional scaling (each clique scaled by its most loaded edge: always feasible, monotone). They are then rounded
+down to integers over a common denominator so the certificate
 is checked exactly in integers: every set is a clique of the host, every edge's load is at most the denominator, and
 the bound is floor((m D - sum_C k_C (e(C) - ex(C))) / D).
 """
 import random
 
 DENOMINATOR = 1 << 20
+TRIANGLES_PER_EDGE = 3
 
 
 def mantel(k):
@@ -81,7 +85,8 @@ def _gain(c):
     return k * (k - 1) // 2 - mantel(k)
 
 
-def _lp_weights(task, cliques, index, seconds):
+def _lp(task, cliques, index, seconds):
+    """The packing LP over `cliques` (scipy's HiGHS interior point): (weights, edge duals) or (None, None)."""
     import numpy as np
     from scipy.optimize import linprog
     from scipy.sparse import csc_matrix
@@ -92,11 +97,65 @@ def _lp_weights(task, cliques, index, seconds):
         cols.extend([j] * len(es))
     A = csc_matrix((np.ones(len(rows)), (rows, cols)), shape=(len(task.edges), len(cliques)))
     gains = np.array([_gain(c) for c in cliques], dtype=float)
-    res = linprog(-gains, A_ub=A, b_ub=np.ones(len(task.edges)), bounds=(0, None), method='highs',
-                  options={'time_limit': float(seconds)})
-    if res.x is None:
-        return None
-    return [max(0.0, float(x)) for x in res.x]
+    res = linprog(-gains, A_ub=A, b_ub=np.ones(len(task.edges)), bounds=(0, None), method='highs-ipm',
+                  options={'time_limit': max(1.0, float(seconds))})
+    if res.x is None or res.status != 0:
+        return None, None
+    return [max(0.0, float(x)) for x in res.x], [max(0.0, -float(x)) for x in res.ineqlin.marginals]
+
+
+def _price(task, nb, index, dual, rng, starts, max_size):
+    """Column generation's pricing step: from each start edge, grow a clique greedily by the vertex that most
+    increases gain(C) - sum of the duals of C's edges; keep cliques whose reduced cost is positive."""
+    out = []
+    for u, v in starts:
+        members, cand = [u, v], nb[u] & nb[v]
+        red = -dual[index[(u, v)]]
+        while cand and len(members) < max_size:
+            best, best_w = None, None
+            c = cand
+            k = len(members)
+            dg = (k * (k + 1) // 2 - mantel(k + 1)) - (k * (k - 1) // 2 - mantel(k))   # gain added by vertex k+1
+            while c:
+                low = c & -c
+                w = low.bit_length() - 1
+                c ^= low
+                cost = sum(dual[index[(min(w, x), max(w, x))]] for x in members)
+                val = dg - cost + 1e-9 * rng.random()
+                if best is None or val > best:
+                    best, best_w = val, w
+            members.append(best_w)
+            cand &= nb[best_w]
+            red += best
+            if len(members) >= 3 and red > 1e-6:
+                out.append(tuple(sorted(members)))
+    return out
+
+
+def _colgen(task, cliques, index, seconds, seed, max_size):
+    import time
+    rng = random.Random(seed)
+    nb = _nb(task)
+    start = time.monotonic()
+    pool = set(cliques)
+    y, dual = None, None
+    rounds = 0
+    while True:
+        left = seconds - (time.monotonic() - start)
+        if left <= 1:
+            break
+        cl = sorted(pool)
+        y2, d2 = _lp(task, cl, index, left)
+        if y2 is None:
+            break
+        y, dual, cols = y2, d2, cl
+        rounds += 1
+        starts = rng.sample(list(task.edges), min(len(task.edges), 400))
+        new = [c for c in _price(task, nb, index, dual, rng, starts, max_size) if c not in pool]
+        if not new:
+            break
+        pool.update(new)
+    return (y, cols, rounds) if y is not None else (None, None, rounds)
 
 
 def _scaling_weights(task, cliques, index, rounds=60):
@@ -112,18 +171,35 @@ def _scaling_weights(task, cliques, index, rounds=60):
     return y
 
 
-def clique_packing_bound(task, seconds=60, seed=0, tries_per_edge=2, max_size=16, use_lp=True):
-    """{'upper', 'cliques', 'weights', 'denominator', 'method'}; the certificate re-checks with `check`."""
+def clique_packing_bound(task, seconds=60, seed=0, tries_per_edge=None, max_size=16, use_lp=True):
+    """{'upper', 'cliques', 'weights', 'denominator', 'method'}; the certificate re-checks with `check`. The start
+    pool is smaller on large hosts (one grown clique and one triangle per edge above 5,000 edges) so the first LP
+    solves within the time; column generation adds what helps."""
     index = _edge_index(task)
+    big = len(task.edges) > 5000
+    tries_per_edge = tries_per_edge if tries_per_edge is not None else (1 if big else 2)
+    per_edge = 1 if big else TRIANGLES_PER_EDGE
     cliques = grow_cliques(task, tries_per_edge, max_size, seed)
     m = len(task.edges)
     if not cliques:
         return {'upper': m, 'cliques': [], 'weights': [], 'denominator': DENOMINATOR, 'method': 'no-triangle'}
+    # every host triangle through each edge, up to TRIANGLES_PER_EDGE of them: triangles fill what cliques leave
+    nb = _nb(task)
+    pool = set(cliques)
+    for u, v in task.edges:
+        c, k = nb[u] & nb[v], 0
+        while c and k < per_edge:
+            w = (c & -c).bit_length() - 1
+            c &= c - 1
+            pool.add(tuple(sorted((u, v, w))))
+            k += 1
+    cliques = sorted(pool)
     y, method = None, None
     if use_lp:
         try:
-            y = _lp_weights(task, cliques, index, seconds)
-            method = 'mantel-clique-packing-lp'
+            y, cols, rounds = _colgen(task, cliques, index, seconds, seed, max_size)
+            if y is not None:
+                cliques, method = cols, f'mantel-clique-packing-lp-colgen-{rounds}'
         except Exception:                   # no solver or a solver failure: fall back, never guess
             y = None
     if y is None:
@@ -148,6 +224,21 @@ def clique_packing_bound(task, seconds=60, seed=0, tries_per_edge=2, max_size=16
             'denominator': DENOMINATOR, 'method': method}
     cert['upper'] = check(task, cert)
     return cert
+
+
+def best_bound(task, seconds=60, seed=0):
+    """The better of the clique-packing bound and B20_R94's edge-disjoint triangle packing, each re-checked:
+    {'upper', 'method', 'certificate'}."""
+    from .graphs_large import check_packing, triangle_packing_bound
+    tri = triangle_packing_bound(task)
+    tri_upper = check_packing(task, tri['packing'])
+    try:
+        cl = clique_packing_bound(task, seconds=seconds, seed=seed)
+    except Exception:
+        cl = None
+    if cl is not None and check(task, cl) <= tri_upper:
+        return {'upper': cl['upper'], 'method': cl['method'], 'certificate': cl}
+    return {'upper': tri_upper, 'method': tri['method'], 'certificate': {'packing': tri['packing']}}
 
 
 def check(task, cert):

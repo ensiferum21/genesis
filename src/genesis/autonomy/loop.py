@@ -60,7 +60,8 @@ def propose(root, batch, today=None, title=None):
     expectation = ('The adaptation cell predicts that this design resolves SATURATION and SIZE_CAP (instances where '
                    'values, not only times, separate the methods) and narrows UNCERTIFIED_TARGETS (a certified bound '
                    'per host). From the development looks (B20_R94: on one G(256, 0.5) host the system\'s method at '
-                   '1-3 s found more than every champion at 30 s), the builder expects FOCAL_BETTER_THAN_EVERY_CHAMPION '
+                   '1-3 s found more than every champion at 30 s), the builder expects '
+                   'FOCAL_BETTER_THAN_EVERY_CHAMPION '
                    'and FOCAL_BETTER_THAN_VBS at the main budget, and the method at a tenth of the budget also better '
                    'than the VBS on the dense hosts; on the planted hosts, where the dense half is small, the margin '
                    'is smaller and EQUIVALENT is possible against the strongest champions.')
@@ -83,7 +84,8 @@ def preregister(root, script, message):
     digest = sha256(script)
     ledger = root / 'docs' / 'PREREGISTRATIONS.md'
     if not ledger.exists():
-        ledger.write_text('# Preregistrations written by the research loop\n\n| Script | SHA-256 | Date |\n|---|---|---|\n')
+        ledger.write_text('# Preregistrations written by the research loop\n\n'
+                          '| Script | SHA-256 | Date |\n|---|---|---|\n')
     rel = Path(script).resolve().relative_to(root.resolve())
     with ledger.open('a') as fh:
         fh.write(f'| `{rel}` | `{digest}` | {datetime.date.today().isoformat()} |\n')
