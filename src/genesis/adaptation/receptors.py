@@ -230,10 +230,20 @@ def invalid_run(study, catalog=None, cap=None):
     return [Caveat('INVALID_RUN', study.profile.study, {'labels': inv, 'focal': study.profile.focal})] if inv else []
 
 
+PLANNED_PAUSE = '): paused after '      # qet.main's line when a time slice ends on purpose (B20_R96)
+
+
 def interruption(study, catalog=None, cap=None):
+    """A study that started again without having paused on purpose. Each start after the first is an interruption
+    unless a planned pause (a time slice that ended between hosts, `genesis.autonomy.qet`) came before it: pausing and
+    resuming is the answer to INTERRUPTED, not a new case of it (B20_R97)."""
     starts = study.run_log.count('pinned to CPU')
-    if starts > 1:
-        return [Caveat('INTERRUPTED', study.profile.study, {'starts_in_run_log': starts})]
+    planned = study.run_log.count(PLANNED_PAUSE)
+    if starts - 1 - planned > 0:
+        ev = {'starts_in_run_log': starts}
+        if planned:
+            ev['planned_pauses'] = planned
+        return [Caveat('INTERRUPTED', study.profile.study, ev)]
     return []
 
 

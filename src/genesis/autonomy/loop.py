@@ -33,7 +33,10 @@ def _cell(root, today, budget_s=None):
     return design, plan, check(design, led, catalog=catalog, today=today), led
 
 
-def _why(plan, led):
+def _why(plan, led, sd=None):
+    """The cell's reasons, each with how the study `sd` carries it out (`studygen.implementation`)."""
+    from . import studygen
+    how = studygen.implementation(sd) if sd else {}
     parts = []
     for key, resp in plan['chosen'].items():
         if key == 'ANTICIPATED_INTERRUPTION':
@@ -41,14 +44,21 @@ def _why(plan, led):
                          'decided')
             continue
         e = led.open().get(key, {})
-        parts.append(f"{key} ({e.get('status', '?')}, last seen in {e.get('study', '?')}) is answered by {resp}")
+        here = f' (here: {how[resp]})' if resp in how else ''
+        parts.append(f"{key} ({e.get('status', '?')}, last seen in {e.get('study', '?')}) is answered by {resp}{here}")
     if plan.get('over_budget'):
-        parts.append('the whole design is over the cell\'s cost limit, so its budgets are staged: '
-                     + plan['over_budget'])
+        cost = studygen.estimate_seconds(sd) if sd else None
+        parts.append('the cell\'s whole design is over its cost limit, so its budgets are staged: '
+                     + plan['over_budget']
+                     + (f"; this study, staged, is estimated at {cost['all_hosts_s']} s if it runs every host"
+                        if cost else ''))
     return '; '.join(parts) + '.'
 
 
-def propose(root, batch, today=None, title=None):
+def propose(root, batch, today=None, title=None, disclosure=None):
+    """The next study: writes scripts/b20r{batch}_qet_large.py (and its .proposal.json) and returns the proposal.
+    `disclosure`: what the builder looked at before preregistering (rehearsals, development looks), stated in the
+    script."""
     from . import studygen
     today = today or datetime.date.today().isoformat()
     design, plan, chk, led = _cell(root, today)
@@ -62,11 +72,19 @@ def propose(root, batch, today=None, title=None):
                    'per host). From the development looks (B20_R94: on one G(256, 0.5) host the system\'s method at '
                    '1-3 s found more than every champion at 30 s), the builder expects '
                    'FOCAL_BETTER_THAN_EVERY_CHAMPION '
-                   'and FOCAL_BETTER_THAN_VBS at the main budget, and the method at a tenth of the budget also better '
-                   'than the VBS on the dense hosts; on the planted hosts, where the dense half is small, the margin '
-                   'is smaller and EQUIVALENT is possible against the strongest champions.')
+                   'and FOCAL_BETTER_THAN_VBS at the main budget; on the planted hosts, where the dense half is small, '
+                   'the margin is smaller and equivalence with the strongest champions is possible there (visible in '
+                   'the per-cell means, which carry no label). At a tenth of the budget (short_vs_vbs): '
+                   'FOCAL_BETTER_THAN_VBS or UNRESOLVED; the dense n256 hosts should carry it, while on the others a '
+                   'run of a tenth of the time may fall short of the champions\' best.')
+    if sd.get('extra'):
+        expectation += (' For the extra arms (' + ', '.join(e['arm'] for e in sd['extra']) + '): '
+                        'NO_MEASURABLE_EFFECT expected for most. In B20_R95\'s final round the frozen configuration, '
+                        'DEFAULT and B20_R89\'s were within 0.0007 of anytime score of each other at 1 and 5 s, a third '
+                        'of the margin, and in B20_R96\'s development look the iterated search after the warm starts '
+                        'hardly changed the best on dense hosts; a component that matters would show as HELPS.')
     studygen.write_script(sd, path, title=title or 'quality at equal time against the MaxSAT champions on large hosts',
-                          why=_why(plan, led), expectation=expectation)
+                          why=_why(plan, led, sd), expectation=expectation, disclosure=disclosure)
     proposal = {'batch': batch, 'script': str(path.relative_to(root)), 'design': sd, 'cell_design': design,
                 'plan': plan, 'checkpoint': chk, 'today': today}
     (Path(root) / 'scripts' / f'b20r{batch}_qet_large.proposal.json').write_text(

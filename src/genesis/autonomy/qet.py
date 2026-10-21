@@ -14,10 +14,13 @@ A study is a DESIGN (a dict, embedded in its preregistered script by `studygen`)
   alpha, delta     family-wise error over the looks (Bonferroni) and the equivalence margin of the anytime score
   boot, boot_seed  bootstrap resamples and seed
   bound_seconds    time for the certified clique-packing bound per host (0: none)
+  decide           the comparison groups that must be decided before the study stops (below)
 
 Rows (one per host, written as each finishes; the study resumes from them): every arm's value, run status and metered
 CPU at every budget it runs; probes; the host's best known value (the best of every run); the certified upper bound and
-its certificate's digest.
+its certificate's digest. Next to them, `certificates/<host index>.json.gz` keeps the best known value's witness (the
+edges kept, as a bit mask over the host's sorted edges, and which arm found it) and the bound's certificate (B20_R97),
+so that both can be re-checked from the evidence alone (`check_host_evidence`).
 
 Analysis at each look, on the hosts so far: per host and arm the MaxSAT Evaluation 2026 anytime score
 (best known cost + 1) / (cost + 1) (`genesis.anytime`), and the paired bootstrap of the mean score difference, focal
@@ -32,8 +35,10 @@ minus other, at level 1 - alpha / len(looks), against the margin delta:
     (equivalent), UNRESOLVED;
   * `probe_<arm>`: RESPONDS if the probed champion reaches 95% of the best known value on at least half the probed
     hosts at its home budget, else NO_RESPONSE.
-The study stops at the first look where every focal-versus-champion comparison and the VBS comparison are decided
-(better, worse or equivalent). Validity first: INVALID_CPU_DELIVERY if some arm's median metered CPU at the main budget
+The study stops at the first look where every comparison in the groups the design's `decide` names is decided
+(better, worse or equivalent): 'champions' (every focal-versus-champion comparison), 'vbs', 'extra' (every extra arm);
+without `decide`, champions and vbs (B20_R96). A dedicated ablation names 'extra' so that it does not stop before the
+ablations have the power the cell asked for. Validity first: INVALID_CPU_DELIVERY if some arm's median metered CPU at the main budget
 is below 0.9 of it (the champions' encoding time comes on top, so theirs is higher), INVALID_FAILURES if some arm's
 share of failed runs exceeds 1%; then every label is the invalidity.
 """
@@ -120,15 +125,36 @@ def _value(receipt):
     return None, receipt.get('status', 'FAILED')
 
 
-def run_host(design, task, D, *, isolation='runc', with_probe=False):
+def _mask(task, selected):
+    index = {e: i for i, e in enumerate(task.edges)}
+    m = 0
+    for u, v in selected:
+        m |= 1 << index[(min(u, v), max(u, v))]
+    return format(m, 'x')
+
+
+def unmask(task, hexmask):
+    m = int(hexmask, 16)
+    return [e for i, e in enumerate(task.edges) if m >> i & 1]
+
+
+def run_host(design, task, D, *, isolation='runc', with_probe=False, keep=None, index=None):
+    """One host: every arm, the probes when asked, the bound. With `keep` (a directory), the best witness and the
+    bound's certificate are written to keep/<index>.json.gz and named in the row."""
     from .. import candidates_large as CL
-    runs = {}
+    runs, best = {}, None
+
+    def note(arm, b, r, v):
+        nonlocal best
+        if v is not None and (best is None or v > best[0]):
+            best = (v, arm, b, r['result']['selected'])
     for (arm, b), desc in D.items():
         if any(p['arm'] == arm for p in design.get('probes', ())):
             continue
         r = CL.run(task, desc, seed=run_seed(design, task.task_id, arm, b), isolation=isolation)
         v, st = _value(r)
         runs.setdefault(arm, {})[f'{b:g}'] = {'value': v, 'run': st, 'cpu_ns': r.get('cpu_ns')}
+        note(arm, b, r, v)
     probes = {}
     if with_probe:
         for p in design.get('probes', ()):
@@ -136,10 +162,12 @@ def run_host(design, task, D, *, isolation='runc', with_probe=False):
                        isolation=isolation)
             v, st = _value(r)
             probes[p['arm']] = {'budget_s': p['budget'], 'value': v, 'run': st, 'cpu_ns': r.get('cpu_ns')}
+            note(p['arm'], p['budget'], r, v)
     vals = [x['value'] for a in runs.values() for x in a.values() if x['value'] is not None]
     vals += [x['value'] for x in probes.values() if x['value'] is not None]
     row = {'task_id': task.task_id, 'family': task.family.split(':')[0], 'n': task.n, 'edges': len(task.edges),
            'runs': runs, 'probes': probes, 'best_value': max(vals) if vals else None}
+    cert = None
     if design.get('bound_seconds'):
         from ..bounds_large import best_bound
         cert = best_bound(task, seconds=design['bound_seconds'], seed=run_seed(design, task.task_id, 'bound', 0))
@@ -147,7 +175,45 @@ def run_host(design, task, D, *, isolation='runc', with_probe=False):
                         'certificate_sha256': digest(cert['certificate'])}
         if row['best_value'] is not None and row['best_value'] > cert['upper']:
             raise RuntimeError('a value above the certified bound: the bound or a checker is wrong')
+    if keep is not None:
+        import gzip
+        keep = Path(keep)
+        keep.mkdir(parents=True, exist_ok=True)
+        ev = {'task_id': task.task_id,
+              'witness': None if best is None else {'value': best[0], 'arm': best[1], 'budget_s': best[2],
+                                                    'kept_edges_mask': _mask(task, best[3])},
+              'bound': None if cert is None else {'upper': cert['upper'], 'method': cert['method'],
+                                                  'certificate': cert['certificate']}}
+        name = f'{index:03d}.json.gz'
+        (keep / name).write_bytes(gzip.compress(canonical(ev), mtime=0))
+        row['evidence'] = {'file': f'{keep.name}/{name}', 'sha256': digest(ev)}
     return row
+
+
+def check_host_evidence(task, row, path):
+    """Re-check one host's kept evidence from its data: the witness is a triangle-free subgraph of the host with the
+    best known value; the certificate proves the recorded bound. Returns (value, upper); raises ValueError."""
+    import gzip
+    from ..bounds_large import check as check_cliques
+    from ..graphs_large import check_packing, check_witness
+    ev = json.loads(gzip.decompress(Path(path).read_bytes()))
+    if digest(ev) != row['evidence']['sha256'] or ev['task_id'] != task.task_id:
+        raise ValueError('the kept evidence is not this row\'s')
+    w = ev['witness']
+    kept = unmask(task, w['kept_edges_mask'])
+    chk = check_witness(task, kept)
+    if not chk or len(kept) != w['value'] or w['value'] != row['best_value']:
+        raise ValueError('the witness does not give the best known value')
+    b = ev['bound']
+    if b is None:
+        return w['value'], None
+    c = b['certificate']
+    upper = check_packing(task, c['packing']) if 'packing' in c else check_cliques(task, c)
+    if upper != b['upper'] or upper != row['upper']['value'] or digest(c) != row['upper']['certificate_sha256']:
+        raise ValueError('the certificate does not prove the recorded bound')
+    if w['value'] > upper:
+        raise ValueError('a value above the certified bound')
+    return w['value'], upper
 
 
 # ------------------------------------------------------------------------------------------------- analysis
@@ -210,7 +276,13 @@ def analyse(rows, design, level):
               and r['probes'][p['arm']]['value'] >= 0.95 * r['best_value']]
         key = p['arm'] if p['arm'].startswith('probe_') else f"probe_{p['arm']}"
         labels[key] = 'RESPONDS' if probed and len(ok) * 2 >= len(probed) else 'NO_RESPONSE'
-    decided = all(v in ('A_BETTER', 'B_BETTER', 'EQUIVALENT') for v in vs + [vbs['verdict']])
+    groups = design.get('decide', ('champions', 'vbs'))
+    unknown = set(groups) - {'champions', 'vbs', 'extra'}
+    if unknown:
+        raise ValueError(f'unknown comparison groups in decide: {sorted(unknown)}')
+    need = (vs if 'champions' in groups else []) + ([vbs['verdict']] if 'vbs' in groups else []) \
+        + ([c['verdict'] for c in extra.values()] if 'extra' in groups else [])
+    decided = all(v in ('A_BETTER', 'B_BETTER', 'EQUIVALENT') for v in need)
     wins = sum(1 for r in rows
                if r['runs'][focal][f'{b:g}']['value'] is not None
                and all((r['runs'][a][f'{b:g}']['value'] or -1) < r['runs'][focal][f'{b:g}']['value']
@@ -220,7 +292,22 @@ def analyse(rows, design, level):
                     'mean_scores': {a: round(statistics.mean(_scores(rows, a, b)), 6)
                                     for a in [focal] + [x for x, _ in design['champions']]
                                     + [e['arm'] for e in design.get('extra', ())]},
-                    'vbs_mean_score': round(statistics.mean(_vbs_scores(rows, design)), 6)}
+                    'vbs_mean_score': round(statistics.mean(_vbs_scores(rows, design)), 6),
+                    'by_cell': _by_cell(rows, design)}
+
+
+def _by_cell(rows, design):
+    """Descriptive only (no label): mean anytime scores per family and size, every arm at every budget and the VBS."""
+    out = {}
+    cells = sorted({(r.get('family'), r.get('n')) for r in rows}, key=str)
+    arms = [(design['focal']['arm'], b) for b in [design['budget']] + list(design.get('focal_short', ()))]
+    arms += [(e['arm'], design['budget']) for e in design.get('extra', ())]
+    arms += [(a, design['budget']) for a, _ in design['champions']]
+    for fam, n in cells:
+        sub = [r for r in rows if (r.get('family'), r.get('n')) == (fam, n)]
+        out[f'{fam}:n{n}'] = dict({f'{a}@{b:g}': round(statistics.mean(_scores(sub, a, b)), 6) for a, b in arms},
+                                  hosts=len(sub), vbs=round(statistics.mean(_vbs_scores(sub, design)), 6))
+    return out
 
 
 def validity(rows, design):
@@ -277,7 +364,7 @@ def main(design, out, root, *, slice_s=6600, isolation='runc', one_core=True):
             log(f'time slice used ({slice_s} s): paused after {len(rows)} hosts')
             return PAUSED
         probe = i < max((p['hosts'] for p in design.get('probes', ())), default=0)
-        row = run_host(design, task, D, isolation=isolation, with_probe=probe)
+        row = run_host(design, task, D, isolation=isolation, with_probe=probe, keep=out / 'certificates', index=i)
         rows.append(row)
         with path.open('a') as fh:
             fh.write(json.dumps(row, sort_keys=True) + '\n')

@@ -9,8 +9,10 @@ beyond n = 63, it is a study of `genesis.autonomy.qet` in the large domain; this
   * the budget: the cell's long budgets are staged when the design is over its cost limit (the cell says to split at
     the largest share): this study takes the shortest long budget at least 10 s, the next study the rest;
   * the focal method: the system's newest frozen configuration (the newest `evidence/configure_*/config.json`), and
-    as extra arms the previous generation's frozen configuration (to see whether the generation helped) and, for an
-    unresolved ablation, the focal configuration without each such component;
+    as extra arms the previous generation's frozen configuration (to see whether the generation helped) and, when the
+    cell asks for an ablation, the focal configuration without each component it uses (B20_R92's ablations: no_dsb,
+    no_pt, no_cross, no_relink_restart; a component the configuration already has off gives no arm) and the engine's
+    first design (its DEFAULT); then the study does not stop before those comparisons are decided too (`decide`);
   * the champions: every leading solver the design names, plus the rest of the 13 pinned ones (they are cheap at this
     budget relative to what an exclusion would cost in credibility), each as an arm;
   * probes: the design's probes (a champion at its home budget on a few hosts);
@@ -18,8 +20,8 @@ beyond n = 63, it is a study of `genesis.autonomy.qet` in the large domain; this
     score: the 2026 ranking's adjacent entrants differ by about 0.003); 4,000 bootstrap resamples;
   * seeds: a block of ten, 2026NNk1 .. 2026NNk1 + 9 for batch NN, that no script in the tree has used (checked here
     and by the tests);
-  * the script: the design embedded as JSON, a docstring that states what the cell asked for and why, and the call
-    to `qet.main`. The builder commits it and sends its SHA-256 before it runs (the membrane), as for every study.
+  * the script: the design embedded as JSON, a docstring that states what the cell asked for, how this study answers
+    each request (`implementation`) and what it costs (`estimate_seconds`), and the call to `qet.main`. The builder commits it and sends its SHA-256 before it runs (the membrane), as for every study.
 """
 import json
 import math
@@ -30,6 +32,11 @@ import re
 PLANTED = {'p_in': 0.8, 'p_out': 0.06}
 ERDOS_P = 0.5
 DELTA, ALPHA, BOOT = 0.002, 0.10, 4000
+# B20_R92's ablations of the system's method, each switching one component off (the same keys in tfx-v1 and tfxw-v1)
+ABLATIONS = (('no_dsb', {'ws': 2}), ('no_pt', {'acc': 0}), ('no_cross', {'cross': 0}),
+             ('no_relink_restart', {'relink': 0, 'restart': 0}))
+RUN_OVERHEAD_S = 0.35      # per run (the cell's metabolism model, B20_R93: 0.3495 s measured)
+ENCODING_S = 2.0           # a champion's encoding of a G(256, 0.5) host: 1.2 s of Python measured (B20_R94), rounded up
 SOLVER_ARMS = {'pasmaxsat-c': 'pasmaxsat', 'sgat-nuwls-c': 'sgat', 'aperture-gbg': 'aperture_gbg',
                'nuwls-c-2026-ub': 'nuwls26ub', 'aperture-kbg': 'aperture_kbg', 'aperture-ibi': 'aperture_ibi',
                'deepdist-c': 'deepdistc', 'nuwls-c-2026': 'nuwls26', 'deepdist': 'deepdist',
@@ -90,6 +97,16 @@ def qet_design(cell_design, plan, root, batch, *, budget=None):
         old = dict(c_old, kpick=1) if k_old == 'tfx-v1' else dict(c_old)
         if old != config:
             extra.append({'arm': 'previous_generation', 'kind': 'tfxw-v1', 'config': old, 'from': p_old})
+    already_off = []
+    if cell_design.get('ablation'):
+        from ..candidate_kinds import tfxw as TW
+        variants = [(name, dict(config, **change), f'{path} with {change}') for name, change in ABLATIONS]
+        variants.append(('first_design', dict(TW.DEFAULT), 'tfxw-v1 DEFAULT'))
+        for name, cfg, src in variants:
+            if cfg == config:
+                already_off.append(name)
+            elif all(cfg != e['config'] for e in extra):
+                extra.append({'arm': name, 'kind': 'tfxw-v1', 'config': cfg, 'from': src})
     champions = sorted({SOLVER_ARMS[k] for k in cell_design.get('competitors', ()) if k in SOLVER_ARMS}
                        | set(SOLVER_ARMS.values()))
     champions = [[a, next(k for k, v in SOLVER_ARMS.items() if v == a)] for a in champions]
@@ -107,7 +124,47 @@ def qet_design(cell_design, plan, root, batch, *, budget=None):
             'focal_short': [float(b) / 10], 'probes': probes, 'looks': looks, 'alpha': ALPHA, 'delta': DELTA,
             'boot': BOOT, 'boot_seed': seed + 9, 'bound_seconds': 60,
             'later_budgets': [x for x in longs if x != b],
+            'decide': ['champions', 'vbs'] + (['extra'] if cell_design.get('ablation') and extra else []),
+            'components_already_off': already_off,
             'asked_by': {k: v for k, v in plan.get('chosen', {}).items()}}
+
+
+def estimate_seconds(design):
+    """{'per_host_s', 'first_look_s', 'all_hosts_s'}: budgets plus the measured per-run overhead, a champion's
+    encoding, the bound's time limit and the probes (an estimate: the bound often finishes sooner)."""
+    b = design['budget']
+    own = [b] * (1 + len(design.get('extra', ()))) + list(design.get('focal_short', ()))
+    per_host = (sum(x + RUN_OVERHEAD_S for x in own) + len(design['champions']) * (b + ENCODING_S + RUN_OVERHEAD_S)
+                + design.get('bound_seconds', 0))
+    probes = sum(p['hosts'] * (p['budget'] + ENCODING_S + RUN_OVERHEAD_S) for p in design.get('probes', ()))
+    hosts = design['per_cell'] * len(design['cells'])
+    return {'per_host_s': round(per_host, 1), 'first_look_s': round(per_host * design['looks'][0] + probes),
+            'all_hosts_s': round(per_host * hosts + probes)}
+
+
+def implementation(design):
+    """How this study carries out each response the cell chose: {response: text}."""
+    hosts = design['per_cell'] * len(design['cells'])
+    extras = [e['arm'] for e in design.get('extra', ())]
+    probes = ', '.join(f"{p['arm']} at {p['budget']:g} s on {p['hosts']} hosts" for p in design.get('probes', ()))
+    later = ', '.join(f'{x:g} s' for x in design.get('later_budgets', ())) or 'none'
+    off = ', '.join(design.get('components_already_off', ())) or 'none'
+    return {
+        'quality_at_equal_time_on_larger_instances': 'values at equal time on n = '
+        + ', '.join(sorted({str(p['n']) for _, p in design['cells']}, key=int)),
+        'extend_domain': 'the large domain (triangle_free_large_v1, n <= 1023)',
+        'longer_certification': f"a certified bound per host ({design.get('bound_seconds', 0)} s)",
+        'upper_bounds': f"a certified bound per host ({design.get('bound_seconds', 0)} s)",
+        'probe_at_home_budget': probes or 'no probe',
+        'add_home_budgets': f"the {design['budget']:g} s budget here; {later} left for the next study (staged)",
+        'sequential_stopping': 'interim looks at ' + ', '.join(map(str, design['looks'])) + ' hosts',
+        'resumable_design': 'pauses before the background limit and resumes from its rows',
+        'more_hosts': f'{hosts} fresh hosts',
+        'dedicated_ablation_with_more_power': (f"extra arms {', '.join(extras)} on every host, and the study does not "
+                                               "stop before they are decided; components the focal configuration "
+                                               f"already has off: {off}")
+        if 'extra' in design.get('decide', ()) else 'not carried out by this study (no ablation arm)',
+    }
 
 
 TEMPLATE = '''#!/usr/bin/env python3
@@ -123,10 +180,12 @@ runc sandbox through `candidates_large`; the system's method ({focal_kind}, `{fo
 encoding); extra arms {extra}; probes {probes}. The analysis, labels, validity rule and stopping rule are
 `genesis.autonomy.qet`'s (its docstring): the MaxSAT Evaluation 2026 anytime score against each host's best known value,
 paired bootstrap of mean score differences at level 1 - {alpha} / {n_looks} at each look ({looks} hosts), margin
-{delta}; a certified clique-packing bound per host ({bound} s). Budgets left for a later study: {later}.
+{delta}; a certified clique-packing bound per host ({bound} s). The study stops at the first look where the
+comparisons named in `decide` ({decide}) are decided. Budgets left for a later study: {later}. **Cost (estimate):** about
+{per_host:g} s per host; about {first_look} s if it stops at the first look, {all_hosts} s if it runs every host.
 
 **Expectation, stated before running.** {expectation}
-
+{disclosure}
 **What it decides.** Nothing about packages, rules or comparators. **Status.** A DEV diagnostic; licenses nothing.
 """
 from pathlib import Path
@@ -150,7 +209,7 @@ if __name__ == '__main__':
 '''
 
 
-def write_script(design, path, *, title, why, expectation):
+def write_script(design, path, *, title, why, expectation, disclosure=None):
     text = TEMPLATE.format(
         study=design['study'], title=title, script=f'scripts/{Path(path).name}', why=why,
         n_hosts=design['per_cell'] * len(design['cells']),
@@ -162,6 +221,9 @@ def write_script(design, path, *, title, why, expectation):
         alpha=design['alpha'], n_looks=len(design['looks']), looks=', '.join(map(str, design['looks'])),
         delta=design['delta'], bound=design['bound_seconds'],
         later=', '.join(f'{b:g} s' for b in design['later_budgets']) or 'none', expectation=expectation,
+        disclosure=f'\n**Disclosed before running.** {disclosure}\n' if disclosure else '',
+        decide=', '.join(design.get('decide', ('champions', 'vbs'))),
+        **{k[:-2]: v for k, v in estimate_seconds(design).items()},
         design=pprint.pformat(design, width=110, sort_dicts=True))
     Path(path).write_text(text)
     return text

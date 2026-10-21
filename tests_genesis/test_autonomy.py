@@ -14,6 +14,7 @@ ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / 'src'))
 
 from genesis import bounds_large as B                                   # noqa: E402
+from genesis.common import canonical                                     # noqa: E402
 from genesis.autonomy import adversary as ADV, archive as AR, qet as Q, studygen as SG   # noqa: E402
 from genesis.models_large import LargeGraphTask                          # noqa: E402
 
@@ -144,6 +145,22 @@ class QETStudy(unittest.TestCase):
                 self.assertLessEqual(r['best_value'], r['upper']['value'])
                 self.assertEqual(set(r['runs']), {'tfxw', 'kp4', 'deepdist', 'pasmaxsat'})
             self.assertIn('probe_deepdistc', rows[0]['probes'])
+            # the kept evidence re-checks from its data: witness and certificate
+            hosts = [LargeGraphTask.model_validate_json(canonical(t))
+                     for t in json.loads((Path(out) / 'hosts.json').read_text())['tasks']]
+            for i, r in enumerate(rows):
+                self.assertEqual(r['evidence']['file'], f'certificates/{i:03d}.json.gz')
+                v, up = Q.check_host_evidence(hosts[i], r, Path(out) / r['evidence']['file'])
+                self.assertEqual((v, up), (r['best_value'], r['upper']['value']))
+            import gzip
+            f = Path(out) / rows[0]['evidence']['file']
+            ev = json.loads(gzip.decompress(f.read_bytes()))
+            ev['witness']['value'] += 1
+            f.write_bytes(gzip.compress(json.dumps(ev).encode()))
+            with self.assertRaises(ValueError):
+                Q.check_host_evidence(hosts[0], rows[0], f)
+            with self.assertRaises(ValueError):                           # another host's evidence
+                Q.check_host_evidence(hosts[1], rows[1], Path(out) / rows[0]['evidence']['file'])
             # resumes: a second call finds the rows and the summary unchanged in substance
             self.assertEqual(Q.main(d, out, root, isolation='process', one_core=False), 0)
 
@@ -163,15 +180,41 @@ class QETStudy(unittest.TestCase):
             rows.append({'edges': m, 'best_value': 600, 'runs': {'tfxw': {'0.3': {'value': 600}},
                                                                  'c1': {'0.3': {'value': 560 + i % 3}},
                                                                  'c2': {'0.3': {'value': 550}}}})
+        for i, r in enumerate(rows):
+            r.update(family='erdos' if i % 2 else 'planted_cluster', n=128)
         labels, det = Q.analyse(rows, d, 0.9)
         self.assertEqual(labels['qet_champions'], 'FOCAL_BETTER_THAN_EVERY_CHAMPION')
         self.assertEqual(labels['qet_vbs'], 'FOCAL_BETTER_THAN_VBS')
         self.assertTrue(det['decided'])
+        self.assertEqual(set(det['by_cell']), {'erdos:n128', 'planted_cluster:n128'})
+        self.assertEqual(det['by_cell']['erdos:n128']['hosts'], 10)
+        self.assertEqual(det['by_cell']['erdos:n128']['tfxw@0.3'], 1.0)
+        self.assertEqual(det['by_cell']['erdos:n128']['c2@0.3'], round(401 / 451, 6))
         for r in rows:
             r['runs']['c1']['0.3']['value'] = 600
         labels, _ = Q.analyse(rows, d, 0.9)
         self.assertEqual(labels['qet_vbs'], 'FOCAL_MATCHES_VBS')
         self.assertEqual(labels['qet_champions'], 'MIXED')               # equivalent to one, better than the other
+
+    def test_decide_groups_govern_the_stop(self):
+        d = dict(tiny_design(), champions=[['c1', 'deepdist']], probes=[], focal_short=[], boot=400,
+                 extra=[{'arm': 'abl', 'kind': 'tfxw-v1', 'config': {}, 'from': 'test'}])
+        rows = []
+        for i in range(20):
+            # the focal method beats the champion clearly; the ablation is noisy around it (unresolved)
+            rows.append({'edges': 1000, 'best_value': 600,
+                         'runs': {'tfxw': {'0.3': {'value': 600 - (i % 2) * 6}}, 'c1': {'0.3': {'value': 550}},
+                                  'abl': {'0.3': {'value': 600 - ((i + 1) % 2) * 6 - (i % 5 == 0) * 3}}}})
+        labels, det = Q.analyse(rows, d, 0.9)
+        self.assertEqual(labels['qet_champions'], 'FOCAL_BETTER_THAN_EVERY_CHAMPION')
+        self.assertEqual(labels['extra_abl'], 'UNRESOLVED')
+        self.assertTrue(det['decided'])                                   # default: champions and vbs only
+        _, det = Q.analyse(rows, dict(d, decide=['champions', 'vbs', 'extra']), 0.9)
+        self.assertFalse(det['decided'])                                  # the ablation is not decided yet
+        _, det = Q.analyse(rows, dict(d, decide=['champions']), 0.9)
+        self.assertTrue(det['decided'])
+        with self.assertRaises(ValueError):
+            Q.analyse(rows, dict(d, decide=['champions', 'typo']), 0.9)
 
 
 class StudyGen(unittest.TestCase):
@@ -193,11 +236,51 @@ class StudyGen(unittest.TestCase):
         self.assertEqual(d['looks'], [19, 38, 56])
         with tempfile.TemporaryDirectory() as tmp:
             path = Path(tmp) / 'b20r97_qet_large.py'
-            SG.write_script(d, path, title='t', why='w', expectation='e')
+            SG.write_script(d, path, title='t', why='w', expectation='e', disclosure='a rehearsal on 4 dev hosts')
+            self.assertIn('**Disclosed before running.** a rehearsal on 4 dev hosts', path.read_text())
             r = subprocess.run([sys.executable, '-c', f'import runpy; m = runpy.run_path({str(path)!r}); '
                                 'import json; print(json.dumps(m["DESIGN"], sort_keys=True))'],
                                capture_output=True, text=True, env={'PYTHONPATH': str(ROOT / 'src'), 'PATH': '/usr/bin:/bin'})
             self.assertEqual(json.loads(r.stdout), json.loads(json.dumps(d)), r.stderr[-500:])
+        self.assertEqual(d['decide'], ['champions', 'vbs'])              # no ablation asked: no ablation arms
+        self.assertTrue(all(e['arm'] == 'previous_generation' for e in d['extra']))
+
+    def test_an_ablation_request_gives_ablation_arms_and_holds_the_stop(self):
+        from genesis.candidate_kinds import tfxw as TW
+        frozen = [x for x in SG.frozen_configs(ROOT) if x[1] == 'tfxw-v1']
+        if not frozen:
+            self.skipTest('no frozen large-graph configuration in this tree yet')
+        cell = {'sizes': [128, 256], 'quality_at_equal_time': True, 'hosts': 54, 'long_budgets': [10.0, 60.0],
+                'competitors': [], 'ablation': {'hosts': 48}}
+        d = SG.qet_design(cell, {'chosen': {'COMPONENT_EFFECT_UNRESOLVED@B20_R92':
+                                            'dedicated_ablation_with_more_power'}}, ROOT, 97)
+        focal = d['focal']['config']
+        arms = {e['arm']: e['config'] for e in d['extra']}
+        for name, change in SG.ABLATIONS:
+            if dict(focal, **change) == focal:
+                self.assertIn(name, d['components_already_off'])
+                self.assertNotIn(name, arms)
+            else:
+                self.assertEqual(arms[name], dict(focal, **change))       # exactly one component switched off
+        if dict(TW.DEFAULT) != focal:
+            self.assertEqual(arms['first_design'], dict(TW.DEFAULT))
+        configs = [canonical(c) for c in arms.values()]
+        self.assertEqual(len(configs), len(set(configs)))                # no two extra arms run the same thing
+        self.assertEqual(d['decide'], ['champions', 'vbs', 'extra'])
+        how = SG.implementation(d)
+        self.assertIn('does not stop before', how['dedicated_ablation_with_more_power'])
+        for a in arms:
+            self.assertIn(a, how['dedicated_ablation_with_more_power'])
+
+    def test_the_cost_estimate(self):
+        d = tiny_design()
+        e = SG.estimate_seconds(d)
+        own = (0.3 + SG.RUN_OVERHEAD_S) * 2 + (0.05 + SG.RUN_OVERHEAD_S)
+        champs = 2 * (0.3 + SG.ENCODING_S + SG.RUN_OVERHEAD_S)
+        self.assertAlmostEqual(e['per_host_s'], round(own + champs + 5, 1))
+        probe = 1 * (0.3 + SG.ENCODING_S + SG.RUN_OVERHEAD_S)
+        self.assertEqual(e['all_hosts_s'], round((own + champs + 5) * 4 + probe))
+        self.assertEqual(e['first_look_s'], round((own + champs + 5) * 2 + probe))
 
 
 class Grammar(unittest.TestCase):
@@ -257,6 +340,24 @@ class CellReadsQET(unittest.TestCase):
             self.assertTrue(d['quality_at_equal_time'] and d['upper_bounds'] and d['ablation'])
             self.assertEqual(d['competitors'], ['deepdist', 'pasmaxsat-c'])
 
+    def test_a_planned_pause_is_not_an_interruption(self):
+        from genesis.adaptation.discovery import discover
+        from genesis.adaptation.receptors import Study, interruption
+        with tempfile.TemporaryDirectory() as root:
+            self.write(root, {'qet_champions': 'MIXED', 'qet_vbs': 'FOCAL_MATCHES_VBS'})
+            log = Path(root) / 'evidence' / 'qet_b20r97' / 'run.log'
+            paused = ('[   0.0s] pinned to CPU 0; design sha256 x\n[6601.0s] time slice used (6600 s): paused after '
+                      '20 hosts\n')
+            log.write_text(paused * 2 + '[   0.0s] pinned to CPU 0; design sha256 x\n[900.0s] labels {}\n')
+            (p,) = discover(root)
+            self.assertEqual(interruption(Study.load(p, root)), [])               # two planned pauses, three starts
+            log.write_text(paused + '[   0.0s] pinned to CPU 0\n[ 50.0s] host 21\n[   0.0s] pinned to CPU 0\n')
+            (c,) = interruption(Study.load(p, root))                             # a start after a kill, not a pause
+            self.assertEqual(c.evidence, {'starts_in_run_log': 3, 'planned_pauses': 1})
+            log.write_text('[   0.0s] pinned to CPU 0\n[ 50.0s] host 1\n[   0.0s] pinned to CPU 0\n')
+            (c,) = interruption(Study.load(p, root))
+            self.assertEqual(c.evidence, {'starts_in_run_log': 2})                # as before B20_R97
+
     def test_saturation_when_every_strong_method_ends_equal(self):
         from genesis.adaptation.discovery import discover
         from genesis.adaptation.receptors import Study, sense
@@ -266,6 +367,65 @@ class CellReadsQET(unittest.TestCase):
             got = {c.type for c in sense(Study.load(p, root), None)}
             self.assertIn('SATURATION', got)
             self.assertNotIn('OUTPERFORMED', got)
+
+
+R97 = ROOT / 'evidence' / 'qet_large_b20r97'
+
+
+@unittest.skipUnless((R97 / 'summary.json').exists(), 'B20_R97 has not run in this tree')
+class ProspectiveB20R97(unittest.TestCase):
+    """Preregistered with B20_R97 (before it ran): what the adaptation cell must conclude when it reads the loop's
+    first study, and how well the study generator knew its cost. Items 1-3 and 6-7 follow from the design and the
+    receptors; 4, 5 and 8 are empirical."""
+
+    @classmethod
+    def setUpClass(cls):
+        from genesis.adaptation.discovery import discover
+        from genesis.adaptation.receptors import Study, sense
+        cls.catalog = json.loads((ROOT / 'src/genesis/adaptation/baselines.json').read_text())
+        cls.profiles = discover(ROOT)
+        cls.profile = next(p for p in cls.profiles if p.study == 'B20_R97')
+        cls.study = Study.load(cls.profile, ROOT)
+        cls.got = {c.type: c for c in sense(cls.study, cls.catalog)}
+
+    def test_1_discovered_last_as_a_study_of_quality_at_equal_time(self):
+        self.assertEqual(self.profiles[-1].study, 'B20_R97')
+        self.assertEqual((self.profile.kind, self.profile.focal), ('qet', 'tfxw'))
+
+    def test_2_planned_pauses_are_not_interruptions(self):
+        log = self.study.run_log
+        if log.count('pinned to CPU') - 1 > log.count('): paused after '):
+            self.skipTest('a restart did not follow a planned pause: INTERRUPTED is then correct')
+        self.assertNotIn('INTERRUPTED', self.got)
+
+    def test_3_no_size_cap_under_the_large_domain(self):
+        self.assertNotIn('SIZE_CAP', self.got)
+
+    def test_4_values_separate_the_methods(self):
+        self.assertNotIn('SATURATION', self.got)          # empirical: on more than 10% of hosts the values differ
+
+    def test_5_targets_stay_uncertified_on_large_hosts(self):
+        c = self.got.get('UNCERTIFIED_TARGETS')           # empirical: bounds above the best known value
+        self.assertIsNotNone(c)
+        self.assertGreater(c.evidence['mean_bound_gap'], 0.01)
+
+    def test_6_the_home_regime_is_still_missing(self):
+        self.assertIn('REGIME_GAP', self.got)             # 10 s here, the champions' home regime is 60 s
+
+    def test_7_the_next_design_asks_for_the_staged_budget(self):
+        from genesis.autonomy import loop
+        design, _, chk, _ = loop._cell(str(ROOT), '2026-10-22')
+        self.assertTrue(chk['pass'])
+        self.assertIn(60.0, design['long_budgets'])
+
+    def test_8_the_generator_knew_its_cost_within_a_quarter(self):
+        from genesis.adaptation.metabolism import observed_wall_s
+        s = json.loads((R97 / 'summary.json').read_text())
+        e = SG.estimate_seconds(s['design'])
+        probes = sum(p['hosts'] * (p['budget'] + SG.ENCODING_S + SG.RUN_OVERHEAD_S) for p in s['design']['probes'])
+        predicted = e['per_host_s'] * s['hosts_run'] + probes
+        observed = observed_wall_s(self.study.run_log)
+        self.assertLess(abs(predicted - observed) / observed, 0.25, (predicted, observed))
 
 
 if __name__ == '__main__':

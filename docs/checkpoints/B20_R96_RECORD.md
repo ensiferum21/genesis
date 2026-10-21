@@ -60,3 +60,32 @@ parents, round trip, mutation inside the space), the adversary, the quality-at-e
 probes, bounds, resume, pause) and its labels on synthetic rows, the study generator (fresh seeds, the embedded design
 round-trips), tfxw-v2's space, and the cell reading a study of quality at equal time (discovery, receptors, design,
 caps, saturation).
+
+## Setup of B20_R97 (the loop's first study; preregistered with this addendum)
+
+The study generator's first proposal, read before preregistering it, did not do everything it said, and the cell would
+have misread the study it was about to run. Fixed first (engineering; no checker, threshold or scorer changed):
+
+- **Ablations.** The cell asked for a dedicated ablation with more power (COMPONENT_EFFECT_UNRESOLVED), the
+  generated docstring said so, and studygen's own docstring promised the frozen configuration without each component;
+  the code compared only the previous generation. It now adds B20_R92's ablations of the frozen configuration
+  (`no_cross`, `no_relink_restart`; `no_dsb` and `no_pt` give no arm because B20_R95's configuration already has
+  them off) and the engine's first design (`tfxw-v1` DEFAULT), and such a study does not stop before those
+  comparisons are decided (`decide`, in `qet`'s docstring). Without that, interim stopping on the champions alone
+  could have ended the ablation at 19 hosts, fewer than the 48 the cell asked for.
+- **What the script says.** Each of the cell's reasons now states how this study carries it out (the 60 s home
+  budget, for example, is left for the next study), with a cost estimate (`studygen.estimate_seconds`) and what the
+  builder looked at before preregistering (`disclosure`).
+- **The cell's reading of pauses.** The interruption receptor counted every restart in a run log as an
+  interruption; a study that pauses on purpose and resumes, the answer to INTERRUPTED, would have been read as a new
+  case of it. A start that follows a planned pause no longer counts (no earlier run log has one, so no earlier reading
+  changes; the 43 cell tests pass).
+- **Evidence that re-checks.** Rows carried only the bound's digest and no witness. Each host now keeps the best
+  value's witness (a bit mask over the host's edges) and the bound's certificate in `certificates/<host>.json.gz`;
+  `qet.check_host_evidence` re-checks both from the data.
+- **Descriptive per-cell means** (family and size) in the summary, carrying no label.
+- **A prospective check on the cell** (`tests_genesis/test_autonomy.py::ProspectiveB20R97`, eight items, declared as
+  a non-mandatory skip until B20_R97 is in the tree): what the cell must conclude when it reads the study, and whether
+  the generator's cost estimate is within a quarter of the observed time.
+- **A rehearsal** of the study's own code path (runc, every arm, the bound, the kept evidence) on four dev-only hosts
+  before preregistration, reported below and disclosed in the script.

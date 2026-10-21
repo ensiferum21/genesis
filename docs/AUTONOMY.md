@@ -10,7 +10,8 @@ itself better", and "use novel ways to solve the system issues".
                  │                               under its own cost model and the membrane
                  ▼
             studygen                             writes the design as a preregistered study script (fresh seeds,
-                 │                               the design embedded, the runner pinned by the tree's identity)
+                 │                               the design embedded, how each request is carried out, a cost
+                 │                               estimate, what was looked at before; the runner pinned by the tree)
                  ▼
             loop.preregister                     commits it; docs/PREREGISTRATIONS.md; the SHA-256 goes to Daniel
                  │                               before anything runs
@@ -39,7 +40,7 @@ What improves at each level:
 | SIZE_CAP | B20_R75 | `models_large`, `graphs_large`, `candidates_large`, `tfxw` (B20_R94) |
 | UNCERTIFIED_TARGETS: certification never got more time, and the n ≤ 63 route does not scale | B20_R75 | a **fractional Mantel clique packing**: weights on cliques with each edge covered at most once give `edges − Σ y_C (e(C) − ⌊k²/4⌋)` as a bound on any triangle-free subgraph; found by a linear program over greedily grown cliques, rounded to integers and re-checked exactly. Large cliques certify close to half the edges, which dense hosts need; triangles certify only a third |
 | INTERRUPTED: the 2-hour limit on background jobs | B20_R81 | studies pause between hosts before the limit and resume from their rows; interim looks stop a study as soon as it is decided |
-| COMPONENT_EFFECT_UNRESOLVED | B20_R92 | comparisons of configurations where there is room to differ (large hosts), each generation against the previous one |
+| COMPONENT_EFFECT_UNRESOLVED | B20_R92 | comparisons of configurations where there is room to differ (large hosts): each generation against the previous one and, when the cell asks for a dedicated ablation, the frozen configuration without each component it uses and the engine's first design; such a study does not stop before those comparisons are decided (`decide`, B20_R97) |
 | ARM_NOT_RESPONDING (DeepDist-c) | B20_R92 | a probe at its home budget (60 s) on a few hosts |
 | over the cost limit | B20_R93 | budgets staged (10 s first, 60 s next) and sequential stopping |
 | GV4 without headroom | B20_R13 | a search space with real room (the operator grammar on large hosts) and an archive that keeps stepping stones |
