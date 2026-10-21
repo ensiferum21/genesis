@@ -87,5 +87,31 @@ class Design(unittest.TestCase):
             R95.check(t, [(tri[0], tri[1]), (tri[1], tri[2]), (tri[0], tri[2])])
 
 
+
+class RecordB20R95(unittest.TestCase):
+    def test_the_race_follows_from_its_evaluations(self):
+        import statistics
+        d = ROOT / 'evidence' / 'configure_tfxw_b20r95'
+        s = json.loads((d / 'summary.json').read_text())
+        tg = json.loads((d / 'targets.json').read_text())['targets']
+        hosts = json.loads((d / 'hosts.json').read_text())['tasks']
+        race = [json.loads(l) for l in (d / 'race.jsonl').read_text().splitlines() if l.strip()]
+        self.assertEqual(len(race), s['evaluations'])
+        sc = {}
+        for r in race:
+            m = len(hosts[r['host']]['edges'])
+            t = tg[hosts[r['host']]['task_id']]
+            self.assertAlmostEqual(r['score'], statistics.mean((m - t + 1) / (m - v + 1) for v in r['values']))
+            sc[(r['config'], r['host'], r['seed'])] = r['score']
+        alive = list(range(64))
+        for ri, (nh, ns, keep) in enumerate(R95.ROUNDS):
+            mean = {c: statistics.mean(sc[(c, h, k)] for h in range(nh) for k in range(ns)) for c in alive}
+            alive = sorted(alive, key=lambda c: (-mean[c], c))[:keep]
+            self.assertEqual(alive, s['rounds'][ri]['kept'])
+        self.assertEqual(s['frozen_index'], 29)
+        self.assertEqual(json.loads((d / 'config.json').read_text())['config'], R95.configurations()[29])
+        self.assertEqual((s['r89_rank_in_round_0'], s['default_rank_in_round_0']), (9, 3))
+
+
 if __name__ == '__main__':
     unittest.main()
