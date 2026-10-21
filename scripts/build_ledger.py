@@ -706,7 +706,8 @@ WORKSTREAMS = {
              'src/genesis/adaptation/checkpoint.py', 'scripts/b20r93_cell.py',
              'evidence/adaptation_cell_b20r93/ledger.json', 'docs/CAVEATS.md', 'src/genesis/autonomy/loop.py',
              'src/genesis/autonomy/studygen.py', 'src/genesis/autonomy/qet.py', 'src/genesis/autonomy/archive.py',
-             'src/genesis/autonomy/adversary.py', 'docs/AUTONOMY.md'],
+             'src/genesis/autonomy/adversary.py', 'docs/AUTONOMY.md', 'evidence/qet_large_b20r97/summary.json',
+             'evidence/adaptation_cell_b20r97/ledger.json'],
             ['tests_formal/test_learning.py', 'tests_formal/test_learning_partitions.py',
              G + 'test_adaptation_cell.py', G + 'test_autonomy.py']),
     'W21': ('Better-improver and multigeneration controller (B20_R2: pure lineage validator; B20_R4: the campaign '

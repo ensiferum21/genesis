@@ -428,5 +428,78 @@ class ProspectiveB20R97(unittest.TestCase):
         self.assertLess(abs(predicted - observed) / observed, 0.25, (predicted, observed))
 
 
+@unittest.skipUnless((R97 / 'summary.json').exists(), 'B20_R97 has not run in this tree')
+class RecordB20R97(unittest.TestCase):
+    """The record of B20_R97 on its evidence: the preregistered script unchanged, the labels and the stop follow from
+    the rows, validity, and every host's witness and bound re-check from the kept data."""
+
+    @classmethod
+    def setUpClass(cls):
+        cls.s = json.loads((R97 / 'summary.json').read_text())
+        cls.rows = [json.loads(l) for l in (R97 / 'rows.jsonl').read_text().splitlines() if l.strip()]
+        cls.hosts = [LargeGraphTask.model_validate_json(canonical(t))
+                     for t in json.loads((R97 / 'hosts.json').read_text())['tasks']]
+
+    def test_the_preregistered_script_and_design(self):
+        import hashlib
+        import runpy
+        script = ROOT / 'scripts' / 'b20r97_qet_large.py'
+        digest = hashlib.sha256(script.read_bytes()).hexdigest()
+        self.assertEqual(digest, '892b5a11c8f4ccc921e4548b3adb75314c931bd089dab4d231f54920c3407d58')
+        self.assertIn(digest, (ROOT / 'docs' / 'PREREGISTRATIONS.md').read_text())
+        design = runpy.run_path(str(script))['DESIGN']
+        self.assertEqual(json.loads(json.dumps(design)), self.s['design'])
+
+    def test_labels_and_the_stop_follow_from_the_rows(self):
+        d = self.s['design']
+        level = Q.AT.look_level(d['alpha'], len(d['looks']))
+        self.assertEqual(self.s['stopped_at'], 19)
+        self.assertEqual(len(self.rows), 19)
+        labels, det = Q.analyse(self.rows, d, level)
+        self.assertTrue(det['decided'])
+        self.assertEqual(labels, self.s['labels'])
+        self.assertEqual(labels['qet_champions'], 'FOCAL_BETTER_THAN_EVERY_CHAMPION')
+        self.assertEqual(labels['qet_vbs'], 'FOCAL_BETTER_THAN_VBS')
+        self.assertEqual(labels['short_vs_vbs_1'], 'FOCAL_BETTER_THAN_VBS')
+        for e in d['extra']:
+            self.assertEqual(labels[f"extra_{e['arm']}"], 'NO_MEASURABLE_EFFECT')
+        self.assertEqual(labels['probe_deepdistc'], 'NO_RESPONSE')
+        self.assertEqual(det['focal_strictly_best_hosts'], 17)
+        looks = [json.loads(l) for l in (R97 / 'looks.jsonl').read_text().splitlines() if l.strip()]
+        self.assertEqual([(x['hosts'], x['decided'], x['labels']) for x in looks], [(19, True, labels)])
+
+    def test_validity(self):
+        invalid, cpu, fail = Q.validity(self.rows, self.s['design'])
+        self.assertIsNone(invalid)
+        self.assertTrue(all(v >= 10.0 for v in cpu.values()))
+        self.assertTrue(all(v == 0 for v in fail.values()))
+
+    def test_every_witness_and_bound_rechecks(self):
+        self.assertEqual([h.task_id for h in self.hosts[:19]], [r['task_id'] for r in self.rows])
+        gaps = []
+        for i, r in enumerate(self.rows):
+            v, up = Q.check_host_evidence(self.hosts[i], r, R97 / r['evidence']['file'])
+            self.assertEqual((v, up), (r['best_value'], r['upper']['value']))
+            gaps.append((up - v) / up)
+        self.assertAlmostEqual(sum(gaps) / len(gaps), 0.1081, places=3)
+
+    def test_hosts_are_fresh(self):
+        from genesis.domains import adapter
+        a = adapter(LARGE)
+        ident = lambda t: a.exposure_identity(t)['canonical']
+        seen = set()
+        for p in sorted((ROOT / 'evidence').glob('*/hosts.json')):
+            if p.parent.name == R97.name:
+                continue
+            data = json.loads(p.read_text())
+            for t in data.get('tasks', []) if isinstance(data, dict) else []:
+                if isinstance(t, dict) and t.get('domain') == LARGE:
+                    seen.add(ident(LargeGraphTask.model_validate_json(canonical(t))))
+        self.assertEqual(len(seen), 16)                                  # B20_R95's training hosts
+        mine = [ident(h) for h in self.hosts]
+        self.assertEqual(len(set(mine)), 56)                             # distinct among themselves
+        self.assertFalse(seen & set(mine))                              # and unseen before
+
+
 if __name__ == '__main__':
     unittest.main()

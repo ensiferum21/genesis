@@ -4,9 +4,6 @@
   "skips": [
     {"pattern": "test_u_admission_replay_identical_across_hash_seeds .*GAP_SLOW_TESTS",
      "suite": "legacy_regression",
-     "reason": "legacy round-2b determinism check needs cached historical worlds that are not part of the Genesis evidence path; historical result unchanged"},
-    {"pattern": "^test_[1-8]_\\w+ (B20_R97 has not run in this tree|a restart did not follow a planned pause: INTERRUPTED is then correct)$",
-     "suite": "integration",
-     "reason": "preregistered prospective check on B20_R97 (the cell's reading of the loop's first study): it runs only once B20_R97 is in the tree; item 2 applies only when every restart followed a planned pause. The first case is removed when B20_R97 is recorded."}
+     "reason": "legacy round-2b determinism check needs cached historical worlds that are not part of the Genesis evidence path; historical result unchanged"}
   ]
 }

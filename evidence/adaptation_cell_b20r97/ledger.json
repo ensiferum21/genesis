@@ -1,0 +1,1740 @@
+{
+ "designs": {
+  "B20_R70": {
+   "ablation": null,
+   "arm_names": [
+    "candidate",
+    "dsb",
+    "eo",
+    "tabu"
+   ],
+   "arms": 4,
+   "certification_mean_s": 41.6,
+   "certification_s": 121,
+   "competitors": [],
+   "excluded": {},
+   "focal": "candidate",
+   "focal_identity": "00f3043ba283b9ad",
+   "fresh_hosts": true,
+   "hosts": 24,
+   "internal_tts": false,
+   "ladder": [
+    0.02,
+    0.05,
+    0.1,
+    0.2,
+    0.5,
+    1.0,
+    2.0
+   ],
+   "long_arm_names": [],
+   "long_budgets": [],
+   "probes": {},
+   "quality_at_equal_time": false,
+   "reps": 4,
+   "resumable": true,
+   "sequential_stopping": false,
+   "sizes": [
+    40,
+    50,
+    60
+   ],
+   "study": "B20_R70",
+   "upper_bounds": true,
+   "valid": true,
+   "validity": {
+    "max_fail_share": 0.01,
+    "min_cpu_at_half": 0.45
+   }
+  },
+  "B20_R75": {
+   "ablation": null,
+   "arm_names": [
+    "burer",
+    "candidate",
+    "dsb",
+    "highs",
+    "system",
+    "tabu"
+   ],
+   "arms": 6,
+   "certification_mean_s": 137.7,
+   "certification_s": 121,
+   "competitors": [],
+   "excluded": {},
+   "focal": "system",
+   "focal_identity": "5fcdf80625907b24",
+   "fresh_hosts": true,
+   "hosts": 12,
+   "internal_tts": false,
+   "ladder": [
+    0.05,
+    0.1,
+    0.25,
+    0.5,
+    2.0
+   ],
+   "long_arm_names": [],
+   "long_budgets": [],
+   "probes": {},
+   "quality_at_equal_time": false,
+   "reps": 3,
+   "resumable": true,
+   "sequential_stopping": false,
+   "sizes": [
+    60,
+    63
+   ],
+   "study": "B20_R75",
+   "upper_bounds": true,
+   "valid": false,
+   "validity": {
+    "max_fail_share": 0.01,
+    "min_cpu_at_half": 0.45
+   }
+  },
+  "B20_R76": {
+   "ablation": null,
+   "arm_names": [
+    "burer",
+    "candidate",
+    "cpsat",
+    "dsb",
+    "highs",
+    "system",
+    "tabu"
+   ],
+   "arms": 7,
+   "certification_mean_s": 169.8,
+   "certification_s": 121,
+   "competitors": [],
+   "excluded": {},
+   "focal": "system",
+   "focal_identity": "5fcdf80625907b24",
+   "fresh_hosts": true,
+   "hosts": 12,
+   "internal_tts": false,
+   "ladder": [
+    0.05,
+    0.1,
+    0.25,
+    0.5,
+    2.0
+   ],
+   "long_arm_names": [],
+   "long_budgets": [],
+   "probes": {},
+   "quality_at_equal_time": false,
+   "reps": 3,
+   "resumable": true,
+   "sequential_stopping": false,
+   "sizes": [
+    60,
+    63
+   ],
+   "study": "B20_R76",
+   "upper_bounds": true,
+   "valid": true,
+   "validity": {
+    "max_fail_share": 0.01,
+    "min_cpu_at_half": 0.45
+   }
+  },
+  "B20_R77": {
+   "ablation": null,
+   "arm_names": [
+    "burer",
+    "candidate",
+    "cpsat",
+    "dsb",
+    "engine",
+    "system",
+    "tabu"
+   ],
+   "arms": 7,
+   "certification_mean_s": 126.3,
+   "certification_s": 121,
+   "competitors": [],
+   "excluded": {},
+   "focal": "engine",
+   "focal_identity": "13db103fc8ca730a",
+   "fresh_hosts": true,
+   "hosts": 24,
+   "internal_tts": false,
+   "ladder": [
+    0.05,
+    0.1,
+    0.25,
+    0.5,
+    2.0
+   ],
+   "long_arm_names": [],
+   "long_budgets": [],
+   "probes": {},
+   "quality_at_equal_time": false,
+   "reps": 3,
+   "resumable": true,
+   "sequential_stopping": false,
+   "sizes": [
+    63
+   ],
+   "study": "B20_R77",
+   "upper_bounds": true,
+   "valid": true,
+   "validity": {
+    "max_fail_share": 0.01,
+    "min_cpu_at_half": 0.45
+   }
+  },
+  "B20_R81": {
+   "ablation": null,
+   "arm_names": [
+    "burer",
+    "cpsat",
+    "dsb",
+    "engine",
+    "found",
+    "random",
+    "system"
+   ],
+   "arms": 7,
+   "certification_mean_s": 117.5,
+   "certification_s": 122,
+   "competitors": [],
+   "excluded": {},
+   "focal": "found",
+   "focal_identity": "d32fcb7b93235303",
+   "fresh_hosts": true,
+   "hosts": 24,
+   "internal_tts": false,
+   "ladder": [
+    0.05,
+    0.1,
+    0.25,
+    0.5,
+    2.0
+   ],
+   "long_arm_names": [],
+   "long_budgets": [],
+   "probes": {},
+   "quality_at_equal_time": false,
+   "reps": 3,
+   "resumable": true,
+   "sequential_stopping": false,
+   "sizes": [
+    63
+   ],
+   "study": "B20_R81",
+   "upper_bounds": true,
+   "valid": true,
+   "validity": {
+    "max_fail_share": 0.01,
+    "min_cpu_at_half": 0.45
+   }
+  },
+  "B20_R90": {
+   "ablation": null,
+   "arm_names": [
+    "aperture",
+    "burer",
+    "cpsat",
+    "deepdist",
+    "engine",
+    "mq1",
+    "mq2",
+    "mq3",
+    "nuwls",
+    "spb",
+    "tfx",
+    "tt"
+   ],
+   "arms": 12,
+   "certification_mean_s": 104.3,
+   "certification_s": 121,
+   "competitors": [
+    "aperture",
+    "deepdist",
+    "nuwls-c-ibr",
+    "spb-maxsat-c-fps",
+    "tt-open-wbo-inc"
+   ],
+   "excluded": {},
+   "focal": "tfx",
+   "focal_identity": "b67cb25c3afc6289",
+   "fresh_hosts": true,
+   "hosts": 36,
+   "internal_tts": false,
+   "ladder": [
+    0.05,
+    0.1,
+    0.25,
+    0.5,
+    2.0
+   ],
+   "long_arm_names": [
+    "aperture",
+    "deepdist",
+    "nuwls",
+    "spb",
+    "tfx",
+    "tt"
+   ],
+   "long_budgets": [
+    10.0
+   ],
+   "probes": {},
+   "quality_at_equal_time": false,
+   "reps": 3,
+   "resumable": true,
+   "sequential_stopping": false,
+   "sizes": [
+    63
+   ],
+   "study": "B20_R90",
+   "upper_bounds": true,
+   "valid": true,
+   "validity": {
+    "max_fail_share": 0.01,
+    "min_cpu_at_half": 0.45
+   }
+  },
+  "B20_R92": {
+   "ablation": {
+    "hosts": 24
+   },
+   "arm_names": [
+    "aperture",
+    "aperture_gbg",
+    "aperture_ibi",
+    "aperture_kbg",
+    "deepdist",
+    "deepdistc",
+    "first_design",
+    "no_cross",
+    "no_dsb",
+    "no_pt",
+    "no_relink_restart",
+    "nuwls",
+    "nuwls26",
+    "nuwls26ub",
+    "pasmaxsat",
+    "sgat",
+    "spb",
+    "tfx",
+    "tt"
+   ],
+   "arms": 19,
+   "certification_mean_s": 106.1,
+   "certification_s": 122,
+   "competitors": [
+    "aperture",
+    "aperture-gbg",
+    "aperture-ibi",
+    "aperture-kbg",
+    "deepdist",
+    "deepdist-c",
+    "nuwls-c-2026",
+    "nuwls-c-2026-ub",
+    "nuwls-c-ibr",
+    "pasmaxsat-c",
+    "sgat-nuwls-c",
+    "spb-maxsat-c-fps",
+    "tt-open-wbo-inc"
+   ],
+   "excluded": {},
+   "focal": "tfx",
+   "focal_identity": "b67cb25c3afc6289",
+   "fresh_hosts": true,
+   "hosts": 36,
+   "internal_tts": false,
+   "ladder": [
+    0.005,
+    0.01,
+    0.02,
+    0.05,
+    0.1,
+    0.25,
+    0.5,
+    2.0
+   ],
+   "long_arm_names": [
+    "aperture_gbg",
+    "aperture_kbg",
+    "deepdist",
+    "nuwls26ub",
+    "pasmaxsat",
+    "sgat",
+    "spb",
+    "tfx"
+   ],
+   "long_budgets": [
+    10.0
+   ],
+   "probes": {},
+   "quality_at_equal_time": false,
+   "reps": 3,
+   "resumable": true,
+   "sequential_stopping": false,
+   "sizes": [
+    63
+   ],
+   "study": "B20_R92",
+   "upper_bounds": true,
+   "valid": true,
+   "validity": {
+    "max_fail_share": 0.01,
+    "min_cpu_at_half": 0.45
+   }
+  },
+  "B20_R97": {
+   "ablation": {
+    "hosts": 19
+   },
+   "arm_names": [
+    "tfxw",
+    "aperture",
+    "aperture_gbg",
+    "aperture_ibi",
+    "aperture_kbg",
+    "deepdist",
+    "deepdistc",
+    "nuwls",
+    "nuwls26",
+    "nuwls26ub",
+    "pasmaxsat",
+    "sgat",
+    "spb",
+    "tt",
+    "previous_generation",
+    "no_cross",
+    "no_relink_restart",
+    "first_design"
+   ],
+   "arms": 18,
+   "certification_mean_s": 60,
+   "certification_s": 60,
+   "competitors": [
+    "aperture",
+    "aperture-gbg",
+    "aperture-ibi",
+    "aperture-kbg",
+    "deepdist",
+    "deepdist-c",
+    "nuwls-c-2026",
+    "nuwls-c-2026-ub",
+    "nuwls-c-ibr",
+    "pasmaxsat-c",
+    "sgat-nuwls-c",
+    "spb-maxsat-c-fps",
+    "tt-open-wbo-inc"
+   ],
+   "domain": "triangle_free_large_v1",
+   "excluded": {},
+   "focal": "tfxw",
+   "focal_identity": "bbd71f73c473366d",
+   "fresh_hosts": true,
+   "hosts": 19,
+   "internal_tts": false,
+   "ladder": [],
+   "long_arm_names": [
+    "tfxw",
+    "aperture",
+    "aperture_gbg",
+    "aperture_ibi",
+    "aperture_kbg",
+    "deepdist",
+    "deepdistc",
+    "nuwls",
+    "nuwls26",
+    "nuwls26ub",
+    "pasmaxsat",
+    "sgat",
+    "spb",
+    "tt",
+    "previous_generation",
+    "no_cross",
+    "no_relink_restart",
+    "first_design"
+   ],
+   "long_budgets": [
+    10.0,
+    1.0
+   ],
+   "probes": {
+    "deepdistc": {
+     "budget_s": 60.0,
+     "hosts": 4
+    }
+   },
+   "quality_at_equal_time": true,
+   "reps": 1,
+   "resumable": true,
+   "sequential_stopping": true,
+   "sizes": [
+    128,
+    256
+   ],
+   "study": "B20_R97",
+   "upper_bounds": true,
+   "valid": true,
+   "validity": {
+    "max_fail_share": 0.01,
+    "min_cpu_at_half": 0.45
+   }
+  }
+ },
+ "events": [
+  "B20_R70: SATURATION first seen",
+  "B20_R70: MISSING_BASELINE first seen",
+  "B20_R70: REGIME_GAP first seen",
+  "B20_R70: OUTPERFORMED first seen",
+  "B20_R75: OUTPERFORMED: new_method at dose 1.0 (magnitude 0.8333 -> 0.9167): PERSISTENT",
+  "B20_R75: UNCERTIFIED_TARGETS first seen",
+  "B20_R75: INVALID_RUN first seen",
+  "B20_R75: SIZE_CAP first seen",
+  "B20_R75: ARM_NOT_RESPONDING[burer] first seen",
+  "B20_R75: ARM_NOT_RESPONDING[highs] first seen",
+  "B20_R76: SATURATION recurred unanswered 2 times: CHRONIC (severity high)",
+  "B20_R76: MISSING_BASELINE recurred unanswered 2 times: CHRONIC (severity high)",
+  "B20_R76: REGIME_GAP recurred unanswered 2 times: CHRONIC (severity high)",
+  "B20_R76: INVALID_RUN: fix_harness_then_rerun at dose 1.0 (no longer fires): RESOLVED",
+  "B20_R76: UNRESOLVED_VERDICT first seen",
+  "B20_R77: OUTPERFORMED: new_method at dose 1.0 (no longer fires): RESOLVED",
+  "B20_R77: SIZE_CAP recurred unanswered 2 times: CHRONIC (severity high)",
+  "B20_R77: ARM_NOT_RESPONDING[burer] quiet in 2 studies that could have shown it: CLEARED (no response is credited)",
+  "B20_R77: ARM_NOT_RESPONDING[highs]: exclude_with_disclosure at dose 1.0 (no longer fires): RESOLVED",
+  "B20_R77: UNRESOLVED_VERDICT: more_hosts at dose 1.0 (no longer fires): RESOLVED",
+  "B20_R81: OUTPERFORMED relapsed (it had been resolved by new_method)",
+  "B20_R81: UNCERTIFIED_TARGETS recurred unanswered 2 times: CHRONIC (severity high)",
+  "B20_R81: UNRESOLVED_VERDICT relapsed (it had been resolved by more_hosts)",
+  "B20_R81: INTERRUPTED first seen",
+  "B20_R90: MISSING_BASELINE: acquire_baseline at dose 0.444 (magnitude 9 -> 5): IMPROVING",
+  "B20_R90: REGIME_GAP: add_home_budgets at dose 0.473 (magnitude 30.0 -> 6.0): IMPROVING",
+  "B20_R90: OUTPERFORMED: new_method at dose 1.0 (no longer fires): RESOLVED",
+  "B20_R90: UNRESOLVED_VERDICT: more_hosts at dose 1.0 (no longer fires): RESOLVED",
+  "B20_R90: FLOOR_EFFECT first seen",
+  "B20_R92: MISSING_BASELINE: acquire_baseline at dose 1.0 (no longer fires): RESOLVED",
+  "B20_R92: UNRESOLVED_VERDICT relapsed (it had been resolved by more_hosts)",
+  "B20_R92: INTERRUPTED recurred unanswered 2 times: CHRONIC (severity medium)",
+  "B20_R92: FLOOR_EFFECT: extend_ladder_down at dose 1.0 (no longer fires): RESOLVED",
+  "B20_R92: COMPONENT_EFFECT_UNRESOLVED first seen",
+  "B20_R92: ARM_NOT_RESPONDING[deepdistc] first seen",
+  "B20_R97: SATURATION: quality_at_equal_time_on_larger_instances at dose 1.0 (no longer fires): RESOLVED",
+  "B20_R97: REGIME_GAP recurred unanswered 2 times: CHRONIC (severity high)",
+  "B20_R97: SIZE_CAP: extend_domain at dose 1.0 (no longer fires): RESOLVED",
+  "B20_R97: INTERRUPTED: sequential_stopping at dose 1.0 (no longer fires): RESOLVED",
+  "B20_R97: COMPONENT_EFFECT_UNRESOLVED: ablation_on_harder_instances at dose 1.0 (magnitude 5 -> 4): IMPROVING",
+  "B20_R97: ARM_NOT_RESPONDING[deepdistc]: probe_at_home_budget at dose 1.0 (magnitude 1 -> 1): PERSISTENT"
+ ],
+ "lineages": {
+  "ARM_NOT_RESPONDING[burer]": {
+   "attempts": [],
+   "first_seen": "B20_R75",
+   "occurrences": [
+    {
+     "evidence": {
+      "arms": [
+       "burer"
+      ],
+      "detail": {
+       "flat_hosts": 12,
+       "hosts": 12,
+       "median_share_of_target": 0.0,
+       "run_times_s": [
+        0.05,
+        2.0
+       ]
+      },
+      "subject": "burer"
+     },
+     "magnitude": 1,
+     "study": "B20_R75"
+    }
+   ],
+   "quiet": [
+    "B20_R76",
+    "B20_R77"
+   ],
+   "quiet_streak": 2,
+   "retired": [],
+   "severity": "high",
+   "status": "CLEARED",
+   "type": "ARM_NOT_RESPONDING",
+   "unanswered_recurrences": 0
+  },
+  "ARM_NOT_RESPONDING[deepdistc]": {
+   "attempts": [
+    {
+     "dose": 1.0,
+     "outcome": "PERSISTENT",
+     "response": "probe_at_home_budget",
+     "study": "B20_R97"
+    }
+   ],
+   "failures": {
+    "probe_at_home_budget": 1
+   },
+   "first_seen": "B20_R92",
+   "occurrences": [
+    {
+     "evidence": {
+      "arms": [
+       "deepdistc"
+      ],
+      "detail": {
+       "flat_hosts": 25,
+       "hosts": 36,
+       "median_share_of_target": 0.69,
+       "run_times_s": [
+        0.005,
+        2.0
+       ]
+      },
+      "subject": "deepdistc"
+     },
+     "magnitude": 1,
+     "study": "B20_R92"
+    },
+    {
+     "evidence": {
+      "arms": [
+       "deepdistc"
+      ],
+      "detail": {
+       "probe": "no response at the home budget on at least half the probed hosts"
+      },
+      "subject": "deepdistc"
+     },
+     "magnitude": 1,
+     "study": "B20_R97"
+    }
+   ],
+   "retired": [],
+   "severity": "high",
+   "status": "PERSISTENT",
+   "type": "ARM_NOT_RESPONDING",
+   "unanswered_recurrences": 0
+  },
+  "ARM_NOT_RESPONDING[highs]": {
+   "attempts": [
+    {
+     "dose": 1.0,
+     "outcome": "RESOLVED",
+     "response": "exclude_with_disclosure",
+     "study": "B20_R77"
+    }
+   ],
+   "first_seen": "B20_R75",
+   "occurrences": [
+    {
+     "evidence": {
+      "arms": [
+       "highs"
+      ],
+      "detail": {
+       "flat_hosts": 12,
+       "hosts": 12,
+       "median_share_of_target": 0.236,
+       "run_times_s": [
+        0.05,
+        2.0
+       ]
+      },
+      "subject": "highs"
+     },
+     "magnitude": 1,
+     "study": "B20_R75"
+    },
+    {
+     "evidence": {
+      "arms": [
+       "highs"
+      ],
+      "detail": {
+       "flat_hosts": 12,
+       "hosts": 12,
+       "median_share_of_target": 0.226,
+       "run_times_s": [
+        0.05,
+        2.0
+       ]
+      },
+      "subject": "highs"
+     },
+     "magnitude": 1,
+     "study": "B20_R76"
+    }
+   ],
+   "quiet_streak": 0,
+   "resolved_by": "exclude_with_disclosure",
+   "retired": [],
+   "severity": "high",
+   "status": "RESOLVED",
+   "type": "ARM_NOT_RESPONDING",
+   "unanswered_recurrences": 0
+  },
+  "COMPONENT_EFFECT_UNRESOLVED": {
+   "attempts": [
+    {
+     "dose": 1.0,
+     "outcome": "IMPROVING",
+     "response": "ablation_on_harder_instances",
+     "study": "B20_R97"
+    }
+   ],
+   "first_seen": "B20_R92",
+   "occurrences": [
+    {
+     "evidence": {
+      "components": {
+       "first_design": "UNRESOLVED",
+       "no_cross": "UNRESOLVED",
+       "no_dsb": "UNRESOLVED",
+       "no_pt": "UNRESOLVED",
+       "no_relink_restart": "UNRESOLVED"
+      },
+      "hosts": 24,
+      "largest_n": 63
+     },
+     "magnitude": 5,
+     "study": "B20_R92"
+    },
+    {
+     "evidence": {
+      "components": {
+       "first_design": "NO_MEASURABLE_EFFECT",
+       "no_cross": "NO_MEASURABLE_EFFECT",
+       "no_relink_restart": "NO_MEASURABLE_EFFECT",
+       "previous_generation": "NO_MEASURABLE_EFFECT"
+      },
+      "hosts": 19,
+      "largest_n": 256
+     },
+     "magnitude": 4,
+     "study": "B20_R97"
+    }
+   ],
+   "retired": [],
+   "severity": "low",
+   "status": "IMPROVING",
+   "type": "COMPONENT_EFFECT_UNRESOLVED",
+   "unanswered_recurrences": 0
+  },
+  "FLOOR_EFFECT": {
+   "attempts": [
+    {
+     "dose": 1.0,
+     "new_alongside": [
+      "ARM_NOT_RESPONDING[deepdistc]",
+      "COMPONENT_EFFECT_UNRESOLVED"
+     ],
+     "outcome": "RESOLVED",
+     "response": "extend_ladder_down",
+     "study": "B20_R92"
+    }
+   ],
+   "first_seen": "B20_R90",
+   "occurrences": [
+    {
+     "evidence": {
+      "floor_s": 0.05,
+      "focal": "tfx",
+      "hosts": 36,
+      "hosts_at_floor": 33
+     },
+     "magnitude": 0.045833,
+     "study": "B20_R90"
+    }
+   ],
+   "resolved_by": "extend_ladder_down",
+   "retired": [],
+   "severity": "medium",
+   "status": "RESOLVED",
+   "type": "FLOOR_EFFECT",
+   "unanswered_recurrences": 0
+  },
+  "INTERRUPTED": {
+   "attempts": [
+    {
+     "dose": 1.0,
+     "outcome": "RESOLVED",
+     "response": "sequential_stopping",
+     "study": "B20_R97"
+    }
+   ],
+   "escalated": true,
+   "first_seen": "B20_R81",
+   "occurrences": [
+    {
+     "evidence": {
+      "starts_in_run_log": 2
+     },
+     "magnitude": 2,
+     "study": "B20_R81"
+    },
+    {
+     "evidence": {
+      "starts_in_run_log": 2
+     },
+     "magnitude": 2,
+     "study": "B20_R90"
+    },
+    {
+     "evidence": {
+      "starts_in_run_log": 3
+     },
+     "magnitude": 3,
+     "study": "B20_R92"
+    }
+   ],
+   "quiet_streak": 0,
+   "resolved_by": "sequential_stopping",
+   "retired": [],
+   "severity": "medium",
+   "status": "RESOLVED",
+   "type": "INTERRUPTED",
+   "unanswered_recurrences": 0
+  },
+  "INVALID_RUN": {
+   "attempts": [
+    {
+     "dose": 1.0,
+     "new_alongside": [
+      "UNRESOLVED_VERDICT"
+     ],
+     "outcome": "RESOLVED",
+     "response": "fix_harness_then_rerun",
+     "study": "B20_R76"
+    }
+   ],
+   "first_seen": "B20_R75",
+   "occurrences": [
+    {
+     "evidence": {
+      "focal": "system",
+      "labels": [
+       "INVALID_CPU_DELIVERY"
+      ]
+     },
+     "magnitude": 1,
+     "study": "B20_R75"
+    }
+   ],
+   "resolved_by": "fix_harness_then_rerun",
+   "retired": [],
+   "severity": "high",
+   "status": "RESOLVED",
+   "type": "INVALID_RUN",
+   "unanswered_recurrences": 0
+  },
+  "MISSING_BASELINE": {
+   "attempts": [
+    {
+     "dose": 0.444,
+     "new_alongside": [
+      "FLOOR_EFFECT"
+     ],
+     "outcome": "IMPROVING",
+     "response": "acquire_baseline",
+     "study": "B20_R90"
+    },
+    {
+     "dose": 1.0,
+     "new_alongside": [
+      "ARM_NOT_RESPONDING[deepdistc]",
+      "COMPONENT_EFFECT_UNRESOLVED"
+     ],
+     "outcome": "RESOLVED",
+     "response": "acquire_baseline",
+     "study": "B20_R92"
+    }
+   ],
+   "escalated": true,
+   "first_seen": "B20_R70",
+   "occurrences": [
+    {
+     "evidence": {
+      "catalog": "MaxSAT Evaluation 2024 talk (Berg, Jarvisalo); MaxSAT Evaluation 2026 slides and results.zip (Zenodo 21358014); ECAI 2025 (DeepDist); SOFT 2026 (Aperture)",
+      "missing": [
+       "SPB-MaxSAT-c-FPS",
+       "NuWLS-c-IBR",
+       "TT-Open-WBO-Inc",
+       "DeepDist",
+       "PASMaxSAT-c",
+       "Aperture-KBG",
+       "SGAT-NuWLS-c",
+       "Aperture-GBG",
+       "NuWLS-c-2026-UB"
+      ],
+      "missing_keys": [
+       "spb-maxsat-c-fps",
+       "nuwls-c-ibr",
+       "tt-open-wbo-inc",
+       "deepdist",
+       "pasmaxsat-c",
+       "aperture-kbg",
+       "sgat-nuwls-c",
+       "aperture-gbg",
+       "nuwls-c-2026-ub"
+      ]
+     },
+     "magnitude": 9,
+     "study": "B20_R70"
+    },
+    {
+     "evidence": {
+      "catalog": "MaxSAT Evaluation 2024 talk (Berg, Jarvisalo); MaxSAT Evaluation 2026 slides and results.zip (Zenodo 21358014); ECAI 2025 (DeepDist); SOFT 2026 (Aperture)",
+      "missing": [
+       "SPB-MaxSAT-c-FPS",
+       "NuWLS-c-IBR",
+       "TT-Open-WBO-Inc",
+       "DeepDist",
+       "PASMaxSAT-c",
+       "Aperture-KBG",
+       "SGAT-NuWLS-c",
+       "Aperture-GBG",
+       "NuWLS-c-2026-UB"
+      ],
+      "missing_keys": [
+       "spb-maxsat-c-fps",
+       "nuwls-c-ibr",
+       "tt-open-wbo-inc",
+       "deepdist",
+       "pasmaxsat-c",
+       "aperture-kbg",
+       "sgat-nuwls-c",
+       "aperture-gbg",
+       "nuwls-c-2026-ub"
+      ]
+     },
+     "magnitude": 9,
+     "study": "B20_R75"
+    },
+    {
+     "evidence": {
+      "catalog": "MaxSAT Evaluation 2024 talk (Berg, Jarvisalo); MaxSAT Evaluation 2026 slides and results.zip (Zenodo 21358014); ECAI 2025 (DeepDist); SOFT 2026 (Aperture)",
+      "missing": [
+       "SPB-MaxSAT-c-FPS",
+       "NuWLS-c-IBR",
+       "TT-Open-WBO-Inc",
+       "DeepDist",
+       "PASMaxSAT-c",
+       "Aperture-KBG",
+       "SGAT-NuWLS-c",
+       "Aperture-GBG",
+       "NuWLS-c-2026-UB"
+      ],
+      "missing_keys": [
+       "spb-maxsat-c-fps",
+       "nuwls-c-ibr",
+       "tt-open-wbo-inc",
+       "deepdist",
+       "pasmaxsat-c",
+       "aperture-kbg",
+       "sgat-nuwls-c",
+       "aperture-gbg",
+       "nuwls-c-2026-ub"
+      ]
+     },
+     "magnitude": 9,
+     "study": "B20_R76"
+    },
+    {
+     "evidence": {
+      "catalog": "MaxSAT Evaluation 2024 talk (Berg, Jarvisalo); MaxSAT Evaluation 2026 slides and results.zip (Zenodo 21358014); ECAI 2025 (DeepDist); SOFT 2026 (Aperture)",
+      "missing": [
+       "SPB-MaxSAT-c-FPS",
+       "NuWLS-c-IBR",
+       "TT-Open-WBO-Inc",
+       "DeepDist",
+       "PASMaxSAT-c",
+       "Aperture-KBG",
+       "SGAT-NuWLS-c",
+       "Aperture-GBG",
+       "NuWLS-c-2026-UB"
+      ],
+      "missing_keys": [
+       "spb-maxsat-c-fps",
+       "nuwls-c-ibr",
+       "tt-open-wbo-inc",
+       "deepdist",
+       "pasmaxsat-c",
+       "aperture-kbg",
+       "sgat-nuwls-c",
+       "aperture-gbg",
+       "nuwls-c-2026-ub"
+      ]
+     },
+     "magnitude": 9,
+     "study": "B20_R77"
+    },
+    {
+     "evidence": {
+      "catalog": "MaxSAT Evaluation 2024 talk (Berg, Jarvisalo); MaxSAT Evaluation 2026 slides and results.zip (Zenodo 21358014); ECAI 2025 (DeepDist); SOFT 2026 (Aperture)",
+      "missing": [
+       "SPB-MaxSAT-c-FPS",
+       "NuWLS-c-IBR",
+       "TT-Open-WBO-Inc",
+       "DeepDist",
+       "PASMaxSAT-c",
+       "Aperture-KBG",
+       "SGAT-NuWLS-c",
+       "Aperture-GBG",
+       "NuWLS-c-2026-UB"
+      ],
+      "missing_keys": [
+       "spb-maxsat-c-fps",
+       "nuwls-c-ibr",
+       "tt-open-wbo-inc",
+       "deepdist",
+       "pasmaxsat-c",
+       "aperture-kbg",
+       "sgat-nuwls-c",
+       "aperture-gbg",
+       "nuwls-c-2026-ub"
+      ]
+     },
+     "magnitude": 9,
+     "study": "B20_R81"
+    },
+    {
+     "evidence": {
+      "catalog": "MaxSAT Evaluation 2024 talk (Berg, Jarvisalo); MaxSAT Evaluation 2026 slides and results.zip (Zenodo 21358014); ECAI 2025 (DeepDist); SOFT 2026 (Aperture)",
+      "missing": [
+       "PASMaxSAT-c",
+       "Aperture-KBG",
+       "SGAT-NuWLS-c",
+       "Aperture-GBG",
+       "NuWLS-c-2026-UB"
+      ],
+      "missing_keys": [
+       "pasmaxsat-c",
+       "aperture-kbg",
+       "sgat-nuwls-c",
+       "aperture-gbg",
+       "nuwls-c-2026-ub"
+      ]
+     },
+     "magnitude": 5,
+     "study": "B20_R90"
+    }
+   ],
+   "quiet_streak": 0,
+   "resolved_by": "acquire_baseline",
+   "retired": [],
+   "severity": "high",
+   "status": "RESOLVED",
+   "type": "MISSING_BASELINE",
+   "unanswered_recurrences": 0
+  },
+  "OUTPERFORMED": {
+   "attempts": [
+    {
+     "dose": 1.0,
+     "new_alongside": [
+      "ARM_NOT_RESPONDING[burer]",
+      "ARM_NOT_RESPONDING[highs]",
+      "INVALID_RUN",
+      "SIZE_CAP",
+      "UNCERTIFIED_TARGETS"
+     ],
+     "outcome": "PERSISTENT",
+     "response": "new_method",
+     "study": "B20_R75"
+    },
+    {
+     "dose": 1.0,
+     "outcome": "RESOLVED",
+     "response": "new_method",
+     "study": "B20_R77"
+    },
+    {
+     "dose": 1.0,
+     "new_alongside": [
+      "FLOOR_EFFECT"
+     ],
+     "outcome": "RESOLVED",
+     "response": "new_method",
+     "study": "B20_R90"
+    }
+   ],
+   "failures": {
+    "new_method": 1
+   },
+   "first_seen": "B20_R70",
+   "occurrences": [
+    {
+     "evidence": {
+      "arms": {
+       "dsb": {
+        "families": {
+         "?": 15
+        },
+        "hosts": 24,
+        "lost_hosts": 15,
+        "native": false,
+        "sizes": {
+         "40": 2,
+         "50": 6,
+         "60": 7
+        }
+       },
+       "eo": {
+        "families": {
+         "?": 15
+        },
+        "hosts": 24,
+        "lost_hosts": 15,
+        "native": false,
+        "sizes": {
+         "40": 4,
+         "50": 6,
+         "60": 5
+        }
+       },
+       "tabu": {
+        "families": {
+         "?": 20
+        },
+        "hosts": 24,
+        "lost_hosts": 20,
+        "native": false,
+        "sizes": {
+         "40": 6,
+         "50": 8,
+         "60": 6
+        }
+       }
+      },
+      "focal": "candidate",
+      "focal_identity": "00f3043ba283b9ad",
+      "worst_share": 0.8333
+     },
+     "magnitude": 0.8333,
+     "study": "B20_R70"
+    },
+    {
+     "evidence": {
+      "arms": {
+       "dsb": {
+        "families": {
+         "?": 11
+        },
+        "hosts": 12,
+        "lost_hosts": 11,
+        "native": false,
+        "sizes": {
+         "60": 6,
+         "63": 5
+        }
+       },
+       "tabu": {
+        "families": {
+         "?": 5
+        },
+        "hosts": 12,
+        "lost_hosts": 5,
+        "native": false,
+        "sizes": {
+         "60": 2,
+         "63": 3
+        }
+       }
+      },
+      "focal": "system",
+      "focal_identity": "5fcdf80625907b24",
+      "worst_share": 0.9167
+     },
+     "magnitude": 0.9167,
+     "study": "B20_R75"
+    },
+    {
+     "evidence": {
+      "arms": {
+       "dsb": {
+        "families": {
+         "?": 7
+        },
+        "hosts": 12,
+        "lost_hosts": 7,
+        "native": false,
+        "sizes": {
+         "60": 4,
+         "63": 3
+        }
+       },
+       "tabu": {
+        "families": {
+         "?": 5
+        },
+        "hosts": 12,
+        "lost_hosts": 5,
+        "native": false,
+        "sizes": {
+         "60": 3,
+         "63": 2
+        }
+       }
+      },
+      "focal": "system",
+      "focal_identity": "5fcdf80625907b24",
+      "worst_share": 0.5833
+     },
+     "magnitude": 0.5833,
+     "study": "B20_R76"
+    },
+    {
+     "evidence": {
+      "arms": {
+       "dsb": {
+        "families": {
+         "?": 19
+        },
+        "hosts": 24,
+        "lost_hosts": 19,
+        "native": false,
+        "sizes": {
+         "63": 19
+        }
+       },
+       "engine": {
+        "families": {
+         "?": 18
+        },
+        "hosts": 24,
+        "lost_hosts": 18,
+        "native": true,
+        "sizes": {
+         "63": 18
+        }
+       },
+       "random": {
+        "families": {
+         "?": 6
+        },
+        "hosts": 24,
+        "lost_hosts": 6,
+        "native": false,
+        "sizes": {
+         "63": 6
+        }
+       }
+      },
+      "focal": "found",
+      "focal_identity": "d32fcb7b93235303",
+      "worst_share": 0.7917
+     },
+     "magnitude": 0.7917,
+     "study": "B20_R81"
+    }
+   ],
+   "quiet_streak": 0,
+   "resolved_by": "new_method",
+   "retired": [],
+   "severity": "high",
+   "status": "RESOLVED",
+   "type": "OUTPERFORMED",
+   "unanswered_recurrences": 0
+  },
+  "REGIME_GAP": {
+   "attempts": [
+    {
+     "dose": 0.473,
+     "new_alongside": [
+      "FLOOR_EFFECT"
+     ],
+     "outcome": "IMPROVING",
+     "response": "add_home_budgets",
+     "study": "B20_R90"
+    }
+   ],
+   "escalated": true,
+   "first_seen": "B20_R70",
+   "occurrences": [
+    {
+     "evidence": {
+      "competitors_home_budgets_s": [
+       60,
+       300,
+       1707
+      ],
+      "longest_budget_s": 2.0
+     },
+     "magnitude": 30.0,
+     "study": "B20_R70"
+    },
+    {
+     "evidence": {
+      "competitors_home_budgets_s": [
+       60,
+       300,
+       1707
+      ],
+      "longest_budget_s": 2.0
+     },
+     "magnitude": 30.0,
+     "study": "B20_R75"
+    },
+    {
+     "evidence": {
+      "competitors_home_budgets_s": [
+       60,
+       300,
+       1707
+      ],
+      "longest_budget_s": 2.0
+     },
+     "magnitude": 30.0,
+     "study": "B20_R76"
+    },
+    {
+     "evidence": {
+      "competitors_home_budgets_s": [
+       60,
+       300,
+       1707
+      ],
+      "longest_budget_s": 2.0
+     },
+     "magnitude": 30.0,
+     "study": "B20_R77"
+    },
+    {
+     "evidence": {
+      "competitors_home_budgets_s": [
+       60,
+       300,
+       1707
+      ],
+      "longest_budget_s": 2.0
+     },
+     "magnitude": 30.0,
+     "study": "B20_R81"
+    },
+    {
+     "evidence": {
+      "competitors_home_budgets_s": [
+       60,
+       300,
+       1707
+      ],
+      "longest_budget_s": 10.0
+     },
+     "magnitude": 6.0,
+     "study": "B20_R90"
+    },
+    {
+     "evidence": {
+      "competitors_home_budgets_s": [
+       60,
+       300,
+       1707
+      ],
+      "longest_budget_s": 10.0
+     },
+     "magnitude": 6.0,
+     "study": "B20_R92"
+    },
+    {
+     "evidence": {
+      "competitors_home_budgets_s": [
+       60,
+       300,
+       1707
+      ],
+      "longest_budget_s": 10.0
+     },
+     "magnitude": 6.0,
+     "study": "B20_R97"
+    }
+   ],
+   "quiet_streak": 0,
+   "retired": [],
+   "severity": "high",
+   "status": "CHRONIC",
+   "type": "REGIME_GAP",
+   "unanswered_recurrences": 2
+  },
+  "SATURATION": {
+   "attempts": [
+    {
+     "dose": 1.0,
+     "outcome": "RESOLVED",
+     "response": "quality_at_equal_time_on_larger_instances",
+     "study": "B20_R97"
+    }
+   ],
+   "escalated": true,
+   "first_seen": "B20_R70",
+   "occurrences": [
+    {
+     "evidence": {
+      "hosts": 24,
+      "hosts_with_equal_best_values": 24,
+      "largest_n": 60
+     },
+     "magnitude": 1.0,
+     "study": "B20_R70"
+    },
+    {
+     "evidence": {
+      "hosts": 12,
+      "hosts_with_equal_best_values": 12,
+      "largest_n": 63
+     },
+     "magnitude": 1.0,
+     "study": "B20_R75"
+    },
+    {
+     "evidence": {
+      "hosts": 12,
+      "hosts_with_equal_best_values": 11,
+      "largest_n": 63
+     },
+     "magnitude": 0.916667,
+     "study": "B20_R76"
+    },
+    {
+     "evidence": {
+      "hosts": 24,
+      "hosts_with_equal_best_values": 24,
+      "largest_n": 63
+     },
+     "magnitude": 1.0,
+     "study": "B20_R81"
+    },
+    {
+     "evidence": {
+      "hosts": 36,
+      "hosts_with_equal_best_values": 36,
+      "largest_n": 63
+     },
+     "magnitude": 1.0,
+     "study": "B20_R90"
+    },
+    {
+     "evidence": {
+      "hosts": 36,
+      "hosts_with_equal_best_values": 36,
+      "largest_n": 63
+     },
+     "magnitude": 1.0,
+     "study": "B20_R92"
+    }
+   ],
+   "quiet": [
+    "B20_R77"
+   ],
+   "quiet_streak": 0,
+   "resolved_by": "quality_at_equal_time_on_larger_instances",
+   "retired": [],
+   "severity": "high",
+   "status": "RESOLVED",
+   "type": "SATURATION",
+   "unanswered_recurrences": 0
+  },
+  "SIZE_CAP": {
+   "attempts": [
+    {
+     "dose": 1.0,
+     "outcome": "RESOLVED",
+     "response": "extend_domain",
+     "study": "B20_R97"
+    }
+   ],
+   "escalated": true,
+   "first_seen": "B20_R75",
+   "occurrences": [
+    {
+     "evidence": {
+      "largest_n": 63,
+      "model_cap": 63
+     },
+     "magnitude": 1.0,
+     "study": "B20_R75"
+    },
+    {
+     "evidence": {
+      "largest_n": 63,
+      "model_cap": 63
+     },
+     "magnitude": 1.0,
+     "study": "B20_R76"
+    },
+    {
+     "evidence": {
+      "largest_n": 63,
+      "model_cap": 63
+     },
+     "magnitude": 1.0,
+     "study": "B20_R77"
+    },
+    {
+     "evidence": {
+      "largest_n": 63,
+      "model_cap": 63
+     },
+     "magnitude": 1.0,
+     "study": "B20_R81"
+    },
+    {
+     "evidence": {
+      "largest_n": 63,
+      "model_cap": 63
+     },
+     "magnitude": 1.0,
+     "study": "B20_R90"
+    },
+    {
+     "evidence": {
+      "largest_n": 63,
+      "model_cap": 63
+     },
+     "magnitude": 1.0,
+     "study": "B20_R92"
+    }
+   ],
+   "quiet_streak": 0,
+   "resolved_by": "extend_domain",
+   "retired": [],
+   "severity": "high",
+   "status": "RESOLVED",
+   "type": "SIZE_CAP",
+   "unanswered_recurrences": 0
+  },
+  "UNCERTIFIED_TARGETS": {
+   "attempts": [],
+   "escalated": true,
+   "first_seen": "B20_R75",
+   "occurrences": [
+    {
+     "evidence": {
+      "certification_s": 121,
+      "hosts": 12,
+      "uncertified": 6
+     },
+     "magnitude": 0.5,
+     "study": "B20_R75"
+    },
+    {
+     "evidence": {
+      "certification_s": 121,
+      "hosts": 24,
+      "uncertified": 8
+     },
+     "magnitude": 0.333333,
+     "study": "B20_R77"
+    },
+    {
+     "evidence": {
+      "certification_s": 122,
+      "hosts": 24,
+      "uncertified": 6
+     },
+     "magnitude": 0.25,
+     "study": "B20_R81"
+    },
+    {
+     "evidence": {
+      "certification_s": 121,
+      "hosts": 36,
+      "uncertified": 20
+     },
+     "magnitude": 0.555556,
+     "study": "B20_R90"
+    },
+    {
+     "evidence": {
+      "certification_s": 122,
+      "hosts": 36,
+      "uncertified": 21
+     },
+     "magnitude": 0.583333,
+     "study": "B20_R92"
+    },
+    {
+     "evidence": {
+      "certification_s": 60,
+      "hosts": 19,
+      "mean_bound_gap": 0.10809,
+      "uncertified": 19
+     },
+     "magnitude": 1.0,
+     "study": "B20_R97"
+    }
+   ],
+   "quiet": [
+    "B20_R76"
+   ],
+   "quiet_streak": 0,
+   "retired": [],
+   "severity": "high",
+   "status": "CHRONIC",
+   "type": "UNCERTIFIED_TARGETS",
+   "unanswered_recurrences": 5
+  },
+  "UNRESOLVED_VERDICT": {
+   "attempts": [
+    {
+     "dose": 1.0,
+     "outcome": "RESOLVED",
+     "response": "more_hosts",
+     "study": "B20_R77"
+    },
+    {
+     "dose": 1.0,
+     "new_alongside": [
+      "FLOOR_EFFECT"
+     ],
+     "outcome": "RESOLVED",
+     "response": "more_hosts",
+     "study": "B20_R90"
+    }
+   ],
+   "first_seen": "B20_R76",
+   "occurrences": [
+    {
+     "evidence": {
+      "hosts": 12,
+      "labels": {
+       "verdict": "UNRESOLVED"
+      },
+      "ladder_points": 5
+     },
+     "magnitude": 1,
+     "study": "B20_R76"
+    },
+    {
+     "evidence": {
+      "hosts": 24,
+      "labels": {
+       "found_vs_random": "UNRESOLVED",
+       "gv4_found_vs_builder": "UNRESOLVED"
+      },
+      "ladder_points": 5
+     },
+     "magnitude": 2,
+     "study": "B20_R81"
+    },
+    {
+     "evidence": {
+      "hosts": 36,
+      "labels": {
+       "vbs_P": "UNRESOLVED"
+      },
+      "ladder_points": 8
+     },
+     "magnitude": 1,
+     "study": "B20_R92"
+    }
+   ],
+   "quiet": [
+    "B20_R97"
+   ],
+   "quiet_streak": 1,
+   "resolved_by": "more_hosts",
+   "retired": [],
+   "severity": "medium",
+   "status": "RELAPSE",
+   "type": "UNRESOLVED_VERDICT",
+   "unanswered_recurrences": 0
+  }
+ },
+ "response_outcomes": {
+  "ablation_on_harder_instances": {
+   "IMPROVING": 1,
+   "PERSISTENT": 0,
+   "RELAPSED": 0,
+   "RESOLVED": 0,
+   "UNDERDOSED": 0
+  },
+  "acquire_baseline": {
+   "IMPROVING": 1,
+   "PERSISTENT": 0,
+   "RELAPSED": 0,
+   "RESOLVED": 1,
+   "UNDERDOSED": 0
+  },
+  "add_home_budgets": {
+   "IMPROVING": 1,
+   "PERSISTENT": 0,
+   "RELAPSED": 0,
+   "RESOLVED": 0,
+   "UNDERDOSED": 0
+  },
+  "exclude_with_disclosure": {
+   "IMPROVING": 0,
+   "PERSISTENT": 0,
+   "RELAPSED": 0,
+   "RESOLVED": 1,
+   "UNDERDOSED": 0
+  },
+  "extend_domain": {
+   "IMPROVING": 0,
+   "PERSISTENT": 0,
+   "RELAPSED": 0,
+   "RESOLVED": 1,
+   "UNDERDOSED": 0
+  },
+  "extend_ladder_down": {
+   "IMPROVING": 0,
+   "PERSISTENT": 0,
+   "RELAPSED": 0,
+   "RESOLVED": 1,
+   "UNDERDOSED": 0
+  },
+  "fix_harness_then_rerun": {
+   "IMPROVING": 0,
+   "PERSISTENT": 0,
+   "RELAPSED": 0,
+   "RESOLVED": 1,
+   "UNDERDOSED": 0
+  },
+  "more_hosts": {
+   "IMPROVING": 0,
+   "PERSISTENT": 0,
+   "RELAPSED": 2,
+   "RESOLVED": 2,
+   "UNDERDOSED": 0
+  },
+  "new_method": {
+   "IMPROVING": 0,
+   "PERSISTENT": 1,
+   "RELAPSED": 1,
+   "RESOLVED": 2,
+   "UNDERDOSED": 0
+  },
+  "probe_at_home_budget": {
+   "IMPROVING": 0,
+   "PERSISTENT": 1,
+   "RELAPSED": 0,
+   "RESOLVED": 0,
+   "UNDERDOSED": 0
+  },
+  "quality_at_equal_time_on_larger_instances": {
+   "IMPROVING": 0,
+   "PERSISTENT": 0,
+   "RELAPSED": 0,
+   "RESOLVED": 1,
+   "UNDERDOSED": 0
+  },
+  "sequential_stopping": {
+   "IMPROVING": 0,
+   "PERSISTENT": 0,
+   "RELAPSED": 0,
+   "RESOLVED": 1,
+   "UNDERDOSED": 0
+  }
+ },
+ "schema": "genesis-caveat-ledger-v3",
+ "studies": [
+  "B20_R70",
+  "B20_R75",
+  "B20_R76",
+  "B20_R77",
+  "B20_R81",
+  "B20_R90",
+  "B20_R92",
+  "B20_R97"
+ ]
+}

@@ -1,0 +1,47 @@
+{
+ "applied": {
+  "ARM_NOT_RESPONDING[deepdistc]@B20_R92": "fix_arm_harness",
+  "COMPONENT_EFFECT_UNRESOLVED@B20_R92": "dedicated_ablation_with_more_power",
+  "REGIME_GAP@B20_R70": "add_home_budgets",
+  "UNCERTIFIED_TARGETS@B20_R75": "longer_certification",
+  "UNRESOLVED_VERDICT@B20_R76": "more_hosts"
+ },
+ "chosen": {
+  "ARM_NOT_RESPONDING[deepdistc]@B20_R92": "fix_arm_harness",
+  "COMPONENT_EFFECT_UNRESOLVED@B20_R92": "dedicated_ablation_with_more_power",
+  "REGIME_GAP@B20_R70": "add_home_budgets",
+  "UNCERTIFIED_TARGETS@B20_R75": "longer_certification",
+  "UNRESOLVED_VERDICT@B20_R76": "more_hosts"
+ },
+ "deferred": {},
+ "escalate": {},
+ "estimated_runtime_s": 44016,
+ "limit_s": 35253,
+ "marginal_cost_s": {
+  "ARM_NOT_RESPONDING[deepdistc]@B20_R92": 0,
+  "COMPONENT_EFFECT_UNRESOLVED@B20_R92": 0,
+  "REGIME_GAP@B20_R70": 32591,
+  "UNCERTIFIED_TARGETS@B20_R75": 1620,
+  "UNRESOLVED_VERDICT@B20_R76": 28372
+ },
+ "over_budget": "44016 s against a limit of 35253 s, and deferring every caveat the membrane lets the cell defer would not bring it within the limit (high-severity and chronic caveats are not deferred to save time); the largest share is REGIME_GAP@B20_R70 (32591 s): split the study there or raise the limit",
+ "skipped": {
+  "UNCERTIFIED_TARGETS@B20_R75": [
+   "upper_bounds: already in the design"
+  ]
+ },
+ "work_orders": [
+  {
+   "need": "extend_domain",
+   "what": "instances up to n = 256: the task model stops at n = 63 and the native engine's vertex sets are 64-bit; a larger model and an engine with multiword sets are needed"
+  },
+  {
+   "need": "long_budgets",
+   "what": "budgets up to 60.0 s: the longest run so far was 10.0 s; cost and resumption must be planned"
+  },
+  {
+   "need": "fix_arm_harness",
+   "what": "check how deepdistc is run against its Evaluation run script and fix what differs"
+  }
+ ]
+}

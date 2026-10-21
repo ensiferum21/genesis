@@ -145,6 +145,7 @@ needs people: a reviewer, a statistician, an independent custodian on its own ma
 | B20_R94 | Large triangle-free domain (DEV), `tfxw-v1`, `maxsat-anytime-large-v1`, `candidates_large`; B20_R95 (configuration race on large hosts) preregistered |
 | B20_R95 | Configuration race on large hosts (DEV): froze #29 (descent starts, K 6, kpick 4, crossover, relinking, restarts) |
 | B20_R96 | The autonomy layer (`src/genesis/autonomy/`, `docs/AUTONOMY.md`), `tfxw-v2`, `bounds_large`, cell v2 |
+| B20_R97 | The loop's first study (DEV): FOCAL_BETTER_THAN_EVERY_CHAMPION and FOCAL_BETTER_THAN_VBS at 10 s on large hosts (19, stopped at the first look); ablations NO_MEASURABLE_EFFECT; DeepDist-c NO_RESPONSE; prospective check on the cell 8/8 |
 
 ## 6. Next steps, in order
 

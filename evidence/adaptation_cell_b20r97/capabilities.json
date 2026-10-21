@@ -1,0 +1,43 @@
+{
+ "demonstrated": {
+  "internal_tts": [],
+  "new_family": [],
+  "probes": [
+   "B20_R97"
+  ],
+  "quality_at_equal_time": [
+   "B20_R97"
+  ],
+  "sequential_stopping": [
+   "B20_R97"
+  ],
+  "upper_bounds": [
+   "B20_R70",
+   "B20_R75",
+   "B20_R76",
+   "B20_R77",
+   "B20_R81",
+   "B20_R90",
+   "B20_R92",
+   "B20_R97"
+  ]
+ },
+ "largest_long_budget_s": 10.0,
+ "max_n": 63,
+ "min_run_s": 0.005,
+ "solver_keys": [
+  "aperture",
+  "aperture-gbg",
+  "aperture-ibi",
+  "aperture-kbg",
+  "deepdist",
+  "deepdist-c",
+  "nuwls-c-2026",
+  "nuwls-c-2026-ub",
+  "nuwls-c-ibr",
+  "pasmaxsat-c",
+  "sgat-nuwls-c",
+  "spb-maxsat-c-fps",
+  "tt-open-wbo-inc"
+ ]
+}

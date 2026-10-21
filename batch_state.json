@@ -1064,6 +1064,10 @@
       "B20_R96": {
         "commits": [],
         "result": "Engineering: autonomy layer (studygen, loop, qet, archive, adversary), tfxw-v2 (pinned 9e674217...eab9; verified), cell v2 (quality-at-equal-time studies, per-domain caps), bounds_large (fractional Mantel clique packing with column generation, exactly re-checked). Tests (13). GV4 test designed; GV6 not started"
+      },
+      "B20_R97": {
+        "commits": [],
+        "result": "DEV, preregistered by the research loop (sha256 892b5a11...7d58), recomputed: FOCAL_BETTER_THAN_EVERY_CHAMPION, FOCAL_BETTER_THAN_VBS (+0.0102 [+0.0062, +0.0149]), short_vs_vbs_1 better; stopped at the first look (19 hosts); ablations (previous generation, no_cross, no_relink_restart, first design) NO_MEASURABLE_EFFECT; DeepDist-c NO_RESPONSE at 60 s; bounds re-checked, mean gap 10.8%; prospective check on the cell 8/8"
       }
     },
     "open_after_b20_r5": [
