@@ -92,6 +92,7 @@ class Profile:
     competitors: tuple
     date: str = ''
     problem_class: str = 'unweighted_partial_maxsat_anytime'
+    kind: str = 'tts'              # 'tts': time to solution (B20_R70-R92); 'qet': quality at equal time (B20_R96 on)
 
 
 @dataclass
@@ -147,10 +148,18 @@ class Study:
         return {}
 
     def budgets(self):
+        if self.profile.kind == 'qet':
+            return [float(self.summary['design']['budget'])]
         out = list(self.ladder())
         if self.summary.get('long_seconds'):
             out.append(float(self.summary['long_seconds']))
         return out
+
+    # ---- quality-at-equal-time rows: runs[arm][budget] = {'value', 'run', 'cpu_ns'}
+    def qet_value(self, row, arm):
+        b = f"{self.summary['design']['budget']:g}"
+        x = row['runs'].get(arm, {}).get(b)
+        return None if x is None else x.get('value')
 
 
 def focal_identity(study):
@@ -209,8 +218,8 @@ def unresolved_verdicts(study, catalog=None, cap=None):
 
 
 def null_ablations(study, catalog=None, cap=None):
-    nul = {k[len('ablation_'):]: v for k, v in study.labels().items()
-           if k.startswith('ablation_') and v in ('NO_MEASURABLE_EFFECT', 'UNRESOLVED')}
+    nul = {k.split('_', 1)[1]: v for k, v in study.labels().items()
+           if k.startswith(('ablation_', 'extra_')) and v in ('NO_MEASURABLE_EFFECT', 'UNRESOLVED')}
     ablated = [r for r in study.rows if any(k in r['runs'] for k in nul)] or study.rows
     ev = {'components': nul, 'hosts': len(ablated), 'largest_n': max((r['n'] for r in ablated), default=0)}
     return [Caveat('COMPONENT_EFFECT_UNRESOLVED', study.profile.study, ev)] if nul else []
@@ -229,7 +238,10 @@ def interruption(study, catalog=None, cap=None):
 
 
 def included_solvers(study):
-    """Solver keys whose pinned binaries the study recorded (its summary's 'champions')."""
+    """Solver keys whose pinned binaries the study recorded (its summary's 'champions'), or, for a study of quality at
+    equal time, the solvers its design ran."""
+    if study.profile.kind == 'qet':
+        return {s for _, s in study.summary['design']['champions']}
     return set((study.summary.get('champions') or {}).keys())
 
 
@@ -258,10 +270,19 @@ def regime_gap(study, catalog, cap=None):
     return []
 
 
+def domain_cap(study):
+    """The size cap of the task model the study's domain uses: the large domain's for a study of it (B20_R94), else
+    the n <= 63 model's (cell v2: v1 read only the latter)."""
+    if study.profile.kind == 'qet' and study.summary.get('design', {}).get('domain') == 'triangle_free_large_v1':
+        from ..models_large import LARGE_MAX_N
+        return LARGE_MAX_N
+    from ..models import GraphTask
+    return next(m.le for m in GraphTask.model_fields['n'].metadata if hasattr(m, 'le'))
+
+
 def size_cap(study, catalog=None, cap=None):
-    if cap is None:
-        from ..models import GraphTask
-        cap = next(m.le for m in GraphTask.model_fields['n'].metadata if hasattr(m, 'le'))
+    if study.profile.kind == 'qet' or cap is None:
+        cap = domain_cap(study)
     largest = max((r['n'] for r in study.rows), default=0)
     if largest >= cap:
         return [Caveat('SIZE_CAP', study.profile.study, {'largest_n': largest, 'model_cap': cap})]
@@ -375,10 +396,76 @@ def stale_knowledge(catalog, today):
     return out
 
 
-def sense(study, catalog=None, cap=None):
-    """Every receptor on one study; the caveats in receptor order."""
+# ------------------------------------------------------------------ receptors for studies of quality at equal time
+
+def qet_saturation(study, catalog=None, cap=None):
+    """The focal method and the best champion end at the same value on (almost) every host: values do not separate
+    the methods even here."""
+    rows, focal = study.rows, study.profile.focal
+    champs = [a for a, _ in study.summary['design']['champions']]
+    same = 0
+    for r in rows:
+        f = study.qet_value(r, focal)
+        c = max((v for v in (study.qet_value(r, a) for a in champs) if v is not None), default=None)
+        same += f is not None and f == c
+    if rows and same / len(rows) >= SATURATION_SHARE:
+        return [Caveat('SATURATION', study.profile.study, {'hosts_with_equal_best_values': same, 'hosts': len(rows),
+                                                           'largest_n': max(r['n'] for r in rows)})]
+    return []
+
+
+def qet_uncertified(study, catalog=None, cap=None):
+    """Hosts whose best known value is below the certified bound: how far from optimal anything can still be."""
+    rows = [r for r in study.rows if 'upper' in r]
+    if not rows:
+        rows = study.rows
+        unc, gap = len(rows), 1.0
+    else:
+        unc = sum(r['best_value'] < r['upper']['value'] for r in rows)
+        gap = sum((r['upper']['value'] - r['best_value']) / r['upper']['value'] for r in rows) / len(rows)
+    if rows and unc / len(rows) > UNCERTIFIED_SHARE:
+        return [Caveat('UNCERTIFIED_TARGETS', study.profile.study, {
+            'uncertified': unc, 'hosts': len(rows), 'mean_bound_gap': round(gap, 5),
+            'certification_s': study.summary['design'].get('bound_seconds', 0)})]
+    return []
+
+
+def qet_outperformed(study, catalog=None, cap=None):
+    lab = study.labels()
+    if lab.get('qet_champions') != 'A_CHAMPION_BETTER' and lab.get('qet_vbs') != 'VBS_BETTER':
+        return []
+    det = study.summary.get('detail', {})
+    worse = {a: {'verdict': c['verdict'], 'mean_difference': c['mean_difference']}
+             for a, c in det.get('champions', {}).items() if c['verdict'] == 'B_BETTER'}
+    lost = sum(1 for r in study.rows if (study.qet_value(r, study.profile.focal) or -1) < max(
+        (v for v in (study.qet_value(r, a) for a, _ in study.summary['design']['champions']) if v is not None),
+        default=-1))
+    return [Caveat('OUTPERFORMED', study.profile.study, {'focal': study.profile.focal,
+                                                         'focal_identity': focal_identity(study),
+                                                         'arms': {a: dict(v, native=False, families={}, sizes={})
+                                                                  for a, v in worse.items()},
+                                                         'worst_share': round(lost / max(1, len(study.rows)), 4)})]
+
+
+def qet_probe(study, catalog=None, cap=None):
     out = []
-    for r in RECEPTORS:
+    for k, v in sorted(study.labels().items()):
+        if k.startswith('probe_') and v == 'NO_RESPONSE':
+            arm = k[len('probe_'):]
+            out.append(Caveat('ARM_NOT_RESPONDING', study.profile.study, {
+                'subject': arm, 'arms': [arm],
+                'detail': {'probe': 'no response at the home budget on at least half the probed hosts'}}))
+    return out
+
+
+QET_RECEPTORS = (qet_saturation, qet_uncertified, unresolved_verdicts, null_ablations, invalid_run, interruption,
+                 missing_baseline, regime_gap, size_cap, qet_outperformed, qet_probe)
+
+
+def sense(study, catalog=None, cap=None):
+    """Every receptor for the study's kind, in receptor order."""
+    out = []
+    for r in (QET_RECEPTORS if study.profile.kind == 'qet' else RECEPTORS):
         out.extend(r(study, catalog, cap))
     return out
 

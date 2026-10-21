@@ -38,6 +38,8 @@ def _labels_invalid(study):
 
 def design_of(study):
     """The design a finished study carried out, as far as its evidence shows."""
+    if study.profile.kind == 'qet':
+        return _design_of_qet(study)
     rows, s = study.rows, study.summary
     ablation_arms = [k[len('ablation_'):] for k in study.labels() if k.startswith('ablation_')]
     ablated = [r for r in rows if any(a in r['runs'] for a in ablation_arms)]
@@ -106,11 +108,39 @@ def arm_keys(arms, keys):
     return out
 
 
+def _design_of_qet(study):
+    from .receptors import focal_identity
+    s, rows = study.summary, study.rows
+    dz = s['design']
+    arms = [dz['focal']['arm']] + [a for a, _ in dz['champions']] + [e['arm'] for e in dz.get('extra', ())]
+    return {
+        'study': study.profile.study, 'focal': study.profile.focal, 'focal_identity': focal_identity(study),
+        'ladder': [], 'reps': 1, 'long_budgets': [float(dz['budget'])] + [float(b) for b in dz.get('focal_short', ())],
+        'long_arm_names': arms, 'arms': len(arms), 'arm_names': arms,
+        'competitors': sorted({x for _, x in dz['champions']}), 'sizes': sorted({r['n'] for r in rows}),
+        'hosts': len(rows), 'certification_s': dz.get('bound_seconds', 0),
+        'certification_mean_s': dz.get('bound_seconds', 0),
+        'upper_bounds': any('upper' in r for r in rows), 'quality_at_equal_time': True,
+        'internal_tts': False, 'ablation': {'hosts': len(rows)} if dz.get('extra') else None,
+        'valid': not _labels_invalid(study), 'resumable': True, 'sequential_stopping': len(dz.get('looks', ())) > 1,
+        'probes': {p['arm'].replace('probe_', ''): {'budget_s': p['budget'], 'hosts': p['hosts']}
+                   for p in dz.get('probes', ())},
+        'excluded': {}, 'fresh_hosts': True, 'validity': dict(CANONICAL_VALIDITY), 'domain': dz.get('domain')}
+
+
 def vbs_contributors(study):
     """Competitor arms that were the fastest competitor on at least one host of `study` (finite TTS*)."""
     out = set()
     ablations = {k[len('ablation_'):] for k in study.labels() if k.startswith('ablation_')}
     comps = [a for a in study.profile.competitors if a not in ablations]
+    if study.profile.kind == 'qet':
+        for r in study.rows:
+            vals = {a: study.qet_value(r, a) for a in comps}
+            vals = {a: v for a, v in vals.items() if v is not None}
+            if vals:
+                best = max(vals.values())
+                out |= {a for a, v in vals.items() if v == best}
+        return sorted(out)
     for r in study.rows:
         tts = {a: study.tts(r, a) for a in comps if a in r['runs']}
         finite = {a: v for a, v in tts.items() if v < math.inf}

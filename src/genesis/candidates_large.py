@@ -24,7 +24,7 @@ from . import candidates_v2 as V2
 SCHEMA = 'genesis-candidate-descriptor-large-v1'
 DOMAIN = 'triangle_free_large_v1'
 CORE_FILES = ('candidates_large.py', 'candidates_v2.py', 'graphs_large.py', 'models_large.py')
-LARGE_KINDS = ('tfxw-v1', 'maxsat-anytime-large-v1')
+LARGE_KINDS = ('tfxw-v1', 'maxsat-anytime-large-v1', 'tfxw-v2')
 MAX_OUTPUT = 8 << 20
 CHILD_ARGV = ('-s', '-B', '-m', 'genesis.candidates_large', '--trusted-candidate-child', '/work/src/request.json')
 

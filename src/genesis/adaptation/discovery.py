@@ -41,6 +41,16 @@ def is_tts_study(d):
     return bool(summary.get('ladder')) and 'runs' in first and 'target' in first
 
 
+def is_qet_study(d):
+    s = d / 'summary.json'
+    if not (s.exists() and (d / 'rows.jsonl').exists()):
+        return False
+    try:
+        return json.loads(s.read_text()).get('schema') == 'genesis-qet-study-v1'
+    except ValueError:
+        return False
+
+
 def discover(root, include_unfinished=False):
     """Profiles of every time-to-solution study under `root/evidence`, in batch order."""
     out = []
@@ -50,6 +60,14 @@ def discover(root, include_unfinished=False):
             continue
         finished = (d / 'summary.json').exists()
         if not finished and not include_unfinished:
+            continue
+        if finished and is_qet_study(d):
+            s = json.loads((d / 'summary.json').read_text())
+            arms = [s['design']['focal']['arm']] + [a for a, _ in s['design']['champions']] + \
+                [e['arm'] for e in s['design'].get('extra', ())]
+            rel = d.relative_to(root)
+            out.append((int(m.group(1)), Profile(f'B20_R{m.group(1)}', str(rel), arms[0], tuple(arms[1:]),
+                                                 _date(root, rel / 'summary.json'), kind='qet')))
             continue
         if finished and not is_tts_study(d):
             continue
