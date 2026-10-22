@@ -1,4 +1,4 @@
-# Genesis handover (continuation line, as of B20_R57)
+# Genesis handover (continuation line, as of B20_R97; refreshed 22 Oct 2026)
 
 This is the full handover of the builder's work on the `continuation-b20-rx` line. A successor operator, reviewer
 or agent can resume from it with nothing else. It is refreshed at every checkpoint. The copy inside a handover zip
@@ -14,7 +14,7 @@ describes that zip's own contents (see "Package contents").
 
 | What | Where |
 |---|---|
-| Canonical branch | `continuation-b20-rx` (GitHub `ensiferum21/genesis`; GitHub has not been linked to the builder's session since B20_R24, so the line is delivered as zips and bundles) |
+| Canonical branch | `continuation-b20-rx` on GitHub `ensiferum21/genesis`, pushed directly. B20_R66–R97 were built by a second builder session from the B20_R65 handover; from 22 Oct 2026 one builder session continues it. Only one session may write to this branch at a time: two writers split the line once (a duplicate B20_R66 run is kept on `side-b20r66-local-rerun`, same script and hosts, consistent: +18.75 vs +16.65 at 64×) |
 | Side branch, not canonical | `side-b21-equational` (`710d26d`; equational generations W21/E4, primitives, fault routes) |
 | Archive of checkpoints | the `archive` branch (zips, rehearsal reports, `SHA256SUMS`, README with one row per checkpoint) |
 | Latest checkpoint | see the table in `NEXT_ACTIONS.md` ("Checkpoints"); each one is restore-verified, and its driver rehearsal on the build host is REPRODUCED (not a second machine) |
@@ -76,9 +76,9 @@ bash deployment/reproduce.sh <zip> <sha256> <out> --build-toolchain
 | Gate | State | Key evidence |
 |---|---|---|
 | GV0–GV2 (foundations, custody, reproducibility) | Built; release matrix green (about 1,400 tests, one declared skip); checkpoints reproduce on the build host. Independent review and a second machine are missing | `NEXT_ACTIONS.md` checkpoints; `deployment/` |
-| GV3 (useful discovery beyond strong baselines) | Builder side done for E1, E1b, E1b-C4 and E1d. **E1d** beats HiGHS at 4× budget (+9.80 per host, SUPPORTED rehearsal; ablation +7.07, null clean); the advantage ends between 8× and 16× (B20_R63: HiGHS ties from 32×, proving every optimum in about 6 CPU s) on the calibrated hosts, and grows with host size (B20_R64, DEV: at n60 it holds at 64×, +17.6; replicated by B20_R66 on 20 fresh hosts, +16.65 at 64× and +2.00 at 120×). **But B20_R68:** a standard max-cut tabu search at the same budget ties it on the calibrated settings and beats it at n60, so E1d's advantage is over a generic MILP, not over the field's methods. E1, E1b and E1b-C4 are READY_FOR_REVIEW against DSL baselines but MIP-dominated (B20R33-OPEN-1) | `handoff/e1`, `e1b`, `e1b_c4`, `e1d` |
-| GV4 (better improver) | **UNESTABLISHED; the main risk.** No probed domain has research-policy headroom: graph construction (selection, proposal), the equational systems (nine settings, including Wolfram at hard settings: selection, keeping, larger conjecture spaces), larger C4 rows, sum-free pattern selection (B20_R58). The builder recommends the roadmap's fallback. Six invented components have no construction utility after cost. Two certification utilities survive false-discovery control (B20_R35, B20_R48) | `handoff/gv4/README.md` (DRAFT) |
-| GV5 (compounding generations) | Not started (depends on GV4) | — |
+| GV3 (useful discovery beyond strong baselines) | Builder side done for E1, E1b, E1b-C4 and E1d, but **E1d's case narrowed**: it beats HiGHS at 4× (+9.80, SUPPORTED rehearsal) with a crossover between 8× and 16× on calibrated hosts that grows with size (B20_R63, R64, R66), yet it only matches a textbook max-cut tabu search (B20_R68) and is slower than domain heuristics (B20_R70): its lead over HiGHS is the max-cut reduction's. The **builder-made engine** (`hybrid-swap-v1`, `tfx`, `tfxw`) beats CP-SAT, BURER2002 and all 13 MaxSAT champions on DEV (B20_R77, R90, R92, R97), which is a useful-solver result, not a discovery | `handoff/e1d`, `evidence/*_b20r6[3-8]`, `evidence/*_b20r7[0-7]`, `evidence/*_b20r9[0-7]` |
+| GV4 (better improver) | **UNESTABLISHED; the main risk.** No probed domain has research-policy headroom (graph construction, nine equational settings, larger C4 rows, sum-free pattern selection). The system's own program search builds an iterated local search with a swap-like step from random programs (B20_R79), but random sampling of the same language does as well (B20_R80, R81); physics-inspired operators show no measurable effect (B20_R72, R92, R97). The adaptation cell and autonomy layer (B20_R93–R97) design and preregister studies themselves (prospective checks 9/9, 8/8): research-level automation, not yet a better-improver comparison. Daniel's discovery note (22 Oct 2026, `docs/DISCOVERY_PLAN.md`) is the next GV4 direction | `handoff/gv4/README.md`, `docs/AUTONOMY.md`, `docs/DISCOVERY_PLAN.md` |
+| GV5 (compounding generations) | Started: generation 2 of the program search calls generation 1 but ties its no-library control on the training hosts (B20_R83, R84: 291.59 vs 291.61). Generation 3 (B20_R85) and the compounding test (B20_R86) were preregistered at `9aad649` and deferred; B20_R85 is run from 22 Oct 2026, B20_R86 needs the OR-Tools wheel (CP-SAT, Part B) | `evidence/generation2_b20r83/`, `evidence/generation2_control_b20r84/` |
 | GV6 (structural transfer) | A positive near-domain chain in C4 (B20_R46–R52: invented, Lean-checked rows; utility attributed to them, 36 vs 24 of 40). Equational target: no headroom (B20_R53–R54). Sum-free target (a different theorem family): the procedure transfers, 20/20 Lean (B20_R55); NO_CERTIFICATION_UTILITY unenriched (B20_R56), **CERTIFICATION_UTILITY** on hosts hard for the conventional route (B20_R57, 22 vs 14, p 0.0039), **not replicated** (B20_R59, 23 vs 21, p 0.25); the certified-bound advantage replicated | `handoff/gv6/README.md` (DRAFT) |
 | GV7 (independent replication) | Handoff package exists (B20_R21); needs a second operator and machine | `handoff/replication/` |
 | GV8 (extended domains) | Out of scope so far | — |
@@ -149,21 +149,26 @@ needs people: a reviewer, a statistician, an independent custodian on its own ma
 
 ## 6. Next steps, in order
 
-1. **Checkpoint B20_R73** (at `5f3dd5e`) covers B20_R66–R73: release matrix 1,515 OK, restore-verified (6,151 entries), archived; the build-host rehearsal (`deployment/reproduce.sh`) was not run for it. **Checkpoint B20_R65** (at `821b743`) covers B20_R59–R65: release matrix 1,455 OK, restore-verified (6,093 entries), build-host rehearsal REPRODUCED, archived. B20_R58 (at `02415a8`) is recorded likewise. The next checkpoint follows B20_R66. Build checkpoints and run timing-sensitive studies on a quiet machine, one at a time (a checkpoint matrix failed when the tree was edited during it, and B20_R64's first run was CPU-starved). Keep the session's disk allowance in mind: delete old `/tmp/genesis-repro-*` trees after each rehearsal (B20_R59 and one B20_R58 rehearsal were interrupted by disk exhaustion).
-2. **Get the decisions in the review brief.** Most remaining work depends on them. In particular:
-   - item 1, the strong-baseline scope;
-   - item 3, generated-rows certification as a trust path;
-   - item 4, whether certification utility counts;
-   - item 5, the GV6 target;
-   - item 6, the GV4 domain or the fallback.
-3. **After decisions:**
-   - freeze the adopted DRAFT rules and packages;
-   - have an independent custodian run SELECT, register and evaluate for E1d (and E1/E1b/E1b-C4 within scope);
-   - with a statistician, sign off the power models (`docs/STATISTICIAN_BRIEF.md`; fix its findings 1–3 at the freeze).
-4. **GV4:** if a new domain is chosen, run a headroom pilot first (the B20_R3/R53 pattern) before any study.
-   Otherwise the fallback claim is drafted (`handoff/gv4/FALLBACK_CLAIM_DRAFT.md`, B20_R60) for the reviewer to accept,
-   narrow or reject.
-5. **GV7:** give `handoff/replication/` and a checkpoint to a second operator.
+1. **Restore the state-of-the-art toolchain on the builder's machine.** Built tools do not survive a new container.
+   Rebuilt and byte-identical to their pins on 22 Oct 2026: MQLib, DeepDist, `tfx`, `tfxw`, `tfxw2`
+   (`scripts/b20r74_sota_tools.py`, `b20r87_maxsat_tools.py --deepdist`, `b20r88/94/96_build_*.py`). Still to build,
+   waiting for files the session's egress policy cannot fetch (PyPI, the Ubuntu archive and crates.io answer 403):
+   the GMP packages `libgmp-dev_6.3.0+dfsg-2ubuntu6_amd64.deb` and `libgmpxx4ldbl_6.3.0+dfsg-2ubuntu6_amd64.deb` (for
+   `b20r87_maxsat_tools.py --solvers` and `b20r91_mse2026_tools.py`) and the wheel
+   `ortools-9.15.6755-cp313-cp313-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl` (`b20r74_sota_tools.py
+   --ortools-wheel`). The 2026 solver archives (Daniel's download, 22 Oct 2026) match their pinned SHA-256 and MD5.
+2. **Finish the preregistered GV5 test:** B20_R85 (generation 3), then B20_R86 (do the generations compound?).
+3. **B20_R98, the adaptation cell's work order:** a harness check of DeepDist-c and NuWLS-c-2026, which end near half
+   the best value on 256-vertex hosts in B20_R97 (not their Evaluation behaviour). Our kinds pipe the instance as
+   `/proc/self/fd/0` and stop the solver with SIGTERM; the Evaluation gives a file and runs NuWLS under runsolver
+   with 32 GB. Until this check is done, B20_R97's margins over those two solvers are not evidence about them.
+4. **Checkpoint after B20_R86** (the last is B20_R73, never rehearsed; R74–R97 are not in a checkpoint). Build it and
+   run timing studies alone, one at a time (lessons: a checkpoint matrix failed when the tree was edited during it;
+   B20_R64's first run was CPU-starved; unpinned Lean processes spill onto the other core).
+5. **B20_R99: the discovery headroom pilot** from Daniel's note (`docs/DISCOVERY_PLAN.md`).
+6. **The adaptation cell's next design** (the 60 s stage of B20_R97, staged by the cell; about 12 h).
+7. **Decisions and people** (unchanged): the review brief's decisions, a statistician (`docs/STATISTICIAN_BRIEF.md`),
+   an independent custodian, a second operator (GV7).
 
 ## 7. Package contents (the handover zip)
 
