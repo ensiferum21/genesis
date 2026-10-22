@@ -1,0 +1,700 @@
+{
+ "code_identity": "7ac76c0b274cf24d1072aec15fb984128986aa68d240f8f7f4e7e30df44e7609",
+ "constants": {
+  "BUDGET": 0.25,
+  "CHILDREN": 8,
+  "POP": 16,
+  "SEARCH_S": 6000.0
+ },
+ "cpu_s": 6162.2,
+ "descriptor_at_0.5s": {
+  "descriptor_id": "36b7b6eb5c7b2d6439186ff9ca6ee3c53ce0335dce8b70654bb58c5ee8f11643",
+  "domain": "triangle_free_host_v1",
+  "implementation": {
+   "candidate_kinds/solver_library_program.py": "b438e37a774d2490c608f769bcb6476c41136f7ea8fc513453088f4818dcf3bb",
+   "candidate_kinds/solver_program.py": "077f2443ff209496e8923120597acfe49572ea97b2542f7046a6f6ced723c85e",
+   "candidates_v2.py": "b9d7a43efcbb6b64bbf5c723602f95a88bd3907454a8ba31706bf116de8cbc6a",
+   "formal_research/triangle_theory.py": "32768094b0f8c58f0ac09492c9538000a4ef61af611962f077f56823d520db58",
+   "graphs.py": "e0e8e089a240a2fc3a422d29c6fe65a6031d06264eab29fb8a991ad60213261d",
+   "invention/representations.py": "5c53e369b93db4d854c1829587202423bd81c14eafa55808b77c1852f44bfcbd",
+   "invention/solver_library.py": "ae56d8ab152b134322ff6cf2ff7679e7b680fed18bafafa722ae4be933d5034a",
+   "invention/solver_programs.py": "6700866deae0810d68df9f0460ec3a0211aadc42345ffd02e7c5aadc046346e2",
+   "invention/soundness.py": "d50071a54da40ebf2c707824b0dfd497ecb589d489dc78b579ec28a8fb8835da",
+   "models.py": "2d10c569f5de3ee209ce07525972d199bba1168ae187ffc223880491fa701d05"
+  },
+  "kind": "solver-library-v1",
+  "parameters": {
+   "cpu_seconds": 0.5,
+   "program": {
+    "body": [
+     [
+      "macro",
+      0
+     ],
+     [
+      "split",
+      0.25,
+      [
+       [
+        "repeat",
+        1,
+        [
+         [
+          "loop",
+          [
+           [
+            "macro",
+            1
+           ],
+           [
+            "macro",
+            0
+           ]
+          ]
+         ],
+         [
+          "descent"
+         ]
+        ]
+       ]
+      ],
+      [
+       [
+        "macro",
+        1
+       ],
+       [
+        "descent"
+       ],
+       [
+        "macro",
+        1
+       ]
+      ]
+     ],
+     [
+      "repeat",
+      10,
+      [
+       [
+        "descent"
+       ],
+       [
+        "macro",
+        0
+       ]
+      ]
+     ]
+    ],
+    "library": [
+     [
+      [
+       "descent"
+      ],
+      [
+       "split",
+       0.1,
+       [
+        [
+         "sweep",
+         "drop",
+         "sideways"
+        ],
+        [
+         "loop",
+         [
+          [
+           "split",
+           0.1,
+           [
+            [
+             "relabel",
+             "random",
+             "anneal",
+             1000
+            ]
+           ],
+           [
+            [
+             "descent"
+            ]
+           ]
+          ]
+         ]
+        ]
+       ],
+       [
+        [
+         "split",
+         0.75,
+         [
+          [
+           "relabel",
+           "random",
+           "anneal",
+           1000
+          ]
+         ],
+         [
+          [
+           "descent"
+          ]
+         ]
+        ]
+       ]
+      ]
+     ],
+     [
+      [
+       "split",
+       0.25,
+       [
+        [
+         "descent"
+        ],
+        [
+         "macro",
+         0
+        ],
+        [
+         "edges",
+         "force",
+         "improve",
+         1
+        ]
+       ],
+       [
+        [
+         "split",
+         0.9,
+         [
+          [
+           "edges",
+           "drop",
+           "anneal",
+           1
+          ]
+         ],
+         [
+          [
+           "descent"
+          ],
+          [
+           "macro",
+           0
+          ]
+         ]
+        ],
+        [
+         "relabel",
+         "random",
+         "sideways",
+         100
+        ],
+        [
+         "loop",
+         [
+          [
+           "macro",
+           0
+          ],
+          [
+           "relabel",
+           "best",
+           "anneal",
+           1
+          ],
+          [
+           "descent"
+          ]
+         ]
+        ]
+       ]
+      ]
+     ]
+    ],
+    "rep": "cross_2"
+   }
+  },
+  "resource_profile": {
+   "cpu_seconds": 2,
+   "memory_mib": 2048,
+   "queries": 1000,
+   "wall_seconds": 10
+  },
+  "schema": "genesis-candidate-descriptor-v2"
+ },
+ "exposure_scan": {
+  "calibration_hosts": 456,
+  "distinct_hosts": 3339,
+  "e1_named_hosts": 711,
+  "empty_files_skipped": [
+   "evidence/failed-wal-final-replay.json",
+   "evidence/final-replay.json"
+  ],
+  "excluded_identities": 3339,
+  "files_scanned": 1204,
+  "host_records": 15057
+ },
+ "library_sources": [
+  "evidence/program_search_b20r79/discovered_program.json",
+  "evidence/generation2_b20r83/program.json"
+ ],
+ "macros_used": [
+  0,
+  1
+ ],
+ "program": {
+  "body": [
+   [
+    "macro",
+    0
+   ],
+   [
+    "split",
+    0.25,
+    [
+     [
+      "repeat",
+      1,
+      [
+       [
+        "loop",
+        [
+         [
+          "macro",
+          1
+         ],
+         [
+          "macro",
+          0
+         ]
+        ]
+       ],
+       [
+        "descent"
+       ]
+      ]
+     ]
+    ],
+    [
+     [
+      "macro",
+      1
+     ],
+     [
+      "descent"
+     ],
+     [
+      "macro",
+      1
+     ]
+    ]
+   ],
+   [
+    "repeat",
+    10,
+    [
+     [
+      "descent"
+     ],
+     [
+      "macro",
+      0
+     ]
+    ]
+   ]
+  ],
+  "library": [
+   [
+    [
+     "descent"
+    ],
+    [
+     "split",
+     0.1,
+     [
+      [
+       "sweep",
+       "drop",
+       "sideways"
+      ],
+      [
+       "loop",
+       [
+        [
+         "split",
+         0.1,
+         [
+          [
+           "relabel",
+           "random",
+           "anneal",
+           1000
+          ]
+         ],
+         [
+          [
+           "descent"
+          ]
+         ]
+        ]
+       ]
+      ]
+     ],
+     [
+      [
+       "split",
+       0.75,
+       [
+        [
+         "relabel",
+         "random",
+         "anneal",
+         1000
+        ]
+       ],
+       [
+        [
+         "descent"
+        ]
+       ]
+      ]
+     ]
+    ]
+   ],
+   [
+    [
+     "split",
+     0.25,
+     [
+      [
+       "descent"
+      ],
+      [
+       "macro",
+       0
+      ],
+      [
+       "edges",
+       "force",
+       "improve",
+       1
+      ]
+     ],
+     [
+      [
+       "split",
+       0.9,
+       [
+        [
+         "edges",
+         "drop",
+         "anneal",
+         1
+        ]
+       ],
+       [
+        [
+         "descent"
+        ],
+        [
+         "macro",
+         0
+        ]
+       ]
+      ],
+      [
+       "relabel",
+       "random",
+       "sideways",
+       100
+      ],
+      [
+       "loop",
+       [
+        [
+         "macro",
+         0
+        ],
+        [
+         "relabel",
+         "best",
+         "anneal",
+         1
+        ],
+        [
+         "descent"
+        ]
+       ]
+      ]
+     ]
+    ]
+   ]
+  ],
+  "rep": "cross_2"
+ },
+ "role": "generation 3",
+ "schema": "genesis-b20r83-generation-search-v1",
+ "search": {
+  "distinct_programs": 1201,
+  "evaluations": 1497,
+  "finalists": [
+   {
+    "body": [
+     [
+      "init"
+     ],
+     [
+      "split",
+      0.25,
+      [
+       [
+        "macro",
+        1
+       ],
+       [
+        "descent"
+       ],
+       [
+        "macro",
+        1
+       ]
+      ],
+      [
+       [
+        "macro",
+        1
+       ],
+       [
+        "descent"
+       ],
+       [
+        "sweep",
+        "force",
+        "anneal"
+       ]
+      ]
+     ]
+    ],
+    "final_mean": 289.8906,
+    "rep": "adjacent_2",
+    "search_fitness": 289.9375,
+    "size": 8
+   },
+   {
+    "body": [
+     [
+      "macro",
+      0
+     ],
+     [
+      "split",
+      0.25,
+      [
+       [
+        "repeat",
+        1,
+        [
+         [
+          "loop",
+          [
+           [
+            "macro",
+            0
+           ]
+          ]
+         ],
+         [
+          "descent"
+         ]
+        ]
+       ]
+      ],
+      [
+       [
+        "macro",
+        1
+       ],
+       [
+        "descent"
+       ],
+       [
+        "descent"
+       ],
+       [
+        "macro",
+        1
+       ]
+      ]
+     ],
+     [
+      "repeat",
+      10,
+      [
+       [
+        "descent"
+       ],
+       [
+        "macro",
+        0
+       ]
+      ]
+     ]
+    ],
+    "final_mean": 289.8438,
+    "rep": "cross_2",
+    "search_fitness": 289.9375,
+    "size": 13
+   },
+   {
+    "body": [
+     [
+      "init"
+     ],
+     [
+      "split",
+      0.25,
+      [
+       [
+        "repeat",
+        1,
+        [
+         [
+          "loop",
+          [
+           [
+            "macro",
+            0
+           ]
+          ]
+         ],
+         [
+          "descent"
+         ]
+        ]
+       ]
+      ],
+      [
+       [
+        "macro",
+        1
+       ],
+       [
+        "descent"
+       ],
+       [
+        "sweep",
+        "drop",
+        "anneal"
+       ]
+      ]
+     ],
+     [
+      "repeat",
+      10,
+      [
+       [
+        "repeat",
+        1,
+        [
+         [
+          "loop",
+          [
+           [
+            "macro",
+            0
+           ]
+          ]
+         ],
+         [
+          "descent"
+         ]
+        ]
+       ]
+      ]
+     ]
+    ],
+    "final_mean": 289.9688,
+    "rep": "cross_2",
+    "search_fitness": 289.9375,
+    "size": 14
+   },
+   {
+    "body": [
+     [
+      "macro",
+      0
+     ],
+     [
+      "split",
+      0.25,
+      [
+       [
+        "repeat",
+        1,
+        [
+         [
+          "loop",
+          [
+           [
+            "macro",
+            1
+           ],
+           [
+            "macro",
+            0
+           ]
+          ]
+         ],
+         [
+          "descent"
+         ]
+        ]
+       ]
+      ],
+      [
+       [
+        "macro",
+        1
+       ],
+       [
+        "descent"
+       ],
+       [
+        "macro",
+        1
+       ]
+      ]
+     ],
+     [
+      "repeat",
+      10,
+      [
+       [
+        "descent"
+       ],
+       [
+        "macro",
+        0
+       ]
+      ]
+     ]
+    ],
+    "final_mean": 290.0,
+    "rep": "cross_2",
+    "search_fitness": 289.9062,
+    "size": 13
+   }
+  ],
+  "generations": 149,
+  "macro_use_in_final_population": 16
+ },
+ "seeds": {
+  "hosts": 20268501,
+  "search": 20268502
+ },
+ "size": 13,
+ "status": "DEV generation of the program search; judged in B20_R86; licenses nothing",
+ "study": "b20r85"
+}

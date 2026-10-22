@@ -50,3 +50,18 @@ Alone, pinned, 6,241 s (`evidence/generation2_control_b20r84/`); light builder w
 cuts with an annealed edge sweep; final mean 291.61 against generation 2's 291.59. The library made no difference on
 the training hosts. B20_R85 and B20_R86 are deferred, not withdrawn: Daniel asked for the comparison with the
 strongest tuned solvers first (B20_R87 onward).
+
+## B20_R85 result (generation 3)
+
+Run on 22 Oct 2026 by the builder continuing the line, alone on CPU 0, unchanged from its preregistration at
+`9aad649`: 6,397 s (6,162 CPU s), `code_identity` `7ac76c0b…7609` (`evidence/generation3_b20r85/`).
+
+With generations 1 and 2 callable, the search froze a 13-statement program on cross_2. It calls generation 1, then a
+schedule that alternates generation 2 and generation 1, with descent, and ends in repeated descent and generation 1.
+It adds no new move; it schedules the earlier discoveries. Final mean 290.00 on its own 16 training hosts (not
+comparable with B20_R83's or B20_R84's). All 16 programs of its final population call the library.
+
+**Disclosed:** during the run the other core did the builder's work at the lowest priority (toolchain rebuild,
+development looks for B20_R99 and B20_R100). The fitness is metered in CPU time on the study's own core.
+
+Record tests (2); exposure addenda (16 hosts). B20_R86 judges generations 1–3 and the control on fresh hosts.

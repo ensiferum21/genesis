@@ -144,5 +144,43 @@ class RecordB20R84(unittest.TestCase):
         self.assertEqual([t['task_id'] for t in a], [t['task_id'] for t in b])
 
 
+class RecordB20R85(unittest.TestCase):
+    """B20_R85's outputs: the frozen generation-3 program (library: generations 1 and 2) and its history."""
+
+    @classmethod
+    def setUpClass(cls):
+        import json
+        d = G.STUDIES['b20r85']['out']
+        cls.s = json.loads((d / 'summary.json').read_text())
+        cls.frozen = json.loads((d / 'program.json').read_text())
+        cls.hist = [json.loads(l) for l in (d / 'history.jsonl').read_text().splitlines() if l.strip()]
+
+    def test_the_frozen_program(self):
+        import json
+        from genesis import candidates_v2 as C2
+        from genesis.candidate_kinds import solver_program as KP
+        from genesis.invention import solver_library as SL
+        prog = self.frozen['program']
+        self.assertEqual(SL.problems(prog, KP.licensed_reps('triangle_free_host_v1')), [])
+        gen1 = json.loads(G.GEN1.read_text())['program']
+        gen2 = json.loads(G.GEN2.read_text())['program']
+        self.assertEqual(prog['library'], [SL.as_library_entry(gen1), SL.as_library_entry(gen2)])
+        self.assertEqual(self.frozen['macros_used'], [0, 1])
+        self.assertEqual(C2.descriptor_problems(self.frozen['descriptor_at_0.5s'], domain='triangle_free_host_v1'), [])
+        best = max(self.s['search']['finalists'], key=lambda f: (f['final_mean'], -f['size']))
+        self.assertEqual((best['body'], best['rep'], best['final_mean']), (prog['body'], prog['rep'], 290.0))
+
+    def test_the_history_and_the_hosts(self):
+        import json
+        self.assertEqual(len(self.hist), self.s['search']['evaluations'])
+        self.assertTrue(all(h['round'] == 0 for h in self.hist[:16]))
+        self.assertEqual(self.s['search']['macro_use_in_final_population'], 16)
+        self.assertEqual(self.s['seeds'], {'hosts': 20268501, 'search': 20268502})
+        a = json.loads((G.STUDIES['b20r85']['out'] / 'hosts.json').read_text())['tasks']
+        others = [json.loads((G.STUDIES[k]['out'] / 'hosts.json').read_text())['tasks'] for k in ('b20r83', 'b20r84')]
+        self.assertEqual(len(a), 16)
+        self.assertFalse({t['task_id'] for t in a} & {t['task_id'] for o in others for t in o})
+
+
 if __name__ == '__main__':
     unittest.main()
