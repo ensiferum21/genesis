@@ -74,21 +74,29 @@ has seen.
    - B20_R99, is there structure left where the searches stop;
    - B20_R100, the knowledge map's first prospective test: its predictions for B20_R86, committed before B20_R86 runs;
    - B20_R101, the Gset max-cut domain with Daniel's files: 54 instances checked, best-known values with sources.
-2. **The knowledge map (L2), beyond B20_R100.** Widen it from the eight time-to-solution and equal-time studies to
+2. **The feedback contract and the zero-signal battery (B20_R103; Daniel's research alert of 22 Oct 2026,
+   `docs/RESEARCH_ALERTS.md`).** Before any level is allowed to improve itself on repeated feedback, it is shown not
+   to mistake noise for progress. The contract has a fixed threshold, gives restricted feedback, uses confirmation
+   evaluations and a stopping rule, and keeps final numbers on held-out hosts only. It is tested by searches and study
+   analyses on problems with no signal, which must stop, and with a planted signal, which must still be found.
+3. **The knowledge map (L2), beyond B20_R100.** Widen it from the eight time-to-solution and equal-time studies to
    every recorded row. Replay the history: would choosing studies by information gain have reached the recorded
    decisions sooner? Then let it choose experiments, with its predictions written before each study.
-3. **The view portfolio (L1).** Five views of the triangle-free problem and max cut, with project and lift between
+4. **The view portfolio (L1).** Five views of the triangle-free problem and max cut, with project and lift between
    them. Per-instance view selection, judged on held-out families (G(n, 0.5) against planted, Gset toroidal against
    random).
-4. **The discovery loop (L1)**, if B20_R99 finds structured headroom: invented concepts become new statements of the
+5. **The discovery loop (L1)**, if B20_R99 finds structured headroom: invented concepts become new statements of the
    language. Otherwise, coarse-graining views as the first invented representations.
-5. **Evolvability-selected search (L1→L2):** operators and language evolve, and lineages are selected by their
+6. **Evolvability-selected search (L1→L2):** operators and language evolve, and lineages are selected by their
    improvement rate on held-out families.
-6. **Open-ended curricula (L2):** generate problem variants at the edge of competence, keep a quality-diversity
+7. **Open-ended curricula (L2):** generate problem variants at the edge of competence, keep a quality-diversity
    archive of solvers.
-7. **Receptor calibration and policy revision (L3):** judged by L2's research yield on families held out from all
+8. **Receptor calibration and policy revision (L3):** judged by L2's research yield on families held out from all
    levels below.
-8. **With Daniel's resources:**
+9. **A causal-discovery checkpoint** (research alert item 2): multi-environment linear systems
+   with planted hidden confounders, Genesis against LinADMG and established baselines, scored on edge recovery and
+   on proposing the measurement or intervention that resolves a confounder.
+10. **With Daniel's resources:**
    - a code model as an operator and representation proposer inside the sandbox, with the fixed layer judging (needs
      API access from the run machine);
    - a many-core persistent machine, so that the levels' studies run in parallel.

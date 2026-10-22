@@ -1,0 +1,80 @@
+# Research alerts and what Genesis does with them
+
+Each alert is Daniel's, recorded with the decision it led to and the batch that carries it. The papers are taken as
+the alert describes them. If a paper could not be located independently, that is said.
+
+## 22 October 2026 ("Genesis Distinction Engine — Research Alert")
+
+### 1. Preventing an autonomous agent from fooling its own judge (priority: high)
+
+**The alert.** *An Explicit Feedback Contract for Iterative ML-Agent Harnesses* (preprint, submitted 20 Oct 2026).
+Iterative agents manufacture apparent gains by optimising repeatedly against the same validation data. In a setting
+with no possible improvement:
+- unrestricted feedback produced a reported gain of 0.0157;
+- a restricted-feedback protocol reduced it to 0.0033.
+
+The protocol has four parts:
+- it releases validation scores only when an improvement exceeds a noise-dependent threshold;
+- it restricts access to validation artifacts;
+- it fixes stopping conditions;
+- it keeps a separate test set for the final evaluation.
+
+The formal guarantee covers a fixed-threshold variant. A web search on 23 Oct 2026 did not locate the preprint, so it
+is used as the alert describes it.
+
+**Where Genesis stands.** Three of the four parts are already enforced at the level of claims:
+- every claim is preregistered and judged on fresh hosts drawn after the design was fixed (a separate test set);
+- `judge.py` recomputes sealed evaluations from raw receipts;
+- stopping rules are part of each preregistration (B20_R97's looks).
+
+The gap is one level down, inside the improvers:
+- The program search (B20_R79 onwards) and the configuration races (B20_R89, R95) select on repeated fitness
+  feedback from the same training hosts. Their reported training numbers ("290.00 on its own hosts") are optimistic
+  by construction, which is why they are never used as claims.
+- The research loop sees full study results.
+
+Neither has a contract that bounds how much noise it can mistake for progress. Neither has been tested on a problem
+with no signal, where the right answer is to stop.
+
+**Decision: B20_R103, strengthen the judge; no redesign.**
+- **Engineering, `autonomy/feedback.py`.** A feedback contract with a *fixed* threshold, set from a calibration of the
+  evaluation noise before the search starts (the variant the guarantee covers). A research worker (a search, or the
+  loop) receives an improvement only when it exceeds the threshold *and* a fresh confirmation evaluation agrees.
+  Otherwise it receives "not better" and no number. The judge keeps the detailed scores. A worker stops after a
+  fixed number of consecutive rejections. Final numbers come only from held-out hosts the worker never saw.
+- **Study (preregistered), the zero-signal battery:**
+  - *L1, no signal:* Genesis's program search, with its real language and selection, on an oracle whose value is
+    noise independent of the program. Measured: the reported gain, unrestricted against under the contract, over many
+    replicate searches. The search must learn to stop.
+  - *L1, signal present:* the same, with a planted real effect. The contract must not stop real progress.
+  - *L2, no signal:* the research loop's preregistered analyses (`autonomy.qet`, the quantile-ratio labels) on
+    synthetic studies whose arms are identical. Their false "better" rate must stay within the nominal level.
+- An adaptive threshold would need its own statistical validation before adoption; it is not part of B20_R103.
+
+### 2. Causal discovery with hidden variables (priority: medium-high)
+
+**The alert.** *Causal Discovery for Linear Models with Latent Confounding via Multi-domain Identifiable
+Representation Learning* (LinADMG; preprint, submitted 20 Oct 2026). It uses several environments to identify the
+noise variables when unobserved variables confound several observed ones, with conditions under which direct causal
+edges, and possibly the whole graph, are recoverable. It assumes linear models and specific identifiability
+conditions, and does not invent unknown variables. A web search on 23 Oct 2026 did not locate it.
+
+**Why it matters to Genesis.** The roadmap's missing-variable question: can the system tell when its measurements
+cannot explain what it sees, and propose the measurement or intervention that would? Genesis has a first, narrow
+version of "knowing what it does not know": the knowledge map's uncertainty and surprises (B20_R100). It has nothing
+for hidden causes.
+
+**Decision: a later checkpoint, not now.** It is added to `docs/RECURSIVE_IMPROVEMENT_ARCHITECTURE.md`'s build order
+as a benchmark:
+- multi-environment linear systems with planted hidden confounders;
+- Genesis against LinADMG (if its code is released) and established baselines;
+- scored on causal-edge recovery, and on whether Genesis proposes the extra measurement or intervention that resolves
+  a confounder.
+
+It needs a new domain (causal models, with a checker for graph recovery) and comes after the feedback contract and the
+Gset track.
+
+## Overall
+
+The Explorer–Judge–Consolidator shape stays. The urgent part is item 1: it decides whether any future claim of
+recursive improvement can be trusted, and it is where B20_R103 goes.
