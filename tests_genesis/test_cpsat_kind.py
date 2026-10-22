@@ -30,6 +30,37 @@ class Pin(unittest.TestCase):
                 C2.build_descriptor('cpsat-v1', TF, {'cpu_seconds': 1}, **PROFILE)
         self.assertIsNone(K.tree_digest('/nonexistent/genesis-sota'))
 
+    def test_the_pin_does_not_depend_on_where_the_wheel_was(self):
+        # B20_R98: pip's direct_url.json records the wheel's folder; two installs of one wheel must pin alike
+        import tempfile
+        from pathlib import Path
+        with tempfile.TemporaryDirectory() as d:
+            digests = []
+            for where in ('/a/x.whl', '/elsewhere/x.whl'):
+                root = Path(d) / where.split('/')[1]
+                (root / 'pkg').mkdir(parents=True)
+                (root / 'pkg' / 'lib.py').write_text('x = 1\n')
+                (root / 'pkg-1.dist-info').mkdir()
+                (root / 'pkg-1.dist-info' / 'METADATA').write_text('Name: pkg\n')
+                (root / 'pkg-1.dist-info' / 'direct_url.json').write_text('{"url": "file://%s"}' % where)
+                (root / 'pkg-1.dist-info' / 'RECORD').write_text(f'pkg/lib.py,,\n{where}\n')
+                (root / 'pkg-1.dist-info' / 'INSTALLER').write_text('pip\n')
+                digests.append(K.tree_digest(str(root)))
+            self.assertEqual(digests[0], digests[1])
+            (Path(d) / 'a' / 'pkg' / 'lib.py').write_text('x = 2\n')
+            K._DIGEST.pop(str(Path(d) / 'a'), None)
+            self.assertNotEqual(K.tree_digest(str(Path(d) / 'a')), digests[1])     # a library change still counts
+
+    def test_the_pin_is_the_wheel_s(self):
+        import os
+        wheel = os.environ.get('GENESIS_ORTOOLS_WHEEL')
+        if not wheel:
+            self.skipTest('set GENESIS_ORTOOLS_WHEEL to the pinned wheel to check the pin against it')
+        import hashlib
+        from pathlib import Path
+        self.assertEqual(hashlib.sha256(Path(wheel).read_bytes()).hexdigest(), K.WHEELS[Path(wheel).name])
+        self.assertEqual(K.wheel_digest(wheel), K.SOTA_TREE_SHA256)
+
     def test_the_locked_environment_does_not_see_it(self):
         import sys
         self.assertNotIn(K.SOTA_DIR, sys.path[:-1] if sys.path and sys.path[-1] == K.SOTA_DIR else sys.path)

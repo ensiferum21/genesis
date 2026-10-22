@@ -610,7 +610,8 @@ WORKSTREAMS = {
              'src/genesis/candidate_kinds/native/tfxw.c', 'src/genesis/candidate_kinds/maxsat_large.py',
              'scripts/b20r94_build_tfxw.py', 'scripts/b20r95_configure_tfxw.py',
              'evidence/configure_tfxw_b20r95/summary.json', 'src/genesis/candidate_kinds/tfxw2.py',
-             'src/genesis/candidate_kinds/native/tfxw2.c', 'scripts/b20r96_build_tfxw2.py', 'src/genesis/bounds_large.py'],
+             'src/genesis/candidate_kinds/native/tfxw2.c', 'scripts/b20r96_build_tfxw2.py', 'src/genesis/bounds_large.py',
+             'scripts/b20r98_repin.py', 'scripts/b20r98_harness_check.py', 'scripts/b20r99_headroom.py'],
             [G + 'test_evaluator_readiness.py', G + 'test_redteam_b16.py', G + 'test_candidate_adapters.py',
              G + 'test_candidate_custody.py', G + 'test_statement_custody.py', G + 'test_candidates_v2.py',
              G + 'test_wiring_v5.py', G + 'test_maxcut_tabu.py', G + 'test_physics_kinds.py',
@@ -620,7 +621,8 @@ WORKSTREAMS = {
              G + 'test_program_search_study.py', G + 'test_self_found_solver.py', G + 'test_solver_library.py',
              G + 'test_generations.py', G + 'test_maxsat_kind.py', G + 'test_tfx_kind.py',
              G + 'test_beat_champions.py', G + 'test_maxsat2026_kind.py', G + 'test_vs_mse2026.py',
-             G + 'test_large_domain.py', G + 'test_configure_tfxw.py']),
+             G + 'test_large_domain.py', G + 'test_configure_tfxw.py', G + 'test_harness_check.py',
+             G + 'test_headroom.py']),
     'W07': ('Statistics, fairness and decision rules', B,
             [K + 'analysis.py', 'src/genesis/power.py', 'src/genesis/judge.py', 'src/genesis/resources.py',
              'docs/STATISTICIAN_BRIEF.md', 'scripts/b20r61_statistician_brief.py', 'scripts/b20r62_power_rebind.py',
@@ -708,9 +710,10 @@ WORKSTREAMS = {
              'evidence/adaptation_cell_b20r93/ledger.json', 'docs/CAVEATS.md', 'src/genesis/autonomy/loop.py',
              'src/genesis/autonomy/studygen.py', 'src/genesis/autonomy/qet.py', 'src/genesis/autonomy/archive.py',
              'src/genesis/autonomy/adversary.py', 'docs/AUTONOMY.md', 'evidence/qet_large_b20r97/summary.json',
-             'evidence/adaptation_cell_b20r97/ledger.json'],
+             'evidence/adaptation_cell_b20r97/ledger.json', 'src/genesis/autonomy/kmap.py',
+             'scripts/b20r100_knowledge_map.py', 'docs/RECURSIVE_IMPROVEMENT_ARCHITECTURE.md'],
             ['tests_formal/test_learning.py', 'tests_formal/test_learning_partitions.py',
-             G + 'test_adaptation_cell.py', G + 'test_autonomy.py']),
+             G + 'test_adaptation_cell.py', G + 'test_autonomy.py', G + 'test_knowledge_map.py']),
     'W21': ('Better-improver and multigeneration controller (B20_R2: pure lineage validator; B20_R4: the campaign '
             'loop writes native lineage records, crash/resume charges interrupted attempts, the custodian checks '
             'generation requests against the qualifying chain; B20_R16: active-version pointer, rollback, inherited '

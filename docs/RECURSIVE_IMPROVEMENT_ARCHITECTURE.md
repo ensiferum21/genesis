@@ -72,10 +72,11 @@ has seen.
    - B20_R98, the harness check of two collapsing solvers;
    - B20_R86, do the generations compound;
    - B20_R99, is there structure left where the searches stop;
-   - B20_R100, the Gset max-cut domain with Daniel's files: 54 instances checked, best-known values with sources.
-2. **The knowledge map (L2).** Fit outcome models on every recorded row (B20_R41–R99, about 40 studies) with
-   uncertainty. Replay the history: would choosing studies by information gain have reached the recorded decisions
-   sooner? Then use the map prospectively, with its predictions written before each study.
+   - B20_R100, the knowledge map's first prospective test: its predictions for B20_R86, committed before B20_R86 runs;
+   - B20_R101, the Gset max-cut domain with Daniel's files: 54 instances checked, best-known values with sources.
+2. **The knowledge map (L2), beyond B20_R100.** Widen it from the eight time-to-solution and equal-time studies to
+   every recorded row. Replay the history: would choosing studies by information gain have reached the recorded
+   decisions sooner? Then let it choose experiments, with its predictions written before each study.
 3. **The view portfolio (L1).** Five views of the triangle-free problem and max cut, with project and lift between
    them. Per-instance view selection, judged on held-out families (G(n, 0.5) against planted, Gset toroidal against
    random).

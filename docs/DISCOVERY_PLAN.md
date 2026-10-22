@@ -194,7 +194,7 @@ improvement: trying only recognized regions or anchors, against trying them in r
 **Order.** B20_R99 needs a pinned CP-SAT. The current tree is byte-identical to the wheel, but it fails its pin,
 because the pin includes pip's record of the wheel's path (repair: B20_R98 engineering). B20_R99 runs after B20_R86.
 
-## 4. If there is structured headroom: the discovery loop (engineering, B20_R100–R101)
+## 4. If there is structured headroom: the discovery loop (engineering, after B20_R102)
 
 A *concept* is stored as four parts:
 - **recognizer:** a G_low program over an anchor, plus the state it reads;
@@ -220,7 +220,7 @@ The engineering is tested on a planted case: on hosts where improving (1,2)-swap
 rediscover a recognizer equivalent to "removing this edge frees two compatible edges" from G_low, without the
 blocker count being supplied. This is a known-answer calibration, not evidence for the hypothesis.
 
-## 5. The two-arm study (B20_R102 or later; the GV4 policy comparison)
+## 5. The two-arm study (after the loop is built; the GV4 policy comparison)
 
 | Arm | Gets | Purpose |
 |---|---|---|

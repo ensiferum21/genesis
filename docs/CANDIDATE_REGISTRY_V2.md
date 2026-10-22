@@ -151,3 +151,12 @@ edge, sweeps, acceptance rules, repeat, loop, split, return to the best) over on
 representations. Parameters `{program, cpu_seconds}`; `check_parameters` refuses any program outside the grammar.
 It exists so that a program found by the system's own program search (`invention/solver_search.py`, B20_R79) can be
 frozen and evaluated like any other kind.
+
+## B20_R98: pins that cover the tool
+
+`cpsat-v1`'s tree pin leaves out pip's install-time metadata (it recorded the folder the wheel was installed from) and
+equals the pinned wheel's own digest (`cpsat.wheel_digest`). The MaxSAT kinds' binary pins zero a `date; uname` build
+stamp and the build-id that hashes it (Aperture 2024 and 2026 embed one; the other binaries hash as before). The
+change re-identifies every `cpsat-v1` and MaxSAT descriptor; earlier evidence keeps its recorded ids through
+`scripts/b20r98_repin.py`'s `pre_r98_id` (defect B20R98-PIN, `docs/BLOCKING_DEFECTS.md`).
+

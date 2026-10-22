@@ -1068,6 +1068,18 @@
       "B20_R97": {
         "commits": [],
         "result": "DEV, preregistered by the research loop (sha256 892b5a11...7d58), recomputed: FOCAL_BETTER_THAN_EVERY_CHAMPION, FOCAL_BETTER_THAN_VBS (+0.0102 [+0.0062, +0.0149]), short_vs_vbs_1 better; stopped at the first look (19 hosts); ablations (previous generation, no_cross, no_relink_restart, first design) NO_MEASURABLE_EFFECT; DeepDist-c NO_RESPONSE at 60 s; bounds re-checked, mean gap 10.8%; prospective check on the cell 8/8"
+      },
+      "B20_R98": {
+        "commits": [],
+        "result": "Engineering: toolchain rebuilt (13 binaries + weights + OR-Tools library byte-identical); defect B20R98-PIN repaired (CP-SAT pin excluded pip install metadata; Aperture pins mask the build stamp and build-id; pre_r98_id for earlier evidence). Setup of the harness check of DeepDist-c and NuWLS-c-2026 (preregistered). Pending"
+      },
+      "B20_R99": {
+        "commits": [],
+        "result": "Setup: discovery headroom pilot (preregistered). Pending"
+      },
+      "B20_R100": {
+        "commits": [],
+        "result": "Setup: knowledge map, predictions for B20_R86 before it runs (preregistered). Pending"
       }
     },
     "open_after_b20_r5": [

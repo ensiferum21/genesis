@@ -87,3 +87,5 @@ that the study must run alone (as every study here does). It also showed SGAT-Nu
 assignment at 0.05 s on some runs, so before preregistration the failure check was moved to runs at 0.5 s and above
 (below that, no assignment counts as unsuccessful). On its planted host Aperture-KBG and NuWLS-c-2026 had TTS* 0.06 s
 and tfx 0.02 s; the expectation was revised accordingly (in the script).
+
+**Amendment (B20_R98).** Aperture 2026's pin `0fb72956…b511` covered its build stamp and build-id; from B20_R98 both are zeroed (`8db73f91…f7b5`, reproduced by a second rebuild). The other five 2026 binaries and the SGAT weight file rebuilt byte-identical. Evidence recorded with the old pin keeps its identities (`scripts/b20r98_repin.py`).

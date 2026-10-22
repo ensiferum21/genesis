@@ -1,4 +1,4 @@
-# The open-record track: Gset max-cut (B20_R100 onward; DRAFT plan)
+# The open-record track: Gset max-cut (B20_R101 onward; DRAFT plan)
 
 Daniel's ask of 22 Oct 2026 ("get inspired by the reality and make it extremely good") applied to one weakness:
 every Genesis result so far is on hosts generated for its own studies. There, the best values are either reached
@@ -27,9 +27,11 @@ preregistered.
 ## 2. What it needs
 
 1. **Data.** `set1.zip` (G1–G54) and `maxcut_bestvalues.xls` from the OPTSICOM max-cut page
-   (grafo.etsii.urjc.es/maxcut), or the Stanford Gset files (web.stanford.edu/~yyye/yyye/Gset). The workspace's
-   proxy refuses both sites, so Daniel downloads them. Each file is pinned by SHA-256 on arrival; the best-known
-   values are cross-checked against the papers that set them before any comparison.
+   (grafo.etsii.urjc.es/maxcut). The workspace's proxy refuses the site, so Daniel downloaded them on 22 Oct 2026:
+   `set1.zip` SHA-256 `18e00bfc…2e71` (54 well-formed instances, sizes as published) and `maxcut_bestvalues.xls`
+   `1831bdc4…c018`. The spreadsheet is OPTSICOM's 2009 table; Benlic and Hao's breakout local search (2013) has since
+   improved 18 of G1–G54 (for example G27 3341, G39 2408), so the best-known value per instance is the highest
+   published one, with its source, cross-checked against the paper before any comparison.
 2. **A domain `maxcut_v1` (engineering).** An adapter for weighted graphs up to 10,000 vertices, an exact cut-value
    checker in integers, and witness custody as in `triangle_free_large_v1`. Certification is out of scope: best-known
    values are lower bounds, and an upper bound would need an SDP. Results are stated against best-known values,
@@ -43,8 +45,8 @@ preregistered.
 
 ## 3. Studies (to be preregistered one at a time)
 
-- **B20_R100, engineering:** the domain, the data, the arms, tests (a hand-checked cut value per instance family).
-- **B20_R101, where Genesis stands against the records:** fraction of best-known value and time-to-target at 1, 10
+- **B20_R101, engineering:** the domain, the data, the arms, tests (a hand-checked cut value per instance family).
+- **B20_R102, where Genesis stands against the records:** fraction of best-known value and time-to-target at 1, 10
   and 60 s on G1–G54, against BURER2002 at equal time, and against published Ising-machine numbers as a stated
   external reference (different hardware, so not a paired comparison).
 - **Then the discovery loop on Gset**, if B20_R99 finds structured headroom. The test is whether concepts invented

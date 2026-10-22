@@ -78,6 +78,21 @@ class Pins(unittest.TestCase):
             self.assertIsNone(MS.check_parameters(TF, {'solver': name, 'cpu_seconds': 1}), name)
         self.assertIn('candidate_kinds/maxsat.py', C2.implementation_identity('maxsat-anytime-v1'))
 
+    def test_the_pin_ignores_a_build_stamp_only(self):
+        # B20_R98: a rebuild differs only in the `date; uname` stamp; anything else still changes the digest
+        import hashlib
+        import tempfile
+        from pathlib import Path
+        with tempfile.TemporaryDirectory() as d:
+            a, b, c, plain = (Path(d) / x for x in 'abcp')
+            a.write_bytes(b'\x7fELF..Thu Oct 22 22:07:48 +08 2026 Linux vm 6.18.44-fc-v140 x86_64\x00tail')
+            b.write_bytes(b'\x7fELF..Tue Oct 20 05:31:02 UTC 2026 Linux vm 6.18.44-fc-v140 x86_64\x00tail')
+            c.write_bytes(b'\x7fELF..Tue Oct 20 05:31:02 UTC 2026 Linux vm 6.18.44-fc-v140 x86_64\x00tAil')
+            plain.write_bytes(b'\x7fELF no stamp here')
+            self.assertEqual(MS.binary_digest(str(a)), MS.binary_digest(str(b)))
+            self.assertNotEqual(MS.binary_digest(str(b)), MS.binary_digest(str(c)))
+            self.assertEqual(MS.binary_digest(str(plain)), hashlib.sha256(plain.read_bytes()).hexdigest())
+
     def test_a_changed_binary_and_bad_parameters_are_refused(self):
         with mock.patch.dict(MS.SOLVERS, {'deepdist': dict(MS.SOLVERS['deepdist'], sha256='0' * 64)}):
             self.assertIn('not the pinned build', MS.check_parameters(TF, {'solver': 'deepdist', 'cpu_seconds': 1}))

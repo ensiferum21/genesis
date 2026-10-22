@@ -86,3 +86,5 @@ build; a changed binary and bad parameters are refused; every solver finds K10's
 witnesses on a random host for two seeds (one study-sized); failures are loud (no output; an assignment violating a
 hard clause); a metered runc run of every solver returns a checked witness; MQLib's codes match the binary's list and
 two non-default heuristics find K10's optimum.
+
+**Amendment (B20_R98).** Aperture's pin `d2d8155e…4c45d` covered a `date; uname` build stamp and the build-id that hashes it, so it could not be reproduced in a new container. From B20_R98 the pin zeroes both (`862515f4…3fe9` for the 22 Oct 2026 rebuild, reproduced by a second rebuild); the other four binaries rebuilt byte-identical. Evidence recorded with the old pin keeps its identities (`scripts/b20r98_repin.py`).

@@ -59,13 +59,13 @@ SOLVERS = {
                         'sha256': '7a9bebe4c5a88b28b3955da00cbce91fb64545cf0728a7026020e2d0a364f239',
                         'args': ('{instance}',), 'data': {}},
     'aperture-kbg': {'binary': _BIN + 'Aperture-2026',
-                     'sha256': '0fb72956e3c9c41c31626910b6b0ef26fc47f01d361d0e421b3f1100dec4b511',
+                     'sha256': '8db73f916f3f8c9b9dcaf393f942a972db49f3a97c8ee4bad70dc5ef106ff7b5',
                      'args': ('{instance}', '-v', '0', 'opti', '-i'), 'data': {}},
     'aperture-gbg': {'binary': _BIN + 'Aperture-2026',
-                     'sha256': '0fb72956e3c9c41c31626910b6b0ef26fc47f01d361d0e421b3f1100dec4b511',
+                     'sha256': '8db73f916f3f8c9b9dcaf393f942a972db49f3a97c8ee4bad70dc5ef106ff7b5',
                      'args': ('{instance}', '-v', '0'), 'data': {}},
     'aperture-ibi': {'binary': _BIN + 'Aperture-2026',
-                     'sha256': '0fb72956e3c9c41c31626910b6b0ef26fc47f01d361d0e421b3f1100dec4b511',
+                     'sha256': '8db73f916f3f8c9b9dcaf393f942a972db49f3a97c8ee4bad70dc5ef106ff7b5',
                      'args': ('{instance}', '-s', 'topor', '-v', '0'), 'data': {}},
     'deepdist-c': {'binary': _BIN + 'DeepDist-c',
                    'sha256': '7ee4555ccbdccfddb4effa5136cac9ed1be16d6797971553da7dd43da3e4a9ad',
@@ -75,9 +75,10 @@ _DIGEST = {}
 
 
 def digest(path):
+    """SHA-256 with any build stamp zeroed (`maxsat.binary_digest`, B20_R98: Aperture 2026 embeds one)."""
     if path not in _DIGEST:
         p = Path(path)
-        _DIGEST[path] = hashlib.sha256(p.read_bytes()).hexdigest() if p.is_file() else None
+        _DIGEST[path] = hashlib.sha256(MS.stamp_free(p.read_bytes())).hexdigest() if p.is_file() else None
     return _DIGEST[path]
 
 

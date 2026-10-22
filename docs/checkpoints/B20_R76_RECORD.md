@@ -80,3 +80,5 @@ run after the first n63 hosts. Both were wrong; the preregistered verdict stands
 ## Tests
 
 `tests_genesis/test_sota_v2.py`: Design (5); Record (5).
+
+**Amendment (B20_R98).** The tree pin `fb5ef9ac…67f9` included pip's `direct_url.json`, so "a reinstall gives the same digest" held only for a reinstall from the same folder. From B20_R98 the pin covers the library files only (`2010e03a…e47a`, equal to the wheel's own digest); this study's evidence keeps its recorded identities (`scripts/b20r98_repin.py`).

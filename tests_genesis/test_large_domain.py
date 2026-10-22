@@ -165,7 +165,8 @@ class Runner(unittest.TestCase):
         cfg = json.loads((ROOT / 'evidence/configure_tfx_b20r89/config.json').read_text())['config']
         D = R92.arm_descriptors(cfg)
         recorded = json.loads((ROOT / 'evidence/vs_mse2026_b20r92/summary.json').read_text())['descriptors']
-        now = {f'{x}@{t}': d['descriptor_id'] for (x, t), (_, d) in D.items()}
+        import b20r98_repin as R98                          # B20_R92 ran before B20_R98's repin
+        now = {f'{x}@{t}': R98.pre_r98_id(d) for (x, t), (_, d) in D.items()}
         self.assertEqual(now, recorded)                    # every frozen v2 descriptor of B20_R92 still builds
 
     def test_descriptors(self):

@@ -146,27 +146,32 @@ needs people: a reviewer, a statistician, an independent custodian on its own ma
 | B20_R95 | Configuration race on large hosts (DEV): froze #29 (descent starts, K 6, kpick 4, crossover, relinking, restarts) |
 | B20_R96 | The autonomy layer (`src/genesis/autonomy/`, `docs/AUTONOMY.md`), `tfxw-v2`, `bounds_large`, cell v2 |
 | B20_R97 | The loop's first study (DEV): FOCAL_BETTER_THAN_EVERY_CHAMPION and FOCAL_BETTER_THAN_VBS at 10 s on large hosts (19, stopped at the first look); ablations NO_MEASURABLE_EFFECT; DeepDist-c NO_RESPONSE; prospective check on the cell 8/8 |
+| B20_R85 | Generation 3 (run 22 Oct 2026, unchanged from `9aad649`): a 13-statement schedule of generations 1 and 2 with descent, no new move; 290.00 on its own hosts |
+| B20_R98 (engineering) | Toolchain rebuilt in a new container; defect B20R98-PIN repaired (pins cover the tool, not the install folder or build stamp); B20_R98–R100 preregistered |
 
 ## 6. Next steps, in order
 
-1. **Restore the state-of-the-art toolchain on the builder's machine.** Built tools do not survive a new container.
-   Rebuilt and byte-identical to their pins on 22 Oct 2026: MQLib, DeepDist, `tfx`, `tfxw`, `tfxw2`
-   (`scripts/b20r74_sota_tools.py`, `b20r87_maxsat_tools.py --deepdist`, `b20r88/94/96_build_*.py`). Still to build,
-   waiting for files the session's egress policy cannot fetch (PyPI, the Ubuntu archive and crates.io answer 403):
-   the GMP packages `libgmp-dev_6.3.0+dfsg-2ubuntu6_amd64.deb` and `libgmpxx4ldbl_6.3.0+dfsg-2ubuntu6_amd64.deb` (for
-   `b20r87_maxsat_tools.py --solvers` and `b20r91_mse2026_tools.py`) and the wheel
-   `ortools-9.15.6755-cp313-cp313-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl` (`b20r74_sota_tools.py
-   --ortools-wheel`). The 2026 solver archives (Daniel's download, 22 Oct 2026) match their pinned SHA-256 and MD5.
-2. **Finish the preregistered GV5 test:** B20_R85 (generation 3), then B20_R86 (do the generations compound?).
-3. **B20_R98, the adaptation cell's work order:** a harness check of DeepDist-c and NuWLS-c-2026, which end near half
-   the best value on 256-vertex hosts in B20_R97 (not their Evaluation behaviour). Our kinds pipe the instance as
-   `/proc/self/fd/0` and stop the solver with SIGTERM; the Evaluation gives a file and runs NuWLS under runsolver
-   with 32 GB. Until this check is done, B20_R97's margins over those two solvers are not evidence about them.
-4. **Checkpoint after B20_R86** (the last is B20_R73, never rehearsed; R74–R97 are not in a checkpoint). Build it and
-   run timing studies alone, one at a time (lessons: a checkpoint matrix failed when the tree was edited during it;
-   B20_R64's first run was CPU-starved; unpinned Lean processes spill onto the other core).
-5. **B20_R99: the discovery headroom pilot** from Daniel's note (`docs/DISCOVERY_PLAN.md`).
-6. **The adaptation cell's next design** (the 60 s stage of B20_R97, staged by the cell; about 12 h).
+1. **Rebuild the state-of-the-art toolchain in any new container** (built tools do not survive one):
+   `b20r74_sota_tools.py --ortools-wheel WHEEL`, `b20r87_maxsat_tools.py --deepdist` and `--solvers GMP_DEBS`,
+   `b20r91_mse2026_tools.py ARCHIVES --gmp GMP_DEBS`, `b20r88/94/96_build_*.py`; then `b20r98_repin.py --wheel WHEEL`
+   must report every pin matched. The wheel, the GMP packages and the 2026 archives are Daniel's downloads (the
+   egress proxy refuses PyPI, the Ubuntu archive, crates.io and Zenodo); done on 22 Oct 2026.
+2. **Run the preregistered studies, alone on CPU 0, in this order:**
+   1. B20_R100 `predict`, committed before B20_R86 starts;
+   2. B20_R98, the harness check;
+   3. B20_R86, do the generations compound;
+   4. B20_R99, the discovery headroom pilot;
+   5. B20_R100 `score`, after B20_R86 is recorded.
+
+   Until B20_R98 is decided, B20_R97's margins over DeepDist-c and NuWLS-c-2026 are not evidence about them.
+3. **Checkpoint after these** (the last is B20_R73, never rehearsed; R74 onward are not in a checkpoint). Do not edit
+   the tree while the release matrix runs; run timing studies alone.
+4. **B20_R101, the Gset max-cut domain** (`docs/OPEN_RECORDS_PLAN.md`; Daniel's `set1.zip` and best-values file,
+   pinned on arrival), then where Genesis stands against the published records.
+5. **The recursive-improvement build order** (`docs/RECURSIVE_IMPROVEMENT_ARCHITECTURE.md` §3): the knowledge map
+   choosing experiments, the view portfolio, the discovery loop if B20_R99 finds structured headroom,
+   evolvability-selected search, curricula, policy revision.
+6. **The adaptation cell's next design** (the 60 s stage of B20_R97; about 12 h).
 7. **Decisions and people** (unchanged): the review brief's decisions, a statistician (`docs/STATISTICIAN_BRIEF.md`),
    an independent custodian, a second operator (GV7).
 

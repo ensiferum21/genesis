@@ -176,9 +176,10 @@ class Record(unittest.TestCase):
         import json
         from genesis.candidate_kinds import cpsat as K, mqlib as MQ
         self.assertEqual((self.s['mqlib']['sha256'], self.s['mqlib']['source']), (MQ.BINARY_SHA256, MQ.SOURCE))
-        self.assertEqual((self.s['ortools']['sha256'], self.s['ortools']['workers']), (K.SOTA_TREE_SHA256, K.WORKERS))
+        import b20r98_repin as R98                 # recorded before B20_R98's repin
+        self.assertEqual((self.s['ortools']['sha256'], self.s['ortools']['workers']), (R98.PRE_R98_TREE_SHA256, K.WORKERS))
         self.assertEqual(self.s['descriptors'], json.loads(json.dumps(
-            {f'{a}@{t}': d['descriptor_id'] for (a, t), (_, d) in M.arm_descriptors().items()})))
+            {f'{a}@{t}': R98.pre_r98_id(d) for (a, t), (_, d) in M.arm_descriptors().items()})))
 
     def test_hosts_are_fresh_and_in_the_addenda(self):
         import json

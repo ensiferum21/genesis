@@ -8,8 +8,8 @@ year since 2018, so its best solvers are the most tuned general tools for this p
 `scripts/b20r87_maxsat_tools.py` for the choice and the sources).
 
 Solvers (fixed; each a binary built from a pinned source by `scripts/b20r87_maxsat_tools.py`, under
-/usr/local/genesis-sota/bin, pinned here by SHA-256, refused if missing or different), each run with its published
-configuration for unweighted instances:
+/usr/local/genesis-sota/bin, pinned here by SHA-256 with any build stamp zeroed (B20_R98), refused if missing or
+different), each run with its published configuration for unweighted instances:
   * `deepdist`: DeepDist (ECAI 2025; local search with deep differentiation clause weighting, built on SPB-MaxSAT);
   * `spb-maxsat-c-fps`: SPB-MaxSAT-c-FPS (MaxSAT Evaluation 2024 anytime winner, with SPB-MaxSAT-c-Band);
   * `nuwls-c-ibr`: NuWLS-c-IBR (MSE 2024 anytime podium; NuWLS local search inside TT-Open-WBO-Inc);
@@ -35,6 +35,7 @@ Parameters (data only): {solver, cpu_seconds}. Domain: triangle_free_host_v1.
 import hashlib
 import os
 from pathlib import Path
+import re
 import signal
 import subprocess
 import time
@@ -52,15 +53,34 @@ SOLVERS = {
     'tt-open-wbo-inc': {'binary': _BIN + 'TT-Open-WBO-Inc-IntelSAT',
                          'sha256': 'f54cfaa62ff5a120aa495d93f8d2072b8ae7c9f02143f363dcc63d8f1da7ddcf', 'args': ()},
     'aperture': {'binary': _BIN + 'Aperture',
-                         'sha256': 'd2d8155ede698f5615466990bd6f067080624bbe4c605abb052e0fe49a74c45d', 'args': ('-s', 'glucose')},
+                         'sha256': '862515f4790576e8689d023c41753008e10e66ada9a47d121fa38815f4e43fe9', 'args': ('-s', 'glucose')},
 }
 _DIGEST = {}
 
 
+# A build stamp some binaries embed (Aperture's bundled SAT solvers' configure scripts write `date; uname` output into
+# the binary), and the GNU build-id note, a hash the linker computes over the binary and so over the stamp: a rebuild
+# from the same source differs in these bytes only (checked by rebuilding both Apertures twice, B20_R98). The pin
+# zeroes them before hashing, so it covers what the binary is, not when and where it was built. A binary without a
+# stamp hashes as plain SHA-256, build-id included.
+STAMP = re.compile(rb'(?:Mon|Tue|Wed|Thu|Fri|Sat|Sun) (?:Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec) [ 0-9][0-9] '
+                   rb'[0-9]{2}:[0-9]{2}:[0-9]{2} [A-Za-z0-9+\-]{1,6} [0-9]{4} Linux [ -~]{1,200}')
+BUILD_ID = re.compile(rb'\x04\x00\x00\x00\x14\x00\x00\x00\x03\x00\x00\x00GNU\x00.{20}', re.S)
+
+
+def stamp_free(data):
+    """The bytes with any build stamp and, if there is one, the build-id zeroed (same length: nothing else moves)."""
+    if not STAMP.search(data):
+        return data
+    data = STAMP.sub(lambda m: b'\0' * len(m.group(0)), data)
+    return BUILD_ID.sub(lambda m: m.group(0)[:16] + b'\0' * 20, data)
+
+
 def binary_digest(path):
+    """SHA-256 of the binary with its build stamp zeroed (B20_R98); None if it is missing."""
     if path not in _DIGEST:
         p = Path(path)
-        _DIGEST[path] = hashlib.sha256(p.read_bytes()).hexdigest() if p.is_file() else None
+        _DIGEST[path] = hashlib.sha256(stamp_free(p.read_bytes())).hexdigest() if p.is_file() else None
     return _DIGEST[path]
 
 

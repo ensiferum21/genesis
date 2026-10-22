@@ -19,7 +19,8 @@ reachable from this workspace (B20R74-OPEN-1), so Daniel supplied the official w
 without dependencies (`scripts/b20r74_sota_tools.py --ortools-wheel`, which checks the wheel's SHA-256 first) as a
 pinned tree under SOTA_DIR inside /usr (so the runc sandbox, which bind-mounts the
 host's /usr read-only, sees it) and outside every site directory (so the lock check and every other code path never
-import it). SOTA_TREE_SHA256 pins that tree: `check_parameters` refuses to build or accept a descriptor unless the
+import it). SOTA_TREE_SHA256 pins that tree's library files (B20_R98: not pip's install-time metadata, which records
+the folder the wheel was installed from): `check_parameters` refuses to build or accept a descriptor unless the
 installed tree hashes to it, and this file, which holds the pin, is in the kind's identity. So a changed library
 changes nothing silently: the kind is refused until the pin is updated, which changes its identity.
 
@@ -40,24 +41,49 @@ SOTA_DIR = '/usr/local/genesis-sota/py313'
 SOTA_PACKAGES = {'ortools': '9.15.6755'}       # installed with --no-deps from the wheel below (B20_R76)
 WHEELS = {'ortools-9.15.6755-cp313-cp313-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl':
           'ebd5aea00374e3aad7a78de59058aca5e871a26a3c385cd0860ef1d685d03c9a'}   # supplied by Daniel from pypi.org
-SOTA_TREE_SHA256 = 'fb5ef9ac7eddfbf80c9e27678df204400c6f913d41c500f24a50f9f4996d67f9'
+# The library files of the installed tree (B20_R98). B20_R76's pin (fb5ef9ac...67f9) also covered pip's install-time
+# metadata, which records the folder the wheel was installed from, so it held only for that folder.
+SOTA_TREE_SHA256 = '2010e03a3a3561dcfa4f0f15f4de1ca16b6321e6136fca94bdf192a9f087e47a'
 WORKERS = 8
+# Written by pip into *.dist-info at install time: direct_url.json holds the wheel's absolute path and RECORD lists
+# it, so they differ between two installs of the same wheel. The pin leaves them out (and is then a function of the
+# wheel alone: `wheel_digest`).
+INSTALL_METADATA = ('INSTALLER', 'RECORD', 'REQUESTED', 'direct_url.json')
 _DIGEST = {}
 
 
+def _pinned(parts):
+    """Whether a file of the tree (its relative path's parts) counts in the pin: not bytecode, not pip's metadata."""
+    return ('__pycache__' not in parts and not parts[-1].endswith('.pyc')
+            and not (len(parts) == 2 and parts[0].endswith('.dist-info') and parts[1] in INSTALL_METADATA))
+
+
+def _digest(pairs):
+    h = hashlib.sha256()
+    for parts, file_sha in sorted(pairs):
+        h.update('/'.join(parts).encode() + b'\0' + file_sha)
+    return h.hexdigest()
+
+
+def wheel_digest(wheel):
+    """The pin computed from the wheel's own members: the digest a --no-deps install of this wheel must give."""
+    import zipfile
+    with zipfile.ZipFile(wheel) as z:
+        return _digest([(tuple(i.filename.split('/')), hashlib.sha256(z.read(i)).digest()) for i in z.infolist()
+                        if not i.is_dir() and _pinned(tuple(i.filename.split('/')))])
+
+
 def tree_digest(root=SOTA_DIR):
-    """SHA-256 over the sorted (relative path, file SHA-256) pairs of the installed tree, ignoring bytecode caches."""
+    """SHA-256 over the sorted (relative path, file SHA-256) pairs of the installed tree's library files (bytecode
+    caches and pip's install-time metadata left out)."""
     if root in _DIGEST:
         return _DIGEST[root]
     base = Path(root)
     if not base.is_dir():
         _DIGEST[root] = None
         return None
-    h = hashlib.sha256()
-    for p in sorted(base.rglob('*')):
-        if p.is_file() and '__pycache__' not in p.parts and p.suffix != '.pyc':
-            h.update(str(p.relative_to(base)).encode() + b'\0' + hashlib.sha256(p.read_bytes()).digest())
-    _DIGEST[root] = h.hexdigest()
+    _DIGEST[root] = _digest([(p.relative_to(base).parts, hashlib.sha256(p.read_bytes()).digest())
+                             for p in base.rglob('*') if p.is_file() and _pinned(p.relative_to(base).parts)])
     return _DIGEST[root]
 
 
