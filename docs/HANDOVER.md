@@ -148,6 +148,7 @@ needs people: a reviewer, a statistician, an independent custodian on its own ma
 | B20_R97 | The loop's first study (DEV): FOCAL_BETTER_THAN_EVERY_CHAMPION and FOCAL_BETTER_THAN_VBS at 10 s on large hosts (19, stopped at the first look); ablations NO_MEASURABLE_EFFECT; DeepDist-c NO_RESPONSE; prospective check on the cell 8/8 |
 | B20_R85 | Generation 3 (run 22 Oct 2026, unchanged from `9aad649`): a 13-statement schedule of generations 1 and 2 with descent, no new move; 290.00 on its own hosts |
 | B20_R98 (engineering) | Toolchain rebuilt in a new container; defect B20R98-PIN repaired (pins cover the tool, not the install folder or build stamp); B20_R98–R100 preregistered |
+| B20_R98 | Harness check: NOT_THE_HARNESS. DeepDist-c's and NuWLS-c-2026's collapse on large hosts is their own search; B20_R97's margins stand as such; a 3% band at 10 s on G(256, 0.5) |
 
 ## 6. Next steps, in order
 
@@ -157,13 +158,11 @@ needs people: a reviewer, a statistician, an independent custodian on its own ma
    must report every pin matched. The wheel, the GMP packages and the 2026 archives are Daniel's downloads (the
    egress proxy refuses PyPI, the Ubuntu archive, crates.io and Zenodo); done on 22 Oct 2026.
 2. **Run the preregistered studies, alone on CPU 0, in this order:**
-   1. B20_R100 `predict`, committed before B20_R86 starts;
-   2. B20_R98, the harness check;
-   3. B20_R86, do the generations compound;
-   4. B20_R99, the discovery headroom pilot;
-   5. B20_R100 `score`, after B20_R86 is recorded.
+   1. done: B20_R100 `predict` (committed before B20_R86) and B20_R98 (NOT_THE_HARNESS);
+   2. B20_R86, do the generations compound;
+   3. B20_R99, the discovery headroom pilot;
+   4. B20_R100 `score`, after B20_R86 is recorded.
 
-   Until B20_R98 is decided, B20_R97's margins over DeepDist-c and NuWLS-c-2026 are not evidence about them.
 3. **Checkpoint after these** (the last is B20_R73, never rehearsed; R74 onward are not in a checkpoint). Do not edit
    the tree while the release matrix runs; run timing studies alone.
 4. **B20_R101, the Gset max-cut domain** (`docs/OPEN_RECORDS_PLAN.md`; Daniel's `set1.zip` and best-values file,

@@ -71,5 +71,40 @@ class Design(unittest.TestCase):
         self.assertIn('R33.pinned_core()', (ROOT / 'scripts' / 'b20r98_harness_check.py').read_text())
 
 
+EV = ROOT / 'evidence' / 'harness_check_b20r98'
+
+
+class Record(unittest.TestCase):
+    """B20_R98's runs: the labels recompute, the kinds were B20_R97's, the parsed models are the solvers' own."""
+
+    @classmethod
+    def setUpClass(cls):
+        import json
+        cls.s = json.loads((EV / 'summary.json').read_text())
+        cls.runs = [json.loads(l) for l in (EV / 'runs.jsonl').read_text().splitlines() if l.strip()]
+
+    def test_labels_recompute(self):
+        self.assertEqual(len(self.runs), 4 * 4 * 5)
+        done = {(r['task_id'], r['solver'], r['condition']): r for r in self.runs}
+        labs = M.labels(done, self.s['best_known'])
+        self.assertEqual(labs, self.s['labels'])
+        self.assertEqual(M.headline(labs), (self.s['headline'], self.s['control_caveat']))
+        self.assertEqual((self.s['headline'], self.s['control_caveat']), ('NOT_THE_HARNESS', []))
+
+    def test_the_kinds_were_b20r97_s(self):
+        import json
+        import b20r98_repin as R98
+        rec = json.loads((ROOT / 'evidence' / 'qet_large_b20r97' / 'summary.json').read_text())['descriptors']
+        for s in M.SOLVERS:
+            d = M.descriptor(s, M.BUDGET)
+            self.assertEqual(d['descriptor_id'], self.s['descriptors'][s])
+            self.assertEqual(R98.pre_r98_id(d), rec[f'{M.R97_ARM[s]}@10'])
+
+    def test_every_direct_value_is_the_solver_s_own_claim(self):
+        direct = [r for r in self.runs if r['condition'] != 'kind']
+        self.assertEqual(len(direct), 64)
+        self.assertTrue(all(r['valid'] and r['value'] == r['claimed_value'] for r in direct))
+
+
 if __name__ == '__main__':
     unittest.main()

@@ -87,3 +87,27 @@ runs after B20_R86 is recorded.
   a planted recognizer found and noise not, the verdict rule;
 - `test_knowledge_map.py` (8): cells, wider intervals for unseen methods, self-calibration, the grid, the rule, refusal
   once B20_R86 is in the corpus.
+
+## B20_R98 result: NOT_THE_HARNESS
+
+Alone on CPU 0, 1,729 s (`evidence/harness_check_b20r98/`).
+
+No condition under our control changes either collapsing solver's result:
+- In every direct run, the model we read is the solver's own reported best.
+- Pipe and file give identical values.
+- The sandbox matches the direct run.
+- DeepDist-c's own timeout alarm gives the same value as SIGTERM.
+- 60 s adds at most 3%.
+
+DeepDist-c reaches 40–62% of the best known value on all four hosts. NuWLS-c-2026 reaches 97–99% at n128 and 40–52%
+at n256. NuWLS-c-2026-UB, the same code with its upper-bounding phase, does not collapse. The collapse is these solvers'
+own behaviour on these instances and budgets, so B20_R97's margins over them stand as such. They do not speak to these
+solvers on the Evaluation's families, hardware or budgets. The adaptation cell's work order for `deepdistc` (`fix
+harness`) is answered: there is nothing in the harness to fix.
+
+**Disclosed:** on the G(256, 0.5) host both controls ended 3% below their B20_R97 values at 10 s, and reached them with
+5 s more. On the densest instance, a 10 s wall-clock budget sits where machine speed decides a few hundred edges; 10 s
+comparisons there should allow a 3% band. This held on one host, below the preregistered rule.
+
+Record tests (3).
+

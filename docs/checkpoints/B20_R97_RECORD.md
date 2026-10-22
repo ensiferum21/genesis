@@ -123,3 +123,11 @@ new handling of planned pauses was not exercised by real data.
 `tests_genesis/test_autonomy.py`: `RecordB20R97` (5: the preregistered script and design unchanged, the labels and
 the stop follow from the rows, validity, every witness and bound re-check, the hosts fresh by exposure identity) and
 `ProspectiveB20R97` (8, preregistered before the run).
+
+**Amendment (B20_R98).** The harness check this record asked for found NOT_THE_HARNESS. Our harness reads the solver's
+own best model, and none of the following changes the value: pipe or file input, the sandbox, the stop signal, or 60 s
+instead of 10 s. DeepDist-c's and NuWLS-c-2026's low values here are their own search on these instances, so the
+margins above stand as what they do here. B20_R98 also saw the controls end 3% lower at 10 s on the G(256, 0.5) host
+than in this study (machine speed at the edge of the budget), so 10 s comparisons on that family should allow for a 3%
+band (`evidence/harness_check_b20r98/`).
+

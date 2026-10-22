@@ -1,0 +1,40 @@
+{
+ "best_known": {
+  "dev-erdos-2be53d3d-20269702-0000": 2302,
+  "dev-erdos-c45c7693-20269704-0000": 8948,
+  "dev-planted_cluster-2a71ea9a-20269701-0000": 1170,
+  "dev-planted_cluster-ffd8075f-20269703-0000": 4506
+ },
+ "code_identity": "ce39e57bfd229975218089938b1dd7f5be1b0115aa5abd7021b93f888902eefa",
+ "control_caveat": [],
+ "descriptors": {
+  "deepdist": "5198ea7b92d7a49044ef477298834e6ca9c9136568ac9e709a4080d06debc669",
+  "deepdist-c": "e36e25d46d3b84370f43c6e958c6a52a25a70ca2f50353e9e1fadfb4be309a0c",
+  "nuwls-c-2026": "f8848ed4ed6ac85c8740ee304268613b590c28405d3b5447f400d5999d011b13",
+  "nuwls-c-2026-ub": "9d7840d9f9962dcdcf41ccec38a41f562305872e226a8acd8b304d7827a600e5"
+ },
+ "headline": "NOT_THE_HARNESS",
+ "hosts": [
+  "dev-planted_cluster-2a71ea9a-20269701-0000",
+  "dev-erdos-2be53d3d-20269702-0000",
+  "dev-planted_cluster-ffd8075f-20269703-0000",
+  "dev-erdos-c45c7693-20269704-0000"
+ ],
+ "labels": {
+  "deepdist": [
+   "NO_HARNESS_EFFECT"
+  ],
+  "deepdist-c": [
+   "NO_HARNESS_EFFECT"
+  ],
+  "nuwls-c-2026": [
+   "NO_HARNESS_EFFECT"
+  ],
+  "nuwls-c-2026-ub": [
+   "NO_HARNESS_EFFECT"
+  ]
+ },
+ "schema": "genesis-b20r98-harness-check-v1",
+ "status": "DEV diagnostic; licenses nothing; no package changed",
+ "study": "b20r98"
+}

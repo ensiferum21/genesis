@@ -1070,16 +1070,21 @@
         "result": "DEV, preregistered by the research loop (sha256 892b5a11...7d58), recomputed: FOCAL_BETTER_THAN_EVERY_CHAMPION, FOCAL_BETTER_THAN_VBS (+0.0102 [+0.0062, +0.0149]), short_vs_vbs_1 better; stopped at the first look (19 hosts); ablations (previous generation, no_cross, no_relink_restart, first design) NO_MEASURABLE_EFFECT; DeepDist-c NO_RESPONSE at 60 s; bounds re-checked, mean gap 10.8%; prospective check on the cell 8/8"
       },
       "B20_R98": {
-        "commits": [],
-        "result": "Engineering: toolchain rebuilt (13 binaries + weights + OR-Tools library byte-identical); defect B20R98-PIN repaired (CP-SAT pin excluded pip install metadata; Aperture pins mask the build stamp and build-id; pre_r98_id for earlier evidence). Setup of the harness check of DeepDist-c and NuWLS-c-2026 (preregistered). Pending"
+        "commits": [
+          "779831c"
+        ],
+        "result": "Engineering: toolchain rebuilt (13 binaries + weights + OR-Tools library byte-identical); defect B20R98-PIN repaired (CP-SAT pin excluded pip install metadata; Aperture pins mask the build stamp and build-id; pre_r98_id for earlier evidence). Setup of the harness check of DeepDist-c and NuWLS-c-2026 (preregistered). Result: NOT_THE_HARNESS (the model read is the solver's own best; pipe/file, sandbox, stop signal and 60 s change nothing; the collapse is the solvers' own search; a 3% band at 10 s on G(256, 0.5), disclosed)"
       },
       "B20_R99": {
         "commits": [],
         "result": "Setup: discovery headroom pilot (preregistered). Pending"
       },
       "B20_R100": {
-        "commits": [],
-        "result": "Setup: knowledge map, predictions for B20_R86 before it runs (preregistered). Pending"
+        "commits": [
+          "779831c",
+          "3d43e18"
+        ],
+        "result": "Predictions for B20_R86 committed before it runs (3d43e18). Scoring pending"
       }
     },
     "open_after_b20_r5": [
