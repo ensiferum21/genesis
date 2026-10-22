@@ -64,72 +64,135 @@ lead partly to such a coordinated move: the (1,2)-swap, which removes one chosen
 that edge blocked. The solver language deliberately left the swap out (B20_R78). B20_R99 distinguishes the two
 readings before anything is built.
 
-## 3. B20_R99: the headroom pilot (DEV; about 1 CPU hour; no engineering beyond an analysis script)
+## 3. B20_R99: the headroom pilot (DEV; about 1 CPU hour; an analysis script, no engineering)
 
-**Domain and states.** triangle_free_host_v1, 24 fresh planted-cluster hosts at n63 (p_in 0.8, p_out 0.06),
-excluding every exposed identity. The study runs the following on each host:
-- frozen programs: generation 1 (B20_R79), generation 2 (B20_R83), generation 2's control (B20_R84), and
-  generation 3 (B20_R85) if it is recorded;
-- the builder's engine `hybrid-swap-v1`;
-- 2 seeds per program, at 0.25 s and 1.0 s.
+### 3.1 Development looks (22 Oct 2026; exposed hosts only; disclosed)
 
-Each run's returned edge set S is a *stagnation state*: the point at which that search stopped making progress
-within its budget. That gives 24 hosts × 5 arms × 2 budgets × 2 seeds = 480 states. S should be maximal, because every
-step ends with a greedy completion; the analysis counts free additions (r = 0) anyway and reports any.
+The first draft of this section (commit `ba2b052`) put the pilot on 24 fresh n63 planted hosts, with exchanges of
+at most 3 edges. Before preregistering anything, the builder checked the pipeline on hosts that earlier studies had
+already exposed. The draft code sits in the builder's scratch area and will be committed with the study script.
 
-**Coordinated changes.** An *anchor* R is a set of r chosen edges. An *(r, r+1)-exchange* removes R and adds r+1
-unchosen edges, so the result stays triangle-free and |S| grows by one.
+1. **The enumerator is exact.** It agrees with brute force on 60 random small graphs (r ≤ 2). The gap decomposition
+   (point 4) agrees with an independent implementation on 200 graphs, and every piece it finds can be swapped in on
+   its own.
+2. **Planted n63 leaves nothing to find.** Generation 2 and `hybrid-swap-v1` ran on 3 of B20_R83's training hosts
+   (0.25 s and 1.0 s, 2 seeds each). Both reached the same value on each host (291, 279–280, 285). One state out of
+   24 had an improving (1,2)-exchange; none had a strict (2,3)-exchange. The first draft would therefore have
+   returned NO_HEADROOM for a reason that has nothing to do with the hypothesis.
+3. **Large hosts (n128, n256, from B20_R97).**
+   - `tfxw` is the engine that beat the 13 MaxSAT champions (`DEFAULT`, which B20_R97 found equivalent to the frozen
+     configuration). At 2 s and 10 s it left no improving (1,2)- or (2,3)-exchange in any of 6 states, even when 16
+     edges below the best known value (4,446 against 4,462).
+   - `hybrid-swap-v1` at 2 s and 10 s left 1–4 strict (2,3)-exchanges on planted hosts (exchange descent +1 to +6).
+     On G(256, 0.5) it left none: there, every unchosen edge has at least 3 blocking wedges, so no removal of 2 edges
+     frees anything.
+   - Generation 2 at 2 s on a planted n256 host left 7 improving (1,2)-anchors (descent +9).
+4. **The gap to the best known value is global.** A state XOR the best-known witness was decomposed into
+   independently swappable pieces, on 4 hosts. Each time, one giant component (462–4,830 edges, touching nearly every
+   vertex) carries all the gain, beside a few gain-0 or gain-1 pieces of 2–7 edges. The better solution sits in a
+   globally different arrangement, not a set of local fixes away.
+5. **Small neighbourhoods still hold improvements at the strongest engine.** CP-SAT (1 s, one worker) re-optimized
+   the edges touching a vertex set of `tfxw`'s 2 s state on one planted n256 host. It improved 2 of 10 neighbourhood
+   balls of 4 vertices (+1 each), and none of 10 random 4-sets. At 8 and 16 vertices it found nothing, but there it
+   rarely proved optimality within 1 s.
+
+**What the looks change.**
+- **The domain** becomes `triangle_free_large_v1` (n128 and n256, planted and G(n, 0.5)). There the strongest arms
+  still differ by up to about 20 edges at 10 s.
+- **The move classes.** Exchanges of at most 3 edges stay, because they are exact and cheap. But the strongest engine
+  exhausts them, so the pilot adds small neighbourhoods re-optimized exactly. These count only when CP-SAT proves the
+  region optimal.
+- **The gap decomposition** becomes a descriptive part.
+- **The thresholds of §3.3** were written before any look and are unchanged.
+
+### 3.2 Design (proposed; fixed at setup)
+
+**States.**
+- **Hosts:** 16 fresh hosts, 4 per cell (planted or G(n, 0.5), crossed with n128 or n256), excluding every exposed
+  identity.
+- **Arms:**
+  - the language programs: generations 1–3 and generation 2's control, through their kinds;
+  - `hybrid-swap-v1`;
+  - `tfxw` in B20_R95's frozen configuration (the strongest arm).
+- **Budgets:** 2 s and 10 s, one seed.
+
+That gives 16 hosts × 6 arms × 2 budgets = 192 states. Each returned edge set S is a *stagnation state*: where that
+search stood when its budget ended. S should be maximal, because every step ends with a greedy completion. The
+analysis counts free additions (r = 0) anyway and reports any.
+
+**Part A: exchanges.**
+- An *anchor* R is a set of r chosen edges. An *(r, r+1)-exchange* removes R and adds r+1 unchosen edges, keeping
+  the set triangle-free and growing |S| by one.
 - An unchosen edge f = uv is *blocked* at each vertex w with uw and vw in S. Removing R frees f exactly when every
-  blocking wedge of f has an edge in R.
-- For r ≤ 2 the exchanges are enumerated exhaustively: freed edges come from the inverted wedge lists, and a small
-  exact check confirms compatibility among the edges added.
-- r = 1 is the engine's (1,2)-swap. r = 2 is beyond anything the builder supplied.
+  blocking wedge of f has an edge in R. So freed edges come from inverted wedge lists, and a small exact check
+  confirms that the edges added are compatible.
+- Exchanges are enumerated exhaustively for r ≤ 2 at every state. *Exchange descent* applies improving exchanges
+  (r = 1 first, then r = 2) until none is left; the pilot reports its gain.
+- A single edge that frees 3 compatible edges is an r = 1 anchor of gain 2, not an r = 2 anchor. A *strict* r = 2
+  anchor is one where neither edge improves alone.
+- r = 1 is the engine's (1,2)-swap. r = 2 goes beyond anything the builder supplied.
 
-**Q1, headroom.** At what fraction of stagnation states does an improving exchange exist, for r = 1 and r = 2,
-separately for each arm and budget? And how much does an *exchange descent* gain on average? Exchange descent
-applies improving exchanges (r = 1 first, then r = 2) until none remains.
-- The engine's states have no improving r = 1 exchange by construction. The engine's r = 2 headroom is the number
-  that matters most: it measures structure the builder's best solver does not exploit.
+**Part B: neighbourhoods, at the strongest arm's states.**
+- Each state gets 16 seeded centres v. The regions are:
+  - *balls* {v plus k − 1 random host neighbours} for k ∈ {2, 4};
+  - as a control, random 4-sets.
+- CP-SAT (pinned, one worker, 2 s) re-optimizes every edge touching the region, holding the rest of S fixed.
+- Outcomes: IMPROVES (any gain), PROVED_NONE (optimal, no gain) or UNKNOWN. UNKNOWN never counts as headroom.
 
-**Q2, structure.** Are the improving anchors concentrated in a class that a short description recognizes?
+**Part C (descriptive).** At each host, the gap decomposition against the best value any arm found: component sizes,
+gains, vertices touched.
+
+**Q1, headroom.** At the strongest arm's states:
+- the fraction of states with an improving exchange (Part A) or an improving neighbourhood (Part B);
+- the fraction of balls that improve, against the fraction of random sets that do.
+
+For the other arms: Part A's fractions and exchange-descent gains.
+
+**Q2, structure.** Are the improving anchors and regions concentrated in a class that a short description
+recognizes?
 - *Recognizers* are conjunctions of at most 3 threshold predicates over a typed grammar G_low of primitive local
-  features of the anchor's edges and endpoints:
-  - degrees in S and in the host;
-  - codegrees in S and in the host;
-  - the number of host triangles through an edge;
-  - the endpoints' labels under the `cross_2` encoding;
-  - whether the anchor's edges share a vertex.
-- G_low deliberately leaves out derived constraint quantities such as blocker or freed counts. Those are what a
-  discovery loop should invent, not be handed. A richer grammar G_rich that includes them is reported only as a
-  descriptive upper bound.
-- Recognizers are fitted on 12 hosts and judged on the other 12 by:
-  - held-out *lift*: precision divided by the base rate of improving anchors;
-  - held-out *recall*.
-- The null comparison is 1,000 recognizers drawn at random from G_low with the same number of predicates, thresholds
-  at feature quantiles, and support at least as large as the fitted one's.
+  features of the vertices and edges involved:
+  - degree in S and in the host, and their ratio;
+  - codegree in the host;
+  - host triangles through a vertex or edge;
+  - S-edges among a vertex's neighbours;
+  - whether an anchor's edges share a vertex.
+- G_low deliberately leaves out derived constraint quantities such as blocker counts, freed counts or tightness.
+  Those are what a discovery loop should invent, not be handed. A richer grammar G_rich that includes them is
+  reported only as a descriptive upper bound.
+- Recognizers are fitted on 8 hosts (2 per cell) and judged on the other 8 by held-out *lift* (precision divided by
+  the base rate) and held-out *recall*.
+- The null is 1,000 recognizers drawn at random from G_low, with the same number of predicates, thresholds at
+  feature quantiles, and support at least that of the fitted recognizer.
 
-**Q3, calculation instead of search** (descriptive). Compare two ways of finding an improving exchange at the
-engine's states: enumerating only recognized anchors against enumerating all anchors in random order. The measure is
-CPU time to the first improving exchange. This is the "turn search into a calculation" test in its simplest form.
+**Q3, calculation instead of search (descriptive).** At the strongest arm's states, compare two ways to the first
+improvement: trying only recognized regions or anchors, against trying them in random order. The measure is CPU time.
 
-**Verdict (to be fixed at setup; proposed).**
-- NO_HEADROOM: improving r = 2 exchanges exist at fewer than 10% of the engine's states *and* at fewer than 10% of
-  the programs' states after exchange descent with r = 1. Coordinated exchanges of size ≤ 3 hold no usable
-  structure here.
-- HEADROOM_UNSTRUCTURED: there is headroom (not NO_HEADROOM), but no recognizer reaches held-out lift ≥ 2 with
-  recall ≥ 0.3 above the 95th percentile of the random recognizers.
-- HEADROOM_STRUCTURED: headroom, and such a recognizer exists. The loop is worth building (§4).
+### 3.3 Verdict (proposed before any look; fixed at setup)
 
-**Expectation (stated now).** The programs' states will show r = 1 headroom often. That is the swap, already known,
-and the reason the engine wins. The engine's states will show r = 2 headroom on a minority of hosts, more often at
-0.25 s than at 1.0 s. Whether that headroom is recognizable in G_low is genuinely open; slightly more likely
-HEADROOM_UNSTRUCTURED than STRUCTURED.
+- **NO_HEADROOM:** improving changes (Part A or B) exist at fewer than 10% of the strongest arm's states, *and* at
+  fewer than 10% of the programs' states after exchange descent with r = 1.
+- **HEADROOM_UNSTRUCTURED:** there is headroom, but no recognizer reaches held-out lift ≥ 2 with recall ≥ 0.3 and
+  above the random recognizers' 95th percentile.
+- **HEADROOM_STRUCTURED:** headroom, and such a recognizer exists. The loop is worth building (§4).
+
+**Expectation (stated after the development looks, which inform it).**
+- The programs' states will show r = 1 headroom often. That is the swap, already known.
+- `hybrid-swap-v1` will show r = 2 headroom on planted hosts and none on G(n, 0.5).
+- The strongest arm will show no exchange headroom. It will show improving 4-balls at a minority of its 2 s states,
+  fewer at 10 s, and more than random sets give.
+- Whether the improving regions are recognizable in G_low is open; HEADROOM_UNSTRUCTURED is slightly more likely than
+  HEADROOM_STRUCTURED.
 
 **What each outcome means for GV4.**
-- NO_HEADROOM: this route on this domain is closed. The next probe is a larger domain (triangle_free_large_v1,
-  n ≤ 1023), where fixed budgets leave more room, or a different problem.
-- HEADROOM_UNSTRUCTURED: try one richer grammar (pairs of anchors, paths of wedges) once, then stop.
-- HEADROOM_STRUCTURED: §4.
+- **NO_HEADROOM:** this route is closed at the scales probed.
+- **HEADROOM_UNSTRUCTURED:** try one richer grammar once (paths of wedges, pairs of regions), then stop.
+- **HEADROOM_STRUCTURED:** go on to §4. The gap decomposition (point 4 of §3.1) also says what a loop would face:
+  the best known solutions are globally different, so local concepts can at most speed the climb within a basin. They
+  cannot replace the global search that finds the basin.
+
+**Order.** B20_R99 needs a pinned CP-SAT. The current tree is byte-identical to the wheel, but it fails its pin,
+because the pin includes pip's record of the wheel's path (repair: B20_R98 engineering). B20_R99 runs after B20_R86.
 
 ## 4. If there is structured headroom: the discovery loop (engineering, B20_R100–R101)
 
