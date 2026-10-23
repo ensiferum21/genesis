@@ -1,0 +1,268 @@
+{
+ "code_identity": "4efa194c92e60ef4f2359288cd48ad415bf163f44616dc36d29a40ca9d6e1177",
+ "cpsat": {
+  "deterministic_time": 2.0,
+  "tree_sha256": "2010e03a3a3561dcfa4f0f15f4de1ca16b6321e6136fca94bdf192a9f087e47a",
+  "workers": 1
+ },
+ "descriptive": {
+  "control@2": {
+   "free_edges": 0,
+   "mean_descent_gain": 2.75,
+   "mean_value": 4229.5,
+   "states": 16,
+   "with_r1": 8,
+   "with_r2_strict": 8
+  },
+  "gen1@2": {
+   "free_edges": 0,
+   "mean_descent_gain": 2.9375,
+   "mean_value": 4234.375,
+   "states": 16,
+   "with_r1": 7,
+   "with_r2_strict": 7
+  },
+  "gen2@2": {
+   "free_edges": 0,
+   "mean_descent_gain": 2.3125,
+   "mean_value": 4233.625,
+   "states": 16,
+   "with_r1": 7,
+   "with_r2_strict": 5
+  },
+  "gen3@2": {
+   "free_edges": 0,
+   "mean_descent_gain": 2.1875,
+   "mean_value": 4234.6875,
+   "states": 16,
+   "with_r1": 6,
+   "with_r2_strict": 5
+  },
+  "hybrid@10": {
+   "free_edges": 0,
+   "mean_descent_gain": 0.875,
+   "mean_value": 4239.75,
+   "states": 16,
+   "with_r1": 0,
+   "with_r2_strict": 5
+  },
+  "hybrid@2": {
+   "free_edges": 0,
+   "mean_descent_gain": 0.875,
+   "mean_value": 4234.5625,
+   "states": 16,
+   "with_r1": 0,
+   "with_r2_strict": 5
+  },
+  "tfxw@10": {
+   "free_edges": 0,
+   "mean_descent_gain": 0,
+   "mean_value": 4247.625,
+   "states": 16,
+   "with_r1": 0,
+   "with_r2_strict": 0
+  },
+  "tfxw@2": {
+   "free_edges": 0,
+   "mean_descent_gain": 0,
+   "mean_value": 4244.6875,
+   "states": 16,
+   "with_r1": 0,
+   "with_r2_strict": 0
+  }
+ },
+ "host_order": [
+  "dev-planted_cluster-2a71ea9a-20269901-0000",
+  "dev-erdos-2be53d3d-20269902-0000",
+  "dev-planted_cluster-ffd8075f-20269903-0000",
+  "dev-erdos-c45c7693-20269904-0000",
+  "dev-planted_cluster-2a71ea9a-20269901-0001",
+  "dev-erdos-2be53d3d-20269902-0001",
+  "dev-planted_cluster-ffd8075f-20269903-0001",
+  "dev-erdos-c45c7693-20269904-0001",
+  "dev-planted_cluster-2a71ea9a-20269901-0002",
+  "dev-erdos-2be53d3d-20269902-0002",
+  "dev-planted_cluster-ffd8075f-20269903-0002",
+  "dev-erdos-c45c7693-20269904-0002",
+  "dev-planted_cluster-2a71ea9a-20269901-0003",
+  "dev-erdos-2be53d3d-20269902-0003",
+  "dev-planted_cluster-ffd8075f-20269903-0003",
+  "dev-erdos-c45c7693-20269904-0003"
+ ],
+ "part_b": {
+  "ball2": {
+   "IMPROVES": 1,
+   "PROVED_NONE": 382,
+   "UNKNOWN": 129
+  },
+  "ball4": {
+   "IMPROVES": 1,
+   "PROVED_NONE": 143,
+   "UNKNOWN": 368
+  },
+  "rand4": {
+   "IMPROVES": 2,
+   "PROVED_NONE": 205,
+   "UNKNOWN": 305
+  }
+ },
+ "part_c": {
+  "improving_pieces": 143,
+  "improving_pieces_up_to_10_edges": 55,
+  "largest_improving_piece_sizes": [
+   8268,
+   8225,
+   8193,
+   8155,
+   8154,
+   8152,
+   8122,
+   8119,
+   8081,
+   8017
+  ],
+  "pieces": 484
+ },
+ "programs": {
+  "control": {
+   "path": "evidence/generation2_control_b20r84/program.json",
+   "sha256": "a1a295db3f1d869b570db8c418e277a8b3bb77eb4774baba507ed7243a456210"
+  },
+  "gen1": {
+   "path": "evidence/program_search_b20r79/discovered_program.json",
+   "sha256": "513e5e7b49e7303e91a23ec08c9d2a64b773267815978f1f1afcb12fda8efbc4"
+  },
+  "gen2": {
+   "path": "evidence/generation2_b20r83/program.json",
+   "sha256": "b8369a6ba1f94876c1eeeb28cee80f439ed2740dbb2e51a8ca4c1457967e3d5a"
+  },
+  "gen3": {
+   "path": "evidence/generation3_b20r85/program.json",
+   "sha256": "045b88caaa9c96c127cee041aea02b30cb3662221755aa66fece6d67926b4733"
+  }
+ },
+ "q1": {
+  "programs_share": 0.359375,
+  "programs_states": 64,
+  "programs_with_r2_after_r1_descent": 23,
+  "tfxw_share": 0.0625,
+  "tfxw_states": 32,
+  "tfxw_with_local_headroom": 2
+ },
+ "q2": {
+  "anchors_r1": {
+   "features": [
+    "degH_diff",
+    "degH_sum",
+    "degS_sum",
+    "host_triangles_edge",
+    "host_triangles_ends",
+    "ratio_max",
+    "ratio_min",
+    "s_around_ends"
+   ],
+   "heldout": {
+    "lift": 11.068408265162828,
+    "positives_selected": 11,
+    "precision": 0.002084122773777946,
+    "recall": 0.21568627450980393,
+    "selected": 5278
+   },
+   "heldout_positives": 51,
+   "items": 542381,
+   "null": {
+    "draws": 1000,
+    "median_lift": 0.0,
+    "p95_lift": 7.271478569022829
+   },
+   "positives": 94,
+   "recognizer": [
+    [
+     "degS_sum",
+     "<=",
+     66.0
+    ],
+    [
+     "ratio_max",
+     ">=",
+     0.6271186440677966
+    ],
+    [
+     "degH_diff",
+     ">=",
+     2.0
+    ],
+    [
+     "degH_diff",
+     ">=",
+     4.0
+    ],
+    [
+     "degH_diff",
+     ">=",
+     5.0
+    ],
+    [
+     "degH_diff",
+     ">=",
+     8.0
+    ]
+   ],
+   "train": {
+    "lift": 18.97913067790348,
+    "positives_selected": 14,
+    "precision": 0.0030055817947617003,
+    "recall": 0.32558139534883723,
+    "selected": 4658
+   },
+   "train_positives": 43,
+   "verdict": "FAILS"
+  },
+  "regions": {
+   "features": [
+    "degH_mean",
+    "degS_mean",
+    "host_edges_inside",
+    "host_triangles_mean",
+    "ratio_mean",
+    "ratio_min",
+    "s_around_mean",
+    "s_edges_inside",
+    "size"
+   ],
+   "heldout_positives": 3,
+   "items": 734,
+   "positives": 4,
+   "recognizer": null,
+   "train_positives": 1,
+   "verdict": "UNDERPOWERED"
+  }
+ },
+ "q3": null,
+ "schema": "genesis-b20r99-headroom-v1",
+ "seeds": {
+  "centres": 20269911,
+  "hosts": 20269901,
+  "null": 20269921
+ },
+ "status": "DEV diagnostic; licenses nothing; no package changed",
+ "study": "b20r99",
+ "tfxw": {
+  "config_sha256": "86267aa5440b0d3202782716143c8874e0987a4fd7d0976b9c2398f1403bc367",
+  "descriptors": {
+   "10": "19707ea45c8e64e65d0d0aa6ba4f996bb8f4b5363294ca5255c7b68c7654e638",
+   "2": "6f7d34395398dd2b7ce016bbfcdf459ee165f27ab8f3b3ab4003ba4cea4f0915"
+  }
+ },
+ "train_hosts": [
+  "dev-erdos-2be53d3d-20269902-0000",
+  "dev-erdos-2be53d3d-20269902-0001",
+  "dev-erdos-c45c7693-20269904-0000",
+  "dev-erdos-c45c7693-20269904-0001",
+  "dev-planted_cluster-2a71ea9a-20269901-0000",
+  "dev-planted_cluster-2a71ea9a-20269901-0001",
+  "dev-planted_cluster-ffd8075f-20269903-0000",
+  "dev-planted_cluster-ffd8075f-20269903-0001"
+ ],
+ "verdict": "HEADROOM_UNSTRUCTURED"
+}

@@ -66,6 +66,14 @@ readings before anything is built.
 
 ## 3. B20_R99: the headroom pilot (DEV; about 1 CPU hour; an analysis script, no engineering)
 
+**Result (23 Oct 2026; `evidence/headroom_b20r99/`): HEADROOM_UNSTRUCTURED.** Where tfxw stops, no exchange of one or
+two edges improves, and CP-SAT improved 4 of 1,536 small regions, at 2 of its 32 states (random 4-sets as often as
+4-balls). The language programs leave a (2,3)-exchange at 23 of 64 states: the swap they lack, not a new concept. The
+only pattern found for improving anchors (high host-degree imbalance) has held-out lift 11 but recall 0.22, under the
+0.3 required; improving regions are too few to judge. The best states differ globally (improving gap pieces of about
+8,000 edges). By §3.3: the discovery loop of §4 is not built on these hosts; one richer grammar may be tried once; the
+evidence points to global, coarse-grained moves (renormalisation and crossover, tested on max-cut in B20_R104-R106).
+
 ### 3.1 Development looks (22 Oct 2026; exposed hosts only; disclosed)
 
 The first draft of this section (commit `ba2b052`) put the pilot on 24 fresh n63 planted hosts, with exchanges of

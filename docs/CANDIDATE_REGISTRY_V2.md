@@ -160,3 +160,12 @@ stamp and the build-id that hashes it (Aperture 2024 and 2026 embed one; the oth
 change re-identifies every `cpsat-v1` and MaxSAT descriptor; earlier evidence keeps its recorded ids through
 `scripts/b20r98_repin.py`'s `pre_r98_id` (defect B20R98-PIN, `docs/BLOCKING_DEFECTS.md`).
 
+## B20_R101 and B20_R104: the max-cut runner and `mcx-v1`
+
+`candidates_maxcut` (B20_R101) is registry v2's discipline for the DEV max-cut domain under its own schema. Since
+B20_R104 a kind is admitted there when its module declares the max-cut domain (`is_maxcut_kind`), not by a list in the
+runner file, so adding a max-cut kind changes no max-cut identity (as B20_R67 did for registry v2; the change
+re-identified the max-cut descriptors once, before any was recorded). `mcx-v1` (B20_R104) is Genesis's max-cut engine
+from source (`candidate_kinds/native/mcx.c`, built by `scripts/b20r104_build_mcx.py`, pinned): an iterated tabu search
+whose DEFAULT is breakout local search's rules and published setting, with restarts by a Houdayer cluster exchange, a
+renormalisation step or MACUT's multi-parent crossover, chosen by data (`SPACE`, 5,184 configurations).

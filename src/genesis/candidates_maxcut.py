@@ -4,7 +4,9 @@ As `candidates_large` for the large triangle-free domain, under its own schema a
 descriptor changes:
   * descriptors with schema `genesis-candidate-descriptor-maxcut-v1`, the v2 fields, and an implementation identity of
     this file, `candidates_v2.py` (whose helpers it uses), `graphs_maxcut.py`, `models_maxcut.py` and the kind's files;
-  * only the kinds that declare the max-cut domain (`MAXCUT_KINDS`), from the closed kind map;
+  * only the kinds of the closed kind map whose module declares the max-cut domain (`is_maxcut_kind`; since
+    B20_R104 derived rather than listed here, so that adding a kind leaves every max-cut identity unchanged, as
+    B20_R67 did for registry v2);
   * a bounded child (runc with the cgroup meter, or rlimits for DEV) that sees only the `MaxCutCandidateView`, the data
     parameters and the limits; strict output decoding ({side, value}); the domain's two computations re-check every
     cut, and a claimed value that differs from the checked one fails the run.
@@ -21,13 +23,20 @@ from . import candidates_v2 as V2
 SCHEMA = 'genesis-candidate-descriptor-maxcut-v1'
 DOMAIN = 'maxcut_v1'
 CORE_FILES = ('candidates_maxcut.py', 'candidates_v2.py', 'graphs_maxcut.py', 'models_maxcut.py')
-MAXCUT_KINDS = ('mqlib-maxcut-v1', 'dsb-maxcut-v1')
 MAX_OUTPUT = 1 << 20
 CHILD_ARGV = ('-s', '-B', '-m', 'genesis.candidates_maxcut', '--trusted-candidate-child', '/work/src/request.json')
 
 
+def is_maxcut_kind(kind):
+    return isinstance(kind, str) and kind in V2.KINDS and DOMAIN in getattr(V2._kind(kind), 'DOMAINS', ())
+
+
+def maxcut_kinds():
+    return tuple(k for k in V2.KINDS if is_maxcut_kind(k))
+
+
 def implementation_identity(kind):
-    if kind not in MAXCUT_KINDS:
+    if not is_maxcut_kind(kind):
         raise V2.CandidateError('UNKNOWN_KIND', f'{kind} is not a max-cut kind')
     mod = V2._kind(kind)
     own = f'candidate_kinds/{V2.KINDS[kind]}.py'
@@ -45,7 +54,7 @@ def _check_profile(rp):
 
 
 def build_descriptor(kind, parameters, *, cpu_seconds, memory_mib=2048, wall_seconds=None, queries=60):
-    if kind not in MAXCUT_KINDS:
+    if not is_maxcut_kind(kind):
         raise V2.CandidateError('UNKNOWN_KIND', f'{kind} is not a max-cut kind')
     why = V2._kind(kind).check_parameters(DOMAIN, parameters)
     if why:
@@ -62,7 +71,7 @@ def build_descriptor(kind, parameters, *, cpu_seconds, memory_mib=2048, wall_sec
 def descriptor_problems(desc, *, expected_id=None):
     if not isinstance(desc, dict) or set(desc) != V2.FIELDS or desc.get('schema') != SCHEMA:
         return ['not a max-cut candidate descriptor']
-    if desc['kind'] not in MAXCUT_KINDS:
+    if not is_maxcut_kind(desc['kind']):
         return [f'unknown kind {desc["kind"]!r}']
     out = []
     body = {k: desc[k] for k in V2.FIELDS - {'descriptor_id'}}
@@ -179,7 +188,8 @@ def run(task, desc, *, seed, expected_id=None, isolation='runc'):
 def _child(path):
     import resource
     req = json.loads(Path(path).read_bytes())
-    if set(req) != {'view', 'kind', 'parameters', 'cpu_seconds', 'queries', 'seed'} or req['kind'] not in MAXCUT_KINDS:
+    if set(req) != {'view', 'kind', 'parameters', 'cpu_seconds', 'queries', 'seed'} or \
+            not is_maxcut_kind(req['kind']):
         raise SystemExit(2)
     from .models_maxcut import MaxCutCandidateView
     view = MaxCutCandidateView.model_validate_json(canonical(req['view']))

@@ -45,7 +45,7 @@
     "9": "Leak firewall: text/structural/elaborated/near-dup screening, oracle, theorem memory rule.",
     "10": "IR overloads + replay, 5 macros, research market, world-step loop, Appendix A registry.",
     "11": "Experiment B harness: FOF parser, SAT model finder, independent evaluator, E prover, kill gate (DEV: KILL).",
-    "12": "Release bundle + verifier, §38 classes (mutation, load, golden baselines, smoke cap), CI, container recipe, env lock.",
+    "12": "Release bundle + verifier, \u00a738 classes (mutation, load, golden baselines, smoke cap), CI, container recipe, env lock.",
     "13": "SAT baseline arm, e2e walkthrough, requirements map, final matrix.",
     "14": "R-01 shared receipt semantics; R-02 effective levels and bundle re-derivation; R-03 certificate custody + checker-only replay; three internal red-team rounds (11, 12, 9 findings; 4, 2, 1 critical) all closed with regressions; only replayable evidence licenses levels; custodian checks requests against the frozen campaign export; W01 ledger (343 rows); undeclared skips fail the matrix.",
     "14R1": "External review F-01 repaired: requested vs established wording; report.md derived per claim; free prose at floor; B14-OPEN-5 closed.",
@@ -1077,7 +1077,7 @@
       },
       "B20_R99": {
         "commits": [],
-        "result": "Setup: discovery headroom pilot (preregistered). Pending"
+        "result": "DEV, preregistered (779831c): HEADROOM_UNSTRUCTURED. tfxw leaves local headroom at 2 of 32 states (no exchange of 1-2 edges; CP-SAT improved 4 of 1,536 regions, random 4-sets as often as balls); the programs leave a (2,3)-exchange at 23 of 64 states; the anchor pattern (host-degree imbalance) has held-out lift 11.1 but recall 0.22 (FAILS); regions UNDERPOWERED; best states differ globally. The discovery loop is not built on these hosts"
       },
       "B20_R100": {
         "commits": [
@@ -1097,6 +1097,18 @@
       "B20_R103": {
         "commits": [],
         "result": "Setup: feedback contract and zero-signal battery (preregistered). Pending"
+      },
+      "B20_R104": {
+        "commits": [],
+        "result": "Engineering: mcx-v1 (Genesis max-cut engine: BLS rules and setting as DEFAULT, Houdayer cluster exchange, renormalisation, MACUT crossover), pinned build; graph families built as Gset's (rudy planar unions, rectangular tori); max-cut membership by declared domain; Gset table holds the BLS and MACUT papers (Daniel's PDFs). Setup of B20_R105 (configuring on generated graphs) and B20_R106 (once on Gset)"
+      },
+      "B20_R105": {
+        "commits": [],
+        "result": "Setup: the system configures mcx on generated graphs only (preregistered). Pending"
+      },
+      "B20_R106": {
+        "commits": [],
+        "result": "Setup: mcx on Gset once, against B20_R102 (preregistered). Pending"
       }
     },
     "open_after_b20_r5": [

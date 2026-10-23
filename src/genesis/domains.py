@@ -493,6 +493,10 @@ class MaxCutAdapter(DomainAdapter):
         'erdos': {'n': (16, 20000), 'p': (0.0005, 0.95)},
         'erdos_pm1': {'n': (16, 20000), 'p': (0.0005, 0.95)},
         'torus_pm1': {'side': (4, 141)},
+        'planar2': {'n': (16, 20000), 'density': (0.05, 1.0)},       # B20_R104
+        'planar2_pm1': {'n': (16, 20000), 'density': (0.05, 1.0)},   # B20_R104
+        'torus2d': {'rows': (3, 200), 'cols': (3, 200)},              # B20_R104
+        'torus2d_pm1': {'rows': (3, 200), 'cols': (3, 200)},          # B20_R104
     }
 
     def contract(self):
@@ -567,6 +571,19 @@ class MaxCutAdapter(DomainAdapter):
                         if x != y:
                             out.append((min(x, y), max(x, y), rng.choice((-1, 1))))
             return k * k, tuple(sorted(set(out), key=lambda e: (e[0], e[1])))
+        if family in ('planar2', 'planar2_pm1'):
+            return self._planar2(rng, family, params)
+        if family in ('torus2d', 'torus2d_pm1'):
+            # a rows x cols toroidal grid numbered row by row, as rudy's board and Gset's tori (G11-G13: 100 x 8,
+            # G32-G34: 100 x 20, G48-G49: 50 x 60, G50: 25 x 120), weights 1 or +-1 (B20_R104)
+            h, w = int(params['rows']), int(params['cols'])
+            out = set()
+            for r in range(h):
+                for c in range(w):
+                    x = r * w + c
+                    for y in (r * w + (c + 1) % w, ((r + 1) % h) * w + c):
+                        out.add((min(x, y), max(x, y)))
+            return h * w, tuple((u, v, 1 if family == 'torus2d' else rng.choice((-1, 1))) for u, v in sorted(out))
         n, p = params['n'], params['p']
         out = []
         for u in range(n):
@@ -574,6 +591,38 @@ class MaxCutAdapter(DomainAdapter):
                 if rng.random() < p:
                     out.append((u, v, 1 if family == 'erdos' else rng.choice((-1, 1))))
         return n, tuple(out)
+
+    @staticmethod
+    def _planar2(rng, family, params):
+        """The union of two random planar graphs on the same n vertices (B20_R104), in the way Gset's planar graphs
+        (G14-G21, G35-G42, G51-G54) were made by rudy (Rinaldi's `rudy.c`; our reading of excerpts of the copy served
+        with Gset at web.stanford.edu/~yyye/yyye/Gset/rudy.c, 23 Oct 2026, not the full source): each layer starts
+        from a triangle and inserts vertex d = 3, ..., n-1 into a uniformly chosen face, joining it to the face's
+        three corners (3n - 6 edges, a maximal planar graph); random edges are then deleted until at most
+        density x 3(n - 2) remain. The layers share their vertex labels, so the early vertices are hubs in both.
+        Gset's planar graphs fit this reading: their sizes (n = 800: 4661-4694 edges; this family at density 0.99:
+        about 4660) and their largest degrees (100-330, at vertices 0-8). Weights 1 (planar2) or +-1 (planar2_pm1).
+        rudy's random number generator is not reproduced: the same construction, not the same graphs."""
+        n, density = params['n'], params['density']
+        edges = MaxCutAdapter._planar_layer(rng, n, density) | MaxCutAdapter._planar_layer(rng, n, density)
+        out = tuple((u, v, 1 if family == 'planar2' else rng.choice((-1, 1))) for u, v in sorted(edges))
+        return n, out
+
+    @staticmethod
+    def _planar_layer(rng, n, density):
+        faces = [(0, 1, 2), (0, 1, 2)]                 # the inner and the outer face of the first triangle
+        edges = [(0, 1), (1, 2), (0, 2)]
+        for d in range(3, n):
+            f = rng.randrange(len(faces))
+            a, b, c = faces[f]
+            edges += [(a, d), (b, d), (c, d)]
+            faces[f] = (a, b, d)
+            faces += [(b, c, d), (a, c, d)]
+        while len(edges) > density * 3 * (n - 2):
+            e = rng.randrange(len(edges))
+            edges[e] = edges[-1]
+            edges.pop()
+        return set(edges)
 
     def generate(self, seed, count, split, family, params, excluded=()):
         """`count` graphs of one family setting whose identities are not in `excluded` (nor repeated)."""

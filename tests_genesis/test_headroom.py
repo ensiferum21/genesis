@@ -148,5 +148,56 @@ class Design(unittest.TestCase):
         self.assertIn('R33.pinned_core()', (ROOT / 'scripts' / 'b20r99_headroom.py').read_text())
 
 
+
+class RecordB20R99(unittest.TestCase):
+    """B20_R99's record: the verdict and every summary figure recompute from the rows; the hosts are fresh; the
+    programs and tfxw's configuration are the recorded files."""
+
+    @classmethod
+    def setUpClass(cls):
+        import json
+        cls.ev = ROOT / 'evidence' / 'headroom_b20r99'
+        cls.s = json.loads((cls.ev / 'summary.json').read_text())
+        cls.rows = [json.loads(l) for l in (cls.ev / 'rows.jsonl').read_text().splitlines() if l.strip()]
+        cls.tasks = json.loads((cls.ev / 'hosts.json').read_text())['tasks']
+
+    def test_summary_recomputes(self):
+        import json
+        by_id = {r['task_id']: r for r in self.rows}
+        rows = [by_id[t['task_id']] for t in self.tasks]
+        a = json.loads(json.dumps(M.analyse(rows, {t['task_id']: t for t in self.tasks})))
+        for k in ('verdict', 'q1', 'q2', 'q3', 'descriptive', 'part_b', 'part_c', 'train_hosts', 'host_order'):
+            self.assertEqual(a[k], self.s[k], k)
+        self.assertEqual(a['verdict'], 'HEADROOM_UNSTRUCTURED')
+        self.assertEqual((a['q1']['tfxw_with_local_headroom'], a['q1']['tfxw_states']), (2, 32))
+        self.assertEqual((a['q1']['programs_with_r2_after_r1_descent'], a['q1']['programs_states']), (23, 64))
+        self.assertEqual((a['q2']['anchors_r1']['verdict'], a['q2']['regions']['verdict']), ('FAILS', 'UNDERPOWERED'))
+
+    def test_hosts_are_fresh(self):
+        import json
+        from genesis.common import canonical
+        from genesis.domains import adapter
+        from genesis.models_large import LargeGraphTask
+        a = adapter('triangle_free_large_v1')
+        mine = {a.exposure_identity(LargeGraphTask.model_validate_json(canonical(t)))['canonical'] for t in self.tasks}
+        self.assertEqual(len(mine), 16)
+        others = set()
+        for p in sorted((ROOT / 'evidence').glob('*/hosts.json')):
+            if p.parent.name == 'headroom_b20r99':
+                continue
+            data = json.loads(p.read_text())
+            for t in data.get('tasks', []) if isinstance(data, dict) else []:
+                if isinstance(t, dict) and t.get('domain') == 'triangle_free_large_v1':
+                    others.add(a.exposure_identity(LargeGraphTask.model_validate_json(canonical(t)))['canonical'])
+        self.assertFalse(mine & others)
+
+    def test_recorded_inputs(self):
+        import hashlib
+        for arm, rec in self.s['programs'].items():
+            self.assertEqual(hashlib.sha256((ROOT / rec['path']).read_bytes()).hexdigest(), rec['sha256'], arm)
+        self.assertEqual(hashlib.sha256(M.TFXW_CONFIG.read_bytes()).hexdigest(), self.s['tfxw']['config_sha256'])
+        self.assertEqual(self.s['seeds'], {'hosts': M.HOST_SEED, 'centres': M.CENTRE_SEED, 'null': M.NULL_SEED})
+
+
 if __name__ == '__main__':
     unittest.main()
