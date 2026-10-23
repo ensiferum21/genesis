@@ -1,0 +1,5 @@
+[    0.0s] b20r112; pinned to CPU 0
+[    1.7s] large-domain exposure: 120 identities excluded
+[   31.6s] references (tfxw at 2 s): {'dev-planted_cluster-2a71ea9a-20291201-0000': 1169, 'dev-erdos-2be53d3d-20291202-0000': 2324, 'dev-planted_cluster-ffd8075f-20291203-0000': 4508, 'dev-erdos-c45c7693-20291204-0000': 8982, 'dev-planted_cluster-2a71ea9a-20291201-0001': 1186, 'dev-erdos-2be53d3d-20291202-0001': 2301, 'dev-planted_cluster-ffd8075f-20291203-0001': 4525, 'dev-erdos-c45c7693-20291204-0001': 8846, 'dev-planted_cluster-2a71ea9a-20291201-0002': 1160, 'dev-erdos-2be53d3d-20291202-0002': 2309, 'dev-planted_cluster-ffd8075f-20291203-0002': 4532, 'dev-erdos-c45c7693-20291204-0002': 9000}
+[  862.4s] search: releases 0, submissions 19, evaluations 400, stopped False; program {"rep": "adjacent_3", "body": [["descent"], ["init"]]}
+[  911.7s] verdict NOT_DEMONSTRATED; test BEHIND_PRIOR_ART 5-18; held-out mean 4219.7 vs champion 4229.5

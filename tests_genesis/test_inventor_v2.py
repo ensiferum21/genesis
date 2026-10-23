@@ -35,5 +35,27 @@ class Design(unittest.TestCase):
             M.main([str(ROOT / 'evidence' / 'elsewhere')])
 
 
+
+class RecordB20R112(unittest.TestCase):
+    """B20_R112's record: the test recomputes from the held-out values against B20_R111's recorded champion; the
+    reported program is the judge's start program (no release) and a known template's statements."""
+
+    def test_recomputes(self):
+        import json
+        import b20r111_invention_test as M111
+        ev = ROOT / 'evidence' / 'inventor_v2_b20r112'
+        s = json.loads((ev / 'summary.json').read_text())
+        r111 = json.loads((M.R111 / 'summary.json').read_text())
+        hs = sorted(s['held_out_values'])
+        self.assertEqual(hs, sorted(r111['held_out'][r111['champion']]))
+        test = M111.sign([s['held_out_values'][h] for h in hs], [r111['held_out'][r111['champion']][h] for h in hs], M.ALPHA)
+        self.assertEqual(json.loads(json.dumps(test)), s['test'])
+        self.assertEqual((s['verdict'], s['test']['label'], s['search']['judge']['releases']),
+                         ('NOT_DEMONSTRATED', 'BEHIND_PRIOR_ART', 0))
+        self.assertEqual(M111.core_label(M111.signature(s['program'])), ('KNOWN_CORE', s['known_as_template']))
+        trace = [json.loads(l) for l in (ev / 'trace.jsonl').read_text().splitlines() if l.strip()]
+        self.assertEqual(sum(x['split'] == 'A' for x in trace) + sum(x['split'] in 'BC' for x in trace), len(trace))
+
+
 if __name__ == '__main__':
     unittest.main()

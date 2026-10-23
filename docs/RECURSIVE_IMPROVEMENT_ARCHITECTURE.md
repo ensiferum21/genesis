@@ -124,7 +124,9 @@ has seen.
 system's recorded search unedited; it must be a program, not a setting; it must beat preregistered prior art (known
 algorithm families written in the same language, tuned by the same procedure) significantly on held-out hosts; and
 its core, found by deletion, must be a combination no template has, and then survive a review against the
-literature. First result: NOT_DEMONSTRATED for the four programs found so far.
+literature. First results: NOT_DEMONSTRATED for the four programs found so far (B20_R111), and for a fresh search
+under contract v2, whose judge released nothing because program differences in this language are smaller than one
+confirmation's noise (B20_R112). The limit is the language and the effect sizes it allows.
 
 ## 4. What would make the whole claim true, and what would end it
 

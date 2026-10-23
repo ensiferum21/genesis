@@ -1,0 +1,86 @@
+{
+ "champion": "T4",
+ "code_identity": "ba029f9f93a02856478a22b93cbcd1f640f908f42f8ccd2904edca33f2349885",
+ "core": null,
+ "held_out_values": {
+  "dev-erdos-2be53d3d-20291102-0002": 2315,
+  "dev-erdos-2be53d3d-20291102-0003": 2326,
+  "dev-erdos-2be53d3d-20291102-0004": 2313,
+  "dev-erdos-2be53d3d-20291102-0005": 2229,
+  "dev-erdos-2be53d3d-20291102-0006": 2304,
+  "dev-erdos-2be53d3d-20291102-0007": 2297,
+  "dev-erdos-c45c7693-20291104-0002": 8943,
+  "dev-erdos-c45c7693-20291104-0003": 8930,
+  "dev-erdos-c45c7693-20291104-0004": 8926,
+  "dev-erdos-c45c7693-20291104-0005": 8924,
+  "dev-erdos-c45c7693-20291104-0006": 8822,
+  "dev-erdos-c45c7693-20291104-0007": 8944,
+  "dev-planted_cluster-2a71ea9a-20291101-0002": 1161,
+  "dev-planted_cluster-2a71ea9a-20291101-0003": 1172,
+  "dev-planted_cluster-2a71ea9a-20291101-0004": 1162,
+  "dev-planted_cluster-2a71ea9a-20291101-0005": 1152,
+  "dev-planted_cluster-2a71ea9a-20291101-0006": 1187,
+  "dev-planted_cluster-2a71ea9a-20291101-0007": 1144,
+  "dev-planted_cluster-ffd8075f-20291103-0002": 4480,
+  "dev-planted_cluster-ffd8075f-20291103-0003": 4493,
+  "dev-planted_cluster-ffd8075f-20291103-0004": 4532,
+  "dev-planted_cluster-ffd8075f-20291103-0005": 4492,
+  "dev-planted_cluster-ffd8075f-20291103-0006": 4538,
+  "dev-planted_cluster-ffd8075f-20291103-0007": 4487
+ },
+ "known_as_template": [
+  "T1",
+  "T5"
+ ],
+ "program": {
+  "body": [
+   [
+    "descent"
+   ],
+   [
+    "init"
+   ]
+  ],
+  "rep": "adjacent_3"
+ },
+ "references": {
+  "dev-erdos-2be53d3d-20291202-0000": 2324,
+  "dev-erdos-2be53d3d-20291202-0001": 2301,
+  "dev-erdos-2be53d3d-20291202-0002": 2309,
+  "dev-erdos-c45c7693-20291204-0000": 8982,
+  "dev-erdos-c45c7693-20291204-0001": 8846,
+  "dev-erdos-c45c7693-20291204-0002": 9000,
+  "dev-planted_cluster-2a71ea9a-20291201-0000": 1169,
+  "dev-planted_cluster-2a71ea9a-20291201-0001": 1186,
+  "dev-planted_cluster-2a71ea9a-20291201-0002": 1160,
+  "dev-planted_cluster-ffd8075f-20291203-0000": 4508,
+  "dev-planted_cluster-ffd8075f-20291203-0001": 4525,
+  "dev-planted_cluster-ffd8075f-20291203-0002": 4532
+ },
+ "reported": 0.9944512246459928,
+ "schema": "genesis-b20r112-inventor-v2-v1",
+ "search": {
+  "distinct_programs": 256,
+  "evaluations": 400,
+  "generations": 30,
+  "judge": {
+   "releases": 0,
+   "start": 0.9944512246459928,
+   "stopped": false,
+   "submissions": 19,
+   "tau": 0.028236012335336718
+  }
+ },
+ "signature": "(('descent',), ('init',))",
+ "status": "DEV; licenses nothing",
+ "study": "b20r112",
+ "test": {
+  "label": "BEHIND_PRIOR_ART",
+  "losses": 18,
+  "p": 0.010622024536132812,
+  "ties": 1,
+  "wins": 5
+ },
+ "valid": true,
+ "verdict": "NOT_DEMONSTRATED"
+}

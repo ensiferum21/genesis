@@ -162,6 +162,7 @@ needs people: a reviewer, a statistician, an independent custodian on its own ma
 | B20_R109 | Gset replication with new seeds: REPLICATED. Ahead of BURER2002 (47-3) and dSB (47-2) on three-seed means; even its worse run beats the tools' best run 36-6; best known values reached on 30 of 54 |
 | B20_R110 | The engine at 60 s on Gset: best known values reached on 27 of 54 (all nine tori), 99.91% on average; no record |
 | B20_R111 | The invention test: **NOT_DEMONSTRATED.** No autonomously found program beats annealing-then-descent tuned in the same language (gen1 6-14, gen2 7-12, gen3 4-17 behind, control 9-13); a standing bar for any future claim |
+| B20_R112 | The inventor under contract v2: NOT_DEMONSTRATED. The judge (honestly) released nothing: its noise with 4-host splits (2.8%) exceeds the programs' differences (0.1%); the program found is multistart descent, behind prior art |
 
 ## 6. Next steps, in order
 
@@ -184,7 +185,8 @@ needs people: a reviewer, a statistician, an independent custodian on its own ma
   11. done: B20_R109 (REPLICATED);
   12. done: B20_R110 (LONGER_HELPS; 27 of 54 at the best known values; no record);
   13. done: B20_R111 (NOT_DEMONSTRATED);
-  14. B20_R112 (the inventor under contract v2, running), then B20_R113 (renormalisation on planar graphs).
+  14. done: B20_R112 (NOT_DEMONSTRATED; nothing released);
+  15. B20_R113 (renormalisation on planar graphs, running).
 
 3. **Checkpoint after these** (the last is B20_R73, never rehearsed; R74 onward are not in a checkpoint). Do not edit
    the tree while the release matrix runs; run timing studies alone.

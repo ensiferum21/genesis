@@ -1161,7 +1161,8 @@
       },
       "B20_R111": {
         "commits": [
-          "962f947"
+          "962f947",
+          "c2b5d3f"
         ],
         "result": "DEV, preregistered, run at dd55c33: NOT_DEMONSTRATED: none of the system's four autonomously found programs beats the prior-art champion (T4, annealing then descent, tuned on 8 hosts) on 24 held-out large hosts at 2 s: gen1 6-14, gen2 7-12, control 9-13 NOT_DISTINGUISHABLE, gen3 4-17 BEHIND; T4 4,229.5 edges on average against 4,219.8-4,225.3; the builder's tfxw 4,239.1"
       },
@@ -1169,13 +1170,13 @@
         "commits": [
           "dd55c33"
         ],
-        "result": "Setup: the inventor under contract v2, held to the invention test (preregistered). Running"
+        "result": "DEV, preregistered, run at dd55c33: NOT_DEMONSTRATED: a fresh program search under contract v2 on 12 large hosts released nothing (threshold about 2.8% of the reference value with 4-host splits; program differences about 0.1%); its program, multistart descent, is BEHIND the prior-art champion on B20_R111's held-out hosts (5-18)"
       },
       "B20_R113": {
         "commits": [
           "1bd3543"
         ],
-        "result": "Setup: renormalisation on planar graphs (preregistered). Pending"
+        "result": "Setup: renormalisation on planar graphs (preregistered). Running"
       }
     },
     "open_after_b20_r5": [
