@@ -619,7 +619,8 @@ WORKSTREAMS = {
              'scripts/b20r102_gset_standing.py', 'evidence/headroom_b20r99/summary.json',
              'src/genesis/candidate_kinds/mcx.py', 'src/genesis/candidate_kinds/native/mcx.c',
              'scripts/b20r104_build_mcx.py', 'scripts/b20r105_mcx_configure.py', 'scripts/b20r106_mcx_gset.py',
-             'evidence/mcx_configure_b20r105/summary.json', 'evidence/mcx_configure_b20r105/configs.json'],
+             'evidence/mcx_configure_b20r105/summary.json', 'evidence/mcx_configure_b20r105/configs.json',
+             'evidence/gset_standing_b20r102/summary.json', 'scripts/b20r108_mcx_maturation.py'],
             [G + 'test_evaluator_readiness.py', G + 'test_redteam_b16.py', G + 'test_candidate_adapters.py',
              G + 'test_candidate_custody.py', G + 'test_statement_custody.py', G + 'test_candidates_v2.py',
              G + 'test_wiring_v5.py', G + 'test_maxcut_tabu.py', G + 'test_physics_kinds.py',
@@ -631,7 +632,8 @@ WORKSTREAMS = {
              G + 'test_beat_champions.py', G + 'test_maxsat2026_kind.py', G + 'test_vs_mse2026.py',
              G + 'test_large_domain.py', G + 'test_configure_tfxw.py', G + 'test_harness_check.py',
              G + 'test_headroom.py', G + 'test_maxcut_domain.py', G + 'test_gset_standing.py',
-             G + 'test_mcx_kind.py', G + 'test_mcx_configure.py', G + 'test_mcx_gset.py']),
+             G + 'test_mcx_kind.py', G + 'test_mcx_configure.py', G + 'test_mcx_gset.py',
+             G + 'test_mcx_maturation.py']),
     'W07': ('Statistics, fairness and decision rules', B,
             [K + 'analysis.py', 'src/genesis/power.py', 'src/genesis/judge.py', 'src/genesis/resources.py',
              'docs/STATISTICIAN_BRIEF.md', 'scripts/b20r61_statistician_brief.py', 'scripts/b20r62_power_rebind.py',
@@ -722,11 +724,11 @@ WORKSTREAMS = {
              'evidence/adaptation_cell_b20r97/ledger.json', 'src/genesis/autonomy/kmap.py',
              'scripts/b20r100_knowledge_map.py', 'evidence/knowledge_map_b20r100/summary.json',
              'src/genesis/autonomy/feedback.py', 'scripts/b20r103_zero_signal.py', 'docs/RESEARCH_ALERTS.md',
-             'evidence/zero_signal_b20r103/summary.json',
+             'evidence/zero_signal_b20r103/summary.json', 'scripts/b20r107_contract_v2.py',
              'docs/RECURSIVE_IMPROVEMENT_ARCHITECTURE.md'],
             ['tests_formal/test_learning.py', 'tests_formal/test_learning_partitions.py',
              G + 'test_adaptation_cell.py', G + 'test_autonomy.py', G + 'test_knowledge_map.py',
-             G + 'test_feedback_contract.py']),
+             G + 'test_feedback_contract.py', G + 'test_contract_v2.py']),
     'W21': ('Better-improver and multigeneration controller (B20_R2: pure lineage validator; B20_R4: the campaign '
             'loop writes native lineage records, crash/resume charges interrupted attempts, the custodian checks '
             'generation requests against the qualifying chain; B20_R16: active-version pointer, rollback, inherited '

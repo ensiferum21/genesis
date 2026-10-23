@@ -34,7 +34,9 @@ deterministic), installed as BINARY, pinned by SHA-256, refused if missing or di
 degree above 2^24 are refused by the binary (exit 3; the run fails, it is not hidden). The cut it prints is recomputed
 here, and the domain's two checkers re-check it.
 
-Parameters (data only): {cpu_seconds, config}; config gives every key of SPACE a value from its list.
+Parameters (data only): {cpu_seconds, config}; config gives every key of SPACE a value from WIDE's list for it.
+SPACE is B20_R105's space (its random draws come from it, so it stays as it was); WIDE (B20_R108) adds larger
+perturbations, longer tenures and larger pools, after every class in B20_R105 chose a value at SPACE's edge.
 Domain: maxcut_v1.
 """
 import hashlib
@@ -49,6 +51,7 @@ BINARY = '/usr/local/genesis-sota/bin/mcx'
 BINARY_SHA256 = '10825596bdb7a0a531ea45f147f956fafee4646ed656b13ba1e38d508c930978'
 SPACE = {'L0': (0.005, 0.01, 0.02, 0.05), 'P': (0.5, 0.75, 0.8, 0.9), 'tt': (5, 10, 20), 'pool': (4, 8, 16),
          'restart': (2000, 20000, 200000), 'rs': (0, 1, 2, 3), 'pert': (0, 1, 2)}
+WIDE = dict(SPACE, L0=(0.005, 0.01, 0.02, 0.05, 0.1, 0.2), tt=(2, 3, 5, 10, 20), pool=(4, 8, 16, 32))
 DEFAULT = {'L0': 0.01, 'P': 0.8, 'tt': 10, 'pool': 8, 'restart': 2000, 'rs': 0, 'pert': 2}
 _DIGEST = {}
 
@@ -56,7 +59,7 @@ _DIGEST = {}
 def check_config(config):
     if not isinstance(config, dict) or set(config) != set(SPACE):
         return f'config must give exactly the keys {sorted(SPACE)}'
-    for k, allowed in SPACE.items():
+    for k, allowed in WIDE.items():
         v = config[k]
         if isinstance(v, bool) or type(v) not in (int, float) or v not in allowed:
             return f'config[{k!r}] must be one of {allowed}'

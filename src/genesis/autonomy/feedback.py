@@ -27,6 +27,14 @@ Blum and Hardt, ICML 2015):
   * **Stop.** PATIENCE generations in a row without a release end the search, as does the evaluation budget.
   * **Report.** The reported number is the incumbent's released B score, never a training score.
 
+**Version 2 (B20_R107): calibrating on the judge's own noise.** B20_R103 found the contract honest but too strict
+where the evaluation data have quirks: tau was set from A - B differences, which carry the worker's own training
+quirks as well as the judge's, so it grew with them. With `calibrate='BC'` the judge holds two confirmation splits,
+B and C, and sets tau from B - C differences over the calibration programs: exactly the noise of comparing two
+programs on confirmation data. Larger confirmation data (each split the mean of k hosts, in the evaluation passed in)
+then shrinks tau as it shrinks that noise. `cost` charges each split's evaluations to the budget (k hosts cost k).
+Version 1 (`calibrate='AB'`, every split costing 1) is unchanged.
+
 `steady_state_search` is `invention.solver_search`'s program search: the same constants, tournament, crossover,
 mutation, leader re-evaluation and final choice. The evaluation is passed in, and the budget is counted in
 evaluations so that runs replicate exactly. Without a judge, it reports its final choice's mean of FINAL_EVALS fresh
@@ -46,11 +54,13 @@ Z, PATIENCE = 3.0, 40     # Z: a false release per submission at most P(N(0,1) >
 class Judge:
     """Holds the confirmation data B; releases a submission only if it beats the incumbent by more than tau."""
 
-    def __init__(self, evaluate, calibration, incumbent, z=Z, patience=PATIENCE):
-        self.evaluate, self.patience = evaluate, patience
+    def __init__(self, evaluate, calibration, incumbent, z=Z, patience=PATIENCE, calibrate='AB'):
+        if calibrate not in ('AB', 'BC'):
+            raise ValueError("calibrate must be 'AB' or 'BC'")
+        self.evaluate, self.patience, self.calibrate = evaluate, patience, calibrate
         self.start_program = incumbent
         from scipy.stats import chi2
-        diffs = [evaluate(p, 'A') - evaluate(p, 'B') for p in calibration]
+        diffs = [evaluate(p, calibrate[0]) - evaluate(p, calibrate[1]) for p in calibration]
         k = len(diffs) - 1
         self.tau = z * statistics.stdev(diffs) * (k / chi2.ppf(0.10, k)) ** 0.5
         self.seen = {}
@@ -102,18 +112,20 @@ class Entry:
         return (-self.fitness, self.size, self.key)
 
 
-def steady_state_search(ops, evaluate, max_evals, seed, contract=False):
+def steady_state_search(ops, evaluate, max_evals, seed, contract=False, calibrate='AB', cost=None):
     """`invention.solver_search`'s algorithm with the evaluation passed in and an evaluation budget.
 
     ops: {'random': f(rng), 'mutate': f(p, rng), 'crossover': f(a, b, rng), 'size': f(p)};
-    evaluate(program, split) -> float with split 'A' (the worker's data) or 'B' (the judge's).
+    evaluate(program, split) -> float with split 'A' (the worker's data), 'B' (the judge's) or, with
+    calibrate='BC', 'C' (the judge's second confirmation split); cost: {split: evaluations charged} (default 1).
     Returns (winner, report); report['reported'] is the number the worker would report."""
     rng = random.Random(seed)
     seen = {}
     count = [0]
+    cost = cost or {}
 
     def ev(p, split):
-        count[0] += 1
+        count[0] += cost.get(split, 1)
         return evaluate(p, split)
 
     def score(e):
@@ -145,7 +157,7 @@ def steady_state_search(ops, evaluate, max_evals, seed, contract=False):
             k = json.dumps(p, sort_keys=True)
             if k not in seen and all(json.dumps(x, sort_keys=True) != k for x in extra):
                 extra.append(p)
-        J = Judge(ev, [e.program for e in pop] + extra, pop[0].program)
+        J = Judge(ev, [e.program for e in pop] + extra, pop[0].program, calibrate=calibrate)
     gen = 0
     while left():
         gen += 1
