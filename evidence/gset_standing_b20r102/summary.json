@@ -1,0 +1,182 @@
+{
+ "best_known_sha256": "3b97a82bbfbd91f0761090dd07dffc72305bf310ef4596705dbd282b9f880bc9",
+ "code_identity": "e7a8ac935e161cf4e93b430464624369b9d505377041a00fa73a110e36ac6686",
+ "cpu_median": {
+  "1": 1.2249187185000001,
+  "10": 1.01200628665
+ },
+ "descriptors": {
+  "burer@1": "c729a1ea70f5c8093bb73b46ad87c7611acbb05591f6e45a073ce5e209f5e11e",
+  "burer@10": "bcf7b0fa7665354078e026fa24769aba1ead981a32b23f72d48870fa6568c68f",
+  "desousa2013@10": "be8069a817e73d5e2a81c9e68d3bbbd56ae1cf7839d18eb156f16f50d1b9afd5",
+  "dsb@1": "cc3860376a9ccf00a1710184ebd878993b292e7affdf56c8866cda8f4805509a",
+  "dsb@10": "01be0ee971f928ffe426663056d0f924b297af9cba6fea8f5ac0c4a90d3b9428",
+  "duarte2005@10": "0c792b3c4ecbbe6659a5b8fb89448eef022357373df4e79003d5db6923c3caca",
+  "festa2002g@10": "7e4da48c218f15597b8c5c1cd4d70c3f77ae541213039e9981738f05a2d3cac5",
+  "festa2002gpr@10": "aea4765cf2be344d896644d7756f5efe895a605292f7c4bdf63d1d880349dec2",
+  "festa2002gvns@10": "2f506500ee8f66bd97fada97da156b8e4472824834c6eb31189fa3361c5fe164",
+  "festa2002gvnspr@10": "f882617090a1fc93140f9021665515fd2889103f7801d2a683a8ab551d844d61",
+  "festa2002vns@10": "3ac253a9cef917eee273663762ef57ab982435180369cb7ac67e8e2ec5ae53f4",
+  "festa2002vnspr@10": "8d43980a3656134a7258f5f669a97ae52713290dd7ef375c9d2506c39110b464",
+  "laguna2009ce@10": "a217455a3299a5abedb6c81c666f83fe7fe4a3b0e007bff37e16548810c3ec9b",
+  "laguna2009hce@10": "97d3e2eec9c320b322428d0c32f6a2de8aac4bb44f77e73b9bd51a70f72c2a2e"
+ },
+ "failed_runs": 0,
+ "gset_archive_sha256": "18e00bfc57d3c0a8342f440c76ecde9c33ef9f4dd86e6c931b69da93e3302e71",
+ "per_arm": {
+  "burer@1": {
+   "by_family": {
+    "planar": 0.9902973048246984,
+    "random": 0.9943953784408566,
+    "toroidal": 0.9892774978172348
+   },
+   "instances": 54,
+   "mean_fraction": 0.992024593293898,
+   "reach_best_known": 3
+  },
+  "burer@10": {
+   "by_family": {
+    "planar": 0.9935927620289107,
+    "random": 0.9975809051731481,
+    "toroidal": 0.9932033278220862
+   },
+   "instances": 54,
+   "mean_fraction": 0.9953742188945498,
+   "reach_best_known": 6
+  },
+  "desousa2013@10": {
+   "by_family": {
+    "planar": 0.6033343832891637,
+    "random": 0.5873981910371302,
+    "toroidal": 0.3664105595805209
+   },
+   "instances": 54,
+   "mean_fraction": 0.5564692125543744,
+   "reach_best_known": 0
+  },
+  "dsb@1": {
+   "by_family": {
+    "planar": 0.9916434571538473,
+    "random": 0.9953677471162246,
+    "toroidal": 0.991129481872639
+   },
+   "instances": 54,
+   "mean_fraction": 0.9932820029228947,
+   "reach_best_known": 2
+  },
+  "dsb@10": {
+   "by_family": {
+    "planar": 0.9945126465519196,
+    "random": 0.9986907560034659,
+    "toroidal": 0.9928973441279114
+   },
+   "instances": 54,
+   "mean_fraction": 0.996177739412523,
+   "reach_best_known": 6
+  },
+  "duarte2005@10": {
+   "by_family": {
+    "planar": 0.9840924918894217,
+    "random": 0.9918124637295398,
+    "toroidal": 0.9658675837242007
+   },
+   "instances": 54,
+   "mean_fraction": 0.9846290682323099,
+   "reach_best_known": 0
+  },
+  "festa2002g@10": {
+   "by_family": {
+    "planar": 0.9508087019297244,
+    "random": 0.9583065854109255,
+    "toroidal": 0.9299045284733002
+   },
+   "instances": 54,
+   "mean_fraction": 0.9507959153727283,
+   "reach_best_known": 3
+  },
+  "festa2002gpr@10": {
+   "by_family": {
+    "planar": 0.9829400164242065,
+    "random": 0.9797941997999235,
+    "toroidal": 0.9900661757986751
+   },
+   "instances": 54,
+   "mean_fraction": 0.9826713130679684,
+   "reach_best_known": 4
+  },
+  "festa2002gvns@10": {
+   "by_family": {
+    "planar": 0.9761576646964921,
+    "random": 0.9818508756678687,
+    "toroidal": 0.9518693169749646
+   },
+   "instances": 54,
+   "mean_fraction": 0.9747453525629859,
+   "reach_best_known": 3
+  },
+  "festa2002gvnspr@10": {
+   "by_family": {
+    "planar": 0.9840170455780844,
+    "random": 0.9829773396541186,
+    "toroidal": 0.9898881182427383
+   },
+   "instances": 54,
+   "mean_fraction": 0.9845142123536907,
+   "reach_best_known": 4
+  },
+  "festa2002vns@10": {
+   "by_family": {
+    "planar": 0.9805903405370046,
+    "random": 0.9869277782867618,
+    "toroidal": 0.9565400466768871
+   },
+   "instances": 54,
+   "mean_fraction": 0.9795159571852059,
+   "reach_best_known": 0
+  },
+  "festa2002vnspr@10": {
+   "by_family": {
+    "planar": 0.9829349522441775,
+    "random": 0.9864562657625139,
+    "toroidal": 0.9845303481713896
+   },
+   "instances": 54,
+   "mean_fraction": 0.9848310893053501,
+   "reach_best_known": 1
+  },
+  "laguna2009ce@10": {
+   "by_family": {
+    "planar": 0.532995929964342,
+    "random": 0.5257567678229776,
+    "toroidal": 0.26861420495195054
+   },
+   "instances": 54,
+   "mean_fraction": 0.48558084517460803,
+   "reach_best_known": 0
+  },
+  "laguna2009hce@10": {
+   "by_family": {
+    "planar": 0.9844458373536,
+    "random": 0.9874938153535444,
+    "toroidal": 0.9510617473931829
+   },
+   "instances": 54,
+   "mean_fraction": 0.9802929232860973,
+   "reach_best_known": 0
+  }
+ },
+ "record_candidates": [],
+ "schema": "genesis-b20r102-gset-standing-v1",
+ "status": "DEV calibration; licenses nothing; no record claim",
+ "study": "b20r102",
+ "valid": true,
+ "vbs10": {
+  "by_family": {
+   "planar": 0.9950216148599857,
+   "random": 0.9988192490556991,
+   "toroidal": 0.9948285032932305
+  },
+  "mean_fraction": 0.9967475935783567,
+  "reach_best_known": 11
+ }
+}

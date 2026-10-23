@@ -1094,8 +1094,10 @@
         "result": "Engineering: maxcut_v1 domain, candidates_maxcut, mqlib-maxcut-v1, dsb-maxcut-v1, Gset G1-G54 pinned with best-known values and sources. Setup of B20_R102 (Gset standing) and B20_R103 (feedback contract, zero-signal battery)"
       },
       "B20_R102": {
-        "commits": [],
-        "result": "Setup: where the pinned tools stand on Gset (preregistered). Pending"
+        "commits": [
+          "cc7f4bb"
+        ],
+        "result": "DEV, preregistered, run at b640aa1 in two slices: calibration, no RECORD_CANDIDATE: the virtual best of 12 published heuristics at 10 s reaches 0.99675 of the 2012-13 best known values (11 of 54 instances); the best single tool is dSB (0.99618 at 10 s, 0.99328 at 1 s), ahead of BURER2002 (0.99537, 0.99202); the +-1 tori G32-G34 stay 1.4% below"
       },
       "B20_R103": {
         "commits": [
@@ -1115,7 +1117,8 @@
       "B20_R105": {
         "commits": [
           "ff08000",
-          "1230b5a"
+          "1230b5a",
+          "303ec0d"
         ],
         "result": "DEV, preregistered (ff08000, amended before any run at 1230b5a): TUNED_BETTER at 1 s (p = 0.005) and NO_DIFFERENCE at 10 s against BLS's published setting; MCX_AHEAD of BURER2002 at 1 s (22-0, 2 ties) and 10 s (17-2, 5 ties) on 24 held-out generated graphs; the order-parameter classifier 24/24; every class chose a 5x larger perturbation than BLS; the Houdayer cluster exchange chosen on planar graphs only; renormalisation and MACUT's crossover not chosen"
       },

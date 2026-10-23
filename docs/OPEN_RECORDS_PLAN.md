@@ -49,6 +49,8 @@ preregistered.
 - **B20_R102, where Genesis stands against the records:** fraction of best-known value and time-to-target at 1, 10
   and 60 s on G1–G54, against BURER2002 at equal time, and against published Ising-machine numbers as a stated
   external reference (different hardware, so not a paired comparison).
+  **Result (23 Oct 2026):** the best of 12 published heuristics at 10 s reaches 0.99675 of the 2012-13 best known
+  values; dSB is the best single tool (0.99618), BURER2002 0.99537; no record candidate (`evidence/gset_standing_b20r102/`).
 - **B20_R104, engineering:** Genesis's own max-cut engine, `mcx-v1` (iterated tabu search in the manner of breakout
   local search; an elite pool; restarts by a Houdayer cluster exchange or by renormalisation, which contracts every
   edge the elites agree on and searches the contracted problem), from source, pinned; graph families built as Gset's

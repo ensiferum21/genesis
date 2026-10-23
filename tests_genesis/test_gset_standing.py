@@ -55,5 +55,31 @@ class Design(unittest.TestCase):
         self.assertIn('R33.pinned_core()', (ROOT / 'scripts' / 'b20r102_gset_standing.py').read_text())
 
 
+class RecordB20R102(unittest.TestCase):
+    """B20_R102's record: the analysis and validity recompute from the rows; the table and the archive are the
+    recorded ones; every instance has every arm."""
+
+    @classmethod
+    def setUpClass(cls):
+        import json
+        ev = ROOT / 'evidence' / 'gset_standing_b20r102'
+        cls.s = json.loads((ev / 'summary.json').read_text())
+        cls.rows = [json.loads(l) for l in (ev / 'rows.jsonl').read_text().splitlines() if l.strip()]
+
+    def test_analysis_recomputes(self):
+        import json
+        from genesis import gset as GS
+        from genesis.common import digest
+        self.assertEqual([r['instance'] for r in self.rows], [f'G{k}' for k in range(1, 55)])
+        best = GS.best_known()
+        a = json.loads(json.dumps(M.analyse(self.rows, best)))
+        for k in ('per_arm', 'record_candidates', 'vbs10'):
+            self.assertEqual(a[k], self.s[k], k)
+        ok, med, fails = M.validity(self.rows)
+        self.assertEqual((ok, fails), (self.s['valid'], self.s['failed_runs']))
+        self.assertEqual(self.s['best_known_sha256'], digest(json.loads((GS.DATA / 'best_known.json').read_text())))
+        self.assertEqual(self.s['gset_archive_sha256'], GS.manifest()['archive_sha256'])
+        self.assertTrue(all(len(r['runs']) == 12 for r in self.rows))
+
 if __name__ == '__main__':
     unittest.main()
