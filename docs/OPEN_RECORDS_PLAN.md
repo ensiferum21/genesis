@@ -70,6 +70,10 @@ preregistered.
   reached on 30 of 54; `evidence/gset_replication_b20r109/`).
   **B20_R110:** at 60 s, the best known values reached on 27 of 54, every torus included; 0.99912 on average; no
   record. The remaining gap is the larger planar +-1 graphs (G39-G42).
+  **B20_R113: RENORM_BETTER.** B20_R108's renormalisation configuration beats B20_R105's planar choice on 40 fresh
+  planar graphs (25-8) and on Gset's 20 planar instances at 60 s (13-2), reaching the best known values on 5 of
+  them (3 before); 29 of 54 Gset instances at 60 s, 33 over all recorded runs; no record
+  (`evidence/planar_renorm_b20r113/`). Next, B20_R116: five minutes on each of the 21 instances not yet reached.
 - **Then the discovery loop on Gset**, if B20_R99 finds structured headroom. The test is whether concepts invented
   on toroidal and planar instances transfer to random ones, and the reverse. That is the note's "untouched family"
   inside one public benchmark.

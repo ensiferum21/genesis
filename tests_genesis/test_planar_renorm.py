@@ -1,5 +1,7 @@
 """B20_R113: does renormalisation close the planar gap? (design): fresh seed, the two configurations read as recorded,
-the planar graphs, the Part A label, the Part B summary with record candidates flagged, and the registered output."""
+the planar graphs, the Part A label, the Part B summary with record candidates flagged, and the registered output;
+the record."""
+import json
 from pathlib import Path
 import re
 import sys
@@ -44,6 +46,37 @@ class Design(unittest.TestCase):
     def test_refuses_another_output(self):
         with self.assertRaises(SystemExit):
             M.main([str(ROOT / 'evidence' / 'elsewhere')])
+
+
+class RecordB20R113(unittest.TestCase):
+    """B20_R113's record: Part A's label and Part B's summary recompute from the runs; the configurations are the
+    recorded ones; Part B's incumbents are B20_R110's 60 s values."""
+
+    def test_recomputes(self):
+        from genesis import gset as GS
+        ev = ROOT / 'evidence' / 'planar_renorm_b20r113'
+        s = json.loads((ev / 'summary.json').read_text())
+        runs = [json.loads(l) for l in (ev / 'runs.jsonl').read_text().splitlines() if l.strip()]
+        self.assertTrue(s['valid'])
+        self.assertEqual(s['configs'], M.configs())
+        va = {}
+        for r in runs:
+            if r['part'] == 'A':
+                va.setdefault(r['task'], {})[r['arm']] = r['value']
+        self.assertEqual(len(va), M.N_GRAPHS)
+        self.assertEqual(va, s['part_a_values'])
+        a = json.loads(json.dumps(M.part_a_label(va)))
+        self.assertEqual(a, s['part_a'])
+        self.assertEqual((a['label'], a['wins'], a['losses']), ('RENORM_BETTER', 25, 8))
+        r110 = {r['instance']: r['value'] for r in map(json.loads, (M.R110 / 'rows.jsonl').read_text().splitlines()) if r}
+        b = {r['task'].split('-')[1]: r['value'] for r in runs if r['part'] == 'B'}
+        self.assertEqual(sorted(b, key=lambda g: int(g[1:])), [f'G{k}' for k in M.PLANAR_GSET])
+        rows = [{'instance': g, 'value': b[g], 'incumbent_60': r110[g]} for g in sorted(b, key=lambda g: int(g[1:]))]
+        self.assertEqual(rows, s['part_b']['rows'])
+        pb = json.loads(json.dumps(M.part_b_summary(rows, GS.best_known())))
+        self.assertEqual(pb, {k: v for k, v in s['part_b'].items() if k != 'rows'})
+        self.assertEqual((pb['label'], pb['wins'], pb['losses'], pb['reach_best_known'], pb['record_candidates']),
+                         ('RENORM_BETTER', 13, 2, 5, []))
 
 
 if __name__ == '__main__':

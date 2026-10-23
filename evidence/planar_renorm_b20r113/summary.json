@@ -1,0 +1,315 @@
+{
+ "code_identity": "95c5ed5a74e3f2d30401840676c0b6c4f6e4e0d111bbdffc97ce809cc80609f0",
+ "configs": {
+  "INCUMBENT": {
+   "L0": 0.05,
+   "P": 0.5,
+   "pert": 0,
+   "pool": 8,
+   "restart": 20000,
+   "rs": 1,
+   "tt": 5
+  },
+  "RENORM": {
+   "L0": 0.2,
+   "P": 0.5,
+   "pert": 2,
+   "pool": 16,
+   "restart": 2000,
+   "rs": 2,
+   "tt": 5
+  }
+ },
+ "cpu_median": {
+  "10": 1.02044875845,
+  "60": 1.0035175093416666
+ },
+ "failed_runs": 0,
+ "part_a": {
+  "label": "RENORM_BETTER",
+  "losses": 8,
+  "mean_gap_incumbent": 0.0016861828579210927,
+  "mean_gap_renorm": 0.00027656873002180097,
+  "p": 0.0005144963506609201,
+  "wins": 25
+ },
+ "part_a_values": {
+  "dev-planar2-5946559a-20301133-0000": {
+   "INCUMBENT": 7663,
+   "RENORM": 7684
+  },
+  "dev-planar2-5946559a-20301138-0000": {
+   "INCUMBENT": 7663,
+   "RENORM": 7676
+  },
+  "dev-planar2-5946559a-20301143-0000": {
+   "INCUMBENT": 7658,
+   "RENORM": 7677
+  },
+  "dev-planar2-5946559a-20301148-0000": {
+   "INCUMBENT": 7666,
+   "RENORM": 7666
+  },
+  "dev-planar2-5946559a-20301153-0000": {
+   "INCUMBENT": 7659,
+   "RENORM": 7672
+  },
+  "dev-planar2-5946559a-20301158-0000": {
+   "INCUMBENT": 7656,
+   "RENORM": 7681
+  },
+  "dev-planar2-5946559a-20301163-0000": {
+   "INCUMBENT": 7668,
+   "RENORM": 7681
+  },
+  "dev-planar2-5946559a-20301168-0000": {
+   "INCUMBENT": 7653,
+   "RENORM": 7666
+  },
+  "dev-planar2-65a4084f-20301135-0000": {
+   "INCUMBENT": 3828,
+   "RENORM": 3827
+  },
+  "dev-planar2-65a4084f-20301140-0000": {
+   "INCUMBENT": 3816,
+   "RENORM": 3812
+  },
+  "dev-planar2-65a4084f-20301145-0000": {
+   "INCUMBENT": 3814,
+   "RENORM": 3817
+  },
+  "dev-planar2-65a4084f-20301150-0000": {
+   "INCUMBENT": 3809,
+   "RENORM": 3812
+  },
+  "dev-planar2-65a4084f-20301155-0000": {
+   "INCUMBENT": 3829,
+   "RENORM": 3830
+  },
+  "dev-planar2-65a4084f-20301160-0000": {
+   "INCUMBENT": 3805,
+   "RENORM": 3804
+  },
+  "dev-planar2-65a4084f-20301165-0000": {
+   "INCUMBENT": 3824,
+   "RENORM": 3825
+  },
+  "dev-planar2-65a4084f-20301170-0000": {
+   "INCUMBENT": 3816,
+   "RENORM": 3816
+  },
+  "dev-planar2-e8d67972-20301131-0000": {
+   "INCUMBENT": 3046,
+   "RENORM": 3049
+  },
+  "dev-planar2-e8d67972-20301136-0000": {
+   "INCUMBENT": 3039,
+   "RENORM": 3042
+  },
+  "dev-planar2-e8d67972-20301141-0000": {
+   "INCUMBENT": 3037,
+   "RENORM": 3037
+  },
+  "dev-planar2-e8d67972-20301146-0000": {
+   "INCUMBENT": 3038,
+   "RENORM": 3044
+  },
+  "dev-planar2-e8d67972-20301151-0000": {
+   "INCUMBENT": 3052,
+   "RENORM": 3053
+  },
+  "dev-planar2-e8d67972-20301156-0000": {
+   "INCUMBENT": 3041,
+   "RENORM": 3037
+  },
+  "dev-planar2-e8d67972-20301161-0000": {
+   "INCUMBENT": 3034,
+   "RENORM": 3031
+  },
+  "dev-planar2-e8d67972-20301166-0000": {
+   "INCUMBENT": 3034,
+   "RENORM": 3040
+  },
+  "dev-planar2_pm1-8eb123d0-20301132-0000": {
+   "INCUMBENT": 943,
+   "RENORM": 938
+  },
+  "dev-planar2_pm1-8eb123d0-20301137-0000": {
+   "INCUMBENT": 997,
+   "RENORM": 1000
+  },
+  "dev-planar2_pm1-8eb123d0-20301142-0000": {
+   "INCUMBENT": 961,
+   "RENORM": 960
+  },
+  "dev-planar2_pm1-8eb123d0-20301147-0000": {
+   "INCUMBENT": 982,
+   "RENORM": 991
+  },
+  "dev-planar2_pm1-8eb123d0-20301152-0000": {
+   "INCUMBENT": 914,
+   "RENORM": 914
+  },
+  "dev-planar2_pm1-8eb123d0-20301157-0000": {
+   "INCUMBENT": 957,
+   "RENORM": 957
+  },
+  "dev-planar2_pm1-8eb123d0-20301162-0000": {
+   "INCUMBENT": 1000,
+   "RENORM": 1000
+  },
+  "dev-planar2_pm1-8eb123d0-20301167-0000": {
+   "INCUMBENT": 919,
+   "RENORM": 919
+  },
+  "dev-planar2_pm1-a4ca072c-20301134-0000": {
+   "INCUMBENT": 2322,
+   "RENORM": 2332
+  },
+  "dev-planar2_pm1-a4ca072c-20301139-0000": {
+   "INCUMBENT": 2451,
+   "RENORM": 2471
+  },
+  "dev-planar2_pm1-a4ca072c-20301144-0000": {
+   "INCUMBENT": 2335,
+   "RENORM": 2344
+  },
+  "dev-planar2_pm1-a4ca072c-20301149-0000": {
+   "INCUMBENT": 2354,
+   "RENORM": 2371
+  },
+  "dev-planar2_pm1-a4ca072c-20301154-0000": {
+   "INCUMBENT": 2349,
+   "RENORM": 2356
+  },
+  "dev-planar2_pm1-a4ca072c-20301159-0000": {
+   "INCUMBENT": 2371,
+   "RENORM": 2369
+  },
+  "dev-planar2_pm1-a4ca072c-20301164-0000": {
+   "INCUMBENT": 2394,
+   "RENORM": 2399
+  },
+  "dev-planar2_pm1-a4ca072c-20301169-0000": {
+   "INCUMBENT": 2386,
+   "RENORM": 2394
+  }
+ },
+ "part_b": {
+  "label": "RENORM_BETTER",
+  "losses": 2,
+  "mean_fraction": 0.9992261693346912,
+  "mean_fraction_incumbent": 0.9979225058004025,
+  "p": 0.00738525390625,
+  "reach_best_known": 5,
+  "record_candidates": [],
+  "rows": [
+   {
+    "incumbent_60": 3060,
+    "instance": "G14",
+    "value": 3063
+   },
+   {
+    "incumbent_60": 3042,
+    "instance": "G15",
+    "value": 3049
+   },
+   {
+    "incumbent_60": 3052,
+    "instance": "G16",
+    "value": 3052
+   },
+   {
+    "incumbent_60": 3045,
+    "instance": "G17",
+    "value": 3045
+   },
+   {
+    "incumbent_60": 991,
+    "instance": "G18",
+    "value": 992
+   },
+   {
+    "incumbent_60": 904,
+    "instance": "G19",
+    "value": 905
+   },
+   {
+    "incumbent_60": 941,
+    "instance": "G20",
+    "value": 941
+   },
+   {
+    "incumbent_60": 931,
+    "instance": "G21",
+    "value": 931
+   },
+   {
+    "incumbent_60": 7669,
+    "instance": "G35",
+    "value": 7685
+   },
+   {
+    "incumbent_60": 7673,
+    "instance": "G36",
+    "value": 7672
+   },
+   {
+    "incumbent_60": 7674,
+    "instance": "G37",
+    "value": 7683
+   },
+   {
+    "incumbent_60": 7667,
+    "instance": "G38",
+    "value": 7679
+   },
+   {
+    "incumbent_60": 2389,
+    "instance": "G39",
+    "value": 2403
+   },
+   {
+    "incumbent_60": 2383,
+    "instance": "G40",
+    "value": 2400
+   },
+   {
+    "incumbent_60": 2402,
+    "instance": "G41",
+    "value": 2404
+   },
+   {
+    "incumbent_60": 2463,
+    "instance": "G42",
+    "value": 2468
+   },
+   {
+    "incumbent_60": 3844,
+    "instance": "G51",
+    "value": 3846
+   },
+   {
+    "incumbent_60": 3849,
+    "instance": "G52",
+    "value": 3847
+   },
+   {
+    "incumbent_60": 3847,
+    "instance": "G53",
+    "value": 3848
+   },
+   {
+    "incumbent_60": 3851,
+    "instance": "G54",
+    "value": 3851
+   }
+  ],
+  "ties": 5,
+  "wins": 13
+ },
+ "schema": "genesis-b20r113-planar-renorm-v1",
+ "status": "DEV; licenses nothing; no record claim",
+ "study": "b20r113",
+ "valid": true
+}

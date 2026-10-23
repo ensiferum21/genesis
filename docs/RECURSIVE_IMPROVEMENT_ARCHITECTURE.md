@@ -98,6 +98,9 @@ has seen.
    setting at 1 s (tied at 10 s); of the physics moves only the cluster exchange was selected (planar graphs).
    **B20_R106:** on Gset, once, the configured engine leads every pinned published tool and their virtual best at
    both budgets (MCX_LEADS); the system's configuration adds to BLS's setting there, but not significantly.
+   **B20_R108, R113:** maturation of the configurations chose renormalisation for planar graphs (a lead, 5-0);
+   decided on 40 fresh planar graphs (25-8), it then won on Gset's planar instances (13-2 at 60 s). The first
+   physics move the selection itself put forward that carries to the benchmark.
 3. **The knowledge map (L2), beyond B20_R100.** Widen it from the eight time-to-solution and equal-time studies to
    every recorded row. Replay the history: would choosing studies by information gain have reached the recorded
    decisions sooner? Then let it choose experiments, with its predictions written before each study.

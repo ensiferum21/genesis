@@ -163,6 +163,7 @@ needs people: a reviewer, a statistician, an independent custodian on its own ma
 | B20_R110 | The engine at 60 s on Gset: best known values reached on 27 of 54 (all nine tori), 99.91% on average; no record |
 | B20_R111 | The invention test: **NOT_DEMONSTRATED.** No autonomously found program beats annealing-then-descent tuned in the same language (gen1 6-14, gen2 7-12, gen3 4-17 behind, control 9-13); a standing bar for any future claim |
 | B20_R112 | The inventor under contract v2: NOT_DEMONSTRATED. The judge (honestly) released nothing: its noise with 4-host splits (2.8%) exceeds the programs' differences (0.1%); the program found is multistart descent, behind prior art |
+| B20_R113 | Renormalisation on planar graphs: RENORM_BETTER on 40 fresh generated graphs (25-8) and on Gset's 20 planar instances at 60 s (13-2 against B20_R110); best known values reached on 5 of 20 (3 before); no record. With it, 29 of 54 Gset instances at their best known values at 60 s (33 over all recorded runs) |
 
 ## 6. Next steps, in order
 
@@ -186,7 +187,12 @@ needs people: a reviewer, a statistician, an independent custodian on its own ma
   12. done: B20_R110 (LONGER_HELPS; 27 of 54 at the best known values; no record);
   13. done: B20_R111 (NOT_DEMONSTRATED);
   14. done: B20_R112 (NOT_DEMONSTRATED; nothing released);
-  15. B20_R113 (renormalisation on planar graphs, running).
+  15. done: B20_R113 (RENORM_BETTER on generated graphs and on Gset; 5 of 20 planar instances at the best known
+      values; no record);
+  16. B20_R115 (language v2: pool, agreement and cluster moves for the triangle-free problem, held to the
+      invention test; running);
+  17. B20_R116 (five minutes on each of the 21 Gset instances not yet reached; queued after B20_R115);
+  18. B20_R114: the checkpoint's release matrix, on a quiet tree, after these.
 
 3. **Checkpoint after these** (the last is B20_R73, never rehearsed; R74 onward are not in a checkpoint). Do not edit
    the tree while the release matrix runs; run timing studies alone.
