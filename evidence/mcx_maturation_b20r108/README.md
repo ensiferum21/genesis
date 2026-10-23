@@ -1,7 +1,7 @@
 # B20_R108 evidence: affinity maturation of the engine's configurations: NO_DIFFERENCE at both budgets
 
 Builder-run on DEV (the open-record track). It licenses nothing; Gset was not touched.
-- **Script:** `scripts/b20r108_mcx_maturation.py`, preregistered at `f844e1e` (SHA-256 `ae99b342…`), with
+- **Script:** `scripts/b20r108_mcx_maturation.py`, preregistered at `f844e1e` (SHA-256 `85fb0ddf…`), with
   `mcx.WIDE` (L0 up to 0.2, tenure divisors down to 2, pools up to 32; B20_R105's draw space unchanged).
 - **Run:** alone on CPU 0, 2,583 s, on 23 Oct 2026 (15:19–16:02 SGT). `code_identity` `11a61541…`, the committed tree
   (`f844e1e`). The later batches' scripts were committed through the index only and kept out of the working tree
