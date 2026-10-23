@@ -33,6 +33,9 @@ class Design(unittest.TestCase):
         keys = {tuple(sorted((p['rows'], p['cols']))) for p in plus}
         self.assertEqual(len(keys), len(plus))                                  # distinct up to rotation
         self.assertFalse(keys & {(50, 60), (30, 100), (25, 120)})               # never G48-G50's shapes
+        sizes = [p['rows'] * p['cols'] for p in plus]
+        self.assertEqual(len(set(sizes)), len(sizes))                           # the identity cannot tell regular
+        self.assertNotIn(3000, sizes)                                           # graphs of one size apart
         for f, p in shapes:
             self.assertTrue(2800 <= p['rows'] * p['cols'] <= 3200 or f == 'torus2d_pm1')
         for cls in M.CLASSES:

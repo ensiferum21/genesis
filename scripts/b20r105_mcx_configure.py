@@ -22,8 +22,10 @@ B20_R106 then applies the result to Gset, once.
   * **Graphs.** Three classes, each a rotation through Gset's generator settings with fresh draws (`maxcut_v1`
     generated families; the identities of all 54 Gset graphs excluded, and no repeats):
       - random: erdos and erdos_pm1 (n = 800, p = 0.06), erdos and erdos_pm1 (2000, 0.01), erdos (1000, 0.02);
-      - toroidal: torus2d_pm1 100 x 8 and 100 x 20, and torus2d (weights 1) on ten shapes of 2,880-3,150 vertices
-        that are not Gset's (G48-G50 are 50 x 60, 30 x 100 and 25 x 120), some with an odd side (frustrated);
+      - toroidal: torus2d_pm1 100 x 8 and 100 x 20, and torus2d (weights 1) on ten shapes of 2,925-3,115 vertices,
+        some with an odd side (frustrated), each of a different size and none of 3,000: the exposure identity (a
+        colour-refinement invariant) cannot tell regular graphs of one size and weight apart, so any 3,000-vertex
+        weight-1 torus counts as G48-G50 (50 x 60, 30 x 100, 25 x 120) and is refused;
       - planar: planar2 and planar2_pm1 (800, 0.99), planar2 and planar2_pm1 (2000, 0.99), planar2 (1000, 0.99).
     32 graphs per class: 16 for the 1 s race, 8 for the 10 s race, 8 held out.
   * **Runs.** `mcx-v1` through `candidates_maxcut` in the runc sandbox, one core, one seed per (graph, arm, budget)
@@ -42,6 +44,10 @@ B20_R106 then applies the result to Gset, once.
     chosen vs BURER2002, MCX_AHEAD / MCX_BEHIND / COMPARABLE. The classifier's accuracy on the held-out graphs.
     Validity: median metered CPU at least 0.9 of each budget, at most 1% failed runs.
   * **Output.** `configs.json` (the classifier and the chosen configuration per class and budget): B20_R106's input.
+
+**Amendment before any run (23 Oct 2026).** The first start (at `ff08000`) stopped while building its graphs,
+before any solver ran: its weight-1 tori all had 3,000 vertices, which the exposure identity counts as Gset's G48-G50
+(above). The shapes were changed to distinct sizes; nothing else changed.
 
 **Development looks (disclosed).** On 23 Oct 2026 the builder ran mcx in-process (one seed) on six generated graphs
 (dev seeds 777001-777006; erdos 800/0.06, erdos_pm1 2000/0.01, torus2d_pm1 100 x 20, torus2d 25 x 119, planar2
@@ -80,8 +86,8 @@ PER_CLASS, CANDIDATES = 32, 32
 ROUNDS_1S = ((4, 32), (4, 10), (8, 3))          # (new graphs, configurations entering the round)
 ROUNDS_10S = ((4, 4), (4, 2))
 ALPHA = 0.025
-PLUS_SHAPES = ((40, 75), (24, 125), (20, 150), (48, 60), (36, 84), (42, 70), (28, 108), (32, 96), (45, 64), (35, 90),
-               (27, 112), (44, 66))
+PLUS_SHAPES = ((40, 74), (25, 117), (24, 123), (48, 61), (36, 83), (42, 70), (28, 108), (32, 95), (45, 66), (35, 89),
+               (27, 111), (44, 67))        # distinct sizes, none of 3,000 (see the docstring)
 SETTINGS = {
     'random': (('erdos', {'n': 800, 'p': 0.06}), ('erdos_pm1', {'n': 800, 'p': 0.06}),
                ('erdos', {'n': 2000, 'p': 0.01}), ('erdos_pm1', {'n': 2000, 'p': 0.01}),
