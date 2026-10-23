@@ -1,0 +1,30 @@
+[    0.0s] b20r108; pinned to CPU 0; incumbents 7c9e9acab47d
+[   23.2s] graphs: 96; 148 identities excluded (Gset and B20_R105)
+[  722.6s] random: matured@1 {'L0': 0.05, 'P': 0.75, 'pert': 0, 'pool': 4, 'restart': 200000, 'rs': 0, 'tt': 10} (changed); matured@10 {'L0': 0.05, 'P': 0.75, 'pert': 0, 'pool': 8, 'restart': 200000, 'rs': 0, 'tt': 10} (kept)
+[ 1406.5s] toroidal: matured@1 {'L0': 0.05, 'P': 0.5, 'pert': 1, 'pool': 16, 'restart': 200000, 'rs': 0, 'tt': 10} (changed); matured@10 {'L0': 0.05, 'P': 0.5, 'pert': 1, 'pool': 16, 'restart': 200000, 'rs': 0, 'tt': 5} (changed)
+[ 2094.1s] planar: matured@1 {'L0': 0.01, 'P': 0.5, 'pert': 2, 'pool': 16, 'restart': 20000, 'rs': 1, 'tt': 5} (changed); matured@10 {'L0': 0.2, 'P': 0.5, 'pert': 2, 'pool': 16, 'restart': 2000, 'rs': 2, 'tt': 5} (changed)
+[ 2107.5s] held dev-erdos-028b7959-20281105-0000: {'incumbent@1': 6621, 'matured@1': 6622, 'incumbent@10': 6622, 'matured@10': 6622}
+[ 2120.9s] held dev-erdos-ac3ed2d0-20281106-0000: {'incumbent@1': 11640, 'matured@1': 11637, 'incumbent@10': 11640, 'matured@10': 11640}
+[ 2134.3s] held dev-erdos_pm1-64ce90fe-20281107-0000: {'incumbent@1': 2138, 'matured@1': 2125, 'incumbent@10': 2138, 'matured@10': 2138}
+[ 2147.7s] held dev-erdos-61e27377-20281108-0000: {'incumbent@1': 13390, 'matured@1': 13390, 'incumbent@10': 13406, 'matured@10': 13406}
+[ 2161.2s] held dev-erdos_pm1-00616411-20281109-0000: {'incumbent@1': 3249, 'matured@1': 3266, 'incumbent@10': 3266, 'matured@10': 3266}
+[ 2174.4s] held dev-erdos-028b7959-20281110-0000: {'incumbent@1': 6718, 'matured@1': 6717, 'incumbent@10': 6718, 'matured@10': 6718}
+[ 2187.8s] held dev-erdos-ac3ed2d0-20281111-0000: {'incumbent@1': 11728, 'matured@1': 11724, 'incumbent@10': 11728, 'matured@10': 11728}
+[ 2201.3s] held dev-erdos_pm1-64ce90fe-20281112-0000: {'incumbent@1': 2124, 'matured@1': 2124, 'incumbent@10': 2124, 'matured@10': 2124}
+[ 2224.9s] held dev-torus2d_pm1-b0737c6e-20282105-0000: {'incumbent@1': 550, 'matured@1': 550, 'incumbent@10': 550, 'matured@10': 550}
+[ 2248.8s] held dev-torus2d_pm1-a905133b-20282106-0000: {'incumbent@1': 1362, 'matured@1': 1364, 'incumbent@10': 1364, 'matured@10': 1364}
+[ 2272.5s] held dev-torus2d-6bc8cdd5-20282107-0000: {'incumbent@1': 5908, 'matured@1': 5908, 'incumbent@10': 5908, 'matured@10': 5908}
+[ 2296.2s] held dev-torus2d_pm1-b0737c6e-20282108-0000: {'incumbent@1': 546, 'matured@1': 546, 'incumbent@10': 546, 'matured@10': 546}
+[ 2319.9s] held dev-torus2d_pm1-a905133b-20282109-0000: {'incumbent@1': 1414, 'matured@1': 1414, 'incumbent@10': 1416, 'matured@10': 1416}
+[ 2343.7s] held dev-torus2d-237e1f78-20282110-0000: {'incumbent@1': 5932, 'matured@1': 5932, 'incumbent@10': 5932, 'matured@10': 5932}
+[ 2367.5s] held dev-torus2d_pm1-b0737c6e-20282111-0000: {'incumbent@1': 548, 'matured@1': 548, 'incumbent@10': 548, 'matured@10': 548}
+[ 2391.3s] held dev-torus2d_pm1-a905133b-20282112-0000: {'incumbent@1': 1350, 'matured@1': 1350, 'incumbent@10': 1352, 'matured@10': 1352}
+[ 2415.1s] held dev-planar2-65a4084f-20283105-0000: {'incumbent@1': 3799, 'matured@1': 3799, 'incumbent@10': 3808, 'matured@10': 3814}
+[ 2438.9s] held dev-planar2-e8d67972-20283106-0000: {'incumbent@1': 3050, 'matured@1': 3050, 'incumbent@10': 3051, 'matured@10': 3055}
+[ 2462.7s] held dev-planar2_pm1-8eb123d0-20283107-0000: {'incumbent@1': 985, 'matured@1': 990, 'incumbent@10': 1003, 'matured@10': 1003}
+[ 2486.9s] held dev-planar2-5946559a-20283108-0000: {'incumbent@1': 7676, 'matured@1': 7666, 'incumbent@10': 7674, 'matured@10': 7687}
+[ 2510.8s] held dev-planar2_pm1-a4ca072c-20283109-0000: {'incumbent@1': 2404, 'matured@1': 2380, 'incumbent@10': 2422, 'matured@10': 2424}
+[ 2534.6s] held dev-planar2-65a4084f-20283110-0000: {'incumbent@1': 3813, 'matured@1': 3823, 'incumbent@10': 3819, 'matured@10': 3821}
+[ 2558.4s] held dev-planar2-e8d67972-20283111-0000: {'incumbent@1': 3050, 'matured@1': 3052, 'incumbent@10': 3053, 'matured@10': 3053}
+[ 2582.2s] held dev-planar2_pm1-8eb123d0-20283112-0000: {'incumbent@1': 1008, 'matured@1': 1001, 'incumbent@10': 1038, 'matured@10': 1038}
+[ 2582.9s] valid True; maturation@1 NO_DIFFERENCE (p 0.787, 6-7); maturation@10 NO_DIFFERENCE (p 1, 5-0)

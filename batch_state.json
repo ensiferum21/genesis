@@ -1132,7 +1132,8 @@
       },
       "B20_R107": {
         "commits": [
-          "f844e1e"
+          "f844e1e",
+          "d723faa"
         ],
         "result": "DEV, preregistered, run at f844e1e: V2_FIXES_POWER: calibrating on the judge's own two confirmation splits over 4 hosts halves the threshold (2.5/3.6/5.7 vs 5.1/7.3/11.3 sigma_e) and keeps 93%, 77% and 63% of the open protocol's real gain (v1: 59%, 40%, 17%); false releases 1 in 180 for each version; v2's held-out numbers unbiased; v1 LEAKS by a bias tolerance set below the standard error (means within 2.3 SE of zero)"
       },
@@ -1140,7 +1141,31 @@
         "commits": [
           "f844e1e"
         ],
-        "result": "Setup: affinity maturation of mcx-v1 (preregistered). Running"
+        "result": "DEV, preregistered, run at f844e1e: NO_DIFFERENCE at 1 s (6-7) and 10 s (5-0, too few decided graphs): B20_R105's configurations hold in the widened space; maturation changed all three classes; for planar graphs at 10 s it picked renormalisation with L0 = 0.2, which won all 5 decided planar graphs (a lead, not a result)"
+      },
+      "B20_R109": {
+        "commits": [
+          "34234fa"
+        ],
+        "result": "Setup: Gset replication with two more seeds (preregistered). Running"
+      },
+      "B20_R110": {
+        "commits": [
+          "34234fa"
+        ],
+        "result": "Setup: the engine at 60 s on Gset (preregistered). Pending"
+      },
+      "B20_R111": {
+        "commits": [
+          "962f947"
+        ],
+        "result": "Setup: the invention test (preregistered). Pending"
+      },
+      "B20_R112": {
+        "commits": [
+          "dd55c33"
+        ],
+        "result": "Setup: the inventor under contract v2, held to the invention test (preregistered). Pending"
       }
     },
     "open_after_b20_r5": [

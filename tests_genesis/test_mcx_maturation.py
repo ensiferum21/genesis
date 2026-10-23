@@ -64,5 +64,54 @@ class Design(unittest.TestCase):
             M.main([str(ROOT / 'evidence' / 'elsewhere')])
 
 
+class RecordB20R108(unittest.TestCase):
+    """B20_R108's record: the races, the matured configurations and the labels recompute from the recorded runs."""
+
+    @classmethod
+    def setUpClass(cls):
+        from genesis import gset as GS
+        from genesis.domains import adapter
+        A = adapter('maxcut_v1')
+        ev = ROOT / 'evidence' / 'mcx_maturation_b20r108'
+        cls.s = json.loads((ev / 'summary.json').read_text())
+        cls.configs = json.loads((ev / 'configs.json').read_text())
+        cls.inc = json.loads(M.INCUMBENTS.read_text())
+        cls.runs = {}
+        for line in (ev / 'runs.jsonl').read_text().splitlines():
+            if line.strip():
+                r = json.loads(line)
+                cls.runs[r['key']] = r
+        ex = {A.exposure_identity(t)['canonical'] for t in GS.tasks()}
+        ex |= {A.exposure_identity(t)['canonical'] for ts in R105.pools(set(ex)).values() for t in ts}
+        cls.P = M.pools(ex)
+
+    def value(self, tid, cfg, b):
+        from genesis.common import digest
+        return self.runs[f'{tid}|mcx:{digest(cfg)[:12]}|{b:g}']['value']
+
+    def test_races_recompute(self):
+        from genesis.common import digest
+        for cls in M.CLASSES:
+            g = self.P[cls]
+            i1, i10 = self.inc['chosen'][cls]['1'], self.inc['chosen'][cls]['10']
+            c1 = [i1] + M.mutants(i1, M.MUTANTS_1S, f'{cls}@1')
+            by = {'mcx:' + digest(c)[:12]: c for c in c1}
+            w1, h1 = R105.race(lambda a, tid: self.value(tid, by[a], M.SHORT), list(by), M.ROUNDS_1S,
+                               [t.task_id for t in g[:16]])
+            c10 = [i10] + M.mutants(i10, M.MUTANTS_10S, f'{cls}@10')
+            by.update({'mcx:' + digest(c)[:12]: c for c in c10})
+            arms10 = []
+            for a in ['mcx:' + digest(c)[:12] for c in c10] + h1[-1]['ranked'][:3]:
+                if a not in arms10:
+                    arms10.append(a)
+            w10, _ = R105.race(lambda a, tid: self.value(tid, by[a], M.LONG), arms10, M.ROUNDS_10S,
+                               [t.task_id for t in g[16:24]])
+            self.assertEqual({'1': by[w1], '10': by[w10]}, self.configs['chosen'][cls], cls)
+
+    def test_labels_recompute(self):
+        self.assertEqual(json.loads(json.dumps(M.labels(self.s['held_out'], self.s['kept']))), self.s['labels'])
+        self.assertEqual(sorted(self.s['held_out']), sorted(t.task_id for c in M.CLASSES for t in self.P[c][24:]))
+        self.assertTrue(self.s['valid'])
+
 if __name__ == '__main__':
     unittest.main()
