@@ -4968,7 +4968,9 @@
     "src/genesis/candidate_kinds/native/mcx.c",
     "scripts/b20r104_build_mcx.py",
     "scripts/b20r105_mcx_configure.py",
-    "scripts/b20r106_mcx_gset.py"
+    "scripts/b20r106_mcx_gset.py",
+    "evidence/mcx_configure_b20r105/summary.json",
+    "evidence/mcx_configure_b20r105/configs.json"
    ],
    "disposition": "IMPLEMENTED_BOUNDED_PENDING_AUDIT",
    "evidence": [],
@@ -5470,6 +5472,7 @@
     "src/genesis/autonomy/feedback.py",
     "scripts/b20r103_zero_signal.py",
     "docs/RESEARCH_ALERTS.md",
+    "evidence/zero_signal_b20r103/summary.json",
     "docs/RECURSIVE_IMPROVEMENT_ARCHITECTURE.md"
    ],
    "disposition": "IMPLEMENTED_BOUNDED_PENDING_AUDIT",
