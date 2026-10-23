@@ -65,3 +65,20 @@ comparable with B20_R83's or B20_R84's). All 16 programs of its final population
 development looks for B20_R99 and B20_R100). The fitness is metered in CPU time on the study's own core.
 
 Record tests (2); exposure addenda (16 hosts). B20_R86 judges generations 1–3 and the control on fresh hosts.
+
+## B20_R86 result (do the generations compound?): NO_COMPOUNDING
+
+Run on 23 Oct 2026, alone on CPU 0, unchanged from its preregistration at `9aad649`: 4,348 s, `code_identity`
+`abae2b4b…` (`evidence/generations_b20r86/`). 24 fresh n63 hosts; 19 targets certified.
+
+All three comparisons are UNRESOLVED (generation 2 against 1, generation 3 against 2, generation 2 against its
+no-library control), so the headline is NO_COMPOUNDING. On fresh hosts the generations cannot be told apart: median
+time to the target 0.5 s each, 23 of 24 hosts reached within 2 s. The builder's engine is about 5× faster than every
+generation at the median (0.1 s; B_FASTER).
+
+With B20_R80, R81, R84 and R85, the line's answer for GV5 in this language is that the system does not improve on
+itself across generations. B20_R103 (the feedback contract) tests one likely reason: the differences at the top of
+these searches are about as large as the evaluation noise.
+
+Record tests (3); exposure addenda (24 hosts).
+

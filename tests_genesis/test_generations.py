@@ -182,5 +182,49 @@ class RecordB20R85(unittest.TestCase):
         self.assertFalse({t['task_id'] for t in a} & {t['task_id'] for o in others for t in o})
 
 
+class RecordB20R86(unittest.TestCase):
+    """B20_R86's evaluation: the labels recompute from the rows; the programs and hosts are the recorded ones."""
+
+    @classmethod
+    def setUpClass(cls):
+        import json
+        cls.ev = ROOT / 'evidence' / 'generations_b20r86'
+        cls.s = json.loads((cls.ev / 'summary.json').read_text())
+        cls.rows = [json.loads(l) for l in (cls.ev / 'rows.jsonl').read_text().splitlines() if l.strip()]
+
+    def test_labels_recompute(self):
+        import json
+        self.assertEqual(len(self.rows), 24)
+        a = json.loads(json.dumps(M.analyse(self.rows)))
+        for k in ('labels', 'gen2_vs_gen1', 'gen3_vs_gen2', 'gen2_vs_control', 'gen3_vs_gen1', 'vs_engine', 'arms',
+                  'exact', 'certified'):
+            self.assertEqual(a[k], self.s[k], k)
+        self.assertEqual(a['labels']['headline'], 'NO_COMPOUNDING')
+        self.assertEqual(M.validity(self.rows)[0], None)
+
+    def test_the_programs_are_the_recorded_files(self):
+        import hashlib
+        for arm, path in M.SOURCES.items():
+            self.assertEqual(self.s['programs'][arm]['file_sha256'], hashlib.sha256(path.read_bytes()).hexdigest(), arm)
+
+    def test_hosts_are_fresh_and_in_the_addenda(self):
+        import json
+        import b20r23_e1b_readiness as RD
+        from genesis.common import canonical
+        from genesis.models import GraphTask
+        tasks = [GraphTask.model_validate_json(canonical(t)) for t in json.loads((self.ev / 'hosts.json').read_text())['tasks']]
+        self.assertEqual([t.task_id for t in tasks], [r['task_id'] for r in self.rows])
+        self.assertEqual(len(RD.identities(tasks)), 24)
+        train = []
+        for k in ('b20r83', 'b20r85'):
+            train += [GraphTask.model_validate_json(canonical(t))
+                      for t in json.loads((G.STUDIES[k]['out'] / 'hosts.json').read_text())['tasks']]
+        self.assertFalse(RD.identities(tasks) & RD.identities(train))
+        for pkg in ('e1', 'e1b'):
+            add = json.loads((ROOT / 'handoff' / pkg / 'exposure_hosts_addendum_b20r86.json').read_text())
+            self.assertTrue(RD.identities(tasks) <= RD.identities([GraphTask.model_validate_json(canonical(t))
+                                                                    for t in add]))
+
+
 if __name__ == '__main__':
     unittest.main()

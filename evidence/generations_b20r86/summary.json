@@ -1,0 +1,814 @@
+{
+ "arms": {
+  "control": {
+   "reached_within_2s": 22,
+   "tts_median": 0.25,
+   "tts_q75": 1.2
+  },
+  "engine": {
+   "reached_within_2s": 24,
+   "tts_median": 0.1,
+   "tts_q75": 0.25
+  },
+  "gen1": {
+   "reached_within_2s": 23,
+   "tts_median": 0.5,
+   "tts_q75": 1.2
+  },
+  "gen2": {
+   "reached_within_2s": 23,
+   "tts_median": 0.5,
+   "tts_q75": 0.5
+  },
+  "gen3": {
+   "reached_within_2s": 23,
+   "tts_median": 0.5,
+   "tts_q75": 1.2
+  }
+ },
+ "certified": 19,
+ "code_identity": "abae2b4bae46c3e39bac73e741080d54208b60aa35cd170ab7b2517f5daa9b0e",
+ "descriptors": {
+  "control@0.05": "61b3cd8b095576d2ffe5de3f64c6676495a8841a288b159d2cf9426636e2e3e4",
+  "control@0.1": "aa3744453b4d6175109e14412f5c56db89ebb94ac31f47173ad0b9c954e79208",
+  "control@0.25": "91152792cd4450236b41d2e05932a7ec719a004968c43c35a7296abaeb4c38a9",
+  "control@0.5": "491d7ac93897679dcd6979edc051ecf313002b9b387f00095a393e666acd8487",
+  "control@2.0": "298410964ab1113b7f57b54c802da06156a7677ec3824c39f0138a8685f1cbde",
+  "engine@0.05": "91c4f1b05c13b978724b26459b06136247895fe1622c77ce48cbcaf9a5d645d3",
+  "engine@0.1": "d329d5a5ec136605d2d96736152c5bbeb6946a5988581ae084d50e1fae6b9b1e",
+  "engine@0.25": "dab24a4cd09eff7717b3ea8a66b69fd2adfba99ffcb8197dc8c079bff66b4344",
+  "engine@0.5": "e2554bb0d4ddec1499df885c02e20bd2281da16a85f2d68d64287315e7e14d57",
+  "engine@2.0": "edd91c1735ea2036c53d744b445b6a107408064cbfe665bea8cae6a8e5536bec",
+  "gen1@0.05": "2ebba6b45ec26c2ffec5782b893c768a30d41fc9388b8de8c2f4c4f59a26b136",
+  "gen1@0.1": "b323f4c72499deb4131baa590c412137ca9323617b20d675a1f6a10e6bf6c515",
+  "gen1@0.25": "a32f897b0036e1300e99d84f43f985b98c0d71499a87217ff988408b20ec52c7",
+  "gen1@0.5": "4718468926d4831a73f71b4fda595f1bedb71304c2a2a6f557bed0656aaa8de2",
+  "gen1@2.0": "b0f33c553a99ea58a83451c9c9b21a58c2a5f0f0699f8af254e13a7a90276b28",
+  "gen2@0.05": "8ee31ea96f23a62216ebdd4c9e3724d83e5a1000b64c003355d1b60a25ebc062",
+  "gen2@0.1": "3d4302fee7086ada727077a3823a5ef0ed9239121a56c675b46280acb26b9f63",
+  "gen2@0.25": "0bd92d755775c341dcc0409fb64d54c7da2e7a9e0fab4ce6e4cdfe4ceacdd8cd",
+  "gen2@0.5": "caa5b5195506d630a7b3ffe99445f303e68f3f717633d32165cf88ca16614a64",
+  "gen2@2.0": "db41af2ca9c451c48b0fc6e21f0e09292c06294a890266d62b0a0972141ece3b",
+  "gen3@0.05": "ff013aadc4f82cc9df5005dab75289f36342878fe75ac6a5d880b0068a521a7f",
+  "gen3@0.1": "fb01b56f0475405d1e85e0eca80d415265b2fa46ee42e81541c810da168f96d6",
+  "gen3@0.25": "af8d7895f6fff5bf06e438c5430a33b94154f6655f50127ca8c150df03071e3b",
+  "gen3@0.5": "36b7b6eb5c7b2d6439186ff9ca6ee3c53ce0335dce8b70654bb58c5ee8f11643",
+  "gen3@2.0": "8cecdd379d9c5be78bcd6eb4f67296571b467a3af39f6f9007bfc7bed0773f78"
+ },
+ "edges": [
+  439,
+  486
+ ],
+ "exact": {
+  "cpsat_60s_reaches_target": 4
+ },
+ "exposure_scan": {
+  "calibration_hosts": 456,
+  "distinct_hosts": 3355,
+  "e1_named_hosts": 711,
+  "empty_files_skipped": [
+   "evidence/failed-wal-final-replay.json",
+   "evidence/final-replay.json"
+  ],
+  "excluded_identities": 3355,
+  "files_scanned": 1214,
+  "host_records": 15105
+ },
+ "gen2_vs_control": {
+  "b20r76_per_host_median": {
+   "interval_90": [
+    -1.0,
+    0.6315
+   ],
+   "log2_ratio": 0.0,
+   "verdict": "UNRESOLVED"
+  },
+  "q0.5": {
+   "interval_90": [
+    -1.0,
+    0.0
+   ],
+   "log2_ratio": -1.0,
+   "verdict": "UNRESOLVED"
+  },
+  "q0.75": {
+   "interval_90": [
+    -1.0,
+    1.263
+   ],
+   "log2_ratio": 1.263,
+   "verdict": "UNRESOLVED"
+  }
+ },
+ "gen2_vs_gen1": {
+  "b20r76_per_host_median": {
+   "interval_90": [
+    0.0,
+    1.0
+   ],
+   "log2_ratio": 0.161,
+   "verdict": "UNRESOLVED"
+  },
+  "q0.5": {
+   "interval_90": [
+    -1.0,
+    1.0
+   ],
+   "log2_ratio": 0.0,
+   "verdict": "UNRESOLVED"
+  },
+  "q0.75": {
+   "interval_90": [
+    -1.0589,
+    1.3219
+   ],
+   "log2_ratio": 1.263,
+   "verdict": "UNRESOLVED"
+  }
+ },
+ "gen3_vs_gen1": {
+  "b20r76_per_host_median": {
+   "interval_90": [
+    0.0,
+    0.263
+   ],
+   "log2_ratio": 0.0,
+   "verdict": "COMPARABLE"
+  },
+  "q0.5": {
+   "interval_90": [
+    -1.0,
+    0.263
+   ],
+   "log2_ratio": 0.0,
+   "verdict": "UNRESOLVED"
+  },
+  "q0.75": {
+   "interval_90": [
+    -1.0589,
+    0.263
+   ],
+   "log2_ratio": 0.0,
+   "verdict": "UNRESOLVED"
+  }
+ },
+ "gen3_vs_gen2": {
+  "b20r76_per_host_median": {
+   "interval_90": [
+    -0.5294,
+    0.0
+   ],
+   "log2_ratio": 0.0,
+   "verdict": "COMPARABLE"
+  },
+  "q0.5": {
+   "interval_90": [
+    -1.0,
+    0.0
+   ],
+   "log2_ratio": 0.0,
+   "verdict": "UNRESOLVED"
+  },
+  "q0.75": {
+   "interval_90": [
+    -1.3219,
+    0.737
+   ],
+   "log2_ratio": -1.263,
+   "verdict": "UNRESOLVED"
+  }
+ },
+ "hosts": 24,
+ "labels": {
+  "headline": "NO_COMPOUNDING",
+  "library_effect": "UNRESOLVED",
+  "transition_1_2": "UNRESOLVED",
+  "transition_2_3": "UNRESOLVED"
+ },
+ "ladder": [
+  0.05,
+  0.1,
+  0.25,
+  0.5,
+  2.0
+ ],
+ "programs": {
+  "control": {
+   "file_sha256": "a1a295db3f1d869b570db8c418e277a8b3bb77eb4774baba507ed7243a456210",
+   "program": {
+    "body": [
+     [
+      "split",
+      0.9,
+      [
+       [
+        "sweep",
+        "drop",
+        "anneal"
+       ],
+       [
+        "relabel",
+        "random",
+        "anneal",
+        1000
+       ]
+      ],
+      [
+       [
+        "split",
+        0.1,
+        [
+         [
+          "split",
+          0.1,
+          [
+           [
+            "relabel",
+            "random",
+            "anneal",
+            1000
+           ],
+           [
+            "init"
+           ],
+           [
+            "best"
+           ]
+          ],
+          [
+           [
+            "init"
+           ]
+          ]
+         ],
+         [
+          "descent"
+         ],
+         [
+          "relabel",
+          "random",
+          "anneal",
+          1000
+         ]
+        ],
+        [
+         [
+          "descent"
+         ],
+         [
+          "relabel",
+          "random",
+          "anneal",
+          1000
+         ]
+        ]
+       ],
+       [
+        "descent"
+       ],
+       [
+        "relabel",
+        "random",
+        "anneal",
+        1000
+       ]
+      ]
+     ],
+     [
+      "descent"
+     ],
+     [
+      "relabel",
+      "random",
+      "anneal",
+      1000
+     ]
+    ],
+    "library": [],
+    "rep": "adjacent_2"
+   }
+  },
+  "gen1": {
+   "file_sha256": "513e5e7b49e7303e91a23ec08c9d2a64b773267815978f1f1afcb12fda8efbc4",
+   "program": {
+    "body": [
+     [
+      "descent"
+     ],
+     [
+      "split",
+      0.1,
+      [
+       [
+        "sweep",
+        "drop",
+        "sideways"
+       ],
+       [
+        "loop",
+        [
+         [
+          "split",
+          0.1,
+          [
+           [
+            "relabel",
+            "random",
+            "anneal",
+            1000
+           ]
+          ],
+          [
+           [
+            "descent"
+           ]
+          ]
+         ]
+        ]
+       ]
+      ],
+      [
+       [
+        "split",
+        0.75,
+        [
+         [
+          "relabel",
+          "random",
+          "anneal",
+          1000
+         ]
+        ],
+        [
+         [
+          "descent"
+         ]
+        ]
+       ]
+      ]
+     ]
+    ],
+    "rep": "adjacent_2"
+   }
+  },
+  "gen2": {
+   "file_sha256": "b8369a6ba1f94876c1eeeb28cee80f439ed2740dbb2e51a8ca4c1457967e3d5a",
+   "program": {
+    "body": [
+     [
+      "split",
+      0.25,
+      [
+       [
+        "descent"
+       ],
+       [
+        "macro",
+        0
+       ],
+       [
+        "edges",
+        "force",
+        "improve",
+        1
+       ]
+      ],
+      [
+       [
+        "split",
+        0.9,
+        [
+         [
+          "edges",
+          "drop",
+          "anneal",
+          1
+         ]
+        ],
+        [
+         [
+          "descent"
+         ],
+         [
+          "macro",
+          0
+         ]
+        ]
+       ],
+       [
+        "relabel",
+        "random",
+        "sideways",
+        100
+       ],
+       [
+        "loop",
+        [
+         [
+          "macro",
+          0
+         ],
+         [
+          "relabel",
+          "best",
+          "anneal",
+          1
+         ],
+         [
+          "descent"
+         ]
+        ]
+       ]
+      ]
+     ]
+    ],
+    "library": [
+     [
+      [
+       "descent"
+      ],
+      [
+       "split",
+       0.1,
+       [
+        [
+         "sweep",
+         "drop",
+         "sideways"
+        ],
+        [
+         "loop",
+         [
+          [
+           "split",
+           0.1,
+           [
+            [
+             "relabel",
+             "random",
+             "anneal",
+             1000
+            ]
+           ],
+           [
+            [
+             "descent"
+            ]
+           ]
+          ]
+         ]
+        ]
+       ],
+       [
+        [
+         "split",
+         0.75,
+         [
+          [
+           "relabel",
+           "random",
+           "anneal",
+           1000
+          ]
+         ],
+         [
+          [
+           "descent"
+          ]
+         ]
+        ]
+       ]
+      ]
+     ]
+    ],
+    "rep": "cross_2"
+   }
+  },
+  "gen3": {
+   "file_sha256": "045b88caaa9c96c127cee041aea02b30cb3662221755aa66fece6d67926b4733",
+   "program": {
+    "body": [
+     [
+      "macro",
+      0
+     ],
+     [
+      "split",
+      0.25,
+      [
+       [
+        "repeat",
+        1,
+        [
+         [
+          "loop",
+          [
+           [
+            "macro",
+            1
+           ],
+           [
+            "macro",
+            0
+           ]
+          ]
+         ],
+         [
+          "descent"
+         ]
+        ]
+       ]
+      ],
+      [
+       [
+        "macro",
+        1
+       ],
+       [
+        "descent"
+       ],
+       [
+        "macro",
+        1
+       ]
+      ]
+     ],
+     [
+      "repeat",
+      10,
+      [
+       [
+        "descent"
+       ],
+       [
+        "macro",
+        0
+       ]
+      ]
+     ]
+    ],
+    "library": [
+     [
+      [
+       "descent"
+      ],
+      [
+       "split",
+       0.1,
+       [
+        [
+         "sweep",
+         "drop",
+         "sideways"
+        ],
+        [
+         "loop",
+         [
+          [
+           "split",
+           0.1,
+           [
+            [
+             "relabel",
+             "random",
+             "anneal",
+             1000
+            ]
+           ],
+           [
+            [
+             "descent"
+            ]
+           ]
+          ]
+         ]
+        ]
+       ],
+       [
+        [
+         "split",
+         0.75,
+         [
+          [
+           "relabel",
+           "random",
+           "anneal",
+           1000
+          ]
+         ],
+         [
+          [
+           "descent"
+          ]
+         ]
+        ]
+       ]
+      ]
+     ],
+     [
+      [
+       "split",
+       0.25,
+       [
+        [
+         "descent"
+        ],
+        [
+         "macro",
+         0
+        ],
+        [
+         "edges",
+         "force",
+         "improve",
+         1
+        ]
+       ],
+       [
+        [
+         "split",
+         0.9,
+         [
+          [
+           "edges",
+           "drop",
+           "anneal",
+           1
+          ]
+         ],
+         [
+          [
+           "descent"
+          ],
+          [
+           "macro",
+           0
+          ]
+         ]
+        ],
+        [
+         "relabel",
+         "random",
+         "sideways",
+         100
+        ],
+        [
+         "loop",
+         [
+          [
+           "macro",
+           0
+          ],
+          [
+           "relabel",
+           "best",
+           "anneal",
+           1
+          ],
+          [
+           "descent"
+          ]
+         ]
+        ]
+       ]
+      ]
+     ]
+    ],
+    "rep": "cross_2"
+   }
+  }
+ },
+ "quantiles": [
+  0.5,
+  0.75
+ ],
+ "reps": 3,
+ "schema": "genesis-b20r86-generations-v1",
+ "seeds": {
+  "boot": 20268699,
+  "hosts": 20268601
+ },
+ "status": "DEV test of compounding generations; licenses nothing",
+ "validity": {
+  "cpu_s_median_at_0.5": {
+   "control": 0.654,
+   "engine": 0.667,
+   "gen1": 0.655,
+   "gen2": 0.653,
+   "gen3": 0.653
+  },
+  "failure_share": {
+   "control": 0.0,
+   "engine": 0.0,
+   "gen1": 0.0,
+   "gen2": 0.0,
+   "gen3": 0.0
+  }
+ },
+ "vs_engine": {
+  "control": {
+   "b20r76_per_host_median": {
+    "interval_90": [
+     -1.3219,
+     -1.1315
+    ],
+    "log2_ratio": -1.3219,
+    "verdict": "B_FASTER"
+   },
+   "q0.5": {
+    "interval_90": [
+     -2.3219,
+     -1.3219
+    ],
+    "log2_ratio": -1.3219,
+    "verdict": "B_FASTER"
+   },
+   "q0.75": {
+    "interval_90": [
+     -3.585,
+     -1.0
+    ],
+    "log2_ratio": -2.263,
+    "verdict": "UNRESOLVED"
+   }
+  },
+  "gen1": {
+   "b20r76_per_host_median": {
+    "interval_90": [
+     -2.3219,
+     -1.3219
+    ],
+    "log2_ratio": -1.3219,
+    "verdict": "B_FASTER"
+   },
+   "q0.5": {
+    "interval_90": [
+     -2.585,
+     -1.3219
+    ],
+    "log2_ratio": -2.3219,
+    "verdict": "B_FASTER"
+   },
+   "q0.75": {
+    "interval_90": [
+     -3.585,
+     -1.0
+    ],
+    "log2_ratio": -2.263,
+    "verdict": "UNRESOLVED"
+   }
+  },
+  "gen2": {
+   "b20r76_per_host_median": {
+    "interval_90": [
+     -1.661,
+     -0.7925
+    ],
+    "log2_ratio": -1.3219,
+    "verdict": "UNRESOLVED"
+   },
+   "q0.5": {
+    "interval_90": [
+     -2.3219,
+     -1.3219
+    ],
+    "log2_ratio": -2.3219,
+    "verdict": "B_FASTER"
+   },
+   "q0.75": {
+    "interval_90": [
+     -3.585,
+     -1.0
+    ],
+    "log2_ratio": -1.0,
+    "verdict": "UNRESOLVED"
+   }
+  },
+  "gen3": {
+   "b20r76_per_host_median": {
+    "interval_90": [
+     -2.3219,
+     -0.6315
+    ],
+    "log2_ratio": -1.4534,
+    "verdict": "UNRESOLVED"
+   },
+   "q0.5": {
+    "interval_90": [
+     -2.585,
+     -1.3219
+    ],
+    "log2_ratio": -2.3219,
+    "verdict": "B_FASTER"
+   },
+   "q0.75": {
+    "interval_90": [
+     -3.6439,
+     -1.0
+    ],
+    "log2_ratio": -2.263,
+    "verdict": "UNRESOLVED"
+   }
+  }
+ }
+}

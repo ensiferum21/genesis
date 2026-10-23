@@ -599,6 +599,7 @@ WORKSTREAMS = {
              'scripts/b20r83_generation_search.py', 'evidence/generation2_b20r83/summary.json',
              'evidence/generation2_control_b20r84/summary.json',
              'evidence/generation3_b20r85/summary.json',
+             'evidence/generations_b20r86/summary.json',
              'scripts/b20r86_generations_eval.py', 'src/genesis/candidate_kinds/maxsat.py',
              'src/genesis/candidate_kinds/mqlib_heuristic.py', 'scripts/b20r87_maxsat_tools.py',
              'src/genesis/candidate_kinds/tfx.py', 'src/genesis/candidate_kinds/native/tfx.c',
