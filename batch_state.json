@@ -1147,7 +1147,8 @@
       },
       "B20_R109": {
         "commits": [
-          "34234fa"
+          "34234fa",
+          "32164e2"
         ],
         "result": "DEV, preregistered, run at 34234fa: REPLICATED: with three seeds per arm at 10 s, the configured engine is ahead of BURER2002 (47-3) and dSB (47-2) on per-instance means; its worse new run beats the best of the tools' four new runs 36-6; 0.99882 of the best known values (dSB 0.99636, BURER2002 0.99559); reaching them on 30 instances (12, 8); no record candidate"
       },
@@ -1155,13 +1156,13 @@
         "commits": [
           "34234fa"
         ],
-        "result": "Setup: the engine at 60 s on Gset (preregistered). Running"
+        "result": "DEV, preregistered, run at 34234fa (interrupted once, resumed): LONGER_HELPS (22-5 against 10 s): at 60 s the configured engine reaches 0.99912 of the 2012-13 best known values and reaches them on 27 of 54 instances, every torus included (G32-G34: 1410, 1382, 1384); one or two below on most others; the larger planar +-1 graphs (G39-G42) furthest below; no record candidate"
       },
       "B20_R111": {
         "commits": [
           "962f947"
         ],
-        "result": "Setup: the invention test (preregistered). Pending"
+        "result": "Setup: the invention test (preregistered). Running"
       },
       "B20_R112": {
         "commits": [

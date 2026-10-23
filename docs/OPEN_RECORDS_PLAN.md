@@ -68,6 +68,8 @@ preregistered.
   (`evidence/mcx_gset_b20r106/`). Next: more seeds, longer budgets against the best known values.
   **B20_R109: REPLICATED** with three seeds per arm (47-3 against BURER2002, 47-2 against dSB; best known values
   reached on 30 of 54; `evidence/gset_replication_b20r109/`).
+  **B20_R110:** at 60 s, the best known values reached on 27 of 54, every torus included; 0.99912 on average; no
+  record. The remaining gap is the larger planar +-1 graphs (G39-G42).
 - **Then the discovery loop on Gset**, if B20_R99 finds structured headroom. The test is whether concepts invented
   on toroidal and planar instances transfer to random ones, and the reverse. That is the note's "untouched family"
   inside one public benchmark.

@@ -54,5 +54,25 @@ class Design(unittest.TestCase):
             M.main([str(ROOT / 'evidence' / 'elsewhere')])
 
 
+
+class RecordB20R110(unittest.TestCase):
+    """B20_R110's record: the analysis recomputes from the rows; the configurations are B20_R105's (B20_R108's 10 s
+    label was not MATURED_BETTER); the 10 s values are B20_R106's."""
+
+    def test_recomputes(self):
+        from genesis import gset as GS
+        ev = ROOT / 'evidence' / 'gset_long_b20r110'
+        s = json.loads((ev / 'summary.json').read_text())
+        rows = [json.loads(l) for l in (ev / 'rows.jsonl').read_text().splitlines() if l.strip()]
+        self.assertEqual([r['instance'] for r in rows], [f'G{k}' for k in range(1, 55)])
+        a = json.loads(json.dumps(M.analyse(rows, GS.best_known())))
+        for k in ('mean_fraction', 'by_family', 'reach_best_known', 'reached', 'record_candidates', 'vs_10s'):
+            self.assertEqual(a[k], s[k], k)
+        self.assertEqual((s['configs_from'], s['vs_10s']['label']), ('mcx_configure_b20r105', 'LONGER_HELPS'))
+        self.assertEqual(M.choose_configs()[0], 'mcx_configure_b20r105')
+        r106 = {r['instance']: r for r in map(json.loads, (M.R106 / 'rows.jsonl').read_text().splitlines()) if r}
+        self.assertTrue(all(r['ten'] == r106[r['instance']]['runs']['chosen@10']['value'] for r in rows))
+
+
 if __name__ == '__main__':
     unittest.main()
