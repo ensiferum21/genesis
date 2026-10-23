@@ -51,6 +51,17 @@ with no signal, where the right answer is to stop.
     synthetic studies whose arms are identical. Their false "better" rate must stay within the nominal level.
 - An adaptive threshold would need its own statistical validation before adoption; it is not part of B20_R103.
 
+**Result (23 Oct 2026; `evidence/zero_signal_b20r103/`).** The alert's effect is real in Genesis's own program search:
+with no signal, the open protocol's reported number overstates the truth by 0.5, 3.4 and 6.6 sigma_e as the quirks of
+the evaluation data grow (up to about one edge). Under the contract every no-signal search stopped at about a third
+of its budget, released noise once in 180, and its held-out final numbers are unbiased. It keeps 69% and 51% of the
+open protocol's real gain at small quirks and 13% at the largest (TOO_STRICT, as forecast). The research loop's
+analyses never called identical arms different (0 of 800; CALIBRATED). The preregistered headline reads
+CONTRACT_LEAKS: its ratio rule compares the contract with a quarter of the open protocol's claimed gain, which is
+negative at quirk 0, and the one false release fails it. The rule is mis-specified for a negative reference; the
+measured leak is 0.07 sigma_e of claimed gain and none in the final numbers. Next: compare with the truth, not a
+ratio; larger confirmation data to recover power.
+
 ### 2. Causal discovery with hidden variables (priority: medium-high)
 
 **The alert.** *Causal Discovery for Linear Models with Latent Confounding via Multi-domain Identifiable

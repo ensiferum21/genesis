@@ -113,5 +113,40 @@ class Study(unittest.TestCase):
             M.main([str(ROOT / 'evidence' / 'elsewhere')])
 
 
+
+class RecordB20R103(unittest.TestCase):
+    """B20_R103's record: the table and labels recompute from the 720 searches; the noise estimate is the recorded
+    one; the no-signal contract searches released once in 180 and all stopped early."""
+
+    @classmethod
+    def setUpClass(cls):
+        import json
+        ev = ROOT / 'evidence' / 'zero_signal_b20r103'
+        cls.s = json.loads((ev / 'summary.json').read_text())
+        cls.rows = [json.loads(l) for l in (ev / 'searches.jsonl').read_text().splitlines() if l.strip()]
+
+    def test_table_and_labels_recompute(self):
+        import json
+        self.assertEqual(len(self.rows), 2 * len(M.Q_MULTIPLES) * 2 * M.REPS)
+        self.assertEqual(json.loads(json.dumps(M.table(self.rows))), self.s['l1'])
+        l2 = self.s['l2']
+        self.assertEqual(M.labels(self.rows, self.s['sigma_e'], l2['qet_false_better_rate'], l2['tts_false_faster_rate']),
+                         self.s['labels'])
+        self.assertEqual(self.s['labels'], {'l1_no_signal': 'CONTRACT_LEAKS', 'l1_planted_signal': 'TOO_STRICT',
+                                            'headline': 'CONTRACT_LEAKS', 'l2': 'CALIBRATED'})
+        self.assertAlmostEqual(M.sigma_e(), self.s['sigma_e'], places=12)
+
+    def test_what_the_leak_is(self):
+        """The preregistered rule compares with a quarter of the open protocol's claimed gain, which is negative at
+        sigma_q = 0; the contract's one false release among 180 no-signal searches is what fails it."""
+        none = [r for r in self.rows if r['signal'] == 'none' and r['protocol'] == 'contract']
+        self.assertEqual(len(none), 180)
+        self.assertEqual(sum(r['judge']['releases'] for r in none), 1)
+        self.assertTrue(all(r['judge']['stopped'] for r in none))
+        self.assertLess(self.s['l1']['none|q0|open']['mean_claimed_gain'], 0)
+        for q in ('q0', 'q1', 'q2'):
+            self.assertLess(abs(self.s['l1'][f'none|{q}|contract']['mean_final_optimism']), 0.05)
+
+
 if __name__ == '__main__':
     unittest.main()

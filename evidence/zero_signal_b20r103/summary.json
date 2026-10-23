@@ -1,0 +1,159 @@
+{
+ "code_identity": "2e84acdbe662e8eaf077a5080fff8412eb9f137f26fa4b096045d72a6e294206",
+ "constants": {
+  "max_evals": 1500,
+  "q_multiples": [
+   0.0,
+   1.0,
+   2.0
+  ],
+  "qet": {
+   "alpha": 0.1,
+   "delta": 0.002,
+   "hosts": 56,
+   "looks": [
+    19,
+    38,
+    56
+   ],
+   "resamples": 2000
+  },
+  "reps": 60,
+  "tts": {
+   "hosts": 24,
+   "ladder": [
+    0.05,
+    0.1,
+    0.25,
+    0.5,
+    2.0
+   ],
+   "reps": 3
+  }
+ },
+ "l1": {
+  "none|q0|contract": {
+   "mean_claimed_gain": 0.009859000684590209,
+   "mean_evaluations": 512.7,
+   "mean_final_optimism": -0.010455976871392282,
+   "mean_releases": 0.016666666666666666,
+   "mean_true_gain": 0.0,
+   "searches": 60,
+   "stopped_early": 60
+  },
+  "none|q0|open": {
+   "mean_claimed_gain": -0.18354092742999273,
+   "mean_evaluations": 1516,
+   "mean_final_optimism": 0.07535510199384908,
+   "mean_releases": null,
+   "mean_true_gain": 0.0,
+   "searches": 60,
+   "stopped_early": 0
+  },
+  "none|q1|contract": {
+   "mean_claimed_gain": 0.0,
+   "mean_evaluations": 491.9166666666667,
+   "mean_final_optimism": -0.015542511597179653,
+   "mean_releases": 0,
+   "mean_true_gain": 0.0,
+   "searches": 60,
+   "stopped_early": 60
+  },
+  "none|q1|open": {
+   "mean_claimed_gain": 0.13708210778849103,
+   "mean_evaluations": 1516,
+   "mean_final_optimism": 0.5025537044703036,
+   "mean_releases": null,
+   "mean_true_gain": 0.0,
+   "searches": 60,
+   "stopped_early": 0
+  },
+  "none|q2|contract": {
+   "mean_claimed_gain": 0.0,
+   "mean_evaluations": 486.3,
+   "mean_final_optimism": 0.029993163143272397,
+   "mean_releases": 0,
+   "mean_true_gain": 0.0,
+   "searches": 60,
+   "stopped_early": 60
+  },
+  "none|q2|open": {
+   "mean_claimed_gain": 0.3879272126686884,
+   "mean_evaluations": 1516,
+   "mean_final_optimism": 0.9866526120410334,
+   "mean_releases": null,
+   "mean_true_gain": 0.0,
+   "searches": 60,
+   "stopped_early": 0
+  },
+  "planted|q0|contract": {
+   "mean_claimed_gain": 0.46590419235496344,
+   "mean_evaluations": 561.5833333333334,
+   "mean_final_optimism": -0.01989008349621936,
+   "mean_releases": 0.55,
+   "mean_true_gain": 0.3371460631612961,
+   "searches": 60,
+   "stopped_early": 60
+  },
+  "planted|q0|open": {
+   "mean_claimed_gain": 0.44957343463527205,
+   "mean_evaluations": 1516,
+   "mean_final_optimism": 0.07093640089596277,
+   "mean_releases": null,
+   "mean_true_gain": 0.49084500372012224,
+   "searches": 60,
+   "stopped_early": 0
+  },
+  "planted|q1|contract": {
+   "mean_claimed_gain": 0.339853242205402,
+   "mean_evaluations": 523.9833333333333,
+   "mean_final_optimism": 0.0037640126642754356,
+   "mean_releases": 0.3,
+   "mean_true_gain": 0.2131953046461137,
+   "searches": 60,
+   "stopped_early": 60
+  },
+  "planted|q1|open": {
+   "mean_claimed_gain": 0.7794856157003308,
+   "mean_evaluations": 1516,
+   "mean_final_optimism": 0.49830456962751174,
+   "mean_releases": null,
+   "mean_true_gain": 0.4214325789516201,
+   "searches": 60,
+   "stopped_early": 0
+  },
+  "planted|q2|contract": {
+   "mean_claimed_gain": 0.13894390453503744,
+   "mean_evaluations": 498.28333333333336,
+   "mean_final_optimism": 0.010576677476898956,
+   "mean_releases": 0.08333333333333333,
+   "mean_true_gain": 0.07437045510910943,
+   "searches": 60,
+   "stopped_early": 60
+  },
+  "planted|q2|open": {
+   "mean_claimed_gain": 1.174822323510617,
+   "mean_evaluations": 1516,
+   "mean_final_optimism": 0.9904049195124236,
+   "mean_releases": null,
+   "mean_true_gain": 0.5503413678074098,
+   "searches": 60,
+   "stopped_early": 0
+  }
+ },
+ "l2": {
+  "qet_false_better_rate": 0.0,
+  "sims": 400,
+  "tts_false_faster_rate": 0.0
+ },
+ "labels": {
+  "headline": "CONTRACT_LEAKS",
+  "l1_no_signal": "CONTRACT_LEAKS",
+  "l1_planted_signal": "TOO_STRICT",
+  "l2": "CALIBRATED"
+ },
+ "schema": "genesis-b20r103-zero-signal-v1",
+ "sigma_e": 0.14874091021821886,
+ "status": "DEV; licenses nothing; no package changed",
+ "study": "b20r103"
+}

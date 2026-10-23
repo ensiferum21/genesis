@@ -152,6 +152,7 @@ needs people: a reviewer, a statistician, an independent custodian on its own ma
 | B20_R86 | Do the generations compound? NO_COMPOUNDING: every transition and the library effect UNRESOLVED on fresh hosts; the builder's engine about 5x faster than every generation |
 | B20_R100 | The knowledge map's first prospective test: MAP_BETTER (4x more accurate than the baseline on seen methods; 90% intervals cover 97%; much wider intervals on methods it had never seen, coverage kept); an easy test |
 | B20_R99 | Headroom pilot: HEADROOM_UNSTRUCTURED. Where tfxw stops nothing local is left (2 of 32 states improvable, no small exchange); the language programs miss the swap; no recognizable pattern (lift 11, recall 0.22); best states differ globally |
+| B20_R103 | Feedback contract and zero-signal battery: CONTRACT_LEAKS by its ratio rule (one false release in 180 no-signal searches, held-out numbers unbiased), TOO_STRICT at large quirks (13% of the real gain kept), CALIBRATED analyses; without the contract the program search over-reports by up to 6.6 sigma_e |
 | B20_R104 (engineering) | `mcx-v1`, Genesis's max-cut engine (BLS's rules and setting as DEFAULT; cluster exchange, renormalisation and MACUT's crossover as restarts); Gset families built as rudy did; the Gset table now holds the BLS and MACUT papers' values (Daniel's PDFs); B20_R105 and B20_R106 preregistered |
 
 ## 6. Next steps, in order
@@ -166,8 +167,9 @@ needs people: a reviewer, a statistician, an independent custodian on its own ma
    2. done: B20_R86 (NO_COMPOUNDING);
    3. done: B20_R100 `score` (MAP_BETTER);
    4. done: B20_R99 (HEADROOM_UNSTRUCTURED);
-   5. B20_R103 (zero-signal battery), B20_R105 (mcx configured on generated graphs), B20_R102 (Gset standing),
-      B20_R106 (mcx on Gset once), in this order; R105 and R106 were fixed before R102 ran.
+   5. done: B20_R103 (CONTRACT_LEAKS by its ratio rule; TOO_STRICT; CALIBRATED);
+   6. B20_R105 (mcx configured on generated graphs), B20_R102 (Gset standing), B20_R106 (mcx on Gset once), in
+      this order; R105 and R106 were fixed before R102 ran.
 
 3. **Checkpoint after these** (the last is B20_R73, never rehearsed; R74 onward are not in a checkpoint). Do not edit
    the tree while the release matrix runs; run timing studies alone.
