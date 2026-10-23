@@ -1195,6 +1195,12 @@
           "82e95c5"
         ],
         "result": "Engineering: a hidden-confounder causal-discovery benchmark (src/genesis/causal) with established baselines; setup of B20_R118 (preregistered)"
+      },
+      "B20_R118": {
+        "commits": [
+          "82e95c5"
+        ],
+        "result": "DEV, preregistered, run at 39f4f64: CONFOUNDING_MISLEADS: DirectLiNGAM connects 191 of 192 confounded non-adjacent pairs, PC 130, the oracle PC all; HIDDEN_HURTS for DirectLiNGAM (directed F1 0.98 to 0.77), NO_EFFECT for PC; naive pooling of environments changes little"
       }
     },
     "open_after_b20_r5": [

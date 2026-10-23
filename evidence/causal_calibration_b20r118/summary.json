@@ -1,0 +1,189 @@
+{
+ "better_at_h3": "lingam",
+ "code_identity": "652726f3617d22858af5f67bf9893e716bbab0ab1e9263cf1b325b8883370d2d",
+ "headroom": "CONFOUNDING_MISLEADS",
+ "hidden_flagged": {
+  "empty": 0,
+  "lingam": 0,
+  "pc": 0,
+  "pc_oracle": 0
+ },
+ "instances": 160,
+ "means": {
+  "empty": {
+   "h0_k1": {
+    "adjacency": 0.0,
+    "directed": 0.0,
+    "shd": 9.475
+   },
+   "h0_k3": {
+    "adjacency": 0.0,
+    "directed": 0.0,
+    "shd": 9.475
+   },
+   "h3_k1": {
+    "adjacency": 0.0,
+    "directed": 0.0,
+    "shd": 11.875
+   },
+   "h3_k3": {
+    "adjacency": 0.0,
+    "directed": 0.0,
+    "shd": 11.875
+   }
+  },
+  "lingam": {
+   "h0_k1": {
+    "adjacency": 0.9842152931347978,
+    "directed": 0.9842152931347978,
+    "shd": 0.275
+   },
+   "h0_k3": {
+    "adjacency": 0.9844408570445722,
+    "directed": 0.9844408570445722,
+    "shd": 0.275
+   },
+   "h3_k1": {
+    "adjacency": 0.7871555111306946,
+    "directed": 0.7743825346281356,
+    "shd": 5.225
+   },
+   "h3_k3": {
+    "adjacency": 0.800526149638113,
+    "directed": 0.7978945706907445,
+    "shd": 4.65
+   }
+  },
+  "pc": {
+   "h0_k1": {
+    "adjacency": 0.9669938855639657,
+    "directed": 0.6571025407770764,
+    "shd": 4.325
+   },
+   "h0_k3": {
+    "adjacency": 0.9619750148577885,
+    "directed": 0.6471691629663766,
+    "shd": 4.475
+   },
+   "h3_k1": {
+    "adjacency": 0.8368987231360195,
+    "directed": 0.6301931633897578,
+    "shd": 7.15
+   },
+   "h3_k3": {
+    "adjacency": 0.8601359693604781,
+    "directed": 0.6321967479544879,
+    "shd": 7
+   }
+  },
+  "pc_oracle": {
+   "h0_k1": {
+    "adjacency": 1.0,
+    "directed": 0.742679832207696,
+    "shd": 3.25
+   },
+   "h0_k3": {
+    "adjacency": 1.0,
+    "directed": 0.742679832207696,
+    "shd": 3.25
+   },
+   "h3_k1": {
+    "adjacency": 0.8550943257114105,
+    "directed": 0.7582582104088462,
+    "shd": 5.225
+   },
+   "h3_k3": {
+    "adjacency": 0.8550943257114105,
+    "directed": 0.7582582104088462,
+    "shd": 5.225
+   }
+  }
+ },
+ "runs": 640,
+ "schema": "genesis-b20r118-causal-calibration-v1",
+ "spurious": {
+  "empty": {
+   "ci95": [
+    0.0,
+    0.01902952216877982
+   ],
+   "connected": 0,
+   "pairs": 192,
+   "rate": 0.0
+  },
+  "lingam": {
+   "ci95": [
+    0.97132415814551,
+    0.9998681451103687
+   ],
+   "connected": 191,
+   "pairs": 192,
+   "rate": 0.9947916666666666
+  },
+  "pc": {
+   "ci95": [
+    0.6059774151389596,
+    0.742620560967623
+   ],
+   "connected": 130,
+   "pairs": 192,
+   "rate": 0.6770833333333334
+  },
+  "pc_oracle": {
+   "ci95": [
+    0.9809704778312202,
+    1.0
+   ],
+   "connected": 192,
+   "pairs": 192,
+   "rate": 1.0
+  }
+ },
+ "status": "DEV; licenses nothing",
+ "study": "b20r118",
+ "test1": {
+  "lingam": {
+   "label": "HIDDEN_HURTS",
+   "mean_difference": -0.20983275850666228,
+   "nonzero": 40,
+   "p": 3.558045309144898e-08
+  },
+  "pc": {
+   "label": "NO_EFFECT",
+   "mean_difference": -0.026909377387318564,
+   "nonzero": 37,
+   "p": 0.1916960332018789
+  }
+ },
+ "test2": {
+  "lingam": {
+   "h0": {
+    "label": "NO_EFFECT",
+    "mean_difference": 0.00022556390977443997,
+    "nonzero": 6,
+    "p": 0.9375
+   },
+   "h3": {
+    "label": "POOLING_HELPS",
+    "mean_difference": 0.023512036062609064,
+    "nonzero": 25,
+    "p": 0.01381285231671872
+   }
+  },
+  "pc": {
+   "h0": {
+    "label": "NO_EFFECT",
+    "mean_difference": -0.009933377810699785,
+    "nonzero": 20,
+    "p": 0.3117942810058594
+   },
+   "h3": {
+    "label": "NO_EFFECT",
+    "mean_difference": 0.002003584564730096,
+    "nonzero": 28,
+    "p": 0.46517620980739594
+   }
+  }
+ },
+ "valid": true
+}

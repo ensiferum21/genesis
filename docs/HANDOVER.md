@@ -167,6 +167,7 @@ needs people: a reviewer, a statistician, an independent custodian on its own ma
 | B20_R115 | Language v2 (elite pool, consensus and cluster recombination) and a search in it, held to the invention test: **NOT_DEMONSTRATED.** The program found is descent with annealing (its one pool statement never acts), NOT_DISTINGUISHABLE from annealing-then-descent (7-10); memetic templates with the new moves lose to it on all 24 held-out hosts |
 | B20_R116 | Five minutes on each of the 21 Gset instances not yet reached: 7 reach their best known values; over all recorded runs Genesis's engine now matches the 2012-13 best known values on **40 of 54**, exceeds none (no record); 11 of the remaining 14 are one unit short |
 | B20_R117 (engineering) | A hidden-confounder causal-discovery benchmark (Daniel's research alert, item 2): multi-environment linear SEMs with planted hidden confounders, the truth as an ADMG, scores, and baselines written from their papers (PC-stable, an oracle PC, DirectLiNGAM); setup of B20_R118 (their calibration) |
+| B20_R118 | Causal calibration with hidden confounders: **CONFOUNDING_MISLEADS.** DirectLiNGAM (98% directed F1 with nothing hidden) draws an edge for 99% of confounded pairs and loses 0.21 F1 with 3 hidden confounders; PC connects 68%; none of the established methods marks a hidden cause; pooling 3 environments naively changes little |
 
 ## 6. Next steps, in order
 
@@ -194,10 +195,11 @@ needs people: a reviewer, a statistician, an independent custodian on its own ma
       values; no record);
   16. done: B20_R115 (NOT_DEMONSTRATED; the new moves do not help at 2 s);
   17. done: B20_R116 (7 of 21 reached; 40 of 54 over all runs; no record);
-  18. B20_R114: the checkpoint (`GENESIS_COMPLETION_CHECKPOINT_B20_R117`, covering B20_R74-R117), release
-      matrix on a quiet tree;
-  19. B20_R118 (causal calibration), then a Genesis method that detects hidden causes and proposes the
-      intervention that resolves one.
+  18. B20_R114: the checkpoint (`GENESIS_COMPLETION_CHECKPOINT_B20_R118`, covering B20_R74-R118), release
+      matrix on a quiet tree (the first build, at 1d473a1, failed on 3 corpus-dependent record tests, repaired);
+  19. done: B20_R118 (CONFOUNDING_MISLEADS);
+  20. B20_R119-R120: FCI as the hidden-variable baseline, and Genesis's active procedure that proposes the
+      interventions resolving hidden causes, against random and degree-based choices.
 
 3. **Checkpoint after these** (the last is B20_R73, never rehearsed; R74 onward are not in a checkpoint). Do not edit
    the tree while the release matrix runs; run timing studies alone.

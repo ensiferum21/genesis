@@ -1,5 +1,6 @@
 """B20_R118: the causal calibration (design): fresh seed, the 2 x 2 factorial within seeds, the tests' labels, the
-headroom rule, the oracle's validity conditions, and the registered output."""
+headroom rule, the oracle's validity conditions, and the registered output; the record."""
+import json
 from pathlib import Path
 import re
 import sys
@@ -84,6 +85,35 @@ class Design(unittest.TestCase):
     def test_refuses_another_output(self):
         with self.assertRaises(SystemExit):
             M.main([str(ROOT / 'evidence' / 'elsewhere')])
+
+
+class RecordB20R118(unittest.TestCase):
+    """B20_R118's record: every answer re-scores from its saved answer and the regenerated truth; the tests, the
+    headroom and the oracle checks recompute from the rows."""
+
+    def test_recomputes(self):
+        from genesis.causal import admg as A
+        from genesis.causal import sem as S
+        ev = ROOT / 'evidence' / 'causal_calibration_b20r118'
+        s = json.loads((ev / 'summary.json').read_text())
+        rows = [json.loads(l) for l in (ev / 'runs.jsonl').read_text().splitlines() if l.strip()]
+        self.assertEqual(len(rows), 160 * len(M.METHODS))
+        truths = {}
+        for r in rows:
+            key = (r['seed'], r['h'], r['k'])
+            if key not in truths:
+                truths[key] = S.planted(r['seed'], M.P, r['h'], M.DENSITY, M.NOISE, r['k'])
+            sc = A.score(truths[key], r['answer'])
+            for k in ('directed', 'adjacency', 'bidirected', 'shd', 'spurious_rate', 'latent_flagged'):
+                self.assertEqual(json.loads(json.dumps(sc[k])), r['scores'][k], (key, r['method'], k))
+        a = json.loads(json.dumps(M.analyse(rows)))
+        for k in ('means', 'test1', 'test2', 'spurious', 'better_at_h3', 'headroom', 'hidden_flagged'):
+            self.assertEqual(a[k], s[k], k)
+        self.assertTrue(M.checks(rows) and s['valid'])
+        self.assertEqual((a['test1']['lingam']['label'], a['test1']['pc']['label'], a['headroom']),
+                         ('HIDDEN_HURTS', 'NO_EFFECT', 'CONFOUNDING_MISLEADS'))
+        self.assertEqual((a['spurious']['lingam']['connected'], a['spurious']['pc']['connected'],
+                          a['spurious']['lingam']['pairs']), (191, 130, 192))
 
 
 if __name__ == '__main__':

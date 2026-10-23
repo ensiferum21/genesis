@@ -91,6 +91,12 @@ as a benchmark:
 It needs a new domain (causal models, with a checker for graph recovery) and comes after the feedback contract and the
 Gset track.
 
+**Started (23 Oct 2026).** B20_R117 built the benchmark (`src/genesis/causal`: planted multi-environment linear
+models with hidden confounders, exact scoring, PC, an oracle PC and DirectLiNGAM written from their papers).
+B20_R118's calibration: CONFOUNDING_MISLEADS. DirectLiNGAM connects 99% of the confounded pairs and PC 68%, and
+neither can mark a hidden cause (`evidence/causal_calibration_b20r118/`). LinADMG's code was not found; FCI is
+the established comparator for the next step, Genesis proposing the interventions that resolve hidden causes.
+
 ## Overall
 
 The Explorer–Judge–Consolidator shape stays. The urgent part is item 1: it decides whether any future claim of
