@@ -71,5 +71,32 @@ class Design(unittest.TestCase):
             M.main([str(ROOT / 'evidence' / 'elsewhere')])
 
 
+class RecordB20R106(unittest.TestCase):
+    """B20_R106's record: the tests, headline and per-arm figures recompute from the rows; the comparators are
+    B20_R102's recorded runs; the configurations are B20_R105's."""
+
+    @classmethod
+    def setUpClass(cls):
+        ev = ROOT / 'evidence' / 'mcx_gset_b20r106'
+        cls.s = json.loads((ev / 'summary.json').read_text())
+        cls.rows = [json.loads(l) for l in (ev / 'rows.jsonl').read_text().splitlines() if l.strip()]
+
+    def test_analysis_recomputes(self):
+        from genesis import gset as GS
+        self.assertEqual([r['instance'] for r in self.rows], [f'G{k}' for k in range(1, 55)])
+        flat = [dict({k: v for k, v in r.items() if k != 'runs'}, **{a: x['value'] for a, x in r['runs'].items()})
+                for r in self.rows]
+        a = json.loads(json.dumps(M.analyse(flat, GS.best_known())))
+        for k in ('tests', 'headline', 'per_arm', 'record_candidates', 'classifier_agrees_with_gset_family'):
+            self.assertEqual(a[k], self.s[k], k)
+
+    def test_inputs_are_the_recorded_ones(self):
+        from genesis.common import digest
+        configs, r102 = M.inputs()
+        self.assertEqual(digest(configs), self.s['configs_sha256'])
+        for r in self.rows:
+            self.assertEqual({k: r[k] for k in ('burer@1', 'burer@10', 'dsb@1', 'dsb@10', 'vbs@10')},
+                             M.comparators(r102[r['instance']]), r['instance'])
+
 if __name__ == '__main__':
     unittest.main()

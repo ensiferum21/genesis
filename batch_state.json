@@ -1095,7 +1095,8 @@
       },
       "B20_R102": {
         "commits": [
-          "cc7f4bb"
+          "cc7f4bb",
+          "db89055"
         ],
         "result": "DEV, preregistered, run at b640aa1 in two slices: calibration, no RECORD_CANDIDATE: the virtual best of 12 published heuristics at 10 s reaches 0.99675 of the 2012-13 best known values (11 of 54 instances); the best single tool is dSB (0.99618 at 10 s, 0.99328 at 1 s), ahead of BURER2002 (0.99537, 0.99202); the +-1 tori G32-G34 stay 1.4% below"
       },
@@ -1123,8 +1124,22 @@
         "result": "DEV, preregistered (ff08000, amended before any run at 1230b5a): TUNED_BETTER at 1 s (p = 0.005) and NO_DIFFERENCE at 10 s against BLS's published setting; MCX_AHEAD of BURER2002 at 1 s (22-0, 2 ties) and 10 s (17-2, 5 ties) on 24 held-out generated graphs; the order-parameter classifier 24/24; every class chose a 5x larger perturbation than BLS; the Houdayer cluster exchange chosen on planar graphs only; renormalisation and MACUT's crossover not chosen"
       },
       "B20_R106": {
-        "commits": [],
-        "result": "Setup: mcx on Gset once, against B20_R102 (preregistered). Pending"
+        "commits": [
+          "ff08000"
+        ],
+        "result": "DEV, preregistered, run at b640aa1/db89055 (same code identity): MCX_LEADS: the configured engine is AHEAD of BURER2002 (48-4 at 1 s, 46-3 at 10 s), dSB (47-5, 45-3) and the virtual best of 12 published heuristics at 10 s (40-3); 0.99860 of the 2012-13 best known values at 10 s, reaching them on 24 of 54 (the virtual best: 0.99675, 11); at 1 s already ahead of the virtual best at 10 s; on the +-1 tori G32-G34 1410/1382/1382 where every published tool ends at least 20 below; chosen vs BLS's setting in this engine COMPARABLE; no RECORD_CANDIDATE"
+      },
+      "B20_R107": {
+        "commits": [
+          "f844e1e"
+        ],
+        "result": "Setup: feedback contract v2 (preregistered). Running"
+      },
+      "B20_R108": {
+        "commits": [
+          "f844e1e"
+        ],
+        "result": "Setup: affinity maturation of mcx-v1 (preregistered). Pending"
       }
     },
     "open_after_b20_r5": [

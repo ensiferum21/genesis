@@ -94,6 +94,8 @@ has seen.
    system contributes, and is measured on, is the configuration and the class choice.
    **B20_R105:** the class choice was exact (24/24) and germinal-centre selection beat the published method's
    setting at 1 s (tied at 10 s); of the physics moves only the cluster exchange was selected (planar graphs).
+   **B20_R106:** on Gset, once, the configured engine leads every pinned published tool and their virtual best at
+   both budgets (MCX_LEADS); the system's configuration adds to BLS's setting there, but not significantly.
 3. **The knowledge map (L2), beyond B20_R100.** Widen it from the eight time-to-solution and equal-time studies to
    every recorded row. Replay the history: would choosing studies by information gain have reached the recorded
    decisions sooner? Then let it choose experiments, with its predictions written before each study.

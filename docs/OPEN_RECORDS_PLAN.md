@@ -63,6 +63,9 @@ preregistered.
 - **B20_R106, once on Gset:** the configured engine at 1 s and 10 s on G1–G54 against B20_R102's recorded runs
   (BURER2002, dSB, the virtual best of twelve heuristics), sign tests; values above the table are flagged, never
   claimed. All three preregistered before B20_R102 ran.
+  **Result (23 Oct 2026): MCX_LEADS.** Ahead of BURER2002, dSB and the virtual best of 12 published heuristics at
+  both budgets; 0.99860 of the best known values at 10 s, reaching them on 24 of 54; no record
+  (`evidence/mcx_gset_b20r106/`). Next: more seeds, longer budgets against the best known values.
 - **Then the discovery loop on Gset**, if B20_R99 finds structured headroom. The test is whether concepts invented
   on toroidal and planar instances transfer to random ones, and the reverse. That is the note's "untouched family"
   inside one public benchmark.

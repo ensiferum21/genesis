@@ -1,0 +1,152 @@
+{
+ "best_known_sha256": "3b97a82bbfbd91f0761090dd07dffc72305bf310ef4596705dbd282b9f880bc9",
+ "classifier_agrees_with_gset_family": 1,
+ "code_identity": "e7a8ac935e161cf4e93b430464624369b9d505377041a00fa73a110e36ac6686",
+ "configs_sha256": "7c9e9acab47dad7035ff51b3496bdfc02bc8c9de0273d78377fe0d9d667cf74f",
+ "cpu_median": {
+  "1": 1.212422423,
+  "10": 1.0212478865499999
+ },
+ "failed_runs": 0,
+ "gset_archive_sha256": "18e00bfc57d3c0a8342f440c76ecde9c33ef9f4dd86e6c931b69da93e3302e71",
+ "headline": "MCX_LEADS",
+ "per_arm": {
+  "burer@1": {
+   "by_family": {
+    "planar": 0.9902973048246984,
+    "random": 0.9943953784408566,
+    "toroidal": 0.9892774978172348
+   },
+   "mean_fraction": 0.992024593293898,
+   "reach_best_known": 3
+  },
+  "burer@10": {
+   "by_family": {
+    "planar": 0.9935927620289107,
+    "random": 0.9975809051731481,
+    "toroidal": 0.9932033278220862
+   },
+   "mean_fraction": 0.9953742188945498,
+   "reach_best_known": 6
+  },
+  "chosen@1": {
+   "by_family": {
+    "planar": 0.994259020336879,
+    "random": 0.999136980282125,
+    "toroidal": 0.9988176126058849
+   },
+   "mean_fraction": 0.9972771005045125,
+   "reach_best_known": 16
+  },
+  "chosen@10": {
+   "by_family": {
+    "planar": 0.9968592792588881,
+    "random": 0.999542683621229,
+    "toroidal": 0.9998394348105331
+   },
+   "mean_fraction": 0.998598288685246,
+   "reach_best_known": 24
+  },
+  "default@1": {
+   "by_family": {
+    "planar": 0.9905625843459211,
+    "random": 0.9980395312848057,
+    "toroidal": 0.9990391049069214
+   },
+   "mean_fraction": 0.9954368872814974,
+   "reach_best_known": 13
+  },
+  "default@10": {
+   "by_family": {
+    "planar": 0.9941898648374681,
+    "random": 0.9989820673183291,
+    "toroidal": 0.9995208004753221
+   },
+   "mean_fraction": 0.9972969663701016,
+   "reach_best_known": 18
+  },
+  "dsb@1": {
+   "by_family": {
+    "planar": 0.9916434571538473,
+    "random": 0.9953677471162246,
+    "toroidal": 0.991129481872639
+   },
+   "mean_fraction": 0.9932820029228947,
+   "reach_best_known": 2
+  },
+  "dsb@10": {
+   "by_family": {
+    "planar": 0.9945126465519196,
+    "random": 0.9986907560034659,
+    "toroidal": 0.9928973441279114
+   },
+   "mean_fraction": 0.996177739412523,
+   "reach_best_known": 6
+  },
+  "vbs@10": {
+   "by_family": {
+    "planar": 0.9950216148599857,
+    "random": 0.9988192490556991,
+    "toroidal": 0.9948285032932305
+   },
+   "mean_fraction": 0.9967475935783567,
+   "reach_best_known": 11
+  }
+ },
+ "record_candidates": [],
+ "schema": "genesis-b20r106-mcx-gset-v1",
+ "status": "DEV; licenses nothing; no record claim",
+ "study": "b20r106",
+ "tests": {
+  "chosen@1 vs burer@1": {
+   "label": "AHEAD",
+   "losses": 4,
+   "p": 1.3065282189472782e-10,
+   "ties": 2,
+   "wins": 48
+  },
+  "chosen@1 vs default@1": {
+   "label": "COMPARABLE",
+   "losses": 17,
+   "p": 0.34888887944907765,
+   "ties": 13,
+   "wins": 24
+  },
+  "chosen@1 vs dsb@1": {
+   "label": "AHEAD",
+   "losses": 5,
+   "p": 1.2848229147266466e-09,
+   "ties": 2,
+   "wins": 47
+  },
+  "chosen@10 vs burer@10": {
+   "label": "AHEAD",
+   "losses": 3,
+   "p": 6.981082378842984e-11,
+   "ties": 5,
+   "wins": 46
+  },
+  "chosen@10 vs default@10": {
+   "label": "COMPARABLE",
+   "losses": 11,
+   "p": 0.020073851919732988,
+   "ties": 17,
+   "wins": 26
+  },
+  "chosen@10 vs dsb@10": {
+   "label": "AHEAD",
+   "losses": 3,
+   "p": 1.312585595769633e-10,
+   "ties": 6,
+   "wins": 45
+  },
+  "chosen@10 vs vbs@10": {
+   "label": "AHEAD",
+   "losses": 3,
+   "p": 3.0213413992896676e-09,
+   "ties": 11,
+   "wins": 40
+  }
+ },
+ "valid": true
+}
