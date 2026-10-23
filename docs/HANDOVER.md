@@ -157,6 +157,7 @@ needs people: a reviewer, a statistician, an independent custodian on its own ma
 | B20_R105 | The system configures `mcx-v1` on generated graphs: beats BLS's published setting at 1 s (TUNED_BETTER) and ties it at 10 s; ahead of BURER2002 at both budgets (22-0 and 17-2 on 24 held-out graphs); classifier 24/24 |
 | B20_R102 | Gset standing (calibration): the best of 12 published heuristics at 10 s reaches 99.68% of the 2012-13 best known values; dSB is the best single tool (99.62%), ahead of BURER2002 (99.54%); no record candidate |
 | B20_R106 | **Genesis's max-cut engine on Gset: MCX_LEADS.** Ahead of BURER2002, dSB and the virtual best of 12 published heuristics (40-3 at 10 s); 99.86% of the 2012-13 best known values at 10 s, reaching them on 24 of 54 (the virtual best: 11); no record |
+| B20_R107 | Feedback contract v2: V2_FIXES_POWER. The judge's threshold from its own noise halves, power recovers (63% of the real gain at the largest quirk, against 17%), false releases stay at 1 in 180 |
 
 ## 6. Next steps, in order
 
@@ -174,7 +175,8 @@ needs people: a reviewer, a statistician, an independent custodian on its own ma
    6. done: B20_R105 (TUNED_BETTER at 1 s; MCX_AHEAD at 1 s and 10 s on generated graphs);
    7. done: B20_R102 (calibration; dSB the best single tool; no record candidate);
    8. done: B20_R106 (MCX_LEADS);
-   9. B20_R107 (contract v2) and B20_R108 (maturation), set up at `f844e1e`.
+   9. done: B20_R107 (V2_FIXES_POWER);
+  10. B20_R108 (maturation, running), then B20_R109 (Gset replication with two more seeds).
 
 3. **Checkpoint after these** (the last is B20_R73, never rehearsed; R74 onward are not in a checkpoint). Do not edit
    the tree while the release matrix runs; run timing studies alone.

@@ -62,6 +62,12 @@ negative at quirk 0, and the one false release fails it. The rule is mis-specifi
 measured leak is 0.07 sigma_e of claimed gain and none in the final numbers. Next: compare with the truth, not a
 ratio; larger confirmation data to recover power.
 
+**Version 2 (B20_R107, `evidence/contract_v2_b20r107/`): V2_FIXES_POWER.** The judge sets its threshold from its own
+two confirmation splits (each the mean of 4 hosts, charged to the budget) rather than from the worker's training
+differences. The threshold halves; the contract keeps 93%, 77% and 63% of the open protocol's real gain (version 1:
+59%, 40%, 17%), releases noise in 1 of 180 searches, and its held-out numbers stay unbiased. Version 2 is the
+contract to use.
+
 ### 2. Causal discovery with hidden variables (priority: medium-high)
 
 **The alert.** *Causal Discovery for Linear Models with Latent Confounding via Multi-domain Identifiable

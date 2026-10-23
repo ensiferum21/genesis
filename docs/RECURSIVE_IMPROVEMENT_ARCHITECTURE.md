@@ -82,6 +82,8 @@ has seen.
    **Done (B20_R103):** with no signal the contract stops and its final numbers are unbiased, where the open
    protocol over-reports by up to 6.6 sigma_e; it misses real effects below one confirmation's noise (TOO_STRICT); the
    headline reads CONTRACT_LEAKS by a ratio rule mis-specified for a negative reference (one false release in 180).
+   **Version 2 (B20_R107):** calibrated on the judge's own noise over 4 hosts, it keeps 63-93% of the real gain
+   with the same honesty (V2_FIXES_POWER): the judge improved by the same discipline it enforces.
    **2a. The solver track on a public benchmark (B20_R104-R106; Daniel, 23 Oct 2026: "adapt them and make the solver
    more strong").** Three of the mechanisms above, applied to Genesis's own max-cut engine `mcx-v1`:
    - renormalisation: a restart that contracts every edge all elite solutions orient alike, searches the contracted

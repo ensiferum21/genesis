@@ -1,0 +1,224 @@
+{
+ "code_identity": "11a615410f31d5e7a08f324976b1fe5e0e2b83216b309f37e6e857c6a216f94a",
+ "constants": {
+  "k_hosts": 4,
+  "max_bias": 0.25,
+  "max_evals": 1500,
+  "max_release_share": 0.1,
+  "q_multiples": [
+   0.0,
+   1.0,
+   2.0
+  ],
+  "reps": 60
+ },
+ "labels": {
+  "headline": "V2_FIXES_POWER",
+  "v1": {
+   "holds": false,
+   "label": "LEAKS",
+   "power_kept": false,
+   "power_ratio": {
+    "q0": 0.5866666666666666,
+    "q1": 0.3980582524271844,
+    "q2": 0.16521739130434782
+   }
+  },
+  "v2": {
+   "holds": true,
+   "label": "WORKS",
+   "power_kept": true,
+   "power_ratio": {
+    "q0": 0.9333333333333332,
+    "q1": 0.7669902912621358,
+    "q2": 0.6260869565217391
+   }
+  }
+ },
+ "schema": "genesis-b20r107-contract-v2-v1",
+ "sigma_e": 0.14874091021821886,
+ "status": "DEV; licenses nothing; no package changed",
+ "study": "b20r107",
+ "table": {
+  "none|q0|open": {
+   "mean_claimed_gain": -0.18042411730627173,
+   "mean_evaluations": 1516,
+   "mean_final_optimism": 0.07776302779192966,
+   "mean_tau": null,
+   "mean_true_gain": 0.0,
+   "release_share": null,
+   "searches": 60,
+   "stopped_early": 0
+  },
+  "none|q0|v1": {
+   "mean_claimed_gain": 0.012857652522376447,
+   "mean_evaluations": 514.1166666666667,
+   "mean_final_optimism": 0.043915662072107085,
+   "mean_tau": 0.7593501983026772,
+   "mean_true_gain": 0.0,
+   "release_share": 0.016666666666666666,
+   "searches": 60,
+   "stopped_early": 60
+  },
+  "none|q0|v2": {
+   "mean_claimed_gain": 0.005855729946324022,
+   "mean_evaluations": 804.5666666666667,
+   "mean_final_optimism": 0.006959010313929708,
+   "mean_tau": 0.37317847388518266,
+   "mean_true_gain": 0.0,
+   "release_share": 0.016666666666666666,
+   "searches": 60,
+   "stopped_early": 60
+  },
+  "none|q1|open": {
+   "mean_claimed_gain": 0.16282604139071769,
+   "mean_evaluations": 1516,
+   "mean_final_optimism": 0.5200832828470736,
+   "mean_tau": null,
+   "mean_true_gain": 0.0,
+   "release_share": null,
+   "searches": 60,
+   "stopped_early": 0
+  },
+  "none|q1|v1": {
+   "mean_claimed_gain": 0.0,
+   "mean_evaluations": 491.56666666666666,
+   "mean_final_optimism": 0.0306462457244427,
+   "mean_tau": 1.081468872037348,
+   "mean_true_gain": 0.0,
+   "release_share": 0,
+   "searches": 60,
+   "stopped_early": 60
+  },
+  "none|q1|v2": {
+   "mean_claimed_gain": 0.0,
+   "mean_evaluations": 722.2,
+   "mean_final_optimism": 0.006813611893872561,
+   "mean_tau": 0.5274330439481252,
+   "mean_true_gain": 0.0,
+   "release_share": 0,
+   "searches": 60,
+   "stopped_early": 60
+  },
+  "none|q2|open": {
+   "mean_claimed_gain": 0.44875414483264264,
+   "mean_evaluations": 1516,
+   "mean_final_optimism": 0.9979501086031314,
+   "mean_tau": null,
+   "mean_true_gain": 0.0,
+   "release_share": null,
+   "searches": 60,
+   "stopped_early": 0
+  },
+  "none|q2|v1": {
+   "mean_claimed_gain": 0.0,
+   "mean_evaluations": 486.4,
+   "mean_final_optimism": -0.04347503924338695,
+   "mean_tau": 1.674262695503045,
+   "mean_true_gain": 0.0,
+   "release_share": 0,
+   "searches": 60,
+   "stopped_early": 60
+  },
+  "none|q2|v2": {
+   "mean_claimed_gain": 0.0,
+   "mean_evaluations": 699.4666666666667,
+   "mean_final_optimism": -0.016858306336868006,
+   "mean_tau": 0.8709855816890256,
+   "mean_true_gain": 0.0,
+   "release_share": 0,
+   "searches": 60,
+   "stopped_early": 60
+  },
+  "planted|q0|open": {
+   "mean_claimed_gain": 0.3788587444007393,
+   "mean_evaluations": 1516,
+   "mean_final_optimism": 0.08097892873969205,
+   "mean_tau": null,
+   "mean_true_gain": 0.3718522755455472,
+   "release_share": null,
+   "searches": 60,
+   "stopped_early": 0
+  },
+  "planted|q0|v1": {
+   "mean_claimed_gain": 0.30203961670167356,
+   "mean_evaluations": 536.1166666666667,
+   "mean_final_optimism": -0.0022306743977830667,
+   "mean_tau": 0.7457883578183897,
+   "mean_true_gain": 0.218153334986721,
+   "release_share": 0.36666666666666664,
+   "searches": 60,
+   "stopped_early": 60
+  },
+  "planted|q0|v2": {
+   "mean_claimed_gain": 0.3914780797833064,
+   "mean_evaluations": 873.5,
+   "mean_final_optimism": -0.04329128564355393,
+   "mean_tau": 0.3649626900492385,
+   "mean_true_gain": 0.3470621238425107,
+   "release_share": 0.7166666666666667,
+   "searches": 60,
+   "stopped_early": 60
+  },
+  "planted|q1|open": {
+   "mean_claimed_gain": 0.8379744940564742,
+   "mean_evaluations": 1516,
+   "mean_final_optimism": 0.49954576920549243,
+   "mean_tau": null,
+   "mean_true_gain": 0.5106771250825515,
+   "release_share": null,
+   "searches": 60,
+   "stopped_early": 0
+  },
+  "planted|q1|v1": {
+   "mean_claimed_gain": 0.2956423726062522,
+   "mean_evaluations": 521.7666666666667,
+   "mean_final_optimism": 0.014881062209471146,
+   "mean_tau": 1.0747085846540305,
+   "mean_true_gain": 0.2032792439648991,
+   "release_share": 0.25,
+   "searches": 60,
+   "stopped_early": 60
+  },
+  "planted|q1|v2": {
+   "mean_claimed_gain": 0.4609676528490566,
+   "mean_evaluations": 785.8,
+   "mean_final_optimism": 0.015121939387458193,
+   "mean_tau": 0.5320468912234301,
+   "mean_true_gain": 0.3916843969079763,
+   "release_share": 0.6,
+   "searches": 60,
+   "stopped_early": 60
+  },
+  "planted|q2|open": {
+   "mean_claimed_gain": 1.1664859830091725,
+   "mean_evaluations": 1516,
+   "mean_final_optimism": 0.9812739578711454,
+   "mean_tau": null,
+   "mean_true_gain": 0.570173489169839,
+   "release_share": null,
+   "searches": 60,
+   "stopped_early": 0
+  },
+  "planted|q2|v1": {
+   "mean_claimed_gain": 0.22354774655283927,
+   "mean_evaluations": 512.1833333333333,
+   "mean_final_optimism": 0.06329422663287163,
+   "mean_tau": 1.6895625245572103,
+   "mean_true_gain": 0.09420257647153861,
+   "release_share": 0.13333333333333333,
+   "searches": 60,
+   "stopped_early": 60
+  },
+  "planted|q2|v2": {
+   "mean_claimed_gain": 0.4439753840518121,
+   "mean_evaluations": 755.5333333333333,
+   "mean_final_optimism": 0.04346868775126085,
+   "mean_tau": 0.8378055169281289,
+   "mean_true_gain": 0.35697818452372526,
+   "release_share": 0.43333333333333335,
+   "searches": 60,
+   "stopped_early": 60
+  }
+ }
+}

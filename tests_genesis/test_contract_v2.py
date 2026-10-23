@@ -106,5 +106,41 @@ class Study(unittest.TestCase):
             M.main([str(ROOT / 'evidence' / 'elsewhere')])
 
 
+
+class RecordB20R107(unittest.TestCase):
+    """B20_R107's record: the table and labels recompute from the 1,080 searches."""
+
+    @classmethod
+    def setUpClass(cls):
+        import json
+        ev = ROOT / 'evidence' / 'contract_v2_b20r107'
+        cls.s = json.loads((ev / 'summary.json').read_text())
+        cls.rows = [json.loads(l) for l in (ev / 'searches.jsonl').read_text().splitlines() if l.strip()]
+
+    def test_recomputes(self):
+        import json
+        self.assertEqual(len(self.rows), 2 * len(M.Q_MULTIPLES) * len(M.PROTOCOLS) * M.REPS)
+        tab = json.loads(json.dumps(M.table(self.rows)))
+        self.assertEqual(tab, self.s['table'])
+        self.assertEqual(json.loads(json.dumps(M.labels(tab, self.s['sigma_e']))), self.s['labels'])
+        self.assertEqual((self.s['labels']['headline'], self.s['labels']['v2']['label'], self.s['labels']['v1']['label']),
+                         ('V2_FIXES_POWER', 'WORKS', 'LEAKS'))
+        self.assertAlmostEqual(M.R103.sigma_e(), self.s['sigma_e'], places=12)
+
+    def test_v1_s_leak_is_its_final_numbers_noise(self):
+        """v1 fails HOLDS only on the bias tolerance (0.25 sigma_e) at quirks 0 and 2: means within 2.3 standard
+        errors of zero; it released noise in 1 of 180 no-signal searches, as v2 did."""
+        import statistics
+        s_e = self.s['sigma_e']
+        for v in ('v1', 'v2'):
+            none = [r for r in self.rows if r['signal'] == 'none' and r['protocol'] == v]
+            self.assertEqual(sum(r['judge']['releases'] > 0 for r in none), 1, v)
+        for q in M.Q_MULTIPLES:
+            xs = [r['final_optimism'] for r in self.rows if (r['signal'], r['q'], r['protocol']) == ('none', q, 'v1')]
+            self.assertLess(abs(statistics.mean(xs)) / (statistics.stdev(xs) / len(xs) ** 0.5), 2.5)
+            self.assertLessEqual(self.s['table'][f'none|q{q:g}|v1']['release_share'], 0.1)
+        self.assertGreater(abs(self.s['table']['none|q0|v1']['mean_final_optimism']), M.MAX_BIAS * s_e)
+
+
 if __name__ == '__main__':
     unittest.main()
