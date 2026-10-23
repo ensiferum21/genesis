@@ -120,6 +120,12 @@ has seen.
      API access from the run machine);
    - a many-core persistent machine, so that the levels' studies run in parallel.
 
+**The invention test (B20_R111), the bar for any claim of autonomous invention.** A candidate must come from the
+system's recorded search unedited; it must be a program, not a setting; it must beat preregistered prior art (known
+algorithm families written in the same language, tuned by the same procedure) significantly on held-out hosts; and
+its core, found by deletion, must be a combination no template has, and then survive a review against the
+literature. First result: NOT_DEMONSTRATED for the four programs found so far.
+
 ## 4. What would make the whole claim true, and what would end it
 
 - **True:** at least L1 and L2 each show a preregistered gain on held-out families, with ablations attributing the

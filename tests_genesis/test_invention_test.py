@@ -85,5 +85,35 @@ class Design(unittest.TestCase):
             M.main([str(ROOT / 'evidence' / 'elsewhere')])
 
 
+
+class RecordB20R111(unittest.TestCase):
+    """B20_R111's record: tuning, the prior-art champion, the four tests and the verdict recompute from the recorded
+    runs; the candidates are the recorded files."""
+
+    def test_recomputes(self):
+        import hashlib
+        ev = ROOT / 'evidence' / 'invention_test_b20r111'
+        s = json.loads((ev / 'summary.json').read_text())
+        runs = {}
+        for line in (ev / 'runs.jsonl').read_text().splitlines():
+            if line.strip():
+                r = json.loads(line)
+                runs[r['key']] = r['value']
+        tasks = json.loads((ev / 'hosts.json').read_text())['tasks']
+        tune_hosts = [t['task_id'] for t in tasks[:M.TUNE_PER_CELL * len(M.CELLS)]]
+        held = [t['task_id'] for t in tasks[M.TUNE_PER_CELL * len(M.CELLS):]]
+        self.assertEqual((len(tune_hosts), len(held)), (8, 24))
+        values = {n: {h: runs[f'{h}|{n}'] for h in tune_hosts} for vs in M.LIBRARY.values() for n, _ in vs}
+        tuned, champion, _ = M.tune(values, tune_hosts)
+        self.assertEqual((tuned, champion), (s['tuned'], s['champion']))
+        test1 = {c: M.sign([runs[f'{h}|{c}'] for h in held], [runs[f'{h}|{tuned[champion]}'] for h in held])
+                 for c in M.SOURCES}
+        self.assertEqual(json.loads(json.dumps(test1)), s['test1'])
+        self.assertEqual(M.verdict(test1, {}), s['verdict'])
+        self.assertEqual(s['verdict'], 'NOT_DEMONSTRATED')
+        for c, rec in s['candidates'].items():
+            self.assertEqual(hashlib.sha256((ROOT / rec['path']).read_bytes()).hexdigest(), rec['sha256'], c)
+
+
 if __name__ == '__main__':
     unittest.main()

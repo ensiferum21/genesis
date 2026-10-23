@@ -1154,7 +1154,8 @@
       },
       "B20_R110": {
         "commits": [
-          "34234fa"
+          "34234fa",
+          "a4874b5"
         ],
         "result": "DEV, preregistered, run at 34234fa (interrupted once, resumed): LONGER_HELPS (22-5 against 10 s): at 60 s the configured engine reaches 0.99912 of the 2012-13 best known values and reaches them on 27 of 54 instances, every torus included (G32-G34: 1410, 1382, 1384); one or two below on most others; the larger planar +-1 graphs (G39-G42) furthest below; no record candidate"
       },
@@ -1162,13 +1163,19 @@
         "commits": [
           "962f947"
         ],
-        "result": "Setup: the invention test (preregistered). Running"
+        "result": "DEV, preregistered, run at dd55c33: NOT_DEMONSTRATED: none of the system's four autonomously found programs beats the prior-art champion (T4, annealing then descent, tuned on 8 hosts) on 24 held-out large hosts at 2 s: gen1 6-14, gen2 7-12, control 9-13 NOT_DISTINGUISHABLE, gen3 4-17 BEHIND; T4 4,229.5 edges on average against 4,219.8-4,225.3; the builder's tfxw 4,239.1"
       },
       "B20_R112": {
         "commits": [
           "dd55c33"
         ],
-        "result": "Setup: the inventor under contract v2, held to the invention test (preregistered). Pending"
+        "result": "Setup: the inventor under contract v2, held to the invention test (preregistered). Running"
+      },
+      "B20_R113": {
+        "commits": [
+          "1bd3543"
+        ],
+        "result": "Setup: renormalisation on planar graphs (preregistered). Pending"
       }
     },
     "open_after_b20_r5": [
