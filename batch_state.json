@@ -1625,6 +1625,9 @@
     ],
     "open_after_b20_r92": [
       "B20R90-OPEN-1 updated: the 2026 entrants included and the floor gone; tfx beats each of the 13 champions on both families and their VBS on G(63, 0.5); vbs_P UNRESOLVED at q0.75; operators UNRESOLVED"
+    ],
+    "checkpoint_attempts_after_b20_r116": [
+      "checkpoint build B20_R117 at 1d473a1 FAILED its release matrix (23 Oct 2026, 22:52-23:49 SGT): integration 1,410 tests with 3 failures, all record tests of B20_R93 and B20_R97 that read the live evidence corpus and broke when later evidence arrived (B20_R86, run after those records; the large-domain hosts of B20_R111, R112 and R115); legacy 282 (one declared skip), sandbox 28, certificates 43, formal 184 all OK. Repaired: each record test now reads the corpus that existed when it was written; no checkpoint written; rebuilt after B20_R118"
     ]
   }
 }

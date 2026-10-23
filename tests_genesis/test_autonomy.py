@@ -3,6 +3,7 @@ generic quality-at-equal-time study (on tiny synthetic designs, end to end), the
 preregistration, tfxw-v2's grammar, and the adaptation cell reading a study of quality at equal time."""
 from itertools import combinations
 import json
+import re
 from pathlib import Path
 import random
 import subprocess
@@ -487,18 +488,21 @@ class RecordB20R97(unittest.TestCase):
         from genesis.domains import adapter
         a = adapter(LARGE)
         ident = lambda t: a.exposure_identity(t)['canonical']
-        seen = set()
+        before, after = set(), set()
         for p in sorted((ROOT / 'evidence').glob('*/hosts.json')):
             if p.parent.name == R97.name:
                 continue
+            batch = re.search(r'_b20r(\d+)$', p.parent.name)
             data = json.loads(p.read_text())
             for t in data.get('tasks', []) if isinstance(data, dict) else []:
                 if isinstance(t, dict) and t.get('domain') == LARGE:
-                    seen.add(ident(LargeGraphTask.model_validate_json(canonical(t))))
-        self.assertEqual(len(seen), 16)                                  # B20_R95's training hosts
+                    (before if batch and int(batch.group(1)) < 97 else after).add(
+                        ident(LargeGraphTask.model_validate_json(canonical(t))))
+        self.assertEqual(len(before), 16)                                # B20_R95's training hosts
         mine = [ident(h) for h in self.hosts]
         self.assertEqual(len(set(mine)), 56)                             # distinct among themselves
-        self.assertFalse(seen & set(mine))                              # and unseen before
+        self.assertFalse(before & set(mine))                            # and unseen before
+        self.assertFalse(after & set(mine))                             # and no later study reused one
 
 
 if __name__ == '__main__':

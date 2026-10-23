@@ -445,8 +445,15 @@ class Command(unittest.TestCase):
             self.assertEqual(subprocess.run(cmd + ['--check', str(base)], capture_output=True).returncode, 1)
 
 
-def real_until(batch):
-    return [p for p in discover(ROOT) if int(p.study.split('_R')[1]) <= batch]
+# Studies preregistered under an earlier number but run after later records were written: study -> the first record
+# written after it ran. B20_R86 ran on 23 Oct 2026, after B20_R93's records (and B20_R97's); a record's corpus is
+# the evidence that existed when it was written, so it is left out of theirs.
+RAN_AFTER = {'B20_R86': 98}
+
+
+def real_until(batch, record=None):
+    record = batch if record is None else record
+    return [p for p in discover(ROOT) if int(p.study.split('_R')[1]) <= batch and RAN_AFTER.get(p.study, 0) <= record]
 
 
 class RecordB20R93(unittest.TestCase):
@@ -454,7 +461,7 @@ class RecordB20R93(unittest.TestCase):
 
     @classmethod
     def setUpClass(cls):
-        cls.profiles = real_until(90)
+        cls.profiles = real_until(90, record=93)
         cls.led, cls.seen, cls.studies = rebuild(cls.profiles, ROOT, CATALOG, 63)
 
     def test_it_finds_the_studies_by_itself(self):
@@ -514,7 +521,7 @@ class ProspectiveB20R92(unittest.TestCase):
 
     @classmethod
     def setUpClass(cls):
-        cls.profiles = real_until(92)
+        cls.profiles = real_until(92, record=93)
         cls.led, cls.seen, cls.studies = rebuild(cls.profiles, ROOT, CATALOG, 63)
         cls.lin = cls.led.lineages
 
