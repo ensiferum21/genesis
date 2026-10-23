@@ -1,0 +1,6 @@
+[    0.0s] b20r115; pinned to CPU 0
+[    2.0s] large-domain exposure: 132 identities excluded
+[ 1700.1s] search: 816 evaluations, reported 0.9962; program {"rep": "adjacent_2", "body": [["descent"], ["relabel", "random", "anneal", 1000], ["repeat", 1, [["agree"]]]]}
+[ 3065.6s] tuned: {'T1': 'T1|adjacent_2|-', 'T2': 'T2|adjacent_2|10', 'T3': 'T3|adjacent_2|1000', 'T4': 'T4|adjacent_2|0.5', 'T5': 'T5|adjacent_2|3', 'T6': 'T6|adjacent_2|-', 'T7': 'T7|adjacent_2|10', 'T8': 'T8|adjacent_2|0.25', 'T9': 'T9|adjacent_3|improve', 'T10': 'T10|cross_2|sideways'}; champion T4
+[ 3711.9s] test 1: NOT_DISTINGUISHABLE 7-10
+[ 3711.9s] valid True; verdict NOT_DEMONSTRATED; candidate uses pool: True; held-out means tfxw 4235.0, candidate 4229.4, T2 4228.0, T4 4228.0, T3 4227.6, hybrid 4226.8, T5 4219.8, T1 4215.8, T9 4206.6, T10 4199.0, T8 4195.6, T6 4183.6, T7 4181.1

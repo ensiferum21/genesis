@@ -129,7 +129,10 @@ algorithm families written in the same language, tuned by the same procedure) si
 its core, found by deletion, must be a combination no template has, and then survive a review against the
 literature. First results: NOT_DEMONSTRATED for the four programs found so far (B20_R111), and for a fresh search
 under contract v2, whose judge released nothing because program differences in this language are smaller than one
-confirmation's noise (B20_R112). The limit is the language and the effect sizes it allows.
+confirmation's noise (B20_R112). The limit is the language and the effect sizes it allows. A richer language
+(language v2: an elite pool, consensus and cluster recombination, B20_R115) did not change this: the search's
+program is descent with annealing, NOT_DISTINGUISHABLE from the champion (7-10), and the new moves used as a
+memetic algorithm would lose to annealing-then-descent on all 24 held-out hosts.
 
 ## 4. What would make the whole claim true, and what would end it
 

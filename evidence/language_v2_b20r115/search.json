@@ -1,0 +1,36 @@
+{
+ "distinct_programs": 644,
+ "evaluations": 816,
+ "first_score": 0.8837134052967213,
+ "generations": 79,
+ "program": {
+  "body": [
+   [
+    "descent"
+   ],
+   [
+    "relabel",
+    "random",
+    "anneal",
+    1000
+   ],
+   [
+    "repeat",
+    1,
+    [
+     [
+      "agree"
+     ]
+    ]
+   ]
+  ],
+  "rep": "adjacent_2"
+ },
+ "references": {
+  "dev-erdos-2be53d3d-20301152-0000": 2278,
+  "dev-erdos-c45c7693-20301154-0000": 8882,
+  "dev-planted_cluster-2a71ea9a-20301151-0000": 1181,
+  "dev-planted_cluster-ffd8075f-20301153-0000": 4516
+ },
+ "reported": 0.9962197359303915
+}

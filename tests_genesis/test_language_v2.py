@@ -1,7 +1,7 @@
 """B20_R115: language v2 and the search in it (design). The new statements keep every edge set triangle-free and a
 subset of the host; B20_R78's programs are still valid and mean the same; generation, mutation and crossover stay
 in the language; the library extends B20_R111's with two memetic templates; the signature and novelty rule; the
-registered output."""
+registered output; the record."""
 import json
 from pathlib import Path
 import random
@@ -102,6 +102,57 @@ class Design(unittest.TestCase):
     def test_refuses_another_output(self):
         with self.assertRaises(SystemExit):
             M.main([str(ROOT / 'evidence' / 'elsewhere')])
+
+
+class RecordB20R115(unittest.TestCase):
+    """B20_R115's record: tuning, the champion, Test 1, T9's and T10's standing and the verdict recompute from the
+    saved runs; the candidate is the search's final choice."""
+
+    def test_recomputes(self):
+        import b20r111_invention_test as M111
+        ev = ROOT / 'evidence' / 'language_v2_b20r115'
+        s = json.loads((ev / 'summary.json').read_text())
+        search = json.loads((ev / 'search.json').read_text())
+        runs = {}
+        for line in (ev / 'runs.jsonl').read_text().splitlines():
+            if line.strip():
+                r = json.loads(line)
+                runs[r['key']] = r['value']
+        tasks = [t['task_id'] for t in json.loads((ev / 'hosts.json').read_text())['tasks']]
+        nc = len(M111.CELLS)
+        tune_hosts, held = tasks[nc:3 * nc], tasks[3 * nc:]
+        self.assertEqual((len(tune_hosts), len(held)), (8, 24))
+        self.assertEqual(s['candidate'], search['program'])
+        values = {n: {h: runs[f'{h}|{n}'] for h in tune_hosts} for vs in M.LIBRARY.values() for n, _ in vs}
+        tuned, champion, _ = M.tune(values, tune_hosts)
+        self.assertEqual((tuned, champion), (s['tuned'], s['champion']))
+        champ = [runs[f'{h}|{tuned[champion]}'] for h in held]
+        test = M111.sign([runs[f'{h}|candidate'] for h in held], champ, M.ALPHA)
+        self.assertEqual(json.loads(json.dumps(test)), s['test1'])
+        t4 = [runs[f'{h}|{tuned["T4"]}'] for h in held]
+        for t, k in (('T9', 't9_vs_t4'), ('T10', 't10_vs_t4')):
+            self.assertEqual(json.loads(json.dumps(M111.sign([runs[f'{h}|{tuned[t]}'] for h in held], t4, M.ALPHA))), s[k])
+        self.assertEqual(M111.verdict({'candidate': test}, {}), s['verdict'])
+        self.assertTrue(s['valid'])
+        self.assertEqual((s['verdict'], test['label'], test['wins'], test['losses'], champion),
+                         ('NOT_DEMONSTRATED', 'NOT_DISTINGUISHABLE', 7, 10, 'T4'))
+        self.assertEqual((s['t9_vs_t4']['losses'], s['t10_vs_t4']['losses']), (24, 24))
+
+    def test_the_candidates_pool_statement_never_acts(self):
+        """`agree` needs two elites and nothing in the candidate offers one, so it runs exactly as without it."""
+        ev = ROOT / 'evidence' / 'language_v2_b20r115'
+        cand = json.loads((ev / 'summary.json').read_text())['candidate']
+        flat = json.dumps(cand)
+        self.assertIn('agree', flat)
+        self.assertNotIn('elite', flat)
+        n = 24
+        E = [(u, v) for u in range(n) for v in range(u + 1, n) if (u * 7 + v * 3) % 5 < 3]
+        reps = {r['id']: r for r in R.proposals()}
+        m = V2.Machine(n, E, reps[cand['rep']], random.Random(5))
+        m.init()
+        before = (bytes(m.inS), m.size, list(m.pool))
+        m.agree()
+        self.assertEqual((bytes(m.inS), m.size, list(m.pool)), before)
 
 
 if __name__ == '__main__':
