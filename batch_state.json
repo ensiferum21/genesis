@@ -373,6 +373,41 @@
         },
         "archived": "archive d8c8f28",
         "build_host_rehearsal": "not run"
+      },
+      "B20_R118": {
+        "commit": "469f7f0",
+        "zip": "GENESIS_COMPLETION_CHECKPOINT_B20_R118.zip",
+        "sha256": "a1e5305db1df841d929a1bdc03e110c4bccc30aead6fe4545c78d6a0c5c16204",
+        "bytes": 140663690,
+        "parent": {
+          "zip": "GENESIS_COMPLETION_CHECKPOINT_B20_R73.zip",
+          "sha256": "256bb34280b491a3d1708ad277c59755009aa99a46a76dd0dd449bf9d1453afb",
+          "commit": "5f3dd5e"
+        },
+        "release_matrix": {
+          "total": 1948,
+          "skipped": 1,
+          "all_ok": true,
+          "suites": {
+            "integration": 1411,
+            "legacy_regression": 282,
+            "sandbox_escape": 28,
+            "certificates": 43,
+            "formal": 184
+          }
+        },
+        "restore_verified": {
+          "manifest_entries": 6539,
+          "mismatches": 0,
+          "bundle_commit": "469f7f0",
+          "tree": "a492dfc"
+        },
+        "archived": "archive f4b9d0e, 78a63fd (two parts: the zip exceeds GitHub's 100 MiB file limit)",
+        "build_host_rehearsal": "not run",
+        "attempts": [
+          "1d473a1: release matrix FAILED on 3 corpus-dependent record tests (repaired in 39f4f64)",
+          "469f7f0, first build: integration marked FAIL on an undeclared skip (the CP-SAT wheel pin test, which needs GENESIS_ORTOOLS_WHEEL); stopped and rebuilt with the wheel supplied"
+        ]
       }
     },
     "adopted_from_crpd_v3_status": {
@@ -1201,6 +1236,16 @@
           "82e95c5"
         ],
         "result": "DEV, preregistered, run at 39f4f64: CONFOUNDING_MISLEADS: DirectLiNGAM connects 191 of 192 confounded non-adjacent pairs, PC 130, the oracle PC all; HIDDEN_HURTS for DirectLiNGAM (directed F1 0.98 to 0.77), NO_EFFECT for PC; naive pooling of environments changes little"
+      },
+      "B20_R114": {
+        "commits": [
+          "469f7f0"
+        ],
+        "result": "Checkpoint GENESIS_COMPLETION_CHECKPOINT_B20_R118 (B20_R74-R118): release matrix 1,948 tests, all OK, one declared skip; restore-verified (6,539 entries); archived in two parts"
+      },
+      "B20_R119": {
+        "commits": [],
+        "result": "Engineering: FCI and the active procedure (src/genesis/causal/fci.py, active.py); setup of B20_R120 (preregistered)"
       }
     },
     "open_after_b20_r5": [

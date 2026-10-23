@@ -57,7 +57,9 @@ bash deployment/reproduce.sh <zip> <sha256> <out> --build-toolchain
 
    Graph-host studies also get exposure addenda (`scripts/exposure_addendum.py`) next to the frozen E1/E1b packages.
 4. **Checkpoint**, every few batches. Run `scripts/make_checkpoint.py --batch 20 --suffix _R<n> --parent <previous
-   zip> --parent-ref <commit>` from a clean worktree. It refuses a dirty tree and runs the release matrix. Then:
+   zip> --parent-ref <commit>` from a clean worktree, with `GENESIS_TOOLCHAIN` and `GENESIS_ORTOOLS_WHEEL` (the pinned
+   OR-Tools wheel) set: without the wheel one integration test skips, and an undeclared skip fails the matrix. It
+   refuses a dirty tree and runs the release matrix. Then:
    - restore-verify;
    - run `deployment/reproduce.sh` on the build host (about 80 min);
    - archive the zip and report on the `archive` branch;
@@ -168,6 +170,8 @@ needs people: a reviewer, a statistician, an independent custodian on its own ma
 | B20_R116 | Five minutes on each of the 21 Gset instances not yet reached: 7 reach their best known values; over all recorded runs Genesis's engine now matches the 2012-13 best known values on **40 of 54**, exceeds none (no record); 11 of the remaining 14 are one unit short |
 | B20_R117 (engineering) | A hidden-confounder causal-discovery benchmark (Daniel's research alert, item 2): multi-environment linear SEMs with planted hidden confounders, the truth as an ADMG, scores, and baselines written from their papers (PC-stable, an oracle PC, DirectLiNGAM); setup of B20_R118 (their calibration) |
 | B20_R118 | Causal calibration with hidden confounders: **CONFOUNDING_MISLEADS.** DirectLiNGAM (98% directed F1 with nothing hidden) draws an edge for 99% of confounded pairs and loses 0.21 F1 with 3 hidden confounders; PC connects 68%; none of the established methods marks a hidden cause; pooling 3 environments naively changes little |
+| B20_R114 (checkpoint) | `GENESIS_COMPLETION_CHECKPOINT_B20_R118` (B20_R74-R118): release matrix 1,948 tests, all OK; restore-verified; archived in two parts |
+| B20_R119 (engineering) | FCI as the hidden-variable baseline, and Genesis's active procedure proposing the interventions that resolve hidden causes; setup of B20_R120 |
 
 ## 6. Next steps, in order
 
@@ -195,14 +199,14 @@ needs people: a reviewer, a statistician, an independent custodian on its own ma
       values; no record);
   16. done: B20_R115 (NOT_DEMONSTRATED; the new moves do not help at 2 s);
   17. done: B20_R116 (7 of 21 reached; 40 of 54 over all runs; no record);
-  18. B20_R114: the checkpoint (`GENESIS_COMPLETION_CHECKPOINT_B20_R118`, covering B20_R74-R118), release
-      matrix on a quiet tree (the first build, at 1d473a1, failed on 3 corpus-dependent record tests, repaired);
+  18. done: B20_R114, the checkpoint `GENESIS_COMPLETION_CHECKPOINT_B20_R118` (B20_R74-R118; release matrix
+      1,948 tests all OK; restore-verified; archived in two parts);
   19. done: B20_R118 (CONFOUNDING_MISLEADS);
   20. B20_R119-R120: FCI as the hidden-variable baseline, and Genesis's active procedure that proposes the
       interventions resolving hidden causes, against random and degree-based choices.
 
-3. **Checkpoint after these** (the last is B20_R73, never rehearsed; R74 onward are not in a checkpoint). Do not edit
-   the tree while the release matrix runs; run timing studies alone.
+3. **Checkpoint:** the latest is B20_R118 (`469f7f0`; not rehearsed on a second machine). Do not edit the tree while
+   the release matrix runs; run timing studies alone.
 4. **B20_R101, the Gset max-cut domain** (`docs/OPEN_RECORDS_PLAN.md`; Daniel's `set1.zip` and best-values file,
    pinned on arrival), then where Genesis stands against the published records.
 5. **The recursive-improvement build order** (`docs/RECURSIVE_IMPROVEMENT_ARCHITECTURE.md` §3): the knowledge map
