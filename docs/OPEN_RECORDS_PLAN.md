@@ -74,6 +74,10 @@ preregistered.
   planar graphs (25-8) and on Gset's 20 planar instances at 60 s (13-2), reaching the best known values on 5 of
   them (3 before); 29 of 54 Gset instances at 60 s, 33 over all recorded runs; no record
   (`evidence/planar_renorm_b20r113/`). Next, B20_R116: five minutes on each of the 21 instances not yet reached.
+  **B20_R116:** five minutes on each of those 21 reached 7 more: **40 of 54 over all recorded runs, none exceeded**;
+  11 of the 14 left are one unit short (`evidence/gset_attempt_b20r116/`). A record attempt would need several
+  seeds and a configuration chosen at the long budget on the 2,000-vertex planar instances, and a check against
+  the literature after 2013.
 - **Then the discovery loop on Gset**, if B20_R99 finds structured headroom. The test is whether concepts invented
   on toroidal and planar instances transfer to random ones, and the reverse. That is the note's "untouched family"
   inside one public benchmark.

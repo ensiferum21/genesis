@@ -1188,7 +1188,13 @@
         "commits": [
           "018dff2"
         ],
-        "result": "Setup: five minutes on every Gset instance not yet reached (preregistered). Running"
+        "result": "DEV, preregistered, run at 018dff2 (resumed once after a container restart): 7 of the 21 Gset instances not yet reached reach their best known values at 300 s; 40 of 54 over all recorded runs; no record candidate"
+      },
+      "B20_R117": {
+        "commits": [
+          "82e95c5"
+        ],
+        "result": "Engineering: a hidden-confounder causal-discovery benchmark (src/genesis/causal) with established baselines; setup of B20_R118 (preregistered)"
       }
     },
     "open_after_b20_r5": [

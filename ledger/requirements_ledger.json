@@ -4972,7 +4972,25 @@
     "evidence/mcx_configure_b20r105/summary.json",
     "evidence/mcx_configure_b20r105/configs.json",
     "evidence/gset_standing_b20r102/summary.json",
-    "scripts/b20r108_mcx_maturation.py"
+    "scripts/b20r108_mcx_maturation.py",
+    "evidence/mcx_gset_b20r106/summary.json",
+    "evidence/mcx_maturation_b20r108/summary.json",
+    "evidence/mcx_maturation_b20r108/configs.json",
+    "scripts/b20r109_gset_replication.py",
+    "evidence/gset_replication_b20r109/summary.json",
+    "scripts/b20r110_gset_long.py",
+    "evidence/gset_long_b20r110/summary.json",
+    "scripts/b20r111_invention_test.py",
+    "evidence/invention_test_b20r111/summary.json",
+    "scripts/b20r112_inventor_v2.py",
+    "evidence/inventor_v2_b20r112/summary.json",
+    "scripts/b20r113_planar_renorm.py",
+    "evidence/planar_renorm_b20r113/summary.json",
+    "src/genesis/invention/solver_programs_v2.py",
+    "scripts/b20r115_language_v2.py",
+    "evidence/language_v2_b20r115/summary.json",
+    "scripts/b20r116_gset_attempt.py",
+    "evidence/gset_attempt_b20r116/summary.json"
    ],
    "disposition": "IMPLEMENTED_BOUNDED_PENDING_AUDIT",
    "evidence": [],
@@ -5022,9 +5040,16 @@
     "tests_genesis/test_mcx_kind.py",
     "tests_genesis/test_mcx_configure.py",
     "tests_genesis/test_mcx_gset.py",
-    "tests_genesis/test_mcx_maturation.py"
+    "tests_genesis/test_mcx_maturation.py",
+    "tests_genesis/test_gset_replication.py",
+    "tests_genesis/test_gset_long.py",
+    "tests_genesis/test_invention_test.py",
+    "tests_genesis/test_inventor_v2.py",
+    "tests_genesis/test_planar_renorm.py",
+    "tests_genesis/test_language_v2.py",
+    "tests_genesis/test_gset_attempt.py"
    ],
-   "title": "Independent custody and preregistration (B20_R40: candidate registry v2 with per-kind identity and an exact-MIP baseline kind; B20_R42: wired opt-in through request v5 and a registry dispatcher, not adopted; B20_R67: the kind map moved out of the hashed core, a kind bound to its dispatched module, and a max-cut tabu domain-baseline kind; B20_R69: simulated-bifurcation and extremal-optimization kinds; B20_R71: the representation engine with physics move rules; B20_R72: they do not improve it, NO_GENERAL_IMPROVEMENT, DEV; B20_R74: MQLib BURER2002 as a pinned external baseline; B20_R75: the state-of-the-art comparison INVALID_CPU_DELIVERY, a kind defect caught by the validity check; B20_R76: CP-SAT installed from a supplied wheel as cpsat-v1, and the comparison with CP-SAT and the fixed BURER2002 UNRESOLVED; B20_R77: hybrid-swap-v1, a cut portfolio with (1,2)-swap local search, and its powered comparison with CP-SAT and BURER2002, ENGINE_BEATS_SOTA on DEV; B20_R78: a closed solver language, solver-program-v1 and a program search; B20_R79: the system searches for its own solver; B20_R80: a random-program control; B20_R81: the self-found solver against the builder engine and the tools; B20_R82: a library language so that generations compound; B20_R83-R86: three generations, a control and their test)",
+   "title": "Independent custody and preregistration (B20_R40: candidate registry v2 with per-kind identity and an exact-MIP baseline kind; B20_R42: wired opt-in through request v5 and a registry dispatcher, not adopted; B20_R67: the kind map moved out of the hashed core, a kind bound to its dispatched module, and a max-cut tabu domain-baseline kind; B20_R69: simulated-bifurcation and extremal-optimization kinds; B20_R71: the representation engine with physics move rules; B20_R72: they do not improve it, NO_GENERAL_IMPROVEMENT, DEV; B20_R74: MQLib BURER2002 as a pinned external baseline; B20_R75: the state-of-the-art comparison INVALID_CPU_DELIVERY, a kind defect caught by the validity check; B20_R76: CP-SAT installed from a supplied wheel as cpsat-v1, and the comparison with CP-SAT and the fixed BURER2002 UNRESOLVED; B20_R77: hybrid-swap-v1, a cut portfolio with (1,2)-swap local search, and its powered comparison with CP-SAT and BURER2002, ENGINE_BEATS_SOTA on DEV; B20_R78: a closed solver language, solver-program-v1 and a program search; B20_R79: the system searches for its own solver; B20_R80: a random-program control; B20_R81: the self-found solver against the builder engine and the tools; B20_R82: a library language so that generations compound; B20_R83-R86: three generations, a control and their test; B20_R104-R110, R113, R116: the max-cut engine mcx-v1 (breakout local search with an elite pool and population restarts), configured and tested on Gset; B20_R111, R112, R115: the invention test against preregistered prior art, NOT_DEMONSTRATED)",
    "workstream": "W06"
   },
   {
@@ -5279,7 +5304,12 @@
    },
    "code": [
     "src/genesis/discovery/active.py",
-    "evidence/discovery_b19/active/evaluation.json"
+    "evidence/discovery_b19/active/evaluation.json",
+    "src/genesis/causal/sem.py",
+    "src/genesis/causal/admg.py",
+    "src/genesis/causal/methods.py",
+    "docs/checkpoints/B20_R117_RECORD.md",
+    "scripts/b20r118_causal_calibration.py"
    ],
    "disposition": "IMPLEMENTED_BOUNDED_PENDING_AUDIT",
    "evidence": [],
@@ -5294,9 +5324,11 @@
    "scope": "workstream (B14 scope delivered; acceptance pending)",
    "source": "roadmap \u00a77-10",
    "tests": [
-    "tests_formal/test_discovery.py::ActiveSelection"
+    "tests_formal/test_discovery.py::ActiveSelection",
+    "tests_genesis/test_causal_domain.py",
+    "tests_genesis/test_causal_calibration.py"
    ],
-   "title": "Active experiments and identifiability",
+   "title": "Active experiments and identifiability (B20_R117: a hidden-confounder causal-discovery benchmark with established baselines; B20_R118: their calibration)",
    "workstream": "W14"
   },
   {
@@ -5477,6 +5509,7 @@
     "docs/RESEARCH_ALERTS.md",
     "evidence/zero_signal_b20r103/summary.json",
     "scripts/b20r107_contract_v2.py",
+    "evidence/contract_v2_b20r107/summary.json",
     "docs/RECURSIVE_IMPROVEMENT_ARCHITECTURE.md"
    ],
    "disposition": "IMPLEMENTED_BOUNDED_PENDING_AUDIT",

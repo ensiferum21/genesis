@@ -73,6 +73,8 @@
 | B20_R112 | **A fresh search under contract v2 fails the invention test too (DEV).** The judge released nothing: its noise exceeds the programs' differences; the program found is multistart descent, behind prior art |
 | B20_R113 | **Renormalisation closes part of the planar gap on Gset (DEV).** Decided on 40 fresh planar graphs (25-8), then 13-2 on Gset's 20 planar instances at 60 s; best known values on 5 of 20 (3 before); 29 of 54 Gset instances at 60 s; no record |
 | B20_R115 | **A richer language does not produce an invention either (DEV).** With an elite pool and two population moves added, the search found descent with annealing, no better than the tuned champion (7-10); the new moves, used as a memetic algorithm, lose on every held-out host at 2 s |
+| B20_R116 | **Genesis's engine matches the best known values on 40 of 54 Gset instances, beats none (DEV).** Five minutes on each of the 21 not yet reached closed 7; 11 of the 14 left are one unit short |
+| B20_R117 | **A causal-discovery benchmark with hidden confounders (engineering).** Daniel's research alert, item 2: planted multi-environment linear models, exact scoring, and established baselines written from their papers |
 
   The recovery-branch checkpoints B20_RX1 and B20_RX2 are on `recovery-b20r1-partial`; their work was ported here.
 - **Records:** `docs/checkpoints/B20_R1_RECORD.md` … `B20_R11_RECORD.md`, `B20_RX1_RECORD.md`, `B20_RX2_RECORD.md`, `B20_R12_RECORD.md` and `B20_R15_RECORD.md` … `B20_R65_RECORD.md`.

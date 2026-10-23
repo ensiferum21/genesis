@@ -165,6 +165,8 @@ needs people: a reviewer, a statistician, an independent custodian on its own ma
 | B20_R112 | The inventor under contract v2: NOT_DEMONSTRATED. The judge (honestly) released nothing: its noise with 4-host splits (2.8%) exceeds the programs' differences (0.1%); the program found is multistart descent, behind prior art |
 | B20_R113 | Renormalisation on planar graphs: RENORM_BETTER on 40 fresh generated graphs (25-8) and on Gset's 20 planar instances at 60 s (13-2 against B20_R110); best known values reached on 5 of 20 (3 before); no record. With it, 29 of 54 Gset instances at their best known values at 60 s (33 over all recorded runs) |
 | B20_R115 | Language v2 (elite pool, consensus and cluster recombination) and a search in it, held to the invention test: **NOT_DEMONSTRATED.** The program found is descent with annealing (its one pool statement never acts), NOT_DISTINGUISHABLE from annealing-then-descent (7-10); memetic templates with the new moves lose to it on all 24 held-out hosts |
+| B20_R116 | Five minutes on each of the 21 Gset instances not yet reached: 7 reach their best known values; over all recorded runs Genesis's engine now matches the 2012-13 best known values on **40 of 54**, exceeds none (no record); 11 of the remaining 14 are one unit short |
+| B20_R117 (engineering) | A hidden-confounder causal-discovery benchmark (Daniel's research alert, item 2): multi-environment linear SEMs with planted hidden confounders, the truth as an ADMG, scores, and baselines written from their papers (PC-stable, an oracle PC, DirectLiNGAM); setup of B20_R118 (their calibration) |
 
 ## 6. Next steps, in order
 
@@ -191,8 +193,11 @@ needs people: a reviewer, a statistician, an independent custodian on its own ma
   15. done: B20_R113 (RENORM_BETTER on generated graphs and on Gset; 5 of 20 planar instances at the best known
       values; no record);
   16. done: B20_R115 (NOT_DEMONSTRATED; the new moves do not help at 2 s);
-  17. B20_R116 (five minutes on each of the 21 Gset instances not yet reached; running);
-  18. B20_R114: the checkpoint's release matrix, on a quiet tree, after these.
+  17. done: B20_R116 (7 of 21 reached; 40 of 54 over all runs; no record);
+  18. B20_R114: the checkpoint (`GENESIS_COMPLETION_CHECKPOINT_B20_R117`, covering B20_R74-R117), release
+      matrix on a quiet tree;
+  19. B20_R118 (causal calibration), then a Genesis method that detects hidden causes and proposes the
+      intervention that resolves one.
 
 3. **Checkpoint after these** (the last is B20_R73, never rehearsed; R74 onward are not in a checkpoint). Do not edit
    the tree while the release matrix runs; run timing studies alone.
