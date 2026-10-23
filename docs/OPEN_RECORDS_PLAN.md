@@ -49,6 +49,16 @@ preregistered.
 - **B20_R102, where Genesis stands against the records:** fraction of best-known value and time-to-target at 1, 10
   and 60 s on G1–G54, against BURER2002 at equal time, and against published Ising-machine numbers as a stated
   external reference (different hardware, so not a paired comparison).
+- **B20_R104, engineering:** Genesis's own max-cut engine, `mcx-v1` (iterated tabu search in the manner of breakout
+  local search; an elite pool; restarts by a Houdayer cluster exchange or by renormalisation, which contracts every
+  edge the elites agree on and searches the contracted problem), from source, pinned; graph families built as Gset's
+  were (rudy's planar unions, rectangular tori), so that configuring never needs Gset.
+- **B20_R105, the system configures the engine on generated graphs only:** two order parameters of the degree
+  sequence place a graph in a class (random, toroidal, planar); per class and budget, successive halving over 32
+  configurations on fresh graphs; held-out check against the default and BURER2002.
+- **B20_R106, once on Gset:** the configured engine at 1 s and 10 s on G1–G54 against B20_R102's recorded runs
+  (BURER2002, dSB, the virtual best of twelve heuristics), sign tests; values above the table are flagged, never
+  claimed. All three preregistered before B20_R102 ran.
 - **Then the discovery loop on Gset**, if B20_R99 finds structured headroom. The test is whether concepts invented
   on toroidal and planar instances transfer to random ones, and the reverse. That is the note's "untouched family"
   inside one public benchmark.

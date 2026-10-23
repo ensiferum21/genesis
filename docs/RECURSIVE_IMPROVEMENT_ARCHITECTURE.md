@@ -79,6 +79,16 @@ has seen.
    to mistake noise for progress. The contract has a fixed threshold, gives restricted feedback, uses confirmation
    evaluations and a stopping rule, and keeps final numbers on held-out hosts only. It is tested by searches and study
    analyses on problems with no signal, which must stop, and with a planted signal, which must still be found.
+   **2a. The solver track on a public benchmark (B20_R104-R106; Daniel, 23 Oct 2026: "adapt them and make the solver
+   more strong").** Three of the mechanisms above, applied to Genesis's own max-cut engine `mcx-v1`:
+   - renormalisation: a restart that contracts every edge all elite solutions orient alike, searches the contracted
+     problem and projects back;
+   - order parameters choosing the method: two statistics of the degree sequence place a graph in a class, one
+     configuration per class;
+   - germinal-centre selection (clonal selection): successive halving of configurations, each round on fresh graphs.
+   Configured on graphs generated as Gset's were (B20_R105), then judged once on Gset against the published
+   heuristics' recorded runs (B20_R106). The engine's parts are published methods combined by the builder; what the
+   system contributes, and is measured on, is the configuration and the class choice.
 3. **The knowledge map (L2), beyond B20_R100.** Widen it from the eight time-to-solution and equal-time studies to
    every recorded row. Replay the history: would choosing studies by information gain have reached the recorded
    decisions sooner? Then let it choose experiments, with its predictions written before each study.

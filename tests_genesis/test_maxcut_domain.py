@@ -124,9 +124,16 @@ class Gset(unittest.TestCase):
         self.assertEqual(sorted(bk, key=lambda g: int(g[1:])), [f'G{k}' for k in range(1, 55)])
         self.assertEqual((bk['G1'], bk['G14'], bk['G22'], bk['G27'], bk['G39'], bk['G54']),
                          (11624, 3064, 13359, 3341, 2408, 3852))
+        # B20_R104: the BLS paper's Table 2 (Daniel's PDF, 23 Oct 2026) raised 20 values, e.g. the tori G32-G34
+        self.assertEqual((bk['G23'], bk['G30'], bk['G32'], bk['G34'], bk['G43']), (13344, 3413, 1410, 1384, 6660))
+        # and MACUT's Table 1 (Daniel's PDF, 23 Oct 2026) raised three planar ones
+        self.assertEqual((bk['G35'], bk['G36'], bk['G37']), (7686, 7679, 7690))
+        self.assertEqual(sum('macut2012_paper' in v['sources'] for v in doc['instances'].values()), 24)
         for g, v in doc['instances'].items():
             self.assertEqual(v['best_known'], max(v['sources'].values()), g)
+            self.assertEqual(v['from'], sorted(k for k, x in v['sources'].items() if x == v['best_known']), g)
             self.assertGreaterEqual(v['best_known'], v['sources']['optsicom2009'], g)
+            self.assertGreaterEqual(v['sources']['bls2013_paper'], v['sources']['before_bls2013'], g)
             self.assertTrue(set(v['sources']) <= set(doc['sources']), g)
         self.assertIn('never as a record', doc['policy'])
 
