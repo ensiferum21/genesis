@@ -713,7 +713,8 @@ WORKSTREAMS = {
              'src/genesis/autonomy/studygen.py', 'src/genesis/autonomy/qet.py', 'src/genesis/autonomy/archive.py',
              'src/genesis/autonomy/adversary.py', 'docs/AUTONOMY.md', 'evidence/qet_large_b20r97/summary.json',
              'evidence/adaptation_cell_b20r97/ledger.json', 'src/genesis/autonomy/kmap.py',
-             'scripts/b20r100_knowledge_map.py', 'docs/RECURSIVE_IMPROVEMENT_ARCHITECTURE.md'],
+             'scripts/b20r100_knowledge_map.py', 'evidence/knowledge_map_b20r100/summary.json',
+             'docs/RECURSIVE_IMPROVEMENT_ARCHITECTURE.md'],
             ['tests_formal/test_learning.py', 'tests_formal/test_learning_partitions.py',
              G + 'test_adaptation_cell.py', G + 'test_autonomy.py', G + 'test_knowledge_map.py']),
     'W21': ('Better-improver and multigeneration controller (B20_R2: pure lineage validator; B20_R4: the campaign '

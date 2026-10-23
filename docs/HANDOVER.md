@@ -150,6 +150,7 @@ needs people: a reviewer, a statistician, an independent custodian on its own ma
 | B20_R98 (engineering) | Toolchain rebuilt in a new container; defect B20R98-PIN repaired (pins cover the tool, not the install folder or build stamp); B20_R98–R100 preregistered |
 | B20_R98 | Harness check: NOT_THE_HARNESS. DeepDist-c's and NuWLS-c-2026's collapse on large hosts is their own search; B20_R97's margins stand as such; a 3% band at 10 s on G(256, 0.5) |
 | B20_R86 | Do the generations compound? NO_COMPOUNDING: every transition and the library effect UNRESOLVED on fresh hosts; the builder's engine about 5x faster than every generation |
+| B20_R100 | The knowledge map's first prospective test: MAP_BETTER (4x more accurate than the baseline on seen methods; 90% intervals cover 97%; much wider intervals on methods it had never seen, coverage kept); an easy test |
 
 ## 6. Next steps, in order
 
@@ -161,8 +162,8 @@ needs people: a reviewer, a statistician, an independent custodian on its own ma
 2. **Run the preregistered studies, alone on CPU 0, in this order:**
    1. done: B20_R100 `predict` (committed before B20_R86) and B20_R98 (NOT_THE_HARNESS);
    2. done: B20_R86 (NO_COMPOUNDING);
-   3. B20_R100 `score`, now that B20_R86 is recorded;
-   4. B20_R99, the discovery headroom pilot.
+   3. done: B20_R100 `score` (MAP_BETTER);
+   4. B20_R99, the discovery headroom pilot; then B20_R103 and B20_R102 (set up in B20_R101).
 
 3. **Checkpoint after these** (the last is B20_R73, never rehearsed; R74 onward are not in a checkpoint). Do not edit
    the tree while the release matrix runs; run timing studies alone.

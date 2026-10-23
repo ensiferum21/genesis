@@ -87,5 +87,38 @@ class Design(unittest.TestCase):
             M.main(['predict', str(ROOT / 'evidence' / 'elsewhere')])
 
 
+EV = ROOT / 'evidence' / 'knowledge_map_b20r100'
+
+
+class Record(unittest.TestCase):
+    """B20_R100: the score recomputes; the predictions were committed before B20_R86 ran."""
+
+    def test_score_recomputes(self):
+        import json
+        import tempfile
+        import shutil
+        s = json.loads((EV / 'summary.json').read_text())
+        self.assertEqual((s['verdict'], s['cells'], s['knows_what_it_does_not_know']), ('MAP_BETTER', 600, True))
+        with tempfile.TemporaryDirectory() as d:
+            shutil.copy(EV / 'predictions_b20r86.json', Path(d) / 'predictions_b20r86.json')
+            with mock.patch.object(M, 'code_identity', return_value={'sha256': s['code_identity']}):
+                again = M.score(Path(d))
+        for k in ('verdict', 'mean_d', 'interval90', 'mae_map', 'mae_baseline', 'coverage90', 'interval_width',
+                  'surprises', 'predictions_sha256'):
+            self.assertEqual(json.loads(json.dumps(again[k])), s[k], k)
+
+    def test_predictions_came_first(self):
+        import subprocess
+        def first_commit(path):
+            out = subprocess.run(['git', '-C', str(ROOT), 'log', '--diff-filter=A', '--format=%ct', '--', path],
+                                 capture_output=True, text=True).stdout.split()
+            return int(out[-1]) if out else None
+        p = first_commit('evidence/knowledge_map_b20r100/predictions_b20r86.json')
+        r = first_commit('evidence/generations_b20r86/rows.jsonl')
+        if p is None or r is None:
+            self.skipTest('needs the git history')
+        self.assertLess(p, r)
+
+
 if __name__ == '__main__':
     unittest.main()

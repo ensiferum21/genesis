@@ -111,3 +111,17 @@ comparisons there should allow a 3% band. This held on one host, below the prere
 
 Record tests (3).
 
+## B20_R100 result: MAP_BETTER (the knowledge map's first prospective test)
+
+The predictions were committed at `3d43e18` before B20_R86 drew its hosts, and scored after B20_R86 was recorded
+(`evidence/knowledge_map_b20r100/`).
+- **Accuracy.** On 600 cells the map's mean absolute error is 0.0020 against the naive baseline's 0.0323. d has
+  interval [+0.0297, +0.0307].
+- **Coverage.** Its 90% intervals cover 97% of the cells: 93% for the seen methods, 100% for the unseen.
+- **It knew what it did not know.** It gave the three methods it had never seen intervals 17 times wider than the seen
+  ones, and coverage held.
+
+On the seen methods, the fair comparison, it is 4 times more accurate (0.0023 against 0.0095). The test was easy
+(small hosts; 46% of cells at quality 1). It is a first prospective success at the simplest level, not yet evidence on
+hard studies. Record tests (2).
+
