@@ -154,6 +154,7 @@ needs people: a reviewer, a statistician, an independent custodian on its own ma
 | B20_R99 | Headroom pilot: HEADROOM_UNSTRUCTURED. Where tfxw stops nothing local is left (2 of 32 states improvable, no small exchange); the language programs miss the swap; no recognizable pattern (lift 11, recall 0.22); best states differ globally |
 | B20_R103 | Feedback contract and zero-signal battery: CONTRACT_LEAKS by its ratio rule (one false release in 180 no-signal searches, held-out numbers unbiased), TOO_STRICT at large quirks (13% of the real gain kept), CALIBRATED analyses; without the contract the program search over-reports by up to 6.6 sigma_e |
 | B20_R104 (engineering) | `mcx-v1`, Genesis's max-cut engine (BLS's rules and setting as DEFAULT; cluster exchange, renormalisation and MACUT's crossover as restarts); Gset families built as rudy did; the Gset table now holds the BLS and MACUT papers' values (Daniel's PDFs); B20_R105 and B20_R106 preregistered |
+| B20_R105 | The system configures `mcx-v1` on generated graphs: beats BLS's published setting at 1 s (TUNED_BETTER) and ties it at 10 s; ahead of BURER2002 at both budgets (22-0 and 17-2 on 24 held-out graphs); classifier 24/24 |
 
 ## 6. Next steps, in order
 
@@ -168,8 +169,8 @@ needs people: a reviewer, a statistician, an independent custodian on its own ma
    3. done: B20_R100 `score` (MAP_BETTER);
    4. done: B20_R99 (HEADROOM_UNSTRUCTURED);
    5. done: B20_R103 (CONTRACT_LEAKS by its ratio rule; TOO_STRICT; CALIBRATED);
-   6. B20_R105 (mcx configured on generated graphs), B20_R102 (Gset standing), B20_R106 (mcx on Gset once), in
-      this order; R105 and R106 were fixed before R102 ran.
+   6. done: B20_R105 (TUNED_BETTER at 1 s; MCX_AHEAD at 1 s and 10 s on generated graphs);
+   7. B20_R102 (Gset standing), then B20_R106 (mcx on Gset once); both were fixed before B20_R102 ran.
 
 3. **Checkpoint after these** (the last is B20_R73, never rehearsed; R74 onward are not in a checkpoint). Do not edit
    the tree while the release matrix runs; run timing studies alone.

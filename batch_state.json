@@ -1098,7 +1098,10 @@
         "result": "Setup: where the pinned tools stand on Gset (preregistered). Pending"
       },
       "B20_R103": {
-        "commits": [],
+        "commits": [
+          "cc7f4bb",
+          "2e96b5c"
+        ],
         "result": "DEV, preregistered (cc7f4bb), run at ff08000: CONTRACT_LEAKS by the ratio rule (one false release in 180 no-signal searches; the reference, the open protocol's claimed gain, is negative at quirk 0; held-out numbers unbiased), TOO_STRICT (69%, 51%, 13% of the open protocol's true gain), L2 CALIBRATED (0 of 800); open protocol final optimism +0.5, +3.4, +6.6 sigma_e"
       },
       "B20_R104": {
@@ -1110,8 +1113,11 @@
         "result": "Engineering: mcx-v1 (Genesis max-cut engine: BLS rules and setting as DEFAULT, Houdayer cluster exchange, renormalisation, MACUT crossover), pinned build; graph families built as Gset's (rudy planar unions, rectangular tori); max-cut membership by declared domain; Gset table holds the BLS and MACUT papers (Daniel's PDFs). Setup of B20_R105 (configuring on generated graphs) and B20_R106 (once on Gset)"
       },
       "B20_R105": {
-        "commits": [],
-        "result": "Setup: the system configures mcx on generated graphs only (preregistered). Pending"
+        "commits": [
+          "ff08000",
+          "1230b5a"
+        ],
+        "result": "DEV, preregistered (ff08000, amended before any run at 1230b5a): TUNED_BETTER at 1 s (p = 0.005) and NO_DIFFERENCE at 10 s against BLS's published setting; MCX_AHEAD of BURER2002 at 1 s (22-0, 2 ties) and 10 s (17-2, 5 ties) on 24 held-out generated graphs; the order-parameter classifier 24/24; every class chose a 5x larger perturbation than BLS; the Houdayer cluster exchange chosen on planar graphs only; renormalisation and MACUT's crossover not chosen"
       },
       "B20_R106": {
         "commits": [],

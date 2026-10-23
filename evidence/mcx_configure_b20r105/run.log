@@ -1,0 +1,31 @@
+[    0.0s] b20r105; pinned to CPU 0
+[    0.0s] b20r105; pinned to CPU 0
+[    9.7s] graphs: random 32, toroidal 32, planar 32; 52 Gset identities excluded
+[  526.7s] random: chosen@1 {'L0': 0.05, 'P': 0.75, 'tt': 10, 'pool': 8, 'restart': 200000, 'rs': 0, 'pert': 0} (default lost); chosen@10 {'L0': 0.05, 'P': 0.75, 'tt': 10, 'pool': 8, 'restart': 200000, 'rs': 0, 'pert': 0}
+[ 1033.5s] toroidal: chosen@1 {'L0': 0.05, 'P': 0.8, 'tt': 5, 'pool': 16, 'restart': 200000, 'rs': 0, 'pert': 1} (default lost); chosen@10 {'L0': 0.05, 'P': 0.8, 'tt': 5, 'pool': 16, 'restart': 200000, 'rs': 0, 'pert': 1}
+[ 1544.3s] planar: chosen@1 {'L0': 0.05, 'P': 0.5, 'tt': 5, 'pool': 16, 'restart': 2000, 'rs': 1, 'pert': 2} (default lost); chosen@10 {'L0': 0.05, 'P': 0.5, 'tt': 5, 'pool': 8, 'restart': 20000, 'rs': 1, 'pert': 0}
+[ 1579.6s] held dev-erdos-028b7959-20271075-0000: {'default@1': 6576, 'chosen@1': 6582, 'burer@1': 6571, 'default@10': 6583, 'chosen@10': 6583, 'burer@10': 6577}
+[ 1615.2s] held dev-erdos-ac3ed2d0-20271076-0000: {'default@1': 11601, 'chosen@1': 11601, 'burer@1': 11574, 'default@10': 11587, 'chosen@10': 11601, 'burer@10': 11599}
+[ 1650.8s] held dev-erdos_pm1-64ce90fe-20271077-0000: {'default@1': 1983, 'chosen@1': 2002, 'burer@1': 1986, 'default@10': 2002, 'chosen@10': 2010, 'burer@10': 2009}
+[ 1686.5s] held dev-erdos-61e27377-20271078-0000: {'default@1': 13412, 'chosen@1': 13412, 'burer@1': 13389, 'default@10': 13417, 'chosen@10': 13414, 'burer@10': 13395}
+[ 1722.5s] held dev-erdos_pm1-00616411-20271079-0000: {'default@1': 3310, 'chosen@1': 3313, 'burer@1': 3276, 'default@10': 3316, 'chosen@10': 3315, 'burer@10': 3310}
+[ 1757.8s] held dev-erdos-028b7959-20271080-0000: {'default@1': 6693, 'chosen@1': 6693, 'burer@1': 6680, 'default@10': 6693, 'chosen@10': 6693, 'burer@10': 6693}
+[ 1793.3s] held dev-erdos-ac3ed2d0-20271081-0000: {'default@1': 11612, 'chosen@1': 11616, 'burer@1': 11599, 'default@10': 11614, 'chosen@10': 11616, 'burer@10': 11613}
+[ 1828.8s] held dev-erdos_pm1-64ce90fe-20271082-0000: {'default@1': 2128, 'chosen@1': 2128, 'burer@1': 2127, 'default@10': 2128, 'chosen@10': 2128, 'burer@10': 2127}
+[ 1863.9s] held dev-torus2d_pm1-b0737c6e-20272075-0000: {'default@1': 584, 'chosen@1': 584, 'burer@1': 578, 'default@10': 584, 'chosen@10': 584, 'burer@10': 582}
+[ 1899.2s] held dev-torus2d_pm1-a905133b-20272076-0000: {'default@1': 1376, 'chosen@1': 1376, 'burer@1': 1358, 'default@10': 1378, 'chosen@10': 1378, 'burer@10': 1366}
+[ 1934.5s] held dev-torus2d-ba2ad746-20272077-0000: {'default@1': 5874, 'chosen@1': 5874, 'burer@1': 5872, 'default@10': 5874, 'chosen@10': 5874, 'burer@10': 5874}
+[ 1969.6s] held dev-torus2d_pm1-b0737c6e-20272078-0000: {'default@1': 564, 'chosen@1': 564, 'burer@1': 564, 'default@10': 564, 'chosen@10': 564, 'burer@10': 564}
+[ 2004.9s] held dev-torus2d_pm1-a905133b-20272079-0000: {'default@1': 1392, 'chosen@1': 1394, 'burer@1': 1362, 'default@10': 1394, 'chosen@10': 1392, 'burer@10': 1372}
+[ 2040.2s] held dev-torus2d-417a0d35-20272080-0000: {'default@1': 6106, 'chosen@1': 6106, 'burer@1': 6106, 'default@10': 6106, 'chosen@10': 6106, 'burer@10': 6106}
+[ 2075.3s] held dev-torus2d_pm1-b0737c6e-20272081-0000: {'default@1': 544, 'chosen@1': 544, 'burer@1': 542, 'default@10': 544, 'chosen@10': 544, 'burer@10': 544}
+[ 2110.4s] held dev-torus2d_pm1-a905133b-20272082-0000: {'default@1': 1394, 'chosen@1': 1400, 'burer@1': 1368, 'default@10': 1404, 'chosen@10': 1404, 'burer@10': 1380}
+[ 2145.8s] held dev-planar2-65a4084f-20273075-0000: {'default@1': 3819, 'chosen@1': 3820, 'burer@1': 3807, 'default@10': 3829, 'chosen@10': 3823, 'burer@10': 3814}
+[ 2181.1s] held dev-planar2-e8d67972-20273076-0000: {'default@1': 3042, 'chosen@1': 3042, 'burer@1': 3037, 'default@10': 3045, 'chosen@10': 3046, 'burer@10': 3040}
+[ 2216.3s] held dev-planar2_pm1-8eb123d0-20273077-0000: {'default@1': 949, 'chosen@1': 967, 'burer@1': 955, 'default@10': 967, 'chosen@10': 960, 'burer@10': 967}
+[ 2251.7s] held dev-planar2-5946559a-20273078-0000: {'default@1': 7662, 'chosen@1': 7656, 'burer@1': 7643, 'default@10': 7666, 'chosen@10': 7653, 'burer@10': 7643}
+[ 2287.2s] held dev-planar2_pm1-a4ca072c-20273079-0000: {'default@1': 2322, 'chosen@1': 2370, 'burer@1': 2330, 'default@10': 2360, 'chosen@10': 2369, 'burer@10': 2347}
+[ 2322.4s] held dev-planar2-65a4084f-20273080-0000: {'default@1': 3817, 'chosen@1': 3817, 'burer@1': 3805, 'default@10': 3816, 'chosen@10': 3819, 'burer@10': 3809}
+[ 2357.7s] held dev-planar2-e8d67972-20273081-0000: {'default@1': 3043, 'chosen@1': 3048, 'burer@1': 3042, 'default@10': 3047, 'chosen@10': 3049, 'burer@10': 3051}
+[ 2392.9s] held dev-planar2_pm1-8eb123d0-20273082-0000: {'default@1': 886, 'chosen@1': 886, 'burer@1': 878, 'default@10': 886, 'chosen@10': 886, 'burer@10': 884}
+[ 2393.6s] valid True; classifier accuracy 1.000; tuning@1 TUNED_BETTER (p 0.00488); vs_burer@1 MCX_AHEAD (p 4.77e-07); tuning@10 NO_DIFFERENCE (p 1); vs_burer@10 MCX_AHEAD (p 0.00141)

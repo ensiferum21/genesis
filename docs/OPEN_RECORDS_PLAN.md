@@ -56,6 +56,8 @@ preregistered.
 - **B20_R105, the system configures the engine on generated graphs only:** two order parameters of the degree
   sequence place a graph in a class (random, toroidal, planar); per class and budget, successive halving over 32
   configurations on fresh graphs; held-out check against the default and BURER2002.
+  **Result:** the system's choice beats BLS's published setting at 1 s and ties it at 10 s; both budgets ahead of
+  BURER2002 on 24 held-out generated graphs (22-0, 17-2); `evidence/mcx_configure_b20r105/`.
 - **B20_R106, once on Gset:** the configured engine at 1 s and 10 s on G1–G54 against B20_R102's recorded runs
   (BURER2002, dSB, the virtual best of twelve heuristics), sign tests; values above the table are flagged, never
   claimed. All three preregistered before B20_R102 ran.

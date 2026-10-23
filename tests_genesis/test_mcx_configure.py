@@ -100,5 +100,61 @@ class Design(unittest.TestCase):
             M.main([str(ROOT / 'evidence' / 'elsewhere')])
 
 
+
+class RecordB20R105(unittest.TestCase):
+    """B20_R105's record: the races, the chosen configurations, the classifier and the held-out labels recompute from
+    the recorded runs (no solver runs here); the graphs are the study's and none is a Gset graph."""
+
+    @classmethod
+    def setUpClass(cls):
+        import json
+        from genesis import gset as GS
+        ev = ROOT / 'evidence' / 'mcx_configure_b20r105'
+        cls.s = json.loads((ev / 'summary.json').read_text())
+        cls.configs = json.loads((ev / 'configs.json').read_text())
+        cls.runs = {}
+        for line in (ev / 'runs.jsonl').read_text().splitlines():
+            if line.strip():
+                r = json.loads(line)
+                cls.runs[r['key']] = r
+        cls.gset_ids = {A.exposure_identity(t)['canonical'] for t in GS.tasks()}
+        cls.P = M.pools(cls.gset_ids)
+
+    def value(self, tid, arm, b):
+        return self.runs[f'{tid}|{arm}|{b:g}']['value']
+
+    def test_races_and_choices_recompute(self):
+        from genesis.common import digest
+        for cls in M.CLASSES:
+            g = self.P[cls]
+            cfgs = M.draw_configs(cls)
+            arms = ['mcx:' + digest(c)[:12] for c in cfgs]
+            by = dict(zip(arms, cfgs))
+            w1, h1 = M.race(lambda a, tid: self.value(tid, a, M.SHORT), arms, M.ROUNDS_1S, [t.task_id for t in g[:16]])
+            entrants = h1[-1]['ranked'][:3] + ([arms[0]] if arms[0] not in h1[-1]['ranked'][:3] else [])
+            w10, h10 = M.race(lambda a, tid: self.value(tid, a, M.LONG), entrants, M.ROUNDS_10S,
+                              [t.task_id for t in g[16:24]])
+            self.assertEqual({'1': by[w1], '10': by[w10]}, self.configs['chosen'][cls], cls)
+            self.assertEqual([h['ranked'] for h in h1], [h['ranked'] for h in self.s['history'][cls]['1s']], cls)
+
+    def test_classifier_and_labels_recompute(self):
+        import json
+        import statistics
+        train = [(M.features(t), c) for c in M.CLASSES for t in self.P[c][:24]]
+        model = M.fit_classifier(train)
+        self.assertEqual(json.loads(json.dumps(model)), self.configs['classifier'])
+        acc = statistics.mean(M.classify(model, M.features(t)) == c for c in M.CLASSES for t in self.P[c][24:])
+        self.assertEqual(acc, self.s['classifier_accuracy'])
+        self.assertEqual(json.loads(json.dumps(M.labels(self.s['held_out']))), self.s['labels'])
+        self.assertEqual(sorted(self.s['held_out']), sorted(t.task_id for c in M.CLASSES for t in self.P[c][24:]))
+
+    def test_no_gset_graph_and_valid(self):
+        ids = {A.exposure_identity(t)['canonical'] for c in M.CLASSES for t in self.P[c]}
+        self.assertEqual(len(ids), 3 * M.PER_CLASS)
+        self.assertFalse(ids & self.gset_ids)
+        self.assertTrue(self.s['valid'])
+        self.assertEqual(self.s['configs_sha256'], __import__('genesis.common', fromlist=['digest']).digest(self.configs))
+
+
 if __name__ == '__main__':
     unittest.main()
