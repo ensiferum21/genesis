@@ -30,4 +30,6 @@ KINDS = {
     'tfxw-v1': 'tfxw',                    # B20_R94: tfx-v1's search scaled past 64 vertices (multiword, tightness)
     'maxsat-anytime-large-v1': 'maxsat_large',  # B20_R94: the 2024 and 2026 champions on the DEV large domain
     'tfxw-v2': 'tfxw2',                   # B20_R96: tfxw-v1 with an operator grammar (acceptance, annealing, kicks)
+    'mqlib-maxcut-v1': 'mqlib_maxcut',    # B20_R101: MQLib's max-cut heuristics on the DEV max-cut domain (Gset)
+    'dsb-maxcut-v1': 'dsb_maxcut',        # B20_R101: discrete simulated bifurcation on weighted max-cut
 }

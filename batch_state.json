@@ -1085,6 +1085,18 @@
           "3d43e18"
         ],
         "result": "MAP_BETTER (prospective; predictions 3d43e18 before B20_R86): MAE 0.0020 vs 0.0323 (seen methods 0.0023 vs 0.0095); 90% coverage 97% (seen 93%, unseen 100%); unseen intervals 17x wider; an easy test"
+      },
+      "B20_R101": {
+        "commits": [],
+        "result": "Engineering: maxcut_v1 domain, candidates_maxcut, mqlib-maxcut-v1, dsb-maxcut-v1, Gset G1-G54 pinned with best-known values and sources. Setup of B20_R102 (Gset standing) and B20_R103 (feedback contract, zero-signal battery)"
+      },
+      "B20_R102": {
+        "commits": [],
+        "result": "Setup: where the pinned tools stand on Gset (preregistered). Pending"
+      },
+      "B20_R103": {
+        "commits": [],
+        "result": "Setup: feedback contract and zero-signal battery (preregistered). Pending"
       }
     },
     "open_after_b20_r5": [

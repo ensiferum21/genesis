@@ -482,8 +482,131 @@ class TriangleFreeLargeAdapter(DomainAdapter):
         return out, seen, {'draws': tries}
 
 
+class MaxCutAdapter(DomainAdapter):
+    """The DEV-only weighted max-cut domain (B20_R101; `docs/OPEN_RECORDS_PLAN.md`): public benchmark graphs (Gset,
+    with published best-known values) and generated families. Tasks are `MaxCutTask`s, witnesses are cuts (a 0/1
+    string), checked by two independent computations (`graphs_maxcut`). No certified optimum or bound: results are
+    stated against best-known values, never as optimality. Not a sealed domain: DEV studies only."""
+    name = 'maxcut_v1'
+    SEALED = False
+    FAMILY_SPACE = {
+        'erdos': {'n': (16, 20000), 'p': (0.0005, 0.95)},
+        'erdos_pm1': {'n': (16, 20000), 'p': (0.0005, 0.95)},
+        'torus_pm1': {'side': (4, 141)},
+    }
+
+    def contract(self):
+        return {'schema': 'genesis-domain-contract-v1', 'domain': self.name, 'sealed': False,
+                'objective': 'maximum total weight of the edges between the two sides of a vertex bipartition',
+                'checker': 'graphs_maxcut.check_cut (edge-driven-sum-v1, vertex-driven-half-sum-v1)',
+                'bound': None}
+
+    def parse(self, raw):
+        from .models_maxcut import MaxCutTask
+        if isinstance(raw, MaxCutTask):
+            return raw
+        if not isinstance(raw, dict):
+            return Unsupported('task is not an object')
+        if raw.get('domain') != self.name:
+            return Unsupported(f'task domain {raw.get("domain")!r} is not {self.name}')
+        try:
+            from .common import canonical
+            return MaxCutTask.model_validate_json(canonical(raw))
+        except Exception as exc:
+            return Unsupported(f'malformed task: {type(exc).__name__}')
+
+    def supports(self, task, purpose):
+        from .models_maxcut import MaxCutTask
+        if purpose not in PURPOSES:
+            return Unsupported(f'unknown purpose {purpose!r}')
+        if not isinstance(task, MaxCutTask) or task.domain != self.name:
+            return Unsupported('not a task of this domain')
+        if purpose in ('exact_reference', 'certificate'):
+            return Unsupported('no certified optimum in the max-cut domain: only cut checks and best-known values')
+        return None
+
+    def exposure_identity(self, task):
+        from .graphs_maxcut import wl_identity
+        return {'canonical': wl_identity(task.n, task.edges), 'method': 'weighted-color-refinement-invariant'}
+
+    def candidate_view(self, task):
+        from .models_maxcut import MaxCutCandidateView
+        return MaxCutCandidateView(domain=task.domain, n=task.n, edges=task.edges)
+
+    def validate(self, task, witness):
+        from .graphs_maxcut import CheckerDisagreement, check_cut
+        try:
+            checked = check_cut(task, witness)
+        except CheckerDisagreement as exc:
+            return {'status': 'CHECKER_ERROR', 'reason': str(exc),
+                    'disagreement': {'question': exc.question, 'inputs': exc.inputs, 'results': exc.results}}
+        except (ValueError, TypeError) as exc:
+            return {'status': 'INVALID', 'reason': str(exc)}
+        return {'status': 'VALID', 'value': checked['value'], 'checkers': checked['checkers']}
+
+    def reference(self, task, *, evidence=None, seconds=600):
+        return Unsupported('no certified optimum in the max-cut domain')
+
+    def certificate_obligations(self, claim, value):
+        if claim == 'lower_bound':
+            return [{'obligation': 'lower_bound', 'evidence': 'witness_check', 'checker': self.contract()['checker'],
+                     'value': value}]
+        return [Unsupported(f'no certificate obligations for claim {claim!r} in the max-cut domain').record()]
+
+    def families(self):
+        return {k: dict(v) for k, v in self.FAMILY_SPACE.items()}
+
+    def _edges(self, rng, family, params):
+        if family == 'torus_pm1':                      # a side x side toroidal grid, weights +-1 (as Gset G11-G13)
+            k = params['side']
+            out = []
+            for r in range(k):
+                for c in range(k):
+                    x = r * k + c
+                    for y in (r * k + (c + 1) % k, ((r + 1) % k) * k + c):
+                        if x != y:
+                            out.append((min(x, y), max(x, y), rng.choice((-1, 1))))
+            return k * k, tuple(sorted(set(out), key=lambda e: (e[0], e[1])))
+        n, p = params['n'], params['p']
+        out = []
+        for u in range(n):
+            for v in range(u + 1, n):
+                if rng.random() < p:
+                    out.append((u, v, 1 if family == 'erdos' else rng.choice((-1, 1))))
+        return n, tuple(out)
+
+    def generate(self, seed, count, split, family, params, excluded=()):
+        """`count` graphs of one family setting whose identities are not in `excluded` (nor repeated)."""
+        from .models_maxcut import MaxCutTask
+        if split != 'DEV':
+            raise ValueError('the max-cut domain is DEV only')
+        if family not in self.FAMILY_SPACE:
+            raise ValueError(f'unknown family {family!r}')
+        space = self.FAMILY_SPACE[family]
+        if set(params) != set(space) or any(not lo <= params[k] <= hi for k, (lo, hi) in space.items()):
+            raise ValueError(f'parameters {params} outside the family space {space}')
+        rng = random.Random(digest({'seed': seed, 'family': family, 'params': params, 'domain': self.name}))
+        seen, out, tries = set(excluded), [], 0
+        tag = digest({'family': family, 'params': params})[:8]
+        while len(out) < count and tries < count * 20:
+            tries += 1
+            n, edges = self._edges(rng, family, params)
+            if not edges:
+                continue
+            task = MaxCutTask(task_id=f'dev-{family}-{tag}-{seed}-{len(out):04}', n=n, edges=edges,
+                              family=f'{family}:{tag}')
+            identity = self.exposure_identity(task)['canonical']
+            if identity in seen:
+                continue
+            seen.add(identity)
+            out.append(task)
+        if len(out) != count:
+            raise RuntimeError(f'only {len(out)} of {count} distinct tasks within the generator budget')
+        return out, seen, {'draws': tries}
+
+
 ADAPTERS = {a.name: a for a in (C4HostAdapter(), TriangleFreeHostAdapter())}
-DEV_ADAPTERS = {a.name: a for a in (TriangleFreeLargeAdapter(),)}   # not sealed domains; DEV studies only
+DEV_ADAPTERS = {a.name: a for a in (TriangleFreeLargeAdapter(), MaxCutAdapter())}   # not sealed; DEV only
 
 
 def adapter(name):
