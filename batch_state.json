@@ -1139,7 +1139,9 @@
       },
       "B20_R108": {
         "commits": [
-          "f844e1e"
+          "f844e1e",
+          "37e9cc4",
+          "11cc64b"
         ],
         "result": "DEV, preregistered, run at f844e1e: NO_DIFFERENCE at 1 s (6-7) and 10 s (5-0, too few decided graphs): B20_R105's configurations hold in the widened space; maturation changed all three classes; for planar graphs at 10 s it picked renormalisation with L0 = 0.2, which won all 5 decided planar graphs (a lead, not a result)"
       },
@@ -1147,13 +1149,13 @@
         "commits": [
           "34234fa"
         ],
-        "result": "Setup: Gset replication with two more seeds (preregistered). Running"
+        "result": "DEV, preregistered, run at 34234fa: REPLICATED: with three seeds per arm at 10 s, the configured engine is ahead of BURER2002 (47-3) and dSB (47-2) on per-instance means; its worse new run beats the best of the tools' four new runs 36-6; 0.99882 of the best known values (dSB 0.99636, BURER2002 0.99559); reaching them on 30 instances (12, 8); no record candidate"
       },
       "B20_R110": {
         "commits": [
           "34234fa"
         ],
-        "result": "Setup: the engine at 60 s on Gset (preregistered). Pending"
+        "result": "Setup: the engine at 60 s on Gset (preregistered). Running"
       },
       "B20_R111": {
         "commits": [

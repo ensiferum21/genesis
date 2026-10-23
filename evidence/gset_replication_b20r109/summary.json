@@ -1,0 +1,51 @@
+{
+ "best_known_sha256": "3b97a82bbfbd91f0761090dd07dffc72305bf310ef4596705dbd282b9f880bc9",
+ "code_identity": "d1d6fe3a4783d0da53d5b7bdb3cebbf79f379935525d4e749fd513d19d9e3386",
+ "configs_sha256": "7c9e9acab47dad7035ff51b3496bdfc02bc8c9de0273d78377fe0d9d667cf74f",
+ "cpu_median": 1.0217163283,
+ "failed_runs": 0,
+ "headline": "REPLICATED",
+ "instances": 54,
+ "per_arm": {
+  "burer": {
+   "instances_reaching_best_known": 8,
+   "mean_fraction": 0.9955924163010983
+  },
+  "dsb": {
+   "instances_reaching_best_known": 12,
+   "mean_fraction": 0.99635573146049
+  },
+  "mcx": {
+   "instances_reaching_best_known": 30,
+   "mean_fraction": 0.9988218879337407
+  }
+ },
+ "record_candidates": [],
+ "schema": "genesis-b20r109-replication-v1",
+ "status": "DEV; licenses nothing; no record claim",
+ "study": "b20r109",
+ "tests": {
+  "mcx vs burer": {
+   "label": "AHEAD",
+   "losses": 3,
+   "p": 3.708322537931963e-11,
+   "ties": 4,
+   "wins": 47
+  },
+  "mcx vs dsb": {
+   "label": "AHEAD",
+   "losses": 2,
+   "p": 4.355626970209414e-12,
+   "ties": 5,
+   "wins": 47
+  },
+  "mcx worst new vs tools best new": {
+   "label": "AHEAD",
+   "losses": 6,
+   "p": 2.8288777684792876e-06,
+   "ties": 12,
+   "wins": 36
+  }
+ },
+ "valid": true
+}

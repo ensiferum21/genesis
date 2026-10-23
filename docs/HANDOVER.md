@@ -159,6 +159,7 @@ needs people: a reviewer, a statistician, an independent custodian on its own ma
 | B20_R106 | **Genesis's max-cut engine on Gset: MCX_LEADS.** Ahead of BURER2002, dSB and the virtual best of 12 published heuristics (40-3 at 10 s); 99.86% of the 2012-13 best known values at 10 s, reaching them on 24 of 54 (the virtual best: 11); no record |
 | B20_R107 | Feedback contract v2: V2_FIXES_POWER. The judge's threshold from its own noise halves, power recovers (63% of the real gain at the largest quirk, against 17%), false releases stay at 1 in 180 |
 | B20_R108 | Affinity maturation of the engine's configurations: NO_DIFFERENCE at both budgets (B20_R105's choices hold); a lead: renormalisation chosen for planar graphs at 10 s, 5-0 on decided graphs |
+| B20_R109 | Gset replication with new seeds: REPLICATED. Ahead of BURER2002 (47-3) and dSB (47-2) on three-seed means; even its worse run beats the tools' best run 36-6; best known values reached on 30 of 54 |
 
 ## 6. Next steps, in order
 
@@ -178,8 +179,9 @@ needs people: a reviewer, a statistician, an independent custodian on its own ma
    8. done: B20_R106 (MCX_LEADS);
    9. done: B20_R107 (V2_FIXES_POWER);
   10. done: B20_R108 (NO_DIFFERENCE);
-  11. B20_R109 (Gset replication, running), B20_R110 (60 s on Gset), B20_R111 (the invention test), B20_R112 (the
-      inventor under contract v2), all preregistered.
+  11. done: B20_R109 (REPLICATED);
+  12. B20_R110 (60 s on Gset, running), B20_R111 (the invention test), B20_R112 (the inventor under contract v2),
+      all preregistered.
 
 3. **Checkpoint after these** (the last is B20_R73, never rehearsed; R74 onward are not in a checkpoint). Do not edit
    the tree while the release matrix runs; run timing studies alone.

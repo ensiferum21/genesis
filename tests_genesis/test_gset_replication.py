@@ -43,5 +43,30 @@ class Design(unittest.TestCase):
             M.main([str(ROOT / 'evidence' / 'elsewhere')])
 
 
+
+class RecordB20R109(unittest.TestCase):
+    """B20_R109's record: the tests and figures recompute from the rows; the earlier values are B20_R102's and
+    B20_R106's recorded runs."""
+
+    def test_recomputes(self):
+        import json
+        from genesis import gset as GS
+        ev = ROOT / 'evidence' / 'gset_replication_b20r109'
+        s = json.loads((ev / 'summary.json').read_text())
+        rows = [json.loads(l) for l in (ev / 'rows.jsonl').read_text().splitlines() if l.strip()]
+        self.assertEqual([r['instance'] for r in rows], [f'G{k}' for k in range(1, 55)])
+        a = json.loads(json.dumps(M.analyse(rows, GS.best_known())))
+        for k in ('tests', 'headline', 'per_arm', 'record_candidates'):
+            self.assertEqual(a[k], s[k], k)
+        self.assertEqual(s['headline'], 'REPLICATED')
+        r102 = {r['instance']: r for r in map(json.loads, (M.R102 / 'rows.jsonl').read_text().splitlines()) if r}
+        r106 = {r['instance']: r for r in map(json.loads, (M.R106 / 'rows.jsonl').read_text().splitlines()) if r}
+        for r in rows:
+            self.assertEqual(r['earlier'], {'mcx': r106[r['instance']]['runs']['chosen@10']['value'],
+                                            'burer': r102[r['instance']]['runs']['burer']['10']['value'],
+                                            'dsb': r102[r['instance']]['runs']['dsb']['10']['value']})
+            self.assertEqual(len(r['runs']), 6)
+
+
 if __name__ == '__main__':
     unittest.main()

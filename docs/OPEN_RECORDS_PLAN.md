@@ -66,6 +66,8 @@ preregistered.
   **Result (23 Oct 2026): MCX_LEADS.** Ahead of BURER2002, dSB and the virtual best of 12 published heuristics at
   both budgets; 0.99860 of the best known values at 10 s, reaching them on 24 of 54; no record
   (`evidence/mcx_gset_b20r106/`). Next: more seeds, longer budgets against the best known values.
+  **B20_R109: REPLICATED** with three seeds per arm (47-3 against BURER2002, 47-2 against dSB; best known values
+  reached on 30 of 54; `evidence/gset_replication_b20r109/`).
 - **Then the discovery loop on Gset**, if B20_R99 finds structured headroom. The test is whether concepts invented
   on toroidal and planar instances transfer to random ones, and the reverse. That is the note's "untouched family"
   inside one public benchmark.
