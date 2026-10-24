@@ -8,7 +8,10 @@
 - the exact queue of next batches.
 
 It merges four inputs from Daniel (24 Oct 2026, 13:10–13:26: the seven-engine proposal, its priorities P0–P7,
-the R129 design notes, and the self-evolving-organism stages Ω1–Ω9) with the builder's evidence. It supersedes the
+the R129 design notes, and the self-evolving-organism stages Ω1–Ω9) with the builder's evidence. Daniel's **master
+implementation contract** (14:24) governs the implementation. Its first actions are in `docs/OMEGA_GAP_MATRIX.md`,
+`docs/OMEGA_INTEGRATION_MAP.md` and `docs/OMEGA_NO_LLM_AUDIT.md`; its stage gates are in
+`docs/OMEGA_ROADMAP_STATUS.md`; its results ledger is `docs/OMEGA_RESULTS_LEDGER.md`. It supersedes the
 build order of `docs/RECURSIVE_IMPROVEMENT_ARCHITECTURE.md` §3 and keeps its levels, measures and nested hold-outs
 (§1), which still apply.
 
@@ -363,7 +366,8 @@ Each step is verified and independently replicated. None of this has happened ye
 | 1 | B20_R127 | The system's own engines against the builder's hybrid; held-out graphs; Gset at 10 s and 60 s. **Slice 2 must be started when slice 1 pauses** (`END r127 rc=3` in `/home/claude/chain.log`; `/home/claude/chain_n.sh`) | running (slice 1 since 12:43) |
 | 2 | B20_R129 | The adaptive scientist (about 30 min) | preregistered `eb60843`; runs in R127's slice pause (14:33) |
 | 3 | B20_R130 | Choice, instrument and interpretation separated (about 1 h; reads R129's `choice.json`) | preregistered `f812701`; after R127 |
-| 4 | B20_R128 | Improving the inventor (2–3 slices of 6,600 s; resumable) | preregistered |
+| 4 | B20_R133 | The Problem Compiler against the specialists (about 1 h 15 min) | preregistered `e8bc181` |
+| 4b | B20_R128 | Improving the inventor (2–3 slices of 6,600 s; resumable) | preregistered |
 | 5 | Ω0 | Analyse R127/R128 mechanisms (no new study) | — |
 | 6 | B20_R131 | Co-invention of the choice and the interpretation for the global estimator | to design after R130 |
 | 7 | B20_R132 | The Difficulty Cartographer on planted obstacles; diagnosis-directed invention (Ω2; dev looks: renormalisation answers planted coupling, +16 against +4) | to design |
