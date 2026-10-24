@@ -1244,8 +1244,16 @@
         "result": "Checkpoint GENESIS_COMPLETION_CHECKPOINT_B20_R118 (B20_R74-R118): release matrix 1,948 tests, all OK, one declared skip; restore-verified (6,539 entries); archived in two parts"
       },
       "B20_R119": {
-        "commits": [],
+        "commits": [
+          "3a6fee5"
+        ],
         "result": "Engineering: FCI and the active procedure (src/genesis/causal/fci.py, active.py); setup of B20_R120 (preregistered)"
+      },
+      "B20_R120": {
+        "commits": [
+          "3a6fee5"
+        ],
+        "result": "DEV, preregistered, run at 3a6fee5: NOT_SHOWN: Genesis's suspicion-based choice of interventions ties random targets (hidden-cause F1 0.17 against 0.19 at budget 2); oracle targets 0.29 and 0.47; post hoc, a weak suspicion signal and a rule that reads ancestry as direct causation"
       }
     },
     "open_after_b20_r5": [

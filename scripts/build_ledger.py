@@ -707,7 +707,7 @@ WORKSTREAMS = {
              'docs/checkpoints/B20_R117_RECORD.md', 'scripts/b20r118_causal_calibration.py',
              'evidence/causal_calibration_b20r118/summary.json', 'src/genesis/causal/fci.py',
              'src/genesis/causal/active.py', 'docs/checkpoints/B20_R119_RECORD.md',
-             'scripts/b20r120_propose_interventions.py'],
+             'scripts/b20r120_propose_interventions.py', 'evidence/propose_interventions_b20r120/summary.json'],
             ['tests_formal/test_discovery.py::ActiveSelection', 'tests_genesis/test_causal_domain.py',
              'tests_genesis/test_causal_calibration.py', 'tests_genesis/test_causal_active.py',
              'tests_genesis/test_propose_interventions.py']),

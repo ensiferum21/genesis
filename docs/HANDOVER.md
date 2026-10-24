@@ -172,6 +172,7 @@ needs people: a reviewer, a statistician, an independent custodian on its own ma
 | B20_R118 | Causal calibration with hidden confounders: **CONFOUNDING_MISLEADS.** DirectLiNGAM (98% directed F1 with nothing hidden) draws an edge for 99% of confounded pairs and loses 0.21 F1 with 3 hidden confounders; PC connects 68%; none of the established methods marks a hidden cause; pooling 3 environments naively changes little |
 | B20_R114 (checkpoint) | `GENESIS_COMPLETION_CHECKPOINT_B20_R118` (B20_R74-R118): release matrix 1,948 tests, all OK; restore-verified; archived in two parts |
 | B20_R119 (engineering) | FCI as the hidden-variable baseline, and Genesis's active procedure proposing the interventions that resolve hidden causes; setup of B20_R120 |
+| B20_R120 | Can Genesis propose the experiments that resolve hidden causes? **NOT_SHOWN.** Its suspicion-based choice of interventions is no better than random (hidden-cause F1 0.17 against 0.19 at budget 2); the oracle's choice shows the headroom (0.29, 0.47 at budget 4). Post hoc: the suspicion signal barely separates confounded pairs, and reading dependence under intervention as a direct cause loses correct marks |
 
 ## 6. Next steps, in order
 
@@ -202,8 +203,9 @@ needs people: a reviewer, a statistician, an independent custodian on its own ma
   18. done: B20_R114, the checkpoint `GENESIS_COMPLETION_CHECKPOINT_B20_R118` (B20_R74-R118; release matrix
       1,948 tests all OK; restore-verified; archived in two parts);
   19. done: B20_R118 (CONFOUNDING_MISLEADS);
-  20. B20_R119-R120: FCI as the hidden-variable baseline, and Genesis's active procedure that proposes the
-      interventions resolving hidden causes, against random and degree-based choices.
+  20. done: B20_R119-R120 (FCI and the active procedure; NOT_SHOWN: no better than random targets);
+  21. next on this track: a suspicion signal that separates confounded pairs and a decision rule that tests direct
+      causation under intervention, preregistered on fresh instances.
 
 3. **Checkpoint:** the latest is B20_R118 (`469f7f0`; not rehearsed on a second machine). Do not edit the tree while
    the release matrix runs; run timing studies alone.

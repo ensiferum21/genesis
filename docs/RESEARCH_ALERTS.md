@@ -97,6 +97,12 @@ B20_R118's calibration: CONFOUNDING_MISLEADS. DirectLiNGAM connects 99% of the c
 neither can mark a hidden cause (`evidence/causal_calibration_b20r118/`). LinADMG's code was not found; FCI is
 the established comparator for the next step, Genesis proposing the interventions that resolve hidden causes.
 
+**B20_R119-R120 (24 Oct 2026): NOT_SHOWN.** FCI (written from the papers) plus a budget of interventions chosen by
+Genesis's suspicion of hidden causes did no better than random targets. An oracle's targets show the headroom:
+hidden-cause F1 0.47 against FCI's 0.19 at 4 interventions. Post hoc, the observational suspicion barely separates
+confounded pairs, and the decision rule reads ancestral dependence as direct causation. Next: fix both, on fresh
+instances (`evidence/propose_interventions_b20r120/`).
+
 ## Overall
 
 The Explorer–Judge–Consolidator shape stays. The urgent part is item 1: it decides whether any future claim of

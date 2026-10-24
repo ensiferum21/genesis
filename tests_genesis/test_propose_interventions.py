@@ -1,5 +1,7 @@
 """B20_R120: can Genesis propose the experiments that resolve hidden causes? (design): fresh seed, the arms and
-budgets, the primary test and verdict, the secondary tests, the validity checks, and the registered output."""
+budgets, the primary test and verdict, the secondary tests, the validity checks, and the registered output; the
+record."""
+import json
 from pathlib import Path
 import re
 import sys
@@ -58,6 +60,30 @@ class Design(unittest.TestCase):
     def test_refuses_another_output(self):
         with self.assertRaises(SystemExit):
             M.main([str(ROOT / 'evidence' / 'elsewhere')])
+
+
+class RecordB20R120(unittest.TestCase):
+    """B20_R120's record: every answer re-scores against the regenerated truth; the tests and the verdict recompute
+    from the rows; budgets were used exactly."""
+
+    def test_recomputes(self):
+        from genesis.causal import admg as A
+        from genesis.causal import sem as S
+        ev = ROOT / 'evidence' / 'propose_interventions_b20r120'
+        s = json.loads((ev / 'summary.json').read_text())
+        rows = [json.loads(l) for l in (ev / 'runs.jsonl').read_text().splitlines() if l.strip()]
+        self.assertEqual(len(rows), M.N_SEEDS * len(M.ARMS))
+        truths = {}
+        for r in rows:
+            if r['seed'] not in truths:
+                truths[r['seed']] = S.planted(r['seed'], M.P, M.H, M.DENSITY, M.NOISE, M.K)
+            sc = A.score(truths[r['seed']], r['answer'])
+            self.assertEqual(json.loads(json.dumps(sc)), r['scores'], (r['seed'], r['arm']))
+        self.assertTrue(M.checks(rows) and s['valid'])
+        a = json.loads(json.dumps(M.analyse(rows)))
+        for k in ('means', 'test1', 'secondary', 'verdict'):
+            self.assertEqual(a[k], s[k], k)
+        self.assertEqual((a['test1']['label'], a['verdict']), ('NO_DIFFERENCE', 'NOT_SHOWN'))
 
 
 if __name__ == '__main__':
