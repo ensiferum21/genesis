@@ -246,6 +246,13 @@ proposal's priorities, and the Ω-numbers the organism stages. They are merged h
   - INTERPRETATION: per-pair, joint re-analysis, multi-regime ML, and LLC at full budget.
 
   Holm runs over three primary tests, and misses are attributed to identifiability by intervened endpoints.
+- **B20_R130's result (recorded 19:45): CHOICE.**
+  - The development looks' conclusion that "the interpretation is the limit" held only with 6 or more experiments.
+  - At the preregistered measure (2–8 experiments), the global interpretation ties the per-pair one.
+  - What limits the scientist at small budgets is identifiability: hidden causes are found when both endpoints were
+    intervened on (recall 0.72 at 4) and rarely otherwise (0.09–0.13).
+  - The next step on this track is choosing experiments for the estimator (co-invention), measured at 6–8
+    experiments, as a new preregistered study.
 - **Next on this track: B20_R131, co-invention.** Genesis searches its acquisition language for the choice that serves
   the global interpretation, and an interpretation program over pair features (Ω-correlation, B, the per-pair
   posterior, joint marks), both under the judge, tested on fresh worlds. Non-myopic planning (rollouts over the
@@ -406,9 +413,9 @@ call; `CHECKOUT=1` at a study's first slice), so that new code can be committed 
 
 | # | Batch | What | State |
 |---|---|---|---|
-| 1 | B20_R130 | Choice, instrument and interpretation separated (about 1.5 h; reads R129's `choice.json`) | preregistered `f812701`; **running** since 18:30 |
-| 2 | B20_R133 | The Problem Compiler against the specialists (about 1 h 15 min) | preregistered `e8bc181` |
-| 3 | B20_R131 | The cascade on a real case: R129's dormant acquisition rules reactivated by R130's interpretation (about 1 h) | preregistered `22385f7`; after R130's record |
+| 1 | B20_R130 | Choice, instrument and interpretation separated | **done: CHOICE** (interpretation NO_DIFFERENCE at the preregistered measure) |
+| 2 | B20_R133 | The Problem Compiler against the specialists (about 1 h 15 min) | preregistered `e8bc181`; **running** since 19:33 |
+| 3 | B20_R131 | The cascade on a real case: R129's dormant acquisition rules reactivated by R130's interpretation (about 1 h) | preregistered `22385f7`; R130 did not verify the trigger, so it records NO_VERIFIED_TRIGGER by protocol (null trigger and comparators only) |
 | 4 | B20_R132 | The four bottlenecks of invention (headroom, expressiveness, search, evaluation) with planted positive and zero-signal controls, fresh truth sets T1/T2, the protected v2 against the candidate v3 at matched compute (about 5.7 h, slices) | preregistered `c0431f6` |
 | 5 | B20_R128 | Improving the inventor (2–3 slices of 6,600 s) | preregistered; after R132; runs **as preregistered** (directive item 1); a v3 follow-up, if any, is a new study |
 | 6 | — | Checkpoint (the last one is B20_R118) with the release matrix | owed |
@@ -471,3 +478,5 @@ problems no level has seen, and Genesis has not shown that yet.
 - 24 Oct 2026, 19:00: B20_R127 recorded (NOT_SHOWN); R129 reconciled; the research queue (`research_queue.json`) and the
   candidate judge v3 (research plane) committed; B20_R132 preregistered (`c0431f6`); the representation language's
   stage A built on fixtures.
+- 24 Oct 2026, 19:45: B20_R130 recorded: CHOICE; the global interpretation not shown at the preregistered measure (it
+  helps only from 6 experiments). B20_R133 running. B20_R131 will record NO_VERIFIED_TRIGGER by its protocol.

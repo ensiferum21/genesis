@@ -702,7 +702,7 @@ WORKSTREAMS = {
              G + 'test_certificates_rows.py']),
     'W14': ('Active experiments and identifiability (B20_R117: a hidden-confounder causal-discovery benchmark with '
             'established baselines; B20_R118: their calibration; B20_R119: FCI and an active procedure proposing the '
-            'interventions that resolve hidden causes; B20_R120: its test; B20_R121-R122: version 2 and its test); B20_R124: Gaussian noise; B20_R129: the adaptive experimental scientist (ADAPTIVE_SCIENTIST); B20_R130-R131 preregistered', B,
+            'interventions that resolve hidden causes; B20_R120: its test; B20_R121-R122: version 2 and its test); B20_R124: Gaussian noise; B20_R129: the adaptive experimental scientist (ADAPTIVE_SCIENTIST) and its reconciliation; B20_R130: choice, instrument and interpretation separated (CHOICE); B20_R131 preregistered', B,
             ['src/genesis/discovery/active.py', 'evidence/discovery_b19/active/evaluation.json',
              'src/genesis/causal/sem.py', 'src/genesis/causal/admg.py', 'src/genesis/causal/methods.py',
              'docs/checkpoints/B20_R117_RECORD.md', 'scripts/b20r118_causal_calibration.py',
@@ -710,7 +710,7 @@ WORKSTREAMS = {
              'src/genesis/causal/active.py', 'docs/checkpoints/B20_R119_RECORD.md',
              'scripts/b20r120_propose_interventions.py', 'evidence/propose_interventions_b20r120/summary.json',
              'src/genesis/causal/active2.py', 'docs/checkpoints/B20_R121_RECORD.md',
-             'scripts/b20r122_hidden_causes_v2.py', 'evidence/hidden_causes_v2_b20r122/summary.json', 'scripts/b20r124_gaussian_hidden_causes.py', 'evidence/gaussian_hidden_causes_b20r124/summary.json', 'src/genesis/science/design.py', 'src/genesis/science/acquire.py', 'src/genesis/science/library.py', 'src/genesis/causal/active3.py', 'src/genesis/causal/instruments.py', 'src/genesis/causal/joint.py', 'src/genesis/causal/global_ml.py', 'scripts/b20r129_adaptive_scientist.py', 'evidence/adaptive_scientist_b20r129/summary.json', 'scripts/b20r130_choice_instrument_interpretation.py', 'scripts/b20r131_cascade.py'],
+             'scripts/b20r122_hidden_causes_v2.py', 'evidence/hidden_causes_v2_b20r122/summary.json', 'scripts/b20r124_gaussian_hidden_causes.py', 'evidence/gaussian_hidden_causes_b20r124/summary.json', 'src/genesis/science/design.py', 'src/genesis/science/acquire.py', 'src/genesis/science/library.py', 'src/genesis/causal/active3.py', 'src/genesis/causal/instruments.py', 'src/genesis/causal/joint.py', 'src/genesis/causal/global_ml.py', 'scripts/b20r129_adaptive_scientist.py', 'evidence/adaptive_scientist_b20r129/summary.json', 'scripts/b20r130_choice_instrument_interpretation.py', 'evidence/choice_instrument_interpretation_b20r130/summary.json', 'scripts/b20r129_reconcile.py', 'evidence/r129_reconciliation/summary.json', 'scripts/b20r131_cascade.py'],
             ['tests_formal/test_discovery.py::ActiveSelection', 'tests_genesis/test_causal_domain.py',
              'tests_genesis/test_causal_calibration.py', 'tests_genesis/test_causal_active.py',
              'tests_genesis/test_propose_interventions.py', 'tests_genesis/test_causal_active2.py',

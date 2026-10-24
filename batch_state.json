@@ -1317,21 +1317,22 @@
       },
       "B20_R130": {
         "commits": [
-          "f812701"
+          "f812701",
+          "56e1301"
         ],
-        "result": "Setup (preregistered before B20_R129 ran): choice, instrument and interpretation separated. Running from 18:30 (run worktree at 56e1301)"
+        "result": "DEV, preregistered f812701, run from a clean worktree of 56e1301, 18:31-19:33: CHOICE: decfall vs random under the global estimator +0.165 F1 (p 7.5e-26; transfer p 1.9e-9); interpretation NO_DIFFERENCE (p 0.52; directed worse; global better only from 6 experiments: 0.69 vs 0.60 at 8); instrument NO_DIFFERENCE (p 0.41); headline NOT_SHOWN (needs 6); identifiability: recall 0.72 with both endpoints intervened at 4, 0.09-0.13 otherwise"
       },
       "B20_R131": {
         "commits": [
           "22385f7"
         ],
-        "result": "Setup (preregistered 22385f7): the cascade on a real case. After B20_R130's record"
+        "result": "Setup (preregistered 22385f7): the cascade on a real case. R130 did not verify the trigger: by protocol NO_VERIFIED_TRIGGER (null trigger and comparators). After R133"
       },
       "B20_R133": {
         "commits": [
           "e8bc181"
         ],
-        "result": "Setup (preregistered): the Problem Compiler against the specialists. Queued"
+        "result": "Setup (preregistered e8bc181): the Problem Compiler against the specialists. Running from 19:33 (run worktree at 8bdebad)"
       },
       "B20_R132": {
         "commits": [
@@ -1339,6 +1340,12 @@
           "c0431f6"
         ],
         "result": "Setup (preregistered c0431f6): the four bottlenecks of invention with planted and zero-signal controls, the protected v2 against the candidate v3 (research plane). Queued after R133 and R131"
+      },
+      "B20_R135": {
+        "commits": [
+          "7040a3c"
+        ],
+        "result": "Setup (preregistered 7040a3c, before R133 ran): invented representations against textbook ones. After R128"
       }
     },
     "open_after_b20_r5": [

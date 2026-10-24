@@ -26,7 +26,9 @@
    "unlocks": []
   },
   "B20_R130": {
-   "artifacts": [],
+   "artifacts": [
+    "evidence/choice_instrument_interpretation_b20r130"
+   ],
    "committed": true,
    "depends_on": [],
    "failure": null,
@@ -34,9 +36,9 @@
    "kind": "study",
    "line": "causal-science",
    "notes": "",
-   "outcome": null,
+   "outcome": "CHOICE (interpretation NO_DIFFERENCE; instrument NO_DIFFERENCE)",
    "output": "evidence/choice_instrument_interpretation_b20r130",
-   "positive": null,
+   "positive": true,
    "preregistered": "f812701",
    "priority": 9,
    "requires": [],
@@ -44,7 +46,7 @@
     "cpu0_hours": 1.5
    },
    "script": "scripts/b20r130_choice_instrument_interpretation.py",
-   "status": "running",
+   "status": "done",
    "title": "Choice, instrument and interpretation separated",
    "unlocks": [
     "global-interpretation"
@@ -60,7 +62,7 @@
    "id": "B20_R131",
    "kind": "study",
    "line": "capability-graph",
-   "notes": "needs R130 recorded (its record test is the trigger's evidence)",
+   "notes": "R130 did not verify global-interpretation: by protocol NO_VERIFIED_TRIGGER (null trigger and comparators)",
    "outcome": null,
    "output": "evidence/cascade_b20r131",
    "positive": null,
@@ -121,7 +123,7 @@
     "cpu0_hours": 1.25
    },
    "script": "scripts/b20r133_problem_compiler.py",
-   "status": "queued",
+   "status": "running",
    "title": "The Problem Compiler against the specialists (existing reductions executed)",
    "unlocks": [
     "compiler-validated"
@@ -434,6 +436,18 @@
    "id": "repr-language-study",
    "kind": "preregister",
    "time": "2026-10-24T11:18:06+00:00"
+  },
+  {
+   "id": "B20_R130",
+   "kind": "finish",
+   "outcome": "CHOICE (interpretation NO_DIFFERENCE; instrument NO_DIFFERENCE)",
+   "positive": true,
+   "time": "2026-10-24T11:36:32+00:00"
+  },
+  {
+   "id": "B20_R133",
+   "kind": "start",
+   "time": "2026-10-24T11:36:32+00:00"
   }
  ],
  "lines": {
@@ -449,6 +463,11 @@
     [
      "B20_R129",
      "ADAPTIVE_SCIENTIST",
+     true
+    ],
+    [
+     "B20_R130",
+     "CHOICE (interpretation NO_DIFFERENCE; instrument NO_DIFFERENCE)",
      true
     ]
    ],
@@ -530,5 +549,7 @@
  ],
  "reactivated": {},
  "schema": "genesis-research-queue-v1",
- "unlocked": []
+ "unlocked": [
+  "experiment-choice-verified"
+ ]
 }

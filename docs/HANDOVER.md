@@ -217,8 +217,10 @@ needs people: a reviewer, a statistician, an independent custodian on its own ma
   23. done: B20_R123 (5 of 14 reached; 45 of 54 matched; no record); done: B20_R124 (EXPERIMENTS_NEEDED);
   24. done: B20_R127 (NOT_SHOWN: SYSTEM ties MCX on Gset at 10 s, 16-11; the judge released nothing in nine
       searches, its threshold 4 to 52 times the best training gain). Daniel's directive of 24 Oct, 15:35 (adopted,
-      `docs/GENESIS_OMEGA_PLAN.md` §0a) orders the rest: B20_R130 (running from 18:30), B20_R133, B20_R131 (after
-      R130's record), B20_R132 (the four bottlenecks of invention), B20_R128 (as preregistered). Studies run from
+      `docs/GENESIS_OMEGA_PLAN.md` §0a) orders the rest: done: B20_R130 (CHOICE; the global interpretation did not
+      beat the per-pair one at the preregistered measure, so B20_R131's trigger is not verified); B20_R133 (running
+      from 19:33), B20_R131, B20_R132 (the four bottlenecks of invention), B20_R128 (as preregistered), B20_R135
+      (invented representations). Studies run from
       the clean worktree `/home/claude/work/genesis-run` via `/home/claude/run_study.sh`, one slice per call.
   25. after them: the Genesis Ω stages in `docs/GENESIS_OMEGA_PLAN.md` §5-§6 (Ω0 analysis of R127/R128; B20_R130
       invented instruments; B20_R131 the Difficulty Cartographer; the genome and typed language; the ecology;

@@ -5360,6 +5360,9 @@
     "scripts/b20r129_adaptive_scientist.py",
     "evidence/adaptive_scientist_b20r129/summary.json",
     "scripts/b20r130_choice_instrument_interpretation.py",
+    "evidence/choice_instrument_interpretation_b20r130/summary.json",
+    "scripts/b20r129_reconcile.py",
+    "evidence/r129_reconciliation/summary.json",
     "scripts/b20r131_cascade.py"
    ],
    "disposition": "IMPLEMENTED_BOUNDED_PENDING_AUDIT",
@@ -5393,7 +5396,7 @@
     "tests_genesis/test_cascade_study.py",
     "tests_genesis/test_primitive_library.py"
    ],
-   "title": "Active experiments and identifiability (B20_R117: a hidden-confounder causal-discovery benchmark with established baselines; B20_R118: their calibration; B20_R119: FCI and an active procedure proposing the interventions that resolve hidden causes; B20_R120: its test; B20_R121-R122: version 2 and its test); B20_R124: Gaussian noise; B20_R129: the adaptive experimental scientist (ADAPTIVE_SCIENTIST); B20_R130-R131 preregistered",
+   "title": "Active experiments and identifiability (B20_R117: a hidden-confounder causal-discovery benchmark with established baselines; B20_R118: their calibration; B20_R119: FCI and an active procedure proposing the interventions that resolve hidden causes; B20_R120: its test; B20_R121-R122: version 2 and its test); B20_R124: Gaussian noise; B20_R129: the adaptive experimental scientist (ADAPTIVE_SCIENTIST) and its reconciliation; B20_R130: choice, instrument and interpretation separated (CHOICE); B20_R131 preregistered",
    "workstream": "W14"
   },
   {
