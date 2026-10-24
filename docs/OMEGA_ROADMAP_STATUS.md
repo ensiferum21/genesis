@@ -27,7 +27,7 @@ Gate states:
 | Ω8 Bottleneck scientist | Ω1–Ω2 | `science/design.py` (domain-independent), causal adapter, instruments, joint and global interpretation; Difficulty Cartographer development looks | Discriminating interventions, preregistered, matched budgets | **EVIDENCE**: B20_R129 ADAPTIVE_SCIENTIST (the experimental scientist beats random choice; an invented rule beats the established ones). **B20_R130 CHOICE**: the experiment choice carries to a different interpretation (+0.165 F1, p 7e-26); the global interpretation NOT shown at the preregistered measure (it helps only from 6 experiments); the invented instrument ties. Instrument invention is OPEN |
 | Ω9 Process meta-invention | Ω6, Ω9 | `selfimprove` process genomes | §16.8 a process improver transformed; limits hold | **§16.8 GATE PASSED on fixtures** (`autonomy/process.py`, `test_process_levels`: processes as data at any level, a level-3 process transforms a level-2 improver with lineage, one fuel budget and a depth limit stop runaway execution). EVIDENCE PENDING on real tasks (B20_R128) |
 | Ω10 Allocator | Ω4 | `adaptation/metabolism.py`, `autonomy/loop.py` | Regret against baselines | OPEN |
-| Ω11 Cross-domain transfer | Ω5 | The Problem Compiler (independent set, colouring, Max-2-SAT, max-cut on Genesis's engine, with MaxSAT and MILP back-ends; development looks only) | Verified transfer with minimal special casing | BUILDING. A preregistered compiler study is next |
+| Ω11 Cross-domain transfer | Ω5 | The Problem Compiler (independent set, colouring, Max-2-SAT, max-cut on Genesis's engine, with MaxSAT and MILP back-ends; development looks only) | Verified transfer with minimal special casing | **B20_R133: BEHIND_SPECIALISTS_ON coloring, mis** through builder-written reductions (Max-2-SAT tie; max-cut control ahead of PASMaxSAT-c); every answer checked twice. Reductions Genesis synthesises itself: B20_R135, preregistered |
 | Ω12 Longitudinal autonomy | Ω9 | Resumable studies, checkpoints, the research loop; **the persistent research queue** (`research_queue.json`, `autonomy/queue.py`: dependencies, capability tags, stagnation of a line after three negative results with a named diagnosis, bounded reactivation by capability) | Several prospective generations | BUILDING (queue on fixtures, `test_research_queue`; the engine-invention line is stagnant with B20_R132 as its diagnosis) |
 
 **The protected boundary** (§16.9): `test_omega_boundary` (the research plane imports no kernel, judge, custody or
@@ -36,6 +36,6 @@ tampered evidence by the judge is the kernel's existing suite (`test_acceptance_
 `test_redteam_b16`).
 
 **Next smallest high-value actions:**
-1. Done: B20_R130 recorded (CHOICE). Running: B20_R133 (from 19:33); then B20_R131, B20_R132, B20_R128, B20_R135.
+1. Done: B20_R130 (CHOICE), B20_R133 (BEHIND_SPECIALISTS_ON coloring, mis). Running: B20_R131 (from 20:33); then B20_R132, B20_R128, B20_R135.
 2. Preregister the representation language's first study before B20_R133's colouring result is known.
 3. A fresh checkpoint after B20_R128.

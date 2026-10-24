@@ -73,7 +73,7 @@
     "cpu0_hours": 1.0
    },
    "script": "scripts/b20r131_cascade.py",
-   "status": "queued",
+   "status": "running",
    "title": "The cascade on a real case: dormant R129 rules against R130's interpretation",
    "unlocks": [
     "cascade-value"
@@ -105,7 +105,9 @@
    ]
   },
   "B20_R133": {
-   "artifacts": [],
+   "artifacts": [
+    "evidence/problem_compiler_b20r133"
+   ],
    "committed": true,
    "depends_on": [],
    "failure": null,
@@ -113,9 +115,9 @@
    "kind": "study",
    "line": "compiler",
    "notes": "",
-   "outcome": null,
+   "outcome": "BEHIND_SPECIALISTS_ON coloring, mis (Max-2-SAT NOT_DISTINGUISHABLE)",
    "output": "evidence/problem_compiler_b20r133",
-   "positive": null,
+   "positive": false,
    "preregistered": "e8bc181",
    "priority": 8,
    "requires": [],
@@ -123,7 +125,7 @@
     "cpu0_hours": 1.25
    },
    "script": "scripts/b20r133_problem_compiler.py",
-   "status": "running",
+   "status": "done",
    "title": "The Problem Compiler against the specialists (existing reductions executed)",
    "unlocks": [
     "compiler-validated"
@@ -675,6 +677,18 @@
    "id": "paradigm-invention",
    "kind": "add",
    "time": "2026-10-24T12:35:16+00:00"
+  },
+  {
+   "id": "B20_R133",
+   "kind": "finish",
+   "outcome": "BEHIND_SPECIALISTS_ON coloring, mis (Max-2-SAT NOT_DISTINGUISHABLE)",
+   "positive": false,
+   "time": "2026-10-24T12:36:53+00:00"
+  },
+  {
+   "id": "B20_R131",
+   "kind": "start",
+   "time": "2026-10-24T12:36:53+00:00"
   }
  ],
  "lines": {
@@ -703,8 +717,14 @@
   },
   "compiler": {
    "diagnosis": null,
-   "outcomes": [],
-   "run": 0,
+   "outcomes": [
+    [
+     "B20_R133",
+     "BEHIND_SPECIALISTS_ON coloring, mis (Max-2-SAT NOT_DISTINGUISHABLE)",
+     false
+    ]
+   ],
+   "run": 1,
    "stagnant": false
   },
   "diagnosis": {

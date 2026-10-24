@@ -436,8 +436,8 @@ call; `CHECKOUT=1` at a study's first slice), so that new code can be committed 
 | # | Batch | What | State |
 |---|---|---|---|
 | 1 | B20_R130 | Choice, instrument and interpretation separated | **done: CHOICE** (interpretation NO_DIFFERENCE at the preregistered measure) |
-| 2 | B20_R133 | The Problem Compiler against the specialists (about 1 h 15 min) | preregistered `e8bc181`; **running** since 19:33 |
-| 3 | B20_R131 | The cascade on a real case: R129's dormant acquisition rules reactivated by R130's interpretation (about 1 h) | preregistered `22385f7`; R130 did not verify the trigger, so it records NO_VERIFIED_TRIGGER by protocol (null trigger and comparators only) |
+| 2 | B20_R133 | The Problem Compiler against the specialists | **done: BEHIND_SPECIALISTS_ON coloring, mis** (Max-2-SAT tie; executed reductions only) |
+| 3 | B20_R131 | The cascade on a real case: R129's dormant acquisition rules reactivated by R130's interpretation (about 1 h) | preregistered `22385f7`; **running** since 20:33; R130 did not verify the trigger, so it records NO_VERIFIED_TRIGGER by protocol |
 | 4 | B20_R132 | The four bottlenecks of invention (headroom, expressiveness, search, evaluation) with planted positive and zero-signal controls, fresh truth sets T1/T2, the protected v2 against the candidate v3 at matched compute (about 5.7 h, slices) | preregistered `c0431f6` |
 | 5 | B20_R128 | Improving the inventor (2–3 slices of 6,600 s) | preregistered; after R132; runs **as preregistered** (directive item 1); a v3 follow-up, if any, is a new study |
 | 6 | — | Checkpoint (the last one is B20_R118) with the release matrix | owed |

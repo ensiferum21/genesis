@@ -19,6 +19,7 @@ Nothing here is an independent or sealed result.
 | B20_R118 | Hidden confounders mislead the established methods (CONFOUNDING_MISLEADS) |
 | B20_R122 | On non-Gaussian data the observational residual flag marks hidden causes: F1 0.47 against FCI's 0.21 |
 | B20_R124 | With Gaussian data only experiments find hidden causes (EXPERIMENTS_NEEDED); the oracle's 4 equal random's 8 |
+| B20_R133 (positive parts) | Genesis's engine beats both MaxSAT 2026 entrants on Max-2-SAT at 1 s (7-0, 15-0) and PASMaxSAT-c on max-cut (10-0 at 10 s); it beats HiGHS on every family (20-0); every answer checked by two independent checkers |
 | B20_R130 | **CHOICE**: Genesis's scientist (B20_R129's choice, decfall) beats random under the global estimator by 0.165 hidden-cause F1 (p 7.5e-26; transfer p 1.9e-9); with every experiment the global estimator reaches 0.69 against the per-pair framework's 0.61 |
 | B20_R129 | **ADAPTIVE_SCIENTIST**: Genesis's scientist needs 4.49 experiments against random's 6.81 (p 1e-27). Adapting is worth 0.70. Its own rule `inv1` beats every established acquisition (4.34 against eig's 4.98, preregistered; the others exploratory, Holm) and ties the builder's `decfall` (p 0.16), which Genesis chose on validation (4.42 against 4.59). `inv1` was a random initial program, not released by the judge. Exploratory: `inv1` has the higher F1 after 4 experiments (+0.054 test, +0.077 transfer, Holm p 0.008); reconciliation `evidence/r129_reconciliation/`. Four as good as eight holds on the shifted family only. Information gained does not predict accuracy gained |
 
@@ -28,6 +29,7 @@ Nothing here is an independent or sealed result.
 |---|---|
 | B20_R111, R112, R115 | Autonomous invention of a better algorithm: NOT_DEMONSTRATED |
 | B20_R86 | Generations do not compound in the earlier language: NO_COMPOUNDING |
+| B20_R133 | The Problem Compiler through builder-written reductions: BEHIND_SPECIALISTS_ON coloring (0-19), mis (0-10-10, 0.25%); Max-2-SAT NOT_DISTINGUISHABLE (2-0-18); executed reductions only |
 | B20_R130 | The global interpretation against the per-pair one at the preregistered measure (F1 averaged over 2-8 experiments): NO_DIFFERENCE (p 0.52), directed F1 worse; it helps only from 6 experiments. The invented instrument ties. Four as good as eight NOT_SHOWN (needs 6) |
 | B20_R127 | The system's own engines against human designs: NOT_SHOWN (Gset 10 s: 16–11 against MCX, p 0.44; 9–18 against REX; 28–5 against BLS). The judge released nothing in nine searches: training gains +0.04–0.23% against tau 0.75–2.45%; no compounding; no mechanism credited |
 | B20_R120, R122, R124 | Genesis's choice of experiments no better than random (four times; these chose from fixed observational scores; B20_R129's adaptive scientist then beat random) |
@@ -49,7 +51,6 @@ Nothing here is an independent or sealed result.
 | Batch | State |
 |---|---|
 | B20_R128 | Improving the inventor. Preregistered |
-| B20_R133 | The Problem Compiler against the specialists. Preregistered `e8bc181` |
 | B20_R132 | The four bottlenecks of invention. Preregistered `c0431f6` |
 | B20_R131 | The cascade on a real case. Preregistered `22385f7`; R130 did not verify its trigger, so by its protocol it records NO_VERIFIED_TRIGGER and runs only the null trigger and comparators |
 

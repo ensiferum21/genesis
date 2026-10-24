@@ -1326,13 +1326,14 @@
         "commits": [
           "22385f7"
         ],
-        "result": "Setup (preregistered 22385f7): the cascade on a real case. R130 did not verify the trigger: by protocol NO_VERIFIED_TRIGGER (null trigger and comparators). After R133"
+        "result": "Setup (preregistered 22385f7): the cascade on a real case. Running from 20:33 (run worktree at 68e24c0); R130 did not verify the trigger: by protocol NO_VERIFIED_TRIGGER"
       },
       "B20_R133": {
         "commits": [
-          "e8bc181"
+          "e8bc181",
+          "8bdebad"
         ],
-        "result": "Setup (preregistered e8bc181): the Problem Compiler against the specialists. Running from 19:33 (run worktree at 8bdebad)"
+        "result": "DEV, preregistered e8bc181, run from a clean worktree of 8bdebad, 19:33-20:32: BEHIND_SPECIALISTS_ON coloring, mis: colouring 0-19 (18.6 vs 6.9 conflicts), independent set 0-10-10 (0.25%), Max-2-SAT 2-0-18 (better than both entrants at 1 s), max-cut control 10-0 against PASMaxSAT-c, ties NuWLS; HiGHS behind everywhere; no failures; executed builder-written reductions, none invented"
       },
       "B20_R132": {
         "commits": [

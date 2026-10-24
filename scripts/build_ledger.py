@@ -556,7 +556,7 @@ WORKSTREAMS = {
              'scripts/b20r66_e1d_n60.py', 'evidence/e1d_n60_b20r66/summary.json',
              'scripts/b20r68_e1d_domain_heuristic.py', 'evidence/e1d_domain_heuristic_b20r68/summary.json',
              'scripts/b20r70_tts_scaling.py', 'evidence/tts_scaling_b20r70/summary.json',
-             'scripts/b20r73_multiverse.py', 'evidence/multiverse_b20r73/summary.json', 'src/genesis/compiler/bqp.py', 'src/genesis/compiler/families.py', 'src/genesis/compiler/backends.py', 'src/genesis/compiler/contracts.py', 'scripts/b20r133_problem_compiler.py'],
+             'scripts/b20r73_multiverse.py', 'evidence/multiverse_b20r73/summary.json', 'src/genesis/compiler/bqp.py', 'src/genesis/compiler/families.py', 'src/genesis/compiler/backends.py', 'src/genesis/compiler/contracts.py', 'scripts/b20r133_problem_compiler.py', 'evidence/problem_compiler_b20r133/summary.json'],
             [G + 'test_domain_adapters.py', G + 'test_calibration.py', G + 'test_calibration_rules.py',
              G + 'test_certification_budget.py', G + 'test_strong_baseline_audit.py', G + 'test_mip_hard_probe.py',
              G + 'test_dense_strong_baseline.py', G + 'test_e1d_readiness.py', G + 'test_e1d_package.py',

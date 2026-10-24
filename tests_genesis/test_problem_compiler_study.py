@@ -63,5 +63,79 @@ class Design(unittest.TestCase):
             M.main([str(ROOT / 'evidence' / 'elsewhere')])
 
 
+def independent_score(family, inst, x):
+    """A second checker written apart from `compiler.families` (numpy and networkx), from the instance and the raw
+    BQP assignment: (valid, score). It decodes the compiler's variable layout itself."""
+    import networkx as nx
+    import numpy as np
+    if x is None:
+        return False, None
+    z = np.asarray(x, dtype=np.int64)
+    if family == 'mis':
+        S = [i for i in range(inst['n']) if z[i] == 1]
+        G = nx.Graph()
+        G.add_nodes_from(range(inst['n']))
+        G.add_edges_from(map(tuple, inst['edges']))
+        return G.subgraph(S).number_of_edges() == 0, len(S)
+    if family == 'coloring':
+        n, k = inst['n'], inst['k']
+        Z = z[:n * k].reshape(n, k)
+        if not (Z.sum(axis=1) == 1).all():
+            return False, None
+        col = Z.argmax(axis=1)
+        E = np.asarray(inst['edges'])
+        return True, int((col[E[:, 0]] == col[E[:, 1]]).sum())
+    if family == 'max2sat':
+        C = np.asarray(inst['clauses'])
+        val = z[np.abs(C) - 1] == (C > 0)
+        return True, int(val.any(axis=1).sum())
+    if family == 'maxcut':
+        E = np.asarray(inst['edges'])
+        return True, int((z[E[:, 0]] != z[E[:, 1]]).sum())
+    raise ValueError(family)
+
+
+class RecordB20R133(unittest.TestCase):
+    """B20_R133's record: every run's answer re-checked by the family's verifier AND by an independent second checker
+    on the regenerated instance; the run set complete; the analysis, the Holm family and the verdict recompute; the
+    code identity is the run tree's. The reductions executed are the builder's (`compiler.families.compile`):
+    nothing here is an invented reduction."""
+    IDENTITY = '130db5ccdb57555a2b75d48ba9a04cb90438adc40974d006b96b5630a308a13c'   # the run tree, 8bdebad
+
+    @classmethod
+    def setUpClass(cls):
+        import json
+        cls.ev = ROOT / 'evidence' / 'problem_compiler_b20r133'
+        cls.s = json.loads((cls.ev / 'summary.json').read_text())
+        cls.rows = [json.loads(line) for line in (cls.ev / 'runs.jsonl').read_text().splitlines() if line.strip()]
+
+    def test_every_answer_checked_twice(self):
+        from genesis.compiler import families as FM
+        insts = {}
+        for r in self.rows:
+            key = (r['family'], r['seed'])
+            if key not in insts:
+                insts[key] = FM.generate(r['family'], r['seed'], r['params'])
+            inst = insts[key]
+            if r['valid']:
+                ok, score, _ = FM.verify(r['family'], inst, FM.decode(r['family'], inst, r['assignment']))
+                self.assertTrue(ok)
+                self.assertEqual(score, r['score'])
+                ok2, score2 = independent_score(r['family'], inst, r['assignment'])
+                self.assertTrue(ok2, (r['family'], r['seed'], r['arm']))
+                self.assertEqual(score2, r['score'], (r['family'], r['seed'], r['arm']))
+            else:
+                self.assertEqual(r['score'], M.worst(r['family'], inst))
+
+    def test_analysis_recomputes(self):
+        import json
+        self.assertTrue(M.checks(self.rows))
+        a = json.loads(json.dumps(M.analyse(self.rows)))
+        for k in ('tests', 'secondary', 'means', 'failures', 'holm', 'verdict'):
+            self.assertEqual(a[k], self.s[k], k)
+        self.assertTrue(self.s['valid'])
+        self.assertEqual(self.s['code_identity'], self.IDENTITY)
+
+
 if __name__ == '__main__':
     unittest.main()
