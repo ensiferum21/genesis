@@ -51,7 +51,7 @@ class RecordB20R116(unittest.TestCase):
         s = json.loads((ev / 'summary.json').read_text())
         plan = json.loads((ev / 'plan.json').read_text())
         rows = [json.loads(l) for l in (ev / 'rows.jsonl').read_text().splitlines() if l.strip()]
-        best = GS.best_known()
+        best = GS.best_known(as_of='2026-10-24T12:00:00+08:00')          # the table B20_R116 ran with
         earlier = M.best_earlier()
         self.assertEqual(plan['instances'], [g for g in (f'G{k}' for k in range(1, 55)) if earlier[g] < best[g]])
         self.assertEqual(plan['configurations'], M.configurations()[0])

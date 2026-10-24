@@ -136,6 +136,12 @@ class Gset(unittest.TestCase):
             self.assertGreaterEqual(v['sources']['bls2013_paper'], v['sources']['before_bls2013'], g)
             self.assertTrue(set(v['sources']) <= set(doc['sources']), g)
         self.assertIn('never as a record', doc['policy'])
+        # 24 Oct 2026: B20_R123's 7688 on G38 was already in the max-bisection literature (Wu and Hao 2013)
+        self.assertEqual((bk['G38'], doc['instances']['G38']['from']), (7688, ['wuhao2013_bisection']))
+        before = GS.best_known(as_of='2026-10-24T12:00:00+08:00')
+        self.assertEqual(before['G38'], 7687)
+        self.assertEqual({g for g in bk if bk[g] != before[g]}, {'G38'})
+        self.assertTrue(all('added' in s for s in doc['sources'].values()))
 
     def test_only_set_one_instances(self):
         with self.assertRaises(ValueError):

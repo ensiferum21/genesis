@@ -100,7 +100,8 @@
     "bls2013_paper": 3064,
     "bls2013_rlsolver": 3064,
     "macut2012_paper": 3064,
-    "optsicom2009": 3060
+    "optsicom2009": 3060,
+    "wuhao2013_bisection": 3062
    }
   },
   "G15": {
@@ -110,7 +111,8 @@
     "before_macut2012",
     "bls2013_paper",
     "bls2013_rlsolver",
-    "macut2012_paper"
+    "macut2012_paper",
+    "wuhao2013_bisection"
    ],
    "optsicom2009_upper_bound": 3169,
    "sources": {
@@ -119,7 +121,8 @@
     "bls2013_paper": 3050,
     "bls2013_rlsolver": 3050,
     "macut2012_paper": 3050,
-    "optsicom2009": 3049
+    "optsicom2009": 3049,
+    "wuhao2013_bisection": 3050
    }
   },
   "G16": {
@@ -231,7 +234,8 @@
     "before_macut2012",
     "bls2013_paper",
     "bls2013_rlsolver",
-    "macut2012_paper"
+    "macut2012_paper",
+    "wuhao2013_bisection"
    ],
    "optsicom2009_upper_bound": 14123,
    "sources": {
@@ -240,7 +244,8 @@
     "bls2013_paper": 13359,
     "bls2013_rlsolver": 13359,
     "macut2012_paper": 13359,
-    "optsicom2009": 13346
+    "optsicom2009": 13346,
+    "wuhao2013_bisection": 13359
    }
   },
   "G23": {
@@ -272,7 +277,8 @@
     "before_macut2012": 13337,
     "bls2013_paper": 13337,
     "macut2012_paper": 13337,
-    "optsicom2009": 13314
+    "optsicom2009": 13314,
+    "wuhao2013_bisection": 13336
    }
   },
   "G25": {
@@ -293,14 +299,16 @@
    "best_known": 13328,
    "from": [
     "bls2013_page",
-    "bls2013_paper"
+    "bls2013_paper",
+    "wuhao2013_bisection"
    ],
    "optsicom2009_upper_bound": null,
    "sources": {
     "before_bls2013": 13314,
     "bls2013_page": 13328,
     "bls2013_paper": 13328,
-    "optsicom2009": 13314
+    "optsicom2009": 13314,
+    "wuhao2013_bisection": 13328
    }
   },
   "G27": {
@@ -380,14 +388,16 @@
    "best_known": 3309,
    "from": [
     "bls2013_page",
-    "bls2013_paper"
+    "bls2013_paper",
+    "wuhao2013_bisection"
    ],
    "optsicom2009_upper_bound": null,
    "sources": {
     "before_bls2013": 3299,
     "bls2013_page": 3309,
     "bls2013_paper": 3309,
-    "optsicom2009": 3288
+    "optsicom2009": 3288,
+    "wuhao2013_bisection": 3309
    }
   },
   "G32": {
@@ -444,7 +454,8 @@
   "G35": {
    "best_known": 7686,
    "from": [
-    "macut2012_paper"
+    "macut2012_paper",
+    "wuhao2013_bisection"
    ],
    "optsicom2009_upper_bound": 8000,
    "sources": {
@@ -452,7 +463,8 @@
     "before_macut2012": 7685,
     "bls2013_paper": 7684,
     "macut2012_paper": 7686,
-    "optsicom2009": 7670
+    "optsicom2009": 7670,
+    "wuhao2013_bisection": 7686
    }
   },
   "G36": {
@@ -467,7 +479,8 @@
     "bls2013_page": 7678,
     "bls2013_paper": 7678,
     "macut2012_paper": 7679,
-    "optsicom2009": 7660
+    "optsicom2009": 7660,
+    "wuhao2013_bisection": 7678
    }
   },
   "G37": {
@@ -481,35 +494,38 @@
     "before_macut2012": 7689,
     "bls2013_paper": 7689,
     "macut2012_paper": 7690,
-    "optsicom2009": 7666
+    "optsicom2009": 7666,
+    "wuhao2013_bisection": 7689
    }
   },
   "G38": {
-   "best_known": 7687,
+   "best_known": 7688,
    "from": [
-    "bls2013_page",
-    "bls2013_paper"
+    "wuhao2013_bisection"
    ],
    "optsicom2009_upper_bound": null,
    "sources": {
     "before_bls2013": 7681,
     "bls2013_page": 7687,
     "bls2013_paper": 7687,
-    "optsicom2009": 7681
+    "optsicom2009": 7681,
+    "wuhao2013_bisection": 7688
    }
   },
   "G39": {
    "best_known": 2408,
    "from": [
     "bls2013_page",
-    "bls2013_paper"
+    "bls2013_paper",
+    "wuhao2013_bisection"
    ],
    "optsicom2009_upper_bound": null,
    "sources": {
     "before_bls2013": 2397,
     "bls2013_page": 2408,
     "bls2013_paper": 2408,
-    "optsicom2009": 2395
+    "optsicom2009": 2395,
+    "wuhao2013_bisection": 2408
    }
   },
   "G4": {
@@ -530,42 +546,48 @@
    "best_known": 2400,
    "from": [
     "bls2013_page",
-    "bls2013_paper"
+    "bls2013_paper",
+    "wuhao2013_bisection"
    ],
    "optsicom2009_upper_bound": null,
    "sources": {
     "before_bls2013": 2392,
     "bls2013_page": 2400,
     "bls2013_paper": 2400,
-    "optsicom2009": 2387
+    "optsicom2009": 2387,
+    "wuhao2013_bisection": 2400
    }
   },
   "G41": {
    "best_known": 2405,
    "from": [
     "bls2013_page",
-    "bls2013_paper"
+    "bls2013_paper",
+    "wuhao2013_bisection"
    ],
    "optsicom2009_upper_bound": null,
    "sources": {
     "before_bls2013": 2398,
     "bls2013_page": 2405,
     "bls2013_paper": 2405,
-    "optsicom2009": 2398
+    "optsicom2009": 2398,
+    "wuhao2013_bisection": 2405
    }
   },
   "G42": {
    "best_known": 2481,
    "from": [
     "bls2013_page",
-    "bls2013_paper"
+    "bls2013_paper",
+    "wuhao2013_bisection"
    ],
    "optsicom2009_upper_bound": null,
    "sources": {
     "before_bls2013": 2474,
     "bls2013_page": 2481,
     "bls2013_paper": 2481,
-    "optsicom2009": 2469
+    "optsicom2009": 2469,
+    "wuhao2013_bisection": 2481
    }
   },
   "G43": {
@@ -729,35 +751,40 @@
     "before_bls2013": 3847,
     "bls2013_page": 3848,
     "bls2013_paper": 3848,
-    "optsicom2009": 3846
+    "optsicom2009": 3846,
+    "wuhao2013_bisection": 3847
    }
   },
   "G52": {
    "best_known": 3851,
    "from": [
     "bls2013_page",
-    "bls2013_paper"
+    "bls2013_paper",
+    "wuhao2013_bisection"
    ],
    "optsicom2009_upper_bound": null,
    "sources": {
     "before_bls2013": 3850,
     "bls2013_page": 3851,
     "bls2013_paper": 3851,
-    "optsicom2009": 3849
+    "optsicom2009": 3849,
+    "wuhao2013_bisection": 3851
    }
   },
   "G53": {
    "best_known": 3850,
    "from": [
     "bls2013_page",
-    "bls2013_paper"
+    "bls2013_paper",
+    "wuhao2013_bisection"
    ],
    "optsicom2009_upper_bound": null,
    "sources": {
     "before_bls2013": 3848,
     "bls2013_page": 3850,
     "bls2013_paper": 3850,
-    "optsicom2009": 3846
+    "optsicom2009": 3846,
+    "wuhao2013_bisection": 3850
    }
   },
   "G54": {
@@ -771,7 +798,8 @@
     "before_bls2013": 3850,
     "bls2013_page": 3852,
     "bls2013_paper": 3852,
-    "optsicom2009": 3846
+    "optsicom2009": 3846,
+    "wuhao2013_bisection": 3851
    }
   },
   "G6": {
@@ -828,44 +856,57 @@
    }
   }
  },
- "policy": "best_known is the highest value among the sources held here, each recorded with its value. The newest sources are the 2012-2013 papers of breakout local search (Table 2, all of G1-G54) and of the memetic algorithm MACUT (Table 1, 24 instances), each with the best known values before it; later publications may hold higher values: a result is reported as a fraction of this value, never as a record, until the record is cross-checked against the publications after 2013. Where sources for the same method disagree (G30: the BLS authors' page 3413, the paper 3412), both are kept and the higher counts.",
+ "policy": "best_known is the highest value among the sources held here, each recorded with its value. The newest sources are the 2012-2013 papers of breakout local search (Table 2, all of G1-G54) and of the memetic algorithm MACUT (Table 1, 24 instances), each with the best known values before it; later publications may hold higher values: a result is reported as a fraction of this value, never as a record, until the record is cross-checked against the publications after 2013. Where sources for the same method disagree (G30: the BLS authors' page 3413, the paper 3412), both are kept and the higher counts. Values of max-bisection (balanced cuts) are lower bounds on the max-cut and are held as sources too (wuhao2013_bisection, added 24 Oct 2026 after B20_R123). Each source records when it was added, and gset.best_known(as_of) gives the table as it stood at a time, so that a study is judged against the table it ran with.",
  "schema": "genesis-gset-best-known-v1",
  "sources": {
   "before_bls2013": {
+   "added": "2026-10-23T09:00:00+08:00",
    "file_sha256": "da28d05cc0dd8b84086e8211b3afcf72fe27e62b6e230dfe071b3d582c71a3f6",
    "obtained": "Daniel, 23 Oct 2026 (the same PDF)",
    "what": "Table 2, column f_prev of the same paper: the best known values before breakout local search, from the paper's references [7,16,19,21,22] (as tabled there, not checked against those papers)"
   },
   "before_macut2012": {
+   "added": "2026-10-23T09:00:00+08:00",
    "file_sha256": "a2d0fee15e88e5335c8f337034681c31d224d9cd9b970e44fab9965c0fcb5fdc",
    "obtained": "Daniel, 23 Oct 2026 (the same PDF)",
    "what": "Table 1, column f_pre of the same paper: the best known values before MACUT from its references (as tabled there, not checked against those papers)"
   },
   "bls2013_page": {
+   "added": "2026-10-22T00:00:00+08:00",
    "obtained": "WebFetch, 22 Oct 2026",
    "url": "https://leria-info.univ-angers.fr/~jinkao.hao/BLS_max_cut.html",
    "what": "Instances improved by breakout local search, as listed on the authors' page (Benlic and Hao, Breakout Local Search for Maximum Cut Problem, Eng. Appl. Artif. Intell. 26(3):1162-1173, 2013)"
   },
   "bls2013_paper": {
+   "added": "2026-10-23T09:00:00+08:00",
    "file_sha256": "da28d05cc0dd8b84086e8211b3afcf72fe27e62b6e230dfe071b3d582c71a3f6",
    "obtained": "Daniel, 23 Oct 2026 (the authors' preprint PDF, final version of 6 Sept 2012, 27 pages)",
    "what": "Table 2, column f_best: the best of 20 runs of breakout local search per instance (Benlic and Hao, Breakout Local Search for the Max-Cut problem, Eng. Appl. Artif. Intell. 26(3):1162-1173, 2013); read from the PDF text with pdftotext -layout and parsed for G1-G54"
   },
   "bls2013_rlsolver": {
+   "added": "2026-10-22T00:00:00+08:00",
    "obtained": "WebFetch, 22 Oct 2026",
    "url": "https://rlsolvers.readthedocs.io/Benchmark/Benchmark.html",
    "what": "BLS column of RLSolver's Gset benchmark table (secondary source for BLS's published values)"
   },
   "macut2012_paper": {
+   "added": "2026-10-23T09:00:00+08:00",
    "file_sha256": "a2d0fee15e88e5335c8f337034681c31d224d9cd9b970e44fab9965c0fcb5fdc",
    "obtained": "Daniel, 23 Oct 2026 (the publisher's proof PDF, 10 pages, created 12 Jul 2012)",
    "what": "Table 1, column MACUT f_best: the best of 20 runs of the memetic algorithm MACUT (Wu and Hao, A Memetic Approach for the Max-Cut Problem, PPSN 2012, LNCS 7492:297-306); 24 of G1-G54 (G1-G3, G11-G16, G22-G24, G32-G37, G43-G45, G48-G50); read with pdftotext -layout"
   },
   "optsicom2009": {
+   "added": "2026-10-22T00:00:00+08:00",
    "file_sha256": "1831bdc45ca40416bb79ef90868b7c91d5db06b52c79e417d9d432bd63b6c018",
    "obtained": "Daniel, 22 Oct 2026",
    "url": "http://grafo.etsii.urjc.es/optsicom/maxcut/maxcut_bestvalues.xls",
    "what": "OPTSICOM max-cut 'Best Known' column, Set 1 (maxcut_bestvalues.xls, sheet Set1, last saved 18 Aug 2009)"
+  },
+  "wuhao2013_bisection": {
+   "added": "2026-10-24T12:45:00+08:00",
+   "obtained": "WebFetch, 24 Oct 2026, of the ResearchGate page of Ma, Hao and Wang, An effective iterated tabu search for the maximum bisection problem, Comput. Oper. Res. 81:78-89 (2017), Table 2, column MA-WH (as tabled there, not checked against the original)",
+   "url": "https://www.researchgate.net/publication/311700356_An_effective_iterated_tabu_search_for_the_maximum_bisection_problem",
+   "what": "Best values of the memetic algorithm for max-bisection of Wu and Hao (Memetic search for the max-bisection problem, Comput. Oper. Res. 40:166-179, 2013). A bisection is a cut, so each value is a lower bound on the max-cut. Added when B20_R123 found 7688 on G38 above the max-cut papers' 7687: the bisection literature already had it (18 instances read: G14, G15, G22, G24, G26, G31, G35-G42, G51-G54)"
   }
  }
 }

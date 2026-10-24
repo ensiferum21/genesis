@@ -65,7 +65,7 @@ class RecordB20R110(unittest.TestCase):
         s = json.loads((ev / 'summary.json').read_text())
         rows = [json.loads(l) for l in (ev / 'rows.jsonl').read_text().splitlines() if l.strip()]
         self.assertEqual([r['instance'] for r in rows], [f'G{k}' for k in range(1, 55)])
-        a = json.loads(json.dumps(M.analyse(rows, GS.best_known())))
+        a = json.loads(json.dumps(M.analyse(rows, GS.best_known(as_of='2026-10-24T12:00:00+08:00'))))
         for k in ('mean_fraction', 'by_family', 'reach_best_known', 'reached', 'record_candidates', 'vs_10s'):
             self.assertEqual(a[k], s[k], k)
         self.assertEqual((s['configs_from'], s['vs_10s']['label']), ('mcx_configure_b20r105', 'LONGER_HELPS'))

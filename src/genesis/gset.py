@@ -25,10 +25,17 @@ def manifest():
     return json.loads((DATA / 'MANIFEST.json').read_text())
 
 
-def best_known():
-    """{'G1': value, ...}."""
+def best_known(as_of=None):
+    """{'G1': value, ...}. With `as_of` (an ISO time), the table as it stood then: the highest value among the
+    sources added by that time (each source records when it was added), so that a study is judged, and its record
+    recomputed, against the table it ran with."""
     doc = json.loads((DATA / 'best_known.json').read_text())
-    return {g: v['best_known'] for g, v in doc['instances'].items()}
+    if as_of is None:
+        return {g: v['best_known'] for g, v in doc['instances'].items()}
+    from datetime import datetime
+    t = datetime.fromisoformat(as_of)
+    ok = {k for k, src in doc['sources'].items() if datetime.fromisoformat(src['added']) <= t}
+    return {g: max(x for k, x in v['sources'].items() if k in ok) for g, v in doc['instances'].items()}
 
 
 def tasks(numbers=None):

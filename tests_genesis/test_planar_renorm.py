@@ -73,7 +73,7 @@ class RecordB20R113(unittest.TestCase):
         self.assertEqual(sorted(b, key=lambda g: int(g[1:])), [f'G{k}' for k in M.PLANAR_GSET])
         rows = [{'instance': g, 'value': b[g], 'incumbent_60': r110[g]} for g in sorted(b, key=lambda g: int(g[1:]))]
         self.assertEqual(rows, s['part_b']['rows'])
-        pb = json.loads(json.dumps(M.part_b_summary(rows, GS.best_known())))
+        pb = json.loads(json.dumps(M.part_b_summary(rows, GS.best_known(as_of='2026-10-24T12:00:00+08:00'))))
         self.assertEqual(pb, {k: v for k, v in s['part_b'].items() if k != 'rows'})
         self.assertEqual((pb['label'], pb['wins'], pb['losses'], pb['reach_best_known'], pb['record_candidates']),
                          ('RENORM_BETTER', 13, 2, 5, []))

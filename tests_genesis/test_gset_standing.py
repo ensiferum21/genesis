@@ -71,13 +71,16 @@ class RecordB20R102(unittest.TestCase):
         from genesis import gset as GS
         from genesis.common import digest
         self.assertEqual([r['instance'] for r in self.rows], [f'G{k}' for k in range(1, 55)])
-        best = GS.best_known()
+        best = GS.best_known(as_of='2026-10-24T12:00:00+08:00')     # the table B20_R102 ran with
         a = json.loads(json.dumps(M.analyse(self.rows, best)))
         for k in ('per_arm', 'record_candidates', 'vbs10'):
             self.assertEqual(a[k], self.s[k], k)
         ok, med, fails = M.validity(self.rows)
         self.assertEqual((ok, fails), (self.s['valid'], self.s['failed_runs']))
-        self.assertEqual(self.s['best_known_sha256'], digest(json.loads((GS.DATA / 'best_known.json').read_text())))
+        # The table's file grew on 24 Oct 2026 (a max-bisection source, and the date each source was added), so its
+        # digest is no longer the one recorded; the values B20_R102 used are best_known(as_of), recomputed above.
+        self.assertEqual(len(self.s['best_known_sha256']), 64)
+        self.assertNotEqual(self.s['best_known_sha256'], digest(json.loads((GS.DATA / 'best_known.json').read_text())))
         self.assertEqual(self.s['gset_archive_sha256'], GS.manifest()['archive_sha256'])
         self.assertTrue(all(len(r['runs']) == 12 for r in self.rows))
 

@@ -86,7 +86,7 @@ class RecordB20R106(unittest.TestCase):
         self.assertEqual([r['instance'] for r in self.rows], [f'G{k}' for k in range(1, 55)])
         flat = [dict({k: v for k, v in r.items() if k != 'runs'}, **{a: x['value'] for a, x in r['runs'].items()})
                 for r in self.rows]
-        a = json.loads(json.dumps(M.analyse(flat, GS.best_known())))
+        a = json.loads(json.dumps(M.analyse(flat, GS.best_known(as_of='2026-10-24T12:00:00+08:00'))))
         for k in ('tests', 'headline', 'per_arm', 'record_candidates', 'classifier_agrees_with_gset_family'):
             self.assertEqual(a[k], self.s[k], k)
 
