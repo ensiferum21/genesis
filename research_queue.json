@@ -1,0 +1,520 @@
+{
+ "directions": {
+  "B20_R128": {
+   "artifacts": [],
+   "committed": true,
+   "depends_on": [
+    "B20_R132"
+   ],
+   "failure": null,
+   "id": "B20_R128",
+   "kind": "study",
+   "line": "engine-invention",
+   "notes": "",
+   "outcome": null,
+   "output": "evidence/improve_the_improver_b20r128",
+   "positive": null,
+   "preregistered": null,
+   "priority": 5,
+   "requires": [],
+   "resources": {
+    "cpu0_hours": 3.3
+   },
+   "script": "scripts/b20r128_improve_the_improver.py",
+   "status": "queued",
+   "title": "Improving the inventor (level 2), as preregistered",
+   "unlocks": []
+  },
+  "B20_R130": {
+   "artifacts": [],
+   "committed": true,
+   "depends_on": [],
+   "failure": null,
+   "id": "B20_R130",
+   "kind": "study",
+   "line": "causal-science",
+   "notes": "",
+   "outcome": null,
+   "output": "evidence/choice_instrument_interpretation_b20r130",
+   "positive": null,
+   "preregistered": "f812701",
+   "priority": 9,
+   "requires": [],
+   "resources": {
+    "cpu0_hours": 1.5
+   },
+   "script": "scripts/b20r130_choice_instrument_interpretation.py",
+   "status": "running",
+   "title": "Choice, instrument and interpretation separated",
+   "unlocks": [
+    "global-interpretation"
+   ]
+  },
+  "B20_R131": {
+   "artifacts": [],
+   "committed": true,
+   "depends_on": [
+    "B20_R130"
+   ],
+   "failure": null,
+   "id": "B20_R131",
+   "kind": "study",
+   "line": "capability-graph",
+   "notes": "needs R130 recorded (its record test is the trigger's evidence)",
+   "outcome": null,
+   "output": "evidence/cascade_b20r131",
+   "positive": null,
+   "preregistered": "22385f7",
+   "priority": 7,
+   "requires": [],
+   "resources": {
+    "cpu0_hours": 1.0
+   },
+   "script": "scripts/b20r131_cascade.py",
+   "status": "queued",
+   "title": "The cascade on a real case: dormant R129 rules against R130's interpretation",
+   "unlocks": [
+    "cascade-value"
+   ]
+  },
+  "B20_R132": {
+   "artifacts": [],
+   "committed": true,
+   "depends_on": [],
+   "failure": null,
+   "id": "B20_R132",
+   "kind": "study",
+   "line": "engine-invention",
+   "notes": "preregistration after its development look",
+   "outcome": null,
+   "output": "evidence/invention_bottleneck_b20r132",
+   "positive": null,
+   "preregistered": null,
+   "priority": 6,
+   "requires": [],
+   "resources": {
+    "cpu0_hours": 5.7
+   },
+   "script": "scripts/b20r132_invention_bottleneck.py",
+   "status": "queued",
+   "title": "The four bottlenecks of invention: headroom, expressiveness, search, evaluation",
+   "unlocks": [
+    "invention-bottleneck-diagnosed"
+   ]
+  },
+  "B20_R133": {
+   "artifacts": [],
+   "committed": true,
+   "depends_on": [],
+   "failure": null,
+   "id": "B20_R133",
+   "kind": "study",
+   "line": "compiler",
+   "notes": "",
+   "outcome": null,
+   "output": "evidence/problem_compiler_b20r133",
+   "positive": null,
+   "preregistered": "e8bc181",
+   "priority": 8,
+   "requires": [],
+   "resources": {
+    "cpu0_hours": 1.25
+   },
+   "script": "scripts/b20r133_problem_compiler.py",
+   "status": "queued",
+   "title": "The Problem Compiler against the specialists (existing reductions executed)",
+   "unlocks": [
+    "compiler-validated"
+   ]
+  },
+  "B20_R134": {
+   "artifacts": [],
+   "committed": false,
+   "depends_on": [],
+   "failure": null,
+   "id": "B20_R134",
+   "kind": "study",
+   "line": "diagnosis",
+   "notes": "",
+   "outcome": null,
+   "output": null,
+   "positive": null,
+   "preregistered": null,
+   "priority": 1,
+   "requires": [],
+   "resources": {},
+   "script": null,
+   "status": "queued",
+   "title": "The Difficulty Cartographer, redesigned with obstacles hidden from cheap statistics",
+   "unlocks": []
+  },
+  "allocator-baselines": {
+   "artifacts": [],
+   "committed": false,
+   "depends_on": [],
+   "failure": null,
+   "id": "allocator-baselines",
+   "kind": "study",
+   "line": "operations",
+   "notes": "",
+   "outcome": null,
+   "output": null,
+   "positive": null,
+   "preregistered": null,
+   "priority": 1,
+   "requires": [],
+   "resources": {},
+   "script": null,
+   "status": "queued",
+   "title": "Omega-10: allocator regret against uniform, greedy and bandit baselines",
+   "unlocks": []
+  },
+  "checkpoint": {
+   "artifacts": [],
+   "committed": false,
+   "depends_on": [
+    "B20_R128"
+   ],
+   "failure": null,
+   "id": "checkpoint",
+   "kind": "operations",
+   "line": "operations",
+   "notes": "",
+   "outcome": null,
+   "output": null,
+   "positive": null,
+   "preregistered": null,
+   "priority": 3,
+   "requires": [],
+   "resources": {
+    "cpu0_hours": 1.0
+   },
+   "script": null,
+   "status": "queued",
+   "title": "A fresh checkpoint with the release matrix (the last is B20_R118)",
+   "unlocks": []
+  },
+  "judge-v3-followup": {
+   "artifacts": [],
+   "committed": false,
+   "depends_on": [
+    "B20_R132"
+   ],
+   "failure": "stagnated",
+   "id": "judge-v3-followup",
+   "kind": "study",
+   "line": "engine-invention",
+   "notes": "only if R132 validates v3 and the supervisor adopts it for the study",
+   "outcome": null,
+   "output": null,
+   "positive": null,
+   "preregistered": null,
+   "priority": 4,
+   "requires": [
+    "judge-v3-validated"
+   ],
+   "resources": {},
+   "script": null,
+   "status": "dormant",
+   "title": "Engine invention under a validated judge v3 (a new preregistered study)",
+   "unlocks": []
+  },
+  "reduction-invention": {
+   "artifacts": [],
+   "committed": false,
+   "depends_on": [
+    "B20_R133"
+   ],
+   "failure": null,
+   "id": "reduction-invention",
+   "kind": "study",
+   "line": "compiler",
+   "notes": "",
+   "outcome": null,
+   "output": null,
+   "positive": null,
+   "preregistered": null,
+   "priority": 1,
+   "requires": [
+    "representation-language"
+   ],
+   "resources": {},
+   "script": null,
+   "status": "queued",
+   "title": "Genesis invents reductions between problem families (not only executes them)",
+   "unlocks": []
+  },
+  "repr-language-build": {
+   "artifacts": [],
+   "committed": false,
+   "depends_on": [],
+   "failure": null,
+   "id": "repr-language-build",
+   "kind": "build",
+   "line": "representation",
+   "notes": "directive items 6-9; built on CPU 1 meanwhile",
+   "outcome": null,
+   "output": null,
+   "positive": null,
+   "preregistered": null,
+   "priority": 6,
+   "requires": [],
+   "resources": {},
+   "script": null,
+   "status": "queued",
+   "title": "A self-extending mathematical representation language (engineering, fixtures)",
+   "unlocks": []
+  },
+  "repr-language-study": {
+   "artifacts": [],
+   "committed": false,
+   "depends_on": [
+    "repr-language-build",
+    "B20_R130",
+    "B20_R131",
+    "B20_R132",
+    "B20_R133",
+    "B20_R128"
+   ],
+   "failure": null,
+   "id": "repr-language-study",
+   "kind": "study",
+   "line": "representation",
+   "notes": "",
+   "outcome": null,
+   "output": null,
+   "positive": null,
+   "preregistered": null,
+   "priority": 2,
+   "requires": [],
+   "resources": {},
+   "script": null,
+   "status": "queued",
+   "title": "First preregistered study of invented representations",
+   "unlocks": [
+    "representation-language"
+   ]
+  }
+ },
+ "events": [
+  {
+   "id": "B20_R130",
+   "kind": "add",
+   "time": "2026-10-24T10:45:29+00:00"
+  },
+  {
+   "id": "B20_R133",
+   "kind": "add",
+   "time": "2026-10-24T10:45:29+00:00"
+  },
+  {
+   "id": "B20_R131",
+   "kind": "add",
+   "time": "2026-10-24T10:45:29+00:00"
+  },
+  {
+   "id": "B20_R132",
+   "kind": "add",
+   "time": "2026-10-24T10:45:29+00:00"
+  },
+  {
+   "id": "B20_R128",
+   "kind": "add",
+   "time": "2026-10-24T10:45:29+00:00"
+  },
+  {
+   "id": "judge-v3-followup",
+   "kind": "add",
+   "time": "2026-10-24T10:45:29+00:00"
+  },
+  {
+   "id": "checkpoint",
+   "kind": "add",
+   "time": "2026-10-24T10:45:29+00:00"
+  },
+  {
+   "id": "repr-language-build",
+   "kind": "add",
+   "time": "2026-10-24T10:45:29+00:00"
+  },
+  {
+   "id": "repr-language-study",
+   "kind": "add",
+   "time": "2026-10-24T10:45:29+00:00"
+  },
+  {
+   "id": "reduction-invention",
+   "kind": "add",
+   "time": "2026-10-24T10:45:29+00:00"
+  },
+  {
+   "id": "B20_R134",
+   "kind": "add",
+   "time": "2026-10-24T10:45:29+00:00"
+  },
+  {
+   "id": "allocator-baselines",
+   "kind": "add",
+   "time": "2026-10-24T10:45:29+00:00"
+  },
+  {
+   "id": "B20_R111",
+   "kind": "past",
+   "line": "engine-invention",
+   "outcome": "NOT_DEMONSTRATED",
+   "time": "2026-10-24T10:45:29+00:00"
+  },
+  {
+   "id": "B20_R112",
+   "kind": "past",
+   "line": "engine-invention",
+   "outcome": "NOT_DEMONSTRATED",
+   "time": "2026-10-24T10:45:29+00:00"
+  },
+  {
+   "id": "B20_R115",
+   "kind": "past",
+   "line": "engine-invention",
+   "outcome": "NOT_DEMONSTRATED",
+   "time": "2026-10-24T10:45:29+00:00"
+  },
+  {
+   "kind": "stagnant",
+   "line": "engine-invention",
+   "outcomes": [
+    [
+     "B20_R111",
+     "NOT_DEMONSTRATED",
+     false
+    ],
+    [
+     "B20_R112",
+     "NOT_DEMONSTRATED",
+     false
+    ],
+    [
+     "B20_R115",
+     "NOT_DEMONSTRATED",
+     false
+    ]
+   ],
+   "time": "2026-10-24T10:45:29+00:00"
+  },
+  {
+   "id": "B20_R127",
+   "kind": "past",
+   "line": "engine-invention",
+   "outcome": "NOT_SHOWN",
+   "time": "2026-10-24T10:45:29+00:00"
+  },
+  {
+   "bottleneck": null,
+   "direction": "B20_R132",
+   "kind": "diagnose",
+   "line": "engine-invention",
+   "time": "2026-10-24T10:45:29+00:00"
+  },
+  {
+   "id": "B20_R129",
+   "kind": "past",
+   "line": "causal-science",
+   "outcome": "ADAPTIVE_SCIENTIST",
+   "time": "2026-10-24T10:45:29+00:00"
+  }
+ ],
+ "lines": {
+  "capability-graph": {
+   "diagnosis": null,
+   "outcomes": [],
+   "run": 0,
+   "stagnant": false
+  },
+  "causal-science": {
+   "diagnosis": null,
+   "outcomes": [
+    [
+     "B20_R129",
+     "ADAPTIVE_SCIENTIST",
+     true
+    ]
+   ],
+   "run": 0,
+   "stagnant": false
+  },
+  "compiler": {
+   "diagnosis": null,
+   "outcomes": [],
+   "run": 0,
+   "stagnant": false
+  },
+  "diagnosis": {
+   "diagnosis": null,
+   "outcomes": [],
+   "run": 0,
+   "stagnant": false
+  },
+  "engine-invention": {
+   "diagnosis": {
+    "bottleneck": null,
+    "direction": "B20_R132",
+    "tags": [
+     "judge-v3-validated",
+     "invention-bottleneck-diagnosed"
+    ]
+   },
+   "outcomes": [
+    [
+     "B20_R111",
+     "NOT_DEMONSTRATED",
+     false
+    ],
+    [
+     "B20_R112",
+     "NOT_DEMONSTRATED",
+     false
+    ],
+    [
+     "B20_R115",
+     "NOT_DEMONSTRATED",
+     false
+    ],
+    [
+     "B20_R127",
+     "NOT_SHOWN",
+     false
+    ]
+   ],
+   "run": 4,
+   "stagnant": true
+  },
+  "operations": {
+   "diagnosis": null,
+   "outcomes": [],
+   "run": 0,
+   "stagnant": false
+  },
+  "representation": {
+   "diagnosis": null,
+   "outcomes": [],
+   "run": 0,
+   "stagnant": false
+  }
+ },
+ "order": [
+  "B20_R130",
+  "B20_R133",
+  "B20_R131",
+  "B20_R132",
+  "B20_R128",
+  "judge-v3-followup",
+  "checkpoint",
+  "repr-language-build",
+  "repr-language-study",
+  "reduction-invention",
+  "B20_R134",
+  "allocator-baselines"
+ ],
+ "reactivated": {},
+ "schema": "genesis-research-queue-v1",
+ "unlocked": []
+}
