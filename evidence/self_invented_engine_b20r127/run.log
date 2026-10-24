@@ -1,0 +1,126 @@
+[    0.0s] b20r127; pinned to CPU 0
+[    8.9s] graphs: random 17, planar 17, toroidal 17
+[  703.1s] random|1: engine {"L0": 0.005, "L0hot": 0.3, "P": 0.8, "levels": 8, "pert": 2, "pool": 4, "prog": "S136 P6 B1052", "tmax": 0.05, "tt": 10}; judge {'tau': np.float64(0.017380527961533103), 'start': 0.9994351811173325, 'releases': 0, 'submissions': 6, 'stopped': False}
+[ 1353.7s] planar|1: engine {"L0": 0.2, "L0hot": 0.3, "P": 0.8, "levels": 8, "pert": 2, "pool": 4, "prog": "b24", "tmax": 0.1, "tt": 10}; judge {'tau': np.float64(0.009195374614944822), 'start': 1.0032092935530832, 'releases': 0, 'submissions': 5, 'stopped': False}
+[ 2001.8s] toroidal|1: engine {"L0": 0.1, "L0hot": 0.1, "P": 0.75, "levels": 6, "pert": 2, "pool": 8, "prog": "b134 D C C D", "tmax": 0.1, "tt": 20}; judge {'tau': np.float64(0.012647062546842032), 'start': 0.998923420741439, 'releases': 0, 'submissions': 3, 'stopped': False}
+[ 2660.9s] random|2: engine {"L0": 0.05, "L0hot": 0.1, "P": 0.9, "levels": 4, "pert": 1, "pool": 32, "prog": "X B1044", "tmax": 0.2, "tt": 10}; judge {'tau': np.float64(0.024516669603715634), 'start': 0.9992844783857716, 'releases': 0, 'submissions': 5, 'stopped': False}
+[ 3313.0s] planar|2: engine {"L0": 0.2, "L0hot": 0.3, "P": 0.8, "levels": 8, "pert": 2, "pool": 4, "prog": "b24", "tmax": 0.1, "tt": 10}; judge {'tau': np.float64(0.015365367256829757), 'start': 1.0042323317453108, 'releases': 0, 'submissions': 5, 'stopped': False}
+[ 3962.7s] toroidal|2: engine {"L0": 0.1, "L0hot": 0.1, "P": 0.75, "levels": 6, "pert": 2, "pool": 8, "prog": "b134 D C C D", "tmax": 0.1, "tt": 20}; judge {'tau': np.float64(0.011214783297676232), 'start': 0.9989161849710982, 'releases': 0, 'submissions': 4, 'stopped': False}
+[ 4625.0s] random|3: engine {"L0": 0.05, "L0hot": 0.1, "P": 0.9, "levels": 4, "pert": 1, "pool": 32, "prog": "B1044 X", "tmax": 0.2, "tt": 10}; judge {'tau': np.float64(0.0075144776956886485), 'start': 0.9976359397499234, 'releases': 0, 'submissions': 6, 'stopped': False}
+[ 5279.7s] planar|3: engine {"L0": 0.2, "L0hot": 0.3, "P": 0.8, "levels": 8, "pert": 2, "pool": 4, "prog": "P6 b24", "tmax": 0.1, "tt": 10}; judge {'tau': np.float64(0.01663033836238572), 'start': 1.0029392362936451, 'releases': 0, 'submissions': 4, 'stopped': False}
+[ 5930.5s] toroidal|3: engine {"L0": 0.1, "L0hot": 0.1, "P": 0.9, "levels": 8, "pert": 2, "pool": 16, "prog": "P3 R I b9", "tmax": 0.2, "tt": 20}; judge {'tau': np.float64(0.019482364299338105), 'start': 0.9989198028562687, 'releases': 0, 'submissions': 5, 'stopped': False}
+[ 6015.5s] held-out at 1 s done
+[ 6604.4s] time slice used (6600 s): paused with 116 runs
+[    0.0s] b20r127; pinned to CPU 0
+[    9.6s] graphs: random 17, planar 17, toroidal 17
+[    9.6s] held-out at 1 s done
+[   51.5s] held-out at 10 s done
+[  137.4s] G1 [random] best known 11624: SYSTEM 11624, MCX 11624, REX 11624, BLS 11624
+[  179.7s] G2 [random] best known 11620: SYSTEM 11620, MCX 11620, REX 11620, BLS 11620
+[  221.8s] G3 [random] best known 11622: SYSTEM 11622, MCX 11622, REX 11622, BLS 11622
+[  264.4s] G4 [random] best known 11646: SYSTEM 11646, MCX 11646, REX 11646, BLS 11634
+[  306.6s] G5 [random] best known 11631: SYSTEM 11631, MCX 11631, REX 11631, BLS 11631
+[  348.8s] G6 [random] best known 2178: SYSTEM 2178, MCX 2178, REX 2178, BLS 2178
+[  391.4s] G7 [random] best known 2006: SYSTEM 2006, MCX 2006, REX 2006, BLS 2006
+[  434.0s] G8 [random] best known 2005: SYSTEM 2005, MCX 2005, REX 2005, BLS 1999
+[  476.4s] G9 [random] best known 2054: SYSTEM 2054, MCX 2054, REX 2054, BLS 2041
+[  518.8s] G10 [random] best known 2000: SYSTEM 2000, MCX 2000, REX 2000, BLS 1999
+[  560.9s] G11 [toroidal] best known 564: SYSTEM 564, MCX 564, REX 564, BLS 564
+[  602.8s] G12 [toroidal] best known 556: SYSTEM 556, MCX 556, REX 556, BLS 556
+[  644.5s] G13 [toroidal] best known 582: SYSTEM 582, MCX 582, REX 582, BLS 582
+[  686.5s] G14 [planar] best known 3064: SYSTEM 3062, MCX 3059, REX 3062, BLS 3061
+[  728.5s] G15 [planar] best known 3050: SYSTEM 3049, MCX 3049, REX 3050, BLS 3040
+[  770.5s] G16 [planar] best known 3052: SYSTEM 3052, MCX 3045, REX 3052, BLS 3050
+[  812.3s] G17 [planar] best known 3047: SYSTEM 3045, MCX 3044, REX 3047, BLS 3042
+[  854.6s] G18 [planar] best known 992: SYSTEM 992, MCX 990, REX 987, BLS 984
+[  896.8s] G19 [planar] best known 906: SYSTEM 904, MCX 904, REX 905, BLS 895
+[  938.9s] G20 [planar] best known 941: SYSTEM 941, MCX 941, REX 941, BLS 915
+[  981.0s] G21 [planar] best known 931: SYSTEM 931, MCX 931, REX 923, BLS 913
+[ 1023.4s] G22 [random] best known 13359: SYSTEM 13355, MCX 13356, REX 13358, BLS 13334
+[ 1065.7s] G23 [random] best known 13344: SYSTEM 13339, MCX 13340, REX 13344, BLS 13344
+[ 1108.2s] G24 [random] best known 13337: SYSTEM 13331, MCX 13336, REX 13334, BLS 13325
+[ 1150.7s] G25 [random] best known 13340: SYSTEM 13332, MCX 13333, REX 13338, BLS 13328
+[ 1193.7s] G26 [random] best known 13328: SYSTEM 13320, MCX 13324, REX 13326, BLS 13327
+[ 1237.9s] G27 [random] best known 3341: SYSTEM 3336, MCX 3339, REX 3341, BLS 3341
+[ 1280.3s] G28 [random] best known 3298: SYSTEM 3293, MCX 3296, REX 3297, BLS 3291
+[ 1322.9s] G29 [random] best known 3405: SYSTEM 3391, MCX 3403, REX 3405, BLS 3391
+[ 1365.5s] G30 [random] best known 3413: SYSTEM 3408, MCX 3411, REX 3412, BLS 3412
+[ 1407.9s] G31 [random] best known 3309: SYSTEM 3300, MCX 3298, REX 3308, BLS 3295
+[ 1449.9s] G32 [toroidal] best known 1410: SYSTEM 1410, MCX 1408, REX 1410, BLS 1410
+[ 1492.1s] G33 [toroidal] best known 1382: SYSTEM 1380, MCX 1380, REX 1382, BLS 1380
+[ 1534.2s] G34 [toroidal] best known 1384: SYSTEM 1384, MCX 1384, REX 1384, BLS 1384
+[ 1576.5s] G35 [planar] best known 7686: SYSTEM 7677, MCX 7667, REX 7669, BLS 7669
+[ 1618.9s] G36 [planar] best known 7679: SYSTEM 7662, MCX 7657, REX 7663, BLS 7657
+[ 1661.2s] G37 [planar] best known 7690: SYSTEM 7669, MCX 7660, REX 7672, BLS 7675
+[ 1703.1s] G38 [planar] best known 7688: SYSTEM 7682, MCX 7656, REX 7658, BLS 7660
+[ 1745.3s] G39 [planar] best known 2408: SYSTEM 2397, MCX 2390, REX 2385, BLS 2377
+[ 1787.5s] G40 [planar] best known 2400: SYSTEM 2393, MCX 2381, REX 2388, BLS 2375
+[ 1829.7s] G41 [planar] best known 2405: SYSTEM 2386, MCX 2391, REX 2375, BLS 2383
+[ 1871.8s] G42 [planar] best known 2481: SYSTEM 2470, MCX 2447, REX 2461, BLS 2466
+[ 1914.0s] G43 [random] best known 6660: SYSTEM 6660, MCX 6660, REX 6660, BLS 6660
+[ 1956.0s] G44 [random] best known 6650: SYSTEM 6650, MCX 6650, REX 6650, BLS 6650
+[ 1998.2s] G45 [random] best known 6654: SYSTEM 6654, MCX 6654, REX 6654, BLS 6654
+[ 2040.5s] G46 [random] best known 6649: SYSTEM 6649, MCX 6649, REX 6649, BLS 6649
+[ 2082.6s] G47 [random] best known 6657: SYSTEM 6657, MCX 6657, REX 6657, BLS 6657
+[ 2124.7s] G48 [toroidal] best known 6000: SYSTEM 6000, MCX 6000, REX 6000, BLS 6000
+[ 2166.7s] G49 [toroidal] best known 6000: SYSTEM 6000, MCX 6000, REX 6000, BLS 6000
+[ 2208.7s] G50 [toroidal] best known 5880: SYSTEM 5880, MCX 5880, REX 5880, BLS 5880
+[ 2250.7s] G51 [planar] best known 3848: SYSTEM 3844, MCX 3846, REX 3845, BLS 3839
+[ 2292.6s] G52 [planar] best known 3851: SYSTEM 3850, MCX 3846, REX 3850, BLS 3847
+[ 2334.5s] G53 [planar] best known 3850: SYSTEM 3847, MCX 3845, REX 3849, BLS 3840
+[ 2376.4s] G54 [planar] best known 3852: SYSTEM 3850, MCX 3846, REX 3846, BLS 3844
+[ 2438.6s] G1 SYSTEM at 60 s: 11624 (best known 11624, B20_R110 11624)
+[ 2499.9s] G2 SYSTEM at 60 s: 11620 (best known 11620, B20_R110 11620)
+[ 2560.9s] G3 SYSTEM at 60 s: 11622 (best known 11622, B20_R110 11622)
+[ 2622.2s] G4 SYSTEM at 60 s: 11646 (best known 11646, B20_R110 11646)
+[ 2683.4s] G5 SYSTEM at 60 s: 11631 (best known 11631, B20_R110 11631)
+[ 2744.7s] G6 SYSTEM at 60 s: 2178 (best known 2178, B20_R110 2178)
+[ 2806.0s] G7 SYSTEM at 60 s: 2006 (best known 2006, B20_R110 2006)
+[ 2867.0s] G8 SYSTEM at 60 s: 2005 (best known 2005, B20_R110 2005)
+[ 2928.1s] G9 SYSTEM at 60 s: 2054 (best known 2054, B20_R110 2054)
+[ 2989.4s] G10 SYSTEM at 60 s: 2000 (best known 2000, B20_R110 2000)
+[ 3050.7s] G11 SYSTEM at 60 s: 564 (best known 564, B20_R110 564)
+[ 3111.7s] G12 SYSTEM at 60 s: 556 (best known 556, B20_R110 556)
+[ 3172.8s] G13 SYSTEM at 60 s: 582 (best known 582, B20_R110 582)
+[ 3233.8s] G14 SYSTEM at 60 s: 3063 (best known 3064, B20_R110 3060)
+[ 3294.8s] G15 SYSTEM at 60 s: 3050 (best known 3050, B20_R110 3042)
+[ 3356.1s] G16 SYSTEM at 60 s: 3052 (best known 3052, B20_R110 3052)
+[ 3417.2s] G17 SYSTEM at 60 s: 3046 (best known 3047, B20_R110 3045)
+[ 3478.4s] G18 SYSTEM at 60 s: 992 (best known 992, B20_R110 991)
+[ 3539.6s] G19 SYSTEM at 60 s: 906 (best known 906, B20_R110 904)
+[ 3600.8s] G20 SYSTEM at 60 s: 941 (best known 941, B20_R110 941)
+[ 3661.8s] G21 SYSTEM at 60 s: 930 (best known 931, B20_R110 931)
+[ 3723.1s] G22 SYSTEM at 60 s: 13355 (best known 13359, B20_R110 13357)
+[ 3784.1s] G23 SYSTEM at 60 s: 13344 (best known 13344, B20_R110 13343)
+[ 3845.2s] G24 SYSTEM at 60 s: 13331 (best known 13337, B20_R110 13336)
+[ 3906.3s] G25 SYSTEM at 60 s: 13335 (best known 13340, B20_R110 13333)
+[ 3967.3s] G26 SYSTEM at 60 s: 13325 (best known 13328, B20_R110 13324)
+[ 4028.6s] G27 SYSTEM at 60 s: 3336 (best known 3341, B20_R110 3341)
+[ 4089.8s] G28 SYSTEM at 60 s: 3294 (best known 3298, B20_R110 3296)
+[ 4151.0s] G29 SYSTEM at 60 s: 3402 (best known 3405, B20_R110 3394)
+[ 4212.3s] G30 SYSTEM at 60 s: 3411 (best known 3413, B20_R110 3412)
+[ 4273.5s] G31 SYSTEM at 60 s: 3307 (best known 3309, B20_R110 3308)
+[ 4334.7s] G32 SYSTEM at 60 s: 1410 (best known 1410, B20_R110 1410)
+[ 4395.8s] G33 SYSTEM at 60 s: 1382 (best known 1382, B20_R110 1382)
+[ 4456.9s] G34 SYSTEM at 60 s: 1384 (best known 1384, B20_R110 1384)
+[ 4518.2s] G35 SYSTEM at 60 s: 7676 (best known 7686, B20_R110 7669)
+[ 4579.6s] G36 SYSTEM at 60 s: 7665 (best known 7679, B20_R110 7673)
+[ 4640.9s] G37 SYSTEM at 60 s: 7685 (best known 7690, B20_R110 7674)
+[ 4702.1s] G38 SYSTEM at 60 s: 7680 (best known 7688, B20_R110 7667)
+[ 4763.1s] G39 SYSTEM at 60 s: 2400 (best known 2408, B20_R110 2389)
+[ 4824.3s] G40 SYSTEM at 60 s: 2398 (best known 2400, B20_R110 2383)
+[ 4885.3s] G41 SYSTEM at 60 s: 2404 (best known 2405, B20_R110 2402)
+[ 4946.2s] G42 SYSTEM at 60 s: 2476 (best known 2481, B20_R110 2463)
+[ 5007.2s] G43 SYSTEM at 60 s: 6660 (best known 6660, B20_R110 6660)
+[ 5068.2s] G44 SYSTEM at 60 s: 6650 (best known 6650, B20_R110 6650)
+[ 5129.3s] G45 SYSTEM at 60 s: 6654 (best known 6654, B20_R110 6654)
+[ 5190.6s] G46 SYSTEM at 60 s: 6649 (best known 6649, B20_R110 6648)
+[ 5251.7s] G47 SYSTEM at 60 s: 6657 (best known 6657, B20_R110 6657)
+[ 5312.7s] G48 SYSTEM at 60 s: 6000 (best known 6000, B20_R110 6000)
+[ 5373.6s] G49 SYSTEM at 60 s: 6000 (best known 6000, B20_R110 6000)
+[ 5434.8s] G50 SYSTEM at 60 s: 5880 (best known 5880, B20_R110 5880)
+[ 5495.9s] G51 SYSTEM at 60 s: 3846 (best known 3848, B20_R110 3844)
+[ 5557.2s] G52 SYSTEM at 60 s: 3849 (best known 3851, B20_R110 3849)
+[ 5618.2s] G53 SYSTEM at 60 s: 3848 (best known 3850, B20_R110 3847)
+[ 5679.2s] G54 SYSTEM at 60 s: 3851 (best known 3852, B20_R110 3851)
+[ 5680.0s] valid True; test 1 NOT_DISTINGUISHABLE (16-11); verdict NOT_SHOWN; compounding NOT_DISTINGUISHABLE; Gset at best known (10 s): {'SYSTEM': 27, 'MCX': 24, 'REX': 31, 'BLS': 21}; SYSTEM at 60 s: 30; record candidates 0

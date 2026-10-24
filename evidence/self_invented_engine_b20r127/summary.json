@@ -1,0 +1,1687 @@
+{
+ "code_identity": "badf60cbbc8d6af7c5ac48b75fe3a8ab342dc6c7cf2b86be3c3e7df133606e6f",
+ "compounding": {
+  "label": "NOT_DISTINGUISHABLE",
+  "losses": 3,
+  "p": 0.5078125,
+  "ties": 6,
+  "wins": 6
+ },
+ "cpu_median": {
+  "1": 1.208870674,
+  "10": 1.02202787465,
+  "60": 1.0036955007916668
+ },
+ "engines": {
+  "planar": {
+   "L0": 0.2,
+   "L0hot": 0.3,
+   "P": 0.8,
+   "levels": 8,
+   "pert": 2,
+   "pool": 4,
+   "prog": "P6 b24",
+   "tmax": 0.1,
+   "tt": 10
+  },
+  "random": {
+   "L0": 0.05,
+   "L0hot": 0.1,
+   "P": 0.9,
+   "levels": 4,
+   "pert": 1,
+   "pool": 32,
+   "prog": "B1044 X",
+   "tmax": 0.2,
+   "tt": 10
+  },
+  "toroidal": {
+   "L0": 0.1,
+   "L0hot": 0.1,
+   "P": 0.9,
+   "levels": 8,
+   "pert": 2,
+   "pool": 16,
+   "prog": "P3 R I b9",
+   "tmax": 0.2,
+   "tt": 20
+  }
+ },
+ "engines_are_templates": {
+  "planar": [],
+  "random": [],
+  "toroidal": []
+ },
+ "failed_runs": 0,
+ "generation_values": {
+  "dev-erdos-028b7959-20351572-0000": {
+   "G1": 6701,
+   "G2": 6701,
+   "G3": 6701
+  },
+  "dev-erdos-61e27377-20351575-0000": {
+   "G1": 13241,
+   "G2": 13237,
+   "G3": 13243
+  },
+  "dev-erdos-ac3ed2d0-20351573-0000": {
+   "G1": 11542,
+   "G2": 11542,
+   "G3": 11542
+  },
+  "dev-erdos_pm1-00616411-20351571-0000": {
+   "G1": 3427,
+   "G2": 3430,
+   "G3": 3435
+  },
+  "dev-erdos_pm1-64ce90fe-20351574-0000": {
+   "G1": 2182,
+   "G2": 2183,
+   "G3": 2183
+  },
+  "dev-planar2-5946559a-20351971-0000": {
+   "G1": 7660,
+   "G2": 7657,
+   "G3": 7654
+  },
+  "dev-planar2-65a4084f-20351973-0000": {
+   "G1": 3825,
+   "G2": 3825,
+   "G3": 3824
+  },
+  "dev-planar2-e8d67972-20351974-0000": {
+   "G1": 3047,
+   "G2": 3046,
+   "G3": 3047
+  },
+  "dev-planar2_pm1-8eb123d0-20351975-0000": {
+   "G1": 995,
+   "G2": 995,
+   "G3": 995
+  },
+  "dev-planar2_pm1-a4ca072c-20351972-0000": {
+   "G1": 2346,
+   "G2": 2363,
+   "G3": 2348
+  },
+  "dev-torus2d_pm1-a905133b-20352371-0000": {
+   "G1": 1368,
+   "G2": 1370,
+   "G3": 1370
+  },
+  "dev-torus2d_pm1-a905133b-20352373-0000": {
+   "G1": 1408,
+   "G2": 1406,
+   "G3": 1404
+  },
+  "dev-torus2d_pm1-a905133b-20352375-0000": {
+   "G1": 1404,
+   "G2": 1400,
+   "G3": 1406
+  },
+  "dev-torus2d_pm1-b0737c6e-20352372-0000": {
+   "G1": 560,
+   "G2": 560,
+   "G3": 560
+  },
+  "dev-torus2d_pm1-b0737c6e-20352374-0000": {
+   "G1": 550,
+   "G2": 550,
+   "G3": 550
+  }
+ },
+ "generations": {
+  "planar|1": {
+   "engine": {
+    "L0": 0.2,
+    "L0hot": 0.3,
+    "P": 0.8,
+    "levels": 8,
+    "pert": 2,
+    "pool": 4,
+    "prog": "b24",
+    "tmax": 0.1,
+    "tt": 10
+   },
+   "judge": {
+    "releases": 0,
+    "start": 1.0032092935530832,
+    "stopped": false,
+    "submissions": 5,
+    "tau": 0.009195374614944822
+   },
+   "reported": 1.0032092935530832
+  },
+  "planar|2": {
+   "engine": {
+    "L0": 0.2,
+    "L0hot": 0.3,
+    "P": 0.8,
+    "levels": 8,
+    "pert": 2,
+    "pool": 4,
+    "prog": "b24",
+    "tmax": 0.1,
+    "tt": 10
+   },
+   "judge": {
+    "releases": 0,
+    "start": 1.0042323317453108,
+    "stopped": false,
+    "submissions": 5,
+    "tau": 0.015365367256829757
+   },
+   "reported": 1.0042323317453108
+  },
+  "planar|3": {
+   "engine": {
+    "L0": 0.2,
+    "L0hot": 0.3,
+    "P": 0.8,
+    "levels": 8,
+    "pert": 2,
+    "pool": 4,
+    "prog": "P6 b24",
+    "tmax": 0.1,
+    "tt": 10
+   },
+   "judge": {
+    "releases": 0,
+    "start": 1.0029392362936451,
+    "stopped": false,
+    "submissions": 4,
+    "tau": 0.01663033836238572
+   },
+   "reported": 1.0029392362936451
+  },
+  "random|1": {
+   "engine": {
+    "L0": 0.005,
+    "L0hot": 0.3,
+    "P": 0.8,
+    "levels": 8,
+    "pert": 2,
+    "pool": 4,
+    "prog": "S136 P6 B1052",
+    "tmax": 0.05,
+    "tt": 10
+   },
+   "judge": {
+    "releases": 0,
+    "start": 0.9994351811173325,
+    "stopped": false,
+    "submissions": 6,
+    "tau": 0.017380527961533103
+   },
+   "reported": 0.9994351811173325
+  },
+  "random|2": {
+   "engine": {
+    "L0": 0.05,
+    "L0hot": 0.1,
+    "P": 0.9,
+    "levels": 4,
+    "pert": 1,
+    "pool": 32,
+    "prog": "X B1044",
+    "tmax": 0.2,
+    "tt": 10
+   },
+   "judge": {
+    "releases": 0,
+    "start": 0.9992844783857716,
+    "stopped": false,
+    "submissions": 5,
+    "tau": 0.024516669603715634
+   },
+   "reported": 0.9992844783857716
+  },
+  "random|3": {
+   "engine": {
+    "L0": 0.05,
+    "L0hot": 0.1,
+    "P": 0.9,
+    "levels": 4,
+    "pert": 1,
+    "pool": 32,
+    "prog": "B1044 X",
+    "tmax": 0.2,
+    "tt": 10
+   },
+   "judge": {
+    "releases": 0,
+    "start": 0.9976359397499234,
+    "stopped": false,
+    "submissions": 6,
+    "tau": 0.0075144776956886485
+   },
+   "reported": 0.9976359397499234
+  },
+  "toroidal|1": {
+   "engine": {
+    "L0": 0.1,
+    "L0hot": 0.1,
+    "P": 0.75,
+    "levels": 6,
+    "pert": 2,
+    "pool": 8,
+    "prog": "b134 D C C D",
+    "tmax": 0.1,
+    "tt": 20
+   },
+   "judge": {
+    "releases": 0,
+    "start": 0.998923420741439,
+    "stopped": false,
+    "submissions": 3,
+    "tau": 0.012647062546842032
+   },
+   "reported": 0.998923420741439
+  },
+  "toroidal|2": {
+   "engine": {
+    "L0": 0.1,
+    "L0hot": 0.1,
+    "P": 0.75,
+    "levels": 6,
+    "pert": 2,
+    "pool": 8,
+    "prog": "b134 D C C D",
+    "tmax": 0.1,
+    "tt": 20
+   },
+   "judge": {
+    "releases": 0,
+    "start": 0.9989161849710982,
+    "stopped": false,
+    "submissions": 4,
+    "tau": 0.011214783297676232
+   },
+   "reported": 0.9989161849710982
+  },
+  "toroidal|3": {
+   "engine": {
+    "L0": 0.1,
+    "L0hot": 0.1,
+    "P": 0.9,
+    "levels": 8,
+    "pert": 2,
+    "pool": 16,
+    "prog": "P3 R I b9",
+    "tmax": 0.2,
+    "tt": 20
+   },
+   "judge": {
+    "releases": 0,
+    "start": 0.9989198028562687,
+    "stopped": false,
+    "submissions": 5,
+    "tau": 0.019482364299338105
+   },
+   "reported": 0.9989198028562687
+  }
+ },
+ "gset": {
+  "BLS": {
+   "label": "SYSTEM_BETTER",
+   "losses": 5,
+   "p": 6.618769839406013e-05,
+   "ties": 21,
+   "wins": 28
+  },
+  "MCX": {
+   "label": "NOT_DISTINGUISHABLE",
+   "losses": 11,
+   "p": 0.44206833839416504,
+   "ties": 27,
+   "wins": 16
+  },
+  "REX": {
+   "label": "NOT_DISTINGUISHABLE",
+   "losses": 18,
+   "p": 0.12207812070846558,
+   "ties": 27,
+   "wins": 9
+  }
+ },
+ "gset_mean_fraction": {
+  "BLS": 0.9970790333036875,
+  "MCX": 0.9986584070814372,
+  "REX": 0.9987894504729096,
+  "SYSTEM": 0.9991067219073081
+ },
+ "gset_reach_best_known": {
+  "BLS": 21,
+  "MCX": 24,
+  "REX": 31,
+  "SYSTEM": 27
+ },
+ "gset_rows": [
+  {
+   "class": "random",
+   "instance": "G1",
+   "long": 11624,
+   "values": {
+    "BLS": 11624,
+    "MCX": 11624,
+    "REX": 11624,
+    "SYSTEM": 11624
+   }
+  },
+  {
+   "class": "random",
+   "instance": "G2",
+   "long": 11620,
+   "values": {
+    "BLS": 11620,
+    "MCX": 11620,
+    "REX": 11620,
+    "SYSTEM": 11620
+   }
+  },
+  {
+   "class": "random",
+   "instance": "G3",
+   "long": 11622,
+   "values": {
+    "BLS": 11622,
+    "MCX": 11622,
+    "REX": 11622,
+    "SYSTEM": 11622
+   }
+  },
+  {
+   "class": "random",
+   "instance": "G4",
+   "long": 11646,
+   "values": {
+    "BLS": 11634,
+    "MCX": 11646,
+    "REX": 11646,
+    "SYSTEM": 11646
+   }
+  },
+  {
+   "class": "random",
+   "instance": "G5",
+   "long": 11631,
+   "values": {
+    "BLS": 11631,
+    "MCX": 11631,
+    "REX": 11631,
+    "SYSTEM": 11631
+   }
+  },
+  {
+   "class": "random",
+   "instance": "G6",
+   "long": 2178,
+   "values": {
+    "BLS": 2178,
+    "MCX": 2178,
+    "REX": 2178,
+    "SYSTEM": 2178
+   }
+  },
+  {
+   "class": "random",
+   "instance": "G7",
+   "long": 2006,
+   "values": {
+    "BLS": 2006,
+    "MCX": 2006,
+    "REX": 2006,
+    "SYSTEM": 2006
+   }
+  },
+  {
+   "class": "random",
+   "instance": "G8",
+   "long": 2005,
+   "values": {
+    "BLS": 1999,
+    "MCX": 2005,
+    "REX": 2005,
+    "SYSTEM": 2005
+   }
+  },
+  {
+   "class": "random",
+   "instance": "G9",
+   "long": 2054,
+   "values": {
+    "BLS": 2041,
+    "MCX": 2054,
+    "REX": 2054,
+    "SYSTEM": 2054
+   }
+  },
+  {
+   "class": "random",
+   "instance": "G10",
+   "long": 2000,
+   "values": {
+    "BLS": 1999,
+    "MCX": 2000,
+    "REX": 2000,
+    "SYSTEM": 2000
+   }
+  },
+  {
+   "class": "toroidal",
+   "instance": "G11",
+   "long": 564,
+   "values": {
+    "BLS": 564,
+    "MCX": 564,
+    "REX": 564,
+    "SYSTEM": 564
+   }
+  },
+  {
+   "class": "toroidal",
+   "instance": "G12",
+   "long": 556,
+   "values": {
+    "BLS": 556,
+    "MCX": 556,
+    "REX": 556,
+    "SYSTEM": 556
+   }
+  },
+  {
+   "class": "toroidal",
+   "instance": "G13",
+   "long": 582,
+   "values": {
+    "BLS": 582,
+    "MCX": 582,
+    "REX": 582,
+    "SYSTEM": 582
+   }
+  },
+  {
+   "class": "planar",
+   "instance": "G14",
+   "long": 3063,
+   "values": {
+    "BLS": 3061,
+    "MCX": 3059,
+    "REX": 3062,
+    "SYSTEM": 3062
+   }
+  },
+  {
+   "class": "planar",
+   "instance": "G15",
+   "long": 3050,
+   "values": {
+    "BLS": 3040,
+    "MCX": 3049,
+    "REX": 3050,
+    "SYSTEM": 3049
+   }
+  },
+  {
+   "class": "planar",
+   "instance": "G16",
+   "long": 3052,
+   "values": {
+    "BLS": 3050,
+    "MCX": 3045,
+    "REX": 3052,
+    "SYSTEM": 3052
+   }
+  },
+  {
+   "class": "planar",
+   "instance": "G17",
+   "long": 3046,
+   "values": {
+    "BLS": 3042,
+    "MCX": 3044,
+    "REX": 3047,
+    "SYSTEM": 3045
+   }
+  },
+  {
+   "class": "planar",
+   "instance": "G18",
+   "long": 992,
+   "values": {
+    "BLS": 984,
+    "MCX": 990,
+    "REX": 987,
+    "SYSTEM": 992
+   }
+  },
+  {
+   "class": "planar",
+   "instance": "G19",
+   "long": 906,
+   "values": {
+    "BLS": 895,
+    "MCX": 904,
+    "REX": 905,
+    "SYSTEM": 904
+   }
+  },
+  {
+   "class": "planar",
+   "instance": "G20",
+   "long": 941,
+   "values": {
+    "BLS": 915,
+    "MCX": 941,
+    "REX": 941,
+    "SYSTEM": 941
+   }
+  },
+  {
+   "class": "planar",
+   "instance": "G21",
+   "long": 930,
+   "values": {
+    "BLS": 913,
+    "MCX": 931,
+    "REX": 923,
+    "SYSTEM": 931
+   }
+  },
+  {
+   "class": "random",
+   "instance": "G22",
+   "long": 13355,
+   "values": {
+    "BLS": 13334,
+    "MCX": 13356,
+    "REX": 13358,
+    "SYSTEM": 13355
+   }
+  },
+  {
+   "class": "random",
+   "instance": "G23",
+   "long": 13344,
+   "values": {
+    "BLS": 13344,
+    "MCX": 13340,
+    "REX": 13344,
+    "SYSTEM": 13339
+   }
+  },
+  {
+   "class": "random",
+   "instance": "G24",
+   "long": 13331,
+   "values": {
+    "BLS": 13325,
+    "MCX": 13336,
+    "REX": 13334,
+    "SYSTEM": 13331
+   }
+  },
+  {
+   "class": "random",
+   "instance": "G25",
+   "long": 13335,
+   "values": {
+    "BLS": 13328,
+    "MCX": 13333,
+    "REX": 13338,
+    "SYSTEM": 13332
+   }
+  },
+  {
+   "class": "random",
+   "instance": "G26",
+   "long": 13325,
+   "values": {
+    "BLS": 13327,
+    "MCX": 13324,
+    "REX": 13326,
+    "SYSTEM": 13320
+   }
+  },
+  {
+   "class": "random",
+   "instance": "G27",
+   "long": 3336,
+   "values": {
+    "BLS": 3341,
+    "MCX": 3339,
+    "REX": 3341,
+    "SYSTEM": 3336
+   }
+  },
+  {
+   "class": "random",
+   "instance": "G28",
+   "long": 3294,
+   "values": {
+    "BLS": 3291,
+    "MCX": 3296,
+    "REX": 3297,
+    "SYSTEM": 3293
+   }
+  },
+  {
+   "class": "random",
+   "instance": "G29",
+   "long": 3402,
+   "values": {
+    "BLS": 3391,
+    "MCX": 3403,
+    "REX": 3405,
+    "SYSTEM": 3391
+   }
+  },
+  {
+   "class": "random",
+   "instance": "G30",
+   "long": 3411,
+   "values": {
+    "BLS": 3412,
+    "MCX": 3411,
+    "REX": 3412,
+    "SYSTEM": 3408
+   }
+  },
+  {
+   "class": "random",
+   "instance": "G31",
+   "long": 3307,
+   "values": {
+    "BLS": 3295,
+    "MCX": 3298,
+    "REX": 3308,
+    "SYSTEM": 3300
+   }
+  },
+  {
+   "class": "toroidal",
+   "instance": "G32",
+   "long": 1410,
+   "values": {
+    "BLS": 1410,
+    "MCX": 1408,
+    "REX": 1410,
+    "SYSTEM": 1410
+   }
+  },
+  {
+   "class": "toroidal",
+   "instance": "G33",
+   "long": 1382,
+   "values": {
+    "BLS": 1380,
+    "MCX": 1380,
+    "REX": 1382,
+    "SYSTEM": 1380
+   }
+  },
+  {
+   "class": "toroidal",
+   "instance": "G34",
+   "long": 1384,
+   "values": {
+    "BLS": 1384,
+    "MCX": 1384,
+    "REX": 1384,
+    "SYSTEM": 1384
+   }
+  },
+  {
+   "class": "planar",
+   "instance": "G35",
+   "long": 7676,
+   "values": {
+    "BLS": 7669,
+    "MCX": 7667,
+    "REX": 7669,
+    "SYSTEM": 7677
+   }
+  },
+  {
+   "class": "planar",
+   "instance": "G36",
+   "long": 7665,
+   "values": {
+    "BLS": 7657,
+    "MCX": 7657,
+    "REX": 7663,
+    "SYSTEM": 7662
+   }
+  },
+  {
+   "class": "planar",
+   "instance": "G37",
+   "long": 7685,
+   "values": {
+    "BLS": 7675,
+    "MCX": 7660,
+    "REX": 7672,
+    "SYSTEM": 7669
+   }
+  },
+  {
+   "class": "planar",
+   "instance": "G38",
+   "long": 7680,
+   "values": {
+    "BLS": 7660,
+    "MCX": 7656,
+    "REX": 7658,
+    "SYSTEM": 7682
+   }
+  },
+  {
+   "class": "planar",
+   "instance": "G39",
+   "long": 2400,
+   "values": {
+    "BLS": 2377,
+    "MCX": 2390,
+    "REX": 2385,
+    "SYSTEM": 2397
+   }
+  },
+  {
+   "class": "planar",
+   "instance": "G40",
+   "long": 2398,
+   "values": {
+    "BLS": 2375,
+    "MCX": 2381,
+    "REX": 2388,
+    "SYSTEM": 2393
+   }
+  },
+  {
+   "class": "planar",
+   "instance": "G41",
+   "long": 2404,
+   "values": {
+    "BLS": 2383,
+    "MCX": 2391,
+    "REX": 2375,
+    "SYSTEM": 2386
+   }
+  },
+  {
+   "class": "planar",
+   "instance": "G42",
+   "long": 2476,
+   "values": {
+    "BLS": 2466,
+    "MCX": 2447,
+    "REX": 2461,
+    "SYSTEM": 2470
+   }
+  },
+  {
+   "class": "random",
+   "instance": "G43",
+   "long": 6660,
+   "values": {
+    "BLS": 6660,
+    "MCX": 6660,
+    "REX": 6660,
+    "SYSTEM": 6660
+   }
+  },
+  {
+   "class": "random",
+   "instance": "G44",
+   "long": 6650,
+   "values": {
+    "BLS": 6650,
+    "MCX": 6650,
+    "REX": 6650,
+    "SYSTEM": 6650
+   }
+  },
+  {
+   "class": "random",
+   "instance": "G45",
+   "long": 6654,
+   "values": {
+    "BLS": 6654,
+    "MCX": 6654,
+    "REX": 6654,
+    "SYSTEM": 6654
+   }
+  },
+  {
+   "class": "random",
+   "instance": "G46",
+   "long": 6649,
+   "values": {
+    "BLS": 6649,
+    "MCX": 6649,
+    "REX": 6649,
+    "SYSTEM": 6649
+   }
+  },
+  {
+   "class": "random",
+   "instance": "G47",
+   "long": 6657,
+   "values": {
+    "BLS": 6657,
+    "MCX": 6657,
+    "REX": 6657,
+    "SYSTEM": 6657
+   }
+  },
+  {
+   "class": "toroidal",
+   "instance": "G48",
+   "long": 6000,
+   "values": {
+    "BLS": 6000,
+    "MCX": 6000,
+    "REX": 6000,
+    "SYSTEM": 6000
+   }
+  },
+  {
+   "class": "toroidal",
+   "instance": "G49",
+   "long": 6000,
+   "values": {
+    "BLS": 6000,
+    "MCX": 6000,
+    "REX": 6000,
+    "SYSTEM": 6000
+   }
+  },
+  {
+   "class": "toroidal",
+   "instance": "G50",
+   "long": 5880,
+   "values": {
+    "BLS": 5880,
+    "MCX": 5880,
+    "REX": 5880,
+    "SYSTEM": 5880
+   }
+  },
+  {
+   "class": "planar",
+   "instance": "G51",
+   "long": 3846,
+   "values": {
+    "BLS": 3839,
+    "MCX": 3846,
+    "REX": 3845,
+    "SYSTEM": 3844
+   }
+  },
+  {
+   "class": "planar",
+   "instance": "G52",
+   "long": 3849,
+   "values": {
+    "BLS": 3847,
+    "MCX": 3846,
+    "REX": 3850,
+    "SYSTEM": 3850
+   }
+  },
+  {
+   "class": "planar",
+   "instance": "G53",
+   "long": 3848,
+   "values": {
+    "BLS": 3840,
+    "MCX": 3845,
+    "REX": 3849,
+    "SYSTEM": 3847
+   }
+  },
+  {
+   "class": "planar",
+   "instance": "G54",
+   "long": 3851,
+   "values": {
+    "BLS": 3844,
+    "MCX": 3846,
+    "REX": 3846,
+    "SYSTEM": 3850
+   }
+  }
+ ],
+ "held_out": {
+  "1": {
+   "BLS": {
+    "label": "NOT_DISTINGUISHABLE",
+    "losses": 5,
+    "p": 1.0,
+    "ties": 4,
+    "wins": 6
+   },
+   "MCX": {
+    "label": "NOT_DISTINGUISHABLE",
+    "losses": 2,
+    "p": 0.2890625,
+    "ties": 7,
+    "wins": 6
+   },
+   "REX": {
+    "label": "NOT_DISTINGUISHABLE",
+    "losses": 2,
+    "p": 0.1796875,
+    "ties": 6,
+    "wins": 7
+   }
+  },
+  "10": {
+   "BLS": {
+    "label": "NOT_DISTINGUISHABLE",
+    "losses": 2,
+    "p": 0.2890625,
+    "ties": 7,
+    "wins": 6
+   },
+   "MCX": {
+    "label": "NOT_DISTINGUISHABLE",
+    "losses": 2,
+    "p": 0.453125,
+    "ties": 8,
+    "wins": 5
+   },
+   "REX": {
+    "label": "NOT_DISTINGUISHABLE",
+    "losses": 4,
+    "p": 1.0,
+    "ties": 7,
+    "wins": 4
+   }
+  }
+ },
+ "held_out_values": {
+  "1": {
+   "dev-erdos-028b7959-20351572-0000": {
+    "BLS": 6701,
+    "MCX": 6702,
+    "REX": 6701,
+    "SYSTEM": 6701
+   },
+   "dev-erdos-61e27377-20351575-0000": {
+    "BLS": 13233,
+    "MCX": 13231,
+    "REX": 13236,
+    "SYSTEM": 13243
+   },
+   "dev-erdos-ac3ed2d0-20351573-0000": {
+    "BLS": 11542,
+    "MCX": 11537,
+    "REX": 11542,
+    "SYSTEM": 11542
+   },
+   "dev-erdos_pm1-00616411-20351571-0000": {
+    "BLS": 3438,
+    "MCX": 3435,
+    "REX": 3432,
+    "SYSTEM": 3435
+   },
+   "dev-erdos_pm1-64ce90fe-20351574-0000": {
+    "BLS": 2173,
+    "MCX": 2183,
+    "REX": 2176,
+    "SYSTEM": 2183
+   },
+   "dev-planar2-5946559a-20351971-0000": {
+    "BLS": 7662,
+    "MCX": 7651,
+    "REX": 7656,
+    "SYSTEM": 7654
+   },
+   "dev-planar2-65a4084f-20351973-0000": {
+    "BLS": 3811,
+    "MCX": 3824,
+    "REX": 3817,
+    "SYSTEM": 3824
+   },
+   "dev-planar2-e8d67972-20351974-0000": {
+    "BLS": 3046,
+    "MCX": 3046,
+    "REX": 3045,
+    "SYSTEM": 3047
+   },
+   "dev-planar2_pm1-8eb123d0-20351975-0000": {
+    "BLS": 997,
+    "MCX": 994,
+    "REX": 992,
+    "SYSTEM": 995
+   },
+   "dev-planar2_pm1-a4ca072c-20351972-0000": {
+    "BLS": 2362,
+    "MCX": 2340,
+    "REX": 2345,
+    "SYSTEM": 2348
+   },
+   "dev-torus2d_pm1-a905133b-20352371-0000": {
+    "BLS": 1368,
+    "MCX": 1370,
+    "REX": 1370,
+    "SYSTEM": 1370
+   },
+   "dev-torus2d_pm1-a905133b-20352373-0000": {
+    "BLS": 1408,
+    "MCX": 1406,
+    "REX": 1412,
+    "SYSTEM": 1404
+   },
+   "dev-torus2d_pm1-a905133b-20352375-0000": {
+    "BLS": 1400,
+    "MCX": 1406,
+    "REX": 1406,
+    "SYSTEM": 1406
+   },
+   "dev-torus2d_pm1-b0737c6e-20352372-0000": {
+    "BLS": 560,
+    "MCX": 560,
+    "REX": 560,
+    "SYSTEM": 560
+   },
+   "dev-torus2d_pm1-b0737c6e-20352374-0000": {
+    "BLS": 550,
+    "MCX": 550,
+    "REX": 550,
+    "SYSTEM": 550
+   }
+  },
+  "10": {
+   "dev-erdos-028b7959-20351572-0000": {
+    "BLS": 6702,
+    "MCX": 6702,
+    "REX": 6702,
+    "SYSTEM": 6702
+   },
+   "dev-erdos-61e27377-20351575-0000": {
+    "BLS": 13251,
+    "MCX": 13251,
+    "REX": 13238,
+    "SYSTEM": 13246
+   },
+   "dev-erdos-ac3ed2d0-20351573-0000": {
+    "BLS": 11542,
+    "MCX": 11542,
+    "REX": 11542,
+    "SYSTEM": 11542
+   },
+   "dev-erdos_pm1-00616411-20351571-0000": {
+    "BLS": 3440,
+    "MCX": 3438,
+    "REX": 3439,
+    "SYSTEM": 3434
+   },
+   "dev-erdos_pm1-64ce90fe-20351574-0000": {
+    "BLS": 2183,
+    "MCX": 2183,
+    "REX": 2183,
+    "SYSTEM": 2183
+   },
+   "dev-planar2-5946559a-20351971-0000": {
+    "BLS": 7667,
+    "MCX": 7663,
+    "REX": 7662,
+    "SYSTEM": 7668
+   },
+   "dev-planar2-65a4084f-20351973-0000": {
+    "BLS": 3817,
+    "MCX": 3824,
+    "REX": 3828,
+    "SYSTEM": 3825
+   },
+   "dev-planar2-e8d67972-20351974-0000": {
+    "BLS": 3048,
+    "MCX": 3047,
+    "REX": 3046,
+    "SYSTEM": 3048
+   },
+   "dev-planar2_pm1-8eb123d0-20351975-0000": {
+    "BLS": 989,
+    "MCX": 995,
+    "REX": 998,
+    "SYSTEM": 995
+   },
+   "dev-planar2_pm1-a4ca072c-20351972-0000": {
+    "BLS": 2363,
+    "MCX": 2365,
+    "REX": 2364,
+    "SYSTEM": 2372
+   },
+   "dev-torus2d_pm1-a905133b-20352371-0000": {
+    "BLS": 1370,
+    "MCX": 1370,
+    "REX": 1370,
+    "SYSTEM": 1370
+   },
+   "dev-torus2d_pm1-a905133b-20352373-0000": {
+    "BLS": 1410,
+    "MCX": 1408,
+    "REX": 1412,
+    "SYSTEM": 1412
+   },
+   "dev-torus2d_pm1-a905133b-20352375-0000": {
+    "BLS": 1404,
+    "MCX": 1406,
+    "REX": 1408,
+    "SYSTEM": 1406
+   },
+   "dev-torus2d_pm1-b0737c6e-20352372-0000": {
+    "BLS": 560,
+    "MCX": 560,
+    "REX": 560,
+    "SYSTEM": 560
+   },
+   "dev-torus2d_pm1-b0737c6e-20352374-0000": {
+    "BLS": 550,
+    "MCX": 550,
+    "REX": 550,
+    "SYSTEM": 550
+   }
+  }
+ },
+ "libraries": {
+  "planar|2": [
+   [
+    [
+     "M",
+     null
+    ],
+    [
+     "b",
+     24
+    ]
+   ],
+   [
+    [
+     "b",
+     24
+    ],
+    [
+     "b",
+     24
+    ]
+   ],
+   [
+    [
+     "M",
+     null
+    ],
+    [
+     "b",
+     24
+    ],
+    [
+     "b",
+     24
+    ]
+   ],
+   [
+    [
+     "b",
+     24
+    ],
+    [
+     "M",
+     null
+    ]
+   ],
+   [
+    [
+     "b",
+     24
+    ],
+    [
+     "M",
+     null
+    ],
+    [
+     "b",
+     24
+    ]
+   ],
+   [
+    [
+     "b",
+     24
+    ],
+    [
+     "M",
+     null
+    ],
+    [
+     "b",
+     24
+    ],
+    [
+     "b",
+     24
+    ]
+   ]
+  ],
+  "planar|3": [
+   [
+    [
+     "b",
+     24
+    ],
+    [
+     "b",
+     24
+    ]
+   ],
+   [
+    [
+     "M",
+     null
+    ],
+    [
+     "b",
+     24
+    ]
+   ],
+   [
+    [
+     "M",
+     null
+    ],
+    [
+     "b",
+     24
+    ],
+    [
+     "b",
+     24
+    ]
+   ],
+   [
+    [
+     "b",
+     24
+    ],
+    [
+     "M",
+     null
+    ]
+   ],
+   [
+    [
+     "b",
+     24
+    ],
+    [
+     "b",
+     24
+    ],
+    [
+     "b",
+     24
+    ]
+   ],
+   [
+    [
+     "b",
+     24
+    ],
+    [
+     "M",
+     null
+    ],
+    [
+     "b",
+     24
+    ]
+   ]
+  ],
+  "random|2": [
+   [
+    [
+     "S",
+     335
+    ],
+    [
+     "B",
+     15
+    ]
+   ],
+   [
+    [
+     "S",
+     3891
+    ],
+    [
+     "S",
+     335
+    ],
+    [
+     "B",
+     15
+    ]
+   ],
+   [
+    [
+     "X",
+     null
+    ],
+    [
+     "R",
+     null
+    ]
+   ],
+   [
+    [
+     "S",
+     3891
+    ],
+    [
+     "S",
+     335
+    ]
+   ],
+   [
+    [
+     "P",
+     1
+    ],
+    [
+     "B",
+     162
+    ]
+   ],
+   [
+    [
+     "R",
+     null
+    ],
+    [
+     "S",
+     3891
+    ],
+    [
+     "S",
+     335
+    ],
+    [
+     "B",
+     15
+    ]
+   ]
+  ],
+  "random|3": [
+   [
+    [
+     "X",
+     null
+    ],
+    [
+     "B",
+     1044
+    ]
+   ],
+   [
+    [
+     "X",
+     null
+    ],
+    [
+     "B",
+     1044
+    ],
+    [
+     "b",
+     959
+    ]
+   ],
+   [
+    [
+     "S",
+     335
+    ],
+    [
+     "B",
+     15
+    ]
+   ],
+   [
+    [
+     "B",
+     1044
+    ],
+    [
+     "b",
+     959
+    ]
+   ],
+   [
+    [
+     "b",
+     959
+    ],
+    [
+     "P",
+     6
+    ]
+   ],
+   [
+    [
+     "X",
+     null
+    ],
+    [
+     "B",
+     1044
+    ],
+    [
+     "b",
+     959
+    ],
+    [
+     "P",
+     6
+    ]
+   ]
+  ],
+  "toroidal|2": [
+   [
+    [
+     "C",
+     null
+    ],
+    [
+     "C",
+     null
+    ]
+   ],
+   [
+    [
+     "D",
+     null
+    ],
+    [
+     "C",
+     null
+    ]
+   ],
+   [
+    [
+     "C",
+     null
+    ],
+    [
+     "D",
+     null
+    ]
+   ],
+   [
+    [
+     "D",
+     null
+    ],
+    [
+     "C",
+     null
+    ],
+    [
+     "C",
+     null
+    ]
+   ],
+   [
+    [
+     "C",
+     null
+    ],
+    [
+     "C",
+     null
+    ],
+    [
+     "D",
+     null
+    ]
+   ],
+   [
+    [
+     "b",
+     139
+    ],
+    [
+     "D",
+     null
+    ]
+   ]
+  ],
+  "toroidal|3": [
+   [
+    [
+     "D",
+     null
+    ],
+    [
+     "C",
+     null
+    ]
+   ],
+   [
+    [
+     "C",
+     null
+    ],
+    [
+     "C",
+     null
+    ]
+   ],
+   [
+    [
+     "D",
+     null
+    ],
+    [
+     "C",
+     null
+    ],
+    [
+     "C",
+     null
+    ]
+   ],
+   [
+    [
+     "C",
+     null
+    ],
+    [
+     "D",
+     null
+    ]
+   ],
+   [
+    [
+     "b",
+     139
+    ],
+    [
+     "D",
+     null
+    ]
+   ],
+   [
+    [
+     "b",
+     139
+    ],
+    [
+     "D",
+     null
+    ],
+    [
+     "C",
+     null
+    ]
+   ]
+  ]
+ },
+ "long": {
+  "mean_fraction": 0.9996096546802324,
+  "reach_best_known": 30,
+  "reached": [
+   "G1",
+   "G2",
+   "G3",
+   "G4",
+   "G5",
+   "G6",
+   "G7",
+   "G8",
+   "G9",
+   "G10",
+   "G11",
+   "G12",
+   "G13",
+   "G15",
+   "G16",
+   "G18",
+   "G19",
+   "G20",
+   "G23",
+   "G32",
+   "G33",
+   "G34",
+   "G43",
+   "G44",
+   "G45",
+   "G46",
+   "G47",
+   "G48",
+   "G49",
+   "G50"
+  ],
+  "vs_r110": {
+   "label": "NOT_DISTINGUISHABLE",
+   "losses": 8,
+   "p": 0.052238985896110535,
+   "ties": 27,
+   "wins": 19
+  }
+ },
+ "record_candidates": [],
+ "schema": "genesis-b20r127-self-invented-engine-v1",
+ "status": "DEV; licenses nothing; no record claim",
+ "study": "b20r127",
+ "test1": {
+  "label": "NOT_DISTINGUISHABLE",
+  "losses": 11,
+  "p": 0.44206833839416504,
+  "ties": 27,
+  "wins": 16
+ },
+ "valid": true,
+ "verdict": "NOT_SHOWN"
+}

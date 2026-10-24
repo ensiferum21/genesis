@@ -1296,16 +1296,17 @@
       "B20_R127": {
         "commits": [
           "70a590d",
-          "bc7e424"
+          "bc7e424",
+          "8d7e402"
         ],
-        "result": "Setup (preregistered, amended before running): the self-invented engines against human designs. Running"
+        "result": "DEV, preregistered, amended before running, run from the main tree (identity of 8d7e402) in two slices 12:43-14:33 and 14:45-16:20: NOT_SHOWN: Gset 10 s SYSTEM vs MCX 16-11-27 (p 0.44); vs REX 9-18; vs BLS 28-5 (p 7e-5); held-out and compounding NOT_DISTINGUISHABLE; 30/54 at best known at 60 s; no record candidate; the judge released nothing in 9 searches (training gains 0.04-0.23% vs tau 0.75-2.45%)"
       },
       "B20_R128": {
         "commits": [
           "70a590d",
           "bc7e424"
         ],
-        "result": "Setup (preregistered, amended before running): improving the improver. Queued"
+        "result": "Setup (preregistered, amended before running): improving the improver. Queued after B20_R132; runs as preregistered"
       },
       "B20_R129": {
         "commits": [
@@ -1318,17 +1319,25 @@
         "commits": [
           "f812701"
         ],
-        "result": "Setup (preregistered before B20_R129 ran): choice, instrument and interpretation separated. Queued after B20_R127"
+        "result": "Setup (preregistered before B20_R129 ran): choice, instrument and interpretation separated. Running from 18:30 (run worktree at 56e1301)"
       },
       "B20_R131": {
-        "commits": [],
-        "result": "Design drafted: the cascade on a real case (dormant B20_R129 rules against B20_R130's global interpretation). To preregister before B20_R130 runs"
+        "commits": [
+          "22385f7"
+        ],
+        "result": "Setup (preregistered 22385f7): the cascade on a real case. After B20_R130's record"
       },
       "B20_R133": {
         "commits": [
           "e8bc181"
         ],
         "result": "Setup (preregistered): the Problem Compiler against the specialists. Queued"
+      },
+      "B20_R132": {
+        "commits": [
+          "56e1301"
+        ],
+        "result": "Design: the four bottlenecks of invention (Daniel's directive of 24 Oct 15:35, item 2). To preregister after its development look"
       }
     },
     "open_after_b20_r5": [

@@ -1,0 +1,718 @@
+{
+ "generations": {
+  "planar|1": {
+   "engine": {
+    "L0": 0.2,
+    "L0hot": 0.3,
+    "P": 0.8,
+    "levels": 8,
+    "pert": 2,
+    "pool": 4,
+    "prog": "b24",
+    "tmax": 0.1,
+    "tt": 10
+   },
+   "report": {
+    "distinct_programs": 76,
+    "evaluations": 160,
+    "generations": 8,
+    "judge": {
+     "releases": 0,
+     "start": 1.0032092935530832,
+     "stopped": false,
+     "submissions": 5,
+     "tau": 0.009195374614944822
+    },
+    "reported": 1.0032092935530832
+   }
+  },
+  "planar|2": {
+   "engine": {
+    "L0": 0.2,
+    "L0hot": 0.3,
+    "P": 0.8,
+    "levels": 8,
+    "pert": 2,
+    "pool": 4,
+    "prog": "b24",
+    "tmax": 0.1,
+    "tt": 10
+   },
+   "report": {
+    "distinct_programs": 76,
+    "evaluations": 160,
+    "generations": 8,
+    "judge": {
+     "releases": 0,
+     "start": 1.0042323317453108,
+     "stopped": false,
+     "submissions": 5,
+     "tau": 0.015365367256829757
+    },
+    "reported": 1.0042323317453108
+   }
+  },
+  "planar|3": {
+   "engine": {
+    "L0": 0.2,
+    "L0hot": 0.3,
+    "P": 0.8,
+    "levels": 8,
+    "pert": 2,
+    "pool": 4,
+    "prog": "P6 b24",
+    "tmax": 0.1,
+    "tt": 10
+   },
+   "report": {
+    "distinct_programs": 77,
+    "evaluations": 160,
+    "generations": 8,
+    "judge": {
+     "releases": 0,
+     "start": 1.0029392362936451,
+     "stopped": false,
+     "submissions": 4,
+     "tau": 0.01663033836238572
+    },
+    "reported": 1.0029392362936451
+   }
+  },
+  "random|1": {
+   "engine": {
+    "L0": 0.005,
+    "L0hot": 0.3,
+    "P": 0.8,
+    "levels": 8,
+    "pert": 2,
+    "pool": 4,
+    "prog": "S136 P6 B1052",
+    "tmax": 0.05,
+    "tt": 10
+   },
+   "report": {
+    "distinct_programs": 75,
+    "evaluations": 160,
+    "generations": 8,
+    "judge": {
+     "releases": 0,
+     "start": 0.9994351811173325,
+     "stopped": false,
+     "submissions": 6,
+     "tau": 0.017380527961533103
+    },
+    "reported": 0.9994351811173325
+   }
+  },
+  "random|2": {
+   "engine": {
+    "L0": 0.05,
+    "L0hot": 0.1,
+    "P": 0.9,
+    "levels": 4,
+    "pert": 1,
+    "pool": 32,
+    "prog": "X B1044",
+    "tmax": 0.2,
+    "tt": 10
+   },
+   "report": {
+    "distinct_programs": 76,
+    "evaluations": 160,
+    "generations": 8,
+    "judge": {
+     "releases": 0,
+     "start": 0.9992844783857716,
+     "stopped": false,
+     "submissions": 5,
+     "tau": 0.024516669603715634
+    },
+    "reported": 0.9992844783857716
+   }
+  },
+  "random|3": {
+   "engine": {
+    "L0": 0.05,
+    "L0hot": 0.1,
+    "P": 0.9,
+    "levels": 4,
+    "pert": 1,
+    "pool": 32,
+    "prog": "B1044 X",
+    "tmax": 0.2,
+    "tt": 10
+   },
+   "report": {
+    "distinct_programs": 75,
+    "evaluations": 160,
+    "generations": 8,
+    "judge": {
+     "releases": 0,
+     "start": 0.9976359397499234,
+     "stopped": false,
+     "submissions": 6,
+     "tau": 0.0075144776956886485
+    },
+    "reported": 0.9976359397499234
+   }
+  },
+  "toroidal|1": {
+   "engine": {
+    "L0": 0.1,
+    "L0hot": 0.1,
+    "P": 0.75,
+    "levels": 6,
+    "pert": 2,
+    "pool": 8,
+    "prog": "b134 D C C D",
+    "tmax": 0.1,
+    "tt": 20
+   },
+   "report": {
+    "distinct_programs": 78,
+    "evaluations": 160,
+    "generations": 8,
+    "judge": {
+     "releases": 0,
+     "start": 0.998923420741439,
+     "stopped": false,
+     "submissions": 3,
+     "tau": 0.012647062546842032
+    },
+    "reported": 0.998923420741439
+   }
+  },
+  "toroidal|2": {
+   "engine": {
+    "L0": 0.1,
+    "L0hot": 0.1,
+    "P": 0.75,
+    "levels": 6,
+    "pert": 2,
+    "pool": 8,
+    "prog": "b134 D C C D",
+    "tmax": 0.1,
+    "tt": 20
+   },
+   "report": {
+    "distinct_programs": 77,
+    "evaluations": 160,
+    "generations": 8,
+    "judge": {
+     "releases": 0,
+     "start": 0.9989161849710982,
+     "stopped": false,
+     "submissions": 4,
+     "tau": 0.011214783297676232
+    },
+    "reported": 0.9989161849710982
+   }
+  },
+  "toroidal|3": {
+   "engine": {
+    "L0": 0.1,
+    "L0hot": 0.1,
+    "P": 0.9,
+    "levels": 8,
+    "pert": 2,
+    "pool": 16,
+    "prog": "P3 R I b9",
+    "tmax": 0.2,
+    "tt": 20
+   },
+   "report": {
+    "distinct_programs": 76,
+    "evaluations": 160,
+    "generations": 8,
+    "judge": {
+     "releases": 0,
+     "start": 0.9989198028562687,
+     "stopped": false,
+     "submissions": 5,
+     "tau": 0.019482364299338105
+    },
+    "reported": 0.9989198028562687
+   }
+  }
+ },
+ "libraries": {
+  "planar|2": [
+   [
+    [
+     "M",
+     null
+    ],
+    [
+     "b",
+     24
+    ]
+   ],
+   [
+    [
+     "b",
+     24
+    ],
+    [
+     "b",
+     24
+    ]
+   ],
+   [
+    [
+     "M",
+     null
+    ],
+    [
+     "b",
+     24
+    ],
+    [
+     "b",
+     24
+    ]
+   ],
+   [
+    [
+     "b",
+     24
+    ],
+    [
+     "M",
+     null
+    ]
+   ],
+   [
+    [
+     "b",
+     24
+    ],
+    [
+     "M",
+     null
+    ],
+    [
+     "b",
+     24
+    ]
+   ],
+   [
+    [
+     "b",
+     24
+    ],
+    [
+     "M",
+     null
+    ],
+    [
+     "b",
+     24
+    ],
+    [
+     "b",
+     24
+    ]
+   ]
+  ],
+  "planar|3": [
+   [
+    [
+     "b",
+     24
+    ],
+    [
+     "b",
+     24
+    ]
+   ],
+   [
+    [
+     "M",
+     null
+    ],
+    [
+     "b",
+     24
+    ]
+   ],
+   [
+    [
+     "M",
+     null
+    ],
+    [
+     "b",
+     24
+    ],
+    [
+     "b",
+     24
+    ]
+   ],
+   [
+    [
+     "b",
+     24
+    ],
+    [
+     "M",
+     null
+    ]
+   ],
+   [
+    [
+     "b",
+     24
+    ],
+    [
+     "b",
+     24
+    ],
+    [
+     "b",
+     24
+    ]
+   ],
+   [
+    [
+     "b",
+     24
+    ],
+    [
+     "M",
+     null
+    ],
+    [
+     "b",
+     24
+    ]
+   ]
+  ],
+  "random|2": [
+   [
+    [
+     "S",
+     335
+    ],
+    [
+     "B",
+     15
+    ]
+   ],
+   [
+    [
+     "S",
+     3891
+    ],
+    [
+     "S",
+     335
+    ],
+    [
+     "B",
+     15
+    ]
+   ],
+   [
+    [
+     "X",
+     null
+    ],
+    [
+     "R",
+     null
+    ]
+   ],
+   [
+    [
+     "S",
+     3891
+    ],
+    [
+     "S",
+     335
+    ]
+   ],
+   [
+    [
+     "P",
+     1
+    ],
+    [
+     "B",
+     162
+    ]
+   ],
+   [
+    [
+     "R",
+     null
+    ],
+    [
+     "S",
+     3891
+    ],
+    [
+     "S",
+     335
+    ],
+    [
+     "B",
+     15
+    ]
+   ]
+  ],
+  "random|3": [
+   [
+    [
+     "X",
+     null
+    ],
+    [
+     "B",
+     1044
+    ]
+   ],
+   [
+    [
+     "X",
+     null
+    ],
+    [
+     "B",
+     1044
+    ],
+    [
+     "b",
+     959
+    ]
+   ],
+   [
+    [
+     "S",
+     335
+    ],
+    [
+     "B",
+     15
+    ]
+   ],
+   [
+    [
+     "B",
+     1044
+    ],
+    [
+     "b",
+     959
+    ]
+   ],
+   [
+    [
+     "b",
+     959
+    ],
+    [
+     "P",
+     6
+    ]
+   ],
+   [
+    [
+     "X",
+     null
+    ],
+    [
+     "B",
+     1044
+    ],
+    [
+     "b",
+     959
+    ],
+    [
+     "P",
+     6
+    ]
+   ]
+  ],
+  "toroidal|2": [
+   [
+    [
+     "C",
+     null
+    ],
+    [
+     "C",
+     null
+    ]
+   ],
+   [
+    [
+     "D",
+     null
+    ],
+    [
+     "C",
+     null
+    ]
+   ],
+   [
+    [
+     "C",
+     null
+    ],
+    [
+     "D",
+     null
+    ]
+   ],
+   [
+    [
+     "D",
+     null
+    ],
+    [
+     "C",
+     null
+    ],
+    [
+     "C",
+     null
+    ]
+   ],
+   [
+    [
+     "C",
+     null
+    ],
+    [
+     "C",
+     null
+    ],
+    [
+     "D",
+     null
+    ]
+   ],
+   [
+    [
+     "b",
+     139
+    ],
+    [
+     "D",
+     null
+    ]
+   ]
+  ],
+  "toroidal|3": [
+   [
+    [
+     "D",
+     null
+    ],
+    [
+     "C",
+     null
+    ]
+   ],
+   [
+    [
+     "C",
+     null
+    ],
+    [
+     "C",
+     null
+    ]
+   ],
+   [
+    [
+     "D",
+     null
+    ],
+    [
+     "C",
+     null
+    ],
+    [
+     "C",
+     null
+    ]
+   ],
+   [
+    [
+     "C",
+     null
+    ],
+    [
+     "D",
+     null
+    ]
+   ],
+   [
+    [
+     "b",
+     139
+    ],
+    [
+     "D",
+     null
+    ]
+   ],
+   [
+    [
+     "b",
+     139
+    ],
+    [
+     "D",
+     null
+    ],
+    [
+     "C",
+     null
+    ]
+   ]
+  ]
+ },
+ "references": {
+  "dev-erdos-028b7959-20351374-0000": 6609,
+  "dev-erdos-028b7959-20351473-0000": 6570,
+  "dev-erdos-61e27377-20351273-0000": 13335,
+  "dev-erdos-61e27377-20351372-0000": 13315,
+  "dev-erdos-61e27377-20351471-0000": 13447,
+  "dev-erdos-ac3ed2d0-20351271-0000": 11635,
+  "dev-erdos-ac3ed2d0-20351474-0000": 11612,
+  "dev-erdos_pm1-00616411-20351274-0000": 3315,
+  "dev-erdos_pm1-00616411-20351373-0000": 3319,
+  "dev-erdos_pm1-00616411-20351472-0000": 3276,
+  "dev-erdos_pm1-64ce90fe-20351272-0000": 2152,
+  "dev-erdos_pm1-64ce90fe-20351371-0000": 1906,
+  "dev-planar2-5946559a-20351674-0000": 7646,
+  "dev-planar2-5946559a-20351773-0000": 7661,
+  "dev-planar2-5946559a-20351872-0000": 7656,
+  "dev-planar2-65a4084f-20351671-0000": 3801,
+  "dev-planar2-65a4084f-20351874-0000": 3822,
+  "dev-planar2-e8d67972-20351672-0000": 3052,
+  "dev-planar2-e8d67972-20351771-0000": 3047,
+  "dev-planar2_pm1-8eb123d0-20351673-0000": 964,
+  "dev-planar2_pm1-8eb123d0-20351772-0000": 896,
+  "dev-planar2_pm1-8eb123d0-20351871-0000": 881,
+  "dev-planar2_pm1-a4ca072c-20351774-0000": 2459,
+  "dev-planar2_pm1-a4ca072c-20351873-0000": 2371,
+  "dev-torus2d_pm1-a905133b-20352072-0000": 1344,
+  "dev-torus2d_pm1-a905133b-20352074-0000": 1362,
+  "dev-torus2d_pm1-a905133b-20352171-0000": 1398,
+  "dev-torus2d_pm1-a905133b-20352173-0000": 1384,
+  "dev-torus2d_pm1-a905133b-20352272-0000": 1352,
+  "dev-torus2d_pm1-a905133b-20352274-0000": 1426,
+  "dev-torus2d_pm1-b0737c6e-20352071-0000": 588,
+  "dev-torus2d_pm1-b0737c6e-20352073-0000": 550,
+  "dev-torus2d_pm1-b0737c6e-20352172-0000": 514,
+  "dev-torus2d_pm1-b0737c6e-20352174-0000": 520,
+  "dev-torus2d_pm1-b0737c6e-20352271-0000": 536,
+  "dev-torus2d_pm1-b0737c6e-20352273-0000": 564
+ }
+}

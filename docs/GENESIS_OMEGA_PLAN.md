@@ -131,7 +131,7 @@ These live **outside** everything Genesis can modify: its genome, its inventors,
 |---|---|---|
 | Max-cut solver (Gset G1–G54) | 45 of 54 best-known values matched over all runs; none beaten. The large planar instances vary by up to 12 between single 300 s runs | B20_R102–R123; `evidence/gset_seeds_b20r123/` |
 | Physics operators in a search program | `mcx2` interprets programs over breakout, replica exchange, cluster moves, renormalisation, crossover, path relinking and pair descent | B20_R125; `candidate_kinds/mcx2.py` |
-| Autonomous invention of algorithms | NOT_DEMONSTRATED three times (B20_R111, R112, R115). B20_R127 (the system's own engines against the builder's hybrid, then on Gset) is **running**; B20_R128 (improving the inventor) is preregistered | `autonomy/selfimprove.py`; `scripts/b20r127_*`, `b20r128_*` |
+| Autonomous invention of algorithms | NOT_DEMONSTRATED three times (B20_R111, R112, R115), and **NOT_SHOWN in B20_R127** (the system's own engines tie the builder-configured MCX on Gset at 10 s, 16–11; the judge released nothing in nine searches). B20_R132 diagnoses why; B20_R128 (improving the inventor) is preregistered | `autonomy/selfimprove.py`; `scripts/b20r127_*`, `b20r128_*` |
 | Causal discovery with hidden causes | FCI plus a LiNGAM-residual flag marks hidden causes on non-Gaussian data (B20_R122). With Gaussian data experiments are necessary (B20_R124). The choice of experiments has tied random four times | B20_R118–R124 |
 | The adaptive experimental scientist (Ω1/P1) | **Preregistered (B20_R129, `eb60843`)**: domain-independent decision layer, causal adapter, Genesis's acquisition language, invention under the judge | `science/design.py`, `science/acquire.py`, `causal/active3.py` |
 | Research automation | An adaptation cell (receptors, responses, metabolism) and a research loop that designs and preregisters studies (prospective checks 9/9, 8/8). It is research automation, not yet a better improver | B20_R93–R97; `adaptation/`, `autonomy/loop.py` |
@@ -190,7 +190,7 @@ proposal's priorities, and the Ω-numbers the organism stages. They are merged h
   - no diagnosis → Ω2;
   - noise → larger confirmation splits.
 - **What B20_R127's trace showed (24 Oct, 15:10; no new runs).** The judge released nothing in all nine searches.
-  The best training gains over REX were +0.04% to +0.24%; the release threshold tau was 0.75% to 2.45%, 4 to 60
+  The best training gains over REX were +0.04% to +0.23%; the release threshold tau was 0.75% to 2.45%, 4 to 52
   times larger. Nothing the inventor found could ever have been released.
 - **B20_R132, the bottleneck scientist turned on invention** (before R128, whose level-2 measure depends on level-1
   releases). It measures the four candidate bottlenecks on the same searches:
