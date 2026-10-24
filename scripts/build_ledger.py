@@ -528,9 +528,9 @@ WORKSTREAMS = {
             ['tests_certificates/test_certificate_custody.py', 'tests_certificates/test_obstruction_custody.py']),
     'W04': ('Deployment, isolation, recovery and reproducibility', B,
             ['src/genesis/deployment.py', 'src/genesis/launcher.py', 'src/genesis/backup.py', 'src/genesis/faults.py',
-             'deployment/reproduce.py'],
+             'deployment/reproduce.py', 'docs/OMEGA_NO_LLM_AUDIT.md', 'docs/OMEGA_ARCHITECTURE.md', 'docs/OMEGA_OPERATIONS.md'],
             [G + 'test_deployment.py', G + 'test_crash_consistency.py', G + 'test_backup_restore.py',
-             'tests_sandbox/test_launcher.py', G + 'test_reproduce.py']),
+             'tests_sandbox/test_launcher.py', G + 'test_reproduce.py', G + 'test_no_llm.py', G + 'test_omega_boundary.py']),
     'W05': ('Domain contracts and calibration (B20_R12/R24: separately versioned study rules e1-hard-v1/v2; B20_R30: '
             'the calibration\'s 60 s certification limit and the evaluator\'s 600 s measured on the e1b family; B20_R33: '
             'an exact MIP baseline proves every e1b optimum within 0.36 CPU s; B20_R34: no MIP-hard certifiable setting '
@@ -556,12 +556,12 @@ WORKSTREAMS = {
              'scripts/b20r66_e1d_n60.py', 'evidence/e1d_n60_b20r66/summary.json',
              'scripts/b20r68_e1d_domain_heuristic.py', 'evidence/e1d_domain_heuristic_b20r68/summary.json',
              'scripts/b20r70_tts_scaling.py', 'evidence/tts_scaling_b20r70/summary.json',
-             'scripts/b20r73_multiverse.py', 'evidence/multiverse_b20r73/summary.json'],
+             'scripts/b20r73_multiverse.py', 'evidence/multiverse_b20r73/summary.json', 'src/genesis/compiler/bqp.py', 'src/genesis/compiler/families.py', 'src/genesis/compiler/backends.py', 'src/genesis/compiler/contracts.py', 'scripts/b20r133_problem_compiler.py'],
             [G + 'test_domain_adapters.py', G + 'test_calibration.py', G + 'test_calibration_rules.py',
              G + 'test_certification_budget.py', G + 'test_strong_baseline_audit.py', G + 'test_mip_hard_probe.py',
              G + 'test_dense_strong_baseline.py', G + 'test_e1d_readiness.py', G + 'test_e1d_package.py',
              G + 'test_e1d_ablation.py', G + 'test_e1d_ablation_rehearsal.py', G + 'test_e1d_crossover.py',
-             G + 'test_e1d_scaling.py']),
+             G + 'test_e1d_scaling.py', G + 'test_compiler.py', G + 'test_problem_compiler_study.py']),
     'W06': ('Independent custody and preregistration (B20_R40: candidate registry v2 with per-kind identity and an '
             'exact-MIP baseline kind; B20_R42: wired opt-in through request v5 and a registry dispatcher, not adopted; '
             'B20_R67: the kind map moved out of the hashed core, a kind bound to its dispatched module, and a '
@@ -632,7 +632,7 @@ WORKSTREAMS = {
              'evidence/planar_renorm_b20r113/summary.json', 'src/genesis/invention/solver_programs_v2.py',
              'scripts/b20r115_language_v2.py', 'evidence/language_v2_b20r115/summary.json',
              'scripts/b20r116_gset_attempt.py', 'evidence/gset_attempt_b20r116/summary.json',
-             'scripts/b20r123_gset_seeds.py'],
+             'scripts/b20r123_gset_seeds.py', 'evidence/gset_seeds_b20r123/summary.json', 'src/genesis/candidate_kinds/mcx2.py', 'src/genesis/candidate_kinds/native/mcx2.c', 'scripts/b20r125_build_mcx2.py', 'src/genesis/autonomy/selfimprove.py', 'scripts/b20r127_self_invented_engine.py', 'scripts/b20r128_improve_the_improver.py', 'src/genesis/autonomy/process.py'],
             [G + 'test_evaluator_readiness.py', G + 'test_redteam_b16.py', G + 'test_candidate_adapters.py',
              G + 'test_candidate_custody.py', G + 'test_statement_custody.py', G + 'test_candidates_v2.py',
              G + 'test_wiring_v5.py', G + 'test_maxcut_tabu.py', G + 'test_physics_kinds.py',
@@ -647,7 +647,7 @@ WORKSTREAMS = {
              G + 'test_mcx_kind.py', G + 'test_mcx_configure.py', G + 'test_mcx_gset.py',
              G + 'test_mcx_maturation.py', G + 'test_gset_replication.py', G + 'test_gset_long.py',
              G + 'test_invention_test.py', G + 'test_inventor_v2.py', G + 'test_planar_renorm.py',
-             G + 'test_language_v2.py', G + 'test_gset_attempt.py', G + 'test_gset_seeds.py']),
+             G + 'test_language_v2.py', G + 'test_gset_attempt.py', G + 'test_gset_seeds.py', G + 'test_mcx2_kind.py', G + 'test_selfimprove.py', G + 'test_self_invented_engine.py', G + 'test_improve_the_improver.py', G + 'test_process_levels.py']),
     'W07': ('Statistics, fairness and decision rules', B,
             [K + 'analysis.py', 'src/genesis/power.py', 'src/genesis/judge.py', 'src/genesis/resources.py',
              'docs/STATISTICIAN_BRIEF.md', 'scripts/b20r61_statistician_brief.py', 'scripts/b20r62_power_rebind.py',
@@ -702,7 +702,7 @@ WORKSTREAMS = {
              G + 'test_certificates_rows.py']),
     'W14': ('Active experiments and identifiability (B20_R117: a hidden-confounder causal-discovery benchmark with '
             'established baselines; B20_R118: their calibration; B20_R119: FCI and an active procedure proposing the '
-            'interventions that resolve hidden causes; B20_R120: its test; B20_R121-R122: version 2 and its test)', B,
+            'interventions that resolve hidden causes; B20_R120: its test; B20_R121-R122: version 2 and its test); B20_R124: Gaussian noise; B20_R129: the adaptive experimental scientist (ADAPTIVE_SCIENTIST); B20_R130-R131 preregistered', B,
             ['src/genesis/discovery/active.py', 'evidence/discovery_b19/active/evaluation.json',
              'src/genesis/causal/sem.py', 'src/genesis/causal/admg.py', 'src/genesis/causal/methods.py',
              'docs/checkpoints/B20_R117_RECORD.md', 'scripts/b20r118_causal_calibration.py',
@@ -710,11 +710,11 @@ WORKSTREAMS = {
              'src/genesis/causal/active.py', 'docs/checkpoints/B20_R119_RECORD.md',
              'scripts/b20r120_propose_interventions.py', 'evidence/propose_interventions_b20r120/summary.json',
              'src/genesis/causal/active2.py', 'docs/checkpoints/B20_R121_RECORD.md',
-             'scripts/b20r122_hidden_causes_v2.py', 'evidence/hidden_causes_v2_b20r122/summary.json'],
+             'scripts/b20r122_hidden_causes_v2.py', 'evidence/hidden_causes_v2_b20r122/summary.json', 'scripts/b20r124_gaussian_hidden_causes.py', 'evidence/gaussian_hidden_causes_b20r124/summary.json', 'src/genesis/science/design.py', 'src/genesis/science/acquire.py', 'src/genesis/science/library.py', 'src/genesis/causal/active3.py', 'src/genesis/causal/instruments.py', 'src/genesis/causal/joint.py', 'src/genesis/causal/global_ml.py', 'scripts/b20r129_adaptive_scientist.py', 'evidence/adaptive_scientist_b20r129/summary.json', 'scripts/b20r130_choice_instrument_interpretation.py', 'scripts/b20r131_cascade.py'],
             ['tests_formal/test_discovery.py::ActiveSelection', 'tests_genesis/test_causal_domain.py',
              'tests_genesis/test_causal_calibration.py', 'tests_genesis/test_causal_active.py',
              'tests_genesis/test_propose_interventions.py', 'tests_genesis/test_causal_active2.py',
-             'tests_genesis/test_hidden_causes_v2.py']),
+             'tests_genesis/test_hidden_causes_v2.py', 'tests_genesis/test_gaussian_hidden_causes.py', 'tests_genesis/test_science_design.py', 'tests_genesis/test_causal_active3.py', 'tests_genesis/test_adaptive_scientist.py::RecordB20R129', 'tests_genesis/test_global_ml.py', 'tests_genesis/test_causal_joint.py', 'tests_genesis/test_causal_instruments.py', 'tests_genesis/test_choice_instrument_interpretation.py', 'tests_genesis/test_cascade_study.py', 'tests_genesis/test_primitive_library.py']),
     'W15': ('Causal concept catalysis and idea combinations (DEV factorial and controls)', B,
             ['scripts/b19_discovery.py', 'evidence/discovery_b19/catalysis/solver.json'],
             ['tests_formal/test_discovery.py::Evidence']),
@@ -752,10 +752,10 @@ WORKSTREAMS = {
              'src/genesis/autonomy/feedback.py', 'scripts/b20r103_zero_signal.py', 'docs/RESEARCH_ALERTS.md',
              'evidence/zero_signal_b20r103/summary.json', 'scripts/b20r107_contract_v2.py',
              'evidence/contract_v2_b20r107/summary.json',
-             'docs/RECURSIVE_IMPROVEMENT_ARCHITECTURE.md'],
+             'docs/RECURSIVE_IMPROVEMENT_ARCHITECTURE.md', 'src/genesis/vault.py', 'src/genesis/discovery_cli.py', 'src/genesis/replayers.py', 'src/genesis/interpret.py', 'docs/OMEGA_DISCOVERY_SCHEMA.md', 'docs/OMEGA_CAPABILITY_GRAPH.md'],
             ['tests_formal/test_learning.py', 'tests_formal/test_learning_partitions.py',
              G + 'test_adaptation_cell.py', G + 'test_autonomy.py', G + 'test_knowledge_map.py',
-             G + 'test_feedback_contract.py', G + 'test_contract_v2.py']),
+             G + 'test_feedback_contract.py', G + 'test_contract_v2.py', G + 'test_vault.py', G + 'test_interpret.py']),
     'W21': ('Better-improver and multigeneration controller (B20_R2: pure lineage validator; B20_R4: the campaign '
             'loop writes native lineage records, crash/resume charges interrupted attempts, the custodian checks '
             'generation requests against the qualifying chain; B20_R16: active-version pointer, rollback, inherited '

@@ -4785,7 +4785,10 @@
     "src/genesis/launcher.py",
     "src/genesis/backup.py",
     "src/genesis/faults.py",
-    "deployment/reproduce.py"
+    "deployment/reproduce.py",
+    "docs/OMEGA_NO_LLM_AUDIT.md",
+    "docs/OMEGA_ARCHITECTURE.md",
+    "docs/OMEGA_OPERATIONS.md"
    ],
    "disposition": "IMPLEMENTED_BOUNDED_PENDING_AUDIT",
    "evidence": [],
@@ -4804,7 +4807,9 @@
     "tests_genesis/test_crash_consistency.py",
     "tests_genesis/test_backup_restore.py",
     "tests_sandbox/test_launcher.py",
-    "tests_genesis/test_reproduce.py"
+    "tests_genesis/test_reproduce.py",
+    "tests_genesis/test_no_llm.py",
+    "tests_genesis/test_omega_boundary.py"
    ],
    "title": "Deployment, isolation, recovery and reproducibility",
    "workstream": "W04"
@@ -4837,7 +4842,12 @@
     "scripts/b20r70_tts_scaling.py",
     "evidence/tts_scaling_b20r70/summary.json",
     "scripts/b20r73_multiverse.py",
-    "evidence/multiverse_b20r73/summary.json"
+    "evidence/multiverse_b20r73/summary.json",
+    "src/genesis/compiler/bqp.py",
+    "src/genesis/compiler/families.py",
+    "src/genesis/compiler/backends.py",
+    "src/genesis/compiler/contracts.py",
+    "scripts/b20r133_problem_compiler.py"
    ],
    "disposition": "IMPLEMENTED_BOUNDED_PENDING_AUDIT",
    "evidence": [],
@@ -4864,7 +4874,9 @@
     "tests_genesis/test_e1d_ablation.py",
     "tests_genesis/test_e1d_ablation_rehearsal.py",
     "tests_genesis/test_e1d_crossover.py",
-    "tests_genesis/test_e1d_scaling.py"
+    "tests_genesis/test_e1d_scaling.py",
+    "tests_genesis/test_compiler.py",
+    "tests_genesis/test_problem_compiler_study.py"
    ],
    "title": "Domain contracts and calibration (B20_R12/R24: separately versioned study rules e1-hard-v1/v2; B20_R30: the calibration's 60 s certification limit and the evaluator's 600 s measured on the e1b family; B20_R33: an exact MIP baseline proves every e1b optimum within 0.36 CPU s; B20_R34: no MIP-hard certifiable setting within the 200-edge bound; B20_R38: E1 beyond the exact MIP in a dense regime certified by generated rows; B20_R41: E1d readiness under the DRAFT rule e1-hard-v3-draft, READY_FOR_REVIEW against HiGHS at 4x budget; B20_R43: E1d DRAFT package and a SUPPORTED same-operator rehearsal through the v5 path; B20_R44: registered ablation of the discovered representation, READY_FOR_REVIEW, null control clean; B20_R45: the ablation evaluation rehearsed through the v5 custody path, SUPPORTED; B20_R63: the advantage over HiGHS ends between 8x and 16x its budget, CROSSOVER_AT_8S; B20_R64: it grows with host size, holding at 64x at n60, ADVANTAGE_GROWS, DEV; B20_R66: the n60 lead replicates on fresh hosts and holds at 120x, REPLICATED_ADVANTAGE_THROUGH_120X, DEV; B20_R68: a standard max-cut tabu search ties the candidate on the calibrated settings and beats it at n60, E1D_MATCHES_DOMAIN_HEURISTIC, DEV; B20_R70: by time-to-solution the candidate is slower than simulated bifurcation and tabu search and scales worst, E1D_SLOWER_THAN_SOME, DEV; B20_R73: multiverse analysis, 12 of 18 contrasts robust, B20_R68 Part B fragile)",
    "workstream": "W05"
@@ -4991,7 +5003,15 @@
     "evidence/language_v2_b20r115/summary.json",
     "scripts/b20r116_gset_attempt.py",
     "evidence/gset_attempt_b20r116/summary.json",
-    "scripts/b20r123_gset_seeds.py"
+    "scripts/b20r123_gset_seeds.py",
+    "evidence/gset_seeds_b20r123/summary.json",
+    "src/genesis/candidate_kinds/mcx2.py",
+    "src/genesis/candidate_kinds/native/mcx2.c",
+    "scripts/b20r125_build_mcx2.py",
+    "src/genesis/autonomy/selfimprove.py",
+    "scripts/b20r127_self_invented_engine.py",
+    "scripts/b20r128_improve_the_improver.py",
+    "src/genesis/autonomy/process.py"
    ],
    "disposition": "IMPLEMENTED_BOUNDED_PENDING_AUDIT",
    "evidence": [],
@@ -5049,7 +5069,12 @@
     "tests_genesis/test_planar_renorm.py",
     "tests_genesis/test_language_v2.py",
     "tests_genesis/test_gset_attempt.py",
-    "tests_genesis/test_gset_seeds.py"
+    "tests_genesis/test_gset_seeds.py",
+    "tests_genesis/test_mcx2_kind.py",
+    "tests_genesis/test_selfimprove.py",
+    "tests_genesis/test_self_invented_engine.py",
+    "tests_genesis/test_improve_the_improver.py",
+    "tests_genesis/test_process_levels.py"
    ],
    "title": "Independent custody and preregistration (B20_R40: candidate registry v2 with per-kind identity and an exact-MIP baseline kind; B20_R42: wired opt-in through request v5 and a registry dispatcher, not adopted; B20_R67: the kind map moved out of the hashed core, a kind bound to its dispatched module, and a max-cut tabu domain-baseline kind; B20_R69: simulated-bifurcation and extremal-optimization kinds; B20_R71: the representation engine with physics move rules; B20_R72: they do not improve it, NO_GENERAL_IMPROVEMENT, DEV; B20_R74: MQLib BURER2002 as a pinned external baseline; B20_R75: the state-of-the-art comparison INVALID_CPU_DELIVERY, a kind defect caught by the validity check; B20_R76: CP-SAT installed from a supplied wheel as cpsat-v1, and the comparison with CP-SAT and the fixed BURER2002 UNRESOLVED; B20_R77: hybrid-swap-v1, a cut portfolio with (1,2)-swap local search, and its powered comparison with CP-SAT and BURER2002, ENGINE_BEATS_SOTA on DEV; B20_R78: a closed solver language, solver-program-v1 and a program search; B20_R79: the system searches for its own solver; B20_R80: a random-program control; B20_R81: the self-found solver against the builder engine and the tools; B20_R82: a library language so that generations compound; B20_R83-R86: three generations, a control and their test; B20_R104-R110, R113, R116: the max-cut engine mcx-v1 (breakout local search with an elite pool and population restarts), configured and tested on Gset; B20_R111, R112, R115: the invention test against preregistered prior art, NOT_DEMONSTRATED)",
    "workstream": "W06"
@@ -5321,7 +5346,20 @@
     "src/genesis/causal/active2.py",
     "docs/checkpoints/B20_R121_RECORD.md",
     "scripts/b20r122_hidden_causes_v2.py",
-    "evidence/hidden_causes_v2_b20r122/summary.json"
+    "evidence/hidden_causes_v2_b20r122/summary.json",
+    "scripts/b20r124_gaussian_hidden_causes.py",
+    "evidence/gaussian_hidden_causes_b20r124/summary.json",
+    "src/genesis/science/design.py",
+    "src/genesis/science/acquire.py",
+    "src/genesis/science/library.py",
+    "src/genesis/causal/active3.py",
+    "src/genesis/causal/instruments.py",
+    "src/genesis/causal/joint.py",
+    "src/genesis/causal/global_ml.py",
+    "scripts/b20r129_adaptive_scientist.py",
+    "evidence/adaptive_scientist_b20r129/summary.json",
+    "scripts/b20r130_choice_instrument_interpretation.py",
+    "scripts/b20r131_cascade.py"
    ],
    "disposition": "IMPLEMENTED_BOUNDED_PENDING_AUDIT",
    "evidence": [],
@@ -5342,9 +5380,19 @@
     "tests_genesis/test_causal_active.py",
     "tests_genesis/test_propose_interventions.py",
     "tests_genesis/test_causal_active2.py",
-    "tests_genesis/test_hidden_causes_v2.py"
+    "tests_genesis/test_hidden_causes_v2.py",
+    "tests_genesis/test_gaussian_hidden_causes.py",
+    "tests_genesis/test_science_design.py",
+    "tests_genesis/test_causal_active3.py",
+    "tests_genesis/test_adaptive_scientist.py::RecordB20R129",
+    "tests_genesis/test_global_ml.py",
+    "tests_genesis/test_causal_joint.py",
+    "tests_genesis/test_causal_instruments.py",
+    "tests_genesis/test_choice_instrument_interpretation.py",
+    "tests_genesis/test_cascade_study.py",
+    "tests_genesis/test_primitive_library.py"
    ],
-   "title": "Active experiments and identifiability (B20_R117: a hidden-confounder causal-discovery benchmark with established baselines; B20_R118: their calibration; B20_R119: FCI and an active procedure proposing the interventions that resolve hidden causes; B20_R120: its test; B20_R121-R122: version 2 and its test)",
+   "title": "Active experiments and identifiability (B20_R117: a hidden-confounder causal-discovery benchmark with established baselines; B20_R118: their calibration; B20_R119: FCI and an active procedure proposing the interventions that resolve hidden causes; B20_R120: its test; B20_R121-R122: version 2 and its test); B20_R124: Gaussian noise; B20_R129: the adaptive experimental scientist (ADAPTIVE_SCIENTIST); B20_R130-R131 preregistered",
    "workstream": "W14"
   },
   {
@@ -5526,7 +5574,13 @@
     "evidence/zero_signal_b20r103/summary.json",
     "scripts/b20r107_contract_v2.py",
     "evidence/contract_v2_b20r107/summary.json",
-    "docs/RECURSIVE_IMPROVEMENT_ARCHITECTURE.md"
+    "docs/RECURSIVE_IMPROVEMENT_ARCHITECTURE.md",
+    "src/genesis/vault.py",
+    "src/genesis/discovery_cli.py",
+    "src/genesis/replayers.py",
+    "src/genesis/interpret.py",
+    "docs/OMEGA_DISCOVERY_SCHEMA.md",
+    "docs/OMEGA_CAPABILITY_GRAPH.md"
    ],
    "disposition": "IMPLEMENTED_BOUNDED_PENDING_AUDIT",
    "evidence": [],
@@ -5547,7 +5601,9 @@
     "tests_genesis/test_autonomy.py",
     "tests_genesis/test_knowledge_map.py",
     "tests_genesis/test_feedback_contract.py",
-    "tests_genesis/test_contract_v2.py"
+    "tests_genesis/test_contract_v2.py",
+    "tests_genesis/test_vault.py",
+    "tests_genesis/test_interpret.py"
    ],
    "title": "Curriculum, experience synthesis and capability memory (screened memory, failure-driven curriculum, demotion; B20_R93: the adaptation cell, which senses weaknesses in studies, remembers what answered them and gates the next design)",
    "workstream": "W20"
