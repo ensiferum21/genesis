@@ -150,6 +150,126 @@
    "title": "The Difficulty Cartographer, redesigned with obstacles hidden from cheap statistics",
    "unlocks": []
   },
+  "B20_R136": {
+   "artifacts": [],
+   "committed": false,
+   "depends_on": [
+    "sense-language-build",
+    "B20_R132"
+   ],
+   "failure": null,
+   "id": "B20_R136",
+   "kind": "study",
+   "line": "recursive-invention",
+   "notes": "",
+   "outcome": null,
+   "output": null,
+   "positive": null,
+   "preregistered": null,
+   "priority": 4,
+   "requires": [],
+   "resources": {},
+   "script": null,
+   "status": "queued",
+   "title": "Experiment A: synthesised senses choose the engine program per instance; fresh graphs, matched compute, planted control, transfer",
+   "unlocks": [
+    "sense-invention"
+   ]
+  },
+  "B20_R137": {
+   "artifacts": [],
+   "committed": false,
+   "depends_on": [
+    "B20_R136"
+   ],
+   "failure": null,
+   "id": "B20_R137",
+   "kind": "study",
+   "line": "recursive-invention",
+   "notes": "",
+   "outcome": null,
+   "output": null,
+   "positive": null,
+   "preregistered": null,
+   "priority": 2,
+   "requires": [],
+   "resources": {},
+   "script": null,
+   "status": "queued",
+   "title": "Experiment B: synergy of individually weak senses",
+   "unlocks": []
+  },
+  "B20_R138": {
+   "artifacts": [],
+   "committed": false,
+   "depends_on": [
+    "ro-layer-build",
+    "repr-language-study"
+   ],
+   "failure": null,
+   "id": "B20_R138",
+   "kind": "study",
+   "line": "recursive-invention",
+   "notes": "",
+   "outcome": null,
+   "output": null,
+   "positive": null,
+   "preregistered": null,
+   "priority": 2,
+   "requires": [],
+   "resources": {},
+   "script": null,
+   "status": "queued",
+   "title": "Experiment D: attack workflows as research objects on unfamiliar families (including redirection to bounds)",
+   "unlocks": []
+  },
+  "B20_R139": {
+   "artifacts": [],
+   "committed": false,
+   "depends_on": [
+    "ro-layer-build"
+   ],
+   "failure": null,
+   "id": "B20_R139",
+   "kind": "study",
+   "line": "mathematics",
+   "notes": "",
+   "outcome": null,
+   "output": null,
+   "positive": null,
+   "preregistered": null,
+   "priority": 1,
+   "requires": [],
+   "resources": {},
+   "script": null,
+   "status": "queued",
+   "title": "Experiment H: a mathematical abstraction defined, conjectured, proved in Lean and transferred",
+   "unlocks": []
+  },
+  "B20_R140": {
+   "artifacts": [],
+   "committed": false,
+   "depends_on": [
+    "B20_R136",
+    "B20_R128"
+   ],
+   "failure": null,
+   "id": "B20_R140",
+   "kind": "study",
+   "line": "recursive-invention",
+   "notes": "",
+   "outcome": null,
+   "output": null,
+   "positive": null,
+   "preregistered": null,
+   "priority": 1,
+   "requires": [],
+   "resources": {},
+   "script": null,
+   "status": "queued",
+   "title": "Experiment G: several generations improve G_t on fresh tasks",
+   "unlocks": []
+  },
   "allocator-baselines": {
    "artifacts": [],
    "committed": false,
@@ -219,6 +339,29 @@
    "script": null,
    "status": "dormant",
    "title": "Engine invention under a validated judge v3 (a new preregistered study)",
+   "unlocks": []
+  },
+  "paradigm-invention": {
+   "artifacts": [],
+   "committed": false,
+   "depends_on": [
+    "B20_R140"
+   ],
+   "failure": null,
+   "id": "paradigm-invention",
+   "kind": "study",
+   "line": "recursive-invention",
+   "notes": "",
+   "outcome": null,
+   "output": null,
+   "positive": null,
+   "preregistered": null,
+   "priority": 1,
+   "requires": [],
+   "resources": {},
+   "script": null,
+   "status": "queued",
+   "title": "Experiment I: a research paradigm that beats the previous one on fresh families",
    "unlocks": []
   },
   "reduction-invention": {
@@ -298,6 +441,50 @@
    "unlocks": [
     "representation-language"
    ]
+  },
+  "ro-layer-build": {
+   "artifacts": [],
+   "committed": false,
+   "depends_on": [],
+   "failure": null,
+   "id": "ro-layer-build",
+   "kind": "build",
+   "line": "recursive-invention",
+   "notes": "engineering on fixtures, CPU 1",
+   "outcome": null,
+   "output": null,
+   "positive": null,
+   "preregistered": null,
+   "priority": 6,
+   "requires": [],
+   "resources": {},
+   "script": null,
+   "status": "queued",
+   "title": "The research-object layer: schema, type and kind registry, run with contracts and fuel, improve as an RO, adapters for the existing languages (docs/OMEGA_RECURSIVE_INVENTION.md section 3)",
+   "unlocks": []
+  },
+  "sense-language-build": {
+   "artifacts": [],
+   "committed": false,
+   "depends_on": [
+    "ro-layer-build"
+   ],
+   "failure": null,
+   "id": "sense-language-build",
+   "kind": "build",
+   "line": "recursive-invention",
+   "notes": "",
+   "outcome": null,
+   "output": null,
+   "positive": null,
+   "preregistered": null,
+   "priority": 5,
+   "requires": [],
+   "resources": {},
+   "script": null,
+   "status": "queued",
+   "title": "The graph sense language, its interpreter, contracts, synthesis and the perceptual workspace (section 4)",
+   "unlocks": []
   }
  },
  "events": [
@@ -448,6 +635,46 @@
    "id": "B20_R133",
    "kind": "start",
    "time": "2026-10-24T11:36:32+00:00"
+  },
+  {
+   "id": "ro-layer-build",
+   "kind": "add",
+   "time": "2026-10-24T12:35:16+00:00"
+  },
+  {
+   "id": "sense-language-build",
+   "kind": "add",
+   "time": "2026-10-24T12:35:16+00:00"
+  },
+  {
+   "id": "B20_R136",
+   "kind": "add",
+   "time": "2026-10-24T12:35:16+00:00"
+  },
+  {
+   "id": "B20_R137",
+   "kind": "add",
+   "time": "2026-10-24T12:35:16+00:00"
+  },
+  {
+   "id": "B20_R138",
+   "kind": "add",
+   "time": "2026-10-24T12:35:16+00:00"
+  },
+  {
+   "id": "B20_R139",
+   "kind": "add",
+   "time": "2026-10-24T12:35:16+00:00"
+  },
+  {
+   "id": "B20_R140",
+   "kind": "add",
+   "time": "2026-10-24T12:35:16+00:00"
+  },
+  {
+   "id": "paradigm-invention",
+   "kind": "add",
+   "time": "2026-10-24T12:35:16+00:00"
   }
  ],
  "lines": {
@@ -520,7 +747,19 @@
    "run": 4,
    "stagnant": true
   },
+  "mathematics": {
+   "diagnosis": null,
+   "outcomes": [],
+   "run": 0,
+   "stagnant": false
+  },
   "operations": {
+   "diagnosis": null,
+   "outcomes": [],
+   "run": 0,
+   "stagnant": false
+  },
+  "recursive-invention": {
    "diagnosis": null,
    "outcomes": [],
    "run": 0,
@@ -545,7 +784,15 @@
   "repr-language-study",
   "reduction-invention",
   "B20_R134",
-  "allocator-baselines"
+  "allocator-baselines",
+  "ro-layer-build",
+  "sense-language-build",
+  "B20_R136",
+  "B20_R137",
+  "B20_R138",
+  "B20_R139",
+  "B20_R140",
+  "paradigm-invention"
  ],
  "reactivated": {},
  "schema": "genesis-research-queue-v1",
