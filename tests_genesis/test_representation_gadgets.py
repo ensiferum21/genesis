@@ -25,6 +25,15 @@ class Relations(unittest.TestCase):
         c, (perm, flips) = a.canonical()
         self.assertEqual(a.transform(perm, flips), c)
 
+    def test_fast_canonical_is_the_direct_one(self):
+        rng = random.Random(1)
+        for k in (1, 2, 3, 4):
+            for _ in range(25):
+                r = R.random_relation(k, rng)
+                self.assertEqual(r.canonical(), r.canonical_slow())
+                p = R.Partial(k, r.table, R.random_relation(k, rng).table | 1)
+                self.assertEqual(p.canonical(), p.canonical_slow())
+
     def test_operators(self):
         x = R.parity(3, 0)
         self.assertEqual(x.project(2), R.Relation(2, 0b1111))  # any pair of values extends to even parity

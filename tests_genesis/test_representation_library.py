@@ -46,7 +46,8 @@ class Library(unittest.TestCase):
         g, rep = GD.synthesize_milp(c3, max_ancillas=1, bound=6)
         lib = LB.register(LB.EMPTY, c3, g, {'synthesizer': 'milp'})
         self.assertEqual(lib['parent'], LB.version(LB.EMPTY))
-        self.assertEqual(lib['entries'][c3.id()]['lineage'], {'synthesizer': 'milp'})
+        self.assertEqual(LB.entry(lib, c3)['lineage'], {'synthesizer': 'milp'})
+        self.assertEqual(LB.entry(lib, c3, uniform=True), LB.entry(lib, c3))       # this gadget is uniform too
         with self.assertRaises(ValueError):                 # not an improvement
             LB.register(lib, c3, g, {'synthesizer': 'again'})
         bad = GD.Gadget(3, 0, 1, [-1, -1, -1], {})
@@ -96,7 +97,7 @@ class Compile(unittest.TestCase):
             v, z = C.brute_force(bqp)
             self.assertEqual(v, best_direct(p, lambda x: C.verify(p, x)[0]))
             self.assertEqual(C.verify(p, C.decode(z, info))[0], v)
-        with self.assertRaises(ValueError):                  # a non-uniform gadget is refused for Max-CSP
+        with self.assertRaises(KeyError):                    # Max-CSP needs the uniform slot; it is missing here
             C.compile(random_csp(rng, 5, 2, lambda r: R.exactly(3, 1)), lib_with(R.exactly(3, 1)), 'max_csp')
 
     def test_constrained_optimum_is_exact(self):

@@ -4,10 +4,11 @@
 **Library values.** A library is an immutable JSON value {'schema', 'parent', 'entries'}; `register` returns a new
 library whose `parent` is the old one's version (its content digest), so every version names its predecessor and an
 earlier version is still a value one can return to (rollback is using it). An entry is keyed by its relation's orbit
-(`Relation.id`: renaming and negating variables), so one gadget serves the whole orbit (`lookup` transports it).
+(`Relation.id`: renaming and negating variables), so one gadget serves the whole orbit (`lookup` transports it);
+each orbit keeps two slots, the best exact gadget and the best uniform one.
 
 **Admission.** `register` admits a gadget only if `gadgets.check` (exhaustive enumeration, independent of whatever
-synthesised it) says it is exact; an entry may be replaced only by one with fewer ancillas, or as many and fewer
+synthesised it) says it is exact; an slot is replaced only by a gadget with fewer ancillas, or as many and fewer
 non-zero coefficients (an improvement). The lineage (synthesiser, its parameters, parents) is kept in the entry.
 
 **The vault** (`archive`, `announce`, `park`, `cascade`):
@@ -25,7 +26,7 @@ import copy
 
 from ..common import digest
 from . import gadgets as GD
-from .relations import Relation
+from .relations import Relation, relation_from_json
 
 SCHEMA = 'genesis-representation-library-v1'
 EMPTY = {'schema': SCHEMA, 'parent': None, 'entries': {}}
@@ -36,11 +37,13 @@ def version(lib):
 
 
 def _better(new, old):
-    return (new['ancillas'], new['nonzero']) < (old['ancillas'], old['nonzero'])
+    return old is None or (new['ancillas'], new['nonzero']) < (old['ancillas'], old['nonzero'])
 
 
 def register(lib, rel, gadget, lineage):
-    """A new library with the gadget for rel's orbit; ValueError if it is not exact or not an improvement."""
+    """A new library with the gadget for rel's orbit; ValueError if it is not exact or improves neither slot. Each
+    orbit has two slots: the best exact gadget, and the best uniform one (every violation costs exactly the gap, so
+    sums count violated constraints)."""
     ver = GD.check(gadget, rel)
     if not ver['exact']:
         raise ValueError(f'not exact: {ver["violations"][:3]}')
@@ -49,22 +52,35 @@ def register(lib, rel, gadget, lineage):
     key = rel.id()
     nonzero, largest = gadget.size()
     entry = {'relation': rel.to_json(), 'relation_id': key, 'gadget': gadget.to_json(), 'gap': ver['gap'],
-             'uniform': ver['uniform'],
-             'ancillas': gadget.m, 'nonzero': nonzero, 'largest': largest, 'lineage': copy.deepcopy(lineage)}
-    old = lib['entries'].get(key)
-    if old is not None and not _better(entry, old):
-        raise ValueError('not an improvement on the entry for this relation')
+             'uniform': ver['uniform'], 'ancillas': gadget.m, 'nonzero': nonzero, 'largest': largest,
+             'lineage': copy.deepcopy(lineage)}
+    slots = dict(lib['entries'].get(key, {'exact': None, 'uniform': None}))
+    changed = False
+    if _better(entry, slots['exact']):
+        slots['exact'], changed = entry, True
+    if ver['uniform'] and _better(entry, slots['uniform']):
+        slots['uniform'], changed = entry, True
+    if not changed:
+        raise ValueError('not an improvement on the entries for this relation')
     new = {'schema': SCHEMA, 'parent': version(lib), 'entries': dict(lib['entries'])}
-    new['entries'][key] = entry
+    new['entries'][key] = slots
     return new
 
 
-def lookup(lib, rel):
-    """An exact gadget for rel (transported from its orbit's entry), or None."""
-    e = lib['entries'].get(rel.id())
+def entry(lib, rel, uniform=False):
+    """The library's entry for rel's orbit (the uniform slot if `uniform`), or None."""
+    slots = lib['entries'].get(rel.id())
+    if slots is None:
+        return None
+    return slots['uniform'] if uniform else slots['exact']
+
+
+def lookup(lib, rel, uniform=False):
+    """An exact gadget for rel (uniform if asked), transported from its orbit's entry, or None."""
+    e = entry(lib, rel, uniform)
     if e is None:
         return None
-    src = Relation.from_json(e['relation'])
+    src = relation_from_json(e['relation'])
     g = GD.Gadget.from_json(e['gadget'])
     c1, (p1, f1) = src.canonical()
     c2, (p2, f2) = rel.canonical()
@@ -88,15 +104,15 @@ def inverse(perm, flips, k):
     return ip, f
 
 
-def supports(lib, rel):
-    return rel.id() in lib['entries']
+def supports(lib, rel, uniform=False):
+    return entry(lib, rel, uniform) is not None
 
 
 # ----------------------------------------------------------------------------------------------- the vault
 
 def archive(vault, lib, rel, creator, parents=(), domain='representation'):
     """Store rel's entry exactly (a WorldSpec) and mark it reproducible; returns the artifact ID."""
-    e = lib['entries'][rel.id()]
+    e = entry(lib, rel)
     rec = vault.record('WorldSpec', {'kind': 'gadget', 'entry': e, 'library': version(lib)}, domain=domain,
                        creator=creator, parents=parents, contracts={'exact': True, 'gap': e['gap'],
                                                                      'checker': 'gadgets.check and check_matrix'},
@@ -139,5 +155,5 @@ def cascade(vault, triggers, retest, fuel, depth=2):
     return vault.cascade(triggers, retest, fuel, depth)
 
 
-__all__ = ['SCHEMA', 'EMPTY', 'version', 'register', 'lookup', 'inverse', 'supports', 'archive', 'announce', 'park',
+__all__ = ['SCHEMA', 'EMPTY', 'version', 'register', 'entry', 'lookup', 'inverse', 'supports', 'archive', 'announce', 'park',
            'cascade']

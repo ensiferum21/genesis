@@ -10,8 +10,9 @@ constraint's variables, its ancillas appended as fresh variables) and returns a 
 with no hard constraints (`compiler.bqp`; solved by any of its back-ends, max-cut through `to_maxcut`), plus the map
 back. The modes:
   * `satisfy`: penalty weight 1 per constraint; the BQP's minimum is 0 exactly when every constraint can hold;
-  * `max_csp`: every gadget must be uniform with gap 1 (each violated constraint costs exactly 1, times its weight),
-    so the BQP's minimum over ancillas is the total weight of violated constraints: exact for weighted Max-CSP;
+  * `max_csp`: every gadget of a soft constraint must be uniform with gap 1 (each violated constraint costs exactly
+    1, times its weight), so the BQP's minimum over ancillas is the total weight of violated constraints: exact for
+    weighted Max-CSP. A constraint marked `hard` (weight above the total soft weight) needs only an exact gadget;
   * `optimize`: the objective plus a penalty W x (sum of gadgets), W = 1 + the objective's total range (sum of
     |coefficients|), so any assignment violating a constraint costs more than any change of the objective: exact for
     the constrained optimum.
@@ -21,15 +22,16 @@ gadget is found (`library.park`).
 `decode` drops the ancillas. `verify` is the independent checker: it evaluates every constraint relation on the
 decoded assignment and the objective directly from the problem, never from the BQP.
 """
-from .relations import Relation
+from .relations import relation_from_json
 from . import library as LB
 
 
-def missing(problem, lib):
+def missing(problem, lib, mode='satisfy'):
     out, seen = [], set()
     for c in problem['constraints']:
-        r = Relation.from_json(c['relation'])
-        if not LB.supports(lib, r) and r.id() not in seen:
+        r = relation_from_json(c['relation'])
+        need_uniform = mode == 'max_csp' and not c.get('hard')
+        if not LB.supports(lib, r, need_uniform) and r.id() not in seen:
             seen.add(r.id())
             out.append(r)
     return out
@@ -43,7 +45,7 @@ def _objective_range(obj):
 
 def compile(problem, lib, mode='satisfy'):
     """(bqp, info) or raises KeyError listing the missing relations' IDs."""
-    miss = missing(problem, lib)
+    miss = missing(problem, lib, mode)
     if miss:
         raise KeyError('missing relations: ' + ', '.join(r.id() for r in miss))
     n = problem['n']
@@ -51,11 +53,12 @@ def compile(problem, lib, mode='satisfy'):
     nxt = n
     W = 1 if mode in ('satisfy', 'max_csp') else 1 + _objective_range(problem.get('objective'))
     for c in problem['constraints']:
-        r = Relation.from_json(c['relation'])
-        g = LB.lookup(lib, r)
-        e = lib['entries'][r.id()]
-        if mode == 'max_csp' and not (e['uniform'] and e['gap'] == 1):
-            raise ValueError(f'max_csp needs uniform gadgets of gap 1; relation {r.id()} has none')
+        r = relation_from_json(c['relation'])
+        uni = mode == 'max_csp' and not c.get('hard')
+        g = LB.lookup(lib, r, uni)
+        e = LB.entry(lib, r, uni)
+        if uni and e['gap'] != 1:
+            raise ValueError(f'max_csp needs uniform gadgets of gap 1; relation {r.id()} has gap {e["gap"]}')
         names = list(c['vars']) + list(range(nxt, nxt + g.m))
         nxt += g.m
         scale = W * c.get('weight', 1)
@@ -79,10 +82,7 @@ def compile(problem, lib, mode='satisfy'):
         quad[key] = quad.get(key, 0) + b
     bqp = {'n': nxt, 'constant': const, 'linear': [[i, a] for i, a in sorted(lin.items()) if a],
            'quadratic': [[i, j, b] for (i, j), b in sorted(quad.items()) if b], 'hard': {}}
-    gaps = {Relation.from_json(c['relation']).id(): lib['entries'][Relation.from_json(c['relation']).id()]['gap']
-            for c in problem['constraints']}
-    return bqp, {'mode': mode, 'penalty_weight': W, 'visible': n, 'ancillas': nxt - n, 'library': LB.version(lib),
-                 'gaps': gaps}
+    return bqp, {'mode': mode, 'penalty_weight': W, 'visible': n, 'ancillas': nxt - n, 'library': LB.version(lib)}
 
 
 def decode(x, info):
@@ -93,7 +93,7 @@ def verify(problem, x):
     """The independent check: (violated constraints' total weight, objective value), from the problem alone."""
     viol = 0
     for c in problem['constraints']:
-        r = Relation.from_json(c['relation'])
+        r = relation_from_json(c['relation'])
         if not r.contains([x[i] for i in c['vars']]):
             viol += c.get('weight', 1)
     obj = problem.get('objective') or {}

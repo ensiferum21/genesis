@@ -26,7 +26,7 @@ rediscover; no novelty is claimed for a gadget unless a literature check says so
 """
 from itertools import combinations, product
 
-from .relations import Relation, assignment
+from .relations import Relation, assignment, care_of
 
 MAX_VARS = 8
 
@@ -78,6 +78,7 @@ def check(g, rel):
         return {'exact': False, 'gap': None, 'zero_on_relation': False, 'nonnegative': False,
                 'violations': ['arity differs']}
     viol, gap, nonneg, zero, outside = [], None, True, True, []
+    care = care_of(rel)
     for i in range(1 << rel.k):
         x = assignment(i, rel.k)
         vals = [g.value(x + a) for a in product((0, 1), repeat=g.m)]
@@ -85,7 +86,9 @@ def check(g, rel):
         if mn < 0:
             nonneg = False
             viol.append([list(x), 'negative'])
-        if rel.contains(x):
+        if not care >> i & 1:
+            continue
+        if rel.table >> i & 1:
             if mn != 0:
                 zero = False
                 viol.append([list(x), f'min {mn} on a member'])
@@ -115,7 +118,8 @@ def check_matrix(g, rel):
     for ix, v in zip(idx_x.tolist(), vals.tolist()):
         mins[ix] = min(mins.get(ix, v), v)
     member = [bool(rel.table >> ix & 1) for ix in range(1 << g.k)]
-    ok = all((mins[ix] == 0) if member[ix] else (mins[ix] >= 1) for ix in range(1 << g.k))
+    care = care_of(rel)
+    ok = all((mins[ix] == 0) if member[ix] else (mins[ix] >= 1) for ix in range(1 << g.k) if care >> ix & 1)
     ok = ok and min(vals.tolist()) >= 0
     return ok
 
@@ -166,9 +170,10 @@ def synthesize_milp(rel, max_ancillas=2, bound=8, gap=1, time_limit=30.0, unifor
             break
         terms = _terms(n)
         T = len(terms)
+        care = care_of(rel)
         members = [assignment(i, rel.k) for i in range(1 << rel.k) if rel.table >> i & 1]
-        pinned = members + ([assignment(i, rel.k) for i in range(1 << rel.k) if not rel.table >> i & 1]
-                            if uniform else [])
+        pinned = members + ([assignment(i, rel.k) for i in range(1 << rel.k)
+                             if care >> i & 1 and not rel.table >> i & 1] if uniform else [])
         pats = list(product((0, 1), repeat=m))
         S = len(pinned) * len(pats) if m else 0
         big = bound * T + gap
@@ -182,17 +187,17 @@ def synthesize_milp(rel, max_ancillas=2, bound=8, gap=1, time_limit=30.0, unifor
             hi.append(ub)
         for i in range(1 << rel.k):
             x = assignment(i, rel.k)
-            inside = bool(rel.table >> i & 1)
+            inside = bool(rel.table >> i & 1) or not care >> i & 1
             for a in pats:
                 r = _row(terms, x + a) + [0] * (T + S)
                 add(r, 0 if inside else gap, np.inf)
         if m == 0:
             for x in pinned:
-                target = 0 if rel.contains(x) else gap
+                target = 0 if rel.table >> sum(v << j for j, v in enumerate(x)) & 1 else gap
                 add(_row(terms, x) + [0] * (T + S), target, target)
         else:
             for xi, x in enumerate(pinned):
-                target = 0 if rel.contains(x) else gap
+                target = 0 if rel.table >> sum(v << j for j, v in enumerate(x)) & 1 else gap
                 sel = []
                 for ai, a in enumerate(pats):
                     s = xi * len(pats) + ai
@@ -230,12 +235,14 @@ def synthesize_milp(rel, max_ancillas=2, bound=8, gap=1, time_limit=30.0, unifor
 def violation(g, rel):
     """How far a candidate is from exact (0 when exact with gap >= 1)."""
     v = 0
+    care = care_of(rel)
     for i in range(1 << rel.k):
         x = assignment(i, rel.k)
         vals = [g.value(x + a) for a in product((0, 1), repeat=g.m)]
         mn = min(vals)
         v += sum(max(0, -y) for y in vals)
-        v += abs(mn) if rel.contains(x) else max(0, 1 - mn)
+        if care >> i & 1:
+            v += abs(mn) if rel.table >> i & 1 else max(0, 1 - mn)
     return v
 
 

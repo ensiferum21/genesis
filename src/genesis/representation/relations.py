@@ -68,7 +68,13 @@ class Relation:
         return Relation(self.k, t)
 
     def canonical(self):
-        """(least table over the orbit, the (perm, flips) that reach it)."""
+        """(least table over the orbit, the (perm, flips) that reach it); ties to the first transform in the order
+        of `canonical_slow`, which computes the same thing directly (the tests compare them)."""
+        tv, _ = _orbit_values(self.k, self.table)
+        t = int(tv.argmin())
+        return Relation(self.k, int(tv[t])), _ops(self.k)[t]
+
+    def canonical_slow(self):
         best = None
         for perm in permutations(range(self.k)):
             for flips in range(1 << self.k):
@@ -114,6 +120,105 @@ class Relation:
     def conjoin(self, other, places_self, places_other, k):
         """The relation on k variables where self holds on `places_self` and other on `places_other`."""
         return Relation(k, self.extend(k, places_self).table & other.extend(k, places_other).table)
+
+
+class Partial(Relation):
+    """A relation that cares only about some assignments: `care` (a table) marks them; outside it any value is allowed
+    (a gadget need only be non-negative there). Encodings use it: a constraint on codes need not police invalid codes
+    when a separate validity constraint does."""
+    __slots__ = ('care',)
+
+    def __init__(self, k, table, care):
+        super().__init__(k, table & care)
+        if not 0 <= care < (1 << (1 << k)):
+            raise ValueError('care table out of range')
+        self.care = int(care)
+
+    def __eq__(self, other):
+        return isinstance(other, Partial) and (self.k, self.table, self.care) == (other.k, other.table, other.care)
+
+    def __hash__(self):
+        return hash((self.k, self.table, self.care))
+
+    def __repr__(self):
+        return f'Partial({self.k}, {self.table:#x}, care {self.care:#x})'
+
+    def cares(self, x):
+        return bool(self.care >> index(x) & 1)
+
+    def contains(self, x):
+        """True when the assignment satisfies the constraint: a member, or outside the care set."""
+        return (not self.cares(x)) or bool(self.table >> index(x) & 1)
+
+    def to_json(self):
+        return {'k': self.k, 'table': self.table, 'care': self.care}
+
+    def transform(self, perm, flips):
+        r = Relation(self.k, self.table).transform(perm, flips)
+        c = Relation(self.k, self.care).transform(perm, flips)
+        return Partial(self.k, r.table, c.table)
+
+    def canonical(self):
+        import numpy as np
+        tv, _ = _orbit_values(self.k, self.table)
+        cv, _ = _orbit_values(self.k, self.care)
+        t = int(np.lexsort((tv, cv))[0])
+        return Partial(self.k, int(tv[t]), int(cv[t])), _ops(self.k)[t]
+
+    def canonical_slow(self):
+        best = None
+        for perm in permutations(range(self.k)):
+            for flips in range(1 << self.k):
+                t = self.transform(perm, flips)
+                key = (t.care, t.table)
+                if best is None or key < best[0]:
+                    best = (key, t, (list(perm), flips))
+        return best[1], best[2]
+
+    def id(self):
+        c, _ = self.canonical()
+        return digest({'relation': 'genesis-partial-relation-v1', 'k': c.k, 'table': c.table, 'care': c.care})[:16]
+
+
+_POW, _OPS = {}, {}
+
+
+def _ops(k):
+    if k not in _OPS:
+        _OPS[k] = [(list(perm), flips) for perm in permutations(range(k)) for flips in range(1 << k)]
+    return _OPS[k]
+
+
+def _pow(k):
+    """P[t, i] = 2 ** (the index that assignment i moves to under transform t), as uint64 (k <= 6: 64 bits)."""
+    if k not in _POW:
+        import numpy as np
+        ops = _ops(k)
+        M = np.empty((len(ops), 1 << k), dtype=np.uint64)
+        for t, (perm, flips) in enumerate(ops):
+            for i in range(1 << k):
+                y = 0
+                for j in range(k):
+                    if i >> j & 1:
+                        y |= 1 << perm[j]
+                M[t, i] = y ^ flips
+        _POW[k] = np.left_shift(np.uint64(1), M)
+    return _POW[k]
+
+
+def _orbit_values(k, table):
+    """The table after every transform (uint64 array in `_ops(k)` order)."""
+    import numpy as np
+    bits = np.array([table >> i & 1 for i in range(1 << k)], dtype=bool)
+    return _pow(k)[:, bits].sum(axis=1, dtype=np.uint64), bits
+
+
+def relation_from_json(d):
+    return Partial(d['k'], d['table'], d['care']) if 'care' in d else Relation(d['k'], d['table'])
+
+
+def care_of(rel):
+    return getattr(rel, 'care', (1 << (1 << rel.k)) - 1)
 
 
 def index(x):
@@ -183,6 +288,6 @@ def orbit_representatives(k):
     return out
 
 
-__all__ = ['MAX_ARITY', 'Relation', 'index', 'assignment', 'from_predicate', 'clause', 'exactly', 'at_most',
+__all__ = ['MAX_ARITY', 'Relation', 'Partial', 'relation_from_json', 'care_of', 'index', 'assignment', 'from_predicate', 'clause', 'exactly', 'at_most',
            'at_least', 'parity', 'nae', 'and_gate', 'or_gate', 'random_relation', 'all_relations',
            'orbit_representatives', 'product']
