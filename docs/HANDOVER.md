@@ -209,6 +209,7 @@ needs people: a reviewer, a statistician, an independent custodian on its own ma
   21. done: B20_R121-R122 (HIDDEN_CAUSES_MARKED; experiments add direction; the choice of experiments ties random);
   22. next on this track: experiments chosen by expected information gain over the undecided marks (a new model;
       `discovery.active` does this for method selection only), judged on directed and hidden-cause F1 together.
+  23. B20_R123 (three more 300 s seeds on each of the 14 Gset instances still below; running).
 
 3. **Checkpoint:** the latest is B20_R118 (`469f7f0`; not rehearsed on a second machine). Do not edit the tree while
    the release matrix runs; run timing studies alone.
