@@ -78,6 +78,10 @@ preregistered.
   11 of the 14 left are one unit short (`evidence/gset_attempt_b20r116/`). A record attempt would need several
   seeds and a configuration chosen at the long budget on the 2,000-vertex planar instances, and a check against
   the literature after 2013.
+  **B20_R123:** three more seeds on the 14 left reached 5: **45 of 54 matched, none beaten.** Two cuts of 7688 on
+  G38, above the max-cut papers' 7687, were already known from the max-bisection literature (Wu and Hao 2013): no
+  record; the table now holds bisection lower bounds, and each source the time it was added
+  (`evidence/gset_seeds_b20r123/`).
 - **Then the discovery loop on Gset**, if B20_R99 finds structured headroom. The test is whether concepts invented
   on toroidal and planar instances transfer to random ones, and the reverse. That is the note's "untouched family"
   inside one public benchmark.

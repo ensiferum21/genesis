@@ -1,5 +1,6 @@
 """B20_R124: Gaussian noise (design): fresh seed, B20_R122's settings but Gaussian noise, the arms, the primary test
-and verdict, the secondary tests, the validity checks, and the registered output."""
+and verdict, the secondary tests, the validity checks, and the registered output; the record."""
+import json
 from pathlib import Path
 import re
 import sys
@@ -49,6 +50,30 @@ class Design(unittest.TestCase):
     def test_refuses_another_output(self):
         with self.assertRaises(SystemExit):
             M.main([str(ROOT / 'evidence' / 'elsewhere')])
+
+
+class RecordB20R124(unittest.TestCase):
+    """B20_R124's record: every answer re-scores against the regenerated truth; the tests and the verdict recompute."""
+
+    def test_recomputes(self):
+        from genesis.causal import admg as A
+        from genesis.causal import sem as S
+        ev = ROOT / 'evidence' / 'gaussian_hidden_causes_b20r124'
+        s = json.loads((ev / 'summary.json').read_text())
+        rows = [json.loads(l) for l in (ev / 'runs.jsonl').read_text().splitlines() if l.strip()]
+        self.assertEqual(len(rows), M.N_SEEDS * len(M.ARMS))
+        truths = {}
+        for r in rows:
+            if r['seed'] not in truths:
+                truths[r['seed']] = S.planted(r['seed'], M.P, M.H, M.DENSITY, M.NOISE, M.K)
+            self.assertEqual(json.loads(json.dumps(A.score(truths[r['seed']], r['answer']))), r['scores'])
+        self.assertTrue(M.checks(rows) and s['valid'])
+        a = json.loads(json.dumps(M.analyse(rows)))
+        for k in ('means', 'test1', 'secondary', 'verdict'):
+            self.assertEqual(a[k], s[k], k)
+        self.assertEqual((a['verdict'], a['secondary']['flag_vs_fci']['label'], a['secondary']['oracle_vs_random@4']['label'],
+                          a['secondary']['suspicion_vs_random@4']['label'], a['secondary']['random@8_vs_random@4']['label']),
+                         ('EXPERIMENTS_NEEDED', 'NO_DIFFERENCE', 'ORACLE_BETTER', 'NO_DIFFERENCE', 'MORE_HELPS'))
 
 
 if __name__ == '__main__':

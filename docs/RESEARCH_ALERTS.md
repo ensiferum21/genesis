@@ -109,6 +109,11 @@ against FCI's 0.21; the share of confounded pairs reported as causal falls from 
 direction (directed F1 0.25 to 0.64), not detection, and Genesis's choice of experiments still ties random: the
 second half of the alert (proposing the experiment) remains NOT_SHOWN (`evidence/hidden_causes_v2_b20r122/`).
 
+**B20_R124 (24 Oct 2026): EXPERIMENTS_NEEDED.** With Gaussian noise the observational flag sees nothing beyond FCI,
+as theory predicts; random experiments add hidden-cause marks, and an oracle's choice of four equals random eight.
+Genesis's choice ties random: proposing the right experiment needs a sequential design that uses what experiments
+reveal (`evidence/gaussian_hidden_causes_b20r124/`).
+
 ## Overall
 
 The Explorer–Judge–Consolidator shape stays. The urgent part is item 1: it decides whether any future claim of

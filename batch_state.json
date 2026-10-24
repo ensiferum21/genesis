@@ -1268,8 +1268,44 @@
         "result": "DEV, preregistered, run at 120daef: HIDDEN_CAUSES_MARKED (hidden-cause F1 0.47 against FCI's 0.21); experiments add directed F1 (+0.39) but not hidden-cause F1 over the observational flag; Genesis's choice of experiments ties random at budgets 2 and 4"
       },
       "B20_R123": {
-        "commits": [],
-        "result": "Setup: three more 300 s seeds on each of the 14 Gset instances still below (preregistered). Running"
+        "commits": [
+          "2f76aab"
+        ],
+        "result": "DEV, preregistered, run at 2f76aab in two slices: 5 of 14 reached; 45 of 54 Gset instances matched over all runs, none beaten; two record candidates on G38 (7688) resolved as the 2013 max-bisection value (Wu and Hao), table corrected (8d7e402)"
+      },
+      "B20_R124": {
+        "commits": [
+          "d6f1073"
+        ],
+        "result": "DEV, preregistered, run at bc7e424: EXPERIMENTS_NEEDED: with Gaussian noise the flag is blind (= FCI); random experiments add hidden-cause F1 (+0.11 at 4); oracle at 4 = random at 8; Genesis's choice ties random"
+      },
+      "B20_R125": {
+        "commits": [
+          "70a590d",
+          "bc7e424"
+        ],
+        "result": "Engineering: mcx2-v1 (the engine as an interpreter of search programs over physics operators; D and L added after a literature check); pin c6a797c8"
+      },
+      "B20_R126": {
+        "commits": [
+          "70a590d",
+          "bc7e424"
+        ],
+        "result": "Engineering: autonomy/selfimprove (inventor and process level; MAP-Elites, calibration effort, adaptive operator selection, learned macros)"
+      },
+      "B20_R127": {
+        "commits": [
+          "70a590d",
+          "bc7e424"
+        ],
+        "result": "Setup (preregistered, amended before running): the self-invented engines against human designs. Running"
+      },
+      "B20_R128": {
+        "commits": [
+          "70a590d",
+          "bc7e424"
+        ],
+        "result": "Setup (preregistered, amended before running): improving the improver. Queued"
       }
     },
     "open_after_b20_r5": [

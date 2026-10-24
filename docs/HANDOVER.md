@@ -175,6 +175,9 @@ needs people: a reviewer, a statistician, an independent custodian on its own ma
 | B20_R120 | Can Genesis propose the experiments that resolve hidden causes? **NOT_SHOWN.** Its suspicion-based choice of interventions is no better than random (hidden-cause F1 0.17 against 0.19 at budget 2); the oracle's choice shows the headroom (0.29, 0.47 at budget 4). Post hoc: the suspicion signal barely separates confounded pairs, and reading dependence under intervention as a direct cause loses correct marks |
 | B20_R121 (engineering) | The active procedure, version 2: a LiNGAM-residual signal of hidden causes, a rule that tests direct causation under intervention, observational flags |
 | B20_R122 | On fresh instances: **HIDDEN_CAUSES_MARKED** (hidden-cause F1 0.47 against FCI's 0.21; the spurious rate falls from 0.44 to 0.14), mostly from the prior-art observational flag; experiments add direction (directed F1 0.25 to 0.64), not detection; Genesis's choice of experiments still ties random |
+| B20_R123 | Three more 300 s seeds on the 14 Gset instances still below: 5 reached; **45 of 54 matched, none beaten**; a G38 "record" (7688) was already in the 2013 max-bisection literature, so the table was corrected |
+| B20_R124 | Gaussian noise: **EXPERIMENTS_NEEDED** (the observational flag goes blind; random experiments add hidden-cause marks, the oracle's choice halves the experiments needed); Genesis's choice still ties random |
+| B20_R125-R126 (engineering) | `mcx2-v1` (the engine as a program over physics operators) and `autonomy/selfimprove` (an inventor of engines and a process level over the inventor), at Daniel's request; B20_R127 and R128 preregistered |
 
 ## 6. Next steps, in order
 
@@ -209,7 +212,9 @@ needs people: a reviewer, a statistician, an independent custodian on its own ma
   21. done: B20_R121-R122 (HIDDEN_CAUSES_MARKED; experiments add direction; the choice of experiments ties random);
   22. next on this track: experiments chosen by expected information gain over the undecided marks (a new model;
       `discovery.active` does this for method selection only), judged on directed and hidden-cause F1 together.
-  23. B20_R123 (three more 300 s seeds on each of the 14 Gset instances still below; running).
+  23. done: B20_R123 (5 of 14 reached; 45 of 54 matched; no record); done: B20_R124 (EXPERIMENTS_NEEDED);
+  24. B20_R127 (the system's own engines against human designs, finally on Gset; running), then B20_R128 (the
+      system improving its own inventor).
 
 3. **Checkpoint:** the latest is B20_R118 (`469f7f0`; not rehearsed on a second machine). Do not edit the tree while
    the release matrix runs; run timing studies alone.
