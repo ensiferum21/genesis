@@ -5315,7 +5315,10 @@
     "src/genesis/causal/active.py",
     "docs/checkpoints/B20_R119_RECORD.md",
     "scripts/b20r120_propose_interventions.py",
-    "evidence/propose_interventions_b20r120/summary.json"
+    "evidence/propose_interventions_b20r120/summary.json",
+    "src/genesis/causal/active2.py",
+    "docs/checkpoints/B20_R121_RECORD.md",
+    "scripts/b20r122_hidden_causes_v2.py"
    ],
    "disposition": "IMPLEMENTED_BOUNDED_PENDING_AUDIT",
    "evidence": [],
@@ -5334,9 +5337,11 @@
     "tests_genesis/test_causal_domain.py",
     "tests_genesis/test_causal_calibration.py",
     "tests_genesis/test_causal_active.py",
-    "tests_genesis/test_propose_interventions.py"
+    "tests_genesis/test_propose_interventions.py",
+    "tests_genesis/test_causal_active2.py",
+    "tests_genesis/test_hidden_causes_v2.py"
    ],
-   "title": "Active experiments and identifiability (B20_R117: a hidden-confounder causal-discovery benchmark with established baselines; B20_R118: their calibration; B20_R119: FCI and an active procedure proposing the interventions that resolve hidden causes; B20_R120: its test)",
+   "title": "Active experiments and identifiability (B20_R117: a hidden-confounder causal-discovery benchmark with established baselines; B20_R118: their calibration; B20_R119: FCI and an active procedure proposing the interventions that resolve hidden causes; B20_R120: its test; B20_R121-R122: version 2 and its test)",
    "workstream": "W14"
   },
   {
