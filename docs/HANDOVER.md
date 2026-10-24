@@ -227,7 +227,13 @@ needs people: a reviewer, a statistician, an independent custodian on its own ma
       scientist comes first; synergy, attack and paradigms are data; recursive improvement is typed
       self-application measured only by G_t on fresh tasks; the judge is closed. Next build: the RO layer
       (`src/genesis/objects/`), then B20_R136 (experiment A).
-  26. after them: the Genesis Ω stages in `docs/GENESIS_OMEGA_PLAN.md` §5-§6 (Ω0 analysis of R127/R128; B20_R130
+  26. **Daniel's directive of 24 Oct, 20:45 is adopted**: `docs/OMEGA_ARCHITECTURE_INVENTION.md`, the Autonomous
+      Research Architect. Workflows are typed graphs of ROs (AG) with a closed kernel; limitations are measured by
+      oracle substitution (a loss ladder); proposals are typed rewrites with holes filled by synthesis; a sealed
+      Limitation Zoo calibrates it with planted, null, no-headroom and decoy environments; tuning-only and
+      blind-rewrite controls at matched total compute. Building ARA-1 (`src/genesis/architecture/`), then
+      B20_R141 (experiments A-D on the zoo).
+  27. after them: the Genesis Ω stages in `docs/GENESIS_OMEGA_PLAN.md` §5-§6 (Ω0 analysis of R127/R128; B20_R130
       invented instruments; B20_R131 the Difficulty Cartographer; the genome and typed language; the ecology;
       evolvability selection; the decisive A/B/C experiment).
 

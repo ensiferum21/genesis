@@ -457,3 +457,6 @@ its growth across generations.
   (§7); the decisive experiments mapped to studies (§15); the order of work with the vertical slice first (§16).
 - 24 Oct 2026, 20:50: Batch R1 built on fixtures: the RO layer (`src/genesis/objects/`; `test_research_objects`).
 - 24 Oct 2026, 21:00: Batch R2 (first part) built on fixtures: the graph sense language and the workspace (`test_senses`).
+- 24 Oct 2026, 21:10: the layer above this one adopted: `docs/OMEGA_ARCHITECTURE_INVENTION.md` (the Autonomous
+  Research Architect, which rewrites workflows built from these ROs and itself). B20_R136 becomes its first real
+  workflow (ARA-7, B20_R142).

@@ -98,7 +98,7 @@
     "cpu0_hours": 5.7
    },
    "script": "scripts/b20r132_invention_bottleneck.py",
-   "status": "queued",
+   "status": "running",
    "title": "The four bottlenecks of invention: headroom, expressiveness, search, evaluation",
    "unlocks": [
     "invention-bottleneck-diagnosed"
@@ -272,6 +272,178 @@
    "title": "Experiment G: several generations improve G_t on fresh tasks",
    "unlocks": []
   },
+  "B20_R141": {
+   "artifacts": [],
+   "committed": false,
+   "depends_on": [
+    "ara-1-build"
+   ],
+   "failure": null,
+   "id": "B20_R141",
+   "kind": "study",
+   "line": "architecture-invention",
+   "notes": "calibration domain only; real-system claims need B20_R142",
+   "outcome": null,
+   "output": null,
+   "positive": null,
+   "preregistered": null,
+   "priority": 8,
+   "requires": [
+    "ara-core"
+   ],
+   "resources": {
+    "cpu0_hours": 1.0
+   },
+   "script": null,
+   "status": "queued",
+   "title": "ARA experiments A-D on the sealed Limitation Zoo: diagnosis, proposal, isolated implementation, sealed gain at matched total units against incumbent, tuning-only and blind-rewrite controls",
+   "unlocks": [
+    "ara-calibrated"
+   ]
+  },
+  "B20_R142": {
+   "artifacts": [],
+   "committed": false,
+   "depends_on": [
+    "B20_R141",
+    "B20_R136"
+   ],
+   "failure": null,
+   "id": "B20_R142",
+   "kind": "study",
+   "line": "architecture-invention",
+   "notes": "",
+   "outcome": null,
+   "output": null,
+   "positive": null,
+   "preregistered": null,
+   "priority": 6,
+   "requires": [
+    "ara-calibrated"
+   ],
+   "resources": {},
+   "script": null,
+   "status": "queued",
+   "title": "ARA experiment E on a real workflow: the engine-choice workflow of B20_R136 as an AG, diagnosed and rewritten by ARA, against the strongest published solvers",
+   "unlocks": []
+  },
+  "B20_R143": {
+   "artifacts": [],
+   "committed": false,
+   "depends_on": [
+    "B20_R141"
+   ],
+   "failure": null,
+   "id": "B20_R143",
+   "kind": "study",
+   "line": "architecture-invention",
+   "notes": "",
+   "outcome": null,
+   "output": null,
+   "positive": null,
+   "preregistered": null,
+   "priority": 4,
+   "requires": [],
+   "resources": {},
+   "script": null,
+   "status": "queued",
+   "title": "ARA experiment F: synergy of individually weak rewrites (factorial over partial discoveries)",
+   "unlocks": []
+  },
+  "B20_R144": {
+   "artifacts": [],
+   "committed": false,
+   "depends_on": [
+    "B20_R141"
+   ],
+   "failure": null,
+   "id": "B20_R144",
+   "kind": "study",
+   "line": "architecture-invention",
+   "notes": "",
+   "outcome": null,
+   "output": null,
+   "positive": null,
+   "preregistered": null,
+   "priority": 5,
+   "requires": [],
+   "resources": {},
+   "script": null,
+   "status": "queued",
+   "title": "ARA experiment G: ARA applied to its own AG; v2 against v1 on sealed meta-tasks from held-out generator families",
+   "unlocks": [
+    "ara-meta"
+   ]
+  },
+  "B20_R145": {
+   "artifacts": [],
+   "committed": false,
+   "depends_on": [
+    "B20_R144"
+   ],
+   "failure": null,
+   "id": "B20_R145",
+   "kind": "study",
+   "line": "architecture-invention",
+   "notes": "",
+   "outcome": null,
+   "output": null,
+   "positive": null,
+   "preregistered": null,
+   "priority": 3,
+   "requires": [],
+   "resources": {},
+   "script": null,
+   "status": "queued",
+   "title": "ARA experiment H: several generations, G_t per generation on fresh families",
+   "unlocks": []
+  },
+  "B20_R146": {
+   "artifacts": [],
+   "committed": false,
+   "depends_on": [
+    "B20_R141"
+   ],
+   "failure": null,
+   "id": "B20_R146",
+   "kind": "study",
+   "line": "architecture-invention",
+   "notes": "",
+   "outcome": null,
+   "output": null,
+   "positive": null,
+   "preregistered": null,
+   "priority": 3,
+   "requires": [],
+   "resources": {},
+   "script": null,
+   "status": "queued",
+   "title": "ARA experiment I: promoted rewrites transferred to compiler-family and representation environments",
+   "unlocks": []
+  },
+  "B20_R147": {
+   "artifacts": [],
+   "committed": false,
+   "depends_on": [
+    "B20_R144"
+   ],
+   "failure": null,
+   "id": "B20_R147",
+   "kind": "study",
+   "line": "architecture-invention",
+   "notes": "",
+   "outcome": null,
+   "output": null,
+   "positive": null,
+   "preregistered": null,
+   "priority": 2,
+   "requires": [],
+   "resources": {},
+   "script": null,
+   "status": "queued",
+   "title": "ARA experiment J: synthesised research paradigms (workflow AGs) against paradigms A-E",
+   "unlocks": []
+  },
   "allocator-baselines": {
    "artifacts": [],
    "committed": false,
@@ -292,6 +464,29 @@
    "status": "queued",
    "title": "Omega-10: allocator regret against uniform, greedy and bandit baselines",
    "unlocks": []
+  },
+  "ara-1-build": {
+   "artifacts": [],
+   "committed": false,
+   "depends_on": [],
+   "failure": null,
+   "id": "ara-1-build",
+   "kind": "engineering",
+   "line": "architecture-invention",
+   "notes": "",
+   "outcome": null,
+   "output": null,
+   "positive": null,
+   "preregistered": null,
+   "priority": 9,
+   "requires": [],
+   "resources": {},
+   "script": null,
+   "status": "queued",
+   "title": "ARA-1: the architecture graph, model, assumptions, limitation zoo, loss-ladder diagnoser, rewrite grammar, sealed judge harness and the ARA cycle (docs/OMEGA_ARCHITECTURE_INVENTION.md \u00a716)",
+   "unlocks": [
+    "ara-core"
+   ]
   },
   "checkpoint": {
    "artifacts": [],
@@ -709,9 +904,60 @@
    "kind": "progress",
    "note": "language and workspace built",
    "time": "2026-10-24T12:43:54+00:00"
+  },
+  {
+   "id": "B20_R132",
+   "kind": "start",
+   "time": "2026-10-24T12:57:28+00:00"
+  },
+  {
+   "id": "ara-1-build",
+   "kind": "add",
+   "time": "2026-10-24T12:57:28+00:00"
+  },
+  {
+   "id": "B20_R141",
+   "kind": "add",
+   "time": "2026-10-24T12:57:28+00:00"
+  },
+  {
+   "id": "B20_R142",
+   "kind": "add",
+   "time": "2026-10-24T12:57:28+00:00"
+  },
+  {
+   "id": "B20_R143",
+   "kind": "add",
+   "time": "2026-10-24T12:57:28+00:00"
+  },
+  {
+   "id": "B20_R144",
+   "kind": "add",
+   "time": "2026-10-24T12:57:28+00:00"
+  },
+  {
+   "id": "B20_R145",
+   "kind": "add",
+   "time": "2026-10-24T12:57:28+00:00"
+  },
+  {
+   "id": "B20_R146",
+   "kind": "add",
+   "time": "2026-10-24T12:57:28+00:00"
+  },
+  {
+   "id": "B20_R147",
+   "kind": "add",
+   "time": "2026-10-24T12:57:28+00:00"
   }
  ],
  "lines": {
+  "architecture-invention": {
+   "diagnosis": null,
+   "outcomes": [],
+   "run": 0,
+   "stagnant": false
+  },
   "capability-graph": {
    "diagnosis": null,
    "outcomes": [],
@@ -838,7 +1084,15 @@
   "B20_R138",
   "B20_R139",
   "B20_R140",
-  "paradigm-invention"
+  "paradigm-invention",
+  "ara-1-build",
+  "B20_R141",
+  "B20_R142",
+  "B20_R143",
+  "B20_R144",
+  "B20_R145",
+  "B20_R146",
+  "B20_R147"
  ],
  "reactivated": {},
  "schema": "genesis-research-queue-v1",

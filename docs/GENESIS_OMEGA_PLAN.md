@@ -1,6 +1,6 @@
 # Genesis Ω: the plan for a self-improving, verifiable problem solver (24 Oct 2026)
 
-**Read this first if you are the next agent or operator on this repository**, then `docs/OMEGA_RECURSIVE_INVENTION.md` (the adopted architecture, §0b) and `research_queue.json` (the live queue). It says:
+**Read this first if you are the next agent or operator on this repository**, then `docs/OMEGA_RECURSIVE_INVENTION.md` (the adopted architecture, §0b), `docs/OMEGA_ARCHITECTURE_INVENTION.md` (the Autonomous Research Architect, §0c) and `research_queue.json` (the live queue). It says:
 - what Genesis is being built to do;
 - what it can do today, with the evidence;
 - the rules nothing may break;
@@ -44,6 +44,26 @@ The long-term objective stays the independent invention of algorithms, mathemati
 effective invention processes. It is **not achieved**, and no document may say so without independent evidence.
 Every batch reports its commits, tests, evidence, failed hypotheses, regressions, unresolved limitations and the next
 dependency-unblocking action.
+
+## 0c. Daniel's directive of 24 Oct 2026, 20:45 (adopted): the Autonomous Research Architect
+
+**Read `docs/OMEGA_ARCHITECTURE_INVENTION.md` in full.** It adapts Daniel's "Autonomous Architecture Invention Engine"
+directive to the repository and makes it testable. In short:
+- **The architecture is a typed program.** ARA changes Genesis by rewriting typed dataflow graphs of research
+  objects (the AG), never Python source. The kernel (judge, sealed data, budgets, audit, promotion) is outside
+  every editable AG; rewrites touching it are refused by construction.
+- **A limitation is a measured, localised shortfall.** Oracle substitution node by node gives a loss ladder
+  (information, expressiveness, search, evaluation, residual) with intervals, or NONE. B20_R132 is its hand-built
+  instance on engine invention.
+- **Proposals are generated, not listed.** A typed rewrite grammar (INSERT, FUSE, GENERALISE, SPECIALISE,
+  SUBSTITUTE, REALLOCATE, LIFT, RETRIEVE, ENSEMBLE, REORDER/LOOP) with bounded limitation inversion; holes are
+  filled by search in the object languages; equivalent rediscoveries are caught by behavioural fingerprints.
+- **Tuning is never reported as invention.** An executable diff classifier, and a tuning-only control at matched
+  total compute for every architectural claim.
+- **The Limitation Zoo calibrates ARA** with planted limitations whose key only the judge holds, plus null,
+  no-headroom and decoy controls. Zoo results are a calibration domain, never real-world evidence.
+- **ARA improves ARA** by the same cycle on its own AG, judged on sealed meta-tasks from held-out families.
+- Experiments A-J map to B20_R141-R147; ARA-1 (the first end-to-end batch) is being built.
 
 ## 0b. Daniel's architecture of 24 Oct 2026, 20:31 (adopted): recursive perception, cognition and invention
 
@@ -504,3 +524,5 @@ problems no level has seen, and Genesis has not shown that yet.
 - 24 Oct 2026, 19:45: B20_R130 recorded: CHOICE; the global interpretation not shown at the preregistered measure (it
   helps only from 6 experiments). B20_R133 running. B20_R131 will record NO_VERIFIED_TRIGGER by its protocol.
 - 24 Oct 2026, 20:45: Daniel's architecture of 20:31 adopted (§0b; `docs/OMEGA_RECURSIVE_INVENTION.md`).
+- 24 Oct 2026, 21:10: Daniel's directive of 20:45 adopted (§0c; `docs/OMEGA_ARCHITECTURE_INVENTION.md`): the
+  Autonomous Research Architect; B20_R131 done (NO_VERIFIED_TRIGGER); B20_R132 running from 20:50.
