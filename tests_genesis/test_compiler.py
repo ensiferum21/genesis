@@ -161,5 +161,30 @@ class Backends(unittest.TestCase):
                 self.assertEqual((bad, f), (0, opt), (fam, be, info))
 
 
+class Contracts(unittest.TestCase):
+    """§16.4: a transformation keeps its declared contract, or is rejected or categorised."""
+
+    def test_exact_reduction_passes_broken_one_is_rejected_approximate_is_categorised(self):
+        from genesis.compiler import contracts as C
+        rng = random.Random(6)
+        b = random_bqp(rng, 8, hard=False)
+        n1, E = Q.to_maxcut(b)
+        self.assertEqual(C.check_maxcut(b, n1, E, 'exact')['verdict'], 'EXACT')
+        broken = [(u, v, -w if v == n1 - 1 else w) for u, v, w in E]          # the reference edges' sign flipped
+        self.assertNotEqual(broken, E)
+        self.assertEqual(C.check_maxcut(b, n1, broken, 'exact')['verdict'], 'REJECTED')
+        rounded = [(u, v, max(1, w // 2) if w > 0 else min(-1, w // 2)) for u, v, w in E]   # coarser weights
+        r = C.check_maxcut(b, n1, rounded, 'approximate')
+        self.assertEqual(r['verdict'], 'APPROXIMATE')
+        self.assertEqual(C.check_maxcut(b, n1 + 1, E, 'exact')['verdict'], 'REJECTED')
+        # an approximate reduction's answers are only trusted after the original checker re-scores them
+        inst = FM.generate('maxcut', 2, {'n': 10, 'd': 3})
+        bb = FM.compile('maxcut', inst)
+        x = [rng.randint(0, 1) for _ in range(10)]
+        ok, score, _ = FM.verify('maxcut', inst, FM.decode('maxcut', inst, x))
+        self.assertTrue(ok)
+        self.assertEqual(-score, Q.evaluate(bb, x)[0])
+
+
 if __name__ == '__main__':
     unittest.main()

@@ -12,7 +12,8 @@ import unittest
 ROOT = Path(__file__).resolve().parents[1]
 RESEARCH = ['src/genesis/science', 'src/genesis/compiler', 'src/genesis/causal/active3.py',
             'src/genesis/causal/instruments.py', 'src/genesis/causal/joint.py', 'src/genesis/causal/global_ml.py',
-            'src/genesis/vault.py', 'src/genesis/discovery_cli.py', 'src/genesis/interpret.py']
+            'src/genesis/vault.py', 'src/genesis/discovery_cli.py', 'src/genesis/interpret.py',
+            'src/genesis/autonomy/process.py']
 PROTECTED = ('kernel', 'judge', 'custodian', 'custody_records', 'verification', 'release_bundle', 'eligibility',
              'exposure', 'decision_record')
 
