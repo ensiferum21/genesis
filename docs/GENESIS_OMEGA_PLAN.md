@@ -406,16 +406,15 @@ call; `CHECKOUT=1` at a study's first slice), so that new code can be committed 
 
 | # | Batch | What | State |
 |---|---|---|---|
-| 1 | B20_R127 | The system's own engines against the builder's hybrid; held-out graphs; Gset at 10 s and 60 s | slice 2 running; record next |
-| 2 | B20_R130 | Choice, instrument and interpretation separated (about 1.5 h; reads R129's `choice.json`) | preregistered `f812701`; after R127 |
-| 3 | B20_R133 | The Problem Compiler against the specialists (about 1 h 15 min) | preregistered `e8bc181` |
-| 4 | B20_R131 | The cascade on a real case: R129's dormant acquisition rules reactivated by R130's interpretation (about 1 h) | preregistered `22385f7`; after R130's record |
-| 5 | B20_R132 | The bottleneck scientist on invention: judge v2 against v3, 4 against 12 confirmation graphs, headroom, signal, a zero-signal control (about 5.2 h, slices) | preregistration after its development look |
-| 6 | B20_R128 | Improving the inventor (2–3 slices of 6,600 s) | preregistered; after R132, whose result decides whether to amend its judge before it runs |
-| 7 | — | Checkpoint (the last one is B20_R118) with the release matrix | owed |
-| 8 | B20_R134 | The Difficulty Cartographer, redesigned with obstacles hidden from cheap statistics (Ω2) | to design |
-| 9 | Ω3 | The genome registry and typed language; first study on max-cut, then MaxSAT unchanged | to design |
-| 10 | Ω4–Ω9 | As in §5 | — |
+| 1 | B20_R130 | Choice, instrument and interpretation separated (about 1.5 h; reads R129's `choice.json`) | preregistered `f812701`; **running** since 18:30 |
+| 2 | B20_R133 | The Problem Compiler against the specialists (about 1 h 15 min) | preregistered `e8bc181` |
+| 3 | B20_R131 | The cascade on a real case: R129's dormant acquisition rules reactivated by R130's interpretation (about 1 h) | preregistered `22385f7`; after R130's record |
+| 4 | B20_R132 | The four bottlenecks of invention (headroom, expressiveness, search, evaluation) with planted positive and zero-signal controls, fresh truth sets T1/T2, the protected v2 against the candidate v3 at matched compute (about 5.7 h, slices) | preregistered `c0431f6` |
+| 5 | B20_R128 | Improving the inventor (2–3 slices of 6,600 s) | preregistered; after R132; runs **as preregistered** (directive item 1); a v3 follow-up, if any, is a new study |
+| 6 | — | Checkpoint (the last one is B20_R118) with the release matrix | owed |
+| 7 | B20_R134 | The Difficulty Cartographer, redesigned with obstacles hidden from cheap statistics (Ω2) | to design |
+| 8 | Ω3/Ω7 | The self-extending representation language (directive items 6–9): relations, gadgets, encodings, transformations, decoders; stage A (relations and verified gadget synthesis) built on fixtures; its first study after rows 1–5 | building |
+| 9 | Ω4–Ω9 | As in §5 | — |
 
 ## 7. Prior art to check every novelty claim against
 
@@ -469,3 +468,6 @@ problems no level has seen, and Genesis has not shown that yet.
   B20_R130 preregistered (`f812701`); the queue renumbered (B20_R131 co-invention, B20_R132 the Cartographer).
 - 24 Oct 2026, 15:35: B20_R127's trace analysed (nothing could have been released); B20_R132 becomes the bottleneck
   scientist on invention, ahead of B20_R128; the Cartographer moves to B20_R134; the queue updated.
+- 24 Oct 2026, 19:00: B20_R127 recorded (NOT_SHOWN); R129 reconciled; the research queue (`research_queue.json`) and the
+  candidate judge v3 (research plane) committed; B20_R132 preregistered (`c0431f6`); the representation language's
+  stage A built on fixtures.

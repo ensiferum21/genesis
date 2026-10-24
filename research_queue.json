@@ -85,11 +85,11 @@
    "id": "B20_R132",
    "kind": "study",
    "line": "engine-invention",
-   "notes": "preregistration after its development look",
+   "notes": "preregistered c0431f6 after its development look",
    "outcome": null,
    "output": "evidence/invention_bottleneck_b20r132",
    "positive": null,
-   "preregistered": null,
+   "preregistered": "c0431f6",
    "priority": 6,
    "requires": [],
    "resources": {
@@ -420,6 +420,12 @@
    "line": "causal-science",
    "outcome": "ADAPTIVE_SCIENTIST",
    "time": "2026-10-24T10:45:29+00:00"
+  },
+  {
+   "commit": "c0431f6",
+   "id": "B20_R132",
+   "kind": "preregister",
+   "time": "2026-10-24T10:52:44+00:00"
   }
  ],
  "lines": {

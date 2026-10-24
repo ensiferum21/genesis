@@ -49,13 +49,13 @@ Nothing here is an independent or sealed result.
 | B20_R130 | Choice, instrument and interpretation separated. Preregistered `f812701` |
 | B20_R128 | Improving the inventor. Preregistered |
 | B20_R133 | The Problem Compiler against the specialists. Preregistered `e8bc181` |
+| B20_R132 | The four bottlenecks of invention. Preregistered `c0431f6` |
+| B20_R131 | The cascade on a real case. Preregistered `22385f7`; after R130's record |
 
 ## Unrun plans
 
 | Batch | Plan |
 |---|---|
-| B20_R131 | The cascade on a real case. Preregistered `22385f7`; after R130's record |
-| B20_R132 | The four bottlenecks of invention (headroom, expressiveness, search, evaluation). To preregister after its development look |
 | B20_R134 | The Difficulty Cartographer, redesigned |
 | Ω7 | The interpretation engine |
 | Ω10 | The allocator |
