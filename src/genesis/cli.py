@@ -351,8 +351,13 @@ def main(argv=None):
     p.add_argument('--candidate',type=Path,help='frozen campaign whose candidate program joins as an arm')
     p.add_argument('--sat-baseline',action='store_true',help='add the CaDiCaL specialist baseline arm')
     p.add_argument('--no-dsl-arms',action='store_true',help='run only the specialist/candidate arms')
+    from . import discovery_cli
+    discovery_cli.add_parser(subs)
     args=ap.parse_args(argv)
-    if args.command=='doctor':result=doctor()
+    if args.command=='discovery':
+        result=discovery_cli.run(args)
+        if result is None:return
+    elif args.command=='doctor':result=doctor()
     elif args.command=='platform':
         from .deployment import platform_report
         result=platform_report(store_root=args.store_root)
