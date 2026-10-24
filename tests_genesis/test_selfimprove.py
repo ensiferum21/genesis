@@ -1,7 +1,8 @@
 """B20_R126: the self-improvement machinery. Engines are mcx2 programs: random ones, mutations (by the process's
 weights) and crossovers are always valid; the search with the ORIGINAL process is exactly the feedback contract's
 search; processes are data, refused outside their space, mutated and crossed validly; feedback's constants are
-restored after every search."""
+restored after every search; the MAP-Elites algorithm, the calibration effort and seeded starts (the amendment).
+"""
 from pathlib import Path
 import random
 import sys
@@ -67,6 +68,83 @@ class Search(unittest.TestCase):
         self.assertEqual(FB.POP, 16)
 
 
+class Amendment(unittest.TestCase):
+    def test_map_elites_under_the_contract(self):
+        proc = dict(SI.ORIGINAL, algorithm='map-elites', calib_extra=4, pop=8)
+        eng, rep = SI.search(proc, SI.engine_ops(), toy_evaluate, 150, 3)
+        self.assertIsNone(K.check_config(eng))
+        self.assertGreater(rep['cells'], 3)
+        self.assertLessEqual(rep['evaluations'], 150)
+        self.assertIn('releases', rep['judge'])
+        again, _ = SI.search(proc, SI.engine_ops(), toy_evaluate, 150, 3)
+        self.assertEqual(SI.key(eng), SI.key(again))                    # deterministic given the seed
+
+    def test_descriptor(self):
+        self.assertEqual(SI.descriptor(K.DEFAULT), (2, True, True, True, False, False))
+        self.assertEqual(SI.descriptor(dict(K.DEFAULT, prog='b1 S10 M R', levels=1)), (0, False, False, False, True, True))
+
+    def test_calibration_effort_is_charged(self):
+        small = SI.search(dict(SI.ORIGINAL, calib_extra=4), SI.engine_ops(), toy_evaluate, 120, 5)[1]
+        big = SI.search(SI.ORIGINAL, SI.engine_ops(), toy_evaluate, 120, 5)[1]
+        self.assertGreater(small['generations'], big['generations'])    # fewer calibration runs, more search
+        self.assertEqual(FB.CALIBRATION_EXTRA, 16)
+
+    def test_seeded_start(self):
+        rng = random.Random(4)
+        seeds = [K.DEFAULT, SI.random_engine(rng)]
+        ops = SI.seeded_ops(SI.engine_ops(), seeds)
+        self.assertEqual([ops['random'](rng) for _ in range(2)], seeds)
+        self.assertIsNone(K.check_config(ops['random'](rng)))
+        eng, rep = SI.search(SI.ORIGINAL, SI.seeded_ops(SI.engine_ops(), [K.DEFAULT]), toy_evaluate, 120, 6)
+        self.assertIsNone(K.check_config(eng))
+
+
+class LearningFromFailure(unittest.TestCase):
+    def test_macros_are_the_recurring_runs(self):
+        engines = [dict(K.DEFAULT, prog='B100 X I S2000 C'), dict(K.DEFAULT, prog='b5 X I M'),
+                   dict(K.DEFAULT, prog='B7 X I'), dict(K.DEFAULT, prog='R B1')]
+        lib = SI.learn_macros(engines, k=3)
+        self.assertEqual(lib[0], [('X', None), ('I', None)])
+        self.assertTrue(all(len(m) >= 2 for m in lib))
+        self.assertEqual(SI.learn_macros([dict(K.DEFAULT, prog='B1')]), [])
+
+    def test_macro_mutation_inserts_a_learned_block(self):
+        rng = random.Random(9)
+        lib = [[('X', None), ('I', None), ('C', None)]]
+        only = {m: 0.0 for m in SI.MUTATIONS}
+        used = []
+        c = SI.mutate(dict(K.DEFAULT, prog='b1'), rng, dict(only, macro=1.0), lib, used)
+        self.assertEqual(used, ['macro'])
+        self.assertIn('X I C', c['prog'])
+        self.assertIsNone(K.check_config(c))
+
+    def test_adaptive_selection_learns_from_failure(self):
+        ad = SI.Adaptive(SI.ORIGINAL['weights'])
+
+        def evaluate(cfg, split):                # shorter is better: deleting never fails, inserting always does
+            return -SI.size(cfg)
+        ev = ad.evaluate(evaluate)
+        rng = random.Random(1)
+        ops = ad.ops()
+        p = dict(K.DEFAULT, prog='B1 X I C M H R')
+        ev(p, 'A')
+        for _ in range(200):
+            c = ops['mutate'](p, rng)
+            ev(c, 'A')
+        w = ad.weights()
+        self.assertGreater(w['delete'], w['insert'])        # deleting shortens: never worse here
+        self.assertGreater(w['delete'], w['duplicate'])
+        self.assertEqual(sum(a for _, a in ad.stats.values()), 200)
+
+    def test_adapt_runs_under_the_contract(self):
+        eng, rep = SI.search(dict(SI.ORIGINAL, adapt=True, calib_extra=4), SI.engine_ops(), toy_evaluate, 150, 8)
+        self.assertIsNone(K.check_config(eng))
+        lib = SI.learn_macros([K.DEFAULT, dict(K.DEFAULT, prog='b2 X I')])
+        eng, rep = SI.search(dict(SI.ORIGINAL, adapt=True, algorithm='map-elites', calib_extra=4),
+                             SI.engine_ops(library=lib), toy_evaluate, 150, 8)
+        self.assertIsNone(K.check_config(eng))
+
+
 class Processes(unittest.TestCase):
     def test_processes_are_data(self):
         self.assertIsNone(SI.check_process(SI.ORIGINAL))
@@ -75,6 +153,10 @@ class Processes(unittest.TestCase):
         self.assertIsNotNone(SI.check_process({k: v for k, v in SI.ORIGINAL.items() if k != 'p_cross'}))
         bad = dict(SI.ORIGINAL, weights=dict(SI.ORIGINAL['weights'], arg=3.0))
         self.assertIsNotNone(SI.check_process(bad))
+        self.assertIsNotNone(SI.check_process(dict(SI.ORIGINAL, algorithm='annealing')))
+        self.assertIsNotNone(SI.check_process(dict(SI.ORIGINAL, calib_extra=0)))
+        self.assertEqual((SI.ORIGINAL['algorithm'], SI.ORIGINAL['calib_extra'], SI.ORIGINAL['adapt']),
+                         ('steady', 16, False))
         rng = random.Random(3)
         for _ in range(100):
             p = SI.random_process(rng)

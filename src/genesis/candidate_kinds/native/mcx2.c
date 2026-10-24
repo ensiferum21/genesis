@@ -18,9 +18,16 @@
  *   M      MACUT's multi-parent grouping crossover (Wu and Hao 2012) of the elite pool into the hottest replica
  *   H      Houdayer's exchange of two elites (mcx -rs 1) into the hottest replica
  *   R      the hottest replica restarts from a random cut
+ *   D      pair descent in every replica: the best pair of adjacent vertices flipped together, while it improves,
+ *          each followed by steepest ascent (the double-transfer move of the multiple search operator heuristic,
+ *          Ma and Hao 2017, O2: it escapes local optima no single flip can)
+ *   L      path relinking of the coldest replica towards a random elite: at each step the disagreeing vertex of
+ *          largest gain is flipped, the best state met on the path is kept and polished by steepest ascent (Glover's
+ *          path relinking, used for max-cut within global equilibrium search by Shylo, Glover and Sergienko)
  *   S<k>   the next statement runs only after k attractors (in all) without a new best; running it restarts the
  *          count (a stall-triggered move)
  *   P<k>   the next statement runs only on every k-th pass through the loop
+ * (D and L were added on 24 Oct 2026 after a literature check, at Daniel's request to compound research into it.)
  * A program has 1 to 32 statements and at least one B or b. Level temperatures are in cut units, geometric from
  * 0.5 x the mean |weight| up to TMAX x the mean |weight| x sqrt(n); perturbation strengths geometric from L0 (coldest)
  * to L0HOT (hottest). All replicas share mcx's elite pool. The default program, the builder's hybrid ("REX"), is
@@ -433,6 +440,49 @@ static int icm_move(G *a, G *b) {
     return 1;
 }
 
+/* MOH's double-transfer move: 1 if a pair was flipped */
+static int pair_descent(G *g) {
+    int moved = 0;
+    for (int round = 0; round < 1000 && !out_of_time(); round++) {
+        long bestg = 0; int bu = -1, bv = -1;
+        for (int u = 0; u < g->n; u++)
+            for (int k = g->off[u]; k < g->off[u + 1]; k++) {
+                int v = g->nbr[k];
+                if (v <= u) continue;
+                long pg = g->gain[u] + g->gain[v] - 2L * g->wt[k] * (g->s[u] == g->s[v] ? 1 : -1);
+                if (pg > bestg) { bestg = pg; bu = u; bv = v; }
+            }
+        if (bu < 0) break;
+        flip(g, bu); flip(g, bv); moved = 1;
+        ascend(g);
+    }
+    return moved;
+}
+
+/* path relinking from g's state towards elite e (aligned: a cut and its complement are the same cut); 1 if done */
+static int relink(G *g, int e) {
+    int n = g->n, diff = 0;
+    int8_t *t = elite[e];
+    for (int v = 0; v < n; v++) diff += g->s[v] != t[v];
+    int8_t comp = diff > n / 2;
+    int cnt = 0;
+    for (int v = 0; v < n; v++) if ((int8_t)(g->s[v] ^ comp) != t[v]) stackv[cnt++] = v;
+    if (cnt < 2) return 0;
+    long best = g->cut; int bestk = -1, last = -1;
+    for (int step = 0; step < cnt - 1; step++) {
+        int bi = step; long bg = g->gain[stackv[step]];
+        for (int i = step + 1; i < cnt; i++) if (g->gain[stackv[i]] > bg) { bg = g->gain[stackv[i]]; bi = i; }
+        int x = stackv[step]; stackv[step] = stackv[bi]; stackv[bi] = x;
+        flip(g, stackv[step]);
+        last = step;
+        if (g->cut > best) { best = g->cut; bestk = step; }
+        if ((step & 255) == 0 && out_of_time()) break;
+    }
+    for (int i = last; i > bestk; i--) flip(g, stackv[i]);      /* back to the best state on the path */
+    ascend(g);
+    return 1;
+}
+
 static int parse_prog(const char *s) {
     nprog = 0;
     int has_b = 0;
@@ -440,7 +490,7 @@ static int parse_prog(const char *s) {
         while (*s == ' ' || *s == ',') s++;
         if (!*s) break;
         char op = *s++;
-        if (!strchr("BbXICMHRSP", op) || nprog >= 32) return 0;
+        if (!strchr("BbXICMHRSPDL", op) || nprog >= 32) return 0;
         long arg = 0; int digits = 0;
         while (*s >= '0' && *s <= '9') { arg = arg * 10 + (*s++ - '0'); if (++digits > 9) return 0; }
         int needs = strchr("BbSP", op) != NULL;
@@ -581,6 +631,11 @@ int main(int argc, char **argv) {
                     G *ga = rp[slot[2 * l]].g, *gb = rp[slot[2 * l + 1]].g;
                     if (icm_move(ga, gb)) { ascend(ga); ascend(gb); NOTE(ga); NOTE(gb); }
                 }
+            } else if (in.op == 'D') {
+                for (int q = 0; q < R && !out_of_time(); q++) { G *h = rp[slot[q]].g; if (pair_descent(h)) NOTE(h); }
+            } else if (in.op == 'L') {
+                G *h = rp[slot[0]].g;
+                if (elites >= 1 && relink(h, (int)(rnd() % elites))) NOTE(h);
             } else if (in.op == 'C') {
                 G *h = rp[slot[0]].g;
                 if (elites >= 2 && coarse_step(h)) { NOTE(h); walk_level(&rp[slot[0]].w, h, L0l[0]); }

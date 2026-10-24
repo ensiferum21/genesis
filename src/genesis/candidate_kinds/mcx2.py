@@ -9,8 +9,11 @@ temperatures (two per level), sharing mcx's elite pool, runs the program as the 
 spent. Statements: B<k> (k attractors of breakout local search per replica), b<k> (the coldest level only), X (replica
 exchange between adjacent levels), I (isoenergetic cluster moves within each level), C (renormalisation of the coldest
 replica), M (MACUT's crossover into the hottest), H (Houdayer's elite exchange into the hottest), R (random restart of
-the hottest), S<k> (the next statement only after k attractors without a new best) and P<k> (the next statement only on
-every k-th pass). See the C source for each operator's source in the literature. None of the operators is new.
+the hottest), S<k> (the next statement only after k attractors without a new best), P<k> (the next statement only on
+every k-th pass), and, added after a literature check on 24 Oct 2026, D (pair descent: the double-transfer move of
+Ma and Hao's multiple search operator heuristic, 2017) and L (path relinking towards an elite, as in Shylo, Glover
+and Sergienko's global equilibrium search for max-cut). See the C source for each operator's source in the
+literature. None of the operators is new.
 
 DEFAULT is the builder's hybrid, "REX": "B100 X I S2000 C" at 4 levels (parallel tempering over breakout local search,
 isoenergetic cluster moves, renormalisation on stalls). It stands for the human-designed engine against which the
@@ -31,8 +34,8 @@ import time
 DOMAINS = ('maxcut_v1',)
 FILES = ('candidate_kinds/mcx2.py', 'candidate_kinds/native/mcx2.c')
 BINARY = '/usr/local/genesis-sota/bin/mcx2'
-BINARY_SHA256 = '892b896b256e6dac3eb64aaba0e2d1ebef5ecb10e7950025cba028d324cfeebd'
-OPS = 'BbXICMHRSP'
+BINARY_SHA256 = 'c6a797c8aac0674f593da71b0c9210c8e13943249b661e38dd5196693edbec3b'
+OPS = 'BbXICMHRSPDL'
 ARG_RANGE = {'B': (1, 100000), 'b': (1, 100000), 'S': (1, 10 ** 7), 'P': (1, 1000)}
 MAX_STATEMENTS = 32
 SPACE = {'levels': (1, 2, 3, 4, 6, 8), 'L0': (0.005, 0.01, 0.02, 0.05, 0.1, 0.2), 'L0hot': (0.02, 0.05, 0.1, 0.2, 0.3),
@@ -41,7 +44,7 @@ SPACE = {'levels': (1, 2, 3, 4, 6, 8), 'L0': (0.005, 0.01, 0.02, 0.05, 0.1, 0.2)
 DEFAULT = {'prog': 'B100 X I S2000 C', 'levels': 4, 'L0': 0.01, 'L0hot': 0.1, 'tmax': 0.5, 'P': 0.8, 'tt': 10,
            'pool': 8, 'pert': 2}
 _DIGEST = {}
-_TOKEN = re.compile(r'^([BbXICMHRSP])([1-9][0-9]{0,8})?$')
+_TOKEN = re.compile(r'^([BbXICMHRSPDL])([1-9][0-9]{0,8})?$')
 
 
 def statements(prog):

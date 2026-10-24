@@ -8,7 +8,10 @@ inventor writes an engine. Here the system searches over the inventor itself: it
 generation, leaders, tournament, crossover rate and the weight of each kind of mutation (a PROCESS,
 `autonomy.selfimprove`), judged by what each process produces.
 
-**Design (fixed before running).**
+**Design (fixed before running; amended at 09:55 on 24 Oct 2026, before any run, at Daniel's request "use this to
+adapt and make it even better": a process now also chooses its search algorithm, the contract's steady-state search
+or a MAP-Elites archive, and how many extra engines calibrate its judge; see `selfimprove`'s amendment. The first
+design is in the commit `70a590d`).**
   * **A process's yield.** One inner search with that process (`selfimprove.search`, the feedback contract version
     2, starting from random engines) with INNER_EVALS = 120 split evaluations, each running the engine on 6 graphs at
     0.5 s (splits A, B, C of a graph set; scores relative to the builder's hybrid REX at 0.5 s); then the engine it
@@ -33,8 +36,9 @@ generation, leaders, tournament, crossover rate and the weight of each kind of m
 at 1 s on six graphs (B20_R127's disclosure). No inner search was run before this study.
 
 **Expectation, stated before running.** The meta-search finds a process with a higher yield on its own graph set
-(selection on noise alone would do that), and on fresh sets NO_DIFFERENCE: one inner search's yield is noisy and 8
-repetitions are few. The engines of both processes beat REX on held-out graphs at 0.5 s in most repetitions (REX is
+(selection on noise alone would do that), most likely one that spends less of its budget calibrating the judge (with
+ORIGINAL, 80 of the 120 evaluations go to the first population and the judge's calibration), and on fresh sets
+NO_DIFFERENCE: one inner search's yield is noisy and 8 repetitions are few. The engines of both processes beat REX on held-out graphs at 0.5 s in most repetitions (REX is
 untuned), by about 0.1-0.5%. NOT_SHOWN.
 **Cost.** About 6.5 min per inner search plus scoring: meta-search 14 searches, final test 16: about 3.3 h, in two or
 three slices. **Status.** DEV; licenses nothing.

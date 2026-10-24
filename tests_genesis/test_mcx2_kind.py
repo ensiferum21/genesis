@@ -49,7 +49,7 @@ class Binary(unittest.TestCase):
 
     def test_refusals(self):
         ok = '2 1 1 10\n0 1 1\n'
-        for prog in ('', 'X', 'B0', 'B', 'Q1', 'B1 S', 'B1X', 'B' + '9' * 10, ' '.join(['B1'] * 33)):
+        for prog in ('', 'X', 'B0', 'B', 'Q1', 'B1 S', 'B1X', 'B' + '9' * 10, ' '.join(['B1'] * 33), 'B1 D2', 'L'):
             self.assertEqual(raw(ok, '-prog', prog).returncode, 2, prog)
         for opt, val in (('-levels', '0'), ('-levels', '9'), ('-tmax', '0'), ('-L0hot', '2'), ('-pert', '3')):
             self.assertEqual(raw(ok, opt, val).returncode, 2, opt)
@@ -68,7 +68,7 @@ class Kind(unittest.TestCase):
     def test_grammar(self):
         self.assertEqual(K.statements('B100 X I S2000 C'), [('B', 100), ('X', None), ('I', None), ('S', 2000), ('C', None)])
         self.assertEqual(K.render(K.statements('b5 P3 M')), 'b5 P3 M')
-        for bad in ('', 'X I', 'B0', 'B100000000', 'S0 B1', 'B1 X3', 'P B1', 'Z1 B1', ' '.join(['B1'] * 33), 7):
+        for bad in ('', 'X I', 'B0', 'B100000000', 'S0 B1', 'B1 X3', 'P B1', 'Z1 B1', ' '.join(['B1'] * 33), 7, 'B1 D2', 'B1 L1'):
             with self.assertRaises(ValueError, msg=bad):
                 K.statements(bad)
 
@@ -87,7 +87,8 @@ class Kind(unittest.TestCase):
         self.assertEqual(K.arguments(K.DEFAULT)[:4], ['-prog', 'B100 X I S2000 C', '-levels', '4'])
 
     def test_every_operator_reaches_small_optima(self):
-        progs = ('B100 X I S2000 C', 'B1', 'b5 X I', 'B10 S50 M', 'B10 P3 H S20 R', 'B3 C', 'b1 I I X S5 C P2 M')
+        progs = ('B100 X I S2000 C', 'B1', 'b5 X I', 'B10 S50 M', 'B10 P3 H S20 R', 'B3 C', 'b1 I I X S5 C P2 M',
+                 'b2 D', 'B5 L', 'B3 S10 L D X I')
         for seed in range(5):
             t = rand_task(10 + seed, 0.5, seed, weights=(-2, -1, 1, 3))
             opt = brute(t)

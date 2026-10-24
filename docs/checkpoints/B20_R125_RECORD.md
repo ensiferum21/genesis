@@ -23,6 +23,8 @@ program repeats until the CPU budget is spent. Its statements are physics operat
 | `M` | multi-parent grouping crossover into the hottest replica | MACUT, Wu and Hao 2012 |
 | `H` | Houdayer's exchange of two elites into the hottest replica | mcx -rs 1 |
 | `R` | random restart of the hottest replica | — |
+| `D` | pair descent in every replica: the best pair of adjacent vertices flipped together while it improves | the double-transfer move of Ma and Hao's multiple search operator heuristic (2017) |
+| `L` | path relinking of the coldest replica towards a random elite, keeping the best state on the path | Glover's path relinking, for max-cut within global equilibrium search (Shylo, Glover and Sergienko) |
 | `S<k>` | run the next statement only after k attractors without a new best | — |
 | `P<k>` | run the next statement only every k-th pass | — |
 
@@ -33,10 +35,11 @@ program repeats until the CPU budget is spent. Its statements are physics operat
 
 **Checks.**
 - On small graphs, every operator, alone and mixed, at one and three levels, reaches the brute-force optimum:
-  560 of 560 in a first check, and the kind's tests after it.
+  560 of 560 in a first check, 800 of 800 with `D` and `L`, and the kind's tests after it.
 - AddressSanitizer and UndefinedBehaviorSanitizer runs on generated 600–800-vertex graphs found no error.
 - Malformed programs and options are refused, by the kind and by the binary (exit 2).
-- The build is deterministic and pinned (`892b896b…`), and it runs in the runc sandbox.
+- The build is deterministic and pinned (`c6a797c8…`, after `D` and `L` were added; the first pin was
+  `892b896b…`), and it runs in the runc sandbox.
 - Tests: `tests_genesis/test_mcx2_kind.py` (7). `test_mcx_kind.py`'s membership test now lists `mcx2-v1`.
 
 ## B20_R126: `autonomy/selfimprove.py`, self-improvement on two levels
@@ -85,3 +88,28 @@ No search was run.
   - The meta-search runs generation 0 (ORIGINAL and 5 random processes), then 2 generations of 4 children.
   - Final test: EVOLVED against ORIGINAL over 8 repetitions on fresh graph sets (paired Wilcoxon). The verdict is
     SELF_IMPROVEMENT_SHOWN or NOT_SHOWN.
+
+## Amendments before any run (24 Oct 2026, 09:47–09:58; Daniel: "use this to adapt and make it even better", "we can learn from failures too", "check research and compound", "different types of thinking")
+
+All were made before any of B20_R124–R128 ran, and are disclosed in the scripts' docstrings.
+- **The language:** `D` and `L` were added after a literature check:
+  - Ma and Hao's multiple search operator heuristic (2017) gave the pair move;
+  - Shylo, Glover and Sergienko's global equilibrium search with path relinking gave path relinking.
+
+  Both are prior art, now available as operators. The check also found Cosm (2025), which reports new cuts on the
+  largest Gset instances (G72, G77, G81, beyond G1–G54) and is not yet peer-reviewed. Any Genesis value above a best
+  known value must be checked against the methods published after 2013, including MOH's six improved instances,
+  before anything is said.
+- **The process level (`selfimprove`)** can choose:
+  - its search algorithm: the steady-state search or a MAP-Elites archive;
+  - its calibration effort: how many extra engines calibrate the judge;
+  - adaptive operator selection, learning from failure: kinds of mutation that keep failing are tried less.
+- **The inventor** can learn macros, new building blocks drawn from the recurring runs in its own best engines.
+- **B20_R127:**
+  - one engine per class;
+  - three generations, each starting from the previous generation's engine of its own class and of the two other
+    classes (analogy);
+  - learned macros from generation 2 on;
+  - Gset at 60 s for the system's engines, against B20_R110's;
+  - templates for the new operators.
+- **B20_R128:** processes also choose the algorithm and the calibration effort, and whether to adapt.

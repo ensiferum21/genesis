@@ -49,6 +49,9 @@ class Design(unittest.TestCase):
 
     def test_shape(self):
         self.assertEqual((M.GEN0_RANDOM, M.GENERATIONS, M.CHILDREN, M.REPETITIONS, M.INNER_EVALS), (5, 2, 4, 8, 120))
+        from genesis.autonomy import selfimprove as SI
+        self.assertEqual(SI.PROCESS_SPACE['algorithm'], ('steady', 'map-elites'))   # the amendment's choices
+        self.assertEqual(SI.PROCESS_SPACE['calib_extra'], (4, 8, 16))
 
     def test_refuses_another_output(self):
         with self.assertRaises(SystemExit):
