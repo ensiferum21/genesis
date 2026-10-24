@@ -413,7 +413,7 @@ call; `CHECKOUT=1` at a study's first slice), so that new code can be committed 
 | 5 | B20_R128 | Improving the inventor (2–3 slices of 6,600 s) | preregistered; after R132; runs **as preregistered** (directive item 1); a v3 follow-up, if any, is a new study |
 | 6 | — | Checkpoint (the last one is B20_R118) with the release matrix | owed |
 | 7 | B20_R134 | The Difficulty Cartographer, redesigned with obstacles hidden from cheap statistics (Ω2) | to design |
-| 8 | Ω3/Ω7 | The self-extending representation language (directive items 6–9; `docs/OMEGA_REPRESENTATION_LANGUAGE.md`): relations, verified gadgets, encodings with decoders, transformations to one BQP, families given only as predicates (reductions synthesised, not hand-written); stages A–C built on fixtures; its first study after rows 1–5 | building |
+| 8 | Ω3/Ω7 | The self-extending representation language (directive items 6–9; `docs/OMEGA_REPRESENTATION_LANGUAGE.md`): relations, verified gadgets, encodings with decoders, transformations to one BQP, families given only as predicates (reductions synthesised, not hand-written); stages A–C built on fixtures; its first study **B20_R135** (preregistered `7040a3c`, before R133 ran) after rows 1–5 | building; study preregistered |
 | 9 | Ω4–Ω9 | As in §5 | — |
 
 ## 7. Prior art to check every novelty claim against

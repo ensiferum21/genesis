@@ -252,7 +252,7 @@
    "id": "repr-language-build",
    "kind": "build",
    "line": "representation",
-   "notes": "directive items 6-9; built on CPU 1 meanwhile",
+   "notes": "stages A-C built on fixtures (040f778, 29c838e, ba341f4)",
    "outcome": null,
    "output": null,
    "positive": null,
@@ -267,7 +267,7 @@
   },
   "repr-language-study": {
    "artifacts": [],
-   "committed": false,
+   "committed": true,
    "depends_on": [
     "repr-language-build",
     "B20_R130",
@@ -280,17 +280,19 @@
    "id": "repr-language-study",
    "kind": "study",
    "line": "representation",
-   "notes": "",
+   "notes": "preregistered before B20_R133 ran; runs after the gates (R130, R131, R132, R133, R128)",
    "outcome": null,
-   "output": null,
+   "output": "evidence/invented_representations_b20r135",
    "positive": null,
-   "preregistered": null,
+   "preregistered": "7040a3c",
    "priority": 2,
    "requires": [],
-   "resources": {},
-   "script": null,
+   "resources": {
+    "cpu0_hours": 1.5
+   },
+   "script": "scripts/b20r135_invented_representations.py",
    "status": "queued",
-   "title": "First preregistered study of invented representations",
+   "title": "B20_R135: invented representations against textbook ones (colouring encodings, synthesis, families through the vault)",
    "unlocks": [
     "representation-language"
    ]
@@ -426,6 +428,12 @@
    "id": "B20_R132",
    "kind": "preregister",
    "time": "2026-10-24T10:52:44+00:00"
+  },
+  {
+   "commit": "7040a3c",
+   "id": "repr-language-study",
+   "kind": "preregister",
+   "time": "2026-10-24T11:18:06+00:00"
   }
  ],
  "lines": {
