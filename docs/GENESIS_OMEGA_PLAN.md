@@ -20,6 +20,31 @@ whose answers can be verified, inventing autonomously, "without being dishonest 
 target". The last clause is the one that makes the rest mean anything. Every capability below is therefore
 something to measure, not something to declare.
 
+## 0a. Daniel's directive of 24 Oct 2026, 15:35 (adopted; it orders the work below)
+
+Under the adopted master contract, preserving every working capability, all existing evidence and the protected trust
+boundaries. Each item, and how it is carried out:
+
+| # | Directive | How it is carried out | Where |
+|---|---|---|---|
+| 1 | Complete R130, R131, R132, R133 and R128 by their preregistered protocols and dependencies; invent no results for unfinished studies | Order: R130 → R133 → R131 (needs R130's record) → R132 → R128. R128 runs as preregistered (no amendment); a judge-v3 follow-up, if R132 supports it, is a new study | §6; `docs/OMEGA_RESULTS_LEDGER.md` |
+| 2 | In R132, distinguish independently **evaluation sensitivity**, **language expressiveness**, **search effectiveness** and **genuine lack of headroom**, with planted positive controls, zero-signal controls, fresh confirmation sets and matched total compute; do not weaken the protected Judge | R132 measures each factor with its own instrument: headroom (REX at 10 s on fresh graphs); expressiveness (a preregistered pool of engines in the language, the best chosen on fresh set T1 and confirmed on fresh set T2); search effectiveness (the true gains of what the searches proposed, against what is expressible, and a planted reachable improvement the search must find); evaluation sensitivity (each judge's power on planted gains of known size, and its false releases with zero signal). The protected judge (`autonomy/feedback.py`, contract v2) is untouched; the candidate judge v3 lives in the research plane (`autonomy/contract_v3.py`) and is adopted nowhere | `scripts/b20r132_*` |
+| 3 | In R131, measure whether capability-triggered reactivation beats fresh search, random retrieval and negative-control triggers, counting retrieval and reactivation overhead | Already in R131's preregistration (`22385f7`): the four comparators at matched evaluations, CPU per arm with archive and reactivation costs; the record reports the overhead explicitly | `scripts/b20r131_cascade.py` |
+| 4 | In R133, validate the Problem Compiler on fresh instances and independent checkers; distinguish executing existing reductions from inventing new ones | R133's answers are checked by each family's verifier from the instance alone; its record re-checks every answer with a second checker written independently of the compiler. The reductions are the builder's (textbook QUBO forms): R133 tests **execution of existing reductions**, and no invention of reductions is claimed | `scripts/b20r133_*`, its record |
+| 5 | Reconcile R129's inv1 and decfall comparison: which rule was selected, on which sets, and whether the difference is statistically supported | A recomputation script and test from R129's saved rows (exploratory where it goes beyond the preregistered tests, and labelled so) | `scripts/b20r129_reconcile.py`, `docs/OMEGA_RESULTS_LEDGER.md` |
+| 6 | After these gates: a **self-extending mathematical representation language**: Genesis synthesises executable objects, relations, operators, transformations and decoders, not only selects predefined representations | Ω3/Ω7, built next (engineering on fixtures while the studies run; its first study after the gates) | §5 Ω3, Ω7 |
+| 7 | Every useful new representation preserved exactly, linked to its lineage, tested for correctness, and used to trigger bounded reactivation of possibly relevant dormant discoveries | The vault stores each representation as an artifact with its lineage; its correctness contract is checked (exact or approximate, as `compiler/contracts.py`); a verified representation is a CapabilityRecord whose unlocks trigger `Vault.cascade` under fuel | `vault.py`, the representation module |
+| 8 | Preserve unexplained discoveries; archival and exploratory reuse need no human interpretability; promotion of claimed correctness or performance needs independent verification | The vault's explanation ladder is independent of status (an `unknown` explanation can be archived, reused, even promoted for a verified use); `verified` and `promoted` need EvidenceRecords naming a recorded study and its record test | `vault.py`, `docs/OMEGA_DISCOVERY_SCHEMA.md` |
+| 9 | Algorithms, representations, experiment policies and invention procedures are typed executable processes; recursive improvement at any representable level, under finite budgets and independent promotion gates | `autonomy/process.py` (levels, one fuel budget, a depth limit); the representation language's objects become processes of the same kind | `autonomy/process.py` |
+| 10 | Strictly LLM-free; conventional ML, evolutionary methods, symbolic reasoning and synthesised models are allowed where they improve measured research productivity | `test_no_llm` | `tests_genesis/test_no_llm.py` |
+| 11 | Recursive improvement is measured by descendant inventors' useful verified discoveries on **unfamiliar tasks at matched total compute**, never by depth, candidate count or complexity | The measure for R128's successors and Ω8/Ω9 studies; R128 itself is run as preregistered | §5 Ω8, Ω9 |
+| 12 | A persistent, resumable research queue: on stagnation, preserve the artifacts, diagnose the bottleneck, reallocate; reactivate dormant directions when new capabilities change their prospects | `autonomy/queue.py` (directions with states, dependencies, stagnation diagnosis and capability-triggered reactivation, persisted as JSON in `research_queue.json`), kept beside this plan's §6 | `autonomy/queue.py` |
+
+The long-term objective stays the independent invention of algorithms, mathematical representations and increasingly
+effective invention processes. It is **not achieved**, and no document may say so without independent evidence.
+Every batch reports its commits, tests, evidence, failed hypotheses, regressions, unresolved limitations and the next
+dependency-unblocking action.
+
 ## 0. Reading order and the protocol
 
 1. This file. Then `docs/HANDOVER.md`:
@@ -130,11 +155,11 @@ Each engine is a computational system, not an agent exchanging text. They connec
 | Engine | Responsibility | Exists today | Status | Next evidence it must produce |
 |---|---|---|---|---|
 | 1. Problem Compiler | Turn a problem into objective, constraints, candidate view and verifier | `domains.py` (`DomainAdapter`, W05; graph hosts, max-cut, Lean statements), `causal/` | PARTIAL: hand-written adapters | A new family admitted from a declarative spec with its verifier, and every existing adapter's tests passing against the compiled one |
-| 2. Difficulty Cartographer | Diagnose why methods fail; choose the cheapest experiment that separates the explanations | `adaptation/receptors.py` (weakness sensors), `autonomy/adversary.py` (hardest hosts), `discovery/obstruction.py` | MISSING as a diagnostic engine | Ω2: diagnosis-directed invention beats undirected invention at matched compute (B20_R132) |
+| 2. Difficulty Cartographer | Diagnose why methods fail; choose the cheapest experiment that separates the explanations | `adaptation/receptors.py` (weakness sensors), `autonomy/adversary.py` (hardest hosts), `discovery/obstruction.py` | MISSING as a diagnostic engine | Ω2: diagnosis-directed invention beats undirected invention at matched compute (B20_R134) |
 | 3. Representation Inventor | New encodings, abstractions, worlds, with checked maps back | `invention/representations.py` (W10), `invention/worlds.py` (W12), renormalisation in `mcx`/`mcx2` | PARTIAL | Ω7: an invented transformation improves held-out performance and maps back exactly |
 | 4. Algorithm Inventor | Executable new procedures | `autonomy/selfimprove.py` (mcx2 programs: mutation, crossover, MAP-Elites, macros), `invention/solver_programs*.py` | PARTIAL; NOT_DEMONSTRATED so far | B20_R127; then Ω3's typed language |
 | 5. Experimental Scientist | Beliefs over explanations; experiments chosen by expected value; adaptive | **`science/design.py`** (domain-independent), `causal/active3.py`, `science/acquire.py`; earlier `discovery/active.py` (method selection only) | BUILT, preregistered (B20_R129) | B20_R129's verdict |
-| 6. Independent Judge | Unseen problems, strict compute accounting, release only beyond noise | `autonomy/feedback.py` (contract v2), `judge.py`, the domains' checkers | BUILT (protected) | Stays fixed. Extend: a sealed portfolio for Ω8 |
+| 6. Independent Judge | Unseen problems, strict compute accounting, release only beyond noise | `autonomy/feedback.py` (contract v2), `judge.py`, the domains' checkers | BUILT (protected) | Stays fixed. A candidate version 3 (local calibration) is under test in B20_R132 from the research plane (`autonomy/contract_v3.py`); adoption is the supervisor's. Extend: a sealed portfolio for Ω8 |
 | 7. Recursive Improver | Improve engines 2–5 from accumulated evidence | `selfimprove` process genomes (level 2), `adaptation/` cell, `autonomy/loop.py` | PARTIAL | B20_R128; then Ω8 |
 
 **Organism-level structures** (from the self-evolving-organism stages):
@@ -164,6 +189,20 @@ proposal's priorities, and the Ω-numbers the organism stages. They are merged h
   - too little expressiveness → Ω3;
   - no diagnosis → Ω2;
   - noise → larger confirmation splits.
+- **What B20_R127's trace showed (24 Oct, 15:10; no new runs).** The judge released nothing in all nine searches.
+  The best training gains over REX were +0.04% to +0.24%; the release threshold tau was 0.75% to 2.45%, 4 to 60
+  times larger. Nothing the inventor found could ever have been released.
+- **B20_R132, the bottleneck scientist turned on invention** (before R128, whose level-2 measure depends on level-1
+  releases). It measures the four candidate bottlenecks on the same searches:
+  - (N) the judge: version 2 calibrates tau on random engines; the candidate version 3 (`autonomy/contract_v3.py`, in
+    the research plane, adopted nowhere; the protected `feedback.py` is untouched) calibrates on one-step mutations
+    of the incumbent, the programs a search actually compares;
+  - (E) the evaluator: 4 against 12 confirmation graphs at matched compute (fewer proposals);
+  - (P) proposals: R127's 160 units against 240;
+  - (H) headroom: REX at 10 s against 1 s.
+
+  The truth is measured on 12 fresh graphs per class, and a zero-signal control (pools of real REX runs) bounds false
+  releases. Adopting version 3 for any claim is the human supervisor's decision.
 
 ### Ω1 (P1): the adaptive experimental scientist (B20_R129, preregistered `eb60843`)
 - **Why.** Experiment choice tied random four times. A scientist that learns must choose by what each result
@@ -232,7 +271,8 @@ proposal's priorities, and the Ω-numbers the organism stages. They are merged h
 
   The Cartographer picks the cheapest discriminating experiment (Ω1's acquisitions, now with unequal costs). Its
   output is an **invention brief**: the diagnosed obstacle plus the operator family to search (feeding `selfimprove`).
-- **Study (B20_R132).** On fresh graph families with **planted** obstacles of known type:
+- **Study (B20_R134; redesign first: DEV_NOTES item 14 found the planted families visible to cheap statistics).**
+  On fresh graph families with **planted** obstacles of known type, hidden from simple statistics:
   1. Does the Cartographer identify the planted obstacle, scored by accuracy against the plant, at a fixed
      diagnostic budget, against random diagnostics?
   2. Does diagnosis-directed invention beat undirected invention (B20_R127's inventor) at matched total compute,
@@ -361,20 +401,21 @@ Each step is verified and independently replicated. None of this has happened ye
 
 ## 6. The queue (in order; each alone on CPU 0)
 
+Studies run from a clean worktree of the branch head (`/home/claude/run_study.sh TAG SCRIPT OUTPUT`, one slice per
+call; `CHECKOUT=1` at a study's first slice), so that new code can be committed while one runs.
+
 | # | Batch | What | State |
 |---|---|---|---|
-| 1 | B20_R127 | The system's own engines against the builder's hybrid; held-out graphs; Gset at 10 s and 60 s. **Slice 2 must be started when slice 1 pauses** (`END r127 rc=3` in `/home/claude/chain.log`; `/home/claude/chain_n.sh`) | running (slice 1 since 12:43) |
-| 2 | B20_R129 | The adaptive scientist (about 30 min) | preregistered `eb60843`; runs in R127's slice pause (14:33) |
-| 3 | B20_R130 | Choice, instrument and interpretation separated (about 1 h; reads R129's `choice.json`) | preregistered `f812701`; after R127 |
-| 4 | B20_R133 | The Problem Compiler against the specialists (about 1 h 15 min) | preregistered `e8bc181` |
-| 4b | B20_R128 | Improving the inventor (2–3 slices of 6,600 s; resumable) | preregistered |
-| 5 | Ω0 | Analyse R127/R128 mechanisms (no new study) | — |
-| 6 | B20_R131 | Co-invention of the choice and the interpretation for the global estimator | to design after R130 |
-| 7 | B20_R132 | The Difficulty Cartographer on planted obstacles; diagnosis-directed invention (Ω2; dev looks: renormalisation answers planted coupling, +16 against +4) | to design |
-| 8 | — | Ledger: `scripts/build_ledger.py` gains R123–R130's scripts, modules, tests and evidence; regenerate; `test_ledger`; TEST_MATRIX rows for R130 (R125-R129 done) | owed |
-| 9 | — | Checkpoint (the last one is B20_R118) with the release matrix | owed after R129 |
-| 10 | Ω3 | The genome registry and typed language; first study on max-cut, then MaxSAT unchanged | to design |
-| 11 | Ω4–Ω9 | As in §5 | — |
+| 1 | B20_R127 | The system's own engines against the builder's hybrid; held-out graphs; Gset at 10 s and 60 s | slice 2 running; record next |
+| 2 | B20_R130 | Choice, instrument and interpretation separated (about 1.5 h; reads R129's `choice.json`) | preregistered `f812701`; after R127 |
+| 3 | B20_R133 | The Problem Compiler against the specialists (about 1 h 15 min) | preregistered `e8bc181` |
+| 4 | B20_R131 | The cascade on a real case: R129's dormant acquisition rules reactivated by R130's interpretation (about 1 h) | preregistered `22385f7`; after R130's record |
+| 5 | B20_R132 | The bottleneck scientist on invention: judge v2 against v3, 4 against 12 confirmation graphs, headroom, signal, a zero-signal control (about 5.2 h, slices) | preregistration after its development look |
+| 6 | B20_R128 | Improving the inventor (2–3 slices of 6,600 s) | preregistered; after R132, whose result decides whether to amend its judge before it runs |
+| 7 | — | Checkpoint (the last one is B20_R118) with the release matrix | owed |
+| 8 | B20_R134 | The Difficulty Cartographer, redesigned with obstacles hidden from cheap statistics (Ω2) | to design |
+| 9 | Ω3 | The genome registry and typed language; first study on max-cut, then MaxSAT unchanged | to design |
+| 10 | Ω4–Ω9 | As in §5 | — |
 
 ## 7. Prior art to check every novelty claim against
 
@@ -426,3 +467,5 @@ problems no level has seen, and Genesis has not shown that yet.
 - 24 Oct 2026: written, with B20_R129 preregistered (`eb60843`), merging Daniel's Ω proposals of that day.
 - 24 Oct 2026, 14:20: Ω1's development looks (the interpretation is the limit; the established LLC estimator) and
   B20_R130 preregistered (`f812701`); the queue renumbered (B20_R131 co-invention, B20_R132 the Cartographer).
+- 24 Oct 2026, 15:35: B20_R127's trace analysed (nothing could have been released); B20_R132 becomes the bottleneck
+  scientist on invention, ahead of B20_R128; the Cartographer moves to B20_R134; the queue updated.
