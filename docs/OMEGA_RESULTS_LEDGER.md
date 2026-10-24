@@ -34,6 +34,7 @@ Nothing here is an independent or sealed result.
 | B20_R127 | The system's own engines against human designs: NOT_SHOWN (Gset 10 s: 16–11 against MCX, p 0.44; 9–18 against REX; 28–5 against BLS). The judge released nothing in nine searches: training gains +0.04–0.23% against tau 0.75–2.45%; no compounding; no mechanism credited |
 | B20_R120, R122, R124 | Genesis's choice of experiments no better than random (four times; these chose from fixed observational scores; B20_R129's adaptive scientist then beat random) |
 | B20_R72, R92, R97 | Physics move rules show no measurable effect in the invention engine |
+| B20_R131 | The cascade on a real case: NO_VERIFIED_TRIGGER by protocol (R130 did not verify the global interpretation), so no reactivation was measured; comparators at 24 evaluations: fresh 0.496, random retrieval 0.502, null 0.496, eig 0.450; archive overhead 158.9 s CPU |
 
 ## Exploratory (development looks, 24 Oct 2026; disclosed in B20_R129 and R130)
 
@@ -52,7 +53,6 @@ Nothing here is an independent or sealed result.
 |---|---|
 | B20_R128 | Improving the inventor. Preregistered |
 | B20_R132 | The four bottlenecks of invention. Preregistered `c0431f6` |
-| B20_R131 | The cascade on a real case. Preregistered `22385f7`; R130 did not verify its trigger, so by its protocol it records NO_VERIFIED_TRIGGER and runs only the null trigger and comparators |
 
 ## Unrun plans
 

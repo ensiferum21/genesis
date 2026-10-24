@@ -1324,9 +1324,10 @@
       },
       "B20_R131": {
         "commits": [
-          "22385f7"
+          "22385f7",
+          "68e24c0"
         ],
-        "result": "Setup (preregistered 22385f7): the cascade on a real case. Running from 20:33 (run worktree at 68e24c0); R130 did not verify the trigger: by protocol NO_VERIFIED_TRIGGER"
+        "result": "DEV, preregistered 22385f7, run from a clean worktree of 68e24c0, 20:33-20:49: NO_VERIFIED_TRIGGER by protocol (R130 did not verify the global interpretation): no reactivation; test means fresh 0.496 (its seed decfall), random retrieval 0.502, null 0.496, eig 0.450; archive 1310 rules, 158.9 s CPU once; null trigger 0 opportunities; vault verified. Exploratory: random vs fresh p 0.38"
       },
       "B20_R133": {
         "commits": [
@@ -1340,7 +1341,7 @@
           "56e1301",
           "c0431f6"
         ],
-        "result": "Setup (preregistered c0431f6): the four bottlenecks of invention with planted and zero-signal controls, the protected v2 against the candidate v3 (research plane). Queued after R133 and R131"
+        "result": "Setup (preregistered c0431f6): the four bottlenecks of invention with planted and zero-signal controls, the protected v2 against the candidate v3 (research plane). Running from 20:50 on a clean worktree of f2ba20e"
       },
       "B20_R135": {
         "commits": [

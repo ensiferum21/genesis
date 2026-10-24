@@ -36,6 +36,6 @@ tampered evidence by the judge is the kernel's existing suite (`test_acceptance_
 `test_redteam_b16`).
 
 **Next smallest high-value actions:**
-1. Done: B20_R130 (CHOICE), B20_R133 (BEHIND_SPECIALISTS_ON coloring, mis). Running: B20_R131 (from 20:33); then B20_R132, B20_R128, B20_R135.
+1. Done: B20_R130 (CHOICE), B20_R133 (BEHIND_SPECIALISTS_ON coloring, mis), B20_R131 (NO_VERIFIED_TRIGGER, by protocol). Running: B20_R132 (from 20:50); then B20_R128, B20_R135, B20_R141 (ARA on the Limitation Zoo, `docs/OMEGA_ARCHITECTURE_INVENTION.md`).
 2. Preregister the representation language's first study before B20_R133's colouring result is known.
 3. A fresh checkpoint after B20_R128.

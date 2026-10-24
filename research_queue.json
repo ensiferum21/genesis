@@ -53,7 +53,9 @@
    ]
   },
   "B20_R131": {
-   "artifacts": [],
+   "artifacts": [
+    "evidence/cascade_b20r131/summary.json"
+   ],
    "committed": true,
    "depends_on": [
     "B20_R130"
@@ -63,9 +65,9 @@
    "kind": "study",
    "line": "capability-graph",
    "notes": "R130 did not verify global-interpretation: by protocol NO_VERIFIED_TRIGGER (null trigger and comparators)",
-   "outcome": null,
+   "outcome": "NO_VERIFIED_TRIGGER (by protocol): no reactivation; fresh 0.496, random retrieval 0.502, null 0.496, eig 0.450; archive 158.9 s CPU",
    "output": "evidence/cascade_b20r131",
-   "positive": null,
+   "positive": false,
    "preregistered": "22385f7",
    "priority": 7,
    "requires": [],
@@ -73,7 +75,7 @@
     "cpu0_hours": 1.0
    },
    "script": "scripts/b20r131_cascade.py",
-   "status": "running",
+   "status": "done",
    "title": "The cascade on a real case: dormant R129 rules against R130's interpretation",
    "unlocks": [
     "cascade-value"
@@ -949,6 +951,13 @@
    "id": "B20_R147",
    "kind": "add",
    "time": "2026-10-24T12:57:28+00:00"
+  },
+  {
+   "id": "B20_R131",
+   "kind": "finish",
+   "outcome": "NO_VERIFIED_TRIGGER (by protocol): no reactivation; fresh 0.496, random retrieval 0.502, null 0.496, eig 0.450; archive 158.9 s CPU",
+   "positive": false,
+   "time": "2026-10-24T13:01:21+00:00"
   }
  ],
  "lines": {
@@ -960,8 +969,14 @@
   },
   "capability-graph": {
    "diagnosis": null,
-   "outcomes": [],
-   "run": 0,
+   "outcomes": [
+    [
+     "B20_R131",
+     "NO_VERIFIED_TRIGGER (by protocol): no reactivation; fresh 0.496, random retrieval 0.502, null 0.496, eig 0.450; archive 158.9 s CPU",
+     false
+    ]
+   ],
+   "run": 1,
    "stagnant": false
   },
   "causal-science": {
