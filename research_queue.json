@@ -445,7 +445,9 @@
    ]
   },
   "ro-layer-build": {
-   "artifacts": [],
+   "artifacts": [
+    "src/genesis/objects"
+   ],
    "committed": false,
    "depends_on": [],
    "failure": null,
@@ -453,15 +455,15 @@
    "kind": "build",
    "line": "recursive-invention",
    "notes": "engineering on fixtures, CPU 1",
-   "outcome": null,
+   "outcome": "built on fixtures (test_research_objects, 9 tests)",
    "output": null,
-   "positive": null,
+   "positive": true,
    "preregistered": null,
    "priority": 6,
    "requires": [],
    "resources": {},
    "script": null,
-   "status": "queued",
+   "status": "done",
    "title": "The research-object layer: schema, type and kind registry, run with contracts and fuel, improve as an RO, adapters for the existing languages (docs/OMEGA_RECURSIVE_INVENTION.md section 3)",
    "unlocks": []
   },
@@ -689,6 +691,18 @@
    "id": "B20_R131",
    "kind": "start",
    "time": "2026-10-24T12:36:53+00:00"
+  },
+  {
+   "id": "ro-layer-build",
+   "kind": "start",
+   "time": "2026-10-24T12:40:56+00:00"
+  },
+  {
+   "id": "ro-layer-build",
+   "kind": "finish",
+   "outcome": "built on fixtures (test_research_objects, 9 tests)",
+   "positive": true,
+   "time": "2026-10-24T12:40:56+00:00"
   }
  ],
  "lines": {
@@ -781,7 +795,13 @@
   },
   "recursive-invention": {
    "diagnosis": null,
-   "outcomes": [],
+   "outcomes": [
+    [
+     "ro-layer-build",
+     "built on fixtures (test_research_objects, 9 tests)",
+     true
+    ]
+   ],
    "run": 0,
    "stagnant": false
   },
@@ -817,6 +837,7 @@
  "reactivated": {},
  "schema": "genesis-research-queue-v1",
  "unlocked": [
-  "experiment-choice-verified"
+  "experiment-choice-verified",
+  "ro-layer"
  ]
 }

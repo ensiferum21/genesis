@@ -63,7 +63,7 @@ the thing it lacks is not on any list we give it. Therefore:
 | Capability | Exists | Tested | Evidence on real tasks |
 |---|---|---|---|
 | Typed invention languages: mcx2 programs, acquisition programs, instrument programs, representation relations, gadgets and encodings, MRDL derived primitives | Yes (`docs/OMEGA_PROCESS_IR.md`) | Yes | mcx2: B20_R127 NOT_SHOWN. Acquisition: B20_R129 (a random program of the language beats the established rules; not released by the judge). Instruments: B20_R130 NO_DIFFERENCE |
-| One registry across languages (the RO layer) | **No** | — | — |
+| One registry across languages (the RO layer) | **Built 24 Oct, 20:50, on fixtures** (`src/genesis/objects/`): types and kinds as data with lineage, validation, run with contracts under fuel and depth, adapters for the gadget synthesiser, gadget evaluation, acquisition programs and the mcx2 engine, compositions, a gated improver and an improver of improvers, vault records of every run | Yes (`test_research_objects`, 9) | None yet |
 | Exact, content-addressed memory with lineage, statuses, explanation and failure ladders, edges, bounded cascade | Yes (`vault.py`) | Yes (`test_vault`) | B20_R131 running (its trigger was not verified by B20_R130) |
 | Experiment choice by expected value, domain-independent | Yes (`science/design.py`) | Yes | **Verified twice**: B20_R129 ADAPTIVE_SCIENTIST; B20_R130 CHOICE (+0.165 F1, p 7.5e-26) |
 | Instrument invention (search over a language of tests) | Yes, exhaustive over 45 | Yes | B20_R130: the invented instrument ties |
@@ -455,3 +455,4 @@ its growth across generations.
   repository: the audit (§2); capabilities beyond senses as an open set of typed kinds (§1, §3.3); the RO layer over
   the vault and the processes (§3); the gap scientist built on `science/design.py`, with diagnosis of the diagnoser
   (§7); the decisive experiments mapped to studies (§15); the order of work with the vertical slice first (§16).
+- 24 Oct 2026, 20:50: Batch R1 built on fixtures: the RO layer (`src/genesis/objects/`; `test_research_objects`).
