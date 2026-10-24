@@ -169,6 +169,39 @@ class CLI(unittest.TestCase):
             self.assertEqual(json.loads(call('export', str(root), b, '--format', 'source'))['source'],
                              {'agg': 'sum', 'expr': 'f2'})
             self.assertEqual(json.loads(call('verify', str(root)))['artifacts'], 2)
+            self.assertEqual(json.loads(call('replay', str(root), b))['verdict'], 'NOT_REPLAYABLE')
+
+    def test_replay_reproduces_and_detects_a_difference(self):
+        import json
+        from genesis import replayers as R
+        from genesis.causal import active3 as A3  # noqa: F401  (the replayer's domain)
+        args = {'seeds': [4300, 4301], 'p': 8, 'h': 2, 'density': 0.3, 'budget': 3}
+        prog = {'agg': 'sum', 'expr': 'decfall'}
+        got = R.REPLAYERS['acquire-on-causal-worlds']({'source': prog}, args)
+        rec = V.Vault.record('ProgramSpec', {'source': prog}, domain='causal', creator={'process': 'test'},
+                             replay={'replayer': 'acquire-on-causal-worlds', 'args': args, 'expect': got})
+        with tempfile.TemporaryDirectory() as d:
+            root = Path(d) / 'vault'
+            with V.Vault(root) as v:
+                a = v.put(rec)
+                bad = v.put(V.Vault.record('ProgramSpec', {'source': {'agg': 'sum', 'expr': 'eig'}}, domain='causal',
+                                           creator={'process': 'test'},
+                                           replay={'replayer': 'acquire-on-causal-worlds', 'args': args,
+                                                   'expect': {'choices': [[9, 9, 9], [9, 9, 9]]}}))
+                evil = v.put(V.Vault.record('ProgramSpec', {'source': prog}, domain='causal',
+                                            creator={'process': 'test'},
+                                            replay={'replayer': 'os.system', 'args': {}, 'expect': {}}))
+            from genesis import cli
+            import contextlib
+            import io
+            def call(*argv):
+                buf = io.StringIO()
+                with contextlib.redirect_stdout(buf):
+                    cli.main(['discovery', *argv])
+                return json.loads(buf.getvalue())
+            self.assertEqual(call('replay', str(root), a)['verdict'], 'REPRODUCED')
+            self.assertEqual(call('replay', str(root), bad)['verdict'], 'DIFFERENT')
+            self.assertEqual(call('replay', str(root), evil)['verdict'], 'NOT_REPLAYABLE')   # never executed
 
 
 if __name__ == '__main__':

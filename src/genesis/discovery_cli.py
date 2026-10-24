@@ -3,6 +3,7 @@
     genesis discovery list ROOT [--type T] [--status S] [--failure F] [--domain D]
     genesis discovery show ROOT ID [--raw] [--lineage] [--evidence]
     genesis discovery export ROOT ID [--format json|source]
+    genesis discovery replay ROOT ID        recompute the artifact's recorded behaviour (registered replayers only)
     genesis discovery verify ROOT
 
 Reports are built from stored data only (no generated prose). `--raw` prints the exact stored bytes of the artifact.
@@ -38,6 +39,9 @@ def run(args):
                 out['edges_out'] = v.edges(src=args.id)
                 out['edges_in'] = v.edges(dst=args.id)
             return out
+        if args.action == 'replay':
+            from .replayers import replay
+            return {'id': args.id, **replay(v.get(args.id))}
         if args.action == 'export':
             rec = v.get(args.id)
             if args.format == 'source':
@@ -50,7 +54,7 @@ def run(args):
 def add_parser(subs):
     from pathlib import Path
     p = subs.add_parser('discovery')
-    p.add_argument('action', choices=['list', 'show', 'export', 'verify'])
+    p.add_argument('action', choices=['list', 'show', 'export', 'replay', 'verify'])
     p.add_argument('root', type=Path)
     p.add_argument('id', nargs='?', default=None)
     p.add_argument('--type', default=None)
