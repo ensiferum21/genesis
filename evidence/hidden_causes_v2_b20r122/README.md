@@ -63,6 +63,7 @@ budget 4 0.50 → 0.47.
 - **Genesis does not yet choose experiments better than chance.** This is the second half of the alert, and it
   stays NOT_SHOWN for the third time (B20_R120 and both budgets here). The oracle's targets show what is left to
   win: hidden-cause F1 0.56 and a spurious rate of 0.05.
-- **What would test it next.** A target choice that aims at what the experiments decide, which is direction.
-  Expected information gain over the undecided marks would do that; Genesis's `discovery.active` module already
-  computes it. It should be judged on directed and hidden-cause F1 together, on fresh instances.
+- **What would test it next.** A target choice that aims at what the experiments decide, which is direction:
+  expected information gain over the undecided marks. Genesis's `discovery.active` computes expected information gain
+  for another model (which method is best on a family), so this needs a model of the undecided marks, not just a
+  reused module. It should be judged on directed and hidden-cause F1 together, on fresh instances.

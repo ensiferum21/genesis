@@ -207,8 +207,8 @@ needs people: a reviewer, a statistician, an independent custodian on its own ma
   19. done: B20_R118 (CONFOUNDING_MISLEADS);
   20. done: B20_R119-R120 (FCI and the active procedure; NOT_SHOWN: no better than random targets);
   21. done: B20_R121-R122 (HIDDEN_CAUSES_MARKED; experiments add direction; the choice of experiments ties random);
-  22. next on this track: experiments chosen by expected information gain over the undecided marks
-      (`discovery.active`), judged on directed and hidden-cause F1 together, on fresh instances.
+  22. next on this track: experiments chosen by expected information gain over the undecided marks (a new model;
+      `discovery.active` does this for method selection only), judged on directed and hidden-cause F1 together.
 
 3. **Checkpoint:** the latest is B20_R118 (`469f7f0`; not rehearsed on a second machine). Do not edit the tree while
    the release matrix runs; run timing studies alone.
