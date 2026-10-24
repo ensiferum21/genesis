@@ -1,0 +1,18 @@
+[    0.0s] b20r129; pinned to CPU 0
+[   49.5s] calibration: 100 worlds prepared
+[  104.1s] A: 100 worlds prepared
+[  154.3s] B: 100 worlds prepared
+[  206.4s] C: 100 worlds prepared
+[  260.5s] validation: 100 worlds prepared
+[  359.4s] test: 200 worlds prepared
+[  499.7s] transfer: 100 worlds prepared
+[  500.5s] hybrid lambda 1.0
+[  534.0s] search 0: max (sqrt(sq(decall)) * sq(min(pf, 1.0))); {'generations': 40, 'evaluations': 495, 'distinct_programs': 336, 'reported': -4.55, 'judge': {'tau': 0.4058923649485734, 'start': -4.55, 'releases': 0, 'submissions': 14, 'stopped': True}}
+[  567.9s] search 1: sum decfall; {'generations': 40, 'evaluations': 493, 'distinct_programs': 336, 'reported': -4.51, 'judge': {'tau': 0.4063253376069072, 'start': -4.51, 'releases': 0, 'submissions': 12, 'stopped': True}}
+[  603.4s] search 2: sum decfall; {'generations': 40, 'evaluations': 492, 'distinct_programs': 336, 'reported': -4.51, 'judge': {'tau': 0.4592111323180991, 'start': -4.51, 'releases': 0, 'submissions': 11, 'stopped': True}}
+[  638.9s] search 3: sum decfall; {'generations': 40, 'evaluations': 488, 'distinct_programs': 336, 'reported': -4.51, 'judge': {'tau': 0.45431442180677184, 'start': -4.51, 'releases': 0, 'submissions': 7, 'stopped': True}}
+[  640.3s] Genesis's scientist: decfall (best invented inv1, best other decfall); validation {'dec': {'f1_at_4': 0.23066666666666666, 'needed': 4.99}, 'decf': {'f1_at_4': 0.32466666666666666, 'needed': 5.05}, 'decfall': {'f1_at_4': 0.36933333333333335, 'needed': 4.42}, 'eig': {'f1_at_4': 0.23766666666666666, 'needed': 4.97}, 'hybrid': {'f1_at_4': 0.23566666666666666, 'needed': 4.96}, 'inv1': {'f1_at_4': 0.37866666666666665, 'needed': 4.59}}
+[  647.3s] test / calibrated: done
+[  652.0s] test / theory: done
+[  658.2s] transfer / calibrated: done
+[  658.6s] valid True; verdict ADAPTIVE_SCIENTIST; T1 FEWER_EXPERIMENTS (p 1.2e-27); T2 NOT_SHOWN (p 0.38); needed dec 4.96, degree 5.69, eig 4.98, hybrid 4.96, random 6.81, static_eig 5.67, decf 4.94, decfall 4.49, inv1 4.34, oracle 3.60

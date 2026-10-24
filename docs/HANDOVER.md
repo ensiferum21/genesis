@@ -211,13 +211,13 @@ needs people: a reviewer, a statistician, an independent custodian on its own ma
   19. done: B20_R118 (CONFOUNDING_MISLEADS);
   20. done: B20_R119-R120 (FCI and the active procedure; NOT_SHOWN: no better than random targets);
   21. done: B20_R121-R122 (HIDDEN_CAUSES_MARKED; experiments add direction; the choice of experiments ties random);
-  22. built and preregistered: B20_R129, the adaptive experimental scientist (`eb60843`; Genesis Ω P1): experiments
-      chosen one at a time by what each is expected to reveal, under a calibrated model of the instrument, with
-      Genesis's own invented acquisition rules judged against the established ones;
+  22. done: B20_R129 (ADAPTIVE_SCIENTIST: 4.49 experiments against random's 6.81; Genesis's own rule beats the
+      established acquisitions and ties the builder's; four as good as eight only on the larger unfamiliar family);
+      next on this track B20_R130 (preregistered `f812701`: choice, instrument and interpretation separated);
   23. done: B20_R123 (5 of 14 reached; 45 of 54 matched; no record); done: B20_R124 (EXPERIMENTS_NEEDED);
-  24. B20_R127 (the system's own engines against human designs, finally on Gset; running; start slice 2 with
-      `/home/claude/chain_n.sh` when slice 1 pauses), then B20_R129 (about 30 min), then B20_R128 (the system
-      improving its own inventor; 2-3 slices).
+  24. B20_R127 (the system's own engines against human designs, finally on Gset; slice 2 running from 14:45), then
+      B20_R130 (about 1 h), B20_R133 (the Problem Compiler, about 1 h 15 min), B20_R128 (2-3 slices), and B20_R131
+      (the cascade; to preregister before B20_R130 runs).
   25. after them: the Genesis Ω stages in `docs/GENESIS_OMEGA_PLAN.md` §5-§6 (Ω0 analysis of R127/R128; B20_R130
       invented instruments; B20_R131 the Difficulty Cartographer; the genome and typed language; the ecology;
       evolvability selection; the decisive A/B/C experiment).

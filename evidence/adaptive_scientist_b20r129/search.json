@@ -1,0 +1,107 @@
+[
+ {
+  "cpu_s": 33.237,
+  "report": {
+   "distinct_programs": 336,
+   "evaluations": 495,
+   "generations": 40,
+   "judge": {
+    "releases": 0,
+    "start": -4.55,
+    "stopped": true,
+    "submissions": 14,
+    "tau": 0.4058923649485734
+   },
+   "reported": -4.55
+  },
+  "search": 0,
+  "text": "max (sqrt(sq(decall)) * sq(min(pf, 1.0)))",
+  "winner": {
+   "agg": "max",
+   "expr": [
+    "*",
+    [
+     "sqrt",
+     [
+      "sq",
+      "decall"
+     ]
+    ],
+    [
+     "sq",
+     [
+      "min",
+      "pf",
+      1.0
+     ]
+    ]
+   ]
+  }
+ },
+ {
+  "cpu_s": 33.465,
+  "report": {
+   "distinct_programs": 336,
+   "evaluations": 493,
+   "generations": 40,
+   "judge": {
+    "releases": 0,
+    "start": -4.51,
+    "stopped": true,
+    "submissions": 12,
+    "tau": 0.4063253376069072
+   },
+   "reported": -4.51
+  },
+  "search": 1,
+  "text": "sum decfall",
+  "winner": {
+   "agg": "sum",
+   "expr": "decfall"
+  }
+ },
+ {
+  "cpu_s": 35.023,
+  "report": {
+   "distinct_programs": 336,
+   "evaluations": 492,
+   "generations": 40,
+   "judge": {
+    "releases": 0,
+    "start": -4.51,
+    "stopped": true,
+    "submissions": 11,
+    "tau": 0.4592111323180991
+   },
+   "reported": -4.51
+  },
+  "search": 2,
+  "text": "sum decfall",
+  "winner": {
+   "agg": "sum",
+   "expr": "decfall"
+  }
+ },
+ {
+  "cpu_s": 35.299,
+  "report": {
+   "distinct_programs": 336,
+   "evaluations": 488,
+   "generations": 40,
+   "judge": {
+    "releases": 0,
+    "start": -4.51,
+    "stopped": true,
+    "submissions": 7,
+    "tau": 0.45431442180677184
+   },
+   "reported": -4.51
+  },
+  "search": 3,
+  "text": "sum decfall",
+  "winner": {
+   "agg": "sum",
+   "expr": "decfall"
+  }
+ }
+]

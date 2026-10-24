@@ -1,0 +1,57 @@
+{
+ "best_invented": "inv1",
+ "best_other": "decfall",
+ "genesis": "decfall",
+ "invented": {
+  "inv1": {
+   "agg": "max",
+   "expr": [
+    "*",
+    [
+     "sqrt",
+     [
+      "sq",
+      "decall"
+     ]
+    ],
+    [
+     "sq",
+     [
+      "min",
+      "pf",
+      1.0
+     ]
+    ]
+   ]
+  }
+ },
+ "invented_text": {
+  "inv1": "max (sqrt(sq(decall)) * sq(min(pf, 1.0)))"
+ },
+ "validation": {
+  "dec": {
+   "f1_at_4": 0.23066666666666666,
+   "needed": 4.99
+  },
+  "decf": {
+   "f1_at_4": 0.32466666666666666,
+   "needed": 5.05
+  },
+  "decfall": {
+   "f1_at_4": 0.36933333333333335,
+   "needed": 4.42
+  },
+  "eig": {
+   "f1_at_4": 0.23766666666666666,
+   "needed": 4.97
+  },
+  "hybrid": {
+   "f1_at_4": 0.23566666666666666,
+   "needed": 4.96
+  },
+  "inv1": {
+   "f1_at_4": 0.37866666666666665,
+   "needed": 4.59
+  }
+ }
+}

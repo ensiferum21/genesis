@@ -131,5 +131,101 @@ class Design(unittest.TestCase):
             M.main([str(ROOT / 'evidence' / 'elsewhere')])
 
 
+class RecordB20R129(unittest.TestCase):
+    """B20_R129's record: the worlds regenerate from their seeds, the instrument's model recalibrates, every run
+    replays exactly from the stored lab, Genesis's choice recomputes on validation, the invented winners' judged
+    scores recompute, and the tests and the verdict recompute."""
+
+    @classmethod
+    def setUpClass(cls):
+        import json
+        cls.ev = ROOT / 'evidence' / 'adaptive_scientist_b20r129'
+        cls.s = json.loads((cls.ev / 'summary.json').read_text())
+        cls.worlds = {s: M.load_jsonl(cls.ev / f'worlds_{s}.jsonl') for s in M.SETS}
+        cls.rows = M.load_jsonl(cls.ev / 'runs.jsonl')
+        cls.model = json.loads((cls.ev / 'model.json').read_text())
+        cls.choice = json.loads((cls.ev / 'choice.json').read_text())
+        cls.lam = json.loads((cls.ev / 'lambda.json').read_text())['lambda']
+
+    def test_worlds_regenerate(self):
+        from genesis.causal import active3 as A3
+        from genesis.causal import sem as S
+        import json
+        for name, (off, n, st) in M.SETS.items():
+            ws = self.worlds[name]
+            self.assertEqual([w['seed'] for w in ws], [M.world(name, k)[0] for k in range(n)])
+            for w in ws:
+                self.assertEqual(w['truth'], json.loads(json.dumps(
+                    S.planted(w['seed'], st['p'], st['h'], st['density'], M.NOISE, M.K))))
+            w = ws[0]
+            view, truth = S.instance(w['seed'], st['p'], st['h'], st['density'], M.NOISE, M.K, M.N_TOTAL)
+            self.assertEqual(json.loads(json.dumps(A3.prepare(view, truth, M.N_INT, w['seed']))), w['prep'], name)
+
+    def test_model_recalibrates(self):
+        from genesis.causal import active3 as A3
+        m = A3.calibrate([(r['prep'], r['truth']) for r in self.worlds['calibration']])
+        for part in ('prior', 'predict'):
+            for k, d in m[part].items():
+                for h, x in d.items():
+                    self.assertAlmostEqual(x, self.model[part][k][h], places=12)
+
+    def test_runs_replay(self):
+        from genesis.causal import active3 as A3
+        models = {'calibrated': self.model, 'theory': A3.THEORY}
+        invented = self.choice['invented']
+        by = {}
+        for r in self.rows:
+            by.setdefault((r['set'], r['model'], r['seed']), []).append(r)
+        for name in ('test', 'transfer'):
+            for w_ in self.worlds[name]:
+                for mname in models:
+                    rows = by.get((name, mname, w_['seed']), [])
+                    if not rows:
+                        continue
+                    w = M.World(w_, models[mname])
+                    for r in rows:
+                        acq = M.acquisition(r['arm'], w_['prep'], w_['truth'], self.lam, invented)
+                        rng = M.rng_for(w_['seed'], r['order']) if r['arm'] == 'random' else None
+                        again = M.full_row(w, name, mname, r['arm'], acq, rng, order=r.get('order'),
+                                           beliefs_at=4 if 'beliefs4' in r else None)
+                        for k in ('targets', 'f1', 'directed_f1', 'shd', 'needed', 'full', 'entropy',
+                                  'precision_at', 'recall_at', 'beliefs4', 'true'):
+                            self.assertEqual(again.get(k), r.get(k), (name, mname, r['arm'], w_['seed'], k))
+
+    def test_choice_and_search_recompute(self):
+        import statistics
+        V = [M.World(r, self.model) for r in self.worlds['validation']]
+        invented = self.choice['invented']
+        for arm, rec in self.choice['validation'].items():
+            acq = M.acquisition(arm, lam=self.lam, invented=invented)
+            self.assertAlmostEqual(statistics.mean(w.experiments_needed(acq) for w in V), rec['needed'])
+        import json
+        searches = json.loads((self.ev / 'search.json').read_text())
+        B = [M.World(r, self.model) for r in self.worlds['B']]
+        for s in searches:
+            acq = {'kind': 'program', 'program': s['winner']}
+            self.assertAlmostEqual(-statistics.mean(w.experiments_needed(acq) for w in B), s['report']['reported'])
+
+    def test_analysis_recomputes(self):
+        import json
+        res = json.loads(json.dumps(M.analyse(self.rows, self.choice), default=float))
+        for k in ('verdict', 'test', 'transfer', 'secondary', 'genesis_arm'):
+            self.assertEqual(res[k], self.s[k], k)
+        cal = json.loads(json.dumps({m: M.calibration_stats(self.rows, m) for m in ('calibrated', 'theory')}))
+        self.assertEqual(cal, self.s['calibration'])
+        self.assertTrue(M.checks(self.rows) and self.s['valid'])
+        sec, t = res['secondary'], res['test']
+        self.assertEqual((res['verdict'], res['genesis_arm'], t['T1']['label'], t['T2']['label'],
+                          res['transfer']['T1']['label'], res['transfer']['T2']['label']),
+                         ('ADAPTIVE_SCIENTIST', 'decfall', 'FEWER_EXPERIMENTS', 'NOT_SHOWN', 'FEWER_EXPERIMENTS',
+                          'HALF_SUFFICES'))
+        self.assertEqual((sec['eig_vs_static_eig']['label'], sec['invented_vs_eig']['label'],
+                          sec['invented_vs_best_other']['label'], sec['genesis_vs_oracle']['label'],
+                          sec['theory_vs_calibrated_f1@4']['label']),
+                         ('ADAPTING_HELPS', 'INVENTED_BETTER', 'NO_DIFFERENCE', 'ORACLE_BETTER', 'THEORY_BETTER'))
+        self.assertEqual(self.s['code_identity'],
+                         '1ff03cbb8596d6ad07292029ef8c71644a5404a9ca8f9f0b8d4711c4e548f949')
+
+
 if __name__ == '__main__':
     unittest.main()

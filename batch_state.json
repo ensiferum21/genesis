@@ -45,7 +45,7 @@
     "9": "Leak firewall: text/structural/elaborated/near-dup screening, oracle, theorem memory rule.",
     "10": "IR overloads + replay, 5 macros, research market, world-step loop, Appendix A registry.",
     "11": "Experiment B harness: FOF parser, SAT model finder, independent evaluator, E prover, kill gate (DEV: KILL).",
-    "12": "Release bundle + verifier, \u00a738 classes (mutation, load, golden baselines, smoke cap), CI, container recipe, env lock.",
+    "12": "Release bundle + verifier, §38 classes (mutation, load, golden baselines, smoke cap), CI, container recipe, env lock.",
     "13": "SAT baseline arm, e2e walkthrough, requirements map, final matrix.",
     "14": "R-01 shared receipt semantics; R-02 effective levels and bundle re-derivation; R-03 certificate custody + checker-only replay; three internal red-team rounds (11, 12, 9 findings; 4, 2, 1 critical) all closed with regressions; only replayable evidence licenses levels; custodian checks requests against the frozen campaign export; W01 ledger (343 rows); undeclared skips fail the matrix.",
     "14R1": "External review F-01 repaired: requested vs established wording; report.md derived per claim; free prose at floor; B14-OPEN-5 closed.",
@@ -1306,6 +1306,29 @@
           "bc7e424"
         ],
         "result": "Setup (preregistered, amended before running): improving the improver. Queued"
+      },
+      "B20_R129": {
+        "commits": [
+          "eb60843",
+          "166d1f1"
+        ],
+        "result": "DEV, preregistered at eb60843, run from a clean worktree of 166d1f1 in B20_R127's slice pause: ADAPTIVE_SCIENTIST: experiments needed 4.49 (decfall, chosen on validation) against random 6.81, p 1.2e-27; T2 (4 vs random 8) NOT_SHOWN (needs 5), HALF_SUFFICES on transfer; inv1 (invented) beats eig (4.34 vs 4.98), ties decfall; adapting helps (0.70); theory model F1 above the calibrated one, which is better calibrated; information gain uncorrelated with F1 gain"
+      },
+      "B20_R130": {
+        "commits": [
+          "f812701"
+        ],
+        "result": "Setup (preregistered before B20_R129 ran): choice, instrument and interpretation separated. Queued after B20_R127"
+      },
+      "B20_R131": {
+        "commits": [],
+        "result": "Design drafted: the cascade on a real case (dormant B20_R129 rules against B20_R130's global interpretation). To preregister before B20_R130 runs"
+      },
+      "B20_R133": {
+        "commits": [
+          "e8bc181"
+        ],
+        "result": "Setup (preregistered): the Problem Compiler against the specialists. Queued"
       }
     },
     "open_after_b20_r5": [
