@@ -95,29 +95,100 @@ def tables(D, b, symmetric=True):
             yield Encoding(D, b, order)
 
 
+def factorize(enc, pred, r, max_size=3):
+    """Discover a conjunction of small relations equal to the lifted relation on valid codes (an operator: relation
+    factorisation). Projections of the members onto bit subsets of size 1..max_size that exclude some valid
+    non-member are candidate factors; a greedy cover keeps few of them. Returns (pieces, uniform) with pieces =
+    [(bit positions, Partial relation on them)] and uniform True when every valid non-member violates exactly one
+    piece (a sum of uniform piece gadgets then counts violated constraints); None if no exact factorisation."""
+    b, n = enc.b, r * enc.b
+
+    def vals(z):
+        return [enc.decode(z[i * b:(i + 1) * b]) for i in range(r)]
+    care = [z for z in product((0, 1), repeat=n) if all(v is not None for v in vals(z))]
+    mem = [z for z in care if pred(tuple(vals(z)))]
+    non = [z for z in care if not pred(tuple(vals(z)))]
+    if not non:
+        return [], True
+    cands = []
+    for size in range(1, max_size + 1):
+        for S in combinations(range(n), size):
+            allowed = {tuple(z[i] for i in S) for z in mem}
+            seen = {tuple(z[i] for i in S) for z in care}
+            excl = frozenset(k for k, z in enumerate(non) if tuple(z[i] for i in S) not in allowed)
+            if excl:
+                cands.append((S, allowed, seen, excl))
+    left, cover = set(range(len(non))), []
+    while left:
+        best = max(cands, key=lambda c: (len(c[3] & left), -len(c[0])), default=None)
+        if best is None or not best[3] & left:
+            return None
+        cover.append(best)
+        left -= best[3]
+    pieces = []
+    for S, allowed, seen, _ in cover:
+        k = len(S)
+        from .relations import index as _ix
+        table = sum(1 << _ix(p) for p in allowed)
+        care_t = sum(1 << _ix(p) for p in seen)
+        pieces.append((list(S), Partial(k, table, care_t) if care_t != (1 << (1 << k)) - 1 else Relation(k, table)))
+    uniform = all(sum(not p[1].contains([z[i] for i in p[0]]) for p in pieces) == 1 for z in non)
+    return pieces, uniform
+
+
+def _gadget_for(rel, uniform, lib, synth, why):
+    g = LB.lookup(lib, rel, uniform)
+    if g is None:
+        g, rep = synth(rel, uniform)
+        if g is None:
+            return None, lib
+        lib = LB.register(lib, rel, g, {'synthesizer': rep['synthesizer'], 'tried': rep.get('tried'), 'for': why})
+    return g, lib
+
+
 def cost(enc, value_relations, counts, n_vars, lib, synth):
     """What the problem pays with this encoding: (total ancillas, total non-zero coefficients, the library with every
-    needed gadget, details); None if some needed relation has no gadget within the synthesiser's limits."""
-    total_anc, total_nz, details = 0, 0, {}
-    need = []
+    needed gadget, the plan); None if some needed relation has no gadget within the synthesiser's limits. For each
+    value relation the plan takes the cheaper of the whole lifted relation (when its arity allows) and an exact
+    factorisation into small relations (`factorize`), by (ancillas, non-zero coefficients)."""
+    total_anc, total_nz, plan = 0, 0, {}
     v = enc.validity()
     if v is not None:
-        need.append(('validity', v, n_vars, False))         # hard: exact suffices
-    for name, (pred, r) in value_relations.items():
-        need.append((name, enc.lift(pred, r), counts[name], True))
-    for name, rel, count, uniform in need:
-        g = LB.lookup(lib, rel, uniform)
+        g, lib = _gadget_for(v, False, lib, synth, f'encoding {enc.to_json()} validity')
         if g is None:
-            g, rep = synth(rel, uniform)
-            if g is None:
-                return None
-            lib = LB.register(lib, rel, g, {'synthesizer': rep['synthesizer'], 'tried': rep.get('tried'),
-                                            'for': f'encoding {enc.to_json()} relation {name}'})
+            return None
         nz, _ = g.size()
-        total_anc += count * g.m
-        total_nz += count * nz
-        details[name] = {'relation': rel.id(), 'ancillas': g.m, 'nonzero': nz, 'count': count}
-    return total_anc, total_nz, lib, details
+        total_anc += n_vars * g.m
+        total_nz += n_vars * nz
+        plan['validity'] = {'form': 'whole', 'pieces': [{'bits': list(range(enc.b)), 'relation': v.to_json()}],
+                            'ancillas': g.m, 'nonzero': nz, 'count': n_vars}
+    for name, (pred, r) in value_relations.items():
+        options = []
+        if r * enc.b <= GD.MAX_VARS and r * enc.b <= 6:
+            rel = enc.lift(pred, r)
+            g, lib = _gadget_for(rel, True, lib, synth, f'encoding {enc.to_json()} relation {name}')
+            if g is not None:
+                options.append((g.m, g.size()[0], 'whole', [{'bits': list(range(r * enc.b)), 'relation': rel.to_json()}]))
+        fac = factorize(enc, pred, r) if r * enc.b <= 12 else None
+        if fac is not None and fac[1]:
+            pieces, anc, nz, ok = [], 0, 0, True
+            for bits, prel in fac[0]:
+                g, lib = _gadget_for(prel, True, lib, synth, f'encoding {enc.to_json()} relation {name} factor')
+                if g is None:
+                    ok = False
+                    break
+                anc += g.m
+                nz += g.size()[0]
+                pieces.append({'bits': bits, 'relation': prel.to_json()})
+            if ok:
+                options.append((anc, nz, 'factors', pieces))
+        if not options:
+            return None
+        anc, nz, form, pieces = min(options, key=lambda o: (o[0], o[1], o[2]))
+        total_anc += counts[name] * anc
+        total_nz += counts[name] * nz
+        plan[name] = {'form': form, 'pieces': pieces, 'ancillas': anc, 'nonzero': nz, 'count': counts[name]}
+    return total_anc, total_nz, lib, plan
 
 
 def search(D, value_relations, counts, n_vars, b_range, lib=None, synth=None, limit=None):
@@ -150,25 +221,30 @@ def search(D, value_relations, counts, n_vars, b_range, lib=None, synth=None, li
 
 # ------------------------------------------------------------------ finite-domain problems through an encoding
 
-def compile_fd(problem, enc, value_relations):
+def compile_fd(problem, enc, value_relations, plan=None, validity_weight=None):
     """A finite-domain problem {'n', 'D', 'constraints': [{'name', 'vars': [...], 'weight'}]} (the names index
     value_relations: name -> (predicate on a tuple of values, arity)) as a binary constraint problem for `compile`:
-    variable v's bits are v * b .. v * b + b - 1; a validity constraint per variable when the code leaves patterns
-    unused (weight W_valid = 1 + the total constraint weight, so no assignment buys a constraint with an invalid code).
-    """
+    variable v's bits are v * b .. v * b + b - 1. Each constraint becomes its plan's pieces (the whole lifted relation,
+    or its factors), each with the constraint's weight. A validity constraint per variable when the code leaves
+    patterns unused, marked hard, of weight `validity_weight` (default 1 + the total constraint weight, so no
+    assignment buys constraints with an invalid code: exact)."""
     b = enc.b
     cons = []
     total = sum(c.get('weight', 1) for c in problem['constraints'])
+    W = 1 + total if validity_weight is None else validity_weight
     v = enc.validity()
     if v is not None:
         for x in range(problem['n']):
-            cons.append({'relation': v.to_json(), 'vars': list(range(x * b, x * b + b)), 'weight': 1 + total,
-                         'hard': True})
+            cons.append({'relation': v.to_json(), 'vars': list(range(x * b, x * b + b)), 'weight': W, 'hard': True})
     for c in problem['constraints']:
         pred, r = value_relations[c['name']]
-        rel = enc.lift(pred, r)
         bits = [x * b + j for x in c['vars'] for j in range(b)]
-        cons.append({'relation': rel.to_json(), 'vars': bits, 'weight': c.get('weight', 1)})
+        if plan is None or c['name'] not in plan:
+            cons.append({'relation': enc.lift(pred, r).to_json(), 'vars': bits, 'weight': c.get('weight', 1)})
+            continue
+        for piece in plan[c['name']]['pieces']:
+            cons.append({'relation': piece['relation'], 'vars': [bits[i] for i in piece['bits']],
+                         'weight': c.get('weight', 1)})
     return {'n': problem['n'] * b, 'constraints': cons, 'objective': None}
 
 
@@ -187,5 +263,5 @@ def verify_fd(problem, values, value_relations):
     return viol
 
 
-__all__ = ['Encoding', 'one_hot', 'binary', 'tables', 'cost', 'search', 'compile_fd', 'decode_fd', 'verify_fd',
+__all__ = ['Encoding', 'one_hot', 'binary', 'tables', 'factorize', 'cost', 'search', 'compile_fd', 'decode_fd', 'verify_fd',
            'Relation']

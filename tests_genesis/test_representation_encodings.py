@@ -72,6 +72,31 @@ class Encodings(unittest.TestCase):
                 self.assertEqual(v, direct, enc)
                 self.assertEqual(E.verify_fd(fd, E.decode_fd(C.decode(z, info), enc, n), NEQ), v)
 
+    def test_factorisation_discovers_the_textbook_decomposition(self):
+        pieces, uniform = E.factorize(E.one_hot(4), NEQ['neq'][0], 2)
+        self.assertTrue(uniform)
+        self.assertEqual(sorted(sorted(p[0]) for p in pieces), [[c, 4 + c] for c in range(4)])
+        for bits, rel in pieces:                                     # each: not both of colour c
+            self.assertFalse(rel.contains([1, 1]))
+            self.assertTrue(rel.contains([0, 1]) and rel.contains([1, 0]) and rel.contains([0, 0]))
+        self.assertIsNone(E.factorize(E.binary(4), NEQ['neq'][0], 2))
+
+    def test_plans_choose_whole_or_factors_and_stay_exact(self):
+        rng = random.Random(23)
+        for enc in (E.one_hot(4), E.binary(4), E.one_hot(3)):
+            anc, nz, lib, plan = E.cost(enc, NEQ, {'neq': 1}, 1, LB.EMPTY, synth)
+            self.assertEqual(plan['neq']['form'], 'whole' if enc.b == 2 else 'factors', enc)
+            for _ in range(3):
+                n = 3
+                edges = [(0, 1), (1, 2), (0, 2)][:rng.randint(2, 3)]
+                fd = {'n': n, 'D': enc.D, 'constraints': [{'name': 'neq', 'vars': list(e), 'weight': 1}
+                                                          for e in edges]}
+                bqp, info = C.compile(E.compile_fd(fd, enc, NEQ, plan), lib, 'max_csp')
+                v, z = C.brute_force(bqp)
+                direct = min(E.verify_fd(fd, list(col), NEQ) for col in product(range(enc.D), repeat=n))
+                self.assertEqual(v, direct, enc)
+                self.assertEqual(E.verify_fd(fd, E.decode_fd(C.decode(z, info), enc, n), NEQ), v)
+
     def test_search(self):
         best, lib, scored = E.search(4, NEQ, {'neq': 10}, 5, [2], synth=synth)
         self.assertTrue(best['feasible'])
