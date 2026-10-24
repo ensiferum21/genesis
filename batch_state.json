@@ -1256,8 +1256,16 @@
         "result": "DEV, preregistered, run at 3a6fee5: NOT_SHOWN: Genesis's suspicion-based choice of interventions ties random targets (hidden-cause F1 0.17 against 0.19 at budget 2); oracle targets 0.29 and 0.47; post hoc, a weak suspicion signal and a rule that reads ancestry as direct causation"
       },
       "B20_R121": {
-        "commits": [],
+        "commits": [
+          "120daef"
+        ],
         "result": "Engineering: the active procedure, version 2 (src/genesis/causal/active2.py); setup of B20_R122 (preregistered)"
+      },
+      "B20_R122": {
+        "commits": [
+          "120daef"
+        ],
+        "result": "DEV, preregistered, run at 120daef: HIDDEN_CAUSES_MARKED (hidden-cause F1 0.47 against FCI's 0.21); experiments add directed F1 (+0.39) but not hidden-cause F1 over the observational flag; Genesis's choice of experiments ties random at budgets 2 and 4"
       }
     },
     "open_after_b20_r5": [

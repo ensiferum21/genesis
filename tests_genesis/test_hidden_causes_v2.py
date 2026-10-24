@@ -1,5 +1,6 @@
 """B20_R122: the repaired procedure on fresh instances (design): fresh seed, B20_R120's settings, the arms and their
-specification, the three tests and the verdict, the validity checks, and the registered output."""
+specification, the three tests and the verdict, the validity checks, and the registered output; the record."""
+import json
 from pathlib import Path
 import re
 import sys
@@ -52,6 +53,30 @@ class Design(unittest.TestCase):
     def test_refuses_another_output(self):
         with self.assertRaises(SystemExit):
             M.main([str(ROOT / 'evidence' / 'elsewhere')])
+
+
+class RecordB20R122(unittest.TestCase):
+    """B20_R122's record: every answer re-scores against the regenerated truth; the tests and the verdict recompute."""
+
+    def test_recomputes(self):
+        from genesis.causal import admg as A
+        from genesis.causal import sem as S
+        ev = ROOT / 'evidence' / 'hidden_causes_v2_b20r122'
+        s = json.loads((ev / 'summary.json').read_text())
+        rows = [json.loads(l) for l in (ev / 'runs.jsonl').read_text().splitlines() if l.strip()]
+        self.assertEqual(len(rows), M.N_SEEDS * len(M.ARMS))
+        truths = {}
+        for r in rows:
+            if r['seed'] not in truths:
+                truths[r['seed']] = S.planted(r['seed'], M.P, M.H, M.DENSITY, M.NOISE, M.K)
+            self.assertEqual(json.loads(json.dumps(A.score(truths[r['seed']], r['answer']))), r['scores'])
+        self.assertTrue(M.checks(rows) and s['valid'])
+        a = json.loads(json.dumps(M.analyse(rows)))
+        for k in ('means', 'test1', 'test2', 'test3', 'verdict'):
+            self.assertEqual(a[k], s[k], k)
+        self.assertEqual((a['verdict'], a['test2']['bidirected']['label'], a['test2']['directed']['label'],
+                          a['test3']['m2']['label'], a['test3']['m4']['label']),
+                         ('HIDDEN_CAUSES_MARKED', 'NO_DIFFERENCE', 'EXPERIMENTS_ADD', 'NO_DIFFERENCE', 'NO_DIFFERENCE'))
 
 
 if __name__ == '__main__':

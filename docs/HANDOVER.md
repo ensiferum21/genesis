@@ -173,6 +173,8 @@ needs people: a reviewer, a statistician, an independent custodian on its own ma
 | B20_R114 (checkpoint) | `GENESIS_COMPLETION_CHECKPOINT_B20_R118` (B20_R74-R118): release matrix 1,948 tests, all OK; restore-verified; archived in two parts |
 | B20_R119 (engineering) | FCI as the hidden-variable baseline, and Genesis's active procedure proposing the interventions that resolve hidden causes; setup of B20_R120 |
 | B20_R120 | Can Genesis propose the experiments that resolve hidden causes? **NOT_SHOWN.** Its suspicion-based choice of interventions is no better than random (hidden-cause F1 0.17 against 0.19 at budget 2); the oracle's choice shows the headroom (0.29, 0.47 at budget 4). Post hoc: the suspicion signal barely separates confounded pairs, and reading dependence under intervention as a direct cause loses correct marks |
+| B20_R121 (engineering) | The active procedure, version 2: a LiNGAM-residual signal of hidden causes, a rule that tests direct causation under intervention, observational flags |
+| B20_R122 | On fresh instances: **HIDDEN_CAUSES_MARKED** (hidden-cause F1 0.47 against FCI's 0.21; the spurious rate falls from 0.44 to 0.14), mostly from the prior-art observational flag; experiments add direction (directed F1 0.25 to 0.64), not detection; Genesis's choice of experiments still ties random |
 
 ## 6. Next steps, in order
 
@@ -204,8 +206,9 @@ needs people: a reviewer, a statistician, an independent custodian on its own ma
       1,948 tests all OK; restore-verified; archived in two parts);
   19. done: B20_R118 (CONFOUNDING_MISLEADS);
   20. done: B20_R119-R120 (FCI and the active procedure; NOT_SHOWN: no better than random targets);
-  21. next on this track: a suspicion signal that separates confounded pairs and a decision rule that tests direct
-      causation under intervention, preregistered on fresh instances.
+  21. done: B20_R121-R122 (HIDDEN_CAUSES_MARKED; experiments add direction; the choice of experiments ties random);
+  22. next on this track: experiments chosen by expected information gain over the undecided marks
+      (`discovery.active`), judged on directed and hidden-cause F1 together, on fresh instances.
 
 3. **Checkpoint:** the latest is B20_R118 (`469f7f0`; not rehearsed on a second machine). Do not edit the tree while
    the release matrix runs; run timing studies alone.

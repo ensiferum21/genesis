@@ -709,7 +709,7 @@ WORKSTREAMS = {
              'src/genesis/causal/active.py', 'docs/checkpoints/B20_R119_RECORD.md',
              'scripts/b20r120_propose_interventions.py', 'evidence/propose_interventions_b20r120/summary.json',
              'src/genesis/causal/active2.py', 'docs/checkpoints/B20_R121_RECORD.md',
-             'scripts/b20r122_hidden_causes_v2.py'],
+             'scripts/b20r122_hidden_causes_v2.py', 'evidence/hidden_causes_v2_b20r122/summary.json'],
             ['tests_formal/test_discovery.py::ActiveSelection', 'tests_genesis/test_causal_domain.py',
              'tests_genesis/test_causal_calibration.py', 'tests_genesis/test_causal_active.py',
              'tests_genesis/test_propose_interventions.py', 'tests_genesis/test_causal_active2.py',

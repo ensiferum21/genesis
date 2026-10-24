@@ -103,6 +103,12 @@ hidden-cause F1 0.47 against FCI's 0.19 at 4 interventions. Post hoc, the observ
 confounded pairs, and the decision rule reads ancestral dependence as direct causation. Next: fix both, on fresh
 instances (`evidence/propose_interventions_b20r120/`).
 
+**B20_R121-R122 (24 Oct 2026): HIDDEN_CAUSES_MARKED.** With a LiNGAM-residual signal (Hoyer et al. 2008; RCD) and a
+rule that tests direct causation under intervention, Genesis marks hidden causes on fresh instances with F1 0.47
+against FCI's 0.21; the share of confounded pairs reported as causal falls from 0.44 to 0.14. Experiments add
+direction (directed F1 0.25 to 0.64), not detection, and Genesis's choice of experiments still ties random: the
+second half of the alert (proposing the experiment) remains NOT_SHOWN (`evidence/hidden_causes_v2_b20r122/`).
+
 ## Overall
 
 The Explorer–Judge–Consolidator shape stays. The urgent part is item 1: it decides whether any future claim of
