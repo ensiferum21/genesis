@@ -11,8 +11,8 @@ Each must be preserved exactly with its lineage and checked for correctness. Eac
 it makes possible.
 
 **What is claimed.** Nothing yet. Everything below is engineering on fixtures (`tests_genesis/test_representation_*`).
-The first preregistered study comes after the queued gates (B20_R130, R131, R132, R133, R128; `research_queue.json`,
-direction `repr-language-study`).
+The first study, B20_R135, is preregistered (`7040a3c`). It runs after the queued gates (B20_R130, R131, R132, R133,
+R128; `research_queue.json`, direction `repr-language-study`).
 
 ## The language (package `src/genesis/representation/`, research plane, LLM-free)
 
@@ -45,6 +45,18 @@ direction `repr-language-study`).
 - For 4 colours, "different 2-bit codes" has a uniform gadget with one ancilla and 13 terms.
 - Whether these invented representations make the engine better is an empirical question for the study below.
 
+**Added since (fixtures):**
+- **Relation factorisation**, an operator Genesis applies to its own relations (`encodings.factorize`). It discovers
+  a conjunction of small relations equal to a lifted relation on valid codes, and reports whether it is uniform.
+  - For one-hot colours it rediscovers the textbook decomposition (not both of colour c) with no hand-written rule.
+  - This is what lets one-hot encodings of four or more values (lifted arity above six) be represented.
+- **Synthesis as a process** (`representation/processes.py`). The synthesiser is a level-1 process.
+  - Levels 2 and 3 improve it, and its improver, under one fuel budget.
+  - A descendant is admitted only by a promotion gate: strictly more verified gadgets on unfamiliar relations at
+    matched fuel (directive item 11).
+- **The first study, B20_R135**, is preregistered (`7040a3c`), before B20_R133's colouring results were seen. It
+  runs after the gates.
+
 ## Not yet built (the next stages, in order)
 
 1. **Relation discovery from problem families.** Read a family's checker, extract the relations its constraints use
@@ -54,9 +66,8 @@ direction `repr-language-study`).
 2. **Operators that make operators.** Degree reduction of higher-order terms as synthesised gadgets (products of
    three or more variables), and composition rules (the gadget of a conjunction from its parts) checked against
    direct synthesis.
-3. **Representations as processes.** Encodings, gadgets and the search that finds them become `autonomy/process.py`
-   processes. The level above improves the synthesisers, measured as directive item 11 says: verified useful
-   discoveries on unfamiliar tasks at matched total compute.
+3. **Representations as processes, beyond the synthesiser.** Encodings and the encoding search become processes too.
+   The gate is then run on real families, not only on relations.
 4. **Sharing with the genome.** One registry shared with the acquisition language (`science/library.py`) and the mcx2
    programs (the plan's Ω3).
 
