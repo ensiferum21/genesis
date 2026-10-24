@@ -22,6 +22,7 @@ describes that zip's own contents (see "Package contents").
 | Open items | `docs/BLOCKING_DEFECTS.md` (append-only rows per update); the requirements ledger is `docs/REQUIREMENTS_LEDGER.md` (regenerate with `scripts/build_ledger.py`) |
 | Decisions needed | `docs/checkpoints/B20_R57_REVIEW_BRIEF.md` (nine decisions, ordered by leverage) and `NEXT_ACTIONS.md` |
 | Roadmap | the reviewer roadmap "Genesis: what remains to reach the grand vision" (gates GV0–GV8, work packages W01–W27, experiments E1–E7) |
+| **The plan from here** | `docs/GENESIS_OMEGA_PLAN.md` (24 Oct 2026): Genesis Ω, the self-improving verifiable problem solver; read it first |
 
 ## 2. Resume
 
@@ -210,11 +211,16 @@ needs people: a reviewer, a statistician, an independent custodian on its own ma
   19. done: B20_R118 (CONFOUNDING_MISLEADS);
   20. done: B20_R119-R120 (FCI and the active procedure; NOT_SHOWN: no better than random targets);
   21. done: B20_R121-R122 (HIDDEN_CAUSES_MARKED; experiments add direction; the choice of experiments ties random);
-  22. next on this track: experiments chosen by expected information gain over the undecided marks (a new model;
-      `discovery.active` does this for method selection only), judged on directed and hidden-cause F1 together.
+  22. built and preregistered: B20_R129, the adaptive experimental scientist (`eb60843`; Genesis Ω P1): experiments
+      chosen one at a time by what each is expected to reveal, under a calibrated model of the instrument, with
+      Genesis's own invented acquisition rules judged against the established ones;
   23. done: B20_R123 (5 of 14 reached; 45 of 54 matched; no record); done: B20_R124 (EXPERIMENTS_NEEDED);
-  24. B20_R127 (the system's own engines against human designs, finally on Gset; running), then B20_R128 (the
-      system improving its own inventor).
+  24. B20_R127 (the system's own engines against human designs, finally on Gset; running; start slice 2 with
+      `/home/claude/chain_n.sh` when slice 1 pauses), then B20_R129 (about 30 min), then B20_R128 (the system
+      improving its own inventor; 2-3 slices).
+  25. after them: the Genesis Ω stages in `docs/GENESIS_OMEGA_PLAN.md` §5-§6 (Ω0 analysis of R127/R128; B20_R130
+      invented instruments; B20_R131 the Difficulty Cartographer; the genome and typed language; the ecology;
+      evolvability selection; the decisive A/B/C experiment).
 
 3. **Checkpoint:** the latest is B20_R118 (`469f7f0`; not rehearsed on a second machine). Do not edit the tree while
    the release matrix runs; run timing studies alone.

@@ -2,6 +2,9 @@
 
 ## Where things stand
 
+- **The plan from here is `docs/GENESIS_OMEGA_PLAN.md`** (24 Oct 2026): the goal stated so it can be tested, the rules
+  no level may break, where Genesis stands, the engines mapped to code with honest status, stages Ω0–Ω9 each with
+  its study and success criterion, and the batch queue. A successor starts there.
 - **Branch:** `continuation-b20-rx` (GitHub `ensiferum21/genesis`). It is the canonical B20_R11 line (`continuation-b20-repairs`, `36954d6`), with the recovery-branch work ported onto it, plus B20_R12 and B20_R15–R45. B20_R25–R28 were built from the B20_R24 checkpoint's history bundle while GitHub was not linked; GitHub's branch is an ancestor.
 - **Side branch:** `side-b21-equational` (`710d26d`) keeps work done on plain B20 in parallel with this line (equational generations W21/E4, definitional primitives, fault routes). It is not canonical. Only its Lean-replay hint repair was ported (B20_R25).
 - **Checkpoints:**
@@ -38,6 +41,8 @@
 | B20_R123 | **45 of 54 Gset instances matched, none beaten (DEV).** A G38 cut above the table turned out to be a known 2013 max-bisection value; the table now holds those bounds |
 | B20_R124 | **With Gaussian data, only experiments find hidden causes (DEV).** As theory predicts, the observational signal goes blind; well-chosen experiments would halve the number needed, and Genesis does not yet choose them well |
 | B20_R125-R126 | **An engine the system can rewrite, and a process it can improve (engineering).** The max-cut engine runs programs over physics operators; the inventor and the process level are built and tested |
+| B20_R127-R128 | **Does the system invent better engines than its builder, and improve its own inventor? (DEV, preregistered)** B20_R127 running (24 Oct 2026, from 12:43); B20_R128 after it |
+| B20_R129 | **The adaptive experimental scientist (Genesis Ω P1; preregistered `eb60843`).** A domain-independent decision layer (`science/design.py`), the causal adapter (`causal/active3.py`) and Genesis's own acquisition language (`science/acquire.py`), tested on 200 fresh Gaussian worlds and a shifted family: experiments needed against random, and 4 against random's 8 |
 | B20_R66 | **E1d's n60 lead replicates and holds through 120x HiGHS budget (DEV).** On 20 fresh n60 planted hosts the 0.5 s candidate leads HiGHS by +16.65 [11.0, 22.6] at 32 s (B20_R64: +17.6) and by +2.00 [1.35, 2.65] at 60 s, `milp-highs-v1`'s ceiling. The lead is closing fast (HiGHS's gap to the bound 18.3 -> 3.65), so the n60 crossover likely lies just above 120x; the candidate is optimal on only 4 of 10 certified hosts there. Outside the calibrated settings: a pointer, no claim |
 | B20_R67 | **Registry v2 kind map moved out of the core; a max-cut domain baseline added.** Adding a v2 kind used to change every v2 descriptor id (the map was in the hashed core); now it does not, and a kind's identity is bound to the module dispatched for it. The E1d package's `milp_highs_4x`/`milp_highs_tm` were re-identified once (what they run is unchanged; mapping in `handoff/e1d/package_index.json`). New kind `maxcut-tabu-v1`: tabu search over one-vertex flips with the candidate's own triangle-free completion |
 | B20_R68 | **E1d's candidate is not beyond a standard max-cut heuristic (DEV).** Tabu search at the same 0.5 s ties it on the calibrated settings (+0.03 [0.00, 0.10]) and beats HiGHS at 2 s by the same +8.6; on n60 hosts tabu search is ahead (−1.15 [−1.65, −0.70], 13 of 20 hosts). The advantage over HiGHS is a potential speedup against one chosen baseline: the max-cut reduction plus local search. The GV4 fallback's Part A and the review brief now say so; whether domain heuristics belong in the strong-baseline set is item 1 of the brief |
