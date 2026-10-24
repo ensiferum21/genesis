@@ -96,8 +96,13 @@ def sha256(path):
     return hashlib.sha256(Path(path).read_bytes()).hexdigest()
 
 
-def preregister(root, script, message):
-    """Commit the script (and its proposal) and append a line to docs/PREREGISTRATIONS.md; returns the SHA-256."""
+IDENTITY = ('Genesis research loop', 'genesis-research-loop@localhost')
+
+
+def preregister(root, script, message, identity=IDENTITY, trailers=()):
+    """Commit the script (and its proposal) and append a line to docs/PREREGISTRATIONS.md; returns the SHA-256.
+    The commit is the research loop's own (IDENTITY); an operator who runs the loop may add attribution `trailers`
+    (Genesis Ω contract: no assistant identity is part of the runtime; docs/OMEGA_NO_LLM_AUDIT.md)."""
     root = Path(root)
     digest = sha256(script)
     ledger = root / 'docs' / 'PREREGISTRATIONS.md'
@@ -112,10 +117,9 @@ def preregister(root, script, message):
     if prop.exists():
         files.append(str(prop.resolve().relative_to(root.resolve())))
     subprocess.run(['git', '-C', str(root), 'add', *files], check=True)
-    subprocess.run(['git', '-C', str(root), '-c', 'user.name=Claude', '-c', 'user.email=noreply@anthropic.com',
-                    'commit', '-q', '-m', f'{message}\n\n  {rel}  sha256 {digest}\n\n'
-                    'Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>\n'
-                    'Claude-Session: https://claude.ai/code/session_01FE1KQN96fx3NqLs2hyu3Ka'], check=True)
+    body = f'{message}\n\n  {rel}  sha256 {digest}\n' + (('\n' + '\n'.join(trailers)) if trailers else '')
+    subprocess.run(['git', '-C', str(root), '-c', f'user.name={identity[0]}', '-c', f'user.email={identity[1]}',
+                    'commit', '-q', '-m', body], check=True)
     return digest
 
 
