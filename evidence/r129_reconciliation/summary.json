@@ -1,0 +1,239 @@
+{
+ "agrees_with_r129_summary": true,
+ "exploratory": [
+  {
+   "a": "inv1",
+   "b": "decfall",
+   "ci95": [
+    -0.41,
+    0.34
+   ],
+   "improvement_of_a": -0.04,
+   "label": "NO_DIFFERENCE",
+   "losses": 39,
+   "mean_a": 6.58,
+   "mean_b": 6.54,
+   "measure": "needed",
+   "nonzero": 72,
+   "p_holm": 0.5936242538722396,
+   "p_sign": 0.555997717760971,
+   "p_wilcoxon": 0.5936242538722396,
+   "set": "transfer",
+   "wins": 33,
+   "worlds": 100
+  },
+  {
+   "a": "inv1",
+   "b": "dec",
+   "ci95": [
+    0.405,
+    0.845
+   ],
+   "improvement_of_a": 0.625,
+   "label": "A_BETTER",
+   "losses": 41,
+   "mean_a": 4.34,
+   "mean_b": 4.965,
+   "measure": "needed",
+   "nonzero": 131,
+   "p_holm": 8.070156441209279e-07,
+   "p_sign": 2.2318496164502244e-05,
+   "p_wilcoxon": 1.6140312882418558e-07,
+   "set": "test",
+   "wins": 90,
+   "worlds": 200
+  },
+  {
+   "a": "inv1",
+   "b": "hybrid",
+   "ci95": [
+    0.405,
+    0.845
+   ],
+   "improvement_of_a": 0.62,
+   "label": "A_BETTER",
+   "losses": 43,
+   "mean_a": 4.34,
+   "mean_b": 4.96,
+   "measure": "needed",
+   "nonzero": 135,
+   "p_holm": 1.3897223577002556e-06,
+   "p_sign": 2.9909603590125968e-05,
+   "p_wilcoxon": 3.474305894250639e-07,
+   "set": "test",
+   "wins": 92,
+   "worlds": 200
+  },
+  {
+   "a": "inv1",
+   "b": "static_eig",
+   "ci95": [
+    1.075,
+    1.605
+   ],
+   "improvement_of_a": 1.335,
+   "label": "A_BETTER",
+   "losses": 22,
+   "mean_a": 4.34,
+   "mean_b": 5.675,
+   "measure": "needed",
+   "nonzero": 132,
+   "p_holm": 2.0233557692979507e-15,
+   "p_sign": 2.8607361972411904e-15,
+   "p_wilcoxon": 3.3722596154965847e-16,
+   "set": "test",
+   "wins": 110,
+   "worlds": 200
+  },
+  {
+   "a": "inv1",
+   "b": "degree",
+   "ci95": [
+    1.095,
+    1.615
+   ],
+   "improvement_of_a": 1.35,
+   "label": "A_BETTER",
+   "losses": 20,
+   "mean_a": 4.34,
+   "mean_b": 5.69,
+   "measure": "needed",
+   "nonzero": 135,
+   "p_holm": 8.008911344800332e-16,
+   "p_sign": 2.092527117251818e-17,
+   "p_wilcoxon": 1.144130192114333e-16,
+   "set": "test",
+   "wins": 115,
+   "worlds": 200
+  },
+  {
+   "a": "inv1",
+   "b": "decfall",
+   "ci95": [
+    0.02033333333333333,
+    0.08716666666666667
+   ],
+   "improvement_of_a": 0.05383333333333333,
+   "label": "A_BETTER",
+   "losses": 19,
+   "mean_a": 0.40116666666666667,
+   "mean_b": 0.3473333333333333,
+   "measure": "f1@4",
+   "nonzero": 61,
+   "p_holm": 0.007675339984070514,
+   "p_sign": 0.004444019471066869,
+   "p_wilcoxon": 0.002558446661356838,
+   "set": "test",
+   "wins": 42,
+   "worlds": 200
+  },
+  {
+   "a": "inv1",
+   "b": "decfall",
+   "ci95": [
+    0.0339047619047619,
+    0.12123809523809523
+   ],
+   "improvement_of_a": 0.07733333333333334,
+   "label": "A_BETTER",
+   "losses": 7,
+   "mean_a": 0.36133333333333334,
+   "mean_b": 0.284,
+   "measure": "f1@4",
+   "nonzero": 37,
+   "p_holm": 0.007675339984070514,
+   "p_sign": 0.00019107642583549023,
+   "p_wilcoxon": 0.0027343662574189284,
+   "set": "transfer",
+   "wins": 30,
+   "worlds": 100
+  }
+ ],
+ "findings": [
+  "Genesis's scientist was decfall, chosen on validation by the preregistered rule (4.42 experiments needed against inv1's 4.59); inv1 was second.",
+  "On test (200 worlds) inv1 needed 4.34 and decfall 4.49: a difference of 0.15, p = 0.158 (preregistered secondary): NOT supported.",
+  "inv1 against eig on test: 0.64 fewer experiments, p = 1.7e-07 (preregistered secondary, uncorrected): supported.",
+  "The claim that inv1 beats EVERY established acquisition rests on its means; only eig was tested in advance. The exploratory tests here (Holm) decide dec, hybrid, static_eig and degree.",
+  "inv1 was a random program of the search's initial population, selected on training data; the judge released nothing. It simplifies exactly to max(decall * pf^2) under the features' declared ranges (`interpret`)."
+ ],
+ "preregistered": {
+  "inv1_vs_decfall": {
+   "a": "inv1",
+   "b": "decfall",
+   "ci95": [
+    -0.05,
+    0.35
+   ],
+   "improvement_of_a": 0.15,
+   "losses": 50,
+   "mean_a": 4.34,
+   "mean_b": 4.49,
+   "measure": "needed",
+   "nonzero": 108,
+   "p_sign": 0.5007663934164358,
+   "p_wilcoxon": 0.15752618763319925,
+   "set": "test",
+   "wins": 58,
+   "worlds": 200
+  },
+  "inv1_vs_eig": {
+   "a": "inv1",
+   "b": "eig",
+   "ci95": [
+    0.42,
+    0.865
+   ],
+   "improvement_of_a": 0.64,
+   "losses": 43,
+   "mean_a": 4.34,
+   "mean_b": 4.98,
+   "measure": "needed",
+   "nonzero": 135,
+   "p_sign": 2.9909603590125968e-05,
+   "p_wilcoxon": 1.6564904231038675e-07,
+   "set": "test",
+   "wins": 92,
+   "worlds": 200
+  }
+ },
+ "selection": {
+  "best_invented": "inv1",
+  "best_other": "decfall",
+  "chosen": "decfall",
+  "criterion": "fewest mean experiments needed; ties to the higher mean hidden-cause F1 at 4",
+  "inv1_source": "max (sqrt(sq(decall)) * sq(min(pf, 1.0)))",
+  "ranking": [
+   [
+    "decfall",
+    4.42,
+    0.36933333333333335
+   ],
+   [
+    "inv1",
+    4.59,
+    0.37866666666666665
+   ],
+   [
+    "hybrid",
+    4.96,
+    0.23566666666666666
+   ],
+   [
+    "eig",
+    4.97,
+    0.23766666666666666
+   ],
+   [
+    "dec",
+    4.99,
+    0.23066666666666666
+   ],
+   [
+    "decf",
+    5.05,
+    0.32466666666666666
+   ]
+  ],
+  "set": "validation (100 worlds, seeds from 4000)"
+ }
+}

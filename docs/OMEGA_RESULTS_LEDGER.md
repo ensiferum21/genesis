@@ -19,7 +19,7 @@ Nothing here is an independent or sealed result.
 | B20_R118 | Hidden confounders mislead the established methods (CONFOUNDING_MISLEADS) |
 | B20_R122 | On non-Gaussian data the observational residual flag marks hidden causes: F1 0.47 against FCI's 0.21 |
 | B20_R124 | With Gaussian data only experiments find hidden causes (EXPERIMENTS_NEEDED); the oracle's 4 equal random's 8 |
-| B20_R129 | **ADAPTIVE_SCIENTIST**: Genesis's scientist needs 4.49 experiments against random's 6.81 (p 1e-27). Adapting is worth 0.70. Its own rule `inv1` beats every established acquisition (4.34 against eig's 4.98) and ties the builder's. Four as good as eight holds on the shifted family only. Information gained does not predict accuracy gained |
+| B20_R129 | **ADAPTIVE_SCIENTIST**: Genesis's scientist needs 4.49 experiments against random's 6.81 (p 1e-27). Adapting is worth 0.70. Its own rule `inv1` beats every established acquisition (4.34 against eig's 4.98, preregistered; the others exploratory, Holm) and ties the builder's `decfall` (p 0.16), which Genesis chose on validation (4.42 against 4.59). `inv1` was a random initial program, not released by the judge. Exploratory: `inv1` has the higher F1 after 4 experiments (+0.054 test, +0.077 transfer, Holm p 0.008); reconciliation `evidence/r129_reconciliation/`. Four as good as eight holds on the shifted family only. Information gained does not predict accuracy gained |
 
 ## Failures and negative results (recorded)
 
