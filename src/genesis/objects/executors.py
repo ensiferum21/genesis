@@ -5,6 +5,7 @@ A checker verifies a postcondition independently of the executor that produced t
 name; an object names its executor and its checkers, and `core.run` refuses unknown names.
 
 Seed executors (the existing languages, adapted without changing them, and the first meta-executors):
+  * `graph-sense`: a sense of the graph sense language (`senses.graph`) evaluated on a graph;
   * `expr`: a small, bounded, typed expression language over the inputs (constants, input references,
     arithmetic, comparisons, list aggregates, bounded map and filter): the seed of the sense language (§4.1);
   * `gadget-eval`: a quadratic penalty gadget evaluated on an assignment (minimum over its ancillas);
@@ -195,6 +196,15 @@ def run_improver(defn, inputs, ctx):
             'unfamiliar': {'candidate': yc, 'incumbent': yt}, 'tried': tried}
 
 
+def run_graph_sense(defn, inputs, ctx):
+    from ..senses import graph as SG
+    why = SG.check(defn['tree'])
+    if why:
+        raise ExecutionError(f'not a sense: {why}')
+    ctx['fuel'].take(max(1, SG.size(defn['tree']) // 5))
+    return {defn.get('output', 'value'): SG.evaluate(defn['tree'], inputs['graph'])}
+
+
 def run_improver_yield(defn, inputs, ctx):
     """A measure of an improver: run it on a base object (with the base's measure, training and gate tasks) and
     return the yield of what it returns on a third, final task."""
@@ -212,7 +222,7 @@ def run_improver_yield(defn, inputs, ctx):
     return {'yield': m['outputs']['yield']}
 
 
-EXECUTORS = {'improver-yield': run_improver_yield, 'expr': run_expr, 'gadget-eval': run_gadget_eval, 'gadget-synth': run_gadget_synth,
+EXECUTORS = {'graph-sense': run_graph_sense, 'improver-yield': run_improver_yield, 'expr': run_expr, 'gadget-eval': run_gadget_eval, 'gadget-synth': run_gadget_synth,
              'acquire': run_acquire, 'mcx2': run_mcx2, 'sequence': run_sequence, 'synth-yield': run_synth_yield,
              'improver': run_improver}
 

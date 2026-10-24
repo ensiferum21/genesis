@@ -477,7 +477,7 @@
    "id": "sense-language-build",
    "kind": "build",
    "line": "recursive-invention",
-   "notes": "",
+   "notes": "language and workspace built on fixtures (test_senses); synthesis by search reuses selfimprove/feedback operators; B20_R136 next",
    "outcome": null,
    "output": null,
    "positive": null,
@@ -703,6 +703,12 @@
    "outcome": "built on fixtures (test_research_objects, 9 tests)",
    "positive": true,
    "time": "2026-10-24T12:40:56+00:00"
+  },
+  {
+   "id": "sense-language-build",
+   "kind": "progress",
+   "note": "language and workspace built",
+   "time": "2026-10-24T12:43:54+00:00"
   }
  ],
  "lines": {

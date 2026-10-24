@@ -69,8 +69,8 @@ the thing it lacks is not on any list we give it. Therefore:
 | Instrument invention (search over a language of tests) | Yes, exhaustive over 45 | Yes | B20_R130: the invented instrument ties |
 | Representation invention (gadgets, encodings, factorisation, families from predicates) | Yes (`representation/`) | Yes (fixtures) | B20_R135 preregistered, not run |
 | Capability-gap diagnosis | Hand-designed instruments in a preregistered study | Design tests | B20_R132 preregistered, not run |
-| Senses synthesised by Genesis | **No** (receptors and probes are hand-made) | — | — |
-| Perceptual workspace, synergy discovery, composition operators | **No** | — | — |
+| Senses synthesised by Genesis | **The language is built (24 Oct, 21:00, fixtures)**: `senses/graph.py` (typed vertex, edge and scalar expressions over seed graph primitives, checked, bounded, evaluated with numpy; random senses, mutation, crossover), run as research objects (`graph-sense` executor); the perceptual workspace (`senses/workspace.py`) | Yes (`test_senses`: primitives against networkx) | None yet: B20_R136 |
+| Perceptual workspace, synergy discovery, composition operators | Workspace and sequential/expression composition on fixtures; synergy discovery **no** | Workspace yes | — |
 | Problem-attack strategies as data | **No** (studies choose attacks by hand) | — | — |
 | Improvers as processes at any level, gated on unfamiliar tasks | Yes (`autonomy/process.py`; `representation/processes.py`) | Yes (fixtures) | B20_R128 (level 2 for engines) preregistered, not run |
 | Research workflows as data, compared | Partly (`autonomy/loop.py`, `studygen.py` generate studies of one template) | Yes | B20_R93–R97: research automation, not yet a better improver |
@@ -456,3 +456,4 @@ its growth across generations.
   the vault and the processes (§3); the gap scientist built on `science/design.py`, with diagnosis of the diagnoser
   (§7); the decisive experiments mapped to studies (§15); the order of work with the vertical slice first (§16).
 - 24 Oct 2026, 20:50: Batch R1 built on fixtures: the RO layer (`src/genesis/objects/`; `test_research_objects`).
+- 24 Oct 2026, 21:00: Batch R2 (first part) built on fixtures: the graph sense language and the workspace (`test_senses`).
