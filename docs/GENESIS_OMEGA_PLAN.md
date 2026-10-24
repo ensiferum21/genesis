@@ -127,7 +127,7 @@ Each engine is a computational system, not an agent exchanging text. They connec
 | Engine | Responsibility | Exists today | Status | Next evidence it must produce |
 |---|---|---|---|---|
 | 1. Problem Compiler | Turn a problem into objective, constraints, candidate view and verifier | `domains.py` (`DomainAdapter`, W05; graph hosts, max-cut, Lean statements), `causal/` | PARTIAL: hand-written adapters | A new family admitted from a declarative spec with its verifier, and every existing adapter's tests passing against the compiled one |
-| 2. Difficulty Cartographer | Diagnose why methods fail; choose the cheapest experiment that separates the explanations | `adaptation/receptors.py` (weakness sensors), `autonomy/adversary.py` (hardest hosts), `discovery/obstruction.py` | MISSING as a diagnostic engine | Ω2: diagnosis-directed invention beats undirected invention at matched compute (B20_R131) |
+| 2. Difficulty Cartographer | Diagnose why methods fail; choose the cheapest experiment that separates the explanations | `adaptation/receptors.py` (weakness sensors), `autonomy/adversary.py` (hardest hosts), `discovery/obstruction.py` | MISSING as a diagnostic engine | Ω2: diagnosis-directed invention beats undirected invention at matched compute (B20_R132) |
 | 3. Representation Inventor | New encodings, abstractions, worlds, with checked maps back | `invention/representations.py` (W10), `invention/worlds.py` (W12), renormalisation in `mcx`/`mcx2` | PARTIAL | Ω7: an invented transformation improves held-out performance and maps back exactly |
 | 4. Algorithm Inventor | Executable new procedures | `autonomy/selfimprove.py` (mcx2 programs: mutation, crossover, MAP-Elites, macros), `invention/solver_programs*.py` | PARTIAL; NOT_DEMONSTRATED so far | B20_R127; then Ω3's typed language |
 | 5. Experimental Scientist | Beliefs over explanations; experiments chosen by expected value; adaptive | **`science/design.py`** (domain-independent), `causal/active3.py`, `science/acquire.py`; earlier `discovery/active.py` (method selection only) | BUILT, preregistered (B20_R129) | B20_R129's verdict |
@@ -187,12 +187,27 @@ proposal's priorities, and the Ω-numbers the organism stages. They are merged h
   - the model: calibration, theory against calibrated;
   - the objective: EIG against decision improvement;
   - the search: invented against established.
-- **Next, whatever the verdict.**
-  - **B20_R130, invented instruments.** The ceiling (F1 with all experiments, about 0.51 in dev) is set by the
-    instrument (`active2.classify`) and FCI's adjacencies, not by the choice. Genesis searches for better tests: for
-    example, conditional independence under intervention, pair interventions, and comparing observational with
-    interventional regressions. The test: does an invented instrument raise the ceiling on fresh worlds?
-  - Non-myopic planning (rollouts over the factored model) as an established baseline for any invented rule.
+- **What the development looks after R129's registration found (24 Oct, 13:50–14:15; `docs/checkpoints` will
+  carry them with B20_R130's record).** The limit is the **interpretation**, not the choice or the instrument:
+  - with every experiment, R129's per-pair framework reaches a hidden-cause F1 of 0.51 (directed 0.92);
+  - joint re-analysis of all regimes reaches 0.59;
+  - the established estimator for linear models with latent confounders (Hyttinen, Eberhardt and Hoyer 2012)
+    reaches 0.71–0.77 (directed about 1.00);
+  - a builder-written multi-regime maximum-likelihood estimator reaches 0.69 at full budget, and at 4 / 8
+    experiments 0.33 / 0.65 with the scientist's choices, against 0.16 / 0.49 with random ones;
+  - richer per-pair instruments do not move the ceiling (0.49–0.53);
+  - a third of hidden causes are never asked about, because FCI separates them on near-unfaithful partial
+    correlations (median 0.03). That is a power limit, not a defect.
+- **B20_R130 (preregistered `f812701`, before R129 ran)** separates the three capabilities:
+  - CHOICE: random, degree, R129's scientist, oracle;
+  - INSTRUMENT: R129's test against the best of a 45-member instrument language;
+  - INTERPRETATION: per-pair, joint re-analysis, multi-regime ML, and LLC at full budget.
+
+  Holm runs over three primary tests, and misses are attributed to identifiability by intervened endpoints.
+- **Next on this track: B20_R131, co-invention.** Genesis searches its acquisition language for the choice that serves
+  the global interpretation, and an interpretation program over pair features (Ω-correlation, B, the per-pair
+  posterior, joint marks), both under the judge, tested on fresh worlds. Non-myopic planning (rollouts over the
+  factored model) stays the established baseline for any invented rule.
 
 ### Ω2 (P2): the Difficulty Cartographer, with experiment choice from Ω1
 - **Why.** Invention so far has been blind. It should be aimed at the obstacle that is actually present.
@@ -214,7 +229,7 @@ proposal's priorities, and the Ω-numbers the organism stages. They are merged h
 
   The Cartographer picks the cheapest discriminating experiment (Ω1's acquisitions, now with unequal costs). Its
   output is an **invention brief**: the diagnosed obstacle plus the operator family to search (feeding `selfimprove`).
-- **Study (B20_R131).** On fresh graph families with **planted** obstacles of known type:
+- **Study (B20_R132).** On fresh graph families with **planted** obstacles of known type:
   1. Does the Cartographer identify the planted obstacle, scored by accuracy against the plant, at a fixed
      diagnostic budget, against random diagnostics?
   2. Does diagnosis-directed invention beat undirected invention (B20_R127's inventor) at matched total compute,
@@ -346,15 +361,16 @@ Each step is verified and independently replicated. None of this has happened ye
 | # | Batch | What | State |
 |---|---|---|---|
 | 1 | B20_R127 | The system's own engines against the builder's hybrid; held-out graphs; Gset at 10 s and 60 s. **Slice 2 must be started when slice 1 pauses** (`END r127 rc=3` in `/home/claude/chain.log`; `/home/claude/chain_n.sh`) | running (slice 1 since 12:43) |
-| 2 | B20_R129 | The adaptive scientist (about 30 min) | preregistered `eb60843`; run between R127 and R128 |
-| 3 | B20_R128 | Improving the inventor (2–3 slices of 6,600 s; resumable) | preregistered |
-| 4 | Ω0 | Analyse R127/R128 mechanisms (no new study) | — |
-| 5 | B20_R130 | Invented instruments for causal experiments (raise the ceiling) | to design after R129 |
-| 6 | B20_R131 | The Difficulty Cartographer on planted obstacles; diagnosis-directed invention | to design (Ω2) |
-| 7 | — | Ledger: `scripts/build_ledger.py` gains R123–R129's scripts, modules, tests and evidence; regenerate; `test_ledger`; TEST_MATRIX rows for `mcx2`, `selfimprove`, `science` | owed |
-| 8 | — | Checkpoint (the last one is B20_R118) with the release matrix | owed after R129 |
-| 9 | Ω3 | The genome registry and typed language; first study on max-cut, then MaxSAT unchanged | to design |
-| 10 | Ω4–Ω9 | As in §5 | — |
+| 2 | B20_R129 | The adaptive scientist (about 30 min) | preregistered `eb60843`; runs in R127's slice pause (14:33) |
+| 3 | B20_R130 | Choice, instrument and interpretation separated (about 1 h; reads R129's `choice.json`) | preregistered `f812701`; after R127 |
+| 4 | B20_R128 | Improving the inventor (2–3 slices of 6,600 s; resumable) | preregistered |
+| 5 | Ω0 | Analyse R127/R128 mechanisms (no new study) | — |
+| 6 | B20_R131 | Co-invention of the choice and the interpretation for the global estimator | to design after R130 |
+| 7 | B20_R132 | The Difficulty Cartographer on planted obstacles; diagnosis-directed invention (Ω2; dev looks: renormalisation answers planted coupling, +16 against +4) | to design |
+| 8 | — | Ledger: `scripts/build_ledger.py` gains R123–R130's scripts, modules, tests and evidence; regenerate; `test_ledger`; TEST_MATRIX rows for R130 (R125-R129 done) | owed |
+| 9 | — | Checkpoint (the last one is B20_R118) with the release matrix | owed after R129 |
+| 10 | Ω3 | The genome registry and typed language; first study on max-cut, then MaxSAT unchanged | to design |
+| 11 | Ω4–Ω9 | As in §5 | — |
 
 ## 7. Prior art to check every novelty claim against
 
@@ -404,3 +420,5 @@ problems no level has seen, and Genesis has not shown that yet.
 ## 8. Change log
 
 - 24 Oct 2026: written, with B20_R129 preregistered (`eb60843`), merging Daniel's Ω proposals of that day.
+- 24 Oct 2026, 14:20: Ω1's development looks (the interpretation is the limit; the established LLC estimator) and
+  B20_R130 preregistered (`f812701`); the queue renumbered (B20_R131 co-invention, B20_R132 the Cartographer).
