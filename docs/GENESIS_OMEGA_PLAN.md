@@ -1,6 +1,6 @@
 # Genesis Ω: the plan for a self-improving, verifiable problem solver (24 Oct 2026)
 
-**Read this first if you are the next agent or operator on this repository.** It says:
+**Read this first if you are the next agent or operator on this repository**, then `docs/OMEGA_RECURSIVE_INVENTION.md` (the adopted architecture, §0b) and `research_queue.json` (the live queue). It says:
 - what Genesis is being built to do;
 - what it can do today, with the evidence;
 - the rules nothing may break;
@@ -44,6 +44,28 @@ The long-term objective stays the independent invention of algorithms, mathemati
 effective invention processes. It is **not achieved**, and no document may say so without independent evidence.
 Every batch reports its commits, tests, evidence, failed hypotheses, regressions, unresolved limitations and the next
 dependency-unblocking action.
+
+## 0b. Daniel's architecture of 24 Oct 2026, 20:31 (adopted): recursive perception, cognition and invention
+
+**Read `docs/OMEGA_RECURSIVE_INVENTION.md` in full.** It is the adopted design for everything after the queued gates,
+and it refines Daniel's two attachments of 20:31 against the repository. In short:
+- **Every capability is a typed executable research object (RO).** The kinds are an open set that Genesis can extend
+  by composing types: senses, instruments, compositions, representations, concepts, bounds, theorems, methods,
+  attack strategies, workflows, allocators, diagnosers, improvers, languages. It is not limited to senses.
+- **Information and accessibility are kept apart.** A deterministic sense adds no information; an instrument does,
+  at a cost.
+- **The capability-gap scientist** (`science/design.py` over explanations of stagnation, B20_R132 its first instance)
+  diagnoses before inventing, and its own diagnoses are scored by what fixing them later does.
+- **Synergy discovery** keeps individually weak capabilities: bounded higher-order screening, ablations, controls,
+  cost.
+- **Problem attack and research paradigms are data.** The allocator chooses between attacking a problem and
+  improving the machinery.
+- **Recursive improvement is typed self-application with no level ceiling**, under one fuel budget. It is measured
+  only by G_t (verified discovery value on fresh tasks per total compute, development included), across replicated
+  generations.
+- **The judge, the kernel and the promotion rules are closed to every RO.**
+- **Decisive experiments A–I** are mapped to studies: C = B20_R135, E = B20_R131, F = B20_R128; A = B20_R136, the
+  first vertical slice (synthesised senses choose the engine per instance), comes next after the RO layer.
 
 ## 0. Reading order and the protocol
 
@@ -421,6 +443,7 @@ call; `CHECKOUT=1` at a study's first slice), so that new code can be committed 
 | 6 | — | Checkpoint (the last one is B20_R118) with the release matrix | owed |
 | 7 | B20_R134 | The Difficulty Cartographer, redesigned with obstacles hidden from cheap statistics (Ω2) | to design |
 | 8 | Ω3/Ω7 | The self-extending representation language (directive items 6–9; `docs/OMEGA_REPRESENTATION_LANGUAGE.md`): relations, verified gadgets, encodings with decoders, transformations to one BQP, families given only as predicates (reductions synthesised, not hand-written); stages A–C built on fixtures; its first study **B20_R135** (preregistered `7040a3c`, before R133 ran) after rows 1–5 | building; study preregistered |
+| 8b | R1 | The research-object layer (`src/genesis/objects/`; `docs/OMEGA_RECURSIVE_INVENTION.md` §3, §16), then the graph sense language and B20_R136 (experiment A, the vertical slice) | building next on CPU 1 |
 | 9 | Ω4–Ω9 | As in §5 | — |
 
 ## 7. Prior art to check every novelty claim against
@@ -480,3 +503,4 @@ problems no level has seen, and Genesis has not shown that yet.
   stage A built on fixtures.
 - 24 Oct 2026, 19:45: B20_R130 recorded: CHOICE; the global interpretation not shown at the preregistered measure (it
   helps only from 6 experiments). B20_R133 running. B20_R131 will record NO_VERIFIED_TRIGGER by its protocol.
+- 24 Oct 2026, 20:45: Daniel's architecture of 20:31 adopted (§0b; `docs/OMEGA_RECURSIVE_INVENTION.md`).

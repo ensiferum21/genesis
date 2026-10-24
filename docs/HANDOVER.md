@@ -222,7 +222,12 @@ needs people: a reviewer, a statistician, an independent custodian on its own ma
       from 19:33), B20_R131, B20_R132 (the four bottlenecks of invention), B20_R128 (as preregistered), B20_R135
       (invented representations). Studies run from
       the clean worktree `/home/claude/work/genesis-run` via `/home/claude/run_study.sh`, one slice per call.
-  25. after them: the Genesis Ω stages in `docs/GENESIS_OMEGA_PLAN.md` §5-§6 (Ω0 analysis of R127/R128; B20_R130
+  25. **Daniel's architecture of 24 Oct, 20:31 is adopted**: `docs/OMEGA_RECURSIVE_INVENTION.md`. Everything
+      Genesis can invent is a typed research object, an open set of kinds beyond senses. The capability-gap
+      scientist comes first; synergy, attack and paradigms are data; recursive improvement is typed
+      self-application measured only by G_t on fresh tasks; the judge is closed. Next build: the RO layer
+      (`src/genesis/objects/`), then B20_R136 (experiment A).
+  26. after them: the Genesis Ω stages in `docs/GENESIS_OMEGA_PLAN.md` §5-§6 (Ω0 analysis of R127/R128; B20_R130
       invented instruments; B20_R131 the Difficulty Cartographer; the genome and typed language; the ecology;
       evolvability selection; the decisive A/B/C experiment).
 
