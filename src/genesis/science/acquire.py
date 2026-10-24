@@ -15,6 +15,9 @@ The established acquisitions are points of this language: eig is {'agg': 'sum', 
 So an invented rule is judged against them inside the same language, and a search seeded with them starts from the
 state of the art.
 
+**Amendment (B20_R130):** the same language is used over other feature sets (`features=`), for example the pair
+features of `causal.interpret`; with the default it is exactly B20_R129's.
+
 Search operators (`ops()`, for `autonomy.feedback.steady_state_search`): `random` (a random tree of depth at most 3,
 with `seeds` first when given), `mutate` (one of: replace a subtree, replace a leaf, change an operator, switch the
 aggregate, wrap the tree in a new operator, hoist a subtree), `crossover` (a subtree of one parent grafted into the
@@ -34,12 +37,12 @@ MAX_SIZE, MAX_DEPTH = 15, 4
 MUTATIONS = ('subtree', 'leaf', 'op', 'agg', 'wrap', 'hoist')
 
 
-def check(prog):
-    """None, or why `prog` is not a program."""
+def check(prog, features=FEATURES):
+    """None, or why `prog` is not a program (over `features`; the acquisition features by default)."""
     if not isinstance(prog, dict) or set(prog) != {'agg', 'expr'} or prog['agg'] not in AGGS:
         return "a program is {'agg': 'sum' | 'max', 'expr': tree}"
     try:
-        n, d = _shape(prog['expr'])
+        n, d = _shape(prog['expr'], features)
     except ValueError as e:
         return str(e)
     if n > MAX_SIZE or d > MAX_DEPTH:
@@ -47,9 +50,9 @@ def check(prog):
     return None
 
 
-def _shape(t):
+def _shape(t, features=FEATURES):
     if isinstance(t, str):
-        if t not in FEATURES:
+        if t not in features:
             raise ValueError(f'unknown feature {t!r}')
         return 1, 0
     if isinstance(t, float) and not isinstance(t, bool):
@@ -57,16 +60,20 @@ def _shape(t):
             raise ValueError(f'constants are {CONSTANTS}')
         return 1, 0
     if isinstance(t, list) and len(t) == 3 and t[0] in BINARY:
-        (na, da), (nb, db) = _shape(t[1]), _shape(t[2])
+        (na, da), (nb, db) = _shape(t[1], features), _shape(t[2], features)
         return 1 + na + nb, 1 + max(da, db)
     if isinstance(t, list) and len(t) == 2 and t[0] in UNARY:
-        n, d = _shape(t[1])
+        n, d = _shape(t[1], features)
         return 1 + n, 1 + d
     raise ValueError(f'not a tree: {t!r}')
 
 
-def size(prog):
-    return _shape(prog['expr'])[0]
+def size(prog, features=None):
+    return _count(prog['expr'])
+
+
+def _count(t):
+    return 1 + sum(_count(x) for x in t[1:]) if isinstance(t, list) else 1
 
 
 def text(prog):
@@ -117,22 +124,23 @@ def scores(prog, n_exp, pairs):
 
 # ------------------------------------------------------------------------------------------------- search operators
 
-def _leaf(rng):
-    return FEATURES[rng.randrange(len(FEATURES))] if rng.random() < 0.75 else CONSTANTS[rng.randrange(len(CONSTANTS))]
+def _leaf(rng, features=FEATURES):
+    return features[rng.randrange(len(features))] if rng.random() < 0.75 else CONSTANTS[rng.randrange(len(CONSTANTS))]
 
 
-def random_tree(rng, depth=3):
+def random_tree(rng, depth=3, features=FEATURES):
     if depth == 0 or rng.random() < 0.3:
-        return _leaf(rng)
+        return _leaf(rng, features)
     if rng.random() < 0.8:
-        return [BINARY[rng.randrange(len(BINARY))], random_tree(rng, depth - 1), random_tree(rng, depth - 1)]
-    return [UNARY[rng.randrange(len(UNARY))], random_tree(rng, depth - 1)]
+        return [BINARY[rng.randrange(len(BINARY))], random_tree(rng, depth - 1, features),
+                random_tree(rng, depth - 1, features)]
+    return [UNARY[rng.randrange(len(UNARY))], random_tree(rng, depth - 1, features)]
 
 
-def random_program(rng):
+def random_program(rng, features=FEATURES):
     while True:
-        p = {'agg': AGGS[rng.randrange(2)] if rng.random() < 0.3 else 'sum', 'expr': random_tree(rng)}
-        if check(p) is None:
+        p = {'agg': AGGS[rng.randrange(2)] if rng.random() < 0.3 else 'sum', 'expr': random_tree(rng, 3, features)}
+        if check(p, features) is None:
             return p
 
 
@@ -160,7 +168,7 @@ def _set(t, path, new):
     return t
 
 
-def mutate(prog, rng):
+def mutate(prog, rng, features=FEATURES):
     for _ in range(50):
         t = prog['expr']
         paths = list(_paths(t))
@@ -169,10 +177,10 @@ def mutate(prog, rng):
         kind = MUTATIONS[rng.randrange(len(MUTATIONS))]
         agg = prog['agg']
         if kind == 'subtree':
-            t = _set(t, path, random_tree(rng, 2))
+            t = _set(t, path, random_tree(rng, 2, features))
         elif kind == 'leaf':
             leaves = [p for p in paths if not isinstance(_get(t, p), list)]
-            t = _set(t, leaves[rng.randrange(len(leaves))], _leaf(rng))
+            t = _set(t, leaves[rng.randrange(len(leaves))], _leaf(rng, features))
         elif kind == 'op':
             if not isinstance(node, list):
                 continue
@@ -182,7 +190,7 @@ def mutate(prog, rng):
             agg = 'max' if agg == 'sum' else 'sum'
         elif kind == 'wrap':
             if rng.random() < 0.8:
-                t = _set(t, path, [BINARY[rng.randrange(len(BINARY))], node, _leaf(rng)])
+                t = _set(t, path, [BINARY[rng.randrange(len(BINARY))], node, _leaf(rng, features)])
             else:
                 t = _set(t, path, [UNARY[rng.randrange(len(UNARY))], node])
         else:
@@ -194,33 +202,35 @@ def mutate(prog, rng):
             else:
                 t = node
         child = {'agg': agg, 'expr': t}
-        if check(child) is None and child != prog:
+        if check(child, features) is None and child != prog:
             return child
-    return random_program(rng)
+    return random_program(rng, features)
 
 
-def crossover(a, b, rng):
+def crossover(a, b, rng, features=FEATURES):
     for _ in range(50):
         pa = list(_paths(a['expr']))
         pb = list(_paths(b['expr']))
         child = {'agg': a['agg'], 'expr': _set(a['expr'], pa[rng.randrange(len(pa))],
                                                _get(b['expr'], pb[rng.randrange(len(pb))]))}
-        if check(child) is None:
+        if check(child, features) is None:
             return child
     return json.loads(json.dumps(a))
 
 
-def ops(seeds=()):
-    """Operators for `autonomy.feedback.steady_state_search`; the first random programs are `seeds`, in order."""
+def ops(seeds=(), features=FEATURES):
+    """Operators for `autonomy.feedback.steady_state_search` over programs on `features`; the first random programs
+    are `seeds`, in order."""
     queue = [json.loads(json.dumps(s)) for s in seeds]
     for s in queue:
-        why = check(s)
+        why = check(s, features)
         if why:
             raise ValueError(f'seed {s!r}: {why}')
 
     def rand(rng):
-        return queue.pop(0) if queue else random_program(rng)
-    return {'random': rand, 'mutate': mutate, 'crossover': crossover, 'size': size}
+        return queue.pop(0) if queue else random_program(rng, features)
+    return {'random': rand, 'mutate': lambda p, rng: mutate(p, rng, features),
+            'crossover': lambda a, b, rng: crossover(a, b, rng, features), 'size': size}
 
 
 EIG = {'agg': 'sum', 'expr': 'eig'}

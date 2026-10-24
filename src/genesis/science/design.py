@@ -32,6 +32,10 @@ experiments cost the same here, so dividing by cost changes nothing and is left 
     of adapting to results from the value of a better first ranking;
   * `program`: a rule Genesis wrote in its own acquisition language (`science.acquire`);
   * `random`; and domain heuristics (`order`: a fixed order the domain gives, e.g. by degree).
+**Costs (amendment for the Difficulty Cartographer, Ω2; B20_R129's choices are unchanged).** A domain may give each
+experiment a cost (`Domain.cost`, 1 by default). With acq['per_cost'] an acquisition scores value per unit cost
+(Daniel's hybrid objective: expected information or decision gain over experiment cost), and `run(..., spend=S)`
+runs experiments while their total cost stays within S.
 
 Per touched question q and experiment e the features are: `eig`, `dec`, `decf` (expected improvement of the decision
 "is it the domain's FOCUS hypothesis or not"); `eigall`, `decall`, `decfall`, the same for observing e together with
@@ -75,6 +79,9 @@ class Domain:
 
     def execute(self, e):                # -> {q: outcome} for every q in touches(e)
         raise NotImplementedError
+
+    def cost(self, e):                   # -> the experiment's cost (CPU seconds, samples, ...); 1 unless stated
+        return 1.0
 
 
 def entropy(p):
@@ -165,6 +172,7 @@ class Run:
         self.qs = list(domain.questions())
         self.hist = {q: () for q in self.qs}
         self.done = []
+        self.spent = 0.0
         self.observations = []
         self.by_q = {q: [] for q in self.qs}
         for e in domain.experiments():
@@ -179,6 +187,7 @@ class Run:
         for q in self.d.touches(e):
             self.hist[q] = tuple(sorted(self.hist[q] + ((e, obs[q]),), key=repr))
         self.done.append(e)
+        self.spent += _cost(self, e)
         self.observations.append({'experiment': e, 'outcomes': {str(q): o for q, o in obs.items()}})
         return obs
 
@@ -218,38 +227,52 @@ def _best(left, scores):
     return left[scores.index(m)]
 
 
-def choose(run, acq, rng):
-    """The next experiment by acquisition `acq` ({'kind': ..., ...}), or None when none is left."""
+def _cost(run, e):
+    f = getattr(run.d, 'cost', None)
+    return 1.0 if f is None else float(f(e))
+
+
+def choose(run, acq, rng, spend=None):
+    """The next experiment by acquisition `acq` ({'kind': ..., ...}), or None when none is left (or, with `spend`,
+    none is affordable within the remaining spend). With acq['per_cost'], scores are divided by each experiment's
+    cost (value per unit cost); without it, and with equal costs, the choices are those of B20_R129."""
     left = run.left()
+    if spend is not None:
+        left = [e for e in left if run.spent + _cost(run, e) <= spend + 1e-12]
     if not left:
         return None
     kind = acq['kind']
     if kind == 'random':
         return left[int(rng.integers(len(left)))]
     if kind == 'order':
-        return next(e for e in acq['order'] if e in left)
+        return next((e for e in acq['order'] if e in left), None)
     if kind in ('eig', 'dec', 'static_eig'):
         pairs = _pairs(run, left, prior=kind == 'static_eig')
-        return _best(left, _sum_by(left, pairs, 'dec' if kind == 'dec' else 'eig'))
-    if kind == 'hybrid':
+        scores = _sum_by(left, pairs, 'dec' if kind == 'dec' else 'eig')
+    elif kind == 'hybrid':
         pairs = _pairs(run, left)
         eig, dec = _sum_by(left, pairs, 'eig'), _sum_by(left, pairs, 'dec')
-        return _best(left, [a + acq['lam'] * b for a, b in zip(eig, dec)])
-    if kind == 'program':
+        scores = [a + acq['lam'] * b for a, b in zip(eig, dec)]
+    elif kind == 'program':
         from . import acquire
-        return _best(left, acquire.scores(acq['program'], len(left), _pairs(run, left)))
-    raise ValueError(f'unknown acquisition {kind!r}')
+        scores = list(acquire.scores(acq['program'], len(left), _pairs(run, left)))
+    else:
+        raise ValueError(f'unknown acquisition {kind!r}')
+    if acq.get('per_cost'):
+        scores = [x / _cost(run, e) for x, e in zip(scores, left)]
+    return _best(left, scores)
 
 
-def run(domain, acq, budget, rng=None, beliefs=None, stop=None):
-    """Run `budget` experiments chosen by `acq`; returns the Run and the decisions after 0, 1, ... experiments.
-    `stop(k, decisions)` may end the run early (it returns True when no further step is needed)."""
+def run(domain, acq, budget, rng=None, beliefs=None, stop=None, spend=None):
+    """Run up to `budget` experiments chosen by `acq` (and, with `spend`, at most that total cost); returns the Run
+    and the decisions after 0, 1, ... experiments. `stop(k, decisions)` may end the run early (it returns True when no
+    further step is needed)."""
     r = Run(domain, beliefs)
     trail = [r.decisions()]
     if stop is not None and stop(0, trail[0]):
         return r, trail
     for k in range(budget):
-        e = choose(r, acq, rng)
+        e = choose(r, acq, rng, spend)
         if e is None:
             break
         r.do(e)

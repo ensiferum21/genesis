@@ -168,6 +168,23 @@ class Acquisitions(unittest.TestCase):
         self.assertEqual(D.choose(r, {'kind': 'eig'}, None), 'z')           # q1 is answered: y is now worthless
         self.assertEqual(D.choose(r, {'kind': 'static_eig'}, None), 'y')    # the prior's ranking, never updated
 
+    def test_costs(self):
+        class Priced(Toy):
+            def cost(self, e):
+                return {'a': 8.0, 'b': 1.0, 'c': 1.0, 'd': 1.0}[e]
+
+            def predict(self, q, e):          # 'c' is a weaker test than 'a'
+                if e == 'c':
+                    return [[0.8, 0.2], [0.3, 0.7]]
+                return super().predict(q, e)
+        d = Priced()
+        self.assertEqual(D.choose(D.Run(d), {'kind': 'eig'}, None), 'a')                     # most information
+        self.assertEqual(D.choose(D.Run(d), {'kind': 'eig', 'per_cost': True}, None), 'c')   # most per unit cost
+        r, _ = D.run(d, {'kind': 'eig'}, 10, spend=7.0)
+        self.assertLessEqual(r.spent, 7.0)
+        self.assertNotIn('a', r.done)                                                        # never affordable
+        self.assertEqual(D.Run(Toy()).d.cost('a'), 1.0)
+
     def test_program_matches_builtin(self):
         for acq, prog in (({'kind': 'eig'}, Q.EIG), ({'kind': 'dec'}, Q.DEC),
                           ({'kind': 'hybrid', 'lam': 4.0}, Q.hybrid(4.0))):
