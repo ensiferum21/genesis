@@ -113,7 +113,7 @@ class Kind(unittest.TestCase):
 
 class Runner(unittest.TestCase):
     def test_membership_is_the_declared_domain(self):
-        self.assertEqual(set(CM.maxcut_kinds()), {'mqlib-maxcut-v1', 'dsb-maxcut-v1', 'mcx-v1'})
+        self.assertEqual(set(CM.maxcut_kinds()), {'mqlib-maxcut-v1', 'dsb-maxcut-v1', 'mcx-v1', 'mcx2-v1'})
         for kind in ('tfxw-v1', 'mqlib-v1', 'nope', None, 3):
             self.assertFalse(CM.is_maxcut_kind(kind), kind)
 
