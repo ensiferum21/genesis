@@ -76,9 +76,10 @@ def binary(D):
     return Encoding(D, b, [tuple(v >> i & 1 for i in range(b)) for v in range(D)])
 
 
-def tables(D, b, symmetric=True):
-    """Code tables of D values in b bits, one per class under renaming and negating bits (if `symmetric`), with the
-    values' order free only up to what the relations distinguish (all orders kept: relations may not be symmetric)."""
+def tables(D, b, symmetric=True, orders=True):
+    """Code tables of D values in b bits, one per class under renaming and negating bits (if `symmetric`); with
+    `orders`, every assignment of the values to the chosen patterns (needed when the relations treat values
+    differently; when they are symmetric under renaming values, one order per class suffices)."""
     pats = list(product((0, 1), repeat=b))
     seen = set()
     for chosen in combinations(pats, D):
@@ -91,6 +92,9 @@ def tables(D, b, symmetric=True):
             if key in seen:
                 continue
             seen.add(key)
+        if not orders:
+            yield Encoding(D, b, chosen)
+            continue
         for order in permutations(chosen):
             yield Encoding(D, b, order)
 
@@ -191,7 +195,7 @@ def cost(enc, value_relations, counts, n_vars, lib, synth):
     return total_anc, total_nz, lib, plan
 
 
-def search(D, value_relations, counts, n_vars, b_range, lib=None, synth=None, limit=None):
+def search(D, value_relations, counts, n_vars, b_range, lib=None, synth=None, limit=None, value_symmetric=False):
     """The cheapest encoding by (variables = n_vars * b + ancillas, then non-zero coefficients) over every table with
     b in b_range; returns (best, library, table of every evaluated encoding)."""
     lib = LB.EMPTY if lib is None else lib
@@ -202,7 +206,7 @@ def search(D, value_relations, counts, n_vars, b_range, lib=None, synth=None, li
     for b in b_range:
         if b < max(1, (D - 1).bit_length()) or b > GD.MAX_VARS:
             continue
-        for enc in tables(D, b):
+        for enc in tables(D, b, orders=not value_symmetric):
             k += 1
             if limit is not None and k > limit:
                 break

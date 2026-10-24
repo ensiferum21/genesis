@@ -22,6 +22,8 @@ gadget is found (`library.park`).
 `decode` drops the ancillas. `verify` is the independent checker: it evaluates every constraint relation on the
 decoded assignment and the objective directly from the problem, never from the BQP.
 """
+import json
+
 from .relations import relation_from_json
 from . import library as LB
 
@@ -52,11 +54,14 @@ def compile(problem, lib, mode='satisfy'):
     lin, quad, const = {}, {}, 0
     nxt = n
     W = 1 if mode in ('satisfy', 'max_csp') else 1 + _objective_range(problem.get('objective'))
+    cache = {}
     for c in problem['constraints']:
-        r = relation_from_json(c['relation'])
         uni = mode == 'max_csp' and not c.get('hard')
-        g = LB.lookup(lib, r, uni)
-        e = LB.entry(lib, r, uni)
+        ck = (json.dumps(c['relation'], sort_keys=True), uni)
+        if ck not in cache:
+            r = relation_from_json(c['relation'])
+            cache[ck] = (r, LB.lookup(lib, r, uni), LB.entry(lib, r, uni))
+        r, g, e = cache[ck]
         if uni and e['gap'] != 1:
             raise ValueError(f'max_csp needs uniform gadgets of gap 1; relation {r.id()} has gap {e["gap"]}')
         names = list(c['vars']) + list(range(nxt, nxt + g.m))
