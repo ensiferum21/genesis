@@ -125,7 +125,8 @@ def _design_of_qet(study):
         'valid': not _labels_invalid(study), 'resumable': True, 'sequential_stopping': len(dz.get('looks', ())) > 1,
         'probes': {p['arm'].replace('probe_', ''): {'budget_s': p['budget'], 'hosts': p['hosts']}
                    for p in dz.get('probes', ())},
-        'excluded': {}, 'fresh_hosts': True, 'validity': dict(CANONICAL_VALIDITY), 'domain': dz.get('domain')}
+        'excluded': {}, 'fresh_hosts': True, 'validity': dict(CANONICAL_VALIDITY), 'domain': dz.get('domain'),
+        'arm_harness_fix': sorted(dz.get('harness_checked') or ())}
 
 
 def vbs_contributors(study):

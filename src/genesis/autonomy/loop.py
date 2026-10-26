@@ -55,10 +55,11 @@ def _why(plan, led, sd=None):
     return '; '.join(parts) + '.'
 
 
-def propose(root, batch, today=None, title=None, disclosure=None):
+def propose(root, batch, today=None, title=None, disclosure=None, expectation=None):
     """The next study: writes scripts/b20r{batch}_qet_large.py (and its .proposal.json) and returns the proposal.
-    `disclosure`: what the builder looked at before preregistering (rehearsals, development looks), stated in the
-    script."""
+    `expectation`: what the builder expects, stated before running (required from B20_R98 on: a study without a
+    stated expectation is not written). `disclosure`: what the builder looked at before preregistering (rehearsals,
+    development looks), stated in the script."""
     from . import studygen
     today = today or datetime.date.today().isoformat()
     design, plan, chk, led = _cell(root, today)
@@ -67,7 +68,9 @@ def propose(root, batch, today=None, title=None, disclosure=None):
     sd = studygen.qet_design(design, plan, root, batch)
     name = f'b20r{batch}_qet_large.py'
     path = Path(root) / 'scripts' / name
-    expectation = ('The adaptation cell predicts that this design resolves SATURATION and SIZE_CAP (instances where '
+    if expectation is None and batch != 97:
+        raise ValueError('state the expectation before the study is written')
+    expectation = expectation or ('The adaptation cell predicts that this design resolves SATURATION and SIZE_CAP (instances where '
                    'values, not only times, separate the methods) and narrows UNCERTIFIED_TARGETS (a certified bound '
                    'per host). From the development looks (B20_R94: on one G(256, 0.5) host the system\'s method at '
                    '1-3 s found more than every champion at 30 s), the builder expects '
@@ -77,7 +80,7 @@ def propose(root, batch, today=None, title=None, disclosure=None):
                    'the per-cell means, which carry no label). At a tenth of the budget (short_vs_vbs): '
                    'FOCAL_BETTER_THAN_VBS or UNRESOLVED; the dense n256 hosts should carry it, while on the others a '
                    'run of a tenth of the time may fall short of the champions\' best.')
-    if sd.get('extra'):
+    if sd.get('extra') and batch == 97:
         expectation += (' For the extra arms (' + ', '.join(e['arm'] for e in sd['extra']) + '): '
                         'NO_MEASURABLE_EFFECT expected for most. In B20_R95\'s final round the frozen configuration, '
                         'DEFAULT and B20_R89\'s were within 0.0007 of anytime score of each other at 1 and 5 s, a third '

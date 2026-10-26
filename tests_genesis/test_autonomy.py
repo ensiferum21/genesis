@@ -230,8 +230,12 @@ class StudyGen(unittest.TestCase):
         d = SG.qet_design(cell, {'chosen': {'SIZE_CAP@B20_R75': 'extend_domain'}}, ROOT, 97)
         self.assertEqual(len(d['cells']), 4)
         self.assertEqual(d['per_cell'], 14)
-        self.assertEqual(d['budget'], 10.0)
-        self.assertEqual(d['later_budgets'], [60.0])
+        staged = 10.0 not in SG.qet_budgets_run(ROOT)                    # before B20_R97 ran: 10 s, then 60 s
+        self.assertEqual(d['budget'], 10.0 if staged else 60.0)
+        self.assertEqual(d['later_budgets'], [60.0] if staged else [])
+        if not staged:
+            self.assertEqual(d['probes'], [])                           # the 60 s probe is the main budget now
+            d = SG.qet_design(cell, {'chosen': {}}, ROOT, 97, budget=10.0)
         self.assertEqual(len(d['champions']), 13)
         self.assertEqual(d['probes'][0]['solver'], 'deepdist-c')
         self.assertEqual(d['looks'], [19, 38, 56])
@@ -272,6 +276,51 @@ class StudyGen(unittest.TestCase):
         self.assertIn('does not stop before', how['dedicated_ablation_with_more_power'])
         for a in arms:
             self.assertIn(a, how['dedicated_ablation_with_more_power'])
+
+    def test_staging_and_the_harness_work_order(self):
+        frozen = [x for x in SG.frozen_configs(ROOT) if x[1] == 'tfxw-v1']
+        if not frozen:
+            self.skipTest('no frozen large-graph configuration in this tree yet')
+        import shutil
+        with tempfile.TemporaryDirectory() as root:
+            root = Path(root)
+            for path, _, _ in frozen:                                    # the frozen configurations, nothing else
+                (root / path).parent.mkdir(parents=True, exist_ok=True)
+                shutil.copy(ROOT / path, root / path)
+            (root / 'scripts').mkdir()
+            cell = {'sizes': [128, 256], 'quality_at_equal_time': True, 'hosts': 8, 'long_budgets': [10.0, 60.0],
+                    'competitors': [], 'probes': {'deepdistc': {'budget_s': 60.0, 'hosts': 2}}}
+            self.assertEqual(SG.qet_design(cell, {}, root, 98)['budget'], 10.0)
+            q = root / 'evidence' / 'qet_x_b20r97'
+            q.mkdir(parents=True)
+            q.joinpath('summary.json').write_text(json.dumps({'schema': 'genesis-qet-study-v1', 'design': {
+                'domain': LARGE, 'budget': 10.0}}))
+            d = SG.qet_design(cell, {}, root, 98)
+            self.assertEqual((d['budget'], d['later_budgets'], d['probes']), (60.0, [], []))
+            ask = dict(cell, arm_harness_fix=['deepdistc', 'nuwls26'])
+            with self.assertRaises(ValueError):                          # the work order is not done yet
+                SG.qet_design(ask, {}, root, 98)
+            h = root / 'evidence' / 'harness_check_b20r98'
+            h.mkdir(parents=True)
+            h.joinpath('summary.json').write_text(json.dumps({'schema': 'genesis-harness-check-v1',
+                                                              'arms': ['deepdistc', 'nuwls26']}))
+            d = SG.qet_design(ask, {}, root, 98)
+            self.assertEqual(d['harness_checked'], {'deepdistc': 'evidence/harness_check_b20r98/summary.json',
+                                                    'nuwls26': 'evidence/harness_check_b20r98/summary.json'})
+            self.assertIn('evidence/harness_check_b20r98/summary.json', SG.implementation(d)['fix_arm_harness'])
+
+    def test_the_recorded_harness_check_satisfies_the_work_order(self):
+        got = SG.harness_checks(ROOT)                                   # B20_R98's schema, by solver key
+        for arm in ('deepdistc', 'nuwls26'):
+            self.assertEqual(got.get(arm), 'evidence/harness_check_b20r98/summary.json')
+
+    def test_the_cell_reads_a_harness_check_from_the_design(self):
+        from genesis.adaptation.design import _design_of_qet
+        from genesis.adaptation.receptors import Profile, Study
+        dz = dict(tiny_design(), harness_checked={'deepdistc': 'evidence/h/summary.json'})
+        st = Study(Profile('B20_R98', 'x', 'tfxw', ('deepdist',), kind='qet'),
+                   {'design': dz, 'labels': {}}, [{'n': 128, 'runs': {}}], '')
+        self.assertEqual(_design_of_qet(st)['arm_harness_fix'], ['deepdistc'])
 
     def test_the_cost_estimate(self):
         d = tiny_design()
@@ -358,6 +407,53 @@ class CellReadsQET(unittest.TestCase):
             log.write_text('[   0.0s] pinned to CPU 0\n[ 50.0s] host 1\n[   0.0s] pinned to CPU 0\n')
             (c,) = interruption(Study.load(p, root))
             self.assertEqual(c.evidence, {'starts_in_run_log': 2})                # as before B20_R97
+
+    def test_an_arm_that_collapses_on_a_cell_is_sensed(self):
+        from genesis.adaptation.discovery import discover
+        from genesis.adaptation.receptors import Study, sense
+        with tempfile.TemporaryDirectory() as root:
+            self.write(root, {'qet_champions': 'MIXED', 'qet_vbs': 'FOCAL_MATCHES_VBS',
+                              'probe_deepdistc': 'NO_RESPONSE'})
+            d = Path(root) / 'evidence' / 'qet_b20r97'
+            rows = [json.loads(l) for l in (d / 'rows.jsonl').read_text().splitlines()]
+            extra = []
+            for i, r in enumerate(rows):                      # a second cell, n 128, where pasmaxsat is fine
+                r2 = json.loads(json.dumps(r))
+                r2.update(task_id=f'g{i}', n=128)
+                extra.append(r2)
+                r['runs']['pasmaxsat']['0.3']['value'] = 300 if i < 3 else 590     # half of the best on 3 of 4
+                r['runs']['deepdist']['0.3']['value'] = 100                       # also collapsed, but probed
+            (d / 'rows.jsonl').write_text(''.join(json.dumps(r) + '\n' for r in rows + extra))
+            (p,) = discover(root)
+            got = {c.lineage: c for c in sense(Study.load(p, root), None)}
+            c = got['ARM_NOT_RESPONDING[pasmaxsat]']
+            self.assertEqual(c.evidence['detail']['cells'], {'erdos:n256': 0.75})      # not the n128 cell
+            self.assertEqual(c.evidence['arms'], ['pasmaxsat'])
+            self.assertIn('ARM_NOT_RESPONDING[deepdist]', got)                       # sensed as a collapse ...
+            summary = json.loads((d / 'summary.json').read_text())
+            summary['labels']['probe_deepdist'] = 'NO_RESPONSE'
+            (d / 'summary.json').write_text(json.dumps(summary))
+            got = {c.lineage: c for c in sense(Study.load(p, root), None)}
+            self.assertEqual(got['ARM_NOT_RESPONDING[deepdist]'].evidence['detail'],    # ... and left to the probe
+                             {'probe': 'no response at the home budget on at least half the probed hosts'})
+
+    def test_capabilities_count_what_studies_ran(self):
+        from genesis.adaptation import capabilities as CAP
+        old = {'study': 'B20_R92', 'sizes': [63], 'long_budgets': [10.0], 'ladder': [0.005, 2.0]}
+        caps = CAP.scan([old])
+        self.assertEqual(caps['max_n'], 63)                              # nothing larger has run yet
+        self.assertEqual(caps['largest_long_budget_s'], 10.0)
+        want = {'sizes': [128, 256], 'long_budgets': [60.0], 'competitors': []}
+        needs = {w['need']: w['what'] for w in CAP.work_orders(want, caps)}
+        self.assertIn('the task model stops at n = 63', needs['extend_domain'])      # as B20_R93 said
+        self.assertIn('long_budgets', needs)
+        ran = {'study': 'B20_R97', 'sizes': [128, 256], 'long_budgets': [10.0, 1.0],
+               'probes': {'deepdistc': {'budget_s': 60.0, 'hosts': 4}}}
+        caps = CAP.scan([old, ran])
+        self.assertEqual((caps['max_n'], caps['largest_long_budget_s']), (256, 60.0))
+        self.assertEqual(CAP.work_orders(want, caps), [])                 # B20_R97 ran both
+        needs = {w['need']: w['what'] for w in CAP.work_orders(dict(want, sizes=[512]), caps)}
+        self.assertIn('the largest hosts any study has run have n = 256', needs['extend_domain'])
 
     def test_saturation_when_every_strong_method_ends_equal(self):
         from genesis.adaptation.discovery import discover

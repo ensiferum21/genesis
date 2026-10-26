@@ -331,11 +331,15 @@ def validity(rows, design):
 
 def main(design, out, root, *, slice_s=6600, isolation='runc', one_core=True):
     """Run (or resume) the study into `out`; returns 0 when finished, PAUSED (3) when the time slice ran out."""
-    from ..candidate_kinds import tfxw as TW
-    from ..common import code_identity
     out = Path(out)
     out.mkdir(parents=True, exist_ok=True)
-    logf = (out / 'run.log').open('a')
+    with (out / 'run.log').open('a') as logf:
+        return _main(design, out, root, logf, slice_s=slice_s, isolation=isolation, one_core=one_core)
+
+
+def _main(design, out, root, logf, *, slice_s, isolation, one_core):
+    from ..candidate_kinds import tfxw as TW
+    from ..common import code_identity
     t0 = time.monotonic()
 
     def log(m):

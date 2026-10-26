@@ -468,8 +468,37 @@ def qet_probe(study, catalog=None, cap=None):
     return out
 
 
+COLLAPSE_SHARE = 0.8          # an arm below 80% of the best known value on a host has stopped working there
+
+
+def qet_collapse(study, catalog=None, cap=None):
+    """A champion that stops working on a whole cell of hosts (one family and size): below COLLAPSE_SHARE of the best
+    known value on at least half of a cell's hosts (cells of two hosts or more). A probe senses an arm that does not
+    respond to time; this senses one that collapses at a size or on a family even at the main budget (B20_R97:
+    NuWLS-c-2026 at n = 256, which the cell did not notice). Arms a probe already flagged are left to the probe."""
+    dz = study.summary['design']
+    probed = {k[len('probe_'):] for k, v in study.labels().items() if k.startswith('probe_') and v == 'NO_RESPONSE'}
+    cells = {}
+    for r in study.rows:
+        cells.setdefault(f"{r.get('family')}:n{r['n']}", []).append(r)
+    out = []
+    for arm, _ in dz.get('champions', ()):
+        if arm in probed:
+            continue
+        bad = {}
+        for c, rs in sorted(cells.items()):
+            low = [r for r in rs if (study.qet_value(r, arm) or 0) < COLLAPSE_SHARE * r['best_value']]
+            if len(rs) >= 2 and 2 * len(low) >= len(rs):
+                bad[c] = round(len(low) / len(rs), 3)
+        if bad:
+            out.append(Caveat('ARM_NOT_RESPONDING', study.profile.study, {
+                'subject': arm, 'arms': [arm],
+                'detail': {'collapse': f'below {COLLAPSE_SHARE} of the best known value', 'cells': bad}}))
+    return out
+
+
 QET_RECEPTORS = (qet_saturation, qet_uncertified, unresolved_verdicts, null_ablations, invalid_run, interruption,
-                 missing_baseline, regime_gap, size_cap, qet_outperformed, qet_probe)
+                 missing_baseline, regime_gap, size_cap, qet_outperformed, qet_probe, qet_collapse)
 
 
 def sense(study, catalog=None, cap=None):

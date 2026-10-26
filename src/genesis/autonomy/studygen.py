@@ -74,6 +74,43 @@ def frozen_configs(root):
     return [x[1:] for x in sorted(out)]
 
 
+def qet_budgets_run(root):
+    """Main budgets of the finished studies of quality at equal time in the large domain."""
+    out = set()
+    for p in Path(root, 'evidence').glob('*/summary.json'):
+        try:
+            s = json.loads(p.read_text())
+        except ValueError:
+            continue
+        if isinstance(s, dict) and s.get('schema') == 'genesis-qet-study-v1' \
+                and s.get('design', {}).get('domain') == 'triangle_free_large_v1':
+            out.add(float(s['design']['budget']))
+    return out
+
+
+def harness_checks(root):
+    """{arm: evidence path} for every arm a recorded harness check covers (`evidence/harness_check_*/summary.json`):
+    schema genesis-harness-check-v1 lists its `arms`; B20_R98's (genesis-b20r98-harness-check-v1) gives `labels` by
+    solver key, mapped to arm names by SOLVER_ARMS."""
+    out = {}
+    for p in sorted(Path(root, 'evidence').glob('harness_check_*/summary.json')):
+        try:
+            s = json.loads(p.read_text())
+        except ValueError:
+            continue
+        if not isinstance(s, dict):
+            continue
+        rel = str(p.relative_to(root))
+        if s.get('schema') == 'genesis-harness-check-v1':
+            for a in s.get('arms', ()):
+                out[a] = rel
+        elif s.get('schema') == 'genesis-b20r98-harness-check-v1':
+            for solver in (s.get('labels') or {}):
+                if solver in SOLVER_ARMS:
+                    out[SOLVER_ARMS[solver]] = rel
+    return out
+
+
 def qet_design(cell_design, plan, root, batch, *, budget=None):
     sizes = sorted(s for s in cell_design.get('sizes', ()) if s > 63)
     if not sizes or not cell_design.get('quality_at_equal_time'):
@@ -84,7 +121,15 @@ def qet_design(cell_design, plan, root, batch, *, budget=None):
         cells.append(['erdos', {'n': n, 'p': ERDOS_P}])
     per_cell = math.ceil(cell_design.get('hosts', 36) / len(cells))
     longs = sorted(b for b in cell_design.get('long_budgets', ()) if b >= 10) or [10.0]
-    b = budget if budget is not None else longs[0]
+    done = qet_budgets_run(root)
+    # staging: the shortest long budget no earlier study of quality at equal time has run as its main budget
+    b = budget if budget is not None else next((x for x in longs if x not in done), longs[-1])
+    # a work order the cell issued must be done before its study is written (B20_R98: the harness check)
+    need = sorted(cell_design.get('arm_harness_fix') or ())
+    checked = harness_checks(root)
+    missing = [a for a in need if a not in checked]
+    if missing:
+        raise ValueError(f'work order fix_arm_harness not done for {missing}: record a harness check first')
     frozen = [x for x in frozen_configs(root) if x[1] == 'tfxw-v1']
     if not frozen:
         raise ValueError('no frozen configuration of the large-graph engine')
@@ -113,7 +158,7 @@ def qet_design(cell_design, plan, root, batch, *, budget=None):
     probes = []
     for arm, p in sorted((cell_design.get('probes') or {}).items()):
         solver = next((k for k, v in SOLVER_ARMS.items() if v == arm), None)
-        if solver:
+        if solver and float(p['budget_s']) != float(b):          # at the main budget the arm runs there anyway
             probes.append({'arm': f'probe_{arm}', 'solver': solver, 'budget': float(p['budget_s']),
                            'hosts': int(p['hosts'])})
     hosts = per_cell * len(cells)
@@ -123,7 +168,8 @@ def qet_design(cell_design, plan, root, batch, *, budget=None):
             'host_seed': seed, 'focal': focal, 'extra': extra, 'champions': champions, 'budget': float(b),
             'focal_short': [float(b) / 10], 'probes': probes, 'looks': looks, 'alpha': ALPHA, 'delta': DELTA,
             'boot': BOOT, 'boot_seed': seed + 9, 'bound_seconds': 60,
-            'later_budgets': [x for x in longs if x != b],
+            'later_budgets': [x for x in longs if x != b and x not in done],
+            'harness_checked': {a: checked[a] for a in need},
             'decide': ['champions', 'vbs'] + (['extra'] if cell_design.get('ablation') and extra else []),
             'components_already_off': already_off,
             'asked_by': {k: v for k, v in plan.get('chosen', {}).items()}}
@@ -160,6 +206,9 @@ def implementation(design):
         'sequential_stopping': 'interim looks at ' + ', '.join(map(str, design['looks'])) + ' hosts',
         'resumable_design': 'pauses before the background limit and resumes from its rows',
         'more_hosts': f'{hosts} fresh hosts',
+        'fix_arm_harness': ('the harness check recorded in ' + ', '.join(sorted(set(
+            (design.get('harness_checked') or {}).values()))) + ' for ' + ', '.join(sorted(
+                design.get('harness_checked') or {}))) if design.get('harness_checked') else 'no harness check',
         'dedicated_ablation_with_more_power': (f"extra arms {', '.join(extras)} on every host, and the study does not "
                                                "stop before they are decided; components the focal configuration "
                                                f"already has off: {off}")

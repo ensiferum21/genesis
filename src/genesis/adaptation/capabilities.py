@@ -34,14 +34,25 @@ def _model_cap():
         return 63
 
 
+def _longest(d):
+    """The longest run a finished study made: its long budgets and its probes (a probe at a home budget is a long run,
+    B20_R97)."""
+    xs = list(d.get('long_budgets') or ())
+    xs += [p['budget_s'] for p in (d.get('probes') or {}).values() if isinstance(p, dict) and 'budget_s' in p]
+    return max(xs, default=0)
+
+
 def scan(designs):
-    """Capabilities from the code and from the designs of finished studies (`design.design_of`)."""
+    """Capabilities from the code and from the designs of finished studies (`design.design_of`). Sizes: the small
+    task model's cap, or the largest hosts a finished study ran, whichever is larger (B20_R97: a larger model in the
+    code counts once a study has used it; before that, an instance size is a work order)."""
     demo = {f: sorted(d['study'] for d in designs if d.get(f)) for f in FEATURES}
     demo['probes'] = sorted(d['study'] for d in designs if d.get('probes'))
-    return {'max_n': _model_cap(), 'solver_keys': sorted(_solver_keys()),
+    ran = max((max(d['sizes']) for d in designs if d.get('sizes')), default=0)
+    small = _model_cap()
+    return {'max_n': max(small, ran), 'model_cap': small, 'solver_keys': sorted(_solver_keys()),
             'min_run_s': min((min(d['ladder']) for d in designs if d.get('ladder')), default=None),
-            'largest_long_budget_s': max((max(d['long_budgets']) for d in designs if d.get('long_budgets')),
-                                         default=0),
+            'largest_long_budget_s': max((_longest(d) for d in designs), default=0),
             'demonstrated': demo}
 
 
@@ -49,9 +60,13 @@ def work_orders(design, caps):
     out = []
     big = max(design.get('sizes') or [0])
     if big > caps['max_n']:
-        out.append({'need': 'extend_domain', 'what': f"instances up to n = {big}: the task model stops at n = "
-                    f"{caps['max_n']} and the native engine's vertex sets are 64-bit; a larger model and an engine "
-                    'with multiword sets are needed'})
+        if caps['max_n'] <= caps.get('model_cap', caps['max_n']):
+            what = (f"instances up to n = {big}: the task model stops at n = {caps['max_n']} and the native engine's "
+                    'vertex sets are 64-bit; a larger model and an engine with multiword sets are needed')
+        else:
+            what = (f"instances up to n = {big}: the largest hosts any study has run have n = {caps['max_n']}; run the "
+                    'engine and the champions at that size first (memory, encoding time, bounds)')
+        out.append({'need': 'extend_domain', 'what': what})
     for k in design.get('competitors', ()):
         if k not in caps['solver_keys']:
             out.append({'need': 'acquire_baseline', 'what': f'{k}: obtain, build from source, pin and add to a kind'})
