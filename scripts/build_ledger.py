@@ -747,6 +747,8 @@ WORKSTREAMS = {
              'evidence/adaptation_cell_b20r93/ledger.json', 'docs/CAVEATS.md', 'src/genesis/autonomy/loop.py',
              'src/genesis/autonomy/studygen.py', 'src/genesis/autonomy/qet.py', 'src/genesis/autonomy/archive.py',
              'src/genesis/autonomy/adversary.py', 'docs/AUTONOMY.md', 'evidence/qet_large_b20r97/summary.json',
+             'src/genesis/autonomy/portfolio.py', 'src/genesis/autonomy/portfolio_tasks.py',
+             'scripts/b20r148_harness_portfolio.py', 'docs/OMEGA_META_ADAPTIVE.md',
              'evidence/adaptation_cell_b20r97/ledger.json', 'src/genesis/autonomy/kmap.py',
              'scripts/b20r100_knowledge_map.py', 'evidence/knowledge_map_b20r100/summary.json',
              'src/genesis/autonomy/feedback.py', 'scripts/b20r103_zero_signal.py', 'docs/RESEARCH_ALERTS.md',
@@ -755,6 +757,7 @@ WORKSTREAMS = {
              'docs/RECURSIVE_IMPROVEMENT_ARCHITECTURE.md', 'src/genesis/vault.py', 'src/genesis/discovery_cli.py', 'src/genesis/replayers.py', 'src/genesis/interpret.py', 'docs/OMEGA_DISCOVERY_SCHEMA.md', 'docs/OMEGA_CAPABILITY_GRAPH.md'],
             ['tests_formal/test_learning.py', 'tests_formal/test_learning_partitions.py',
              G + 'test_adaptation_cell.py', G + 'test_autonomy.py', G + 'test_knowledge_map.py',
+             G + 'test_portfolio.py', G + 'test_harness_portfolio.py',
              G + 'test_feedback_contract.py', G + 'test_contract_v2.py', G + 'test_vault.py', G + 'test_interpret.py']),
     'W21': ('Better-improver and multigeneration controller (B20_R2: pure lineage validator; B20_R4: the campaign '
             'loop writes native lineage records, crash/resume charges interrupted attempts, the custodian checks '

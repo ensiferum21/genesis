@@ -52,7 +52,8 @@ Nothing here is an independent or sealed result.
 | Batch | State |
 |---|---|
 | B20_R128 | Improving the inventor. Preregistered |
-| B20_R132 | The four bottlenecks of invention. Preregistered `c0431f6` |
+| B20_R132 | The four bottlenecks of invention. Preregistered `c0431f6` (an earlier run on 24 Oct left no evidence; requeued) |
+| B20_R148 | The portfolio of discovery processes (Ω²): G0-G3, H1. Preregistered |
 
 ## Unrun plans
 

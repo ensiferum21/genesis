@@ -446,6 +446,29 @@
    "title": "ARA experiment J: synthesised research paradigms (workflow AGs) against paradigms A-E",
    "unlocks": []
   },
+  "B20_R148": {
+   "artifacts": [],
+   "committed": true,
+   "depends_on": [],
+   "failure": null,
+   "id": "B20_R148",
+   "kind": "study",
+   "line": "meta-adaptive",
+   "notes": "runs before B20_R132 (Daniel, 26 Oct 2026); docs/OMEGA_META_ADAPTIVE.md",
+   "outcome": null,
+   "output": "evidence/harness_portfolio_b20r148",
+   "positive": null,
+   "preregistered": null,
+   "priority": 10,
+   "requires": [],
+   "resources": {
+    "cpu0_hours": 5.0
+   },
+   "script": "scripts/b20r148_harness_portfolio.py",
+   "status": "queued",
+   "title": "The portfolio of discovery processes (Omega-2, Daniel's report adopted 26 Oct): G0-G3 on ten fresh tasks in three domains at matched evaluations, AUDC, H1 (is any process best everywhere?)",
+   "unlocks": []
+  },
   "allocator-baselines": {
    "artifacts": [],
    "committed": false,
@@ -454,7 +477,7 @@
    "id": "allocator-baselines",
    "kind": "study",
    "line": "operations",
-   "notes": "",
+   "notes": "26 Oct 2026: its first instance is B20_R148 (an allocator across discovery processes against single processes, uniform and bandit); the allocator across activities (solving, diagnosing, inventing, improving, transferring) remains",
    "outcome": null,
    "output": null,
    "positive": null,
@@ -969,6 +992,11 @@
    "id": "B20_R132",
    "kind": "unblock",
    "time": "2026-10-26T07:58:47+00:00"
+  },
+  {
+   "id": "B20_R148",
+   "kind": "add",
+   "time": "2026-10-26T08:51:20+00:00"
   }
  ],
  "lines": {
@@ -1065,6 +1093,12 @@
    "run": 0,
    "stagnant": false
   },
+  "meta-adaptive": {
+   "diagnosis": null,
+   "outcomes": [],
+   "run": 0,
+   "stagnant": false
+  },
   "operations": {
    "diagnosis": null,
    "outcomes": [],
@@ -1118,7 +1152,8 @@
   "B20_R144",
   "B20_R145",
   "B20_R146",
-  "B20_R147"
+  "B20_R147",
+  "B20_R148"
  ],
  "reactivated": {},
  "schema": "genesis-research-queue-v1",
