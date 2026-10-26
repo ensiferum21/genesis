@@ -89,7 +89,7 @@
    "id": "B20_R132",
    "kind": "study",
    "line": "engine-invention",
-   "notes": "preregistered c0431f6 after its development look",
+   "notes": "preregistered c0431f6 after its development look 26 Oct 2026: requeued; to be run from its preregistered script (c0431f6) in a fresh output directory, with the lost first attempt disclosed in its record.",
    "outcome": null,
    "output": "evidence/invention_bottleneck_b20r132",
    "positive": null,
@@ -100,7 +100,7 @@
     "cpu0_hours": 5.7
    },
    "script": "scripts/b20r132_invention_bottleneck.py",
-   "status": "running",
+   "status": "queued",
    "title": "The four bottlenecks of invention: headroom, expressiveness, search, evaluation",
    "unlocks": [
     "invention-bottleneck-diagnosed"
@@ -958,6 +958,17 @@
    "outcome": "NO_VERIFIED_TRIGGER (by protocol): no reactivation; fresh 0.496, random retrieval 0.502, null 0.496, eig 0.450; archive 158.9 s CPU",
    "positive": false,
    "time": "2026-10-24T13:01:21+00:00"
+  },
+  {
+   "id": "B20_R132",
+   "kind": "block",
+   "time": "2026-10-26T07:58:47+00:00",
+   "why": "the run started on 24 Oct 2026 at 20:50 in the 22-24 Oct builder session left no evidence and no record (that session ended; nothing was pushed after 21:01); Daniel confirmed on 26 Oct that it has stopped"
+  },
+  {
+   "id": "B20_R132",
+   "kind": "unblock",
+   "time": "2026-10-26T07:58:47+00:00"
   }
  ],
  "lines": {
