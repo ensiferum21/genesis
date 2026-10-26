@@ -104,7 +104,7 @@ each with its verifier:
 - **planted formulas** in the expression language, scored by rank correlation with a hidden target that the language
   contains. This is a positive control with a known optimum.
 
-## 4. The first study: B20_R148 (PREREGISTERED; see its script)
+## 4. The first study: B20_R148 (PREREGISTERED at `251c956`; script SHA-256 `d20a30d4…3409`)
 
 The report's decisive experiment, translated and bounded (its §"start with one bounded experiment"). The script's
 docstring is the preregistration and governs; this is a summary.
