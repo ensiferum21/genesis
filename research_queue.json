@@ -82,17 +82,19 @@
    ]
   },
   "B20_R132": {
-   "artifacts": [],
+   "artifacts": [
+    "evidence/invention_bottleneck_b20r132/summary.json"
+   ],
    "committed": true,
    "depends_on": [],
    "failure": null,
    "id": "B20_R132",
    "kind": "study",
    "line": "engine-invention",
-   "notes": "preregistered c0431f6 after its development look 26 Oct 2026: requeued; to be run from its preregistered script (c0431f6) in a fresh output directory, with the lost first attempt disclosed in its record. Rerun from 27 Oct 2026, 00:09 SGT (16:08:44Z), clean worktree of 13bd014, output evidence/invention_bottleneck_b20r132.",
-   "outcome": null,
+   "notes": "preregistered c0431f6 after its development look 26 Oct 2026: requeued; to be run from its preregistered script (c0431f6) in a fresh output directory, with the lost first attempt disclosed in its record. Rerun from 27 Oct 2026, 00:09 SGT (16:08:44Z), clean worktree of 13bd014, output evidence/invention_bottleneck_b20r132. Done 27 Oct 2026 (slice 3 stopped by a container restart, resumed from the saved runs). The line stays stagnant: what answers EXPRESSIVENESS (a richer engine language, a stronger confirmation of the planar candidate, a regime with more headroom) is Daniel's decision; v3 not validated, so judge-v3-followup stays dormant.",
+   "outcome": "NOT_SHOWN; diagnosis EXPRESSIVENESS in every class: no release by v2 or v3 in 9 trajectories; headroom +0.055/+0.232/+0.073%; nothing of 112-117 engines per class confirmed on T2 (planar +0.288%, p 0.26); v2 power at +1% <= 0.06; S1 holds (0/60)",
    "output": "evidence/invention_bottleneck_b20r132",
-   "positive": null,
+   "positive": false,
    "preregistered": "c0431f6",
    "priority": 6,
    "requires": [],
@@ -100,7 +102,7 @@
     "cpu0_hours": 5.7
    },
    "script": "scripts/b20r132_invention_bottleneck.py",
-   "status": "running",
+   "status": "done",
    "title": "The four bottlenecks of invention: headroom, expressiveness, search, evaluation",
    "unlocks": [
     "invention-bottleneck-diagnosed"
@@ -1016,6 +1018,20 @@
    "id": "B20_R132",
    "kind": "start",
    "time": "2026-10-26T16:15:43+00:00"
+  },
+  {
+   "id": "B20_R132",
+   "kind": "finish",
+   "outcome": "NOT_SHOWN; diagnosis EXPRESSIVENESS in every class: no release by v2 or v3 in 9 trajectories; headroom +0.055/+0.232/+0.073%; nothing of 112-117 engines per class confirmed on T2 (planar +0.288%, p 0.26); v2 power at +1% <= 0.06; S1 holds (0/60)",
+   "positive": false,
+   "time": "2026-10-26T22:06:55+00:00"
+  },
+  {
+   "bottleneck": "EXPRESSIVENESS in every class (preregistered rule; a lower bound: the pool is finite; planar may be a limit of the 12-graph confirmation); the protected judge is blind below about 1%",
+   "direction": "B20_R132",
+   "kind": "diagnose",
+   "line": "engine-invention",
+   "time": "2026-10-26T22:06:55+00:00"
   }
  ],
  "lines": {
@@ -1074,7 +1090,7 @@
   },
   "engine-invention": {
    "diagnosis": {
-    "bottleneck": null,
+    "bottleneck": "EXPRESSIVENESS in every class (preregistered rule; a lower bound: the pool is finite; planar may be a limit of the 12-graph confirmation); the protected judge is blind below about 1%",
     "direction": "B20_R132",
     "tags": [
      "judge-v3-validated",
@@ -1101,9 +1117,14 @@
      "B20_R127",
      "NOT_SHOWN",
      false
+    ],
+    [
+     "B20_R132",
+     "NOT_SHOWN; diagnosis EXPRESSIVENESS in every class: no release by v2 or v3 in 9 trajectories; headroom +0.055/+0.232/+0.073%; nothing of 112-117 engines per class confirmed on T2 (planar +0.288%, p 0.26); v2 power at +1% <= 0.06; S1 holds (0/60)",
+     false
     ]
    ],
-   "run": 4,
+   "run": 5,
    "stagnant": true
   },
   "mathematics": {

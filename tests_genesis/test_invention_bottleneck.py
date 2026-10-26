@@ -250,5 +250,105 @@ class Analysis(unittest.TestCase):
         self.assertLess(M.clopper_pearson_upper(2, 60), 0.11)
 
 
+R132 = ROOT / 'evidence' / 'invention_bottleneck_b20r132'
+
+
+@unittest.skipUnless((R132 / 'summary.json').exists(), 'B20_R132 has not run in this tree')
+class RecordB20R132(unittest.TestCase):
+    """The record of B20_R132 on its evidence: the preregistered script unchanged; validity; the T tables, baselines
+    and REX at 10 s from the saved runs; the power curves from the saved REX pools; the analysis (every trajectory,
+    the per-class diagnosis, P1, P2, S1 and the verdict) recomputed by `analyse` from the saved inputs; the graphs
+    regenerate with the recorded identities."""
+
+    @classmethod
+    def setUpClass(cls):
+        cls.s = json.loads((R132 / 'summary.json').read_text())
+        cls.c = json.loads((R132 / 'controls.json').read_text())
+        cls.runs = {}
+        for line in (R132 / 'runs.jsonl').read_text().splitlines():
+            if line.strip():
+                r = json.loads(line)
+                cls.runs[r['key']] = r
+        from genesis.candidate_kinds import mcx2 as K2
+        cls.rex = M.Lab.ekey(K2.DEFAULT)
+
+    def run_value(self, ek, task, occ, budget='1'):
+        return self.runs[f'{ek}|{task}|{occ}|{budget}']['value']
+
+    def test_the_preregistered_script(self):
+        self.assertEqual(hashlib.sha256((ROOT / 'scripts' / 'b20r132_invention_bottleneck.py').read_bytes()).hexdigest(),
+                         '42769fcc9888090c82a88b5d47a437348508297e29fc3902bb829c064fe5a0a6')
+
+    def test_validity(self):
+        s = self.s
+        self.assertTrue(s['valid'] and s['consistent'] and s['protected_judge_unchanged'])
+        self.assertEqual(len(self.runs), sum(1 for l in (R132 / 'runs.jsonl').read_text().splitlines() if l.strip()))
+        cpus = {}
+        for r in self.runs.values():
+            b = r['key'].rsplit('|', 1)[1]
+            cpus.setdefault(b, []).append(r['cpu'] / float(b))
+        import statistics
+        self.assertEqual(set(cpus), {'1', '10'})
+        self.assertTrue(all(statistics.median(v) >= 0.9 for v in cpus.values()))
+
+    def test_tables_from_the_runs(self):
+        I = self.s['inputs']
+        for c in M.CLASSES:
+            for st in ('T1', 'T2'):
+                for t, b in I['base'][c][st].items():
+                    self.assertAlmostEqual(b, (self.run_value(self.rex, t, 0) + self.run_value(self.rex, t, 1)) / 2)
+                    self.assertEqual(I['long'][c][t], self.run_value(self.rex, t, 0, '10'))
+            for tab, st in ((I['t1'], 'T1'), (I['t2'], 'T2')):
+                for ek, vals in tab[c].items():
+                    for t, v in vals.items():
+                        self.assertEqual(v, I['base'][c][st][t] if ek == self.rex else self.run_value(ek, t, 0))
+
+    def test_power_from_the_pools(self):
+        I = self.s['inputs']
+        for c in M.CLASSES:
+            bs = self.s['graphs'][c]['0']['B']
+            pv = [[self.run_value(self.rex, t, f'pool{i}') / self.run_value(self.rex, t, 'ref') for i in range(M.POOL)]
+                  for t in bs]
+            for arm in ('V2', 'L12'):
+                taus = [I['traj'][f'{c}|{r}']['arms'][arm]['tau'] for r in range(M.REPLICATES)]
+                for d in (0.003, 0.01):
+                    got = sum(M.power(pv, M.ARMS[arm][1], tau, d, M.POWER_PAIRS,
+                                      int(digest({'p': c, 'a': arm, 'd': d, 'r': r})[:12], 16))
+                              for r, tau in enumerate(taus)) / len(taus)
+                    self.assertAlmostEqual(got, self.c['powers'][c][arm][f'{d:g}'])
+
+    def test_the_analysis_recomputes(self):
+        I, s = self.s['inputs'], self.s
+        res = M.analyse(I['traj'], I['t1'], I['t2'], I['base'], I['long'], I['pool_names'], self.c['null'],
+                        self.c['planted'], self.c['powers'], self.rex)
+        for k in ('verdict', 'S1', 'releases', 'harmful', 'confirmed', 'null'):
+            self.assertEqual(res[k], s[k], k)
+        for k in ('P1', 'P2'):
+            self.assertEqual(res[k]['label'], s[k]['label'])
+            self.assertAlmostEqual(res[k]['p_holm'], s[k]['p_holm'])
+        for c in M.CLASSES:
+            self.assertEqual(res['diagnosis'][c]['bottleneck'], s['diagnosis'][c]['bottleneck'])
+            self.assertEqual(res['diagnosis'][c]['headroom']['label'], s['diagnosis'][c]['headroom']['label'])
+            self.assertEqual(res['diagnosis'][c]['expressiveness']['winner'],
+                             s['diagnosis'][c]['expressiveness']['winner'])
+        for tk, row in res['trajectories'].items():
+            for arm in M.ARMS:
+                self.assertAlmostEqual(row['arms'][arm]['final_gain'], s['trajectories'][tk]['arms'][arm]['final_gain'])
+        self.assertEqual(len(self.c['null']), 4 * len(M.CLASSES) * M.NULL_SEARCHES)
+        self.assertEqual(len(self.c['planted']), 4 * len(M.CLASSES) * len(M.PLANTED) * M.PLANTED_SEARCHES)
+
+    def test_graphs_regenerate(self):
+        from genesis import gset as GS
+        from genesis.domains import adapter
+        A = adapter('maxcut_v1')
+        G = M.graphs({A.exposure_identity(t)['canonical'] for t in GS.tasks()})
+        for c in M.CLASSES:
+            self.assertEqual([t.task_id for t in G[c]['T1']], self.s['graphs'][c]['T1'])
+            self.assertEqual([t.task_id for t in G[c]['T2']], self.s['graphs'][c]['T2'])
+            for r in range(M.REPLICATES):
+                for sp in ('A', 'B', 'C'):
+                    self.assertEqual([t.task_id for t in G[c][r][sp]], self.s['graphs'][c][str(r)][sp])
+
+
 if __name__ == '__main__':
     unittest.main()

@@ -1,0 +1,4442 @@
+{
+ "null": [
+  {
+   "arm": "L",
+   "class": "random",
+   "i": 0,
+   "releases": 0,
+   "tau": 0.0012989469029527187
+  },
+  {
+   "arm": "V2",
+   "class": "random",
+   "i": 0,
+   "releases": 0,
+   "tau": 0.0013563387381944109
+  },
+  {
+   "arm": "L12",
+   "class": "random",
+   "i": 0,
+   "releases": 0,
+   "tau": 0.0007761908441230763
+  },
+  {
+   "arm": "V2@160",
+   "class": "random",
+   "i": 0,
+   "releases": 0,
+   "tau": 0.0013563387381944109
+  },
+  {
+   "arm": "L",
+   "class": "random",
+   "i": 1,
+   "releases": 0,
+   "tau": 0.0008030490862768087
+  },
+  {
+   "arm": "V2",
+   "class": "random",
+   "i": 1,
+   "releases": 1,
+   "tau": 0.0008307925903266108
+  },
+  {
+   "arm": "L12",
+   "class": "random",
+   "i": 1,
+   "releases": 0,
+   "tau": 0.0008526533571356047
+  },
+  {
+   "arm": "V2@160",
+   "class": "random",
+   "i": 1,
+   "releases": 1,
+   "tau": 0.0008307925903266108
+  },
+  {
+   "arm": "L",
+   "class": "random",
+   "i": 2,
+   "releases": 0,
+   "tau": 0.0011589451675881684
+  },
+  {
+   "arm": "V2",
+   "class": "random",
+   "i": 2,
+   "releases": 0,
+   "tau": 0.0013991460129674329
+  },
+  {
+   "arm": "L12",
+   "class": "random",
+   "i": 2,
+   "releases": 0,
+   "tau": 0.0004801278404854337
+  },
+  {
+   "arm": "V2@160",
+   "class": "random",
+   "i": 2,
+   "releases": 0,
+   "tau": 0.0013991460129674329
+  },
+  {
+   "arm": "L",
+   "class": "random",
+   "i": 3,
+   "releases": 0,
+   "tau": 0.0015725658967987361
+  },
+  {
+   "arm": "V2",
+   "class": "random",
+   "i": 3,
+   "releases": 0,
+   "tau": 0.0012918418850734385
+  },
+  {
+   "arm": "L12",
+   "class": "random",
+   "i": 3,
+   "releases": 0,
+   "tau": 0.0007979298525695157
+  },
+  {
+   "arm": "V2@160",
+   "class": "random",
+   "i": 3,
+   "releases": 0,
+   "tau": 0.0012918418850734385
+  },
+  {
+   "arm": "L",
+   "class": "random",
+   "i": 4,
+   "releases": 0,
+   "tau": 0.0011868429004147228
+  },
+  {
+   "arm": "V2",
+   "class": "random",
+   "i": 4,
+   "releases": 0,
+   "tau": 0.0012586941619576058
+  },
+  {
+   "arm": "L12",
+   "class": "random",
+   "i": 4,
+   "releases": 0,
+   "tau": 0.0007414540834182259
+  },
+  {
+   "arm": "V2@160",
+   "class": "random",
+   "i": 4,
+   "releases": 0,
+   "tau": 0.0012586941619576058
+  },
+  {
+   "arm": "L",
+   "class": "random",
+   "i": 5,
+   "releases": 0,
+   "tau": 0.0009279660680654936
+  },
+  {
+   "arm": "V2",
+   "class": "random",
+   "i": 5,
+   "releases": 0,
+   "tau": 0.0011760462791936728
+  },
+  {
+   "arm": "L12",
+   "class": "random",
+   "i": 5,
+   "releases": 0,
+   "tau": 0.0006578050310942108
+  },
+  {
+   "arm": "V2@160",
+   "class": "random",
+   "i": 5,
+   "releases": 0,
+   "tau": 0.0011760462791936728
+  },
+  {
+   "arm": "L",
+   "class": "random",
+   "i": 6,
+   "releases": 0,
+   "tau": 0.0015214212016738003
+  },
+  {
+   "arm": "V2",
+   "class": "random",
+   "i": 6,
+   "releases": 0,
+   "tau": 0.0011048215123193438
+  },
+  {
+   "arm": "L12",
+   "class": "random",
+   "i": 6,
+   "releases": 0,
+   "tau": 0.0006717339366275291
+  },
+  {
+   "arm": "V2@160",
+   "class": "random",
+   "i": 6,
+   "releases": 0,
+   "tau": 0.0011048215123193438
+  },
+  {
+   "arm": "L",
+   "class": "random",
+   "i": 7,
+   "releases": 0,
+   "tau": 0.0012893479796288086
+  },
+  {
+   "arm": "V2",
+   "class": "random",
+   "i": 7,
+   "releases": 0,
+   "tau": 0.0011353221850583849
+  },
+  {
+   "arm": "L12",
+   "class": "random",
+   "i": 7,
+   "releases": 0,
+   "tau": 0.0005358938379785012
+  },
+  {
+   "arm": "V2@160",
+   "class": "random",
+   "i": 7,
+   "releases": 0,
+   "tau": 0.0011353221850583849
+  },
+  {
+   "arm": "L",
+   "class": "random",
+   "i": 8,
+   "releases": 0,
+   "tau": 0.0016102500045006298
+  },
+  {
+   "arm": "V2",
+   "class": "random",
+   "i": 8,
+   "releases": 1,
+   "tau": 0.0009857193149559564
+  },
+  {
+   "arm": "L12",
+   "class": "random",
+   "i": 8,
+   "releases": 0,
+   "tau": 0.0008197383378372987
+  },
+  {
+   "arm": "V2@160",
+   "class": "random",
+   "i": 8,
+   "releases": 1,
+   "tau": 0.0009857193149559564
+  },
+  {
+   "arm": "L",
+   "class": "random",
+   "i": 9,
+   "releases": 0,
+   "tau": 0.0015777897740842288
+  },
+  {
+   "arm": "V2",
+   "class": "random",
+   "i": 9,
+   "releases": 0,
+   "tau": 0.0010780919973097962
+  },
+  {
+   "arm": "L12",
+   "class": "random",
+   "i": 9,
+   "releases": 0,
+   "tau": 0.0008589070611958631
+  },
+  {
+   "arm": "V2@160",
+   "class": "random",
+   "i": 9,
+   "releases": 0,
+   "tau": 0.0010780919973097962
+  },
+  {
+   "arm": "L",
+   "class": "random",
+   "i": 10,
+   "releases": 0,
+   "tau": 0.0015462426199171911
+  },
+  {
+   "arm": "V2",
+   "class": "random",
+   "i": 10,
+   "releases": 0,
+   "tau": 0.0012318086878893289
+  },
+  {
+   "arm": "L12",
+   "class": "random",
+   "i": 10,
+   "releases": 0,
+   "tau": 0.0008497904743218395
+  },
+  {
+   "arm": "V2@160",
+   "class": "random",
+   "i": 10,
+   "releases": 0,
+   "tau": 0.0012318086878893289
+  },
+  {
+   "arm": "L",
+   "class": "random",
+   "i": 11,
+   "releases": 0,
+   "tau": 0.0012050846398815626
+  },
+  {
+   "arm": "V2",
+   "class": "random",
+   "i": 11,
+   "releases": 0,
+   "tau": 0.0011235013962313373
+  },
+  {
+   "arm": "L12",
+   "class": "random",
+   "i": 11,
+   "releases": 0,
+   "tau": 0.0008097092038941637
+  },
+  {
+   "arm": "V2@160",
+   "class": "random",
+   "i": 11,
+   "releases": 0,
+   "tau": 0.0011235013962313373
+  },
+  {
+   "arm": "L",
+   "class": "random",
+   "i": 12,
+   "releases": 0,
+   "tau": 0.0012199246655265417
+  },
+  {
+   "arm": "V2",
+   "class": "random",
+   "i": 12,
+   "releases": 1,
+   "tau": 0.001066393345685111
+  },
+  {
+   "arm": "L12",
+   "class": "random",
+   "i": 12,
+   "releases": 0,
+   "tau": 0.0005537690775630714
+  },
+  {
+   "arm": "V2@160",
+   "class": "random",
+   "i": 12,
+   "releases": 1,
+   "tau": 0.001066393345685111
+  },
+  {
+   "arm": "L",
+   "class": "random",
+   "i": 13,
+   "releases": 0,
+   "tau": 0.0011405534858290336
+  },
+  {
+   "arm": "V2",
+   "class": "random",
+   "i": 13,
+   "releases": 0,
+   "tau": 0.0012530266610092306
+  },
+  {
+   "arm": "L12",
+   "class": "random",
+   "i": 13,
+   "releases": 0,
+   "tau": 0.0006955833750850935
+  },
+  {
+   "arm": "V2@160",
+   "class": "random",
+   "i": 13,
+   "releases": 0,
+   "tau": 0.0012530266610092306
+  },
+  {
+   "arm": "L",
+   "class": "random",
+   "i": 14,
+   "releases": 0,
+   "tau": 0.0010626028608158873
+  },
+  {
+   "arm": "V2",
+   "class": "random",
+   "i": 14,
+   "releases": 0,
+   "tau": 0.0009154955034967319
+  },
+  {
+   "arm": "L12",
+   "class": "random",
+   "i": 14,
+   "releases": 0,
+   "tau": 0.0007253975401375497
+  },
+  {
+   "arm": "V2@160",
+   "class": "random",
+   "i": 14,
+   "releases": 0,
+   "tau": 0.0009154955034967319
+  },
+  {
+   "arm": "L",
+   "class": "random",
+   "i": 15,
+   "releases": 0,
+   "tau": 0.0010284060653286298
+  },
+  {
+   "arm": "V2",
+   "class": "random",
+   "i": 15,
+   "releases": 0,
+   "tau": 0.0010324570541007379
+  },
+  {
+   "arm": "L12",
+   "class": "random",
+   "i": 15,
+   "releases": 0,
+   "tau": 0.000731993588428416
+  },
+  {
+   "arm": "V2@160",
+   "class": "random",
+   "i": 15,
+   "releases": 0,
+   "tau": 0.0010324570541007379
+  },
+  {
+   "arm": "L",
+   "class": "random",
+   "i": 16,
+   "releases": 0,
+   "tau": 0.001267638318258433
+  },
+  {
+   "arm": "V2",
+   "class": "random",
+   "i": 16,
+   "releases": 0,
+   "tau": 0.0011543017615821159
+  },
+  {
+   "arm": "L12",
+   "class": "random",
+   "i": 16,
+   "releases": 0,
+   "tau": 0.0007328839864962526
+  },
+  {
+   "arm": "V2@160",
+   "class": "random",
+   "i": 16,
+   "releases": 0,
+   "tau": 0.0011543017615821159
+  },
+  {
+   "arm": "L",
+   "class": "random",
+   "i": 17,
+   "releases": 0,
+   "tau": 0.0014361665941990686
+  },
+  {
+   "arm": "V2",
+   "class": "random",
+   "i": 17,
+   "releases": 0,
+   "tau": 0.0011202299642429144
+  },
+  {
+   "arm": "L12",
+   "class": "random",
+   "i": 17,
+   "releases": 0,
+   "tau": 0.000790046107429031
+  },
+  {
+   "arm": "V2@160",
+   "class": "random",
+   "i": 17,
+   "releases": 0,
+   "tau": 0.0011202299642429144
+  },
+  {
+   "arm": "L",
+   "class": "random",
+   "i": 18,
+   "releases": 0,
+   "tau": 0.0010520809149908404
+  },
+  {
+   "arm": "V2",
+   "class": "random",
+   "i": 18,
+   "releases": 0,
+   "tau": 0.0013656540789379087
+  },
+  {
+   "arm": "L12",
+   "class": "random",
+   "i": 18,
+   "releases": 0,
+   "tau": 0.0007221250413661513
+  },
+  {
+   "arm": "V2@160",
+   "class": "random",
+   "i": 18,
+   "releases": 0,
+   "tau": 0.0013656540789379087
+  },
+  {
+   "arm": "L",
+   "class": "random",
+   "i": 19,
+   "releases": 0,
+   "tau": 0.0007945774179162092
+  },
+  {
+   "arm": "V2",
+   "class": "random",
+   "i": 19,
+   "releases": 0,
+   "tau": 0.0010753141421654161
+  },
+  {
+   "arm": "L12",
+   "class": "random",
+   "i": 19,
+   "releases": 0,
+   "tau": 0.0007461322888852966
+  },
+  {
+   "arm": "V2@160",
+   "class": "random",
+   "i": 19,
+   "releases": 0,
+   "tau": 0.0010753141421654161
+  },
+  {
+   "arm": "L",
+   "class": "planar",
+   "i": 0,
+   "releases": 0,
+   "tau": 0.007088758289652704
+  },
+  {
+   "arm": "V2",
+   "class": "planar",
+   "i": 0,
+   "releases": 0,
+   "tau": 0.005383989979770601
+  },
+  {
+   "arm": "L12",
+   "class": "planar",
+   "i": 0,
+   "releases": 0,
+   "tau": 0.002888650352966396
+  },
+  {
+   "arm": "V2@160",
+   "class": "planar",
+   "i": 0,
+   "releases": 0,
+   "tau": 0.005383989979770601
+  },
+  {
+   "arm": "L",
+   "class": "planar",
+   "i": 1,
+   "releases": 0,
+   "tau": 0.00793805922280351
+  },
+  {
+   "arm": "V2",
+   "class": "planar",
+   "i": 1,
+   "releases": 0,
+   "tau": 0.004675439225420309
+  },
+  {
+   "arm": "L12",
+   "class": "planar",
+   "i": 1,
+   "releases": 0,
+   "tau": 0.0032716956050714233
+  },
+  {
+   "arm": "V2@160",
+   "class": "planar",
+   "i": 1,
+   "releases": 0,
+   "tau": 0.004675439225420309
+  },
+  {
+   "arm": "L",
+   "class": "planar",
+   "i": 2,
+   "releases": 0,
+   "tau": 0.0060177863435767805
+  },
+  {
+   "arm": "V2",
+   "class": "planar",
+   "i": 2,
+   "releases": 0,
+   "tau": 0.006148616658149806
+  },
+  {
+   "arm": "L12",
+   "class": "planar",
+   "i": 2,
+   "releases": 0,
+   "tau": 0.004242313588199617
+  },
+  {
+   "arm": "V2@160",
+   "class": "planar",
+   "i": 2,
+   "releases": 0,
+   "tau": 0.006148616658149806
+  },
+  {
+   "arm": "L",
+   "class": "planar",
+   "i": 3,
+   "releases": 0,
+   "tau": 0.005288726063281044
+  },
+  {
+   "arm": "V2",
+   "class": "planar",
+   "i": 3,
+   "releases": 0,
+   "tau": 0.006034801373695416
+  },
+  {
+   "arm": "L12",
+   "class": "planar",
+   "i": 3,
+   "releases": 0,
+   "tau": 0.003478790564189454
+  },
+  {
+   "arm": "V2@160",
+   "class": "planar",
+   "i": 3,
+   "releases": 0,
+   "tau": 0.006034801373695416
+  },
+  {
+   "arm": "L",
+   "class": "planar",
+   "i": 4,
+   "releases": 0,
+   "tau": 0.004861184454343341
+  },
+  {
+   "arm": "V2",
+   "class": "planar",
+   "i": 4,
+   "releases": 0,
+   "tau": 0.006314280067565902
+  },
+  {
+   "arm": "L12",
+   "class": "planar",
+   "i": 4,
+   "releases": 0,
+   "tau": 0.00358121859188742
+  },
+  {
+   "arm": "V2@160",
+   "class": "planar",
+   "i": 4,
+   "releases": 0,
+   "tau": 0.006314280067565902
+  },
+  {
+   "arm": "L",
+   "class": "planar",
+   "i": 5,
+   "releases": 0,
+   "tau": 0.0067420273715847615
+  },
+  {
+   "arm": "V2",
+   "class": "planar",
+   "i": 5,
+   "releases": 0,
+   "tau": 0.005646094580883681
+  },
+  {
+   "arm": "L12",
+   "class": "planar",
+   "i": 5,
+   "releases": 0,
+   "tau": 0.0029944747805260782
+  },
+  {
+   "arm": "V2@160",
+   "class": "planar",
+   "i": 5,
+   "releases": 0,
+   "tau": 0.005646094580883681
+  },
+  {
+   "arm": "L",
+   "class": "planar",
+   "i": 6,
+   "releases": 0,
+   "tau": 0.00808938412065574
+  },
+  {
+   "arm": "V2",
+   "class": "planar",
+   "i": 6,
+   "releases": 0,
+   "tau": 0.004614058602472222
+  },
+  {
+   "arm": "L12",
+   "class": "planar",
+   "i": 6,
+   "releases": 0,
+   "tau": 0.004021992276921085
+  },
+  {
+   "arm": "V2@160",
+   "class": "planar",
+   "i": 6,
+   "releases": 0,
+   "tau": 0.004614058602472222
+  },
+  {
+   "arm": "L",
+   "class": "planar",
+   "i": 7,
+   "releases": 0,
+   "tau": 0.0070138047062324755
+  },
+  {
+   "arm": "V2",
+   "class": "planar",
+   "i": 7,
+   "releases": 0,
+   "tau": 0.004914547362458166
+  },
+  {
+   "arm": "L12",
+   "class": "planar",
+   "i": 7,
+   "releases": 0,
+   "tau": 0.0027732137949940034
+  },
+  {
+   "arm": "V2@160",
+   "class": "planar",
+   "i": 7,
+   "releases": 0,
+   "tau": 0.004914547362458166
+  },
+  {
+   "arm": "L",
+   "class": "planar",
+   "i": 8,
+   "releases": 0,
+   "tau": 0.005762696018340112
+  },
+  {
+   "arm": "V2",
+   "class": "planar",
+   "i": 8,
+   "releases": 0,
+   "tau": 0.00559877065490261
+  },
+  {
+   "arm": "L12",
+   "class": "planar",
+   "i": 8,
+   "releases": 0,
+   "tau": 0.00368278949990594
+  },
+  {
+   "arm": "V2@160",
+   "class": "planar",
+   "i": 8,
+   "releases": 0,
+   "tau": 0.00559877065490261
+  },
+  {
+   "arm": "L",
+   "class": "planar",
+   "i": 9,
+   "releases": 0,
+   "tau": 0.007899635626225716
+  },
+  {
+   "arm": "V2",
+   "class": "planar",
+   "i": 9,
+   "releases": 0,
+   "tau": 0.006749233956554898
+  },
+  {
+   "arm": "L12",
+   "class": "planar",
+   "i": 9,
+   "releases": 0,
+   "tau": 0.003800997475483152
+  },
+  {
+   "arm": "V2@160",
+   "class": "planar",
+   "i": 9,
+   "releases": 0,
+   "tau": 0.006749233956554898
+  },
+  {
+   "arm": "L",
+   "class": "planar",
+   "i": 10,
+   "releases": 0,
+   "tau": 0.005863473414307389
+  },
+  {
+   "arm": "V2",
+   "class": "planar",
+   "i": 10,
+   "releases": 0,
+   "tau": 0.004892519511048016
+  },
+  {
+   "arm": "L12",
+   "class": "planar",
+   "i": 10,
+   "releases": 0,
+   "tau": 0.0034252463410988842
+  },
+  {
+   "arm": "V2@160",
+   "class": "planar",
+   "i": 10,
+   "releases": 0,
+   "tau": 0.004892519511048016
+  },
+  {
+   "arm": "L",
+   "class": "planar",
+   "i": 11,
+   "releases": 0,
+   "tau": 0.006689243275865248
+  },
+  {
+   "arm": "V2",
+   "class": "planar",
+   "i": 11,
+   "releases": 0,
+   "tau": 0.005627047321036351
+  },
+  {
+   "arm": "L12",
+   "class": "planar",
+   "i": 11,
+   "releases": 0,
+   "tau": 0.0038540808421591373
+  },
+  {
+   "arm": "V2@160",
+   "class": "planar",
+   "i": 11,
+   "releases": 0,
+   "tau": 0.005627047321036351
+  },
+  {
+   "arm": "L",
+   "class": "planar",
+   "i": 12,
+   "releases": 0,
+   "tau": 0.005529393208406358
+  },
+  {
+   "arm": "V2",
+   "class": "planar",
+   "i": 12,
+   "releases": 0,
+   "tau": 0.00592766708890912
+  },
+  {
+   "arm": "L12",
+   "class": "planar",
+   "i": 12,
+   "releases": 0,
+   "tau": 0.0038109907209656047
+  },
+  {
+   "arm": "V2@160",
+   "class": "planar",
+   "i": 12,
+   "releases": 0,
+   "tau": 0.00592766708890912
+  },
+  {
+   "arm": "L",
+   "class": "planar",
+   "i": 13,
+   "releases": 0,
+   "tau": 0.004858473919827456
+  },
+  {
+   "arm": "V2",
+   "class": "planar",
+   "i": 13,
+   "releases": 0,
+   "tau": 0.005377657880356093
+  },
+  {
+   "arm": "L12",
+   "class": "planar",
+   "i": 13,
+   "releases": 0,
+   "tau": 0.002861218031175553
+  },
+  {
+   "arm": "V2@160",
+   "class": "planar",
+   "i": 13,
+   "releases": 0,
+   "tau": 0.005377657880356093
+  },
+  {
+   "arm": "L",
+   "class": "planar",
+   "i": 14,
+   "releases": 0,
+   "tau": 0.007602845234867533
+  },
+  {
+   "arm": "V2",
+   "class": "planar",
+   "i": 14,
+   "releases": 0,
+   "tau": 0.005934282782752228
+  },
+  {
+   "arm": "L12",
+   "class": "planar",
+   "i": 14,
+   "releases": 0,
+   "tau": 0.0038300098527589348
+  },
+  {
+   "arm": "V2@160",
+   "class": "planar",
+   "i": 14,
+   "releases": 0,
+   "tau": 0.005934282782752228
+  },
+  {
+   "arm": "L",
+   "class": "planar",
+   "i": 15,
+   "releases": 0,
+   "tau": 0.005426775318979402
+  },
+  {
+   "arm": "V2",
+   "class": "planar",
+   "i": 15,
+   "releases": 0,
+   "tau": 0.006936779705047453
+  },
+  {
+   "arm": "L12",
+   "class": "planar",
+   "i": 15,
+   "releases": 0,
+   "tau": 0.0033341735929473017
+  },
+  {
+   "arm": "V2@160",
+   "class": "planar",
+   "i": 15,
+   "releases": 0,
+   "tau": 0.006936779705047453
+  },
+  {
+   "arm": "L",
+   "class": "planar",
+   "i": 16,
+   "releases": 0,
+   "tau": 0.00643085539782494
+  },
+  {
+   "arm": "V2",
+   "class": "planar",
+   "i": 16,
+   "releases": 0,
+   "tau": 0.005602726225211082
+  },
+  {
+   "arm": "L12",
+   "class": "planar",
+   "i": 16,
+   "releases": 0,
+   "tau": 0.003404546215125886
+  },
+  {
+   "arm": "V2@160",
+   "class": "planar",
+   "i": 16,
+   "releases": 0,
+   "tau": 0.005602726225211082
+  },
+  {
+   "arm": "L",
+   "class": "planar",
+   "i": 17,
+   "releases": 0,
+   "tau": 0.00593115351992634
+  },
+  {
+   "arm": "V2",
+   "class": "planar",
+   "i": 17,
+   "releases": 0,
+   "tau": 0.004648642947614175
+  },
+  {
+   "arm": "L12",
+   "class": "planar",
+   "i": 17,
+   "releases": 0,
+   "tau": 0.003328806821038975
+  },
+  {
+   "arm": "V2@160",
+   "class": "planar",
+   "i": 17,
+   "releases": 0,
+   "tau": 0.004648642947614175
+  },
+  {
+   "arm": "L",
+   "class": "planar",
+   "i": 18,
+   "releases": 0,
+   "tau": 0.00707480476374844
+  },
+  {
+   "arm": "V2",
+   "class": "planar",
+   "i": 18,
+   "releases": 0,
+   "tau": 0.00611045902200242
+  },
+  {
+   "arm": "L12",
+   "class": "planar",
+   "i": 18,
+   "releases": 0,
+   "tau": 0.003098244816771318
+  },
+  {
+   "arm": "V2@160",
+   "class": "planar",
+   "i": 18,
+   "releases": 0,
+   "tau": 0.00611045902200242
+  },
+  {
+   "arm": "L",
+   "class": "planar",
+   "i": 19,
+   "releases": 0,
+   "tau": 0.00642660706814397
+  },
+  {
+   "arm": "V2",
+   "class": "planar",
+   "i": 19,
+   "releases": 0,
+   "tau": 0.005545043217317254
+  },
+  {
+   "arm": "L12",
+   "class": "planar",
+   "i": 19,
+   "releases": 0,
+   "tau": 0.0031738610812147646
+  },
+  {
+   "arm": "V2@160",
+   "class": "planar",
+   "i": 19,
+   "releases": 0,
+   "tau": 0.005545043217317254
+  },
+  {
+   "arm": "L",
+   "class": "toroidal",
+   "i": 0,
+   "releases": 0,
+   "tau": 0.0017142493988499983
+  },
+  {
+   "arm": "V2",
+   "class": "toroidal",
+   "i": 0,
+   "releases": 0,
+   "tau": 0.002059578309012862
+  },
+  {
+   "arm": "L12",
+   "class": "toroidal",
+   "i": 0,
+   "releases": 0,
+   "tau": 0.0010355691664919496
+  },
+  {
+   "arm": "V2@160",
+   "class": "toroidal",
+   "i": 0,
+   "releases": 0,
+   "tau": 0.002059578309012862
+  },
+  {
+   "arm": "L",
+   "class": "toroidal",
+   "i": 1,
+   "releases": 0,
+   "tau": 0.0024217236314531708
+  },
+  {
+   "arm": "V2",
+   "class": "toroidal",
+   "i": 1,
+   "releases": 0,
+   "tau": 0.0015805384437832218
+  },
+  {
+   "arm": "L12",
+   "class": "toroidal",
+   "i": 1,
+   "releases": 0,
+   "tau": 0.0013987383589962876
+  },
+  {
+   "arm": "V2@160",
+   "class": "toroidal",
+   "i": 1,
+   "releases": 0,
+   "tau": 0.0015805384437832218
+  },
+  {
+   "arm": "L",
+   "class": "toroidal",
+   "i": 2,
+   "releases": 0,
+   "tau": 0.0013333253576747696
+  },
+  {
+   "arm": "V2",
+   "class": "toroidal",
+   "i": 2,
+   "releases": 0,
+   "tau": 0.0017922352659284582
+  },
+  {
+   "arm": "L12",
+   "class": "toroidal",
+   "i": 2,
+   "releases": 0,
+   "tau": 0.0009684138966369665
+  },
+  {
+   "arm": "V2@160",
+   "class": "toroidal",
+   "i": 2,
+   "releases": 0,
+   "tau": 0.0017922352659284582
+  },
+  {
+   "arm": "L",
+   "class": "toroidal",
+   "i": 3,
+   "releases": 0,
+   "tau": 0.0021512703554757476
+  },
+  {
+   "arm": "V2",
+   "class": "toroidal",
+   "i": 3,
+   "releases": 0,
+   "tau": 0.0015190426610685417
+  },
+  {
+   "arm": "L12",
+   "class": "toroidal",
+   "i": 3,
+   "releases": 0,
+   "tau": 0.001318603771659114
+  },
+  {
+   "arm": "V2@160",
+   "class": "toroidal",
+   "i": 3,
+   "releases": 0,
+   "tau": 0.0015190426610685417
+  },
+  {
+   "arm": "L",
+   "class": "toroidal",
+   "i": 4,
+   "releases": 0,
+   "tau": 0.0017299377536782326
+  },
+  {
+   "arm": "V2",
+   "class": "toroidal",
+   "i": 4,
+   "releases": 0,
+   "tau": 0.0016016476145642342
+  },
+  {
+   "arm": "L12",
+   "class": "toroidal",
+   "i": 4,
+   "releases": 0,
+   "tau": 0.0009736119491348656
+  },
+  {
+   "arm": "V2@160",
+   "class": "toroidal",
+   "i": 4,
+   "releases": 0,
+   "tau": 0.0016016476145642342
+  },
+  {
+   "arm": "L",
+   "class": "toroidal",
+   "i": 5,
+   "releases": 0,
+   "tau": 0.00233313723342298
+  },
+  {
+   "arm": "V2",
+   "class": "toroidal",
+   "i": 5,
+   "releases": 0,
+   "tau": 0.0014940669912474882
+  },
+  {
+   "arm": "L12",
+   "class": "toroidal",
+   "i": 5,
+   "releases": 0,
+   "tau": 0.0008847494460772943
+  },
+  {
+   "arm": "V2@160",
+   "class": "toroidal",
+   "i": 5,
+   "releases": 0,
+   "tau": 0.0014940669912474882
+  },
+  {
+   "arm": "L",
+   "class": "toroidal",
+   "i": 6,
+   "releases": 0,
+   "tau": 0.0017292149255406697
+  },
+  {
+   "arm": "V2",
+   "class": "toroidal",
+   "i": 6,
+   "releases": 0,
+   "tau": 0.001627935498946946
+  },
+  {
+   "arm": "L12",
+   "class": "toroidal",
+   "i": 6,
+   "releases": 0,
+   "tau": 0.0007614785292275689
+  },
+  {
+   "arm": "V2@160",
+   "class": "toroidal",
+   "i": 6,
+   "releases": 0,
+   "tau": 0.001627935498946946
+  },
+  {
+   "arm": "L",
+   "class": "toroidal",
+   "i": 7,
+   "releases": 0,
+   "tau": 0.0022519020234291476
+  },
+  {
+   "arm": "V2",
+   "class": "toroidal",
+   "i": 7,
+   "releases": 0,
+   "tau": 0.0017167581342357602
+  },
+  {
+   "arm": "L12",
+   "class": "toroidal",
+   "i": 7,
+   "releases": 0,
+   "tau": 0.0015040681195479559
+  },
+  {
+   "arm": "V2@160",
+   "class": "toroidal",
+   "i": 7,
+   "releases": 0,
+   "tau": 0.0017167581342357602
+  },
+  {
+   "arm": "L",
+   "class": "toroidal",
+   "i": 8,
+   "releases": 0,
+   "tau": 0.0019275620195711544
+  },
+  {
+   "arm": "V2",
+   "class": "toroidal",
+   "i": 8,
+   "releases": 0,
+   "tau": 0.00209481089658968
+  },
+  {
+   "arm": "L12",
+   "class": "toroidal",
+   "i": 8,
+   "releases": 0,
+   "tau": 0.0011977778230253789
+  },
+  {
+   "arm": "V2@160",
+   "class": "toroidal",
+   "i": 8,
+   "releases": 0,
+   "tau": 0.00209481089658968
+  },
+  {
+   "arm": "L",
+   "class": "toroidal",
+   "i": 9,
+   "releases": 0,
+   "tau": 0.0017305365872846649
+  },
+  {
+   "arm": "V2",
+   "class": "toroidal",
+   "i": 9,
+   "releases": 0,
+   "tau": 0.0015684018259897567
+  },
+  {
+   "arm": "L12",
+   "class": "toroidal",
+   "i": 9,
+   "releases": 0,
+   "tau": 0.001233573136957452
+  },
+  {
+   "arm": "V2@160",
+   "class": "toroidal",
+   "i": 9,
+   "releases": 0,
+   "tau": 0.0015684018259897567
+  },
+  {
+   "arm": "L",
+   "class": "toroidal",
+   "i": 10,
+   "releases": 0,
+   "tau": 0.002100824674215441
+  },
+  {
+   "arm": "V2",
+   "class": "toroidal",
+   "i": 10,
+   "releases": 0,
+   "tau": 0.0015837486435732722
+  },
+  {
+   "arm": "L12",
+   "class": "toroidal",
+   "i": 10,
+   "releases": 0,
+   "tau": 0.0011570705843162927
+  },
+  {
+   "arm": "V2@160",
+   "class": "toroidal",
+   "i": 10,
+   "releases": 0,
+   "tau": 0.0015837486435732722
+  },
+  {
+   "arm": "L",
+   "class": "toroidal",
+   "i": 11,
+   "releases": 0,
+   "tau": 0.002146601986187173
+  },
+  {
+   "arm": "V2",
+   "class": "toroidal",
+   "i": 11,
+   "releases": 0,
+   "tau": 0.0016506402960421486
+  },
+  {
+   "arm": "L12",
+   "class": "toroidal",
+   "i": 11,
+   "releases": 0,
+   "tau": 0.0015525734588606565
+  },
+  {
+   "arm": "V2@160",
+   "class": "toroidal",
+   "i": 11,
+   "releases": 0,
+   "tau": 0.0016506402960421486
+  },
+  {
+   "arm": "L",
+   "class": "toroidal",
+   "i": 12,
+   "releases": 0,
+   "tau": 0.0014261344008604522
+  },
+  {
+   "arm": "V2",
+   "class": "toroidal",
+   "i": 12,
+   "releases": 0,
+   "tau": 0.0019860284100445143
+  },
+  {
+   "arm": "L12",
+   "class": "toroidal",
+   "i": 12,
+   "releases": 0,
+   "tau": 0.0017199208623134524
+  },
+  {
+   "arm": "V2@160",
+   "class": "toroidal",
+   "i": 12,
+   "releases": 0,
+   "tau": 0.0019860284100445143
+  },
+  {
+   "arm": "L",
+   "class": "toroidal",
+   "i": 13,
+   "releases": 0,
+   "tau": 0.0018098987292719166
+  },
+  {
+   "arm": "V2",
+   "class": "toroidal",
+   "i": 13,
+   "releases": 0,
+   "tau": 0.0021645734514939246
+  },
+  {
+   "arm": "L12",
+   "class": "toroidal",
+   "i": 13,
+   "releases": 0,
+   "tau": 0.001098477223760035
+  },
+  {
+   "arm": "V2@160",
+   "class": "toroidal",
+   "i": 13,
+   "releases": 0,
+   "tau": 0.0021645734514939246
+  },
+  {
+   "arm": "L",
+   "class": "toroidal",
+   "i": 14,
+   "releases": 0,
+   "tau": 0.002385775066285858
+  },
+  {
+   "arm": "V2",
+   "class": "toroidal",
+   "i": 14,
+   "releases": 0,
+   "tau": 0.002049864647479892
+  },
+  {
+   "arm": "L12",
+   "class": "toroidal",
+   "i": 14,
+   "releases": 0,
+   "tau": 0.00098364755678651
+  },
+  {
+   "arm": "V2@160",
+   "class": "toroidal",
+   "i": 14,
+   "releases": 0,
+   "tau": 0.002049864647479892
+  },
+  {
+   "arm": "L",
+   "class": "toroidal",
+   "i": 15,
+   "releases": 0,
+   "tau": 0.0021184065163786913
+  },
+  {
+   "arm": "V2",
+   "class": "toroidal",
+   "i": 15,
+   "releases": 0,
+   "tau": 0.0019957389490641185
+  },
+  {
+   "arm": "L12",
+   "class": "toroidal",
+   "i": 15,
+   "releases": 0,
+   "tau": 0.0008717243737635344
+  },
+  {
+   "arm": "V2@160",
+   "class": "toroidal",
+   "i": 15,
+   "releases": 0,
+   "tau": 0.0019957389490641185
+  },
+  {
+   "arm": "L",
+   "class": "toroidal",
+   "i": 16,
+   "releases": 0,
+   "tau": 0.0021943287682899683
+  },
+  {
+   "arm": "V2",
+   "class": "toroidal",
+   "i": 16,
+   "releases": 0,
+   "tau": 0.001661147377300414
+  },
+  {
+   "arm": "L12",
+   "class": "toroidal",
+   "i": 16,
+   "releases": 0,
+   "tau": 0.0011490847583079846
+  },
+  {
+   "arm": "V2@160",
+   "class": "toroidal",
+   "i": 16,
+   "releases": 0,
+   "tau": 0.001661147377300414
+  },
+  {
+   "arm": "L",
+   "class": "toroidal",
+   "i": 17,
+   "releases": 0,
+   "tau": 0.0015221753827916388
+  },
+  {
+   "arm": "V2",
+   "class": "toroidal",
+   "i": 17,
+   "releases": 0,
+   "tau": 0.0018238251033451081
+  },
+  {
+   "arm": "L12",
+   "class": "toroidal",
+   "i": 17,
+   "releases": 0,
+   "tau": 0.0008594401804660098
+  },
+  {
+   "arm": "V2@160",
+   "class": "toroidal",
+   "i": 17,
+   "releases": 0,
+   "tau": 0.0018238251033451081
+  },
+  {
+   "arm": "L",
+   "class": "toroidal",
+   "i": 18,
+   "releases": 0,
+   "tau": 0.0018871025015407808
+  },
+  {
+   "arm": "V2",
+   "class": "toroidal",
+   "i": 18,
+   "releases": 0,
+   "tau": 0.00180097466297602
+  },
+  {
+   "arm": "L12",
+   "class": "toroidal",
+   "i": 18,
+   "releases": 0,
+   "tau": 0.001191238045629727
+  },
+  {
+   "arm": "V2@160",
+   "class": "toroidal",
+   "i": 18,
+   "releases": 0,
+   "tau": 0.00180097466297602
+  },
+  {
+   "arm": "L",
+   "class": "toroidal",
+   "i": 19,
+   "releases": 0,
+   "tau": 0.0013378225794724945
+  },
+  {
+   "arm": "V2",
+   "class": "toroidal",
+   "i": 19,
+   "releases": 0,
+   "tau": 0.0019307764246887808
+  },
+  {
+   "arm": "L12",
+   "class": "toroidal",
+   "i": 19,
+   "releases": 0,
+   "tau": 0.0011278865963328373
+  },
+  {
+   "arm": "V2@160",
+   "class": "toroidal",
+   "i": 19,
+   "releases": 0,
+   "tau": 0.0019307764246887808
+  }
+ ],
+ "planted": [
+  {
+   "arm": "L",
+   "class": "random",
+   "delta": 0.0025,
+   "found": true,
+   "i": 0,
+   "released": true,
+   "releases": 1,
+   "start_trait": false,
+   "tau": 0.0010730778794712324
+  },
+  {
+   "arm": "V2",
+   "class": "random",
+   "delta": 0.0025,
+   "found": true,
+   "i": 0,
+   "released": true,
+   "releases": 1,
+   "start_trait": false,
+   "tau": 0.0011711293903564244
+  },
+  {
+   "arm": "L12",
+   "class": "random",
+   "delta": 0.0025,
+   "found": false,
+   "i": 0,
+   "released": false,
+   "releases": 0,
+   "start_trait": false,
+   "tau": 0.0006347628369659311
+  },
+  {
+   "arm": "V2@160",
+   "class": "random",
+   "delta": 0.0025,
+   "found": false,
+   "i": 0,
+   "released": false,
+   "releases": 0,
+   "start_trait": false,
+   "tau": 0.0011711293903564244
+  },
+  {
+   "arm": "L",
+   "class": "random",
+   "delta": 0.0025,
+   "found": true,
+   "i": 1,
+   "released": true,
+   "releases": 1,
+   "start_trait": false,
+   "tau": 0.0009053723177531182
+  },
+  {
+   "arm": "V2",
+   "class": "random",
+   "delta": 0.0025,
+   "found": true,
+   "i": 1,
+   "released": true,
+   "releases": 1,
+   "start_trait": false,
+   "tau": 0.0011177624496824898
+  },
+  {
+   "arm": "L12",
+   "class": "random",
+   "delta": 0.0025,
+   "found": false,
+   "i": 1,
+   "released": false,
+   "releases": 0,
+   "start_trait": false,
+   "tau": 0.0007575456638598961
+  },
+  {
+   "arm": "V2@160",
+   "class": "random",
+   "delta": 0.0025,
+   "found": false,
+   "i": 1,
+   "released": false,
+   "releases": 0,
+   "start_trait": false,
+   "tau": 0.0011177624496824898
+  },
+  {
+   "arm": "L",
+   "class": "random",
+   "delta": 0.0025,
+   "found": true,
+   "i": 2,
+   "released": true,
+   "releases": 1,
+   "start_trait": false,
+   "tau": 0.0012117835038334258
+  },
+  {
+   "arm": "V2",
+   "class": "random",
+   "delta": 0.0025,
+   "found": true,
+   "i": 2,
+   "released": true,
+   "releases": 1,
+   "start_trait": false,
+   "tau": 0.0011959526071415407
+  },
+  {
+   "arm": "L12",
+   "class": "random",
+   "delta": 0.0025,
+   "found": true,
+   "i": 2,
+   "released": true,
+   "releases": 1,
+   "start_trait": false,
+   "tau": 0.0006330594003729706
+  },
+  {
+   "arm": "V2@160",
+   "class": "random",
+   "delta": 0.0025,
+   "found": true,
+   "i": 2,
+   "released": true,
+   "releases": 1,
+   "start_trait": false,
+   "tau": 0.0011959526071415407
+  },
+  {
+   "arm": "L",
+   "class": "random",
+   "delta": 0.0025,
+   "found": true,
+   "i": 3,
+   "released": true,
+   "releases": 1,
+   "start_trait": false,
+   "tau": 0.001347695686989351
+  },
+  {
+   "arm": "V2",
+   "class": "random",
+   "delta": 0.0025,
+   "found": true,
+   "i": 3,
+   "released": true,
+   "releases": 1,
+   "start_trait": false,
+   "tau": 0.0007996944482641648
+  },
+  {
+   "arm": "L12",
+   "class": "random",
+   "delta": 0.0025,
+   "found": true,
+   "i": 3,
+   "released": true,
+   "releases": 1,
+   "start_trait": false,
+   "tau": 0.000659443930777708
+  },
+  {
+   "arm": "V2@160",
+   "class": "random",
+   "delta": 0.0025,
+   "found": true,
+   "i": 3,
+   "released": true,
+   "releases": 1,
+   "start_trait": false,
+   "tau": 0.0007996944482641648
+  },
+  {
+   "arm": "L",
+   "class": "random",
+   "delta": 0.0025,
+   "found": true,
+   "i": 4,
+   "released": true,
+   "releases": 1,
+   "start_trait": false,
+   "tau": 0.0013691793430257245
+  },
+  {
+   "arm": "V2",
+   "class": "random",
+   "delta": 0.0025,
+   "found": true,
+   "i": 4,
+   "released": true,
+   "releases": 1,
+   "start_trait": false,
+   "tau": 0.0011693165971793898
+  },
+  {
+   "arm": "L12",
+   "class": "random",
+   "delta": 0.0025,
+   "found": true,
+   "i": 4,
+   "released": true,
+   "releases": 1,
+   "start_trait": false,
+   "tau": 0.0007560868781150417
+  },
+  {
+   "arm": "V2@160",
+   "class": "random",
+   "delta": 0.0025,
+   "found": true,
+   "i": 4,
+   "released": true,
+   "releases": 1,
+   "start_trait": false,
+   "tau": 0.0011693165971793898
+  },
+  {
+   "arm": "L",
+   "class": "random",
+   "delta": 0.0025,
+   "found": true,
+   "i": 5,
+   "released": true,
+   "releases": 1,
+   "start_trait": false,
+   "tau": 0.0009111603413889539
+  },
+  {
+   "arm": "V2",
+   "class": "random",
+   "delta": 0.0025,
+   "found": false,
+   "i": 5,
+   "released": false,
+   "releases": 0,
+   "start_trait": false,
+   "tau": 0.0012909361005015883
+  },
+  {
+   "arm": "L12",
+   "class": "random",
+   "delta": 0.0025,
+   "found": false,
+   "i": 5,
+   "released": false,
+   "releases": 0,
+   "start_trait": false,
+   "tau": 0.0005973535529322038
+  },
+  {
+   "arm": "V2@160",
+   "class": "random",
+   "delta": 0.0025,
+   "found": false,
+   "i": 5,
+   "released": false,
+   "releases": 0,
+   "start_trait": false,
+   "tau": 0.0012909361005015883
+  },
+  {
+   "arm": "L",
+   "class": "random",
+   "delta": 0.0025,
+   "found": true,
+   "i": 6,
+   "released": true,
+   "releases": 1,
+   "start_trait": false,
+   "tau": 0.0015633954111440754
+  },
+  {
+   "arm": "V2",
+   "class": "random",
+   "delta": 0.0025,
+   "found": true,
+   "i": 6,
+   "released": true,
+   "releases": 1,
+   "start_trait": false,
+   "tau": 0.0011693957820518765
+  },
+  {
+   "arm": "L12",
+   "class": "random",
+   "delta": 0.0025,
+   "found": true,
+   "i": 6,
+   "released": true,
+   "releases": 1,
+   "start_trait": false,
+   "tau": 0.0006342861528597694
+  },
+  {
+   "arm": "V2@160",
+   "class": "random",
+   "delta": 0.0025,
+   "found": true,
+   "i": 6,
+   "released": true,
+   "releases": 1,
+   "start_trait": false,
+   "tau": 0.0011693957820518765
+  },
+  {
+   "arm": "L",
+   "class": "random",
+   "delta": 0.0025,
+   "found": false,
+   "i": 7,
+   "released": false,
+   "releases": 0,
+   "start_trait": false,
+   "tau": 0.0014241754137143284
+  },
+  {
+   "arm": "V2",
+   "class": "random",
+   "delta": 0.0025,
+   "found": false,
+   "i": 7,
+   "released": false,
+   "releases": 0,
+   "start_trait": false,
+   "tau": 0.0010012516586587496
+  },
+  {
+   "arm": "L12",
+   "class": "random",
+   "delta": 0.0025,
+   "found": false,
+   "i": 7,
+   "released": false,
+   "releases": 0,
+   "start_trait": false,
+   "tau": 0.0007988295415818512
+  },
+  {
+   "arm": "V2@160",
+   "class": "random",
+   "delta": 0.0025,
+   "found": false,
+   "i": 7,
+   "released": false,
+   "releases": 0,
+   "start_trait": false,
+   "tau": 0.0010012516586587496
+  },
+  {
+   "arm": "L",
+   "class": "random",
+   "delta": 0.0025,
+   "found": false,
+   "i": 8,
+   "released": false,
+   "releases": 0,
+   "start_trait": false,
+   "tau": 0.0013957613853272015
+  },
+  {
+   "arm": "V2",
+   "class": "random",
+   "delta": 0.0025,
+   "found": false,
+   "i": 8,
+   "released": false,
+   "releases": 0,
+   "start_trait": false,
+   "tau": 0.00103660672733945
+  },
+  {
+   "arm": "L12",
+   "class": "random",
+   "delta": 0.0025,
+   "found": false,
+   "i": 8,
+   "released": false,
+   "releases": 0,
+   "start_trait": false,
+   "tau": 0.0010125896472669904
+  },
+  {
+   "arm": "V2@160",
+   "class": "random",
+   "delta": 0.0025,
+   "found": false,
+   "i": 8,
+   "released": false,
+   "releases": 0,
+   "start_trait": false,
+   "tau": 0.00103660672733945
+  },
+  {
+   "arm": "L",
+   "class": "random",
+   "delta": 0.0025,
+   "found": true,
+   "i": 9,
+   "released": true,
+   "releases": 1,
+   "start_trait": false,
+   "tau": 0.0014909949740488622
+  },
+  {
+   "arm": "V2",
+   "class": "random",
+   "delta": 0.0025,
+   "found": true,
+   "i": 9,
+   "released": true,
+   "releases": 1,
+   "start_trait": false,
+   "tau": 0.0009590214547445225
+  },
+  {
+   "arm": "L12",
+   "class": "random",
+   "delta": 0.0025,
+   "found": true,
+   "i": 9,
+   "released": true,
+   "releases": 1,
+   "start_trait": false,
+   "tau": 0.0009651094111017571
+  },
+  {
+   "arm": "V2@160",
+   "class": "random",
+   "delta": 0.0025,
+   "found": false,
+   "i": 9,
+   "released": false,
+   "releases": 0,
+   "start_trait": false,
+   "tau": 0.0009590214547445225
+  },
+  {
+   "arm": "L",
+   "class": "random",
+   "delta": 0.01,
+   "found": true,
+   "i": 0,
+   "released": true,
+   "releases": 1,
+   "start_trait": false,
+   "tau": 0.0011873718967840147
+  },
+  {
+   "arm": "V2",
+   "class": "random",
+   "delta": 0.01,
+   "found": true,
+   "i": 0,
+   "released": true,
+   "releases": 1,
+   "start_trait": false,
+   "tau": 0.0013228725384639812
+  },
+  {
+   "arm": "L12",
+   "class": "random",
+   "delta": 0.01,
+   "found": true,
+   "i": 0,
+   "released": true,
+   "releases": 1,
+   "start_trait": false,
+   "tau": 0.0008434468720292577
+  },
+  {
+   "arm": "V2@160",
+   "class": "random",
+   "delta": 0.01,
+   "found": true,
+   "i": 0,
+   "released": true,
+   "releases": 1,
+   "start_trait": false,
+   "tau": 0.0013228725384639812
+  },
+  {
+   "arm": "L",
+   "class": "random",
+   "delta": 0.01,
+   "found": true,
+   "i": 1,
+   "released": true,
+   "releases": 1,
+   "start_trait": false,
+   "tau": 0.001339555007708359
+  },
+  {
+   "arm": "V2",
+   "class": "random",
+   "delta": 0.01,
+   "found": true,
+   "i": 1,
+   "released": true,
+   "releases": 2,
+   "start_trait": false,
+   "tau": 0.0010144124947009158
+  },
+  {
+   "arm": "L12",
+   "class": "random",
+   "delta": 0.01,
+   "found": true,
+   "i": 1,
+   "released": true,
+   "releases": 1,
+   "start_trait": false,
+   "tau": 0.0006949749376326914
+  },
+  {
+   "arm": "V2@160",
+   "class": "random",
+   "delta": 0.01,
+   "found": true,
+   "i": 1,
+   "released": true,
+   "releases": 2,
+   "start_trait": false,
+   "tau": 0.0010144124947009158
+  },
+  {
+   "arm": "L",
+   "class": "random",
+   "delta": 0.01,
+   "found": true,
+   "i": 2,
+   "released": true,
+   "releases": 1,
+   "start_trait": false,
+   "tau": 0.001115247154046552
+  },
+  {
+   "arm": "V2",
+   "class": "random",
+   "delta": 0.01,
+   "found": true,
+   "i": 2,
+   "released": true,
+   "releases": 1,
+   "start_trait": false,
+   "tau": 0.0010200014076237804
+  },
+  {
+   "arm": "L12",
+   "class": "random",
+   "delta": 0.01,
+   "found": true,
+   "i": 2,
+   "released": true,
+   "releases": 1,
+   "start_trait": false,
+   "tau": 0.0006247992199104965
+  },
+  {
+   "arm": "V2@160",
+   "class": "random",
+   "delta": 0.01,
+   "found": true,
+   "i": 2,
+   "released": true,
+   "releases": 1,
+   "start_trait": false,
+   "tau": 0.0010200014076237804
+  },
+  {
+   "arm": "L",
+   "class": "random",
+   "delta": 0.01,
+   "found": true,
+   "i": 3,
+   "released": true,
+   "releases": 1,
+   "start_trait": false,
+   "tau": 0.0010288595762240314
+  },
+  {
+   "arm": "V2",
+   "class": "random",
+   "delta": 0.01,
+   "found": true,
+   "i": 3,
+   "released": true,
+   "releases": 1,
+   "start_trait": false,
+   "tau": 0.0011124801356515003
+  },
+  {
+   "arm": "L12",
+   "class": "random",
+   "delta": 0.01,
+   "found": true,
+   "i": 3,
+   "released": true,
+   "releases": 1,
+   "start_trait": false,
+   "tau": 0.0006974234288925897
+  },
+  {
+   "arm": "V2@160",
+   "class": "random",
+   "delta": 0.01,
+   "found": true,
+   "i": 3,
+   "released": true,
+   "releases": 1,
+   "start_trait": false,
+   "tau": 0.0011124801356515003
+  },
+  {
+   "arm": "L",
+   "class": "random",
+   "delta": 0.01,
+   "found": true,
+   "i": 4,
+   "released": true,
+   "releases": 1,
+   "start_trait": false,
+   "tau": 0.0009205308796500299
+  },
+  {
+   "arm": "V2",
+   "class": "random",
+   "delta": 0.01,
+   "found": true,
+   "i": 4,
+   "released": true,
+   "releases": 1,
+   "start_trait": false,
+   "tau": 0.0010504857773407387
+  },
+  {
+   "arm": "L12",
+   "class": "random",
+   "delta": 0.01,
+   "found": true,
+   "i": 4,
+   "released": true,
+   "releases": 1,
+   "start_trait": false,
+   "tau": 0.000762900472817555
+  },
+  {
+   "arm": "V2@160",
+   "class": "random",
+   "delta": 0.01,
+   "found": true,
+   "i": 4,
+   "released": true,
+   "releases": 1,
+   "start_trait": false,
+   "tau": 0.0010504857773407387
+  },
+  {
+   "arm": "L",
+   "class": "random",
+   "delta": 0.01,
+   "found": true,
+   "i": 5,
+   "released": true,
+   "releases": 1,
+   "start_trait": false,
+   "tau": 0.001288899956354032
+  },
+  {
+   "arm": "V2",
+   "class": "random",
+   "delta": 0.01,
+   "found": true,
+   "i": 5,
+   "released": true,
+   "releases": 1,
+   "start_trait": false,
+   "tau": 0.0009414404669554139
+  },
+  {
+   "arm": "L12",
+   "class": "random",
+   "delta": 0.01,
+   "found": true,
+   "i": 5,
+   "released": true,
+   "releases": 1,
+   "start_trait": false,
+   "tau": 0.0006530692120310145
+  },
+  {
+   "arm": "V2@160",
+   "class": "random",
+   "delta": 0.01,
+   "found": true,
+   "i": 5,
+   "released": true,
+   "releases": 1,
+   "start_trait": false,
+   "tau": 0.0009414404669554139
+  },
+  {
+   "arm": "L",
+   "class": "random",
+   "delta": 0.01,
+   "found": true,
+   "i": 6,
+   "released": true,
+   "releases": 1,
+   "start_trait": false,
+   "tau": 0.0014394447365600066
+  },
+  {
+   "arm": "V2",
+   "class": "random",
+   "delta": 0.01,
+   "found": true,
+   "i": 6,
+   "released": true,
+   "releases": 1,
+   "start_trait": false,
+   "tau": 0.0011238645636560134
+  },
+  {
+   "arm": "L12",
+   "class": "random",
+   "delta": 0.01,
+   "found": true,
+   "i": 6,
+   "released": true,
+   "releases": 1,
+   "start_trait": false,
+   "tau": 0.00059678673762461
+  },
+  {
+   "arm": "V2@160",
+   "class": "random",
+   "delta": 0.01,
+   "found": true,
+   "i": 6,
+   "released": true,
+   "releases": 1,
+   "start_trait": false,
+   "tau": 0.0011238645636560134
+  },
+  {
+   "arm": "L",
+   "class": "random",
+   "delta": 0.01,
+   "found": true,
+   "i": 7,
+   "released": true,
+   "releases": 1,
+   "start_trait": false,
+   "tau": 0.0009258753627906464
+  },
+  {
+   "arm": "V2",
+   "class": "random",
+   "delta": 0.01,
+   "found": true,
+   "i": 7,
+   "released": true,
+   "releases": 1,
+   "start_trait": false,
+   "tau": 0.0008136335790985832
+  },
+  {
+   "arm": "L12",
+   "class": "random",
+   "delta": 0.01,
+   "found": true,
+   "i": 7,
+   "released": true,
+   "releases": 1,
+   "start_trait": false,
+   "tau": 0.000872888652632688
+  },
+  {
+   "arm": "V2@160",
+   "class": "random",
+   "delta": 0.01,
+   "found": true,
+   "i": 7,
+   "released": true,
+   "releases": 1,
+   "start_trait": false,
+   "tau": 0.0008136335790985832
+  },
+  {
+   "arm": "L",
+   "class": "random",
+   "delta": 0.01,
+   "found": true,
+   "i": 8,
+   "released": true,
+   "releases": 1,
+   "start_trait": false,
+   "tau": 0.0012412801334474486
+  },
+  {
+   "arm": "V2",
+   "class": "random",
+   "delta": 0.01,
+   "found": true,
+   "i": 8,
+   "released": true,
+   "releases": 1,
+   "start_trait": false,
+   "tau": 0.0012631444283256825
+  },
+  {
+   "arm": "L12",
+   "class": "random",
+   "delta": 0.01,
+   "found": true,
+   "i": 8,
+   "released": true,
+   "releases": 1,
+   "start_trait": false,
+   "tau": 0.0008924337920657808
+  },
+  {
+   "arm": "V2@160",
+   "class": "random",
+   "delta": 0.01,
+   "found": false,
+   "i": 8,
+   "released": false,
+   "releases": 0,
+   "start_trait": false,
+   "tau": 0.0012631444283256825
+  },
+  {
+   "arm": "L",
+   "class": "random",
+   "delta": 0.01,
+   "found": true,
+   "i": 9,
+   "released": true,
+   "releases": 1,
+   "start_trait": false,
+   "tau": 0.0011425177790564275
+  },
+  {
+   "arm": "V2",
+   "class": "random",
+   "delta": 0.01,
+   "found": true,
+   "i": 9,
+   "released": true,
+   "releases": 1,
+   "start_trait": false,
+   "tau": 0.0011855723154144302
+  },
+  {
+   "arm": "L12",
+   "class": "random",
+   "delta": 0.01,
+   "found": true,
+   "i": 9,
+   "released": true,
+   "releases": 1,
+   "start_trait": false,
+   "tau": 0.0006380798321227577
+  },
+  {
+   "arm": "V2@160",
+   "class": "random",
+   "delta": 0.01,
+   "found": false,
+   "i": 9,
+   "released": false,
+   "releases": 0,
+   "start_trait": false,
+   "tau": 0.0011855723154144302
+  },
+  {
+   "arm": "L",
+   "class": "planar",
+   "delta": 0.0025,
+   "found": true,
+   "i": 0,
+   "released": false,
+   "releases": 0,
+   "start_trait": false,
+   "tau": 0.006876359069098296
+  },
+  {
+   "arm": "V2",
+   "class": "planar",
+   "delta": 0.0025,
+   "found": true,
+   "i": 0,
+   "released": false,
+   "releases": 0,
+   "start_trait": false,
+   "tau": 0.004984487505028589
+  },
+  {
+   "arm": "L12",
+   "class": "planar",
+   "delta": 0.0025,
+   "found": true,
+   "i": 0,
+   "released": true,
+   "releases": 1,
+   "start_trait": false,
+   "tau": 0.0031152998893509273
+  },
+  {
+   "arm": "V2@160",
+   "class": "planar",
+   "delta": 0.0025,
+   "found": true,
+   "i": 0,
+   "released": false,
+   "releases": 0,
+   "start_trait": false,
+   "tau": 0.004984487505028589
+  },
+  {
+   "arm": "L",
+   "class": "planar",
+   "delta": 0.0025,
+   "found": true,
+   "i": 1,
+   "released": false,
+   "releases": 0,
+   "start_trait": false,
+   "tau": 0.005891807964088015
+  },
+  {
+   "arm": "V2",
+   "class": "planar",
+   "delta": 0.0025,
+   "found": true,
+   "i": 1,
+   "released": false,
+   "releases": 0,
+   "start_trait": false,
+   "tau": 0.006525224422124598
+  },
+  {
+   "arm": "L12",
+   "class": "planar",
+   "delta": 0.0025,
+   "found": true,
+   "i": 1,
+   "released": false,
+   "releases": 0,
+   "start_trait": false,
+   "tau": 0.0038549740441117157
+  },
+  {
+   "arm": "V2@160",
+   "class": "planar",
+   "delta": 0.0025,
+   "found": true,
+   "i": 1,
+   "released": false,
+   "releases": 0,
+   "start_trait": false,
+   "tau": 0.006525224422124598
+  },
+  {
+   "arm": "L",
+   "class": "planar",
+   "delta": 0.0025,
+   "found": true,
+   "i": 2,
+   "released": false,
+   "releases": 0,
+   "start_trait": false,
+   "tau": 0.007280486763777315
+  },
+  {
+   "arm": "V2",
+   "class": "planar",
+   "delta": 0.0025,
+   "found": true,
+   "i": 2,
+   "released": false,
+   "releases": 0,
+   "start_trait": false,
+   "tau": 0.005569620033710469
+  },
+  {
+   "arm": "L12",
+   "class": "planar",
+   "delta": 0.0025,
+   "found": true,
+   "i": 2,
+   "released": false,
+   "releases": 0,
+   "start_trait": false,
+   "tau": 0.00329053571016791
+  },
+  {
+   "arm": "V2@160",
+   "class": "planar",
+   "delta": 0.0025,
+   "found": true,
+   "i": 2,
+   "released": false,
+   "releases": 0,
+   "start_trait": false,
+   "tau": 0.005569620033710469
+  },
+  {
+   "arm": "L",
+   "class": "planar",
+   "delta": 0.0025,
+   "found": true,
+   "i": 3,
+   "released": false,
+   "releases": 0,
+   "start_trait": false,
+   "tau": 0.00810814972968813
+  },
+  {
+   "arm": "V2",
+   "class": "planar",
+   "delta": 0.0025,
+   "found": true,
+   "i": 3,
+   "released": false,
+   "releases": 0,
+   "start_trait": false,
+   "tau": 0.006251046071772628
+  },
+  {
+   "arm": "L12",
+   "class": "planar",
+   "delta": 0.0025,
+   "found": false,
+   "i": 3,
+   "released": false,
+   "releases": 0,
+   "start_trait": false,
+   "tau": 0.004779816421849861
+  },
+  {
+   "arm": "V2@160",
+   "class": "planar",
+   "delta": 0.0025,
+   "found": false,
+   "i": 3,
+   "released": false,
+   "releases": 0,
+   "start_trait": false,
+   "tau": 0.006251046071772628
+  },
+  {
+   "arm": "L",
+   "class": "planar",
+   "delta": 0.0025,
+   "found": true,
+   "i": 4,
+   "released": false,
+   "releases": 0,
+   "start_trait": false,
+   "tau": 0.006816801364487354
+  },
+  {
+   "arm": "V2",
+   "class": "planar",
+   "delta": 0.0025,
+   "found": false,
+   "i": 4,
+   "released": false,
+   "releases": 0,
+   "start_trait": false,
+   "tau": 0.004677490594111305
+  },
+  {
+   "arm": "L12",
+   "class": "planar",
+   "delta": 0.0025,
+   "found": false,
+   "i": 4,
+   "released": false,
+   "releases": 0,
+   "start_trait": false,
+   "tau": 0.0036584479315944396
+  },
+  {
+   "arm": "V2@160",
+   "class": "planar",
+   "delta": 0.0025,
+   "found": false,
+   "i": 4,
+   "released": false,
+   "releases": 0,
+   "start_trait": false,
+   "tau": 0.004677490594111305
+  },
+  {
+   "arm": "L",
+   "class": "planar",
+   "delta": 0.0025,
+   "found": true,
+   "i": 5,
+   "released": true,
+   "releases": 1,
+   "start_trait": false,
+   "tau": 0.005563177548702955
+  },
+  {
+   "arm": "V2",
+   "class": "planar",
+   "delta": 0.0025,
+   "found": true,
+   "i": 5,
+   "released": false,
+   "releases": 0,
+   "start_trait": false,
+   "tau": 0.006948116638790362
+  },
+  {
+   "arm": "L12",
+   "class": "planar",
+   "delta": 0.0025,
+   "found": true,
+   "i": 5,
+   "released": true,
+   "releases": 1,
+   "start_trait": false,
+   "tau": 0.003810101077019012
+  },
+  {
+   "arm": "V2@160",
+   "class": "planar",
+   "delta": 0.0025,
+   "found": true,
+   "i": 5,
+   "released": false,
+   "releases": 0,
+   "start_trait": false,
+   "tau": 0.006948116638790362
+  },
+  {
+   "arm": "L",
+   "class": "planar",
+   "delta": 0.0025,
+   "found": true,
+   "i": 6,
+   "released": false,
+   "releases": 0,
+   "start_trait": false,
+   "tau": 0.0053356057991806516
+  },
+  {
+   "arm": "V2",
+   "class": "planar",
+   "delta": 0.0025,
+   "found": true,
+   "i": 6,
+   "released": false,
+   "releases": 0,
+   "start_trait": false,
+   "tau": 0.005969377250191991
+  },
+  {
+   "arm": "L12",
+   "class": "planar",
+   "delta": 0.0025,
+   "found": true,
+   "i": 6,
+   "released": false,
+   "releases": 0,
+   "start_trait": false,
+   "tau": 0.003961016675815097
+  },
+  {
+   "arm": "V2@160",
+   "class": "planar",
+   "delta": 0.0025,
+   "found": true,
+   "i": 6,
+   "released": false,
+   "releases": 0,
+   "start_trait": false,
+   "tau": 0.005969377250191991
+  },
+  {
+   "arm": "L",
+   "class": "planar",
+   "delta": 0.0025,
+   "found": true,
+   "i": 7,
+   "released": false,
+   "releases": 0,
+   "start_trait": false,
+   "tau": 0.006372988089385444
+  },
+  {
+   "arm": "V2",
+   "class": "planar",
+   "delta": 0.0025,
+   "found": true,
+   "i": 7,
+   "released": false,
+   "releases": 0,
+   "start_trait": false,
+   "tau": 0.006045979788946553
+  },
+  {
+   "arm": "L12",
+   "class": "planar",
+   "delta": 0.0025,
+   "found": true,
+   "i": 7,
+   "released": false,
+   "releases": 0,
+   "start_trait": false,
+   "tau": 0.004049506741029149
+  },
+  {
+   "arm": "V2@160",
+   "class": "planar",
+   "delta": 0.0025,
+   "found": true,
+   "i": 7,
+   "released": false,
+   "releases": 0,
+   "start_trait": false,
+   "tau": 0.006045979788946553
+  },
+  {
+   "arm": "L",
+   "class": "planar",
+   "delta": 0.0025,
+   "found": true,
+   "i": 8,
+   "released": false,
+   "releases": 0,
+   "start_trait": false,
+   "tau": 0.006634719173389558
+  },
+  {
+   "arm": "V2",
+   "class": "planar",
+   "delta": 0.0025,
+   "found": true,
+   "i": 8,
+   "released": true,
+   "releases": 1,
+   "start_trait": false,
+   "tau": 0.0057955255046891856
+  },
+  {
+   "arm": "L12",
+   "class": "planar",
+   "delta": 0.0025,
+   "found": true,
+   "i": 8,
+   "released": false,
+   "releases": 0,
+   "start_trait": false,
+   "tau": 0.003612834341593375
+  },
+  {
+   "arm": "V2@160",
+   "class": "planar",
+   "delta": 0.0025,
+   "found": true,
+   "i": 8,
+   "released": false,
+   "releases": 0,
+   "start_trait": false,
+   "tau": 0.0057955255046891856
+  },
+  {
+   "arm": "L",
+   "class": "planar",
+   "delta": 0.0025,
+   "found": true,
+   "i": 9,
+   "released": false,
+   "releases": 0,
+   "start_trait": false,
+   "tau": 0.009171207049787378
+  },
+  {
+   "arm": "V2",
+   "class": "planar",
+   "delta": 0.0025,
+   "found": true,
+   "i": 9,
+   "released": false,
+   "releases": 0,
+   "start_trait": false,
+   "tau": 0.006092238594644262
+  },
+  {
+   "arm": "L12",
+   "class": "planar",
+   "delta": 0.0025,
+   "found": true,
+   "i": 9,
+   "released": false,
+   "releases": 0,
+   "start_trait": false,
+   "tau": 0.004315863347898905
+  },
+  {
+   "arm": "V2@160",
+   "class": "planar",
+   "delta": 0.0025,
+   "found": false,
+   "i": 9,
+   "released": false,
+   "releases": 0,
+   "start_trait": false,
+   "tau": 0.006092238594644262
+  },
+  {
+   "arm": "L",
+   "class": "planar",
+   "delta": 0.01,
+   "found": true,
+   "i": 0,
+   "released": true,
+   "releases": 1,
+   "start_trait": false,
+   "tau": 0.005003344531105149
+  },
+  {
+   "arm": "V2",
+   "class": "planar",
+   "delta": 0.01,
+   "found": true,
+   "i": 0,
+   "released": true,
+   "releases": 1,
+   "start_trait": false,
+   "tau": 0.005462086199677425
+  },
+  {
+   "arm": "L12",
+   "class": "planar",
+   "delta": 0.01,
+   "found": true,
+   "i": 0,
+   "released": true,
+   "releases": 1,
+   "start_trait": false,
+   "tau": 0.003520080305572992
+  },
+  {
+   "arm": "V2@160",
+   "class": "planar",
+   "delta": 0.01,
+   "found": false,
+   "i": 0,
+   "released": false,
+   "releases": 0,
+   "start_trait": false,
+   "tau": 0.005462086199677425
+  },
+  {
+   "arm": "L",
+   "class": "planar",
+   "delta": 0.01,
+   "found": true,
+   "i": 1,
+   "released": true,
+   "releases": 1,
+   "start_trait": false,
+   "tau": 0.006163991024971866
+  },
+  {
+   "arm": "V2",
+   "class": "planar",
+   "delta": 0.01,
+   "found": true,
+   "i": 1,
+   "released": true,
+   "releases": 1,
+   "start_trait": false,
+   "tau": 0.006581313418352342
+  },
+  {
+   "arm": "L12",
+   "class": "planar",
+   "delta": 0.01,
+   "found": true,
+   "i": 1,
+   "released": true,
+   "releases": 1,
+   "start_trait": false,
+   "tau": 0.0032668990148967078
+  },
+  {
+   "arm": "V2@160",
+   "class": "planar",
+   "delta": 0.01,
+   "found": true,
+   "i": 1,
+   "released": true,
+   "releases": 1,
+   "start_trait": false,
+   "tau": 0.006581313418352342
+  },
+  {
+   "arm": "L",
+   "class": "planar",
+   "delta": 0.01,
+   "found": true,
+   "i": 2,
+   "released": true,
+   "releases": 1,
+   "start_trait": false,
+   "tau": 0.0061485181754868555
+  },
+  {
+   "arm": "V2",
+   "class": "planar",
+   "delta": 0.01,
+   "found": true,
+   "i": 2,
+   "released": true,
+   "releases": 1,
+   "start_trait": false,
+   "tau": 0.005783653922606324
+  },
+  {
+   "arm": "L12",
+   "class": "planar",
+   "delta": 0.01,
+   "found": true,
+   "i": 2,
+   "released": true,
+   "releases": 1,
+   "start_trait": false,
+   "tau": 0.003587232223616817
+  },
+  {
+   "arm": "V2@160",
+   "class": "planar",
+   "delta": 0.01,
+   "found": false,
+   "i": 2,
+   "released": false,
+   "releases": 0,
+   "start_trait": false,
+   "tau": 0.005783653922606324
+  },
+  {
+   "arm": "L",
+   "class": "planar",
+   "delta": 0.01,
+   "found": true,
+   "i": 3,
+   "released": true,
+   "releases": 1,
+   "start_trait": false,
+   "tau": 0.006168911840948228
+  },
+  {
+   "arm": "V2",
+   "class": "planar",
+   "delta": 0.01,
+   "found": true,
+   "i": 3,
+   "released": true,
+   "releases": 1,
+   "start_trait": false,
+   "tau": 0.004698652865945706
+  },
+  {
+   "arm": "L12",
+   "class": "planar",
+   "delta": 0.01,
+   "found": true,
+   "i": 3,
+   "released": true,
+   "releases": 1,
+   "start_trait": false,
+   "tau": 0.0036915601007645378
+  },
+  {
+   "arm": "V2@160",
+   "class": "planar",
+   "delta": 0.01,
+   "found": false,
+   "i": 3,
+   "released": false,
+   "releases": 0,
+   "start_trait": false,
+   "tau": 0.004698652865945706
+  },
+  {
+   "arm": "L",
+   "class": "planar",
+   "delta": 0.01,
+   "found": true,
+   "i": 4,
+   "released": true,
+   "releases": 1,
+   "start_trait": false,
+   "tau": 0.00681532219093127
+  },
+  {
+   "arm": "V2",
+   "class": "planar",
+   "delta": 0.01,
+   "found": true,
+   "i": 4,
+   "released": true,
+   "releases": 1,
+   "start_trait": false,
+   "tau": 0.006075270091010872
+  },
+  {
+   "arm": "L12",
+   "class": "planar",
+   "delta": 0.01,
+   "found": true,
+   "i": 4,
+   "released": true,
+   "releases": 1,
+   "start_trait": false,
+   "tau": 0.003933402076343493
+  },
+  {
+   "arm": "V2@160",
+   "class": "planar",
+   "delta": 0.01,
+   "found": true,
+   "i": 4,
+   "released": true,
+   "releases": 1,
+   "start_trait": false,
+   "tau": 0.006075270091010872
+  },
+  {
+   "arm": "L",
+   "class": "planar",
+   "delta": 0.01,
+   "found": true,
+   "i": 5,
+   "released": true,
+   "releases": 1,
+   "start_trait": false,
+   "tau": 0.004998160987445051
+  },
+  {
+   "arm": "V2",
+   "class": "planar",
+   "delta": 0.01,
+   "found": true,
+   "i": 5,
+   "released": true,
+   "releases": 1,
+   "start_trait": false,
+   "tau": 0.006995973056489696
+  },
+  {
+   "arm": "L12",
+   "class": "planar",
+   "delta": 0.01,
+   "found": false,
+   "i": 5,
+   "released": false,
+   "releases": 0,
+   "start_trait": false,
+   "tau": 0.002692265463199776
+  },
+  {
+   "arm": "V2@160",
+   "class": "planar",
+   "delta": 0.01,
+   "found": false,
+   "i": 5,
+   "released": false,
+   "releases": 0,
+   "start_trait": false,
+   "tau": 0.006995973056489696
+  },
+  {
+   "arm": "L",
+   "class": "planar",
+   "delta": 0.01,
+   "found": true,
+   "i": 6,
+   "released": true,
+   "releases": 1,
+   "start_trait": false,
+   "tau": 0.005385977432682352
+  },
+  {
+   "arm": "V2",
+   "class": "planar",
+   "delta": 0.01,
+   "found": true,
+   "i": 6,
+   "released": true,
+   "releases": 1,
+   "start_trait": false,
+   "tau": 0.0050532676089827915
+  },
+  {
+   "arm": "L12",
+   "class": "planar",
+   "delta": 0.01,
+   "found": false,
+   "i": 6,
+   "released": false,
+   "releases": 0,
+   "start_trait": false,
+   "tau": 0.00397086962842253
+  },
+  {
+   "arm": "V2@160",
+   "class": "planar",
+   "delta": 0.01,
+   "found": false,
+   "i": 6,
+   "released": false,
+   "releases": 0,
+   "start_trait": false,
+   "tau": 0.0050532676089827915
+  },
+  {
+   "arm": "L",
+   "class": "planar",
+   "delta": 0.01,
+   "found": true,
+   "i": 7,
+   "released": true,
+   "releases": 1,
+   "start_trait": false,
+   "tau": 0.0067565023468830945
+  },
+  {
+   "arm": "V2",
+   "class": "planar",
+   "delta": 0.01,
+   "found": true,
+   "i": 7,
+   "released": true,
+   "releases": 1,
+   "start_trait": false,
+   "tau": 0.005164156465957924
+  },
+  {
+   "arm": "L12",
+   "class": "planar",
+   "delta": 0.01,
+   "found": false,
+   "i": 7,
+   "released": false,
+   "releases": 0,
+   "start_trait": false,
+   "tau": 0.0024822143968952454
+  },
+  {
+   "arm": "V2@160",
+   "class": "planar",
+   "delta": 0.01,
+   "found": false,
+   "i": 7,
+   "released": false,
+   "releases": 0,
+   "start_trait": false,
+   "tau": 0.005164156465957924
+  },
+  {
+   "arm": "L",
+   "class": "planar",
+   "delta": 0.01,
+   "found": true,
+   "i": 8,
+   "released": true,
+   "releases": 1,
+   "start_trait": false,
+   "tau": 0.0069141946722905655
+  },
+  {
+   "arm": "V2",
+   "class": "planar",
+   "delta": 0.01,
+   "found": true,
+   "i": 8,
+   "released": true,
+   "releases": 1,
+   "start_trait": false,
+   "tau": 0.006101800542626649
+  },
+  {
+   "arm": "L12",
+   "class": "planar",
+   "delta": 0.01,
+   "found": false,
+   "i": 8,
+   "released": false,
+   "releases": 0,
+   "start_trait": false,
+   "tau": 0.002856755066733309
+  },
+  {
+   "arm": "V2@160",
+   "class": "planar",
+   "delta": 0.01,
+   "found": false,
+   "i": 8,
+   "released": false,
+   "releases": 0,
+   "start_trait": false,
+   "tau": 0.006101800542626649
+  },
+  {
+   "arm": "L",
+   "class": "planar",
+   "delta": 0.01,
+   "found": true,
+   "i": 9,
+   "released": true,
+   "releases": 1,
+   "start_trait": false,
+   "tau": 0.006298711579913311
+  },
+  {
+   "arm": "V2",
+   "class": "planar",
+   "delta": 0.01,
+   "found": true,
+   "i": 9,
+   "released": true,
+   "releases": 1,
+   "start_trait": false,
+   "tau": 0.005037223021159017
+  },
+  {
+   "arm": "L12",
+   "class": "planar",
+   "delta": 0.01,
+   "found": true,
+   "i": 9,
+   "released": true,
+   "releases": 1,
+   "start_trait": false,
+   "tau": 0.0033485236368616758
+  },
+  {
+   "arm": "V2@160",
+   "class": "planar",
+   "delta": 0.01,
+   "found": true,
+   "i": 9,
+   "released": true,
+   "releases": 1,
+   "start_trait": false,
+   "tau": 0.005037223021159017
+  },
+  {
+   "arm": "L",
+   "class": "toroidal",
+   "delta": 0.0025,
+   "found": true,
+   "i": 0,
+   "released": true,
+   "releases": 1,
+   "start_trait": false,
+   "tau": 0.0019201210668751743
+  },
+  {
+   "arm": "V2",
+   "class": "toroidal",
+   "delta": 0.0025,
+   "found": true,
+   "i": 0,
+   "released": true,
+   "releases": 1,
+   "start_trait": false,
+   "tau": 0.0016971595693743267
+  },
+  {
+   "arm": "L12",
+   "class": "toroidal",
+   "delta": 0.0025,
+   "found": true,
+   "i": 0,
+   "released": true,
+   "releases": 1,
+   "start_trait": false,
+   "tau": 0.0006328134737488351
+  },
+  {
+   "arm": "V2@160",
+   "class": "toroidal",
+   "delta": 0.0025,
+   "found": true,
+   "i": 0,
+   "released": true,
+   "releases": 1,
+   "start_trait": false,
+   "tau": 0.0016971595693743267
+  },
+  {
+   "arm": "L",
+   "class": "toroidal",
+   "delta": 0.0025,
+   "found": true,
+   "i": 1,
+   "released": true,
+   "releases": 1,
+   "start_trait": false,
+   "tau": 0.002008578176609013
+  },
+  {
+   "arm": "V2",
+   "class": "toroidal",
+   "delta": 0.0025,
+   "found": true,
+   "i": 1,
+   "released": true,
+   "releases": 1,
+   "start_trait": false,
+   "tau": 0.0018799998227962804
+  },
+  {
+   "arm": "L12",
+   "class": "toroidal",
+   "delta": 0.0025,
+   "found": true,
+   "i": 1,
+   "released": true,
+   "releases": 1,
+   "start_trait": false,
+   "tau": 0.0008716384513824359
+  },
+  {
+   "arm": "V2@160",
+   "class": "toroidal",
+   "delta": 0.0025,
+   "found": true,
+   "i": 1,
+   "released": true,
+   "releases": 1,
+   "start_trait": false,
+   "tau": 0.0018799998227962804
+  },
+  {
+   "arm": "L",
+   "class": "toroidal",
+   "delta": 0.0025,
+   "found": true,
+   "i": 2,
+   "released": true,
+   "releases": 1,
+   "start_trait": false,
+   "tau": 0.0018283077151289185
+  },
+  {
+   "arm": "V2",
+   "class": "toroidal",
+   "delta": 0.0025,
+   "found": true,
+   "i": 2,
+   "released": true,
+   "releases": 1,
+   "start_trait": false,
+   "tau": 0.0015272233226231568
+  },
+  {
+   "arm": "L12",
+   "class": "toroidal",
+   "delta": 0.0025,
+   "found": true,
+   "i": 2,
+   "released": true,
+   "releases": 1,
+   "start_trait": false,
+   "tau": 0.0007623380501990167
+  },
+  {
+   "arm": "V2@160",
+   "class": "toroidal",
+   "delta": 0.0025,
+   "found": true,
+   "i": 2,
+   "released": true,
+   "releases": 1,
+   "start_trait": false,
+   "tau": 0.0015272233226231568
+  },
+  {
+   "arm": "L",
+   "class": "toroidal",
+   "delta": 0.0025,
+   "found": true,
+   "i": 3,
+   "released": true,
+   "releases": 1,
+   "start_trait": false,
+   "tau": 0.002237126266758295
+  },
+  {
+   "arm": "V2",
+   "class": "toroidal",
+   "delta": 0.0025,
+   "found": true,
+   "i": 3,
+   "released": true,
+   "releases": 1,
+   "start_trait": false,
+   "tau": 0.001707709885796179
+  },
+  {
+   "arm": "L12",
+   "class": "toroidal",
+   "delta": 0.0025,
+   "found": true,
+   "i": 3,
+   "released": true,
+   "releases": 1,
+   "start_trait": false,
+   "tau": 0.0009319944495369941
+  },
+  {
+   "arm": "V2@160",
+   "class": "toroidal",
+   "delta": 0.0025,
+   "found": true,
+   "i": 3,
+   "released": false,
+   "releases": 0,
+   "start_trait": false,
+   "tau": 0.001707709885796179
+  },
+  {
+   "arm": "L",
+   "class": "toroidal",
+   "delta": 0.0025,
+   "found": true,
+   "i": 4,
+   "released": true,
+   "releases": 1,
+   "start_trait": false,
+   "tau": 0.001813814912763092
+  },
+  {
+   "arm": "V2",
+   "class": "toroidal",
+   "delta": 0.0025,
+   "found": true,
+   "i": 4,
+   "released": true,
+   "releases": 1,
+   "start_trait": false,
+   "tau": 0.0019751899873055607
+  },
+  {
+   "arm": "L12",
+   "class": "toroidal",
+   "delta": 0.0025,
+   "found": true,
+   "i": 4,
+   "released": true,
+   "releases": 1,
+   "start_trait": false,
+   "tau": 0.0010972287576229243
+  },
+  {
+   "arm": "V2@160",
+   "class": "toroidal",
+   "delta": 0.0025,
+   "found": true,
+   "i": 4,
+   "released": true,
+   "releases": 1,
+   "start_trait": false,
+   "tau": 0.0019751899873055607
+  },
+  {
+   "arm": "L",
+   "class": "toroidal",
+   "delta": 0.0025,
+   "found": true,
+   "i": 5,
+   "released": true,
+   "releases": 1,
+   "start_trait": false,
+   "tau": 0.0012791841899385922
+  },
+  {
+   "arm": "V2",
+   "class": "toroidal",
+   "delta": 0.0025,
+   "found": true,
+   "i": 5,
+   "released": true,
+   "releases": 1,
+   "start_trait": false,
+   "tau": 0.0015931311199673494
+  },
+  {
+   "arm": "L12",
+   "class": "toroidal",
+   "delta": 0.0025,
+   "found": true,
+   "i": 5,
+   "released": true,
+   "releases": 1,
+   "start_trait": false,
+   "tau": 0.0012612168155260396
+  },
+  {
+   "arm": "V2@160",
+   "class": "toroidal",
+   "delta": 0.0025,
+   "found": true,
+   "i": 5,
+   "released": true,
+   "releases": 1,
+   "start_trait": false,
+   "tau": 0.0015931311199673494
+  },
+  {
+   "arm": "L",
+   "class": "toroidal",
+   "delta": 0.0025,
+   "found": false,
+   "i": 6,
+   "released": false,
+   "releases": 0,
+   "start_trait": false,
+   "tau": 0.001955725889535175
+  },
+  {
+   "arm": "V2",
+   "class": "toroidal",
+   "delta": 0.0025,
+   "found": false,
+   "i": 6,
+   "released": false,
+   "releases": 0,
+   "start_trait": false,
+   "tau": 0.001404146443404789
+  },
+  {
+   "arm": "L12",
+   "class": "toroidal",
+   "delta": 0.0025,
+   "found": false,
+   "i": 6,
+   "released": false,
+   "releases": 0,
+   "start_trait": false,
+   "tau": 0.0009379123040396694
+  },
+  {
+   "arm": "V2@160",
+   "class": "toroidal",
+   "delta": 0.0025,
+   "found": false,
+   "i": 6,
+   "released": false,
+   "releases": 0,
+   "start_trait": false,
+   "tau": 0.001404146443404789
+  },
+  {
+   "arm": "L",
+   "class": "toroidal",
+   "delta": 0.0025,
+   "found": true,
+   "i": 7,
+   "released": true,
+   "releases": 1,
+   "start_trait": false,
+   "tau": 0.0021741853307354997
+  },
+  {
+   "arm": "V2",
+   "class": "toroidal",
+   "delta": 0.0025,
+   "found": true,
+   "i": 7,
+   "released": true,
+   "releases": 1,
+   "start_trait": false,
+   "tau": 0.0019358434761658264
+  },
+  {
+   "arm": "L12",
+   "class": "toroidal",
+   "delta": 0.0025,
+   "found": true,
+   "i": 7,
+   "released": true,
+   "releases": 1,
+   "start_trait": false,
+   "tau": 0.0011189391256707917
+  },
+  {
+   "arm": "V2@160",
+   "class": "toroidal",
+   "delta": 0.0025,
+   "found": true,
+   "i": 7,
+   "released": true,
+   "releases": 1,
+   "start_trait": false,
+   "tau": 0.0019358434761658264
+  },
+  {
+   "arm": "L",
+   "class": "toroidal",
+   "delta": 0.0025,
+   "found": true,
+   "i": 8,
+   "released": true,
+   "releases": 1,
+   "start_trait": false,
+   "tau": 0.001937328287368298
+  },
+  {
+   "arm": "V2",
+   "class": "toroidal",
+   "delta": 0.0025,
+   "found": true,
+   "i": 8,
+   "released": true,
+   "releases": 1,
+   "start_trait": false,
+   "tau": 0.0020445369797032326
+  },
+  {
+   "arm": "L12",
+   "class": "toroidal",
+   "delta": 0.0025,
+   "found": true,
+   "i": 8,
+   "released": true,
+   "releases": 1,
+   "start_trait": false,
+   "tau": 0.0010843869735686696
+  },
+  {
+   "arm": "V2@160",
+   "class": "toroidal",
+   "delta": 0.0025,
+   "found": true,
+   "i": 8,
+   "released": true,
+   "releases": 1,
+   "start_trait": false,
+   "tau": 0.0020445369797032326
+  },
+  {
+   "arm": "L",
+   "class": "toroidal",
+   "delta": 0.0025,
+   "found": true,
+   "i": 9,
+   "released": true,
+   "releases": 1,
+   "start_trait": false,
+   "tau": 0.0020796109599612892
+  },
+  {
+   "arm": "V2",
+   "class": "toroidal",
+   "delta": 0.0025,
+   "found": true,
+   "i": 9,
+   "released": true,
+   "releases": 1,
+   "start_trait": false,
+   "tau": 0.0013409775454310405
+  },
+  {
+   "arm": "L12",
+   "class": "toroidal",
+   "delta": 0.0025,
+   "found": true,
+   "i": 9,
+   "released": true,
+   "releases": 1,
+   "start_trait": false,
+   "tau": 0.0011417521427909295
+  },
+  {
+   "arm": "V2@160",
+   "class": "toroidal",
+   "delta": 0.0025,
+   "found": true,
+   "i": 9,
+   "released": true,
+   "releases": 1,
+   "start_trait": false,
+   "tau": 0.0013409775454310405
+  },
+  {
+   "arm": "L",
+   "class": "toroidal",
+   "delta": 0.01,
+   "found": true,
+   "i": 0,
+   "released": true,
+   "releases": 1,
+   "start_trait": false,
+   "tau": 0.0024576248606252215
+  },
+  {
+   "arm": "V2",
+   "class": "toroidal",
+   "delta": 0.01,
+   "found": true,
+   "i": 0,
+   "released": true,
+   "releases": 1,
+   "start_trait": false,
+   "tau": 0.0015778219691855125
+  },
+  {
+   "arm": "L12",
+   "class": "toroidal",
+   "delta": 0.01,
+   "found": true,
+   "i": 0,
+   "released": true,
+   "releases": 1,
+   "start_trait": false,
+   "tau": 0.0011531104521610715
+  },
+  {
+   "arm": "V2@160",
+   "class": "toroidal",
+   "delta": 0.01,
+   "found": true,
+   "i": 0,
+   "released": true,
+   "releases": 1,
+   "start_trait": false,
+   "tau": 0.0015778219691855125
+  },
+  {
+   "arm": "L",
+   "class": "toroidal",
+   "delta": 0.01,
+   "found": true,
+   "i": 1,
+   "released": true,
+   "releases": 1,
+   "start_trait": false,
+   "tau": 0.0021559035520983044
+  },
+  {
+   "arm": "V2",
+   "class": "toroidal",
+   "delta": 0.01,
+   "found": true,
+   "i": 1,
+   "released": true,
+   "releases": 1,
+   "start_trait": false,
+   "tau": 0.0015668306387451687
+  },
+  {
+   "arm": "L12",
+   "class": "toroidal",
+   "delta": 0.01,
+   "found": true,
+   "i": 1,
+   "released": true,
+   "releases": 1,
+   "start_trait": false,
+   "tau": 0.0014810247936556423
+  },
+  {
+   "arm": "V2@160",
+   "class": "toroidal",
+   "delta": 0.01,
+   "found": true,
+   "i": 1,
+   "released": true,
+   "releases": 1,
+   "start_trait": false,
+   "tau": 0.0015668306387451687
+  },
+  {
+   "arm": "L",
+   "class": "toroidal",
+   "delta": 0.01,
+   "found": true,
+   "i": 2,
+   "released": true,
+   "releases": 1,
+   "start_trait": false,
+   "tau": 0.0018772950618218677
+  },
+  {
+   "arm": "V2",
+   "class": "toroidal",
+   "delta": 0.01,
+   "found": true,
+   "i": 2,
+   "released": true,
+   "releases": 1,
+   "start_trait": false,
+   "tau": 0.001568710840625122
+  },
+  {
+   "arm": "L12",
+   "class": "toroidal",
+   "delta": 0.01,
+   "found": true,
+   "i": 2,
+   "released": true,
+   "releases": 1,
+   "start_trait": false,
+   "tau": 0.0014908345279164286
+  },
+  {
+   "arm": "V2@160",
+   "class": "toroidal",
+   "delta": 0.01,
+   "found": true,
+   "i": 2,
+   "released": true,
+   "releases": 1,
+   "start_trait": false,
+   "tau": 0.001568710840625122
+  },
+  {
+   "arm": "L",
+   "class": "toroidal",
+   "delta": 0.01,
+   "found": true,
+   "i": 3,
+   "released": true,
+   "releases": 1,
+   "start_trait": false,
+   "tau": 0.0017368105307706038
+  },
+  {
+   "arm": "V2",
+   "class": "toroidal",
+   "delta": 0.01,
+   "found": true,
+   "i": 3,
+   "released": true,
+   "releases": 1,
+   "start_trait": false,
+   "tau": 0.0017926151721451321
+  },
+  {
+   "arm": "L12",
+   "class": "toroidal",
+   "delta": 0.01,
+   "found": true,
+   "i": 3,
+   "released": true,
+   "releases": 1,
+   "start_trait": false,
+   "tau": 0.0010000092801752752
+  },
+  {
+   "arm": "V2@160",
+   "class": "toroidal",
+   "delta": 0.01,
+   "found": true,
+   "i": 3,
+   "released": true,
+   "releases": 1,
+   "start_trait": false,
+   "tau": 0.0017926151721451321
+  },
+  {
+   "arm": "L",
+   "class": "toroidal",
+   "delta": 0.01,
+   "found": true,
+   "i": 4,
+   "released": true,
+   "releases": 1,
+   "start_trait": false,
+   "tau": 0.001448021399577848
+  },
+  {
+   "arm": "V2",
+   "class": "toroidal",
+   "delta": 0.01,
+   "found": true,
+   "i": 4,
+   "released": true,
+   "releases": 1,
+   "start_trait": false,
+   "tau": 0.001684594646107123
+  },
+  {
+   "arm": "L12",
+   "class": "toroidal",
+   "delta": 0.01,
+   "found": true,
+   "i": 4,
+   "released": true,
+   "releases": 1,
+   "start_trait": false,
+   "tau": 0.001086555696359239
+  },
+  {
+   "arm": "V2@160",
+   "class": "toroidal",
+   "delta": 0.01,
+   "found": false,
+   "i": 4,
+   "released": false,
+   "releases": 0,
+   "start_trait": false,
+   "tau": 0.001684594646107123
+  },
+  {
+   "arm": "L",
+   "class": "toroidal",
+   "delta": 0.01,
+   "found": true,
+   "i": 5,
+   "released": true,
+   "releases": 1,
+   "start_trait": false,
+   "tau": 0.0020147092570200666
+  },
+  {
+   "arm": "V2",
+   "class": "toroidal",
+   "delta": 0.01,
+   "found": true,
+   "i": 5,
+   "released": true,
+   "releases": 1,
+   "start_trait": false,
+   "tau": 0.0018908484220437245
+  },
+  {
+   "arm": "L12",
+   "class": "toroidal",
+   "delta": 0.01,
+   "found": true,
+   "i": 5,
+   "released": true,
+   "releases": 1,
+   "start_trait": false,
+   "tau": 0.0009147689080714762
+  },
+  {
+   "arm": "V2@160",
+   "class": "toroidal",
+   "delta": 0.01,
+   "found": true,
+   "i": 5,
+   "released": true,
+   "releases": 1,
+   "start_trait": false,
+   "tau": 0.0018908484220437245
+  },
+  {
+   "arm": "L",
+   "class": "toroidal",
+   "delta": 0.01,
+   "found": true,
+   "i": 6,
+   "released": true,
+   "releases": 1,
+   "start_trait": false,
+   "tau": 0.0020304530224140305
+  },
+  {
+   "arm": "V2",
+   "class": "toroidal",
+   "delta": 0.01,
+   "found": true,
+   "i": 6,
+   "released": true,
+   "releases": 1,
+   "start_trait": false,
+   "tau": 0.0017037625337785066
+  },
+  {
+   "arm": "L12",
+   "class": "toroidal",
+   "delta": 0.01,
+   "found": true,
+   "i": 6,
+   "released": true,
+   "releases": 1,
+   "start_trait": false,
+   "tau": 0.0013348466704913337
+  },
+  {
+   "arm": "V2@160",
+   "class": "toroidal",
+   "delta": 0.01,
+   "found": true,
+   "i": 6,
+   "released": true,
+   "releases": 1,
+   "start_trait": false,
+   "tau": 0.0017037625337785066
+  },
+  {
+   "arm": "L",
+   "class": "toroidal",
+   "delta": 0.01,
+   "found": true,
+   "i": 7,
+   "released": true,
+   "releases": 1,
+   "start_trait": false,
+   "tau": 0.001473327762669347
+  },
+  {
+   "arm": "V2",
+   "class": "toroidal",
+   "delta": 0.01,
+   "found": true,
+   "i": 7,
+   "released": true,
+   "releases": 1,
+   "start_trait": false,
+   "tau": 0.0020178522821117065
+  },
+  {
+   "arm": "L12",
+   "class": "toroidal",
+   "delta": 0.01,
+   "found": false,
+   "i": 7,
+   "released": false,
+   "releases": 0,
+   "start_trait": false,
+   "tau": 0.0008200147122835257
+  },
+  {
+   "arm": "V2@160",
+   "class": "toroidal",
+   "delta": 0.01,
+   "found": false,
+   "i": 7,
+   "released": false,
+   "releases": 0,
+   "start_trait": false,
+   "tau": 0.0020178522821117065
+  },
+  {
+   "arm": "L",
+   "class": "toroidal",
+   "delta": 0.01,
+   "found": true,
+   "i": 8,
+   "released": true,
+   "releases": 1,
+   "start_trait": false,
+   "tau": 0.0021899597389738604
+  },
+  {
+   "arm": "V2",
+   "class": "toroidal",
+   "delta": 0.01,
+   "found": true,
+   "i": 8,
+   "released": true,
+   "releases": 1,
+   "start_trait": false,
+   "tau": 0.0018647437083798314
+  },
+  {
+   "arm": "L12",
+   "class": "toroidal",
+   "delta": 0.01,
+   "found": true,
+   "i": 8,
+   "released": true,
+   "releases": 1,
+   "start_trait": false,
+   "tau": 0.0015037259265319699
+  },
+  {
+   "arm": "V2@160",
+   "class": "toroidal",
+   "delta": 0.01,
+   "found": true,
+   "i": 8,
+   "released": true,
+   "releases": 1,
+   "start_trait": false,
+   "tau": 0.0018647437083798314
+  },
+  {
+   "arm": "L",
+   "class": "toroidal",
+   "delta": 0.01,
+   "found": true,
+   "i": 9,
+   "released": true,
+   "releases": 1,
+   "start_trait": false,
+   "tau": 0.0019550834680036643
+  },
+  {
+   "arm": "V2",
+   "class": "toroidal",
+   "delta": 0.01,
+   "found": true,
+   "i": 9,
+   "released": true,
+   "releases": 1,
+   "start_trait": false,
+   "tau": 0.0017898249535145086
+  },
+  {
+   "arm": "L12",
+   "class": "toroidal",
+   "delta": 0.01,
+   "found": true,
+   "i": 9,
+   "released": true,
+   "releases": 1,
+   "start_trait": false,
+   "tau": 0.0012435297979726632
+  },
+  {
+   "arm": "V2@160",
+   "class": "toroidal",
+   "delta": 0.01,
+   "found": true,
+   "i": 9,
+   "released": true,
+   "releases": 1,
+   "start_trait": false,
+   "tau": 0.0017898249535145086
+  }
+ ],
+ "powers": {
+  "planar": {
+   "L": {
+    "0": 0.0,
+    "0.0005": 0.0,
+    "0.001": 0.0,
+    "0.002": 0.0019166666666666666,
+    "0.003": 0.021,
+    "0.005": 0.12441666666666666,
+    "0.01": 0.8583333333333334
+   },
+   "L12": {
+    "0": 8.333333333333333e-05,
+    "0.0005": 0.0014166666666666668,
+    "0.001": 0.008,
+    "0.002": 0.07991666666666668,
+    "0.003": 0.29733333333333334,
+    "0.005": 0.8961666666666667,
+    "0.01": 1.0
+   },
+   "V2": {
+    "0": 0.0,
+    "0.0005": 0.0,
+    "0.001": 0.0,
+    "0.002": 0.0,
+    "0.003": 0.0,
+    "0.005": 0.0,
+    "0.01": 0.05666666666666667
+   },
+   "V2@160": {
+    "0": 0.0,
+    "0.0005": 0.0,
+    "0.001": 0.0,
+    "0.002": 0.0,
+    "0.003": 0.0,
+    "0.005": 0.0,
+    "0.01": 0.06041666666666667
+   }
+  },
+  "random": {
+   "L": {
+    "0": 0.0,
+    "0.0005": 0.0,
+    "0.001": 0.0030833333333333333,
+    "0.002": 0.15291666666666667,
+    "0.003": 0.32841666666666663,
+    "0.005": 0.54575,
+    "0.01": 1.0
+   },
+   "L12": {
+    "0": 0.0,
+    "0.0005": 0.0,
+    "0.001": 0.0030833333333333333,
+    "0.002": 0.316,
+    "0.003": 0.6501666666666667,
+    "0.005": 1.0,
+    "0.01": 1.0
+   },
+   "V2": {
+    "0": 0.0,
+    "0.0005": 0.0,
+    "0.001": 0.0,
+    "0.002": 0.0,
+    "0.003": 0.0,
+    "0.005": 0.0,
+    "0.01": 0.0
+   },
+   "V2@160": {
+    "0": 0.0,
+    "0.0005": 0.0,
+    "0.001": 0.0,
+    "0.002": 0.0,
+    "0.003": 0.0,
+    "0.005": 0.0,
+    "0.01": 0.0
+   }
+  },
+  "toroidal": {
+   "L": {
+    "0": 0.0,
+    "0.0005": 0.0,
+    "0.001": 0.0013333333333333333,
+    "0.002": 0.17149999999999999,
+    "0.003": 0.8298333333333333,
+    "0.005": 1.0,
+    "0.01": 1.0
+   },
+   "L12": {
+    "0": 0.0,
+    "0.0005": 0.010416666666666666,
+    "0.001": 0.29941666666666666,
+    "0.002": 0.9993333333333333,
+    "0.003": 1.0,
+    "0.005": 1.0,
+    "0.01": 1.0
+   },
+   "V2": {
+    "0": 0.0,
+    "0.0005": 0.0,
+    "0.001": 0.0,
+    "0.002": 0.0,
+    "0.003": 0.0,
+    "0.005": 0.0,
+    "0.01": 0.0
+   },
+   "V2@160": {
+    "0": 0.0,
+    "0.0005": 0.0,
+    "0.001": 0.0,
+    "0.002": 0.0,
+    "0.003": 0.0,
+    "0.005": 0.0,
+    "0.01": 0.0
+   }
+  }
+ }
+}

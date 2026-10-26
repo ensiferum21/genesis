@@ -577,7 +577,8 @@ WORKSTREAMS = {
             'a library language so that generations compound; B20_R83-R86: three generations, a control and '
             'their test; B20_R104-R110, R113, R116: the max-cut engine mcx-v1 (breakout local search with an '
             'elite pool and population restarts), configured and tested on Gset; B20_R111, R112, R115: the '
-            'invention test against preregistered prior art, NOT_DEMONSTRATED)', B,
+            'invention test against preregistered prior art, NOT_DEMONSTRATED; B20_R132: why the system\'s own '
+            'engines are never released, NOT_SHOWN, EXPRESSIVENESS in every class)', B,
             ['src/genesis/custody_records.py', 'src/genesis/custodian.py', 'src/genesis/decision_record.py',
              'src/genesis/candidates.py', 'src/genesis/judge.py', 'src/genesis/learning/statement_panels.py',
              'src/genesis/learning/research_export.py', 'src/genesis/candidates_v2.py',
@@ -632,7 +633,7 @@ WORKSTREAMS = {
              'evidence/planar_renorm_b20r113/summary.json', 'src/genesis/invention/solver_programs_v2.py',
              'scripts/b20r115_language_v2.py', 'evidence/language_v2_b20r115/summary.json',
              'scripts/b20r116_gset_attempt.py', 'evidence/gset_attempt_b20r116/summary.json',
-             'scripts/b20r123_gset_seeds.py', 'evidence/gset_seeds_b20r123/summary.json', 'src/genesis/candidate_kinds/mcx2.py', 'src/genesis/candidate_kinds/native/mcx2.c', 'scripts/b20r125_build_mcx2.py', 'src/genesis/autonomy/selfimprove.py', 'scripts/b20r127_self_invented_engine.py', 'evidence/self_invented_engine_b20r127/summary.json', 'scripts/b20r128_improve_the_improver.py', 'src/genesis/autonomy/process.py'],
+             'scripts/b20r123_gset_seeds.py', 'evidence/gset_seeds_b20r123/summary.json', 'src/genesis/candidate_kinds/mcx2.py', 'src/genesis/candidate_kinds/native/mcx2.c', 'scripts/b20r125_build_mcx2.py', 'src/genesis/autonomy/selfimprove.py', 'scripts/b20r127_self_invented_engine.py', 'evidence/self_invented_engine_b20r127/summary.json', 'scripts/b20r128_improve_the_improver.py', 'scripts/b20r132_invention_bottleneck.py', 'src/genesis/autonomy/contract_v3.py', 'evidence/invention_bottleneck_b20r132/summary.json', 'docs/checkpoints/B20_R132_RECORD.md', 'src/genesis/autonomy/process.py'],
             [G + 'test_evaluator_readiness.py', G + 'test_redteam_b16.py', G + 'test_candidate_adapters.py',
              G + 'test_candidate_custody.py', G + 'test_statement_custody.py', G + 'test_candidates_v2.py',
              G + 'test_wiring_v5.py', G + 'test_maxcut_tabu.py', G + 'test_physics_kinds.py',
@@ -647,7 +648,7 @@ WORKSTREAMS = {
              G + 'test_mcx_kind.py', G + 'test_mcx_configure.py', G + 'test_mcx_gset.py',
              G + 'test_mcx_maturation.py', G + 'test_gset_replication.py', G + 'test_gset_long.py',
              G + 'test_invention_test.py', G + 'test_inventor_v2.py', G + 'test_planar_renorm.py',
-             G + 'test_language_v2.py', G + 'test_gset_attempt.py', G + 'test_gset_seeds.py', G + 'test_mcx2_kind.py', G + 'test_selfimprove.py', G + 'test_self_invented_engine.py', G + 'test_improve_the_improver.py', G + 'test_process_levels.py']),
+             G + 'test_language_v2.py', G + 'test_gset_attempt.py', G + 'test_gset_seeds.py', G + 'test_mcx2_kind.py', G + 'test_selfimprove.py', G + 'test_self_invented_engine.py', G + 'test_improve_the_improver.py', G + 'test_invention_bottleneck.py', G + 'test_contract_v3.py', G + 'test_process_levels.py']),
     'W07': ('Statistics, fairness and decision rules', B,
             [K + 'analysis.py', 'src/genesis/power.py', 'src/genesis/judge.py', 'src/genesis/resources.py',
              'docs/STATISTICIAN_BRIEF.md', 'scripts/b20r61_statistician_brief.py', 'scripts/b20r62_power_rebind.py',

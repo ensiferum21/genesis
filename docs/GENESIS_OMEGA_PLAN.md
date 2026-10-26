@@ -189,7 +189,7 @@ These live **outside** everything Genesis can modify: its genome, its inventors,
 |---|---|---|
 | Max-cut solver (Gset G1–G54) | 45 of 54 best-known values matched over all runs; none beaten. The large planar instances vary by up to 12 between single 300 s runs | B20_R102–R123; `evidence/gset_seeds_b20r123/` |
 | Physics operators in a search program | `mcx2` interprets programs over breakout, replica exchange, cluster moves, renormalisation, crossover, path relinking and pair descent | B20_R125; `candidate_kinds/mcx2.py` |
-| Autonomous invention of algorithms | NOT_DEMONSTRATED three times (B20_R111, R112, R115), and **NOT_SHOWN in B20_R127** (the system's own engines tie the builder-configured MCX on Gset at 10 s, 16–11; the judge released nothing in nine searches). B20_R132 diagnoses why; B20_R128 (improving the inventor) is preregistered | `autonomy/selfimprove.py`; `scripts/b20r127_*`, `b20r128_*` |
+| Autonomous invention of algorithms | NOT_DEMONSTRATED three times (B20_R111, R112, R115), and **NOT_SHOWN in B20_R127** (the system's own engines tie the builder-configured MCX on Gset at 10 s, 16–11; the judge released nothing in nine searches). B20_R132: why: nothing reached is big enough to see (EXPRESSIVENESS in every class; NOT_SHOWN); B20_R128 (improving the inventor) is preregistered | `autonomy/selfimprove.py`; `scripts/b20r127_*`, `b20r128_*` |
 | Causal discovery with hidden causes | FCI plus a LiNGAM-residual flag marks hidden causes on non-Gaussian data (B20_R122). With Gaussian data experiments are necessary (B20_R124). The choice of experiments has tied random four times | B20_R118–R124 |
 | The adaptive experimental scientist (Ω1/P1) | **Preregistered (B20_R129, `eb60843`)**: domain-independent decision layer, causal adapter, Genesis's acquisition language, invention under the judge | `science/design.py`, `science/acquire.py`, `causal/active3.py` |
 | Research automation | An adaptation cell (receptors, responses, metabolism) and a research loop that designs and preregisters studies (prospective checks 9/9, 8/8). It is research automation, not yet a better improver | B20_R93–R97; `adaptation/`, `autonomy/loop.py` |
@@ -475,7 +475,7 @@ call; `CHECKOUT=1` at a study's first slice), so that new code can be committed 
 | 2 | B20_R133 | The Problem Compiler against the specialists | **done: BEHIND_SPECIALISTS_ON coloring, mis** (Max-2-SAT tie; executed reductions only) |
 | 3 | B20_R131 | The cascade on a real case: R129's dormant acquisition rules reactivated by R130's interpretation (about 1 h) | **done: NO_VERIFIED_TRIGGER** (by protocol; no reactivation; comparators fresh 0.496, random 0.502, null 0.496, eig 0.450; archive 158.9 s CPU) |
 | 3b | B20_R148 | The portfolio of discovery processes (Ω², §0d): G0-G3 on ten fresh tasks, matched evaluations, AUDC (about 5 h, slices) | **done: NOT_SHOWN; G3_NOT_SHOWN** (G2 − G0 +0.0015 AUDC, p_Holm 1; G3 − G2 +0.010, p_Holm 0.70; H1 UNIVERSAL_HARNESS by its rule; 6.5 h) |
-| 4 | B20_R132 | The four bottlenecks of invention (headroom, expressiveness, search, evaluation) with planted positive and zero-signal controls, fresh truth sets T1/T2, the protected v2 against the candidate v3 at matched compute (about 5.7 h, slices) | preregistered `c0431f6`; **running** from 27 Oct, 00:09 SGT (the 24 Oct run left no evidence) |
+| 4 | B20_R132 | The four bottlenecks of invention (headroom, expressiveness, search, evaluation) with planted positive and zero-signal controls, fresh truth sets T1/T2, the protected v2 against the candidate v3 at matched compute (about 5.7 h, slices) | **done: NOT_SHOWN; diagnosis EXPRESSIVENESS in every class** (no release by v2 or v3; headroom exists; nothing confirmed on fresh graphs; v2 blind below about 1%) |
 | 5 | B20_R128 | Improving the inventor (2–3 slices of 6,600 s) | preregistered; after R132; runs **as preregistered** (directive item 1); a v3 follow-up, if any, is a new study |
 | 6 | — | Checkpoint (the last one is B20_R118) with the release matrix | owed |
 | 7 | B20_R134 | The Difficulty Cartographer, redesigned with obstacles hidden from cheap statistics (Ω2) | to design |
@@ -548,3 +548,7 @@ problems no level has seen, and Genesis has not shown that yet.
   discovery processes built, B20_R148 preregistered, to run before B20_R132.
 - 27 Oct 2026: B20_R148 recorded: NOT_SHOWN; G3_NOT_SHOWN (the portfolio ties the single inventor at
   1,024 evaluations; ahead early on the curve, behind at the full budget). B20_R132 running.
+- 27 Oct 2026: B20_R132 recorded: NOT_SHOWN; diagnosis EXPRESSIVENESS in every class (nothing the language and
+  searches reached is confirmed better than REX on fresh graphs; the protected judge is blind below about 1%; a
+  finer judge alone would not have changed B20_R127). The engine-invention line stays stagnant; what answers it is
+  Daniel's decision. B20_R128 next, as preregistered.

@@ -220,9 +220,8 @@ needs people: a reviewer, a statistician, an independent custodian on its own ma
       `docs/GENESIS_OMEGA_PLAN.md` §0a) orders the rest: done: B20_R130 (CHOICE; the global interpretation did not
       beat the per-pair one at the preregistered measure, so B20_R131's trigger is not verified); B20_R133 (running
       from 19:33; done: BEHIND_SPECIALISTS_ON coloring, mis), B20_R131 (done: NO_VERIFIED_TRIGGER by protocol), then, first by Daniel's
-      decision of 26 Oct, B20_R148 (done: NOT_SHOWN; G3_NOT_SHOWN; `docs/OMEGA_META_ADAPTIVE.md`); B20_R132 (the
-      four bottlenecks of invention; its 24 Oct run left no evidence; rerunning from 27 Oct, 00:09 SGT), B20_R128 (as
-      preregistered), B20_R135 (invented representations). Studies run alone on CPU 0 from a clean worktree of the
+      decision of 26 Oct, B20_R148 (done: NOT_SHOWN; G3_NOT_SHOWN; `docs/OMEGA_META_ADAPTIVE.md`); B20_R132 (done: NOT_SHOWN;
+      diagnosis EXPRESSIVENESS in every class; its 24 Oct run left no evidence), B20_R128 (as preregistered), B20_R135 (invented representations). Studies run alone on CPU 0 from a clean worktree of the
       branch head, one slice of at most 6,600 s per call.
   25. **Daniel's architecture of 24 Oct, 20:31 is adopted**: `docs/OMEGA_RECURSIVE_INVENTION.md`. Everything
       Genesis can invent is a typed research object, an open set of kinds beyond senses. The capability-gap
