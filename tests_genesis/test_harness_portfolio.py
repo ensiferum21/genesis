@@ -133,5 +133,47 @@ class Analysis(unittest.TestCase):
         self.assertEqual(M.validity(bad), 'INVALID_BUDGET')
 
 
+R148 = ROOT / M.OUT
+
+
+@unittest.skipUnless((R148 / 'summary.json').exists(), 'B20_R148 has not run in this tree')
+class RecordB20R148(unittest.TestCase):
+    """The record of B20_R148 on its evidence: the preregistered script unchanged; validity; the verdict, H1 and every
+    label recompute from the saved rows; development chose H* and G3's parameters from development rows only."""
+
+    @classmethod
+    def setUpClass(cls):
+        import json
+        cls.s = json.loads((R148 / 'summary.json').read_text())
+        cls.rows = M.load_jsonl(R148 / 'rows.jsonl')
+        cls.norms = json.loads((R148 / 'norms.json').read_text())
+        cls.dev = json.loads((R148 / 'dev.json').read_text())
+
+    def test_the_preregistered_script(self):
+        import hashlib
+        self.assertEqual(hashlib.sha256((ROOT / 'scripts' / 'b20r148_harness_portfolio.py').read_bytes()).hexdigest(),
+                         'd20a30d4728190e62ce6d24cc1f334a451a534c4a0bb875936c842035dbd3409')
+
+    def test_validity_and_the_labels_recompute(self):
+        self.assertIsNone(M.validity(self.rows))
+        res = M.analyse(self.rows, self.norms, self.dev)
+        self.assertEqual(res['verdict'], self.s['verdict'])
+        self.assertEqual(res['g3'], self.s['g3'])
+        self.assertEqual(res['H1']['label'], self.s['H1']['label'])
+        for k in ('T1', 'T2', 'T3'):
+            self.assertEqual(res['primary'][k]['label'], self.s['primary'][k]['label'])
+            self.assertAlmostEqual(res['primary'][k]['p_holm'], self.s['primary'][k]['p_holm'])
+
+    def test_development_used_development_rows_only(self):
+        drows = M.load_jsonl(R148 / 'dev_rows.jsonl')
+        dev_tasks = {f'{d}:{f}' for _, d, f in M.dev_tasks_spec()}
+        self.assertEqual({r['task'] for r in drows}, dev_tasks)
+        self.assertEqual(len(drows), len(dev_tasks) * 6 * len(M.DEV_SEEDS))
+        self.assertEqual(set(self.dev['dev_tasks']), dev_tasks)
+        self.assertEqual(f"single:{self.dev['hstar']}", self.s['hstar'])
+        for h, params in self.dev['tuned'].items():
+            self.assertIn(params, self.dev['tuning'][h]['settings'])
+
+
 if __name__ == '__main__':
     unittest.main()

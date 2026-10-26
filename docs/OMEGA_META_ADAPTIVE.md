@@ -113,6 +113,18 @@ docstring is the preregistration and governs; this is a summary.
   parameters meta-tuned on development tasks (G3) add to G2 on fresh tasks? The held-out families and a whole held-out
   domain test transfer.
 - **Design, verdict rule, costs, expectation and development looks:** in `scripts/b20r148_harness_portfolio.py`.
+- **Result (27 Oct 2026; `docs/checkpoints/B20_R148_RECORD.md`): NOT_SHOWN; G3_NOT_SHOWN.**
+  - G2 − G0: +0.0015 AUDC (6–4 tasks, p_Holm 1). H* was evolution, so T2 is T1.
+  - G3 − G2: +0.010 (p_Holm 0.70).
+  - The portfolio gains on max-cut and acquisition, where the best process changes from task to task, and loses on
+    the formulas, where hill climbing and evolution are clearly best.
+  - It leads the discovery curve up to 256 evaluations and falls behind the single processes at 1,024.
+  - H1 is UNIVERSAL_HARNESS by its rule (annealing and evolution are never beaten on all six seeds), yet five
+    different processes are each best on some task. The rule is a weak test of its question.
+
+  At this budget the report's central claim is not supported in Genesis's setting. It is not refuted either: G2 was
+  not worse. Successive halving is **not** adopted as Genesis's allocator. §5 stays PLANNED, and an allocator judged
+  at several budgets is a candidate for its first item.
 
 ## 5. What comes after (PLANNED, in order)
 

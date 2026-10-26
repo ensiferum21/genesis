@@ -749,6 +749,7 @@ WORKSTREAMS = {
              'src/genesis/autonomy/adversary.py', 'docs/AUTONOMY.md', 'evidence/qet_large_b20r97/summary.json',
              'src/genesis/autonomy/portfolio.py', 'src/genesis/autonomy/portfolio_tasks.py',
              'scripts/b20r148_harness_portfolio.py', 'docs/OMEGA_META_ADAPTIVE.md',
+             'evidence/harness_portfolio_b20r148/summary.json', 'docs/checkpoints/B20_R148_RECORD.md',
              'evidence/adaptation_cell_b20r97/ledger.json', 'src/genesis/autonomy/kmap.py',
              'scripts/b20r100_knowledge_map.py', 'evidence/knowledge_map_b20r100/summary.json',
              'src/genesis/autonomy/feedback.py', 'scripts/b20r103_zero_signal.py', 'docs/RESEARCH_ALERTS.md',

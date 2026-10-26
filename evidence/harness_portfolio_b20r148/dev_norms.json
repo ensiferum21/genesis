@@ -1,0 +1,47 @@
+{
+ "acquire:base": {
+  "low": -5.703125,
+  "references": {
+   "dec": -4.765625,
+   "decfall": -4.546875,
+   "degree": -5.78125,
+   "eig": -4.6875
+  }
+ },
+ "acquire:shift": {
+  "low": -7.890625,
+  "references": {
+   "dec": -6.90625,
+   "decfall": -6.3125,
+   "degree": -7.890625,
+   "eig": -6.859375
+  }
+ },
+ "acquire:sparse": {
+  "low": -6.4609375,
+  "references": {
+   "dec": -5.78125,
+   "decfall": -5.125,
+   "degree": -6.53125,
+   "eig": -5.28125
+  }
+ },
+ "formula:large": {
+  "low": 0.0,
+  "references": {
+   "target": 0.9999999999999999
+  }
+ },
+ "formula:medium": {
+  "low": 0.0,
+  "references": {
+   "target": 0.9999999999999999
+  }
+ },
+ "formula:small": {
+  "low": 0.0,
+  "references": {
+   "target": 0.9999999999999999
+  }
+ }
+}

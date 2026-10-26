@@ -1,0 +1,74 @@
+{
+ "acquire:base": {
+  "low": -4.75,
+  "references": {
+   "dec": -4.109375,
+   "decfall": -3.796875,
+   "degree": -4.75,
+   "eig": -4.0625
+  }
+ },
+ "acquire:large": {
+  "low": -9.015625,
+  "references": {
+   "dec": -7.703125,
+   "decfall": -7.09375,
+   "degree": -9.015625,
+   "eig": -7.75
+  }
+ },
+ "acquire:shift": {
+  "low": -7.484375,
+  "references": {
+   "dec": -6.421875,
+   "decfall": -6.015625,
+   "degree": -7.484375,
+   "eig": -6.484375
+  }
+ },
+ "acquire:sparse": {
+  "low": -6.109375,
+  "references": {
+   "dec": -5.453125,
+   "decfall": -4.796875,
+   "degree": -6.1875,
+   "eig": -4.859375
+  }
+ },
+ "formula:large": {
+  "low": 0.023671929199557493,
+  "references": {
+   "target": 0.9999999999999999
+  }
+ },
+ "formula:medium": {
+  "low": -0.0028585064992586538,
+  "references": {
+   "target": 0.9999999999999999
+  }
+ },
+ "formula:mixed": {
+  "low": 0.0650845240060838,
+  "references": {
+   "target": 0.9999999999999999
+  }
+ },
+ "formula:small": {
+  "low": -0.005158236506793966,
+  "references": {
+   "target": 0.9999999999999999
+  }
+ },
+ "mcx2:erdos_pm1": {
+  "low": 0.9902910833029093,
+  "references": {
+   "rex": 1.0020798706844036
+  }
+ },
+ "mcx2:torus": {
+  "low": 0.9915898648035786,
+  "references": {
+   "rex": 1.0041041804910418
+  }
+ }
+}

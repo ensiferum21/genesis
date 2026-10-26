@@ -56,7 +56,8 @@ unit of compute on unseen tasks. On 26 Oct he chose to adopt it before resuming 
 - **The report's decisive experiment, translated (LLM-free) and bounded:** B20_R148, preregistered. It compares G0
   (the current inventor's search), G1 (uniform portfolio), G2 (successive halving across processes) and G3 (G2 with
   parameters meta-tuned on development tasks) on ten fresh tasks in three domains, with held-out families and a
-  held-out domain. It runs first; then the queue resumes at B20_R132.
+  held-out domain. It ran first: **NOT_SHOWN; G3_NOT_SHOWN** (`docs/checkpoints/B20_R148_RECORD.md`); the queue
+  resumed at B20_R132.
 - **The measurement standard** (matched evaluations with CPU recorded, discovery curves and AUDC, best-of-N and
   hill climbing as arms, families as units, Holm) applies to every discovery comparison from now on.
 
@@ -473,8 +474,8 @@ call; `CHECKOUT=1` at a study's first slice), so that new code can be committed 
 | 1 | B20_R130 | Choice, instrument and interpretation separated | **done: CHOICE** (interpretation NO_DIFFERENCE at the preregistered measure) |
 | 2 | B20_R133 | The Problem Compiler against the specialists | **done: BEHIND_SPECIALISTS_ON coloring, mis** (Max-2-SAT tie; executed reductions only) |
 | 3 | B20_R131 | The cascade on a real case: R129's dormant acquisition rules reactivated by R130's interpretation (about 1 h) | **done: NO_VERIFIED_TRIGGER** (by protocol; no reactivation; comparators fresh 0.496, random 0.502, null 0.496, eig 0.450; archive 158.9 s CPU) |
-| 3b | B20_R148 | The portfolio of discovery processes (Ω², §0d): G0-G3 on ten fresh tasks, matched evaluations, AUDC (about 5 h, slices) | preregistered; runs first (Daniel, 26 Oct) |
-| 4 | B20_R132 | The four bottlenecks of invention (headroom, expressiveness, search, evaluation) with planted positive and zero-signal controls, fresh truth sets T1/T2, the protected v2 against the candidate v3 at matched compute (about 5.7 h, slices) | preregistered `c0431f6` |
+| 3b | B20_R148 | The portfolio of discovery processes (Ω², §0d): G0-G3 on ten fresh tasks, matched evaluations, AUDC (about 5 h, slices) | **done: NOT_SHOWN; G3_NOT_SHOWN** (G2 − G0 +0.0015 AUDC, p_Holm 1; G3 − G2 +0.010, p_Holm 0.70; H1 UNIVERSAL_HARNESS by its rule; 6.5 h) |
+| 4 | B20_R132 | The four bottlenecks of invention (headroom, expressiveness, search, evaluation) with planted positive and zero-signal controls, fresh truth sets T1/T2, the protected v2 against the candidate v3 at matched compute (about 5.7 h, slices) | preregistered `c0431f6`; **running** from 27 Oct, 00:09 SGT (the 24 Oct run left no evidence) |
 | 5 | B20_R128 | Improving the inventor (2–3 slices of 6,600 s) | preregistered; after R132; runs **as preregistered** (directive item 1); a v3 follow-up, if any, is a new study |
 | 6 | — | Checkpoint (the last one is B20_R118) with the release matrix | owed |
 | 7 | B20_R134 | The Difficulty Cartographer, redesigned with obstacles hidden from cheap statistics (Ω2) | to design |
@@ -545,3 +546,5 @@ problems no level has seen, and Genesis has not shown that yet.
 - 26 Oct 2026: the writer changes back to the second session (the third ended without recording B20_R132, which is
   requeued). Daniel's report "Beyond Genesis-Ω" adopted first (§0d; `docs/OMEGA_META_ADAPTIVE.md`): the portfolio of
   discovery processes built, B20_R148 preregistered, to run before B20_R132.
+- 27 Oct 2026: B20_R148 recorded: NOT_SHOWN; G3_NOT_SHOWN (the portfolio ties the single inventor at
+  1,024 evaluations; ahead early on the curve, behind at the full budget). B20_R132 running.

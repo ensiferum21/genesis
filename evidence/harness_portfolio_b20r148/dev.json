@@ -1,0 +1,180 @@
+{
+ "dev_tasks": [
+  "acquire:base",
+  "acquire:shift",
+  "acquire:sparse",
+  "formula:small",
+  "formula:medium",
+  "formula:large"
+ ],
+ "hstar": "evolution",
+ "mean_audc": {
+  "anneal": 0.828525249104777,
+  "best_of_n": 0.8058236737446102,
+  "evolution": 0.8474364222668817,
+  "hill_climb": 0.8233909294541074,
+  "map_elites": 0.7876657839588055,
+  "racing": 0.7571322970432456
+ },
+ "tuned": {
+  "anneal": {
+   "probe": 8,
+   "t_end": 0.001
+  },
+  "best_of_n": {},
+  "evolution": {
+   "children": 8,
+   "leaders": 0,
+   "p_cross": 0.25,
+   "pop": 32,
+   "tournament": 3
+  },
+  "hill_climb": {
+   "stall": 100
+  },
+  "map_elites": {
+   "init": 16,
+   "p_cross": 0.0
+  },
+  "racing": {
+   "batch": 32
+  }
+ },
+ "tuning": {
+  "anneal": {
+   "audc": {
+    "0": 0.815296,
+    "1": 0.804421,
+    "2": 0.817973
+   },
+   "chosen": 2,
+   "settings": [
+    {
+     "probe": 8,
+     "t_end": 0.01
+    },
+    {
+     "probe": 8,
+     "t_end": 0.1
+    },
+    {
+     "probe": 8,
+     "t_end": 0.001
+    }
+   ]
+  },
+  "best_of_n": {
+   "audc": {
+    "0": 0.788106
+   },
+   "chosen": 0,
+   "settings": [
+    {}
+   ]
+  },
+  "evolution": {
+   "audc": {
+    "0": 0.829141,
+    "1": 0.824159,
+    "2": 0.832998,
+    "3": 0.834523
+   },
+   "chosen": 3,
+   "settings": [
+    {
+     "children": 8,
+     "leaders": 2,
+     "p_cross": 0.25,
+     "pop": 16,
+     "tournament": 3
+    },
+    {
+     "children": 16,
+     "leaders": 0,
+     "p_cross": 0.25,
+     "pop": 16,
+     "tournament": 5
+    },
+    {
+     "children": 4,
+     "leaders": 0,
+     "p_cross": 0.25,
+     "pop": 32,
+     "tournament": 3
+    },
+    {
+     "children": 8,
+     "leaders": 0,
+     "p_cross": 0.25,
+     "pop": 32,
+     "tournament": 3
+    }
+   ]
+  },
+  "hill_climb": {
+   "audc": {
+    "0": 0.792612,
+    "1": 0.794913,
+    "2": 0.835192
+   },
+   "chosen": 2,
+   "settings": [
+    {
+     "stall": 30
+    },
+    {
+     "stall": 10
+    },
+    {
+     "stall": 100
+    }
+   ]
+  },
+  "map_elites": {
+   "audc": {
+    "0": 0.80757,
+    "1": 0.798552,
+    "2": 0.848903,
+    "3": 0.82644
+   },
+   "chosen": 2,
+   "settings": [
+    {
+     "init": 16,
+     "p_cross": 0.1
+    },
+    {
+     "init": 8,
+     "p_cross": 0.0
+    },
+    {
+     "init": 16,
+     "p_cross": 0.0
+    },
+    {
+     "init": 32,
+     "p_cross": 0.3
+    }
+   ]
+  },
+  "racing": {
+   "audc": {
+    "0": 0.755247,
+    "1": 0.773924,
+    "2": 0.749202
+   },
+   "chosen": 1,
+   "settings": [
+    {
+     "batch": 16
+    },
+    {
+     "batch": 32
+    },
+    {
+     "batch": 8
+    }
+   ]
+  }
+ }
+}

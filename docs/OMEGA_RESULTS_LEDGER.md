@@ -34,6 +34,7 @@ Nothing here is an independent or sealed result.
 | B20_R127 | The system's own engines against human designs: NOT_SHOWN (Gset 10 s: 16–11 against MCX, p 0.44; 9–18 against REX; 28–5 against BLS). The judge released nothing in nine searches: training gains +0.04–0.23% against tau 0.75–2.45%; no compounding; no mechanism credited |
 | B20_R120, R122, R124 | Genesis's choice of experiments no better than random (four times; these chose from fixed observational scores; B20_R129's adaptive scientist then beat random) |
 | B20_R72, R92, R97 | Physics move rules show no measurable effect in the invention engine |
+| B20_R148 | The portfolio of discovery processes (Ω²): NOT_SHOWN; G3_NOT_SHOWN. G2 (halving across six processes) − G0 (the inventor's evolution) +0.0015 AUDC (6–4, p_Holm 1); G3 − G2 +0.010 (p_Holm 0.70); H1 UNIVERSAL_HARNESS by its rule (anneal and evolution never beaten on all six seeds), though five processes are each best on some task. Secondary, uncorrected: G3 − G2 in final quality +0.027 (7–2, p 0.039) |
 | B20_R131 | The cascade on a real case: NO_VERIFIED_TRIGGER by protocol (R130 did not verify the global interpretation), so no reactivation was measured; comparators at 24 evaluations: fresh 0.496, random retrieval 0.502, null 0.496, eig 0.450; archive overhead 158.9 s CPU |
 
 ## Exploratory (development looks, 24 Oct 2026; disclosed in B20_R129 and R130)
@@ -52,8 +53,7 @@ Nothing here is an independent or sealed result.
 | Batch | State |
 |---|---|
 | B20_R128 | Improving the inventor. Preregistered |
-| B20_R132 | The four bottlenecks of invention. Preregistered `c0431f6` (an earlier run on 24 Oct left no evidence; requeued) |
-| B20_R148 | The portfolio of discovery processes (Ω²): G0-G3, H1. Preregistered |
+| B20_R132 | The four bottlenecks of invention. Preregistered `c0431f6` (an earlier run on 24 Oct left no evidence); running from 27 Oct 2026, 00:09 SGT |
 
 ## Unrun plans
 

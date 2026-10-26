@@ -89,7 +89,7 @@
    "id": "B20_R132",
    "kind": "study",
    "line": "engine-invention",
-   "notes": "preregistered c0431f6 after its development look 26 Oct 2026: requeued; to be run from its preregistered script (c0431f6) in a fresh output directory, with the lost first attempt disclosed in its record.",
+   "notes": "preregistered c0431f6 after its development look 26 Oct 2026: requeued; to be run from its preregistered script (c0431f6) in a fresh output directory, with the lost first attempt disclosed in its record. Rerun from 27 Oct 2026, 00:09 SGT (16:08:44Z), clean worktree of 13bd014, output evidence/invention_bottleneck_b20r132.",
    "outcome": null,
    "output": "evidence/invention_bottleneck_b20r132",
    "positive": null,
@@ -100,7 +100,7 @@
     "cpu0_hours": 5.7
    },
    "script": "scripts/b20r132_invention_bottleneck.py",
-   "status": "queued",
+   "status": "running",
    "title": "The four bottlenecks of invention: headroom, expressiveness, search, evaluation",
    "unlocks": [
     "invention-bottleneck-diagnosed"
@@ -447,25 +447,27 @@
    "unlocks": []
   },
   "B20_R148": {
-   "artifacts": [],
+   "artifacts": [
+    "evidence/harness_portfolio_b20r148/summary.json"
+   ],
    "committed": true,
    "depends_on": [],
    "failure": null,
    "id": "B20_R148",
    "kind": "study",
    "line": "meta-adaptive",
-   "notes": "runs before B20_R132 (Daniel, 26 Oct 2026); docs/OMEGA_META_ADAPTIVE.md",
-   "outcome": null,
+   "notes": "runs before B20_R132 (Daniel, 26 Oct 2026); docs/OMEGA_META_ADAPTIVE.md; ran 26 Oct 17:38 - 27 Oct 00:08 SGT from a clean worktree of 13bd014 (the start is recorded at the finish); docs/checkpoints/B20_R148_RECORD.md",
+   "outcome": "NOT_SHOWN; G3_NOT_SHOWN: G2-G0 +0.0015 AUDC (6-4, p_Holm 1), G3-G2 +0.010 (p_Holm 0.70); H1 UNIVERSAL_HARNESS by its rule (anneal, evolution); portfolio ahead early, behind at 1024",
    "output": "evidence/harness_portfolio_b20r148",
-   "positive": null,
-   "preregistered": null,
+   "positive": false,
+   "preregistered": "251c956",
    "priority": 10,
    "requires": [],
    "resources": {
     "cpu0_hours": 5.0
    },
    "script": "scripts/b20r148_harness_portfolio.py",
-   "status": "queued",
+   "status": "done",
    "title": "The portfolio of discovery processes (Omega-2, Daniel's report adopted 26 Oct): G0-G3 on ten fresh tasks in three domains at matched evaluations, AUDC, H1 (is any process best everywhere?)",
    "unlocks": []
   },
@@ -477,7 +479,7 @@
    "id": "allocator-baselines",
    "kind": "study",
    "line": "operations",
-   "notes": "26 Oct 2026: its first instance is B20_R148 (an allocator across discovery processes against single processes, uniform and bandit); the allocator across activities (solving, diagnosing, inventing, improving, transferring) remains",
+   "notes": "26 Oct 2026: its first instance is B20_R148 (an allocator across discovery processes against single processes, uniform and bandit; NOT_SHOWN, 27 Oct); the allocator across activities (solving, diagnosing, inventing, improving, transferring) remains",
    "outcome": null,
    "output": null,
    "positive": null,
@@ -997,6 +999,23 @@
    "id": "B20_R148",
    "kind": "add",
    "time": "2026-10-26T08:51:20+00:00"
+  },
+  {
+   "id": "B20_R148",
+   "kind": "start",
+   "time": "2026-10-26T16:15:43+00:00"
+  },
+  {
+   "id": "B20_R148",
+   "kind": "finish",
+   "outcome": "NOT_SHOWN; G3_NOT_SHOWN: G2-G0 +0.0015 AUDC (6-4, p_Holm 1), G3-G2 +0.010 (p_Holm 0.70); H1 UNIVERSAL_HARNESS by its rule (anneal, evolution); portfolio ahead early, behind at 1024",
+   "positive": false,
+   "time": "2026-10-26T16:15:43+00:00"
+  },
+  {
+   "id": "B20_R132",
+   "kind": "start",
+   "time": "2026-10-26T16:15:43+00:00"
   }
  ],
  "lines": {
@@ -1095,8 +1114,14 @@
   },
   "meta-adaptive": {
    "diagnosis": null,
-   "outcomes": [],
-   "run": 0,
+   "outcomes": [
+    [
+     "B20_R148",
+     "NOT_SHOWN; G3_NOT_SHOWN: G2-G0 +0.0015 AUDC (6-4, p_Holm 1), G3-G2 +0.010 (p_Holm 0.70); H1 UNIVERSAL_HARNESS by its rule (anneal, evolution); portfolio ahead early, behind at 1024",
+     false
+    ]
+   ],
+   "run": 1,
    "stagnant": false
   },
   "operations": {
