@@ -5690,7 +5690,14 @@
    },
    "code": [
     "src/genesis/primitives.py",
-    "scripts/b20r_primitives.py"
+    "scripts/b20r_primitives.py",
+    "src/genesis/candidate_kinds/mcx3.py",
+    "src/genesis/candidate_kinds/native/mcx3.c",
+    "scripts/b20r153_build_mcx3.py",
+    "src/genesis/expressive/lambda1.py",
+    "src/genesis/expressive/operators.py",
+    "docs/OMEGA_EXPRESSIVE_LANGUAGE.md",
+    "docs/checkpoints/B20_R153_RECORD.md"
    ],
    "disposition": "IMPLEMENTED_BOUNDED_PENDING_AUDIT",
    "evidence": [],
@@ -5705,9 +5712,12 @@
    "scope": "workstream (B14 scope delivered; acceptance pending)",
    "source": "roadmap \u00a77-10",
    "tests": [
-    "tests_genesis/test_primitives.py"
+    "tests_genesis/test_primitives.py",
+    "tests_genesis/test_mcx3_kind.py",
+    "tests_genesis/test_expressive_lambda1.py",
+    "tests_genesis/test_expressive_operators.py"
    ],
-   "title": "New primitives, research-language evolution and trust changes (derived primitives with reference expansions, conformance, versioned registries; DEV: none of four starting primitives is a gain)",
+   "title": "New primitives, research-language evolution and trust changes (derived primitives with reference expansions, conformance, versioned registries; DEV: none of four starting primitives is a gain; B20_R153: the engine language \u039b1, mcx3 with the builder's construct algebra, mcx2 programs identical, named statements with versioned libraries, the inventor's operators over \u039b0 and \u039b1)",
    "workstream": "W22"
   },
   {

@@ -12,7 +12,8 @@ python3 -m unittest tests_genesis.test_no_llm tests_genesis.test_omega_boundary 
 python3 scripts/run_test_matrix.py --profile release --report /tmp/matrix.json     # the full matrix (~45 min)
 ```
 
-The max-cut engine and the MaxSAT entrants are built from pinned sources (`scripts/b20r125_build_mcx2.py`,
+The max-cut engines and the MaxSAT entrants are built from pinned sources (`scripts/b20r125_build_mcx2.py`,
+`scripts/b20r153_build_mcx3.py`,
 `b20r91_mse2026_tools.py`; HANDOVER §6.1).
 
 **Run a study** (alone on one core, resumable):

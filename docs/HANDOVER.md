@@ -184,7 +184,8 @@ needs people: a reviewer, a statistician, an independent custodian on its own ma
 
 1. **Rebuild the state-of-the-art toolchain in any new container** (built tools do not survive one):
    `b20r74_sota_tools.py --ortools-wheel WHEEL`, `b20r87_maxsat_tools.py --deepdist` and `--solvers GMP_DEBS`,
-   `b20r91_mse2026_tools.py ARCHIVES --gmp GMP_DEBS`, `b20r88/94/96_build_*.py`; then `b20r98_repin.py --wheel WHEEL`
+   `b20r91_mse2026_tools.py ARCHIVES --gmp GMP_DEBS`, `b20r88/94/96_build_*.py`, `b20r125_build_mcx2.py` and
+   `b20r153_build_mcx3.py` (from the repository's sources); then `b20r98_repin.py --wheel WHEEL`
    must report every pin matched. The wheel, the GMP packages and the 2026 archives are Daniel's downloads (the
    egress proxy refuses PyPI, the Ubuntu archive, crates.io and Zenodo); done on 22 Oct 2026.
 2. **Run the preregistered studies, alone on CPU 0, in this order:**
@@ -239,6 +240,8 @@ needs people: a reviewer, a statistician, an independent custodian on its own ma
       ceiling search within a description-length bound; a language x search factorial), the builder's construct
       algebra labelled as human, Genesis growing the language from its own engines through a language judge and
       a consolidator, generation after generation. Batches X1, X2, B20_R151, B20_R152; then B20_R141.
+      Done: X1 (B20_R153, engineering: `mcx3-v1` and its pinned binary, every mcx2 program identical in it; the
+      Λ1 front end with named statements; the inventor's operators over Λ0 and Λ1). Next: X2 (B20_R154).
   27. after them: the Genesis Ω stages in `docs/GENESIS_OMEGA_PLAN.md` §5-§6 (Ω0 analysis of R127/R128; B20_R130
       invented instruments; B20_R131 the Difficulty Cartographer; the genome and typed language; the ecology;
       evolvability selection; the decisive A/B/C experiment).

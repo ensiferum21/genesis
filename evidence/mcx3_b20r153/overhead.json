@@ -1,0 +1,441 @@
+{
+ "summary": {
+  "runs": 30,
+  "identical": 30,
+  "cpu_ratio_median": 1.020003551682684,
+  "cpu_ratio_min": 0.9051205002493538,
+  "cpu_ratio_max": 1.2288164195161184,
+  "by_program": {
+   "B100 X I S2000 C": 0.9956900206247579,
+   "B5 X I D": 1.0287380745386034,
+   "b3 L X I S50 M P3 C": 0.985545928252967
+  },
+  "ticks_ms": 300,
+  "sources": {
+   "mcx2": "mcx2.c",
+   "mcx3": "mcx3.c"
+  }
+ },
+ "rows": [
+  {
+   "graph": "random800",
+   "prog": "B100 X I S2000 C",
+   "seed": 10,
+   "identical": true,
+   "cut": 687,
+   "trace": [
+    "120d3affe5a2e4f6",
+    "296835",
+    "300004"
+   ],
+   "cpu_mcx2": 1.4403890000000001,
+   "cpu_mcx3": 1.5202079999999996
+  },
+  {
+   "graph": "random800",
+   "prog": "B100 X I S2000 C",
+   "seed": 11,
+   "identical": true,
+   "cut": 687,
+   "trace": [
+    "9135019762bd0c76",
+    "296871",
+    "300002"
+   ],
+   "cpu_mcx2": 1.4728270000000006,
+   "cpu_mcx3": 1.5264740000000003
+  },
+  {
+   "graph": "random800",
+   "prog": "B100 X I S2000 C",
+   "seed": 12,
+   "identical": true,
+   "cut": 687,
+   "trace": [
+    "99bf162d5277ae54",
+    "296803",
+    "300004"
+   ],
+   "cpu_mcx2": 1.4717659999999988,
+   "cpu_mcx3": 1.4403040000000011
+  },
+  {
+   "graph": "random800",
+   "prog": "B100 X I S2000 C",
+   "seed": 13,
+   "identical": true,
+   "cut": 687,
+   "trace": [
+    "cc8d19297e9dc814",
+    "296784",
+    "300002"
+   ],
+   "cpu_mcx2": 1.5786309999999997,
+   "cpu_mcx3": 1.5010960000000004
+  },
+  {
+   "graph": "random800",
+   "prog": "B100 X I S2000 C",
+   "seed": 14,
+   "identical": true,
+   "cut": 687,
+   "trace": [
+    "d3cee3a2fc810648",
+    "296841",
+    "300002"
+   ],
+   "cpu_mcx2": 1.474513,
+   "cpu_mcx3": 1.3565409999999982
+  },
+  {
+   "graph": "random800",
+   "prog": "B5 X I D",
+   "seed": 10,
+   "identical": true,
+   "cut": 687,
+   "trace": [
+    "f4bdd7c77493947a",
+    "159381",
+    "300004"
+   ],
+   "cpu_mcx2": 2.8742160000000005,
+   "cpu_mcx3": 2.9356940000000016
+  },
+  {
+   "graph": "random800",
+   "prog": "B5 X I D",
+   "seed": 11,
+   "identical": true,
+   "cut": 687,
+   "trace": [
+    "cf05659fbafaa78a",
+    "158994",
+    "300003"
+   ],
+   "cpu_mcx2": 3.1470509999999976,
+   "cpu_mcx3": 3.2231810000000007
+  },
+  {
+   "graph": "random800",
+   "prog": "B5 X I D",
+   "seed": 12,
+   "identical": true,
+   "cut": 687,
+   "trace": [
+    "d6060dc8981f3d59",
+    "159568",
+    "300003"
+   ],
+   "cpu_mcx2": 3.2055930000000004,
+   "cpu_mcx3": 3.252898000000002
+  },
+  {
+   "graph": "random800",
+   "prog": "B5 X I D",
+   "seed": 13,
+   "identical": true,
+   "cut": 687,
+   "trace": [
+    "54cd2ae4e3d0269b",
+    "158909",
+    "300003"
+   ],
+   "cpu_mcx2": 3.0261780000000007,
+   "cpu_mcx3": 3.340958999999998
+  },
+  {
+   "graph": "random800",
+   "prog": "B5 X I D",
+   "seed": 14,
+   "identical": true,
+   "cut": 687,
+   "trace": [
+    "0415adeb99fe9838",
+    "159223",
+    "300004"
+   ],
+   "cpu_mcx2": 3.0156630000000035,
+   "cpu_mcx3": 3.092723999999997
+  },
+  {
+   "graph": "random800",
+   "prog": "b3 L X I S50 M P3 C",
+   "seed": 10,
+   "identical": true,
+   "cut": 662,
+   "trace": [
+    "f12f5bae4070d92c",
+    "294525",
+    "300002"
+   ],
+   "cpu_mcx2": 0.09481399999999951,
+   "cpu_mcx3": 0.11650900000000064
+  },
+  {
+   "graph": "random800",
+   "prog": "b3 L X I S50 M P3 C",
+   "seed": 11,
+   "identical": true,
+   "cut": 669,
+   "trace": [
+    "0b1c35d9da680a9c",
+    "294458",
+    "300002"
+   ],
+   "cpu_mcx2": 0.10565000000000424,
+   "cpu_mcx3": 0.10420699999999637
+  },
+  {
+   "graph": "random800",
+   "prog": "b3 L X I S50 M P3 C",
+   "seed": 12,
+   "identical": true,
+   "cut": 665,
+   "trace": [
+    "706abc9c01220c70",
+    "294452",
+    "300002"
+   ],
+   "cpu_mcx2": 0.10974000000000217,
+   "cpu_mcx3": 0.10078699999999685
+  },
+  {
+   "graph": "random800",
+   "prog": "b3 L X I S50 M P3 C",
+   "seed": 13,
+   "identical": true,
+   "cut": 672,
+   "trace": [
+    "db9a1f9e89ad97d8",
+    "294410",
+    "300002"
+   ],
+   "cpu_mcx2": 0.09184299999999723,
+   "cpu_mcx3": 0.08950500000000261
+  },
+  {
+   "graph": "random800",
+   "prog": "b3 L X I S50 M P3 C",
+   "seed": 14,
+   "identical": true,
+   "cut": 657,
+   "trace": [
+    "616aa994cd5d1b1c",
+    "294561",
+    "300001"
+   ],
+   "cpu_mcx2": 0.10172100000000085,
+   "cpu_mcx3": 0.09913199999999733
+  },
+  {
+   "graph": "torus784",
+   "prog": "B100 X I S2000 C",
+   "seed": 10,
+   "identical": true,
+   "cut": 558,
+   "trace": [
+    "06f46cb77029965d",
+    "296749",
+    "300004"
+   ],
+   "cpu_mcx2": 0.9969749999999991,
+   "cpu_mcx3": 0.9684880000000007
+  },
+  {
+   "graph": "torus784",
+   "prog": "B100 X I S2000 C",
+   "seed": 11,
+   "identical": true,
+   "cut": 558,
+   "trace": [
+    "b9f583b54d9e4b10",
+    "296783",
+    "300002"
+   ],
+   "cpu_mcx2": 0.9074750000000051,
+   "cpu_mcx3": 0.9300619999999995
+  },
+  {
+   "graph": "torus784",
+   "prog": "B100 X I S2000 C",
+   "seed": 12,
+   "identical": true,
+   "cut": 558,
+   "trace": [
+    "71f9628f6ead6dfe",
+    "296716",
+    "300004"
+   ],
+   "cpu_mcx2": 0.9501389999999983,
+   "cpu_mcx3": 0.9622600000000006
+  },
+  {
+   "graph": "torus784",
+   "prog": "B100 X I S2000 C",
+   "seed": 13,
+   "identical": true,
+   "cut": 558,
+   "trace": [
+    "b8b11dc3183326a6",
+    "296743",
+    "300002"
+   ],
+   "cpu_mcx2": 0.9258759999999975,
+   "cpu_mcx3": 0.9957780000000014
+  },
+  {
+   "graph": "torus784",
+   "prog": "B100 X I S2000 C",
+   "seed": 14,
+   "identical": true,
+   "cut": 558,
+   "trace": [
+    "a1db2947249701e7",
+    "296671",
+    "300004"
+   ],
+   "cpu_mcx2": 0.9869739999999965,
+   "cpu_mcx3": 0.9528540000000024
+  },
+  {
+   "graph": "torus784",
+   "prog": "B5 X I D",
+   "seed": 10,
+   "identical": true,
+   "cut": 558,
+   "trace": [
+    "de064fcd77581ba3",
+    "174230",
+    "300003"
+   ],
+   "cpu_mcx2": 1.7460689999999985,
+   "cpu_mcx3": 1.8018080000000012
+  },
+  {
+   "graph": "torus784",
+   "prog": "B5 X I D",
+   "seed": 11,
+   "identical": true,
+   "cut": 558,
+   "trace": [
+    "6e3eca276dc583e3",
+    "174435",
+    "300002"
+   ],
+   "cpu_mcx2": 1.7491600000000034,
+   "cpu_mcx3": 1.812085
+  },
+  {
+   "graph": "torus784",
+   "prog": "B5 X I D",
+   "seed": 12,
+   "identical": true,
+   "cut": 558,
+   "trace": [
+    "58a171ba812ef6bc",
+    "174440",
+    "300002"
+   ],
+   "cpu_mcx2": 1.8752129999999922,
+   "cpu_mcx3": 1.9101250000000078
+  },
+  {
+   "graph": "torus784",
+   "prog": "B5 X I D",
+   "seed": 13,
+   "identical": true,
+   "cut": 558,
+   "trace": [
+    "7ff97b04c64cf0dc",
+    "173530",
+    "300004"
+   ],
+   "cpu_mcx2": 1.6692319999999938,
+   "cpu_mcx3": 1.7693330000000032
+  },
+  {
+   "graph": "torus784",
+   "prog": "B5 X I D",
+   "seed": 14,
+   "identical": true,
+   "cut": 558,
+   "trace": [
+    "f57fc0c6b88b5352",
+    "174641",
+    "300004"
+   ],
+   "cpu_mcx2": 1.7237910000000032,
+   "cpu_mcx3": 1.8622299999999967
+  },
+  {
+   "graph": "torus784",
+   "prog": "b3 L X I S50 M P3 C",
+   "seed": 10,
+   "identical": true,
+   "cut": 550,
+   "trace": [
+    "f1cabeca7b5de21e",
+    "293921",
+    "300003"
+   ],
+   "cpu_mcx2": 0.06915300000000002,
+   "cpu_mcx3": 0.06854700000000769
+  },
+  {
+   "graph": "torus784",
+   "prog": "b3 L X I S50 M P3 C",
+   "seed": 11,
+   "identical": true,
+   "cut": 550,
+   "trace": [
+    "5ebaafbcc651e08c",
+    "293848",
+    "300002"
+   ],
+   "cpu_mcx2": 0.06961699999999382,
+   "cpu_mcx3": 0.08173399999999731
+  },
+  {
+   "graph": "torus784",
+   "prog": "b3 L X I S50 M P3 C",
+   "seed": 12,
+   "identical": true,
+   "cut": 546,
+   "trace": [
+    "0d03f08c0fd773c0",
+    "293880",
+    "300002"
+   ],
+   "cpu_mcx2": 0.06780399999999531,
+   "cpu_mcx3": 0.06677000000000533
+  },
+  {
+   "graph": "torus784",
+   "prog": "b3 L X I S50 M P3 C",
+   "seed": 13,
+   "identical": true,
+   "cut": 548,
+   "trace": [
+    "42e135ff2803a70a",
+    "294135",
+    "300002"
+   ],
+   "cpu_mcx2": 0.0821990000000028,
+   "cpu_mcx3": 0.07439999999999916
+  },
+  {
+   "graph": "torus784",
+   "prog": "b3 L X I S50 M P3 C",
+   "seed": 14,
+   "identical": true,
+   "cut": 552,
+   "trace": [
+    "dcc2fbba0471bbae",
+    "294052",
+    "300002"
+   ],
+   "cpu_mcx2": 0.07280099999999834,
+   "cpu_mcx3": 0.07443499999999403
+  }
+ ]
+}

@@ -10,6 +10,9 @@ question B20_R132 left open: what answers EXPRESSIVENESS. The directive, verbati
 
 Every part below is marked BUILT, PREREGISTERED or PLANNED. Nothing here is a result.
 
+**Progress.** X1 is BUILT (B20_R153, `docs/checkpoints/B20_R153_RECORD.md`): `mcx3` and its pinned binary, with
+every mcx2 program identical; the Λ1 front end; the inventor's operators over Λ0 and Λ1. X2 (B20_R154) is next.
+
 ## 1. Reading
 
 - **The obstacle** is B20_R132's: engine invention reaches nothing that a fresh graph set confirms beats REX, and the
@@ -49,7 +52,7 @@ per program).
 | Step | What does it | State |
 |---|---|---|
 | ARA diagnoses the obstacle | `architecture/diagnose.py`'s ladder on the engine-invention workflow cast as an AG (the language is a node; its ceiling stand-in is the ceiling search), with B20_R132's instruments for an expensive real domain | ARA-1 BUILT on the zoo (B20_R150); the real-workflow cast PLANNED (X2) |
-| Genesis invents a structural repair | **Language growth**: new named statements Genesis abstracts from its own best engines (library learning by anti-unification of recurring subprograms with parameters, generalising `selfimprove.learn_macros`), written in a construct algebra (§4) | PLANNED (X1, X2) |
+| Genesis invents a structural repair | **Language growth**: new named statements Genesis abstracts from its own best engines (library learning by anti-unification of recurring subprograms with parameters, generalising `selfimprove.learn_macros`), written in a construct algebra (§4) | the language, named statements and operators BUILT (X1, B20_R153); library learning PLANNED (X2) |
 | The independent Judge verifies it | A kernel-side **language judge**: a candidate language element is admitted only if, on sealed fresh graphs, the language with it beats the language without it at matched compute under the same search (and under the ceiling search, for an expressiveness claim), and beats a tuning-only control. The protected `autonomy/feedback.py` stays unchanged | PLANNED (X2) |
 | The Consolidator preserves it | The vault: each admitted element as a capability record with its contract (expansion semantics), implementation, property tests (parse, expansion and execution identity), verification evidence (the judge's decision), cost profile, failure envelope (classes where it did not help) and provenance. A versioned language registry names its parent | vault BUILT; records with contracts PLANNED (X2, `OMEGA_META_ADAPTIVE.md` §5.3) |
 | Genesis resumes research | The next generation of engine invention starts from the promoted language and its best engines (`selfimprove.seeded_ops`), and the cycle repeats on the next obstacle | PLANNED (B20_R152) |
@@ -63,8 +66,12 @@ constructs are control and addressing, not search operators:
 - **guards over run-time observables** beyond stall and period: diversity of the elite pool, the spread of replica
   cuts, the fraction of the budget spent;
 - **targets**: which replicas an operator acts on (coldest, hottest, a level, all);
-- **phases** by fraction of the budget;
+- **phases** by fraction of the budget (built as ?-guards on `f`, the fraction of the budget spent);
+- **repeats** `*k`, so that an item or a block runs k times (added while building, B20_R153; control, not search);
 - **named statements**, which the front end expands, so they need no change to the native code.
+
+BUILT (B20_R153): `candidate_kinds/native/mcx3.c` and `candidate_kinds/mcx3.py` (the grammar there), and
+`expressive/lambda1.py` for named statements.
 
 Every `mcx2` program means the same in `mcx3`, and gives the identical result under the same seed (a test). The
 operators stay those of `mcx2`, all prior art.
@@ -99,8 +106,8 @@ the first candidates.
 
 | Batch | What | State |
 |---|---|---|
-| X1 (engineering) | `mcx3`: the construct algebra in the native interpreter (a new pinned binary; `mcx2` untouched), the Λ1 front end (parser, canonical form, expansion of named statements, the description-length measure), search operators over Λ1 for the inventor, the identity test against `mcx2` | PLANNED, next |
-| X2 (engineering) | Library learning over Λ1 (anti-unification with parameters, MDL scoring); the language judge (kernel side, sealed graphs, digest pinned); the consolidator (capability records with contracts in the vault, a versioned language registry); the engine-invention workflow cast as an AG for ARA's ladder | PLANNED |
+| X1 (engineering) | `mcx3`: the construct algebra in the native interpreter (a new pinned binary; `mcx2` untouched), the Λ1 front end (parser, canonical form, expansion of named statements, the description-length measure), search operators over Λ1 for the inventor, the identity test against `mcx2` | BUILT (B20_R153): 312 of 312 identity runs identical, 30 of 30 at study scale, interpreter cost about 1.02 |
+| X2 (engineering, B20_R154) | Library learning over Λ1 (anti-unification with parameters, MDL scoring); the language judge (kernel side, sealed graphs, digest pinned); the consolidator (capability records with contracts in the vault, a versioned language registry); the engine-invention workflow cast as an AG for ARA's ladder | PLANNED, next |
 | B20_R151 (study) | **Expressiveness separated from search.** Headroom gate first. Factorial language {Λ0, Λ1} × search {the inventor at B20_R132's budget, the ceiling search} at matched compute, on fresh graph classes with headroom. Primary: the expressiveness gain under the ceiling search; the search gain within Λ0; their interaction | PLANNED |
 | B20_R152 (study) | **Self-extension.** Generations k = 1–3 of Λ1 + library_k, each admitted by the language judge; per generation E and A, the admitted statements' reuse, and whether value on fresh graphs rises (Page's trend test). Every gain is labelled with the factor that carries it | PLANNED |
 

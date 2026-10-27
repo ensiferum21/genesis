@@ -67,6 +67,8 @@ It answers B20_R132's open question: what answers EXPRESSIVENESS. In short:
 - **Batches:** X1 (`mcx3`), X2 (library learning, the language judge, the consolidator, the real workflow as an AG),
   B20_R151 (expressiveness against search, after a headroom gate), B20_R152 (generations of self-extension).
   B20_R141 (ARA's zoo calibration) moves after B20_R151.
+- **Progress:** X1 built (B20_R153: `mcx3`, every mcx2 program identical in it; the Λ1 front end; the inventor's
+  operators over Λ0 and Λ1). Next: X2 (B20_R154).
 
 ## 0d. Daniel's report of 24-26 Oct 2026 (adopted 26 Oct, first): Genesis Ω², a portfolio of discovery processes
 

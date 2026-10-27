@@ -34,4 +34,5 @@ KINDS = {
     'dsb-maxcut-v1': 'dsb_maxcut',        # B20_R101: discrete simulated bifurcation on weighted max-cut
     'mcx-v1': 'mcx',                      # B20_R104: Genesis's max-cut engine (breakout tabu, cluster moves, coarsening)
     'mcx2-v1': 'mcx2',                    # B20_R125: the engine as an interpreter of search programs (physics operators)
+    'mcx3-v1': 'mcx3',                    # B20_R153: mcx2 with a construct algebra (targets, ?-guards, repeats, blocks)
 }
