@@ -257,7 +257,12 @@ needs people: a reviewer, a statistician, an independent custodian on its own ma
         B20_R157 (the sealed bounds) and B20_R158 (open-ended generations).
       - **The proving test** (Daniel, 20:22; §7b, B20_R159). It is the system's acceptance test, and nothing short of
         passing all five parts is called proving out the system.
-      - F2 is started (§6 done: the sealed bounds tiered from five sources).
+      - F2 is built (§6 done: the sealed bounds tiered from five sources; the Wagner rebuild test added).
+      - PT-1's transfer family B is ready, though not yet preregistered (§7b):
+        - kernel side: `conjecture/wowii.py`, with 53 Graffiti statements, and `conjecture/invariants_ref.py`;
+        - research plane: `conjecture/invariants.py`, `statement.py` and `invariant_domain.py`;
+        - tests: `tests_genesis/test_wowii.py`.
+        B stays sealed: nothing has been run on it except the transcription checks.
       - Its §12 holds the exact resume commands for the running studies. The draft record tests are in
         `docs/handoff/RECORD_TEST_DRAFTS.md`.
   27. after them: the Genesis Ω stages in `docs/GENESIS_OMEGA_PLAN.md` §5-§6 (Ω0 analysis of R127/R128; B20_R130

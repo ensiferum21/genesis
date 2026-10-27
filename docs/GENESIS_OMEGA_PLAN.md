@@ -639,3 +639,9 @@ problems no level has seen, and Genesis has not shown that yet.
   in detail for handoff at his request of 20:01; F1 and F2 next on CPU 1; B20_R156–R158 reserved.
 - 27 Oct 2026, 20:40: the proving test adopted (§0f; B20_R159). F2 started: the sealed Laplacian set
   transcribed and tiered, with exact certificates (`src/genesis/conjecture/`).
+- 28 Oct 2026, 00:40: PT-1 groundwork. The transfer family B, 53 Graffiti statements from the Lean formalisation
+  in `google-deepmind/formal-conjectures`, is transcribed twice (Python evaluators on the kernel side, posed text
+  for the research plane). It is checked against 995 small graphs and 15 documented counterexamples, and verified
+  by two independent invariant implementations. Its domain lets the Frontier and its procedures run there
+  unchanged. F2's Wagner rebuild test is done. PT-1's study script is next to draft once F1–F5 have run
+  (`docs/OMEGA_FRONTIER.md` §7b).
