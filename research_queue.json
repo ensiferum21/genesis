@@ -617,8 +617,10 @@
    "unlocks": []
   },
   "expr-x2-build": {
-   "artifacts": [],
-   "committed": false,
+   "artifacts": [
+    "docs/checkpoints/B20_R154_RECORD.md"
+   ],
+   "committed": true,
    "depends_on": [
     "expr-x1-build"
    ],
@@ -627,15 +629,15 @@
    "kind": "build",
    "line": "expressiveness",
    "notes": "Daniel's direction of 27 Oct 2026, 14:33 (docs/OMEGA_EXPRESSIVE_LANGUAGE.md): the current priority",
-   "outcome": null,
+   "outcome": "built (B20_R154, engineering, on a planted fixture): the workflow ladder, library learning, the language judge (kernel side, pinned), the consolidator, the generation pipeline; 48 tests; on the fixture generation 2 composed generation 1's statement; search luck twice passed for a language while building (B20_R151 amended for it)",
    "output": null,
-   "positive": null,
+   "positive": true,
    "preregistered": null,
    "priority": 11,
    "requires": [],
    "resources": {},
    "script": null,
-   "status": "queued",
+   "status": "done",
    "title": "X2: library learning over Lambda1 (anti-unification with parameters, MDL), the language judge (kernel side), the consolidator (capability records with contracts, a versioned language registry), the engine-invention workflow as an AG for ARA",
    "unlocks": []
   },
@@ -1228,6 +1230,18 @@
    "id": "B20_R151",
    "kind": "start",
    "time": "2026-10-27T07:56:44+00:00"
+  },
+  {
+   "id": "expr-x2-build",
+   "kind": "start",
+   "time": "2026-10-27T08:25:23+00:00"
+  },
+  {
+   "id": "expr-x2-build",
+   "kind": "finish",
+   "outcome": "built (B20_R154, engineering, on a planted fixture): the workflow ladder, library learning, the language judge (kernel side, pinned), the consolidator, the generation pipeline; 48 tests; on the fixture generation 2 composed generation 1's statement; search luck twice passed for a language while building (B20_R151 amended for it)",
+   "positive": true,
+   "time": "2026-10-27T08:25:23+00:00"
   }
  ],
  "lines": {
@@ -1340,6 +1354,11 @@
     [
      "expr-x1-build",
      "built (B20_R153, engineering): mcx3-v1 with the builder's construct algebra (targets, ?-guards, repeats, blocks), pinned; every mcx2 program identical in mcx3 (312 of 312 counting-clock runs, planted mutants caught, 30 of 30 at study scale); the Lambda1 front end (named statements, versioned libraries, expansion, length and bits); the inventor's operators over Lambda0 and Lambda1; 32 tests",
+     true
+    ],
+    [
+     "expr-x2-build",
+     "built (B20_R154, engineering, on a planted fixture): the workflow ladder, library learning, the language judge (kernel side, pinned), the consolidator, the generation pipeline; 48 tests; on the fixture generation 2 composed generation 1's statement; search luck twice passed for a language while building (B20_R151 amended for it)",
      true
     ]
    ],

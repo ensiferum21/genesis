@@ -775,14 +775,20 @@ WORKSTREAMS = {
     'W22': ('New primitives, research-language evolution and trust changes (derived primitives with reference '
             'expansions, conformance, versioned registries; DEV: none of four starting primitives is a gain; '
             'B20_R153: the engine language Λ1, mcx3 with the builder\'s construct algebra, mcx2 programs identical, '
-            'named statements with versioned libraries, the inventor\'s operators over Λ0 and Λ1)', B,
+            'named statements with versioned libraries, the inventor\'s operators over Λ0 and Λ1; B20_R154: library learning, '
+            'the language judge, the consolidator, the generation pipeline, on a planted fixture)', B,
             ['src/genesis/primitives.py', 'scripts/b20r_primitives.py', 'src/genesis/candidate_kinds/mcx3.py',
              'src/genesis/candidate_kinds/native/mcx3.c', 'scripts/b20r153_build_mcx3.py',
              'src/genesis/expressive/lambda1.py', 'src/genesis/expressive/operators.py',
              'docs/OMEGA_EXPRESSIVE_LANGUAGE.md', 'docs/checkpoints/B20_R153_RECORD.md',
-             'scripts/b20r151_expressiveness.py'],
+             'scripts/b20r151_expressiveness.py', 'src/genesis/expressive/library.py',
+             'src/genesis/expressive/judge.py', 'src/genesis/expressive/consolidate.py',
+             'src/genesis/expressive/workflow.py', 'src/genesis/expressive/pipeline.py',
+             'docs/checkpoints/B20_R154_RECORD.md'],
             [G + 'test_primitives.py', G + 'test_mcx3_kind.py', G + 'test_expressive_lambda1.py',
-             G + 'test_expressive_operators.py', G + 'test_expressiveness_study.py']),
+             G + 'test_expressive_operators.py', G + 'test_expressiveness_study.py', G + 'test_expressive_library.py',
+             G + 'test_expressive_judge.py', G + 'test_expressive_consolidate.py', G + 'test_expressive_pipeline.py',
+             G + 'test_expressive_boundary.py']),
     'W23': ('Fault-tolerant reasoning and expert interaction (heterogeneous routes, quarantine, adjudication without '
             'majority vote; no expert-interaction channel)', B,
             ['src/genesis/verification/reliability.py', 'src/genesis/graphs.py'],

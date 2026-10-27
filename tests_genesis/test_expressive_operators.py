@@ -76,6 +76,14 @@ class Operators(unittest.TestCase):
         with self.assertRaises(ValueError):
             O.kinds('L2')
 
+    def test_programs_of_calls_only(self):
+        lib = L.EMPTY.extend('core', 'B$1 X')
+        rng = random.Random(2)
+        g = dict(K.DEFAULT, prog='core(5) core(7)')
+        for _ in range(300):
+            g = O.mutate(g, rng, 'L1', lib) if rng.random() < 0.5 else dict(K.DEFAULT, prog='core(5) core(7)')
+            self.assertIsNone(K.check_config(L.config(g, lib)))
+
     def test_deterministic_and_bounded(self):
         a, _ = fuzz('L1', LIB, steps=300, seed=9)
         b, _ = fuzz('L1', LIB, steps=300, seed=9)

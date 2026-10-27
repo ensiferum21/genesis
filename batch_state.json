@@ -1380,6 +1380,10 @@
           "85fda78"
         ],
         "result": "Preregistered (DEV) 52e1d92; amended before any search finished (three ceiling replicates per language; P1 and S1 need the replicate permutation test too; disclosed in the script); second amendment, analysis only, before any ceiling search: P1 also needs the worst Lambda1 ceiling replicate to beat the best Lambda0 one by at least 0.05%. Gate: planar2000 PASS 0.572% (p 0.00024), toroidal2000 0.145% and random2000 0.058% fail; planar2000 studied. Pending"
+      },
+      "B20_R154": {
+        "commits": [],
+        "result": "Engineering (X2): the engine-invention workflow as an AG with ARA's ladder; library learning (anti-unification, MDL, meaning checked); the language judge (kernel side, pinned 8390b199...5d05: correctness, structure, random control, saturation, decisions over graphs and over search replicates, a margin for expressiveness); the consolidator; the generation pipeline. 48 tests. On the planted fixture: generation 1 refused D@c and admitted D@c D@c (1.71% -> 3.31%), generation 2 admitted g1b g1b g1b g1b (3.96% -> 10.38%). Found while building and fixed: a one-item statement admitted as expressive, an unsaturated ceiling, search luck passing for a language twice (B20_R151 amended for it), an X1 target-mutation bug. Record docs/checkpoints/B20_R154_RECORD.md"
       }
     },
     "open_after_b20_r5": [

@@ -286,6 +286,8 @@ def _apply(kind, top, opts, rng, lang, library):
         return True
     if kind == 'target':
         ops = [x for x in _nodes(top) if x[0] == 'op']
+        if not ops:                                   # with a library, a program can be calls only
+            return False
         x = rng.choice(ops)
         if x[1] == 'b':
             x[1] = 'B'

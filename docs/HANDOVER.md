@@ -242,7 +242,9 @@ needs people: a reviewer, a statistician, an independent custodian on its own ma
       a consolidator, generation after generation. Batches X1, X2, B20_R151, B20_R152; then B20_R141.
       Done: X1 (B20_R153, engineering: `mcx3-v1` and its pinned binary, every mcx2 program identical in it; the
       Λ1 front end with named statements; the inventor's operators over Λ0 and Λ1). B20_R151 preregistered and
-      running alone on CPU 0 (it needs only X1); X2 (B20_R154) built on CPU 1 meanwhile.
+      running alone on CPU 0 (it needs only X1; amended twice before any ceiling search, disclosed). Done: X2
+      (B20_R154, engineering: the workflow ladder, library learning, the language judge, the consolidator and the
+      generation pipeline, on a planted fixture). Next: B20_R151's result, then B20_R152.
   27. after them: the Genesis Ω stages in `docs/GENESIS_OMEGA_PLAN.md` §5-§6 (Ω0 analysis of R127/R128; B20_R130
       invented instruments; B20_R131 the Difficulty Cartographer; the genome and typed language; the ecology;
       evolvability selection; the decisive A/B/C experiment).

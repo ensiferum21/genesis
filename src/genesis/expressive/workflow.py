@@ -24,8 +24,11 @@ values (gain over the reference) of:
     residual       = O - C_rich        -> not reached by any language available
 
 Each term has a bootstrap interval over the graphs; the diagnosis lists the terms whose lower bound exceeds MATERIAL
-times the attainable range (O's mean gain), largest first; NONE when the range's interval reaches zero or no term is
-material; AMBIGUOUS when the top two are not separated. These are B20_R132's instruments and B20_R151's factorial
+times the attainable range, largest first; NONE when the range's interval reaches zero or no term is material;
+AMBIGUOUS when the top two are not separated. Unlike the zoo's per-instance optimum, REX at ten times the budget is
+not an upper bound (an engine can beat it), so the attainable range is the best mean gain of O and every stand-in,
+with that stand-in's interval; the residual can then be negative, which says the richer language beat REX's long
+runs. These are B20_R132's instruments and B20_R151's factorial
 put into ARA's form; a study supplies the values (`measures`), this module only decides.
 
 **The next step** (Daniel's pipeline, 27 Oct 2026, 14:33): EXPRESSIVENESS -> grow the language (`library.learn`, then
@@ -111,8 +114,9 @@ def ladder(measures, seed=0):
         d = [x - y for x, y in zip(m[hi], m[lo])]
         diffs[t] = d
         terms[t] = {'value': statistics.mean(d), 'ci': _boot(d, f'{seed}|{t}'), 'node': LOCATE[t]}
-    rng_ci = _boot(m['O'], f'{seed}|range')
-    attainable = statistics.mean(m['O'])
+    best = max(need, key=lambda k: (statistics.mean(m[k]), k))
+    rng_ci = _boot(m[best], f'{seed}|range')
+    attainable = statistics.mean(m[best])
     threshold = MATERIAL * attainable
     material = sorted((t for t in TERMS if t != 'residual' and terms[t]['ci'][0] > threshold and rng_ci[0] > 0),
                       key=lambda t: -terms[t]['value'])
@@ -123,6 +127,6 @@ def ladder(measures, seed=0):
         diagnosis = 'AMBIGUOUS'
     else:
         diagnosis = material[0].upper()
-    return {'terms': terms, 'attainable': attainable, 'range_ci': rng_ci, 'threshold': threshold,
+    return {'terms': terms, 'attainable': attainable, 'attained_by': best, 'range_ci': rng_ci, 'threshold': threshold,
             'material': material, 'diagnosis': diagnosis, 'next': NEXT[diagnosis],
             'locate': LOCATE.get(diagnosis.lower())}

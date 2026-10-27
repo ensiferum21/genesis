@@ -25,9 +25,17 @@ it claims), the claim and the starting engines:
      least MATERIAL), the ceiling is not a ceiling there, a gain could be the search's, and the claim fails
      'not_saturated' (found while building: without this check a one-item statement, which can add nothing at the
      bound, was admitted as expressive because it made the pattern easier to find);
-  7. the decision: per truth graph, the candidate's mean gain over the replicates minus the parent's, and minus the
-     control's; ADMITTED if both one-sided Wilcoxon signed-rank tests give p < ALPHA and both mean differences are at
-     least MATERIAL. Otherwise refused, failing 'sealed'.
+  7. the decision, over graphs and over searches: per truth graph, the candidate's mean gain over the replicates minus
+     the parent's, and minus the control's, by one-sided Wilcoxon signed-rank tests (p < ALPHA, mean at least
+     MATERIAL); and over the search replicates, the exact one-sided permutation test of the replicates' mean gains,
+     the candidate's against the parent's and against the control's (with three replicates each, p = 1/20 = ALPHA
+     only when every candidate search beats every other one); for an expressiveness claim also the MARGIN: the worst
+     candidate replicate beats the best parent replicate and the best control replicate by at least MATERIAL (a
+     ceiling search that sticks is a search failure, not a limit of the language). ADMITTED if all hold; otherwise
+     refused, failing 'sealed'. (The replicate test and the margin were added while building: with two replicates and
+     the per-graph test alone, the fixture admitted a statement worth nothing, because one parent search had stuck
+     short of the optimum; with the replicate test alone, it admitted the same statement on noise-level margins; a
+     per-graph test over specific engines cannot tell a language from search luck.)
 The submitter receives {'admitted': bool, 'failed': None or the check that failed}; the numbers go to the ledger, for
 the study. The research plane never sees the training or truth graphs; the judge never sees how a statement was
 found. Each ledger entry records the digests of the code the judge executed (this module, `expressive.operators`,
@@ -65,12 +73,26 @@ def _h(*parts):
     return int(hashlib.sha256(json.dumps(parts, sort_keys=True, default=str).encode()).hexdigest()[:12], 16)
 
 
+def permutation(a, b):
+    """The exact one-sided permutation p-value of mean(a) - mean(b) over the relabellings of a + b."""
+    from itertools import combinations
+    pool, k = list(a) + list(b), len(a)
+    obs = statistics.mean(a) - statistics.mean(b)
+    total = hits = 0
+    for idx in combinations(range(len(pool)), k):
+        x = [pool[i] for i in idx]
+        y = [pool[i] for i in range(len(pool)) if i not in idx]
+        total += 1
+        hits += statistics.mean(x) - statistics.mean(y) >= obs - 1e-15
+    return hits / total
+
+
 def code_digests():
     return {p: hashlib.sha256((_SRC / p).read_bytes()).hexdigest() for p in CODE}
 
 
 class LanguageJudge:
-    def __init__(self, domain, sealed_seed, replicates=2, train=8, truth=24):
+    def __init__(self, domain, sealed_seed, replicates=3, train=8, truth=24):
         self._domain, self._seed, self._replicates = domain, sealed_seed, replicates
         self._train = domain.draw(_h('train', sealed_seed), train, 'train')
         self._truth = domain.draw(_h('truth', sealed_seed), truth, 'truth')
@@ -151,10 +173,12 @@ class LanguageJudge:
         control = self._control(parent, size)
         rec['control'] = control.defs[-1]['body']
         search = 'inventor' if claim == 'search' else 'ceiling'
-        lanes = {}
+        lanes, reps = {}, {}
         for lang, lib in (('parent', parent), ('candidate', cand), ('control', control)):
             winners = [self._search(lib, search, starts, r) for r in range(self._replicates)]
-            lanes[lang] = [statistics.mean(x) for x in zip(*(self._truth_gains(w) for w in winners))]
+            gains = [self._truth_gains(w) for w in winners]
+            lanes[lang] = [statistics.mean(x) for x in zip(*gains)]
+            reps[lang] = [statistics.mean(g) for g in gains]
             rec[f'{lang}_winners'] = [w['prog'] for w in winners]
         from scipy.stats import wilcoxon
 
@@ -171,9 +195,13 @@ class LanguageJudge:
         tests = {}
         for other in ('parent', 'control'):
             tests[other] = greater([a - b for a, b in zip(lanes['candidate'], lanes[other])])
+            tests[other]['replicates'] = permutation(reps['candidate'], reps[other])
+            tests[other]['margin'] = min(reps['candidate']) - max(reps[other])
         rec['tests'] = tests
         rec['lanes'] = {k: statistics.mean(v) for k, v in lanes.items()}
-        ok = all(t['p'] < ALPHA and t['mean'] >= MATERIAL for t in tests.values())
+        rec['replicates'] = reps
+        ok = all(t['p'] < ALPHA and t['mean'] >= MATERIAL and t['replicates'] <= ALPHA
+                 and (claim == 'search' or t['margin'] >= MATERIAL) for t in tests.values())
         return self._close(rec, ok, None if ok else 'sealed')
 
     def _close(self, rec, admitted, failed):
