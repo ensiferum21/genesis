@@ -175,3 +175,26 @@ def check_charpoly(formula, kind, n, edges, max_n=40):
             return {'verdict': 'REFUTED', 'hi': str(hi), 'bits': bits}
         return {'verdict': 'NOT_CERTIFIED', 'hi': str(hi)}
     return {'verdict': 'NOT_CERTIFIED', 'hi': None}
+
+
+# ------------------------------------------------------------------------------------- upper certificates
+
+def collatz_upper(matrix, x):
+    """An exact upper bound on the spectral radius of a nonnegative matrix from a positive rational vector x:
+    rho(M) <= max_i (M x)_i / x_i (Collatz-Wielandt). For refuting LOWER bounds on a spectral radius (the direction
+    the Rayleigh certificate cannot certify): the adjacency matrix for lambda_1, the signless Laplacian for an upper
+    bound on mu (mu <= q). Raises on a non-positive x or a negative entry."""
+    x = [Fraction(v) for v in x]
+    if any(v <= 0 for v in x):
+        raise ValueError('the Collatz-Wielandt vector must be positive')
+    n = len(x)
+    if any(len(row) != n for row in matrix) or any(e < 0 for row in matrix for e in row):
+        raise ValueError('a square nonnegative matrix is required')
+    return max(sum(Fraction(matrix[i][j]) * x[j] for j in range(n)) / x[i] for i in range(n))
+
+
+def adjacency(n, edges):
+    A = [[0] * n for _ in range(n)]
+    for u, v in edges:
+        A[u][v] = A[v][u] = 1
+    return A

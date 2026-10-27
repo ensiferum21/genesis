@@ -144,6 +144,23 @@ class Independent(unittest.TestCase):
                     self.assertNotEqual(b, 'REFUTED')
 
 
+class UpperCertificates(unittest.TestCase):
+    def test_collatz_wielandt(self):
+        import numpy as np
+        from fractions import Fraction
+        star = V.adjacency(5, [(0, 1), (0, 2), (0, 3), (0, 4)])
+        self.assertEqual(V.collatz_upper(star, [2, 1, 1, 1, 1]), 2)              # lambda_1(K_{1,4}) = 2, exactly
+        rng = random.Random(5)
+        for _ in range(40):
+            g = random_graph(rng, rng.randint(3, 14), 0.4)
+            A = V.adjacency(*g)
+            w, vec = np.linalg.eigh(np.array(A, float))
+            x = [Fraction(max(1e-6, abs(float(t)))).limit_denominator(10 ** 9) for t in vec[:, -1]]
+            self.assertGreaterEqual(float(V.collatz_upper(A, x)), w[-1] - 1e-9)
+        with self.assertRaises(ValueError):
+            V.collatz_upper(star, [1, 0, 1, 1, 1])
+
+
 class Sealed(unittest.TestCase):
     def test_statuses_partition_the_68(self):
         groups = (SD.PROVED, SD.REFUTED_2024, SD.REFUTED_2025, SD.REFUTED_2026, SD.OPEN)
