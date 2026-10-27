@@ -922,13 +922,11 @@ commit through `git show`.
 **CPU 0 (studies, in order):**
 1. **B20_R151 is RECORDED** (27 Oct, 17:47 UTC): NOT_SHOWN, reading NO_LANGUAGE_EFFECT
    (`docs/checkpoints/B20_R151_RECORD.md`).
-2. **B20_R152 is running in slices** (from 27 Oct, 17:48 UTC).
-   - From the clean worktree `/home/claude/r152-wt` at `3d88ad6`.
-   - Resume after each exit 3 with: `/home/claude/run_slice.sh /home/claude/r152-wt scripts/b20r152_self_extension.py evidence/self_extension_b20r152 /home/claude/logs/r152_slices.log`
-   - Check progress by `grep -c 'slice exit'` only; never read the log's lines.
-   - Up to about 15 h. Then record it with the RecordB20R152 draft in `docs/handoff/RECORD_TEST_DRAFTS.md`.
-2b. **B20_R165**, the replication of B20_R151's S5 (preregistered 28 Oct; about 1.2 h), from a worktree of its
-    preregistration commit, output `evidence/planar_replication_b20r165`.
+2. **B20_R152 is RECORDED** (27 Oct, 20:35 UTC): NOTHING_ADMITTED (`docs/checkpoints/B20_R152_RECORD.md`).
+2b. **B20_R165 is running** (from 27 Oct, 20:36 UTC; about 1.2 h), the replication of B20_R151's S5.
+    - From the clean worktree `/home/claude/r165-wt` at `ff6475b`.
+    - Resume after an exit 3 with: `/home/claude/run_slice.sh /home/claude/r165-wt scripts/b20r165_planar_replication.py evidence/planar_replication_b20r165 /home/claude/logs/r165_slices.log`
+    - Check slice exits by count only. Record it with the RecordB20R165 draft.
 3. **B20_R141** from a worktree at `a3b3eda`, about 3 h.
 4. **B20_R156 (F3)** from a worktree at `4a7e193`, under 1 h.
 5. **B20_R157 (F4)** from a worktree at `bdf0c57`, about 2 h.

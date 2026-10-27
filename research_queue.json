@@ -503,7 +503,10 @@
    "unlocks": []
   },
   "B20_R152": {
-   "artifacts": [],
+   "artifacts": [
+    "evidence/self_extension_b20r152",
+    "docs/checkpoints/B20_R152_RECORD.md"
+   ],
    "committed": true,
    "depends_on": [
     "B20_R151",
@@ -513,16 +516,16 @@
    "id": "B20_R152",
    "kind": "study",
    "line": "expressiveness",
-   "notes": "Daniel's direction of 27 Oct 2026, 14:33 (docs/OMEGA_EXPRESSIVE_LANGUAGE.md): the current priority; on planar2000 (B20_R151 gate); runs after B20_R151 frees CPU 0",
-   "outcome": null,
+   "notes": "Daniel's direction of 27 Oct 2026, 14:33 (docs/OMEGA_EXPRESSIVE_LANGUAGE.md): the current priority; on planar2000 (B20_R151 gate); runs after B20_R151 frees CPU 0; recorded 28 Oct 2026 04:50 SGT",
+   "outcome": "NOTHING_ADMITTED (generation 1: g1a and g1b refused by the language judge; g1b beat the parent in every replicate, +0.033%, but not the random control)",
    "output": "evidence/self_extension_b20r152",
-   "positive": null,
+   "positive": false,
    "preregistered": "sha256 732632c88e8f96cd958193bdf83564c00822c51889b68ab1b6c4512d70c23159 (14232e4); amended before it ran (slices always progress): sha256 2d3d8f899162c381beddf559a7a392487645e0984484b3d71a37b59a9e215b98",
    "priority": 9,
    "requires": [],
    "resources": {},
    "script": "scripts/b20r152_self_extension.py",
-   "status": "running",
+   "status": "done",
    "title": "Self-extension: generations of Lambda1 + library_k admitted by the language judge, E and A per generation, reuse, trend",
    "unlocks": [
     "self-extension-admitted"
@@ -538,7 +541,7 @@
    "id": "B20_R155",
    "kind": "study",
    "line": "expressiveness",
-   "notes": "Daniel's direction of 27 Oct 2026, 14:33 (expressiveness of Genesis's own statements); only if B20_R152 admits statements; about 11 h per submission",
+   "notes": "Daniel's direction of 27 Oct 2026, 14:33 (expressiveness of Genesis's own statements); only if B20_R152 admits statements; about 11 h per submission; not run: B20_R152 admitted nothing (its condition)",
    "outcome": null,
    "output": null,
    "positive": null,
@@ -549,7 +552,7 @@
    ],
    "resources": {},
    "script": null,
-   "status": "queued",
+   "status": "abandoned",
    "title": "Is Genesis's grown language more expressive? The language judge's expressiveness claim (saturated ceiling, margin) on B20_R152's admitted library against Lambda1, fresh planar2000 graphs",
    "unlocks": []
   },
@@ -700,7 +703,7 @@
     "cpu0_hours": 1.2
    },
    "script": "scripts/b20r165_planar_replication.py",
-   "status": "queued",
+   "status": "running",
    "title": "Do Genesis's searched max-cut engines (B20_R151's 18, frozen) beat REX on 48 fresh planar graphs? A replication of B20_R151's S5",
    "unlocks": []
   },

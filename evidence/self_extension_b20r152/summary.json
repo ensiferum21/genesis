@@ -1,0 +1,332 @@
+{
+ "P1": null,
+ "code_identity": "a4247f4f0989cd6c9e56540fc6214f315a77fadba163716da832e539655fd293",
+ "compounding": [],
+ "confirm": null,
+ "cpu_median": 1.0008,
+ "disjoint": true,
+ "generations": [
+  {
+   "admitted": [],
+   "decisions": [
+    {
+     "admitted": false,
+     "body": "?f>700 C X [ H B53 D@c P12 D D P12 ]",
+     "claim": "search",
+     "failed": "sealed",
+     "name": "g1a",
+     "step": {
+      "body": "?f>700 C X [ H B53 D@c P12 D D P12 ]",
+      "compression_bits": 163.0167545620343,
+      "length_after": 156,
+      "name": "g1a",
+      "params": 0,
+      "programs": [
+       3,
+       4
+      ],
+      "uses": 3,
+      "version": "lang-47c4935a9ec5ac1f"
+     }
+    },
+    {
+     "admitted": false,
+     "body": "*5 B10 H ?f>700 C",
+     "claim": "search",
+     "failed": "sealed",
+     "name": "g1b",
+     "step": {
+      "body": "*5 B10 H ?f>700 C",
+      "compression_bits": 161.85728311493313,
+      "length_after": 166,
+      "name": "g1b",
+      "params": 0,
+      "programs": [
+       0,
+       1,
+       2,
+       3,
+       4
+      ],
+      "uses": 5,
+      "version": "lang-dfc364d22e44e181"
+     }
+    }
+   ],
+   "k": 1,
+   "library": {
+    "defs": [],
+    "parent": null,
+    "version": "lang-7a3e3457d6dfb186"
+   },
+   "parent": "lang-7a3e3457d6dfb186"
+  }
+ ],
+ "graphs": {
+  "confirm": [
+   "dev-planar2-5946559a-20522521-0000",
+   "dev-planar2_pm1-a4ca072c-20522522-0000",
+   "dev-planar2-5946559a-20522523-0000",
+   "dev-planar2_pm1-a4ca072c-20522524-0000",
+   "dev-planar2-5946559a-20522525-0000",
+   "dev-planar2_pm1-a4ca072c-20522526-0000",
+   "dev-planar2-5946559a-20522527-0000",
+   "dev-planar2_pm1-a4ca072c-20522528-0000",
+   "dev-planar2-5946559a-20522529-0000",
+   "dev-planar2_pm1-a4ca072c-20522530-0000",
+   "dev-planar2-5946559a-20522531-0000",
+   "dev-planar2_pm1-a4ca072c-20522532-0000",
+   "dev-planar2-5946559a-20522533-0000",
+   "dev-planar2_pm1-a4ca072c-20522534-0000",
+   "dev-planar2-5946559a-20522535-0000",
+   "dev-planar2_pm1-a4ca072c-20522536-0000",
+   "dev-planar2-5946559a-20522537-0000",
+   "dev-planar2_pm1-a4ca072c-20522538-0000",
+   "dev-planar2-5946559a-20522539-0000",
+   "dev-planar2_pm1-a4ca072c-20522540-0000"
+  ],
+  "dev": [
+   "dev-planar2-5946559a-20521521-0000",
+   "dev-planar2_pm1-a4ca072c-20521522-0000",
+   "dev-planar2-5946559a-20521523-0000",
+   "dev-planar2_pm1-a4ca072c-20521524-0000",
+   "dev-planar2-5946559a-20521525-0000",
+   "dev-planar2_pm1-a4ca072c-20521526-0000",
+   "dev-planar2-5946559a-20521527-0000",
+   "dev-planar2_pm1-a4ca072c-20521528-0000"
+  ],
+  "truth": [
+   "dev-planar2-5946559a-20523521-0000",
+   "dev-planar2_pm1-a4ca072c-20523522-0000",
+   "dev-planar2-5946559a-20523523-0000",
+   "dev-planar2_pm1-a4ca072c-20523524-0000",
+   "dev-planar2-5946559a-20523525-0000",
+   "dev-planar2_pm1-a4ca072c-20523526-0000",
+   "dev-planar2-5946559a-20523527-0000",
+   "dev-planar2_pm1-a4ca072c-20523528-0000",
+   "dev-planar2-5946559a-20523529-0000",
+   "dev-planar2_pm1-a4ca072c-20523530-0000",
+   "dev-planar2-5946559a-20523531-0000",
+   "dev-planar2_pm1-a4ca072c-20523532-0000",
+   "dev-planar2-5946559a-20523533-0000",
+   "dev-planar2_pm1-a4ca072c-20523534-0000",
+   "dev-planar2-5946559a-20523535-0000",
+   "dev-planar2_pm1-a4ca072c-20523536-0000",
+   "dev-planar2-5946559a-20523537-0000",
+   "dev-planar2_pm1-a4ca072c-20523538-0000",
+   "dev-planar2-5946559a-20523539-0000",
+   "dev-planar2_pm1-a4ca072c-20523540-0000",
+   "dev-planar2-5946559a-20523541-0000",
+   "dev-planar2_pm1-a4ca072c-20523542-0000",
+   "dev-planar2-5946559a-20523543-0000",
+   "dev-planar2_pm1-a4ca072c-20523544-0000"
+  ]
+ },
+ "judge_ledger": [
+  {
+   "admitted": false,
+   "candidate_winners": [
+    "X *25 B10 H ?f>700 C X [ H B53 D@c *25 B10 D D P29 ] b1222",
+    "X *5 B10 M ?d>2 ?f>700 C X [ [ H B53 D@c P12 ] D D D P29 ] b1222",
+    "X *5 B10 H ?f>700 C X [ H B53 D@c P12 ] D P29 D b1222"
+   ],
+   "claim": "search",
+   "code": {
+    "autonomy/feedback.py": "2ff4a5ab1e5b445b9144afbcc43596b8b1701ae541e8916c73e45009c0e3bdd6",
+    "candidate_kinds/mcx3.py": "9cff0edcfc3bfcd3a3b07c1bae54e57e2bfe78be6c393864ace818261b567e85",
+    "expressive/judge.py": "8390b1998e4dcb91ff282b955d1940cda3508d9be99cd384ad150d21188d5d05",
+    "expressive/lambda1.py": "4b333546e07803a5d73f3ef163f255cce75280fd205f01d9f3241d4702ec9d2f",
+    "expressive/operators.py": "4ccbb3ba5932119b8642df9c831a6da7be3d284abbebc96438697695ddb285c7"
+   },
+   "control": "?f<100 R C b8 b5 b1 S607 H L M R",
+   "control_winners": [
+    "X *5 B10 H ?f>700 C X *2 B53 b1222",
+    "X *5 B10 *5 B10 H ?f>700 C X [ [ H B53 P4 D@c P12 ] D D D D P29 ] b1222",
+    "X *5 B10 H ?f>700 C X [ H B53 D@c D@c P12 D D P12 ] [ H B53 D@c P12 D *7 D P12 ] b1222"
+   ],
+   "failed": "sealed",
+   "lanes": {
+    "candidate": 0.00589234661055621,
+    "control": 0.0062261509995509435,
+    "parent": 0.0059080998576074685
+   },
+   "n": 1,
+   "names": [
+    "g1a"
+   ],
+   "parent_winners": [
+    "*5 B10 X H *2 H ?f>700 C X [ [ H B53 D@c P12 ] D b10 D P29 ] b680",
+    "X X *5 B10 H ?f>700 C X P9 b1222",
+    "*5 B10 X H ?f>700 C X [ H B53 D@c P12 ] D P29 D X H ?f>700 C X [ ?f<0 [ H B53 D@c P12 ] D D P29 ] b1222"
+   ],
+   "replicates": {
+    "candidate": [
+     0.004999833480539934,
+     0.006159807092794761,
+     0.006517399258333937
+    ],
+    "control": [
+     0.006714513291401386,
+     0.006156062529410414,
+     0.005807877177841031
+    ],
+    "parent": [
+     0.006013178367423901,
+     0.005932822339545285,
+     0.005778298865853219
+    ]
+   },
+   "tests": {
+    "control": {
+     "margin": -0.001714679810861452,
+     "mean": -0.00033380438899473306,
+     "p": 0.5723321437835693,
+     "replicates": 0.7
+    },
+    "parent": {
+     "margin": -0.0010133448868839675,
+     "mean": -1.5753247051258e-05,
+     "p": 0.5055936574935913,
+     "replicates": 0.55
+    }
+   }
+  },
+  {
+   "admitted": false,
+   "candidate_winners": [
+    "X *5 B10 *5 B10 H ?f>700 C X [ H B53 P12 ?d<4 D D P29 ] b1222",
+    "X *5 B10 *5 B10 H ?f>700 C X [ [ H B53 P4 D@c P12 ] D D D D P29 ] b1222",
+    "X *5 B10 H ?f>700 C D@c [ H B53 D@c P12 ] D P29 D b1222"
+   ],
+   "claim": "search",
+   "code": {
+    "autonomy/feedback.py": "2ff4a5ab1e5b445b9144afbcc43596b8b1701ae541e8916c73e45009c0e3bdd6",
+    "candidate_kinds/mcx3.py": "9cff0edcfc3bfcd3a3b07c1bae54e57e2bfe78be6c393864ace818261b567e85",
+    "expressive/judge.py": "8390b1998e4dcb91ff282b955d1940cda3508d9be99cd384ad150d21188d5d05",
+    "expressive/lambda1.py": "4b333546e07803a5d73f3ef163f255cce75280fd205f01d9f3241d4702ec9d2f",
+    "expressive/operators.py": "4ccbb3ba5932119b8642df9c831a6da7be3d284abbebc96438697695ddb285c7"
+   },
+   "control": "L L C M D",
+   "control_winners": [
+    "X *5 B10 *5 B10 X *5 B10 *5 B10 H ?f>700 C X [ H B53 P12 ?d<4 D D P29 ] b1222",
+    "X *5 B10 M ?f>700 C X [ *2 [ H B53 D@c P12 ] D D D P29 ] b1222",
+    "X *5 B10 H ?f>700 C X [ H H B53 D@c B10 D D B490 P29 ] b1222"
+   ],
+   "failed": "sealed",
+   "lanes": {
+    "candidate": 0.006239667789954884,
+    "control": 0.006049125547817759,
+    "parent": 0.0059080998576074685
+   },
+   "n": 2,
+   "names": [
+    "g1b"
+   ],
+   "parent_winners": [
+    "*5 B10 X H *2 H ?f>700 C X [ [ H B53 D@c P12 ] D b10 D P29 ] b680",
+    "X X *5 B10 H ?f>700 C X P9 b1222",
+    "*5 B10 X H ?f>700 C X [ H B53 D@c P12 ] D P29 D X H ?f>700 C X [ ?f<0 [ H B53 D@c P12 ] D D P29 ] b1222"
+   ],
+   "replicates": {
+    "candidate": [
+     0.006291121024370918,
+     0.006156062529410414,
+     0.0062718198160833195
+    ],
+    "control": [
+     0.005907219339251845,
+     0.0064871755386985,
+     0.005752981765502931
+    ],
+    "parent": [
+     0.006013178367423901,
+     0.005932822339545285,
+     0.005778298865853219
+    ]
+   },
+   "tests": {
+    "control": {
+     "margin": -0.000331113009288086,
+     "mean": 0.0001905422421371253,
+     "p": 0.33172178268432617,
+     "replicates": 0.2
+    },
+    "parent": {
+     "margin": 0.00014288416198651298,
+     "mean": 0.00033156793234741526,
+     "p": 0.24539929628372192,
+     "replicates": 0.05
+    }
+   }
+  }
+ ],
+ "pins": {
+  "judge_code": true,
+  "language_judge": true,
+  "mcx3": true,
+  "protected_judge": true
+ },
+ "reports": [
+  {
+   "distinct_programs": 196,
+   "evaluations": 256,
+   "generation": 1,
+   "generations": 23,
+   "judge": null,
+   "reported": 1.0053641609091,
+   "search": 0
+  },
+  {
+   "distinct_programs": 196,
+   "evaluations": 256,
+   "generation": 1,
+   "generations": 23,
+   "judge": null,
+   "reported": 1.0028488875679415,
+   "search": 1
+  },
+  {
+   "distinct_programs": 196,
+   "evaluations": 256,
+   "generation": 1,
+   "generations": 23,
+   "judge": null,
+   "reported": 1.0048018022693426,
+   "search": 2
+  },
+  {
+   "distinct_programs": 196,
+   "evaluations": 256,
+   "generation": 1,
+   "generations": 23,
+   "judge": null,
+   "reported": 1.0037822290241385,
+   "search": 3
+  }
+ ],
+ "reuse": [
+  0.0
+ ],
+ "schema": "genesis-b20r152-self-extension-v1",
+ "spent": true,
+ "status": "DEV; licenses nothing",
+ "study": "b20r152",
+ "trend": {
+  "best": [
+   "B100 X I S2000 C",
+   "X *5 B10 H ?f>700 C X [ [ H B53 D@c P12 ] D D P29 ] b1222"
+  ],
+  "means": [
+   0.0,
+   0.006702343370841431
+  ],
+  "page": {
+   "L": null,
+   "k": 2,
+   "n": 24,
+   "p": 1.0
+  }
+ },
+ "valid": true,
+ "verdict": "NOTHING_ADMITTED"
+}

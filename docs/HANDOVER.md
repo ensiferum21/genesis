@@ -247,8 +247,8 @@ needs people: a reviewer, a statistician, an independent custodian on its own ma
       - **B20_R151 is recorded** (28 Oct, 02:00 SGT; `docs/checkpoints/B20_R151_RECORD.md`): NOT_SHOWN, reading
         NO_LANGUAGE_EFFECT. Λ1 did not express better engines than Λ0 on planar2000 at these budgets. As a secondary
         finding, every searched engine beat REX on fresh graphs by 0.45–0.78%.
-      - **B20_R152 is running**, from 27 Oct 17:48 UTC (resume commands in `docs/OMEGA_FRONTIER.md` §12).
-      - **B20_R165** (preregistered, `ff6475b`) replicates the S5 finding on 48 fresh planar graphs after B20_R152.
+      - **B20_R152 is recorded** (`docs/checkpoints/B20_R152_RECORD.md`): NOTHING_ADMITTED. The judge refused both of generation 1's statements, so B20_R155 does not run.
+      - **B20_R165** (preregistered, `ff6475b`; running from 27 Oct 20:36 UTC) replicates the S5 finding on 48 fresh planar graphs.
         Its record test draft is in `docs/handoff/RECORD_TEST_DRAFTS.md`.
   26c. **Daniel's directive of 27 Oct 2026, 19:55 is adopted**: `docs/OMEGA_FRONTIER.md`, written in detail for
       handoff at his request (20:01). Genesis works by divergence and convergence (imagine, mutate, recombine,
