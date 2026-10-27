@@ -824,6 +824,8 @@ specifying the missing concept" means in practice.
 | F3 = B20_R156 | PREREGISTERED, amended before it ran (`4a7e193`, sha256 `9ae034db…353a`) | `scripts/b20r156_frontier_worlds.py` |
 | F4 = B20_R157 | PREREGISTERED (`bdf0c57`, sha256 `49b171f9…1904`) | `scripts/b20r157_laplacian_bounds.py` |
 | F5 = B20_R158 | PREREGISTERED (sha256 `50d2de64a7ad…`; runs after B20_R157): FULL (procedures, abstraction, templates carried over) against PLAIN on Genesis's own conjectures, three generations, McNemar | `scripts/b20r158_open_conjectures.py` |
+| F6 = B20_R163 | PREREGISTERED (sha256 `e71bfb69365b…`; runs after B20_R158): a meta-search over 729 engine configurations on one sealed meta-training world; the promoted configuration against the defaults given the meta-search's compute (matched total) and at equal budget, on 24 held-out worlds of two new families; machinery `frontier/meta.py` (B20_R162) | `scripts/b20r163_frontier_meta.py` |
+| F6-adjacent: PT-1's family B | BUILT (B20_R161): 53 Graffiti statements, posed text, domain, double kernel check | §7b |
 | PT-1 = B20_R159 | Parts 3–5 machinery BUILT (`frontier/procedure.py`); the forbidden-concept audit BUILT (`conjecture/audit.py`, kernel side: identifiers and non-docstring strings of the research plane and the manifest, scanned for the hidden concept's stems; the research plane is clean); family B TRANSCRIBED (`conjecture/invariants.py`, `conjecture/wowii.py`: 53 Graffiti statements, semantic checks in `tests_genesis/test_wowii.py`) and POSED as text, with its domain (`conjecture/statement.py`, `conjecture/invariant_domain.py`, `wowii.verifier`, checked by two independent invariant implementations, `invariants.py` and kernel-side `invariants_ref.py`; faster exact invariants, search up to 16 vertices); the study is still to write | §7b |
 
 **Run each study from a clean worktree of its preregistration commit** (`git worktree add --detach <path> <commit>`).
@@ -842,7 +844,9 @@ commit through `git show`.
 3. **B20_R141** from a worktree at `a3b3eda`, about 3 h.
 4. **B20_R156 (F3)** from a worktree at `4a7e193`, under 1 h.
 5. **B20_R157 (F4)** from a worktree at `bdf0c57`, about 2 h.
-6. Then F5 and PT-1, once preregistered.
+6. **B20_R158 (F5)** from a worktree at `703b2ee`.
+7. **B20_R163 (F6)** from a worktree of its preregistration commit, under 1 h.
+8. Then PT-1, once preregistered (§7b, with Daniel's decision on part 1's mechanism).
 
 **CPU 1 (engineering):** light tests only.
 - No sandboxed (runc) test while a study runs on CPU 0: the sandbox resets the affinity

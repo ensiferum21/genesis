@@ -637,7 +637,7 @@
    "id": "B20_R159",
    "kind": "study",
    "line": "frontier",
-   "notes": "docs/OMEGA_FRONTIER.md section 7b; family A candidates: Laplacian bounds 18, 21, 24, 30, 40 (held out of F4 and F5); family B candidates: Graffiti conjectures formalised in google-deepmind/formal-conjectures; PROVED_OUT only if all five parts pass",
+   "notes": "docs/OMEGA_FRONTIER.md section 7b; family A candidates: Laplacian bounds 18, 21, 24, 30, 40 (held out of F4 and F5); family B candidates: Graffiti conjectures formalised in google-deepmind/formal-conjectures; PROVED_OUT only if all five parts pass; 28 Oct 00:40: family B transcribed and posed (B20_R161); an open design question for part 1 recorded for Daniel (section 7b)",
    "outcome": null,
    "output": "evidence/proving_test_b20r159",
    "positive": null,
@@ -648,6 +648,32 @@
    "script": null,
    "status": "queued",
    "title": "PT-1, the proving test (Daniel, 27 Oct 2026, 20:22): an unfamiliar mathematical family where Genesis's representation is inadequate (inadequacy gate); without the missing concept given, (1) a useful new representation, (2) a nontrivial consequence, (3) the procedure extracted, (4) its independent use in another family, (5) the improved inventor beats its predecessor at matched total compute",
+   "unlocks": []
+  },
+  "B20_R163": {
+   "artifacts": [],
+   "committed": true,
+   "depends_on": [
+    "frontier-f6-build",
+    "B20_R158"
+   ],
+   "failure": null,
+   "id": "B20_R163",
+   "kind": "study",
+   "line": "frontier",
+   "notes": "Daniel's directive of 27 Oct 2026, 19:55 (docs/OMEGA_FRONTIER.md section 4.8); preregistered 28 Oct 2026 00:50 SGT",
+   "outcome": null,
+   "output": "evidence/frontier_meta_b20r163",
+   "positive": null,
+   "preregistered": "sha256 e71bfb69365bb5fa4a1129e59c13637ce048ab0cc15dbdaa4ddd8878a620777f (the preregistration commit)",
+   "priority": 5,
+   "requires": [],
+   "resources": {
+    "cpu0_hours": 1.0
+   },
+   "script": "scripts/b20r163_frontier_meta.py",
+   "status": "queued",
+   "title": "F6: the Frontier searching its own configurations: does the promoted configuration beat the defaults on held-out planted worlds at matched total compute (the meta-search counted)?",
    "unlocks": []
   },
   "allocator-baselines": {
@@ -824,7 +850,7 @@
    "id": "frontier-f2-build",
    "kind": "build",
    "line": "frontier",
-   "notes": "Daniel's directive of 27 Oct 2026, 19:55 (docs/OMEGA_FRONTIER.md); engineering on CPU 1; sections 5-6; first: the Taieb et al. reference, the 32 untranscribed formulas, a literature search for bounds 44 and 46 after June 2026; 27 Oct 20:40: started: conjecture/expr, graphs, sealed (all 68 bounds tiered: A1 51, A2 11, B 4, X 2), verify (exact Rayleigh certificates); evidence/bhs_transcription_f2; the equitable-partition operation is kernel side only (the proving test forbids giving the concept); 27 Oct 21:15: attack (4 representations without a quotient concept, 6 methods), domain (the Frontier's view), verify.verifier; the Frontier refutes invented false bounds and never proved ones; a disclosed development look attacked sealed refuted bounds 2, 3, 36, 48, 57, 61; 27 Oct 21:35: abstraction (parse converged graphs into Gamma programs, generalise sizes into templates: new representations Genesis abstracts; one per shape)",
+   "notes": "Daniel's directive of 27 Oct 2026, 19:55 (docs/OMEGA_FRONTIER.md); engineering on CPU 1; sections 5-6; first: the Taieb et al. reference, the 32 untranscribed formulas, a literature search for bounds 44 and 46 after June 2026; 27 Oct 20:40: started: conjecture/expr, graphs, sealed (all 68 bounds tiered: A1 51, A2 11, B 4, X 2), verify (exact Rayleigh certificates); evidence/bhs_transcription_f2; the equitable-partition operation is kernel side only (the proving test forbids giving the concept); 27 Oct 21:15: attack (4 representations without a quotient concept, 6 methods), domain (the Frontier's view), verify.verifier; the Frontier refutes invented false bounds and never proved ones; a disclosed development look attacked sealed refuted bounds 2, 3, 36, 48, 57, 61; 27 Oct 21:35: abstraction (parse converged graphs into Gamma programs, generalise sizes into templates: new representations Genesis abstracts; one per shape); 28 Oct 00:36: the Wagner rebuild test (exact Collatz-Wielandt certificate) closes F2",
    "outcome": null,
    "output": null,
    "positive": null,
@@ -835,6 +861,27 @@
    "script": null,
    "status": "queued",
    "title": "F2: graph conjectures and constructions with exact certificates (rational Rayleigh and Collatz-Wielandt bounds, interval arithmetic), the construction language with equitable-partition realisation, attacks (portfolio harnesses, NMCS, NRPA, GBFS, CEM, exhaustive), the conjecture generator, and the sealed AutoGraphiX Laplacian bounds by the two-source rule",
+   "unlocks": []
+  },
+  "frontier-f6-build": {
+   "artifacts": [],
+   "committed": true,
+   "depends_on": [],
+   "failure": null,
+   "id": "frontier-f6-build",
+   "kind": "build",
+   "line": "frontier",
+   "notes": "B20_R162: frontier/meta.py; tests_genesis/test_frontier_meta.py",
+   "outcome": "built",
+   "output": null,
+   "positive": null,
+   "preregistered": null,
+   "priority": 6,
+   "requires": [],
+   "resources": {},
+   "script": null,
+   "status": "done",
+   "title": "F6 machinery: the Frontier searching its own configurations over meta-tasks",
    "unlocks": []
   },
   "judge-v3-followup": {
@@ -883,6 +930,27 @@
    "script": null,
    "status": "queued",
    "title": "Experiment I: a research paradigm that beats the previous one on fresh families",
+   "unlocks": []
+  },
+  "pt1-family-b-build": {
+   "artifacts": [],
+   "committed": true,
+   "depends_on": [],
+   "failure": null,
+   "id": "pt1-family-b-build",
+   "kind": "build",
+   "line": "frontier",
+   "notes": "B20_R161: family B transcribed (conjecture/wowii.py, invariants.py, invariants_ref.py, statement.py, invariant_domain.py; tests_genesis/test_wowii.py); B stays sealed",
+   "outcome": "built",
+   "output": null,
+   "positive": null,
+   "preregistered": null,
+   "priority": 7,
+   "requires": [],
+   "resources": {},
+   "script": null,
+   "status": "done",
+   "title": "PT-1 groundwork: the transfer family B (53 Graffiti conjectures from the Lean formalisation), its statement language, domain and double kernel check",
    "unlocks": []
   },
   "reduction-invention": {
@@ -1726,6 +1794,9 @@
   "B20_R156",
   "B20_R157",
   "B20_R158",
+  "pt1-family-b-build",
+  "frontier-f6-build",
+  "B20_R163",
   "B20_R159"
  ],
  "reactivated": {},
