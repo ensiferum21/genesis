@@ -219,3 +219,38 @@ class Library(unittest.TestCase):
 def json_round(x):
     import json
     return json.loads(json.dumps(x, default=list))
+
+
+class Transfer(unittest.TestCase):
+    """The proving test's part 4 mechanics: a procedure extracted in the Laplacian domain runs unchanged in the
+    invariant domain (invented statements only; family B stays sealed)."""
+
+    def test_a_derivation_procedure_crosses_domains(self):
+        from genesis.conjecture import invariants as I
+        from genesis.conjecture import statement as ST
+        from genesis.conjecture.invariant_domain import InvariantDomain
+        from genesis.frontier import procedure as PR
+        dom = ConjectureDomain(POSED, n_values=(6, 8))
+        e = Frontier(Manifest(dom, V.verifier(POSED), budget=4000, quantum=100), 'frontier', seed=3,
+                     policy_params={'p_derive': 0.5})
+        e.run()
+        b = next(b for b in e.branches.values() if b['direction']['representation'].startswith('derived'))
+        e.events.append({'kind': 'verified', 'problem': 'q1', 'branch': b['id'], 'value': 1.0, 'step': 0,
+                         'spent': e.spent})
+        proc = PR.extract(e, 'q1')
+        posed = {'s1': 'alpha <= max_degree', 's2': 'radius <= diameter'}
+
+        def verify(pid, art):
+            G = I.Graph(art['n'], [tuple(x) for x in art['edges']])
+            return 1.0 if G.connected() and ST.Statement(posed[pid]).check(G)['violated'] else 0.0
+        inv = InvariantDomain(posed, n_values=(6, 8))
+        f = Frontier(Manifest(inv, verify, budget=3000, quantum=100), 'procedure', seed=6,
+                     policy_params={'procedures': [proc], 'rho': 0.9})
+        f.run()
+        want = dom.derived[b['direction']['representation']]['ops']
+        self.assertIn(want, [x['ops'] for x in inv.derived.values()])            # the same operations, re-derived
+        used = [x for x in f.branches.values() if x['direction'].get('op') == 'procedure'
+                and inv.derived.get(x['direction']['representation'], {}).get('ops') == want]
+        self.assertTrue(used)                                                     # and searched with
+        self.assertEqual(f.best_verified.get('s1'), 1.0)
+        self.assertFalse(f.best_verified.get('s2'))
