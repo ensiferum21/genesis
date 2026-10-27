@@ -729,8 +729,10 @@ to be preregistered when F1–F5 have run:
 *The problem.* Abstraction today generalises converged graphs into Γ templates, and it only compresses: a
 template, or a library of named sub-programs in the manner of X2, reaches the same closure of graphs as Γ itself,
 only at a shorter description length. Γ's operations (union, join, complement, cartesian product, corona, pendant
-paths) can express complete multipartite graphs. They cannot express general equitable-partition constructions,
-where the parts meet in regular but incomplete patterns, or blow-ups of a base graph with an induced P4.
+paths) can express complete multipartite graphs. They do not, in general, express equitable-partition
+constructions where the parts meet in regular but incomplete patterns, nor blow-ups of a base graph with an
+induced P4, beyond the special cases its products and coronas happen to produce. This is the builder's reading;
+it is not proved.
 
 Family A's references are of that kind. So for part 1 to pass, something must take Genesis outside Γ's closure,
 and the audit checks names, not ideas.
