@@ -768,7 +768,7 @@ to be preregistered when F1–F5 have run:
 | Piece | State | Where |
 |---|---|---|
 | F1, the engine | BUILT, v1.1 (B20_R160) | `src/genesis/frontier/`; `docs/checkpoints/B20_R160_RECORD.md`; `tests_genesis/test_frontier.py` |
-| F2, the conjecture domain | BUILT except the Wagner rebuild test's Collatz–Wielandt certificate | `src/genesis/conjecture/` (`expr`, `graphs`, `attack`, `domain`, `abstraction`, `generate`; kernel side `sealed`, `verify`); `tests_genesis/test_conjecture_domain.py` |
+| F2, the conjecture domain | BUILT (the Wagner rebuild test added 28 Oct 2026: an exact Collatz–Wielandt certificate against Aouchiche–Hansen on Wagner's 19-vertex tree, rebuilt from its stated λ₁ = √10 and μ = 2) | `src/genesis/conjecture/` (`expr`, `graphs`, `attack`, `domain`, `abstraction`, `generate`; kernel side `sealed`, `verify`); `tests_genesis/test_conjecture_domain.py` |
 | The sealed set | DONE: 68 bounds tiered, semantic checks | `conjecture/sealed.py`; `evidence/bhs_transcription_f2/` |
 | F3 = B20_R156 | PREREGISTERED, amended before it ran (`4a7e193`, sha256 `9ae034db…353a`) | `scripts/b20r156_frontier_worlds.py` |
 | F4 = B20_R157 | PREREGISTERED (`bdf0c57`, sha256 `49b171f9…1904`) | `scripts/b20r157_laplacian_bounds.py` |
@@ -854,7 +854,7 @@ test. The withheld ones are logged; the research plane is not told why.
 
 Open in F2:
 - the remaining items of §5: invariants beyond the Laplacian; Γ; the attacks; the generator;
-- a Collatz–Wielandt upper certificate for the Wagner rebuild test;
+- ~~a Collatz–Wielandt upper certificate for the Wagner rebuild test~~ done (28 Oct 2026, 00:36 SGT; `UpperCertificates.test_the_wagner_rebuild`). Wagner's Figure 4 was not seen. The tree, two stars K₁,₈ whose centres share a neighbour, was rebuilt from the values the abstract page states (n = 19, a tree, λ₁ = √10, μ = 2): λ² = 10 solves 1 = 2/(λ² − 8);
 - reading the 2006 text for bounds 28 and 41, if Daniel can attach it (DOI 10.1016/j.laa.2005.10.017).
 
 **Rules that carry over.** Everything in `docs/HANDOVER.md` §3 and the plan's §2. The protected judge

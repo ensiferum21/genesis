@@ -160,6 +160,33 @@ class UpperCertificates(unittest.TestCase):
         with self.assertRaises(ValueError):
             V.collatz_upper(star, [1, 0, 1, 1, 1])
 
+    def test_the_wagner_rebuild(self):
+        """Wagner 2021 (arXiv 2104.14516) refuted Aouchiche and Hansen's lambda_1 + mu >= sqrt(n - 1) + 1 with a
+        19-vertex tree with lambda_1 = sqrt(10) and matching number 2 (read from the abstract page's text, 27 Oct
+        2026; its Figure 4 was not seen). Rebuilt from those values: two stars K_{1,8} whose centres share a
+        neighbour (lambda^2 = 10 solves 1 = 2 / (lambda^2 - 8)). The certificate is exact: a Collatz-Wielandt upper
+        bound r on lambda_1 with r + mu < sqrt(n - 1) + 1, decided in rationals."""
+        from fractions import Fraction
+        from genesis.conjecture import invariants_ref as R
+
+        def certified(n, edges, x):
+            r = V.collatz_upper(V.adjacency(n, edges), x)
+            mu = R.matching_number(R.Graph(n, edges))
+            t = r + mu - 1                                     # refuted iff t < sqrt(n - 1)
+            return t < 0 or t * t < n - 1, r, mu
+        edges = [(0, 1), (0, 2)] + [(1, 3 + i) for i in range(8)] + [(2, 11 + i) for i in range(8)]
+        centre = Fraction(15811388, 10 ** 7)                   # sqrt(10) / 2, rounded; the middle vertex 1, leaves 1/2
+        x = [1, centre, centre] + [Fraction(1, 2)] * 16
+        ok, r, mu = certified(19, edges, x)
+        self.assertEqual(mu, 2)
+        self.assertTrue(ok)
+        self.assertLess(abs(float(r) - 10 ** 0.5), 1e-6)
+        # the star K_{1,18} meets the bound with equality (sqrt(18) + 1): no certificate exists
+        star = [(0, i) for i in range(1, 19)]
+        self.assertFalse(certified(19, star, [Fraction(42426407, 10 ** 7)] + [1] * 18)[0])
+        # one more edge between two leaves of different stars raises mu to 3: the same vector no longer certifies
+        self.assertFalse(certified(19, edges + [(3, 11)], x)[0])
+
 
 class Sealed(unittest.TestCase):
     def test_statuses_partition_the_68(self):
