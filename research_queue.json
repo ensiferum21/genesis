@@ -282,18 +282,19 @@
    "artifacts": [],
    "committed": false,
    "depends_on": [
+    "B20_R151",
     "ara-1-build"
    ],
    "failure": null,
    "id": "B20_R141",
    "kind": "study",
    "line": "architecture-invention",
-   "notes": "calibration domain only; real-system claims need B20_R142",
+   "notes": "calibration domain only; real-system claims need B20_R142; after B20_R151 (Daniel, 27 Oct 2026)",
    "outcome": null,
    "output": null,
    "positive": null,
    "preregistered": null,
-   "priority": 8,
+   "priority": 7,
    "requires": [
     "ara-core"
    ],
@@ -475,6 +476,53 @@
    "title": "The portfolio of discovery processes (Omega-2, Daniel's report adopted 26 Oct): G0-G3 on ten fresh tasks in three domains at matched evaluations, AUDC, H1 (is any process best everywhere?)",
    "unlocks": []
   },
+  "B20_R151": {
+   "artifacts": [],
+   "committed": false,
+   "depends_on": [
+    "expr-x1-build"
+   ],
+   "failure": null,
+   "id": "B20_R151",
+   "kind": "study",
+   "line": "expressiveness",
+   "notes": "Daniel's direction of 27 Oct 2026, 14:33 (docs/OMEGA_EXPRESSIVE_LANGUAGE.md): the current priority",
+   "outcome": null,
+   "output": "evidence/expressiveness_b20r151",
+   "positive": null,
+   "preregistered": null,
+   "priority": 10,
+   "requires": [],
+   "resources": {},
+   "script": null,
+   "status": "queued",
+   "title": "Expressiveness separated from search: headroom gate, then language {Lambda0, Lambda1} x search {inventor, ceiling} at matched compute on fresh graph classes with headroom",
+   "unlocks": []
+  },
+  "B20_R152": {
+   "artifacts": [],
+   "committed": false,
+   "depends_on": [
+    "expr-x2-build",
+    "B20_R151"
+   ],
+   "failure": null,
+   "id": "B20_R152",
+   "kind": "study",
+   "line": "expressiveness",
+   "notes": "Daniel's direction of 27 Oct 2026, 14:33 (docs/OMEGA_EXPRESSIVE_LANGUAGE.md): the current priority",
+   "outcome": null,
+   "output": "evidence/self_extension_b20r152",
+   "positive": null,
+   "preregistered": null,
+   "priority": 9,
+   "requires": [],
+   "resources": {},
+   "script": null,
+   "status": "queued",
+   "title": "Self-extension: generations of Lambda1 + library_k admitted by the language judge, E and A per generation, reuse, trend",
+   "unlocks": []
+  },
   "allocator-baselines": {
    "artifacts": [],
    "committed": false,
@@ -542,6 +590,50 @@
    "script": null,
    "status": "done",
    "title": "A fresh checkpoint with the release matrix (the last is B20_R118)",
+   "unlocks": []
+  },
+  "expr-x1-build": {
+   "artifacts": [],
+   "committed": false,
+   "depends_on": [],
+   "failure": null,
+   "id": "expr-x1-build",
+   "kind": "build",
+   "line": "expressiveness",
+   "notes": "Daniel's direction of 27 Oct 2026, 14:33 (docs/OMEGA_EXPRESSIVE_LANGUAGE.md): the current priority",
+   "outcome": null,
+   "output": null,
+   "positive": null,
+   "preregistered": null,
+   "priority": 12,
+   "requires": [],
+   "resources": {},
+   "script": null,
+   "status": "queued",
+   "title": "X1: mcx3, the construct algebra (blocks, guards over observables, targets, phases, named statements), the Lambda1 front end and inventor operators; mcx2 programs identical",
+   "unlocks": []
+  },
+  "expr-x2-build": {
+   "artifacts": [],
+   "committed": false,
+   "depends_on": [
+    "expr-x1-build"
+   ],
+   "failure": null,
+   "id": "expr-x2-build",
+   "kind": "build",
+   "line": "expressiveness",
+   "notes": "Daniel's direction of 27 Oct 2026, 14:33 (docs/OMEGA_EXPRESSIVE_LANGUAGE.md): the current priority",
+   "outcome": null,
+   "output": null,
+   "positive": null,
+   "preregistered": null,
+   "priority": 11,
+   "requires": [],
+   "resources": {},
+   "script": null,
+   "status": "queued",
+   "title": "X2: library learning over Lambda1 (anti-unification with parameters, MDL), the language judge (kernel side), the consolidator (capability records with contracts, a versioned language registry), the engine-invention workflow as an AG for ARA",
    "unlocks": []
   },
   "judge-v3-followup": {
@@ -1096,6 +1188,26 @@
    "outcome": "built on fixtures (B20_R150): graph, zoo, judge, ladder, grammar, model, assumptions, cycle; 49 tests; a disclosed development look",
    "positive": true,
    "time": "2026-10-27T05:50:27+00:00"
+  },
+  {
+   "id": "expr-x1-build",
+   "kind": "add",
+   "time": "2026-10-27T06:36:04+00:00"
+  },
+  {
+   "id": "expr-x2-build",
+   "kind": "add",
+   "time": "2026-10-27T06:36:04+00:00"
+  },
+  {
+   "id": "B20_R151",
+   "kind": "add",
+   "time": "2026-10-27T06:36:04+00:00"
+  },
+  {
+   "id": "B20_R152",
+   "kind": "add",
+   "time": "2026-10-27T06:36:04+00:00"
   }
  ],
  "lines": {
@@ -1202,6 +1314,12 @@
    "run": 6,
    "stagnant": true
   },
+  "expressiveness": {
+   "diagnosis": null,
+   "outcomes": [],
+   "run": 0,
+   "stagnant": false
+  },
   "mathematics": {
    "diagnosis": null,
    "outcomes": [],
@@ -1291,7 +1409,11 @@
   "B20_R145",
   "B20_R146",
   "B20_R147",
-  "B20_R148"
+  "B20_R148",
+  "expr-x1-build",
+  "expr-x2-build",
+  "B20_R151",
+  "B20_R152"
  ],
  "reactivated": {},
  "schema": "genesis-research-queue-v1",

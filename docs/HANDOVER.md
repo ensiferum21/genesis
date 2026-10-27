@@ -234,6 +234,11 @@ needs people: a reviewer, a statistician, an independent custodian on its own ma
       Limitation Zoo calibrates it with planted, null, no-headroom and decoy environments; tuning-only and
       blind-rewrite controls at matched total compute. ARA-1 is built on fixtures (B20_R150, `src/genesis/architecture/`);
       next, B20_R141 (experiments A-D on the zoo), preregistered for the blind control's strength.
+  26b. **Daniel's direction of 27 Oct 2026, 14:33 is adopted and is the current priority**:
+      `docs/OMEGA_EXPRESSIVE_LANGUAGE.md`. Richer algorithm expressiveness, measured apart from search (a
+      ceiling search within a description-length bound; a language x search factorial), the builder's construct
+      algebra labelled as human, Genesis growing the language from its own engines through a language judge and
+      a consolidator, generation after generation. Batches X1, X2, B20_R151, B20_R152; then B20_R141.
   27. after them: the Genesis Ω stages in `docs/GENESIS_OMEGA_PLAN.md` §5-§6 (Ω0 analysis of R127/R128; B20_R130
       invented instruments; B20_R131 the Difficulty Cartographer; the genome and typed language; the ecology;
       evolvability selection; the decisive A/B/C experiment).

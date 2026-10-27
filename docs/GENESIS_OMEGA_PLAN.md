@@ -45,6 +45,29 @@ effective invention processes. It is **not achieved**, and no document may say s
 Every batch reports its commits, tests, evidence, failed hypotheses, regressions, unresolved limitations and the next
 dependency-unblocking action.
 
+## 0e. Daniel's direction of 27 Oct 2026, 14:33 (adopted; the current priority): richer expressiveness, separated from search
+
+**Read `docs/OMEGA_EXPRESSIVE_LANGUAGE.md`.** The directive:
+
+> ARA diagnoses the obstacle → Genesis invents a structural repair → the independent Judge verifies it → the
+> Consolidator preserves it → Genesis resumes research with the improved workflow. Prioritize richer algorithm
+> expressiveness, experimentally separated from improvements in search. They should improve on themselves as in
+> expressiveness wise and richness.
+
+It answers B20_R132's open question: what answers EXPRESSIVENESS. In short:
+- **Measurable separation.** Expressiveness is the value of the best program a fixed ceiling search finds within a
+  description-length bound; search effectiveness is what a given search finds. A factorial (language × search) at
+  matched compute separates them. A language gain that vanishes under the ceiling search is a search gain.
+- **A construct algebra (human-designed, labelled).** The builder provides one generic set of constructs in `mcx3`:
+  blocks, guards over run-time observables, targets, phases and named statements. Its gain is reported as the
+  builder's.
+- **Genesis grows the language.** Genesis abstracts named statements from its own best engines, admits them through
+  a kernel-side language judge, consolidates them as capability records with contracts, and resumes invention with
+  the richer language. Richness compounds over generations, and each generation is judged.
+- **Batches:** X1 (`mcx3`), X2 (library learning, the language judge, the consolidator, the real workflow as an AG),
+  B20_R151 (expressiveness against search, after a headroom gate), B20_R152 (generations of self-extension).
+  B20_R141 (ARA's zoo calibration) moves after B20_R151.
+
 ## 0d. Daniel's report of 24-26 Oct 2026 (adopted 26 Oct, first): Genesis Ω², a portfolio of discovery processes
 
 **Read `docs/OMEGA_META_ADAPTIVE.md`.** Daniel's report "Beyond Genesis-Ω" argues that no fixed discovery harness is
