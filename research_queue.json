@@ -578,7 +578,7 @@
   },
   "B20_R157": {
    "artifacts": [],
-   "committed": false,
+   "committed": true,
    "depends_on": [
     "frontier-f2-build",
     "B20_R156"
@@ -587,17 +587,17 @@
    "id": "B20_R157",
    "kind": "study",
    "line": "frontier",
-   "notes": "Daniel's directive of 27 Oct 2026, 19:55 (docs/OMEGA_FRONTIER.md); to preregister after a timing pilot",
+   "notes": "Daniel's directive of 27 Oct 2026, 19:55 (docs/OMEGA_FRONTIER.md); to preregister after a timing pilot; preregistered 27 Oct 2026 21:40 SGT",
    "outcome": null,
    "output": "evidence/laplacian_bounds_b20r157",
    "positive": null,
-   "preregistered": null,
+   "preregistered": "sha256 49b171f9be58dc6665fc9d15eacd59f98ede795b2a4e5d6a5fb3bc54ff0f1904 (the preregistration commit)",
    "priority": 6,
    "requires": [],
    "resources": {
-    "cpu0_hours": 12.0
+    "cpu0_hours": 2.5
    },
-   "script": null,
+   "script": "scripts/b20r157_laplacian_bounds.py",
    "status": "queued",
    "title": "F4: the sealed Laplacian bounds: refutations by exact certificate within budget, the Frontier against NRPA, GBFS, CEM and the uniform portfolio at matched CPU; no certificate against a proved bound; bounds 44 and 46 open as of June 2026",
    "unlocks": []
