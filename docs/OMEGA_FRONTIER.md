@@ -675,7 +675,23 @@ to be preregistered when F1–F5 have run:
 | Library learning | Ellis et al. 2021 (DreamCoder); Bowers et al. 2023 (Stitch); Zenkner et al. 2024 (AbstractBeam: no gain on an unlike distribution) | Abstraction by compression | Named constructions (§5.3) |
 | Self-improvement | Zhang et al. 2025 (Darwin Gödel Machine; LLM-based); Schmidhuber 2003 | Open-ended self-modification | The meta level (§4.8), LLM-free and bounded |
 
-## 12. Handoff state (27 Oct 2026, 20:15 SGT)
+## 12. Handoff state (27 Oct 2026, 22:00 SGT)
+
+**What exists now** (all pushed to `continuation-b20-rx`):
+
+| Piece | State | Where |
+|---|---|---|
+| F1, the engine | BUILT, v1.1 (B20_R160) | `src/genesis/frontier/`; `docs/checkpoints/B20_R160_RECORD.md`; `tests_genesis/test_frontier.py` |
+| F2, the conjecture domain | BUILT except the Wagner rebuild test's Collatz–Wielandt certificate | `src/genesis/conjecture/` (`expr`, `graphs`, `attack`, `domain`, `abstraction`, `generate`; kernel side `sealed`, `verify`); `tests_genesis/test_conjecture_domain.py` |
+| The sealed set | DONE: 68 bounds tiered, semantic checks | `conjecture/sealed.py`; `evidence/bhs_transcription_f2/` |
+| F3 = B20_R156 | PREREGISTERED, amended before it ran (`4a7e193`, sha256 `9ae034db…353a`) | `scripts/b20r156_frontier_worlds.py` |
+| F4 = B20_R157 | PREREGISTERED (`bdf0c57`, sha256 `49b171f9…1904`) | `scripts/b20r157_laplacian_bounds.py` |
+| F5 = B20_R158 | TO PREREGISTER after F4's result. It uses `generate.py`, abstraction, procedures, and the kernel's withholding rule for family A (§6) | — |
+| PT-1 = B20_R159 | Parts 3–5 machinery BUILT (`frontier/procedure.py`); the forbidden-concept audit and the study are still to write | §7b |
+
+**Run each study from a clean worktree of its preregistration commit** (`git worktree add --detach <path> <commit>`).
+The study scripts check their module pins at run time. The design tests check the pins at the preregistration
+commit through `git show`.
 
 **CPU 0 (studies, in order):**
 1. **B20_R151 is running in slices.**
@@ -687,12 +703,16 @@ to be preregistered when F1–F5 have run:
 2. **B20_R152.** Its clean worktree `/home/claude/r152-wt` at `3d88ad6` is ready (digests checked). Output:
    `evidence/self_extension_b20r152`. Up to about 15 h in slices.
 3. **B20_R141** from a worktree at `a3b3eda`, about 3 h.
-4. Then B20_R156 (F3), B20_R157 (F4) and B20_R158 (F5), once each is preregistered.
+4. **B20_R156 (F3)** from a worktree at `4a7e193`, under 1 h.
+5. **B20_R157 (F4)** from a worktree at `bdf0c57`, about 2 h.
+6. Then F5 and PT-1, once preregistered.
 
-**CPU 1 (engineering):** F1, then F2. Light tests only.
+**CPU 1 (engineering):** light tests only.
 - No sandboxed (runc) test while a study runs on CPU 0: the sandbox resets the affinity
   (`docs/OMEGA_OPERATIONS.md`).
 - Never edit `.py` files in a worktree a study runs from.
+- **Before every commit, run every test that touches a changed module and check its exit status.** Twice today a
+  failing test was pushed (`aa89b6a`, then `cb04bbd`/`7f2e7ff`). Both were fixed and disclosed.
 
 **F2's first items are done** (27 Oct 2026, 20:40 SGT; §6):
 - the Taieb et al. reference;
