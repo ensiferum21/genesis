@@ -501,24 +501,24 @@
   },
   "B20_R152": {
    "artifacts": [],
-   "committed": false,
+   "committed": true,
    "depends_on": [
-    "expr-x2-build",
-    "B20_R151"
+    "B20_R151",
+    "expr-x2-build"
    ],
    "failure": null,
    "id": "B20_R152",
    "kind": "study",
    "line": "expressiveness",
-   "notes": "Daniel's direction of 27 Oct 2026, 14:33 (docs/OMEGA_EXPRESSIVE_LANGUAGE.md): the current priority",
+   "notes": "Daniel's direction of 27 Oct 2026, 14:33 (docs/OMEGA_EXPRESSIVE_LANGUAGE.md): the current priority; on planar2000 (B20_R151 gate); runs after B20_R151 frees CPU 0",
    "outcome": null,
    "output": "evidence/self_extension_b20r152",
    "positive": null,
-   "preregistered": null,
+   "preregistered": "sha256 732632c88e8f96cd958193bdf83564c00822c51889b68ab1b6c4512d70c23159 (the preregistration commit)",
    "priority": 9,
    "requires": [],
    "resources": {},
-   "script": null,
+   "script": "scripts/b20r152_self_extension.py",
    "status": "queued",
    "title": "Self-extension: generations of Lambda1 + library_k admitted by the language judge, E and A per generation, reuse, trend",
    "unlocks": []

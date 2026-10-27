@@ -5704,7 +5704,9 @@
     "src/genesis/expressive/consolidate.py",
     "src/genesis/expressive/workflow.py",
     "src/genesis/expressive/pipeline.py",
-    "docs/checkpoints/B20_R154_RECORD.md"
+    "docs/checkpoints/B20_R154_RECORD.md",
+    "src/genesis/expressive/maxcut_domain.py",
+    "scripts/b20r152_self_extension.py"
    ],
    "disposition": "IMPLEMENTED_BOUNDED_PENDING_AUDIT",
    "evidence": [],
@@ -5728,7 +5730,8 @@
     "tests_genesis/test_expressive_judge.py",
     "tests_genesis/test_expressive_consolidate.py",
     "tests_genesis/test_expressive_pipeline.py",
-    "tests_genesis/test_expressive_boundary.py"
+    "tests_genesis/test_expressive_boundary.py",
+    "tests_genesis/test_self_extension_study.py"
    ],
    "title": "New primitives, research-language evolution and trust changes (derived primitives with reference expansions, conformance, versioned registries; DEV: none of four starting primitives is a gain; B20_R153: the engine language \u039b1, mcx3 with the builder's construct algebra, mcx2 programs identical, named statements with versioned libraries, the inventor's operators over \u039b0 and \u039b1; B20_R154: library learning, the language judge, the consolidator, the generation pipeline, on a planted fixture)",
    "workstream": "W22"

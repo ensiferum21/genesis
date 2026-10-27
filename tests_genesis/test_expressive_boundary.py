@@ -15,7 +15,7 @@ from genesis.expressive import judge as J  # noqa: E402
 PKG = ROOT / 'src' / 'genesis' / 'expressive'
 RESEARCH_PLANE = ('__init__.py', 'lambda1.py', 'operators.py', 'library.py', 'consolidate.py', 'workflow.py',
                   'pipeline.py')
-KERNEL_SIDE = ('judge.py', 'fixture.py')
+KERNEL_SIDE = ('judge.py', 'fixture.py', 'maxcut_domain.py')
 PRIVATE = ('_train', '_truth', '_runs', '_ledger', '_domain', '_seed', '_replicates', '_search', '_run', '_ref',
            '_truth_gains', '_control', '_close', '__closure__', '__self__', '__globals__')
 
@@ -40,7 +40,8 @@ class Boundary(unittest.TestCase):
         for name in RESEARCH_PLANE:
             for m in imports(PKG / name):
                 parts = [x for x in m.replace('genesis.', '.').split('.') if x]
-                if any(x in ('judge', 'fixture', 'kernel', 'custodian', 'verification', 'release_bundle', 'zoo')
+                if any(x in ('judge', 'fixture', 'maxcut_domain', 'kernel', 'custodian', 'verification',
+                             'release_bundle', 'zoo')
                        for x in parts):
                     bad.append(f'{name}: {m}')
         self.assertEqual(bad, [])
