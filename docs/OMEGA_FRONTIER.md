@@ -617,7 +617,7 @@ to be preregistered when F1–F5 have run:
   of procedures. Within a share ρ of compute, it runs the library's procedures on new problems first.
 - These are mechanics only. What they are worth is the test's question.
 
-**Family B is transcribed** (27 Oct 2026, 23:15 SGT; F6 groundwork). The candidate is the Graffiti.pc conjectures of
+**Family B is transcribed** (27 Oct 2026, 23:15 SGT; PT-1 groundwork). The candidate is the Graffiti.pc conjectures of
 "Written on the Wall II" as formalised in Lean in `google-deepmind/formal-conjectures`, read at commit `c0c5380`
 (a shallow clone, used as data only; nothing in it is run).
 - `conjecture/invariants.py` (research plane): about 50 exact invariants, each following the Lean definition it
