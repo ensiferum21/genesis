@@ -7,7 +7,8 @@ The kernel checks a claimed counterexample of family B (`wowii.verifier`) twice:
   * `networkx` for distances, eccentricities, girth, bipartiteness, forests, trees and domination tests;
   * plain enumeration of vertex subsets with `itertools.combinations` where `invariants.py` uses bitmask searches;
   * a maximum clique of the complement for independence (`invariants.py` branches on masks);
-  * backtracking for Hamiltonian paths (`invariants.py` uses dynamic programming over subsets);
+  * backtracking for Hamiltonian paths up to 10 vertices, and Held-Karp by levels over frozensets above
+    (`invariants.py` uses a pruned depth-first search with a bitmask DP behind it);
   * recursion over edges for the matching number (`invariants.py` calls networkx's blossom algorithm);
   * the Lean definition, by enumeration, for vertex connectivity (`invariants.py` calls networkx);
   * the standard Havel-Hakimi process for the residue.
@@ -63,8 +64,9 @@ def _memo(fn):
     return wrapped
 
 
-def _largest(G, ok):
-    for k in range(G.n, 0, -1):
+def _largest(G, ok, upper=None):
+    top = G.n if upper is None else min(G.n, upper)            # `upper` must be a valid upper bound
+    for k in range(top, 0, -1):
         for S in combinations(range(G.n), k):
             if ok(S):
                 return k
@@ -164,17 +166,20 @@ def alpha_core_size(G):
 
 @_memo
 def b(G):
-    return _largest(G, lambda S: nx.is_bipartite(G.sub(S)))
+    """Each side is independent, so at most 2 alpha (this module's alpha)."""
+    return _largest(G, lambda S: nx.is_bipartite(G.sub(S)), upper=2 * indep_num(G))
 
 
 @_memo
 def largest_induced_forest(G):
-    return _largest(G, lambda S: nx.is_forest(G.sub(S)))
+    """A forest is bipartite: at most b."""
+    return _largest(G, lambda S: nx.is_forest(G.sub(S)), upper=b(G))
 
 
 @_memo
 def largest_induced_tree(G):
-    return _largest(G, lambda S: nx.is_tree(G.sub(S)))
+    """A tree is a forest: at most the forest number."""
+    return _largest(G, lambda S: nx.is_tree(G.sub(S)), upper=largest_induced_forest(G))
 
 
 @_memo
@@ -182,7 +187,7 @@ def path_number(G):
     def is_path(S):
         H = G.sub(S)
         return nx.is_tree(H) and max(d for _, d in H.degree()) <= 2
-    return _largest(G, is_path)
+    return _largest(G, is_path, upper=largest_induced_tree(G))
 
 
 # ------------------------------------------------------------------------------------------- domination
@@ -219,12 +224,32 @@ def matching_number(G):
     return best(0, 0)
 
 
+def _ham_path_levels(H):
+    """Held-Karp by levels: for each set of visited vertices (a frozenset), the vertices a path through exactly that
+    set can end at, grown one vertex at a time."""
+    nodes = list(H.nodes())
+    level = {frozenset([v]): {v} for v in nodes}
+    for _ in range(len(nodes) - 1):
+        nxt = {}
+        for seen, ends in level.items():
+            for e in ends:
+                for w in H[e]:
+                    if w not in seen:
+                        nxt.setdefault(seen | {w}, set()).add(w)
+        level = nxt
+        if not level:
+            return False
+    return bool(level)
+
+
 def _ham_path(H):
     nodes = list(H.nodes())
     if len(nodes) <= 1:
         return True
     if not nx.is_connected(H):
         return False
+    if len(nodes) > 10:
+        return _ham_path_levels(H)                       # backtracking is too slow on large graphs without one
     target = len(nodes)
 
     def extend(path, seen):
@@ -444,7 +469,8 @@ def triangle_free(G):
 
 @_memo
 def alpha_two(G):
-    return _largest(G, lambda S: max((d for _, d in G.sub(S).degree()), default=0) <= 1)
+    """An independent set plus a matching: at most 2 alpha."""
+    return _largest(G, lambda S: max((d for _, d in G.sub(S).degree()), default=0) <= 1, upper=2 * indep_num(G))
 
 
 def low_degree_vertices(G):

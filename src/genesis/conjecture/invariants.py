@@ -270,25 +270,146 @@ def min_indep_neighbours(G):
 
 @_cached
 def b(G):
-    """largestInducedBipartiteSubgraphSize. Each side is independent, so b <= 2 alpha; the search starts there."""
-    return _max_subset(G, G.bipartite_within, upper=2 * indep_num(G))
+    """largestInducedBipartiteSubgraphSize, by branch and bound over the vertices (fewest neighbours first). The
+    chosen set is kept as components with their two sides; a vertex may join when, in every component it touches,
+    its neighbours lie on one side only; it then merges those components. Each side is independent, so b <= 2 alpha;
+    a branch is cut when the undecided vertices cannot lift it above the best found (exact)."""
+    n = G.n
+    order = sorted(range(n), key=lambda v: (G.degree(v), v))
+    cap = 2 * indep_num(G)
+    best = [0]
+    adj = G.adj
+
+    def go(i, size, comps):
+        if size + (n - i) <= best[0] or best[0] >= cap:
+            return
+        if i == n:
+            best[0] = size
+            return
+        v = order[i]
+        a = adj[v]
+        left, right, rest, ok = 1 << v, 0, [], True
+        for A, B in comps:
+            na, nb = a & A, a & B
+            if na and nb:
+                ok = False                                   # an odd cycle through v
+                break
+            if na:
+                left, right = left | B, right | A            # v opposite A's side
+            elif nb:
+                left, right = left | A, right | B
+            else:
+                rest.append((A, B))
+        if ok:
+            go(i + 1, size + 1, rest + [(left, right)])
+        go(i + 1, size, comps)
+    go(0, 0, [])
+    return best[0]
+
+
+def _b_subsets(G):
+    """The same by subset search (kept to test `b`)."""
+    return _max_subset(G, G.bipartite_within)
 
 
 @_cached
 def largest_induced_forest(G):
-    """An induced forest is bipartite, so it has at most b vertices; the search starts there."""
-    return _max_subset(G, lambda S: G.induced_edges(S) == bin(S).count('1') - G.components_within(S), upper=b(G))
+    """The order of a largest induced forest, by branch and bound over the vertices (fewest neighbours first): a
+    vertex joins the forest when its neighbours in it lie in distinct components (no cycle); a branch is cut when
+    the vertices still undecided cannot lift it above the best found (exact)."""
+    n = G.n
+    order = sorted(range(n), key=lambda v: (G.degree(v), v))
+    best = [0]
+    adj = G.adj
+
+    def go(i, size, comps):
+        if size + (n - i) <= best[0]:
+            return
+        if i == n:
+            best[0] = size
+            return
+        v = order[i]
+        touched = [c for c in comps if c & adj[v]]
+        if all(bin(c & adj[v]).count('1') == 1 for c in touched):    # v keeps the forest acyclic
+            merged = (1 << v)
+            for c in touched:
+                merged |= c
+            go(i + 1, size + 1, [c for c in comps if not c & adj[v]] + [merged])
+        go(i + 1, size, comps)
+    go(0, 0, [])
+    return best[0]
+
+
+def _forest_subsets(G):
+    """The same by subset search (kept to test `largest_induced_forest`)."""
+    return _max_subset(G, lambda S: G.induced_edges(S) == bin(S).count('1') - G.components_within(S))
 
 
 @_cached
 def largest_induced_tree(G):
-    """An induced tree is an induced forest; the search starts at the forest number."""
-    return _max_subset(G, lambda S: S != 0 and G.connected_within(S) and G.induced_edges(S) == bin(S).count('1') - 1,
-                       upper=largest_induced_forest(G))
+    """The order of a largest induced tree. Every connected vertex set is met once, by the ESU enumeration (Wernicke
+    2006) from its least vertex; a set that is not a tree is not extended (its supersets contain its cycle); a branch
+    is cut when it cannot beat the best found (exact)."""
+    n = G.n
+    if n == 0:
+        return 0
+    adj = G.adj
+    best = [1]
+
+    def extend(sub, ext, v, nb):
+        # sub: the tree; ext: candidates; nb: the closed neighbourhood of sub
+        size = bin(sub).count('1')
+        if size > best[0]:
+            best[0] = size
+        above = G.full & ~((1 << (v + 1)) - 1)
+        if size + bin(ext).count('1') + bin(above & ~nb).count('1') <= best[0]:
+            return
+        while ext:
+            w = ext & -ext
+            ext ^= w
+            wi = w.bit_length() - 1
+            if bin(adj[wi] & sub).count('1') != 1:
+                continue                                     # w would close a cycle
+            excl = adj[wi] & ~nb & above
+            extend(sub | w, ext | excl, v, nb | adj[wi] | w)
+    for v in range(n):
+        above = G.full & ~((1 << (v + 1)) - 1)
+        extend(1 << v, adj[v] & above, v, adj[v] | (1 << v))
+    return best[0]
 
 
+def _tree_subsets(G):
+    """The same by subset search (kept to test `largest_induced_tree`)."""
+    return _max_subset(G, lambda S: S != 0 and G.connected_within(S) and G.induced_edges(S) == bin(S).count('1') - 1)
+
+
+@_cached
 def path_number(G):
-    """path(G): the order of a largest induced path."""
+    """path(G): the order of a largest induced path. A depth-first search over induced paths: a path grows at its
+    end by a neighbour that is adjacent to no earlier vertex of the path; branches that cannot beat the best path
+    found are cut (exact)."""
+    n = G.n
+    if n == 0:
+        return 0
+    best = [1]
+    adj = G.adj
+
+    def grow(end, length, blocked):
+        # blocked: the path's vertices and every neighbour of its vertices other than the end
+        if length > best[0]:
+            best[0] = length
+        free = G.full & ~blocked & ~adj[end]
+        if length + 1 + bin(free).count('1') <= best[0]:
+            return                                       # even every remaining vertex could not beat the best
+        for u in _bits(adj[end] & ~blocked):
+            grow(u, length + 1, blocked | adj[end] | (1 << end))
+    for v in range(n):
+        grow(v, 1, 1 << v)
+    return best[0]
+
+
+def _path_number_subsets(G):
+    """The same by subset search (kept to test `path_number`)."""
     def ok(S):
         if S == 0:
             return False
@@ -297,7 +418,7 @@ def path_number(G):
             return True
         return (G.connected_within(S) and G.induced_edges(S) == k - 1
                 and all(bin(G.adj[v] & S).count('1') <= 2 for v in _bits(S)))
-    return _max_subset(G, ok, upper=largest_induced_tree(G))       # an induced path is an induced tree
+    return _max_subset(G, ok)
 
 
 def connected_domination_number(G):
@@ -488,9 +609,29 @@ def _path_ends_table(G):
 
 def _path_search(G, budget):
     """True or False when a depth-first search settles whether G has a Hamiltonian path within `budget` steps;
-    None when it runs out."""
+    None when it runs out. A partial path is abandoned when the vertices left, with its end, are disconnected, or
+    when more than one of them has at most one neighbour among them and the end (only the last vertex may)."""
     n, full = G.n, G.full
     steps = [0]
+    adj = G.adj
+
+    def feasible(end, rest):
+        if rest == 0:
+            return True
+        reach, frontier = 1 << end, 1 << end
+        allowed = rest | (1 << end)
+        while frontier:
+            nxt = 0
+            for v in _bits(frontier):
+                nxt |= adj[v] & allowed
+            frontier = nxt & ~reach
+            reach |= nxt
+        if reach != allowed:
+            return False
+        if bin(rest).count('1') == 1:
+            return True
+        tight = sum(1 for u in _bits(rest) if bin(adj[u] & allowed).count('1') <= 1)
+        return tight <= 1
 
     def extend(v, mask):
         if mask == full:
@@ -498,7 +639,10 @@ def _path_search(G, budget):
         steps[0] += 1
         if steps[0] > budget:
             raise TimeoutError
-        nxt = sorted(_bits(G.adj[v] & ~mask), key=lambda u: bin(G.adj[u] & ~mask).count('1'))   # fewest exits first
+        rest = full & ~mask
+        if not feasible(v, rest):
+            return False
+        nxt = sorted(_bits(adj[v] & rest), key=lambda u: bin(adj[u] & rest).count('1'))   # fewest exits first
         return any(extend(u, mask | 1 << u) for u in nxt)
     try:
         return any(extend(v, 1 << v) for v in range(n))
@@ -515,7 +659,10 @@ def hamiltonian_path(G):
         return True
     if not G.connected() or sum(1 for d in G.degrees() if d <= 1) > 2:
         return False
-    found = _path_search(G, budget=20 * n * n)
+    for v in range(n):                                   # a vertex whose removal leaves 3 or more components
+        if G.components_within(G.full & ~(1 << v)) >= 3:
+            return False
+    found = _path_search(G, budget=200 * n * n)
     if found is not None:
         return found
     return _path_ends_table(G)[G.full] != 0
@@ -654,7 +801,32 @@ def triangle_free(G):
 
 @_cached
 def alpha_two(G):
-    """The largest vertex set whose induced subgraph has maximum degree at most 1."""
+    """The largest vertex set whose induced subgraph has maximum degree at most 1, by branch and bound over the
+    vertices (fewest neighbours first). Such a set is an independent set plus a matching, so it has at most
+    2 alpha vertices; a branch is also cut when the undecided vertices cannot lift it above the best (exact)."""
+    n = G.n
+    order = sorted(range(n), key=lambda v: (G.degree(v), v))
+    cap = 2 * indep_num(G)
+    best = [0]
+    adj = G.adj
+
+    def go(i, S, size):
+        if size + (n - i) <= best[0] or best[0] >= cap:
+            return
+        if i == n:
+            best[0] = size
+            return
+        v = order[i]
+        nb = adj[v] & S
+        if bin(nb).count('1') <= 1 and all(not (adj[u] & S) for u in _bits(nb)):
+            go(i + 1, S | (1 << v), size + 1)
+        go(i + 1, S, size)
+    go(0, 0, 0)
+    return best[0]
+
+
+def _alpha_two_subsets(G):
+    """The same by subset search (kept to test `alpha_two`)."""
     return _max_subset(G, lambda S: all(bin(G.adj[v] & S).count('1') <= 1 for v in _bits(S)))
 
 

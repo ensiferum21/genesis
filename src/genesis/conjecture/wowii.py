@@ -563,7 +563,7 @@ def stated_value(G, name):
     return getattr(I, name)(G)
 
 
-def verifier(posed, max_n=16, log=None):
+def verifier(posed, max_n=18, log=None):
     """For a study (kernel side): verify(pid, artifact) -> 1.0 if the artifact's graph is connected and violates the
     posed statement by this module's transcription, computed twice, with the research plane's invariants and with
     the kernel's independent ones (`invariants_ref.py`); else 0.0. Both must say violated. A disagreement is

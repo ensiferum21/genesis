@@ -729,6 +729,21 @@ to be preregistered when F1–F5 have run:
     - all 53 statements on one random 16-vertex graph take about 0.6 s.
   - The search limit is raised from 14 to 16 vertices. Both implementations agree on the Hamiltonian path and the
     spanning-paths number on all 1,253 atlas graphs and on 200 random graphs of 8 to 11 vertices.
+- **Faster still** (28 Oct 2026, 03:05 SGT). Exact branch-and-bound or enumeration searches replace the
+  subset searches:
+  - the induced path: a depth-first search over induced paths;
+  - the induced tree: ESU enumeration of connected sets, with non-trees cut;
+  - the induced forest: branch and bound with component tracking;
+  - b: branch and bound with two-sided components;
+  - 2-independence: branch and bound under the bound 2α;
+  - the Hamiltonian path: a depth-first search that cuts on connectivity and dead ends, with a cut-vertex test.
+  Each agrees with the subset search, or with the kernel's reference, on all atlas graphs and on 400 to 500
+  random graphs.
+  - **The cost of one statement on a random graph:** 2.7 ms at 16 vertices (was 22.5), 6.6 ms at 18 and 12 ms at
+    20. The search limit is raised to 18.
+  - **The kernel's reference:** it gains valid upper bounds from its own α, and Held–Karp for Hamiltonian paths
+    above 10 vertices, so it now double-checks all documented counterexamples up to 18 vertices, 194 included
+    (2.5 s).
 - **Still to build before PT-1 can be preregistered:**
   - the PT-1 study script: the inadequacy gate on A, parts 1–5, and family C.
 

@@ -546,7 +546,7 @@ def slack(cond, ctx):
 
 
 class Statement:
-    def __init__(self, text, max_n=16):
+    def __init__(self, text, max_n=18):
         self.text, self.tree, self.max_n = text, parse(text), max_n
         self._seen = {}
 

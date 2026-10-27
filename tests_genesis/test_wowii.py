@@ -358,7 +358,7 @@ class Reference(unittest.TestCase):
                 self.assertEqual(a, b, (k, G.edges))
         for k, (build, _) in W.COUNTEREXAMPLES.items():
             G = build()
-            if G.n <= 18 and k != 194:                 # 194's 18 vertices defeat the backtracking path search
+            if G.n <= 18:
                 a, b = W.evaluate_both(k, G.n, G.edges)
                 self.assertTrue(W.violated(a) and W.violated(b), k)
 
