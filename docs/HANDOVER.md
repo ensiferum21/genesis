@@ -241,10 +241,15 @@ needs people: a reviewer, a statistician, an independent custodian on its own ma
       algebra labelled as human, Genesis growing the language from its own engines through a language judge and
       a consolidator, generation after generation. Batches X1, X2, B20_R151, B20_R152; then B20_R141.
       Done: X1 (B20_R153, engineering: `mcx3-v1` and its pinned binary, every mcx2 program identical in it; the
-      Λ1 front end with named statements; the inventor's operators over Λ0 and Λ1). B20_R151 preregistered and
-      running alone on CPU 0 (it needs only X1; amended twice before any ceiling search, disclosed). Done: X2
-      (B20_R154, engineering: the workflow ladder, library learning, the language judge, the consolidator and the
-      generation pipeline, on a planted fixture). Next: B20_R151's result, then B20_R152.
+      Λ1 front end with named statements; the inventor's operators over Λ0 and Λ1). Done: X2 (B20_R154,
+      engineering: the workflow ladder, library learning, the language judge, the consolidator and the generation
+      pipeline, on a planted fixture).
+      - **B20_R151 is recorded** (28 Oct, 02:00 SGT; `docs/checkpoints/B20_R151_RECORD.md`): NOT_SHOWN, reading
+        NO_LANGUAGE_EFFECT. Λ1 did not express better engines than Λ0 on planar2000 at these budgets. As a secondary
+        finding, every searched engine beat REX on fresh graphs by 0.45–0.78%.
+      - **B20_R152 is running**, from 27 Oct 17:48 UTC (resume commands in `docs/OMEGA_FRONTIER.md` §12).
+      - **B20_R165** (preregistered, `ff6475b`) replicates the S5 finding on 48 fresh planar graphs after B20_R152.
+        Its record test draft is in `docs/handoff/RECORD_TEST_DRAFTS.md`.
   26c. **Daniel's directive of 27 Oct 2026, 19:55 is adopted**: `docs/OMEGA_FRONTIER.md`, written in detail for
       handoff at his request (20:01). Genesis works by divergence and convergence (imagine, mutate, recombine,
       branch out, extrapolate discovery curves, detect convergence, allocate), without handholding. The
