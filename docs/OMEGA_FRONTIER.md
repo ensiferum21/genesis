@@ -31,6 +31,17 @@ count · §11 prior art · §12 handoff state.
 
 Then (20:01 SGT): "Push the idea to the branch in detail pls so next agent can pick up". This file is that.
 
+Then (20:12 SGT), on the open items of §6: "Do them and continue". They are done (§6).
+
+Then (20:22 SGT), **the test that proves out the system**, adopted as §7b:
+
+> Remember that : Give Genesis an unfamiliar mathematical problem family where its existing representation is
+> inadequate. Without specifying the missing concept, require it to: 1. Discover a useful new representation.
+> 2. Establish a nontrivial mathematical consequence. 3. Extract the procedure that enabled the discovery. 4. Use
+> that procedure to discover something independently useful in another mathematical family. 5. Demonstrate that
+> the improved inventor outperforms its predecessor under matched total compute. This test to be done to prove out
+> system
+
 It does not replace the direction of 27 Oct, 14:33 (`docs/OMEGA_EXPRESSIVE_LANGUAGE.md`). B20_R151, B20_R152 and
 B20_R141 keep CPU 0 in the order set there. The Frontier is built on CPU 1 meanwhile, and its studies queue after
 them (§7, §12).
@@ -338,11 +349,19 @@ set, the quantum, k and the pause margin.
 **Base graphs:** P_k, C_k, K_k, S_k, K_{a,b}, the empty graph E_k.
 
 **Operations:** disjoint union, join, cartesian product, corona, attaching a pendant path at a vertex, subdivision,
-complement, line graph, adding or removing an edge, and **realisation of an equitable partition**.
-- That last operation takes cell sizes and a quotient matrix.
-- It joins cells by regular or semiregular bipartite graphs, and requires realisability in the sense of Damnjanović,
-  Ha and Stevanović 2026, Lemma 2.3.
-- That paper's counterexamples have 20 to 352 vertices and are built this way.
+complement, line graph, adding or removing an edge.
+
+**Not in Γ: equitable partitions, quotients, blow-ups or any symmetry operation** (changed at 20:30 SGT, for the
+proving test of §7b).
+- The 2026 counterexamples (20 to 352 vertices) are realisations of equitable partitions. The realisability
+  conditions are Damnjanović, Ha and Stevanović 2026, Lemma 2.3:
+  - b_ii ≤ n_i − 1, and b_ii or n_i is even;
+  - n_i·b_ij = n_j·b_ji, with b_ij ≤ n_j.
+- Putting that operation in Γ would hand Genesis the missing concept, which the proving test forbids.
+- It exists **only on the kernel side**, in two places:
+  - in `verify.py`'s tests, to rebuild published counterexamples;
+  - as the proving test's hidden reference.
+- Representation (5) of §5.4 is removed from Genesis's starting set for the same reason.
 
 **Who owns what.**
 - Γ's base operations are the builder's.
@@ -361,7 +380,8 @@ certificate that slack < 0.
 2. Prüfer codes (trees);
 3. bounded-degree graphs (Ghebleh's subquartic class);
 4. Γ programs;
-5. equitable-partition parameters (cell sizes and a quotient matrix).
+5. ~~equitable-partition parameters~~: removed from Genesis's starting set; kernel side only (§5.3, §7b). Any
+   representation of that kind must be invented by Genesis.
 
 **Methods** (all prior art; re-implemented LLM-free as pausable generators, the `autonomy/portfolio.py` harness
 interface):
@@ -436,93 +456,81 @@ the Laplacian spectral radius: Proofs and counterexamples":
 | Status | Bounds | Count | Source |
 |---|---|---|---|
 | Refuted, 2024 | 2, 3, 15, 17, 28, 29, 31, 32, 36, 41, 43, 49–55, 57–68 | 30 | Ghebleh, Al-Yakoob, Kanso, Stevanović, arXiv 2403.18429 (reinforcement learning at n ≈ 20; exhaustive search of subquartic graphs, n ≤ 14, mostly 12) |
-| Refuted | 45, 48 | 2 | Taieb et al. (Monte Carlo search), cited as [23] in arXiv 2606.14550. **The full reference is still to be found.** |
+| Refuted, 2025 | 45, 48 | 2 | Taieb, Roucairol, Cazenave, Harutyunyan, *LION 2025*, LNCS 15744 (2026) 52–63, doi 10.1007/978-3-032-09156-7_4 (Monte Carlo search; cited as [23] in arXiv 2606.14550). They report P₃ as a counterexample to 48, 57 and 61, and 14 vertices for 45 |
 | Refuted, 2026 | 11, 13, 18, 19, 20, 21, 22, 24, 30, 40, 47, 56 | 12 | arXiv 2606.14550. Equitable-partition constructions on 20 to 352 vertices: 19 and 20 on 20 vertices; 11 on 29; 22 on 30; 56 on 36; 13 on 46; 47 on 59; 18 on 158; 21 and 24 on 164; 30 on 253; 40 on 352 (not necessarily the smallest counterexamples) |
 | Proved, 2026 | 1, 4–10, 12, 14, 16, 23, 25–27, 33–35, 37–39, 42 | 22 | arXiv 2606.14550 (bound 23 is identical to bound 10) |
 | **Open** (June 2026) | **44, 46** | 2 | arXiv 2606.14550: "the only candidate bounds left open are Bounds 44 and 46" |
 
 The counts add to 68.
 
-**Formulas transcribed so far,** from arXiv 2606.14550 as read on 27 Oct 2026 through a page-to-text tool. Each must be
-checked against the PDF and a second source before it is sealed. d and m without subscripts are d_v and m_v.
+**Transcription: done on 27 Oct 2026, 20:40 SGT** (Daniel, 20:12: "Do them and continue").
+- Every formula, with its sources, tier, status and notes, is in `src/genesis/conjecture/sealed.py` (kernel side).
+- The semantic checks are in `evidence/bhs_transcription_f2/` (`scripts/f2_bhs_transcription.py`); tests are in
+  `tests_genesis/test_conjecture_domain.py`.
+- The 2006 text could not be reached: its DOI page is not on this session's allowlist, and the shell's egress
+  refuses arXiv and publishers. So the formulas come from five later sources, each read one bound at a time:
 
-| Bound | Type | f | Status |
-|---|---|---|---|
-| 1 | V | sqrt(4d³/m) | proved |
-| 4 | V | 2d²/m | proved |
-| 5 | V | d²/m + m | proved |
-| 6 | V | sqrt(m² + 3d²) | proved |
-| 7 | V | d²/m + d | proved |
-| 8 | V | sqrt(d(m + 3d)) | proved |
-| 9 | V | (m + 3d)/2 | proved |
-| 10 | V | sqrt(d(d + 3m)) | proved |
-| 11 | V | 2m³/d² | refuted 2026 |
-| 12 | V | sqrt(2m² + 2d²) | proved |
-| 13 | V | 2m⁴/d³ | refuted 2026 |
-| 14 | V | 2d³/m² | proved |
-| 16 | V | 2d⁴/m³ | proved |
-| 18 | V | sqrt(2m³/d + 2d²) | refuted 2026 |
-| 19 | V | (4d⁴ + 12d·m³)^(1/4) | refuted 2026 (the fourth-root form was inferred by the extraction; check) |
-| 20 | V | (1/2)·sqrt(7d² + 9m²) | refuted 2026 |
-| 21 | V | sqrt(d³/m + 3m²) | refuted 2026 |
-| 22 | V | (2d⁴ + 14d²m²)^(1/4) | refuted 2026 (fourth root inferred; check) |
-| 23 | V | sqrt(d² + 3dm) | proved (= 10) |
-| 24 | V | (6d⁴ + 10m⁴)^(1/4) | refuted 2026 (fourth root inferred; check) |
-| 25 | V | (3d⁴ + 13d²m²)^(1/4) | proved (fourth root inferred; check) |
-| 26 | V | (1/2)·sqrt(5d² + 11dm) | proved |
-| 27 | V | sqrt((3d² + 5dm)/2) | proved |
-| 30 | V | m³/d² + d²/m | refuted 2026 |
-| 33 | E | 2(d_i + d_j) − (m_i + m_j) | proved |
-| 34 | E | 2(d_i² + d_j²)/(d_i + d_j) | proved |
-| 35 | E | 2(d_i² + d_j²)/(m_i + m_j) | proved |
-| 37 | E | sqrt(2(d_i² + d_j²)) | proved |
-| 38 | E | 2 + sqrt(2(d_i − 1)² + 2(d_j − 1)²) | proved |
-| 39 | E | 2 + sqrt(2(d_i² + d_j²) − 4(m_i + m_j) + 4) | proved |
-| 40 | E | 2 + sqrt(2((m_i − 1)² + (m_j − 1)²) + (d_i² + d_j²) − (d_i·m_i + d_j·m_j)) | refuted 2026 |
-| 42 | E | sqrt(d_i² + d_j² + 2m_i·m_j) | proved |
-| **44** | E | **2 + sqrt(2((d_i − 1)² + (d_j − 1)² + m_i·m_j − d_i·d_j))** | **open** |
-| **46** | E | **2 + sqrt(2(d_i² + d_j²) − 16·d_i·d_j/(m_i + m_j) + 4)** | **open** |
-| 47 | E | (2(d_i² + d_j²) − (m_i − m_j)²)/(d_i + d_j) | refuted 2026 |
-| 56 | E | (d_i² + d_j²)(m_i + m_j)/(2d_i·d_j) | refuted 2026 |
+| Source | What | Coverage |
+|---|---|---|
+| S1 | Damnjanović, Ha, Stevanović, arXiv 2606.14550v1 (12 Jun 2026), Tables 1–2 | the 36 bounds open before it |
+| S2 | Taieb, Roucairol, Cazenave, Harutyunyan, "Automated Refutation with Monte Carlo Search of Graph Theory Conjectures on the Maximum Laplacian Eigenvalue", *LION 2025*, LNCS 15744 (Springer 2026) 52–63, doi 10.1007/978-3-032-09156-7_4, Appendix B of the authors' PDF | all 68 (the extraction flattens radicals) |
+| S3 | Ghebleh, Al-Yakoob, Kanso, Stevanović, arXiv 2403.18429v1, Appendix B (HTML and PDF) | OCR-damaged; some labels shifted by one (its "45" is bound 46's formula, its "39" bound 40's); used only where it matches under the same number, or as noted |
+| S4 | Bouffard, Breen, "Reinforcement learning for graph theory: Parallelizing Wagner's approach", arXiv 2509.01607v1 (LaTeX HTML) | 2, 3, 15, 28, 29, 31, 32, 36, 43, 49, 52–55, 57–60 |
+| S5 | `google-deepmind/formal-conjectures` issue #7282 (13 Oct 2026) | bound 44 |
 
-**Still to transcribe** (refuted before 2026; arXiv 2606.14550 does not restate them): 2, 3, 15, 17, 28, 29, 31, 32,
-36, 41, 43, 45, 48–55, 57–68.
-- Sources: the 2006 paper and the appendix of arXiv 2403.18429. The appendix's HTML text is OCR-damaged, so use the
-  PDF.
-- Ghebleh et al.'s legible ones, as extracted:
-  - 2: 2m_v²/d_v
-  - 31: 4m_v²/(m_v + d_v)
-  - 36: 2(m_i² + m_j²)/(d_i + d_j)
-  - 57: 2 + sqrt(2(m_i² + m_j²) − 8(d_i² + d_j²)/(m_i + m_j) + 4)
-  - 58: 2 + sqrt(2(m_i² + m_i·m_j + m_j²) − (d_i·m_i + d_j·m_j) − 4(d_i + d_j) + 4)
-  - 59: (2(m_i² + m_i·m_j + m_j²) − (d_i² + d_j²))/(m_i + m_j)
-  - 60: 2 + sqrt(2(m_i² + m_i·m_j + m_j²) − (d_i² + d_j²) − 4(d_i + d_j) + 4)
-  - 61: 2(m_i² + m_j²)/(2 + sqrt(2((d_i − 1)² + (d_j − 1)²)))
-  - 62: 2 + sqrt(m_i² + 4m_i·m_j + m_j² − 2d_i·d_j − 4(d_i + d_j) + 4)
-  - 63: d_i + d_j + m_i + m_j − 4d_i·d_j/(m_i + m_j)
-  - 65: (m_i + m_j)(d_i·m_i + d_j·m_j)/(2m_i·m_j)
-  - 66: (m_i² + 4m_i·m_j + m_j² − (d_i·m_i + d_j·m_j))/(d_i + d_j)
-  - 67: (m_i + m_j)(d_i·m_i + d_j·m_j)/(2d_i·d_j)
-  - 68: 2 + sqrt((m_i − m_j)² + 4d_i·d_j − 4(m_i + m_j) + 4)
-- Bound 64's two listings in that appendix disagree.
+**The tiers:**
 
-**Why two sources.** One discrepancy was found already: Ghebleh et al.'s extracted text gives bound 33 as
-(2(d_i + d_j) − (m_i + m_j))/(d_i + d_j). That is at most 2, so it cannot bound μ ≥ Δ + 1. The 2026 paper's
-2(d_i + d_j) − (m_i + m_j) is the plausible one.
+| Tier | Rule | Bounds |
+|---|---|---|
+| **A1** | Two or more sources give the identical formula | 51 bounds: all except those below |
+| **A2** | One source exact; a second compatible up to an extraction artefact (a missing parenthesis, a stray character, a flattened nested radical, an inferred root index); the semantic checks pass | 10, 13, 19, 22, 24, 25, 27, 32, 40, 52, 53 |
+| **B** | One source only. Descriptive use only | 45, 48 (S2's transcription is confirmed by its reported P3 counterexample), 50, 51 |
+| **X** | Sources disagree. Excluded until the 2006 text is read | 28 (S4: √(4m⁴/d² + 2dm); S2: √(2m⁴/d² + 2dm)); 41 (S2 and S3 differ in structure) |
 
-**The sealing rule.**
-- A bound enters the sealed set only when two sources agree on its formula, or when the 2006 PDF itself is read.
-- Excluded bounds are listed with the reason.
-- The proved bounds are the nulls: an exact certificate against one means a transcription or verifier error, and the
-  study is INVALID.
-- Add classical proved bounds as further nulls, each checked against its source when sealed:
-  - 2Δ;
-  - Anderson and Morley 1985, max over edges of d_i + d_j;
-  - Merris 1998, max over vertices of d_v + m_v;
-  - Li and Pan's bound, as stated in arXiv 2606.14550, Lemmas 2.6–2.9.
+**Notes on individual bounds:**
+- **Bounds 19, 22, 24 and 25:** both extractions infer the fourth root. A square root there would make the bound
+  quadratic in the degrees.
+- **Bound 27:** S2's reading, √(3d² + 5dm)/2, is below μ(C₄) = 4 at C₄, so it could not be a proved bound. S1's
+  reading, √((3d² + 5dm)/2), is kept.
 
-**Before saying anything about bounds 44 and 46,** search the literature after June 2026 (rule 6 of the plan's §2).
-They may have been settled since.
+**The semantic checks** (`evidence/bhs_transcription_f2/README.md`) cover every connected graph on 2 to 7 vertices,
+995 graphs, with each violation certified exactly:
+- No proved or open bound is violated, under either reading of undefined terms.
+- 48, 57 and 61 are refuted exactly by P₃, as Taieb et al. report.
+- Every formula equals 2r at d = m = r (μ of r-regular bipartite graphs), except 28's S4 reading.
+
+**The primary sealed set** is A1 and A2, minus the duplicate 23 and minus the proving test's family A
+(18, 21, 24, 30, 40): **56 bounds**, `sealed.sealed()`. Of those:
+- 21 are proved (the nulls);
+- 33 are refuted;
+- 2 are open (44 and 46).
+
+**Classical nulls** (S1's Lemmas 2.6–2.9, to add when F4 is preregistered):
+- μ ≤ 2Δ;
+- μ ≤ max over edges ij of (d_i + d_j) (Anderson and Morley 1985);
+- μ ≤ max over vertices of (d_v + m_v) (Merris 1998);
+- μ ≤ max over vertices of √(2d_v² + 2d_v·m_v) (Li and Pan 2001).
+
+S1's standing assumptions are simple graphs without isolated vertices. Disconnected graphs are allowed, because a
+component with the largest μ gives a connected counterexample. m_v is the average degree of v's neighbours.
+
+**The literature check for bounds 44 and 46 (27 Oct 2026).** Searches of arXiv, the web and GitHub for work after
+S1 (June 2026):
+- **Bound 44: still open as far as found.**
+  - `google-deepmind/formal-conjectures` issue #7282 (opened 13 Oct 2026, a "statement intake pending review";
+    linked PR #7396 open) states it as μ(G) ≤ 2 + √(2R(G)), with R(G) the maximum over edges of
+    (d_u − 1)² + (d_v − 1)² + m_u·m_v − d_u·d_v. That is identical to the sealed formula.
+  - The issue claims proofs of two restricted variants: graphs with signless spectral radius at most 11, by a
+    computer-assisted Collatz–Wielandt argument; and graphs with all degrees in {1, b}.
+  - The author reports that OpenAI Codex was used for proof reading and replay. None of this has been verified
+    here, and the issue reports no counterexample.
+- **Bound 46: nothing found after S1.** Still open as far as found.
+- **Related but different:** arXiv 2610.29048 proves other conjectures, Li, Wang and Guo's, on (signless)
+  Laplacian spectral radius.
+- **Also found:** `google-deepmind/formal-conjectures` formalises about 60 of Graffiti's conjectures in Lean
+  (`FormalConjectures/WrittenOnTheWallII/`, seen at commit `c0c5380`; not executed). It is a transfer-family
+  candidate with machine-checked statements (§7b).
+- Any certificate Genesis finds for 44 or 46 is checked against the literature again before anything is said.
 
 ## 7. Batches and acceptance tests
 
@@ -534,9 +542,70 @@ from a clean worktree, in slices, after the queue ahead of it.
 | **F1** | engineering (CPU 1) | `frontier/`: direction, curves, converge, allocate, engine, meta; the kernel-side planted world; NHP boundary and relabelling tests | On development planted worlds (disclosed): (a) 90% forecast coverage in [0.80, 0.97] per curve type on held-out curves; (b) the null world gives no discoveries; (c) a recombination vein is found in at least half of the worlds that have one; (d) a stopped run resumes to the identical result; (e) the boundary, relabelling and teaching-ban tests pass. Development numbers are reported but license nothing | 1–2 sessions |
 | **F2** | engineering (CPU 1) | `conjecture/`: graphs, invariants, Γ with equitable-partition realisation, attack representations and methods (NMCS, NRPA, GBFS, CEM, exhaustive), the exact verifier, the generator, the sealed set (§6, two-source rule) | The verifier accepts certificates for **published counterexamples rebuilt from their papers** (for example Wagner's 19-vertex graph against Aouchiche–Hansen, and one 2026 equitable-partition graph); it never certifies against the proved nulls on 10⁴ random and extremal graphs; mutated certificates are rejected; every method runs as a pausable harness | 2 sessions |
 | **F3 = B20_R156** | study (DEV, calibration) | The engine against uniform, successive halving, UCB1 and random, at matched compute, on sealed planted worlds from held-out families (including null worlds) | Primary: regret ratio at the full budget (the engine below halving and below uniform, one-sided Wilcoxon over worlds, Holm). Secondary: forecast coverage, false discoveries on null worlds (must be 0, else INVALID), recombination-vein rate, early versus late curve | under 1 h |
-| **F4 = B20_R157** | study (DEV) | The sealed Laplacian bounds. Each bound is posed by formula only; its status is sealed. Arms at matched CPU per bound: the Frontier (allocating over representations, methods and n), NRPA, GBFS, CEM and the uniform portfolio | Primary: the number of known-false bounds refuted by exact certificate within the budget, the Frontier against the best single baseline (paired by bound; exact sign test); time to refutation (a rank test with censoring). Validity: no certificate against a proved bound. **Bounds 44 and 46:** any certificate is a candidate new result, checked against the literature before anything is said | about 8–12 h (to set by a timing pilot) |
+| **F4 = B20_R157** | study (DEV) | The sealed Laplacian bounds: the 56 of `sealed.sealed()` (tiers A1 and A2; without the duplicate 23 and without the proving test's family A, 18, 21, 24, 30, 40). Each bound is posed by formula only, under an opaque id; its status is sealed. Arms at matched CPU per bound: the Frontier (allocating over representations, methods and n), NRPA, GBFS, CEM and the uniform portfolio | Primary: the number of known-false bounds refuted by exact certificate within the budget, the Frontier against the best single baseline (paired by bound; exact sign test); time to refutation (a rank test with censoring). Validity: no certificate against a proved bound. **Bounds 44 and 46:** any certificate is a candidate new result, checked against the literature before anything is said | about 8–12 h (to set by a timing pilot) |
 | **F5 = B20_R158** | study (DEV) | Open-ended generations: Genesis poses its own conjectures from its own data, attacks them, abstracts named constructions from converged counterexamples, and reuses them in the next generation | Measures: verified refutations per CPU hour by generation (Page's trend); rediscoveries labelled by the sealed database; surviving conjectures (candidates, never theorems); construction reuse and compounding. Controls at matched compute: no abstraction, no extrapolation (halving), and a fixed curriculum. NHP audits pass | about 10 h |
+| **PT-1 = B20_R159** | study (DEV) | **The proving test (§7b):** an unfamiliar family A with an inadequacy gate; a new representation, a nontrivial consequence, the extracted procedure, its independent use in family B, and the improved inventor against its predecessor at matched total compute on families C | PROVED_OUT only if all five parts pass; otherwise the parts that passed and the first failure | to set after F5 |
 | F6 (later) | engineering and study | The meta level (§4.8) on sealed meta-worlds; then the engine's other domains (the max-cut lines B1, the representation language, the causal scientist) as direction sources, so that Genesis allocates across domains too | as each is preregistered | — |
+
+## 7b. The proving test (Daniel, 27 Oct 2026, 20:22 SGT): the acceptance test of the whole system
+
+> Give Genesis an unfamiliar mathematical problem family where its existing representation is inadequate.
+> Without specifying the missing concept, require it to:
+> 1. Discover a useful new representation.
+> 2. Establish a nontrivial mathematical consequence.
+> 3. Extract the procedure that enabled the discovery.
+> 4. Use that procedure to discover something independently useful in another mathematical family.
+> 5. Demonstrate that the improved inventor outperforms its predecessor under matched total compute.
+>
+> This test to be done to prove out system
+
+Everything in F1–F5 is built toward this test, and it is reserved as **B20_R159 (PT-1)**. Nothing short of passing
+all five parts may be called "proving out the system". Each part is kept apart and scored separately. Its design,
+to be preregistered when F1–F5 have run:
+
+**The families (all sealed; chosen by the kernel, never shown before the test):**
+- **A, the unfamiliar family.** Its defining property is that the predecessor's representations are inadequate. That
+  is measured by an **inadequacy gate**, like the headroom gate:
+  - the predecessor inventor, at the full budget with its starting representations, certifies nothing in A;
+  - a known-good representation exists in the literature, so success is possible.
+  - The first candidate: the Laplacian bounds refuted in 2026 only by large equitable-partition constructions:
+    - 18 (158 vertices);
+    - 21 and 24 (164);
+    - 30 (253);
+    - 40 (352).
+  - They are held out of F4 and F5 for this purpose: F4's sealed set excludes them; see §12.
+- **B, the transfer family.** It has a different object or invariant, with exact statements and known statuses.
+  Candidates:
+  - **Graffiti's conjectures as formalised in Lean** in `google-deepmind/formal-conjectures`
+    (`FormalConjectures/WrittenOnTheWallII/`, about 60 files, seen 27 Oct 2026). Their statements are machine
+    checked, so there are no transcription errors.
+  - Adjacency-spectrum conjectures of AutoGraphiX.
+  - A non-graph family: 0/1 matrices, such as the Brualdi–Cao permanent question for 312-avoiding matrices that
+    Wagner 2021 answered.
+- **C, held-out families** for part 5.
+
+**"Without specifying the missing concept," made checkable:**
+- The research plane's starting representations and Γ contain no quotient, partition, blow-up, orbit or symmetry
+  operation (§5.3).
+- A **forbidden-concept audit** scans the research-plane sources used in the test and the manifest's contents. It
+  fails if the hidden reference's concept is named or encoded. The list of forbidden names is kernel side.
+- ARA may diagnose the class of a bottleneck, for example that expressiveness is the limit. Its stand-ins in the
+  test must be research-plane ones, never the kernel's hidden reference.
+
+**The five parts, scored separately:**
+
+| Part | Required | How it is checked |
+|---|---|---|
+| 1. A useful new representation | An encoding with an exact decoder to graphs, created by Genesis during the test (by abstraction over its own artifacts, the representation language of `representation/`, or the Frontier's operators) and absent from the starting set | **Useful:** an ablation inside the run at matched compute. With the representation, the attack reaches certificates in A that the starting representations do not |
+| 2. A nontrivial mathematical consequence | At least one exact refutation certificate for a bound in A that the predecessor could not refute. Stronger, and optional: a parametric infinite family with an exact symbolic certificate | `verify.py` (exact). Then a literature comparison: a rediscovered published counterexample counts for the test but is reported as a rediscovery |
+| 3. The procedure, extracted | The successful branch's lineage, compiled from the Frontier's event log into a **procedure research object**. It is a typed, executable program of research steps (for example: solve small instances exhaustively → cluster extremal artifacts → abstract their shared structure into a parameterised construction → search its parameters at large n), kept in the vault with its contract and provenance | It is extracted by code from the log, not written by the builder. It runs unchanged on a new family. A replay on A reproduces the discovery |
+| 4. Independent use in B | The procedure, run on B, yields an exact certificate (a refutation or a better construction) that the predecessor does not get there at matched compute | Exact verification in B. The procedure gets no B-specific changes. B is sealed until then |
+| 5. The improved inventor beats its predecessor | On fresh sealed tasks from C: the inventor with the extracted procedure in its method library against the predecessor (the same Frontier without it), at matched **total** compute. The improved arm is charged the full cost of discovering the procedure in A | Primary: certificates per task, a paired one-sided test over tasks, Holm across the test's claims. Validity: NHP audits, the forbidden-concept audit, no certificate against a proved null |
+
+**Verdicts.**
+- PROVED_OUT only if all five pass.
+- Otherwise the parts that passed are listed, for example `PARTS_1_2`, along with the first failure.
+- The test may fail, and that is a result. It is recorded like any other.
 
 ## 8. How it plugs into what exists
 
@@ -610,10 +679,15 @@ from a clean worktree, in slices, after the queue ahead of it.
   (`docs/OMEGA_OPERATIONS.md`).
 - Never edit `.py` files in a worktree a study runs from.
 
-**Open items the next agent must do first in F2:**
-- the full Taieb et al. reference;
-- the 32 untranscribed formulas, by the two-source rule;
-- a literature search for 44 and 46 after June 2026.
+**F2's first items are done** (27 Oct 2026, 20:40 SGT; §6):
+- the Taieb et al. reference;
+- all 68 formulas tiered (A1 51, A2 11, B 4, X 2);
+- the literature check for 44 and 46 (both still open as far as found; partial claims for 44 unverified).
+
+Built: `src/genesis/conjecture/` (`expr`, `graphs`; kernel side: `sealed`, `verify`) and its tests. Open in F2:
+- the remaining items of §5: invariants beyond the Laplacian; Γ; the attacks; the generator;
+- a Collatz–Wielandt upper certificate for the Wagner rebuild test;
+- reading the 2006 text for bounds 28 and 41, if Daniel can attach it (DOI 10.1016/j.laa.2005.10.017).
 
 **Rules that carry over.** Everything in `docs/HANDOVER.md` §3 and the plan's §2. The protected judge
 `autonomy/feedback.py` stays untouched (`2ff4a5ab…dd6`). It is all LLM-free. Push only to `continuation-b20-rx`.

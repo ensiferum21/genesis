@@ -255,6 +255,9 @@ needs people: a reviewer, a statistician, an independent custodian on its own ma
         2026).
       - The batches: F1 and F2 engineering on CPU 1 while the queue above runs; then B20_R156 (planted worlds),
         B20_R157 (the sealed bounds) and B20_R158 (open-ended generations).
+      - **The proving test** (Daniel, 20:22; §7b, B20_R159). It is the system's acceptance test, and nothing short of
+        passing all five parts is called proving out the system.
+      - F2 is started (§6 done: the sealed bounds tiered from five sources).
       - Its §12 holds the exact resume commands for the running studies. The draft record tests are in
         `docs/handoff/RECORD_TEST_DRAFTS.md`.
   27. after them: the Genesis Ω stages in `docs/GENESIS_OMEGA_PLAN.md` §5-§6 (Ω0 analysis of R127/R128; B20_R130

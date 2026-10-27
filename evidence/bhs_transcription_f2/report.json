@@ -1,0 +1,1983 @@
+{
+ "alarms_proved_or_open_violated": [],
+ "graphs": 995,
+ "lenient_reading_proved_or_open_violated": [],
+ "max_n": 7,
+ "not_tight_regular": [
+  28
+ ],
+ "refuted_with_small_counterexample": [
+  48,
+  57,
+  61
+ ],
+ "rows": {
+  "1": {
+   "exact_violations": 0,
+   "float_violations": 0,
+   "formula": "sqrt(((4*(d^3))/m))",
+   "graphs": 995,
+   "kind": "vertex",
+   "lenient_violations_where_undefined": 0,
+   "note": "S2 garbled",
+   "regular_ratio": [
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ],
+   "smallest_exact_counterexample": null,
+   "sources": [
+    "S1",
+    "S3"
+   ],
+   "status": "proved",
+   "text": "sqrt(4*d^3/m)",
+   "tier": "A1",
+   "tight_regular": true,
+   "undefined": 0
+  },
+  "2": {
+   "exact_violations": 0,
+   "float_violations": 0,
+   "formula": "((2*(m^2))/d)",
+   "graphs": 995,
+   "kind": "vertex",
+   "lenient_violations_where_undefined": 0,
+   "note": "",
+   "regular_ratio": [
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ],
+   "smallest_exact_counterexample": null,
+   "sources": [
+    "S2",
+    "S3",
+    "S4"
+   ],
+   "status": "refuted-2024",
+   "text": "2*m^2/d",
+   "tier": "A1",
+   "tight_regular": true,
+   "undefined": 0
+  },
+  "3": {
+   "exact_violations": 0,
+   "float_violations": 0,
+   "formula": "(((m^2)/d)+m)",
+   "graphs": 995,
+   "kind": "vertex",
+   "lenient_violations_where_undefined": 0,
+   "note": "",
+   "regular_ratio": [
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ],
+   "smallest_exact_counterexample": null,
+   "sources": [
+    "S2",
+    "S4"
+   ],
+   "status": "refuted-2024",
+   "text": "m^2/d + m",
+   "tier": "A1",
+   "tight_regular": true,
+   "undefined": 0
+  },
+  "4": {
+   "exact_violations": 0,
+   "float_violations": 0,
+   "formula": "((2*(d^2))/m)",
+   "graphs": 995,
+   "kind": "vertex",
+   "lenient_violations_where_undefined": 0,
+   "note": "",
+   "regular_ratio": [
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ],
+   "smallest_exact_counterexample": null,
+   "sources": [
+    "S1",
+    "S2"
+   ],
+   "status": "proved",
+   "text": "2*d^2/m",
+   "tier": "A1",
+   "tight_regular": true,
+   "undefined": 0
+  },
+  "5": {
+   "exact_violations": 0,
+   "float_violations": 0,
+   "formula": "(((d^2)/m)+m)",
+   "graphs": 995,
+   "kind": "vertex",
+   "lenient_violations_where_undefined": 0,
+   "note": "",
+   "regular_ratio": [
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ],
+   "smallest_exact_counterexample": null,
+   "sources": [
+    "S1",
+    "S2"
+   ],
+   "status": "proved",
+   "text": "d^2/m + m",
+   "tier": "A1",
+   "tight_regular": true,
+   "undefined": 0
+  },
+  "6": {
+   "exact_violations": 0,
+   "float_violations": 0,
+   "formula": "sqrt(((m^2)+(3*(d^2))))",
+   "graphs": 995,
+   "kind": "vertex",
+   "lenient_violations_where_undefined": 0,
+   "note": "",
+   "regular_ratio": [
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ],
+   "smallest_exact_counterexample": null,
+   "sources": [
+    "S1",
+    "S2"
+   ],
+   "status": "proved",
+   "text": "sqrt(m^2 + 3*d^2)",
+   "tier": "A1",
+   "tight_regular": true,
+   "undefined": 0
+  },
+  "7": {
+   "exact_violations": 0,
+   "float_violations": 0,
+   "formula": "(((d^2)/m)+d)",
+   "graphs": 995,
+   "kind": "vertex",
+   "lenient_violations_where_undefined": 0,
+   "note": "",
+   "regular_ratio": [
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ],
+   "smallest_exact_counterexample": null,
+   "sources": [
+    "S1",
+    "S2"
+   ],
+   "status": "proved",
+   "text": "d^2/m + d",
+   "tier": "A1",
+   "tight_regular": true,
+   "undefined": 0
+  },
+  "8": {
+   "exact_violations": 0,
+   "float_violations": 0,
+   "formula": "sqrt((d*(m+(3*d))))",
+   "graphs": 995,
+   "kind": "vertex",
+   "lenient_violations_where_undefined": 0,
+   "note": "",
+   "regular_ratio": [
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ],
+   "smallest_exact_counterexample": null,
+   "sources": [
+    "S1",
+    "S2"
+   ],
+   "status": "proved",
+   "text": "sqrt(d*(m + 3*d))",
+   "tier": "A1",
+   "tight_regular": true,
+   "undefined": 0
+  },
+  "9": {
+   "exact_violations": 0,
+   "float_violations": 0,
+   "formula": "((m+(3*d))/2)",
+   "graphs": 995,
+   "kind": "vertex",
+   "lenient_violations_where_undefined": 0,
+   "note": "",
+   "regular_ratio": [
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ],
+   "smallest_exact_counterexample": null,
+   "sources": [
+    "S1",
+    "S2"
+   ],
+   "status": "proved",
+   "text": "(m + 3*d)/2",
+   "tier": "A1",
+   "tight_regular": true,
+   "undefined": 0
+  },
+  "10": {
+   "exact_violations": 0,
+   "float_violations": 0,
+   "formula": "sqrt((d*(d+(3*m))))",
+   "graphs": 995,
+   "kind": "vertex",
+   "lenient_violations_where_undefined": 0,
+   "note": "S2 drops a closing parenthesis",
+   "regular_ratio": [
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ],
+   "smallest_exact_counterexample": null,
+   "sources": [
+    "S1",
+    "S2"
+   ],
+   "status": "proved",
+   "text": "sqrt(d*(d + 3*m))",
+   "tier": "A2",
+   "tight_regular": true,
+   "undefined": 0
+  },
+  "11": {
+   "exact_violations": 0,
+   "float_violations": 0,
+   "formula": "((2*(m^3))/(d^2))",
+   "graphs": 995,
+   "kind": "vertex",
+   "lenient_violations_where_undefined": 0,
+   "note": "",
+   "regular_ratio": [
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ],
+   "smallest_exact_counterexample": null,
+   "sources": [
+    "S1",
+    "S2"
+   ],
+   "status": "refuted-2026",
+   "text": "2*m^3/d^2",
+   "tier": "A1",
+   "tight_regular": true,
+   "undefined": 0
+  },
+  "12": {
+   "exact_violations": 0,
+   "float_violations": 0,
+   "formula": "sqrt(((2*(m^2))+(2*(d^2))))",
+   "graphs": 995,
+   "kind": "vertex",
+   "lenient_violations_where_undefined": 0,
+   "note": "",
+   "regular_ratio": [
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ],
+   "smallest_exact_counterexample": null,
+   "sources": [
+    "S1",
+    "S2"
+   ],
+   "status": "proved",
+   "text": "sqrt(2*m^2 + 2*d^2)",
+   "tier": "A1",
+   "tight_regular": true,
+   "undefined": 0
+  },
+  "13": {
+   "exact_violations": 0,
+   "float_violations": 0,
+   "formula": "((2*(m^4))/(d^3))",
+   "graphs": 995,
+   "kind": "vertex",
+   "lenient_violations_where_undefined": 0,
+   "note": "S2 has a stray character after d^3",
+   "regular_ratio": [
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ],
+   "smallest_exact_counterexample": null,
+   "sources": [
+    "S1",
+    "S2"
+   ],
+   "status": "refuted-2026",
+   "text": "2*m^4/d^3",
+   "tier": "A2",
+   "tight_regular": true,
+   "undefined": 0
+  },
+  "14": {
+   "exact_violations": 0,
+   "float_violations": 0,
+   "formula": "((2*(d^3))/(m^2))",
+   "graphs": 995,
+   "kind": "vertex",
+   "lenient_violations_where_undefined": 0,
+   "note": "",
+   "regular_ratio": [
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ],
+   "smallest_exact_counterexample": null,
+   "sources": [
+    "S1",
+    "S2"
+   ],
+   "status": "proved",
+   "text": "2*d^3/m^2",
+   "tier": "A1",
+   "tight_regular": true,
+   "undefined": 0
+  },
+  "15": {
+   "exact_violations": 0,
+   "float_violations": 0,
+   "formula": "sqrt(((4*(m^3))/d))",
+   "graphs": 995,
+   "kind": "vertex",
+   "lenient_violations_where_undefined": 0,
+   "note": "",
+   "regular_ratio": [
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ],
+   "smallest_exact_counterexample": null,
+   "sources": [
+    "S2",
+    "S4"
+   ],
+   "status": "refuted-2024",
+   "text": "sqrt(4*m^3/d)",
+   "tier": "A1",
+   "tight_regular": true,
+   "undefined": 0
+  },
+  "16": {
+   "exact_violations": 0,
+   "float_violations": 0,
+   "formula": "((2*(d^4))/(m^3))",
+   "graphs": 995,
+   "kind": "vertex",
+   "lenient_violations_where_undefined": 0,
+   "note": "",
+   "regular_ratio": [
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ],
+   "smallest_exact_counterexample": null,
+   "sources": [
+    "S1",
+    "S2"
+   ],
+   "status": "proved",
+   "text": "2*d^4/m^3",
+   "tier": "A1",
+   "tight_regular": true,
+   "undefined": 0
+  },
+  "17": {
+   "exact_violations": 0,
+   "float_violations": 0,
+   "formula": "root4(((5*(d^4))+(11*(m^4))))",
+   "graphs": 995,
+   "kind": "vertex",
+   "lenient_violations_where_undefined": 0,
+   "note": "",
+   "regular_ratio": [
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ],
+   "smallest_exact_counterexample": null,
+   "sources": [
+    "S2",
+    "S3"
+   ],
+   "status": "refuted-2024",
+   "text": "root4(5*d^4 + 11*m^4)",
+   "tier": "A1",
+   "tight_regular": true,
+   "undefined": 0
+  },
+  "18": {
+   "exact_violations": 0,
+   "float_violations": 0,
+   "formula": "sqrt((((2*(m^3))/d)+(2*(d^2))))",
+   "graphs": 995,
+   "kind": "vertex",
+   "lenient_violations_where_undefined": 0,
+   "note": "S2 leaves the radical extent open",
+   "regular_ratio": [
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ],
+   "smallest_exact_counterexample": null,
+   "sources": [
+    "S1",
+    "S3"
+   ],
+   "status": "refuted-2026",
+   "text": "sqrt(2*m^3/d + 2*d^2)",
+   "tier": "A1",
+   "tight_regular": true,
+   "undefined": 0
+  },
+  "19": {
+   "exact_violations": 0,
+   "float_violations": 0,
+   "formula": "root4(((4*(d^4))+((12*d)*(m^3))))",
+   "graphs": 995,
+   "kind": "vertex",
+   "lenient_violations_where_undefined": 0,
+   "note": "the root index is inferred in both extractions; a square root would make the bound quadratic in the degrees",
+   "regular_ratio": [
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ],
+   "smallest_exact_counterexample": null,
+   "sources": [
+    "S1",
+    "S2"
+   ],
+   "status": "refuted-2026",
+   "text": "root4(4*d^4 + 12*d*m^3)",
+   "tier": "A2",
+   "tight_regular": true,
+   "undefined": 0
+  },
+  "20": {
+   "exact_violations": 0,
+   "float_violations": 0,
+   "formula": "((1/2)*sqrt(((7*(d^2))+(9*(m^2)))))",
+   "graphs": 995,
+   "kind": "vertex",
+   "lenient_violations_where_undefined": 0,
+   "note": "",
+   "regular_ratio": [
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ],
+   "smallest_exact_counterexample": null,
+   "sources": [
+    "S1",
+    "S2"
+   ],
+   "status": "refuted-2026",
+   "text": "(1/2)*sqrt(7*d^2 + 9*m^2)",
+   "tier": "A1",
+   "tight_regular": true,
+   "undefined": 0
+  },
+  "21": {
+   "exact_violations": 0,
+   "float_violations": 0,
+   "formula": "sqrt((((d^3)/m)+(3*(m^2))))",
+   "graphs": 995,
+   "kind": "vertex",
+   "lenient_violations_where_undefined": 0,
+   "note": "",
+   "regular_ratio": [
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ],
+   "smallest_exact_counterexample": null,
+   "sources": [
+    "S1",
+    "S2"
+   ],
+   "status": "refuted-2026",
+   "text": "sqrt(d^3/m + 3*m^2)",
+   "tier": "A1",
+   "tight_regular": true,
+   "undefined": 0
+  },
+  "22": {
+   "exact_violations": 0,
+   "float_violations": 0,
+   "formula": "root4(((2*(d^4))+((14*(d^2))*(m^2))))",
+   "graphs": 995,
+   "kind": "vertex",
+   "lenient_violations_where_undefined": 0,
+   "note": "root index inferred in both extractions",
+   "regular_ratio": [
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ],
+   "smallest_exact_counterexample": null,
+   "sources": [
+    "S1",
+    "S2"
+   ],
+   "status": "refuted-2026",
+   "text": "root4(2*d^4 + 14*d^2*m^2)",
+   "tier": "A2",
+   "tight_regular": true,
+   "undefined": 0
+  },
+  "23": {
+   "exact_violations": 0,
+   "float_violations": 0,
+   "formula": "sqrt(((d^2)+((3*d)*m)))",
+   "graphs": 995,
+   "kind": "vertex",
+   "lenient_violations_where_undefined": 0,
+   "note": "identical to bound 10 (S1)",
+   "regular_ratio": [
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ],
+   "smallest_exact_counterexample": null,
+   "sources": [
+    "S1",
+    "S2"
+   ],
+   "status": "proved",
+   "text": "sqrt(d^2 + 3*d*m)",
+   "tier": "A1",
+   "tight_regular": true,
+   "undefined": 0
+  },
+  "24": {
+   "exact_violations": 0,
+   "float_violations": 0,
+   "formula": "root4(((6*(d^4))+(10*(m^4))))",
+   "graphs": 995,
+   "kind": "vertex",
+   "lenient_violations_where_undefined": 0,
+   "note": "root index inferred in both extractions",
+   "regular_ratio": [
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ],
+   "smallest_exact_counterexample": null,
+   "sources": [
+    "S1",
+    "S2"
+   ],
+   "status": "refuted-2026",
+   "text": "root4(6*d^4 + 10*m^4)",
+   "tier": "A2",
+   "tight_regular": true,
+   "undefined": 0
+  },
+  "25": {
+   "exact_violations": 0,
+   "float_violations": 0,
+   "formula": "root4(((3*(d^4))+((13*(d^2))*(m^2))))",
+   "graphs": 995,
+   "kind": "vertex",
+   "lenient_violations_where_undefined": 0,
+   "note": "root index inferred in both extractions",
+   "regular_ratio": [
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ],
+   "smallest_exact_counterexample": null,
+   "sources": [
+    "S1",
+    "S2"
+   ],
+   "status": "proved",
+   "text": "root4(3*d^4 + 13*d^2*m^2)",
+   "tier": "A2",
+   "tight_regular": true,
+   "undefined": 0
+  },
+  "26": {
+   "exact_violations": 0,
+   "float_violations": 0,
+   "formula": "((1/2)*sqrt(((5*(d^2))+((11*d)*m))))",
+   "graphs": 995,
+   "kind": "vertex",
+   "lenient_violations_where_undefined": 0,
+   "note": "",
+   "regular_ratio": [
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ],
+   "smallest_exact_counterexample": null,
+   "sources": [
+    "S1",
+    "S2"
+   ],
+   "status": "proved",
+   "text": "(1/2)*sqrt(5*d^2 + 11*d*m)",
+   "tier": "A1",
+   "tight_regular": true,
+   "undefined": 0
+  },
+  "27": {
+   "exact_violations": 0,
+   "float_violations": 0,
+   "formula": "sqrt((((3*(d^2))+((5*d)*m))/2))",
+   "graphs": 995,
+   "kind": "vertex",
+   "lenient_violations_where_undefined": 0,
+   "note": "S2 reads sqrt(3d^2 + 5dm)/2; that reading is below mu(C4) = 4 at C4 and could not be a proved bound",
+   "regular_ratio": [
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ],
+   "smallest_exact_counterexample": null,
+   "sources": [
+    "S1",
+    "S2"
+   ],
+   "status": "proved",
+   "text": "sqrt((3*d^2 + 5*d*m)/2)",
+   "tier": "A2",
+   "tight_regular": true,
+   "undefined": 0
+  },
+  "28": {
+   "exact_violations": 0,
+   "float_violations": 0,
+   "formula": "sqrt((((4*(m^4))/(d^2))+((2*d)*m)))",
+   "graphs": 995,
+   "kind": "vertex",
+   "lenient_violations_where_undefined": 0,
+   "note": "S2 reads sqrt(2*m^4/d^2 + 2*d*m): disagreement on a coefficient",
+   "regular_ratio": [
+    1.224744871392,
+    1.224744871392,
+    1.224744871392,
+    1.224744871392,
+    1.224744871392,
+    1.224744871392
+   ],
+   "smallest_exact_counterexample": null,
+   "sources": [
+    "S4"
+   ],
+   "status": "refuted-2024",
+   "text": "sqrt(4*m^4/d^2 + 2*d*m)",
+   "tier": "X",
+   "tight_regular": false,
+   "undefined": 0
+  },
+  "29": {
+   "exact_violations": 0,
+   "float_violations": 0,
+   "formula": "sqrt(((m^2)+((3*(m^3))/d)))",
+   "graphs": 995,
+   "kind": "vertex",
+   "lenient_violations_where_undefined": 0,
+   "note": "",
+   "regular_ratio": [
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ],
+   "smallest_exact_counterexample": null,
+   "sources": [
+    "S2",
+    "S4"
+   ],
+   "status": "refuted-2024",
+   "text": "sqrt(m^2 + 3*m^3/d)",
+   "tier": "A1",
+   "tight_regular": true,
+   "undefined": 0
+  },
+  "30": {
+   "exact_violations": 0,
+   "float_violations": 0,
+   "formula": "(((m^3)/(d^2))+((d^2)/m))",
+   "graphs": 995,
+   "kind": "vertex",
+   "lenient_violations_where_undefined": 0,
+   "note": "",
+   "regular_ratio": [
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ],
+   "smallest_exact_counterexample": null,
+   "sources": [
+    "S1",
+    "S2"
+   ],
+   "status": "refuted-2026",
+   "text": "m^3/d^2 + d^2/m",
+   "tier": "A1",
+   "tight_regular": true,
+   "undefined": 0
+  },
+  "31": {
+   "exact_violations": 0,
+   "float_violations": 0,
+   "formula": "((4*(m^2))/(m+d))",
+   "graphs": 995,
+   "kind": "vertex",
+   "lenient_violations_where_undefined": 0,
+   "note": "",
+   "regular_ratio": [
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ],
+   "smallest_exact_counterexample": null,
+   "sources": [
+    "S2",
+    "S3",
+    "S4"
+   ],
+   "status": "refuted-2024",
+   "text": "4*m^2/(m + d)",
+   "tier": "A1",
+   "tight_regular": true,
+   "undefined": 0
+  },
+  "32": {
+   "exact_violations": 0,
+   "float_violations": 0,
+   "formula": "(sqrt(((m^3)*(m+(3*d))))/d)",
+   "graphs": 995,
+   "kind": "vertex",
+   "lenient_violations_where_undefined": 0,
+   "note": "S2 flattens the radical (the /d may read inside it)",
+   "regular_ratio": [
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ],
+   "smallest_exact_counterexample": null,
+   "sources": [
+    "S4",
+    "S2"
+   ],
+   "status": "refuted-2024",
+   "text": "sqrt(m^3*(m + 3*d))/d",
+   "tier": "A2",
+   "tight_regular": true,
+   "undefined": 0
+  },
+  "33": {
+   "exact_violations": 0,
+   "float_violations": 0,
+   "formula": "((2*(di+dj))-(mi+mj))",
+   "graphs": 995,
+   "kind": "edge",
+   "lenient_violations_where_undefined": 0,
+   "note": "S3 garbled: divides by (di + dj), which is at most 2",
+   "regular_ratio": [
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ],
+   "smallest_exact_counterexample": null,
+   "sources": [
+    "S1",
+    "S2"
+   ],
+   "status": "proved",
+   "text": "2*(di + dj) - (mi + mj)",
+   "tier": "A1",
+   "tight_regular": true,
+   "undefined": 0
+  },
+  "34": {
+   "exact_violations": 0,
+   "float_violations": 0,
+   "formula": "((2*((di^2)+(dj^2)))/(di+dj))",
+   "graphs": 995,
+   "kind": "edge",
+   "lenient_violations_where_undefined": 0,
+   "note": "",
+   "regular_ratio": [
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ],
+   "smallest_exact_counterexample": null,
+   "sources": [
+    "S1",
+    "S2",
+    "S3"
+   ],
+   "status": "proved",
+   "text": "2*(di^2 + dj^2)/(di + dj)",
+   "tier": "A1",
+   "tight_regular": true,
+   "undefined": 0
+  },
+  "35": {
+   "exact_violations": 0,
+   "float_violations": 0,
+   "formula": "((2*((di^2)+(dj^2)))/(mi+mj))",
+   "graphs": 995,
+   "kind": "edge",
+   "lenient_violations_where_undefined": 0,
+   "note": "",
+   "regular_ratio": [
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ],
+   "smallest_exact_counterexample": null,
+   "sources": [
+    "S1",
+    "S2",
+    "S3"
+   ],
+   "status": "proved",
+   "text": "2*(di^2 + dj^2)/(mi + mj)",
+   "tier": "A1",
+   "tight_regular": true,
+   "undefined": 0
+  },
+  "36": {
+   "exact_violations": 0,
+   "float_violations": 0,
+   "formula": "((2*((mi^2)+(mj^2)))/(di+dj))",
+   "graphs": 995,
+   "kind": "edge",
+   "lenient_violations_where_undefined": 0,
+   "note": "",
+   "regular_ratio": [
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ],
+   "smallest_exact_counterexample": null,
+   "sources": [
+    "S2",
+    "S3",
+    "S4"
+   ],
+   "status": "refuted-2024",
+   "text": "2*(mi^2 + mj^2)/(di + dj)",
+   "tier": "A1",
+   "tight_regular": true,
+   "undefined": 0
+  },
+  "37": {
+   "exact_violations": 0,
+   "float_violations": 0,
+   "formula": "sqrt((2*((di^2)+(dj^2))))",
+   "graphs": 995,
+   "kind": "edge",
+   "lenient_violations_where_undefined": 0,
+   "note": "S2 flags the radical extent as uncertain",
+   "regular_ratio": [
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ],
+   "smallest_exact_counterexample": null,
+   "sources": [
+    "S1",
+    "S2"
+   ],
+   "status": "proved",
+   "text": "sqrt(2*(di^2 + dj^2))",
+   "tier": "A1",
+   "tight_regular": true,
+   "undefined": 0
+  },
+  "38": {
+   "exact_violations": 0,
+   "float_violations": 0,
+   "formula": "(2+sqrt(((2*((di-1)^2))+(2*((dj-1)^2)))))",
+   "graphs": 995,
+   "kind": "edge",
+   "lenient_violations_where_undefined": 0,
+   "note": "S2 flags the radical extent",
+   "regular_ratio": [
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ],
+   "smallest_exact_counterexample": null,
+   "sources": [
+    "S1",
+    "S2"
+   ],
+   "status": "proved",
+   "text": "2 + sqrt(2*(di - 1)^2 + 2*(dj - 1)^2)",
+   "tier": "A1",
+   "tight_regular": true,
+   "undefined": 0
+  },
+  "39": {
+   "exact_violations": 0,
+   "float_violations": 0,
+   "formula": "(2+sqrt((((2*((di^2)+(dj^2)))-(4*(mi+mj)))+4)))",
+   "graphs": 995,
+   "kind": "edge",
+   "lenient_violations_where_undefined": 0,
+   "note": "S2 flags the radical extent",
+   "regular_ratio": [
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ],
+   "smallest_exact_counterexample": null,
+   "sources": [
+    "S1",
+    "S2"
+   ],
+   "status": "proved",
+   "text": "2 + sqrt(2*(di^2 + dj^2) - 4*(mi + mj) + 4)",
+   "tier": "A1",
+   "tight_regular": true,
+   "undefined": 215
+  },
+  "40": {
+   "exact_violations": 0,
+   "float_violations": 0,
+   "formula": "(2+sqrt((((2*(((mi-1)^2)+((mj-1)^2)))+((di^2)+(dj^2)))-((di*mi)+(dj*mj)))))",
+   "graphs": 995,
+   "kind": "edge",
+   "lenient_violations_where_undefined": 0,
+   "note": "S2 flags the radical extent; S3 gives the same formula under label 39",
+   "regular_ratio": [
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ],
+   "smallest_exact_counterexample": null,
+   "sources": [
+    "S1",
+    "S2",
+    "S3"
+   ],
+   "status": "refuted-2026",
+   "text": "2 + sqrt(2*((mi - 1)^2 + (mj - 1)^2) + (di^2 + dj^2) - (di*mi + dj*mj))",
+   "tier": "A2",
+   "tight_regular": true,
+   "undefined": 0
+  },
+  "41": {
+   "exact_violations": 0,
+   "float_violations": 0,
+   "formula": "(((2+(mi+mj))-(di+dj))+sqrt((((2*((di^2)+(dj^2)))-(4*(mi+mj)))+4)))",
+   "graphs": 995,
+   "kind": "edge",
+   "lenient_violations_where_undefined": 0,
+   "note": "S3 reads 2 + sqrt(2((mi-1)^2 + (mj-1)^2) + (di^2 + dj^2) - 4(mi + mj) + 4): disagreement",
+   "regular_ratio": [
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ],
+   "smallest_exact_counterexample": null,
+   "sources": [
+    "S2"
+   ],
+   "status": "refuted-2024",
+   "text": "2 + (mi + mj) - (di + dj) + sqrt(2*(di^2 + dj^2) - 4*(mi + mj) + 4)",
+   "tier": "X",
+   "tight_regular": true,
+   "undefined": 215
+  },
+  "42": {
+   "exact_violations": 0,
+   "float_violations": 0,
+   "formula": "sqrt((((di^2)+(dj^2))+((2*mi)*mj)))",
+   "graphs": 995,
+   "kind": "edge",
+   "lenient_violations_where_undefined": 0,
+   "note": "",
+   "regular_ratio": [
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ],
+   "smallest_exact_counterexample": null,
+   "sources": [
+    "S1",
+    "S2"
+   ],
+   "status": "proved",
+   "text": "sqrt(di^2 + dj^2 + 2*mi*mj)",
+   "tier": "A1",
+   "tight_regular": true,
+   "undefined": 0
+  },
+  "43": {
+   "exact_violations": 0,
+   "float_violations": 0,
+   "formula": "(2+sqrt(((((3*((mi^2)+(mj^2)))-((2*mi)*mj))-(4*(di+dj)))+4)))",
+   "graphs": 995,
+   "kind": "edge",
+   "lenient_violations_where_undefined": 0,
+   "note": "",
+   "regular_ratio": [
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ],
+   "smallest_exact_counterexample": null,
+   "sources": [
+    "S2",
+    "S3",
+    "S4"
+   ],
+   "status": "refuted-2024",
+   "text": "2 + sqrt(3*(mi^2 + mj^2) - 2*mi*mj - 4*(di + dj) + 4)",
+   "tier": "A1",
+   "tight_regular": true,
+   "undefined": 104
+  },
+  "44": {
+   "exact_violations": 0,
+   "float_violations": 0,
+   "formula": "(2+sqrt((2*(((((di-1)^2)+((dj-1)^2))+(mi*mj))-(di*dj)))))",
+   "graphs": 995,
+   "kind": "edge",
+   "lenient_violations_where_undefined": 0,
+   "note": "",
+   "regular_ratio": [
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ],
+   "smallest_exact_counterexample": null,
+   "sources": [
+    "S1",
+    "S2",
+    "S3",
+    "S5"
+   ],
+   "status": "open",
+   "text": "2 + sqrt(2*((di - 1)^2 + (dj - 1)^2 + mi*mj - di*dj))",
+   "tier": "A1",
+   "tight_regular": true,
+   "undefined": 0
+  },
+  "45": {
+   "exact_violations": 0,
+   "float_violations": 0,
+   "formula": "(2+sqrt((((((di-dj)^2)+(2*((di*mi)+(dj*mj))))-(4*(mi+mj)))+4)))",
+   "graphs": 995,
+   "kind": "edge",
+   "lenient_violations_where_undefined": 0,
+   "note": "S3 gives bound 46's formula under label 45",
+   "regular_ratio": [
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ],
+   "smallest_exact_counterexample": null,
+   "sources": [
+    "S2"
+   ],
+   "status": "refuted-2025",
+   "text": "2 + sqrt((di - dj)^2 + 2*(di*mi + dj*mj) - 4*(mi + mj) + 4)",
+   "tier": "B",
+   "tight_regular": true,
+   "undefined": 0
+  },
+  "46": {
+   "exact_violations": 0,
+   "float_violations": 0,
+   "formula": "(2+sqrt((((2*((di^2)+(dj^2)))-(((16*di)*dj)/(mi+mj)))+4)))",
+   "graphs": 995,
+   "kind": "edge",
+   "lenient_violations_where_undefined": 0,
+   "note": "S3 labels it 45",
+   "regular_ratio": [
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ],
+   "smallest_exact_counterexample": null,
+   "sources": [
+    "S1",
+    "S2",
+    "S3"
+   ],
+   "status": "open",
+   "text": "2 + sqrt(2*(di^2 + dj^2) - 16*di*dj/(mi + mj) + 4)",
+   "tier": "A1",
+   "tight_regular": true,
+   "undefined": 3
+  },
+  "47": {
+   "exact_violations": 0,
+   "float_violations": 0,
+   "formula": "(((2*((di^2)+(dj^2)))-((mi-mj)^2))/(di+dj))",
+   "graphs": 995,
+   "kind": "edge",
+   "lenient_violations_where_undefined": 0,
+   "note": "",
+   "regular_ratio": [
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ],
+   "smallest_exact_counterexample": null,
+   "sources": [
+    "S1",
+    "S2",
+    "S3"
+   ],
+   "status": "refuted-2026",
+   "text": "(2*(di^2 + dj^2) - (mi - mj)^2)/(di + dj)",
+   "tier": "A1",
+   "tight_regular": true,
+   "undefined": 0
+  },
+  "48": {
+   "exact_violations": 1,
+   "float_violations": 1,
+   "formula": "((2*((di^2)+(dj^2)))/(2+sqrt((((2*((di^2)+(dj^2)))-(4*(mi+mj)))+4))))",
+   "graphs": 995,
+   "kind": "edge",
+   "lenient_violations_where_undefined": 0,
+   "note": "S3 illegible; S2 reports the path on 3 vertices as a counterexample",
+   "regular_ratio": [
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ],
+   "smallest_exact_counterexample": {
+    "bound": 2.928932188134525,
+    "certificate": {
+     "bits": 64,
+     "digest": "c00a96d48d1e0be36bc54fb60ce526f4c318e70a912450d87376e777e2ca2c85",
+     "hi": "23058430092136939520/7872640474760583457",
+     "q": "3",
+     "verdict": "REFUTED"
+    },
+    "graph6": "Bo",
+    "m": 2,
+    "mu": 3.0,
+    "n": 3
+   },
+   "sources": [
+    "S2"
+   ],
+   "status": "refuted-2025",
+   "text": "2*(di^2 + dj^2)/(2 + sqrt(2*(di^2 + dj^2) - 4*(mi + mj) + 4))",
+   "tier": "B",
+   "tight_regular": true,
+   "undefined": 215
+  },
+  "49": {
+   "exact_violations": 0,
+   "float_violations": 0,
+   "formula": "(2+sqrt(((((2*((mi^2)+(mj^2)))+((di-dj)^2))-(4*(di+dj)))+4)))",
+   "graphs": 995,
+   "kind": "edge",
+   "lenient_violations_where_undefined": 0,
+   "note": "",
+   "regular_ratio": [
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ],
+   "smallest_exact_counterexample": null,
+   "sources": [
+    "S2",
+    "S4"
+   ],
+   "status": "refuted-2024",
+   "text": "2 + sqrt(2*(mi^2 + mj^2) + (di - dj)^2 - 4*(di + dj) + 4)",
+   "tier": "A1",
+   "tight_regular": true,
+   "undefined": 88
+  },
+  "50": {
+   "exact_violations": 0,
+   "float_violations": 0,
+   "formula": "((2*((((di^2)+(dj^2))+(mi*mj))-(di*dj)))/(di+dj))",
+   "graphs": 995,
+   "kind": "edge",
+   "lenient_violations_where_undefined": 0,
+   "note": "S3 has no legible formula",
+   "regular_ratio": [
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ],
+   "smallest_exact_counterexample": null,
+   "sources": [
+    "S2"
+   ],
+   "status": "refuted-2024",
+   "text": "2*(di^2 + dj^2 + mi*mj - di*dj)/(di + dj)",
+   "tier": "B",
+   "tight_regular": true,
+   "undefined": 0
+  },
+  "51": {
+   "exact_violations": 0,
+   "float_violations": 0,
+   "formula": "((2*(mi+mj))-(((4*mi)*mj)/(di+dj)))",
+   "graphs": 995,
+   "kind": "edge",
+   "lenient_violations_where_undefined": 0,
+   "note": "S3 garbled",
+   "regular_ratio": [
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ],
+   "smallest_exact_counterexample": null,
+   "sources": [
+    "S2"
+   ],
+   "status": "refuted-2024",
+   "text": "2*(mi + mj) - 4*mi*mj/(di + dj)",
+   "tier": "B",
+   "tight_regular": true,
+   "undefined": 0
+  },
+  "52": {
+   "exact_violations": 0,
+   "float_violations": 0,
+   "formula": "(2+sqrt(((sqrt((((8*((mi^4)+(mj^4)))-(8*((di^2)+(dj^2))))+4))-(4*(di+dj)))+6)))",
+   "graphs": 995,
+   "kind": "edge",
+   "lenient_violations_where_undefined": 0,
+   "note": "S2 and S3 flatten the nested radical",
+   "regular_ratio": [
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ],
+   "smallest_exact_counterexample": null,
+   "sources": [
+    "S4",
+    "S2",
+    "S3"
+   ],
+   "status": "refuted-2024",
+   "text": "2 + sqrt(sqrt(8*(mi^4 + mj^4) - 8*(di^2 + dj^2) + 4) - 4*(di + dj) + 6)",
+   "tier": "A2",
+   "tight_regular": true,
+   "undefined": 161
+  },
+  "53": {
+   "exact_violations": 0,
+   "float_violations": 0,
+   "formula": "(2+sqrt(((sqrt((((8*((mi^4)+(mj^4)))-(8*((di*mi)+(dj*mj))))+4))-(4*(di+dj)))+6)))",
+   "graphs": 995,
+   "kind": "edge",
+   "lenient_violations_where_undefined": 0,
+   "note": "S2 and S3 flatten the nested radical",
+   "regular_ratio": [
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ],
+   "smallest_exact_counterexample": null,
+   "sources": [
+    "S4",
+    "S2",
+    "S3"
+   ],
+   "status": "refuted-2024",
+   "text": "2 + sqrt(sqrt(8*(mi^4 + mj^4) - 8*(di*mi + dj*mj) + 4) - 4*(di + dj) + 6)",
+   "tier": "A2",
+   "tight_regular": true,
+   "undefined": 126
+  },
+  "54": {
+   "exact_violations": 0,
+   "float_violations": 0,
+   "formula": "(2+sqrt((((((2*((mi^2)+(mj^2)))+((di*mi)+(dj*mj)))-((di^2)+(dj^2)))-(4*(di+dj)))+4)))",
+   "graphs": 995,
+   "kind": "edge",
+   "lenient_violations_where_undefined": 0,
+   "note": "S3 garbled",
+   "regular_ratio": [
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ],
+   "smallest_exact_counterexample": null,
+   "sources": [
+    "S2",
+    "S4"
+   ],
+   "status": "refuted-2024",
+   "text": "2 + sqrt(2*(mi^2 + mj^2) + (di*mi + dj*mj) - (di^2 + dj^2) - 4*(di + dj) + 4)",
+   "tier": "A1",
+   "tight_regular": true,
+   "undefined": 436
+  },
+  "55": {
+   "exact_violations": 0,
+   "float_violations": 0,
+   "formula": "(2+sqrt(((((3*((mi^2)+(mj^2)))-((di^2)+(dj^2)))-(4*(mi+mj)))+4)))",
+   "graphs": 995,
+   "kind": "edge",
+   "lenient_violations_where_undefined": 0,
+   "note": "",
+   "regular_ratio": [
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ],
+   "smallest_exact_counterexample": null,
+   "sources": [
+    "S2",
+    "S4"
+   ],
+   "status": "refuted-2024",
+   "text": "2 + sqrt(3*(mi^2 + mj^2) - (di^2 + dj^2) - 4*(mi + mj) + 4)",
+   "tier": "A1",
+   "tight_regular": true,
+   "undefined": 356
+  },
+  "56": {
+   "exact_violations": 0,
+   "float_violations": 0,
+   "formula": "((((di^2)+(dj^2))*(mi+mj))/((2*di)*dj))",
+   "graphs": 995,
+   "kind": "edge",
+   "lenient_violations_where_undefined": 0,
+   "note": "",
+   "regular_ratio": [
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ],
+   "smallest_exact_counterexample": null,
+   "sources": [
+    "S1",
+    "S2",
+    "S3"
+   ],
+   "status": "refuted-2026",
+   "text": "(di^2 + dj^2)*(mi + mj)/(2*di*dj)",
+   "tier": "A1",
+   "tight_regular": true,
+   "undefined": 0
+  },
+  "57": {
+   "exact_violations": 1,
+   "float_violations": 1,
+   "formula": "(2+sqrt((((2*((mi^2)+(mj^2)))-((8*((di^2)+(dj^2)))/(mi+mj)))+4)))",
+   "graphs": 995,
+   "kind": "edge",
+   "lenient_violations_where_undefined": 0,
+   "note": "",
+   "regular_ratio": [
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ],
+   "smallest_exact_counterexample": {
+    "bound": 2.816496580927726,
+    "certificate": {
+     "bits": 64,
+     "digest": "438be7e78832314e10ce41c9aeba661d656285222a14e9d7d2a2757b4d32ef79",
+     "hi": "51955191612851744737/18446744073709551616",
+     "q": "3",
+     "verdict": "REFUTED"
+    },
+    "graph6": "Bo",
+    "m": 2,
+    "mu": 3.0,
+    "n": 3
+   },
+   "sources": [
+    "S2",
+    "S3",
+    "S4"
+   ],
+   "status": "refuted-2024",
+   "text": "2 + sqrt(2*(mi^2 + mj^2) - 8*(di^2 + dj^2)/(mi + mj) + 4)",
+   "tier": "A1",
+   "tight_regular": true,
+   "undefined": 491
+  },
+  "58": {
+   "exact_violations": 0,
+   "float_violations": 0,
+   "formula": "(2+sqrt(((((2*(((mi^2)+(mi*mj))+(mj^2)))-((di*mi)+(dj*mj)))-(4*(di+dj)))+4)))",
+   "graphs": 995,
+   "kind": "edge",
+   "lenient_violations_where_undefined": 0,
+   "note": "",
+   "regular_ratio": [
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ],
+   "smallest_exact_counterexample": null,
+   "sources": [
+    "S2",
+    "S3",
+    "S4"
+   ],
+   "status": "refuted-2024",
+   "text": "2 + sqrt(2*(mi^2 + mi*mj + mj^2) - (di*mi + dj*mj) - 4*(di + dj) + 4)",
+   "tier": "A1",
+   "tight_regular": true,
+   "undefined": 352
+  },
+  "59": {
+   "exact_violations": 0,
+   "float_violations": 0,
+   "formula": "(((2*(((mi^2)+(mi*mj))+(mj^2)))-((di^2)+(dj^2)))/(mi+mj))",
+   "graphs": 995,
+   "kind": "edge",
+   "lenient_violations_where_undefined": 0,
+   "note": "",
+   "regular_ratio": [
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ],
+   "smallest_exact_counterexample": null,
+   "sources": [
+    "S2",
+    "S3",
+    "S4"
+   ],
+   "status": "refuted-2024",
+   "text": "(2*(mi^2 + mi*mj + mj^2) - (di^2 + dj^2))/(mi + mj)",
+   "tier": "A1",
+   "tight_regular": true,
+   "undefined": 0
+  },
+  "60": {
+   "exact_violations": 0,
+   "float_violations": 0,
+   "formula": "(2+sqrt(((((2*(((mi^2)+(mi*mj))+(mj^2)))-((di^2)+(dj^2)))-(4*(di+dj)))+4)))",
+   "graphs": 995,
+   "kind": "edge",
+   "lenient_violations_where_undefined": 0,
+   "note": "",
+   "regular_ratio": [
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ],
+   "smallest_exact_counterexample": null,
+   "sources": [
+    "S2",
+    "S3",
+    "S4"
+   ],
+   "status": "refuted-2024",
+   "text": "2 + sqrt(2*(mi^2 + mi*mj + mj^2) - (di^2 + dj^2) - 4*(di + dj) + 4)",
+   "tier": "A1",
+   "tight_regular": true,
+   "undefined": 623
+  },
+  "61": {
+   "exact_violations": 1,
+   "float_violations": 1,
+   "formula": "((2*((mi^2)+(mj^2)))/(2+sqrt((2*(((di-1)^2)+((dj-1)^2))))))",
+   "graphs": 995,
+   "kind": "edge",
+   "lenient_violations_where_undefined": 0,
+   "note": "S4 truncated, compatible",
+   "regular_ratio": [
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ],
+   "smallest_exact_counterexample": {
+    "bound": 2.928932188134525,
+    "certificate": {
+     "bits": 64,
+     "digest": "bb77162c5f3f8cc8038cba1adc7698b80b69bc77f47e080393150a07509d0025",
+     "hi": "23058430092136939520/7872640474760583457",
+     "q": "3",
+     "verdict": "REFUTED"
+    },
+    "graph6": "Bo",
+    "m": 2,
+    "mu": 3.0,
+    "n": 3
+   },
+   "sources": [
+    "S2",
+    "S3"
+   ],
+   "status": "refuted-2024",
+   "text": "2*(mi^2 + mj^2)/(2 + sqrt(2*((di - 1)^2 + (dj - 1)^2)))",
+   "tier": "A1",
+   "tight_regular": true,
+   "undefined": 0
+  },
+  "62": {
+   "exact_violations": 0,
+   "float_violations": 0,
+   "formula": "(2+sqrt(((((((mi^2)+((4*mi)*mj))+(mj^2))-((2*di)*dj))-(4*(di+dj)))+4)))",
+   "graphs": 995,
+   "kind": "edge",
+   "lenient_violations_where_undefined": 0,
+   "note": "S3 lists 62 twice; one copy matches",
+   "regular_ratio": [
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ],
+   "smallest_exact_counterexample": null,
+   "sources": [
+    "S2",
+    "S3"
+   ],
+   "status": "refuted-2024",
+   "text": "2 + sqrt(mi^2 + 4*mi*mj + mj^2 - 2*di*dj - 4*(di + dj) + 4)",
+   "tier": "A1",
+   "tight_regular": true,
+   "undefined": 588
+  },
+  "63": {
+   "exact_violations": 0,
+   "float_violations": 0,
+   "formula": "((((di+dj)+mi)+mj)-(((4*di)*dj)/(mi+mj)))",
+   "graphs": 995,
+   "kind": "edge",
+   "lenient_violations_where_undefined": 0,
+   "note": "",
+   "regular_ratio": [
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ],
+   "smallest_exact_counterexample": null,
+   "sources": [
+    "S2",
+    "S3"
+   ],
+   "status": "refuted-2024",
+   "text": "di + dj + mi + mj - 4*di*dj/(mi + mj)",
+   "tier": "A1",
+   "tight_regular": true,
+   "undefined": 0
+  },
+  "64": {
+   "exact_violations": 0,
+   "float_violations": 0,
+   "formula": "(((mi*mj)*(di+dj))/(di*dj))",
+   "graphs": 995,
+   "kind": "edge",
+   "lenient_violations_where_undefined": 0,
+   "note": "S3 also has a garbled duplicate",
+   "regular_ratio": [
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ],
+   "smallest_exact_counterexample": null,
+   "sources": [
+    "S2",
+    "S3"
+   ],
+   "status": "refuted-2024",
+   "text": "mi*mj*(di + dj)/(di*dj)",
+   "tier": "A1",
+   "tight_regular": true,
+   "undefined": 0
+  },
+  "65": {
+   "exact_violations": 0,
+   "float_violations": 0,
+   "formula": "(((mi+mj)*((di*mi)+(dj*mj)))/((2*mi)*mj))",
+   "graphs": 995,
+   "kind": "edge",
+   "lenient_violations_where_undefined": 0,
+   "note": "",
+   "regular_ratio": [
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ],
+   "smallest_exact_counterexample": null,
+   "sources": [
+    "S2",
+    "S3"
+   ],
+   "status": "refuted-2024",
+   "text": "(mi + mj)*(di*mi + dj*mj)/(2*mi*mj)",
+   "tier": "A1",
+   "tight_regular": true,
+   "undefined": 0
+  },
+  "66": {
+   "exact_violations": 0,
+   "float_violations": 0,
+   "formula": "(((((mi^2)+((4*mi)*mj))+(mj^2))-((di*mi)+(dj*mj)))/(di+dj))",
+   "graphs": 995,
+   "kind": "edge",
+   "lenient_violations_where_undefined": 0,
+   "note": "",
+   "regular_ratio": [
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ],
+   "smallest_exact_counterexample": null,
+   "sources": [
+    "S2",
+    "S3"
+   ],
+   "status": "refuted-2024",
+   "text": "(mi^2 + 4*mi*mj + mj^2 - (di*mi + dj*mj))/(di + dj)",
+   "tier": "A1",
+   "tight_regular": true,
+   "undefined": 0
+  },
+  "67": {
+   "exact_violations": 0,
+   "float_violations": 0,
+   "formula": "(((mi+mj)*((di*mi)+(dj*mj)))/((2*di)*dj))",
+   "graphs": 995,
+   "kind": "edge",
+   "lenient_violations_where_undefined": 0,
+   "note": "",
+   "regular_ratio": [
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ],
+   "smallest_exact_counterexample": null,
+   "sources": [
+    "S2",
+    "S3"
+   ],
+   "status": "refuted-2024",
+   "text": "(mi + mj)*(di*mi + dj*mj)/(2*di*dj)",
+   "tier": "A1",
+   "tight_regular": true,
+   "undefined": 0
+  },
+  "68": {
+   "exact_violations": 0,
+   "float_violations": 0,
+   "formula": "(2+sqrt((((((mi-mj)^2)+((4*di)*dj))-(4*(mi+mj)))+4)))",
+   "graphs": 995,
+   "kind": "edge",
+   "lenient_violations_where_undefined": 0,
+   "note": "",
+   "regular_ratio": [
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ],
+   "smallest_exact_counterexample": null,
+   "sources": [
+    "S2",
+    "S3"
+   ],
+   "status": "refuted-2024",
+   "text": "2 + sqrt((mi - mj)^2 + 4*di*dj - 4*(mi + mj) + 4)",
+   "tier": "A1",
+   "tight_regular": true,
+   "undefined": 482
+  }
+ },
+ "schema": "genesis-f2-bhs-transcription-v1",
+ "seconds": 4.8,
+ "tiers": {
+  "A1": [
+   1,
+   2,
+   3,
+   4,
+   5,
+   6,
+   7,
+   8,
+   9,
+   11,
+   12,
+   14,
+   15,
+   16,
+   17,
+   18,
+   20,
+   21,
+   23,
+   26,
+   29,
+   30,
+   31,
+   33,
+   34,
+   35,
+   36,
+   37,
+   38,
+   39,
+   42,
+   43,
+   44,
+   46,
+   47,
+   49,
+   54,
+   55,
+   56,
+   57,
+   58,
+   59,
+   60,
+   61,
+   62,
+   63,
+   64,
+   65,
+   66,
+   67,
+   68
+  ],
+  "A2": [
+   10,
+   13,
+   19,
+   22,
+   24,
+   25,
+   27,
+   32,
+   40,
+   52,
+   53
+  ],
+  "B": [
+   45,
+   48,
+   50,
+   51
+  ],
+  "X": [
+   28,
+   41
+  ]
+ }
+}

@@ -74,6 +74,17 @@ or teaching". In short:
   - a relabelling audit;
   - a teaching ban;
   - the builder's parts labelled.
+- **The proving test** (Daniel, 20:22; `docs/OMEGA_FRONTIER.md` §7b), reserved as B20_R159 (PT-1). Given an
+  unfamiliar mathematical family where Genesis's representation is inadequate, and without being told the missing
+  concept, Genesis must:
+  1. discover a useful new representation;
+  2. establish a nontrivial consequence;
+  3. extract the procedure that enabled it;
+  4. use that procedure for something independently useful in another family;
+  5. beat its predecessor at matched total compute.
+  The verdict is PROVED_OUT only if all five pass. For this reason the equitable-partition operation is kernel
+  side only.
+- **F2's sealed set is done** (20:40): all 68 bounds tiered from five sources, with semantic checks on 995 graphs.
 - **Batches:** F1, F2 (engineering on CPU 1); B20_R156 (F3, the planted-world calibration), B20_R157 (F4, the sealed
   bounds), B20_R158 (F5, open-ended generations). All of them queue after B20_R151, B20_R152 and B20_R141, whose order
   is unchanged.
@@ -626,3 +637,5 @@ problems no level has seen, and Genesis has not shown that yet.
   B20_R152 and B20_R141 preregistered.
 - 27 Oct 2026, 20:15: Daniel's directive of 19:55 adopted (§0f; `docs/OMEGA_FRONTIER.md`): the Frontier, designed
   in detail for handoff at his request of 20:01; F1 and F2 next on CPU 1; B20_R156–R158 reserved.
+- 27 Oct 2026, 20:40: the proving test adopted (§0f; B20_R159). F2 started: the sealed Laplacian set
+  transcribed and tiered, with exact certificates (`src/genesis/conjecture/`).

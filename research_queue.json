@@ -627,6 +627,29 @@
    "title": "F5: open-ended generations: Genesis poses its own conjectures from its own data, attacks them, abstracts named constructions from converged counterexamples and reuses them (trend, rediscoveries, survivors, compounding; controls without abstraction, without extrapolation, with a fixed curriculum)",
    "unlocks": []
   },
+  "B20_R159": {
+   "artifacts": [],
+   "committed": false,
+   "depends_on": [
+    "B20_R158"
+   ],
+   "failure": null,
+   "id": "B20_R159",
+   "kind": "study",
+   "line": "frontier",
+   "notes": "docs/OMEGA_FRONTIER.md section 7b; family A candidates: Laplacian bounds 18, 21, 24, 30, 40 (held out of F4 and F5); family B candidates: Graffiti conjectures formalised in google-deepmind/formal-conjectures; PROVED_OUT only if all five parts pass",
+   "outcome": null,
+   "output": "evidence/proving_test_b20r159",
+   "positive": null,
+   "preregistered": null,
+   "priority": 7,
+   "requires": [],
+   "resources": {},
+   "script": null,
+   "status": "queued",
+   "title": "PT-1, the proving test (Daniel, 27 Oct 2026, 20:22): an unfamiliar mathematical family where Genesis's representation is inadequate (inadequacy gate); without the missing concept given, (1) a useful new representation, (2) a nontrivial consequence, (3) the procedure extracted, (4) its independent use in another family, (5) the improved inventor beats its predecessor at matched total compute",
+   "unlocks": []
+  },
   "allocator-baselines": {
    "artifacts": [],
    "committed": false,
@@ -797,7 +820,7 @@
    "id": "frontier-f2-build",
    "kind": "build",
    "line": "frontier",
-   "notes": "Daniel's directive of 27 Oct 2026, 19:55 (docs/OMEGA_FRONTIER.md); engineering on CPU 1; sections 5-6; first: the Taieb et al. reference, the 32 untranscribed formulas, a literature search for bounds 44 and 46 after June 2026",
+   "notes": "Daniel's directive of 27 Oct 2026, 19:55 (docs/OMEGA_FRONTIER.md); engineering on CPU 1; sections 5-6; first: the Taieb et al. reference, the 32 untranscribed formulas, a literature search for bounds 44 and 46 after June 2026; 27 Oct 20:40: started: conjecture/expr, graphs, sealed (all 68 bounds tiered: A1 51, A2 11, B 4, X 2), verify (exact Rayleigh certificates); evidence/bhs_transcription_f2; the equitable-partition operation is kernel side only (the proving test forbids giving the concept)",
    "outcome": null,
    "output": null,
    "positive": null,
@@ -1446,6 +1469,11 @@
    "id": "B20_R158",
    "kind": "add",
    "time": "2026-10-27T12:08:37+00:00"
+  },
+  {
+   "id": "B20_R159",
+   "kind": "add",
+   "time": "2026-10-27T12:29:52+00:00"
   }
  ],
  "lines": {
@@ -1675,7 +1703,8 @@
   "frontier-f2-build",
   "B20_R156",
   "B20_R157",
-  "B20_R158"
+  "B20_R158",
+  "B20_R159"
  ],
  "reactivated": {},
  "schema": "genesis-research-queue-v1",
