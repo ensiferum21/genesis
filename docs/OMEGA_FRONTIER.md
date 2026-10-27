@@ -901,14 +901,13 @@ The study scripts check their module pins at run time. The design tests check th
 commit through `git show`.
 
 **CPU 0 (studies, in order):**
-1. **B20_R151 is running in slices.**
-   - From the clean worktree `/home/claude/r151c-wt` at `41cfcd8`.
-   - Resume after each exit 3 with: `/home/claude/run_slice.sh /home/claude/r151c-wt scripts/b20r151_expressiveness.py evidence/expressiveness_b20r151 /home/claude/logs/r151_slices.log`
-   - Check progress by `grep -c 'slice exit'` and the line count of `runs.jsonl` only.
-   - Expected end about 17:50 UTC.
-   - Then record it, with the draft record test in `docs/handoff/RECORD_TEST_DRAFTS.md`.
-2. **B20_R152.** Its clean worktree `/home/claude/r152-wt` at `3d88ad6` is ready (digests checked). Output:
-   `evidence/self_extension_b20r152`. Up to about 15 h in slices.
+1. **B20_R151 is RECORDED** (27 Oct, 17:47 UTC): NOT_SHOWN, reading NO_LANGUAGE_EFFECT
+   (`docs/checkpoints/B20_R151_RECORD.md`).
+2. **B20_R152 is running in slices** (from 27 Oct, 17:48 UTC).
+   - From the clean worktree `/home/claude/r152-wt` at `3d88ad6`.
+   - Resume after each exit 3 with: `/home/claude/run_slice.sh /home/claude/r152-wt scripts/b20r152_self_extension.py evidence/self_extension_b20r152 /home/claude/logs/r152_slices.log`
+   - Check progress by `grep -c 'slice exit'` only; never read the log's lines.
+   - Up to about 15 h. Then record it with the RecordB20R152 draft in `docs/handoff/RECORD_TEST_DRAFTS.md`.
 3. **B20_R141** from a worktree at `a3b3eda`, about 3 h.
 4. **B20_R156 (F3)** from a worktree at `4a7e193`, under 1 h.
 5. **B20_R157 (F4)** from a worktree at `bdf0c57`, about 2 h.

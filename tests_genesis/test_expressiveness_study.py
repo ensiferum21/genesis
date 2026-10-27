@@ -7,6 +7,7 @@ the full ceiling's own trajectory; the ablations; the gate, Holm, the labels and
 end to end with a stub engine, a planted expressiveness gain (a target, which Λ0 cannot write) is found EXPRESSIVE,
 and a null one is not."""
 import hashlib
+import json
 from pathlib import Path
 import random
 import re
@@ -194,6 +195,105 @@ class EndToEnd(unittest.TestCase):
             self.assertEqual(s['per_class'][c]['ablations'].get('C1_0|targets', -1) < 0, True)
         n = self.run_study(0.0)
         self.assertEqual(n['verdict'], 'NOT_SHOWN')
+
+
+R151 = ROOT / 'evidence' / 'expressiveness_b20r151'
+
+
+@unittest.skipUnless((R151 / 'summary.json').exists(), 'B20_R151 has not been recorded')
+class RecordB20R151(unittest.TestCase):
+    """The record of B20_R151 on its evidence: the amended script that ran its later slices; validity; the gate and the
+    truth tables from the saved runs; the analysis (every class's P1, S1-S5, labels, Holm and the verdict) recomputed
+    from the saved inputs; the graphs regenerate with the recorded identities."""
+
+    @classmethod
+    def setUpClass(cls):
+        cls.s = json.loads((R151 / 'summary.json').read_text())
+        cls.runs = {}
+        for line in (R151 / 'runs.jsonl').read_text().splitlines():
+            if line.strip():
+                r = json.loads(line)
+                cls.runs[r['key']] = r
+        cls.rex = S.Lab.ekey(dict(K3.DEFAULT))
+
+    def run_value(self, ek, task, occ, budget='1'):
+        return self.runs[f'{ek}|{task}|{occ}|{budget}']['value']
+
+    def test_the_script(self):
+        self.assertEqual(hashlib.sha256((ROOT / 'scripts' / 'b20r151_expressiveness.py').read_bytes()).hexdigest(),
+                         '8742dd8de359f6596367bdde49d73bfaa8a8f4d602a48dd4a7d9e735d998035c')
+
+    def test_validity(self):
+        import statistics
+        s = self.s
+        self.assertTrue(s['valid'] and s['spent'] and s['disjoint'] and all(s['pins'].values()))
+        cpus = {}
+        for r in self.runs.values():
+            b = r['key'].rsplit('|', 1)[1]
+            cpus.setdefault(b, []).append(r['cpu'] / float(b))
+        self.assertTrue(all(statistics.median(v) >= 0.9 for v in cpus.values()))
+        self.assertEqual({b: statistics.median(v) for b, v in cpus.items()}, s['cpu_median'])
+
+    def test_the_gate_from_the_runs(self):
+        for c, ids in self.s['graphs'].items():
+            base = {t: (self.run_value(self.rex, t, 0) + self.run_value(self.rex, t, 1)) / 2 for t in ids['H']}
+            long = {t: self.run_value(self.rex, t, 0, '10') for t in ids['H']}
+            g = S.gate(base, long)
+            self.assertAlmostEqual(g['mean'], self.s['gates'][c]['mean'])
+            self.assertAlmostEqual(g['p'], self.s['gates'][c]['p'])
+            self.assertEqual(g['pass'], self.s['gates'][c]['pass'])
+        self.assertEqual(S.select(self.s['gates']), self.s['studied'])
+
+    def test_the_truth_tables_from_the_runs(self):
+        import statistics
+        for c in self.s['studied']:
+            f = self.s['finals'][c]
+            for t, b in f['base'].items():
+                self.assertAlmostEqual(b, statistics.mean(self.run_value(self.rex, t, o) for o in range(S.T_RUNS)))
+            for ek, vals in f['values'].items():
+                for t, v in vals.items():
+                    self.assertAlmostEqual(v, statistics.mean(self.run_value(ek, t, o) for o in range(S.T_RUNS)))
+
+    def test_the_analysis_recomputes(self):
+        import statistics
+        per = {}
+        for c in self.s['studied']:
+            f = self.s['finals'][c]
+            g = S.gains(f['values'], f['base'])
+            per[c] = S.analyse_class(self.s['arms'][c], g)
+        v, ph = S.verdict(self.s['studied'], per, self.s['valid'])
+        self.assertEqual(v, self.s['verdict'])
+        for c in self.s['studied']:
+            got, rec = per[c], self.s['per_class'][c]
+            for k in ('P1', 'S1'):
+                self.assertEqual(got[k]['label'], rec[k]['label'])
+                self.assertAlmostEqual(got[k]['p'], rec[k]['p'])
+                self.assertAlmostEqual(got[k]['mean'], rec[k]['mean'])
+                self.assertAlmostEqual(got[k]['replicates']['p'], rec[k]['replicates']['p'])
+            self.assertAlmostEqual(got['P1']['replicates']['margin'], rec['P1']['replicates']['margin'])
+            self.assertEqual(got['reading'], rec['reading'])
+            for lang in ('L0', 'L1'):
+                self.assertEqual(got['S4'][lang]['label'], rec['S4'][lang]['label'])
+            for k, x in got['lanes'].items():
+                self.assertAlmostEqual(x, rec['lanes'][k])
+
+    def test_the_lambda0_arms_wrote_lambda0_only(self):
+        calls = json.loads((R151 / 'calls.json').read_text())
+        progs = json.loads((R151 / 'programs.json').read_text())
+        for key, cs in calls.items():
+            if key.split('|')[1][1] == '0':
+                for c in cs:
+                    self.assertTrue(K3.is_lambda0(K3.parse(progs[c['engine']]['prog'])), key)
+
+    def test_the_graphs_regenerate(self):
+        from genesis import gset as GS
+        from genesis.domains import adapter
+        A = adapter('maxcut_v1')
+        G = S.graphs({A.exposure_identity(t)['canonical'] for t in GS.tasks()})
+        for c, ids in self.s['graphs'].items():
+            self.assertEqual([t.task_id for t in G[c]['H']], ids['H'])
+            self.assertEqual([t.task_id for t in G[c]['T']], ids['T'])
+            self.assertEqual([[t.task_id for t in a] for a in G[c]['A']], ids['A'])
 
 
 if __name__ == '__main__':

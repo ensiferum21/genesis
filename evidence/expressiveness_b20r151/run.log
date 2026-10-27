@@ -1,0 +1,98 @@
+[    0.0s] b20r151; pinned to CPU 0
+[  185.0s] gate planar2000: headroom 0.572% p 0.000244 PASS
+[  331.2s] gate toroidal2000: headroom 0.145% p 0.000488 fail
+[  478.1s] gate random2000: headroom 0.058% p 0.0261 fail
+[  478.1s] studied classes: ['planar2000']
+[amendment] the slice above ran the preregistered 52e1d92 and was stopped at 08:06 UTC (SIGTERM); the study resumes at 85fda78 (amended), its 231 runs reused
+[    0.0s] b20r151; pinned to CPU 0
+[   41.6s] gate planar2000: headroom 0.572% p 0.000244 PASS
+[   41.6s] gate toroidal2000: headroom 0.145% p 0.000488 fail
+[   41.6s] gate random2000: headroom 0.058% p 0.0261 fail
+[   41.6s] studied classes: ['planar2000']
+[  973.5s] planar2000 I0_0: 256 evaluations, 196 programs; winner 'L D D H B286 L D D D R H B931' (reported 1.00591)
+[ 2025.1s] planar2000 I1_0: 256 evaluations, 196 programs; winner 'P13 B52 *4 L *4 L S1 C' (reported 1.00497)
+[ 3086.4s] planar2000 I0_1: 256 evaluations, 196 programs; winner 'S1 P5 S1 P5 C B4 b236 C B4 B4 I B20' (reported 1.00516)
+[ 4137.9s] planar2000 I1_1: 256 evaluations, 196 programs; winner 'D@c B3 X@34 S649 [ X L@a ] B2 B16 M' (reported 1.00648)
+[ 5199.9s] planar2000 I0_2: 256 evaluations, 196 programs; winner 'M L B37 X S4542 S4542 P5 S5506' (reported 1.00220)
+[ 6252.5s] planar2000 I1_2: 256 evaluations, 196 programs; winner 'M B14 B14 M H M' (reported 1.00178)
+[ 6600.9s] time slice used (6600 s): paused with 6588 runs
+[second amendment] later slices run 41cfcd8 (analysis-only amendment); runs reused
+[    0.0s] b20r151; pinned to CPU 0
+[   42.1s] gate planar2000: headroom 0.572% p 0.000244 PASS
+[   42.1s] gate toroidal2000: headroom 0.145% p 0.000488 fail
+[   42.1s] gate random2000: headroom 0.058% p 0.0261 fail
+[   42.1s] studied classes: ['planar2000']
+[   42.2s] planar2000 I0_0: 256 evaluations, 196 programs; winner 'L D D H B286 L D D D R H B931' (reported 1.00591)
+[   42.4s] planar2000 I1_0: 256 evaluations, 196 programs; winner 'P13 B52 *4 L *4 L S1 C' (reported 1.00497)
+[   42.5s] planar2000 I0_1: 256 evaluations, 196 programs; winner 'S1 P5 S1 P5 C B4 b236 C B4 B4 I B20' (reported 1.00516)
+[   42.7s] planar2000 I1_1: 256 evaluations, 196 programs; winner 'D@c B3 X@34 S649 [ X L@a ] B2 B16 M' (reported 1.00648)
+[   42.8s] planar2000 I0_2: 256 evaluations, 196 programs; winner 'M L B37 X S4542 S4542 P5 S5506' (reported 1.00220)
+[   42.9s] planar2000 I1_2: 256 evaluations, 196 programs; winner 'M B14 B14 M H M' (reported 1.00178)
+[ 1805.4s] planar2000 C0h_0: 256 evaluations, 200 programs; winner 'M M R P6 R C X B201 R' (reported 1.00548)
+[ 3838.0s] planar2000 C0_0: 496 evaluations, 392 programs; winner 'C b66 X' (reported 1.00673)
+[ 5932.2s] planar2000 C1h_0: 256 evaluations, 200 programs; winner 'C@01 [ L S3378 ] B523@07 [ P3 L R S3378 ] C@01 B523' (reported 1.00340)
+[ 6600.7s] time slice used (6600 s): paused with 12967 runs
+[    0.0s] b20r151; pinned to CPU 0
+[   39.0s] gate planar2000: headroom 0.572% p 0.000244 PASS
+[   39.0s] gate toroidal2000: headroom 0.145% p 0.000488 fail
+[   39.0s] gate random2000: headroom 0.058% p 0.0261 fail
+[   39.0s] studied classes: ['planar2000']
+[   39.2s] planar2000 I0_0: 256 evaluations, 196 programs; winner 'L D D H B286 L D D D R H B931' (reported 1.00591)
+[   39.3s] planar2000 I1_0: 256 evaluations, 196 programs; winner 'P13 B52 *4 L *4 L S1 C' (reported 1.00497)
+[   39.4s] planar2000 I0_1: 256 evaluations, 196 programs; winner 'S1 P5 S1 P5 C B4 b236 C B4 B4 I B20' (reported 1.00516)
+[   39.6s] planar2000 I1_1: 256 evaluations, 196 programs; winner 'D@c B3 X@34 S649 [ X L@a ] B2 B16 M' (reported 1.00648)
+[   39.8s] planar2000 I0_2: 256 evaluations, 196 programs; winner 'M L B37 X S4542 S4542 P5 S5506' (reported 1.00220)
+[   40.0s] planar2000 I1_2: 256 evaluations, 196 programs; winner 'M B14 B14 M H M' (reported 1.00178)
+[   40.2s] planar2000 C0h_0: 256 evaluations, 200 programs; winner 'M M R P6 R C X B201 R' (reported 1.00548)
+[   40.6s] planar2000 C0_0: 496 evaluations, 392 programs; winner 'C b66 X' (reported 1.00673)
+[   40.8s] planar2000 C1h_0: 256 evaluations, 200 programs; winner 'C@01 [ L S3378 ] B523@07 [ P3 L R S3378 ] C@01 B523' (reported 1.00340)
+[ 1401.3s] planar2000 C1_0: 496 evaluations, 392 programs; winner '[ S6615 P2 ] B523 C' (reported 1.00375)
+[ 3509.8s] planar2000 C0h_1: 256 evaluations, 200 programs; winner 'R B703 B703 C C' (reported 1.00708)
+[ 5575.6s] planar2000 C0_1: 496 evaluations, 392 programs; winner 'R B1296 B703 C b1 R B703 B703 C C' (reported 1.00841)
+[ 6600.6s] time slice used (6600 s): paused with 19336 runs
+[    0.0s] b20r151; pinned to CPU 0
+[   39.7s] gate planar2000: headroom 0.572% p 0.000244 PASS
+[   39.7s] gate toroidal2000: headroom 0.145% p 0.000488 fail
+[   39.7s] gate random2000: headroom 0.058% p 0.0261 fail
+[   39.7s] studied classes: ['planar2000']
+[   39.9s] planar2000 I0_0: 256 evaluations, 196 programs; winner 'L D D H B286 L D D D R H B931' (reported 1.00591)
+[   40.1s] planar2000 I1_0: 256 evaluations, 196 programs; winner 'P13 B52 *4 L *4 L S1 C' (reported 1.00497)
+[   40.2s] planar2000 I0_1: 256 evaluations, 196 programs; winner 'S1 P5 S1 P5 C B4 b236 C B4 B4 I B20' (reported 1.00516)
+[   40.3s] planar2000 I1_1: 256 evaluations, 196 programs; winner 'D@c B3 X@34 S649 [ X L@a ] B2 B16 M' (reported 1.00648)
+[   40.4s] planar2000 I0_2: 256 evaluations, 196 programs; winner 'M L B37 X S4542 S4542 P5 S5506' (reported 1.00220)
+[   40.5s] planar2000 I1_2: 256 evaluations, 196 programs; winner 'M B14 B14 M H M' (reported 1.00178)
+[   40.7s] planar2000 C0h_0: 256 evaluations, 200 programs; winner 'M M R P6 R C X B201 R' (reported 1.00548)
+[   40.9s] planar2000 C0_0: 496 evaluations, 392 programs; winner 'C b66 X' (reported 1.00673)
+[   41.1s] planar2000 C1h_0: 256 evaluations, 200 programs; winner 'C@01 [ L S3378 ] B523@07 [ P3 L R S3378 ] C@01 B523' (reported 1.00340)
+[   41.4s] planar2000 C1_0: 496 evaluations, 392 programs; winner '[ S6615 P2 ] B523 C' (reported 1.00375)
+[   41.6s] planar2000 C0h_1: 256 evaluations, 200 programs; winner 'R B703 B703 C C' (reported 1.00708)
+[   41.9s] planar2000 C0_1: 496 evaluations, 392 programs; winner 'R B1296 B703 C b1 R B703 B703 C C' (reported 1.00841)
+[ 1115.8s] planar2000 C1h_1: 256 evaluations, 200 programs; winner '?f<850 H [ B38 P13 ?d>8 ] H@a *6 b1558 C C' (reported 1.00782)
+[ 3183.1s] planar2000 C1_1: 496 evaluations, 392 programs; winner '?f<850 H [ B38 B38 ?d<8 P13 ] H C *6 b1558 C' (reported 1.00825)
+[ 5291.1s] planar2000 C0h_2: 256 evaluations, 200 programs; winner 'L X C b5 B247 b6' (reported 1.00314)
+[ 6600.5s] time slice used (6600 s): paused with 25717 runs
+[    0.0s] b20r151; pinned to CPU 0
+[   40.3s] gate planar2000: headroom 0.572% p 0.000244 PASS
+[   40.3s] gate toroidal2000: headroom 0.145% p 0.000488 fail
+[   40.3s] gate random2000: headroom 0.058% p 0.0261 fail
+[   40.3s] studied classes: ['planar2000']
+[   40.4s] planar2000 I0_0: 256 evaluations, 196 programs; winner 'L D D H B286 L D D D R H B931' (reported 1.00591)
+[   40.6s] planar2000 I1_0: 256 evaluations, 196 programs; winner 'P13 B52 *4 L *4 L S1 C' (reported 1.00497)
+[   40.8s] planar2000 I0_1: 256 evaluations, 196 programs; winner 'S1 P5 S1 P5 C B4 b236 C B4 B4 I B20' (reported 1.00516)
+[   41.0s] planar2000 I1_1: 256 evaluations, 196 programs; winner 'D@c B3 X@34 S649 [ X L@a ] B2 B16 M' (reported 1.00648)
+[   41.2s] planar2000 I0_2: 256 evaluations, 196 programs; winner 'M L B37 X S4542 S4542 P5 S5506' (reported 1.00220)
+[   41.4s] planar2000 I1_2: 256 evaluations, 196 programs; winner 'M B14 B14 M H M' (reported 1.00178)
+[   41.6s] planar2000 C0h_0: 256 evaluations, 200 programs; winner 'M M R P6 R C X B201 R' (reported 1.00548)
+[   41.9s] planar2000 C0_0: 496 evaluations, 392 programs; winner 'C b66 X' (reported 1.00673)
+[   42.1s] planar2000 C1h_0: 256 evaluations, 200 programs; winner 'C@01 [ L S3378 ] B523@07 [ P3 L R S3378 ] C@01 B523' (reported 1.00340)
+[   42.4s] planar2000 C1_0: 496 evaluations, 392 programs; winner '[ S6615 P2 ] B523 C' (reported 1.00375)
+[   42.5s] planar2000 C0h_1: 256 evaluations, 200 programs; winner 'R B703 B703 C C' (reported 1.00708)
+[   42.8s] planar2000 C0_1: 496 evaluations, 392 programs; winner 'R B1296 B703 C b1 R B703 B703 C C' (reported 1.00841)
+[   42.9s] planar2000 C1h_1: 256 evaluations, 200 programs; winner '?f<850 H [ B38 P13 ?d>8 ] H@a *6 b1558 C C' (reported 1.00782)
+[   43.3s] planar2000 C1_1: 496 evaluations, 392 programs; winner '?f<850 H [ B38 B38 ?d<8 P13 ] H C *6 b1558 C' (reported 1.00825)
+[   43.5s] planar2000 C0h_2: 256 evaluations, 200 programs; winner 'L X C b5 B247 b6' (reported 1.00314)
+[  800.9s] planar2000 C0_2: 496 evaluations, 392 programs; winner 'X L C B206 B247 b332 b332 b6' (reported 1.00395)
+[ 2900.1s] planar2000 C1h_2: 256 evaluations, 200 programs; winner 'B3 M S86004 I P11 b98' (reported 1.00242)
+[ 4935.7s] planar2000 C1_2: 496 evaluations, 392 programs; winner 'B42@h P1 S28139 *2 b80' (reported 1.00323)
+[ 6167.1s] planar2000: T done (25 engines)
+[ 6168.2s] valid True; verdict NOT_SHOWN; planar2000: P1 NOT_SHOWN (-0.115%, p_holm 1), S1 NO_DIFFERENCE (-0.126%), reading NO_LANGUAGE_EFFECT

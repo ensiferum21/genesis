@@ -10,6 +10,8 @@ B20_R151's `summary.json`.
 
 ## RecordB20R151 (append to `tests_genesis/test_expressiveness_study.py`)
 
+**Appended on 28 Oct 2026, 02:00 SGT; it passed unchanged on B20_R151's evidence.**
+
 It needs these imports in that file: `hashlib`, `json`, `unittest`, `ROOT`, `S` (the study script) and `K3`
 (`genesis.candidate_kinds.mcx3`).
 

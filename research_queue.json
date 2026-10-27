@@ -477,7 +477,10 @@
    "unlocks": []
   },
   "B20_R151": {
-   "artifacts": [],
+   "artifacts": [
+    "evidence/expressiveness_b20r151",
+    "docs/checkpoints/B20_R151_RECORD.md"
+   ],
    "committed": true,
    "depends_on": [
     "expr-x1-build"
@@ -486,16 +489,16 @@
    "id": "B20_R151",
    "kind": "study",
    "line": "expressiveness",
-   "notes": "Daniel's direction of 27 Oct 2026, 14:33 (docs/OMEGA_EXPRESSIVE_LANGUAGE.md): the current priority; runs alone on CPU 0 while X2 is built (it needs only X1)",
-   "outcome": null,
+   "notes": "Daniel's direction of 27 Oct 2026, 14:33 (docs/OMEGA_EXPRESSIVE_LANGUAGE.md): the current priority; runs alone on CPU 0 while X2 is built (it needs only X1); recorded 28 Oct 2026 02:00 SGT",
+   "outcome": "NOT_SHOWN (reading NO_LANGUAGE_EFFECT on planar2000; Lambda1 ceiling -0.115%, ceilings not saturated; every arm beats REX on T by 0.45-0.78%, secondary)",
    "output": "evidence/expressiveness_b20r151",
-   "positive": null,
+   "positive": false,
    "preregistered": "sha256 77fcc820...e544 (52e1d92); amended before any search finished: sha256 71467cb6259d1670c4e7ed8dbc23ee33a768646536cf5a6f1c420b37ec324118 (the amendment commit); second amendment (analysis only, before any ceiling search): sha256 8742dd8de359f6596367bdde49d73bfaa8a8f4d602a48dd4a7d9e735d998035c",
    "priority": 10,
    "requires": [],
    "resources": {},
    "script": "scripts/b20r151_expressiveness.py",
-   "status": "running",
+   "status": "done",
    "title": "Expressiveness separated from search: headroom gate, then language {Lambda0, Lambda1} x search {inventor, ceiling} at matched compute on fresh graph classes with headroom",
    "unlocks": []
   },
@@ -519,7 +522,7 @@
    "requires": [],
    "resources": {},
    "script": "scripts/b20r152_self_extension.py",
-   "status": "queued",
+   "status": "running",
    "title": "Self-extension: generations of Lambda1 + library_k admitted by the language judge, E and A per generation, reuse, trend",
    "unlocks": [
     "self-extension-admitted"
