@@ -880,7 +880,7 @@ B20_R164).
 | Library learning | Ellis et al. 2021 (DreamCoder); Bowers et al. 2023 (Stitch); Zenkner et al. 2024 (AbstractBeam: no gain on an unlike distribution) | Abstraction by compression | Named constructions (§5.3) |
 | Self-improvement | Zhang et al. 2025 (Darwin Gödel Machine; LLM-based); Schmidhuber 2003 | Open-ended self-modification | The meta level (§4.8), LLM-free and bounded |
 
-## 12. Handoff state (27 Oct 2026, 22:00 SGT)
+## 12. Handoff state (27 Oct 2026, 22:00 SGT; updated 28 Oct 2026, 01:15 SGT)
 
 **What exists now** (all pushed to `continuation-b20-rx`):
 
@@ -894,7 +894,7 @@ B20_R164).
 | F5 = B20_R158 | PREREGISTERED (sha256 `50d2de64a7ad…`; runs after B20_R157): FULL (procedures, abstraction, templates carried over) against PLAIN on Genesis's own conjectures, three generations, McNemar | `scripts/b20r158_open_conjectures.py` |
 | F6 = B20_R163 | PREREGISTERED (sha256 `e71bfb69365b…`; runs after B20_R158): a meta-search over 729 engine configurations on one sealed meta-training world; the promoted configuration against the defaults given the meta-search's compute (matched total) and at equal budget, on 24 held-out worlds of two new families; machinery `frontier/meta.py` (B20_R162) | `scripts/b20r163_frontier_meta.py` |
 | F6-adjacent: PT-1's family B | BUILT (B20_R161): 53 Graffiti statements, posed text, domain, double kernel check | §7b |
-| PT-1 = B20_R159 | Parts 3–5 machinery BUILT (`frontier/procedure.py`); the forbidden-concept audit BUILT (`conjecture/audit.py`, kernel side: identifiers and non-docstring strings of the research plane and the manifest, scanned for the hidden concept's stems; the research plane is clean); family B TRANSCRIBED (`conjecture/invariants.py`, `conjecture/wowii.py`: 53 Graffiti statements, semantic checks in `tests_genesis/test_wowii.py`) and POSED as text, with its domain (`conjecture/statement.py`, `conjecture/invariant_domain.py`, `wowii.verifier`, checked by two independent invariant implementations, `invariants.py` and kernel-side `invariants_ref.py`; faster exact invariants, search up to 16 vertices); the study is still to write | §7b |
+| PT-1 = B20_R159 | Parts 3–5 machinery BUILT (`frontier/procedure.py`); the forbidden-concept audit BUILT (`conjecture/audit.py`, kernel side: identifiers and non-docstring strings of the research plane and the manifest, scanned for the hidden concept's stems; the research plane is clean); family B TRANSCRIBED (`conjecture/invariants.py`, `conjecture/wowii.py`: 53 Graffiti statements, semantic checks in `tests_genesis/test_wowii.py`) and POSED as text, with its domain (`conjecture/statement.py`, `conjecture/invariant_domain.py`, `wowii.verifier`, checked by two independent invariant implementations, `invariants.py` and kernel-side `invariants_ref.py`; faster exact invariants, search up to 16 vertices); part 1's two allowed mechanisms BUILT (B20_R164: library learning over Γ, `conjecture/library.py`; operators acting on Γ's operations, `conjecture/operations.py`; the engine's derive action, procedures carrying derivations); the study is still to write | §7b |
 
 **Run each study from a clean worktree of its preregistration commit** (`git worktree add --detach <path> <commit>`).
 The study scripts check their module pins at run time. The design tests check the pins at the preregistration
@@ -914,7 +914,7 @@ commit through `git show`.
 5. **B20_R157 (F4)** from a worktree at `bdf0c57`, about 2 h.
 6. **B20_R158 (F5)** from a worktree at `703b2ee`.
 7. **B20_R163 (F6)** from a worktree of its preregistration commit, under 1 h.
-8. Then PT-1, once preregistered (§7b, with Daniel's decision on part 1's mechanism).
+8. Then PT-1, once preregistered (§7b). Daniel decided part 1's mechanisms on 28 Oct, and both are built (B20_R164).
 
 **CPU 1 (engineering):** light tests only.
 - No sandboxed (runc) test while a study runs on CPU 0: the sandbox resets the affinity
