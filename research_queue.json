@@ -521,6 +521,33 @@
    "script": "scripts/b20r152_self_extension.py",
    "status": "queued",
    "title": "Self-extension: generations of Lambda1 + library_k admitted by the language judge, E and A per generation, reuse, trend",
+   "unlocks": [
+    "self-extension-admitted"
+   ]
+  },
+  "B20_R155": {
+   "artifacts": [],
+   "committed": false,
+   "depends_on": [
+    "B20_R152"
+   ],
+   "failure": null,
+   "id": "B20_R155",
+   "kind": "study",
+   "line": "expressiveness",
+   "notes": "Daniel's direction of 27 Oct 2026, 14:33 (expressiveness of Genesis's own statements); only if B20_R152 admits statements; about 11 h per submission",
+   "outcome": null,
+   "output": null,
+   "positive": null,
+   "preregistered": null,
+   "priority": 8,
+   "requires": [
+    "self-extension-admitted"
+   ],
+   "resources": {},
+   "script": null,
+   "status": "queued",
+   "title": "Is Genesis's grown language more expressive? The language judge's expressiveness claim (saturated ceiling, margin) on B20_R152's admitted library against Lambda1, fresh planar2000 graphs",
    "unlocks": []
   },
   "allocator-baselines": {
@@ -639,6 +666,29 @@
    "script": null,
    "status": "done",
    "title": "X2: library learning over Lambda1 (anti-unification with parameters, MDL), the language judge (kernel side), the consolidator (capability records with contracts, a versioned language registry), the engine-invention workflow as an AG for ARA",
+   "unlocks": []
+  },
+  "expr-x3-build": {
+   "artifacts": [],
+   "committed": false,
+   "depends_on": [
+    "expr-x2-build"
+   ],
+   "failure": null,
+   "id": "expr-x3-build",
+   "kind": "build",
+   "line": "expressiveness",
+   "notes": "Daniel's direction of 27 Oct 2026, 14:33 (richness): the builder's infrastructure; the conditions are Genesis's",
+   "outcome": null,
+   "output": null,
+   "positive": null,
+   "preregistered": null,
+   "priority": 6,
+   "requires": [],
+   "resources": {},
+   "script": null,
+   "status": "queued",
+   "title": "X3: an observable-expression construct in mcx3 so that guards can be conditions Genesis defines, and library learning over conditions; mcx3 programs unchanged",
    "unlocks": []
   },
   "judge-v3-followup": {
@@ -1242,6 +1292,16 @@
    "outcome": "built (B20_R154, engineering, on a planted fixture): the workflow ladder, library learning, the language judge (kernel side, pinned), the consolidator, the generation pipeline; 48 tests; on the fixture generation 2 composed generation 1's statement; search luck twice passed for a language while building (B20_R151 amended for it)",
    "positive": true,
    "time": "2026-10-27T08:25:23+00:00"
+  },
+  {
+   "id": "B20_R155",
+   "kind": "add",
+   "time": "2026-10-27T08:39:35+00:00"
+  },
+  {
+   "id": "expr-x3-build",
+   "kind": "add",
+   "time": "2026-10-27T08:39:35+00:00"
   }
  ],
  "lines": {
@@ -1458,7 +1518,9 @@
   "expr-x1-build",
   "expr-x2-build",
   "B20_R151",
-  "B20_R152"
+  "B20_R152",
+  "B20_R155",
+  "expr-x3-build"
  ],
  "reactivated": {},
  "schema": "genesis-research-queue-v1",
