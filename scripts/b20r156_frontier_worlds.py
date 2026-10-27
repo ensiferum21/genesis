@@ -53,6 +53,13 @@ opens more planted pairs than UCB1.
 the policy. No world of the held-out families was generated before preregistration. The test suite generates
 other worlds (seeds 3001-3006, 7, 11, 31, 41, 51).
 
+**Amendment (27 Oct 2026, 21:35 SGT, before it ran; disclosed).** As preregistered (`5c3e236`, sha256
+e0ed7ae7...82f7), the engine recomputed every branch's forecast whenever its fair-share horizon moved. That is
+correct, but too slow for F4's scale. Now the horizon is rounded up to a geometric grid (ratio 1.25) above the
+branch's compute, and forecasts are cached per grid step (`allocate.GRID`). The pins below are the new module
+digests. The coverage check (S2) reads each forecast's own horizon. The design, the worlds, the arms and the
+analysis are unchanged, and no world of the held-out families has been generated.
+
 **Cost.** About 6 arms x 30 worlds x 5-20 s: under 1 h, in slices of 6,600 s. **Status.** DEV; a calibration;
 licenses nothing.
 """
@@ -82,11 +89,11 @@ PRIMARY = ('halving', 'ucb', 'uniform')
 MATERIAL, ALPHA = 0.02, 0.05
 SLICE_S, PAUSED = 6600, 3
 MODULES = ('direction.py', 'curves.py', 'converge.py', 'allocate.py', 'engine.py', 'manifest.py', 'world.py')
-PINNED = {             # `pins()` at preregistration; checked at run time
+PINNED = {             # `pins()` at the amended preregistration; checked at run time
     'direction.py': '3b54f061f5979b6527e75785a7694c47bb19ac61ac8dd64ff9aa47ee17416940',
     'curves.py': 'e531ef807bad4007e6bc04071fd3173d1eacfd98b53f26780622d9b328caa0a9',
     'converge.py': 'fec005b93be9b5e5320c5a587c8291ead0b2d9028514779ab424cbbda9a8a956',
-    'allocate.py': 'd535b23222e14693462ec95a82f50b22b5900290cbceca2ddce77d677c0500f1',
+    'allocate.py': 'd28d0d8bd9a85f38d335f5680ad24a444ed5f5cad5420fa075c8079ccde28177',
     'engine.py': '849b9bfd611c5cbc8899a55e9ec11348741ecdb7e93e47f10d606ff117e84fe3',
     'manifest.py': '75587e359fcb37a9ab97109a79f1ec5d3417e9618d3bc52cc9f9be8a134055e1',
     'world.py': 'afec2f2f31dbca49eff5561b129c72435403725ed222b389a12742c2f6ac8579',
@@ -136,7 +143,8 @@ def run_one(fam, seed, null, arm, index, budget=BUDGET):
            'verify_calls': s['verify_calls'], 'abstracted': s['abstracted'], 'revealed': s['revealed']}
     if policy == 'frontier':
         hits = n = 0
-        for (bid, npts, H), fc in sorted(e.policy._fc_cache.items()):
+        for (bid, npts, k), fc in sorted(e.policy._fc_cache.items()):
+            H = fc['H']
             b = e.branches[bid]
             t_obs = b['ts'][npts - 1] if npts else 0
             if npts >= 4 and H > 0 and t_obs / H >= 0.25 and b['direction']['problem'] in w.problems():

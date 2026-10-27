@@ -34,6 +34,7 @@ import numpy as np
 from . import curves as CV
 from . import direction as D
 
+GRID = 1.25          # forecast horizons are rounded up to this geometric grid (cache reuse at scale)
 DEFAULTS = {'eps': 0.25, 'eps_min': 0.1, 'eps_max': 0.4, 'stall': 40, 'lam_lp': 1.0, 'lam_con': 0.02,
             'patience_quanta': 4, 'pause_min_share': 0.01, 'k_imagine': 8, 'B': 60, 'window': 8,
             'alarm_share': 0.25}
@@ -89,10 +90,15 @@ class FrontierPolicy:
             self.eps = min(self.p['eps_max'], max(self.eps, 0.3))
 
     def forecast(self, eng, br, H):
-        key = (br['id'], len(br['ts']), round(H))
+        """The forecast at the horizon H rounded up to a geometric grid above the branch's compute (ratio GRID), so
+        that a branch's forecast is recomputed only when it has new points or its horizon moves by a grid step."""
+        t = max(br['t'], eng.quantum)
+        k = max(0, math.ceil(math.log(max(H, t) / t) / math.log(GRID) - 1e-12))
+        Hk = t * GRID ** k
+        key = (br['id'], len(br['ts']), k)
         if key not in self._fc_cache:
             rng = np.random.default_rng(eng.seed_for('fc', br['id'], len(br['ts'])))
-            self._fc_cache[key] = CV.forecast(br['ts'], br['ys'], H, B=self.p['B'], rng=rng)
+            self._fc_cache[key] = dict(CV.forecast(br['ts'], br['ys'], Hk, B=self.p['B'], rng=rng), H=Hk)
         return self._fc_cache[key]
 
     def patience(self, eng):

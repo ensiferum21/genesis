@@ -62,6 +62,14 @@ share of the budget, without successors or invented representations.
 
 The full Frontier exceeds 1 because the reference ignores the successors and the invented representations that the planted world rewards. It fell below the allocation-only Frontier in one world (1006), where abstraction and branching out cost more than they returned. Run time: 593 s for 48 runs on CPU 1.
 
+**Version 1.1 (27 Oct 2026, 21:35 SGT, before F3 ran).** Forecast horizons are now rounded up to a geometric grid (ratio 1.25) and cached per grid step (`allocate.GRID`), for F4's scale. The development look was re-run with it (`evidence/frontier_dev_b20r160/summary.json` now holds v1.1):
+- the allocation-only Frontier reaches 0.772 (v1: 0.774);
+- with abstraction and branching out, 2.044 (v1: 1.974);
+- the comparators are unchanged (they make no forecasts);
+- the win counts are unchanged (7 of 8 against UCB1, 8 of 8 against the others).
+
+The run took 94 s instead of 593 s, and the tests 31 s instead of 2 min. F3's preregistration was amended for it before any of its worlds was generated.
+
 This look was made on development worlds after each design change below, so its numbers are not an estimate of
 anything.
 
