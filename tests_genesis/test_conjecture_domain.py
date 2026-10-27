@@ -16,7 +16,8 @@ from genesis.conjecture import sealed as SD  # noqa: E402
 from genesis.conjecture import verify as V  # noqa: E402
 
 PKG = ROOT / 'src' / 'genesis' / 'conjecture'
-RESEARCH_PLANE = ('__init__.py', 'expr.py', 'graphs.py', 'attack.py', 'domain.py', 'abstraction.py')
+RESEARCH_PLANE = ('__init__.py', 'expr.py', 'graphs.py', 'attack.py', 'domain.py', 'abstraction.py',
+                  'generate.py')
 KERNEL_SIDE = ('sealed.py', 'verify.py')
 P3 = (3, ((0, 1), (1, 2)))
 MERRIS = 'd + m'                                 # proved (Merris 1998), tight on P3 and on regular bipartite graphs
@@ -274,6 +275,25 @@ class Abstraction(unittest.TestCase):
         self.assertEqual(len(shapes), len(set(shapes)))
         self.assertTrue(any(b['direction']['representation'].startswith('template') for b in e.branches.values()))
         self.assertFalse(e.best_verified.get('q3'))                          # a proved bound stays unrefuted
+
+
+class Generation(unittest.TestCase):
+    def test_conjectures_from_genesis_own_data(self):
+        import numpy as np
+        from genesis.conjecture import generate as GN
+        graphs = GN.data(np.random.default_rng(1), count=200)
+        self.assertEqual(len(graphs), 200)
+        cs = GN.conjectures(graphs)
+        self.assertTrue(cs)
+        mus = np.array([g[1] for g in graphs])
+        for f, touch in cs:
+            v = GN.values(f, graphs)
+            self.assertTrue((v >= mus - GN.TOL).all(), f)                  # holds on the data
+            self.assertEqual(int((np.abs(v - mus) <= GN.TOL).sum()), touch)
+            self.assertGreater(touch, 0)                                    # sharp somewhere
+        self.assertTrue(any(GN.equivalent(f, 'd + m') for f, _ in cs))      # Merris's bound, found from data
+        forms = [f for f, _ in cs]
+        self.assertFalse(any(GN.equivalent(a, b) for i, a in enumerate(forms) for b in forms[i + 1:]))
 
 
 class Boundary(unittest.TestCase):

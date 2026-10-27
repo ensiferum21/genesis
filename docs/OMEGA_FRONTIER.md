@@ -716,6 +716,23 @@ blow-up or symmetry concept. The templates themselves are what Genesis abstracts
 converged on complete bipartite graphs, where Merris's bound is tight, abstracted the template K_{a,b} and searched
 it. Proved bounds stay unrefuted.
 
+**Genesis's own conjectures are built** (27 Oct 2026, 21:40 SGT; `conjecture/generate.py`):
+- the data are graphs Genesis draws itself;
+- the candidates come from a 4,122-formula grammar of degree-1 local bounds;
+- a candidate is kept if it holds on all the data, is sharp somewhere, is not dominated, and is one formula per
+  function.
+
+**A development look, disclosed.** On 500 of its own graphs, the generator kept 25 conjectures. Reading them, the
+builder recognised several published bounds among them:
+- Merris's d + m;
+- Brankov–Hansen–Stevanović bound 10 (√(d² + 3dm), proved);
+- bound 29 (refuted 2024);
+- **bounds 18 and 21, which are the proving test's family A.**
+
+**Consequence (a rule for F5):** before Genesis attacks its own conjectures, the kernel withholds any that is
+equivalent, on random points, to a bound held out for the proving test. Family A must stay unfamiliar until the
+test. The withheld ones are logged; the research plane is not told why.
+
 Open in F2:
 - the remaining items of §5: invariants beyond the Laplacian; Γ; the attacks; the generator;
 - a Collatz–Wielandt upper certificate for the Wagner rebuild test;
