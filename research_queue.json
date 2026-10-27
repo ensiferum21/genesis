@@ -792,7 +792,11 @@
    "unlocks": []
   },
   "frontier-f1-build": {
-   "artifacts": [],
+   "artifacts": [
+    "src/genesis/frontier",
+    "evidence/frontier_dev_b20r160",
+    "docs/checkpoints/B20_R160_RECORD.md"
+   ],
    "committed": false,
    "depends_on": [],
    "failure": null,
@@ -800,15 +804,15 @@
    "kind": "build",
    "line": "frontier",
    "notes": "Daniel's directive of 27 Oct 2026, 19:55 (docs/OMEGA_FRONTIER.md); engineering on CPU 1; section 4",
-   "outcome": null,
+   "outcome": "built (B20_R160): direction, curves, converge, allocate, engine, manifest; the kernel-side planted world; 11 tests (coverage, null, recombination, resume, relabelling, boundaries); development look on 8 worlds: allocation-only Frontier 0.774 of the reference against UCB1 0.652, halving 0.563, uniform 0.418, random 0.439 (higher in 7, 8, 8, 8 of 8); licenses nothing",
    "output": null,
-   "positive": null,
+   "positive": true,
    "preregistered": null,
    "priority": 6,
    "requires": [],
    "resources": {},
    "script": null,
-   "status": "queued",
+   "status": "done",
    "title": "F1: the divergent-convergent engine (directions; imagine, mutate, recombine, branch out with novelty; curve extrapolation with calibrated intervals; convergence; the allocator; resumable cycle; meta level) and the kernel-side planted world; the No-Handholding Protocol tests",
    "unlocks": []
   },
@@ -1474,6 +1478,18 @@
    "id": "B20_R159",
    "kind": "add",
    "time": "2026-10-27T12:29:52+00:00"
+  },
+  {
+   "id": "frontier-f1-build",
+   "kind": "start",
+   "time": "2026-10-27T13:11:39+00:00"
+  },
+  {
+   "id": "frontier-f1-build",
+   "kind": "finish",
+   "outcome": "built (B20_R160): direction, curves, converge, allocate, engine, manifest; the kernel-side planted world; 11 tests (coverage, null, recombination, resume, relabelling, boundaries); development look on 8 worlds: allocation-only Frontier 0.774 of the reference against UCB1 0.652, halving 0.563, uniform 0.418, random 0.439 (higher in 7, 8, 8, 8 of 8); licenses nothing",
+   "positive": true,
+   "time": "2026-10-27T13:11:39+00:00"
   }
  ],
  "lines": {
@@ -1599,7 +1615,13 @@
   },
   "frontier": {
    "diagnosis": null,
-   "outcomes": [],
+   "outcomes": [
+    [
+     "frontier-f1-build",
+     "built (B20_R160): direction, curves, converge, allocate, engine, manifest; the kernel-side planted world; 11 tests (coverage, null, recombination, resume, relabelling, boundaries); development look on 8 worlds: allocation-only Frontier 0.774 of the reference against UCB1 0.652, halving 0.563, uniform 0.418, random 0.439 (higher in 7, 8, 8, 8 of 8); licenses nothing",
+     true
+    ]
+   ],
    "run": 0,
    "stagnant": false
   },
