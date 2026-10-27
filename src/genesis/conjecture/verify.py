@@ -159,14 +159,19 @@ def check_charpoly(formula, kind, n, edges, max_n=40):
     ast = E.parse(formula, kind)
     if not defined(ast, kind, n, edges):
         return {'verdict': 'UNDEFINED'}
-    p = charpoly(n, edges)
+    p = [Fraction(c) for c in charpoly(n, edges)]
     for bits in RESOLUTIONS:
         hi = upper(ast, kind, n, edges, bits)
         if hi is None:
             continue
-        if _poly_eval([Fraction(c) for c in p], hi) == 0:
-            continue                                  # hi is a root: refine
-        if roots_above(p, hi) >= 1:
+        q = p
+        while _poly_eval(q, hi) == 0:                 # hi is a root: divide it out (synthetic division, exact)
+            out, acc = [], Fraction(0)
+            for c in q[:-1]:
+                acc = acc * hi + c
+                out.append(acc)
+            q = out
+        if roots_above(q, hi) >= 1:
             return {'verdict': 'REFUTED', 'hi': str(hi), 'bits': bits}
         return {'verdict': 'NOT_CERTIFIED', 'hi': str(hi)}
     return {'verdict': 'NOT_CERTIFIED', 'hi': None}
