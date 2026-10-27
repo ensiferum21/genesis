@@ -18,7 +18,41 @@ categories and the leading negation of each statement.
 from fractions import Fraction
 import math
 
-from . import invariants as I
+from contextlib import contextmanager
+
+from . import invariants as _research
+from . import invariants_ref as _reference
+
+
+class _Implementation:
+    """The invariants the evaluators below call (`I.name`): the research plane's `invariants.py` by default, or the
+    kernel's independent `invariants_ref.py` inside `implementation(_reference)`."""
+    def __init__(self):
+        self.module = _research
+
+    def __getattr__(self, name):
+        return getattr(self.module, name)
+
+
+I = _Implementation()
+
+
+@contextmanager
+def implementation(module):
+    old, I.module = I.module, module
+    try:
+        yield
+    finally:
+        I.module = old
+
+
+def evaluate_both(number, n, edges):
+    """The statement's verdict on a graph by both implementations: (research, reference) evaluations."""
+    with implementation(_research):
+        a = ALL[number][1](_research.Graph(n, edges))
+    with implementation(_reference):
+        b = ALL[number][1](_reference.Graph(n, edges))
+    return a, b
 
 
 def floor(x):
@@ -448,19 +482,24 @@ def stated_value(G, name):
     return getattr(I, name)(G)
 
 
-def verifier(posed, max_n=20):
+def verifier(posed, max_n=16, log=None):
     """For a study (kernel side): verify(pid, artifact) -> 1.0 if the artifact's graph is connected and violates the
-    posed statement by this module's transcription, else 0.0. `posed` is {id: statement number}; artifacts are those
-    of `conjecture.invariant_domain` (n, edges)."""
+    posed statement by this module's transcription, computed twice, with the research plane's invariants and with
+    the kernel's independent ones (`invariants_ref.py`); else 0.0. Both must say violated. A disagreement is
+    appended to `log` (a list) when one is given. `posed` is {id: statement number}; artifacts are those of
+    `conjecture.invariant_domain` (n, edges)."""
     def verify(pid, art):
         try:
             n, edges = int(art['n']), [tuple(int(x) for x in e) for e in art['edges']]
             if not 2 <= n <= max_n or any(not (0 <= u < n and 0 <= v < n) for u, v in edges):
                 return 0.0
-            G = I.Graph(n, edges)
-            if not G.connected():
+            if not _reference.Graph(n, edges).connected():
                 return 0.0
-            return 1.0 if violated(ALL[posed[pid]][1](G)) else 0.0
+            a, b = evaluate_both(posed[pid], n, edges)
+            va, vb = violated(a), violated(b)
+            if va != vb and log is not None:
+                log.append({'problem': pid, 'n': n, 'edges': edges, 'research': va, 'reference': vb})
+            return 1.0 if va and vb else 0.0
         except (KeyError, ValueError, TypeError, IndexError):
             return 0.0
     return verify

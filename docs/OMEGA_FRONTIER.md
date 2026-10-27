@@ -658,13 +658,31 @@ to be preregistered when F1–F5 have run:
     The score is positive exactly when the statement is violated. The representations, methods, abstraction and
     procedures are unchanged; sizes are 6 to 12, and graphs above 14 vertices score −∞. `attack.Runner` now takes
     any objective (`objective=`).
-  - `wowii.verifier` (kernel side) checks a claimed counterexample with the kernel's own transcription. **A
-    limitation:** that check still shares `invariants.py` with the research plane. An independent kernel-side
-    implementation of the invariants is due before PT-1 is preregistered.
+  - `wowii.verifier` (kernel side) checks a claimed counterexample with the kernel's own transcription, computed
+    twice: with the research plane's `invariants.py` and with `conjecture/invariants_ref.py`. Both must say
+    violated, and any disagreement is logged.
+  - `invariants_ref.py` (kernel side, 28 Oct 2026, 00:25 SGT) is an independent implementation that shares no code
+    with the research plane. It imports only `fractions`, `itertools` and `networkx`, which a test enforces. It is
+    written from the Lean definitions by different means:
+    - networkx for distances, girth, bipartiteness, forests, trees and domination;
+    - subset enumeration with `itertools`;
+    - independence as a maximum clique of the complement;
+    - backtracking for Hamiltonian paths;
+    - recursion over edges for matchings;
+    - Lean's definition of vertex connectivity;
+    - the standard Havel–Hakimi process.
+
+    The checks:
+    - All 33 invariants, the set distances and the graph operations agree with `invariants.py` on all 995
+      connected graphs of 2 to 7 vertices and on 30 random graphs of 8 to 10 vertices.
+    - Ls equals the most leaves of a spanning tree, enumerated by Lean's definition, on every connected graph up to
+      6 vertices.
+    - The 53 evaluators agree under both implementations.
+    - The documented counterexamples of up to 18 vertices violate under both. 194 is left out because its 18
+      vertices defeat the backtracking path search.
   - End to end, on invented statements only (B stays sealed), the Frontier refuted the two false ones (α ≤ Δ;
     girth ≤ 4 → Hamiltonian path) and none of the three true ones.
 - **Still to build before PT-1 can be preregistered:**
-  - the independent kernel-side invariants;
   - faster exact invariants: several B counterexamples have 17 to 20 vertices, beyond the current limit of 14;
   - the PT-1 study script: the inadequacy gate on A, parts 1–5, and family C.
 
@@ -738,7 +756,7 @@ to be preregistered when F1–F5 have run:
 | F3 = B20_R156 | PREREGISTERED, amended before it ran (`4a7e193`, sha256 `9ae034db…353a`) | `scripts/b20r156_frontier_worlds.py` |
 | F4 = B20_R157 | PREREGISTERED (`bdf0c57`, sha256 `49b171f9…1904`) | `scripts/b20r157_laplacian_bounds.py` |
 | F5 = B20_R158 | PREREGISTERED (sha256 `50d2de64a7ad…`; runs after B20_R157): FULL (procedures, abstraction, templates carried over) against PLAIN on Genesis's own conjectures, three generations, McNemar | `scripts/b20r158_open_conjectures.py` |
-| PT-1 = B20_R159 | Parts 3–5 machinery BUILT (`frontier/procedure.py`); the forbidden-concept audit BUILT (`conjecture/audit.py`, kernel side: identifiers and non-docstring strings of the research plane and the manifest, scanned for the hidden concept's stems; the research plane is clean); family B TRANSCRIBED (`conjecture/invariants.py`, `conjecture/wowii.py`: 53 Graffiti statements, semantic checks in `tests_genesis/test_wowii.py`) and POSED as text, with its domain (`conjecture/statement.py`, `conjecture/invariant_domain.py`, `wowii.verifier`); independent kernel-side invariants, faster invariants and the study are still to write | §7b |
+| PT-1 = B20_R159 | Parts 3–5 machinery BUILT (`frontier/procedure.py`); the forbidden-concept audit BUILT (`conjecture/audit.py`, kernel side: identifiers and non-docstring strings of the research plane and the manifest, scanned for the hidden concept's stems; the research plane is clean); family B TRANSCRIBED (`conjecture/invariants.py`, `conjecture/wowii.py`: 53 Graffiti statements, semantic checks in `tests_genesis/test_wowii.py`) and POSED as text, with its domain (`conjecture/statement.py`, `conjecture/invariant_domain.py`, `wowii.verifier`, checked by two independent invariant implementations, `invariants.py` and kernel-side `invariants_ref.py`); faster invariants and the study are still to write | §7b |
 
 **Run each study from a clean worktree of its preregistration commit** (`git worktree add --detach <path> <commit>`).
 The study scripts check their module pins at run time. The design tests check the pins at the preregistration

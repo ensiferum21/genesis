@@ -18,7 +18,7 @@ from genesis.conjecture import verify as V  # noqa: E402
 PKG = ROOT / 'src' / 'genesis' / 'conjecture'
 RESEARCH_PLANE = ('__init__.py', 'expr.py', 'graphs.py', 'attack.py', 'domain.py', 'abstraction.py',
                   'generate.py', 'invariants.py', 'statement.py', 'invariant_domain.py')
-KERNEL_SIDE = ('sealed.py', 'verify.py', 'audit.py', 'wowii.py')
+KERNEL_SIDE = ('sealed.py', 'verify.py', 'audit.py', 'wowii.py', 'invariants_ref.py')
 P3 = (3, ((0, 1), (1, 2)))
 MERRIS = 'd + m'                                 # proved (Merris 1998), tight on P3 and on regular bipartite graphs
 ANDERSON_MORLEY = 'di + dj'                      # proved (Anderson and Morley 1985)
@@ -344,7 +344,8 @@ class Boundary(unittest.TestCase):
             for node in pyast.walk(pyast.parse((PKG / name).read_text())):
                 if isinstance(node, (pyast.Import, pyast.ImportFrom)):
                     names = [a.name for a in node.names] + [getattr(node, 'module', None) or '']
-                    if any(x.split('.')[-1] in ('sealed', 'verify', 'audit', 'wowii') for x in names):
+                    kernel = ('sealed', 'verify', 'audit', 'wowii', 'invariants_ref')
+                    if any(x.split('.')[-1] in kernel for x in names):
                         bad.append(name)
         self.assertEqual(bad, [])
 

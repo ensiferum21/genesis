@@ -272,5 +272,88 @@ class Domain(unittest.TestCase):
         self.assertEqual(verify('missing', P5), 0.0)
 
 
+class Reference(unittest.TestCase):
+    """The kernel's independent invariants (`invariants_ref.py`) against the research plane's."""
+    FUNCS = ('b', 'indep_num', 'ls', 'largest_induced_tree', 'largest_induced_forest', 'radius', 'path_number',
+             'max_degree_vertices', 'hamiltonian_path', 'average_indep_neighbours', 'periphery', 'residue', 'girth',
+             'center', 'diameter', 'average_eccentricity', 'second_smallest_degree', 'min_degree_vertices',
+             'matching_number', 'indep_domination_number', 'vertex_connectivity', 'ng', 'min_spanning_paths',
+             'min_indep_neighbours', 'min_degree', 'max_temp', 'max_indep_neighbours', 'max_degree', 'eccentricities',
+             'dp', 'degree_l2_norm_squared', 'average_degree', 'alpha_core_size')
+
+    def test_it_shares_no_code_with_the_research_plane(self):
+        import ast as pyast
+        src = (ROOT / 'src/genesis/conjecture/invariants_ref.py').read_text()
+        mods = set()
+        for node in pyast.walk(pyast.parse(src)):
+            if isinstance(node, pyast.Import):
+                mods |= {a.name for a in node.names}
+            elif isinstance(node, pyast.ImportFrom):
+                mods.add('.' * node.level + (node.module or ''))
+        self.assertEqual(mods, {'fractions', 'itertools', 'networkx'})
+
+    def _pairs(self):
+        pairs = [(G.n, G.edges) for G in connected_atlas(7)]
+        rng = random.Random(3)
+        while len(pairs) < 995 + 30:
+            G = random_graph(rng, rng.randint(8, 10), rng.choice([0.3, 0.5]))
+            if G.connected():
+                pairs.append((G.n, G.edges))
+        return pairs
+
+    @unittest.skipIf(nx is None, 'networkx is not installed')
+    def test_every_invariant_agrees(self):
+        from genesis.conjecture import invariants_ref as R
+        for n, e in self._pairs():
+            ga, gb = I.Graph(n, e), R.Graph(n, e)
+            self.assertEqual((ga.edges, ga.adj, ga.dist(), ga.degrees()), (gb.edges, gb.adj, gb.dist(), gb.degrees()))
+            self.assertEqual((ga.complement().edges, I.square(ga).edges), (gb.complement().edges, R.square(gb).edges))
+            for f in self.FUNCS:
+                self.assertEqual(getattr(I, f)(ga), getattr(R, f)(gb), (f, n, e))
+            for f in ('dist_min', 'ecc_set', 'dist_max_set', 'dist_avg_set'):
+                for S in ([0], list(range(n)), [v for v in range(n) if v % 2], I.center(ga)):
+                    self.assertEqual(getattr(I, f)(ga, S), getattr(R, f)(gb, S), (f, n, e, S))
+            for v in range(n):
+                self.assertEqual(I.dist_even(ga, v), R.dist_even(gb, v))
+                self.assertEqual(I.indep_num_within(ga, ga.adj[v]), R.indep_num_within(gb, gb.adj[v]))
+
+    @unittest.skipIf(nx is None, 'networkx is not installed')
+    def test_ls_is_the_most_leaves_of_a_spanning_tree(self):
+        """Lean's definition, by enumerating spanning trees, on every connected graph up to 6 vertices."""
+        from genesis.conjecture import invariants_ref as R
+        for G in connected_atlas(6):
+            H = nx.Graph(G.edges)
+            most = max(sum(1 for _, d in T.degree() if d == 1) for T in nx.SpanningTreeIterator(H))
+            self.assertEqual(R.ls(R.Graph(G.n, G.edges)), most, G.edges)
+
+    @unittest.skipIf(nx is None, 'networkx is not installed')
+    def test_the_evaluators_agree_under_both_implementations(self):
+        for G in connected_atlas(6):
+            for k in W.ALL:
+                a, b = W.evaluate_both(k, G.n, G.edges)
+                self.assertEqual(a, b, (k, G.edges))
+        for k, (build, _) in W.COUNTEREXAMPLES.items():
+            G = build()
+            if G.n <= 18 and k != 194:                 # 194's 18 vertices defeat the backtracking path search
+                a, b = W.evaluate_both(k, G.n, G.edges)
+                self.assertTrue(W.violated(a) and W.violated(b), k)
+
+    def test_the_verifier_needs_both(self):
+        log = []
+        verify = W.verifier({'q': 32}, log=log)
+        self.assertEqual(verify('q', {'n': 5, 'edges': [[0, 1], [1, 2], [2, 3], [3, 4]]}), 1.0)
+        self.assertEqual(log, [])
+        old = W._reference                                # a reference that disagrees refuses the certificate
+        broken = type('Broken', (), {'__getattr__': lambda self, name: getattr(old, name),
+                                     'path_number': staticmethod(lambda G: 99)})()
+        try:
+            W._reference = broken
+            self.assertEqual(verify('q', {'n': 5, 'edges': [[0, 1], [1, 2], [2, 3], [3, 4]]}), 0.0)
+        finally:
+            W._reference = old
+        self.assertEqual(len(log), 1)
+        self.assertEqual((log[0]['research'], log[0]['reference']), (True, False))
+
+
 if __name__ == '__main__':
     unittest.main()
