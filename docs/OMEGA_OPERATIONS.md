@@ -26,6 +26,10 @@ taskset -c 0 python3 scripts/b20r<n>_<name>.py evidence/<name>_b20r<n>
 - **Resume:** run the same command again.
 - **While a study runs, never edit `.py` files in its tree.** Commit new code through the index, or run the study
   from a clean worktree (`git worktree add --detach <dir> <commit>`).
+- **While a study runs on CPU 0, run no sandboxed tests** (the runc sandbox, e.g. `test_runs_in_the_sandbox`, and
+  so the full matrix): inside the sandbox a process's CPU affinity is reset to every CPU, even under `taskset -c 1`
+  (checked 27 Oct 2026: a sandboxed process saw [0, 1]), and the candidate kinds then pin themselves to the lowest,
+  CPU 0. Unsandboxed tests under `taskset -c 1` stay on CPU 1.
 
 **Discoveries:**
 
