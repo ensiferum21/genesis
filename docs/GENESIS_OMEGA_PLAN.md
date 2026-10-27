@@ -554,8 +554,8 @@ call; `CHECKOUT=1` at a study's first slice), so that new code can be committed 
 | 8b | R1 | The research-object layer (`src/genesis/objects/`; `docs/OMEGA_RECURSIVE_INVENTION.md` §3, §16), then the graph sense language and B20_R136 (experiment A, the vertical slice) | building next on CPU 1 |
 | 9 | Ω4–Ω9 | As in §5 | — |
 | 10 | B20_R151 → B20_R152 → B20_R141 | The expressiveness line and ARA's zoo calibration (§0e) | B20_R151 running; the others preregistered |
-| 11 | F1, F2 | The Frontier engine and the graph-conjecture domain (§0f; `docs/OMEGA_FRONTIER.md` §4–§6), engineering on CPU 1 | designed; to build |
-| 12 | B20_R156, B20_R157, B20_R158 | F3 (planted worlds), F4 (the sealed Laplacian bounds), F5 (open-ended generations) | to preregister after F1 and F2 |
+| 11 | F1, F2 | The Frontier engine and the graph-conjecture domain (§0f; `docs/OMEGA_FRONTIER.md` §4–§6), engineering on CPU 1 | **F1 built** (B20_R160, v1.1); **F2 built** (sealed set, attacks, exact double checks, abstraction into templates, Genesis's own conjectures); the proving test's procedure machinery built |
+| 12 | B20_R156, B20_R157, B20_R158, B20_R159 | F3 (planted worlds), F4 (the sealed Laplacian bounds), F5 (open-ended generations), PT-1 (the proving test) | **B20_R156 and B20_R157 preregistered** (run after B20_R141, from `4a7e193` and `bdf0c57`); F5 and PT-1 to preregister after F4's result |
 
 ## 7. Prior art to check every novelty claim against
 
