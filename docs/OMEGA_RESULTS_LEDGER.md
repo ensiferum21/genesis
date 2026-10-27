@@ -34,6 +34,7 @@ Nothing here is an independent or sealed result.
 | B20_R127 | The system's own engines against human designs: NOT_SHOWN (Gset 10 s: 16–11 against MCX, p 0.44; 9–18 against REX; 28–5 against BLS). The judge released nothing in nine searches: training gains +0.04–0.23% against tau 0.75–2.45%; no compounding; no mechanism credited |
 | B20_R120, R122, R124 | Genesis's choice of experiments no better than random (four times; these chose from fixed observational scores; B20_R129's adaptive scientist then beat random) |
 | B20_R72, R92, R97 | Physics move rules show no measurable effect in the invention engine |
+| B20_R128 | Improving the inventor's process: NOT_SHOWN (NO_DIFFERENCE, EVOLVED − ORIGINAL +0.00023, 5–3, p 0.55); no release in any of 30 inner searches, so the meta-search selected first incumbents, not inventions |
 | B20_R132 | The four bottlenecks of invention: NOT_SHOWN; diagnosis EXPRESSIVENESS in every class. No release by the protected judge or the candidate v3 in 9 trajectories; headroom +0.055% / +0.232% / +0.073% (REX 10 s over 1 s); no engine of 112-117 per class confirmed on fresh graphs (planar +0.288%, p 0.26); V2's power at +1% at most 6%, v3's delta50 0.2-1.0%; S1 holds (0/60); V2 3/60 zero-signal releases in the pool world |
 | B20_R148 | The portfolio of discovery processes (Ω²): NOT_SHOWN; G3_NOT_SHOWN. G2 (halving across six processes) − G0 (the inventor's evolution) +0.0015 AUDC (6–4, p_Holm 1); G3 − G2 +0.010 (p_Holm 0.70); H1 UNIVERSAL_HARNESS by its rule (anneal and evolution never beaten on all six seeds), though five processes are each best on some task. Secondary, uncorrected: G3 − G2 in final quality +0.027 (7–2, p 0.039) |
 | B20_R131 | The cascade on a real case: NO_VERIFIED_TRIGGER by protocol (R130 did not verify the global interpretation), so no reactivation was measured; comparators at 24 evaluations: fresh 0.496, random retrieval 0.502, null 0.496, eig 0.450; archive overhead 158.9 s CPU |
@@ -53,7 +54,6 @@ Nothing here is an independent or sealed result.
 
 | Batch | State |
 |---|---|
-| B20_R128 | Improving the inventor. Preregistered |
 
 ## Unrun plans
 

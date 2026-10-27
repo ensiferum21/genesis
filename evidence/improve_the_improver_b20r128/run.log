@@ -1,0 +1,36 @@
+[    0.0s] b20r128; pinned to CPU 0
+[  415.4s] meta0 set 0: yield 1.00036; engine 'D b32 C S22 I' levels 1; releases 0
+[  791.6s] meta1 set 0: yield 1.00090; engine 'B13 b478' levels 8; releases 0
+[ 1168.1s] meta2 set 0: yield 1.00107; engine 'D H B71 L' levels 8; releases 0
+[ 1544.8s] meta3 set 0: yield 0.99939; engine 'D L B32' levels 1; releases 0
+[ 1921.6s] meta4 set 0: yield 1.00064; engine 'S4 P8 I B38 L I' levels 4; releases 0
+[ 2297.9s] meta5 set 0: yield 0.99963; engine 'R b1015 L C P4 M' levels 3; releases 0
+[ 2674.4s] meta6 set 0: yield 0.99926; engine 'H M b1004 P15 S7 H' levels 1; releases 0
+[ 3050.8s] meta7 set 0: yield 0.99278; engine 'P12 B6 L' levels 3; releases 0
+[ 3426.4s] meta8 set 0: yield 0.99900; engine 'C B336 H I S11' levels 8; releases 0
+[ 3803.2s] meta9 set 0: yield 1.00045; engine 'L B238 C' levels 6; releases 0
+[ 4180.2s] meta10 set 0: yield 1.00152; engine 'P4 B1073' levels 3; releases 0
+[ 4557.2s] meta11 set 0: yield 1.00000; engine 'b6' levels 4; releases 0
+[ 4933.8s] meta12 set 0: yield 0.99759; engine 'D M b106 M' levels 3; releases 0
+[ 5310.1s] meta13 set 0: yield 0.99901; engine 'b5' levels 2; releases 0
+[ 5310.1s] EVOLVED: {"adapt": true, "algorithm": "steady", "calib_extra": 8, "children": 16, "leaders": 2, "p_cross": 0.5, "pop": 12, "tournament": 2, "weights": {"arg": 2.0, "delete": 0.5, "duplicate": 4.0, "insert": 1.0, "option": 0.5, "replace": 4.0, "swap": 2.0}}
+[ 5702.2s] final-ORIGINAL set 1: yield 1.00042; engine 'M b236' levels 4; releases 0
+[ 6078.9s] final-EVOLVED set 1: yield 1.00012; engine 'M H L I B7' levels 6; releases 0
+[ 6471.0s] final-ORIGINAL set 2: yield 1.00015; engine 'M B394' levels 6; releases 0
+[ 6847.0s] final-EVOLVED set 2: yield 1.00136; engine 'L b12' levels 8; releases 0
+[ 6847.0s] time slice used (6600 s): paused with 18 searches
+[    0.0s] b20r128; pinned to CPU 0
+[   21.8s] EVOLVED: {"adapt": true, "algorithm": "steady", "calib_extra": 8, "children": 16, "leaders": 2, "p_cross": 0.5, "pop": 12, "tournament": 2, "weights": {"arg": 2.0, "delete": 0.5, "duplicate": 4.0, "insert": 1.0, "option": 0.5, "replace": 4.0, "swap": 2.0}}
+[  414.1s] final-ORIGINAL set 3: yield 1.00015; engine 'D H X M B1188 R' levels 8; releases 0
+[  790.5s] final-EVOLVED set 3: yield 1.00154; engine 'I R D B989' levels 4; releases 0
+[ 1182.6s] final-ORIGINAL set 4: yield 1.00091; engine 'b4 B1231 S398' levels 2; releases 0
+[ 1559.4s] final-EVOLVED set 4: yield 1.00218; engine 'B15 H' levels 1; releases 0
+[ 1951.3s] final-ORIGINAL set 5: yield 1.00008; engine 'B53' levels 8; releases 0
+[ 2327.9s] final-EVOLVED set 5: yield 0.99925; engine 'B25 C H H H' levels 8; releases 0
+[ 2719.8s] final-ORIGINAL set 6: yield 1.00094; engine 'B1521' levels 8; releases 0
+[ 3096.4s] final-EVOLVED set 6: yield 1.00128; engine 'C B2 D b1548 M' levels 3; releases 0
+[ 3488.8s] final-ORIGINAL set 7: yield 1.00047; engine 'L D B22 D' levels 2; releases 0
+[ 3865.5s] final-EVOLVED set 7: yield 0.99908; engine 'C b1835 L X P1 M' levels 3; releases 0
+[ 4258.0s] final-ORIGINAL set 8: yield 0.99999; engine 'D H B82 b129' levels 4; releases 0
+[ 4634.4s] final-EVOLVED set 8: yield 1.00016; engine 'B37' levels 3; releases 0
+[ 4634.5s] test NO_DIFFERENCE (p 0.547); verdict NOT_SHOWN; mean yields {'ORIGINAL': 1.00038810627031, 'EVOLVED': 1.0006208972890254}; engines beating REX {'ORIGINAL': 7, 'EVOLVED': 6}

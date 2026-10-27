@@ -1,0 +1,431 @@
+{
+ "beats_rex": {
+  "EVOLVED": 6,
+  "ORIGINAL": 7
+ },
+ "code_identity": "c705ba319322b2a31c3e9521ba547dc4e74c321f3adf82b03b045591189ba476",
+ "evolved": {
+  "gen": 2,
+  "index": 10,
+  "process": {
+   "adapt": true,
+   "algorithm": "steady",
+   "calib_extra": 8,
+   "children": 16,
+   "leaders": 2,
+   "p_cross": 0.5,
+   "pop": 12,
+   "tournament": 2,
+   "weights": {
+    "arg": 2.0,
+    "delete": 0.5,
+    "duplicate": 4.0,
+    "insert": 1.0,
+    "option": 0.5,
+    "replace": 4.0,
+    "swap": 2.0
+   }
+  },
+  "yield": 1.0015164994235304
+ },
+ "final": [
+  {
+   "EVOLVED": 1.0001232606081416,
+   "ORIGINAL": 1.0004172413848926,
+   "rep": 1
+  },
+  {
+   "EVOLVED": 1.001355045737384,
+   "ORIGINAL": 1.000147369080985,
+   "rep": 2
+  },
+  {
+   "EVOLVED": 1.001538655487508,
+   "ORIGINAL": 1.0001483787178365,
+   "rep": 3
+  },
+  {
+   "EVOLVED": 1.002177775482127,
+   "ORIGINAL": 1.0009104814365133,
+   "rep": 4
+  },
+  {
+   "EVOLVED": 0.9992462317152384,
+   "ORIGINAL": 1.0000785577717168,
+   "rep": 5
+  },
+  {
+   "EVOLVED": 1.0012840317736198,
+   "ORIGINAL": 1.000939359906146,
+   "rep": 6
+  },
+  {
+   "EVOLVED": 0.999084100683156,
+   "ORIGINAL": 1.000471741649735,
+   "rep": 7
+  },
+  {
+   "EVOLVED": 1.0001580768250284,
+   "ORIGINAL": 0.9999917202146551,
+   "rep": 8
+  }
+ ],
+ "mean_yield": {
+  "EVOLVED": 1.0006208972890254,
+  "ORIGINAL": 1.00038810627031
+ },
+ "meta": [
+  {
+   "gen": 0,
+   "index": 0,
+   "process": {
+    "adapt": false,
+    "algorithm": "steady",
+    "calib_extra": 16,
+    "children": 8,
+    "leaders": 2,
+    "p_cross": 0.25,
+    "pop": 16,
+    "tournament": 3,
+    "weights": {
+     "arg": 1.0,
+     "delete": 1.0,
+     "duplicate": 1.0,
+     "insert": 1.0,
+     "option": 1.0,
+     "replace": 1.0,
+     "swap": 1.0
+    }
+   },
+   "yield": 1.000361740482541
+  },
+  {
+   "gen": 0,
+   "index": 1,
+   "process": {
+    "adapt": false,
+    "algorithm": "steady",
+    "calib_extra": 16,
+    "children": 12,
+    "leaders": 4,
+    "p_cross": 0.25,
+    "pop": 8,
+    "tournament": 3,
+    "weights": {
+     "arg": 4.0,
+     "delete": 4.0,
+     "duplicate": 4.0,
+     "insert": 0.25,
+     "option": 0.5,
+     "replace": 0.5,
+     "swap": 1.0
+    }
+   },
+   "yield": 1.0008968284911903
+  },
+  {
+   "gen": 0,
+   "index": 2,
+   "process": {
+    "adapt": true,
+    "algorithm": "map-elites",
+    "calib_extra": 8,
+    "children": 16,
+    "leaders": 2,
+    "p_cross": 0.5,
+    "pop": 12,
+    "tournament": 2,
+    "weights": {
+     "arg": 2.0,
+     "delete": 0.5,
+     "duplicate": 4.0,
+     "insert": 1.0,
+     "option": 0.5,
+     "replace": 4.0,
+     "swap": 2.0
+    }
+   },
+   "yield": 1.001073632131702
+  },
+  {
+   "gen": 0,
+   "index": 3,
+   "process": {
+    "adapt": false,
+    "algorithm": "map-elites",
+    "calib_extra": 4,
+    "children": 8,
+    "leaders": 4,
+    "p_cross": 0.25,
+    "pop": 8,
+    "tournament": 4,
+    "weights": {
+     "arg": 0.25,
+     "delete": 2.0,
+     "duplicate": 2.0,
+     "insert": 4.0,
+     "option": 4.0,
+     "replace": 0.5,
+     "swap": 0.5
+    }
+   },
+   "yield": 0.9993896348720718
+  },
+  {
+   "gen": 0,
+   "index": 4,
+   "process": {
+    "adapt": true,
+    "algorithm": "steady",
+    "calib_extra": 16,
+    "children": 4,
+    "leaders": 1,
+    "p_cross": 0.1,
+    "pop": 24,
+    "tournament": 6,
+    "weights": {
+     "arg": 1.0,
+     "delete": 1.0,
+     "duplicate": 0.5,
+     "insert": 0.25,
+     "option": 1.0,
+     "replace": 0.25,
+     "swap": 0.5
+    }
+   },
+   "yield": 1.0006423262175366
+  },
+  {
+   "gen": 0,
+   "index": 5,
+   "process": {
+    "adapt": false,
+    "algorithm": "steady",
+    "calib_extra": 16,
+    "children": 8,
+    "leaders": 0,
+    "p_cross": 0.5,
+    "pop": 8,
+    "tournament": 3,
+    "weights": {
+     "arg": 2.0,
+     "delete": 0.25,
+     "duplicate": 0.5,
+     "insert": 1.0,
+     "option": 0.25,
+     "replace": 2.0,
+     "swap": 4.0
+    }
+   },
+   "yield": 0.9996309085253569
+  },
+  {
+   "gen": 1,
+   "index": 6,
+   "process": {
+    "adapt": false,
+    "algorithm": "map-elites",
+    "calib_extra": 16,
+    "children": 12,
+    "leaders": 4,
+    "p_cross": 0.5,
+    "pop": 12,
+    "tournament": 2,
+    "weights": {
+     "arg": 4.0,
+     "delete": 4.0,
+     "duplicate": 4.0,
+     "insert": 1.0,
+     "option": 0.5,
+     "replace": 0.5,
+     "swap": 1.0
+    }
+   },
+   "yield": 0.9992593751195885
+  },
+  {
+   "gen": 1,
+   "index": 7,
+   "process": {
+    "adapt": true,
+    "algorithm": "map-elites",
+    "calib_extra": 8,
+    "children": 16,
+    "leaders": 2,
+    "p_cross": 0.5,
+    "pop": 12,
+    "tournament": 4,
+    "weights": {
+     "arg": 2.0,
+     "delete": 0.5,
+     "duplicate": 4.0,
+     "insert": 1.0,
+     "option": 0.5,
+     "replace": 4.0,
+     "swap": 2.0
+    }
+   },
+   "yield": 0.9927794976563933
+  },
+  {
+   "gen": 1,
+   "index": 8,
+   "process": {
+    "adapt": true,
+    "algorithm": "steady",
+    "calib_extra": 8,
+    "children": 16,
+    "leaders": 4,
+    "p_cross": 0.5,
+    "pop": 8,
+    "tournament": 2,
+    "weights": {
+     "arg": 2.0,
+     "delete": 4.0,
+     "duplicate": 4.0,
+     "insert": 1.0,
+     "option": 0.5,
+     "replace": 0.5,
+     "swap": 2.0
+    }
+   },
+   "yield": 0.9989959452508359
+  },
+  {
+   "gen": 1,
+   "index": 9,
+   "process": {
+    "adapt": false,
+    "algorithm": "map-elites",
+    "calib_extra": 16,
+    "children": 16,
+    "leaders": 4,
+    "p_cross": 0.5,
+    "pop": 8,
+    "tournament": 2,
+    "weights": {
+     "arg": 2.0,
+     "delete": 0.5,
+     "duplicate": 4.0,
+     "insert": 0.25,
+     "option": 0.5,
+     "replace": 0.5,
+     "swap": 2.0
+    }
+   },
+   "yield": 1.0004526189665068
+  },
+  {
+   "gen": 2,
+   "index": 10,
+   "process": {
+    "adapt": true,
+    "algorithm": "steady",
+    "calib_extra": 8,
+    "children": 16,
+    "leaders": 2,
+    "p_cross": 0.5,
+    "pop": 12,
+    "tournament": 2,
+    "weights": {
+     "arg": 2.0,
+     "delete": 0.5,
+     "duplicate": 4.0,
+     "insert": 1.0,
+     "option": 0.5,
+     "replace": 4.0,
+     "swap": 2.0
+    }
+   },
+   "yield": 1.0015164994235304
+  },
+  {
+   "gen": 2,
+   "index": 11,
+   "process": {
+    "adapt": true,
+    "algorithm": "steady",
+    "calib_extra": 16,
+    "children": 16,
+    "leaders": 2,
+    "p_cross": 0.5,
+    "pop": 12,
+    "tournament": 3,
+    "weights": {
+     "arg": 4.0,
+     "delete": 4.0,
+     "duplicate": 4.0,
+     "insert": 1.0,
+     "option": 0.5,
+     "replace": 0.5,
+     "swap": 1.0
+    }
+   },
+   "yield": 1.0000023993996532
+  },
+  {
+   "gen": 2,
+   "index": 12,
+   "process": {
+    "adapt": true,
+    "algorithm": "map-elites",
+    "calib_extra": 8,
+    "children": 16,
+    "leaders": 2,
+    "p_cross": 0.0,
+    "pop": 12,
+    "tournament": 2,
+    "weights": {
+     "arg": 2.0,
+     "delete": 0.5,
+     "duplicate": 4.0,
+     "insert": 1.0,
+     "option": 0.5,
+     "replace": 4.0,
+     "swap": 2.0
+    }
+   },
+   "yield": 0.9975932229778153
+  },
+  {
+   "gen": 2,
+   "index": 13,
+   "process": {
+    "adapt": true,
+    "algorithm": "steady",
+    "calib_extra": 8,
+    "children": 16,
+    "leaders": 2,
+    "p_cross": 0.5,
+    "pop": 8,
+    "tournament": 2,
+    "weights": {
+     "arg": 4.0,
+     "delete": 4.0,
+     "duplicate": 4.0,
+     "insert": 1.0,
+     "option": 0.5,
+     "replace": 0.5,
+     "swap": 1.0
+    }
+   },
+   "yield": 0.9990054959878928
+  }
+ ],
+ "meta_best_by_generation": {
+  "0": 1.001073632131702,
+  "1": 1.0004526189665068,
+  "2": 1.0015164994235304
+ },
+ "schema": "genesis-b20r128-improve-the-improver-v1",
+ "status": "DEV; licenses nothing",
+ "study": "b20r128",
+ "test": {
+  "label": "NO_DIFFERENCE",
+  "mean_difference": 0.00023279101871538643,
+  "nonzero": 8,
+  "p": 0.546875
+ },
+ "valid": true,
+ "verdict": "NOT_SHOWN"
+}

@@ -218,7 +218,7 @@ Each engine is a computational system, not an agent exchanging text. They connec
 | 4. Algorithm Inventor | Executable new procedures | `autonomy/selfimprove.py` (mcx2 programs: mutation, crossover, MAP-Elites, macros), `invention/solver_programs*.py` | PARTIAL; NOT_DEMONSTRATED so far | B20_R127; then Ω3's typed language |
 | 5. Experimental Scientist | Beliefs over explanations; experiments chosen by expected value; adaptive | **`science/design.py`** (domain-independent), `causal/active3.py`, `science/acquire.py`; earlier `discovery/active.py` (method selection only) | BUILT, preregistered (B20_R129) | B20_R129's verdict |
 | 6. Independent Judge | Unseen problems, strict compute accounting, release only beyond noise | `autonomy/feedback.py` (contract v2), `judge.py`, the domains' checkers | BUILT (protected) | Stays fixed. A candidate version 3 (local calibration) is under test in B20_R132 from the research plane (`autonomy/contract_v3.py`); adoption is the supervisor's. Extend: a sealed portfolio for Ω8 |
-| 7. Recursive Improver | Improve engines 2–5 from accumulated evidence | `selfimprove` process genomes (level 2), `adaptation/` cell, `autonomy/loop.py` | PARTIAL | B20_R128; then Ω8 |
+| 7. Recursive Improver | Improve engines 2–5 from accumulated evidence | `selfimprove` process genomes (level 2), `adaptation/` cell, `autonomy/loop.py` | PARTIAL | B20_R128 NOT_SHOWN (no level-1 releases to select on); then Ω8 |
 
 **Organism-level structures** (from the self-evolving-organism stages):
 
@@ -476,7 +476,7 @@ call; `CHECKOUT=1` at a study's first slice), so that new code can be committed 
 | 3 | B20_R131 | The cascade on a real case: R129's dormant acquisition rules reactivated by R130's interpretation (about 1 h) | **done: NO_VERIFIED_TRIGGER** (by protocol; no reactivation; comparators fresh 0.496, random 0.502, null 0.496, eig 0.450; archive 158.9 s CPU) |
 | 3b | B20_R148 | The portfolio of discovery processes (Ω², §0d): G0-G3 on ten fresh tasks, matched evaluations, AUDC (about 5 h, slices) | **done: NOT_SHOWN; G3_NOT_SHOWN** (G2 − G0 +0.0015 AUDC, p_Holm 1; G3 − G2 +0.010, p_Holm 0.70; H1 UNIVERSAL_HARNESS by its rule; 6.5 h) |
 | 4 | B20_R132 | The four bottlenecks of invention (headroom, expressiveness, search, evaluation) with planted positive and zero-signal controls, fresh truth sets T1/T2, the protected v2 against the candidate v3 at matched compute (about 5.7 h, slices) | **done: NOT_SHOWN; diagnosis EXPRESSIVENESS in every class** (no release by v2 or v3; headroom exists; nothing confirmed on fresh graphs; v2 blind below about 1%) |
-| 5 | B20_R128 | Improving the inventor (2–3 slices of 6,600 s) | preregistered; after R132; runs **as preregistered** (directive item 1); a v3 follow-up, if any, is a new study |
+| 5 | B20_R128 | Improving the inventor (2–3 slices of 6,600 s) | **done: NOT_SHOWN** (NO_DIFFERENCE, p 0.55; no inner search released anything, so no level-1 signal for level 2) |
 | 6 | — | Checkpoint (the last one is B20_R118) with the release matrix | owed |
 | 7 | B20_R134 | The Difficulty Cartographer, redesigned with obstacles hidden from cheap statistics (Ω2) | to design |
 | 8 | Ω3/Ω7 | The self-extending representation language (directive items 6–9; `docs/OMEGA_REPRESENTATION_LANGUAGE.md`): relations, verified gadgets, encodings with decoders, transformations to one BQP, families given only as predicates (reductions synthesised, not hand-written); stages A–C built on fixtures; its first study **B20_R135** (preregistered `7040a3c`, before R133 ran) after rows 1–5 | building; study preregistered |
@@ -552,3 +552,5 @@ problems no level has seen, and Genesis has not shown that yet.
   searches reached is confirmed better than REX on fresh graphs; the protected judge is blind below about 1%; a
   finer judge alone would not have changed B20_R127). The engine-invention line stays stagnant; what answers it is
   Daniel's decision. B20_R128 next, as preregistered.
+- 27 Oct 2026: B20_R128 recorded: NOT_SHOWN (the evolved inventor process ties the original on 8 fresh sets; no
+  inner search released anything, so the meta-search selected first incumbents). B20_R135 next.

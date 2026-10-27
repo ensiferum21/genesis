@@ -1,7 +1,9 @@
 {
  "directions": {
   "B20_R128": {
-   "artifacts": [],
+   "artifacts": [
+    "evidence/improve_the_improver_b20r128/summary.json"
+   ],
    "committed": true,
    "depends_on": [
     "B20_R132"
@@ -10,10 +12,10 @@
    "id": "B20_R128",
    "kind": "study",
    "line": "engine-invention",
-   "notes": "",
-   "outcome": null,
+   "notes": "Ran as preregistered 27 Oct 2026, 06:07-09:19 SGT, clean worktree of 295b634; docs/checkpoints/B20_R128_RECORD.md",
+   "outcome": "NOT_SHOWN: EVOLVED - ORIGINAL +0.00023 on 8 fresh sets (5-3, p 0.55, NO_DIFFERENCE); no release in any of 30 inner searches, so the meta-search selected first incumbents",
    "output": "evidence/improve_the_improver_b20r128",
-   "positive": null,
+   "positive": false,
    "preregistered": null,
    "priority": 5,
    "requires": [],
@@ -21,7 +23,7 @@
     "cpu0_hours": 3.3
    },
    "script": "scripts/b20r128_improve_the_improver.py",
-   "status": "running",
+   "status": "done",
    "title": "Improving the inventor (level 2), as preregistered",
    "unlocks": []
   },
@@ -1037,6 +1039,13 @@
    "id": "B20_R128",
    "kind": "start",
    "time": "2026-10-26T22:07:33+00:00"
+  },
+  {
+   "id": "B20_R128",
+   "kind": "finish",
+   "outcome": "NOT_SHOWN: EVOLVED - ORIGINAL +0.00023 on 8 fresh sets (5-3, p 0.55, NO_DIFFERENCE); no release in any of 30 inner searches, so the meta-search selected first incumbents",
+   "positive": false,
+   "time": "2026-10-27T01:22:17+00:00"
   }
  ],
  "lines": {
@@ -1127,9 +1136,14 @@
      "B20_R132",
      "NOT_SHOWN; diagnosis EXPRESSIVENESS in every class: no release by v2 or v3 in 9 trajectories; headroom +0.055/+0.232/+0.073%; nothing of 112-117 engines per class confirmed on T2 (planar +0.288%, p 0.26); v2 power at +1% <= 0.06; S1 holds (0/60)",
      false
+    ],
+    [
+     "B20_R128",
+     "NOT_SHOWN: EVOLVED - ORIGINAL +0.00023 on 8 fresh sets (5-3, p 0.55, NO_DIFFERENCE); no release in any of 30 inner searches, so the meta-search selected first incumbents",
+     false
     ]
    ],
-   "run": 5,
+   "run": 6,
    "stagnant": true
   },
   "mathematics": {

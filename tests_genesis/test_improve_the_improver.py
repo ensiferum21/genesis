@@ -58,5 +58,66 @@ class Design(unittest.TestCase):
             M.main([str(ROOT / 'evidence' / 'elsewhere')])
 
 
+R128 = ROOT / 'evidence' / 'improve_the_improver_b20r128'
+
+
+@unittest.skipUnless((R128 / 'summary.json').exists(), 'B20_R128 has not run in this tree')
+class RecordB20R128(unittest.TestCase):
+    """The record of B20_R128 on its evidence: the preregistered script unchanged; one row per search; every engine
+    valid; the meta-search re-derived from the preregistered seed; the test, the verdict and the measures recomputed
+    by `analyse` from the saved yields; no release in any inner search."""
+
+    @classmethod
+    def setUpClass(cls):
+        import json
+        cls.s = json.loads((R128 / 'summary.json').read_text())
+        cls.rows = [json.loads(l) for l in (R128 / 'yields.jsonl').read_text().splitlines() if l.strip()]
+        cls.by = {r['key']: r for r in cls.rows}
+
+    def test_the_preregistered_script(self):
+        import hashlib
+        self.assertEqual(hashlib.sha256((ROOT / 'scripts' / 'b20r128_improve_the_improver.py').read_bytes()).hexdigest(),
+                         '59df2af9ae09b2038b8b7d95476d4b6dea43adc6997439dc24f8c5ece27ab0ee')
+
+    def test_rows_and_engines(self):
+        from genesis.candidate_kinds import mcx2 as K2
+        self.assertEqual(len(self.by), len(self.rows))
+        self.assertEqual(len(self.rows), M.GEN0_RANDOM + 1 + M.GENERATIONS * M.CHILDREN + 2 * M.REPETITIONS)
+        for r in self.rows:
+            self.assertIsNone(K2.check_config(r['engine']), r['key'])
+            self.assertEqual(r['evaluations'], M.INNER_EVALS)
+
+    def test_the_meta_search_rederived(self):
+        import random
+        from genesis.autonomy import selfimprove as SI
+        rng = random.Random(M.SEED)
+        meta = []
+        for p in [SI.ORIGINAL] + [SI.random_process(rng) for _ in range(M.GEN0_RANDOM)]:
+            meta.append({'gen': 0, 'index': len(meta), 'process': p,
+                         'yield': self.by[f'meta{len(meta)}|0|{SI.key(p)}']['yield']})
+        for g in range(1, M.GENERATIONS + 1):
+            top = sorted(meta, key=lambda r: (-r['yield'], r['index']))[:2]
+            for _ in range(M.CHILDREN):
+                p = (SI.mutate_process(top[0]['process'], rng) if rng.random() < 0.5
+                     else SI.crossover_process(top[0]['process'], top[1]['process'], rng))
+                meta.append({'gen': g, 'index': len(meta), 'process': p,
+                             'yield': self.by[f'meta{len(meta)}|0|{SI.key(p)}']['yield']})
+        self.assertEqual(meta, self.s['meta'])
+
+    def test_the_analysis_recomputes(self):
+        from genesis.autonomy import selfimprove as SI
+        evolved = self.s['evolved']['process']
+        final = [{'rep': i, 'ORIGINAL': self.by[f'final-ORIGINAL|{i}|{SI.key(SI.ORIGINAL)}']['yield'],
+                  'EVOLVED': self.by[f'final-EVOLVED|{i}|{SI.key(evolved)}']['yield']}
+                 for i in range(1, M.REPETITIONS + 1)]
+        self.assertEqual(final, self.s['final'])
+        res = M.analyse(self.s['meta'], final)
+        for k in ('evolved', 'test', 'verdict', 'beats_rex', 'mean_yield', 'meta_best_by_generation'):
+            self.assertEqual(res[k], self.s[k], k)
+
+    def test_no_release_in_any_search(self):
+        self.assertEqual(sum(r['judge']['releases'] for r in self.rows), 0)
+
+
 if __name__ == '__main__':
     unittest.main()
