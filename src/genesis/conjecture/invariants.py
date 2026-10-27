@@ -36,6 +36,7 @@ class Graph:
         self.edges = sorted(es)
         self.full = (1 << n) - 1
         self._dist = None
+        self._memo = {}                                # per-graph results of `_cached` invariants
 
     # ------------------------------------------------------------------------------------------- basics
     def degree(self, v):
@@ -149,12 +150,24 @@ def _combinations_masks(n, k):
         yield m
 
 
-def _max_subset(G, ok):
-    for k, masks in _subsets_by_size(G.n):
-        for S in masks:
+def _max_subset(G, ok, upper=None):
+    """The largest k <= upper with some k-subset S satisfying ok(S); `upper` must be a valid upper bound."""
+    top = G.n if upper is None else min(G.n, upper)
+    for k in range(top, 0, -1):
+        for S in _combinations_masks(G.n, k):
             if ok(S):
                 return k
     return 0
+
+
+def _cached(fn):
+    """Remember fn(G) on the graph (graphs are not changed after they are built)."""
+    def wrapped(G):
+        if fn.__name__ not in G._memo:
+            G._memo[fn.__name__] = fn(G)
+        return G._memo[fn.__name__]
+    wrapped.__name__, wrapped.__doc__ = fn.__name__, fn.__doc__
+    return wrapped
 
 
 def _min_subset(G, ok):
@@ -214,6 +227,7 @@ def _mis(adj, S, memo):
     return r
 
 
+@_cached
 def indep_num(G):
     return _mis(G.adj, G.full, {})
 
@@ -254,17 +268,23 @@ def min_indep_neighbours(G):
     return min(indep_neighbours(G, v) for v in range(G.n))
 
 
+@_cached
 def b(G):
-    """largestInducedBipartiteSubgraphSize."""
-    return _max_subset(G, G.bipartite_within)
+    """largestInducedBipartiteSubgraphSize. Each side is independent, so b <= 2 alpha; the search starts there."""
+    return _max_subset(G, G.bipartite_within, upper=2 * indep_num(G))
 
 
+@_cached
 def largest_induced_forest(G):
-    return _max_subset(G, lambda S: G.induced_edges(S) == bin(S).count('1') - G.components_within(S))
+    """An induced forest is bipartite, so it has at most b vertices; the search starts there."""
+    return _max_subset(G, lambda S: G.induced_edges(S) == bin(S).count('1') - G.components_within(S), upper=b(G))
 
 
+@_cached
 def largest_induced_tree(G):
-    return _max_subset(G, lambda S: S != 0 and G.connected_within(S) and G.induced_edges(S) == bin(S).count('1') - 1)
+    """An induced tree is an induced forest; the search starts at the forest number."""
+    return _max_subset(G, lambda S: S != 0 and G.connected_within(S) and G.induced_edges(S) == bin(S).count('1') - 1,
+                       upper=largest_induced_forest(G))
 
 
 def path_number(G):
@@ -277,7 +297,7 @@ def path_number(G):
             return True
         return (G.connected_within(S) and G.induced_edges(S) == k - 1
                 and all(bin(G.adj[v] & S).count('1') <= 2 for v in _bits(S)))
-    return _max_subset(G, ok)
+    return _max_subset(G, ok, upper=largest_induced_tree(G))       # an induced path is an induced tree
 
 
 def connected_domination_number(G):
@@ -450,59 +470,88 @@ def degree_l2_norm_squared(G):
     return sum(d * d for d in G.degrees())
 
 
-def hamiltonian_path(G):
-    """Whether G has a Hamiltonian path (bitmask dynamic programming)."""
+def _path_ends_table(G):
+    """reach[mask]: the vertices at which some path through exactly the vertices of mask can end (bitmask DP)."""
     n = G.n
-    if n == 1:
-        return True
-    reach = [0] * (1 << n)                         # reach[mask]: the end vertices of paths covering mask
+    reach = [0] * (1 << n)
     for v in range(n):
-        reach[1 << v] |= 1 << v
+        reach[1 << v] = 1 << v
     for mask in range(1, 1 << n):
         ends = reach[mask]
         if not ends:
             continue
         for v in _bits(ends):
-            ext = G.adj[v] & ~mask
-            for u in _bits(ext):
+            for u in _bits(G.adj[v] & ~mask):
                 reach[mask | (1 << u)] |= 1 << u
-    return reach[(1 << n) - 1] != 0
+    return reach
 
 
+def _path_search(G, budget):
+    """True or False when a depth-first search settles whether G has a Hamiltonian path within `budget` steps;
+    None when it runs out."""
+    n, full = G.n, G.full
+    steps = [0]
+
+    def extend(v, mask):
+        if mask == full:
+            return True
+        steps[0] += 1
+        if steps[0] > budget:
+            raise TimeoutError
+        nxt = sorted(_bits(G.adj[v] & ~mask), key=lambda u: bin(G.adj[u] & ~mask).count('1'))   # fewest exits first
+        return any(extend(u, mask | 1 << u) for u in nxt)
+    try:
+        return any(extend(v, 1 << v) for v in range(n))
+    except TimeoutError:
+        return None
+
+
+@_cached
+def hamiltonian_path(G):
+    """Whether G has a Hamiltonian path. A disconnected graph, or one with more than two vertices of degree at most
+    1, has none; otherwise a budgeted depth-first search, and the exact bitmask DP if the search does not settle."""
+    n = G.n
+    if n == 1:
+        return True
+    if not G.connected() or sum(1 for d in G.degrees() if d <= 1) > 2:
+        return False
+    found = _path_search(G, budget=20 * n * n)
+    if found is not None:
+        return found
+    return _path_ends_table(G)[G.full] != 0
+
+
+@_cached
 def min_spanning_paths(G):
     """The fewest vertex-disjoint paths (not necessarily induced) whose union contains every vertex (WOWII's "path
     cover number", `pathCoverNumber` in Lean; renamed here because the proving test's audit forbids that stem in
-    research-plane identifiers)."""
+    research-plane identifiers). It is 1 exactly when there is a Hamiltonian path; otherwise k = 2, 3, ... is tried,
+    from at least half the number of degree-1 vertices (each is an end of its path), until the vertices split into
+    k path-traceable parts."""
     n = G.n
-    hp = [False] * (1 << n)
-    reach = [0] * (1 << n)
-    for v in range(n):
-        reach[1 << v] = 1 << v
-    for mask in range(1, 1 << n):
-        if reach[mask]:
-            hp[mask] = True
-            for v in _bits(reach[mask]):
-                for u in _bits(G.adj[v] & ~mask):
-                    reach[mask | (1 << u)] |= 1 << u
+    if hamiltonian_path(G):
+        return 1
+    reach = _path_ends_table(G)
 
     @lru_cache(maxsize=None)
-    def fewest(mask):
-        if mask == 0:
-            return 0
+    def splits(mask, k):
+        if k == 1:
+            return reach[mask] != 0
         low = mask & -mask
         rest = mask ^ low
-        best = None
         sub = rest
         while True:
             piece = sub | low
-            if hp[piece]:
-                c = 1 + fewest(mask ^ piece)
-                best = c if best is None else min(best, c)
+            if piece != mask and reach[piece] and splits(mask ^ piece, k - 1):
+                return True
             if sub == 0:
-                break
+                return False
             sub = (sub - 1) & rest
-        return best
-    return fewest((1 << n) - 1)
+    leaves = sum(1 for v in range(n) if G.degree(v) <= 1)
+    for k in range(max(2, (leaves + 1) // 2), n + 1):
+        if splits(G.full, k):
+            return k
+    return n
 
 
 def vertex_connectivity(G):

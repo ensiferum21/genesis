@@ -656,7 +656,7 @@ to be preregistered when F1–F5 have run:
     this is a consistency check, not an independent source.
   - `conjecture/invariant_domain.py` (research plane) is the conjecture domain with the statement as the objective.
     The score is positive exactly when the statement is violated. The representations, methods, abstraction and
-    procedures are unchanged; sizes are 6 to 12, and graphs above 14 vertices score −∞. `attack.Runner` now takes
+    procedures are unchanged; sizes are 6 to 12, and graphs above 16 vertices score −∞ (14 before the faster invariants). `attack.Runner` now takes
     any objective (`objective=`).
   - `wowii.verifier` (kernel side) checks a claimed counterexample with the kernel's own transcription, computed
     twice: with the research plane's `invariants.py` and with `conjecture/invariants_ref.py`. Both must say
@@ -682,8 +682,25 @@ to be preregistered when F1–F5 have run:
       vertices defeat the backtracking path search.
   - End to end, on invented statements only (B stays sealed), the Frontier refuted the two false ones (α ≤ Δ;
     girth ≤ 4 → Hamiltonian path) and none of the three true ones.
+- **Faster exact invariants** (28 Oct 2026, 00:35 SGT). The values are unchanged; only the searches are shorter.
+  - Each search for a largest induced subgraph starts at a valid upper bound:
+    - b ≤ 2α;
+    - forest ≤ b;
+    - tree ≤ forest;
+    - path ≤ tree.
+  - Results are cached per graph.
+  - Hamiltonian paths:
+    - rejected at once when the graph is disconnected or has more than two vertices of degree at most 1;
+    - otherwise a budgeted depth-first search runs, with the bitmask DP when the search does not settle.
+  - The spanning-paths number is 1 exactly when there is a Hamiltonian path. Otherwise it tries k = 2, 3, …,
+    starting from half the number of leaves.
+  - Effect:
+    - the documented counterexamples on 17 to 21 vertices are evaluated in under 0.05 s each (C5[K4] took 15 to
+      20 s before);
+    - all 53 statements on one random 16-vertex graph take about 0.6 s.
+  - The search limit is raised from 14 to 16 vertices. Both implementations agree on the Hamiltonian path and the
+    spanning-paths number on all 1,253 atlas graphs and on 200 random graphs of 8 to 11 vertices.
 - **Still to build before PT-1 can be preregistered:**
-  - faster exact invariants: several B counterexamples have 17 to 20 vertices, beyond the current limit of 14;
   - the PT-1 study script: the inadequacy gate on A, parts 1–5, and family C.
 
 **Verdicts.**
@@ -756,7 +773,7 @@ to be preregistered when F1–F5 have run:
 | F3 = B20_R156 | PREREGISTERED, amended before it ran (`4a7e193`, sha256 `9ae034db…353a`) | `scripts/b20r156_frontier_worlds.py` |
 | F4 = B20_R157 | PREREGISTERED (`bdf0c57`, sha256 `49b171f9…1904`) | `scripts/b20r157_laplacian_bounds.py` |
 | F5 = B20_R158 | PREREGISTERED (sha256 `50d2de64a7ad…`; runs after B20_R157): FULL (procedures, abstraction, templates carried over) against PLAIN on Genesis's own conjectures, three generations, McNemar | `scripts/b20r158_open_conjectures.py` |
-| PT-1 = B20_R159 | Parts 3–5 machinery BUILT (`frontier/procedure.py`); the forbidden-concept audit BUILT (`conjecture/audit.py`, kernel side: identifiers and non-docstring strings of the research plane and the manifest, scanned for the hidden concept's stems; the research plane is clean); family B TRANSCRIBED (`conjecture/invariants.py`, `conjecture/wowii.py`: 53 Graffiti statements, semantic checks in `tests_genesis/test_wowii.py`) and POSED as text, with its domain (`conjecture/statement.py`, `conjecture/invariant_domain.py`, `wowii.verifier`, checked by two independent invariant implementations, `invariants.py` and kernel-side `invariants_ref.py`); faster invariants and the study are still to write | §7b |
+| PT-1 = B20_R159 | Parts 3–5 machinery BUILT (`frontier/procedure.py`); the forbidden-concept audit BUILT (`conjecture/audit.py`, kernel side: identifiers and non-docstring strings of the research plane and the manifest, scanned for the hidden concept's stems; the research plane is clean); family B TRANSCRIBED (`conjecture/invariants.py`, `conjecture/wowii.py`: 53 Graffiti statements, semantic checks in `tests_genesis/test_wowii.py`) and POSED as text, with its domain (`conjecture/statement.py`, `conjecture/invariant_domain.py`, `wowii.verifier`, checked by two independent invariant implementations, `invariants.py` and kernel-side `invariants_ref.py`; faster exact invariants, search up to 16 vertices); the study is still to write | §7b |
 
 **Run each study from a clean worktree of its preregistration commit** (`git worktree add --detach <path> <commit>`).
 The study scripts check their module pins at run time. The design tests check the pins at the preregistration

@@ -7,7 +7,7 @@ the Frontier, its representations, its abstraction and its extracted procedures 
     statuses stay kernel side);
   * statement: 'invariant: <text>';
   * approaches: the same representations and methods, at sizes small enough for the exhaustive invariants
-    (`DEFAULT_N`); a template abstracted here is searched only up to `max_n` vertices;
+    (`DEFAULT_N`); a template abstracted here is searched only up to `max_n` (16) vertices;
   * step: one attack whose objective is `statement.Statement(text).score`, positive exactly when the statement is
     violated (exact verdict, float score). Artifacts are the conjecture domain's: fingerprint, signature, score,
     n, edges (the eigenvector there is unused here).
@@ -18,7 +18,7 @@ from . import domain as CD
 from . import statement as ST
 
 DEFAULT_N = (6, 8, 10, 12)
-MAX_N = 14
+MAX_N = 16
 
 
 class InvariantDomain(CD.ConjectureDomain):
