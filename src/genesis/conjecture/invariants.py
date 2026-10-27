@@ -650,6 +650,34 @@ def _path_search(G, budget):
         return None
 
 
+def _not_traceable(G):
+    """Necessary conditions for a Hamiltonian path, each exact when it says no: removing a set S of one or two
+    vertices may leave at most |S| + 1 components; a bipartite graph's sides differ by at most one."""
+    n = G.n
+    for v in range(n):
+        if G.components_within(G.full & ~(1 << v)) >= 3:
+            return True
+    for u in range(n):
+        for v in range(u + 1, n):
+            if G.components_within(G.full & ~(1 << u) & ~(1 << v)) >= 4:
+                return True
+    if G.bipartite_within(G.full):
+        side, colour = 0, {0: 0}                         # 2-colour by BFS; G is connected here
+        frontier = [0]
+        while frontier:
+            nxt = []
+            for x in frontier:
+                for y in _bits(G.adj[x]):
+                    if y not in colour:
+                        colour[y] = 1 - colour[x]
+                        nxt.append(y)
+            frontier = nxt
+        side = sum(colour.values())
+        if abs(n - 2 * side) > 1:
+            return True
+    return False
+
+
 @_cached
 def hamiltonian_path(G):
     """Whether G has a Hamiltonian path. A disconnected graph, or one with more than two vertices of degree at most
@@ -659,9 +687,8 @@ def hamiltonian_path(G):
         return True
     if not G.connected() or sum(1 for d in G.degrees() if d <= 1) > 2:
         return False
-    for v in range(n):                                   # a vertex whose removal leaves 3 or more components
-        if G.components_within(G.full & ~(1 << v)) >= 3:
-            return False
+    if _not_traceable(G):
+        return False
     found = _path_search(G, budget=200 * n * n)
     if found is not None:
         return found
@@ -678,6 +705,19 @@ def min_spanning_paths(G):
     n = G.n
     if hamiltonian_path(G):
         return 1
+    leaves = sum(1 for v in range(n) if G.degree(v) <= 1)
+    lower = max(2, (leaves + 1) // 2)
+    # G is covered by k paths exactly when G joined to k - 1 new independent vertices has a Hamiltonian path (they
+    # link consecutive paths). A pruned search settles most k quickly; the exact split search below decides the rest.
+    for k in range(lower, n + 1):
+        joined = Graph(n + k - 1, list(G.edges) + [(u, n + j) for j in range(k - 1) for u in range(n)])
+        found = False if _not_traceable(joined) else _path_search(joined, budget=50 * n * n)
+        if found is True:
+            return k
+        if found is None:
+            break                                       # undecided: the exact search decides from here
+    else:
+        return n
     reach = _path_ends_table(G)
 
     @lru_cache(maxsize=None)
@@ -694,8 +734,7 @@ def min_spanning_paths(G):
             if sub == 0:
                 return False
             sub = (sub - 1) & rest
-    leaves = sum(1 for v in range(n) if G.degree(v) <= 1)
-    for k in range(max(2, (leaves + 1) // 2), n + 1):
+    for k in range(lower, n + 1):
         if splits(G.full, k):
             return k
     return n

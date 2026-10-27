@@ -736,7 +736,11 @@ to be preregistered when F1–F5 have run:
   - the induced forest: branch and bound with component tracking;
   - b: branch and bound with two-sided components;
   - 2-independence: branch and bound under the bound 2α;
-  - the Hamiltonian path: a depth-first search that cuts on connectivity and dead ends, with a cut-vertex test.
+  - the Hamiltonian path: a depth-first search that cuts on connectivity and dead ends, after exact necessary
+    conditions: removing one or two vertices leaves at most one or two more components, and a bipartite graph's
+    sides differ by at most one;
+  - the spanning-paths number (open statement 40): G has k covering paths exactly when G joined to k − 1 new
+    independent vertices has a Hamiltonian path. That is tried first, with the exact split search behind it.
   Each agrees with the subset search, or with the kernel's reference, on all atlas graphs and on 400 to 500
   random graphs.
   - **The cost of one statement on a random graph:** 2.7 ms at 16 vertices (was 22.5), 6.6 ms at 18 and 12 ms at
