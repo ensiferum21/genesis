@@ -644,9 +644,28 @@ to be preregistered when F1–F5 have run:
 - **One rename, disclosed.** WOWII's "path cover number" is `min_spanning_paths` in the research plane, because the
   forbidden-concept audit forbids the stem *cover*. The concept, the fewest vertex-disjoint paths that contain every
   vertex, is unrelated to the hidden reference. The audit itself is unchanged and was not relaxed.
+- **Posed as text, with a domain** (28 Oct 2026, 00:20 SGT):
+  - `conjecture/statement.py` (research plane) is a statement language: `[condition ->] condition` over the
+    invariants by name, set functions, `@complement` and `@square`, and Lean's conventions (x / 0 = 0, natural
+    floor division, remainder and truncated subtraction). Values are exact: numbers p + q√s decide the ceilings,
+    floors and comparisons of square roots.
+  - `wowii.TEXT` (kernel side) poses each of the 53 statements as text, written a second time from the Lean text.
+    The two transcriptions agree, in verdict and, for plain inequalities, in margin. They were compared on all 995
+    connected graphs of 2 to 7 vertices, on 60 random graphs of 8 to 10 vertices, and on the 15 counterexamples.
+    The comparison first caught a bug in the language: √1 evaluated to 0. Both transcriptions are the builder's, so
+    this is a consistency check, not an independent source.
+  - `conjecture/invariant_domain.py` (research plane) is the conjecture domain with the statement as the objective.
+    The score is positive exactly when the statement is violated. The representations, methods, abstraction and
+    procedures are unchanged; sizes are 6 to 12, and graphs above 14 vertices score −∞. `attack.Runner` now takes
+    any objective (`objective=`).
+  - `wowii.verifier` (kernel side) checks a claimed counterexample with the kernel's own transcription. **A
+    limitation:** that check still shares `invariants.py` with the research plane. An independent kernel-side
+    implementation of the invariants is due before PT-1 is preregistered.
+  - End to end, on invented statements only (B stays sealed), the Frontier refuted the two false ones (α ≤ Δ;
+    girth ≤ 4 → Hamiltonian path) and none of the three true ones.
 - **Still to build before PT-1 can be preregistered:**
-  - a research-plane domain adapter for B. It would search graphs against a statement's exact margin. It would also
-    let the Frontier's representations and procedures run there unchanged;
+  - the independent kernel-side invariants;
+  - faster exact invariants: several B counterexamples have 17 to 20 vertices, beyond the current limit of 14;
   - the PT-1 study script: the inadequacy gate on A, parts 1–5, and family C.
 
 **Verdicts.**
@@ -719,7 +738,7 @@ to be preregistered when F1–F5 have run:
 | F3 = B20_R156 | PREREGISTERED, amended before it ran (`4a7e193`, sha256 `9ae034db…353a`) | `scripts/b20r156_frontier_worlds.py` |
 | F4 = B20_R157 | PREREGISTERED (`bdf0c57`, sha256 `49b171f9…1904`) | `scripts/b20r157_laplacian_bounds.py` |
 | F5 = B20_R158 | PREREGISTERED (sha256 `50d2de64a7ad…`; runs after B20_R157): FULL (procedures, abstraction, templates carried over) against PLAIN on Genesis's own conjectures, three generations, McNemar | `scripts/b20r158_open_conjectures.py` |
-| PT-1 = B20_R159 | Parts 3–5 machinery BUILT (`frontier/procedure.py`); the forbidden-concept audit BUILT (`conjecture/audit.py`, kernel side: identifiers and non-docstring strings of the research plane and the manifest, scanned for the hidden concept's stems; the research plane is clean); family B TRANSCRIBED (`conjecture/invariants.py`, `conjecture/wowii.py`: 53 Graffiti statements, semantic checks in `tests_genesis/test_wowii.py`); B's domain adapter and the study are still to write | §7b |
+| PT-1 = B20_R159 | Parts 3–5 machinery BUILT (`frontier/procedure.py`); the forbidden-concept audit BUILT (`conjecture/audit.py`, kernel side: identifiers and non-docstring strings of the research plane and the manifest, scanned for the hidden concept's stems; the research plane is clean); family B TRANSCRIBED (`conjecture/invariants.py`, `conjecture/wowii.py`: 53 Graffiti statements, semantic checks in `tests_genesis/test_wowii.py`) and POSED as text, with its domain (`conjecture/statement.py`, `conjecture/invariant_domain.py`, `wowii.verifier`); independent kernel-side invariants, faster invariants and the study are still to write | §7b |
 
 **Run each study from a clean worktree of its preregistration commit** (`git worktree add --detach <path> <commit>`).
 The study scripts check their module pins at run time. The design tests check the pins at the preregistration

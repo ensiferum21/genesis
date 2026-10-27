@@ -11,6 +11,7 @@ import unittest
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / 'src'))
 from genesis.conjecture import invariants as I  # noqa: E402
+from genesis.conjecture import statement as ST  # noqa: E402
 from genesis.conjecture import wowii as W  # noqa: E402
 
 try:
@@ -28,12 +29,14 @@ def random_graph(rng, n, p):
     return I.Graph(n, [(u, v) for u in range(n) for v in range(u + 1, n) if rng.random() < p])
 
 
+_ATLAS = {}
+
+
 def connected_atlas(max_n):
-    out = []
-    for H in nx.graph_atlas_g():
-        if 2 <= H.number_of_nodes() <= max_n and nx.is_connected(H):
-            out.append(I.Graph(H.number_of_nodes(), list(H.edges())))
-    return out
+    if max_n not in _ATLAS:
+        _ATLAS[max_n] = [I.Graph(H.number_of_nodes(), list(H.edges())) for H in nx.graph_atlas_g()
+                         if 2 <= H.number_of_nodes() <= max_n and nx.is_connected(H)]
+    return _ATLAS[max_n]
 
 
 class Invariants(unittest.TestCase):
@@ -131,6 +134,8 @@ class Statements(unittest.TestCase):
             for name, value in stated.items():
                 self.assertEqual(W.stated_value(G, name), value, (k, name))
             self.assertGreater(W.margin(W.DISPROVED[k](G)), 0)
+            c = ST.Statement(W.TEXT[k], max_n=60).check(G)                 # the posed text agrees
+            self.assertTrue(c['violated'] and c['score'] > 0, k)
 
     def test_conjecture_34s_tree_partly(self):
         """The 39-vertex tree is beyond exhaustive search for path(G); for a tree it is the diameter plus one."""
@@ -148,6 +153,123 @@ class Statements(unittest.TestCase):
         self.assertEqual(bound, 12)
         self.assertEqual(I.diameter(G) + 1, 11)       # path(G) of a tree: its longest path
         self.assertGreater(bound, I.diameter(G) + 1)
+
+
+def _agree(test, k, G):
+    """The two transcriptions give the same verdict; the posed text's score is positive exactly when violated; for a
+    plain inequality, the score is the kernel's margin lhs - rhs (plus 1 when violated)."""
+    r, c = W.ALL[k][1](G), ST.Statement(W.TEXT[k], max_n=60).check(G)
+    test.assertEqual(c['violated'], W.violated(r), (k, G.n, G.edges))
+    test.assertEqual(c['score'] > 0, c['violated'], (k, G.n, G.edges))
+    if r['kind'] == 'ineq' and ST.parse(W.TEXT[k])[1] is None:
+        test.assertAlmostEqual(c['score'] - (1.0 if c['violated'] else 0.0),
+                               float(r['lhs'] - r['rhs']) if c['violated'] else min(0.0, float(r['lhs'] - r['rhs'])),
+                               places=9, msg=(k, G.n, G.edges))
+
+
+class PosedText(unittest.TestCase):
+    """The statements as the research plane receives them (`wowii.TEXT`, `statement.py`)."""
+
+    def test_every_statement_is_posed_and_parses(self):
+        self.assertEqual(set(W.TEXT), set(W.ALL))
+        for k, text in W.TEXT.items():
+            ST.parse(text)
+
+    @unittest.skipIf(nx is None, 'networkx is not installed')
+    def test_the_two_transcriptions_agree_on_every_connected_graph_up_to_7_vertices(self):
+        for G in connected_atlas(7):
+            for k in W.TEXT:
+                _agree(self, k, G)
+
+    def test_the_two_transcriptions_agree_on_random_graphs_of_8_to_10_vertices(self):
+        rng = random.Random(7)
+        done = 0
+        while done < 60:
+            n = rng.randint(8, 10)
+            G = random_graph(rng, n, rng.choice([0.25, 0.4, 0.6]))
+            if G.connected():
+                for k in W.TEXT:
+                    _agree(self, k, G)
+                done += 1
+
+
+class StatementLanguage(unittest.TestCase):
+    def test_exact_square_roots(self):
+        self.assertEqual(ST.sqrt(4), 2)
+        self.assertEqual(ST.sqrt(Fraction(9, 4)), Fraction(3, 2))
+        self.assertEqual(ST.sqrt(0), 0)
+        self.assertEqual(ST.sqrt(-3), 0)                              # Lean's Real.sqrt
+        r8, r2 = ST.sqrt(8), ST.sqrt(2)
+        self.assertEqual((r8.q, r8.s, r2.q, r2.s), (2, 2, 1, 2))      # sqrt 8 = 2 sqrt 2
+        self.assertEqual(ST.sub(r8, ST.mul(2, r2)), 0)
+        self.assertEqual(ST.mul(r2, r2), 2)
+        self.assertEqual(ST.div(1, r2), ST.mul(Fraction(1, 2), r2))
+        with self.assertRaises(ValueError):
+            ST.add(ST.sqrt(2), ST.sqrt(3))
+
+    def test_signs_floors_and_ceilings_match_high_precision(self):
+        from decimal import Decimal, getcontext
+        getcontext().prec = 80
+        rng = random.Random(13)
+        for _ in range(3000):
+            p = Fraction(rng.randint(-500, 500), rng.randint(1, 30))
+            q = Fraction(rng.randint(-50, 50), rng.randint(1, 30))
+            s = rng.choice([2, 3, 5, 6, 7, 10, 11, 13, 17, 19, 23, 29, 30])
+            x = ST.Surd.make(p, q, s)
+            ref = Decimal(p.numerator) / Decimal(p.denominator) + \
+                Decimal(q.numerator) / Decimal(q.denominator) * Decimal(s).sqrt()
+            self.assertEqual(ST.sign(x), (ref > 0) - (ref < 0))
+            self.assertEqual(ST.floor(x), math.floor(ref))
+            self.assertEqual(ST.ceil(x), math.ceil(ref))
+
+    def test_lean_conventions(self):
+        P3 = I.Graph(3, [(0, 1), (1, 2)])
+        ctx = ST._Context(P3)
+        ev = lambda t: ST.value(ST._Parser(ST.tokens(t)).expr(), ctx)
+        self.assertEqual(ev('5/0'), 0)
+        self.assertEqual(ev('idiv(7, 2)'), 3)
+        self.assertEqual(ev('idiv(7, 0)'), 0)
+        self.assertEqual(ev('mod(7, 0)'), 7)
+        self.assertEqual(ev('nat_sub(2, 5)'), 0)
+        self.assertEqual(ev('ceil(1/2*sqrt(8))'), 2)
+        self.assertEqual(ev('n + deg_sq_sum@complement'), 3 + 2)       # the complement of P3 is K2 + K1
+        self.assertEqual(ev('cond(has_c4, 1, avg_l)'), Fraction(4, 3))
+        self.assertEqual(ev('ind(alpha == 2)'), 1)
+
+    def test_malformed_statements_are_refused(self):
+        for bad in ('alpha <=', 'foo <= 1', 'dist_min(alpha) <= 1', 'alpha@cube <= 1', 'ceil(1, 2) <= 1',
+                    'alpha <= 1 -> b <= 2 -> n <= 3', '$ <= 1'):
+            with self.assertRaises(ValueError, msg=bad):
+                ST.parse(bad)
+
+
+class Domain(unittest.TestCase):
+    def test_the_frontier_refutes_invented_false_statements_and_never_the_true(self):
+        """On invented statements only (family B stays sealed): two false, three true."""
+        from genesis.conjecture.invariant_domain import InvariantDomain
+        from genesis.frontier.engine import Frontier
+        from genesis.frontier.manifest import Manifest
+        posed = {'p1': 'alpha <= max_degree', 'p2': 'matching <= idiv(n, 2)', 'p3': 'radius <= diameter',
+                 'p4': 'girth <= 4 -> ham_path', 'p5': 'diameter <= 2*radius'}
+
+        def verify(pid, art):                       # a stand-in kernel check for invented statements
+            G = I.Graph(art['n'], [tuple(e) for e in art['edges']])
+            return 1.0 if G.connected() and ST.Statement(posed[pid]).check(G)['violated'] else 0.0
+        dom = InvariantDomain(posed, n_values=(6, 8))
+        e = Frontier(Manifest(dom, verify, budget=4000, quantum=100), 'frontier', seed=2)
+        e.run()
+        self.assertEqual({k for k, v in e.best_verified.items() if v > 0}, {'p1', 'p4'})
+        self.assertTrue(dom.statement('p1').startswith('invariant: '))
+
+    def test_the_kernel_verifier(self):
+        verify = W.verifier({'q': 32, 'r': 1})
+        P5 = {'n': 5, 'edges': [[0, 1], [1, 2], [2, 3], [3, 4]]}
+        self.assertEqual(verify('q', P5), 1.0)                       # the counterexample the source gives
+        self.assertEqual(verify('r', P5), 0.0)                       # a proved statement
+        self.assertEqual(verify('q', {'n': 5, 'edges': [[0, 1], [1, 2], [3, 4]]}), 0.0)    # disconnected
+        self.assertEqual(verify('q', {'n': 5, 'edges': [[0, 9]]}), 0.0)                     # out of range
+        self.assertEqual(verify('q', {'n': 'x', 'edges': []}), 0.0)
+        self.assertEqual(verify('missing', P5), 0.0)
 
 
 if __name__ == '__main__':

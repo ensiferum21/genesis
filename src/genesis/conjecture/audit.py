@@ -78,5 +78,5 @@ def research_plane(root):
                                                       'allocate.py', 'engine.py', 'manifest.py', 'procedure.py')]
     cj = [root / 'src/genesis/conjecture' / m for m in ('__init__.py', 'expr.py', 'graphs.py', 'attack.py',
                                                         'domain.py', 'abstraction.py', 'generate.py',
-                                                        'invariants.py')]
+                                                        'invariants.py', 'statement.py', 'invariant_domain.py')]
     return fr + cj

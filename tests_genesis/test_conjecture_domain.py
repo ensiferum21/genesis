@@ -17,7 +17,7 @@ from genesis.conjecture import verify as V  # noqa: E402
 
 PKG = ROOT / 'src' / 'genesis' / 'conjecture'
 RESEARCH_PLANE = ('__init__.py', 'expr.py', 'graphs.py', 'attack.py', 'domain.py', 'abstraction.py',
-                  'generate.py', 'invariants.py')
+                  'generate.py', 'invariants.py', 'statement.py', 'invariant_domain.py')
 KERNEL_SIDE = ('sealed.py', 'verify.py', 'audit.py', 'wowii.py')
 P3 = (3, ((0, 1), (1, 2)))
 MERRIS = 'd + m'                                 # proved (Merris 1998), tight on P3 and on regular bipartite graphs

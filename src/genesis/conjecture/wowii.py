@@ -295,6 +295,68 @@ ALL = {**{k: ('proved', f) for k, f in PROVED.items()}, **{k: ('disproved', f) f
        **{k: ('open', f) for k, f in OPEN.items()}}
 
 
+# ------------------------------------------------------------------------------- the statements as posed
+# What the research plane is given: each statement as text in its statement language (`statement.py`), written a
+# second time from the Lean text, not from the evaluators above. The two transcriptions are compared on every
+# connected graph up to 7 vertices, on the documented counterexamples and on random graphs
+# (`tests_genesis/test_wowii.py`). Both are the builder's, so this is a consistency check, not an independent source.
+TEXT = {
+    1: 'n + 1 - 2*matching <= ls',
+    2: '2*(avg_l - 1) <= ls',
+    3: 'indep_dom*max_temp <= ls',
+    4: 'ng - 1 <= ls',
+    5: 'sphere_max <= ls',
+    6: '1 + n - matching - alpha <= ls',
+    7: 'max_l - 1 + n - 2*alpha <= ls',
+    13: 'diameter + max_l - 1 <= b',
+    16: '2*(radius - 1) + max_l <= b',
+    17: 'alpha + ceil(diameter/3) <= b',
+    18: 'alpha + ceil(sqrt(dist_max(max_degree_vertices))) <= b',
+    19: 'floor(avg_ecc + max_l) <= b',
+    20: 'n / floor(avg_degree) <= b',
+    23: 'floor(alpha + dist_avg(max_degree_vertices)/2) <= b',
+    24: 'max_l + ceil(min_dist_even/3) <= b',
+    25: '2*ceil((1 + min_dist_even)/3) <= b',
+    31: '2*radius - 1 <= path',
+    32: 'dist_avg(min_degree_vertices) + 1/2*ecc_avg(max_degree_vertices) <= path',
+    33: 'ceil(2*dist_avg_all(max_degree_vertices)) <= path',
+    34: 'ceil(dist_avg_all(center) + dist_avg_all(max_degree_vertices)) <= path',
+    36: 'dp > 0 -> 2*radius/dp <= path',
+    40: 'ceil((spanning_paths + b + 1)/2) <= forest',
+    58: 'max(0, ceil(b/avg_l)) <= forest',
+    59: 'ceil(sqrt(residue*b)) <= forest',
+    61: 'residue + ceil(diameter/3) <= forest',
+    63: 'ceil((min_dist_even + b + 1)/3) <= forest',
+    64: 'ceil(sqrt(alpha*(1 + mod(n, max_degree)))) <= forest',
+    65: 'dist_min(min_degree_vertices) + ceil(dist_min(max_degree_vertices)/3) <= forest',
+    72: 'ceil(avg_ecc + max_l/3) <= tree',
+    84: 'min_degree > 0 -> 2*radius/min_degree <= tree',
+    85: 'ceil(sqrt(1 + 2*min_dist_even)) <= tree',
+    91: 'b <= 1 + forest*ceil(avg_l)/2',
+    96: 'alpha <= 1 + min_dist_even*(max_l - 1)',
+    100: 'alpha <= ceil((max_l + 1/2*sqrt(deg_sq_sum@complement))/2)',
+    101: 'alpha <= idiv(n + alpha_core, 2)',
+    109: 'alpha <= floor((residue + 2*b)/3)',
+    133: 'radius + cond(has_c4, 1, avg_l) <= path',
+    141: 'girth/2 - 1 + max_l <= tree',
+    142: '2/3*girth + ecc_set(periphery) <= tree',
+    143: 'second_degree > 0 -> girth + 1 <= tree*second_degree',
+    144: 'girth - 1 + ecc_to(center) <= tree',
+    145: 'min_l@complement > 0 -> 2*ecc_set(periphery) <= tree*min_l@complement',
+    146: 'radius@square > 0 -> 2*ecc_set(periphery) <= tree*radius@square',
+    172: '-1 + max_degree_on(periphery) + dist_min(square_max_degree_vertices) <= ls',
+    176: 'n + dist_min(square_max_degree_vertices) <= ls + b',
+    181: 'alpha + avg_degree_on(periphery)@square <= ls + b',
+    189: 'max_dist_even <= 1 + second_degree -> ham_path',
+    194: 'alpha <= 1 + avg_l -> ham_path',
+    '198a': 'b <= 2 + avg_ecc -> ham_path',
+    199: 'nat_sub(tree, 2) <= kappa -> ham_path',
+    200: 'tree == ceil(1 + avg_l) -> ham_path',
+    217: 'ls <= 4*ind(residue == 2) + 2 -> ham_path',
+    '430a': 'n > 3 -> indep_dom <= center_neigh_alpha + 2*floor(caro_wei - 1)',
+}
+
+
 # ------------------------------------------------------------------------------- documented counterexamples
 # The disproved statements whose Lean files describe an explicit counterexample, rebuilt here from that text, with
 # the invariant values the text states. They check the transcription: each must violate its statement, and the
@@ -384,6 +446,24 @@ def stated_value(G, name):
     if name == 'min_dist_even':
         return min_dist_even(G)
     return getattr(I, name)(G)
+
+
+def verifier(posed, max_n=20):
+    """For a study (kernel side): verify(pid, artifact) -> 1.0 if the artifact's graph is connected and violates the
+    posed statement by this module's transcription, else 0.0. `posed` is {id: statement number}; artifacts are those
+    of `conjecture.invariant_domain` (n, edges)."""
+    def verify(pid, art):
+        try:
+            n, edges = int(art['n']), [tuple(int(x) for x in e) for e in art['edges']]
+            if not 2 <= n <= max_n or any(not (0 <= u < n and 0 <= v < n) for u, v in edges):
+                return 0.0
+            G = I.Graph(n, edges)
+            if not G.connected():
+                return 0.0
+            return 1.0 if violated(ALL[posed[pid]][1](G)) else 0.0
+        except (KeyError, ValueError, TypeError, IndexError):
+            return 0.0
+    return verify
 
 
 def violated(result):
