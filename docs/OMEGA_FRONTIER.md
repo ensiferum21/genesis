@@ -646,10 +646,18 @@ to be preregistered when F1–F5 have run:
   path number, Ls, the dominations, the Havel–Hakimi residue, distances to sets, and Hamiltonian paths. The
   independence number uses exact branching on vertex masks. The rest use exhaustive subset search, which is
   practical to about 16 vertices.
-- `conjecture/wowii.py` (kernel side): 53 of the 63 statements, transcribed into exact evaluators.
-  - Statuses: 23 proved, 21 disproved, 9 open. They were checked against the Lean categories and each statement's
+- `conjecture/wowii.py` (kernel side): all 63 statements, transcribed into exact evaluators.
+  - Statuses: 29 proved, 25 disproved, 9 open. They were checked against the Lean categories and each statement's
     leading negation.
-  - Not transcribed: 103, 160, 291, 309, 314, 315, 316, 322, 327 and 438b.
+  - Ten were first left out and added on 28 Oct 2026, 00:57 SGT: 103, 160, 291, 309, 314, 315, 316, 322, 327 and
+    438b. They needed a logarithm decided exactly, well-total-domination, triangles, the Havel–Hakimi zero step,
+    even-horizontal edges and 2-independence.
+  - The new statements' checks:
+    - the proved ones hold on all 995 small graphs;
+    - none of the new disproved ones has a counterexample that small;
+    - the documented counterexamples of 103 (11 vertices), 309 (C5[K3]) and 327 (12 vertices) violate their
+      statements with the stated values, under both implementations and in the posed text. That makes 18
+      documented counterexamples in all.
   - Lean's conventions are kept: real division by zero is 0; natural subtraction and division truncate; ceilings of
     square roots are exact.
 - **Semantic checks** (`tests_genesis/test_wowii.py`):
@@ -753,6 +761,20 @@ and the audit checks names, not ideas.
 and 3 as variants, and let the inadequacy gate and the audit judge. Whatever is chosen is labelled as the
 builder's, and the test reports which mechanism produced part 1. This decision is Daniel's: it sets what "without
 specifying the missing concept" means in practice.
+
+**Decided (Daniel, 28 Oct 2026, 00:53 SGT): "Do the hardest so it proves it can find its way."** PT-1 allows only
+mechanisms 1 and 4, the two that hand over nothing.
+- **Mechanism 1, library learning over Γ:** named pieces abstracted from Genesis's own constructions.
+- **Mechanism 4, operators acting on Γ's operations:**
+  - an operation such as the cartesian product is a rule on pairs of vertex pairs, in terms of equality and
+    adjacency in each factor;
+  - Genesis may mutate and recombine such rules over the whole rule space, with no rule favoured and an exact
+    decoder kept.
+
+Mechanisms 2 and 3 are excluded from PT-1 entirely. If part 1 fails, they may run afterwards as diagnostics,
+labelled as such, and they never count toward PROVED_OUT. The risk is accepted: Genesis may not find its way, and
+that is then the recorded result. Both allowed mechanisms are the builder's machinery and are labelled so. What
+they produce on A is Genesis's.
 
 **Verdicts.**
 - PROVED_OUT only if all five pass.

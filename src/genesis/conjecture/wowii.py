@@ -11,9 +11,9 @@ Each statement is transcribed from its Lean text into `evaluate(G)`, exact on a 
 Real division by zero is 0, as in Lean; natural subtraction and division truncate where Lean's do; every square root
 appears under a ceiling and is computed exactly (`ceil_sqrt`, `ceil_affine_sqrt`).
 
-Not transcribed (their definitions need more machinery): 103 (a logarithm), 160, 291, 309, 314, 315, 316, 322, 327,
-438b. Kept: 53 of the 63 (23 proved, 21 disproved, 9 open); their statuses were checked against the Lean
-categories and the leading negation of each statement.
+All 63 are transcribed: 29 proved, 25 disproved, 9 open. The statuses were checked against the Lean categories and
+the leading negation of each statement. The last ten (103, 160, 291, 309, 314, 315, 316, 322, 327, 438b) were
+added on 28 Oct 2026, with a logarithm decided exactly (`floor_minus_ln`) and well-total-domination.
 """
 from fractions import Fraction
 import math
@@ -318,12 +318,66 @@ def _s199(G):
     return imp(max(0, I.largest_induced_tree(G) - 2) <= I.vertex_connectivity(G), I.hamiltonian_path(G))
 
 
+
+# added 28 Oct 2026: the ten statements first left out
+def floor_minus_ln(a, x):
+    """floor(a - ln x) for rationals a and x > 0, exactly: ln x is irrational unless x = 1 (Lindemann), so 90 digits
+    decide the floor; the evaluation raises if the value comes within 1e-60 of an integer."""
+    from decimal import Decimal, localcontext
+    a, x = Fraction(a), abs(Fraction(x))
+    if x == 1 or x == 0:                               # Lean: Real.log 1 = Real.log 0 = 0
+        return math.floor(a)
+    with localcontext() as c:
+        c.prec = 90
+        v = Decimal(a.numerator) / Decimal(a.denominator) - (Decimal(x.numerator) / Decimal(x.denominator)).ln()
+        k = int(v.to_integral_value(rounding='ROUND_FLOOR'))
+        if v - k < Decimal('1e-60') or (k + 1) - v < Decimal('1e-60'):
+            raise ValueError('floor(a - ln x) too close to an integer to decide')
+    return k
+
+
+def _s103(G): return ineq(I.indep_num(G), floor_minus_ln(I.b(G), I.average_eccentricity(G)))
+def _s160(G): return ineq(max_indep_neighbours(G) + I.max_triangles(G) * (0 if has_c4(G) else 1), I.ls(G))
+
+
+def _s291(G):
+    if G.n <= 2:
+        return vacuous()
+    return ineq(I.total_domination_number(G), I.hh_zero_step(G) + I.freq_min_triangles(G))
+
+
+def _s309(G):
+    mt = I.min_complement_edge_neighbourhood(G)
+    if G.n <= 2 or mt is None:
+        return vacuous()
+    return ineq(I.total_domination_number(G), Fraction(I.max_even_correction(G) + mt, 2))
+
+
+def _s314(G): return imp(I.triangle_free(G) and I.path_number(G) <= 4, I.well_totally_dominated(G))
+def _s315(G): return imp(I.indep_num(G) == I.pendants(G), I.well_totally_dominated(G))
+def _s316(G): return imp(I.average_degree(G.complement()) <= I.pendants(G), I.well_totally_dominated(G))
+
+
+def _s322(G):
+    return imp(G.n >= 5 and I.max_indep_neighbours(G.complement()) <= 1, I.well_totally_dominated(G))
+
+
+def _s327(G): return imp(3 * I.domination_number(G) == I.indep_domination_number(G), I.well_totally_dominated(G))
+
+
+def _s438b(G):
+    if G.n <= 3:
+        return vacuous()
+    low = I.low_degree_vertices(G)
+    high = [v for v in range(G.n) if v not in low]
+    return ineq(I.alpha_two(G), I.indep_num(G) + I.indep_on(G, high) + I.internal_edges(G, low))
+
 PROVED = {1: _s1, 2: _s2, 3: _s3, 4: _s4, 5: _s5, 6: _s6, 7: _s7, 13: _s13, 16: _s16, 17: _s17, 18: _s18, 20: _s20,
           31: _s31, 100: _s100, 101: _s101, 141: _s141, 142: _s142, 143: _s143, 144: _s144, 145: _s145, 146: _s146,
-          '198a': _s198a, 217: _s217}
+          '198a': _s198a, 217: _s217, 160: _s160, 314: _s314, 315: _s315, 316: _s316, 322: _s322, '438b': _s438b}
 DISPROVED = {23: _s23, 24: _s24, 25: _s25, 32: _s32, 33: _s33, 34: _s34, 36: _s36, 58: _s58, 59: _s59, 63: _s63,
              64: _s64, 65: _s65, 85: _s85, 91: _s91, 109: _s109, 172: _s172, 176: _s176, 181: _s181, 194: _s194,
-             200: _s200, '430a': _s430a}
+             200: _s200, '430a': _s430a, 103: _s103, 291: _s291, 309: _s309, 327: _s327}
 OPEN = {19: _s19, 40: _s40, 61: _s61, 72: _s72, 84: _s84, 96: _s96, 133: _s133, 189: _s189, 199: _s199}
 ALL = {**{k: ('proved', f) for k, f in PROVED.items()}, **{k: ('disproved', f) for k, f in DISPROVED.items()},
        **{k: ('open', f) for k, f in OPEN.items()}}
@@ -388,6 +442,16 @@ TEXT = {
     200: 'tree == ceil(1 + avg_l) -> ham_path',
     217: 'ls <= 4*ind(residue == 2) + 2 -> ham_path',
     '430a': 'n > 3 -> indep_dom <= center_neigh_alpha + 2*floor(caro_wei - 1)',
+    103: 'alpha <= floor(b - ln(avg_ecc))',
+    160: 'max_l + max_triangles*cond(has_c4, 0, 1) <= ls',
+    291: 'n > 2 -> total_dom <= hh_zero_step + freq_min_triangles',
+    309: 'n > 2 & has_comp_edge -> total_dom <= (max_even_correction + min_comp_edge_nbhd)/2',
+    314: 'triangle_free & path <= 4 -> wtd',
+    315: 'alpha == pendants -> wtd',
+    316: 'avg_degree@complement <= pendants -> wtd',
+    322: 'n >= 5 & max_l@complement <= 1 -> wtd',
+    327: '3*domination == indep_dom -> wtd',
+    '438b': 'n > 3 -> alpha_two <= alpha + indep_on(high_degree_vertices) + internal_edges(low_degree_vertices)',
 }
 
 
@@ -395,7 +459,7 @@ TEXT = {
 # The disproved statements whose Lean files describe an explicit counterexample, rebuilt here from that text, with
 # the invariant values the text states. They check the transcription: each must violate its statement, and the
 # stated values must come out. Not rebuilt: 23, 24, 25, 33 (no graph given), 34 (a 39-vertex tree; partial check in
-# the tests), 58 (79 vertices, beyond exhaustive search).
+# the tests), 58 (79 vertices, beyond exhaustive search), 291 (a 12-vertex graph not given in the file).
 
 def _from_graph6(s):
     n = ord(s[0]) - 63
@@ -452,6 +516,19 @@ def chain_hub_leaves():
                    + [(10, v) for v in range(11, 18)])
 
 
+def c5_kk(k):
+    """The lexicographic product C5[K_k]: vertex k i + a; adjacent within a blob or between consecutive blobs."""
+    return I.Graph(5 * k, [(k * i + a, k * j + c) for i in range(5) for j in range(5) for a in range(k) for c in range(k)
+                           if (k * i + a) < (k * j + c) and (i == j or (i - j) % 5 in (1, 4))])
+
+
+def c327():
+    """Conjecture 327's graph: u = 0, v = 1, a_i = 2 + i, b_i = 7 + i; uv, u a_i, v b_i, and six cross edges."""
+    a, b = (lambda i: 2 + i), (lambda i: 7 + i)
+    cross = [(a(0), b(3)), (a(1), b(3)), (a(2), b(0)), (a(3), b(0)), (a(4), b(3)), (a(4), b(4))]
+    return I.Graph(12, [(0, 1)] + [(0, a(i)) for i in range(5)] + [(1, b(i)) for i in range(5)] + cross)
+
+
 COUNTEREXAMPLES = {
     32: (lambda: path_graph(5), {'path_number': 5}),
     36: (lambda: I.Graph(10, [(0, 4), (0, 5), (0, 7), (0, 8), (1, 4), (1, 6), (1, 7), (1, 8), (2, 8), (3, 7), (5, 9),
@@ -473,6 +550,10 @@ COUNTEREXAMPLES = {
     194: (lambda: _from_graph6('Q~~~~~~~~~~~~}~}^~??G??_??_'), {'indep_num': 4, 'hamiltonian_path': False}),
     200: (lambda: _from_graph6('J??FFBRq}N_'), {'largest_induced_tree': 4, 'hamiltonian_path': False}),
     '430a': (lambda: clique_blowup_path((1, 4, 12, 19, 12, 4, 1)), {'indep_domination_number': 3}),
+    103: (lambda: I.Graph(11, [(0, 1), (0, 2), (1, 2)] + [(0, v) for v in range(3, 7)] + [(1, v) for v in range(7, 11)]),
+          {'indep_num': 9, 'b': 10, 'average_eccentricity': Fraction(30, 11)}),
+    309: (lambda: c5_kk(3), {}),
+    327: (c327, {'domination_number': 2, 'indep_domination_number': 6, 'well_totally_dominated': False}),
 }
 
 

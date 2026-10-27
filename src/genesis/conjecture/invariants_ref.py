@@ -363,3 +363,97 @@ def dp(G):
 
 def square(G):
     return Graph(G.n, list(nx.power(G.H, 2).edges()))
+
+
+# ------------------------------------------------------------------------------------------- added 28 Oct 2026
+
+def domination_number(G):
+    return _smallest(G, lambda S: len(S) > 0 and nx.is_dominating_set(G.H, S))
+
+
+def total_domination_number(G):
+    return _smallest(G, lambda S: len(S) > 0 and all(any(w in S for w in G.H[v]) for v in range(G.n)))
+
+
+def triangles_at(G, v):
+    return nx.triangles(G.H, v)
+
+
+def max_triangles(G):
+    return max(nx.triangles(G.H).values())
+
+
+def freq_min_triangles(G):
+    t = nx.triangles(G.H)
+    m = min(t.values())
+    return sum(1 for v in t if t[v] == m)
+
+
+def hh_zero_step(G):
+    """Lean's havelHakimiZeroStep, by its definition: iterate the step and stop at a zero or the empty list."""
+    def step(s):
+        if not s:
+            return []
+        d, rest = s[0], s[1:]
+        head, tail = rest[:d], rest[d:]
+        return sorted([x - 1 if x > 0 else 0 for x in head] + tail, reverse=True)
+    s = sorted(G.degrees(), reverse=True)
+    for i in range(G.n + 2):
+        if not s or 0 in s:
+            return i
+        s = step(s)
+    return G.n + 2
+
+
+def even_horizontal(G, v):
+    D = G.dist()[v]
+    return sum(1 for a, c in G.H.edges() if D[a] == D[c] and D[a] % 2 == 0)
+
+
+def max_even_correction(G):
+    return max(dist_even(G, v) - even_horizontal(G, v) for v in range(G.n))
+
+
+def min_complement_edge_neighbourhood(G):
+    C = nx.complement(G.H)
+    vals = [len(set(C[u]) | set(C[w])) for u, w in C.edges()]
+    return min(vals) if vals else None
+
+
+@_memo
+def well_totally_dominated(G):
+    """All minimal total dominating sets have one size, by enumerating vertex subsets."""
+    def total(S):
+        return all(any(w in S for w in G.H[v]) for v in range(G.n))
+    sizes = set()
+    for k in range(1, G.n + 1):
+        for S in combinations(range(G.n), k):
+            Sset = set(S)
+            if total(Sset) and all(not total(Sset - {v}) for v in S):
+                sizes.add(k)
+    return len(sizes) <= 1
+
+
+def pendants(G):
+    return sum(1 for v in range(G.n) if G.H.degree(v) == 1)
+
+
+def triangle_free(G):
+    return sum(nx.triangles(G.H).values()) == 0
+
+
+@_memo
+def alpha_two(G):
+    return _largest(G, lambda S: max((d for _, d in G.sub(S).degree()), default=0) <= 1)
+
+
+def low_degree_vertices(G):
+    return [v for v in range(G.n) if G.H.degree(v) <= 2]
+
+
+def indep_on(G, S):
+    return _alpha_of(G.sub(list(S)))
+
+
+def internal_edges(G, S):
+    return G.sub(list(S)).number_of_edges()

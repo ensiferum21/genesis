@@ -577,3 +577,98 @@ def dp(G):
 def square(G):
     D = G.dist()
     return Graph(G.n, [(u, v) for u in range(G.n) for v in range(u + 1, G.n) if D[u][v] <= 2])
+
+
+# ----------------------------------------------------------------------------------------------- added 28 Oct 2026
+# For the ten statements first left out (103, 160, 291, 309, 314, 315, 316, 322, 327, 438b).
+
+def triangles_at(G, v):
+    """numTrianglesAtVertex: the triangles (3-cliques) containing v."""
+    return sum(bin(G.adj[v] & G.adj[u]).count('1') for u in _bits(G.adj[v])) // 2
+
+
+def max_triangles(G):
+    return max(triangles_at(G, v) for v in range(G.n))
+
+
+def freq_min_triangles(G):
+    ts = [triangles_at(G, v) for v in range(G.n)]
+    return ts.count(min(ts))
+
+
+def hh_zero_step(G):
+    """havelHakimiZeroStep: the first i at which the i-th Havel-Hakimi iterate of the descending degree sequence
+    contains a zero or is empty (Lean's step: drop the head d, lower the next d entries by one, truncated at 0,
+    re-sort descending)."""
+    s, i = sorted(G.degrees(), reverse=True), 0
+    while s and 0 not in s:
+        d, rest = s[0], s[1:]
+        s = sorted([max(0, x - 1) for x in rest[:d]] + rest[d:], reverse=True)
+        i += 1
+    return i
+
+
+def even_horizontal(G, v):
+    """The edges whose two endpoints are at the same even distance from v."""
+    D = G.dist()[v]
+    return sum(1 for a, c in G.edges if D[a] == D[c] and D[a] % 2 == 0)
+
+
+def max_even_correction(G):
+    return max(dist_even(G, v) - even_horizontal(G, v) for v in range(G.n))
+
+
+def min_complement_edge_neighbourhood(G):
+    """The least |N(u) U N(w)| over the edges uw of the complement, neighbourhoods in the complement; None if the
+    complement has no edge."""
+    C = G.complement()
+    vals = [bin(C.adj[u] | C.adj[w]).count('1') for u, w in C.edges]
+    return min(vals) if vals else None
+
+
+@_cached
+def well_totally_dominated(G):
+    """Every minimal total dominating set has the same size (a graph with no total dominating set is vacuously
+    well totally dominated)."""
+    def total(S):
+        dom = 0
+        for v in _bits(S):
+            dom |= G.adj[v]
+        return dom == G.full
+    sizes = set()
+    for S in range(1, 1 << G.n):
+        if total(S) and all(not total(S & ~(1 << v)) for v in _bits(S)):
+            sizes.add(bin(S).count('1'))
+            if len(sizes) > 1:
+                return False
+    return True
+
+
+def pendants(G):
+    return sum(1 for d in G.degrees() if d == 1)
+
+
+def triangle_free(G):
+    return all(triangles_at(G, v) == 0 for v in range(G.n))
+
+
+@_cached
+def alpha_two(G):
+    """The largest vertex set whose induced subgraph has maximum degree at most 1."""
+    return _max_subset(G, lambda S: all(bin(G.adj[v] & S).count('1') <= 1 for v in _bits(S)))
+
+
+def low_degree_vertices(G):
+    return [v for v in range(G.n) if G.degree(v) <= 2]
+
+
+def indep_on(G, S):
+    mask = 0
+    for v in S:
+        mask |= 1 << v
+    return indep_num_within(G, mask)
+
+
+def internal_edges(G, S):
+    S = set(S)
+    return sum(1 for a, c in G.edges if a in S and c in S)

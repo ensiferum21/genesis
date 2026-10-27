@@ -99,8 +99,8 @@ class ExactArithmetic(unittest.TestCase):
 
 class Statements(unittest.TestCase):
     def test_the_family(self):
-        self.assertEqual((len(W.PROVED), len(W.DISPROVED), len(W.OPEN)), (23, 21, 9))
-        self.assertEqual(len(W.ALL), 53)
+        self.assertEqual((len(W.PROVED), len(W.DISPROVED), len(W.OPEN)), (29, 25, 9))
+        self.assertEqual(len(W.ALL), 63)
         self.assertFalse(set(W.PROVED) & set(W.DISPROVED) or set(W.PROVED) & set(W.OPEN)
                          or set(W.DISPROVED) & set(W.OPEN))
 
@@ -236,6 +236,21 @@ class StatementLanguage(unittest.TestCase):
         self.assertEqual(ev('cond(has_c4, 1, avg_l)'), Fraction(4, 3))
         self.assertEqual(ev('ind(alpha == 2)'), 1)
 
+    def test_logarithms_and_conjunctions(self):
+        b = ST.ln(Fraction(30, 11))                                    # 1 < ln(30/11) < 2 (conjecture 103's file)
+        self.assertEqual((ST.floor(ST.sub(10, b)), ST.ceil(ST.sub(10, b)), ST.sign(ST.sub(b, 1))), (8, 9, 1))
+        self.assertEqual(ST.ln(1), 0)
+        self.assertEqual(ST.ln(0), 0)
+        self.assertEqual(ST.floor(ST.mul(-2, ST.ln(Fraction(1, 3)))), 2)    # 2 ln 3 = 2.197...
+        with self.assertRaises(ValueError):
+            ST.sqrt(b)
+        self.assertEqual(W.floor_minus_ln(10, Fraction(30, 11)), 8)
+        self.assertEqual(W.floor_minus_ln(Fraction(7, 2), 1), 3)
+        P3 = I.Graph(3, [(0, 1), (1, 2)])
+        self.assertTrue(ST.Statement('n > 2 & alpha == 2 -> b <= 3').check(P3)['score'] <= 0)
+        self.assertTrue(ST.Statement('n > 2 & alpha == 2 -> b <= 2').check(P3)['violated'])
+        self.assertFalse(ST.Statement('n > 3 & alpha == 2 -> b <= 2').check(P3)['violated'])
+
     def test_malformed_statements_are_refused(self):
         for bad in ('alpha <=', 'foo <= 1', 'dist_min(alpha) <= 1', 'alpha@cube <= 1', 'ceil(1, 2) <= 1',
                     'alpha <= 1 -> b <= 2 -> n <= 3', '$ <= 1'):
@@ -279,7 +294,10 @@ class Reference(unittest.TestCase):
              'center', 'diameter', 'average_eccentricity', 'second_smallest_degree', 'min_degree_vertices',
              'matching_number', 'indep_domination_number', 'vertex_connectivity', 'ng', 'min_spanning_paths',
              'min_indep_neighbours', 'min_degree', 'max_temp', 'max_indep_neighbours', 'max_degree', 'eccentricities',
-             'dp', 'degree_l2_norm_squared', 'average_degree', 'alpha_core_size')
+             'dp', 'degree_l2_norm_squared', 'average_degree', 'alpha_core_size', 'domination_number',
+             'total_domination_number', 'max_triangles', 'freq_min_triangles', 'hh_zero_step', 'max_even_correction',
+             'min_complement_edge_neighbourhood', 'well_totally_dominated', 'pendants', 'triangle_free', 'alpha_two',
+             'low_degree_vertices')
 
     def test_it_shares_no_code_with_the_research_plane(self):
         import ast as pyast
@@ -313,7 +331,13 @@ class Reference(unittest.TestCase):
             for f in ('dist_min', 'ecc_set', 'dist_max_set', 'dist_avg_set'):
                 for S in ([0], list(range(n)), [v for v in range(n) if v % 2], I.center(ga)):
                     self.assertEqual(getattr(I, f)(ga, S), getattr(R, f)(gb, S), (f, n, e, S))
+            low = I.low_degree_vertices(ga)
+            high = [v for v in range(n) if v not in low]
+            self.assertEqual((I.indep_on(ga, high), I.internal_edges(ga, low)), (R.indep_on(gb, high),
+                                                                                R.internal_edges(gb, low)))
             for v in range(n):
+                self.assertEqual((I.triangles_at(ga, v), I.even_horizontal(ga, v)),
+                                 (R.triangles_at(gb, v), R.even_horizontal(gb, v)))
                 self.assertEqual(I.dist_even(ga, v), R.dist_even(gb, v))
                 self.assertEqual(I.indep_num_within(ga, ga.adj[v]), R.indep_num_within(gb, gb.adj[v]))
 

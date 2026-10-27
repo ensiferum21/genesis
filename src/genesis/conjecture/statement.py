@@ -1,19 +1,21 @@
 """Statements about graph invariants, posed as text and evaluated exactly (research plane; the proving test's
 transfer family, `docs/OMEGA_FRONTIER.md` §7b).
 
-A statement is `[condition ->] condition`. A condition is `expr REL expr` (REL one of <=, <, >=, >, ==) or a
-boolean invariant. It is meant for connected graphs. It is violated when the hypothesis holds (or there is none)
+A statement is `[condition ->] condition`. A condition is `expr REL expr` (REL one of <=, <, >=, >, ==), a
+boolean invariant, or several of these joined by `&`. It is meant for connected graphs. It is violated when the hypothesis holds (or there is none)
 and the conclusion fails.
 
 Expressions:
   * numbers; + - * /, where `/` is real division with x / 0 = 0, as in Lean; unary minus; parentheses;
-  * `ceil`, `floor`, `sqrt`, `max(a, b)`, `min(a, b)`, `idiv(a, b)` (natural floor division, x idiv 0 = 0),
+  * `ceil`, `floor`, `sqrt`, `ln` (Lean's Real.log), `max(a, b)`, `min(a, b)`, `idiv(a, b)` (natural floor division, x idiv 0 = 0),
     `mod(a, b)` (natural remainder, x mod 0 = x), `nat_sub(a, b)` (truncated at 0), `ind(condition)` (1 or 0),
     `cond(condition, a, b)`;
   * the invariants of `VOCABULARY` by name, set functions such as `dist_min(max_degree_vertices)`, and any of these
     on a derived graph: `name@complement`, `name@square`.
 Values are exact: integers, fractions, booleans, or numbers p + q sqrt(s) with rational p, q and one square-free
-s per expression (`Surd`), so that ceilings, floors and comparisons of square roots are decided exactly.
+s per expression (`Surd`), so that ceilings, floors and comparisons of square roots are decided exactly. A
+logarithm of a rational other than 1 is irrational, so it is held as a 70-digit `Bracket`, which decides its
+floors, ceilings and signs or raises.
 
 `Statement(text).check(graph)` gives the exact verdict and a float score for search: the score is positive exactly
 when the statement is violated. `Statement.score(A)` is the attack interface (`attack.Runner(objective=...)`); it
@@ -68,6 +70,37 @@ class Surd:
         return f'Surd({self.p}, {self.q}, {self.s})'
 
 
+class Bracket:
+    """An irrational number known to lie strictly between two rationals (from `ln` of a rational other than 1, at
+    70 digits). Sums with rationals, products with rationals, signs, floors and ceilings are decided from the bracket;
+    if an integer or zero falls inside it, the evaluation raises rather than guess."""
+    __slots__ = ('lo', 'hi')
+
+    def __init__(self, lo, hi):
+        self.lo, self.hi = Fraction(lo), Fraction(hi)
+
+    def __float__(self):
+        return float((self.lo + self.hi) / 2)
+
+    def __repr__(self):
+        return f'Bracket({float(self.lo)}, {float(self.hi)})'
+
+
+def ln(x):
+    """Lean's Real.log of a rational: log |x|, and 0 at 0; exact 0 at 1, otherwise a 70-digit `Bracket`."""
+    if isinstance(x, (Surd, Bracket)):
+        raise ValueError('ln of an irrational number')
+    x = abs(Fraction(x))
+    if x == 0 or x == 1:
+        return Fraction(0)
+    from decimal import Decimal, localcontext
+    with localcontext() as c:
+        c.prec = 80
+        v = Fraction((Decimal(x.numerator) / Decimal(x.denominator)).ln())
+    eps = Fraction(1, 10 ** 70)
+    return Bracket(v - eps, v + eps)
+
+
 def _parts(x, s=None):
     if isinstance(x, Surd):
         if s is not None and s != x.s:
@@ -84,11 +117,19 @@ def _common(x, y):
 
 
 def add(x, y):
+    if isinstance(x, Bracket) or isinstance(y, Bracket):
+        if isinstance(x, Surd) or isinstance(y, Surd):
+            raise ValueError('a logarithm and a square root in one expression')
+        a = x if isinstance(x, Bracket) else Bracket(x, x)
+        b = y if isinstance(y, Bracket) else Bracket(y, y)
+        return Bracket(a.lo + b.lo, a.hi + b.hi)
     a, b, c, d, s = _common(x, y)
     return Surd.make(a + c, b + d, s) if s else a + c
 
 
 def neg(x):
+    if isinstance(x, Bracket):
+        return Bracket(-x.hi, -x.lo)
     return Surd.make(-x.p, -x.q, x.s) if isinstance(x, Surd) else -Fraction(x)
 
 
@@ -97,6 +138,15 @@ def sub(x, y):
 
 
 def mul(x, y):
+    if isinstance(y, Bracket):
+        x, y = y, x
+    if isinstance(x, Bracket):
+        if isinstance(y, (Surd, Bracket)):
+            raise ValueError('a product of irrational numbers')
+        f = Fraction(y)
+        if f == 0:
+            return Fraction(0)
+        return Bracket(x.lo * f, x.hi * f) if f > 0 else Bracket(x.hi * f, x.lo * f)
     a, b, c, d, s = _common(x, y)
     if not s:
         return a * c
@@ -105,6 +155,10 @@ def mul(x, y):
 
 def sign(x):
     """The exact sign of a number."""
+    if isinstance(x, Bracket):
+        if x.lo >= 0 or x.hi <= 0:
+            return 1 if x.lo >= 0 else -1                      # the value is strictly inside the bracket
+        raise ValueError('a sign the bracket does not decide')
     if not isinstance(x, Surd):
         x = Fraction(x)
         return (x > 0) - (x < 0)
@@ -119,6 +173,8 @@ def sign(x):
 def inv(x):
     if sign(x) == 0:
         return Fraction(0)                                     # Lean: x / 0 = 0
+    if isinstance(x, Bracket):
+        return Bracket(1 / x.hi, 1 / x.lo)
     if not isinstance(x, Surd):
         return 1 / Fraction(x)
     den = x.p * x.p - x.q * x.q * x.s                          # nonzero: s is not a square
@@ -130,6 +186,11 @@ def div(x, y):
 
 
 def floor(x):
+    if isinstance(x, Bracket):
+        k = math.floor(x.lo)
+        if x.hi <= k + 1:
+            return k
+        raise ValueError('a floor the bracket does not decide')
     if not isinstance(x, Surd):
         return math.floor(Fraction(x))
     k = math.floor(float(x))
@@ -145,7 +206,7 @@ def ceil(x):
 
 
 def sqrt(x):
-    if isinstance(x, Surd):
+    if isinstance(x, (Surd, Bracket)):
         raise ValueError('a square root of a square root')
     x = Fraction(x)
     if x < 0:
@@ -212,6 +273,18 @@ SCALARS = {
     'center_neigh_alpha': _center_neigh_alpha,
     'ham_path': I.hamiltonian_path,
     'has_c4': _has_c4,
+    'domination': I.domination_number,
+    'total_dom': I.total_domination_number,
+    'max_triangles': I.max_triangles,
+    'freq_min_triangles': I.freq_min_triangles,
+    'hh_zero_step': I.hh_zero_step,
+    'max_even_correction': I.max_even_correction,
+    'has_comp_edge': lambda G: I.min_complement_edge_neighbourhood(G) is not None,
+    'min_comp_edge_nbhd': lambda G: I.min_complement_edge_neighbourhood(G) or 0,
+    'wtd': I.well_totally_dominated,
+    'pendants': I.pendants,
+    'triangle_free': I.triangle_free,
+    'alpha_two': I.alpha_two,
 }
 
 SETS = {
@@ -220,6 +293,8 @@ SETS = {
     'center': I.center,
     'periphery': I.periphery,
     'square_max_degree_vertices': lambda G: (lambda sq: [v for v in range(G.n) if sq[v] == max(sq)])(_sq_degrees(G)),
+    'low_degree_vertices': I.low_degree_vertices,
+    'high_degree_vertices': lambda G: [v for v in range(G.n) if G.degree(v) > 2],
 }
 
 
@@ -243,16 +318,18 @@ SET_FUNCTIONS = {
     'ecc_avg': lambda G, S: _avg(I.eccentricities(G)[v] for v in S),
     'max_degree_on': lambda G, S: max((G.degree(v) for v in S), default=0),
     'avg_degree_on': lambda G, S: _avg(G.degree(v) for v in S),
+    'indep_on': I.indep_on,                     # the independence number of the induced subgraph
+    'internal_edges': I.internal_edges,         # the edges with both ends in the set
 }
 
 TRANSFORMS = {'complement': lambda G: G.complement(), 'square': I.square}
-FUNCTIONS = ('ceil', 'floor', 'sqrt', 'max', 'min', 'idiv', 'mod', 'nat_sub', 'ind', 'cond')
+FUNCTIONS = ('ceil', 'floor', 'sqrt', 'ln', 'max', 'min', 'idiv', 'mod', 'nat_sub', 'ind', 'cond')
 VOCABULARY = tuple(SCALARS) + tuple(SETS) + tuple(SET_FUNCTIONS)
 
 
 # ------------------------------------------------------------------------------------------- parsing
 
-_TOKEN = re.compile(r'\s*(?:(\d+)|([A-Za-z_][A-Za-z_0-9]*)|(->|<=|>=|==|[-+*/(),<>@]))')
+_TOKEN = re.compile(r'\s*(?:(\d+)|([A-Za-z_][A-Za-z_0-9]*)|(->|<=|>=|==|[-+*/(),<>@&]))')
 
 
 def tokens(text):
@@ -294,6 +371,13 @@ class _Parser:
         return out
 
     def condition(self):
+        parts = [self.simple_condition()]
+        while self.peek() == ('op', '&'):
+            self.take()
+            parts.append(self.simple_condition())
+        return parts[0] if len(parts) == 1 else ('and', parts)
+
+    def simple_condition(self):
         left = self.expr()
         k, v = self.peek()
         if k == 'op' and v in ('<=', '<', '>=', '>', '=='):
@@ -337,7 +421,7 @@ class _Parser:
                 self.take()
                 args.append(self.expr())
             self.take('op', ')')
-            want = {'ceil': 1, 'floor': 1, 'sqrt': 1, 'ind': 1, 'cond': 3}.get(name, 2)
+            want = {'ceil': 1, 'floor': 1, 'sqrt': 1, 'ln': 1, 'ind': 1, 'cond': 3}.get(name, 2)
             if len(args) != want:
                 raise ValueError(f'{name} takes {want} arguments')
             return ('fn', name, args)
@@ -379,7 +463,7 @@ class _Context:
 
 
 def _num(x):
-    return Fraction(int(x)) if isinstance(x, bool) else (x if isinstance(x, Surd) else Fraction(x))
+    return Fraction(int(x)) if isinstance(x, bool) else (x if isinstance(x, (Surd, Bracket)) else Fraction(x))
 
 
 def value(node, ctx, tr=None):
@@ -416,12 +500,14 @@ def value(node, ctx, tr=None):
             return Fraction(floor(vals[0]))
         if name == 'sqrt':
             return sqrt(vals[0])
+        if name == 'ln':
+            return ln(vals[0])
         a, b = vals
         if name == 'max':
             return a if compare(a, b) >= 0 else b
         if name == 'min':
             return a if compare(a, b) <= 0 else b
-        if isinstance(a, Surd) or isinstance(b, Surd):
+        if isinstance(a, (Surd, Bracket)) or isinstance(b, (Surd, Bracket)):
             raise ValueError(f'{name} of an irrational number')
         if name == 'nat_sub':
             return max(Fraction(0), a - b)
@@ -435,6 +521,8 @@ def value(node, ctx, tr=None):
 
 
 def holds(cond, ctx):
+    if cond[0] == 'and':
+        return all(holds(c, ctx) for c in cond[1])
     if cond[0] == 'truth':
         v = value(cond[1], ctx)
         if not isinstance(v, bool):
@@ -448,6 +536,8 @@ def holds(cond, ctx):
 def slack(cond, ctx):
     """A float that is >= 0 when the condition holds and < 0 when it fails, except that a strict relation at
     equality has slack 0 and fails; `check` uses `holds` for the verdict."""
+    if cond[0] == 'and':
+        return min(slack(c, ctx) for c in cond[1])
     if cond[0] == 'truth':
         return 1.0 if value(cond[1], ctx) else -1.0
     _, rel, a, b = cond
