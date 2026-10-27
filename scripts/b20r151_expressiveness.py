@@ -48,17 +48,20 @@ MAX_CLASSES = 2 passing classes with the largest headroom are studied; if none p
 nothing else runs.
 
 **Arms per studied class.** Inventor searches I0_r, I1_r (r = 0, 1, 2; seed from (class, r), shared by the languages)
-and ceiling searches C0_r, C1_r (r = 0, 1), each with its half-budget checkpoint. Each arm's final engine runs on T;
+and ceiling searches C0_r, C1_r (r = 0, 1, 2), each with its half-budget checkpoint. Each arm's final engine runs on T;
 so does REX. For each Λ1 ceiling winner, four ablations run on T (descriptive): its targets dropped, its ?-guards
 dropped (the governed item then always runs), its repeats dropped (the body once), its blocks spliced into their
 lists (a block that is a repeat's body stays: a repeat governs one item).
 
 **Primary (Holm over the studied classes, alpha 0.05).** P1, the expressiveness gain: per T graph, the mean T-gain of
-the two Λ1 ceiling winners minus that of the two Λ0 ceiling winners; one-sided Wilcoxon signed-rank (Λ1 > Λ0):
-EXPRESSIVE if p_Holm < 0.05 and the mean difference is at least MATERIAL (0.05%).
+the three Λ1 ceiling winners minus that of the three Λ0 ceiling winners; one-sided Wilcoxon signed-rank (Λ1 > Λ0);
+and, over the search replicates, the exact one-sided permutation test of the six replicates' mean T-gains (Λ1's three
+against Λ0's three; p = 1/20 = 0.05 when every Λ1 replicate beats every Λ0 replicate): EXPRESSIVE if p_Holm < 0.05,
+the mean difference is at least MATERIAL (0.05%) and the replicate test gives p <= 0.05.
 **Secondary (reported per class, not in the primary family):**
-  * S1, the language under the inventor: mean T-gain of I1_r minus I0_r, two-sided: LANGUAGE_HELPS_THE_INVENTOR,
-    LANGUAGE_HURTS_THE_INVENTOR or NO_DIFFERENCE (p < 0.05 and |mean| >= MATERIAL);
+  * S1, the language under the inventor: mean T-gain of I1_r minus I0_r, two-sided: LANGUAGE_HELPS_THE_INVENTOR or
+    LANGUAGE_HURTS_THE_INVENTOR when p < 0.05, |mean| >= MATERIAL and the replicate permutation test in that direction
+    gives p <= 0.05; else NO_DIFFERENCE;
   * S2, the search gain in each language: ceiling minus inventor, one-sided;
   * S3, the interaction: (I1 - I0) - (C1 - C0) per graph, two-sided;
   * S4, saturation: per language, full minus half-budget ceiling winners, two-sided; SATURATED if not
@@ -73,6 +76,17 @@ mcx2's pin are the ones at preregistration; H, A and T are pairwise disjoint. **
 else NO_HEADROOM if no class passes the gate; else EXPRESSIVENESS_GAIN if P1 holds in a studied class; else
 NOT_SHOWN. Whatever it is, it is a statement about the builder's language at N = 32 on the studied classes.
 
+**Amendment (27 Oct 2026, 16:10 SGT, before any search finished; disclosed).** As preregistered (`52e1d92`, script
+sha256 77fcc820...e544) P1 had two ceiling replicates per language and a per-graph test only. While X2 was built, the
+language judge, which had the same structure, admitted on its fixture a statement worth nothing: one of the parent's
+two ceiling searches had stuck short of the optimum, and a per-graph test over specific engines cannot see that a
+difference is search luck. So the slice was stopped at 08:06 UTC, after the gate (planar2000 PASS 0.572%, toroidal2000
+0.145% and random2000 0.058% fail; seen) and 29 runs inside the first search (none finished; one run's value was
+displayed by a progress check, no search outcome was seen), and
+amended: three ceiling replicates per language, and the replicate permutation test in P1 and S1. The gate, the graphs,
+the seeds and every other rule are unchanged; the 231 runs made so far are reused (a run depends only on its engine,
+graph, occurrence and budget).
+
 **Prior art (none claimed).** Extending a program-search language with subroutines and control is old: automatically
 defined functions (Koza 1994), module acquisition (Angeline and Pollack 1993); the separation of a search space from
 the algorithm that searches it is the usual decomposition of program synthesis (Gulwani, Polozov and Singh 2017).
@@ -85,7 +99,7 @@ same budget). S2: the ceiling beats the inventor by about 0.05-0.2% in Λ0. S4: 
 Verdict NOT_SHOWN.
 
 **Cost.** The gate about 7 min. Per studied class: the inventor searches about 1.7 h, the ceiling searches about
-4.5 h, T about 20 min: about 6.6 h; at most 13.3 h for two classes, in slices of 6,600 s. **Status.** DEV; licenses
+6.8 h, T about 25 min: about 9 h per class, in slices of 6,600 s (one class passed the gate). **Status.** DEV; licenses
 nothing; adopts nothing.
 """
 import hashlib
@@ -110,7 +124,7 @@ CANDIDATES = {
     'random2000': (('erdos', {'n': 2000, 'p': 0.01}), ('erdos_pm1', {'n': 2000, 'p': 0.01})),
 }
 H_GRAPHS, A_GRAPHS, T_GRAPHS, T_RUNS = 12, 8, 24, 2
-INV_REPS, CEIL_REPS = 3, 2
+INV_REPS, CEIL_REPS = 3, 3
 BUDGET, LONG = 1.0, 10.0
 INV_EVALS, INV_SIZE = 240, 4
 CEIL_EVALS, CEIL_SIZE, CEIL_HALF = 480, 8, 240
@@ -330,6 +344,22 @@ def select(gates):
     return passing[:MAX_CLASSES]
 
 
+def replicate_test(a, b, alternative='greater'):
+    """The exact permutation test of replicate means a against b: the share of the relabellings of a + b whose
+    difference of means is at least the observed one ('greater'), or at most it ('less')."""
+    from itertools import combinations
+    pool, k = list(a) + list(b), len(a)
+    obs = statistics.mean(a) - statistics.mean(b)
+    hits = total = 0
+    for idx in combinations(range(len(pool)), k):
+        x = [pool[i] for i in idx]
+        y = [pool[i] for i in range(len(pool)) if i not in idx]
+        d = statistics.mean(x) - statistics.mean(y)
+        total += 1
+        hits += d >= obs - 1e-15 if alternative == 'greater' else d <= obs + 1e-15
+    return {'p': hits / total, 'a': list(a), 'b': list(b)}
+
+
 def gains(values, base):
     """Per-graph relative gains of each engine: {engine: [(v - b) / b over the sorted graphs]}."""
     tasks = sorted(base)
@@ -344,13 +374,20 @@ def analyse_class(arms, g):
     """arms: {arm name: engine key}; g: per-graph gains by engine key. Arm names I0_r, I1_r, C0_r, C1_r, C0h_r, C1h_r."""
     def lane(prefix, reps):
         return mean_of([g[arms[f'{prefix}_{r}']] for r in range(reps)])
+
+    def reps(prefix, n):
+        return [statistics.mean(g[arms[f'{prefix}_{r}']]) for r in range(n)]
     I0, I1 = lane('I0', INV_REPS), lane('I1', INV_REPS)
     C0, C1 = lane('C0', CEIL_REPS), lane('C1', CEIL_REPS)
     C0h, C1h = lane('C0h', CEIL_REPS), lane('C1h', CEIL_REPS)
     diff = lambda a, b: [x - y for x, y in zip(a, b)]
     p1 = wilcoxon(diff(C1, C0), 'greater')
+    p1['replicates'] = replicate_test(reps('C1', CEIL_REPS), reps('C0', CEIL_REPS), 'greater')
     s1 = wilcoxon(diff(I1, I0), 'two-sided')
-    s1_label = ('NO_DIFFERENCE' if s1['p'] >= ALPHA or abs(s1['mean']) < MATERIAL else
+    s1['replicates'] = replicate_test(reps('I1', INV_REPS), reps('I0', INV_REPS),
+                                      'greater' if s1['mean'] > 0 else 'less')
+    s1_label = ('NO_DIFFERENCE' if s1['p'] >= ALPHA or abs(s1['mean']) < MATERIAL
+                or s1['replicates']['p'] > ALPHA else
                 'LANGUAGE_HELPS_THE_INVENTOR' if s1['mean'] > 0 else 'LANGUAGE_HURTS_THE_INVENTOR')
     s4 = {}
     for lang, full, half in (('L0', C0, C0h), ('L1', C1, C1h)):
@@ -374,7 +411,8 @@ def verdict(studied, per_class, valid):
     for c in studied:
         r = per_class[c]
         r['P1']['p_holm'] = ph[c]
-        r['P1']['label'] = 'EXPRESSIVE' if ph[c] < ALPHA and r['P1']['mean'] >= MATERIAL else 'NOT_SHOWN'
+        r['P1']['label'] = ('EXPRESSIVE' if ph[c] < ALPHA and r['P1']['mean'] >= MATERIAL
+                            and r['P1']['replicates']['p'] <= ALPHA else 'NOT_SHOWN')
         r['reading'] = ('EXPRESSIVE' if r['P1']['label'] == 'EXPRESSIVE' else
                         'SEARCH_EFFECT' if r['S1']['label'] == 'LANGUAGE_HELPS_THE_INVENTOR' else
                         'LANGUAGE_HARDER_TO_SEARCH' if r['S1']['label'] == 'LANGUAGE_HURTS_THE_INVENTOR' else

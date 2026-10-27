@@ -490,12 +490,12 @@
    "outcome": null,
    "output": "evidence/expressiveness_b20r151",
    "positive": null,
-   "preregistered": "sha256 77fcc820f229be2060963c79626d0001c97e29ba34f274979842b0a84301e544 (the preregistration commit)",
+   "preregistered": "sha256 77fcc820...e544 (52e1d92); amended before any search finished: sha256 71467cb6259d1670c4e7ed8dbc23ee33a768646536cf5a6f1c420b37ec324118 (the amendment commit)",
    "priority": 10,
    "requires": [],
    "resources": {},
    "script": "scripts/b20r151_expressiveness.py",
-   "status": "queued",
+   "status": "running",
    "title": "Expressiveness separated from search: headroom gate, then language {Lambda0, Lambda1} x search {inventor, ceiling} at matched compute on fresh graph classes with headroom",
    "unlocks": []
   },
@@ -1223,6 +1223,11 @@
    "outcome": "built (B20_R153, engineering): mcx3-v1 with the builder's construct algebra (targets, ?-guards, repeats, blocks), pinned; every mcx2 program identical in mcx3 (312 of 312 counting-clock runs, planted mutants caught, 30 of 30 at study scale); the Lambda1 front end (named statements, versioned libraries, expansion, length and bits); the inventor's operators over Lambda0 and Lambda1; 32 tests",
    "positive": true,
    "time": "2026-10-27T07:06:30+00:00"
+  },
+  {
+   "id": "B20_R151",
+   "kind": "start",
+   "time": "2026-10-27T07:56:44+00:00"
   }
  ],
  "lines": {

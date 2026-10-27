@@ -131,6 +131,21 @@ class Analysis(unittest.TestCase):
              'd': {'mean': 0.003, 'pass': True}}
         self.assertEqual(S.select(g), ['b', 'a'])
 
+    def test_the_replicate_test(self):
+        self.assertAlmostEqual(S.replicate_test([3, 4, 5], [0, 1, 2])['p'], 1 / 20)
+        self.assertAlmostEqual(S.replicate_test([0, 1, 2], [3, 4, 5], 'less')['p'], 1 / 20)
+        self.assertGreater(S.replicate_test([9, 0, 0], [0.1, 0.2, 0.3])['p'], S.ALPHA)
+        self.assertEqual(S.replicate_test([1, 1, 1], [1, 1, 1])['p'], 1.0)
+
+    def test_a_lucky_replicate_is_not_a_language(self):
+        lucky = self.gains({})
+        lucky['C1_0'] = [x + 0.005 for x in lucky['C1_0']]          # one Λ1 ceiling search found a much better engine
+        r = S.analyse_class(self.arms(), lucky)
+        self.assertLess(r['P1']['p'], 0.001)                          # the per-graph test alone would say yes
+        self.assertGreater(r['P1']['replicates']['p'], S.ALPHA)
+        v, _ = S.verdict(['x'], {'x': r}, True)
+        self.assertEqual((v, r['P1']['label']), ('NOT_SHOWN', 'NOT_SHOWN'))
+
     def test_labels_and_verdict(self):
         planted = S.analyse_class(self.arms(), self.gains({'C1': 0.002, 'I1': 0.001}))
         null = S.analyse_class(self.arms(), self.gains({}))

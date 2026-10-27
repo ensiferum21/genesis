@@ -1375,8 +1375,10 @@
         "result": "Engineering (X1 of Daniel's direction of 27 Oct 2026, 14:33): the engine language Lambda1. mcx3-v1 (candidate_kinds/mcx3.py, native/mcx3.c; pinned 9449f8b6...dcbd24; mcx2 untouched): targets, ?-guards over observables (f, d, s, t), repeats, blocks; the builder's construct algebra, labelled human. Identity with mcx2 under counting-clock builds: 312 of 312 runs identical (output and trace), two planted mutants caught, 30 of 30 at study scale; interpreter CPU ratio median 1.02. Front end expressive/lambda1.py (named statements, versioned libraries, expansion, length and bits); expressive/operators.py (the inventor's operators over Lambda0 and Lambda1 as one implementation). 32 tests. Record docs/checkpoints/B20_R153_RECORD.md"
       },
       "B20_R151": {
-        "commits": [],
-        "result": "Preregistered (DEV): the headroom gate on three fresh 2,000-vertex classes (planar, toroidal, random), then language {Lambda0, Lambda1} x search {inventor 240 x 4 graphs, ceiling 480 x 8 graphs} on the mcx3 binary at the bound of 32 items; P1 Lambda1 ceiling over Lambda0 ceiling on 24 truth graphs (Holm over at most two classes). Pending"
+        "commits": [
+          "52e1d92"
+        ],
+        "result": "Preregistered (DEV) 52e1d92; amended before any search finished (three ceiling replicates per language; P1 and S1 need the replicate permutation test too; disclosed in the script). Gate: planar2000 PASS 0.572% (p 0.00024), toroidal2000 0.145% and random2000 0.058% fail; planar2000 studied. Pending"
       }
     },
     "open_after_b20_r5": [
