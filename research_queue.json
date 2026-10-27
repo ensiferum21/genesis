@@ -604,7 +604,7 @@
   },
   "B20_R158": {
    "artifacts": [],
-   "committed": false,
+   "committed": true,
    "depends_on": [
     "B20_R157"
    ],
@@ -612,17 +612,17 @@
    "id": "B20_R158",
    "kind": "study",
    "line": "frontier",
-   "notes": "Daniel's directive of 27 Oct 2026, 19:55 (docs/OMEGA_FRONTIER.md); to preregister",
+   "notes": "Daniel's directive of 27 Oct 2026, 19:55 (docs/OMEGA_FRONTIER.md); to preregister; preregistered 27 Oct 2026 22:55 SGT",
    "outcome": null,
    "output": "evidence/open_conjectures_b20r158",
    "positive": null,
-   "preregistered": null,
+   "preregistered": "sha256 50d2de64a7adb90ea6e2b3eb47647e7f852d717e5e9cf0a47db49464cc4af9b5 (the preregistration commit)",
    "priority": 5,
    "requires": [],
    "resources": {
-    "cpu0_hours": 10.0
+    "cpu0_hours": 1.5
    },
-   "script": null,
+   "script": "scripts/b20r158_open_conjectures.py",
    "status": "queued",
    "title": "F5: open-ended generations: Genesis poses its own conjectures from its own data, attacks them, abstracts named constructions from converged counterexamples and reuses them (trend, rediscoveries, survivors, compounding; controls without abstraction, without extrapolation, with a fixed curriculum)",
    "unlocks": []

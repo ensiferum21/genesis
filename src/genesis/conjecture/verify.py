@@ -198,3 +198,34 @@ def adjacency(n, edges):
     for u, v in edges:
         A[u][v] = A[v][u] = 1
     return A
+
+
+def check_matrix_form(formula, kind, n, edges, x):
+    """A second, independently written Rayleigh check for graphs too large for the characteristic polynomial: the
+    Laplacian as a matrix, one exact power step y = (L + Delta I) x from the certificate vector (a different vector),
+    and q(y) = y^T L y / y^T y by matrix products in exact arithmetic. REFUTED if q(y) exceeds the bound's exact
+    upper end."""
+    n, edges = Gr.normalise(n, edges)
+    ast = E.parse(formula, kind)
+    if not defined(ast, kind, n, edges):
+        return {'verdict': 'UNDEFINED'}
+    L = [[0] * n for _ in range(n)]
+    for u, v in edges:
+        L[u][u] += 1
+        L[v][v] += 1
+        L[u][v] -= 1
+        L[v][u] -= 1
+    nz = [[(j, L[i][j]) for j in range(n) if L[i][j]] for i in range(n)]
+    x = [Fraction(v) for v in x]
+    delta = max(L[i][i] for i in range(n))
+    y = [sum(c * x[j] for j, c in nz[i]) + delta * x[i] for i in range(n)]
+    Ly = [sum(c * y[j] for j, c in nz[i]) for i in range(n)]
+    den = sum(v * v for v in y)
+    if den == 0:
+        return {'verdict': 'NOT_CERTIFIED'}
+    q = sum(a * b for a, b in zip(y, Ly)) / den
+    for bits in RESOLUTIONS:
+        hi = upper(ast, kind, n, edges, bits)
+        if hi is not None and q > hi:
+            return {'verdict': 'REFUTED', 'bits': bits}
+    return {'verdict': 'NOT_CERTIFIED'}
