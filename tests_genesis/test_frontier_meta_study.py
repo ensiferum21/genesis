@@ -18,7 +18,7 @@ import b20r156_frontier_worlds as F3  # noqa: E402
 from genesis.frontier import meta as MT  # noqa: E402
 from genesis.frontier import world as W  # noqa: E402
 
-PREREGISTRATION = None          # the commit that preregistered the script; set in the commit after it
+PREREGISTRATION = '77d725d'         # the commit that preregistered the script
 
 
 def digest_at(commit, rel):
