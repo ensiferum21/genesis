@@ -52,8 +52,10 @@ def _h(*parts):
 
 
 class PlantedWorld:
-    def __init__(self, seed, problems=4, horizon=20000, sigma=0.02, null=False, successors=True, recomb=True):
+    def __init__(self, seed, problems=4, horizon=20000, sigma=0.02, null=False, successors=True, recomb=True,
+                 types=TYPES):
         self.seed, self.horizon, self.sigma, self.null = seed, horizon, sigma, null
+        self.types = tuple(types)
         rng = random.Random(_h('world', seed))
         self._problems = {}
         self._order = []
@@ -69,7 +71,7 @@ class PlantedWorld:
         curves = {}
         for r in REPS:
             for m in METHODS:
-                kind = rng.choices([t for t, _ in TYPES], [w for _, w in TYPES])[0]
+                kind = rng.choices([t for t, _ in self.types], [w for _, w in self.types])[0]
                 curves[(r, m)] = self._curve(rng, kind, boost)
         if recomb and not self.null and rng.random() < 0.75:
             r, m = rng.choice(REPS), rng.choice(METHODS)
@@ -206,6 +208,12 @@ class PlantedWorld:
                     best = max(best, self._f(p, {'representation': r, 'method': m, 'params': {'p': v}}, share))
             total += best
         return total
+
+    def truth(self, pid, direction, t):
+        """KERNEL: the hidden curve of a direction at compute t (for calibration analysis only)."""
+        if (direction['representation'], direction['method']) not in self._problems[pid]['curves']:
+            return 0.0
+        return float(self._f(pid, direction, t))
 
     def keys(self):
         """KERNEL: the hidden types, for analysis only."""

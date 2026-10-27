@@ -28,7 +28,8 @@ PKG = ROOT / 'src' / 'genesis' / 'frontier'
 RESEARCH_PLANE = ('__init__.py', 'direction.py', 'curves.py', 'converge.py', 'allocate.py', 'engine.py',
                   'manifest.py')
 KERNEL_SIDE = ('world.py',)
-KERNEL_NAMES = ('oracle', 'keys', 'verify_value', '_problems', '_f', '_token', '_curve', '_add_problem', 'world')
+KERNEL_NAMES = ('oracle', 'keys', 'truth', 'verify_value', '_problems', '_f', '_token', '_curve', '_add_problem',
+                'world')
 
 
 def run(world_seed, policy='frontier', budget=3000, problems=3, seed=1, null=False, ab=None, max_steps=None):

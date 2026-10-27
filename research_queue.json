@@ -552,7 +552,7 @@
   },
   "B20_R156": {
    "artifacts": [],
-   "committed": false,
+   "committed": true,
    "depends_on": [
     "frontier-f1-build",
     "B20_R141"
@@ -561,17 +561,17 @@
    "id": "B20_R156",
    "kind": "study",
    "line": "frontier",
-   "notes": "Daniel's directive of 27 Oct 2026, 19:55 (docs/OMEGA_FRONTIER.md); to preregister",
+   "notes": "Daniel's directive of 27 Oct 2026, 19:55 (docs/OMEGA_FRONTIER.md); to preregister; preregistered 27 Oct 2026 21:25 SGT; runs alone on CPU 0 after B20_R141",
    "outcome": null,
    "output": "evidence/frontier_worlds_b20r156",
    "positive": null,
-   "preregistered": null,
+   "preregistered": "sha256 e0ed7ae77803b0eaa0d270054333d15270dd8a69e5a22cbe9504fd03e94f82f7 (the preregistration commit)",
    "priority": 6,
    "requires": [],
    "resources": {
     "cpu0_hours": 1.0
    },
-   "script": null,
+   "script": "scripts/b20r156_frontier_worlds.py",
    "status": "queued",
    "title": "F3: the Frontier engine against uniform, successive halving, UCB1 and random at matched compute on sealed planted worlds from held-out families (regret; forecast coverage; no false discovery on null worlds)",
    "unlocks": []
