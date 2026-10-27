@@ -5697,7 +5697,8 @@
     "src/genesis/expressive/lambda1.py",
     "src/genesis/expressive/operators.py",
     "docs/OMEGA_EXPRESSIVE_LANGUAGE.md",
-    "docs/checkpoints/B20_R153_RECORD.md"
+    "docs/checkpoints/B20_R153_RECORD.md",
+    "scripts/b20r151_expressiveness.py"
    ],
    "disposition": "IMPLEMENTED_BOUNDED_PENDING_AUDIT",
    "evidence": [],
@@ -5715,7 +5716,8 @@
     "tests_genesis/test_primitives.py",
     "tests_genesis/test_mcx3_kind.py",
     "tests_genesis/test_expressive_lambda1.py",
-    "tests_genesis/test_expressive_operators.py"
+    "tests_genesis/test_expressive_operators.py",
+    "tests_genesis/test_expressiveness_study.py"
    ],
    "title": "New primitives, research-language evolution and trust changes (derived primitives with reference expansions, conformance, versioned registries; DEV: none of four starting primitives is a gain; B20_R153: the engine language \u039b1, mcx3 with the builder's construct algebra, mcx2 programs identical, named statements with versioned libraries, the inventor's operators over \u039b0 and \u039b1)",
    "workstream": "W22"

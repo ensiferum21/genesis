@@ -779,9 +779,10 @@ WORKSTREAMS = {
             ['src/genesis/primitives.py', 'scripts/b20r_primitives.py', 'src/genesis/candidate_kinds/mcx3.py',
              'src/genesis/candidate_kinds/native/mcx3.c', 'scripts/b20r153_build_mcx3.py',
              'src/genesis/expressive/lambda1.py', 'src/genesis/expressive/operators.py',
-             'docs/OMEGA_EXPRESSIVE_LANGUAGE.md', 'docs/checkpoints/B20_R153_RECORD.md'],
+             'docs/OMEGA_EXPRESSIVE_LANGUAGE.md', 'docs/checkpoints/B20_R153_RECORD.md',
+             'scripts/b20r151_expressiveness.py'],
             [G + 'test_primitives.py', G + 'test_mcx3_kind.py', G + 'test_expressive_lambda1.py',
-             G + 'test_expressive_operators.py']),
+             G + 'test_expressive_operators.py', G + 'test_expressiveness_study.py']),
     'W23': ('Fault-tolerant reasoning and expert interaction (heterogeneous routes, quarantine, adjudication without '
             'majority vote; no expert-interaction channel)', B,
             ['src/genesis/verification/reliability.py', 'src/genesis/graphs.py'],

@@ -241,7 +241,8 @@ needs people: a reviewer, a statistician, an independent custodian on its own ma
       algebra labelled as human, Genesis growing the language from its own engines through a language judge and
       a consolidator, generation after generation. Batches X1, X2, B20_R151, B20_R152; then B20_R141.
       Done: X1 (B20_R153, engineering: `mcx3-v1` and its pinned binary, every mcx2 program identical in it; the
-      Λ1 front end with named statements; the inventor's operators over Λ0 and Λ1). Next: X2 (B20_R154).
+      Λ1 front end with named statements; the inventor's operators over Λ0 and Λ1). B20_R151 preregistered and
+      running alone on CPU 0 (it needs only X1); X2 (B20_R154) built on CPU 1 meanwhile.
   27. after them: the Genesis Ω stages in `docs/GENESIS_OMEGA_PLAN.md` §5-§6 (Ω0 analysis of R127/R128; B20_R130
       invented instruments; B20_R131 the Difficulty Cartographer; the genome and typed language; the ecology;
       evolvability selection; the decisive A/B/C experiment).

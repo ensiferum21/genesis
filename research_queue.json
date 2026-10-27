@@ -478,7 +478,7 @@
   },
   "B20_R151": {
    "artifacts": [],
-   "committed": false,
+   "committed": true,
    "depends_on": [
     "expr-x1-build"
    ],
@@ -486,15 +486,15 @@
    "id": "B20_R151",
    "kind": "study",
    "line": "expressiveness",
-   "notes": "Daniel's direction of 27 Oct 2026, 14:33 (docs/OMEGA_EXPRESSIVE_LANGUAGE.md): the current priority",
+   "notes": "Daniel's direction of 27 Oct 2026, 14:33 (docs/OMEGA_EXPRESSIVE_LANGUAGE.md): the current priority; runs alone on CPU 0 while X2 is built (it needs only X1)",
    "outcome": null,
    "output": "evidence/expressiveness_b20r151",
    "positive": null,
-   "preregistered": null,
+   "preregistered": "sha256 77fcc820f229be2060963c79626d0001c97e29ba34f274979842b0a84301e544 (the preregistration commit)",
    "priority": 10,
    "requires": [],
    "resources": {},
-   "script": null,
+   "script": "scripts/b20r151_expressiveness.py",
    "status": "queued",
    "title": "Expressiveness separated from search: headroom gate, then language {Lambda0, Lambda1} x search {inventor, ceiling} at matched compute on fresh graph classes with headroom",
    "unlocks": []

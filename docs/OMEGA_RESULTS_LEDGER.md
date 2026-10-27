@@ -55,6 +55,7 @@ Nothing here is an independent or sealed result.
 
 | Batch | State |
 |---|---|
+| B20_R151 | Richer expressiveness, measured apart from search: the headroom gate on three fresh 2,000-vertex classes, then language {Λ0, Λ1} x search {inventor, ceiling} at matched compute. Preregistered |
 
 ## Unrun plans
 

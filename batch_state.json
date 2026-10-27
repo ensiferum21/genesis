@@ -1369,8 +1369,14 @@
         "result": "DEV, preregistered 251c956, run alone on CPU 0 from a clean worktree of 13bd014, 26 Oct 17:38 - 27 Oct 00:08 SGT in four slices (23,303 s against about 5 h estimated): NOT_SHOWN; G3_NOT_SHOWN. T1 G2-G0 +0.0015 AUDC (6-4, p_Holm 1); T2 = T1 (H* evolution); T3 G3-G2 +0.010 (6-4, p_Holm 0.70). H1 UNIVERSAL_HARNESS by its rule (anneal, evolution never beaten on all six seeds; five processes each best somewhere). Portfolio ahead to 256 evaluations, behind at 1024. Secondary uncorrected: final-quality G3-G2 +0.027 (p 0.039). CPU per arm 30.1-31.7 s. Record docs/checkpoints/B20_R148_RECORD.md"
       },
       "B20_R153": {
-        "commits": [],
+        "commits": [
+          "200c54a"
+        ],
         "result": "Engineering (X1 of Daniel's direction of 27 Oct 2026, 14:33): the engine language Lambda1. mcx3-v1 (candidate_kinds/mcx3.py, native/mcx3.c; pinned 9449f8b6...dcbd24; mcx2 untouched): targets, ?-guards over observables (f, d, s, t), repeats, blocks; the builder's construct algebra, labelled human. Identity with mcx2 under counting-clock builds: 312 of 312 runs identical (output and trace), two planted mutants caught, 30 of 30 at study scale; interpreter CPU ratio median 1.02. Front end expressive/lambda1.py (named statements, versioned libraries, expansion, length and bits); expressive/operators.py (the inventor's operators over Lambda0 and Lambda1 as one implementation). 32 tests. Record docs/checkpoints/B20_R153_RECORD.md"
+      },
+      "B20_R151": {
+        "commits": [],
+        "result": "Preregistered (DEV): the headroom gate on three fresh 2,000-vertex classes (planar, toroidal, random), then language {Lambda0, Lambda1} x search {inventor 240 x 4 graphs, ceiling 480 x 8 graphs} on the mcx3 binary at the bound of 32 items; P1 Lambda1 ceiling over Lambda0 ceiling on 24 truth graphs (Holm over at most two classes). Pending"
       }
     },
     "open_after_b20_r5": [
