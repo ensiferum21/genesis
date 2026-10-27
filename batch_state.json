@@ -1350,6 +1350,17 @@
         ],
         "result": "DEV, preregistered 7040a3c (before R133 ran), run alone on CPU 0 from a clean worktree of f37e792, 27 Oct 09:42-11:10 SGT (5,232 s): INVENTED_REPRESENTATION_BETTER. Colouring at 10 s, 20 fresh graphs per k: k=3 chosen {00,01,10} 8.5 conflicts vs one-hot 21.6 (18-0-2, p 7.6e-6), k=4 chosen {000,001,010,100} 30.6 vs 47.7 (20-0-0, p 1.9e-6), both Holm-rejected; k=5 one-hot kept; compiler path 20.1/48.0/58.4; PASMaxSAT-c 1.6/14.4/17.9. Part A: MILP 20/20 and 40/40 vs search 15 and 1. Part C: cascade exact (4 of 4, null 0, 0.34 s); 1-in-3 GENESIS_BETTER 16-2-2, NAE tie, XOR-3SAT and Max-3-SAT MAXSAT_BETTER; 4 of 80 MaxSAT runs returned no model (labels unchanged without them). Record docs/checkpoints/B20_R135_RECORD.md"
       },
+      "B20_R149": {
+        "commits": [
+          "012f133",
+          "c6dd05e"
+        ],
+        "result": "Checkpoint GENESIS_COMPLETION_CHECKPOINT_B20_R148 (B20_R119-R148) at 012f133, SHA-256 bb89b23b983e0da3fc0ac0e733c94d06bf510684065f920e281c08e7b3cd33e4, parent B20_R118 (a1e5305d...6204): release matrix 2,260 tests (integration 1,723, legacy 282 with one declared skip, sandbox 28, certificates 43, formal 184), all OK; restore-verified (6,782 entries; the bundle gives the same commit and tree); archived in four parts (archive 3a5197c). Reproduced on the build host: attempt 1 NOT_REPRODUCED (two undeclared skips, missing git history and OR-Tools wheel in the clean room), harness fixed (c6dd05e), attempt 2 REPRODUCED (all 7 steps); reports archived (b753e17)"
+      },
+      "B20_R150": {
+        "commits": [],
+        "result": "Engineering: ARA-1 built on fixtures (src/genesis/architecture/: graph, policies, zoo, judge, diagnose, rewrite, model, assumptions, ara); 49 tests; a disclosed development look on 16 zoo environments (indices 9000-9015, sealed seed 9090): ARA promoted 9 of 10 defect environments, blind 10, tuning-only 4; no false release; ARA's diagnosis located 9 of 10 defects and said NONE on all 4 NULL and NO_HEADROOM. Record docs/checkpoints/B20_R150_RECORD.md"
+      },
       "B20_R148": {
         "commits": [
           "251c956",

@@ -232,13 +232,14 @@ needs people: a reviewer, a statistician, an independent custodian on its own ma
       Research Architect. Workflows are typed graphs of ROs (AG) with a closed kernel; limitations are measured by
       oracle substitution (a loss ladder); proposals are typed rewrites with holes filled by synthesis; a sealed
       Limitation Zoo calibrates it with planted, null, no-headroom and decoy environments; tuning-only and
-      blind-rewrite controls at matched total compute. Building ARA-1 (`src/genesis/architecture/`), then
-      B20_R141 (experiments A-D on the zoo).
+      blind-rewrite controls at matched total compute. ARA-1 is built on fixtures (B20_R150, `src/genesis/architecture/`);
+      next, B20_R141 (experiments A-D on the zoo), preregistered for the blind control's strength.
   27. after them: the Genesis Ω stages in `docs/GENESIS_OMEGA_PLAN.md` §5-§6 (Ω0 analysis of R127/R128; B20_R130
       invented instruments; B20_R131 the Difficulty Cartographer; the genome and typed language; the ecology;
       evolvability selection; the decisive A/B/C experiment).
 
-3. **Checkpoint:** the latest is B20_R118 (`469f7f0`; not rehearsed on a second machine). Do not edit the tree while
+3. **Checkpoint:** the latest is B20_R148 (`012f133`, SHA-256 `bb89b23b…33e4`; archive branch, four parts;
+   REPRODUCED on the build host, not yet on a second machine). Do not edit the tree while
    the release matrix runs; run timing studies alone.
 4. **B20_R101, the Gset max-cut domain** (`docs/OPEN_RECORDS_PLAN.md`; Daniel's `set1.zip` and best-values file,
    pinned on arrival), then where Genesis stands against the published records.

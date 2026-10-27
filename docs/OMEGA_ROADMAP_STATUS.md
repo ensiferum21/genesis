@@ -36,6 +36,6 @@ tampered evidence by the judge is the kernel's existing suite (`test_acceptance_
 `test_redteam_b16`).
 
 **Next smallest high-value actions:**
-1. Done: B20_R130 (CHOICE), B20_R133 (BEHIND_SPECIALISTS_ON coloring, mis), B20_R131 (NO_VERIFIED_TRIGGER, by protocol), B20_R148 (NOT_SHOWN; G3_NOT_SHOWN), B20_R132 (NOT_SHOWN; EXPRESSIVENESS in every class), B20_R128 (NOT_SHOWN; no inner release), B20_R135 (INVENTED_REPRESENTATION_BETTER). Next: B20_R135, B20_R141 (ARA on the Limitation Zoo, `docs/OMEGA_ARCHITECTURE_INVENTION.md`).
+1. Done: B20_R130 (CHOICE), B20_R133 (BEHIND_SPECIALISTS_ON coloring, mis), B20_R131 (NO_VERIFIED_TRIGGER, by protocol), B20_R148 (NOT_SHOWN; G3_NOT_SHOWN), B20_R132 (NOT_SHOWN; EXPRESSIVENESS in every class), B20_R128 (NOT_SHOWN; no inner release), B20_R135 (INVENTED_REPRESENTATION_BETTER); the checkpoint B20_R148 (REPRODUCED on the build host); ARA-1 built (B20_R150, engineering). Next: preregister B20_R141 (ARA on the Limitation Zoo, `docs/OMEGA_ARCHITECTURE_INVENTION.md`), designed for the blind control's strength (a fixed variant budget or gain per unit).
 2. Preregister the representation language's first study before B20_R133's colouring result is known.
-3. A fresh checkpoint after B20_R135.
+3. Done: the checkpoint B20_R148 (`012f133`), reproduced on the build host.

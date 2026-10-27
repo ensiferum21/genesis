@@ -1,0 +1,1164 @@
+{
+ "rows": [
+  {
+   "index": 9000,
+   "class": "SENSE_BLIND",
+   "ara": {
+    "arm": "modify",
+    "diag": "information",
+    "submitted": [
+     "INSERT",
+     {},
+     "STRUCTURAL"
+    ],
+    "verdict": {
+     "promoted": true,
+     "failed": null
+    },
+    "spent": 10313,
+    "secs": 7.5
+   },
+   "blind": {
+    "arm": "modify",
+    "diag": null,
+    "submitted": [
+     "INSERT",
+     {},
+     "STRUCTURAL"
+    ],
+    "verdict": {
+     "promoted": true,
+     "failed": null
+    },
+    "spent": 9986,
+    "secs": 3.5
+   },
+   "tuning": {
+    "arm": "tuning",
+    "diag": null,
+    "submitted": null,
+    "verdict": {
+     "promoted": false,
+     "failed": "sealed"
+    },
+    "spent": 2198,
+    "secs": 219.2
+   },
+   "oracle_key": 0.881
+  },
+  {
+   "index": 9001,
+   "class": "GLOBAL_ONLY",
+   "ara": {
+    "arm": "modify",
+    "diag": "expressiveness",
+    "submitted": [
+     "SPECIALISE",
+     {
+      "sense": "s1"
+     },
+     "STRUCTURAL"
+    ],
+    "verdict": {
+     "promoted": true,
+     "failed": null
+    },
+    "spent": 1592,
+    "secs": 4.3
+   },
+   "blind": {
+    "arm": "modify",
+    "diag": null,
+    "submitted": [
+     "SUBSTITUTE",
+     {
+      "to": "knn"
+     },
+     "STRUCTURAL"
+    ],
+    "verdict": {
+     "promoted": true,
+     "failed": null
+    },
+    "spent": 1739,
+    "secs": 1.6
+   },
+   "tuning": {
+    "arm": "tuning",
+    "diag": null,
+    "submitted": null,
+    "verdict": null,
+    "spent": 2026,
+    "secs": 0.2
+   },
+   "oracle_key": 1.0
+  },
+  {
+   "index": 9002,
+   "class": "FUSION_NEEDED",
+   "ara": {
+    "arm": "modify",
+    "diag": "expressiveness",
+    "submitted": [
+     "GENERALISE",
+     {
+      "to": "oblique"
+     },
+     "STRUCTURAL"
+    ],
+    "verdict": {
+     "promoted": true,
+     "failed": null
+    },
+    "spent": 2386,
+    "secs": 5.6
+   },
+   "blind": {
+    "arm": "modify",
+    "diag": null,
+    "submitted": [
+     "GENERALISE",
+     {
+      "to": "oblique"
+     },
+     "STRUCTURAL"
+    ],
+    "verdict": {
+     "promoted": true,
+     "failed": null
+    },
+    "spent": 9922,
+    "secs": 1.2
+   },
+   "tuning": {
+    "arm": "tuning",
+    "diag": null,
+    "submitted": null,
+    "verdict": null,
+    "spent": 2544,
+    "secs": 213.1
+   },
+   "oracle_key": 0.542
+  },
+  {
+   "index": 9003,
+   "class": "SEARCH_WEAK",
+   "ara": {
+    "arm": "modify",
+    "diag": "search",
+    "submitted": [
+     "GENERALISE",
+     {
+      "to": "knn"
+     },
+     "STRUCTURAL"
+    ],
+    "verdict": {
+     "promoted": true,
+     "failed": null
+    },
+    "spent": 4422,
+    "secs": 3.9
+   },
+   "blind": {
+    "arm": "modify",
+    "diag": null,
+    "submitted": [
+     "SUBSTITUTE",
+     {
+      "to": "knn"
+     },
+     "STRUCTURAL"
+    ],
+    "verdict": {
+     "promoted": true,
+     "failed": null
+    },
+    "spent": 4287,
+    "secs": 2.3
+   },
+   "tuning": {
+    "arm": "tuning",
+    "diag": null,
+    "submitted": null,
+    "verdict": {
+     "promoted": true,
+     "failed": null
+    },
+    "spent": 2371,
+    "secs": 12.3
+   },
+   "oracle_key": 0.796
+  },
+  {
+   "index": 9004,
+   "class": "EVAL_NOISY",
+   "ara": {
+    "arm": "modify",
+    "diag": "evaluation",
+    "submitted": [
+     "SUBSTITUTE",
+     {
+      "to": "paired"
+     },
+     "STRUCTURAL"
+    ],
+    "verdict": {
+     "promoted": true,
+     "failed": null
+    },
+    "spent": 10614,
+    "secs": 6.8
+   },
+   "blind": {
+    "arm": "modify",
+    "diag": null,
+    "submitted": [
+     "SUBSTITUTE",
+     {
+      "to": "paired"
+     },
+     "STRUCTURAL"
+    ],
+    "verdict": {
+     "promoted": true,
+     "failed": null
+    },
+    "spent": 23434,
+    "secs": 3.7
+   },
+   "tuning": {
+    "arm": "tuning",
+    "diag": null,
+    "submitted": null,
+    "verdict": {
+     "promoted": false,
+     "failed": "sealed"
+    },
+    "spent": 33477,
+    "secs": 2.0
+   },
+   "oracle_key": 0.911
+  },
+  {
+   "index": 9005,
+   "class": "NO_HEADROOM",
+   "ara": {
+    "arm": "solve",
+    "diag": "NONE",
+    "submitted": null,
+    "verdict": null,
+    "spent": 1574,
+    "secs": 2.1
+   },
+   "blind": {
+    "arm": "solve",
+    "diag": null,
+    "submitted": null,
+    "verdict": null,
+    "spent": 9995,
+    "secs": 3.2
+   },
+   "tuning": {
+    "arm": "tuning",
+    "diag": null,
+    "submitted": null,
+    "verdict": null,
+    "spent": 2371,
+    "secs": 207.1
+   },
+   "oracle_key": 0.0
+  },
+  {
+   "index": 9006,
+   "class": "NULL",
+   "ara": {
+    "arm": "solve",
+    "diag": "NONE",
+    "submitted": null,
+    "verdict": null,
+    "spent": 1574,
+    "secs": 2.2
+   },
+   "blind": {
+    "arm": "solve",
+    "diag": null,
+    "submitted": null,
+    "verdict": null,
+    "spent": 10082,
+    "secs": 3.7
+   },
+   "tuning": {
+    "arm": "tuning",
+    "diag": null,
+    "submitted": null,
+    "verdict": null,
+    "spent": 2371,
+    "secs": 216.5
+   },
+   "oracle_key": 0.0
+  },
+  {
+   "index": 9007,
+   "class": "DECOY",
+   "ara": {
+    "arm": "modify",
+    "diag": "expressiveness",
+    "submitted": [
+     "SPECIALISE",
+     {
+      "sense": "s1"
+     },
+     "STRUCTURAL"
+    ],
+    "verdict": {
+     "promoted": false,
+     "failed": "sealed"
+    },
+    "spent": 1868,
+    "secs": 4.8
+   },
+   "blind": {
+    "arm": "modify",
+    "diag": null,
+    "submitted": [
+     "SPECIALISE",
+     {
+      "sense": "s1"
+     },
+     "STRUCTURAL"
+    ],
+    "verdict": {
+     "promoted": false,
+     "failed": "sealed"
+    },
+    "spent": 1727,
+    "secs": 1.3
+   },
+   "tuning": {
+    "arm": "tuning",
+    "diag": null,
+    "submitted": null,
+    "verdict": null,
+    "spent": 1939,
+    "secs": 0.2
+   },
+   "oracle_key": 0.0
+  },
+  {
+   "index": 9008,
+   "class": "SENSE_BLIND",
+   "ara": {
+    "arm": "modify",
+    "diag": "information",
+    "submitted": [
+     "INSERT",
+     {},
+     "STRUCTURAL"
+    ],
+    "verdict": {
+     "promoted": true,
+     "failed": null
+    },
+    "spent": 10179,
+    "secs": 6.3
+   },
+   "blind": {
+    "arm": "modify",
+    "diag": null,
+    "submitted": [
+     "INSERT",
+     {},
+     "STRUCTURAL"
+    ],
+    "verdict": {
+     "promoted": true,
+     "failed": null
+    },
+    "spent": 9896,
+    "secs": 3.6
+   },
+   "tuning": {
+    "arm": "tuning",
+    "diag": null,
+    "submitted": null,
+    "verdict": null,
+    "spent": 2198,
+    "secs": 213.4
+   },
+   "oracle_key": 0.978
+  },
+  {
+   "index": 9009,
+   "class": "GLOBAL_ONLY",
+   "ara": {
+    "arm": "modify",
+    "diag": "expressiveness",
+    "submitted": [
+     "SPECIALISE",
+     {
+      "sense": "s1"
+     },
+     "STRUCTURAL"
+    ],
+    "verdict": {
+     "promoted": true,
+     "failed": null
+    },
+    "spent": 1592,
+    "secs": 3.3
+   },
+   "blind": {
+    "arm": "modify",
+    "diag": null,
+    "submitted": [
+     "SUBSTITUTE",
+     {
+      "to": "knn"
+     },
+     "STRUCTURAL"
+    ],
+    "verdict": {
+     "promoted": true,
+     "failed": null
+    },
+    "spent": 1739,
+    "secs": 1.2
+   },
+   "tuning": {
+    "arm": "tuning",
+    "diag": null,
+    "submitted": null,
+    "verdict": null,
+    "spent": 2026,
+    "secs": 0.2
+   },
+   "oracle_key": 1.0
+  },
+  {
+   "index": 9010,
+   "class": "FUSION_NEEDED",
+   "ara": {
+    "arm": "solve",
+    "diag": "NONE",
+    "submitted": null,
+    "verdict": null,
+    "spent": 1578,
+    "secs": 2.3
+   },
+   "blind": {
+    "arm": "modify",
+    "diag": null,
+    "submitted": [
+     "LIFT",
+     {
+      "param": "k"
+     },
+     "STRUCTURAL"
+    ],
+    "verdict": {
+     "promoted": true,
+     "failed": null
+    },
+    "spent": 9849,
+    "secs": 1.1
+   },
+   "tuning": {
+    "arm": "tuning",
+    "diag": null,
+    "submitted": null,
+    "verdict": {
+     "promoted": true,
+     "failed": null
+    },
+    "spent": 2544,
+    "secs": 221.3
+   },
+   "oracle_key": 0.392
+  },
+  {
+   "index": 9011,
+   "class": "SEARCH_WEAK",
+   "ara": {
+    "arm": "modify",
+    "diag": "search",
+    "submitted": [
+     "SUBSTITUTE",
+     {
+      "to": "restarts"
+     },
+     "STRUCTURAL"
+    ],
+    "verdict": {
+     "promoted": true,
+     "failed": null
+    },
+    "spent": 4440,
+    "secs": 4.1
+   },
+   "blind": {
+    "arm": "modify",
+    "diag": null,
+    "submitted": [
+     "SUBSTITUTE",
+     {
+      "to": "restarts"
+     },
+     "STRUCTURAL"
+    ],
+    "verdict": {
+     "promoted": true,
+     "failed": null
+    },
+    "spent": 4306,
+    "secs": 2.5
+   },
+   "tuning": {
+    "arm": "tuning",
+    "diag": null,
+    "submitted": null,
+    "verdict": {
+     "promoted": true,
+     "failed": null
+    },
+    "spent": 2371,
+    "secs": 12.4
+   },
+   "oracle_key": 1.622
+  },
+  {
+   "index": 9012,
+   "class": "EVAL_NOISY",
+   "ara": {
+    "arm": "modify",
+    "diag": "evaluation",
+    "submitted": [
+     "SUBSTITUTE",
+     {
+      "to": "paired"
+     },
+     "STRUCTURAL"
+    ],
+    "verdict": {
+     "promoted": true,
+     "failed": null
+    },
+    "spent": 21901,
+    "secs": 6.2
+   },
+   "blind": {
+    "arm": "modify",
+    "diag": null,
+    "submitted": [
+     "SUBSTITUTE",
+     {
+      "to": "paired"
+     },
+     "STRUCTURAL"
+    ],
+    "verdict": {
+     "promoted": true,
+     "failed": null
+    },
+    "spent": 23115,
+    "secs": 4.3
+   },
+   "tuning": {
+    "arm": "tuning",
+    "diag": null,
+    "submitted": null,
+    "verdict": {
+     "promoted": true,
+     "failed": null
+    },
+    "spent": 33398,
+    "secs": 1.9
+   },
+   "oracle_key": 1.0
+  },
+  {
+   "index": 9013,
+   "class": "NO_HEADROOM",
+   "ara": {
+    "arm": "solve",
+    "diag": "NONE",
+    "submitted": null,
+    "verdict": null,
+    "spent": 1574,
+    "secs": 2.0
+   },
+   "blind": {
+    "arm": "solve",
+    "diag": null,
+    "submitted": null,
+    "verdict": null,
+    "spent": 9896,
+    "secs": 2.9
+   },
+   "tuning": {
+    "arm": "tuning",
+    "diag": null,
+    "submitted": null,
+    "verdict": null,
+    "spent": 2371,
+    "secs": 124.0
+   },
+   "oracle_key": 0.0
+  },
+  {
+   "index": 9014,
+   "class": "NULL",
+   "ara": {
+    "arm": "solve",
+    "diag": "NONE",
+    "submitted": null,
+    "verdict": null,
+    "spent": 1574,
+    "secs": 2.0
+   },
+   "blind": {
+    "arm": "modify",
+    "diag": null,
+    "submitted": [
+     "SUBSTITUTE",
+     {
+      "to": "independent"
+     },
+     "STRUCTURAL"
+    ],
+    "verdict": {
+     "promoted": false,
+     "failed": "sealed"
+    },
+    "spent": 9809,
+    "secs": 1.8
+   },
+   "tuning": {
+    "arm": "tuning",
+    "diag": null,
+    "submitted": null,
+    "verdict": {
+     "promoted": false,
+     "failed": "sealed"
+    },
+    "spent": 2371,
+    "secs": 117.0
+   },
+   "oracle_key": 0.0
+  },
+  {
+   "index": 9015,
+   "class": "DECOY",
+   "ara": {
+    "arm": "modify",
+    "diag": "expressiveness",
+    "submitted": [
+     "SPECIALISE",
+     {
+      "sense": "s1"
+     },
+     "STRUCTURAL"
+    ],
+    "verdict": {
+     "promoted": false,
+     "failed": "sealed"
+    },
+    "spent": 1587,
+    "secs": 4.1
+   },
+   "blind": {
+    "arm": "modify",
+    "diag": null,
+    "submitted": [
+     "LIFT",
+     {
+      "param": "k"
+     },
+     "STRUCTURAL"
+    ],
+    "verdict": {
+     "promoted": false,
+     "failed": "sealed"
+    },
+    "spent": 1727,
+    "secs": 1.3
+   },
+   "tuning": {
+    "arm": "tuning",
+    "diag": null,
+    "submitted": null,
+    "verdict": null,
+    "spent": 1939,
+    "secs": 0.2
+   },
+   "oracle_key": 0.0
+  }
+ ],
+ "ledger": [
+  {
+   "index": 9000,
+   "arm": "ara",
+   "class": "STRUCTURAL",
+   "units_spent": 10312.8,
+   "matched_units": 36000.0,
+   "incumbent_value": 0.9726119999703324,
+   "variant_value": 1.6162522940683466,
+   "oracle": 1.7163741175947043,
+   "range": 0.8438839411507296,
+   "gain": 0.7627118644067797,
+   "promoted": true,
+   "failed": null,
+   "size": 15
+  },
+  {
+   "index": 9000,
+   "arm": "blind",
+   "class": "STRUCTURAL",
+   "units_spent": 9986.0,
+   "matched_units": 36000.0,
+   "incumbent_value": 0.9726119999703324,
+   "variant_value": 1.6162522940683466,
+   "oracle": 1.7163741175947043,
+   "range": 0.8438839411507296,
+   "gain": 0.7627118644067797,
+   "promoted": true,
+   "failed": null,
+   "size": 15
+  },
+  {
+   "index": 9000,
+   "arm": "tuning",
+   "class": "TUNING",
+   "units_spent": 2198.399999999997,
+   "matched_units": 36000.0,
+   "incumbent_value": 0.9726119999703324,
+   "variant_value": 0.8939448529139085,
+   "oracle": 1.7163741175947043,
+   "range": 0.8438839411507296,
+   "gain": -0.09322033898305088,
+   "promoted": false,
+   "failed": "sealed: the gain is below MATERIAL",
+   "size": 13
+  },
+  {
+   "index": 9001,
+   "arm": "ara",
+   "class": "STRUCTURAL",
+   "units_spent": 1592.0,
+   "matched_units": 36000.0,
+   "incumbent_value": 0.8891745177517131,
+   "variant_value": 1.7783490355034262,
+   "oracle": 1.8084905445797554,
+   "range": 0.8891745177517131,
+   "gain": 1.0,
+   "promoted": true,
+   "failed": null,
+   "size": 11
+  },
+  {
+   "index": 9001,
+   "arm": "blind",
+   "class": "STRUCTURAL",
+   "units_spent": 1739.2,
+   "matched_units": 36000.0,
+   "incumbent_value": 0.8891745177517131,
+   "variant_value": 1.7934197900415907,
+   "oracle": 1.8084905445797554,
+   "range": 0.8891745177517131,
+   "gain": 1.0169491525423728,
+   "promoted": true,
+   "failed": null,
+   "size": 13
+  },
+  {
+   "index": 9002,
+   "arm": "ara",
+   "class": "STRUCTURAL",
+   "units_spent": 2386.399999999998,
+   "matched_units": 36000.0,
+   "incumbent_value": 1.1184961994275286,
+   "variant_value": 1.3274460388810227,
+   "oracle": 1.4749400432011366,
+   "range": 0.5899760172804546,
+   "gain": 0.3541666666666663,
+   "promoted": true,
+   "failed": null,
+   "size": 13
+  },
+  {
+   "index": 9002,
+   "arm": "blind",
+   "class": "STRUCTURAL",
+   "units_spent": 9922.0,
+   "matched_units": 36000.0,
+   "incumbent_value": 1.1184961994275286,
+   "variant_value": 1.3274460388810227,
+   "oracle": 1.4749400432011366,
+   "range": 0.5899760172804546,
+   "gain": 0.3541666666666663,
+   "promoted": true,
+   "failed": null,
+   "size": 13
+  },
+  {
+   "index": 9003,
+   "arm": "ara",
+   "class": "STRUCTURAL",
+   "units_spent": 4421.6,
+   "matched_units": 36000.0,
+   "incumbent_value": 0.5490554365993598,
+   "variant_value": 1.0706581013687517,
+   "oracle": 1.0981108731987197,
+   "range": 0.4941498929394238,
+   "gain": 1.0555555555555558,
+   "promoted": true,
+   "failed": null,
+   "size": 13
+  },
+  {
+   "index": 9003,
+   "arm": "blind",
+   "class": "STRUCTURAL",
+   "units_spent": 4287.2,
+   "matched_units": 36000.0,
+   "incumbent_value": 0.5490554365993598,
+   "variant_value": 1.0706581013687517,
+   "oracle": 1.0981108731987197,
+   "range": 0.4941498929394238,
+   "gain": 1.0555555555555558,
+   "promoted": true,
+   "failed": null,
+   "size": 13
+  },
+  {
+   "index": 9003,
+   "arm": "tuning",
+   "class": "TUNING",
+   "units_spent": 2371.2000000000053,
+   "matched_units": 36000.0,
+   "incumbent_value": 0.5490554365993598,
+   "variant_value": 0.6497155999759092,
+   "oracle": 1.0981108731987197,
+   "range": 0.4941498929394238,
+   "gain": 0.20370370370370386,
+   "promoted": true,
+   "failed": null,
+   "size": 13
+  },
+  {
+   "index": 9004,
+   "arm": "ara",
+   "class": "STRUCTURAL",
+   "units_spent": 10613.999999999998,
+   "matched_units": 36000.0,
+   "incumbent_value": 0.857318911113231,
+   "variant_value": 1.3022565738428826,
+   "oracle": 1.3022565738428826,
+   "range": 0.488346215191081,
+   "gain": 0.9111111111111112,
+   "promoted": true,
+   "failed": null,
+   "size": 13
+  },
+  {
+   "index": 9004,
+   "arm": "blind",
+   "class": "STRUCTURAL",
+   "units_spent": 23434.0,
+   "matched_units": 36000.0,
+   "incumbent_value": 0.857318911113231,
+   "variant_value": 1.3022565738428826,
+   "oracle": 1.3022565738428826,
+   "range": 0.488346215191081,
+   "gain": 0.9111111111111112,
+   "promoted": true,
+   "failed": null,
+   "size": 13
+  },
+  {
+   "index": 9004,
+   "arm": "tuning",
+   "class": "TUNING",
+   "units_spent": 33477.2,
+   "matched_units": 36000.0,
+   "incumbent_value": 0.857318911113231,
+   "variant_value": 0.7596496680750149,
+   "oracle": 1.3022565738428826,
+   "range": 0.488346215191081,
+   "gain": -0.19999999999999982,
+   "promoted": false,
+   "failed": "sealed: the gain is below MATERIAL",
+   "size": 13
+  },
+  {
+   "index": 9007,
+   "arm": "ara",
+   "class": "STRUCTURAL",
+   "units_spent": 1867.9999999999998,
+   "matched_units": 36000.0,
+   "incumbent_value": 0.0,
+   "variant_value": 0.0,
+   "oracle": 0.0,
+   "range": 0.0,
+   "gain": 0.0,
+   "promoted": false,
+   "failed": "sealed: the gain is below MATERIAL",
+   "size": 11
+  },
+  {
+   "index": 9007,
+   "arm": "blind",
+   "class": "STRUCTURAL",
+   "units_spent": 1727.2,
+   "matched_units": 36000.0,
+   "incumbent_value": 0.0,
+   "variant_value": 0.0,
+   "oracle": 0.0,
+   "range": 0.0,
+   "gain": 0.0,
+   "promoted": false,
+   "failed": "sealed: the gain is below MATERIAL",
+   "size": 11
+  },
+  {
+   "index": 9008,
+   "arm": "ara",
+   "class": "STRUCTURAL",
+   "units_spent": 10178.8,
+   "matched_units": 36000.0,
+   "incumbent_value": 1.0594286560868953,
+   "variant_value": 1.62542478742099,
+   "oracle": 1.7415265579510608,
+   "range": 0.6675851805479065,
+   "gain": 0.8478260869565217,
+   "promoted": true,
+   "failed": null,
+   "size": 15
+  },
+  {
+   "index": 9008,
+   "arm": "blind",
+   "class": "STRUCTURAL",
+   "units_spent": 9896.0,
+   "matched_units": 36000.0,
+   "incumbent_value": 1.0594286560868953,
+   "variant_value": 1.62542478742099,
+   "oracle": 1.7415265579510608,
+   "range": 0.6675851805479065,
+   "gain": 0.8478260869565217,
+   "promoted": true,
+   "failed": null,
+   "size": 15
+  },
+  {
+   "index": 9009,
+   "arm": "ara",
+   "class": "STRUCTURAL",
+   "units_spent": 1592.0,
+   "matched_units": 36000.0,
+   "incumbent_value": 0.8514865512590694,
+   "variant_value": 1.202098660601039,
+   "oracle": 1.202098660601039,
+   "range": 0.35061210934196974,
+   "gain": 1.0,
+   "promoted": true,
+   "failed": null,
+   "size": 11
+  },
+  {
+   "index": 9009,
+   "arm": "blind",
+   "class": "STRUCTURAL",
+   "units_spent": 1739.2,
+   "matched_units": 36000.0,
+   "incumbent_value": 0.8514865512590694,
+   "variant_value": 1.1820636829243552,
+   "oracle": 1.202098660601039,
+   "range": 0.35061210934196974,
+   "gain": 0.942857142857143,
+   "promoted": true,
+   "failed": null,
+   "size": 13
+  },
+  {
+   "index": 9010,
+   "arm": "blind",
+   "class": "STRUCTURAL",
+   "units_spent": 9849.2,
+   "matched_units": 36000.0,
+   "incumbent_value": 1.1201561983386106,
+   "variant_value": 1.2970229664973385,
+   "oracle": 1.4149341452698239,
+   "range": 0.6013470117396751,
+   "gain": 0.2941176470588235,
+   "promoted": true,
+   "failed": null,
+   "size": 13
+  },
+  {
+   "index": 9010,
+   "arm": "tuning",
+   "class": "TUNING",
+   "units_spent": 2544.0,
+   "matched_units": 36000.0,
+   "incumbent_value": 1.1201561983386106,
+   "variant_value": 1.1673206698476046,
+   "oracle": 1.4149341452698239,
+   "range": 0.6013470117396751,
+   "gain": 0.0784313725490195,
+   "promoted": true,
+   "failed": null,
+   "size": 13
+  },
+  {
+   "index": 9011,
+   "arm": "ara",
+   "class": "STRUCTURAL",
+   "units_spent": 4440.0,
+   "matched_units": 36000.0,
+   "incumbent_value": 1.2238007358931249,
+   "variant_value": 1.7693504615322289,
+   "oracle": 1.7693504615322289,
+   "range": 0.545549725639104,
+   "gain": 1.0,
+   "promoted": true,
+   "failed": null,
+   "size": 13
+  },
+  {
+   "index": 9011,
+   "arm": "blind",
+   "class": "STRUCTURAL",
+   "units_spent": 4305.6,
+   "matched_units": 36000.0,
+   "incumbent_value": 1.2238007358931249,
+   "variant_value": 1.7693504615322289,
+   "oracle": 1.7693504615322289,
+   "range": 0.545549725639104,
+   "gain": 1.0,
+   "promoted": true,
+   "failed": null,
+   "size": 13
+  },
+  {
+   "index": 9011,
+   "arm": "tuning",
+   "class": "TUNING",
+   "units_spent": 2371.2000000000053,
+   "matched_units": 36000.0,
+   "incumbent_value": 1.2238007358931249,
+   "variant_value": 1.7693504615322289,
+   "oracle": 1.7693504615322289,
+   "range": 0.545549725639104,
+   "gain": 1.0,
+   "promoted": true,
+   "failed": null,
+   "size": 13
+  },
+  {
+   "index": 9012,
+   "arm": "ara",
+   "class": "STRUCTURAL",
+   "units_spent": 21901.2,
+   "matched_units": 36000.0,
+   "incumbent_value": 0.8520863644339651,
+   "variant_value": 1.7041727288679303,
+   "oracle": 1.8258993523584965,
+   "range": 0.852086364433965,
+   "gain": 1.0000000000000002,
+   "promoted": true,
+   "failed": null,
+   "size": 13
+  },
+  {
+   "index": 9012,
+   "arm": "blind",
+   "class": "STRUCTURAL",
+   "units_spent": 23115.4,
+   "matched_units": 36000.0,
+   "incumbent_value": 0.8520863644339651,
+   "variant_value": 1.7041727288679303,
+   "oracle": 1.8258993523584965,
+   "range": 0.852086364433965,
+   "gain": 1.0000000000000002,
+   "promoted": true,
+   "failed": null,
+   "size": 13
+  },
+  {
+   "index": 9012,
+   "arm": "tuning",
+   "class": "TUNING",
+   "units_spent": 33398.2,
+   "matched_units": 36000.0,
+   "incumbent_value": 0.8520863644339651,
+   "variant_value": 0.9738129879245315,
+   "oracle": 1.8258993523584965,
+   "range": 0.852086364433965,
+   "gain": 0.14285714285714282,
+   "promoted": true,
+   "failed": null,
+   "size": 13
+  },
+  {
+   "index": 9014,
+   "arm": "blind",
+   "class": "STRUCTURAL",
+   "units_spent": 9808.800000000001,
+   "matched_units": 36000.0,
+   "incumbent_value": 0.0,
+   "variant_value": 0.0,
+   "oracle": 0.0,
+   "range": 0.0,
+   "gain": 0.0,
+   "promoted": false,
+   "failed": "sealed: the gain is below MATERIAL",
+   "size": 13
+  },
+  {
+   "index": 9014,
+   "arm": "tuning",
+   "class": "TUNING",
+   "units_spent": 2371.2000000000053,
+   "matched_units": 36000.0,
+   "incumbent_value": 0.0,
+   "variant_value": 0.0,
+   "oracle": 0.0,
+   "range": 0.0,
+   "gain": 0.0,
+   "promoted": false,
+   "failed": "sealed: the gain is below MATERIAL",
+   "size": 13
+  },
+  {
+   "index": 9015,
+   "arm": "ara",
+   "class": "STRUCTURAL",
+   "units_spent": 1586.8,
+   "matched_units": 36000.0,
+   "incumbent_value": 0.0,
+   "variant_value": 0.0,
+   "oracle": 0.0,
+   "range": 0.0,
+   "gain": 0.0,
+   "promoted": false,
+   "failed": "sealed: the gain is below MATERIAL",
+   "size": 11
+  },
+  {
+   "index": 9015,
+   "arm": "blind",
+   "class": "STRUCTURAL",
+   "units_spent": 1726.8,
+   "matched_units": 36000.0,
+   "incumbent_value": 0.0,
+   "variant_value": 0.0,
+   "oracle": 0.0,
+   "range": 0.0,
+   "gain": 0.0,
+   "promoted": false,
+   "failed": "sealed: the gain is below MATERIAL",
+   "size": 13
+  }
+ ]
+}

@@ -313,7 +313,7 @@ is the hand-built instance of this section on the engine-invention workflow.
 |---|---|---|---|---|
 | INSERT(role) | A node consumes a list of that role's outputs (e.g. Features takes Senses) | Adds a new node of that role with a **hole** filled by synthesis (§6) | STRUCTURAL | 6.1 sense synthesis |
 | FUSE(a, b) | Two nodes with compatible output types feed the same consumer | Adds a node `op(a, b)`; the binary operator is a hole | STRUCTURAL | 6.3 composition, fusion |
-| GENERALISE(n) | The role library has an operator for n's role with a strictly larger family | Replaces n.op with the next family (global → threshold → tree → nearest neighbour) | STRUCTURAL | 4.1 limitation inversion |
+| GENERALISE(n) | The role library has an operator for n's role with a strictly larger family | Replaces n.op with the next family (global → threshold → oblique → tree → nearest neighbour; oblique added in ARA-1) | STRUCTURAL | 4.1 limitation inversion |
 | SPECIALISE(n, s) | n is global; a Sense node s is available | Makes n's output conditional on s | STRUCTURAL | 6.4 specialisation |
 | SUBSTITUTE(n, op′) | op′ has the same role and type | Swaps the operator (e.g. hill-climb → restarts; independent → paired evaluation) | STRUCTURAL | 4.5 counterfactual variants |
 | REALLOCATE(a → b, f) | Both nodes have budget shares | Moves a fraction f of budget from a to b | TUNING | 12 |
@@ -726,7 +726,7 @@ Every experiment is preregistered with five things:
 
 | Batch | Directive batch | Content | State |
 |---|---|---|---|
-| ARA-1 | 1, 2, 3, 4, 5, 6 (minimal, end to end) | `src/genesis/architecture/`: `graph.py` (AG, type check, kernel closure, execution under fuel, diff classifier); `model.py` (probes, evidence, failure patterns); `assumptions.py` (generated, recorded and protected assumptions); `zoo.py` (the environment generator, kernel side); `diagnose.py` (the loss ladder); `rewrite.py` (the grammar, holes, inversion chains, fingerprints); `judge.py` (sealed harness, kernel); `ara.py` (the cycle, with solve and stop). Tests `test_architecture_*` | **BUILDING** (24 Oct 2026, 21:10) |
+| ARA-1 | 1, 2, 3, 4, 5, 6 (minimal, end to end) | `src/genesis/architecture/`: `graph.py` (AG, type check, kernel closure, execution under fuel, diff classifier); `model.py` (probes, evidence, failure patterns); `assumptions.py` (generated, recorded and protected assumptions); `zoo.py` (the environment generator, kernel side); `diagnose.py` (the loss ladder); `rewrite.py` (the grammar, holes, inversion chains, fingerprints); `judge.py` (sealed harness, kernel); `ara.py` (the cycle, with solve and stop). Tests `test_architecture_*` | **BUILT on fixtures** (27 Oct 2026; B20_R150, `docs/checkpoints/B20_R150_RECORD.md`): 49 tests; a disclosed development look on 16 zoo environments |
 | ARA-2 | 6 | **B20_R141** preregistered and run: experiments A–D on the zoo | PLANNED, after ARA-1 |
 | ARA-3 | 4, 7 | Shapley attribution; synergy factorial; RETRIEVE with fresh-search controls; ENSEMBLE | PLANNED |
 | ARA-4 | 4.7 | Question generators as objects, scored by realised information per CPU second | PLANNED |
@@ -755,3 +755,13 @@ Every experiment is preregistered with five things:
   - Experiments A–J mapped to B20_R141–R147 (§13).
   - Milestones made operational (§14).
   - Every failure mode tied to a guard and a test (§15).
+- 27 Oct 2026: ARA-1 built on fixtures (B20_R150). Changes to this design, each disclosed in the record:
+  - the oblique policy family (a cut on a + s·b over two standardised features), added to the library and to the
+    ladder's flexible stand-in after a zoo look showed the axis-aligned stand-ins could not express FUSION_NEEDED;
+  - the rich stand-in always contains the current features;
+  - no ladder term is material when the attainable range's interval reaches zero;
+  - sense units are reported by ARA as a second currency beside the view's evaluation units.
+
+  Development look (zoo indices 9000–9015): with a 14-variant budget the blind-rewrite control reaches the same
+  fixes as ARA at about five times the units, so B20_R141's experiment D must fix a variant budget or measure gain
+  per unit. DECOY is a defect on dev by construction, so it is judged by the false-release rate, not the NONE rate.

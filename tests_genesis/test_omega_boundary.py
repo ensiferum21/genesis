@@ -15,7 +15,9 @@ RESEARCH = ['src/genesis/science', 'src/genesis/compiler', 'src/genesis/causal/a
             'src/genesis/vault.py', 'src/genesis/discovery_cli.py', 'src/genesis/interpret.py',
             'src/genesis/autonomy/process.py', 'src/genesis/replayers.py',
             'src/genesis/autonomy/contract_v3.py', 'src/genesis/autonomy/queue.py', 'src/genesis/representation',
-            'src/genesis/objects', 'src/genesis/senses']
+            'src/genesis/objects', 'src/genesis/senses'] + \
+    [f'src/genesis/architecture/{m}' for m in ('graph.py', 'policies.py', 'model.py', 'assumptions.py', 'diagnose.py',
+                                             'rewrite.py', 'ara.py')]
 PROTECTED = ('kernel', 'judge', 'custodian', 'custody_records', 'verification', 'release_bundle', 'eligibility',
              'exposure', 'decision_record')
 

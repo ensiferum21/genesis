@@ -764,9 +764,14 @@ WORKSTREAMS = {
     'W21': ('Better-improver and multigeneration controller (B20_R2: pure lineage validator; B20_R4: the campaign '
             'loop writes native lineage records, crash/resume charges interrupted attempts, the custodian checks '
             'generation requests against the qualifying chain; B20_R16: active-version pointer, rollback, inherited '
-            'version revocation, resume gate; sealed improver evaluation still refused)',
-            B, ['src/genesis/lineage.py', 'src/genesis/campaign.py', 'src/genesis/custodian.py', 'src/genesis/versions.py'],
-            [G + 'test_generation_lineage.py', G + 'test_campaign_lineage.py', G + 'test_versions.py']),
+            'version revocation, resume gate; sealed improver evaluation still refused; B20_R150: ARA-1, the '
+            'Autonomous Research Architect on fixtures)',
+            B, ['src/genesis/lineage.py', 'src/genesis/campaign.py', 'src/genesis/custodian.py', 'src/genesis/versions.py',
+                'src/genesis/architecture/graph.py', 'src/genesis/architecture/ara.py', 'src/genesis/architecture/judge.py',
+                'docs/OMEGA_ARCHITECTURE_INVENTION.md', 'docs/checkpoints/B20_R150_RECORD.md'],
+            [G + 'test_generation_lineage.py', G + 'test_campaign_lineage.py', G + 'test_versions.py',
+             G + 'test_architecture_graph.py', G + 'test_architecture_judge.py', G + 'test_architecture_rewrite.py',
+             G + 'test_architecture_ara.py', G + 'test_architecture_boundary.py']),
     'W22': ('New primitives, research-language evolution and trust changes (derived primitives with reference '
             'expansions, conformance, versioned registries; DEV: none of four starting primitives is a gain)', B,
             ['src/genesis/primitives.py', 'scripts/b20r_primitives.py'], [G + 'test_primitives.py']),

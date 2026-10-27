@@ -5651,7 +5651,12 @@
     "src/genesis/lineage.py",
     "src/genesis/campaign.py",
     "src/genesis/custodian.py",
-    "src/genesis/versions.py"
+    "src/genesis/versions.py",
+    "src/genesis/architecture/graph.py",
+    "src/genesis/architecture/ara.py",
+    "src/genesis/architecture/judge.py",
+    "docs/OMEGA_ARCHITECTURE_INVENTION.md",
+    "docs/checkpoints/B20_R150_RECORD.md"
    ],
    "disposition": "IMPLEMENTED_BOUNDED_PENDING_AUDIT",
    "evidence": [],
@@ -5668,9 +5673,14 @@
    "tests": [
     "tests_genesis/test_generation_lineage.py",
     "tests_genesis/test_campaign_lineage.py",
-    "tests_genesis/test_versions.py"
+    "tests_genesis/test_versions.py",
+    "tests_genesis/test_architecture_graph.py",
+    "tests_genesis/test_architecture_judge.py",
+    "tests_genesis/test_architecture_rewrite.py",
+    "tests_genesis/test_architecture_ara.py",
+    "tests_genesis/test_architecture_boundary.py"
    ],
-   "title": "Better-improver and multigeneration controller (B20_R2: pure lineage validator; B20_R4: the campaign loop writes native lineage records, crash/resume charges interrupted attempts, the custodian checks generation requests against the qualifying chain; B20_R16: active-version pointer, rollback, inherited version revocation, resume gate; sealed improver evaluation still refused)",
+   "title": "Better-improver and multigeneration controller (B20_R2: pure lineage validator; B20_R4: the campaign loop writes native lineage records, crash/resume charges interrupted attempts, the custodian checks generation requests against the qualifying chain; B20_R16: active-version pointer, rollback, inherited version revocation, resume gate; sealed improver evaluation still refused; B20_R150: ARA-1, the Autonomous Research Architect on fixtures)",
    "workstream": "W21"
   },
   {

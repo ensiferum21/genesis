@@ -79,7 +79,7 @@ directive to the repository and makes it testable. In short:
 - **The Limitation Zoo calibrates ARA** with planted limitations whose key only the judge holds, plus null,
   no-headroom and decoy controls. Zoo results are a calibration domain, never real-world evidence.
 - **ARA improves ARA** by the same cycle on its own AG, judged on sealed meta-tasks from held-out families.
-- Experiments A-J map to B20_R141-R147; ARA-1 (the first end-to-end batch) is being built.
+- Experiments A-J map to B20_R141-R147; ARA-1 (the first end-to-end batch) is built on fixtures (B20_R150).
 
 ## 0b. Daniel's architecture of 24 Oct 2026, 20:31 (adopted): recursive perception, cognition and invention
 
@@ -477,7 +477,7 @@ call; `CHECKOUT=1` at a study's first slice), so that new code can be committed 
 | 3b | B20_R148 | The portfolio of discovery processes (Ω², §0d): G0-G3 on ten fresh tasks, matched evaluations, AUDC (about 5 h, slices) | **done: NOT_SHOWN; G3_NOT_SHOWN** (G2 − G0 +0.0015 AUDC, p_Holm 1; G3 − G2 +0.010, p_Holm 0.70; H1 UNIVERSAL_HARNESS by its rule; 6.5 h) |
 | 4 | B20_R132 | The four bottlenecks of invention (headroom, expressiveness, search, evaluation) with planted positive and zero-signal controls, fresh truth sets T1/T2, the protected v2 against the candidate v3 at matched compute (about 5.7 h, slices) | **done: NOT_SHOWN; diagnosis EXPRESSIVENESS in every class** (no release by v2 or v3; headroom exists; nothing confirmed on fresh graphs; v2 blind below about 1%) |
 | 5 | B20_R128 | Improving the inventor (2–3 slices of 6,600 s) | **done: NOT_SHOWN** (NO_DIFFERENCE, p 0.55; no inner search released anything, so no level-1 signal for level 2) |
-| 6 | — | Checkpoint (the last one is B20_R118) with the release matrix | owed |
+| 6 | B20_R149 | Checkpoint `GENESIS_COMPLETION_CHECKPOINT_B20_R148` with the release matrix | **done** (2,260 tests OK; restore-verified; archived; REPRODUCED on the build host) |
 | 7 | B20_R134 | The Difficulty Cartographer, redesigned with obstacles hidden from cheap statistics (Ω2) | to design |
 | 8 | Ω3/Ω7 | The self-extending representation language (directive items 6–9; `docs/OMEGA_REPRESENTATION_LANGUAGE.md`): relations, verified gadgets, encodings with decoders, transformations to one BQP, families given only as predicates (reductions synthesised, not hand-written); stages A–C built on fixtures; its first study **B20_R135** (preregistered `7040a3c`, before R133 ran) after rows 1–5 | **B20_R135 done: INVENTED_REPRESENTATION_BETTER** (chosen encodings beat one-hot for k = 3, 4; behind MaxSAT) |
 | 8b | R1 | The research-object layer (`src/genesis/objects/`; `docs/OMEGA_RECURSIVE_INVENTION.md` §3, §16), then the graph sense language and B20_R136 (experiment A, the vertical slice) | building next on CPU 1 |
@@ -557,3 +557,5 @@ problems no level has seen, and Genesis has not shown that yet.
 - 27 Oct 2026: B20_R135 recorded: INVENTED_REPRESENTATION_BETTER (encodings Genesis chose beat one-hot on colouring
   for k = 3 and 4 through the same pipeline; known kinds of encoding; PASMaxSAT-c still far ahead; the cascade
   exact). The checkpoint next.
+- 27 Oct 2026: the checkpoint B20_R148 made, restore-verified, archived and reproduced on the build host (B20_R149);
+  ARA-1 built on fixtures (B20_R150). B20_R141 is the next to preregister.

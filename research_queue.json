@@ -505,15 +505,15 @@
    "kind": "engineering",
    "line": "architecture-invention",
    "notes": "",
-   "outcome": null,
+   "outcome": "built on fixtures (B20_R150): graph, zoo, judge, ladder, grammar, model, assumptions, cycle; 49 tests; a disclosed development look",
    "output": null,
-   "positive": null,
+   "positive": true,
    "preregistered": null,
    "priority": 9,
    "requires": [],
    "resources": {},
    "script": null,
-   "status": "queued",
+   "status": "done",
    "title": "ARA-1: the architecture graph, model, assumptions, limitation zoo, loss-ladder diagnoser, rewrite grammar, sealed judge harness and the ARA cycle (docs/OMEGA_ARCHITECTURE_INVENTION.md \u00a716)",
    "unlocks": [
     "ara-core"
@@ -530,9 +530,9 @@
    "kind": "operations",
    "line": "operations",
    "notes": "",
-   "outcome": null,
+   "outcome": "GENESIS_COMPLETION_CHECKPOINT_B20_R148 at 012f133 (B20_R149): release matrix 2,260 OK; restore-verified; archived; REPRODUCED on the build host",
    "output": null,
-   "positive": null,
+   "positive": true,
    "preregistered": null,
    "priority": 3,
    "requires": [],
@@ -540,7 +540,7 @@
     "cpu0_hours": 1.0
    },
    "script": null,
-   "status": "queued",
+   "status": "done",
    "title": "A fresh checkpoint with the release matrix (the last is B20_R118)",
    "unlocks": []
   },
@@ -1072,12 +1072,42 @@
    "outcome": "INVENTED_REPRESENTATION_BETTER: chosen encodings beat one-hot on colouring (k=3 8.5 vs 21.6, 18-0-2; k=4 30.6 vs 47.7, 20-0-0; Holm); k=5 one-hot kept; PASMaxSAT-c ahead; cascade exact (4 of 4, null 0)",
    "positive": true,
    "time": "2026-10-27T03:14:50+00:00"
+  },
+  {
+   "id": "checkpoint",
+   "kind": "start",
+   "time": "2026-10-27T05:50:27+00:00"
+  },
+  {
+   "id": "checkpoint",
+   "kind": "finish",
+   "outcome": "GENESIS_COMPLETION_CHECKPOINT_B20_R148 at 012f133 (B20_R149): release matrix 2,260 OK; restore-verified; archived; REPRODUCED on the build host",
+   "positive": true,
+   "time": "2026-10-27T05:50:27+00:00"
+  },
+  {
+   "id": "ara-1-build",
+   "kind": "start",
+   "time": "2026-10-27T05:50:27+00:00"
+  },
+  {
+   "id": "ara-1-build",
+   "kind": "finish",
+   "outcome": "built on fixtures (B20_R150): graph, zoo, judge, ladder, grammar, model, assumptions, cycle; 49 tests; a disclosed development look",
+   "positive": true,
+   "time": "2026-10-27T05:50:27+00:00"
   }
  ],
  "lines": {
   "architecture-invention": {
    "diagnosis": null,
-   "outcomes": [],
+   "outcomes": [
+    [
+     "ara-1-build",
+     "built on fixtures (B20_R150): graph, zoo, judge, ladder, grammar, model, assumptions, cycle; 49 tests; a disclosed development look",
+     true
+    ]
+   ],
    "run": 0,
    "stagnant": false
   },
@@ -1192,7 +1222,13 @@
   },
   "operations": {
    "diagnosis": null,
-   "outcomes": [],
+   "outcomes": [
+    [
+     "checkpoint",
+     "GENESIS_COMPLETION_CHECKPOINT_B20_R148 at 012f133 (B20_R149): release matrix 2,260 OK; restore-verified; archived; REPRODUCED on the build host",
+     true
+    ]
+   ],
    "run": 0,
    "stagnant": false
   },
@@ -1262,6 +1298,7 @@
  "unlocked": [
   "experiment-choice-verified",
   "ro-layer",
-  "representation-language"
+  "representation-language",
+  "ara-core"
  ]
 }
