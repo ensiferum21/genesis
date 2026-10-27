@@ -11,7 +11,10 @@ Steps, each recorded in the report; the first failing step stops the run:
   4  toolchain: use --toolchain, or build it from source (--build-toolchain, needs GitHub),
      including the Lean/Mathlib workspace, whose artifacts are then audited against its pins;
   5  host check against deployment/SUPPORTED_PLATFORM.json (`genesis platform check`);
-  6  the release test matrix (all suites; the sandbox suites need root);
+  6  the release test matrix (all suites; the sandbox suites need root), run in the checkout of the recorded commit
+     made in step 3 (byte-identical to the extracted tree, and with the git history some record tests read); the
+     pinned OR-Tools wheel, given with --ortools-wheel (or GENESIS_ORTOOLS_WHEEL), is passed to the tests, which
+     check its pin;
   7  deterministic reference computations equal deployment/EXPECTED_RESULTS.json.
 Verdict: REPRODUCED only if every step passed. The report is evidence about one
 host; it does not sign anything. The second machine's operator attests to it.
@@ -74,6 +77,8 @@ def check_history(tree, record):
     repo = tree.parent / 'history'
     subprocess.run(['git', 'clone', '-q', str(tree / 'source-history.bundle'), str(repo)], check=True,
                    capture_output=True)
+    subprocess.run(['git', '-C', str(repo), 'checkout', '-q', '--detach', record['commit']], check=True,
+                   capture_output=True)
     head_tree = subprocess.run(['git', '-C', str(repo), 'rev-parse', f"{record['commit']}^{{tree}}"],
                                capture_output=True, text=True, check=True).stdout.strip()
     if head_tree != record['tree']:
@@ -112,6 +117,8 @@ def main(argv=None):
     g.add_argument('--build-toolchain', action='store_true')
     ap.add_argument('--report', type=Path, required=True)
     ap.add_argument('--label', default='second machine', help='how the operator describes this host')
+    ap.add_argument('--ortools-wheel', type=Path, default=None,
+                    help='the pinned OR-Tools wheel (default: GENESIS_ORTOOLS_WHEEL); its pin is tested')
     a = ap.parse_args(argv)
     if a.work.exists():
         raise SystemExit('work directory must not exist (clean room)')
@@ -157,6 +164,11 @@ def main(argv=None):
         for key in ('HTTPS_PROXY', 'https_proxy', 'SSL_CERT_FILE', 'REQUESTS_CA_BUNDLE', 'GIT_SSL_CAINFO'):
             if key in os.environ:
                 env[key] = os.environ[key]      # network only for --build-toolchain
+        wheel = a.ortools_wheel or (Path(os.environ['GENESIS_ORTOOLS_WHEEL']) if os.environ.get('GENESIS_ORTOOLS_WHEEL')
+                                    else None)
+        if wheel is not None:
+            env['GENESIS_ORTOOLS_WHEEL'] = str(wheel.resolve())
+            report['ortools_wheel'] = {'name': wheel.name, 'sha256': sha256(wheel.read_bytes())}
 
         def s4():
             if a.build_toolchain:
@@ -189,10 +201,13 @@ def main(argv=None):
 
         def s6():
             matrix = a.work / 'matrix.json'
-            code, out, secs = run([sys.executable, str(tree / 'scripts/run_test_matrix.py'), '--profile', 'release',
-                                   '--report', str(matrix)], env=env, cwd=tree, log=logs / 'matrix.log')
+            repo = tree.parent / 'history'               # the verified checkout of the recorded commit
+            menv = dict(env, PYTHONPATH=str(repo / 'src'))
+            code, out, secs = run([sys.executable, str(repo / 'scripts/run_test_matrix.py'), '--profile', 'release',
+                                   '--report', str(matrix)], env=menv, cwd=repo, log=logs / 'matrix.log')
             summary = json.loads(matrix.read_text())
             report['matrix'] = {k: summary[k] for k in ('total_ran', 'total_skipped', 'all_ok')} | {
+                'tree': 'the checkout of the recorded commit (step 3)',
                 'suites': {s['suite']: {k: s[k] for k in ('ran', 'skipped', 'failures', 'errors', 'ok')}
                            for s in summary['suites']}}
             if code or not summary['all_ok']:

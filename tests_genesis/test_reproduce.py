@@ -75,6 +75,15 @@ class Reproduce(unittest.TestCase):
         self.assertEqual(report['commit'], self.fake.commit)
         self.assertIsNone(report['operator_attestation'])
 
+    def test_the_history_checkout_is_the_recorded_commit(self):
+        _, report = self.drive(self.fake.write('good.zip'))
+        repo = self.base / 'work' / 'history'
+        head = subprocess.run(['git', '-C', str(repo), 'rev-parse', 'HEAD'], capture_output=True, text=True,
+                              check=True).stdout.strip()
+        self.assertEqual(head, self.fake.commit)
+        for rel in ('README.md', 'scripts/tool.py', 'src/pkg/__init__.py'):
+            self.assertEqual((repo / rel).read_bytes(), (self.base / 'work' / 'genesis' / rel).read_bytes())
+
     def test_wrong_out_of_band_hash_stops_before_extraction(self):
         code, report = self.drive(self.fake.write('good.zip'), expected='0' * 64)
         self.assertEqual(self.failed_step(report), '1 checkpoint hash')
