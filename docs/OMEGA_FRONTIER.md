@@ -915,6 +915,7 @@ commit through `git show`.
 6. **B20_R158 (F5)** from a worktree at `703b2ee`.
 7. **B20_R163 (F6)** from a worktree of its preregistration commit, under 1 h.
 8. Then PT-1, once preregistered (§7b). Daniel decided part 1's mechanisms on 28 Oct, and both are built (B20_R164).
+   A design draft, not preregistered, is in `docs/handoff/PT1_DESIGN_DRAFT.md`.
 
 **CPU 1 (engineering):** light tests only.
 - No sandboxed (runc) test while a study runs on CPU 0: the sandbox resets the affinity
