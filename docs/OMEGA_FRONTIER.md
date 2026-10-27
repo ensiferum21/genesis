@@ -686,7 +686,25 @@ to be preregistered when F1–F5 have run:
 - all 68 formulas tiered (A1 51, A2 11, B 4, X 2);
 - the literature check for 44 and 46 (both still open as far as found; partial claims for 44 unverified).
 
-Built: `src/genesis/conjecture/` (`expr`, `graphs`; kernel side: `sealed`, `verify`) and its tests. Open in F2:
+Built: `src/genesis/conjecture/` and its tests (`tests_genesis/test_conjecture_domain.py`, 16):
+- `expr`, `graphs`;
+- `attack`: the objective, four starting representations (edges, trees, bounded degree, Γ programs) and six methods
+  (hill, anneal, evolution, GBFS, CEM, NRPA), as pausable, deterministic runners;
+- `domain`: the Frontier's view, with no abstraction yet;
+- kernel side: `sealed`; `verify`, with its study verifier.
+
+End to end, on invented bounds only, the Frontier refutes `d + 1` and `di + dj − 1` by exact certificate. It never
+refutes the proved `2d` or `d + m` (Merris).
+
+**Development look on the sealed set (disclosed).** While the attacks were smoke-tested on 27 Oct 2026 (13:10 UTC),
+six sealed bounds already known to be refuted (2, 3, 36, 48, 57, 61) were attacked for 3,000 evaluations with each
+of six representation and method pairs.
+- 48, 57 and 61 were certified by several pairs, 3 and 36 by GBFS on bounded graphs and by Γ.
+- 2 was not certified (best score 0.0: equality).
+- No setting was tuned on these results.
+- F4 will report its primary result with and without these six bounds.
+
+Open in F2:
 - the remaining items of §5: invariants beyond the Laplacian; Γ; the attacks; the generator;
 - a Collatz–Wielandt upper certificate for the Wagner rebuild test;
 - reading the 2006 text for bounds 28 and 41, if Daniel can attach it (DOI 10.1016/j.laa.2005.10.017).

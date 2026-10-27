@@ -16,7 +16,7 @@ from genesis.conjecture import sealed as SD  # noqa: E402
 from genesis.conjecture import verify as V  # noqa: E402
 
 PKG = ROOT / 'src' / 'genesis' / 'conjecture'
-RESEARCH_PLANE = ('__init__.py', 'expr.py', 'graphs.py')
+RESEARCH_PLANE = ('__init__.py', 'expr.py', 'graphs.py', 'attack.py', 'domain.py')
 KERNEL_SIDE = ('sealed.py', 'verify.py')
 P3 = (3, ((0, 1), (1, 2)))
 MERRIS = 'd + m'                                 # proved (Merris 1998), tight on P3 and on regular bipartite graphs
@@ -138,6 +138,57 @@ class Sealed(unittest.TestCase):
         self.assertEqual(r['not_tight_regular'], [28])
         for k, row in r['rows'].items():
             self.assertEqual(row['text'], SD.BOUNDS[int(k)][0])                        # the report is current
+
+
+class Attacks(unittest.TestCase):
+    """The attacks and the Frontier's view of the domain, on INVENTED bounds only (never the sealed set):
+    'd + 1' is false (C4: mu = 4 > 3), 'di + dj - 1' is false, '2*d' and 'd + m' are proved (2 Delta; Merris)."""
+    POSED = {'q1': ('d + 1', 'vertex'), 'q2': ('2*d', 'vertex'), 'q3': ('d + m', 'vertex'),
+             'q5': ('di + dj - 1', 'edge')}
+
+    def test_every_representation_and_method_runs_and_is_deterministic(self):
+        from genesis.conjecture import attack as AT
+        for rep in AT.REPRESENTATIONS:
+            for meth in AT.METHODS:
+                a = AT.Runner('d + 1', 'vertex', rep, meth, 10, seed=5)
+                b = AT.Runner('d + 1', 'vertex', rep, meth, 10, seed=5)
+                a.advance(300)
+                b.advance(150)
+                b.advance(150)
+                self.assertEqual(a.best, b.best, (rep, meth))
+                self.assertEqual(a.evals, 300)
+
+    def test_the_vectorised_bound_matches_the_exact_one(self):
+        from genesis.conjecture import attack as AT
+        rng = random.Random(4)
+        for _ in range(40):
+            g = random_graph(rng, rng.randint(3, 12), 0.4)
+            import numpy as np
+            A = np.zeros((g[0], g[0]), dtype=np.int64)
+            for u, v in g[1]:
+                A[u, v] = A[v, u] = 1
+            for f, kind in (('sqrt(2*d^2 + 2*d*m)', 'vertex'), ('2 + sqrt(2*(di - 1)^2 + 2*(dj - 1)^2)', 'edge')):
+                val = AT.Bound(f, kind).value(A)
+                exact = Gr.bound_value(E.parse(f, kind), kind, *g)
+                self.assertAlmostEqual(val, exact, places=9)
+
+    def test_the_frontier_refutes_the_false_and_never_the_proved(self):
+        from genesis.conjecture.domain import ConjectureDomain
+        from genesis.frontier.engine import Frontier
+        from genesis.frontier.manifest import Manifest
+        dom = ConjectureDomain(self.POSED)
+        e = Frontier(Manifest(dom, V.verifier(self.POSED), budget=6000, quantum=100), 'frontier', seed=2)
+        e.run()
+        self.assertEqual(e.best_verified.get('q1'), 1.0)
+        self.assertEqual(e.best_verified.get('q5'), 1.0)
+        self.assertFalse(e.best_verified.get('q2'))
+        self.assertFalse(e.best_verified.get('q3'))
+
+    def test_forged_artifacts_are_refused(self):
+        posed = {'q2': ('2*d', 'vertex')}
+        verify = V.verifier(posed)
+        self.assertEqual(verify('q2', {'n': 3, 'edges': [[0, 1], [1, 2]], 'x': ['1', '-2', '1']}), 0.0)
+        self.assertEqual(verify('q2', {'n': 'x'}), 0.0)
 
 
 class Boundary(unittest.TestCase):

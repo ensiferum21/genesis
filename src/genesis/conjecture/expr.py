@@ -277,3 +277,49 @@ def enclose(node, env, bits=64):
         return _mul(a, b)
     inv = _inv(b)
     return None if inv is None else _mul(a, inv)
+
+
+# ------------------------------------------------------------------------------------------- numpy (search)
+
+def compile_numpy(node):
+    """A function of numpy arrays (one per variable) giving the elementwise value; NaN where undefined. For search
+    only: verification uses `enclose`."""
+    import numpy as np
+
+    def build(n):
+        k = n[0]
+        if k == 'num':
+            v = float(n[1])
+            return lambda env: v
+        if k == 'var':
+            name = n[1]
+            return lambda env: env[name]
+        if k == 'neg':
+            f = build(n[1])
+            return lambda env: -f(env)
+        if k == 'sqrt':
+            f = build(n[1])
+            return lambda env: np.sqrt(np.where(f(env) >= 0, f(env), np.nan))
+        if k == 'root4':
+            f = build(n[1])
+            return lambda env: np.sqrt(np.sqrt(np.where(f(env) >= 0, f(env), np.nan)))
+        if k == '^':
+            f, e = build(n[1]), n[2]
+            if e >= 0:
+                return lambda env: f(env) ** e
+            return lambda env: np.where(f(env) != 0, 1.0 / np.where(f(env) != 0, f(env), 1.0) ** (-e), np.nan)
+        a, b = build(n[1]), build(n[2])
+        if k == '+':
+            return lambda env: a(env) + b(env)
+        if k == '-':
+            return lambda env: a(env) - b(env)
+        if k == '*':
+            return lambda env: a(env) * b(env)
+        return lambda env: np.where(b(env) != 0, a(env) / np.where(b(env) != 0, b(env), 1.0), np.nan)
+    f = build(node)
+
+    def run(env):
+        with np.errstate(invalid='ignore', divide='ignore', over='ignore'):
+            out = f(env)
+        return out
+    return run

@@ -66,3 +66,16 @@ def check(formula, kind, n, edges, x):
             return {'verdict': 'REFUTED', 'q': str(q), 'hi': str(hi), 'bits': bits,
                     'digest': hashlib.sha256(json.dumps(cert, sort_keys=True).encode()).hexdigest()}
     return {'verdict': 'NOT_CERTIFIED', 'q': str(q), 'hi': None if hi is None else str(hi)}
+
+
+def verifier(posed):
+    """For a study (kernel side): verify(pid, artifact) -> 1.0 if the artifact's certificate refutes the posed bound
+    exactly, else 0.0. `posed` is {id: (formula, kind)}; artifacts are those of `conjecture.domain`."""
+    def verify(pid, art):
+        formula, kind = posed[pid]
+        try:
+            res = check(formula, kind, art['n'], [tuple(e) for e in art['edges']], [Fraction(v) for v in art['x']])
+        except (KeyError, ValueError, ZeroDivisionError, TypeError):
+            return 0.0
+        return 1.0 if res['verdict'] == 'REFUTED' else 0.0
+    return verify
