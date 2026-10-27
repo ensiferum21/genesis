@@ -679,6 +679,31 @@
    "title": "F6: the Frontier searching its own configurations: does the promoted configuration beat the defaults on held-out planted worlds at matched total compute (the meta-search counted)?",
    "unlocks": []
   },
+  "B20_R165": {
+   "artifacts": [],
+   "committed": true,
+   "depends_on": [
+    "B20_R152"
+   ],
+   "failure": null,
+   "id": "B20_R165",
+   "kind": "study",
+   "line": "expressiveness",
+   "notes": "A confirmatory replication of B20_R151's secondary S5 finding; preregistered 28 Oct 2026 02:45 SGT; runs after B20_R152, before B20_R141",
+   "outcome": null,
+   "output": "evidence/planar_replication_b20r165",
+   "positive": null,
+   "preregistered": "sha256 fbf968c5e2cf22f3e6f2720df16ae2586f08dbcc32f5f556ca4df99ed523516f (the preregistration commit)",
+   "priority": 9,
+   "requires": [],
+   "resources": {
+    "cpu0_hours": 1.2
+   },
+   "script": "scripts/b20r165_planar_replication.py",
+   "status": "queued",
+   "title": "Do Genesis's searched max-cut engines (B20_R151's 18, frozen) beat REX on 48 fresh planar graphs? A replication of B20_R151's S5",
+   "unlocks": []
+  },
   "allocator-baselines": {
    "artifacts": [],
    "committed": false,
@@ -1811,6 +1836,7 @@
   "expr-x2-build",
   "B20_R151",
   "B20_R152",
+  "B20_R165",
   "B20_R155",
   "expr-x3-build",
   "frontier-f1-build",

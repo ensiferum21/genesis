@@ -74,8 +74,9 @@
    - B20_R152, Genesis growing its own language, is unaffected in design and runs next. It started at 17:48 UTC;
    - B20_R155 stays conditional on B20_R152 admitting statements;
    - X3, richer conditions, has no support from this result: Λ1's guards did not help;
-   - the S5 finding suggests a replication worth preregistering: Genesis's Λ0 engines against REX on fresh planar
-     graphs, with the protected judge deciding.
+   - the S5 finding called for a replication. It is preregistered as B20_R165: the same 18 engines, frozen, on 48
+     fresh planar graphs, with P1 the engines' mean gain and P2 a single engine chosen by training score. It runs
+     after B20_R152. It is not a release; the protected judge is a separate step.
 
 ## Expectations against results
 
