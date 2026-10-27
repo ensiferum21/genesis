@@ -626,15 +626,15 @@
    "kind": "build",
    "line": "representation",
    "notes": "stages A-C built on fixtures (040f778, 29c838e, ba341f4)",
-   "outcome": null,
+   "outcome": "built on fixtures: stages A-C (040f778, 29c838e, ba341f4) and the process layer (c8dc893); the 38 tests of test_representation_* and test_invented_representations pass (27 Oct 2026)",
    "output": null,
-   "positive": null,
+   "positive": true,
    "preregistered": null,
    "priority": 6,
    "requires": [],
    "resources": {},
    "script": null,
-   "status": "queued",
+   "status": "done",
    "title": "A self-extending mathematical representation language (engineering, fixtures)",
    "unlocks": []
   },
@@ -653,7 +653,7 @@
    "id": "repr-language-study",
    "kind": "study",
    "line": "representation",
-   "notes": "preregistered before B20_R133 ran; runs after the gates (R130, R131, R132, R133, R128)",
+   "notes": "preregistered before B20_R133 ran; runs after the gates (R130, R131, R132, R133, R128); started 27 Oct 2026 from a clean worktree of the branch head, as preregistered (7040a3c; the only later change in its packages is representation/processes.py, which it does not import)",
    "outcome": null,
    "output": "evidence/invented_representations_b20r135",
    "positive": null,
@@ -664,7 +664,7 @@
     "cpu0_hours": 1.5
    },
    "script": "scripts/b20r135_invented_representations.py",
-   "status": "queued",
+   "status": "running",
    "title": "B20_R135: invented representations against textbook ones (colouring encodings, synthesis, families through the vault)",
    "unlocks": [
     "representation-language"
@@ -1046,6 +1046,23 @@
    "outcome": "NOT_SHOWN: EVOLVED - ORIGINAL +0.00023 on 8 fresh sets (5-3, p 0.55, NO_DIFFERENCE); no release in any of 30 inner searches, so the meta-search selected first incumbents",
    "positive": false,
    "time": "2026-10-27T01:22:17+00:00"
+  },
+  {
+   "id": "repr-language-build",
+   "kind": "start",
+   "time": "2026-10-27T01:32:27+00:00"
+  },
+  {
+   "id": "repr-language-build",
+   "kind": "finish",
+   "outcome": "built on fixtures: stages A-C (040f778, 29c838e, ba341f4) and the process layer (c8dc893); the 38 tests of test_representation_* and test_invented_representations pass (27 Oct 2026)",
+   "positive": true,
+   "time": "2026-10-27T01:32:27+00:00"
+  },
+  {
+   "id": "repr-language-study",
+   "kind": "start",
+   "time": "2026-10-27T01:32:27+00:00"
   }
  ],
  "lines": {
@@ -1184,7 +1201,13 @@
   },
   "representation": {
    "diagnosis": null,
-   "outcomes": [],
+   "outcomes": [
+    [
+     "repr-language-build",
+     "built on fixtures: stages A-C (040f778, 29c838e, ba341f4) and the process layer (c8dc893); the 38 tests of test_representation_* and test_invented_representations pass (27 Oct 2026)",
+     true
+    ]
+   ],
    "run": 0,
    "stagnant": false
   }
