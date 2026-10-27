@@ -550,6 +550,83 @@
    "title": "Is Genesis's grown language more expressive? The language judge's expressiveness claim (saturated ceiling, margin) on B20_R152's admitted library against Lambda1, fresh planar2000 graphs",
    "unlocks": []
   },
+  "B20_R156": {
+   "artifacts": [],
+   "committed": false,
+   "depends_on": [
+    "frontier-f1-build",
+    "B20_R141"
+   ],
+   "failure": null,
+   "id": "B20_R156",
+   "kind": "study",
+   "line": "frontier",
+   "notes": "Daniel's directive of 27 Oct 2026, 19:55 (docs/OMEGA_FRONTIER.md); to preregister",
+   "outcome": null,
+   "output": "evidence/frontier_worlds_b20r156",
+   "positive": null,
+   "preregistered": null,
+   "priority": 6,
+   "requires": [],
+   "resources": {
+    "cpu0_hours": 1.0
+   },
+   "script": null,
+   "status": "queued",
+   "title": "F3: the Frontier engine against uniform, successive halving, UCB1 and random at matched compute on sealed planted worlds from held-out families (regret; forecast coverage; no false discovery on null worlds)",
+   "unlocks": []
+  },
+  "B20_R157": {
+   "artifacts": [],
+   "committed": false,
+   "depends_on": [
+    "frontier-f2-build",
+    "B20_R156"
+   ],
+   "failure": null,
+   "id": "B20_R157",
+   "kind": "study",
+   "line": "frontier",
+   "notes": "Daniel's directive of 27 Oct 2026, 19:55 (docs/OMEGA_FRONTIER.md); to preregister after a timing pilot",
+   "outcome": null,
+   "output": "evidence/laplacian_bounds_b20r157",
+   "positive": null,
+   "preregistered": null,
+   "priority": 6,
+   "requires": [],
+   "resources": {
+    "cpu0_hours": 12.0
+   },
+   "script": null,
+   "status": "queued",
+   "title": "F4: the sealed Laplacian bounds: refutations by exact certificate within budget, the Frontier against NRPA, GBFS, CEM and the uniform portfolio at matched CPU; no certificate against a proved bound; bounds 44 and 46 open as of June 2026",
+   "unlocks": []
+  },
+  "B20_R158": {
+   "artifacts": [],
+   "committed": false,
+   "depends_on": [
+    "B20_R157"
+   ],
+   "failure": null,
+   "id": "B20_R158",
+   "kind": "study",
+   "line": "frontier",
+   "notes": "Daniel's directive of 27 Oct 2026, 19:55 (docs/OMEGA_FRONTIER.md); to preregister",
+   "outcome": null,
+   "output": "evidence/open_conjectures_b20r158",
+   "positive": null,
+   "preregistered": null,
+   "priority": 5,
+   "requires": [],
+   "resources": {
+    "cpu0_hours": 10.0
+   },
+   "script": null,
+   "status": "queued",
+   "title": "F5: open-ended generations: Genesis poses its own conjectures from its own data, attacks them, abstracts named constructions from converged counterexamples and reuses them (trend, rediscoveries, survivors, compounding; controls without abstraction, without extrapolation, with a fixed curriculum)",
+   "unlocks": []
+  },
   "allocator-baselines": {
    "artifacts": [],
    "committed": false,
@@ -689,6 +766,48 @@
    "script": null,
    "status": "queued",
    "title": "X3: an observable-expression construct in mcx3 so that guards can be conditions Genesis defines, and library learning over conditions; mcx3 programs unchanged",
+   "unlocks": []
+  },
+  "frontier-f1-build": {
+   "artifacts": [],
+   "committed": false,
+   "depends_on": [],
+   "failure": null,
+   "id": "frontier-f1-build",
+   "kind": "build",
+   "line": "frontier",
+   "notes": "Daniel's directive of 27 Oct 2026, 19:55 (docs/OMEGA_FRONTIER.md); engineering on CPU 1; section 4",
+   "outcome": null,
+   "output": null,
+   "positive": null,
+   "preregistered": null,
+   "priority": 6,
+   "requires": [],
+   "resources": {},
+   "script": null,
+   "status": "queued",
+   "title": "F1: the divergent-convergent engine (directions; imagine, mutate, recombine, branch out with novelty; curve extrapolation with calibrated intervals; convergence; the allocator; resumable cycle; meta level) and the kernel-side planted world; the No-Handholding Protocol tests",
+   "unlocks": []
+  },
+  "frontier-f2-build": {
+   "artifacts": [],
+   "committed": false,
+   "depends_on": [],
+   "failure": null,
+   "id": "frontier-f2-build",
+   "kind": "build",
+   "line": "frontier",
+   "notes": "Daniel's directive of 27 Oct 2026, 19:55 (docs/OMEGA_FRONTIER.md); engineering on CPU 1; sections 5-6; first: the Taieb et al. reference, the 32 untranscribed formulas, a literature search for bounds 44 and 46 after June 2026",
+   "outcome": null,
+   "output": null,
+   "positive": null,
+   "preregistered": null,
+   "priority": 6,
+   "requires": [],
+   "resources": {},
+   "script": null,
+   "status": "queued",
+   "title": "F2: graph conjectures and constructions with exact certificates (rational Rayleigh and Collatz-Wielandt bounds, interval arithmetic), the construction language with equitable-partition realisation, attacks (portfolio harnesses, NMCS, NRPA, GBFS, CEM, exhaustive), the conjecture generator, and the sealed AutoGraphiX Laplacian bounds by the two-source rule",
    "unlocks": []
   },
   "judge-v3-followup": {
@@ -1302,6 +1421,31 @@
    "id": "expr-x3-build",
    "kind": "add",
    "time": "2026-10-27T08:39:35+00:00"
+  },
+  {
+   "id": "frontier-f1-build",
+   "kind": "add",
+   "time": "2026-10-27T12:08:37+00:00"
+  },
+  {
+   "id": "frontier-f2-build",
+   "kind": "add",
+   "time": "2026-10-27T12:08:37+00:00"
+  },
+  {
+   "id": "B20_R156",
+   "kind": "add",
+   "time": "2026-10-27T12:08:37+00:00"
+  },
+  {
+   "id": "B20_R157",
+   "kind": "add",
+   "time": "2026-10-27T12:08:37+00:00"
+  },
+  {
+   "id": "B20_R158",
+   "kind": "add",
+   "time": "2026-10-27T12:08:37+00:00"
   }
  ],
  "lines": {
@@ -1425,6 +1569,12 @@
    "run": 0,
    "stagnant": false
   },
+  "frontier": {
+   "diagnosis": null,
+   "outcomes": [],
+   "run": 0,
+   "stagnant": false
+  },
   "mathematics": {
    "diagnosis": null,
    "outcomes": [],
@@ -1520,7 +1670,12 @@
   "B20_R151",
   "B20_R152",
   "B20_R155",
-  "expr-x3-build"
+  "expr-x3-build",
+  "frontier-f1-build",
+  "frontier-f2-build",
+  "B20_R156",
+  "B20_R157",
+  "B20_R158"
  ],
  "reactivated": {},
  "schema": "genesis-research-queue-v1",

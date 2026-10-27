@@ -245,6 +245,18 @@ needs people: a reviewer, a statistician, an independent custodian on its own ma
       running alone on CPU 0 (it needs only X1; amended twice before any ceiling search, disclosed). Done: X2
       (B20_R154, engineering: the workflow ladder, library learning, the language judge, the consolidator and the
       generation pipeline, on a planted fixture). Next: B20_R151's result, then B20_R152.
+  26c. **Daniel's directive of 27 Oct 2026, 19:55 is adopted**: `docs/OMEGA_FRONTIER.md`, written in detail for
+      handoff at his request (20:01). Genesis works by divergence and convergence (imagine, mutate, recombine,
+      branch out, extrapolate discovery curves, detect convergence, allocate), without handholding. The
+      No-Handholding Protocol (one manifest, boundary tests, a relabelling audit, a teaching ban) is the test of
+      that.
+      - The first domain: graph-theory conjectures with exact certificates.
+      - The sealed calibration: the 68 AutoGraphiX Laplacian bounds (44 refuted, 22 proved, 2 open as of June
+        2026).
+      - The batches: F1 and F2 engineering on CPU 1 while the queue above runs; then B20_R156 (planted worlds),
+        B20_R157 (the sealed bounds) and B20_R158 (open-ended generations).
+      - Its §12 holds the exact resume commands for the running studies. The draft record tests are in
+        `docs/handoff/RECORD_TEST_DRAFTS.md`.
   27. after them: the Genesis Ω stages in `docs/GENESIS_OMEGA_PLAN.md` §5-§6 (Ω0 analysis of R127/R128; B20_R130
       invented instruments; B20_R131 the Difficulty Cartographer; the genome and typed language; the ecology;
       evolvability selection; the decisive A/B/C experiment).

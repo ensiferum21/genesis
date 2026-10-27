@@ -1,6 +1,6 @@
 # Genesis Ω: the plan for a self-improving, verifiable problem solver (24 Oct 2026)
 
-**Read this first if you are the next agent or operator on this repository**, then `docs/OMEGA_RECURSIVE_INVENTION.md` (the adopted architecture, §0b), `docs/OMEGA_ARCHITECTURE_INVENTION.md` (the Autonomous Research Architect, §0c) and `research_queue.json` (the live queue). It says:
+**Read this first if you are the next agent or operator on this repository**, then `docs/OMEGA_FRONTIER.md` (the newest directive and its handoff, §0f), `docs/OMEGA_EXPRESSIVE_LANGUAGE.md` (the running studies, §0e), `docs/OMEGA_RECURSIVE_INVENTION.md` (the adopted architecture, §0b), `docs/OMEGA_ARCHITECTURE_INVENTION.md` (the Autonomous Research Architect, §0c) and `research_queue.json` (the live queue). It says:
 - what Genesis is being built to do;
 - what it can do today, with the evidence;
 - the rules nothing may break;
@@ -44,6 +44,39 @@ The long-term objective stays the independent invention of algorithms, mathemati
 effective invention processes. It is **not achieved**, and no document may say so without independent evidence.
 Every batch reports its commits, tests, evidence, failed hypotheses, regressions, unresolved limitations and the next
 dependency-unblocking action.
+
+## 0f. Daniel's directive of 27 Oct 2026, 19:55 (adopted): the Frontier, divergence and convergence without handholding
+
+**Read `docs/OMEGA_FRONTIER.md` in full** (the design and the handoff). Daniel restated the vision and asked that
+Genesis "imagine, mutate, extrapolate, branch out, see convergence and do the best approach ... without handholding
+or teaching". In short:
+- **The builder branched over eight approaches against the evidence, and they converge.** The failures (B20_R127,
+  R128, R131, R132, R148) share one cause: the signal is below the noise where Genesis has been aimed. The
+  successes (B20_R129, R130, R135) have exact verification and a large signal.
+- **F1, the engine (domain independent), has five parts:**
+  - directions as typed research objects;
+  - imagine, mutate, recombine and branch out, with novelty, so that "never before used" is a descriptor outside the
+    archive;
+  - discovery-curve extrapolation with calibrated intervals, so that slow starters are not cut (the B20_R148
+    repair);
+  - convergence across independent branches, used as credibility and as structure to abstract;
+  - an allocator by extrapolated optimism, learning progress and reserved exploration, which adapts its own
+    settings on sealed meta-worlds.
+- **F2, the first domain:** graph-theory conjectures and constructions with **exact** certificates (rational
+  Rayleigh and Collatz–Wielandt bounds, interval arithmetic), a construction language with equitable-partition
+  realisation, and named constructions Genesis abstracts by X2's library learner.
+- **A sealed external calibration:** the 68 AutoGraphiX bounds on the Laplacian spectral radius (Brankov, Hansen
+  and Stevanović 2006). As of June 2026: 44 refuted, 22 proved, and bounds 44 and 46 open. Genesis is never told
+  which is which.
+- **The No-Handholding Protocol:**
+  - one manifest;
+  - boundary tests;
+  - a relabelling audit;
+  - a teaching ban;
+  - the builder's parts labelled.
+- **Batches:** F1, F2 (engineering on CPU 1); B20_R156 (F3, the planted-world calibration), B20_R157 (F4, the sealed
+  bounds), B20_R158 (F5, open-ended generations). All of them queue after B20_R151, B20_R152 and B20_R141, whose order
+  is unchanged.
 
 ## 0e. Daniel's direction of 27 Oct 2026, 14:33 (adopted; the current priority): richer expressiveness, separated from search
 
@@ -509,6 +542,9 @@ call; `CHECKOUT=1` at a study's first slice), so that new code can be committed 
 | 8 | Ω3/Ω7 | The self-extending representation language (directive items 6–9; `docs/OMEGA_REPRESENTATION_LANGUAGE.md`): relations, verified gadgets, encodings with decoders, transformations to one BQP, families given only as predicates (reductions synthesised, not hand-written); stages A–C built on fixtures; its first study **B20_R135** (preregistered `7040a3c`, before R133 ran) after rows 1–5 | **B20_R135 done: INVENTED_REPRESENTATION_BETTER** (chosen encodings beat one-hot for k = 3, 4; behind MaxSAT) |
 | 8b | R1 | The research-object layer (`src/genesis/objects/`; `docs/OMEGA_RECURSIVE_INVENTION.md` §3, §16), then the graph sense language and B20_R136 (experiment A, the vertical slice) | building next on CPU 1 |
 | 9 | Ω4–Ω9 | As in §5 | — |
+| 10 | B20_R151 → B20_R152 → B20_R141 | The expressiveness line and ARA's zoo calibration (§0e) | B20_R151 running; the others preregistered |
+| 11 | F1, F2 | The Frontier engine and the graph-conjecture domain (§0f; `docs/OMEGA_FRONTIER.md` §4–§6), engineering on CPU 1 | designed; to build |
+| 12 | B20_R156, B20_R157, B20_R158 | F3 (planted worlds), F4 (the sealed Laplacian bounds), F5 (open-ended generations) | to preregister after F1 and F2 |
 
 ## 7. Prior art to check every novelty claim against
 
@@ -586,3 +622,7 @@ problems no level has seen, and Genesis has not shown that yet.
   exact). The checkpoint next.
 - 27 Oct 2026: the checkpoint B20_R148 made, restore-verified, archived and reproduced on the build host (B20_R149);
   ARA-1 built on fixtures (B20_R150). B20_R141 is the next to preregister.
+- 27 Oct 2026, 14:33: Daniel's direction on richer expressiveness adopted (§0e); X1 and X2 built; B20_R151 running;
+  B20_R152 and B20_R141 preregistered.
+- 27 Oct 2026, 20:15: Daniel's directive of 19:55 adopted (§0f; `docs/OMEGA_FRONTIER.md`): the Frontier, designed
+  in detail for handoff at his request of 20:01; F1 and F2 next on CPU 1; B20_R156–R158 reserved.
