@@ -107,6 +107,10 @@ class Frontier:
             self.invented.append((problem, new))
         return new
 
+    def underivable(self):
+        """Representations the domain declined to derive from (learned from the engine's own log)."""
+        return {e['representation'] for e in self.events if e['kind'] == 'derive' and e['result'] is None}
+
     def advance(self, bid):
         b = self.branches[bid]
         d = b['direction']

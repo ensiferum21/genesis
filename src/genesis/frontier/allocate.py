@@ -189,8 +189,9 @@ class FrontierPolicy:
         probs = eng.problem_order()
         paused = [b for b in eng.branches.values() if b['paused']]
         leaders = sorted([b for b in eng.branches.values() if b['ys']], key=lambda b: (-level(b), b['id']))[:4]
-        if self.p['p_derive'] > 0 and leaders and rng.random() < self.p['p_derive']:
-            lead = rng.choice(leaders)                       # derive a representation from a leader's (if it can be)
+        derivable = [b for b in leaders if b['direction']['representation'] not in eng.underivable()]
+        if self.p['p_derive'] > 0 and derivable and rng.random() < self.p['p_derive']:
+            lead = rng.choice(derivable)                     # derive a representation from a leader's
             d = lead['direction']
             return ('derive', (d['problem'], d['representation'], d['method'], d['params']))
         r = rng.random()
