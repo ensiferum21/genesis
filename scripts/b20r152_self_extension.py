@@ -72,6 +72,13 @@ or NOT_SHOWN. A gain, if any, of about 0.05-0.15%.
 seen (its first Λ0 inventor search's winner and that search's own training score); nothing here uses it. The domain
 choice uses B20_R151's gate, which was complete.
 
+**Amendment (27 Oct 2026, before it ran; disclosed).** As preregistered (`14232e4`, sha256 732632c8...3159) a slice's
+clock started before the graphs were generated, and a run past the deadline paused even if the slice had made none.
+A resume rehearsal with stub engines (B20_R141's showed that resumes need rehearsing) made this visible: short slices
+made no progress. Now the clock starts after the graphs, and a slice pauses only after it has made a new run
+(counted across the study's lab and the judge's domain). What is run, and the analysis, are unchanged; a test pauses
+and resumes the whole study and gets the uninterrupted result.
+
 **Cost.** Per generation: dev searches about 1.1 h; the first submission about 1.4 h, a second about 0.95 h (the
 parent's searches are shared): at most about 3.5 h, three generations at most 10.5 h; confirmation about 4.3 h; at
 most about 15 h, in slices of 6,600 s. **Status.** DEV; licenses nothing; adopts nothing.
@@ -153,8 +160,9 @@ def real_runner(cfg, task, seed, budget):
 class Lab:
     """The study's runs (dev searches, confirmation, truth), cached by (engine, graph, occurrence) in runs.jsonl."""
 
-    def __init__(self, path=None, runner=real_runner, deadline=None):
+    def __init__(self, path=None, runner=real_runner, deadline=None, progress=None):
         self.path, self.runner, self.deadline = path, runner, deadline
+        self.progress = progress if progress is not None else {'new': 0}     # shared with the judge's domain
         self.cache, self.programs = {}, {}
         if path is not None and Path(path).exists():
             for line in Path(path).read_text().splitlines():
@@ -171,10 +179,11 @@ class Lab:
         self.programs.setdefault(ek, cfg)
         k = f'{ek}|{task.task_id}|{occ}|{BUDGET:g}'
         if k not in self.cache:
-            if self.deadline is not None and time.monotonic() > self.deadline:
-                raise Paused
+            if self.deadline is not None and time.monotonic() > self.deadline and self.progress['new'] > 0:
+                raise Paused                                     # every slice makes at least one new run
             seed = h(STUDY, ek, task.task_id, occ) % (1 << 62)
             v, cpu = self.runner(cfg, task, seed, BUDGET)
+            self.progress['new'] += 1
             self.cache[k] = {'key': k, 'value': v, 'cpu': round(cpu, 4)}
             if self.path is not None:
                 with open(self.path, 'a') as f:
@@ -370,11 +379,12 @@ def _study(out, logf, t0, cpu, runner, registered, exclude_r151):
     if exclude_r151:
         excluded |= r151_identities()
     G, seen = study_graphs(excluded)
-    deadline = t0 + SLICE_S
-    lab = Lab(out / 'runs.jsonl', runner=runner, deadline=deadline)
+    deadline = time.monotonic() + SLICE_S                       # the slice's clock starts after the graphs
+    progress = {'new': 0}
+    lab = Lab(out / 'runs.jsonl', runner=runner, deadline=deadline, progress=progress)
     domain = MD.MaxCutDomain(FAMILIES, exclude=seen, budget=BUDGET, cache=out / 'judge_runs.jsonl',
                              deadline=deadline, search_scale=JUDGE_SCALE, bound=BOUND,
-                             runner=None if runner is real_runner else runner)
+                             runner=None if runner is real_runner else runner, progress=progress)
     judge = J.LanguageJudge(domain, sealed_seed=h(STUDY, 'judge'), replicates=JUDGE_REPLICATES, train=JUDGE_TRAIN,
                             truth=JUDGE_TRUTH)
     ids = [A.exposure_identity(t)['canonical'] for s in G for t in G[s]] + \

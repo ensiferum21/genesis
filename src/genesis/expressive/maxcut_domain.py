@@ -9,7 +9,8 @@ one run of the pinned binary, the cut recomputed in Python (`mcx3.solve`); `refe
 Runs are cached on disk (`cache`, one JSON line per run, keyed by the configuration's digest, the graph, the seed and
 the budget), so that a study paused at the end of a time slice replays the judge exactly: the judge's searches are
 deterministic given the values of their runs. Past `deadline` (time.monotonic), a run not in the cache raises
-`Paused`. The graphs themselves are regenerated from the seed, so only runs are stored.
+`Paused`, but only once this process has made a new run (`progress`, a counter shared with the study's own lab), so
+that every slice makes progress. The graphs themselves are regenerated from the seed, so only runs are stored.
 """
 import json
 from pathlib import Path
@@ -26,13 +27,14 @@ class Paused(Exception):
 
 class MaxCutDomain:
     def __init__(self, families, exclude=(), budget=1.0, cache=None, deadline=None, search_scale=1.0, bound=32,
-                 runner=None):
+                 runner=None, progress=None):
         self.families, self.budget, self.search_scale, self.bound = tuple(families), budget, search_scale, bound
         self.reference = dict(K.DEFAULT)
         self._seen = set(exclude)
         self._graphs = {}
         self._cache_path = Path(cache) if cache else None
         self._deadline = deadline
+        self._progress = progress if progress is not None else {'new': 0}
         self._runner = runner or _real_runner
         self._cache = {}
         if self._cache_path is not None and self._cache_path.exists():
@@ -59,9 +61,10 @@ class MaxCutDomain:
     def run(self, cfg, g, seed):
         key = f"{digest(cfg)[:16]}|{g['id']}|{seed % (1 << 62)}|{self.budget:g}"
         if key not in self._cache:
-            if self._deadline is not None and time.monotonic() > self._deadline:
+            if self._deadline is not None and time.monotonic() > self._deadline and self._progress['new'] > 0:
                 raise Paused
             v, cpu = self._runner(cfg, self._graphs[g['id']], seed % (1 << 62), self.budget)
+            self._progress['new'] += 1
             self._cache[key] = {'key': key, 'value': v, 'cpu': round(cpu, 4)}
             if self._cache_path is not None:
                 with open(self._cache_path, 'a') as f:
