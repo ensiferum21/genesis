@@ -16,10 +16,25 @@ sys.path.insert(0, str(ROOT / 'scripts'))
 import b20r158_open_conjectures as S  # noqa: E402
 
 
+def digest_at(commit, rel):
+    """The SHA-256 of a file as committed at `commit` (None without git): pins are checked against the
+    preregistration commit, because the branch head moves on; the study runs from a worktree of that commit."""
+    import hashlib
+    import subprocess
+    try:
+        out = subprocess.run(['git', '-C', str(ROOT), 'show', f'{commit}:{rel}'], capture_output=True, timeout=60)
+    except (OSError, subprocess.SubprocessError):
+        return None
+    return hashlib.sha256(out.stdout).hexdigest() if out.returncode == 0 else None
+
+
 class Design(unittest.TestCase):
     def test_constants_and_labels(self):
         others = [p for p in (ROOT / 'scripts').glob('*.py') if p.name != 'b20r158_open_conjectures.py']
         self.assertFalse(any(re.search(rf'\b{S.DATA_SEED}\b', p.read_text()) for p in others))
+        at = {m: digest_at('703b2ee', 'src/genesis/' + m) for m in S.PINNED}      # the preregistration commit
+        if all(v is not None for v in at.values()):
+            self.assertEqual(at, S.PINNED)
         self.assertEqual(S.labels('sqrt(2*m^3/d + 2*d^2)')[0], True)                 # bound 18: withheld
         self.assertEqual(S.labels('sqrt(d^2 + 3*d*m)'), (False, 'rediscovery of bound 10 (proved)'))
         self.assertEqual(S.labels('(2*d + 2*m)/2'), (False, 'rediscovery of Merris 1998 (proved)'))
