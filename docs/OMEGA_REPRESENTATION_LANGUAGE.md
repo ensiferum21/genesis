@@ -11,8 +11,9 @@ Each must be preserved exactly with its lineage and checked for correctness. Eac
 it makes possible.
 
 **What is claimed.** Nothing yet. Everything below is engineering on fixtures (`tests_genesis/test_representation_*`).
-The first study, B20_R135, is preregistered (`7040a3c`). It runs after the queued gates (B20_R130, R131, R132, R133,
-R128; `research_queue.json`, direction `repr-language-study`).
+The first study, B20_R135, preregistered (`7040a3c`), ran on 27 Oct 2026: **INVENTED_REPRESENTATION_BETTER**
+(`docs/checkpoints/B20_R135_RECORD.md`). Encodings chosen by the encoding search and a pilot beat one-hot for 3 and
+4 colours through the same pipeline; such encodings are known, so no novelty is claimed.
 
 ## The language (package `src/genesis/representation/`, research plane, LLM-free)
 
@@ -54,8 +55,9 @@ R128; `research_queue.json`, direction `repr-language-study`).
   - Levels 2 and 3 improve it, and its improver, under one fuel budget.
   - A descendant is admitted only by a promotion gate: strictly more verified gadgets on unfamiliar relations at
     matched fuel (directive item 11).
-- **The first study, B20_R135**, is preregistered (`7040a3c`), before B20_R133's colouring results were seen. It
-  runs after the gates.
+- **The first study, B20_R135**, was preregistered (`7040a3c`) before B20_R133's colouring results were seen, and ran
+  on 27 Oct 2026: INVENTED_REPRESENTATION_BETTER for k = 3 and 4 (k = 5 kept one-hot); PASMaxSAT-c still ahead; the
+  cascade reactivated exactly the four parked families.
 
 ## Not yet built (the next stages, in order)
 

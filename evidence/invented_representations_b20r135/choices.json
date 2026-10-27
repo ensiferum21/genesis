@@ -1,0 +1,1073 @@
+{
+ "3": {
+  "candidates": [
+   {
+    "D": 3,
+    "b": 2,
+    "code": [
+     [
+      0,
+      0
+     ],
+     [
+      0,
+      1
+     ],
+     [
+      1,
+      0
+     ]
+    ]
+   },
+   {
+    "D": 3,
+    "b": 3,
+    "code": [
+     [
+      0,
+      0,
+      0
+     ],
+     [
+      0,
+      1,
+      1
+     ],
+     [
+      1,
+      0,
+      1
+     ]
+    ]
+   },
+   {
+    "D": 3,
+    "b": 3,
+    "code": [
+     [
+      0,
+      0,
+      0
+     ],
+     [
+      0,
+      0,
+      1
+     ],
+     [
+      0,
+      1,
+      0
+     ]
+    ]
+   },
+   {
+    "D": 3,
+    "b": 3,
+    "code": [
+     [
+      1,
+      0,
+      0
+     ],
+     [
+      0,
+      1,
+      0
+     ],
+     [
+      0,
+      0,
+      1
+     ]
+    ]
+   }
+  ],
+  "chosen": {
+   "D": 3,
+   "b": 2,
+   "code": [
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     1,
+     0
+    ]
+   ]
+  },
+  "feasible_tables": 4,
+  "is_one_hot": false,
+  "pilot": {
+   "0": 2.5,
+   "1": 6.5,
+   "2": 3,
+   "3": 6.5
+  },
+  "plans": {
+   "0": {
+    "neq": {
+     "ancillas": 0,
+     "count": 675,
+     "form": "whole",
+     "nonzero": 11,
+     "pieces": [
+      {
+       "bits": [
+        0,
+        1,
+        2,
+        3
+       ],
+       "relation": {
+        "care": 1911,
+        "k": 4,
+        "table": 854
+       }
+      }
+     ]
+    },
+    "validity": {
+     "ancillas": 0,
+     "count": 300,
+     "form": "whole",
+     "nonzero": 1,
+     "pieces": [
+      {
+       "bits": [
+        0,
+        1
+       ],
+       "relation": {
+        "k": 2,
+        "table": 7
+       }
+      }
+     ]
+    }
+   },
+   "1": {
+    "neq": {
+     "ancillas": 0,
+     "count": 675,
+     "form": "factors",
+     "nonzero": 6,
+     "pieces": [
+      {
+       "bits": [
+        0,
+        3
+       ],
+       "relation": {
+        "k": 2,
+        "table": 7
+       }
+      },
+      {
+       "bits": [
+        1,
+        4
+       ],
+       "relation": {
+        "k": 2,
+        "table": 7
+       }
+      },
+      {
+       "bits": [
+        2,
+        5
+       ],
+       "relation": {
+        "k": 2,
+        "table": 14
+       }
+      }
+     ]
+    },
+    "validity": {
+     "ancillas": 0,
+     "count": 300,
+     "form": "whole",
+     "nonzero": 6,
+     "pieces": [
+      {
+       "bits": [
+        0,
+        1,
+        2
+       ],
+       "relation": {
+        "k": 3,
+        "table": 97
+       }
+      }
+     ]
+    }
+   },
+   "2": {
+    "neq": {
+     "ancillas": 0,
+     "count": 675,
+     "form": "whole",
+     "nonzero": 11,
+     "pieces": [
+      {
+       "bits": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5
+       ],
+       "relation": {
+        "care": 90195689493,
+        "k": 6,
+        "table": 21475950612
+       }
+      }
+     ]
+    },
+    "validity": {
+     "ancillas": 0,
+     "count": 300,
+     "form": "whole",
+     "nonzero": 2,
+     "pieces": [
+      {
+       "bits": [
+        0,
+        1,
+        2
+       ],
+       "relation": {
+        "k": 3,
+        "table": 21
+       }
+      }
+     ]
+    }
+   },
+   "3": {
+    "neq": {
+     "ancillas": 0,
+     "count": 675,
+     "form": "factors",
+     "nonzero": 3,
+     "pieces": [
+      {
+       "bits": [
+        0,
+        3
+       ],
+       "relation": {
+        "k": 2,
+        "table": 7
+       }
+      },
+      {
+       "bits": [
+        1,
+        4
+       ],
+       "relation": {
+        "k": 2,
+        "table": 7
+       }
+      },
+      {
+       "bits": [
+        2,
+        5
+       ],
+       "relation": {
+        "k": 2,
+        "table": 7
+       }
+      }
+     ]
+    },
+    "validity": {
+     "ancillas": 0,
+     "count": 300,
+     "form": "whole",
+     "nonzero": 7,
+     "pieces": [
+      {
+       "bits": [
+        0,
+        1,
+        2
+       ],
+       "relation": {
+        "k": 3,
+        "table": 22
+       }
+      }
+     ]
+    }
+   }
+  },
+  "searched_tables": 4
+ },
+ "4": {
+  "candidates": [
+   {
+    "D": 4,
+    "b": 3,
+    "code": [
+     [
+      0,
+      0,
+      0
+     ],
+     [
+      0,
+      0,
+      1
+     ],
+     [
+      0,
+      1,
+      0
+     ],
+     [
+      1,
+      0,
+      1
+     ]
+    ]
+   },
+   {
+    "D": 4,
+    "b": 3,
+    "code": [
+     [
+      0,
+      0,
+      0
+     ],
+     [
+      0,
+      0,
+      1
+     ],
+     [
+      0,
+      1,
+      0
+     ],
+     [
+      1,
+      0,
+      0
+     ]
+    ]
+   },
+   {
+    "D": 4,
+    "b": 3,
+    "code": [
+     [
+      0,
+      0,
+      0
+     ],
+     [
+      0,
+      0,
+      1
+     ],
+     [
+      0,
+      1,
+      0
+     ],
+     [
+      1,
+      1,
+      1
+     ]
+    ]
+   },
+   {
+    "D": 4,
+    "b": 4,
+    "code": [
+     [
+      1,
+      0,
+      0,
+      0
+     ],
+     [
+      0,
+      1,
+      0,
+      0
+     ],
+     [
+      0,
+      0,
+      1,
+      0
+     ],
+     [
+      0,
+      0,
+      0,
+      1
+     ]
+    ]
+   }
+  ],
+  "chosen": {
+   "D": 4,
+   "b": 3,
+   "code": [
+    [
+     0,
+     0,
+     0
+    ],
+    [
+     0,
+     0,
+     1
+    ],
+    [
+     0,
+     1,
+     0
+    ],
+    [
+     1,
+     0,
+     0
+    ]
+   ]
+  },
+  "feasible_tables": 7,
+  "is_one_hot": false,
+  "pilot": {
+   "0": 13.5,
+   "1": 10.5,
+   "2": 23.75,
+   "3": 18.25
+  },
+  "plans": {
+   "0": {
+    "neq": {
+     "ancillas": 0,
+     "count": 1350,
+     "form": "whole",
+     "nonzero": 18,
+     "pieces": [
+      {
+       "bits": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5
+       ],
+       "relation": {
+        "care": 58501753012277,
+        "k": 6,
+        "table": 23248661184564
+       }
+      }
+     ]
+    },
+    "validity": {
+     "ancillas": 0,
+     "count": 300,
+     "form": "whole",
+     "nonzero": 3,
+     "pieces": [
+      {
+       "bits": [
+        0,
+        1,
+        2
+       ],
+       "relation": {
+        "k": 3,
+        "table": 53
+       }
+      }
+     ]
+    }
+   },
+   "1": {
+    "neq": {
+     "ancillas": 0,
+     "count": 1350,
+     "form": "whole",
+     "nonzero": 22,
+     "pieces": [
+      {
+       "bits": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5
+       ],
+       "relation": {
+        "care": 98785761047,
+        "k": 6,
+        "table": 30066021654
+       }
+      }
+     ]
+    },
+    "validity": {
+     "ancillas": 0,
+     "count": 300,
+     "form": "whole",
+     "nonzero": 3,
+     "pieces": [
+      {
+       "bits": [
+        0,
+        1,
+        2
+       ],
+       "relation": {
+        "k": 3,
+        "table": 23
+       }
+      }
+     ]
+    }
+   },
+   "2": {
+    "neq": {
+     "ancillas": 0,
+     "count": 1350,
+     "form": "whole",
+     "nonzero": 22,
+     "pieces": [
+      {
+       "bits": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5
+       ],
+       "relation": {
+        "care": 10736582151611154581,
+        "k": 6,
+        "table": 1513210046036639892
+       }
+      }
+     ]
+    },
+    "validity": {
+     "ancillas": 0,
+     "count": 300,
+     "form": "whole",
+     "nonzero": 4,
+     "pieces": [
+      {
+       "bits": [
+        0,
+        1,
+        2
+       ],
+       "relation": {
+        "k": 3,
+        "table": 149
+       }
+      }
+     ]
+    }
+   },
+   "3": {
+    "neq": {
+     "ancillas": 0,
+     "count": 1350,
+     "form": "factors",
+     "nonzero": 4,
+     "pieces": [
+      {
+       "bits": [
+        0,
+        4
+       ],
+       "relation": {
+        "k": 2,
+        "table": 7
+       }
+      },
+      {
+       "bits": [
+        1,
+        5
+       ],
+       "relation": {
+        "k": 2,
+        "table": 7
+       }
+      },
+      {
+       "bits": [
+        2,
+        6
+       ],
+       "relation": {
+        "k": 2,
+        "table": 7
+       }
+      },
+      {
+       "bits": [
+        3,
+        7
+       ],
+       "relation": {
+        "k": 2,
+        "table": 7
+       }
+      }
+     ]
+    },
+    "validity": {
+     "ancillas": 0,
+     "count": 300,
+     "form": "whole",
+     "nonzero": 11,
+     "pieces": [
+      {
+       "bits": [
+        0,
+        1,
+        2,
+        3
+       ],
+       "relation": {
+        "k": 4,
+        "table": 278
+       }
+      }
+     ]
+    }
+   }
+  },
+  "searched_tables": 7
+ },
+ "5": {
+  "candidates": [
+   {
+    "D": 5,
+    "b": 3,
+    "code": [
+     [
+      0,
+      0,
+      0
+     ],
+     [
+      0,
+      0,
+      1
+     ],
+     [
+      0,
+      1,
+      0
+     ],
+     [
+      1,
+      0,
+      1
+     ],
+     [
+      1,
+      1,
+      0
+     ]
+    ]
+   },
+   {
+    "D": 5,
+    "b": 3,
+    "code": [
+     [
+      0,
+      0,
+      0
+     ],
+     [
+      0,
+      0,
+      1
+     ],
+     [
+      0,
+      1,
+      0
+     ],
+     [
+      0,
+      1,
+      1
+     ],
+     [
+      1,
+      0,
+      0
+     ]
+    ]
+   },
+   {
+    "D": 5,
+    "b": 3,
+    "code": [
+     [
+      0,
+      0,
+      0
+     ],
+     [
+      0,
+      0,
+      1
+     ],
+     [
+      0,
+      1,
+      0
+     ],
+     [
+      1,
+      0,
+      0
+     ],
+     [
+      1,
+      1,
+      1
+     ]
+    ]
+   },
+   {
+    "D": 5,
+    "b": 5,
+    "code": [
+     [
+      1,
+      0,
+      0,
+      0,
+      0
+     ],
+     [
+      0,
+      1,
+      0,
+      0,
+      0
+     ],
+     [
+      0,
+      0,
+      1,
+      0,
+      0
+     ],
+     [
+      0,
+      0,
+      0,
+      1,
+      0
+     ],
+     [
+      0,
+      0,
+      0,
+      0,
+      1
+     ]
+    ]
+   }
+  ],
+  "chosen": {
+   "D": 5,
+   "b": 5,
+   "code": [
+    [
+     1,
+     0,
+     0,
+     0,
+     0
+    ],
+    [
+     0,
+     1,
+     0,
+     0,
+     0
+    ],
+    [
+     0,
+     0,
+     1,
+     0,
+     0
+    ],
+    [
+     0,
+     0,
+     0,
+     1,
+     0
+    ],
+    [
+     0,
+     0,
+     0,
+     0,
+     1
+    ]
+   ]
+  },
+  "feasible_tables": 3,
+  "is_one_hot": true,
+  "pilot": {
+   "0": 75.25,
+   "1": 69,
+   "2": 245.25,
+   "3": 21.5
+  },
+  "plans": {
+   "0": {
+    "neq": {
+     "ancillas": 1,
+     "count": 2025,
+     "form": "whole",
+     "nonzero": 20,
+     "pieces": [
+      {
+       "bits": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5
+       ],
+       "relation": {
+        "care": 67333229707325,
+        "k": 6,
+        "table": 32080003661884
+       }
+      }
+     ]
+    },
+    "validity": {
+     "ancillas": 0,
+     "count": 300,
+     "form": "whole",
+     "nonzero": 4,
+     "pieces": [
+      {
+       "bits": [
+        0,
+        1,
+        2
+       ],
+       "relation": {
+        "k": 3,
+        "table": 61
+       }
+      }
+     ]
+    }
+   },
+   "1": {
+    "neq": {
+     "ancillas": 1,
+     "count": 2025,
+     "form": "whole",
+     "nonzero": 21,
+     "pieces": [
+      {
+       "bits": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5
+       ],
+       "relation": {
+        "care": 24488696641705815,
+        "k": 6,
+        "table": 6474229412484438
+       }
+      }
+     ]
+    },
+    "validity": {
+     "ancillas": 0,
+     "count": 300,
+     "form": "whole",
+     "nonzero": 2,
+     "pieces": [
+      {
+       "bits": [
+        0,
+        1,
+        2
+       ],
+       "relation": {
+        "k": 3,
+        "table": 87
+       }
+      }
+     ]
+    }
+   },
+   "2": {
+    "neq": {
+     "ancillas": 2,
+     "count": 2025,
+     "form": "whole",
+     "nonzero": 24,
+     "pieces": [
+      {
+       "bits": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5
+       ],
+       "relation": {
+        "care": 10880697348277114775,
+        "k": 6,
+        "table": 1657325242702599574
+       }
+      }
+     ]
+    },
+    "validity": {
+     "ancillas": 1,
+     "count": 300,
+     "form": "whole",
+     "nonzero": 7,
+     "pieces": [
+      {
+       "bits": [
+        0,
+        1,
+        2
+       ],
+       "relation": {
+        "k": 3,
+        "table": 151
+       }
+      }
+     ]
+    }
+   },
+   "3": {
+    "neq": {
+     "ancillas": 0,
+     "count": 2025,
+     "form": "factors",
+     "nonzero": 5,
+     "pieces": [
+      {
+       "bits": [
+        0,
+        5
+       ],
+       "relation": {
+        "k": 2,
+        "table": 7
+       }
+      },
+      {
+       "bits": [
+        1,
+        6
+       ],
+       "relation": {
+        "k": 2,
+        "table": 7
+       }
+      },
+      {
+       "bits": [
+        2,
+        7
+       ],
+       "relation": {
+        "k": 2,
+        "table": 7
+       }
+      },
+      {
+       "bits": [
+        3,
+        8
+       ],
+       "relation": {
+        "k": 2,
+        "table": 7
+       }
+      },
+      {
+       "bits": [
+        4,
+        9
+       ],
+       "relation": {
+        "k": 2,
+        "table": 7
+       }
+      }
+     ]
+    },
+    "validity": {
+     "ancillas": 0,
+     "count": 300,
+     "form": "whole",
+     "nonzero": 16,
+     "pieces": [
+      {
+       "bits": [
+        0,
+        1,
+        2,
+        3,
+        4
+       ],
+       "relation": {
+        "k": 5,
+        "table": 65814
+       }
+      }
+     ]
+    }
+   }
+  },
+  "searched_tables": 30
+ }
+}

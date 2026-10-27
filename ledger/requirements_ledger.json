@@ -4848,6 +4848,12 @@
     "src/genesis/compiler/backends.py",
     "src/genesis/compiler/contracts.py",
     "scripts/b20r133_problem_compiler.py",
+    "scripts/b20r135_invented_representations.py",
+    "evidence/invented_representations_b20r135/summary.json",
+    "docs/checkpoints/B20_R135_RECORD.md",
+    "docs/OMEGA_REPRESENTATION_LANGUAGE.md",
+    "src/genesis/representation/gadgets.py",
+    "src/genesis/representation/encodings.py",
     "evidence/problem_compiler_b20r133/summary.json"
    ],
    "disposition": "IMPLEMENTED_BOUNDED_PENDING_AUDIT",
@@ -4877,7 +4883,13 @@
     "tests_genesis/test_e1d_crossover.py",
     "tests_genesis/test_e1d_scaling.py",
     "tests_genesis/test_compiler.py",
-    "tests_genesis/test_problem_compiler_study.py"
+    "tests_genesis/test_problem_compiler_study.py",
+    "tests_genesis/test_invented_representations.py",
+    "tests_genesis/test_representation_gadgets.py",
+    "tests_genesis/test_representation_encodings.py",
+    "tests_genesis/test_representation_families.py",
+    "tests_genesis/test_representation_library.py",
+    "tests_genesis/test_representation_processes.py"
    ],
    "title": "Domain contracts and calibration (B20_R12/R24: separately versioned study rules e1-hard-v1/v2; B20_R30: the calibration's 60 s certification limit and the evaluator's 600 s measured on the e1b family; B20_R33: an exact MIP baseline proves every e1b optimum within 0.36 CPU s; B20_R34: no MIP-hard certifiable setting within the 200-edge bound; B20_R38: E1 beyond the exact MIP in a dense regime certified by generated rows; B20_R41: E1d readiness under the DRAFT rule e1-hard-v3-draft, READY_FOR_REVIEW against HiGHS at 4x budget; B20_R43: E1d DRAFT package and a SUPPORTED same-operator rehearsal through the v5 path; B20_R44: registered ablation of the discovered representation, READY_FOR_REVIEW, null control clean; B20_R45: the ablation evaluation rehearsed through the v5 custody path, SUPPORTED; B20_R63: the advantage over HiGHS ends between 8x and 16x its budget, CROSSOVER_AT_8S; B20_R64: it grows with host size, holding at 64x at n60, ADVANTAGE_GROWS, DEV; B20_R66: the n60 lead replicates on fresh hosts and holds at 120x, REPLICATED_ADVANTAGE_THROUGH_120X, DEV; B20_R68: a standard max-cut tabu search ties the candidate on the calibrated settings and beats it at n60, E1D_MATCHES_DOMAIN_HEURISTIC, DEV; B20_R70: by time-to-solution the candidate is slower than simulated bifurcation and tabu search and scales worst, E1D_SLOWER_THAN_SOME, DEV; B20_R73: multiverse analysis, 12 of 18 contrasts robust, B20_R68 Part B fragile)",
    "workstream": "W05"

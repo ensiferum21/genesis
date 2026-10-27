@@ -479,7 +479,7 @@ call; `CHECKOUT=1` at a study's first slice), so that new code can be committed 
 | 5 | B20_R128 | Improving the inventor (2–3 slices of 6,600 s) | **done: NOT_SHOWN** (NO_DIFFERENCE, p 0.55; no inner search released anything, so no level-1 signal for level 2) |
 | 6 | — | Checkpoint (the last one is B20_R118) with the release matrix | owed |
 | 7 | B20_R134 | The Difficulty Cartographer, redesigned with obstacles hidden from cheap statistics (Ω2) | to design |
-| 8 | Ω3/Ω7 | The self-extending representation language (directive items 6–9; `docs/OMEGA_REPRESENTATION_LANGUAGE.md`): relations, verified gadgets, encodings with decoders, transformations to one BQP, families given only as predicates (reductions synthesised, not hand-written); stages A–C built on fixtures; its first study **B20_R135** (preregistered `7040a3c`, before R133 ran) after rows 1–5 | building; study preregistered |
+| 8 | Ω3/Ω7 | The self-extending representation language (directive items 6–9; `docs/OMEGA_REPRESENTATION_LANGUAGE.md`): relations, verified gadgets, encodings with decoders, transformations to one BQP, families given only as predicates (reductions synthesised, not hand-written); stages A–C built on fixtures; its first study **B20_R135** (preregistered `7040a3c`, before R133 ran) after rows 1–5 | **B20_R135 done: INVENTED_REPRESENTATION_BETTER** (chosen encodings beat one-hot for k = 3, 4; behind MaxSAT) |
 | 8b | R1 | The research-object layer (`src/genesis/objects/`; `docs/OMEGA_RECURSIVE_INVENTION.md` §3, §16), then the graph sense language and B20_R136 (experiment A, the vertical slice) | building next on CPU 1 |
 | 9 | Ω4–Ω9 | As in §5 | — |
 
@@ -554,3 +554,6 @@ problems no level has seen, and Genesis has not shown that yet.
   Daniel's decision. B20_R128 next, as preregistered.
 - 27 Oct 2026: B20_R128 recorded: NOT_SHOWN (the evolved inventor process ties the original on 8 fresh sets; no
   inner search released anything, so the meta-search selected first incumbents). B20_R135 next.
+- 27 Oct 2026: B20_R135 recorded: INVENTED_REPRESENTATION_BETTER (encodings Genesis chose beat one-hot on colouring
+  for k = 3 and 4 through the same pipeline; known kinds of encoding; PASMaxSAT-c still far ahead; the cascade
+  exact). The checkpoint next.

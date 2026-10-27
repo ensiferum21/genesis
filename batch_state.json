@@ -1345,9 +1345,10 @@
       },
       "B20_R135": {
         "commits": [
-          "7040a3c"
+          "7040a3c",
+          "f37e792"
         ],
-        "result": "Setup (preregistered 7040a3c, before R133 ran): invented representations against textbook ones. After R128"
+        "result": "DEV, preregistered 7040a3c (before R133 ran), run alone on CPU 0 from a clean worktree of f37e792, 27 Oct 09:42-11:10 SGT (5,232 s): INVENTED_REPRESENTATION_BETTER. Colouring at 10 s, 20 fresh graphs per k: k=3 chosen {00,01,10} 8.5 conflicts vs one-hot 21.6 (18-0-2, p 7.6e-6), k=4 chosen {000,001,010,100} 30.6 vs 47.7 (20-0-0, p 1.9e-6), both Holm-rejected; k=5 one-hot kept; compiler path 20.1/48.0/58.4; PASMaxSAT-c 1.6/14.4/17.9. Part A: MILP 20/20 and 40/40 vs search 15 and 1. Part C: cascade exact (4 of 4, null 0, 0.34 s); 1-in-3 GENESIS_BETTER 16-2-2, NAE tie, XOR-3SAT and Max-3-SAT MAXSAT_BETTER; 4 of 80 MaxSAT runs returned no model (labels unchanged without them). Record docs/checkpoints/B20_R135_RECORD.md"
       },
       "B20_R148": {
         "commits": [

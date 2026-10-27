@@ -556,12 +556,12 @@ WORKSTREAMS = {
              'scripts/b20r66_e1d_n60.py', 'evidence/e1d_n60_b20r66/summary.json',
              'scripts/b20r68_e1d_domain_heuristic.py', 'evidence/e1d_domain_heuristic_b20r68/summary.json',
              'scripts/b20r70_tts_scaling.py', 'evidence/tts_scaling_b20r70/summary.json',
-             'scripts/b20r73_multiverse.py', 'evidence/multiverse_b20r73/summary.json', 'src/genesis/compiler/bqp.py', 'src/genesis/compiler/families.py', 'src/genesis/compiler/backends.py', 'src/genesis/compiler/contracts.py', 'scripts/b20r133_problem_compiler.py', 'evidence/problem_compiler_b20r133/summary.json'],
+             'scripts/b20r73_multiverse.py', 'evidence/multiverse_b20r73/summary.json', 'src/genesis/compiler/bqp.py', 'src/genesis/compiler/families.py', 'src/genesis/compiler/backends.py', 'src/genesis/compiler/contracts.py', 'scripts/b20r133_problem_compiler.py', 'scripts/b20r135_invented_representations.py', 'evidence/invented_representations_b20r135/summary.json', 'docs/checkpoints/B20_R135_RECORD.md', 'docs/OMEGA_REPRESENTATION_LANGUAGE.md', 'src/genesis/representation/gadgets.py', 'src/genesis/representation/encodings.py', 'evidence/problem_compiler_b20r133/summary.json'],
             [G + 'test_domain_adapters.py', G + 'test_calibration.py', G + 'test_calibration_rules.py',
              G + 'test_certification_budget.py', G + 'test_strong_baseline_audit.py', G + 'test_mip_hard_probe.py',
              G + 'test_dense_strong_baseline.py', G + 'test_e1d_readiness.py', G + 'test_e1d_package.py',
              G + 'test_e1d_ablation.py', G + 'test_e1d_ablation_rehearsal.py', G + 'test_e1d_crossover.py',
-             G + 'test_e1d_scaling.py', G + 'test_compiler.py', G + 'test_problem_compiler_study.py']),
+             G + 'test_e1d_scaling.py', G + 'test_compiler.py', G + 'test_problem_compiler_study.py', G + 'test_invented_representations.py', G + 'test_representation_gadgets.py', G + 'test_representation_encodings.py', G + 'test_representation_families.py', G + 'test_representation_library.py', G + 'test_representation_processes.py']),
     'W06': ('Independent custody and preregistration (B20_R40: candidate registry v2 with per-kind identity and an '
             'exact-MIP baseline kind; B20_R42: wired opt-in through request v5 and a registry dispatcher, not adopted; '
             'B20_R67: the kind map moved out of the hashed core, a kind bound to its dispatched module, and a '

@@ -1,0 +1,24 @@
+{
+ "exact": true,
+ "null_reactivated": 0,
+ "overhead_cpu_s": 0.34036613300008867,
+ "parked": {
+  "max3sat": "5594f2c88f3993be116f676412a8d2b2d2c5c5037cae2c5af7d1209dcbbbd309",
+  "nae3": "8bcc10ecedf19572318859c6ee40dd7234a3565b9b5be08c75ced9261eda5a24",
+  "one_in_three": "a83f54192a192a85ca1279e43cdbe51c4368ed2b98e01f56f91306fe5ab58855",
+  "xor3": "45396b57824c4cec128b15b67df258de45e491f7b7e15393c0f9e6ca311c6a56"
+ },
+ "reactivated": [
+  "45396b57824c4cec128b15b67df258de45e491f7b7e15393c0f9e6ca311c6a56",
+  "5594f2c88f3993be116f676412a8d2b2d2c5c5037cae2c5af7d1209dcbbbd309",
+  "8bcc10ecedf19572318859c6ee40dd7234a3565b9b5be08c75ced9261eda5a24",
+  "a83f54192a192a85ca1279e43cdbe51c4368ed2b98e01f56f91306fe5ab58855"
+ ],
+ "synthesis_cpu_s": {
+  "max3sat": 0.06248184899982334,
+  "nae3": 0.0015774030000557104,
+  "one_in_three": 0.10391414000014265,
+  "xor3": 0.10792059799996423
+ },
+ "vault_verify": "{'events': 58, 'head': '99f745872d3c663ca1e56f2ca5645a62b088f66bc838899c39cdb4aaa4b9f80b', 'integrity': 'LOCAL_HASH_CHECKED', 'artifacts': 13}"
+}

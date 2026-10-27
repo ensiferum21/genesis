@@ -1,0 +1,156 @@
+[    0.0s] b20r135; pinned to CPU 0
+[   10.7s] k=3 candidate 0 [[0, 0], [0, 1], [1, 0]]: pilot conflicts 2.5
+[   19.1s] k=3 candidate 1 [[0, 0, 0], [0, 1, 1], [1, 0, 1]]: pilot conflicts 6.5
+[   49.8s] k=3 candidate 2 [[0, 0, 0], [0, 0, 1], [0, 1, 0]]: pilot conflicts 3.0
+[   58.1s] k=3 candidate 3 [[1, 0, 0], [0, 1, 0], [0, 0, 1]]: pilot conflicts 6.5
+[  139.4s] k=4 candidate 0 [[0, 0, 0], [0, 0, 1], [0, 1, 0], [1, 0, 1]]: pilot conflicts 13.5
+[  213.0s] k=4 candidate 1 [[0, 0, 0], [0, 0, 1], [0, 1, 0], [1, 0, 0]]: pilot conflicts 10.5
+[  291.3s] k=4 candidate 2 [[0, 0, 0], [0, 0, 1], [0, 1, 0], [1, 1, 1]]: pilot conflicts 23.8
+[  299.8s] k=4 candidate 3 [[1, 0, 0, 0], [0, 1, 0, 0], [0, 0, 1, 0], [0, 0, 0, 1]]: pilot conflicts 18.2
+[  493.9s] k=5 candidate 0 [[0, 0, 0], [0, 0, 1], [0, 1, 0], [1, 0, 1], [1, 1, 0]]: pilot conflicts 75.2
+[  639.9s] k=5 candidate 1 [[0, 0, 0], [0, 0, 1], [0, 1, 0], [0, 1, 1], [1, 0, 0]]: pilot conflicts 69.0
+[  785.4s] k=5 candidate 2 [[0, 0, 0], [0, 0, 1], [0, 1, 0], [1, 0, 0], [1, 1, 1]]: pilot conflicts 245.2
+[  794.4s] k=5 candidate 3 [[1, 0, 0, 0, 0], [0, 1, 0, 0, 0], [0, 0, 1, 0, 0], [0, 0, 0, 1, 0], [0, 0, 0, 0, 1]]: pilot conflicts 21.5
+[  830.9s] k=3 n=300 seed 20532351: chosen 2, compiler 4, maxsat 0, one_hot 2
+[  867.3s] k=3 n=300 seed 20532352: chosen 2, compiler 3, maxsat 0, one_hot 6
+[  900.9s] k=3 n=300 seed 20532353: chosen 2, compiler 3, maxsat 0, one_hot 3
+[  936.1s] k=3 n=300 seed 20532354: chosen 1, compiler 3, maxsat 0, one_hot 6
+[  969.7s] k=3 n=300 seed 20532355: chosen 0, compiler 3, maxsat 0, one_hot 6
+[ 1005.3s] k=3 n=300 seed 20532356: chosen 2, compiler 5, maxsat 0, one_hot 4
+[ 1037.5s] k=3 n=300 seed 20532357: chosen 1, compiler 4, maxsat 0, one_hot 4
+[ 1071.3s] k=3 n=300 seed 20532358: chosen 2, compiler 7, maxsat 0, one_hot 4
+[ 1104.7s] k=3 n=300 seed 20532359: chosen 2, compiler 3, maxsat 0, one_hot 7
+[ 1139.4s] k=3 n=300 seed 20532360: chosen 2, compiler 6, maxsat 0, one_hot 2
+[ 1180.1s] k=3 n=1000 seed 20533351: chosen 21, compiler 42, maxsat 4, one_hot 53
+[ 1219.2s] k=3 n=1000 seed 20533352: chosen 15, compiler 30, maxsat 0, one_hot 38
+[ 1259.8s] k=3 n=1000 seed 20533353: chosen 19, compiler 40, maxsat 6, one_hot 36
+[ 1300.4s] k=3 n=1000 seed 20533354: chosen 15, compiler 45, maxsat 3, one_hot 40
+[ 1341.1s] k=3 n=1000 seed 20533355: chosen 14, compiler 41, maxsat 3, one_hot 33
+[ 1381.7s] k=3 n=1000 seed 20533356: chosen 12, compiler 36, maxsat 8, one_hot 47
+[ 1422.0s] k=3 n=1000 seed 20533357: chosen 14, compiler 21, maxsat 0, one_hot 36
+[ 1462.6s] k=3 n=1000 seed 20533358: chosen 18, compiler 35, maxsat 4, one_hot 39
+[ 1503.2s] k=3 n=1000 seed 20533359: chosen 9, compiler 33, maxsat 1, one_hot 33
+[ 1543.8s] k=3 n=1000 seed 20533360: chosen 17, compiler 37, maxsat 3, one_hot 33
+[ 1600.0s] k=4 n=300 seed 20542351: chosen 7, compiler 13, maxsat 5, one_hot 11
+[ 1656.4s] k=4 n=300 seed 20542352: chosen 10, compiler 21, maxsat 7, one_hot 12
+[ 1712.8s] k=4 n=300 seed 20542353: chosen 9, compiler 16, maxsat 6, one_hot 10
+[ 1768.8s] k=4 n=300 seed 20542354: chosen 10, compiler 11, maxsat 5, one_hot 17
+[ 1825.5s] k=4 n=300 seed 20542355: chosen 9, compiler 17, maxsat 5, one_hot 12
+[ 1882.0s] k=4 n=300 seed 20542356: chosen 10, compiler 15, maxsat 5, one_hot 14
+[ 1938.2s] k=4 n=300 seed 20542357: chosen 9, compiler 17, maxsat 8, one_hot 21
+[ 1994.4s] k=4 n=300 seed 20542358: chosen 10, compiler 17, maxsat 5, one_hot 13
+[ 2050.9s] k=4 n=300 seed 20542359: chosen 12, compiler 18, maxsat 5, one_hot 17
+[ 2108.0s] k=4 n=300 seed 20542360: chosen 13, compiler 13, maxsat 7, one_hot 16
+[ 2200.0s] k=4 n=1000 seed 20543351: chosen 54, compiler 84, maxsat 21, one_hot 86
+[ 2291.5s] k=4 n=1000 seed 20543352: chosen 45, compiler 78, maxsat 23, one_hot 73
+[ 2383.0s] k=4 n=1000 seed 20543353: chosen 44, compiler 78, maxsat 25, one_hot 72
+[ 2475.3s] k=4 n=1000 seed 20543354: chosen 53, compiler 81, maxsat 23, one_hot 90
+[ 2568.6s] k=4 n=1000 seed 20543355: chosen 51, compiler 85, maxsat 24, one_hot 97
+[ 2660.6s] k=4 n=1000 seed 20543356: chosen 55, compiler 75, maxsat 22, one_hot 77
+[ 2753.7s] k=4 n=1000 seed 20543357: chosen 51, compiler 77, maxsat 21, one_hot 77
+[ 2847.4s] k=4 n=1000 seed 20543358: chosen 52, compiler 87, maxsat 26, one_hot 75
+[ 2940.1s] k=4 n=1000 seed 20543359: chosen 51, compiler 73, maxsat 23, one_hot 75
+[ 3033.3s] k=4 n=1000 seed 20543360: chosen 56, compiler 83, maxsat 22, one_hot 89
+[ 3063.8s] k=5 n=300 seed 20552351: chosen 19, compiler 13, maxsat 6
+[ 3094.3s] k=5 n=300 seed 20552352: chosen 23, compiler 18, maxsat 9
+[ 3124.8s] k=5 n=300 seed 20552353: chosen 15, compiler 21, maxsat 5
+[ 3155.3s] k=5 n=300 seed 20552354: chosen 22, compiler 21, maxsat 6
+[ 3185.6s] k=5 n=300 seed 20552355: chosen 16, compiler 21, maxsat 7
+[ 3216.0s] k=5 n=300 seed 20552356: chosen 19, compiler 20, maxsat 8
+[ 3246.5s] k=5 n=300 seed 20552357: chosen 16, compiler 18, maxsat 7
+[ 3277.0s] k=5 n=300 seed 20552358: chosen 22, compiler 20, maxsat 8
+[ 3307.4s] k=5 n=300 seed 20552359: chosen 21, compiler 14, maxsat 9
+[ 3337.9s] k=5 n=300 seed 20552360: chosen 20, compiler 19, maxsat 10
+[ 3369.1s] k=5 n=1000 seed 20553351: chosen 101, compiler 98, maxsat 32
+[ 3400.2s] k=5 n=1000 seed 20553352: chosen 93, compiler 104, maxsat 33
+[ 3431.2s] k=5 n=1000 seed 20553353: chosen 104, compiler 87, maxsat 31
+[ 3462.2s] k=5 n=1000 seed 20553354: chosen 103, compiler 95, maxsat 20
+[ 3493.3s] k=5 n=1000 seed 20553355: chosen 90, compiler 98, maxsat 25
+[ 3524.4s] k=5 n=1000 seed 20553356: chosen 102, compiler 100, maxsat 27
+[ 3555.3s] k=5 n=1000 seed 20553357: chosen 98, compiler 85, maxsat 28
+[ 3586.3s] k=5 n=1000 seed 20553358: chosen 98, compiler 112, maxsat 25
+[ 3617.5s] k=5 n=1000 seed 20553359: chosen 95, compiler 103, maxsat 33
+[ 3648.5s] k=5 n=1000 seed 20553360: chosen 103, compiler 101, maxsat 28
+[ 3648.9s] cascade: reactivated 4 of 4; null 0
+[ 3669.7s] one_in_three n=500 seed 20581351: genesis 289, maxsat 285
+[ 3689.7s] one_in_three n=500 seed 20581352: genesis 290, maxsat 288
+[ 3709.8s] one_in_three n=500 seed 20581353: genesis 290, maxsat 113
+[ 3729.9s] one_in_three n=500 seed 20581354: genesis 290, maxsat 285
+[ 3750.1s] one_in_three n=500 seed 20581355: genesis 291, maxsat 291
+[ 3770.2s] one_in_three n=500 seed 20581356: genesis 287, maxsat 284
+[ 3790.3s] one_in_three n=500 seed 20581357: genesis 289, maxsat 285
+[ 3810.4s] one_in_three n=500 seed 20581358: genesis 292, maxsat 289
+[ 3830.5s] one_in_three n=500 seed 20581359: genesis 289, maxsat 286
+[ 3850.7s] one_in_three n=500 seed 20581360: genesis 287, maxsat 283
+[ 3870.8s] one_in_three n=2000 seed 20581451: genesis 1154, maxsat 1152
+[ 3891.0s] one_in_three n=2000 seed 20581452: genesis 1151, maxsat 1150
+[ 3911.2s] one_in_three n=2000 seed 20581453: genesis 1154, maxsat 1151
+[ 3931.3s] one_in_three n=2000 seed 20581454: genesis 1150, maxsat 1151
+[ 3951.5s] one_in_three n=2000 seed 20581455: genesis 1148, maxsat 1144
+[ 3971.7s] one_in_three n=2000 seed 20581456: genesis 1151, maxsat 460
+[ 3991.8s] one_in_three n=2000 seed 20581457: genesis 1147, maxsat 434
+[ 4011.9s] one_in_three n=2000 seed 20581458: genesis 1145, maxsat 1143
+[ 4032.0s] one_in_three n=2000 seed 20581459: genesis 1148, maxsat 1148
+[ 4052.2s] one_in_three n=2000 seed 20581460: genesis 1148, maxsat 1149
+[ 4072.3s] nae3 n=500 seed 20582351: genesis 1049, maxsat 1049
+[ 4092.4s] nae3 n=500 seed 20582352: genesis 1049, maxsat 1049
+[ 4112.6s] nae3 n=500 seed 20582353: genesis 1049, maxsat 1049
+[ 4132.7s] nae3 n=500 seed 20582354: genesis 1048, maxsat 1048
+[ 4147.7s] nae3 n=500 seed 20582355: genesis 1049, maxsat 1050
+[ 4167.8s] nae3 n=500 seed 20582356: genesis 1048, maxsat 1049
+[ 4188.0s] nae3 n=500 seed 20582357: genesis 1049, maxsat 1049
+[ 4208.1s] nae3 n=500 seed 20582358: genesis 1048, maxsat 1049
+[ 4218.8s] nae3 n=500 seed 20582359: genesis 1050, maxsat 1050
+[ 4238.9s] nae3 n=500 seed 20582360: genesis 1049, maxsat 1049
+[ 4259.1s] nae3 n=2000 seed 20582451: genesis 4195, maxsat 4195
+[ 4279.5s] nae3 n=2000 seed 20582452: genesis 4195, maxsat 4190
+[ 4299.8s] nae3 n=2000 seed 20582453: genesis 4194, maxsat 4193
+[ 4320.2s] nae3 n=2000 seed 20582454: genesis 4192, maxsat 4191
+[ 4340.5s] nae3 n=2000 seed 20582455: genesis 4196, maxsat 4190
+[ 4360.8s] nae3 n=2000 seed 20582456: genesis 4196, maxsat 4194
+[ 4381.1s] nae3 n=2000 seed 20582457: genesis 4194, maxsat 4191
+[ 4401.2s] nae3 n=2000 seed 20582458: genesis 4194, maxsat 4192
+[ 4421.5s] nae3 n=2000 seed 20582459: genesis 4197, maxsat 4193
+[ 4441.7s] nae3 n=2000 seed 20582460: genesis 4195, maxsat 4189
+[ 4461.8s] xor3 n=500 seed 20583351: genesis 443, maxsat 447
+[ 4481.9s] xor3 n=500 seed 20583352: genesis 445, maxsat 449
+[ 4501.9s] xor3 n=500 seed 20583353: genesis 444, maxsat 448
+[ 4520.6s] xor3 n=500 seed 20583354: genesis 443, maxsat 450
+[ 4536.9s] xor3 n=500 seed 20583355: genesis 446, maxsat 450
+[ 4557.1s] xor3 n=500 seed 20583356: genesis 444, maxsat 445
+[ 4574.1s] xor3 n=500 seed 20583357: genesis 445, maxsat 450
+[ 4593.9s] xor3 n=500 seed 20583358: genesis 445, maxsat 450
+[ 4614.1s] xor3 n=500 seed 20583359: genesis 446, maxsat 446
+[ 4634.2s] xor3 n=500 seed 20583360: genesis 444, maxsat 447
+[ 4654.4s] xor3 n=2000 seed 20583451: genesis 1759, maxsat 1782
+[ 4674.5s] xor3 n=2000 seed 20583452: genesis 1759, maxsat 1784
+[ 4694.7s] xor3 n=2000 seed 20583453: genesis 1762, maxsat 1784
+[ 4715.0s] xor3 n=2000 seed 20583454: genesis 1762, maxsat 898
+[ 4735.1s] xor3 n=2000 seed 20583455: genesis 1758, maxsat 1782
+[ 4755.3s] xor3 n=2000 seed 20583456: genesis 1749, maxsat 1780
+[ 4775.5s] xor3 n=2000 seed 20583457: genesis 1761, maxsat 1780
+[ 4795.7s] xor3 n=2000 seed 20583458: genesis 1762, maxsat 1778
+[ 4815.9s] xor3 n=2000 seed 20583459: genesis 1763, maxsat 1780
+[ 4836.1s] xor3 n=2000 seed 20583460: genesis 1755, maxsat 1780
+[ 4856.3s] max3sat n=500 seed 20584351: genesis 2095, maxsat 2099
+[ 4867.4s] max3sat n=500 seed 20584352: genesis 2097, maxsat 2100
+[ 4877.9s] max3sat n=500 seed 20584353: genesis 2095, maxsat 2100
+[ 4892.0s] max3sat n=500 seed 20584354: genesis 2096, maxsat 2100
+[ 4902.2s] max3sat n=500 seed 20584355: genesis 2097, maxsat 2100
+[ 4912.8s] max3sat n=500 seed 20584356: genesis 2096, maxsat 2100
+[ 4923.5s] max3sat n=500 seed 20584357: genesis 2096, maxsat 2100
+[ 4943.8s] max3sat n=500 seed 20584358: genesis 2094, maxsat 2099
+[ 4955.6s] max3sat n=500 seed 20584359: genesis 2093, maxsat 2100
+[ 4975.8s] max3sat n=500 seed 20584360: genesis 2092, maxsat 2099
+[ 4996.3s] max3sat n=2000 seed 20584451: genesis 8336, maxsat 8397
+[ 5016.8s] max3sat n=2000 seed 20584452: genesis 8326, maxsat 8397
+[ 5037.3s] max3sat n=2000 seed 20584453: genesis 8323, maxsat 8394
+[ 5057.9s] max3sat n=2000 seed 20584454: genesis 8334, maxsat 8395
+[ 5078.4s] max3sat n=2000 seed 20584455: genesis 8327, maxsat 8391
+[ 5098.9s] max3sat n=2000 seed 20584456: genesis 8331, maxsat 8395
+[ 5119.4s] max3sat n=2000 seed 20584457: genesis 8333, maxsat 8394
+[ 5139.9s] max3sat n=2000 seed 20584458: genesis 8330, maxsat 8392
+[ 5160.3s] max3sat n=2000 seed 20584459: genesis 8337, maxsat 8397
+[ 5180.8s] max3sat n=2000 seed 20584460: genesis 8326, maxsat 8396
+[ 5231.3s] synthesis: 60 relations
+[ 5232.1s] valid True; verdict INVENTED_REPRESENTATION_BETTER; k=3 chosen [[0, 0], [0, 1], [1, 0]] INVENTED_BETTER; k=4 chosen [[0, 0, 0], [0, 0, 1], [0, 1, 0], [1, 0, 0]] INVENTED_BETTER; k=5 chosen [[1, 0, 0, 0, 0], [0, 1, 0, 0, 0], [0, 0, 1, 0, 0], [0, 0, 0, 1, 0], [0, 0, 0, 0, 1]] one-hot chosen
