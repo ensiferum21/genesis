@@ -57,7 +57,9 @@ lists (a block that is a repeat's body stays: a repeat governs one item).
 the three Λ1 ceiling winners minus that of the three Λ0 ceiling winners; one-sided Wilcoxon signed-rank (Λ1 > Λ0);
 and, over the search replicates, the exact one-sided permutation test of the six replicates' mean T-gains (Λ1's three
 against Λ0's three; p = 1/20 = 0.05 when every Λ1 replicate beats every Λ0 replicate): EXPRESSIVE if p_Holm < 0.05,
-the mean difference is at least MATERIAL (0.05%) and the replicate test gives p <= 0.05.
+the mean difference is at least MATERIAL (0.05%), the replicate test gives p <= 0.05, and the worst Λ1 ceiling
+replicate beats the best Λ0 ceiling replicate by at least MATERIAL (the margin: Λ1 reaches what no Λ0 ceiling search
+reached).
 **Secondary (reported per class, not in the primary family):**
   * S1, the language under the inventor: mean T-gain of I1_r minus I0_r, two-sided: LANGUAGE_HELPS_THE_INVENTOR or
     LANGUAGE_HURTS_THE_INVENTOR when p < 0.05, |mean| >= MATERIAL and the replicate permutation test in that direction
@@ -86,6 +88,13 @@ displayed by a progress check, no search outcome was seen), and
 amended: three ceiling replicates per language, and the replicate permutation test in P1 and S1. The gate, the graphs,
 the seeds and every other rule are unchanged; the 231 runs made so far are reused (a run depends only on its engine,
 graph, occurrence and budget).
+
+**Second amendment (27 Oct 2026, 16:40 SGT, analysis only, while the first inventor search ran and before any ceiling
+search; disclosed).** The judge's fixture showed a second way search luck passes for a language: three candidate
+replicates beating three parent replicates by noise-level margins while the material mean difference came from one
+parent search that stuck. A ceiling search that sticks is a search failure, not a limit of the language. So P1 also
+requires the margin above. Data collection is unchanged (the running slice continues at `85fda78`; later slices run
+this script).
 
 **Prior art (none claimed).** Extending a program-search language with subroutines and control is old: automatically
 defined functions (Koza 1994), module acquisition (Angeline and Pollack 1993); the separation of a search space from
@@ -383,6 +392,7 @@ def analyse_class(arms, g):
     diff = lambda a, b: [x - y for x, y in zip(a, b)]
     p1 = wilcoxon(diff(C1, C0), 'greater')
     p1['replicates'] = replicate_test(reps('C1', CEIL_REPS), reps('C0', CEIL_REPS), 'greater')
+    p1['replicates']['margin'] = min(reps('C1', CEIL_REPS)) - max(reps('C0', CEIL_REPS))
     s1 = wilcoxon(diff(I1, I0), 'two-sided')
     s1['replicates'] = replicate_test(reps('I1', INV_REPS), reps('I0', INV_REPS),
                                       'greater' if s1['mean'] > 0 else 'less')
@@ -412,7 +422,8 @@ def verdict(studied, per_class, valid):
         r = per_class[c]
         r['P1']['p_holm'] = ph[c]
         r['P1']['label'] = ('EXPRESSIVE' if ph[c] < ALPHA and r['P1']['mean'] >= MATERIAL
-                            and r['P1']['replicates']['p'] <= ALPHA else 'NOT_SHOWN')
+                            and r['P1']['replicates']['p'] <= ALPHA and r['P1']['replicates']['margin'] >= MATERIAL
+                            else 'NOT_SHOWN')
         r['reading'] = ('EXPRESSIVE' if r['P1']['label'] == 'EXPRESSIVE' else
                         'SEARCH_EFFECT' if r['S1']['label'] == 'LANGUAGE_HELPS_THE_INVENTOR' else
                         'LANGUAGE_HARDER_TO_SEARCH' if r['S1']['label'] == 'LANGUAGE_HURTS_THE_INVENTOR' else

@@ -1376,9 +1376,10 @@
       },
       "B20_R151": {
         "commits": [
-          "52e1d92"
+          "52e1d92",
+          "85fda78"
         ],
-        "result": "Preregistered (DEV) 52e1d92; amended before any search finished (three ceiling replicates per language; P1 and S1 need the replicate permutation test too; disclosed in the script). Gate: planar2000 PASS 0.572% (p 0.00024), toroidal2000 0.145% and random2000 0.058% fail; planar2000 studied. Pending"
+        "result": "Preregistered (DEV) 52e1d92; amended before any search finished (three ceiling replicates per language; P1 and S1 need the replicate permutation test too; disclosed in the script); second amendment, analysis only, before any ceiling search: P1 also needs the worst Lambda1 ceiling replicate to beat the best Lambda0 one by at least 0.05%. Gate: planar2000 PASS 0.572% (p 0.00024), toroidal2000 0.145% and random2000 0.058% fail; planar2000 studied. Pending"
       }
     },
     "open_after_b20_r5": [

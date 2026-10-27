@@ -146,6 +146,18 @@ class Analysis(unittest.TestCase):
         v, _ = S.verdict(['x'], {'x': r}, True)
         self.assertEqual((v, r['P1']['label']), ('NOT_SHOWN', 'NOT_SHOWN'))
 
+    def test_a_stuck_lambda0_replicate_is_not_expressiveness(self):
+        stuck = self.gains({})
+        for r in range(S.CEIL_REPS):
+            stuck[f'C1_{r}'] = [x + 0.0001 for x in stuck[f'C1_{r}']]    # noise-level better than Λ0's good searches
+        stuck['C0_2'] = [x - 0.004 for x in stuck['C0_2']]               # one Λ0 ceiling search stuck
+        r = S.analyse_class(self.arms(), stuck)
+        self.assertLess(r['P1']['p'], 0.001)
+        self.assertGreaterEqual(r['P1']['mean'], S.MATERIAL)
+        self.assertLessEqual(r['P1']['replicates']['p'], S.ALPHA)                # dominance holds, by noise
+        self.assertLess(r['P1']['replicates']['margin'], S.MATERIAL)
+        self.assertEqual(S.verdict(['x'], {'x': r}, True)[0], 'NOT_SHOWN')
+
     def test_labels_and_verdict(self):
         planted = S.analyse_class(self.arms(), self.gains({'C1': 0.002, 'I1': 0.001}))
         null = S.analyse_class(self.arms(), self.gains({}))
