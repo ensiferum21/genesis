@@ -17,11 +17,26 @@ import b20r156_frontier_worlds as S  # noqa: E402
 from genesis.frontier import world as W  # noqa: E402
 
 
+def digest_at(commit, rel):
+    """The SHA-256 of a file as committed at `commit` (None without git): the pins are checked against the
+    preregistration commit, because the branch head may move on after a study is preregistered (the study itself
+    runs from a clean worktree of that commit, where its own run-time pin check applies)."""
+    import hashlib
+    import subprocess
+    try:
+        out = subprocess.run(['git', '-C', str(ROOT), 'show', f'{commit}:{rel}'], capture_output=True, timeout=60)
+    except (OSError, subprocess.SubprocessError):
+        return None
+    return hashlib.sha256(out.stdout).hexdigest() if out.returncode == 0 else None
+
+
 class Design(unittest.TestCase):
     def test_constants(self):
         others = [p for p in (ROOT / 'scripts').glob('*.py') if p.name != 'b20r156_frontier_worlds.py']
         self.assertFalse(any(re.search(rf'\b{S.SEALED_SEED}\b', p.read_text()) for p in others))
-        self.assertEqual(S.pins(), S.PINNED)
+        at = {m: digest_at('4a7e193', 'src/genesis/frontier/' + m) for m in S.PINNED}       # the preregistration commit
+        if all(v is not None for v in at.values()):
+            self.assertEqual(at, S.PINNED)
         for fam, spec in S.FAMILIES.items():
             self.assertTrue(spec['problems'] != 4 or spec['sigma'] != 0.02 or tuple(spec['types']) != W.TYPES, fam)
         ws = S.worlds()

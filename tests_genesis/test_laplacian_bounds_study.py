@@ -21,11 +21,26 @@ INVENTED = {'t1': ('d + 1', 'vertex', 'refuted-test'), 't2': ('2*d', 'vertex', '
             't5': ('(d + m)/2 + 1', 'vertex', 'refuted-test')}
 
 
+def digest_at(commit, rel):
+    """The SHA-256 of a file as committed at `commit` (None without git): the pins are checked against the
+    preregistration commit, because the branch head may move on after a study is preregistered (the study itself
+    runs from a clean worktree of that commit, where its own run-time pin check applies)."""
+    import hashlib
+    import subprocess
+    try:
+        out = subprocess.run(['git', '-C', str(ROOT), 'show', f'{commit}:{rel}'], capture_output=True, timeout=60)
+    except (OSError, subprocess.SubprocessError):
+        return None
+    return hashlib.sha256(out.stdout).hexdigest() if out.returncode == 0 else None
+
+
 class Design(unittest.TestCase):
     def test_constants_and_the_posed_set(self):
         others = [p for p in (ROOT / 'scripts').glob('*.py') if p.name != 'b20r157_laplacian_bounds.py']
         self.assertFalse(any(re.search(rf'\b{S.SEALED_SEED}\b', p.read_text()) for p in others))
-        self.assertEqual(S.pins(), S.PINNED)
+        at = {m: digest_at('bdf0c57', 'src/genesis/' + m) for m in S.PINNED}       # the preregistration commit
+        if all(v is not None for v in at.values()):
+            self.assertEqual(at, S.PINNED)
         problems, number_of = S.posed()
         self.assertEqual(len(problems), 56)
         statuses = [SD.status(k) for k in number_of.values()]
