@@ -6,7 +6,12 @@ budget, the quantum, the verification cost and the engine's parameters) is recor
 import hashlib
 import json
 
-PUBLIC = ('problems', 'statement', 'approaches', 'neighbours', 'step', 'abstract', 'successors')
+PUBLIC = ('problems', 'statement', 'approaches', 'neighbours', 'step', 'abstract', 'successors', 'derive')
+OPTIONAL = ('derive',)                          # a domain without it answers None
+
+
+def _none(*args, **kwargs):
+    return None
 
 
 class PublicDomain:
@@ -15,7 +20,9 @@ class PublicDomain:
     __slots__ = ('_calls',)
 
     def __init__(self, domain):
-        object.__setattr__(self, '_calls', {name: getattr(domain, name) for name in PUBLIC})
+        calls = {name: (getattr(domain, name, None) or _none) if name in OPTIONAL else getattr(domain, name)
+                 for name in PUBLIC}
+        object.__setattr__(self, '_calls', calls)
 
     def __getattr__(self, name):
         calls = object.__getattribute__(self, '_calls')

@@ -9,6 +9,8 @@
      problems a result reveals: branching out);
   5. convergence: artifacts are clustered (`converge.Clusters`); a cluster reached by two independent approaches is
      abstracted (`domain.abstract`) when abstraction is on, and an invented representation enters the grammar;
+     a policy may also ask the domain to derive a representation from a leading branch's (`domain.derive`, an
+     operator acting on the representation's own operations), which enters the grammar the same way;
   6. repeat until the budget is spent.
 Problems are ordered by the digest of their public statement, and every random draw comes from the engine's seeded
 generator, so renaming problems leaves every decision unchanged (the relabelling audit, §3.3). The state is saved as
@@ -94,6 +96,17 @@ class Frontier:
             self.policy.opened(bid)
         return bid
 
+    def derive(self, problem, representation, seed=None):
+        """Ask the domain for a representation derived from `representation` (with the engine's next seed, or a
+        procedure's recorded one); logged and replayed on resume."""
+        if seed is None:
+            seed = self.seed_for('derive', sum(1 for e in self.events if e['kind'] == 'derive'))
+        new = self.domain.derive(problem, representation, seed)
+        self.log('derive', problem=problem, representation=representation, seed=seed, result=new)
+        if new is not None and (problem, new) not in self.invented:
+            self.invented.append((problem, new))
+        return new
+
     def advance(self, bid):
         b = self.branches[bid]
         d = b['direction']
@@ -139,6 +152,13 @@ class Frontier:
             if max_steps is not None and n >= max_steps:
                 return 'paused'
             action, arg = self.policy.choose(self)
+            if action == 'derive':
+                prob, rep, method, params = arg[:4]
+                new = self.derive(prob, rep, arg[4] if len(arg) > 4 else None)
+                d = D.make(prob, new, method, params, op='derive') if new is not None else None
+                if d is None or D.descriptor(d) in self.tried or not D.valid(d, self.grammar(prob)):
+                    d = D.imagine(self.grammar(prob), prob, self.rng, self.archive, 8)
+                action, arg = 'open', d
             if action == 'open':
                 bid = self.open(arg)
                 improved = self.advance(bid)
@@ -195,6 +215,8 @@ class Frontier:
         for kind_ev in s['events']:
             if kind_ev['kind'] == 'abstract':
                 eng.domain.abstract(kind_ev['problem'], kind_ev['fingerprint'])
+            elif kind_ev['kind'] == 'derive':
+                eng.domain.derive(kind_ev['problem'], kind_ev['representation'], kind_ev['seed'])
             elif kind_ev['kind'] == 'revealed':
                 p = kind_ev['by']
                 eng.domain.successors(p, eng._artifact_for_reveal(p, kind_ev))

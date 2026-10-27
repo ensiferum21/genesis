@@ -953,6 +953,27 @@
    "title": "PT-1 groundwork: the transfer family B (53 Graffiti conjectures from the Lean formalisation), its statement language, domain and double kernel check",
    "unlocks": []
   },
+  "pt1-mechanism4-build": {
+   "artifacts": [],
+   "committed": true,
+   "depends_on": [],
+   "failure": null,
+   "id": "pt1-mechanism4-build",
+   "kind": "build",
+   "line": "frontier",
+   "notes": "B20_R164: conjecture/operations.py, ConjectureDomain.derive, engine derive action, procedures with derivations; Daniel's decision of 28 Oct 00:53",
+   "outcome": "built",
+   "output": null,
+   "positive": null,
+   "preregistered": null,
+   "priority": 7,
+   "requires": [],
+   "resources": {},
+   "script": null,
+   "status": "done",
+   "title": "PT-1 part 1, mechanism 4: operators acting on Gamma's own operations (nothing handed over)",
+   "unlocks": []
+  },
   "reduction-invention": {
    "artifacts": [],
    "committed": false,
@@ -1797,6 +1818,7 @@
   "pt1-family-b-build",
   "frontier-f6-build",
   "B20_R163",
+  "pt1-mechanism4-build",
   "B20_R159"
  ],
  "reactivated": {},

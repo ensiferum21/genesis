@@ -37,7 +37,7 @@ from . import direction as D
 GRID = 1.25          # forecast horizons are rounded up to this geometric grid (cache reuse at scale)
 DEFAULTS = {'eps': 0.25, 'eps_min': 0.1, 'eps_max': 0.4, 'stall': 40, 'lam_lp': 1.0, 'lam_con': 0.02,
             'patience_quanta': 4, 'pause_min_share': 0.01, 'k_imagine': 8, 'B': 60, 'window': 8,
-            'alarm_share': 0.25}
+            'alarm_share': 0.25, 'p_derive': 0.0}
 
 
 def level(br, last=3):
@@ -189,6 +189,10 @@ class FrontierPolicy:
         probs = eng.problem_order()
         paused = [b for b in eng.branches.values() if b['paused']]
         leaders = sorted([b for b in eng.branches.values() if b['ys']], key=lambda b: (-level(b), b['id']))[:4]
+        if self.p['p_derive'] > 0 and leaders and rng.random() < self.p['p_derive']:
+            lead = rng.choice(leaders)                       # derive a representation from a leader's (if it can be)
+            d = lead['direction']
+            return ('derive', (d['problem'], d['representation'], d['method'], d['params']))
         r = rng.random()
         if r < 0.15 and paused:
             b = rng.choice(sorted(paused, key=lambda b: b['id']))

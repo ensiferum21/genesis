@@ -41,10 +41,7 @@ class InvariantDomain(CD.ConjectureDomain):
         key = (pid, d['representation'], d['method'], d['params']['n'], seed)
         r = self._runners.get(key)
         if r is None or r.evals > t:
-            rep = None
-            if d['representation'] in self.templates:
-                from . import abstraction as AB
-                rep = AB.TemplateRep(self.templates[d['representation']]['template'], max_n=self.max_n)
+            rep = self._rep_for(d, max_n=self.max_n)
             r = AT.Runner(None, None, d['representation'], d['method'], d['params']['n'],
                           CD._h('attack', pid, d['representation'], d['method'], d['params']['n'], seed), rep=rep,
                           objective=self.objective(pid))

@@ -49,7 +49,9 @@ def extract(eng, problem):
     if d['representation'] not in invented:
         return {'kind': 'procedure', 'version': 1, 'steps': [{'op': 'exploit', 'approach': approach,
                                                                'abstracted': False}], 'provenance': prov}
-    ab = next(e for e in eng.events if e['kind'] == 'abstract' and e['result'] == d['representation'])
+    ab = next((e for e in eng.events if e['kind'] == 'abstract' and e['result'] == d['representation']), None)
+    if ab is None:
+        return _derived(eng, d, approach, prov, invented)
     members = eng.clusters.members.get((ab['problem'], ab['fingerprint']), {})
     explore = []
     for (rep, method), ids in sorted(members.items()):
@@ -63,6 +65,25 @@ def extract(eng, problem):
     return {'kind': 'procedure', 'version': 1,
             'steps': [{'op': 'explore', 'approaches': explore}, {'op': 'converge', 'min_consilience': 2},
                       {'op': 'abstract'}, {'op': 'exploit', 'approach': exploit, 'abstracted': True}],
+            'provenance': prov}
+
+
+def _derived(eng, d, approach, prov, invented):
+    """The procedure behind a discovery in a DERIVED representation: the lineage of derivations from a starting
+    representation (the seeds the engine used, which reproduce the same operations), then the exploit step."""
+    seeds, rep = [], d['representation']
+    while rep in invented:
+        dv = next((e for e in eng.events if e['kind'] == 'derive' and e['result'] == rep), None)
+        if dv is None:
+            break
+        seeds.append(dv['seed'])
+        rep = dv['representation']
+    seeds.reverse()
+    prov.update(derivations=len(seeds))
+    return {'kind': 'procedure', 'version': 1,
+            'steps': [{'op': 'derive', 'from': rep, 'seeds': seeds},
+                      {'op': 'exploit', 'approach': {'method': d['method'], 'params': dict(d['params'])},
+                       'abstracted': False, 'derived': True}],
             'provenance': prov}
 
 
@@ -103,6 +124,11 @@ class ProcedurePolicy(AL.FrontierPolicy):
             for proc in self.library:
                 steps = proc['steps']
                 exploit = steps[-1]
+                if exploit.get('derived'):
+                    act = self._derived_action(eng, prob, g, steps[0], exploit['approach'])
+                    if act is not None:
+                        return act
+                    continue
                 if exploit['abstracted']:
                     # 1. an abstraction from a convergence on this problem: open and push it first
                     for p, rep in eng.invented:
@@ -126,6 +152,21 @@ class ProcedurePolicy(AL.FrontierPolicy):
                     if act is not None:
                         return act
         return None
+
+    def _derived_action(self, eng, prob, g, derive_step, approach):
+        """Replay a procedure's derivations on `prob` (each seed in turn, from the starting representation), then open
+        and advance the representation they give."""
+        rep = derive_step['from']
+        for seed in derive_step['seeds']:
+            done = next((e for e in eng.events if e['kind'] == 'derive' and e['representation'] == rep
+                         and e['seed'] == seed), None)
+            if done is None:
+                return ('derive', (prob, rep, approach['method'], approach['params'], seed))
+            if done['result'] is None:
+                return None
+            rep = done['result']
+        d = D.make(prob, rep, approach['method'], approach['params'], op='procedure')
+        return self._open_or_advance(eng, d, eng.grammar(prob), 0.25)
 
     def _open_or_advance(self, eng, d, g, share):
         if not D.valid(d, g):

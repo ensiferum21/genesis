@@ -776,6 +776,33 @@ labelled as such, and they never count toward PROVED_OUT. The risk is accepted: 
 that is then the recorded result. Both allowed mechanisms are the builder's machinery and are labelled so. What
 they produce on A is Genesis's.
 
+**Mechanism 4 is built** (28 Oct 2026, 01:05 SGT; `conjecture/operations.py`; tests in
+`tests_genesis/test_operations.py`; B20_R164).
+- **The space.** A product-type operation on pairs (u, v) is a rule: the set of state pairs, each coordinate equal,
+  adjacent or neither, that make two pairs adjacent. That gives 256 tables. Γ's cartesian product is one of them.
+  The decoder is a sum of Kronecker products and is exact.
+- **The operators:**
+  - mutation flips one of the 8 bits, chosen uniformly (checked: about 500 of 4,000 per bit);
+  - recombination takes each bit from either parent.
+- **In the domain.** `ConjectureDomain.derive(problem, representation, seed)` gives a Γ representation one more
+  operation, a mutation or recombination of its product-type ones. It is deterministic in the seed, gives one name
+  per operation set, and returns None for representations that are not Γ.
+- **In the engine:**
+  - a policy may return a `derive` action. The engine asks the domain, logs the event, and opens the new
+    representation on the leader's method;
+  - a resumed run replays the derivations and ends where an uninterrupted one does;
+  - `PublicDomain` treats `derive` as optional, so the planted world answers None;
+  - the setting `p_derive` is 0 by default, which leaves earlier behaviour unchanged. PT-1 sets it as part of the
+    engine's configuration.
+- **In procedures.** A discovery in a derived representation compiles to a procedure that carries its lineage: the
+  starting representation and the seeds. The improved inventor replays it on a new domain and obtains the same
+  operations. Tested: the replay on a fresh domain reproduces the operation set.
+- **Disclosure.** As a check of the decoder, the tests compare four points of the space with the products networkx
+  names: cartesian, tensor, strong and lexicographic. The lexicographic product with a complete or empty second
+  factor builds uniform blow-ups, so the space contains a uniform special case of family A's concept. Nothing in
+  the research plane names or favours that point; Genesis reaches it only by its own mutation, recombination and
+  selection, if at all. The audit is clean.
+
 **Verdicts.**
 - PROVED_OUT only if all five pass.
 - Otherwise the parts that passed are listed, for example `PARTS_1_2`, along with the first failure.

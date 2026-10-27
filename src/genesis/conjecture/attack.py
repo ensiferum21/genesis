@@ -217,7 +217,8 @@ class GammaRep:
             return self._base(rng)
         r = rng.random()
         if r < 0.75:
-            return (self.BINARY[rng.integers(4)], self.random(rng, depth - 1), self.random(rng, depth - 1))
+            op = self.BINARY[rng.integers(len(self.BINARY))]
+            return (op, self.random(rng, depth - 1), self.random(rng, depth - 1))
         if r < 0.85:
             return ('compl', self.random(rng, depth - 1))
         return ('pend', self.random(rng, depth - 1), int(rng.integers(0, 8)), int(rng.integers(1, 6)))
@@ -236,7 +237,7 @@ class GammaRep:
             else:
                 new = self.random(rng, 2)
         elif node[0] in self.BINARY and r < 0.4:
-            new = (self.BINARY[rng.integers(4)],) + node[1:]
+            new = (self.BINARY[rng.integers(len(self.BINARY))],) + node[1:]
         else:
             new = self.random(rng, 2)
         return self._set(g, path, new)

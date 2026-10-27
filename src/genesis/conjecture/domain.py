@@ -14,6 +14,9 @@
     the converged graphs into Gamma programs and generalises their sizes into a TEMPLATE (`abstraction.py`): a new
     representation, available on every problem from then on (the starting set never contains one). With
     abstraction off (`abstraction=False`) it answers None;
+  * derive: an operator acting on Γ's own operations (`operations.py`; the proving test's mechanism 4): from a Γ
+    representation, a new one with one more binary operation, a mutation or recombination of its product-type
+    operations, deterministic in the engine's seed; None for representations that are not Γ programs;
   * successors: none yet (Genesis's own conjectures are F5).
 Runners are cached and rebuilt by replay when a resumed engine asks for a position the cache does not hold (attacks
 are deterministic in their seed).
@@ -38,6 +41,7 @@ class ConjectureDomain:
         self._runners = {}
         self._issued = {}                                  # (problem, fingerprint) -> adjacency of an issued artifact
         self.templates = {}                                # representation name -> {'template', 'from', 'examples'}
+        self.derived = {}                                  # representation name -> {'ops': {name: table}, 'from'}
 
     def problems(self):
         return sorted(self.posed)
@@ -47,7 +51,8 @@ class ConjectureDomain:
         return f'{kind}: {formula}'
 
     def approaches(self, pid):
-        return {'representation': list(self.representations) + sorted(self.templates), 'method': list(self.methods),
+        return {'representation': list(self.representations) + sorted(self.templates) + sorted(self.derived),
+                'method': list(self.methods),
                 'params': {'n': list(self.n_values)}}
 
     def neighbours(self, pid):
@@ -58,16 +63,46 @@ class ConjectureDomain:
         r = self._runners.get(key)
         if r is None or r.evals > t:
             formula, kind = self.posed[pid]
-            rep = None
-            if d['representation'] in self.templates:
-                from . import abstraction as AB
-                rep = AB.TemplateRep(self.templates[d['representation']]['template'])
+            rep = self._rep_for(d)
             r = AT.Runner(formula, kind, d['representation'], d['method'], d['params']['n'],
                           _h('attack', pid, d['representation'], d['method'], d['params']['n'], seed), rep=rep)
             self._runners[key] = r
         if r.evals < t:
             r.advance(int(t - r.evals))                       # replay to the requested position
         return r
+
+    def _rep_for(self, d, max_n=None):
+        """The representation object for a template or a derived representation; None for a starting one."""
+        name = d['representation']
+        if name in self.templates:
+            from . import abstraction as AB
+            if max_n is None:
+                return AB.TemplateRep(self.templates[name]['template'])
+            return AB.TemplateRep(self.templates[name]['template'], max_n=max_n)
+        if name in self.derived:
+            from . import operations as OP
+            return OP.GammaPlus(d['params']['n'], self.derived[name]['ops'])
+        return None
+
+    def derive(self, pid, representation, seed):
+        """A new representation: `representation` (a Γ one) with one more binary operation (`operations.py`)."""
+        from . import operations as OP
+        if representation == 'gamma':
+            ops = {}
+        elif representation in self.derived:
+            ops = self.derived[representation]['ops']
+        else:
+            return None
+        t = OP.derive_table(ops, seed)
+        if t is None:
+            return None
+        new_ops = dict(ops, **{f'r{t}': t})
+        for name, x in self.derived.items():               # the same operation set reached twice: one name
+            if x['ops'] == new_ops:
+                return name
+        name = f'derived{len(self.derived)}'
+        self.derived[name] = {'ops': new_ops, 'from': representation}
+        return name
 
     def step(self, pid, d, seed, t, quantum):
         r = self._runner(pid, d, seed, t)
