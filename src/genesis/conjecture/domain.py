@@ -10,8 +10,11 @@
     far (exact, monotone). The artifact is the step's best graph when it improved: its fingerprint (a
     Weisfeiler-Leman hash), its signature (the sorted degree sequence), its score, and a certificate candidate
     (n, edges, a rational vector) for the kernel to check;
-  * abstract and successors: none yet. Genesis's abstraction over Gamma programs comes with the library learner's
-    adapter, and its own conjectures in F5.
+  * abstract: when the Frontier sees independent branches converge on a structure (`converge`), the domain parses
+    the converged graphs into Gamma programs and generalises their sizes into a TEMPLATE (`abstraction.py`): a new
+    representation, available on every problem from then on (the starting set never contains one). With
+    abstraction off (`abstraction=False`) it answers None;
+  * successors: none yet (Genesis's own conjectures are F5).
 Runners are cached and rebuilt by replay when a resumed engine asks for a position the cache does not hold (attacks
 are deterministic in their seed).
 """
@@ -28,10 +31,13 @@ def _h(*parts):
 
 class ConjectureDomain:
     def __init__(self, posed, representations=('edges', 'tree', 'bounded', 'gamma'),
-                 methods=('hill', 'anneal', 'evolution', 'gbfs', 'cem', 'nrpa'), n_values=DEFAULT_N):
+                 methods=('hill', 'anneal', 'evolution', 'gbfs', 'cem', 'nrpa'), n_values=DEFAULT_N, abstraction=True):
         self.posed = dict(posed)
         self.representations, self.methods, self.n_values = tuple(representations), tuple(methods), tuple(n_values)
+        self.abstraction = abstraction
         self._runners = {}
+        self._issued = {}                                  # (problem, fingerprint) -> adjacency of an issued artifact
+        self.templates = {}                                # representation name -> {'template', 'from', 'examples'}
 
     def problems(self):
         return sorted(self.posed)
@@ -41,7 +47,7 @@ class ConjectureDomain:
         return f'{kind}: {formula}'
 
     def approaches(self, pid):
-        return {'representation': list(self.representations), 'method': list(self.methods),
+        return {'representation': list(self.representations) + sorted(self.templates), 'method': list(self.methods),
                 'params': {'n': list(self.n_values)}}
 
     def neighbours(self, pid):
@@ -52,8 +58,12 @@ class ConjectureDomain:
         r = self._runners.get(key)
         if r is None or r.evals > t:
             formula, kind = self.posed[pid]
+            rep = None
+            if d['representation'] in self.templates:
+                from . import abstraction as AB
+                rep = AB.TemplateRep(self.templates[d['representation']]['template'])
             r = AT.Runner(formula, kind, d['representation'], d['method'], d['params']['n'],
-                          _h('attack', pid, d['representation'], d['method'], d['params']['n'], seed))
+                          _h('attack', pid, d['representation'], d['method'], d['params']['n'], seed), rep=rep)
             self._runners[key] = r
         if r.evals < t:
             r.advance(int(t - r.evals))                       # replay to the requested position
@@ -76,9 +86,24 @@ class ConjectureDomain:
         art = {'problem': pid, 'fingerprint': fp,
                'signature': ','.join(map(str, sorted(int(v) for v in A.sum(axis=1)))), 'score': float(r.best),
                'n': n, 'edges': [list(e) for e in edges], 'x': [str(v) for v in x]}
+        self._issued.setdefault((pid, fp), A)
         return pts, [art]
 
     def abstract(self, pid, fingerprint):
+        """A new representation (a template) from the graphs issued with this fingerprint on any problem, or None."""
+        if not self.abstraction:
+            return None
+        from . import abstraction as AB
+        examples = [A for (p, fp), A in sorted(self._issued.items(), key=lambda kv: kv[0]) if fp == fingerprint]
+        if not examples:
+            return None
+        for t in AB.candidates(examples):
+            key = repr(AB._shape(t['program']))                # one template per shape: its sizes are its parameters
+            if any(repr(AB._shape(x['template']['program'])) == key for x in self.templates.values()):
+                continue
+            name = f'template{len(self.templates)}'
+            self.templates[name] = {'template': t, 'from': [pid, fingerprint], 'examples': len(examples)}
+            return name
         return None
 
     def successors(self, pid, artifact):

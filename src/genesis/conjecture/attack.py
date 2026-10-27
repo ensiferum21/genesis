@@ -523,9 +523,9 @@ class Runner:
     """One attack (bound, representation, method, n, seed), advanced `k` evaluations at a time; deterministic, so it
     can be rebuilt by replay."""
 
-    def __init__(self, formula, kind, representation, method, n, seed):
+    def __init__(self, formula, kind, representation, method, n, seed, rep=None):
         self.bound = Bound(formula, kind)
-        self.rep = REPRESENTATIONS[representation](n)
+        self.rep = rep if rep is not None else REPRESENTATIONS[representation](n)
         self.rng = np.random.default_rng(seed)
         self.gen = METHODS[method](self.rep, self.bound, self.rng)
         self.evals, self.best, self.best_A = 0, -math.inf, None

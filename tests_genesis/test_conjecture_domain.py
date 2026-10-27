@@ -16,7 +16,7 @@ from genesis.conjecture import sealed as SD  # noqa: E402
 from genesis.conjecture import verify as V  # noqa: E402
 
 PKG = ROOT / 'src' / 'genesis' / 'conjecture'
-RESEARCH_PLANE = ('__init__.py', 'expr.py', 'graphs.py', 'attack.py', 'domain.py')
+RESEARCH_PLANE = ('__init__.py', 'expr.py', 'graphs.py', 'attack.py', 'domain.py', 'abstraction.py')
 KERNEL_SIDE = ('sealed.py', 'verify.py')
 P3 = (3, ((0, 1), (1, 2)))
 MERRIS = 'd + m'                                 # proved (Merris 1998), tight on P3 and on regular bipartite graphs
@@ -223,6 +223,57 @@ class Attacks(unittest.TestCase):
         verify = V.verifier(posed)
         self.assertEqual(verify('q2', {'n': 3, 'edges': [[0, 1], [1, 2]], 'x': ['1', '-2', '1']}), 0.0)
         self.assertEqual(verify('q2', {'n': 'x'}), 0.0)
+
+
+class Abstraction(unittest.TestCase):
+    """Templates: graphs parsed into Gamma programs (isomorphic when rebuilt), sizes generalised into parameters."""
+
+    def test_parse_rebuilds_isomorphic_graphs(self):
+        import networkx as nx
+        import numpy as np
+        from genesis.conjecture import abstraction as AB, attack as AT
+        rng = np.random.default_rng(9)
+        G = AT.GammaRep(30)
+        checked = 0
+        for _ in range(300):
+            prog = G.random(rng)
+            A = G.graph(prog)
+            if A is None or len(A) < 2:
+                continue
+            B = AB.build(AB.parse(A))
+            self.assertTrue(nx.is_isomorphic(nx.from_numpy_array(A), nx.from_numpy_array(B)), prog)
+            checked += 1
+        self.assertGreater(checked, 150)
+
+    def test_generalise_and_search_a_template(self):
+        import numpy as np
+        from genesis.conjecture import abstraction as AB, attack as AT
+        A = AT.GammaRep(30)._build(('join', ('E', 3), ('union', ('K', 4), ('C', 5))))
+        t = AB.generalise([AB.parse(A)])
+        self.assertEqual(len(t['slots']), 3)
+        R = AB.TemplateRep(t)
+        rng = np.random.default_rng(2)
+        g = R.random(rng)
+        self.assertEqual(R.graph(g).shape[0], int(sum(g)))
+        two = AB.generalise([AB.parse(AT.GammaRep(30)._build(('Kab', 2, 5))),
+                             AB.parse(AT.GammaRep(30)._build(('Kab', 2, 9)))])
+        self.assertEqual([v for _, v in two['slots']], [5])                  # the agreeing size stays fixed
+
+    def test_the_domain_abstracts_converged_structures(self):
+        from genesis.conjecture.domain import ConjectureDomain
+        from genesis.frontier.engine import Frontier
+        from genesis.frontier.manifest import Manifest
+        posed = {'q3': ('d + m', 'vertex'), 'q1': ('d + 1', 'vertex')}
+        dom = ConjectureDomain(posed)
+        e = Frontier(Manifest(dom, V.verifier(posed), budget=40000, quantum=200), 'frontier', seed=4,
+                     abstraction=True, branch_out=False)
+        e.run()
+        self.assertTrue(dom.templates)
+        shapes = [repr(__import__('genesis.conjecture.abstraction', fromlist=['x'])._shape(v['template']['program']))
+                  for v in dom.templates.values()]
+        self.assertEqual(len(shapes), len(set(shapes)))
+        self.assertTrue(any(b['direction']['representation'].startswith('template') for b in e.branches.values()))
+        self.assertFalse(e.best_verified.get('q3'))                          # a proved bound stays unrefuted
 
 
 class Boundary(unittest.TestCase):

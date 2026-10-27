@@ -704,6 +704,18 @@ of six representation and method pairs.
 - No setting was tuned on these results.
 - F4 will report its primary result with and without these six bounds.
 
+**Abstraction is built** (27 Oct 2026, 21:35 SGT; `conjecture/abstraction.py`). When the Frontier sees independent
+branches converge on a structure, the domain does three things:
+- it parses the converged graphs into Γ programs (union by components, join by complement components, recognised
+  bases, pendant paths; opaque leaves elsewhere). Rebuilt graphs are isomorphic, checked on 300 random programs;
+- it generalises their sizes into parameters;
+- it registers the result as a **template**: a new representation, on every problem, searched up to 400 vertices.
+
+There is one template per shape. The machinery is the builder's and generic: it carries no partition, quotient,
+blow-up or symmetry concept. The templates themselves are what Genesis abstracts. On invented bounds, the Frontier
+converged on complete bipartite graphs, where Merris's bound is tight, abstracted the template K_{a,b} and searched
+it. Proved bounds stay unrefuted.
+
 Open in F2:
 - the remaining items of §5: invariants beyond the Laplacian; Γ; the attacks; the generator;
 - a Collatz–Wielandt upper certificate for the Wagner rebuild test;
