@@ -617,6 +617,38 @@ to be preregistered when F1–F5 have run:
   of procedures. Within a share ρ of compute, it runs the library's procedures on new problems first.
 - These are mechanics only. What they are worth is the test's question.
 
+**Family B is transcribed** (27 Oct 2026, 23:15 SGT; F6 groundwork). The candidate is the Graffiti.pc conjectures of
+"Written on the Wall II" as formalised in Lean in `google-deepmind/formal-conjectures`, read at commit `c0c5380`
+(a shallow clone, used as data only; nothing in it is run).
+- `conjecture/invariants.py` (research plane): about 50 exact invariants, each following the Lean definition it
+  names. Examples are the independence number, the largest induced bipartite subgraph, forest and tree, the induced
+  path number, Ls, the dominations, the Havel–Hakimi residue, distances to sets, and Hamiltonian paths. The
+  independence number uses exact branching on vertex masks. The rest use exhaustive subset search, which is
+  practical to about 16 vertices.
+- `conjecture/wowii.py` (kernel side): 53 of the 63 statements, transcribed into exact evaluators.
+  - Statuses: 23 proved, 21 disproved, 9 open. They were checked against the Lean categories and each statement's
+    leading negation.
+  - Not transcribed: 103, 160, 291, 309, 314, 315, 316, 322, 327 and 438b.
+  - Lean's conventions are kept: real division by zero is 0; natural subtraction and division truncate; ceilings of
+    square roots are exact.
+- **Semantic checks** (`tests_genesis/test_wowii.py`):
+  - Every proved and open statement holds on all 995 connected graphs of 2 to 7 vertices.
+  - Of the disproved statements, only 32 has a counterexample that small: P5, the one the source gives.
+  - 15 of the 21 disproved statements have an explicit counterexample in their Lean file. Each was rebuilt, and each
+    violates its statement with the invariant values the file states. For 59 the text does not fix the chain graph:
+    six of the 252 chain graphs give the stated values, and all six violate.
+  - 34 is checked in part. Its 39-vertex tree is beyond exhaustive search, so the check uses path = diameter + 1,
+    which holds for trees.
+- **A transcription error found by these checks:** 100 first read ceil((maxL + √S)/4) where the statement is
+  ceil((2·maxL + √S)/4). It failed on 116 small graphs and is fixed.
+- **One rename, disclosed.** WOWII's "path cover number" is `min_spanning_paths` in the research plane, because the
+  forbidden-concept audit forbids the stem *cover*. The concept, the fewest vertex-disjoint paths that contain every
+  vertex, is unrelated to the hidden reference. The audit itself is unchanged and was not relaxed.
+- **Still to build before PT-1 can be preregistered:**
+  - a research-plane domain adapter for B. It would search graphs against a statement's exact margin. It would also
+    let the Frontier's representations and procedures run there unchanged;
+  - the PT-1 study script: the inadequacy gate on A, parts 1–5, and family C.
+
 **Verdicts.**
 - PROVED_OUT only if all five pass.
 - Otherwise the parts that passed are listed, for example `PARTS_1_2`, along with the first failure.
@@ -687,7 +719,7 @@ to be preregistered when F1–F5 have run:
 | F3 = B20_R156 | PREREGISTERED, amended before it ran (`4a7e193`, sha256 `9ae034db…353a`) | `scripts/b20r156_frontier_worlds.py` |
 | F4 = B20_R157 | PREREGISTERED (`bdf0c57`, sha256 `49b171f9…1904`) | `scripts/b20r157_laplacian_bounds.py` |
 | F5 = B20_R158 | PREREGISTERED (sha256 `50d2de64a7ad…`; runs after B20_R157): FULL (procedures, abstraction, templates carried over) against PLAIN on Genesis's own conjectures, three generations, McNemar | `scripts/b20r158_open_conjectures.py` |
-| PT-1 = B20_R159 | Parts 3–5 machinery BUILT (`frontier/procedure.py`); the forbidden-concept audit BUILT (`conjecture/audit.py`, kernel side: identifiers and non-docstring strings of the research plane and the manifest, scanned for the hidden concept's stems; the research plane is clean); the study is still to write | §7b |
+| PT-1 = B20_R159 | Parts 3–5 machinery BUILT (`frontier/procedure.py`); the forbidden-concept audit BUILT (`conjecture/audit.py`, kernel side: identifiers and non-docstring strings of the research plane and the manifest, scanned for the hidden concept's stems; the research plane is clean); family B TRANSCRIBED (`conjecture/invariants.py`, `conjecture/wowii.py`: 53 Graffiti statements, semantic checks in `tests_genesis/test_wowii.py`); B's domain adapter and the study are still to write | §7b |
 
 **Run each study from a clean worktree of its preregistration commit** (`git worktree add --detach <path> <commit>`).
 The study scripts check their module pins at run time. The design tests check the pins at the preregistration
