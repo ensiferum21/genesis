@@ -25,6 +25,13 @@ Each zip contains the full source tree, a git bundle of the whole history, the r
 `GENESIS_COMPLETION_CHECKPOINT_B20_R148.zip` (328,329,645 bytes, SHA-256 `bb89b23b…33e4`) is stored in four parts of at most 95 MiB. Rebuild it with
 `cat GENESIS_COMPLETION_CHECKPOINT_B20_R148.zip.part0 GENESIS_COMPLETION_CHECKPOINT_B20_R148.zip.part1 GENESIS_COMPLETION_CHECKPOINT_B20_R148.zip.part2 GENESIS_COMPLETION_CHECKPOINT_B20_R148.zip.part3 > GENESIS_COMPLETION_CHECKPOINT_B20_R148.zip` and check the whole file's hash in `SHA256SUMS`.
 
+**Reproduction of B20_R148 on the build host** (not a second machine; R-04 still needs an independent operator):
+- `GENESIS_COMPLETION_CHECKPOINT_B20_R148.reproduction.json`: **REPRODUCED**. Every step passed, the release matrix ran 2,260 tests with one declared skip, and the reference results match. It used the harness of `continuation-b20-rx` `c6dd05e`, with the pinned OR-Tools wheel (SHA-256 `ebd5aea0…3c9a`).
+- `..._attempt1.json`, the first attempt with the older harness: NOT_REPRODUCED, on two undeclared skips.
+  - A record test needs the git history, which the extracted tree lacks.
+  - The wheel was not passed.
+  - Both were inputs of the clean room, not defects of the checkpoint. The harness now runs the matrix in the verified checkout of the recorded commit and passes the wheel.
+
 `GENESIS_COMPLETION_CHECKPOINT_B20_R11.zip` (SHA-256 `00aa4c70…cab7`) was re-attached by the user on 13 Oct 2026 and restore-verified: all 5,336 manifest entries match.
 
 ## Patches (`patches/`)
