@@ -768,10 +768,11 @@ WORKSTREAMS = {
             'Autonomous Research Architect on fixtures)',
             B, ['src/genesis/lineage.py', 'src/genesis/campaign.py', 'src/genesis/custodian.py', 'src/genesis/versions.py',
                 'src/genesis/architecture/graph.py', 'src/genesis/architecture/ara.py', 'src/genesis/architecture/judge.py',
-                'docs/OMEGA_ARCHITECTURE_INVENTION.md', 'docs/checkpoints/B20_R150_RECORD.md'],
+                'docs/OMEGA_ARCHITECTURE_INVENTION.md', 'docs/checkpoints/B20_R150_RECORD.md',
+                'scripts/b20r141_ara_zoo.py'],
             [G + 'test_generation_lineage.py', G + 'test_campaign_lineage.py', G + 'test_versions.py',
              G + 'test_architecture_graph.py', G + 'test_architecture_judge.py', G + 'test_architecture_rewrite.py',
-             G + 'test_architecture_ara.py', G + 'test_architecture_boundary.py']),
+             G + 'test_architecture_ara.py', G + 'test_architecture_boundary.py', G + 'test_ara_zoo_study.py']),
     'W22': ('New primitives, research-language evolution and trust changes (derived primitives with reference '
             'expansions, conformance, versioned registries; DEV: none of four starting primitives is a gain; '
             'B20_R153: the engine language Λ1, mcx3 with the builder\'s construct algebra, mcx2 programs identical, '

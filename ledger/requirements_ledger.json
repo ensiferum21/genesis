@@ -5656,7 +5656,8 @@
     "src/genesis/architecture/ara.py",
     "src/genesis/architecture/judge.py",
     "docs/OMEGA_ARCHITECTURE_INVENTION.md",
-    "docs/checkpoints/B20_R150_RECORD.md"
+    "docs/checkpoints/B20_R150_RECORD.md",
+    "scripts/b20r141_ara_zoo.py"
    ],
    "disposition": "IMPLEMENTED_BOUNDED_PENDING_AUDIT",
    "evidence": [],
@@ -5678,7 +5679,8 @@
     "tests_genesis/test_architecture_judge.py",
     "tests_genesis/test_architecture_rewrite.py",
     "tests_genesis/test_architecture_ara.py",
-    "tests_genesis/test_architecture_boundary.py"
+    "tests_genesis/test_architecture_boundary.py",
+    "tests_genesis/test_ara_zoo_study.py"
    ],
    "title": "Better-improver and multigeneration controller (B20_R2: pure lineage validator; B20_R4: the campaign loop writes native lineage records, crash/resume charges interrupted attempts, the custodian checks generation requests against the qualifying chain; B20_R16: active-version pointer, rollback, inherited version revocation, resume gate; sealed improver evaluation still refused; B20_R150: ARA-1, the Autonomous Research Architect on fixtures)",
    "workstream": "W21"

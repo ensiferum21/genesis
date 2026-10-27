@@ -1388,8 +1388,14 @@
         "result": "Engineering (X2): the engine-invention workflow as an AG with ARA's ladder; library learning (anti-unification, MDL, meaning checked); the language judge (kernel side, pinned 8390b199...5d05: correctness, structure, random control, saturation, decisions over graphs and over search replicates, a margin for expressiveness); the consolidator; the generation pipeline. 48 tests. On the planted fixture: generation 1 refused D@c and admitted D@c D@c (1.71% -> 3.31%), generation 2 admitted g1b g1b g1b g1b (3.96% -> 10.38%). Found while building and fixed: a one-item statement admitted as expressive, an unsaturated ceiling, search luck passing for a language twice (B20_R151 amended for it), an X1 target-mutation bug. Record docs/checkpoints/B20_R154_RECORD.md"
       },
       "B20_R152": {
-        "commits": [],
+        "commits": [
+          "14232e4"
+        ],
         "result": "Preregistered (DEV): self-extension on planar2000 at 1 s; three generations of the X2 pipeline (claim 'search'; the judge at half the inventor's budget, 3 replicates, a random control); P1 the grown language against Lambda1 and a random library from REX, 5 replicates each, over graphs and replicates. Runs after B20_R151. Pending"
+      },
+      "B20_R141": {
+        "commits": [],
+        "result": "Preregistered (DEV, calibration): ARA experiments A-D and S on 95 fresh sealed zoo environments (indices 20000+, sealed seed 14114141); ara2 and blind2 at a variant budget of 2; tuning-only; the oracle key. Runs after B20_R152. Pending"
       }
     },
     "open_after_b20_r5": [

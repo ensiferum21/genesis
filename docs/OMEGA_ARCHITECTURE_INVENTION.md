@@ -727,7 +727,7 @@ Every experiment is preregistered with five things:
 | Batch | Directive batch | Content | State |
 |---|---|---|---|
 | ARA-1 | 1, 2, 3, 4, 5, 6 (minimal, end to end) | `src/genesis/architecture/`: `graph.py` (AG, type check, kernel closure, execution under fuel, diff classifier); `model.py` (probes, evidence, failure patterns); `assumptions.py` (generated, recorded and protected assumptions); `zoo.py` (the environment generator, kernel side); `diagnose.py` (the loss ladder); `rewrite.py` (the grammar, holes, inversion chains, fingerprints); `judge.py` (sealed harness, kernel); `ara.py` (the cycle, with solve and stop). Tests `test_architecture_*` | **BUILT on fixtures** (27 Oct 2026; B20_R150, `docs/checkpoints/B20_R150_RECORD.md`): 49 tests; a disclosed development look on 16 zoo environments |
-| ARA-2 | 6 | **B20_R141** preregistered and run: experiments A–D on the zoo | PLANNED, after ARA-1 |
+| ARA-2 | 6 | **B20_R141** preregistered and run: experiments A–D on the zoo | PREREGISTERED (`scripts/b20r141_ara_zoo.py`): 95 fresh environments (10 per defect class, 15 per control), arms ara2 and blind2 at a variant budget of 2 (D), ara and blind at 14, tuning-only, the oracle key; A by exact binomial against 1/4 and NONE on NULL and NO_HEADROOM; DECOY by releases (S); runs after B20_R152 |
 | ARA-3 | 4, 7 | Shapley attribution; synergy factorial; RETRIEVE with fresh-search controls; ENSEMBLE | PLANNED |
 | ARA-4 | 4.7 | Question generators as objects, scored by realised information per CPU second | PLANNED |
 | ARA-5 | 13 | The adversarial scientist: environments where promoted variants regress | PLANNED |

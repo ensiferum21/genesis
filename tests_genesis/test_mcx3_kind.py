@@ -66,7 +66,10 @@ class Builds:
     @classmethod
     def get(cls):
         if cls._dir is None:
+            import atexit
+            import shutil
             cls._dir = Path(tempfile.mkdtemp(prefix='mcx3t-'))
+            atexit.register(shutil.rmtree, cls._dir, True)          # the test builds go with the test run
             B.build_test(B.MCX2_SOURCE, cls._dir / 'mcx2t')
             B.build_test(B.SOURCE, cls._dir / 'mcx3t')
             B.build_test(B.SOURCE, cls._dir / 'mcx3p', probe=True)

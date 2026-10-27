@@ -55,6 +55,7 @@ Nothing here is an independent or sealed result.
 
 | Batch | State |
 |---|---|
+| B20_R141 | ARA's calibration on the sealed Limitation Zoo, experiments A-D and S (95 fresh environments; a variant budget of 2 for D). Preregistered; runs after B20_R152 |
 | B20_R152 | Self-extension on real engines: three generations of the pipeline on planar2000 (Genesis's dev corpus, the learner, the sealed language judge with claim 'search', consolidation, resume), then the grown language against Λ1 and a random library from REX, 5 replicates each. Preregistered; runs after B20_R151 |
 | B20_R151 | Richer expressiveness, measured apart from search: the headroom gate on three fresh 2,000-vertex classes, then language {Λ0, Λ1} x search {inventor, ceiling} at matched compute. Preregistered |
 
