@@ -12,8 +12,10 @@
     (n, edges, a rational vector) for the kernel to check;
   * abstract: when the Frontier sees independent branches converge on a structure (`converge`), the domain parses
     the converged graphs into Gamma programs and generalises their sizes into a TEMPLATE (`abstraction.py`): a new
-    representation, available on every problem from then on (the starting set never contains one). With
-    abstraction off (`abstraction=False`) it answers None;
+    representation, available on every problem from then on (the starting set never contains one). When no new
+    template comes of it, library learning (`library.py`, the proving test's mechanism 1): a piece recurring in the
+    best Γ programs of two independent branches becomes a macro in a new representation. With abstraction off
+    (`abstraction=False`) it answers None;
   * derive: an operator acting on Γ's own operations (`operations.py`; the proving test's mechanism 4): from a Γ
     representation, a new one with one more binary operation, a mutation or recombination of its product-type
     operations, deterministic in the engine's seed; None for representations that are not Γ programs;
@@ -42,6 +44,8 @@ class ConjectureDomain:
         self._issued = {}                                  # (problem, fingerprint) -> adjacency of an issued artifact
         self.templates = {}                                # representation name -> {'template', 'from', 'examples'}
         self.derived = {}                                  # representation name -> {'ops': {name: table}, 'from'}
+        self.macros = {}                                   # macro name -> skeleton (library learning, mechanism 1)
+        self.libraries = {}                                # representation name -> {'macros': {...}, 'from'}
 
     def problems(self):
         return sorted(self.posed)
@@ -51,7 +55,8 @@ class ConjectureDomain:
         return f'{kind}: {formula}'
 
     def approaches(self, pid):
-        return {'representation': list(self.representations) + sorted(self.templates) + sorted(self.derived),
+        return {'representation': list(self.representations) + sorted(self.templates) + sorted(self.derived)
+                + sorted(self.libraries),
                 'method': list(self.methods),
                 'params': {'n': list(self.n_values)}}
 
@@ -82,7 +87,29 @@ class ConjectureDomain:
         if name in self.derived:
             from . import operations as OP
             return OP.GammaPlus(d['params']['n'], self.derived[name]['ops'])
+        if name in self.libraries:
+            from . import library as LB
+            return LB.GammaLib(d['params']['n'], {}, self.libraries[name]['macros'])
         return None
+
+    def _gamma_family(self, name):
+        return name == 'gamma' or name in self.derived or name in self.libraries
+
+    def learn(self, pid, fingerprint):
+        """Library learning (mechanism 1): a piece recurring in the best Γ programs of at least two independent
+        branches becomes a macro, offered in a new representation with every macro learned so far; or None."""
+        from . import attack as ATK
+        from . import library as LB
+        binary = ATK.GammaRep.BINARY + tuple(sorted({o for x in self.derived.values() for o in x['ops']}))
+        sources = [r.best_g for key, r in sorted(self._runners.items(), key=lambda kv: repr(kv[0]))
+                   if self._gamma_family(key[1]) and r.best_g is not None and r.best > -1e300]
+        skel = LB.learn(sources, binary, known=self.macros.values())
+        if skel is None:
+            return None
+        self.macros[f'm{len(self.macros)}'] = skel
+        name = f'library{len(self.libraries)}'
+        self.libraries[name] = {'macros': dict(self.macros), 'from': [pid, fingerprint]}
+        return name
 
     def derive(self, pid, representation, seed):
         """A new representation: `representation` (a Γ one) with one more binary operation (`operations.py`)."""
@@ -131,7 +158,7 @@ class ConjectureDomain:
         from . import abstraction as AB
         examples = [A for (p, fp), A in sorted(self._issued.items(), key=lambda kv: kv[0]) if fp == fingerprint]
         if not examples:
-            return None
+            return self.learn(pid, fingerprint)
         for t in AB.candidates(examples):
             key = repr(AB._shape(t['program']))                # one template per shape: its sizes are its parameters
             if any(repr(AB._shape(x['template']['program'])) == key for x in self.templates.values()):
@@ -139,7 +166,27 @@ class ConjectureDomain:
             name = f'template{len(self.templates)}'
             self.templates[name] = {'template': t, 'from': [pid, fingerprint], 'examples': len(examples)}
             return name
-        return None
+        return self.learn(pid, fingerprint)                  # no new template: library learning
+
+    def state(self):
+        """What the domain has invented (templates, derived operations, macros, libraries), JSON-able; a study saves
+        it with the engine, because a resumed engine's replay cannot rebuild what came from the runners."""
+        return {'templates': self.templates, 'derived': self.derived, 'macros': self.macros,
+                'libraries': self.libraries}
+
+    def restore(self, state):
+        def tup(x):
+            if isinstance(x, dict):
+                return {k: tup(v) for k, v in x.items()}
+            if isinstance(x, list):
+                return tuple(tup(v) for v in x)
+            return x
+        st = tup(state)
+        self.templates.update(st.get('templates', {}))
+        self.derived.update({k: {'ops': dict(v['ops']), 'from': v['from']} for k, v in st.get('derived', {}).items()})
+        self.macros.update(st.get('macros', {}))
+        self.libraries.update({k: {'macros': dict(v['macros']), 'from': list(v['from'])}
+                               for k, v in st.get('libraries', {}).items()})
 
     def successors(self, pid, artifact):
         return []

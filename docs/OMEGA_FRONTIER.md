@@ -803,6 +803,25 @@ they produce on A is Genesis's.
   the research plane names or favours that point; Genesis reaches it only by its own mutation, recombination and
   selection, if at all. The audit is clean.
 
+**Mechanism 1 is built** (28 Oct 2026, 01:10 SGT; `conjecture/library.py`; tests in `tests_genesis/test_operations.py`;
+B20_R164).
+- **What is learned.** The attack runners now keep their best programs. When abstraction finds no new template,
+  `ConjectureDomain.learn` compresses the best Γ programs of all branches.
+- **The rule.** A piece, a subtree rooted at an operation with 2 to 7 nodes and its sizes blanked, becomes a macro
+  when two conditions hold:
+  - it recurs in at least two independent branches;
+  - it saves the most description length among such pieces.
+- **The new representation.** It is Γ plus every macro learned so far. A macro is a leaf ('m<k>', sizes …) that
+  expands exactly. New leaves come from the library 30% of the time. Macros may contain earlier macros.
+- **Checked:**
+  - a piece recurring in two sources is learned, and one seen in only one source is not;
+  - an expanded macro builds the same graph as its expansion;
+  - learning from the domain's own runners is deterministic; in a probe it learned a product of two complete
+    bipartite graphs, then a pendant path on one;
+  - the domain's inventions save and restore (`state`, `restore`). A study saves them with the engine, as F5 does
+    for templates.
+- What Genesis's searches repeat is what the library holds. Nothing in it is the builder's.
+
 **Verdicts.**
 - PROVED_OUT only if all five pass.
 - Otherwise the parts that passed are listed, for example `PARTS_1_2`, along with the first failure.

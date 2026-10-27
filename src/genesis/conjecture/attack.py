@@ -529,7 +529,7 @@ class Runner:
         self.rep = rep if rep is not None else REPRESENTATIONS[representation](n)
         self.rng = np.random.default_rng(seed)
         self.gen = METHODS[method](self.rep, self.bound, self.rng)
-        self.evals, self.best, self.best_A = 0, -math.inf, None
+        self.evals, self.best, self.best_A, self.best_g = 0, -math.inf, None, None
 
     def advance(self, k):
         improved = False
@@ -537,5 +537,5 @@ class Runner:
             s, g, A = next(self.gen)
             self.evals += 1
             if A is not None and s > self.best:
-                self.best, self.best_A, improved = s, A, True
+                self.best, self.best_A, self.best_g, improved = s, A, g, True
         return improved

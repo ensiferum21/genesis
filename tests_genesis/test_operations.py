@@ -160,3 +160,62 @@ class Derive(unittest.TestCase):
 
 if __name__ == '__main__':
     unittest.main()
+
+
+class Library(unittest.TestCase):
+    """Mechanism 1: library learning over Γ (`conjecture/library.py`)."""
+    B = AT.GammaRep.BINARY
+
+    def test_a_recurring_piece_becomes_a_macro(self):
+        from genesis.conjecture import library as LB
+        a = ('union', ('join', ('E', 3), ('K', 2)), ('P', 4))
+        b = ('prod', ('C', 5), ('join', ('E', 7), ('K', 4)))
+        c = ('compl', ('S', 3))
+        skel = LB.learn([a, b, c], self.B)
+        self.assertEqual(skel, ('join', ('E', None), ('K', None)))
+        self.assertIsNone(LB.learn([a, c], self.B))                     # recurring in one source only
+        self.assertIsNone(LB.learn([a, b], self.B, known=[skel]))       # already known, nothing else recurs
+        rep = LB.GammaLib(10, {}, {'m0': skel})
+        A = rep.graph(('union', ('m0', 2, 3), ('P', 2)))
+        B = rep.graph(('union', ('join', ('E', 2), ('K', 3)), ('P', 2)))
+        self.assertTrue((A == B).all())
+        # hierarchical: a macro may contain an earlier one
+        deep = LB.learn([('corona', ('m0', 2, 2), ('E', 1)), ('corona', ('m0', 5, 1), ('E', 3))], self.B)
+        self.assertEqual(deep, ('corona', ('m0', None, None), ('E', None)))
+        rep2 = LB.GammaLib(10, {}, {'m0': skel, 'm1': deep})
+        self.assertEqual(rep2.size(('m1', 2, 2, 1)), 4 * 2)
+        rng = np.random.default_rng(0)
+        drew = sum(1 for _ in range(200) if rep2._base(rng)[0] in ('m0', 'm1'))
+        self.assertTrue(40 <= drew <= 80, drew)                          # LIBRARY_SHARE 0.3 of new leaves
+
+    def test_the_domain_learns_from_its_own_runners_deterministically(self):
+        def domain():
+            dom = ConjectureDomain(POSED, representations=('gamma',), n_values=(8,))
+            for i in range(12):
+                d = {'problem': 'q1', 'representation': 'gamma', 'method': ('hill', 'evolution')[i % 2],
+                     'params': {'n': 8}, 'op': 'seed', 'parent': None}
+                dom.step('q1', d, 100 + i, 0, 150)
+            return dom
+        a, b = domain(), domain()
+        na, nb = a.learn('q1', 'fp'), b.learn('q1', 'fp')
+        self.assertEqual(na, nb)
+        self.assertEqual(a.macros, b.macros)
+        if na is not None:                                               # what Genesis's own searches repeated
+            from genesis.conjecture import library as LB
+            skel = a.macros['m0']
+            sources = [r.best_g for r in a._runners.values() if r.best_g is not None]
+            self.assertGreaterEqual(sum(1 for g in sources if skel in LB.pieces(g, self.B)), 2)
+            self.assertIn(na, a.approaches('q1')['representation'])
+            d = {'problem': 'q1', 'representation': na, 'method': 'hill', 'params': {'n': 8}, 'op': 'seed',
+                 'parent': None}
+            pts, _ = a.step('q1', d, 7, 0, 100)
+            self.assertTrue(pts)
+        fresh = ConjectureDomain(POSED)
+        fresh.restore(json_round(a.state()))
+        self.assertEqual(fresh.macros, a.macros)
+        self.assertEqual(fresh.libraries, a.libraries)
+
+
+def json_round(x):
+    import json
+    return json.loads(json.dumps(x, default=list))
