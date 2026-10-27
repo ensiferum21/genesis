@@ -18,7 +18,7 @@ from genesis.conjecture import verify as V  # noqa: E402
 PKG = ROOT / 'src' / 'genesis' / 'conjecture'
 RESEARCH_PLANE = ('__init__.py', 'expr.py', 'graphs.py', 'attack.py', 'domain.py', 'abstraction.py',
                   'generate.py')
-KERNEL_SIDE = ('sealed.py', 'verify.py')
+KERNEL_SIDE = ('sealed.py', 'verify.py', 'audit.py')
 P3 = (3, ((0, 1), (1, 2)))
 MERRIS = 'd + m'                                 # proved (Merris 1998), tight on P3 and on regular bipartite graphs
 ANDERSON_MORLEY = 'di + dj'                      # proved (Anderson and Morley 1985)
@@ -296,6 +296,27 @@ class Generation(unittest.TestCase):
         self.assertFalse(any(GN.equivalent(a, b) for i, a in enumerate(forms) for b in forms[i + 1:]))
 
 
+class ForbiddenConcept(unittest.TestCase):
+    """The proving test's audit: the research plane's code names no forbidden concept; a planted one is caught;
+    docstrings (which say what the code does not contain) are not code."""
+
+    def test_the_research_plane_is_clean(self):
+        from genesis.conjecture import audit as AU
+        self.assertEqual(AU.scan(AU.research_plane(ROOT)), [])
+
+    def test_a_planted_concept_is_caught(self):
+        import tempfile
+        from genesis.conjecture import audit as AU
+        with tempfile.TemporaryDirectory() as d:
+            f = Path(d) / 'x.py'
+            f.write_text('"""No quotient here."""\ndef build_quotient(cells):\n    return "equitable"\n')
+            stems = {h[3] for h in AU.scan([f])}
+            self.assertEqual(stems, {'quotient', 'equitable'})
+            self.assertEqual({h[3] for h in AU.scan([], extra=[('manifest', {'hint': 'use a Blow-Up'})])}, {'blowup'})
+            self.assertEqual({h[3] for h in AU.scan([], extra=[('manifest', 'orbits of automorphisms')])},
+                             {'orbit', 'automorph'})
+
+
 class Boundary(unittest.TestCase):
     def test_the_split_covers_the_package(self):
         self.assertEqual({p.name for p in PKG.glob('*.py')}, set(RESEARCH_PLANE) | set(KERNEL_SIDE))
@@ -306,7 +327,7 @@ class Boundary(unittest.TestCase):
             for node in pyast.walk(pyast.parse((PKG / name).read_text())):
                 if isinstance(node, (pyast.Import, pyast.ImportFrom)):
                     names = [a.name for a in node.names] + [getattr(node, 'module', None) or '']
-                    if any(x.split('.')[-1] in ('sealed', 'verify') for x in names):
+                    if any(x.split('.')[-1] in ('sealed', 'verify', 'audit') for x in names):
                         bad.append(name)
         self.assertEqual(bad, [])
 

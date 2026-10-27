@@ -687,7 +687,7 @@ to be preregistered when F1–F5 have run:
 | F3 = B20_R156 | PREREGISTERED, amended before it ran (`4a7e193`, sha256 `9ae034db…353a`) | `scripts/b20r156_frontier_worlds.py` |
 | F4 = B20_R157 | PREREGISTERED (`bdf0c57`, sha256 `49b171f9…1904`) | `scripts/b20r157_laplacian_bounds.py` |
 | F5 = B20_R158 | TO PREREGISTER after F4's result. It uses `generate.py`, abstraction, procedures, and the kernel's withholding rule for family A (§6) | — |
-| PT-1 = B20_R159 | Parts 3–5 machinery BUILT (`frontier/procedure.py`); the forbidden-concept audit and the study are still to write | §7b |
+| PT-1 = B20_R159 | Parts 3–5 machinery BUILT (`frontier/procedure.py`); the forbidden-concept audit BUILT (`conjecture/audit.py`, kernel side: identifiers and non-docstring strings of the research plane and the manifest, scanned for the hidden concept's stems; the research plane is clean); the study is still to write | §7b |
 
 **Run each study from a clean worktree of its preregistration commit** (`git worktree add --detach <path> <commit>`).
 The study scripts check their module pins at run time. The design tests check the pins at the preregistration
