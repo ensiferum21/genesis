@@ -724,6 +724,34 @@ to be preregistered when F1–F5 have run:
 - **Still to build before PT-1 can be preregistered:**
   - the PT-1 study script: the inadequacy gate on A, parts 1–5, and family C.
 
+**An open design question for part 1 (for Daniel; 28 Oct 2026, 00:50 SGT).**
+
+*The problem.* Abstraction today generalises converged graphs into Γ templates, and it only compresses: a
+template, or a library of named sub-programs in the manner of X2, reaches the same closure of graphs as Γ itself,
+only at a shorter description length. Γ's operations (union, join, complement, cartesian product, corona, pendant
+paths) can express complete multipartite graphs. They cannot express general equitable-partition constructions,
+where the parts meet in regular but incomplete patterns, or blow-ups of a base graph with an induced P4.
+
+Family A's references are of that kind. So for part 1 to pass, something must take Genesis outside Γ's closure,
+and the audit checks names, not ideas.
+
+*The candidate mechanisms, by how much they hand over:*
+1. Library learning over Γ (X2's mechanism, ported): hands over nothing, but cannot leave the closure. It would
+   likely fail A.
+2. Program synthesis over lower-level adjacency primitives. Examples are maps over vertex pairs with predicates,
+   and matrix products. This is generic, but a block-constant matrix language is the hidden concept under another
+   name, so the primitive set must be chosen with care, and Daniel should approve it.
+3. MDL compression of Genesis's own best artifacts: a generic dictionary coder over canonically ordered adjacency
+   rows, whose repeat counts the existing size generalisation turns into parameters. It is generic machinery, but
+   "rows that repeat, scaled" is close to the concept.
+4. Operators that act on the operators of Γ. Γ's own operations would be mutated and recombined, with an exact
+   decoder kept.
+
+*Recommendation, to be decided before PT-1 is preregistered.* Take 1 and 4 as the honest starting point, report 2
+and 3 as variants, and let the inadequacy gate and the audit judge. Whatever is chosen is labelled as the
+builder's, and the test reports which mechanism produced part 1. This decision is Daniel's: it sets what "without
+specifying the missing concept" means in practice.
+
 **Verdicts.**
 - PROVED_OUT only if all five pass.
 - Otherwise the parts that passed are listed, for example `PARTS_1_2`, along with the first failure.
