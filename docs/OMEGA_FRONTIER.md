@@ -604,6 +604,19 @@ to be preregistered when F1–F5 have run:
 | 4. Independent use in B | The procedure, run on B, yields an exact certificate (a refutation or a better construction) that the predecessor does not get there at matched compute | Exact verification in B. The procedure gets no B-specific changes. B is sealed until then |
 | 5. The improved inventor beats its predecessor | On fresh sealed tasks from C: the inventor with the extracted procedure in its method library against the predecessor (the same Frontier without it), at matched **total** compute. The improved arm is charged the full cost of discovering the procedure in A | Primary: certificates per task, a paired one-sided test over tasks, Holm across the test's claims. Validity: NHP audits, the forbidden-concept audit, no certificate against a proved null |
 
+**Machinery for parts 3–5 is built** (27 Oct 2026, 21:55 SGT; `frontier/procedure.py`, tests in
+`tests_genesis/test_frontier_procedure.py`).
+- `extract(engine, problem)` compiles the procedure behind a problem's best verified result from the engine's own
+  records:
+  - explore: the approaches whose branches converged, with their shares;
+  - converge;
+  - abstract;
+  - exploit: the new representation with the discovering method.
+  Nobody writes the procedure by hand, and it names no problem and no template.
+- `ProcedurePolicy` (the policy `procedure`) is the improved inventor of part 5: the Frontier's policy plus a library
+  of procedures. Within a share ρ of compute, it runs the library's procedures on new problems first.
+- These are mechanics only. What they are worth is the test's question.
+
 **Verdicts.**
 - PROVED_OUT only if all five pass.
 - Otherwise the parts that passed are listed, for example `PARTS_1_2`, along with the first failure.
