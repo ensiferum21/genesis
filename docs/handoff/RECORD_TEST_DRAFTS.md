@@ -321,3 +321,163 @@ class RecordB20R165(unittest.TestCase):
         G = S.graphs(S.excluded_identities())
         self.assertEqual({c: [t.task_id for t in ts] for c, ts in G.items()}, self.s['graphs'])
 ```
+
+## RecordB20R156 (F3; append to `tests_genesis/test_frontier_worlds_study.py`)
+
+Written on 28 Oct 2026, 02:55 SGT, from the script only, before the study ran. Needs `import hashlib`,
+`import json` (already there) and `ROOT`, `S` (the study script).
+
+```python
+
+
+R156 = ROOT / 'evidence' / 'frontier_worlds_b20r156'
+
+
+@unittest.skipUnless((R156 / 'summary.json').exists(), 'B20_R156 has not been recorded')
+class RecordB20R156(unittest.TestCase):
+    """The record of B20_R156 (F3) on its evidence: the amended script; the worlds; validity recomputed from the rows;
+    the analysis and the verdict recomputed; one world re-run gives the same row."""
+
+    @classmethod
+    def setUpClass(cls):
+        cls.s = json.loads((R156 / 'summary.json').read_text())
+        cls.rows = {}
+        for line in (R156 / 'rows.jsonl').read_text().splitlines():
+            if line.strip():
+                r = json.loads(line)
+                cls.rows[(r['world'], r['arm'])] = r
+
+    def test_the_script(self):
+        import hashlib
+        self.assertEqual(hashlib.sha256((ROOT / 'scripts' / 'b20r156_frontier_worlds.py').read_bytes()).hexdigest(),
+                         '9ae034dbf8bde4cd9d2eba75807c16ef869917568cf4ffd5a8d2b2f20566353a')
+
+    def test_the_worlds_and_validity(self):
+        self.assertEqual(self.s['worlds'], [list(w) for w in S.worlds()])
+        self.assertEqual(len(self.rows), len(S.worlds()) * len(S.ARMS))
+        nulls = all(self.rows[(k, a)]['total'] == 0.0 for k, f, sd, null in S.worlds() if null for a in S.ARMS)
+        spent = all(r['spent'] >= S.BUDGET - S.QUANTUM - 1 for r in self.rows.values())
+        self.assertEqual((nulls, spent), (self.s['nulls_ok'], self.s['spent_ok']))
+        self.assertTrue(self.s['valid'] and self.s['pins_ok'])
+
+    def test_the_analysis_recomputes(self):
+        res = S.analyse(self.rows)
+        for c in S.PRIMARY:
+            for k in ('label', 'p_holm', 'mean'):
+                got, rec = res['P1'][c][k], self.s['results']['P1'][c][k]
+                self.assertAlmostEqual(got, rec) if isinstance(got, float) else self.assertEqual(got, rec)
+        self.assertEqual(S.verdict(self.s['valid'], res)[0], self.s['verdict'])
+        self.assertEqual(res['S2']['hits'], self.s['results']['S2']['hits'])
+
+    def test_one_world_reruns_identically(self):
+        key, fam, seed, null = next(w for w in S.worlds() if not w[3])
+        r = S.run_one(fam, seed, null, 'F', 0)
+        rec = self.rows[(key, 'F')]
+        self.assertEqual((r['total'], r['spent'], r['branches']), (rec['total'], rec['spent'], rec['branches']))
+```
+
+## RecordB20R163 (F6; append to `tests_genesis/test_frontier_meta_study.py`)
+
+Written on 28 Oct 2026, 02:55 SGT, from the script only, before the study ran. The file already has `json`,
+`unittest`, `ROOT`, `S` and `MT`.
+
+```python
+
+
+R163 = ROOT / 'evidence' / 'frontier_meta_b20r163'
+
+
+@unittest.skipUnless((R163 / 'summary.json').exists(), 'B20_R163 has not been recorded')
+class RecordB20R163(unittest.TestCase):
+    """The record of B20_R163 (F6) on its evidence: the script; the meta-search's record; the matched budgets;
+    validity and the analysis recomputed from the rows; one evaluation re-run gives the same row."""
+
+    @classmethod
+    def setUpClass(cls):
+        cls.s = json.loads((R163 / 'summary.json').read_text())
+        cls.meta = json.loads((R163 / 'meta.json').read_text())
+        cls.rows = {}
+        for line in (R163 / 'rows.jsonl').read_text().splitlines():
+            if line.strip():
+                r = json.loads(line)
+                cls.rows[(r['world'], r['arm'])] = r
+
+    def test_the_script(self):
+        import hashlib
+        self.assertEqual(hashlib.sha256((ROOT / 'scripts' / 'b20r163_frontier_meta.py').read_bytes()).hexdigest(),
+                         'e71bfb69365bb5fa4a1129e59c13637ce048ab0cc15dbdaa4ddd8878a620777f')
+
+    def test_the_budgets_and_validity(self):
+        extra = S.extra_budget(self.meta['c_meta'], 24)
+        self.assertEqual(self.s['S4']['extra_budget_per_world'], extra)
+        for (w, a), r in self.rows.items():
+            self.assertEqual(r['budget'], S.B + (extra if a == 'D' else 0))
+        nulls = all(self.rows[(k, a)]['total'] == 0.0 for k, f, sd, null in S.worlds() if null for a in S.ARMS)
+        spent = all(r['spent'] >= r['budget'] - S.QUANTUM - 1 for r in self.rows.values())
+        self.assertEqual((nulls, spent), (self.s['nulls_ok'], self.s['spent_ok']))
+        self.assertTrue(self.meta['on_grid'])
+        self.assertTrue(self.s['valid'] and self.s['pins_ok'])
+
+    def test_the_analysis_recomputes(self):
+        res = S.analyse(self.rows)
+        for k in ('P1', 'S1', 'S2'):
+            self.assertAlmostEqual(res[k]['p'], self.s['results'][k]['p'])
+            self.assertAlmostEqual(res[k]['mean'], self.s['results'][k]['mean'])
+        self.assertEqual(S.verdict(self.s['valid'], res, self.meta['nothing_promoted']), self.s['verdict'])
+
+    def test_one_evaluation_reruns_identically(self):
+        idx, (key, fam, seed, null) = next((i, w) for i, w in enumerate(S.worlds()) if not w[3])
+        r = S.run_one(fam, seed, null, 'P', idx, self.meta['promoted'], S.B)
+        self.assertEqual((r['total'], r['spent']), (self.rows[(key, 'P')]['total'], self.rows[(key, 'P')]['spent']))
+```
+
+## RecordB20R157 (F4; append to `tests_genesis/test_laplacian_bounds_study.py`)
+
+Written on 28 Oct 2026, 02:55 SGT, from the script only, before the study ran. Needs `json`, `unittest`, `ROOT` and
+`S` (the study script).
+
+```python
+
+
+R157 = ROOT / 'evidence' / 'laplacian_bounds_b20r157'
+
+
+@unittest.skipUnless((R157 / 'summary.json').exists(), 'B20_R157 has not been recorded')
+class RecordB20R157(unittest.TestCase):
+    """The record of B20_R157 (F4) on its evidence: the script; every artifact double checked again by the kernel;
+    the refuted sets, the null check, the analysis and the verdict recomputed."""
+
+    @classmethod
+    def setUpClass(cls):
+        cls.s = json.loads((R157 / 'summary.json').read_text())
+        cls.rows = {}
+        for line in (R157 / 'rows.jsonl').read_text().splitlines():
+            if line.strip():
+                r = json.loads(line)
+                cls.rows[(r['arm'], r.get('problem'))] = r
+
+    def test_the_script(self):
+        import hashlib
+        self.assertEqual(hashlib.sha256((ROOT / 'scripts' / 'b20r157_laplacian_bounds.py').read_bytes()).hexdigest(),
+                         '49b171f9be58dc6665fc9d15eacd59f98ede795b2a4e5d6a5fb3bc54ff0f1904')
+
+    def test_the_kernel_checks_recompute(self):
+        from genesis.conjecture import sealed as SD
+        problems, number_of = S.posed()
+        self.assertEqual({p: number_of[p] for p in problems}, {k: v for k, v in self.s['ids'].items()})
+        refuted = {}
+        for arm in S.ARMS:
+            arts = self.rows[(arm, None)]['artifacts'] if arm in S.JOINT else \
+                {p: self.rows[(arm, p)]['artifact'] for p in problems if 'artifact' in self.rows[(arm, p)]}
+            refuted[arm] = {p for p, art in arts.items() if S.double_check(*problems[p], art) == 'CONFIRMED'}
+            self.assertEqual(sorted(number_of[p] for p in refuted[arm]), self.s['refuted'][arm])
+        status_of = {p: SD.status(number_of[p]) for p in problems}
+        nulls = sorted({number_of[p] for a in S.ARMS for p in refuted[a] if status_of[p] == 'proved'})
+        self.assertEqual(nulls, self.s['proved_bounds_refuted'])
+        res = S.analyse(refuted, status_of, number_of)
+        for c in S.COMPARATORS:
+            for k in ('frontier_only', 'comparator_only', 'label'):
+                self.assertEqual(res['P1'][c][k], self.s['results']['P1'][c][k])
+            self.assertAlmostEqual(res['P1'][c]['p_holm'], self.s['results']['P1'][c]['p_holm'])
+        self.assertEqual(S.verdict(self.s['valid'], res)[0], self.s['verdict'])
+```
