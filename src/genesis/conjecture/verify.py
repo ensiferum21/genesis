@@ -79,3 +79,94 @@ def verifier(posed):
             return 0.0
         return 1.0 if res['verdict'] == 'REFUTED' else 0.0
     return verify
+
+
+# ------------------------------------------------------------------------------------- an independent check
+
+def charpoly(n, edges):
+    """Coefficients [1, c1, ..., cn] of det(xI - L), L the Laplacian, by Berkowitz's division-free algorithm over the
+    integers (exact)."""
+    L = [[0] * n for _ in range(n)]
+    for u, v in edges:
+        L[u][u] += 1
+        L[v][v] += 1
+        L[u][v] -= 1
+        L[v][u] -= 1
+    vect = [1, -L[0][0]]
+    for r in range(1, n):
+        C = [L[i][r] for i in range(r)]
+        R = L[r][:r]
+        M = [row[:r] for row in L[:r]]
+        t = [1, -L[r][r]]
+        v = C[:]
+        for _ in range(r):
+            t.append(-sum(R[i] * v[i] for i in range(r)))
+            v = [sum(M[i][j] * v[j] for j in range(r)) for i in range(r)]
+        vect = [sum(t[i - j] * vect[j] for j in range(len(vect)) if 0 <= i - j < len(t)) for i in range(r + 2)]
+    return vect
+
+
+def _poly_eval(p, x):
+    acc = Fraction(0)
+    for c in p:                                   # highest degree first
+        acc = acc * x + c
+    return acc
+
+
+def _poly_rem(a, b):
+    """The remainder of a by b (lists of Fractions, highest degree first)."""
+    a = list(a)
+    while len(a) >= len(b) and any(a):
+        f = a[0] / b[0]
+        for i in range(len(b)):
+            a[i] -= f * b[i]
+        a.pop(0)
+    while a and a[0] == 0:
+        a.pop(0)
+    return a
+
+
+def _sturm(p):
+    p = [Fraction(c) for c in p]
+    dp = [c * (len(p) - 1 - i) for i, c in enumerate(p[:-1])]
+    chain = [p, dp]
+    while True:
+        r = _poly_rem(chain[-2], chain[-1])
+        if not r:
+            break
+        chain.append([-c for c in r])
+    return chain
+
+
+def roots_above(p, c):
+    """The number of distinct real roots of p greater than the rational c (c not a root)."""
+    chain = _sturm(p)
+
+    def changes(vals):
+        s = [v for v in vals if v != 0]
+        return sum(1 for a, b in zip(s, s[1:]) if (a > 0) != (b > 0))
+    at_c = changes([_poly_eval(q, Fraction(c)) for q in chain])
+    at_inf = changes([q[0] for q in chain])        # signs of the leading coefficients
+    return at_c - at_inf
+
+
+def check_charpoly(formula, kind, n, edges, max_n=40):
+    """An independent check of a refutation: mu(G) > hi, the bound's exact upper end, shown by a Sturm count on the
+    exact characteristic polynomial (no certificate vector). For n <= max_n; None above."""
+    n, edges = Gr.normalise(n, edges)
+    if n > max_n:
+        return None
+    ast = E.parse(formula, kind)
+    if not defined(ast, kind, n, edges):
+        return {'verdict': 'UNDEFINED'}
+    p = charpoly(n, edges)
+    for bits in RESOLUTIONS:
+        hi = upper(ast, kind, n, edges, bits)
+        if hi is None:
+            continue
+        if _poly_eval([Fraction(c) for c in p], hi) == 0:
+            continue                                  # hi is a root: refine
+        if roots_above(p, hi) >= 1:
+            return {'verdict': 'REFUTED', 'hi': str(hi), 'bits': bits}
+        return {'verdict': 'NOT_CERTIFIED', 'hi': str(hi)}
+    return {'verdict': 'NOT_CERTIFIED', 'hi': None}

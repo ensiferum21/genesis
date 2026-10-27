@@ -109,6 +109,40 @@ class Certificates(unittest.TestCase):
         self.assertEqual(Gr.from_graph6('Bo'), (3, ((0, 1), (0, 2))))     # P3 centred at 0 (the report's labelling)
 
 
+class Independent(unittest.TestCase):
+    """The second, independent check: Berkowitz's exact characteristic polynomial and a Sturm count."""
+
+    def test_charpoly_and_sturm_against_numpy(self):
+        import numpy as np
+        rng = random.Random(3)
+        for _ in range(25):
+            n = rng.randint(2, 13)
+            g = Gr.normalise(n, [(u, v) for u in range(n) for v in range(u + 1, n) if rng.random() < 0.4])
+            p = V.charpoly(*g)
+            L = Gr.laplacian(*g)
+            ref = np.poly(L)
+            self.assertTrue(np.allclose(p, ref, atol=1e-6 * max(1, abs(ref).max())))
+            w = np.linalg.eigvalsh(L)
+            for c in (0.5, 1.5, 2.7, 4.1):
+                self.assertEqual(V.roots_above(p, c), len({round(x, 6) for x in w if x > c + 1e-9}))
+
+    def test_both_checks_agree(self):
+        C4 = (4, ((0, 1), (1, 2), (2, 3), (0, 3)))
+        self.assertEqual(V.check_charpoly('d + 1', 'vertex', *C4)['verdict'], 'REFUTED')
+        self.assertEqual(V.check_charpoly('d + m', 'vertex', *C4)['verdict'], 'NOT_CERTIFIED')   # tight: mu = 4
+        rng = random.Random(11)
+        for _ in range(40):
+            g = random_graph(rng, rng.randint(3, 12), rng.uniform(0.2, 0.7))
+            mu, vec = Gr.laplacian_top(*g)
+            for f, kind in (('d + 1', 'vertex'), (MERRIS, 'vertex'), ('di + dj - 1', 'edge')):
+                a = V.check(f, kind, *g, Gr.rational_vector(vec))['verdict']
+                b = V.check_charpoly(f, kind, *g)['verdict']
+                if a == 'REFUTED':
+                    self.assertEqual(b, 'REFUTED', (f, Gr.graph6(*g)))
+                if f == MERRIS:
+                    self.assertNotEqual(b, 'REFUTED')
+
+
 class Sealed(unittest.TestCase):
     def test_statuses_partition_the_68(self):
         groups = (SD.PROVED, SD.REFUTED_2024, SD.REFUTED_2025, SD.REFUTED_2026, SD.OPEN)
