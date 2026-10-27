@@ -923,11 +923,12 @@ commit through `git show`.
 1. **B20_R151 is RECORDED** (27 Oct, 17:47 UTC): NOT_SHOWN, reading NO_LANGUAGE_EFFECT
    (`docs/checkpoints/B20_R151_RECORD.md`).
 2. **B20_R152 is RECORDED** (27 Oct, 20:35 UTC): NOTHING_ADMITTED (`docs/checkpoints/B20_R152_RECORD.md`).
-2b. **B20_R165 is running** (from 27 Oct, 20:36 UTC; about 1.2 h), the replication of B20_R151's S5.
-    - From the clean worktree `/home/claude/r165-wt` at `ff6475b`.
-    - Resume after an exit 3 with: `/home/claude/run_slice.sh /home/claude/r165-wt scripts/b20r165_planar_replication.py evidence/planar_replication_b20r165 /home/claude/logs/r165_slices.log`
-    - Check slice exits by count only. Record it with the RecordB20R165 draft.
-3. **B20_R141** from a worktree at `a3b3eda`, about 3 h.
+2b. **B20_R165 is RECORDED** (27 Oct, 21:50 UTC): REPLICATED_WITH_SINGLE_ENGINE, all on ±1-weighted planar graphs
+    (`docs/checkpoints/B20_R165_RECORD.md`).
+3. **B20_R141 is running in slices** (from 27 Oct, 21:50 UTC; about 3 h).
+   - From the clean worktree `/home/claude/r141-wt` at `a3b3eda`.
+   - Resume after an exit 3 with: `/home/claude/run_slice.sh /home/claude/r141-wt scripts/b20r141_ara_zoo.py evidence/ara_zoo_b20r141 /home/claude/logs/r141_slices.log`
+   - Check slice exits by count only. Record it with the RecordB20R141 draft.
 4. **B20_R156 (F3)** from a worktree at `4a7e193`, under 1 h.
 5. **B20_R157 (F4)** from a worktree at `bdf0c57`, about 2 h.
 6. **B20_R158 (F5)** from a worktree at `703b2ee`.

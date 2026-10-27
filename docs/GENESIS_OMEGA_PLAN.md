@@ -639,6 +639,7 @@ problems no level has seen, and Genesis has not shown that yet.
   in detail for handoff at his request of 20:01; F1 and F2 next on CPU 1; B20_R156–R158 reserved.
 - 27 Oct 2026, 20:40: the proving test adopted (§0f; B20_R159). F2 started: the sealed Laplacian set
   transcribed and tiered, with exact certificates (`src/genesis/conjecture/`).
+- 28 Oct 2026, 05:53: B20_R165 recorded: REPLICATED_WITH_SINGLE_ENGINE. Genesis's searched engines beat REX on fresh planar graphs by 0.58%, all of it on ±1-weighted ones (+1.16%). It is the first confirmed engine gain of Genesis's own searches over REX, and it is narrow. B20_R141 is running.
 - 28 Oct 2026, 04:42: B20_R152 recorded: NOTHING_ADMITTED. The judge refused both of generation 1's statements, and B20_R155 does not run. B20_R165, the replication of the planar-engine gain over REX, is running.
 - 28 Oct 2026, 02:00: B20_R151 recorded: NOT_SHOWN, reading NO_LANGUAGE_EFFECT. Λ1's ceilings were no better than Λ0's on planar2000, and neither ceiling saturated. Every search's engines beat REX on fresh graphs by 0.45–0.78% (secondary). B20_R152 is running. Also: PT-1's family B is complete at 63 statements; Daniel decided part 1's mechanisms ("Do the hardest"), and both are built (B20_R164); B20_R163 (F6) is preregistered.
 - 28 Oct 2026, 00:40: PT-1 groundwork. The transfer family B, 53 Graffiti statements from the Lean formalisation

@@ -302,7 +302,7 @@
     "cpu0_hours": 3.0
    },
    "script": "scripts/b20r141_ara_zoo.py",
-   "status": "queued",
+   "status": "running",
    "title": "ARA experiments A-D on the sealed Limitation Zoo: diagnosis, proposal, isolated implementation, sealed gain at matched total units against incumbent, tuning-only and blind-rewrite controls",
    "unlocks": [
     "ara-calibrated"
@@ -683,7 +683,10 @@
    "unlocks": []
   },
   "B20_R165": {
-   "artifacts": [],
+   "artifacts": [
+    "evidence/planar_replication_b20r165",
+    "docs/checkpoints/B20_R165_RECORD.md"
+   ],
    "committed": true,
    "depends_on": [
     "B20_R152"
@@ -692,10 +695,10 @@
    "id": "B20_R165",
    "kind": "study",
    "line": "expressiveness",
-   "notes": "A confirmatory replication of B20_R151's secondary S5 finding; preregistered 28 Oct 2026 02:26 SGT; runs after B20_R152, before B20_R141",
-   "outcome": null,
+   "notes": "A confirmatory replication of B20_R151's secondary S5 finding; preregistered 28 Oct 2026 02:26 SGT; runs after B20_R152, before B20_R141; a container restart stopped slice 1 at about 21:19 UTC (2,031 saved runs intact); resumed; recorded 28 Oct 2026 05:53 SGT",
+   "outcome": "REPLICATED_WITH_SINGLE_ENGINE (+0.582%, C0_1 +0.661%; all on planar2_pm1: +1.16% on 24 of 24; unweighted ties; tori and random lose)",
    "output": "evidence/planar_replication_b20r165",
-   "positive": null,
+   "positive": true,
    "preregistered": "sha256 fbf968c5e2cf22f3e6f2720df16ae2586f08dbcc32f5f556ca4df99ed523516f (the preregistration commit)",
    "priority": 9,
    "requires": [],
@@ -703,7 +706,7 @@
     "cpu0_hours": 1.2
    },
    "script": "scripts/b20r165_planar_replication.py",
-   "status": "running",
+   "status": "done",
    "title": "Do Genesis's searched max-cut engines (B20_R151's 18, frozen) beat REX on 48 fresh planar graphs? A replication of B20_R151's S5",
    "unlocks": []
   },

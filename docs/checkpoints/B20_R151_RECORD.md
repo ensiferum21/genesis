@@ -77,6 +77,9 @@
    - the S5 finding called for a replication. It is preregistered as B20_R165: the same 18 engines, frozen, on 48
      fresh planar graphs, with P1 the engines' mean gain and P2 a single engine chosen by training score. It runs
      after B20_R152. It is not a release; the protected judge is a separate step.
+   - **Replicated** (B20_R165, 27 Oct 21:50 UTC; `docs/checkpoints/B20_R165_RECORD.md`): +0.582% on 48 fresh
+     graphs, with C0_1 at +0.661%. All of the gain is on the ±1-weighted family (+1.16%, 24 of 24 graphs; here +1.19%,
+     12 of 12). Unweighted planar graphs tie, and toroidal and random graphs lose.
 
 ## Expectations against results
 

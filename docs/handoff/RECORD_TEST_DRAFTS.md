@@ -254,6 +254,8 @@ for k, rep in sorted(s['reports'].items()):
 
 ## RecordB20R165 (append to `tests_genesis/test_planar_replication_study.py`)
 
+**Appended on 28 Oct 2026, 05:53 SGT; it passed unchanged on B20_R165's evidence.**
+
 Written on 28 Oct 2026, 02:40 SGT, from the script only, before the study ran. Needs `import statistics` in that
 file (it has `json`, `unittest`, `ROOT` and `S`).
 

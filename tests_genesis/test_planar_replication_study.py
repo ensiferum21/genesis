@@ -5,6 +5,7 @@ runner, the study runs, pauses at its slice limit and resumes to the same runs."
 import json
 from pathlib import Path
 import re
+import statistics
 import sys
 import tempfile
 import unittest
@@ -90,6 +91,71 @@ class EndToEnd(unittest.TestCase):
         with tempfile.TemporaryDirectory() as a:
             with self.assertRaises(SystemExit):
                 S.main([a])
+
+
+
+R165 = ROOT / 'evidence' / 'planar_replication_b20r165'
+
+
+@unittest.skipUnless((R165 / 'summary.json').exists(), 'B20_R165 has not been recorded')
+class RecordB20R165(unittest.TestCase):
+    """The record of B20_R165 on its evidence: the script; validity with the CPU medians recomputed; every final value
+    recomputed from the saved runs; the analysis and the verdict recomputed; the graphs regenerate."""
+
+    @classmethod
+    def setUpClass(cls):
+        cls.s = json.loads((R165 / 'summary.json').read_text())
+        cls.runs = {}
+        for line in (R165 / 'runs.jsonl').read_text().splitlines():
+            if line.strip():
+                r = json.loads(line)
+                cls.runs[r['key']] = r
+
+    def test_the_script(self):
+        import hashlib
+        self.assertEqual(hashlib.sha256((ROOT / 'scripts' / 'b20r165_planar_replication.py').read_bytes()).hexdigest(),
+                         'fbf968c5e2cf22f3e6f2720df16ae2586f08dbcc32f5f556ca4df99ed523516f')
+
+    def test_validity(self):
+        s = self.s
+        self.assertTrue(s['valid'] and s['disjoint'] and all(s['pins'].values()))
+        cpus = {}
+        for r in self.runs.values():
+            b = r['key'].rsplit('|', 1)[1]
+            cpus.setdefault(b, []).append(r['cpu'] / float(b))
+        self.assertTrue(all(statistics.median(v) >= 0.9 for v in cpus.values()))
+        self.assertEqual({b: statistics.median(v) for b, v in cpus.items()}, s['cpu_median'])
+
+    def test_the_finals_from_the_runs(self):
+        from genesis.candidate_kinds import mcx3 as K3
+        from genesis.common import digest
+        eng, ok = S.engines()
+        self.assertTrue(ok)
+        rex = digest(dict(K3.DEFAULT))[:16]
+        val = lambda ek, t, o, b='1': self.runs[f'{ek}|{t}|{o}|{b}']['value']
+        for cls, f in self.s['finals'].items():
+            for t, b in f['base'].items():
+                self.assertAlmostEqual(b, statistics.mean(val(rex, t, o) for o in range(S.T_RUNS)))
+            for n, vals in f['values'].items():
+                ek = digest(eng[n])[:16]
+                for t, v in vals.items():
+                    self.assertAlmostEqual(v, statistics.mean(val(ek, t, o) for o in range(S.T_RUNS)))
+            if cls == S.PRIMARY:
+                for t, v in f['long'].items():
+                    self.assertAlmostEqual(v, val(rex, t, 0, '10'))
+
+    def test_the_analysis_recomputes(self):
+        primary, res = S.analyse(self.s['finals'], self.s['families'], self.s['prespecified'])
+        for k in ('P1', 'P2'):
+            self.assertEqual(primary[k]['label'], self.s['primary'][k]['label'])
+            self.assertAlmostEqual(primary[k]['p_holm'], self.s['primary'][k]['p_holm'])
+            self.assertAlmostEqual(primary[k]['mean'], self.s['primary'][k]['mean'])
+        self.assertEqual(S.verdict(self.s['valid'], primary), self.s['verdict'])
+        self.assertEqual(self.s['prespecified'], S.PRESPECIFIED)
+
+    def test_the_graphs_regenerate(self):
+        G = S.graphs(S.excluded_identities())
+        self.assertEqual({c: [t.task_id for t in ts] for c, ts in G.items()}, self.s['graphs'])
 
 
 if __name__ == '__main__':
