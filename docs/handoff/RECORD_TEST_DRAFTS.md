@@ -483,3 +483,57 @@ class RecordB20R157(unittest.TestCase):
             self.assertAlmostEqual(res['P1'][c]['p_holm'], self.s['results']['P1'][c]['p_holm'])
         self.assertEqual(S.verdict(self.s['valid'], res)[0], self.s['verdict'])
 ```
+
+## RecordB20R141 (append to `tests_genesis/test_ara_zoo_study.py`)
+
+Written on 28 Oct 2026, 04:55 SGT, from the script only (`a3b3eda`, sha256 `ccec4633…60bf`), before the study ran.
+The file already has `json`, `hashlib`, `unittest`, `ROOT`, `S` and `Z`.
+
+```python
+
+
+R141 = ROOT / 'evidence' / 'ara_zoo_b20r141'
+
+
+@unittest.skipUnless((R141 / 'summary.json').exists(), 'B20_R141 has not been recorded')
+class RecordB20R141(unittest.TestCase):
+    """The record of B20_R141 on its evidence: the script; the environments; validity recomputed from the rows; the
+    analysis, experiment C and the verdict recomputed from the saved rows, ledger and keys."""
+
+    @classmethod
+    def setUpClass(cls):
+        cls.s = json.loads((R141 / 'summary.json').read_text())
+        cls.done = {}
+        for line in (R141 / 'rows.jsonl').read_text().splitlines():
+            if line.strip():
+                r = json.loads(line)
+                cls.done[(r['index'], r['arm'])] = r
+        entries = {}
+        for line in (R141 / 'ledger.jsonl').read_text().splitlines():
+            if line.strip():
+                e = json.loads(line)
+                entries[(e['index'], e['arm'])] = e
+        cls.ledger = [entries[k] for k in sorted(entries)]
+
+    def test_the_script(self):
+        self.assertEqual(hashlib.sha256((ROOT / 'scripts' / 'b20r141_ara_zoo.py').read_bytes()).hexdigest(),
+                         'ccec4633599faa628a26c8ca4aeeaa6061a8e857a114bc6b24d46875025660bf')
+
+    def test_the_environments_and_validity(self):
+        envs = S.environments()
+        self.assertEqual(sorted(int(i) for i in self.s['rows']), sorted(i for i, _ in envs))
+        self.assertEqual(len(self.done), len(envs) * len(S.ARMS))
+        self.assertTrue(all(r['spent'] <= r['budget'] + 1e-9 for r in self.done.values()))
+        self.assertTrue(self.s['valid'] and all(self.s['validity'].values()), self.s['validity'])
+
+    def test_the_analysis_recomputes(self):
+        rows = {int(i): r for i, r in self.s['rows'].items()}
+        keys = {int(i): k for i, k in self.s['keys'].items()}
+        res = S.analyse(rows, self.ledger, keys)
+        for x in ('A', 'B', 'D', 'S'):
+            self.assertEqual(res[x]['pass'], self.s[x]['pass'], x)
+        self.assertEqual((res['A']['localised'], res['A']['of']), (self.s['A']['localised'], self.s['A']['of']))
+        c = S.check_promoted(self.ledger)
+        self.assertEqual(c, self.s['C_failures'])
+        self.assertEqual(list(S.verdict(self.s['valid'], res, c)), [self.s['verdict'], self.s['failed']])
+```
