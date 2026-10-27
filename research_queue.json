@@ -21,7 +21,7 @@
     "cpu0_hours": 3.3
    },
    "script": "scripts/b20r128_improve_the_improver.py",
-   "status": "queued",
+   "status": "running",
    "title": "Improving the inventor (level 2), as preregistered",
    "unlocks": []
   },
@@ -1032,6 +1032,11 @@
    "kind": "diagnose",
    "line": "engine-invention",
    "time": "2026-10-26T22:06:55+00:00"
+  },
+  {
+   "id": "B20_R128",
+   "kind": "start",
+   "time": "2026-10-26T22:07:33+00:00"
   }
  ],
  "lines": {
