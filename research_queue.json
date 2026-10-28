@@ -732,7 +732,7 @@
    "output": "evidence/ara_zoo_b20r167",
    "positive": null,
    "preregistered": "sha256 233610d030b8a0af747834e2d0006e209348f3a52a590283f779d3a03eb1af81 (the preregistration commit)",
-   "priority": 6,
+   "priority": 7,
    "requires": [
     "ara-core"
    ],
@@ -740,7 +740,7 @@
     "cpu0_hours": 3.0
    },
    "script": "scripts/b20r167_ara_zoo_rerun.py",
-   "status": "queued",
+   "status": "running",
    "title": "B20_R141 again with its validity defect repaired, on a fresh sealed seed and fresh indices: ARA's calibration on the sealed Limitation Zoo, experiments A-D and S, the design otherwise B20_R141's",
    "unlocks": [
     "ara-calibrated"
@@ -1697,6 +1697,24 @@
    "priority": 6,
    "time": "2026-10-28T01:13:05+00:00",
    "why": "after F5 and F6 (priority 6, earlier in the order): the Frontier line and PT-1 come first under the latest directive (27 Oct, 19:55); B20_R141 had 7"
+  },
+  {
+   "id": "B20_R157",
+   "kind": "note",
+   "time": "2026-10-28T02:15:15+00:00",
+   "why": "slice 1 killed by the memory cgroup (OOM, 6.1 GB) at about 02:10 UTC, in the joint FRONTIER arm before its first state save; the 168 single-arm runs are saved; under diagnosis"
+  },
+  {
+   "id": "B20_R167",
+   "kind": "priority",
+   "priority": 7,
+   "time": "2026-10-28T02:15:15+00:00",
+   "why": "B20_R157 is blocked by an out-of-memory kill, and B20_R158 depends on it; B20_R167 runs now on CPU 0"
+  },
+  {
+   "id": "B20_R167",
+   "kind": "start",
+   "time": "2026-10-28T02:15:15+00:00"
   }
  ],
  "lines": {

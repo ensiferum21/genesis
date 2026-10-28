@@ -37,8 +37,9 @@ def _h(*parts):
 class ConjectureDomain:
     def __init__(self, posed, representations=('edges', 'tree', 'bounded', 'gamma'),
                  methods=('hill', 'anneal', 'evolution', 'gbfs', 'cem', 'nrpa'), n_values=DEFAULT_N, abstraction=True,
-                 program_max_n=None):
+                 program_max_n=None, library=True):
         self.posed = dict(posed)
+        self.library = library                             # abstraction falls back to library learning (mechanism 1)
         # one size cap for every program representation (Γ, derived, library); None keeps attack.MAX_N
         self.program_max_n = program_max_n
         self.representations, self.methods, self.n_values = tuple(representations), tuple(methods), tuple(n_values)
@@ -163,7 +164,7 @@ class ConjectureDomain:
         from . import abstraction as AB
         examples = [A for (p, fp), A in sorted(self._issued.items(), key=lambda kv: kv[0]) if fp == fingerprint]
         if not examples:
-            return self.learn(pid, fingerprint)
+            return self.learn(pid, fingerprint) if self.library else None
         for t in AB.candidates(examples):
             key = repr(AB._shape(t['program']))                # one template per shape: its sizes are its parameters
             if any(repr(AB._shape(x['template']['program'])) == key for x in self.templates.values()):
@@ -171,7 +172,7 @@ class ConjectureDomain:
             name = f'template{len(self.templates)}'
             self.templates[name] = {'template': t, 'from': [pid, fingerprint], 'examples': len(examples)}
             return name
-        return self.learn(pid, fingerprint)                  # no new template: library learning
+        return self.learn(pid, fingerprint) if self.library else None   # no new template: library learning
 
     def state(self):
         """What the domain has invented (templates, derived operations, macros, libraries), JSON-able; a study saves

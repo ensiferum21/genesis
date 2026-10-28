@@ -65,6 +65,18 @@ p_Holm < 0.05. **Verdict:** INVALID if validity fails; else FRONTIER_BETTER if e
 
 **Cost.** Single searches about 56 x 3 x 15 s; the joint arms about 3 x 15-30 min: about 2 h, in slices of 6,600 s.
 **Status.** DEV; licenses nothing; adopts nothing.
+
+**Amendment (28 Oct 2026, 10:55 SGT, after a first attempt was killed and before any of its results was looked at;
+disclosed).** The first attempt, from `bdf0c57`, was killed by the memory limit (6.1 GB) about two minutes into its
+first joint arm, after the 168 single-search runs. The cause was a defect in `conjecture/attack.py`: the size of a Γ
+program counted a star S_k as k vertices, while `_build` makes it k leaves and a centre. Nested products of stars
+therefore passed the 64-vertex cap and built graphs of thousands of vertices (an eigensolve on one took 0.35 s). The
+size now counts the centre; nothing else in the design changes. The study runs from the amendment commit, whose
+other changes since `bdf0c57` are inert at this study's settings (abstraction off, `p_derive` 0): this script's
+`main` on invented bounds gave the same rows from `bdf0c57` with only the fix and from the amendment commit. The
+pins below are the amended modules. The first attempt's rows are kept in
+`evidence/laplacian_bounds_b20r157_attempt1/`; only their arm and problem keys were read, to find where it stopped.
+They are not used: every arm, the single searches included, runs again.
 """
 import hashlib
 import json
@@ -97,15 +109,15 @@ PINNED = {             # `pins()` at preregistration; checked at run time
     'frontier/direction.py': '3b54f061f5979b6527e75785a7694c47bb19ac61ac8dd64ff9aa47ee17416940',
     'frontier/curves.py': 'e531ef807bad4007e6bc04071fd3173d1eacfd98b53f26780622d9b328caa0a9',
     'frontier/converge.py': 'fec005b93be9b5e5320c5a587c8291ead0b2d9028514779ab424cbbda9a8a956',
-    'frontier/allocate.py': 'd28d0d8bd9a85f38d335f5680ad24a444ed5f5cad5420fa075c8079ccde28177',
-    'frontier/engine.py': '849b9bfd611c5cbc8899a55e9ec11348741ecdb7e93e47f10d606ff117e84fe3',
-    'frontier/manifest.py': '75587e359fcb37a9ab97109a79f1ec5d3417e9618d3bc52cc9f9be8a134055e1',
+    'frontier/allocate.py': 'fca1f97867264963539f533831cfbb6c8384501dc4007e2c948d7e2aaea53550',
+    'frontier/engine.py': 'bbea0852b1ecaec56ffa4ac669a6ef5e1375f47b5fcb4f71289af62c8b0ef150',
+    'frontier/manifest.py': 'c9fb74568982cb8c554311559eba29d2c7fc6c30194f99229a71b63ac54a2a46',
     'conjecture/expr.py': '75690202d6a7ab54f75a76500ada6e675b51cf23e7b78b20b4c33f90bc62adf9',
     'conjecture/graphs.py': 'f84059118cf6d74a8ca218fefc98593110e5634353655323b2b108fbca42a972',
-    'conjecture/attack.py': 'fdf74dcafb02c15fe37d8ecd58a476616ee18b089d9bd9d71a8117887ccda473',
-    'conjecture/domain.py': '0830cbcaaad9a86ed1bd413df55635df1f75c2caceab0ecc892d8590dd6f0030',
+    'conjecture/attack.py': '59c4cdb6e5517abd9e3b6ba2642f66893db6fc17b5aab3e2d6983b6cfc5d5ef8',
+    'conjecture/domain.py': '0671ad30f0deb234b202fa830f0af4f105bd26c5b6de4600f4c7ad26ea8760bf',
     'conjecture/sealed.py': 'ae7d429c76e12171f9918213eaef9c33d83a1ffbd7d905953b9a79d129f41bcf',
-    'conjecture/verify.py': '1dc5bf340545c71cfdfaea9a3c77a6214b9448ced0991ebea1af017a083b4037',
+    'conjecture/verify.py': '712c5fc1ed0c4404ac2f423c12cb7356cf9e9a90b305e19ebd293b5ec2cc0706',
 }
 
 

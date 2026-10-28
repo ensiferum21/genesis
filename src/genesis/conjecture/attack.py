@@ -270,6 +270,8 @@ class GammaRep:
 
     def size(self, g):
         k = g[0]
+        if k == 'S':                                       # the star S_k has k leaves and a centre (`_build`)
+            return g[1] + 1
         if k in self.BASES:
             return g[1]
         if k == 'Kab':

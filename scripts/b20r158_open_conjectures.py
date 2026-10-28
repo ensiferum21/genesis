@@ -67,6 +67,18 @@ by the exact one-sided McNemar test on the conjectures refuted by exactly one ar
 
 **Cost.** G = 3 generations, about 25 conjectures each, B_PER = 100,000 evaluations: about 2.5M per arm per
 generation. About 1.5 h, in slices of 6,600 s. **Status.** DEV; licenses nothing; adopts nothing.
+
+**Amendment (28 Oct 2026, 10:55 SGT, before it ran; disclosed).** B20_R157's first attempt exposed a defect in
+`conjecture/attack.py`: the size of a Γ program counted a star S_k as k vertices, while `_build` makes it k leaves
+and a centre, so nested products of stars passed the 64-vertex cap and built graphs of thousands of vertices, and
+that attempt was killed by the memory limit. This study uses the same code, so it is amended before it runs:
+  * the size now counts the centre;
+  * it runs from the amendment commit, whose other changes since `703b2ee` are inert at this study's settings with
+    one exception: the domain's abstraction now falls back to library learning (PT-1's mechanism 1), which this
+    design does not have, so FULL's domain is built with `library=False` and FULL is the arm preregistered here;
+  * `main` on another data seed gave the same summary from `703b2ee` with only the fix and from the amendment
+    commit.
+The pins below are the amended modules. No generation of this study's data seed has run.
 """
 import hashlib
 import json
@@ -95,19 +107,19 @@ PINNED = {             # `pins()` at preregistration; checked at run time
     'frontier/direction.py': '3b54f061f5979b6527e75785a7694c47bb19ac61ac8dd64ff9aa47ee17416940',
     'frontier/curves.py': 'e531ef807bad4007e6bc04071fd3173d1eacfd98b53f26780622d9b328caa0a9',
     'frontier/converge.py': 'fec005b93be9b5e5320c5a587c8291ead0b2d9028514779ab424cbbda9a8a956',
-    'frontier/allocate.py': 'd28d0d8bd9a85f38d335f5680ad24a444ed5f5cad5420fa075c8079ccde28177',
-    'frontier/engine.py': '849b9bfd611c5cbc8899a55e9ec11348741ecdb7e93e47f10d606ff117e84fe3',
-    'frontier/manifest.py': '75587e359fcb37a9ab97109a79f1ec5d3417e9618d3bc52cc9f9be8a134055e1',
-    'frontier/procedure.py': 'eddf430405175a7989fdc08f5017d9b3adf6b0ccadfef94bfad2e8cf9b68ea49',
+    'frontier/allocate.py': 'fca1f97867264963539f533831cfbb6c8384501dc4007e2c948d7e2aaea53550',
+    'frontier/engine.py': 'bbea0852b1ecaec56ffa4ac669a6ef5e1375f47b5fcb4f71289af62c8b0ef150',
+    'frontier/manifest.py': 'c9fb74568982cb8c554311559eba29d2c7fc6c30194f99229a71b63ac54a2a46',
+    'frontier/procedure.py': '866324a74ee4f0a0e21c28ff72ef1667508408551c9b1f11f5198a2d32347638',
     'conjecture/expr.py': '75690202d6a7ab54f75a76500ada6e675b51cf23e7b78b20b4c33f90bc62adf9',
     'conjecture/graphs.py': 'f84059118cf6d74a8ca218fefc98593110e5634353655323b2b108fbca42a972',
-    'conjecture/attack.py': '088d22a0ab76c2f42d2d57657024c600bc9bff196e43cf4031e061849a4ed239',
-    'conjecture/domain.py': 'e619811ac5a6b16d705575727d54c5364d708dd5f952c47e109bc43b82f229df',
+    'conjecture/attack.py': '59c4cdb6e5517abd9e3b6ba2642f66893db6fc17b5aab3e2d6983b6cfc5d5ef8',
+    'conjecture/domain.py': '0671ad30f0deb234b202fa830f0af4f105bd26c5b6de4600f4c7ad26ea8760bf',
     'conjecture/abstraction.py': '5134dd21cc2e478d419621f2a0dc5b220339817bc4df427e48139af7501e5725',
     'conjecture/generate.py': '386d17bc934b6959e5ee7dc6e96cf9d7f0e742b8854dd6ecf2e6596cb3b6644e',
     'conjecture/sealed.py': 'ae7d429c76e12171f9918213eaef9c33d83a1ffbd7d905953b9a79d129f41bcf',
     'conjecture/verify.py': '712c5fc1ed0c4404ac2f423c12cb7356cf9e9a90b305e19ebd293b5ec2cc0706',
-    'conjecture/audit.py': '8b573dfd6c4dd890a65db32f8e300afde6296ce12625377918897715276961e7',
+    'conjecture/audit.py': 'a0830b20639525f6063da4869baf2892fa551f415bcb104276a88c8118ebcd4c',
 }
 
 
@@ -207,7 +219,7 @@ def run_arm(arm, posed, b_per, library, templates, state_path, deadline):
     from genesis.frontier.engine import Frontier
     from genesis.frontier.manifest import Manifest
     full = arm == 'FULL'
-    dom = ConjectureDomain(posed, abstraction=full)
+    dom = ConjectureDomain(posed, abstraction=full, library=False)       # the amendment: the arm preregistered
     if full:
         dom.templates = {k: v for k, v in templates.items()}
     m = Manifest(dom, V.verifier(posed), b_per * len(posed), quantum=QUANTUM,

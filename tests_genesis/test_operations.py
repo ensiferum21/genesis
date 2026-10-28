@@ -285,5 +285,55 @@ class Cap(unittest.TestCase):
         return LB.GammaLib(n, {}, {}, cap)
 
 
+
+class Sizes(unittest.TestCase):
+    """A program's computed size is the size of the graph it builds, for Γ, derived and library programs. The size
+    gates the cap, so a size below the built one lets graphs past it: until 28 Oct 2026 the star S_k (k leaves and a
+    centre) counted k, and nested products of stars built graphs of thousands of vertices under a cap of 64 (the
+    out-of-memory kill of B20_R157's first attempt)."""
+
+    def check(self, rep, rng, k=4000):
+        seen = 0
+        for _ in range(k):
+            g = rep.random(rng, depth=4)
+            for _ in range(int(rng.integers(0, 4))):
+                g = rep.mutate(g, rng)
+            s = rep.size(g)
+            if s > 200:
+                continue
+            self.assertEqual(rep._build(g).shape[0], s, g)
+            A = rep.graph(g)
+            self.assertTrue(A is None or A.shape[0] <= rep.max_n)
+            seen += 1
+        self.assertGreater(seen, k // 4)
+
+    def test_gamma(self):
+        self.assertEqual(AT.GammaRep(8).size(('S', 3)), 4)
+        self.assertEqual(AT.GammaRep(8)._build(('S', 3)).shape, (4, 4))
+        self.check(AT.GammaRep(12), np.random.default_rng(1))
+
+    def test_derived_and_library(self):
+        from genesis.conjecture import library as LB
+        ops = {'r1': OP.table_of([('adj', 'adj')]), 'r2': OP.table_of([('same', 'adj'), ('adj', 'non')])}
+        self.check(OP.GammaPlus(12, ops), np.random.default_rng(2))
+        macro = LB.skeleton(('join', ('S', 3), ('prod', ('K', 2), ('P', 3))), OP.GammaPlus(12, ops).BINARY) \
+            if hasattr(LB, 'skeleton') else None
+        lib = LB.GammaLib(12, ops, {'m0': macro} if macro is not None else {})
+        self.check(lib, np.random.default_rng(3))
+
+    def test_library_learning_can_be_switched_off(self):
+        from unittest import mock
+        for flag, want in ((True, 'library0'), (False, None)):
+            dom = ConjectureDomain(POSED, n_values=(6, 8), library=flag)
+            with mock.patch.object(ConjectureDomain, 'learn', return_value='library0'):
+                self.assertEqual(dom.abstract('q1', 'unseen'), want)        # no example: library learning, if on
+
+    def test_the_cap_holds_for_stars(self):
+        rep = AT.GammaRep(12)
+        g = ('prod', ('S', 7), ('prod', ('S', 7), ('S', 7)))            # 8^3 = 512 vertices, not 343
+        self.assertEqual(rep.size(g), 512)
+        self.assertIsNone(rep.graph(g))
+
+
 if __name__ == '__main__':
     unittest.main()
