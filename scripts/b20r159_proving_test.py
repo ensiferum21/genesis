@@ -57,6 +57,15 @@ are the engine's standing abstraction. Whether they count for part 1 is the sett
   5. Part 5, on C: the same two arms at matched TOTAL compute. The improved arm is charged the compute G spent on A
      up to the discovery, so it gets |C| x B_C minus that, and the predecessor |C| x B_C. The same two statistics and
      rule as part 4. There is no causal-use condition: the charge is the price of the procedure.
+  Secondary in parts 4 and 5 (`docs/OMEGA_FOUNDRY.md` G1), two controls of what the procedure knows against what it
+  does:
+     - the notebook: the predecessor after every certified counterexample from A has been checked on every task, one
+       unit per check, charged;
+     - the given representation: the predecessor whose domain starts with the representation credited in part 1
+       (`give`), without the procedure.
+     On C both are charged the discovery like the improved arm. Each is compared with the improved arm by the same
+     two statistics. OPERATIONAL_OVER_FACTS and PROCEDURE_OVER_REPRESENTATION are reported labels, not part of the
+     verdict.
 **Verdict:** INVALID if validity fails; else INADEQUACY_GATE_FAILED if the gate fails; else PROVED_OUT if parts 1-5
 all pass; else NOT_PROVED_OUT, naming the parts that failed. Parts 1 and 3-5 need part 2's discovery; without it
 they fail.
@@ -244,7 +253,7 @@ def settings(arm, proc=None):
     """(policy, policy params, abstraction) for an arm."""
     if arm == 'P0':
         return 'frontier', {'p_derive': 0.0}, False
-    if arm in ('G', 'predecessor'):
+    if arm in ('G', 'predecessor', 'notebook', 'given_rep'):
         return 'frontier', {'p_derive': P_DERIVE}, True
     if arm == 'improved':
         return 'procedure', {'p_derive': P_DERIVE, 'procedures': [proc], 'rho': RHO}, True
@@ -287,6 +296,35 @@ def record(e, problems):
     return {'spent': e.spent, 'budget': e.budget, 'claimed': sorted(p for p, v in e.best_verified.items() if v > 0),
             'artifacts': {p: {k: a[k] for k in ('n', 'edges', 'x') if k in a} for p, a in e.best_artifact.items()},
             'first': first, 'via': via, 'branches': len(e.branches)}
+
+
+def check_facts(problems, verify, facts):
+    """The notebook control's first step: every fact (a certified artifact from A) checked on every task, one unit
+    per check. Returns ({task: units spent when it was certified}, units spent)."""
+    found, units = {}, 0
+    for p in sorted(problems):
+        for art in facts:
+            units += 1
+            if p not in found and float(verify(p, art)) > 0:
+                found[p] = units
+    return found, units
+
+
+def give(dom, source, name):
+    """The given-representation control: `dom` starts with the representation `name` of the domain `source` (a
+    derived operation set, a template or a library), under a fresh name, without any procedure."""
+    import copy
+    if name in source.derived:
+        dom.derived['derived0'] = {'ops': dict(source.derived[name]['ops']), 'from': 'given'}
+    elif name in source.templates:
+        dom.templates['template0'] = copy.deepcopy(source.templates[name])
+    elif name in source.libraries:
+        dom.macros.update(copy.deepcopy(source.libraries[name]['macros']))
+        dom.libraries['library0'] = {'macros': copy.deepcopy(source.libraries[name]['macros']), 'from': 'given'}
+    return dom
+
+
+ARMS_LATER = ('improved', 'predecessor', 'notebook', 'given_rep')
 
 
 # ------------------------------------------------------------------------------------------------------- main
@@ -379,38 +417,41 @@ def main(argv=None, registered=True, families=None, budgets=None, seed=None):
                                     if double_check(*pa[p], rec['artifacts'][p]) == 'CONFIRMED']
                 save('part3_replay', rec)
                 made += 1
-            # stage 4: part 4 on B
+            # stages 4 and 5: B, then C at matched total compute; the two controls are secondary arms
             if proc is not None:
-                for arm in ('improved', 'predecessor'):
-                    key = f'B_{arm}'
-                    if key in done:
-                        continue
-                    eb, _ = run_engine(key, invariant_domain(pb, True), verify_b, arm, len(pb) * b_b, out, due(),
-                                       proc=proc)
-                    rec = record(eb, pb)
-                    rec['certified'] = [p for p in rec['claimed'] if verify_b(p, rec['artifacts'][p]) > 0]
-                    save(key, rec)
-                    made += 1
-                # stage 5: part 5 on C, at matched total compute
+                facts = [done['A_G']['artifacts'][p] for p in done['A_G']['certified']]
+                given = (done.get('part1') or {}).get('representation')
                 charge = next(ev['spent'] for ev in e.events if ev['kind'] == 'verified' and ev['problem'] == disc)
-                total = len(pc) * b_c
-                for arm in ('improved', 'predecessor'):
-                    key = f'C_{arm}'
-                    if key in done:
-                        continue
-                    budget = total - charge if arm == 'improved' else total
-                    if budget < QUANTUM:
-                        save(key, {'spent': 0, 'budget': budget, 'claimed': [], 'certified': [], 'artifacts': {},
-                                   'first': {}, 'via': {}, 'branches': 0, 'charge': charge})
-                        continue
-                    ec, _ = run_engine(key, conjecture_domain(pc, True), verify_c, arm, budget, out, due(),
-                                       proc=proc)
-                    rec = record(ec, pc)
-                    rec['certified'] = [p for p in rec['claimed']
-                                        if double_check(*pc[p], rec['artifacts'][p]) == 'CONFIRMED']
-                    rec['charge'] = charge
-                    save(key, rec)
-                    made += 1
+                certify_b = lambda p, a: verify_b(p, a) > 0                              # noqa: E731
+                certify_c = lambda p, a: double_check(*pc[p], a) == 'CONFIRMED'           # noqa: E731
+                plan = (('B', pb, verify_b, certify_b, invariant_domain, len(pb) * b_b, 0),
+                        ('C', pc, verify_c, certify_c, conjecture_domain, len(pc) * b_c, charge))
+                for fam, problems, verify, certify, factory, total, cost in plan:
+                    for arm in ARMS_LATER:
+                        key = f'{fam}_{arm}'
+                        if key in done:
+                            continue
+                        budget = total - (cost if arm != 'predecessor' else 0)
+                        found, units = check_facts(problems, certify, facts) if arm == 'notebook' else ({}, 0)
+                        if arm == 'given_rep' and given is None:
+                            save(key, {'skipped': 'the discovery used a starting representation'})
+                            continue
+                        if budget - units < QUANTUM:
+                            save(key, {'spent': units, 'budget': budget, 'claimed': [], 'certified': sorted(found),
+                                       'artifacts': {}, 'first': dict(found), 'via': {}, 'branches': 0,
+                                       'charge': cost, 'fact_units': units})
+                            continue
+                        dom = factory(problems, True)
+                        if arm == 'given_rep':
+                            give(dom, engines['G'][1], given)
+                        eng, _ = run_engine(key, dom, verify, arm, budget - units, out, due(), proc=proc)
+                        rec = record(eng, problems)
+                        mine = [p for p in rec['claimed'] if certify(p, rec['artifacts'][p])]
+                        rec['certified'] = sorted(set(mine) | set(found))
+                        rec['first'] = {p: found[p] if p in found else units + rec['first'][p] for p in rec['certified']}
+                        rec.update(spent=rec['spent'] + units, budget=budget, charge=cost, fact_units=units)
+                        save(key, rec)
+                        made += 1
     except Paused:
         return PAUSED
     summary = analyse(done, pa, pb, pc, number_a, number_b, labels_c, withheld_c, registered)
@@ -442,7 +483,7 @@ def analyse(done, pa, pb, pc, number_a, number_b, labels_c, withheld_c, register
     pr = done.get('part3_procedure')
     rp = done.get('part3_replay')
     parts['part3'] = bool(pr and pr['procedure'] and not pr['names'] and rp and disc in rp['certified'])
-    stats = {}
+    stats, labels = {}, {}
     for fam, problems in (('B', pb), ('C', pc)):
         imp, pre = done.get(f'{fam}_improved'), done.get(f'{fam}_predecessor')
         if imp is None or pre is None:
@@ -454,18 +495,26 @@ def analyse(done, pa, pb, pc, number_a, number_b, labels_c, withheld_c, register
             parts['part4'] = s['pass'] and s['causal_use']
         else:
             parts['part5'] = s['pass']
+        for control, label in (('notebook', 'OPERATIONAL_OVER_FACTS'), ('given_rep', 'PROCEDURE_OVER_REPRESENTATION')):
+            c = done.get(f'{fam}_{control}')
+            if c is None or 'skipped' in c:
+                s[f'vs_{control}'] = {'skipped': (c or {}).get('skipped', 'not run')}
+                continue
+            s[f'vs_{control}'] = compare(imp, c, list(problems))
+            if s[f'vs_{control}']['pass']:
+                labels.setdefault(fam, []).append(label)
         stats[fam] = s
-    proved_c = sorted({pc[p][0] for k in ('C_improved', 'C_predecessor') for p in done.get(k, {}).get('certified', [])
+    proved_c = sorted({pc[p][0] for a in ARMS_LATER for p in done.get(f'C_{a}', {}).get('certified', [])
                        if _proved_equivalent(*pc[p], GN, SD)})
     spent = all(spent_ok(done[k]) for k in done if (k[:2] in ('A_', 'B_', 'C_') or k == 'part3_replay')
-                and 'spent' in done[k])
+                and 'spent' in done[k] and 'skipped' not in done[k])
     pins_ok = (not registered) or pins() == PINNED
     valid = not proved_c and spent and pins_ok
-    return {'parts': parts, 'stats': stats, 'discovery': disc, 'discovery_bound': number_a.get(disc),
+    return {'parts': parts, 'stats': stats, 'labels': labels, 'discovery': disc, 'discovery_bound': number_a.get(disc),
             'certified_A': {a: sorted(number_a[p] for p in done[f'A_{a}']['certified']) for a in ('P0', 'G')},
             'part1': ab, 'part3': {'names': pr['names'] if pr else None, 'replayed': bool(rp and disc in rp['certified'])},
             'certified_B': {a: sorted(str(number_b[p]) for p in done.get(f'B_{a}', {}).get('certified', []))
-                            for a in ('improved', 'predecessor')},
+                            for a in ARMS_LATER},
             'C': {'posed': len(pc), 'withheld': len(withheld_c), 'labels': labels_c},
             'proved_equivalents_refuted': proved_c, 'spent_ok': spent, 'pins_ok': pins_ok, 'valid': valid}
 

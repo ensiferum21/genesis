@@ -85,6 +85,20 @@ class Design(unittest.TestCase):
         self.assertAlmostEqual(s['p_mcnemar'], 1 / 32)
         self.assertFalse(s['pass'])                                   # 1/32 x 2 (Holm) is not below 0.05
 
+    def test_the_notebook_checks_every_fact_on_every_task(self):
+        facts = [{'id': 1}, {'id': 2}]
+        found, units = S.check_facts({'p': 0, 'q': 0, 'r': 0}, lambda p, a: (p, a['id']) in {('q', 2), ('r', 1)}, facts)
+        self.assertEqual(units, 6)
+        self.assertEqual(found, {'q': 4, 'r': 5})
+
+    def test_the_given_representation_is_copied_without_a_procedure(self):
+        from genesis.conjecture.domain import ConjectureDomain
+        src = ConjectureDomain(A_TEST, n_values=(6, 8))
+        src.derived['derived3'] = {'ops': {'r9': 9}, 'from': 'gamma'}
+        dom = S.give(ConjectureDomain(C_TEST, n_values=(6, 8)), src, 'derived3')
+        self.assertEqual(dom.derived, {'derived0': {'ops': {'r9': 9}, 'from': 'given'}})
+        self.assertIn('derived0', dom.approaches('c1')['representation'])
+
     def test_the_verdict_rules(self):
         parts = {'gate': True, 'part1': True, 'part2': True, 'part3': True, 'part4': True, 'part5': True}
         self.assertEqual(S.verdict({'valid': True, 'parts': parts}), ('PROVED_OUT', []))
@@ -138,9 +152,13 @@ class EndToEnd(unittest.TestCase):
             self.assertIn(S.PAUSED, codes)
             sa, sb = (json.loads((Path(x) / 'summary.json').read_text()) for x in (a, b))
             stages = json.loads((Path(a) / 'stages.json').read_text())
-        for key in ('A_P0', 'A_G', 'part1', 'part3_procedure', 'part3_replay', 'B_improved', 'B_predecessor',
-                    'C_improved', 'C_predecessor'):
+        for key in ('A_P0', 'A_G', 'part1', 'part3_procedure', 'part3_replay') + tuple(
+                f'{f}_{a}' for f in 'BC' for a in S.ARMS_LATER):
             self.assertIn(key, stages)
+        nb = stages['C_notebook']                                      # the facts were checked first, and charged
+        self.assertEqual(nb['fact_units'], len(stages['A_G']['certified']) * len(C_TEST))
+        self.assertEqual(nb['budget'], 3 * 1500 - nb['charge'])
+        self.assertIn('vs_notebook', sa['stats']['C'])
         self.assertTrue(sa['parts']['gate'] and sa['parts']['part2'])
         self.assertEqual(sa['discovery'], 'a1')
         self.assertTrue(sa['valid'])
