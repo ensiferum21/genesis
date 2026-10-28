@@ -26,7 +26,7 @@ from genesis.frontier.world import PlantedWorld  # noqa: E402
 
 PKG = ROOT / 'src' / 'genesis' / 'frontier'
 RESEARCH_PLANE = ('__init__.py', 'direction.py', 'curves.py', 'converge.py', 'allocate.py', 'engine.py',
-                  'manifest.py', 'procedure.py', 'meta.py', 'multi.py')
+                  'manifest.py', 'procedure.py', 'meta.py', 'multi.py', 'ablation.py')
 KERNEL_SIDE = ('world.py',)
 KERNEL_NAMES = ('oracle', 'keys', 'truth', 'verify_value', '_problems', '_f', '_token', '_curve', '_add_problem',
                 'world')

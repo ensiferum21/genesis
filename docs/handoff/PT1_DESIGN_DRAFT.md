@@ -26,6 +26,7 @@ be decided, so that the preregistration can be written from it.
 | Part 5's improved inventor | `frontier/procedure.py` (`ProcedurePolicy`) |
 | The forbidden-concept audit | `conjecture/audit.py` |
 | The engine's meta level (not part of PT-1, but available) | `frontier/meta.py` |
+| Part 1's usefulness ablation (a candidate protocol, B20_R168) | `frontier/ablation.py` |
 
 ## A proposed design (to be argued over and fixed at preregistration)
 
@@ -83,6 +84,15 @@ or a library) that is absent from the starting set.
 2. `p_derive`, and the abstraction settings: fixed in advance from F3–F5's results, never tuned on A, B or C.
 3. Family C: which source, how many tasks, and how they are sealed.
 4. Part 1's usefulness ablation: its exact protocol, and how a representation is credited when several are created.
+   **A candidate is built (B20_R168, 28 Oct 2026; `frontier/ablation.py`, `tests_genesis/test_frontier_ablation.py`):**
+   - the credited representation is the one the discovering branch searched, with how it was made (derivation or
+     abstraction) and its lineage back to a starting representation;
+   - the engine's `verified` event now records the branch's compute at that moment. Every replay gets exactly that
+     compute, through the domain's public `step`, for k fresh seeds, the same seeds in every arm;
+   - *useful* iff the credited representation verifies in at least one seed and no starting representation does in
+     any. The lineage's intermediate representations are re-run and reported, not tested;
+   - the ablation's compute, verification included, is returned so that the study can charge it to G.
+   Still to fix at preregistration: k (5 is the default), and whether the charge counts against G's matched budget.
 5. Part 4's statistic, if B's small counterexamples are found by both arms: the count of certificates, or time to
    the first one.
 6. Whether derived operations should also act on Γ's sum-type operations (union, join) and on corona. Today only

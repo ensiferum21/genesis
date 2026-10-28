@@ -131,7 +131,7 @@ class Frontier:
                     self.best_verified[p] = v
                     self.best_artifact[p] = a
                     improved = True
-                    self.log('verified', branch=bid, problem=p, value=round(v, 9))
+                    self.log('verified', branch=bid, problem=p, value=round(v, 9), t=b['t'])
                     if self.branch_out:
                         for q in self.domain.successors(p, a):
                             if q not in self.known:

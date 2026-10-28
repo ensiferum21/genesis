@@ -5647,6 +5647,7 @@
     "src/genesis/frontier/procedure.py",
     "src/genesis/frontier/meta.py",
     "src/genesis/frontier/multi.py",
+    "src/genesis/frontier/ablation.py",
     "docs/OMEGA_FRONTIER.md",
     "docs/checkpoints/B20_R160_RECORD.md",
     "scripts/b20r160_frontier_devlook.py",
@@ -5684,7 +5685,8 @@
     "tests_genesis/test_frontier_meta.py",
     "tests_genesis/test_frontier_multi.py",
     "tests_genesis/test_frontier_worlds_study.py",
-    "tests_genesis/test_frontier_meta_study.py"
+    "tests_genesis/test_frontier_meta_study.py",
+    "tests_genesis/test_frontier_ablation.py"
    ],
    "title": "Curriculum, experience synthesis and capability memory (screened memory, failure-driven curriculum, demotion; B20_R93: the adaptation cell, which senses weaknesses in studies, remembers what answered them and gates the next design; B20_R160: the Frontier, the divergent-convergent engine; B20_R156: its allocation beats halving, UCB1 and uniform on sealed planted worlds (DEV, calibration); B20_R162 and B20_R166: the engine searching its own configurations, and several domains as one; extracted procedures)",
    "workstream": "W20"

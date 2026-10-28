@@ -775,7 +775,8 @@ WORKSTREAMS = {
              'src/genesis/frontier/direction.py', 'src/genesis/frontier/curves.py', 'src/genesis/frontier/converge.py',
              'src/genesis/frontier/allocate.py', 'src/genesis/frontier/engine.py', 'src/genesis/frontier/manifest.py',
              'src/genesis/frontier/world.py', 'src/genesis/frontier/procedure.py', 'src/genesis/frontier/meta.py',
-             'src/genesis/frontier/multi.py', 'docs/OMEGA_FRONTIER.md', 'docs/checkpoints/B20_R160_RECORD.md',
+             'src/genesis/frontier/multi.py', 'src/genesis/frontier/ablation.py', 'docs/OMEGA_FRONTIER.md',
+             'docs/checkpoints/B20_R160_RECORD.md',
              'scripts/b20r160_frontier_devlook.py', 'scripts/b20r156_frontier_worlds.py',
              'evidence/frontier_worlds_b20r156/summary.json', 'docs/checkpoints/B20_R156_RECORD.md',
              'scripts/b20r163_frontier_meta.py'],
@@ -784,7 +785,8 @@ WORKSTREAMS = {
              G + 'test_portfolio.py', G + 'test_harness_portfolio.py',
              G + 'test_feedback_contract.py', G + 'test_contract_v2.py', G + 'test_vault.py', G + 'test_interpret.py',
              G + 'test_frontier.py', G + 'test_frontier_procedure.py', G + 'test_frontier_meta.py',
-             G + 'test_frontier_multi.py', G + 'test_frontier_worlds_study.py', G + 'test_frontier_meta_study.py']),
+             G + 'test_frontier_multi.py', G + 'test_frontier_worlds_study.py', G + 'test_frontier_meta_study.py',
+             G + 'test_frontier_ablation.py']),
     'W21': ('Better-improver and multigeneration controller (B20_R2: pure lineage validator; B20_R4: the campaign '
             'loop writes native lineage records, crash/resume charges interrupted attempts, the custodian checks '
             'generation requests against the qualifying chain; B20_R16: active-version pointer, rollback, inherited '

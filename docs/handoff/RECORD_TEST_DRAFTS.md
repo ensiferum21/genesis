@@ -546,3 +546,175 @@ class RecordB20R141(unittest.TestCase):
         self.assertEqual(c, self.s['C_failures'])
         self.assertEqual(list(S.verdict(self.s['valid'], res, c)), [self.s['verdict'], self.s['failed']])
 ```
+
+## RecordB20R158 (F5; append to `tests_genesis/test_open_conjectures_study.py`)
+
+Written on 28 Oct 2026, 09:40 SGT, from the script only (`703b2ee`, sha256 `50d2de64…f9b5`), before the study ran.
+The file already has `json`, `unittest`, `ROOT` and `S`; the audit re-derivation reads the research plane as it
+was at the preregistration commit through `git show`, because the branch head has moved on.
+
+```python
+
+
+R158 = ROOT / 'evidence' / 'open_conjectures_b20r158'
+
+
+@unittest.skipUnless((R158 / 'summary.json').exists(), 'B20_R158 has not been recorded')
+class RecordB20R158(unittest.TestCase):
+    """The record of B20_R158 (F5) on its evidence: the script; validity recomputed (the budgets, no proved bound
+    refuted, the audit of the research plane at the preregistration commit); every certified refutation
+    double-checked again; the analysis and the verdict recomputed; generation 1's posed set regenerated from the
+    data seed; the survivors' small exhaustive check repeated."""
+
+    @classmethod
+    def setUpClass(cls):
+        cls.s = json.loads((R158 / 'summary.json').read_text())
+        cls.gens = [json.loads(x) for x in (R158 / 'generations.jsonl').read_text().splitlines() if x.strip()]
+
+    def test_the_script(self):
+        import hashlib
+        self.assertEqual(hashlib.sha256((ROOT / 'scripts' / 'b20r158_open_conjectures.py').read_bytes()).hexdigest(),
+                         '50d2de64a7adb90ea6e2b3eb47647e7f852d717e5e9cf0a47db49464cc4af9b5')
+
+    def test_validity(self):
+        self.assertEqual(len(self.gens), S.G)
+        spent = all(g[a]['spent'] >= g[a]['budget'] - S.QUANTUM - 1 for g in self.gens for a in ('FULL', 'PLAIN'))
+        self.assertEqual(spent, self.s['spent_ok'])
+        hits = sorted({g['posed'][p][0] for g in self.gens for a in ('FULL', 'PLAIN') for p in g['confirmed'][a]
+                       if S.proved_equivalent(g['posed'][p][0])})
+        self.assertEqual(hits, self.s['proved_equivalents_refuted'])
+        self.assertEqual(self.s['audit_hits'], [])
+        self.assertTrue(self.s['pins_ok'])
+        self.assertEqual(self.s['valid'], spent and not hits and self.s['pins_ok'] and not self.s['audit_hits'])
+
+    def test_the_audit_at_the_preregistration_commit(self):
+        import subprocess
+        import tempfile
+        from genesis.conjecture import audit as AU
+        with tempfile.TemporaryDirectory() as tmp:
+            files = []
+            for path in AU.research_plane(Path(tmp)):
+                rel = path.relative_to(tmp).as_posix()
+                out = subprocess.run(['git', '-C', str(ROOT), 'show', f'703b2ee:{rel}'], capture_output=True)
+                if out.returncode != 0:                          # a module that did not exist then
+                    continue
+                path.parent.mkdir(parents=True, exist_ok=True)
+                path.write_bytes(out.stdout)
+                files.append(path)
+            self.assertTrue(files)
+            self.assertEqual(AU.scan(files), [])
+
+    def test_every_refutation_double_checks_again(self):
+        for g in self.gens:
+            for arm in ('FULL', 'PLAIN'):
+                got = [p for p, art in sorted(g[arm]['artifacts'].items())
+                       if p in g[arm]['refuted'] and S.double_check(g['posed'][p][0], 'vertex', art) == 'CONFIRMED']
+                self.assertEqual(got, g['confirmed'][arm], (g['k'], arm))
+
+    def test_the_analysis_recomputes(self):
+        both = {a: set().union(*[set(g['confirmed'][a]) for g in self.gens]) for a in ('FULL', 'PLAIN')}
+        b, c = len(both['FULL'] - both['PLAIN']), len(both['PLAIN'] - both['FULL'])
+        self.assertEqual((self.s['P1']['full_only'], self.s['P1']['plain_only']), (b, c))
+        self.assertAlmostEqual(self.s['P1']['p'], S.mcnemar_one_sided(b, c))
+        want = 'INVALID' if not self.s['valid'] else ('FULL_BETTER' if S.mcnemar_one_sided(b, c) < S.ALPHA
+                                                      else 'NOT_SHOWN')
+        self.assertEqual(self.s['verdict'], want)
+        for g in self.gens:
+            surv = sorted(p for p in g['posed'] if p not in g['confirmed']['FULL'] and p not in g['confirmed']['PLAIN'])
+            self.assertEqual(surv, g['survivors'])
+
+    def test_generation_one_is_posed_again_from_the_data_seed(self):
+        import numpy as np
+        from genesis.conjecture import generate as GN
+        data = GN.data(np.random.default_rng(S.DATA_SEED), count=S.DATA_COUNT)
+        kept = [f for f, _ in GN.conjectures(data)]
+        g1 = self.gens[0]
+        self.assertEqual(len(kept), g1['kept'])
+        posed = sorted(f for f, _ in g1['posed'].values())
+        self.assertEqual(sorted(f for f in kept if not S.labels(f)[0]), posed)
+        self.assertEqual(sorted(f for f in kept if S.labels(f)[0]), sorted(g1['withheld']))
+
+    def test_the_survivors_small_check_repeats(self):
+        for g in self.gens:
+            for p in g['survivors']:
+                self.assertEqual(S.survives_small(g['posed'][p][0], 'vertex'), g['survivors_small_exhaustive'][p])
+```
+
+## RecordB20R167 (append to `tests_genesis/test_ara_zoo_rerun_study.py`)
+
+Written on 28 Oct 2026, 09:40 SGT, from the script only (`33e8905`, sha256 `233610d0…af81`), before the study ran.
+The file already has `json`, `hashlib`, `unittest`, `ROOT`, `S` and `Z`.
+
+```python
+
+
+R167 = ROOT / 'evidence' / 'ara_zoo_b20r167'
+
+
+@unittest.skipUnless((R167 / 'summary.json').exists(), 'B20_R167 has not been recorded')
+class RecordB20R167(unittest.TestCase):
+    """The record of B20_R167 on its evidence: the script; the environments; validity recomputed, the freshness
+    clause included; the analysis, experiment C and the verdict recomputed from the saved rows, ledger and keys; the
+    environments regenerated from the sealed seed and every judged submission re-judged."""
+
+    @classmethod
+    def setUpClass(cls):
+        cls.s = json.loads((R167 / 'summary.json').read_text())
+        cls.done = {}
+        for line in (R167 / 'rows.jsonl').read_text().splitlines():
+            if line.strip():
+                r = json.loads(line)
+                cls.done[(r['index'], r['arm'])] = r
+        entries = {}
+        for line in (R167 / 'ledger.jsonl').read_text().splitlines():
+            if line.strip():
+                e = json.loads(line)
+                entries[(e['index'], e['arm'])] = e
+        cls.ledger = [entries[k] for k in sorted(entries)]
+
+    def test_the_script(self):
+        self.assertEqual(hashlib.sha256((ROOT / 'scripts' / 'b20r167_ara_zoo_rerun.py').read_bytes()).hexdigest(),
+                         '233610d030b8a0af747834e2d0006e209348f3a52a590283f779d3a03eb1af81')
+
+    def test_the_environments_and_validity(self):
+        envs = S.environments()
+        rows = sorted(int(i) for i in self.s['rows'])
+        self.assertEqual(rows, sorted(i for i, _ in envs))
+        self.assertEqual(len(self.done), len(envs) * len(S.ARMS))
+        self.assertTrue(all(r['spent'] <= r['budget'] + 1e-9 for r in self.done.values()))
+        self.assertEqual(self.s['validity']['fresh'], S.freshness(rows, True, False, S.SEALED_SEED))
+        self.assertEqual(self.s['validity']['budget'], True)
+        self.assertEqual(self.s['valid'], all(self.s['validity'].values()))
+
+    def test_the_analysis_recomputes(self):
+        rows = {int(i): r for i, r in self.s['rows'].items()}
+        keys = {int(i): k for i, k in self.s['keys'].items()}
+        res = S.analyse(rows, self.ledger, keys)
+        for x in ('A', 'B', 'D', 'S'):
+            self.assertEqual(res[x]['pass'], self.s[x]['pass'], x)
+        self.assertEqual((res['A']['localised'], res['A']['of']), (self.s['A']['localised'], self.s['A']['of']))
+        c = S.check_promoted(self.ledger)
+        self.assertEqual(c, self.s['C_failures'])
+        self.assertEqual(list(S.verdict(self.s['valid'], res, c)), [self.s['verdict'], self.s['failed']])
+
+    def test_the_environments_regenerate_and_every_submission_rejudges(self):
+        from genesis.architecture import graph as G
+        from genesis.architecture import judge as J
+        H = J.Harness(sealed_seed=S.SEALED_SEED)
+        for index, cls in S.environments():
+            H.open(index, cls)
+            self.assertEqual(H.key(index), self.s['keys'][str(index)])
+        for e in self.ledger:
+            env = H._env(e['index'])
+            rng = H._range(env)
+            self.assertAlmostEqual(env.oracle('sealed'), e['oracle'], places=9)
+            self.assertAlmostEqual(rng, e['range'], places=9)
+            inc = G.execute(env.incumbent, env.view(), 'dev_a', seed=e['index'])
+            var = G.execute(e['variant'], env.view(), 'dev_a', seed=e['index'])
+            diff = H.sealed_value(e['index'], var['policy']) - H.sealed_value(e['index'], inc['policy'])
+            gain = diff / rng if rng > 1e-12 else 0.0
+            self.assertAlmostEqual(gain, e['gain'], places=9, msg=(e['index'], e['arm']))
+            if e['promoted']:
+                self.assertIsNone(e['failed'])
+                self.assertGreaterEqual(gain, J.MATERIAL)
+```
