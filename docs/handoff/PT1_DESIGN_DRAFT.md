@@ -140,3 +140,27 @@ or a library) that is absent from the starting set.
      and library programs (`GammaRep`, `GammaPlus` and `GammaLib` take `max_n`). The default is unchanged, so
      attack.MAX_N = 64 holds for F4–F6 (tests: `test_operations.Cap`).
    - Disclosure: this item was written knowing A's sizes, and the preregistration says so.
+8. **Whether a template counts for part 1.** Templates (`conjecture/abstraction.py`) are the engine's standing
+   abstraction. They fit a Γ program, with sizes as parameters, to a counterexample that two independent approaches
+   converged on. They hand over nothing, but they stay inside Γ's closure. Daniel's decision named only library
+   learning and operators on Γ's operations.
+   - Proposal: count a template for part 1, and report the mechanism. The draft's `PART1_MECHANISMS` includes
+     'template'.
+   - The stricter reading, which counts only the two named mechanisms, is one setting away.
+
+## The study, drafted (28 Oct 2026; NOT preregistered)
+
+`scripts/b20r159_proving_test.py`, with design tests in `tests_genesis/test_proving_test_study.py` (invented
+families only).
+- `PREREGISTERED` is False, and a registered run is refused.
+- The constants marked PROVISIONAL are items 1–3, 5 and 8 above.
+- Stages:
+  1. A: P0 and G, the gate, part 2;
+  2. part 1, by the ablation;
+  3. part 3: the procedure, with a check that it names nothing the run made, and its replay on a fresh domain;
+  4. part 4 on B (improved against predecessor, both statistics, causal use);
+  5. part 5 on C, at matched total compute, the improved arm charged G's compute up to the discovery.
+- Kernel checks:
+  - A and C: the rational Rayleigh certificate, then Sturm for n ≤ 40 or the matrix form above that;
+  - B: `wowii.verifier`, with both implementations.
+- Validity: the audit, no certificate against a proved-equivalent conjecture in C, the budgets, the pins.

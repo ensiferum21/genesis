@@ -5339,7 +5339,8 @@
     "src/genesis/conjecture/library.py",
     "scripts/b20r157_laplacian_bounds.py",
     "scripts/b20r158_open_conjectures.py",
-    "docs/handoff/PT1_DESIGN_DRAFT.md"
+    "docs/handoff/PT1_DESIGN_DRAFT.md",
+    "scripts/b20r159_proving_test.py"
    ],
    "disposition": "IMPLEMENTED_BOUNDED_PENDING_AUDIT",
    "evidence": [],
@@ -5365,7 +5366,8 @@
     "tests_genesis/test_wowii.py",
     "tests_genesis/test_operations.py",
     "tests_genesis/test_laplacian_bounds_study.py",
-    "tests_genesis/test_open_conjectures_study.py"
+    "tests_genesis/test_open_conjectures_study.py",
+    "tests_genesis/test_proving_test_study.py"
    ],
    "title": "Construction, obstruction and certified reductions (LP relaxation with exact dual certificates; B20_R32: exact certificates over generated rows with a Lean-bound registry, DEV only, NO_CERTIFICATION_UTILITY on an unenriched sample; B20_R35: CERTIFICATION_UTILITY on enriched settings, 27/40 vs 7/40; B20_R37: generator v2 on seven vertices, Lean-checked, no further coverage gain; no symmetry reduction, kernelization or continuation yet; F2: the Frontier's conjecture domain, counterexamples to graph-invariant bounds by exact certificate, the sealed Laplacian set of 68 bounds tiered; B20_R161: the proving test's transfer family B, the 63 Graffiti statements with two independent invariant implementations; B20_R164: library learning over the construction language and operators on its own operations)",
    "workstream": "W13"

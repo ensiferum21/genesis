@@ -709,11 +709,12 @@ WORKSTREAMS = {
              'src/genesis/conjecture/wowii.py', 'src/genesis/conjecture/invariant_domain.py',
              'src/genesis/conjecture/operations.py', 'src/genesis/conjecture/library.py',
              'scripts/b20r157_laplacian_bounds.py', 'scripts/b20r158_open_conjectures.py',
-             'docs/handoff/PT1_DESIGN_DRAFT.md'],
+             'docs/handoff/PT1_DESIGN_DRAFT.md', 'scripts/b20r159_proving_test.py'],
             ['tests_formal/test_discovery.py', G + 'test_lp_dual_rows.py', G + 'test_generated_certification.py',
              G + 'test_dense_certification.py', G + 'test_cuts_v2.py', 'tests_formal/test_generator_v2.py',
              G + 'test_certificates_rows.py', G + 'test_conjecture_domain.py', G + 'test_wowii.py',
-             G + 'test_operations.py', G + 'test_laplacian_bounds_study.py', G + 'test_open_conjectures_study.py']),
+             G + 'test_operations.py', G + 'test_laplacian_bounds_study.py', G + 'test_open_conjectures_study.py',
+             G + 'test_proving_test_study.py']),
     'W14': ('Active experiments and identifiability (B20_R117: a hidden-confounder causal-discovery benchmark with '
             'established baselines; B20_R118: their calibration; B20_R119: FCI and an active procedure proposing the '
             'interventions that resolve hidden causes; B20_R120: its test; B20_R121-R122: version 2 and its test); B20_R124: Gaussian noise; B20_R129: the adaptive experimental scientist (ADAPTIVE_SCIENTIST) and its reconciliation; B20_R130: choice, instrument and interpretation separated (CHOICE); B20_R131: the cascade (NO_VERIFIED_TRIGGER by protocol)', B,
