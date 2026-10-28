@@ -1377,9 +1377,10 @@
       "B20_R151": {
         "commits": [
           "52e1d92",
-          "85fda78"
+          "85fda78",
+          "1a4bf3d"
         ],
-        "result": "Preregistered (DEV) 52e1d92; amended before any search finished (three ceiling replicates per language; P1 and S1 need the replicate permutation test too; disclosed in the script); second amendment, analysis only, before any ceiling search: P1 also needs the worst Lambda1 ceiling replicate to beat the best Lambda0 one by at least 0.05%. Gate: planar2000 PASS 0.572% (p 0.00024), toroidal2000 0.145% and random2000 0.058% fail; planar2000 studied. Pending"
+        "result": "Preregistered (DEV) 52e1d92; amended before any search finished (three ceiling replicates per language; P1 and S1 need the replicate permutation test too; disclosed in the script); second amendment, analysis only, before any ceiling search: P1 also needs the worst Lambda1 ceiling replicate to beat the best Lambda0 one by at least 0.05%. Gate: planar2000 PASS 0.572% (p 0.00024), toroidal2000 0.145% and random2000 0.058% fail; planar2000 studied. Recorded (1a4bf3d): NOT_SHOWN, reading NO_LANGUAGE_EFFECT; Lambda1 ceilings -0.115% against Lambda0, neither saturated; every searched engine beat REX on fresh graphs by 0.45-0.78% (secondary). Record docs/checkpoints/B20_R151_RECORD.md"
       },
       "B20_R154": {
         "commits": [
@@ -1389,13 +1390,109 @@
       },
       "B20_R152": {
         "commits": [
-          "14232e4"
+          "14232e4",
+          "3d88ad6",
+          "9d72594"
         ],
-        "result": "Preregistered (DEV): self-extension on planar2000 at 1 s; three generations of the X2 pipeline (claim 'search'; the judge at half the inventor's budget, 3 replicates, a random control); P1 the grown language against Lambda1 and a random library from REX, 5 replicates each, over graphs and replicates. Amended before it ran: every slice makes progress (a resume rehearsal; what is run and the analysis unchanged). Runs after B20_R151. Pending"
+        "result": "Preregistered (DEV): self-extension on planar2000 at 1 s; three generations of the X2 pipeline (claim 'search'; the judge at half the inventor's budget, 3 replicates, a random control); P1 the grown language against Lambda1 and a random library from REX, 5 replicates each, over graphs and replicates. Amended before it ran: every slice makes progress (a resume rehearsal; what is run and the analysis unchanged). Runs after B20_R151. Recorded (9d72594): NOTHING_ADMITTED; the judge refused g1a and g1b (g1b beat the parent in every replicate, +0.033%, but not the random control). Record docs/checkpoints/B20_R152_RECORD.md"
       },
       "B20_R141": {
+        "commits": [
+          "a3b3eda",
+          "33e8905"
+        ],
+        "result": "Preregistered (DEV, calibration): ARA experiments A-D and S on 95 fresh sealed zoo environments (indices 20000+, sealed seed 14114141); ara2 and blind2 at a variant budget of 2; tuning-only; the oracle key. Runs after B20_R152. Recorded (33e8905): INVALID, by a defect in the freshness clause (False in every registered run). Descriptively every experiment would have passed (A 42/50, NONE 30/30, D +0.41 over blind2, S 0 of 45). Re-run as B20_R167. Record docs/checkpoints/B20_R141_RECORD.md"
+      },
+      "B20_R155": {
         "commits": [],
-        "result": "Preregistered (DEV, calibration): ARA experiments A-D and S on 95 fresh sealed zoo environments (indices 20000+, sealed seed 14114141); ara2 and blind2 at a variant budget of 2; tuning-only; the oracle key. Runs after B20_R152. Pending"
+        "result": "Conditional on admissions in B20_R152 (the expressiveness of the grown language); abandoned, since nothing was admitted"
+      },
+      "B20_R160": {
+        "commits": [
+          "9b59ca4",
+          "4a7e193"
+        ],
+        "result": "Engineering (F1): the Frontier, the divergent-convergent engine (directions, discovery-curve extrapolation, convergence, allocation, the manifest) and its kernel-side planted world; v1.1 caches forecasts on a geometric horizon grid. A development look on 8 worlds (licenses nothing). Record docs/checkpoints/B20_R160_RECORD.md"
+      },
+      "B20_R156": {
+        "commits": [
+          "5c3e236",
+          "4a7e193",
+          "33e8905"
+        ],
+        "result": "F3 (DEV, calibration; preregistered, amended before it ran): FRONTIER_BETTER on 24 sealed planted worlds; F beats halving +0.193, UCB1 +0.108, uniform +0.317 (p_Holm < 0.001); F+ 2.314 of the reference; forecast coverage 0.661 at a nominal 0.90. Record docs/checkpoints/B20_R156_RECORD.md"
+      },
+      "B20_R157": {
+        "commits": [
+          "bdf0c57"
+        ],
+        "result": "F4 (DEV; preregistered): the Frontier against prior-art counterexample searches on the 56 sealed Laplacian bounds. Running from 28 Oct 2026, 01:08 UTC"
+      },
+      "B20_R158": {
+        "commits": [
+          "703b2ee",
+          "cb3ee10"
+        ],
+        "result": "F5 (DEV; preregistered): Genesis poses its own conjectures from its own data and learns from what it settles, three generations, FULL against PLAIN. Pending (after B20_R157)"
+      },
+      "B20_R159": {
+        "commits": [
+          "e2f79b8",
+          "cfe3ef8"
+        ],
+        "result": "PT-1, the proving test (Daniel, 27 Oct 2026, 20:22): reserved, not preregistered. Built: parts 3-5 machinery (procedures, the improved inventor), the forbidden-concept audit (kernel side); family B (B20_R161); part 1's two mechanisms (B20_R164). Design draft docs/handoff/PT1_DESIGN_DRAFT.md"
+      },
+      "B20_R161": {
+        "commits": [
+          "03c4068",
+          "f11690c",
+          "5078fe5",
+          "28fbff2",
+          "ac87516",
+          "0b41aca",
+          "83ae8a9"
+        ],
+        "result": "Engineering (PT-1 groundwork): the transfer family B, all 63 Graffiti conjectures (WOWII) from the Lean formalisation (read-only, c0c5380), transcribed as kernel evaluators and posed as text; two independent exact invariant implementations; the B verifier needs both; exact branch-and-bound invariants, search up to 18 vertices"
+      },
+      "B20_R162": {
+        "commits": [
+          "7181602"
+        ],
+        "result": "Engineering (F6 machinery): frontier/meta.py, the Frontier searching its own configurations over meta-tasks, verified from the kernel's record of inner verifications"
+      },
+      "B20_R163": {
+        "commits": [
+          "77d725d",
+          "e41323b"
+        ],
+        "result": "F6 (DEV; preregistered): a meta-search over 729 engine configurations on one sealed meta-training world; the promoted configuration against the defaults at matched total compute on 24 held-out worlds. Pending (after B20_R158)"
+      },
+      "B20_R164": {
+        "commits": [
+          "506f9ea",
+          "3e1f8c0",
+          "0d83f40"
+        ],
+        "result": "Engineering (PT-1 part 1, Daniel's decision of 28 Oct 2026, 00:53): mechanism 4, operators on Gamma's own operations (256 product-rule tables, mutation and recombination); mechanism 1, library learning over Gamma; the engine's derive action"
+      },
+      "B20_R165": {
+        "commits": [
+          "ff6475b",
+          "d34bf50"
+        ],
+        "result": "Confirmatory replication (DEV; preregistered): REPLICATED_WITH_SINGLE_ENGINE; B20_R151's 18 searched engines beat REX at 1 s on 48 fresh planar graphs by +0.582% (C0_1 +0.661%), all of it on planar2_pm1 (+1.161%, 24 of 24); unweighted ties, tori and random lose. Record docs/checkpoints/B20_R165_RECORD.md"
+      },
+      "B20_R166": {
+        "commits": [
+          "983896a"
+        ],
+        "result": "Engineering (F6 machinery): frontier/multi.py, several domains as one Frontier (namespaced problems, routed derivation and verification)"
+      },
+      "B20_R167": {
+        "commits": [
+          "33e8905"
+        ],
+        "result": "Preregistered (DEV, calibration): B20_R141 again with its freshness defect repaired, a fresh sealed seed and indices 21000+, the design otherwise B20_R141's function for function; the registered path tested. Pending (after B20_R163)"
       }
     },
     "open_after_b20_r5": [

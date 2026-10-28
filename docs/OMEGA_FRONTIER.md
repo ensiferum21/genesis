@@ -935,7 +935,8 @@ commit through `git show`.
    - Check slice exits by count only. Record it with the RecordB20R157 draft.
 6. **A checkpoint window** (B20_R168): the release matrix and the checkpoint need CPU 0 free of studies (the
    sandbox suite); the last checkpoint is B20_R148.
-7. **B20_R158 (F5)** from a worktree at `703b2ee`.
+7. **B20_R158 (F5)** from the clean worktree `/home/claude/f5-wt` at `703b2ee` (prepared; its pins match there and
+   the forbidden-concept audit of its research plane is clean, both checked on 28 Oct, 09:30 SGT).
 8. **B20_R163 (F6)** from a worktree of its preregistration commit, under 1 h.
 9. **B20_R167** (ARA's calibration again, B20_R141's defect repaired) from a worktree of its preregistration commit,
    about 3 h.

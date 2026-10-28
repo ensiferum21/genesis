@@ -5320,7 +5320,26 @@
     "src/genesis/invention/cuts_v2.py",
     "evidence/generator_v2_b20r37/package.json",
     "src/genesis/verification/certificates_rows.py",
-    "docs/GENERATED_ROWS_REFERENCE.md"
+    "docs/GENERATED_ROWS_REFERENCE.md",
+    "src/genesis/conjecture/expr.py",
+    "src/genesis/conjecture/graphs.py",
+    "src/genesis/conjecture/attack.py",
+    "src/genesis/conjecture/domain.py",
+    "src/genesis/conjecture/abstraction.py",
+    "src/genesis/conjecture/generate.py",
+    "src/genesis/conjecture/sealed.py",
+    "src/genesis/conjecture/verify.py",
+    "src/genesis/conjecture/audit.py",
+    "src/genesis/conjecture/invariants.py",
+    "src/genesis/conjecture/invariants_ref.py",
+    "src/genesis/conjecture/statement.py",
+    "src/genesis/conjecture/wowii.py",
+    "src/genesis/conjecture/invariant_domain.py",
+    "src/genesis/conjecture/operations.py",
+    "src/genesis/conjecture/library.py",
+    "scripts/b20r157_laplacian_bounds.py",
+    "scripts/b20r158_open_conjectures.py",
+    "docs/handoff/PT1_DESIGN_DRAFT.md"
    ],
    "disposition": "IMPLEMENTED_BOUNDED_PENDING_AUDIT",
    "evidence": [],
@@ -5341,9 +5360,14 @@
     "tests_genesis/test_dense_certification.py",
     "tests_genesis/test_cuts_v2.py",
     "tests_formal/test_generator_v2.py",
-    "tests_genesis/test_certificates_rows.py"
+    "tests_genesis/test_certificates_rows.py",
+    "tests_genesis/test_conjecture_domain.py",
+    "tests_genesis/test_wowii.py",
+    "tests_genesis/test_operations.py",
+    "tests_genesis/test_laplacian_bounds_study.py",
+    "tests_genesis/test_open_conjectures_study.py"
    ],
-   "title": "Construction, obstruction and certified reductions (LP relaxation with exact dual certificates; B20_R32: exact certificates over generated rows with a Lean-bound registry, DEV only, NO_CERTIFICATION_UTILITY on an unenriched sample; B20_R35: CERTIFICATION_UTILITY on enriched settings, 27/40 vs 7/40; B20_R37: generator v2 on seven vertices, Lean-checked, no further coverage gain; no symmetry reduction, kernelization or continuation yet)",
+   "title": "Construction, obstruction and certified reductions (LP relaxation with exact dual certificates; B20_R32: exact certificates over generated rows with a Lean-bound registry, DEV only, NO_CERTIFICATION_UTILITY on an unenriched sample; B20_R35: CERTIFICATION_UTILITY on enriched settings, 27/40 vs 7/40; B20_R37: generator v2 on seven vertices, Lean-checked, no further coverage gain; no symmetry reduction, kernelization or continuation yet; F2: the Frontier's conjecture domain, counterexamples to graph-invariant bounds by exact certificate, the sealed Laplacian set of 68 bounds tiered; B20_R161: the proving test's transfer family B, the 63 Graffiti statements with two independent invariant implementations; B20_R164: library learning over the construction language and operators on its own operations)",
    "workstream": "W13"
   },
   {
@@ -5612,7 +5636,24 @@
     "src/genesis/replayers.py",
     "src/genesis/interpret.py",
     "docs/OMEGA_DISCOVERY_SCHEMA.md",
-    "docs/OMEGA_CAPABILITY_GRAPH.md"
+    "docs/OMEGA_CAPABILITY_GRAPH.md",
+    "src/genesis/frontier/direction.py",
+    "src/genesis/frontier/curves.py",
+    "src/genesis/frontier/converge.py",
+    "src/genesis/frontier/allocate.py",
+    "src/genesis/frontier/engine.py",
+    "src/genesis/frontier/manifest.py",
+    "src/genesis/frontier/world.py",
+    "src/genesis/frontier/procedure.py",
+    "src/genesis/frontier/meta.py",
+    "src/genesis/frontier/multi.py",
+    "docs/OMEGA_FRONTIER.md",
+    "docs/checkpoints/B20_R160_RECORD.md",
+    "scripts/b20r160_frontier_devlook.py",
+    "scripts/b20r156_frontier_worlds.py",
+    "evidence/frontier_worlds_b20r156/summary.json",
+    "docs/checkpoints/B20_R156_RECORD.md",
+    "scripts/b20r163_frontier_meta.py"
    ],
    "disposition": "IMPLEMENTED_BOUNDED_PENDING_AUDIT",
    "evidence": [],
@@ -5637,9 +5678,15 @@
     "tests_genesis/test_feedback_contract.py",
     "tests_genesis/test_contract_v2.py",
     "tests_genesis/test_vault.py",
-    "tests_genesis/test_interpret.py"
+    "tests_genesis/test_interpret.py",
+    "tests_genesis/test_frontier.py",
+    "tests_genesis/test_frontier_procedure.py",
+    "tests_genesis/test_frontier_meta.py",
+    "tests_genesis/test_frontier_multi.py",
+    "tests_genesis/test_frontier_worlds_study.py",
+    "tests_genesis/test_frontier_meta_study.py"
    ],
-   "title": "Curriculum, experience synthesis and capability memory (screened memory, failure-driven curriculum, demotion; B20_R93: the adaptation cell, which senses weaknesses in studies, remembers what answered them and gates the next design)",
+   "title": "Curriculum, experience synthesis and capability memory (screened memory, failure-driven curriculum, demotion; B20_R93: the adaptation cell, which senses weaknesses in studies, remembers what answered them and gates the next design; B20_R160: the Frontier, the divergent-convergent engine; B20_R156: its allocation beats halving, UCB1 and uniform on sealed planted worlds (DEV, calibration); B20_R162 and B20_R166: the engine searching its own configurations, and several domains as one; extracted procedures)",
    "workstream": "W20"
   },
   {
@@ -5657,7 +5704,10 @@
     "src/genesis/architecture/judge.py",
     "docs/OMEGA_ARCHITECTURE_INVENTION.md",
     "docs/checkpoints/B20_R150_RECORD.md",
-    "scripts/b20r141_ara_zoo.py"
+    "scripts/b20r141_ara_zoo.py",
+    "evidence/ara_zoo_b20r141/summary.json",
+    "docs/checkpoints/B20_R141_RECORD.md",
+    "scripts/b20r167_ara_zoo_rerun.py"
    ],
    "disposition": "IMPLEMENTED_BOUNDED_PENDING_AUDIT",
    "evidence": [],
@@ -5680,9 +5730,10 @@
     "tests_genesis/test_architecture_rewrite.py",
     "tests_genesis/test_architecture_ara.py",
     "tests_genesis/test_architecture_boundary.py",
-    "tests_genesis/test_ara_zoo_study.py"
+    "tests_genesis/test_ara_zoo_study.py",
+    "tests_genesis/test_ara_zoo_rerun_study.py"
    ],
-   "title": "Better-improver and multigeneration controller (B20_R2: pure lineage validator; B20_R4: the campaign loop writes native lineage records, crash/resume charges interrupted attempts, the custodian checks generation requests against the qualifying chain; B20_R16: active-version pointer, rollback, inherited version revocation, resume gate; sealed improver evaluation still refused; B20_R150: ARA-1, the Autonomous Research Architect on fixtures)",
+   "title": "Better-improver and multigeneration controller (B20_R2: pure lineage validator; B20_R4: the campaign loop writes native lineage records, crash/resume charges interrupted attempts, the custodian checks generation requests against the qualifying chain; B20_R16: active-version pointer, rollback, inherited version revocation, resume gate; sealed improver evaluation still refused; B20_R150: ARA-1, the Autonomous Research Architect on fixtures; B20_R141: its calibration on the sealed zoo, INVALID by a defect in the script's freshness clause; B20_R167: the re-run, preregistered)",
    "workstream": "W21"
   },
   {
@@ -5708,7 +5759,14 @@
     "src/genesis/expressive/pipeline.py",
     "docs/checkpoints/B20_R154_RECORD.md",
     "src/genesis/expressive/maxcut_domain.py",
-    "scripts/b20r152_self_extension.py"
+    "scripts/b20r152_self_extension.py",
+    "docs/checkpoints/B20_R151_RECORD.md",
+    "evidence/expressiveness_b20r151/summary.json",
+    "docs/checkpoints/B20_R152_RECORD.md",
+    "evidence/self_extension_b20r152/summary.json",
+    "scripts/b20r165_planar_replication.py",
+    "evidence/planar_replication_b20r165/summary.json",
+    "docs/checkpoints/B20_R165_RECORD.md"
    ],
    "disposition": "IMPLEMENTED_BOUNDED_PENDING_AUDIT",
    "evidence": [],
@@ -5733,9 +5791,10 @@
     "tests_genesis/test_expressive_consolidate.py",
     "tests_genesis/test_expressive_pipeline.py",
     "tests_genesis/test_expressive_boundary.py",
-    "tests_genesis/test_self_extension_study.py"
+    "tests_genesis/test_self_extension_study.py",
+    "tests_genesis/test_planar_replication_study.py"
    ],
-   "title": "New primitives, research-language evolution and trust changes (derived primitives with reference expansions, conformance, versioned registries; DEV: none of four starting primitives is a gain; B20_R153: the engine language \u039b1, mcx3 with the builder's construct algebra, mcx2 programs identical, named statements with versioned libraries, the inventor's operators over \u039b0 and \u039b1; B20_R154: library learning, the language judge, the consolidator, the generation pipeline, on a planted fixture)",
+   "title": "New primitives, research-language evolution and trust changes (derived primitives with reference expansions, conformance, versioned registries; DEV: none of four starting primitives is a gain; B20_R153: the engine language \u039b1, mcx3 with the builder's construct algebra, mcx2 programs identical, named statements with versioned libraries, the inventor's operators over \u039b0 and \u039b1; B20_R154: library learning, the language judge, the consolidator, the generation pipeline, on a planted fixture; B20_R151: NOT_SHOWN (no language effect); B20_R152: NOTHING_ADMITTED; B20_R165: the searched engines beat REX on fresh planar graphs, all of it on \u00b11-weighted ones, REPLICATED_WITH_SINGLE_ENGINE)",
    "workstream": "W22"
   },
   {

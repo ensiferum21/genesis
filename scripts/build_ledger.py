@@ -692,15 +692,28 @@ WORKSTREAMS = {
             'exact certificates over generated rows with a Lean-bound registry, DEV only, NO_CERTIFICATION_UTILITY '
             'on an unenriched sample; B20_R35: CERTIFICATION_UTILITY on enriched settings, 27/40 vs 7/40; B20_R37: '
             'generator v2 on seven vertices, Lean-checked, no further coverage gain; no symmetry reduction, kernelization '
-            'or continuation yet)', B,
+            'or continuation yet; F2: the Frontier\'s conjecture domain, counterexamples to graph-invariant bounds by '
+            'exact certificate, the sealed Laplacian set of 68 bounds tiered; B20_R161: the proving test\'s transfer '
+            'family B, the 63 Graffiti statements with two independent invariant implementations; B20_R164: library '
+            'learning over the construction language and operators on its own operations)', B,
             ['src/genesis/discovery/obstruction.py', 'evidence/discovery_b19/obstruction/evaluation.json',
              'src/genesis/verification/lp_dual_rows.py', 'src/genesis/discovery/generated_certify.py',
              'evidence/generated_certification_b20r32/summary.json', 'evidence/dense_certification_b20r35/summary.json',
              'src/genesis/invention/cuts_v2.py', 'evidence/generator_v2_b20r37/package.json',
-             'src/genesis/verification/certificates_rows.py', 'docs/GENERATED_ROWS_REFERENCE.md'],
+             'src/genesis/verification/certificates_rows.py', 'docs/GENERATED_ROWS_REFERENCE.md',
+             'src/genesis/conjecture/expr.py', 'src/genesis/conjecture/graphs.py', 'src/genesis/conjecture/attack.py',
+             'src/genesis/conjecture/domain.py', 'src/genesis/conjecture/abstraction.py',
+             'src/genesis/conjecture/generate.py', 'src/genesis/conjecture/sealed.py', 'src/genesis/conjecture/verify.py',
+             'src/genesis/conjecture/audit.py', 'src/genesis/conjecture/invariants.py',
+             'src/genesis/conjecture/invariants_ref.py', 'src/genesis/conjecture/statement.py',
+             'src/genesis/conjecture/wowii.py', 'src/genesis/conjecture/invariant_domain.py',
+             'src/genesis/conjecture/operations.py', 'src/genesis/conjecture/library.py',
+             'scripts/b20r157_laplacian_bounds.py', 'scripts/b20r158_open_conjectures.py',
+             'docs/handoff/PT1_DESIGN_DRAFT.md'],
             ['tests_formal/test_discovery.py', G + 'test_lp_dual_rows.py', G + 'test_generated_certification.py',
              G + 'test_dense_certification.py', G + 'test_cuts_v2.py', 'tests_formal/test_generator_v2.py',
-             G + 'test_certificates_rows.py']),
+             G + 'test_certificates_rows.py', G + 'test_conjecture_domain.py', G + 'test_wowii.py',
+             G + 'test_operations.py', G + 'test_laplacian_bounds_study.py', G + 'test_open_conjectures_study.py']),
     'W14': ('Active experiments and identifiability (B20_R117: a hidden-confounder causal-discovery benchmark with '
             'established baselines; B20_R118: their calibration; B20_R119: FCI and an active procedure proposing the '
             'interventions that resolve hidden causes; B20_R120: its test; B20_R121-R122: version 2 and its test); B20_R124: Gaussian noise; B20_R129: the adaptive experimental scientist (ADAPTIVE_SCIENTIST) and its reconciliation; B20_R130: choice, instrument and interpretation separated (CHOICE); B20_R131: the cascade (NO_VERIFIED_TRIGGER by protocol)', B,
@@ -740,7 +753,9 @@ WORKSTREAMS = {
              'tests_formal/test_successor_proof_custody.py', G + 'test_research_policy_v2.py']),
     'W20': ('Curriculum, experience synthesis and capability memory (screened memory, failure-driven curriculum, '
             'demotion; B20_R93: the adaptation cell, which senses weaknesses in studies, remembers what answered '
-            'them and gates the next design)', B,
+            'them and gates the next design; B20_R160: the Frontier, the divergent-convergent engine; B20_R156: its '
+            'allocation beats halving, UCB1 and uniform on sealed planted worlds (DEV, calibration); B20_R162 and '
+            'B20_R166: the engine searching its own configurations, and several domains as one; extracted procedures)', B,
             ['src/genesis/learning/memory.py', 'src/genesis/learning/partitions.py',
              'evidence/learning_b20/w20/rows.json', 'src/genesis/adaptation/receptors.py',
              'src/genesis/adaptation/ledger.py', 'src/genesis/adaptation/design.py',
@@ -756,28 +771,42 @@ WORKSTREAMS = {
              'src/genesis/autonomy/feedback.py', 'scripts/b20r103_zero_signal.py', 'docs/RESEARCH_ALERTS.md',
              'evidence/zero_signal_b20r103/summary.json', 'scripts/b20r107_contract_v2.py',
              'evidence/contract_v2_b20r107/summary.json',
-             'docs/RECURSIVE_IMPROVEMENT_ARCHITECTURE.md', 'src/genesis/vault.py', 'src/genesis/discovery_cli.py', 'src/genesis/replayers.py', 'src/genesis/interpret.py', 'docs/OMEGA_DISCOVERY_SCHEMA.md', 'docs/OMEGA_CAPABILITY_GRAPH.md'],
+             'docs/RECURSIVE_IMPROVEMENT_ARCHITECTURE.md', 'src/genesis/vault.py', 'src/genesis/discovery_cli.py', 'src/genesis/replayers.py', 'src/genesis/interpret.py', 'docs/OMEGA_DISCOVERY_SCHEMA.md', 'docs/OMEGA_CAPABILITY_GRAPH.md',
+             'src/genesis/frontier/direction.py', 'src/genesis/frontier/curves.py', 'src/genesis/frontier/converge.py',
+             'src/genesis/frontier/allocate.py', 'src/genesis/frontier/engine.py', 'src/genesis/frontier/manifest.py',
+             'src/genesis/frontier/world.py', 'src/genesis/frontier/procedure.py', 'src/genesis/frontier/meta.py',
+             'src/genesis/frontier/multi.py', 'docs/OMEGA_FRONTIER.md', 'docs/checkpoints/B20_R160_RECORD.md',
+             'scripts/b20r160_frontier_devlook.py', 'scripts/b20r156_frontier_worlds.py',
+             'evidence/frontier_worlds_b20r156/summary.json', 'docs/checkpoints/B20_R156_RECORD.md',
+             'scripts/b20r163_frontier_meta.py'],
             ['tests_formal/test_learning.py', 'tests_formal/test_learning_partitions.py',
              G + 'test_adaptation_cell.py', G + 'test_autonomy.py', G + 'test_knowledge_map.py',
              G + 'test_portfolio.py', G + 'test_harness_portfolio.py',
-             G + 'test_feedback_contract.py', G + 'test_contract_v2.py', G + 'test_vault.py', G + 'test_interpret.py']),
+             G + 'test_feedback_contract.py', G + 'test_contract_v2.py', G + 'test_vault.py', G + 'test_interpret.py',
+             G + 'test_frontier.py', G + 'test_frontier_procedure.py', G + 'test_frontier_meta.py',
+             G + 'test_frontier_multi.py', G + 'test_frontier_worlds_study.py', G + 'test_frontier_meta_study.py']),
     'W21': ('Better-improver and multigeneration controller (B20_R2: pure lineage validator; B20_R4: the campaign '
             'loop writes native lineage records, crash/resume charges interrupted attempts, the custodian checks '
             'generation requests against the qualifying chain; B20_R16: active-version pointer, rollback, inherited '
             'version revocation, resume gate; sealed improver evaluation still refused; B20_R150: ARA-1, the '
-            'Autonomous Research Architect on fixtures)',
+            'Autonomous Research Architect on fixtures; B20_R141: its calibration on the sealed zoo, INVALID by a '
+            'defect in the script\'s freshness clause; B20_R167: the re-run, preregistered)',
             B, ['src/genesis/lineage.py', 'src/genesis/campaign.py', 'src/genesis/custodian.py', 'src/genesis/versions.py',
                 'src/genesis/architecture/graph.py', 'src/genesis/architecture/ara.py', 'src/genesis/architecture/judge.py',
                 'docs/OMEGA_ARCHITECTURE_INVENTION.md', 'docs/checkpoints/B20_R150_RECORD.md',
-                'scripts/b20r141_ara_zoo.py'],
+                'scripts/b20r141_ara_zoo.py', 'evidence/ara_zoo_b20r141/summary.json',
+                'docs/checkpoints/B20_R141_RECORD.md', 'scripts/b20r167_ara_zoo_rerun.py'],
             [G + 'test_generation_lineage.py', G + 'test_campaign_lineage.py', G + 'test_versions.py',
              G + 'test_architecture_graph.py', G + 'test_architecture_judge.py', G + 'test_architecture_rewrite.py',
-             G + 'test_architecture_ara.py', G + 'test_architecture_boundary.py', G + 'test_ara_zoo_study.py']),
+             G + 'test_architecture_ara.py', G + 'test_architecture_boundary.py', G + 'test_ara_zoo_study.py',
+             G + 'test_ara_zoo_rerun_study.py']),
     'W22': ('New primitives, research-language evolution and trust changes (derived primitives with reference '
             'expansions, conformance, versioned registries; DEV: none of four starting primitives is a gain; '
             'B20_R153: the engine language Λ1, mcx3 with the builder\'s construct algebra, mcx2 programs identical, '
             'named statements with versioned libraries, the inventor\'s operators over Λ0 and Λ1; B20_R154: library learning, '
-            'the language judge, the consolidator, the generation pipeline, on a planted fixture)', B,
+            'the language judge, the consolidator, the generation pipeline, on a planted fixture; B20_R151: NOT_SHOWN '
+            '(no language effect); B20_R152: NOTHING_ADMITTED; B20_R165: the searched engines beat REX on fresh planar '
+            'graphs, all of it on ±1-weighted ones, REPLICATED_WITH_SINGLE_ENGINE)', B,
             ['src/genesis/primitives.py', 'scripts/b20r_primitives.py', 'src/genesis/candidate_kinds/mcx3.py',
              'src/genesis/candidate_kinds/native/mcx3.c', 'scripts/b20r153_build_mcx3.py',
              'src/genesis/expressive/lambda1.py', 'src/genesis/expressive/operators.py',
@@ -786,11 +815,15 @@ WORKSTREAMS = {
              'src/genesis/expressive/judge.py', 'src/genesis/expressive/consolidate.py',
              'src/genesis/expressive/workflow.py', 'src/genesis/expressive/pipeline.py',
              'docs/checkpoints/B20_R154_RECORD.md', 'src/genesis/expressive/maxcut_domain.py',
-             'scripts/b20r152_self_extension.py'],
+             'scripts/b20r152_self_extension.py', 'docs/checkpoints/B20_R151_RECORD.md',
+             'evidence/expressiveness_b20r151/summary.json', 'docs/checkpoints/B20_R152_RECORD.md',
+             'evidence/self_extension_b20r152/summary.json', 'scripts/b20r165_planar_replication.py',
+             'evidence/planar_replication_b20r165/summary.json', 'docs/checkpoints/B20_R165_RECORD.md'],
             [G + 'test_primitives.py', G + 'test_mcx3_kind.py', G + 'test_expressive_lambda1.py',
              G + 'test_expressive_operators.py', G + 'test_expressiveness_study.py', G + 'test_expressive_library.py',
              G + 'test_expressive_judge.py', G + 'test_expressive_consolidate.py', G + 'test_expressive_pipeline.py',
-             G + 'test_expressive_boundary.py', G + 'test_self_extension_study.py']),
+             G + 'test_expressive_boundary.py', G + 'test_self_extension_study.py',
+             G + 'test_planar_replication_study.py']),
     'W23': ('Fault-tolerant reasoning and expert interaction (heterogeneous routes, quarantine, adjudication without '
             'majority vote; no expert-interaction channel)', B,
             ['src/genesis/verification/reliability.py', 'src/genesis/graphs.py'],
