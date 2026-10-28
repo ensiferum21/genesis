@@ -123,3 +123,16 @@ or a library) that is absent from the starting set.
      256 rules reach operations that are not among Γ's, such as the lexicographic and strong products. Whether Γ
      could compose them is not established.
    - So the proposal is to leave it closed, which also hands over less.
+7. **The size cap (found 28 Oct 2026, 09:50 SGT, from the code; it decides whether part 2 is reachable at all).**
+   - Programs of Γ, of its derived representations (`GammaPlus`) and of its library representations (`GammaLib`)
+     build graphs of at most `attack.MAX_N` = 64 vertices. Templates build up to `abstraction.TEMPLATE_MAX_N` = 400.
+   - The only known counterexamples to family A's bounds are equitable-partition constructions of 158 to 352
+     vertices. That is the builder's knowledge, from the literature, written in `sealed.py`.
+   - So, as built, the two mechanisms Daniel allowed cannot reach a known counterexample to A. Part 1's mechanisms
+     reach A only through a template, or through a counterexample smaller than any known one, which may not exist.
+   - A proposal, and it must not be tuned to A: one uniform cap for every representation that builds by program, at
+     the templates' existing 400, for every arm (P0 included). This is a resource limit already in the code, not a
+     hint. The inadequacy gate then says whether P0 can reach A with Γ alone at that cap.
+   - The cost: one spectral radius of a 400-vertex graph is tens of milliseconds, so budgets in evaluations will need
+     CPU checks.
+   - Disclosure: this item was written knowing A's sizes, and the preregistration says so.
