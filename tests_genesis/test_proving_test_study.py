@@ -53,6 +53,15 @@ class Design(unittest.TestCase):
         self.assertFalse(set(nb.values()) & set(W.PROVED))
         self.assertEqual({nb[p]: t for p, t in pb.items()}, {k: W.TEXT[k] for k in nb.values()})
 
+    def test_c_pools_draws_without_repeats(self):
+        from genesis.conjecture import generate as GN
+        one, _, w1 = S.posed_c(7, (991001,), count=60)
+        two, _, w2 = S.posed_c(7, (991001, 991002), count=60)
+        self.assertTrue(set(one) <= set(two))
+        fs = [f for f, _ in two.values()]
+        self.assertFalse(any(GN.equivalent(a, b) for i, a in enumerate(fs) for b in fs[i + 1:]))
+        self.assertTrue(all(p.startswith('C') and k == 'vertex' for p, (f, k) in two.items()))
+
     def test_c_withholds_published_bounds(self):
         self.assertTrue(S.c_label('d + m')[0])                       # Merris
         self.assertTrue(S.c_label('sqrt(2*m^3/d + 2*d^2)')[0])       # bound 18, a bound of A

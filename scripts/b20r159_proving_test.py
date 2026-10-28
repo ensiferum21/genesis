@@ -24,8 +24,9 @@ are the engine's standing abstraction. Whether they count for part 1 is the sett
     in the literature only by large constructions;
   * B: the Graffiti statements of WOWII that are disproved (25) or open (9), posed as text (`wowii.TEXT`), checked
     by `wowii.verifier` with two independent invariant implementations;
-  * C: fresh tasks, Genesis's own conjectures from its own data on the data seed C_SEED (`conjecture.generate`).
-    Conjectures equivalent to a published bound or to one of A are withheld, as in B20_R158.
+  * C: fresh tasks, Genesis's own conjectures from its own data, pooled over the data seeds C_SEEDS
+    (`conjecture.generate`). Conjectures equivalent to a published bound or to one of A are withheld, as in
+    B20_R158.
 
 **Arms.**
   * P0, the predecessor: the Frontier's allocation with the starting representations only (no abstraction, no
@@ -82,7 +83,7 @@ from genesis.common import code_identity  # noqa: E402
 STUDY = 'b20r159'
 PREREGISTERED = False                     # set at preregistration, with the constants below fixed
 SEALED_SEED = None                        # PROVISIONAL: a fresh seed at preregistration
-C_SEED = None                             # PROVISIONAL: a fresh data seed at preregistration
+C_SEEDS = ()                              # PROVISIONAL: fresh data seeds at preregistration (C pools their draws)
 B_A = 100_000                             # PROVISIONAL: evaluations per bound of A (F4's B_PER; set from F4's timings)
 B_B = 20_000                              # PROVISIONAL: evaluations per statement of B
 B_C = 20_000                              # PROVISIONAL: evaluations per task of C
@@ -135,20 +136,25 @@ def posed_b(seed):
     return {ids[k]: W.TEXT[k] for k in nums}, {ids[k]: k for k in nums}
 
 
-def posed_c(seed, data_seed, count=C_COUNT):
-    """({opaque id: (formula, 'vertex')}, {opaque id: label}, withheld) for family C."""
+def posed_c(seed, data_seeds, count=C_COUNT):
+    """({opaque id: (formula, 'vertex')}, {opaque id: label}, withheld) for family C: the conjectures of every data
+    draw, pooled; one equivalent to a conjecture already posed is skipped. (One draw gives few: 7 posed and 2
+    withheld on the development seed 991001, too few for part 5's statistics.)"""
     import numpy as np
     from genesis.conjecture import generate as GN
-    data = GN.data(np.random.default_rng(data_seed), count=count)
     posed, labels, withheld = {}, {}, []
-    for f, _ in GN.conjectures(data):
-        w, label = c_label(f)
-        if w:
-            withheld.append(f)
-            continue
-        pid = 'C' + h(STUDY, seed, 'C', f)[:10]
-        posed[pid] = (f, 'vertex')
-        labels[pid] = label
+    for data_seed in data_seeds:
+        data = GN.data(np.random.default_rng(data_seed), count=count)
+        for f, _ in GN.conjectures(data):
+            if any(GN.equivalent(f, g) for g, _ in posed.values()) or any(GN.equivalent(f, g) for g in withheld):
+                continue
+            w, label = c_label(f)
+            if w:
+                withheld.append(f)
+                continue
+            pid = 'C' + h(STUDY, seed, 'C', f)[:10]
+            posed[pid] = (f, 'vertex')
+            labels[pid] = label
     return posed, labels, withheld
 
 
@@ -304,7 +310,7 @@ def main(argv=None, registered=True, families=None, budgets=None, seed=None):
         pa, number_a = posed_a(seed)
         pb, number_b = posed_b(seed)
         verify_b = W.verifier(number_b)
-        pc, labels_c, withheld_c = posed_c(seed, C_SEED)
+        pc, labels_c, withheld_c = posed_c(seed, C_SEEDS)
     else:
         pa, number_a = families['A']
         pb, verify_b = families['B']

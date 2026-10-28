@@ -83,6 +83,9 @@ or a library) that is absent from the starting set.
 1. Budgets for each part (F4's timings give the scale: about 100,000 evaluations per bound).
 2. `p_derive`, and the abstraction settings: fixed in advance from F3–F5's results, never tuned on A, B or C.
 3. Family C: which source, how many tasks, and how they are sealed.
+   - Generated conjectures are few per data draw. A development check on 28 Oct 2026 (seed 991001, never a study's)
+     posed 7 and withheld 2. Each of part 5's statistics needs at least 6 informative tasks to reach p_Holm < 0.05,
+     so the draft pools the conjectures of several draws (`C_SEEDS`), skipping equivalent ones.
    - A third candidate, noted on 28 Oct 2026 (not transcribed): Hansen and Lucas, "Bounds and conjectures for the
      signless Laplacian index of graphs", *Linear Algebra Appl.* 432 (2010) 3319–3336 (GERAD G-2009-27). AutoGraphiX
      gave algebraic conjectures in 120 of 152 cases, relating the signless Laplacian index q1 to other invariants
