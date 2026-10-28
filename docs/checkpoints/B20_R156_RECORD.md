@@ -70,6 +70,28 @@ The family means agree; F is ahead of every comparator in each of the three held
    (a calibrated widening, for example conformal over the observed residuals). It would not change what was tested
    here. It is not preregistered, and the engine is not changed now, because F4–F6 are pinned to it.
 
+## After recording: where the forecasts miss (a development look, disclosed)
+
+These were run after the record, on 28 Oct 2026, 09:30–09:45 SGT. They used dev worlds of F3's three families at
+seeds 5001–5004 (16 worlds), never the sealed seed's, with the same forecast filter as S2. The scripts are in the
+session scratchpad and are not part of the study. They license nothing.
+- **Coverage 0.641 over 10,134 forecasts**, which agrees with S2's 0.661.
+- **The misses are mostly above the interval.** The truth was above it in 26.7% of forecasts and below it in 9.2%,
+  so the forecasts are biased low.
+- The misses concentrate in two kinds of curve:
+  - dead curves: coverage 0.39, the truth above in 51%;
+  - slow starters: coverage 0.40, the truth above in 45%.
+  Both are curves whose few observed points (often 4 or 5, below the noise) cannot show the rise still to come. On
+  decoys coverage is 0.68 and on veins 0.78.
+- Coverage rises with the share of the horizon observed: 0.58, 0.64 and 0.72 for the bands from a quarter, a half
+  and three quarters.
+- **A degrees-of-freedom correction does not repair it.** Rescaling the bootstrap's residuals by √(n/(n − p_eff))
+  (Davison and Hinkley 1997, §6.3) moved coverage from 0.644 to 0.658 only. The value fell from 0.823 to 0.786, lower
+  in 8 of 12 worlds. So the width of the intervals is not the problem; their bias where the data cannot see the rise
+  is. The correction is not adopted.
+- The repair is still open. The allocator's `hi` drives both its index and its pausing, so a low `hi` pauses
+  branches early. Any repair must be tested for value, not only for coverage.
+
 ## Looks at the study's data before it finished
 
 None. The study finished within one slice. The log and the summary were read after exit 0.

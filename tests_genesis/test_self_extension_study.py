@@ -249,7 +249,12 @@ class RecordB20R152(unittest.TestCase):
         import statistics
         s = self.s
         if not s['confirm']:
-            self.skipTest('nothing was admitted: no confirmation')
+            # No confirmation stage runs unless something was admitted: assert that, rather than skip (an
+            # undeclared skip fails the release matrix; changed at the B20_R169 checkpoint, disclosed there).
+            admitted = [d['name'] for g in s['generations'] for d in g['decisions'] if d['admitted']]
+            self.assertEqual(admitted, [])
+            self.assertEqual(s['verdict'], 'NOTHING_ADMITTED')
+            return
         truth = s['graphs']['truth']
         rex = S.Lab.ekey(dict(K3.DEFAULT))
         val = lambda ek, t: statistics.mean(self.runs[f'{ek}|{t}|{o}|1']['value'] for o in range(S.T_RUNS))
