@@ -603,7 +603,7 @@
    "outcome": null,
    "output": "evidence/laplacian_bounds_b20r157",
    "positive": null,
-   "preregistered": "sha256 49b171f9be58dc6665fc9d15eacd59f98ede795b2a4e5d6a5fb3bc54ff0f1904 (the preregistration commit)",
+   "preregistered": "sha256 fb5dd07e5ccce94a8d80fe951611d1a21235be26ab6a45ad26149fc67f075785 (amended at ff9eada after a first attempt killed by out of memory; first sha256 49b171f9...1904 at bdf0c57)",
    "priority": 6,
    "requires": [],
    "resources": {
@@ -628,7 +628,7 @@
    "outcome": null,
    "output": "evidence/open_conjectures_b20r158",
    "positive": null,
-   "preregistered": "sha256 50d2de64a7adb90ea6e2b3eb47647e7f852d717e5e9cf0a47db49464cc4af9b5 (the preregistration commit)",
+   "preregistered": "sha256 6b9652d3fd21130820c42fe955ea7e4fce0e11259b412331ba216bd722687b14 (amended before it ran at ff9eada; first sha256 50d2de64...f9b5 at 703b2ee)",
    "priority": 5,
    "requires": [],
    "resources": {
@@ -1715,6 +1715,20 @@
    "id": "B20_R167",
    "kind": "start",
    "time": "2026-10-28T02:15:15+00:00"
+  },
+  {
+   "commit": "ff9eada",
+   "id": "B20_R157",
+   "kind": "amend",
+   "time": "2026-10-28T02:47:03+00:00",
+   "why": "the star-size defect; every arm runs again"
+  },
+  {
+   "commit": "ff9eada",
+   "id": "B20_R158",
+   "kind": "amend",
+   "time": "2026-10-28T02:47:03+00:00",
+   "why": "the star-size defect; library=False keeps the preregistered FULL arm"
   }
  ],
  "lines": {

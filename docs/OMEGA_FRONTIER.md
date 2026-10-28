@@ -929,18 +929,24 @@ commit through `git show`.
    every registered run (`docs/checkpoints/B20_R141_RECORD.md`). Descriptively, every experiment would have passed.
 4. **B20_R156 (F3) is RECORDED** (28 Oct, 01:07 UTC): FRONTIER_BETTER on sealed planted worlds; forecast coverage
    0.66 at a nominal 0.90 (`docs/checkpoints/B20_R156_RECORD.md`).
-5. **B20_R157 (F4) is running in slices** (from 28 Oct, 01:08 UTC; about 2 h).
-   - From the clean worktree `/home/claude/f4-wt` at `bdf0c57` (pins checked there before it started).
-   - Resume after an exit 3 with: `/home/claude/run_slice.sh /home/claude/f4-wt scripts/b20r157_laplacian_bounds.py evidence/laplacian_bounds_b20r157 /home/claude/logs/f4_slices.log`
-   - Check slice exits by count only. Record it with the RecordB20R157 draft.
+5. **B20_R157 (F4): its first attempt was killed (out of memory, 02:10 UTC), and it is AMENDED at `ff9eada`.**
+   - The cause was the star-size defect (B20R157-STAR in `docs/BLOCKING_DEFECTS.md`).
+   - It runs again in full from a clean worktree at `ff9eada`, after B20_R167. Create it with
+     `git worktree add --detach /home/claude/f4b-wt ff9eada`, then run
+     `/home/claude/run_slice.sh /home/claude/f4b-wt scripts/b20r157_laplacian_bounds.py evidence/laplacian_bounds_b20r157 /home/claude/logs/f4b_slices.log`.
+   - The first attempt's rows: `evidence/laplacian_bounds_b20r157_attempt1/` (not used).
+   - Record it with the RecordB20R157 draft, updated for the amended digest.
+5b. **B20_R167 is running in slices** (from 28 Oct, 02:16 UTC; about 3 h; brought forward while F4 was blocked).
+   - From the clean worktree `/home/claude/r167-wt` at `33e8905`.
+   - Resume with `/home/claude/run_slice.sh /home/claude/r167-wt scripts/b20r167_ara_zoo_rerun.py evidence/ara_zoo_b20r167 /home/claude/logs/r167_slices.log`.
+   - Record it with the RecordB20R167 draft.
 6. **A checkpoint window** (B20_R169): the release matrix and the checkpoint need CPU 0 free of studies (the
    sandbox suite); the last checkpoint is B20_R148.
-7. **B20_R158 (F5)** from the clean worktree `/home/claude/f5-wt` at `703b2ee` (prepared; its pins match there and
-   the forbidden-concept audit of its research plane is clean, both checked on 28 Oct, 09:30 SGT).
+7. **B20_R158 (F5), AMENDED before it ran (`ff9eada`)**, from a clean worktree at `ff9eada`. The old
+   `/home/claude/f5-wt` at `703b2ee` must not be used.
 8. **B20_R163 (F6)** from the clean worktree `/home/claude/f6-wt` at `77d725d` (prepared; its pins match there;
    it refuses to start otherwise), under 1 h. Its meta-search runs in one piece before the first slice check.
-9. **B20_R167** (ARA's calibration again, B20_R141's defect repaired) from a worktree of its preregistration commit,
-   about 3 h.
+9. (B20_R167 moved up to 5b.)
 10. Then PT-1, once preregistered (§7b). Daniel decided part 1's mechanisms on 28 Oct, and both are built (B20_R164).
     A design draft, not preregistered, is in `docs/handoff/PT1_DESIGN_DRAFT.md`.
 

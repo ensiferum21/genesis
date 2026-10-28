@@ -38,7 +38,7 @@ class Design(unittest.TestCase):
     def test_constants_and_the_posed_set(self):
         others = [p for p in (ROOT / 'scripts').glob('*.py') if p.name != 'b20r157_laplacian_bounds.py']
         self.assertFalse(any(re.search(rf'\b{S.SEALED_SEED}\b', p.read_text()) for p in others))
-        at = {m: digest_at('HEAD', 'src/genesis/' + m) for m in S.PINNED}          # the amendment commit (its hash next)
+        at = {m: digest_at('ff9eada', 'src/genesis/' + m) for m in S.PINNED}       # the amendment commit
         if all(v is not None for v in at.values()):
             self.assertEqual(at, S.PINNED)
         problems, number_of = S.posed()

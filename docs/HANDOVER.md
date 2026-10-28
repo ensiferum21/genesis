@@ -254,7 +254,10 @@ needs people: a reviewer, a statistician, an independent custodian on its own ma
         passed. B20_R167, the re-run with the defect repaired on fresh environments, is preregistered; B20_R142
         still requires `ara-calibrated`.
       - **B20_R156 (F3) is recorded** (`docs/checkpoints/B20_R156_RECORD.md`): FRONTIER_BETTER on sealed planted
-        worlds; forecast coverage 0.66 at a nominal 0.90. B20_R157 (F4) started at 01:08 UTC.
+        worlds; forecast coverage 0.66 at a nominal 0.90.
+      - **B20_R157 (F4)'s first attempt was killed** (out of memory) by Γ's star-size defect (B20R157-STAR), which is
+        repaired. B20_R157 is amended at `ff9eada`, and every arm runs again after B20_R167. B20_R158 is amended
+        before it ran. B20_R167 started at 02:16 UTC.
   26c. **Daniel's directive of 27 Oct 2026, 19:55 is adopted**: `docs/OMEGA_FRONTIER.md`, written in detail for
       handoff at his request (20:01). Genesis works by divergence and convergence (imagine, mutate, recombine,
       branch out, extrapolate discovery curves, detect convergence, allocate), without handholding. The

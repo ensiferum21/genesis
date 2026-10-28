@@ -439,6 +439,9 @@ class RecordB20R163(unittest.TestCase):
 
 ## RecordB20R157 (F4; append to `tests_genesis/test_laplacian_bounds_study.py`)
 
+**Updated on 28 Oct 2026, 11:10 SGT, for the amendment (`ff9eada`): the script's digest is the amended one. Nothing
+else in the draft changes. The study has not been re-run.**
+
 Written on 28 Oct 2026, 02:55 SGT, from the script only, before the study ran. Needs `json`, `unittest`, `ROOT` and
 `S` (the study script).
 
@@ -465,7 +468,7 @@ class RecordB20R157(unittest.TestCase):
     def test_the_script(self):
         import hashlib
         self.assertEqual(hashlib.sha256((ROOT / 'scripts' / 'b20r157_laplacian_bounds.py').read_bytes()).hexdigest(),
-                         '49b171f9be58dc6665fc9d15eacd59f98ede795b2a4e5d6a5fb3bc54ff0f1904')
+                         'fb5dd07e5ccce94a8d80fe951611d1a21235be26ab6a45ad26149fc67f075785')
 
     def test_the_kernel_checks_recompute(self):
         from genesis.conjecture import sealed as SD
@@ -549,6 +552,9 @@ class RecordB20R141(unittest.TestCase):
 
 ## RecordB20R158 (F5; append to `tests_genesis/test_open_conjectures_study.py`)
 
+**Updated on 28 Oct 2026, 11:10 SGT, for the amendment (`ff9eada`): the script's digest is the amended one, and the
+audit re-derivation reads the research plane at `ff9eada`.**
+
 Written on 28 Oct 2026, 09:40 SGT, from the script only (`703b2ee`, sha256 `50d2de64…f9b5`), before the study ran.
 The file already has `json`, `unittest`, `ROOT` and `S`; the audit re-derivation reads the research plane as it
 was at the preregistration commit through `git show`, because the branch head has moved on.
@@ -574,7 +580,7 @@ class RecordB20R158(unittest.TestCase):
     def test_the_script(self):
         import hashlib
         self.assertEqual(hashlib.sha256((ROOT / 'scripts' / 'b20r158_open_conjectures.py').read_bytes()).hexdigest(),
-                         '50d2de64a7adb90ea6e2b3eb47647e7f852d717e5e9cf0a47db49464cc4af9b5')
+                         '6b9652d3fd21130820c42fe955ea7e4fce0e11259b412331ba216bd722687b14')
 
     def test_validity(self):
         self.assertEqual(len(self.gens), S.G)
@@ -595,7 +601,7 @@ class RecordB20R158(unittest.TestCase):
             files = []
             for path in AU.research_plane(Path(tmp)):
                 rel = path.relative_to(tmp).as_posix()
-                out = subprocess.run(['git', '-C', str(ROOT), 'show', f'703b2ee:{rel}'], capture_output=True)
+                out = subprocess.run(['git', '-C', str(ROOT), 'show', f'ff9eada:{rel}'], capture_output=True)
                 if out.returncode != 0:                          # a module that did not exist then
                     continue
                 path.parent.mkdir(parents=True, exist_ok=True)

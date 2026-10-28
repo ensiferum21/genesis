@@ -639,6 +639,10 @@ problems no level has seen, and Genesis has not shown that yet.
   in detail for handoff at his request of 20:01; F1 and F2 next on CPU 1; B20_R156–R158 reserved.
 - 27 Oct 2026, 20:40: the proving test adopted (§0f; B20_R159). F2 started: the sealed Laplacian set
   transcribed and tiered, with exact certificates (`src/genesis/conjecture/`).
+- 28 Oct 2026, 11:10: B20_R157 (F4)'s first attempt was killed (out of memory, 6.1 GB) by a defect in Γ: a star's
+  size counted k, but it is built with k + 1, so nested products of stars passed the 64-vertex cap. Repaired
+  (`ff9eada`). B20_R157 is amended, and every arm runs again. B20_R158 is amended before it ran. Equivalence was
+  shown on invented inputs. B20_R167 runs meanwhile.
 - 28 Oct 2026, 09:20: B20_R141 recorded: INVALID, by a defect in its freshness clause (False in every registered
   run; the design tests ran only the unregistered path). Descriptively every experiment would have passed.
   B20_R167 preregistered: the same design, the defect repaired, a fresh seed and fresh indices, the registered

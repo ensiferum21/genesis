@@ -32,7 +32,7 @@ class Design(unittest.TestCase):
     def test_constants_and_labels(self):
         others = [p for p in (ROOT / 'scripts').glob('*.py') if p.name != 'b20r158_open_conjectures.py']
         self.assertFalse(any(re.search(rf'\b{S.DATA_SEED}\b', p.read_text()) for p in others))
-        at = {m: digest_at('HEAD', 'src/genesis/' + m) for m in S.PINNED}          # the amendment commit (its hash next)
+        at = {m: digest_at('ff9eada', 'src/genesis/' + m) for m in S.PINNED}       # the amendment commit
         if all(v is not None for v in at.values()):
             self.assertEqual(at, S.PINNED)
         self.assertEqual(S.labels('sqrt(2*m^3/d + 2*d^2)')[0], True)                 # bound 18: withheld
