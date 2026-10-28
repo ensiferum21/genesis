@@ -152,5 +152,37 @@ class EndToEnd(unittest.TestCase):
         self.assertEqual(strip(sa), strip(sb))
 
 
+
+class RegisteredPath(unittest.TestCase):
+    """The path B20_R141's tests never ran, run here for PT-1: `main` as a registered run, with the preregistration
+    flag set, the output and the pins redirected, and the posing functions returning invented families (the sealed
+    ones are never touched). Its validity must hold, and any other registered output is refused."""
+
+    def test_a_registered_run_is_valid(self):
+        with tempfile.TemporaryDirectory() as d:
+            patches = [mock.patch.object(S, 'PREREGISTERED', True), mock.patch.object(S, 'OUTPUT', Path(d)),
+                       mock.patch.object(S, 'PINNED', S.pins()), mock.patch.object(S, 'QUANTUM', 100),
+                       mock.patch.object(S, 'CHUNK', 5), mock.patch.object(S, 'K_ABLATION', 2),
+                       mock.patch.object(S, 'posed_a', lambda seed: (A_TEST, {p: p for p in A_TEST})),
+                       mock.patch.object(S, 'posed_b', lambda seed: (B_TEST, {p: p for p in B_TEST})),
+                       mock.patch.object(S, 'b_verifier', lambda numbers: verify_b),
+                       mock.patch.object(S, 'posed_c', lambda seed, seeds: (C_TEST, {p: None for p in C_TEST}, [])),
+                       mock.patch.object(S, 'record', p0_blind(S.record))]
+            for p in patches:
+                p.start()
+            try:
+                self.assertEqual(S.main([d], budgets=(1500, 1500, 1500), seed=7), 0)
+                s = json.loads((Path(d) / 'summary.json').read_text())
+                with self.assertRaises(SystemExit):
+                    S.main([str(Path(d) / 'elsewhere')], budgets=(1500, 1500, 1500), seed=7)
+            finally:
+                for p in reversed(patches):
+                    p.stop()
+        self.assertTrue(s['pins_ok'] and s['spent_ok'] and s['valid'], s)
+        self.assertEqual(s['audit_hits'], [])
+        self.assertTrue(s['preregistered'])
+        self.assertIn(s['verdict'], ('PROVED_OUT', 'NOT_PROVED_OUT'))
+
+
 if __name__ == '__main__':
     unittest.main()

@@ -104,6 +104,7 @@ MODULES = ('frontier/direction.py', 'frontier/curves.py', 'frontier/converge.py'
            'conjecture/sealed.py', 'conjecture/verify.py', 'conjecture/wowii.py', 'conjecture/invariants_ref.py',
            'conjecture/audit.py')
 PINNED = {}                               # `pins()` at preregistration; checked at run time
+OUTPUT = ROOT / 'evidence' / 'proving_test_b20r159'
 
 
 class Paused(Exception):
@@ -134,6 +135,12 @@ def posed_b(seed):
     nums = sorted(list(W.DISPROVED) + list(W.OPEN), key=str)
     ids = {k: 'S' + h(STUDY, seed, 'B', k)[:10] for k in nums}
     return {ids[k]: W.TEXT[k] for k in nums}, {ids[k]: k for k in nums}
+
+
+def b_verifier(numbers):
+    """Family B's kernel verifier (`wowii.verifier`: both invariant implementations must agree)."""
+    from genesis.conjecture import wowii as W
+    return W.verifier(numbers)
 
 
 def posed_c(seed, data_seeds, count=C_COUNT):
@@ -289,7 +296,6 @@ def main(argv=None, registered=True, families=None, budgets=None, seed=None):
     'B': (posed, verifier factory), 'C': posed}) and `budgets` replace the sealed families in the design tests."""
     from genesis.conjecture import audit as AU
     from genesis.conjecture import verify as V
-    from genesis.conjecture import wowii as W
     from genesis.frontier import ablation as AB
     from genesis.frontier import procedure as PR
     argv = sys.argv[1:] if argv is None else argv
@@ -297,8 +303,8 @@ def main(argv=None, registered=True, families=None, budgets=None, seed=None):
     if registered:
         if not PREREGISTERED:
             raise SystemExit('PT-1 is a draft: it is not preregistered')
-        if out != (ROOT / 'evidence' / 'proving_test_b20r159').resolve():
-            raise SystemExit('the registered output is evidence/proving_test_b20r159')
+        if out != OUTPUT.resolve():
+            raise SystemExit(f'the registered output is {OUTPUT}')
         if pins() != PINNED:
             raise SystemExit('the modules differ from the preregistered pins')
     out.mkdir(parents=True, exist_ok=True)
@@ -309,7 +315,7 @@ def main(argv=None, registered=True, families=None, budgets=None, seed=None):
     if families is None:
         pa, number_a = posed_a(seed)
         pb, number_b = posed_b(seed)
-        verify_b = W.verifier(number_b)
+        verify_b = b_verifier(number_b)
         pc, labels_c, withheld_c = posed_c(seed, C_SEEDS)
     else:
         pa, number_a = families['A']
