@@ -83,6 +83,15 @@ or a library) that is absent from the starting set.
 1. Budgets for each part (F4's timings give the scale: about 100,000 evaluations per bound).
 2. `p_derive`, and the abstraction settings: fixed in advance from F3–F5's results, never tuned on A, B or C.
 3. Family C: which source, how many tasks, and how they are sealed.
+   - A third candidate, noted on 28 Oct 2026 (not transcribed): Hansen and Lucas, "Bounds and conjectures for the
+     signless Laplacian index of graphs", *Linear Algebra Appl.* 432 (2010) 3319–3336 (GERAD G-2009-27). AutoGraphiX
+     gave algebraic conjectures in 120 of 152 cases, relating the signless Laplacian index q1 to other invariants
+     as functions of n; 18 were open at publication. Later papers settled some, for example on the clique number
+     (arXiv 1209.3214, 1308.1653) and the Randić index (arXiv 1601.03511).
+     - For: it is close to family A, so a procedure from A has a fair chance to transfer, and it is
+       literature-sealed.
+     - Against: its statuses are scattered across many papers, so transcribing and tiering it is a project of the
+       size of F2's sealed set.
 4. Part 1's usefulness ablation: its exact protocol, and how a representation is credited when several are created.
    **A candidate is built (B20_R168, 28 Oct 2026; `frontier/ablation.py`, `tests_genesis/test_frontier_ablation.py`):**
    - the credited representation is the one the discovering branch searched, with how it was made (derivation or
@@ -95,5 +104,22 @@ or a library) that is absent from the starting set.
    Still to fix at preregistration: k (5 is the default), and whether the charge counts against G's matched budget.
 5. Part 4's statistic, if B's small counterexamples are found by both arms: the count of certificates, or time to
    the first one.
+   - A proposal (28 Oct 2026). Family B's known counterexamples are mostly small: the kernel's 18 have 5 to 53
+     vertices, and 13 are within the search limit of 18. So both arms may certify most of the disproved statements
+     within reach, and a count alone would then show nothing. Two statistics, with Holm over both; part 4 passes if either does:
+     - (a) the one-sided exact McNemar test on the statements certified by exactly one arm;
+     - (b) on the statements both arms certify, the paired evaluations to the first certificate, by a one-sided
+       Wilcoxon test (the improved arm faster). Under Holm over the two, its smaller p must be below 0.025, which an
+       exact one-sided test can reach only with at least 6 such statements (1/64).
+   - And the use must be causal: at least one of the improved arm's certificates comes from a branch its
+     procedure opened (the engine's `op` is 'procedure').
+
 6. Whether derived operations should also act on Γ's sum-type operations (union, join) and on corona. Today only
    the product-type space is open to derivation.
+   - The builder's reading (28 Oct 2026; an argument, not a proof): the natural sum-type space on X ⊔ Y has
+     blocks [[f(X), cJ], [cJ, g(Y)]], with f and g among identity, complement, empty and complete, and c in {0, 1}.
+     Every such operation is a composition Γ already has (`compl`, and union or join with E and K bases of the same
+     sizes). So opening it adds no reachable graph, only shorter programs. The product-type space is different: its
+     256 rules reach operations that are not among Γ's, such as the lexicographic and strong products. Whether Γ
+     could compose them is not established.
+   - So the proposal is to leave it closed, which also hands over less.

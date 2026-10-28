@@ -937,7 +937,8 @@ commit through `git show`.
    sandbox suite); the last checkpoint is B20_R148.
 7. **B20_R158 (F5)** from the clean worktree `/home/claude/f5-wt` at `703b2ee` (prepared; its pins match there and
    the forbidden-concept audit of its research plane is clean, both checked on 28 Oct, 09:30 SGT).
-8. **B20_R163 (F6)** from a worktree of its preregistration commit, under 1 h.
+8. **B20_R163 (F6)** from the clean worktree `/home/claude/f6-wt` at `77d725d` (prepared; its pins match there;
+   it refuses to start otherwise), under 1 h. Its meta-search runs in one piece before the first slice check.
 9. **B20_R167** (ARA's calibration again, B20_R141's defect repaired) from a worktree of its preregistration commit,
    about 3 h.
 10. Then PT-1, once preregistered (§7b). Daniel decided part 1's mechanisms on 28 Oct, and both are built (B20_R164).
