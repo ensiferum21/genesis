@@ -746,6 +746,73 @@
     "ara-calibrated"
    ]
   },
+  "B20_R170": {
+   "artifacts": [],
+   "committed": false,
+   "depends_on": [
+    "B20_R156"
+   ],
+   "failure": null,
+   "id": "B20_R170",
+   "kind": "study",
+   "line": "frontier",
+   "notes": "not preregistered; from the Foundry proposal \u00a713.4",
+   "outcome": null,
+   "output": null,
+   "positive": null,
+   "preregistered": null,
+   "priority": 4,
+   "requires": [],
+   "resources": {},
+   "script": null,
+   "status": "queued",
+   "title": "G2 (docs/OMEGA_FOUNDRY.md): an invented update rule for the Frontier's forecast calibration, searched over a small grammar and scored by fresh engines on fresh planted worlds at matched total compute",
+   "unlocks": []
+  },
+  "B20_R171": {
+   "artifacts": [],
+   "committed": false,
+   "depends_on": [
+    "B20_R163"
+   ],
+   "failure": null,
+   "id": "B20_R171",
+   "kind": "study",
+   "line": "frontier",
+   "notes": "not preregistered; the Foundry proposal \u00a713.7; F6 first",
+   "outcome": null,
+   "output": null,
+   "positive": null,
+   "preregistered": null,
+   "priority": 4,
+   "requires": [],
+   "resources": {},
+   "script": null,
+   "status": "queued",
+   "title": "G3 (docs/OMEGA_FOUNDRY.md): joint against separate discovery on the Frontier (fixed, operators only, separate stages, joint bundles with interactions) at equal total budget",
+   "unlocks": []
+  },
+  "B20_R172": {
+   "artifacts": [],
+   "committed": false,
+   "depends_on": [],
+   "failure": null,
+   "id": "B20_R172",
+   "kind": "engineering",
+   "line": "frontier",
+   "notes": "engineering first; the Foundry proposal \u00a713.3",
+   "outcome": null,
+   "output": null,
+   "positive": null,
+   "preregistered": null,
+   "priority": 3,
+   "requires": [],
+   "resources": {},
+   "script": null,
+   "status": "queued",
+   "title": "G4 (docs/OMEGA_FOUNDRY.md): decision-relevant state abstraction for the allocator, found through counterexamples (alike states, different best actions)",
+   "unlocks": []
+  },
   "allocator-baselines": {
    "artifacts": [],
    "committed": false,
@@ -977,6 +1044,27 @@
    "script": null,
    "status": "dormant",
    "title": "Engine invention under a validated judge v3 (a new preregistered study)",
+   "unlocks": []
+  },
+  "ledger-row-schema": {
+   "artifacts": [],
+   "committed": false,
+   "depends_on": [],
+   "failure": null,
+   "id": "ledger-row-schema",
+   "kind": "engineering",
+   "line": "general",
+   "notes": "",
+   "outcome": null,
+   "output": null,
+   "positive": null,
+   "preregistered": null,
+   "priority": 1,
+   "requires": [],
+   "resources": {},
+   "script": null,
+   "status": "queued",
+   "title": "G6 (docs/OMEGA_FOUNDRY.md): one ledger row schema for every attempt (lineage, parent and candidate hashes, evidence level, release decision)",
    "unlocks": []
   },
   "paradigm-invention": {
@@ -1729,6 +1817,26 @@
    "kind": "amend",
    "time": "2026-10-28T02:47:03+00:00",
    "why": "the star-size defect; library=False keeps the preregistered FULL arm"
+  },
+  {
+   "id": "B20_R170",
+   "kind": "add",
+   "time": "2026-10-28T02:52:54+00:00"
+  },
+  {
+   "id": "B20_R171",
+   "kind": "add",
+   "time": "2026-10-28T02:52:54+00:00"
+  },
+  {
+   "id": "B20_R172",
+   "kind": "add",
+   "time": "2026-10-28T02:52:54+00:00"
+  },
+  {
+   "id": "ledger-row-schema",
+   "kind": "add",
+   "time": "2026-10-28T02:52:54+00:00"
   }
  ],
  "lines": {
@@ -1879,6 +1987,12 @@
    "run": 0,
    "stagnant": false
   },
+  "general": {
+   "diagnosis": null,
+   "outcomes": [],
+   "run": 0,
+   "stagnant": false
+  },
   "mathematics": {
    "diagnosis": null,
    "outcomes": [],
@@ -1986,7 +2100,11 @@
   "B20_R163",
   "pt1-mechanism4-build",
   "B20_R159",
-  "B20_R167"
+  "B20_R167",
+  "B20_R170",
+  "B20_R171",
+  "B20_R172",
+  "ledger-row-schema"
  ],
  "reactivated": {},
  "schema": "genesis-research-queue-v1",

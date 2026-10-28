@@ -151,6 +151,17 @@ or a library) that is absent from the starting set.
      'template'.
    - The stricter reading, which counts only the two named mechanisms, is one setting away.
 
+9. **The information-only and generic-implementation controls** (from the Foundry proposal §6; `docs/OMEGA_FOUNDRY.md`
+   G1). A gain of the improved inventor may come from what its procedure knows, not from what it does. Two secondary
+   arms, in parts 4 and 5:
+   - notebook: the predecessor, after every certified counterexample from A has been checked on every task at a
+     charged cost;
+   - given-representation: the predecessor whose domain starts with the representation the procedure would build,
+     without the procedure.
+   Each is compared with the improved arm by the same two statistics. Part 5's verdict stays Daniel's definition
+   (improved against predecessor). The labels OPERATIONAL_OVER_FACTS and PROCEDURE_OVER_REPRESENTATION are reported
+   when the improved arm beats each control. Making them pass conditions is one setting, and Daniel's call.
+
 ## The study, drafted (28 Oct 2026; NOT preregistered)
 
 `scripts/b20r159_proving_test.py`, with design tests in `tests_genesis/test_proving_test_study.py` (invented
