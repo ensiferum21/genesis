@@ -158,9 +158,6 @@ class Derive(unittest.TestCase):
         self.assertIn(want, [x['ops'] for x in fresh.derived.values()])
 
 
-if __name__ == '__main__':
-    unittest.main()
-
 
 class Library(unittest.TestCase):
     """Mechanism 1: library learning over Γ (`conjecture/library.py`)."""
@@ -254,3 +251,39 @@ class Transfer(unittest.TestCase):
         self.assertTrue(used)                                                     # and searched with
         self.assertEqual(f.best_verified.get('s1'), 1.0)
         self.assertFalse(f.best_verified.get('s2'))
+
+
+class Cap(unittest.TestCase):
+    """One size cap for every program representation (`ConjectureDomain(program_max_n=...)`): by default Γ, derived and
+    library programs stop at attack.MAX_N vertices, as before; with a cap, every one of them builds up to it."""
+    BIG = ('prod', ('K', 10), ('C', 10))                             # 100 vertices
+
+    def test_the_default_is_unchanged(self):
+        self.assertEqual(AT.MAX_N, 64)
+        for rep in (AT.GammaRep(8), OP.GammaPlus(8, {'r1': OP.CARTESIAN}), self.lib(8, None)):
+            self.assertEqual(rep.max_n, AT.MAX_N)
+            self.assertIsNone(rep.graph(self.BIG))
+            self.assertEqual(rep.graph(('prod', ('K', 4), ('C', 4))).shape, (16, 16))
+
+    def test_a_cap_applies_to_every_program_representation(self):
+        for rep in (AT.GammaRep(8, 400), OP.GammaPlus(8, {'r1': OP.CARTESIAN}, 400), self.lib(8, 400)):
+            A = rep.graph(self.BIG)
+            self.assertEqual(A.shape, (100, 100))
+            self.assertIsNone(rep.graph(('prod', ('K', 20), ('C', 21))))        # 420 > 400
+
+    def test_the_domain_passes_its_cap(self):
+        dom = ConjectureDomain(POSED, n_values=(6, 8), program_max_n=400)
+        self.assertEqual(dom._rep_for({'representation': 'gamma', 'params': {'n': 8}}).max_n, 400)
+        dom.derived['derived0'] = {'ops': {'r9': OP.CARTESIAN}, 'from': 'gamma'}
+        self.assertEqual(dom._rep_for({'representation': 'derived0', 'params': {'n': 8}}).max_n, 400)
+        plain = ConjectureDomain(POSED, n_values=(6, 8))
+        self.assertIsNone(plain._rep_for({'representation': 'gamma', 'params': {'n': 8}}))  # the runner's own Γ
+
+    @staticmethod
+    def lib(n, cap):
+        from genesis.conjecture import library as LB
+        return LB.GammaLib(n, {}, {}, cap)
+
+
+if __name__ == '__main__':
+    unittest.main()

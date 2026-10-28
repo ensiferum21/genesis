@@ -36,8 +36,11 @@ def _h(*parts):
 
 class ConjectureDomain:
     def __init__(self, posed, representations=('edges', 'tree', 'bounded', 'gamma'),
-                 methods=('hill', 'anneal', 'evolution', 'gbfs', 'cem', 'nrpa'), n_values=DEFAULT_N, abstraction=True):
+                 methods=('hill', 'anneal', 'evolution', 'gbfs', 'cem', 'nrpa'), n_values=DEFAULT_N, abstraction=True,
+                 program_max_n=None):
         self.posed = dict(posed)
+        # one size cap for every program representation (Γ, derived, library); None keeps attack.MAX_N
+        self.program_max_n = program_max_n
         self.representations, self.methods, self.n_values = tuple(representations), tuple(methods), tuple(n_values)
         self.abstraction = abstraction
         self._runners = {}
@@ -86,10 +89,12 @@ class ConjectureDomain:
             return AB.TemplateRep(self.templates[name]['template'], max_n=max_n)
         if name in self.derived:
             from . import operations as OP
-            return OP.GammaPlus(d['params']['n'], self.derived[name]['ops'])
+            return OP.GammaPlus(d['params']['n'], self.derived[name]['ops'], self.program_max_n)
         if name in self.libraries:
             from . import library as LB
-            return LB.GammaLib(d['params']['n'], {}, self.libraries[name]['macros'])
+            return LB.GammaLib(d['params']['n'], {}, self.libraries[name]['macros'], self.program_max_n)
+        if name == 'gamma' and self.program_max_n is not None:
+            return AT.GammaRep(d['params']['n'], self.program_max_n)
         return None
 
     def _gamma_family(self, name):

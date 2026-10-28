@@ -133,6 +133,10 @@ or a library) that is absent from the starting set.
    - A proposal, and it must not be tuned to A: one uniform cap for every representation that builds by program, at
      the templates' existing 400, for every arm (P0 included). This is a resource limit already in the code, not a
      hint. The inadequacy gate then says whether P0 can reach A with Γ alone at that cap.
-   - The cost: one spectral radius of a 400-vertex graph is tens of milliseconds, so budgets in evaluations will need
-     CPU checks.
+   - The cost of one evaluation of a bound, timed on 28 Oct 2026 on CPU 1 under load: about 0.2 ms at 64 vertices,
+     1 ms at 160, 3 ms at 256 and 11 ms at 400. A budget in evaluations therefore needs a CPU check: 100,000
+     evaluations all at 400 vertices would take about 18 minutes per bound.
+   - **Built (B20_R168 follow-up, 28 Oct 2026):** `ConjectureDomain(program_max_n=...)` sets one cap for Γ, derived
+     and library programs (`GammaRep`, `GammaPlus` and `GammaLib` take `max_n`). The default is unchanged, so
+     attack.MAX_N = 64 holds for F4–F6 (tests: `test_operations.Cap`).
    - Disclosure: this item was written knowing A's sizes, and the preregistration says so.

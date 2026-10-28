@@ -111,8 +111,8 @@ def slots(skel, binary):
 
 
 class GammaLib(OP.GammaPlus):
-    def __init__(self, n, ops, macros):
-        super().__init__(n, ops)
+    def __init__(self, n, ops, macros, max_n=None):
+        super().__init__(n, ops, max_n)
         self.macros = dict(macros)                    # name -> skeleton
 
     def _base(self, rng):

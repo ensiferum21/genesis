@@ -73,8 +73,8 @@ def recombine_tables(t1, t2, rng):
 class GammaPlus(AT.GammaRep):
     """Γ with extra binary operations, each a rule table of the product-type space."""
 
-    def __init__(self, n, ops):
-        super().__init__(n)
+    def __init__(self, n, ops, max_n=None):
+        super().__init__(n, max_n)
         self.ops = dict(ops)
         self.BINARY = AT.GammaRep.BINARY + tuple(sorted(self.ops))
 

@@ -202,8 +202,9 @@ class GammaRep:
     BASES = ('P', 'C', 'K', 'S', 'E')
     BINARY = ('union', 'join', 'prod', 'corona')
 
-    def __init__(self, n):
-        self.n = n                                     # a soft target size: programs are capped at MAX_N vertices
+    def __init__(self, n, max_n=None):
+        self.n = n                                     # a soft target size: programs are capped at max_n vertices
+        self.max_n = MAX_N if max_n is None else int(max_n)    # MAX_N unless a study sets one cap for every arm
 
     def _base(self, rng):
         if rng.random() < 0.2:
@@ -284,7 +285,7 @@ class GammaRep:
         return self.size(g[1]) + g[3]
 
     def graph(self, g):
-        if self.size(g) > MAX_N or self.size(g) < 2:
+        if self.size(g) > self.max_n or self.size(g) < 2:
             return None
         return self._build(g)
 
