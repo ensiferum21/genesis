@@ -64,8 +64,13 @@ are the engine's standing abstraction. Whether they count for part 1 is the sett
      - the given representation: the predecessor whose domain starts with the representation credited in part 1
        (`give`), without the procedure.
      On C both are charged the discovery like the improved arm. Each is compared with the improved arm by the same
-     two statistics. OPERATIONAL_OVER_FACTS and PROCEDURE_OVER_REPRESENTATION are reported labels, not part of the
-     verdict.
+     two statistics. **Part 5 passes only if the improved arm beats the predecessor and both controls**
+     (PART5_REQUIRES_CONTROLS; Daniel delegated the choice on 28 Oct 2026, 10:58 SGT: "Do what's the best"). This
+     is an intersection-union test: each comparison must pass at its own level, so requiring all three does not
+     inflate the error rate. A given-representation control skipped because the discovery used a starting
+     representation is the predecessor itself. In part 4 the two comparisons are reported, as the labels
+     OPERATIONAL_OVER_FACTS and PROCEDURE_OVER_REPRESENTATION; there part 4's causal-use condition already requires
+     that the procedure's own branches produced a certificate.
 **Verdict:** INVALID if validity fails; else INADEQUACY_GATE_FAILED if the gate fails; else PROVED_OUT if parts 1-5
 all pass; else NOT_PROVED_OUT, naming the parts that failed. Parts 1 and 3-5 need part 2's discovery; without it
 they fail.
@@ -102,6 +107,7 @@ RHO = 0.5                                 # the improved inventor's share for it
 PROGRAM_MAX_N = 400                       # one cap for every program representation and arm (the draft's item 7)
 K_ABLATION = 5
 PART1_MECHANISMS = ('derivation', 'library', 'template')   # PROVISIONAL: whether a template counts (item 8)
+PART5_REQUIRES_CONTROLS = True            # part 5 must also beat both controls (decided 28 Oct 2026, 10:58 SGT)
 QUANTUM, CHUNK = 500, 400
 ALPHA = 0.05
 SLICE_S, PAUSED = 6600, 3
@@ -503,6 +509,8 @@ def analyse(done, pa, pb, pc, number_a, number_b, labels_c, withheld_c, register
             s[f'vs_{control}'] = compare(imp, c, list(problems))
             if s[f'vs_{control}']['pass']:
                 labels.setdefault(fam, []).append(label)
+        if fam == 'C' and PART5_REQUIRES_CONTROLS:
+            parts['part5'] = parts['part5'] and all(beats(s, control) for control in ('notebook', 'given_rep'))
         stats[fam] = s
     proved_c = sorted({pc[p][0] for a in ARMS_LATER for p in done.get(f'C_{a}', {}).get('certified', [])
                        if _proved_equivalent(*pc[p], GN, SD)})
@@ -520,6 +528,16 @@ def analyse(done, pa, pb, pc, number_a, number_b, labels_c, withheld_c, register
 
 
 CLASSICAL_PROVED = (('d + m', 'vertex'), ('sqrt(2*d^2 + 2*d*m)', 'vertex'), ('2*d', 'vertex'), ('di + dj', 'edge'))
+
+
+def beats(s, control):
+    """Whether the improved arm beat a control in part 5. A given-representation control skipped because the
+    discovery used a starting representation is the predecessor itself, which already has that representation, so
+    the primary comparison decides it. A control that did not run is not beaten."""
+    v = s.get(f'vs_{control}', {})
+    if 'skipped' in v:
+        return v['skipped'] == 'the discovery used a starting representation' and s['pass']
+    return bool(v.get('pass'))
 
 
 def _proved_equivalent(formula, kind, GN, SD):

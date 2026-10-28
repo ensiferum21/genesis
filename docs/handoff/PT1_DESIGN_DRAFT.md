@@ -158,9 +158,15 @@ or a library) that is absent from the starting set.
      charged cost;
    - given-representation: the predecessor whose domain starts with the representation the procedure would build,
      without the procedure.
-   Each is compared with the improved arm by the same two statistics. Part 5's verdict stays Daniel's definition
-   (improved against predecessor). The labels OPERATIONAL_OVER_FACTS and PROCEDURE_OVER_REPRESENTATION are reported
-   when the improved arm beats each control. Making them pass conditions is one setting, and Daniel's call.
+   Each is compared with the improved arm by the same two statistics.
+   **Decided on 28 Oct 2026, 10:58 SGT.** Daniel delegated it ("Do what's the best"), and the builder chose the
+   harder test: **part 5 passes only if the improved arm beats the predecessor and both controls**
+   (`PART5_REQUIRES_CONTROLS`).
+   - The reason: PROVED_OUT should mean that the procedure transferred, not a list of graphs or a ready-made
+     representation.
+   - Requiring all three is an intersection-union test, so it costs power but does not inflate the error rate.
+   - In part 4 the two comparisons stay reported labels. There, part 4's causal-use condition already requires that
+     the procedure's own branches produced a certificate.
 
 ## The study, drafted (28 Oct 2026; NOT preregistered)
 

@@ -67,12 +67,12 @@ LLM-free controls separate these:
   would build (the derived operation set or the template), without the procedure. This is the
   "generic-implementation" control.
 
-They are secondary arms of parts 4 and 5, preregistered with the test, each with the same two statistics as the
-primary comparison.
-- Part 5's verdict stays Daniel's definition: improved against predecessor.
-- The improved arm also earns two reported labels, OPERATIONAL_OVER_FACTS and PROCEDURE_OVER_REPRESENTATION, when it
-  beats the corresponding control.
-- If Daniel wants them as pass conditions ("Do the hardest"), that is one setting.
+They are arms of parts 4 and 5, preregistered with the test, each with the same two statistics as the primary
+comparison.
+- **Part 5 must beat both controls as well as the predecessor.** Daniel delegated the choice on 28 Oct 2026, 10:58
+  SGT, and the builder chose the harder test. It is an intersection-union test, with no added error rate.
+- In part 4 the comparisons are reported labels, OPERATIONAL_OVER_FACTS and PROCEDURE_OVER_REPRESENTATION.
+- Built in the PT-1 draft (`scripts/b20r159_proving_test.py`).
 
 **G2: an invented update rule for the Frontier's forecast calibration (§13.4, B20_R170).** F3 found the forecasts
 overconfident and biased low, and a textbook correction failed (`docs/checkpoints/B20_R156_RECORD.md`).

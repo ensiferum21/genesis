@@ -85,6 +85,17 @@ class Design(unittest.TestCase):
         self.assertAlmostEqual(s['p_mcnemar'], 1 / 32)
         self.assertFalse(s['pass'])                                   # 1/32 x 2 (Holm) is not below 0.05
 
+    def test_part5_must_beat_both_controls(self):
+        win = {'pass': True}
+        lose = {'pass': False}
+        skipped = {'skipped': 'the discovery used a starting representation'}
+        self.assertTrue(S.PART5_REQUIRES_CONTROLS)
+        self.assertTrue(S.beats(dict(win, vs_notebook=win, vs_given_rep=win), 'notebook'))
+        self.assertFalse(S.beats(dict(win, vs_notebook=lose), 'notebook'))
+        self.assertTrue(S.beats(dict(win, vs_given_rep=skipped), 'given_rep'))     # the predecessor itself
+        self.assertFalse(S.beats(dict(lose, vs_given_rep=skipped), 'given_rep'))
+        self.assertFalse(S.beats(dict(win, vs_notebook={'skipped': 'not run'}), 'notebook'))
+
     def test_the_notebook_checks_every_fact_on_every_task(self):
         facts = [{'id': 1}, {'id': 2}]
         found, units = S.check_facts({'p': 0, 'q': 0, 'r': 0}, lambda p, a: (p, a['id']) in {('q', 2), ('r', 1)}, facts)
