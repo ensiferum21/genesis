@@ -279,7 +279,10 @@
    "unlocks": []
   },
   "B20_R141": {
-   "artifacts": [],
+   "artifacts": [
+    "evidence/ara_zoo_b20r141",
+    "docs/checkpoints/B20_R141_RECORD.md"
+   ],
    "committed": true,
    "depends_on": [
     "B20_R151",
@@ -290,9 +293,9 @@
    "kind": "study",
    "line": "architecture-invention",
    "notes": "calibration domain only; real-system claims need B20_R142; after B20_R151 (Daniel, 27 Oct 2026); preregistered 27 Oct; runs after B20_R152",
-   "outcome": null,
+   "outcome": "INVALID: the freshness clause was False in every registered run (a defect of the script; its design tests ran only the unregistered path). Descriptively every experiment would have passed: A 42/50 localised, NONE 30/30; B GLOBAL_ONLY, SENSE_BLIND, EVAL_NOISY; C none; D ara2 over blind2 +0.41, over tuning +0.51; S no ARA release on 45 controls. Re-run as B20_R167",
    "output": "evidence/ara_zoo_b20r141",
-   "positive": null,
+   "positive": false,
    "preregistered": "sha256 ccec4633599faa628a26c8ca4aeeaa6061a8e857a114bc6b24d46875025660bf (the preregistration commit)",
    "priority": 7,
    "requires": [
@@ -302,7 +305,7 @@
     "cpu0_hours": 3.0
    },
    "script": "scripts/b20r141_ara_zoo.py",
-   "status": "running",
+   "status": "done",
    "title": "ARA experiments A-D on the sealed Limitation Zoo: diagnosis, proposal, isolated implementation, sealed gain at matched total units against incumbent, tuning-only and blind-rewrite controls",
    "unlocks": [
     "ara-calibrated"
@@ -557,7 +560,10 @@
    "unlocks": []
   },
   "B20_R156": {
-   "artifacts": [],
+   "artifacts": [
+    "evidence/frontier_worlds_b20r156",
+    "docs/checkpoints/B20_R156_RECORD.md"
+   ],
    "committed": true,
    "depends_on": [
     "frontier-f1-build",
@@ -568,9 +574,9 @@
    "kind": "study",
    "line": "frontier",
    "notes": "Daniel's directive of 27 Oct 2026, 19:55 (docs/OMEGA_FRONTIER.md); to preregister; preregistered 27 Oct 2026 21:25 SGT; runs alone on CPU 0 after B20_R141",
-   "outcome": null,
+   "outcome": "FRONTIER_BETTER: F beats halving +0.193, UCB1 +0.108, uniform +0.317 (p_Holm < 0.001); F+ 2.314 of the reference against F 0.810; forecast coverage 0.661 at a nominal 0.90; F opened 53 of 57 planted pairs, UCB1 47 (calibration; planted worlds)",
    "output": "evidence/frontier_worlds_b20r156",
-   "positive": null,
+   "positive": true,
    "preregistered": "sha256 9ae034dbf8bde4cd9d2eba75807c16ef869917568cf4ffd5a8d2b2f20566353a (amended before it ran; first sha256 e0ed7ae7...82f7 at 5c3e236)",
    "priority": 6,
    "requires": [],
@@ -578,7 +584,7 @@
     "cpu0_hours": 1.0
    },
    "script": "scripts/b20r156_frontier_worlds.py",
-   "status": "queued",
+   "status": "done",
    "title": "F3: the Frontier engine against uniform, successive halving, UCB1 and random at matched compute on sealed planted worlds from held-out families (regret; forecast coverage; no false discovery on null worlds)",
    "unlocks": []
   },
@@ -604,7 +610,7 @@
     "cpu0_hours": 2.5
    },
    "script": "scripts/b20r157_laplacian_bounds.py",
-   "status": "queued",
+   "status": "running",
    "title": "F4: the sealed Laplacian bounds: refutations by exact certificate within budget, the Frontier against NRPA, GBFS, CEM and the uniform portfolio at matched CPU; no certificate against a proved bound; bounds 44 and 46 open as of June 2026",
    "unlocks": []
   },
@@ -709,6 +715,36 @@
    "status": "done",
    "title": "Do Genesis's searched max-cut engines (B20_R151's 18, frozen) beat REX on 48 fresh planar graphs? A replication of B20_R151's S5",
    "unlocks": []
+  },
+  "B20_R167": {
+   "artifacts": [],
+   "committed": true,
+   "depends_on": [
+    "B20_R141",
+    "ara-1-build"
+   ],
+   "failure": null,
+   "id": "B20_R167",
+   "kind": "study",
+   "line": "architecture-invention",
+   "notes": "runs after B20_R163 (F6); B20_R142 requires ara-calibrated, which only this can now unlock",
+   "outcome": null,
+   "output": "evidence/ara_zoo_b20r167",
+   "positive": null,
+   "preregistered": "sha256 233610d030b8a0af747834e2d0006e209348f3a52a590283f779d3a03eb1af81 (the preregistration commit)",
+   "priority": 6,
+   "requires": [
+    "ara-core"
+   ],
+   "resources": {
+    "cpu0_hours": 3.0
+   },
+   "script": "scripts/b20r167_ara_zoo_rerun.py",
+   "status": "queued",
+   "title": "B20_R141 again with its validity defect repaired, on a fresh sealed seed and fresh indices: ARA's calibration on the sealed Limitation Zoo, experiments A-D and S, the design otherwise B20_R141's",
+   "unlocks": [
+    "ara-calibrated"
+   ]
   },
   "allocator-baselines": {
    "artifacts": [],
@@ -885,15 +921,15 @@
    "kind": "build",
    "line": "frontier",
    "notes": "Daniel's directive of 27 Oct 2026, 19:55 (docs/OMEGA_FRONTIER.md); engineering on CPU 1; sections 5-6; first: the Taieb et al. reference, the 32 untranscribed formulas, a literature search for bounds 44 and 46 after June 2026; 27 Oct 20:40: started: conjecture/expr, graphs, sealed (all 68 bounds tiered: A1 51, A2 11, B 4, X 2), verify (exact Rayleigh certificates); evidence/bhs_transcription_f2; the equitable-partition operation is kernel side only (the proving test forbids giving the concept); 27 Oct 21:15: attack (4 representations without a quotient concept, 6 methods), domain (the Frontier's view), verify.verifier; the Frontier refutes invented false bounds and never proved ones; a disclosed development look attacked sealed refuted bounds 2, 3, 36, 48, 57, 61; 27 Oct 21:35: abstraction (parse converged graphs into Gamma programs, generalise sizes into templates: new representations Genesis abstracts; one per shape); 28 Oct 00:36: the Wagner rebuild test (exact Collatz-Wielandt certificate) closes F2",
-   "outcome": null,
+   "outcome": "built on 27 Oct 2026 (docs/OMEGA_FRONTIER.md \u00a712): the conjecture domain (expr, graphs, attack, domain, abstraction, generate; kernel side sealed, verify) and the sealed set of 68 bounds tiered; marked done in the queue on 28 Oct, late (bookkeeping)",
    "output": null,
-   "positive": null,
+   "positive": true,
    "preregistered": null,
    "priority": 6,
    "requires": [],
    "resources": {},
    "script": null,
-   "status": "queued",
+   "status": "done",
    "title": "F2: graph conjectures and constructions with exact certificates (rational Rayleigh and Collatz-Wielandt bounds, interval arithmetic), the construction language with equitable-partition realisation, attacks (portfolio harnesses, NMCS, NRPA, GBFS, CEM, exhaustive), the conjecture generator, and the sealed AutoGraphiX Laplacian bounds by the two-source rule",
    "unlocks": []
   },
@@ -1613,6 +1649,54 @@
    "outcome": "built (B20_R160): direction, curves, converge, allocate, engine, manifest; the kernel-side planted world; 11 tests (coverage, null, recombination, resume, relabelling, boundaries); development look on 8 worlds: allocation-only Frontier 0.774 of the reference against UCB1 0.652, halving 0.563, uniform 0.418, random 0.439 (higher in 7, 8, 8, 8 of 8); licenses nothing",
    "positive": true,
    "time": "2026-10-27T13:11:39+00:00"
+  },
+  {
+   "id": "B20_R141",
+   "kind": "finish",
+   "outcome": "INVALID: the freshness clause was False in every registered run (a defect of the script; its design tests ran only the unregistered path). Descriptively every experiment would have passed: A 42/50 localised, NONE 30/30; B GLOBAL_ONLY, SENSE_BLIND, EVAL_NOISY; C none; D ara2 over blind2 +0.41, over tuning +0.51; S no ARA release on 45 controls. Re-run as B20_R167",
+   "positive": false,
+   "time": "2026-10-28T01:12:53+00:00"
+  },
+  {
+   "id": "B20_R156",
+   "kind": "start",
+   "time": "2026-10-28T01:12:53+00:00"
+  },
+  {
+   "id": "B20_R156",
+   "kind": "finish",
+   "outcome": "FRONTIER_BETTER: F beats halving +0.193, UCB1 +0.108, uniform +0.317 (p_Holm < 0.001); F+ 2.314 of the reference against F 0.810; forecast coverage 0.661 at a nominal 0.90; F opened 53 of 57 planted pairs, UCB1 47 (calibration; planted worlds)",
+   "positive": true,
+   "time": "2026-10-28T01:12:53+00:00"
+  },
+  {
+   "id": "frontier-f2-build",
+   "kind": "start",
+   "time": "2026-10-28T01:12:53+00:00"
+  },
+  {
+   "id": "frontier-f2-build",
+   "kind": "finish",
+   "outcome": "built on 27 Oct 2026 (docs/OMEGA_FRONTIER.md \u00a712): the conjecture domain (expr, graphs, attack, domain, abstraction, generate; kernel side sealed, verify) and the sealed set of 68 bounds tiered; marked done in the queue on 28 Oct, late (bookkeeping)",
+   "positive": true,
+   "time": "2026-10-28T01:12:53+00:00"
+  },
+  {
+   "id": "B20_R157",
+   "kind": "start",
+   "time": "2026-10-28T01:12:53+00:00"
+  },
+  {
+   "id": "B20_R167",
+   "kind": "add",
+   "time": "2026-10-28T01:12:53+00:00"
+  },
+  {
+   "id": "B20_R167",
+   "kind": "priority",
+   "priority": 6,
+   "time": "2026-10-28T01:13:05+00:00",
+   "why": "after F5 and F6 (priority 6, earlier in the order): the Frontier line and PT-1 come first under the latest directive (27 Oct, 19:55); B20_R141 had 7"
   }
  ],
  "lines": {
@@ -1623,9 +1707,14 @@
      "ara-1-build",
      "built on fixtures (B20_R150): graph, zoo, judge, ladder, grammar, model, assumptions, cycle; 49 tests; a disclosed development look",
      true
+    ],
+    [
+     "B20_R141",
+     "INVALID: the freshness clause was False in every registered run (a defect of the script; its design tests ran only the unregistered path). Descriptively every experiment would have passed: A 42/50 localised, NONE 30/30; B GLOBAL_ONLY, SENSE_BLIND, EVAL_NOISY; C none; D ara2 over blind2 +0.41, over tuning +0.51; S no ARA release on 45 controls. Re-run as B20_R167",
+     false
     ]
    ],
-   "run": 0,
+   "run": 1,
    "stagnant": false
   },
   "capability-graph": {
@@ -1743,6 +1832,16 @@
      "frontier-f1-build",
      "built (B20_R160): direction, curves, converge, allocate, engine, manifest; the kernel-side planted world; 11 tests (coverage, null, recombination, resume, relabelling, boundaries); development look on 8 worlds: allocation-only Frontier 0.774 of the reference against UCB1 0.652, halving 0.563, uniform 0.418, random 0.439 (higher in 7, 8, 8, 8 of 8); licenses nothing",
      true
+    ],
+    [
+     "B20_R156",
+     "FRONTIER_BETTER: F beats halving +0.193, UCB1 +0.108, uniform +0.317 (p_Holm < 0.001); F+ 2.314 of the reference against F 0.810; forecast coverage 0.661 at a nominal 0.90; F opened 53 of 57 planted pairs, UCB1 47 (calibration; planted worlds)",
+     true
+    ],
+    [
+     "frontier-f2-build",
+     "built on 27 Oct 2026 (docs/OMEGA_FRONTIER.md \u00a712): the conjecture domain (expr, graphs, attack, domain, abstraction, generate; kernel side sealed, verify) and the sealed set of 68 bounds tiered; marked done in the queue on 28 Oct, late (bookkeeping)",
+     true
     ]
    ],
    "run": 0,
@@ -1854,7 +1953,8 @@
   "frontier-f6-build",
   "B20_R163",
   "pt1-mechanism4-build",
-  "B20_R159"
+  "B20_R159",
+  "B20_R167"
  ],
  "reactivated": {},
  "schema": "genesis-research-queue-v1",

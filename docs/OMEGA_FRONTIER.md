@@ -899,7 +899,7 @@ B20_R164).
 | Library learning | Ellis et al. 2021 (DreamCoder); Bowers et al. 2023 (Stitch); Zenkner et al. 2024 (AbstractBeam: no gain on an unlike distribution) | Abstraction by compression | Named constructions (§5.3) |
 | Self-improvement | Zhang et al. 2025 (Darwin Gödel Machine; LLM-based); Schmidhuber 2003 | Open-ended self-modification | The meta level (§4.8), LLM-free and bounded |
 
-## 12. Handoff state (27 Oct 2026, 22:00 SGT; updated 28 Oct 2026, 01:15 SGT)
+## 12. Handoff state (27 Oct 2026, 22:00 SGT; updated 28 Oct 2026, 09:20 SGT)
 
 **What exists now** (all pushed to `continuation-b20-rx`):
 
@@ -925,16 +925,26 @@ commit through `git show`.
 2. **B20_R152 is RECORDED** (27 Oct, 20:35 UTC): NOTHING_ADMITTED (`docs/checkpoints/B20_R152_RECORD.md`).
 2b. **B20_R165 is RECORDED** (27 Oct, 21:50 UTC): REPLICATED_WITH_SINGLE_ENGINE, all on ±1-weighted planar graphs
     (`docs/checkpoints/B20_R165_RECORD.md`).
-3. **B20_R141 is running in slices** (from 27 Oct, 21:50 UTC; about 3 h).
-   - From the clean worktree `/home/claude/r141-wt` at `a3b3eda`.
-   - Resume after an exit 3 with: `/home/claude/run_slice.sh /home/claude/r141-wt scripts/b20r141_ara_zoo.py evidence/ara_zoo_b20r141 /home/claude/logs/r141_slices.log`
-   - Check slice exits by count only. Record it with the RecordB20R141 draft.
-4. **B20_R156 (F3)** from a worktree at `4a7e193`, under 1 h.
-5. **B20_R157 (F4)** from a worktree at `bdf0c57`, about 2 h.
-6. **B20_R158 (F5)** from a worktree at `703b2ee`.
-7. **B20_R163 (F6)** from a worktree of its preregistration commit, under 1 h.
-8. Then PT-1, once preregistered (§7b). Daniel decided part 1's mechanisms on 28 Oct, and both are built (B20_R164).
-   A design draft, not preregistered, is in `docs/handoff/PT1_DESIGN_DRAFT.md`.
+3. **B20_R141 is RECORDED** (28 Oct, 00:55 UTC): INVALID, by a defect in its freshness clause, which was False in
+   every registered run (`docs/checkpoints/B20_R141_RECORD.md`). Descriptively, every experiment would have passed.
+4. **B20_R156 (F3) is RECORDED** (28 Oct, 01:07 UTC): FRONTIER_BETTER on sealed planted worlds; forecast coverage
+   0.66 at a nominal 0.90 (`docs/checkpoints/B20_R156_RECORD.md`).
+5. **B20_R157 (F4) is running in slices** (from 28 Oct, 01:08 UTC; about 2 h).
+   - From the clean worktree `/home/claude/f4-wt` at `bdf0c57` (pins checked there before it started).
+   - Resume after an exit 3 with: `/home/claude/run_slice.sh /home/claude/f4-wt scripts/b20r157_laplacian_bounds.py evidence/laplacian_bounds_b20r157 /home/claude/logs/f4_slices.log`
+   - Check slice exits by count only. Record it with the RecordB20R157 draft.
+6. **A checkpoint window** (B20_R168): the release matrix and the checkpoint need CPU 0 free of studies (the
+   sandbox suite); the last checkpoint is B20_R148.
+7. **B20_R158 (F5)** from a worktree at `703b2ee`.
+8. **B20_R163 (F6)** from a worktree of its preregistration commit, under 1 h.
+9. **B20_R167** (ARA's calibration again, B20_R141's defect repaired) from a worktree of its preregistration commit,
+   about 3 h.
+10. Then PT-1, once preregistered (§7b). Daniel decided part 1's mechanisms on 28 Oct, and both are built (B20_R164).
+    A design draft, not preregistered, is in `docs/handoff/PT1_DESIGN_DRAFT.md`.
+
+**Before running any preregistered study, check its registered path** (the lesson of B20_R141): read its validity
+code for a clause that cannot hold in a registered run, and check its run-time pins in its worktree. B20_R157's were
+checked before it started: its validity reads the nulls, the spent budgets and the pins, and its pins match.
 
 **CPU 1 (engineering):** light tests only.
 - No sandboxed (runc) test while a study runs on CPU 0: the sandbox resets the affinity

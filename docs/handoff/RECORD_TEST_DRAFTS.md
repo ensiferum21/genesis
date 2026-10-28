@@ -328,6 +328,8 @@ class RecordB20R165(unittest.TestCase):
 
 ## RecordB20R156 (F3; append to `tests_genesis/test_frontier_worlds_study.py`)
 
+**Appended on 28 Oct 2026, 09:20 SGT; it passed unchanged on B20_R156's evidence.**
+
 Written on 28 Oct 2026, 02:55 SGT, from the script only, before the study ran. Needs `import hashlib`,
 `import json` (already there) and `ROOT`, `S` (the study script).
 
@@ -487,6 +489,11 @@ class RecordB20R157(unittest.TestCase):
 ```
 
 ## RecordB20R141 (append to `tests_genesis/test_ara_zoo_study.py`)
+
+**Appended on 28 Oct 2026, 09:20 SGT, with one assertion changed (disclosed in `docs/checkpoints/B20_R141_RECORD.md`):
+the draft asserted that the run was valid, and it is not. The appended version asserts the validity record as it
+is, reproduces the defect (`test_the_freshness_defect`), and adds two re-derivations (the environments regenerated
+from the sealed seed; every submission re-judged).**
 
 Written on 28 Oct 2026, 04:55 SGT, from the script only (`a3b3eda`, sha256 `ccec4633…60bf`), before the study ran.
 The file already has `json`, `hashlib`, `unittest`, `ROOT`, `S` and `Z`.

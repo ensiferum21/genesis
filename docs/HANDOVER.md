@@ -248,8 +248,13 @@ needs people: a reviewer, a statistician, an independent custodian on its own ma
         NO_LANGUAGE_EFFECT. Λ1 did not express better engines than Λ0 on planar2000 at these budgets. As a secondary
         finding, every searched engine beat REX on fresh graphs by 0.45–0.78%.
       - **B20_R152 is recorded** (`docs/checkpoints/B20_R152_RECORD.md`): NOTHING_ADMITTED. The judge refused both of generation 1's statements, so B20_R155 does not run.
-      - **B20_R165 is recorded** (`docs/checkpoints/B20_R165_RECORD.md`): REPLICATED_WITH_SINGLE_ENGINE. The gain over REX holds on 48 fresh planar graphs, all of it on ±1-weighted ones (+1.16%). B20_R141 is running.
-        Its record test draft is in `docs/handoff/RECORD_TEST_DRAFTS.md`.
+      - **B20_R165 is recorded** (`docs/checkpoints/B20_R165_RECORD.md`): REPLICATED_WITH_SINGLE_ENGINE. The gain over REX holds on 48 fresh planar graphs, all of it on ±1-weighted ones (+1.16%).
+      - **B20_R141 is recorded** (`docs/checkpoints/B20_R141_RECORD.md`): INVALID. The script's freshness clause
+        was False in every registered run (a defect; disclosed). Descriptively every experiment would have
+        passed. B20_R167, the re-run with the defect repaired on fresh environments, is preregistered; B20_R142
+        still requires `ara-calibrated`.
+      - **B20_R156 (F3) is recorded** (`docs/checkpoints/B20_R156_RECORD.md`): FRONTIER_BETTER on sealed planted
+        worlds; forecast coverage 0.66 at a nominal 0.90. B20_R157 (F4) started at 01:08 UTC.
   26c. **Daniel's directive of 27 Oct 2026, 19:55 is adopted**: `docs/OMEGA_FRONTIER.md`, written in detail for
       handoff at his request (20:01). Genesis works by divergence and convergence (imagine, mutate, recombine,
       branch out, extrapolate discovery curves, detect convergence, allocate), without handholding. The

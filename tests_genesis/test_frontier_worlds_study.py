@@ -90,5 +90,51 @@ class EndToEnd(unittest.TestCase):
             self.assertTrue(s['nulls_ok'] and s['spent_ok'])
 
 
+R156 = ROOT / 'evidence' / 'frontier_worlds_b20r156'
+
+
+@unittest.skipUnless((R156 / 'summary.json').exists(), 'B20_R156 has not been recorded')
+class RecordB20R156(unittest.TestCase):
+    """The record of B20_R156 (F3) on its evidence: the amended script; the worlds; validity recomputed from the rows;
+    the analysis and the verdict recomputed; one world re-run gives the same row."""
+
+    @classmethod
+    def setUpClass(cls):
+        cls.s = json.loads((R156 / 'summary.json').read_text())
+        cls.rows = {}
+        for line in (R156 / 'rows.jsonl').read_text().splitlines():
+            if line.strip():
+                r = json.loads(line)
+                cls.rows[(r['world'], r['arm'])] = r
+
+    def test_the_script(self):
+        import hashlib
+        self.assertEqual(hashlib.sha256((ROOT / 'scripts' / 'b20r156_frontier_worlds.py').read_bytes()).hexdigest(),
+                         '9ae034dbf8bde4cd9d2eba75807c16ef869917568cf4ffd5a8d2b2f20566353a')
+
+    def test_the_worlds_and_validity(self):
+        self.assertEqual(self.s['worlds'], [list(w) for w in S.worlds()])
+        self.assertEqual(len(self.rows), len(S.worlds()) * len(S.ARMS))
+        nulls = all(self.rows[(k, a)]['total'] == 0.0 for k, f, sd, null in S.worlds() if null for a in S.ARMS)
+        spent = all(r['spent'] >= S.BUDGET - S.QUANTUM - 1 for r in self.rows.values())
+        self.assertEqual((nulls, spent), (self.s['nulls_ok'], self.s['spent_ok']))
+        self.assertTrue(self.s['valid'] and self.s['pins_ok'])
+
+    def test_the_analysis_recomputes(self):
+        res = S.analyse(self.rows)
+        for c in S.PRIMARY:
+            for k in ('label', 'p_holm', 'mean'):
+                got, rec = res['P1'][c][k], self.s['results']['P1'][c][k]
+                self.assertAlmostEqual(got, rec) if isinstance(got, float) else self.assertEqual(got, rec)
+        self.assertEqual(S.verdict(self.s['valid'], res)[0], self.s['verdict'])
+        self.assertEqual(res['S2']['hits'], self.s['results']['S2']['hits'])
+
+    def test_one_world_reruns_identically(self):
+        key, fam, seed, null = next(w for w in S.worlds() if not w[3])
+        r = S.run_one(fam, seed, null, 'F', 0)
+        rec = self.rows[(key, 'F')]
+        self.assertEqual((r['total'], r['spent'], r['branches']), (rec['total'], rec['spent'], rec['branches']))
+
+
 if __name__ == '__main__':
     unittest.main()

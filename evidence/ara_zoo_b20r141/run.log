@@ -1,0 +1,5 @@
+[    0.0s] b20r141; pinned to CPU 0; 95 environments; 0 arm runs done
+[ 6652.4s] time slice used (6600 s): paused with 295 arm runs
+[    0.0s] b20r141; pinned to CPU 0; 95 environments; 295 arm runs done
+[ 4393.0s] all arms done
+verdict INVALID; failed []; A 42/50 NONE 1.00; D {'tuning': 2.567631105578458e-07, 'blind2': 2.6979679951096805e-06}; S {'ara2': 0, 'blind2': 1, 'ara': 0, 'blind': 2, 'tuning': 0}
