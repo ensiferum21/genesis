@@ -952,6 +952,8 @@ commit through `git show`.
 8. **B20_R163 (F6)** from the clean worktree `/home/claude/f6-wt` at `77d725d` (prepared; its pins match there;
    it refuses to start otherwise), under 1 h. Its meta-search runs in one piece before the first slice check.
 9. (B20_R167 moved up to 5b.)
+9b. **B20_R170 (Foundry G2)**, preregistered 29 Oct 2026, from a clean worktree of its preregistration commit, after
+    B20_R163 and before PT-1 (under 1 h).
 10. Then PT-1, once preregistered (§7b). Daniel decided part 1's mechanisms on 28 Oct, and both are built (B20_R164).
     A design draft, not preregistered, is in `docs/handoff/PT1_DESIGN_DRAFT.md`.
 

@@ -83,6 +83,11 @@ overconfident and biased low, and a textbook correction failed (`docs/checkpoint
   charged.
 - Falsified if the best rule does not beat the fixed forecaster on held-out worlds at matched total compute.
 - Its prior art is adaptive conformal inference (Gibbs and Candès 2021) and learned optimizers (DiscoRL, ref. 7).
+- **State (29 Oct 2026): BUILT and PREREGISTERED.** The grammar is `frontier/calibrate.py` (`8b29d0f`; 144 points, 81
+  distinct behaviours: signal none/resolved/hindcast, form, sides, conditioning, adaptive-conformal or quantile updates,
+  rate). B20_R170 (`scripts/b20r170_forecast_calibration.py`) is preregistered with two primaries under Holm: P1, the
+  promoted rule against the fixed forecaster given the meta-search's compute (matched total, value); P2, coverage of
+  the promoted rule's forecasts above the fixed forecaster's and inside [0.80, 0.97]. It runs after B20_R163.
 
 **G3: joint against separate discovery (§13.7, B20_R171).** The proposal's own test of its central hypothesis,
 here on the Frontier. There are four arms at the same total budget:

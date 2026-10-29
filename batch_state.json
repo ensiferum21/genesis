@@ -1497,6 +1497,12 @@
       "B20_R168": {
         "commits": [],
         "result": "Engineering (PT-1 part 1's usefulness ablation, a candidate protocol): frontier/ablation.py; the engine's verified event records the branch's compute; 6 tests on a toy domain and invented bounds"
+      },
+      "B20_R170": {
+        "commits": [
+          "8b29d0f"
+        ],
+        "result": "Preregistered (DEV, calibration; Foundry G2): the Frontier searches a grammar of forecast-update rules (frontier/calibrate.py) on one sealed meta-training world; P1 the promoted rule against the fixed forecaster given the meta-search compute (value, matched total), P2 coverage above the fixed forecaster and inside [0.80, 0.97], Holm. Dev look disclosed (seeds 881000-881005). Runs after B20_R163"
       }
     },
     "open_after_b20_r5": [

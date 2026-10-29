@@ -748,23 +748,26 @@
   },
   "B20_R170": {
    "artifacts": [],
-   "committed": false,
+   "committed": true,
    "depends_on": [
-    "B20_R156"
+    "B20_R156",
+    "B20_R163"
    ],
    "failure": null,
    "id": "B20_R170",
    "kind": "study",
    "line": "frontier",
-   "notes": "not preregistered; from the Foundry proposal \u00a713.4",
+   "notes": "from the Foundry proposal \u00a713.4; machinery frontier/calibrate.py (8b29d0f); preregistered 29 Oct 2026 22:20 SGT; runs after B20_R163 (F6)",
    "outcome": null,
-   "output": null,
+   "output": "evidence/forecast_calibration_b20r170",
    "positive": null,
-   "preregistered": null,
+   "preregistered": "sha256 8aa46929e64a743b5eaba1eadde2dc285a6b445643486405e6eae5b691e2357d (the preregistration commit)",
    "priority": 4,
    "requires": [],
-   "resources": {},
-   "script": null,
+   "resources": {
+    "cpu0_hours": 0.75
+   },
+   "script": "scripts/b20r170_forecast_calibration.py",
    "status": "queued",
    "title": "G2 (docs/OMEGA_FOUNDRY.md): an invented update rule for the Frontier's forecast calibration, searched over a small grammar and scored by fresh engines on fresh planted worlds at matched total compute",
    "unlocks": []
