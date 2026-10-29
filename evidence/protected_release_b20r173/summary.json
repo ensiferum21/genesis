@@ -1,0 +1,142 @@
+{
+ "R1": {
+  "b_candidate": 1.0027295216037821,
+  "released": true,
+  "released_score": 1.0027295216037821,
+  "start": 0.9905306470664672,
+  "tau": 0.007816942148927027
+ },
+ "S1": {
+  "b_candidate": 1.0027295216037821,
+  "released": true,
+  "released_score": 1.0027295216037821,
+  "start": 0.9931594986544445,
+  "tau": 0.004933079070780695
+ },
+ "S2": {
+  "gains": [
+   0.007822149032523672,
+   0.01191454396055875,
+   0.012978585334198572,
+   0.00956738768718802,
+   0.010897435897435897,
+   0.013284765373901865,
+   0.006047516198704104,
+   0.015239321742863276,
+   0.008539522662579374,
+   0.014998928647953718,
+   0.021547933157431837,
+   0.011264080100125156,
+   0.01652360515021459,
+   0.012327622231508567,
+   0.009930915371329879,
+   0.007212558336868901,
+   0.011272490786906569,
+   0.011120263591433279,
+   0.010403120936280884,
+   0.007602219026094103,
+   0.0092,
+   0.0045128205128205125,
+   0.014521452145214522,
+   0.010508617065994116
+  ],
+  "mean": 0.011218243956255423,
+  "n": 24,
+  "p": 5.960464477539063e-08
+ },
+ "S3": {
+  "sd_all_v2": 0.002251126821758793,
+  "sd_random": 0.0022512244847751333,
+  "sd_v3": 0.0012411509174955317,
+  "tau_v2": 0.007816942148927027,
+  "tau_v3": 0.004933079070780695
+ },
+ "S4": {
+  "b_gain": 0.012198874537314941,
+  "split_size_needed_v2": 5
+ },
+ "calibration_programs": 48,
+ "candidate": {
+  "L0": 0.1,
+  "L0hot": 0.1,
+  "P": 0.8,
+  "levels": 4,
+  "pert": 0,
+  "pool": 8,
+  "prog": "R B1296 B703 C b1 R B703 B703 C C",
+  "tmax": 0.2,
+  "tt": 5
+ },
+ "code_identity": "9a070bd026b6802c2843740191c88e2d027335fdb7ce53c4201f4cd9c2ade245",
+ "graphs": {
+  "B": [
+   "dev-planar2_pm1-a4ca072c-20561731-0000",
+   "dev-planar2_pm1-a4ca072c-20561732-0000",
+   "dev-planar2_pm1-a4ca072c-20561733-0000",
+   "dev-planar2_pm1-a4ca072c-20561734-0000",
+   "dev-planar2_pm1-a4ca072c-20561735-0000",
+   "dev-planar2_pm1-a4ca072c-20561736-0000",
+   "dev-planar2_pm1-a4ca072c-20561737-0000",
+   "dev-planar2_pm1-a4ca072c-20561738-0000",
+   "dev-planar2_pm1-a4ca072c-20561739-0000",
+   "dev-planar2_pm1-a4ca072c-20561740-0000",
+   "dev-planar2_pm1-a4ca072c-20561741-0000",
+   "dev-planar2_pm1-a4ca072c-20561742-0000"
+  ],
+  "C": [
+   "dev-planar2_pm1-a4ca072c-20562731-0000",
+   "dev-planar2_pm1-a4ca072c-20562732-0000",
+   "dev-planar2_pm1-a4ca072c-20562733-0000",
+   "dev-planar2_pm1-a4ca072c-20562734-0000",
+   "dev-planar2_pm1-a4ca072c-20562735-0000",
+   "dev-planar2_pm1-a4ca072c-20562736-0000",
+   "dev-planar2_pm1-a4ca072c-20562737-0000",
+   "dev-planar2_pm1-a4ca072c-20562738-0000",
+   "dev-planar2_pm1-a4ca072c-20562739-0000",
+   "dev-planar2_pm1-a4ca072c-20562740-0000",
+   "dev-planar2_pm1-a4ca072c-20562741-0000",
+   "dev-planar2_pm1-a4ca072c-20562742-0000"
+  ],
+  "T": [
+   "dev-planar2_pm1-a4ca072c-20563731-0000",
+   "dev-planar2_pm1-a4ca072c-20563732-0000",
+   "dev-planar2_pm1-a4ca072c-20563733-0000",
+   "dev-planar2_pm1-a4ca072c-20563734-0000",
+   "dev-planar2_pm1-a4ca072c-20563735-0000",
+   "dev-planar2_pm1-a4ca072c-20563736-0000",
+   "dev-planar2_pm1-a4ca072c-20563737-0000",
+   "dev-planar2_pm1-a4ca072c-20563738-0000",
+   "dev-planar2_pm1-a4ca072c-20563739-0000",
+   "dev-planar2_pm1-a4ca072c-20563740-0000",
+   "dev-planar2_pm1-a4ca072c-20563741-0000",
+   "dev-planar2_pm1-a4ca072c-20563742-0000",
+   "dev-planar2_pm1-a4ca072c-20563743-0000",
+   "dev-planar2_pm1-a4ca072c-20563744-0000",
+   "dev-planar2_pm1-a4ca072c-20563745-0000",
+   "dev-planar2_pm1-a4ca072c-20563746-0000",
+   "dev-planar2_pm1-a4ca072c-20563747-0000",
+   "dev-planar2_pm1-a4ca072c-20563748-0000",
+   "dev-planar2_pm1-a4ca072c-20563749-0000",
+   "dev-planar2_pm1-a4ca072c-20563750-0000",
+   "dev-planar2_pm1-a4ca072c-20563751-0000",
+   "dev-planar2_pm1-a4ca072c-20563752-0000",
+   "dev-planar2_pm1-a4ca072c-20563753-0000",
+   "dev-planar2_pm1-a4ca072c-20563754-0000"
+  ]
+ },
+ "runs": 1680,
+ "schema": "genesis-b20r173-protected-release-v1",
+ "status": "DEV; releases only what the protected judge releases",
+ "study": "b20r173",
+ "v3_programs": 16,
+ "valid": true,
+ "validity": {
+  "candidate_key": true,
+  "cpu": true,
+  "disjoint": true,
+  "feedback": true,
+  "mcx3": true,
+  "r151_summary": true
+ },
+ "verdict": "RELEASED"
+}

@@ -180,7 +180,7 @@
     "cpu0_hours": 0.35
    },
    "script": "scripts/b20r136_sense_choice.py",
-   "status": "queued",
+   "status": "running",
    "title": "Experiment A: synthesised senses choose the engine program per instance; fresh graphs, matched compute, planted control, transfer",
    "unlocks": [
     "sense-invention"
@@ -831,7 +831,10 @@
    "unlocks": []
   },
   "B20_R173": {
-   "artifacts": [],
+   "artifacts": [
+    "evidence/protected_release_b20r173",
+    "docs/checkpoints/B20_R173_RECORD.md"
+   ],
    "committed": true,
    "depends_on": [
     "B20_R167"
@@ -841,9 +844,9 @@
    "kind": "study",
    "line": "engine-invention",
    "notes": "B20_R165's record names it as the next step; runs after B20_R167 and before B20_R157 (35 min); the protected judge is called, never changed",
-   "outcome": null,
+   "outcome": "RELEASED (valid): the protected judge, unchanged, released C0_1 over REX on planar2_pm1: B gain +1.220% against tau 0.782%; v3 releases too (tau 0.493%); truth +1.122% on 24 of 24 fresh graphs (p 6e-8). First release by that judge of an engine Genesis's own search found; one family; the expectation (NOT_RELEASED) was wrong",
    "output": "evidence/protected_release_b20r173",
-   "positive": null,
+   "positive": true,
    "preregistered": "sha256 a3e038415e1b57199dc2aeab759f413338e0f61fec05db6786077afdabaa7291 (the preregistration commit)",
    "priority": 7,
    "requires": [],
@@ -851,7 +854,7 @@
     "cpu0_hours": 0.6
    },
    "script": "scripts/b20r173_protected_release.py",
-   "status": "running",
+   "status": "done",
    "title": "A release attempt through the protected judge: C0_1, the confirmed engine gain of B20_R165, on fresh planar2_pm1 graphs; version 3 reported beside it",
    "unlocks": []
   },
@@ -1937,6 +1940,18 @@
    "id": "B20_R173",
    "kind": "start",
    "time": "2026-10-29T17:22:24+00:00"
+  },
+  {
+   "id": "B20_R173",
+   "kind": "finish",
+   "outcome": "RELEASED (valid): the protected judge, unchanged, released C0_1 over REX on planar2_pm1: B gain +1.220% against tau 0.782%; v3 releases too (tau 0.493%); truth +1.122% on 24 of 24 fresh graphs (p 6e-8). First release by that judge of an engine Genesis's own search found; one family; the expectation (NOT_RELEASED) was wrong",
+   "positive": true,
+   "time": "2026-10-29T23:31:10+00:00"
+  },
+  {
+   "id": "B20_R136",
+   "kind": "start",
+   "time": "2026-10-29T23:31:10+00:00"
   }
  ],
  "lines": {
@@ -2048,9 +2063,14 @@
      "B20_R128",
      "NOT_SHOWN: EVOLVED - ORIGINAL +0.00023 on 8 fresh sets (5-3, p 0.55, NO_DIFFERENCE); no release in any of 30 inner searches, so the meta-search selected first incumbents",
      false
+    ],
+    [
+     "B20_R173",
+     "RELEASED (valid): the protected judge, unchanged, released C0_1 over REX on planar2_pm1: B gain +1.220% against tau 0.782%; v3 releases too (tau 0.493%); truth +1.122% on 24 of 24 fresh graphs (p 6e-8). First release by that judge of an engine Genesis's own search found; one family; the expectation (NOT_RELEASED) was wrong",
+     true
     ]
    ],
-   "run": 6,
+   "run": 0,
    "stagnant": true
   },
   "expressiveness": {

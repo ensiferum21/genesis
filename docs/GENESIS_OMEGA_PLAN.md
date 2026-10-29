@@ -639,6 +639,11 @@ problems no level has seen, and Genesis has not shown that yet.
   in detail for handoff at his request of 20:01; F1 and F2 next on CPU 1; B20_R156–R158 reserved.
 - 27 Oct 2026, 20:40: the proving test adopted (§0f; B20_R159). F2 started: the sealed Laplacian set
   transcribed and tiered, with exact certificates (`src/genesis/conjecture/`).
+- 30 Oct 2026, 08:00: B20_R173 recorded: RELEASED. The protected judge (v2, unchanged) released C0_1, an engine
+  Genesis's own search found, over the builder's REX on ±1-weighted planar graphs (B gain 1.22% against tau 0.78%;
+  +1.12% on 24 of 24 fresh truth graphs). It is the first such release, and it is narrow. The expectation
+  (NOT_RELEASED) was wrong. CPU 0 was idle 01:50–07:25 by the builder's omission (disclosed). B20_R136 is running,
+  with B20_R144 after it.
 - 30 Oct 2026, 01:45: B20_R167 recorded: ARA_CALIBRATED (valid). On 95 fresh sealed environments ARA localised 42 of
   50 planted limitations (chance 1/4), said NONE on 30 of 30 null controls, beat blind rewriting at two tries by
   +0.41 of the range and tuning alone in four of five classes, and released nothing on 45 controls; FUSION_NEEDED

@@ -264,6 +264,12 @@ needs people: a reviewer, a statistician, an independent custodian on its own ma
         tries by +0.41 of the range, and released nothing on 45 controls; FUSION_NEEDED is its weak class.
         `ara-calibrated` is unlocked: B20_R142 may be preregistered, and B20_R144 (ARA on its own settings) is
         preregistered (30 Oct), to run after B20_R136.
+      - **B20_R173 is recorded** (30 Oct 2026; `docs/checkpoints/B20_R173_RECORD.md`): RELEASED. The protected judge,
+        unchanged, released C0_1 over REX on ±1-weighted planar graphs (B gain 1.22% against tau 0.78%; truth +1.12%
+        on 24 of 24). It is the first release by that judge of an engine Genesis's own search found, and it is narrow
+        (one family; the builder's REX and L0 language). The expectation (NOT_RELEASED) was wrong. Disclosed: CPU 0
+        was idle from 01:50 to 07:25 SGT after it, because the builder did not launch the chain it had written.
+        B20_R136 started at 07:25, with B20_R144 chained after it.
   26c. **Daniel's directive of 27 Oct 2026, 19:55 is adopted**: `docs/OMEGA_FRONTIER.md`, written in detail for
       handoff at his request (20:01). Genesis works by divergence and convergence (imagine, mutate, recombine,
       branch out, extrapolate discovery curves, detect convergence, allocate), without handholding. The

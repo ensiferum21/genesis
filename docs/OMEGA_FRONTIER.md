@@ -929,8 +929,8 @@ commit through `git show`.
    every registered run (`docs/checkpoints/B20_R141_RECORD.md`). Descriptively, every experiment would have passed.
 4. **B20_R156 (F3) is RECORDED** (28 Oct, 01:07 UTC): FRONTIER_BETTER on sealed planted worlds; forecast coverage
    0.66 at a nominal 0.90 (`docs/checkpoints/B20_R156_RECORD.md`).
-4b. **B20_R173 (29 Oct 2026, preregistered): a release attempt through the protected judge** on planar2_pm1, after
-    B20_R167 and before B20_R157 (about 35 min), from a clean worktree of its preregistration commit.
+4b. **B20_R173: done, RELEASED** (30 Oct 2026, 01:16–01:50 SGT; `docs/checkpoints/B20_R173_RECORD.md`): the
+    protected judge released C0_1 on planar2_pm1. CPU 0 was then idle until 07:25 (disclosed).
 4c. **B20_R136 (29 Oct 2026, preregistered): experiment A, a synthesised sense chooses the engine per graph**, after
     B20_R173 and before B20_R157 (about 20 min), from a clean worktree of its preregistration commit.
 4d. **B20_R144 (30 Oct 2026, preregistered): ARA applied to its own settings** (ARA experiment G), after B20_R136

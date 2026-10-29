@@ -8,6 +8,7 @@ import hashlib
 import json
 from pathlib import Path
 import re
+import statistics
 import sys
 import tempfile
 import unittest
@@ -111,6 +112,68 @@ class RegisteredPath(unittest.TestCase):
         s = self.run_study(False)
         self.assertTrue(s['valid'], s['validity'])
         self.assertEqual(s['verdict'], 'NOT_RELEASED')
+
+
+
+R173 = ROOT / 'evidence' / 'protected_release_b20r173'
+
+
+@unittest.skipUnless((R173 / 'summary.json').exists(), 'B20_R173 has not been recorded')
+class RecordB20R173(unittest.TestCase):
+    """The record of B20_R173 on its evidence: the script; validity recomputed; both judges rebuilt from the saved
+    runs (the protected Judge class itself, replaying its calls from the cache), their taus and decisions recomputed;
+    the truth recomputed; the verdict; the graphs regenerate."""
+
+    @classmethod
+    def setUpClass(cls):
+        cls.s = json.loads((R173 / 'summary.json').read_text())
+        cls.runs = {}
+        for line in (R173 / 'runs.jsonl').read_text().splitlines():
+            if line.strip():
+                r = json.loads(line)
+                cls.runs[r['key']] = r
+
+    def test_the_script(self):
+        self.assertEqual(hashlib.sha256((ROOT / 'scripts' / 'b20r173_protected_release.py').read_bytes()).hexdigest(),
+                         'a3e038415e1b57199dc2aeab759f413338e0f61fec05db6786077afdabaa7291')
+
+    def replay_runner(self):
+        def run(cfg, task, seed, budget):
+            raise AssertionError('a run missing from the evidence')
+        return run
+
+    def lab(self):
+        lab = S.Lab(None, self.replay_runner())
+        lab.cache = dict(self.runs)
+        return lab
+
+    def test_validity(self):
+        s = self.s
+        self.assertTrue(s['valid'] and all(s['validity'].values()))
+        one = [r['cpu'] for k, r in self.runs.items() if k.endswith('|1')]
+        ten = [r['cpu'] for k, r in self.runs.items() if k.endswith('|10')]
+        self.assertGreaterEqual(statistics.median(one), 0.9)
+        self.assertGreaterEqual(statistics.median(ten), 9.0)
+
+    def test_the_judges_and_the_truth_recompute(self):
+        G = S.graphs(S.excluded_identities())
+        self.assertEqual({k: [t.task_id for t in v] for k, v in G.items()}, self.s['graphs'])
+        lab = self.lab()
+        cand, ok = S.candidate()
+        self.assertTrue(ok)
+        v2 = S.judge(S.evaluator(lab, G), S.calibration_programs(), dict(K3.DEFAULT), cand)
+        v3 = S.judge(S.evaluator(lab, G), S.v3_programs(), dict(K3.DEFAULT), cand)
+        for got, saved in ((v2, self.s['R1']), (v3, self.s['S1'])):
+            for k in ('tau', 'start', 'b_candidate'):
+                self.assertAlmostEqual(got[k], saved[k], places=12)
+            self.assertEqual(got['released'], saved['released'])
+        truth = []
+        for t in G['T']:
+            c = statistics.mean(lab.run(cand, t, f'truth{r}') for r in range(S.T_RUNS))
+            x = statistics.mean(lab.run(dict(K3.DEFAULT), t, f'truth{r}') for r in range(S.T_RUNS))
+            truth.append((c - x) / x)
+        self.assertEqual([round(x, 12) for x in truth], [round(x, 12) for x in self.s['S2']['gains']])
+        self.assertEqual(S.verdict(self.s['valid'], v2), self.s['verdict'])
 
 
 if __name__ == '__main__':
