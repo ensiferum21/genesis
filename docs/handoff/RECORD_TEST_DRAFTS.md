@@ -958,7 +958,7 @@ class RecordB20R144(unittest.TestCase):
 
 ## RecordB20R170 (Foundry G2; append to `tests_genesis/test_forecast_calibration_study.py`)
 
-Written on 30 Oct 2026, 08:20 SGT, from the script only (`405741e`, sha256 `8aa46929…357d`), before the study ran.
+Written on 30 Oct 2026, 07:50 SGT, from the script only (`405741e`, sha256 `8aa46929…357d`), before the study ran.
 The branch's `frontier/allocate.py` has changed since the preregistration (G4's state feature, `0f87109`), so
 everything that runs the engine runs in a temporary worktree of `405741e`, whose modules are the pinned ones. It was
 dry-run on a rehearsal output made at `405741e` (the design test's worlds and budgets), where all three tests pass.
@@ -1085,7 +1085,7 @@ json.dump({{'rc': rc, 'summary': summary, 'meta': json.loads(json.dumps(ms, sort
 
 ## RecordB20R172 (Foundry G4; append to `tests_genesis/test_state_features_study.py`)
 
-Written on 30 Oct 2026, 08:25 SGT, from the script only (`73f8ad4`, sha256 `46e571f4…9b33`), before the study ran.
+Written on 30 Oct 2026, 07:55 SGT, from the script only (`73f8ad4`, sha256 `46e571f4…9b33`), before the study ran.
 As RecordB20R170: what runs the engine runs in a temporary worktree of `73f8ad4`. It was dry-run on a rehearsal output
 made there (the design test's worlds and budgets), where all three tests pass. The file has `json`, `Path`, `sys`,
 `tempfile`, `unittest`, `ROOT` and `S`.
