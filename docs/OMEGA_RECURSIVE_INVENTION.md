@@ -391,7 +391,7 @@ Each becomes a preregistered study with its own success criterion, baselines, bu
 
 | | Question | Genesis study | State |
 |---|---|---|---|
-| A | Sense invention: a synthesised observation procedure, not in the initial library, that improves a downstream decision on fresh tasks | **B20_R136**: senses over graphs choose the engine's program and configuration per instance; against the best fixed configuration and hand-made features at matched compute; planted-structure positive control; transfer to the compiler's families | to design (the first vertical slice, §16) |
+| A | Sense invention: a synthesised observation procedure, not in the initial library, that improves a downstream decision on fresh tasks | **B20_R136**: senses over graphs choose the engine's program and configuration per instance; against the best fixed configuration and hand-made features at matched compute; planted-structure positive control; transfer to the compiler's families | **NOT_SHOWN** (30 Oct 2026; `docs/checkpoints/B20_R136_RECORD.md`): a sense synthesised with nothing about the families given, its CPU charged, chose between REX and C0_1 per graph on 60 fresh graphs and avoided C0_1's losses, but beat always-C0_1 by only +0.087% (below the material 0.1%) and the builder's degree CV not at all (−0.054%) |
 | B | Sense synergy: individually weak senses that are strong together | B20_R137, on A's archive | to design |
 | C | Representation invention that enables a stronger method | **B20_R135** (encodings for colouring; reductions synthesised for four families) | preregistered `7040a3c` |
 | D | Autonomous problem attack on unfamiliar problems | B20_R138: attack workflows as ROs on held-out families (`compiler` and `representation.families`), including the redirection to bounds | to design |
@@ -463,3 +463,7 @@ its growth across generations.
 - 29 Oct 2026, 23:20: Batch R2 completed on fixtures: sense synthesis by cross-validated search and a library of
   composite primitives admitted only through a held-out gate (`senses/synthesis.py`; `test_sense_synthesis`).
   B20_R136 (experiment A) can now be designed.
+- 30 Oct 2026, 08:10: B20_R136 (experiment A) recorded: NOT_SHOWN. The vertical slice ran end to end on fresh graphs,
+  but the synthesised sense (m / q90(degree)) generalised worse than the builder's degree CV on ±1-weighted planar
+  graphs, and its gain over always running C0_1 was below the material threshold. A better test needs more training
+  graphs and a family whose decisive property the builder's statistics do not carry.

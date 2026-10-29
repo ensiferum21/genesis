@@ -159,7 +159,10 @@
    "unlocks": []
   },
   "B20_R136": {
-   "artifacts": [],
+   "artifacts": [
+    "evidence/sense_choice_b20r136",
+    "docs/checkpoints/B20_R136_RECORD.md"
+   ],
    "committed": true,
    "depends_on": [
     "sense-language-build",
@@ -170,9 +173,9 @@
    "kind": "study",
    "line": "recursive-invention",
    "notes": "experiment A (the vertical slice): a synthesised sense chooses between REX and C0_1 per graph, against the best fixed engine and the builder hand features, sense CPU charged; preregistered 29 Oct 2026; runs after B20_R173, before B20_R157",
-   "outcome": null,
+   "outcome": "NOT_SHOWN (valid): FIXED is C0_1; the synthesised sense m / q90(deg) chose per graph and avoided C0_1's losses, SENSE - FIXED +0.087% (p_Holm 0.0009, below the material 0.1%), SENSE - HAND (degree CV) -0.054% (3 of 12 +-1 planar graphs sent to REX); run noise about 0.1% per family",
    "output": "evidence/sense_choice_b20r136",
-   "positive": null,
+   "positive": false,
    "preregistered": "sha256 357cd5ed202b8b79987668d081d408ad8fcbf32ef51cb5cae6d6fa3c979b2bcb (the preregistration commit)",
    "priority": 7,
    "requires": [],
@@ -180,7 +183,7 @@
     "cpu0_hours": 0.35
    },
    "script": "scripts/b20r136_sense_choice.py",
-   "status": "running",
+   "status": "done",
    "title": "Experiment A: synthesised senses choose the engine program per instance; fresh graphs, matched compute, planted control, transfer",
    "unlocks": [
     "sense-invention"
@@ -386,7 +389,7 @@
     "cpu0_hours": 1.0
    },
    "script": "scripts/b20r144_ara_improves_ara.py",
-   "status": "queued",
+   "status": "running",
    "title": "ARA experiment G: ARA applies its own cycle to its own settings; v2 against v1 at matched total compute and against a tuning-only control, on held-out zoo families H1 and H2",
    "unlocks": [
     "ara-meta"
@@ -1952,6 +1955,18 @@
    "id": "B20_R136",
    "kind": "start",
    "time": "2026-10-29T23:31:10+00:00"
+  },
+  {
+   "id": "B20_R136",
+   "kind": "finish",
+   "outcome": "NOT_SHOWN (valid): FIXED is C0_1; the synthesised sense m / q90(deg) chose per graph and avoided C0_1's losses, SENSE - FIXED +0.087% (p_Holm 0.0009, below the material 0.1%), SENSE - HAND (degree CV) -0.054% (3 of 12 +-1 planar graphs sent to REX); run noise about 0.1% per family",
+   "positive": false,
+   "time": "2026-10-29T23:44:57+00:00"
+  },
+  {
+   "id": "B20_R144",
+   "kind": "start",
+   "time": "2026-10-29T23:44:57+00:00"
   }
  ],
  "lines": {
@@ -2160,9 +2175,14 @@
      "sense-language-build",
      "built on fixtures: the language and workspace (test_senses), synthesis by cross-validated search and a gated library of composite primitives (senses/synthesis.py; test_sense_synthesis)",
      true
+    ],
+    [
+     "B20_R136",
+     "NOT_SHOWN (valid): FIXED is C0_1; the synthesised sense m / q90(deg) chose per graph and avoided C0_1's losses, SENSE - FIXED +0.087% (p_Holm 0.0009, below the material 0.1%), SENSE - HAND (degree CV) -0.054% (3 of 12 +-1 planar graphs sent to REX); run noise about 0.1% per family",
+     false
     ]
    ],
-   "run": 0,
+   "run": 1,
    "stagnant": false
   },
   "representation": {

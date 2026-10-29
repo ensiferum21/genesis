@@ -639,6 +639,9 @@ problems no level has seen, and Genesis has not shown that yet.
   in detail for handoff at his request of 20:01; F1 and F2 next on CPU 1; B20_R156–R158 reserved.
 - 27 Oct 2026, 20:40: the proving test adopted (§0f; B20_R159). F2 started: the sealed Laplacian set
   transcribed and tiered, with exact certificates (`src/genesis/conjecture/`).
+- 30 Oct 2026, 08:15: B20_R136 (experiment A) recorded: NOT_SHOWN. A sense Genesis synthesised chose the engine per
+  graph and avoided C0_1's losses, but beat always-C0_1 by only +0.087% (below 0.1%) and lost to the builder's
+  degree CV (it misjudged 3 of 12 ±1 planar graphs). B20_R144 is running.
 - 30 Oct 2026, 08:00: B20_R173 recorded: RELEASED. The protected judge (v2, unchanged) released C0_1, an engine
   Genesis's own search found, over the builder's REX on ±1-weighted planar graphs (B gain 1.22% against tau 0.78%;
   +1.12% on 24 of 24 fresh truth graphs). It is the first such release, and it is narrow. The expectation

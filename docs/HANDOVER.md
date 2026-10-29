@@ -270,6 +270,9 @@ needs people: a reviewer, a statistician, an independent custodian on its own ma
         (one family; the builder's REX and L0 language). The expectation (NOT_RELEASED) was wrong. Disclosed: CPU 0
         was idle from 01:50 to 07:25 SGT after it, because the builder did not launch the chain it had written.
         B20_R136 started at 07:25, with B20_R144 chained after it.
+      - **B20_R136 is recorded** (`docs/checkpoints/B20_R136_RECORD.md`): NOT_SHOWN. The synthesised sense chose
+        per graph and avoided C0_1's losses, but beat always-C0_1 by only +0.087% (below 0.1%) and lost to the
+        builder's degree CV. B20_R144 started at 07:38.
   26c. **Daniel's directive of 27 Oct 2026, 19:55 is adopted**: `docs/OMEGA_FRONTIER.md`, written in detail for
       handoff at his request (20:01). Genesis works by divergence and convergence (imagine, mutate, recombine,
       branch out, extrapolate discovery curves, detect convergence, allocate), without handholding. The

@@ -931,10 +931,10 @@ commit through `git show`.
    0.66 at a nominal 0.90 (`docs/checkpoints/B20_R156_RECORD.md`).
 4b. **B20_R173: done, RELEASED** (30 Oct 2026, 01:16–01:50 SGT; `docs/checkpoints/B20_R173_RECORD.md`): the
     protected judge released C0_1 on planar2_pm1. CPU 0 was then idle until 07:25 (disclosed).
-4c. **B20_R136 (29 Oct 2026, preregistered): experiment A, a synthesised sense chooses the engine per graph**, after
-    B20_R173 and before B20_R157 (about 20 min), from a clean worktree of its preregistration commit.
+4c. **B20_R136: done, NOT_SHOWN** (30 Oct 2026, 07:25–07:38 SGT; `docs/checkpoints/B20_R136_RECORD.md`).
 4d. **B20_R144 (30 Oct 2026, preregistered): ARA applied to its own settings** (ARA experiment G), after B20_R136
     and before B20_R157 (about 1 h), from a clean worktree of its preregistration commit (`/home/claude/r144-wt`).
+    Running from 30 Oct, 07:38:30 SGT.
 5. **B20_R157 (F4): its first attempt was killed (out of memory, 02:10 UTC), and it is AMENDED at `ff9eada`.**
    - The cause was the star-size defect (B20R157-STAR in `docs/BLOCKING_DEFECTS.md`).
    - It runs again in full from a clean worktree at `ff9eada`, after B20_R167. Create it with

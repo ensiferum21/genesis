@@ -858,7 +858,7 @@ class RecordB20R136(unittest.TestCase):
 
 Written on 30 Oct 2026 from the script only (`7acf0e4`, sha256 `05523955…58c3`). It was dry-run on a rehearsal output
 (the design test's small sets and seeds 990011 and 990013), where all four tests pass. **Disclosed:** the study
-started at 07:38:30 SGT, before this draft was committed (07:45); no file of the study's output had been opened. The
+started at 07:38:30 SGT, before this draft was committed (07:40); no file of the study's output had been opened. The
 file has `hashlib`, `json`, `Path`, `tempfile`, `unittest`, `ROOT` and `S`.
 
 ```python
