@@ -118,6 +118,10 @@ SENSE_BLIND class turned on the engine's own controller. It is engineering first
     index already agreed with replays on 0.82-0.92 of weighted pairs; two of three proposed a feature (held-out
     0.90 and 0.92). The replays cost 80,000 evaluations for 200 pairs (k = 20), several times a world's budget, so
     the study must amortise one search over many held-out worlds, as F6 and B20_R170 do.
+- **B20_R172 is PREREGISTERED** (29 Oct 2026; `scripts/b20r172_state_features.py`): one counterexample search on two
+  sealed training worlds (120 replayed decisions each, k = 10), its compute charged; the proposed feature against the
+  defaults on 24 held-out worlds at matched total compute (P1, value), with S7 asking whether the distinction holds
+  in new worlds' decisions. It runs after B20_R170.
 
 **G5: interaction estimates for joint proposals (§5.3).** The formula goes into ARA-3's synergy factorial
 (B20_R143, already planned) and G3.

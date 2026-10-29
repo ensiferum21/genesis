@@ -797,21 +797,25 @@
   },
   "B20_R172": {
    "artifacts": [],
-   "committed": false,
-   "depends_on": [],
+   "committed": true,
+   "depends_on": [
+    "B20_R170"
+   ],
    "failure": null,
    "id": "B20_R172",
    "kind": "engineering",
    "line": "frontier",
-   "notes": "engineering first; the Foundry proposal \u00a713.3 | 29 Oct 2026: engineering BUILT (frontier/statefeat.py); the study is to design: one counterexample search on meta-training worlds, its replay compute charged, the proposed feature against the defaults on held-out worlds at matched total compute",
+   "notes": "the Foundry proposal \u00a713.3; machinery frontier/statefeat.py (0f87109); preregistered 29 Oct 2026 22:45 SGT; runs after B20_R170",
    "outcome": null,
-   "output": null,
+   "output": "evidence/state_features_b20r172",
    "positive": null,
-   "preregistered": null,
+   "preregistered": "sha256 46e571f4f763ace626a8962bd6e21c103b91f99c2e095e299ee3571677739b33 (the preregistration commit)",
    "priority": 3,
    "requires": [],
-   "resources": {},
-   "script": null,
+   "resources": {
+    "cpu0_hours": 0.75
+   },
+   "script": "scripts/b20r172_state_features.py",
    "status": "queued",
    "title": "G4 (docs/OMEGA_FOUNDRY.md): decision-relevant state abstraction for the allocator, found through counterexamples (alike states, different best actions)",
    "unlocks": []
