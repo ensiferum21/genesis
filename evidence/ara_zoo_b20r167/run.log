@@ -1,0 +1,7 @@
+[    0.0s] b20r167; pinned to CPU 0; 95 environments; 0 arm runs done
+[ 6602.7s] time slice used (6600 s): paused with 256 arm runs
+[    0.0s] b20r167; pinned to CPU 0; 95 environments; 256 arm runs done
+[ 6824.8s] time slice used (6600 s): paused with 470 arm runs
+[    0.0s] b20r167; pinned to CPU 0; 95 environments; 470 arm runs done
+[   40.7s] all arms done
+verdict ARA_CALIBRATED; failed []; A 42/50 NONE 1.00; D {'tuning': 1.2151723341474043e-07, 'blind2': 2.7246470531368073e-06}; S {'ara2': 0, 'blind2': 0, 'ara': 0, 'blind': 1, 'tuning': 0}

@@ -639,6 +639,15 @@ problems no level has seen, and Genesis has not shown that yet.
   in detail for handoff at his request of 20:01; F1 and F2 next on CPU 1; B20_R156–R158 reserved.
 - 27 Oct 2026, 20:40: the proving test adopted (§0f; B20_R159). F2 started: the sealed Laplacian set
   transcribed and tiered, with exact certificates (`src/genesis/conjecture/`).
+- 30 Oct 2026, 01:45: B20_R167 recorded: ARA_CALIBRATED (valid). On 95 fresh sealed environments ARA localised 42 of
+  50 planted limitations (chance 1/4), said NONE on 30 of 30 null controls, beat blind rewriting at two tries by
+  +0.41 of the range and tuning alone in four of five classes, and released nothing on 45 controls; FUSION_NEEDED
+  is its weak class. The 28 Oct attempt was lost with its session and restarted (disclosed). B20_R173 is running.
+- 29 Oct 2026, 21:30: the third session the writer again, at Daniel's instruction. B20_R167 restarted from its
+  preregistered script. Foundry G2 (forecast calibration, B20_R170) and G4 (state features, B20_R172) built and
+  preregistered; B20_R173 (C0_1 submitted once to the protected judge) and B20_R136 (an invented sense chooses the
+  engine per graph) preregistered; the sense-synthesis machinery and ARA's settings as an object (`architecture/
+  meta.py`, for B20_R144) built.
 - 28 Oct 2026, 11:10: B20_R157 (F4)'s first attempt was killed (out of memory, 6.1 GB) by a defect in Γ: a star's
   size counted k, but it is built with k + 1, so nested products of stars passed the 64-vertex cap. Repaired
   (`ff9eada`). B20_R157 is amended, and every arm runs again. B20_R158 is amended before it ran. Equivalence was

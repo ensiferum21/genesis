@@ -14,7 +14,7 @@ describes that zip's own contents (see "Package contents").
 
 | What | Where |
 |---|---|
-| Canonical branch | `continuation-b20-rx` on GitHub `ensiferum21/genesis`, pushed directly. B20_R66–R97 were built by a second builder session from the B20_R65 handover; B20_R98–R135 by a third (22–24 Oct 2026). From 26 Oct 2026 the second session is the writer again, Daniel having confirmed that the third has stopped; its B20_R132 run (started 24 Oct, 20:50) left no evidence and is requeued (`research_queue.json`). From 29 Oct 2026 (21:30 SGT) the third session is the writer again, at Daniel's instruction, from the branch as pushed (`adef21f`); the second session's B20_R167 run (from 28 Oct 02:16 UTC) left no evidence on the branch and is restarted from its preregistered script, and B20_R157 (amended at `ff9eada`) is queued after it (`research_queue.json`). Only one session may write to this branch at a time: two writers split the line once (a duplicate B20_R66 run is kept on `side-b20r66-local-rerun`, same script and hosts, consistent: +18.75 vs +16.65 at 64×) |
+| Canonical branch | `continuation-b20-rx` on GitHub `ensiferum21/genesis`, pushed directly. B20_R66–R97 were built by a second builder session from the B20_R65 handover; B20_R98–R135 by a third (22–24 Oct 2026). From 26 Oct 2026 the second session is the writer again, Daniel having confirmed that the third has stopped; its B20_R132 run (started 24 Oct, 20:50) left no evidence and is requeued (`research_queue.json`). From 29 Oct 2026 (21:30 SGT) the third session is the writer again, at Daniel's instruction, from the branch as pushed (`adef21f`); the second session's B20_R167 run (from 28 Oct 02:16 UTC) left no evidence on the branch and was restarted from its preregistered script (recorded 30 Oct: ARA_CALIBRATED), and B20_R157 (amended at `ff9eada`) is queued after it (`research_queue.json`). Only one session may write to this branch at a time: two writers split the line once (a duplicate B20_R66 run is kept on `side-b20r66-local-rerun`, same script and hosts, consistent: +18.75 vs +16.65 at 64×) |
 | Side branch, not canonical | `side-b21-equational` (`710d26d`; equational generations W21/E4, primitives, fault routes) |
 | Archive of checkpoints | the `archive` branch (zips, rehearsal reports, `SHA256SUMS`, README with one row per checkpoint) |
 | Latest checkpoint | see the table in `NEXT_ACTIONS.md` ("Checkpoints"); each one is restore-verified, and its driver rehearsal on the build host is REPRODUCED (not a second machine) |
@@ -258,6 +258,12 @@ needs people: a reviewer, a statistician, an independent custodian on its own ma
       - **B20_R157 (F4)'s first attempt was killed** (out of memory) by Γ's star-size defect (B20R157-STAR), which is
         repaired. B20_R157 is amended at `ff9eada`, and every arm runs again after B20_R167. B20_R158 is amended
         before it ran. B20_R167 started at 02:16 UTC.
+      - **B20_R167 is recorded** (30 Oct 2026; `docs/checkpoints/B20_R167_RECORD.md`): ARA_CALIBRATED, valid. The
+        28 Oct attempt was lost with its session and the study was restarted from scratch on 29 Oct (disclosed).
+        ARA localised 42 of 50 planted limitations, said NONE on 30 of 30 null controls, beat blind rewriting at two
+        tries by +0.41 of the range, and released nothing on 45 controls; FUSION_NEEDED is its weak class.
+        `ara-calibrated` is unlocked: B20_R142 may be preregistered, and B20_R144 (ARA on its own settings) is
+        preregistered next.
   26c. **Daniel's directive of 27 Oct 2026, 19:55 is adopted**: `docs/OMEGA_FRONTIER.md`, written in detail for
       handoff at his request (20:01). Genesis works by divergence and convergence (imagine, mutate, recombine,
       branch out, extrapolate discovery curves, detect convergence, allocate), without handholding. The

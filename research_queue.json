@@ -719,7 +719,10 @@
    "unlocks": []
   },
   "B20_R167": {
-   "artifacts": [],
+   "artifacts": [
+    "evidence/ara_zoo_b20r167",
+    "docs/checkpoints/B20_R167_RECORD.md"
+   ],
    "committed": true,
    "depends_on": [
     "B20_R141",
@@ -730,9 +733,9 @@
    "kind": "study",
    "line": "architecture-invention",
    "notes": "runs after B20_R163 (F6); B20_R142 requires ara-calibrated, which only this can now unlock | 29 Oct 2026: the 28 Oct attempt was lost with its session; restarted from its preregistered script (33e8905) in a fresh output directory at 21:30 SGT, the lost attempt disclosed in its record.",
-   "outcome": null,
+   "outcome": "ARA_CALIBRATED (valid, failed []): A 42/50 localised (chance 1/4, p 3e-18), NONE 30/30; B over tuning in GLOBAL_ONLY, SENSE_BLIND, FUSION_NEEDED, EVAL_NOISY (Holm), not SEARCH_WEAK; C no failures (195 promotions); D ara2 over blind2 +0.408 (p_Holm 2.7e-6), over tuning +0.559; S no ara or ara2 release on 45 controls (blind 1). FUSION_NEEDED the weak class (5/10). Restarted after the lost 28 Oct attempt (disclosed)",
    "output": "evidence/ara_zoo_b20r167",
-   "positive": null,
+   "positive": true,
    "preregistered": "sha256 233610d030b8a0af747834e2d0006e209348f3a52a590283f779d3a03eb1af81 (the preregistration commit)",
    "priority": 7,
    "requires": [
@@ -742,7 +745,7 @@
     "cpu0_hours": 3.0
    },
    "script": "scripts/b20r167_ara_zoo_rerun.py",
-   "status": "running",
+   "status": "done",
    "title": "B20_R141 again with its validity defect repaired, on a fresh sealed seed and fresh indices: ARA's calibration on the sealed Limitation Zoo, experiments A-D and S, the design otherwise B20_R141's",
    "unlocks": [
     "ara-calibrated"
@@ -843,7 +846,7 @@
     "cpu0_hours": 0.6
    },
    "script": "scripts/b20r173_protected_release.py",
-   "status": "queued",
+   "status": "running",
    "title": "A release attempt through the protected judge: C0_1, the confirmed engine gain of B20_R165, on fresh planar2_pm1 graphs; version 3 reported beside it",
    "unlocks": []
   },
@@ -1917,6 +1920,18 @@
    "outcome": "built on fixtures: the language and workspace (test_senses), synthesis by cross-validated search and a gated library of composite primitives (senses/synthesis.py; test_sense_synthesis)",
    "positive": true,
    "time": "2026-10-29T15:18:06+00:00"
+  },
+  {
+   "id": "B20_R167",
+   "kind": "finish",
+   "outcome": "ARA_CALIBRATED (valid, failed []): A 42/50 localised (chance 1/4, p 3e-18), NONE 30/30; B over tuning in GLOBAL_ONLY, SENSE_BLIND, FUSION_NEEDED, EVAL_NOISY (Holm), not SEARCH_WEAK; C no failures (195 promotions); D ara2 over blind2 +0.408 (p_Holm 2.7e-6), over tuning +0.559; S no ara or ara2 release on 45 controls (blind 1). FUSION_NEEDED the weak class (5/10). Restarted after the lost 28 Oct attempt (disclosed)",
+   "positive": true,
+   "time": "2026-10-29T17:22:24+00:00"
+  },
+  {
+   "id": "B20_R173",
+   "kind": "start",
+   "time": "2026-10-29T17:22:24+00:00"
   }
  ],
  "lines": {
@@ -1932,9 +1947,14 @@
      "B20_R141",
      "INVALID: the freshness clause was False in every registered run (a defect of the script; its design tests ran only the unregistered path). Descriptively every experiment would have passed: A 42/50 localised, NONE 30/30; B GLOBAL_ONLY, SENSE_BLIND, EVAL_NOISY; C none; D ara2 over blind2 +0.41, over tuning +0.51; S no ARA release on 45 controls. Re-run as B20_R167",
      false
+    ],
+    [
+     "B20_R167",
+     "ARA_CALIBRATED (valid, failed []): A 42/50 localised (chance 1/4, p 3e-18), NONE 30/30; B over tuning in GLOBAL_ONLY, SENSE_BLIND, FUSION_NEEDED, EVAL_NOISY (Holm), not SEARCH_WEAK; C no failures (195 promotions); D ara2 over blind2 +0.408 (p_Holm 2.7e-6), over tuning +0.559; S no ara or ara2 release on 45 controls (blind 1). FUSION_NEEDED the weak class (5/10). Restarted after the lost 28 Oct attempt (disclosed)",
+     true
     ]
    ],
-   "run": 1,
+   "run": 0,
    "stagnant": false
   },
   "capability-graph": {
@@ -2199,6 +2219,7 @@
   "ro-layer",
   "representation-language",
   "ara-core",
-  "sense-language"
+  "sense-language",
+  "ara-calibrated"
  ]
 }

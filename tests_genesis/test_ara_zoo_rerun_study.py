@@ -175,5 +175,77 @@ class EndToEnd(unittest.TestCase):
             self.assertEqual(len(sa['rows']), len(TEST_ENVS))
 
 
+
+R167 = ROOT / 'evidence' / 'ara_zoo_b20r167'
+
+
+@unittest.skipUnless((R167 / 'summary.json').exists(), 'B20_R167 has not been recorded')
+class RecordB20R167(unittest.TestCase):
+    """The record of B20_R167 on its evidence: the script; the environments; validity recomputed, the freshness
+    clause included; the analysis, experiment C and the verdict recomputed from the saved rows, ledger and keys; the
+    environments regenerated from the sealed seed and every judged submission re-judged."""
+
+    @classmethod
+    def setUpClass(cls):
+        cls.s = json.loads((R167 / 'summary.json').read_text())
+        cls.done = {}
+        for line in (R167 / 'rows.jsonl').read_text().splitlines():
+            if line.strip():
+                r = json.loads(line)
+                cls.done[(r['index'], r['arm'])] = r
+        entries = {}
+        for line in (R167 / 'ledger.jsonl').read_text().splitlines():
+            if line.strip():
+                e = json.loads(line)
+                entries[(e['index'], e['arm'])] = e
+        cls.ledger = [entries[k] for k in sorted(entries)]
+
+    def test_the_script(self):
+        self.assertEqual(hashlib.sha256((ROOT / 'scripts' / 'b20r167_ara_zoo_rerun.py').read_bytes()).hexdigest(),
+                         '233610d030b8a0af747834e2d0006e209348f3a52a590283f779d3a03eb1af81')
+
+    def test_the_environments_and_validity(self):
+        envs = S.environments()
+        rows = sorted(int(i) for i in self.s['rows'])
+        self.assertEqual(rows, sorted(i for i, _ in envs))
+        self.assertEqual(len(self.done), len(envs) * len(S.ARMS))
+        self.assertTrue(all(r['spent'] <= r['budget'] + 1e-9 for r in self.done.values()))
+        self.assertEqual(self.s['validity']['fresh'], S.freshness(rows, True, False, S.SEALED_SEED))
+        self.assertEqual(self.s['validity']['budget'], True)
+        self.assertEqual(self.s['valid'], all(self.s['validity'].values()))
+
+    def test_the_analysis_recomputes(self):
+        rows = {int(i): r for i, r in self.s['rows'].items()}
+        keys = {int(i): k for i, k in self.s['keys'].items()}
+        res = S.analyse(rows, self.ledger, keys)
+        for x in ('A', 'B', 'D', 'S'):
+            self.assertEqual(res[x]['pass'], self.s[x]['pass'], x)
+        self.assertEqual((res['A']['localised'], res['A']['of']), (self.s['A']['localised'], self.s['A']['of']))
+        c = S.check_promoted(self.ledger)
+        self.assertEqual(c, self.s['C_failures'])
+        self.assertEqual(list(S.verdict(self.s['valid'], res, c)), [self.s['verdict'], self.s['failed']])
+
+    def test_the_environments_regenerate_and_every_submission_rejudges(self):
+        from genesis.architecture import graph as G
+        from genesis.architecture import judge as J
+        H = J.Harness(sealed_seed=S.SEALED_SEED)
+        for index, cls in S.environments():
+            H.open(index, cls)
+            self.assertEqual(H.key(index), self.s['keys'][str(index)])
+        for e in self.ledger:
+            env = H._env(e['index'])
+            rng = H._range(env)
+            self.assertAlmostEqual(env.oracle('sealed'), e['oracle'], places=9)
+            self.assertAlmostEqual(rng, e['range'], places=9)
+            inc = G.execute(env.incumbent, env.view(), 'dev_a', seed=e['index'])
+            var = G.execute(e['variant'], env.view(), 'dev_a', seed=e['index'])
+            diff = H.sealed_value(e['index'], var['policy']) - H.sealed_value(e['index'], inc['policy'])
+            gain = diff / rng if rng > 1e-12 else 0.0
+            self.assertAlmostEqual(gain, e['gain'], places=9, msg=(e['index'], e['arm']))
+            if e['promoted']:
+                self.assertIsNone(e['failed'])
+                self.assertGreaterEqual(gain, J.MATERIAL)
+
+
 if __name__ == '__main__':
     unittest.main()

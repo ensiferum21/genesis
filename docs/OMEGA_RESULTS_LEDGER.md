@@ -40,6 +40,10 @@ Nothing here is an independent or sealed result.
 | B20_R148 | The portfolio of discovery processes (Ω²): NOT_SHOWN; G3_NOT_SHOWN. G2 (halving across six processes) − G0 (the inventor's evolution) +0.0015 AUDC (6–4, p_Holm 1); G3 − G2 +0.010 (p_Holm 0.70); H1 UNIVERSAL_HARNESS by its rule (anneal and evolution never beaten on all six seeds), though five processes are each best on some task. Secondary, uncorrected: G3 − G2 in final quality +0.027 (7–2, p 0.039) |
 | B20_R131 | The cascade on a real case: NO_VERIFIED_TRIGGER by protocol (R130 did not verify the global interpretation), so no reactivation was measured; comparators at 24 evaluations: fresh 0.496, random retrieval 0.502, null 0.496, eig 0.450; archive overhead 158.9 s CPU |
 
+| B20_R165 | **REPLICATED_WITH_SINGLE_ENGINE**: the 18 engines Genesis's searches found in B20_R151 beat REX at 1 s on 48 fresh planar 2,000-vertex graphs by +0.582% (C0_1 +0.661%), all of it on ±1-weighted graphs (+1.16%, 24 of 24); unweighted ties, tori and random graphs lose. Not a release |
+| B20_R156 | **FRONTIER_BETTER** (a calibration): the Frontier's allocation beats halving (+0.193), UCB1 (+0.108) and uniform (+0.317) on 24 sealed planted worlds, each p_Holm < 0.001; with abstraction and branching out 2.3 times the reference. Its forecast intervals covered 0.66 at a nominal 0.90 (overconfident) |
+| B20_R167 | **ARA_CALIBRATED** (a calibration): on 95 fresh sealed zoo environments ARA localised 42 of 50 planted limitations (chance 1/4, p 3 × 10⁻¹⁸), said NONE on 30 of 30 null controls, beat tuning alone in four of five classes (not SEARCH_WEAK), beat blind rewriting at two tries by +0.408 of the range (p_Holm 2.7 × 10⁻⁶), and released nothing on 45 controls. FUSION_NEEDED is its weak class. The zoo is planted by the builder |
+
 ## Exploratory (development looks, 24 Oct 2026; disclosed in B20_R129 and R130)
 
 | Look | Result |
@@ -50,14 +54,21 @@ Nothing here is an independent or sealed result.
 | Question set | A third of hidden causes are never asked about, because FCI separates them on near-unfaithful partial correlations (median 0.03) |
 | Problem Compiler at 2 s | Genesis's engine ties the MaxSAT 2026 champion on independent set, Max-2-SAT and max-cut; loses on colouring (15–19 against 7–10 conflicts); HiGHS behind everywhere |
 | Difficulty probes | Planted coupling answered by renormalisation (+16 against +4); natural Gset classes give weak probe signals |
+| B20_R151 | The builder's richer language Λ1 against Λ0, apart from search: NOT_SHOWN (NO_LANGUAGE_EFFECT on planar2000, the only class past the headroom gate; Λ1's ceiling winners 0.115% below Λ0's) |
+| B20_R152 | Self-extension of the engine language on real engines: NOTHING_ADMITTED (the judge refused both of generation 1's statements; the line ended) |
+| B20_R141 | ARA's calibration on the zoo: INVALID, by a defect in the script's freshness clause (False in every registered run). Descriptively every experiment would have passed; re-run as B20_R167 |
 
 ## Running or preregistered (no result yet)
 
+As of 30 Oct 2026; the order on CPU 0 is in `docs/OMEGA_FRONTIER.md` §12 and `research_queue.json`.
+
 | Batch | State |
 |---|---|
-| B20_R141 | ARA's calibration on the sealed Limitation Zoo, experiments A-D and S (95 fresh environments; a variant budget of 2 for D). Preregistered; runs after B20_R152 |
-| B20_R152 | Self-extension on real engines: three generations of the pipeline on planar2000 (Genesis's dev corpus, the learner, the sealed language judge with claim 'search', consolidation, resume), then the grown language against Λ1 and a random library from REX, 5 replicates each. Preregistered; runs after B20_R151 |
-| B20_R151 | Richer expressiveness, measured apart from search: the headroom gate on three fresh 2,000-vertex classes, then language {Λ0, Λ1} x search {inventor, ceiling} at matched compute. Preregistered |
+| B20_R173 | C0_1 (B20_R165's engine) submitted once to the unchanged protected judge, calibrated as the contract says. Running |
+| B20_R136 | An invented sense chooses between C0_1 and REX per graph, its computation charged. Preregistered |
+| B20_R157, R158 | F4 (the Frontier against prior-art searches on the sealed Laplacian bounds) and F5 (Genesis's own conjectures), both amended before running (`ff9eada`). Preregistered |
+| B20_R163 | F6 (the Frontier adapting its own settings on sealed meta-worlds). Preregistered |
+| B20_R170, R172 | Foundry G2 (forecast calibration invented by meta-search) and G4 (state features for allocation). Preregistered |
 
 ## Unrun plans
 
