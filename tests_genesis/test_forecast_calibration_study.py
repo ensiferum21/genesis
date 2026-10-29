@@ -13,8 +13,32 @@ sys.path.insert(0, str(ROOT / 'src'))
 sys.path.insert(0, str(ROOT / 'scripts'))
 import b20r170_forecast_calibration as S  # noqa: E402
 
+PREREGISTRATION = '405741e'         # the commit that preregistered the script
+
+
+def digest_at(commit, rel):
+    import hashlib
+    import subprocess
+    try:
+        out = subprocess.run(['git', '-C', str(ROOT), 'show', f'{commit}:{rel}'], capture_output=True, timeout=60)
+    except (OSError, subprocess.SubprocessError):
+        return None
+    return hashlib.sha256(out.stdout).hexdigest() if out.returncode == 0 else None
+
 
 class Design(unittest.TestCase):
+    def test_pins_at_the_preregistration_commit(self):
+        import re
+        self.assertEqual(set(S.PINNED), set(S.MODULES))
+        at = {m: digest_at(PREREGISTRATION, 'src/genesis/frontier/' + m) for m in S.PINNED}
+        if all(v is not None for v in at.values()):
+            self.assertEqual(at, S.PINNED)
+        script = digest_at(PREREGISTRATION, 'scripts/b20r170_forecast_calibration.py')
+        if script is not None:
+            self.assertEqual(script, '8aa46929e64a743b5eaba1eadde2dc285a6b445643486405e6eae5b691e2357d')
+        others = [p for p in (ROOT / 'scripts').glob('*.py') if p.name != 'b20r170_forecast_calibration.py']
+        self.assertFalse(any(re.search(rf'\b{S.SEALED_SEED}\b', p.read_text()) for p in others))
+
     def test_worlds_are_fresh_and_disjoint(self):
         import b20r156_frontier_worlds as F3
         import b20r163_frontier_meta as F6
@@ -74,7 +98,7 @@ class RegisteredPath(unittest.TestCase):
         meta = ('Ga-r', 'Ga', 888000, False)
         with tempfile.TemporaryDirectory() as d:
             rc = S.main([d], registered=True, world_list=ws, meta=meta, b_in=1500, meta_budget=6000, budget=1500,
-                        output=d, pinned=S.pins())
+                        output=d, pinned=S.pins())          # at the preregistration commit, S.pins() == S.PINNED
             self.assertEqual(rc, 0)
             s = json.loads((Path(d) / 'summary.json').read_text())
         self.assertTrue(s['pins_ok'] and s['nulls_ok'] and s['spent_ok'], s)
