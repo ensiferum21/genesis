@@ -19,7 +19,7 @@ import b20r173_protected_release as S  # noqa: E402
 from genesis.candidate_kinds import mcx3 as K3  # noqa: E402
 from genesis.common import digest  # noqa: E402
 
-PREREGISTRATION = None              # the commit that preregistered the script (set after it)
+PREREGISTRATION = 'd8cb798'         # the commit that preregistered the script
 
 
 class Design(unittest.TestCase):
@@ -30,6 +30,15 @@ class Design(unittest.TestCase):
         others = [p for p in (ROOT / 'scripts').glob('*.py') if p.name != 'b20r173_protected_release.py']
         self.assertFalse(any(re.search(rf'\b{S.SEED}\b', p.read_text()) for p in others))
         self.assertEqual((S.SIZE, S.N_TRUTH, S.POPULATION + S.CALIBRATION_EXTRA), (12, 24, 48))
+        import subprocess
+        try:
+            out = subprocess.run(['git', '-C', str(ROOT), 'show', f'{PREREGISTRATION}:scripts/b20r173_protected_release.py'],
+                                 capture_output=True, timeout=60)
+        except (OSError, subprocess.SubprocessError):
+            out = None
+        if out is not None and out.returncode == 0:
+            self.assertEqual(hashlib.sha256(out.stdout).hexdigest(),
+                             'a3e038415e1b57199dc2aeab759f413338e0f61fec05db6786077afdabaa7291')
 
     def test_the_candidate_is_r165s_prespecified_engine(self):
         import b20r165_planar_replication as R165
