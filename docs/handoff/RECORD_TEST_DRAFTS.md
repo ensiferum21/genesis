@@ -724,3 +724,132 @@ class RecordB20R167(unittest.TestCase):
                 self.assertIsNone(e['failed'])
                 self.assertGreaterEqual(gain, J.MATERIAL)
 ```
+
+## RecordB20R173 (append to `tests_genesis/test_protected_release_study.py`)
+
+Written on 29 Oct 2026, 23:30 SGT, from the script only (`d8cb798`, sha256 `a3e03841…7291`), before the study ran.
+The file has `hashlib`, `json`, `unittest`, `ROOT`, `S`, `K3` and `digest`; it needs `import statistics`.
+
+```python
+
+
+R173 = ROOT / 'evidence' / 'protected_release_b20r173'
+
+
+@unittest.skipUnless((R173 / 'summary.json').exists(), 'B20_R173 has not been recorded')
+class RecordB20R173(unittest.TestCase):
+    """The record of B20_R173 on its evidence: the script; validity recomputed; both judges rebuilt from the saved
+    runs (the protected Judge class itself, replaying its calls from the cache), their taus and decisions recomputed;
+    the truth recomputed; the verdict; the graphs regenerate."""
+
+    @classmethod
+    def setUpClass(cls):
+        cls.s = json.loads((R173 / 'summary.json').read_text())
+        cls.runs = {}
+        for line in (R173 / 'runs.jsonl').read_text().splitlines():
+            if line.strip():
+                r = json.loads(line)
+                cls.runs[r['key']] = r
+
+    def test_the_script(self):
+        self.assertEqual(hashlib.sha256((ROOT / 'scripts' / 'b20r173_protected_release.py').read_bytes()).hexdigest(),
+                         'a3e038415e1b57199dc2aeab759f413338e0f61fec05db6786077afdabaa7291')
+
+    def replay_runner(self):
+        def run(cfg, task, seed, budget):
+            raise AssertionError('a run missing from the evidence')
+        return run
+
+    def lab(self):
+        lab = S.Lab(None, self.replay_runner())
+        lab.cache = dict(self.runs)
+        return lab
+
+    def test_validity(self):
+        s = self.s
+        self.assertTrue(s['valid'] and all(s['validity'].values()))
+        one = [r['cpu'] for k, r in self.runs.items() if k.endswith('|1')]
+        ten = [r['cpu'] for k, r in self.runs.items() if k.endswith('|10')]
+        self.assertGreaterEqual(statistics.median(one), 0.9)
+        self.assertGreaterEqual(statistics.median(ten), 9.0)
+
+    def test_the_judges_and_the_truth_recompute(self):
+        G = S.graphs(S.excluded_identities())
+        self.assertEqual({k: [t.task_id for t in v] for k, v in G.items()}, self.s['graphs'])
+        lab = self.lab()
+        cand, ok = S.candidate()
+        self.assertTrue(ok)
+        v2 = S.judge(S.evaluator(lab, G), S.calibration_programs(), dict(K3.DEFAULT), cand)
+        v3 = S.judge(S.evaluator(lab, G), S.v3_programs(), dict(K3.DEFAULT), cand)
+        for got, saved in ((v2, self.s['R1']), (v3, self.s['S1'])):
+            for k in ('tau', 'start', 'b_candidate'):
+                self.assertAlmostEqual(got[k], saved[k], places=12)
+            self.assertEqual(got['released'], saved['released'])
+        truth = []
+        for t in G['T']:
+            c = statistics.mean(lab.run(cand, t, f'truth{r}') for r in range(S.T_RUNS))
+            x = statistics.mean(lab.run(dict(K3.DEFAULT), t, f'truth{r}') for r in range(S.T_RUNS))
+            truth.append((c - x) / x)
+        self.assertEqual([round(x, 12) for x in truth], [round(x, 12) for x in self.s['S2']['gains']])
+        self.assertEqual(S.verdict(self.s['valid'], v2), self.s['verdict'])
+```
+
+## RecordB20R136 (append to `tests_genesis/test_sense_choice_study.py`)
+
+Written on 29 Oct 2026, 23:30 SGT, from the script only (`6bb39ab`, sha256 `357cd5ed…2bcb`), before the study ran.
+The file has `json`, `unittest`, `ROOT`, `S`, `K3` and `digest`; it needs `import statistics`.
+
+```python
+
+
+R136 = ROOT / 'evidence' / 'sense_choice_b20r136'
+
+
+@unittest.skipUnless((R136 / 'summary.json').exists(), 'B20_R136 has not been recorded')
+class RecordB20R136(unittest.TestCase):
+    """The record of B20_R136 on its evidence: the script; validity; the search's choice recomputed (the sense
+    search is deterministic in its seed and the saved training runs); every test row recomputed from the saved runs
+    and sense timings; the analysis and the verdict; the graphs regenerate."""
+
+    @classmethod
+    def setUpClass(cls):
+        cls.s = json.loads((R136 / 'summary.json').read_text())
+        cls.runs = {}
+        for line in (R136 / 'runs.jsonl').read_text().splitlines():
+            if line.strip():
+                r = json.loads(line)
+                cls.runs[r['key']] = r
+
+    def test_the_script(self):
+        import hashlib
+        self.assertEqual(hashlib.sha256((ROOT / 'scripts' / 'b20r136_sense_choice.py').read_bytes()).hexdigest(),
+                         '357cd5ed202b8b79987668d081d408ad8fcbf32ef51cb5cae6d6fa3c979b2bcb')
+
+    def test_everything_recomputes(self):
+        import numpy as np
+        from genesis.senses import graph as SG
+        from genesis.senses import synthesis as SY
+        G = S.graphs(S.excluded_identities())
+        self.assertEqual({k: [t.task_id for _, t in v] for k, v in G.items()}, self.s['graphs'])
+        lab = S.Lab(None, lambda *a: (_ for _ in ()).throw(AssertionError('a run missing from the evidence')))
+        lab.cache = dict(self.runs)
+        eng, ok = S.engines()
+        self.assertTrue(ok)
+        names, Mtr = S.score_matrix(lab, eng, G['train'])
+        ctx = [SG.Context(S.as_graph(t)) for _, t in G['train']]
+        r = SY.synthesise(ctx, Mtr, S.SEARCH_BUDGET, seed=0)
+        self.assertEqual(r['sense'], self.s['S2']['sense'])
+        self.assertAlmostEqual(r['value'], self.s['S2']['cv_value'], places=12)
+        rows = self.s['rows']
+        for row, (fam, t) in zip(rows, G['test']):
+            sv = self.runs[f'sense|sense|{t.task_id}']['value']
+            cs = int(SY.act(tuple(self.s['S2']['sense_theta']), np.array([sv]))[0])
+            self.assertEqual(names[cs], row['choice_sense'])
+            got, b = S.chosen_score(lab, eng, names, cs, t, row['cpu_sense'], 'sense')
+            self.assertAlmostEqual(got, row['SENSE'], places=12)
+        col = lambda a: [x[a] for x in rows]                              # noqa: E731
+        t1 = S.wilcoxon([a - b for a, b in zip(col('SENSE'), col('FIXED'))], 'greater')
+        self.assertAlmostEqual(t1['p'], self.s['P1']['p'], places=12)
+        self.assertTrue(self.s['valid'] and all(self.s['validity'].values()))
+        self.assertEqual(S.verdict(self.s['valid'], self.s['P1']['passed'], self.s['P2']['passed']), self.s['verdict'])
+```
