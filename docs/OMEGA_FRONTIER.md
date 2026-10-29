@@ -933,6 +933,8 @@ commit through `git show`.
     B20_R167 and before B20_R157 (about 35 min), from a clean worktree of its preregistration commit.
 4c. **B20_R136 (29 Oct 2026, preregistered): experiment A, a synthesised sense chooses the engine per graph**, after
     B20_R173 and before B20_R157 (about 20 min), from a clean worktree of its preregistration commit.
+4d. **B20_R144 (30 Oct 2026, preregistered): ARA applied to its own settings** (ARA experiment G), after B20_R136
+    and before B20_R157 (about 1 h), from a clean worktree of its preregistration commit (`/home/claude/r144-wt`).
 5. **B20_R157 (F4): its first attempt was killed (out of memory, 02:10 UTC), and it is AMENDED at `ff9eada`.**
    - The cause was the star-size defect (B20R157-STAR in `docs/BLOCKING_DEFECTS.md`).
    - It runs again in full from a clean worktree at `ff9eada`, after B20_R167. Create it with

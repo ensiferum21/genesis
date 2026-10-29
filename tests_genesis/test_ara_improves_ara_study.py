@@ -56,17 +56,33 @@ class Design(unittest.TestCase):
                 S.main([str(Path(d) / 'elsewhere')])
 
 
+SETS = {'L': [(90001, 'GLOBAL_ONLY'), (90002, 'NULL')], 'C': [(90003, 'GLOBAL_ONLY'), (90004, 'NULL')]}
+TESTS = [('H1', 92001, 'GLOBAL_ONLY'), ('H2', 92002, 'SEARCH_WEAK'), ('H1', 92003, 'NULL'), ('H2', 92004, 'DECOY')]
+
+
 class RegisteredPath(unittest.TestCase):
-    def test_main_runs_through_the_registered_path(self):
-        sets = {'L': [(90001, 'GLOBAL_ONLY'), (90002, 'NULL')], 'C': [(90003, 'GLOBAL_ONLY'), (90004, 'NULL')]}
-        tests = [('H1', 92001, 'GLOBAL_ONLY'), ('H2', 92002, 'SEARCH_WEAK'), ('H1', 92003, 'NULL'),
-                 ('H2', 92004, 'DECOY')]
-        with tempfile.TemporaryDirectory() as d:
-            rc = S.main([d], registered=True, sets=sets, tests=tests, output=d, seeds=(990011, 990013))
+    def test_main_runs_through_the_registered_path_and_resumes_to_the_same_result(self):
+        from unittest import mock
+        with tempfile.TemporaryDirectory() as d, tempfile.TemporaryDirectory() as d2:
+            rc = S.main([d], registered=True, sets=SETS, tests=TESTS, output=d, seeds=(990011, 990013))
             self.assertEqual(rc, 0)
             s = json.loads((Path(d) / 'summary.json').read_text())
             runs = [json.loads(x) for x in (Path(d) / 'runs.jsonl').read_text().splitlines()]
+            pauses = 0
+            with mock.patch.object(S, 'SLICE_S', 20):
+                while True:
+                    rc2 = S.main([d2], registered=True, sets=SETS, tests=TESTS, output=d2, seeds=(990011, 990013))
+                    if rc2 == 0:
+                        break
+                    self.assertEqual(rc2, S.PAUSED)
+                    pauses += 1
+                    self.assertLess(pauses, 200)
+            s2 = json.loads((Path(d2) / 'summary.json').read_text())
+        self.assertGreater(pauses, 0)
+        self.assertEqual({k: v for k, v in s.items() if k != 'code_identity'},
+                         {k: v for k, v in s2.items() if k != 'code_identity'})
         self.assertTrue(s['valid'], s['validity'])
+        self.assertEqual(set(s['validity']), {'wellformed', 'budget', 'judge', 'families', 'in_space', 'no_hint'})
         self.assertIn(s['verdict'], ('NOTHING_ADOPTED', 'NOT_SHOWN', 'ARA_IMPROVED_ITSELF', 'ARA_TUNED_ITSELF'))
         self.assertEqual(s['S'], dict(s['S'], controls=2))
         self.assertTrue(all(r['spent'] <= r['budget'] + 1e-9 for r in runs))

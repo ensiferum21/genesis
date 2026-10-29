@@ -1,8 +1,5 @@
 #!/usr/bin/env python3
-"""DRAFT, NOT PREREGISTERED (29 Oct 2026): its expectation is written once B20_R167's verdict is known; until then a
-registered run is refused (DRAFT).
-
-B20_R144 (experiment G of `docs/OMEGA_ARCHITECTURE_INVENTION.md` §13): does ARA, applying its own cycle to its own
+"""B20_R144 (experiment G of `docs/OMEGA_ARCHITECTURE_INVENTION.md` §13): does ARA, applying its own cycle to its own
 settings, produce a version that finds and repairs more planted limitations on zoo families it never saw? (DEV,
 preregistered; a calibration domain)
 
@@ -27,7 +24,7 @@ stand-in is "nothing to fix", released gain 0). `meta.improve` gives ARA_v2's se
 learned from ARA_v1's traces on L when its ranking uses one), or ARA_v1's if nothing is adopted. `meta.tune` is the
 tuning-only control: random settings from the same space, evaluated on C, until the meta-cycle's own count of
 evaluations is spent; its best, if it beats ARA_v1 there by MATERIAL, is ARA_tune. **C_meta** is the units every
-meta-development run spent.
+meta-development run spent (the tuning control's included, which can only make P1 harder).
 
 **Held-out meta-test (families H1 and H2, sealed seed SEED_TEST, indices TEST0 + i).** 40 environments per family,
 5 per defect class and 5 per control class, none of whose graphs, generators or hidden senses the meta-cycle saw.
@@ -54,10 +51,21 @@ S3 per-family and per-class means of every arm; S4 v1 against v1m (what the extr
 (top-1 localisation) of v1 and v2 on the held-out defects; S6 C_meta and units per arm.
 **Validity:** every incumbent well formed; the judge's source is the pinned one; every arm stayed within its units;
 the adopted settings lie in the space; the held-out environments are of families H1 and H2 only and the
-meta-development ones of the base family only.
+meta-development ones of the base family only; no held-out run was given a hint.
 
-**Expectation, stated before running.** See the preregistration commit's message (written once B20_R167's verdict
-is known, and before this study runs).
+**Expectation, stated before running, after B20_R167's verdict (ARA_CALIBRATED; its record read in full, disclosed).**
+In B20_R167 ARA_v1 (the arm ara2) released 0.857 of the range on the base family's defects against the oracle key's
+0.971. Its shortfall was in SENSE_BLIND (0.64 against 0.85; NONE on 2 of 10), FUSION_NEEDED (0.31 against 0.45; NONE
+on 3) and SEARCH_WEAK (1.00 against 1.22); 14 variants instead of 2 added only 0.017. So on the base family the
+headroom any settings can claim is about 0.11, and most of it is localisation, which the settings reach only through
+the evaluation and observation terms (more exact repeats, a richer battery). On 24 ladder environments (15 defects)
+the meta-ladder will likely find no term whose lower bound clears 0.02, or find localisation; the candidates are then
+the first six neighbours, and the best of six clearing 0.02 on 24 choice environments is as likely selection noise as
+real. P1 asks +0.05 over v1m on 50 held-out defects, about half the headroom seen on the base family (the held-out
+families' headroom is unknown). So: NOT_SHOWN about 0.45, NOTHING_ADOPTED about 0.3, ARA_TUNED_ITSELF about 0.2 (more
+exact repeats or a larger battery turning NONE diagnoses into repairs), ARA_IMPROVED_ITSELF about 0.05. S passes (no
+release by ARA on 90 controls across B20_R141 and B20_R167). Low confidence between the first two. A positive verdict
+would be the first evidence of ARA improving its own procedure on families it never saw, in a calibration domain only.
 
 **Development looks (disclosed).** ARA-1's cycles on development environments of other seeds (880088, 777123;
 indices 50001-50004 and 70001-70003) were timed and their traces digested while ARA's settings were made an object
@@ -90,7 +98,6 @@ MATERIAL, ALPHA, RELEASE_BOUND = 0.05, 0.05, 0.15
 MAX_CANDIDATES = 6
 ARA_JUDGE_SHA256 = 'a065a095ede61db8803610f2f967d155d845536d7116303739194658081b9003'
 SLICE_S, PAUSED = 6600, 3
-DRAFT = True
 
 
 class Paused(Exception):
@@ -248,12 +255,10 @@ def main(argv=None, registered=True, sets=None, tests=None, output=OUTPUT, seeds
     output, shrink the sets and change the seeds while keeping registered=True (B20_R141's lesson)."""
     argv = sys.argv[1:] if argv is None else argv
     if len(argv) != 1:
-        raise SystemExit(__doc__.splitlines()[4])
+        raise SystemExit(next(x for x in __doc__.splitlines() if 'taskset' in x).strip())
     out = Path(argv[0]).resolve()
     if registered and out != Path(output).resolve():
         raise SystemExit(f'the registered output is {output}')
-    if registered and DRAFT and out == OUTPUT.resolve():
-        raise SystemExit('B20_R144 is a draft: not preregistered')
     out.mkdir(parents=True, exist_ok=True)
     t0 = time.monotonic()
     from genesis.architecture import ara as A
@@ -300,14 +305,17 @@ def main(argv=None, registered=True, sets=None, tests=None, output=OUTPUT, seeds
     wellformed = all(r['wellformed'] for r in lab.cache.values())
     budget_ok = all(r['spent'] <= r['budget'] + 1e-9 for r in lab.cache.values())
     judge_ok = file_digest(ROOT / 'src/genesis/architecture/judge.py') == ARA_JUDGE_SHA256
-    families_ok = all(f in ('H1', 'H2') for f, _, _ in tests)
+    families_ok = (all(f in ('H1', 'H2') for f, _, _ in tests)
+                   and all(r['family'] in ('H1', 'H2') for r in lab.cache.values() if r['which'] == 'test')
+                   and all(r['family'] == 'base' for r in lab.cache.values() if r['which'] == 'dev'))
+    no_hint = not any(r['hint'] for r in lab.cache.values() if r['which'] == 'test')
     try:
         A.config_of(v2)
         A.config_of(vt)
         in_space = True
     except ValueError:
         in_space = False
-    valid = wellformed and budget_ok and judge_ok and families_ok and in_space
+    valid = wellformed and budget_ok and judge_ok and families_ok and in_space and no_hint
     v = verdict(valid, imp['adopted'], p1, p2, safe, cls_)
 
     from genesis.architecture import diagnose as D
@@ -323,7 +331,7 @@ def main(argv=None, registered=True, sets=None, tests=None, output=OUTPUT, seeds
                 s3[f'{fam}|{c}'] = {a: statistics.mean(g(a, envs)) for a in arms}
     summary = {'study': STUDY, 'schema': 'genesis-b20r144-ara-improves-ara-v1', 'verdict': v, 'valid': valid,
                'validity': {'wellformed': wellformed, 'budget': budget_ok, 'judge': judge_ok, 'families': families_ok,
-                            'in_space': in_space},
+                            'in_space': in_space, 'no_hint': no_hint},
                'P1': dict(t1, passed=p1), 'P2': dict(t2, passed=p2),
                'S': {'releases': rel, 'controls': len(controls), 'upper95': bound, 'passed': safe},
                'adopted': imp['adopted'], 'change': {'class': cls_, 'changed': changed}, 'v1': v1, 'v2': v2,

@@ -733,7 +733,7 @@ Every experiment is preregistered with five things:
 | ARA-5 | 13 | The adversarial scientist: environments where promoted variants regress | PLANNED |
 | ARA-6 | 12 | The allocator over roles, with solve and stop arms | PLANNED |
 | ARA-7 | 7 | B20_R142: ARA on the real engine-choice workflow (layer 2's R136), with the strongest published solvers | PLANNED; needs ARA-2's verdict |
-| ARA-8 | 9 | B20_R144: ARA applied to ARA | **Machinery BUILT on fixtures** (29 Oct 2026): ARA's settings as an object (`ara.DEFAULT_CONFIG`, `ara.CONFIG_SPACE`, `ara.config_of`; the defaults reproduce ARA-1 exactly, checked by trace digests); `architecture/meta.py` (the meta-ladder with four stand-ins: localisation, exploration, evaluation, observation; one-step rewrites of the settings, the located component's first; an operator prior learned from ARA's traces; adoption by MATERIAL on separate choice environments; a tuning-only control at the same count of evaluations); the zoo's held-out families H1 and H2 (kernel side; the base family unchanged, pinned by digests). Tests `test_architecture_config`, `test_architecture_meta`, `test_architecture_zoo_families`. The study waits for B20_R167's verdict |
+| ARA-8 | 9 | B20_R144: ARA applied to ARA | **Machinery BUILT on fixtures** (29 Oct 2026): ARA's settings as an object (`ara.DEFAULT_CONFIG`, `ara.CONFIG_SPACE`, `ara.config_of`; the defaults reproduce ARA-1 exactly, checked by trace digests); `architecture/meta.py` (the meta-ladder with four stand-ins: localisation, exploration, evaluation, observation; one-step rewrites of the settings, the located component's first; an operator prior learned from ARA's traces; adoption by MATERIAL on separate choice environments; a tuning-only control at the same count of evaluations); the zoo's held-out families H1 and H2 (kernel side; the base family unchanged, pinned by digests). Tests `test_architecture_config`, `test_architecture_meta`, `test_architecture_zoo_families`. **B20_R144 PREREGISTERED** (30 Oct 2026, after B20_R167's ARA_CALIBRATED): ARA_v1 = 2 variants; meta-development on 24 + 24 base-family environments; held out 80 environments of H1 and H2; P1 v2 over v1 at matched total compute, P2 over a tuning-only control (Holm, material 0.05); S releases on 30 controls; expectation NOT_SHOWN or NOTHING_ADOPTED; runs after B20_R136 |
 | ARA-9 | 8 | B20_R147: paradigms as AGs | PLANNED |
 | ARA-10 | 10 | B20_R145, B20_R146: generations and transfer | PLANNED |
 
@@ -768,3 +768,6 @@ Every experiment is preregistered with five things:
 - 29 Oct 2026, 23:45 (this session, writer again): ARA-8's machinery built on fixtures (§16): ARA's settings as an
   object it can rewrite, the meta-ladder and meta-cycle (`architecture/meta.py`), and two held-out zoo families.
   B20_R144 is designed after B20_R167's verdict, so that its design can use what the calibration shows.
+- 30 Oct 2026: ARA-2 DONE (B20_R167, ARA_CALIBRATED; `docs/checkpoints/B20_R167_RECORD.md`). B20_R144 preregistered
+  with its expectation written from B20_R167's record; its design test runs `main` through the registered path and
+  pauses and resumes it to the same result.

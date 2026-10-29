@@ -364,25 +364,30 @@
   },
   "B20_R144": {
    "artifacts": [],
-   "committed": false,
+   "committed": true,
    "depends_on": [
-    "B20_R141"
+    "B20_R167",
+    "B20_R136"
    ],
    "failure": null,
    "id": "B20_R144",
    "kind": "study",
    "line": "architecture-invention",
-   "notes": "",
+   "notes": "ARA experiment G; machinery architecture/meta.py, ara.CONFIG_SPACE and the zoo's H1 and H2 (b8cd111); preregistered 30 Oct 2026 after B20_R167's ARA_CALIBRATED, its expectation informed by that record (disclosed); runs after B20_R136, before B20_R157 (about 1 h)",
    "outcome": null,
-   "output": null,
+   "output": "evidence/ara_improves_ara_b20r144",
    "positive": null,
-   "preregistered": null,
-   "priority": 5,
-   "requires": [],
-   "resources": {},
-   "script": null,
+   "preregistered": "sha256 05523955c17aadcda17ef61f2191854b32711840bbdaf1e79726e74ed8f058c3 (the preregistration commit)",
+   "priority": 7,
+   "requires": [
+    "ara-calibrated"
+   ],
+   "resources": {
+    "cpu0_hours": 1.0
+   },
+   "script": "scripts/b20r144_ara_improves_ara.py",
    "status": "queued",
-   "title": "ARA experiment G: ARA applied to its own AG; v2 against v1 on sealed meta-tasks from held-out generator families",
+   "title": "ARA experiment G: ARA applies its own cycle to its own settings; v2 against v1 at matched total compute and against a tuning-only control, on held-out zoo families H1 and H2",
    "unlocks": [
     "ara-meta"
    ]
