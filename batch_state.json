@@ -1522,7 +1522,8 @@
       },
       "B20_R144": {
         "commits": [
-          "b8cd111"
+          "b8cd111",
+          "7acf0e4"
         ],
         "result": "Preregistered (DEV, calibration; ARA experiment G): ARA_v1 (2 variants) runs ARA's cycle on its own settings (meta-ladder, six one-step rewrites, adoption by +0.02 on a choice set) on 24 + 24 base-family zoo environments; a tuning-only control at the same count of evaluations; held out 80 environments of H1 and H2; P1 v2 over v1 at matched total compute, P2 over the tuning control (Holm, material 0.05); S releases on 30 controls at most 0.15. Expectation NOT_SHOWN or NOTHING_ADOPTED, informed by B20_R167 (disclosed). Runs after B20_R136"
       }

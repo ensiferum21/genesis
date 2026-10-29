@@ -15,7 +15,7 @@ sys.path.insert(0, str(ROOT / 'scripts'))
 import b20r144_ara_improves_ara as S  # noqa: E402
 from genesis.architecture import zoo as Z  # noqa: E402
 
-PREREGISTRATION = None              # the commit that preregistered the script (set after it)
+PREREGISTRATION = '7acf0e4'         # the commit that preregistered the script
 
 
 class Design(unittest.TestCase):
@@ -49,6 +49,18 @@ class Design(unittest.TestCase):
         self.assertEqual(S.verdict(True, True, True, True, True, 'TUNING'), 'ARA_TUNED_ITSELF')
         self.assertEqual(S.verdict(True, True, True, False, True, 'TUNING'), 'NOT_SHOWN')
         self.assertLess(S.clopper_pearson_upper(0, 30), 0.15)
+
+    def test_the_script_at_the_preregistration_commit(self):
+        import hashlib
+        import subprocess
+        try:
+            out = subprocess.run(['git', '-C', str(ROOT), 'show',
+                                  f'{PREREGISTRATION}:scripts/b20r144_ara_improves_ara.py'], capture_output=True, timeout=60)
+        except (OSError, subprocess.SubprocessError):
+            return
+        if out.returncode == 0:
+            self.assertEqual(hashlib.sha256(out.stdout).hexdigest(),
+                             '05523955c17aadcda17ef61f2191854b32711840bbdaf1e79726e74ed8f058c3')
 
     def test_refusals(self):
         with tempfile.TemporaryDirectory() as d:
