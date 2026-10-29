@@ -16,7 +16,7 @@ from genesis.architecture import zoo as Z  # noqa: E402
 
 ARCH = ROOT / 'src' / 'genesis' / 'architecture'
 RESEARCH_PLANE = ('graph.py', 'policies.py', 'model.py', 'assumptions.py', 'diagnose.py', 'rewrite.py', 'ara.py',
-                  '__init__.py')
+                  'meta.py', '__init__.py')
 KERNEL_SIDE = ('zoo.py', 'judge.py')
 PRIVATE = ('_draw', '_graphs', '_units', '_envs', '_seed', '_env', '__closure__', '__self__', '__globals__')
 

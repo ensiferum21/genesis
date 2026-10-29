@@ -43,14 +43,17 @@ LOCATE = {'information': ('Sense', 'Features'), 'expressiveness': ('Policy',), '
           'evaluation': ('Evaluator',), 'residual': ()}
 
 
-def battery(seed):
+def battery(seed, n_random=None, edge_aggs=('mean', 'sd')):
     """The rich observation battery: every primitive aggregate (vertex primitives by mean, sd, cv, max, q90; edge
-    primitives by mean, sd; n and m) and BATTERY_RANDOM seeded random senses."""
+    primitives by `edge_aggs`, mean and sd by default; n and m) and `n_random` (BATTERY_RANDOM) seeded random senses.
+    The defaults give ARA-1's battery exactly."""
+    n_random = BATTERY_RANDOM if n_random is None else n_random
     out = [[f'{a}_n', p] for p in SG.N_PRIM if p != 'one' for a in ('mean', 'sd', 'cv', 'max', 'q90')]
-    out += [[f'{a}_e', p] for p in SG.E_PRIM for a in ('mean', 'sd')]
+    out += [[f'{a}_e', p] for p in SG.E_PRIM for a in edge_aggs]
     out += ['n', 'm']
     rng = random.Random(f'battery|{seed}')
-    while len(out) < 36 + 2 + BATTERY_RANDOM + 6:
+    target = 36 + 2 + n_random + 6 + 3 * (len(edge_aggs) - 2)    # ARA-1's count with the defaults
+    while len(out) < target:
         s = SG.random_sense(rng)
         if s not in out:
             out.append(s)
@@ -60,21 +63,22 @@ def battery(seed):
 class Lab:
     """The exact tables of a view's dev splits, drawn once (charged through the view), and the current features."""
 
-    def __init__(self, view, seed, draws=None):
+    def __init__(self, view, seed, draws=None, exact_repeats=None):
         self.view, self.K, self.seed = view, view.K, seed
+        reps = EXACT_REPEATS if exact_repeats is None else int(exact_repeats)
         self.draws = {} if draws is None else draws
         self.meter = PO.Meter()
         self.cells = {}
-        scheme = {'op': 'paired', 'repeats': EXACT_REPEATS}
+        scheme = {'op': 'paired', 'repeats': reps}
         for split in ('dev_a', 'dev_b'):
             ev = PO.Evaluation(view, split, scheme, self.meter, 'diagnosis', self.draws)
             n = view.size(split)
-            self.cells[split] = [[[ev.draw_cell(i, c, r) for r in range(EXACT_REPEATS)] for c in range(self.K)]
+            self.cells[split] = [[[ev.draw_cell(i, c, r) for r in range(reps)] for c in range(self.K)]
                                  for i in range(n)]
-        h = EXACT_REPEATS // 2
+        h = reps // 2
         self.table_a = [[sum(x) / len(x) for x in row] for row in self.cells['dev_a']]
         self.choose_b = [[sum(x[:h]) / h for x in row] for row in self.cells['dev_b']]
-        self.value_b = [[sum(x[h:]) / (EXACT_REPEATS - h) for x in row] for row in self.cells['dev_b']]
+        self.value_b = [[sum(x[h:]) / (reps - h) for x in row] for row in self.cells['dev_b']]
         self.sense_cache = {}
         self.sense_units = 0.0
 
@@ -160,16 +164,18 @@ def current_senses(ag):
     return [G.sense_expr(ag, s, memo) for s in G.inputs_of(ag, feat)['senses']]
 
 
-def ladder(view, ag, seed=0, lab=None, draws=None):
+def ladder(view, ag, seed=0, lab=None, draws=None, config=None):
     """The loss ladder of `ag` on the view: {terms: {term: {mean, lo, hi}}, values, range, material, diagnosis,
-    located: [role, ...], units}."""
-    lab = lab or Lab(view, seed, draws)
+    located: [role, ...], units}. `config` (ARA's own settings, `ara.DEFAULT_CONFIG` keys) may change the exact
+    repeats, the battery and the material fraction; without it the ladder is ARA-1's."""
+    config = config or {}
+    lab = lab or Lab(view, seed, draws, config.get('exact_repeats'))
     K = lab.K
     pol = [nd for nd in ag['nodes'].values() if nd['role'] == 'Policy'][0]
     srch = [nd for nd in ag['nodes'].values() if nd['role'] == 'Search'][0]
     cur = current_senses(ag)
     Xa, Xb = lab.columns(cur, 'dev_a'), lab.columns(cur, 'dev_b')
-    bat = battery(seed)
+    bat = battery(seed, config.get('battery_random'), tuple(config.get('edge_aggs', ('mean', 'sd'))))
     rich = cur + [b for b in bat if b not in cur]
     Ra, Rb = lab.columns(rich, 'dev_a'), lab.columns(rich, 'dev_b')
     nb = len(Xb)
@@ -199,7 +205,7 @@ def ladder(view, ag, seed=0, lab=None, draws=None):
     rdiff = [vals['O'][i] - lab.value_b[i][single] for i in range(nb)]
     rng_ = sum(rdiff) / nb
     rlo, _ = _boot(rdiff, f'{seed}|range')
-    material = MATERIAL * rng_ if rlo > 0 else math.inf          # no attainable range shown: nothing is material
+    material = config.get('material', MATERIAL) * rng_ if rlo > 0 else math.inf     # no range shown: nothing is
     pairs = {'information': ('C_rich_flex', 'C_cur_flex'), 'expressiveness': ('C_cur_flex', 'C_cur'),
              'search': ('C_cur', 'S_exact'), 'evaluation': ('S_exact', 'A'), 'residual': ('O', 'C_rich_flex')}
     terms, diffs = {}, {}

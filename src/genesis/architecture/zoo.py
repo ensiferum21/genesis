@@ -22,6 +22,16 @@ Classes (`CLASSES`), drawn by the generator and never shown to ARA:
   the data, on a plateau), EVAL_NOISY (independent evaluation, one repeat, shared noise four times the effect), and
   the controls NO_HEADROOM (the incumbent is already good), NULL (no effect at all) and DECOY (on dev a provided sense
   predicts the best option; on the judge's tasks nothing does).
+
+Families (29 Oct 2026, for B20_R144's held-out meta-tasks). `family='base'` is the zoo above, unchanged draw for draw
+(a test pins four environments' digests). Other families change only the graph generator and the hidden senses, so a
+procedure tuned on one family meets new graphs and new hidden structure on another:
+  H1: small-world rings (k-nearest neighbours rewired with probability beta) against preferential-attachment graphs
+      of the same mean degree; hidden senses: the degree CV, the 90% core number, the mean neighbour degree;
+  H2: two-block planted partitions (p_in > p_out) against Erdős–Rényi graphs of the same mean degree, with ±1
+      weights whose positive share is drawn per graph; hidden senses: the share of positive weights, the spread of
+      weighted degrees, the mean common-neighbour count.
+An environment of another family is seeded by (index, family), so families never share draws.
 """
 import math
 import random
@@ -39,6 +49,10 @@ LOCATION = {'SENSE_BLIND': 'information', 'GLOBAL_ONLY': 'expressiveness', 'FUSI
 K = 3
 SIZES = {'dev_a': 40, 'dev_b': 40, 'confirm': 40, 'sealed': 120}
 HIDDEN = {'clust': ['mean_n', 'clust'], 'tri': ['mean_n', 'tri'], 'coremax': ['max_n', 'core']}
+FAMILIES = ('base', 'H1', 'H2')
+HIDDEN_OF = {'base': HIDDEN,
+             'H1': {'degcv': ['cv_n', 'deg'], 'core90': ['q90_n', 'core'], 'nbrdeg': ['mean_n', ['nbr_mean', 'deg']]},
+             'H2': {'pos': ['frac_pos_e', 'w'], 'wdegsd': ['sd_n', 'wdeg'], 'common': ['mean_e', 'common']}}
 DEG = ['mean_n', 'deg']
 NSCALED = ['div_s', 'n', 10.0]
 BUDGET = 9000.0
@@ -66,6 +80,79 @@ def random_graph(rng):
     return {'n': n, 'edges': edges, 'family': fam}
 
 
+def _simple(n, pairs, weight):
+    seen, out = set(), []
+    for u, v in pairs:
+        a, b = (u, v) if u < v else (v, u)
+        if a != b and (a, b) not in seen:
+            seen.add((a, b))
+            out.append([a, b, weight(a, b)])
+    return sorted(out)
+
+
+def random_graph_h1(rng):
+    """A small-world ring (k nearest neighbours, rewired with probability beta) or a preferential-attachment graph
+    with about the same mean degree (unit weights)."""
+    n = rng.randint(30, 70)
+    k = rng.choice((2, 3, 4))                           # neighbours on each side: mean degree 2k
+    if rng.random() < 0.5:
+        beta = rng.uniform(0.0, 0.6)
+        pairs = []
+        for u in range(n):
+            for d in range(1, k + 1):
+                v = (u + d) % n
+                if rng.random() < beta:
+                    v = rng.randrange(n)
+                pairs.append((u, v))
+        return {'n': n, 'edges': _simple(n, pairs, lambda a, b: 1), 'family': 'ws'}
+    pairs = []
+    for u in range(k + 1):
+        for v in range(u + 1, k + 1):
+            pairs.append((u, v))
+    ends = [x for e in pairs for x in e]
+    for u in range(k + 1, n):
+        chosen = set()
+        while len(chosen) < min(k, u):
+            chosen.add(rng.choice(ends))
+        for v in sorted(chosen):
+            pairs.append((u, v))
+            ends += [u, v]
+    return {'n': n, 'edges': _simple(n, pairs, lambda a, b: 1), 'family': 'ba'}
+
+
+def random_graph_h2(rng):
+    """A two-block planted partition (p_in > p_out) or an Erdős–Rényi graph with the same mean degree; ±1 weights,
+    positive with a probability drawn per graph."""
+    n = rng.randint(30, 70)
+    d = rng.uniform(3.0, 9.0)
+    rho = rng.uniform(0.1, 0.9)
+
+    def weight(a, b):
+        return 1 if rng.random() < rho else -1
+    pairs = []
+    if rng.random() < 0.5:
+        side = [rng.random() < 0.5 for _ in range(n)]
+        ratio = rng.uniform(3.0, 8.0)                   # p_in / p_out
+        p_out = d / ((n - 1) * (ratio + 1) / 2)
+        p_in = min(1.0, ratio * p_out)
+        for u in range(n):
+            for v in range(u + 1, n):
+                if rng.random() < (p_in if side[u] == side[v] else p_out):
+                    pairs.append((u, v))
+        fam = 'pp'
+    else:
+        p = d / (n - 1)
+        for u in range(n):
+            for v in range(u + 1, n):
+                if rng.random() < p:
+                    pairs.append((u, v))
+        fam = 'er'
+    return {'n': n, 'edges': _simple(n, pairs, weight), 'family': fam}
+
+
+GENERATOR = {'base': random_graph, 'H1': random_graph_h1, 'H2': random_graph_h2}
+
+
 def _gauss(*key):
     return random.Random('|'.join(map(str, key))).gauss(0.0, 1.0)
 
@@ -73,26 +160,29 @@ def _gauss(*key):
 class Environment:
     """One generated environment (kernel side). `cls` may be given (tests, the study's stratification) or drawn."""
 
-    def __init__(self, seed, sealed_seed, cls=None):
+    def __init__(self, seed, sealed_seed, cls=None, family='base'):
+        if family not in FAMILIES:
+            raise ValueError(f'family in {FAMILIES}')
         rng = random.Random(f'zoo|{seed}')
-        self.seed, self.sealed_seed = seed, sealed_seed
+        self.seed, self.sealed_seed, self.family = seed, sealed_seed, family
+        hidden, gen = HIDDEN_OF[family], GENERATOR[family]
         self.cls = cls if cls is not None else rng.choice(CLASSES)
         if self.cls not in CLASSES:
             raise ValueError(f'class in {CLASSES}')
         self.delta = rng.uniform(1.0, 2.0)
         self.sigma_shared = 4.0 * self.delta if self.cls == 'EVAL_NOISY' else rng.uniform(0.5, 1.0)
         self.sigma_indep = rng.uniform(0.15, 0.3) * self.delta
-        hid = rng.choice(sorted(HIDDEN))
+        hid = rng.choice(sorted(hidden))
         self.scale = rng.choice((1.0, 2.0))
         if self.cls == 'FUSION_NEEDED':
             self.z_expr = ['sub_s', DEG, NSCALED if self.scale == 1.0 else ['mul_s', self.scale, NSCALED]]
         else:
-            self.z_expr = HIDDEN[hid]
+            self.z_expr = hidden[hid]
         self.graphs = {}
         for split, n in SIZES.items():
             r = random.Random(f'zoo|{seed}|{split}' if split in ('dev_a', 'dev_b') else
                               f'zoo-sealed|{sealed_seed}|{seed}|{split}')
-            self.graphs[split] = [random_graph(r) for _ in range(n)]
+            self.graphs[split] = [gen(r) for _ in range(n)]
         self.z = {s: [SG.evaluate(self.z_expr, g) for g in gs] for s, gs in self.graphs.items()}
         ref = sorted(self.z['dev_a'] + self.z['dev_b'])
         self.cut = ref[len(ref) // 2]
@@ -214,10 +304,12 @@ class View:
         return self._units[0]
 
 
-def environment(index, sealed_seed, cls=None):
-    """The index-th environment of a zoo whose sealed draws come from `sealed_seed`."""
-    return Environment(int(digest({'zoo': index})[:12], 16), sealed_seed, cls)
+def environment(index, sealed_seed, cls=None, family='base'):
+    """The index-th environment of a zoo whose sealed draws come from `sealed_seed` (of `family`; 'base' is the zoo of
+    B20_R141 and B20_R167, seeded as it always was)."""
+    key = {'zoo': index} if family == 'base' else {'zoo': index, 'family': family}
+    return Environment(int(digest(key)[:12], 16), sealed_seed, cls, family)
 
 
-__all__ = ['CLASSES', 'DEFECTS', 'CONTROLS', 'LOCATION', 'K', 'SIZES', 'BUDGET', 'Environment', 'View',
-           'environment', 'random_graph']
+__all__ = ['CLASSES', 'DEFECTS', 'CONTROLS', 'LOCATION', 'K', 'SIZES', 'BUDGET', 'FAMILIES', 'Environment', 'View',
+           'environment', 'random_graph', 'random_graph_h1', 'random_graph_h2']

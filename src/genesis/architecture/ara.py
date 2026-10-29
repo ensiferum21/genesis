@@ -31,6 +31,12 @@ from . import rewrite as R
 
 MAX_VARIANTS = 14
 DEPTH = 2
+DEFAULT_CONFIG = {'max_variants': MAX_VARIANTS, 'depth': DEPTH, 'exact_repeats': D.EXACT_REPEATS,
+                  'battery_random': D.BATTERY_RANDOM, 'edge_aggs': ['mean', 'sd'], 'material': D.MATERIAL,
+                  'ranking': 'localised'}
+CONFIG_SPACE = {'max_variants': [1, 2, 4, 8, 14, 20], 'depth': [1, 2, 3], 'exact_repeats': [4, 6, 8, 12],
+                'battery_random': [6, 12, 24, 48], 'edge_aggs': [['mean', 'sd'], ['mean', 'sd', 'frac_pos', 'cv']],
+                'material': [0.025, 0.05, 0.1], 'ranking': ['localised', 'localised_prior', 'blind']}
 
 
 class Account:
@@ -55,7 +61,22 @@ def dev_value(lab, run, view):
     return sum(vals) / len(vals)
 
 
-def rank(ag, rws, ladder, seed):
+def config_of(config):
+    """ARA's own settings (an object ARA itself can rewrite, B20_R144): DEFAULT_CONFIG overridden by `config`, every
+    value checked against CONFIG_SPACE (or equal to the default)."""
+    c = dict(DEFAULT_CONFIG, **(config or {}))
+    for k, v in c.items():
+        if k not in DEFAULT_CONFIG:
+            raise ValueError(f'unknown setting {k!r}')
+        if v != DEFAULT_CONFIG[k] and v not in CONFIG_SPACE[k]:
+            raise ValueError(f'{k}={v!r} is outside the settings space')
+    return c
+
+
+def rank(ag, rws, ladder, seed, prior=None):
+    """Rewrites in the order ARA tries them. `ladder` None: a seeded random order (blind). Otherwise operators on the
+    roles the ladder implicates first. `prior` ({term: {operator: weight}}, learned elsewhere from earlier outcomes)
+    orders the implicated rewrites by the weight of their operator for the ladder's diagnosis (ties as before)."""
     if ladder is None:
         rng = random.Random(f'blind|{seed}')
         out = list(rws)
@@ -66,18 +87,31 @@ def rank(ag, rws, ladder, seed):
         roles |= {'Sense', 'Features'}
     first = [r for r in rws if R.role_of(ag, r) in roles]
     rest = [r for r in rws if R.role_of(ag, r) not in roles]
+    if prior:
+        w = prior.get(ladder.get('diagnosis'), {})
+        first = sorted(first, key=lambda r: -w.get(r['op'], 0.0))         # stable: ties keep the generator's order
     return first + rest
 
 
-def cycle(view, seed=0, budget=None, diagnose=True, submit=None, archive=(), max_variants=MAX_VARIANTS,
-          depth=DEPTH):
+def cycle(view, seed=0, budget=None, diagnose=True, submit=None, archive=(), max_variants=None, depth=None,
+          config=None, prior=None, hint=None):
+    """One ARA cycle. `config`: ARA's own settings (`config_of`); explicit max_variants and depth override it.
+    `prior`: an operator prior for `rank`. `hint`: roles to treat as implicated in place of the ladder's (a stand-in
+    a meta-study's kernel may pass; ARA never derives one itself)."""
+    cfg = config_of(config)
+    max_variants = cfg['max_variants'] if max_variants is None else max_variants
+    depth = cfg['depth'] if depth is None else depth
+    if cfg['ranking'] == 'blind':
+        diagnose = False
     budget = budget if budget is not None else 4 * view.budget
     acct = Account(view, budget)
     trace = {'arm': None, 'diagnosis': None, 'variants': [], 'submitted': None, 'verdict': None}
     inc = view.incumbent
-    lab = D.Lab(view, seed)
+    lab = D.Lab(view, seed, exact_repeats=cfg['exact_repeats'])
     if diagnose:
-        lad = D.ladder(view, inc, seed, lab=lab)
+        lad = D.ladder(view, inc, seed, lab=lab, config=cfg)
+        if hint is not None:
+            lad = dict(lad, located=list(hint), diagnosis=lad['diagnosis'] if lad['diagnosis'] != 'NONE' else 'HINT')
         acct.sense += lab.sense_units
         trace['diagnosis'] = {k: lad[k] for k in ('diagnosis', 'significant', 'located', 'terms', 'range',
                                                   'material', 'values')}
@@ -91,9 +125,10 @@ def cycle(view, seed=0, budget=None, diagnose=True, submit=None, archive=(), max
         material = None
     base = dev_value(lab, base_run, view)
     if material is None:                    # blind: the same MATERIAL rule from the dev tables, without the ladder
-        material = _material(lab)
+        material = _material(lab, cfg['material'])
     synth = R.Synthesis(view, lab, seed, archive)
-    queue = [(r, inc, 1) for r in rank(inc, R.generate(inc, archive), lad, seed)]
+    queue = [(r, inc, 1) for r in rank(inc, R.generate(inc, archive), lad, seed,
+                                       prior if cfg['ranking'] == 'localised_prior' else None)]
     seen, tried = {G.ag_id(inc)}, 0
     while queue and tried < max_variants:
         rw, parent, d = queue.pop(0)
@@ -136,13 +171,13 @@ def cycle(view, seed=0, budget=None, diagnose=True, submit=None, archive=(), max
     return _finish(trace, acct, lab, view, best['variant'], best['run'])
 
 
-def _material(lab):
+def _material(lab, fraction=None):
     nb = len(lab.value_b)
     K = lab.K
     o = [lab.value_b[i][max(range(K), key=lambda c: (lab.choose_b[i][c], -c))] for i in range(nb)]
     single = max(range(K), key=lambda c: (sum(lab.value_b[i][c] for i in range(nb)), -c))
     rng_ = sum(o[i] - lab.value_b[i][single] for i in range(nb)) / nb
-    return D.MATERIAL * rng_ if rng_ > 0 else float('inf')
+    return (D.MATERIAL if fraction is None else fraction) * rng_ if rng_ > 0 else float('inf')
 
 
 def _public(fill):
@@ -235,4 +270,5 @@ def tune_only(view, seed=0, budget=None, submit=None):
     return _finish(trace, acct, lab, view, best[1], best[2])
 
 
-__all__ = ['MAX_VARIANTS', 'DEPTH', 'Account', 'cycle', 'tune_only', 'tune_candidates', 'rank', 'dev_value']
+__all__ = ['MAX_VARIANTS', 'DEPTH', 'DEFAULT_CONFIG', 'CONFIG_SPACE', 'Account', 'config_of', 'cycle', 'tune_only',
+           'tune_candidates', 'rank', 'dev_value']

@@ -733,7 +733,7 @@ Every experiment is preregistered with five things:
 | ARA-5 | 13 | The adversarial scientist: environments where promoted variants regress | PLANNED |
 | ARA-6 | 12 | The allocator over roles, with solve and stop arms | PLANNED |
 | ARA-7 | 7 | B20_R142: ARA on the real engine-choice workflow (layer 2's R136), with the strongest published solvers | PLANNED; needs ARA-2's verdict |
-| ARA-8 | 9 | B20_R144: ARA applied to ARA | PLANNED; needs ARA-2 |
+| ARA-8 | 9 | B20_R144: ARA applied to ARA | **Machinery BUILT on fixtures** (29 Oct 2026): ARA's settings as an object (`ara.DEFAULT_CONFIG`, `ara.CONFIG_SPACE`, `ara.config_of`; the defaults reproduce ARA-1 exactly, checked by trace digests); `architecture/meta.py` (the meta-ladder with four stand-ins: localisation, exploration, evaluation, observation; one-step rewrites of the settings, the located component's first; an operator prior learned from ARA's traces; adoption by MATERIAL on separate choice environments; a tuning-only control at the same count of evaluations); the zoo's held-out families H1 and H2 (kernel side; the base family unchanged, pinned by digests). Tests `test_architecture_config`, `test_architecture_meta`, `test_architecture_zoo_families`. The study waits for B20_R167's verdict |
 | ARA-9 | 8 | B20_R147: paradigms as AGs | PLANNED |
 | ARA-10 | 10 | B20_R145, B20_R146: generations and transfer | PLANNED |
 
@@ -765,3 +765,6 @@ Every experiment is preregistered with five things:
   Development look (zoo indices 9000–9015): with a 14-variant budget the blind-rewrite control reaches the same
   fixes as ARA at about five times the units, so B20_R141's experiment D must fix a variant budget or measure gain
   per unit. DECOY is a defect on dev by construction, so it is judged by the false-release rate, not the NONE rate.
+- 29 Oct 2026, 23:45 (this session, writer again): ARA-8's machinery built on fixtures (§16): ARA's settings as an
+  object it can rewrite, the meta-ladder and meta-cycle (`architecture/meta.py`), and two held-out zoo families.
+  B20_R144 is designed after B20_R167's verdict, so that its design can use what the calibration shows.
