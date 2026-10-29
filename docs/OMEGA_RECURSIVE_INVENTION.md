@@ -460,3 +460,6 @@ its growth across generations.
 - 24 Oct 2026, 21:10: the layer above this one adopted: `docs/OMEGA_ARCHITECTURE_INVENTION.md` (the Autonomous
   Research Architect, which rewrites workflows built from these ROs and itself). B20_R136 becomes its first real
   workflow (ARA-7, B20_R142).
+- 29 Oct 2026, 23:20: Batch R2 completed on fixtures: sense synthesis by cross-validated search and a library of
+  composite primitives admitted only through a held-out gate (`senses/synthesis.py`; `test_sense_synthesis`).
+  B20_R136 (experiment A) can now be designed.

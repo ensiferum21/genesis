@@ -1268,7 +1268,9 @@
    "unlocks": []
   },
   "sense-language-build": {
-   "artifacts": [],
+   "artifacts": [
+    "src/genesis/senses/synthesis.py"
+   ],
    "committed": false,
    "depends_on": [
     "ro-layer-build"
@@ -1278,15 +1280,15 @@
    "kind": "build",
    "line": "recursive-invention",
    "notes": "language and workspace built on fixtures (test_senses); synthesis by search reuses selfimprove/feedback operators; B20_R136 next",
-   "outcome": null,
+   "outcome": "built on fixtures: the language and workspace (test_senses), synthesis by cross-validated search and a gated library of composite primitives (senses/synthesis.py; test_sense_synthesis)",
    "output": null,
-   "positive": null,
+   "positive": true,
    "preregistered": null,
    "priority": 5,
    "requires": [],
    "resources": {},
    "script": null,
-   "status": "queued",
+   "status": "done",
    "title": "The graph sense language, its interpreter, contracts, synthesis and the perceptual workspace (section 4)",
    "unlocks": []
   }
@@ -1901,6 +1903,18 @@
    "id": "B20_R173",
    "kind": "add",
    "time": "2026-10-29T15:15:18+00:00"
+  },
+  {
+   "id": "sense-language-build",
+   "kind": "start",
+   "time": "2026-10-29T15:18:06+00:00"
+  },
+  {
+   "id": "sense-language-build",
+   "kind": "finish",
+   "outcome": "built on fixtures: the language and workspace (test_senses), synthesis by cross-validated search and a gated library of composite primitives (senses/synthesis.py; test_sense_synthesis)",
+   "positive": true,
+   "time": "2026-10-29T15:18:06+00:00"
   }
  ],
  "lines": {
@@ -2094,6 +2108,11 @@
      "ro-layer-build",
      "built on fixtures (test_research_objects, 9 tests)",
      true
+    ],
+    [
+     "sense-language-build",
+     "built on fixtures: the language and workspace (test_senses), synthesis by cross-validated search and a gated library of composite primitives (senses/synthesis.py; test_sense_synthesis)",
+     true
     ]
    ],
    "run": 0,
@@ -2177,6 +2196,7 @@
   "experiment-choice-verified",
   "ro-layer",
   "representation-language",
-  "ara-core"
+  "ara-core",
+  "sense-language"
  ]
 }
