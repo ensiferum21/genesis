@@ -31,13 +31,14 @@ import math
 
 import numpy as np
 
+from . import calibrate as CAL
 from . import curves as CV
 from . import direction as D
 
 GRID = 1.25          # forecast horizons are rounded up to this geometric grid (cache reuse at scale)
 DEFAULTS = {'eps': 0.25, 'eps_min': 0.1, 'eps_max': 0.4, 'stall': 40, 'lam_lp': 1.0, 'lam_con': 0.02,
             'patience_quanta': 4, 'pause_min_share': 0.01, 'k_imagine': 8, 'B': 60, 'window': 8,
-            'alarm_share': 0.25, 'p_derive': 0.0}
+            'alarm_share': 0.25, 'p_derive': 0.0, **CAL.DEFAULT}
 
 
 def level(br, last=3):
@@ -65,15 +66,25 @@ class FrontierPolicy:
         self.explore_extra = 0.0                 # compute given to reactivated branches during their patience
         self._total = 0.0                        # the total verified value at the last material improvement
         self._fc_cache = {}
+        self.calib = CAL.Calibrator(self.p)      # G2: the identity unless a calibration rule is set
+        self._pending = {}                       # branch id -> [[H, raw forecast, t/H], ...] awaiting their truth
+        self._fc_used = {}                       # forecast key -> the calibrated forecast last used
 
     def to_json(self):
-        return {'eps': self.eps, 'last_improvement': self.last_improvement, 'explore_extra': self.explore_extra,
-                'total': self._total}
+        out = {'eps': self.eps, 'last_improvement': self.last_improvement, 'explore_extra': self.explore_extra,
+               'total': self._total}
+        if self.calib.active:
+            out['calib'] = self.calib.to_json()
+            out['pending'] = {str(k): v for k, v in self._pending.items() if v}
+        return out
 
     def load(self, data):
         self.eps, self.last_improvement = data['eps'], data['last_improvement']
         self.explore_extra = data.get('explore_extra', 0.0)
         self._total = data.get('total', 0.0)
+        if 'calib' in data:
+            self.calib.load(data['calib'])
+            self._pending = {int(k): v for k, v in data.get('pending', {}).items()}
 
     def observe(self, eng, improved):
         total = eng.total()
@@ -88,6 +99,22 @@ class FrontierPolicy:
         if (eng.spent >= self.p['alarm_share'] * eng.budget and not eng.clusters.converged()
                 and eng.abstraction):
             self.eps = min(self.p['eps_max'], max(self.eps, 0.3))
+        if self.calib.active and self._pending:
+            self._resolve(eng)
+
+    def _resolve(self, eng):
+        """G2 'resolved' signal: a forecast whose branch has reached its horizon meets its truth, the branch's first
+        observation at or past the horizon."""
+        for bid in sorted(self._pending):
+            items, b = self._pending[bid], eng.branches[bid]
+            keep = []
+            for H, fc, frac in items:
+                if b['t'] >= H:
+                    i = int(np.searchsorted(np.asarray(b['ts'], float), H - 1e-9, side='left'))
+                    self.calib.resolve(fc, frac, float(b['ys'][min(i, len(b['ys']) - 1)]))
+                else:
+                    keep.append([H, fc, frac])
+            self._pending[bid] = keep
 
     def forecast(self, eng, br, H):
         """The forecast at the horizon H rounded up to a geometric grid above the branch's compute (ratio GRID), so
@@ -99,7 +126,26 @@ class FrontierPolicy:
         if key not in self._fc_cache:
             rng = np.random.default_rng(eng.seed_for('fc', br['id'], len(br['ts'])))
             self._fc_cache[key] = dict(CV.forecast(br['ts'], br['ys'], Hk, B=self.p['B'], rng=rng), H=Hk)
-        return self._fc_cache[key]
+            if self.calib.active:
+                self._learn(eng, br, self._fc_cache[key], Hk)
+        if not self.calib.active:
+            return self._fc_cache[key]
+        adj = self.calib.adjust(self._fc_cache[key], br['t'] / Hk)
+        self._fc_used[key] = adj
+        return adj
+
+    def _learn(self, eng, br, fc, H):
+        """G2: queue a new raw forecast for resolution, or resolve its hindcast at once."""
+        frac = br['t'] / H
+        if self.calib.rule['cal_signal'] == 'resolved':
+            self._pending.setdefault(br['id'], []).append([H, {k: fc[k] for k in ('lo', 'mid', 'hi')}, frac])
+            return
+        j = CAL.hindcast_origin(br['ts'], frac)
+        if j is None:
+            return
+        rng = np.random.default_rng(eng.seed_for('hc', br['id'], len(br['ts'])))
+        hc = CV.forecast(br['ts'][:j + 1], br['ys'][:j + 1], br['ts'][-1], B=self.p['B'], rng=rng)
+        self.calib.resolve(hc, br['ts'][j] / br['ts'][-1], float(br['ys'][-1]))
 
     def patience(self, eng):
         return self.p['patience_quanta'] * eng.quantum
