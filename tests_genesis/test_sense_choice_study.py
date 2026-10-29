@@ -17,7 +17,7 @@ import b20r136_sense_choice as S  # noqa: E402
 from genesis.candidate_kinds import mcx3 as K3  # noqa: E402
 from genesis.common import digest  # noqa: E402
 
-PREREGISTRATION = None              # the commit that preregistered the script (set after it)
+PREREGISTRATION = '6bb39ab'         # the commit that preregistered the script
 
 
 class Design(unittest.TestCase):
@@ -40,6 +40,18 @@ class Design(unittest.TestCase):
         ctx = SG.Context(S.as_graph(t))
         self.assertAlmostEqual(SG.evaluate(S.HAND[0], ctx), cv)
         self.assertAlmostEqual(math.expm1(SG.evaluate(S.HAND[1], ctx)), math.exp(lr))   # log1p(max/mean) vs log
+
+    def test_the_script_at_the_preregistration_commit(self):
+        import hashlib
+        import subprocess
+        try:
+            out = subprocess.run(['git', '-C', str(ROOT), 'show', f'{PREREGISTRATION}:scripts/b20r136_sense_choice.py'],
+                                 capture_output=True, timeout=60)
+        except (OSError, subprocess.SubprocessError):
+            return
+        if out.returncode == 0:
+            self.assertEqual(hashlib.sha256(out.stdout).hexdigest(),
+                             '357cd5ed202b8b79987668d081d408ad8fcbf32ef51cb5cae6d6fa3c979b2bcb')
 
     def test_charged_budget_and_verdict(self):
         self.assertEqual(S.charged_budget(0.0), 1.0)
