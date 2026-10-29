@@ -34,11 +34,12 @@ import numpy as np
 from . import calibrate as CAL
 from . import curves as CV
 from . import direction as D
+from . import statefeat as SF
 
 GRID = 1.25          # forecast horizons are rounded up to this geometric grid (cache reuse at scale)
 DEFAULTS = {'eps': 0.25, 'eps_min': 0.1, 'eps_max': 0.4, 'stall': 40, 'lam_lp': 1.0, 'lam_con': 0.02,
             'patience_quanta': 4, 'pause_min_share': 0.01, 'k_imagine': 8, 'B': 60, 'window': 8,
-            'alarm_share': 0.25, 'p_derive': 0.0, **CAL.DEFAULT}
+            'alarm_share': 0.25, 'p_derive': 0.0, 'state_feature': None, 'log_decisions': False, **CAL.DEFAULT}
 
 
 def level(br, last=3):
@@ -69,6 +70,10 @@ class FrontierPolicy:
         self.calib = CAL.Calibrator(self.p)      # G2: the identity unless a calibration rule is set
         self._pending = {}                       # branch id -> [[H, raw forecast, t/H], ...] awaiting their truth
         self._fc_used = {}                       # forecast key -> the calibrated forecast last used
+        self.decisions = []                      # G4: logged exploitation decisions (when log_decisions)
+        sf = self.p['state_feature']
+        if sf is not None and not SF.check(sf.get('expr')):
+            raise ValueError(f'not a state feature: {sf!r}')
 
     def to_json(self):
         out = {'eps': self.eps, 'last_improvement': self.last_improvement, 'explore_extra': self.explore_extra,
@@ -194,6 +199,7 @@ class FrontierPolicy:
         remaining = max(eng.quantum, eng.budget - eng.spent)
         share = remaining / max(1, len(active))
         best, best_i = None, -math.inf
+        cands = []
         for b in sorted(active, key=lambda b: b['id']):
             H = b['t'] + share
             fc = self.forecast(eng, b, H)
@@ -206,10 +212,24 @@ class FrontierPolicy:
             lp = slope(b, self.p['window']) * self.p['window'] * eng.quantum
             con = eng.clusters.branch_bonus(b['id'])
             idx = gain + self.p['lam_lp'] * lp + self.p['lam_con'] * con
+            sf, logging = self.p['state_feature'], self.p['log_decisions']
+            if sf is not None or logging:
+                prims = SF.primitives(b, fc, target, gain, lp, con, idx, H)
+                if sf is not None:
+                    idx += sf['weight'] * SF.evaluate(sf['expr'], prims)
+                if logging:
+                    cands.append((idx, b['id'], prims))
             if idx > best_i:
                 best, best_i = b, idx
         if best is None:
             return self.explore(eng)
+        if self.p['log_decisions'] and len(cands) >= 2:
+            top = sorted(cands, key=lambda c: (-c[0], c[1]))[:2]
+            self.decisions.append({'step': eng.step_count, 'spent': eng.spent, 'top': [
+                {'bid': bid, 'prims': pr, 'branch': {'direction': eng.branches[bid]['direction'],
+                                                     'seed': eng.branches[bid]['seed'], 't': eng.branches[bid]['t'],
+                                                     'ys': list(eng.branches[bid]['ys'][-3:])}}
+                for _, bid, pr in top]})
         # 6. the value of opening a new direction on a problem: what directions reach (the levels of every branch so
         #    far, an empirical prior), above the problem's best verified value; the upper half of those samples
         prob, v_open = self.open_value(eng)

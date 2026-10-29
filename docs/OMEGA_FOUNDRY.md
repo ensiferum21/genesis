@@ -103,6 +103,21 @@ after its extra cost. F6 (B20_R163) is the policy-only point of this design, and
 where its features look alike but a matched replay shows different best actions become a proposed new feature.
 That feature is kept only if it improves held-out allocation after its computation is charged. This is ARA's
 SENSE_BLIND class turned on the engine's own controller. It is engineering first, then a study.
+- **State (29 Oct 2026): the engineering is BUILT** (`frontier/statefeat.py`; `tests_genesis/test_frontier_statefeat.py`).
+  - The policy logs its two leading candidates at each exploitation decision (`log_decisions`), with 17 primitives of
+    each branch's own history and forecast.
+  - `replay_gain` advances each candidate alone by k quanta through the domain's public `step` (pure in the planted
+    world) and returns the compute it used, for a study to charge.
+  - `propose` searches 697 feature expressions (primitives, and differences, products and ratios of two). The whole
+    search is cross-validated (search on one fold, score on the other), and a feature is proposed only if its
+    held-out agreement with the replays beats the index alone by 0.02 with a one-sided z of at least 1.645.
+    On noise it proposes nothing (tested); it recovers a planted distinction (tested).
+  - The feature enters the index as `state_feature` = {'expr', 'weight'}. The defaults and decision logging leave
+    runs unchanged (identical events).
+  - A development look (disclosed for B20_R172): on three planted worlds of seeds 887021-887023 (budget 12,000), the
+    index already agreed with replays on 0.82-0.92 of weighted pairs; two of three proposed a feature (held-out
+    0.90 and 0.92). The replays cost 80,000 evaluations for 200 pairs (k = 20), several times a world's budget, so
+    the study must amortise one search over many held-out worlds, as F6 and B20_R170 do.
 
 **G5: interaction estimates for joint proposals (§5.3).** The formula goes into ARA-3's synergy factorial
 (B20_R143, already planned) and G3.
