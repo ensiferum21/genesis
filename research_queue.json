@@ -599,7 +599,7 @@
    "id": "B20_R157",
    "kind": "study",
    "line": "frontier",
-   "notes": "Daniel's directive of 27 Oct 2026, 19:55 (docs/OMEGA_FRONTIER.md); to preregister after a timing pilot; preregistered 27 Oct 2026 21:40 SGT",
+   "notes": "Daniel's directive of 27 Oct 2026, 19:55 (docs/OMEGA_FRONTIER.md); to preregister after a timing pilot; preregistered 27 Oct 2026 21:40 SGT | 29 Oct 2026: queued to run again in full from a clean worktree at ff9eada after B20_R167.",
    "outcome": null,
    "output": "evidence/laplacian_bounds_b20r157",
    "positive": null,
@@ -610,7 +610,7 @@
     "cpu0_hours": 2.5
    },
    "script": "scripts/b20r157_laplacian_bounds.py",
-   "status": "running",
+   "status": "queued",
    "title": "F4: the sealed Laplacian bounds: refutations by exact certificate within budget, the Frontier against NRPA, GBFS, CEM and the uniform portfolio at matched CPU; no certificate against a proved bound; bounds 44 and 46 open as of June 2026",
    "unlocks": []
   },
@@ -727,7 +727,7 @@
    "id": "B20_R167",
    "kind": "study",
    "line": "architecture-invention",
-   "notes": "runs after B20_R163 (F6); B20_R142 requires ara-calibrated, which only this can now unlock",
+   "notes": "runs after B20_R163 (F6); B20_R142 requires ara-calibrated, which only this can now unlock | 29 Oct 2026: the 28 Oct attempt was lost with its session; restarted from its preregistered script (33e8905) in a fresh output directory at 21:30 SGT, the lost attempt disclosed in its record.",
    "outcome": null,
    "output": "evidence/ara_zoo_b20r167",
    "positive": null,
@@ -1837,6 +1837,33 @@
    "id": "ledger-row-schema",
    "kind": "add",
    "time": "2026-10-28T02:52:54+00:00"
+  },
+  {
+   "id": "B20_R167",
+   "kind": "block",
+   "time": "2026-10-29T13:31:20+00:00",
+   "why": "the run started on 28 Oct 2026 at 02:16 UTC in the 26-28 Oct writer session left no evidence and no record on the branch (nothing pushed after 28 Oct 02:59 UTC); on 29 Oct Daniel had this session take over as the writer"
+  },
+  {
+   "id": "B20_R167",
+   "kind": "unblock",
+   "time": "2026-10-29T13:31:20+00:00"
+  },
+  {
+   "id": "B20_R167",
+   "kind": "start",
+   "time": "2026-10-29T13:31:20+00:00"
+  },
+  {
+   "id": "B20_R157",
+   "kind": "block",
+   "time": "2026-10-29T13:31:20+00:00",
+   "why": "its first attempt was killed (out of memory, 28 Oct 02:10 UTC; defect B20R157-STAR) and it was amended at ff9eada before any result; it was queued to run again after B20_R167, and the writer session that held it ended"
+  },
+  {
+   "id": "B20_R157",
+   "kind": "unblock",
+   "time": "2026-10-29T13:31:20+00:00"
   }
  ],
  "lines": {

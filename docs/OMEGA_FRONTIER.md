@@ -937,6 +937,11 @@ commit through `git show`.
    - The first attempt's rows: `evidence/laplacian_bounds_b20r157_attempt1/` (not used).
    - Record it with the RecordB20R157 draft, updated for the amended digest.
 5b. **B20_R167 is running in slices** (from 28 Oct, 02:16 UTC; about 3 h; brought forward while F4 was blocked).
+   - **29 Oct 2026, writer change:** that attempt was lost with its session (nothing pushed after 28 Oct 02:59 UTC).
+     It restarted from scratch at 29 Oct 13:30 UTC from a clean worktree `/home/claude/r167-wt` at `33e8905`, with a
+     fresh output directory; the slice runner is `/home/claude/run_slice.sh` (WORKTREE SCRIPT OUTPUT LOG; the script
+     is committed nowhere: it cds into the worktree, pins CPU 0 with taskset, and logs START/END to
+     `/home/claude/chain.log`).
    - From the clean worktree `/home/claude/r167-wt` at `33e8905`.
    - Resume with `/home/claude/run_slice.sh /home/claude/r167-wt scripts/b20r167_ara_zoo_rerun.py evidence/ara_zoo_b20r167 /home/claude/logs/r167_slices.log`.
    - Record it with the RecordB20R167 draft.
