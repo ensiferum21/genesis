@@ -13,7 +13,7 @@ sys.path.insert(0, str(ROOT / 'src'))
 sys.path.insert(0, str(ROOT / 'scripts'))
 import b20r172_state_features as S  # noqa: E402
 
-PREREGISTRATION = None              # the commit that preregistered the script (set after it)
+PREREGISTRATION = '73f8ad4'         # the commit that preregistered the script
 
 
 def digest_at(commit, rel):
@@ -34,6 +34,9 @@ class Design(unittest.TestCase):
             at = {m: digest_at(PREREGISTRATION, 'src/genesis/frontier/' + m) for m in S.PINNED}
             if all(v is not None for v in at.values()):
                 self.assertEqual(at, S.PINNED)
+            script = digest_at(PREREGISTRATION, 'scripts/b20r172_state_features.py')
+            if script is not None:
+                self.assertEqual(script, '46e571f4f763ace626a8962bd6e21c103b91f99c2e095e299ee3571677739b33')
         others = [p for p in (ROOT / 'scripts').glob('*.py') if p.name != 'b20r172_state_features.py']
         self.assertFalse(any(re.search(rf'\b{S.SEALED_SEED}\b', p.read_text()) for p in others))
 
