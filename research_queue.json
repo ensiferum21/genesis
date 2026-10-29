@@ -820,6 +820,31 @@
    "title": "G4 (docs/OMEGA_FOUNDRY.md): decision-relevant state abstraction for the allocator, found through counterexamples (alike states, different best actions)",
    "unlocks": []
   },
+  "B20_R173": {
+   "artifacts": [],
+   "committed": true,
+   "depends_on": [
+    "B20_R167"
+   ],
+   "failure": null,
+   "id": "B20_R173",
+   "kind": "study",
+   "line": "engine-invention",
+   "notes": "B20_R165's record names it as the next step; runs after B20_R167 and before B20_R157 (35 min); the protected judge is called, never changed",
+   "outcome": null,
+   "output": "evidence/protected_release_b20r173",
+   "positive": null,
+   "preregistered": "sha256 a3e038415e1b57199dc2aeab759f413338e0f61fec05db6786077afdabaa7291 (the preregistration commit)",
+   "priority": 7,
+   "requires": [],
+   "resources": {
+    "cpu0_hours": 0.6
+   },
+   "script": "scripts/b20r173_protected_release.py",
+   "status": "queued",
+   "title": "A release attempt through the protected judge: C0_1, the confirmed engine gain of B20_R165, on fresh planar2_pm1 graphs; version 3 reported beside it",
+   "unlocks": []
+  },
   "allocator-baselines": {
    "artifacts": [],
    "committed": false,
@@ -948,12 +973,12 @@
    "id": "expr-x3-build",
    "kind": "build",
    "line": "expressiveness",
-   "notes": "Daniel's direction of 27 Oct 2026, 14:33 (richness): the builder's infrastructure; the conditions are Genesis's",
+   "notes": "Daniel's direction of 27 Oct 2026, 14:33 (richness): the builder's infrastructure; the conditions are Genesis's | 29 Oct 2026: deferred (priority 2): B20_R151 and B20_R152 records say X3 has no support (\u039b1 guards did not help; nothing admitted); revisit if a language effect appears",
    "outcome": null,
    "output": null,
    "positive": null,
    "preregistered": null,
-   "priority": 6,
+   "priority": 2,
    "requires": [],
    "resources": {},
    "script": null,
@@ -1871,6 +1896,11 @@
    "id": "B20_R157",
    "kind": "unblock",
    "time": "2026-10-29T13:31:20+00:00"
+  },
+  {
+   "id": "B20_R173",
+   "kind": "add",
+   "time": "2026-10-29T15:15:18+00:00"
   }
  ],
  "lines": {
@@ -2138,7 +2168,8 @@
   "B20_R170",
   "B20_R171",
   "B20_R172",
-  "ledger-row-schema"
+  "ledger-row-schema",
+  "B20_R173"
  ],
  "reactivated": {},
  "schema": "genesis-research-queue-v1",
