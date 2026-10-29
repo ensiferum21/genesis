@@ -160,24 +160,26 @@
   },
   "B20_R136": {
    "artifacts": [],
-   "committed": false,
+   "committed": true,
    "depends_on": [
     "sense-language-build",
-    "B20_R132"
+    "B20_R173"
    ],
    "failure": null,
    "id": "B20_R136",
    "kind": "study",
    "line": "recursive-invention",
-   "notes": "",
+   "notes": "experiment A (the vertical slice): a synthesised sense chooses between REX and C0_1 per graph, against the best fixed engine and the builder hand features, sense CPU charged; preregistered 29 Oct 2026; runs after B20_R173, before B20_R157",
    "outcome": null,
-   "output": null,
+   "output": "evidence/sense_choice_b20r136",
    "positive": null,
-   "preregistered": null,
-   "priority": 4,
+   "preregistered": "sha256 357cd5ed202b8b79987668d081d408ad8fcbf32ef51cb5cae6d6fa3c979b2bcb (the preregistration commit)",
+   "priority": 7,
    "requires": [],
-   "resources": {},
-   "script": null,
+   "resources": {
+    "cpu0_hours": 0.35
+   },
+   "script": "scripts/b20r136_sense_choice.py",
    "status": "queued",
    "title": "Experiment A: synthesised senses choose the engine program per instance; fresh graphs, matched compute, planted control, transfer",
    "unlocks": [

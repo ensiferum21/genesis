@@ -931,6 +931,8 @@ commit through `git show`.
    0.66 at a nominal 0.90 (`docs/checkpoints/B20_R156_RECORD.md`).
 4b. **B20_R173 (29 Oct 2026, preregistered): a release attempt through the protected judge** on planar2_pm1, after
     B20_R167 and before B20_R157 (about 35 min), from a clean worktree of its preregistration commit.
+4c. **B20_R136 (29 Oct 2026, preregistered): experiment A, a synthesised sense chooses the engine per graph**, after
+    B20_R173 and before B20_R157 (about 20 min), from a clean worktree of its preregistration commit.
 5. **B20_R157 (F4): its first attempt was killed (out of memory, 02:10 UTC), and it is AMENDED at `ff9eada`.**
    - The cause was the star-size defect (B20R157-STAR in `docs/BLOCKING_DEFECTS.md`).
    - It runs again in full from a clean worktree at `ff9eada`, after B20_R167. Create it with

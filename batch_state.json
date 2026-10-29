@@ -1513,6 +1513,12 @@
       "B20_R173": {
         "commits": [],
         "result": "Preregistered (DEV): the protected judge (v2, unchanged), calibrated as a search applies it (REX and 47 random L0 engines, 12-graph B and C splits of fresh planar2_pm1 graphs), given one submission: C0_1, B20_R165's pre-specified engine (+1.16% there). Verdict RELEASED / NOT_RELEASED; v3 reported; a truth set of 24 graphs. Expectation NOT_RELEASED. Runs after B20_R167"
+      },
+      "B20_R136": {
+        "commits": [
+          "70d12b6"
+        ],
+        "result": "Preregistered (DEV; experiment A, the vertical slice): a sense synthesised by cross-validated search on 40 training graphs of five 2,000-vertex families chooses between REX and C0_1 per graph, its CPU charged to the chosen engine; P1 against the best fixed engine, P2 against the builder hand features (B20_R105), Holm. Expectation BEATS_FIXED_ONLY. Runs after B20_R173"
       }
     },
     "open_after_b20_r5": [
