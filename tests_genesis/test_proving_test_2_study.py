@@ -80,7 +80,7 @@ class Design(unittest.TestCase):
         import inspect
         self.assertEqual(S.MODULES, P1.MODULES)
         differ = sorted(m for m in S.MODULES if S.PINNED[m] != P1.PINNED[m])
-        self.assertEqual(differ, ['conjecture/library.py'])            # the amendment (B20R177-LIBRARY) only
+        self.assertEqual(differ, ['conjecture/library.py', 'conjecture/statement.py'])   # the two amendments only
         for name in ('posed_a', 'posed_b', 'b_verifier', 'posed_c', 'c_label', 'double_check', 'mcnemar_one_sided',
                      'wilcoxon_less', 'holm', 'compare', 'conjecture_domain', 'invariant_domain', 'settings',
                      'run_engine', 'record', 'check_facts', 'give', 'spent_ok', 'beats', '_proved_equivalent',

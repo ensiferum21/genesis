@@ -324,6 +324,7 @@ SET_FUNCTIONS = {
 
 TRANSFORMS = {'complement': lambda G: G.complement(), 'square': I.square}
 FUNCTIONS = ('ceil', 'floor', 'sqrt', 'ln', 'max', 'min', 'idiv', 'mod', 'nat_sub', 'ind', 'cond')
+SEEN_MAX = 200000          # the score memo's bound; at the bound it is cleared before a new entry
 VOCABULARY = tuple(SCALARS) + tuple(SETS) + tuple(SET_FUNCTIONS)
 
 
@@ -571,7 +572,8 @@ class Statement:
         key = (n, edges)
         if key not in self._seen:
             G = I.Graph(n, edges)
-            self._seen[key] = self.check(G)['score'] if G.connected() else -math.inf
-            if len(self._seen) > 200000:
+            v = self.check(G)['score'] if G.connected() else -math.inf
+            if len(self._seen) >= SEEN_MAX:          # bounded memo: cleared before the new entry (B20R177-SEEN)
                 self._seen.clear()
+            self._seen[key] = v
         return self._seen[key]

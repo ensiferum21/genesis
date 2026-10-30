@@ -39,6 +39,25 @@ expansion failed (`StopIteration` inside a generator).
     (`evidence/proving_test_2_b20r177_attempt1/`) are not used. Every stage runs again, with the same seeds, in a
     fresh output directory. Whether stage 1 repeats exactly depends on whether the first attempt's G drew a library
     macro with a derived operation before part 3; that is not checked, so as not to read the attempt's files.
+  * (The amendment's time above is as written then; it was written at about 21:10 SGT.)
+
+**Second amendment (30 Oct 2026, written from 22:10 SGT, after a second attempt crashed; disclosed).** The second
+attempt, from the first amendment `25eadb7` (`/home/claude/pt2b-wt`), ran from 21:15:05 to 22:08:03 SGT and stopped
+with exit 1 in the arm loop of parts 4 and 5, in family B's domain. The cause was a defect in `conjecture/statement.py`
+(B20R177-SEEN, `docs/BLOCKING_DEFECTS.md`): `Statement.score` memoises scores in a bounded dict and, once it held
+more than 200,000 entries, cleared it after storing the new entry and then read that entry back (`KeyError`).
+  * The repair: the memo is cleared before the new entry is stored (bound `SEEN_MAX`). The memo only saves
+    recomputation: every score returned is the one the check computes, so no result changes, only the crash.
+    (`test_wowii`, `ScoreMemo`.)
+  * The pins below differ from the first amendment's in `conjecture/statement.py` only (and from PT-1's in it and
+    `conjecture/library.py`).
+  * Before this attempt, the whole pipeline ran once at the full budgets on the design tests' invented families (a
+    pre-flight on CPU 1, never A, B or C), to find any other failure that appears only at scale.
+  * **What the crash revealed (disclosed).** Only the log's traceback was read. It shows the attempt had reached
+    parts 4 and 5, which run only after the gate held, part 2 passed, and part 3 extracted a procedure (part 3's
+    replay runs before them). It does not show whether parts 1 or 3 passed. The attempt's files
+    (`evidence/proving_test_2_b20r177_attempt2/`) are not used; every stage runs again, with the same seeds, in a
+    fresh output directory.
 
 PT-1's documentation follows, unchanged except where it says what differs.
 
@@ -226,7 +245,8 @@ PINNED = {             # `pins()` at preregistration; checked at run time
     # the amendment (B20R177-LIBRARY): library.py's digest differs from PT-1's
     'conjecture/library.py': 'f5e8acad77090b8b7033d92e2ada4a55f1fa4fa04e40ad5df0292c6dd1b8be91',
     'conjecture/invariants.py': '98620b18ec5457122dd442d2c9dc68ad4787dfc22af6ef868dc2a021d1cdfab2',
-    'conjecture/statement.py': '7ca76e71f224aa19267337a03e691d948962ff1bfd96c5897180eb6ba9d678ff',
+    # the second amendment (B20R177-SEEN)
+    'conjecture/statement.py': 'e3f71e13dc4fc3ba4d89dbe5e96c774d85abb74a3fe637fd225e0888c16674a4',
     'conjecture/invariant_domain.py': 'c0db7d3b90b601f6c6de1bca5883395883db3f3423c05683220bcffc0f77d617',
     'conjecture/sealed.py': 'ae7d429c76e12171f9918213eaef9c33d83a1ffbd7d905953b9a79d129f41bcf',
     'conjecture/verify.py': '712c5fc1ed0c4404ac2f423c12cb7356cf9e9a90b305e19ebd293b5ec2cc0706',

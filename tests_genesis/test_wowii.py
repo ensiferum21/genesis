@@ -193,6 +193,29 @@ class PosedText(unittest.TestCase):
                 done += 1
 
 
+class ScoreMemo(unittest.TestCase):
+    """B20R177-SEEN: the attack score's memo is bounded; at the bound it is cleared before the new entry, so the score
+    of the graph that filled it is returned (it raised KeyError when the clear came after the entry)."""
+
+    def test_the_memo_clears_without_losing_the_new_entry(self):
+        from unittest import mock
+        import numpy as np
+        from genesis.conjecture import statement as ST
+        st = ST.Statement('radius <= diameter')
+        graphs = []
+        for n in (3, 4, 5, 6):
+            A = np.zeros((n, n), dtype=int)
+            for i in range(n - 1):
+                A[i, i + 1] = A[i + 1, i] = 1
+            graphs.append(A)
+        want = [ST.Statement('radius <= diameter').score(A) for A in graphs]
+        with mock.patch.object(ST, 'SEEN_MAX', 2):
+            got = [st.score(A) for A in graphs]                 # the third and the fourth find the memo full
+            self.assertLessEqual(len(st._seen), 2)
+            self.assertEqual(got, want)
+            self.assertEqual([st.score(A) for A in graphs], want)
+
+
 class StatementLanguage(unittest.TestCase):
     def test_exact_square_roots(self):
         self.assertEqual(ST.sqrt(4), 2)

@@ -964,9 +964,9 @@ commit through `git show`.
 6f. **PT-1 (B20_R159): done, INADEQUACY_GATE_FAILED** (19:24–19:49 SGT; `docs/checkpoints/B20_R159_RECORD.md`).
 6g. **B20_R175 (F6b): done, NOT_SHOWN (NOTHING_PROMOTED)** (19:50–20:23 SGT; `docs/checkpoints/B20_R175_RECORD.md`).
 6h. **PT-2 (B20_R177): first attempt stopped** (20:23–21:04 SGT, exit 1 in part 3's replay; defect B20R177-LIBRARY,
-    repaired; the test amended at `25eadb7`). **PT-2 re-runs** from scratch from 21:15:05 SGT, from
-    `/home/claude/pt2b-wt` at `25eadb7` (about 6.5 h). The checkpoint B20_R176 (started 21:04:21) was stopped at
-    21:15 so that PT-2 runs first; it is re-made after PT-2.
+    repaired; the test amended at `25eadb7`). The second attempt (21:15–22:08, from `25eadb7`) stopped in family B's
+    arms (defect B20R177-SEEN, repaired; the test amended a second time). **The checkpoint B20_R176** runs on CPU 0
+    from 22:08:13 (an earlier start at 21:04 was stopped at 21:15 for the second attempt); **PT-2 re-runs** after it.
 7. **B20_R158 (F5), AMENDED before it ran (`ff9eada`)**, from a clean worktree at `ff9eada`. The old
    `/home/claude/f5-wt` at `703b2ee` must not be used.
 8. **B20_R163 (F6)** from the clean worktree `/home/claude/f6-wt` at `77d725d` (prepared; its pins match there;
