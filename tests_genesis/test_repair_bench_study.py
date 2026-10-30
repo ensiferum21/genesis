@@ -19,8 +19,8 @@ import b20r178_repair_bench as S  # noqa: E402
 from genesis.repairkernel import bench as BN  # noqa: E402
 from genesis.repairkernel import defects as DF  # noqa: E402
 
-PREREGISTRATION = None              # the commit that preregisters it (filled in by the next commit)
-SHA256 = None
+PREREGISTRATION = '0e5d46f'         # the commit that preregisters it
+SHA256 = 'c259d0e6972f7f4d7f9fbdefd883afdfc3d35247a5b50aef189b4b4b25e81468'
 
 
 def digest(path):
