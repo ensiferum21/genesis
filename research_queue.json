@@ -953,7 +953,7 @@
    "id": "B20_R177",
    "kind": "study",
    "line": "proving-test",
-   "notes": "Daniel, 30 Oct 2026, 20:06: \"Do the best\"; the builder's choice after seeing PT-1's result (disclosed); runs after B20_R175 (about 6.5 h) | started 30 Oct 2026, 20:23:09 SGT, from the clean worktree /home/claude/pt2-wt at a7303de | first attempt 20:23:09-21:04:12 stopped (exit 1) in part 3 replay: defect B20R177-LIBRARY, repaired; amended 30 Oct 2026 21:30; re-runs from scratch after the checkpoint B20_R176",
+   "notes": "Daniel, 30 Oct 2026, 20:06: \"Do the best\"; the builder's choice after seeing PT-1's result (disclosed); runs after B20_R175 (about 6.5 h) | started 30 Oct 2026, 20:23:09 SGT, from the clean worktree /home/claude/pt2-wt at a7303de | first attempt 20:23:09-21:04:12 stopped (exit 1) in part 3 replay: defect B20R177-LIBRARY, repaired; amended 30 Oct 2026 21:30; re-run from scratch from 21:15:05 SGT, /home/claude/pt2b-wt at 25eadb7; the checkpoint B20_R176 was stopped at 21:15 and follows PT-2",
    "outcome": null,
    "output": "evidence/proving_test_2_b20r177",
    "positive": null,
@@ -964,7 +964,7 @@
     "cpu0_hours": 6.5
    },
    "script": "scripts/b20r177_proving_test_2.py",
-   "status": "queued",
+   "status": "running",
    "title": "PT-2: the proving test again, the inadequacy gate judged bound by bound (three predecessor runs on A; the discovery must be on a bound none refuted); PT-1's code otherwise",
    "unlocks": []
   },
@@ -2219,6 +2219,11 @@
    "id": "B20_R177",
    "kind": "start",
    "time": "2026-10-30T12:24:44+00:00"
+  },
+  {
+   "id": "B20_R177",
+   "kind": "start",
+   "time": "2026-10-30T13:15:23+00:00"
   }
  ],
  "lines": {

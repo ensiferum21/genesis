@@ -74,7 +74,7 @@ As of 30 Oct 2026; the order on CPU 0 is in `docs/OMEGA_FRONTIER.md` §12 and `r
 |---|---|
 | B20_R174 | Genesis's search against random sampling of the same language on ±1-weighted planar graphs (the control B20_R173 lacks): NOT_SHOWN, RANDOM_MATCHES_SEARCH (search winners +1.092% over REX, random winners +1.097%; the best random winner beat the released C0_1 by 0.27%) |
 | B20_R175 | F6b, F6 repeated with the meta-search repaired (B20R163-META): NOT_SHOWN, NOTHING_PROMOTED (the guard kept the defaults: survivor 1.939 against 1.952 on the training worlds); F6's procedure's configuration −0.456 against the defaults on held-out worlds (p 0.002) |
-| B20_R177 | PT-2, the proving test with the gate judged bound by bound. First attempt stopped on defect B20R177-LIBRARY (repaired); amended, to re-run |
+| B20_R177 | PT-2, the proving test with the gate judged bound by bound. First attempt stopped on defect B20R177-LIBRARY (repaired); amended; re-running |
 | B20_R159 | PT-1, the proving test: INADEQUACY_GATE_FAILED (the predecessor refuted bound 40 of family A; Genesis refuted 40 and 21 from derived graph products; parts 1 and 3-5 not run; not proved out) |
 
 ## Unrun plans

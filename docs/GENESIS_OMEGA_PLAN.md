@@ -640,11 +640,14 @@ problems no level has seen, and Genesis has not shown that yet.
   in detail for handoff at his request of 20:01; F1 and F2 next on CPU 1; B20_R156–R158 reserved.
 - 27 Oct 2026, 20:40: the proving test adopted (§0f; B20_R159). F2 started: the sealed Laplacian set
   transcribed and tiered, with exact certificates (`src/genesis/conjecture/`).
-- 30 Oct 2026, 21:30: PT-2's first attempt (20:23-21:04) stopped with exit 1 in part 3's replay: defect
+- 30 Oct 2026, 21:15: PT-2 (amended, `25eadb7`) re-started on CPU 0 at 21:15:05; the checkpoint B20_R176, started at
+  21:04:21, was stopped so that PT-2 runs first, and is re-made after it.
+- 30 Oct 2026, 21:10: PT-2's first attempt (20:23-21:04) stopped with exit 1 in part 3's replay: defect
   B20R177-LIBRARY (a library macro containing a derived operation could not expand). Repaired in
   `conjecture/library.py`; PT-2 amended (a new pin for that module; its rehearsal unchanged) and to re-run from
-  scratch. The traceback alone shows the attempt had passed the gate and part 2 (disclosed). The checkpoint B20_R176
-  started on CPU 0 at 21:04:21.
+  scratch. The traceback alone shows the attempt had passed the gate and part 2 (disclosed). (The amendment's text in the
+  script says 21:30 SGT; it was written at about 21:10. The script is pinned, so the time is corrected here and in
+  the record.)
 - 30 Oct 2026, 20:40: B20_R175 (F6b) recorded: NOT_SHOWN, NOTHING_PROMOTED. With configurations compared at equal
   spend on four training worlds, the winner did not beat the defaults in the guard, so the defaults stayed; F6's
   procedure promoted F6's configuration again, and it lost to the defaults by 0.456 on held-out worlds. PT-2 started
