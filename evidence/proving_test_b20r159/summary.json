@@ -1,0 +1,70 @@
+{
+ "C": {
+  "labels": {
+   "C22ca297abc": null,
+   "C285e01a869": null,
+   "C2dc7d89d6b": null,
+   "C3fb92d84ff": null,
+   "C42585314c9": null,
+   "C4a84df78c7": null,
+   "C73ca45582c": null,
+   "C9677212b96": null,
+   "Ca709d3cd3d": null,
+   "Cada053c49d": null,
+   "Cb14cb5a0a3": null,
+   "Cb4cf387438": null,
+   "Cb84f1b93be": null,
+   "Cc8966a2be2": null,
+   "Cdb36460e16": null,
+   "Cddd67e56c7": null,
+   "Cf8aa803db4": null,
+   "Cf9466616eb": null
+  },
+  "posed": 18,
+  "withheld": 5
+ },
+ "audit_hits": [],
+ "certified_A": {
+  "G": [
+   21,
+   40
+  ],
+  "P0": [
+   40
+  ]
+ },
+ "certified_B": {
+  "given_rep": [],
+  "improved": [],
+  "notebook": [],
+  "predecessor": []
+ },
+ "code_identity": "2d131c915ccd2c131a1cf1f6b18711af3948e1a1c6f5a20e468cec27e41e8dd6",
+ "discovery": "A508d1e55cb",
+ "discovery_bound": 40,
+ "failed": [],
+ "labels": {},
+ "part1": null,
+ "part3": {
+  "names": null,
+  "replayed": false
+ },
+ "parts": {
+  "gate": false,
+  "part1": false,
+  "part2": true,
+  "part3": false,
+  "part4": false,
+  "part5": false
+ },
+ "pins_ok": true,
+ "preregistered": true,
+ "proved_equivalents_refuted": [],
+ "schema": "genesis-b20r159-proving-test-v1",
+ "spent_ok": true,
+ "stats": {},
+ "status": "DEV; licenses nothing",
+ "study": "b20r159",
+ "valid": true,
+ "verdict": "INADEQUACY_GATE_FAILED"
+}

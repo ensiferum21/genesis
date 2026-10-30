@@ -582,6 +582,11 @@ from a clean worktree, in slices, after the queue ahead of it.
 >
 > This test to be done to prove out system
 
+**30 Oct 2026: PT-1 ran and the inadequacy gate failed** (`docs/checkpoints/B20_R159_RECORD.md`). The predecessor
+refuted bound 40 of family A (a 273-vertex Γ graph), so A was not beyond it, and parts 1 and 3-5 were not run.
+Genesis refuted bounds 40 and 21 (352 and 360 vertices) from graph products it derived itself; part 2 would have
+passed. The system is not proved out. A second proving test needs Daniel's decision on its family and its gate.
+
 Everything in F1–F5 is built toward this test, and it is reserved as **B20_R159 (PT-1)**. Nothing short of passing
 all five parts may be called "proving out the system". Each part is kept apart and scored separately. Its design,
 to be preregistered when F1–F5 have run:
@@ -954,7 +959,8 @@ commit through `git show`.
 6d. **B20_R172 (G4): done, NOT_SHOWN** (15:27–15:45 SGT; `docs/checkpoints/B20_R172_RECORD.md`).
 6e. **B20_R174: done, NOT_SHOWN (RANDOM_MATCHES_SEARCH)** (15:48–19:24 SGT, two slices, from `/home/claude/r174-wt`
     at `bc57958`; `docs/checkpoints/B20_R174_RECORD.md`).
-6f. **PT-1 (B20_R159): running** from 19:24:33 SGT, from `/home/claude/pt1-wt` at `a775227` (about 6 h).
+6f. **PT-1 (B20_R159): done, INADEQUACY_GATE_FAILED** (19:24–19:49 SGT; `docs/checkpoints/B20_R159_RECORD.md`).
+6g. **B20_R175 (F6b): running** from 19:50:17 SGT, from `/home/claude/r175-wt` at `7878cdb` (about 1 h).
 7. **B20_R158 (F5), AMENDED before it ran (`ff9eada`)**, from a clean worktree at `ff9eada`. The old
    `/home/claude/f5-wt` at `703b2ee` must not be used.
 8. **B20_R163 (F6)** from the clean worktree `/home/claude/f6-wt` at `77d725d` (prepared; its pins match there;

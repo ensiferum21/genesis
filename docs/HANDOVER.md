@@ -310,6 +310,9 @@ needs people: a reviewer, a statistician, an independent custodian on its own ma
       - **B20_R174 is recorded** (`docs/checkpoints/B20_R174_RECORD.md`): NOT_SHOWN, RANDOM_MATCHES_SEARCH. On ±1
         planar graphs, random sampling of L0 matched Genesis's search; the released C0_1 was the weakest of six
         winners. **PT-1 (B20_R159) is running** from 19:24:33 (`/home/claude/pt1-wt` at `a775227`, about 6 h).
+      - **PT-1 is recorded** (`docs/checkpoints/B20_R159_RECORD.md`): INADEQUACY_GATE_FAILED after 25 min. The
+        predecessor refuted bound 40; Genesis refuted 40 and 21 from derived graph products. Not proved out; a second
+        proving test is Daniel's decision. B20_R175 (F6b) started 19:50:17; nothing is preregistered after it.
   26c. **Daniel's directive of 27 Oct 2026, 19:55 is adopted**: `docs/OMEGA_FRONTIER.md`, written in detail for
       handoff at his request (20:01). Genesis works by divergence and convergence (imagine, mutate, recombine,
       branch out, extrapolate discovery curves, detect convergence, allocate), without handholding. The

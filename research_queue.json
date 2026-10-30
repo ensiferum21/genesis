@@ -659,7 +659,10 @@
    "unlocks": []
   },
   "B20_R159": {
-   "artifacts": [],
+   "artifacts": [
+    "evidence/proving_test_b20r159",
+    "docs/checkpoints/B20_R159_RECORD.md"
+   ],
    "committed": true,
    "depends_on": [
     "B20_R158",
@@ -670,9 +673,9 @@
    "kind": "study",
    "line": "frontier",
    "notes": "docs/OMEGA_FRONTIER.md section 7b; family A candidates: Laplacian bounds 18, 21, 24, 30, 40 (held out of F4 and F5); family B candidates: Graffiti conjectures formalised in google-deepmind/formal-conjectures; PROVED_OUT only if all five parts pass; 28 Oct 00:40: family B transcribed and posed (B20_R161); an open design question for part 1 recorded for Daniel (section 7b); 28 Oct 00:53: Daniel decided part 1's mechanisms: only library learning over Gamma and operators acting on Gamma's operations (nothing handed over); the other two excluded | 30 Oct 2026: preregistered after F4 and F5, the open items fixed with reasons (templates do not count for part 1); runs after B20_R174, about 6 h | started 30 Oct 2026, 19:24:33 SGT, from the clean worktree /home/claude/pt1-wt at a775227",
-   "outcome": null,
+   "outcome": "INADEQUACY_GATE_FAILED (valid): the predecessor P0 certified bound 40 of family A (273 vertices), so the gate failed and parts 1 and 3-5 were not run; G certified bounds 40 and 21 (352 and 360 vertices), both from derived graph products. Not proved out; a second proving test needs Daniel's decision",
    "output": "evidence/proving_test_b20r159",
-   "positive": null,
+   "positive": false,
    "preregistered": "sha256 56037017038a2d1261bdaf85c37300a435918c1152002646820999d2eeee3a05 (the preregistration commit)",
    "priority": 7,
    "requires": [],
@@ -680,7 +683,7 @@
     "cpu0_hours": 6.0
    },
    "script": "scripts/b20r159_proving_test.py",
-   "status": "running",
+   "status": "done",
    "title": "PT-1, the proving test (Daniel, 27 Oct 2026, 20:22): an unfamiliar mathematical family where Genesis's representation is inadequate (inadequacy gate); without the missing concept given, (1) a useful new representation, (2) a nontrivial consequence, (3) the procedure extracted, (4) its independent use in another family, (5) the improved inventor beats its predecessor at matched total compute",
    "unlocks": []
   },
@@ -922,7 +925,7 @@
    "id": "B20_R175",
    "kind": "study",
    "line": "frontier",
-   "notes": "from defect B20R163-META (found after B20_R163 was recorded); preregistered 30 Oct 2026; runs after PT-1 (about 1 h)",
+   "notes": "from defect B20R163-META (found after B20_R163 was recorded); preregistered 30 Oct 2026; runs after PT-1 (about 1 h) | started 30 Oct 2026, 19:50:17 SGT, from the clean worktree /home/claude/r175-wt at 7878cdb",
    "outcome": null,
    "output": "evidence/meta_repaired_b20r175",
    "positive": null,
@@ -933,7 +936,7 @@
     "cpu0_hours": 1.0
    },
    "script": "scripts/b20r175_meta_repaired.py",
-   "status": "queued",
+   "status": "running",
    "title": "F6b: F6 repeated with the meta-search repaired (B20R163-META): four training worlds, one successive-halving bracket, the kernel's guard; F6's procedure as an arm",
    "unlocks": []
   },
@@ -2159,6 +2162,18 @@
    "id": "B20_R159",
    "kind": "start",
    "time": "2026-10-30T11:27:40+00:00"
+  },
+  {
+   "id": "B20_R159",
+   "kind": "finish",
+   "outcome": "INADEQUACY_GATE_FAILED (valid): the predecessor P0 certified bound 40 of family A (273 vertices), so the gate failed and parts 1 and 3-5 were not run; G certified bounds 40 and 21 (352 and 360 vertices), both from derived graph products. Not proved out; a second proving test needs Daniel's decision",
+   "positive": false,
+   "time": "2026-10-30T12:02:48+00:00"
+  },
+  {
+   "id": "B20_R175",
+   "kind": "start",
+   "time": "2026-10-30T12:02:48+00:00"
   }
  ],
  "lines": {
@@ -2349,9 +2364,14 @@
      "B20_R172",
      "NOT_SHOWN (valid): the proposed feature slope4 / hi; P - D -0.022 (p 0.77, 8 of 24); P - D0 tie (+0.048); D - D0 +0.070 (p 0.048); S7 FEATURE_GENERALISES (0.768 against the index's 0.702, p 0.001)",
      false
+    ],
+    [
+     "B20_R159",
+     "INADEQUACY_GATE_FAILED (valid): the predecessor P0 certified bound 40 of family A (273 vertices), so the gate failed and parts 1 and 3-5 were not run; G certified bounds 40 and 21 (352 and 360 vertices), both from derived graph products. Not proved out; a second proving test needs Daniel's decision",
+     false
     ]
    ],
-   "run": 5,
+   "run": 6,
    "stagnant": true
   },
   "general": {

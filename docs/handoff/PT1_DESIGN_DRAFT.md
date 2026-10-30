@@ -8,6 +8,12 @@ Written 28 Oct 2026, 01:25 SGT, for whoever preregisters PT-1 after F1–F5 have
 Nothing here has been run on family A or family B. It records what is built, what was decided, and what remains to
 be decided, so that the preregistration can be written from it.
 
+## Outcome (30 Oct 2026): INADEQUACY_GATE_FAILED
+
+PT-1 ran from `a775227` (19:24-19:49 SGT). The predecessor P0 refuted bound 40 of family A with a 273-vertex Γ graph,
+so the gate failed and parts 1 and 3-5 were not run. G refuted bounds 40 and 21 (352 and 360 vertices), both from
+graph products derived by `derive` (operation tables 7 and 21). Record: `docs/checkpoints/B20_R159_RECORD.md`.
+
 ## What is decided
 
 - **Daniel, 27 Oct 2026, 20:22 (the test):** five parts, scored separately; PROVED_OUT only if all five pass.
