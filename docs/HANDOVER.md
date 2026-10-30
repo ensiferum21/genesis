@@ -294,6 +294,8 @@ needs people: a reviewer, a statistician, an independent custodian on its own ma
       - **PT-1 (B20_R159) is preregistered** (30 Oct 2026; sha256 `56037017…3a05`): the draft's open items fixed from
         F4's and F5's results with reasons; templates do not count for part 1 (the strict reading, after Daniel's "Do
         the hardest"; his to overrule before it runs). It runs after B20_R174, about 6 h.
+      - **The checkpoint B20_R169 is made** (`5d7b7f0`, SHA-256 `dcd5a0fd…7112`): 2,664 tests all OK, restore-verified,
+        archived whole on `archive` (`14a7651`). B20_R163 (F6) started at 14:38:25.
   26c. **Daniel's directive of 27 Oct 2026, 19:55 is adopted**: `docs/OMEGA_FRONTIER.md`, written in detail for
       handoff at his request (20:01). Genesis works by divergence and convergence (imagine, mutate, recombine,
       branch out, extrapolate discovery curves, detect convergence, allocate), without handholding. The

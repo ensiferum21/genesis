@@ -945,8 +945,11 @@ commit through `git show`.
 5c. **B20_R158 (F5): done, NOT_SHOWN** (30 Oct 2026; `docs/checkpoints/B20_R158_RECORD.md`). Its first run (10:44–10:50
    SGT) stopped on a template overflow (B20R158-TEMPLATE); amended a second time at `f7803e3` and run again in full
    (12:29–12:53 from `/home/claude/f5c-wt`). Generation 1 posed 9; FULL 6, PLAIN 5; generations 2 and 3 posed nothing.
-6. **A checkpoint window** (B20_R169). A first attempt (30 Oct 2026, 10:56–12:29 SGT, `make_checkpoint` at `492412c` on CPU 0) was stopped once it could not pass: the integration suite ran 2,123 tests with no failure in 5,176 s, but one undeclared skip failed it (`test_cpsat_kind`'s wheel check, because `GENESIS_ORTOOLS_WHEEL` was not set, as HANDOVER §3.4 says it must be). It runs again after B20_R158, with the wheel, split by suite (`run_test_matrix.py --suites`, merged by `make_checkpoint.py --reports`), so that no job nears its two-hour limit: the release matrix and the checkpoint need CPU 0 free of studies (the
-   sandbox suite); the last checkpoint is B20_R148.
+6. **The checkpoint B20_R169: done** (30 Oct 2026, 14:38 SGT; `GENESIS_COMPLETION_CHECKPOINT_B20_R169`, `5d7b7f0`,
+   SHA-256 `dcd5a0fd…7112`): release matrix 2,664 tests all OK (one declared skip), restore-verified, archived whole
+   (archive `14a7651`). The first attempt was stopped on an undeclared skip (the OR-Tools wheel); the second ran in two
+   parts and merged; a container restart (14:20) interrupted its second part once, which was rerun.
+6b. **B20_R163 (F6): running** from 30 Oct 2026, 14:38:25 SGT, from `/home/claude/f6-wt` at `77d725d`.
 7. **B20_R158 (F5), AMENDED before it ran (`ff9eada`)**, from a clean worktree at `ff9eada`. The old
    `/home/claude/f5-wt` at `703b2ee` must not be used.
 8. **B20_R163 (F6)** from the clean worktree `/home/claude/f6-wt` at `77d725d` (prepared; its pins match there;

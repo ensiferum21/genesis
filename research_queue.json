@@ -695,7 +695,7 @@
    "id": "B20_R163",
    "kind": "study",
    "line": "frontier",
-   "notes": "Daniel's directive of 27 Oct 2026, 19:55 (docs/OMEGA_FRONTIER.md section 4.8); preregistered 28 Oct 2026 00:50 SGT",
+   "notes": "Daniel's directive of 27 Oct 2026, 19:55 (docs/OMEGA_FRONTIER.md section 4.8); preregistered 28 Oct 2026 00:50 SGT | started 30 Oct 2026, 14:38:25 SGT, from the clean worktree /home/claude/f6-wt at 77d725d, after the checkpoint B20_R169",
    "outcome": null,
    "output": "evidence/frontier_meta_b20r163",
    "positive": null,
@@ -706,7 +706,7 @@
     "cpu0_hours": 1.0
    },
    "script": "scripts/b20r163_frontier_meta.py",
-   "status": "queued",
+   "status": "running",
    "title": "F6: the Frontier searching its own configurations: does the promoted configuration beat the defaults on held-out planted worlds at matched total compute (the meta-search counted)?",
    "unlocks": []
   },
@@ -953,7 +953,7 @@
    "id": "checkpoint",
    "kind": "operations",
    "line": "operations",
-   "notes": "",
+   "notes": " | 30 Oct 2026: B20_R169 made (5d7b7f0, dcd5a0fd...7112), 2,664 tests all OK, restore-verified, archived",
    "outcome": "GENESIS_COMPLETION_CHECKPOINT_B20_R148 at 012f133 (B20_R149): release matrix 2,260 OK; restore-verified; archived; REPRODUCED on the build host",
    "output": null,
    "positive": true,
@@ -2041,6 +2041,11 @@
    "outcome": "NOT_SHOWN (valid): generation 1 posed 9 of Genesis's own conjectures (2 withheld); FULL refuted 6, PLAIN 5 (McNemar 1-0, p 0.5); rediscoveries Merris, bound 10, bound 29 (refuted 2024, refuted again); generations 2 and 3 posed nothing new, compounding 0; one unlabelled survivor sqrt((5d^2 + 3m^3/d)/2), a candidate only",
    "positive": false,
    "time": "2026-10-30T04:58:25+00:00"
+  },
+  {
+   "id": "B20_R163",
+   "kind": "start",
+   "time": "2026-10-30T06:40:28+00:00"
   }
  ],
  "lines": {
