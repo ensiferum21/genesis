@@ -15,7 +15,7 @@ sys.path.insert(0, str(ROOT / 'src'))
 sys.path.insert(0, str(ROOT / 'scripts'))
 import b20r158_open_conjectures as S  # noqa: E402
 
-AMENDMENT = None                # the second amendment's commit (set after it; the first was ff9eada)
+AMENDMENT = 'f7803e3'             # the second amendment's commit (the first was ff9eada)
 
 
 def digest_at(commit, rel):

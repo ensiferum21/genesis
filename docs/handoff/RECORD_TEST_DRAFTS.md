@@ -557,7 +557,7 @@ audit re-derivation reads the research plane at `ff9eada`.**
 
 **Updated again on 30 Oct 2026, 11:15 SGT, for the second amendment (after the first attempt crashed): the script's
 digest is the second amendment's (`f44333c3…c06c`), and the audit re-derivation reads the research plane at the
-second amendment commit (`AMENDMENT` in the test file). Nothing else in the draft changes.**
+second amendment commit (`AMENDMENT` in the test file: `f7803e3`). Nothing else in the draft changes.**
 
 Written on 28 Oct 2026, 09:40 SGT, from the script only (`703b2ee`, sha256 `50d2de64…f9b5`), before the study ran.
 The file already has `json`, `unittest`, `ROOT` and `S`; the audit re-derivation reads the research plane as it
