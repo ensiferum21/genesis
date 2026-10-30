@@ -67,6 +67,8 @@ def main(argv=None):
     parser.add_argument('--parent', default=None, help='parent checkpoint zip (its SHA-256 is recorded)')
     parser.add_argument('--parent-ref', default=None, help='git ref of the parent checkpoint commit')
     parser.add_argument('--suffix', default='', help='name suffix for a follow-up checkpoint of the same batch')
+    parser.add_argument('--timeout', type=int, default=None,
+                        help="per-suite timeout in seconds passed to run_test_matrix.py (its default otherwise)")
     args = parser.parse_args(argv)
     if git('status', '--porcelain').strip():
         raise SystemExit('working tree is dirty; commit before making a checkpoint')
@@ -79,6 +81,8 @@ def main(argv=None):
         cmd = [sys.executable, str(ROOT / 'scripts' / 'run_test_matrix.py'), '--report', str(report)]
         if args.quick:
             cmd.append('--quick')
+        if args.timeout:
+            cmd += ['--timeout', str(args.timeout)]
         tests = subprocess.run(cmd, cwd=ROOT)
         if tests.returncode != 0:
             raise SystemExit('test matrix failed; no checkpoint written')
