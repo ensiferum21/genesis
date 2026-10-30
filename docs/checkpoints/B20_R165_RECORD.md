@@ -77,6 +77,13 @@ S2's. No preregistered quantity is affected.
      at B20_R132's sizes;
    - and a search on ±1 tori and random graphs to see whether the specialisation transfers as a method.
 
+**A note added on 30 Oct 2026 (the verdict and the analysis above are unchanged).** B20_R173's calibration evaluated
+47 random engines of the same L0 language on fresh ±1-weighted planar graphs. 21 of them scored above REX, and the
+best came within 0.05% of C0_1 (`docs/checkpoints/B20_R173_RECORD.md`, "Against random engines"). So the room
+item 2 describes is there for random engines of the language too. "Genesis's own searches beat REX" holds as
+measured. Whether the searches add anything over random sampling of the language has not been measured: that is
+B20_R174's question (preregistered 30 Oct 2026).
+
 ## Looks at the study's data before it finished (disclosed)
 
 - After the restart, the saved runs were parsed to check their integrity. No value was printed.
