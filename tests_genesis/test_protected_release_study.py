@@ -175,6 +175,25 @@ class RecordB20R173(unittest.TestCase):
         self.assertEqual([round(x, 12) for x in truth], [round(x, 12) for x in self.s['S2']['gains']])
         self.assertEqual(S.verdict(self.s['valid'], v2), self.s['verdict'])
 
+    def test_random_engines_against_the_release_bar(self):
+        """Added at recording (30 Oct 2026, after the record's first push; disclosed): how many of the judge's 47 random
+        calibration engines score above REX and above the release bar on B, from the judge's own calls."""
+        calls = json.loads((R173 / 'calls.json').read_text())['v2']
+        first = {}
+        for c in calls:
+            first.setdefault(c['engine'], {}).setdefault(c['split'], c['value'])   # each engine's first evaluation
+        rex = digest(dict(K3.DEFAULT))[:16]
+        cal = {k: v for k, v in first.items() if 'C' in v}
+        self.assertEqual(len(cal), 48)
+        self.assertIn(rex, cal)
+        rand = [v['B'] for k, v in cal.items() if k != rex]
+        bar = self.s['R1']['start'] + self.s['R1']['tau']
+        self.assertEqual(sum(b > cal[rex]['B'] for b in rand), 21)
+        self.assertEqual(sum(b > bar for b in rand), 7)
+        self.assertEqual(sum(b > cal[rex]['B'] + self.s['R1']['tau'] for b in rand), 4)
+        self.assertAlmostEqual(max(rand), 1.002189704396779, places=12)
+        self.assertGreater(self.s['R1']['b_candidate'], max(rand))
+
 
 if __name__ == '__main__':
     unittest.main()

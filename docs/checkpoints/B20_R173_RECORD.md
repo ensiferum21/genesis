@@ -70,9 +70,27 @@ good ones, so version 2's tau will be several times C0_1's gain". **That was wro
 - The expectation's other parts held: version 3 releases, and C0_1 beats REX on the truth set by about 1%.
 - B20_R165's record had predicted the judge's power on this family better than this script's expectation did.
 
+## Against random engines (an analysis added on 30 Oct 2026, 08:05 SGT, after this record was first pushed; disclosed)
+
+The judge's calibration evaluated REX and 47 random engines of the L0 language on the same B and C splits
+(`calls.json`). Their B scores show that **on this family REX is weak, and much of C0_1's margin over it is available
+to random engines**:
+- 21 of the 47 random engines scored above REX's first B evaluation (0.99316).
+- 7 of them scored above the judge's release bar (its start 0.99053 plus tau, 0.99835). Measured against REX's first
+  evaluation instead, 4 did. Had they been submitted, the judge would have released them as well.
+- The best random engine scored 1.00219 on B. C0_1 scored 1.00273, 0.05% higher, from one run per graph on 12 graphs.
+
+So the release shows two things: the builder's L0 language contains engines about 1% better than REX on ±1-weighted
+planar graphs, and the judge can see a gain of that size. It does not show that Genesis's search beats random
+sampling in that language. C0_1 came from a search of 480 evaluations, and sampling as many random engines would
+likely have found engines close to it. That needs a random-sampling control at matched evaluations, which no study
+has run on this family. The record test `test_random_engines_against_the_release_bar` (also added at this time)
+recomputes these counts from `calls.json`.
+
 ## What it means
 
-1. **The first release by the protected judge of an engine Genesis's own search found.** The script's
+1. **The first release by the protected judge of an engine Genesis's own search found** (but see the section above:
+   on this family, random engines of the same language would also have been released). The script's
    preregistration states the background: nothing Genesis invented had been released by this judge before (B20_R127
    and B20_R132 released nothing). Here, by the judge's unchanged rules and a single pre-specified submission, C0_1
    is released over the builder-configured REX on ±1-weighted planar graphs of 2,000 vertices at 1 s. The gain is
@@ -85,10 +103,14 @@ good ones, so version 2's tau will be several times C0_1's gain". **That was wro
    - C0_1 came from a search over the builder's L0 language (B20_R151's Λ0 lane). The search found the engine, but
      the language was the builder's.
    - DEV scope. No independent replication, and no external claim.
+   - On this family REX is weak: 7 of 47 random L0 engines would have cleared the same bar (above). The release is
+     evidence about the language and the judge, not about the search.
 3. **What it changes.** The case for a supervisor's decision on the judge's calibration, which a NOT_RELEASED verdict
    would have made concrete, is not made here: on this family, version 2 can see a confirmed gain of about 1%. Version
    2's blindness below about 1% (B20_R132) still stands on other classes.
 4. **Next (candidates, not queued here):**
+   - The control this result lacks: Genesis's search against random sampling of the same language at matched
+     evaluations, on fresh ±1-weighted planar graphs, both through the protected judge.
    - B20_R136 (running) asks whether an invented sense can use C0_1 only where it wins.
    - An invention search on planar2_pm1 with this judge in the loop, from C0_1 as the incumbent, would ask whether
      Genesis compounds a released gain.

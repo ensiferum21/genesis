@@ -644,8 +644,9 @@ problems no level has seen, and Genesis has not shown that yet.
   degree CV (it misjudged 3 of 12 ±1 planar graphs). B20_R144 is running.
 - 30 Oct 2026, 08:00: B20_R173 recorded: RELEASED. The protected judge (v2, unchanged) released C0_1, an engine
   Genesis's own search found, over the builder's REX on ±1-weighted planar graphs (B gain 1.22% against tau 0.78%;
-  +1.12% on 24 of 24 fresh truth graphs). It is the first such release, and it is narrow. The expectation
-  (NOT_RELEASED) was wrong. CPU 0 was idle 01:50–07:25 by the builder's omission (disclosed). B20_R136 is running,
+  +1.12% on 24 of 24 fresh truth graphs). It is the first such release, and it is narrow: 7 of the judge's 47 random L0 engines would also
+  have been released, so it is not evidence that the search beats random sampling. The expectation (NOT_RELEASED)
+  was wrong. CPU 0 was idle 01:50–07:25 by the builder's omission (disclosed). B20_R136 is running,
   with B20_R144 after it.
 - 30 Oct 2026, 01:45: B20_R167 recorded: ARA_CALIBRATED (valid). On 95 fresh sealed environments ARA localised 42 of
   50 planted limitations (chance 1/4), said NONE on 30 of 30 null controls, beat blind rewriting at two tries by

@@ -267,7 +267,9 @@ needs people: a reviewer, a statistician, an independent custodian on its own ma
       - **B20_R173 is recorded** (30 Oct 2026; `docs/checkpoints/B20_R173_RECORD.md`): RELEASED. The protected judge,
         unchanged, released C0_1 over REX on ±1-weighted planar graphs (B gain 1.22% against tau 0.78%; truth +1.12%
         on 24 of 24). It is the first release by that judge of an engine Genesis's own search found, and it is narrow
-        (one family; the builder's REX and L0 language). The expectation (NOT_RELEASED) was wrong. Disclosed: CPU 0
+        (one family; the builder's REX and L0 language). On this family 7 of the judge's 47 random L0 engines would also
+        have been released, so it is not evidence that the search beats random sampling. The expectation
+        (NOT_RELEASED) was wrong. Disclosed: CPU 0
         was idle from 01:50 to 07:25 SGT after it, because the builder did not launch the chain it had written.
         B20_R136 started at 07:25, with B20_R144 chained after it.
       - **B20_R136 is recorded** (`docs/checkpoints/B20_R136_RECORD.md`): NOT_SHOWN. The synthesised sense chose

@@ -11,6 +11,7 @@
 - **Verdict:** RELEASED, valid. The protected judge, unchanged and calibrated on REX and 47 random L0 engines
   (tau 0.782%), released C0_1, B20_R165's pre-specified engine. Its B score was 1.220% above REX's. On 24 fresh truth
   graphs, C0_1 beat REX by +1.122% on 24 of 24 (p 6 × 10⁻⁸). Version 3 also releases it. The expectation,
-  NOT_RELEASED, was wrong.
+  NOT_RELEASED, was wrong. On this family REX is weak: 7 of the judge's 47 random calibration engines would also
+  have cleared the release bar (`calls.json`).
 - **Record:** `docs/checkpoints/B20_R173_RECORD.md`. The record tests are `RecordB20R173` in
   `tests_genesis/test_protected_release_study.py`.
