@@ -640,6 +640,10 @@ problems no level has seen, and Genesis has not shown that yet.
   in detail for handoff at his request of 20:01; F1 and F2 next on CPU 1; B20_R156–R158 reserved.
 - 27 Oct 2026, 20:40: the proving test adopted (§0f; B20_R159). F2 started: the sealed Laplacian set
   transcribed and tiered, with exact certificates (`src/genesis/conjecture/`).
+- 30 Oct 2026, 20:20: PT-2 (B20_R177) preregistered after Daniel's "Do the best" (20:06): PT-1's code, families,
+  constants and pins with fresh seeds, the predecessor run three times on A, and the discovery required on a bound
+  none of its runs refuted (the builder's choice after seeing PT-1, disclosed). It runs after B20_R175, about 6.5 h;
+  the checkpoint B20_R176 follows it.
 - 30 Oct 2026, 20:15: PT-1 (B20_R159) recorded: INADEQUACY_GATE_FAILED. It ran 19:24-19:49. The predecessor refuted
   bound 40 of family A (a 273-vertex Γ graph), so the gate failed and parts 1 and 3-5 were not run; Genesis refuted
   bounds 40 and 21 (352 and 360 vertices) from graph products it derived itself. The system is not proved out.

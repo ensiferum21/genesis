@@ -940,6 +940,31 @@
    "title": "F6b: F6 repeated with the meta-search repaired (B20R163-META): four training worlds, one successive-halving bracket, the kernel's guard; F6's procedure as an arm",
    "unlocks": []
   },
+  "B20_R177": {
+   "artifacts": [],
+   "committed": true,
+   "depends_on": [
+    "B20_R159"
+   ],
+   "failure": null,
+   "id": "B20_R177",
+   "kind": "study",
+   "line": "proving-test",
+   "notes": "Daniel, 30 Oct 2026, 20:06: \"Do the best\"; the builder's choice after seeing PT-1's result (disclosed); runs after B20_R175 (about 6.5 h)",
+   "outcome": null,
+   "output": "evidence/proving_test_2_b20r177",
+   "positive": null,
+   "preregistered": "sha256 588f3545ff120b844991260b4a3aaeeb794e9cc2885d7940ef107157eadc3f14 (the preregistration commit)",
+   "priority": 7,
+   "requires": [],
+   "resources": {
+    "cpu0_hours": 6.5
+   },
+   "script": "scripts/b20r177_proving_test_2.py",
+   "status": "queued",
+   "title": "PT-2: the proving test again, the inadequacy gate judged bound by bound (three predecessor runs on A; the discovery must be on a bound none refuted); PT-1's code otherwise",
+   "unlocks": []
+  },
   "allocator-baselines": {
    "artifacts": [],
    "committed": false,
@@ -2174,6 +2199,11 @@
    "id": "B20_R175",
    "kind": "start",
    "time": "2026-10-30T12:02:48+00:00"
+  },
+  {
+   "id": "B20_R177",
+   "kind": "add",
+   "time": "2026-10-30T12:11:58+00:00"
   }
  ],
  "lines": {
@@ -2410,6 +2440,12 @@
    "run": 0,
    "stagnant": false
   },
+  "proving-test": {
+   "diagnosis": null,
+   "outcomes": [],
+   "run": 0,
+   "stagnant": false
+  },
   "recursive-invention": {
    "diagnosis": null,
    "outcomes": [
@@ -2504,7 +2540,8 @@
   "ledger-row-schema",
   "B20_R173",
   "B20_R174",
-  "B20_R175"
+  "B20_R175",
+  "B20_R177"
  ],
  "reactivated": {},
  "schema": "genesis-research-queue-v1",
