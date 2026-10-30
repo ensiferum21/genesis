@@ -1,0 +1,62 @@
+{
+ "verdict": "NOT_SHOWN",
+ "valid": true,
+ "P1": {
+  "full_only": 1,
+  "plain_only": 0,
+  "p": 0.5
+ },
+ "generations": [
+  {
+   "k": 1,
+   "kept": 11,
+   "posed": 9,
+   "withheld": 2,
+   "refuted_full": 6,
+   "refuted_plain": 5,
+   "survivors": 3,
+   "survivors_small_exhaustive": 3,
+   "templates": 7,
+   "procedures": 6,
+   "procedure_opens": 0,
+   "cpu": {
+    "FULL": 897.646,
+    "PLAIN": 212.515
+   }
+  },
+  {
+   "k": 2,
+   "kept": 5,
+   "posed": 0,
+   "withheld": 0,
+   "refuted_full": 0,
+   "refuted_plain": 0,
+   "survivors": 0,
+   "survivors_small_exhaustive": 0,
+   "templates": 7,
+   "procedures": 0,
+   "procedure_opens": 0,
+   "cpu": {
+    "FULL": 0.0,
+    "PLAIN": 0.0
+   }
+  },
+  {
+   "k": 3,
+   "kept": 5,
+   "posed": 0,
+   "withheld": 0,
+   "refuted_full": 0,
+   "refuted_plain": 0,
+   "survivors": 0,
+   "survivors_small_exhaustive": 0,
+   "templates": 7,
+   "procedures": 0,
+   "procedure_opens": 0,
+   "cpu": {
+    "FULL": 0.0,
+    "PLAIN": 0.0
+   }
+  }
+ ]
+}

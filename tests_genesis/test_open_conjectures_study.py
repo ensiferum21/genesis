@@ -78,5 +78,90 @@ class EndToEnd(unittest.TestCase):
             self.assertGreater(sa['generations'][0]['posed'], 0)
 
 
+
+R158 = ROOT / 'evidence' / 'open_conjectures_b20r158'
+
+
+@unittest.skipUnless((R158 / 'summary.json').exists(), 'B20_R158 has not been recorded')
+class RecordB20R158(unittest.TestCase):
+    """The record of B20_R158 (F5) on its evidence: the script; validity recomputed (the budgets, no proved bound
+    refuted, the audit of the research plane at the preregistration commit); every certified refutation
+    double-checked again; the analysis and the verdict recomputed; generation 1's posed set regenerated from the
+    data seed; the survivors' small exhaustive check repeated."""
+
+    @classmethod
+    def setUpClass(cls):
+        cls.s = json.loads((R158 / 'summary.json').read_text())
+        cls.gens = [json.loads(x) for x in (R158 / 'generations.jsonl').read_text().splitlines() if x.strip()]
+
+    def test_the_script(self):
+        import hashlib
+        self.assertEqual(hashlib.sha256((ROOT / 'scripts' / 'b20r158_open_conjectures.py').read_bytes()).hexdigest(),
+                         'f44333c3355607da31fd54d10bf6444ecc3a753d8d431b12d7dd9ea15f85c06c')
+
+    def test_validity(self):
+        self.assertEqual(len(self.gens), S.G)
+        spent = all(g[a]['spent'] >= g[a]['budget'] - S.QUANTUM - 1 for g in self.gens for a in ('FULL', 'PLAIN'))
+        self.assertEqual(spent, self.s['spent_ok'])
+        hits = sorted({g['posed'][p][0] for g in self.gens for a in ('FULL', 'PLAIN') for p in g['confirmed'][a]
+                       if S.proved_equivalent(g['posed'][p][0])})
+        self.assertEqual(hits, self.s['proved_equivalents_refuted'])
+        self.assertEqual(self.s['audit_hits'], [])
+        self.assertTrue(self.s['pins_ok'])
+        self.assertEqual(self.s['valid'], spent and not hits and self.s['pins_ok'] and not self.s['audit_hits'])
+
+    def test_the_audit_at_the_preregistration_commit(self):
+        import subprocess
+        import tempfile
+        from genesis.conjecture import audit as AU
+        with tempfile.TemporaryDirectory() as tmp:
+            files = []
+            for path in AU.research_plane(Path(tmp)):
+                rel = path.relative_to(tmp).as_posix()
+                out = subprocess.run(['git', '-C', str(ROOT), 'show', f'{AMENDMENT}:{rel}'], capture_output=True)
+                if out.returncode != 0:                          # a module that did not exist then
+                    continue
+                path.parent.mkdir(parents=True, exist_ok=True)
+                path.write_bytes(out.stdout)
+                files.append(path)
+            self.assertTrue(files)
+            self.assertEqual(AU.scan(files), [])
+
+    def test_every_refutation_double_checks_again(self):
+        for g in self.gens:
+            for arm in ('FULL', 'PLAIN'):
+                got = [p for p, art in sorted(g[arm]['artifacts'].items())
+                       if p in g[arm]['refuted'] and S.double_check(g['posed'][p][0], 'vertex', art) == 'CONFIRMED']
+                self.assertEqual(got, g['confirmed'][arm], (g['k'], arm))
+
+    def test_the_analysis_recomputes(self):
+        both = {a: set().union(*[set(g['confirmed'][a]) for g in self.gens]) for a in ('FULL', 'PLAIN')}
+        b, c = len(both['FULL'] - both['PLAIN']), len(both['PLAIN'] - both['FULL'])
+        self.assertEqual((self.s['P1']['full_only'], self.s['P1']['plain_only']), (b, c))
+        self.assertAlmostEqual(self.s['P1']['p'], S.mcnemar_one_sided(b, c))
+        want = 'INVALID' if not self.s['valid'] else ('FULL_BETTER' if S.mcnemar_one_sided(b, c) < S.ALPHA
+                                                      else 'NOT_SHOWN')
+        self.assertEqual(self.s['verdict'], want)
+        for g in self.gens:
+            surv = sorted(p for p in g['posed'] if p not in g['confirmed']['FULL'] and p not in g['confirmed']['PLAIN'])
+            self.assertEqual(surv, g['survivors'])
+
+    def test_generation_one_is_posed_again_from_the_data_seed(self):
+        import numpy as np
+        from genesis.conjecture import generate as GN
+        data = GN.data(np.random.default_rng(S.DATA_SEED), count=S.DATA_COUNT)
+        kept = [f for f, _ in GN.conjectures(data)]
+        g1 = self.gens[0]
+        self.assertEqual(len(kept), g1['kept'])
+        posed = sorted(f for f, _ in g1['posed'].values())
+        self.assertEqual(sorted(f for f in kept if not S.labels(f)[0]), posed)
+        self.assertEqual(sorted(f for f in kept if S.labels(f)[0]), sorted(g1['withheld']))
+
+    def test_the_survivors_small_check_repeats(self):
+        for g in self.gens:
+            for p in g['survivors']:
+                self.assertEqual(S.survives_small(g['posed'][p][0], 'vertex'), g['survivors_small_exhaustive'][p])
+
+
 if __name__ == '__main__':
     unittest.main()

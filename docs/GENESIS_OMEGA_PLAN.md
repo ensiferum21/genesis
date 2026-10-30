@@ -639,6 +639,10 @@ problems no level has seen, and Genesis has not shown that yet.
   in detail for handoff at his request of 20:01; F1 and F2 next on CPU 1; B20_R156–R158 reserved.
 - 27 Oct 2026, 20:40: the proving test adopted (§0f; B20_R159). F2 started: the sealed Laplacian set
   transcribed and tiered, with exact certificates (`src/genesis/conjecture/`).
+- 30 Oct 2026, 13:00: B20_R158 (F5) recorded: NOT_SHOWN. Genesis posed 9 conjectures of its own from its own graphs
+  (rediscovering Merris, bound 10 and the refuted bound 29); the inventor with abstractions refuted 6, the plain one
+  5; the generator posed nothing new in generations 2 and 3, so nothing compounded. The checkpoint B20_R169 is
+  running.
 - 30 Oct 2026, 11:15: B20_R158 (F5)'s first run stopped after six minutes on a defect in template mutation (slot
   values unbounded; int64 overflow). Repaired; B20_R158 amended a second time before any result was looked at; it runs
   after the checkpoint B20_R169, which is running.

@@ -78,6 +78,23 @@ or a library) that is absent from the starting set.
   the run INVALID.
 - Pins at preregistration.
 
+## What F4 and F5 showed (30 Oct 2026; for the preregistration)
+
+- **F4 (B20_R157, PARTIAL).**
+  - Under its rule (Sturm only for n ≤ 40), the Frontier beat NRPA only. GBFS on bounded-degree graphs refuted the
+    most, 19 of 33.
+  - Descriptively, the engine's Γ programs built 43–64-vertex counterexamples that the rule could not confirm. A
+    matrix-form check confirms them all, which puts the three allocators at 25–26 of 33, level with each other.
+  - For PT-1:
+    - the second check above 40 vertices (`verify.check_matrix_form`) must be in the kernel's rule, as this draft
+      already has it;
+    - the gain over single searches came from the representations, not from the allocation.
+- **F5 (B20_R158, NOT_SHOWN).**
+  - Generation 1 posed 9 conjectures. Generations 2 and 3 posed nothing new, because the generator re-derived
+    equivalents of earlier conjectures.
+  - For PT-1's family C (item 3 below): pooling several data draws (`C_SEEDS`) is necessary, not optional, and even
+    then the number of informative tasks needs checking before the preregistration fixes part 5's statistics.
+
 ## Still open (decide before preregistering)
 
 1. Budgets for each part (F4's timings give the scale: about 100,000 evaluations per bound).

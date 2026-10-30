@@ -631,7 +631,10 @@
    "unlocks": []
   },
   "B20_R158": {
-   "artifacts": [],
+   "artifacts": [
+    "evidence/open_conjectures_b20r158",
+    "docs/checkpoints/B20_R158_RECORD.md"
+   ],
    "committed": true,
    "depends_on": [
     "B20_R157"
@@ -640,10 +643,10 @@
    "id": "B20_R158",
    "kind": "study",
    "line": "frontier",
-   "notes": "Daniel's directive of 27 Oct 2026, 19:55 (docs/OMEGA_FRONTIER.md); to preregister; preregistered 27 Oct 2026 22:55 SGT | started 30 Oct 2026, 10:44:29 SGT, from the clean worktree /home/claude/f5b-wt at ff9eada (before the checkpoint window, so CPU 0 was not idle while B20_R157 was recorded) | its first run stopped at 10:50:30 (exit 1, OverflowError in template mutation, B20R158-TEMPLATE); repaired, amended a second time before any result was looked at; runs again in full after the checkpoint B20_R169 from a clean worktree of the second amendment",
-   "outcome": null,
+   "notes": "Daniel's directive of 27 Oct 2026, 19:55 (docs/OMEGA_FRONTIER.md); to preregister; preregistered 27 Oct 2026 22:55 SGT | started 30 Oct 2026, 10:44:29 SGT, from the clean worktree /home/claude/f5b-wt at ff9eada (before the checkpoint window, so CPU 0 was not idle while B20_R157 was recorded) | its first run stopped at 10:50:30 (exit 1, OverflowError in template mutation, B20R158-TEMPLATE); repaired, amended a second time before any result was looked at; runs again in full after the checkpoint B20_R169 from a clean worktree of the second amendment | the second run: 30 Oct 2026, 12:29:35-12:53:06 SGT from /home/claude/f5c-wt at f7803e3",
+   "outcome": "NOT_SHOWN (valid): generation 1 posed 9 of Genesis's own conjectures (2 withheld); FULL refuted 6, PLAIN 5 (McNemar 1-0, p 0.5); rediscoveries Merris, bound 10, bound 29 (refuted 2024, refuted again); generations 2 and 3 posed nothing new, compounding 0; one unlabelled survivor sqrt((5d^2 + 3m^3/d)/2), a candidate only",
    "output": "evidence/open_conjectures_b20r158",
-   "positive": null,
+   "positive": false,
    "preregistered": "sha256 6b9652d3fd21130820c42fe955ea7e4fce0e11259b412331ba216bd722687b14 (amended before it ran at ff9eada; first sha256 50d2de64...f9b5 at 703b2ee)",
    "priority": 5,
    "requires": [],
@@ -651,7 +654,7 @@
     "cpu0_hours": 1.5
    },
    "script": "scripts/b20r158_open_conjectures.py",
-   "status": "running",
+   "status": "done",
    "title": "F5: open-ended generations: Genesis poses its own conjectures from its own data, attacks them, abstracts named constructions from converged counterexamples and reuses them (trend, rediscoveries, survivors, compounding; controls without abstraction, without extrapolation, with a fixed curriculum)",
    "unlocks": []
   },
@@ -2028,6 +2031,13 @@
    "id": "B20_R158",
    "kind": "start",
    "time": "2026-10-30T02:49:30+00:00"
+  },
+  {
+   "id": "B20_R158",
+   "kind": "finish",
+   "outcome": "NOT_SHOWN (valid): generation 1 posed 9 of Genesis's own conjectures (2 withheld); FULL refuted 6, PLAIN 5 (McNemar 1-0, p 0.5); rediscoveries Merris, bound 10, bound 29 (refuted 2024, refuted again); generations 2 and 3 posed nothing new, compounding 0; one unlabelled survivor sqrt((5d^2 + 3m^3/d)/2), a candidate only",
+   "positive": false,
+   "time": "2026-10-30T04:58:25+00:00"
   }
  ],
  "lines": {
@@ -2193,9 +2203,14 @@
      "B20_R157",
      "PARTIAL (valid): FRONTIER beats NRPA (12-2, p_Holm 0.032), not GBFS (2-7), CEM, UCB or UNIFORM; refuted (both checks) GBFS 19, FRONTIER 14, UCB 13, UNIFORM 12, CEM 9, NRPA 4 of 33; nothing on 44 or 46; descriptively the joint arms' Gamma-built refutations above 40 vertices bring them to 25-26, level with each other",
      false
+    ],
+    [
+     "B20_R158",
+     "NOT_SHOWN (valid): generation 1 posed 9 of Genesis's own conjectures (2 withheld); FULL refuted 6, PLAIN 5 (McNemar 1-0, p 0.5); rediscoveries Merris, bound 10, bound 29 (refuted 2024, refuted again); generations 2 and 3 posed nothing new, compounding 0; one unlabelled survivor sqrt((5d^2 + 3m^3/d)/2), a candidate only",
+     false
     ]
    ],
-   "run": 1,
+   "run": 2,
    "stagnant": false
   },
   "general": {

@@ -910,7 +910,7 @@ B20_R164).
 | The sealed set | DONE: 68 bounds tiered, semantic checks | `conjecture/sealed.py`; `evidence/bhs_transcription_f2/` |
 | F3 = B20_R156 | PREREGISTERED, amended before it ran (`4a7e193`, sha256 `9ae034db…353a`) | `scripts/b20r156_frontier_worlds.py` |
 | F4 = B20_R157 | **DONE: PARTIAL** (amended at `ff9eada`, sha256 `fb5dd07e…5785`; NRPA beaten, not GBFS, CEM, UCB or UNIFORM; `docs/checkpoints/B20_R157_RECORD.md`) | `scripts/b20r157_laplacian_bounds.py` |
-| F5 = B20_R158 | PREREGISTERED (sha256 `50d2de64a7ad…`; runs after B20_R157): FULL (procedures, abstraction, templates carried over) against PLAIN on Genesis's own conjectures, three generations, McNemar | `scripts/b20r158_open_conjectures.py` |
+| F5 = B20_R158 | **DONE: NOT_SHOWN** (amended twice: `ff9eada`, `f7803e3`; generation 1 posed 9, FULL 6 and PLAIN 5 refuted; generations 2 and 3 posed nothing new; `docs/checkpoints/B20_R158_RECORD.md`) | `scripts/b20r158_open_conjectures.py` |
 | F6 = B20_R163 | PREREGISTERED (sha256 `e71bfb69365b…`; runs after B20_R158): a meta-search over 729 engine configurations on one sealed meta-training world; the promoted configuration against the defaults given the meta-search's compute (matched total) and at equal budget, on 24 held-out worlds of two new families; machinery `frontier/meta.py` (B20_R162) | `scripts/b20r163_frontier_meta.py` |
 | F6-adjacent: PT-1's family B | BUILT (B20_R161): 53 Graffiti statements, posed text, domain, double kernel check | §7b |
 | PT-1 = B20_R159 | Parts 3–5 machinery BUILT (`frontier/procedure.py`); the forbidden-concept audit BUILT (`conjecture/audit.py`, kernel side: identifiers and non-docstring strings of the research plane and the manifest, scanned for the hidden concept's stems; the research plane is clean); family B TRANSCRIBED (`conjecture/invariants.py`, `conjecture/wowii.py`: 53 Graffiti statements, semantic checks in `tests_genesis/test_wowii.py`) and POSED as text, with its domain (`conjecture/statement.py`, `conjecture/invariant_domain.py`, `wowii.verifier`, checked by two independent invariant implementations, `invariants.py` and kernel-side `invariants_ref.py`; faster exact invariants, search up to 16 vertices); part 1's two allowed mechanisms BUILT (B20_R164: library learning over Γ, `conjecture/library.py`; operators acting on Γ's operations, `conjecture/operations.py`; the engine's derive action, procedures carrying derivations); part 1's usefulness ablation, a candidate protocol, BUILT (B20_R168: `frontier/ablation.py`); one size cap for every program representation BUILT; the study DRAFTED, not preregistered (`scripts/b20r159_proving_test.py`; its open constants in `docs/handoff/PT1_DESIGN_DRAFT.md`) | §7b |
@@ -942,13 +942,9 @@ commit through `git show`.
    13:30 UTC from `/home/claude/r167-wt` at `33e8905` and ended at 17:15 UTC (three slices). The slice runner is
    `/home/claude/run_slice.sh` (WORKTREE SCRIPT OUTPUT LOG; committed nowhere: it cds into the worktree, pins CPU 0
    with taskset, and logs RUNTREE/START/END to `/home/claude/chain.log`).
-5c. **B20_R158 (F5): its first run stopped (exit 1, 30 Oct 2026, 10:44–10:50 SGT) on a template overflow**
-   (B20R158-TEMPLATE in `docs/BLOCKING_DEFECTS.md`). It is amended a second time before any result was looked at
-   (the repair; new pins; byte-identical summaries from `ff9eada` with the repair and from the amendment commit on two
-   other data seeds) and runs again in full from a clean worktree of the second amendment commit
-   (`/home/claude/f5c-wt`): **running from 30 Oct 2026, 12:29:35 SGT**, before the checkpoint (whose first attempt
-   failed, item 6). The first run's files: `evidence/open_conjectures_b20r158_attempt1/` (not used).
-   CPU 0 was idle 10:50–10:56 while the checkpoint was prepared (disclosed).
+5c. **B20_R158 (F5): done, NOT_SHOWN** (30 Oct 2026; `docs/checkpoints/B20_R158_RECORD.md`). Its first run (10:44–10:50
+   SGT) stopped on a template overflow (B20R158-TEMPLATE); amended a second time at `f7803e3` and run again in full
+   (12:29–12:53 from `/home/claude/f5c-wt`). Generation 1 posed 9; FULL 6, PLAIN 5; generations 2 and 3 posed nothing.
 6. **A checkpoint window** (B20_R169). A first attempt (30 Oct 2026, 10:56–12:29 SGT, `make_checkpoint` at `492412c` on CPU 0) was stopped once it could not pass: the integration suite ran 2,123 tests with no failure in 5,176 s, but one undeclared skip failed it (`test_cpsat_kind`'s wheel check, because `GENESIS_ORTOOLS_WHEEL` was not set, as HANDOVER §3.4 says it must be). It runs again after B20_R158, with the wheel, split by suite (`run_test_matrix.py --suites`, merged by `make_checkpoint.py --reports`), so that no job nears its two-hour limit: the release matrix and the checkpoint need CPU 0 free of studies (the
    sandbox suite); the last checkpoint is B20_R148.
 7. **B20_R158 (F5), AMENDED before it ran (`ff9eada`)**, from a clean worktree at `ff9eada`. The old

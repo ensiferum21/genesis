@@ -1,0 +1,96 @@
+{
+ "P1": {
+  "full_only": 1,
+  "p": 0.5,
+  "plain_only": 0
+ },
+ "audit_hits": [],
+ "code_identity": "4f81e33b1894b169ae0b26d7841c58357b69dcf2d62f60e1c994f27271ccc87a",
+ "compounding_inherited_template_discoveries": 0,
+ "generations": [
+  {
+   "cpu": {
+    "FULL": 897.646,
+    "PLAIN": 212.515
+   },
+   "k": 1,
+   "kept": 11,
+   "posed": 9,
+   "procedure_opens": 0,
+   "procedures": 6,
+   "refuted_full": 6,
+   "refuted_plain": 5,
+   "survivors": 3,
+   "survivors_small_exhaustive": 3,
+   "templates": 7,
+   "withheld": 2
+  },
+  {
+   "cpu": {
+    "FULL": 0.0,
+    "PLAIN": 0.0
+   },
+   "k": 2,
+   "kept": 5,
+   "posed": 0,
+   "procedure_opens": 0,
+   "procedures": 0,
+   "refuted_full": 0,
+   "refuted_plain": 0,
+   "survivors": 0,
+   "survivors_small_exhaustive": 0,
+   "templates": 7,
+   "withheld": 0
+  },
+  {
+   "cpu": {
+    "FULL": 0.0,
+    "PLAIN": 0.0
+   },
+   "k": 3,
+   "kept": 5,
+   "posed": 0,
+   "procedure_opens": 0,
+   "procedures": 0,
+   "refuted_full": 0,
+   "refuted_plain": 0,
+   "survivors": 0,
+   "survivors_small_exhaustive": 0,
+   "templates": 7,
+   "withheld": 0
+  }
+ ],
+ "pins_ok": true,
+ "proved_equivalents_refuted": [],
+ "rediscoveries": [
+  "rediscovery of Merris 1998 (proved)",
+  "rediscovery of bound 10 (proved)",
+  "rediscovery of bound 29 (refuted-2024)"
+ ],
+ "schema": "genesis-b20r158-open-conjectures-v1",
+ "spent_ok": true,
+ "status": "DEV; licenses nothing",
+ "study": "b20r158",
+ "survivors": [
+  {
+   "formula": "sqrt((5*d^2 + 3*m^3/d)/2)",
+   "k": 1,
+   "label": null,
+   "small_exhaustive": true
+  },
+  {
+   "formula": "(1*d + 1*m)/1",
+   "k": 1,
+   "label": "rediscovery of Merris 1998 (proved)",
+   "small_exhaustive": true
+  },
+  {
+   "formula": "sqrt((1*d^2 + 3*d*m)/1)",
+   "k": 1,
+   "label": "rediscovery of bound 10 (proved)",
+   "small_exhaustive": true
+  }
+ ],
+ "valid": true,
+ "verdict": "NOT_SHOWN"
+}
