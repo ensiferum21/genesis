@@ -325,6 +325,8 @@ needs people: a reviewer, a statistician, an independent custodian on its own ma
       - **PT-2's second attempt stopped** at 22:08 in family B's arms (defect B20R177-SEEN, repaired; amended a second
         time; files kept in `evidence/proving_test_2_b20r177_attempt2/`, only the traceback read). **The checkpoint
         B20_R176** runs on CPU 0 from 22:08:13 (`/home/claude/ckpt176` at `2e7fd2f`); PT-2 re-runs after it.
+      - **Daniel's requirement of 22:52 is adopted**: `docs/OMEGA_SELF_REPAIR.md`, the obstacle loop (Genesis repairing
+        its own obstacles under its Judge and Supervisor). Queued: `self-repair-build` (CPU 1), then B20_R178 (SR-1).
   26c. **Daniel's directive of 27 Oct 2026, 19:55 is adopted**: `docs/OMEGA_FRONTIER.md`, written in detail for
       handoff at his request (20:01). Genesis works by divergence and convergence (imagine, mutate, recombine,
       branch out, extrapolate discovery curves, detect convergence, allocate), without handholding. The

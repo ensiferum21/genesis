@@ -968,6 +968,29 @@
    "title": "PT-2: the proving test again, the inadequacy gate judged bound by bound (three predecessor runs on A; the discovery must be on a bound none refuted); PT-1's code otherwise",
    "unlocks": []
   },
+  "B20_R178": {
+   "artifacts": [],
+   "committed": false,
+   "depends_on": [
+    "self-repair-build"
+   ],
+   "failure": null,
+   "id": "B20_R178",
+   "kind": "study",
+   "line": "self-repair",
+   "notes": "docs/OMEGA_SELF_REPAIR.md \u00a74; preregistered when the loop is built",
+   "outcome": null,
+   "output": null,
+   "positive": null,
+   "preregistered": null,
+   "priority": 6,
+   "requires": [],
+   "resources": {},
+   "script": null,
+   "status": "dormant",
+   "title": "SR-1: the obstacle loop on sealed obstacles (the real defects at their pre-repair commits, a generated obstacle zoo with controls) against retrieval-only, template-only and random patches at matched compute",
+   "unlocks": []
+  },
   "allocator-baselines": {
    "artifacts": [],
    "committed": false,
@@ -1388,6 +1411,27 @@
    "script": null,
    "status": "done",
    "title": "The research-object layer: schema, type and kind registry, run with contracts and fuel, improve as an RO, adapters for the existing languages (docs/OMEGA_RECURSIVE_INVENTION.md section 3)",
+   "unlocks": []
+  },
+  "self-repair-build": {
+   "artifacts": [],
+   "committed": true,
+   "depends_on": [],
+   "failure": null,
+   "id": "self-repair-build",
+   "kind": "build",
+   "line": "self-repair",
+   "notes": "adopted 30 Oct 2026, 23:00; CPU 1 engineering; nothing built yet",
+   "outcome": null,
+   "output": null,
+   "positive": null,
+   "preregistered": null,
+   "priority": 6,
+   "requires": [],
+   "resources": {},
+   "script": null,
+   "status": "queued",
+   "title": "The obstacle loop (docs/OMEGA_SELF_REPAIR.md, Daniel 30 Oct 2026 22:52): failure capture and reproducers, the repair vault, localisation and template repair, the kernel repair verifier, the protocol driver (SR-a to SR-e)",
    "unlocks": []
   },
   "sense-language-build": {
@@ -2224,6 +2268,16 @@
    "id": "B20_R177",
    "kind": "start",
    "time": "2026-10-30T13:15:23+00:00"
+  },
+  {
+   "id": "self-repair-build",
+   "kind": "add",
+   "time": "2026-10-30T14:54:50+00:00"
+  },
+  {
+   "id": "B20_R178",
+   "kind": "add",
+   "time": "2026-10-30T14:54:50+00:00"
   }
  ],
  "lines": {
@@ -2509,6 +2563,12 @@
    ],
    "run": 0,
    "stagnant": false
+  },
+  "self-repair": {
+   "diagnosis": null,
+   "outcomes": [],
+   "run": 0,
+   "stagnant": false
   }
  },
  "order": [
@@ -2566,7 +2626,9 @@
   "B20_R173",
   "B20_R174",
   "B20_R175",
-  "B20_R177"
+  "B20_R177",
+  "self-repair-build",
+  "B20_R178"
  ],
  "reactivated": {},
  "schema": "genesis-research-queue-v1",
