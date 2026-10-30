@@ -408,7 +408,7 @@
    "id": "B20_R145",
    "kind": "study",
    "line": "architecture-invention",
-   "notes": "before designing: fix meta.neighbours's fall-back order (B20_R144 never tried max_variants or ranking) and check the held-out families' NO_HEADROOM controls",
+   "notes": "before designing: fix meta.neighbours's fall-back order (B20_R144 never tried max_variants or ranking) and check the held-out families' NO_HEADROOM controls | 30 Oct: meta.improve(fallback='ladder') built for the first fix (default unchanged)",
    "outcome": null,
    "output": null,
    "positive": null,

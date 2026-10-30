@@ -83,25 +83,47 @@ def ladder(evaluate, base, envs, seed=0):
             'evaluations': n_eval}
 
 
-def neighbours(base, located=None):
+def neighbours(base, located=None, first=(), interleave=False):
     """Settings one step from `base` (each setting up or down one place in CONFIG_SPACE), distinct, the located
-    component's settings first (then the rest, in a fixed order)."""
+    component's settings first, then `first`, then the rest in a fixed (alphabetical) order. With `interleave`, every
+    setting's first step comes before any setting's second, so a short list covers as many settings as it can (the
+    default keeps B20_R144's order)."""
     b = A.config_of(base)
     sp = A.CONFIG_SPACE
-    order = list(SETTINGS_OF.get(located, ())) + [k for k in sorted(sp) if k not in SETTINGS_OF.get(located, ())]
-    out, seen = [], {json.dumps(b, sort_keys=True)}
+    order = []
+    for k in list(SETTINGS_OF.get(located, ())) + list(first) + sorted(sp):
+        if k not in order:
+            order.append(k)
+    steps = []
     for k in order:
         vals = sp[k]
         if k in ('ranking', 'edge_aggs'):
             cands = [v for v in vals if v != b[k]]
         else:
             cands = [v for v in (_step(vals, b[k], True), _step(vals, b[k], False)) if v is not None]
-        for v in cands:
-            c = dict(b, **{k: v})
-            key = json.dumps(c, sort_keys=True)
-            if key not in seen:
-                seen.add(key)
-                out.append({'settings': c, 'changed': k})
+        steps.append([(k, v) for v in cands])
+    if interleave:
+        seq = [x for i in range(max((len(c) for c in steps), default=0)) for c in steps if i < len(c) for x in [c[i]]]
+    else:
+        seq = [x for c in steps for x in c]
+    out, seen = [], {json.dumps(b, sort_keys=True)}
+    for k, v in seq:
+        c = dict(b, **{k: v})
+        key = json.dumps(c, sort_keys=True)
+        if key not in seen:
+            seen.add(key)
+            out.append({'settings': c, 'changed': k})
+    return out
+
+
+def ladder_order(lad):
+    """The settings in the order of the meta-ladder's term means, largest first (each term's settings in
+    SETTINGS_OF's order): the fall-back when the ladder locates nothing."""
+    out = []
+    for t in sorted(TERMS, key=lambda t: -lad['terms'][t]['mean']):
+        for k in SETTINGS_OF[t]:
+            if k not in out:
+                out.append(k)
     return out
 
 
@@ -121,13 +143,22 @@ def learn_prior(traces):
     return {d: {op: s / n for op, (s, n) in ops.items()} for d, ops in acc.items()}
 
 
-def improve(evaluate, base, ladder_envs, choice_envs, max_candidates=6, seed=0):
+FALLBACKS = ('alphabetical', 'ladder')
+
+
+def improve(evaluate, base, ladder_envs, choice_envs, max_candidates=6, seed=0, fallback='alphabetical'):
     """One meta-cycle: ladder on `ladder_envs`, up to `max_candidates` neighbours (located first) evaluated on
-    `choice_envs` against the base; the adopted settings, or the base. Returns {'settings', 'adopted', 'ladder',
-    'candidates', 'evaluations'}."""
+    `choice_envs` against the base; the adopted settings, or the base. When the ladder locates nothing, `fallback`
+    orders the candidates: 'alphabetical' (B20_R144's) or 'ladder' (the settings by the terms' means, one step of each
+    setting before a second). Returns {'settings', 'adopted', 'ladder', 'candidates', 'evaluations'}."""
+    if fallback not in FALLBACKS:
+        raise ValueError(f'fallback must be one of {FALLBACKS}')
     lad = ladder(evaluate, base, ladder_envs, seed)
     located = lad['diagnosis'] if lad['diagnosis'] != 'NONE' else None
-    cands = neighbours(base, located)[:max_candidates]
+    if located is None and fallback == 'ladder':
+        cands = neighbours(base, None, first=ladder_order(lad), interleave=True)[:max_candidates]
+    else:
+        cands = neighbours(base, located)[:max_candidates]
     g0 = evaluate(A.config_of(base), choice_envs, False)
     n_eval = lad['evaluations'] + len(choice_envs)
     scored = []
@@ -162,4 +193,5 @@ def tune(evaluate, base, choice_envs, evaluations, seed=0):
             'evaluations': spent}
 
 
-__all__ = ['MATERIAL', 'TERMS', 'SETTINGS_OF', 'standins', 'ladder', 'neighbours', 'learn_prior', 'improve', 'tune']
+__all__ = ['MATERIAL', 'TERMS', 'SETTINGS_OF', 'FALLBACKS', 'standins', 'ladder', 'neighbours', 'ladder_order',
+           'learn_prior', 'improve', 'tune']

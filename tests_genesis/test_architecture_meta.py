@@ -64,6 +64,46 @@ class Cycle(unittest.TestCase):
             self.assertEqual(diff, [c['changed']])
         self.assertEqual(len({str(sorted(c['settings'].items())) for c in nb}), len(nb))
 
+    def test_the_default_order_is_b20r144s(self):
+        nb = M.neighbours(None)
+        self.assertEqual([c['changed'] for c in nb[:6]],
+                         ['battery_random', 'battery_random', 'depth', 'depth', 'edge_aggs', 'exact_repeats'])
+        self.assertEqual(nb, M.neighbours(None, None, first=(), interleave=False))
+
+    def test_interleaved_order_covers_every_setting_first(self):
+        nb = M.neighbours(None, None, first=('max_variants', 'depth'), interleave=True)
+        n = len(A.CONFIG_SPACE)
+        self.assertEqual([c['changed'] for c in nb[:2]], ['max_variants', 'depth'])
+        self.assertEqual(len({c['changed'] for c in nb[:n]}), n)
+        self.assertEqual(sorted(str(sorted(c['settings'].items())) for c in nb),
+                         sorted(str(sorted(c['settings'].items())) for c in M.neighbours(None)))
+
+    def test_ladder_fallback_tries_what_the_ladder_ranks_first(self):
+        """Planted: more variants help by 0.03 and a deeper search costs 0.02, so the exploration stand-in (20
+        variants, depth 3) gains only 0.01 and the ladder locates nothing; the alphabetical fall-back never reaches
+        max_variants within six candidates, the ladder's order tries it first."""
+        def evaluate(cfg, envs, hint):
+            out = []
+            for e in envs:
+                g = 0.3 + random.Random(f'env{e}').gauss(0, 0.05)
+                g += 0.03 if cfg['max_variants'] >= 4 else 0.0
+                g -= 0.02 if cfg['depth'] >= 3 else 0.0
+                out.append(g)
+            return out
+        v1 = {'max_variants': 2}                       # B20_R144's ARA_v1
+        lad = M.ladder(evaluate, v1, list(range(20)))
+        self.assertEqual(lad['diagnosis'], 'NONE')
+        self.assertEqual(M.ladder_order(lad)[:2], ['max_variants', 'depth'])
+        r0 = M.improve(evaluate, v1, list(range(20)), list(range(100, 120)))
+        self.assertFalse(r0['adopted'])
+        self.assertNotIn('max_variants', [c['changed'] for c in r0['candidates']])
+        r1 = M.improve(evaluate, v1, list(range(20)), list(range(100, 120)), fallback='ladder')
+        self.assertTrue(r1['adopted'])
+        self.assertEqual(r1['settings']['max_variants'], 4)
+        self.assertEqual(r1['evaluations'], r0['evaluations'])
+        with self.assertRaises(ValueError):
+            M.improve(evaluate, None, [0], [1], fallback='other')
+
     def test_adopts_only_by_material(self):
         ev, _ = synthetic('evaluation')
         r = M.improve(ev, None, list(range(20)), list(range(100, 120)))
