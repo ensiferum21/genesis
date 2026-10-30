@@ -285,6 +285,9 @@ needs people: a reviewer, a statistician, an independent custodian on its own ma
       - **B20_R158's first run stopped** (exit 1 at 10:50) on a template overflow (B20R158-TEMPLATE). Repaired;
         B20_R158 amended a second time before any result was looked at; it runs again after the checkpoint B20_R169,
         which started at 10:56 on CPU 0 (CPU 0 idle 10:50–10:56, disclosed).
+      - **The checkpoint's first attempt failed** on one undeclared skip: `GENESIS_ORTOOLS_WHEEL` was not set (§3.4).
+        Stopped at 12:29; B20_R158's second run started at 12:29:35; the checkpoint runs again after it, split by
+        suite (`run_test_matrix.py --suites`, `make_checkpoint.py --reports`).
   26c. **Daniel's directive of 27 Oct 2026, 19:55 is adopted**: `docs/OMEGA_FRONTIER.md`, written in detail for
       handoff at his request (20:01). Genesis works by divergence and convergence (imagine, mutate, recombine,
       branch out, extrapolate discovery curves, detect convergence, allocate), without handholding. The

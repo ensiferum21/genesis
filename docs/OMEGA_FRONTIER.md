@@ -945,10 +945,11 @@ commit through `git show`.
 5c. **B20_R158 (F5): its first run stopped (exit 1, 30 Oct 2026, 10:44–10:50 SGT) on a template overflow**
    (B20R158-TEMPLATE in `docs/BLOCKING_DEFECTS.md`). It is amended a second time before any result was looked at
    (the repair; new pins; byte-identical summaries from `ff9eada` with the repair and from the amendment commit on two
-   other data seeds) and runs again in full, after the checkpoint, from a clean worktree of the second amendment
-   commit (`/home/claude/f5c-wt`). The first run's files: `evidence/open_conjectures_b20r158_attempt1/` (not used).
+   other data seeds) and runs again in full from a clean worktree of the second amendment commit
+   (`/home/claude/f5c-wt`): **running from 30 Oct 2026, 12:29:35 SGT**, before the checkpoint (whose first attempt
+   failed, item 6). The first run's files: `evidence/open_conjectures_b20r158_attempt1/` (not used).
    CPU 0 was idle 10:50–10:56 while the checkpoint was prepared (disclosed).
-6. **A checkpoint window** (B20_R169): running from 30 Oct 2026, 10:56 SGT (`make_checkpoint` in a single-branch clone `/home/claude/ckpt169` at `492412c`, on CPU 0), before B20_R158's second run: the release matrix and the checkpoint need CPU 0 free of studies (the
+6. **A checkpoint window** (B20_R169). A first attempt (30 Oct 2026, 10:56–12:29 SGT, `make_checkpoint` at `492412c` on CPU 0) was stopped once it could not pass: the integration suite ran 2,123 tests with no failure in 5,176 s, but one undeclared skip failed it (`test_cpsat_kind`'s wheel check, because `GENESIS_ORTOOLS_WHEEL` was not set, as HANDOVER §3.4 says it must be). It runs again after B20_R158, with the wheel, split by suite (`run_test_matrix.py --suites`, merged by `make_checkpoint.py --reports`), so that no job nears its two-hour limit: the release matrix and the checkpoint need CPU 0 free of studies (the
    sandbox suite); the last checkpoint is B20_R148.
 7. **B20_R158 (F5), AMENDED before it ran (`ff9eada`)**, from a clean worktree at `ff9eada`. The old
    `/home/claude/f5-wt` at `703b2ee` must not be used.
