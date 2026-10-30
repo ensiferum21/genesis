@@ -969,19 +969,20 @@
    "unlocks": []
   },
   "B20_R178": {
-   "artifacts": [],
-   "committed": true,
-   "depends_on": [
-    "self-repair-build"
+   "artifacts": [
+    "evidence/repair_bench_b20r178",
+    "docs/checkpoints/B20_R178_RECORD.md"
    ],
+   "committed": true,
+   "depends_on": [],
    "failure": null,
    "id": "B20_R178",
    "kind": "study",
    "line": "self-repair",
-   "notes": "docs/OMEGA_SELF_REPAIR.md sections 4 and 7; the Foundry first milestone; runs on CPU 1 (disclosed)",
-   "outcome": null,
+   "notes": "docs/OMEGA_SELF_REPAIR.md sections 4 and 7; the Foundry first milestone; runs on CPU 1 (disclosed); its dependency on self-repair-build dropped at recording: the testbed part it tests was built (SR-1b and SR-e, which it does not test, were not)",
+   "outcome": "MILESTONE_DEMONSTRATED (24 of 39 held-out obstacles repaired end to end, isolated, retained); NOLOCAL/RANDOM/ENUM_BEATS_LOOP (35, 36, 33 against 24); REUSE_SHOWN (20 against 12)",
    "output": "evidence/repair_bench_b20r178",
-   "positive": null,
+   "positive": true,
    "preregistered": null,
    "priority": 6,
    "requires": [],
@@ -989,7 +990,7 @@
     "cpu1_hours": 0.25
    },
    "script": "scripts/b20r178_repair_bench.py",
-   "status": "queued",
+   "status": "done",
    "title": "SR-1a: the obstacle loop on the state-management testbed: 13 held-out planted defects x 3 jobs, isolated, against nolocal, random, enum (conventional generate-and-validate) and retrieval at 300 evaluations; controls; retention and reuse",
    "unlocks": []
   },
@@ -1446,7 +1447,7 @@
    "id": "self-repair-build",
    "kind": "build",
    "line": "self-repair",
-   "notes": "adopted 30 Oct 2026, 23:00; CPU 1 engineering. 23:50: the loop is built end to end on the state-management testbed (src/genesis/repair/, src/genesis/repairkernel/; docs/OMEGA_SELF_REPAIR.md section 7): capture, the causal obstacle model, conservation-law probes, synthesis, the kernel verifier with hidden tests, the Supervisor policy with rollback, process and mount-namespace isolation, the vault. Not built: SR-1b (real obstacles), SR-e (the protocol driver), SR-2",
+   "notes": "adopted 30 Oct 2026, 23:00; CPU 1 engineering. Built end to end on the state-management testbed (docs/OMEGA_SELF_REPAIR.md section 7). B20_R178: the milestone demonstrated, the loop beaten by unfocused search (mined laws encode the defect; mislocalisation; small components). Next: laws as evidence only, widening focus, a resource check in the verifier, new held-out defects; SR-1b; SR-e",
    "outcome": null,
    "output": null,
    "positive": null,
@@ -2308,6 +2309,13 @@
    "id": "B20_R179",
    "kind": "add",
    "time": "2026-10-30T15:48:27+00:00"
+  },
+  {
+   "id": "B20_R178",
+   "kind": "finish",
+   "outcome": "MILESTONE_DEMONSTRATED (24 of 39 held-out obstacles repaired end to end, isolated, retained); NOLOCAL/RANDOM/ENUM_BEATS_LOOP (35, 36, 33 against 24); REUSE_SHOWN (20 against 12)",
+   "positive": true,
+   "time": "2026-10-30T16:02:26+00:00"
   }
  ],
  "lines": {
@@ -2596,7 +2604,13 @@
   },
   "self-repair": {
    "diagnosis": null,
-   "outcomes": [],
+   "outcomes": [
+    [
+     "B20_R178",
+     "MILESTONE_DEMONSTRATED (24 of 39 held-out obstacles repaired end to end, isolated, retained); NOLOCAL/RANDOM/ENUM_BEATS_LOOP (35, 36, 33 against 24); REUSE_SHOWN (20 against 12)",
+     true
+    ]
+   ],
    "run": 0,
    "stagnant": false
   }

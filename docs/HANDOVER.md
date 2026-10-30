@@ -327,6 +327,14 @@ needs people: a reviewer, a statistician, an independent custodian on its own ma
         B20_R176** runs on CPU 0 from 22:08:13 (`/home/claude/ckpt176` at `2e7fd2f`); PT-2 re-runs after it.
       - **Daniel's requirement of 22:52 is adopted**: `docs/OMEGA_SELF_REPAIR.md`, the obstacle loop (Genesis repairing
         its own obstacles under its Judge and Supervisor). Queued: `self-repair-build` (CPU 1), then B20_R178 (SR-1).
+      - **The Foundry directive (23:09) is taken up, narrow first** (its first milestone). The obstacle loop is built
+        on a state-management testbed (`src/genesis/repair/`, `src/genesis/repairkernel/`; `docs/OMEGA_SELF_REPAIR.md`
+        §7): the causal obstacle model, conservation-law probes, synthesis, a kernel verifier with hidden tests, the
+        Supervisor's policy with rollback, the research plane and the trial executor isolated in mount namespaces as
+        unprivileged users, and the vault. **B20_R178 (SR-1a) is recorded** (`docs/checkpoints/B20_R178_RECORD.md`,
+        CPU 1): MILESTONE_DEMONSTRATED (24 of 39 held-out obstacles repaired end to end), REUSE_SHOWN, and
+        NOLOCAL/RANDOM/ENUM_BEATS_LOOP (unfocused search repaired more). The checkpoint B20_R176's part 1 passed
+        (23:57:52); part 2 runs from 23:57:56; PT-2's third attempt follows on CPU 0.
   26c. **Daniel's directive of 27 Oct 2026, 19:55 is adopted**: `docs/OMEGA_FRONTIER.md`, written in detail for
       handoff at his request (20:01). Genesis works by divergence and convergence (imagine, mutate, recombine,
       branch out, extrapolate discovery curves, detect convergence, allocate), without handholding. The

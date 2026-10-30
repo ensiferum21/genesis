@@ -1559,6 +1559,13 @@
           "7acf0e4"
         ],
         "result": "Preregistered (DEV, calibration; ARA experiment G): ARA_v1 (2 variants) runs ARA's cycle on its own settings (meta-ladder, six one-step rewrites, adoption by +0.02 on a choice set) on 24 + 24 base-family zoo environments; a tuning-only control at the same count of evaluations; held out 80 environments of H1 and H2; P1 v2 over v1 at matched total compute, P2 over the tuning control (Holm, material 0.05); S releases on 30 controls at most 0.15. Expectation NOT_SHOWN or NOTHING_ADOPTED, informed by B20_R167 (disclosed). Runs after B20_R136. Ran 30 Oct 07:38-08:23 SGT from /home/claude/r144-wt. Recorded: NOTHING_ADOPTED (valid): the meta-ladder located nothing; the six neighbours tried changed no released gain; held out v1 0.679, tune 0.718 at 2.8x the units; S 1 of 30 (H2 NO_HEADROOM had real headroom). Record docs/checkpoints/B20_R144_RECORD.md"
+      },
+      "B20_R178": {
+        "commits": [
+          "0e5d46f",
+          "4ef1db6"
+        ],
+        "result": "Recorded (DEV, CPU 1): SR-1a, the obstacle loop on the state-management testbed. MILESTONE_DEMONSTRATED: 24 of 39 held-out obstacles repaired end to end (verified by the kernel, promoted, resumed from the interrupted checkpoint, retained), isolation measured and held, 12 controls held. NOLOCAL_BEATS_LOOP 35-24, RANDOM_BEATS_LOOP 36-24, ENUM_BEATS_LOOP 33-24; retrieval 18 (no difference). REUSE_SHOWN: 20 against 12 seed-2/3 jobs; first passing candidate after 1.1 evaluations against 29.0. The verifier accepted a storage-leaking repair in 9 comparator episodes (no resource check). docs/checkpoints/B20_R178_RECORD.md"
       }
     },
     "open_after_b20_r5": [

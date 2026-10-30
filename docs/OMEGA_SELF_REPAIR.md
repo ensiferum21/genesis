@@ -6,10 +6,10 @@
 
 Adopted on 30 Oct 2026 as a requirement on the whole system. This document says where Genesis stands against it,
 what the loop is in this repository's terms, what it may never do, the test that would show it works, and the build
-order. **State (30 Oct 2026, 23:45):** the loop is built end to end on a narrow testbed (the Foundry directive of
-23:09 asked for narrow autonomous repair first: cache eviction and order defects, and a small explicit set of related
-state-management defects), and its first benchmark, B20_R178 (SR-1a), is preregistered. See §7 for what exists,
-what has been shown, and what has not. The real obstacles of §1 (SR-1b) are not yet reachable by it.
+order. **State (31 Oct 2026, 00:10):** the loop is built end to end on a narrow testbed (the Foundry directive of
+23:09 asked for narrow autonomous repair first), and its first benchmark, B20_R178 (SR-1a), is recorded: the
+milestone is demonstrated, and the loop's diagnosis-led search lost to unfocused search (§7, §8). The real obstacles
+of §1 (SR-1b) are not yet reachable by it.
 
 ## 1. Where Genesis stands (30 Oct 2026)
 
@@ -196,6 +196,29 @@ the isolation measured. Its criteria are in the script.
 **Not built**: SR-1b (the real obstacles of §1 at their pre-repair commits); repair of research-plane modules of the
 repository (the policy keeps that scope for the human Supervisor); SR-e (the protocol driver for preregistered
 studies); SR-2 (suspicious results); the capability dependency graph and AOR-1 of the Foundry directive.
+
+**SR-1a's result** (`docs/checkpoints/B20_R178_RECORD.md`): MILESTONE_DEMONSTRATED on 24 of 39 held-out obstacles;
+isolation and the controls held; retained hunks were reused on recurrence (REUSE_SHOWN, 20 against 12); but nolocal
+(35), random (36) and enum (33) repaired more than the loop (24). The evidence names two causes: laws mined from the
+defective component encode the defect and were used to reject correct repairs; the focus can be wrong (the fault
+shows in one method, the defect is in another). And a gap in the verifier: it accepted, in 9 comparator episodes, a
+"repair" that never frees removed items (no check counts storage).
+
+## 8. Status against the Foundry directive (31 Oct 2026, 00:10)
+
+| Directive item | Implemented | Demonstrated (B20_R178, testbed only) | Failed or weak | Not built or untested |
+|---|---|---|---|---|
+| 1. Preserve the research program | PT-2's pins, scripts and evidence untouched; all new code in new modules; CPU 0 kept for the checkpoint and PT-2 | | | |
+| 2. Causal obstacle model | the record's nine fields; line hypotheses plus "elsewhere"; experiments by expected information per operation; rising energy; supported stopping | it localised the defect's line in many episodes (e.g. L1: 0.72 on the right line) | when every trial fails it cannot discriminate and puts its belief on "elsewhere" (M2); it localised W1 to the wrong method | the obstacle classes beyond a code defect (missing information, representation limits, ineffective search, verification cost, compute, false improvements, infeasible objectives) are not modelled |
+| 3. Narrow autonomous repair | capture, reproduction from a checkpoint, localisation, regression test, synthesis, isolated test, independent verification, policy promotion, resume, retention; tracing, invariants (conservation laws), AST program analysis, differential property testing against reference models | 24 of 39 held-out obstacles end to end; 0 false repairs proposed by the loop | lost to unfocused search (35, 36, 33); mined laws used as constraints; G3 out of reach of every arm | CEGIS (the verifier's counterexamples are deliberately never fed back); repository modules; the real obstacles (SR-1b) |
+| 4. Capability invention, dependency graph | the vault: hunks retrieved verbatim, operator kinds by evidence | reuse on recurrence (20 against 12; first passing candidate at 1.1 evaluations against 29.0) | transfer to unfamiliar defects through operator kinds not shown (retrieval 18) | new operators or abstractions invented; the capability dependency graph |
+| 5. External verification and authority | separate verifier process; hidden tests; fresh kernel seeds; the resumed job; predefined policy with backup and rollback; one proposal per obstacle; mount namespaces, unprivileged users, no capabilities; a static guard | isolation measured and held; 12 controls held; no promotion outside a component | the verifier lacks a resource (total-cost) check: a leaking "repair" passed it 9 times | the policy has no explicit cost check; repository scope needs the human Supervisor |
+| 6. AOR-1 | | | | not preregistered |
+| 7. Deliverables | code, `tests_genesis/test_repair_foundry.py` and `test_repair_bench_study.py`, `scripts/b20r178_repair_bench.py`, the record as the initial benchmark report | | | |
+
+Reproduce (as root, Linux with mount namespaces): `python3 scripts/b20r178_repair_bench.py OUT` from a clean clone at
+`0e5d46f` (about 7 min on one core); `--rehearse` for the development-defect dry run;
+`python3 -m unittest tests_genesis.test_repair_foundry tests_genesis.test_repair_bench_study`.
 
 ## 6. Prior art
 
