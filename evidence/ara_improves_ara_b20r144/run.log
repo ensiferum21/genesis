@@ -1,0 +1,29 @@
+{
+ "verdict": "NOTHING_ADOPTED",
+ "valid": true,
+ "adopted": false,
+ "change": {
+  "class": "NONE",
+  "changed": []
+ },
+ "P1": {
+  "n": 0,
+  "p": 1.0,
+  "mean": 0.0,
+  "p_holm": 1.0,
+  "passed": false
+ },
+ "P2": {
+  "n": 24,
+  "p": 0.963103711605072,
+  "mean": -0.03866333174898082,
+  "p_holm": 1.0,
+  "passed": false
+ },
+ "S": {
+  "releases": 1,
+  "controls": 30,
+  "upper95": 0.14859606865911312,
+  "passed": true
+ }
+}

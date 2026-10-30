@@ -57,6 +57,7 @@ Nothing here is an independent or sealed result.
 | Difficulty probes | Planted coupling answered by renormalisation (+16 against +4); natural Gset classes give weak probe signals |
 | B20_R151 | The builder's richer language Λ1 against Λ0, apart from search: NOT_SHOWN (NO_LANGUAGE_EFFECT on planar2000, the only class past the headroom gate; Λ1's ceiling winners 0.115% below Λ0's) |
 | B20_R152 | Self-extension of the engine language on real engines: NOTHING_ADMITTED (the judge refused both of generation 1's statements; the line ended) |
+| B20_R144 | ARA applied to its own settings (milestone 2): NOTHING_ADOPTED (the meta-ladder located nothing; six one-step candidates changed no released gain; the variants and the ranking were never tried, by the alphabetical fall-back) |
 | B20_R136 | Experiment A, a synthesised sense choosing the engine per graph: NOT_SHOWN (SENSE − always-C0_1 +0.087%, p_Holm 0.0009 but below the material 0.1%; SENSE − the builder's degree CV −0.054%) |
 | B20_R141 | ARA's calibration on the zoo: INVALID, by a defect in the script's freshness clause (False in every registered run). Descriptively every experiment would have passed; re-run as B20_R167 |
 
@@ -66,8 +67,9 @@ As of 30 Oct 2026; the order on CPU 0 is in `docs/OMEGA_FRONTIER.md` §12 and `r
 
 | Batch | State |
 |---|---|
-| B20_R144 | ARA applies its own cycle to its own settings; held out on zoo families H1 and H2. Running |
-| B20_R157, R158 | F4 (the Frontier against prior-art searches on the sealed Laplacian bounds) and F5 (Genesis's own conjectures), both amended before running (`ff9eada`). Preregistered |
+| B20_R174 | Genesis's search against random sampling of the same language on ±1-weighted planar graphs (the control B20_R173 lacks). Preregistered |
+| B20_R157 | F4 (the Frontier against prior-art searches on the sealed Laplacian bounds), amended before running (`ff9eada`). Running |
+| B20_R158 | F5 (Genesis's own conjectures), amended before running (`ff9eada`). Preregistered |
 | B20_R163 | F6 (the Frontier adapting its own settings on sealed meta-worlds). Preregistered |
 | B20_R170, R172 | Foundry G2 (forecast calibration invented by meta-search) and G4 (state features for allocation). Preregistered |
 

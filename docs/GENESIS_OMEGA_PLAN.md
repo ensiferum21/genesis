@@ -639,6 +639,9 @@ problems no level has seen, and Genesis has not shown that yet.
   in detail for handoff at his request of 20:01; F1 and F2 next on CPU 1; B20_R156–R158 reserved.
 - 27 Oct 2026, 20:40: the proving test adopted (§0f; B20_R159). F2 started: the sealed Laplacian set
   transcribed and tiered, with exact certificates (`src/genesis/conjecture/`).
+- 30 Oct 2026, 08:40: B20_R144 recorded: NOTHING_ADOPTED. ARA's cycle on its own settings located nothing, and its
+  six candidates changed no result; the alphabetical fall-back left the number of variants and the ranking untried.
+  Milestone 2 is not met. B20_R157 (F4) is running.
 - 30 Oct 2026, 08:20: B20_R174 preregistered: B20_R151's three search winners against three random-sampling arms of
   the same language at matched evaluations, on fresh ±1-weighted planar graphs (the control B20_R173's release
   lacks). Record test drafts for B20_R170, R172 and R174 written before they run.

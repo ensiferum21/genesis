@@ -1,0 +1,347 @@
+{
+ "P1": {
+  "mean": 0.0,
+  "n": 0,
+  "p": 1.0,
+  "p_holm": 1.0,
+  "passed": false
+ },
+ "P2": {
+  "mean": -0.03866333174898082,
+  "n": 24,
+  "p": 0.963103711605072,
+  "p_holm": 1.0,
+  "passed": false
+ },
+ "S": {
+  "controls": 30,
+  "passed": true,
+  "releases": 1,
+  "upper95": 0.14859606865911312
+ },
+ "S1": {
+  "diagnosis": "NONE",
+  "significant": []
+ },
+ "S1_terms": {
+  "evaluation": {
+   "hi": 0.04241696678671473,
+   "lo": -0.10586734693877553,
+   "mean": -0.021717020141389876
+  },
+  "exploration": {
+   "hi": 0.033688684503901896,
+   "lo": 0.0,
+   "mean": 0.012437290969899666
+  },
+  "localisation": {
+   "hi": 0.08204334365325078,
+   "lo": 0.0,
+   "mean": 0.03224974200206399
+  },
+  "observation": {
+   "hi": 0.0,
+   "lo": -0.08418367346938775,
+   "mean": -0.02806122448979591
+  }
+ },
+ "S2": [
+  {
+   "changed": "battery_random",
+   "mean": 0.0,
+   "settings": {
+    "battery_random": 24,
+    "depth": 2,
+    "edge_aggs": [
+     "mean",
+     "sd"
+    ],
+    "exact_repeats": 6,
+    "material": 0.05,
+    "max_variants": 2,
+    "ranking": "localised"
+   }
+  },
+  {
+   "changed": "battery_random",
+   "mean": 0.0,
+   "settings": {
+    "battery_random": 6,
+    "depth": 2,
+    "edge_aggs": [
+     "mean",
+     "sd"
+    ],
+    "exact_repeats": 6,
+    "material": 0.05,
+    "max_variants": 2,
+    "ranking": "localised"
+   }
+  },
+  {
+   "changed": "depth",
+   "mean": 0.0,
+   "settings": {
+    "battery_random": 12,
+    "depth": 3,
+    "edge_aggs": [
+     "mean",
+     "sd"
+    ],
+    "exact_repeats": 6,
+    "material": 0.05,
+    "max_variants": 2,
+    "ranking": "localised"
+   }
+  },
+  {
+   "changed": "depth",
+   "mean": 0.0,
+   "settings": {
+    "battery_random": 12,
+    "depth": 1,
+    "edge_aggs": [
+     "mean",
+     "sd"
+    ],
+    "exact_repeats": 6,
+    "material": 0.05,
+    "max_variants": 2,
+    "ranking": "localised"
+   }
+  },
+  {
+   "changed": "edge_aggs",
+   "mean": 0.0,
+   "settings": {
+    "battery_random": 12,
+    "depth": 2,
+    "edge_aggs": [
+     "mean",
+     "sd",
+     "frac_pos",
+     "cv"
+    ],
+    "exact_repeats": 6,
+    "material": 0.05,
+    "max_variants": 2,
+    "ranking": "localised"
+   }
+  },
+  {
+   "changed": "exact_repeats",
+   "mean": 0.0,
+   "settings": {
+    "battery_random": 12,
+    "depth": 2,
+    "edge_aggs": [
+     "mean",
+     "sd"
+    ],
+    "exact_repeats": 8,
+    "material": 0.05,
+    "max_variants": 2,
+    "ranking": "localised"
+   }
+  }
+ ],
+ "S3": {
+  "H1|DECOY": {
+   "tune": 0.0,
+   "v1": 0.0,
+   "v1m": 0.0,
+   "v2": 0.0
+  },
+  "H1|EVAL_NOISY": {
+   "tune": 0.9479236255303783,
+   "v1": 1.0321341518461677,
+   "v1m": 1.0321341518461677,
+   "v2": 1.0321341518461677
+  },
+  "H1|FUSION_NEEDED": {
+   "tune": 0.37809352276667596,
+   "v1": 0.2768523002421308,
+   "v1m": 0.2768523002421308,
+   "v2": 0.2768523002421308
+  },
+  "H1|GLOBAL_ONLY": {
+   "tune": 1.1014887949775831,
+   "v1": 1.0914178100618777,
+   "v1m": 1.0914178100618777,
+   "v2": 1.0914178100618777
+  },
+  "H1|NO_HEADROOM": {
+   "tune": 0.0,
+   "v1": 0.0,
+   "v1m": 0.0,
+   "v2": 0.0
+  },
+  "H1|NULL": {
+   "tune": 0.0,
+   "v1": 0.0,
+   "v1m": 0.0,
+   "v2": 0.0
+  },
+  "H1|SEARCH_WEAK": {
+   "tune": 0.9617742517129463,
+   "v1": 0.9532636134150739,
+   "v1m": 0.9532636134150739,
+   "v2": 0.9532636134150739
+  },
+  "H1|SENSE_BLIND": {
+   "tune": 0.5433317191283293,
+   "v1": 0.4077142857142857,
+   "v1m": 0.4077142857142857,
+   "v2": 0.4077142857142857
+  },
+  "H2|DECOY": {
+   "tune": 0.0,
+   "v1": 0.0,
+   "v1m": 0.0,
+   "v2": 0.0
+  },
+  "H2|EVAL_NOISY": {
+   "tune": 0.7382823740692991,
+   "v1": 0.7382823740692991,
+   "v1m": 0.7382823740692991,
+   "v2": 0.7382823740692991
+  },
+  "H2|FUSION_NEEDED": {
+   "tune": 0.31636799118062836,
+   "v1": 0.1275862068965518,
+   "v1m": 0.1275862068965518,
+   "v2": 0.1275862068965518
+  },
+  "H2|GLOBAL_ONLY": {
+   "tune": 0.9960408684546617,
+   "v1": 0.9473861939086954,
+   "v1m": 0.9473861939086954,
+   "v2": 0.9473861939086954
+  },
+  "H2|NO_HEADROOM": {
+   "tune": 0.07524475524475525,
+   "v1": 0.046153846153846156,
+   "v1m": 0.046153846153846156,
+   "v2": 0.046153846153846156
+  },
+  "H2|NULL": {
+   "tune": 0.0,
+   "v1": 0.0,
+   "v1m": 0.0,
+   "v2": 0.0
+  },
+  "H2|SEARCH_WEAK": {
+   "tune": 0.9679091830155658,
+   "v1": 1.01258358662614,
+   "v1m": 1.01258358662614,
+   "v2": 1.01258358662614
+  },
+  "H2|SENSE_BLIND": {
+   "tune": 0.22672314208702354,
+   "v1": 0.20408163265306128,
+   "v1m": 0.20408163265306128,
+   "v2": 0.20408163265306128
+  }
+ },
+ "S4": {
+  "mean": 0.0,
+  "n": 0,
+  "p": 1.0
+ },
+ "S5": {
+  "v1": 0.76,
+  "v2": 0.76
+ },
+ "S6": {
+  "c_meta": 2151110.0,
+  "evaluations_meta": 288,
+  "evaluations_tune": 288,
+  "extra_units_v1m": 26888.875,
+  "units": {
+   "tune": 7575.65,
+   "v1": 2687.04,
+   "v1m": 2687.04,
+   "v2": 2687.04
+  }
+ },
+ "adopted": false,
+ "change": {
+  "changed": [],
+  "class": "NONE"
+ },
+ "code_identity": "72be39a04bf143770f1b491e4730023774ac0fd3b9a760959fef9686a5a8c1cd",
+ "means_defects": {
+  "tune": 0.7177935472923092,
+  "v1": 0.6791302155433283,
+  "v1m": 0.6791302155433283,
+  "v2": 0.6791302155433283
+ },
+ "prior": {
+  "evaluation": {
+   "INSERT": 0.10991987782968426,
+   "SUBSTITUTE": 0.6728723319130939
+  },
+  "expressiveness": {
+   "GENERALISE": 0.5984300781580791
+  },
+  "information": {
+   "FUSE": 0.20322860230793183,
+   "INSERT": 0.28816848617254953
+  },
+  "search": {
+   "SUBSTITUTE": 0.34160720836019126
+  }
+ },
+ "schema": "genesis-b20r144-ara-improves-ara-v1",
+ "status": "DEV; calibration; licenses nothing",
+ "study": "b20r144",
+ "tune": {
+  "battery_random": 24,
+  "depth": 3,
+  "edge_aggs": [
+   "mean",
+   "sd",
+   "frac_pos",
+   "cv"
+  ],
+  "exact_repeats": 4,
+  "material": 0.05,
+  "max_variants": 14,
+  "ranking": "blind"
+ },
+ "tune_adopted": true,
+ "v1": {
+  "battery_random": 12,
+  "depth": 2,
+  "edge_aggs": [
+   "mean",
+   "sd"
+  ],
+  "exact_repeats": 6,
+  "material": 0.05,
+  "max_variants": 2,
+  "ranking": "localised"
+ },
+ "v2": {
+  "battery_random": 12,
+  "depth": 2,
+  "edge_aggs": [
+   "mean",
+   "sd"
+  ],
+  "exact_repeats": 6,
+  "material": 0.05,
+  "max_variants": 2,
+  "ranking": "localised"
+ },
+ "valid": true,
+ "validity": {
+  "budget": true,
+  "families": true,
+  "in_space": true,
+  "judge": true,
+  "no_hint": true,
+  "wellformed": true
+ },
+ "verdict": "NOTHING_ADOPTED"
+}

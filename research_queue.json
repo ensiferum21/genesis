@@ -366,7 +366,10 @@
    "unlocks": []
   },
   "B20_R144": {
-   "artifacts": [],
+   "artifacts": [
+    "evidence/ara_improves_ara_b20r144",
+    "docs/checkpoints/B20_R144_RECORD.md"
+   ],
    "committed": true,
    "depends_on": [
     "B20_R167",
@@ -377,9 +380,9 @@
    "kind": "study",
    "line": "architecture-invention",
    "notes": "ARA experiment G; machinery architecture/meta.py, ara.CONFIG_SPACE and the zoo's H1 and H2 (b8cd111); preregistered 30 Oct 2026 after B20_R167's ARA_CALIBRATED, its expectation informed by that record (disclosed); runs after B20_R136, before B20_R157 (about 1 h) | started 30 Oct 2026, 07:38:30 SGT, from the clean worktree /home/claude/r144-wt at 7acf0e4; its record test draft was committed at 07:40, after the start and before its output was opened (disclosed)",
-   "outcome": null,
+   "outcome": "NOTHING_ADOPTED (valid): the meta-ladder located nothing (localisation +0.032 [0, 0.082]); the six one-step neighbours tried (alphabetical fall-back: battery, depth, edge aggregates, repeats) each released exactly what ARA_v1 released on all 24 choice environments; held out v1 0.679 against the tuning control's 0.718 at 2.8x the units; S 1 of 30 (H2's NO_HEADROOM 62077 had a real sealed gain), bound 0.149",
    "output": "evidence/ara_improves_ara_b20r144",
-   "positive": null,
+   "positive": false,
    "preregistered": "sha256 05523955c17aadcda17ef61f2191854b32711840bbdaf1e79726e74ed8f058c3 (the preregistration commit)",
    "priority": 7,
    "requires": [
@@ -389,7 +392,7 @@
     "cpu0_hours": 1.0
    },
    "script": "scripts/b20r144_ara_improves_ara.py",
-   "status": "running",
+   "status": "done",
    "title": "ARA experiment G: ARA applies its own cycle to its own settings; v2 against v1 at matched total compute and against a tuning-only control, on held-out zoo families H1 and H2",
    "unlocks": [
     "ara-meta"
@@ -405,7 +408,7 @@
    "id": "B20_R145",
    "kind": "study",
    "line": "architecture-invention",
-   "notes": "",
+   "notes": "before designing: fix meta.neighbours's fall-back order (B20_R144 never tried max_variants or ranking) and check the held-out families' NO_HEADROOM controls",
    "outcome": null,
    "output": null,
    "positive": null,
@@ -609,7 +612,7 @@
    "id": "B20_R157",
    "kind": "study",
    "line": "frontier",
-   "notes": "Daniel's directive of 27 Oct 2026, 19:55 (docs/OMEGA_FRONTIER.md); to preregister after a timing pilot; preregistered 27 Oct 2026 21:40 SGT | 29 Oct 2026: queued to run again in full from a clean worktree at ff9eada after B20_R167.",
+   "notes": "Daniel's directive of 27 Oct 2026, 19:55 (docs/OMEGA_FRONTIER.md); to preregister after a timing pilot; preregistered 27 Oct 2026 21:40 SGT | 29 Oct 2026: queued to run again in full from a clean worktree at ff9eada after B20_R167. | the amended run started 30 Oct 2026, 08:23:37 SGT, from the clean worktree /home/claude/f4b-wt at ff9eada",
    "outcome": null,
    "output": "evidence/laplacian_bounds_b20r157",
    "positive": null,
@@ -620,7 +623,7 @@
     "cpu0_hours": 2.5
    },
    "script": "scripts/b20r157_laplacian_bounds.py",
-   "status": "queued",
+   "status": "running",
    "title": "F4: the sealed Laplacian bounds: refutations by exact certificate within budget, the Frontier against NRPA, GBFS, CEM and the uniform portfolio at matched CPU; no certificate against a proved bound; bounds 44 and 46 open as of June 2026",
    "unlocks": []
   },
@@ -1998,6 +2001,18 @@
    "id": "B20_R174",
    "kind": "add",
    "time": "2026-10-30T00:20:47+00:00"
+  },
+  {
+   "id": "B20_R144",
+   "kind": "finish",
+   "outcome": "NOTHING_ADOPTED (valid): the meta-ladder located nothing (localisation +0.032 [0, 0.082]); the six one-step neighbours tried (alphabetical fall-back: battery, depth, edge aggregates, repeats) each released exactly what ARA_v1 released on all 24 choice environments; held out v1 0.679 against the tuning control's 0.718 at 2.8x the units; S 1 of 30 (H2's NO_HEADROOM 62077 had a real sealed gain), bound 0.149",
+   "positive": false,
+   "time": "2026-10-30T00:32:16+00:00"
+  },
+  {
+   "id": "B20_R157",
+   "kind": "start",
+   "time": "2026-10-30T00:32:16+00:00"
   }
  ],
  "lines": {
@@ -2018,9 +2033,14 @@
      "B20_R167",
      "ARA_CALIBRATED (valid, failed []): A 42/50 localised (chance 1/4, p 3e-18), NONE 30/30; B over tuning in GLOBAL_ONLY, SENSE_BLIND, FUSION_NEEDED, EVAL_NOISY (Holm), not SEARCH_WEAK; C no failures (195 promotions); D ara2 over blind2 +0.408 (p_Holm 2.7e-6), over tuning +0.559; S no ara or ara2 release on 45 controls (blind 1). FUSION_NEEDED the weak class (5/10). Restarted after the lost 28 Oct attempt (disclosed)",
      true
+    ],
+    [
+     "B20_R144",
+     "NOTHING_ADOPTED (valid): the meta-ladder located nothing (localisation +0.032 [0, 0.082]); the six one-step neighbours tried (alphabetical fall-back: battery, depth, edge aggregates, repeats) each released exactly what ARA_v1 released on all 24 choice environments; held out v1 0.679 against the tuning control's 0.718 at 2.8x the units; S 1 of 30 (H2's NO_HEADROOM 62077 had a real sealed gain), bound 0.149",
+     false
     ]
    ],
-   "run": 0,
+   "run": 1,
    "stagnant": false
   },
   "capability-graph": {

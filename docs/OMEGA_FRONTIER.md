@@ -932,13 +932,11 @@ commit through `git show`.
 4b. **B20_R173: done, RELEASED** (30 Oct 2026, 01:16–01:50 SGT; `docs/checkpoints/B20_R173_RECORD.md`): the
     protected judge released C0_1 on planar2_pm1. CPU 0 was then idle until 07:25 (disclosed).
 4c. **B20_R136: done, NOT_SHOWN** (30 Oct 2026, 07:25–07:38 SGT; `docs/checkpoints/B20_R136_RECORD.md`).
-4d. **B20_R144 (30 Oct 2026, preregistered): ARA applied to its own settings** (ARA experiment G), after B20_R136
-    and before B20_R157 (about 1 h), from a clean worktree of its preregistration commit (`/home/claude/r144-wt`).
-    Running from 30 Oct, 07:38:30 SGT.
+4d. **B20_R144: done, NOTHING_ADOPTED** (30 Oct 2026, 07:38–08:23 SGT; `docs/checkpoints/B20_R144_RECORD.md`).
 5. **B20_R157 (F4): its first attempt was killed (out of memory, 02:10 UTC), and it is AMENDED at `ff9eada`.**
    - The cause was the star-size defect (B20R157-STAR in `docs/BLOCKING_DEFECTS.md`).
-   - It runs again in full from a clean worktree at `ff9eada`, after B20_R167. Create it with
-     `git worktree add --detach /home/claude/f4b-wt ff9eada`, then run
+   - It runs again in full from a clean worktree at `ff9eada`: **running from 30 Oct 2026, 08:23:37 SGT** in
+     `/home/claude/f4b-wt`. Resume each slice with
      `/home/claude/run_slice.sh /home/claude/f4b-wt scripts/b20r157_laplacian_bounds.py evidence/laplacian_bounds_b20r157 /home/claude/logs/f4b_slices.log`.
    - The first attempt's rows: `evidence/laplacian_bounds_b20r157_attempt1/` (not used).
    - Record it with the RecordB20R157 draft, updated for the amended digest.

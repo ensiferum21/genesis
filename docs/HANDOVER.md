@@ -275,6 +275,9 @@ needs people: a reviewer, a statistician, an independent custodian on its own ma
       - **B20_R136 is recorded** (`docs/checkpoints/B20_R136_RECORD.md`): NOT_SHOWN. The synthesised sense chose
         per graph and avoided C0_1's losses, but beat always-C0_1 by only +0.087% (below 0.1%) and lost to the
         builder's degree CV. B20_R144 started at 07:38.
+      - **B20_R144 is recorded** (`docs/checkpoints/B20_R144_RECORD.md`): NOTHING_ADOPTED. ARA's meta-cycle located
+        nothing and its six candidate settings changed no result; the fall-back order is alphabetical, so the
+        variants and the ranking were never tried (fix before B20_R145). B20_R157 (F4) started at 08:23:37.
   26c. **Daniel's directive of 27 Oct 2026, 19:55 is adopted**: `docs/OMEGA_FRONTIER.md`, written in detail for
       handoff at his request (20:01). Genesis works by divergence and convergence (imagine, mutate, recombine,
       branch out, extrapolate discovery curves, detect convergence, allocate), without handholding. The
