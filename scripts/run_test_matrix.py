@@ -63,6 +63,43 @@ def run_suite(name, directory, timeout):
     }
 
 
+def git_state():
+    """(HEAD commit, whether the working tree is clean), or (None, False) outside git: a report says what it tested."""
+    try:
+        commit = subprocess.run(['git', 'rev-parse', 'HEAD'], cwd=ROOT, capture_output=True, text=True,
+                                check=True).stdout.strip()
+        dirty = subprocess.run(['git', 'status', '--porcelain'], cwd=ROOT, capture_output=True, text=True,
+                               check=True).stdout.strip()
+        return commit, not dirty
+    except (OSError, subprocess.CalledProcessError):
+        return None, False
+
+
+def release_suites():
+    """The suite names of the release profile in this tree."""
+    return sorted(set(SUITES) | {k for k, v in OPTIONAL.items() if (ROOT / v[0]).is_dir()})
+
+
+def merge(reports, commit):
+    """One release report from several partial ones (`--suites` runs): each must have tested `commit` on a clean
+    tree, together they must cover the release profile's suites exactly once, and the merged report is all_ok only
+    if every suite is. Raises ValueError otherwise."""
+    suites = []
+    for r in reports:
+        if r.get('commit') != commit or not r.get('clean'):
+            raise ValueError(f"a report of {r.get('commit')} (clean={r.get('clean')}) for {commit}")
+        if r.get('profile') != 'release':
+            raise ValueError('only release-profile reports are merged')
+        suites += r['suites']
+    names = [x['suite'] for x in suites]
+    if sorted(names) != release_suites():
+        raise ValueError(f'the reports cover {sorted(names)}, not {release_suites()}')
+    return {'profile': 'release', 'python': reports[0]['python'], 'commit': commit, 'clean': True,
+            'selected': sorted(names), 'merged_from': len(reports), 'suites': suites,
+            'total_ran': sum(x['ran'] for x in suites), 'total_skipped': sum(x['skipped'] for x in suites),
+            'all_ok': all(x['ok'] for x in suites)}
+
+
 def main(argv=None):
     parser = argparse.ArgumentParser()
     parser.add_argument('--report', default=None)
@@ -71,7 +108,11 @@ def main(argv=None):
                         help='spec §38 cadence: commit = integration; nightly adds legacy, certificates, formal; '
                              'release adds the sandbox escape suite (all suites)')
     parser.add_argument('--timeout', type=int, default=3600)
+    parser.add_argument('--suites', default=None,
+                        help='comma-separated suite names: run only these of the profile (so that a long matrix can be '
+                             'split across jobs and merged by make_checkpoint.py --reports)')
     args = parser.parse_args(argv)
+    commit, clean = git_state()
     global PYCACHE
     import tempfile
     PYCACHE = tempfile.mkdtemp(prefix='genesis-pycache-')      # created 0700 by mkdtemp
@@ -85,6 +126,12 @@ def main(argv=None):
     suites = {k: v for k, v in suites.items() if k in keep}
     if args.quick:
         suites.pop('legacy_regression', None)
+    if args.suites:
+        want = [x.strip() for x in args.suites.split(',') if x.strip()]
+        unknown = [x for x in want if x not in suites]
+        if unknown:
+            raise SystemExit(f'not in the {args.profile} profile: {unknown}')
+        suites = {k: v for k, v in suites.items() if k in want}
     results = []
     for name, (directory, consequence) in suites.items():
         result = run_suite(name, directory, args.timeout)
@@ -110,6 +157,8 @@ def main(argv=None):
             print('\n'.join(result['log'].strip().splitlines()[-40:]), file=sys.stderr)
     summary = {
         'profile': args.profile,
+        'commit': commit, 'clean': clean,
+        'selected': sorted(suites),
         'python': sys.version.split()[0],
         'suites': [{k: v for k, v in r.items() if k != 'log'} for r in results],
         'total_ran': sum(r['ran'] for r in results),

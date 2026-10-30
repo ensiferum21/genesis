@@ -67,6 +67,9 @@ def main(argv=None):
     parser.add_argument('--parent', default=None, help='parent checkpoint zip (its SHA-256 is recorded)')
     parser.add_argument('--parent-ref', default=None, help='git ref of the parent checkpoint commit')
     parser.add_argument('--suffix', default='', help='name suffix for a follow-up checkpoint of the same batch')
+    parser.add_argument('--reports', nargs='+', default=None,
+                        help='use these release-profile reports of the same clean commit (run_test_matrix.py --suites) '
+                             'instead of running the matrix here; they are merged and must cover every suite')
     parser.add_argument('--timeout', type=int, default=None,
                         help="per-suite timeout in seconds passed to run_test_matrix.py (its default otherwise)")
     args = parser.parse_args(argv)
@@ -78,14 +81,25 @@ def main(argv=None):
     with tempfile.TemporaryDirectory() as tmp:
         tmp = Path(tmp)
         report = tmp / 'test_report.json'
-        cmd = [sys.executable, str(ROOT / 'scripts' / 'run_test_matrix.py'), '--report', str(report)]
-        if args.quick:
-            cmd.append('--quick')
-        if args.timeout:
-            cmd += ['--timeout', str(args.timeout)]
-        tests = subprocess.run(cmd, cwd=ROOT)
-        if tests.returncode != 0:
-            raise SystemExit('test matrix failed; no checkpoint written')
+        if args.reports:
+            sys.path.insert(0, str(ROOT / 'scripts'))
+            import run_test_matrix as RTM
+            try:
+                merged = RTM.merge([json.loads(Path(r).read_text()) for r in args.reports], commit)
+            except ValueError as e:
+                raise SystemExit(f'the reports do not make a release matrix of this commit: {e}')
+            if not merged['all_ok']:
+                raise SystemExit('test matrix failed; no checkpoint written')
+            report.write_text(json.dumps(merged, indent=2) + '\n')
+        else:
+            cmd = [sys.executable, str(ROOT / 'scripts' / 'run_test_matrix.py'), '--report', str(report)]
+            if args.quick:
+                cmd.append('--quick')
+            if args.timeout:
+                cmd += ['--timeout', str(args.timeout)]
+            tests = subprocess.run(cmd, cwd=ROOT)
+            if tests.returncode != 0:
+                raise SystemExit('test matrix failed; no checkpoint written')
         bundle = tmp / 'source-history.bundle'
         git('bundle', 'create', str(bundle), '--all')
         archive = tmp / 'tree.tar'
