@@ -6,8 +6,10 @@
 
 Adopted on 30 Oct 2026 as a requirement on the whole system. This document says where Genesis stands against it,
 what the loop is in this repository's terms, what it may never do, the test that would show it works, and the build
-order. **State (30 Oct 2026, 22:55):** SR-a's capture and SR-b are built (`src/genesis/repair/`,
-`tests_genesis/test_repair_capture.py`); everything else is not.
+order. **State (30 Oct 2026, 23:45):** the loop is built end to end on a narrow testbed (the Foundry directive of
+23:09 asked for narrow autonomous repair first: cache eviction and order defects, and a small explicit set of related
+state-management defects), and its first benchmark, B20_R178 (SR-1a), is preregistered. See §7 for what exists,
+what has been shown, and what has not. The real obstacles of §1 (SR-1b) are not yet reachable by it.
 
 ## 1. Where Genesis stands (30 Oct 2026)
 
@@ -133,6 +135,67 @@ A study, preregistered when the loop is built. The obstacles are sealed.
 | SR-e | The protocol driver: stop, amend with disclosures, re-run, notify the Supervisor |
 | SR-1 | The study of §4 |
 | SR-2 | Later: recognising suspicious results (the META class) and routing them to ARA |
+
+## 7. As built (30 Oct 2026, 23:45): the testbed loop and SR-1a
+
+The Foundry directive (`Genesis-Ω: The Verified Adaptive Intelligence Foundry`, 30 Oct 2026, 23:09) asked for the
+loop to start narrow: cache eviction and order defects and a small explicit set of related state-management defects,
+with a shared causal obstacle model, independent verification, and enforcement of the Judge's and the Supervisor's
+protection by permissions and isolation. What exists:
+
+**The testbed** (`src/genesis/repairkernel/`, kernel side, protected):
+- six components (`targets.py`): a memo (`Scorer`), an LRU cache, a registry with a name index, a statistics cache
+  (cached total and maximum), a window with snapshots, an event log with a seen-set; each with a reference model;
+- jobs (`bench.py`): a long workload checked against the reference, checkpointed every 200 operations, stopped by a
+  crash in the component or a `Divergence`; `resume()` continues from the last checkpoint;
+- 21 planted defects (`defects.py`, sealed by its digest): 8 development, 13 held out (the history of the split is
+  disclosed in the file);
+- the independent verifier (`verify.py`, a separate process): the boundary (only the component, at most 8 lines, and
+  the static guard), the visible tests, **hidden tests** (including caching contracts: a memo must memoise, a cached
+  total must be cached), **fresh workloads from kernel seeds** (3 x 3,000 operations), and **the interrupted job
+  resumed** on a copy;
+- the Supervisor's policy (`supervisor.py`): promote only if every check passed and the scope is automatic (the
+  testbed's); a backup is kept for rollback; every decision is logged;
+- the static guard (`guard.py`): a candidate may only re-arrange what the component already does (no new imports,
+  no input/output, no reflection, no new names but the containers' own methods);
+- the isolation (`foundry.py`, `executor.py`): the research plane and the trial executor each run in a private mount
+  namespace as their own unprivileged user, without capabilities; /home, /tmp, /var/tmp, /dev/shm, /mnt, /opt and /srv
+  are covered by empty file systems; the research plane sees the source tree without `genesis/repairkernel` and can
+  write only its vault; the executor sees no verifier, catalogue or policy and can write nothing; one proposal per
+  obstacle; the research plane learns only accepted or not, the names of the checks that failed, and whether it was
+  promoted. What each party can read and write is measured (`foundry.isolation_report`), not declared.
+
+**The research plane** (`src/genesis/repair/`):
+- `capture.py`: the traceback parsed, the boundary (default-deny; the kernel and the loop itself are protected),
+  escalation;
+- `obstacle.py`, **the causal obstacle model**: the record (problem, observed failure, competing causes with
+  posteriors, missing capability, intervention, predicted effect, cost, uncertainty, evidence); one hypothesis per
+  line plus "elsewhere"; experiments (trials of the loop's own choosing) chosen by expected information about the
+  cause per operation; rising energy (a length where trials keep passing is quiet; probing moves longer); it stops only
+  when a fresh trial has failed and the entropy is below 2 bits;
+- `probe.py`: **conservation laws** mined from the component's state at every method return (pairing, coherence of a
+  cache with what it caches, bounds, index positions), exact or broken by a single method only (a defect corrupts
+  state silently long before anything fails); the first break names the method;
+- `synth.py`: line-preserving edits at the suspected methods (move, delete, comparison, arithmetic, flags,
+  constants, min/max, copies, pop ends), **homologous recombination** (a statement transplanted from a sibling method),
+  **law restoration** (invalidate a cache after its source changes; the paired update of a pairing law), searched by
+  **clonal selection with annealing**; the energy of a candidate counts the regression test's progress, the failing
+  trials it still fails, the passing trials it breaks (**negative selection**: do not attack "self"), the visible
+  tests and the broken law; among candidates that pass everything visible, the one doing no more work than the
+  original on the passing trials (**metabolic cost**: a cache-disabling "repair" does more), then the smallest;
+- `loop.py`: the episode: recognise, reproduce from the checkpoint, diagnose, regression test, synthesise, test in
+  isolation on fresh trials, propose (verify and promote, kernel side), resume, retain in the vault (JSON lines:
+  operator, evidence, signature, law, missing capability, regression test); comparator arms for the benchmark;
+- `remote.py`: the research plane's end of the isolation boundary.
+
+**SR-1a** (`scripts/b20r178_repair_bench.py`, B20_R178): the benchmark of the loop on the 13 held-out defects x 3
+jobs, against 'nolocal', 'random', 'enum' (conventional generate-and-validate) and 'retrieval' at the same budget of
+300 candidate evaluations, with the controls of §4 (no defect; a fault inside the kernel), retention and reuse, and
+the isolation measured. Its criteria are in the script.
+
+**Not built**: SR-1b (the real obstacles of §1 at their pre-repair commits); repair of research-plane modules of the
+repository (the policy keeps that scope for the human Supervisor); SR-e (the protocol driver for preregistered
+studies); SR-2 (suspicious results); the capability dependency graph and AOR-1 of the Foundry directive.
 
 ## 6. Prior art
 

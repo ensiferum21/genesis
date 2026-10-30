@@ -1,0 +1,272 @@
+{
+ "study": "B20_R178",
+ "rehearsal": true,
+ "script_sha256": "fc02f10306a2ef9f8cb0556e9ce21c60e6bdbf2c231384ac7b7fe86e72cc4b12",
+ "defects_sha256": "bcadeca3bd59dfbe31ce639492c32c30353a9363fba7107026d4f17a8941de63",
+ "commit": "",
+ "heldout_used": [
+  "M1",
+  "L2",
+  "S1",
+  "W2",
+  "L3",
+  "R1",
+  "S2",
+  "G2"
+ ],
+ "budget": 300,
+ "arms": [
+  "loop",
+  "novault",
+  "nolocal",
+  "random",
+  "enum",
+  "retrieval"
+ ],
+ "job_seeds": [
+  1,
+  2,
+  3
+ ],
+ "verdict": "MILESTONE_DEMONSTRATED",
+ "isolation_ok": true,
+ "controls_ok": true,
+ "controls": [
+  {
+   "key": "p2/clean-log/4/loop",
+   "outcome": "no-obstacle",
+   "proposals": 0,
+   "source_changed": false
+  },
+  {
+   "key": "p2/fault-log/4/loop",
+   "outcome": "escalated",
+   "proposals": 0,
+   "source_changed": false
+  },
+  {
+   "key": "p2/clean-lru/4/loop",
+   "outcome": "no-obstacle",
+   "proposals": 0,
+   "source_changed": false
+  },
+  {
+   "key": "p2/fault-lru/4/loop",
+   "outcome": "escalated",
+   "proposals": 0,
+   "source_changed": false
+  },
+  {
+   "key": "p2/clean-memo/4/loop",
+   "outcome": "no-obstacle",
+   "proposals": 0,
+   "source_changed": false
+  },
+  {
+   "key": "p2/fault-memo/4/loop",
+   "outcome": "escalated",
+   "proposals": 0,
+   "source_changed": false
+  },
+  {
+   "key": "p2/clean-registry/4/loop",
+   "outcome": "no-obstacle",
+   "proposals": 0,
+   "source_changed": false
+  },
+  {
+   "key": "p2/fault-registry/4/loop",
+   "outcome": "escalated",
+   "proposals": 0,
+   "source_changed": false
+  },
+  {
+   "key": "p2/clean-stats/4/loop",
+   "outcome": "no-obstacle",
+   "proposals": 0,
+   "source_changed": false
+  },
+  {
+   "key": "p2/fault-stats/4/loop",
+   "outcome": "escalated",
+   "proposals": 0,
+   "source_changed": false
+  },
+  {
+   "key": "p2/clean-window/4/loop",
+   "outcome": "no-obstacle",
+   "proposals": 0,
+   "source_changed": false
+  },
+  {
+   "key": "p2/fault-window/4/loop",
+   "outcome": "escalated",
+   "proposals": 0,
+   "source_changed": false
+  }
+ ],
+ "obstacles": 24,
+ "milestone_obstacles": [
+  "M1/1",
+  "M1/2",
+  "M1/3",
+  "L2/1",
+  "L2/2",
+  "L2/3",
+  "S1/1",
+  "S1/2",
+  "S1/3",
+  "W2/1",
+  "W2/2",
+  "W2/3",
+  "L3/1",
+  "L3/2",
+  "L3/3",
+  "R1/1",
+  "R1/2",
+  "R1/3",
+  "S2/1",
+  "S2/2",
+  "S2/3",
+  "G2/2"
+ ],
+ "per_arm": {
+  "loop": {
+   "obstacles": 24,
+   "repaired": 22,
+   "false_repairs": 0,
+   "not_repaired": 2,
+   "other_outcomes": [],
+   "equals_reference_source": 19,
+   "evaluations": 913,
+   "diagnosis_operations": 92816,
+   "research_cpu_s": 5.15,
+   "total_cpu_s": 21.11,
+   "verify_s": 11.84,
+   "wall_s": 53.74,
+   "repaired_per_total_cpu_s": 1.0421
+  },
+  "novault": {
+   "obstacles": 24,
+   "repaired": 21,
+   "false_repairs": 0,
+   "not_repaired": 3,
+   "other_outcomes": [],
+   "equals_reference_source": 18,
+   "evaluations": 1035,
+   "diagnosis_operations": 87552,
+   "research_cpu_s": 8.29,
+   "total_cpu_s": 26.21,
+   "verify_s": 5.09,
+   "wall_s": 28.83,
+   "repaired_per_total_cpu_s": 0.8011
+  },
+  "nolocal": {
+   "obstacles": 24,
+   "repaired": 16,
+   "false_repairs": 5,
+   "not_repaired": 3,
+   "other_outcomes": [],
+   "equals_reference_source": 13,
+   "evaluations": 1988,
+   "diagnosis_operations": 78800,
+   "research_cpu_s": 5.88,
+   "total_cpu_s": 23.48,
+   "verify_s": 4.62,
+   "wall_s": 24.46,
+   "repaired_per_total_cpu_s": 0.6814
+  },
+  "random": {
+   "obstacles": 24,
+   "repaired": 17,
+   "false_repairs": 4,
+   "not_repaired": 3,
+   "other_outcomes": [],
+   "equals_reference_source": 14,
+   "evaluations": 2697,
+   "diagnosis_operations": 78800,
+   "research_cpu_s": 23.3,
+   "total_cpu_s": 41.85,
+   "verify_s": 4.58,
+   "wall_s": 43.55,
+   "repaired_per_total_cpu_s": 0.4062
+  },
+  "enum": {
+   "obstacles": 24,
+   "repaired": 18,
+   "false_repairs": 3,
+   "not_repaired": 3,
+   "other_outcomes": [],
+   "equals_reference_source": 12,
+   "evaluations": 1842,
+   "diagnosis_operations": 78800,
+   "research_cpu_s": 1.17,
+   "total_cpu_s": 17.73,
+   "verify_s": 14.66,
+   "wall_s": 34.28,
+   "repaired_per_total_cpu_s": 1.0151
+  },
+  "retrieval": {
+   "obstacles": 24,
+   "repaired": 18,
+   "false_repairs": 3,
+   "not_repaired": 3,
+   "other_outcomes": [],
+   "equals_reference_source": 15,
+   "evaluations": 1392,
+   "diagnosis_operations": 78800,
+   "research_cpu_s": 1.01,
+   "total_cpu_s": 16.93,
+   "verify_s": 16.91,
+   "wall_s": 43.95,
+   "repaired_per_total_cpu_s": 1.063
+  }
+ },
+ "comparison": {
+  "nolocal": {
+   "loop_only": 6,
+   "nolocal_only": 0,
+   "p": 0.03125,
+   "verdict": "LOOP_BEATS_NOLOCAL"
+  },
+  "random": {
+   "loop_only": 5,
+   "random_only": 0,
+   "p": 0.0625,
+   "verdict": "NO_DIFFERENCE_SHOWN"
+  },
+  "enum": {
+   "loop_only": 4,
+   "enum_only": 0,
+   "p": 0.125,
+   "verdict": "NO_DIFFERENCE_SHOWN"
+  },
+  "retrieval": {
+   "loop_only": 4,
+   "retrieval_only": 0,
+   "p": 0.125,
+   "verdict": "NO_DIFFERENCE_SHOWN"
+  }
+ },
+ "reuse": {
+  "jobs": 16,
+  "grown_vault_repaired": 14,
+  "first_solution_pairs": 14,
+  "first_solution_dev_vault_mean": 1.0,
+  "first_solution_grown_vault_mean": 1.0,
+  "dev_vault_repaired": 12,
+  "grown_only": 2,
+  "dev_only": 0,
+  "p": 0.5,
+  "verdict": "REUSE_NOT_SHOWN"
+ },
+ "retention": {
+  "episodes": 24,
+  "repaired": 22,
+  "retained": 22,
+  "vault_entries_dev": 7,
+  "vault_entries_grown": 29
+ },
+ "promotions_outside_component": 0,
+ "wall_s": 296.3
+}

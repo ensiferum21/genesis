@@ -27,7 +27,8 @@ PROTECTED = (
     'src/genesis/conjecture/sealed.py', 'src/genesis/conjecture/verify.py', 'src/genesis/conjecture/wowii.py',
     'src/genesis/conjecture/invariants_ref.py', 'src/genesis/conjecture/audit.py',
     'src/genesis/frontier/manifest.py', 'src/genesis/frontier/world.py',
-    'src/genesis/repair/',                       # the loop may not repair itself (its verifier least of all)
+    'src/genesis/repair/',                       # the loop may not repair itself
+    'src/genesis/repairkernel/',                 # nor its verifier, its Supervisor policy, its testbed or executor
     'scripts/', 'tests_genesis/', 'data/', 'evidence/',
 )
 REPAIRABLE = (
@@ -46,16 +47,18 @@ def relative(path):
     return m.group(1) if m else path
 
 
-def where(path):
+def where(path, repairable=()):
+    """'protected', 'repairable' or 'outside'. `repairable` adds files a job declares repairable (a testbed's sandboxed
+    component); it never overrides protection."""
     rel = relative(path)
     if any(rel == p or (p.endswith('/') and rel.startswith(p)) or rel.startswith(p + '/') for p in PROTECTED):
         return 'protected'
-    if any(rel.startswith(p) for p in REPAIRABLE):
+    if any(rel.startswith(p) for p in REPAIRABLE) or path in repairable:
         return 'repairable'
     return 'outside'
 
 
-def _one(lines):
+def _one(lines, repairable=()):
     """One traceback block -> (frames, exception type, message)."""
     frames, i = [], 0
     while i < len(lines):
@@ -64,15 +67,15 @@ def _one(lines):
             code = lines[i + 1].strip() if i + 1 < len(lines) and lines[i + 1].startswith('    ') else ''
             rel = relative(m.group('file'))
             frames.append({'file': rel, 'line': int(m.group('line')), 'func': m.group('func'), 'code': code,
-                           'side': where(rel)})
+                           'side': where(m.group('file'), repairable)})
         i += 1
     last = [x for x in lines if x and not x.startswith(' ') and not x.startswith('Traceback')]
     head = last[-1] if last else ''
     exc, _, msg = head.partition(':')
-    return frames, exc.strip(), msg.strip()
+    return frames, exc.strip().split('.')[-1], msg.strip()
 
 
-def parse(text):
+def parse(text, repairable=()):
     """The last (chained) traceback in `text` as a Failure dict, or None if there is none."""
     lines = text.splitlines()
     starts = [i for i, x in enumerate(lines) if x.startswith('Traceback (most recent call last):')]
@@ -88,7 +91,7 @@ def parse(text):
         block = lines[starts[k]:end]
         while block and (not block[-1].strip() or block[-1].strip() in _CHAIN):
             block = block[:-1]
-        blocks.append(_one(block))
+        blocks.append(_one(block, repairable))
     frames, exc, msg = blocks[-1]
     return {'exception': exc, 'message': msg, 'frames': frames,
             'causes': [{'exception': e, 'message': m, 'frames': f} for f, e, m in blocks[:-1]]}
@@ -116,9 +119,13 @@ def signature(failure):
             'code': _blank(f['code']) if f else None}
 
 
-def escalate(failure):
+def escalate(failure, validation=(), repairable_exists=False):
     """Whether the obstacle is the Supervisor's: its innermost Genesis frame is protected, or nothing in it is
-    repairable."""
+    repairable. A job's own validation exception (`validation`, such as a testbed's Divergence) is raised by the
+    job's checker on purpose: it says the component's output was wrong, not that the checker failed, so it escalates
+    only if the job declares no repairable file (`repairable_exists`)."""
+    if failure['exception'] in validation:
+        return not repairable_exists
     rep, prot = innermost(failure, 'repairable'), innermost(failure, 'protected')
     if rep is None:
         return True

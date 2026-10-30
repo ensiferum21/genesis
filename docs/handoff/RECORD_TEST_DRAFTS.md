@@ -1566,3 +1566,60 @@ class RecordB20R177(unittest.TestCase):
         self.assertEqual(self.s['valid'], got['valid'] and self.s['pins_ok'] and not self.s['audit_hits'])
         self.assertEqual(list(S.verdict(dict(got, valid=self.s['valid']))), [self.s['verdict'], self.s['failed']])
 ```
+
+## RecordB20R178 (SR-1a; append to `tests_genesis/test_repair_bench_study.py`)
+
+Dry-run on the rehearsal (`--rehearse`, development defects only) before the sealed run.
+
+```python
+R178 = ROOT / 'evidence' / 'repair_bench_b20r178'
+
+
+class RecordB20R178(unittest.TestCase):
+    """The record of SR-1a (B20_R178) on its evidence: the script and the sealed catalogue; the verdicts and tables
+    recomputed from the rows and the isolation report; every promoted component source verified again by the kernel
+    verifier on a rebuilt job; no control proposed or changed anything; nothing outside a job's component promoted."""
+    DIR = R178
+
+    @classmethod
+    def setUpClass(cls):
+        cls.result = json.loads((cls.DIR / 'result.json').read_text())
+        cls.rows = [json.loads(x) for x in (cls.DIR / 'rows.jsonl').read_text().splitlines() if x.strip()]
+        cls.episodes = [json.loads(x) for x in (cls.DIR / 'episodes.jsonl').read_text().splitlines() if x.strip()]
+        cls.iso = json.loads((cls.DIR / 'isolation.json').read_text())
+
+    def test_the_script_and_the_catalogue(self):
+        if self.DIR == R178:
+            self.assertEqual(digest(ROOT / 'scripts/b20r178_repair_bench.py'), SHA256)
+        self.assertEqual(self.result['defects_sha256'], S.DEFECTS_SHA256)
+
+    def test_the_verdicts_recompute(self):
+        got = S.analyse(self.rows, self.iso, self.result['heldout_used'], self.result['retention']['vault_entries_dev'],
+                        self.result['retention']['vault_entries_grown'])
+        for k in ('verdict', 'isolation_ok', 'controls_ok', 'obstacles', 'milestone_obstacles', 'per_arm',
+                  'comparison', 'reuse', 'retention', 'promotions_outside_component'):
+            self.assertEqual(json.loads(json.dumps(got[k])), self.result[k], k)
+
+    def test_every_promoted_source_verifies_again(self):
+        from genesis.repairkernel import verify as VF
+        rows = {r['key']: r for r in self.rows}
+        n = 0
+        with tempfile.TemporaryDirectory() as d:
+            for e in self.episodes:
+                r = rows[e['key']]
+                if not r['promoted']:
+                    self.assertIsNone(e['final_source'], e['key'])
+                    continue
+                job, _ = BN.make(r['name'], r['seed'], Path(d) / e['key'].replace('/', '_'))
+                self.assertEqual(job.run()['op'], r['interrupted_at'])
+                v = VF.verify(job.dir, job.target, job.seed, job.n_ops, job.every, e['final_source'])
+                self.assertTrue(v['accepted'], e['key'])
+                n += 1
+        self.assertGreater(n, 0)
+
+    def test_no_control_proposed_or_changed_anything(self):
+        controls = [r for r in self.rows if r['phase'] == 2]
+        self.assertEqual(len(controls), 12)
+        for r in controls:
+            self.assertTrue(S.control_passes(r), r['key'])
+```
