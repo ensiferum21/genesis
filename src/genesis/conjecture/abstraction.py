@@ -249,7 +249,11 @@ class TemplateRep:
         return g
 
     def mutate(self, g, rng):
-        h = g.copy()
+        """One step of a slot (or of every slot), kept within [lo, max_n]. A slot above max_n can only build a graph
+        above the cap, and without the upper bound a walk that accepts invalid genomes (an annealer whose current
+        genome is invalid accepts any other invalid one) drifts upward under the multiplicative steps until int64
+        overflows (B20_R158's second attempt, 30 Oct 2026)."""
+        h = np.minimum(g.copy(), self.max_n)
         k = rng.integers(len(h))
         r = rng.random()
         if r < 0.5:
@@ -259,7 +263,7 @@ class TemplateRep:
         else:
             f = rng.choice([0.5, 1.5, 2.0])
             h = np.maximum(self.lo, np.round(h * f).astype(np.int64))
-        return h
+        return np.maximum(self.lo, np.minimum(h, self.max_n))
 
     def crossover(self, a, b, rng):
         mask = rng.random(len(a)) < 0.5

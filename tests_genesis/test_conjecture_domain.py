@@ -305,6 +305,22 @@ class Abstraction(unittest.TestCase):
                              AB.parse(AT.GammaRep(30)._build(('Kab', 2, 9)))])
         self.assertEqual([v for _, v in two['slots']], [5])                  # the agreeing size stays fixed
 
+    def test_template_genomes_stay_bounded(self):
+        """B20_R158's second attempt: an annealer whose current genome is invalid accepts any invalid candidate, so a
+        walk can keep multiplying a slot; slots are now kept within [lo, max_n] and no overflow can occur."""
+        import numpy as np
+        from genesis.conjecture import abstraction as AB, attack as AT
+        A = AT.GammaRep(30)._build(('join', ('E', 3), ('union', ('K', 4), ('C', 5))))
+        R = AB.TemplateRep(AB.generalise([AB.parse(A)]))
+        rng = np.random.default_rng(5)
+        g = np.array([10 ** 6, 3, 4], dtype=np.int64)              # far above the cap, as a drifting walk reaches
+        for _ in range(20000):                                     # accept every step, valid or not
+            g = R.mutate(g, rng)
+            self.assertTrue(np.all(g <= R.max_n) and np.all(g >= R.lo))
+        g2 = np.array([3, 4, 5], dtype=np.int64)
+        same = [R.mutate(g2, np.random.default_rng(s)) for s in range(50)]
+        self.assertTrue(all(np.all(x <= 2 * 5 + 3) for x in same))  # small genomes are untouched by the bound
+
     def test_the_domain_abstracts_converged_structures(self):
         from genesis.conjecture.domain import ConjectureDomain
         from genesis.frontier.engine import Frontier

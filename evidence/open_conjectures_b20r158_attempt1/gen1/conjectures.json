@@ -1,0 +1,56 @@
+{
+ "kept": 11,
+ "labels": {
+  "C3ef1915c74": null,
+  "C3ef376fa6c": null,
+  "C8389008f22": null,
+  "C899c6b0663": "rediscovery of bound 29 (refuted-2024)",
+  "Ca7e595015c": null,
+  "Caa48e96e28": null,
+  "Cac1a10391f": null,
+  "Ce279d9290c": "rediscovery of Merris 1998 (proved)",
+  "Cfd030f23c9": "rediscovery of bound 10 (proved)"
+ },
+ "posed": {
+  "C3ef1915c74": [
+   "sqrt((5*d^2 + 3*m^3/d)/2)",
+   "vertex"
+  ],
+  "C3ef376fa6c": [
+   "sqrt((1*d^3/m + 3*m^3/d)/1)",
+   "vertex"
+  ],
+  "C8389008f22": [
+   "sqrt((3*d^2 + 5*m^3/d)/2)",
+   "vertex"
+  ],
+  "C899c6b0663": [
+   "sqrt((1*m^2 + 3*m^3/d)/1)",
+   "vertex"
+  ],
+  "Ca7e595015c": [
+   "sqrt((1*m^2 + 7*m^3/d)/2)",
+   "vertex"
+  ],
+  "Caa48e96e28": [
+   "sqrt((3*m^2 + 5*m^3/d)/2)",
+   "vertex"
+  ],
+  "Cac1a10391f": [
+   "sqrt((1*d*m + 3*m^3/d)/1)",
+   "vertex"
+  ],
+  "Ce279d9290c": [
+   "(1*d + 1*m)/1",
+   "vertex"
+  ],
+  "Cfd030f23c9": [
+   "sqrt((1*d^2 + 3*d*m)/1)",
+   "vertex"
+  ]
+ },
+ "withheld": [
+  "sqrt((2*d^2 + 2*m^3/d)/1)",
+  "sqrt((3*m^2 + 1*d^3/m)/1)"
+ ]
+}

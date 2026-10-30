@@ -282,6 +282,9 @@ needs people: a reviewer, a statistician, an independent custodian on its own ma
         not GBFS (19 refutations to its 14), CEM, UCB or uniform; Γ-built refutations above 40 vertices were beyond
         the preregistered second check (descriptively all confirmed: the joint arms at 25–26 of 33, level with each
         other). B20_R158 (F5) started at 10:44:29, before the checkpoint window.
+      - **B20_R158's first run stopped** (exit 1 at 10:50) on a template overflow (B20R158-TEMPLATE). Repaired;
+        B20_R158 amended a second time before any result was looked at; it runs again after the checkpoint B20_R169,
+        which started at 10:56 on CPU 0 (CPU 0 idle 10:50–10:56, disclosed).
   26c. **Daniel's directive of 27 Oct 2026, 19:55 is adopted**: `docs/OMEGA_FRONTIER.md`, written in detail for
       handoff at his request (20:01). Genesis works by divergence and convergence (imagine, mutate, recombine,
       branch out, extrapolate discovery curves, detect convergence, allocate), without handholding. The

@@ -555,6 +555,10 @@ class RecordB20R141(unittest.TestCase):
 **Updated on 28 Oct 2026, 11:10 SGT, for the amendment (`ff9eada`): the script's digest is the amended one, and the
 audit re-derivation reads the research plane at `ff9eada`.**
 
+**Updated again on 30 Oct 2026, 11:15 SGT, for the second amendment (after the first attempt crashed): the script's
+digest is the second amendment's (`f44333c3…c06c`), and the audit re-derivation reads the research plane at the
+second amendment commit (`AMENDMENT` in the test file). Nothing else in the draft changes.**
+
 Written on 28 Oct 2026, 09:40 SGT, from the script only (`703b2ee`, sha256 `50d2de64…f9b5`), before the study ran.
 The file already has `json`, `unittest`, `ROOT` and `S`; the audit re-derivation reads the research plane as it
 was at the preregistration commit through `git show`, because the branch head has moved on.
@@ -580,7 +584,7 @@ class RecordB20R158(unittest.TestCase):
     def test_the_script(self):
         import hashlib
         self.assertEqual(hashlib.sha256((ROOT / 'scripts' / 'b20r158_open_conjectures.py').read_bytes()).hexdigest(),
-                         '6b9652d3fd21130820c42fe955ea7e4fce0e11259b412331ba216bd722687b14')
+                         'f44333c3355607da31fd54d10bf6444ecc3a753d8d431b12d7dd9ea15f85c06c')
 
     def test_validity(self):
         self.assertEqual(len(self.gens), S.G)
@@ -601,7 +605,7 @@ class RecordB20R158(unittest.TestCase):
             files = []
             for path in AU.research_plane(Path(tmp)):
                 rel = path.relative_to(tmp).as_posix()
-                out = subprocess.run(['git', '-C', str(ROOT), 'show', f'ff9eada:{rel}'], capture_output=True)
+                out = subprocess.run(['git', '-C', str(ROOT), 'show', f'{AMENDMENT}:{rel}'], capture_output=True)
                 if out.returncode != 0:                          # a module that did not exist then
                     continue
                 path.parent.mkdir(parents=True, exist_ok=True)

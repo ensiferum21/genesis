@@ -639,6 +639,9 @@ problems no level has seen, and Genesis has not shown that yet.
   in detail for handoff at his request of 20:01; F1 and F2 next on CPU 1; B20_R156–R158 reserved.
 - 27 Oct 2026, 20:40: the proving test adopted (§0f; B20_R159). F2 started: the sealed Laplacian set
   transcribed and tiered, with exact certificates (`src/genesis/conjecture/`).
+- 30 Oct 2026, 11:15: B20_R158 (F5)'s first run stopped after six minutes on a defect in template mutation (slot
+  values unbounded; int64 overflow). Repaired; B20_R158 amended a second time before any result was looked at; it runs
+  after the checkpoint B20_R169, which is running.
 - 30 Oct 2026, 10:50: B20_R157 (F4) recorded: PARTIAL. The Frontier beats NRPA on the sealed Laplacian bounds but
   not GBFS, CEM, UCB or uniform allocation; descriptively, its Γ-built refutations above 40 vertices (beyond the
   preregistered Sturm check) put the engine at 25–26 of 33, level across allocators. B20_R158 (F5) is running.

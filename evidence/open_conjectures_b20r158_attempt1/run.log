@@ -1,0 +1,35 @@
+/home/claude/f5b-wt/src/genesis/conjecture/abstraction.py:261: RuntimeWarning: invalid value encountered in cast
+  h = np.maximum(self.lo, np.round(h * f).astype(np.int64))
+/home/claude/f5b-wt/src/genesis/conjecture/abstraction.py:261: RuntimeWarning: invalid value encountered in cast
+  h = np.maximum(self.lo, np.round(h * f).astype(np.int64))
+/home/claude/f5b-wt/src/genesis/conjecture/abstraction.py:261: RuntimeWarning: invalid value encountered in cast
+  h = np.maximum(self.lo, np.round(h * f).astype(np.int64))
+/home/claude/f5b-wt/src/genesis/conjecture/abstraction.py:261: RuntimeWarning: invalid value encountered in cast
+  h = np.maximum(self.lo, np.round(h * f).astype(np.int64))
+Traceback (most recent call last):
+  File "/home/claude/f5b-wt/scripts/b20r158_open_conjectures.py", line 394, in <module>
+    sys.exit(main())
+             ~~~~^^
+  File "/home/claude/f5b-wt/scripts/b20r158_open_conjectures.py", line 321, in main
+    rec[arm] = run_arm(arm, posed, b_per, library, templates, gdir / f'state_{arm}.json',
+               ~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                       deadline if made else deadline + 10 ** 9)
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/claude/f5b-wt/scripts/b20r158_open_conjectures.py", line 237, in run_arm
+    status = e.run(CHUNK)
+  File "/home/claude/f5b-wt/src/genesis/frontier/engine.py", line 170, in run
+    improved = self.advance(arg)
+  File "/home/claude/f5b-wt/src/genesis/frontier/engine.py", line 117, in advance
+    pts, arts = self.domain.step(d['problem'], d, b['seed'], b['t'], self.quantum)
+                ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/claude/f5b-wt/src/genesis/conjecture/domain.py", line 142, in step
+    improved = r.advance(int(quantum))
+  File "/home/claude/f5b-wt/src/genesis/conjecture/attack.py", line 540, in advance
+    s, g, A = next(self.gen)
+              ~~~~^^^^^^^^^^
+  File "/home/claude/f5b-wt/src/genesis/conjecture/attack.py", line 400, in anneal
+    cand = rep.mutate(cur, rng)
+  File "/home/claude/f5b-wt/src/genesis/conjecture/abstraction.py", line 258, in mutate
+    h[k] = max(self.lo[k], int(round(h[k] * rng.choice([0.5, 1.5, 2.0]))))
+    ~^^^
+OverflowError: Python int too large to convert to C long

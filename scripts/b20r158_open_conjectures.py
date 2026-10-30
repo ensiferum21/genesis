@@ -79,6 +79,25 @@ that attempt was killed by the memory limit. This study uses the same code, so i
   * `main` on another data seed gave the same summary from `703b2ee` with only the fix and from the amendment
     commit.
 The pins below are the amended modules. No generation of this study's data seed has run.
+
+**Second amendment (30 Oct 2026, 11:15 SGT, after a first attempt crashed and before any of its results was looked
+at; disclosed).** The first attempt, from `ff9eada` (`/home/claude/f5b-wt`), stopped after six minutes with exit 1 in
+generation 1's FULL arm. The cause was a defect in `conjecture/abstraction.py`. `TemplateRep.mutate` left a template's
+slot values unbounded. An annealer whose current genome is invalid accepts any other invalid candidate, so the walk
+drifted upward under the multiplicative steps until int64 overflowed (`OverflowError`).
+  * The repair: slot values are kept within [lo, max_n]. A slot above max_n can only build a graph above the cap, so
+    a trajectory changes only after a step that would have left that range. Before the repair, such a step made an
+    invalid genome; now it makes the nearest bounded one.
+  * The study runs from the second amendment commit. Its only other change to a pinned module since `ff9eada` is
+    `frontier/allocate.py`: Foundry G2's forecast calibration and G4's state feature, both off by default. With them,
+    `allocate.py` imports two new modules, `frontier/calibrate.py` and `frontier/statefeat.py`. Main on two other
+    data seeds gave byte-identical summaries from `ff9eada` with only the repair and from the second amendment
+    commit:
+      - seed 991001, b_per 1,500 (the design test's settings);
+      - seed 991002, b_per 20,000.
+  * The first attempt's files are kept in `evidence/open_conjectures_b20r158_attempt1/`. Only its log's traceback was
+    read, and the files are not used. Every arm runs again, in a fresh output directory.
+The pins below are the second amendment's modules. Nothing of this study's results has been looked at.
 """
 import hashlib
 import json
@@ -107,7 +126,7 @@ PINNED = {             # `pins()` at preregistration; checked at run time
     'frontier/direction.py': '3b54f061f5979b6527e75785a7694c47bb19ac61ac8dd64ff9aa47ee17416940',
     'frontier/curves.py': 'e531ef807bad4007e6bc04071fd3173d1eacfd98b53f26780622d9b328caa0a9',
     'frontier/converge.py': 'fec005b93be9b5e5320c5a587c8291ead0b2d9028514779ab424cbbda9a8a956',
-    'frontier/allocate.py': 'fca1f97867264963539f533831cfbb6c8384501dc4007e2c948d7e2aaea53550',
+    'frontier/allocate.py': '5518affe5f521d20288d2f1982f2016efe9641222954e2782d6473b7be07d9e9',
     'frontier/engine.py': 'bbea0852b1ecaec56ffa4ac669a6ef5e1375f47b5fcb4f71289af62c8b0ef150',
     'frontier/manifest.py': 'c9fb74568982cb8c554311559eba29d2c7fc6c30194f99229a71b63ac54a2a46',
     'frontier/procedure.py': '866324a74ee4f0a0e21c28ff72ef1667508408551c9b1f11f5198a2d32347638',
@@ -115,7 +134,7 @@ PINNED = {             # `pins()` at preregistration; checked at run time
     'conjecture/graphs.py': 'f84059118cf6d74a8ca218fefc98593110e5634353655323b2b108fbca42a972',
     'conjecture/attack.py': '59c4cdb6e5517abd9e3b6ba2642f66893db6fc17b5aab3e2d6983b6cfc5d5ef8',
     'conjecture/domain.py': '0671ad30f0deb234b202fa830f0af4f105bd26c5b6de4600f4c7ad26ea8760bf',
-    'conjecture/abstraction.py': '5134dd21cc2e478d419621f2a0dc5b220339817bc4df427e48139af7501e5725',
+    'conjecture/abstraction.py': 'f9ab4ea8251ebb53a796e2e19cfcc9fea9fc165c95bb7de2b7e2afd941a79fdc',
     'conjecture/generate.py': '386d17bc934b6959e5ee7dc6e96cf9d7f0e742b8854dd6ecf2e6596cb3b6644e',
     'conjecture/sealed.py': 'ae7d429c76e12171f9918213eaef9c33d83a1ffbd7d905953b9a79d129f41bcf',
     'conjecture/verify.py': '712c5fc1ed0c4404ac2f423c12cb7356cf9e9a90b305e19ebd293b5ec2cc0706',

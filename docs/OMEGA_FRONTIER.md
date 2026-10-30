@@ -942,9 +942,13 @@ commit through `git show`.
    13:30 UTC from `/home/claude/r167-wt` at `33e8905` and ended at 17:15 UTC (three slices). The slice runner is
    `/home/claude/run_slice.sh` (WORKTREE SCRIPT OUTPUT LOG; committed nowhere: it cds into the worktree, pins CPU 0
    with taskset, and logs RUNTREE/START/END to `/home/claude/chain.log`).
-5c. **B20_R158 (F5)**: running from 30 Oct 2026, 10:44:29 SGT, from `/home/claude/f5b-wt` at `ff9eada`, brought before
-   the checkpoint window so that CPU 0 was not idle while B20_R157 was recorded.
-6. **A checkpoint window** (B20_R169), after B20_R158: the release matrix and the checkpoint need CPU 0 free of studies (the
+5c. **B20_R158 (F5): its first run stopped (exit 1, 30 Oct 2026, 10:44–10:50 SGT) on a template overflow**
+   (B20R158-TEMPLATE in `docs/BLOCKING_DEFECTS.md`). It is amended a second time before any result was looked at
+   (the repair; new pins; byte-identical summaries from `ff9eada` with the repair and from the amendment commit on two
+   other data seeds) and runs again in full, after the checkpoint, from a clean worktree of the second amendment
+   commit (`/home/claude/f5c-wt`). The first run's files: `evidence/open_conjectures_b20r158_attempt1/` (not used).
+   CPU 0 was idle 10:50–10:56 while the checkpoint was prepared (disclosed).
+6. **A checkpoint window** (B20_R169): running from 30 Oct 2026, 10:56 SGT (`make_checkpoint` in a single-branch clone `/home/claude/ckpt169` at `492412c`, on CPU 0), before B20_R158's second run: the release matrix and the checkpoint need CPU 0 free of studies (the
    sandbox suite); the last checkpoint is B20_R148.
 7. **B20_R158 (F5), AMENDED before it ran (`ff9eada`)**, from a clean worktree at `ff9eada`. The old
    `/home/claude/f5-wt` at `703b2ee` must not be used.
