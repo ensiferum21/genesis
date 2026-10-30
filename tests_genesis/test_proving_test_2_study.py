@@ -25,8 +25,8 @@ sys.path.insert(0, str(ROOT / 'scripts'))
 import b20r177_proving_test_2 as S  # noqa: E402
 import b20r159_proving_test as P1  # noqa: E402
 
-PREREGISTRATION = 'a7303de'         # the commit that preregistered the script
-SHA256 = '588f3545ff120b844991260b4a3aaeeb794e9cc2885d7940ef107157eadc3f14'
+PREREGISTRATION = '25eadb7'         # the amendment's commit, the study's run tree (preregistered at a7303de)
+SHA256 = '9da64f5e8da1a61d52eea0ba0d29129c43bbaa279a0bd0a75af0ff10d546b557'
 
 A_TEST = {'a1': ('d + 1', 'vertex'), 'a2': ('2*d', 'vertex')}
 B_TEST = {'s1': 'alpha <= max_degree', 's2': 'radius <= diameter'}

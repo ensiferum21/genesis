@@ -1493,7 +1493,8 @@ json.dump({{'rc': rc, 'summary': summary, 'search': ms, 'guard': gd, 'f6': f6, '
 
 ## RecordB20R177 (PT-2; append to `tests_genesis/test_proving_test_2_study.py`)
 
-Written on 30 Oct 2026, with the script, before the study ran: RecordB20R159 with the per-bound gate (three
+Written on 30 Oct 2026, with the script, before the study ran (amended at `25eadb7` after the first attempt
+crashed: the test file's `SHA256` is the amendment's): RecordB20R159 with the per-bound gate (three
 predecessor runs on A, A' and the discovery in A'). It was dry-run on a rehearsal output made through the registered
 path on the design tests' invented families (the posing functions patched). It uses the test file's `SHA256` constant
 and needs `json`, `Path`, `unittest`, `ROOT` and `S`.

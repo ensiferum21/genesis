@@ -1534,9 +1534,10 @@
       },
       "B20_R177": {
         "commits": [
-          "a7303de"
+          "a7303de",
+          "25eadb7"
         ],
-        "result": "Preregistered (DEV): PT-2, the proving test again with the inadequacy gate judged bound by bound (Daniel: Do the best, 30 Oct 20:06; the builder's choice after seeing PT-1, disclosed). PT-1's code, families, constants and pins with fresh seeds; the predecessor runs three times on A; A' = bounds none certified; the discovery must be in A'. Expectation NOT_PROVED_OUT. Runs after B20_R175 (about 6.5 h)"
+        "result": "Preregistered (DEV): PT-2, the proving test again with the inadequacy gate judged bound by bound (Daniel: Do the best, 30 Oct 20:06; the builder's choice after seeing PT-1, disclosed). PT-1's code, families, constants and pins with fresh seeds; the predecessor runs three times on A; A' = bounds none certified; the discovery must be in A'. Expectation NOT_PROVED_OUT. Runs after B20_R175 (about 6.5 h). First attempt 30 Oct 20:23-21:04 stopped (exit 1) in part 3 replay: defect B20R177-LIBRARY, repaired; amended at 25eadb7 (new pin for conjecture/library.py); re-runs from scratch"
       },
       "B20_R175": {
         "commits": [
