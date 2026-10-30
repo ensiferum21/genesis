@@ -18,7 +18,7 @@ import b20r174_search_vs_random as S  # noqa: E402
 from genesis.candidate_kinds import mcx3 as K3  # noqa: E402
 from genesis.common import digest  # noqa: E402
 
-PREREGISTRATION = None              # the commit that preregistered the script (set after it)
+PREREGISTRATION = 'bc57958'         # the commit that preregistered the script
 
 
 def fake_runner(cfg, task, seed, budget):
@@ -45,6 +45,18 @@ class Design(unittest.TestCase):
         self.assertEqual(w['C0_1'], R173.candidate()[0])
         for cfg in w.values():
             self.assertTrue(K3.is_lambda0(K3.parse(cfg['prog'])))
+
+    def test_the_script_at_the_preregistration_commit(self):
+        import hashlib
+        import subprocess
+        try:
+            out = subprocess.run(['git', '-C', str(ROOT), 'show', f'{PREREGISTRATION}:scripts/b20r174_search_vs_random.py'],
+                                 capture_output=True, timeout=60)
+        except (OSError, subprocess.SubprocessError):
+            return
+        if out.returncode == 0:
+            self.assertEqual(hashlib.sha256(out.stdout).hexdigest(),
+                             '842a9d730182a23b5c94790c81b858f1b3e70704b0b9a09d8f2e4122e5302924')
 
     def test_the_random_arm(self):
         from genesis.domains import adapter

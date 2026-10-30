@@ -1524,7 +1524,9 @@
         "result": "Preregistered (DEV; experiment A, the vertical slice): a sense synthesised by cross-validated search on 40 training graphs of five 2,000-vertex families chooses between REX and C0_1 per graph, its CPU charged to the chosen engine; P1 against the best fixed engine, P2 against the builder hand features (B20_R105), Holm. Expectation BEATS_FIXED_ONLY. Runs after B20_R173. Ran 30 Oct 07:25-07:38 SGT from /home/claude/r136-wt (6bb39ab). Recorded: NOT_SHOWN (valid): FIXED is C0_1; SENSE (m / q90(deg)) - FIXED +0.087% (p_Holm 0.0009, below material 0.1%); SENSE - HAND -0.054%. Record docs/checkpoints/B20_R136_RECORD.md"
       },
       "B20_R174": {
-        "commits": [],
+        "commits": [
+          "bc57958"
+        ],
         "result": "Preregistered (DEV): B20_R151's three Lambda0 ceiling winners (fixed) against three random-sampling arms of the L0 language at matched evaluations (480 + 16, the search's final rule) on fresh planar2000 splits; P1 on 24 fresh +-1 planar graphs (Wilcoxon, material 0.1%, replicate permutation test). Expectation NOT_SHOWN, read RANDOM_MATCHES_SEARCH. Runs after B20_R172"
       },
       "B20_R144": {
