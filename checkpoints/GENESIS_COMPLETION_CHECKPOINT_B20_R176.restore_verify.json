@@ -1,0 +1,25 @@
+{
+ "zip": "GENESIS_COMPLETION_CHECKPOINT_B20_R176.zip",
+ "zip_sha256": "43d8621b74f21a7c5c19e3a4316df34a9360d9686e6ecf14811677e4358fbd81",
+ "bytes": 82429873,
+ "manifest_entries": 7079,
+ "manifest_mismatches": [],
+ "unlisted_members": [],
+ "commit_ok": true,
+ "tree_ok": true,
+ "files_tracked": 7077,
+ "files_archived": 7077,
+ "archive_vs_clone_mismatches": [],
+ "tracked_not_archived": [],
+ "record": {
+  "batch": 20,
+  "commit": "2e7fd2f98d58d1077940102d5f5f06387e56e665",
+  "tree": "75b4d5bc513cf37e31eab831188a7ee413152aa2",
+  "created_utc": "2026-10-30T16:11:19.692856+00:00",
+  "parent_checkpoint": {
+   "name": "GENESIS_COMPLETION_CHECKPOINT_B20_R169.zip",
+   "sha256": "dcd5a0fdbcd6a40286cfd3ae4d100d1334f8a7a0bdd5214cd74e0109e3de7112"
+  }
+ },
+ "matrix": null
+}
