@@ -669,7 +669,7 @@
    "id": "B20_R159",
    "kind": "study",
    "line": "frontier",
-   "notes": "docs/OMEGA_FRONTIER.md section 7b; family A candidates: Laplacian bounds 18, 21, 24, 30, 40 (held out of F4 and F5); family B candidates: Graffiti conjectures formalised in google-deepmind/formal-conjectures; PROVED_OUT only if all five parts pass; 28 Oct 00:40: family B transcribed and posed (B20_R161); an open design question for part 1 recorded for Daniel (section 7b); 28 Oct 00:53: Daniel decided part 1's mechanisms: only library learning over Gamma and operators acting on Gamma's operations (nothing handed over); the other two excluded | 30 Oct 2026: preregistered after F4 and F5, the open items fixed with reasons (templates do not count for part 1); runs after B20_R174, about 6 h",
+   "notes": "docs/OMEGA_FRONTIER.md section 7b; family A candidates: Laplacian bounds 18, 21, 24, 30, 40 (held out of F4 and F5); family B candidates: Graffiti conjectures formalised in google-deepmind/formal-conjectures; PROVED_OUT only if all five parts pass; 28 Oct 00:40: family B transcribed and posed (B20_R161); an open design question for part 1 recorded for Daniel (section 7b); 28 Oct 00:53: Daniel decided part 1's mechanisms: only library learning over Gamma and operators acting on Gamma's operations (nothing handed over); the other two excluded | 30 Oct 2026: preregistered after F4 and F5, the open items fixed with reasons (templates do not count for part 1); runs after B20_R174, about 6 h | started 30 Oct 2026, 19:24:33 SGT, from the clean worktree /home/claude/pt1-wt at a775227",
    "outcome": null,
    "output": "evidence/proving_test_b20r159",
    "positive": null,
@@ -680,7 +680,7 @@
     "cpu0_hours": 6.0
    },
    "script": "scripts/b20r159_proving_test.py",
-   "status": "queued",
+   "status": "running",
    "title": "PT-1, the proving test (Daniel, 27 Oct 2026, 20:22): an unfamiliar mathematical family where Genesis's representation is inadequate (inadequacy gate); without the missing concept given, (1) a useful new representation, (2) a nontrivial consequence, (3) the procedure extracted, (4) its independent use in another family, (5) the improved inventor beats its predecessor at matched total compute",
    "unlocks": []
   },
@@ -884,7 +884,10 @@
    "unlocks": []
   },
   "B20_R174": {
-   "artifacts": [],
+   "artifacts": [
+    "evidence/search_vs_random_b20r174",
+    "docs/checkpoints/B20_R174_RECORD.md"
+   ],
    "committed": true,
    "depends_on": [
     "B20_R173",
@@ -895,9 +898,9 @@
    "kind": "study",
    "line": "engine-invention",
    "notes": "from B20_R173's amended record (7 of 47 random L0 engines would also have been released); preregistered 30 Oct 2026; runs after B20_R172 (about 3.5 h) | started 30 Oct 2026, 15:48:21 SGT, from the clean worktree /home/claude/r174-wt at bc57958",
-   "outcome": null,
+   "outcome": "NOT_SHOWN, RANDOM_MATCHES_SEARCH (valid): on 24 fresh +-1 planar graphs the search winners +1.092% over REX, the random winners +1.097% (P1 p 0.40, permutation p 0.55); the best random winner beat C0_1 (B20_R173's released engine) by 0.27% (p 0.0004)",
    "output": "evidence/search_vs_random_b20r174",
-   "positive": null,
+   "positive": false,
    "preregistered": "sha256 842a9d730182a23b5c94790c81b858f1b3e70704b0b9a09d8f2e4122e5302924 (the preregistration commit)",
    "priority": 6,
    "requires": [],
@@ -905,7 +908,7 @@
     "cpu0_hours": 3.5
    },
    "script": "scripts/b20r174_search_vs_random.py",
-   "status": "running",
+   "status": "done",
    "title": "The search against random sampling of the same language, on +-1-weighted planar graphs: the control B20_R173 lacks",
    "unlocks": []
   },
@@ -2144,6 +2147,18 @@
    "id": "B20_R174",
    "kind": "start",
    "time": "2026-10-30T07:53:51+00:00"
+  },
+  {
+   "id": "B20_R174",
+   "kind": "finish",
+   "outcome": "NOT_SHOWN, RANDOM_MATCHES_SEARCH (valid): on 24 fresh +-1 planar graphs the search winners +1.092% over REX, the random winners +1.097% (P1 p 0.40, permutation p 0.55); the best random winner beat C0_1 (B20_R173's released engine) by 0.27% (p 0.0004)",
+   "positive": false,
+   "time": "2026-10-30T11:27:40+00:00"
+  },
+  {
+   "id": "B20_R159",
+   "kind": "start",
+   "time": "2026-10-30T11:27:40+00:00"
   }
  ],
  "lines": {
@@ -2265,9 +2280,14 @@
      "B20_R173",
      "RELEASED (valid): the protected judge, unchanged, released C0_1 over REX on planar2_pm1: B gain +1.220% against tau 0.782%; v3 releases too (tau 0.493%); truth +1.122% on 24 of 24 fresh graphs (p 6e-8). First release by that judge of an engine Genesis's own search found; one family; the expectation (NOT_RELEASED) was wrong",
      true
+    ],
+    [
+     "B20_R174",
+     "NOT_SHOWN, RANDOM_MATCHES_SEARCH (valid): on 24 fresh +-1 planar graphs the search winners +1.092% over REX, the random winners +1.097% (P1 p 0.40, permutation p 0.55); the best random winner beat C0_1 (B20_R173's released engine) by 0.27% (p 0.0004)",
+     false
     ]
    ],
-   "run": 0,
+   "run": 1,
    "stagnant": true
   },
   "expressiveness": {

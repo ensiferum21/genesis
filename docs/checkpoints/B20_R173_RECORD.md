@@ -87,6 +87,11 @@ likely have found engines close to it. That needs a random-sampling control at m
 has run on this family. The record test `test_random_engines_against_the_release_bar` (also added at this time)
 recomputes these counts from `calls.json`.
 
+**B20_R174 ran that control** (30 Oct 2026; `docs/checkpoints/B20_R174_RECORD.md`): RANDOM_MATCHES_SEARCH. On 24
+fresh ±1-weighted planar graphs, three random-sampling arms at matched evaluations found engines as good as the three
+search winners (+1.10% against +1.09% over REX), and the best random winner beat C0_1 by 0.27% (p 0.0004); C0_1 was
+the weakest of the six. (A cross-reference added at B20_R174's recording.)
+
 ## What it means
 
 1. **The first release by the protected judge of an engine Genesis's own search found** (but see the section above:

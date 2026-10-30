@@ -1,0 +1,30 @@
+{
+ "verdict": "NOT_SHOWN",
+ "valid": true,
+ "validity": {
+  "cpu": true,
+  "disjoint": true,
+  "winner_keys": true,
+  "r151_summary": true,
+  "evaluations": true,
+  "mcx3": true,
+  "feedback": true
+ }
+}
+{
+ "P1": {
+  "n": 23,
+  "p": 0.39988625049591064,
+  "mean": -4.758638307118151e-05,
+  "permutation_p": 0.55,
+  "passed": false,
+  "two_sided_p": 0.7997725009918213
+ },
+ "reading": "RANDOM_MATCHES_SEARCH",
+ "S1": {
+  "n": 24,
+  "p": 0.0004298686981201172,
+  "mean": -0.0027379004112872154,
+  "best_random": "RANDOM_2"
+ }
+}
