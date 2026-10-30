@@ -17,8 +17,8 @@ import b20r175_meta_repaired as S  # noqa: E402
 import b20r163_frontier_meta as F6  # noqa: E402
 from genesis.frontier import meta as MT  # noqa: E402
 
-PREREGISTRATION = None              # the commit that preregistered the script
-SHA256 = None
+PREREGISTRATION = '7878cdb'         # the commit that preregistered the script
+SHA256 = 'b5c957f6669b078b3dc1a4bf19ef4a38fe1b16d31b5b8fa54bb5096fade178ba'
 
 
 def digest_at(commit, rel):
@@ -32,6 +32,12 @@ def digest_at(commit, rel):
 
 
 class Design(unittest.TestCase):
+    def test_the_script_is_the_preregistered_one(self):
+        import hashlib
+        self.assertEqual(hashlib.sha256((ROOT / 'scripts' / 'b20r175_meta_repaired.py').read_bytes()).hexdigest(),
+                         SHA256)
+        self.assertEqual(digest_at(PREREGISTRATION, 'scripts/b20r175_meta_repaired.py') or SHA256, SHA256)
+
     def test_constants(self):
         others = [p for p in (ROOT / 'scripts').glob('*.py') if p.name != 'b20r175_meta_repaired.py']
         self.assertFalse(any(re.search(rf'\b{S.SEALED_SEED}\b', p.read_text()) for p in others))
