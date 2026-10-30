@@ -20,8 +20,8 @@ sys.path.insert(0, str(ROOT / 'src'))
 sys.path.insert(0, str(ROOT / 'scripts'))
 import b20r159_proving_test as S  # noqa: E402
 
-PREREGISTRATION = None              # the commit that preregistered the script (set after it)
-SHA256 = None                       # its SHA-256 there (set after it)
+PREREGISTRATION = 'a775227'         # the commit that preregistered the script
+SHA256 = '56037017038a2d1261bdaf85c37300a435918c1152002646820999d2eeee3a05'
 
 A_TEST = {'a1': ('d + 1', 'vertex'), 'a2': ('2*d', 'vertex')}
 B_TEST = {'s1': 'alpha <= max_degree', 's2': 'radius <= diameter'}
