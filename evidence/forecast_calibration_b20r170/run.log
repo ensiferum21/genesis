@@ -1,0 +1,48 @@
+{
+ "study": "b20r170",
+ "schema": "genesis-b20r170-forecast-calibration-v1",
+ "verdict": "NOT_SHOWN",
+ "valid": true,
+ "nulls_ok": true,
+ "spent_ok": true,
+ "pins_ok": true,
+ "S4": {
+  "promoted": {
+   "cal_cond": "global",
+   "cal_form": "both",
+   "cal_rate": 0.01,
+   "cal_sides": "both",
+   "cal_signal": "hindcast",
+   "cal_update": "aci"
+  },
+  "canonical": {
+   "cal_signal": "hindcast",
+   "cal_form": "both",
+   "cal_sides": "both",
+   "cal_cond": "global",
+   "cal_update": "aci",
+   "cal_rate": 0.01
+  },
+  "changed_from_identity": {
+   "cal_signal": [
+    "none",
+    "hindcast"
+   ],
+   "cal_form": [
+    "scale",
+    "both"
+   ],
+   "cal_rate": [
+    0.05,
+    0.01
+   ]
+  },
+  "c_meta": 83483,
+  "extra_budget_per_world": 3470,
+  "nothing_promoted": false,
+  "identity_promoted": false
+ },
+ "budget": 12000,
+ "code_identity": "5796e12d8daba4d3ed2c27298f3559f0c15df8a42cade1ea04060d7dd481707f",
+ "status": "DEV; a calibration; licenses nothing"
+}

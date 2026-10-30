@@ -640,6 +640,9 @@ problems no level has seen, and Genesis has not shown that yet.
   in detail for handoff at his request of 20:01; F1 and F2 next on CPU 1; B20_R156–R158 reserved.
 - 27 Oct 2026, 20:40: the proving test adopted (§0f; B20_R159). F2 started: the sealed Laplacian set
   transcribed and tiered, with exact certificates (`src/genesis/conjecture/`).
+- 30 Oct 2026, 16:00: B20_R170 (G2) recorded: NOT_SHOWN. The engine's own forecast-update rule raised held-out
+  coverage from 0.655 to 0.737 (22 of 24 worlds) but not into [0.80, 0.97], and did not pay. B20_R172 ran 15:27-15:45;
+  B20_R174 started 15:48:21 (CPU 0 idle for 3 min between them, disclosed).
 - 30 Oct 2026, 15:35: B20_R175 (F6b) preregistered: F6's question with the repaired meta-search (four training
   worlds, one successive-halving bracket over 27 configurations, a guard against the defaults; F6's own procedure as
   an arm). It runs after PT-1.

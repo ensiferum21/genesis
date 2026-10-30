@@ -89,6 +89,12 @@ overconfident and biased low, and a textbook correction failed (`docs/checkpoint
   promoted rule against the fixed forecaster given the meta-search's compute (matched total, value); P2, coverage of
   the promoted rule's forecasts above the fixed forecaster's and inside [0.80, 0.97]. It runs after B20_R163.
 
+- **30 Oct 2026: B20_R170 is NOT_SHOWN** (`docs/checkpoints/B20_R170_RECORD.md`). The promoted rule (hindcast,
+  adaptive-conformal, rate 0.01) raised held-out coverage from 0.655 to 0.737 in 22 of 24 worlds, short of the band;
+  on value it tied the fixed forecaster and lost to it given the meta-search's compute. The meta-search chose by
+  value, not coverage, and inherits B20R163-META (milder here: the winner beat the identity at about equal spend on
+  its one training world). A repeat would score coverage and use B20_R175's machinery.
+
 **G3: joint against separate discovery (§13.7, B20_R171).** The proposal's own test of its central hypothesis,
 here on the Frontier. There are four arms at the same total budget:
 - fixed: the engine's defaults;

@@ -1505,7 +1505,7 @@
         "commits": [
           "8b29d0f"
         ],
-        "result": "Preregistered (DEV, calibration; Foundry G2): the Frontier searches a grammar of forecast-update rules (frontier/calibrate.py) on one sealed meta-training world; P1 the promoted rule against the fixed forecaster given the meta-search compute (value, matched total), P2 coverage above the fixed forecaster and inside [0.80, 0.97], Holm. Dev look disclosed (seeds 881000-881005). Runs after B20_R163"
+        "result": "Preregistered (DEV, calibration; Foundry G2): the Frontier searches a grammar of forecast-update rules (frontier/calibrate.py) on one sealed meta-training world; P1 the promoted rule against the fixed forecaster given the meta-search compute (value, matched total), P2 coverage above the fixed forecaster and inside [0.80, 0.97], Holm. Dev look disclosed (seeds 881000-881005). Runs after B20_R163. Ran 30 Oct 14:59-15:25 SGT from /home/claude/r170-wt (405741e). Recorded: NOT_SHOWN (valid): P1 value P - D -0.180 (p 1.0); P2 coverage 0.655 -> 0.737 (+0.082, 22 of 24, p 3e-7) but CI [0.720, 0.757] below the band; S1 tie; S2 +0.162. Inherits B20R163-META (milder). Record docs/checkpoints/B20_R170_RECORD.md"
       },
       "B20_R172": {
         "commits": [

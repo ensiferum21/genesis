@@ -1342,7 +1342,8 @@ class RecordB20R159(unittest.TestCase):
 Written on 30 Oct 2026, before the study ran, from the script at its preregistration (the commit and digest are the
 design test's `PREREGISTRATION` and `SHA256`). Everything that runs the engine runs in a temporary worktree of the
 preregistration commit, whose modules are the pinned ones. `KW` lets a rehearsal subclass check a small run made with
-`main(..., registered=False, **KW)`. The file has `json`, `Path`, `sys`, `tempfile`, `unittest`, `ROOT`, `S`, `MT`,
+`main(..., registered=False, **KW)`; it was dry-run so on a rehearsal output made at `7878cdb` (the design test's
+worlds and budgets), where all four tests pass. The file has `json`, `Path`, `sys`, `tempfile`, `unittest`, `ROOT`, `S`, `MT`,
 `PREREGISTRATION` and `SHA256`.
 
 ```python

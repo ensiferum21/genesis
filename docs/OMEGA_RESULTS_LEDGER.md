@@ -57,6 +57,7 @@ Nothing here is an independent or sealed result.
 | Difficulty probes | Planted coupling answered by renormalisation (+16 against +4); natural Gset classes give weak probe signals |
 | B20_R151 | The builder's richer language Λ1 against Λ0, apart from search: NOT_SHOWN (NO_LANGUAGE_EFFECT on planar2000, the only class past the headroom gate; Λ1's ceiling winners 0.115% below Λ0's) |
 | B20_R152 | Self-extension of the engine language on real engines: NOTHING_ADMITTED (the judge refused both of generation 1's statements; the line ended) |
+| B20_R170 | Foundry G2, a forecast-update rule invented by meta-search: NOT_SHOWN (coverage 0.655 → 0.737, p 3 × 10⁻⁷, but below the band; value −0.180 against the fixed forecaster given C_meta, a tie at equal budget) |
 | B20_R163 | F6, the Frontier searching its own configuration: NOT_SHOWN (P − D −0.221, p 0.99; P − D0 a tie; the meta-search's compute as extra budget pays +0.148) |
 | B20_R158 | F5, Genesis's own conjectures over generations, FULL against PLAIN: NOT_SHOWN (9 posed in generation 1; FULL 6, PLAIN 5 refuted, McNemar 1–0; the generator posed nothing new afterwards; one unlabelled survivor, a candidate only) |
 | B20_R157 | F4, the Frontier against prior-art searches on the sealed Laplacian bounds: PARTIAL (beats NRPA only; GBFS 19 of 33 refuted, the Frontier 14; the allocation no better than UCB or uniform; descriptively the engine reaches 25–26 with Γ-built graphs above the preregistered check's 40 vertices) |
@@ -71,7 +72,6 @@ As of 30 Oct 2026; the order on CPU 0 is in `docs/OMEGA_FRONTIER.md` §12 and `r
 | Batch | State |
 |---|---|
 | B20_R174 | Genesis's search against random sampling of the same language on ±1-weighted planar graphs (the control B20_R173 lacks). Preregistered |
-| B20_R170 | Foundry G2 (forecast calibration invented by meta-search). Running |
 | B20_R172 | Foundry G4 (state features for allocation). Preregistered |
 | B20_R175 | F6b, F6 repeated with the meta-search repaired (B20R163-META). Preregistered |
 | B20_R159 | PT-1, the proving test. Preregistered |

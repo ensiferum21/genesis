@@ -110,5 +110,122 @@ class RegisteredPath(unittest.TestCase):
         self.assertEqual(set(s['S4']['promoted']), set(CAL.GRID))
 
 
+R170 = ROOT / 'evidence' / 'forecast_calibration_b20r170'
+
+
+def at_commit(commit, files, code, timeout=7200):
+    """Run Python `code` in a temporary worktree of `commit` with `files` ({path in the worktree: source}) copied in;
+    `code` writes its answer as JSON to `answer.json` in the worktree, which is returned. The study's pinned engine
+    modules are the ones at that commit, whatever the branch has since."""
+    import shutil
+    import subprocess
+    with tempfile.TemporaryDirectory() as d:
+        wt = Path(d) / 'wt'
+        subprocess.run(['git', '-C', str(ROOT), 'worktree', 'add', '--detach', str(wt), commit], check=True,
+                       capture_output=True)
+        try:
+            for rel, src in files.items():
+                (wt / rel).parent.mkdir(parents=True, exist_ok=True)
+                shutil.copy(src, wt / rel)
+            out = subprocess.run([sys.executable, '-c', code], cwd=wt, capture_output=True, text=True, timeout=timeout)
+            if out.returncode != 0:
+                raise AssertionError(out.stderr[-3000:])
+            return json.loads((wt / 'answer.json').read_text())
+        finally:
+            subprocess.run(['git', '-C', str(ROOT), 'worktree', 'remove', '--force', str(wt)], capture_output=True)
+
+
+@unittest.skipUnless((R170 / 'summary.json').exists(), 'B20_R170 has not been recorded')
+class RecordB20R170(unittest.TestCase):
+    """The record of B20_R170 on its evidence: the script; the rows complete and the arms' budgets; validity, the
+    analysis and the verdict recomputed in this tree; then, at the preregistration commit (its pinned engine modules):
+    main re-run on the saved meta-search and rows to the same summary, the meta-search replayed to the same record,
+    and the first and last worlds' runs re-executed to the same rows."""
+    DIR, KW, OUT = R170, {}, 'evidence/forecast_calibration_b20r170'
+
+    @classmethod
+    def setUpClass(cls):
+        cls.s = json.loads((cls.DIR / 'summary.json').read_text())
+        cls.meta = json.loads((cls.DIR / 'meta.json').read_text())
+        cls.rows = {}
+        for line in (cls.DIR / 'rows.jsonl').read_text().splitlines():
+            if line.strip():
+                r = json.loads(line)
+                cls.rows[(r['world'], r['arm'])] = r
+
+    def ws(self):
+        wl = self.KW.get('world_list')
+        return [tuple(w) for w in wl] if wl is not None else S.worlds()
+
+    def test_the_script(self):
+        if self.DIR != R170:
+            return
+        import hashlib
+        self.assertEqual(hashlib.sha256((ROOT / 'scripts' / 'b20r170_forecast_calibration.py').read_bytes()).hexdigest(),
+                         '8aa46929e64a743b5eaba1eadde2dc285a6b445643486405e6eae5b691e2357d')
+
+    def test_validity_and_the_analysis_recompute(self):
+        from genesis.frontier import calibrate as CAL
+        ws, budget = self.ws(), self.KW.get('budget', S.B)
+        self.assertEqual([list(x) for x in ws], self.s['worlds'])
+        self.assertEqual(set(self.rows), {(k, a) for k, f, sd, null in ws for a in S.ARMS})
+        nulls_ok = all(self.rows[(k, a)]['total'] == 0.0 for k, f, sd, null in ws if null for a in S.ARMS)
+        spent_ok = all(r['spent'] >= r['budget'] - S.QUANTUM - 1 for r in self.rows.values())
+        self.assertEqual((nulls_ok, spent_ok), (self.s['nulls_ok'], self.s['spent_ok']))
+        self.assertEqual(self.s['valid'], nulls_ok and spent_ok and self.s['pins_ok'] and self.meta['on_grid'])
+        extra = S.extra_budget(self.meta['c_meta'], sum(1 for w in ws if not w[3]))
+        self.assertEqual(extra, self.s['S4']['extra_budget_per_world'])
+        for (k, a), r in self.rows.items():
+            self.assertEqual(r['budget'], budget + (extra if a == 'D' else 0))
+        self.assertEqual(set(self.meta['promoted']), set(CAL.GRID))
+        res = S.analyse(self.rows, ws)
+        self.assertEqual(json.loads(json.dumps(res, sort_keys=True, default=list)), self.s['results'])
+        self.assertEqual(S.verdict(self.s['valid'], res, self.meta['identity_promoted']), self.s['verdict'])
+
+    def test_at_the_preregistration_commit(self):
+        files = {f'{self.OUT}/meta.json': self.DIR / 'meta.json', f'{self.OUT}/rows.jsonl': self.DIR / 'rows.jsonl'}
+        kw = dict(self.KW)
+        code = f'''
+import json, sys
+sys.path.insert(0, 'src'); sys.path.insert(0, 'scripts')
+import b20r170_forecast_calibration as S
+from genesis.frontier import calibrate as CAL
+kw = json.loads({json.dumps(json.dumps(kw))})
+if 'world_list' in kw:
+    kw['world_list'] = [tuple(w) for w in kw['world_list']]
+if 'meta' in kw:
+    kw['meta'] = tuple(kw['meta'])
+extra_kw = dict(output='{self.OUT}', pinned=S.pins()) if kw else {{}}
+rc = S.main(['{self.OUT}'], registered=True, **kw, **extra_kw)
+summary = json.load(open('{self.OUT}/summary.json'))
+ms = S.meta_search(kw.get('meta'), b_in=kw.get('b_in', S.B_IN), budget=kw.get('meta_budget', S.META_BUDGET))
+ws = kw.get('world_list') or S.worlds()
+budget = kw.get('budget', S.B)
+extra = S.extra_budget(ms['c_meta'], sum(1 for w in ws if not w[3]))
+plan = {{'P': (ms['promoted'], budget), 'D': (CAL.DEFAULT, budget + extra), 'D0': (CAL.DEFAULT, budget)}}
+runs = []
+for idx in sorted({{0, len(ws) - 1}}):
+    key, fam, seed, null = ws[idx]
+    for arm in S.ARMS:
+        params, bud = plan[arm]
+        r = S.run_one(fam, seed, null, arm, idx, params, bud)
+        r['world'] = key
+        runs.append(r)
+json.dump({{'rc': rc, 'summary': summary, 'meta': json.loads(json.dumps(ms, sort_keys=True, default=list)),
+           'runs': runs}}, open('answer.json', 'w'), default=list)
+'''
+        got = at_commit('405741e', files, code)
+        self.assertEqual(got['rc'], 0)
+        drop = ('code_identity',)
+        self.assertEqual({k: v for k, v in got['summary'].items() if k not in drop},
+                         {k: v for k, v in self.s.items() if k not in drop})
+        self.assertEqual(got['meta'], self.meta)
+        for r in got['runs']:
+            saved = self.rows[(r['world'], r['arm'])]
+            for f in ('total', 'reference', 'value', 'spent', 'budget', 'branches', 'verify_calls', 'coverage',
+                      'resolved'):
+                self.assertEqual(r[f], saved[f], (r['world'], r['arm'], f))
+
+
 if __name__ == '__main__':
     unittest.main()
