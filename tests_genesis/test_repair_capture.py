@@ -27,7 +27,8 @@ ValueError: refused
 
 class Capture(unittest.TestCase):
     def test_the_real_crashes_parse_and_sign(self):
-        want = {'B20R177-LIBRARY': (['StopIteration', 'RuntimeError'], 'src/genesis/conjecture/library.py', '<genexpr>'),
+        want = {'B20R177-LIBRARY': (['StopIteration', 'RuntimeError'], 'src/genesis/conjecture/library.py',
+                                    '<genexpr>'),
                 'B20R177-SEEN': (['KeyError'], 'src/genesis/conjecture/statement.py', 'score'),
                 'B20R158-TEMPLATE': (['OverflowError'], 'src/genesis/conjecture/abstraction.py', 'mutate')}
         for defect, path in LOGS.items():

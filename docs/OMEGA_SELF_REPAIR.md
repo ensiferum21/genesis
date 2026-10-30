@@ -6,7 +6,7 @@
 
 Adopted on 30 Oct 2026 as a requirement on the whole system. This document says where Genesis stands against it,
 what the loop is in this repository's terms, what it may never do, the test that would show it works, and the build
-order. **State (30 Oct 2026, 23:20):** SR-a's capture and SR-b are built (`src/genesis/repair/`,
+order. **State (30 Oct 2026, 22:55):** SR-a's capture and SR-b are built (`src/genesis/repair/`,
 `tests_genesis/test_repair_capture.py`); everything else is not.
 
 ## 1. Where Genesis stands (30 Oct 2026)

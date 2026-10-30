@@ -640,13 +640,14 @@ problems no level has seen, and Genesis has not shown that yet.
   in detail for handoff at his request of 20:01; F1 and F2 next on CPU 1; B20_R156–R158 reserved.
 - 27 Oct 2026, 20:40: the proving test adopted (§0f; B20_R159). F2 started: the sealed Laplacian set
   transcribed and tiered, with exact certificates (`src/genesis/conjecture/`).
-- 30 Oct 2026, 23:00: **Daniel's requirement of 22:52 adopted** (`docs/OMEGA_SELF_REPAIR.md`): Genesis must
+- 30 Oct 2026, 22:55: **Daniel's requirement of 22:52 adopted** (`docs/OMEGA_SELF_REPAIR.md`): Genesis must
   recognise an obstacle, determine what capability is missing, invent or retrieve a solution, verify it
   independently and continue, without touching its Judge or Supervisor. Today every obstacle (B20R158-TEMPLATE,
   B20R163-META, B20R177-LIBRARY, B20R177-SEEN) was handled by the builder. The design: the obstacle loop (recognise,
   reproduce and localise, classify, retrieve or invent by templates and ARA's rewrites, a kernel verifier with a
   sealed check, continue under the amendment protocol with the Supervisor's veto); SR-1 tests it on the real defects
-  and a generated obstacle zoo. Queued: `self-repair-build` (SR-a to SR-e, CPU 1), then B20_R178 (SR-1).
+  and a generated obstacle zoo. Queued: `self-repair-build` (SR-a to SR-e, CPU 1), then B20_R178 (SR-1). SR-a's capture and SR-b's vault were
+  built at once (`src/genesis/repair/`).
 - 30 Oct 2026, 22:35: the pre-flight passed: PT-2's whole pipeline at the full per-problem budgets on the design
   tests' invented families (2, 2 and 3 problems; CPU 1, 22:09-22:32) ran every stage to a valid summary (23 min).
   The second amendment is `75b5bac`; the third attempt runs from `/home/claude/pt2c-wt` after the checkpoint.

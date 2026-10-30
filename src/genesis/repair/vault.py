@@ -56,5 +56,6 @@ def score(entry, sig):
 def retrieve(sig, exclude=(), entries=ENTRIES, minimum=1.0):
     """Entries sharing at least `minimum` of the signature, best first; `exclude` holds ids left out (SR-1's
     leave-one-out)."""
-    ranked = sorted(((score(e, sig), e['id'], e) for e in entries if e['id'] not in exclude), key=lambda x: (-x[0], x[1]))
+    ranked = sorted(((score(e, sig), e['id'], e) for e in entries if e['id'] not in exclude),
+                    key=lambda x: (-x[0], x[1]))
     return [e for s, _, e in ranked if s >= minimum]

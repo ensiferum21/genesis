@@ -21,7 +21,8 @@ import re
 PROTECTED = (
     'src/genesis/autonomy/feedback.py', 'src/genesis/architecture/judge.py', 'src/genesis/architecture/zoo.py',
     'src/genesis/kernel/', 'src/genesis/judge.py', 'src/genesis/custodian.py', 'src/genesis/custody_records.py',
-    'src/genesis/verification/', 'src/genesis/release_bundle.py', 'src/genesis/eligibility.py', 'src/genesis/exposure.py',
+    'src/genesis/verification/', 'src/genesis/release_bundle.py', 'src/genesis/eligibility.py',
+    'src/genesis/exposure.py',
     'src/genesis/decision_record.py', 'src/genesis/domains.py', 'src/genesis/gset.py',
     'src/genesis/conjecture/sealed.py', 'src/genesis/conjecture/verify.py', 'src/genesis/conjecture/wowii.py',
     'src/genesis/conjecture/invariants_ref.py', 'src/genesis/conjecture/audit.py',
