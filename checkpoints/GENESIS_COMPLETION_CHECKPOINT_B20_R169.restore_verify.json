@@ -1,0 +1,77 @@
+{
+ "zip": "GENESIS_COMPLETION_CHECKPOINT_B20_R169.zip",
+ "zip_sha256": "dcd5a0fdbcd6a40286cfd3ae4d100d1334f8a7a0bdd5214cd74e0109e3de7112",
+ "bytes": 81343766,
+ "manifest_entries": 6999,
+ "manifest_mismatches": [],
+ "unlisted_members": [],
+ "commit_ok": true,
+ "tree_ok": true,
+ "files_tracked": 6997,
+ "files_archived": 6997,
+ "archive_vs_clone_mismatches": [],
+ "tracked_not_archived": [],
+ "record": {
+  "batch": 20,
+  "commit": "5d7b7f07b59929f78a755f7b47de2195acf5d7e3",
+  "tree": "15e8de52fc8edf0efb2b623fbff4ef006927e384",
+  "created_utc": "2026-10-30T06:37:49.890050+00:00",
+  "parent_checkpoint": {
+   "name": "GENESIS_COMPLETION_CHECKPOINT_B20_R148.zip",
+   "sha256": "bb89b23b983e0da3fc0ac0e733c94d06bf510684065f920e281c08e7b3cd33e4"
+  }
+ },
+ "matrix": [
+  {
+   "suite": "integration",
+   "ran": 2127,
+   "skipped": 0,
+   "failures": 0,
+   "errors": 0,
+   "ok": true,
+   "seconds": 4971.71,
+   "undeclared_skips": []
+  },
+  {
+   "suite": "legacy_regression",
+   "ran": 282,
+   "skipped": 1,
+   "failures": 0,
+   "errors": 0,
+   "ok": true,
+   "seconds": 49.98,
+   "undeclared_skips": []
+  },
+  {
+   "suite": "sandbox_escape",
+   "ran": 28,
+   "skipped": 0,
+   "failures": 0,
+   "errors": 0,
+   "ok": true,
+   "seconds": 195.23,
+   "undeclared_skips": []
+  },
+  {
+   "suite": "certificates",
+   "ran": 43,
+   "skipped": 0,
+   "failures": 0,
+   "errors": 0,
+   "ok": true,
+   "seconds": 81.87,
+   "undeclared_skips": []
+  },
+  {
+   "suite": "formal",
+   "ran": 184,
+   "skipped": 0,
+   "failures": 0,
+   "errors": 0,
+   "ok": true,
+   "seconds": 629.38,
+   "undeclared_skips": []
+  }
+ ],
+ "ok": true
+}
