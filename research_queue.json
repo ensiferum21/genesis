@@ -685,7 +685,10 @@
    "unlocks": []
   },
   "B20_R163": {
-   "artifacts": [],
+   "artifacts": [
+    "evidence/frontier_meta_b20r163",
+    "docs/checkpoints/B20_R163_RECORD.md"
+   ],
    "committed": true,
    "depends_on": [
     "frontier-f6-build",
@@ -696,9 +699,9 @@
    "kind": "study",
    "line": "frontier",
    "notes": "Daniel's directive of 27 Oct 2026, 19:55 (docs/OMEGA_FRONTIER.md section 4.8); preregistered 28 Oct 2026 00:50 SGT | started 30 Oct 2026, 14:38:25 SGT, from the clean worktree /home/claude/f6-wt at 77d725d, after the checkpoint B20_R169",
-   "outcome": null,
+   "outcome": "NOT_SHOWN (valid): the promoted configuration (all six settings changed) against the defaults with C_meta as extra budget -0.221 (p 0.99, 6 of 24 worlds); against the defaults at equal budget a tie (-0.073); the extra budget alone +0.148 (p 8e-6). The meta-search fitted its one training world",
    "output": "evidence/frontier_meta_b20r163",
-   "positive": null,
+   "positive": false,
    "preregistered": "sha256 e71bfb69365bb5fa4a1129e59c13637ce048ab0cc15dbdaa4ddd8878a620777f (the preregistration commit)",
    "priority": 5,
    "requires": [],
@@ -706,7 +709,7 @@
     "cpu0_hours": 1.0
    },
    "script": "scripts/b20r163_frontier_meta.py",
-   "status": "running",
+   "status": "done",
    "title": "F6: the Frontier searching its own configurations: does the promoted configuration beat the defaults on held-out planted worlds at matched total compute (the meta-search counted)?",
    "unlocks": []
   },
@@ -782,7 +785,7 @@
    "id": "B20_R170",
    "kind": "study",
    "line": "frontier",
-   "notes": "from the Foundry proposal \u00a713.4; machinery frontier/calibrate.py (8b29d0f); preregistered 29 Oct 2026 22:20 SGT; runs after B20_R163 (F6)",
+   "notes": "from the Foundry proposal \u00a713.4; machinery frontier/calibrate.py (8b29d0f); preregistered 29 Oct 2026 22:20 SGT; runs after B20_R163 (F6) | started 30 Oct 2026, 14:59:45 SGT, from the clean worktree /home/claude/r170-wt at 405741e",
    "outcome": null,
    "output": "evidence/forecast_calibration_b20r170",
    "positive": null,
@@ -793,7 +796,7 @@
     "cpu0_hours": 0.75
    },
    "script": "scripts/b20r170_forecast_calibration.py",
-   "status": "queued",
+   "status": "running",
    "title": "G2 (docs/OMEGA_FOUNDRY.md): an invented update rule for the Frontier's forecast calibration, searched over a small grammar and scored by fresh engines on fresh planted worlds at matched total compute",
    "unlocks": []
   },
@@ -803,7 +806,7 @@
    "depends_on": [
     "B20_R163"
    ],
-   "failure": null,
+   "failure": "stagnated",
    "id": "B20_R171",
    "kind": "study",
    "line": "frontier",
@@ -816,7 +819,7 @@
    "requires": [],
    "resources": {},
    "script": null,
-   "status": "queued",
+   "status": "dormant",
    "title": "G3 (docs/OMEGA_FOUNDRY.md): joint against separate discovery on the Frontier (fixed, operators only, separate stages, joint bundles with interactions) at equal total budget",
    "unlocks": []
   },
@@ -2046,6 +2049,40 @@
    "id": "B20_R163",
    "kind": "start",
    "time": "2026-10-30T06:40:28+00:00"
+  },
+  {
+   "id": "B20_R163",
+   "kind": "finish",
+   "outcome": "NOT_SHOWN (valid): the promoted configuration (all six settings changed) against the defaults with C_meta as extra budget -0.221 (p 0.99, 6 of 24 worlds); against the defaults at equal budget a tie (-0.073); the extra budget alone +0.148 (p 8e-6). The meta-search fitted its one training world",
+   "positive": false,
+   "time": "2026-10-30T07:01:17+00:00"
+  },
+  {
+   "kind": "stagnant",
+   "line": "frontier",
+   "outcomes": [
+    [
+     "B20_R157",
+     "PARTIAL (valid): FRONTIER beats NRPA (12-2, p_Holm 0.032), not GBFS (2-7), CEM, UCB or UNIFORM; refuted (both checks) GBFS 19, FRONTIER 14, UCB 13, UNIFORM 12, CEM 9, NRPA 4 of 33; nothing on 44 or 46; descriptively the joint arms' Gamma-built refutations above 40 vertices bring them to 25-26, level with each other",
+     false
+    ],
+    [
+     "B20_R158",
+     "NOT_SHOWN (valid): generation 1 posed 9 of Genesis's own conjectures (2 withheld); FULL refuted 6, PLAIN 5 (McNemar 1-0, p 0.5); rediscoveries Merris, bound 10, bound 29 (refuted 2024, refuted again); generations 2 and 3 posed nothing new, compounding 0; one unlabelled survivor sqrt((5d^2 + 3m^3/d)/2), a candidate only",
+     false
+    ],
+    [
+     "B20_R163",
+     "NOT_SHOWN (valid): the promoted configuration (all six settings changed) against the defaults with C_meta as extra budget -0.221 (p 0.99, 6 of 24 worlds); against the defaults at equal budget a tie (-0.073); the extra budget alone +0.148 (p 8e-6). The meta-search fitted its one training world",
+     false
+    ]
+   ],
+   "time": "2026-10-30T07:01:17+00:00"
+  },
+  {
+   "id": "B20_R170",
+   "kind": "start",
+   "time": "2026-10-30T07:01:17+00:00"
   }
  ],
  "lines": {
@@ -2216,10 +2253,15 @@
      "B20_R158",
      "NOT_SHOWN (valid): generation 1 posed 9 of Genesis's own conjectures (2 withheld); FULL refuted 6, PLAIN 5 (McNemar 1-0, p 0.5); rediscoveries Merris, bound 10, bound 29 (refuted 2024, refuted again); generations 2 and 3 posed nothing new, compounding 0; one unlabelled survivor sqrt((5d^2 + 3m^3/d)/2), a candidate only",
      false
+    ],
+    [
+     "B20_R163",
+     "NOT_SHOWN (valid): the promoted configuration (all six settings changed) against the defaults with C_meta as extra budget -0.221 (p 0.99, 6 of 24 worlds); against the defaults at equal budget a tie (-0.073); the extra budget alone +0.148 (p 8e-6). The meta-search fitted its one training world",
+     false
     ]
    ],
-   "run": 2,
-   "stagnant": false
+   "run": 3,
+   "stagnant": true
   },
   "general": {
    "diagnosis": null,

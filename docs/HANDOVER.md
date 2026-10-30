@@ -296,6 +296,9 @@ needs people: a reviewer, a statistician, an independent custodian on its own ma
         the hardest"; his to overrule before it runs). It runs after B20_R174, about 6 h.
       - **The checkpoint B20_R169 is made** (`5d7b7f0`, SHA-256 `dcd5a0fd…7112`): 2,664 tests all OK, restore-verified,
         archived whole on `archive` (`14a7651`). B20_R163 (F6) started at 14:38:25.
+      - **B20_R163 (F6) is recorded** (`docs/checkpoints/B20_R163_RECORD.md`): NOT_SHOWN. The self-found
+        configuration lost to the defaults given the meta-search's compute (−0.221) and tied them at equal budget.
+        B20_R170 (G2) started at 14:59:45.
   26c. **Daniel's directive of 27 Oct 2026, 19:55 is adopted**: `docs/OMEGA_FRONTIER.md`, written in detail for
       handoff at his request (20:01). Genesis works by divergence and convergence (imagine, mutate, recombine,
       branch out, extrapolate discovery curves, detect convergence, allocate), without handholding. The

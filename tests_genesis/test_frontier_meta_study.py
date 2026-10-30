@@ -118,5 +118,53 @@ class EndToEnd(unittest.TestCase):
                 S.main([str(ROOT / 'evidence' / 'frontier_meta_b20r163')])
 
 
+
+R163 = ROOT / 'evidence' / 'frontier_meta_b20r163'
+
+
+@unittest.skipUnless((R163 / 'summary.json').exists(), 'B20_R163 has not been recorded')
+class RecordB20R163(unittest.TestCase):
+    """The record of B20_R163 (F6) on its evidence: the script; the meta-search's record; the matched budgets;
+    validity and the analysis recomputed from the rows; one evaluation re-run gives the same row."""
+
+    @classmethod
+    def setUpClass(cls):
+        cls.s = json.loads((R163 / 'summary.json').read_text())
+        cls.meta = json.loads((R163 / 'meta.json').read_text())
+        cls.rows = {}
+        for line in (R163 / 'rows.jsonl').read_text().splitlines():
+            if line.strip():
+                r = json.loads(line)
+                cls.rows[(r['world'], r['arm'])] = r
+
+    def test_the_script(self):
+        import hashlib
+        self.assertEqual(hashlib.sha256((ROOT / 'scripts' / 'b20r163_frontier_meta.py').read_bytes()).hexdigest(),
+                         'e71bfb69365bb5fa4a1129e59c13637ce048ab0cc15dbdaa4ddd8878a620777f')
+
+    def test_the_budgets_and_validity(self):
+        extra = S.extra_budget(self.meta['c_meta'], 24)
+        self.assertEqual(self.s['S4']['extra_budget_per_world'], extra)
+        for (w, a), r in self.rows.items():
+            self.assertEqual(r['budget'], S.B + (extra if a == 'D' else 0))
+        nulls = all(self.rows[(k, a)]['total'] == 0.0 for k, f, sd, null in S.worlds() if null for a in S.ARMS)
+        spent = all(r['spent'] >= r['budget'] - S.QUANTUM - 1 for r in self.rows.values())
+        self.assertEqual((nulls, spent), (self.s['nulls_ok'], self.s['spent_ok']))
+        self.assertTrue(self.meta['on_grid'])
+        self.assertTrue(self.s['valid'] and self.s['pins_ok'])
+
+    def test_the_analysis_recomputes(self):
+        res = S.analyse(self.rows)
+        for k in ('P1', 'S1', 'S2'):
+            self.assertAlmostEqual(res[k]['p'], self.s['results'][k]['p'])
+            self.assertAlmostEqual(res[k]['mean'], self.s['results'][k]['mean'])
+        self.assertEqual(S.verdict(self.s['valid'], res, self.meta['nothing_promoted']), self.s['verdict'])
+
+    def test_one_evaluation_reruns_identically(self):
+        idx, (key, fam, seed, null) = next((i, w) for i, w in enumerate(S.worlds()) if not w[3])
+        r = S.run_one(fam, seed, null, 'P', idx, self.meta['promoted'], S.B)
+        self.assertEqual((r['total'], r['spent']), (self.rows[(key, 'P')]['total'], self.rows[(key, 'P')]['spent']))
+
+
 if __name__ == '__main__':
     unittest.main()

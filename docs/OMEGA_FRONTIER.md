@@ -911,7 +911,7 @@ B20_R164).
 | F3 = B20_R156 | PREREGISTERED, amended before it ran (`4a7e193`, sha256 `9ae034db…353a`) | `scripts/b20r156_frontier_worlds.py` |
 | F4 = B20_R157 | **DONE: PARTIAL** (amended at `ff9eada`, sha256 `fb5dd07e…5785`; NRPA beaten, not GBFS, CEM, UCB or UNIFORM; `docs/checkpoints/B20_R157_RECORD.md`) | `scripts/b20r157_laplacian_bounds.py` |
 | F5 = B20_R158 | **DONE: NOT_SHOWN** (amended twice: `ff9eada`, `f7803e3`; generation 1 posed 9, FULL 6 and PLAIN 5 refuted; generations 2 and 3 posed nothing new; `docs/checkpoints/B20_R158_RECORD.md`) | `scripts/b20r158_open_conjectures.py` |
-| F6 = B20_R163 | PREREGISTERED (sha256 `e71bfb69365b…`; runs after B20_R158): a meta-search over 729 engine configurations on one sealed meta-training world; the promoted configuration against the defaults given the meta-search's compute (matched total) and at equal budget, on 24 held-out worlds of two new families; machinery `frontier/meta.py` (B20_R162) | `scripts/b20r163_frontier_meta.py` |
+| F6 = B20_R163 | **DONE: NOT_SHOWN** (P − D −0.221, p 0.99; S1 a tie; S2 the extra budget +0.148; `docs/checkpoints/B20_R163_RECORD.md`) | `scripts/b20r163_frontier_meta.py` |
 | F6-adjacent: PT-1's family B | BUILT (B20_R161): 53 Graffiti statements, posed text, domain, double kernel check | §7b |
 | PT-1 = B20_R159 | Parts 3–5 machinery BUILT (`frontier/procedure.py`); the forbidden-concept audit BUILT (`conjecture/audit.py`, kernel side: identifiers and non-docstring strings of the research plane and the manifest, scanned for the hidden concept's stems; the research plane is clean); family B TRANSCRIBED (`conjecture/invariants.py`, `conjecture/wowii.py`: 53 Graffiti statements, semantic checks in `tests_genesis/test_wowii.py`) and POSED as text, with its domain (`conjecture/statement.py`, `conjecture/invariant_domain.py`, `wowii.verifier`, checked by two independent invariant implementations, `invariants.py` and kernel-side `invariants_ref.py`; faster exact invariants, search up to 16 vertices); part 1's two allowed mechanisms BUILT (B20_R164: library learning over Γ, `conjecture/library.py`; operators acting on Γ's operations, `conjecture/operations.py`; the engine's derive action, procedures carrying derivations); part 1's usefulness ablation, a candidate protocol, BUILT (B20_R168: `frontier/ablation.py`); one size cap for every program representation BUILT; the study DRAFTED, not preregistered (`scripts/b20r159_proving_test.py`; its open constants in `docs/handoff/PT1_DESIGN_DRAFT.md`) | §7b |
 
@@ -949,7 +949,8 @@ commit through `git show`.
    SHA-256 `dcd5a0fd…7112`): release matrix 2,664 tests all OK (one declared skip), restore-verified, archived whole
    (archive `14a7651`). The first attempt was stopped on an undeclared skip (the OR-Tools wheel); the second ran in two
    parts and merged; a container restart (14:20) interrupted its second part once, which was rerun.
-6b. **B20_R163 (F6): running** from 30 Oct 2026, 14:38:25 SGT, from `/home/claude/f6-wt` at `77d725d`.
+6b. **B20_R163 (F6): done, NOT_SHOWN** (30 Oct 2026, 14:38–14:59 SGT; `docs/checkpoints/B20_R163_RECORD.md`).
+6c. **B20_R170 (G2): running** from 30 Oct 2026, 14:59:45 SGT, from `/home/claude/r170-wt` at `405741e`.
 7. **B20_R158 (F5), AMENDED before it ran (`ff9eada`)**, from a clean worktree at `ff9eada`. The old
    `/home/claude/f5-wt` at `703b2ee` must not be used.
 8. **B20_R163 (F6)** from the clean worktree `/home/claude/f6-wt` at `77d725d` (prepared; its pins match there;

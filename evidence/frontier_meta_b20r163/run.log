@@ -1,0 +1,51 @@
+{
+ "study": "b20r163",
+ "schema": "genesis-b20r163-frontier-meta-v1",
+ "verdict": "NOT_SHOWN",
+ "valid": true,
+ "nulls_ok": true,
+ "spent_ok": true,
+ "pins_ok": true,
+ "S4": {
+  "promoted": {
+   "eps": 0.1,
+   "k_imagine": 32,
+   "lam_con": 0.0,
+   "lam_lp": 3.0,
+   "patience_quanta": 2,
+   "stall": 80
+  },
+  "changed_from_defaults": {
+   "eps": [
+    0.25,
+    0.1
+   ],
+   "lam_lp": [
+    1.0,
+    3.0
+   ],
+   "lam_con": [
+    0.02,
+    0.0
+   ],
+   "k_imagine": [
+    8,
+    32
+   ],
+   "patience_quanta": [
+    4,
+    2
+   ],
+   "stall": [
+    40,
+    80
+   ]
+  },
+  "c_meta": 76886,
+  "extra_budget_per_world": 3200,
+  "nothing_promoted": false
+ },
+ "budget": 12000,
+ "code_identity": "d3a9866123e24d987459e66e304bda62643ac14880bb2b233dd72af1aa84b228",
+ "status": "DEV; a calibration; licenses nothing"
+}
