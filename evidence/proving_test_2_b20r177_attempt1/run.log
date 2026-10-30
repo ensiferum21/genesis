@@ -1,0 +1,68 @@
+Traceback (most recent call last):
+  File "/home/claude/pt2-wt/src/genesis/conjecture/library.py", line 65, in <genexpr>
+    return (k,) + tuple(next(it) for _ in s[1:])
+                        ~~~~^^^^
+StopIteration
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/claude/pt2-wt/scripts/b20r177_proving_test_2.py", line 673, in <module>
+    sys.exit(main())
+             ~~~~^^
+  File "/home/claude/pt2-wt/scripts/b20r177_proving_test_2.py", line 522, in main
+    er, _ = run_engine('A_replay', conjecture_domain(pa, True), verify_a, 'improved', len(pa) * b_a, out,
+            ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                       due(), proc=proc)
+                       ^^^^^^^^^^^^^^^^^
+  File "/home/claude/pt2-wt/scripts/b20r177_proving_test_2.py", line 380, in run_engine
+    status = e.run(CHUNK)
+  File "/home/claude/pt2-wt/src/genesis/frontier/engine.py", line 168, in run
+    improved = self.advance(bid)
+  File "/home/claude/pt2-wt/src/genesis/frontier/engine.py", line 117, in advance
+    pts, arts = self.domain.step(d['problem'], d, b['seed'], b['t'], self.quantum)
+                ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/claude/pt2-wt/src/genesis/conjecture/domain.py", line 142, in step
+    improved = r.advance(int(quantum))
+  File "/home/claude/pt2-wt/src/genesis/conjecture/attack.py", line 540, in advance
+    s, g, A = next(self.gen)
+              ~~~~^^^^^^^^^^
+  File "/home/claude/pt2-wt/src/genesis/conjecture/attack.py", line 485, in nrpa
+    yield from evolution(rep, bound, rng)
+  File "/home/claude/pt2-wt/src/genesis/conjecture/attack.py", line 414, in evolution
+    s, A = _evaluate(rep, bound, g)
+           ~~~~~~~~~^^^^^^^^^^^^^^^
+  File "/home/claude/pt2-wt/src/genesis/conjecture/attack.py", line 366, in _evaluate
+    A = rep.graph(g)
+  File "/home/claude/pt2-wt/src/genesis/conjecture/attack.py", line 290, in graph
+    if self.size(g) > self.max_n or self.size(g) < 2:
+       ~~~~~~~~~^^^
+  File "/home/claude/pt2-wt/src/genesis/conjecture/library.py", line 144, in size
+    return super().size(g)
+           ~~~~~~~~~~~~^^^
+  File "/home/claude/pt2-wt/src/genesis/conjecture/operations.py", line 84, in size
+    return super().size(g)
+           ~~~~~~~~~~~~^^^
+  File "/home/claude/pt2-wt/src/genesis/conjecture/attack.py", line 282, in size
+    return self.size(g[1]) * self.size(g[2])
+                             ~~~~~~~~~^^^^^^
+  File "/home/claude/pt2-wt/src/genesis/conjecture/library.py", line 144, in size
+    return super().size(g)
+           ~~~~~~~~~~~~^^^
+  File "/home/claude/pt2-wt/src/genesis/conjecture/operations.py", line 84, in size
+    return super().size(g)
+           ~~~~~~~~~~~~^^^
+  File "/home/claude/pt2-wt/src/genesis/conjecture/attack.py", line 284, in size
+    return self.size(g[1]) * (1 + self.size(g[2]))
+                                  ~~~~~~~~~^^^^^^
+  File "/home/claude/pt2-wt/src/genesis/conjecture/library.py", line 143, in size
+    return self.size(self.expand(g))
+                     ~~~~~~~~~~~^^^
+  File "/home/claude/pt2-wt/src/genesis/conjecture/library.py", line 128, in expand
+    return fill(self.macros[g[0]], params, self.BINARY)
+  File "/home/claude/pt2-wt/src/genesis/conjecture/library.py", line 66, in fill
+    return go(skel)
+  File "/home/claude/pt2-wt/src/genesis/conjecture/library.py", line 65, in go
+    return (k,) + tuple(next(it) for _ in s[1:])
+                  ~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+RuntimeError: generator raised StopIteration

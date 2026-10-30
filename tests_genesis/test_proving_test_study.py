@@ -56,7 +56,18 @@ class Design(unittest.TestCase):
         others = [x for x in (ROOT / 'scripts').glob('*.py') if x.name != 'b20r159_proving_test.py']
         for seed in (S.SEALED_SEED,) + S.C_SEEDS:
             self.assertFalse(any(re.search(rf'\b{seed}\b', x.read_text()) for x in others), seed)
-        self.assertEqual(S.pins(), S.PINNED)
+        # the live tree may differ after PT-1 ran (B20R177-LIBRARY changed conjecture/library.py); the pins are
+        # checked at the preregistration commit, where the study ran
+        if PREREGISTRATION is not None:
+            import hashlib as _h
+            import subprocess as _sp
+            at = {}
+            for m in S.MODULES:
+                got = _sp.run(['git', '-C', str(ROOT), 'show', f'{PREREGISTRATION}:src/genesis/{m}'],
+                              capture_output=True, timeout=60)
+                at[m] = _h.sha256(got.stdout).hexdigest() if got.returncode == 0 else None
+            if all(v is not None for v in at.values()):
+                self.assertEqual(at, S.PINNED)
         if PREREGISTRATION is not None:
             import hashlib
             import subprocess

@@ -14,10 +14,17 @@ Genesis's searches produced.
   * `GammaLib(n, ops, macros)`: Γ (with any derived operations) plus macros, leaves ('m<k>', p1, ..., pj) that
     expand to their skeleton filled with the parameters.
 
-Macros may contain earlier macros (a library grows hierarchically).
+Macros may contain earlier macros (a library grows hierarchically). A macro learned from programs of a derived
+representation may contain its derived operations ('r<table>', `operations.py`); a library representation carries
+every derived operation its macros use (`ops_in`), so that its macros expand, count their slots and build as they
+were learned (B20R177-LIBRARY: built without them, such a macro's slots were miscounted and its expansion failed).
 """
+import re
+
 from . import attack as AT
 from . import operations as OP
+
+_DERIVED = re.compile(r'^r[0-9]+$')
 
 MAX_NODES = 7
 MIN_SOURCES = 2
@@ -110,9 +117,24 @@ def slots(skel, binary):
     return sum(1 for x in params_of(skel, binary) if x is None)
 
 
+def ops_in(skel, out=None):
+    """{name: table} of the derived operations a skeleton uses: binary nodes named 'r<table>', the names
+    `ConjectureDomain.derive` gives them (`operations.derive_table`), so the name carries the table."""
+    out = {} if out is None else out
+    if isinstance(skel, tuple) and skel and isinstance(skel[0], str):
+        if _DERIVED.match(skel[0]) and len(skel) == 3 and all(isinstance(x, tuple) for x in skel[1:]):
+            out[skel[0]] = int(skel[0][1:])
+        for x in skel[1:]:
+            ops_in(x, out)
+    return out
+
+
 class GammaLib(OP.GammaPlus):
     def __init__(self, n, ops, macros, max_n=None):
-        super().__init__(n, ops, max_n)
+        used = {}
+        for skel in macros.values():
+            ops_in(skel, used)
+        super().__init__(n, dict(used, **ops), max_n)  # with every derived operation the macros use
         self.macros = dict(macros)                    # name -> skeleton
 
     def _base(self, rng):

@@ -18,9 +18,27 @@ budgets and pinned code as PT-1, with two changes.
     discovery that parts 1 and 3 study and part 5 charges. A certificate on a bound outside A' does not count.
   * Fresh seeds: opaque ids (SEALED_SEED), engine seeds (STUDY) and C's ten data draws (C_SEEDS) are all new; the
     families' statements are PT-1's.
-This is PT-1's code otherwise (copied, with the stage-1 and analysis changes only); the 24 pinned modules are
-byte-identical to PT-1's pins. Nothing in this file has run on family A, B or C with these seeds. The design tests
-run it end to end on invented families only, through the registered path (output and pins redirected).
+This is PT-1's code otherwise (copied, with the stage-1 and analysis changes only). Nothing in this file has run on
+family A, B or C with these seeds before the first attempt (below). The design tests run it end to end on invented
+families only, through the registered path (output and pins redirected).
+
+**Amendment (30 Oct 2026, 21:30 SGT, after a first attempt crashed; disclosed).** The first attempt, from `a7303de`
+(`/home/claude/pt2-wt`), ran from 20:23:09 to 21:04:12 SGT and stopped with exit 1 in part 3's replay. The cause was
+a defect in `conjecture/library.py` (B20R177-LIBRARY, `docs/BLOCKING_DEFECTS.md`): a macro learned from programs of a
+derived representation contains its derived operation ('r<table>'), but the library representation was built
+without that operation, so the macro's slots were miscounted, a drawn leaf carried too few parameters, and its
+expansion failed (`StopIteration` inside a generator).
+  * The repair: a library representation carries every derived operation its macros use (`library.ops_in`; the
+    operation's name carries its table). A library whose macros use no derived operation is built exactly as before
+    (`test_operations`, `Library.test_a_macro_with_a_derived_operation_expands_and_builds`).
+  * The pins below differ from PT-1's (and from `a7303de`'s) in `conjecture/library.py` only.
+  * Main on the design tests' invented families gave the same summary from `a7303de` and from the amendment commit.
+  * **What the crash revealed (disclosed).** Only the log's traceback was read. It shows the attempt had reached
+    part 3's replay, which happens only after the gate held, G certified a bound beyond the predecessor (part 2), and
+    a procedure was extracted. Nothing else of that attempt was read, and its files
+    (`evidence/proving_test_2_b20r177_attempt1/`) are not used. Every stage runs again, with the same seeds, in a
+    fresh output directory. Whether stage 1 repeats exactly depends on whether the first attempt's G drew a library
+    macro with a derived operation before part 3; that is not checked, so as not to read the attempt's files.
 
 PT-1's documentation follows, unchanged except where it says what differs.
 
@@ -205,7 +223,8 @@ PINNED = {             # `pins()` at preregistration; checked at run time
     'conjecture/abstraction.py': 'f9ab4ea8251ebb53a796e2e19cfcc9fea9fc165c95bb7de2b7e2afd941a79fdc',
     'conjecture/generate.py': '386d17bc934b6959e5ee7dc6e96cf9d7f0e742b8854dd6ecf2e6596cb3b6644e',
     'conjecture/operations.py': 'd9ae9d907432f265a7447db496004f172af0612e33a7fb5827bf7bcca9b71ab4',
-    'conjecture/library.py': 'c85a2ff5554195d24c41f6934b033e7d93643ba42f1ed168e13de020220a490e',
+    # the amendment (B20R177-LIBRARY): library.py's digest differs from PT-1's
+    'conjecture/library.py': 'f5e8acad77090b8b7033d92e2ada4a55f1fa4fa04e40ad5df0292c6dd1b8be91',
     'conjecture/invariants.py': '98620b18ec5457122dd442d2c9dc68ad4787dfc22af6ef868dc2a021d1cdfab2',
     'conjecture/statement.py': '7ca76e71f224aa19267337a03e691d948962ff1bfd96c5897180eb6ba9d678ff',
     'conjecture/invariant_domain.py': 'c0db7d3b90b601f6c6de1bca5883395883db3f3423c05683220bcffc0f77d617',

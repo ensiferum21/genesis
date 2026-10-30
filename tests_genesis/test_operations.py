@@ -185,6 +185,40 @@ class Library(unittest.TestCase):
         drew = sum(1 for _ in range(200) if rep2._base(rng)[0] in ('m0', 'm1'))
         self.assertTrue(40 <= drew <= 80, drew)                          # LIBRARY_SHARE 0.3 of new leaves
 
+    def test_a_macro_with_a_derived_operation_expands_and_builds(self):
+        """B20R177-LIBRARY: a macro learned from a derived representation's programs contains its operation; the
+        library representation carries it, so the macro's slots are counted and it expands and builds."""
+        from genesis.conjecture import library as LB
+        ops = {'r7': 7}
+        binary = self.B + ('r7',)
+        a = ('union', ('r7', ('C', 4), ('E', 3)), ('P', 2))
+        b = ('join', ('K', 2), ('r7', ('C', 5), ('E', 2)))
+        skel = LB.learn([a, b], binary)
+        self.assertEqual(skel, ('r7', ('C', None), ('E', None)))
+        self.assertEqual(LB.ops_in(skel), {'r7': 7})
+        lib = LB.GammaLib(12, {}, {'m0': skel})                          # as the domain builds it: no ops passed
+        self.assertIn('r7', lib.BINARY)
+        self.assertEqual(LB.slots(skel, lib.BINARY), 2)
+        g = ('m0', 4, 3)
+        self.assertEqual(lib.expand(g), ('r7', ('C', 4), ('E', 3)))
+        plain = OP.GammaPlus(12, ops)
+        self.assertEqual(lib.size(g), plain.size(('r7', ('C', 4), ('E', 3))))
+        self.assertTrue((lib._build(g) == plain._build(('r7', ('C', 4), ('E', 3)))).all())
+        rng = np.random.default_rng(5)
+        for _ in range(300):                                             # drawn leaves carry the right arity
+            leaf = lib._base(rng)
+            if leaf[0] == 'm0':
+                self.assertEqual(len(leaf), 3)
+                lib.size(leaf)
+        # the defect as it was: without the operation the slots are miscounted and the expansion fails
+        broken = OP.GammaPlus(12, {})
+        self.assertEqual(LB.slots(skel, broken.BINARY), 0)
+        with self.assertRaises((RuntimeError, StopIteration)):
+            LB.fill(skel, [], broken.BINARY)
+        # a library whose macros use no derived operation is built exactly as before
+        plain_skel = ('join', ('E', None), ('K', None))
+        self.assertEqual(LB.GammaLib(10, {}, {'m0': plain_skel}).BINARY, AT.GammaRep.BINARY)
+
     def test_the_domain_learns_from_its_own_runners_deterministically(self):
         def domain():
             dom = ConjectureDomain(POSED, representations=('gamma',), n_values=(8,))
