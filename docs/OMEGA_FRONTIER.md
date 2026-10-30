@@ -957,7 +957,10 @@ commit through `git show`.
 9b. **B20_R170 (Foundry G2)**, preregistered 29 Oct 2026, from a clean worktree of its preregistration commit, after
     B20_R163 and before PT-1 (under 1 h).
 9c. **B20_R172 (Foundry G4)**, preregistered 29 Oct 2026, after B20_R170, from a clean worktree of its preregistration
-    commit (under 1 h).
+    commit (under 1 h; `/home/claude/r172-wt` at `73f8ad4` is prepared, as are `/home/claude/r170-wt` at `405741e`,
+    `/home/claude/f5b-wt` at `ff9eada` for B20_R158 and `/home/claude/f6-wt` at `77d725d` for B20_R163).
+9d. **B20_R174 (30 Oct 2026, preregistered): the search against random sampling**, the control B20_R173's release
+    lacks, after B20_R172 (about 3.5 h), from a clean worktree of its preregistration commit.
 10. Then PT-1, once preregistered (§7b). Daniel decided part 1's mechanisms on 28 Oct, and both are built (B20_R164).
     A design draft, not preregistered, is in `docs/handoff/PT1_DESIGN_DRAFT.md`.
 

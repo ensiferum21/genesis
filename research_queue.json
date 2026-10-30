@@ -846,7 +846,7 @@
    "id": "B20_R173",
    "kind": "study",
    "line": "engine-invention",
-   "notes": "B20_R165's record names it as the next step; runs after B20_R167 and before B20_R157 (35 min); the protected judge is called, never changed | ran 30 Oct 2026, 01:15:56-01:49:55 SGT, from the clean worktree /home/claude/r173-wt at d8cb798 | 30 Oct, 08:05: on this family 7 of the judge's 47 random L0 calibration engines would also have cleared the release bar; the release is not evidence that the search beats random sampling (record amended, disclosed)",
+   "notes": "B20_R165's record names it as the next step; runs after B20_R167 and before B20_R157 (35 min); the protected judge is called, never changed | ran 30 Oct 2026, 01:15:56-01:49:55 SGT, from the clean worktree /home/claude/r173-wt at d8cb798 | 30 Oct, about 08:00: on this family 7 of the judge's 47 random L0 calibration engines would also have cleared the release bar; the release is not evidence that the search beats random sampling (record amended, disclosed)",
    "outcome": "RELEASED (valid): the protected judge, unchanged, released C0_1 over REX on planar2_pm1: B gain +1.220% against tau 0.782%; v3 releases too (tau 0.493%); truth +1.122% on 24 of 24 fresh graphs (p 6e-8). First release by that judge of an engine Genesis's own search found; one family; the expectation (NOT_RELEASED) was wrong",
    "output": "evidence/protected_release_b20r173",
    "positive": true,
@@ -859,6 +859,32 @@
    "script": "scripts/b20r173_protected_release.py",
    "status": "done",
    "title": "A release attempt through the protected judge: C0_1, the confirmed engine gain of B20_R165, on fresh planar2_pm1 graphs; version 3 reported beside it",
+   "unlocks": []
+  },
+  "B20_R174": {
+   "artifacts": [],
+   "committed": true,
+   "depends_on": [
+    "B20_R173",
+    "B20_R172"
+   ],
+   "failure": null,
+   "id": "B20_R174",
+   "kind": "study",
+   "line": "engine-invention",
+   "notes": "from B20_R173's amended record (7 of 47 random L0 engines would also have been released); preregistered 30 Oct 2026; runs after B20_R172 (about 3.5 h)",
+   "outcome": null,
+   "output": "evidence/search_vs_random_b20r174",
+   "positive": null,
+   "preregistered": "sha256 842a9d730182a23b5c94790c81b858f1b3e70704b0b9a09d8f2e4122e5302924 (the preregistration commit)",
+   "priority": 6,
+   "requires": [],
+   "resources": {
+    "cpu0_hours": 3.5
+   },
+   "script": "scripts/b20r174_search_vs_random.py",
+   "status": "queued",
+   "title": "The search against random sampling of the same language, on +-1-weighted planar graphs: the control B20_R173 lacks",
    "unlocks": []
   },
   "allocator-baselines": {
@@ -1967,6 +1993,11 @@
    "id": "B20_R144",
    "kind": "start",
    "time": "2026-10-29T23:44:57+00:00"
+  },
+  {
+   "id": "B20_R174",
+   "kind": "add",
+   "time": "2026-10-30T00:20:47+00:00"
   }
  ],
  "lines": {
@@ -2255,7 +2286,8 @@
   "B20_R171",
   "B20_R172",
   "ledger-row-schema",
-  "B20_R173"
+  "B20_R173",
+  "B20_R174"
  ],
  "reactivated": {},
  "schema": "genesis-research-queue-v1",

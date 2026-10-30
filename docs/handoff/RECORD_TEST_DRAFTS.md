@@ -1207,3 +1207,59 @@ json.dump({{'rc': rc, 'summary': summary, 'search': json.loads(json.dumps(sr, so
             for f in ('total', 'reference', 'value', 'spent', 'budget', 'branches', 'verify_calls', 'S7'):
                 self.assertEqual(r.get(f), saved.get(f), (r['world'], r['arm'], f))
 ```
+
+## RecordB20R174 (append to `tests_genesis/test_search_vs_random_study.py`)
+
+Written on 30 Oct 2026, 08:30 SGT, with the script (sha256 `842a9d73…2924`), before the study ran. It was dry-run on
+a rehearsal output (the design test's small graphs, fake runner, `excluded=set()`, sizes (2, 4, 2), 10 evaluations),
+where the replay and the CPU/verdict tests pass (the digest test then checks the real script). The file has `json`,
+`Path`, `tempfile`, `unittest`, `ROOT` and `S`.
+
+```python
+
+R174 = ROOT / 'evidence' / 'search_vs_random_b20r174'
+
+
+@unittest.skipUnless((R174 / 'summary.json').exists(), 'B20_R174 has not been recorded')
+class RecordB20R174(unittest.TestCase):
+    """The record of B20_R174 on its evidence: the script; the CPU medians; the whole study replayed from the saved
+    runs (main on a copy of runs.jsonl with every engine run forbidden, so a missing run fails), which regenerates the
+    graphs, re-derives the three random arms' samples, finalists and winners, the truth, validity, P1 and the
+    verdict, to the same summary."""
+    DIR, KW = R174, {}
+
+    @classmethod
+    def setUpClass(cls):
+        cls.s = json.loads((cls.DIR / 'summary.json').read_text())
+        cls.runs = [json.loads(x) for x in (cls.DIR / 'runs.jsonl').read_text().splitlines() if x.strip()]
+
+    def test_the_script(self):
+        if self.DIR != R174:
+            return
+        import hashlib
+        self.assertEqual(hashlib.sha256((ROOT / 'scripts' / 'b20r174_search_vs_random.py').read_bytes()).hexdigest(),
+                         '842a9d730182a23b5c94790c81b858f1b3e70704b0b9a09d8f2e4122e5302924')
+
+    def test_cpu_and_the_verdict(self):
+        import statistics
+        one = [r['cpu'] for r in self.runs if r['key'].endswith('|1')]
+        self.assertEqual(self.s['validity']['cpu'], statistics.median(one) >= 0.9 * S.BUDGET)
+        self.assertEqual(self.s['valid'], all(self.s['validity'].values()))
+        self.assertEqual(self.s['verdict'], S.verdict(self.s['valid'], self.s['results']))
+        self.assertEqual(len({r['key'] for r in self.runs}), len(self.runs))
+
+    def test_the_study_replays_from_the_saved_runs(self):
+        import shutil
+
+        def forbidden(*a, **kw):
+            raise AssertionError('a run missing from the evidence')
+        with tempfile.TemporaryDirectory() as d:
+            shutil.copy(self.DIR / 'runs.jsonl', Path(d) / 'runs.jsonl')
+            rc = S.main([d], registered=True, runner=forbidden, output=d, **self.KW)
+            self.assertEqual(rc, 0)
+            self.assertEqual((Path(d) / 'runs.jsonl').read_text(), (self.DIR / 'runs.jsonl').read_text())
+            got = json.loads((Path(d) / 'summary.json').read_text())
+        drop = ('code_identity',)
+        self.assertEqual({k: v for k, v in got.items() if k not in drop},
+                         {k: v for k, v in self.s.items() if k not in drop})
+```

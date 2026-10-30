@@ -70,7 +70,7 @@ good ones, so version 2's tau will be several times C0_1's gain". **That was wro
 - The expectation's other parts held: version 3 releases, and C0_1 beats REX on the truth set by about 1%.
 - B20_R165's record had predicted the judge's power on this family better than this script's expectation did.
 
-## Against random engines (an analysis added on 30 Oct 2026, 08:05 SGT, after this record was first pushed; disclosed)
+## Against random engines (an analysis added on 30 Oct 2026, about 08:00 SGT, after this record was first pushed; disclosed)
 
 The judge's calibration evaluated REX and 47 random engines of the L0 language on the same B and C splits
 (`calls.json`). Their B scores show that **on this family REX is weak, and much of C0_1's margin over it is available
@@ -110,7 +110,7 @@ recomputes these counts from `calls.json`.
    2's blindness below about 1% (B20_R132) still stands on other classes.
 4. **Next (candidates, not queued here):**
    - The control this result lacks: Genesis's search against random sampling of the same language at matched
-     evaluations, on fresh ±1-weighted planar graphs, both through the protected judge.
+     evaluations, on fresh ±1-weighted planar graphs. Preregistered on 30 Oct 2026 as B20_R174.
    - B20_R136 (running) asks whether an invented sense can use C0_1 only where it wins.
    - An invention search on planar2_pm1 with this judge in the loop, from C0_1 as the incumbent, would ask whether
      Genesis compounds a released gain.
