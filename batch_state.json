@@ -1532,6 +1532,12 @@
         ],
         "result": "Checkpoint GENESIS_COMPLETION_CHECKPOINT_B20_R169 (5d7b7f0; parent B20_R148): release matrix 2,664 tests all OK (one declared skip), run in two parts and merged; 81,343,766 bytes, SHA-256 dcd5a0fdbcd6a40286cfd3ae4d100d1334f8a7a0bdd5214cd74e0109e3de7112; restore-verified (6,999 manifest entries; same commit and tree); archived whole (archive 14a7651). First attempt stopped on an undeclared skip (the OR-Tools wheel not passed)"
       },
+      "B20_R177": {
+        "commits": [
+          "a7303de"
+        ],
+        "result": "Preregistered (DEV): PT-2, the proving test again with the inadequacy gate judged bound by bound (Daniel: Do the best, 30 Oct 20:06; the builder's choice after seeing PT-1, disclosed). PT-1's code, families, constants and pins with fresh seeds; the predecessor runs three times on A; A' = bounds none certified; the discovery must be in A'. Expectation NOT_PROVED_OUT. Runs after B20_R175 (about 6.5 h)"
+      },
       "B20_R175": {
         "commits": [
           "8610f69",
