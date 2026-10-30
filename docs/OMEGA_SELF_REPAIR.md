@@ -6,7 +6,8 @@
 
 Adopted on 30 Oct 2026 as a requirement on the whole system. This document says where Genesis stands against it,
 what the loop is in this repository's terms, what it may never do, the test that would show it works, and the build
-order. Nothing here is built yet.
+order. **State (30 Oct 2026, 23:20):** SR-a's capture and SR-b are built (`src/genesis/repair/`,
+`tests_genesis/test_repair_capture.py`); everything else is not.
 
 ## 1. Where Genesis stands (30 Oct 2026)
 
@@ -95,7 +96,7 @@ These are the rules of `docs/GENESIS_OMEGA_PLAN.md` §2, applied to repair.
 A study, preregistered when the loop is built. The obstacles are sealed.
 
 - **The real obstacles.** B20R158-TEMPLATE, B20R177-LIBRARY and B20R177-SEEN, each at its pre-repair commit with the
-  failing run's state. The held-out check is the builder's regression test for it, kernel side. B20R163-META is
+  failing run's state. The vault is used leave-one-out on them: retrieving a defect's own repair never counts. The held-out check is the builder's regression test for it, kernel side. B20R163-META is
   included as the design-level case, expected to fail in the first version.
 - **A generated obstacle zoo.** Defects planted by a kernel-side generator in research-plane modules, in the classes
   of §2.3, each with a sealed regression test, and with controls:
@@ -125,8 +126,8 @@ A study, preregistered when the loop is built. The obstacles are sealed.
 
 | Batch | Content |
 |---|---|
-| SR-a | Failure capture: a slice that fails keeps its traceback and state; the reproducer is extracted from the last saved state |
-| SR-b | The repair vault: failure signatures; the four entries of §1 |
+| SR-a | Failure capture: a slice that fails keeps its traceback and state; the reproducer is extracted from the last saved state. **Capture BUILT** (`repair/capture.py`): the last chained traceback parsed into a failure (frames relative to the repository, whatever worktree ran), its signature, the default-deny boundary of §3, escalation when the fault is raised inside a protected module; it parses and signs the three real crashes. The reproducer is not built |
+| SR-b | The repair vault: failure signatures; the four entries of §1. **BUILT** (`repair/vault.py`): retrieval ranks by the innermost repairable function and file, the exception chain and the blanked source line; each real crash retrieves its own entry first, and nothing when that entry is left out |
 | SR-c | Localisation and template repair over research-plane functions, searched by the Frontier |
 | SR-d | The kernel repair verifier: the checks of §2.5, the boundary, sealed regression tests (kernel side) |
 | SR-e | The protocol driver: stop, amend with disclosures, re-run, notify the Supervisor |
