@@ -1566,6 +1566,12 @@
           "4ef1db6"
         ],
         "result": "Recorded (DEV, CPU 1): SR-1a, the obstacle loop on the state-management testbed. MILESTONE_DEMONSTRATED: 24 of 39 held-out obstacles repaired end to end (verified by the kernel, promoted, resumed from the interrupted checkpoint, retained), isolation measured and held, 12 controls held. NOLOCAL_BEATS_LOOP 35-24, RANDOM_BEATS_LOOP 36-24, ENUM_BEATS_LOOP 33-24; retrieval 18 (no difference). REUSE_SHOWN: 20 against 12 seed-2/3 jobs; first passing candidate after 1.1 evaluations against 29.0. The verifier accepted a storage-leaking repair in 9 comparator episodes (no resource check). docs/checkpoints/B20_R178_RECORD.md"
+      },
+      "B20_R176": {
+        "commits": [
+          "2e7fd2f"
+        ],
+        "result": "Checkpoint GENESIS_COMPLETION_CHECKPOINT_B20_R176 (2e7fd2f; parent B20_R169): release matrix 2,723 tests all OK (one declared skip), run in two parts and merged; 82,429,873 bytes, SHA-256 43d8621b74f21a7c5c19e3a4316df34a9360d9686e6ecf14811677e4358fbd81; restore-verified (7,079 manifest entries, commit and tree, 7,077 tracked files); archived whole (archive 10b01e6)"
       }
     },
     "open_after_b20_r5": [

@@ -335,6 +335,9 @@ needs people: a reviewer, a statistician, an independent custodian on its own ma
         CPU 1): MILESTONE_DEMONSTRATED (24 of 39 held-out obstacles repaired end to end), REUSE_SHOWN, and
         NOLOCAL/RANDOM/ENUM_BEATS_LOOP (unfocused search repaired more). The checkpoint B20_R176's part 1 passed
         (23:57:52); part 2 runs from 23:57:56; PT-2's third attempt follows on CPU 0.
+      - **The checkpoint B20_R176 is made** (`2e7fd2f`, SHA-256 `43d8621b…bd81`): 2,723 tests all OK, restore-verified,
+        archived whole (`archive` `10b01e6`). **PT-2's third attempt runs** on CPU 0 from 00:11:36 (`/home/claude/pt2c-wt`
+        at `75b5bac`; slices of 6,600 s).
   26c. **Daniel's directive of 27 Oct 2026, 19:55 is adopted**: `docs/OMEGA_FRONTIER.md`, written in detail for
       handoff at his request (20:01). Genesis works by divergence and convergence (imagine, mutate, recombine,
       branch out, extrapolate discovery curves, detect convergence, allocate), without handholding. The
