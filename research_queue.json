@@ -602,7 +602,10 @@
    "unlocks": []
   },
   "B20_R157": {
-   "artifacts": [],
+   "artifacts": [
+    "evidence/laplacian_bounds_b20r157",
+    "docs/checkpoints/B20_R157_RECORD.md"
+   ],
    "committed": true,
    "depends_on": [
     "frontier-f2-build",
@@ -613,9 +616,9 @@
    "kind": "study",
    "line": "frontier",
    "notes": "Daniel's directive of 27 Oct 2026, 19:55 (docs/OMEGA_FRONTIER.md); to preregister after a timing pilot; preregistered 27 Oct 2026 21:40 SGT | 29 Oct 2026: queued to run again in full from a clean worktree at ff9eada after B20_R167. | the amended run started 30 Oct 2026, 08:23:37 SGT, from the clean worktree /home/claude/f4b-wt at ff9eada",
-   "outcome": null,
+   "outcome": "PARTIAL (valid): FRONTIER beats NRPA (12-2, p_Holm 0.032), not GBFS (2-7), CEM, UCB or UNIFORM; refuted (both checks) GBFS 19, FRONTIER 14, UCB 13, UNIFORM 12, CEM 9, NRPA 4 of 33; nothing on 44 or 46; descriptively the joint arms' Gamma-built refutations above 40 vertices bring them to 25-26, level with each other",
    "output": "evidence/laplacian_bounds_b20r157",
-   "positive": null,
+   "positive": false,
    "preregistered": "sha256 fb5dd07e5ccce94a8d80fe951611d1a21235be26ab6a45ad26149fc67f075785 (amended at ff9eada after a first attempt killed by out of memory; first sha256 49b171f9...1904 at bdf0c57)",
    "priority": 6,
    "requires": [],
@@ -623,7 +626,7 @@
     "cpu0_hours": 2.5
    },
    "script": "scripts/b20r157_laplacian_bounds.py",
-   "status": "running",
+   "status": "done",
    "title": "F4: the sealed Laplacian bounds: refutations by exact certificate within budget, the Frontier against NRPA, GBFS, CEM and the uniform portfolio at matched CPU; no certificate against a proved bound; bounds 44 and 46 open as of June 2026",
    "unlocks": []
   },
@@ -637,7 +640,7 @@
    "id": "B20_R158",
    "kind": "study",
    "line": "frontier",
-   "notes": "Daniel's directive of 27 Oct 2026, 19:55 (docs/OMEGA_FRONTIER.md); to preregister; preregistered 27 Oct 2026 22:55 SGT",
+   "notes": "Daniel's directive of 27 Oct 2026, 19:55 (docs/OMEGA_FRONTIER.md); to preregister; preregistered 27 Oct 2026 22:55 SGT | started 30 Oct 2026, 10:44:29 SGT, from the clean worktree /home/claude/f5b-wt at ff9eada (before the checkpoint window, so CPU 0 was not idle while B20_R157 was recorded)",
    "outcome": null,
    "output": "evidence/open_conjectures_b20r158",
    "positive": null,
@@ -648,7 +651,7 @@
     "cpu0_hours": 1.5
    },
    "script": "scripts/b20r158_open_conjectures.py",
-   "status": "queued",
+   "status": "running",
    "title": "F5: open-ended generations: Genesis poses its own conjectures from its own data, attacks them, abstracts named constructions from converged counterexamples and reuses them (trend, rediscoveries, survivors, compounding; controls without abstraction, without extrapolation, with a fixed curriculum)",
    "unlocks": []
   },
@@ -2013,6 +2016,18 @@
    "id": "B20_R157",
    "kind": "start",
    "time": "2026-10-30T00:32:16+00:00"
+  },
+  {
+   "id": "B20_R157",
+   "kind": "finish",
+   "outcome": "PARTIAL (valid): FRONTIER beats NRPA (12-2, p_Holm 0.032), not GBFS (2-7), CEM, UCB or UNIFORM; refuted (both checks) GBFS 19, FRONTIER 14, UCB 13, UNIFORM 12, CEM 9, NRPA 4 of 33; nothing on 44 or 46; descriptively the joint arms' Gamma-built refutations above 40 vertices bring them to 25-26, level with each other",
+   "positive": false,
+   "time": "2026-10-30T02:49:30+00:00"
+  },
+  {
+   "id": "B20_R158",
+   "kind": "start",
+   "time": "2026-10-30T02:49:30+00:00"
   }
  ],
  "lines": {
@@ -2173,9 +2188,14 @@
      "frontier-f2-build",
      "built on 27 Oct 2026 (docs/OMEGA_FRONTIER.md \u00a712): the conjecture domain (expr, graphs, attack, domain, abstraction, generate; kernel side sealed, verify) and the sealed set of 68 bounds tiered; marked done in the queue on 28 Oct, late (bookkeeping)",
      true
+    ],
+    [
+     "B20_R157",
+     "PARTIAL (valid): FRONTIER beats NRPA (12-2, p_Holm 0.032), not GBFS (2-7), CEM, UCB or UNIFORM; refuted (both checks) GBFS 19, FRONTIER 14, UCB 13, UNIFORM 12, CEM 9, NRPA 4 of 33; nothing on 44 or 46; descriptively the joint arms' Gamma-built refutations above 40 vertices bring them to 25-26, level with each other",
+     false
     ]
    ],
-   "run": 0,
+   "run": 1,
    "stagnant": false
   },
   "general": {

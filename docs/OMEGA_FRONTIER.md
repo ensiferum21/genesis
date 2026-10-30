@@ -909,7 +909,7 @@ B20_R164).
 | F2, the conjecture domain | BUILT (the Wagner rebuild test added 28 Oct 2026: an exact Collatz–Wielandt certificate against Aouchiche–Hansen on Wagner's 19-vertex tree, rebuilt from its stated λ₁ = √10 and μ = 2) | `src/genesis/conjecture/` (`expr`, `graphs`, `attack`, `domain`, `abstraction`, `generate`; kernel side `sealed`, `verify`); `tests_genesis/test_conjecture_domain.py` |
 | The sealed set | DONE: 68 bounds tiered, semantic checks | `conjecture/sealed.py`; `evidence/bhs_transcription_f2/` |
 | F3 = B20_R156 | PREREGISTERED, amended before it ran (`4a7e193`, sha256 `9ae034db…353a`) | `scripts/b20r156_frontier_worlds.py` |
-| F4 = B20_R157 | PREREGISTERED (`bdf0c57`, sha256 `49b171f9…1904`) | `scripts/b20r157_laplacian_bounds.py` |
+| F4 = B20_R157 | **DONE: PARTIAL** (amended at `ff9eada`, sha256 `fb5dd07e…5785`; NRPA beaten, not GBFS, CEM, UCB or UNIFORM; `docs/checkpoints/B20_R157_RECORD.md`) | `scripts/b20r157_laplacian_bounds.py` |
 | F5 = B20_R158 | PREREGISTERED (sha256 `50d2de64a7ad…`; runs after B20_R157): FULL (procedures, abstraction, templates carried over) against PLAIN on Genesis's own conjectures, three generations, McNemar | `scripts/b20r158_open_conjectures.py` |
 | F6 = B20_R163 | PREREGISTERED (sha256 `e71bfb69365b…`; runs after B20_R158): a meta-search over 729 engine configurations on one sealed meta-training world; the promoted configuration against the defaults given the meta-search's compute (matched total) and at equal budget, on 24 held-out worlds of two new families; machinery `frontier/meta.py` (B20_R162) | `scripts/b20r163_frontier_meta.py` |
 | F6-adjacent: PT-1's family B | BUILT (B20_R161): 53 Graffiti statements, posed text, domain, double kernel check | §7b |
@@ -933,19 +933,18 @@ commit through `git show`.
     protected judge released C0_1 on planar2_pm1. CPU 0 was then idle until 07:25 (disclosed).
 4c. **B20_R136: done, NOT_SHOWN** (30 Oct 2026, 07:25–07:38 SGT; `docs/checkpoints/B20_R136_RECORD.md`).
 4d. **B20_R144: done, NOTHING_ADOPTED** (30 Oct 2026, 07:38–08:23 SGT; `docs/checkpoints/B20_R144_RECORD.md`).
-5. **B20_R157 (F4): its first attempt was killed (out of memory, 02:10 UTC), and it is AMENDED at `ff9eada`.**
-   - The cause was the star-size defect (B20R157-STAR in `docs/BLOCKING_DEFECTS.md`).
-   - It runs again in full from a clean worktree at `ff9eada`: **running from 30 Oct 2026, 08:23:37 SGT** in
-     `/home/claude/f4b-wt`. Resume each slice with
-     `/home/claude/run_slice.sh /home/claude/f4b-wt scripts/b20r157_laplacian_bounds.py evidence/laplacian_bounds_b20r157 /home/claude/logs/f4b_slices.log`.
-   - The first attempt's rows: `evidence/laplacian_bounds_b20r157_attempt1/` (not used).
-   - Record it with the RecordB20R157 draft, updated for the amended digest.
+5. **B20_R157 (F4): done, PARTIAL** (30 Oct 2026, 08:24–10:44 SGT, from `/home/claude/f4b-wt` at `ff9eada`;
+   `docs/checkpoints/B20_R157_RECORD.md`). FRONTIER beats NRPA only; GBFS refuted the most (19 of 33). Descriptively,
+   the joint arms' Γ-built refutations above 40 vertices (beyond the Sturm check) bring them to 25–26 of 33, level with
+   each other.
 5b. **B20_R167: done, ARA_CALIBRATED** (recorded 30 Oct 2026; `docs/checkpoints/B20_R167_RECORD.md`). The second
    session's attempt from 28 Oct, 02:16 UTC was lost with its session; the study restarted from scratch on 29 Oct at
    13:30 UTC from `/home/claude/r167-wt` at `33e8905` and ended at 17:15 UTC (three slices). The slice runner is
    `/home/claude/run_slice.sh` (WORKTREE SCRIPT OUTPUT LOG; committed nowhere: it cds into the worktree, pins CPU 0
    with taskset, and logs RUNTREE/START/END to `/home/claude/chain.log`).
-6. **A checkpoint window** (B20_R169): the release matrix and the checkpoint need CPU 0 free of studies (the
+5c. **B20_R158 (F5)**: running from 30 Oct 2026, 10:44:29 SGT, from `/home/claude/f5b-wt` at `ff9eada`, brought before
+   the checkpoint window so that CPU 0 was not idle while B20_R157 was recorded.
+6. **A checkpoint window** (B20_R169), after B20_R158: the release matrix and the checkpoint need CPU 0 free of studies (the
    sandbox suite); the last checkpoint is B20_R148.
 7. **B20_R158 (F5), AMENDED before it ran (`ff9eada`)**, from a clean worktree at `ff9eada`. The old
    `/home/claude/f5-wt` at `703b2ee` must not be used.

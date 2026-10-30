@@ -100,5 +100,49 @@ class EndToEnd(unittest.TestCase):
             self.assertIn('t1', sa['refuted']['FRONTIER'])
 
 
+
+R157 = ROOT / 'evidence' / 'laplacian_bounds_b20r157'
+
+
+@unittest.skipUnless((R157 / 'summary.json').exists(), 'B20_R157 has not been recorded')
+class RecordB20R157(unittest.TestCase):
+    """The record of B20_R157 (F4) on its evidence: the script; every artifact double checked again by the kernel;
+    the refuted sets, the null check, the analysis and the verdict recomputed."""
+
+    @classmethod
+    def setUpClass(cls):
+        cls.s = json.loads((R157 / 'summary.json').read_text())
+        cls.rows = {}
+        for line in (R157 / 'rows.jsonl').read_text().splitlines():
+            if line.strip():
+                r = json.loads(line)
+                cls.rows[(r['arm'], r.get('problem'))] = r
+
+    def test_the_script(self):
+        import hashlib
+        self.assertEqual(hashlib.sha256((ROOT / 'scripts' / 'b20r157_laplacian_bounds.py').read_bytes()).hexdigest(),
+                         'fb5dd07e5ccce94a8d80fe951611d1a21235be26ab6a45ad26149fc67f075785')
+
+    def test_the_kernel_checks_recompute(self):
+        from genesis.conjecture import sealed as SD
+        problems, number_of = S.posed()
+        self.assertEqual({p: number_of[p] for p in problems}, {k: v for k, v in self.s['ids'].items()})
+        refuted = {}
+        for arm in S.ARMS:
+            arts = self.rows[(arm, None)]['artifacts'] if arm in S.JOINT else \
+                {p: self.rows[(arm, p)]['artifact'] for p in problems if 'artifact' in self.rows[(arm, p)]}
+            refuted[arm] = {p for p, art in arts.items() if S.double_check(*problems[p], art) == 'CONFIRMED'}
+            self.assertEqual(sorted(number_of[p] for p in refuted[arm]), self.s['refuted'][arm])
+        status_of = {p: SD.status(number_of[p]) for p in problems}
+        nulls = sorted({number_of[p] for a in S.ARMS for p in refuted[a] if status_of[p] == 'proved'})
+        self.assertEqual(nulls, self.s['proved_bounds_refuted'])
+        res = S.analyse(refuted, status_of, number_of)
+        for c in S.COMPARATORS:
+            for k in ('frontier_only', 'comparator_only', 'label'):
+                self.assertEqual(res['P1'][c][k], self.s['results']['P1'][c][k])
+            self.assertAlmostEqual(res['P1'][c]['p_holm'], self.s['results']['P1'][c]['p_holm'])
+        self.assertEqual(S.verdict(self.s['valid'], res)[0], self.s['verdict'])
+
+
 if __name__ == '__main__':
     unittest.main()

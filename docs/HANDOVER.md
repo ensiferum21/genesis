@@ -278,6 +278,10 @@ needs people: a reviewer, a statistician, an independent custodian on its own ma
       - **B20_R144 is recorded** (`docs/checkpoints/B20_R144_RECORD.md`): NOTHING_ADOPTED. ARA's meta-cycle located
         nothing and its six candidate settings changed no result; the fall-back order is alphabetical, so the
         variants and the ranking were never tried (fix before B20_R145). B20_R157 (F4) started at 08:23:37.
+      - **B20_R157 (F4) is recorded** (`docs/checkpoints/B20_R157_RECORD.md`): PARTIAL. The Frontier beats NRPA,
+        not GBFS (19 refutations to its 14), CEM, UCB or uniform; Γ-built refutations above 40 vertices were beyond
+        the preregistered second check (descriptively all confirmed: the joint arms at 25–26 of 33, level with each
+        other). B20_R158 (F5) started at 10:44:29, before the checkpoint window.
   26c. **Daniel's directive of 27 Oct 2026, 19:55 is adopted**: `docs/OMEGA_FRONTIER.md`, written in detail for
       handoff at his request (20:01). Genesis works by divergence and convergence (imagine, mutate, recombine,
       branch out, extrapolate discovery curves, detect convergence, allocate), without handholding. The
