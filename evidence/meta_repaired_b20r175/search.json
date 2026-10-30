@@ -1,0 +1,709 @@
+{
+ "as_scheduled": true,
+ "branches": [
+  {
+   "branch": 0,
+   "member_spent": [
+    603,
+    602,
+    604,
+    608
+   ],
+   "params": {
+    "eps": 0.4,
+    "k_imagine": 1,
+    "lam_con": 0.1,
+    "lam_lp": 0.0,
+    "patience_quanta": 8,
+    "stall": 80
+   },
+   "t": 2400.0,
+   "value": 0.2271685757453685
+  },
+  {
+   "branch": 1,
+   "member_spent": [
+    1505,
+    1508,
+    1504,
+    1504
+   ],
+   "params": {
+    "eps": 0.4,
+    "k_imagine": 1,
+    "lam_con": 0.02,
+    "lam_lp": 0.0,
+    "patience_quanta": 4,
+    "stall": 40
+   },
+   "t": 6000.0,
+   "value": 0.2971550180653122
+  },
+  {
+   "branch": 2,
+   "member_spent": [
+    609,
+    600,
+    604,
+    603
+   ],
+   "params": {
+    "eps": 0.25,
+    "k_imagine": 32,
+    "lam_con": 0.0,
+    "lam_lp": 0.0,
+    "patience_quanta": 4,
+    "stall": 80
+   },
+   "t": 2400.0,
+   "value": 0.2404462133119688
+  },
+  {
+   "branch": 3,
+   "member_spent": [
+    1501,
+    1503,
+    1509,
+    1506
+   ],
+   "params": {
+    "eps": 0.4,
+    "k_imagine": 32,
+    "lam_con": 0.1,
+    "lam_lp": 1.0,
+    "patience_quanta": 2,
+    "stall": 20
+   },
+   "t": 6000.0,
+   "value": 0.43912405796040466
+  },
+  {
+   "branch": 4,
+   "member_spent": [
+    1500,
+    1501,
+    1509,
+    1507
+   ],
+   "params": {
+    "eps": 0.1,
+    "k_imagine": 8,
+    "lam_con": 0.1,
+    "lam_lp": 0.0,
+    "patience_quanta": 4,
+    "stall": 40
+   },
+   "t": 6000.0,
+   "value": 0.35125401960002467
+  },
+  {
+   "branch": 5,
+   "member_spent": [
+    609,
+    604,
+    607,
+    605
+   ],
+   "params": {
+    "eps": 0.1,
+    "k_imagine": 1,
+    "lam_con": 0.1,
+    "lam_lp": 0.0,
+    "patience_quanta": 4,
+    "stall": 20
+   },
+   "t": 2400.0,
+   "value": 0.2610035742878942
+  },
+  {
+   "branch": 6,
+   "member_spent": [
+    604,
+    600,
+    610,
+    601
+   ],
+   "params": {
+    "eps": 0.25,
+    "k_imagine": 8,
+    "lam_con": 0.0,
+    "lam_lp": 1.0,
+    "patience_quanta": 8,
+    "stall": 20
+   },
+   "t": 2400.0,
+   "value": 0.22754534247139124
+  },
+  {
+   "branch": 7,
+   "member_spent": [
+    602,
+    609,
+    609,
+    600
+   ],
+   "params": {
+    "eps": 0.25,
+    "k_imagine": 1,
+    "lam_con": 0.1,
+    "lam_lp": 0.0,
+    "patience_quanta": 4,
+    "stall": 80
+   },
+   "t": 2400.0,
+   "value": 0.24199107830758967
+  },
+  {
+   "branch": 8,
+   "member_spent": [
+    607,
+    608,
+    602,
+    603
+   ],
+   "params": {
+    "eps": 0.4,
+    "k_imagine": 8,
+    "lam_con": 0.1,
+    "lam_lp": 3.0,
+    "patience_quanta": 8,
+    "stall": 20
+   },
+   "t": 2400.0,
+   "value": 0.1819098816105427
+  },
+  {
+   "branch": 9,
+   "member_spent": [
+    1506,
+    1502,
+    1509,
+    1506
+   ],
+   "params": {
+    "eps": 0.4,
+    "k_imagine": 8,
+    "lam_con": 0.1,
+    "lam_lp": 1.0,
+    "patience_quanta": 4,
+    "stall": 40
+   },
+   "t": 6000.0,
+   "value": 0.5414446710426117
+  },
+  {
+   "branch": 10,
+   "member_spent": [
+    11999,
+    11999,
+    11992,
+    11994
+   ],
+   "params": {
+    "eps": 0.4,
+    "k_imagine": 8,
+    "lam_con": 0.0,
+    "lam_lp": 1.0,
+    "patience_quanta": 4,
+    "stall": 40
+   },
+   "t": 48000.0,
+   "value": 2.1633769187247593
+  },
+  {
+   "branch": 11,
+   "member_spent": [
+    600,
+    604,
+    607,
+    608
+   ],
+   "params": {
+    "eps": 0.1,
+    "k_imagine": 1,
+    "lam_con": 0.0,
+    "lam_lp": 0.0,
+    "patience_quanta": 4,
+    "stall": 20
+   },
+   "t": 2400.0,
+   "value": 0.2527622025292503
+  },
+  {
+   "branch": 12,
+   "member_spent": [
+    4202,
+    4204,
+    4203,
+    4203
+   ],
+   "params": {
+    "eps": 0.4,
+    "k_imagine": 8,
+    "lam_con": 0.1,
+    "lam_lp": 1.0,
+    "patience_quanta": 2,
+    "stall": 20
+   },
+   "t": 16800.0,
+   "value": 0.7088704365015857
+  },
+  {
+   "branch": 13,
+   "member_spent": [
+    600,
+    610,
+    608,
+    604
+   ],
+   "params": {
+    "eps": 0.4,
+    "k_imagine": 32,
+    "lam_con": 0.0,
+    "lam_lp": 0.0,
+    "patience_quanta": 8,
+    "stall": 20
+   },
+   "t": 2400.0,
+   "value": 0.1801447758620759
+  },
+  {
+   "branch": 14,
+   "member_spent": [
+    4204,
+    4205,
+    4204,
+    4200
+   ],
+   "params": {
+    "eps": 0.4,
+    "k_imagine": 1,
+    "lam_con": 0.0,
+    "lam_lp": 1.0,
+    "patience_quanta": 2,
+    "stall": 80
+   },
+   "t": 16800.0,
+   "value": 0.9224118551169151
+  },
+  {
+   "branch": 15,
+   "member_spent": [
+    608,
+    605,
+    608,
+    605
+   ],
+   "params": {
+    "eps": 0.25,
+    "k_imagine": 8,
+    "lam_con": 0.0,
+    "lam_lp": 0.0,
+    "patience_quanta": 4,
+    "stall": 80
+   },
+   "t": 2400.0,
+   "value": 0.26453891899610166
+  },
+  {
+   "branch": 16,
+   "member_spent": [
+    607,
+    603,
+    609,
+    604
+   ],
+   "params": {
+    "eps": 0.4,
+    "k_imagine": 8,
+    "lam_con": 0.0,
+    "lam_lp": 1.0,
+    "patience_quanta": 2,
+    "stall": 80
+   },
+   "t": 2400.0,
+   "value": 0.247598561058698
+  },
+  {
+   "branch": 17,
+   "member_spent": [
+    608,
+    606,
+    603,
+    606
+   ],
+   "params": {
+    "eps": 0.25,
+    "k_imagine": 32,
+    "lam_con": 0.1,
+    "lam_lp": 1.0,
+    "patience_quanta": 2,
+    "stall": 20
+   },
+   "t": 2400.0,
+   "value": 0.23881442728738425
+  },
+  {
+   "branch": 18,
+   "member_spent": [
+    1505,
+    1503,
+    1505,
+    1510
+   ],
+   "params": {
+    "eps": 0.1,
+    "k_imagine": 8,
+    "lam_con": 0.1,
+    "lam_lp": 3.0,
+    "patience_quanta": 2,
+    "stall": 80
+   },
+   "t": 6000.0,
+   "value": 0.5367102931411782
+  },
+  {
+   "branch": 19,
+   "member_spent": [
+    603,
+    600,
+    604,
+    609
+   ],
+   "params": {
+    "eps": 0.1,
+    "k_imagine": 8,
+    "lam_con": 0.0,
+    "lam_lp": 1.0,
+    "patience_quanta": 8,
+    "stall": 80
+   },
+   "t": 2400.0,
+   "value": 0.19488892912933098
+  },
+  {
+   "branch": 20,
+   "member_spent": [
+    610,
+    610,
+    609,
+    609
+   ],
+   "params": {
+    "eps": 0.1,
+    "k_imagine": 32,
+    "lam_con": 0.0,
+    "lam_lp": 3.0,
+    "patience_quanta": 8,
+    "stall": 20
+   },
+   "t": 2400.0,
+   "value": 0.15211201694570492
+  },
+  {
+   "branch": 21,
+   "member_spent": [
+    608,
+    604,
+    609,
+    606
+   ],
+   "params": {
+    "eps": 0.4,
+    "k_imagine": 8,
+    "lam_con": 0.0,
+    "lam_lp": 1.0,
+    "patience_quanta": 4,
+    "stall": 80
+   },
+   "t": 2400.0,
+   "value": 0.23903487251027164
+  },
+  {
+   "branch": 22,
+   "member_spent": [
+    605,
+    605,
+    607,
+    604
+   ],
+   "params": {
+    "eps": 0.4,
+    "k_imagine": 8,
+    "lam_con": 0.1,
+    "lam_lp": 0.0,
+    "patience_quanta": 8,
+    "stall": 20
+   },
+   "t": 2400.0,
+   "value": 0.1646518923943664
+  },
+  {
+   "branch": 23,
+   "member_spent": [
+    1507,
+    1502,
+    1507,
+    1508
+   ],
+   "params": {
+    "eps": 0.25,
+    "k_imagine": 1,
+    "lam_con": 0.0,
+    "lam_lp": 0.0,
+    "patience_quanta": 2,
+    "stall": 40
+   },
+   "t": 6000.0,
+   "value": 0.3450796338056698
+  },
+  {
+   "branch": 24,
+   "member_spent": [
+    605,
+    603,
+    608,
+    601
+   ],
+   "params": {
+    "eps": 0.1,
+    "k_imagine": 32,
+    "lam_con": 0.0,
+    "lam_lp": 3.0,
+    "patience_quanta": 8,
+    "stall": 40
+   },
+   "t": 2400.0,
+   "value": 0.2192470476580417
+  },
+  {
+   "branch": 25,
+   "member_spent": [
+    601,
+    601,
+    607,
+    601
+   ],
+   "params": {
+    "eps": 0.1,
+    "k_imagine": 32,
+    "lam_con": 0.1,
+    "lam_lp": 3.0,
+    "patience_quanta": 4,
+    "stall": 80
+   },
+   "t": 2400.0,
+   "value": 0.22086318879058287
+  },
+  {
+   "branch": 26,
+   "member_spent": [
+    609,
+    600,
+    610,
+    610
+   ],
+   "params": {
+    "eps": 0.4,
+    "k_imagine": 32,
+    "lam_con": 0.02,
+    "lam_lp": 3.0,
+    "patience_quanta": 4,
+    "stall": 80
+   },
+   "t": 2400.0,
+   "value": 0.19210860852639355
+  }
+ ],
+ "c_k": 257274,
+ "c_search": 161320,
+ "guard": {
+  "c_guard": 95954,
+  "means": {
+   "defaults": 1.951567455371018,
+   "survivor": 1.9387698139234697
+  },
+  "promote": false,
+  "runs": {
+   "defaults": [
+    {
+     "abstracted": 8,
+     "arm": "guard-defaults",
+     "branches": 91,
+     "budget": 12000,
+     "family": "Ma",
+     "null": false,
+     "reference": 6.297372710922718,
+     "revealed": 5,
+     "seed": 162614486117986,
+     "spent": 11992,
+     "total": 14.048230356643849,
+     "value": 2.230808148337379,
+     "verify_calls": 472
+    },
+    {
+     "abstracted": 11,
+     "arm": "guard-defaults",
+     "branches": 100,
+     "budget": 12000,
+     "family": "Ma",
+     "null": false,
+     "reference": 6.409807528478811,
+     "revealed": 5,
+     "seed": 41823655279086,
+     "spent": 11991,
+     "total": 13.550065530852383,
+     "value": 2.113958253917823,
+     "verify_calls": 451
+    },
+    {
+     "abstracted": 6,
+     "arm": "guard-defaults",
+     "branches": 129,
+     "budget": 12000,
+     "family": "Ma",
+     "null": false,
+     "reference": 6.207139792416706,
+     "revealed": 6,
+     "seed": 18021242662367,
+     "spent": 11994,
+     "total": 12.904173463206078,
+     "value": 2.0789242541260586,
+     "verify_calls": 424
+    },
+    {
+     "abstracted": 8,
+     "arm": "guard-defaults",
+     "branches": 115,
+     "budget": 12000,
+     "family": "Ma",
+     "null": false,
+     "reference": 6.314846554739626,
+     "revealed": 2,
+     "seed": 245099523558865,
+     "spent": 11995,
+     "total": 8.73077527740428,
+     "value": 1.3825791651028119,
+     "verify_calls": 375
+    }
+   ],
+   "survivor": [
+    {
+     "abstracted": 11,
+     "arm": "guard-survivor",
+     "branches": 106,
+     "budget": 12000,
+     "family": "Ma",
+     "null": false,
+     "reference": 6.297372710922718,
+     "revealed": 5,
+     "seed": 162614486117986,
+     "spent": 11991,
+     "total": 13.882284028574004,
+     "value": 2.204456471902218,
+     "verify_calls": 431
+    },
+    {
+     "abstracted": 9,
+     "arm": "guard-survivor",
+     "branches": 114,
+     "budget": 12000,
+     "family": "Ma",
+     "null": false,
+     "reference": 6.409807528478811,
+     "revealed": 5,
+     "seed": 41823655279086,
+     "spent": 12000,
+     "total": 13.125259636324056,
+     "value": 2.047683893472379,
+     "verify_calls": 420
+    },
+    {
+     "abstracted": 6,
+     "arm": "guard-survivor",
+     "branches": 133,
+     "budget": 12000,
+     "family": "Ma",
+     "null": false,
+     "reference": 6.207139792416706,
+     "revealed": 6,
+     "seed": 18021242662367,
+     "spent": 11997,
+     "total": 12.864515613512596,
+     "value": 2.0725351842775055,
+     "verify_calls": 417
+    },
+    {
+     "abstracted": 10,
+     "arm": "guard-survivor",
+     "branches": 116,
+     "budget": 12000,
+     "family": "Ma",
+     "null": false,
+     "reference": 6.314846554739626,
+     "revealed": 2,
+     "seed": 245099523558865,
+     "spent": 11994,
+     "total": 9.032779914984705,
+     "value": 1.4304037060417765,
+     "verify_calls": 364
+    }
+   ]
+  }
+ },
+ "nothing_promoted": true,
+ "outer_spent": 162058,
+ "promoted": {
+  "eps": 0.25,
+  "k_imagine": 8,
+  "lam_con": 0.02,
+  "lam_lp": 1.0,
+  "patience_quanta": 4,
+  "stall": 40
+ },
+ "stages": [
+  [
+   27,
+   2
+  ],
+  [
+   9,
+   3
+  ],
+  [
+   3,
+   9
+  ],
+  [
+   1,
+   27
+  ]
+ ],
+ "stages_seen": [
+  [
+   27,
+   27
+  ],
+  [
+   9,
+   9
+  ],
+  [
+   3,
+   3
+  ],
+  [
+   1,
+   1
+  ]
+ ],
+ "survivor": {
+  "eps": 0.4,
+  "k_imagine": 8,
+  "lam_con": 0.0,
+  "lam_lp": 1.0,
+  "patience_quanta": 4,
+  "stall": 40
+ },
+ "survivor_value": 2.1633769187247593
+}

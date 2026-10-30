@@ -1,0 +1,89 @@
+{
+ "study": "b20r175",
+ "schema": "genesis-b20r175-meta-repaired-v1",
+ "verdict": "NOT_SHOWN (NOTHING_PROMOTED)",
+ "valid": true,
+ "nulls_ok": true,
+ "spent_ok": true,
+ "pins_ok": true,
+ "grid_ok": true,
+ "as_scheduled": true,
+ "S6": {
+  "promoted": {
+   "eps": 0.25,
+   "lam_lp": 1.0,
+   "lam_con": 0.02,
+   "k_imagine": 8,
+   "patience_quanta": 4,
+   "stall": 40
+  },
+  "changed_from_defaults": {},
+  "survivor": {
+   "eps": 0.4,
+   "k_imagine": 8,
+   "lam_con": 0.0,
+   "lam_lp": 1.0,
+   "patience_quanta": 4,
+   "stall": 40
+  },
+  "survivor_search_value": 2.1633769187247593,
+  "guard_means": {
+   "survivor": 1.9387698139234697,
+   "defaults": 1.951567455371018
+  },
+  "nothing_promoted": true,
+  "c_search": 161320,
+  "c_guard": 95954,
+  "c_k": 257274,
+  "extra_budget_per_world": 10710,
+  "stages": [
+   [
+    27,
+    2
+   ],
+   [
+    9,
+    3
+   ],
+   [
+    3,
+    9
+   ],
+   [
+    1,
+    27
+   ]
+  ],
+  "stages_seen": [
+   [
+    27,
+    27
+   ],
+   [
+    9,
+    9
+   ],
+   [
+    3,
+    3
+   ],
+   [
+    1,
+    1
+   ]
+  ],
+  "f6_promoted": {
+   "eps": 0.1,
+   "k_imagine": 32,
+   "lam_con": 0.0,
+   "lam_lp": 3.0,
+   "patience_quanta": 2,
+   "stall": 80
+  },
+  "f6_c_meta": 73284,
+  "f6_opened": 21
+ },
+ "budget": 12000,
+ "code_identity": "2ef674b3832f8b1b17c1046dc9113b9312cfdfd15135c7c7fc51c0933bd39888",
+ "status": "DEV; a calibration; licenses nothing"
+}

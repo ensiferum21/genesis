@@ -109,6 +109,10 @@ after its extra cost. F6 (B20_R163) is the policy-only point of this design, and
   meta-search did not compare configurations at equal spend and promoted the first one it opened (B20R163-META), so
   the policy stage is not yet measured. B20_R175 (F6b) measures it with the repair (several training worlds, one
   successive-halving bracket, a guard against the defaults); G3 waits for it. B20_R170 (G2) inherits the defect.
+- **30 Oct 2026: B20_R175 (F6b) is NOT_SHOWN (NOTHING_PROMOTED)** (`docs/checkpoints/B20_R175_RECORD.md`). Compared
+  at equal spend on four training worlds, the best of 27 configurations did not beat the defaults in the guard, so
+  the defaults stayed. F6's procedure promoted F6's configuration again, which lost to the defaults by 0.456 on held-out
+  worlds. The policy stage of G3 is measured: nothing better than the defaults at this scale.
 
 **G4: decision-relevant state abstraction by counterexamples (§13.3, B20_R172).** For the allocator: the states
 where its features look alike but a matched replay shows different best actions become a proposed new feature.

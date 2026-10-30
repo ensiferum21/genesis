@@ -817,7 +817,7 @@
    "id": "B20_R171",
    "kind": "study",
    "line": "frontier",
-   "notes": "not preregistered; the Foundry proposal \u00a713.7; F6 first | 30 Oct 2026: F6's policy stage is not yet measured (B20R163-META); waits for B20_R175 (F6b)",
+   "notes": "not preregistered; the Foundry proposal \u00a713.7; F6 first | 30 Oct 2026: F6's policy stage is not yet measured (B20R163-META); waits for B20_R175 (F6b) | 30 Oct 2026: B20_R175 measured the policy stage at equal spend: nothing better than the defaults (NOTHING_PROMOTED)",
    "outcome": null,
    "output": null,
    "positive": null,
@@ -916,7 +916,10 @@
    "unlocks": []
   },
   "B20_R175": {
-   "artifacts": [],
+   "artifacts": [
+    "evidence/meta_repaired_b20r175",
+    "docs/checkpoints/B20_R175_RECORD.md"
+   ],
    "committed": true,
    "depends_on": [
     "B20_R163"
@@ -926,9 +929,9 @@
    "kind": "study",
    "line": "frontier",
    "notes": "from defect B20R163-META (found after B20_R163 was recorded); preregistered 30 Oct 2026; runs after PT-1 (about 1 h) | started 30 Oct 2026, 19:50:17 SGT, from the clean worktree /home/claude/r175-wt at 7878cdb",
-   "outcome": null,
+   "outcome": "NOT_SHOWN (NOTHING_PROMOTED), valid: the bracket's survivor (eps 0.4, lam_con 0) lost to the defaults in the guard (1.939 against 1.952), so the defaults stayed; F6's procedure promoted F6's configuration again, which lost to the defaults on 24 held-out worlds by 0.456 (p 0.002)",
    "output": "evidence/meta_repaired_b20r175",
-   "positive": null,
+   "positive": false,
    "preregistered": "sha256 b5c957f6669b078b3dc1a4bf19ef4a38fe1b16d31b5b8fa54bb5096fade178ba (the preregistration commit)",
    "priority": 5,
    "requires": [],
@@ -936,7 +939,7 @@
     "cpu0_hours": 1.0
    },
    "script": "scripts/b20r175_meta_repaired.py",
-   "status": "running",
+   "status": "done",
    "title": "F6b: F6 repeated with the meta-search repaired (B20R163-META): four training worlds, one successive-halving bracket, the kernel's guard; F6's procedure as an arm",
    "unlocks": []
   },
@@ -950,7 +953,7 @@
    "id": "B20_R177",
    "kind": "study",
    "line": "proving-test",
-   "notes": "Daniel, 30 Oct 2026, 20:06: \"Do the best\"; the builder's choice after seeing PT-1's result (disclosed); runs after B20_R175 (about 6.5 h)",
+   "notes": "Daniel, 30 Oct 2026, 20:06: \"Do the best\"; the builder's choice after seeing PT-1's result (disclosed); runs after B20_R175 (about 6.5 h) | started 30 Oct 2026, 20:23:09 SGT, from the clean worktree /home/claude/pt2-wt at a7303de",
    "outcome": null,
    "output": "evidence/proving_test_2_b20r177",
    "positive": null,
@@ -961,7 +964,7 @@
     "cpu0_hours": 6.5
    },
    "script": "scripts/b20r177_proving_test_2.py",
-   "status": "queued",
+   "status": "running",
    "title": "PT-2: the proving test again, the inadequacy gate judged bound by bound (three predecessor runs on A; the discovery must be on a bound none refuted); PT-1's code otherwise",
    "unlocks": []
   },
@@ -2204,6 +2207,18 @@
    "id": "B20_R177",
    "kind": "add",
    "time": "2026-10-30T12:11:58+00:00"
+  },
+  {
+   "id": "B20_R175",
+   "kind": "finish",
+   "outcome": "NOT_SHOWN (NOTHING_PROMOTED), valid: the bracket's survivor (eps 0.4, lam_con 0) lost to the defaults in the guard (1.939 against 1.952), so the defaults stayed; F6's procedure promoted F6's configuration again, which lost to the defaults on 24 held-out worlds by 0.456 (p 0.002)",
+   "positive": false,
+   "time": "2026-10-30T12:24:44+00:00"
+  },
+  {
+   "id": "B20_R177",
+   "kind": "start",
+   "time": "2026-10-30T12:24:44+00:00"
   }
  ],
  "lines": {
@@ -2399,9 +2414,14 @@
      "B20_R159",
      "INADEQUACY_GATE_FAILED (valid): the predecessor P0 certified bound 40 of family A (273 vertices), so the gate failed and parts 1 and 3-5 were not run; G certified bounds 40 and 21 (352 and 360 vertices), both from derived graph products. Not proved out; a second proving test needs Daniel's decision",
      false
+    ],
+    [
+     "B20_R175",
+     "NOT_SHOWN (NOTHING_PROMOTED), valid: the bracket's survivor (eps 0.4, lam_con 0) lost to the defaults in the guard (1.939 against 1.952), so the defaults stayed; F6's procedure promoted F6's configuration again, which lost to the defaults on 24 held-out worlds by 0.456 (p 0.002)",
+     false
     ]
    ],
-   "run": 6,
+   "run": 7,
    "stagnant": true
   },
   "general": {

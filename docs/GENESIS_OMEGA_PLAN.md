@@ -640,6 +640,10 @@ problems no level has seen, and Genesis has not shown that yet.
   in detail for handoff at his request of 20:01; F1 and F2 next on CPU 1; B20_R156–R158 reserved.
 - 27 Oct 2026, 20:40: the proving test adopted (§0f; B20_R159). F2 started: the sealed Laplacian set
   transcribed and tiered, with exact certificates (`src/genesis/conjecture/`).
+- 30 Oct 2026, 20:40: B20_R175 (F6b) recorded: NOT_SHOWN, NOTHING_PROMOTED. With configurations compared at equal
+  spend on four training worlds, the winner did not beat the defaults in the guard, so the defaults stayed; F6's
+  procedure promoted F6's configuration again, and it lost to the defaults by 0.456 on held-out worlds. PT-2 started
+  20:23:09.
 - 30 Oct 2026, 20:20: PT-2 (B20_R177) preregistered after Daniel's "Do the best" (20:06): PT-1's code, families,
   constants and pins with fresh seeds, the predecessor run three times on A, and the discovery required on a bound
   none of its runs refuted (the builder's choice after seeing PT-1, disclosed). It runs after B20_R175, about 6.5 h;

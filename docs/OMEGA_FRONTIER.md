@@ -962,9 +962,9 @@ commit through `git show`.
 6e. **B20_R174: done, NOT_SHOWN (RANDOM_MATCHES_SEARCH)** (15:48–19:24 SGT, two slices, from `/home/claude/r174-wt`
     at `bc57958`; `docs/checkpoints/B20_R174_RECORD.md`).
 6f. **PT-1 (B20_R159): done, INADEQUACY_GATE_FAILED** (19:24–19:49 SGT; `docs/checkpoints/B20_R159_RECORD.md`).
-6g. **B20_R175 (F6b): running** from 19:50:17 SGT, from `/home/claude/r175-wt` at `7878cdb` (about 1 h).
-6h. **PT-2 (B20_R177), preregistered 30 Oct 2026**: PT-1 with the gate judged bound by bound, after B20_R175 (about
-    6.5 h), from a clean worktree of its preregistration commit. Then the checkpoint B20_R176.
+6g. **B20_R175 (F6b): done, NOT_SHOWN (NOTHING_PROMOTED)** (19:50–20:23 SGT; `docs/checkpoints/B20_R175_RECORD.md`).
+6h. **PT-2 (B20_R177): running** from 20:23:09 SGT, from `/home/claude/pt2-wt` at `a7303de` (about 6.5 h). Then the
+    checkpoint B20_R176.
 7. **B20_R158 (F5), AMENDED before it ran (`ff9eada`)**, from a clean worktree at `ff9eada`. The old
    `/home/claude/f5-wt` at `703b2ee` must not be used.
 8. **B20_R163 (F6)** from the clean worktree `/home/claude/f6-wt` at `77d725d` (prepared; its pins match there;

@@ -316,6 +316,8 @@ needs people: a reviewer, a statistician, an independent custodian on its own ma
       - **PT-2 (B20_R177) is preregistered** (Daniel: "Do the best", 20:06): the per-bound gate, PT-1's code otherwise;
         after B20_R175, about 6.5 h. Then the checkpoint B20_R176 (scripts `/home/claude/ckpt176_part1.sh` and
         `_part2.sh`, from a fresh single-branch clone `/home/claude/ckpt176`).
+      - **B20_R175 (F6b) is recorded** (`docs/checkpoints/B20_R175_RECORD.md`): NOT_SHOWN, NOTHING_PROMOTED; the guard
+        kept the defaults, and F6's procedure's configuration was harmful (−0.456). **PT-2 is running** from 20:23:09.
   26c. **Daniel's directive of 27 Oct 2026, 19:55 is adopted**: `docs/OMEGA_FRONTIER.md`, written in detail for
       handoff at his request (20:01). Genesis works by divergence and convergence (imagine, mutate, recombine,
       branch out, extrapolate discovery curves, detect convergence, allocate), without handholding. The

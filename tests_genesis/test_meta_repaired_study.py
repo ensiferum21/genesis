@@ -156,5 +156,149 @@ class EndToEnd(unittest.TestCase):
                 S.main([str(S.OUTPUT)])
 
 
+
+R175 = ROOT / 'evidence' / 'meta_repaired_b20r175'
+
+
+def at_commit(commit, files, code, timeout=7200):
+    """Run Python `code` in a temporary worktree of `commit` with `files` ({path in the worktree: source}) copied in;
+    `code` writes its answer as JSON to `answer.json` in the worktree, which is returned."""
+    import shutil
+    import subprocess
+    with tempfile.TemporaryDirectory() as d:
+        wt = Path(d) / 'wt'
+        subprocess.run(['git', '-C', str(ROOT), 'worktree', 'add', '--detach', str(wt), commit], check=True,
+                       capture_output=True)
+        try:
+            for rel, src in files.items():
+                (wt / rel).parent.mkdir(parents=True, exist_ok=True)
+                shutil.copy(src, wt / rel)
+            out = subprocess.run([sys.executable, '-c', code], cwd=wt, capture_output=True, text=True, timeout=timeout)
+            if out.returncode != 0:
+                raise AssertionError(out.stderr[-3000:])
+            return json.loads((wt / 'answer.json').read_text())
+        finally:
+            subprocess.run(['git', '-C', str(ROOT), 'worktree', 'remove', '--force', str(wt)], capture_output=True)
+
+
+@unittest.skipUnless((R175 / 'summary.json').exists(), 'B20_R175 has not been recorded')
+class RecordB20R175(unittest.TestCase):
+    """The record of B20_R175 on its evidence: the script; the bracket's schedule, the guard and the promotion; the
+    rows complete and the arms' budgets; validity, the analysis and the verdict recomputed in this tree; then, at the
+    preregistration commit: main re-run on the saved search and rows to the same summary, the bracket, the guard and
+    F6's procedure replayed to the same records, and the first and last worlds' runs re-executed to the same rows."""
+    DIR, KW, OUT = R175, {}, 'evidence/meta_repaired_b20r175'
+
+    @classmethod
+    def setUpClass(cls):
+        cls.s = json.loads((cls.DIR / 'summary.json').read_text())
+        cls.ms = json.loads((cls.DIR / 'search.json').read_text())
+        cls.f6 = json.loads((cls.DIR / 'f6.json').read_text())
+        cls.rows = {}
+        for line in (cls.DIR / 'rows.jsonl').read_text().splitlines():
+            if line.strip():
+                r = json.loads(line)
+                cls.rows[(r['world'], r['arm'])] = r
+
+    def ws(self):
+        wl = self.KW.get('world_list')
+        return [tuple(w) for w in wl] if wl is not None else S.worlds()
+
+    def test_the_script(self):
+        if self.DIR != R175:
+            return
+        import hashlib
+        self.assertEqual(hashlib.sha256((ROOT / 'scripts' / 'b20r175_meta_repaired.py').read_bytes()).hexdigest(),
+                         SHA256)
+
+    def test_the_search_the_guard_and_the_promotion(self):
+        ms, sk = self.ms, self.KW.get('search_kw', {})
+        b_in = sk.get('b_in', S.B)
+        br = MT.halving_bracket(sk.get('pool', S.POOL), sk.get('eta', S.ETA), sk.get('rung', S.RUNG))
+        self.assertEqual([tuple(x) for x in ms['stages']], br['stages'])
+        self.assertEqual(len(ms['branches']), sk.get('pool', S.POOL))
+        self.assertTrue(ms['as_scheduled'])
+        top = max(ms['branches'], key=lambda r: (r['t'], -r['branch']))
+        self.assertEqual(top['params'], ms['survivor'])
+        self.assertTrue(all(x + S.QUANTUM > b_in for x in top['member_spent']))
+        g, k = ms['guard'], len(self.KW.get('train') or S.train_worlds())
+        for which in ('survivor', 'defaults'):
+            self.assertEqual(len(g['runs'][which]), k)
+            self.assertAlmostEqual(g['means'][which], sum(r['value'] for r in g['runs'][which]) / k)
+        self.assertEqual(g['promote'], g['means']['survivor'] > g['means']['defaults'])
+        self.assertEqual(ms['promoted'], ms['survivor'] if g['promote'] else MT.DEFAULT)
+        self.assertEqual(ms['nothing_promoted'], not g['promote'])
+        self.assertEqual(ms['c_k'], ms['c_search'] + g['c_guard'])
+        self.assertEqual(g['c_guard'], sum(r['spent'] for v in g['runs'].values() for r in v))
+
+    def test_validity_and_the_analysis_recompute(self):
+        ws, budget = self.ws(), self.KW.get('budget', S.B)
+        self.assertEqual([list(x) for x in ws], self.s['worlds'])
+        self.assertEqual(set(self.rows), {(k, a) for k, f, sd, null in ws for a in S.ARMS})
+        extra = S.extra_budget(self.ms['c_k'], sum(1 for w in ws if not w[3]))
+        self.assertEqual(extra, self.s['S6']['extra_budget_per_world'])
+        for (k, a), r in self.rows.items():
+            self.assertEqual(r['budget'], budget + (extra if a == 'D24' else 0))
+        nulls_ok = all(self.rows[(k, a)]['total'] == 0.0 for k, f, sd, null in ws if null for a in S.ARMS)
+        guard_runs = [r for v in self.ms['guard']['runs'].values() for r in v]
+        spent_ok = all(r['spent'] >= r['budget'] - S.QUANTUM - 1 for r in list(self.rows.values()) + guard_runs)
+        grid_ok = S.on_grid(self.ms['promoted']) and S.on_grid(self.f6['promoted'])
+        self.assertEqual((nulls_ok, spent_ok, grid_ok), (self.s['nulls_ok'], self.s['spent_ok'], self.s['grid_ok']))
+        self.assertEqual(self.s['valid'], nulls_ok and spent_ok and grid_ok and self.s['pins_ok']
+                         and self.ms['as_scheduled'])
+        res = S.analyse(self.rows, ws)
+        self.assertEqual(json.loads(json.dumps(res, sort_keys=True, default=list)), self.s['results'])
+        self.assertEqual(S.verdict(self.s['valid'], res, self.ms['nothing_promoted']), self.s['verdict'])
+
+    def test_at_the_preregistration_commit(self):
+        files = {f'{self.OUT}/{n}': self.DIR / n for n in ('search.json', 'f6.json', 'rows.jsonl')}
+        code = f'''
+import json, sys
+sys.path.insert(0, 'src'); sys.path.insert(0, 'scripts')
+import b20r175_meta_repaired as S
+from genesis.frontier import meta as MT
+kw = json.loads({json.dumps(json.dumps(self.KW))})
+for k in ('world_list', 'train'):
+    if k in kw:
+        kw[k] = [tuple(w) for w in kw[k]]
+rc = S.main(['{self.OUT}'], **(dict(kw, registered=False) if kw else {{}}))
+summary = json.load(open('{self.OUT}/summary.json'))
+train = kw.get('train') or S.train_worlds()
+budget = kw.get('budget', S.B)
+ms = S.suite_search(train, **kw.get('search_kw', {{}}))
+gd = S.guard(ms['survivor'], train, budget)
+f6 = S.f6_search(train[0], **kw.get('f6_kw', {{}}))
+ws = kw.get('world_list') or S.worlds()
+saved = json.load(open('{self.OUT}/search.json'))
+extra = S.extra_budget(saved['c_k'], sum(1 for w in ws if not w[3]))
+plan = {{'PK': (saved['promoted'], budget), 'P1': (f6['promoted'], budget), 'D0': (MT.DEFAULT, budget),
+        'D24': (MT.DEFAULT, budget + extra)}}
+runs = []
+for idx in sorted({{0, len(ws) - 1}}):
+    key, fam, seed, null = ws[idx]
+    for arm in S.ARMS:
+        params, bud = plan[arm]
+        r = S.run_one(fam, seed, null, arm, idx, params, bud)
+        r['world'] = key
+        runs.append(r)
+json.dump({{'rc': rc, 'summary': summary, 'search': ms, 'guard': gd, 'f6': f6, 'runs': runs}},
+          open('answer.json', 'w'), default=list)
+'''
+        got = at_commit(PREREGISTRATION, files, code)
+        self.assertEqual(got['rc'], 0)
+        drop = ('code_identity',)
+        self.assertEqual({k: v for k, v in got['summary'].items() if k not in drop},
+                         {k: v for k, v in self.s.items() if k not in drop})
+        for k in ('survivor', 'survivor_value', 'branches', 'stages', 'stages_seen', 'as_scheduled', 'c_search',
+                  'outer_spent'):
+            self.assertEqual(json.loads(json.dumps(got['search'][k])), self.ms[k], k)
+        self.assertEqual(json.loads(json.dumps(got['guard'])), self.ms['guard'])
+        self.assertEqual(json.loads(json.dumps(got['f6'])), self.f6)
+        for r in got['runs']:
+            saved = self.rows[(r['world'], r['arm'])]
+            for f in ('total', 'reference', 'value', 'spent', 'budget', 'branches', 'verify_calls'):
+                self.assertEqual(r[f], saved[f], (r['world'], r['arm'], f))
+
+
 if __name__ == '__main__':
     unittest.main()
