@@ -639,6 +639,10 @@ problems no level has seen, and Genesis has not shown that yet.
   in detail for handoff at his request of 20:01; F1 and F2 next on CPU 1; B20_R156–R158 reserved.
 - 27 Oct 2026, 20:40: the proving test adopted (§0f; B20_R159). F2 started: the sealed Laplacian set
   transcribed and tiered, with exact certificates (`src/genesis/conjecture/`).
+- 30 Oct 2026, 14:20: PT-1 (B20_R159), the proving test, preregistered after F4 and F5: budgets from F4's and F5's
+  per-problem budgets and a timing pilot; family C from ten pooled data draws (a development look on other seeds gave
+  17 conjectures); templates do not count for part 1 (the strict reading). Expectation NOT_PROVED_OUT. The checkpoint
+  B20_R169's integration suite passed (2,127 tests); its other suites are running.
 - 30 Oct 2026, 13:00: B20_R158 (F5) recorded: NOT_SHOWN. Genesis posed 9 conjectures of its own from its own graphs
   (rediscovering Merris, bound 10 and the refuted bound 29); the inventor with abstractions refuted 6, the plain one
   5; the generator posed nothing new in generations 2 and 3, so nothing compounded. The checkpoint B20_R169 is

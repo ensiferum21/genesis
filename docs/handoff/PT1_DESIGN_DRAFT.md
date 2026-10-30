@@ -1,4 +1,8 @@
-# PT-1 (B20_R159): the proving test, a design draft (NOT preregistered)
+# PT-1 (B20_R159): the proving test, a design draft (now PREREGISTERED)
+
+**30 Oct 2026: PT-1 is preregistered** (`scripts/b20r159_proving_test.py`, sha256 `56037017…3a05`). Every open item below
+is fixed in the script's docstring ("Fixed at preregistration"), each with its reason. In particular, templates do not
+count for part 1: the strict reading of item 8. This file is kept as the design's history.
 
 Written 28 Oct 2026, 01:25 SGT, for whoever preregisters PT-1 after F1–F5 have run (`docs/OMEGA_FRONTIER.md` §7b).
 Nothing here has been run on family A or family B. It records what is built, what was decided, and what remains to

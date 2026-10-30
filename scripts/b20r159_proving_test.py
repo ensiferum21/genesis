@@ -1,12 +1,11 @@
 #!/usr/bin/env python3
-"""B20_R159 (PT-1): the proving test (Daniel, 27 Oct 2026, 20:22). DRAFT: NOT PREREGISTERED.
+"""B20_R159 (PT-1): the proving test (Daniel, 27 Oct 2026, 20:22). PREREGISTERED (30 Oct 2026), after F4 and F5.
 
     taskset -c 0 python3 scripts/b20r159_proving_test.py evidence/proving_test_b20r159     run ALONE (resumable)
 
-**This file is a draft.** `PREREGISTERED` is False, and `main` refuses a registered run until it is True. The
-constants marked PROVISIONAL are still to be fixed (`docs/handoff/PT1_DESIGN_DRAFT.md`, "Still open"). Fixing them,
-setting `PREREGISTERED`, committing, and recording the script's SHA-256 is the preregistration. Nothing here has run
-on family A, B or C. The design tests run it end to end on invented families only.
+The design was drafted on 28 Oct 2026 (`docs/handoff/PT1_DESIGN_DRAFT.md`) and its open items are fixed here, each
+with its reason (**Fixed at preregistration**, below). Nothing in this file has run on family A, B or C. The design
+tests run it end to end on invented families only, through the registered path (output and pins redirected).
 
 **The test** has five parts, each scored separately. PROVED_OUT requires all five.
   1. Discover a useful new representation.
@@ -80,6 +79,62 @@ they fail.
   * every arm spent its budget, to within one quantum and one verification;
   * the pins (filled at preregistration).
 
+**Fixed at preregistration (30 Oct 2026; the draft's open items).**
+  1. Budgets.
+     - B_A = 100,000 evaluations per bound of A: F4's B_PER, the budget at which the engine refuted 14-26 of the 33
+       known-false sealed bounds.
+     - B_B = 50,000 per statement of B. B's domain is cheap: about 0.3 ms per evaluation, timed on invented
+       statements with its costliest invariants. B's known counterexamples are small, so a larger budget lets both
+       arms certify the shared statements and makes part 4's time-to-first-certificate statistic informative.
+     - B_C = 100,000 per task of C: F5's B_PER. Part 5 charges the improved arm the compute G spent on A up to the
+       discovery. That is at most |A| x B_A = 500,000, against |C| x B_C, about 1.7 million with the expected |C|
+       (item 3), so the charge is a real price and not a forfeit.
+     - The CPU, timed on proved bounds (never A) at the cap of 400 vertices, is about 1.5 ms per evaluation for P0
+       and 2.2 ms for G.
+  2. P_DERIVE = 0.2 and the abstraction settings: the engine's defaults, not tuned on anything. F3-F5 never used
+     derivation, so they could not inform it. In the timing pilot (on proved bounds) G built two derived operation
+     sets at 0.2.
+  3. Family C: Genesis's own conjectures from ten fresh data draws (C_SEEDS), pooled. One draw is not enough: in
+     F5, generation 1 posed 9 conjectures and the next generations nothing new. A development look on other seeds
+     (992001-992010, never a study's) posed 3, 8, 11, 12, 12, 16, 16, 16, 17 and 17 distinct conjectures from one
+     to ten draws pooled (5 withheld); ten draws are expected to give about 17. Their formulas were seen in the look;
+     C_SEEDS's are fresh.
+  4. Part 1's ablation: K_ABLATION = 5 fresh seeds. Its compute is reported and is not charged to G. It is the
+     kernel's test of usefulness, not part of the inventor's procedure, and A's comparison of P0 and G (the gate and
+     part 2) does not depend on it.
+  5. Part 4's statistic: the two statistics with Holm, as the draft proposed (implemented in `compare`).
+  6. The sum-type operations stay closed to derivation, as the draft proposed: they add no reachable graph, and
+     opening them hands over more.
+  7. The size cap: one cap of 400 vertices for every program representation and arm (PROGRAM_MAX_N), as built.
+  8. **Templates do not count for part 1** (PART1_MECHANISMS = derivation, library). This is the stricter of the
+     draft's two readings, chosen because of Daniel's "Do the hardest so it proves it can find its way". His
+     decision named only library learning and operators on Γ's operations. Templates stay in G as its standing
+     abstraction, but a discovery credited to a template does not pass part 1.
+  9. Part 5 must beat the predecessor and both controls (decided 28 Oct 2026, 10:58 SGT).
+
+**Expectation, stated before running.** NOT_PROVED_OUT, high confidence.
+  * The gate probably holds, at about 0.8. A's published counterexamples are equitable-partition constructions of
+    158-352 vertices. With the cap of 400, P0's Γ programs can build graphs that large, which F4's cap of 64 did
+    not allow, so this is not certain.
+  * Part 2 is the crux, and unlikely, at about 0.15. G must certify one of five bounds whose only known
+    counterexamples are large. In F4 the engine's large-graph refutations came from Γ programs of 43-64 vertices.
+  * If part 2 fails, parts 1, 3, 4 and 5 fail with it.
+  * If part 2 passes, part 1 under the strict reading, part 3's replay, part 4's transfer to B and part 5's win
+    over the predecessor and both controls are each uncertain.
+  * PROVED_OUT at most a few per cent.
+
+**Development looks (disclosed).**
+  * The timing pilots: P0 and G on five proved bounds (Merris, 2 Delta, Li-Pan, bound 10's form, Anderson-Morley; none
+    in A, B or C), and B's domain on five invented true statements.
+  * C's pooling look on data seeds 992001-992010 (not C_SEEDS).
+  * Earlier: the draft's development check on seed 991001 (28 Oct 2026).
+  * F4's and F5's records, read in full.
+  * Nothing has run on A, B or C.
+
+**Cost.** A: about 1 h; that is P0, G, the ablation and part 3's replay at 500,000 evaluations each, at 1.5-2.2 ms.
+B: about 40 min (four arms at 34 x 50,000, at about 0.3 ms). C: about 4 h (four arms at about 1.7 million, at about
+2 ms). About 6 h, in slices of 6,600 s.
+
 **Status.** DEV; licenses nothing.
 """
 import hashlib
@@ -95,18 +150,18 @@ sys.path.insert(0, str(ROOT / 'src'))
 from genesis.common import code_identity  # noqa: E402
 
 STUDY = 'b20r159'
-PREREGISTERED = False                     # set at preregistration, with the constants below fixed
-SEALED_SEED = None                        # PROVISIONAL: a fresh seed at preregistration
-C_SEEDS = ()                              # PROVISIONAL: fresh data seeds at preregistration (C pools their draws)
-B_A = 100_000                             # PROVISIONAL: evaluations per bound of A (F4's B_PER; set from F4's timings)
-B_B = 20_000                              # PROVISIONAL: evaluations per statement of B
-B_C = 20_000                              # PROVISIONAL: evaluations per task of C
+PREREGISTERED = True                      # 30 Oct 2026, with the constants below fixed
+SEALED_SEED = 15915931                    # fresh at preregistration
+C_SEEDS = tuple(range(15916001, 15916011))   # ten fresh data draws, pooled (item 3)
+B_A = 100_000                             # evaluations per bound of A: F4's B_PER (item 1)
+B_B = 50_000                              # evaluations per statement of B (item 1)
+B_C = 100_000                             # evaluations per task of C: F5's B_PER (item 1)
 C_COUNT = 600                             # C's data: graphs drawn by Genesis (as B20_R158)
-P_DERIVE = 0.2                            # PROVISIONAL: fixed from F3-F5, never tuned on A, B or C
+P_DERIVE = 0.2                            # the default, never tuned on anything (item 2)
 RHO = 0.5                                 # the improved inventor's share for its procedures (`ProcedurePolicy`)
 PROGRAM_MAX_N = 400                       # one cap for every program representation and arm (the draft's item 7)
 K_ABLATION = 5
-PART1_MECHANISMS = ('derivation', 'library', 'template')   # PROVISIONAL: whether a template counts (item 8)
+PART1_MECHANISMS = ('derivation', 'library')   # the strict reading: a template does not count (item 8)
 PART5_REQUIRES_CONTROLS = True            # part 5 must also beat both controls (decided 28 Oct 2026, 10:58 SGT)
 QUANTUM, CHUNK = 500, 400
 ALPHA = 0.05
@@ -118,7 +173,32 @@ MODULES = ('frontier/direction.py', 'frontier/curves.py', 'frontier/converge.py'
            'conjecture/invariants.py', 'conjecture/statement.py', 'conjecture/invariant_domain.py',
            'conjecture/sealed.py', 'conjecture/verify.py', 'conjecture/wowii.py', 'conjecture/invariants_ref.py',
            'conjecture/audit.py')
-PINNED = {}                               # `pins()` at preregistration; checked at run time
+PINNED = {             # `pins()` at preregistration; checked at run time
+    'frontier/direction.py': '3b54f061f5979b6527e75785a7694c47bb19ac61ac8dd64ff9aa47ee17416940',
+    'frontier/curves.py': 'e531ef807bad4007e6bc04071fd3173d1eacfd98b53f26780622d9b328caa0a9',
+    'frontier/converge.py': 'fec005b93be9b5e5320c5a587c8291ead0b2d9028514779ab424cbbda9a8a956',
+    'frontier/allocate.py': '5518affe5f521d20288d2f1982f2016efe9641222954e2782d6473b7be07d9e9',
+    'frontier/engine.py': 'bbea0852b1ecaec56ffa4ac669a6ef5e1375f47b5fcb4f71289af62c8b0ef150',
+    'frontier/manifest.py': 'c9fb74568982cb8c554311559eba29d2c7fc6c30194f99229a71b63ac54a2a46',
+    'frontier/procedure.py': '866324a74ee4f0a0e21c28ff72ef1667508408551c9b1f11f5198a2d32347638',
+    'frontier/ablation.py': 'e8ca7076b92650dc0f599d1e43e052a79da3115dde25cb91ba53f63b444e4fb9',
+    'conjecture/expr.py': '75690202d6a7ab54f75a76500ada6e675b51cf23e7b78b20b4c33f90bc62adf9',
+    'conjecture/graphs.py': 'f84059118cf6d74a8ca218fefc98593110e5634353655323b2b108fbca42a972',
+    'conjecture/attack.py': '59c4cdb6e5517abd9e3b6ba2642f66893db6fc17b5aab3e2d6983b6cfc5d5ef8',
+    'conjecture/domain.py': '0671ad30f0deb234b202fa830f0af4f105bd26c5b6de4600f4c7ad26ea8760bf',
+    'conjecture/abstraction.py': 'f9ab4ea8251ebb53a796e2e19cfcc9fea9fc165c95bb7de2b7e2afd941a79fdc',
+    'conjecture/generate.py': '386d17bc934b6959e5ee7dc6e96cf9d7f0e742b8854dd6ecf2e6596cb3b6644e',
+    'conjecture/operations.py': 'd9ae9d907432f265a7447db496004f172af0612e33a7fb5827bf7bcca9b71ab4',
+    'conjecture/library.py': 'c85a2ff5554195d24c41f6934b033e7d93643ba42f1ed168e13de020220a490e',
+    'conjecture/invariants.py': '98620b18ec5457122dd442d2c9dc68ad4787dfc22af6ef868dc2a021d1cdfab2',
+    'conjecture/statement.py': '7ca76e71f224aa19267337a03e691d948962ff1bfd96c5897180eb6ba9d678ff',
+    'conjecture/invariant_domain.py': 'c0db7d3b90b601f6c6de1bca5883395883db3f3423c05683220bcffc0f77d617',
+    'conjecture/sealed.py': 'ae7d429c76e12171f9918213eaef9c33d83a1ffbd7d905953b9a79d129f41bcf',
+    'conjecture/verify.py': '712c5fc1ed0c4404ac2f423c12cb7356cf9e9a90b305e19ebd293b5ec2cc0706',
+    'conjecture/wowii.py': '9082fa4aca8ad90cebc8c4c7cd5fc065d58549a445328180d0e189461d6157cf',
+    'conjecture/invariants_ref.py': 'd0a407774f7d085741fbfb4e7207533f0e20fc9f56a33359e0d96edb698454f9',
+    'conjecture/audit.py': 'a0830b20639525f6063da4869baf2892fa551f415bcb104276a88c8118ebcd4c',
+}
 OUTPUT = ROOT / 'evidence' / 'proving_test_b20r159'
 
 
@@ -335,21 +415,25 @@ ARMS_LATER = ('improved', 'predecessor', 'notebook', 'given_rep')
 
 # ------------------------------------------------------------------------------------------------------- main
 
-def main(argv=None, registered=True, families=None, budgets=None, seed=None):
+def main(argv=None, registered=True, families=None, budgets=None, seed=None, output=None, pinned=None):
     """Run (or resume) the test; 0 when done, PAUSED at the end of a time slice. `families` ({'A': (posed, numbers),
-    'B': (posed, verifier factory), 'C': posed}) and `budgets` replace the sealed families in the design tests."""
+    'B': (posed, verifier factory), 'C': posed}) and `budgets` replace the sealed families in the design tests, which
+    also redirect the output and the pins while keeping registered=True (B20_R141's lesson); `pinned` stands in for
+    PINNED only there."""
     from genesis.conjecture import audit as AU
     from genesis.conjecture import verify as V
     from genesis.frontier import ablation as AB
     from genesis.frontier import procedure as PR
     argv = sys.argv[1:] if argv is None else argv
     out = Path(argv[0]).resolve()
+    pinned = PINNED if pinned is None else pinned
+    output = OUTPUT if output is None else output
     if registered:
         if not PREREGISTERED:
             raise SystemExit('PT-1 is a draft: it is not preregistered')
-        if out != OUTPUT.resolve():
-            raise SystemExit(f'the registered output is {OUTPUT}')
-        if pins() != PINNED:
+        if out != Path(output).resolve():
+            raise SystemExit(f'the registered output is {output}')
+        if pins() != pinned:
             raise SystemExit('the modules differ from the preregistered pins')
     out.mkdir(parents=True, exist_ok=True)
     seed = SEALED_SEED if seed is None else seed
@@ -460,7 +544,7 @@ def main(argv=None, registered=True, families=None, budgets=None, seed=None):
                         made += 1
     except Paused:
         return PAUSED
-    summary = analyse(done, pa, pb, pc, number_a, number_b, labels_c, withheld_c, registered)
+    summary = analyse(done, pa, pb, pc, number_a, number_b, labels_c, withheld_c, registered, pinned)
     summary['audit_hits'] = AU.scan(AU.research_plane(ROOT))
     summary['valid'] = summary['valid'] and not summary['audit_hits']
     summary['verdict'], summary['failed'] = verdict(summary)
@@ -475,7 +559,7 @@ def spent_ok(rec):
     return rec['budget'] < QUANTUM or rec['spent'] >= rec['budget'] - QUANTUM - 1
 
 
-def analyse(done, pa, pb, pc, number_a, number_b, labels_c, withheld_c, registered):
+def analyse(done, pa, pb, pc, number_a, number_b, labels_c, withheld_c, registered, pinned=None):
     """The parts, validity and the record (kernel side)."""
     from genesis.conjecture import generate as GN
     from genesis.conjecture import sealed as SD
@@ -516,7 +600,7 @@ def analyse(done, pa, pb, pc, number_a, number_b, labels_c, withheld_c, register
                        if _proved_equivalent(*pc[p], GN, SD)})
     spent = all(spent_ok(done[k]) for k in done if (k[:2] in ('A_', 'B_', 'C_') or k == 'part3_replay')
                 and 'spent' in done[k] and 'skipped' not in done[k])
-    pins_ok = (not registered) or pins() == PINNED
+    pins_ok = (not registered) or pins() == (PINNED if pinned is None else pinned)
     valid = not proved_c and spent and pins_ok
     return {'parts': parts, 'stats': stats, 'labels': labels, 'discovery': disc, 'discovery_bound': number_a.get(disc),
             'certified_A': {a: sorted(number_a[p] for p in done[f'A_{a}']['certified']) for a in ('P0', 'G')},

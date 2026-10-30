@@ -1,12 +1,13 @@
-"""PT-1's draft study (`scripts/b20r159_proving_test.py`), checked before it is preregistered, on invented families
-only (never A, B or C):
-  * the draft refuses a registered run;
+"""PT-1 (`scripts/b20r159_proving_test.py`), preregistered on 30 Oct 2026, checked on invented families only (never
+A, B or C):
+  * a registered run refuses another output and other pins; the fixed constants (fresh seeds, the strict part 1);
   * families A and B are posed under opaque ids, statuses kept back; C withholds published bounds;
   * the two statistics of parts 4 and 5, and the verdict rules on synthetic summaries;
   * end to end on invented families at tiny budgets:
     - the inadequacy gate stops the test when the predecessor certifies something in A;
     - with the predecessor's certificates on A withheld (a plumbing check of the later stages only), every stage
-      runs, and a run paused after every chunk resumes to the same summary."""
+      runs, and a run paused after every chunk resumes to the same summary;
+    - and through the REGISTERED path, with the output and the pins redirected (B20_R141's lesson)."""
 import json
 from pathlib import Path
 import sys
@@ -18,6 +19,9 @@ ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / 'src'))
 sys.path.insert(0, str(ROOT / 'scripts'))
 import b20r159_proving_test as S  # noqa: E402
+
+PREREGISTRATION = None              # the commit that preregistered the script (set after it)
+SHA256 = None                       # its SHA-256 there (set after it)
 
 A_TEST = {'a1': ('d + 1', 'vertex'), 'a2': ('2*d', 'vertex')}
 B_TEST = {'s1': 'alpha <= max_degree', 's2': 'radius <= diameter'}
@@ -35,10 +39,38 @@ FAMILIES = {'A': (A_TEST, {p: p for p in A_TEST}), 'B': (B_TEST, verify_b), 'C':
 
 
 class Design(unittest.TestCase):
-    def test_the_draft_refuses_a_registered_run(self):
-        self.assertFalse(S.PREREGISTERED)
-        with tempfile.TemporaryDirectory() as d, self.assertRaises(SystemExit):
-            S.main([d])
+    def test_a_registered_run_refuses_another_output_and_other_pins(self):
+        self.assertTrue(S.PREREGISTERED)
+        with tempfile.TemporaryDirectory() as d:
+            with self.assertRaises(SystemExit):
+                S.main([d])                                            # not the registered output
+            with self.assertRaises(SystemExit):
+                S.main([d], output=d, pinned={'frontier/engine.py': 'x'})
+
+    def test_the_fixed_constants(self):
+        import re
+        self.assertEqual(S.PART1_MECHANISMS, ('derivation', 'library'))     # the strict reading (item 8)
+        self.assertEqual(len(S.C_SEEDS), 10)
+        self.assertEqual((S.B_A, S.B_B, S.B_C, S.P_DERIVE, S.PROGRAM_MAX_N, S.K_ABLATION),
+                         (100_000, 50_000, 100_000, 0.2, 400, 5))
+        others = [x for x in (ROOT / 'scripts').glob('*.py') if x.name != 'b20r159_proving_test.py']
+        for seed in (S.SEALED_SEED,) + S.C_SEEDS:
+            self.assertFalse(any(re.search(rf'\b{seed}\b', x.read_text()) for x in others), seed)
+        self.assertEqual(S.pins(), S.PINNED)
+        if PREREGISTRATION is not None:
+            import hashlib
+            import subprocess
+            out = subprocess.run(['git', '-C', str(ROOT), 'show', f'{PREREGISTRATION}:scripts/b20r159_proving_test.py'],
+                                 capture_output=True, timeout=60)
+            if out.returncode == 0:
+                self.assertEqual(hashlib.sha256(out.stdout).hexdigest(), SHA256)
+
+    def test_a_template_discovery_does_not_pass_part1(self):
+        base = {'A_P0': {'certified': []}, 'A_G': {'certified': ['a'], 'first': {'a': 5}}}
+        for mech, ok in (('template', False), ('derivation', True), ('library', True)):
+            s = S.analyse(dict(base, part1={'useful': True, 'mechanism': mech}), {'a': ('d', 'vertex')}, {}, {},
+                          {'a': 18}, {}, {}, [], False)
+            self.assertEqual(s['parts']['part1'], ok, mech)
 
     def test_the_families_are_posed_opaquely(self):
         from genesis.conjecture import sealed as SD
@@ -130,7 +162,7 @@ def p0_blind(record):
 
 
 class EndToEnd(unittest.TestCase):
-    def run_study(self, d, blind, slice_s=None):
+    def run_study(self, d, blind, slice_s=None, registered=False):
         patches = [mock.patch.object(S, 'QUANTUM', 100), mock.patch.object(S, 'CHUNK', 5),
                    mock.patch.object(S, 'K_ABLATION', 2)]
         if blind:
@@ -140,7 +172,8 @@ class EndToEnd(unittest.TestCase):
         for p in patches:
             p.start()
         try:
-            return S.main([d], registered=False, families=FAMILIES, budgets=(1500, 1500, 1500), seed=7)
+            kw = dict(output=d, pinned=S.pins()) if registered else {}
+            return S.main([d], registered=registered, families=FAMILIES, budgets=(1500, 1500, 1500), seed=7, **kw)
         finally:
             for p in reversed(patches):
                 p.stop()

@@ -959,8 +959,9 @@ commit through `git show`.
     `/home/claude/f5b-wt` at `ff9eada` for B20_R158 and `/home/claude/f6-wt` at `77d725d` for B20_R163).
 9d. **B20_R174 (30 Oct 2026, preregistered): the search against random sampling**, the control B20_R173's release
     lacks, after B20_R172 (about 3.5 h), from a clean worktree of its preregistration commit.
-10. Then PT-1, once preregistered (§7b). Daniel decided part 1's mechanisms on 28 Oct, and both are built (B20_R164).
-    A design draft, not preregistered, is in `docs/handoff/PT1_DESIGN_DRAFT.md`.
+10. **PT-1 (B20_R159), PREREGISTERED on 30 Oct 2026** after F4 and F5 (`scripts/b20r159_proving_test.py`, sha256
+    `56037017…3a05`; the draft's open items fixed in the script, each with its reason), after B20_R174 (about 6 h),
+    from a clean worktree of its preregistration commit.
 
 **Before running any preregistered study, check its registered path** (the lesson of B20_R141): read its validity
 code for a clause that cannot hold in a registered run, and check its run-time pins in its worktree. B20_R157's were

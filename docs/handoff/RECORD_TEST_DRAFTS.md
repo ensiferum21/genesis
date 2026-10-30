@@ -1267,3 +1267,72 @@ class RecordB20R174(unittest.TestCase):
         self.assertEqual({k: v for k, v in got.items() if k not in drop},
                          {k: v for k, v in self.s.items() if k not in drop})
 ```
+
+## RecordB20R159 (PT-1; append to `tests_genesis/test_proving_test_study.py`)
+
+Written on 30 Oct 2026, 14:15 SGT, with the preregistered script (sha256 `56037017…3a05`), before the study ran. It
+was dry-run on a rehearsal output made through the registered path on the design tests' invented families (the
+posing functions patched), where both tests pass. It uses the test file's `SHA256` constant (set at the
+preregistration's pin commit) and needs `json`, `Path`, `unittest`, `ROOT` and `S`.
+
+```python
+
+R159 = ROOT / 'evidence' / 'proving_test_b20r159'
+
+
+@unittest.skipUnless((R159 / 'summary.json').exists(), 'B20_R159 has not been recorded')
+class RecordB20R159(unittest.TestCase):
+    """The record of PT-1 (B20_R159) on its evidence: the script; every certificate of every stage checked again by
+    the kernel (A and C: the Rayleigh certificate and the second exact check; B: both invariant implementations); the
+    families posed again from the sealed seed and the data seeds; the parts, the statistics, validity and the verdict
+    recomputed from the saved stages."""
+    DIR = R159
+
+    @classmethod
+    def setUpClass(cls):
+        cls.s = json.loads((cls.DIR / 'summary.json').read_text())
+        cls.done = json.loads((cls.DIR / 'stages.json').read_text())
+
+    def test_the_script(self):
+        if self.DIR != R159:
+            return
+        import hashlib
+        self.assertEqual(hashlib.sha256((ROOT / 'scripts' / 'b20r159_proving_test.py').read_bytes()).hexdigest(),
+                         SHA256)
+
+    def families(self):
+        pa, na = S.posed_a(S.SEALED_SEED)
+        pb, nb = S.posed_b(S.SEALED_SEED)
+        pc, lc, wc = S.posed_c(S.SEALED_SEED, S.C_SEEDS)
+        return pa, na, pb, nb, pc, lc, wc
+
+    def test_every_certificate_checks_again_and_the_analysis_recomputes(self):
+        pa, na, pb, nb, pc, lc, wc = self.families()
+        self.assertEqual(self.s['C']['posed'], len(pc))
+        self.assertEqual(self.s['C']['withheld'], len(wc))
+        for key in ('A_P0', 'A_G', 'part3_replay'):
+            rec = self.done.get(key)
+            if rec is None:
+                continue
+            got = [p for p in rec['claimed'] if S.double_check(*pa[p], rec['artifacts'][p]) == 'CONFIRMED']
+            self.assertEqual(sorted(got), sorted(rec['certified']), key)
+        vb = S.b_verifier(nb)
+        for fam, problems, ok in (('B', pb, lambda p, a: vb(p, a) > 0),
+                                  ('C', pc, lambda p, a: S.double_check(*pc[p], a) == 'CONFIRMED')):
+            for arm in S.ARMS_LATER:
+                rec = self.done.get(f'{fam}_{arm}')
+                if not rec or 'skipped' in rec:
+                    continue
+                mine = {p for p in rec['claimed'] if ok(p, rec['artifacts'][p])}
+                self.assertTrue(mine <= set(rec['certified']), (fam, arm))
+                self.assertTrue(set(rec['certified']) <= set(problems), (fam, arm))
+        got = S.analyse(self.done, pa, pb, pc, na, nb, lc, wc, False)
+        norm = lambda x: json.loads(json.dumps(x, sort_keys=True, default=list))          # noqa: E731
+        for k in ('parts', 'stats', 'labels', 'discovery', 'discovery_bound', 'certified_A', 'part1', 'part3',
+                  'certified_B', 'C', 'proved_equivalents_refuted', 'spent_ok'):
+            self.assertEqual(norm(got[k]), norm(self.s[k]), k)
+        self.assertTrue(self.s['pins_ok'])
+        self.assertEqual(self.s['audit_hits'], [])
+        self.assertEqual(self.s['valid'], got['valid'] and self.s['pins_ok'] and not self.s['audit_hits'])
+        self.assertEqual(list(S.verdict(dict(got, valid=self.s['valid']))), [self.s['verdict'], self.s['failed']])
+```
