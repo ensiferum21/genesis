@@ -966,6 +966,8 @@ commit through `git show`.
 10. **PT-1 (B20_R159), PREREGISTERED on 30 Oct 2026** after F4 and F5 (`scripts/b20r159_proving_test.py`, sha256
     `56037017…3a05`; the draft's open items fixed in the script, each with its reason), after B20_R174 (about 6 h),
     from a clean worktree of its preregistration commit.
+10b. **B20_R175 (F6b), preregistered 30 Oct 2026**: F6 repeated with the meta-search repaired (B20R163-META), after
+    PT-1 (about 1 h), from a clean worktree of its preregistration commit.
 
 **Before running any preregistered study, check its registered path** (the lesson of B20_R141): read its validity
 code for a clause that cannot hold in a registered run, and check its run-time pins in its worktree. B20_R157's were

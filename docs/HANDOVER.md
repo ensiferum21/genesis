@@ -302,6 +302,7 @@ needs people: a reviewer, a statistician, an independent custodian on its own ma
       - **Defect B20R163-META** (found after recording; `docs/BLOCKING_DEFECTS.md`): F6's meta-search compared
         configurations at unequal inner spends and promoted the first one it opened. F6's record is corrected; B20_R170
         inherits the defect. The repair (`meta.SuiteMetaDomain`, `meta.halving_bracket`) is for new studies.
+      - **B20_R175 (F6b) is preregistered**: F6's question with the repaired meta-search; after PT-1, about 1 h.
   26c. **Daniel's directive of 27 Oct 2026, 19:55 is adopted**: `docs/OMEGA_FRONTIER.md`, written in detail for
       handoff at his request (20:01). Genesis works by divergence and convergence (imagine, mutate, recombine,
       branch out, extrapolate discovery curves, detect convergence, allocate), without handholding. The

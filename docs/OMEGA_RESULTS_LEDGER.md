@@ -73,6 +73,7 @@ As of 30 Oct 2026; the order on CPU 0 is in `docs/OMEGA_FRONTIER.md` §12 and `r
 | B20_R174 | Genesis's search against random sampling of the same language on ±1-weighted planar graphs (the control B20_R173 lacks). Preregistered |
 | B20_R170 | Foundry G2 (forecast calibration invented by meta-search). Running |
 | B20_R172 | Foundry G4 (state features for allocation). Preregistered |
+| B20_R175 | F6b, F6 repeated with the meta-search repaired (B20R163-META). Preregistered |
 | B20_R159 | PT-1, the proving test. Preregistered |
 
 ## Unrun plans

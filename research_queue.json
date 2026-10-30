@@ -810,7 +810,7 @@
    "id": "B20_R171",
    "kind": "study",
    "line": "frontier",
-   "notes": "not preregistered; the Foundry proposal \u00a713.7; F6 first",
+   "notes": "not preregistered; the Foundry proposal \u00a713.7; F6 first | 30 Oct 2026: F6's policy stage is not yet measured (B20R163-META); waits for B20_R175 (F6b)",
    "outcome": null,
    "output": null,
    "positive": null,
@@ -900,6 +900,31 @@
    "script": "scripts/b20r174_search_vs_random.py",
    "status": "queued",
    "title": "The search against random sampling of the same language, on +-1-weighted planar graphs: the control B20_R173 lacks",
+   "unlocks": []
+  },
+  "B20_R175": {
+   "artifacts": [],
+   "committed": true,
+   "depends_on": [
+    "B20_R163"
+   ],
+   "failure": null,
+   "id": "B20_R175",
+   "kind": "study",
+   "line": "frontier",
+   "notes": "from defect B20R163-META (found after B20_R163 was recorded); preregistered 30 Oct 2026; runs after PT-1 (about 1 h)",
+   "outcome": null,
+   "output": "evidence/meta_repaired_b20r175",
+   "positive": null,
+   "preregistered": "sha256 b5c957f6669b078b3dc1a4bf19ef4a38fe1b16d31b5b8fa54bb5096fade178ba (the preregistration commit)",
+   "priority": 5,
+   "requires": [],
+   "resources": {
+    "cpu0_hours": 1.0
+   },
+   "script": "scripts/b20r175_meta_repaired.py",
+   "status": "queued",
+   "title": "F6b: F6 repeated with the meta-search repaired (B20R163-META): four training worlds, one successive-halving bracket, the kernel's guard; F6's procedure as an arm",
    "unlocks": []
   },
   "allocator-baselines": {
@@ -2083,6 +2108,11 @@
    "id": "B20_R170",
    "kind": "start",
    "time": "2026-10-30T07:01:17+00:00"
+  },
+  {
+   "id": "B20_R175",
+   "kind": "add",
+   "time": "2026-10-30T07:31:41+00:00"
   }
  ],
  "lines": {
@@ -2392,7 +2422,8 @@
   "B20_R172",
   "ledger-row-schema",
   "B20_R173",
-  "B20_R174"
+  "B20_R174",
+  "B20_R175"
  ],
  "reactivated": {},
  "schema": "genesis-research-queue-v1",
