@@ -828,7 +828,10 @@
    "unlocks": []
   },
   "B20_R172": {
-   "artifacts": [],
+   "artifacts": [
+    "evidence/state_features_b20r172",
+    "docs/checkpoints/B20_R172_RECORD.md"
+   ],
    "committed": true,
    "depends_on": [
     "B20_R170"
@@ -838,9 +841,9 @@
    "kind": "engineering",
    "line": "frontier",
    "notes": "the Foundry proposal \u00a713.3; machinery frontier/statefeat.py (0f87109); preregistered 29 Oct 2026 22:45 SGT; runs after B20_R170 | ran 30 Oct 2026, 15:27:09-15:45:15 SGT, from the clean worktree /home/claude/r172-wt at 73f8ad4",
-   "outcome": null,
+   "outcome": "NOT_SHOWN (valid): the proposed feature slope4 / hi; P - D -0.022 (p 0.77, 8 of 24); P - D0 tie (+0.048); D - D0 +0.070 (p 0.048); S7 FEATURE_GENERALISES (0.768 against the index's 0.702, p 0.001)",
    "output": "evidence/state_features_b20r172",
-   "positive": null,
+   "positive": false,
    "preregistered": "sha256 46e571f4f763ace626a8962bd6e21c103b91f99c2e095e299ee3571677739b33 (the preregistration commit)",
    "priority": 3,
    "requires": [],
@@ -848,7 +851,7 @@
     "cpu0_hours": 0.75
    },
    "script": "scripts/b20r172_state_features.py",
-   "status": "running",
+   "status": "done",
    "title": "G4 (docs/OMEGA_FOUNDRY.md): decision-relevant state abstraction for the allocator, found through counterexamples (alike states, different best actions)",
    "unlocks": []
   },
@@ -902,7 +905,7 @@
     "cpu0_hours": 3.5
    },
    "script": "scripts/b20r174_search_vs_random.py",
-   "status": "queued",
+   "status": "running",
    "title": "The search against random sampling of the same language, on +-1-weighted planar graphs: the control B20_R173 lacks",
    "unlocks": []
   },
@@ -2129,6 +2132,18 @@
    "id": "B20_R172",
    "kind": "start",
    "time": "2026-10-30T07:49:38+00:00"
+  },
+  {
+   "id": "B20_R172",
+   "kind": "finish",
+   "outcome": "NOT_SHOWN (valid): the proposed feature slope4 / hi; P - D -0.022 (p 0.77, 8 of 24); P - D0 tie (+0.048); D - D0 +0.070 (p 0.048); S7 FEATURE_GENERALISES (0.768 against the index's 0.702, p 0.001)",
+   "positive": false,
+   "time": "2026-10-30T07:53:51+00:00"
+  },
+  {
+   "id": "B20_R174",
+   "kind": "start",
+   "time": "2026-10-30T07:53:51+00:00"
   }
  ],
  "lines": {
@@ -2309,9 +2324,14 @@
      "B20_R170",
      "NOT_SHOWN (valid): the promoted rule (hindcast, ACI, rate 0.01) raised held-out coverage 0.655 -> 0.737 (22 of 24 worlds, p 3e-7) but its CI [0.720, 0.757] is below [0.80, 0.97]; value -0.180 against the identity given C_meta, a tie at equal budget; the meta-search inherits B20R163-META (milder)",
      false
+    ],
+    [
+     "B20_R172",
+     "NOT_SHOWN (valid): the proposed feature slope4 / hi; P - D -0.022 (p 0.77, 8 of 24); P - D0 tie (+0.048); D - D0 +0.070 (p 0.048); S7 FEATURE_GENERALISES (0.768 against the index's 0.702, p 0.001)",
+     false
     ]
    ],
-   "run": 4,
+   "run": 5,
    "stagnant": true
   },
   "general": {

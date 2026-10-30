@@ -134,6 +134,11 @@ SENSE_BLIND class turned on the engine's own controller. It is engineering first
   defaults on 24 held-out worlds at matched total compute (P1, value), with S7 asking whether the distinction holds
   in new worlds' decisions. It runs after B20_R170.
 
+- **30 Oct 2026: B20_R172 is NOT_SHOWN** (`docs/checkpoints/B20_R172_RECORD.md`). The search proposed slope4 / hi
+  (held-out agreement 0.825 against the index's 0.695 on the training replays). On 24 held-out worlds the distinction
+  generalised (S7: 0.768 against 0.702, p 0.001), but the engine using it tied the defaults at equal budget (+0.048)
+  and lost slightly to them given C_search (−0.022). The distinction is measured; its value is not.
+
 **G5: interaction estimates for joint proposals (§5.3).** The formula goes into ARA-3's synergy factorial
 (B20_R143, already planned) and G3.
 

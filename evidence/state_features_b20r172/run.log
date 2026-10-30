@@ -1,0 +1,61 @@
+{
+ "study": "b20r172",
+ "schema": "genesis-b20r172-state-features-v1",
+ "verdict": "NOT_SHOWN",
+ "valid": true,
+ "nulls_ok": true,
+ "spent_ok": true,
+ "pins_ok": true,
+ "S4": {
+  "feature": {
+   "expr": [
+    "/",
+    "slope4",
+    "hi"
+   ],
+   "weight": 23.036842460421113,
+   "held_out": 0.8252473026145508,
+   "baseline": 0.6950517169155209,
+   "searched": 697,
+   "folds": [
+    [
+     "/",
+     "slope4",
+     "level"
+    ],
+    [
+     "*",
+     "curv",
+     "noise"
+    ]
+   ],
+   "z": 2.753700843565236
+  },
+  "c_search": 71988,
+  "extra_budget_per_world": 2990,
+  "pairs": 240,
+  "agreement_index_training": 0.6980826410778199,
+  "per_world": [
+   {
+    "world": "Ka-0",
+    "spent": 11996,
+    "replay": 24000,
+    "decisions": 752,
+    "pairs": 120,
+    "agreement_index": 0.7323007263926297
+   },
+   {
+    "world": "Ka-1",
+    "spent": 11992,
+    "replay": 24000,
+    "decisions": 769,
+    "pairs": 120,
+    "agreement_index": 0.6573120789960225
+   }
+  ],
+  "nothing_proposed": false
+ },
+ "budget": 12000,
+ "code_identity": "508a6f96ab557d887c2f577f676a2a4b113959e843a22d71dc69288ec734d08e",
+ "status": "DEV; a calibration; licenses nothing"
+}

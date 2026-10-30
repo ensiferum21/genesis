@@ -951,7 +951,7 @@ commit through `git show`.
    parts and merged; a container restart (14:20) interrupted its second part once, which was rerun.
 6b. **B20_R163 (F6): done, NOT_SHOWN** (30 Oct 2026, 14:38–14:59 SGT; `docs/checkpoints/B20_R163_RECORD.md`).
 6c. **B20_R170 (G2): done, NOT_SHOWN** (30 Oct 2026, 14:59–15:25 SGT; `docs/checkpoints/B20_R170_RECORD.md`).
-6d. **B20_R172 (G4): done** (15:27–15:45 SGT); being recorded. **B20_R174: running** from 15:48:21 SGT, from
+6d. **B20_R172 (G4): done, NOT_SHOWN** (15:27–15:45 SGT; `docs/checkpoints/B20_R172_RECORD.md`). **B20_R174: running** from 15:48:21 SGT, from
     `/home/claude/r174-wt` at `bc57958` (about 3.5 h, two slices).
 7. **B20_R158 (F5), AMENDED before it ran (`ff9eada`)**, from a clean worktree at `ff9eada`. The old
    `/home/claude/f5-wt` at `703b2ee` must not be used.
