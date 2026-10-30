@@ -774,7 +774,7 @@ Every experiment is preregistered with five things:
 - 30 Oct 2026, 08:40: B20_R144 recorded: NOTHING_ADOPTED. Milestone 2 not met. Two defects found for the next
   design: `meta.neighbours`'s fall-back order (alphabetical when nothing is located) left the number of variants and
   the ranking untried; H2's NO_HEADROOM control is not headroom-free (a sealed gain of 0.23 was released there).
-- 30 Oct 2026, 09:05: the first of those fixed, as an option: `meta.improve(..., fallback='ladder')` orders the
+- 30 Oct 2026, 08:45: the first of those fixed, as an option: `meta.improve(..., fallback='ladder')` orders the
   candidates, when nothing is located, by the ladder's term means and takes one step of every setting before a second
   (`meta.ladder_order`, `neighbours(..., first, interleave)`). The default stays B20_R144's alphabetical order, so its
   record replays unchanged. `test_architecture_meta` plants a max_variants effect that the ladder does not locate:
