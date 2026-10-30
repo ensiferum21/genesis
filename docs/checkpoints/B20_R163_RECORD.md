@@ -73,12 +73,31 @@ All three held, with S1 a tie leaning negative.
    - On held-out families, the configuration it found on one meta-training world was no better than its defaults at
      equal budget.
    - Spending the meta-search's compute as extra budget on the defaults was clearly better.
-2. **The meta-search over-fitted its one world.** It stopped improving after a fraction of its budget, and its winner
+2. **The meta-search over-fitted its one world** (wrong: see the correction below). It stopped improving after a fraction of its budget, and its winner
    changed every setting at once, toward much less exploration (eps 0.1, lam_con 0) and more imagination
    (k_imagine 32). Those choices fit one world of family Ma and did not transfer.
 3. **For G3 (B20_R171, joint against separate discovery):** the policy-only point of that design is now measured, and
    it is negative. A joint search must beat both this and the extra-budget baseline. Meta-searching over more than
    one training world would be the first design change worth testing.
+
+## Correction after recording (30 Oct 2026, 15:25 SGT): the meta-search did not compare configurations
+
+Item 2 above is wrong. A diagnosis made after this record was committed (`evidence/frontier_meta_b20r163_diagnosis/`)
+repeated the meta-search exactly, from a worktree of `77d725d`, and kept what `meta.json` did not: each configuration's
+inner spend. It reproduces the study's promoted configuration, C_meta and outer spend.
+- **The first configuration opened was promoted.** It had 17,992 inner units. One other configuration had 13,202,
+  and the other 19 had about 2,400 each (their values 0.36-0.83 at that spend). The promotion took the best verified
+  artifact, which compares cumulative values at those unequal spends.
+- **Half the outer budget bought nothing.** The branches were charged 143,400 outer units for 76,886 inner ones.
+  Almost all of the gap was the first configuration's: 84,600 outer units for 17,992 inner, because its run was
+  stepped on after it had spent its 18,000.
+- **The defaults were never opened** on the training world.
+
+So the promoted configuration was in effect the first one the outer engine happened to open, and its tie with the
+defaults on held-out worlds (S1) says nothing about what a search would find. The other results stand: P1 compared
+that configuration with the defaults given the meta-search's compute, and S2 measured the extra budget. This is
+defect B20R163-META (`docs/BLOCKING_DEFECTS.md`). B20_R170 uses the same meta-search. B20_R175 (F6b) repeats the
+question with the repair.
 
 ## Looks at the study's data before it finished
 

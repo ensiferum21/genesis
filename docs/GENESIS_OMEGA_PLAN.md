@@ -640,6 +640,10 @@ problems no level has seen, and Genesis has not shown that yet.
   in detail for handoff at his request of 20:01; F1 and F2 next on CPU 1; B20_R156–R158 reserved.
 - 27 Oct 2026, 20:40: the proving test adopted (§0f; B20_R159). F2 started: the sealed Laplacian set
   transcribed and tiered, with exact certificates (`src/genesis/conjecture/`).
+- 30 Oct 2026, 15:30: defect B20R163-META found after F6 was recorded: its meta-search compared configurations at
+  unequal inner spends and promoted the first one it opened (it never opened the defaults). F6's record is corrected;
+  B20_R170 (G2) inherits the defect. Repaired for new studies (`meta.SuiteMetaDomain`, `meta.halving_bracket`, the
+  engine's successive-halving policy as the outer policy), with `MetaDomain` unchanged so that both studies replay.
 - 30 Oct 2026, 15:10: B20_R163 (F6) recorded: NOT_SHOWN. The Frontier's self-found configuration did not beat its
   defaults on held-out worlds (−0.221 against the defaults given the meta-search's compute; a tie at equal budget).
   B20_R170 (G2) is running.

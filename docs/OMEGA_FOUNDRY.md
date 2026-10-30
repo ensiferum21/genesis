@@ -99,9 +99,10 @@ here on the Frontier. There are four arms at the same total budget:
 It runs on planted worlds and conjecture families held out of PT-1. Falsified if joint does not beat separate
 after its extra cost. F6 (B20_R163) is the policy-only point of this design, and its result comes first.
 - **30 Oct 2026: F6 is NOT_SHOWN** (`docs/checkpoints/B20_R163_RECORD.md`): the policy-only search lost to the
-  defaults given its compute (−0.221) and tied them at equal budget; its meta-search fitted its one training world.
-  G3's joint arm must beat that and the extra-budget baseline; meta-searching over several training worlds is the first
-  change to test.
+  defaults given its compute (−0.221) and tied them at equal budget. A diagnosis after recording found that its
+  meta-search did not compare configurations at equal spend and promoted the first one it opened (B20R163-META), so
+  the policy stage is not yet measured. B20_R175 (F6b) measures it with the repair (several training worlds, one
+  successive-halving bracket, a guard against the defaults); G3 waits for it. B20_R170 (G2) inherits the defect.
 
 **G4: decision-relevant state abstraction by counterexamples (§13.3, B20_R172).** For the allocator: the states
 where its features look alike but a matched replay shows different best actions become a proposed new feature.
