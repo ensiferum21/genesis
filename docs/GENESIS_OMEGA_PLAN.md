@@ -640,6 +640,9 @@ problems no level has seen, and Genesis has not shown that yet.
   in detail for handoff at his request of 20:01; F1 and F2 next on CPU 1; B20_R156–R158 reserved.
 - 27 Oct 2026, 20:40: the proving test adopted (§0f; B20_R159). F2 started: the sealed Laplacian set
   transcribed and tiered, with exact certificates (`src/genesis/conjecture/`).
+- 30 Oct 2026, 22:35: the pre-flight passed: PT-2's whole pipeline at the full per-problem budgets on the design
+  tests' invented families (2, 2 and 3 problems; CPU 1, 22:09-22:32) ran every stage to a valid summary (23 min).
+  The second amendment is `75b5bac`; the third attempt runs from `/home/claude/pt2c-wt` after the checkpoint.
 - 30 Oct 2026, 22:10: PT-2's second attempt (21:15-22:08) stopped with exit 1 in family B's arms: defect
   B20R177-SEEN (`Statement.score`'s memo read back an entry it had just cleared, past 200,000 entries). Repaired;
   PT-2 amended a second time; its whole pipeline pre-flown at full budgets on invented families (CPU 1) before the
