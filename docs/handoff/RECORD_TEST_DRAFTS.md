@@ -1210,7 +1210,7 @@ json.dump({{'rc': rc, 'summary': summary, 'search': json.loads(json.dumps(sr, so
 
 ## RecordB20R174 (append to `tests_genesis/test_search_vs_random_study.py`)
 
-Written on 30 Oct 2026, 08:30 SGT, with the script (sha256 `842a9d73…2924`), before the study ran. It was dry-run on
+Written on 30 Oct 2026, 08:20 SGT, with the script (sha256 `842a9d73…2924`), before the study ran. It was dry-run on
 a rehearsal output (the design test's small graphs, fake runner, `excluded=set()`, sizes (2, 4, 2), 10 evaluations),
 where the replay and the CPU/verdict tests pass (the digest test then checks the real script). The file has `json`,
 `Path`, `tempfile`, `unittest`, `ROOT` and `S`.
