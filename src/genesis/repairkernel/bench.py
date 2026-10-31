@@ -387,7 +387,8 @@ def make(defect_id, seed, workdir, n_ops=2400, every=200, version=None):
     from . import defects4 as DF4
     from . import defects5 as DF5
     from . import defects6 as DF6
-    cat = next(c for c in (DF, DF2, DF3, DF4, DF5, DF6) if defect_id in c.BY_ID)
+    from . import defects7 as DF7
+    cat = next(c for c in (DF, DF2, DF3, DF4, DF5, DF6, DF7) if defect_id in c.BY_ID)
     d = cat.BY_ID[defect_id]
     src = cat.source(defect_id, TG.KERNEL_SOURCES)
     job = Job(workdir, d['target'], seed, n_ops, every, source=src, version=version)
