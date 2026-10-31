@@ -1,0 +1,151 @@
+{
+ "study": "B20_R189",
+ "rehearsal": false,
+ "script_sha256": "c9b35aecc5f45066690c357a7f68f6262fa2a0fe29ba2db548b631b63c8645f4",
+ "mutants_sha256": "dac7a9ee9fdd189804796b1b5f8d2d1642bdbdd23b3a32d00a292494bd59f435",
+ "verify_sha256": "43913d498ef28eeb57bb412b8e84e980f780396d3f67ceacbefc5763ca73a39d",
+ "targets": [
+  "bag",
+  "bimap",
+  "calendar",
+  "graph",
+  "lease",
+  "ledger",
+  "log",
+  "lru",
+  "memo",
+  "pq",
+  "registry",
+  "stats",
+  "stock",
+  "ttl",
+  "window"
+ ],
+ "job_seed": 51,
+ "diff_workloads": 20,
+ "diff_ops": 5000,
+ "commit": "ea06ce8b995f11c6d416c0f97fa80ae4484be3ba",
+ "mutants": 437,
+ "by_target": {
+  "bag": {
+   "killed": 27,
+   "gap": 0,
+   "possibly-equivalent": 6
+  },
+  "bimap": {
+   "killed": 20,
+   "gap": 0,
+   "possibly-equivalent": 0
+  },
+  "calendar": {
+   "killed": 27,
+   "gap": 0,
+   "possibly-equivalent": 0
+  },
+  "graph": {
+   "killed": 22,
+   "gap": 0,
+   "possibly-equivalent": 0
+  },
+  "lease": {
+   "killed": 41,
+   "gap": 0,
+   "possibly-equivalent": 1
+  },
+  "ledger": {
+   "killed": 40,
+   "gap": 0,
+   "possibly-equivalent": 1
+  },
+  "log": {
+   "killed": 12,
+   "gap": 0,
+   "possibly-equivalent": 0
+  },
+  "lru": {
+   "killed": 5,
+   "gap": 0,
+   "possibly-equivalent": 0
+  },
+  "memo": {
+   "killed": 5,
+   "gap": 0,
+   "possibly-equivalent": 0
+  },
+  "pq": {
+   "killed": 88,
+   "gap": 0,
+   "possibly-equivalent": 7
+  },
+  "registry": {
+   "killed": 10,
+   "gap": 0,
+   "possibly-equivalent": 1
+  },
+  "stats": {
+   "killed": 8,
+   "gap": 0,
+   "possibly-equivalent": 0
+  },
+  "stock": {
+   "killed": 60,
+   "gap": 0,
+   "possibly-equivalent": 4
+  },
+  "ttl": {
+   "killed": 42,
+   "gap": 0,
+   "possibly-equivalent": 3
+  },
+  "window": {
+   "killed": 7,
+   "gap": 0,
+   "possibly-equivalent": 0
+  }
+ },
+ "by_operator": {
+  "arith": {
+   "killed": 38,
+   "gap": 0,
+   "possibly-equivalent": 0
+  },
+  "attribute": {
+   "killed": 87,
+   "gap": 0,
+   "possibly-equivalent": 4
+  },
+  "call": {
+   "killed": 24,
+   "gap": 0,
+   "possibly-equivalent": 0
+  },
+  "compare": {
+   "killed": 36,
+   "gap": 0,
+   "possibly-equivalent": 6
+  },
+  "constant": {
+   "killed": 97,
+   "gap": 0,
+   "possibly-equivalent": 9
+  },
+  "delete": {
+   "killed": 121,
+   "gap": 0,
+   "possibly-equivalent": 0
+  },
+  "swap": {
+   "killed": 11,
+   "gap": 0,
+   "possibly-equivalent": 4
+  }
+ },
+ "killed": 414,
+ "gaps": 0,
+ "possibly_equivalent": 23,
+ "mutation_score": 1.0,
+ "gap_list": [],
+ "killed_by_the_job_alone": 406,
+ "killed_beyond_the_job": 8,
+ "wall_s": 298.5
+}

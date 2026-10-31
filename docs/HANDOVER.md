@@ -19,6 +19,8 @@ Everything is pushed: `continuation-b20-rx` (the line), `archive` (the checkpoin
   step 6 a third time (P2 22-2); Genesis's derived space beat the builder's grammar (P3 22-0). Nothing is running on
   CPU 0 after it; the next study is to be preregistered (the blueprint's A6/A7 ordering, then generation 3 again, or
   WP-1 to WP-4).
+- **B20_R188 INVALID, B20_R189 recorded** (WP-4): the verifier killed 414 of 437 single-place mutants, no gap; 23
+  survivors, among them unchecked methods (the TTL cache's `counts()`). CPU 0 idle after 23:06:59: nothing preregistered.
 - **Where the rule-invention line stands:** `docs/OMEGA_RULE_INVENTION.md` §5-6 and the records B20_R182, R183, R185,
   R186. Step 6 (the inventor improving how it invents) is shown and replicated on this testbed (B20_R185 P2 7-0,
   B20_R186 P2 12-0); B20_R187 asks whether it compounds. Not shown: Genesis's space beating the builder's grammar;

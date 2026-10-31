@@ -1229,7 +1229,10 @@
    "unlocks": []
   },
   "B20_R189": {
-   "artifacts": [],
+   "artifacts": [
+    "evidence/verifier_adequacy_b20r189",
+    "docs/checkpoints/B20_R189_RECORD.md"
+   ],
    "committed": true,
    "depends_on": [],
    "failure": null,
@@ -1237,9 +1240,9 @@
    "kind": "study",
    "line": "self-repair",
    "notes": "docs/OMEGA_WEAKNESSES_AND_BLUEPRINT.md WP-4; B20R188-BOUNDARY",
-   "outcome": null,
+   "outcome": "414 of 437 killed; 0 gaps; 23 possibly equivalent (TTL counts() unchecked)",
    "output": "evidence/verifier_adequacy_b20r189",
-   "positive": null,
+   "positive": true,
    "preregistered": "ea06ce8",
    "priority": 7,
    "requires": [],
@@ -1247,7 +1250,7 @@
     "cpu0_hours": 0.2
    },
    "script": "scripts/b20r189_verifier_adequacy.py",
-   "status": "queued",
+   "status": "done",
    "title": "WP-4 repaired: B20_R188 with each mutant offered with one added comment line, so the verifier's other checks decide; killed, gap, possibly equivalent; the mutation score",
    "unlocks": []
   },
@@ -2688,6 +2691,18 @@
    "id": "B20_R189",
    "kind": "add",
    "time": "2026-10-31T14:59:42+00:00"
+  },
+  {
+   "id": "B20_R189",
+   "kind": "start",
+   "time": "2026-10-31T15:16:40+00:00"
+  },
+  {
+   "id": "B20_R189",
+   "kind": "finish",
+   "outcome": "414 of 437 killed; 0 gaps; 23 possibly equivalent (TTL counts() unchecked)",
+   "positive": true,
+   "time": "2026-10-31T15:16:40+00:00"
   }
  ],
  "lines": {
@@ -3027,9 +3042,14 @@
      "B20_R188",
      "INVALID (defect B20R188-BOUNDARY: every mutant refused at the boundary check, the score 1.0 an artefact); repeated as B20_R189",
      false
+    ],
+    [
+     "B20_R189",
+     "414 of 437 killed; 0 gaps; 23 possibly equivalent (TTL counts() unchecked)",
+     true
     ]
    ],
-   "run": 1,
+   "run": 0,
    "stagnant": false
   }
  },

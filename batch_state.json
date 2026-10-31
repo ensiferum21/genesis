@@ -1639,6 +1639,12 @@
           "0c8aa79"
         ],
         "result": "INVALID (DEV, CPU 0 22:52:29-22:53:48): every mutant refused at the verifier's boundary check (no line changed); defect B20R188-BOUNDARY; repeated as B20_R189. docs/checkpoints/B20_R188_RECORD.md"
+      },
+      "B20_R189": {
+        "commits": [
+          "ea06ce8"
+        ],
+        "result": "Recorded (DEV, CPU 0 23:02:00-23:06:59): the verifier killed 414 of 437 single-place mutants; 0 gaps; 23 possibly equivalent (incl. the TTL cache's unchecked counts()). Record test amended (B20R189-KEY). docs/checkpoints/B20_R189_RECORD.md"
       }
     },
     "open_after_b20_r5": [

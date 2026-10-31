@@ -64,5 +64,42 @@ class Design(unittest.TestCase):
         self.assertIsNone(S.differential('bag', TG.KERNEL_SOURCES['bag']))
 
 
+import json  # noqa: E402
+
+R189 = ROOT / 'evidence' / 'verifier_adequacy_b20r189'
+
+
+class RecordB20R189(unittest.TestCase):
+    """The record of B20_R189 on its evidence: the script and the verifier it measured; every mutant once; the summary
+    recomputed from the rows; every gap and every possibly-equivalent survivor examined again to the same class."""
+    DIR = R189
+
+    @classmethod
+    def setUpClass(cls):
+        cls.result = json.loads((cls.DIR / 'result.json').read_text())
+        cls.rows = [json.loads(x) for x in (cls.DIR / 'rows.jsonl').read_text().splitlines() if x.strip()]
+
+    def test_the_script_and_the_verifier(self):
+        if self.DIR == R189:
+            self.assertEqual(digest(ROOT / 'scripts/b20r189_verifier_adequacy.py'), SHA256)
+            self.assertEqual(self.result['script_sha256'], SHA256)
+        # amended at recording (B20R189-KEY): a mutant's description is not unique (7 repeat), so rows are matched to
+        # mutants by position: the run did not resume, and wrote one row per mutant in enumeration order
+        allm = [(t, op, what) for t in self.result['targets'] for op, what, _ in MU.enumerate_mutants(t, TG.KERNEL_SOURCES[t])]
+        self.assertEqual([(r['target'], r['operator'], r['what']) for r in self.rows], allm)
+
+    def test_the_summary_recomputes(self):
+        got = S.analyse(self.rows)
+        for k, v in got.items():
+            self.assertEqual(json.loads(json.dumps(v)), self.result[k], k)
+
+    def test_every_survivor_examined_again(self):
+        allm = [(t, op, what, m) for t in self.result['targets'] for op, what, m in MU.enumerate_mutants(t, TG.KERNEL_SOURCES[t])]
+        for r, (t, op, what, m) in zip(self.rows, allm):                # by position (B20R189-KEY)
+            if r['class'] != 'killed':
+                with tempfile.TemporaryDirectory() as d:
+                    self.assertEqual(S.examine(t, op, what, m, d)['class'], r['class'], what)
+
+
 if __name__ == '__main__':
     unittest.main()
