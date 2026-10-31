@@ -1202,6 +1202,29 @@
    "title": "SR-2d: does the inventor's improvement compound? B20_R185's cycle with a third generation (derivations from every admitted transformation of generations 1 and 2), on 36 fresh random mutants (defects7.py); P1 g3 vs g2, P2 g2 vs g1, P3 g3 vs the builder's grammar",
    "unlocks": []
   },
+  "B20_R188": {
+   "artifacts": [],
+   "committed": true,
+   "depends_on": [],
+   "failure": null,
+   "id": "B20_R188",
+   "kind": "study",
+   "line": "self-repair",
+   "notes": "docs/OMEGA_WEAKNESSES_AND_BLUEPRINT.md WP-4; a measurement",
+   "outcome": null,
+   "output": "evidence/verifier_adequacy_b20r188",
+   "positive": null,
+   "preregistered": null,
+   "priority": 7,
+   "requires": [],
+   "resources": {
+    "cpu0_hours": 0.2
+   },
+   "script": "scripts/b20r188_verifier_adequacy.py",
+   "status": "queued",
+   "title": "WP-4 (blueprint C1): the verifier's mutation adequacy: all 437 single-place mutants through the kernel's verifier on a job of seed 51; survivors differentially tested against the reference models (20 workloads x 5,000 operations); killed, gap, possibly equivalent; the mutation score",
+   "unlocks": []
+  },
   "allocator-baselines": {
    "artifacts": [],
    "committed": false,
@@ -2617,6 +2640,11 @@
    "outcome": "SPACE_INVENTED; P1 NO_DIFFERENCE_SHOWN (g3 76 vs g2 77); P2 INVENTOR_IMPROVED (22-2); P3 GENESIS_SPACE_BEATS_BUILDER_GRAMMAR (22-0)",
    "positive": true,
    "time": "2026-10-31T14:39:59+00:00"
+  },
+  {
+   "id": "B20_R188",
+   "kind": "add",
+   "time": "2026-10-31T14:52:19+00:00"
   }
  ],
  "lines": {
@@ -3022,7 +3050,8 @@
   "B20_R183",
   "B20_R185",
   "B20_R186",
-  "B20_R187"
+  "B20_R187",
+  "B20_R188"
  ],
  "reactivated": {},
  "schema": "genesis-research-queue-v1",

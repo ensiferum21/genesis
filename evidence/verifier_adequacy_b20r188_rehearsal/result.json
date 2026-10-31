@@ -1,0 +1,62 @@
+{
+ "study": "B20_R188",
+ "rehearsal": true,
+ "script_sha256": "7a4e12e8409437fe6d5062ecfe00f485b34b13c63cd0ec14ffc365a07c441f88",
+ "mutants_sha256": "dac7a9ee9fdd189804796b1b5f8d2d1642bdbdd23b3a32d00a292494bd59f435",
+ "verify_sha256": "43913d498ef28eeb57bb412b8e84e980f780396d3f67ceacbefc5763ca73a39d",
+ "targets": [
+  "bag"
+ ],
+ "job_seed": 51,
+ "diff_workloads": 20,
+ "diff_ops": 5000,
+ "commit": "d5945a9efef45887dc98a1f0dd56520faefe9f88",
+ "mutants": 33,
+ "by_target": {
+  "bag": {
+   "killed": 33,
+   "gap": 0,
+   "possibly-equivalent": 0
+  }
+ },
+ "by_operator": {
+  "arith": {
+   "killed": 4,
+   "gap": 0,
+   "possibly-equivalent": 0
+  },
+  "call": {
+   "killed": 2,
+   "gap": 0,
+   "possibly-equivalent": 0
+  },
+  "compare": {
+   "killed": 2,
+   "gap": 0,
+   "possibly-equivalent": 0
+  },
+  "constant": {
+   "killed": 14,
+   "gap": 0,
+   "possibly-equivalent": 0
+  },
+  "delete": {
+   "killed": 8,
+   "gap": 0,
+   "possibly-equivalent": 0
+  },
+  "swap": {
+   "killed": 3,
+   "gap": 0,
+   "possibly-equivalent": 0
+  }
+ },
+ "killed": 33,
+ "gaps": 0,
+ "possibly_equivalent": 0,
+ "mutation_score": 1.0,
+ "gap_list": [],
+ "killed_by_the_job_alone": 26,
+ "killed_beyond_the_job": 7,
+ "wall_s": 23.1
+}

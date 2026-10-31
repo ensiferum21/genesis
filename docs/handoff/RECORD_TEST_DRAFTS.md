@@ -2159,3 +2159,45 @@ class RecordB20R187(unittest.TestCase):
         for r in controls:
             self.assertTrue(S.control_passes(r), r['key'])
 ```
+
+## RecordB20R188 (WP-4; append to `tests_genesis/test_verifier_adequacy_study.py`)
+
+Dry-run on the rehearsal (`--rehearse`) before the sealed run.
+
+```python
+import json  # noqa: E402
+
+R188 = ROOT / 'evidence' / 'verifier_adequacy_b20r188'
+
+
+class RecordB20R188(unittest.TestCase):
+    """The record of B20_R188 on its evidence: the script and the verifier it measured; every mutant once; the summary
+    recomputed from the rows; every gap and every possibly-equivalent survivor examined again to the same class."""
+    DIR = R188
+
+    @classmethod
+    def setUpClass(cls):
+        cls.result = json.loads((cls.DIR / 'result.json').read_text())
+        cls.rows = [json.loads(x) for x in (cls.DIR / 'rows.jsonl').read_text().splitlines() if x.strip()]
+
+    def test_the_script_and_the_verifier(self):
+        if self.DIR == R188:
+            self.assertEqual(digest(ROOT / 'scripts/b20r188_verifier_adequacy.py'), SHA256)
+            self.assertEqual(self.result['script_sha256'], SHA256)
+        self.assertEqual(len({(r['target'], r['what']) for r in self.rows}), len(self.rows))
+        want = sum(len(MU.enumerate_mutants(t, TG.KERNEL_SOURCES[t])) for t in self.result['targets'])
+        self.assertEqual(len(self.rows), want)
+
+    def test_the_summary_recomputes(self):
+        got = S.analyse(self.rows)
+        for k, v in got.items():
+            self.assertEqual(json.loads(json.dumps(v)), self.result[k], k)
+
+    def test_every_survivor_examined_again(self):
+        survivors = {(r['target'], r['what']): r for r in self.rows if r['class'] != 'killed'}
+        for t in self.result['targets']:
+            for op, what, m in MU.enumerate_mutants(t, TG.KERNEL_SOURCES[t]):
+                if (t, what) in survivors:
+                    with tempfile.TemporaryDirectory() as d:
+                        self.assertEqual(S.examine(t, op, what, m, d)['class'], survivors[(t, what)]['class'], what)
+```
