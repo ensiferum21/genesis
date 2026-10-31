@@ -24,8 +24,8 @@ from genesis.repairkernel import defects4 as DF4  # noqa: E402
 from genesis.repairkernel import targets as TG  # noqa: E402
 from genesis.repairkernel import verify as VF  # noqa: E402
 
-PREREGISTRATION = None              # the commit that preregisters it (filled in by the next commit)
-SHA256 = None
+PREREGISTRATION = '884713e'         # the commit that preregisters it
+SHA256 = '72275f94e3e4f034d367f5bcb49d7baeceb402467ab10b4743480fb6aeff7572'
 
 
 def digest(path):
