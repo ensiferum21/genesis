@@ -15,17 +15,10 @@ describes that zip's own contents (see "Package contents").
 Everything is pushed: `continuation-b20-rx` (the line), `archive` (the checkpoints, latest B20_R184 at `804f479`), and
 `wip/b20r187` (snapshots of the study now running; not a record). A successor continues as follows.
 
-- **Running when this was written:** B20_R187 (SR-2d, a third generation of Genesis's repair transformations;
-  preregistered `0e56949`, pinned `0509da1`), alone on CPU 0 from 20:41:51, in slices of 6,600 s (exit 3 = paused).
-  Command: `scripts/ops/run_slice.sh <worktree of 0e56949> scripts/b20r187_third_generation.py
-  <worktree>/evidence/third_generation_b20r187 <log>`. If this session stops, its state is on `wip/b20r187` (refreshed
-  every 15 minutes while it runs): put `evidence/` at the output path and `research_plane/` at
-  `/home/claude/work/scratch-foundry/b20r187/genesis-research`, run the same command, and it skips recorded rows;
-  disclose the move. Or run it again from scratch from `0e56949` (it is deterministic in its seeds).
-- **Recording it:** `RecordB20R187` is drafted in `docs/handoff/RECORD_TEST_DRAFTS.md`; append it unchanged to
-  `tests_genesis/test_third_generation_study.py`, run it on CPU 1, write `docs/checkpoints/B20_R187_RECORD.md` (as
-  B20_R186's), and update BATCHES, NEXT_ACTIONS, batch_state, the two ledgers, TEST_MATRIX, this file, the queue and the
-  status table of `docs/OMEGA_RULE_INVENTION.md`.
+- **B20_R187 is recorded** (`docs/checkpoints/B20_R187_RECORD.md`, 31 Oct 22:37): no compounding at generation 3 (P1 3-4);
+  step 6 a third time (P2 22-2); Genesis's derived space beat the builder's grammar (P3 22-0). Nothing is running on
+  CPU 0 after it; the next study is to be preregistered (the blueprint's A6/A7 ordering, then generation 3 again, or
+  WP-1 to WP-4).
 - **Where the rule-invention line stands:** `docs/OMEGA_RULE_INVENTION.md` §5-6 and the records B20_R182, R183, R185,
   R186. Step 6 (the inventor improving how it invents) is shown and replicated on this testbed (B20_R185 P2 7-0,
   B20_R186 P2 12-0); B20_R187 asks whether it compounds. Not shown: Genesis's space beating the builder's grammar;

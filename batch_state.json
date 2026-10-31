@@ -1624,6 +1624,15 @@
           "804f479"
         ],
         "result": "Checkpoint GENESIS_COMPLETION_CHECKPOINT_B20_R184 at 804f479 (parent B20_R176): release matrix 2,840 tests (integration 2,303 in six shards), all OK, one declared skip; 86,334,529 bytes, SHA-256 74907d66aa497d2b713923a0a0c1242f027f7874d6473c0b1e37a4d1ab83ea98; restore-verified (7,281 manifest entries); archived whole (archive 9868808). The first build at 652f36d failed (B20R184-PICKLE)."
+      },
+      "B20_R187": {
+        "commits": [
+          "b82c54a",
+          "0e56949",
+          "0509da1",
+          "a56289a"
+        ],
+        "result": "Recorded (DEV, alone on CPU 0 20:41:51-22:37:37, two slices): SR-2d. SPACE_INVENTED (generation 3: 58 derived, 11 admitted, first compositions). 108 obstacles: v3 48, g1 57, g2 77, g3 76, grammar 54, enum 39. P1 NO_DIFFERENCE_SHOWN (3-4), P2 INVENTOR_IMPROVED (22-2, p_Holm 7e-5), P3 GENESIS_SPACE_BEATS_BUILDER_GRAMMAR (22-0). Defect B20R187-ANCESTRY (no admission affected). docs/checkpoints/B20_R187_RECORD.md"
       }
     },
     "open_after_b20_r5": [

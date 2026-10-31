@@ -1177,7 +1177,10 @@
    "unlocks": []
   },
   "B20_R187": {
-   "artifacts": [],
+   "artifacts": [
+    "evidence/third_generation_b20r187",
+    "docs/checkpoints/B20_R187_RECORD.md"
+   ],
    "committed": true,
    "depends_on": [],
    "failure": null,
@@ -1185,9 +1188,9 @@
    "kind": "study",
    "line": "self-repair",
    "notes": "docs/OMEGA_RULE_INVENTION.md section 6; after the checkpoint B20_R184; alone on CPU 0, in slices",
-   "outcome": null,
+   "outcome": "SPACE_INVENTED; P1 NO_DIFFERENCE_SHOWN (g3 76 vs g2 77); P2 INVENTOR_IMPROVED (22-2); P3 GENESIS_SPACE_BEATS_BUILDER_GRAMMAR (22-0)",
    "output": "evidence/third_generation_b20r187",
-   "positive": null,
+   "positive": true,
    "preregistered": "0e56949",
    "priority": 7,
    "requires": [],
@@ -1195,7 +1198,7 @@
     "cpu0_hours": 2.5
    },
    "script": "scripts/b20r187_third_generation.py",
-   "status": "queued",
+   "status": "done",
    "title": "SR-2d: does the inventor's improvement compound? B20_R185's cycle with a third generation (derivations from every admitted transformation of generations 1 and 2), on 36 fresh random mutants (defects7.py); P1 g3 vs g2, P2 g2 vs g1, P3 g3 vs the builder's grammar",
    "unlocks": []
   },
@@ -2602,6 +2605,18 @@
    "id": "B20_R187",
    "kind": "add",
    "time": "2026-10-31T10:31:14+00:00"
+  },
+  {
+   "id": "B20_R187",
+   "kind": "start",
+   "time": "2026-10-31T14:39:59+00:00"
+  },
+  {
+   "id": "B20_R187",
+   "kind": "finish",
+   "outcome": "SPACE_INVENTED; P1 NO_DIFFERENCE_SHOWN (g3 76 vs g2 77); P2 INVENTOR_IMPROVED (22-2); P3 GENESIS_SPACE_BEATS_BUILDER_GRAMMAR (22-0)",
+   "positive": true,
+   "time": "2026-10-31T14:39:59+00:00"
   }
  ],
  "lines": {
@@ -2930,6 +2945,11 @@
     [
      "B20_R186",
      "replicated: SPACE_INVENTED; P1 NO_DIFFERENCE_SHOWN (56 vs 53); P2 INVENTOR_IMPROVED (68 vs 56, 12-0, p_Holm 0.0015); P3 NO_DIFFERENCE_SHOWN (68 vs 59, p_Holm 0.070)",
+     true
+    ],
+    [
+     "B20_R187",
+     "SPACE_INVENTED; P1 NO_DIFFERENCE_SHOWN (g3 76 vs g2 77); P2 INVENTOR_IMPROVED (22-2); P3 GENESIS_SPACE_BEATS_BUILDER_GRAMMAR (22-0)",
      true
     ]
    ],
