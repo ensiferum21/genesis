@@ -358,6 +358,15 @@ needs people: a reviewer, a statistician, an independent custodian on its own ma
         preregistered and runs **alone on CPU 0** from 11:52:54.
       - **PT-2 (B20_R177) is recorded** (`docs/checkpoints/B20_R177_RECORD.md`): NOT_PROVED_OUT, valid; Genesis refuted bound
         30, which the predecessor missed three times, but in its starting representation; parts 1, 3, 4, 5 failed.
+      - **B20_R182 is recorded** (`docs/checkpoints/B20_R182_RECORD.md`): RULES_INVENTED. With no human step Genesis
+        admitted one rule it invented, symmetry completion, lifted from its own verified repair of N2 and verified on
+        N1; on the held-out set its library added nothing (version 4 = version 3, 21 of 36) and the grammar searched
+        online beat it (30, p 0.022). The grammar is the builder's; the next step is Genesis growing the grammar.
+      - **The checkpoint attempt of 12:28 was stopped** (12:29:13): the integration suite (an estimated 7,900 s: 6,579 s at B20_R176 plus the record tests since) has outgrown
+        `run_test_matrix.py --timeout 7000` and the 2 h job limit; it must be sharded before the next checkpoint. It
+        was labelled B20_R183 in `chain.log`; that number went to SR-2b.
+      - **B20_R183 (SR-2b) is preregistered**: B20_R182 with fresh seeds, plus step 6 (the learned grammar order against
+        the fixed one). Alone on CPU 0.
   26c. **Daniel's directive of 27 Oct 2026, 19:55 is adopted**: `docs/OMEGA_FRONTIER.md`, written in detail for
       handoff at his request (20:01). Genesis works by divergence and convergence (imagine, mutate, recombine,
       branch out, extrapolate discovery curves, detect convergence, allocate), without handholding. The

@@ -1073,7 +1073,10 @@
    "unlocks": []
   },
   "B20_R182": {
-   "artifacts": [],
+   "artifacts": [
+    "evidence/rule_invention_b20r182",
+    "docs/checkpoints/B20_R182_RECORD.md"
+   ],
    "committed": true,
    "depends_on": [],
    "failure": null,
@@ -1081,9 +1084,9 @@
    "kind": "study",
    "line": "self-repair",
    "notes": "docs/OMEGA_RULE_INVENTION.md (Daniel, 31 Oct 2026, 11:26); alone on CPU 0",
-   "outcome": null,
+   "outcome": "RULES_INVENTED: 16 of 45 unsolved by v3, 6 repaired by the dream, 17 rules lifted, 1 admitted (symmetry completion, from N2, verified on N1); held out: v4 21 = v3 21; DREAM_ONLINE_BEATS_LOOP_V4 (30, 11-2, p 0.022); enum 18; no false repair",
    "output": "evidence/rule_invention_b20r182",
-   "positive": null,
+   "positive": true,
    "preregistered": "884713e",
    "priority": 7,
    "requires": [],
@@ -1091,7 +1094,7 @@
     "cpu0_hours": 2.0
    },
    "script": "scripts/b20r182_rule_invention.py",
-   "status": "queued",
+   "status": "done",
    "title": "SR-2a: Genesis invents its own repair rules: detect the obstacles the builder's rules do not solve (45 development defects), dream (a grammar of statements), lift verified repairs into rules (anti-unification), admit by verified transfer to other families, two generations; then version 4 (Genesis's library) against version 3, the grammar searched online, and enum on 12 new held-out defects x 3 jobs",
    "unlocks": []
   },
@@ -1114,7 +1117,7 @@
     "cpu0_hours": 1.0
    },
    "script": "scripts/b20r183_rule_invention_replica.py",
-   "status": "queued",
+   "status": "running",
    "title": "SR-2b: B20_R182 repeated with fresh seeds (detection 4, probes 5, jobs 6-8, search 1, controls 9), plus the arm that tests step 6: the grammar ordered by the inventor's learned posterior over productions ('dream') against the fixed order ('dream_online'); each of B20_R182's findings compared with its replica",
    "unlocks": []
   },
@@ -2458,6 +2461,23 @@
    "id": "B20_R183",
    "kind": "add",
    "time": "2026-10-31T04:36:09+00:00"
+  },
+  {
+   "id": "B20_R182",
+   "kind": "start",
+   "time": "2026-10-31T04:41:58+00:00"
+  },
+  {
+   "id": "B20_R182",
+   "kind": "finish",
+   "outcome": "RULES_INVENTED: 16 of 45 unsolved by v3, 6 repaired by the dream, 17 rules lifted, 1 admitted (symmetry completion, from N2, verified on N1); held out: v4 21 = v3 21; DREAM_ONLINE_BEATS_LOOP_V4 (30, 11-2, p 0.022); enum 18; no false repair",
+   "positive": true,
+   "time": "2026-10-31T04:41:58+00:00"
+  },
+  {
+   "id": "B20_R183",
+   "kind": "start",
+   "time": "2026-10-31T04:42:02+00:00"
   }
  ],
  "lines": {
@@ -2766,6 +2786,11 @@
     [
      "B20_R181",
      "MILESTONE_DEMONSTRATED (12 of 36); LOOP_BEATS_RANDOM (6-0); NO_DIFFERENCE_SHOWN against loop_v2, nolocal, enum (3-0 each: E2, reached only by the vestigial-call operator); no false repair; REUSE_NOT_SHOWN",
+     true
+    ],
+    [
+     "B20_R182",
+     "RULES_INVENTED: 16 of 45 unsolved by v3, 6 repaired by the dream, 17 rules lifted, 1 admitted (symmetry completion, from N2, verified on N1); held out: v4 21 = v3 21; DREAM_ONLINE_BEATS_LOOP_V4 (30, 11-2, p 0.022); enum 18; no false repair",
      true
     ]
    ],

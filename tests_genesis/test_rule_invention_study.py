@@ -72,5 +72,73 @@ class Design(unittest.TestCase):
         self.assertAlmostEqual(S.sign_test(6, 0), 2 / 64)
 
 
+R182 = ROOT / 'evidence' / 'rule_invention_b20r182'
+
+
+class RecordB20R182(unittest.TestCase):
+    """The record of SR-2a (B20_R182) on its evidence: the script and the catalogue; the verdicts and tables recomputed
+    from the rows, the isolation report and Genesis's frozen library; every admitted rule admitted by a verified
+    repair of another family, in a probe row that names it; every promoted component source verified again; the
+    30 controls."""
+    DIR = R182
+
+    @classmethod
+    def setUpClass(cls):
+        import json
+        cls.result = json.loads((cls.DIR / 'result.json').read_text())
+        cls.rows = [json.loads(x) for x in (cls.DIR / 'rows.jsonl').read_text().splitlines() if x.strip()]
+        cls.episodes = [json.loads(x) for x in (cls.DIR / 'episodes.jsonl').read_text().splitlines() if x.strip()]
+        cls.iso = json.loads((cls.DIR / 'isolation.json').read_text())
+        lib = cls.DIR / 'genesis_library'
+        cls.library = [json.loads(x) for x in (lib / 'rules.jsonl').read_text().splitlines() if x.strip()] \
+            if (lib / 'rules.jsonl').exists() else []
+        cls.inventor = json.loads((lib / 'inventor.json').read_text()) if (lib / 'inventor.json').exists() else {}
+
+    def test_the_script_and_the_catalogue(self):
+        if self.DIR == R182:
+            self.assertEqual(digest(ROOT / 'scripts/b20r182_rule_invention.py'), SHA256)
+        self.assertEqual(self.result['defects4_sha256'], S.DEFECTS4_SHA256)
+
+    def test_the_verdicts_recompute(self):
+        import json
+        got = S.analyse(self.rows, self.iso, self.result['heldout_used'], self.library, self.inventor)
+        for k in ('verdict', 'isolation_ok', 'controls_ok', 'invention', 'obstacles', 'milestone',
+                  'milestone_obstacles', 'per_arm', 'comparison', 'promotions_outside_component'):
+            self.assertEqual(json.loads(json.dumps(got[k])), self.result[k], k)
+
+    def test_every_admitted_rule_was_admitted_by_another_familys_verified_repair(self):
+        for r in self.library:
+            if r['status'] != 'admitted':
+                continue
+            self.assertTrue(r['admitted_by'])
+            self.assertNotIn(r['provenance']['family'], r['admitted_by'])
+            probes = [x for x in self.rows if x['phase'].startswith('admit') and x['rule'] and x['rule']['id'] == r['id']
+                      and x['rule']['after'] == 'admitted']
+            self.assertTrue(probes, r['id'])
+            self.assertTrue(any(S.repaired(x) and x['name'] in r['admitted_by'] for x in probes), r['id'])
+
+    def test_every_promoted_source_verifies_again(self):
+        rows = {r['key']: r for r in self.rows}
+        n = 0
+        with tempfile.TemporaryDirectory() as d:
+            for e in self.episodes:
+                r = rows[e['key']]
+                if not r['promoted']:
+                    self.assertIsNone(e['final_source'], e['key'])
+                    continue
+                job, _ = BN.make(r['name'], r['seed'], Path(d) / e['key'].replace('/', '_'), version=2)
+                self.assertEqual(job.run()['op'], r['interrupted_at'])
+                v = VF.verify(job.dir, job.target, job.seed, job.n_ops, job.every, e['final_source'])
+                self.assertTrue(v['accepted'], e['key'])
+                n += 1
+        self.assertGreater(n, 0)
+
+    def test_no_control_proposed_or_changed_anything(self):
+        controls = [r for r in self.rows if r['phase'] == 'controls']
+        self.assertEqual(len(controls), 30)
+        for r in controls:
+            self.assertTrue(S.control_passes(r), r['key'])
+
+
 if __name__ == '__main__':
     unittest.main()

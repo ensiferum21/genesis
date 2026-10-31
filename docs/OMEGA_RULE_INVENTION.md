@@ -128,13 +128,26 @@ Preregistered before any of it runs on its held-out defects:
   rules only) and against version 3 with the dream grammar searched online at the same budget (does a learned rule
   beat searching the bigger space directly?); the invention cycle's cost reported separately.
 
-## 5. Status
+## 5. Status (31 Oct 2026, after B20_R182)
 
-| Step | Built | Shown | Not built or not shown |
+| Step | Built | Shown (B20_R182, testbed only) | Not built or not shown |
 |---|---|---|---|
-| 1 detect | the loop's record distinguishes exhausted repertoire, spent budget, false repair | | |
+| 1 detect | unsolved, and false repairs (the verifier's rejection), told apart | 16 of 45 development defects unsolved by the builder's rules, 3 of them false repairs | an exhausted repertoire told from a spent budget (version 3 always spends its budget); only exhausted repertoires sent to invention (every unsolved obstacle is) |
 | 2 diagnose | suspected methods (posterior); the component's vocabulary | | missing-capability classes beyond code defects |
-| 3 invent | the dream grammar; anti-unification lattice | (B20_R182) | inventing new *kinds* of transformation outside the grammar |
-| 4 verify | admission by kernel-verified transfer, MDL score | (B20_R182) | |
-| 5 learn, reuse | library with provenance and Beta posteriors; loop v4 | (B20_R182) | |
-| 6 improve the inventor | posteriors over generalisation levels and grammar productions, ordering later probes and dreams | | evidence across generations on fresh tasks |
+| 3 invent | the dream grammar; anti-unification lattice | 6 of the 16 repaired by the dream, verified; 17 rules lifted | new *kinds* of transformation outside the grammar (the grammar is the builder's) |
+| 4 verify | admission by kernel-verified transfer to another family | **1 rule admitted**: symmetry completion (`self.A[x].m(y)` → `self.A[y].m(x)`), lifted from N2's repair, verified on N1; no false repair in any probe | failures of candidates that never pass the visible tests are not counted |
+| 5 learn, reuse | library with provenance and Beta posteriors; loop v4 | | **reuse on unseen problems: not shown** (the rule matched no held-out defect; v4 = v3, 21 of 36 each) |
+| 6 improve the inventor | posteriors over generalisation levels and grammar productions | the posteriors moved (names+attrs+ops; delete, container-call, flip, assign) | whether the learned order invents faster: B20_R183 |
+
+**What B20_R182 found against the plan.** The grammar searched online at test time repaired 30 of 36 held-out
+obstacles, version 4 21 (p 0.022), at a quarter of the CPU, and lost 2 that version 3 reaches because the bigger
+space pushed them past the budget. At this scale the space is what helps, not the rules lifted from it: a learned rule
+pays when it compresses a space too big to search, and this testbed's is not. And the grammar is the builder's. The
+next step toward the requirement is therefore not more rules from the same grammar but **Genesis growing the grammar
+itself** (new productions composed from verified repairs, kept only when they buy verified repairs per candidate
+added: the MDL trade of step 4 applied to the space), and a testbed whose repair space is too big to search online.
+
+| Study | Status | Result |
+|---|---|---|
+| B20_R182 (SR-2a) | recorded (`docs/checkpoints/B20_R182_RECORD.md`) | RULES_INVENTED; LOOP_V4 = LOOP_V3; DREAM_ONLINE_BEATS_LOOP_V4 |
+| B20_R183 (SR-2b) | preregistered: B20_R182 with fresh seeds, plus step 6 (learned against fixed grammar order) | |

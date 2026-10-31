@@ -1,0 +1,347 @@
+{
+ "study": "B20_R182",
+ "rehearsal": false,
+ "script_sha256": "72275f94e3e4f034d367f5bcb49d7baeceb402467ab10b4743480fb6aeff7572",
+ "defects4_sha256": "7143763d0847f46e552a1e2d149529ae1e772d8b3f1200d699d4ec4bc40c14e0",
+ "job_version": 2,
+ "budget": 300,
+ "dream_budget": 1000,
+ "probe_budget": 120,
+ "arms": [
+  "loop",
+  "loop_v3",
+  "dream_online",
+  "enum"
+ ],
+ "job_seeds": [
+  1,
+  2,
+  3
+ ],
+ "curriculum": [
+  "M1",
+  "L2",
+  "S1",
+  "W2",
+  "M2",
+  "L1",
+  "L3",
+  "L4",
+  "R1",
+  "R2",
+  "R4",
+  "S2",
+  "S3",
+  "W1",
+  "G1",
+  "G2",
+  "G3",
+  "L5",
+  "W3",
+  "R5",
+  "S4",
+  "T1",
+  "T2",
+  "T3",
+  "T4",
+  "P1",
+  "P2",
+  "P3",
+  "P4",
+  "D1",
+  "D2",
+  "D3",
+  "D4",
+  "E1",
+  "E2",
+  "E3",
+  "E4",
+  "N1",
+  "N2",
+  "N3",
+  "N4",
+  "K1",
+  "K2",
+  "K3",
+  "K4"
+ ],
+ "heldout_used": [
+  "X1",
+  "X2",
+  "X3",
+  "X4",
+  "C1",
+  "C2",
+  "C3",
+  "C4",
+  "B1",
+  "B2",
+  "B3",
+  "B4"
+ ],
+ "commit": "884713e235e0f0299c7c3404eb66b8de0be5387a",
+ "verdict": "RULES_INVENTED",
+ "isolation_ok": true,
+ "controls_ok": true,
+ "invention": {
+  "curriculum": 45,
+  "unsolved_by_v3": 16,
+  "dreams": 16,
+  "dreams_repaired": 6,
+  "rules_lifted": 17,
+  "rules_admitted": 1,
+  "rules_rejected": 0,
+  "admitted": [
+   {
+    "id": "dream1-N2-1-dream#3:names+attrs+ops",
+    "level": "names+attrs+ops",
+    "kind": "insert",
+    "template": "self.__m0__[__m3__].__m2__(__m1__)",
+    "admitted_by": [
+     "N1"
+    ],
+    "source": "N2"
+   }
+  ],
+  "probes": {
+   "probes": 45,
+   "probes_with_candidates": 18,
+   "admissions": 1,
+   "false_repairs": 0
+  },
+  "inventor_beliefs": {
+   "levels": {
+    "concrete": [
+     1.0,
+     1.0
+    ],
+    "names": [
+     1.0,
+     1.0
+    ],
+    "names+attrs": [
+     1.0,
+     1.0
+    ],
+    "names+attrs+ops": [
+     2.0,
+     1.0
+    ],
+    "names+attrs+ops+consts": [
+     1.0,
+     1.0
+    ],
+    "free": [
+     1.0,
+     1.0
+    ]
+   },
+   "productions": {
+    "flip": [
+     2.0,
+     1.0
+    ],
+    "delete-empty": [
+     1.0,
+     1.0
+    ],
+    "delete": [
+     3.0,
+     1.0
+    ],
+    "setdefault": [
+     1.0,
+     1.0
+    ],
+    "container-call": [
+     3.0,
+     1.0
+    ],
+    "indexed-counter": [
+     1.0,
+     1.0
+    ],
+    "counter": [
+     1.0,
+     1.0
+    ],
+    "invalidate": [
+     1.0,
+     1.0
+    ],
+    "private-call": [
+     1.0,
+     1.0
+    ],
+    "assign": [
+     2.0,
+     1.0
+    ]
+   }
+  },
+  "dream_first_solutions": [
+   [
+    "R2",
+    4,
+    false
+   ],
+   [
+    "W1",
+    9,
+    false
+   ],
+   [
+    "G3",
+    null,
+    false
+   ],
+   [
+    "P1",
+    null,
+    false
+   ],
+   [
+    "D1",
+    8,
+    false
+   ],
+   [
+    "D2",
+    null,
+    false
+   ],
+   [
+    "D3",
+    null,
+    false
+   ],
+   [
+    "D4",
+    null,
+    false
+   ],
+   [
+    "E3",
+    227,
+    true
+   ],
+   [
+    "N1",
+    167,
+    true
+   ],
+   [
+    "N2",
+    59,
+    true
+   ],
+   [
+    "N4",
+    112,
+    true
+   ],
+   [
+    "K1",
+    70,
+    true
+   ],
+   [
+    "K2",
+    19,
+    true
+   ],
+   [
+    "K3",
+    null,
+    false
+   ],
+   [
+    "K4",
+    null,
+    false
+   ]
+  ],
+  "cpu_s": 828.58
+ },
+ "obstacles": 36,
+ "milestone": true,
+ "milestone_obstacles": [
+  "X1/1",
+  "X1/2",
+  "X1/3",
+  "X3/1",
+  "X3/2",
+  "X3/3",
+  "C2/1",
+  "C2/2",
+  "C2/3",
+  "C3/1",
+  "C3/2",
+  "C3/3",
+  "C4/1",
+  "C4/2",
+  "C4/3",
+  "B2/1",
+  "B2/2",
+  "B2/3",
+  "B4/1",
+  "B4/2",
+  "B4/3"
+ ],
+ "per_arm": {
+  "loop": {
+   "obstacles": 36,
+   "repaired": 21,
+   "false_repairs": 0,
+   "by_invented_rule": 0,
+   "evaluations": 8916,
+   "total_cpu_s": 438.27
+  },
+  "loop_v3": {
+   "obstacles": 36,
+   "repaired": 21,
+   "false_repairs": 0,
+   "by_invented_rule": 0,
+   "evaluations": 8901,
+   "total_cpu_s": 477.51
+  },
+  "dream_online": {
+   "obstacles": 36,
+   "repaired": 30,
+   "false_repairs": 0,
+   "by_invented_rule": 0,
+   "evaluations": 10800,
+   "total_cpu_s": 114.95
+  },
+  "enum": {
+   "obstacles": 36,
+   "repaired": 18,
+   "false_repairs": 0,
+   "by_invented_rule": 0,
+   "evaluations": 7140,
+   "total_cpu_s": 63.31
+  }
+ },
+ "comparison": {
+  "loop_v3": {
+   "loop_v4_only": 0,
+   "loop_v3_only": 0,
+   "p": 1.0,
+   "verdict": "NO_DIFFERENCE_SHOWN"
+  },
+  "dream_online": {
+   "loop_v4_only": 2,
+   "dream_online_only": 11,
+   "p": 0.02246,
+   "verdict": "DREAM_ONLINE_BEATS_LOOP_V4"
+  },
+  "enum": {
+   "loop_v4_only": 3,
+   "enum_only": 0,
+   "p": 0.25,
+   "verdict": "NO_DIFFERENCE_SHOWN"
+  }
+ },
+ "promotions_outside_component": 0,
+ "wall_s": 1972.4
+}
