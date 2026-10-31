@@ -1,0 +1,170 @@
+{
+ "C": {
+  "labels": {
+   "C20f87e9ffd": null,
+   "C332e882799": null,
+   "C35b6392477": null,
+   "C39c111b7d5": null,
+   "C4886c1f392": null,
+   "C529d4a0497": null,
+   "C711f85e8ab": null,
+   "C722f01aba5": null,
+   "C79f4882a12": null,
+   "C9e3c2502cf": null,
+   "Cd35d1e36aa": null,
+   "Cdba90bc4fe": null,
+   "Ce3bceddc13": null,
+   "Ce896a190a1": null,
+   "Ce93b6bdfbc": null,
+   "Cecd7eb1cd7": null,
+   "Cf01863a00f": null,
+   "Cf1b6481294": null,
+   "Cf851af6169": null
+  },
+  "posed": 19,
+  "withheld": 5
+ },
+ "audit_hits": [],
+ "beyond_p0": [
+  30
+ ],
+ "certified_A": {
+  "G": [
+   30,
+   40
+  ],
+  "P0_0": [
+   21,
+   40
+  ],
+  "P0_1": [
+   18,
+   40
+  ],
+  "P0_2": [
+   21,
+   24,
+   40
+  ]
+ },
+ "certified_B": {
+  "given_rep": [],
+  "improved": [
+   "25",
+   "32",
+   "327",
+   "63",
+   "85"
+  ],
+  "notebook": [
+   "109",
+   "24",
+   "25",
+   "32",
+   "430a",
+   "63",
+   "85"
+  ],
+  "predecessor": [
+   "109",
+   "24",
+   "25",
+   "309",
+   "32",
+   "327"
+  ]
+ },
+ "code_identity": "a8c32e8745ed1f15cd07ce2aa9afddf14c6520b10ea7b7c8f0d29e9d3a9060b4",
+ "discovery": "A8ec08b82e9",
+ "discovery_bound": 30,
+ "failed": [
+  "part1",
+  "part3",
+  "part4",
+  "part5"
+ ],
+ "labels": {},
+ "part1": null,
+ "part3": {
+  "names": [],
+  "replayed": false
+ },
+ "parts": {
+  "gate": true,
+  "part1": false,
+  "part2": true,
+  "part3": false,
+  "part4": false,
+  "part5": false
+ },
+ "pins_ok": true,
+ "preregistered": true,
+ "proved_equivalents_refuted": [],
+ "schema": "genesis-b20r177-proving-test-2-v1",
+ "spent_ok": true,
+ "stats": {
+  "B": {
+   "causal_use": false,
+   "improved_only": 2,
+   "p_first": 1.0,
+   "p_holm": {
+    "first": 1.0,
+    "mcnemar": 1.0
+   },
+   "p_mcnemar": 0.8125,
+   "pass": false,
+   "predecessor_only": 3,
+   "shared": 3,
+   "vs_given_rep": {
+    "skipped": "the discovery used a starting representation"
+   },
+   "vs_notebook": {
+    "improved_only": 1,
+    "p_first": 0.8125,
+    "p_holm": {
+     "first": 1.0,
+     "mcnemar": 1.0
+    },
+    "p_mcnemar": 0.9375,
+    "pass": false,
+    "predecessor_only": 3,
+    "shared": 4,
+    "wilcoxon_n": 4
+   },
+   "wilcoxon_n": 2
+  },
+  "C": {
+   "improved_only": 0,
+   "p_first": 0.15189743041992188,
+   "p_holm": {
+    "first": 0.30379486083984375,
+    "mcnemar": 1.0
+   },
+   "p_mcnemar": 1.0,
+   "pass": false,
+   "predecessor_only": 0,
+   "shared": 18,
+   "vs_given_rep": {
+    "skipped": "the discovery used a starting representation"
+   },
+   "vs_notebook": {
+    "improved_only": 0,
+    "p_first": 0.9994773864746094,
+    "p_holm": {
+     "first": 1.0,
+     "mcnemar": 1.0
+    },
+    "p_mcnemar": 1.0,
+    "pass": false,
+    "predecessor_only": 0,
+    "shared": 18,
+    "wilcoxon_n": 18
+   },
+   "wilcoxon_n": 18
+  }
+ },
+ "status": "DEV; licenses nothing",
+ "study": "b20r177",
+ "valid": true,
+ "verdict": "NOT_PROVED_OUT"
+}

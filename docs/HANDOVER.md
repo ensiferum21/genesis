@@ -355,7 +355,9 @@ needs people: a reviewer, a statistician, an independent custodian on its own ma
         rules (detect, diagnose, dream a grammar of statements, lift verified repairs into rules by anti-unification,
         admit by verified transfer to other families, learn where to look). Built in `src/genesis/repair/invent.py` and
         the loop version 4; the fourth catalogue was sealed before any of it existed. **B20_R182 (SR-2a)** is
-        preregistered (CPU 1).
+        preregistered and runs **alone on CPU 0** from 11:52:54.
+      - **PT-2 (B20_R177) is recorded** (`docs/checkpoints/B20_R177_RECORD.md`): NOT_PROVED_OUT, valid; Genesis refuted bound
+        30, which the predecessor missed three times, but in its starting representation; parts 1, 3, 4, 5 failed.
   26c. **Daniel's directive of 27 Oct 2026, 19:55 is adopted**: `docs/OMEGA_FRONTIER.md`, written in detail for
       handoff at his request (20:01). Genesis works by divergence and convergence (imagine, mutate, recombine,
       branch out, extrapolate discovery curves, detect convergence, allocate), without handholding. The

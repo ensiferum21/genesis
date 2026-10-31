@@ -944,7 +944,10 @@
    "unlocks": []
   },
   "B20_R177": {
-   "artifacts": [],
+   "artifacts": [
+    "evidence/proving_test_2_b20r177",
+    "docs/checkpoints/B20_R177_RECORD.md"
+   ],
    "committed": true,
    "depends_on": [
     "B20_R159"
@@ -954,9 +957,9 @@
    "kind": "study",
    "line": "proving-test",
    "notes": "Daniel, 30 Oct 2026, 20:06: \"Do the best\"; the builder's choice after seeing PT-1's result (disclosed); runs after B20_R175 (about 6.5 h) | started 30 Oct 2026, 20:23:09 SGT, from the clean worktree /home/claude/pt2-wt at a7303de | first attempt 20:23:09-21:04:12 stopped (exit 1) in part 3 replay: defect B20R177-LIBRARY, repaired; amended 30 Oct 2026 21:30; re-run from scratch from 21:15:05 SGT, /home/claude/pt2b-wt at 25eadb7; the checkpoint B20_R176 was stopped at 21:15 and follows PT-2 | second attempt 21:15:05-22:08:03 (25eadb7) stopped (exit 1) in family B arms: defect B20R177-SEEN, repaired; amended a second time; re-runs after the checkpoint B20_R176",
-   "outcome": null,
+   "outcome": "NOT_PROVED_OUT (valid): gate held (A' = {30}); part 2 passed (bound 30 refuted, starting representation); parts 1, 3, 4, 5 failed",
    "output": "evidence/proving_test_2_b20r177",
-   "positive": null,
+   "positive": false,
    "preregistered": "sha256 588f3545ff120b844991260b4a3aaeeb794e9cc2885d7940ef107157eadc3f14 (the preregistration commit)",
    "priority": 7,
    "requires": [],
@@ -964,7 +967,7 @@
     "cpu0_hours": 6.5
    },
    "script": "scripts/b20r177_proving_test_2.py",
-   "status": "queued",
+   "status": "done",
    "title": "PT-2: the proving test again, the inadequacy gate judged bound by bound (three predecessor runs on A; the discovery must be on a bound none refuted); PT-1's code otherwise",
    "unlocks": []
   },
@@ -2420,6 +2423,13 @@
    "id": "B20_R182",
    "kind": "add",
    "time": "2026-10-31T03:42:10+00:00"
+  },
+  {
+   "id": "B20_R177",
+   "kind": "finish",
+   "outcome": "NOT_PROVED_OUT (valid): gate held (A' = {30}); part 2 passed (bound 30 refuted, starting representation); parts 1, 3, 4, 5 failed",
+   "positive": false,
+   "time": "2026-10-31T04:10:19+00:00"
   }
  ],
  "lines": {
@@ -2663,8 +2673,14 @@
   },
   "proving-test": {
    "diagnosis": null,
-   "outcomes": [],
-   "run": 0,
+   "outcomes": [
+    [
+     "B20_R177",
+     "NOT_PROVED_OUT (valid): gate held (A' = {30}); part 2 passed (bound 30 refuted, starting representation); parts 1, 3, 4, 5 failed",
+     false
+    ]
+   ],
+   "run": 1,
    "stagnant": false
   },
   "recursive-invention": {
