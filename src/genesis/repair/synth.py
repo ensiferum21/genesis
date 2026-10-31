@@ -354,6 +354,162 @@ def law_repairs(src, method, law):
     return _dedupe(src, out)
 
 
+# ------------------------------------------------------------------------------------------------- inventions
+# Operators added after B20_R180, each from a class of obstacle that no earlier operator could reach (a statement
+# with no homologue to transplant). Each is a general structural principle, not a pattern of one defect.
+
+class _Rename(ast.NodeTransformer):
+    def __init__(self, mapping):
+        self.mapping = mapping
+
+    def visit_Name(self, node):
+        if node.id in self.mapping:
+            return ast.copy_location(ast.Name(id=self.mapping[node.id], ctx=node.ctx), node)
+        return node
+
+
+def _symmetric_pairs(f):
+    """Pairs of a method's arguments it treats as interchangeable: both index the same container somewhere in it."""
+    args = [a.arg for a in f.args.args if a.arg != 'self']
+    by_container = {}
+    for n in ast.walk(f):
+        if isinstance(n, ast.Subscript) and isinstance(n.slice, ast.Name) and n.slice.id in args:
+            by_container.setdefault(ast.dump(n.value), set()).add(n.slice.id)
+    pairs = set()
+    for names in by_container.values():
+        names = sorted(names)
+        for i, x in enumerate(names):
+            for y in names[i + 1:]:
+                pairs.add((x, y))
+    return sorted(pairs)
+
+
+def mirrors(src, focus_funcs=None):
+    """**Symmetry completion** (physics: a law that holds for i holds for its mirror image j). In a method whose
+    arguments a and b index the same container (a swap, a pair), a simple statement that mentions a but not b and has
+    no mirror image in the method gets one: the statement with a and b exchanged, inserted after it. A broken
+    symmetry (an index updated for one side of a swap only) is repaired by restoring it."""
+    tree = ast.parse(src)
+    out = []
+    for name, f in _methods(tree).items():
+        if focus_funcs is not None and name not in focus_funcs:
+            continue
+        for a, b in _symmetric_pairs(f):
+            own = {ast.dump(st) for st in ast.walk(f) if isinstance(st, ast.stmt)}
+            for st in ast.walk(f):
+                if not isinstance(st, (ast.Assign, ast.AugAssign, ast.Expr)) or st.lineno != st.end_lineno:
+                    continue
+                names = {n.id for n in ast.walk(st) if isinstance(n, ast.Name)}
+                if (a in names) == (b in names):
+                    continue
+                m = _Rename({a: b, b: a}).visit(ast.parse(_seg(src, st)).body[0])
+                if ast.dump(m) in own:
+                    continue
+                text = ast.unparse(m)
+                out.append((f'mirror {name}:{st.lineno} ({a}<->{b})', insert_after(src, st, text)))
+    return _dedupe(src, out)
+
+
+def orphans(src, focus_funcs=None):
+    """**Vestigial organs** (biology: an organ that no longer has a function points at a lost pathway). A private
+    method that takes no argument but `self` and that nothing in the class calls any more gets a call restored, at
+    the start or the end of each other method (but `__init__`)."""
+    tree = ast.parse(src)
+    methods = _methods(tree)
+    called = {n.func.attr for n in ast.walk(tree) if isinstance(n, ast.Call) and isinstance(n.func, ast.Attribute)
+              and isinstance(n.func.value, ast.Name) and n.func.value.id == 'self'}
+    lost = [m for m, f in methods.items() if m.startswith('_') and not m.startswith('__') and m not in called
+            and [a.arg for a in f.args.args] == ['self']]
+    out = []
+    for m in lost:
+        for name, f in methods.items():
+            if name in (m, '__init__') or (focus_funcs is not None and name not in focus_funcs):
+                continue
+            first, last = f.body[0], f.body[-1]
+            if isinstance(first, ast.Expr) and isinstance(getattr(first, 'value', None), ast.Constant):
+                first = f.body[1] if len(f.body) > 1 else first
+            out.append((f'orphan call self.{m}() at the start of {name}', insert_before(src, first, f'self.{m}()')))
+            if isinstance(last, ast.Return):
+                out.append((f'orphan call self.{m}() before the return of {name}', insert_before(src, last, f'self.{m}()')))
+            else:
+                out.append((f'orphan call self.{m}() at the end of {name}', insert_after(src, last, f'self.{m}()')))
+    return _dedupe(src, out)
+
+
+def _clocks(tree):
+    """Attributes that only ever grow by an argument: `self.P += x` (a clock, a position, a counter of time)."""
+    grow = {}
+    for n in ast.walk(tree):
+        if isinstance(n, ast.AugAssign) and isinstance(n.op, ast.Add) and isinstance(n.target, ast.Attribute) \
+                and isinstance(n.target.value, ast.Name) and n.target.value.id == 'self' \
+                and isinstance(n.value, ast.Name):
+            grow[n.target.attr] = True
+    return sorted(grow)
+
+
+def offsets(src, focus_funcs=None):
+    """**Dimensional analysis** (physics: a point in time is a duration measured from an origin). Where an attribute
+    that is a clock (`clocks`) is compared with values elsewhere, a duration stored or returned without the clock has
+    the wrong dimension: each `self.X` read in a statement of the focus (X not itself a clock) is offered as
+    `self.P + self.X`, and an existing `self.P + E` as `E` (the converse)."""
+    tree = ast.parse(src)
+    clocks = _clocks(tree)
+    if not clocks:
+        return []
+    out = []
+    for name, f in _methods(tree).items():
+        if name == '__init__' or (focus_funcs is not None and name not in focus_funcs):
+            continue
+        for st in ast.walk(f):
+            if not isinstance(st, (ast.Assign, ast.Return, ast.Expr)) or st.lineno != st.end_lineno:
+                continue
+            value = st.value
+            if value is None:
+                continue
+            for n in ast.walk(value):
+                if isinstance(n, ast.Attribute) and isinstance(n.value, ast.Name) and n.value.id == 'self' \
+                        and isinstance(n.ctx, ast.Load) and n.attr not in clocks \
+                        and not any(isinstance(p, ast.Call) and p.func is n for p in ast.walk(value)):
+                    for c in clocks:
+                        out.append((f'offset {name}:{st.lineno} self.{n.attr} -> self.{c} + self.{n.attr}',
+                                    _replace_cols(src, n, f'self.{c} + self.{n.attr}')))
+                if isinstance(n, ast.BinOp) and isinstance(n.op, ast.Add) and isinstance(n.left, ast.Attribute) \
+                        and n.left.attr in clocks:
+                    out.append((f'offset {name}:{st.lineno} drop self.{n.left.attr} +',
+                                _replace_cols(src, n, _seg(src, n.right))))
+    return _dedupe(src, out)
+
+
+EMPTY = ('{}', '[]', 'set()', 'dict()', 'list()', 'OrderedDict()', '0', 'None')
+
+
+def annihilates(src, patch):
+    """How many statements the patch adds outside `__init__` that reset an attribute to an empty or zero value
+    (`self.X = {}`, `[]`, `set()`, `0`, `None`, or `self.X.clear()`) where X is not a cache the component itself
+    resets that way somewhere outside `__init__` already."""
+    def resets(text):
+        tree = ast.parse(text)
+        out = []
+        for name, f in _methods(tree).items():
+            if name == '__init__':
+                continue
+            for st in ast.walk(f):
+                if isinstance(st, ast.Assign) and len(st.targets) == 1 and isinstance(st.targets[0], ast.Attribute) \
+                        and ast.unparse(st.value) in EMPTY:
+                    out.append(st.targets[0].attr)
+                elif isinstance(st, ast.Expr) and isinstance(st.value, ast.Call) \
+                        and isinstance(st.value.func, ast.Attribute) and st.value.func.attr == 'clear' \
+                        and isinstance(st.value.func.value, ast.Attribute):
+                    out.append(st.value.func.value.attr)
+        return out
+    before, after = resets(src), resets(patch)
+    return sum(1 for x in set(after) if after.count(x) > before.count(x) and x not in before)
+
+
+def inventions(src, focus_funcs=None):
+    return mirrors(src, focus_funcs) + orphans(src, focus_funcs) + offsets(src, focus_funcs)
+
+
 def _kinds(tree):
     """The kind of each attribute initialised in __init__ (set, list, dict)."""
     out = {}

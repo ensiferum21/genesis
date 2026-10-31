@@ -1043,6 +1043,29 @@
    "title": "SR-1a2: the obstacle loop version 2 (laws as evidence only, widening focus, the whole budget) on 12 new held-out defects in three larger components, kernel version 2 (rollback, resource check), against the frozen B20_R178 loop, nolocal, random, enum and retrieval at 300 evaluations; controls; retention and reuse",
    "unlocks": []
   },
+  "B20_R181": {
+   "artifacts": [],
+   "committed": true,
+   "depends_on": [],
+   "failure": null,
+   "id": "B20_R181",
+   "kind": "study",
+   "line": "self-repair",
+   "notes": "docs/OMEGA_SELF_REPAIR.md section 7; runs on CPU 1 (disclosed); Foundry directive item 4",
+   "outcome": null,
+   "output": "evidence/repair_bench_3_b20r181",
+   "positive": null,
+   "preregistered": null,
+   "priority": 6,
+   "requires": [],
+   "resources": {
+    "cpu1_hours": 1.2
+   },
+   "script": "scripts/b20r181_repair_bench_3.py",
+   "status": "queued",
+   "title": "SR-1a3: invented repair operators (symmetry completion, vestigial calls, dimensional offsets) in the obstacle loop version 3, against the frozen version 2 and nolocal, random and enum, on 12 new held-out defects in three new components (four in the operators' classes) x 3 jobs at 300 evaluations; 24 controls; retention and reuse",
+   "unlocks": []
+  },
   "allocator-baselines": {
    "artifacts": [],
    "committed": false,
@@ -2354,6 +2377,11 @@
    "outcome": "MILESTONE_DEMONSTRATED (12 of 36); NO_DIFFERENCE_SHOWN against every arm (loop 12, loop_v1 10, nolocal 9, random 11, enum 8, retrieval 15); REUSE_NOT_SHOWN; five defects beyond every arm",
    "positive": true,
    "time": "2026-10-31T01:58:08+00:00"
+  },
+  {
+   "id": "B20_R181",
+   "kind": "add",
+   "time": "2026-10-31T02:00:37+00:00"
   }
  ],
  "lines": {
@@ -2717,7 +2745,8 @@
   "self-repair-build",
   "B20_R178",
   "B20_R179",
-  "B20_R180"
+  "B20_R180",
+  "B20_R181"
  ],
  "reactivated": {},
  "schema": "genesis-research-queue-v1",

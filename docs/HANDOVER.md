@@ -345,6 +345,8 @@ needs people: a reviewer, a statistician, an independent custodian on its own ma
         **B20_R180 (SR-1a2)** is preregistered (CPU 1).
       - **B20_R180 is recorded** (`docs/checkpoints/B20_R180_RECORD.md`): MILESTONE_DEMONSTRATED (12 of 36);
         NO_DIFFERENCE_SHOWN against every arm; REUSE_NOT_SHOWN. Next on CPU 1: B20_R181 (invented operators).
+      - **B20_R181 (SR-1a3) is preregistered** (CPU 1): three invented operators in the loop version 3, on 12 new
+        held-out defects in three new components, against the frozen version 2.
   26c. **Daniel's directive of 27 Oct 2026, 19:55 is adopted**: `docs/OMEGA_FRONTIER.md`, written in detail for
       handoff at his request (20:01). Genesis works by divergence and convergence (imagine, mutate, recombine,
       branch out, extrapolate discovery curves, detect convergence, allocate), without handholding. The

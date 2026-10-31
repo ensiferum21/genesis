@@ -163,6 +163,40 @@ try:
 except ValueError:
     pass
 ''',
+    'lease': '''
+s = mod.Leases(term=3)
+assert s.acquire('a', 'x') and s.acquire('b', 'y')
+s.advance(2)
+assert s.renew('a', 'x')                 # a now lasts until 5
+s.advance(1)                             # b, granted at 0, ends at 3
+assert s.owner('b') is None and s.owner('a') == 'x'
+assert s.acquire('b', 'z')
+assert s.release('a', 'x') and s.owner('a') is None
+assert s.acquire('a', 'y')               # free again
+s.advance(3)
+assert s.owner('a') is None and s.owner('b') is None
+assert s.snapshot() == ([], [], 4)
+''',
+    'graph': '''
+g = mod.Graph()
+for u, v in ((1, 2), (2, 3), (3, 1), (1, 2)):
+    g.link(u, v)
+assert g.degree(1) == 2 and g.degree(2) == 2 and g.neighbours(3) == [1, 2]
+g.unlink(2, 1)
+assert g.degree(1) == 1 and g.degree(2) == 1 and g.neighbours(2) == [3]
+g.unlink(2, 1)
+assert g.snapshot()[1] == 2
+''',
+    'bimap': '''
+m = mod.BiMap()
+m.link('a', 1); m.link('b', 2)
+assert m.left(2) == 'b' and m.right('a') == 1
+m.link('a', 2)                           # a moves to 2; b loses its partner, 1 is free
+assert m.right('a') == 2 and m.left(2) == 'a' and m.right('b') is None and m.left(1) is None
+assert m.unlink('a') == 2 and m.left(2) is None
+m.link('c', 3)
+assert m.snapshot() == ([('c', 3)], [(3, 'c')])
+''',
     'log': '''
 g = mod.Log()
 for e in range(12):
@@ -225,7 +259,7 @@ def verify(jobdir, target, seed, n_ops, every, new_source):
                                 count=count)
             fresh.append(None)
             if job.version >= 2:
-                good = BN.load_source(TG.ALL_SOURCES[target], 'verify_good', str(job.file))
+                good = BN.load_source(TG.SOURCES_ANY[target], 'verify_good', str(job.file))
                 gcount = [0]
                 gst, _ = BN._limited(lambda: BN.execute(target, good, cargs, ckw, op_list), 10 ** 7, str(job.file),
                                      count=gcount)

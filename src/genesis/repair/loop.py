@@ -27,7 +27,13 @@ job's failure, taken from recognition to a resumed job and retained knowledge, w
 localisation and sources of law-restoring candidates, never a reason to reject a candidate, because laws mined from a
 defective component can encode the defect (B20_R178: S3, S4); and the search widens from the suspected methods to the
 whole file, ordered by the posterior, and runs until its budget is spent, because a wrong focus must not end it (W1)),
-'loop_v1' (the loop as B20_R178 ran it, frozen: the strong predecessor), 'nolocal' (no diagnosis: every function,
+'loop_v1' (the loop as B20_R178 ran it, frozen: the strong predecessor), 'loop_v2' (the loop as B20_R180 ran it,
+frozen); 'loop' is version 3 (after B20_R180): candidates are ordered by the posterior of the line they change, then
+by the vault's operator kinds (version 2 let the kinds override the posterior), and the invented operators
+(`synth.inventions`: symmetry completion, vestigial calls, dimensional offsets) come after the law-restoring edits,
+at the focus and then, widening, everywhere; among passing patches it prefers, in order, one that empties no attribute
+outside `__init__`, one that holds no more state than the original on the passing trials, one that keeps the mined
+laws on the whole workload, then the cheapest and smallest; 'nolocal' (no diagnosis: every function,
 operators shuffled), 'random' (random single and double edits anywhere, no selection), 'enum' (conventional
 generate-and-validate: every single edit of the file in source order, no diagnosis, no selection), 'retrieval' (the
 vault's suggestions only). Every arm gets the same budget of candidate evaluations and the same verifier."""
@@ -159,7 +165,10 @@ def _visible(src, tests, filename):
     return bad
 
 
-def episode(handle, vault=None, arm='loop', budget=300, seed=0, exclude_vault=(), repair_id='repair'):
+def episode(handle, vault=None, arm='loop', budget=300, seed=0, exclude_vault=(), repair_id='repair', trial_key=None):
+    """`trial_key` (default: repair_id) names the diagnosis trials' seeds: a benchmark gives every arm the same key
+    for the same obstacle, so that arms that diagnose see the same experiments (common random numbers)."""
+    tk = repair_id if trial_key is None else trial_key
     t0 = time.process_time()
     rec = {'arm': arm, 'repair': repair_id, 'steps': {}}
     first = handle.run(resume=True)
@@ -189,12 +198,12 @@ def episode(handle, vault=None, arm='loop', budget=300, seed=0, exclude_vault=()
     failing, passing = [(rep, ob)], []
     trial_runs = []
     rng = random.Random(f'{repair_id}|{seed}')
-    if arm in ('loop', 'loop_v1'):
+    if arm in ('loop', 'loop_v1', 'loop_v2'):
         for k in range(MAX_TRIALS):
             if model.done() and len(passing) >= 2:
                 break
             n = model.next_length() if len(passing) >= 1 else min(OB.LENGTHS)
-            run = handle.trial(seed=f'loop|{repair_id}|{seed}|{k}', n=n)
+            run = handle.trial(seed=f'loop|{tk}|{seed}|{k}', n=n)
             res = run(src0, observe='full')
             o = PR.Observation(res)
             failed = res['status'] != 'pass'
@@ -210,7 +219,7 @@ def episode(handle, vault=None, arm='loop', budget=300, seed=0, exclude_vault=()
         rec['law_break'] = brk
     else:
         for k in range(4):                                  # the comparators get trials too, for negative selection
-            run = handle.trial(seed=f'loop|{repair_id}|{seed}|{k}', n=100)
+            run = handle.trial(seed=f'loop|{tk}|{seed}|{k}', n=100)
             res = run(src0, observe='full')
             o = PR.Observation(res)
             (failing if res['status'] != 'pass' else passing).append((run, o))
@@ -237,6 +246,18 @@ def episode(handle, vault=None, arm='loop', budget=300, seed=0, exclude_vault=()
         doing far more (recomputing what a cache should keep) costs more, the metabolic price of a repair."""
         return sum(run(src)['steps'] for run, _ in passing[:3])
 
+    def storage(src):
+        """The most the component holds (its containers' total length at any method return) on the passing trials:
+        a patch that hides the defect by never letting go of anything (a bound deleted, a removal skipped) holds
+        more. Version 3 only."""
+        most = 0
+        for run, _ in passing[:3]:
+            o = PR.Observation(run(src, observe='full'))
+            for _, st in o.returns:
+                most = max(most, sum(len(v) for v in st.values() if isinstance(v, (list, dict, set, tuple))))
+        return most
+    grows = {}
+
     def evaluate(src):
         r = smallest(src)
         if r['status'] != 'pass':
@@ -260,9 +281,13 @@ def episode(handle, vault=None, arm='loop', budget=300, seed=0, exclude_vault=()
                 base_work['w'] = max(1, work(src0))
             extra = work(src) / base_work['w'] - 1
             metabolic[src] = max(0.0, extra)
+            if arm == 'loop':
+                if 's' not in base_work:
+                    base_work['s'] = storage(src0)
+                grows[src] = storage(src) > 1.5 * base_work['s'] + 4
         return e, e == 0
 
-    if arm in ('loop', 'loop_v1'):
+    if arm in ('loop', 'loop_v1', 'loop_v2'):
         methods, mass = model.ranked_methods()
         focus, acc = [], 0.0
         for m in methods:
@@ -280,16 +305,25 @@ def episode(handle, vault=None, arm='loop', budget=300, seed=0, exclude_vault=()
         local_funcs = SY.local_edits(src0, focus_funcs=set(focus))
         trans = SY.transplants(src0, focus)
         rest = [x for x in local_lines + trans + local_funcs if x not in repertoire]
-        if suggested:
-            rest.sort(key=lambda x: suggested.index(kind_of(x[0])) if kind_of(x[0]) in suggested else len(suggested))
+
+        def kind_rank(x):
+            return suggested.index(kind_of(x[0])) if kind_of(x[0]) in suggested else len(suggested)
+
+        def line_post(x):
+            return model.post.get(_first_changed_line(src0, x[1]) + 1, 0.0)
+        if arm == 'loop':                                   # v3: the posterior first, the vault's kinds second
+            rest.sort(key=lambda x: (-round(line_post(x), 6), kind_rank(x)))
+            repertoire += SY.inventions(src0, set(focus))
+        elif suggested:
+            rest.sort(key=kind_rank)
         repertoire = retrieved + repertoire + rest
         mut_funcs = set(focus)
         generations = 8
-        if arm == 'loop':                                   # widen: the rest of the file, most suspected lines first
+        if arm in ('loop', 'loop_v2'):                      # widen: the rest of the file, most suspected lines first
             have = {x[1] for x in repertoire}
             wide = [x for x in SY.local_edits(src0) + SY.transplants(src0, sorted(set(method_of.values())))
-                    if x[1] not in have]
-            wide.sort(key=lambda x: -model.post.get(_first_changed_line(src0, x[1]) + 1, 0.0))
+                    + (SY.inventions(src0) if arm == 'loop' else []) if x[1] not in have]
+            wide.sort(key=lambda x: -line_post(x))
             repertoire += wide
             generations = 60
     elif arm == 'nolocal':
@@ -323,12 +357,12 @@ def episode(handle, vault=None, arm='loop', budget=300, seed=0, exclude_vault=()
 
     def mutate(src, r):
         funcs = mut_funcs
-        if arm == 'loop' and len(search.history) >= 8:      # after 8 generations, mutate anywhere
+        if arm in ('loop', 'loop_v2') and len(search.history) >= 8:      # after 8 generations, mutate anywhere
             funcs = None
         pool = SY.local_edits(src, focus_funcs=funcs)
         if funcs:
             pool += SY.transplants(src, sorted(funcs))
-        elif arm == 'loop':
+        elif arm in ('loop', 'loop_v2'):
             pool += SY.transplants(src, sorted(set(method_of.values())))
         return r.choice(pool) if pool else None
 
@@ -336,7 +370,18 @@ def episode(handle, vault=None, arm='loop', budget=300, seed=0, exclude_vault=()
     search = SY.Search(src0, evaluate, budget=budget, seed=seed, generations=generations)
     solutions, srec = search.run(repertoire, mutate)
     # among patches that pass everything visible, the cheapest to run, then the smallest (Occam)
-    solutions.sort(key=lambda p: (round(metabolic.get(p[2], 0.0), 2) > 0.05, SY.changed_lines(src0, p[2]),
+    # (version 3 first prefers a patch that destroys no accumulated state (one that empties an attribute outside
+    # __init__ makes the defect vanish by forgetting, the classic degenerate repair: conservation of information), then
+    # one that holds no more than the original on the passing trials (a deleted bound: conservation of resources),
+    # then one that keeps the mined laws on the whole workload (a tie-break: a law mined from the defective component
+    # may encode the defect, so it never vetoes a patch, B20_R178))
+    breaks = {}
+    if arm == 'loop' and laws and len(solutions) > 1:     # mined laws as a tie-break among solutions, never a veto
+        for p in solutions:
+            breaks[p[2]] = PR.first_break(PR.Observation(target_run(p[2], observe='full')), laws) is not None
+    solutions.sort(key=lambda p: ((arm == 'loop' and SY.annihilates(src0, p[2]) > 0), grows.get(p[2], False),
+                                  breaks.get(p[2], False),
+                                  round(metabolic.get(p[2], 0.0), 2) > 0.05, SY.changed_lines(src0, p[2]),
                                   metabolic.get(p[2], 0.0)))
     rec['steps']['synthesise'] = dict(srec, repertoire=len(repertoire), suggested=suggested, retrieved=len(retrieved))
     if not solutions:

@@ -20,6 +20,7 @@ from genesis.repair import capture as CP  # noqa: E402
 from genesis.repair import loop as LP  # noqa: E402
 from genesis.repair import obstacle as OB  # noqa: E402
 from genesis.repair import probe as PR  # noqa: E402
+from genesis.repair import synth as SY  # noqa: E402
 from genesis.repairkernel import bench as BN  # noqa: E402
 from genesis.repairkernel import defects as DF  # noqa: E402
 from genesis.repairkernel import foundry as FD  # noqa: E402
@@ -143,6 +144,37 @@ class KernelVersion2(unittest.TestCase):
             job.run()
             self.assertEqual(h.trial(whole=True).cost, len(job.ops))
             self.assertEqual(h.trial().cost, len(job.ops) - 1800)
+
+
+class Inventions(unittest.TestCase):
+    """The operators invented after B20_R180, on small sources written for these tests."""
+
+    def test_symmetry_completion_restores_the_mirror_statement(self):
+        src = (
+            "class Pairs:\n    def __init__(self):\n        self.items = []\n        self.where = {}\n\n"
+            "    def swap(self, i, j):\n        self.items[i], self.items[j] = self.items[j], self.items[i]\n"
+            "        self.where[self.items[i]] = i\n")
+        got = [s for _, s in SY.mirrors(src)]
+        self.assertTrue(any('self.where[self.items[j]] = j' in s for s in got))
+
+    def test_a_vestigial_private_method_gets_its_call_back(self):
+        src = (
+            "class Clock:\n    def __init__(self):\n        self.t = 0\n        self.done = []\n\n"
+            "    def step(self, dt):\n        self.t += dt\n\n"
+            "    def _flush(self):\n        self.done.clear()\n")
+        names = [n for n, _ in SY.orphans(src)]
+        self.assertIn('orphan call self._flush() at the end of step', names)
+        self.assertEqual(SY.orphans(src.replace('        self.t += dt\n', '        self.t += dt\n        self._flush()\n')), [])
+
+    def test_a_duration_gets_the_clock_added_and_the_converse(self):
+        src = (
+            "class Timer:\n    def __init__(self, span):\n        self.span = span\n        self.now = 0\n"
+            "        self.due = 0\n\n    def tick(self, dt):\n        self.now += dt\n\n"
+            "    def arm(self):\n        self.due = self.span\n")
+        got = {n: s for n, s in SY.offsets(src)}
+        self.assertTrue(any('self.due = self.now + self.span' in s for s in got.values()))
+        fixed = src.replace('self.due = self.span', 'self.due = self.now + self.span')
+        self.assertTrue(any(s == src for s in (x for _, x in SY.offsets(fixed))))
 
 
 class Supervisor(unittest.TestCase):

@@ -226,6 +226,29 @@ obstacles in the larger components, with the resource check); NO_DIFFERENCE_SHOW
 B20_R178's loop 10, nolocal 9, random 11, enum 8, retrieval 15); REUSE_NOT_SHOWN. Five defects needed a statement or
 term that the component contains nowhere else (T3, T4, P1, D3, D4): no operator could make it, in any arm.
 
+**After SR-1a2: invented operators, and SR-1a3 (B20_R181, preregistered 31 Oct 2026).** The class no operator reached
+(a statement or term the component contains nowhere else) gets three operators, each a structural principle rather
+than a pattern of one defect (`synth.inventions`):
+- **symmetry completion** (physics): in a method whose arguments a and b index the same container, a simple statement
+  about a with no mirror image gets one (a and b exchanged);
+- **vestigial calls** (biology): a private method that takes only `self` and that nothing calls any more gets a call
+  restored at the start or the end of the other methods;
+- **dimensional offsets** (physics): where an attribute is a clock (it only grows by an argument), a `self.X` read
+  in a stored or returned value is offered as `self.clock + self.X`, and `self.clock + E` as `E`.
+They were written after reading B20_R180's interim rows and three of its episodes (disclosed). The loop version 3 puts
+them after the law-restoring edits, at the focus and then everywhere, and orders all candidates by the posterior of
+the line they change before the vault's operator kinds; among the patches that pass everything it can see, it
+prefers one that destroys no accumulated state (no attribute emptied outside `__init__`: conservation of
+information), holds no more than the original on the passing trials (conservation of resources) and keeps the mined
+laws on the whole workload (a tie-break, never a veto), then the cheapest and smallest; the benchmark gives every
+diagnosing arm the same diagnosis trials. (The two conservation tie-breaks were added after version 3 made a
+cache-disabling patch and then a bound-deleting one on M1, a development defect; the verifier rejected both.)
+On B20_R180's 12 defects (development data, job seed 1) version 3 repaired 8 and version 2 5: the three operators made
+T3, T4 and P1; on all 33 development defects (job seed 1, with the tie-breaks) version 3 repaired 25 and version 2
+22. B20_R181 tests them on 12 new held-out defects in three new components (a lease table
+with a clock, an undirected graph, a two-way map; `defects3.py`, sealed), four of them in the operators' classes,
+against the frozen version 2 and the unfocused searchers.
+
 ## 8. Status against the Foundry directive (31 Oct 2026, 00:10)
 
 | Directive item | Implemented | Demonstrated (B20_R178, testbed only) | Failed or weak | Not built or untested |

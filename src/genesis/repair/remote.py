@@ -81,7 +81,8 @@ def main(argv=None):
     vault = LP.Vault(vault_path)
     try:
         rec = LP.episode(handle, vault=vault, arm=params['arm'], budget=params['budget'], seed=params['seed'],
-                         exclude_vault=tuple(params['exclude_vault']), repair_id=params['repair_id'])
+                         exclude_vault=tuple(params['exclude_vault']), repair_id=params['repair_id'],
+                         trial_key=params.get('trial_key'))
     except Exception as e:                                          # noqa: BLE001 - reported, not hidden
         import traceback
         rec = {'outcome': 'research-error', 'error': f'{type(e).__name__}: {e}',

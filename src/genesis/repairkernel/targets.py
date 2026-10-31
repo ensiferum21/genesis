@@ -756,3 +756,271 @@ g.deposit('a', 10)
 assert g.balance('a') == 10 and g.total() == 10
 ''')],
 })
+
+
+# ------------------------------------------------------------------------------------------- B20_R181's components
+# Added 31 Oct 2026 for SR-1a3 (B20_R181): a lease table with a clock, an undirected graph, a two-way map. SOURCES,
+# SOURCES2 and ALL_SOURCES are unchanged (B20_R178's and B20_R180's analyses count their controls by them); the kernel
+# looks components up in SOURCES_ANY, which has all twelve.
+
+SOURCES3 = {
+    'lease': '''"""Leases on named resources: a lease lasts a fixed term from when it is granted or renewed."""
+
+
+class Leases:
+    def __init__(self, term):
+        self.term = term
+        self.now = 0
+        self.holder = {}
+        self.until = {}
+        self.granted = 0
+
+    def advance(self, dt):
+        self.now += dt
+        self._sweep()
+
+    def _sweep(self):
+        for r in [r for r, t in self.until.items() if t <= self.now]:
+            del self.until[r]
+            del self.holder[r]
+
+    def acquire(self, r, who):
+        if r in self.holder and self.holder[r] != who:
+            return False
+        self.holder[r] = who
+        self.until[r] = self.now + self.term
+        self.granted += 1
+        return True
+
+    def renew(self, r, who):
+        if self.holder.get(r) != who:
+            return False
+        self.until[r] = self.now + self.term
+        return True
+
+    def release(self, r, who):
+        if self.holder.get(r) == who:
+            del self.holder[r]
+            del self.until[r]
+            return True
+        return False
+
+    def owner(self, r):
+        return self.holder.get(r)
+
+    def snapshot(self):
+        return (sorted(self.holder.items()), sorted(self.until.items()), self.granted)
+''',
+    'graph': '''"""An undirected graph: adjacency sets and an edge count."""
+
+
+class Graph:
+    def __init__(self):
+        self.adj = {}
+        self.edges = 0
+
+    def add_vertex(self, v):
+        if v not in self.adj:
+            self.adj[v] = set()
+
+    def link(self, u, v):
+        if u == v:
+            raise ValueError('a loop')
+        self.add_vertex(u)
+        self.add_vertex(v)
+        if v not in self.adj[u]:
+            self.adj[u].add(v)
+            self.adj[v].add(u)
+            self.edges += 1
+
+    def unlink(self, u, v):
+        if v in self.adj.get(u, ()):
+            self.adj[u].discard(v)
+            self.adj[v].discard(u)
+            self.edges -= 1
+
+    def degree(self, v):
+        return len(self.adj.get(v, ()))
+
+    def neighbours(self, v):
+        return sorted(self.adj.get(v, ()))
+
+    def snapshot(self):
+        return (sorted((k, sorted(n)) for k, n in self.adj.items()), self.edges)
+''',
+    'bimap': '''"""A one-to-one map that can be read both ways."""
+
+
+class BiMap:
+    def __init__(self):
+        self.fwd = {}
+        self.back = {}
+
+    def link(self, a, b):
+        if a in self.fwd:
+            del self.back[self.fwd[a]]
+        if b in self.back:
+            del self.fwd[self.back[b]]
+        self.fwd[a] = b
+        self.back[b] = a
+
+    def unlink(self, a):
+        b = self.fwd.pop(a)
+        del self.back[b]
+        return b
+
+    def right(self, a):
+        return self.fwd.get(a)
+
+    def left(self, b):
+        return self.back.get(b)
+
+    def snapshot(self):
+        return (sorted(self.fwd.items()), sorted(self.back.items()))
+''',
+}
+SOURCES_ANY = dict(ALL_SOURCES, **SOURCES3)
+CLASS.update({'lease': 'Leases', 'graph': 'Graph', 'bimap': 'BiMap'})
+
+
+class RefLease:
+    def __init__(self, term):
+        self.term, self.now, self.leases, self.granted = term, 0, {}, 0
+
+    def advance(self, dt):
+        self.now += dt
+        self.leases = {r: (w, t) for r, (w, t) in self.leases.items() if t > self.now}
+
+    def acquire(self, r, who):
+        if r in self.leases and self.leases[r][0] != who:
+            return False
+        self.leases[r] = (who, self.now + self.term)
+        self.granted += 1
+        return True
+
+    def renew(self, r, who):
+        if r not in self.leases or self.leases[r][0] != who:
+            return False
+        self.leases[r] = (who, self.now + self.term)
+        return True
+
+    def release(self, r, who):
+        if r in self.leases and self.leases[r][0] == who:
+            del self.leases[r]
+            return True
+        return False
+
+    def owner(self, r):
+        return self.leases[r][0] if r in self.leases else None
+
+    def snapshot(self):
+        return (sorted((r, w) for r, (w, _) in self.leases.items()), sorted((r, t) for r, (_, t) in self.leases.items()),
+                self.granted)
+
+
+class RefGraph:
+    def __init__(self):
+        self.vertices, self.edge_set = set(), set()
+
+    def link(self, u, v):
+        if u == v:
+            raise ValueError('a loop')
+        self.vertices |= {u, v}
+        self.edge_set.add(frozenset((u, v)))
+
+    def unlink(self, u, v):
+        self.edge_set.discard(frozenset((u, v)))
+
+    def degree(self, v):
+        return sum(1 for e in self.edge_set if v in e)
+
+    def neighbours(self, v):
+        return sorted(x for e in self.edge_set if v in e for x in e if x != v)
+
+    def snapshot(self):
+        return (sorted((k, self.neighbours(k)) for k in self.vertices), len(self.edge_set))
+
+
+class RefBiMap:
+    def __init__(self):
+        self.pairs = {}
+
+    def link(self, a, b):
+        self.pairs = {x: y for x, y in self.pairs.items() if x != a and y != b}
+        self.pairs[a] = b
+
+    def unlink(self, a):
+        return self.pairs.pop(a)
+
+    def right(self, a):
+        return self.pairs.get(a)
+
+    def left(self, b):
+        return next((x for x, y in self.pairs.items() if y == b), None)
+
+    def snapshot(self):
+        return (sorted(self.pairs.items()), sorted((y, x) for x, y in self.pairs.items()))
+
+
+REFERENCE.update({'lease': RefLease, 'graph': RefGraph, 'bimap': RefBiMap})
+OBSERVE.update({'lease': 'snapshot', 'graph': 'snapshot', 'bimap': 'snapshot'})
+COMPARE_OBSERVE.update({'lease': True, 'graph': True, 'bimap': True})
+_make_args_2, _ops_2 = make_args, ops
+
+
+def make_args(target, rng):                                                # noqa: F811 - extends the one above
+    if target == 'lease':
+        return [rng.choice([3, 5])], {}
+    return _make_args_2(target, rng)
+
+
+def ops(target, rng, n, warm=0.4):                                         # noqa: F811 - extends the one above
+    if target not in ('lease', 'graph', 'bimap'):
+        return _ops_2(target, rng, n, warm)
+    out = []
+    for t in range(n):
+        warm_phase = t < warm * n
+        r = rng.random()
+        if target == 'lease':
+            res, who = f'r{rng.randrange(4 if warm_phase else 6)}', rng.choice('xyz')
+            if warm_phase:
+                out.append(('acquire', [res, who]) if r < 0.6 else ('owner', [res]) if r < 0.8 else ('advance', [1]))
+            else:
+                out.append(('acquire', [res, who]) if r < 0.3 else ('renew', [res, who]) if r < 0.5 else
+                           ('release', [res, who]) if r < 0.65 else ('owner', [res]) if r < 0.8 else
+                           ('advance', [rng.choice([1, 2])]))
+        elif target == 'graph':
+            u, v = rng.randrange(8), rng.randrange(8)
+            if warm_phase:
+                out.append(('link', [u, v]) if r < 0.7 else ('degree', [u]))
+            else:
+                out.append(('link', [u, v]) if r < 0.4 else ('unlink', [u, v]) if r < 0.65 else
+                           ('degree', [u]) if r < 0.8 else ('neighbours', [u]))
+        else:                                                               # bimap
+            a, b = rng.randrange(6 if warm_phase else 10), rng.randrange(6 if warm_phase else 10)
+            if warm_phase:
+                out.append(('link', [f'a{a}', b]) if r < 0.6 else ('right', [f'a{a}']))
+            else:
+                out.append(('link', [f'a{a}', b]) if r < 0.45 else ('unlink', [f'a{a}']) if r < 0.6 else
+                           ('right', [f'a{a}']) if r < 0.8 else ('left', [b]))
+        out.append(('observe', []))
+    return out
+
+
+VISIBLE_TESTS.update({
+    'lease': [('acquire and own', '''
+s = mod.Leases(term=3)
+assert s.acquire('r', 'x') and s.owner('r') == 'x'
+assert not s.acquire('r', 'y')
+''')],
+    'graph': [('link and degree', '''
+g = mod.Graph()
+g.link(1, 2)
+assert g.degree(1) == 1 and g.neighbours(1) == [2]
+''')],
+    'bimap': [('link and read', '''
+m = mod.BiMap()
+m.link('a', 1)
+assert m.right('a') == 1
+''')],
+})

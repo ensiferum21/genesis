@@ -379,14 +379,15 @@ def make(defect_id, seed, workdir, n_ops=2400, every=200, version=None):
     """A job over the defect's component, its sandbox holding the defective source; and its Handle."""
     from . import defects as DF                     # the catalogues: the kernel driver's, never the trial executor's
     from . import defects2 as DF2
-    cat = DF if defect_id in DF.BY_ID else DF2
+    from . import defects3 as DF3
+    cat = DF if defect_id in DF.BY_ID else DF2 if defect_id in DF2.BY_ID else DF3
     d = cat.BY_ID[defect_id]
-    src = cat.source(defect_id, TG.ALL_SOURCES)
+    src = cat.source(defect_id, TG.SOURCES_ANY)
     job = Job(workdir, d['target'], seed, n_ops, every, source=src, version=version)
     return job, Handle(job)
 
 
 def make_clean(target, seed, workdir, n_ops=2400, every=200, fault_at=None, version=None):
     """A job over the correct component (a control: no obstacle; or, with `fault_at`, a fault in the kernel)."""
-    job = Job(workdir, target, seed, n_ops, every, source=TG.ALL_SOURCES[target], fault_at=fault_at, version=version)
+    job = Job(workdir, target, seed, n_ops, every, source=TG.SOURCES_ANY[target], fault_at=fault_at, version=version)
     return job, Handle(job)
