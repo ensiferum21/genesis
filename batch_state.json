@@ -1633,6 +1633,12 @@
           "a56289a"
         ],
         "result": "Recorded (DEV, alone on CPU 0 20:41:51-22:37:37, two slices): SR-2d. SPACE_INVENTED (generation 3: 58 derived, 11 admitted, first compositions). 108 obstacles: v3 48, g1 57, g2 77, g3 76, grammar 54, enum 39. P1 NO_DIFFERENCE_SHOWN (3-4), P2 INVENTOR_IMPROVED (22-2, p_Holm 7e-5), P3 GENESIS_SPACE_BEATS_BUILDER_GRAMMAR (22-0). Defect B20R187-ANCESTRY (no admission affected). docs/checkpoints/B20_R187_RECORD.md"
+      },
+      "B20_R188": {
+        "commits": [
+          "0c8aa79"
+        ],
+        "result": "INVALID (DEV, CPU 0 22:52:29-22:53:48): every mutant refused at the verifier's boundary check (no line changed); defect B20R188-BOUNDARY; repeated as B20_R189. docs/checkpoints/B20_R188_RECORD.md"
       }
     },
     "open_after_b20_r5": [

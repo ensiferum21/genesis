@@ -2201,3 +2201,45 @@ class RecordB20R188(unittest.TestCase):
                     with tempfile.TemporaryDirectory() as d:
                         self.assertEqual(S.examine(t, op, what, m, d)['class'], survivors[(t, what)]['class'], what)
 ```
+
+## RecordB20R189 (WP-4 repaired; append to `tests_genesis/test_verifier_adequacy_replica_study.py`)
+
+The RecordB20R188 draft with the names changed; dry-run on the rehearsal.
+
+```python
+import json  # noqa: E402
+
+R189 = ROOT / 'evidence' / 'verifier_adequacy_b20r189'
+
+
+class RecordB20R189(unittest.TestCase):
+    """The record of B20_R189 on its evidence: the script and the verifier it measured; every mutant once; the summary
+    recomputed from the rows; every gap and every possibly-equivalent survivor examined again to the same class."""
+    DIR = R189
+
+    @classmethod
+    def setUpClass(cls):
+        cls.result = json.loads((cls.DIR / 'result.json').read_text())
+        cls.rows = [json.loads(x) for x in (cls.DIR / 'rows.jsonl').read_text().splitlines() if x.strip()]
+
+    def test_the_script_and_the_verifier(self):
+        if self.DIR == R189:
+            self.assertEqual(digest(ROOT / 'scripts/b20r189_verifier_adequacy.py'), SHA256)
+            self.assertEqual(self.result['script_sha256'], SHA256)
+        self.assertEqual(len({(r['target'], r['what']) for r in self.rows}), len(self.rows))
+        want = sum(len(MU.enumerate_mutants(t, TG.KERNEL_SOURCES[t])) for t in self.result['targets'])
+        self.assertEqual(len(self.rows), want)
+
+    def test_the_summary_recomputes(self):
+        got = S.analyse(self.rows)
+        for k, v in got.items():
+            self.assertEqual(json.loads(json.dumps(v)), self.result[k], k)
+
+    def test_every_survivor_examined_again(self):
+        survivors = {(r['target'], r['what']): r for r in self.rows if r['class'] != 'killed'}
+        for t in self.result['targets']:
+            for op, what, m in MU.enumerate_mutants(t, TG.KERNEL_SOURCES[t]):
+                if (t, what) in survivors:
+                    with tempfile.TemporaryDirectory() as d:
+                        self.assertEqual(S.examine(t, op, what, m, d)['class'], survivors[(t, what)]['class'], what)
+```

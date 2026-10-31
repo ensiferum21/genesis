@@ -1203,7 +1203,10 @@
    "unlocks": []
   },
   "B20_R188": {
-   "artifacts": [],
+   "artifacts": [
+    "evidence/verifier_adequacy_b20r188",
+    "docs/checkpoints/B20_R188_RECORD.md"
+   ],
    "committed": true,
    "depends_on": [],
    "failure": null,
@@ -1211,9 +1214,9 @@
    "kind": "study",
    "line": "self-repair",
    "notes": "docs/OMEGA_WEAKNESSES_AND_BLUEPRINT.md WP-4; a measurement",
-   "outcome": null,
+   "outcome": "INVALID (defect B20R188-BOUNDARY: every mutant refused at the boundary check, the score 1.0 an artefact); repeated as B20_R189",
    "output": "evidence/verifier_adequacy_b20r188",
-   "positive": null,
+   "positive": false,
    "preregistered": "0c8aa79",
    "priority": 7,
    "requires": [],
@@ -1221,8 +1224,31 @@
     "cpu0_hours": 0.2
    },
    "script": "scripts/b20r188_verifier_adequacy.py",
-   "status": "queued",
+   "status": "done",
    "title": "WP-4 (blueprint C1): the verifier's mutation adequacy: all 437 single-place mutants through the kernel's verifier on a job of seed 51; survivors differentially tested against the reference models (20 workloads x 5,000 operations); killed, gap, possibly equivalent; the mutation score",
+   "unlocks": []
+  },
+  "B20_R189": {
+   "artifacts": [],
+   "committed": true,
+   "depends_on": [],
+   "failure": null,
+   "id": "B20_R189",
+   "kind": "study",
+   "line": "self-repair",
+   "notes": "docs/OMEGA_WEAKNESSES_AND_BLUEPRINT.md WP-4; B20R188-BOUNDARY",
+   "outcome": null,
+   "output": "evidence/verifier_adequacy_b20r189",
+   "positive": null,
+   "preregistered": null,
+   "priority": 7,
+   "requires": [],
+   "resources": {
+    "cpu0_hours": 0.2
+   },
+   "script": "scripts/b20r189_verifier_adequacy.py",
+   "status": "queued",
+   "title": "WP-4 repaired: B20_R188 with each mutant offered with one added comment line, so the verifier's other checks decide; killed, gap, possibly equivalent; the mutation score",
    "unlocks": []
   },
   "allocator-baselines": {
@@ -2645,6 +2671,23 @@
    "id": "B20_R188",
    "kind": "add",
    "time": "2026-10-31T14:52:19+00:00"
+  },
+  {
+   "id": "B20_R188",
+   "kind": "start",
+   "time": "2026-10-31T14:59:42+00:00"
+  },
+  {
+   "id": "B20_R188",
+   "kind": "finish",
+   "outcome": "INVALID (defect B20R188-BOUNDARY: every mutant refused at the boundary check, the score 1.0 an artefact); repeated as B20_R189",
+   "positive": false,
+   "time": "2026-10-31T14:59:42+00:00"
+  },
+  {
+   "id": "B20_R189",
+   "kind": "add",
+   "time": "2026-10-31T14:59:42+00:00"
   }
  ],
  "lines": {
@@ -2979,9 +3022,14 @@
      "B20_R187",
      "SPACE_INVENTED; P1 NO_DIFFERENCE_SHOWN (g3 76 vs g2 77); P2 INVENTOR_IMPROVED (22-2); P3 GENESIS_SPACE_BEATS_BUILDER_GRAMMAR (22-0)",
      true
+    ],
+    [
+     "B20_R188",
+     "INVALID (defect B20R188-BOUNDARY: every mutant refused at the boundary check, the score 1.0 an artefact); repeated as B20_R189",
+     false
     ]
    ],
-   "run": 0,
+   "run": 1,
    "stagnant": false
   }
  },
@@ -3051,7 +3099,8 @@
   "B20_R185",
   "B20_R186",
   "B20_R187",
-  "B20_R188"
+  "B20_R188",
+  "B20_R189"
  ],
  "reactivated": {},
  "schema": "genesis-research-queue-v1",

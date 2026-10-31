@@ -65,7 +65,7 @@ class Design(unittest.TestCase):
                     if s == S.JOB_SEEDS[0]:
                         args = (job.dir, job.target, s, job.n_ops, job.every)
                         self.assertTrue(VF.verify(*args, TG.KERNEL_SOURCES[job.target])['accepted'], did)
-                        self.assertFalse(VF.verify(*args, DF5.source(did, TG.KERNEL_SOURCES))['accepted'], did)
+                        self.assertFalse(VF.verify(*args, DF5.source(did, TG.KERNEL_SOURCES) + '\n#\n')['accepted'], did)
 
     def test_the_fixed_constants(self):
         self.assertEqual((S.BUDGET, S.DREAM_BUDGET, S.PROBE_BUDGET, S.SLICE_S), (300, 1000, 200, 6600))

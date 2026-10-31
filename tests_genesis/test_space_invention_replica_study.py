@@ -74,7 +74,7 @@ class Design(unittest.TestCase):
                     if s == S.JOB_SEEDS[0]:
                         args = (job.dir, job.target, s, job.n_ops, job.every)
                         self.assertTrue(VF.verify(*args, TG.KERNEL_SOURCES[job.target])['accepted'], did)
-                        self.assertFalse(VF.verify(*args, DF6.source(did, TG.KERNEL_SOURCES))['accepted'], did)
+                        self.assertFalse(VF.verify(*args, DF6.source(did, TG.KERNEL_SOURCES) + '\n#\n')['accepted'], did)
 
     def test_b20r185s_verdicts_are_the_recorded_ones(self):
         p = ROOT / 'evidence/space_invention_b20r185/result.json'
