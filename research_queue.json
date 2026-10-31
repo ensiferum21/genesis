@@ -1018,7 +1018,10 @@
    "unlocks": []
   },
   "B20_R180": {
-   "artifacts": [],
+   "artifacts": [
+    "evidence/repair_bench_2_b20r180",
+    "docs/checkpoints/B20_R180_RECORD.md"
+   ],
    "committed": true,
    "depends_on": [],
    "failure": null,
@@ -1026,9 +1029,9 @@
    "kind": "study",
    "line": "self-repair",
    "notes": "docs/OMEGA_SELF_REPAIR.md sections 7 and 8; runs on CPU 1 (disclosed)",
-   "outcome": null,
+   "outcome": "MILESTONE_DEMONSTRATED (12 of 36); NO_DIFFERENCE_SHOWN against every arm (loop 12, loop_v1 10, nolocal 9, random 11, enum 8, retrieval 15); REUSE_NOT_SHOWN; five defects beyond every arm",
    "output": "evidence/repair_bench_2_b20r180",
-   "positive": null,
+   "positive": true,
    "preregistered": "9305178",
    "priority": 6,
    "requires": [],
@@ -1036,7 +1039,7 @@
     "cpu1_hours": 0.3
    },
    "script": "scripts/b20r180_repair_bench_2.py",
-   "status": "queued",
+   "status": "done",
    "title": "SR-1a2: the obstacle loop version 2 (laws as evidence only, widening focus, the whole budget) on 12 new held-out defects in three larger components, kernel version 2 (rollback, resource check), against the frozen B20_R178 loop, nolocal, random, enum and retrieval at 300 evaluations; controls; retention and reuse",
    "unlocks": []
   },
@@ -2344,6 +2347,13 @@
    "id": "B20_R180",
    "kind": "add",
    "time": "2026-10-31T00:43:13+00:00"
+  },
+  {
+   "id": "B20_R180",
+   "kind": "finish",
+   "outcome": "MILESTONE_DEMONSTRATED (12 of 36); NO_DIFFERENCE_SHOWN against every arm (loop 12, loop_v1 10, nolocal 9, random 11, enum 8, retrieval 15); REUSE_NOT_SHOWN; five defects beyond every arm",
+   "positive": true,
+   "time": "2026-10-31T01:58:08+00:00"
   }
  ],
  "lines": {
@@ -2636,6 +2646,11 @@
     [
      "B20_R178",
      "MILESTONE_DEMONSTRATED (24 of 39 held-out obstacles repaired end to end, isolated, retained); NOLOCAL/RANDOM/ENUM_BEATS_LOOP (35, 36, 33 against 24); REUSE_SHOWN (20 against 12)",
+     true
+    ],
+    [
+     "B20_R180",
+     "MILESTONE_DEMONSTRATED (12 of 36); NO_DIFFERENCE_SHOWN against every arm (loop 12, loop_v1 10, nolocal 9, random 11, enum 8, retrieval 15); REUSE_NOT_SHOWN; five defects beyond every arm",
      true
     ]
    ],

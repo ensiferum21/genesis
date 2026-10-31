@@ -343,6 +343,8 @@ needs people: a reviewer, a statistician, an independent custodian on its own ma
         record). A safety-net trigger that fired at 01:30 reached the session only at 08:42.
       - **B20_R178 (SR-1a) is recorded**; the loop version 2, kernel version 2 and three larger components are built;
         **B20_R180 (SR-1a2)** is preregistered (CPU 1).
+      - **B20_R180 is recorded** (`docs/checkpoints/B20_R180_RECORD.md`): MILESTONE_DEMONSTRATED (12 of 36);
+        NO_DIFFERENCE_SHOWN against every arm; REUSE_NOT_SHOWN. Next on CPU 1: B20_R181 (invented operators).
   26c. **Daniel's directive of 27 Oct 2026, 19:55 is adopted**: `docs/OMEGA_FRONTIER.md`, written in detail for
       handoff at his request (20:01). Genesis works by divergence and convergence (imagine, mutate, recombine,
       branch out, extrapolate discovery curves, detect convergence, allocate), without handholding. The

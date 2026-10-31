@@ -221,6 +221,11 @@ B20_R178's evidence and was developed on its 21 defects only (all development da
   loop before B20_R180; the jobs and the verifier were run on them to check that each interrupts every job and that
   the verifier tells the correct source from the defective one).
 
+**SR-1a2's result** (`docs/checkpoints/B20_R180_RECORD.md`): MILESTONE_DEMONSTRATED again (12 of 36 held-out
+obstacles in the larger components, with the resource check); NO_DIFFERENCE_SHOWN against every arm (the loop 12,
+B20_R178's loop 10, nolocal 9, random 11, enum 8, retrieval 15); REUSE_NOT_SHOWN. Five defects needed a statement or
+term that the component contains nowhere else (T3, T4, P1, D3, D4): no operator could make it, in any arm.
+
 ## 8. Status against the Foundry directive (31 Oct 2026, 00:10)
 
 | Directive item | Implemented | Demonstrated (B20_R178, testbed only) | Failed or weak | Not built or untested |

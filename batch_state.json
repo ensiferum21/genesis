@@ -1572,6 +1572,13 @@
           "2e7fd2f"
         ],
         "result": "Checkpoint GENESIS_COMPLETION_CHECKPOINT_B20_R176 (2e7fd2f; parent B20_R169): release matrix 2,723 tests all OK (one declared skip), run in two parts and merged; 82,429,873 bytes, SHA-256 43d8621b74f21a7c5c19e3a4316df34a9360d9686e6ecf14811677e4358fbd81; restore-verified (7,079 manifest entries, commit and tree, 7,077 tracked files); archived whole (archive 10b01e6)"
+      },
+      "B20_R180": {
+        "commits": [
+          "9305178",
+          "c3e9cf6"
+        ],
+        "result": "Recorded (DEV, CPU 1): SR-1a2. MILESTONE_DEMONSTRATED (12 of 36 held-out obstacles in three larger components repaired end to end; isolation and 18 controls held); NO_DIFFERENCE_SHOWN against loop_v1 (10), nolocal (9), random (11), enum (8), retrieval (15); REUSE_NOT_SHOWN (11 against 10). Five defects (T3, T4, P1, D3, D4) beyond every arm. docs/checkpoints/B20_R180_RECORD.md"
       }
     },
     "open_after_b20_r5": [

@@ -1,0 +1,316 @@
+{
+ "study": "B20_R180",
+ "rehearsal": false,
+ "script_sha256": "bfe117a72569dc14df2093af60f53c96574a2c9ad40af70f0547b012601e3097",
+ "defects_sha256": "bcadeca3bd59dfbe31ce639492c32c30353a9363fba7107026d4f17a8941de63",
+ "defects2_sha256": "6a7d091064fec91bda2dca40011b5c1598f07218604f0c5ddeb8a68c89049c85",
+ "job_version": 2,
+ "commit": "9305178b9340c09717368fe9e06c0e19a336a603",
+ "heldout_used": [
+  "T1",
+  "T2",
+  "T3",
+  "T4",
+  "P1",
+  "P2",
+  "P3",
+  "P4",
+  "D1",
+  "D2",
+  "D3",
+  "D4"
+ ],
+ "budget": 300,
+ "arms": [
+  "loop",
+  "loop_v1",
+  "nolocal",
+  "random",
+  "enum",
+  "retrieval"
+ ],
+ "job_seeds": [
+  1,
+  2,
+  3
+ ],
+ "verdict": "MILESTONE_DEMONSTRATED",
+ "isolation_ok": true,
+ "controls_ok": true,
+ "controls": [
+  {
+   "key": "p2/clean-ledger/4/loop",
+   "outcome": "no-obstacle",
+   "proposals": 0,
+   "source_changed": false
+  },
+  {
+   "key": "p2/fault-ledger/4/loop",
+   "outcome": "escalated",
+   "proposals": 0,
+   "source_changed": false
+  },
+  {
+   "key": "p2/clean-log/4/loop",
+   "outcome": "no-obstacle",
+   "proposals": 0,
+   "source_changed": false
+  },
+  {
+   "key": "p2/fault-log/4/loop",
+   "outcome": "escalated",
+   "proposals": 0,
+   "source_changed": false
+  },
+  {
+   "key": "p2/clean-lru/4/loop",
+   "outcome": "no-obstacle",
+   "proposals": 0,
+   "source_changed": false
+  },
+  {
+   "key": "p2/fault-lru/4/loop",
+   "outcome": "escalated",
+   "proposals": 0,
+   "source_changed": false
+  },
+  {
+   "key": "p2/clean-memo/4/loop",
+   "outcome": "no-obstacle",
+   "proposals": 0,
+   "source_changed": false
+  },
+  {
+   "key": "p2/fault-memo/4/loop",
+   "outcome": "escalated",
+   "proposals": 0,
+   "source_changed": false
+  },
+  {
+   "key": "p2/clean-pq/4/loop",
+   "outcome": "no-obstacle",
+   "proposals": 0,
+   "source_changed": false
+  },
+  {
+   "key": "p2/fault-pq/4/loop",
+   "outcome": "escalated",
+   "proposals": 0,
+   "source_changed": false
+  },
+  {
+   "key": "p2/clean-registry/4/loop",
+   "outcome": "no-obstacle",
+   "proposals": 0,
+   "source_changed": false
+  },
+  {
+   "key": "p2/fault-registry/4/loop",
+   "outcome": "escalated",
+   "proposals": 0,
+   "source_changed": false
+  },
+  {
+   "key": "p2/clean-stats/4/loop",
+   "outcome": "no-obstacle",
+   "proposals": 0,
+   "source_changed": false
+  },
+  {
+   "key": "p2/fault-stats/4/loop",
+   "outcome": "escalated",
+   "proposals": 0,
+   "source_changed": false
+  },
+  {
+   "key": "p2/clean-ttl/4/loop",
+   "outcome": "no-obstacle",
+   "proposals": 0,
+   "source_changed": false
+  },
+  {
+   "key": "p2/fault-ttl/4/loop",
+   "outcome": "escalated",
+   "proposals": 0,
+   "source_changed": false
+  },
+  {
+   "key": "p2/clean-window/4/loop",
+   "outcome": "no-obstacle",
+   "proposals": 0,
+   "source_changed": false
+  },
+  {
+   "key": "p2/fault-window/4/loop",
+   "outcome": "escalated",
+   "proposals": 0,
+   "source_changed": false
+  }
+ ],
+ "obstacles": 36,
+ "milestone_obstacles": [
+  "T1/1",
+  "T1/2",
+  "T1/3",
+  "T2/1",
+  "T2/2",
+  "T2/3",
+  "P3/1",
+  "P3/2",
+  "P3/3",
+  "P4/1",
+  "P4/2",
+  "P4/3"
+ ],
+ "per_arm": {
+  "loop": {
+   "obstacles": 36,
+   "repaired": 12,
+   "false_repairs": 3,
+   "not_repaired": 21,
+   "other_outcomes": [],
+   "equals_reference_source": 6,
+   "rolled_back": 0,
+   "evaluations": 10800,
+   "diagnosis_operations": 155432,
+   "research_cpu_s": 29.38,
+   "total_cpu_s": 87.12,
+   "verify_s": 7.65,
+   "wall_s": 88.8,
+   "repaired_per_total_cpu_s": 0.1377
+  },
+  "loop_v1": {
+   "obstacles": 36,
+   "repaired": 10,
+   "false_repairs": 2,
+   "not_repaired": 24,
+   "other_outcomes": [],
+   "equals_reference_source": 7,
+   "rolled_back": 0,
+   "evaluations": 8398,
+   "diagnosis_operations": 153144,
+   "research_cpu_s": 418.9,
+   "total_cpu_s": 487.77,
+   "verify_s": 6.97,
+   "wall_s": 495.06,
+   "repaired_per_total_cpu_s": 0.0205
+  },
+  "nolocal": {
+   "obstacles": 36,
+   "repaired": 9,
+   "false_repairs": 2,
+   "not_repaired": 25,
+   "other_outcomes": [],
+   "equals_reference_source": 4,
+   "rolled_back": 0,
+   "evaluations": 10800,
+   "diagnosis_operations": 129200,
+   "research_cpu_s": 36.13,
+   "total_cpu_s": 90.7,
+   "verify_s": 4.97,
+   "wall_s": 92.3,
+   "repaired_per_total_cpu_s": 0.0992
+  },
+  "random": {
+   "obstacles": 36,
+   "repaired": 11,
+   "false_repairs": 2,
+   "not_repaired": 23,
+   "other_outcomes": [],
+   "equals_reference_source": 3,
+   "rolled_back": 0,
+   "evaluations": 10800,
+   "diagnosis_operations": 129200,
+   "research_cpu_s": 3044.19,
+   "total_cpu_s": 3101.41,
+   "verify_s": 5.85,
+   "wall_s": 3157.02,
+   "repaired_per_total_cpu_s": 0.0035
+  },
+  "enum": {
+   "obstacles": 36,
+   "repaired": 8,
+   "false_repairs": 1,
+   "not_repaired": 27,
+   "other_outcomes": [],
+   "equals_reference_source": 3,
+   "rolled_back": 0,
+   "evaluations": 10788,
+   "diagnosis_operations": 129200,
+   "research_cpu_s": 16.09,
+   "total_cpu_s": 66.79,
+   "verify_s": 3.97,
+   "wall_s": 68.34,
+   "repaired_per_total_cpu_s": 0.1198
+  },
+  "retrieval": {
+   "obstacles": 36,
+   "repaired": 15,
+   "false_repairs": 0,
+   "not_repaired": 21,
+   "other_outcomes": [],
+   "equals_reference_source": 12,
+   "rolled_back": 0,
+   "evaluations": 10644,
+   "diagnosis_operations": 129200,
+   "research_cpu_s": 16.37,
+   "total_cpu_s": 72.8,
+   "verify_s": 7.0,
+   "wall_s": 74.33,
+   "repaired_per_total_cpu_s": 0.206
+  }
+ },
+ "comparison": {
+  "loop_v1": {
+   "loop_only": 7,
+   "loop_v1_only": 5,
+   "p": 0.77441,
+   "verdict": "NO_DIFFERENCE_SHOWN"
+  },
+  "nolocal": {
+   "loop_only": 4,
+   "nolocal_only": 1,
+   "p": 0.375,
+   "verdict": "NO_DIFFERENCE_SHOWN"
+  },
+  "random": {
+   "loop_only": 4,
+   "random_only": 3,
+   "p": 1.0,
+   "verdict": "NO_DIFFERENCE_SHOWN"
+  },
+  "enum": {
+   "loop_only": 6,
+   "enum_only": 2,
+   "p": 0.28906,
+   "verdict": "NO_DIFFERENCE_SHOWN"
+  },
+  "retrieval": {
+   "loop_only": 3,
+   "retrieval_only": 6,
+   "p": 0.50781,
+   "verdict": "NO_DIFFERENCE_SHOWN"
+  }
+ },
+ "reuse": {
+  "jobs": 24,
+  "grown_vault_repaired": 11,
+  "first_solution_pairs": 8,
+  "first_solution_dev_vault_mean": 97.62,
+  "first_solution_grown_vault_mean": 19.5,
+  "dev_vault_repaired": 10,
+  "grown_only": 2,
+  "dev_only": 1,
+  "p": 1.0,
+  "verdict": "REUSE_NOT_SHOWN"
+ },
+ "retention": {
+  "episodes": 36,
+  "repaired": 11,
+  "retained": 11,
+  "vault_entries_dev": 17,
+  "vault_entries_grown": 28
+ },
+ "promotions_outside_component": 0,
+ "wall_s": 4177.7
+}
