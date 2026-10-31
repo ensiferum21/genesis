@@ -1,0 +1,409 @@
+{
+ "study": "B20_R181",
+ "rehearsal": false,
+ "script_sha256": "b0417fc5e7e7a9748a143eaa76cb6515fd9506a1831fe2446ae0c3b78cbb6dbb",
+ "defects_sha256": "bcadeca3bd59dfbe31ce639492c32c30353a9363fba7107026d4f17a8941de63",
+ "defects2_sha256": "6a7d091064fec91bda2dca40011b5c1598f07218604f0c5ddeb8a68c89049c85",
+ "defects3_sha256": "ce4506573532f2b5d314a4fb96b4edd66decfd64254532ed1862afcd95e40254",
+ "job_version": 2,
+ "commit": "0e0ecc736e1523fe8341f83d9ec16a3ae37ab13d",
+ "heldout_used": [
+  "E1",
+  "E2",
+  "E3",
+  "E4",
+  "N1",
+  "N2",
+  "N3",
+  "N4",
+  "K1",
+  "K2",
+  "K3",
+  "K4"
+ ],
+ "budget": 300,
+ "arms": [
+  "loop",
+  "loop_v2",
+  "nolocal",
+  "random",
+  "enum"
+ ],
+ "job_seeds": [
+  1,
+  2,
+  3
+ ],
+ "verdict": "MILESTONE_DEMONSTRATED",
+ "isolation_ok": true,
+ "controls_ok": true,
+ "controls": [
+  {
+   "key": "p2/clean-bimap/4/loop",
+   "outcome": "no-obstacle",
+   "proposals": 0,
+   "source_changed": false
+  },
+  {
+   "key": "p2/fault-bimap/4/loop",
+   "outcome": "escalated",
+   "proposals": 0,
+   "source_changed": false
+  },
+  {
+   "key": "p2/clean-graph/4/loop",
+   "outcome": "no-obstacle",
+   "proposals": 0,
+   "source_changed": false
+  },
+  {
+   "key": "p2/fault-graph/4/loop",
+   "outcome": "escalated",
+   "proposals": 0,
+   "source_changed": false
+  },
+  {
+   "key": "p2/clean-lease/4/loop",
+   "outcome": "no-obstacle",
+   "proposals": 0,
+   "source_changed": false
+  },
+  {
+   "key": "p2/fault-lease/4/loop",
+   "outcome": "escalated",
+   "proposals": 0,
+   "source_changed": false
+  },
+  {
+   "key": "p2/clean-ledger/4/loop",
+   "outcome": "no-obstacle",
+   "proposals": 0,
+   "source_changed": false
+  },
+  {
+   "key": "p2/fault-ledger/4/loop",
+   "outcome": "escalated",
+   "proposals": 0,
+   "source_changed": false
+  },
+  {
+   "key": "p2/clean-log/4/loop",
+   "outcome": "no-obstacle",
+   "proposals": 0,
+   "source_changed": false
+  },
+  {
+   "key": "p2/fault-log/4/loop",
+   "outcome": "escalated",
+   "proposals": 0,
+   "source_changed": false
+  },
+  {
+   "key": "p2/clean-lru/4/loop",
+   "outcome": "no-obstacle",
+   "proposals": 0,
+   "source_changed": false
+  },
+  {
+   "key": "p2/fault-lru/4/loop",
+   "outcome": "escalated",
+   "proposals": 0,
+   "source_changed": false
+  },
+  {
+   "key": "p2/clean-memo/4/loop",
+   "outcome": "no-obstacle",
+   "proposals": 0,
+   "source_changed": false
+  },
+  {
+   "key": "p2/fault-memo/4/loop",
+   "outcome": "escalated",
+   "proposals": 0,
+   "source_changed": false
+  },
+  {
+   "key": "p2/clean-pq/4/loop",
+   "outcome": "no-obstacle",
+   "proposals": 0,
+   "source_changed": false
+  },
+  {
+   "key": "p2/fault-pq/4/loop",
+   "outcome": "escalated",
+   "proposals": 0,
+   "source_changed": false
+  },
+  {
+   "key": "p2/clean-registry/4/loop",
+   "outcome": "no-obstacle",
+   "proposals": 0,
+   "source_changed": false
+  },
+  {
+   "key": "p2/fault-registry/4/loop",
+   "outcome": "escalated",
+   "proposals": 0,
+   "source_changed": false
+  },
+  {
+   "key": "p2/clean-stats/4/loop",
+   "outcome": "no-obstacle",
+   "proposals": 0,
+   "source_changed": false
+  },
+  {
+   "key": "p2/fault-stats/4/loop",
+   "outcome": "escalated",
+   "proposals": 0,
+   "source_changed": false
+  },
+  {
+   "key": "p2/clean-ttl/4/loop",
+   "outcome": "no-obstacle",
+   "proposals": 0,
+   "source_changed": false
+  },
+  {
+   "key": "p2/fault-ttl/4/loop",
+   "outcome": "escalated",
+   "proposals": 0,
+   "source_changed": false
+  },
+  {
+   "key": "p2/clean-window/4/loop",
+   "outcome": "no-obstacle",
+   "proposals": 0,
+   "source_changed": false
+  },
+  {
+   "key": "p2/fault-window/4/loop",
+   "outcome": "escalated",
+   "proposals": 0,
+   "source_changed": false
+  }
+ ],
+ "obstacles": 36,
+ "milestone_obstacles": [
+  "E1/1",
+  "E1/2",
+  "E1/3",
+  "E2/1",
+  "E2/2",
+  "E2/3",
+  "E4/1",
+  "E4/2",
+  "E4/3",
+  "N3/1",
+  "N3/2",
+  "N3/3"
+ ],
+ "per_arm": {
+  "loop": {
+   "obstacles": 36,
+   "repaired": 12,
+   "false_repairs": 0,
+   "not_repaired": 24,
+   "other_outcomes": [],
+   "equals_reference_source": 9,
+   "rolled_back": 0,
+   "evaluations": 9557,
+   "diagnosis_operations": 151760,
+   "research_cpu_s": 481.71,
+   "total_cpu_s": 523.36,
+   "verify_s": 7.79,
+   "wall_s": 529.65,
+   "repaired_per_total_cpu_s": 0.0229
+  },
+  "loop_v2": {
+   "obstacles": 36,
+   "repaired": 9,
+   "false_repairs": 0,
+   "not_repaired": 27,
+   "other_outcomes": [],
+   "equals_reference_source": 6,
+   "rolled_back": 0,
+   "evaluations": 9668,
+   "diagnosis_operations": 151760,
+   "research_cpu_s": 482.32,
+   "total_cpu_s": 519.33,
+   "verify_s": 6.34,
+   "wall_s": 525.8,
+   "repaired_per_total_cpu_s": 0.0173
+  },
+  "nolocal": {
+   "obstacles": 36,
+   "repaired": 9,
+   "false_repairs": 0,
+   "not_repaired": 27,
+   "other_outcomes": [],
+   "equals_reference_source": 6,
+   "rolled_back": 0,
+   "evaluations": 7976,
+   "diagnosis_operations": 140000,
+   "research_cpu_s": 117.19,
+   "total_cpu_s": 151.39,
+   "verify_s": 5.92,
+   "wall_s": 153.65,
+   "repaired_per_total_cpu_s": 0.0594
+  },
+  "random": {
+   "obstacles": 36,
+   "repaired": 6,
+   "false_repairs": 0,
+   "not_repaired": 30,
+   "other_outcomes": [],
+   "equals_reference_source": 5,
+   "rolled_back": 0,
+   "evaluations": 8385,
+   "diagnosis_operations": 140000,
+   "research_cpu_s": 251.36,
+   "total_cpu_s": 284.44,
+   "verify_s": 4.95,
+   "wall_s": 288.25,
+   "repaired_per_total_cpu_s": 0.0211
+  },
+  "enum": {
+   "obstacles": 36,
+   "repaired": 9,
+   "false_repairs": 0,
+   "not_repaired": 27,
+   "other_outcomes": [],
+   "equals_reference_source": 6,
+   "rolled_back": 0,
+   "evaluations": 6756,
+   "diagnosis_operations": 140000,
+   "research_cpu_s": 4.38,
+   "total_cpu_s": 35.67,
+   "verify_s": 6.24,
+   "wall_s": 36.49,
+   "repaired_per_total_cpu_s": 0.2523
+  }
+ },
+ "comparison": {
+  "loop_v2": {
+   "loop_only": 3,
+   "loop_v2_only": 0,
+   "p": 0.25,
+   "verdict": "NO_DIFFERENCE_SHOWN"
+  },
+  "nolocal": {
+   "loop_only": 3,
+   "nolocal_only": 0,
+   "p": 0.25,
+   "verdict": "NO_DIFFERENCE_SHOWN"
+  },
+  "random": {
+   "loop_only": 6,
+   "random_only": 0,
+   "p": 0.03125,
+   "verdict": "LOOP_BEATS_RANDOM"
+  },
+  "enum": {
+   "loop_only": 3,
+   "enum_only": 0,
+   "p": 0.25,
+   "verdict": "NO_DIFFERENCE_SHOWN"
+  }
+ },
+ "invention_reach": {
+  "invention_class": {
+   "obstacles": 12,
+   "repaired": {
+    "loop": 6,
+    "loop_v2": 3,
+    "nolocal": 3,
+    "random": 1,
+    "enum": 3
+   },
+   "comparison": {
+    "loop_v2": {
+     "loop_only": 3,
+     "loop_v2_only": 0,
+     "p": 0.25,
+     "verdict": "NO_DIFFERENCE_SHOWN"
+    },
+    "nolocal": {
+     "loop_only": 3,
+     "nolocal_only": 0,
+     "p": 0.25,
+     "verdict": "NO_DIFFERENCE_SHOWN"
+    },
+    "random": {
+     "loop_only": 5,
+     "random_only": 0,
+     "p": 0.0625,
+     "verdict": "NO_DIFFERENCE_SHOWN"
+    },
+    "enum": {
+     "loop_only": 3,
+     "enum_only": 0,
+     "p": 0.25,
+     "verdict": "NO_DIFFERENCE_SHOWN"
+    }
+   }
+  },
+  "other": {
+   "obstacles": 24,
+   "repaired": {
+    "loop": 6,
+    "loop_v2": 6,
+    "nolocal": 6,
+    "random": 5,
+    "enum": 6
+   },
+   "comparison": {
+    "loop_v2": {
+     "loop_only": 0,
+     "loop_v2_only": 0,
+     "p": 1.0,
+     "verdict": "NO_DIFFERENCE_SHOWN"
+    },
+    "nolocal": {
+     "loop_only": 0,
+     "nolocal_only": 0,
+     "p": 1.0,
+     "verdict": "NO_DIFFERENCE_SHOWN"
+    },
+    "random": {
+     "loop_only": 1,
+     "random_only": 0,
+     "p": 1.0,
+     "verdict": "NO_DIFFERENCE_SHOWN"
+    },
+    "enum": {
+     "loop_only": 0,
+     "enum_only": 0,
+     "p": 1.0,
+     "verdict": "NO_DIFFERENCE_SHOWN"
+    }
+   }
+  }
+ },
+ "loop_operators": {
+  "transplant": 3,
+  "orphan": 3,
+  "compare": 6
+ },
+ "reuse": {
+  "jobs": 24,
+  "grown_vault_repaired": 8,
+  "first_solution_pairs": 8,
+  "first_solution_dev_vault_mean": 44.12,
+  "first_solution_grown_vault_mean": 2.0,
+  "dev_vault_repaired": 6,
+  "grown_only": 2,
+  "dev_only": 0,
+  "p": 0.5,
+  "verdict": "REUSE_NOT_SHOWN"
+ },
+ "retention": {
+  "episodes": 36,
+  "repaired": 12,
+  "retained": 12,
+  "vault_entries_dev": 25,
+  "vault_entries_grown": 37
+ },
+ "promotions_outside_component": 0,
+ "wall_s": 277.5
+}

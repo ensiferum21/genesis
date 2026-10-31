@@ -1579,6 +1579,13 @@
           "c3e9cf6"
         ],
         "result": "Recorded (DEV, CPU 1): SR-1a2. MILESTONE_DEMONSTRATED (12 of 36 held-out obstacles in three larger components repaired end to end; isolation and 18 controls held); NO_DIFFERENCE_SHOWN against loop_v1 (10), nolocal (9), random (11), enum (8), retrieval (15); REUSE_NOT_SHOWN (11 against 10). Five defects (T3, T4, P1, D3, D4) beyond every arm. docs/checkpoints/B20_R180_RECORD.md"
+      },
+      "B20_R181": {
+        "commits": [
+          "0e0ecc7",
+          "7d9c712"
+        ],
+        "result": "Recorded (DEV, CPU 1; stopped once by a container restart and resumed from its rows): SR-1a3. MILESTONE_DEMONSTRATED (12 of 36); LOOP_BEATS_RANDOM (6-0, p 0.031); NO_DIFFERENCE_SHOWN against loop_v2, nolocal and enum (12 against 9; 3-0 each, the vestigial-call operator's E2); invention class 6 of 12 against 3, elsewhere 6 of 24 for every arm but random; no false repair in any arm; REUSE_NOT_SHOWN. docs/checkpoints/B20_R181_RECORD.md"
       }
     },
     "open_after_b20_r5": [

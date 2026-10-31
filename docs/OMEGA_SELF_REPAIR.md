@@ -249,6 +249,11 @@ T3, T4 and P1; on all 33 development defects (job seed 1, with the tie-breaks) v
 with a clock, an undirected graph, a two-way map; `defects3.py`, sealed), four of them in the operators' classes,
 against the frozen version 2 and the unfocused searchers.
 
+**SR-1a3's result** (`docs/checkpoints/B20_R181_RECORD.md`): MILESTONE_DEMONSTRATED (12 of 36); the vestigial-call
+operator repaired E2 (a lease table's lost expiry pass) in all three jobs, where no other arm did; the loop beat random
+patches (6-0) and not its predecessor, nolocal or enum (3-0 each); symmetry completion missed both of its defects (the
+defect had erased the symmetry it looks for); no false repair in any arm; REUSE_NOT_SHOWN.
+
 ## 8. Status against the Foundry directive (31 Oct 2026, 00:10)
 
 | Directive item | Implemented | Demonstrated (B20_R178, testbed only) | Failed or weak | Not built or untested |
@@ -256,7 +261,7 @@ against the frozen version 2 and the unfocused searchers.
 | 1. Preserve the research program | PT-2's pins, scripts and evidence untouched; all new code in new modules; CPU 0 kept for the checkpoint and PT-2 | | | |
 | 2. Causal obstacle model | the record's nine fields; line hypotheses plus "elsewhere"; experiments by expected information per operation; rising energy; supported stopping | it localised the defect's line in many episodes (e.g. L1: 0.72 on the right line) | when every trial fails it cannot discriminate and puts its belief on "elsewhere" (M2); it localised W1 to the wrong method | the obstacle classes beyond a code defect (missing information, representation limits, ineffective search, verification cost, compute, false improvements, infeasible objectives) are not modelled |
 | 3. Narrow autonomous repair | capture, reproduction from a checkpoint, localisation, regression test, synthesis, isolated test, independent verification, policy promotion, resume, retention; tracing, invariants (conservation laws), AST program analysis, differential property testing against reference models | 24 of 39 held-out obstacles end to end; 0 false repairs proposed by the loop | lost to unfocused search (35, 36, 33); mined laws used as constraints; G3 out of reach of every arm | CEGIS (the verifier's counterexamples are deliberately never fed back); repository modules; the real obstacles (SR-1b) |
-| 4. Capability invention, dependency graph | the vault: hunks retrieved verbatim, operator kinds by evidence | reuse on recurrence (20 against 12; first passing candidate at 1.1 evaluations against 29.0) | transfer to unfamiliar defects through operator kinds not shown (retrieval 18) | new operators or abstractions invented; the capability dependency graph |
+| 4. Capability invention, dependency graph | the vault (hunks retrieved verbatim, operator kinds by evidence); three invented operators (symmetry completion, vestigial calls, dimensional offsets) | reuse on recurrence (B20_R178: 20 against 12); an invented operator reaching a held-out defect nothing else reached, in every job (B20_R181, E2) | transfer through operator kinds not shown; symmetry completion missed its held-out defects; no significant gain over the predecessor | operators invented by Genesis itself (these three were written by the builder); the capability dependency graph |
 | 5. External verification and authority | separate verifier process; hidden tests; fresh kernel seeds; the resumed job; predefined policy with backup and rollback; one proposal per obstacle; mount namespaces, unprivileged users, no capabilities; a static guard | isolation measured and held; 12 controls held; no promotion outside a component | the verifier lacks a resource (total-cost) check: a leaking "repair" passed it 9 times | the policy has no explicit cost check; repository scope needs the human Supervisor |
 | 6. AOR-1 | | | | not preregistered |
 | 7. Deliverables | code, `tests_genesis/test_repair_foundry.py` and `test_repair_bench_study.py`, `scripts/b20r178_repair_bench.py`, the record as the initial benchmark report | | | |

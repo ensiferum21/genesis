@@ -347,6 +347,10 @@ needs people: a reviewer, a statistician, an independent custodian on its own ma
         NO_DIFFERENCE_SHOWN against every arm; REUSE_NOT_SHOWN. Next on CPU 1: B20_R181 (invented operators).
       - **B20_R181 (SR-1a3) is preregistered** (CPU 1): three invented operators in the loop version 3, on 12 new
         held-out defects in three new components, against the frozen version 2.
+      - **B20_R181 is recorded** (`docs/checkpoints/B20_R181_RECORD.md`): MILESTONE_DEMONSTRATED; the vestigial-call operator
+        reached E2 alone; LOOP_BEATS_RANDOM; no difference against loop_v2, nolocal, enum. **A container restart about
+        10:45** stopped PT-2's slice 3 (started 10:38:53, nothing saved after 10:38:47; restarted 10:49:12) and B20_R181
+        (resumed 10:49:28 from its rows); CPU 0 idle about 4 min, to disclose in PT-2's record.
   26c. **Daniel's directive of 27 Oct 2026, 19:55 is adopted**: `docs/OMEGA_FRONTIER.md`, written in detail for
       handoff at his request (20:01). Genesis works by divergence and convergence (imagine, mutate, recombine,
       branch out, extrapolate discovery curves, detect convergence, allocate), without handholding. The
