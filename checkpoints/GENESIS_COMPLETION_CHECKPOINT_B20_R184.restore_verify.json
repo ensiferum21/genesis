@@ -1,0 +1,37 @@
+{
+ "zip": "GENESIS_COMPLETION_CHECKPOINT_B20_R184.zip",
+ "zip_sha256": "74907d66aa497d2b713923a0a0c1242f027f7874d6473c0b1e37a4d1ab83ea98",
+ "bytes": 86334529,
+ "manifest_entries": 7281,
+ "manifest_mismatches": [],
+ "unlisted_members": [],
+ "commit_ok": true,
+ "tree_ok": true,
+ "files_tracked": 7279,
+ "files_archived": 7279,
+ "archive_vs_clone_mismatches": [],
+ "tracked_not_archived": [],
+ "record": {
+  "batch": 20,
+  "commit": "804f479cf2403192c7eda846a0dcc8f1cfb04598",
+  "tree": "a2585578804621310109a1e63d58314fcfe51014",
+  "created_utc": "2026-10-31T12:41:38.928602+00:00",
+  "parent_checkpoint": {
+   "name": "GENESIS_COMPLETION_CHECKPOINT_B20_R176.zip",
+   "sha256": "43d8621b74f21a7c5c19e3a4316df34a9360d9686e6ecf14811677e4358fbd81"
+  }
+ },
+ "matrix": {
+  "total_ran": 2840,
+  "total_skipped": 1,
+  "all_ok": true,
+  "suites": {
+   "legacy_regression": 282,
+   "sandbox_escape": 28,
+   "certificates": 43,
+   "formal": 184,
+   "integration": 2303
+  }
+ },
+ "ok": true
+}
