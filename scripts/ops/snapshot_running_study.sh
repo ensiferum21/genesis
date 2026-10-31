@@ -10,6 +10,17 @@ if [ ! -d "$wt" ]; then
 fi
 rm -rf "$wt/evidence" "$wt/research_plane"; mkdir -p "$wt/evidence" "$wt/research_plane"
 cp -r "$out"/. "$wt/evidence/"
+for f in rows.jsonl episodes.jsonl; do                 # keep whole lines only (a row may be half-written)
+  [ -f "$wt/evidence/$f" ] && python3 -I -c "
+import json, sys
+p = sys.argv[1]; keep = []
+for ln in open(p):
+    try:
+        json.loads(ln); keep.append(ln if ln.endswith(chr(10)) else ln + chr(10))
+    except ValueError:
+        break
+open(p, 'w').writelines(keep)" "$wt/evidence/$f"
+done
 cp -r "$work/genesis-research"/. "$wt/research_plane/" 2>/dev/null
 tail -20 /home/claude/chain.log > "$wt/chain_tail.log"
 cat > "$wt/README.md" <<EOT
