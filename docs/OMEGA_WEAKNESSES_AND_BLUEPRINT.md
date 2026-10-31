@@ -78,7 +78,7 @@ Status is `open` unless stated; nothing in this section is marked solved unless 
 | C1 | The verifier's hidden tests are the builder's, and their strength is unmeasured | `repairkernel/verify.py` | **Mutation-adequacy of the verifier.** Run the mutant generator on every component; every mutant the hidden tests do not reject is a verifier gap. Strengthen the checks *monotonically* (add checks, never remove; each addition passes the correct sources) | Verifier mutation score reported; it only rises; no correct source rejected |
 | C2 | Q02's deletion was proposed by every arm and rejected only by the verifier | B20_R185 | Also from C1: the visible checks miss what the verifier catches; promote verifier-caught failure patterns into visible regression tests (from recorded studies only) | Fewer false repairs per study |
 | C3 | Isolation holes found late | B20R183-CATALOGUES | The isolation probe derived from a list of everything the kernel owns (`foundry.CATALOGUES` pattern), not hand-listed; a test that every kernel file is in a probe | A planted new kernel file is caught by the test |
-| C4 | Security rules broken unseen for eight batches | B20R184-PICKLE | Run the commit profile of the matrix (fast) before every commit, not only the changed modules' tests | No rule violation survives a commit |
+| C4 | Security rules broken unseen for eight batches | B20R184-PICKLE | Before every commit, run the repository-wide rule tests (`test_no_llm`, `test_gi6_legacy_paths`, every study's digest pin, lint) as well as the changed modules' tests; the full integration suite (over three hours) stays at checkpoints | No rule violation survives a commit |
 | C5 | The judge is fixed, so it cannot become sharper | B20_R132: its power to see +1% was at most 6% | A finer judge version, *added* beside the old one, only by preregistered calibration; never replace or weaken (contract) | A new judge version with measured power, adopted by Daniel's decision |
 
 ### D. Evidence and statistics
@@ -179,8 +179,10 @@ every study is unchanged: preregister (script, design tests, record-test draft, 
 (`scripts/ops/run_slice.sh`), record, push.
 
 1. **WP-1, hygiene first (F3, C4, C3, H3).**
-   - What: a pre-commit hook running `scripts/run_test_matrix.py --profile commit`; isolation probes generated from
-     the kernel's file list; `capture.PROTECTED` extended to every circle file.
+   - What: a pre-commit hook running the repository-wide rule tests (`test_no_llm`, `test_gi6_legacy_paths`, the
+     design tests' digest pins, `ruff --select F,E9`) and the changed modules' tests. The integration suite takes
+     over three hours, so it stays at checkpoints. Also: isolation probes generated from the kernel's file list, and
+     `capture.PROTECTED` extended to every circle file.
    - Acceptance: planted failures are blocked.
 2. **WP-2, the queue daemon (F1, F2).**
    - What: `scripts/ops/queue_daemon.py`. A loop that holds a CPU 0 lock file and starts the next preregistered study
