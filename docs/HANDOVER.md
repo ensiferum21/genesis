@@ -35,6 +35,9 @@ Everything is pushed: `continuation-b20-rx` (the line), `archive` (the checkpoin
   scripts in `scripts/ops/`, the integration suite in six shards).
 - **The protocol's tools** are in `scripts/ops/` (README there). Watchers on `chain.log` must match only lines written
   after they start.
+- **The next direction (Daniel, 31 Oct 21:56): `docs/OMEGA_YIN_YANG.md`**, the LLM and Genesis improving each other and the
+  process, inside a circle neither controls. A design only: YY-0 (offers, failure atlas, briefs, credit) is the first
+  thing to build; the LLM-session experiments need Daniel's go-ahead.
 
 ## 1. Where everything is
 

@@ -194,3 +194,6 @@ generation 1's library repairs; probes admit. Held out: the 24 mutants x 3 jobs 
 grammar searched online, enum. The questions: does Genesis's own space make it more capable than the builder's rules
 (generation 1 against version 3)? Does the second generation improve on the first (step 6)? Does Genesis's space match
 the builder's grammar on defects neither chose?
+
+**Continued in `docs/OMEGA_YIN_YANG.md`** (31 Oct 2026, 21:56): the LLM as the hot proposer of building blocks, Genesis as
+the cold verifier and its failure atlas as the LLM's brief, both inside a circle neither controls.
