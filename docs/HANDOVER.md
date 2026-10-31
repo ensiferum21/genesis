@@ -10,6 +10,32 @@ describes that zip's own contents (see "Package contents").
 - nothing has been independently reviewed or promoted to a scientific claim;
 - better-improver (GV4) is UNESTABLISHED.
 
+## 0. Continuing from here (31 Oct 2026, 20:50 SGT)
+
+Everything is pushed: `continuation-b20-rx` (the line), `archive` (the checkpoints, latest B20_R184 at `804f479`), and
+`wip/b20r187` (snapshots of the study now running; not a record). A successor continues as follows.
+
+- **Running when this was written:** B20_R187 (SR-2d, a third generation of Genesis's repair transformations;
+  preregistered `0e56949`, pinned `0509da1`), alone on CPU 0 from 20:41:51, in slices of 6,600 s (exit 3 = paused).
+  Command: `scripts/ops/run_slice.sh <worktree of 0e56949> scripts/b20r187_third_generation.py
+  <worktree>/evidence/third_generation_b20r187 <log>`. If this session stops, its state is on `wip/b20r187` (refreshed
+  every 15 minutes while it runs): put `evidence/` at the output path and `research_plane/` at
+  `/home/claude/work/scratch-foundry/b20r187/genesis-research`, run the same command, and it skips recorded rows;
+  disclose the move. Or run it again from scratch from `0e56949` (it is deterministic in its seeds).
+- **Recording it:** `RecordB20R187` is drafted in `docs/handoff/RECORD_TEST_DRAFTS.md`; append it unchanged to
+  `tests_genesis/test_third_generation_study.py`, run it on CPU 1, write `docs/checkpoints/B20_R187_RECORD.md` (as
+  B20_R186's), and update BATCHES, NEXT_ACTIONS, batch_state, the two ledgers, TEST_MATRIX, this file, the queue and the
+  status table of `docs/OMEGA_RULE_INVENTION.md`.
+- **Where the rule-invention line stands:** `docs/OMEGA_RULE_INVENTION.md` §5-6 and the records B20_R182, R183, R185,
+  R186. Step 6 (the inventor improving how it invents) is shown and replicated on this testbed (B20_R185 P2 7-0,
+  B20_R186 P2 12-0); B20_R187 asks whether it compounds. Not shown: Genesis's space beating the builder's grammar;
+  compositions admitted; anything beyond the fifteen small components.
+- **Next, not preregistered:** after B20_R187, a testbed of larger, real components (the next step toward the
+  requirement of 31 Oct, 11:26); the eleven-or-so mutants per draw that every arm misses; the next checkpoint (the
+  scripts in `scripts/ops/`, the integration suite in six shards).
+- **The protocol's tools** are in `scripts/ops/` (README there). Watchers on `chain.log` must match only lines written
+  after they start.
+
 ## 1. Where everything is
 
 | What | Where |
