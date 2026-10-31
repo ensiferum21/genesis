@@ -23,7 +23,8 @@ shared scratch space; each sees only, read-only, the source tree it runs from:
   * the executor's view lacks the verifier, the catalogue, the policy and this module (`HIDDEN_FROM_EXECUTOR`), and it
     can write nowhere; a candidate it runs is first checked by the static guard (`guard`).
 Neither can write the Judge (`autonomy/feedback.py`), the Supervisor, the verifier, the policy or the sealed tests: they
-are root's, and not even visible to them. The parties talk over pipes; the kernel never unpickles what either sends.
+are root's, and not even visible to them. The parties talk over pipes, in JSON (`genesis.wire` for what is not plain
+JSON; nothing is unpickled anywhere, B20R184-PICKLE).
 
 `isolated=False` runs the same protocol in one process (unit tests; development)."""
 import json
@@ -205,11 +206,10 @@ def handle_obstacle(job, *, vault_dir, arm='loop', budget=300, seed=0, repair_id
                           stdin=subprocess.DEVNULL, stdout=err, stderr=err)
     for fd in (k2x[0], r2x[0], x2r[1], r2k[1], k2r[0], r2x[1], x2r[0]):
         os.close(fd)
-    import pickle
+    from .. import wire as W
     with os.fdopen(k2x[1], 'wb') as f:          # the executor's job specification (the kernel's own data)
-        pickle.dump({'failing': job.trial_spec(), 'whole': job.trial_spec(whole=True), 'original': kernel.original,
-                     'target': job.target,
-                     'filename': str(job.file)}, f)
+        f.write(W.dumps({'failing': job.trial_spec(), 'whole': job.trial_spec(whole=True), 'original': kernel.original,
+                         'target': job.target, 'filename': str(job.file)}, BN.WIRE_ALLOWED).encode())
     killed = []
 
     def watchdog():

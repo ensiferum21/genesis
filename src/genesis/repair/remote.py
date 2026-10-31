@@ -2,24 +2,15 @@
 every method is a request to the kernel or to the trial executor, and `main`, which runs one obstacle episode
 (`loop.episode`) through it with the research plane's own vault.
 
-Requests are JSON lines. The kernel answers in JSON; the executor in length-prefixed pickles, which are read with a
-restricted unpickler that builds plain builtins only."""
-import builtins
-import io
+Requests are JSON lines. The kernel answers in JSON; the executor in length-prefixed `genesis.wire` tagged JSON,
+decoded to plain data only (no class or function may be named; until B20R184-PICKLE, a restricted unpickler)."""
 import json
 import os
-import pickle
 import struct
 import sys
 
 from . import loop as LP
-
-
-class _Builtins(pickle.Unpickler):
-    def find_class(self, module, name):
-        if module == 'builtins' and name in ('set', 'frozenset'):
-            return getattr(builtins, name)
-        raise pickle.UnpicklingError(f'refused: {module}.{name}')
+from .. import wire as W
 
 
 class RemoteHandle:
@@ -42,7 +33,7 @@ class RemoteHandle:
         if len(head) < 8:
             raise EOFError('the trial executor closed')
         (n,) = struct.unpack('>Q', head)
-        out = _Builtins(io.BytesIO(self._xin.read(n))).load()
+        out = W.loads(self._xin.read(n).decode())
         if isinstance(out, dict) and 'error' in out:
             raise RuntimeError(out['error'])
         return out

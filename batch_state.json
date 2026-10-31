@@ -2034,6 +2034,10 @@
     ],
     "checkpoint_attempts_after_b20_r116": [
       "checkpoint build B20_R117 at 1d473a1 FAILED its release matrix (23 Oct 2026, 22:52-23:49 SGT): integration 1,410 tests with 3 failures, all record tests of B20_R93 and B20_R97 that read the live evidence corpus and broke when later evidence arrived (B20_R86, run after those records; the large-domain hosts of B20_R111, R112 and R115); legacy 282 (one declared skip), sandbox 28, certificates 43, formal 184 all OK. Repaired: each record test now reads the corpus that existed when it was written; no checkpoint written; rebuilt after B20_R118"
+    ],
+    "checkpoint_attempts_after_b20_r183": [
+      "checkpoint B20_R183 attempt at 4c57e52 (31 Oct 12:28:19) stopped at 12:29:13 before any test ran: the integration suite had outgrown run_test_matrix.py's 7,000 s timeout and the 2 h job limit; repaired by --shard K/N (f2bbe08)",
+      "checkpoint B20_R184 at 652f36d FAILED its release matrix (31 Oct 2026): integration shard 1/6 OK (397 tests, 14:17:43-14:45:48), shard 2/6 1 failure (405 tests, 14:45:48-15:02:22): test_gi6_legacy_paths GI6-02, the obstacle loop's pickle use (defect B20R184-PICKLE, repaired with genesis.wire); no checkpoint written; to be rebuilt in full on a later commit after B20_R185"
     ]
   }
 }

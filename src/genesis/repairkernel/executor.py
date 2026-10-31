@@ -5,23 +5,24 @@ Requests come from the research plane as JSON lines (never unpickled):
   {"op": "trial", "seed": s, "n": n}   -> {"id", "cost"}: a runner for the job's failing segment (seed null) or for a
                                           fresh workload of n <= MAX_OPS operations from the research plane's seed;
   {"op": "call", "id", "src", "steps", "observe"} -> the runner's result (`bench.make_runner`).
-Answers go back as length-prefixed pickles of plain builtins. A candidate the static guard refuses is not run."""
+Answers go back length-prefixed, as `genesis.wire` tagged JSON of plain data (no pickle: B20R184-PICKLE). A
+candidate the static guard refuses is not run."""
 import json
 import os
-import pickle
 import random
 import struct
 import sys
 
 from . import bench as BN
 from . import targets as TG
+from .. import wire as W
 
 MAX_OPS = 5000
 MAX_STEPS = 10 ** 6
 
 
 def _send(f, obj):
-    data = pickle.dumps(obj, protocol=4)
+    data = W.dumps(obj).encode()
     f.write(struct.pack('>Q', len(data)) + data)
     f.flush()
 
@@ -30,7 +31,7 @@ def main(argv=None):
     argv = sys.argv[1:] if argv is None else argv
     spec_fd, req_fd, resp_fd = (int(x) for x in argv[:3])
     with os.fdopen(spec_fd, 'rb') as f:
-        spec = pickle.load(f)                       # the kernel's own data
+        spec = W.loads(f.read().decode(), BN.WIRE_ALLOWED)      # the kernel's own data
     target, filename, original = spec['target'], spec['filename'], spec['original']
     runners = []
     with os.fdopen(req_fd, 'rb') as req, os.fdopen(resp_fd, 'wb') as resp:

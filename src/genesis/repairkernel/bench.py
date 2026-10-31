@@ -22,6 +22,12 @@ import types
 
 from . import guard as GD
 from . import targets as TG
+from .. import wire as W
+
+# What a job's checkpoint may hold besides plain data (B20R184-PICKLE: tagged JSON, not pickle): the reference
+# models, and the function the memo component is built with.
+WIRE_ALLOWED = tuple(sorted(set(TG.REFERENCE.values()), key=lambda c: c.__name__)) + (TG._f,)
+STATE = 'state.data.json'
 
 
 class Divergence(AssertionError):
@@ -253,12 +259,11 @@ class Job:
         return load_source(self.file.read_text() if src is None else src, f'job_{self.target}_{tag}', str(self.file))
 
     def _save(self, i, state):
-        import pickle
-        data = pickle.dumps(state)
-        (self.dir / 'state.pkl').write_bytes(data)
+        data = W.dumps(state, WIRE_ALLOWED)
+        (self.dir / STATE).write_text(data)
         if self.version >= 2:
             (self.dir / 'checkpoints').mkdir(exist_ok=True)
-            (self.dir / 'checkpoints' / f'{i:07d}.pkl').write_bytes(data)
+            (self.dir / 'checkpoints' / f'{i:07d}.json').write_text(data)
         self.ckpt.write_text(json.dumps({'next': i, 'source_sha256': self._source_sha()}))
 
     def _source_sha(self):
@@ -271,14 +276,13 @@ class Job:
     def checkpoints(self):
         """The kept checkpoints (version 2), latest first, with 0 (the fresh start) last."""
         d = self.dir / 'checkpoints'
-        ks = sorted((int(p.stem) for p in d.glob('*.pkl')), reverse=True) if d.exists() else []
+        ks = sorted((int(p.stem) for p in d.glob('*.json')), reverse=True) if d.exists() else []
         return ks + [0]
 
     def _load(self):
-        import pickle
         if not self.ckpt.exists():
             return 0, None
-        return json.loads(self.ckpt.read_text())['next'], pickle.loads((self.dir / 'state.pkl').read_bytes())
+        return json.loads(self.ckpt.read_text())['next'], W.loads((self.dir / STATE).read_text(), WIRE_ALLOWED)
 
     def run(self, resume=False, steps=10 ** 7):
         """Run (or resume) to the end; {'status': 'done'|'failed', 'traceback', 'op', 'started'}. In version 2 a
@@ -294,10 +298,10 @@ class Job:
             if k >= interrupted:
                 continue
             if k == 0:
-                for f in ('state.json', 'state.pkl'):
+                for f in ('state.json', STATE):
                     (self.dir / f).unlink(missing_ok=True)
             else:
-                (self.dir / 'state.pkl').write_bytes((self.dir / 'checkpoints' / f'{k:07d}.pkl').read_bytes())
+                (self.dir / STATE).write_text((self.dir / 'checkpoints' / f'{k:07d}.json').read_text())
                 self.ckpt.write_text(json.dumps({'next': k, 'source_sha256': produced_by}))
             r = self._run(True, steps)
             if r['status'] == 'done':
@@ -311,7 +315,7 @@ class Job:
         mod = self.module()
         start, state = self._load() if resume else (0, None)
         if not resume:
-            for f in ('state.json', 'state.pkl'):
+            for f in ('state.json', STATE):
                 (self.dir / f).unlink(missing_ok=True)
             if (self.dir / 'checkpoints').exists():
                 shutil.rmtree(self.dir / 'checkpoints')
