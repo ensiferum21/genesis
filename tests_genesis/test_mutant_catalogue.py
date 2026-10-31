@@ -18,10 +18,12 @@ sys.path.insert(0, str(ROOT / 'scripts'))
 import b20r185_make_mutant_catalogue as MK  # noqa: E402
 import b20r186_make_mutant_catalogue as MK6  # noqa: E402
 import b20r187_make_mutant_catalogue as MK7  # noqa: E402
+import b20r190_make_mutant_catalogue as MK8  # noqa: E402
 from genesis.repairkernel import bench as BN  # noqa: E402
 from genesis.repairkernel import defects5 as DF5  # noqa: E402
 from genesis.repairkernel import defects6 as DF6  # noqa: E402
 from genesis.repairkernel import defects7 as DF7  # noqa: E402
+from genesis.repairkernel import defects8 as DF8  # noqa: E402
 from genesis.repairkernel import foundry as FD  # noqa: E402
 from genesis.repairkernel import mutants as MU  # noqa: E402
 from genesis.repairkernel import targets as TG  # noqa: E402
@@ -30,6 +32,7 @@ from genesis.repairkernel import verify as VF  # noqa: E402
 DEFECTS5_SHA256 = '59c4fc31a2500a4976a007f8f7fd66f548404f379a2600eba395f7eb910e3baa'
 DEFECTS6_SHA256 = 'a4cb0c9976022378c70ce6b4ecf0cab8f1203a7b8c67af4893a6bae20feeca5e'
 DEFECTS7_SHA256 = '9836c54d9be1738def9f04089f45857e35c8e852b0666645a264aa66741c9572'
+DEFECTS8_SHA256 = 'a58f659f71aff77f68f40c2fa0158747850db22919db5f36d1d3e37caf4ae0a5'
 
 TOY = '''class Toy:
     def __init__(self):
@@ -164,6 +167,39 @@ class Catalogue7(unittest.TestCase):
     def test_the_executor_cannot_read_it(self):
         self.assertIn('defects7.py', FD.HIDDEN_FROM_EXECUTOR)
 
+
+
+class Catalogue8(unittest.TestCase):
+    def test_the_sealed_file(self):
+        self.assertEqual(hashlib.sha256((ROOT / 'src/genesis/repairkernel/defects8.py').read_bytes()).hexdigest(),
+                         DEFECTS8_SHA256)
+        self.assertEqual([d['id'] for d in DF8.DEFECTS], [f'Y{i:02d}' for i in range(1, 37)])
+        self.assertEqual({d['split'] for d in DF8.DEFECTS}, {'heldout8'})
+        self.assertEqual(len({MK.SEED, MK6.SEED, MK7.SEED, MK8.SEED}), 4)
+        self.assertFalse(set(MK8.JOB_SEEDS) & (set(MK.JOB_SEEDS) | set(MK6.JOB_SEEDS) | set(MK7.JOB_SEEDS)))
+
+    def test_the_rules_reproduce_it(self):
+        path = ROOT / 'src/genesis/repairkernel/defects8.py'
+        sealed = path.read_bytes()
+        with tempfile.TemporaryDirectory() as d:
+            try:
+                MK8.main([d])
+                self.assertEqual(path.read_bytes(), sealed)
+            finally:
+                path.write_bytes(sealed)
+
+    def test_every_entry_is_a_real_obstacle_and_none_was_drawn_before(self):
+        before = MK8.excluded()
+        with tempfile.TemporaryDirectory() as tmp:
+            for d in DF8.DEFECTS:
+                bad = DF8.source(d['id'], TG.KERNEL_SOURCES)
+                self.assertNotIn((d['target'], bad), before, d['id'])
+                self.assertIsNone(MK8.examine(d['target'], bad, Path(tmp) / d['id']), d['id'])
+                job, _ = BN.make(d['id'], MK8.JOB_SEEDS[0], Path(tmp) / f"{d['id']}-make", version=2)
+                self.assertEqual(job.file.read_text(), bad)
+
+    def test_the_executor_cannot_read_it(self):
+        self.assertIn('defects8.py', FD.HIDDEN_FROM_EXECUTOR)
 
 if __name__ == '__main__':
     unittest.main()
