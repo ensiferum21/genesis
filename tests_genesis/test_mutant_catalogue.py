@@ -1,5 +1,6 @@
-"""The fifth catalogue (`src/genesis/repairkernel/defects5.py`, B20_R185) is what its rules produce: random mutants,
-not defects chosen by hand (`genesis.repairkernel.mutants`, `scripts/b20r185_make_mutant_catalogue.py`).
+"""The fifth catalogue (`src/genesis/repairkernel/defects5.py`, B20_R185) and the sixth (`defects6.py`, B20_R186) are
+what their rules produce: random mutants, not defects chosen by hand (`genesis.repairkernel.mutants`,
+`scripts/b20r185_make_mutant_catalogue.py`, `scripts/b20r186_make_mutant_catalogue.py`).
   * the mutation operators on a source written for the test;
   * a mutant becomes a catalogue entry whose 'old' occurs once and whose replacement gives the mutant;
   * re-running the selection gives the sealed file byte for byte (the seed, the job seeds, the rules);
@@ -15,14 +16,17 @@ ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / 'src'))
 sys.path.insert(0, str(ROOT / 'scripts'))
 import b20r185_make_mutant_catalogue as MK  # noqa: E402
+import b20r186_make_mutant_catalogue as MK6  # noqa: E402
 from genesis.repairkernel import bench as BN  # noqa: E402
 from genesis.repairkernel import defects5 as DF5  # noqa: E402
+from genesis.repairkernel import defects6 as DF6  # noqa: E402
 from genesis.repairkernel import foundry as FD  # noqa: E402
 from genesis.repairkernel import mutants as MU  # noqa: E402
 from genesis.repairkernel import targets as TG  # noqa: E402
 from genesis.repairkernel import verify as VF  # noqa: E402
 
 DEFECTS5_SHA256 = '59c4fc31a2500a4976a007f8f7fd66f548404f379a2600eba395f7eb910e3baa'
+DEFECTS6_SHA256 = 'a4cb0c9976022378c70ce6b4ecf0cab8f1203a7b8c67af4893a6bae20feeca5e'
 
 TOY = '''class Toy:
     def __init__(self):
@@ -91,6 +95,38 @@ class Catalogue(unittest.TestCase):
 
     def test_the_executor_cannot_read_it(self):
         self.assertIn('defects5.py', FD.HIDDEN_FROM_EXECUTOR)
+
+
+class Catalogue6(unittest.TestCase):
+    def test_the_sealed_file(self):
+        self.assertEqual(hashlib.sha256((ROOT / 'src/genesis/repairkernel/defects6.py').read_bytes()).hexdigest(),
+                         DEFECTS6_SHA256)
+        self.assertEqual([d['id'] for d in DF6.DEFECTS], [f'V{i:02d}' for i in range(1, 37)])
+        self.assertEqual({d['split'] for d in DF6.DEFECTS}, {'heldout6'})
+        self.assertNotEqual((MK6.SEED, MK6.JOB_SEEDS), (MK.SEED, MK.JOB_SEEDS))
+
+    def test_the_rules_reproduce_it(self):
+        path = ROOT / 'src/genesis/repairkernel/defects6.py'
+        sealed = path.read_bytes()
+        with tempfile.TemporaryDirectory() as d:
+            try:
+                MK6.main([d])
+                self.assertEqual(path.read_bytes(), sealed)
+            finally:
+                path.write_bytes(sealed)
+
+    def test_every_entry_is_a_real_obstacle_and_none_was_drawn_before(self):
+        before = MK6.excluded()
+        with tempfile.TemporaryDirectory() as tmp:
+            for d in DF6.DEFECTS:
+                bad = DF6.source(d['id'], TG.KERNEL_SOURCES)
+                self.assertNotIn((d['target'], bad), before, d['id'])
+                self.assertIsNone(MK6.examine(d['target'], bad, Path(tmp) / d['id']), d['id'])
+                job, _ = BN.make(d['id'], MK6.JOB_SEEDS[0], Path(tmp) / f"{d['id']}-make", version=2)
+                self.assertEqual(job.file.read_text(), bad)
+
+    def test_the_executor_cannot_read_it(self):
+        self.assertIn('defects6.py', FD.HIDDEN_FROM_EXECUTOR)
 
 
 if __name__ == '__main__':

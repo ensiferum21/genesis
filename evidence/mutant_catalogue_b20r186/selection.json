@@ -1,0 +1,357 @@
+{
+ "seed": 20261186,
+ "job_seeds": [
+  14,
+  15,
+  16
+ ],
+ "n": 36,
+ "mutants": 437,
+ "examined": 43,
+ "log": [
+  {
+   "order": 0,
+   "target": "pq",
+   "operator": "constant",
+   "what": "_down:73 1 -> 2",
+   "kept": true,
+   "why": null
+  },
+  {
+   "order": 1,
+   "target": "graph",
+   "operator": "arith",
+   "what": "link:21 += -> -= in 'self.edges += 1'",
+   "kept": true,
+   "why": null
+  },
+  {
+   "order": 2,
+   "target": "ledger",
+   "operator": "constant",
+   "what": "withdraw:30 1 -> 0",
+   "kept": true,
+   "why": null
+  },
+  {
+   "order": 3,
+   "target": "pq",
+   "operator": "constant",
+   "what": "_down:73 1 -> 0",
+   "kept": true,
+   "why": null
+  },
+  {
+   "order": 4,
+   "target": "ttl",
+   "operator": "constant",
+   "what": "get:33 1 -> 2",
+   "kept": true,
+   "why": null
+  },
+  {
+   "order": 5,
+   "target": "ledger",
+   "operator": "arith",
+   "what": "deposit:23 - -> + in 'len(self.txs) - 1'",
+   "kept": true,
+   "why": null
+  },
+  {
+   "order": 6,
+   "target": "stock",
+   "operator": "swap",
+   "what": "release:23 swap 'self.reserved.get(item, 0)'",
+   "kept": true,
+   "why": null
+  },
+  {
+   "order": 7,
+   "target": "bimap",
+   "operator": "compare",
+   "what": "link:10 in -> not in in 'a in self.fwd'",
+   "kept": true,
+   "why": null
+  },
+  {
+   "order": 8,
+   "target": "stock",
+   "operator": "constant",
+   "what": "restock:13 1 -> 2",
+   "kept": true,
+   "why": null
+  },
+  {
+   "order": 9,
+   "target": "ttl",
+   "operator": "constant",
+   "what": "get:37 0 -> 1",
+   "kept": true,
+   "why": null
+  },
+  {
+   "order": 10,
+   "target": "pq",
+   "operator": "delete",
+   "what": "_swap:56 delete 'self.pos[self.heap[j][1]] = j'",
+   "kept": false,
+   "why": "an earlier catalogue defect"
+  },
+  {
+   "order": 11,
+   "target": "pq",
+   "operator": "constant",
+   "what": "_up:60 2 -> 3",
+   "kept": true,
+   "why": null
+  },
+  {
+   "order": 12,
+   "target": "bag",
+   "operator": "delete",
+   "what": "remove:16 delete 'have = self.count.get(x, 0)'",
+   "kept": true,
+   "why": null
+  },
+  {
+   "order": 13,
+   "target": "stock",
+   "operator": "arith",
+   "what": "restock:11 + -> - in 'self.held.get(item, 0) + n'",
+   "kept": true,
+   "why": null
+  },
+  {
+   "order": 14,
+   "target": "pq",
+   "operator": "compare",
+   "what": "_down:73 < -> <= in 'c + 1 < n'",
+   "kept": true,
+   "why": null
+  },
+  {
+   "order": 15,
+   "target": "ledger",
+   "operator": "attribute",
+   "what": "history:49 self.by_acct -> self.balances",
+   "kept": true,
+   "why": null
+  },
+  {
+   "order": 16,
+   "target": "pq",
+   "operator": "arith",
+   "what": "_down:70 + -> - in '2 * i + 1'",
+   "kept": true,
+   "why": null
+  },
+  {
+   "order": 17,
+   "target": "memo",
+   "operator": "delete",
+   "what": "score:16 delete 'self._seen[key] = v'",
+   "kept": true,
+   "why": null
+  },
+  {
+   "order": 18,
+   "target": "ledger",
+   "operator": "attribute",
+   "what": "open:14 self.by_acct -> self.balances",
+   "kept": true,
+   "why": null
+  },
+  {
+   "order": 19,
+   "target": "pq",
+   "operator": "delete",
+   "what": "_up:60 delete 'p = (i - 1) // 2'",
+   "kept": true,
+   "why": null
+  },
+  {
+   "order": 20,
+   "target": "pq",
+   "operator": "constant",
+   "what": "update:36 0 -> 1",
+   "kept": true,
+   "why": null
+  },
+  {
+   "order": 21,
+   "target": "window",
+   "operator": "call",
+   "what": "push:10 append -> remove",
+   "kept": true,
+   "why": null
+  },
+  {
+   "order": 22,
+   "target": "pq",
+   "operator": "delete",
+   "what": "_up:62 delete 'self._swap(i, p)'",
+   "kept": true,
+   "why": null
+  },
+  {
+   "order": 23,
+   "target": "lru",
+   "operator": "delete",
+   "what": "put:19 delete 'self.d[k] = v'",
+   "kept": true,
+   "why": null
+  },
+  {
+   "order": 24,
+   "target": "pq",
+   "operator": "arith",
+   "what": "push:17 - -> + in 'len(self.heap) - 1'",
+   "kept": false,
+   "why": "an earlier catalogue defect"
+  },
+  {
+   "order": 25,
+   "target": "graph",
+   "operator": "delete",
+   "what": "unlink:26 delete 'self.adj[v].discard(u)'",
+   "kept": false,
+   "why": "an earlier catalogue defect"
+  },
+  {
+   "order": 26,
+   "target": "pq",
+   "operator": "constant",
+   "what": "peek:21 1 -> 0",
+   "kept": false,
+   "why": "an earlier catalogue defect"
+  },
+  {
+   "order": 27,
+   "target": "ledger",
+   "operator": "constant",
+   "what": "deposit:23 1 -> 2",
+   "kept": true,
+   "why": null
+  },
+  {
+   "order": 28,
+   "target": "pq",
+   "operator": "swap",
+   "what": "push:14 swap 'self.update(key, prio)'",
+   "kept": true,
+   "why": null
+  },
+  {
+   "order": 29,
+   "target": "pq",
+   "operator": "constant",
+   "what": "update:37 0 -> 1",
+   "kept": true,
+   "why": null
+  },
+  {
+   "order": 30,
+   "target": "registry",
+   "operator": "constant",
+   "what": "remove:22 1 -> 0",
+   "kept": true,
+   "why": null
+  },
+  {
+   "order": 31,
+   "target": "stats",
+   "operator": "delete",
+   "what": "add:12 delete 'self._total = None'",
+   "kept": false,
+   "why": "an earlier catalogue defect"
+  },
+  {
+   "order": 32,
+   "target": "lease",
+   "operator": "constant",
+   "what": "acquire:26 1 -> 0",
+   "kept": true,
+   "why": null
+  },
+  {
+   "order": 33,
+   "target": "ledger",
+   "operator": "delete",
+   "what": "_apply:17 delete 'self.balances[acct] += amount'",
+   "kept": true,
+   "why": null
+  },
+  {
+   "order": 34,
+   "target": "stock",
+   "operator": "constant",
+   "what": "available:36 0 -> 1",
+   "kept": true,
+   "why": null
+  },
+  {
+   "order": 35,
+   "target": "ledger",
+   "operator": "compare",
+   "what": "withdraw:26 < -> <= in 'self.balances[acct] < amount'",
+   "kept": false,
+   "why": "job 14 not interrupted"
+  },
+  {
+   "order": 36,
+   "target": "bag",
+   "operator": "delete",
+   "what": "add:12 delete 'self.size += k'",
+   "kept": false,
+   "why": "an earlier catalogue defect"
+  },
+  {
+   "order": 37,
+   "target": "calendar",
+   "operator": "attribute",
+   "what": "_drop_past:17 self.mine -> self.slot",
+   "kept": true,
+   "why": null
+  },
+  {
+   "order": 38,
+   "target": "pq",
+   "operator": "constant",
+   "what": "_swap:55 1 -> 2",
+   "kept": true,
+   "why": null
+  },
+  {
+   "order": 39,
+   "target": "log",
+   "operator": "call",
+   "what": "record:12 add -> discard",
+   "kept": true,
+   "why": null
+  },
+  {
+   "order": 40,
+   "target": "lease",
+   "operator": "arith",
+   "what": "acquire:26 += -> -= in 'self.granted += 1'",
+   "kept": true,
+   "why": null
+  },
+  {
+   "order": 41,
+   "target": "lease",
+   "operator": "attribute",
+   "what": "_sweep:17 self.now -> self.granted",
+   "kept": true,
+   "why": null
+  },
+  {
+   "order": 42,
+   "target": "lease",
+   "operator": "delete",
+   "what": "acquire:25 delete 'self.until[r] = self.now + self.term'",
+   "kept": true,
+   "why": null
+  }
+ ]
+}
