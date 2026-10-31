@@ -1,0 +1,253 @@
+{
+ "seed": 20261031,
+ "job_seeds": [
+  11,
+  12,
+  13
+ ],
+ "n": 24,
+ "mutants": 437,
+ "examined": 30,
+ "log": [
+  {
+   "order": 0,
+   "target": "lease",
+   "operator": "attribute",
+   "what": "renew:32 self.until -> self.holder",
+   "kept": true,
+   "why": null
+  },
+  {
+   "order": 1,
+   "target": "ttl",
+   "operator": "attribute",
+   "what": "counts:40 self.hits -> self.misses",
+   "kept": false,
+   "why": "job 11 not interrupted"
+  },
+  {
+   "order": 2,
+   "target": "graph",
+   "operator": "arith",
+   "what": "unlink:27 -= -> += in 'self.edges -= 1'",
+   "kept": false,
+   "why": "a hand-written catalogue defect"
+  },
+  {
+   "order": 3,
+   "target": "window",
+   "operator": "delete",
+   "what": "load:22 delete \"w = cls(st['size'])\"",
+   "kept": true,
+   "why": null
+  },
+  {
+   "order": 4,
+   "target": "log",
+   "operator": "compare",
+   "what": "record:10 in -> not in in 'e in self.seen'",
+   "kept": true,
+   "why": null
+  },
+  {
+   "order": 5,
+   "target": "pq",
+   "operator": "arith",
+   "what": "push:17 - -> + in 'len(self.heap) - 1'",
+   "kept": true,
+   "why": null
+  },
+  {
+   "order": 6,
+   "target": "stock",
+   "operator": "delete",
+   "what": "ship:29 delete 'n = min(n, self.reserved.get(item, 0))'",
+   "kept": true,
+   "why": null
+  },
+  {
+   "order": 7,
+   "target": "ttl",
+   "operator": "attribute",
+   "what": "snapshot:46 self.misses -> self.hits",
+   "kept": true,
+   "why": null
+  },
+  {
+   "order": 8,
+   "target": "pq",
+   "operator": "constant",
+   "what": "_up:59 0 -> -1",
+   "kept": true,
+   "why": null
+  },
+  {
+   "order": 9,
+   "target": "ledger",
+   "operator": "delete",
+   "what": "withdraw:28 delete 'self._apply(acct, -amount)'",
+   "kept": true,
+   "why": null
+  },
+  {
+   "order": 10,
+   "target": "pq",
+   "operator": "constant",
+   "what": "peek:21 1 -> 2",
+   "kept": true,
+   "why": null
+  },
+  {
+   "order": 11,
+   "target": "ledger",
+   "operator": "constant",
+   "what": "deposit:23 1 -> 0",
+   "kept": true,
+   "why": null
+  },
+  {
+   "order": 12,
+   "target": "lease",
+   "operator": "delete",
+   "what": "advance:14 delete 'self._sweep()'",
+   "kept": false,
+   "why": "a hand-written catalogue defect"
+  },
+  {
+   "order": 13,
+   "target": "pq",
+   "operator": "delete",
+   "what": "remove:45 delete 'last = len(self.heap) - 1'",
+   "kept": true,
+   "why": null
+  },
+  {
+   "order": 14,
+   "target": "ledger",
+   "operator": "arith",
+   "what": "_apply:17 += -> -= in 'self.balances[acct] += amount'",
+   "kept": true,
+   "why": null
+  },
+  {
+   "order": 15,
+   "target": "stock",
+   "operator": "constant",
+   "what": "restock:11 0 -> -1",
+   "kept": true,
+   "why": null
+  },
+  {
+   "order": 16,
+   "target": "bag",
+   "operator": "constant",
+   "what": "add:10 1 -> 2",
+   "kept": false,
+   "why": "job 11 not interrupted"
+  },
+  {
+   "order": 17,
+   "target": "stock",
+   "operator": "delete",
+   "what": "restock:12 delete 'self.reserved.setdefault(item, 0)'",
+   "kept": true,
+   "why": null
+  },
+  {
+   "order": 18,
+   "target": "pq",
+   "operator": "constant",
+   "what": "_down:74 1 -> 0",
+   "kept": true,
+   "why": null
+  },
+  {
+   "order": 19,
+   "target": "pq",
+   "operator": "constant",
+   "what": "_swap:56 1 -> 0",
+   "kept": true,
+   "why": null
+  },
+  {
+   "order": 20,
+   "target": "stats",
+   "operator": "call",
+   "what": "add:11 append -> remove",
+   "kept": true,
+   "why": null
+  },
+  {
+   "order": 21,
+   "target": "pq",
+   "operator": "constant",
+   "what": "pop:27 0 -> -1",
+   "kept": true,
+   "why": null
+  },
+  {
+   "order": 22,
+   "target": "stock",
+   "operator": "attribute",
+   "what": "available:36 self.reserved -> self.held",
+   "kept": true,
+   "why": null
+  },
+  {
+   "order": 23,
+   "target": "pq",
+   "operator": "constant",
+   "what": "peek:21 1 -> 0",
+   "kept": true,
+   "why": null
+  },
+  {
+   "order": 24,
+   "target": "pq",
+   "operator": "delete",
+   "what": "_swap:56 delete 'self.pos[self.heap[j][1]] = j'",
+   "kept": false,
+   "why": "a hand-written catalogue defect"
+  },
+  {
+   "order": 25,
+   "target": "bag",
+   "operator": "swap",
+   "what": "remove:16 swap 'self.count.get(x, 0)'",
+   "kept": true,
+   "why": null
+  },
+  {
+   "order": 26,
+   "target": "bag",
+   "operator": "delete",
+   "what": "remove:23 delete 'self.size -= k'",
+   "kept": true,
+   "why": null
+  },
+  {
+   "order": 27,
+   "target": "memo",
+   "operator": "compare",
+   "what": "score:14 >= -> > in 'len(self._seen) >= self.limit'",
+   "kept": false,
+   "why": "job 11 not interrupted"
+  },
+  {
+   "order": 28,
+   "target": "ttl",
+   "operator": "attribute",
+   "what": "get:35 self.hits -> self.now",
+   "kept": true,
+   "why": null
+  },
+  {
+   "order": 29,
+   "target": "bag",
+   "operator": "constant",
+   "what": "remove:16 0 -> -1",
+   "kept": true,
+   "why": null
+  }
+ ]
+}
