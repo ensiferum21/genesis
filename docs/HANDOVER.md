@@ -351,6 +351,11 @@ needs people: a reviewer, a statistician, an independent custodian on its own ma
         reached E2 alone; LOOP_BEATS_RANDOM; no difference against loop_v2, nolocal, enum. **A container restart about
         10:45** stopped PT-2's slice 3 (started 10:38:53, nothing saved after 10:38:47; restarted 10:49:12) and B20_R181
         (resumed 10:49:28 from its rows); CPU 0 idle about 4 min, to disclose in PT-2's record.
+      - **Daniel's requirement of 11:26 is adopted** (`docs/OMEGA_RULE_INVENTION.md`): Genesis invents its own repair
+        rules (detect, diagnose, dream a grammar of statements, lift verified repairs into rules by anti-unification,
+        admit by verified transfer to other families, learn where to look). Built in `src/genesis/repair/invent.py` and
+        the loop version 4; the fourth catalogue was sealed before any of it existed. **B20_R182 (SR-2a)** is
+        preregistered (CPU 1).
   26c. **Daniel's directive of 27 Oct 2026, 19:55 is adopted**: `docs/OMEGA_FRONTIER.md`, written in detail for
       handoff at his request (20:01). Genesis works by divergence and convergence (imagine, mutate, recombine,
       branch out, extrapolate discovery curves, detect convergence, allocate), without handholding. The

@@ -73,28 +73,55 @@ The six steps, each with the principle it rests on:
 
 6. **Improve the inventor** (physics: renormalisation, the flow toward the right scale of description; maths: a
    bandit over the inventor's own choices). The inventor's choices are themselves parameters: which identifier classes
-   to abstract, how deep the grammar goes, how many candidate rules to test. Each admission outcome updates the
-   inventor's posterior over its choices (which generalisation levels produced rules that transferred), so later
-   inventions start from the levels that worked. The claim of self-improvement needs evidence across generations on
+   to abstract, and which productions of the grammar to try first. Each admission updates the inventor's posterior
+   over generalisation levels (which levels produced rules that transferred), and each verified dream repair its
+   posterior over grammar productions, so later probes start from the levels that worked and later dreams from the
+   productions that worked. The claim of self-improvement needs evidence across generations on
    fresh tasks at matched resources (`docs/OMEGA_SELF_REPAIR.md` §8, the Foundry directive item 6); the mechanism is
    built first, the claim is tested later.
 
 **Never.** The inventor may not create a rule that touches a protected path, changes a check, or uses a name the guard
 denies; rules are applied to repairable components only; the verifier and the policy stay the kernel's.
 
-## 3. What is built (31 Oct 2026) — see §5 for the status table
+## 3. What is built (31 Oct 2026)
 
-`src/genesis/repair/invent.py`: the grammar of statements (the dream), anti-unification into a lattice of candidate
-rules, rule application, the rule library with provenance and Beta posteriors, the inventor with its posterior over
-generalisation levels, and the invention cycle (detect, dream, abstract, admit by kernel-verified transfer, retain).
-The loop version 4 (`loop.py`, arm 'loop') is version 3 plus the library's rules; version 3 is frozen as 'loop_v3'.
+`src/genesis/repair/invent.py` (research plane; `tests_genesis/test_repair_invent.py`):
+- **the dream** (`dream_edits`): the grammar of statements from the component's own vocabulary (`vocabulary`: each
+  attribute by the kind of value it holds, dict values by how they are used, the private methods): counters and
+  indexed counters incremented or decremented by an argument, a local or 1; container calls (`add`, `discard`,
+  `append`, `remove`) on indexed values; `setdefault` insertions; deletions, also of entries left empty;
+  invalidations; calls of private methods; and every augmented assignment flipped to its sibling operator. On
+  B20_R181's development defects the grammar holds the repairs of N1, N4, K1 and E3, which no arm reached; not those
+  of D3 or D4.
+- **anti-unification** (`abstract`): the verified patch's edit (an insertion after an anchor statement, or a
+  replacement) lifted at six levels: concrete; bare names; names and attributes; also the operations on values
+  (`add`, `discard`: lifting them is what turns "after `adj[u].add(v)`, add `adj[v].add(u)`" into the general mirror
+  rule); also the constants; and `free`, where an attribute the template names and the pattern does not becomes a
+  hole filled by every attribute of the target that holds the same kind of value. Builtins are never lifted. Lifting
+  the reference repairs of the 45 development defects gives 86 rules over 32 defects; two of them transfer exactly to
+  another defect (the mirror rule, N1 to N2 and back).
+- **application** (`apply_rule`): a rule matches every statement with the same lifted shape and instantiates its
+  template there; it does not insert what the method already does.
+- **the library** (`Library`, `rules.jsonl` in the research plane's own directory): rules with provenance (the
+  episode, the family, the edit, the missing capability), status (candidate, admitted, rejected), successes and
+  failures, a Beta posterior. A rule is admitted only by a repair the kernel's verifier accepted on an obstacle of
+  another family; a candidate whose patch the verifier rejects, with no admission, is rejected.
+- **the inventor** (`Inventor`, `inventor.json`): a Beta posterior per level; probes try candidate rules in the order
+  of their level's posterior mean, then by how few candidates they produce (minimum description length).
+
+`src/genesis/repair/loop.py`: version 4 ('loop') is version 3 ('loop_v3', frozen) plus the library's admitted rules;
+'dream' adds the grammar and lifts its verified patches; 'dream_online' is the same search without the learning;
+'probe' tries only other families' candidate rules and records what the verifier said; the inventor learns from it.
+
+`scripts/b20r182_rule_invention.py` (B20_R182): the cycle with no human step (§4).
 
 ## 4. The test: B20_R182 (SR-2a)
 
 Preregistered before any of it runs on its held-out defects:
 - a **curriculum** of the 45 development defects (B20_R178's 21, B20_R180's 12, B20_R181's 12); Genesis runs the
-  invention cycle on it with no human step: it finds the obstacles version 3 does not solve, dreams, abstracts, admits
-  by verified transfer within the curriculum, and keeps a library;
+  invention cycle on it with no human step: it finds the obstacles version 3 does not solve (job seed 1), dreams on
+  each (a fresh job, 1,000 evaluations), lifts the verified repairs into rules, probes every development defect (seed-2
+  jobs) with the candidate rules of other families, admits by verified transfer, and keeps a library;
 - a **fourth catalogue** of 12 held-out defects in three new components, written before the cycle runs, each checked
   automatically for an unintended homologue (B20_R181's lesson);
 - the comparison at the same budget per obstacle: version 4 (Genesis's own rules) against version 3 (the builder's
@@ -110,4 +137,4 @@ Preregistered before any of it runs on its held-out defects:
 | 3 invent | the dream grammar; anti-unification lattice | (B20_R182) | inventing new *kinds* of transformation outside the grammar |
 | 4 verify | admission by kernel-verified transfer, MDL score | (B20_R182) | |
 | 5 learn, reuse | library with provenance and Beta posteriors; loop v4 | (B20_R182) | |
-| 6 improve the inventor | posterior over generalisation levels | | evidence across generations on fresh tasks |
+| 6 improve the inventor | posteriors over generalisation levels and grammar productions, ordering later probes and dreams | | evidence across generations on fresh tasks |

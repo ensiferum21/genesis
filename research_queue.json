@@ -1069,6 +1069,29 @@
    "title": "SR-1a3: invented repair operators (symmetry completion, vestigial calls, dimensional offsets) in the obstacle loop version 3, against the frozen version 2 and nolocal, random and enum, on 12 new held-out defects in three new components (four in the operators' classes) x 3 jobs at 300 evaluations; 24 controls; retention and reuse",
    "unlocks": []
   },
+  "B20_R182": {
+   "artifacts": [],
+   "committed": true,
+   "depends_on": [],
+   "failure": null,
+   "id": "B20_R182",
+   "kind": "study",
+   "line": "self-repair",
+   "notes": "docs/OMEGA_RULE_INVENTION.md (Daniel, 31 Oct 2026, 11:26); alone on CPU 0",
+   "outcome": null,
+   "output": "evidence/rule_invention_b20r182",
+   "positive": null,
+   "preregistered": null,
+   "priority": 7,
+   "requires": [],
+   "resources": {
+    "cpu0_hours": 2.0
+   },
+   "script": "scripts/b20r182_rule_invention.py",
+   "status": "queued",
+   "title": "SR-2a: Genesis invents its own repair rules: detect the obstacles the builder's rules do not solve (45 development defects), dream (a grammar of statements), lift verified repairs into rules (anti-unification), admit by verified transfer to other families, two generations; then version 4 (Genesis's library) against version 3, the grammar searched online, and enum on 12 new held-out defects x 3 jobs",
+   "unlocks": []
+  },
   "allocator-baselines": {
    "artifacts": [],
    "committed": false,
@@ -2392,6 +2415,11 @@
    "outcome": "MILESTONE_DEMONSTRATED (12 of 36); LOOP_BEATS_RANDOM (6-0); NO_DIFFERENCE_SHOWN against loop_v2, nolocal, enum (3-0 each: E2, reached only by the vestigial-call operator); no false repair; REUSE_NOT_SHOWN",
    "positive": true,
    "time": "2026-10-31T02:56:53+00:00"
+  },
+  {
+   "id": "B20_R182",
+   "kind": "add",
+   "time": "2026-10-31T03:42:10+00:00"
   }
  ],
  "lines": {
@@ -2761,7 +2789,8 @@
   "B20_R178",
   "B20_R179",
   "B20_R180",
-  "B20_R181"
+  "B20_R181",
+  "B20_R182"
  ],
  "reactivated": {},
  "schema": "genesis-research-queue-v1",

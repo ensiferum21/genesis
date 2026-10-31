@@ -44,6 +44,7 @@ import random
 import time
 
 from . import capture as CP
+from . import invent as IV
 from . import obstacle as OB
 from . import probe as PR
 from . import synth as SY
@@ -165,10 +166,29 @@ def _visible(src, tests, filename):
     return bad
 
 
-def episode(handle, vault=None, arm='loop', budget=300, seed=0, exclude_vault=(), repair_id='repair', trial_key=None):
+DIAG = ('loop', 'loop_v1', 'loop_v2', 'loop_v3', 'dream', 'dream_online')
+V3 = ('loop', 'loop_v3', 'dream', 'dream_online')
+V2PLUS = V3 + ('loop_v2',)
+
+
+def episode(handle, vault=None, arm='loop', budget=300, seed=0, exclude_vault=(), repair_id='repair', trial_key=None,
+            family=None):
     """`trial_key` (default: repair_id) names the diagnosis trials' seeds: a benchmark gives every arm the same key
-    for the same obstacle, so that arms that diagnose see the same experiments (common random numbers)."""
+    for the same obstacle, so that arms that diagnose see the same experiments (common random numbers). `family` names
+    the obstacle's family (its defect), for the leave-one-out of rule invention.
+
+    Version 4 ('loop') is version 3 ('loop_v3', frozen) plus the rules Genesis invented and the verifier admitted
+    (`invent.Library`, in the vault's directory), applied after the builder's inventions. 'dream' is version 3 plus the
+    grammar of statements (`invent.dream_edits`), at the focus and then everywhere; when its patch is verified, the
+    patch is abstracted into candidate rules (`invent.abstract`) and kept. 'dream_online' is the same search without
+    the learning (the benchmark's control: does a learned rule beat searching the grammar directly?). 'probe' tries
+    only candidate rules from other families, in the order the inventor believes in (`invent.Inventor`); a verified
+    repair admits the rule that made it."""
     tk = repair_id if trial_key is None else trial_key
+    lib = inv = None
+    if vault is not None and vault.path is not None:
+        lib = IV.Library(vault.path.parent / 'rules.jsonl')
+        inv = IV.Inventor(vault.path.parent / 'inventor.json')
     t0 = time.process_time()
     rec = {'arm': arm, 'repair': repair_id, 'steps': {}}
     first = handle.run(resume=True)
@@ -198,7 +218,7 @@ def episode(handle, vault=None, arm='loop', budget=300, seed=0, exclude_vault=()
     failing, passing = [(rep, ob)], []
     trial_runs = []
     rng = random.Random(f'{repair_id}|{seed}')
-    if arm in ('loop', 'loop_v1', 'loop_v2'):
+    if arm in DIAG:
         for k in range(MAX_TRIALS):
             if model.done() and len(passing) >= 2:
                 break
@@ -281,13 +301,13 @@ def episode(handle, vault=None, arm='loop', budget=300, seed=0, exclude_vault=()
                 base_work['w'] = max(1, work(src0))
             extra = work(src) / base_work['w'] - 1
             metabolic[src] = max(0.0, extra)
-            if arm == 'loop':
+            if arm in V3:
                 if 's' not in base_work:
                     base_work['s'] = storage(src0)
                 grows[src] = storage(src) > 1.5 * base_work['s'] + 4
         return e, e == 0
 
-    if arm in ('loop', 'loop_v1', 'loop_v2'):
+    if arm in DIAG:
         methods, mass = model.ranked_methods()
         focus, acc = [], 0.0
         for m in methods:
@@ -311,18 +331,25 @@ def episode(handle, vault=None, arm='loop', budget=300, seed=0, exclude_vault=()
 
         def line_post(x):
             return model.post.get(_first_changed_line(src0, x[1]) + 1, 0.0)
-        if arm == 'loop':                                   # v3: the posterior first, the vault's kinds second
+        if arm in V3:                                       # v3: the posterior first, the vault's kinds second
             rest.sort(key=lambda x: (-round(line_post(x), 6), kind_rank(x)))
             repertoire += SY.inventions(src0, set(focus))
+            if arm == 'loop' and lib is not None:           # v4: the rules Genesis invented, the trusted first
+                for r in lib.admitted():
+                    repertoire += IV.apply_rule(r, src0)
+            if arm in ('dream', 'dream_online'):
+                dream = IV.dream_edits(src0, set(focus))
+                rest += inv.order_dream(dream) if (arm == 'dream' and inv is not None) else dream
         elif suggested:
             rest.sort(key=kind_rank)
         repertoire = retrieved + repertoire + rest
         mut_funcs = set(focus)
         generations = 8
-        if arm in ('loop', 'loop_v2'):                      # widen: the rest of the file, most suspected lines first
+        if arm in V2PLUS:                                   # widen: the rest of the file, most suspected lines first
             have = {x[1] for x in repertoire}
             wide = [x for x in SY.local_edits(src0) + SY.transplants(src0, sorted(set(method_of.values())))
-                    + (SY.inventions(src0) if arm == 'loop' else []) if x[1] not in have]
+                    + (SY.inventions(src0) if arm in V3 else [])
+                    + (IV.dream_edits(src0) if arm in ('dream', 'dream_online') else []) if x[1] not in have]
             wide.sort(key=lambda x: -line_post(x))
             repertoire += wide
             generations = 60
@@ -349,6 +376,12 @@ def episode(handle, vault=None, arm='loop', budget=300, seed=0, exclude_vault=()
         repertoire.sort(key=lambda x: _first_changed_line(src0, x[1]))
         mut_funcs = None
         generations = 0
+    elif arm == 'probe':                                            # candidate rules of other families only
+        repertoire = []
+        for r in (inv.order(lib.candidates(family), src0) if lib is not None else []):
+            repertoire += IV.apply_rule(r, src0)
+        mut_funcs = None
+        generations = 0
     else:                                                           # 'retrieval'
         all_edits = SY.local_edits(src0) + SY.transplants(src0, sorted(set(method_of.values())))
         repertoire = retrieved + [x for x in all_edits if kind_of(x[0]) in suggested]
@@ -357,12 +390,12 @@ def episode(handle, vault=None, arm='loop', budget=300, seed=0, exclude_vault=()
 
     def mutate(src, r):
         funcs = mut_funcs
-        if arm in ('loop', 'loop_v2') and len(search.history) >= 8:      # after 8 generations, mutate anywhere
+        if arm in V2PLUS and len(search.history) >= 8:      # after 8 generations, mutate anywhere
             funcs = None
         pool = SY.local_edits(src, focus_funcs=funcs)
         if funcs:
             pool += SY.transplants(src, sorted(funcs))
-        elif arm in ('loop', 'loop_v2'):
+        elif arm in V2PLUS:
             pool += SY.transplants(src, sorted(set(method_of.values())))
         return r.choice(pool) if pool else None
 
@@ -376,10 +409,10 @@ def episode(handle, vault=None, arm='loop', budget=300, seed=0, exclude_vault=()
     # then one that keeps the mined laws on the whole workload (a tie-break: a law mined from the defective component
     # may encode the defect, so it never vetoes a patch, B20_R178))
     breaks = {}
-    if arm == 'loop' and laws and len(solutions) > 1:     # mined laws as a tie-break among solutions, never a veto
+    if arm in V3 and laws and len(solutions) > 1:       # mined laws as a tie-break among solutions, never a veto
         for p in solutions:
             breaks[p[2]] = PR.first_break(PR.Observation(target_run(p[2], observe='full')), laws) is not None
-    solutions.sort(key=lambda p: ((arm == 'loop' and SY.annihilates(src0, p[2]) > 0), grows.get(p[2], False),
+    solutions.sort(key=lambda p: ((arm in V3 and SY.annihilates(src0, p[2]) > 0), grows.get(p[2], False),
                                   breaks.get(p[2], False),
                                   round(metabolic.get(p[2], 0.0), 2) > 0.05, SY.changed_lines(src0, p[2]),
                                   metabolic.get(p[2], 0.0)))
@@ -407,6 +440,15 @@ def episode(handle, vault=None, arm='loop', budget=300, seed=0, exclude_vault=()
         rec['cpu_s'] = round(time.process_time() - t0, 2)
         return rec
     answer = handle.propose(patch)
+    rid = name.split()[1] if name.startswith('rule ') else None
+    if rid and lib is not None:
+        before = (lib.get(rid) or {}).get('status')
+        accepted = bool(answer.get('accepted')) and bool(answer.get('promoted'))
+        lib.record(rid, accepted, family, false_repair=not answer.get('accepted') and bool(answer.get('failed_checks')))
+        after = (lib.get(rid) or {}).get('status')
+        if arm == 'probe' and inv is not None:
+            inv.learn(lib.get(rid)['level'], admitted=after == 'admitted' and before != 'admitted')
+        rec['rule'] = {'id': rid, 'before': before, 'after': after}
     rec['steps']['verify'] = {'accepted': answer.get('accepted'), 'failed_checks': answer.get('failed_checks')}
     if not answer.get('accepted'):
         rec['outcome'] = 'false-repair' if answer.get('failed_checks') else 'verifier-error'
@@ -428,6 +470,13 @@ def episode(handle, vault=None, arm='loop', budget=300, seed=0, exclude_vault=()
                       'missing_capability': model.record['missing_capability'],
                       'regression_test': rec['steps']['regression_test'], 'verified': True})
         rec['retained'] = True
+        if arm == 'dream' and lib is not None and not name.startswith('rule '):
+            # Genesis meets an obstacle its rules did not solve, the dream found a verified repair: lift it into rules
+            new = lib.add(IV.abstract(src0, patch, {'episode': repair_id, 'family': family, 'edit': name,
+                                                    'missing_capability': model.record['missing_capability']}))
+            rec['invented'] = [r['id'] for r in new]
+            if inv is not None and name.startswith('dream '):
+                inv.learn_production(IV.production(name), True)
     rec['cpu_s'] = round(time.process_time() - t0, 2)
     return rec
 

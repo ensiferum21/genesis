@@ -160,7 +160,8 @@ def _send(f, obj):
 
 
 def handle_obstacle(job, *, vault_dir, arm='loop', budget=300, seed=0, repair_id='repair', exclude_vault=(),
-                    scope='testbed', log_path=None, isolated=True, timeout=900, stderr_path=None, trial_key=None):
+                    scope='testbed', log_path=None, isolated=True, timeout=900, stderr_path=None, trial_key=None,
+                    family=None):
     """Hand the job's obstacle to the research plane; returns (the research plane's record, the kernel's record)."""
     import resource
     kernel = Kernel(job, scope, log_path, repair_id, separate=True)
@@ -168,6 +169,8 @@ def handle_obstacle(job, *, vault_dir, arm='loop', budget=300, seed=0, repair_id
     params = {'arm': arm, 'budget': budget, 'seed': seed, 'repair_id': repair_id, 'exclude_vault': list(exclude_vault)}
     if trial_key is not None:
         params['trial_key'] = trial_key
+    if family is not None:
+        params['family'] = family
     t0 = time.time()
     if not isolated:
         import importlib

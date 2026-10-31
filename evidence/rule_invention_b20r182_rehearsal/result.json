@@ -1,0 +1,221 @@
+{
+ "study": "B20_R182",
+ "rehearsal": true,
+ "script_sha256": "0c4c910f3a9b5897358da45aaf78b68c681867ce9a76eb02c6a1b642eabfebc3",
+ "defects4_sha256": "7143763d0847f46e552a1e2d149529ae1e772d8b3f1200d699d4ec4bc40c14e0",
+ "job_version": 2,
+ "budget": 300,
+ "dream_budget": 1000,
+ "probe_budget": 120,
+ "arms": [
+  "loop",
+  "loop_v3",
+  "dream_online",
+  "enum"
+ ],
+ "job_seeds": [
+  1,
+  2,
+  3
+ ],
+ "curriculum": [
+  "N1",
+  "N2",
+  "K1",
+  "K2",
+  "M1",
+  "S1"
+ ],
+ "heldout_used": [
+  "E3",
+  "N4",
+  "W2"
+ ],
+ "commit": "",
+ "verdict": "RULES_INVENTED",
+ "isolation_ok": true,
+ "controls_ok": true,
+ "invention": {
+  "curriculum": 6,
+  "unsolved_by_v3": 4,
+  "dreams": 4,
+  "dreams_repaired": 4,
+  "rules_lifted": 11,
+  "rules_admitted": 1,
+  "rules_rejected": 0,
+  "admitted": [
+   {
+    "id": "dream1-N2-1-dream#3:names+attrs+ops",
+    "level": "names+attrs+ops",
+    "kind": "insert",
+    "template": "self.__m0__[__m3__].__m2__(__m1__)",
+    "admitted_by": [
+     "N1"
+    ],
+    "source": "N2"
+   }
+  ],
+  "probes": {
+   "probes": 6,
+   "probes_with_candidates": 1,
+   "admissions": 1,
+   "false_repairs": 0
+  },
+  "inventor_beliefs": {
+   "levels": {
+    "concrete": [
+     1.0,
+     1.0
+    ],
+    "names": [
+     1.0,
+     1.0
+    ],
+    "names+attrs": [
+     1.0,
+     1.0
+    ],
+    "names+attrs+ops": [
+     2.0,
+     1.0
+    ],
+    "names+attrs+ops+consts": [
+     1.0,
+     1.0
+    ],
+    "free": [
+     1.0,
+     1.0
+    ]
+   },
+   "productions": {
+    "flip": [
+     1.0,
+     1.0
+    ],
+    "delete-empty": [
+     1.0,
+     1.0
+    ],
+    "delete": [
+     2.0,
+     1.0
+    ],
+    "setdefault": [
+     1.0,
+     1.0
+    ],
+    "container-call": [
+     3.0,
+     1.0
+    ],
+    "indexed-counter": [
+     1.0,
+     1.0
+    ],
+    "counter": [
+     1.0,
+     1.0
+    ],
+    "invalidate": [
+     1.0,
+     1.0
+    ],
+    "private-call": [
+     1.0,
+     1.0
+    ],
+    "assign": [
+     2.0,
+     1.0
+    ]
+   }
+  },
+  "dream_first_solutions": [
+   [
+    "N1",
+    167,
+    true
+   ],
+   [
+    "N2",
+    55,
+    true
+   ],
+   [
+    "K1",
+    64,
+    true
+   ],
+   [
+    "K2",
+    24,
+    true
+   ]
+  ],
+  "cpu_s": 140.57
+ },
+ "obstacles": 9,
+ "milestone": true,
+ "milestone_obstacles": [
+  "W2/1",
+  "W2/2",
+  "W2/3"
+ ],
+ "per_arm": {
+  "loop": {
+   "obstacles": 9,
+   "repaired": 3,
+   "false_repairs": 0,
+   "by_invented_rule": 0,
+   "evaluations": 1926,
+   "total_cpu_s": 78.02
+  },
+  "loop_v3": {
+   "obstacles": 9,
+   "repaired": 3,
+   "false_repairs": 0,
+   "by_invented_rule": 0,
+   "evaluations": 1926,
+   "total_cpu_s": 76.45
+  },
+  "dream_online": {
+   "obstacles": 9,
+   "repaired": 9,
+   "false_repairs": 0,
+   "by_invented_rule": 0,
+   "evaluations": 1926,
+   "total_cpu_s": 20.65
+  },
+  "enum": {
+   "obstacles": 9,
+   "repaired": 3,
+   "false_repairs": 0,
+   "by_invented_rule": 0,
+   "evaluations": 1557,
+   "total_cpu_s": 10.04
+  }
+ },
+ "comparison": {
+  "loop_v3": {
+   "loop_v4_only": 0,
+   "loop_v3_only": 0,
+   "p": 1.0,
+   "verdict": "NO_DIFFERENCE_SHOWN"
+  },
+  "dream_online": {
+   "loop_v4_only": 0,
+   "dream_online_only": 6,
+   "p": 0.03125,
+   "verdict": "DREAM_ONLINE_BEATS_LOOP_V4"
+  },
+  "enum": {
+   "loop_v4_only": 0,
+   "enum_only": 0,
+   "p": 1.0,
+   "verdict": "NO_DIFFERENCE_SHOWN"
+  }
+ },
+ "promotions_outside_component": 0,
+ "wall_s": 341.7
+}
