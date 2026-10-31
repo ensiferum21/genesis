@@ -89,7 +89,7 @@ class Design(unittest.TestCase):
         for a in ('v3learn', 'analogy', 'probe_t', 'probe_t2', 'dream', 'dream_online', 'loop_v3'):
             self.assertIn(a, LP.DIAG)
         self.assertEqual(LP.LEARN_T, {'v3learn': 1, 'dream': 1, 'analogy': 2})
-        self.assertEqual(LP.PROBE_T, ('probe_t', 'probe_t2'))
+        self.assertEqual(LP.PROBE_T[:2], ('probe_t', 'probe_t2'))       # B20_R187 added 'probe_t3' after them
 
     def test_the_sign_test_and_holm(self):
         self.assertEqual(S.sign_test(0, 0), 1.0)
