@@ -1024,3 +1024,275 @@ m.link('a', 1)
 assert m.right('a') == 1
 ''')],
 })
+
+
+# ------------------------------------------------------------------------------------------- B20_R182's components
+# Added 31 Oct 2026 (about 11:35 SGT) for SR-2a (B20_R182), before any rule-inventing code existed: a stock ledger
+# with reservations, a booking calendar with a reverse index and a clock, a multiset with a cached mode. The earlier
+# registries (each pinned by a recorded study) are unchanged; the kernel looks components up in KERNEL_SOURCES, the
+# one registry later components are added to.
+
+SOURCES4 = {
+    'stock': '''"""Stock of items with reservations: what is available is what is held minus what is reserved."""
+
+
+class Stock:
+    def __init__(self):
+        self.held = {}
+        self.reserved = {}
+        self.moves = 0
+
+    def restock(self, item, n):
+        self.held[item] = self.held.get(item, 0) + n
+        self.reserved.setdefault(item, 0)
+        self.moves += 1
+
+    def reserve(self, item, n):
+        if self.available(item) < n:
+            return False
+        self.reserved[item] += n
+        self.moves += 1
+        return True
+
+    def release(self, item, n):
+        n = min(n, self.reserved.get(item, 0))
+        self.reserved[item] -= n
+        self.moves += 1
+        return n
+
+    def ship(self, item, n):
+        n = min(n, self.reserved.get(item, 0))
+        self.reserved[item] -= n
+        self.held[item] -= n
+        self.moves += 1
+        return n
+
+    def available(self, item):
+        return self.held.get(item, 0) - self.reserved.get(item, 0)
+
+    def snapshot(self):
+        return (sorted(self.held.items()), sorted(self.reserved.items()), self.moves)
+''',
+    'calendar': '''"""Bookings of time slots, with each person's slots indexed, and past slots dropped as time advances."""
+
+
+class Calendar:
+    def __init__(self):
+        self.now = 0
+        self.slot = {}
+        self.mine = {}
+
+    def advance(self, dt):
+        self.now += dt
+        self._drop_past()
+
+    def _drop_past(self):
+        for s in [s for s in self.slot if s < self.now]:
+            who = self.slot.pop(s)
+            self.mine[who].discard(s)
+
+    def book(self, s, who):
+        if s < self.now or s in self.slot:
+            return False
+        self.slot[s] = who
+        self.mine.setdefault(who, set()).add(s)
+        return True
+
+    def cancel(self, s):
+        who = self.slot.pop(s, None)
+        if who is None:
+            return False
+        self.mine[who].discard(s)
+        return True
+
+    def slots_of(self, who):
+        return sorted(self.mine.get(who, ()))
+
+    def snapshot(self):
+        return (sorted(self.slot.items()), sorted((w, sorted(v)) for w, v in self.mine.items() if v))
+''',
+    'bag': '''"""A multiset: counts per element, the total size, and the most common element, cached."""
+
+
+class Bag:
+    def __init__(self):
+        self.count = {}
+        self.size = 0
+        self._mode = None
+
+    def add(self, x, k=1):
+        self.count[x] = self.count.get(x, 0) + k
+        self.size += k
+        self._mode = None
+
+    def remove(self, x, k=1):
+        have = self.count.get(x, 0)
+        k = min(k, have)
+        if k == 0:
+            return 0
+        self.count[x] = have - k
+        if self.count[x] == 0:
+            del self.count[x]
+        self.size -= k
+        self._mode = None
+        return k
+
+    def mode(self):
+        if self._mode is None and self.count:
+            self._mode = max(sorted(self.count), key=lambda e: self.count[e])
+        return self._mode
+
+    def snapshot(self):
+        return (sorted(self.count.items()), self.size)
+''',
+}
+KERNEL_SOURCES = dict(SOURCES_ANY, **SOURCES4)
+CLASS.update({'stock': 'Stock', 'calendar': 'Calendar', 'bag': 'Bag'})
+
+
+class RefStock:
+    def __init__(self):
+        self.held, self.reserved, self.moves = {}, {}, 0
+
+    def restock(self, item, n):
+        self.held[item] = self.held.get(item, 0) + n
+        self.reserved.setdefault(item, 0)
+        self.moves += 1
+
+    def reserve(self, item, n):
+        if self.available(item) < n:
+            return False
+        self.reserved[item] = self.reserved.get(item, 0) + n
+        self.moves += 1
+        return True
+
+    def release(self, item, n):
+        n = min(n, self.reserved.get(item, 0))
+        if item in self.reserved:
+            self.reserved[item] -= n
+        else:
+            raise KeyError(item)
+        self.moves += 1
+        return n
+
+    def ship(self, item, n):
+        n = min(n, self.reserved.get(item, 0))
+        if item not in self.reserved:
+            raise KeyError(item)
+        self.reserved[item] -= n
+        self.held[item] -= n
+        self.moves += 1
+        return n
+
+    def available(self, item):
+        return self.held.get(item, 0) - self.reserved.get(item, 0)
+
+    def snapshot(self):
+        return (sorted(self.held.items()), sorted(self.reserved.items()), self.moves)
+
+
+class RefCalendar:
+    def __init__(self):
+        self.now, self.slot = 0, {}
+
+    def advance(self, dt):
+        self.now += dt
+        self.slot = {s: w for s, w in self.slot.items() if s >= self.now}
+
+    def book(self, s, who):
+        if s < self.now or s in self.slot:
+            return False
+        self.slot[s] = who
+        return True
+
+    def cancel(self, s):
+        return self.slot.pop(s, None) is not None
+
+    def slots_of(self, who):
+        return sorted(s for s, w in self.slot.items() if w == who)
+
+    def snapshot(self):
+        whos = sorted({w for w in self.slot.values()})
+        return (sorted(self.slot.items()), [(w, self.slots_of(w)) for w in whos])
+
+
+class RefBag:
+    def __init__(self):
+        self.items = []
+
+    def add(self, x, k=1):
+        self.items += [x] * k
+
+    def remove(self, x, k=1):
+        n = min(k, self.items.count(x))
+        for _ in range(n):
+            self.items.remove(x)
+        return n
+
+    def mode(self):
+        if not self.items:
+            return None
+        return max(sorted(set(self.items)), key=lambda e: self.items.count(e))
+
+    def snapshot(self):
+        return (sorted((e, self.items.count(e)) for e in set(self.items)), len(self.items))
+
+
+REFERENCE.update({'stock': RefStock, 'calendar': RefCalendar, 'bag': RefBag})
+OBSERVE.update({'stock': 'snapshot', 'calendar': 'snapshot', 'bag': 'snapshot'})
+COMPARE_OBSERVE.update({'stock': True, 'calendar': True, 'bag': True})
+_make_args_3, _ops_3 = make_args, ops
+
+
+def ops(target, rng, n, warm=0.4):                                         # noqa: F811 - extends the one above
+    if target not in ('stock', 'calendar', 'bag'):
+        return _ops_3(target, rng, n, warm)
+    out = []
+    for t in range(n):
+        warm_phase = t < warm * n
+        r = rng.random()
+        if target == 'stock':
+            item = rng.choice('abc' if warm_phase else 'abcde')
+            if warm_phase:
+                out.append(('restock', [item, rng.randrange(1, 9)]) if r < 0.5 else ('available', [item]))
+            else:
+                out.append(('restock', [item, rng.randrange(1, 9)]) if r < 0.25 else
+                           ('reserve', [item, rng.randrange(1, 6)]) if r < 0.5 else
+                           ('release', [item, rng.randrange(1, 6)]) if r < 0.65 else
+                           ('ship', [item, rng.randrange(1, 6)]) if r < 0.8 else ('available', [item]))
+        elif target == 'calendar':
+            who = rng.choice('pqr')
+            if warm_phase:
+                out.append(('book', [rng.randrange(0, 30), who]) if r < 0.7 else ('slots_of', [who]))
+            else:
+                out.append(('book', [rng.randrange(0, 60), who]) if r < 0.4 else
+                           ('cancel', [rng.randrange(0, 60)]) if r < 0.6 else
+                           ('advance', [rng.choice([1, 2, 3])]) if r < 0.75 else ('slots_of', [who]))
+        else:                                                               # bag
+            x = rng.randrange(4 if warm_phase else 7)
+            if warm_phase:
+                out.append(('add', [x, rng.randrange(1, 3)]) if r < 0.7 else ('mode', []))
+            else:
+                out.append(('add', [x, rng.randrange(1, 3)]) if r < 0.4 else
+                           ('remove', [x, rng.randrange(1, 3)]) if r < 0.75 else ('mode', []))
+        out.append(('observe', []))
+    return out
+
+
+VISIBLE_TESTS.update({
+    'stock': [('restock and reserve', '''
+s = mod.Stock()
+s.restock('a', 5)
+assert s.reserve('a', 3) and s.available('a') == 2
+''')],
+    'calendar': [('book and look up', '''
+c = mod.Calendar()
+assert c.book(5, 'p') and not c.book(5, 'q')
+assert c.slots_of('p') == [5]
+''')],
+    'bag': [('add and count', '''
+b = mod.Bag()
+b.add('x', 2)
+assert b.mode() == 'x' and b.snapshot() == ([('x', 2)], 2)
+''')],
+})

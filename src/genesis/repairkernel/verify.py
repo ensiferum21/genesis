@@ -197,6 +197,33 @@ assert m.unlink('a') == 2 and m.left(2) is None
 m.link('c', 3)
 assert m.snapshot() == ([('c', 3)], [(3, 'c')])
 ''',
+    'stock': '''
+s = mod.Stock()
+s.restock('a', 5); s.restock('b', 2)
+assert s.reserve('a', 3) and not s.reserve('a', 3) and s.available('a') == 2
+assert s.release('a', 1) == 1 and s.available('a') == 3
+assert s.ship('a', 5) == 2 and s.available('a') == 3 and s.snapshot()[0] == [('a', 3), ('b', 2)]
+assert s.release('a', 9) == 0
+assert s.snapshot()[2] == 6
+''',
+    'calendar': '''
+c = mod.Calendar()
+assert c.book(3, 'p') and c.book(5, 'p') and c.book(4, 'q')
+assert c.slots_of('p') == [3, 5]
+assert c.cancel(5) and c.slots_of('p') == [3] and not c.cancel(5)
+c.advance(4)                             # slot 3 is past; slot 4 is now
+assert c.slots_of('p') == [] and c.slots_of('q') == [4]
+assert not c.book(3, 'q') and c.book(6, 'p')
+assert c.snapshot() == ([(4, 'q'), (6, 'p')], [('p', [6]), ('q', [4])])
+''',
+    'bag': '''
+b = mod.Bag()
+b.add('x', 2); b.add('y', 3)
+assert b.mode() == 'y' and b.snapshot() == ([('x', 2), ('y', 3)], 5)
+assert b.remove('y', 2) == 2 and b.mode() == 'x'
+assert b.remove('x', 5) == 2 and b.snapshot() == ([('y', 1)], 1) and b.mode() == 'y'
+assert b.remove('z') == 0
+''',
     'log': '''
 g = mod.Log()
 for e in range(12):
@@ -259,7 +286,7 @@ def verify(jobdir, target, seed, n_ops, every, new_source):
                                 count=count)
             fresh.append(None)
             if job.version >= 2:
-                good = BN.load_source(TG.SOURCES_ANY[target], 'verify_good', str(job.file))
+                good = BN.load_source(TG.KERNEL_SOURCES[target], 'verify_good', str(job.file))
                 gcount = [0]
                 gst, _ = BN._limited(lambda: BN.execute(target, good, cargs, ckw, op_list), 10 ** 7, str(job.file),
                                      count=gcount)
