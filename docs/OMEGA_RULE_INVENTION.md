@@ -152,6 +152,7 @@ added: the MDL trade of step 4 applied to the space), and a testbed whose repair
 | B20_R182 (SR-2a) | recorded (`docs/checkpoints/B20_R182_RECORD.md`) | RULES_INVENTED; LOOP_V4 = LOOP_V3; DREAM_ONLINE_BEATS_LOOP_V4 |
 | B20_R183 (SR-2b) | recorded (`docs/checkpoints/B20_R183_RECORD.md`) | RULES_INVENTED replicated (the same rule); LOOP_V4 = LOOP_V3 replicated; the grammar's lead not replicated (11-5, p 0.21); step 6 NO_DIFFERENCE_SHOWN |
 | B20_R185 (SR-2c) | recorded (`docs/checkpoints/B20_R185_RECORD.md`) | SPACE_INVENTED; P1 NO_DIFFERENCE_SHOWN (lifted = version 3); **P2 INVENTOR_IMPROVED** (derived > lifted, 7-0, p_Holm 0.047, two mutants); P3 NO_DIFFERENCE_SHOWN (= the builder's grammar) |
+| B20_R186 (SR-2c') | preregistered: B20_R185 on a fresh draw of 36 mutants with fresh seeds | |
 
 ## 6. Next: Genesis growing its own repair space (SR-2c, B20_R185; planned 31 Oct 2026, 12:55)
 

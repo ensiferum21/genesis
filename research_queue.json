@@ -1150,6 +1150,29 @@
    "title": "SR-2c: Genesis grows its own repair space: transformations lifted from its verified repairs (donor, substitutions, edit), admitted by verified repairs of other families (generation 1), and derived from the admitted ones by inverse, transfer, composition and generalisation (generation 2); on 24 random mutants nobody chose (defects5.py) x 3 jobs: version 3, generation 1, generation 2, the builder's grammar, enum",
    "unlocks": []
   },
+  "B20_R186": {
+   "artifacts": [],
+   "committed": true,
+   "depends_on": [],
+   "failure": null,
+   "id": "B20_R186",
+   "kind": "study",
+   "line": "self-repair",
+   "notes": "docs/OMEGA_RULE_INVENTION.md section 6; preregistered after B20_R185 was read; after the checkpoint B20_R184",
+   "outcome": null,
+   "output": "evidence/space_invention_b20r186",
+   "positive": null,
+   "preregistered": null,
+   "priority": 7,
+   "requires": [],
+   "resources": {
+    "cpu0_hours": 1.5
+   },
+   "script": "scripts/b20r186_space_invention_replica.py",
+   "status": "queued",
+   "title": "SR-2c': the replication of B20_R185 (Genesis grows its own repair space) on a fresh draw of 36 random mutants (defects6.py) with fresh seeds; each of its verdicts compared, P2 (step 6) above all",
+   "unlocks": []
+  },
   "allocator-baselines": {
    "artifacts": [],
    "committed": false,
@@ -2531,6 +2554,11 @@
    "outcome": "SPACE_INVENTED (11 lifted + 7 derived transformations admitted); P1 NO_DIFFERENCE_SHOWN (27 = 27); P2 INVENTOR_IMPROVED (34 vs 27, 7-0, p_Holm 0.047, two mutants); P3 NO_DIFFERENCE_SHOWN (34 = 34)",
    "positive": true,
    "time": "2026-10-31T07:54:40+00:00"
+  },
+  {
+   "id": "B20_R186",
+   "kind": "add",
+   "time": "2026-10-31T08:11:59+00:00"
   }
  ],
  "lines": {
@@ -2924,7 +2952,8 @@
   "B20_R181",
   "B20_R182",
   "B20_R183",
-  "B20_R185"
+  "B20_R185",
+  "B20_R186"
  ],
  "reactivated": {},
  "schema": "genesis-research-queue-v1",
