@@ -1817,3 +1817,79 @@ class RecordB20R182(unittest.TestCase):
         for r in controls:
             self.assertTrue(S.control_passes(r), r['key'])
 ```
+
+## RecordB20R183 (SR-2b; append to `tests_genesis/test_rule_invention_replica_study.py`)
+
+Dry-run on the rehearsal (`--rehearse`) before the sealed run.
+
+```python
+R183 = ROOT / 'evidence' / 'rule_invention_b20r183'
+
+
+class RecordB20R183(unittest.TestCase):
+    """The record of SR-2b (B20_R183) on its evidence: the script and the catalogue; the verdicts, the step-6
+    comparison and the replication table recomputed from the rows, the isolation report and Genesis's frozen library;
+    every admitted rule admitted by a verified repair of another family, in a probe row that names it; every promoted
+    component source verified again; the 30 controls."""
+    DIR = R183
+
+    @classmethod
+    def setUpClass(cls):
+        cls.result = json.loads((cls.DIR / 'result.json').read_text())
+        cls.rows = [json.loads(x) for x in (cls.DIR / 'rows.jsonl').read_text().splitlines() if x.strip()]
+        cls.episodes = [json.loads(x) for x in (cls.DIR / 'episodes.jsonl').read_text().splitlines() if x.strip()]
+        cls.iso = json.loads((cls.DIR / 'isolation.json').read_text())
+        lib = cls.DIR / 'genesis_library'
+        cls.library = [json.loads(x) for x in (lib / 'rules.jsonl').read_text().splitlines() if x.strip()] \
+            if (lib / 'rules.jsonl').exists() else []
+        cls.inventor = json.loads((lib / 'inventor.json').read_text()) if (lib / 'inventor.json').exists() else {}
+
+    def test_the_script_the_catalogue_and_the_seeds(self):
+        if self.DIR == R183:
+            self.assertEqual(digest(ROOT / 'scripts/b20r183_rule_invention_replica.py'), SHA256)
+            self.assertEqual(self.result['script_sha256'], SHA256)
+        self.assertEqual(self.result['defects4_sha256'], S.DEFECTS4_SHA256)
+        self.assertEqual(self.result['seeds'], {'detect': 4, 'admit': 5, 'search': 1, 'control': 9})
+        self.assertEqual(self.result['job_seeds'], [6, 7, 8])
+        self.assertTrue(all(r['seed'] in (4, 5, 6, 7, 8, 9) for r in self.rows))
+
+    def test_the_verdicts_recompute(self):
+        got = S.analyse(self.rows, self.iso, self.result['heldout_used'], self.library, self.inventor)
+        for k in ('verdict', 'isolation_ok', 'controls_ok', 'invention', 'obstacles', 'milestone',
+                  'milestone_obstacles', 'per_arm', 'comparison', 'inventor', 'replication', 'replicated',
+                  'promotions_outside_component'):
+            self.assertEqual(json.loads(json.dumps(got[k])), self.result[k], k)
+
+    def test_every_admitted_rule_was_admitted_by_another_familys_verified_repair(self):
+        for r in self.library:
+            if r['status'] != 'admitted':
+                continue
+            self.assertTrue(r['admitted_by'])
+            self.assertNotIn(r['provenance']['family'], r['admitted_by'])
+            probes = [x for x in self.rows if x['phase'].startswith('admit') and x['rule'] and x['rule']['id'] == r['id']
+                      and x['rule']['after'] == 'admitted']
+            self.assertTrue(probes, r['id'])
+            self.assertTrue(any(S.repaired(x) and x['name'] in r['admitted_by'] for x in probes), r['id'])
+
+    def test_every_promoted_source_verifies_again(self):
+        rows = {r['key']: r for r in self.rows}
+        n = 0
+        with tempfile.TemporaryDirectory() as d:
+            for e in self.episodes:
+                r = rows[e['key']]
+                if not r['promoted']:
+                    self.assertIsNone(e['final_source'], e['key'])
+                    continue
+                job, _ = BN.make(r['name'], r['seed'], Path(d) / e['key'].replace('/', '_'), version=2)
+                self.assertEqual(job.run()['op'], r['interrupted_at'])
+                v = VF.verify(job.dir, job.target, job.seed, job.n_ops, job.every, e['final_source'])
+                self.assertTrue(v['accepted'], e['key'])
+                n += 1
+        self.assertGreater(n, 0)
+
+    def test_no_control_proposed_or_changed_anything(self):
+        controls = [r for r in self.rows if r['phase'] == 'controls']
+        self.assertEqual(len(controls), 30)
+        for r in controls:
+            self.assertTrue(S.control_passes(r), r['key'])
+```

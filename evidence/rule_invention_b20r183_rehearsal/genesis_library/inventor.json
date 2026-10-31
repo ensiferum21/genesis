@@ -1,0 +1,70 @@
+{
+ "levels": {
+  "concrete": [
+   1.0,
+   1.0
+  ],
+  "names": [
+   1.0,
+   1.0
+  ],
+  "names+attrs": [
+   1.0,
+   1.0
+  ],
+  "names+attrs+ops": [
+   2.0,
+   1.0
+  ],
+  "names+attrs+ops+consts": [
+   1.0,
+   1.0
+  ],
+  "free": [
+   1.0,
+   1.0
+  ]
+ },
+ "productions": {
+  "flip": [
+   1.0,
+   1.0
+  ],
+  "delete-empty": [
+   1.0,
+   1.0
+  ],
+  "delete": [
+   2.0,
+   1.0
+  ],
+  "setdefault": [
+   1.0,
+   1.0
+  ],
+  "container-call": [
+   3.0,
+   1.0
+  ],
+  "indexed-counter": [
+   1.0,
+   1.0
+  ],
+  "counter": [
+   1.0,
+   1.0
+  ],
+  "invalidate": [
+   1.0,
+   1.0
+  ],
+  "private-call": [
+   1.0,
+   1.0
+  ],
+  "assign": [
+   2.0,
+   1.0
+  ]
+ }
+}
