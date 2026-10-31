@@ -1124,6 +1124,29 @@
    "title": "SR-2b: B20_R182 repeated with fresh seeds (detection 4, probes 5, jobs 6-8, search 1, controls 9), plus the arm that tests step 6: the grammar ordered by the inventor's learned posterior over productions ('dream') against the fixed order ('dream_online'); each of B20_R182's findings compared with its replica",
    "unlocks": []
   },
+  "B20_R185": {
+   "artifacts": [],
+   "committed": true,
+   "depends_on": [],
+   "failure": null,
+   "id": "B20_R185",
+   "kind": "study",
+   "line": "self-repair",
+   "notes": "docs/OMEGA_RULE_INVENTION.md section 6; after the checkpoint B20_R184; alone on CPU 0, in slices",
+   "outcome": null,
+   "output": "evidence/space_invention_b20r185",
+   "positive": null,
+   "preregistered": null,
+   "priority": 7,
+   "requires": [],
+   "resources": {
+    "cpu0_hours": 2.5
+   },
+   "script": "scripts/b20r185_space_invention.py",
+   "status": "queued",
+   "title": "SR-2c: Genesis grows its own repair space: transformations lifted from its verified repairs (donor, substitutions, edit), admitted by verified repairs of other families (generation 1), and derived from the admitted ones by inverse, transfer, composition and generalisation (generation 2); on 24 random mutants nobody chose (defects5.py) x 3 jobs: version 3, generation 1, generation 2, the builder's grammar, enum",
+   "unlocks": []
+  },
   "allocator-baselines": {
    "artifacts": [],
    "committed": false,
@@ -2488,6 +2511,11 @@
    "outcome": "RULES_INVENTED replicated (the same rule); v4 22 = v3 22; dream_online 28 (11-5, p 0.21: not replicated); step 6 NO_DIFFERENCE_SHOWN; replicated false",
    "positive": false,
    "time": "2026-10-31T06:19:30+00:00"
+  },
+  {
+   "id": "B20_R185",
+   "kind": "add",
+   "time": "2026-10-31T06:24:12+00:00"
   }
  ],
  "lines": {
@@ -2875,7 +2903,8 @@
   "B20_R180",
   "B20_R181",
   "B20_R182",
-  "B20_R183"
+  "B20_R183",
+  "B20_R185"
  ],
  "reactivated": {},
  "schema": "genesis-research-queue-v1",

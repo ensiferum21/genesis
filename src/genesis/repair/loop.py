@@ -43,6 +43,7 @@ from pathlib import Path
 import random
 import time
 
+from . import analogy as AN
 from . import capture as CP
 from . import invent as IV
 from . import obstacle as OB
@@ -166,9 +167,12 @@ def _visible(src, tests, filename):
     return bad
 
 
-DIAG = ('loop', 'loop_v1', 'loop_v2', 'loop_v3', 'dream', 'dream_online')
-V3 = ('loop', 'loop_v3', 'dream', 'dream_online')
+PROBE_T = ('probe_t', 'probe_t2')                       # SR-2c: probes of candidate transformations
+DIAG = ('loop', 'loop_v1', 'loop_v2', 'loop_v3', 'dream', 'dream_online', 'v3learn', 'analogy') + PROBE_T
+V3 = ('loop', 'loop_v3', 'dream', 'dream_online', 'v3learn', 'analogy')
 V2PLUS = V3 + ('loop_v2',)
+LEARN_T = {'v3learn': 1, 'dream': 1, 'analogy': 2}       # arms that lift their verified repairs into transformations
+PER_TRANSFORM = 12                                      # a probe's candidates per transformation, most suspected first
 
 
 def episode(handle, vault=None, arm='loop', budget=300, seed=0, exclude_vault=(), repair_id='repair', trial_key=None,
@@ -183,12 +187,21 @@ def episode(handle, vault=None, arm='loop', budget=300, seed=0, exclude_vault=()
     patch is abstracted into candidate rules (`invent.abstract`) and kept. 'dream_online' is the same search without
     the learning (the benchmark's control: does a learned rule beat searching the grammar directly?). 'probe' tries
     only candidate rules from other families, in the order the inventor believes in (`invent.Inventor`); a verified
-    repair admits the rule that made it."""
+    repair admits the rule that made it.
+
+    SR-2c (`analogy`): 'v3learn' is version 3 that lifts its verified repairs into transformations
+    (`analogy.lift`; 'dream' does too); 'analogy' is version 3 plus the admitted transformations' candidates, after
+    version 3's own (as 'dream' adds the grammar's), and lifts what it repairs; 'probe_t' tries only candidate
+    transformations of other families, at the suspected methods, the inventor's believed derivations first
+    (`analogy.Deriver`); 'probe_t2' first derives new candidates from the admitted first-generation transformations
+    (`analogy.derive`)."""
     tk = repair_id if trial_key is None else trial_key
-    lib = inv = None
+    lib = inv = tl = dv = None
     if vault is not None and vault.path is not None:
         lib = IV.Library(vault.path.parent / 'rules.jsonl')
         inv = IV.Inventor(vault.path.parent / 'inventor.json')
+        tl = AN.Transforms(vault.path.parent / 'transforms.jsonl')
+        dv = AN.Deriver(vault.path.parent / 'deriver.json')
     t0 = time.process_time()
     rec = {'arm': arm, 'repair': repair_id, 'steps': {}}
     first = handle.run(resume=True)
@@ -331,6 +344,15 @@ def episode(handle, vault=None, arm='loop', budget=300, seed=0, exclude_vault=()
 
         def line_post(x):
             return model.post.get(_first_changed_line(src0, x[1]) + 1, 0.0)
+        if arm in PROBE_T:                                  # SR-2c: candidate transformations of other families only
+            if arm == 'probe_t2' and tl is not None:
+                tl.add(AN.derive([t for t in tl.admitted() if t.get('generation') == 1]))
+            first, later = [], []
+            for t in (dv.order(tl.candidates(family), src0, set(focus)) if tl is not None else []):
+                cs = sorted(AN.apply_transform(t, src0, set(focus)), key=lambda x: -line_post(x))
+                first += cs[:PER_TRANSFORM]
+                later += cs[PER_TRANSFORM:]
+            repertoire, rest = first + later, []
         if arm in V3:                                       # v3: the posterior first, the vault's kinds second
             rest.sort(key=lambda x: (-round(line_post(x), 6), kind_rank(x)))
             repertoire += SY.inventions(src0, set(focus))
@@ -340,16 +362,21 @@ def episode(handle, vault=None, arm='loop', budget=300, seed=0, exclude_vault=()
             if arm in ('dream', 'dream_online'):
                 dream = IV.dream_edits(src0, set(focus))
                 rest += inv.order_dream(dream) if (arm == 'dream' and inv is not None) else dream
-        elif suggested:
+            if arm == 'analogy' and tl is not None:         # SR-2c: Genesis's own transformations, after v3's
+                mine = [x for t in tl.admitted() for x in AN.apply_transform(t, src0, set(focus))]
+                rest += sorted(mine, key=lambda x: -line_post(x))
+        elif suggested and arm not in PROBE_T:
             rest.sort(key=kind_rank)
-        repertoire = retrieved + repertoire + rest
-        mut_funcs = set(focus)
-        generations = 8
+        repertoire = (repertoire if arm in PROBE_T else retrieved + repertoire) + rest
+        mut_funcs = set(focus) if arm not in PROBE_T else None
+        generations = 8 if arm not in PROBE_T else 0
         if arm in V2PLUS:                                   # widen: the rest of the file, most suspected lines first
             have = {x[1] for x in repertoire}
             wide = [x for x in SY.local_edits(src0) + SY.transplants(src0, sorted(set(method_of.values())))
                     + (SY.inventions(src0) if arm in V3 else [])
-                    + (IV.dream_edits(src0) if arm in ('dream', 'dream_online') else []) if x[1] not in have]
+                    + (IV.dream_edits(src0) if arm in ('dream', 'dream_online') else [])
+                    + ([y for t in tl.admitted() for y in AN.apply_transform(t, src0)]
+                       if arm == 'analogy' and tl is not None else []) if x[1] not in have]
             wide.sort(key=lambda x: -line_post(x))
             repertoire += wide
             generations = 60
@@ -440,6 +467,15 @@ def episode(handle, vault=None, arm='loop', budget=300, seed=0, exclude_vault=()
         rec['cpu_s'] = round(time.process_time() - t0, 2)
         return rec
     answer = handle.propose(patch)
+    tid = name.split()[1] if name.startswith('transform ') else None
+    if tid and tl is not None:
+        before = (tl.get(tid) or {}).get('status')
+        accepted = bool(answer.get('accepted')) and bool(answer.get('promoted'))
+        tl.record(tid, accepted, family, false_repair=not answer.get('accepted') and bool(answer.get('failed_checks')))
+        after = (tl.get(tid) or {}).get('status')
+        if arm in PROBE_T and dv is not None:
+            dv.learn(tl.get(tid), admitted=after == 'admitted' and before != 'admitted')
+        rec['transform'] = {'id': tid, 'before': before, 'after': after}
     rid = name.split()[1] if name.startswith('rule ') else None
     if rid and lib is not None:
         before = (lib.get(rid) or {}).get('status')
@@ -477,6 +513,10 @@ def episode(handle, vault=None, arm='loop', budget=300, seed=0, exclude_vault=()
             rec['invented'] = [r['id'] for r in new]
             if inv is not None and name.startswith('dream '):
                 inv.learn_production(IV.production(name), True)
+        if arm in LEARN_T and tl is not None and not name.startswith(('transform ', 'rule ')):
+            new = tl.add(AN.lift(src0, patch, {'episode': repair_id, 'family': family, 'edit': name,
+                                               'generation': LEARN_T[arm]}))
+            rec['lifted'] = [t['id'] for t in new]
     rec['cpu_s'] = round(time.process_time() - t0, 2)
     return rec
 

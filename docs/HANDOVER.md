@@ -378,6 +378,10 @@ needs people: a reviewer, a statistician, an independent custodian on its own ma
       - **Checkpoint B20_R184** runs on CPU 0 from 14:17:43 (`652f36d`, a single-branch clone at `/home/claude/ckpt184`),
         the integration suite in six shards (`run_test_matrix.py --shard K/6`), two per job
         (`/home/claude/ckpt184_shards.sh`), then `/home/claude/ckpt184_rest.sh` (the other suites and the checkpoint).
+      - **B20_R185 (SR-2c) is preregistered** (`genesis.repair.analogy`, the loop's arms 'v3learn', 'analogy', 'probe_t',
+        'probe_t2'): Genesis grows its own repair space (transformations lifted from verified repairs, derived from one
+        another by the group operations), tested on the random mutants. It runs after the checkpoint, alone on CPU 0,
+        in slices of 6,600 s (exit 3 = paused; run the same command again).
   26c. **Daniel's directive of 27 Oct 2026, 19:55 is adopted**: `docs/OMEGA_FRONTIER.md`, written in detail for
       handoff at his request (20:01). Genesis works by divergence and convergence (imagine, mutate, recombine,
       branch out, extrapolate discovery curves, detect convergence, allocate), without handholding. The
