@@ -436,6 +436,16 @@ def _generalise(s):
     return None
 
 
+def _ancestry(parents):
+    """The families every parent comes from, through its own ancestry (B20R187-ANCESTRY: a derived parent has no
+    family of its own; its ancestors' families are what a child must not be admitted by)."""
+    out = set()
+    for p in parents:
+        fam = p['provenance'].get('family')
+        out |= {fam} if fam else {f for f in p['provenance'].get('derived_from_families', []) if f}
+    return sorted(out)
+
+
 def derive(admitted, generation=2):
     """Candidate transformations derived from the admitted ones by the four operators: [transformation]."""
     out = []
@@ -444,8 +454,8 @@ def derive(admitted, generation=2):
         subs = tuple(sorted(set(tuple(s) for s in subs), key=repr))
         if not subs or len(subs) > MAX_SUBS:
             return
-        prov = {'episode': f'derive-{op}', 'family': None, 'derived_from_families':
-                sorted({p['provenance'].get('family') or '' for p in parents}), 'generation': generation}
+        prov = {'episode': f'derive-{op}', 'family': None, 'derived_from_families': _ancestry(parents),
+                'generation': generation}
         out.append({'id': f"g{generation}-{op}:{edit}:{_subs_text(subs)}", 'edit': edit,
                     'subs': [list(s) for s in subs], 'generation': generation,
                     'derived': {'op': op, 'from': [p['id'] for p in parents]}, 'example': None, 'provenance': prov,

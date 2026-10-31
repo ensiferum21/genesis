@@ -93,6 +93,22 @@ class Derivation(unittest.TestCase):
             self.assertIsNone(d['provenance']['family'])
             self.assertTrue(d['provenance']['derived_from_families'])
 
+    def test_a_grandchild_carries_its_grandparents_families(self):
+        # B20R187-ANCESTRY: until 31 Oct 2026 a third-generation transformation recorded '' for a derived parent
+        t = {'id': 'a', 'edit': 'after', 'subs': [['map', 'op', 'In', 'NotIn']], 'provenance': {'family': 'M2'}}
+        child = next(d for d in AN.derive([t]) if d['derived']['op'] == 'generalise')
+        self.assertEqual(child['provenance']['derived_from_families'], ['M2'])
+        u = {'id': 'b', 'edit': 'after', 'subs': [['rename', 'attr']], 'provenance': {'family': 'E3'}}
+        grand = [d for d in AN.derive([child, u], generation=3) if d['derived']['op'] == 'compose']
+        self.assertTrue(grand)
+        self.assertEqual(grand[0]['provenance']['derived_from_families'], ['E3', 'M2'])
+        with tempfile.TemporaryDirectory() as d:
+            lib = AN.Transforms(Path(d) / 't.jsonl')
+            g = lib.add(grand)[0]
+            self.assertNotIn(g, lib.candidates('M2'))                  # never probed on an ancestor's family
+            lib.record(g['id'], True, 'M2')
+            self.assertEqual(lib.get(g['id'])['status'], 'candidate')  # nor admitted by it
+
     def test_a_derived_transformation_reaches_what_no_lifted_one_did(self):
         bad, good = ref('E3')
         t = AN.lift(bad, good, {'episode': 'E3', 'family': 'E3'})[0]       # after: another attribute
