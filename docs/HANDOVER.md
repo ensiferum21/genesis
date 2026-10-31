@@ -38,6 +38,10 @@ Everything is pushed: `continuation-b20-rx` (the line), `archive` (the checkpoin
 - **The next direction (Daniel, 31 Oct 21:56): `docs/OMEGA_YIN_YANG.md`**, the LLM and Genesis improving each other and the
   process, inside a circle neither controls. A design only: YY-0 (offers, failure atlas, briefs, credit) is the first
   thing to build; the LLM-session experiments need Daniel's go-ahead.
+- **Every known weakness, and the plan: `docs/OMEGA_WEAKNESSES_AND_BLUEPRINT.md`** (31 Oct 22:03): what cannot be
+  removed and why; the register of 36 weaknesses with evidence, remedy and test; the four-level architecture inside
+  the circle; twelve work packages in order, starting with WP-1 (hygiene) and WP-2 (a queue daemon). §5 there is the
+  rulebook for any agent.
 
 ## 1. Where everything is
 
