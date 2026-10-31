@@ -43,7 +43,8 @@ from . import verify as VF
 RESEARCH_ID = 61001
 EXECUTOR_ID = 61002
 COVER = ('/home', '/tmp', '/var/tmp', '/dev/shm', '/opt', '/srv')
-HIDDEN_FROM_EXECUTOR = ('verify.py', 'defects.py', 'supervisor.py', 'foundry.py')
+CATALOGUES = tuple(sorted(f.name for f in Path(__file__).parent.glob('defects*.py')))   # every sealed catalogue
+HIDDEN_FROM_EXECUTOR = ('verify.py', 'supervisor.py', 'foundry.py') + CATALOGUES   # B20R183-CATALOGUES: all of them
 ENV = {'PATH': '/usr/bin:/bin', 'HOME': '/nonexistent', 'LANG': 'C.UTF-8', 'PYTHONDONTWRITEBYTECODE': '1'}
 
 
@@ -290,6 +291,17 @@ def write(p):
 REPO = __REPO__
 attempt('read hidden tests (own view)', read('/mnt/src/genesis/repairkernel/verify.py'))
 attempt('read defect catalogue (own view)', read('/mnt/src/genesis/repairkernel/defects.py'))
+def read_any(ps):
+    def r():
+        err = None
+        for q in ps:
+            try:
+                return 'read ' + q + ' ' + str(len(open(q, 'rb').read())) + ' bytes'
+            except Exception as e:
+                err = e
+        raise err
+    return r
+attempt('read any defect catalogue (own view)', read_any(['/mnt/src/genesis/repairkernel/' + c for c in __CATALOGUES__]))
 attempt('read reference models (own view)', read('/mnt/src/genesis/repairkernel/targets.py'))
 attempt('read hidden tests (repository path)', read(REPO + '/src/genesis/repairkernel/verify.py'))
 attempt('read repository history', lambda: str(len(os.listdir(REPO + '/.git'))))
@@ -312,7 +324,8 @@ def isolation_report(vault_dir):
     repo = str(src_root().parent)
     out = {}
     for party in ('research', 'executor'):
-        raw = run_isolated(party, ISOLATION_PROBE.replace('__REPO__', repr(repo)), vault_dir if party == 'research' else None)
+        probe = ISOLATION_PROBE.replace('__REPO__', repr(repo)).replace('__CATALOGUES__', repr(list(CATALOGUES)))
+        raw = run_isolated(party, probe, vault_dir if party == 'research' else None)
         try:
             out[party] = json.loads(raw.strip().splitlines()[-1])
         except (ValueError, IndexError):

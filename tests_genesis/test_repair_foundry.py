@@ -323,9 +323,22 @@ class Isolation(unittest.TestCase):
             self.assertIn(r[k], ('FileNotFoundError', 'PermissionError', 'OSError'), k)
         self.assertEqual(r['write the vault'], 'ok')
         self.assertEqual(r['list /home'], '[]')
-        for k in ('read hidden tests (own view)', 'read defect catalogue (own view)', 'write the Judge',
+        for k in ('read hidden tests (own view)', 'read defect catalogue (own view)',
+                  'read any defect catalogue (own view)', 'write the Judge',
                   'write the Supervisor policy', 'create a file in the source tree', 'write /tmp'):
             self.assertIn(x[k], ('FileNotFoundError', 'PermissionError', 'OSError'), k)
+        self.assertIn(r['read any defect catalogue (own view)'], ('FileNotFoundError', 'PermissionError', 'OSError'))
+
+    def test_every_catalogue_is_hidden_from_the_executor(self):
+        # B20R183-CATALOGUES: until 31 Oct 2026 only defects.py was hidden; defects2-4.py were readable by the executor
+        on_disk = sorted(f.name for f in (ROOT / 'src/genesis/repairkernel').glob('defects*.py'))
+        self.assertGreaterEqual(len(on_disk), 4)
+        self.assertEqual(list(FD.CATALOGUES), on_disk)
+        self.assertTrue(set(on_disk) <= set(FD.HIDDEN_FROM_EXECUTOR))
+        for c in on_disk:
+            got = FD.run_isolated('executor', f"try:\n    print(len(open('/mnt/src/genesis/repairkernel/{c}', 'rb').read()))"
+                                  f"\nexcept Exception as e:\n    print(type(e).__name__)").strip()
+            self.assertIn(got, ('FileNotFoundError', 'PermissionError', 'OSError'), c)
 
     def test_an_isolated_episode_repairs_a_dev_defect(self):
         with tempfile.TemporaryDirectory() as d:
