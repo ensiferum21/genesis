@@ -393,6 +393,10 @@ needs people: a reviewer, a statistician, an independent custodian on its own ma
         first 17 min overlapped the checkpoint's shard 2 on CPU 0: the starting command waited for `END ..._2/6`, a line
         the failed first attempt had already written. **Lesson: a watcher on `chain.log` must match a line written after
         it starts** (count the lines first, or match the start time).
+      - **Checkpoint B20_R184 is made** at `804f479`: release matrix 2,840 tests, all OK (integration in six shards);
+        restore-verified (7,281 manifest entries); archived whole (`archive` `9868808`).
+      - **B20_R187 (SR-2d) is preregistered** (`0e56949`): a third generation (does the inventor's improvement compound?)
+        on the seventh catalogue (36 fresh random mutants). It runs alone on CPU 0 from 20:41:51, in slices of 6,600 s.
   26c. **Daniel's directive of 27 Oct 2026, 19:55 is adopted**: `docs/OMEGA_FRONTIER.md`, written in detail for
       handoff at his request (20:01). Genesis works by divergence and convergence (imagine, mutate, recombine,
       branch out, extrapolate discovery curves, detect convergence, allocate), without handholding. The

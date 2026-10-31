@@ -1617,6 +1617,13 @@
           "15d6888"
         ],
         "result": "Recorded (DEV, CPU 0 16:40:47-18:19:29; first 17 min overlapped checkpoint shard 2, disclosed): SR-2c' replicated. SPACE_INVENTED (11 lifted + 8 derived admitted). On 36 fresh mutants x 3 jobs (108): version 3 53, generation 1 56 (P1 NO_DIFFERENCE_SHOWN, 3-0), generation 2 68 (P2 INVENTOR_IMPROVED, 12-0, p_Holm 0.0015; V02, V34 by generalise any-op, V15, V18 by transfer replace rename-attr), dream_online 59 (P3 NO_DIFFERENCE_SHOWN, 12-3, p_Holm 0.070), enum 26. docs/checkpoints/B20_R186_RECORD.md"
+      },
+      "B20_R184": {
+        "commits": [
+          "f2bbe08",
+          "804f479"
+        ],
+        "result": "Checkpoint GENESIS_COMPLETION_CHECKPOINT_B20_R184 at 804f479 (parent B20_R176): release matrix 2,840 tests (integration 2,303 in six shards), all OK, one declared skip; 86,334,529 bytes, SHA-256 74907d66aa497d2b713923a0a0c1242f027f7874d6473c0b1e37a4d1ab83ea98; restore-verified (7,281 manifest entries); archived whole (archive 9868808). The first build at 652f36d failed (B20R184-PICKLE)."
       }
     },
     "open_after_b20_r5": [
