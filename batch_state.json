@@ -1596,8 +1596,11 @@
         "result": "Recorded (DEV, alone on CPU 0 11:52:54-12:25:47): SR-2a, Genesis invents its own repair rules. RULES_INVENTED: 16 of 45 development defects unsolved by version 3 (3 false repairs, caught), 6 repaired by the dream, 17 rules lifted, 1 admitted (symmetry completion, from N2's repair, verified on N1); no false repair in any probe or test arm. Held out (36): version 4 21 = version 3 21 (NO_DIFFERENCE_SHOWN, the same obstacles); dream_online 30 (DREAM_ONLINE_BEATS_LOOP_V4, 11-2, p 0.022); enum 18 (3-0). docs/checkpoints/B20_R182_RECORD.md"
       },
       "B20_R183": {
-        "commits": [],
-        "result": "Preregistered (DEV): SR-2b, B20_R182 with fresh seeds plus step 6 (the inventor's learned grammar order against the fixed order). Alone on CPU 0."
+        "commits": [
+          "229ca10",
+          "4e8dde2"
+        ],
+        "result": "Recorded (DEV, alone on CPU 0 12:41:16-13:10:41): SR-2b. RULES_INVENTED replicated (the same rule: symmetry completion from N2, verified on N1); version 4 22 = version 3 22; dream_online 28 (11-5, p 0.21, NO_DIFFERENCE_SHOWN: B20_R182's DREAM_ONLINE_BEATS_LOOP_V4 not replicated); step 6 (learned grammar order) NO_DIFFERENCE_SHOWN (29; earlier 2, later 6, p 0.29); enum 18; two false repairs caught. CPU 0 idle 1 h 7 min after it. docs/checkpoints/B20_R183_RECORD.md"
       }
     },
     "open_after_b20_r5": [

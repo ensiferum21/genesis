@@ -1099,7 +1099,10 @@
    "unlocks": []
   },
   "B20_R183": {
-   "artifacts": [],
+   "artifacts": [
+    "evidence/rule_invention_b20r183",
+    "docs/checkpoints/B20_R183_RECORD.md"
+   ],
    "committed": true,
    "depends_on": [],
    "failure": null,
@@ -1107,9 +1110,9 @@
    "kind": "study",
    "line": "self-repair",
    "notes": "docs/OMEGA_RULE_INVENTION.md; preregistered after B20_R182 result was read; alone on CPU 0",
-   "outcome": null,
+   "outcome": "RULES_INVENTED replicated (the same rule); v4 22 = v3 22; dream_online 28 (11-5, p 0.21: not replicated); step 6 NO_DIFFERENCE_SHOWN; replicated false",
    "output": "evidence/rule_invention_b20r183",
-   "positive": null,
+   "positive": false,
    "preregistered": "229ca10",
    "priority": 7,
    "requires": [],
@@ -1117,7 +1120,7 @@
     "cpu0_hours": 1.0
    },
    "script": "scripts/b20r183_rule_invention_replica.py",
-   "status": "running",
+   "status": "done",
    "title": "SR-2b: B20_R182 repeated with fresh seeds (detection 4, probes 5, jobs 6-8, search 1, controls 9), plus the arm that tests step 6: the grammar ordered by the inventor's learned posterior over productions ('dream') against the fixed order ('dream_online'); each of B20_R182's findings compared with its replica",
    "unlocks": []
   },
@@ -2478,6 +2481,13 @@
    "id": "B20_R183",
    "kind": "start",
    "time": "2026-10-31T04:42:02+00:00"
+  },
+  {
+   "id": "B20_R183",
+   "kind": "finish",
+   "outcome": "RULES_INVENTED replicated (the same rule); v4 22 = v3 22; dream_online 28 (11-5, p 0.21: not replicated); step 6 NO_DIFFERENCE_SHOWN; replicated false",
+   "positive": false,
+   "time": "2026-10-31T06:19:30+00:00"
   }
  ],
  "lines": {
@@ -2792,9 +2802,14 @@
      "B20_R182",
      "RULES_INVENTED: 16 of 45 unsolved by v3, 6 repaired by the dream, 17 rules lifted, 1 admitted (symmetry completion, from N2, verified on N1); held out: v4 21 = v3 21; DREAM_ONLINE_BEATS_LOOP_V4 (30, 11-2, p 0.022); enum 18; no false repair",
      true
+    ],
+    [
+     "B20_R183",
+     "RULES_INVENTED replicated (the same rule); v4 22 = v3 22; dream_online 28 (11-5, p 0.21: not replicated); step 6 NO_DIFFERENCE_SHOWN; replicated false",
+     false
     ]
    ],
-   "run": 0,
+   "run": 1,
    "stagnant": false
   }
  },

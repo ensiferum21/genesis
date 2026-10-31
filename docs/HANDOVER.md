@@ -367,6 +367,17 @@ needs people: a reviewer, a statistician, an independent custodian on its own ma
         was labelled B20_R183 in `chain.log`; that number went to SR-2b.
       - **B20_R183 (SR-2b) is preregistered**: B20_R182 with fresh seeds, plus step 6 (the learned grammar order against
         the fixed one). Alone on CPU 0.
+      - **The trial executor could read three of the four catalogues** (defect B20R183-CATALOGUES, `docs/BLOCKING_DEFECTS.md`):
+        repaired at `32b412b`; every catalogue is now hidden from it and probed. No result could have used them (the
+        research plane never saw any; the guard refuses every way to read a file).
+      - **The fifth catalogue is drawn by random mutation** (`defects5.py`, `652f36d`): 24 mutants nobody chose, sealed
+        before SR-2c's code.
+      - **B20_R183 is recorded** (`docs/checkpoints/B20_R183_RECORD.md`): the invented rule replicates; the library again
+        adds nothing; the grammar's lead over it does not replicate (p 0.21); step 6 (the learned grammar order) not
+        shown. **CPU 0 was idle 1 h 7 min after it** (13:10:41-14:17:43): the session was not running.
+      - **Checkpoint B20_R184** runs on CPU 0 from 14:17:43 (`652f36d`, a single-branch clone at `/home/claude/ckpt184`),
+        the integration suite in six shards (`run_test_matrix.py --shard K/6`), two per job
+        (`/home/claude/ckpt184_shards.sh`), then `/home/claude/ckpt184_rest.sh` (the other suites and the checkpoint).
   26c. **Daniel's directive of 27 Oct 2026, 19:55 is adopted**: `docs/OMEGA_FRONTIER.md`, written in detail for
       handoff at his request (20:01). Genesis works by divergence and convergence (imagine, mutate, recombine,
       branch out, extrapolate discovery curves, detect convergence, allocate), without handholding. The

@@ -1,0 +1,417 @@
+{
+ "study": "B20_R183",
+ "replicates": "B20_R182",
+ "rehearsal": false,
+ "script_sha256": "3ca48cda3d542bd090084e4afa3fd28ae603844fb248d3f02b51498709c65728",
+ "seeds": {
+  "detect": 4,
+  "admit": 5,
+  "search": 1,
+  "control": 9
+ },
+ "defects4_sha256": "7143763d0847f46e552a1e2d149529ae1e772d8b3f1200d699d4ec4bc40c14e0",
+ "job_version": 2,
+ "budget": 300,
+ "dream_budget": 1000,
+ "probe_budget": 120,
+ "arms": [
+  "loop",
+  "loop_v3",
+  "dream_online",
+  "enum",
+  "dream"
+ ],
+ "job_seeds": [
+  6,
+  7,
+  8
+ ],
+ "curriculum": [
+  "M1",
+  "L2",
+  "S1",
+  "W2",
+  "M2",
+  "L1",
+  "L3",
+  "L4",
+  "R1",
+  "R2",
+  "R4",
+  "S2",
+  "S3",
+  "W1",
+  "G1",
+  "G2",
+  "G3",
+  "L5",
+  "W3",
+  "R5",
+  "S4",
+  "T1",
+  "T2",
+  "T3",
+  "T4",
+  "P1",
+  "P2",
+  "P3",
+  "P4",
+  "D1",
+  "D2",
+  "D3",
+  "D4",
+  "E1",
+  "E2",
+  "E3",
+  "E4",
+  "N1",
+  "N2",
+  "N3",
+  "N4",
+  "K1",
+  "K2",
+  "K3",
+  "K4"
+ ],
+ "heldout_used": [
+  "X1",
+  "X2",
+  "X3",
+  "X4",
+  "C1",
+  "C2",
+  "C3",
+  "C4",
+  "B1",
+  "B2",
+  "B3",
+  "B4"
+ ],
+ "commit": "229ca1077cf262dc9b870292c343432c8ee7092d",
+ "verdict": "RULES_INVENTED",
+ "isolation_ok": true,
+ "controls_ok": true,
+ "invention": {
+  "curriculum": 45,
+  "unsolved_by_v3": 19,
+  "dreams": 19,
+  "dreams_repaired": 7,
+  "rules_lifted": 19,
+  "rules_admitted": 1,
+  "rules_rejected": 0,
+  "admitted": [
+   {
+    "id": "dream1-N2-4-dream#3:names+attrs+ops",
+    "level": "names+attrs+ops",
+    "kind": "insert",
+    "template": "self.__m0__[__m3__].__m2__(__m1__)",
+    "admitted_by": [
+     "N1"
+    ],
+    "source": "N2"
+   }
+  ],
+  "probes": {
+   "probes": 45,
+   "probes_with_candidates": 18,
+   "admissions": 1,
+   "false_repairs": 0
+  },
+  "inventor_beliefs": {
+   "levels": {
+    "concrete": [
+     1.0,
+     1.0
+    ],
+    "names": [
+     1.0,
+     1.0
+    ],
+    "names+attrs": [
+     1.0,
+     1.0
+    ],
+    "names+attrs+ops": [
+     2.0,
+     1.0
+    ],
+    "names+attrs+ops+consts": [
+     1.0,
+     1.0
+    ],
+    "free": [
+     1.0,
+     1.0
+    ]
+   },
+   "productions": {
+    "flip": [
+     2.0,
+     1.0
+    ],
+    "delete-empty": [
+     1.0,
+     1.0
+    ],
+    "delete": [
+     3.0,
+     1.0
+    ],
+    "setdefault": [
+     1.0,
+     1.0
+    ],
+    "container-call": [
+     3.0,
+     1.0
+    ],
+    "indexed-counter": [
+     1.0,
+     1.0
+    ],
+    "counter": [
+     1.0,
+     1.0
+    ],
+    "invalidate": [
+     1.0,
+     1.0
+    ],
+    "private-call": [
+     1.0,
+     1.0
+    ],
+    "assign": [
+     2.0,
+     1.0
+    ]
+   }
+  },
+  "dream_first_solutions": [
+   [
+    "R2",
+    4,
+    false
+   ],
+   [
+    "W1",
+    9,
+    false
+   ],
+   [
+    "G2",
+    null,
+    false
+   ],
+   [
+    "G3",
+    null,
+    false
+   ],
+   [
+    "T4",
+    317,
+    true
+   ],
+   [
+    "P1",
+    null,
+    false
+   ],
+   [
+    "P3",
+    null,
+    false
+   ],
+   [
+    "D1",
+    9,
+    false
+   ],
+   [
+    "D2",
+    null,
+    false
+   ],
+   [
+    "D3",
+    null,
+    false
+   ],
+   [
+    "D4",
+    null,
+    false
+   ],
+   [
+    "E3",
+    78,
+    true
+   ],
+   [
+    "N1",
+    167,
+    true
+   ],
+   [
+    "N2",
+    59,
+    true
+   ],
+   [
+    "N4",
+    112,
+    true
+   ],
+   [
+    "K1",
+    70,
+    true
+   ],
+   [
+    "K2",
+    19,
+    true
+   ],
+   [
+    "K3",
+    null,
+    false
+   ],
+   [
+    "K4",
+    null,
+    false
+   ]
+  ],
+  "cpu_s": 769.1
+ },
+ "obstacles": 36,
+ "milestone": true,
+ "milestone_obstacles": [
+  "X1/6",
+  "X1/7",
+  "X1/8",
+  "X2/8",
+  "X3/6",
+  "X3/7",
+  "X3/8",
+  "C2/6",
+  "C2/7",
+  "C2/8",
+  "C3/6",
+  "C3/7",
+  "C3/8",
+  "C4/6",
+  "C4/7",
+  "C4/8",
+  "B2/6",
+  "B2/7",
+  "B2/8",
+  "B4/6",
+  "B4/7",
+  "B4/8"
+ ],
+ "per_arm": {
+  "loop": {
+   "obstacles": 36,
+   "repaired": 22,
+   "false_repairs": 0,
+   "by_invented_rule": 0,
+   "evaluations": 8911,
+   "total_cpu_s": 315.61
+  },
+  "loop_v3": {
+   "obstacles": 36,
+   "repaired": 22,
+   "false_repairs": 0,
+   "by_invented_rule": 0,
+   "evaluations": 8896,
+   "total_cpu_s": 337.73
+  },
+  "dream_online": {
+   "obstacles": 36,
+   "repaired": 28,
+   "false_repairs": 1,
+   "by_invented_rule": 0,
+   "evaluations": 10800,
+   "total_cpu_s": 114.23
+  },
+  "enum": {
+   "obstacles": 36,
+   "repaired": 18,
+   "false_repairs": 0,
+   "by_invented_rule": 0,
+   "evaluations": 7140,
+   "total_cpu_s": 63.32
+  },
+  "dream": {
+   "obstacles": 36,
+   "repaired": 29,
+   "false_repairs": 1,
+   "by_invented_rule": 0,
+   "evaluations": 10800,
+   "total_cpu_s": 115.21
+  }
+ },
+ "comparison": {
+  "loop_v3": {
+   "loop_v4_only": 0,
+   "loop_v3_only": 0,
+   "p": 1.0,
+   "verdict": "NO_DIFFERENCE_SHOWN"
+  },
+  "dream_online": {
+   "loop_v4_only": 5,
+   "dream_online_only": 11,
+   "p": 0.21011,
+   "verdict": "NO_DIFFERENCE_SHOWN"
+  },
+  "enum": {
+   "loop_v4_only": 4,
+   "enum_only": 0,
+   "p": 0.125,
+   "verdict": "NO_DIFFERENCE_SHOWN"
+  }
+ },
+ "inventor": {
+  "dream_only": 1,
+  "dream_online_only": 0,
+  "p": 1.0,
+  "both_repaired": 28,
+  "dream_earlier": 2,
+  "dream_later": 6,
+  "ties": 20,
+  "p_first": 0.28906,
+  "mean_first": [
+   51.9,
+   53.4
+  ],
+  "verdict": "NO_DIFFERENCE_SHOWN"
+ },
+ "replication": {
+  "verdict": {
+   "b20r182": "RULES_INVENTED",
+   "b20r183": "RULES_INVENTED",
+   "same": true
+  },
+  "loop_v3": {
+   "b20r182": "NO_DIFFERENCE_SHOWN",
+   "b20r183": "NO_DIFFERENCE_SHOWN",
+   "same": true
+  },
+  "dream_online": {
+   "b20r182": "DREAM_ONLINE_BEATS_LOOP_V4",
+   "b20r183": "NO_DIFFERENCE_SHOWN",
+   "same": false
+  },
+  "enum": {
+   "b20r182": "NO_DIFFERENCE_SHOWN",
+   "b20r183": "NO_DIFFERENCE_SHOWN",
+   "same": true
+  }
+ },
+ "replicated": false,
+ "promotions_outside_component": 0,
+ "wall_s": 1765.3
+}

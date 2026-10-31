@@ -137,7 +137,7 @@ Preregistered before any of it runs on its held-out defects:
 | 3 invent | the dream grammar; anti-unification lattice | 6 of the 16 repaired by the dream, verified; 17 rules lifted | new *kinds* of transformation outside the grammar (the grammar is the builder's) |
 | 4 verify | admission by kernel-verified transfer to another family | **1 rule admitted**: symmetry completion (`self.A[x].m(y)` → `self.A[y].m(x)`), lifted from N2's repair, verified on N1; no false repair in any probe | failures of candidates that never pass the visible tests are not counted |
 | 5 learn, reuse | library with provenance and Beta posteriors; loop v4 | | **reuse on unseen problems: not shown** (the rule matched no held-out defect; v4 = v3, 21 of 36 each) |
-| 6 improve the inventor | posteriors over generalisation levels and grammar productions | the posteriors moved (names+attrs+ops; delete, container-call, flip, assign) | whether the learned order invents faster: B20_R183 |
+| 6 improve the inventor | posteriors over generalisation levels and grammar productions | the posteriors moved (names+attrs+ops; delete, container-call, flip, assign) | **the learned order did not invent faster** (B20_R183: earlier 2, later 6 of 28, p 0.29) |
 
 **What B20_R182 found against the plan.** The grammar searched online at test time repaired 30 of 36 held-out
 obstacles, version 4 21 (p 0.022), at a quarter of the CPU, and lost 2 that version 3 reaches because the bigger
@@ -150,4 +150,45 @@ added: the MDL trade of step 4 applied to the space), and a testbed whose repair
 | Study | Status | Result |
 |---|---|---|
 | B20_R182 (SR-2a) | recorded (`docs/checkpoints/B20_R182_RECORD.md`) | RULES_INVENTED; LOOP_V4 = LOOP_V3; DREAM_ONLINE_BEATS_LOOP_V4 |
-| B20_R183 (SR-2b) | preregistered: B20_R182 with fresh seeds, plus step 6 (learned against fixed grammar order) | |
+| B20_R183 (SR-2b) | recorded (`docs/checkpoints/B20_R183_RECORD.md`) | RULES_INVENTED replicated (the same rule); LOOP_V4 = LOOP_V3 replicated; the grammar's lead not replicated (11-5, p 0.21); step 6 NO_DIFFERENCE_SHOWN |
+| B20_R185 (SR-2c) | planned (§6): Genesis grows the repair space; random mutants | |
+
+## 6. Next: Genesis growing its own repair space (SR-2c, B20_R185; planned 31 Oct 2026, 12:55)
+
+B20_R182 showed that what helps is the space searched, and the space (the dream grammar) is the builder's. SR-2c moves
+the space to Genesis: it invents the *productions* themselves, from its own verified repairs, and invents new ones from
+those it has (the closure of a set of symmetries), with every production admitted only by a verified repair of another
+family.
+
+**Physics: a defect breaks a symmetry, the repair restores it.** A component's code is full of near-copies: `link`
+adds `adj[u].add(v)` and must add `adj[v].add(u)`; `reserve` moves an amount from `held` to `reserved` and `release`
+moves it back. A verified repair is very often the image of a statement the component already has under a small
+transformation: two names exchanged, one attribute put for another of the same kind, an operator or a method put for
+its partner, a constant shifted. Genesis finds, for each verified repair, the *donor* (the statement of the component
+with the same syntax tree whose leaves differ least from the repaired statement) and the *transformation* that maps
+the donor to the repair (the leaf substitutions, abstracted by role: "exchange two names", "another attribute holding
+the same kind of value", "`add` for `discard`", "`+` for `-`", "a constant one larger"), and where the repair went
+relative to the donor (after it, in its place).
+
+**Maths: a transformation is a production; the set grows by group operations.** Applied to a new obstacle, a
+transformation generates candidates: the image of every statement of the suspected methods, inserted after it or put
+in its place. The inventor then derives new transformations from the admitted ones, without new repairs: the
+*inverse* (`discard` for `add` from `add` for `discard`; a constant one smaller), the *transfer* to the other edit
+(after ⇄ in place), the *composition* of two (at most two substitutions), the *generalisation* of a concrete map to
+any partner of the same kind. These are the operations of the group the symmetries generate. A derived transformation
+is admitted, like a learned one, only by a verified repair of another family; the inventor keeps a Beta posterior over
+its derivation operators, so the operators that produced admitted transformations are tried first: it learns how to
+invent.
+
+**Reality: defects nobody chose.** The held-out catalogue is drawn by random mutation (`defects5.py`, sealed before
+any of this code; `evidence/mutant_catalogue_b20r185/README.md`): 24 mutants of the fifteen components, the
+first real obstacles of a shuffled enumeration.
+
+**The test (to be preregistered).** Curriculum: the 57 hand-written defects (all now development data). Generation 1:
+version 3 and the dream on the curriculum; every verified repair lifted into transformations; probes on other families
+admit. Generation 2: the inventor's derivations of the admitted ones, and the transformations lifted from what
+generation 1's library repairs; probes admit. Held out: the 24 mutants x 3 jobs at 300 evaluations, arms version 3
+(the builder's rules), version 3 + generation 1's transformations, version 3 + generations 1 and 2, the builder's
+grammar searched online, enum. The questions: does Genesis's own space make it more capable than the builder's rules
+(generation 1 against version 3)? Does the second generation improve on the first (step 6)? Does Genesis's space match
+the builder's grammar on defects neither chose?
