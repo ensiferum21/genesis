@@ -388,6 +388,11 @@ needs people: a reviewer, a statistician, an independent custodian on its own ma
       - **B20_R185 is recorded** (`docs/checkpoints/B20_R185_RECORD.md`): SPACE_INVENTED; **step 6 shown, narrowly**: the
         transformations Genesis derived from its admitted ones repaired two random mutants (all three jobs each) that its
         lifted ones and the builder's rules did not (P2, 7-0, p_Holm 0.047); its space equalled the builder's grammar.
+      - **B20_R186 (SR-2c') is recorded** (`docs/checkpoints/B20_R186_RECORD.md`): B20_R185 replicated on 36 fresh random
+        mutants, P2 decisively (12-0, p_Holm 0.0015; wrong-attribute mutants reached by a derived transformation). Its
+        first 17 min overlapped the checkpoint's shard 2 on CPU 0: the starting command waited for `END ..._2/6`, a line
+        the failed first attempt had already written. **Lesson: a watcher on `chain.log` must match a line written after
+        it starts** (count the lines first, or match the start time).
   26c. **Daniel's directive of 27 Oct 2026, 19:55 is adopted**: `docs/OMEGA_FRONTIER.md`, written in detail for
       handoff at his request (20:01). Genesis works by divergence and convergence (imagine, mutate, recombine,
       branch out, extrapolate discovery curves, detect convergence, allocate), without handholding. The

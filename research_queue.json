@@ -1151,7 +1151,10 @@
    "unlocks": []
   },
   "B20_R186": {
-   "artifacts": [],
+   "artifacts": [
+    "evidence/space_invention_b20r186",
+    "docs/checkpoints/B20_R186_RECORD.md"
+   ],
    "committed": true,
    "depends_on": [],
    "failure": null,
@@ -1159,9 +1162,9 @@
    "kind": "study",
    "line": "self-repair",
    "notes": "docs/OMEGA_RULE_INVENTION.md section 6; preregistered after B20_R185 was read; after the checkpoint B20_R184",
-   "outcome": null,
+   "outcome": "replicated: SPACE_INVENTED; P1 NO_DIFFERENCE_SHOWN (56 vs 53); P2 INVENTOR_IMPROVED (68 vs 56, 12-0, p_Holm 0.0015); P3 NO_DIFFERENCE_SHOWN (68 vs 59, p_Holm 0.070)",
    "output": "evidence/space_invention_b20r186",
-   "positive": null,
+   "positive": true,
    "preregistered": "56b414a",
    "priority": 7,
    "requires": [],
@@ -1169,7 +1172,7 @@
     "cpu0_hours": 1.5
    },
    "script": "scripts/b20r186_space_invention_replica.py",
-   "status": "queued",
+   "status": "done",
    "title": "SR-2c': the replication of B20_R185 (Genesis grows its own repair space) on a fresh draw of 36 random mutants (defects6.py) with fresh seeds; each of its verdicts compared, P2 (step 6) above all",
    "unlocks": []
   },
@@ -2559,6 +2562,18 @@
    "id": "B20_R186",
    "kind": "add",
    "time": "2026-10-31T08:11:59+00:00"
+  },
+  {
+   "id": "B20_R186",
+   "kind": "start",
+   "time": "2026-10-31T10:21:27+00:00"
+  },
+  {
+   "id": "B20_R186",
+   "kind": "finish",
+   "outcome": "replicated: SPACE_INVENTED; P1 NO_DIFFERENCE_SHOWN (56 vs 53); P2 INVENTOR_IMPROVED (68 vs 56, 12-0, p_Holm 0.0015); P3 NO_DIFFERENCE_SHOWN (68 vs 59, p_Holm 0.070)",
+   "positive": true,
+   "time": "2026-10-31T10:21:27+00:00"
   }
  ],
  "lines": {
@@ -2882,6 +2897,11 @@
     [
      "B20_R185",
      "SPACE_INVENTED (11 lifted + 7 derived transformations admitted); P1 NO_DIFFERENCE_SHOWN (27 = 27); P2 INVENTOR_IMPROVED (34 vs 27, 7-0, p_Holm 0.047, two mutants); P3 NO_DIFFERENCE_SHOWN (34 = 34)",
+     true
+    ],
+    [
+     "B20_R186",
+     "replicated: SPACE_INVENTED; P1 NO_DIFFERENCE_SHOWN (56 vs 53); P2 INVENTOR_IMPROVED (68 vs 56, 12-0, p_Holm 0.0015); P3 NO_DIFFERENCE_SHOWN (68 vs 59, p_Holm 0.070)",
      true
     ]
    ],

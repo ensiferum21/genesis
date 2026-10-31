@@ -84,5 +84,89 @@ class Design(unittest.TestCase):
         self.assertEqual(S.B20R185, {'verdict': r['verdict'], **{q: v['verdict'] for q, v in r['questions'].items()}})
 
 
+R186 = ROOT / 'evidence' / 'space_invention_b20r186'
+
+
+class RecordB20R186(unittest.TestCase):
+    """The record of SR-2c' (B20_R186) on its evidence: the script, the catalogue and the seeds; the verdict, the
+    generations, the tables, the three questions with Holm's adjustment, the invented reach and the replication table
+    recomputed; every admitted transformation admitted by a family it (and its parents) did not come from, in a probe
+    row naming it; generation 1's admissions kept; the test vaults differ in their transformations only; every
+    promoted source verified again; the 30 controls."""
+    DIR = R186
+
+    @classmethod
+    def setUpClass(cls):
+        cls.result = json.loads((cls.DIR / 'result.json').read_text())
+        cls.rows = [json.loads(x) for x in (cls.DIR / 'rows.jsonl').read_text().splitlines() if x.strip()]
+        cls.episodes = [json.loads(x) for x in (cls.DIR / 'episodes.jsonl').read_text().splitlines() if x.strip()]
+        cls.iso = json.loads((cls.DIR / 'isolation.json').read_text())
+        cls.g1 = S._store(cls.DIR / 'genesis_g1', 'transforms.jsonl')
+        cls.g2 = S._store(cls.DIR / 'genesis_g2', 'transforms.jsonl')
+        p = cls.DIR / 'genesis_g2' / 'deriver.json'
+        cls.deriver = json.loads(p.read_text()) if p.exists() else {}
+
+    def test_the_script_the_catalogue_and_the_seeds(self):
+        if self.DIR == R186:
+            self.assertEqual(digest(ROOT / 'scripts/b20r186_space_invention_replica.py'), SHA256)
+            self.assertEqual(self.result['script_sha256'], SHA256)
+        self.assertEqual(self.result['defects6_sha256'], S.DEFECTS6_SHA256)
+        self.assertEqual(self.result['job_seeds'], [14, 15, 16])
+        self.assertEqual(self.result['seeds'], {'detect1': 31, 'probe1': 32, 'learn2': 33, 'probe2': 34, 'controls': 35})
+        self.assertTrue(all(r['seed'] in (14, 15, 16, 31, 32, 33, 34, 35) for r in self.rows))
+
+    def test_the_verdicts_recompute(self):
+        got = S.analyse(self.rows, self.iso, self.result['heldout_used'], self.g1, self.g2, self.deriver)
+        for k in ('verdict', 'isolation_ok', 'controls_ok', 'generations', 'obstacles', 'per_arm', 'questions',
+                  'secondary', 'invented_reach', 'replication', 'replicated', 'promotions_outside_component'):
+            self.assertEqual(json.loads(json.dumps(got[k])), self.result[k], k)
+
+    def test_every_admitted_transformation_was_admitted_by_a_family_it_did_not_come_from(self):
+        for t in self.g2:
+            if t['status'] != 'admitted':
+                continue
+            own = {t['provenance'].get('family')} | set(t['provenance'].get('derived_from_families', []))
+            self.assertTrue(t['admitted_by'])
+            self.assertFalse(own & set(t['admitted_by']), t['id'])
+            probes = [x for x in self.rows if x['phase'].startswith('probe') and x['transform']
+                      and x['transform']['id'] == t['id'] and x['transform']['after'] == 'admitted']
+            self.assertTrue(any(S.repaired(x) and x['name'] in t['admitted_by'] for x in probes), t['id'])
+        ids1 = {t['id'] for t in self.g1 if t['status'] == 'admitted'}
+        ids2 = {t['id'] for t in self.g2 if t['status'] == 'admitted'}
+        self.assertTrue(ids1 <= ids2)
+
+    def test_the_test_vaults_differ_in_their_transformations_only(self):
+        a, b = self.DIR / 'test_vault_g1', self.DIR / 'test_vault_g2'
+        names = sorted(f.name for f in a.iterdir())
+        self.assertEqual(names, sorted(f.name for f in b.iterdir()))
+        for n in names:
+            if n != 'transforms.jsonl':
+                self.assertEqual((a / n).read_bytes(), (b / n).read_bytes(), n)
+        self.assertEqual(S._store(a, 'transforms.jsonl'), self.g1)
+        self.assertEqual(S._store(b, 'transforms.jsonl'), self.g2)
+
+    def test_every_promoted_source_verifies_again(self):
+        rows = {r['key']: r for r in self.rows}
+        n = 0
+        with tempfile.TemporaryDirectory() as d:
+            for e in self.episodes:
+                r = rows[e['key']]
+                if not r['promoted']:
+                    self.assertIsNone(e['final_source'], e['key'])
+                    continue
+                job, _ = BN.make(r['name'], r['seed'], Path(d) / e['key'].replace('/', '_'), version=2)
+                self.assertEqual(job.run()['op'], r['interrupted_at'])
+                v = VF.verify(job.dir, job.target, job.seed, job.n_ops, job.every, e['final_source'])
+                self.assertTrue(v['accepted'], e['key'])
+                n += 1
+        self.assertGreater(n, 0)
+
+    def test_no_control_proposed_or_changed_anything(self):
+        controls = [r for r in self.rows if r['phase'] == 'controls']
+        self.assertEqual(len(controls), 30)
+        for r in controls:
+            self.assertTrue(S.control_passes(r), r['key'])
+
+
 if __name__ == '__main__':
     unittest.main()

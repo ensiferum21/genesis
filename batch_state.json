@@ -1609,6 +1609,14 @@
           "b69d431"
         ],
         "result": "Recorded (DEV, alone on CPU 0 15:02:37-15:52:26): SR-2c, Genesis grows its own repair space. SPACE_INVENTED: generation 1 lifted 16 transformations, admitted 11; generation 2 derived 55, admitted 7. On 24 random mutants x 3 jobs (72): version 3 27, generation 1 27 (P1 NO_DIFFERENCE_SHOWN), generation 2 34 (P2 INVENTOR_IMPROVED, 7-0, p_Holm 0.047; two mutants by derived transformations, the seventh obstacle a search-path difference), the builder's grammar 34 (P3 NO_DIFFERENCE_SHOWN, the same obstacles), enum 27. docs/checkpoints/B20_R185_RECORD.md"
+      },
+      "B20_R186": {
+        "commits": [
+          "a2c1fa0",
+          "56b414a",
+          "15d6888"
+        ],
+        "result": "Recorded (DEV, CPU 0 16:40:47-18:19:29; first 17 min overlapped checkpoint shard 2, disclosed): SR-2c' replicated. SPACE_INVENTED (11 lifted + 8 derived admitted). On 36 fresh mutants x 3 jobs (108): version 3 53, generation 1 56 (P1 NO_DIFFERENCE_SHOWN, 3-0), generation 2 68 (P2 INVENTOR_IMPROVED, 12-0, p_Holm 0.0015; V02, V34 by generalise any-op, V15, V18 by transfer replace rename-attr), dream_online 59 (P3 NO_DIFFERENCE_SHOWN, 12-3, p_Holm 0.070), enum 26. docs/checkpoints/B20_R186_RECORD.md"
       }
     },
     "open_after_b20_r5": [
