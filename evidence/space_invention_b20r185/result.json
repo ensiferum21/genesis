@@ -1,0 +1,651 @@
+{
+ "study": "B20_R185",
+ "rehearsal": false,
+ "script_sha256": "efab4a990a50f4bf7307098019f73874750aa86dae94f270415fb87a5e60b8d6",
+ "defects5_sha256": "59c4fc31a2500a4976a007f8f7fd66f548404f379a2600eba395f7eb910e3baa",
+ "job_version": 2,
+ "budget": 300,
+ "dream_budget": 1000,
+ "probe_budget": 200,
+ "arms": {
+  "loop_v3": [
+   "loop_v3",
+   "g1"
+  ],
+  "analogy_g1": [
+   "analogy",
+   "g1"
+  ],
+  "analogy_g2": [
+   "analogy",
+   "g2"
+  ],
+  "dream_online": [
+   "dream_online",
+   "g1"
+  ],
+  "enum": [
+   "enum",
+   null
+  ]
+ },
+ "job_seeds": [
+  11,
+  12,
+  13
+ ],
+ "seeds": {
+  "detect1": 21,
+  "probe1": 22,
+  "learn2": 23,
+  "probe2": 24,
+  "controls": 25
+ },
+ "search_seed": 2,
+ "curriculum": [
+  "M1",
+  "L2",
+  "S1",
+  "W2",
+  "M2",
+  "L1",
+  "L3",
+  "L4",
+  "R1",
+  "R2",
+  "R4",
+  "S2",
+  "S3",
+  "W1",
+  "G1",
+  "G2",
+  "G3",
+  "L5",
+  "W3",
+  "R5",
+  "S4",
+  "T1",
+  "T2",
+  "T3",
+  "T4",
+  "P1",
+  "P2",
+  "P3",
+  "P4",
+  "D1",
+  "D2",
+  "D3",
+  "D4",
+  "E1",
+  "E2",
+  "E3",
+  "E4",
+  "N1",
+  "N2",
+  "N3",
+  "N4",
+  "K1",
+  "K2",
+  "K3",
+  "K4",
+  "X1",
+  "X2",
+  "X3",
+  "X4",
+  "C1",
+  "C2",
+  "C3",
+  "C4",
+  "B1",
+  "B2",
+  "B3",
+  "B4"
+ ],
+ "heldout_used": [
+  "Q01",
+  "Q02",
+  "Q03",
+  "Q04",
+  "Q05",
+  "Q06",
+  "Q07",
+  "Q08",
+  "Q09",
+  "Q10",
+  "Q11",
+  "Q12",
+  "Q13",
+  "Q14",
+  "Q15",
+  "Q16",
+  "Q17",
+  "Q18",
+  "Q19",
+  "Q20",
+  "Q21",
+  "Q22",
+  "Q23",
+  "Q24"
+ ],
+ "commit": "4f399e894ddb071707f15692e50479eab1390d00",
+ "verdict": "SPACE_INVENTED",
+ "isolation_ok": true,
+ "controls_ok": true,
+ "generations": {
+  "curriculum": 57,
+  "unsolved_by_v3": 21,
+  "dreams": 21,
+  "dreams_repaired": 11,
+  "learn2": 10,
+  "learn2_repaired": 2,
+  "lifted_g1": 16,
+  "admitted_g1": 11,
+  "lifted_g2": 0,
+  "derived_g2": 55,
+  "admitted_g2_total": 18,
+  "admitted_in_g2": [
+   "g2-generalise:replace:any-const",
+   "g2-generalise:replace:any-op",
+   "g2-generalise:transplant:any-meth",
+   "g2-invert:replace:map-const-False-True",
+   "g2-transfer:after:map-func-min-max",
+   "g2-transfer:transplant:map-op-Add-Sub",
+   "g2-transfer:transplant:rename-attr"
+  ],
+  "admitted": [
+   {
+    "id": "detect1-S1:before:rename-attr",
+    "edit": "before",
+    "subs": [
+     [
+      "rename",
+      "attr"
+     ]
+    ],
+    "generation": 1,
+    "derived": null,
+    "admitted_by": [
+     "S2",
+     "X2"
+    ],
+    "source": "S1"
+   },
+   {
+    "id": "detect1-M2:replace:map-op-In-NotIn",
+    "edit": "replace",
+    "subs": [
+     [
+      "map",
+      "op",
+      "In",
+      "NotIn"
+     ]
+    ],
+    "generation": 1,
+    "derived": null,
+    "admitted_by": [
+     "N3"
+    ],
+    "source": "M2"
+   },
+   {
+    "id": "detect1-L1:replace:map-const-True-False",
+    "edit": "replace",
+    "subs": [
+     [
+      "map",
+      "const",
+      true,
+      false
+     ]
+    ],
+    "generation": 1,
+    "derived": null,
+    "admitted_by": [
+     "W3"
+    ],
+    "source": "L1"
+   },
+   {
+    "id": "detect1-R1:replace:map-op-Add-Sub",
+    "edit": "replace",
+    "subs": [
+     [
+      "map",
+      "op",
+      "Add",
+      "Sub"
+     ]
+    ],
+    "generation": 1,
+    "derived": null,
+    "admitted_by": [
+     "N4"
+    ],
+    "source": "R1"
+   },
+   {
+    "id": "detect1-S3:replace:map-func-min-max",
+    "edit": "replace",
+    "subs": [
+     [
+      "map",
+      "func",
+      "min",
+      "max"
+     ]
+    ],
+    "generation": 1,
+    "derived": null,
+    "admitted_by": [
+     "B4"
+    ],
+    "source": "S3"
+   },
+   {
+    "id": "detect1-G2:transplant:map-meth-add-discard",
+    "edit": "transplant",
+    "subs": [
+     [
+      "map",
+      "meth",
+      "add",
+      "discard"
+     ]
+    ],
+    "generation": 1,
+    "derived": null,
+    "admitted_by": [
+     "N2"
+    ],
+    "source": "G2"
+   },
+   {
+    "id": "detect1-R5:replace:shift--1",
+    "edit": "replace",
+    "subs": [
+     [
+      "shift",
+      -1
+     ]
+    ],
+    "generation": 1,
+    "derived": null,
+    "admitted_by": [
+     "S4"
+    ],
+    "source": "R5"
+   },
+   {
+    "id": "detect1-P2:replace:map-op-Gt-Lt",
+    "edit": "replace",
+    "subs": [
+     [
+      "map",
+      "op",
+      "Gt",
+      "Lt"
+     ]
+    ],
+    "generation": 1,
+    "derived": null,
+    "admitted_by": [
+     "P4"
+    ],
+    "source": "P2"
+   },
+   {
+    "id": "dream1-E3:after:rename-attr",
+    "edit": "after",
+    "subs": [
+     [
+      "rename",
+      "attr"
+     ]
+    ],
+    "generation": 1,
+    "derived": null,
+    "admitted_by": [
+     "S1"
+    ],
+    "source": "E3"
+   },
+   {
+    "id": "dream1-N1:transplant:map-meth-discard-add",
+    "edit": "transplant",
+    "subs": [
+     [
+      "map",
+      "meth",
+      "discard",
+      "add"
+     ]
+    ],
+    "generation": 1,
+    "derived": null,
+    "admitted_by": [
+     "G3"
+    ],
+    "source": "N1"
+   },
+   {
+    "id": "dream1-K1:after:rename-attr+swap-name",
+    "edit": "after",
+    "subs": [
+     [
+      "rename",
+      "attr"
+     ],
+     [
+      "swap",
+      "name"
+     ]
+    ],
+    "generation": 1,
+    "derived": null,
+    "admitted_by": [
+     "K2"
+    ],
+    "source": "K1"
+   },
+   {
+    "id": "g2-transfer:transplant:rename-attr",
+    "edit": "transplant",
+    "subs": [
+     [
+      "rename",
+      "attr"
+     ]
+    ],
+    "generation": 2,
+    "derived": {
+     "op": "transfer",
+     "from": [
+      "detect1-S1:before:rename-attr"
+     ]
+    },
+    "admitted_by": [
+     "S2"
+    ],
+    "source": [
+     "S1"
+    ]
+   },
+   {
+    "id": "g2-generalise:replace:any-op",
+    "edit": "replace",
+    "subs": [
+     [
+      "any",
+      "op"
+     ]
+    ],
+    "generation": 2,
+    "derived": {
+     "op": "generalise",
+     "from": [
+      "detect1-M2:replace:map-op-In-NotIn"
+     ]
+    },
+    "admitted_by": [
+     "L3"
+    ],
+    "source": [
+     "M2"
+    ]
+   },
+   {
+    "id": "g2-invert:replace:map-const-False-True",
+    "edit": "replace",
+    "subs": [
+     [
+      "map",
+      "const",
+      false,
+      true
+     ]
+    ],
+    "generation": 2,
+    "derived": {
+     "op": "invert",
+     "from": [
+      "detect1-L1:replace:map-const-True-False"
+     ]
+    },
+    "admitted_by": [
+     "L5"
+    ],
+    "source": [
+     "L1"
+    ]
+   },
+   {
+    "id": "g2-transfer:transplant:map-op-Add-Sub",
+    "edit": "transplant",
+    "subs": [
+     [
+      "map",
+      "op",
+      "Add",
+      "Sub"
+     ]
+    ],
+    "generation": 2,
+    "derived": {
+     "op": "transfer",
+     "from": [
+      "detect1-R1:replace:map-op-Add-Sub"
+     ]
+    },
+    "admitted_by": [
+     "X2"
+    ],
+    "source": [
+     "R1"
+    ]
+   },
+   {
+    "id": "g2-transfer:after:map-func-min-max",
+    "edit": "after",
+    "subs": [
+     [
+      "map",
+      "func",
+      "min",
+      "max"
+     ]
+    ],
+    "generation": 2,
+    "derived": {
+     "op": "transfer",
+     "from": [
+      "detect1-S3:replace:map-func-min-max"
+     ]
+    },
+    "admitted_by": [
+     "B4"
+    ],
+    "source": [
+     "S3"
+    ]
+   },
+   {
+    "id": "g2-generalise:transplant:any-meth",
+    "edit": "transplant",
+    "subs": [
+     [
+      "any",
+      "meth"
+     ]
+    ],
+    "generation": 2,
+    "derived": {
+     "op": "generalise",
+     "from": [
+      "detect1-G2:transplant:map-meth-add-discard"
+     ]
+    },
+    "admitted_by": [
+     "N1"
+    ],
+    "source": [
+     "G2"
+    ]
+   },
+   {
+    "id": "g2-generalise:replace:any-const",
+    "edit": "replace",
+    "subs": [
+     [
+      "any",
+      "const"
+     ]
+    ],
+    "generation": 2,
+    "derived": {
+     "op": "generalise",
+     "from": [
+      "detect1-R5:replace:shift--1"
+     ]
+    },
+    "admitted_by": [
+     "W3"
+    ],
+    "source": [
+     "R5"
+    ]
+   }
+  ],
+  "probes": {
+   "probe1": {
+    "probes": 57,
+    "with_candidates": 52,
+    "admissions": 11,
+    "false_repairs": 0
+   },
+   "probe2": {
+    "probes": 57,
+    "with_candidates": 57,
+    "admissions": 7,
+    "false_repairs": 0
+   }
+  },
+  "deriver_beliefs": {
+   "invert": [
+    2.0,
+    1.0
+   ],
+   "transfer": [
+    4.0,
+    1.0
+   ],
+   "compose": [
+    1.0,
+    1.0
+   ],
+   "generalise": [
+    4.0,
+    1.0
+   ],
+   "lifted": [
+    12.0,
+    1.0
+   ]
+  },
+  "cpu_s": 1245.97
+ },
+ "obstacles": 72,
+ "per_arm": {
+  "loop_v3": {
+   "obstacles": 72,
+   "repaired": 27,
+   "false_repairs": 3,
+   "by_transform": 0,
+   "evaluations": 19527,
+   "total_cpu_s": 425.6
+  },
+  "analogy_g1": {
+   "obstacles": 72,
+   "repaired": 27,
+   "false_repairs": 3,
+   "by_transform": 0,
+   "evaluations": 19683,
+   "total_cpu_s": 411.98
+  },
+  "analogy_g2": {
+   "obstacles": 72,
+   "repaired": 34,
+   "false_repairs": 3,
+   "by_transform": 6,
+   "evaluations": 19830,
+   "total_cpu_s": 360.33
+  },
+  "dream_online": {
+   "obstacles": 72,
+   "repaired": 34,
+   "false_repairs": 3,
+   "by_transform": 0,
+   "evaluations": 20181,
+   "total_cpu_s": 283.26
+  },
+  "enum": {
+   "obstacles": 72,
+   "repaired": 27,
+   "false_repairs": 3,
+   "by_transform": 0,
+   "evaluations": 17790,
+   "total_cpu_s": 167.56
+  }
+ },
+ "questions": {
+  "P1": {
+   "arm": "analogy_g1",
+   "against": "loop_v3",
+   "analogy_g1_only": 1,
+   "loop_v3_only": 1,
+   "p": 1.0,
+   "p_holm": 1.0,
+   "verdict": "NO_DIFFERENCE_SHOWN"
+  },
+  "P2": {
+   "arm": "analogy_g2",
+   "against": "analogy_g1",
+   "analogy_g2_only": 7,
+   "analogy_g1_only": 0,
+   "p": 0.01562,
+   "p_holm": 0.04688,
+   "verdict": "INVENTOR_IMPROVED"
+  },
+  "P3": {
+   "arm": "analogy_g2",
+   "against": "dream_online",
+   "analogy_g2_only": 0,
+   "dream_online_only": 0,
+   "p": 1.0,
+   "p_holm": 1.0,
+   "verdict": "NO_DIFFERENCE_SHOWN"
+  }
+ },
+ "secondary": {
+  "analogy_g2_vs_loop_v3": {
+   "analogy_g2_only": 7,
+   "loop_v3_only": 0,
+   "p": 0.01562
+  },
+  "analogy_g2_vs_enum": {
+   "analogy_g2_only": 12,
+   "enum_only": 5,
+   "p": 0.14346
+  }
+ },
+ "invented_reach": [
+  "Q12/11",
+  "Q12/12",
+  "Q12/13",
+  "Q22/11",
+  "Q22/12",
+  "Q22/13"
+ ],
+ "promotions_outside_component": 0,
+ "wall_s": 2987.3
+}

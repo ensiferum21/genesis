@@ -137,7 +137,7 @@ Preregistered before any of it runs on its held-out defects:
 | 3 invent | the dream grammar; anti-unification lattice | 6 of the 16 repaired by the dream, verified; 17 rules lifted | new *kinds* of transformation outside the grammar (the grammar is the builder's) |
 | 4 verify | admission by kernel-verified transfer to another family | **1 rule admitted**: symmetry completion (`self.A[x].m(y)` → `self.A[y].m(x)`), lifted from N2's repair, verified on N1; no false repair in any probe | failures of candidates that never pass the visible tests are not counted |
 | 5 learn, reuse | library with provenance and Beta posteriors; loop v4 | | **reuse on unseen problems: not shown** (the rule matched no held-out defect; v4 = v3, 21 of 36 each) |
-| 6 improve the inventor | posteriors over generalisation levels and grammar productions | the posteriors moved (names+attrs+ops; delete, container-call, flip, assign) | **the learned order did not invent faster** (B20_R183: earlier 2, later 6 of 28, p 0.29) |
+| 6 improve the inventor | posteriors over generalisation levels and grammar productions; derivation of new transformations (inverse, transfer, composition, generalisation) with a posterior per operator | the learned grammar order did not invent faster (B20_R183); **the derived transformations reached two random mutants the lifted ones and the builder's rules did not** (B20_R185, P2, p_Holm 0.047) | that the effect replicates; compositions (never admitted); beating the builder's grammar |
 
 **What B20_R182 found against the plan.** The grammar searched online at test time repaired 30 of 36 held-out
 obstacles, version 4 21 (p 0.022), at a quarter of the CPU, and lost 2 that version 3 reaches because the bigger
@@ -151,7 +151,7 @@ added: the MDL trade of step 4 applied to the space), and a testbed whose repair
 |---|---|---|
 | B20_R182 (SR-2a) | recorded (`docs/checkpoints/B20_R182_RECORD.md`) | RULES_INVENTED; LOOP_V4 = LOOP_V3; DREAM_ONLINE_BEATS_LOOP_V4 |
 | B20_R183 (SR-2b) | recorded (`docs/checkpoints/B20_R183_RECORD.md`) | RULES_INVENTED replicated (the same rule); LOOP_V4 = LOOP_V3 replicated; the grammar's lead not replicated (11-5, p 0.21); step 6 NO_DIFFERENCE_SHOWN |
-| B20_R185 (SR-2c) | planned (§6): Genesis grows the repair space; random mutants | |
+| B20_R185 (SR-2c) | recorded (`docs/checkpoints/B20_R185_RECORD.md`) | SPACE_INVENTED; P1 NO_DIFFERENCE_SHOWN (lifted = version 3); **P2 INVENTOR_IMPROVED** (derived > lifted, 7-0, p_Holm 0.047, two mutants); P3 NO_DIFFERENCE_SHOWN (= the builder's grammar) |
 
 ## 6. Next: Genesis growing its own repair space (SR-2c, B20_R185; planned 31 Oct 2026, 12:55)
 

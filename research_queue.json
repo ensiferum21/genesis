@@ -1125,7 +1125,10 @@
    "unlocks": []
   },
   "B20_R185": {
-   "artifacts": [],
+   "artifacts": [
+    "evidence/space_invention_b20r185",
+    "docs/checkpoints/B20_R185_RECORD.md"
+   ],
    "committed": true,
    "depends_on": [],
    "failure": null,
@@ -1133,9 +1136,9 @@
    "kind": "study",
    "line": "self-repair",
    "notes": "docs/OMEGA_RULE_INVENTION.md section 6; after the checkpoint B20_R184; alone on CPU 0, in slices",
-   "outcome": null,
+   "outcome": "SPACE_INVENTED (11 lifted + 7 derived transformations admitted); P1 NO_DIFFERENCE_SHOWN (27 = 27); P2 INVENTOR_IMPROVED (34 vs 27, 7-0, p_Holm 0.047, two mutants); P3 NO_DIFFERENCE_SHOWN (34 = 34)",
    "output": "evidence/space_invention_b20r185",
-   "positive": null,
+   "positive": true,
    "preregistered": "4f399e8",
    "priority": 7,
    "requires": [],
@@ -1143,7 +1146,7 @@
     "cpu0_hours": 2.5
    },
    "script": "scripts/b20r185_space_invention.py",
-   "status": "queued",
+   "status": "done",
    "title": "SR-2c: Genesis grows its own repair space: transformations lifted from its verified repairs (donor, substitutions, edit), admitted by verified repairs of other families (generation 1), and derived from the admitted ones by inverse, transfer, composition and generalisation (generation 2); on 24 random mutants nobody chose (defects5.py) x 3 jobs: version 3, generation 1, generation 2, the builder's grammar, enum",
    "unlocks": []
   },
@@ -2516,6 +2519,18 @@
    "id": "B20_R185",
    "kind": "add",
    "time": "2026-10-31T06:24:12+00:00"
+  },
+  {
+   "id": "B20_R185",
+   "kind": "start",
+   "time": "2026-10-31T07:54:40+00:00"
+  },
+  {
+   "id": "B20_R185",
+   "kind": "finish",
+   "outcome": "SPACE_INVENTED (11 lifted + 7 derived transformations admitted); P1 NO_DIFFERENCE_SHOWN (27 = 27); P2 INVENTOR_IMPROVED (34 vs 27, 7-0, p_Holm 0.047, two mutants); P3 NO_DIFFERENCE_SHOWN (34 = 34)",
+   "positive": true,
+   "time": "2026-10-31T07:54:40+00:00"
   }
  ],
  "lines": {
@@ -2835,9 +2850,14 @@
      "B20_R183",
      "RULES_INVENTED replicated (the same rule); v4 22 = v3 22; dream_online 28 (11-5, p 0.21: not replicated); step 6 NO_DIFFERENCE_SHOWN; replicated false",
      false
+    ],
+    [
+     "B20_R185",
+     "SPACE_INVENTED (11 lifted + 7 derived transformations admitted); P1 NO_DIFFERENCE_SHOWN (27 = 27); P2 INVENTOR_IMPROVED (34 vs 27, 7-0, p_Holm 0.047, two mutants); P3 NO_DIFFERENCE_SHOWN (34 = 34)",
+     true
     ]
    ],
-   "run": 1,
+   "run": 0,
    "stagnant": false
   }
  },

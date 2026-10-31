@@ -382,6 +382,12 @@ needs people: a reviewer, a statistician, an independent custodian on its own ma
         'probe_t2'): Genesis grows its own repair space (transformations lifted from verified repairs, derived from one
         another by the group operations), tested on the random mutants. It runs after the checkpoint, alone on CPU 0,
         in slices of 6,600 s (exit 3 = paused; run the same command again).
+      - **The checkpoint B20_R184's first build failed** (shard 2: GI6-02, the obstacle loop's pickle use; defect
+        B20R184-PICKLE, repaired at `804f479` with `genesis.wire`). B20_R185 ran on CPU 0 meanwhile (15:02:37-15:52:26);
+        the checkpoint is being rebuilt at `804f479` from 15:52:27, a pre-flight of the integration shards on CPU 1.
+      - **B20_R185 is recorded** (`docs/checkpoints/B20_R185_RECORD.md`): SPACE_INVENTED; **step 6 shown, narrowly**: the
+        transformations Genesis derived from its admitted ones repaired two random mutants (all three jobs each) that its
+        lifted ones and the builder's rules did not (P2, 7-0, p_Holm 0.047); its space equalled the builder's grammar.
   26c. **Daniel's directive of 27 Oct 2026, 19:55 is adopted**: `docs/OMEGA_FRONTIER.md`, written in detail for
       handoff at his request (20:01). Genesis works by divergence and convergence (imagine, mutate, recombine,
       branch out, extrapolate discovery curves, detect convergence, allocate), without handholding. The

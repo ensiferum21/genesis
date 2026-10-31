@@ -1601,6 +1601,14 @@
           "4e8dde2"
         ],
         "result": "Recorded (DEV, alone on CPU 0 12:41:16-13:10:41): SR-2b. RULES_INVENTED replicated (the same rule: symmetry completion from N2, verified on N1); version 4 22 = version 3 22; dream_online 28 (11-5, p 0.21, NO_DIFFERENCE_SHOWN: B20_R182's DREAM_ONLINE_BEATS_LOOP_V4 not replicated); step 6 (learned grammar order) NO_DIFFERENCE_SHOWN (29; earlier 2, later 6, p 0.29); enum 18; two false repairs caught. CPU 0 idle 1 h 7 min after it. docs/checkpoints/B20_R183_RECORD.md"
+      },
+      "B20_R185": {
+        "commits": [
+          "652f36d",
+          "4f399e8",
+          "b69d431"
+        ],
+        "result": "Recorded (DEV, alone on CPU 0 15:02:37-15:52:26): SR-2c, Genesis grows its own repair space. SPACE_INVENTED: generation 1 lifted 16 transformations, admitted 11; generation 2 derived 55, admitted 7. On 24 random mutants x 3 jobs (72): version 3 27, generation 1 27 (P1 NO_DIFFERENCE_SHOWN), generation 2 34 (P2 INVENTOR_IMPROVED, 7-0, p_Holm 0.047; two mutants by derived transformations, the seventh obstacle a search-path difference), the builder's grammar 34 (P3 NO_DIFFERENCE_SHOWN, the same obstacles), enum 27. docs/checkpoints/B20_R185_RECORD.md"
       }
     },
     "open_after_b20_r5": [
