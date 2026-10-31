@@ -33,14 +33,36 @@ OPTIONAL = {
 PYCACHE = None
 
 
-def run_suite(name, directory, timeout):
+def modules(directory):
+    """The test modules `unittest discover -s directory -t .` loads (the default pattern test*.py, top level of the
+    directory; the suites have no nested test packages), as dotted names, sorted."""
+    d = ROOT / directory
+    nested = [x for x in d.rglob('test*.py') if x.parent != d and '__pycache__' not in x.parts]
+    if nested:
+        raise SystemExit(f'{directory} has nested test modules; sharding does not handle them: {nested[:3]}')
+    return sorted(f'{directory}.{x.stem}' for x in d.glob('test*.py'))
+
+
+def shard_of(names, k, n):
+    """Shard k of n (1-based): every n-th module of the sorted list, starting at the k-th."""
+    if not 1 <= k <= n:
+        raise ValueError(f'shard {k}/{n}')
+    return sorted(names)[k - 1::n]
+
+
+def command(directory, shard_modules=None):
+    if shard_modules is None:
+        return [sys.executable, '-W', 'ignore', '-m', 'unittest', 'discover', '-v', '-s', directory, '-t', '.']
+    return [sys.executable, '-W', 'ignore', '-m', 'unittest', '-v'] + list(shard_modules)
+
+
+def run_suite(name, directory, timeout, shard_modules=None):
     start = time.monotonic()
     env = dict(os.environ, PYTHONPATH=str(ROOT / 'src'), PYTHONHASHSEED='0')
     # Site-packages bytecode is never trusted: each suite compiles from verified source into a
     # private cache (B15-REV-01; see genesis.deployment.bytecode_problems).
     env['PYTHONPYCACHEPREFIX'] = PYCACHE
-    proc = subprocess.run([sys.executable, '-W', 'ignore', '-m', 'unittest', 'discover', '-v',
-                           '-s', directory, '-t', '.'], cwd=ROOT, env=env,
+    proc = subprocess.run(command(directory, shard_modules), cwd=ROOT, env=env,
                           capture_output=True, text=True, timeout=timeout)
     tail = proc.stderr.strip().splitlines()[-6:]
     text = proc.stderr
@@ -81,16 +103,37 @@ def release_suites():
 
 
 def merge(reports, commit):
-    """One release report from several partial ones (`--suites` runs): each must have tested `commit` on a clean
-    tree, together they must cover the release profile's suites exactly once, and the merged report is all_ok only
-    if every suite is. Raises ValueError otherwise."""
-    suites = []
+    """One release report from several partial ones (`--suites` runs, and `--shard` runs of one suite): each must
+    have tested `commit` on a clean tree; a sharded suite's shards must be 1..n of one n, their modules disjoint and
+    together the suite's modules in this tree; together the reports must cover the release profile's suites exactly
+    once; and the merged report is all_ok only if every suite (every shard) is. Raises ValueError otherwise."""
+    parts = []
     for r in reports:
         if r.get('commit') != commit or not r.get('clean'):
             raise ValueError(f"a report of {r.get('commit')} (clean={r.get('clean')}) for {commit}")
         if r.get('profile') != 'release':
             raise ValueError('only release-profile reports are merged')
-        suites += r['suites']
+        parts += r['suites']
+    suites, shards = [], {}
+    for x in parts:
+        if 'shard' in x:
+            shards.setdefault(x['suite'], []).append(x)
+        else:
+            suites.append(x)
+    for name, xs in shards.items():
+        ns = {x['shard'][1] for x in xs}
+        ks = sorted(x['shard'][0] for x in xs)
+        if len(ns) != 1 or ks != list(range(1, ns.pop() + 1)):
+            raise ValueError(f'the shards of {name} are {[x["shard"] for x in xs]}')
+        got = [m for x in xs for m in x['modules']]
+        if len(got) != len(set(got)) or sorted(got) != modules(xs[0]['directory']):
+            raise ValueError(f'the shards of {name} do not cover its modules exactly once')
+        suites.append({'suite': name, 'directory': xs[0]['directory'], 'shards': len(xs),
+                       'ran': sum(x['ran'] for x in xs), 'skipped': sum(x['skipped'] for x in xs),
+                       'failures': sum(x.get('failures', 0) for x in xs), 'errors': sum(x.get('errors', 0) for x in xs),
+                       'skips': [s for x in xs for s in x.get('skips', [])],
+                       'seconds': round(sum(x.get('seconds', 0) for x in xs), 2),
+                       'ok': all(x['ok'] for x in xs), 'shard_reports': xs})
     names = [x['suite'] for x in suites]
     if sorted(names) != release_suites():
         raise ValueError(f'the reports cover {sorted(names)}, not {release_suites()}')
@@ -111,6 +154,9 @@ def main(argv=None):
     parser.add_argument('--suites', default=None,
                         help='comma-separated suite names: run only these of the profile (so that a long matrix can be '
                              'split across jobs and merged by make_checkpoint.py --reports)')
+    parser.add_argument('--shard', default=None,
+                        help='K/N: run only the K-th of N shards of the one selected suite (every N-th test module); '
+                             'make_checkpoint.py --reports merges the shards')
     args = parser.parse_args(argv)
     commit, clean = git_state()
     global PYCACHE
@@ -132,9 +178,18 @@ def main(argv=None):
         if unknown:
             raise SystemExit(f'not in the {args.profile} profile: {unknown}')
         suites = {k: v for k, v in suites.items() if k in want}
+    shard = None
+    if args.shard:
+        if len(suites) != 1:
+            raise SystemExit('--shard needs exactly one suite (--suites NAME)')
+        k, n = (int(x) for x in args.shard.split('/'))
+        directory = next(iter(suites.values()))[0]
+        shard = (k, n, shard_of(modules(directory), k, n))
     results = []
     for name, (directory, consequence) in suites.items():
-        result = run_suite(name, directory, args.timeout)
+        result = run_suite(name, directory, args.timeout, shard_modules=shard[2] if shard else None)
+        if shard:
+            result['shard'], result['modules'] = [shard[0], shard[1]], shard[2]
         result['release_consequence'] = consequence
         if consequence == 'failure blocks release' and result['skipped']:
             # A skipped containment test is not a pass: the property was not demonstrated.
