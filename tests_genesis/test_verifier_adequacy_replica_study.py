@@ -14,8 +14,8 @@ import b20r189_verifier_adequacy as S  # noqa: E402
 from genesis.repairkernel import mutants as MU  # noqa: E402
 from genesis.repairkernel import targets as TG  # noqa: E402
 
-PREREGISTRATION = ''                # the commit that preregisters it
-SHA256 = ''
+PREREGISTRATION = 'ea06ce8'         # the commit that preregisters it
+SHA256 = 'c9b35aecc5f45066690c357a7f68f6262fa2a0fe29ba2db548b631b63c8645f4'
 
 
 def digest(path):
