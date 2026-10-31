@@ -1,0 +1,338 @@
+{
+ "study": "B20_R187",
+ "rehearsal": true,
+ "script_sha256": "e2f3473716639e77da543098ec3a78a2bed4b647b41468e553d67d931b631f7d",
+ "defects7_sha256": "9836c54d9be1738def9f04089f45857e35c8e852b0666645a264aa66741c9572",
+ "job_version": 2,
+ "budget": 300,
+ "dream_budget": 1000,
+ "probe_budget": 200,
+ "arms": {
+  "loop_v3": [
+   "loop_v3",
+   "g1"
+  ],
+  "analogy_g1": [
+   "analogy",
+   "g1"
+  ],
+  "analogy_g2": [
+   "analogy",
+   "g2"
+  ],
+  "analogy_g3": [
+   "analogy",
+   "g3"
+  ],
+  "dream_online": [
+   "dream_online",
+   "g1"
+  ],
+  "enum": [
+   "enum",
+   null
+  ]
+ },
+ "job_seeds": [
+  17,
+  18,
+  19
+ ],
+ "seeds": {
+  "detect1": 41,
+  "probe1": 42,
+  "learn2": 43,
+  "probe2": 44,
+  "learn3": 45,
+  "probe3": 46,
+  "controls": 47
+ },
+ "search_seed": 4,
+ "curriculum": [
+  "E3",
+  "N1",
+  "N2",
+  "S2",
+  "B2",
+  "R1",
+  "K1",
+  "G2"
+ ],
+ "heldout_used": [
+  "X2",
+  "K4",
+  "G3",
+  "X4"
+ ],
+ "commit": "b82c54a81d013fc9685c908a0e455a64671adb85",
+ "verdict": "SPACE_INVENTED",
+ "isolation_ok": true,
+ "controls_ok": true,
+ "generations": {
+  "curriculum": 8,
+  "unsolved_by_v3": 5,
+  "dreams": 5,
+  "dreams_repaired": 4,
+  "learn2": 1,
+  "learn2_repaired": 1,
+  "lifted_g1": 6,
+  "admitted_g1": 3,
+  "lifted_g2": 0,
+  "derived_g2": 6,
+  "admitted_g2_total": 5,
+  "admitted_in_g2": [
+   "g2-generalise:transplant:any-meth",
+   "g2-transfer:transplant:rename-attr"
+  ],
+  "learn3": 0,
+  "learn3_repaired": 0,
+  "derived_g3": 6,
+  "admitted_g3_total": 5,
+  "admitted_in_g3": [],
+  "admitted": [
+   {
+    "id": "detect1-S2:before:rename-attr",
+    "edit": "before",
+    "subs": [
+     [
+      "rename",
+      "attr"
+     ]
+    ],
+    "generation": 1,
+    "derived": null,
+    "admitted_by": [
+     "E3"
+    ],
+    "source": "S2"
+   },
+   {
+    "id": "dream1-E3:after:rename-attr",
+    "edit": "after",
+    "subs": [
+     [
+      "rename",
+      "attr"
+     ]
+    ],
+    "generation": 1,
+    "derived": null,
+    "admitted_by": [
+     "S2"
+    ],
+    "source": "E3"
+   },
+   {
+    "id": "dream1-N2:transplant:map-meth-add-discard",
+    "edit": "transplant",
+    "subs": [
+     [
+      "map",
+      "meth",
+      "add",
+      "discard"
+     ]
+    ],
+    "generation": 1,
+    "derived": null,
+    "admitted_by": [
+     "G2"
+    ],
+    "source": "N2"
+   },
+   {
+    "id": "g2-transfer:transplant:rename-attr",
+    "edit": "transplant",
+    "subs": [
+     [
+      "rename",
+      "attr"
+     ]
+    ],
+    "generation": 2,
+    "derived": {
+     "op": "transfer",
+     "from": [
+      "detect1-S2:before:rename-attr"
+     ]
+    },
+    "admitted_by": [
+     "E3"
+    ],
+    "source": [
+     "S2"
+    ]
+   },
+   {
+    "id": "g2-generalise:transplant:any-meth",
+    "edit": "transplant",
+    "subs": [
+     [
+      "any",
+      "meth"
+     ]
+    ],
+    "generation": 2,
+    "derived": {
+     "op": "generalise",
+     "from": [
+      "dream1-N2:transplant:map-meth-add-discard"
+     ]
+    },
+    "admitted_by": [
+     "N1"
+    ],
+    "source": [
+     "N2"
+    ]
+   }
+  ],
+  "probes": {
+   "probe1": {
+    "probes": 8,
+    "with_candidates": 4,
+    "admissions": 3,
+    "false_repairs": 0
+   },
+   "probe2": {
+    "probes": 8,
+    "with_candidates": 4,
+    "admissions": 2,
+    "false_repairs": 0
+   },
+   "probe3": {
+    "probes": 8,
+    "with_candidates": 8,
+    "admissions": 0,
+    "false_repairs": 0
+   }
+  },
+  "deriver_beliefs": {
+   "invert": [
+    1.0,
+    1.0
+   ],
+   "transfer": [
+    2.0,
+    1.0
+   ],
+   "compose": [
+    1.0,
+    1.0
+   ],
+   "generalise": [
+    2.0,
+    1.0
+   ],
+   "lifted": [
+    4.0,
+    1.0
+   ]
+  },
+  "cpu_s": 182.71
+ },
+ "obstacles": 12,
+ "per_arm": {
+  "loop_v3": {
+   "obstacles": 12,
+   "repaired": 0,
+   "false_repairs": 0,
+   "by_transform": 0,
+   "evaluations": 3244,
+   "total_cpu_s": 288.68
+  },
+  "analogy_g1": {
+   "obstacles": 12,
+   "repaired": 3,
+   "false_repairs": 0,
+   "by_transform": 3,
+   "evaluations": 3112,
+   "total_cpu_s": 253.12
+  },
+  "analogy_g2": {
+   "obstacles": 12,
+   "repaired": 3,
+   "false_repairs": 0,
+   "by_transform": 3,
+   "evaluations": 3376,
+   "total_cpu_s": 213.23
+  },
+  "analogy_g3": {
+   "obstacles": 12,
+   "repaired": 3,
+   "false_repairs": 0,
+   "by_transform": 3,
+   "evaluations": 3376,
+   "total_cpu_s": 215.94
+  },
+  "dream_online": {
+   "obstacles": 12,
+   "repaired": 3,
+   "false_repairs": 0,
+   "by_transform": 0,
+   "evaluations": 3354,
+   "total_cpu_s": 169.81
+  },
+  "enum": {
+   "obstacles": 12,
+   "repaired": 0,
+   "false_repairs": 0,
+   "by_transform": 0,
+   "evaluations": 1953,
+   "total_cpu_s": 12.56
+  }
+ },
+ "questions": {
+  "P1": {
+   "arm": "analogy_g3",
+   "against": "analogy_g2",
+   "analogy_g3_only": 0,
+   "analogy_g2_only": 0,
+   "p": 1.0,
+   "p_holm": 1.0,
+   "verdict": "NO_DIFFERENCE_SHOWN"
+  },
+  "P2": {
+   "arm": "analogy_g2",
+   "against": "analogy_g1",
+   "analogy_g2_only": 0,
+   "analogy_g1_only": 0,
+   "p": 1.0,
+   "p_holm": 1.0,
+   "verdict": "NO_DIFFERENCE_SHOWN"
+  },
+  "P3": {
+   "arm": "analogy_g3",
+   "against": "dream_online",
+   "analogy_g3_only": 3,
+   "dream_online_only": 3,
+   "p": 1.0,
+   "p_holm": 1.0,
+   "verdict": "NO_DIFFERENCE_SHOWN"
+  }
+ },
+ "secondary": {
+  "analogy_g3_vs_loop_v3": {
+   "analogy_g3_only": 3,
+   "loop_v3_only": 0,
+   "p": 0.25
+  },
+  "analogy_g3_vs_analogy_g1": {
+   "analogy_g3_only": 0,
+   "analogy_g1_only": 0,
+   "p": 1.0
+  },
+  "analogy_g3_vs_enum": {
+   "analogy_g3_only": 3,
+   "enum_only": 0,
+   "p": 0.25
+  }
+ },
+ "invented_reach": [
+  "X2/17",
+  "X2/18",
+  "X2/19"
+ ],
+ "promotions_outside_component": 0,
+ "wall_s": 1373.8
+}

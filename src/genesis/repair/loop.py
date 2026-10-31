@@ -167,7 +167,7 @@ def _visible(src, tests, filename):
     return bad
 
 
-PROBE_T = ('probe_t', 'probe_t2')                       # SR-2c: probes of candidate transformations
+PROBE_T = ('probe_t', 'probe_t2', 'probe_t3')           # SR-2c, SR-2d: probes of candidate transformations
 DIAG = ('loop', 'loop_v1', 'loop_v2', 'loop_v3', 'dream', 'dream_online', 'v3learn', 'analogy') + PROBE_T
 V3 = ('loop', 'loop_v3', 'dream', 'dream_online', 'v3learn', 'analogy')
 V2PLUS = V3 + ('loop_v2',)
@@ -194,7 +194,8 @@ def episode(handle, vault=None, arm='loop', budget=300, seed=0, exclude_vault=()
     version 3's own (as 'dream' adds the grammar's), and lifts what it repairs; 'probe_t' tries only candidate
     transformations of other families, at the suspected methods, the inventor's believed derivations first
     (`analogy.Deriver`); 'probe_t2' first derives new candidates from the admitted first-generation transformations
-    (`analogy.derive`)."""
+    (`analogy.derive`); 'probe_t3' (SR-2d) from every admitted transformation of the first two generations, as the
+    third."""
     tk = repair_id if trial_key is None else trial_key
     lib = inv = tl = dv = None
     if vault is not None and vault.path is not None:
@@ -347,6 +348,8 @@ def episode(handle, vault=None, arm='loop', budget=300, seed=0, exclude_vault=()
         if arm in PROBE_T:                                  # SR-2c: candidate transformations of other families only
             if arm == 'probe_t2' and tl is not None:
                 tl.add(AN.derive([t for t in tl.admitted() if t.get('generation') == 1]))
+            if arm == 'probe_t3' and tl is not None:
+                tl.add(AN.derive([t for t in tl.admitted() if t.get('generation') in (1, 2)], generation=3))
             first, later = [], []
             for t in (dv.order(tl.candidates(family), src0, set(focus)) if tl is not None else []):
                 cs = sorted(AN.apply_transform(t, src0, set(focus)), key=lambda x: -line_post(x))
