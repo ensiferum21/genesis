@@ -59,8 +59,8 @@ class RemoteHandle:
     def propose(self, patch):
         return self._kernel({'op': 'propose', 'patch': patch})
 
-    def trial(self, seed=None, n=None):
-        meta = self._executor({'op': 'trial', 'seed': seed, 'n': n})
+    def trial(self, seed=None, n=None, whole=False):
+        meta = self._executor({'op': 'trial', 'seed': seed, 'n': n, 'whole': bool(whole)})
         tid = meta['id']
 
         def runner(src, steps=200000, observe=None):

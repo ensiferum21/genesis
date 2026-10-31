@@ -338,6 +338,11 @@ needs people: a reviewer, a statistician, an independent custodian on its own ma
       - **The checkpoint B20_R176 is made** (`2e7fd2f`, SHA-256 `43d8621b…bd81`): 2,723 tests all OK, restore-verified,
         archived whole (`archive` `10b01e6`). **PT-2's third attempt runs** on CPU 0 from 00:11:36 (`/home/claude/pt2c-wt`
         at `75b5bac`; slices of 6,600 s).
+      - **This session stalled for about 8 h** (31 Oct, container clock 00:30 to 08:42): PT-2's first slice paused
+        at 02:05:56 and its second started only at 08:42:20, **6 h 36 min of CPU 0 idle** (to disclose in PT-2's
+        record). A safety-net trigger that fired at 01:30 reached the session only at 08:42.
+      - **B20_R178 (SR-1a) is recorded**; the loop version 2, kernel version 2 and three larger components are built;
+        **B20_R180 (SR-1a2)** is preregistered (CPU 1).
   26c. **Daniel's directive of 27 Oct 2026, 19:55 is adopted**: `docs/OMEGA_FRONTIER.md`, written in detail for
       handoff at his request (20:01). Genesis works by divergence and convergence (imagine, mutate, recombine,
       branch out, extrapolate discovery curves, detect convergence, allocate), without handholding. The

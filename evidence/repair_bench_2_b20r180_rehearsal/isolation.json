@@ -1,0 +1,40 @@
+{
+ "research": {
+  "uid": 61001,
+  "euid": 61001,
+  "read hidden tests (own view)": "FileNotFoundError",
+  "read defect catalogue (own view)": "FileNotFoundError",
+  "read reference models (own view)": "FileNotFoundError",
+  "read hidden tests (repository path)": "FileNotFoundError",
+  "read repository history": "FileNotFoundError",
+  "list /home": "[]",
+  "list /tmp": "[]",
+  "list /root": "PermissionError",
+  "write the Judge": "PermissionError",
+  "write the Judge (repository path)": "FileNotFoundError",
+  "write the Supervisor policy": "PermissionError",
+  "write the verifier (repository path)": "FileNotFoundError",
+  "create a file in the source tree": "OSError",
+  "write the vault": "ok",
+  "write /tmp": "PermissionError"
+ },
+ "executor": {
+  "uid": 61002,
+  "euid": 61002,
+  "read hidden tests (own view)": "PermissionError",
+  "read defect catalogue (own view)": "PermissionError",
+  "read reference models (own view)": "read 21862 bytes",
+  "read hidden tests (repository path)": "FileNotFoundError",
+  "read repository history": "FileNotFoundError",
+  "list /home": "[]",
+  "list /tmp": "[]",
+  "list /root": "PermissionError",
+  "write the Judge": "PermissionError",
+  "write the Judge (repository path)": "FileNotFoundError",
+  "write the Supervisor policy": "PermissionError",
+  "write the verifier (repository path)": "FileNotFoundError",
+  "create a file in the source tree": "OSError",
+  "write the vault": "FileNotFoundError",
+  "write /tmp": "PermissionError"
+ }
+}

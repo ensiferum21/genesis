@@ -201,7 +201,8 @@ def handle_obstacle(job, *, vault_dir, arm='loop', budget=300, seed=0, repair_id
         os.close(fd)
     import pickle
     with os.fdopen(k2x[1], 'wb') as f:          # the executor's job specification (the kernel's own data)
-        pickle.dump({'failing': job.trial_spec(), 'original': kernel.original, 'target': job.target,
+        pickle.dump({'failing': job.trial_spec(), 'whole': job.trial_spec(whole=True), 'original': kernel.original,
+                     'target': job.target,
                      'filename': str(job.file)}, f)
     killed = []
 

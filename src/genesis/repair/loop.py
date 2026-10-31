@@ -23,7 +23,11 @@ job's failure, taken from recognition to a resumed job and retained knowledge, w
      apply verbatim to its own source, ranked by how closely the failure's signature matches (a recurring obstacle:
      the same defect in another job or another copy of the component), tried first; and the operator kinds that
      worked for the same evidence, which order the rest of the search (transfer to unfamiliar obstacles).
-`arm` selects the comparators of the benchmark: 'loop' (all of the above), 'nolocal' (no diagnosis: every function,
+`arm` selects the comparators of the benchmark: 'loop' (all of the above, version 2: the mined laws are evidence for
+localisation and sources of law-restoring candidates, never a reason to reject a candidate, because laws mined from a
+defective component can encode the defect (B20_R178: S3, S4); and the search widens from the suspected methods to the
+whole file, ordered by the posterior, and runs until its budget is spent, because a wrong focus must not end it (W1)),
+'loop_v1' (the loop as B20_R178 ran it, frozen: the strong predecessor), 'nolocal' (no diagnosis: every function,
 operators shuffled), 'random' (random single and double edits anywhere, no selection), 'enum' (conventional
 generate-and-validate: every single edit of the file in source order, no diagnosis, no selection), 'retrieval' (the
 vault's suggestions only). Every arm gets the same budget of candidate evaluations and the same verifier."""
@@ -185,7 +189,7 @@ def episode(handle, vault=None, arm='loop', budget=300, seed=0, exclude_vault=()
     failing, passing = [(rep, ob)], []
     trial_runs = []
     rng = random.Random(f'{repair_id}|{seed}')
-    if arm == 'loop':
+    if arm in ('loop', 'loop_v1'):
         for k in range(MAX_TRIALS):
             if model.done() and len(passing) >= 2:
                 break
@@ -222,6 +226,10 @@ def episode(handle, vault=None, arm='loop', budget=300, seed=0, exclude_vault=()
     suggested = vault.suggest(evidence, exclude=exclude_vault) if vault else []
     retrieved = vault.hunks(src0, rec['failure']['signature'], exclude=exclude_vault) if vault else []
 
+    # Every arm but the frozen 'loop_v1' checks a candidate on the job's whole workload from its start, not only from
+    # the last checkpoint: the saved state may have been corrupted by the defect (a stale cache, a wrong index), and
+    # then no repair passes from it (B20_R180's job version 2; the kernel rolls the resume back to a sound checkpoint).
+    target_run = rep if arm == 'loop_v1' else handle.trial(whole=True)
     base_work = {}
 
     def work(src):
@@ -235,7 +243,7 @@ def episode(handle, vault=None, arm='loop', budget=300, seed=0, exclude_vault=()
             frac = (r.get('op') or 0) / max(1, r.get('of') or 1)
             return 60 + 40 * (1 - frac), False
         e = 0.0
-        rr = rep(src, observe='full' if laws else None)
+        rr = target_run(src, observe='full' if laws and arm == 'loop_v1' else None)
         o = PR.Observation(rr)
         if rr['status'] != 'pass':
             frac = (rr.get('op') or 0) / max(1, rr.get('of') or 1)
@@ -245,7 +253,7 @@ def episode(handle, vault=None, arm='loop', budget=300, seed=0, exclude_vault=()
         broken = sum(1 for run, _ in passing if run(src)['status'] != 'pass')
         e += 50 * broken                                         # negative selection: do not attack "self"
         e += 20 * _visible(src, tests, filename)
-        if laws and PR.first_break(o, laws):
+        if arm == 'loop_v1' and laws and PR.first_break(o, laws):
             e += 3
         if e == 0 and passing:
             if 'w' not in base_work:
@@ -254,7 +262,7 @@ def episode(handle, vault=None, arm='loop', budget=300, seed=0, exclude_vault=()
             metabolic[src] = max(0.0, extra)
         return e, e == 0
 
-    if arm == 'loop':
+    if arm in ('loop', 'loop_v1'):
         methods, mass = model.ranked_methods()
         focus, acc = [], 0.0
         for m in methods:
@@ -277,6 +285,13 @@ def episode(handle, vault=None, arm='loop', budget=300, seed=0, exclude_vault=()
         repertoire = retrieved + repertoire + rest
         mut_funcs = set(focus)
         generations = 8
+        if arm == 'loop':                                   # widen: the rest of the file, most suspected lines first
+            have = {x[1] for x in repertoire}
+            wide = [x for x in SY.local_edits(src0) + SY.transplants(src0, sorted(set(method_of.values())))
+                    if x[1] not in have]
+            wide.sort(key=lambda x: -model.post.get(_first_changed_line(src0, x[1]) + 1, 0.0))
+            repertoire += wide
+            generations = 60
     elif arm == 'nolocal':
         repertoire = SY.local_edits(src0) + SY.transplants(src0, list(method_of.values()))
         rng.shuffle(repertoire)
@@ -307,9 +322,14 @@ def episode(handle, vault=None, arm='loop', budget=300, seed=0, exclude_vault=()
         generations = 0
 
     def mutate(src, r):
-        pool = SY.local_edits(src, focus_funcs=mut_funcs)
-        if mut_funcs:
-            pool += SY.transplants(src, sorted(mut_funcs))
+        funcs = mut_funcs
+        if arm == 'loop' and len(search.history) >= 8:      # after 8 generations, mutate anywhere
+            funcs = None
+        pool = SY.local_edits(src, focus_funcs=funcs)
+        if funcs:
+            pool += SY.transplants(src, sorted(funcs))
+        elif arm == 'loop':
+            pool += SY.transplants(src, sorted(set(method_of.values())))
         return r.choice(pool) if pool else None
 
     metabolic = {}

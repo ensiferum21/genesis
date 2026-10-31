@@ -377,3 +377,382 @@ assert g.record(1) and not g.record(1)
 assert g.count() == 1
 ''')],
 }
+
+
+# ------------------------------------------------------------------------------------------- larger components
+# Added 31 Oct 2026 for SR-1a2 (B20_R180): three larger components (60 to 80 lines), where a whole-file search no
+# longer fits in the budget. The six components above are unchanged, and so are their workloads; SOURCES keeps only
+# them (B20_R178's analysis counts its controls by it), and ALL_SOURCES has all nine.
+
+SOURCES2 = {
+    'ttl': '''"""A cache whose entries expire after a time to live; the least recently used is evicted when it is full."""
+from collections import OrderedDict
+
+
+class TTLCache:
+    def __init__(self, capacity, ttl):
+        self.capacity = capacity
+        self.ttl = ttl
+        self.now = 0
+        self.d = OrderedDict()
+        self.hits = 0
+        self.misses = 0
+
+    def tick(self, dt):
+        self.now += dt
+        self._expire()
+
+    def _expire(self):
+        for k in list(self.d):
+            if self.d[k][1] <= self.now:
+                del self.d[k]
+
+    def put(self, k, v):
+        if k in self.d:
+            del self.d[k]
+        self.d[k] = (v, self.now + self.ttl)
+        while len(self.d) > self.capacity:
+            self.d.popitem(last=False)
+
+    def get(self, k, default=None):
+        entry = self.d.get(k)
+        if entry is None or entry[1] <= self.now:
+            self.misses += 1
+            return default
+        self.hits += 1
+        self.d.move_to_end(k)
+        return entry[0]
+
+    def counts(self):
+        return (self.hits, self.misses)
+
+    def keys(self):
+        return list(self.d)
+
+    def snapshot(self):
+        return (list(self.d), self.hits, self.misses)
+''',
+    'pq': '''"""A priority queue of keys with a position index, so that a key's priority can change or the key be removed."""
+
+
+class IndexedHeap:
+    def __init__(self):
+        self.heap = []
+        self.pos = {}
+
+    def size(self):
+        return len(self.heap)
+
+    def push(self, key, prio):
+        if key in self.pos:
+            self.update(key, prio)
+            return
+        self.heap.append([prio, key])
+        self.pos[key] = len(self.heap) - 1
+        self._up(len(self.heap) - 1)
+
+    def peek(self):
+        return self.heap[0][1] if self.heap else None
+
+    def pop(self):
+        if not self.heap:
+            return None
+        top = self.heap[0][1]
+        self._swap(0, len(self.heap) - 1)
+        self.heap.pop()
+        del self.pos[top]
+        if self.heap:
+            self._down(0)
+        return top
+
+    def update(self, key, prio):
+        i = self.pos[key]
+        old = self.heap[i][0]
+        self.heap[i][0] = prio
+        if prio < old:
+            self._up(i)
+        else:
+            self._down(i)
+
+    def remove(self, key):
+        i = self.pos[key]
+        last = len(self.heap) - 1
+        self._swap(i, last)
+        self.heap.pop()
+        del self.pos[key]
+        if i < len(self.heap):
+            self._up(i)
+            self._down(i)
+
+    def _swap(self, i, j):
+        self.heap[i], self.heap[j] = self.heap[j], self.heap[i]
+        self.pos[self.heap[i][1]] = i
+        self.pos[self.heap[j][1]] = j
+
+    def _up(self, i):
+        while i > 0:
+            p = (i - 1) // 2
+            if self.heap[i] < self.heap[p]:
+                self._swap(i, p)
+                i = p
+            else:
+                break
+
+    def _down(self, i):
+        n = len(self.heap)
+        while True:
+            c = 2 * i + 1
+            if c >= n:
+                break
+            if c + 1 < n and self.heap[c + 1] < self.heap[c]:
+                c += 1
+            if self.heap[c] < self.heap[i]:
+                self._swap(i, c)
+                i = c
+            else:
+                break
+
+    def summary(self):
+        return (self.peek(), len(self.heap))
+''',
+    'ledger': '''"""Accounts with balances, a transaction log that can be undone, a per-account history and a cached total."""
+
+
+class Ledger:
+    def __init__(self):
+        self.balances = {}
+        self.txs = []
+        self.by_acct = {}
+        self._total = None
+
+    def open(self, acct):
+        if acct not in self.balances:
+            self.balances[acct] = 0
+            self.by_acct[acct] = []
+
+    def _apply(self, acct, amount):
+        self.balances[acct] += amount
+        self._total = None
+
+    def deposit(self, acct, amount):
+        self._apply(acct, amount)
+        self.txs.append((acct, amount))
+        self.by_acct[acct].append(len(self.txs) - 1)
+
+    def withdraw(self, acct, amount):
+        if self.balances[acct] < amount:
+            raise ValueError('insufficient funds')
+        self._apply(acct, -amount)
+        self.txs.append((acct, -amount))
+        self.by_acct[acct].append(len(self.txs) - 1)
+
+    def undo(self):
+        if not self.txs:
+            return None
+        acct, amount = self.txs.pop()
+        self.by_acct[acct].pop()
+        self._apply(acct, -amount)
+        return acct
+
+    def balance(self, acct):
+        return self.balances[acct]
+
+    def total(self):
+        if self._total is None:
+            self._total = sum(self.balances.values())
+        return self._total
+
+    def history(self, acct):
+        return list(self.by_acct[acct])
+
+    def snapshot(self):
+        return (sorted(self.balances.items()), len(self.txs))
+''',
+}
+ALL_SOURCES = dict(SOURCES, **SOURCES2)
+CLASS.update({'ttl': 'TTLCache', 'pq': 'IndexedHeap', 'ledger': 'Ledger'})
+
+
+class RefTTL:
+    def __init__(self, capacity, ttl):
+        self.capacity, self.ttl, self.now = capacity, ttl, 0
+        self.order, self.vals, self.dead = [], {}, {}
+        self.hits = self.misses = 0
+
+    def _drop(self, k):
+        self.order.remove(k)
+        del self.vals[k], self.dead[k]
+
+    def tick(self, dt):
+        self.now += dt
+        for k in list(self.order):
+            if self.dead[k] <= self.now:
+                self._drop(k)
+
+    def put(self, k, v):
+        if k in self.vals:
+            self._drop(k)
+        self.order.append(k)
+        self.vals[k], self.dead[k] = v, self.now + self.ttl
+        while len(self.order) > self.capacity:
+            self._drop(self.order[0])
+
+    def get(self, k, default=None):
+        if k not in self.vals or self.dead[k] <= self.now:
+            self.misses += 1
+            return default
+        self.hits += 1
+        self.order.remove(k)
+        self.order.append(k)
+        return self.vals[k]
+
+    def counts(self):
+        return (self.hits, self.misses)
+
+    def keys(self):
+        return list(self.order)
+
+    def snapshot(self):
+        return (list(self.order), self.hits, self.misses)
+
+
+class RefPQ:
+    def __init__(self):
+        self.prio = {}
+
+    def size(self):
+        return len(self.prio)
+
+    def push(self, key, prio):
+        self.prio[key] = prio
+
+    def peek(self):
+        return min(self.prio, key=lambda k: (self.prio[k], k)) if self.prio else None
+
+    def pop(self):
+        k = self.peek()
+        if k is not None:
+            del self.prio[k]
+        return k
+
+    def update(self, key, prio):
+        if key not in self.prio:
+            raise KeyError(key)
+        self.prio[key] = prio
+
+    def remove(self, key):
+        del self.prio[key]
+
+    def summary(self):
+        return (self.peek(), len(self.prio))
+
+
+class RefLedger:
+    def __init__(self):
+        self.balances, self.txs = {}, []
+
+    def open(self, acct):
+        self.balances.setdefault(acct, 0)
+
+    def deposit(self, acct, amount):
+        self.balances[acct] += amount
+        self.txs.append((acct, amount))
+
+    def withdraw(self, acct, amount):
+        if self.balances[acct] < amount:
+            raise ValueError('insufficient funds')
+        self.balances[acct] -= amount
+        self.txs.append((acct, -amount))
+
+    def undo(self):
+        if not self.txs:
+            return None
+        acct, amount = self.txs.pop()
+        self.balances[acct] -= amount
+        return acct
+
+    def balance(self, acct):
+        return self.balances[acct]
+
+    def total(self):
+        return sum(self.balances.values())
+
+    def history(self, acct):
+        if acct not in self.balances:
+            raise KeyError(acct)
+        return [i for i, (a, _) in enumerate(self.txs) if a == acct]
+
+    def snapshot(self):
+        return (sorted(self.balances.items()), len(self.txs))
+
+
+REFERENCE.update({'ttl': RefTTL, 'pq': RefPQ, 'ledger': RefLedger})
+OBSERVE.update({'ttl': 'snapshot', 'pq': 'summary', 'ledger': 'snapshot'})
+COMPARE_OBSERVE.update({'ttl': True, 'pq': True, 'ledger': True})
+_make_args_small, _ops_small = make_args, ops
+ACCOUNTS = ('a', 'b', 'c', 'd', 'e')
+
+
+def make_args(target, rng):                                                # noqa: F811 - extends the one above
+    if target == 'ttl':
+        return [rng.choice([4, 6])], {'ttl': rng.choice([5, 8])}
+    return _make_args_small(target, rng)
+
+
+def ops(target, rng, n, warm=0.4):                                         # noqa: F811 - extends the one above
+    if target not in ('ttl', 'pq', 'ledger'):
+        return _ops_small(target, rng, n, warm)
+    out = []
+    for t in range(n):
+        warm_phase = t < warm * n
+        r = rng.random()
+        if target == 'ttl':
+            if warm_phase:
+                k = rng.randrange(3)
+                out.append(('put', [k, rng.randrange(100)]) if r < 0.5 else ('get', [k]))
+            else:
+                k = rng.randrange(10)
+                out.append(('put', [k, rng.randrange(100)]) if r < 0.35 else ('get', [k]) if r < 0.8
+                           else ('tick', [rng.choice([1, 2, 3])]))
+        elif target == 'pq':
+            if warm_phase:
+                out.append(('push', [rng.randrange(30), rng.randrange(50)]) if r < 0.7 else ('peek', []))
+            else:
+                key = rng.randrange(30)
+                out.append(('push', [key, rng.randrange(50)]) if r < 0.35 else ('pop', []) if r < 0.55
+                           else ('update', [key, rng.randrange(50)]) if r < 0.75 else ('remove', [key]) if r < 0.9
+                           else ('peek', []))
+        else:                                                               # ledger
+            a = rng.choice(ACCOUNTS)
+            if warm_phase:
+                out.append(('open', [a]) if r < 0.25 else ('deposit', [a, rng.randrange(1, 50)]) if r < 0.8
+                           else ('balance', [a]))
+            else:
+                out.append(('deposit', [a, rng.randrange(1, 50)]) if r < 0.3 else
+                           ('withdraw', [a, rng.randrange(1, 60)]) if r < 0.55 else ('undo', []) if r < 0.7 else
+                           ('balance', [a]) if r < 0.8 else ('total', []) if r < 0.9 else ('history', [a]))
+        out.append(('observe', []))
+    return out
+
+
+VISIBLE_TESTS.update({
+    'ttl': [('put then get, then expiry', '''
+c = mod.TTLCache(2, ttl=3)
+c.put('a', 1)
+assert c.get('a') == 1
+c.tick(5)
+assert c.get('a') is None
+''')],
+    'pq': [('push and pop in order', '''
+h = mod.IndexedHeap()
+for k, p in ((1, 5), (2, 3), (3, 4)):
+    h.push(k, p)
+assert h.pop() == 2 and h.pop() == 3 and h.pop() == 1
+''')],
+    'ledger': [('deposit and balance', '''
+g = mod.Ledger()
+g.open('a')
+g.deposit('a', 10)
+assert g.balance('a') == 10 and g.total() == 10
+''')],
+})

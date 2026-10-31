@@ -9,8 +9,13 @@ for one repairable file; this module decides, with checks the repairer never see
   4. **fresh workloads**: the component matches the kernel's reference on FRESH workloads from the kernel's own
      seeds (never the repairer's), longer than the job;
   5. **the interrupted job resumes**: on a copy of the job's directory, it continues from its last checkpoint with the
-     new source and finishes without a failure.
-A repair is accepted only if all five hold. `main` runs it in a separate process so that nothing the repairer did in
+     new source and finishes without a failure (for a version-2 job, from the latest kept checkpoint from which it
+     finishes: a defect may have corrupted the state saved after it);
+  6. for a version-2 job, **resources**: on each fresh workload, the candidate's storage (the total length of the
+     component's containers at the end) is at most 2 x + 8, and its work (line events) at most 3 x + 100, of the last
+     known-good version of the component (the testbed's correct source): a "repair" may not leak or recompute what
+     the component keeps.
+A repair is accepted only if all of them hold. `main` runs it in a separate process so that nothing the repairer did in
 its own process can reach the verdict."""
 import difflib
 import json
@@ -99,6 +104,65 @@ assert w2.mean() == 3 and w.mean() == (3 + 4 + 10) / 3
 w2.push(0)
 assert mod.Window.load(snap).mean() == 3
 ''',
+    'ttl': '''
+c = mod.TTLCache(2, ttl=4)
+c.put('a', 1); c.put('b', 2)
+assert c.get('a') == 1                  # refreshes a
+c.put('c', 3)                           # evicts b
+assert c.keys() == ['a', 'c'] and c.get('b') is None
+c.put('a', 7)                           # an update refreshes a
+assert c.keys() == ['c', 'a']
+c.tick(3)
+assert c.get('c') == 3
+c.tick(1)                               # c and a were put at 0: their deadline 4 has come
+assert c.keys() == [] and c.get('a') is None
+c.put('x', 1); c.tick(3); c.put('y', 2); c.tick(1)
+assert c.keys() == ['y']
+assert c.counts() == (2, 2)
+''',
+    'pq': '''
+h = mod.IndexedHeap()
+for k in range(12):
+    h.push(k, (k * 7) % 12)
+h.update(11, -1)
+assert h.peek() == 11
+h.update(0, 20)
+h.remove(5)
+h.remove(3)
+out = []
+while h.size():
+    out.append(h.pop())
+want = sorted([k for k in range(12) if k not in (5, 3)], key=lambda k: ({11: -1, 0: 20}.get(k, (k * 7) % 12), k))
+assert out == want, out
+g = mod.IndexedHeap()
+for k in range(20):
+    g.push(k, 20 - k)
+for k in range(0, 20, 3):
+    g.remove(k)
+assert [g.pop() for _ in range(3)] == [19, 17, 16]
+''',
+    'ledger': '''
+calls = []
+import builtins
+mod.sum = lambda xs: (calls.append(1), builtins.sum(xs))[1]
+g = mod.Ledger()
+g.open('a'); g.open('b')
+g.deposit('a', 10); g.deposit('b', 5)
+assert g.total() == 15 and g.total() == 15
+assert len(calls) == 1                  # the total is cached until a balance changes
+g.withdraw('a', 10)
+assert g.balance('a') == 0 and g.total() == 5
+del mod.sum
+g.deposit('b', 1)
+assert g.history('a') == [0, 2] and g.history('b') == [1, 3]
+assert g.undo() == 'b' and g.history('b') == [1] and g.total() == 5
+assert g.undo() == 'a' and g.balance('a') == 10 and g.history('a') == [0]
+try:
+    g.withdraw('b', 6)
+    raise AssertionError('overdrawn')
+except ValueError:
+    pass
+''',
     'log': '''
 g = mod.Log()
 for e in range(12):
@@ -149,26 +213,47 @@ def verify(jobdir, target, seed, n_ops, every, new_source):
     except Exception as e:                                          # noqa: BLE001
         out['checks']['visible'] = {'ok': False, 'failures': [('compile', f'{type(e).__name__}: {e}')]}
         out['checks']['hidden'] = {'ok': False, 'failure': 'not run'}
-    fresh = []
+    fresh, resource = [], []
     for s in FRESH_SEEDS:
         rng = random.Random(f'verify|{target}|{s}')
         cargs, ckw = TG.make_args(target, rng)
         op_list = TG.ops(target, rng, 3000)
         try:
             mod = BN.load_source(new_source, 'verify_fresh', str(job.file))
-            BN._limited(lambda: BN.execute(target, mod, cargs, ckw, op_list), 10 ** 7, str(job.file))
+            count = [0]
+            st, _ = BN._limited(lambda: BN.execute(target, mod, cargs, ckw, op_list), 10 ** 7, str(job.file),
+                                count=count)
             fresh.append(None)
+            if job.version >= 2:
+                good = BN.load_source(TG.ALL_SOURCES[target], 'verify_good', str(job.file))
+                gcount = [0]
+                gst, _ = BN._limited(lambda: BN.execute(target, good, cargs, ckw, op_list), 10 ** 7, str(job.file),
+                                     count=gcount)
+                resource.append({'storage': _storage(st['comp']), 'good_storage': _storage(gst['comp']),
+                                 'work': count[0], 'good_work': gcount[0]})
         except Exception as e:                                      # noqa: BLE001
             fresh.append(f'{type(e).__name__}: {str(e)[:120]}')
     out['checks']['fresh'] = {'ok': all(x is None for x in fresh), 'failures': [x for x in fresh if x]}
+    if job.version >= 2:
+        out['checks']['resource'] = {
+            'ok': bool(resource) and len(resource) == len(FRESH_SEEDS) and all(
+                r['storage'] <= 2 * r['good_storage'] + 8 and r['work'] <= 3 * r['good_work'] + 100 for r in resource),
+            'runs': resource}
     with tempfile.TemporaryDirectory() as d:
         copy = Path(d) / 'job'
         shutil.copytree(jobdir, copy)
         (copy / f'{target}.py').write_text(new_source)
         r = BN.Job(copy, target, seed, n_ops, every).run(resume=True)
-    out['checks']['resume'] = {'ok': r['status'] == 'done', 'at': r['op']}
+    out['checks']['resume'] = {'ok': r['status'] == 'done', 'at': r['op'], 'from': r.get('started'),
+                               'rolled_back_from': r.get('rolled_back_from')}
+    out['version'] = job.version
     out['accepted'] = all(c['ok'] for c in out['checks'].values())
     return out
+
+
+def _storage(attrs):
+    """The total length of the containers among a component's attributes."""
+    return sum(len(v) for v in attrs.values() if isinstance(v, (list, dict, set, tuple)))
 
 
 def main(argv=None):

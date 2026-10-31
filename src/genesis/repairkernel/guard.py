@@ -6,8 +6,10 @@ A candidate is refused if it
   * adds, removes or changes an import;
   * uses a name, attribute or keyword the original does not use, unless it is in ALLOW_NEW (the containers' own
     methods and a few pure builtins a repair may need: `discard` for a missing paired update, `list` for a copy);
-  * uses anything in DENY (input/output, reflection, code execution), or a dunder the original does not use, or a
-    `global`/`nonlocal` statement.
+  * names (as a bare name, not as an attribute or a method's own name) anything in DENY (input/output, reflection,
+    code execution) that the original does not name, or uses a dunder the original does not use, or a
+    `global`/`nonlocal` statement. (A component may have a method called `open`; a candidate may not call the
+    builtin `open`.)
 With line-preserving edits of the component (`genesis.repair.synth`), nothing in a candidate can open a file, import a
 module or reach the interpreter's internals: defence in depth behind the process isolation of `foundry`."""
 import ast
@@ -45,6 +47,10 @@ def identifiers(tree):
     return out
 
 
+def bare_names(tree):
+    return {n.id for n in ast.walk(tree) if isinstance(n, ast.Name)}
+
+
 def imports(tree):
     return sorted(ast.dump(n) for n in ast.walk(tree) if isinstance(n, (ast.Import, ast.ImportFrom)))
 
@@ -61,9 +67,11 @@ def check(original, candidate):
     if any(isinstance(n, (ast.Global, ast.Nonlocal)) for n in ast.walk(new)):
         return 'global or nonlocal'
     known = identifiers(old)
-    for name in sorted(identifiers(new)):
-        if name in DENY:
+    known_bare = bare_names(old)
+    for name in sorted(bare_names(new)):
+        if name in DENY and name not in known_bare:
             return f'denied: {name}'
+    for name in sorted(identifiers(new)):
         if name.startswith('__') and name not in known:
             return f'new dunder: {name}'
         if name not in known and name not in ALLOW_NEW:

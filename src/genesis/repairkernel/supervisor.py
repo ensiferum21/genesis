@@ -8,12 +8,14 @@ from pathlib import Path
 
 POLICY = {
     'required': ('boundary', 'visible', 'hidden', 'fresh', 'resume'),
+    'required_from_version_2': ('resource',),  # B20_R180's jobs: storage and work against the last good version
     'automatic_scopes': ('testbed',),          # the sandboxed testbed; the repository's own modules need a human
 }
 
 
 def decide(verdict, scope):
-    missing = [c for c in POLICY['required'] if not verdict.get('checks', {}).get(c, {}).get('ok')]
+    required = POLICY['required'] + (POLICY['required_from_version_2'] if verdict.get('version', 1) >= 2 else ())
+    missing = [c for c in required if not verdict.get('checks', {}).get(c, {}).get('ok')]
     if missing:
         return {'promote': False, 'why': f'checks failed: {missing}'}
     if scope not in POLICY['automatic_scopes']:

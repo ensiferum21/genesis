@@ -96,6 +96,55 @@ class Verifier(unittest.TestCase):
             self.assertTrue(refused['checks']['boundary']['guard'].startswith('denied'))
 
 
+class KernelVersion2(unittest.TestCase):
+    """B20_R180's kernel: kept checkpoints and rollback, the resource check, the policy that requires it."""
+
+    def test_a_resume_rolls_back_past_a_checkpoint_the_defect_corrupted(self):
+        from genesis.repairkernel import defects2 as DF2
+        with tempfile.TemporaryDirectory() as d:
+            for version in (1, 2):
+                job, _ = BN.make('D4', 1, Path(d) / f'v{version}', version=version)
+                first = job.run()
+                self.assertEqual((first['status'], first['op']), ('failed', 1800))
+                self.assertEqual(job.run(resume=True)['status'], 'failed')      # same source: nothing to undo
+                job.file.write_text(TG.ALL_SOURCES['ledger'])
+                r = job.run(resume=True)
+                if version == 1:
+                    self.assertEqual(r['status'], 'failed')                      # the saved index is wrong
+                else:
+                    self.assertEqual((r['status'], r['started'], r['rolled_back_from']), ('done', 0, 1800))
+            self.assertIn('D4', DF2.BY_ID)
+
+    def test_the_resource_check_refuses_a_leak_and_the_policy_requires_it(self):
+        with tempfile.TemporaryDirectory() as d:
+            job, _ = BN.make('R2', 1, Path(d) / 'job', version=2)
+            job.run()
+            leak = DF.source('R2', TG.SOURCES).replace('        self.items.pop(i)\n', '', 1)
+            v = VF.verify(job.dir, job.target, 1, job.n_ops, job.every, leak)
+            self.assertFalse(v['checks']['resource']['ok'])
+            self.assertTrue(all(v['checks'][c]['ok'] for c in ('boundary', 'visible', 'hidden', 'fresh')))
+            self.assertFalse(v['accepted'])
+            self.assertEqual(v['version'], 2)
+        passed = {'checks': {c: {'ok': True} for c in SV.POLICY['required']}}
+        self.assertTrue(SV.decide(passed, 'testbed')['promote'])
+        self.assertFalse(SV.decide(dict(passed, version=2), 'testbed')['promote'])
+        self.assertTrue(SV.decide({'version': 2, 'checks': dict(passed['checks'], resource={'ok': True})},
+                                  'testbed')['promote'])
+
+    def test_a_method_may_be_called_open_but_a_candidate_may_not_call_open(self):
+        src = TG.ALL_SOURCES['ledger']
+        self.assertIsNone(GD.check(src, src.replace('if self.balances[acct] < amount:',
+                                                     'if self.balances[acct] <= amount:')))
+        self.assertIsNotNone(GD.check(src, src.replace('return list(self.by_acct[acct])', 'return open("x")')))
+
+    def test_the_whole_workload_trial_starts_from_nothing(self):
+        with tempfile.TemporaryDirectory() as d:
+            job, h = BN.make('T2', 1, Path(d) / 'job', version=2)
+            job.run()
+            self.assertEqual(h.trial(whole=True).cost, len(job.ops))
+            self.assertEqual(h.trial().cost, len(job.ops) - 1800)
+
+
 class Supervisor(unittest.TestCase):
     def test_promotion_needs_every_check_and_an_automatic_scope_and_can_be_rolled_back(self):
         ok = {'checks': {c: {'ok': True} for c in SV.POLICY['required']}}

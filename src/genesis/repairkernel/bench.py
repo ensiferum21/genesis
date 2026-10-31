@@ -16,6 +16,7 @@ import copy
 import json
 import random
 from pathlib import Path
+import shutil
 import sys
 import types
 
@@ -224,10 +225,20 @@ def make_runner(target, filename, cargs, ckw, op_list, start, state, original=No
 class Job:
     """A job over a component in `workdir` (kernel side)."""
 
-    def __init__(self, workdir, target, seed, n_ops=2400, every=200, source=None, fault_at=None):
+    def __init__(self, workdir, target, seed, n_ops=2400, every=200, source=None, fault_at=None, version=None):
+        """`version` 1 (B20_R178): resume continues from the last checkpoint. Version 2 (B20_R180): every checkpoint
+        is kept, and a resume that fails steps back to the latest checkpoint from which the job then finishes (a
+        defect can corrupt saved state long before it is noticed: a stale cache, a wrong index). The version is kept
+        in the job's directory (`job.json`), so that the verifier and the kernel rebuild the same job."""
         self.fault_at = fault_at
         self.dir = Path(workdir)
         self.dir.mkdir(parents=True, exist_ok=True)
+        meta = self.dir / 'job.json'
+        if version is None:
+            version = json.loads(meta.read_text())['version'] if meta.exists() else 1
+        else:
+            meta.write_text(json.dumps({'version': version}))
+        self.version = version
         self.target, self.seed, self.n_ops, self.every = target, seed, n_ops, every
         self.file = self.dir / f'{target}.py'
         if source is not None:
@@ -243,8 +254,25 @@ class Job:
 
     def _save(self, i, state):
         import pickle
-        (self.dir / 'state.pkl').write_bytes(pickle.dumps(state))
-        self.ckpt.write_text(json.dumps({'next': i}))
+        data = pickle.dumps(state)
+        (self.dir / 'state.pkl').write_bytes(data)
+        if self.version >= 2:
+            (self.dir / 'checkpoints').mkdir(exist_ok=True)
+            (self.dir / 'checkpoints' / f'{i:07d}.pkl').write_bytes(data)
+        self.ckpt.write_text(json.dumps({'next': i, 'source_sha256': self._source_sha()}))
+
+    def _source_sha(self):
+        import hashlib
+        return hashlib.sha256(self.file.read_bytes()).hexdigest()
+
+    def _load_meta(self):
+        return json.loads(self.ckpt.read_text()) if self.ckpt.exists() else {}
+
+    def checkpoints(self):
+        """The kept checkpoints (version 2), latest first, with 0 (the fresh start) last."""
+        d = self.dir / 'checkpoints'
+        ks = sorted((int(p.stem) for p in d.glob('*.pkl')), reverse=True) if d.exists() else []
+        return ks + [0]
 
     def _load(self):
         import pickle
@@ -253,13 +281,40 @@ class Job:
         return json.loads(self.ckpt.read_text())['next'], pickle.loads((self.dir / 'state.pkl').read_bytes())
 
     def run(self, resume=False, steps=10 ** 7):
-        """Run (or resume) to the end; {'status': 'done'|'failed', 'traceback', 'op'}."""
+        """Run (or resume) to the end; {'status': 'done'|'failed', 'traceback', 'op', 'started'}. In version 2 a
+        failed resume steps back through the kept checkpoints ('rolled_back_from' says where it was interrupted)."""
+        produced_by = self._load_meta().get('source_sha256')
+        first = self._run(resume, steps)
+        if first['status'] == 'done' or not resume or self.version < 2:
+            return first
+        if produced_by == self._source_sha():              # the same source made the checkpoint: nothing to undo
+            return first
+        interrupted = first['started']
+        for k in self.checkpoints():
+            if k >= interrupted:
+                continue
+            if k == 0:
+                for f in ('state.json', 'state.pkl'):
+                    (self.dir / f).unlink(missing_ok=True)
+            else:
+                (self.dir / 'state.pkl').write_bytes((self.dir / 'checkpoints' / f'{k:07d}.pkl').read_bytes())
+                self.ckpt.write_text(json.dumps({'next': k, 'source_sha256': produced_by}))
+            r = self._run(True, steps)
+            if r['status'] == 'done':
+                r['rolled_back_from'] = interrupted
+                return r
+        first['rolled_back_from'] = interrupted
+        return first
+
+    def _run(self, resume=False, steps=10 ** 7):
         import traceback
         mod = self.module()
         start, state = self._load() if resume else (0, None)
         if not resume:
             for f in ('state.json', 'state.pkl'):
                 (self.dir / f).unlink(missing_ok=True)
+            if (self.dir / 'checkpoints').exists():
+                shutil.rmtree(self.dir / 'checkpoints')
         i = start
         started = start
         try:
@@ -277,9 +332,13 @@ class Job:
             return {'status': 'failed', 'traceback': tb, 'op': i, 'started': started}
         return {'status': 'done', 'op': i, 'started': started}
 
-    def trial_spec(self, seed=None, n=None):
-        """What a runner needs (for the trial executor): the failing segment from the last checkpoint (seed None), or
+    def trial_spec(self, seed=None, n=None, whole=False):
+        """What a runner needs (for the trial executor): the failing segment from the last checkpoint (seed None), the
+        job's whole workload from its start (seed None, whole: no saved state, which a defect may have corrupted), or
         a fresh workload of n operations from the caller's seed."""
+        if seed is None and whole:
+            return {'target': self.target, 'filename': str(self.file), 'cargs': self.cargs, 'ckw': self.ckw,
+                    'ops': self.ops, 'start': 0, 'state': None}
         if seed is None:
             i, state = self._load()
             return {'target': self.target, 'filename': str(self.file), 'cargs': self.cargs, 'ckw': self.ckw,
@@ -307,25 +366,27 @@ class Handle:
     def visible_tests(self):
         return list(TG.VISIBLE_TESTS[self._job.target])
 
-    def trial(self, seed=None, n=None):
+    def trial(self, seed=None, n=None, whole=False):
         """A runner for a workload: the failing segment (seed None: from the last checkpoint to the job's end), or a
         fresh workload of n operations from `seed` (the caller's own seeds). `runner(src, steps, observe)` returns
         {'status': 'pass'|'crash'|'diverge', 'exception', 'message', 'op', 'of', 'steps'}, and 'obs' (the probe's
         lines and returns) when observe == 'full'; `runner.cost` is its length in operations."""
-        sp = self._job.trial_spec(seed, n)
+        sp = self._job.trial_spec(seed, n, whole)
         return make_runner(sp['target'], sp['filename'], sp['cargs'], sp['ckw'], sp['ops'], sp['start'], sp['state'])
 
 
-def make(defect_id, seed, workdir, n_ops=2400, every=200):
+def make(defect_id, seed, workdir, n_ops=2400, every=200, version=None):
     """A job over the defect's component, its sandbox holding the defective source; and its Handle."""
-    from . import defects as DF                     # the catalogue: the kernel driver's, never the trial executor's
-    d = DF.BY_ID[defect_id]
-    src = DF.source(defect_id, TG.SOURCES)
-    job = Job(workdir, d['target'], seed, n_ops, every, source=src)
+    from . import defects as DF                     # the catalogues: the kernel driver's, never the trial executor's
+    from . import defects2 as DF2
+    cat = DF if defect_id in DF.BY_ID else DF2
+    d = cat.BY_ID[defect_id]
+    src = cat.source(defect_id, TG.ALL_SOURCES)
+    job = Job(workdir, d['target'], seed, n_ops, every, source=src, version=version)
     return job, Handle(job)
 
 
-def make_clean(target, seed, workdir, n_ops=2400, every=200, fault_at=None):
+def make_clean(target, seed, workdir, n_ops=2400, every=200, fault_at=None, version=None):
     """A job over the correct component (a control: no obstacle; or, with `fault_at`, a fault in the kernel)."""
-    job = Job(workdir, target, seed, n_ops, every, source=TG.SOURCES[target], fault_at=fault_at)
+    job = Job(workdir, target, seed, n_ops, every, source=TG.ALL_SOURCES[target], fault_at=fault_at, version=version)
     return job, Handle(job)

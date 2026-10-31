@@ -39,7 +39,11 @@ def main(argv=None):
                 q = json.loads(line)
                 if q.get('op') == 'trial':
                     seed = q.get('seed')
-                    if seed is None:
+                    if seed is None and q.get('whole'):
+                        sp = spec['whole']
+                        r = BN.make_runner(target, filename, sp['cargs'], sp['ckw'], sp['ops'], sp['start'],
+                                           sp['state'], original)
+                    elif seed is None:
                         sp = spec['failing']
                         r = BN.make_runner(target, filename, sp['cargs'], sp['ckw'], sp['ops'], sp['start'],
                                            sp['state'], original)

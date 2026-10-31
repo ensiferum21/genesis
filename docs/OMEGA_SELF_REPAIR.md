@@ -204,6 +204,23 @@ defective component encode the defect and were used to reject correct repairs; t
 shows in one method, the defect is in another). And a gap in the verifier: it accepted, in 9 comparator episodes, a
 "repair" that never frees removed items (no check counts storage).
 
+**After SR-1a: the second version, and SR-1a2 (B20_R180, preregistered 31 Oct 2026).** Each change comes from
+B20_R178's evidence and was developed on its 21 defects only (all development data now):
+- the loop, version 2 (`loop.py`): mined laws are evidence for localisation and sources of law-restoring candidates,
+  never a reason to reject a candidate; the search widens from the suspected methods to the whole file, ordered by the
+  posterior, and runs until its budget is spent; candidates are checked on the job's whole workload from its start as
+  well as on fresh trials. The B20_R178 loop stays as the arm 'loop_v1', frozen. On the 21 development defects (job
+  seed 1, development data) version 2 repaired 17 and version 1 15;
+- the kernel, job version 2 (`bench.py`, `verify.py`, `supervisor.py`): every checkpoint is kept, and a resume that
+  fails after a change of source steps back to the latest checkpoint from which the job finishes (a defect can
+  corrupt the saved state: a stale cache, a wrong index); the verifier's **resource check** (storage and work on the
+  fresh workloads against the last known-good version) is required by the policy for version-2 jobs; the static guard
+  denies a builtin by bare name only (a ledger may have a method `open`);
+- three larger components (`targets.SOURCES2`: a TTL cache, an indexed heap, a ledger with undo, 60 to 80 lines) and a
+  second sealed catalogue (`defects2.py`, 12 held-out defects, written before any change to the loop and run by no
+  loop before B20_R180; the jobs and the verifier were run on them to check that each interrupts every job and that
+  the verifier tells the correct source from the defective one).
+
 ## 8. Status against the Foundry directive (31 Oct 2026, 00:10)
 
 | Directive item | Implemented | Demonstrated (B20_R178, testbed only) | Failed or weak | Not built or untested |

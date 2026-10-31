@@ -1017,6 +1017,29 @@
    "title": "SR-1b: the obstacle loop on the real obstacles of 28-30 Oct (B20R158-TEMPLATE, B20R177-LIBRARY, B20R177-SEEN) at their pre-repair commits, the vault leave-one-out; B20R163-META as the design-level case",
    "unlocks": []
   },
+  "B20_R180": {
+   "artifacts": [],
+   "committed": true,
+   "depends_on": [],
+   "failure": null,
+   "id": "B20_R180",
+   "kind": "study",
+   "line": "self-repair",
+   "notes": "docs/OMEGA_SELF_REPAIR.md sections 7 and 8; runs on CPU 1 (disclosed)",
+   "outcome": null,
+   "output": "evidence/repair_bench_2_b20r180",
+   "positive": null,
+   "preregistered": null,
+   "priority": 6,
+   "requires": [],
+   "resources": {
+    "cpu1_hours": 0.3
+   },
+   "script": "scripts/b20r180_repair_bench_2.py",
+   "status": "queued",
+   "title": "SR-1a2: the obstacle loop version 2 (laws as evidence only, widening focus, the whole budget) on 12 new held-out defects in three larger components, kernel version 2 (rollback, resource check), against the frozen B20_R178 loop, nolocal, random, enum and retrieval at 300 evaluations; controls; retention and reuse",
+   "unlocks": []
+  },
   "allocator-baselines": {
    "artifacts": [],
    "committed": false,
@@ -2316,6 +2339,11 @@
    "outcome": "MILESTONE_DEMONSTRATED (24 of 39 held-out obstacles repaired end to end, isolated, retained); NOLOCAL/RANDOM/ENUM_BEATS_LOOP (35, 36, 33 against 24); REUSE_SHOWN (20 against 12)",
    "positive": true,
    "time": "2026-10-30T16:02:26+00:00"
+  },
+  {
+   "id": "B20_R180",
+   "kind": "add",
+   "time": "2026-10-31T00:43:13+00:00"
   }
  ],
  "lines": {
@@ -2673,7 +2701,8 @@
   "B20_R177",
   "self-repair-build",
   "B20_R178",
-  "B20_R179"
+  "B20_R179",
+  "B20_R180"
  ],
  "reactivated": {},
  "schema": "genesis-research-queue-v1",
